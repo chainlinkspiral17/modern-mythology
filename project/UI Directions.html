@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Mythology — UI Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Special+Elite&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@300;400;600;700&family=Cinzel:wght@400;600&family=Anonymous+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111; }
+
+  /* ── DIRECTION 1: THE PAINTED WORD ──────────────────────────── */
+  .pw-scene {
+    width: 960px; height: 640px;
+    position: relative; overflow: hidden;
+    font-family: 'IM Fell English', serif;
+    background: #0d0b09;
+  }
+  .pw-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 40%, #1a1208 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 75% 20%, #120a18 0%, transparent 60%),
+      linear-gradient(160deg, #0d0b09 0%, #16100a 50%, #0a0d12 100%);
+  }
+  .pw-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay; opacity: 0.4;
+  }
+  /* Character silhouette */
+  .pw-character {
+    position: absolute;
+    bottom: 200px; left: 50%;
+    transform: translateX(-50%);
+    width: 280px; height: 420px;
+    background: linear-gradient(180deg, #1c1208 0%, #0d0b09 100%);
+    clip-path: polygon(35% 0%, 65% 0%, 72% 8%, 78% 18%, 80% 32%, 76% 45%, 68% 52%, 90% 55%, 100% 100%, 0% 100%, 10% 55%, 32% 52%, 24% 45%, 20% 32%, 22% 18%, 28% 8%);
+    filter: drop-shadow(0 0 40px rgba(180,120,40,0.15));
+  }
+  /* Amber glow lamp effect */
+  .pw-lamp {
+    position: absolute;
+    top: -100px; right: 180px;
+    width: 300px; height: 400px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(200,140,40,0.22) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  /* Dialogue box */
+  .pw-dialogue {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(180deg, rgba(10,8,5,0.96) 0%, rgba(8,6,3,0.99) 100%);
+    border-top: 1px solid rgba(180,140,60,0.35);
+    padding: 28px 44px 24px;
+    min-height: 210px;
+  }
+  .pw-dialogue::before {
+    content: '';
+    position: absolute; top: 0; left: 44px; right: 44px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(180,140,60,0.6), rgba(220,180,80,0.8), rgba(180,140,60,0.6), transparent);
+  }
+  .pw-speaker {
+    font-family: 'Cinzel', serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.22em;
+    color: #c8a84a;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pw-text {
+    font-family: 'IM Fell English', serif;
+    font-size: 18px; line-height: 1.7;
+    color: #d4c9b0;
+    font-style: italic;
+    max-width: 760px;
+  }
+  .pw-cursor {
+    display: inline-block;
+    width: 10px; height: 16px;
+    background: #c8a84a;
+    margin-left: 3px;
+    animation: pw-blink 1.1s steps(1) infinite;
+    vertical-align: middle;
+    opacity: 0.8;
+  }
+  @keyframes pw-blink { 50% { opacity: 0; } }
+  .pw-choices {
+    display: flex; flex-direction: column; gap: 8px;
+    margin-top: 20px;
+  }
+  .pw-choice {
+    display: flex; align-items: center; gap: 12px;
+    padding: 9px 16px;
+    border: 1px solid rgba(180,140,60,0.2);
+    background: rgba(180,140,60,0.05);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'IM Fell English', serif;
+    font-size: 15px; color: #b8a882;
+  }
+  .pw-choice:hover { border-color: rgba(180,140,60,0.5); background: rgba(180,140,60,0.1); color: #d4c9b0; }
+  .pw-choice-key {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    color: #c8a84a; letter-spacing: 0.1em;
+    min-width: 16px;
+  }
+  /* HUD top */
+  .pw-hud {
+    position: absolute; top: 20px; left: 0; right: 0;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 0 24px;
+    pointer-events: none;
+  }
+  .pw-volume-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 0.3em;
+    color: rgba(180,140,60,0.5);
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border: 1px solid rgba(180,140,60,0.15);
+  }
+  .pw-skills {
+    display: flex; gap: 12px; align-items: center;
+  }
+  .pw-skill {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+  }
+  .pw-skill-name {
+    font-family: 'Cinzel', serif; font-size: 7px;
+    letter-spacing: 0.15em; color: rgba(180,140,60,0.4);
+    text-transform: uppercase;
+  }
+  .pw-skill-dots {
+    display: flex; gap: 2px;
+  }
+  .pw-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(180,140,60,0.2);
+  }
+  .pw-dot.filled { background: rgba(200,160,60,0.7); }
+  /* Skill check overlay */
+  .pw-check {
+    position: absolute; top: 24px; right: 100px;
+    padding: 8px 14px;
+    border: 1px solid rgba(180,60,40,0.4);
+    background: rgba(180,60,40,0.08);
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 0.18em; color: rgba(200,80,60,0.7);
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  .pw-nav {
+    position: absolute; bottom: 20px; right: 44px;
+    display: flex; gap: 20px;
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 0.2em; color: rgba(180,140,60,0.35);
+    text-transform: uppercase;
+  }
+  .pw-nav span { cursor: pointer; }
+  .pw-nav span:hover { color: rgba(180,140,60,0.7); }
+
+  /* ── DIRECTION 2: ZINE CUT-UP ───────────────────────────────── */
+  .zc-scene {
+    width: 960px; height: 640px;
+    position: relative; overflow: hidden;
+    background: #0a0a0a;
+  }
+  .zc-bg {
+    position: absolute; inset: 0;
+    background: #0a0a0a;
+  }
+  /* Halftone grid overlay */
+  .zc-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+  /* Xerox bleed edges */
+  .zc-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,0.6) 0%, transparent 15%, transparent 85%, rgba(0,0,0,0.6) 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 12%, transparent 88%, rgba(0,0,0,0.5) 100%);
+  }
+  /* Scene art placeholder - urban concrete */
+  .zc-scene-art {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 30%, #141414 60%, #0a0a0a 100%);
+  }
+  /* Spray paint splatter accent */
+  .zc-splatter {
+    position: absolute;
+    top: -30px; right: -20px;
+    width: 320px; height: 320px;
+    background: radial-gradient(ellipse 70% 50% at 60% 40%, rgba(255,45,0,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 30% 60%, rgba(255,45,0,0.08) 0%, transparent 60%);
+    transform: rotate(-15deg);
+  }
+  /* Character silhouette - spray paint style */
+  .zc-character {
+    position: absolute;
+    bottom: 240px; left: 50%;
+    transform: translateX(-50%);
+    width: 200px; height: 380px;
+    background: linear-gradient(180deg, #1a1a1a 0%, #111 100%);
+    clip-path: polygon(38% 0%, 62% 0%, 68% 10%, 74% 20%, 76% 35%, 70% 48%, 62% 54%, 85% 58%, 95% 100%, 5% 100%, 15% 58%, 38% 54%, 30% 48%, 24% 35%, 26% 20%, 32% 10%);
+    filter: blur(0.5px);
+  }
+  /* Taped paper dialogue box */
+  .zc-dialogue {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: #f0ebe0;
+    padding: 0;
+    min-height: 240px;
+    transform: skewY(-0.3deg);
+    transform-origin: left;
+  }
+  .zc-dialogue-inner {
+    padding: 20px 36px 24px;
+    transform: skewY(0.3deg);
+  }
+  /* Tape pieces */
+  .zc-tape {
+    position: absolute;
+    top: -12px;
+    width: 80px; height: 24px;
+    background: rgba(255,220,100,0.55);
+    transform: rotate(-2deg);
+  }
+  .zc-tape.left { left: 60px; transform: rotate(-1.5deg); }
+  .zc-tape.right { right: 120px; transform: rotate(2deg); }
+  .zc-tape.mid { left: 45%; transform: rotate(-0.5deg); }
+  .zc-speaker {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 0.08em;
+    color: #0a0a0a;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .zc-speaker em {
+    font-family: 'Special Elite', serif;
+    font-size: 13px; letter-spacing: 0.05em;
+    color: #444; font-style: normal;
+    margin-left: 8px; vertical-align: middle;
+  }
+  .zc-text {
+    font-family: 'Special Elite', serif;
+    font-size: 15px; line-height: 1.65;
+    color: #1a1a1a;
+    max-width: 700px;
+  }
+  .zc-text strong {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: 0.05em;
+    color: #ff2d00;
+  }
+  .zc-choices {
+    display: flex; gap: 10px; margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .zc-choice {
+    padding: 7px 14px;
+    background: #0a0a0a;
+    color: #f0ebe0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px; letter-spacing: 0.1em;
+    cursor: pointer;
+    border: none;
+    position: relative;
+    transform: skewX(-1deg);
+  }
+  .zc-choice::before {
+    content: '›';
+    margin-right: 6px;
+    color: #ff2d00;
+  }
+  .zc-choice.highlight {
+    background: #ff2d00;
+    color: #f0ebe0;
+  }
+  /* Top HUD - sticker/stamp style */
+  .zc-hud {
+    position: absolute; top: 16px; left: 16px; right: 16px;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    pointer-events: none;
+  }
+  .zc-vol-stamp {
+    padding: 4px 10px;
+    border: 2px solid rgba(255,255,255,0.5);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.5);
+    transform: rotate(-1deg);
+  }
+  .zc-stats {
+    display: flex; gap: 8px;
+  }
+  .zc-stat {
+    padding: 3px 8px;
+    background: rgba(255,45,0,0.15);
+    border: 1px solid rgba(255,45,0,0.4);
+    font-family: 'Special Elite', serif;
+    font-size: 9px; letter-spacing: 0.05em;
+    color: rgba(255,45,0,0.8);
+  }
+  /* Margin notes */
+  .zc-margin {
+    position: absolute; left: 16px; top: 50%;
+    transform: translateY(-50%) rotate(-90deg) translateX(-50%);
+    font-family: 'Special Elite', serif;
+    font-size: 9px; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.2);
+    white-space: nowrap;
+    transform-origin: left center;
+  }
+  /* Sticker flags */
+  .zc-flag {
+    position: absolute; right: 0; top: 160px;
+    width: 28px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .zc-flag-item {
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10px; letter-spacing: 0.1em;
+  }
+  .zc-flag-item.save { background: #ff2d00; color: #fff; }
+  .zc-flag-item.log { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.15); }
+  .zc-flag-item.skip { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.1); }
+
+  /* ── DIRECTION 3: SIGNAL/NOISE ──────────────────────────────── */
+  .sn-scene {
+    width: 960px; height: 640px;
+    position: relative; overflow: hidden;
+    background: #060810;
+    font-family: 'Space Mono', monospace;
+  }
+  .sn-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 100% 60% at 50% 100%, rgba(20,40,80,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 20% 30%, rgba(10,30,60,0.4) 0%, transparent 50%),
+      linear-gradient(180deg, #060810 0%, #080c18 60%, #060810 100%);
+  }
+  /* Scan lines */
+  .sn-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.15) 2px,
+      rgba(0,0,0,0.15) 4px
+    );
+    pointer-events: none; z-index: 10;
+  }
+  /* City horizon line */
+  .sn-city {
+    position: absolute;
+    bottom: 220px; left: 0; right: 0; height: 180px;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(15,25,50,0.3) 100%);
+  }
+  /* City silhouette via SVG-ish CSS */
+  .sn-skyline {
+    position: absolute;
+    bottom: 220px; left: 0; right: 0; height: 120px;
+    background: #060810;
+    clip-path: polygon(
+      0% 100%, 0% 60%,
+      2% 60%, 2% 40%, 3% 40%, 3% 60%,
+      5% 60%, 5% 50%, 6% 50%, 6% 30%, 7% 30%, 7% 50%,
+      8% 50%, 8% 65%, 10% 65%, 10% 45%, 11% 45%, 11% 65%,
+      12% 65%, 12% 55%, 13% 55%, 13% 35%, 14.5% 35%, 14.5% 55%,
+      16% 55%, 16% 70%, 17% 70%, 17% 50%, 18% 50%, 18% 70%,
+      20% 70%, 20% 40%, 21% 40%, 21% 20%, 22% 20%, 22% 40%,
+      23% 40%, 23% 70%, 25% 70%, 25% 55%, 26% 55%, 26% 38%, 27% 38%, 27% 55%,
+      29% 55%, 29% 65%, 31% 65%, 31% 48%, 32% 48%, 32% 65%,
+      34% 65%, 34% 30%, 35% 30%, 35% 45%, 36% 45%, 36% 30%, 37% 30%, 37% 65%,
+      40% 65%, 40% 50%, 42% 50%, 42% 70%,
+      44% 70%, 44% 42%, 45% 42%, 45% 70%,
+      47% 70%, 47% 55%, 49% 55%, 49% 35%, 50% 35%, 50% 55%,
+      52% 55%, 52% 70%, 54% 70%, 54% 45%, 56% 45%, 56% 70%,
+      58% 70%, 58% 30%, 59% 30%, 59% 70%,
+      62% 70%, 62% 52%, 64% 52%, 64% 40%, 65% 40%, 65% 52%,
+      67% 52%, 67% 68%, 69% 68%, 69% 48%, 70% 48%, 70% 68%,
+      72% 68%, 72% 55%, 73% 55%, 73% 38%, 74% 38%, 74% 55%,
+      76% 55%, 76% 70%, 78% 70%, 78% 50%, 79% 50%, 79% 35%, 80% 35%, 80% 50%,
+      82% 50%, 82% 65%, 84% 65%, 84% 48%, 86% 48%, 86% 65%,
+      88% 65%, 88% 42%, 89% 42%, 89% 65%,
+      91% 65%, 91% 55%, 92% 55%, 92% 40%, 93% 40%, 93% 55%,
+      95% 55%, 95% 68%, 97% 68%, 97% 52%, 98% 52%, 98% 68%,
+      100% 68%, 100% 100%
+    );
+    opacity: 0.8;
+  }
+  /* Neon glow at horizon */
+  .sn-horizon-glow {
+    position: absolute;
+    bottom: 215px; left: 0; right: 0; height: 6px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(0,180,255,0.08) 20%,
+      rgba(0,200,255,0.2) 45%,
+      rgba(100,80,255,0.15) 60%,
+      rgba(0,180,255,0.08) 80%,
+      transparent 100%
+    );
+  }
+  /* Rain effect */
+  .sn-rain {
+    position: absolute; inset: 0; bottom: 220px;
+    background-image:
+      repeating-linear-gradient(
+        175deg,
+        transparent 0px,
+        transparent 40px,
+        rgba(150,200,255,0.02) 40px,
+        rgba(150,200,255,0.02) 41px
+      ),
+      repeating-linear-gradient(
+        174deg,
+        transparent 0px,
+        transparent 80px,
+        rgba(150,200,255,0.015) 80px,
+        rgba(150,200,255,0.015) 81px
+      );
+  }
+  /* Character - minimalist silhouette */
+  .sn-character {
+    position: absolute;
+    bottom: 216px; left: 50%;
+    transform: translateX(-50%);
+    width: 160px; height: 350px;
+    background: #060810;
+    clip-path: polygon(40% 0%, 60% 0%, 65% 8%, 70% 18%, 72% 30%, 68% 44%, 60% 50%, 80% 55%, 88% 100%, 12% 100%, 20% 55%, 40% 50%, 32% 44%, 28% 30%, 30% 18%, 35% 8%);
+    border-left: 1px solid rgba(0,180,255,0.15);
+    border-right: 1px solid rgba(0,180,255,0.1);
+  }
+  /* Dialogue box */
+  .sn-dialogue {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(6,8,16,0.97);
+    border-top: 1px solid rgba(0,180,255,0.25);
+    padding: 20px 40px 20px;
+    min-height: 220px;
+  }
+  .sn-dialogue::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,180,255,0.5), rgba(100,80,255,0.3), transparent);
+  }
+  .sn-speaker-line {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 10px;
+  }
+  .sn-prompt { color: rgba(0,180,255,0.5); font-size: 12px; }
+  .sn-speaker {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em;
+    color: rgba(0,200,255,0.8);
+    text-transform: uppercase;
+  }
+  .sn-speaker-role {
+    font-size: 9px; color: rgba(100,80,255,0.6);
+    letter-spacing: 0.1em;
+    border: 1px solid rgba(100,80,255,0.25);
+    padding: 1px 5px;
+    margin-left: 8px;
+  }
+  .sn-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px; line-height: 1.75;
+    color: rgba(200,215,240,0.85);
+    max-width: 780px;
+  }
+  .sn-cursor {
+    display: inline-block;
+    width: 8px; height: 13px;
+    background: rgba(0,200,255,0.7);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: sn-blink 0.9s steps(1) infinite;
+  }
+  @keyframes sn-blink { 50% { opacity: 0; } }
+  .sn-choices {
+    display: flex; flex-direction: column; gap: 6px;
+    margin-top: 16px;
+  }
+  .sn-choice {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 12px;
+    border: 1px solid rgba(0,180,255,0.12);
+    background: rgba(0,180,255,0.04);
+    cursor: pointer;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; color: rgba(160,180,220,0.7);
+    transition: all 0.15s;
+  }
+  .sn-choice:hover {
+    border-color: rgba(0,180,255,0.35);
+    color: rgba(0,200,255,0.9);
+    background: rgba(0,180,255,0.08);
+  }
+  .sn-choice-num { color: rgba(0,180,255,0.5); min-width: 20px; font-size: 10px; }
+  .sn-choice.locked {
+    opacity: 0.35;
+    border-color: rgba(100,80,255,0.1);
+  }
+  .sn-choice-lock { color: rgba(100,80,255,0.5); font-size: 9px; margin-left: auto; }
+  /* HUD top bar */
+  .sn-hud {
+    position: absolute; top: 0; left: 0; right: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(0,180,255,0.08);
+    background: rgba(6,8,16,0.6);
+    backdrop-filter: blur(4px);
+  }
+  .sn-vol-id {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.2em;
+    color: rgba(0,180,255,0.35);
+    text-transform: uppercase;
+  }
+  .sn-meters {
+    display: flex; gap: 16px; align-items: center;
+  }
+  .sn-meter {
+    display: flex; flex-direction: column; gap: 3px;
+    align-items: flex-end;
+  }
+  .sn-meter-label {
+    font-size: 7px; letter-spacing: 0.15em;
+    color: rgba(100,80,255,0.5);
+    text-transform: uppercase;
+  }
+  .sn-meter-bar {
+    width: 60px; height: 2px;
+    background: rgba(100,80,255,0.15);
+    position: relative;
+  }
+  .sn-meter-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: linear-gradient(90deg, rgba(100,80,255,0.6), rgba(0,180,255,0.8));
+  }
+  .sn-hud-actions {
+    display: flex; gap: 12px;
+  }
+  .sn-hud-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px; letter-spacing: 0.15em;
+    color: rgba(0,180,255,0.3);
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid rgba(0,180,255,0.12);
+    padding: 3px 7px;
+  }
+  /* Side panel: relationship */
+  .sn-rel-panel {
+    position: absolute; right: 0; top: 44px; bottom: 220px;
+    width: 44px;
+    display: flex; flex-direction: column; justify-content: center;
+    gap: 6px; padding: 12px 8px;
+    border-left: 1px solid rgba(0,180,255,0.06);
+    background: rgba(6,8,16,0.4);
+  }
+  .sn-rel-item {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+  }
+  .sn-rel-initial {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,180,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 8px; color: rgba(0,200,255,0.6);
+  }
+  .sn-rel-bar-v {
+    width: 2px; height: 30px;
+    background: rgba(0,180,255,0.1);
+    position: relative;
+  }
+  .sn-rel-bar-fill {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(0,200,255,0.5);
+  }
+
+  /* ── MAIN MENU DIRECTION ────────────────────────────────────── */
+  .mm-screen {
+    width: 960px; height: 640px;
+    position: relative; overflow: hidden;
+    background: #0d0b09;
+    font-family: 'IM Fell English', serif;
+  }
+  .mm-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 100% at 50% 100%, rgba(20,15,5,0.9) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(180,140,60,0.05) 0%, transparent 60%),
+      linear-gradient(180deg, #060504 0%, #0d0b09 40%, #12100a 100%);
+  }
+  .mm-texture {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+  /* Vertical rule */
+  .mm-rule {
+    position: absolute;
+    left: 50%; top: 10%; bottom: 10%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(180,140,60,0.25) 30%, rgba(180,140,60,0.25) 70%, transparent);
+  }
+  /* Left: title */
+  .mm-left {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 50%;
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: 40px 60px;
+  }
+  .mm-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 0.35em;
+    color: rgba(180,140,60,0.45);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .mm-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 52px; line-height: 1.15;
+    color: #d4c9b0;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+  .mm-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 11px; letter-spacing: 0.25em;
+    color: rgba(180,140,60,0.5);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .mm-menu-items {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .mm-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(180,140,60,0.08);
+    font-family: 'IM Fell English', serif;
+    font-size: 16px; color: #b8a882;
+    cursor: pointer;
+  }
+  .mm-item:first-child { color: #d4c9b0; }
+  .mm-item-arrow {
+    color: rgba(180,140,60,0.35); font-style: normal; font-size: 12px;
+  }
+  /* Right: volume grid */
+  .mm-right {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 50%;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 40px 40px 40px 60px;
+    gap: 8px;
+  }
+  .mm-right-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px; letter-spacing: 0.3em;
+    color: rgba(180,140,60,0.3);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .mm-vol-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 7px 10px;
+    border: 1px solid rgba(180,140,60,0.08);
+    cursor: pointer;
+  }
+  .mm-vol-item.active { border-color: rgba(180,140,60,0.3); background: rgba(180,140,60,0.05); }
+  .mm-vol-num {
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 0.1em;
+    color: rgba(180,140,60,0.4); min-width: 28px;
+  }
+  .mm-vol-name {
+    font-family: 'IM Fell English', serif;
+    font-size: 14px; color: #8a7f68;
+    font-style: italic;
+  }
+  .mm-vol-item.active .mm-vol-name { color: #c4b890; }
+  .mm-vol-status {
+    margin-left: auto;
+    font-family: 'Cinzel', serif;
+    font-size: 7px; letter-spacing: 0.1em;
+    color: rgba(180,140,60,0.25);
+    text-transform: uppercase;
+  }
+  .mm-vol-item.active .mm-vol-status { color: rgba(180,140,60,0.5); }
+  .mm-vol-locked { opacity: 0.35; }
+  .mm-footer {
+    position: absolute; bottom: 20px; left: 0; right: 0;
+    display: flex; justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 8px; letter-spacing: 0.2em;
+    color: rgba(180,140,60,0.2);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<script type="text/babel">
+const { useState } = React;
+
+/* ──────────── DIRECTION 1: THE PAINTED WORD ──────────── */
+function PaintedWord() {
+  const [showChoices, setShowChoices] = useState(true);
+  return (
+    <div className="pw-scene">
+      <div className="pw-bg"></div>
+      <div className="pw-lamp"></div>
+      <div className="pw-character"></div>
+
+      <div className="pw-hud">
+        <div className="pw-volume-tag">Small Wood Volumes · Ch. III</div>
+        <div className="pw-skills">
+          {[['EMPATHY','filled filled filled filled dot'],
+            ['LOGIC','filled filled filled dot dot'],
+            ['COMPOSURE','filled filled dot dot dot']].map(([name, dots]) => (
+            <div className="pw-skill" key={name}>
+              <div className="pw-skill-name">{name}</div>
+              <div className="pw-skill-dots">
+                {dots.split(' ').map((cls, i) => <div key={i} className={`pw-dot ${cls === 'filled' ? 'filled' : ''}`}></div>)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="pw-check">Empathy check · Difficulty 11</div>
+
+      <div className="pw-dialogue">
+        {showChoices ? (
+          <>
+            <div className="pw-speaker">Your Conscience</div>
+            <div className="pw-text">
+              She's not going to tell you what you want to hear. She never does. 
+              That's why you keep coming back — the truth of her, like a tooth that won't stop.
+              <span className="pw-cursor"></span>
+            </div>
+            <div className="pw-choices">
+              {[
+                ['A', '"I know what I did."'],
+                ['B', '"It doesn\'t matter anymore." (Lie)'],
+                ['C', '[EMPATHY] Let her speak first. Just — listen.'],
+              ].map(([key, text]) => (
+                <div className="pw-choice" key={key}>
+                  <span className="pw-choice-key">{key}</span>
+                  <span>{text}</span>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="pw-speaker">Marcus Weil</div>
+            <div className="pw-text">I know what I did.<span className="pw-cursor"></span></div>
+          </>
+        )}
+        <div className="pw-nav">
+          <span>Log</span>
+          <span>Save</span>
+          <span>Skip</span>
+          <span>Menu</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ──────────── DIRECTION 2: ZINE CUT-UP ──────────── */
+function ZineCutUp() {
+  return (
+    <div className="zc-scene">
+      <div className="zc-bg"></div>
+      <div className="zc-splatter"></div>
+      <div className="zc-scene-art"></div>
+      <div className="zc-character"></div>
+
+      <div className="zc-hud">
+        <div className="zc-vol-stamp">#/Sharp · Scene 07</div>
+        <div className="zc-stats">
+          <div className="zc-stat">HEAT: 7</div>
+          <div className="zc-stat">REP: ●●●○○</div>
+          <div className="zc-stat">CASH: $43</div>
+        </div>
+      </div>
+
+      <div className="zc-margin" style={{left:18,top:'38%',transform:'rotate(-90deg)',position:'absolute',whiteSpace:'nowrap',fontSize:9,letterSpacing:'0.1em',color:'rgba(255,255,255,0.15)',fontFamily:"'Special Elite',serif"}}>
+        MODERN MYTHOLOGY · VOL IV · #/SHARP
+      </div>
+
+      <div className="zc-flag">
+        <div className="zc-flag-item save">SAV</div>
+        <div className="zc-flag-item log">LOG</div>
+        <div className="zc-flag-item skip">SKP</div>
+      </div>
+
+      <div className="zc-dialogue">
+        <div className="zc-tape left"></div>
+        <div className="zc-tape right"></div>
+        <div className="zc-dialogue-inner">
+          <div className="zc-speaker">
+            DEJA BLUE <em>— your crew, sort of</em>
+          </div>
+          <div className="zc-text">
+            "Nah, for real — you really think <strong>CASPER</strong> didn't see that? 
+            He clocked you the second you touched that wall. 
+            This whole block is his. You just didn't know it yet."
+          </div>
+          <div className="zc-choices">
+            <div className="zc-choice">"I knew. I didn't care."</div>
+            <div className="zc-choice highlight">"So what do we do now?"</div>
+            <div className="zc-choice">[STAY QUIET]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ──────────── DIRECTION 3: SIGNAL / NOISE ──────────── */
+function SignalNoise() {
+  return (
+    <div className="sn-scene">
+      <div className="sn-bg"></div>
+      <div className="sn-skyline"></div>
+      <div className="sn-horizon-glow"></div>
+      <div className="sn-rain"></div>
+      <div className="sn-character"></div>
+
+      <div className="sn-hud">
+        <div className="sn-vol-id">The Earthman Chronicles · Seq. 12 · Node 04</div>
+        <div className="sn-meters">
+          {[['TRUST','72%',72],['FEAR','38%',38],['SIGNAL','55%',55]].map(([label, pct, val]) => (
+            <div className="sn-meter" key={label}>
+              <div className="sn-meter-label">{label} {pct}</div>
+              <div className="sn-meter-bar"><div className="sn-meter-fill" style={{width:`${val}%`}}></div></div>
+            </div>
+          ))}
+        </div>
+        <div className="sn-hud-actions">
+          <div className="sn-hud-btn">Log</div>
+          <div className="sn-hud-btn">Save</div>
+          <div className="sn-hud-btn">Menu</div>
+        </div>
+      </div>
+
+      <div className="sn-rel-panel">
+        {[['E','60'],['N','30'],['R','85']].map(([init, h]) => (
+          <div className="sn-rel-item" key={init}>
+            <div className="sn-rel-initial">{init}</div>
+            <div className="sn-rel-bar-v">
+              <div className="sn-rel-bar-fill" style={{height:`${h}%`}}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="sn-dialogue">
+        <div className="sn-speaker-line">
+          <span className="sn-prompt">&gt;_</span>
+          <span className="sn-speaker">ORACLE-7</span>
+          <span className="sn-speaker-role">AI · STATION MIND</span>
+        </div>
+        <div className="sn-text">
+          You've been here before. Not this station — this moment. 
+          The rain. The choice you're about to make. I've watched you 
+          make it fourteen times. In eleven of them, you walk away.
+          <span className="sn-cursor"></span>
+        </div>
+        <div className="sn-choices">
+          <div className="sn-choice">
+            <span className="sn-choice-num">01.</span>
+            <span>"What happens in the other three?"</span>
+          </div>
+          <div className="sn-choice">
+            <span className="sn-choice-num">02.</span>
+            <span>"You're lying. You don't have that data."</span>
+          </div>
+          <div className="sn-choice locked">
+            <span className="sn-choice-num">03.</span>
+            <span>[SIGNAL 80+] "Show me the iterations."</span>
+            <span className="sn-choice-lock">LOCKED · SIGNAL 55/80</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ──────────── MAIN MENU (Direction 1 style) ──────────── */
+const VOLUMES = [
+  {num:'I', name:'Modern Mythology', status:'Complete', active:false},
+  {num:'II', name:'Small Wood Volumes', status:'In Progress', active:true},
+  {num:'III', name:'The Earthman Chronicles', status:'Unlocked', active:false},
+  {num:'IV', name:'#/Sharp', status:'Unlocked', active:false},
+  {num:'V', name:'Major Arcana', status:'Locked', locked:true},
+  {num:'VI', name:'Planned Community', status:'Locked', locked:true},
+  {num:'VII', name:'Land of Milk & Honey', status:'Locked', locked:true},
+  {num:'VIII', name:'SCUMM', status:'Locked', locked:true},
+  {num:'IX', name:'Por Puesto', status:'Locked', locked:true},
+  {num:'X', name:'ROFLcopter', status:'Locked', locked:true},
+];
+
+function MainMenu() {
+  return (
+    <div className="mm-screen">
+      <div className="mm-bg"></div>
+      <div className="mm-texture"></div>
+      <div className="mm-rule"></div>
+
+      <div className="mm-left">
+        <div className="mm-eyebrow">A Visual Novel Series</div>
+        <div className="mm-title">Modern<br/>Mythology</div>
+        <div className="mm-subtitle">Ten Volumes · One Story</div>
+        <div className="mm-menu-items">
+          {['Continue — Small Wood Volumes', 'New Game', 'Load / Save', 'Gallery', 'Settings'].map((item, i) => (
+            <div className="mm-item" key={i}>
+              <span className="mm-item-arrow">›</span>
+              <span style={{fontStyle: i===0 ? 'normal' : 'italic'}}>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mm-right">
+        <div className="mm-right-label">Volumes</div>
+        {VOLUMES.map(v => (
+          <div key={v.num} className={`mm-vol-item ${v.active ? 'active' : ''} ${v.locked ? 'mm-vol-locked' : ''}`}>
+            <span className="mm-vol-num">Vol. {v.num}</span>
+            <span className="mm-vol-name">{v.name}</span>
+            <span className="mm-vol-status">{v.status}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="mm-footer">© Modern Mythology · All Rights Reserved</div>
+    </div>
+  );
+}
+
+/* ──────────── DESIGN CANVAS ──────────── */
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="directions" title="UI Style Directions">
+        <DCArtboard id="pw" label="① The Painted Word" width={960} height={640}>
+          <PaintedWord />
+        </DCArtboard>
+        <DCArtboard id="zc" label="② Zine Cut-Up" width={960} height={640}>
+          <ZineCutUp />
+        </DCArtboard>
+        <DCArtboard id="sn" label="③ Signal / Noise" width={960} height={640}>
+          <SignalNoise />
+        </DCArtboard>
+      </DCSection>
+      <DCSection id="menus" title="Main Menu — Direction ①">
+        <DCArtboard id="mm" label="Main Menu · Volume Select" width={960} height={640}>
+          <MainMenu />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+<div id="root"></div>
+</body>
+</html>

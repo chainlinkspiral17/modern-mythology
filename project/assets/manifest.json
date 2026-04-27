@@ -1,0 +1,48 @@
+{
+  "backgrounds": [],
+  "characters": {
+    "stranger": {
+      "displayName": "Stranger",
+      "folder": "assets/characters/stranger/",
+      "expressions": ["neutral", "warm", "amused", "surprised", "impressed"],
+      "volumes": [1]
+    },
+    "ruth": {
+      "displayName": "Ruth",
+      "folder": "assets/characters/ruth/",
+      "expressions": ["neutral", "tired", "cold", "softening", "hurt", "warm"],
+      "volumes": [2]
+    },
+    "jo": {
+      "displayName": "Jo",
+      "folder": "assets/characters/jo/",
+      "expressions": ["neutral", "cold", "hurt", "surprised", "softening"],
+      "volumes": [2]
+    },
+    "oracle": {
+      "displayName": "ORACLE-7",
+      "folder": "assets/characters/oracle/",
+      "expressions": ["neutral", "calculating", "patient", "surprised", "worried", "thoughtful"],
+      "volumes": [3]
+    },
+    "casper": {
+      "displayName": "CASPER",
+      "folder": "assets/characters/casper/",
+      "expressions": ["neutral", "cold", "considering", "amused"],
+      "volumes": [4]
+    },
+    "deja": {
+      "displayName": "Deja Blue",
+      "folder": "assets/characters/deja/",
+      "expressions": ["neutral", "cold", "warm"],
+      "volumes": [4]
+    }
+  },
+  "audio": {
+    "bgm": [],
+    "sfx": [],
+    "voice": []
+  },
+  "cg": [],
+  "video": []
+}

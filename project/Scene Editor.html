@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scene Editor — Modern Mythology</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body,#root{width:100%;height:100%;overflow:hidden;}
+  body{background:#080604;color:#c4baa0;font-family:'Space Mono',monospace;}
+
+  /* Scrollbars */
+  ::-webkit-scrollbar{width:5px;height:5px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:rgba(180,140,60,0.25);border-radius:2px;}
+
+  /* Inputs */
+  input,textarea,select{
+    background:rgba(255,255,255,0.04);border:1px solid rgba(180,140,60,0.18);
+    color:#c4baa0;font-family:'Courier Prime',monospace;font-size:13px;
+    padding:6px 10px;outline:none;resize:vertical;
+    transition:border-color 0.15s;
+  }
+  input:focus,textarea:focus,select:focus{border-color:rgba(180,140,60,0.5);}
+  input[type=number]{width:72px;}
+  select option{background:#12100c;}
+  textarea{line-height:1.6;}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:5px 12px;border:1px solid rgba(180,140,60,0.2);
+    background:rgba(180,140,60,0.05);color:rgba(196,186,160,0.7);
+    font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;
+    text-transform:uppercase;cursor:pointer;transition:all 0.15s;white-space:nowrap;
+  }
+  .btn:hover{border-color:rgba(180,140,60,0.45);color:#c8a84a;background:rgba(180,140,60,0.1);}
+  .btn.accent{border-color:rgba(180,140,60,0.45);color:#c8a84a;}
+  .btn.danger{border-color:rgba(200,60,40,0.3);color:rgba(200,60,40,0.6);}
+  .btn.danger:hover{border-color:rgba(200,60,40,0.6);color:rgba(220,80,60,0.9);background:rgba(200,60,40,0.08);}
+  .btn.small{padding:3px 8px;font-size:8px;}
+  .btn.icon{padding:4px 7px;border:none;background:transparent;color:rgba(196,186,160,0.3);font-size:13px;}
+  .btn.icon:hover{color:#c8a84a;background:transparent;border:none;}
+
+  /* Section labels */
+  .section-label{
+    font-family:'Cinzel',serif;font-size:8px;letter-spacing:0.28em;
+    color:rgba(180,140,60,0.35);text-transform:uppercase;
+  }
+
+  /* Toggle group */
+  .toggle-group{display:flex;gap:4px;}
+  .toggle-btn{
+    padding:4px 10px;border:1px solid rgba(180,140,60,0.15);
+    background:transparent;color:rgba(196,186,160,0.4);
+    font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;
+    text-transform:uppercase;cursor:pointer;transition:all 0.15s;
+  }
+  .toggle-btn.active{border-color:rgba(180,140,60,0.6);background:rgba(180,140,60,0.12);color:#c8a84a;}
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+
+// ── Constants ──────────────────────────────────────────────────────────────
+const NODE_TYPES = [
+  { t:'narrate',  label:'Narration',  color:'#c8a84a', bg:'rgba(200,168,74,0.08)',  icon:'¶'  },
+  { t:'say',      label:'Dialogue',   color:'#7ab8e8', bg:'rgba(122,184,232,0.07)', icon:'❝'  },
+  { t:'think',    label:'Thought',    color:'#b8a4d8', bg:'rgba(184,164,216,0.07)', icon:'~'  },
+  { t:'choice',   label:'Choice',     color:'#e8a040', bg:'rgba(232,160,64,0.08)',  icon:'◆'  },
+  { t:'show',     label:'Show Char',  color:'#80c864', bg:'rgba(128,200,100,0.07)', icon:'▲'  },
+  { t:'hide',     label:'Hide Char',  color:'#60a848', bg:'rgba(96,168,72,0.06)',   icon:'▼'  },
+  { t:'bg',       label:'Background', color:'#8898b8', bg:'rgba(136,152,184,0.06)', icon:'⬛' },
+  { t:'bgm',      label:'Music',      color:'#88a8c8', bg:'rgba(136,168,200,0.06)', icon:'♪'  },
+  { t:'sfx',      label:'Sound FX',   color:'#78a0b8', bg:'rgba(120,160,184,0.06)', icon:'♫'  },
+  { t:'flag',     label:'Set Flag',   color:'#d07878', bg:'rgba(208,120,120,0.07)', icon:'⚑'  },
+  { t:'jump',     label:'Jump',       color:'#60c8c8', bg:'rgba(96,200,200,0.07)',  icon:'→'  },
+  { t:'end',       label:'End Scene',  color:'#e05050', bg:'rgba(224,80,80,0.08)',   icon:'■'  },
+  { t:'videoscene',label:'Video Scene',color:'#e878f0', bg:'rgba(232,120,240,0.07)', icon:'▶'  },
+];
+const typeMap = Object.fromEntries(NODE_TYPES.map(x => [x.t, x]));
+
+const DEFAULT_NODES = {
+  narrate: { t:'narrate', text:'' },
+  say:     { t:'say', char:'', expr:'neutral', pos:'center', role:'', text:'' },
+  think:   { t:'think', char:'', text:'' },
+  choice:  { t:'choice', prompt:'', opts:[{ text:'', goto:1 }] },
+  show:    { t:'show', char:'', expr:'neutral', pos:'center' },
+  hide:    { t:'hide', pos:'center' },
+  bg:      { t:'bg', src:'' },
+  bgm:     { t:'bgm', src:'' },
+  sfx:     { t:'sfx', src:'' },
+  flag:    { t:'flag', key:'', val:true },
+  jump:       { t:'jump', scene:'' },
+  end:        { t:'end' },
+  videoscene: { t:'videoscene', src:'', loop:true, bgFallback:'', hotspots:[] },
+};
+
+const EXPRESSIONS = ['neutral','happy','sad','angry','surprised','worried','cold','warm','amused','calculating','impressed','thoughtful','hurt','softening','tired','excited','confused'];
+const POSITIONS = ['left','center','right'];
+
+const VOLS = [
+  { vol:1, title:'Modern Mythology',       skin:'literary'  },
+  { vol:2, title:'Small Wood Volumes',      skin:'literary'  },
+  { vol:3, title:'The Earthman Chronicles', skin:'signal'    },
+  { vol:4, title:'#/Sharp',                 skin:'zine'      },
+];
+
+const SAVE_KEY = 'mm_editor_scenes';
+const CHARS_KEY = 'mm_editor_chars';
+
+function loadData() {
+  try { return JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); } catch { return null; }
+}
+function saveData(data) {
+  try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch {}
+}
+function loadChars() {
+  try { return JSON.parse(localStorage.getItem(CHARS_KEY) || 'null') || ['stranger','ruth','jo','oracle','casper','deja']; } catch { return ['stranger','ruth','jo','oracle','casper','deja']; }
+}
+function saveChars(c) { try { localStorage.setItem(CHARS_KEY, JSON.stringify(c)); } catch {} }
+
+function initData() {
+  const saved = loadData();
+  if (saved) return saved;
+  return {
+    1: { scenes:{ 'vol1_intro':{ id:'vol1_intro', vol:1, title:'Intro', nodes:[] } } },
+    2: { scenes:{ 'vol2_intro':{ id:'vol2_intro', vol:2, title:'Intro', nodes:[] } } },
+    3: { scenes:{ 'vol3_station14':{ id:'vol3_station14', vol:3, title:'Station 14', nodes:[] } } },
+    4: { scenes:{ 'vol4_underpass':{ id:'vol4_underpass', vol:4, title:'The Underpass', nodes:[] } } },
+  };
+}
+
+// ── Node preview (screenplay line) ────────────────────────────────────────
+function nodePreview(node) {
+  switch(node.t) {
+    case 'narrate': return node.text?.slice(0,80) || '(empty narration)';
+    case 'say':     return node.text?.slice(0,70) || '(empty dialogue)';
+    case 'think':   return node.text?.slice(0,70) || '(empty thought)';
+    case 'choice':  return `${node.opts?.length || 0} option${node.opts?.length!==1?'s':''}`;
+    case 'show':    return `${node.char||'?'} · ${node.expr||'neutral'} · ${node.pos||'center'}`;
+    case 'hide':    return `hide ${node.pos||'all'}`;
+    case 'bg':      return node.src || '(no file)';
+    case 'bgm':     return node.src || '(no file)';
+    case 'sfx':     return node.src || '(no file)';
+    case 'flag':    return `${node.key||'?'} = ${JSON.stringify(node.val)}`;
+    case 'jump':    return `→ ${node.scene||'?'}`;
+    case 'end':     return 'End of scene';
+    default:        return '';
+  }
+}
+
+// ── NodeRow ────────────────────────────────────────────────────────────────
+function NodeRow({ node, idx, selected, onSelect, onDelete, onMove, totalNodes, onDuplicate }) {
+  const nt = typeMap[node.t] || NODE_TYPES[0];
+  const [hovered, setHovered] = useState(false);
+
+  const rowStyle = {
+    display:'flex',alignItems:'stretch',
+    borderLeft:`3px solid ${selected ? nt.color : hovered ? nt.color+'80' : 'rgba(180,140,60,0.08)'}`,
+    background: selected ? nt.bg : hovered ? 'rgba(255,255,255,0.02)' : 'transparent',
+    cursor:'pointer',transition:'all 0.12s',marginBottom:2,
+    outline: selected ? `1px solid ${nt.color}30` : 'none',
+  };
+
+  const isSay = node.t === 'say';
+  const isNarrate = node.t === 'narrate';
+  const isThink = node.t === 'think';
+
+  return (
+    <div style={rowStyle} onClick={() => onSelect(idx)}
+      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      {/* Index */}
+      <div style={{width:36,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0,
+        fontFamily:'Space Mono',fontSize:9,color:'rgba(180,140,60,0.25)',userSelect:'none'}}>
+        {idx}
+      </div>
+      {/* Type badge */}
+      <div style={{width:24,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0,
+        fontSize:11,color:nt.color,opacity:0.8}}>
+        {nt.icon}
+      </div>
+      {/* Content */}
+      <div style={{flex:1,padding:'8px 10px 8px 4px',minWidth:0}}>
+        {isSay && node.char && (
+          <div style={{fontFamily:'Cinzel,serif',fontSize:9,letterSpacing:'0.18em',color:nt.color,textTransform:'uppercase',marginBottom:3}}>
+            {node.char}{node.expr && node.expr!=='neutral' ? ` (${node.expr})` : ''}{node.pos && node.pos!=='center' ? ` · ${node.pos}` : ''}
+          </div>
+        )}
+        <div style={{
+          fontFamily: isSay||isNarrate ? "'Courier Prime',monospace" : 'Space Mono,monospace',
+          fontSize: isSay||isNarrate ? 13 : 11,
+          color: isNarrate ? 'rgba(200,180,130,0.75)' : isThink ? 'rgba(184,164,216,0.7)' : '#c4baa0',
+          fontStyle: isNarrate||isThink ? 'italic' : 'normal',
+          lineHeight:1.5, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis',
+        }}>
+          {isThink && '( '}
+          {nodePreview(node)}
+          {isThink && ' )'}
+        </div>
+        {node.t === 'choice' && node.opts?.slice(0,2).map((o,i) => (
+          <div key={i} style={{fontFamily:'Space Mono',fontSize:10,color:'rgba(232,160,64,0.6)',marginTop:2}}>
+            {String.fromCharCode(65+i)} → {o.text?.slice(0,40)||'(empty)'}
+          </div>
+        ))}
+      </div>
+      {/* Actions (hover) */}
+      {(hovered || selected) && (
+        <div style={{display:'flex',alignItems:'center',gap:2,paddingRight:6,flexShrink:0}}>
+          <button className="btn icon" title="Move up" onClick={e=>{e.stopPropagation();onMove(idx,-1);}} disabled={idx===0}>↑</button>
+          <button className="btn icon" title="Move down" onClick={e=>{e.stopPropagation();onMove(idx,1);}} disabled={idx===totalNodes-1}>↓</button>
+          <button className="btn icon" title="Duplicate" onClick={e=>{e.stopPropagation();onDuplicate(idx);}}>⎘</button>
+          <button className="btn icon danger" title="Delete" onClick={e=>{e.stopPropagation();onDelete(idx);}}>✕</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Choice Option Editor ──────────────────────────────────────────────────
+function ChoiceOptEditor({ opt, idx, onChange, onDelete, sceneIds }) {
+  const [showCheck, setShowCheck] = useState(!!opt.check);
+  return (
+    <div style={{border:'1px solid rgba(180,140,60,0.12)',padding:'10px 12px',marginBottom:8,background:'rgba(0,0,0,0.2)'}}>
+      <div style={{display:'flex',gap:6,alignItems:'center',marginBottom:8}}>
+        <span style={{fontFamily:'Cinzel,serif',fontSize:9,color:'rgba(232,160,64,0.7)',letterSpacing:'0.15em',minWidth:18}}>{String.fromCharCode(65+idx)}</span>
+        <input value={opt.text||''} onChange={e=>onChange({...opt,text:e.target.value})}
+          placeholder="Choice text…" style={{flex:1}} />
+        <button className="btn icon danger" onClick={onDelete}>✕</button>
+      </div>
+      <div style={{display:'flex',gap:8,alignItems:'center',flexWrap:'wrap'}}>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.4)'}}>→</span>
+        <label style={{fontSize:9,color:'rgba(196,186,160,0.5)'}}>Node</label>
+        <input type="number" value={opt.goto??''} placeholder="idx"
+          onChange={e=>onChange({...opt,goto:e.target.value===''?undefined:parseInt(e.target.value)})} />
+        <span style={{fontSize:9,color:'rgba(196,186,160,0.3)'}}>or</span>
+        <label style={{fontSize:9,color:'rgba(196,186,160,0.5)'}}>Scene</label>
+        <input value={opt.scene||''} placeholder="scene_id"
+          onChange={e=>onChange({...opt,scene:e.target.value||undefined})}
+          style={{width:120}} list="scene-ids-list" />
+        <button className="btn small" style={{marginLeft:'auto',color:showCheck?'#c8a84a':'rgba(196,186,160,0.4)'}}
+          onClick={()=>setShowCheck(v=>!v)}>
+          {showCheck?'- Skill check':'+ Skill check'}
+        </button>
+      </div>
+      {showCheck && (
+        <div style={{display:'flex',gap:8,alignItems:'center',marginTop:8,flexWrap:'wrap'}}>
+          <label style={{fontSize:9,color:'rgba(196,186,160,0.4)'}}>Skill</label>
+          <input value={opt.check?.skill||''} placeholder="empathy"
+            onChange={e=>onChange({...opt,check:{...opt.check,skill:e.target.value}})} style={{width:90}} />
+          <label style={{fontSize:9,color:'rgba(196,186,160,0.4)'}}>Diff</label>
+          <input type="number" value={opt.check?.diff||''} placeholder="8"
+            onChange={e=>onChange({...opt,check:{...opt.check,diff:parseInt(e.target.value)||0}})} />
+          <label style={{fontSize:9,color:'rgba(196,186,160,0.4)'}}>Pass→</label>
+          <input type="number" value={opt.check?.pass??''} placeholder="idx"
+            onChange={e=>onChange({...opt,check:{...opt.check,pass:parseInt(e.target.value)||undefined}})} />
+          <label style={{fontSize:9,color:'rgba(196,186,160,0.4)'}}>Fail→</label>
+          <input type="number" value={opt.check?.fail??''} placeholder="idx"
+            onChange={e=>onChange({...opt,check:{...opt.check,fail:parseInt(e.target.value)||undefined}})} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Node Editor (right panel) ─────────────────────────────────────────────
+function NodeEditor({ node, idx, onUpdate, onClose, characters, sceneIds }) {
+  if (!node) return (
+    <div style={{padding:24,color:'rgba(196,186,160,0.25)',fontFamily:'Space Mono',fontSize:11,textAlign:'center',marginTop:40}}>
+      Select a node to edit
+    </div>
+  );
+  const nt = typeMap[node.t];
+  const upd = (patch) => onUpdate({ ...node, ...patch });
+
+  const field = (label, children, hint) => (
+    <div style={{marginBottom:14}}>
+      <div style={{display:'flex',justifyContent:'space-between',marginBottom:5}}>
+        <span className="section-label">{label}</span>
+        {hint && <span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.25)'}}>{hint}</span>}
+      </div>
+      {children}
+    </div>
+  );
+
+  return (
+    <div style={{padding:'16px 16px',overflowY:'auto',height:'100%'}}>
+      {/* Header */}
+      <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:20,paddingBottom:14,borderBottom:'1px solid rgba(180,140,60,0.12)'}}>
+        <span style={{fontSize:16,color:nt?.color}}>{nt?.icon}</span>
+        <span style={{fontFamily:'Cinzel,serif',fontSize:10,letterSpacing:'0.2em',color:nt?.color,textTransform:'uppercase'}}>{nt?.label}</span>
+        <span style={{marginLeft:'auto',fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)'}}>#{idx}</span>
+      </div>
+
+      {/* Narration */}
+      {(node.t==='narrate') && field('Text',
+        <textarea rows={5} value={node.text||''} onChange={e=>upd({text:e.target.value})}
+          placeholder="Narration text…" style={{width:'100%'}} />, `${(node.text||'').length} chars`)
+      }
+
+      {/* Dialogue */}
+      {node.t==='say' && <>
+        {field('Character',
+          <div style={{display:'flex',gap:6}}>
+            <input value={node.char||''} onChange={e=>upd({char:e.target.value})}
+              placeholder="Name" style={{flex:1}} list="char-list" />
+            <datalist id="char-list">{characters.map(c=><option key={c} value={c}/>)}</datalist>
+            <input value={node.role||''} onChange={e=>upd({role:e.target.value})}
+              placeholder="Role label" style={{width:100}} />
+          </div>
+        )}
+        {field('Expression',
+          <div style={{display:'flex',gap:6}}>
+            <input value={node.expr||'neutral'} onChange={e=>upd({expr:e.target.value})}
+              placeholder="neutral" style={{flex:1}} list="expr-list" />
+            <datalist id="expr-list">{EXPRESSIONS.map(e=><option key={e} value={e}/>)}</datalist>
+          </div>
+        )}
+        {field('Position',
+          <div className="toggle-group">
+            {POSITIONS.map(p=>(
+              <button key={p} className={`toggle-btn${node.pos===p?' active':''}`} onClick={()=>upd({pos:p})}>{p}</button>
+            ))}
+          </div>
+        )}
+        {field('Dialogue text',
+          <textarea rows={5} value={node.text||''} onChange={e=>upd({text:e.target.value})}
+            placeholder="Dialogue…" style={{width:'100%'}} />, `${(node.text||'').length} chars`)
+        }
+      </>}
+
+      {/* Thought */}
+      {node.t==='think' && <>
+        {field('Character (optional)',
+          <input value={node.char||''} onChange={e=>upd({char:e.target.value})}
+            placeholder="Character name" style={{width:'100%'}} list="char-list" />
+        )}
+        {field('Thought text',
+          <textarea rows={5} value={node.text||''} onChange={e=>upd({text:e.target.value})}
+            placeholder="Internal thought…" style={{width:'100%'}} />, `${(node.text||'').length} chars`)
+        }
+      </>}
+
+      {/* Choice */}
+      {node.t==='choice' && <>
+        {field('Optional prompt',
+          <input value={node.prompt||''} onChange={e=>upd({prompt:e.target.value})}
+            placeholder="(defaults to last line)" style={{width:'100%'}} />
+        )}
+        <div className="section-label" style={{marginBottom:10}}>Options</div>
+        {(node.opts||[]).map((opt,i)=>(
+          <ChoiceOptEditor key={i} opt={opt} idx={i}
+            onChange={v=>upd({opts:node.opts.map((o,j)=>j===i?v:o)})}
+            onDelete={()=>upd({opts:node.opts.filter((_,j)=>j!==i)})}
+            sceneIds={sceneIds} />
+        ))}
+        <datalist id="scene-ids-list">{sceneIds.map(s=><option key={s} value={s}/>)}</datalist>
+        <button className="btn" onClick={()=>upd({opts:[...(node.opts||[]),{text:'',goto:(node.opts||[]).length+1}]})}>
+          + Add option
+        </button>
+      </>}
+
+      {/* Show */}
+      {node.t==='show' && <>
+        {field('Character',
+          <input value={node.char||''} onChange={e=>upd({char:e.target.value})}
+            placeholder="character name" style={{width:'100%'}} list="char-list" />
+        )}
+        {field('Expression',
+          <input value={node.expr||'neutral'} onChange={e=>upd({expr:e.target.value})}
+            placeholder="neutral" style={{width:'100%'}} list="expr-list" />
+        )}
+        {field('Position',
+          <div className="toggle-group">
+            {POSITIONS.map(p=>(
+              <button key={p} className={`toggle-btn${node.pos===p?' active':''}`} onClick={()=>upd({pos:p})}>{p}</button>
+            ))}
+          </div>
+        )}
+      </>}
+
+      {/* Hide */}
+      {node.t==='hide' && field('Position',
+        <div className="toggle-group">
+          {[...POSITIONS,'all'].map(p=>(
+            <button key={p} className={`toggle-btn${node.pos===p?' active':''}`} onClick={()=>upd({pos:p})}>{p}</button>
+          ))}
+        </div>
+      )}
+
+      {/* BG / BGM / SFX */}
+      {(node.t==='bg'||node.t==='bgm'||node.t==='sfx') && field('File path',
+        <div>
+          <input value={node.src||''} onChange={e=>upd({src:e.target.value})}
+            placeholder={node.t==='bg'?'assets/backgrounds/scene.jpg':node.t==='bgm'?'assets/audio/bgm/track.mp3':'assets/audio/sfx/sound.mp3'}
+            style={{width:'100%',marginBottom:6}} />
+          <div style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)'}}>
+            Upload files to assets/ folder then reference by path
+          </div>
+        </div>
+      )}
+
+      {/* Flag */}
+      {node.t==='flag' && <>
+        {field('Flag key',
+          <input value={node.key||''} onChange={e=>upd({key:e.target.value})}
+            placeholder="flag_name" style={{width:'100%'}} />
+        )}
+        {field('Value',
+          <div style={{display:'flex',gap:8,alignItems:'center'}}>
+            <div className="toggle-group">
+              <button className={`toggle-btn${node.val===true?' active':''}`} onClick={()=>upd({val:true})}>true</button>
+              <button className={`toggle-btn${node.val===false?' active':''}`} onClick={()=>upd({val:false})}>false</button>
+            </div>
+            <input value={typeof node.val === 'string' ? node.val : ''} onChange={e=>upd({val:e.target.value})}
+              placeholder="or text value" style={{flex:1}} />
+          </div>
+        )}
+      </>}
+
+      {/* Jump */}
+      {node.t==='jump' && field('Scene ID',
+        <div>
+          <input value={node.scene||''} onChange={e=>upd({scene:e.target.value})}
+            placeholder="scene_id" style={{width:'100%',marginBottom:6}} list="scene-ids-list2" />
+          <datalist id="scene-ids-list2">{sceneIds.map(s=><option key={s} value={s}/>)}</datalist>
+        </div>
+      )}
+
+      {/* End */}
+      {node.t==='end' && (
+        <div style={{fontFamily:'Space Mono',fontSize:10,color:'rgba(196,186,160,0.35)',fontStyle:'italic'}}>
+          This node ends the scene and returns to menu.
+        </div>
+      )}
+
+      {/* Video Scene */}
+      {node.t==='videoscene' && (
+        <VideoSceneEditor node={node} onUpdate={onUpdate} />
+      )}
+    </div>
+  );
+}
+
+// ── Add Node Menu ─────────────────────────────────────────────────────────
+function AddNodeMenu({ onAdd, onClose }) {
+  return (
+    <div style={{
+      position:'absolute',zIndex:50,
+      background:'#0e0c09',border:'1px solid rgba(180,140,60,0.25)',
+      padding:12,display:'flex',flexWrap:'wrap',gap:6,width:320,
+      animation:'fadeIn 0.12s ease',boxShadow:'0 8px 32px rgba(0,0,0,0.6)',
+    }}>
+      {NODE_TYPES.map(nt=>(
+        <button key={nt.t} onClick={()=>onAdd(nt.t)}
+          style={{
+            display:'flex',alignItems:'center',gap:5,
+            padding:'5px 10px',border:`1px solid ${nt.color}30`,
+            background:`${nt.color}10`,color:nt.color,
+            fontFamily:'Space Mono',fontSize:9,letterSpacing:'0.1em',
+            textTransform:'uppercase',cursor:'pointer',transition:'all 0.12s',
+          }}
+          onMouseEnter={e=>{e.currentTarget.style.background=`${nt.color}22`;e.currentTarget.style.borderColor=`${nt.color}60`;}}
+          onMouseLeave={e=>{e.currentTarget.style.background=`${nt.color}10`;e.currentTarget.style.borderColor=`${nt.color}30`;}}
+        >
+          <span>{nt.icon}</span><span>{nt.label}</span>
+        </button>
+      ))}
+      <button onClick={onClose} style={{marginLeft:'auto',fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)',background:'transparent',border:'none',cursor:'pointer',padding:'4px 6px'}}>✕ cancel</button>
+    </div>
+  );
+}
+
+// ── Import/Export Modal ───────────────────────────────────────────────────
+function ImportExportModal({ scene, onImport, onClose }) {
+  const [json, setJson] = useState(JSON.stringify(scene, null, 2));
+  const [copied, setCopied] = useState(false);
+
+  const doCopy = () => {
+    navigator.clipboard.writeText(json).then(()=>{ setCopied(true); setTimeout(()=>setCopied(false),1500); });
+  };
+  const doImport = () => {
+    try {
+      const parsed = JSON.parse(json);
+      if (Array.isArray(parsed)) { onImport(parsed); onClose(); }
+      else if (parsed.nodes) { onImport(parsed.nodes); onClose(); }
+      else alert('Expected an array of nodes or a scene object with .nodes');
+    } catch(e) { alert('Invalid JSON: ' + e.message); }
+  };
+
+  return (
+    <div style={{position:'fixed',inset:0,background:'rgba(0,0,0,0.7)',zIndex:100,display:'flex',alignItems:'center',justifyContent:'center'}}>
+      <div style={{width:640,height:520,background:'#0e0c09',border:'1px solid rgba(180,140,60,0.25)',display:'flex',flexDirection:'column'}}>
+        <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'12px 16px',borderBottom:'1px solid rgba(180,140,60,0.12)'}}>
+          <span className="section-label">Import / Export JSON</span>
+          <div style={{display:'flex',gap:8}}>
+            <button className="btn" onClick={doCopy}>{copied?'✓ Copied!':'Copy to clipboard'}</button>
+            <button className="btn accent" onClick={doImport}>Import as nodes</button>
+            <button className="btn" onClick={onClose}>Close</button>
+          </div>
+        </div>
+        <textarea value={json} onChange={e=>setJson(e.target.value)}
+          style={{flex:1,width:'100%',fontFamily:'Space Mono',fontSize:11,padding:16,border:'none',borderRadius:0,resize:'none',background:'#080604',color:'#c4baa0',lineHeight:1.6}} />
+        <div style={{padding:'8px 16px',borderTop:'1px solid rgba(180,140,60,0.08)',fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)'}}>
+          Paste nodes array here to import · Export and add to DEMO_SCENES in vn-scenes.jsx
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Scene Graph View ──────────────────────────────────────────────────────
+function SceneGraph({ scenes, currentSceneId, onNavigate }) {
+  const list = Object.values(scenes);
+  if (list.length === 0) return (
+    <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100%',fontFamily:'Space Mono',fontSize:11,color:'rgba(196,186,160,.2)'}}>No scenes yet.</div>
+  );
+  const BOX_W=180, BOX_H=64, GAP_X=80, GAP_Y=36;
+  const COLS = Math.max(1, Math.ceil(Math.sqrt(list.length)));
+  const pos = {};
+  list.forEach((s,i)=>{ pos[s.id]={x:(i%COLS)*(BOX_W+GAP_X)+24, y:Math.floor(i/COLS)*(BOX_H+GAP_Y)+24}; });
+  const edges=[];
+  list.forEach(s=>{
+    (s.nodes||[]).forEach(n=>{
+      if(n.t==='jump'&&n.scene&&pos[n.scene]) edges.push({from:s.id,to:n.scene,type:'jump'});
+      if(n.t==='choice')(n.opts||[]).forEach(o=>{ if(o.scene&&pos[o.scene]) edges.push({from:s.id,to:o.scene,type:'choice'}); });
+    });
+  });
+  const totalW=COLS*(BOX_W+GAP_X)+24;
+  const totalH=Math.ceil(list.length/COLS)*(BOX_H+GAP_Y)+24;
+  return (
+    <div style={{overflow:'auto',width:'100%',height:'100%',padding:24,background:'#080604'}}>
+      <svg width={totalW} height={totalH} style={{overflow:'visible',display:'block'}}>
+        <defs>
+          <marker id="arrowJ" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(96,200,200,0.6)" />
+          </marker>
+          <marker id="arrowC" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(232,160,64,0.6)" />
+          </marker>
+        </defs>
+        {edges.map((e,i)=>{
+          const f=pos[e.from], t=pos[e.to]; if(!f||!t) return null;
+          const x1=f.x+BOX_W, y1=f.y+BOX_H/2, x2=t.x, y2=t.y+BOX_H/2, mx=(x1+x2)/2;
+          const col=e.type==='choice'?'rgba(232,160,64,0.45)':'rgba(96,200,200,0.45)';
+          const marker=e.type==='choice'?'url(#arrowC)':'url(#arrowJ)';
+          return <path key={i} d={`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`}
+            fill="none" stroke={col} strokeWidth={1.5} markerEnd={marker}
+            strokeDasharray={e.type==='choice'?'5,3':'none'} />;
+        })}
+        {list.map(s=>{
+          const p=pos[s.id]; const sel=s.id===currentSceneId;
+          const hasV=(s.nodes||[]).some(n=>n.t==='videoscene');
+          const hasCh=(s.nodes||[]).some(n=>n.t==='choice');
+          const hasJmp=(s.nodes||[]).some(n=>n.t==='jump');
+          return (
+            <g key={s.id} onClick={()=>onNavigate(s.id)} style={{cursor:'pointer'}}>
+              <rect x={p.x} y={p.y} width={BOX_W} height={BOX_H} rx={2}
+                fill={sel?'rgba(180,140,60,0.1)':'rgba(0,0,0,0.4)'}
+                stroke={sel?'rgba(180,140,60,0.6)':'rgba(180,140,60,0.12)'}
+                strokeWidth={sel?1.5:1} />
+              <text x={p.x+10} y={p.y+22} fontFamily="'IM Fell English',serif" fontSize={13}
+                fill={sel?'#d4c9b0':'rgba(196,186,160,0.7)'} fontStyle="italic"
+                style={{pointerEvents:'none'}}>{(s.title||s.id).slice(0,22)}</text>
+              <text x={p.x+10} y={p.y+37} fontFamily="Space Mono,monospace" fontSize={8}
+                fill="rgba(196,186,160,0.3)" style={{pointerEvents:'none'}}>{s.id.slice(0,28)}</text>
+              <text x={p.x+10} y={p.y+52} fontFamily="Space Mono,monospace" fontSize={8}
+                fill="rgba(196,186,160,0.2)" style={{pointerEvents:'none'}}>
+                {s.nodes?.length||0} nodes{hasCh?' · ◆':''}  {hasJmp?' · →':''}{hasV?' · ▶':''}
+              </text>
+              {hasCh&&<circle cx={p.x+BOX_W-10} cy={p.y+12} r={4} fill="rgba(232,160,64,0.5)"/>}
+              {hasJmp&&<circle cx={p.x+BOX_W-22} cy={p.y+12} r={4} fill="rgba(96,200,200,0.5)"/>}
+              {hasV&&<circle cx={p.x+BOX_W-34} cy={p.y+12} r={4} fill="rgba(232,120,240,0.5)"/>}
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
+// ── Video Hotspot Editor ───────────────────────────────────────────────────
+const ALL_VERBS = ['Look At','Pick Up','Talk To','Use','Open','Close','Walk To','Push','Pull','Give','Examine','Take','Speak','Tag','Scan','Interface','Query'];
+const ACTION_TYPES = ['narrate','say','add_item','jump_scene','set_flag'];
+
+function HotspotActionEditor({ verb, action, onChange }) {
+  const t = action?.t || 'narrate';
+  const upd = (patch) => onChange({ ...action, ...patch });
+  return (
+    <div style={{marginLeft:12,paddingLeft:10,borderLeft:'1px solid rgba(180,140,60,0.12)',marginBottom:6}}>
+      <div style={{display:'flex',gap:6,alignItems:'center',marginBottom:5}}>
+        <span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(232,120,240,0.6)',minWidth:50}}>{verb}</span>
+        <select value={t} onChange={e=>upd({t:e.target.value})} style={{fontSize:9,padding:'2px 4px',height:22}}>
+          {ACTION_TYPES.map(a=><option key={a} value={a}>{a}</option>)}
+        </select>
+      </div>
+      {(t==='narrate'||t==='say') && <>
+        {t==='say' && <input value={action?.char||''} onChange={e=>upd({char:e.target.value})} placeholder="Character" style={{width:'100%',marginBottom:4,fontSize:11}} />}
+        <textarea rows={2} value={action?.text||''} onChange={e=>upd({text:e.target.value})} placeholder="Text…" style={{width:'100%',fontSize:11}} />
+      </>}
+      {t==='add_item' && <div style={{display:'flex',gap:6,flexWrap:'wrap'}}>
+        <input value={action?.item?.id||''} onChange={e=>upd({item:{...action?.item,id:e.target.value}})} placeholder="item_id" style={{width:100,fontSize:11}} />
+        <input value={action?.item?.name||''} onChange={e=>upd({item:{...action?.item,name:e.target.value}})} placeholder="Display name" style={{flex:1,fontSize:11}} />
+        <input value={action?.item?.desc||''} onChange={e=>upd({item:{...action?.item,desc:e.target.value}})} placeholder="Description" style={{width:'100%',fontSize:11,marginTop:4}} />
+      </div>}
+      {t==='jump_scene' && <div style={{display:'flex',gap:6}}>
+        <input value={action?.scene||''} onChange={e=>upd({scene:e.target.value})} placeholder="scene_id" style={{flex:1,fontSize:11}} />
+        <input value={action?.requires||''} onChange={e=>upd({requires:e.target.value||undefined})} placeholder="requires item_id" style={{flex:1,fontSize:11}} />
+      </div>}
+      {t==='set_flag' && <div style={{display:'flex',gap:6}}>
+        <input value={action?.key||''} onChange={e=>upd({key:e.target.value})} placeholder="flag_key" style={{flex:1,fontSize:11}} />
+        <input value={action?.message||''} onChange={e=>upd({message:e.target.value})} placeholder="Result message" style={{flex:1,fontSize:11}} />
+      </div>}
+    </div>
+  );
+}
+
+function HotspotEditor({ hotspot, idx, onChange, onDelete }) {
+  const [open, setOpen] = useState(false);
+  const toggleVerb = (v) => {
+    const vs = hotspot.verbs||[];
+    onChange({ ...hotspot, verbs: vs.includes(v) ? vs.filter(x=>x!==v) : [...vs,v] });
+  };
+  return (
+    <div style={{border:'1px solid rgba(232,120,240,0.15)',marginBottom:8,background:'rgba(0,0,0,0.2)'}}>
+      <div style={{display:'flex',alignItems:'center',gap:8,padding:'7px 10px',cursor:'pointer'}} onClick={()=>setOpen(v=>!v)}>
+        <span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(232,120,240,0.5)',minWidth:20}}>#{idx}</span>
+        <input value={hotspot.label||''} onChange={e=>{ e.stopPropagation(); onChange({...hotspot,label:e.target.value}); }}
+          onClick={e=>e.stopPropagation()} placeholder="Hotspot label" style={{flex:1,fontSize:11,height:24,padding:'2px 6px'}} />
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)'}}>{(hotspot.verbs||[]).length} verbs</span>
+        <span style={{color:'rgba(232,120,240,0.4)',fontSize:11}}>{open?'▲':'▼'}</span>
+        <button className="btn icon danger" onClick={e=>{e.stopPropagation();onDelete();}}>✕</button>
+      </div>
+      {open && (
+        <div style={{padding:'8px 10px 12px',borderTop:'1px solid rgba(232,120,240,0.1)',animation:'fadeIn .12s ease'}}>
+          {/* Position + size */}
+          <div style={{display:'flex',gap:6,marginBottom:8,flexWrap:'wrap'}}>
+            {[['X%','x'],['Y%','y'],['W%','w'],['H%','h']].map(([lbl,k])=>(
+              <div key={k}>
+                <div style={{fontSize:7,color:'rgba(196,186,160,.3)',marginBottom:2}}>{lbl}</div>
+                <input type="number" value={hotspot[k]??0} min={0} max={100} style={{width:54}}
+                  onChange={e=>onChange({...hotspot,[k]:parseFloat(e.target.value)||0})} />
+              </div>
+            ))}
+            <div>
+              <div style={{fontSize:7,color:'rgba(196,186,160,.3)',marginBottom:2}}>Start sec</div>
+              <input type="number" value={hotspot.timeStart??''} placeholder="any" style={{width:58}}
+                onChange={e=>onChange({...hotspot,timeStart:e.target.value===''?null:parseFloat(e.target.value)})} />
+            </div>
+            <div>
+              <div style={{fontSize:7,color:'rgba(196,186,160,.3)',marginBottom:2}}>End sec</div>
+              <input type="number" value={hotspot.timeEnd??''} placeholder="any" style={{width:58}}
+                onChange={e=>onChange({...hotspot,timeEnd:e.target.value===''?null:parseFloat(e.target.value)})} />
+            </div>
+          </div>
+          {/* Verbs */}
+          <div style={{marginBottom:8}}>
+            <div style={{fontSize:7,color:'rgba(196,186,160,.3)',marginBottom:4}}>Active verbs</div>
+            <div style={{display:'flex',flexWrap:'wrap',gap:4}}>
+              {ALL_VERBS.map(v=>(
+                <span key={v} onClick={()=>toggleVerb(v)} style={{
+                  fontFamily:'Space Mono',fontSize:8,padding:'2px 7px',cursor:'pointer',
+                  border:`1px solid ${(hotspot.verbs||[]).includes(v)?'rgba(232,120,240,0.5)':'rgba(180,140,60,0.1)'}`,
+                  background:(hotspot.verbs||[]).includes(v)?'rgba(232,120,240,0.1)':'transparent',
+                  color:(hotspot.verbs||[]).includes(v)?'rgba(232,120,240,0.8)':'rgba(196,186,160,0.35)',
+                  transition:'all .1s',
+                }}>{v}</span>
+              ))}
+            </div>
+          </div>
+          {/* Actions per verb */}
+          <div>
+            <div style={{fontSize:7,color:'rgba(196,186,160,.3)',marginBottom:6}}>Actions</div>
+            {(hotspot.verbs||[]).map(v=>(
+              <HotspotActionEditor key={v} verb={v}
+                action={hotspot.actions?.[v]}
+                onChange={act=>onChange({...hotspot,actions:{...(hotspot.actions||{}),[v]:act}})} />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function VideoSceneEditor({ node, onUpdate }) {
+  const addHotspot = () => {
+    const h = { id:`hs_${Date.now()}`, label:'New Hotspot', x:30, y:30, w:20, h:15,
+      timeStart:null, timeEnd:null, verbs:['Look At'], actions:{} };
+    onUpdate({ ...node, hotspots:[...(node.hotspots||[]),h] });
+  };
+  const updH = (idx,h) => onUpdate({...node, hotspots:(node.hotspots||[]).map((x,i)=>i===idx?h:x)});
+  const delH = (idx) => onUpdate({...node, hotspots:(node.hotspots||[]).filter((_,i)=>i!==idx)});
+  const field=(lbl,children)=>(
+    <div style={{marginBottom:12}}>
+      <div style={{fontFamily:'Cinzel,serif',fontSize:8,letterSpacing:'.25em',color:'rgba(232,120,240,0.45)',textTransform:'uppercase',marginBottom:5}}>{lbl}</div>
+      {children}
+    </div>
+  );
+  return (
+    <div>
+      {field('Video file',<input value={node.src||''} onChange={e=>onUpdate({...node,src:e.target.value})} placeholder="assets/video/scene.mp4" style={{width:'100%'}} />)}
+      {field('Options',
+        <div style={{display:'flex',gap:8,alignItems:'center'}}>
+          <label style={{display:'flex',alignItems:'center',gap:6,cursor:'pointer',fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.5)'}}>
+            <input type="checkbox" checked={node.loop!==false} onChange={e=>onUpdate({...node,loop:e.target.checked})} style={{width:12,height:12,padding:0}} />
+            Loop
+          </label>
+          <input value={node.bgFallback||''} onChange={e=>onUpdate({...node,bgFallback:e.target.value})}
+            placeholder="bg fallback CSS (optional)" style={{flex:1,fontSize:10}} />
+        </div>
+      )}
+      <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:8}}>
+        <span style={{fontFamily:'Cinzel,serif',fontSize:8,letterSpacing:'.25em',color:'rgba(232,120,240,0.45)',textTransform:'uppercase'}}>{(node.hotspots||[]).length} Hotspots</span>
+        <button className="btn sm accent" onClick={addHotspot} style={{borderColor:'rgba(232,120,240,0.4)',color:'rgba(232,120,240,0.7)'}}>+ Add hotspot</button>
+      </div>
+      {(node.hotspots||[]).map((h,i)=>(
+        <HotspotEditor key={h.id||i} hotspot={h} idx={i}
+          onChange={h2=>updH(i,h2)} onDelete={()=>delH(i)} />
+      ))}
+      {(node.hotspots||[]).length===0 && (
+        <div style={{fontFamily:'Space Mono',fontSize:10,color:'rgba(196,186,160,.2)',textAlign:'center',padding:'20px 0'}}>
+          No hotspots yet.<br/>Add one and define its position, time window, verbs, and actions.
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── App ───────────────────────────────────────────────────────────────────
+function App() {
+  const [data, setData] = useState(initData);
+  const [characters, setCharacters] = useState(loadChars);
+  const [currentVol, setCurrentVol] = useState(1);
+  const [currentSceneId, setCurrentSceneId] = useState('vol1_intro');
+  const [selectedIdx, setSelectedIdx] = useState(null);
+  const [addMenuPos, setAddMenuPos] = useState(null); // {y, insertAt}
+  const [showIO, setShowIO] = useState(false);
+  const [newCharInput, setNewCharInput] = useState('');
+  const [newSceneInput, setNewSceneInput] = useState('');
+  const [centerView, setCenterView] = useState('script'); // 'script' | 'graph'
+  const addMenuRef = useRef();
+
+  const volData = data[currentVol] || { scenes:{} };
+  const scene = volData.scenes[currentSceneId];
+  const nodes = scene?.nodes || [];
+
+  const allSceneIds = Object.values(data).flatMap(vd => Object.keys(vd.scenes || {}));
+
+  // Auto-save
+  useEffect(() => { saveData(data); }, [data]);
+  useEffect(() => { saveChars(characters); }, [characters]);
+
+  // Close add menu on outside click
+  useEffect(() => {
+    const h = (e) => { if (addMenuRef.current && !addMenuRef.current.contains(e.target)) setAddMenuPos(null); };
+    document.addEventListener('mousedown', h);
+    return () => document.removeEventListener('mousedown', h);
+  }, []);
+
+  const updateScene = useCallback((newScene) => {
+    setData(d => ({ ...d, [currentVol]: { ...d[currentVol], scenes: { ...d[currentVol]?.scenes, [currentSceneId]: newScene } } }));
+  }, [currentVol, currentSceneId]);
+
+  const updateNodes = useCallback((newNodes) => {
+    updateScene({ ...scene, nodes: newNodes });
+  }, [scene, updateScene]);
+
+  const addNode = (type, insertAt) => {
+    const newNode = { ...DEFAULT_NODES[type] };
+    const newNodes = [...nodes.slice(0, insertAt), newNode, ...nodes.slice(insertAt)];
+    updateNodes(newNodes);
+    setSelectedIdx(insertAt);
+    setAddMenuPos(null);
+  };
+
+  const deleteNode = (idx) => {
+    updateNodes(nodes.filter((_,i)=>i!==idx));
+    setSelectedIdx(s => s===idx ? null : s>idx ? s-1 : s);
+  };
+
+  const moveNode = (idx, dir) => {
+    const ni = idx + dir;
+    if (ni < 0 || ni >= nodes.length) return;
+    const nn = [...nodes];
+    [nn[idx], nn[ni]] = [nn[ni], nn[idx]];
+    updateNodes(nn);
+    setSelectedIdx(ni);
+  };
+
+  const duplicateNode = (idx) => {
+    const nn = [...nodes.slice(0, idx+1), { ...nodes[idx] }, ...nodes.slice(idx+1)];
+    updateNodes(nn);
+    setSelectedIdx(idx+1);
+  };
+
+  const updateNode = (idx, newNode) => {
+    updateNodes(nodes.map((n,i) => i===idx ? newNode : n));
+  };
+
+  const createScene = () => {
+    if (!newSceneInput.trim()) return;
+    const id = newSceneInput.trim().replace(/\s+/g,'_').toLowerCase();
+    setData(d => ({ ...d, [currentVol]: { ...d[currentVol], scenes: { ...d[currentVol]?.scenes, [id]: { id, vol: currentVol, title: newSceneInput.trim(), nodes: [] } } } }));
+    setCurrentSceneId(id);
+    setSelectedIdx(null);
+    setNewSceneInput('');
+  };
+
+  const sideBg = '#0e0c09';
+  const mainBg = '#080604';
+
+  const volPanelStyle = { background: sideBg, borderRight:'1px solid rgba(180,140,60,0.1)', width:220, flexShrink:0, display:'flex', flexDirection:'column', overflow:'hidden' };
+  const rightPanelStyle = { background: sideBg, borderLeft:'1px solid rgba(180,140,60,0.1)', width:300, flexShrink:0, display:'flex', flexDirection:'column', overflow:'hidden' };
+
+  const currentVol_ = VOLS.find(v=>v.vol===currentVol);
+
+  return (
+    <div style={{width:'100%',height:'100%',display:'flex',flexDirection:'column',overflow:'hidden'}}>
+      {/* Top bar */}
+      <div style={{
+        height:46,borderBottom:'1px solid rgba(180,140,60,0.12)',
+        display:'flex',alignItems:'center',gap:12,padding:'0 16px',
+        background:'#0a0806',flexShrink:0,
+      }}>
+        <a href="Modern Mythology.html" style={{textDecoration:'none'}}>
+          <button className="btn">← Game</button>
+        </a>
+        <a href="Asset Manager.html" style={{textDecoration:'none'}}>
+          <button className="btn">Assets</button>
+        </a>
+        <div style={{width:1,height:20,background:'rgba(180,140,60,0.15)'}}></div>
+        <span style={{fontFamily:'Cinzel,serif',fontSize:10,letterSpacing:'0.2em',color:'#c8a84a'}}>Scene Editor</span>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)'}}>—</span>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.5)'}}>{scene?.title || currentSceneId}</span>
+        <span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.25)'}}>· {nodes.length} nodes</span>
+        <div style={{flex:1}}></div>
+        {/* Character mgmt */}
+        <div style={{display:'flex',gap:6,alignItems:'center'}}>
+          <input value={newCharInput} onChange={e=>setNewCharInput(e.target.value)}
+            placeholder="add character…"
+            onKeyDown={e=>{if(e.key==='Enter'&&newCharInput.trim()){setCharacters(c=>[...new Set([...c,newCharInput.trim().toLowerCase()])]);setNewCharInput('');}}}
+            style={{width:120,height:26,fontSize:10,padding:'2px 8px'}} />
+        </div>
+        <div style={{width:1,height:20,background:'rgba(180,140,60,0.15)'}}></div>
+        <button className="btn" onClick={()=>setShowIO(true)}>Import / Export</button>
+        <button className="btn accent" onClick={()=>setShowIO(true)}>↓ Export JSON</button>
+      </div>
+
+      <div style={{flex:1,display:'flex',overflow:'hidden'}}>
+        {/* Left: scene list */}
+        <div style={volPanelStyle}>
+          {/* Volume tabs */}
+          <div style={{display:'flex',borderBottom:'1px solid rgba(180,140,60,0.1)'}}>
+            {VOLS.map(v=>(
+              <div key={v.vol} onClick={()=>{setCurrentVol(v.vol);const ids=Object.keys(data[v.vol]?.scenes||{});setCurrentSceneId(ids[0]||'');setSelectedIdx(null);}}
+                style={{
+                  flex:1,padding:'8px 4px',textAlign:'center',cursor:'pointer',
+                  fontFamily:'Space Mono',fontSize:9,
+                  color: currentVol===v.vol ? '#c8a84a':'rgba(196,186,160,0.35)',
+                  borderBottom: currentVol===v.vol ? '1px solid #c8a84a':'none',
+                  background: currentVol===v.vol ? 'rgba(180,140,60,0.05)':'transparent',
+                  transition:'all 0.12s',
+                }}>
+                {v.vol < 10 ? `0${v.vol}` : v.vol}
+              </div>
+            ))}
+          </div>
+          {currentVol_ && (
+            <div style={{padding:'10px 12px 6px',borderBottom:'1px solid rgba(180,140,60,0.07)'}}>
+              <div style={{fontFamily:'IM Fell English,serif',fontSize:12,color:'rgba(196,186,160,0.6)',fontStyle:'italic'}}>{currentVol_.title}</div>
+              <div style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.25)',marginTop:2}}>{currentVol_.skin} skin</div>
+            </div>
+          )}
+          {/* Scenes list */}
+          <div style={{flex:1,overflowY:'auto',padding:'8px 8px'}}>
+            <div className="section-label" style={{padding:'4px 4px 8px'}}>Scenes</div>
+            {Object.values(volData.scenes||{}).map(sc=>(
+              <div key={sc.id}
+                onClick={()=>{setCurrentSceneId(sc.id);setSelectedIdx(null);}}
+                style={{
+                  padding:'7px 10px',marginBottom:3,cursor:'pointer',
+                  border:`1px solid ${currentSceneId===sc.id?'rgba(180,140,60,0.3)':'rgba(180,140,60,0.07)'}`,
+                  background: currentSceneId===sc.id?'rgba(180,140,60,0.06)':'transparent',
+                  transition:'all 0.12s',
+                }}>
+                <div style={{fontFamily:'Courier Prime,monospace',fontSize:12,color: currentSceneId===sc.id?'#c4baa0':'rgba(196,186,160,0.5)',fontStyle:'italic'}}>{sc.title}</div>
+                <div style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.25)',marginTop:2}}>{sc.id} · {sc.nodes?.length||0} nodes</div>
+              </div>
+            ))}
+          </div>
+          {/* New scene */}
+          <div style={{padding:'10px 8px',borderTop:'1px solid rgba(180,140,60,0.08)'}}>
+            <div style={{display:'flex',gap:6}}>
+              <input value={newSceneInput} onChange={e=>setNewSceneInput(e.target.value)}
+                placeholder="Scene title…" style={{flex:1,fontSize:11,height:28,padding:'2px 8px'}}
+                onKeyDown={e=>e.key==='Enter'&&createScene()} />
+              <button className="btn small" onClick={createScene}>+</button>
+            </div>
+          </div>
+          {/* Characters */}
+          <div style={{padding:'8px',borderTop:'1px solid rgba(180,140,60,0.08)'}}>
+            <div className="section-label" style={{marginBottom:6}}>Characters</div>
+            <div style={{display:'flex',flexWrap:'wrap',gap:4}}>
+              {characters.map(c=>(
+                <span key={c} style={{
+                  fontFamily:'Space Mono',fontSize:8,padding:'2px 6px',
+                  border:'1px solid rgba(180,140,60,0.15)',color:'rgba(196,186,160,0.5)',
+                  cursor:'pointer',
+                }} title="Click to remove" onClick={()=>setCharacters(ch=>ch.filter(x=>x!==c))}>{c}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Center: script / graph view */}
+        <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:mainBg}}>
+          {/* View toggle header */}
+          <div style={{display:'flex',alignItems:'center',padding:'6px 16px',borderBottom:'1px solid rgba(180,140,60,0.08)',gap:8,flexShrink:0}}>
+            {['script','graph'].map(v=>(
+              <button key={v} onClick={()=>setCenterView(v)} style={{
+                padding:'3px 12px',border:`1px solid ${centerView===v?'rgba(180,140,60,0.4)':'rgba(180,140,60,0.1)'}`,
+                background:centerView===v?'rgba(180,140,60,0.08)':'transparent',
+                fontFamily:'Space Mono',fontSize:8,letterSpacing:'.15em',textTransform:'uppercase',
+                color:centerView===v?'#c8a84a':'rgba(196,186,160,0.35)',cursor:'pointer',transition:'all .15s',
+              }}>{v==='script'?'¶ Script':'⬡ Graph'}</button>
+            ))}
+            <span style={{flex:1}}></span>
+            <span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.2)'}}>{centerView==='script'?`${nodes.length} nodes`:`${Object.keys(volData.scenes||{}).length} scenes`}</span>
+          </div>
+
+          {centerView==='graph' ? (
+            <SceneGraph scenes={volData.scenes||{}} currentSceneId={currentSceneId}
+              onNavigate={id=>{ setCurrentSceneId(id); setSelectedIdx(null); setCenterView('script'); }} />
+          ) : <>
+            <div style={{flex:1,overflowY:'auto',padding:'20px 24px 80px'}}>
+              {nodes.length === 0 && (
+                <div style={{textAlign:'center',marginTop:60,color:'rgba(196,186,160,0.2)',fontFamily:'Space Mono',fontSize:11}}>
+                  <div style={{marginBottom:12,fontSize:28}}>¶</div>
+                  No nodes yet.<br/>Click the button below to add your first node.
+                </div>
+              )}
+              {nodes.map((node,idx)=>(
+                <NodeRow key={idx} node={node} idx={idx}
+                  selected={selectedIdx===idx}
+                  onSelect={setSelectedIdx}
+                  onDelete={deleteNode}
+                  onMove={moveNode}
+                  onDuplicate={duplicateNode}
+                  totalNodes={nodes.length} />
+              ))}
+            </div>
+            {/* Add node button */}
+            <div style={{padding:'12px 24px',borderTop:'1px solid rgba(180,140,60,0.08)',background:mainBg,position:'relative'}}>
+              {addMenuPos && (
+                <div ref={addMenuRef} style={{position:'absolute',bottom:'100%',left:24}}>
+                  <AddNodeMenu onAdd={(t)=>addNode(t, nodes.length)} onClose={()=>setAddMenuPos(null)} />
+                </div>
+              )}
+              <button className="btn accent" style={{width:'100%',justifyContent:'center'}}
+                onClick={e=>{setAddMenuPos({y:e.clientY, insertAt:nodes.length});}}>
+                + Add Node
+              </button>
+            </div>
+          </>}
+        </div>
+
+        {/* Right: node editor */}
+        <div style={rightPanelStyle}>
+          <div style={{padding:'10px 14px',borderBottom:'1px solid rgba(180,140,60,0.1)'}}>
+            <span className="section-label">Node Properties</span>
+            {selectedIdx!==null && (
+              <button className="btn small danger" style={{float:'right'}} onClick={()=>deleteNode(selectedIdx)}>Delete</button>
+            )}
+          </div>
+          <div style={{flex:1,overflow:'hidden',display:'flex',flexDirection:'column'}}>
+            {/* Node type selector */}
+            {selectedIdx!==null && nodes[selectedIdx] && (
+              <div style={{padding:'10px 14px',borderBottom:'1px solid rgba(180,140,60,0.08)',display:'flex',flexWrap:'wrap',gap:4}}>
+                {NODE_TYPES.slice(0,6).map(nt=>(
+                  <button key={nt.t}
+                    onClick={()=>updateNode(selectedIdx,{...DEFAULT_NODES[nt.t],...(nt.t===nodes[selectedIdx].t?nodes[selectedIdx]:{t:nt.t})})}
+                    style={{
+                      padding:'3px 8px',border:`1px solid ${nodes[selectedIdx].t===nt.t?nt.color:nt.color+'30'}`,
+                      background: nodes[selectedIdx].t===nt.t?`${nt.color}20`:'transparent',
+                      color: nodes[selectedIdx].t===nt.t?nt.color:`${nt.color}80`,
+                      fontFamily:'Space Mono',fontSize:8,cursor:'pointer',transition:'all 0.12s',
+                    }}>{nt.icon} {nt.label}</button>
+                ))}
+                {NODE_TYPES.slice(6).map(nt=>(
+                  <button key={nt.t}
+                    onClick={()=>updateNode(selectedIdx,{...DEFAULT_NODES[nt.t],...(nt.t===nodes[selectedIdx].t?nodes[selectedIdx]:{t:nt.t})})}
+                    style={{
+                      padding:'3px 8px',border:`1px solid ${nodes[selectedIdx].t===nt.t?nt.color:nt.color+'30'}`,
+                      background: nodes[selectedIdx].t===nt.t?`${nt.color}20`:'transparent',
+                      color: nodes[selectedIdx].t===nt.t?nt.color:`${nt.color}80`,
+                      fontFamily:'Space Mono',fontSize:8,cursor:'pointer',transition:'all 0.12s',
+                    }}>{nt.icon} {nt.label}</button>
+                ))}
+              </div>
+            )}
+            <div style={{flex:1,overflow:'auto'}}>
+              <NodeEditor
+                node={selectedIdx!==null ? nodes[selectedIdx] : null}
+                idx={selectedIdx}
+                onUpdate={(n)=>updateNode(selectedIdx, n)}
+                onClose={()=>setSelectedIdx(null)}
+                characters={characters}
+                sceneIds={allSceneIds}
+              />
+            </div>
+          </div>
+          {/* Keyboard hints */}
+          <div style={{padding:'8px 14px',borderTop:'1px solid rgba(180,140,60,0.08)',fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.2)',lineHeight:1.8}}>
+            Click node to select · ↑↓ to reorder · ⎘ to duplicate
+          </div>
+        </div>
+      </div>
+
+      {showIO && scene && (
+        <ImportExportModal
+          scene={scene}
+          onImport={(nodes)=>updateNodes(nodes)}
+          onClose={()=>setShowIO(false)}
+        />
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

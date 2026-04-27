@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Mythology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Special+Elite&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@300;400;600;700&family=Cinzel:wght@400;600&family=Anonymous+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="vn-skins.jsx"></script>
+<script type="text/babel" src="vn-scenes.jsx"></script>
+<script type="text/babel" src="vn-video.jsx"></script>
+<script type="text/babel" src="vn-engine.jsx"></script>
+<script type="text/babel" src="vn-menu.jsx"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; background: #050402; overflow: hidden; }
+  #root { width: 100%; height: 100%; }
+
+  /* ── Game viewport — fixed 16:9 letterboxed ── */
+  #game-stage {
+    position: absolute;
+    background: #000;
+  }
+
+  /* ── Animations ── */
+  @keyframes vn-blink { 50% { opacity: 0; } }
+  @keyframes vn-pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+  @keyframes vn-fadein { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ── Range input global ── */
+  input[type=range] { cursor: pointer; height: 4px; }
+
+  /* ── Scrollbar (overlays) ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(180,140,60,0.3); border-radius: 2px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+// ── Letterbox Stage ──────────────────────────────────────────────────────────
+function Stage({ children }) {
+  const [scale, setScale] = useState(1);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const W = 1280, H = 720;
+
+  useEffect(() => {
+    const fit = () => {
+      const sw = window.innerWidth, sh = window.innerHeight;
+      const s = Math.min(sw / W, sh / H);
+      const x = (sw - W * s) / 2;
+      const y = (sh - H * s) / 2;
+      setScale(s); setOffset({ x, y });
+    };
+    fit();
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
+  }, []);
+
+  return (
+    <div id="game-stage" style={{
+      width: W, height: H,
+      transform: `translate(${offset.x}px,${offset.y}px) scale(${scale})`,
+      transformOrigin: 'top left',
+    }}>
+      {children}
+    </div>
+  );
+}
+
+// ── App Root ─────────────────────────────────────────────────────────────────
+function App() {
+  const [appState, setAppState] = useState({ screen: 'menu', vol: null });
+
+  return (
+    <Stage>
+      {appState.screen === 'menu' && (
+        <MainMenu onPlay={(vol) => setAppState({ screen: 'game', vol })} />
+      )}
+      {appState.screen === 'game' && (
+        <GameScreen
+          vol={appState.vol}
+          onReturn={() => setAppState({ screen: 'menu', vol: null })}
+        />
+      )}
+    </Stage>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

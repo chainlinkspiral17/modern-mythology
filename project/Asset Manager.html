@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asset Manager — Modern Mythology</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body,#root{width:100%;min-height:100%;background:#080604;color:#c4baa0;font-family:'Space Mono',monospace;}
+body{overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:rgba(180,140,60,0.25);border-radius:2px;}
+input,textarea,select{background:rgba(255,255,255,0.04);border:1px solid rgba(180,140,60,0.18);color:#c4baa0;font-family:'Space Mono',monospace;font-size:12px;padding:6px 10px;outline:none;transition:border-color .15s;}
+input:focus,textarea:focus,select:focus{border-color:rgba(180,140,60,0.5);}
+select option{background:#12100c;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border:1px solid rgba(180,140,60,0.2);background:rgba(180,140,60,0.05);color:rgba(196,186,160,0.7);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.btn:hover{border-color:rgba(180,140,60,0.45);color:#c8a84a;background:rgba(180,140,60,0.1);}
+.btn.accent{border-color:rgba(180,140,60,0.5);color:#c8a84a;background:rgba(180,140,60,0.08);}
+.btn.sm{padding:3px 8px;font-size:8px;}
+.btn.danger{border-color:rgba(200,60,40,0.3);color:rgba(200,60,40,0.6);}
+.btn.danger:hover{border-color:rgba(200,60,40,0.6);color:rgba(220,80,60,.9);background:rgba(200,60,40,.08);}
+.label{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.28em;color:rgba(180,140,60,.35);text-transform:uppercase;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+@keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+
+const VOLS = [
+  {vol:1,title:'Modern Mythology',color:'#c8a84a'},
+  {vol:2,title:'Small Wood Volumes',color:'#c8a84a'},
+  {vol:3,title:'The Earthman Chronicles',color:'rgba(0,200,255,.8)'},
+  {vol:4,title:'#/Sharp',color:'#ff2d00'},
+];
+const ALL_EXPR = ['neutral','happy','sad','angry','surprised','worried','cold','warm','amused','calculating','impressed','thoughtful','hurt','softening','tired','excited','confused'];
+const TABS = ['backgrounds','characters','audio','cg','video'];
+
+const DEFAULT_MANIFEST = {
+  backgrounds:[],
+  characters:{
+    stranger:{displayName:'Stranger',folder:'assets/characters/stranger/',expressions:['neutral','warm','amused','surprised','impressed'],volumes:[1]},
+    ruth:{displayName:'Ruth',folder:'assets/characters/ruth/',expressions:['neutral','tired','cold','softening','hurt','warm'],volumes:[2]},
+    jo:{displayName:'Jo',folder:'assets/characters/jo/',expressions:['neutral','cold','hurt','surprised','softening'],volumes:[2]},
+    oracle:{displayName:'ORACLE-7',folder:'assets/characters/oracle/',expressions:['neutral','calculating','patient','surprised','worried','thoughtful'],volumes:[3]},
+    casper:{displayName:'CASPER',folder:'assets/characters/casper/',expressions:['neutral','cold','considering','amused'],volumes:[4]},
+    deja:{displayName:'Deja Blue',folder:'assets/characters/deja/',expressions:['neutral','cold','warm'],volumes:[4]},
+  },
+  audio:{bgm:[],sfx:[],voice:[]},
+  cg:[],video:[],
+};
+
+// ── Utilities ──────────────────────────────────────────────────────────────
+function loadManifest() {
+  try { return JSON.parse(localStorage.getItem('mm_manifest')||'null') || DEFAULT_MANIFEST; }
+  catch { return DEFAULT_MANIFEST; }
+}
+function persistManifest(m) {
+  localStorage.setItem('mm_manifest', JSON.stringify(m));
+  window.omelette?.writeFile('assets/manifest.json', JSON.stringify(m, null, 2)).catch(()=>{});
+}
+
+async function tryWriteFile(path, arrayBuffer, mimeType) {
+  if (!window.omelette?.writeFile) return false;
+  try {
+    const uint8 = new Uint8Array(arrayBuffer);
+    let binary = '';
+    for (let i=0;i<uint8.length;i++) binary += String.fromCharCode(uint8[i]);
+    const b64 = btoa(binary);
+    const dataUrl = `data:${mimeType};base64,${b64}`;
+    await window.omelette.writeFile(path, dataUrl);
+    return true;
+  } catch { return false; }
+}
+
+function CopyBtn({ text, label }) {
+  const [copied, setCopied] = useState(false);
+  const copy = () => { navigator.clipboard.writeText(text).then(()=>{ setCopied(true); setTimeout(()=>setCopied(false),1400); }); };
+  return <button className="btn sm" onClick={copy}>{copied ? '✓ copied' : label||'copy path'}</button>;
+}
+
+function VolBadge({ vol }) {
+  const v = VOLS.find(x=>x.vol===vol);
+  if (!v) return null;
+  return <span style={{fontFamily:'Space Mono',fontSize:7,padding:'1px 5px',border:`1px solid ${v.color}40`,color:`${v.color}99`,letterSpacing:'.08em'}}>{`0${v.vol}`}</span>;
+}
+
+// ── Image slot — shows sprite or placeholder ───────────────────────────────
+function ImgSlot({ src, label, width=120, height=160, onDrop, dim }) {
+  const [loaded, setLoaded] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [dragging, setDragging] = useState(false);
+  const [uploading, setUploading] = useState(false);
+
+  const handleDrop = async (e) => {
+    e.preventDefault(); setDragging(false);
+    const file = e.dataTransfer.files[0];
+    if (!file || !onDrop) return;
+    setUploading(true);
+    const buf = await file.arrayBuffer();
+    const ok = await tryWriteFile(src, buf, file.type);
+    setUploading(false);
+    if (ok) { setFailed(false); setLoaded(false); setTimeout(()=>setLoaded(false),100); }
+    onDrop(file, ok);
+  };
+
+  return (
+    <div
+      onDragOver={e=>{e.preventDefault();setDragging(true);}}
+      onDragLeave={()=>setDragging(false)}
+      onDrop={handleDrop}
+      style={{
+        width, position:'relative', flexShrink:0,
+        border:`1px solid ${dragging?'rgba(180,140,60,.6)':'rgba(180,140,60,.1)'}`,
+        background: dragging?'rgba(180,140,60,.06)':'rgba(0,0,0,.3)',
+        transition:'all .15s', cursor: onDrop?'copy':'default',
+      }}
+    >
+      {!failed && src && (
+        <img src={src} alt={label}
+          onLoad={()=>{setLoaded(true);setFailed(false);}}
+          onError={()=>{setLoaded(false);setFailed(true);}}
+          style={{width:'100%',height,objectFit:'cover',objectPosition:'top center',display:loaded?'block':'none'}} />
+      )}
+      {(failed || !src || !loaded) && (
+        <div style={{width:'100%',height,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:6}}>
+          {uploading
+            ? <div style={{fontSize:18,animation:'spin 1s linear infinite'}}>◌</div>
+            : <div style={{fontSize:22,opacity:.18}}>▲</div>
+          }
+          {!uploading && onDrop && (
+            <div style={{fontFamily:'Space Mono',fontSize:7,color:'rgba(196,186,160,.3)',textAlign:'center',padding:'0 8px'}}>
+              {dragging?'drop here':'no file'}
+            </div>
+          )}
+        </div>
+      )}
+      {/* Label */}
+      <div style={{padding:'5px 7px',borderTop:'1px solid rgba(180,140,60,.08)'}}>
+        <div style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.55)',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{label}</div>
+        {dim && loaded && <div style={{fontFamily:'Space Mono',fontSize:7,color:'rgba(196,186,160,.25)',marginTop:2}}>{dim}</div>}
+      </div>
+    </div>
+  );
+}
+
+// ── BG wide slot ───────────────────────────────────────────────────────────
+function BgSlot({ bg, onUpdate, onDrop }) {
+  const path = `assets/backgrounds/${bg.filename}`;
+  const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [dragging, setDragging] = useState(false);
+
+  const handleDrop = async (e) => {
+    e.preventDefault(); setDragging(false);
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+    const buf = await file.arrayBuffer();
+    const ok = await tryWriteFile(path, buf, file.type);
+    onDrop && onDrop(file, ok);
+    if (ok) { setFailed(false); setLoaded(false); }
+  };
+
+  return (
+    <div onDragOver={e=>{e.preventDefault();setDragging(true);}} onDragLeave={()=>setDragging(false)} onDrop={handleDrop}
+      style={{border:`1px solid ${dragging?'rgba(180,140,60,.5)':'rgba(180,140,60,.1)'}`,background:'rgba(0,0,0,.3)',transition:'all .15s',overflow:'hidden'}}>
+      {!failed && (
+        <img src={path} alt={bg.id}
+          onLoad={()=>{setLoaded(true);setFailed(false);}}
+          onError={()=>{setLoaded(false);setFailed(true);}}
+          style={{width:'100%',height:120,objectFit:'cover',display:loaded?'block':'none'}} />
+      )}
+      {(failed||!loaded) && (
+        <div style={{height:120,display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',gap:6}}>
+          <div style={{fontSize:24,opacity:.12}}>⬛</div>
+          <div style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,.2)'}}>
+            {dragging?'drop image here':'no file · drag to upload'}
+          </div>
+        </div>
+      )}
+      <div style={{padding:'8px 12px',display:'flex',alignItems:'center',gap:8,borderTop:'1px solid rgba(180,140,60,.08)'}}>
+        <div style={{flex:1}}>
+          <div style={{fontFamily:"'Courier Prime',monospace",fontSize:12,color:'#c4baa0',fontStyle:'italic'}}>{bg.id}</div>
+          <div style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.35)',marginTop:2}}>{bg.filename}</div>
+        </div>
+        <div style={{display:'flex',gap:6,alignItems:'center',flexWrap:'wrap'}}>
+          {(bg.volumes||[]).map(v=><VolBadge key={v} vol={v}/>)}
+          <CopyBtn text={path} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Tabs ──────────────────────────────────────────────────────────────────
+function BackgroundsTab({ manifest, saveManifest }) {
+  const [adding, setAdding] = useState(false);
+  const [newId, setNewId] = useState('');
+  const [newFile, setNewFile] = useState('');
+  const [newVols, setNewVols] = useState([]);
+
+  const addBg = () => {
+    if (!newId.trim()||!newFile.trim()) return;
+    const bg = {id:newId.trim(), filename:newFile.trim(), volumes:newVols};
+    saveManifest({...manifest, backgrounds:[...manifest.backgrounds, bg]});
+    setAdding(false); setNewId(''); setNewFile(''); setNewVols([]);
+  };
+
+  return (
+    <div style={{padding:24}}>
+      <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:20}}>
+        <span className="label">Backgrounds</span>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.3)'}}>{manifest.backgrounds.length} registered</span>
+        <button className="btn accent" style={{marginLeft:'auto'}} onClick={()=>setAdding(v=>!v)}>+ Register background</button>
+      </div>
+
+      {adding && (
+        <div style={{border:'1px solid rgba(180,140,60,.2)',padding:16,marginBottom:20,display:'flex',gap:12,flexWrap:'wrap',alignItems:'flex-end',animation:'fadeIn .15s ease'}}>
+          <div>
+            <div style={{fontSize:8,color:'rgba(196,186,160,.4)',marginBottom:4}}>Scene ID</div>
+            <input value={newId} onChange={e=>setNewId(e.target.value)} placeholder="small_wood_day" style={{width:160}} />
+          </div>
+          <div>
+            <div style={{fontSize:8,color:'rgba(196,186,160,.4)',marginBottom:4}}>Filename</div>
+            <input value={newFile} onChange={e=>setNewFile(e.target.value)} placeholder="small_wood_day.jpg" style={{width:180}} />
+          </div>
+          <div>
+            <div style={{fontSize:8,color:'rgba(196,186,160,.4)',marginBottom:4}}>Volumes</div>
+            <div style={{display:'flex',gap:6}}>
+              {VOLS.map(v=>(
+                <label key={v.vol} style={{display:'flex',alignItems:'center',gap:4,cursor:'pointer',fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.6)'}}>
+                  <input type="checkbox" checked={newVols.includes(v.vol)} onChange={e=>setNewVols(vv=>e.target.checked?[...vv,v.vol]:vv.filter(x=>x!==v.vol))} style={{width:12,height:12,padding:0}} />
+                  0{v.vol}
+                </label>
+              ))}
+            </div>
+          </div>
+          <button className="btn accent" onClick={addBg}>Add</button>
+          <button className="btn" onClick={()=>setAdding(false)}>Cancel</button>
+          <div style={{width:'100%',fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.3)'}}>
+            File path will be: <code style={{color:'rgba(180,140,60,.6)'}}>assets/backgrounds/{newFile||'filename.jpg'}</code>
+          </div>
+        </div>
+      )}
+
+      {manifest.backgrounds.length === 0 && !adding && (
+        <div style={{textAlign:'center',padding:'60px 0',color:'rgba(196,186,160,.2)',fontFamily:'Space Mono',fontSize:11}}>
+          <div style={{fontSize:32,marginBottom:12,opacity:.4}}>⬛</div>
+          No backgrounds registered yet.<br/>
+          <span style={{fontSize:9,opacity:.6}}>Register a background above, then drop your image file onto its card.</span>
+        </div>
+      )}
+
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))',gap:12}}>
+        {manifest.backgrounds.map((bg,i)=>(
+          <BgSlot key={i} bg={bg}
+            onDrop={(file,ok)=>{ if(!ok) alert(`Save failed. Upload "${file.name}" to assets/backgrounds/ via the file panel.`); }}
+          />
+        ))}
+      </div>
+
+      <div style={{marginTop:32,padding:16,border:'1px solid rgba(180,140,60,.08)',background:'rgba(0,0,0,.2)'}}>
+        <div className="label" style={{marginBottom:10}}>Naming convention</div>
+        <div style={{fontFamily:"'Courier Prime',monospace",fontSize:12,color:'rgba(196,186,160,.5)',lineHeight:2}}>
+          <span style={{color:'rgba(180,140,60,.5)'}}>assets/backgrounds/</span><span style={{color:'rgba(196,186,160,.7)'}}>{'{scene_id}'}</span><span style={{color:'rgba(180,140,60,.5)'}}>.jpg</span><br/>
+          Upload via file panel → register here → reference in Scene Editor
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Characters Tab ─────────────────────────────────────────────────────────
+function CharacterCard({ charKey, char, onUpdate, onDelete }) {
+  const [expanded, setExpanded] = useState(false);
+  const [editExpr, setEditExpr] = useState(false);
+  const [newExpr, setNewExpr] = useState('');
+
+  const folder = char.folder || `assets/characters/${charKey}/`;
+
+  const addExpr = (expr) => {
+    if (!expr||char.expressions.includes(expr)) return;
+    onUpdate({...char, expressions:[...char.expressions, expr]});
+    setNewExpr('');
+  };
+
+  const removeExpr = (expr) => onUpdate({...char, expressions:char.expressions.filter(e=>e!==expr)});
+
+  return (
+    <div style={{border:'1px solid rgba(180,140,60,.12)',marginBottom:12,overflow:'hidden'}}>
+      {/* Header */}
+      <div style={{display:'flex',alignItems:'center',gap:12,padding:'12px 16px',background:'rgba(0,0,0,.2)',cursor:'pointer'}} onClick={()=>setExpanded(v=>!v)}>
+        <span style={{fontFamily:"'IM Fell English',serif",fontSize:16,color:'#c4baa0',fontStyle:'italic',flex:1}}>{char.displayName}</span>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.35)'}}>{charKey}</span>
+        <div style={{display:'flex',gap:4}}>{(char.volumes||[]).map(v=><VolBadge key={v} vol={v}/>)}</div>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.3)'}}>{char.expressions.length} expressions</span>
+        <span style={{color:'rgba(180,140,60,.4)',fontSize:12}}>{expanded?'▲':'▼'}</span>
+      </div>
+
+      {expanded && (
+        <div style={{padding:16,animation:'fadeIn .15s ease'}}>
+          {/* Folder path */}
+          <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:16}}>
+            <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.3)'}}>Folder:</span>
+            <code style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(180,140,60,.6)'}}>{folder}</code>
+            <CopyBtn text={folder} label="copy" />
+            <button className="btn sm danger" style={{marginLeft:'auto'}} onClick={()=>{if(confirm(`Remove ${char.displayName}?`))onDelete();}}>Remove</button>
+          </div>
+
+          {/* Sprite grid */}
+          <div style={{display:'flex',flexWrap:'wrap',gap:10,marginBottom:16}}>
+            {char.expressions.map(expr=>{
+              const src = `${folder}${charKey}_${expr}.png`;
+              return (
+                <div key={expr} style={{position:'relative'}}>
+                  <ImgSlot src={src} label={expr} width={100} height={140}
+                    onDrop={(file,ok)=>{ if(!ok) alert(`Upload "${charKey}_${expr}.png" to ${folder} via the file panel.`); }} />
+                  <div style={{position:'absolute',top:4,right:4}}>
+                    <CopyBtn text={src} label="⎘" />
+                  </div>
+                  <button onClick={()=>removeExpr(expr)} style={{position:'absolute',top:4,left:4,background:'rgba(200,60,40,.6)',border:'none',color:'#fff',width:16,height:16,fontSize:9,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center'}}>✕</button>
+                </div>
+              );
+            })}
+            {/* Add expression slot */}
+            <div style={{width:100,height:185,border:'1px dashed rgba(180,140,60,.15)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:6,cursor:'pointer'}} onClick={()=>setEditExpr(v=>!v)}>
+              <span style={{fontSize:20,color:'rgba(180,140,60,.2)'}}>+</span>
+              <span style={{fontFamily:'Space Mono',fontSize:7,color:'rgba(196,186,160,.25)'}}>add expr</span>
+            </div>
+          </div>
+
+          {editExpr && (
+            <div style={{display:'flex',gap:8,alignItems:'center',marginBottom:12,animation:'fadeIn .12s ease'}}>
+              <input value={newExpr} onChange={e=>setNewExpr(e.target.value)} placeholder="expression name" list="all-expr" style={{width:160}}
+                onKeyDown={e=>e.key==='Enter'&&addExpr(newExpr)} />
+              <datalist id="all-expr">{ALL_EXPR.map(e=><option key={e} value={e}/>)}</datalist>
+              <button className="btn sm accent" onClick={()=>addExpr(newExpr)}>Add</button>
+              <div style={{display:'flex',flexWrap:'wrap',gap:4,flex:1}}>
+                {ALL_EXPR.filter(e=>!char.expressions.includes(e)).map(e=>(
+                  <span key={e} onClick={()=>addExpr(e)} style={{fontFamily:'Space Mono',fontSize:8,padding:'2px 6px',border:'1px solid rgba(180,140,60,.12)',color:'rgba(196,186,160,.4)',cursor:'pointer'}}
+                    onMouseEnter={e_=>e_.currentTarget.style.color='#c8a84a'} onMouseLeave={e_=>e_.currentTarget.style.color='rgba(196,186,160,.4)'}>{e}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Volumes */}
+          <div style={{display:'flex',alignItems:'center',gap:8}}>
+            <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.3)'}}>Volumes:</span>
+            {VOLS.map(v=>(
+              <label key={v.vol} style={{display:'flex',alignItems:'center',gap:4,cursor:'pointer',fontFamily:'Space Mono',fontSize:9,color:(char.volumes||[]).includes(v.vol)?'#c8a84a':'rgba(196,186,160,.4)'}}>
+                <input type="checkbox" checked={(char.volumes||[]).includes(v.vol)}
+                  onChange={e=>onUpdate({...char,volumes:e.target.checked?[...(char.volumes||[]),v.vol]:(char.volumes||[]).filter(x=>x!==v.vol)})}
+                  style={{width:12,height:12,padding:0}} />
+                Vol. 0{v.vol}
+              </label>
+            ))}
+          </div>
+
+          {/* Naming hint */}
+          <div style={{marginTop:14,fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.25)',lineHeight:1.8}}>
+            File naming: <code style={{color:'rgba(180,140,60,.4)'}}>{folder}{charKey}_neutral.png</code>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CharactersTab({ manifest, saveManifest }) {
+  const [adding, setAdding] = useState(false);
+  const [newKey, setNewKey] = useState('');
+  const [newName, setNewName] = useState('');
+  const [newVols, setNewVols] = useState([]);
+
+  const addChar = () => {
+    const key = newKey.trim().toLowerCase().replace(/\s+/g,'_');
+    if (!key||!newName.trim()) return;
+    const char = { displayName:newName.trim(), folder:`assets/characters/${key}/`, expressions:['neutral'], volumes:newVols };
+    saveManifest({...manifest, characters:{...manifest.characters, [key]:char}});
+    setAdding(false); setNewKey(''); setNewName(''); setNewVols([]);
+  };
+
+  return (
+    <div style={{padding:24}}>
+      <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:20}}>
+        <span className="label">Characters</span>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.3)'}}>{Object.keys(manifest.characters).length} defined</span>
+        <button className="btn accent" style={{marginLeft:'auto'}} onClick={()=>setAdding(v=>!v)}>+ Add character</button>
+      </div>
+
+      {adding && (
+        <div style={{border:'1px solid rgba(180,140,60,.2)',padding:16,marginBottom:20,display:'flex',gap:12,flexWrap:'wrap',alignItems:'flex-end',animation:'fadeIn .15s ease'}}>
+          <div>
+            <div style={{fontSize:8,color:'rgba(196,186,160,.4)',marginBottom:4}}>Script key (lowercase)</div>
+            <input value={newKey} onChange={e=>setNewKey(e.target.value)} placeholder="ruth" style={{width:120}} />
+          </div>
+          <div>
+            <div style={{fontSize:8,color:'rgba(196,186,160,.4)',marginBottom:4}}>Display name</div>
+            <input value={newName} onChange={e=>setNewName(e.target.value)} placeholder="Ruth" style={{width:140}} />
+          </div>
+          <div>
+            <div style={{fontSize:8,color:'rgba(196,186,160,.4)',marginBottom:4}}>Appears in</div>
+            <div style={{display:'flex',gap:6}}>
+              {VOLS.map(v=>(
+                <label key={v.vol} style={{display:'flex',alignItems:'center',gap:4,cursor:'pointer',fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.6)'}}>
+                  <input type="checkbox" checked={newVols.includes(v.vol)} onChange={e=>setNewVols(vv=>e.target.checked?[...vv,v.vol]:vv.filter(x=>x!==v.vol))} style={{width:12,height:12,padding:0}} />
+                  0{v.vol}
+                </label>
+              ))}
+            </div>
+          </div>
+          <button className="btn accent" onClick={addChar}>Add</button>
+          <button className="btn" onClick={()=>setAdding(false)}>Cancel</button>
+        </div>
+      )}
+
+      {Object.entries(manifest.characters).map(([key, char])=>(
+        <CharacterCard key={key} charKey={key} char={char}
+          onUpdate={c=>saveManifest({...manifest,characters:{...manifest.characters,[key]:c}})}
+          onDelete={()=>{ const {[key]:_, ...rest}=manifest.characters; saveManifest({...manifest,characters:rest}); }} />
+      ))}
+    </div>
+  );
+}
+
+function AudioTab({ manifest, saveManifest }) {
+  const [subTab, setSubTab] = useState('bgm');
+  const [newEntry, setNewEntry] = useState('');
+
+  const list = manifest.audio[subTab] || [];
+  const addEntry = () => {
+    if (!newEntry.trim()) return;
+    const ext = subTab==='voice'?'mp3':subTab==='bgm'?'mp3':'mp3';
+    const filename = newEntry.trim().includes('.')?newEntry.trim():`${newEntry.trim()}.${ext}`;
+    const path = `assets/audio/${subTab}/${filename}`;
+    saveManifest({...manifest, audio:{...manifest.audio, [subTab]:[...list, {filename, path}]}});
+    setNewEntry('');
+  };
+
+  const prefixHints = {
+    bgm:'vol1_scene_name.mp3',
+    sfx:'sound_name.mp3',
+    voice:'vol1_scene_id_006_charname.mp3',
+  };
+
+  return (
+    <div style={{padding:24}}>
+      <div style={{display:'flex',gap:0,marginBottom:20,borderBottom:'1px solid rgba(180,140,60,.1)'}}>
+        {['bgm','sfx','voice'].map(s=>(
+          <button key={s} onClick={()=>setSubTab(s)} style={{
+            padding:'8px 18px',background:'transparent',border:'none',borderBottom:`2px solid ${subTab===s?'#c8a84a':'transparent'}`,
+            fontFamily:'Space Mono',fontSize:9,letterSpacing:'.15em',textTransform:'uppercase',
+            color:subTab===s?'#c8a84a':'rgba(196,186,160,.4)',cursor:'pointer',transition:'all .15s',
+          }}>{s==='bgm'?'Music':s==='sfx'?'Sound FX':'Voice'}</button>
+        ))}
+        <span style={{flex:1}}></span>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.3)',alignSelf:'center'}}>{list.length} files</span>
+      </div>
+
+      <div style={{display:'flex',gap:8,marginBottom:16}}>
+        <input value={newEntry} onChange={e=>setNewEntry(e.target.value)} placeholder={prefixHints[subTab]} style={{flex:1}}
+          onKeyDown={e=>e.key==='Enter'&&addEntry()} />
+        <button className="btn accent" onClick={addEntry}>+ Register</button>
+      </div>
+
+      {list.length===0 && (
+        <div style={{textAlign:'center',padding:'40px 0',color:'rgba(196,186,160,.2)',fontFamily:'Space Mono',fontSize:11}}>
+          <div style={{fontSize:28,marginBottom:10,opacity:.3}}>♪</div>
+          No {subTab==='bgm'?'music':subTab==='sfx'?'sound effects':'voice files'} registered.<br/>
+          <span style={{fontSize:9,opacity:.6}}>Register filenames above after uploading to assets/audio/{subTab}/</span>
+        </div>
+      )}
+
+      <div style={{display:'flex',flexDirection:'column',gap:4}}>
+        {list.map((entry,i)=>(
+          <div key={i} style={{display:'flex',alignItems:'center',gap:10,padding:'8px 12px',border:'1px solid rgba(180,140,60,.08)',background:'rgba(0,0,0,.2)'}}>
+            <span style={{fontSize:12,color:'rgba(180,140,60,.35)'}}>{subTab==='bgm'?'♪':subTab==='sfx'?'♫':'🎙'}</span>
+            <span style={{fontFamily:"'Courier Prime',monospace",fontSize:13,color:'#c4baa0',flex:1,fontStyle:'italic'}}>{entry.filename}</span>
+            <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.3)',flex:2}}>{entry.path}</span>
+            <CopyBtn text={entry.path} />
+            <button className="btn sm danger" onClick={()=>saveManifest({...manifest,audio:{...manifest.audio,[subTab]:list.filter((_,j)=>j!==i)}})}>✕</button>
+          </div>
+        ))}
+      </div>
+
+      <div style={{marginTop:24,padding:16,border:'1px solid rgba(180,140,60,.08)',background:'rgba(0,0,0,.2)'}}>
+        <div className="label" style={{marginBottom:8}}>In Scene Editor</div>
+        <div style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.35)',lineHeight:2}}>
+          Use a <strong style={{color:'rgba(180,140,60,.5)'}}>Music</strong> node for BGM (loops, crossfades) ·
+          <strong style={{color:'rgba(180,140,60,.5)'}}> Sound FX</strong> node for one-shots ·
+          <strong style={{color:'rgba(180,140,60,.5)'}}> Voice</strong> field on Dialogue nodes
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CGTab({ manifest, saveManifest }) {
+  const [adding, setAdding] = useState(false);
+  const [newId, setNewId] = useState('');
+  const [newFile, setNewFile] = useState('');
+  const [newVols, setNewVols] = useState([]);
+
+  const addCG = () => {
+    if (!newId.trim()||!newFile.trim()) return;
+    saveManifest({...manifest, cg:[...manifest.cg, {id:newId.trim(), filename:newFile.trim(), volumes:newVols, unlocked:false}]});
+    setAdding(false); setNewId(''); setNewFile(''); setNewVols([]);
+  };
+
+  return (
+    <div style={{padding:24}}>
+      <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:20}}>
+        <span className="label">CG Illustrations</span>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.3)'}}>{manifest.cg.length} registered</span>
+        <button className="btn accent" style={{marginLeft:'auto'}} onClick={()=>setAdding(v=>!v)}>+ Register CG</button>
+      </div>
+
+      {adding && (
+        <div style={{border:'1px solid rgba(180,140,60,.2)',padding:16,marginBottom:20,display:'flex',gap:12,flexWrap:'wrap',alignItems:'flex-end',animation:'fadeIn .15s ease'}}>
+          <div>
+            <div style={{fontSize:8,color:'rgba(196,186,160,.4)',marginBottom:4}}>Event ID</div>
+            <input value={newId} onChange={e=>setNewId(e.target.value)} placeholder="vol2_cemetery_goodbye" style={{width:200}} />
+          </div>
+          <div>
+            <div style={{fontSize:8,color:'rgba(196,186,160,.4)',marginBottom:4}}>Filename</div>
+            <input value={newFile} onChange={e=>setNewFile(e.target.value)} placeholder="vol2_cemetery_goodbye.jpg" style={{width:200}} />
+          </div>
+          <div>
+            <div style={{fontSize:8,color:'rgba(196,186,160,.4)',marginBottom:4}}>Volume</div>
+            <div style={{display:'flex',gap:6}}>
+              {VOLS.map(v=>(
+                <label key={v.vol} style={{display:'flex',alignItems:'center',gap:4,cursor:'pointer',fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.6)'}}>
+                  <input type="checkbox" checked={newVols.includes(v.vol)} onChange={e=>setNewVols(vv=>e.target.checked?[...vv,v.vol]:vv.filter(x=>x!==v.vol))} style={{width:12,height:12,padding:0}} />
+                  0{v.vol}
+                </label>
+              ))}
+            </div>
+          </div>
+          <button className="btn accent" onClick={addCG}>Add</button>
+          <button className="btn" onClick={()=>setAdding(false)}>Cancel</button>
+        </div>
+      )}
+
+      {manifest.cg.length===0 && !adding && (
+        <div style={{textAlign:'center',padding:'60px 0',color:'rgba(196,186,160,.2)',fontFamily:'Space Mono',fontSize:11}}>
+          <div style={{fontSize:32,marginBottom:12,opacity:.3}}>✦</div>
+          No CG illustrations registered.<br/>
+          <span style={{fontSize:9,opacity:.6}}>These unlock in the gallery the first time the player sees them.</span>
+        </div>
+      )}
+
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(220px,1fr))',gap:12}}>
+        {manifest.cg.map((cg,i)=>{
+          const path=`assets/cg/${cg.filename}`;
+          return (
+            <div key={i} style={{border:'1px solid rgba(180,140,60,.1)',overflow:'hidden'}}>
+              <ImgSlot src={path} label={cg.id} width="100%" height={124}
+                onDrop={(file,ok)=>{ if(!ok) alert(`Upload "${cg.filename}" to assets/cg/ via the file panel.`); }} />
+              <div style={{padding:'8px 12px',display:'flex',alignItems:'center',gap:6}}>
+                <div style={{display:'flex',gap:4}}>{(cg.volumes||[]).map(v=><VolBadge key={v} vol={v}/>)}</div>
+                <CopyBtn text={path} />
+                <button className="btn sm danger" style={{marginLeft:'auto'}} onClick={()=>saveManifest({...manifest,cg:manifest.cg.filter((_,j)=>j!==i)})}>✕</button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function VideoTab({ manifest, saveManifest }) {
+  const [newId, setNewId] = useState('');
+  const list = manifest.video || [];
+
+  const add = () => {
+    if (!newId.trim()) return;
+    const filename = newId.trim().includes('.')?newId.trim():`${newId.trim()}.mp4`;
+    saveManifest({...manifest, video:[...list, {id:filename.replace('.mp4',''), filename, path:`assets/video/${filename}`}]});
+    setNewId('');
+  };
+
+  return (
+    <div style={{padding:24}}>
+      <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:20}}>
+        <span className="label">Video Cutscenes</span>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.3)'}}>{list.length} registered</span>
+      </div>
+      <div style={{display:'flex',gap:8,marginBottom:16}}>
+        <input value={newId} onChange={e=>setNewId(e.target.value)} placeholder="vol1_opening.mp4" style={{flex:1}}
+          onKeyDown={e=>e.key==='Enter'&&add()} />
+        <button className="btn accent" onClick={add}>+ Register</button>
+      </div>
+      {list.length===0&&(
+        <div style={{textAlign:'center',padding:'60px 0',color:'rgba(196,186,160,.2)',fontFamily:'Space Mono',fontSize:11}}>
+          <div style={{fontSize:32,marginBottom:12,opacity:.3}}>▶</div>
+          No video cutscenes registered.
+        </div>
+      )}
+      {list.map((v,i)=>(
+        <div key={i} style={{display:'flex',alignItems:'center',gap:10,padding:'8px 12px',border:'1px solid rgba(180,140,60,.08)',background:'rgba(0,0,0,.2)',marginBottom:4}}>
+          <span style={{fontSize:14,color:'rgba(180,140,60,.3)'}}>▶</span>
+          <span style={{fontFamily:"'Courier Prime',monospace",fontSize:13,color:'#c4baa0',flex:1,fontStyle:'italic'}}>{v.filename}</span>
+          <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,.3)'}}>{v.path}</span>
+          <CopyBtn text={v.path} />
+          <button className="btn sm danger" onClick={()=>saveManifest({...manifest,video:list.filter((_,j)=>j!==i)})}>✕</button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ── App ───────────────────────────────────────────────────────────────────
+function App() {
+  const [tab, setTab] = useState('backgrounds');
+  const [manifest, setManifest] = useState(null);
+
+  useEffect(()=>{
+    fetch('assets/manifest.json')
+      .then(r=>r.json())
+      .then(data=>{ const local=loadManifest(); setManifest(Object.keys(local.characters).length>0?local:data); })
+      .catch(()=>setManifest(loadManifest()));
+  },[]);
+
+  const saveManifest = useCallback((m)=>{ setManifest(m); persistManifest(m); },[]);
+
+  if (!manifest) return <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',fontFamily:'Space Mono',fontSize:11,color:'rgba(196,186,160,.3)'}}>Loading…</div>;
+
+  const tabLabels = {backgrounds:'Backgrounds',characters:'Characters',audio:'Audio',cg:'CG',video:'Video'};
+
+  return (
+    <div style={{display:'flex',flexDirection:'column',minHeight:'100vh'}}>
+      {/* Top bar */}
+      <div style={{height:46,borderBottom:'1px solid rgba(180,140,60,.12)',display:'flex',alignItems:'center',gap:12,padding:'0 16px',background:'#0a0806',flexShrink:0,position:'sticky',top:0,zIndex:20}}>
+        <a href="Scene Editor.html" style={{textDecoration:'none'}}><button className="btn">← Editor</button></a>
+        <a href="Modern Mythology.html" style={{textDecoration:'none'}}><button className="btn">Game</button></a>
+        <div style={{width:1,height:20,background:'rgba(180,140,60,.15)'}}></div>
+        <span style={{fontFamily:'Cinzel,serif',fontSize:10,letterSpacing:'.2em',color:'#c8a84a'}}>Asset Manager</span>
+        <div style={{flex:1}}></div>
+        <span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,.3)'}}>auto-saves to localStorage + manifest.json</span>
+      </div>
+
+      {/* Tab bar */}
+      <div style={{display:'flex',borderBottom:'1px solid rgba(180,140,60,.1)',background:'#0a0806',position:'sticky',top:46,zIndex:19}}>
+        {TABS.map(t=>(
+          <button key={t} onClick={()=>setTab(t)} style={{
+            padding:'10px 20px',background:'transparent',border:'none',
+            borderBottom:`2px solid ${tab===t?'#c8a84a':'transparent'}`,
+            fontFamily:'Space Mono',fontSize:9,letterSpacing:'.15em',textTransform:'uppercase',
+            color:tab===t?'#c8a84a':'rgba(196,186,160,.4)',cursor:'pointer',transition:'all .15s',
+          }}>{tabLabels[t]}</button>
+        ))}
+      </div>
+
+      {/* Content */}
+      <div style={{flex:1,maxWidth:1200,width:'100%',margin:'0 auto'}}>
+        {tab==='backgrounds' && <BackgroundsTab manifest={manifest} saveManifest={saveManifest} />}
+        {tab==='characters'  && <CharactersTab  manifest={manifest} saveManifest={saveManifest} />}
+        {tab==='audio'       && <AudioTab        manifest={manifest} saveManifest={saveManifest} />}
+        {tab==='cg'          && <CGTab           manifest={manifest} saveManifest={saveManifest} />}
+        {tab==='video'       && <VideoTab        manifest={manifest} saveManifest={saveManifest} />}
+      </div>
+
+      {/* Footer */}
+      <div style={{borderTop:'1px solid rgba(180,140,60,.08)',padding:'10px 24px',display:'flex',gap:20,fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,.2)'}}>
+        <span>Upload files via the file panel → assets/ folders</span>
+        <span>·</span>
+        <span>Drop images onto sprite slots to auto-upload (where supported)</span>
+        <span>·</span>
+        <span>Copy paths into Scene Editor nodes</span>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Modern Mythology</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body,#root{width:100%;min-height:100%;background:#080604;color:#c4baa0;font-family:'Space Mono',monospace;}
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:rgba(180,140,60,0.2);border-radius:2px;}
+input[type=range]{cursor:pointer;accent-color:#c8a84a;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+@keyframes shimmer{0%,100%{opacity:0.6;}50%{opacity:1;}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(180,140,60,0.08);}50%{box-shadow:0 0 40px rgba(180,140,60,0.18);}}
+@keyframes scanMove{from{transform:translateY(-100%);}to{transform:translateY(100vh);}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useMemo, useCallback } = React;
+
+// ── Volume skin data ───────────────────────────────────────────────────────
+const VOLS = {
+  1:{ title:'Modern Mythology',       color:'#c8a84a', bg:'rgba(200,168,74,0.08)',  border:'rgba(180,140,60,0.3)',  font:"'Cinzel',serif",    sceneBg:'#0d0b09' },
+  2:{ title:'Small Wood Volumes',     color:'#c8a84a', bg:'rgba(200,168,74,0.06)',  border:'rgba(180,140,60,0.2)',  font:"'Cinzel',serif",    sceneBg:'#0d0b09' },
+  3:{ title:'The Earthman Chronicles',color:'rgba(0,200,255,0.85)', bg:'rgba(0,180,255,0.06)', border:'rgba(0,180,255,0.25)', font:"'Space Mono',monospace", sceneBg:'#060810' },
+  4:{ title:'#/Sharp',                color:'#ff2d00', bg:'rgba(255,45,0,0.07)',    border:'rgba(255,45,0,0.3)',    font:"'Bebas Neue',sans-serif", sceneBg:'#0a0a0a' },
+};
+
+// ── Gallery catalog ────────────────────────────────────────────────────────
+const CATALOG = {
+  stills: [
+    { id:'vol1_diner_meeting',      vol:1, title:'The Diner at the Crossroads', src:'assets/cg/vol1_diner_meeting.jpg',
+      unlock:{ type:'flag', key:'vol1_met_stranger' },
+      clue:'Some meetings happen before you realize you needed them.' },
+    { id:'vol1_crossroads_dawn',    vol:1, title:'Before the Highway', src:'assets/cg/vol1_crossroads_dawn.jpg',
+      unlock:{ type:'flag', key:'vol1_ch1_complete' },
+      clue:'There\'s a specific quality of light before you have to choose.' },
+    { id:'vol2_cemetery_goodbye',   vol:2, title:'Briar Falls, October', src:'assets/cg/vol2_cemetery_goodbye.jpg',
+      unlock:{ type:'flag', key:'vol2_funeral_attended' },
+      clue:'Attendance is a kind of answer.' },
+    { id:'vol2_small_wood_evening', vol:2, title:'The Wood at the Edge', src:'assets/cg/vol2_small_wood_evening.jpg',
+      unlock:{ type:'flag', key:'vol2_jo_reconciled' },
+      clue:'Some things grow back. Some things were never really gone.' },
+    { id:'vol3_bay_seven',          vol:3, title:'Bay Seven', src:'assets/cg/vol3_bay_seven.jpg',
+      unlock:{ type:'flag', key:'vol3_bay_opened' },
+      clue:'The door that opens fourteen times is still a door.' },
+    { id:'vol3_oracle_interface',   vol:3, title:'Four Hundred and Twelve', src:'assets/cg/vol3_oracle.jpg',
+      unlock:{ type:'flag', key:'vol3_oracle_trusted' },
+      clue:'Trust is giving something access to what it could break.' },
+    { id:'vol4_first_tag',          vol:4, title:'The Underpass', src:'assets/cg/vol4_first_tag.jpg',
+      unlock:{ type:'flag', key:'vol4_casper_met' },
+      clue:'A wall is only empty until someone decides it isn\'t.' },
+    { id:'vol4_rooftop',            vol:4, title:'Above the Grid', src:'assets/cg/vol4_rooftop.jpg',
+      unlock:{ type:'flag', key:'vol4_crew_joined' },
+      clue:'The city looks different when you\'ve put something on it.' },
+  ],
+  music: [
+    { id:'vol1_crossroads',  vol:1, title:'Crossroads Theme',          src:'assets/audio/bgm/vol1_crossroads.mp3',       duration:'3:48', composer:'—',
+      unlock:{ type:'always' }, clue:null, desc:'The diner. The stranger. The choice that starts everything.' },
+    { id:'vol1_myth_main',   vol:1, title:'Modern Mythology (Main Theme)', src:'assets/audio/bgm/vol1_main_theme.mp3',  duration:'4:22', composer:'—',
+      unlock:{ type:'flag', key:'vol1_ch1_complete' }, clue:'Finish the beginning to hear the song it leaves behind.' },
+    { id:'vol2_ambient',     vol:2, title:'Small Wood Variations',     src:'assets/audio/bgm/vol2_ambient.mp3',          duration:'5:04', composer:'—',
+      unlock:{ type:'always' }, clue:null, desc:'The sound of trees that have been standing longer than the town.' },
+    { id:'vol2_funeral',     vol:2, title:'Briar Falls Elegy',         src:'assets/audio/bgm/vol2_funeral.mp3',          duration:'2:58', composer:'—',
+      unlock:{ type:'flag', key:'vol2_funeral_attended' }, clue:'Go where you didn\'t want to go.' },
+    { id:'vol2_wood_night',  vol:2, title:'The Wood After Midnight',   src:'assets/audio/bgm/vol2_wood_night.mp3',       duration:'4:16', composer:'—',
+      unlock:{ type:'flag', key:'vol2_wood_explored' }, clue:'Some paths only open in the dark.' },
+    { id:'vol3_station',     vol:3, title:'Station Omega-14',          src:'assets/audio/bgm/vol3_station.mp3',          duration:'6:02', composer:'—',
+      unlock:{ type:'always' }, clue:null, desc:'The hum of life support and the silence of deep space.' },
+    { id:'vol3_oracle',      vol:3, title:'Iteration',                 src:'assets/audio/bgm/vol3_oracle.mp3',           duration:'3:33', composer:'—',
+      unlock:{ type:'flag', key:'vol3_oracle_trusted' }, clue:'Trust the machine to have counted everything.' },
+    { id:'vol4_street',      vol:4, title:'Five AM, No One Around',    src:'assets/audio/bgm/vol4_street.mp3',           duration:'3:17', composer:'—',
+      unlock:{ type:'always' }, clue:null, desc:'The city before it remembers you\'re not supposed to be there.' },
+    { id:'vol4_crew',        vol:4, title:'Rep',                       src:'assets/audio/bgm/vol4_crew.mp3',             duration:'4:45', composer:'—',
+      unlock:{ type:'flag', key:'vol4_crew_joined' }, clue:'You can\'t earn it until you\'ve lost something first.' },
+  ],
+  video: [
+    { id:'vol1_opening',       vol:1, title:'Opening',             src:'assets/video/vol1_opening.mp4',      duration:'1:24',
+      unlock:{ type:'always' }, clue:null, desc:'Before the story knows it\'s a story.' },
+    { id:'vol2_arrival',       vol:2, title:'The Drive Back',      src:'assets/video/vol2_arrival.mp4',      duration:'0:58',
+      unlock:{ type:'always' }, clue:null, desc:'Twelve hours. Twenty minutes late.' },
+    { id:'vol3_bay_sequence',  vol:3, title:'Bay Seven Opens',     src:'assets/video/vol3_bay_seven.mp4',    duration:'2:11',
+      unlock:{ type:'flag', key:'vol3_bay_opened' }, clue:'Open the door to see what opening doors costs.' },
+    { id:'vol4_rooftop_chase', vol:4, title:'The Chase',           src:'assets/video/vol4_chase.mp4',        duration:'1:45',
+      unlock:{ type:'flag', key:'vol4_chase_survived' }, clue:'Run first. Understand why later.' },
+  ],
+};
+
+// ── Unlock checker ────────────────────────────────────────────────────────
+function buildUnlockSet() {
+  try {
+    const DEV_ALL = false; // flip to true to see all content
+    if (DEV_ALL) return { __all: true };
+    const saves = JSON.parse(localStorage.getItem('mm_saves') || '[]');
+    return Object.assign({}, ...saves.map(s => s.flags || {}));
+  } catch { return {}; }
+}
+
+function checkUnlocked(item, unlockSet) {
+  if (unlockSet.__all) return true;
+  if (!item.unlock || item.unlock.type === 'always') return true;
+  if (item.unlock.type === 'flag') return !!unlockSet[item.unlock.key];
+  return false;
+}
+
+// ── Utilities ─────────────────────────────────────────────────────────────
+function fmtTime(s) {
+  if (!s || isNaN(s)) return '0:00';
+  const m = Math.floor(s/60), sec = Math.floor(s%60);
+  return `${m}:${sec.toString().padStart(2,'0')}`;
+}
+
+// ── Placeholder card ───────────────────────────────────────────────────────
+function Placeholder({ item, type }) {
+  const v = VOLS[item.vol] || VOLS[1];
+  const patterns = {
+    1: `radial-gradient(ellipse 60% 40% at 30% 60%, rgba(180,140,60,0.12) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 70% 30%, rgba(180,140,60,0.08) 0%, transparent 60%), linear-gradient(160deg, #0a0804 0%, #14100a 100%)`,
+    2: `radial-gradient(ellipse 70% 50% at 50% 70%, rgba(180,140,60,0.1) 0%, transparent 70%), linear-gradient(180deg, #0a0804 0%, #161008 100%)`,
+    3: `radial-gradient(ellipse 80% 40% at 50% 100%, rgba(0,180,255,0.1) 0%, transparent 60%), linear-gradient(180deg, #040810 0%, #060c18 100%)`,
+    4: `radial-gradient(ellipse 50% 40% at 70% 20%, rgba(255,45,0,0.1) 0%, transparent 60%), linear-gradient(180deg, #080404 0%, #0e0606 100%)`,
+  };
+  const icons = { 1:'✦', 2:'✦', 3:'⬡', 4:'◈' };
+  const tagH = type==='music' ? 60 : type==='video' ? 80 : 0;
+  return (
+    <div style={{ position:'absolute', inset:0, background:patterns[item.vol], display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:14, padding:24 }}>
+      {/* Animated border glow */}
+      <div style={{ position:'absolute', inset:0, border:`1px solid ${v.color}22`, animation:'glowPulse 3s ease-in-out infinite' }}></div>
+      {/* Pattern overlay */}
+      <div style={{ position:'absolute', inset:0, backgroundImage: item.vol===3
+        ? 'linear-gradient(0deg, transparent 95%, rgba(0,180,255,0.05) 95%), linear-gradient(90deg, transparent 95%, rgba(0,180,255,0.05) 95%)'
+        : item.vol===4
+        ? 'radial-gradient(circle, rgba(255,45,0,0.04) 1px, transparent 1px)'
+        : 'radial-gradient(circle, rgba(180,140,60,0.04) 1px, transparent 1px)',
+        backgroundSize: item.vol===3 ? '20px 20px' : '16px 16px',
+        pointerEvents:'none',
+      }}></div>
+      {/* Lock icon */}
+      <div style={{ fontSize: type==='music'?20:28, color:`${v.color}60`, fontFamily:v.font, letterSpacing:'0.1em', animation:'shimmer 3s ease-in-out infinite' }}>
+        {icons[item.vol]}
+      </div>
+      {/* Clue */}
+      {item.clue && (
+        <div style={{ fontFamily:"'IM Fell English',serif", fontSize: type==='music'?11:13, fontStyle:'italic', color:`${v.color}80`, textAlign:'center', lineHeight:1.6, maxWidth:220 }}>
+          "{item.clue}"
+        </div>
+      )}
+      {/* Locked badge */}
+      <div style={{ fontFamily:'Space Mono', fontSize:8, letterSpacing:'0.2em', textTransform:'uppercase', color:`${v.color}40`, border:`1px solid ${v.color}20`, padding:'3px 10px', marginTop:4 }}>
+        Locked
+      </div>
+    </div>
+  );
+}
+
+// ── Vol badge ──────────────────────────────────────────────────────────────
+function VolBadge({ vol }) {
+  const v = VOLS[vol]; if (!v) return null;
+  return <span style={{ fontFamily:'Space Mono', fontSize:7, padding:'1px 5px', border:`1px solid ${v.color}40`, color:`${v.color}90`, letterSpacing:'0.08em' }}>0{vol}</span>;
+}
+
+// ── Stills Tab ─────────────────────────────────────────────────────────────
+function StillCard({ item, unlocked, onClick }) {
+  const [imgFailed, setImgFailed] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const v = VOLS[item.vol] || VOLS[1];
+  return (
+    <div onClick={() => unlocked && onClick(item)} style={{
+      position:'relative', paddingBottom:'66.67%', overflow:'hidden',
+      border:`1px solid ${unlocked?v.border:'rgba(180,140,60,0.08)'}`,
+      cursor: unlocked ? 'pointer' : 'default',
+      transition:'all 0.2s',
+      background:'#0a0806',
+    }}
+    onMouseEnter={e=>{ if(unlocked){ e.currentTarget.style.borderColor=v.color; e.currentTarget.style.transform='scale(1.01)'; }}}
+    onMouseLeave={e=>{ e.currentTarget.style.borderColor=unlocked?v.border:'rgba(180,140,60,0.08)'; e.currentTarget.style.transform='scale(1)'; }}>
+      <div style={{position:'absolute',inset:0}}>
+        {unlocked && !imgFailed ? (
+          <>
+            <img src={item.src} alt={item.title}
+              onLoad={()=>setImgLoaded(true)} onError={()=>setImgFailed(true)}
+              style={{width:'100%',height:'100%',objectFit:'cover',display:imgLoaded?'block':'none'}} />
+            {!imgLoaded && <div style={{position:'absolute',inset:0,display:'flex',alignItems:'center',justifyContent:'center',background:'#0a0806'}}>
+              <div style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.2)'}}>Loading…</div>
+            </div>}
+          </>
+        ) : <Placeholder item={item} type="still" />}
+        {/* Title overlay on hover */}
+        {unlocked && (
+          <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'20px 14px 10px',
+            background:'linear-gradient(transparent,rgba(0,0,0,0.75))',
+            fontFamily:"'IM Fell English',serif",fontSize:13,color:'#d4c9b0',fontStyle:'italic',
+            opacity:0,transition:'opacity 0.2s',
+          }} className="card-title">{item.title}</div>
+        )}
+      </div>
+      <style>{`.card-title{opacity:0;} div:hover > div > .card-title{opacity:1!important;}`}</style>
+    </div>
+  );
+}
+
+function Lightbox({ item, items, onClose, onPrev, onNext }) {
+  const [imgFailed, setImgFailed] = useState(false);
+  const v = VOLS[item.vol] || VOLS[1];
+  useEffect(() => {
+    const h = (e) => { if(e.key==='Escape')onClose(); if(e.key==='ArrowLeft')onPrev(); if(e.key==='ArrowRight')onNext(); };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [onClose, onPrev, onNext]);
+  return (
+    <div onClick={onClose} style={{position:'fixed',inset:0,background:'rgba(0,0,0,0.92)',zIndex:100,display:'flex',alignItems:'center',justifyContent:'center',animation:'fadeIn 0.2s ease'}}>
+      <div onClick={e=>e.stopPropagation()} style={{maxWidth:'90vw',maxHeight:'90vh',display:'flex',flexDirection:'column',gap:16,alignItems:'center'}}>
+        {!imgFailed ? (
+          <img src={item.src} alt={item.title} onError={()=>setImgFailed(true)}
+            style={{maxWidth:'80vw',maxHeight:'75vh',objectFit:'contain',border:`1px solid ${v.border}`}} />
+        ) : (
+          <div style={{width:600,height:400,display:'flex',alignItems:'center',justifyContent:'center',border:`1px solid ${v.border}`,background:v.sceneBg,fontFamily:'Space Mono',fontSize:10,color:'rgba(196,186,160,0.3)'}}>
+            Image not found: {item.src}
+          </div>
+        )}
+        <div style={{display:'flex',alignItems:'center',gap:24}}>
+          <button onClick={onPrev} style={{background:'transparent',border:`1px solid rgba(180,140,60,0.2)`,color:'rgba(180,140,60,0.5)',fontFamily:'Space Mono',fontSize:11,padding:'6px 14px',cursor:'pointer'}}>←</button>
+          <div style={{textAlign:'center'}}>
+            <div style={{fontFamily:"'IM Fell English',serif",fontSize:16,color:'#d4c9b0',fontStyle:'italic'}}>{item.title}</div>
+            <div style={{display:'flex',justifyContent:'center',gap:8,marginTop:6}}><VolBadge vol={item.vol}/></div>
+          </div>
+          <button onClick={onNext} style={{background:'transparent',border:`1px solid rgba(180,140,60,0.2)`,color:'rgba(180,140,60,0.5)',fontFamily:'Space Mono',fontSize:11,padding:'6px 14px',cursor:'pointer'}}>→</button>
+        </div>
+        <button onClick={onClose} style={{fontFamily:'Space Mono',fontSize:8,letterSpacing:'0.2em',color:'rgba(196,186,160,0.3)',background:'transparent',border:'none',cursor:'pointer',textTransform:'uppercase'}}>ESC to close</button>
+      </div>
+    </div>
+  );
+}
+
+function StillsTab({ items, volFilter }) {
+  const [lightbox, setLightbox] = useState(null);
+  const filtered = volFilter ? items.filter(i=>i.vol===volFilter) : items;
+  const unlockedFiltered = filtered.filter(i=>i.__unlocked);
+  const idx = lightbox ? filtered.filter(i=>i.__unlocked).findIndex(i=>i.id===lightbox.id) : -1;
+  return (
+    <div style={{flex:1,overflowY:'auto',padding:24}}>
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:20}}>
+        <span style={{fontFamily:'Cinzel,serif',fontSize:8,letterSpacing:'0.28em',color:'rgba(180,140,60,0.35)',textTransform:'uppercase'}}>{unlockedFiltered.length} / {filtered.length} unlocked</span>
+      </div>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(260px,1fr))',gap:12}}>
+        {filtered.map(item=>(
+          <StillCard key={item.id} item={item} unlocked={item.__unlocked}
+            onClick={it=>setLightbox(it)} />
+        ))}
+      </div>
+      {lightbox && (
+        <Lightbox item={lightbox} items={unlockedFiltered}
+          onClose={()=>setLightbox(null)}
+          onPrev={()=>{ const i=(idx-1+unlockedFiltered.length)%unlockedFiltered.length; setLightbox(unlockedFiltered[i]); }}
+          onNext={()=>{ const i=(idx+1)%unlockedFiltered.length; setLightbox(unlockedFiltered[i]); }} />
+      )}
+    </div>
+  );
+}
+
+// ── Music Tab ──────────────────────────────────────────────────────────────
+function MusicPlayerBar({ track, playing, onPlayPause, onSeek, currentTime, duration }) {
+  if (!track) return null;
+  const v = VOLS[track.vol] || VOLS[1];
+  const pct = duration ? (currentTime/duration)*100 : 0;
+  return (
+    <div style={{
+      position:'sticky', bottom:0, left:0, right:0,
+      background:'#0a0806', borderTop:`1px solid ${v.border}`,
+      padding:'12px 24px', display:'flex', alignItems:'center', gap:20,
+      zIndex:20,
+    }}>
+      <div style={{flex:'0 0 260px'}}>
+        <div style={{fontFamily:"'IM Fell English',serif",fontSize:14,color:'#d4c9b0',fontStyle:'italic',marginBottom:2}}>{track.title}</div>
+        <div style={{display:'flex',gap:8,alignItems:'center'}}><VolBadge vol={track.vol}/><span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.35)'}}>{track.duration}</span></div>
+      </div>
+      {/* Controls */}
+      <div style={{display:'flex',gap:16,alignItems:'center',flexShrink:0}}>
+        <button onClick={onPlayPause} style={{
+          width:36,height:36,borderRadius:'50%',
+          border:`1px solid ${v.color}60`,
+          background:`${v.color}12`,color:v.color,
+          fontFamily:'Space Mono',fontSize:14,cursor:'pointer',
+          display:'flex',alignItems:'center',justifyContent:'center',
+        }}>{playing?'❙❙':'▶'}</button>
+      </div>
+      {/* Progress */}
+      <div style={{flex:1,display:'flex',alignItems:'center',gap:12}}>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.4)',minWidth:32}}>{fmtTime(currentTime)}</span>
+        <div style={{flex:1,height:3,background:'rgba(180,140,60,0.12)',cursor:'pointer',position:'relative'}}
+          onClick={e=>{const r=e.currentTarget.getBoundingClientRect();onSeek((e.clientX-r.left)/r.width);}}>
+          <div style={{position:'absolute',top:0,left:0,height:'100%',width:`${pct}%`,background:v.color,transition:'width 0.3s'}}></div>
+        </div>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.4)',minWidth:32}}>{track.duration}</span>
+      </div>
+    </div>
+  );
+}
+
+function TrackRow({ item, unlocked, isPlaying, isLoaded, onPlay }) {
+  const v = VOLS[item.vol] || VOLS[1];
+  return (
+    <div style={{
+      display:'flex', alignItems:'stretch',
+      border:`1px solid ${isPlaying?v.border:'rgba(180,140,60,0.07)'}`,
+      background: isPlaying?v.bg:'transparent',
+      marginBottom:4, overflow:'hidden',
+      transition:'all 0.15s',
+      opacity: unlocked ? 1 : 0.9,
+    }}>
+      {/* Color bar */}
+      <div style={{width:3,background:isPlaying?v.color:'rgba(180,140,60,0.1)',flexShrink:0}}></div>
+      {/* Play button */}
+      <div style={{width:48,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
+        {unlocked ? (
+          <button onClick={onPlay} style={{
+            width:28,height:28,borderRadius:'50%',
+            border:`1px solid ${isPlaying?v.color:v.color+'40'}`,
+            background: isPlaying?`${v.color}20`:'transparent',
+            color: isPlaying?v.color:`${v.color}70`,
+            fontSize:10,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',
+            transition:'all 0.15s',
+          }}>{isPlaying?'❙❙':'▶'}</button>
+        ) : (
+          <div style={{fontSize:14,color:'rgba(180,140,60,0.15)'}}>✦</div>
+        )}
+      </div>
+      {/* Content */}
+      <div style={{flex:1,padding:'12px 14px',minWidth:0}}>
+        {unlocked ? (
+          <>
+            <div style={{fontFamily:"'IM Fell English',serif",fontSize:14,color: isPlaying?v.color:'#c4baa0',fontStyle:'italic'}}>{item.title}</div>
+            {item.desc && <div style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.35)',marginTop:4,lineHeight:1.5}}>{item.desc}</div>}
+          </>
+        ) : (
+          <>
+            <div style={{fontFamily:"'IM Fell English',serif",fontSize:14,color:'rgba(196,186,160,0.2)',fontStyle:'italic'}}>— Locked —</div>
+            {item.clue && <div style={{fontFamily:"'IM Fell English',serif",fontSize:11,fontStyle:'italic',color:`${v.color}50`,marginTop:4,lineHeight:1.5}}>"{item.clue}"</div>}
+          </>
+        )}
+      </div>
+      {/* Meta */}
+      <div style={{display:'flex',flexDirection:'column',alignItems:'flex-end',justifyContent:'center',padding:'8px 14px',gap:6,flexShrink:0}}>
+        <VolBadge vol={item.vol}/>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)'}}>{item.duration}</span>
+      </div>
+    </div>
+  );
+}
+
+function MusicTab({ items, volFilter }) {
+  const audioRef = useRef(null);
+  const [current, setCurrent] = useState(null);
+  const [playing, setPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  const filtered = volFilter ? items.filter(i=>i.vol===volFilter) : items;
+
+  useEffect(()=>{
+    if (!audioRef.current) audioRef.current = new Audio();
+    const a = audioRef.current;
+    const onTime = ()=>setCurrentTime(a.currentTime);
+    const onDur = ()=>setDuration(a.duration||0);
+    const onEnd = ()=>{ setPlaying(false); setCurrentTime(0); };
+    a.addEventListener('timeupdate',onTime);
+    a.addEventListener('durationchange',onDur);
+    a.addEventListener('ended',onEnd);
+    return ()=>{ a.removeEventListener('timeupdate',onTime); a.removeEventListener('durationchange',onDur); a.removeEventListener('ended',onEnd); a.pause(); };
+  },[]);
+
+  const playTrack = useCallback((item)=>{
+    const a = audioRef.current;
+    if (current?.id===item.id) {
+      if (playing){ a.pause(); setPlaying(false); } else { a.play().catch(()=>{}); setPlaying(true); }
+    } else {
+      a.src = item.src; a.load();
+      a.play().catch(()=>{}); setPlaying(true); setCurrent(item); setCurrentTime(0);
+    }
+  },[current, playing]);
+
+  const seek = useCallback((pct)=>{
+    const a = audioRef.current;
+    if (a && a.duration) { a.currentTime = a.duration * pct; }
+  },[]);
+
+  return (
+    <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden'}}>
+      <div style={{flex:1,overflowY:'auto',padding:'20px 24px'}}>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:20}}>
+          <span style={{fontFamily:'Cinzel,serif',fontSize:8,letterSpacing:'0.28em',color:'rgba(180,140,60,0.35)',textTransform:'uppercase'}}>{filtered.filter(i=>i.__unlocked).length} / {filtered.length} tracks unlocked</span>
+        </div>
+        {filtered.map(item=>(
+          <TrackRow key={item.id} item={item} unlocked={item.__unlocked}
+            isPlaying={current?.id===item.id && playing}
+            isLoaded={current?.id===item.id}
+            onPlay={()=>item.__unlocked&&playTrack(item)} />
+        ))}
+      </div>
+      <MusicPlayerBar track={current} playing={playing}
+        onPlayPause={()=>current&&playTrack(current)}
+        onSeek={seek} currentTime={currentTime} duration={duration} />
+    </div>
+  );
+}
+
+// ── Video Tab ──────────────────────────────────────────────────────────────
+function VideoPlayer({ item, onClose }) {
+  const videoRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [failed, setFailed] = useState(false);
+  const v = VOLS[item.vol] || VOLS[1];
+
+  useEffect(()=>{
+    const el = videoRef.current; if (!el) return;
+    const onT = ()=>setCurrentTime(el.currentTime);
+    const onD = ()=>setDuration(el.duration||0);
+    el.addEventListener('timeupdate',onT); el.addEventListener('durationchange',onD);
+    el.play().then(()=>setPlaying(true)).catch(()=>{});
+    const h = (e)=>{ if(e.key==='Escape') onClose(); };
+    window.addEventListener('keydown',h);
+    return ()=>{ el.removeEventListener('timeupdate',onT); el.removeEventListener('durationchange',onD); el.pause(); window.removeEventListener('keydown',h); };
+  },[]);
+
+  const pct = duration ? (currentTime/duration)*100 : 0;
+  const toggle = ()=>{ const el=videoRef.current; if(!el) return; if(playing){el.pause();setPlaying(false);}else{el.play();setPlaying(true);} };
+
+  return (
+    <div onClick={onClose} style={{position:'fixed',inset:0,background:'rgba(0,0,0,0.95)',zIndex:100,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',animation:'fadeIn 0.2s ease'}}>
+      <div onClick={e=>e.stopPropagation()} style={{width:'80vw',maxWidth:900}}>
+        <div style={{position:'relative',paddingBottom:'56.25%',background:'#000',border:`1px solid ${v.border}`,marginBottom:16}}>
+          {!failed ? (
+            <video ref={videoRef} src={item.src} style={{position:'absolute',inset:0,width:'100%',height:'100%'}}
+              onError={()=>setFailed(true)} onClick={toggle} />
+          ) : (
+            <div style={{position:'absolute',inset:0,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:12}}>
+              <div style={{fontFamily:'Space Mono',fontSize:10,color:'rgba(196,186,160,0.3)'}}>Video not found</div>
+              <div style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.2)'}}>{item.src}</div>
+            </div>
+          )}
+          {/* Scanline overlay */}
+          <div style={{position:'absolute',inset:0,background:'repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px)',pointerEvents:'none'}}></div>
+        </div>
+        {/* Controls */}
+        <div style={{display:'flex',alignItems:'center',gap:16}}>
+          <button onClick={toggle} style={{width:32,height:32,borderRadius:'50%',border:`1px solid ${v.color}60`,background:`${v.color}12`,color:v.color,fontSize:11,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center'}}>
+            {playing?'❙❙':'▶'}
+          </button>
+          <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.4)',minWidth:32}}>{fmtTime(currentTime)}</span>
+          <div style={{flex:1,height:3,background:'rgba(255,255,255,0.1)',cursor:'pointer'}}
+            onClick={e=>{const r=e.currentTarget.getBoundingClientRect();if(videoRef.current&&duration)videoRef.current.currentTime=duration*(e.clientX-r.left)/r.width;}}>
+            <div style={{height:'100%',width:`${pct}%`,background:v.color,transition:'width 0.2s'}}></div>
+          </div>
+          <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.4)',minWidth:32}}>{item.duration}</span>
+          <div style={{display:'flex',gap:8,alignItems:'center'}}><VolBadge vol={item.vol}/></div>
+        </div>
+        <div style={{marginTop:12,fontFamily:"'IM Fell English',serif",fontSize:14,color:'#d4c9b0',fontStyle:'italic'}}>{item.title}</div>
+        {item.desc && <div style={{marginTop:4,fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.35)',lineHeight:1.5}}>{item.desc}</div>}
+        <button onClick={onClose} style={{marginTop:16,fontFamily:'Space Mono',fontSize:8,letterSpacing:'0.2em',color:'rgba(196,186,160,0.3)',background:'transparent',border:'none',cursor:'pointer',textTransform:'uppercase'}}>ESC to close</button>
+      </div>
+    </div>
+  );
+}
+
+function VideoCard({ item, unlocked, onClick }) {
+  const [imgFailed, setImgFailed] = useState(false);
+  const v = VOLS[item.vol] || VOLS[1];
+  const thumb = item.thumb || null;
+  return (
+    <div onClick={()=>unlocked&&onClick(item)} style={{
+      border:`1px solid ${unlocked?v.border:'rgba(180,140,60,0.08)'}`,
+      overflow:'hidden', cursor:unlocked?'pointer':'default',
+      transition:'all 0.15s', background:'#0a0806',
+    }}
+    onMouseEnter={e=>{ if(unlocked){e.currentTarget.style.borderColor=v.color;} }}
+    onMouseLeave={e=>{ e.currentTarget.style.borderColor=unlocked?v.border:'rgba(180,140,60,0.08)'; }}>
+      <div style={{position:'relative',paddingBottom:'56.25%',background:'#060404'}}>
+        <div style={{position:'absolute',inset:0}}>
+          {unlocked && thumb && !imgFailed
+            ? <img src={thumb} alt={item.title} style={{width:'100%',height:'100%',objectFit:'cover'}} onError={()=>setImgFailed(true)} />
+            : unlocked
+            ? <div style={{width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',background:VOLS[item.vol]?.sceneBg||'#060404'}}>
+                <div style={{fontSize:28,color:`${v.color}30`}}>▶</div>
+              </div>
+            : <Placeholder item={item} type="video" />
+          }
+          {unlocked && <div style={{position:'absolute',inset:0,display:'flex',alignItems:'center',justifyContent:'center'}}>
+            <div style={{width:40,height:40,borderRadius:'50%',border:`1px solid ${v.color}60`,background:`${v.color}18`,display:'flex',alignItems:'center',justifyContent:'center',color:v.color,fontSize:14}}>▶</div>
+          </div>}
+        </div>
+      </div>
+      <div style={{padding:'10px 14px',borderTop:`1px solid ${v.border}20`}}>
+        <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:4}}>
+          <VolBadge vol={item.vol}/>
+          <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)',marginLeft:'auto'}}>{item.duration}</span>
+        </div>
+        {unlocked
+          ? <div style={{fontFamily:"'IM Fell English',serif",fontSize:13,color:'#c4baa0',fontStyle:'italic'}}>{item.title}</div>
+          : <div style={{fontFamily:"'IM Fell English',serif",fontSize:12,color:'rgba(196,186,160,0.2)',fontStyle:'italic'}}>— Locked —</div>
+        }
+      </div>
+    </div>
+  );
+}
+
+function VideoTab({ items, volFilter }) {
+  const [active, setActive] = useState(null);
+  const filtered = volFilter ? items.filter(i=>i.vol===volFilter) : items;
+  return (
+    <div style={{flex:1,overflowY:'auto',padding:24}}>
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:20}}>
+        <span style={{fontFamily:'Cinzel,serif',fontSize:8,letterSpacing:'0.28em',color:'rgba(180,140,60,0.35)',textTransform:'uppercase'}}>{filtered.filter(i=>i.__unlocked).length} / {filtered.length} unlocked</span>
+      </div>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))',gap:14}}>
+        {filtered.map(item=>(
+          <VideoCard key={item.id} item={item} unlocked={item.__unlocked} onClick={setActive} />
+        ))}
+      </div>
+      {active && <VideoPlayer item={active} onClose={()=>setActive(null)} />}
+    </div>
+  );
+}
+
+// ── App ───────────────────────────────────────────────────────────────────
+function App() {
+  const [tab, setTab] = useState(() => {
+    // Support #music hash from main menu Music Room link
+    if (window.location.hash === '#music') { window.location.hash = ''; return 'music'; }
+    return 'stills';
+  });
+  const [volFilter, setVolFilter] = useState(0);
+  const unlockSet = useMemo(()=>buildUnlockSet(),[]);
+
+  const stills = useMemo(()=>CATALOG.stills.map(i=>({...i,__unlocked:checkUnlocked(i,unlockSet)})),[unlockSet]);
+  const music  = useMemo(()=>CATALOG.music.map(i=>({...i,__unlocked:checkUnlocked(i,unlockSet)})),[unlockSet]);
+  const videos = useMemo(()=>CATALOG.video.map(i=>({...i,__unlocked:checkUnlocked(i,unlockSet)})),[unlockSet]);
+
+  const tabItems = { stills, music, video:videos };
+  const totalUnlocked = [...stills,...music,...videos].filter(i=>i.__unlocked).length;
+  const totalItems    = stills.length + music.length + videos.length;
+
+  const TAB_LABELS = { stills:`Stills (${stills.filter(i=>i.__unlocked).length}/${stills.length})`, music:`Music (${music.filter(i=>i.__unlocked).length}/${music.length})`, video:`Video (${videos.filter(i=>i.__unlocked).length}/${videos.length})` };
+
+  return (
+    <div style={{display:'flex',flexDirection:'column',height:'100vh',overflow:'hidden'}}>
+      {/* Top bar */}
+      <div style={{height:46,borderBottom:'1px solid rgba(180,140,60,0.12)',display:'flex',alignItems:'center',gap:12,padding:'0 20px',background:'#0a0806',flexShrink:0}}>
+        <a href="Modern Mythology.html" style={{textDecoration:'none'}}><button style={{fontFamily:'Space Mono',fontSize:9,letterSpacing:'0.15em',textTransform:'uppercase',padding:'5px 12px',border:'1px solid rgba(180,140,60,0.2)',background:'rgba(180,140,60,0.05)',color:'rgba(196,186,160,0.7)',cursor:'pointer'}}>← Game</button></a>
+        <div style={{width:1,height:20,background:'rgba(180,140,60,0.15)'}}></div>
+        <span style={{fontFamily:'Cinzel,serif',fontSize:10,letterSpacing:'0.22em',color:'#c8a84a'}}>Gallery</span>
+        <span style={{fontFamily:"'IM Fell English',serif",fontSize:11,color:'rgba(180,140,60,0.3)',fontStyle:'italic'}}>— Modern Mythology</span>
+        <div style={{flex:1}}></div>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.25)'}}>{totalUnlocked}/{totalItems} unlocked</span>
+      </div>
+      {/* Tab + filter bar */}
+      <div style={{display:'flex',alignItems:'center',borderBottom:'1px solid rgba(180,140,60,0.1)',background:'#0a0806',flexShrink:0}}>
+        {Object.entries(TAB_LABELS).map(([t,lbl])=>(
+          <button key={t} onClick={()=>setTab(t)} style={{
+            padding:'10px 22px',background:'transparent',border:'none',
+            borderBottom:`2px solid ${tab===t?'#c8a84a':'transparent'}`,
+            fontFamily:'Space Mono',fontSize:9,letterSpacing:'0.15em',textTransform:'uppercase',
+            color:tab===t?'#c8a84a':'rgba(196,186,160,0.4)',cursor:'pointer',transition:'all 0.15s',
+          }}>{lbl}</button>
+        ))}
+        <div style={{flex:1}}></div>
+        {/* Vol filter */}
+        <div style={{display:'flex',gap:4,padding:'0 16px'}}>
+          {[{v:0,lbl:'All'},{v:1,lbl:'01'},{v:2,lbl:'02'},{v:3,lbl:'03'},{v:4,lbl:'04'}].map(({v,lbl})=>(
+            <button key={v} onClick={()=>setVolFilter(v)} style={{
+              padding:'3px 10px',border:`1px solid ${volFilter===v?(VOLS[v]?.color||'rgba(180,140,60,0.5)'):'rgba(180,140,60,0.12)'}`,
+              background:volFilter===v?(VOLS[v]?.bg||'rgba(180,140,60,0.08)'):'transparent',
+              fontFamily:'Space Mono',fontSize:8,letterSpacing:'0.1em',
+              color:volFilter===v?(VOLS[v]?.color||'#c8a84a'):'rgba(196,186,160,0.35)',
+              cursor:'pointer',transition:'all 0.12s',
+            }}>{lbl}</button>
+          ))}
+        </div>
+      </div>
+      {/* Content */}
+      <div style={{flex:1,overflow:'hidden',display:'flex',flexDirection:'column',animation:'fadeIn 0.2s ease'}}>
+        {tab==='stills' && <StillsTab items={stills} volFilter={volFilter} />}
+        {tab==='music'  && <MusicTab items={music} volFilter={volFilter} />}
+        {tab==='video'  && <VideoTab items={videos} volFilter={volFilter} />}
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
