@@ -2,17 +2,19 @@ extends Control
 ## Character portrait layer — left / center / right slots.
 ##
 ## Portrait source preference, per character:
-##   1. PNG texture at  res://assets/characters/<char>/<char>_<expr>.png
-##   2. PNG texture at  res://assets/characters/<char>/<char>_neutral.png
+##   1. ASCII composition at  res://resources/substrates/compositions/portrait_<char>.json
+##      — visualizer + image-ref + image_frames flicker + border, all
+##      pinned to explicit w/h that fit the canvas. AsciiComposition
+##      scales the canvas down into the slot via _fit_canvas, so the
+##      whole layered look survives at 240×360.
+##   2. PNG texture at  res://assets/characters/<char>/<char>_<expr>.png
+##   3. PNG texture at  res://assets/characters/<char>/<char>_neutral.png
 ##                      (tinted via modulate to imply expression)
-##   3. Animated placeholder silhouette
-##
-## The richer ASCII-substrate composition for each character lives at
-## res://resources/substrates/compositions/portrait_<char>.json and is
-## rendered by the gallery overlay — not here. In-scene portraits stay
-## texture-only for predictable size + fast load.
+##   4. Animated placeholder silhouette
 
-const PORTRAIT_TEX_ROOT := "res://assets/characters/"
+const ASCII_COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
+const PORTRAIT_COMP_ROOT := "res://resources/substrates/compositions/"
+const PORTRAIT_TEX_ROOT  := "res://assets/characters/"
 
 # Expression tint multipliers applied to mono substrate portraits via modulate.
 # Mirrors the table in tools/raster_substrate.py.
@@ -134,30 +136,42 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	wrapper.position             = POSITIONS[pos]
 	wrapper.modulate.a           = 0.0
 
-	var key  := char_name.to_lower()
-	var tex  := _resolve_portrait_texture(key, expr)
-	if tex != null:
-		# tint_holder isolates expression tint from wrapper.modulate, which
-		# activate_speaker also writes to. They compose multiplicatively.
-		var tint_holder := Control.new()
-		tint_holder.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		tint_holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		wrapper.add_child(tint_holder)
+	var key       := char_name.to_lower()
+	var comp_path := PORTRAIT_COMP_ROOT + "portrait_" + key + ".json"
+	# tint_holder isolates expression tint from wrapper.modulate (which
+	# activate_speaker writes). They compose multiplicatively.
+	var tint_holder := Control.new()
+	tint_holder.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	tint_holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	wrapper.add_child(tint_holder)
+	wrapper.set_meta("tint", tint_holder)
 
-		var tr := TextureRect.new()
-		tr.texture      = tex
-		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		tint_holder.add_child(tr)
-
-		wrapper.set_meta("kind", "texture")
-		wrapper.set_meta("tint", tint_holder)
-		if not _has_expr_png(key, expr):
-			_apply_texture_tint(wrapper, expr)
+	if FileAccess.file_exists(comp_path):
+		var comp := Control.new()
+		comp.set_script(ASCII_COMPOSITION_SCRIPT)
+		comp.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		comp.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tint_holder.add_child(comp)
+		comp.call_deferred("load_composition", "portrait_" + key)
+		wrapper.set_meta("kind", "composition")
+		_apply_texture_tint(wrapper, expr)
 	else:
-		wrapper.add_child(_make_placeholder(char_name, expr))
-		wrapper.set_meta("kind", "placeholder")
+		var tex := _resolve_portrait_texture(key, expr)
+		if tex != null:
+			var tr := TextureRect.new()
+			tr.texture      = tex
+			tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			tint_holder.add_child(tr)
+			wrapper.set_meta("kind", "texture")
+			if not _has_expr_png(key, expr):
+				_apply_texture_tint(wrapper, expr)
+		else:
+			tint_holder.queue_free()
+			wrapper.remove_meta("tint")
+			wrapper.add_child(_make_placeholder(char_name, expr))
+			wrapper.set_meta("kind", "placeholder")
 
 	add_child(wrapper)
 	var tw := wrapper.create_tween()
@@ -167,8 +181,10 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 
 func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 	var kind: String = wrapper.get_meta("kind", "placeholder")
-	var key := char_name.to_lower()
-	if kind == "texture":
+	var key  := char_name.to_lower()
+	if kind == "composition":
+		_apply_texture_tint(wrapper, expr)
+	elif kind == "texture":
 		var tint_holder: Control = wrapper.get_meta("tint", null) as Control
 		if tint_holder != null:
 			var tr := tint_holder.get_child(0) as TextureRect

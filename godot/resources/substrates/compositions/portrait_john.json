@@ -22,7 +22,14 @@
       "x": 0, "y": 0, "w": 700, "h": 1045,
       "alpha": 0.60, "z": 3 },
 
-    { "kind": "image", "path": "assets/gallery/portrait_john_ascii.png",
+    { "kind": "image_frames",
+      "frames": [
+        "assets/gallery/portrait_john_ascii.png",
+        "assets/gallery/portrait_john_ascii.png",
+        "assets/gallery/portrait_john_ascii.png",
+        "assets/gallery/portrait_john_glitch_ascii.png"
+      ],
+      "frame_duration": 0.45,
       "x": 0, "y": 0, "w": 700, "h": 1045,
       "alpha": 0.85, "z": 5 },
 

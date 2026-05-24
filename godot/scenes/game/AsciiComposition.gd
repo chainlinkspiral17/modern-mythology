@@ -130,6 +130,15 @@ func _add_window(w: Dictionary) -> void:
 		_add_image_window(w)
 		return
 
+	# image_frames: cycle a list of PNG textures at a fixed interval.
+	# All frames must be the same size; placed and scaled like the
+	# single-image kind. Used for pre-rasterized ASCII flicker, where
+	# we want exact pixel alignment with other image layers without
+	# paying the SubViewport cost of live ASCII cycling.
+	if kind == "image_frames":
+		_add_image_frames_window(w)
+		return
+
 	var win := Control.new()
 	if kind == "visualizer":
 		win.set_script(VISUALIZER_SCRIPT)
@@ -236,3 +245,54 @@ func _add_image_window(w: Dictionary) -> void:
 	_canvas.add_child(win)
 	_windows_list.append(win)
 	_window_manifests.append(w.duplicate(true))
+
+
+func _add_image_frames_window(w: Dictionary) -> void:
+	var frames_v: Variant = w.get("frames", [])
+	if typeof(frames_v) != TYPE_ARRAY or (frames_v as Array).is_empty():
+		return
+	var textures: Array[Texture2D] = []
+	for p_v in frames_v:
+		var p: String = str(p_v)
+		var full := "res://" + p if not p.begins_with("res://") else p
+		if not ResourceLoader.exists(full):
+			push_warning("AsciiComposition: image_frames missing: " + full)
+			continue
+		var t := ResourceLoader.load(full) as Texture2D
+		if t != null:
+			textures.append(t)
+	if textures.is_empty():
+		return
+
+	var win := TextureRect.new()
+	win.texture = textures[0]
+	win.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	win.position = Vector2(float(w.get("x", 0)), float(w.get("y", 0)))
+	win.size = Vector2(float(w.get("w", _canvas_size.x)), float(w.get("h", _canvas_size.y)))
+	if w.has("z"):
+		win.z_index = int(w["z"])
+	win.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	if w.has("modulate"):
+		win.modulate = Color(str(w["modulate"]))
+	if w.has("alpha"):
+		var a: float = float(w["alpha"])
+		var m: Color = win.modulate
+		win.modulate = Color(m.r, m.g, m.b, a)
+	_canvas.add_child(win)
+	_windows_list.append(win)
+	_window_manifests.append(w.duplicate(true))
+
+	# Drive frame cycling from a self-contained Timer so each window
+	# advances independently without a _process loop on the composition.
+	var dur: float = float(w.get("frame_duration", 0.5))
+	if textures.size() > 1 and dur > 0.0:
+		var timer := Timer.new()
+		timer.wait_time = dur
+		timer.one_shot  = false
+		timer.autostart = true
+		win.add_child(timer)
+		var idx_ref := [0]
+		timer.timeout.connect(func() -> void:
+			idx_ref[0] = (idx_ref[0] + 1) % textures.size()
+			win.texture = textures[idx_ref[0]]
+		)
