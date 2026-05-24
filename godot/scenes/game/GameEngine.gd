@@ -12,7 +12,8 @@ const HUD_SCENE       := preload("res://scenes/game/HudBar.tscn")
 const IN_GAME_MENU    := preload("res://scenes/game/InGameMenu.tscn")
 const SETTINGS_OV     := preload("res://scenes/menu/SettingsOverlay.tscn")
 const MUSIC_OV        := preload("res://scenes/menu/MusicPlayerOverlay.tscn")
-const SUBSTRATE_SCRIPT := preload("res://scenes/game/AsciiSubstrate.gd")
+const SUBSTRATE_SCRIPT   := preload("res://scenes/game/AsciiSubstrate.gd")
+const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 
 var _vol:         int        = 1
 var _scene_id:    String     = ""
@@ -30,9 +31,10 @@ var _waiting:     bool  = false
 var _auto_timer:  float = 0.0
 var _paused:      bool  = false
 
-var _bg_solid:   ColorRect   = null
-var _substrate:  Control     = null
-var _bg:         TextureRect = null
+var _bg_solid:       ColorRect   = null
+var _bg_composition: Control     = null
+var _substrate:      Control     = null
+var _bg:             TextureRect = null
 var _chars:      Control     = null
 var _dlg:        Control     = null
 var _choices:    Control     = null
@@ -53,6 +55,15 @@ func _build_layers() -> void:
 	_bg_solid.color = Color(0.05, 0.04, 0.03)
 	_bg_solid.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_bg_solid)
+
+	# Optional layered composition for scene backgrounds (visualizer +
+	# image refs + image_frames + border). Sits above the solid bg and
+	# below the ASCII piece substrate so a scene can stack both.
+	_bg_composition = Control.new()
+	_bg_composition.set_script(COMPOSITION_SCRIPT)
+	_bg_composition.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_bg_composition.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_bg_composition)
 
 	_substrate = Control.new()
 	_substrate.set_script(SUBSTRATE_SCRIPT)
@@ -228,15 +239,38 @@ func _unlock_gallery_for_scene(scene_id: String) -> void:
 
 
 func _auto_load_substrate(scene_id: String) -> void:
-	# Convention: if res://resources/substrates/scene/<scene_id>.json exists,
-	# it loads automatically. Explicit {"t": "substrate"} directives override
-	# during the scene.
-	var short := "scene/" + scene_id
-	var path  := "res://resources/substrates/" + short + ".json"
-	if FileAccess.file_exists(path):
-		_substrate.call("load_substrate", short)
+	# Two parallel conventions, both probed on every scene load:
+	#
+	#   compositions/scene_<id>.json   layered bg (visualizer + image +
+	#                                  image_frames + border) — loaded
+	#                                  into _bg_composition.
+	#   scene/<id>.json                single ASCII piece — loaded into
+	#                                  _substrate (legacy / lightweight).
+	#
+	# Either, both, or neither may exist. Both render together when
+	# both are present, in z order: _bg_composition under _substrate.
+	# Explicit {"t":"substrate"} / {"t":"composition"} directives can
+	# override mid-scene.
+	var comp_short := "scene_" + scene_id
+	var comp_path  := "res://resources/substrates/compositions/" + comp_short + ".json"
+	if FileAccess.file_exists(comp_path):
+		_bg_composition.call("load_composition", comp_short)
+	else:
+		_clear_bg_composition()
+
+	var piece_short := "scene/" + scene_id
+	var piece_path  := "res://resources/substrates/" + piece_short + ".json"
+	if FileAccess.file_exists(piece_path):
+		_substrate.call("load_substrate", piece_short)
 	else:
 		_substrate.call("clear_substrate")
+
+
+func _clear_bg_composition() -> void:
+	# AsciiComposition rebuilds its canvas on every load; clear by
+	# wiping its children to leave _bg_composition empty + transparent.
+	for ch in _bg_composition.get_children():
+		ch.queue_free()
 
 
 func _run_next() -> void:
@@ -259,6 +293,7 @@ func _dispatch(n: Dictionary) -> void:
 		"hide":       _do_hide(n); _run_next()
 		"bg":         _do_bg(n);   _run_next()
 		"substrate":  _do_substrate(n); _run_next()
+		"composition": _do_composition(n); _run_next()
 		"bgm":        _do_bgm(n);  _run_next()
 		"sfx":        _do_sfx(n);  _run_next()
 		"flag":       _do_flag(n); _run_next()
@@ -390,6 +425,17 @@ func _do_bg(n: Dictionary) -> void:
 func _do_substrate(n: Dictionary) -> void:
 	var src: String = _s(n, "src")
 	_substrate.call("load_substrate", src)
+
+
+func _do_composition(n: Dictionary) -> void:
+	# Explicit override during a scene — load a background composition
+	# into _bg_composition. src is the short path relative to
+	# resources/substrates/compositions/ (without the .json suffix).
+	var src: String = _s(n, "src")
+	if src == "":
+		_clear_bg_composition()
+	else:
+		_bg_composition.call("load_composition", src)
 
 
 func _do_bgm(n: Dictionary) -> void:

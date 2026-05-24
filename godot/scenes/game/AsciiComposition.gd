@@ -204,6 +204,17 @@ func _add_window(w: Dictionary) -> void:
 		var path: String = str(w.get("path", ""))
 		win.call_deferred("load_piece", path)
 
+func _parse_stretch(v: Variant) -> int:
+	# Manifest accepts: "scale" (default, fills w×h, may distort),
+	# "cover" (keep aspect, crop), "fit" (keep aspect, letterbox),
+	# "keep_centered" (no stretch, center within box).
+	match str(v):
+		"cover":         return TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		"fit":           return TextureRect.STRETCH_KEEP_ASPECT
+		"keep_centered": return TextureRect.STRETCH_KEEP_CENTERED
+		_:               return TextureRect.STRETCH_SCALE
+
+
 func _fit_canvas() -> void:
 	if _canvas == null or _canvas_size.x <= 0 or _canvas_size.y <= 0:
 		return
@@ -228,7 +239,7 @@ func _add_image_window(w: Dictionary) -> void:
 		return
 	var win := TextureRect.new()
 	win.texture = tex
-	win.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	win.stretch_mode = _parse_stretch(w.get("stretch", "scale"))
 	win.position = Vector2(float(w.get("x", 0)), float(w.get("y", 0)))
 	var win_w: float = float(w.get("w", _canvas_size.x))
 	var win_h: float = float(w.get("h", _canvas_size.y))
@@ -266,7 +277,7 @@ func _add_image_frames_window(w: Dictionary) -> void:
 
 	var win := TextureRect.new()
 	win.texture = textures[0]
-	win.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	win.stretch_mode = _parse_stretch(w.get("stretch", "scale"))
 	win.position = Vector2(float(w.get("x", 0)), float(w.get("y", 0)))
 	win.size = Vector2(float(w.get("w", _canvas_size.x)), float(w.get("h", _canvas_size.y)))
 	if w.has("z"):
