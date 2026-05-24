@@ -36,6 +36,10 @@ var _bg_composition: Control     = null
 var _substrate:      Control     = null
 var _bg:             TextureRect = null
 var _dlg_scrim:      ColorRect   = null
+
+# UI nodes pin themselves to this z so composition windows with
+# internal z values (1..9) can't escape and cover dialog/portraits.
+const UI_Z := 100
 var _chars:      Control     = null
 var _dlg:        Control     = null
 var _choices:    Control     = null
@@ -52,13 +56,15 @@ func _ready() -> void:
 
 
 func _build_layers() -> void:
+	# Bg stack uses natural tree order. UI nodes below are pinned at
+	# z_index = UI_Z (100) so the composition's internal z values
+	# (visualizer/image/frames/grade at z=1..9) can't escape and
+	# cover the dialog box / portraits.
 	_bg_solid = ColorRect.new()
 	_bg_solid.color = Color(0.05, 0.04, 0.03)
 	_bg_solid.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_bg_solid)
 
-	# Layered scene composition. Tree-order siblings: rendered after
-	# _bg_solid, so it appears on top.
 	_bg_composition = Control.new()
 	_bg_composition.set_script(COMPOSITION_SCRIPT)
 	_bg_composition.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -77,6 +83,7 @@ func _build_layers() -> void:
 
 	_chars = CHAR_SCENE.instantiate()
 	_chars.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_chars.z_index = UI_Z
 	add_child(_chars)
 
 	# Dialogue scrim — gradient panel between chars and dlg so dialogue
@@ -87,9 +94,11 @@ func _build_layers() -> void:
 	_dlg_scrim.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	_dlg_scrim.offset_top = -260.0
 	_dlg_scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_dlg_scrim.z_index = UI_Z
 	add_child(_dlg_scrim)
 
 	_dlg = DIALOGUE_SCENE.instantiate()
+	_dlg.z_index = UI_Z
 	add_child(_dlg)
 	_dlg.visible = false
 	# Scrim follows the dialogue's visibility so full-screen CGs and
@@ -102,25 +111,30 @@ func _build_layers() -> void:
 	_choices.anchor_right  = 0.9
 	_choices.anchor_top    = 0.15
 	_choices.anchor_bottom = 0.85
+	_choices.z_index = UI_Z
 	add_child(_choices)
 	_choices.visible = false
 
 	_interlude = INTERLUDE_SCENE.instantiate()
 	_interlude.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_interlude.z_index = UI_Z
 	add_child(_interlude)
 	_interlude.visible = false
 
 	_cg = CG_SCENE.instantiate()
 	_cg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_cg.z_index = UI_Z
 	add_child(_cg)
 	_cg.visible = false
 
 	_hud = HUD_SCENE.instantiate()
+	_hud.z_index = UI_Z
 	add_child(_hud)
 	_hud.connect("menu_pressed", _open_in_game_menu)
 
 	_ig_menu = IN_GAME_MENU.instantiate()
 	_ig_menu.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_ig_menu.z_index = UI_Z
 	_ig_menu.visible = false
 	add_child(_ig_menu)
 	_ig_menu.connect("resume_requested",    func() -> void: _resume_from_menu())
@@ -131,12 +145,14 @@ func _build_layers() -> void:
 
 	_settings_ov = SETTINGS_OV.instantiate()
 	_settings_ov.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_settings_ov.z_index = UI_Z + 1
 	_settings_ov.visible = false
 	add_child(_settings_ov)
 	_settings_ov.connect("closed", func() -> void: _settings_ov.visible = false)
 
 	_music_ov = MUSIC_OV.instantiate()
 	_music_ov.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_music_ov.z_index = UI_Z + 1
 	_music_ov.visible = false
 	add_child(_music_ov)
 	_music_ov.connect("closed", func() -> void: _music_ov.visible = false)
