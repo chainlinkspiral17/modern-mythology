@@ -40,13 +40,14 @@ const EXPR_TINTS := {
 }
 
 const POSITIONS := {
-	"left":   Vector2(80,  130),
-	"center": Vector2(480, 130),
-	"right":  Vector2(880, 130),
+	"left":   Vector2(100, 80),
+	"center": Vector2(490, 80),
+	"right":  Vector2(880, 80),
 }
-const SPRITE_W    := 320.0
-const SPRITE_H    := 340.0
-const SCRIM_COLOR := Color(0.0, 0.0, 0.0, 0.55)
+const SPRITE_W    := 300.0
+const SPRITE_H    := 320.0
+# Soft now — composition carries its own radial vignette + warm border.
+const SCRIM_COLOR := Color(0.0, 0.0, 0.0, 0.28)
 const IDLE_AMP    := 4.0
 const IDLE_PERIOD := 2.5
 const IDLE_PHASE  := {"left": 0.0, "center": 0.85, "right": 1.7}

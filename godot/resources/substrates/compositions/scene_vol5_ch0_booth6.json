@@ -67,6 +67,22 @@
         "smoothing": 0.22,
         "update_hz": 30
       }
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/vol5_dambrosios_exterior_water_0.png",
+        "assets/backgrounds/vol5_dambrosios_exterior_water_1.png",
+        "assets/backgrounds/vol5_dambrosios_exterior_water_2.png",
+        "assets/backgrounds/vol5_dambrosios_exterior_water_1.png"
+      ],
+      "frame_duration": 0.75,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.55,
+      "z": 6
     }
   ]
 }

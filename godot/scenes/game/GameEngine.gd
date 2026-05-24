@@ -525,6 +525,26 @@ func _process(delta: float) -> void:
 			_auto_timer = 0.0
 			if not AudioMgr.is_voice_playing():
 				_advance()
+	_apply_bg_sway(delta)
+
+
+# Subtle riverboat list — slow sinusoidal translate + tiny rotation on the
+# bg composition. Affects scene backgrounds only; portraits and dialog
+# stay fixed.
+var _sway_t: float = 0.0
+const SWAY_PERIOD := 5.4   # seconds per cycle
+const SWAY_X_AMP  := 6.0   # logical px
+const SWAY_Y_AMP  := 3.0
+const SWAY_ROT    := 0.006 # radians (~0.34°)
+
+func _apply_bg_sway(delta: float) -> void:
+	if _bg_composition == null or _bg_composition.get_child_count() == 0:
+		return
+	_sway_t += delta
+	var phase: float = _sway_t * TAU / SWAY_PERIOD
+	_bg_composition.position = Vector2(sin(phase) * SWAY_X_AMP, cos(phase * 0.7) * SWAY_Y_AMP)
+	_bg_composition.pivot_offset = _bg_composition.size * 0.5
+	_bg_composition.rotation = sin(phase) * SWAY_ROT
 
 
 func _input(event: InputEvent) -> void:
