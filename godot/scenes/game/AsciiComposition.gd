@@ -308,3 +308,41 @@ func _add_image_frames_window(w: Dictionary) -> void:
 			idx_ref[0] = (idx_ref[0] + 1) % textures.size()
 			win.texture = textures[idx_ref[0]]
 		)
+
+	# Audio-reactive alpha: when present, win.modulate.a oscillates
+	# around base_alpha by ±magnitude × bus magnitude in [freq_lo, freq_hi].
+	# Use a tiny inline ticker rather than another _process on the canvas.
+	if w.has("audio_reactive"):
+		_attach_audio_reactive_alpha(win, w["audio_reactive"])
+
+
+func _attach_audio_reactive_alpha(win: TextureRect, cfg_v: Variant) -> void:
+	if typeof(cfg_v) != TYPE_DICTIONARY:
+		return
+	var cfg: Dictionary = cfg_v
+	var freq_lo: float    = float(cfg.get("freq_lo", 30.0))
+	var freq_hi: float    = float(cfg.get("freq_hi", 200.0))
+	var base_alpha: float = float(cfg.get("base_alpha", win.modulate.a))
+	var magnitude: float  = float(cfg.get("magnitude", 6.0))
+	var smoothing: float  = clampf(float(cfg.get("smoothing", 0.18)), 0.0, 0.95)
+	var min_alpha: float  = float(cfg.get("min_alpha", 0.05))
+	var max_alpha: float  = float(cfg.get("max_alpha", 1.0))
+	var hz: float         = maxf(15.0, float(cfg.get("update_hz", 30.0)))
+
+	var ticker := Timer.new()
+	ticker.wait_time = 1.0 / hz
+	ticker.one_shot  = false
+	ticker.autostart = true
+	win.add_child(ticker)
+
+	var smoothed_ref := [0.0]
+	ticker.timeout.connect(func() -> void:
+		var am := get_node_or_null("/root/AudioMgr")
+		if am == null or not am.has_method("get_bgm_magnitude"):
+			return
+		var mag: float = clampf(float(am.call("get_bgm_magnitude", freq_lo, freq_hi)) * magnitude, 0.0, 1.0)
+		smoothed_ref[0] = lerpf(mag, smoothed_ref[0], smoothing)
+		var a: float = clampf(base_alpha + smoothed_ref[0] * (max_alpha - base_alpha), min_alpha, max_alpha)
+		var m: Color = win.modulate
+		win.modulate = Color(m.r, m.g, m.b, a)
+	)

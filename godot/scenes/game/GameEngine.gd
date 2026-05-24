@@ -35,6 +35,7 @@ var _bg_solid:       ColorRect   = null
 var _bg_composition: Control     = null
 var _substrate:      Control     = null
 var _bg:             TextureRect = null
+var _dlg_scrim:      ColorRect   = null
 var _chars:      Control     = null
 var _dlg:        Control     = null
 var _choices:    Control     = null
@@ -79,9 +80,23 @@ func _build_layers() -> void:
 	_chars.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_chars)
 
+	# Dialogue scrim — gradient panel between chars and dlg so dialogue
+	# text always has a high-contrast surface beneath it regardless of
+	# how busy the live-ASCII bg gets.
+	_dlg_scrim = ColorRect.new()
+	_dlg_scrim.color = Color(0.02, 0.02, 0.04, 0.78)
+	_dlg_scrim.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	_dlg_scrim.offset_top = -260.0
+	_dlg_scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_dlg_scrim)
+
 	_dlg = DIALOGUE_SCENE.instantiate()
 	add_child(_dlg)
 	_dlg.visible = false
+	# Scrim follows the dialogue's visibility so full-screen CGs and
+	# interludes aren't darkened along the bottom.
+	_dlg_scrim.visible = false
+	_dlg.visibility_changed.connect(func() -> void: _dlg_scrim.visible = _dlg.visible)
 
 	_choices = CHOICE_SCENE.instantiate()
 	_choices.anchor_left   = 0.1

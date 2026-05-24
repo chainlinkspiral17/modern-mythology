@@ -38,7 +38,7 @@
       "y": 0,
       "w": 1920,
       "h": 1080,
-      "alpha": 0.85,
+      "alpha": 1.0,
       "z": 3
     },
     {
@@ -54,8 +54,19 @@
       "y": 0,
       "w": 1920,
       "h": 1080,
-      "alpha": 0.42,
-      "z": 5
+      "alpha": 0.2,
+      "z": 5,
+      "modulate": "#9bbcd6",
+      "audio_reactive": {
+        "freq_lo": 40,
+        "freq_hi": 240,
+        "base_alpha": 0.18,
+        "max_alpha": 0.55,
+        "min_alpha": 0.12,
+        "magnitude": 5.5,
+        "smoothing": 0.22,
+        "update_hz": 30
+      }
     }
   ]
 }
