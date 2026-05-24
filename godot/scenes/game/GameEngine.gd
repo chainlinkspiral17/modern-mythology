@@ -196,7 +196,35 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 		game_ended.emit()
 		return
 	_auto_load_substrate(scene_id)
+	_unlock_gallery_for_scene(scene_id)
 	_run_next()
+
+
+const _SUBSTRATE_INDEX_PATH := "res://resources/substrates/gallery/_index.json"
+
+func _unlock_gallery_for_scene(scene_id: String) -> void:
+	# Mark any gallery items whose unlock_pattern matches this scene as seen.
+	# Pattern is a glob (String.match) — e.g. "vol5_ch0_*".
+	if not FileAccess.file_exists(_SUBSTRATE_INDEX_PATH):
+		return
+	var f := FileAccess.open(_SUBSTRATE_INDEX_PATH, FileAccess.READ)
+	if f == null:
+		return
+	var data: Variant = JSON.parse_string(f.get_as_text())
+	if typeof(data) != TYPE_DICTIONARY:
+		return
+	var items_v: Variant = (data as Dictionary).get("items", [])
+	if typeof(items_v) != TYPE_ARRAY:
+		return
+	for item_v in items_v:
+		if typeof(item_v) != TYPE_DICTIONARY:
+			continue
+		var item: Dictionary = item_v
+		var pattern: String = str(item.get("unlock_pattern", ""))
+		if pattern == "":
+			continue
+		if scene_id.match(pattern):
+			SaveSystem.mark_cg_seen("substrate:" + str(item.get("id", "")))
 
 
 func _auto_load_substrate(scene_id: String) -> void:
