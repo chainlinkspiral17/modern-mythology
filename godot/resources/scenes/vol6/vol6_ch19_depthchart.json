@@ -1,0 +1,987 @@
+{
+  "id": "vol6_ch19_depthchart",
+  "vol": 6,
+  "chapter": 19,
+  "type": "chapter",
+  "title": "Ch 19 — The Depth Chart",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_track_morning.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Depth Chart",
+      "sub": "Friday — 06:08 — Track",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The morning conditioning is, as Coach K had said it would be, light."
+    },
+    {
+      "t": "narrate",
+      "text": "Three miles easy, no stopwatch, the team in a single loose pack down the back stretch of the synthetic track at six oh-eight AM with the small Friday-morning energy of a group that has been together for three weeks and that has, by Friday of week three, fallen into the small running rhythm that does not require Brent at the front to set it."
+    },
+    {
+      "t": "show",
+      "char": "brent",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Brent is at the front anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "Brent is at the front because Brent is the captain and because Brent at the front is the way Brent — who is, by Coach Dale's assessment which Coach Dale has not shared with anybody, the most quietly diligent senior captain Coach Dale has worked with in twenty-some years — has decided to carry the captaincy."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben slots in at second."
+    },
+    {
+      "t": "show",
+      "char": "tucker",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker, this morning, is third instead of last."
+    },
+    {
+      "t": "narrate",
+      "text": "The change in Tucker's position is — Ben registers, by the second mile — the small evidence of Tucker's three weeks of conditioning starting to land. Tucker had finished the timed three-miler on Tuesday at twenty-six fifty. Tucker, this morning, is keeping pace with Marcus by the back stretch, in the way a kid's body finally turns the corner on a thing it had been refusing to turn the corner on."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, at second, glances back at the small acknowledgment."
+    },
+    {
+      "t": "say",
+      "char": "Tucker",
+      "text": "...",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker, at third, does the small eye-thing back that means yeah, I know."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does not, this morning, say anything."
+    },
+    {
+      "t": "narrate",
+      "text": "The team finishes at twenty-three fifty-six."
+    },
+    {
+      "t": "show",
+      "char": "coachk",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Good. Water. Five minutes. Then technical. Then weights light. Pete — you're on the sideline today. You're charting Vinton tomorrow. We're going to walk you through the chart this afternoon.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Pete says: Yes, Coach."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Move.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The team moves."
+    },
+    {
+      "t": "narrate",
+      "text": "The technical work, this morning, is footwork."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does the cone drill."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Right foot's there. Stop thinking about it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Coach.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "It is the first time in three weeks Coach K has said it. Coach K, for the rest of the morning, does not mention the right foot again."
+    },
+    {
+      "t": "narrate",
+      "text": "By eleven the morning session is done."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, in the parking lot at eleven oh-eight, has the small knowledge that he is going to be at the school again at noon for the depth-chart posting. Coach K has, over three weeks, been the most specific coach Ben has ever heard of about depth-chart posting times — noon Friday, every Friday in season, a ritual that has, by Coach Dale's report which Ben does not yet have, been Coach K's since 2008."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben drives home."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "His mother is asleep — the night-shift sleep, the specific eight-AM-to-three-PM sleep she does on the days she works ten hours straight nights. His father is at the kitchen table with the Sentinel. Bill is, by the small Bill-tradition, doing the Friday crossword in pen."
+    },
+    {
+      "t": "show",
+      "char": "bill",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "How was conditioning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Light. They're easing us off for tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Vinton.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Depth chart up at noon?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill, in the way Bill has been doing all summer when the conversation about football has had to happen, looks up from the crossword."
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "You think you're starting?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben thinks for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I think so. Coach K — he hasn't said. But I think so. The half-line work this week was good. The cone work is — the cone work is where he wants it. I think I'm at TE-1.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill returns to the crossword."
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "If you are. Tell Coach Dale to put you in the rotation for the second-half conditioning. The first-half guys get tired. Second-half guys get the points.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Coach Dale doesn't do that, Dad. Coach K does.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Then tell Coach K. Same advice.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah. I'll mention it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "I'm not — I'm not telling you to coach yourself, Ben. I'm telling you what I know. Use it or don't.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah. Thanks, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill returns to the crossword."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, at the kitchen counter, makes himself a sandwich."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes. He watches, with the sound off, the noon news, which has — at twelve oh-five — a story about the heat that has been in every noon broadcast for the past three weeks and that says, today, that the heat is going to break by Tuesday."
+    },
+    {
+      "t": "narrate",
+      "text": "If the heat breaks by Tuesday, the season opener week is going to be in better weather. The season opener is two weeks out. The depth chart for the season opener is not, technically, today's chart — today's chart is the Vinton chart, and the season opener chart goes up next Friday. But Coach K, by his own pacing, is doing the Vinton scrimmage as a dry run. The Vinton chart is the season-opener chart minus whatever changes Coach K decides to make based on what he sees tomorrow. If Ben is at TE-1 on the Vinton chart, he is at TE-1 on the season-opener chart. The two are functionally the same."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets up. He puts on a clean t-shirt. He drives back to the school at twelve forty."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_school_parking_lot.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The corkboard is outside the field-house door."
+    },
+    {
+      "t": "narrate",
+      "text": "The sheet, at twelve forty-two when Ben pulls into the lot, is already up. It has, by his angle from the lot, been up long enough that two of the kids — Marcus and Tucker — are already at the corkboard reading. Marcus is in shorts and a t-shirt. Tucker is in jeans. Marcus, who turns when Ben gets out of the Civic, gives Ben a small thumbs-up that is, by Marcus's unmistakable register, the yeah man of a teammate who has already read the sheet and who is signaling Ben that the read is going to be good."
+    },
+    {
+      "t": "show",
+      "char": "marcus",
+      "expr": "happy",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "tucker",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben crosses the lot."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, on the cross, run."
+    },
+    {
+      "t": "narrate",
+      "text": "He walks at the small Ben-pace, which is the pace of a six-foot-four seventeen-year-old who has learned, over three weeks of two-a-days, that running across a parking lot in August in Texas is a thing his body does not, anymore, casually do without consequences."
+    },
+    {
+      "t": "narrate",
+      "text": "He reaches the corkboard. He reads the sheet."
+    },
+    {
+      "t": "narrate",
+      "text": "The sheet is, in its standard format, twenty-two starters listed by position with the backups in parentheses below."
+    },
+    {
+      "t": "narrate",
+      "text": "His name is at TE-1."
+    },
+    {
+      "t": "narrate",
+      "text": "In parentheses below his name: (LeBlanc). Which is Diaz, whose first name is Marcus but who goes by his surname because the team already has a Marcus."
+    },
+    {
+      "t": "narrate",
+      "text": "He registers his name. He registers the parentheses. He does not, in registering, do anything externally."
+    },
+    {
+      "t": "narrate",
+      "text": "He stands at the corkboard for maybe four seconds."
+    },
+    {
+      "t": "narrate",
+      "text": "Yeah, he thinks. Okay. He is going to start a football game tomorrow. He has never started a football game. He has, in three weeks of training, become the kind of person who starts a football game. The change is real."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns."
+    },
+    {
+      "t": "say",
+      "char": "Marcus",
+      "text": "TE-1, big man.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Marcus",
+      "text": "Slot. I'm slot. We're gonna run two-tight tomorrow on first down, Coach K told me. You're in for the seal, I'm out for the route. He showed me the wrinkle yesterday after evening practice.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Marcus",
+      "text": "Yeah. He's been planning it. He just didn't want to walk it through with the team till the chart was up. Me and you on first down. Brent's gonna call it himself if he likes the front.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Cool.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Marcus",
+      "text": "We're gonna eat tomorrow. Vinton's gonna — Vinton's gonna be a thing.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Marcus, at the lot, gets in his mother's car. Marcus's mother, in the driver's seat, has been waiting. Marcus's mother waves at Ben from the car. Ben waves back. The car pulls out."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker, before he leaves, comes over to the corkboard."
+    },
+    {
+      "t": "say",
+      "char": "Tucker",
+      "text": "Ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Hey, Tuck.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Tucker",
+      "text": "You see me at LT-1.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I saw.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Tucker",
+      "text": "I didn't think — I didn't think I had it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "You had it. You've been good in the weight room since week one. Coach K saw.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Tucker",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker is quiet for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Tucker",
+      "text": "I'm — I'm gonna call my dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Go call him.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Tucker",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker goes to his Tacoma. Tucker pulls out his phone."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, at the corkboard, watches Tucker dial. Tucker, at the truck, with the door open and one foot inside, talks for about thirty seconds. Tucker's face, by the third sentence, has the look of a kid whose father is, on the other end of the phone, doing the small father-thing of being briefly speechless and then saying the right father-sentence."
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker hangs up. Tucker gets in the Tacoma. Tucker pulls out."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, at the corkboard, is alone in the lot."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at the sheet again."
+    },
+    {
+      "t": "narrate",
+      "text": "His name is still at TE-1."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns. He goes back to the Civic."
+    },
+    {
+      "t": "narrate",
+      "text": "He drives."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, on the drive, immediately know where he is going."
+    },
+    {
+      "t": "narrate",
+      "text": "He had been planning to drive home. His mother is going to be waking up soon and is going to want to hear about the depth chart. His father is at the table with the crossword and is going to want to hear about it."
+    },
+    {
+      "t": "narrate",
+      "text": "But his hands, on the wheel, take the long way."
+    },
+    {
+      "t": "narrate",
+      "text": "The long way passes the equipment shed at the back of the school field, and the long way also passes the back gate that the team uses to get to the field on weekends when the front of the school is locked. Ben pulls past the field. He sees, in the small light of one PM in mid-August in Texas, that the equipment shed door is open and that Coach Dale's truck is parked behind the shed."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Dale is doing some small Friday-afternoon equipment task that is, by the way Coach Dale has been doing his job for twenty-some years at this school, a thing Coach Dale does on Fridays without announcement."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, on instinct that he does not, in the moment, examine, pulls the Civic into the small lot behind the shed."
+    },
+    {
+      "t": "narrate",
+      "text": "He parks. He gets out. He walks to the open shed door."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_equipment_shed.jpg"
+    },
+    {
+      "t": "show",
+      "char": "coachdale",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Dale is at the back wall of the shed, sorting through a small bin of kicking tees by size."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Dale, when Ben comes to the door, looks up."
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Hey, Coach Dale.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "TE-1.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Congratulations.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Thank you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Come in. Help me with these tees if you don't mind. The youth-league coaches borrow these in October and they always come back jumbled. I'm sorting them now so I'm not doing it in October when the season's already a thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben comes in."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits on the small overturned milk crate Coach Dale gestures at. He starts sorting tees by the small Coach Dale system, which is — Coach Dale demonstrates with the first three — two-inch tees in one pile, two-and-a-half-inch in another, three-inch in a third."
+    },
+    {
+      "t": "narrate",
+      "text": "The work is the work of a man and a kid sorting kicking tees in a shed at one PM on a Friday in mid-August."
+    },
+    {
+      "t": "narrate",
+      "text": "For about three minutes, neither of them speaks."
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Coach K mentioned something to me yesterday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, with a tee in his hand, looks up."
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "He didn't mention it as a thing. He mentioned it the way he mentions things, which is in a sentence and then he changes the subject.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "He told me — and I'm not telling you this because he asked me to. I'm telling you because I have decided, on my own, that you should know. He told me that a kid said something to him after Tuesday's evening practice that he has, since, been thinking about. He didn't tell me which kid. He didn't have to.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does not, immediately, respond."
+    },
+    {
+      "t": "narrate",
+      "text": "He sorts the tee in his hand into the two-inch pile."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "What you said. You said his wife was going to be okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "How did you know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben thinks for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I didn't know. I — I had been listening to him say her name. The verbs were — the verbs were doing a thing. I thought he might be carrying something. I — I didn't think it through. I just said it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Dale nods, slowly."
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Dale picks up another tee."
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Eileen — Coach K's wife — was diagnosed in March. Stage two. Treatment started in April. The treatment has been working. She's — she's going to be okay. They got the news at the end of June. The numbers are — the numbers are good. By August she's going to be, by the doctor's read, in the clear. There's going to be follow-up. There's going to be the rest of her life. But the specific bad version of the next year is, by mid-summer, off the table. Coach K has been carrying the probably okay and the not yet certain in the same body since June.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Coach.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Why are you telling me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Dale picks up another tee. He sorts it. He does not, while sorting, look up."
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Because. Because Coach K is, by his own design, the kind of man who is not, generally, going to tell a player on his team about the kind of summer his wife has been having. He has decided that the team should not, by his own choice, have to carry his weather. He is, in deciding this, being the kind of coach he has been for twenty years. The decision is — the decision is his to make. I respect it. I do not, in twenty years, override it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "But.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "But. You said the right thing to him on Tuesday with no information. He has been, since Tuesday, thinking about what that meant. He has been thinking about it in a way that I — having watched him think about things in this small twitchy way for twenty years — can read from across the field. You did, at seventeen, with no information, the thing the team is, by his decision, not in a position to do for him. I am telling you because I have decided, on my own, that you having said the right thing without information deserves to be honored by you having a little information now. The information is — the information is not for you to do anything with. The information is for you to know, when he is on the sideline tomorrow against Vinton, what he is, in his body, carrying with him while he calls plays.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, with a tee in his hand, is, for a long moment, very still."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Coach.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I'm not — I'm not going to say anything to him. About knowing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "I know you're not.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I'm not going to tell anybody else either. Not the team. Not — not my parents. Not anybody.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "I know you're not.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Why do you know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Dale, finally, looks up."
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Because, son. You are — you are the kind of seventeen-year-old who, on Tuesday, said she's gonna be okay, Eileen to a man you barely know, in a parking lot, at eight PM, with no information. You did not perform the saying. You did not announce yourself by saying. You said it because your body had decided, at the moment you were walking past, that the man needed to hear the sentence. That kind of kid does not, two days later, when he has been given the information, go around telling people about it. That kid sits with it. He carries it into the Vinton scrimmage. He plays his game. He does the thing the field requires of him. And he comes off the field, when the day is over, not having mentioned to anyone that he knew. That is — that is who you are. I have, in twenty-some years of coaching, learned to tell. You are that. So I am telling you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, on the milk crate, in the shed, with the tees half-sorted at his feet, does not, for a long moment, respond."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Thank you, Coach.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They go back to the tees."
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "There's one more thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "She's going to be at the game tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Eileen?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Eileen. She has, this summer, been to one practice — the first one, in early July. She has not been able to come to the others. The doctor told her in June she could come back to ordinary things by August. Tomorrow is the first ordinary thing. She is going to be in the bleachers. Third row, behind the home bench. I am telling you so that, when you see her there, you are not, in your head, thinking who is that. You are knowing. The knowing — the knowing is, again, only for you. You are not going to look up at her. You are not going to acknowledge her. She does not, by her own preference, want to be a thing tomorrow. She wants to sit in the third row and watch her husband do his work for the first time in five months. You are going to play your game. The fact of her being there is — is the chapter that is closing. You having known about it tomorrow is the thing I am giving you because you, on Tuesday, gave Coach K the thing he had not asked for.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The tees, by one twenty-one, are sorted."
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Thanks, Ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Coach Dale.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Go home. Sleep. Eat. Be at the field at three tomorrow. Walk-through is at four. Game is at six. Be ready.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He gets up. He goes to the door of the shed."
+    },
+    {
+      "t": "narrate",
+      "text": "At the door, he turns."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Coach Dale.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Thank you. For — for telling me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Dale",
+      "text": "Yeah, son. Go on.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben goes."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch19_chains"
+    }
+  ]
+}

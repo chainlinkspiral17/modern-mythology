@@ -1,0 +1,115 @@
+{
+  "id": "vol6_ch4_miller_office",
+  "vol": 6,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Ch 4 — The Office",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_home_office.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Chief Miller's home office is in what was, originally, a formal dining room. He converted it in 2018. The table that had been there became his desk. The built-in china cabinet became his file storage. The chandelier that had been there when they moved in he left hanging, because his wife had wanted it, and because he had found, over the years, that leaving small decorative things in place when they did not affect his work was a minor domestic lubricant he could afford."
+    },
+    {
+      "t": "narrate",
+      "text": "He is at the desk. The rain is hitting the window behind him. On the desk: his service laptop, which is issued by the Harmony Creek Estates Private Security Authority but which is, in fact, maintained and monitored by NexCorp Residential Solutions via a vendor contract he has never, himself, read. Beside the laptop: two phones. The one in his front pocket is the personal one. The one on the desk, face-down, is not."
+    },
+    {
+      "t": "narrate",
+      "text": "The phone on the desk buzzes. He turns it over. He reads the message. Movement Wednesday 23:00. Transport van, unmarked. Zone to Zone-G. Holding there 48h. You'll have the kid out of your subdivision by midnight."
+    },
+    {
+      "t": "narrate",
+      "text": "He reads it twice. He does not reply. He sets the phone face-down."
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "tired",
+      "pos": "center"
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "They moved it up. That means they know something changed."
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "Sammy knows."
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "Sammy has known since Sunday night. She has not said anything. She is handling it the way she handles things. Which is: she is planning. Which is: I have, for the first time in her life, lost the thread of what she is going to do before she does it."
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "I have some decisions to make about how I am going to be her father this week."
+    },
+    {
+      "t": "narrate",
+      "text": "The rain hits harder. The chandelier above his desk — which is not lit — rattles very faintly as the pressure in the house shifts. Chief Miller looks at the ceiling. The chandelier stops rattling."
+    },
+    {
+      "t": "narrate",
+      "text": "He picks up the phone on the desk. He types: Need to discuss timing. Can you do 07:30 at the usual place."
+    },
+    {
+      "t": "narrate",
+      "text": "The reply comes in eleven seconds. No. 23:00 as scheduled. The discussion happens after."
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He reads it. He puts the phone down. He stands. He goes upstairs to shave."
+    },
+    {
+      "t": "narrate",
+      "text": "He hears, as he passes Sam's door, the small unmistakable sound of his daughter pulling on the jeans she wears to the Kwik Stop, the particular hip-hitch she has been doing since she was fourteen. He does not knock. He goes to the bathroom. He looks at his face in the mirror for a long moment."
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "I love her."
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "I do not, today, know what to do about that."
+    },
+    {
+      "t": "narrate",
+      "text": "He starts the water."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch4_kwik_stop"
+    }
+  ]
+}

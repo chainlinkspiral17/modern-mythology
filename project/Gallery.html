@@ -8,6 +8,8 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<!-- Shared music catalog + heard-tracking. Same source the game uses. -->
+<script type="text/babel" src="vn-music.jsx"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body,#root{width:100%;min-height:100%;background:#080604;color:#c4baa0;font-family:'Space Mono',monospace;}
@@ -62,26 +64,7 @@ const CATALOG = {
       unlock:{ type:'flag', key:'vol4_crew_joined' },
       clue:'The city looks different when you\'ve put something on it.' },
   ],
-  music: [
-    { id:'vol1_crossroads',  vol:1, title:'Crossroads Theme',          src:'assets/audio/bgm/vol1_crossroads.mp3',       duration:'3:48', composer:'—',
-      unlock:{ type:'always' }, clue:null, desc:'The diner. The stranger. The choice that starts everything.' },
-    { id:'vol1_myth_main',   vol:1, title:'Modern Mythology (Main Theme)', src:'assets/audio/bgm/vol1_main_theme.mp3',  duration:'4:22', composer:'—',
-      unlock:{ type:'flag', key:'vol1_ch1_complete' }, clue:'Finish the beginning to hear the song it leaves behind.' },
-    { id:'vol2_ambient',     vol:2, title:'Small Wood Variations',     src:'assets/audio/bgm/vol2_ambient.mp3',          duration:'5:04', composer:'—',
-      unlock:{ type:'always' }, clue:null, desc:'The sound of trees that have been standing longer than the town.' },
-    { id:'vol2_funeral',     vol:2, title:'Briar Falls Elegy',         src:'assets/audio/bgm/vol2_funeral.mp3',          duration:'2:58', composer:'—',
-      unlock:{ type:'flag', key:'vol2_funeral_attended' }, clue:'Go where you didn\'t want to go.' },
-    { id:'vol2_wood_night',  vol:2, title:'The Wood After Midnight',   src:'assets/audio/bgm/vol2_wood_night.mp3',       duration:'4:16', composer:'—',
-      unlock:{ type:'flag', key:'vol2_wood_explored' }, clue:'Some paths only open in the dark.' },
-    { id:'vol3_station',     vol:3, title:'Station Omega-14',          src:'assets/audio/bgm/vol3_station.mp3',          duration:'6:02', composer:'—',
-      unlock:{ type:'always' }, clue:null, desc:'The hum of life support and the silence of deep space.' },
-    { id:'vol3_oracle',      vol:3, title:'Iteration',                 src:'assets/audio/bgm/vol3_oracle.mp3',           duration:'3:33', composer:'—',
-      unlock:{ type:'flag', key:'vol3_oracle_trusted' }, clue:'Trust the machine to have counted everything.' },
-    { id:'vol4_street',      vol:4, title:'Five AM, No One Around',    src:'assets/audio/bgm/vol4_street.mp3',           duration:'3:17', composer:'—',
-      unlock:{ type:'always' }, clue:null, desc:'The city before it remembers you\'re not supposed to be there.' },
-    { id:'vol4_crew',        vol:4, title:'Rep',                       src:'assets/audio/bgm/vol4_crew.mp3',             duration:'4:45', composer:'—',
-      unlock:{ type:'flag', key:'vol4_crew_joined' }, clue:'You can\'t earn it until you\'ve lost something first.' },
-  ],
+  music: [], // Sourced from window.MM_MUSIC (vn-music.jsx) — see App below.
   video: [
     { id:'vol1_opening',       vol:1, title:'Opening',             src:'assets/video/vol1_opening.mp4',      duration:'1:24',
       unlock:{ type:'always' }, clue:null, desc:'Before the story knows it\'s a story.' },
@@ -106,7 +89,10 @@ function buildUnlockSet() {
 
 function checkUnlocked(item, unlockSet) {
   if (unlockSet.__all) return true;
+  // Heard-in-game always unlocks the item, regardless of declared unlock type.
+  if (item.src && window.MM_MUSIC_HEARD && window.MM_MUSIC_HEARD.has(item.src)) return true;
   if (!item.unlock || item.unlock.type === 'always') return true;
+  if (item.unlock.type === 'heard') return false; // unlock only via heard set
   if (item.unlock.type === 'flag') return !!unlockSet[item.unlock.key];
   return false;
 }
@@ -363,6 +349,11 @@ function MusicTab({ items, volFilter }) {
   const [duration, setDuration] = useState(0);
 
   const filtered = volFilter ? items.filter(i=>i.vol===volFilter) : items;
+  // Tracks only appear here after they've played in-game (or via {type:'always'}).
+  // The denominator is the curated catalog total — discovered tracks add to the
+  // numerator as the player encounters them.
+  const visible = filtered.filter(i => i.__unlocked);
+  const catalogTotal = filtered.filter(i => !i.__discovered).length;
 
   useEffect(()=>{
     if (!audioRef.current) audioRef.current = new Audio();
@@ -395,9 +386,21 @@ function MusicTab({ items, volFilter }) {
     <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden'}}>
       <div style={{flex:1,overflowY:'auto',padding:'20px 24px'}}>
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:20}}>
-          <span style={{fontFamily:'Cinzel,serif',fontSize:8,letterSpacing:'0.28em',color:'rgba(180,140,60,0.35)',textTransform:'uppercase'}}>{filtered.filter(i=>i.__unlocked).length} / {filtered.length} tracks unlocked</span>
+          <span style={{fontFamily:'Cinzel,serif',fontSize:8,letterSpacing:'0.28em',color:'rgba(180,140,60,0.35)',textTransform:'uppercase'}}>
+            {visible.length} of {catalogTotal} heard
+            {visible.length > catalogTotal && (
+              <span style={{marginLeft:8,color:'rgba(180,140,60,0.5)'}}>+ {visible.length - catalogTotal} discovered</span>
+            )}
+          </span>
         </div>
-        {filtered.map(item=>(
+        {visible.length === 0 ? (
+          <div style={{padding:'60px 24px',textAlign:'center',color:'rgba(196,186,160,0.35)',fontFamily:'Space Mono',fontSize:11,lineHeight:1.8}}>
+            <div style={{fontFamily:"'IM Fell English',serif",fontSize:18,fontStyle:'italic',color:'rgba(180,140,60,0.45)',marginBottom:10}}>
+              The room is empty.
+            </div>
+            Music collects here as you hear it in play.
+          </div>
+        ) : visible.map(item=>(
           <TrackRow key={item.id} item={item} unlocked={item.__unlocked}
             isPlaying={current?.id===item.id && playing}
             isLoaded={current?.id===item.id}
@@ -540,8 +543,27 @@ function App() {
   const [volFilter, setVolFilter] = useState(0);
   const unlockSet = useMemo(()=>buildUnlockSet(),[]);
 
+  // Re-render whenever a new track is heard (same tab via custom event,
+  // other tabs via the storage listener inside vn-music.jsx).
+  const [heardTick, setHeardTick] = useState(0);
+  useEffect(() => {
+    const h = () => setHeardTick(t => t + 1);
+    window.addEventListener('mm-music-heard', h);
+    return () => window.removeEventListener('mm-music-heard', h);
+  }, []);
+
   const stills = useMemo(()=>CATALOG.stills.map(i=>({...i,__unlocked:checkUnlocked(i,unlockSet)})),[unlockSet]);
-  const music  = useMemo(()=>CATALOG.music.map(i=>({...i,__unlocked:checkUnlocked(i,unlockSet)})),[unlockSet]);
+  const music  = useMemo(()=>{
+    const catalog = (typeof window !== 'undefined' && Array.isArray(window.MM_MUSIC)) ? window.MM_MUSIC : CATALOG.music;
+    const heard = (window.MM_MUSIC_HEARD && window.MM_MUSIC_HEARD.get()) || new Set();
+    const catalogSrcs = new Set(catalog.map(t => t.src));
+    // Tracks the player heard in-game that aren't in the curated catalog —
+    // surface them as auto-generated entries so nothing gets lost.
+    const discovered = [...heard]
+      .filter(src => !catalogSrcs.has(src))
+      .map(src => window.MM_MUSIC_buildTrackForSrc(src));
+    return [...catalog, ...discovered].map(i => ({ ...i, __unlocked: checkUnlocked(i, unlockSet) }));
+  },[unlockSet, heardTick]);
   const videos = useMemo(()=>CATALOG.video.map(i=>({...i,__unlocked:checkUnlocked(i,unlockSet)})),[unlockSet]);
 
   const tabItems = { stills, music, video:videos };

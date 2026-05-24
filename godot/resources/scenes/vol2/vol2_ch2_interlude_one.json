@@ -1,0 +1,93 @@
+{
+  "id": "vol2_ch2_interlude_one",
+  "vol": 2,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "ii. Interlude — The Dream of the Sapo Falls",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_seagash_circus_old.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Interlude",
+      "sub": "— first —",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "It's not like I was poring over books to find out the history of this woman. The story of Delores came to me in fragments during the years I lived there — like most such stories that come out of small towns."
+    },
+    {
+      "t": "narrate",
+      "text": "Understand that there is a veil about places like Small Wood, and that veil must be actively lifted, bit by bit, if you ever wish to see past the ignorance of the place and the populace. Small towns guard their secrets well — as the stain of time will forever tarnish family names, local businesses, and whole generations whose ideas and practices have fallen out of fashion with modern thinking."
+    },
+    {
+      "t": "narrate",
+      "text": "If anything, Small Wood was a wonderful repository for wayward ideals. A time capsule sealed tight of mores, taboo, and tragedy."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_sapo_falls.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I had a dream about the mermaid while I was napping between morning and evening sessions of football practice. I was not expecting the sheer exhaustion of the routine, and did little for the first week besides eat, sleep, and bathe."
+    },
+    {
+      "t": "narrate",
+      "text": "I remember the dream because it was vivid — and was soaking out my soreness in the large sunken first-floor bathtub when it occurred."
+    },
+    {
+      "t": "narrate",
+      "text": "I was back in Venezuela. In the Canaima region — naturally rich in elevated tepuis, dense with dark green vegetation and flowing with towering waterfalls. A primal, unspoiled, and humbling place. Specifically, I was in one of the many smaller Sapo Falls — under the beat of the cascading wall."
+    },
+    {
+      "t": "narrate",
+      "text": "The opaque film of water in front of me distorted the world outside the cool calm wet of the underneath. That's where she came to me. The mermaid."
+    },
+    {
+      "t": "narrate",
+      "text": "Her lower half more eel than fish — leather thick with mucous. Her hair long, and looped in on itself wet. Her eyes curious but innocent. Like a neighbor's timid pet dog. Her lips found mine under the water and she pressed up against me."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a short dream. Far more sensual than sexual. I woke up with a nervous anxiety that had to do more with the imagery of being late for practice than of leaving behind a pastoral tropical dreamland."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_football_practice.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I did not give the dream much thought. I had an eye on a teammate's sister who picked him up after practice — and she in fact occupied most of my waking fantasies."
+    },
+    {
+      "t": "narrate",
+      "text": "A very thin dark-featured young woman. Exotic-looking to the thick and pale sorts such as myself who made up the majority in Small Wood. In two months' time, my tan was quickly fading, and serious sunbathing out on the roof above my bedroom could not sustain what I'd acquired at the equator."
+    },
+    {
+      "t": "narrate",
+      "text": "Her name was May. And she was fun to think about — amid all the poundings in pads, the forced repetition of drilling, distracting my thoughts from the sounds of whistles and grunts."
+    },
+    {
+      "t": "narrate",
+      "text": "She was casual, carefree, beautiful, and strong in self. Content just to sit around half the day and watch the boys practice football. She eventually settled on a star player and disappeared into the background noise of life once school started."
+    },
+    {
+      "t": "narrate",
+      "text": "But May and I crossed paths many times, for many reasons. And her connection to Delores in my mind was always liquid — never firm. As May and Delores were as different as two individuals could be — living a hundred years and just one mile apart."
+    },
+    {
+      "t": "interlude",
+      "text": "End interlude",
+      "sub": "",
+      "duration": 1800
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch2_cliffside"
+    }
+  ]
+}

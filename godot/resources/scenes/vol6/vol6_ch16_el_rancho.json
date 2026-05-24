@@ -1,0 +1,1435 @@
+{
+  "id": "vol6_ch16_el_rancho",
+  "vol": 6,
+  "chapter": 16,
+  "type": "chapter",
+  "title": "Ch 16 — Taqueria El Rancho",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_centro_grocery_aisle.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Taqueria El Rancho",
+      "sub": "Thursday — 22:00 — Centro Foods",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The shift starts at ten the way every shift starts at ten."
+    },
+    {
+      "t": "narrate",
+      "text": "Jessa runs the team meeting at ten oh-two. The team meeting tonight is shorter than usual because the team meeting tomorrow night is going to be the inventory meeting and Jessa has, in her shift-supervisor way, decided that tonight's prep work is going to be done in the doing rather than in the meeting about the doing."
+    },
+    {
+      "t": "narrate",
+      "text": "The pallets are heavy."
+    },
+    {
+      "t": "narrate",
+      "text": "The pallets are heavy because day-side packed them for inventory, which means double-stacking, which means the centers of gravity are wrong on most of the loads, which means Diego — in the first hour — takes three corners wider than he would otherwise and watches Russell, three aisles over, take five corners wider than he would otherwise. Marisol, who has been pushing pallets at this store for seven years, takes her corners normal-width by the small knowledge of how to lean against a wrong-stacked load to compensate for the wrong stack. Marisol is the team's center of gravity in more ways than one. Diego registers this without naming it."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug is in dairy."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug is, by ten forty-eight, two pages into Book Seven of The Brothers Karamazov. He has been in Book Seven for three nights. Book Seven is, by Doug's own internal accounting which he has shared with no one, the section of Karamazov that does not, at any of his eleven previous readings, get easier. Doug works the half-gallons. Doug does not, in his work, look up."
+    },
+    {
+      "t": "narrate",
+      "text": "BT is in cereal again."
+    },
+    {
+      "t": "narrate",
+      "text": "BT has been in cereal for six weeks. Jessa has, by some calculation Diego does not know the math of, decided that BT is going to be in cereal until Jessa decides otherwise. BT has, by his own count, asked Jessa about being moved to a more interesting aisle exactly once, in week four, and Jessa had said cereal in the way Jessa says things she has already decided about, and BT has not, since, asked again."
+    },
+    {
+      "t": "narrate",
+      "text": "BT, in cereal, is faster than the team needs him to be in cereal."
+    },
+    {
+      "t": "narrate",
+      "text": "BT, in cereal, is also, by Diego's count, every fifteen minutes or so, looking — peripherally, from the end of his aisle — toward where Diego is working."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego pretends not to register this."
+    },
+    {
+      "t": "narrate",
+      "text": "He registers it."
+    },
+    {
+      "t": "narrate",
+      "text": "At one fifty-six AM Diego is in canned soup when BT comes around the end of the aisle."
+    },
+    {
+      "t": "narrate",
+      "text": "BT has, in his hand, the empty bottom flat of a case of Campbell's tomato. BT is bringing the flat back to the cardboard bale at receiving, which is a thing BT does not have to do — Marisol's domain is recycling tonight — but which BT has been doing all summer in the way new hires do small extra things that make them, in their own minds, more visible to the team."
+    },
+    {
+      "t": "show",
+      "char": "bt",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "BT pauses at the end of Diego's aisle."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Hey.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego looks up."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Hey.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Lunch is at four, right.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "You — uh. You wanna get out tonight? Taqueria El Rancho. Drive-thru. My treat. We got — what. Two hours.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the aisle, does the thing he has been training himself to do all summer when an adult — or a young man who is mostly an adult — is at the end of the aisle asking him a thing he had not, ten seconds ago, expected to be asked."
+    },
+    {
+      "t": "narrate",
+      "text": "He waits."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, in the time it takes BT to set the cardboard flat against his hip and shift his weight to the other foot: I have been declining BT for six weeks. Doug told me on Tuesday I do not have to be the one who lets him in. I have, for six weeks, not let him in. The not-letting-in has been — it has been the team's position. I have agreed with the team's position by my silence. I have, by agreeing with the team's position by my silence, been participating in the team's position without ever having had to defend it to anyone, including myself."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: if I say yes tonight, I am not endorsing his cop story. I am not joining him. I am going for a taqueria run with a coworker at four AM. The taqueria run is, by the architecture of what coworkers do at four AM on graveyard shifts, the smallest possible yes. The smallest possible yes is also, by being the smallest possible yes, the one I can, in good faith, give without also having to give the larger thing."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: also I am hungry and El Rancho is good."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah. Sure. Four.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT's face does the thing a face does when a person who has been bracing for no has, instead, gotten yes."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Cool. Cool, man. I'll meet you at the dock at four.",
+      "expr": "happy"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He goes."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the aisle, returns to the canned soup."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, with the small careful honesty he has been training all summer: I just changed something."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I do not know what."
+    },
+    {
+      "t": "narrate",
+      "text": "He keeps stocking."
+    },
+    {
+      "t": "narrate",
+      "text": "In dairy, Doug — who has, from the half-gallons, peripherally registered the exchange at the end of canned soup because the store at one fifty-six AM has the small acoustic openness that lets a man two aisles over hear a conversation if he is paying attention to whether the conversation is happening — turns the page of Karamazov."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug does not, on the page-turn, look up."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug, at the half-gallons, registers — with the small Dostoevskian attention Doug brings to most things at this hour — that Diego has, this evening, said yes to BT, and that this is the first yes Diego has said to BT in six weeks, and that this is the thing Diego had to figure out on his own and that Doug had, on Tuesday in the parking lot, been right not to push him toward."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug returns to Book Seven."
+    },
+    {
+      "t": "narrate",
+      "text": "Father Zosima is, in Book Seven, two days dead."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug pulls another half-gallon."
+    },
+    {
+      "t": "narrate",
+      "text": "By three fifty-seven AM the team is at the small unspoken pre-lunch convergence at the front of the store."
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol is at the deli station finishing her wipe-down of the case. Russell is at receiving inspecting the next pallet for the second half of the shift. Jessa is at the manager's desk doing the small spreadsheet check Jessa does at four every shift. Doug is at the break room with his thermos. BT is at the dock door with his keys in his hand."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego comes up through the front."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets his backpack from the cubby behind the register. He gets his wallet — out of habit, even though BT has said my treat — and his phone. He puts on his cap."
+    },
+    {
+      "t": "show",
+      "char": "doug",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "He passes the break room. Doug looks up."
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Diego.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego stops at the doorway."
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Bring me back a horchata. Medium. Cash on the counter.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He pushes a five across the table."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego picks up the five."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah, Doug.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Have fun.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Doug returns to Karamazov."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego goes."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_altima_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The Altima is in the team's parking row, three spots over from Diego's truck."
+    },
+    {
+      "t": "narrate",
+      "text": "The Altima is a 2017, beige, with the small clean of a car that has not been washed recently but has not, otherwise, been allowed to get dirty inside. There is a single pine-tree air freshener on the rearview mirror. The pine tree is — Diego registers, getting in — mostly scent-out."
+    },
+    {
+      "t": "show",
+      "char": "bt",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "BT is in the driver's seat."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Buckle up. Four minutes there, four back. We got time.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego buckles up."
+    },
+    {
+      "t": "narrate",
+      "text": "BT pulls out of the lot."
+    },
+    {
+      "t": "narrate",
+      "text": "The road from Centro to El Rancho is the small parallel side road that runs behind the access road, past the cedar scrub, past the small dark frontage of a closed-for-the-night equipment-rental yard, past a single working streetlight that has been the only working streetlight on this stretch since Diego started at Centro five weeks ago. The road, at four oh-two AM, is empty. The Altima's headlights cut a small cone of yellow into the August night."
+    },
+    {
+      "t": "narrate",
+      "text": "BT, at the wheel, is — Diego registers — slightly more relaxed in the car than he is in the building."
+    },
+    {
+      "t": "narrate",
+      "text": "The car is, Diego understands, his actual environment. The car is the small space BT has, this summer, controlled. The building is the space the team has decided about him in. The car is the space BT gets to set the terms of."
+    },
+    {
+      "t": "narrate",
+      "text": "BT, after a beat, reaches for the dash."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Mind if I — ",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Go ahead.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT presses play on his phone, which is in the dashboard cradle."
+    },
+    {
+      "t": "narrate",
+      "text": "The song starts."
+    },
+    {
+      "t": "narrate",
+      "text": "It is — Diego does not, in the moment, recognize the song. The opening is electronic, a small repeating synth figure with a small drum loop underneath. The song is from another time. Diego, who has been, in his life, a kid who listens to mostly Spanish-language hip-hop and the small subset of American indie his older cousin in San Antonio had been pushing on him in late high school, has not, in his life, encountered this song."
+    },
+    {
+      "t": "narrate",
+      "text": "The song builds."
+    },
+    {
+      "t": "narrate",
+      "text": "The vocal comes in."
+    },
+    {
+      "t": "narrate",
+      "text": "The vocal is a man, talking-singing in a small spoken-word cadence, with the kind of British-accent affectation that the late nineties had as a small cultural posture."
+    },
+    {
+      "t": "narrate",
+      "text": "By the chorus, Diego has registered the song's central word, which is — the singer is saying — erf. Not earth. Erf. The singer is doing the thing of intentionally eliding the th into a ff in the way British speakers sometimes do and the way the singer, by the elision, is making a small choice to mark the song with."
+    },
+    {
+      "t": "narrate",
+      "text": "BT, at the wheel, drives."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "BT. Brian Transeau. Came up about a year ago, when people started calling me BT at — at the last job. I went to look him up. There was a BT. There already was. He's been doing this for, like, twenty-five years. Most of it's — most of it's instrumental electronic. This one's the one with vocals. This is — this is the only one I really like. The rest is whatever. But this one. I been driving home to this one for about eight months.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the passenger seat, does not, immediately, respond."
+    },
+    {
+      "t": "narrate",
+      "text": "He listens to the second verse."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: BT is telling me, in the car, the thing he has not told the team. The team calls him BT and does not know that there is a Brian Transeau. BT knows. BT has, in some way, made the diminutive his by finding the person it was already."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the song is from before I was born."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the song is from before BT was paying attention to music."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: BT has been listening to the song on his way home from this job for eight months because he is, on his way home from this job for eight months, the only BT in the car."
+    },
+    {
+      "t": "narrate",
+      "text": "The chorus plays again."
+    },
+    {
+      "t": "narrate",
+      "text": "The singer, again, says erf."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "It's spelled wrong.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "On purpose?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah. Look.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT, at the wheel, taps the dash. The phone screen shows the song's metadata. The song title is Never Gonna Come Back Down. The album is Movement in Still Life. The artist is BT. The lyrics — BT taps the lyrics tab — show the chorus on screen. The chorus has erf in it, lowercase, with the th elided into the f, exactly as the singer is singing it."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, leaning over slightly to look at the screen, registers the lyric in print."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Huh.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Why?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT thinks."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "I don't know, man. The whole album is — the whole album is from the late nineties. Lot of, like, weird stylization. Capitalization, spelling, all of it. He was doing that thing where it's — it's supposed to sound like the way somebody might actually say it. Erf, not earth. I think he — I think he liked the visual. The way erf looks. He uses it three times in the song.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego nods."
+    },
+    {
+      "t": "narrate",
+      "text": "The song goes into the bridge."
+    },
+    {
+      "t": "narrate",
+      "text": "They drive."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_taqueria_el_rancho_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The taqueria's sign is visible from a half-mile out — TAQUERIA EL RANCHO in red paint on a yellow building, with the small image of a steer's head on the side of the building under the sign, faded by twenty-some Texas summers into the small orange that red paint becomes when it has been outside for that long."
+    },
+    {
+      "t": "narrate",
+      "text": "The drive-thru is at the back. The drive-thru has, taped to the speaker box, a hand-lettered sign that reads SPEAKER BROKE — ORDER AT WINDOW."
+    },
+    {
+      "t": "narrate",
+      "text": "BT pulls into the drive-thru lane."
+    },
+    {
+      "t": "narrate",
+      "text": "There is no one ahead of them."
+    },
+    {
+      "t": "narrate",
+      "text": "The window is — Diego knows from his three previous solo trips this summer — manned by a kid named Hugo who runs the night shift and whose family owns the taqueria."
+    },
+    {
+      "t": "narrate",
+      "text": "BT pulls up to the window."
+    },
+    {
+      "t": "show",
+      "char": "hugo",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo slides the window open."
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo looks at BT. Hugo looks at Diego. Hugo's face does the small Hugo-thing of registering Diego in BT's car at four-oh-six AM and not, externally, commenting on the registering."
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "Hey. What can I get you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, from the passenger seat, leans across slightly."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Hey, Hugo. Custom burrito for me. Steak. Guac, sour cream, cheese, onions — the white onions, not the red. And potatoes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "Potatoes in the burrito. Yeah. I remember.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo writes it down."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Flauta box for me. The five-piece. Chicken. Side of guac.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "You want the green sauce or the red sauce in the box?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Both.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "Both. Got it. Drinks?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Horchata. Two — no. One large for me. One medium for back at the store, that's a separate ticket.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "Two horchatas.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Mexican Coke. The one with the actual sugar, in the bottle.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "Yeah, in the back.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo writes everything down on a small slip from a yellow pad. He tears the slip. He hands it through the window for BT to see. The total, on the slip, is twenty-eight dollars and forty cents."
+    },
+    {
+      "t": "narrate",
+      "text": "BT pulls out a fifty."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Keep the change.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "Hugo doesn't take tips on the slip, man. House rule. There's a jar at the window. Throw it in there.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT puts the change — twenty-one sixty in mostly singles and a five — in the jar."
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "Pull around. Five minutes. We're hot on the steak right now, so the burrito will go fast, the flautas need a couple.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "BT pulls around."
+    },
+    {
+      "t": "narrate",
+      "text": "He parks in the small lot at the side of the building, in the spot under the steer's head."
+    },
+    {
+      "t": "narrate",
+      "text": "He kills the engine."
+    },
+    {
+      "t": "narrate",
+      "text": "The song, in the silence, has gone into its outro — the long electronic fade BT has, this morning, not turned the phone off through."
+    },
+    {
+      "t": "narrate",
+      "text": "The fade plays out."
+    },
+    {
+      "t": "narrate",
+      "text": "The car is, after the fade, quiet."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "You come here a lot?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Three times this summer. By myself.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Lunch break?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Hugo's the night guy?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Hugo run the family business?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "His mom and dad run it. Hugo runs the night shift. He's twenty-three, twenty-four. Going to community college during the day, I think. He told me once.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Cool.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A small silence."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Thanks for coming, man. I — I know the team's been — I know the team has been a thing. I appreciate it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the passenger seat, does the thing he has been not-doing all summer in the building, which is to acknowledge that the team has been a thing."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah. The team's been a thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "It's not — it's not personal. I don't think they have anything personal against you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT laughs, very small."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah, man. I know. It's never personal. It's never personal in the way that, like, when somebody says it's not personal, you immediately know it's the most personal thing they could say.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, despite himself, laughs."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "I'm — I'm not gonna ask you to fix it. I just wanted — I wanted to do a normal thing once. With somebody on the team. Just to — just to know I could.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego does not, immediately, respond."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: here is the place."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: here is the small opening BT is giving me to return a small honest thing about myself."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I could tell him about — about the room, about the spring. I could tell him I am sixteen and that I should not be at this job and that the team has accepted me because of the weight I am carrying that they do not know about. I could tell him that I am, by being the kid the team protects, the reason they do not have to think about him."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I could tell him."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I'm — I'm glad you asked. The taqueria's good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT, in the driver's seat, registers — Diego can see, in the way the corners of BT's mouth do the small resigned thing — that Diego has not, this morning, returned the disclosure."
+    },
+    {
+      "t": "narrate",
+      "text": "BT does not, externally, react."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah, man. The flautas are gonna be the move.",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "hugo",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The food comes out at four-thirteen."
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo brings it himself, in a brown paper bag with the receipt stapled to the top. He hands the bag through the window to BT. He hands the two horchatas — large for Diego, medium for Doug — separately, in styrofoam cups with sealed lids. BT hands the medium across to Diego to hold for Doug. Diego holds it."
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo looks at the bag for a second before he lets it go."
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "You guys want extra sauce.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah, hit me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo opens the small box at his elbow. He grabs a handful of small clear plastic packets — green sauce, red sauce, the orange ghost-pepper sauce El Rancho has been making in-house for two years and that they call El Diablito, and the small individual squeeze packets of pickled jalapeños El Rancho includes free with any flauta order. He tosses them into the bag."
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo, by Diego's count, throws fourteen packets in."
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "You're set.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Thanks, man.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo slides the window closed."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_layby_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "BT pulls out of the taqueria lot."
+    },
+    {
+      "t": "narrate",
+      "text": "He drives to a small lay-by a quarter mile down the road — a small gravel turnout the city has, at some point in the past, paved over with a single picnic table that nobody uses but that is, at four-fifteen AM in mid-August, available. BT pulls into the turnout. He parks. He kills the engine."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Eat in the car, eat at the table?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Car. AC.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He takes the bag. He opens it. He hands Diego the burrito, which is wrapped in foil and tin and is the weight of a custom burrito that has been wrapped at El Rancho. He pulls out his own flauta box. He opens the box on the center console between them. The flautas are five rolled fried chicken cylinders with a small cup of guacamole in the corner of the box. He pours one of the green-sauce packets over the flautas. He pours one of the red-sauce packets over the flautas. He pulls out an El Diablito packet, considers it for a beat, and puts it back in the bag."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Rain check on the Diablito. I have to drive.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego unwraps the burrito."
+    },
+    {
+      "t": "narrate",
+      "text": "The burrito is, by his count, the burrito he ordered. Steak, white onion, the small cube of potato Hugo's mother — who is the cook on most nights — does in the burrito when Diego asks for it, the guac and sour cream and cheese in roughly equal proportion, with the small salsa-roja Hugo's mother has done in-house for fifteen years already inside the burrito because Hugo's mother does not, in her burrito-making, accept the fiction that a burrito is supposed to be assembled without internal sauce."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego pours one of the green-sauce packets over the open end of the burrito anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "He pours one of the El Diablito packets over the burrito too."
+    },
+    {
+      "t": "narrate",
+      "text": "He bites."
+    },
+    {
+      "t": "narrate",
+      "text": "The burrito is — Diego registers, for the third time this summer — exactly the burrito he wants."
+    },
+    {
+      "t": "narrate",
+      "text": "He chews."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Oh, man.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "These are — these are real.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They eat."
+    },
+    {
+      "t": "narrate",
+      "text": "For about three minutes, neither of them speaks."
+    },
+    {
+      "t": "narrate",
+      "text": "The car is, in the lay-by, quiet. The AC is on at the second-from-lowest setting. The dashboard accumulates, between them, the small empty foil from the burrito's outer wrap and three of the fourteen sauce packets, two of them empty and crumpled, one of them — an El Diablito — that BT had, in his second flauta, dropped between his legs and that has, now, ended up on the driver's seat under his thigh in a way that means the packet is going to leak orange sauce into the upholstery and that BT is, in approximately ninety minutes when he gets home, going to discover."
+    },
+    {
+      "t": "narrate",
+      "text": "BT does not, currently, know this."
+    },
+    {
+      "t": "narrate",
+      "text": "Neither does Diego."
+    },
+    {
+      "t": "narrate",
+      "text": "The packet leaks slowly."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Tomorrow night.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Inventory.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "How bad's it going to be.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I don't know. It's my first one at Centro. Marisol said it's a long night. Russell said it's a long night. Jessa said be hydrated. Doug said — ",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Doug didn't say anything.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Doug never says anything.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Doug says things.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT looks at him."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "He says things small. You have to be — you have to be paying attention.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT is quiet for a moment."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "I don't think Doug talks to me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "He talks to you a little bit.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Less than he talks to you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Why.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego does not, in the moment, fully know how to answer."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: Doug talks to me because Doug has decided I'm — that I'm someone Doug talks to. The deciding is some specific Doug thing. I do not know the rule. I have been, in the five weeks I have known him, registering the rule in small pieces. The rule is — the rule is something about the way I am in the building. Doug does not have a rule yet about the way you are in the building, BT. Doug is — Doug is still watching."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I don't know, man. I don't know Doug well enough to know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A pause."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Doug okay?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego thinks about this."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I think Doug is — I think Doug is doing fine. He reads a lot. He keeps to himself. He works clean. He's been at this longer than any of us. I think he's — I think he's where he wants to be.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "That's a hell of a thing to say about a guy stocking dairy at three AM at a Centro Foods in Texas.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT laughs."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "I mean — fair. I get it. Sometimes the place you want to be is the place that does not, technically, look like the place a person would want to be. I get that.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, chewing, registers — with the small careful attention he has been training all summer — that BT has just, in two sentences, said something honest about himself that he has not yet, this evening, said."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego does not, in the moment, name it."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah. The job's — the job's the job.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "By four twenty-eight the food is mostly gone."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego has eaten about three-quarters of the burrito. The remaining quarter, wrapped back in the foil, is on the dashboard. He is going to take it home. He is going to eat it tomorrow afternoon when he wakes up. His grandmother is going to register the foil and is going to know he ate at El Rancho on his lunch break, and his grandmother has, over five weeks, learned to register this small fact without commenting on it because his grandmother has decided that the small fact of her grandson eating Mexican food at four AM is, in his recovery, a thing she does not need to interrogate."
+    },
+    {
+      "t": "narrate",
+      "text": "BT has eaten four of the five flautas. The fifth is in the box. BT is going to eat it cold in the parking lot at Centro at six AM when the second-half wind hits him and he needs the extra calories. He does not yet know this. The flauta knows."
+    },
+    {
+      "t": "narrate",
+      "text": "The horchatas, by four twenty-eight, are gone — both Diego's large and the medium for Doug, which Diego has been holding the entire meal between his thighs to keep from sliding around on the floor."
+    },
+    {
+      "t": "narrate",
+      "text": "Wait. Doug's. Diego, with the small horror of a person who has been holding a horchata for Doug and has, in the small relaxation of a meal he had not expected to enjoy, drunk it without registering whose it was, looks at the empty cup."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Oh, no.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "What.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Doug's horchata.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "What about it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego holds up the empty cup."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I drank it.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "BT, in the driver's seat, looks at the cup."
+    },
+    {
+      "t": "narrate",
+      "text": "BT looks at Diego."
+    },
+    {
+      "t": "narrate",
+      "text": "BT, after a beat, starts laughing."
+    },
+    {
+      "t": "narrate",
+      "text": "BT laughs in the way a man laughs at a thing that is, by the small cosmic justice of late-night fast-food ordering, exactly the thing that should have happened. He laughs for about eight seconds. The laugh is loud. The laugh is the loudest sound the car has produced this morning."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the passenger seat, after a beat, also laughs."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Doug is going to — Doug is going to look at me.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Doug is going to look at you.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Doug is going to do that thing he does where he doesn't say anything but you know he is, like — he is appraising.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "We have to go back. We have to get him another one. Hugo is still open. Pull around, get the medium, bring it back. Doug doesn't know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "BT. We have like fifteen minutes before lunch is over.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Plenty of time. Pull out.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT, who is still in the driver's seat and is the one who would, technically, be doing the pulling out, starts the engine."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_taqueria_el_rancho_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls out of the lay-by."
+    },
+    {
+      "t": "narrate",
+      "text": "He drives back to El Rancho."
+    },
+    {
+      "t": "show",
+      "char": "hugo",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo is at the window."
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo, when BT pulls back into the drive-thru lane, slides the window open and looks at them."
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "You guys forget something.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "He drank the horchata for the guy back at work.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo, in the window, registers this."
+    },
+    {
+      "t": "narrate",
+      "text": "Hugo, after a beat, laughs — a small dry laugh, the laugh of a kid who has been working the night shift at a taqueria for two years and who has heard, by now, most of the small late-night human catastrophes that get reported to drive-thru windows."
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "Medium horchata.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Medium horchata. And Hugo — sorry, man. I owe you the second trip.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "It's a horchata, man. It's three dollars. Pull around.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Add another Diablito packet. For the road.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "On the house.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "BT pulls around."
+    },
+    {
+      "t": "narrate",
+      "text": "The horchata comes out in two minutes."
+    },
+    {
+      "t": "show",
+      "char": "hugo",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "BT pays — three dollars for the horchata, no charge for the Diablito. BT puts another five in the tip jar."
+    },
+    {
+      "t": "say",
+      "char": "Hugo",
+      "text": "You guys take care.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "You too, man.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "BT pulls out."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch16_dawn"
+    }
+  ]
+}

@@ -1,0 +1,1027 @@
+{
+  "id": "vol6_ch22_vinton",
+  "vol": 6,
+  "chapter": 22,
+  "type": "chapter",
+  "title": "Ch 22 — Vinton",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_school_parking_lot.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Vinton",
+      "sub": "Saturday — 16:03 — School Field",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The Vinton bus pulls into the lot at four oh-three."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is at the field gate in pads. He has been at the field gate in pads since three forty-five, which is when Coach K told the team to be at the field gate in pads. Coach K had said three forty-five in the locker room at three twenty-two and the team had — to a man, including the kids who, on practice days, drifted in late — been at the field gate at three forty-five. Saturday is not practice. Saturday is the day Coach K does not have to ask twice."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben's helmet is in his right hand. His mouthguard is in his left. The pads are the pads he has been in for three weeks. They are starting to smell like pads."
+    },
+    {
+      "t": "narrate",
+      "text": "The bus says VINTON HIGH SCHOOL on the side in painted block letters."
+    },
+    {
+      "t": "narrate",
+      "text": "The Vinton kids start coming off at four oh-three. They are, by their bulk through the bus door, about the same size as the Texas team. Their pads are a different color. Their helmets have an alligator decal Ben has not seen before. The kid who comes off third is six-four. The kid who comes off seventh is the size of Tucker."
+    },
+    {
+      "t": "narrate",
+      "text": "The last one off the bus is the coach."
+    },
+    {
+      "t": "show",
+      "char": "guidry",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Guidry is wiry and sunburned, with patches of long white hair growing from a head that is otherwise mostly bald and red. He is in a Vinton Athletics polo, shorts, and the bright white New Balance sneakers a man wears when his wife told him that morning not to wear the loafers."
+    },
+    {
+      "t": "narrate",
+      "text": "A kid in the lot — a sophomore by his size — shouts:"
+    },
+    {
+      "t": "say",
+      "char": "Vinton Sophomore",
+      "text": "GUIDRY!",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Guidry",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Vinton Sophomore",
+      "text": "Where do we drop the gear.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Guidry",
+      "text": "Visiting bench. Move it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A senior:"
+    },
+    {
+      "t": "say",
+      "char": "Vinton Senior",
+      "text": "GUIDRY!",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Guidry",
+      "text": "What.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Vinton Senior",
+      "text": "Bus driver says he's leaving the bus open if we want.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach Guidry",
+      "text": "Tell the bus driver he's a good man.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben watches."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_school_bleachers.jpg"
+    },
+    {
+      "t": "show",
+      "char": "coachk",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, at the home bench, has also been watching. He starts across the field. Guidry starts toward him. They meet at the fifty. Ben is too far back to hear them. He sees them shake hands. He sees Guidry slap Coach K's shoulder. He sees Coach K do the thing Coach K does, which is to nod once and listen."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen, at four oh-six, is in the parking lot."
+    },
+    {
+      "t": "narrate",
+      "text": "She is sixty-two. She had the bypass in March. The doctor on Monday had said probably okay on the phone — the operating phrase as of this week, upgraded from we'll see in September. Eileen had carried the upgrade home and had not, between Monday and Thursday, told anyone. Thursday night she had told her husband at the kitchen table over the lemon-water he has been making her every morning since April. Her husband had set down the Express-News and looked at her and not said anything for a count and then said, Eileen. The game's Saturday. You want to come. And she had said, yes. And her husband had said, good. I'll set up the folding chair in the third row Saturday morning. And that had been that."
+    },
+    {
+      "t": "narrate",
+      "text": "The folding chair is, this afternoon, in the third row of the home bleachers. Her husband had set it up at one PM, between his school visit and the locker room walk-through."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets out of the car."
+    },
+    {
+      "t": "narrate",
+      "text": "The Texas afternoon, in mid-August, is one hundred and one."
+    },
+    {
+      "t": "narrate",
+      "text": "She has, in a canvas bag over her shoulder: the thermos of lemon-water, the paper fan with the rooster on it she had bought in Mexico in 1989, a small bottle of the beta-blocker that travels with her now, a baseball cap her husband had bought her in 1996, and a phone she will not look at for the next four hours."
+    },
+    {
+      "t": "narrate",
+      "text": "She walks slowly across the lot. There is no one to be in a hurry for. The folding chair is going to be in the third row whether she gets to it at four-twelve or four-fifteen."
+    },
+    {
+      "t": "narrate",
+      "text": "She reaches the gate at four-eleven."
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben sees her come in."
+    },
+    {
+      "t": "narrate",
+      "text": "He sees her because he has, in three weeks of practice, been quietly trying to figure out which woman in the stands is Coach K's wife. He has known her name is Eileen since Wednesday at dinner when his father had mentioned it. He has known she had been sick. He has known, from the way Coach K had said Eileen in the parking lot on a Tuesday and from the way Coach K had not, in three weeks, mentioned her again, that she was the thing Coach K had been carrying through the summer that nobody on the team was supposed to be aware of."
+    },
+    {
+      "t": "narrate",
+      "text": "Today she is at the gate."
+    },
+    {
+      "t": "narrate",
+      "text": "She is wearing jeans and a white short-sleeved blouse and the baseball cap. Her hair under the cap is gray. She is moving the way a woman who had open-heart surgery five months ago moves, which is slowly and deliberately and on a route she has, at the car, already chosen."
+    },
+    {
+      "t": "narrate",
+      "text": "She passes Ben at the gate."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not look at him."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not know who he is. She has no reason to. Ben is one of forty boys in helmets."
+    },
+    {
+      "t": "narrate",
+      "text": "She climbs the bleacher steps slowly. The folding chair is the only folding chair in the third row. She lowers herself into it. She sets the thermos on the bench at her right. She puts the fan in her lap."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben watches."
+    },
+    {
+      "t": "show",
+      "char": "coachk",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, on the sideline, has not yet turned around to see her."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K is, by Coach K's professional instinct, not going to turn around to see her until halftime, because turning around now would be the thing that would interfere with the work."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen, in the third row, knows this."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks from the thermos."
+    },
+    {
+      "t": "narrate",
+      "text": "She fans herself with the rooster."
+    },
+    {
+      "t": "narrate",
+      "text": "The walk-through is at four-thirty."
+    },
+    {
+      "t": "narrate",
+      "text": "The two teams run through the substitution and timeout procedures with the refs. Coach K and Coach Guidry stand at midfield with the head ref and confer about clock management. The Vinton kids are loud. The Texas kids are quieter. The home bleachers are filling — a hundred and twenty by six, maybe a hundred and fifty, which is what a Texas high school scrimmage on a Saturday in August draws when the schools have been doing this annual game since 1991."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is on the offensive line. He has been on the offensive line in pads since the first day of camp three weeks ago. Today, by an announcement Coach K made in the locker room at three twenty-eight, he is also TE-1."
+    },
+    {
+      "t": "narrate",
+      "text": "Tight end one. The starting tight end on Saturday. The position he had not, three weeks ago, been on Coach K's depth chart for, and that he is in now because of a conversation he had with Coach K in the parking lot on a Tuesday morning two weeks back when Coach K had asked him why he had said the thing he had said in the locker room about Pete, and Ben had said because it was the thing, and Coach K had said yeah, and Coach K had walked away, and the next Monday Ben had been at TE-1 in practice."
+    },
+    {
+      "t": "narrate",
+      "text": "Three weeks of football. TE-1 on the depth chart on the Saturday his coach's wife is in the third row."
+    },
+    {
+      "t": "narrate",
+      "text": "He breathes."
+    },
+    {
+      "t": "narrate",
+      "text": "He puts his helmet on."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_school_field_evening.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The game starts at six."
+    },
+    {
+      "t": "narrate",
+      "text": "Texas wins the toss. Brent, the senior quarterback, takes the offense out for the first series. The first three plays are vanilla — handoff, handoff, slant. Vinton's defense reads the slant. Brent throws it anyway. The slant is incomplete. Punt."
+    },
+    {
+      "t": "narrate",
+      "text": "Vinton has the ball for two series. They go three-and-out the first time, twelve plays the second time, and score on a counter from the seven that catches the Texas linebackers leaning."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Guidry's kid kicker misses the PAT. 0-7. The home crowd is quiet. The visiting bench is loud."
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "In the third row Eileen drinks her lemon-water."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "coachk",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, at the bench during the change of quarters, says to Brent:"
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "We're gonna run the wrinkle.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Brent",
+      "text": "Now?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Next series. Tell the line. Tell Ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Brent",
+      "text": "Coach. You sure.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Tell the line.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Brent goes to the offensive huddle on the sideline. He tells the line. He tells Ben."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The wrinkle is a play they have been practicing for six days and have not run in front of an opponent. The play is a play-action bootleg with Ben — at TE-1 — leaking out of the protection on the back side. Ben has practiced the leak twelve times. Six of the twelve had been clean. The other six had been late or had been so early Vinton would have read it from snap."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does not, in the huddle, say anything."
+    },
+    {
+      "t": "narrate",
+      "text": "The huddle breaks."
+    },
+    {
+      "t": "narrate",
+      "text": "The line sets."
+    },
+    {
+      "t": "narrate",
+      "text": "Brent calls the cadence."
+    },
+    {
+      "t": "narrate",
+      "text": "The ball snaps."
+    },
+    {
+      "t": "narrate",
+      "text": "Brent fakes the handoff to Omar. Brent rolls right. Ben — on the back side, on the left — chips the defensive end one count, releases, and runs the drag."
+    },
+    {
+      "t": "narrate",
+      "text": "He is open."
+    },
+    {
+      "t": "narrate",
+      "text": "He is so open he does not, for a half second, believe he is open."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns his head."
+    },
+    {
+      "t": "narrate",
+      "text": "The ball is in the air."
+    },
+    {
+      "t": "narrate",
+      "text": "He catches it."
+    },
+    {
+      "t": "narrate",
+      "text": "He runs four steps and Number 47 hits him at the sideline and he goes down."
+    },
+    {
+      "t": "narrate",
+      "text": "Twenty-two yards."
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The home crowd does the cheer Texas high school crowds do for yeah, that's the wrinkle, that worked. It is not the biggest cheer of the night. It is not the cheer that wins the game. It is not, in any meaningful way, the most important play of the scrimmage."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen, in the third row, sees the play."
+    },
+    {
+      "t": "narrate",
+      "text": "She sees Coach K, on the sideline, not move."
+    },
+    {
+      "t": "show",
+      "char": "coachdale",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "She sees Coach Dale, behind the offensive huddle, give the kid in the TE-1 jersey a small thumbs-up."
+    },
+    {
+      "t": "narrate",
+      "text": "She sees the kid in the TE-1 jersey jog back to the huddle."
+    },
+    {
+      "t": "narrate",
+      "text": "She watches the drive."
+    },
+    {
+      "t": "narrate",
+      "text": "The drive ends six plays later in a touchdown — Omar, the senior halfback, over the right side behind Tucker and Ben."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben's block on Number 47 on the touchdown play is the cleanest block he has thrown in three weeks."
+    },
+    {
+      "t": "narrate",
+      "text": "Wesley kicks the extra point."
+    },
+    {
+      "t": "narrate",
+      "text": "7-7."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Halftime is at six fifty-six."
+    },
+    {
+      "t": "narrate",
+      "text": "The Texas team goes to the locker room. The Vinton team goes to the visiting locker room. Coach K does not, during the walk to the home locker room, turn his head toward the third row."
+    },
+    {
+      "t": "show",
+      "char": "coachk",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He turns his head at the bottom of the bleacher stairs. He looks up. Eileen looks down. He does not smile. He nods once. She nods once back. He goes into the locker room."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her lemon-water."
+    },
+    {
+      "t": "narrate",
+      "text": "The bypass had been March 4. By March 14 she had been home from the hospital. By April 1 she had been able to walk to the mailbox without resting. By June 1 she had been able to drive to the H-E-B by herself. By July she had been doing the four-thirty table on Fridays with Bianca and Anita, which had not been her idea — Bianca had asked her on a Wednesday — and which had become, over six Fridays, a thing she now planned her Thursday evenings around."
+    },
+    {
+      "t": "narrate",
+      "text": "She watches the field empty."
+    },
+    {
+      "t": "narrate",
+      "text": "She has, in the canvas bag, half a sandwich her husband had made her at noon. She does not eat it."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, in the fifteen minutes of halftime, move."
+    },
+    {
+      "t": "show",
+      "char": "lindaguidry",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Linda Guidry comes up the bleacher steps at seven oh-four."
+    },
+    {
+      "t": "narrate",
+      "text": "Linda is sixty-something, short, wearing a Vinton Athletics polo and what look like her husband's sunglasses. She has, in her hand, a paper cup of stadium lemonade. She climbs to the third row. She stops at Eileen's chair."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "You Coach K's wife.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "I'm Linda. Guidry's wife.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "My husband told me, on the drive up from Vinton, that there was going to be a woman at the home bleachers tonight who was going to be Coach K's wife. He said Linda, I have known Coach K for ten years and I have not, in those ten years, met his wife. Tonight I have a feeling. I asked him what he meant by feeling. He said Coach K's been sending me emails this week with a different rhythm than usual. I asked him what the rhythm was.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen waits."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "He said the rhythm of a man whose wife is going to be okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen, in the folding chair, is for a beat very still."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "I had the bypass in oh-two. I know the rhythm.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Linda lowers herself onto the bleacher bench next to Eileen's chair. She does not, in lowering herself, ask permission. She drinks her lemonade."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "How long since.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "March fourth.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "What was the operating phrase Monday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Probably okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Probably okay's the good one. Probably okay means they're not, this year, going back in. Probably okay means you should book the Christmas flight.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "My husband told me yesterday afternoon he wanted to book the Christmas flight.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "My husband told me the same thing in oh-two. We went to Colorado. The flight was the only thing that mattered all year. Take it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen does not, for a long count, respond."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Linda.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "This is the first time I have been at a game since February.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I am not, right this minute, going to be able to keep my face entirely steady.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "That's all right, sweetheart. Drink your water. We're going to watch the second half together. Your husband and mine are going to be on opposite sidelines yelling at fifteen-year-olds and we are going to be in the third row and you are going to be all right.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen drinks her lemon-water."
+    },
+    {
+      "t": "narrate",
+      "text": "Linda Guidry, after a beat, puts her hand briefly on Eileen's hand on the armrest of the folding chair. Once. Light. Then her hand is gone."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Welcome back, sweetheart.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Thank you, Linda.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The voice is not quite the voice she had had a minute ago."
+    },
+    {
+      "t": "narrate",
+      "text": "The second half is the second half."
+    },
+    {
+      "t": "narrate",
+      "text": "Texas scores on the opening drive — a long pass on third-and-eight that Marcus, the slot, catches at the Vinton sixteen. Three plays later Brent finds Ben in the flat on a quick out and Ben gets six yards before going out of bounds. Omar in for the touchdown. 14-7."
+    },
+    {
+      "t": "narrate",
+      "text": "Vinton answers with two field goals."
+    },
+    {
+      "t": "narrate",
+      "text": "By the fourth quarter Texas is up 21-13 and the Vinton kids are playing harder, not less hard, in the small way teams that are losing and tired do when they have decided not to lose any worse."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, at TE-1, blocks. The slip-screen they had been saving — Coach K calls it on the second-to-last drive with three minutes left — gains forty-two yards on the back of a missed assignment by the Vinton corner. Texas runs the clock. 21-13 final."
+    },
+    {
+      "t": "narrate",
+      "text": "The home crowd is loud at the buzzer."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen, in the third row, with Linda on the bench beside her, has not, in the second half, looked at the clock."
+    },
+    {
+      "t": "show",
+      "char": "coachk",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "guidry",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "At the buzzer the teams meet at midfield."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K and Coach Guidry shake hands. The handshake is a long one — eight seconds, Eileen will later realize, watching her husband walk back to the sideline — and during the handshake Coach K says something to Guidry that Eileen does not hear and that Linda also does not hear. Guidry laughs. Coach K does not."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The teams shake hands down the line. Ben is the third Texas player in the line. Number 47 — the Vinton outside linebacker who had hit him on the wrinkle play — finds him."
+    },
+    {
+      "t": "say",
+      "char": "Number 47",
+      "text": "You're a senior.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Number 47",
+      "text": "You been playing your whole life.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "First season.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Number 47",
+      "text": "Bullshit.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Swear.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Number 47 laughs."
+    },
+    {
+      "t": "say",
+      "char": "Number 47",
+      "text": "Man. Good luck this year.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "You too.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They shake."
+    },
+    {
+      "t": "narrate",
+      "text": "The line moves on."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_el_rancho_taqueria.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "El Rancho is open until midnight."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K had emailed Coach Guidry on Wednesday to tell him about it. The Vinton team — twenty kids — pulls in at ten oh-six. Coach Guidry has the long booth at the back. The Vinton team takes the two tables in the corner. Hugo at the window has been told to expect them. Hugo at the window has gotten his mother in early to handle the rush. Hugo at the window is, by ten oh-eight, running orders through faster than he has ever run orders through on a Saturday night."
+    },
+    {
+      "t": "show",
+      "char": "coachk",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "lindaguidry",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K and Eileen are in the booth across from Coach Guidry and Linda Guidry."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K is eating a flauta. Linda Guidry is on her second margarita. Eileen has a horchata."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Tomorrow you sleep until nine and your husband makes you coffee.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "And Christmas, Colorado.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "And next Saturday you do this again.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I think so.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "You don't have to think so. The hard one was tonight. Next week is the easy one. The week after that you stop counting.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "All right, Linda.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "I'm bossy. I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "It's all right.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Linda Guidry drinks."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, across the booth, is eating his flauta and listening."
+    },
+    {
+      "t": "narrate",
+      "text": "He sets the flauta down."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at Eileen."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen looks at him."
+    },
+    {
+      "t": "narrate",
+      "text": "The two of them, across the table at the taqueria in mid-August in Texas at ten forty-two PM after their first game-day in five months together, look at each other without performing anything."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "How was it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "It was — it was the game.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, after a beat, smiles."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "...",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "The smile is the slow smile of a man who has been checking himself for five months. He is, in this booth, at this hour, allowing himself to not check."
+    },
+    {
+      "t": "narrate",
+      "text": "The smile is the longest smile she has gotten from him since March."
+    },
+    {
+      "t": "narrate",
+      "text": "She holds it."
+    },
+    {
+      "t": "narrate",
+      "text": "Linda Guidry, on her side of the booth, is watching them. She does not, this once, say anything."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Guidry, beside her, takes a bite of his flauta."
+    },
+    {
+      "t": "narrate",
+      "text": "The taqueria, around them, is loud. Hugo's mother is yelling something at the back. The Vinton kids in the corner are eating. Faulk, the Vinton quarterback, is laughing at something Domingue has just said."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen drinks her horchata."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, for the rest of the meal, let go of her husband's eyes."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch22_foxhole"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "vol1_link_window",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "The Missing Link — the window",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "You stand at the window. The glass is glazed with rain on the outside and breath on the inside. Beyond it, the apron of asphalt, the two pumps, the bench, the awning, the young man."
+    },
+    {
+      "t": "narrate",
+      "text": "He has turned slightly. He is now facing the road that runs past the depot — though there is, at this hour, no road traffic at all. The road goes east into a darkness that has no lights in it for a long way."
+    },
+    {
+      "t": "narrate",
+      "text": "You watch him for a count of breaths. He does not move. The light at the seams of his coat is steady. You begin to suspect he is the source of the warmth you can feel on the glass."
+    },
+    {
+      "t": "narrate",
+      "text": "A moth has gotten in somehow. It is making its small dumb circles around the fluorescent above you, not the warmer thing it can probably sense outside."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_hub"
+    }
+  ]
+}

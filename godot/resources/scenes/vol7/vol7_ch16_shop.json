@@ -1,0 +1,374 @@
+{
+  "id": "vol7_ch16_shop",
+  "vol": 7,
+  "chapter": 16,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Board Lords",
+      "sub": "Saturday morning",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Kai opened Board Lords at nine twenty-eight. The shop had been sitting since Wednesday morning at seven twenty, holding the dust, waiting for the bell to ring. The bell rang when he unlocked it.",
+      "t": "narrate"
+    },
+    {
+      "text": "He flipped the CLOSED to OPEN. He turned on the back light over the repair bench. He pulled the kettle out from under the counter and put it on the burner.",
+      "t": "narrate"
+    },
+    {
+      "text": "The Tuesday note he had taped above the OPEN sign was still on the door. Family thing. Back Friday. — Kai. He pulled it off. He read it once. He folded it. He put it in the small drawer under the register where he kept the pieces of paper he had taken off the door over the years.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stood at the front window with a cup of coffee.",
+      "t": "narrate"
+    },
+    {
+      "text": "The sanderling mural across Main had stopped growing on Friday, at maybe sometime in the afternoon. The patch on the sanderling had stopped at about the time Lena had finished painting the face on the alley wall four blocks south.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai had not, in his head, made the connection until now. He registered the stopping at the same moment he registered the parallel. The substrate's eating was the substrate's eating. The substrate had stopped two patches when one had been finished.",
+      "t": "narrate"
+    },
+    {
+      "text": "He registered also that the substrate had not painted into the cleared section of the sanderling. The sanderling's bird-shape was gone. The brick under the patch was bare. The wall was waiting for somebody. Possibly Janet Halfmoon, who had painted the sanderling in '46. Possibly a different painter. Possibly nobody had been chosen yet and the wall would wait.",
+      "t": "narrate"
+    },
+    {
+      "text": "He drank from the coffee.",
+      "t": "narrate"
+    },
+    {
+      "text": "The first customer came in at ten-oh-three. It was Jameson.",
+      "t": "narrate"
+    },
+    {
+      "text": "Jameson was eighteen now — the kid who had come in Tuesday with his cousin Mateo and Hannes and the cracked Tess Mariana. He was in the kind of canvas jacket the boys in this town wore when their parents had bought it for them in 2049 and they had been wearing it ever since.",
+      "t": "narrate"
+    },
+    {
+      "char": "jameson",
+      "text": "Kai.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "text": "Jameson.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "I came by Wednesday. Your door was locked. The note said Friday.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I had family business. The shop's open again.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "Yeah. I have — Mateo asked me to come check on the board.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I told Mateo to skate it.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "He skated it Tuesday afternoon. He skated it Wednesday. He skated it Thursday morning before he went home to Newport. The board held. The repair held.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "He brought you a sandwich from Hans's on Wednesday morning. He left it at the door when you weren't here. He took it back. He told me to tell you the sandwich was for you and that he ate it on the bus home because he had to.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "Mateo wanted me to tell you the board held.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tell him I'm glad.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "I will.",
+      "t": "say"
+    },
+    {
+      "text": "Jameson did not, for a count, leave. He stood at the counter with his hands in his coat pockets and looked at Kai.",
+      "t": "narrate"
+    },
+    {
+      "char": "jameson",
+      "text": "Kai.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah, Jameson.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "I saw the wall this morning.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Which wall.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "The alley behind The Salty Tome. The face. Lena painted a face on the wall yesterday morning.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "I was at the Daily Grind at six-thirty for Mom's coffee on the way to the co-op for my Saturday shift. I came back through the alley because it's faster from the Grind to Hemlock. I saw the face.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "I stood at the wall for ten minutes. I was late to my shift. Margaret didn't say anything about my being late. She had her hand on the wall when she came through this morning at seven. She had been at the wall, by what she told me when I got in at twenty past, for fifteen minutes.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Jameson.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The wall is — the wall is something we are figuring out.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "Yeah. I figured.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Lena painted what she had to paint. I am — I am not going to be the person to explain it. Lena is. If you want to know what the face is, ask Lena.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "I asked Lena at the Grind this morning at seven when I came back through the second time. She was at the counter. She made my mom's coffee. I asked her: Lena. The face.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "She said: Jameson. Come to the alley tonight at eight if you want to look. I will be there. I'll tell you what I can. I said I would come.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "She's expecting you at eight tonight.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'll be there at eight too.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "Yeah, I figured. Margaret said Cale was at the alley yesterday morning with Lena. Margaret said this is town business.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "It is.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "I want to be in it.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Jameson.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You are in it. You will be at the alley at eight. We will tell you what you need to know.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You're at the age now where you start being in the things the town carries. They've been carried by adults. The carrying is going to start being shared. You're coming into the share.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Come at eight. Bring Hannes if Hannes wants to come. Don't bring everyone you have ever skated with. Bring people who would stand at a wall for ten minutes and not say anything.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "Hannes was at the wall this morning. He came up the alley behind me. We stood at the wall together. He did not say anything for the ten minutes.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "He said one thing when we walked back out — he said Kai's going to know what this is. I said I would ask you. I am asking you. I will bring him at eight.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Good.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "Kai.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "Mateo wanted me to also tell you — when I told him on the phone last night that I was coming by — Mateo wanted me to ask you, when he comes back at Christmas, if he can come up to the cabin with you.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "He said: Jameson. Ask Kai if I can come up to the cabin sometime. I want to be at the kind of place the man who fixed my board comes from. I am asking. He's thirteen. He skates the Tess. He's a good kid.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah. He can come up. Tell him Christmas. The road is hard in the winter. We will pick a day.",
+      "t": "say"
+    },
+    {
+      "char": "jameson",
+      "text": "I'll tell him.",
+      "t": "say"
+    },
+    {
+      "text": "He went.",
+      "t": "narrate"
+    },
+    {
+      "text": "The shop ran the morning rush from ten thirty-five to noon.",
+      "t": "narrate"
+    },
+    {
+      "text": "Three teenagers from the consolidated middle school who had ridden their boards down from old-Waldport for a Saturday ride. They needed a deck wax and two truck-tightenings.",
+      "t": "narrate"
+    },
+    {
+      "text": "A man Kai did not know from a vacation rental who needed bearings. A woman from town — Petra's friend Margaret from the bookstore club — who came in to ask if Kai could fix the wheels on her granddaughter's roller skates.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai told her he could but it would have to wait until Tuesday. She said: Tuesday is fine. The granddaughter is at her mother's until Wednesday anyway. I'll bring them in. She left.",
+      "t": "narrate"
+    },
+    {
+      "text": "At eleven-forty he registered that he had not eaten since the bakery at six. He had been working for three hours without sitting down.",
+      "t": "narrate"
+    },
+    {
+      "text": "He registered also that he was — by his own reading of his body at the bench — running on the kind of attention that came from being awake at four-twenty and not being able to go back to sleep, and that the running was not, in the way running-on-not-enough-sleep usually was, draining him. He felt clear.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not, in the months he had been carrying the basement-of-servers dream, felt this clear in the morning.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate had taken something from him on Wednesday at the cabin when he had been in the experience for ninety minutes. He had not, until now, named what the substrate had taken.",
+      "t": "narrate"
+    },
+    {
+      "text": "He named it now: the substrate had taken the dream. The basement-of-servers dream had not come to him Thursday night at the cabin. The dream had not come to him Friday night. The dream had not come last night either.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had been sleeping without the basement for three nights. The ferret in the dream had been replaced — by what Kai was now reading at the bench — by the imprint in the experience. Kai had met the imprint. The dream had been the dream that had been telling him to meet the imprint. The meeting was done. The dream was done.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "The ferret. Where is the ferret now.",
+      "t": "say"
+    },
+    {
+      "text": "He did not have an answer. He kept working.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch16_aud",
+      "t": "jump"
+    }
+  ],
+  "title": "Board Lords"
+}

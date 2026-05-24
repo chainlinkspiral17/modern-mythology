@@ -1,0 +1,459 @@
+{
+  "id": "vol7_ch20_each",
+  "vol": 7,
+  "chapter": 20,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The Form",
+      "sub": "Each of them",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "The figure at the door was, by Tem's read from across the cabin, no longer the figure she had spoken to at the door.",
+      "t": "narrate"
+    },
+    {
+      "text": "Or rather — she was the figure Tem had spoken to and also other figures. Several people simultaneously, by what Tem registered as she looked — the substrate making the door hold the multiple by some grace of how cedar held what it had to hold.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per was looking at the door with his face — Per's face was the face of a man looking at his father. Tem knew this without having to ask.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per's face at sixty was the face of a son who had not seen his father since 1978 and was now, at the door of a cabin his father had built in '79 a year after he had drowned, seeing him.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per stood up from the table.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Olaf.",
+      "t": "say"
+    },
+    {
+      "text": "Tem could not see what Per was seeing — from her angle she still saw the young woman in the yellow slicker with the hood up.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per took a step toward the door.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Dad.",
+      "t": "say"
+    },
+    {
+      "text": "Then he stopped. He did not walk further. He stood at the table with one hand on the table and the other at his side. He looked at the door for a long count.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Yeah. Yeah, Dad.",
+      "t": "say"
+    },
+    {
+      "text": "He sat back down. He did not, for the count, take his eyes off the door.",
+      "t": "narrate"
+    },
+    {
+      "text": "Cale was looking at the door. Cale's face was the face of a man looking at a sixteen-year-old kid in a basement on the Alsea River.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Nate.",
+      "t": "say"
+    },
+    {
+      "text": "Tem heard him say it. Cale — who had been picking at the cuticle of his thumb for the past hour — was not picking now. His hands were on the table flat. He was looking at the door.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Nate. I have — I have been waiting for you to come here in some way for thirty years.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "text": "He did not, for the rest of the time the figure was at the door, say anything else. He looked. He was at the table with his hands flat — receiving Nate at the door in the way Cale had needed to receive Nate.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "Finn was looking at the door. Finn's face was the face of a man looking at a detective in a wax canvas coat.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Brandon.",
+      "t": "say"
+    },
+    {
+      "text": "The crow on the table beside the cedar bell-piece looked up. The crow looked at the door.",
+      "t": "narrate"
+    },
+    {
+      "char": "crow",
+      "text": "Brandon.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "text": "Finn looked at the door for a long count.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Thank you for the crow. Thank you for the notebook. Thank you for the three things.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "Kai was looking at the door. Kai's face was the face of a man looking at a young boy at a desk in a basement of servers.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Imprint.",
+      "t": "say"
+    },
+    {
+      "text": "The boy at the door — by what Tem could not see and by what she was reading from Kai's face — said something. Kai listened. Kai's face went still in the way Kai's face went still when Kai was registering something he wanted to remember exactly.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "I am going to see her. I am going to come back and tell you.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yes, I will.",
+      "t": "say"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "text": "Roy was looking at the door. Roy's face was the face of a man looking at a fisherman who had drowned in 1978.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Olaus.",
+      "t": "say"
+    },
+    {
+      "text": "Roy was, by Tem's read, the most steady of the six. Roy had been at the door of an apartment in Smolvud with a bowl on a shelf for twenty-one years and had been waiting for the kind of moment that was happening at the cabin's door now. Roy was ready in a way the others, in their own readiness, were not.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Olaus. I have your bowl. I have been keeping it. I have been at the bakery for twenty-one years and I have been at your bowl every evening when I came home and I have been — Olaus, I have been doing what I could do.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The bowl is at the cabin tonight. The bowl is here. I am — I have done what I could do.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Lena was looking at the door. Lena's face was the face of a woman looking at an octopus.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem registered this. The octopus was — by what Tem had been figuring out at the table for days, by what Lena had been writing in her notebook for a week — the figure Lena had been carrying. The octopus on the alley wall. The octopus the substrate had eaten in spring of 2050. The octopus that had been Lena's compulsion since Wednesday.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "You came.",
+      "t": "say"
+    },
+    {
+      "text": "Lena was the youngest at the table. At twenty-three — by the way her hands were at the table, by the way her face was doing what it was doing — receiving the octopus the way a woman receives a thing she has been making her whole life.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem had not, until Lena's face, understood that Lena had been making the octopus her whole life. The octopus in spring of 2050 on the wall had been the visible part. The octopus that had been with Lena since she had been a girl in Salem before she came up here at eighteen had been the carrying. The octopus at the door of the cabin was the octopus.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I am — I am going to paint the rest of you tomorrow.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes. I will. The eighth arm. The seven and a half. The whole arrangement. Tomorrow. Yes.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Thank you for coming.",
+      "t": "say"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Tem looked at the door. She had been looking at the young woman in the yellow slicker for the whole time the other six had been receiving what they were receiving. The young woman had been at the door. The hood had been up. The face had not been visible.",
+      "t": "narrate"
+    },
+    {
+      "text": "Now the figure at the door turned her head up.",
+      "t": "narrate"
+    },
+    {
+      "text": "The hood fell back.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face under the hood — Tem could not read the face.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was the face, by what she could see at the angle, of a young woman with curling dark hair and eyes that were open. The eyes were the eyes of a person who had been arriving for a hundred and twenty years. The face of the daughter Olaf had carved into the cedar in 1976. The face Lena had painted on the alley wall on Friday morning. The face that had been inside Marit's bowl since 1974. All of these.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was also — Tem registered, looking at it — not legible to her. The face was hers and was not hers to read. By some quality of how the substrate was holding it, the face was not the face Tem was going to remember tomorrow morning. It was a face she could see now and would not be able to bring with her.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Aria.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "I have been wanting to see your face.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have been wanting to see yours.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "You see it now.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "By what the substrate has been holding for you, by the grandmother who used the name for you that only she used — you will not remember the face exactly. You will remember that you saw it. The remembering is yours. The face is for the next time.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "The next time is not here. The next time is somewhere I can be received the way I will be ready to be received then. I will come back. The bowls will know. The crow will ring again. You will be where you need to be.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "text": "Tem listened.",
+      "t": "narrate"
+    },
+    {
+      "char": "figure",
+      "text": "The grandmother.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "The name.",
+      "t": "say"
+    },
+    {
+      "text": "Tem did not, for a count, breathe.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure said it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure said the name Tem's grandmother had used for Tem since 2019.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure said it once.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure said it in the voice the grandmother had said it in.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure said it the way the grandmother had said it on the morning in November of 2019 when the grandmother had said it for the last time.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure said it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem heard.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "text": "The figure turned.",
+      "t": "narrate"
+    },
+    {
+      "text": "The hood went back up.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure walked across the porch.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure walked down the porch steps.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure walked across the clearing.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure walked into the cedars at the edge of the clearing.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure was no longer at the cabin.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch20_calls",
+      "t": "jump"
+    }
+  ]
+}

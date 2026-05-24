@@ -1,0 +1,37 @@
+{
+  "id": "vol1_link_q_cold",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_shuttle_bench.jpg"
+    },
+    {
+      "t": "show",
+      "char": "trenchcoat",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He considers the question, briefly, the way a person considers whether they have left the stove on."
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"I don't take temperature the way you do. Mine's set, and I haven't had the time yet to learn how to feel weather. I'll get there. Everyone does. It's the second-hardest thing about coming through.\""
+    },
+    {
+      "t": "think",
+      "char": null,
+      "text": "You do not ask what the hardest is. He looks like a person who would, if asked, tell you, and you do not want him to."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_outside_hub"
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "id": "vol6_ch2_gas_go_lot",
+  "vol": 6,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Ch 2 — The Gas & Go Lot",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_gas_and_go_dusk.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "NexCorp Gas & Go",
+      "sub": "Monday · 19:52",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The evening shift at the Gas & Go has started."
+    },
+    {
+      "t": "narrate",
+      "text": "Skip Donnelly is gone. The person behind the counter is a woman in her thirties whose name Sam does not know, who Sam has seen exactly once before, who Sam is now watching from her car in the Kwik Stop lot across the street."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam is off shift. Sam is supposed to be home. Sam has been parked in the Kwik Stop lot for eleven minutes, watching the Gas & Go through her windshield. Her hands are on the steering wheel. Her phone is on the passenger seat."
+    },
+    {
+      "t": "narrate",
+      "text": "She is not, in the end, going over there. She has just had the conversation with herself about whether to go over there. She has lost the conversation. Or — she has won it, depending on which version of herself she has decided, for this afternoon, to be on the side of."
+    },
+    {
+      "t": "narrate",
+      "text": "Graciela had said — Do not go looking for the truck. Sam is not, technically, going looking for the truck. Sam is looking at the place where the truck might have been, the day before it stopped being. There is a difference. There is also, she is aware, not a difference."
+    },
+    {
+      "t": "narrate",
+      "text": "She takes out her phone. She looks at her thread with Diego."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text · sent yesterday 15:01 —",
+      "expr": "neutral",
+      "text": "bored. u alive?"
+    },
+    {
+      "t": "narrate",
+      "text": "Sent yesterday at 15:01. Still unread. She does not send another."
+    },
+    {
+      "t": "narrate",
+      "text": "Instead, she types a new message, to Maya Daigle — a number she has had in her contacts since last September, when they had briefly been assigned the same biology lab partner and had traded numbers for an online quiz, and which she has not used since:"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text · 19:54 —",
+      "expr": "neutral",
+      "text": "hey maya. sam miller. this is random. do you work at cosmic comics tomorrow?"
+    },
+    {
+      "t": "narrate",
+      "text": "The reply comes in under two minutes."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "Yeah. 10-5. Do you want to come by?"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam stares at the reply. Maya had typed Do you want to come by? with a period at the end. Not a question mark. A period."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, who is her father's daughter in the specific narrow sense that she has been raised to notice pointed punctuation, registers it."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "yes. is 11 ok?"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "Yes. Come in the back. Door at the rear of the strip mall. Unlocked from 10:45 to 11:15."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "ok."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts the phone down. She starts the Corolla. She drives home."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_kitchen.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Miller Kitchen",
+      "sub": "Monday · 20:30",
+      "duration": 1600
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "At the kitchen table, her father is eating dinner. Meatloaf. Her mother made it. Her mother is at the stove finishing the green beans. The kitchen smells the way the kitchen always smells on Monday night in Harmony Creek Estates. The small flat screen mounted above the breakfast nook is tuned to local news, volume low."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "expr": "neutral",
+      "text": "\"Hey, Sammy.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Hey, Dad. Hey, Mom.\""
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "expr": "neutral",
+      "text": "\"There's a plate in the microwave for you.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Thanks.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She gets the plate. She sits. She eats. The meatloaf is good. It has always been good. Her mother's meatloaf, as a category, is the thing Sam misses most whenever she is hungry anywhere outside this house."
+    },
+    {
+      "t": "narrate",
+      "text": "Her father is on his phone. He is, she notices, holding the phone in his lap under the table, angled so the screen cannot be seen from her side of the table. He is not eating. He is typing."
+    },
+    {
+      "t": "narrate",
+      "text": "He finishes typing. He sets the phone face-down beside his plate. He picks up his fork. He smiles at her."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "expr": "neutral",
+      "text": "\"How was work, Sammy?\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Slow. Same old.\""
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "expr": "neutral",
+      "text": "\"Beer sale?\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"One. Same guy as yesterday.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She watches his face when she says it. His face does not change."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "expr": "neutral",
+      "text": "(easily) \"Huh. Gotta love a routine.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He eats. She eats. The local news, above the breakfast nook, cuts to a weather segment. The weather segment is predicting a thunderstorm on Wednesday — the first of the season. Her mother turns from the stove."
+    },
+    {
+      "t": "narrate",
+      "text": "\"You kids shouldn't drive Wednesday night if it's bad. They're saying marble-sized hail on the coast.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"I don't have any plans, Mom.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Well if you did, cancel them.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Yes, ma'am.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Her father, under the table, begins typing again. Sam does not, for the rest of the meal, look at him."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch2_maya_bedroom"
+    }
+  ]
+}

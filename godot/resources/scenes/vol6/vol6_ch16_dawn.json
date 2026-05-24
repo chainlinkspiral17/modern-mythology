@@ -1,0 +1,758 @@
+{
+  "id": "vol6_ch16_dawn",
+  "vol": 6,
+  "chapter": 16,
+  "type": "chapter",
+  "title": "Ch 16 — Dawn",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_centro_grocery_aisle.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Dawn",
+      "sub": "Friday — 05:00 — Centro Foods",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The drive back to Centro is four minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "The song is, by BT's selection on the way back, the same song again. BT plays Never Gonna Come Back Down on repeat. The chorus, the second time through, has — in Diego's ear, which is now familiar with the song in the way a person becomes familiar with a song after the first listen — the small sense of being a song a person is, on purpose, building a relationship with."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the passenger seat, with the medium horchata for Doug between his thighs and the quarter-burrito on the dashboard and the empty El Diablito packets accumulated on the center console, watches the small parallel side road pass in the headlights."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, with the small careful attention he has been training all summer: I just had dinner with BT."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the team is going to know. Jessa is going to know."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the team is not going to like it."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: it is — it is okay that the team is not going to like it."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I am, for the first time in five weeks, doing something at this job that the team has not pre-agreed to. I am going to find out, this week, what it costs."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I am also going to find out what it is for."
+    },
+    {
+      "t": "narrate",
+      "text": "The Altima pulls into the Centro lot at four thirty-six."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_centro_break_room.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The dock door is unlocked."
+    },
+    {
+      "t": "show",
+      "char": "doug",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "They walk in. Doug is in the break room. Doug looks up."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego sets the medium horchata on the table in front of Doug."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Sorry it's late.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Doug, in the break room, looks at the horchata. Doug looks at Diego. Doug looks at BT, behind Diego in the doorway. Doug looks back at the horchata."
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "What kept you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I drank yours.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Doug, after a beat, smiles — the smallest possible smile, the Doug-smile, the smile of a man who has decided that the small human comedy of the moment is worth a smile but not, today, a sentence."
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Thanks, kid.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Doug picks up the horchata."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug returns to Karamazov."
+    },
+    {
+      "t": "show",
+      "char": "bt",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "I'll be in cereal.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "BT goes."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego stands in the break-room doorway for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Diego.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Good night?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah, Doug. It was — it was fine.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Doug turns the page."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_centro_grocery_aisle.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego goes back to canned soup."
+    },
+    {
+      "t": "narrate",
+      "text": "The second half of the shift is the second half of the shift."
+    },
+    {
+      "t": "narrate",
+      "text": "By six AM the team is on the floor finishing the prep for tomorrow night. Marisol is at the deli case. Russell is at receiving, breaking down the empty pallets from the first half. Jessa is at the dock, signing for the morning truck which has come in early. BT is in cereal. Doug is in dairy. Diego is in canned vegetables, working the second pallet of stewed tomatoes the day side has packed for inventory and that has, like the first pallet, been double-stacked."
+    },
+    {
+      "t": "show",
+      "char": "marisol",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol, passing Diego's aisle at six twenty-four, slows briefly."
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "El Rancho?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "Hugo do the burrito with the potatoes?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "Good. Tell Hugo's mother the recipe is correct.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She keeps walking."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the aisle, registers — with the attention his summer has been training — that Marisol has just said the only thing Marisol is going to say to Diego about the taqueria run, and that Marisol's thing was a single sentence about a burrito recipe, and that the single sentence was Marisol's small careful way of acknowledging that she had registered that Diego had gone to El Rancho with BT and that she was, in registering it, not going to make it a thing."
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol is, in her own way, also a Doug."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego had not, until this morning, fully understood that."
+    },
+    {
+      "t": "narrate",
+      "text": "He stocks the stewed tomatoes."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_centro_loading_dock_dawn.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego goes out the dock door for his second break at six forty-eight."
+    },
+    {
+      "t": "narrate",
+      "text": "The dock is empty."
+    },
+    {
+      "t": "narrate",
+      "text": "The cedar scrub is, at six forty-eight, beginning to do the thing the scrub does in the hour before sunrise — the small transition from dark to scrub, with the small first cicadas warming up in the trees beyond the fence."
+    },
+    {
+      "t": "narrate",
+      "text": "The eastern horizon, above the cedar, has the rust-colored thermal smear at its standard intensity for a clear morning."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, with his coffee, stands at the edge of the dock."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks east."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, for the first time in five weeks: BT."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: BT is the only other person on this dock who has, this week, looked east."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I told BT, on Tuesday, that I didn't know what the haze was. I told BT that the light does weird stuff. I told BT a thing I knew was not true."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I did not, in the car at the lay-by, tell BT what the haze actually is. I had several openings. I chose not to."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: BT is — BT is, by his honest disclosure about the song, the kind of person I could tell. BT might also be, by his cop story which I do not know whether to believe, the kind of person I should not tell. The one thing does not, by itself, settle the other."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I have, this week, started to do something with BT. I have not yet decided how far I am going to do it."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I am sixteen. I am — by the team's quiet accommodation — being permitted to be at this job. I am also — by the team's quiet accommodation — being permitted to be the kid the team protects, at a small cost that the team is, by their decisions, paying on BT's behalf."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the cost is becoming visible to me."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, with the small careful honesty he is, this summer, occasionally able to do: I do not, today, know what to do about the cost."
+    },
+    {
+      "t": "narrate",
+      "text": "He drinks his coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at the smear."
+    },
+    {
+      "t": "narrate",
+      "text": "The smear is still there."
+    },
+    {
+      "t": "narrate",
+      "text": "The smear is, this morning, the same smear."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes back inside at six fifty-six."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_centro_grocery_aisle.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The shift ends at eight oh-four."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego clocks out. He goes out the back door. His truck is in its usual spot. BT's Altima is — Diego registers, walking past — still in the lot. BT is at the Altima, in the driver's seat with the door open, looking at the seat."
+    },
+    {
+      "t": "show",
+      "char": "bt",
+      "expr": "serious",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Diego.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego stops."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "There's an El Diablito packet under my thigh. It leaked.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, after a beat, laughs."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Oh, man.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "I am going to drive home with orange sauce on my pants.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "You are.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "There is no — there is no arrangement for this. There is no rag.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "There's a roll of paper towels in my truck. Hold on.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He goes to his truck. He gets the paper towels — the half-roll he keeps in the cab for the small occasions a man with a truck needs a paper towel. He brings the roll over."
+    },
+    {
+      "t": "narrate",
+      "text": "He hands BT the roll."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Thanks, man.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT cleans the seat. BT cleans his pants. The orange sauce has, by Diego's count, also gotten on the lower edge of BT's polo. BT cleans that too."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "I'm — I'm going home. I'm gonna shower. I'm gonna sleep till four. I'm gonna come back tonight and we are gonna do inventory.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Diego.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Thanks. For coming.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah, man. Thanks for the burrito.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "BT gets in the Altima. He starts the engine. He pulls out of the lot."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego watches him go to the end of the row, signal left, turn out."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets in his truck."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits for a minute."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, with the small surprise his interior is occasionally able to do: I had a good time."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the team is not going to like that I had a good time."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I am, this morning, going to drive home and eat eggs with my grandmother and sleep and come back tonight and do inventory."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the rest is for next week."
+    },
+    {
+      "t": "narrate",
+      "text": "He starts the truck."
+    },
+    {
+      "t": "narrate",
+      "text": "He drives home."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_grandmother_kitchen_morning.jpg"
+    },
+    {
+      "t": "show",
+      "char": "abuela",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "His grandmother is at the kitchen window when he pulls in."
+    },
+    {
+      "t": "narrate",
+      "text": "He kisses her on the temple. He sits at the table. She makes the eggs."
+    },
+    {
+      "t": "narrate",
+      "text": "She brings them. She sits, today, with him — it is Friday morning, and Friday mornings she has, this summer, decided are sitting mornings, because Friday is the small end of the week and she has decided that the small end of the week deserves the small intimacy of the table."
+    },
+    {
+      "t": "narrate",
+      "text": "He eats."
+    },
+    {
+      "t": "narrate",
+      "text": "She watches him."
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "Mijo. You look like you have eaten something good already.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Abuela. How do you know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "The eggs. You are eating them slow. When you have eaten badly before you got home, you eat the eggs fast to get the bad food taste out of your mouth. When you have eaten well before you got home, you eat them slow because you are no longer hungry. You are eating them slow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He laughs."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Abuela. I went to El Rancho. With BT.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "BT is the new one. The one the team does not like.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "And.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks for a long moment."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "And — abuela, I had a good time. I think. I think he might be a person I could be friends with. The team is not going to like that. I am going to have to figure out — I am going to have to figure out what I do about that.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She nods."
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "Mijo. The team has been good to you. The team has also, in being good to you, been not-good to him. You have, this morning, had a meal that interrupted that arrangement. The arrangement was not yours. The arrangement was the team's. You have always been allowed to interrupt other people's arrangements. You do not, by interrupting, have to defend the arrangement to the team. You have to do, only, the thing your interrupting requires of you next.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks about this."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah, abuela.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "Eat. Sleep. Tonight is inventory. Tomorrow morning I will see you again.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He eats."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, today, ask anything more."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_diego_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps from nine AM to four PM."
+    },
+    {
+      "t": "narrate",
+      "text": "The blackout curtains are drawn. The room is dark. The fan, on the ceiling, clicks on the third rotation. He has, since June, stopped counting."
+    },
+    {
+      "t": "narrate",
+      "text": "He dreams, at one PM, of the dock."
+    },
+    {
+      "t": "narrate",
+      "text": "In the dream, BT is on the dock with him."
+    },
+    {
+      "t": "narrate",
+      "text": "In the dream, BT is looking east at the haze."
+    },
+    {
+      "t": "narrate",
+      "text": "In the dream, Diego — for the first time in five weeks of dreaming about the dock — turns and tells BT what the haze is."
+    },
+    {
+      "t": "narrate",
+      "text": "BT, in the dream, listens."
+    },
+    {
+      "t": "narrate",
+      "text": "BT, in the dream, after Diego is done telling him, says: yeah, man. I figured. I just wasn't sure if it was, like — if I could ask."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the dream, says: you could have asked."
+    },
+    {
+      "t": "narrate",
+      "text": "BT, in the dream, says: yeah. okay."
+    },
+    {
+      "t": "narrate",
+      "text": "The dream, after, fades."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego wakes at four eleven PM."
+    },
+    {
+      "t": "narrate",
+      "text": "He opens the blackout curtain."
+    },
+    {
+      "t": "narrate",
+      "text": "The afternoon light comes in."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I am going to be at Centro at ten tonight. I am going to do inventory. I am going to be there with BT and Doug and Marisol and Russell and Jessa. I am going to get through the night. After the night I am going to see what I do about the thing I have started."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets up."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_grandmother_kitchen_morning.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "His grandmother is making sopa de pollo downstairs — the recipe she does it with, not Linda's, the small Graciela-recipe with the lime and the avocado on top."
+    },
+    {
+      "t": "narrate",
+      "text": "He eats the sopa de pollo at five."
+    },
+    {
+      "t": "narrate",
+      "text": "He drives to Centro at nine forty."
+    },
+    {
+      "t": "narrate",
+      "text": "The shift starts at ten."
+    },
+    {
+      "t": "narrate",
+      "text": "The night, as it turns out, is going to be a long one."
+    },
+    {
+      "t": "narrate",
+      "text": "But that is the next chapter."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight, in the truck, on the way to inventory, the song on the radio — which Diego, by some quiet decision he has made on his own without telling anyone, has cued up on his phone before leaving the house — is Never Gonna Come Back Down, on repeat, with the erf in the chorus playing into the August evening as Diego drives the small parallel side road past El Rancho on his way to the long night ahead."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "id": "vol1_ch4_waking",
+  "vol": 1,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Act One — Waking",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_club_sharp.jpg"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "joan",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "As far as drunken dreams go — this one is ridiculous."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "John Faust — you need to wake up. See? It's all the same, silly."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Worlds will speak to you in signs. Show you the way to the center of it all."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_bedroom_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "04:00",
+      "sub": "The alarm again",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "John Faust wakes up in his bed. His alarm is ringing. It is 4:00 am. He turns the alarm off and goes back to bed."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I clearly have no grip — and feel my world spin fast and loose."
+    },
+    {
+      "t": "narrate",
+      "text": "John gets up. To the bathroom. Pukes in the toilet."
+    },
+    {
+      "t": "narrate",
+      "text": "An abrupt and ugly scene end."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch4_complete",
+      "val": true
+    },
+    {
+      "t": "narrate",
+      "text": "— End of Act One, Part III —"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

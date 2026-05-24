@@ -1,0 +1,95 @@
+{
+  "id": "vol1_ch2_painting_b",
+  "vol": 1,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Act One — The Sitting Hour (cont.)",
+  "nodes": [
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "Such a dork. Relax and enjoy the moment. Take a deep breath and breathe — because you, Sir, summoned frickin' elementals. Without a monstrous manual, no less."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "You have to admit — that is worth some mad real-life XP right there. This tinnitus in my ear is like a ding. Methinks I've leveled up."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "So just roll with it, brother. You're posting good stats. Keep an eye on the endgame. Move the balls down field. And remember to use all the players — (who are players who are players)."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "It's cool. I get it. But you have to realize certain things about me. Firstly — my life is a work in progress. Second — I've got much to do yet."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "You are flesh. You are decay."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Everything is broken down, made new."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "Everything is born. Everything dies."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I welcome what's next."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "Alas — our sitting hour is up. You must pee, and break concentration."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust stands up and looks away from the painting."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Bladder is bursting. (as he pees) Oh — what a wonderful tea party."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch2_skatepark"
+    }
+  ]
+}

@@ -1,0 +1,873 @@
+{
+  "id": "vol7_ch11_per",
+  "vol": 7,
+  "chapter": 11,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 11",
+      "sub": "The Cabin, Afternoon",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Per said the name at twenty past eleven.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four of them were at the table by the kerosene lamp. The lamp was lit against the rain-darkened light. The kettle was on. Tem had brought the coffee to the table on the cabin's folded towel. The cabin was at sixty-one by the thermometer.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per had been quiet for some count after sitting down. He had set the wooden box on the table in front of him and had opened the hinged lid and had taken out a bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowl was cedar, the wood the warm red-brown that western red cedar goes when it has been carried by hand for fifty years and oiled with the small oil a person uses on a thing he intends to keep. The bowl was about the size of two cupped hands. A spiral was cut into the outside that ran from the rim down to the base in a single continuous curve, and inside the spiral, by some patience of the carver's wrist that Kai had not in his life seen carving like, were figures. Not pressed in. Risen, the way a thing rises in wood when the carver has cut around it for long enough that what is left is what was always there.",
+      "t": "narrate"
+    },
+    {
+      "text": "A crow on a fencepost at the level of the rim, head turned three-quarters to the viewer. An octopus a quarter of the way around, eight arms in the careful uncoiled arrangement of an octopus moving over a tide-pool floor. A ferret on a stair-rail another quarter around, two legs down and two legs braced. Between the totems other figures, smaller, that Kai could not at this angle resolve — a tower with too many windows, a young woman in a long coat with the hood up, a hanged man hanging from a tree by one foot. The cut was deep enough that the grain showed in everything. The cut was old. The cut was the hand Kai had seen in the lid of the box and had not, in the truck, named. The cut was, by Per's hand setting the bowl on the table without ceremony and without explanation, his father's.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Eddvard.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Eddvard knew my father in '64 when they were both stationed at the cutter base in old-Yaquina. They worked together for a year. They became friends. They stayed friends after my father left the cutter and Eddvard stayed.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "They built this cabin together in '79 when my father was forty-one and Eddvard was fifty-two. I came up here with my father seven times in '79 and '80 to help with the build. I was nineteen. I was at Oregon State. I came up on the weekends I was home. I knew the place when it was studs.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have not been at this place since 2042 because I have not wanted to be. The wanting-not has been mine.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have not asked you why.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "You have not.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have been waiting.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He looked at the bowl on the table.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "My father went into the water in November of '78. He was on the Margery off Yaquina Head, a commercial boat he had been crewing on weekends since he left the cutter. The boat went over in a squall. Two men on the boat with him drowned. My father drowned. The bodies came up at Newport over the next four days.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My mother — Marit — went down to identify him on a Thursday. She came home that night and she did not speak to me for a week. I was eighteen. I was at Oregon State for my second semester. I came home on the Friday after the Thursday. I stayed for the funeral. I went back to school the next Monday because my mother said I had to. I went back.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He stopped.",
+      "t": "narrate"
+    },
+    {
+      "text": "He drank from the cup Tem had poured him.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "In April of '79 I came home for spring break. I went up to the room my father had used as his office — a room above the garage at the back of the house. The room had been locked since November. My mother had locked it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "She had told me, when I had asked her about it at Christmas, that she had locked it because she could not, in the months after the funeral, be in the room. She had told me I could go in the room when I was older. I was nineteen in April. I decided I was older.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He drank from the cup again.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "I broke the lock. I went in. I went through his papers. I sat in his chair at his desk and I read the things he had been writing in the year before he died. I read for three days. I did not, in those three days, eat. My mother brought me a sandwich on the second day and left it on the desk and went out without speaking. I ate the sandwich. I kept reading.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He had been writing about the bowls. He had been writing in a notebook he had kept in the bottom drawer of the desk, in the back, behind a folder of insurance papers. The notebook was the kind of spiral notebook a man uses when he wants to write a thing nobody is going to find. He had been writing in it since 1971.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He had written about the bowls. He had written about the people he knew who had bowls. He had written about a Norwegian carver in Bergen who had taught a man named Halvorsen-not-our-Halvorsen the carving in the late '40s. He had written about Eddvard's bowl. He had written about my mother's bowl that he had carved her in '74.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He had written about a network. He had written about who in the network had a bowl and who did not. He had written about how the bowls listened. He had written about the listening as a thing the bowls had been doing — by what his father had taught him of the Bergen tradition, by what he had read of the carvers in Bern before Bergen, by the printed materials his uncle in Switzerland had been sending him for some years — for one hundred and twenty years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He looked at Tem.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "My father called the network the Order of the Bowl. He had been writing the words in the notebook with the capitals. He had not been writing the words anywhere else. The words were in the notebook and only in the notebook. He had not told me the words. He had not told my mother the words.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He had not told Eddvard the words because Eddvard was — by what my father had written — Eddvard was in the network and did not need the words. The words were the words my father used in the notebook to keep track of what he was a part of.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He set the cup down.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "I have been carrying those words for fifty years. I have not said them to a person. I have not written them. I burned the notebook in 1986 after I had decided I was not going to be the kind of son who kept his father's secret papers in a drawer the way his father had kept them in a drawer.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I burned it in the wood stove of my apartment in Corvallis on the night before I drove down for my master's commencement. I burned it because I had decided I was going to live in the world. I was not going to live in his.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The burning did not — the burning did not take the words. The words have been in my head the whole time. The words have been there at twenty-six and thirty-four and forty and fifty and sixty. The words have been there this past July when my mother called me about the bowl going warm.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The words are why I came home. I came home because the network my father was in is, after fifty years of not being a network, becoming a network again. The bowls going warm is what becoming-a-network looks like.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Per nodded once.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "The Order of the Bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have not heard those words before.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "No.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My grandfather did not write them.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Eddvard did not write them. Eddvard would not have written them. Eddvard was a man who carved the bowls. He was not a man who put a name on what he was a part of.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "My father was a man who put names on things because my father was — by training, by temperament — a man who needed to know what he was a part of in order to be part of it. He named things. He named the network because the network had not, by his coming into it, been named.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Did your father name it. Or did somebody before him name it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Per looked at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "My father wrote that he had taken the words from the printed materials his uncle in Switzerland had been sending him. The uncle in Switzerland — Olaf's father's brother, my grandfather's brother, who had stayed in Bern — had been sending him things since the early '60s. The uncle was a printer.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The uncle had printed, by what my father wrote in the notebook, a series of books for the network. The series was called Bowls and the Listening, and the books were in German, and my father had been reading them with the help of a dictionary.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The capitals on Order of the Bowl came from the German term in the books. My father had translated it. He had been the first person in this hemisphere — by his own reading — to translate it. He had been pleased with himself for the translating. The pleasure had been one of the things he wrote about in the notebook the way a man writes about a pleasure that has been his alone.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per. The uncle in Switzerland. What was his name.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Werner.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The room was, for a count, quiet.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Werner.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans's brother is named Werner.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Hans's brother is named Werner.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans's brother was the one who printed the poem cycle in 1989.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Hans's brother — by what Hans told me when I was about twenty-five and Hans had been our family's baker for some years and the conversation had come around to Hans's relatives, by what Hans said in passing on a Saturday morning at the bakery — Hans's brother was the son of the printer who had been sending my father the books.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Hans's brother took over the family print shop in Bern in '86 when their father died. Hans's brother did the 1989 poem cycle in the same shop my father's books had been printed in. The shop has been in the Schenck family — Hans's family — for four generations.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Hans's father was Werner Senior. Hans's brother is Werner Junior. The shop is Schenck Press.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Tem watched him for a long count.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans has known you fifty years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Hans has known me fifty years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You have not — the two of you have not, in fifty years, said any of this to each other.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "We have not. Hans, by my reading of Hans, has known what my father was in since my father was in it. Hans has not — Hans has not been the kind of man to bring up a thing his friend's son might not have known.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Hans has been waiting for me to bring it up. I have not, in fifty years, brought it up. Hans has been at our family table once a month for fifty years. He has — he has been holding the conversation. I have been holding the other half. We have been holding it together by not saying it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The kettle made the pre-whistle sound.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Per. The bowls are warm because the network is becoming a network again.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You came up here today because the network is becoming a network again.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans sent you up here today because the network is becoming a network again.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Hans did not send me up here. Hans asked Kai to bring me up. Hans asked Kai because Hans has been waiting fifty years for the day this would be a thing the four of us — Hans, me, Eddvard's granddaughter, and a person who would be willing to put a hand on it — could be in a room about.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Hans has been waiting. Hans is not in the room because Hans is sixty-eight and Hans is at his house with my mother and Greta. Hans is going to be in the room on Saturday at six in the morning at the bakery. Hans has told us to come. We are going to come.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Hans is in the room with us today by being the one who sent me up. He is, by my reading of him, fully in the room.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Thank you for the name.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "You're welcome.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am going to use it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I know you are.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am going to use it carefully.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I know that too.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The kettle whistled. Lena got up and pulled it off and brought it back to the table and poured into the cups that needed it. The four of them sat with the new coffee.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Per. The bowl your father carved your mother.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Per opened the bowl on the table in front of him. He held it up. The spiral on the outside ran from the rim to the base. The inside was not, as Kai had assumed from across the table when he had first seen it, sanded smooth. The inside had work on it too.",
+      "t": "narrate"
+    },
+    {
+      "text": "The work on the inside was different work from the work on the outside, and it was visible only when Per tilted the bowl into the kerosene-lamp light so the shallowness of the cutting caught. What was on the inside was, by what Kai could see at the angle Per held it: a single face. A young woman's face. The face filled the bowl's interior in the way a face fills a coin. The hair on the face was carved as if curling. The eyes were closed. The mouth was closed.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face was the face of a person Kai had not seen, but the face was — by some quality the carver had given it that Kai could not name, by the way the curls of the hair fell against the brow — the face was the face Aria was going to have. Or the face was the face the carver had carved when he had thought, in 1974, about what face he was waiting for, and Kai was reading the carver's expectation in the cedar. The base had, when Per turned it over, a mark — a flame-shape pressed into the wood with a heated iron.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "His mark. He marked the bowls he made for our family different than the bowls he made for the network. The bowls for the family had this flame. The bowls for the network had the spiral on the base instead of on the side.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have seen four bowls he made in my life. Two were for family. Two were for the network. The two for the network went to Eddvard.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Two.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Two. Eddvard's was one. There was a second.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Where.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "By the notebook — and the notebook was burned in '86 so this is fifty-year-old memory — the second went to a man in San Francisco in 1976. The man's name was Lindholm. Lindholm was the foundation man for the West Coast. The foundation was the foundation. Inga's foundation.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The foundation has had three field people on this coast at various times since the '60s. Lindholm was one of them. Lindholm had the bowl from '76 until he died. After he died the bowl went to the foundation. I have not — I have not, since my father died, known where the bowl is now. The foundation knows. The foundation is — the foundation has been keeping the bowls that have come back to it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marina.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Per looked at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Marina Lindholm.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You know her.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have not met her. I have heard her name twice in the past month. I have heard it from Brandon's papers and I have heard it from a phone call Annika took with somebody at the foundation in Eugene three weeks ago when she was here at the cabin for a Wednesday.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marina Lindholm is — by what I have figured out — the granddaughter of the man your father gave the second bowl to. The granddaughter has been on the foundation's coast staff since 2046. The granddaughter is forty-one.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The granddaughter has — by Brandon's papers — been the foundation's eyes on this town since the spring of 2050. The granddaughter is — Per. The granddaughter is in Eugene this morning.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My father gave a bowl to her grandfather in 1976.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Her grandfather kept the bowl until he died.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The bowl went back to the foundation.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The foundation has been holding the bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The foundation has been — by what your figuring out is — sending the granddaughter to this town as the eye on what is happening in this town.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Tem. Has the granddaughter come to this town.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She has come three times in the past two years. Once in March of '50 when Brandon was alive. Once in September of '50 a few weeks after Brandon died. Once in June of this year.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have not — I have not met her on any of those visits. I have known about them after the fact. Brandon kept a record of his contacts with her in '50, and the record is in his papers, and I have been reading the papers.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The June visit I figured out from a credit-card receipt in a folder my mother in Eugene mailed me last month. The granddaughter has not, on any of those three visits, contacted any of the four of us. The granddaughter has been — by the foundation's standard practice for the kind of watching they do — watching at a distance. She has not approached because she has not, by what I have read in the papers about how the foundation operates, been ordered to approach.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Order her here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Tem looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I cannot order her here. The foundation does not take orders from me. The foundation does not know I am a person.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Get her here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have been carrying the name for fifty years and the granddaughter of the man my father gave a bowl to has been at the foundation in Eugene for six years and you have not, in the time you have been at this, contacted her.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have not.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Why.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Because — Per. Because I did not have a name to say to her. I have been pulling the threads since Brandon died and I have been pulling them at the speed I have been able to pull them, and I have been waiting for the day I had something to bring to her that was the kind of thing she could not, without being ordered by the foundation to do so, hand back to me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have been waiting for the day I had the name.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "You have the name.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have the name.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Get her here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "All right. I'll get her here.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "When.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Today. I'll call her this afternoon. The phone is at the apartment. I'll drive down. I'll call her. I'll get her up here tomorrow.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Thank you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Thank me by getting her here.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I will.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "scene": "vol7_ch11_stick",
+      "t": "jump"
+    }
+  ],
+  "title": "The Cabin, Afternoon"
+}

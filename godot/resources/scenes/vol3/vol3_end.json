@@ -1,0 +1,34 @@
+{
+  "id": "vol3_end",
+  "nodes": [
+    {
+      "t": "flag",
+      "key": "vol3_oracle_trusted",
+      "val": true
+    },
+    {
+      "t": "narrate",
+      "text": "The rain simulation ends. The dome goes quiet. You can hear the hum of life support."
+    },
+    {
+      "t": "say",
+      "char": "ORACLE-7",
+      "expr": "neutral",
+      "text": "Bay Seven is to your left. One hundred and twelve meters. Keycode: the one you always use."
+    },
+    {
+      "t": "say",
+      "char": "ORACLE-7",
+      "expr": "neutral",
+      "text": "I'll be here. I'm always here."
+    },
+    {
+      "t": "narrate",
+      "text": "— End of Demo —"
+    },
+    {
+      "t": "end"
+    }
+  ],
+  "vol": 3
+}

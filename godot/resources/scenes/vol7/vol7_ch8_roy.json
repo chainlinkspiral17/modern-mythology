@@ -1,0 +1,137 @@
+{
+  "id": "vol7_ch8_roy",
+  "vol": 7,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — Roy",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "They ate the rest in a quiet that was not the quiet of a held breath but the quiet of a meal getting eaten by four people who had said the things they needed to say to start eating again. Kai got up at one point and made tea. Finn cleared the bowls. Lena cut more bread. Tem sat at the table and watched all three of them moving through the kitchen and did not, for a count of about ten minutes, do anything but watch."
+    },
+    {
+      "t": "narrate",
+      "text": "When the dishes were rinsed and stacked on the small drainer they moved back to the front room. Tem and Finn back on the couch. Kai back in the chair by the window. Lena pulled the kitchen chair into the room and sat in it."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol7_lena_apartment_night.jpg"
+    },
+    {
+      "t": "show",
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"All right,\" Lena said. \"Roy.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"Roy.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"What did he say. Word for word.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"I told you on the porch at the cabin. I told Tem. I'll tell it again. He came in at eleven-oh-six. Orange shirt under wax canvas. Boat shoes. Walked in like he'd been in before. He hadn't. He said Kai? Roy Hummel. I see you at the Daily Grind. Lena makes me a hot chocolate sometimes. Sweet kid. That was the lead. He used Lena's name in the third sentence.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"He said I'm asking on behalf of someone. They wanted me to ask you something. I said who. He said doesn't matter who. I asked what he wanted. He said they want to know whether your friend Finn has been in possession of materials that belong to the museum-town historical society. I said what materials. He said they didn't say. I asked who's they. He said doesn't matter, just doing a favor. I said I didn't know.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "calculating",
+      "text": "\"He said all right, I'll tell them you don't know. He said have a nice Sunday, told me to say hi to Lena, and left.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "cold",
+      "text": "\"He used Lena's name twice.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"Twice. Once in the lead and once on the way out.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "cold",
+      "text": "\"That's not a coincidence.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"No.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "cold",
+      "text": "\"He was telling you he sees Lena. He was telling you what he could do with that if he wanted to.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"Yes.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "cold",
+      "text": "\"Tem. Who is he.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Tem looked at her."
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"He's been here twenty-one years. He came up from somewhere south. He never says where. He has money he does not, on the surface, account for. He spends most of his days at the Daily Grind and the Charging Station. He talks to everyone. He is friendly to a degree that is not friendly. The locals over fifty have known him long enough to keep him at a polite distance. The locals under thirty have, since they were teenagers, registered him as a man you do not want to be alone with.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"That's the surface,\" Kai said. \"What's under it.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"I don't know. Brandon thought he was a vessel.\""
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch8_the_vessel"
+    }
+  ]
+}

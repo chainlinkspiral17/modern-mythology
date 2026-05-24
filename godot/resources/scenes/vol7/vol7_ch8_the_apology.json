@@ -1,0 +1,120 @@
+{
+  "id": "vol7_ch8_the_apology",
+  "vol": 7,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — The Apology",
+  "nodes": [
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"I have known for two years that the patches were going to start showing up. I have known for two years that the tower was leaking. I have known for two years that Brandon Tillman had been investigating Nate Dean and that I had been pulled into the work by the bench at the museum and by what Brandon told me. I did not, in the two years, tell any of you. I told myself I was waiting for the work to be ready to share. The work was not the thing that needed to be ready. I was the thing that needed to be ready.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "hurt",
+      "text": "\"I was not ready because being ready meant admitting I did not know what I was doing and I had decided I was the kind of person who only spoke about a thing when she knew what she was doing. That decision was wrong. The decision was wrong from the beginning. I made all of you wait, and I made Cale wait, and I made the patches wait, and the whole time I was not protecting anybody from anything. I was protecting my image of myself as the person who could carry a thing well. The image was what I was carrying. The image was what was heavy. I am sorry.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, when she was done, look at any of them."
+    },
+    {
+      "t": "narrate",
+      "text": "The four of them sat at the table."
+    },
+    {
+      "t": "narrate",
+      "text": "After a count Kai said, \"Tem.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"I'm going to push back on you a little. You can take it or not.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"Take it.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"Some of what you just said is true. The image-protecting part is true. I have watched you do that for the two years I have known you and I have, on a couple of occasions, thought you were doing it and not said anything. I am going to start saying something. That part, the apology is good. I take it.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"The other part — the part where you say you made all of us wait and you made Cale wait and you made the patches wait — that part is too much. You did not make the patches wait. The patches are not on a schedule you set. You did not make Cale wait. Cale told Lena he was tired of waiting. He chose to wait. He could have come to any of us at any point in the last two years and he didn't, and that's on him as much as it's on you. You do not get to take that on.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "warm",
+      "text": "\"You did make us wait. That part you can have. The rest — Tem. Stop. You're doing it again. The big apology is also a kind of image-protecting. It's the version where you are the person who can identify everything she did wrong and itemize it for the table. Don't itemize for us. We don't need the itemization. We just need you to be in the room.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Tem looked at him."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Listen. Say nothing.",
+          "goto": 13
+        },
+        {
+          "text": "\"All right.\"",
+          "goto": 13
+        },
+        {
+          "text": "[EMPATHY] She already knew. She's been waiting for someone to say it.",
+          "check": {
+            "skill": "empathy",
+            "diff": 6
+          },
+          "pass": 14,
+          "fail": 13
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "softening",
+      "text": "\"All right,\" she said."
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch8_finn_speaks"
+    },
+    {
+      "t": "think",
+      "char": "Lena",
+      "text": "She's been carrying this sentence in her mouth for weeks. Waiting for the room to be ready to hear it."
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "softening",
+      "text": "\"All right,\" she said."
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch8_finn_speaks"
+    }
+  ]
+}

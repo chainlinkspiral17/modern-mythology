@@ -1,0 +1,281 @@
+{
+  "id": "vol1_ch3_bar_b",
+  "vol": 1,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Act One — The Toast",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_bar_interior.jpg"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "From where I look — seems missed opportunity."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "You're right. But don't count me out."
+    },
+    {
+      "t": "narrate",
+      "text": "The girls join them. Helen pushes Margaret into the seat next to Faust and sits next to Jacob. Emily puts her purse next to Faust and heads outside to join Wagner for a smoke."
+    },
+    {
+      "t": "show",
+      "char": "helen",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "margaret",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Helen",
+      "expr": "neutral",
+      "text": "Hello, boys. How goes the noche?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Agreeably laid back. Productive."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Cool drinks. Swell friends. Cozy corner."
+    },
+    {
+      "t": "say",
+      "char": "Margaret",
+      "expr": "neutral",
+      "text": "Sounds most affirming. I got yelled at."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "By your useless boss — for what small trifle?"
+    },
+    {
+      "t": "say",
+      "char": "Margaret",
+      "expr": "neutral",
+      "text": "My fault, this time. He's constantly stressing me out."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "That's no good."
+    },
+    {
+      "t": "say",
+      "char": "Helen",
+      "expr": "neutral",
+      "text": "Girlie shots coming up."
+    },
+    {
+      "t": "narrate",
+      "text": "They all hold to toast and drink."
+    },
+    {
+      "t": "say",
+      "char": "Helen",
+      "expr": "neutral",
+      "text": "To finding gainful — not painful — employment."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "May stupid jerkfaces in workforce get rightful comeuppance."
+    },
+    {
+      "t": "say",
+      "char": "Margaret",
+      "expr": "neutral",
+      "text": "Thanks for helping me forget my troubles. If but for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Cheers — to the simple magic in this."
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner and Emily return to the table."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "emily",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "(to Emily) A deft maneuver — please, to rejoin the group."
+    },
+    {
+      "t": "say",
+      "char": "Emily",
+      "expr": "neutral",
+      "text": "I didn't know they had pinball here."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Yes. And Missile Command, too."
+    },
+    {
+      "t": "say",
+      "char": "Emily",
+      "expr": "neutral",
+      "text": "Fifth Element pinball is my favorite. Corbin Dallas — multi-pass, multi-ball."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Forswoon — for she is as beautiful as she is nerdy."
+    },
+    {
+      "t": "say",
+      "char": "Emily",
+      "expr": "neutral",
+      "text": "I dressed as Leeloo Minai Lekarariba-Lamina-Tchai Ekbat De Sebat for Halloween."
+    },
+    {
+      "t": "say",
+      "char": "Margaret",
+      "expr": "neutral",
+      "text": "Stop showing off, Emily. Else we'll leave you home next time."
+    },
+    {
+      "t": "say",
+      "char": "Helen",
+      "expr": "neutral",
+      "text": "Hey — we've all got our nerd triggers. Be it Star Trek, wrestling, pin-up photography."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "It's times like these I could thank the suffragettes in person."
+    },
+    {
+      "t": "say",
+      "char": "Helen",
+      "expr": "neutral",
+      "text": "Okay. What does that mean?"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Without them, I would not be having this fine evening under these circumstances."
+    },
+    {
+      "t": "say",
+      "char": "Emily",
+      "expr": "neutral",
+      "text": "Continue."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Sad fact is — left to their own devices — white men would have ruled this world completely."
+    },
+    {
+      "t": "say",
+      "char": "Emily",
+      "expr": "neutral",
+      "text": "There has always been opposition. And in this connected age, their grip has slipped."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "It is a glorious thing to see my own primal archetype subverted."
+    },
+    {
+      "t": "say",
+      "char": "Helen",
+      "expr": "neutral",
+      "text": "If we're saying — down with white men — hear, hear."
+    },
+    {
+      "t": "narrate",
+      "text": "The men all say, in chorus —"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "We suck!"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "We suck!"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "We suck!"
+    },
+    {
+      "t": "narrate",
+      "text": "And cheer."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch3_outside"
+    }
+  ]
+}

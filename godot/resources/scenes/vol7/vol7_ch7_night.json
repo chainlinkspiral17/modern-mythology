@@ -1,0 +1,710 @@
+{
+  "id": "vol7_ch7_night",
+  "vol": 7,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Six O'Clock — Night",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_lena_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 7",
+      "sub": "Sunday Night",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "They ate the rest in a quiet that was not the quiet of a held breath but the quiet of a meal getting eaten by four people who had said the things they needed to say to start eating again.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai got up at one point and made tea. Finn cleared the bowls. Lena cut more bread. Tem sat at the table and watched all three of them moving through the kitchen and did not, for a count of about ten minutes, do anything but watch.",
+      "t": "narrate"
+    },
+    {
+      "text": "When the dishes were rinsed and stacked on the small drainer they moved back to the front room. Tem and Finn back on the couch. Kai back in the chair by the window. Lena pulled the kitchen chair into the room and sat in it.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "text": "All right. Roy.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Roy.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "What did he say. Word for word.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I told you on the porch at the cabin. I told Tem. I'll tell it again.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He came in at eleven-oh-six. Orange shirt under wax canvas. Boat shoes. Walked in like he'd been in before. He hadn't. He said Kai? Roy Hummel. I see you at the Daily Grind. Lena makes me a hot chocolate sometimes. Sweet kid. That was the lead. He used Lena's name in the third sentence.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He said I'm asking on behalf of someone. They wanted me to ask you something. I said who. He said doesn't matter who. I asked what he wanted. He said they want to know whether your friend Finn has been in possession of materials that belong to the museum-town historical society. I said what materials. He said they didn't say.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I asked who's they. He said doesn't matter, just doing a favor. I said I didn't know. He said all right, I'll tell them you don't know. He said have a nice Sunday, told me to say hi to Lena, and left.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He used Lena's name twice.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Twice. Once in the lead and once on the way out.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "That's not a coincidence.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "No.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He was telling you he sees Lena. He was telling you what he could do with that if he wanted to.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "expr": "serious",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "text": "Tem. Who is he.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Tem looked at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "He's been here twenty-one years. He came up from somewhere south. He never says where. He has money he does not, on the surface, account for. He spends most of his days at the Daily Grind and the Charging Station. He talks to everyone.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He is friendly to a degree that is not friendly. The locals over fifty have known him long enough to keep him at a polite distance. The locals under thirty have, since they were teenagers, registered him as a man you do not want to be alone with.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "serious",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "text": "That's the surface. What's under it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I don't know. Brandon thought he was a vessel.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "A what.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Brandon thought the substrate had been in him for a long time. Brandon thought Roy was a person whose actions were not fully his own. Brandon told me this once, the third time we met. He did not say more about it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He said I'm telling you so that if I die before this is over, you know. That was March of 2050. Brandon died eight months later.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "expr": "serious",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "finn",
+      "text": "And Roy is asking after me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy is asking after you because you have the wood. Or because somebody who knows about the wood is using Roy to ask. Or because the substrate that may be in Roy is reading you the way it reads anybody who has come into contact with the work, and the substrate wants the wood back.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I don't know which of those is true. Possibly more than one. Possibly all three.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "serious",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "text": "Are we in danger.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I don't know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Kai. I don't know. I would tell you if I did. The honest answer is I don't know. Brandon thought Roy was a vessel. Brandon also told me Roy had not, in twenty-one years in Smolvud, done anything that was provably illegal or provably violent.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Brandon said the danger from Roy was not the danger of being attacked. It was the danger of being known by the wrong thing. I have been turning that sentence over in my head for two years. I still don't know what Brandon meant by it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "expr": "serious",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "finn",
+      "text": "I think I do.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The three of them looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Being known by the wrong thing means the wrong thing knows you. If the substrate in Roy now knows the four of us — if Roy's visit to Kai today put the four of us on the substrate's map — then the substrate has us.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "It does not need to do anything to us. It just has to know we exist. Once the substrate has us, anything that is using the substrate as a routing layer has access to us.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The danger is not Roy. The danger is that Roy is the small visible end of a very long and not-visible thing, and that thing has just learned our names.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The room was quiet for a count of ten.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "text": "That was the most you have said in two days.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "finn",
+      "text": "Sorry.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "text": "Don't be sorry. It was good.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "finn",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "It was past nine. Lena looked at her phone on the side table and registered that they had been in the apartment for over three hours and that she was, by the kind of exhaustion that hits at the end of a long day in which people have said true things to each other in a small room, not going to be useful for any more thinking tonight.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I am not going to be useful for any more thinking tonight.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Same.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "text": "Same.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I'm fine to keep going if we need to.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Finn. You're not. You haven't slept since Friday. You're saying you're fine because you don't know how to say you're not.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "text": "We sleep. We meet at the cabin tomorrow. Cale comes up. Five of us. We figure out the next thing then.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "tem",
+      "text": "All right. The cabin at noon.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'll close the shop tomorrow.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You don't have to.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm closing it. I closed it today. The shop will be closed tomorrow. The shop will be closed until we know what we're doing.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "There was a small shuffle at the door about who was driving back where. Kai said he would walk to the shop and pick up his truck and drive himself home. Finn said he would drop Tem at the cabin on his way to his apartment and come back down in the morning. Tem said she did not want to be at the cabin tonight.",
+      "t": "narrate"
+    },
+    {
+      "text": "The room paused on that.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I want to stay here. If it's all right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah. Stay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "text": "Kai and Finn took their coats off the hooks. Kai put a hand on Lena's shoulder again at the door, the same way he had on the way in. Finn looked at Tem for a long beat without saying anything and then at Lena and then back at Tem.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Take care of each other tonight.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah, Finn.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He went down the stairwell. Kai followed. The door closed behind them.",
+      "t": "narrate"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Lena turned the deadbolt.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had not, in three years in the apartment, locked the deadbolt at night. She locked it now.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "With two of them left in it the apartment was hers again. Lena turned and looked at Tem who was standing by the couch with her wool sweater half-pulled over her head.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I'm going to brush my teeth. There's a spare toothbrush in the bathroom in the small drawer. Help yourself.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Thanks.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I changed the sheets this afternoon. The bed is — there's room. If you want.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Tem looked at her with the wool sweater bunched at her shoulders and her hair flat from the cap she had pulled off in the kitchen earlier and her face clean of any of the careful management she had been wearing all day.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "text": "She lay in the dark with Tem beside her and listened to the rain on the roof and to Tem's breathing slowing as Tem fell asleep. She did not sleep yet.",
+      "t": "narrate"
+    },
+    {
+      "text": "She thought about Cale's face when she had been at his door — get going, Lena. She thought about Finn at the table saying the danger is that Roy is the small visible end of a very long and not-visible thing, and that thing has just learned our names.",
+      "t": "narrate"
+    },
+    {
+      "text": "She thought about Kai's hand on her shoulder. She thought about the Estuary 7 stick in the inside pocket of the coat hanging on the hook by the door.",
+      "t": "narrate"
+    },
+    {
+      "text": "She thought about how she had not, today, decided about Jorgen, and how she had not, today, gone to the studio, and how the painting was still on the wall of the studio with the one bone-black brushstroke in the upper-left and the rest unchanged.",
+      "t": "narrate"
+    },
+    {
+      "text": "She thought about Tem's hand on her wrist on Thursday morning at the cabin.",
+      "t": "narrate"
+    },
+    {
+      "text": "She turned on her side, away from Tem, and closed her eyes.",
+      "t": "narrate"
+    },
+    {
+      "text": "The rain on the roof did not change.",
+      "t": "narrate"
+    },
+    {
+      "text": "She slept.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

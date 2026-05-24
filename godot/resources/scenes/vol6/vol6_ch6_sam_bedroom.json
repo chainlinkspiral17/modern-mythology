@@ -1,0 +1,160 @@
+{
+  "id": "vol6_ch6_sam_bedroom",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Tonight, It Is Enough",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_sam_bedroom_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Tonight, It Is Enough",
+      "sub": "Friday — 19:52 — 1428 Meadowlark Circle",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam's phone, on her dresser, buzzes. She picks it up. She reads the message. She reads it twice."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "no apology necessary. take your time. i'm here.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She sends it. She sits on the edge of her bed, in the small soft Texas evening, and she holds the phone in her lap, and she watches the message marked delivered. It marks read in nine seconds."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, now, cry. She sits."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside her window, the cul-de-sac does its Friday-evening thing — the post-storm light low and gold, the sprinklers running on the alternate schedule the HOA had moved them to after the rain, the cicadas tuning up, the small far-off hum of the substation continuing, as always, to do its work."
+    },
+    {
+      "t": "narrate",
+      "text": "Below her, in the kitchen, her parents are doing the dishes together. Her mother is washing. Her father is drying. They are not, tonight, talking. They are, in some specific marital way, doing the dishes together because they have run out of words and because the dishes are the only conversation left."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "We got him. We got Diego. The adults did it. The teens got to be visible and ordinary and that was, in the end, the assignment."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "Maya was right. This is what I am like when I have a plan. I am steady."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "I am, on Monday, going to a courthouse to watch my father be arraigned for a list of crimes I do not, yet, know the length of."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "I am going to be fine. I am, on the other side of all of this, going to be fine."
+    },
+    {
+      "t": "narrate",
+      "text": "She sets the phone down. She stands. She goes downstairs."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Her father, at the sink, turns. He smiles."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Let me dry.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She takes the dishtowel from him. She dries."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The Hierophant card, reversed, watches the institution send its men out into a morning that has, for the first time in twenty-eight years, not gone quite the way the institution had planned. Some of the men come back. Some of them don't. One of the men — the one in the bathroom in Nevada, eventually — discovers he is no longer one of the institution's men. The institution does not, yet, know how to count him. The institution's spreadsheets, by Saturday morning, will be off. The institution's response, by Monday afternoon, will be — for the first time in some years — delayed."
+    },
+    {
+      "t": "narrate",
+      "text": "In the bookshop in New Auburn, with the rain entirely gone, Hal locks up at nine."
+    },
+    {
+      "t": "narrate",
+      "text": "In the warehouse in Graustark, Frasier Temple, asleep on his cot, smiles in his sleep at something a Demon has murmured into the air above his head, which is, the Demon will later report to the cluster, the first smile Frasier has produced in four months."
+    },
+    {
+      "t": "narrate",
+      "text": "In Smolvud, Oregon — many time zones west, in a small apartment above a bookshop called The Salty Tome — a woman with blue dreadlocks named Tem wakes at three AM Pacific Time with the unaccountable sense that something good has happened in a state she has never been to, and she gets up, and she puts on the kettle, and she sketches, by the light of a single small lamp, an octopus that is also, in a way she does not quite understand, a map."
+    },
+    {
+      "t": "narrate",
+      "text": "Friday ends."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, at the safehouse, sleeps. Sam, in her cornflower blue bedroom, sleeps too — for the first time in five nights, fully and without effort."
+    },
+    {
+      "t": "narrate",
+      "text": "Tomorrow is Saturday. Tomorrow morning, Eileen Henderson is going to find out about the bill. Tomorrow night, Mr. Henderson is going to come out of the darkroom for the first time in twenty-six hours, and the thing using him is going to make a final attempt, and the attempt is going to fail, and Mr. Henderson is going to sit at his own kitchen table for the first time in eight days and weep into a cup of his wife's coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "But that is tomorrow. Tonight, the rescue holds. Tonight, it is enough."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

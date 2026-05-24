@@ -1,0 +1,357 @@
+{
+  "id": "vol6_ch7_ben_room",
+  "vol": 6,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — Daisy and the Butterfly",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kowalski_backyard.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Daisy and the Butterfly",
+      "sub": "Saturday — 13:38 — Kowalski House",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, when Ben comes home, is in the back yard with Daisy."
+    },
+    {
+      "t": "narrate",
+      "text": "Daisy is the family mutt. Daisy, as advertised, is a coward. Daisy has, in the forty-five minutes since Maya arrived, been hiding behind a lawn chair from a particularly aggressive butterfly."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is on the lawn, lying on her back, in the grass that Ben's father cuts every other Saturday with the small specific attention of a man who has been doing the same lawn for twenty-two years and who has, over those years, achieved with it a stable peace."
+    },
+    {
+      "t": "narrate",
+      "text": "Gracie — Ben's eleven-year-old sister — is on the patio. Gracie is sketching in a small notebook. Gracie has, since Maya arrived, been pretending to ignore Maya because Gracie has a small early-onset crush on the idea that her older brother's friends are now her friends too, and Gracie does not yet, at eleven, know how to handle that fact except by pretending to ignore it."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Ben. I've been here two hours. Your house is — your house is just a house.",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben crosses to the lawn chair. Daisy, behind it, twitches."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "What did you expect.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I don't know. I — when you said come over, I thought — I have been in adults' houses for so much of this week I forgot houses can just be houses.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Your grandmother's house is a house.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "My grandmother's house is — Ben, my grandmother's house has Morse code in the living room.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben sits in the lawn chair. Daisy scoots out from behind the chair, looks up at Ben, decides Ben is safe, and settles at his feet."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah. Fair.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya sits up. She watches Daisy."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Gracie's good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "She's a good kid.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "She likes you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "She likes everybody. It is, statistically, the leading personality trait of eleven-year-olds.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya laughs. The laugh is small and easy."
+    },
+    {
+      "t": "narrate",
+      "text": "She lies back down. She watches the clouds."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "How is Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Eileen is — Eileen is a person who has been alone with a thing for fourteen months and is, this morning, no longer alone with it. She is steady. She is going to be okay. She is going to be more than okay. She has a list.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "A list.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "A list. Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya thinks about this for a minute."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Ben. I want to tell you something. I told Sam yesterday in a text. I want to tell you in person.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "F.T. — Frasier Temple — wrote me yesterday afternoon. He said one of the adults in our group is going to have an issue this weekend. He said the Demons flagged an anomaly. He didn't know which adult. He told me to look at faces.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben sits up."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Mr. Henderson.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "That was my first guess. But I think — Ben, I think Mr. Henderson is the issue that's been resolving. The note on the bill. The way you described Eileen this morning. That feels like a thing that's getting better, not worse.",
+      "expr": "thinking"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "You think it's a different adult.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I do.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Who.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Ben. I was at my grandmother's last night. We sat at the radio for an hour. She broadcast Morse to my grandfather. She has been doing that since Thursday, since the night you and I were in the truck. She is — she is happier than I have ever seen her. She is also tired in a way I have never seen her tired. I think — I think the issue might be her, Ben. I think holding the vigil has been costing her, and now that I am here she is letting herself feel the cost.",
+      "expr": "thinking"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Maya.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "What do you think happens next.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I don't know. I'm watching her. I don't think it's something I can intervene on. I think — I think she is going to tell me when she needs to. I'm trying to be ready.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Should I — should one of us be at your house.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "No. Not yet. If I need it I'll text. But I think she needs to get to the next thing on her own.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben nods."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay. I'm — Maya, I'm going to be at the Hendersons' tonight. We're sitting with Mr. Henderson when he comes out of the darkroom. If you need me, text. I will leave.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I won't need to.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "If you do.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "If I do, Ben, I will.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He nods."
+    },
+    {
+      "t": "narrate",
+      "text": "They sit."
+    },
+    {
+      "t": "narrate",
+      "text": "Daisy gets up. Daisy walks to Maya. Daisy lies down beside her."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, looking up at the sky, puts her hand on Daisy's head."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I think I needed to come over today.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Gracie, on the patio, watches them, and smiles, and does not say anything, and writes something in her sketchbook, which she will later, when she is much older and has begun her own kind of attention, recognize as the first thing she ever wrote that was not, in some way, for somebody else."
+    },
+    {
+      "t": "narrate",
+      "text": "The back yard does its slow Saturday afternoon work."
+    },
+    {
+      "t": "narrate",
+      "text": "The butterfly leaves."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch7_safehouse"
+    }
+  ]
+}

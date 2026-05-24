@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/game/DialogueBox.gd" id="1_dlg"]
+
+[node name="DialogueBox" type="Control"]
+script = ExtResource("1_dlg")
+layout_mode = 3
+anchors_preset = 12
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0

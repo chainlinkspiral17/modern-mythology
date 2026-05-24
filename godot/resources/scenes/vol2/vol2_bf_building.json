@@ -1,0 +1,49 @@
+{
+  "id": "vol2_bf_building",
+  "vol": 2,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Briar Falls — the building",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_briar_falls_building.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The building is brick painted brown, then painted brown again. Two doors. One stick figure with a triangle skirt; one without. Between them, a vending machine with the row of selection buttons taped over except for B-4. A handwritten sign on the tape reads: B-4 ONLY. NO REFUNDS. SORRY."
+    },
+    {
+      "t": "narrate",
+      "text": "A pay phone bracketed to the wall outside. The receiver dangles by the cord. The coin-return slot has been pried at by something with a flathead. Above it, a small sticker for COLLECT CALLS DIAL 0-700 and a faded one for 1-800-COLLECT that has Carrot Top on it."
+    },
+    {
+      "t": "narrate",
+      "text": "A brochure rack just inside the alcove. The plastic slots are the kind that always sag at one end. The brochures, top to bottom:"
+    },
+    {
+      "t": "narrate",
+      "text": "COVERED BRIDGES OF YAMHILL COUNTY — three creased, two fresh."
+    },
+    {
+      "t": "narrate",
+      "text": "SMOLVUD: THE TOWN AT THE EDGE OF THE WOOD — green ink on cream stock, illustrated with a hand-drawn sanderling. The address on the back has been corrected in pen."
+    },
+    {
+      "t": "narrate",
+      "text": "THE MISSING LINK — eat, drink, wait. A diner you have not been to. The hand-printed map on the back shows a bus depot apron and a single dotted line that does not end. Underneath, in different ink: Shillelagh stops daily. Hours of operation: Yes."
+    },
+    {
+      "t": "narrate",
+      "text": "A flyer, taped to the inside of the alcove, no border, just a photocopied face: HAVE YOU SEEN THIS MAN. Underneath, a young man in a trench coat at what appears to be a bus depot bench. The flyer says CONTACT NATE D. and a phone number. The flyer says LAST SEEN: rain. The date is illegible."
+    },
+    {
+      "t": "narrate",
+      "text": "You stand in the alcove a moment longer. The pay phone does not ring. You were not expecting it to."
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_bf_hub"
+    }
+  ]
+}

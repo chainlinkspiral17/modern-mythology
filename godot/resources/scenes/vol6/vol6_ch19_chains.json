@@ -1,0 +1,1152 @@
+{
+  "id": "vol6_ch19_chains",
+  "vol": 6,
+  "chapter": 19,
+  "type": "chapter",
+  "title": "Ch 19 — The Chains",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kowalski_front_yard.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Chains",
+      "sub": "Friday — 13:53 — Home",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "He drives home."
+    },
+    {
+      "t": "narrate",
+      "text": "The drive is the small drive of a kid who is, in his head, holding two things he had not been holding when he drove out an hour ago: the depth chart, which is going to be the rest of the season, and the information, which is going to be the rest of his summer."
+    },
+    {
+      "t": "narrate",
+      "text": "The two things, in the Civic, sit beside each other in his interior. Neither pushes the other out."
+    },
+    {
+      "t": "narrate",
+      "text": "The Civic drives."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls into the Kowalski driveway at one fifty-three."
+    },
+    {
+      "t": "show",
+      "char": "bill",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill is, again, at the front yard. Bill is, this Friday afternoon, pulling weeds from the bed beside the porch — the small Bill-task that has been, for three weeks, his Friday-afternoon ritual."
+    },
+    {
+      "t": "narrate",
+      "text": "Bill stands when Ben gets out."
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Well?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "TE-1.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill, after a beat, smiles — the slow specific Bill-smile, the one Bill uses when something has happened that, in his interior, he has been hoping for but had not, out loud, been allowing himself to articulate."
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Yeah?",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Mom's awake. She's in the kitchen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Tell her. She'll cry. She'll cry the kind of cry where she's fine. Don't make a thing about the cry. Just let it happen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He goes inside."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "anita",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Anita is at the kitchen table with a cup of coffee. She is in the small soft sweatshirt she puts on after the night shift, which is the sweatshirt she has, by Ben's count, owned since he was nine."
+    },
+    {
+      "t": "narrate",
+      "text": "She looks up when Ben comes in."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "TE-1.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Anita, after a beat, smiles."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Yeah, sweetheart.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "Anita does not, in the moment, cry."
+    },
+    {
+      "t": "narrate",
+      "text": "Bill, Ben registers, had been wrong about the cry. The cry comes about ninety seconds later, when Ben — at the kitchen counter making himself a second sandwich, with his back to his mother — hears, behind him, the small sniff that means Anita has done the small private thing of letting the wave hit her once and then composing herself."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does not, this time, turn."
+    },
+    {
+      "t": "narrate",
+      "text": "He continues making the sandwich."
+    },
+    {
+      "t": "narrate",
+      "text": "He hears Anita drink her coffee. He hears her, after a beat, get up. He hears her come to the counter. He hears her, behind him, put her hand on the back of his neck — the small Anita-hand-on-the-back-of-Ben's-neck that she has been doing since he was three, the touch that has been her small physical signature on the small private moments of his childhood that have, over the years, accumulated into the relationship he has with her."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I am proud of you, Benjamin.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Ma. Thanks.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Eat. Sleep. Tomorrow is a thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She kisses the top of his head. She goes back to her coffee."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya texts at three forty-six."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "happy",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "ben i heard. te1. yes.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "who told you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "gracie. she texted me. she's at home. she found out from your dad through the kitchen window when he was yelling about the weeds.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "my dad was yelling about the weeds?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "gracie said he was talking to himself with — and i quote — \"energy.\"",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "lmao.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "anyway. yes. te1. proud.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "thanks.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "vinton tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "i can't come. i'm at the shop alone all day.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "i know. it's fine.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "i'll be there in spirit.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "that works.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "have a good game.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "yeah, maya.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He puts the phone down."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is at the shop alone tomorrow. Diego is at the inventory tonight. Sam is at the Kwik Stop. Jesse has the gig at the Foxhole. Everybody, this Saturday, has their own thing. He is going to play a football game. The football game is his. He is, by mid-August, a person whose Saturday is going to be a thing. That is new."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_school_field_evening.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The walk-through, at six PM, is light."
+    },
+    {
+      "t": "narrate",
+      "text": "The team is at the field in pads but not full contact. Coach K has them run through the offensive sets they are going to use against Vinton. Brent calls the cadence. Marcus runs the slot routes. Ben does the small seal-and-release work at TE-1, with Diaz alternating in for the second-team reps."
+    },
+    {
+      "t": "show",
+      "char": "coachk",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, on the sideline, watches."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, this evening, is the same Coach K he has been all week. Studious. Held in. The veins on his forearms doing their Coach K thing in the late-afternoon heat."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, on the second-team rep when Diaz is in, watches Coach K from the sideline."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K is carrying his wife's diagnosis. Coach K is, at the same time, calling plays. The two facts are happening in the same body at the same time. The body is, by Coach Dale's read, doing the work."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Dale, in the shed, told him. Coach Dale told him because Coach K, on Tuesday, had been thinking about what Ben said. The chain is Coach K to Coach Dale to Ben and back, and it is, by tomorrow, going to be in the same parking lot Coach K's wife is going to walk through to get to the third row of the bleachers."
+    },
+    {
+      "t": "narrate",
+      "text": "He is, at seventeen, in a chain. The chain is the team. The team is what he has been, all summer, becoming part of."
+    },
+    {
+      "t": "narrate",
+      "text": "The walk-through ends at six fifty-five."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, at the bench, claps once."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Good walk-through. Eat. Sleep. Hydrate. Be at the field tomorrow at three. Vinton arrives at four. Game is at six. Pete — chart room with me at three thirty before warm-up. Brent — talk to me before walk-through tomorrow about cadence on the new wrinkle.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben looks up."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Right foot is right foot. You don't think about it. You let it happen. Hear me?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Coach.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "The rest of you. Go home. Don't do anything stupid tonight. I love you all.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The team breaks."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben walks to the Civic."
+    },
+    {
+      "t": "show",
+      "char": "coachdale",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Dale, at the truck loading the equipment cart, gives Ben the small nod."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben gives the nod back."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He gets in the Civic. He drives."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He stops at home."
+    },
+    {
+      "t": "show",
+      "char": "anita",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "gracie",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "His mother is at the kitchen with Gracie, helping Gracie with the second-to-last page of the sticker activity book. Gracie, when Ben comes in, looks up."
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "Ben. Mom said you got TE-1.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Gracie.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "I don't know what TE-1 means but Mom says it is a big deal.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "It is, kind of. It means I'm going to start the football game tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Gracie thinks about this."
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "Are you going to win.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I don't know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "If you don't win, are you going to be sad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben thinks for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I might be a little sad. I'm going to try to play well anyway. Whether we win is — whether we win is not, by tomorrow, the only thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Gracie returns to the stickers."
+    },
+    {
+      "t": "narrate",
+      "text": "Anita, at the table, smiles at Ben. The smile is the smile of a mother whose son has just answered her eleven-year-old daughter's small philosophical football question with the answer the daughter needed."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Eat dinner before you go to Maya's.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I'm going to Maya's tonight?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "She texted me. She said tell Ben to come over. She said she has a thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "bill",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He eats. The dinner Anita has made is — Bianca had, by the four-thirty-table arrangement, sent over a cinnamon coffee cake that Eileen had brought yesterday and that the Kowalskis are, this evening, having for dessert. Anita has made enchiladas for the main. The enchiladas are — Anita's enchiladas, the recipe she does it with. Ben eats two. Gracie eats one. Bill, who has come in from the weeds, eats three."
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "What about her.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Coach K's wife. Different Eileen. Anita said Ben had mentioned the name had come up.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "What about her.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "I worked with her father. In the early nineties. At the warehouse out on Ledbetter. He was a — he was a foreman. Decent guy. I didn't know she'd married Coach K. I just put the name together at dinner.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, at the table, looks up."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "You worked with Coach K's father-in-law.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "I worked with a man named Don Murchison who had a daughter named Eileen. Don was at the warehouse for, I don't know, fifteen years. We worked the same shift in maybe ninety-three, ninety-four. I left in ninety-five. We didn't keep in touch. Don was — Don was one of those men, the kind who you work with and you like and then your shifts change and that's it. He died in maybe two thousand and four, I think. I read the obituary in the paper.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Did Eileen — was Eileen at the warehouse ever?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Once or twice. She came by to bring Don lunch. I would have met her then. I don't remember her face. I just — the name's not common. There's three Eileens in this town, including Jesse Henderson's mom. Coach K's wife is the third. I just put it together.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, at the table, registers — with the small careful attention his summer has been training — that his father has just, in three sentences, given him a piece of additional context about Eileen Kazantzakis that he had not, until this moment, known. He does not, in the moment, do anything with the context."
+    },
+    {
+      "t": "narrate",
+      "text": "He files it."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Anyway. Tomorrow. You're starting. Don't let it get to your head. Don't let it shrink your head either. Just play.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_maya_porch_dusk.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He drives to Maya's at eight twenty-six."
+    },
+    {
+      "t": "show",
+      "char": "linda",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is on the porch. Linda is on the porch. The two of them are, this Friday evening, in the arrangement they have been in every evening for the past three weeks — Linda in the wicker, Maya in the second porch chair, two iced teas on the small table, the third pulled out and waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben climbs the porch steps. Maya hands him the third iced tea."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "TE-1.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Sit, Benjamin.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He sits."
+    },
+    {
+      "t": "narrate",
+      "text": "The three of them sit on the porch in the dusk."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "What time is the game.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Six. Vinton arrives at four. Walk-through at four-thirty. Warm-up at five. Game at six. Probably done by eight or eight-thirty. Two halves of twenty-four minutes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Twenty-four-minute halves. That's not a real game.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "It's a scrimmage. Pre-season. We do twenty-four-minute halves so the kids don't burn out before the season. Coach K's been doing it that way since I-don't-know-when.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I want to ask you something. You can say no.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Can you — when the game is over. Can you come by here. I'm at the shop till eight. I'll be home by eight forty-five. I want to hear about it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben thinks for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Maya. I'll come by. I'll be sweaty.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I don't care.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Bring soup.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Linda. Whose soup.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Whoever's. We have all of it. The soup is — the soup is, at this point, a community resource.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben laughs. Maya laughs. Linda, in the wicker, smiles."
+    },
+    {
+      "t": "narrate",
+      "text": "The porch, in the dusk, holds the three of them."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "At ten oh-two Ben drives home."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls into the Kowalski driveway at ten-fourteen."
+    },
+    {
+      "t": "narrate",
+      "text": "The house is mostly dark. Bill is asleep — Bill has been getting up at five to do the lawn before the heat, and has been going to bed by nine-thirty all week. Gracie is asleep."
+    },
+    {
+      "t": "show",
+      "char": "anita",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Anita is in the kitchen with the small under-cabinet light on, drinking her morning coffee at her four-AM-equivalent, which is, tonight, ten-fifteen PM."
+    },
+    {
+      "t": "narrate",
+      "text": "She looks up when Ben comes in."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Good evening?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Ma.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Maya?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Maya. Linda. Iced tea on the porch. Linda made me promise to bring soup tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Anita laughs."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "The soup is — the soup is everybody's now.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Sleep.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Ma.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He kisses her cheek. He goes upstairs."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_ben_bedroom_dark.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He showers."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets in bed."
+    },
+    {
+      "t": "narrate",
+      "text": "He sets the alarm for ten — Saturday morning sleeping in, the small Saturday-before-a-game ritual Coach K had specifically encouraged."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns off the lamp."
+    },
+    {
+      "t": "narrate",
+      "text": "The room is dark."
+    },
+    {
+      "t": "narrate",
+      "text": "Through the window, the cicadas are loud. Mister, the cat — the half-Kowalski cat, the one Gracie had named — comes in through the door Ben had, by habit, left cracked, jumps onto the bed, and curls up at Ben's feet."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does not, this evening, displace the cat."
+    },
+    {
+      "t": "narrate",
+      "text": "In the dark, the inventory runs through him: TE-1. Eileen in the third row tomorrow. Coach K calling the plays. The chain. Marcus and the two-tight wrinkle on first down. Tucker at LT-1. Brent. The team — what he has been, all summer, becoming part of. Tomorrow he is going to play a game. He is going to play it as well as he can. He is not going to look up at the bleachers. He is not going to mention to anybody, ever, what Coach Dale told him in the shed. The chain is going to stay in his chest. The right foot is going to be the right foot."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_coachk_bedroom_dark.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "In a different bedroom in a different house in a different cul-de-sac, Coach K is in his bed beside Eileen."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K is not."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K is lying on his back looking at the ceiling, doing the small Friday-night-before-a-game thing he has been doing for twenty years, which is going through the depth chart in his head and double-checking that the choices he made are the choices he stands by."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes through the chart. He stands by the choices."
+    },
+    {
+      "t": "narrate",
+      "text": "On TE-1: the kid said the right thing on Tuesday. He could not have known. He said it anyway. The kid is the kind of seventeen-year-old you do not see twice in twenty years. Dale told him. He had told Dale on the field yesterday, and Dale, who had been his friend for seventeen years, had made the Dale-decision to tell the kid. He had known Dale would. He had told Dale because he had known Dale would. The kid will, by tomorrow, know. The kid will not, by tomorrow or ever, mention it. That is the kind of kid."
+    },
+    {
+      "t": "narrate",
+      "text": "The kid is going to start at TE-1 tomorrow. Eileen is going to be in the third row. He is, tomorrow, going to coach the game he is going to coach. The right foot is, by Friday morning, the right foot. He loves them all."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns off the lamp."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas, in the late August Texas night, are loud."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, in her bed at her grandmother's, is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, at Centro, is on the inventory floor with the team — fifteen minutes past the start of the count."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, at her bedroom in her mother's house, is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, in his bed at his parents', is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca, in her bed in the house that Mike is not in, is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "The town, in the small ways towns in mid-August do this work the night before a Saturday, holds."
+    },
+    {
+      "t": "narrate",
+      "text": "The Saturday is tomorrow."
+    },
+    {
+      "t": "narrate",
+      "text": "The Saturday is, in its architecture, the day the volume's threads are going to converge."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight, in the dark, the threads are still apart."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight is, for everybody in the volume, the small calm before."
+    },
+    {
+      "t": "narrate",
+      "text": "Sleep."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

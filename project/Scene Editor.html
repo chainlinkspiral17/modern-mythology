@@ -7,60 +7,122 @@
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="vn-data.js"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<!-- Canonical chapter data (DEMO_SCENES) — same source the game reads -->
+<script src="vn-scenes.jsx"></script>
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html,body,#root{width:100%;height:100%;overflow:hidden;}
-  body{background:#080604;color:#c4baa0;font-family:'Space Mono',monospace;}
+  html,body,#root{background:var(--bg0);}
+  html.light,body.light{background:var(--bg0) !important;}
+
+  /* ── Theme tokens ─────────────────────────────────────────────── */
+  :root {
+    /* Dark (default) */
+    --bg0:       #080604;
+    --bg1:       #0e0c09;
+    --bg2:       #141208;
+    --bg3:       #1a1610;
+    --border:    rgba(180,140,60,0.15);
+    --border2:   rgba(180,140,60,0.08);
+    --text:      #c4baa0;
+    --text2:     rgba(196,186,160,0.55);
+    --text3:     rgba(196,186,160,0.28);
+    --accent:    #c8a84a;
+    --accent-bg: rgba(180,140,60,0.08);
+    --accent-border: rgba(180,140,60,0.4);
+    --input-bg:  rgba(255,255,255,0.04);
+    --input-border: rgba(180,140,60,0.18);
+    --input-focus: rgba(180,140,60,0.5);
+    --scrollbar: rgba(180,140,60,0.22);
+    --danger:    rgba(200,60,40,0.6);
+    --danger-border: rgba(200,60,40,0.3);
+    --node-sel-alpha: 1;
+    --sb-opt:    #12100c;
+  }
+  body.light {
+    --bg0:       #f8f4ec;
+    --bg1:       #f0ebe0;
+    --bg2:       #e8e2d4;
+    --bg3:       #ddd7c8;
+    --border:    rgba(100,75,20,0.22);
+    --border2:   rgba(100,75,20,0.12);
+    --text:      #1a1408;
+    --text2:     rgba(26,20,8,0.6);
+    --text3:     rgba(26,20,8,0.35);
+    --accent:    #7a5418;
+    --accent-bg: rgba(122,84,24,0.1);
+    --accent-border: rgba(122,84,24,0.45);
+    --input-bg:  rgba(255,255,255,0.8);
+    --input-border: rgba(100,75,20,0.28);
+    --input-focus: rgba(122,84,24,0.65);
+    --scrollbar: rgba(100,75,20,0.18);
+    --danger:    rgba(160,30,10,0.8);
+    --danger-border: rgba(160,30,10,0.4);
+    --sb-opt:    #f0ebe0;
+  }
+
+  body{color:var(--text);font-family:'Space Mono',monospace;}
+  html,body{transition:background 0.2s,color 0.2s;}
 
   /* Scrollbars */
   ::-webkit-scrollbar{width:5px;height:5px;}
   ::-webkit-scrollbar-track{background:transparent;}
-  ::-webkit-scrollbar-thumb{background:rgba(180,140,60,0.25);border-radius:2px;}
+  ::-webkit-scrollbar-thumb{background:var(--scrollbar);border-radius:2px;}
 
   /* Inputs */
   input,textarea,select{
-    background:rgba(255,255,255,0.04);border:1px solid rgba(180,140,60,0.18);
-    color:#c4baa0;font-family:'Courier Prime',monospace;font-size:13px;
+    background:var(--input-bg);border:1px solid var(--input-border);
+    color:var(--text);font-family:'Courier Prime',monospace;font-size:13px;
     padding:6px 10px;outline:none;resize:vertical;
-    transition:border-color 0.15s;
+    transition:border-color 0.15s,background 0.2s;
   }
-  input:focus,textarea:focus,select:focus{border-color:rgba(180,140,60,0.5);}
+  input:focus,textarea:focus,select:focus{border-color:var(--input-focus);}
   input[type=number]{width:72px;}
-  select option{background:#12100c;}
+  select option{background:var(--sb-opt);}
   textarea{line-height:1.6;}
 
   /* Buttons */
   .btn{
     display:inline-flex;align-items:center;gap:6px;
-    padding:5px 12px;border:1px solid rgba(180,140,60,0.2);
-    background:rgba(180,140,60,0.05);color:rgba(196,186,160,0.7);
+    padding:5px 12px;border:1px solid var(--border);
+    background:var(--accent-bg);color:var(--text2);
     font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;
     text-transform:uppercase;cursor:pointer;transition:all 0.15s;white-space:nowrap;
   }
-  .btn:hover{border-color:rgba(180,140,60,0.45);color:#c8a84a;background:rgba(180,140,60,0.1);}
-  .btn.accent{border-color:rgba(180,140,60,0.45);color:#c8a84a;}
-  .btn.danger{border-color:rgba(200,60,40,0.3);color:rgba(200,60,40,0.6);}
-  .btn.danger:hover{border-color:rgba(200,60,40,0.6);color:rgba(220,80,60,0.9);background:rgba(200,60,40,0.08);}
+  .btn:hover{border-color:var(--accent-border);color:var(--accent);background:var(--accent-bg);}
+  .btn.accent{border-color:var(--accent-border);color:var(--accent);}
+  .btn.danger{border-color:var(--danger-border);color:var(--danger);}
+  .btn.danger:hover{border-color:var(--danger);opacity:0.9;}
   .btn.small{padding:3px 8px;font-size:8px;}
-  .btn.icon{padding:4px 7px;border:none;background:transparent;color:rgba(196,186,160,0.3);font-size:13px;}
-  .btn.icon:hover{color:#c8a84a;background:transparent;border:none;}
+  .btn.sm{padding:3px 8px;font-size:8px;}
+  .btn.icon{padding:4px 7px;border:none;background:transparent;color:var(--text3);font-size:13px;}
+  .btn.icon:hover{color:var(--accent);background:transparent;border:none;}
 
   /* Section labels */
   .section-label{
     font-family:'Cinzel',serif;font-size:8px;letter-spacing:0.28em;
-    color:rgba(180,140,60,0.35);text-transform:uppercase;
+    color:var(--text3);text-transform:uppercase;
+    filter: brightness(1.3);
   }
+  body.light .section-label{filter:none;}
 
   /* Toggle group */
   .toggle-group{display:flex;gap:4px;}
   .toggle-btn{
-    padding:4px 10px;border:1px solid rgba(180,140,60,0.15);
-    background:transparent;color:rgba(196,186,160,0.4);
+    padding:4px 10px;border:1px solid var(--border);
+    background:transparent;color:var(--text3);
     font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;
     text-transform:uppercase;cursor:pointer;transition:all 0.15s;
   }
-  .toggle-btn.active{border-color:rgba(180,140,60,0.6);background:rgba(180,140,60,0.12);color:#c8a84a;}
+  .toggle-btn.active{border-color:var(--accent-border);background:var(--accent-bg);color:var(--accent);}
+
+  /* ── Light mode node row overrides ───────────────────────────── */
+  body.light .script-area { background: #faf7f0; }
+  body.light input, body.light textarea, body.light select {
+    color: #1a1408;
+  }
 
   @keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
 </style>
@@ -72,7 +134,7 @@ const { useState, useEffect, useRef, useCallback } = React;
 
 // ── Constants ──────────────────────────────────────────────────────────────
 const NODE_TYPES = [
-  { t:'narrate',  label:'Narration',  color:'#c8a84a', bg:'rgba(200,168,74,0.08)',  icon:'¶'  },
+  { t:'narrate',  label:'Narration',  color:'var(--accent)', bg:'rgba(200,168,74,0.08)',  icon:'¶'  },
   { t:'say',      label:'Dialogue',   color:'#7ab8e8', bg:'rgba(122,184,232,0.07)', icon:'❝'  },
   { t:'think',    label:'Thought',    color:'#b8a4d8', bg:'rgba(184,164,216,0.07)', icon:'~'  },
   { t:'choice',   label:'Choice',     color:'#e8a040', bg:'rgba(232,160,64,0.08)',  icon:'◆'  },
@@ -85,6 +147,9 @@ const NODE_TYPES = [
   { t:'jump',     label:'Jump',       color:'#60c8c8', bg:'rgba(96,200,200,0.07)',  icon:'→'  },
   { t:'end',       label:'End Scene',  color:'#e05050', bg:'rgba(224,80,80,0.08)',   icon:'■'  },
   { t:'videoscene',label:'Video Scene',color:'#e878f0', bg:'rgba(232,120,240,0.07)', icon:'▶'  },
+  { t:'interlude', label:'Interlude',  color:'#f0c860', bg:'rgba(240,200,96,0.07)',  icon:'✦'  },
+  { t:'cg',        label:'CG Image',   color:'#80d0a0', bg:'rgba(128,208,160,0.07)', icon:'✧'  },
+  { t:'gallery',   label:'Open Gallery',color:'#a0b8e0',bg:'rgba(160,184,224,0.07)', icon:'⬚'  },
 ];
 const typeMap = Object.fromEntries(NODE_TYPES.map(x => [x.t, x]));
 
@@ -102,41 +167,164 @@ const DEFAULT_NODES = {
   jump:       { t:'jump', scene:'' },
   end:        { t:'end' },
   videoscene: { t:'videoscene', src:'', loop:true, bgFallback:'', hotspots:[] },
+  interlude:  { t:'interlude', text:'', sub:'', duration:4000 },
+  cg:         { t:'cg', src:'', caption:'' },
+  gallery:    { t:'gallery', tab:'stills', item:'', newTab:true },
 };
 
 const EXPRESSIONS = ['neutral','happy','sad','angry','surprised','worried','cold','warm','amused','calculating','impressed','thoughtful','hurt','softening','tired','excited','confused'];
 const POSITIONS = ['left','center','right'];
 
 const VOLS = [
-  { vol:1, title:'Modern Mythology',       skin:'literary'  },
-  { vol:2, title:'Small Wood Volumes',      skin:'literary'  },
-  { vol:3, title:'The Earthman Chronicles', skin:'signal'    },
-  { vol:4, title:'#/Sharp',                 skin:'zine'      },
+  { vol:1,  title:'Modern Mythology',        skin:'literary'  },
+  { vol:2,  title:'Small Wood Volumes',       skin:'literary'  },
+  { vol:3,  title:'The Earthman Chronicles',  skin:'signal'    },
+  { vol:4,  title:'#/Sharp',                  skin:'zine'      },
+  { vol:5,  title:'Major Arcana',             skin:'arcana'    },
+  { vol:6,  title:'Planned Community',        skin:'suburban'  },
+  { vol:7,  title:'Land of Milk & Honey',     skin:'pastoral'  },
+  { vol:8,  title:'SCUMM',                    skin:'scumm'     },
+  { vol:9,  title:'Por Puesto',               skin:'caliente'  },
+  { vol:10, title:'ROFLcopter',               skin:'glitch'    },
 ];
 
 const SAVE_KEY = 'mm_editor_scenes';
 const CHARS_KEY = 'mm_editor_chars';
+const EDITED_KEY = 'mm_editor_edited_scenes';
 
 function loadData() {
   try { return JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); } catch { return null; }
 }
-function saveData(data) {
-  try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch {}
+function loadEditedSet() {
+  try { return new Set(JSON.parse(localStorage.getItem(EDITED_KEY) || '[]')); }
+  catch { return new Set(); }
+}
+// Only the scenes the user has actually edited are written back. Everything
+// else stays sourced from vn-scenes.jsx so that future source-code changes to
+// chapter content aren't shadowed by a stale localStorage copy.
+function persistEditorState(data, editedSet) {
+  try {
+    const out = {};
+    Object.entries(data).forEach(([vol, vd]) => {
+      const scenes = {};
+      Object.entries(vd.scenes || {}).forEach(([id, sc]) => {
+        if (!editedSet.has(id)) return;
+        const clean = { ...sc };
+        delete clean.__canonical;
+        delete clean.__edited;
+        scenes[id] = clean;
+      });
+      if (Object.keys(scenes).length) out[vol] = { scenes };
+    });
+    localStorage.setItem(SAVE_KEY, JSON.stringify(out));
+    localStorage.setItem(EDITED_KEY, JSON.stringify([...editedSet]));
+  } catch {}
 }
 function loadChars() {
   try { return JSON.parse(localStorage.getItem(CHARS_KEY) || 'null') || ['stranger','ruth','jo','oracle','casper','deja']; } catch { return ['stranger','ruth','jo','oracle','casper','deja']; }
 }
 function saveChars(c) { try { localStorage.setItem(CHARS_KEY, JSON.stringify(c)); } catch {} }
 
+// ── Canonical chapter data: pulled from window.DEMO_SCENES (vn-scenes.jsx) ──
+// vn-scenes.jsx is the single source of truth for the chapter layout. The
+// editor groups its flat scene map by volume into the tree shape the rest of
+// this file expects. User edits are overlaid on top from localStorage.
+//
+// Many scenes in vn-scenes.jsx (especially stub chapters and entry points)
+// carry only `id` + `nodes`. We infer chapter/type/title from the id pattern
+// `vol{N}_ch{M}_*` / `vol{N}_int_*` so the editor's grouped view stays usable.
+function inferSceneMeta(id) {
+  // Recognized patterns:
+  //   vol{N}_ch{M}_*  → chapter M
+  //   vol{N}_int_*    → interlude (chapter 0)
+  //   vol{N}_*        → fallback, chapter unknown
+  const chMatch = id.match(/^vol(\d+)_ch(\d+)_(.*)$/);
+  if (chMatch) {
+    const [, , chNum, rest] = chMatch;
+    const slug = humanize(rest);
+    return { type: 'chapter', chapter: parseInt(chNum, 10), title: `Ch ${parseInt(chNum,10)} — ${slug}` };
+  }
+  const intMatch = id.match(/^vol(\d+)_int_(.*)$/);
+  if (intMatch) {
+    const slug = humanize(intMatch[2]);
+    return { type: 'interlude', chapter: 0, title: `Interlude — ${slug}` };
+  }
+  const volMatch = id.match(/^vol(\d+)_(.*)$/);
+  if (volMatch) {
+    return { type: 'chapter', title: humanize(volMatch[2]) };
+  }
+  return {};
+}
+
+function humanize(slug) {
+  return (slug || '').replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function buildCanonicalData() {
+  const out = {};
+  for (let v = 1; v <= 10; v++) out[v] = { scenes: {} };
+  const D = (typeof window !== 'undefined' && window.DEMO_SCENES) || {};
+  Object.entries(D).forEach(([key, scene]) => {
+    if (!scene || typeof scene !== 'object' || !Array.isArray(scene.nodes)) return;
+    let vol = scene.vol;
+    const id = scene.id || key;
+    if (vol == null) {
+      const m = id.match(/vol(\d+)/);
+      if (m) vol = parseInt(m[1]);
+      else if (/^\d+$/.test(key)) vol = parseInt(key);
+    }
+    if (!vol || vol < 1 || vol > 10) return;
+    const inferred = inferSceneMeta(id);
+    // Try to extract a better title from the first narrate node if it looks
+    // like "— Chapter N · The Title —" (the stub-chapter convention).
+    let narrateTitle;
+    if (!scene.title) {
+      const firstNarrate = scene.nodes.find(n => n.t === 'narrate' && n.text);
+      const m = firstNarrate && firstNarrate.text.match(/—\s*Chapter\s+\d+\s*[·•]\s*([^—\[]+?)\s*[—\[]/i);
+      if (m) narrateTitle = `Ch ${inferred.chapter ?? '?'} — ${m[1].trim()}`;
+    }
+    out[vol].scenes[id] = {
+      ...scene,
+      id,
+      vol,
+      chapter: scene.chapter ?? inferred.chapter ?? 0,
+      type: scene.type || inferred.type || 'chapter',
+      title: scene.title || narrateTitle || inferred.title || id,
+      __canonical: true,
+    };
+  });
+  return out;
+}
+
 function initData() {
+  // Start from the canonical chapter layout (vn-scenes.jsx → window.DEMO_SCENES)
+  const canonical = buildCanonicalData();
   const saved = loadData();
-  if (saved) return saved;
-  return {
-    1: { scenes:{ 'vol1_intro':{ id:'vol1_intro', vol:1, title:'Intro', nodes:[] } } },
-    2: { scenes:{ 'vol2_intro':{ id:'vol2_intro', vol:2, title:'Intro', nodes:[] } } },
-    3: { scenes:{ 'vol3_station14':{ id:'vol3_station14', vol:3, title:'Station 14', nodes:[] } } },
-    4: { scenes:{ 'vol4_underpass':{ id:'vol4_underpass', vol:4, title:'The Underpass', nodes:[] } } },
-  };
+  if (!saved) return canonical;
+  // Overlay user-edited scenes. Edits win over canonical; user-authored scenes
+  // get added. New chapters added to vn-scenes.jsx since the last save appear
+  // automatically because they come from the canonical seed.
+  //
+  // Legacy migration: the previous editor auto-saved ALL of its hardcoded
+  // stubs to localStorage. Drop any saved scene that is (a) empty AND (b) not
+  // present in canonical AND (c) not explicitly tracked in the edited set.
+  // These are vestigial test data, not real user edits.
+  const editedSet = loadEditedSet();
+  const out = { ...canonical };
+  Object.entries(saved).forEach(([vol, vd]) => {
+    if (!out[vol]) out[vol] = { scenes: {} };
+    const merged = { ...out[vol].scenes };
+    Object.entries(vd.scenes || {}).forEach(([id, sc]) => {
+      const inCanonical = !!canonical[vol]?.scenes?.[id];
+      const isEmpty = !sc.nodes || sc.nodes.length === 0;
+      const wasEdited = editedSet.has(id);
+      // Skip legacy empty stubs that aren't in canonical and weren't explicitly edited
+      if (isEmpty && !inCanonical && !wasEdited) return;
+      merged[id] = { ...sc, __edited: true };
+    });
+    out[vol] = { ...out[vol], scenes: merged };
+  });
+  return out;
 }
 
 // ── Node preview (screenplay line) ────────────────────────────────────────
@@ -152,9 +340,12 @@ function nodePreview(node) {
     case 'bgm':     return node.src || '(no file)';
     case 'sfx':     return node.src || '(no file)';
     case 'flag':    return `${node.key||'?'} = ${JSON.stringify(node.val)}`;
-    case 'jump':    return `→ ${node.scene||'?'}`;
-    case 'end':     return 'End of scene';
-    default:        return '';
+    case 'jump':       return `→ ${node.scene||'?'}`;
+    case 'end':        return 'End of scene';
+    case 'interlude':  return node.text?.slice(0,70) || '(empty interlude)';
+    case 'cg':         return node.src?.split('/').pop() || '(no file)';
+    case 'gallery':    return `Open gallery · ${node.tab||'stills'}${node.item?' · '+node.item:''}`;
+    default:           return '';
   }
 }
 
@@ -165,8 +356,8 @@ function NodeRow({ node, idx, selected, onSelect, onDelete, onMove, totalNodes, 
 
   const rowStyle = {
     display:'flex',alignItems:'stretch',
-    borderLeft:`3px solid ${selected ? nt.color : hovered ? nt.color+'80' : 'rgba(180,140,60,0.08)'}`,
-    background: selected ? nt.bg : hovered ? 'rgba(255,255,255,0.02)' : 'transparent',
+    borderLeft:`3px solid ${selected ? nt.color : hovered ? nt.color+'80' : 'var(--border2)'}`,
+    background: selected ? nt.bg : hovered ? 'rgba(128,128,128,0.04)' : 'transparent',
     cursor:'pointer',transition:'all 0.12s',marginBottom:2,
     outline: selected ? `1px solid ${nt.color}30` : 'none',
   };
@@ -180,7 +371,7 @@ function NodeRow({ node, idx, selected, onSelect, onDelete, onMove, totalNodes, 
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       {/* Index */}
       <div style={{width:36,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0,
-        fontFamily:'Space Mono',fontSize:9,color:'rgba(180,140,60,0.25)',userSelect:'none'}}>
+        fontFamily:'Space Mono',fontSize:9,color:'var(--text3)',userSelect:'none'}}>
         {idx}
       </div>
       {/* Type badge */}
@@ -198,7 +389,7 @@ function NodeRow({ node, idx, selected, onSelect, onDelete, onMove, totalNodes, 
         <div style={{
           fontFamily: isSay||isNarrate ? "'Courier Prime',monospace" : 'Space Mono,monospace',
           fontSize: isSay||isNarrate ? 13 : 11,
-          color: isNarrate ? 'rgba(200,180,130,0.75)' : isThink ? 'rgba(184,164,216,0.7)' : '#c4baa0',
+          color: isNarrate ? 'var(--text2)' : isThink ? 'rgba(160,130,220,0.8)' : 'var(--text)',
           fontStyle: isNarrate||isThink ? 'italic' : 'normal',
           lineHeight:1.5, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis',
         }}>
@@ -229,7 +420,7 @@ function NodeRow({ node, idx, selected, onSelect, onDelete, onMove, totalNodes, 
 function ChoiceOptEditor({ opt, idx, onChange, onDelete, sceneIds }) {
   const [showCheck, setShowCheck] = useState(!!opt.check);
   return (
-    <div style={{border:'1px solid rgba(180,140,60,0.12)',padding:'10px 12px',marginBottom:8,background:'rgba(0,0,0,0.2)'}}>
+    <div style={{border:'1px solid var(--border)',padding:'10px 12px',marginBottom:8,background:'rgba(0,0,0,0.2)'}}>
       <div style={{display:'flex',gap:6,alignItems:'center',marginBottom:8}}>
         <span style={{fontFamily:'Cinzel,serif',fontSize:9,color:'rgba(232,160,64,0.7)',letterSpacing:'0.15em',minWidth:18}}>{String.fromCharCode(65+idx)}</span>
         <input value={opt.text||''} onChange={e=>onChange({...opt,text:e.target.value})}
@@ -237,12 +428,12 @@ function ChoiceOptEditor({ opt, idx, onChange, onDelete, sceneIds }) {
         <button className="btn icon danger" onClick={onDelete}>✕</button>
       </div>
       <div style={{display:'flex',gap:8,alignItems:'center',flexWrap:'wrap'}}>
-        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.4)'}}>→</span>
-        <label style={{fontSize:9,color:'rgba(196,186,160,0.5)'}}>Node</label>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'var(--text2)'}}>→</span>
+        <label style={{fontSize:9,color:'var(--text2)'}}>Node</label>
         <input type="number" value={opt.goto??''} placeholder="idx"
           onChange={e=>onChange({...opt,goto:e.target.value===''?undefined:parseInt(e.target.value)})} />
-        <span style={{fontSize:9,color:'rgba(196,186,160,0.3)'}}>or</span>
-        <label style={{fontSize:9,color:'rgba(196,186,160,0.5)'}}>Scene</label>
+        <span style={{fontSize:9,color:'var(--text3)'}}>or</span>
+        <label style={{fontSize:9,color:'var(--text2)'}}>Scene</label>
         <input value={opt.scene||''} placeholder="scene_id"
           onChange={e=>onChange({...opt,scene:e.target.value||undefined})}
           style={{width:120}} list="scene-ids-list" />
@@ -253,16 +444,16 @@ function ChoiceOptEditor({ opt, idx, onChange, onDelete, sceneIds }) {
       </div>
       {showCheck && (
         <div style={{display:'flex',gap:8,alignItems:'center',marginTop:8,flexWrap:'wrap'}}>
-          <label style={{fontSize:9,color:'rgba(196,186,160,0.4)'}}>Skill</label>
+          <label style={{fontSize:9,color:'var(--text2)'}}>Skill</label>
           <input value={opt.check?.skill||''} placeholder="empathy"
             onChange={e=>onChange({...opt,check:{...opt.check,skill:e.target.value}})} style={{width:90}} />
-          <label style={{fontSize:9,color:'rgba(196,186,160,0.4)'}}>Diff</label>
+          <label style={{fontSize:9,color:'var(--text2)'}}>Diff</label>
           <input type="number" value={opt.check?.diff||''} placeholder="8"
             onChange={e=>onChange({...opt,check:{...opt.check,diff:parseInt(e.target.value)||0}})} />
-          <label style={{fontSize:9,color:'rgba(196,186,160,0.4)'}}>Pass→</label>
+          <label style={{fontSize:9,color:'var(--text2)'}}>Pass→</label>
           <input type="number" value={opt.check?.pass??''} placeholder="idx"
             onChange={e=>onChange({...opt,check:{...opt.check,pass:parseInt(e.target.value)||undefined}})} />
-          <label style={{fontSize:9,color:'rgba(196,186,160,0.4)'}}>Fail→</label>
+          <label style={{fontSize:9,color:'var(--text2)'}}>Fail→</label>
           <input type="number" value={opt.check?.fail??''} placeholder="idx"
             onChange={e=>onChange({...opt,check:{...opt.check,fail:parseInt(e.target.value)||undefined}})} />
         </div>
@@ -274,7 +465,7 @@ function ChoiceOptEditor({ opt, idx, onChange, onDelete, sceneIds }) {
 // ── Node Editor (right panel) ─────────────────────────────────────────────
 function NodeEditor({ node, idx, onUpdate, onClose, characters, sceneIds }) {
   if (!node) return (
-    <div style={{padding:24,color:'rgba(196,186,160,0.25)',fontFamily:'Space Mono',fontSize:11,textAlign:'center',marginTop:40}}>
+    <div style={{padding:24,color:'var(--text3)',fontFamily:'Space Mono',fontSize:11,textAlign:'center',marginTop:40}}>
       Select a node to edit
     </div>
   );
@@ -285,7 +476,7 @@ function NodeEditor({ node, idx, onUpdate, onClose, characters, sceneIds }) {
     <div style={{marginBottom:14}}>
       <div style={{display:'flex',justifyContent:'space-between',marginBottom:5}}>
         <span className="section-label">{label}</span>
-        {hint && <span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.25)'}}>{hint}</span>}
+        {hint && <span style={{fontFamily:'Space Mono',fontSize:8,color:'var(--text3)'}}>{hint}</span>}
       </div>
       {children}
     </div>
@@ -294,10 +485,10 @@ function NodeEditor({ node, idx, onUpdate, onClose, characters, sceneIds }) {
   return (
     <div style={{padding:'16px 16px',overflowY:'auto',height:'100%'}}>
       {/* Header */}
-      <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:20,paddingBottom:14,borderBottom:'1px solid rgba(180,140,60,0.12)'}}>
+      <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:20,paddingBottom:14,borderBottom:'1px solid var(--border)'}}>
         <span style={{fontSize:16,color:nt?.color}}>{nt?.icon}</span>
         <span style={{fontFamily:'Cinzel,serif',fontSize:10,letterSpacing:'0.2em',color:nt?.color,textTransform:'uppercase'}}>{nt?.label}</span>
-        <span style={{marginLeft:'auto',fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)'}}>#{idx}</span>
+        <span style={{marginLeft:'auto',fontFamily:'Space Mono',fontSize:9,color:'var(--text3)'}}>#{idx}</span>
       </div>
 
       {/* Narration */}
@@ -402,7 +593,7 @@ function NodeEditor({ node, idx, onUpdate, onClose, characters, sceneIds }) {
           <input value={node.src||''} onChange={e=>upd({src:e.target.value})}
             placeholder={node.t==='bg'?'assets/backgrounds/scene.jpg':node.t==='bgm'?'assets/audio/bgm/track.mp3':'assets/audio/sfx/sound.mp3'}
             style={{width:'100%',marginBottom:6}} />
-          <div style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)'}}>
+          <div style={{fontFamily:'Space Mono',fontSize:9,color:'var(--text3)'}}>
             Upload files to assets/ folder then reference by path
           </div>
         </div>
@@ -437,7 +628,7 @@ function NodeEditor({ node, idx, onUpdate, onClose, characters, sceneIds }) {
 
       {/* End */}
       {node.t==='end' && (
-        <div style={{fontFamily:'Space Mono',fontSize:10,color:'rgba(196,186,160,0.35)',fontStyle:'italic'}}>
+        <div style={{fontFamily:'Space Mono',fontSize:10,color:'var(--text3)',fontStyle:'italic'}}>
           This node ends the scene and returns to menu.
         </div>
       )}
@@ -446,6 +637,71 @@ function NodeEditor({ node, idx, onUpdate, onClose, characters, sceneIds }) {
       {node.t==='videoscene' && (
         <VideoSceneEditor node={node} onUpdate={onUpdate} />
       )}
+
+      {/* Interlude */}
+      {node.t==='interlude' && <>
+        {field('Text',
+          <textarea rows={4} value={node.text||''} onChange={e=>upd({text:e.target.value})}
+            placeholder="Full-screen atmospheric text…" style={{width:'100%'}} />, `${(node.text||'').length} chars`)
+        }
+        {field('Subtitle (optional)',
+          <input value={node.sub||''} onChange={e=>upd({sub:e.target.value})}
+            placeholder="e.g. Smolvud · October" style={{width:'100%'}} />
+        )}
+        {field('Auto-advance after',
+          <div style={{display:'flex',gap:8,alignItems:'center'}}>
+            <input type="number" value={node.duration??4000} min={0} max={30000} step={500}
+              onChange={e=>upd({duration:parseInt(e.target.value)||0})} style={{width:80}} />
+            <span style={{fontFamily:'Space Mono',fontSize:9,color:'var(--text3)'}}>ms (0 = manual only)</span>
+          </div>
+        )}
+      </>}
+
+      {/* CG Image */}
+      {node.t==='cg' && <>
+        {field('Image path',
+          <input value={node.src||''} onChange={e=>upd({src:e.target.value})}
+            placeholder="assets/cg/vol7_cemetery_goodbye.jpg" style={{width:'100%'}} />
+        )}
+        {field('Caption (optional)',
+          <textarea rows={2} value={node.caption||''} onChange={e=>upd({caption:e.target.value})}
+            placeholder="Location or moment caption…" style={{width:'100%'}} />
+        )}
+        {node.src && (
+          <div style={{marginTop:8,padding:8,border:'1px solid var(--border2)',background:'var(--bg2)'}}>
+            <img src={node.src} alt="preview"
+              style={{maxWidth:'100%',maxHeight:140,objectFit:'contain',display:'block',margin:'0 auto'}}
+              onError={e=>e.target.style.display='none'} />
+          </div>
+        )}
+      </>}
+
+      {/* Open Gallery */}
+      {node.t==='gallery' && <>
+        {field('Tab',
+          <div className="toggle-group">
+            {['stills','music','video'].map(t=>(
+              <button key={t} className={`toggle-btn${node.tab===t?' active':''}`}
+                onClick={()=>upd({tab:t})}>{t}</button>
+            ))}
+          </div>
+        )}
+        {field('Specific item ID (optional)',
+          <input value={node.item||''} onChange={e=>upd({item:e.target.value})}
+            placeholder="e.g. vol7_cemetery_goodbye" style={{width:'100%'}} />
+        )}
+        {field('Open behaviour',
+          <div className="toggle-group">
+            <button className={`toggle-btn${node.newTab!==false?' active':''}`}
+              onClick={()=>upd({newTab:true})}>New tab</button>
+            <button className={`toggle-btn${node.newTab===false?' active':''}`}
+              onClick={()=>upd({newTab:false})}>Navigate away</button>
+          </div>
+        )}
+        <div style={{fontFamily:'Space Mono',fontSize:9,color:'var(--text3)',marginTop:8,lineHeight:1.7}}>
+          Opens Gallery.html#{node.tab||'stills'}{node.item?`?item=${node.item}`:''} — game continues after.
+        </div>
+      </>}
     </div>
   );
 }
@@ -455,9 +711,9 @@ function AddNodeMenu({ onAdd, onClose }) {
   return (
     <div style={{
       position:'absolute',zIndex:50,
-      background:'#0e0c09',border:'1px solid rgba(180,140,60,0.25)',
+      background:'var(--bg1)',border:'1px solid var(--accent-border)',
       padding:12,display:'flex',flexWrap:'wrap',gap:6,width:320,
-      animation:'fadeIn 0.12s ease',boxShadow:'0 8px 32px rgba(0,0,0,0.6)',
+      animation:'fadeIn 0.12s ease',boxShadow:'0 8px 32px rgba(0,0,0,0.4)',
     }}>
       {NODE_TYPES.map(nt=>(
         <button key={nt.t} onClick={()=>onAdd(nt.t)}
@@ -474,7 +730,7 @@ function AddNodeMenu({ onAdd, onClose }) {
           <span>{nt.icon}</span><span>{nt.label}</span>
         </button>
       ))}
-      <button onClick={onClose} style={{marginLeft:'auto',fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)',background:'transparent',border:'none',cursor:'pointer',padding:'4px 6px'}}>✕ cancel</button>
+      <button onClick={onClose} style={{marginLeft:'auto',fontFamily:'Space Mono',fontSize:9,color:'var(--text3)',background:'transparent',border:'none',cursor:'pointer',padding:'4px 6px'}}>✕ cancel</button>
     </div>
   );
 }
@@ -498,8 +754,8 @@ function ImportExportModal({ scene, onImport, onClose }) {
 
   return (
     <div style={{position:'fixed',inset:0,background:'rgba(0,0,0,0.7)',zIndex:100,display:'flex',alignItems:'center',justifyContent:'center'}}>
-      <div style={{width:640,height:520,background:'#0e0c09',border:'1px solid rgba(180,140,60,0.25)',display:'flex',flexDirection:'column'}}>
-        <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'12px 16px',borderBottom:'1px solid rgba(180,140,60,0.12)'}}>
+      <div style={{width:640,height:520,background:'var(--bg1)',border:'1px solid var(--accent-border)',display:'flex',flexDirection:'column'}}>
+        <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'12px 16px',borderBottom:'1px solid var(--border)'}}>
           <span className="section-label">Import / Export JSON</span>
           <div style={{display:'flex',gap:8}}>
             <button className="btn" onClick={doCopy}>{copied?'✓ Copied!':'Copy to clipboard'}</button>
@@ -508,8 +764,8 @@ function ImportExportModal({ scene, onImport, onClose }) {
           </div>
         </div>
         <textarea value={json} onChange={e=>setJson(e.target.value)}
-          style={{flex:1,width:'100%',fontFamily:'Space Mono',fontSize:11,padding:16,border:'none',borderRadius:0,resize:'none',background:'#080604',color:'#c4baa0',lineHeight:1.6}} />
-        <div style={{padding:'8px 16px',borderTop:'1px solid rgba(180,140,60,0.08)',fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)'}}>
+          style={{flex:1,width:'100%',fontFamily:'Space Mono',fontSize:11,padding:16,border:'none',borderRadius:0,resize:'none',background:'var(--bg0)',color:'var(--text)',lineHeight:1.6}} />
+        <div style={{padding:'8px 16px',borderTop:'1px solid var(--border2)',fontFamily:'Space Mono',fontSize:9,color:'var(--text3)'}}>
           Paste nodes array here to import · Export and add to DEMO_SCENES in vn-scenes.jsx
         </div>
       </div>
@@ -521,7 +777,7 @@ function ImportExportModal({ scene, onImport, onClose }) {
 function SceneGraph({ scenes, currentSceneId, onNavigate }) {
   const list = Object.values(scenes);
   if (list.length === 0) return (
-    <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100%',fontFamily:'Space Mono',fontSize:11,color:'rgba(196,186,160,.2)'}}>No scenes yet.</div>
+    <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100%',fontFamily:'Space Mono',fontSize:11,color:'var(--text3)'}}>No scenes yet.</div>
   );
   const BOX_W=180, BOX_H=64, GAP_X=80, GAP_Y=36;
   const COLS = Math.max(1, Math.ceil(Math.sqrt(list.length)));
@@ -537,7 +793,7 @@ function SceneGraph({ scenes, currentSceneId, onNavigate }) {
   const totalW=COLS*(BOX_W+GAP_X)+24;
   const totalH=Math.ceil(list.length/COLS)*(BOX_H+GAP_Y)+24;
   return (
-    <div style={{overflow:'auto',width:'100%',height:'100%',padding:24,background:'#080604'}}>
+    <div style={{overflow:'auto',width:'100%',height:'100%',padding:24,background:'var(--bg0)'}}>
       <svg width={totalW} height={totalH} style={{overflow:'visible',display:'block'}}>
         <defs>
           <marker id="arrowJ" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
@@ -635,7 +891,7 @@ function HotspotEditor({ hotspot, idx, onChange, onDelete }) {
         <span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(232,120,240,0.5)',minWidth:20}}>#{idx}</span>
         <input value={hotspot.label||''} onChange={e=>{ e.stopPropagation(); onChange({...hotspot,label:e.target.value}); }}
           onClick={e=>e.stopPropagation()} placeholder="Hotspot label" style={{flex:1,fontSize:11,height:24,padding:'2px 6px'}} />
-        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)'}}>{(hotspot.verbs||[]).length} verbs</span>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'var(--text3)'}}>{(hotspot.verbs||[]).length} verbs</span>
         <span style={{color:'rgba(232,120,240,0.4)',fontSize:11}}>{open?'▲':'▼'}</span>
         <button className="btn icon danger" onClick={e=>{e.stopPropagation();onDelete();}}>✕</button>
       </div>
@@ -727,7 +983,7 @@ function VideoSceneEditor({ node, onUpdate }) {
           onChange={h2=>updH(i,h2)} onDelete={()=>delH(i)} />
       ))}
       {(node.hotspots||[]).length===0 && (
-        <div style={{fontFamily:'Space Mono',fontSize:10,color:'rgba(196,186,160,.2)',textAlign:'center',padding:'20px 0'}}>
+        <div style={{fontFamily:'Space Mono',fontSize:10,color:'var(--text3)',textAlign:'center',padding:'20px 0'}}>
           No hotspots yet.<br/>Add one and define its position, time window, verbs, and actions.
         </div>
       )}
@@ -735,19 +991,149 @@ function VideoSceneEditor({ node, onUpdate }) {
   );
 }
 
+// ── Preview Pane ──────────────────────────────────────────────────────────
+// Renders the game in a scaled iframe, injecting editor scenes via postMessage
+function PreviewPane({ vol, sceneId, scene, lightMode }) {
+  const iframeRef = useRef(null);
+  const [ready, setReady] = useState(false);
+  const [key, setKey] = useState(0);
+  const pendingRef = useRef(false);
+
+  const sendScene = useCallback(() => {
+    if (!iframeRef.current?.contentWindow) return;
+    iframeRef.current.contentWindow.postMessage({
+      type: '__mm_preview',
+      vol,
+      sceneId,
+      scene,
+    }, '*');
+  }, [vol, sceneId, scene]);
+
+  // Listen for ready signal from iframe — retry sendScene on each ready ping
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.data?.type === '__mm_preview_ready') {
+        setReady(true);
+        // Send scene immediately on each ready signal (iframe may signal multiple times)
+        setTimeout(sendScene, 50);
+      }
+    };
+    window.addEventListener('message', handler);
+    return () => window.removeEventListener('message', handler);
+  }, [sendScene]);
+
+  // Re-send whenever scene changes (if already ready)
+  useEffect(() => {
+    if (ready) sendScene();
+  }, [scene, sceneId, vol, ready, sendScene]);
+
+  const reload = () => { setReady(false); setKey(k => k + 1); };
+
+  // Hide HUD elements that break in preview
+  const iframeStyle = {
+    position: 'absolute',
+    top: 0, left: 0,
+    width: 1280, height: 720,
+    border: 'none',
+    transformOrigin: 'top left',
+  };
+
+  return (
+    <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:'#050402',position:'relative'}}>
+      {/* Toolbar */}
+      <div style={{display:'flex',alignItems:'center',gap:10,padding:'6px 12px',
+        background:'var(--bg1)',borderBottom:'1px solid var(--border2)',flexShrink:0,zIndex:2}}>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'var(--text3)',flex:1,letterSpacing:'0.1em',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>
+          {sceneId} · Vol {vol < 10 ? `0${vol}` : vol}
+        </span>
+        {!ready
+          ? <span style={{fontFamily:'Space Mono',fontSize:8,color:'var(--text3)'}}>● Loading…</span>
+          : <span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(80,200,120,0.8)'}}>● Live</span>
+        }
+        <button onClick={reload} style={{fontFamily:'Space Mono',fontSize:8,letterSpacing:'0.12em',
+          textTransform:'uppercase',padding:'3px 10px',border:'1px solid var(--border)',
+          background:'var(--accent-bg)',color:'var(--text2)',cursor:'pointer'}}>↺ Reload</button>
+        <button onClick={sendScene} style={{fontFamily:'Space Mono',fontSize:8,letterSpacing:'0.12em',
+          textTransform:'uppercase',padding:'3px 10px',border:'1px solid var(--border)',
+          background:'var(--accent-bg)',color:'var(--accent)',cursor:'pointer'}}>↑ Push scene</button>
+      </div>
+      {/* Scaled iframe */}
+      <div style={{flex:1,position:'relative',overflow:'hidden',background:'#050402'}}>
+        <iframe
+          key={key}
+          ref={iframeRef}
+          src={`Modern Mythology.html?preview=1&vol=${vol}&scene=${encodeURIComponent(sceneId)}`}
+          style={iframeStyle}
+          id="preview-iframe"
+          title="Game Preview"
+        />
+        <PreviewScaler iframeRef={iframeRef} />
+      </div>
+      <div style={{padding:'5px 12px',background:'var(--bg1)',borderTop:'1px solid var(--border2)',
+        fontFamily:'Space Mono',fontSize:8,color:'var(--text3)',display:'flex',gap:16,flexShrink:0}}>
+        <span>Click or Space to advance · Choices are interactive</span>
+        <span style={{marginLeft:'auto'}}>↑ Push scene to reload with latest node edits</span>
+      </div>
+    </div>
+  );
+}
+
+function PreviewScaler({ iframeRef }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    const fit = () => {
+      const el = containerRef.current?.parentElement;
+      if (!el || !iframeRef.current) return;
+      const sw = el.clientWidth, sh = el.clientHeight;
+      const s = Math.min(sw / 1280, sh / 720);
+      iframeRef.current.style.transform = `scale(${s})`;
+      iframeRef.current.style.top = `${(sh - 720 * s) / 2}px`;
+      iframeRef.current.style.left = `${(sw - 1280 * s) / 2}px`;
+    };
+    fit();
+    const obs = new ResizeObserver(fit);
+    if (containerRef.current?.parentElement) obs.observe(containerRef.current.parentElement);
+    return () => obs.disconnect();
+  }, [iframeRef]);
+  return <div ref={containerRef} style={{position:'absolute',inset:0,pointerEvents:'none'}} />;
+}
+
 // ── App ───────────────────────────────────────────────────────────────────
 function App() {
   const [data, setData] = useState(initData);
+  const [editedSet, setEditedSet] = useState(loadEditedSet);
   const [characters, setCharacters] = useState(loadChars);
-  const [currentVol, setCurrentVol] = useState(1);
-  const [currentSceneId, setCurrentSceneId] = useState('vol1_intro');
+  const [currentVol, setCurrentVol] = useState(() => {
+    // Land on a volume that actually has scenes (prefer 7 if populated).
+    const initial = initData();
+    if (Object.keys(initial[7]?.scenes || {}).length) return 7;
+    for (let v = 1; v <= 10; v++) {
+      if (Object.keys(initial[v]?.scenes || {}).length) return v;
+    }
+    return 7;
+  });
+  const [currentSceneId, setCurrentSceneId] = useState(() => {
+    const initial = initData();
+    const startVol = Object.keys(initial[7]?.scenes || {}).length ? 7 : 1;
+    return initial[startVol]?.scenes?.vol7_ch8_six_oclock
+      ? 'vol7_ch8_six_oclock'
+      : Object.keys(initial[startVol]?.scenes || {})[0] || '';
+  });
   const [selectedIdx, setSelectedIdx] = useState(null);
-  const [addMenuPos, setAddMenuPos] = useState(null); // {y, insertAt}
+  const [addMenuPos, setAddMenuPos] = useState(null);
   const [showIO, setShowIO] = useState(false);
   const [newCharInput, setNewCharInput] = useState('');
   const [newSceneInput, setNewSceneInput] = useState('');
-  const [centerView, setCenterView] = useState('script'); // 'script' | 'graph'
+  const [centerView, setCenterView] = useState('script');
+  const [lightMode, setLightMode] = useState(() => localStorage.getItem('mm_editor_theme') === 'light');
   const addMenuRef = useRef();
+
+  // Apply theme class to body AND html
+  useEffect(() => {
+    document.body.classList.toggle('light', lightMode);
+    document.documentElement.classList.toggle('light', lightMode);
+    localStorage.setItem('mm_editor_theme', lightMode ? 'light' : 'dark');
+  }, [lightMode]);
 
   const volData = data[currentVol] || { scenes:{} };
   const scene = volData.scenes[currentSceneId];
@@ -755,9 +1141,24 @@ function App() {
 
   const allSceneIds = Object.values(data).flatMap(vd => Object.keys(vd.scenes || {}));
 
-  // Auto-save
-  useEffect(() => { saveData(data); }, [data]);
+  // Persist only scenes the user has actually edited; canonical content stays
+  // sourced from vn-scenes.jsx so source-code changes flow through.
+  useEffect(() => { persistEditorState(data, editedSet); }, [data, editedSet]);
   useEffect(() => { saveChars(characters); }, [characters]);
+
+  const markEdited = useCallback((id) => {
+    setEditedSet(prev => prev.has(id) ? prev : new Set([...prev, id]));
+  }, []);
+  const resetSceneToCanonical = useCallback((vol, sceneId) => {
+    const canonical = buildCanonicalData();
+    const cs = canonical[vol]?.scenes?.[sceneId];
+    if (!cs) return;
+    setData(d => ({ ...d, [vol]: { ...d[vol], scenes: { ...d[vol]?.scenes, [sceneId]: cs } } }));
+    setEditedSet(prev => {
+      if (!prev.has(sceneId)) return prev;
+      const next = new Set(prev); next.delete(sceneId); return next;
+    });
+  }, []);
 
   // Close add menu on outside click
   useEffect(() => {
@@ -767,8 +1168,12 @@ function App() {
   }, []);
 
   const updateScene = useCallback((newScene) => {
-    setData(d => ({ ...d, [currentVol]: { ...d[currentVol], scenes: { ...d[currentVol]?.scenes, [currentSceneId]: newScene } } }));
-  }, [currentVol, currentSceneId]);
+    const clean = { ...newScene };
+    delete clean.__canonical;
+    clean.__edited = true;
+    setData(d => ({ ...d, [currentVol]: { ...d[currentVol], scenes: { ...d[currentVol]?.scenes, [currentSceneId]: clean } } }));
+    markEdited(currentSceneId);
+  }, [currentVol, currentSceneId, markEdited]);
 
   const updateNodes = useCallback((newNodes) => {
     updateScene({ ...scene, nodes: newNodes });
@@ -809,27 +1214,28 @@ function App() {
   const createScene = () => {
     if (!newSceneInput.trim()) return;
     const id = newSceneInput.trim().replace(/\s+/g,'_').toLowerCase();
-    setData(d => ({ ...d, [currentVol]: { ...d[currentVol], scenes: { ...d[currentVol]?.scenes, [id]: { id, vol: currentVol, title: newSceneInput.trim(), nodes: [] } } } }));
+    setData(d => ({ ...d, [currentVol]: { ...d[currentVol], scenes: { ...d[currentVol]?.scenes, [id]: { id, vol: currentVol, type: 'chapter', title: newSceneInput.trim(), nodes: [], __edited: true } } } }));
+    markEdited(id);
     setCurrentSceneId(id);
     setSelectedIdx(null);
     setNewSceneInput('');
   };
 
-  const sideBg = '#0e0c09';
-  const mainBg = '#080604';
+  const sideBg = 'var(--bg1)';
+  const mainBg = 'var(--bg0)';
 
-  const volPanelStyle = { background: sideBg, borderRight:'1px solid rgba(180,140,60,0.1)', width:220, flexShrink:0, display:'flex', flexDirection:'column', overflow:'hidden' };
-  const rightPanelStyle = { background: sideBg, borderLeft:'1px solid rgba(180,140,60,0.1)', width:300, flexShrink:0, display:'flex', flexDirection:'column', overflow:'hidden' };
+  const volPanelStyle = { background: sideBg, borderRight:'1px solid var(--border2)', width:220, flexShrink:0, display:'flex', flexDirection:'column', overflow:'hidden' };
+  const rightPanelStyle = { background: sideBg, borderLeft:'1px solid var(--border2)', width:300, flexShrink:0, display:'flex', flexDirection:'column', overflow:'hidden' };
 
   const currentVol_ = VOLS.find(v=>v.vol===currentVol);
 
   return (
-    <div style={{width:'100%',height:'100%',display:'flex',flexDirection:'column',overflow:'hidden'}}>
+    <div style={{width:'100%',height:'100%',display:'flex',flexDirection:'column',overflow:'hidden',background:'var(--bg0)'}}>
       {/* Top bar */}
       <div style={{
-        height:46,borderBottom:'1px solid rgba(180,140,60,0.12)',
+        height:46,borderBottom:'1px solid var(--border)',
         display:'flex',alignItems:'center',gap:12,padding:'0 16px',
-        background:'#0a0806',flexShrink:0,
+        background:'var(--bg1)',flexShrink:0,
       }}>
         <a href="Modern Mythology.html" style={{textDecoration:'none'}}>
           <button className="btn">← Game</button>
@@ -837,11 +1243,27 @@ function App() {
         <a href="Asset Manager.html" style={{textDecoration:'none'}}>
           <button className="btn">Assets</button>
         </a>
-        <div style={{width:1,height:20,background:'rgba(180,140,60,0.15)'}}></div>
-        <span style={{fontFamily:'Cinzel,serif',fontSize:10,letterSpacing:'0.2em',color:'#c8a84a'}}>Scene Editor</span>
-        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.3)'}}>—</span>
-        <span style={{fontFamily:'Space Mono',fontSize:9,color:'rgba(196,186,160,0.5)'}}>{scene?.title || currentSceneId}</span>
-        <span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.25)'}}>· {nodes.length} nodes</span>
+        <div style={{width:1,height:20,background:'var(--border)'}}></div>
+        <span style={{fontFamily:'Cinzel,serif',fontSize:10,letterSpacing:'0.2em',color:'var(--accent)'}}>Scene Editor</span>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'var(--text3)'}}>—</span>
+        <span style={{fontFamily:'Space Mono',fontSize:9,color:'var(--text2)',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',maxWidth:280}}>{scene?.title || currentSceneId}</span>
+        <span style={{fontFamily:'Space Mono',fontSize:8,color:'var(--text3)',whiteSpace:'nowrap'}}>· {nodes.length} nodes</span>
+        {scene && (scene.__edited || editedSet.has(currentSceneId)) && (
+          <span style={{display:'inline-flex',alignItems:'center',gap:5,fontFamily:'Space Mono',fontSize:8,letterSpacing:'0.12em',textTransform:'uppercase',color:'var(--accent)',marginLeft:4}}>
+            <span style={{width:6,height:6,borderRadius:'50%',background:'var(--accent)'}}></span>
+            edited
+            {buildCanonicalData()[currentVol]?.scenes?.[currentSceneId] && (
+              <button className="btn small" style={{marginLeft:6,padding:'2px 7px'}}
+                title="Discard local edits and restore the version from vn-scenes.jsx"
+                onClick={()=>{
+                  if (confirm(`Reset "${scene.title || currentSceneId}" to the version in vn-scenes.jsx?\\n\\nLocal edits to this scene will be lost.`)) {
+                    resetSceneToCanonical(currentVol, currentSceneId);
+                    setSelectedIdx(null);
+                  }
+                }}>↺ Reset to source</button>
+            )}
+          </span>
+        )}
         <div style={{flex:1}}></div>
         {/* Character mgmt */}
         <div style={{display:'flex',gap:6,alignItems:'center'}}>
@@ -850,24 +1272,41 @@ function App() {
             onKeyDown={e=>{if(e.key==='Enter'&&newCharInput.trim()){setCharacters(c=>[...new Set([...c,newCharInput.trim().toLowerCase()])]);setNewCharInput('');}}}
             style={{width:120,height:26,fontSize:10,padding:'2px 8px'}} />
         </div>
-        <div style={{width:1,height:20,background:'rgba(180,140,60,0.15)'}}></div>
-        <button className="btn" onClick={()=>setShowIO(true)}>Import / Export</button>
-        <button className="btn accent" onClick={()=>setShowIO(true)}>↓ Export JSON</button>
+        <div style={{width:1,height:20,background:'var(--border)'}}></div>
+        {/* Light/Dark toggle */}
+        <button className={`btn${lightMode?' accent':''}`}
+          onClick={()=>setLightMode(v=>!v)}
+          title={lightMode ? 'Switch to dark mode' : 'Switch to light mode'}
+          style={{minWidth:36,justifyContent:'center',fontSize:13,padding:'4px 10px'}}>
+          {lightMode ? '☀' : '◑'}
+        </button>
+        <div style={{width:1,height:20,background:'var(--border)'}}></div>
+        <button className="btn" onClick={()=>{
+          const count = editedSet.size;
+          if (!count) { alert('No local edits to wipe.'); return; }
+          if (!confirm(`Wipe ${count} local scene edit${count===1?'':'s'} and reload the canonical chapter layout from vn-scenes.jsx?\n\nThis cannot be undone.`)) return;
+          localStorage.removeItem(SAVE_KEY);
+          localStorage.removeItem(EDITED_KEY);
+          setEditedSet(new Set());
+          setData(buildCanonicalData());
+          setSelectedIdx(null);
+        }} title="Drop all local scene edits and re-seed from vn-scenes.jsx">↻ Sync</button>
+        <button className="btn accent" onClick={()=>setShowIO(true)}>Import / Export</button>
       </div>
 
       <div style={{flex:1,display:'flex',overflow:'hidden'}}>
         {/* Left: scene list */}
         <div style={volPanelStyle}>
           {/* Volume tabs */}
-          <div style={{display:'flex',borderBottom:'1px solid rgba(180,140,60,0.1)'}}>
+          <div style={{display:'flex',flexWrap:'wrap',borderBottom:'1px solid var(--border2)'}}>
             {VOLS.map(v=>(
               <div key={v.vol} onClick={()=>{setCurrentVol(v.vol);const ids=Object.keys(data[v.vol]?.scenes||{});setCurrentSceneId(ids[0]||'');setSelectedIdx(null);}}
                 style={{
-                  flex:1,padding:'8px 4px',textAlign:'center',cursor:'pointer',
-                  fontFamily:'Space Mono',fontSize:9,
-                  color: currentVol===v.vol ? '#c8a84a':'rgba(196,186,160,0.35)',
-                  borderBottom: currentVol===v.vol ? '1px solid #c8a84a':'none',
-                  background: currentVol===v.vol ? 'rgba(180,140,60,0.05)':'transparent',
+                  flex:'0 0 20%',padding:'7px 4px',textAlign:'center',cursor:'pointer',
+                  fontFamily:'Space Mono',fontSize:8,
+                  color: currentVol===v.vol ? 'var(--accent)':'var(--text3)',
+                  borderBottom: currentVol===v.vol ? '1px solid var(--accent)':'none',
+                  background: currentVol===v.vol ? 'var(--accent-bg)':'transparent',
                   transition:'all 0.12s',
                 }}>
                 {v.vol < 10 ? `0${v.vol}` : v.vol}
@@ -876,29 +1315,76 @@ function App() {
           </div>
           {currentVol_ && (
             <div style={{padding:'10px 12px 6px',borderBottom:'1px solid rgba(180,140,60,0.07)'}}>
-              <div style={{fontFamily:'IM Fell English,serif',fontSize:12,color:'rgba(196,186,160,0.6)',fontStyle:'italic'}}>{currentVol_.title}</div>
-              <div style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.25)',marginTop:2}}>{currentVol_.skin} skin</div>
+              <div style={{fontFamily:'IM Fell English,serif',fontSize:12,color:'var(--text2)',fontStyle:'italic'}}>{currentVol_.title}</div>
+              <div style={{fontFamily:'Space Mono',fontSize:8,color:'var(--text3)',marginTop:2}}>{currentVol_.skin} skin</div>
             </div>
           )}
-          {/* Scenes list */}
+          {/* Scenes list — grouped by chapter, in narrative order */}
           <div style={{flex:1,overflowY:'auto',padding:'8px 8px'}}>
-            <div className="section-label" style={{padding:'4px 4px 8px'}}>Scenes</div>
-            {Object.values(volData.scenes||{}).map(sc=>(
-              <div key={sc.id}
-                onClick={()=>{setCurrentSceneId(sc.id);setSelectedIdx(null);}}
-                style={{
-                  padding:'7px 10px',marginBottom:3,cursor:'pointer',
-                  border:`1px solid ${currentSceneId===sc.id?'rgba(180,140,60,0.3)':'rgba(180,140,60,0.07)'}`,
-                  background: currentSceneId===sc.id?'rgba(180,140,60,0.06)':'transparent',
-                  transition:'all 0.12s',
-                }}>
-                <div style={{fontFamily:'Courier Prime,monospace',fontSize:12,color: currentSceneId===sc.id?'#c4baa0':'rgba(196,186,160,0.5)',fontStyle:'italic'}}>{sc.title}</div>
-                <div style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.25)',marginTop:2}}>{sc.id} · {sc.nodes?.length||0} nodes</div>
-              </div>
-            ))}
+            <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'4px 4px 8px'}}>
+              <span className="section-label">Scenes</span>
+              <span style={{fontFamily:'Space Mono',fontSize:8,color:'var(--text3)'}}>
+                {Object.keys(volData.scenes||{}).length}
+              </span>
+            </div>
+            {(() => {
+              const all = Object.values(volData.scenes||{});
+              if (all.length === 0) return (
+                <div style={{padding:'20px 8px',fontFamily:'Space Mono',fontSize:9,color:'var(--text3)',textAlign:'center',lineHeight:1.6}}>
+                  No scenes in this volume yet.<br/>
+                  <span style={{color:'var(--text3)',opacity:0.7}}>Add scenes in <code style={{fontFamily:'Space Mono'}}>vn-scenes.jsx</code> or create one below.</span>
+                </div>
+              );
+              // Group by chapter number, preserving narrative order within each group
+              const groups = new Map();
+              all.forEach(sc => {
+                const ch = sc.chapter ?? 0;
+                if (!groups.has(ch)) groups.set(ch, []);
+                groups.get(ch).push(sc);
+              });
+              const chapterNums = [...groups.keys()].sort((a,b) => a - b);
+              return chapterNums.map(ch => {
+                const scenes = groups.get(ch);
+                const label = ch === 0 ? 'Front matter / Interludes' : `Chapter ${ch}`;
+                return (
+                  <div key={ch} style={{marginBottom:10}}>
+                    <div style={{fontFamily:'Cinzel,serif',fontSize:8,letterSpacing:'0.22em',color:'var(--text3)',textTransform:'uppercase',padding:'6px 4px 5px',opacity:0.75}}>
+                      {label} <span style={{color:'var(--text3)',opacity:0.5,marginLeft:4}}>· {scenes.length}</span>
+                    </div>
+                    {scenes.map(sc => {
+                      const isEdited = !!sc.__edited || editedSet.has(sc.id);
+                      const isCanonical = !!sc.__canonical && !isEdited;
+                      const isStub = sc.type==='chapter' && (sc.nodes?.length||0)===0;
+                      return (
+                        <div key={sc.id}
+                          onClick={()=>{setCurrentSceneId(sc.id);setSelectedIdx(null);}}
+                          style={{
+                            padding:'7px 10px',marginBottom:3,cursor:'pointer',
+                            border:`1px solid ${currentSceneId===sc.id?'var(--accent-border)':'var(--border2)'}`,
+                            background: currentSceneId===sc.id?'var(--accent-bg)':'transparent',
+                            transition:'all 0.12s',
+                          }}>
+                          <div style={{display:'flex',alignItems:'center',gap:5}}>
+                            {sc.type==='interlude' && <span style={{fontSize:9,color:'rgba(240,200,96,0.5)'}}>✦</span>}
+                            {isEdited && <span title="Edited locally" style={{width:6,height:6,borderRadius:'50%',background:'var(--accent)',flexShrink:0}}></span>}
+                            {isStub && <span style={{fontSize:7,color:'var(--text3)',border:'1px solid var(--border2)',padding:'0 3px',letterSpacing:'0.05em',fontFamily:'Space Mono'}}>stub</span>}
+                            <div style={{fontFamily:"'Courier Prime',monospace",fontSize:12,color: currentSceneId===sc.id?'var(--text)':sc.type==='interlude'?'rgba(240,200,96,0.6)':'var(--text2)',fontStyle:'italic',flex:1,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{sc.title}</div>
+                          </div>
+                          <div style={{fontFamily:'Space Mono',fontSize:8,color:'var(--text3)',marginTop:2,display:'flex',gap:6,alignItems:'center'}}>
+                            <span style={{whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',flex:1}}>{sc.id}</span>
+                            <span style={{flexShrink:0}}>{sc.nodes?.length||0}n</span>
+                            {isCanonical && <span title="From vn-scenes.jsx" style={{flexShrink:0,opacity:0.55}}>src</span>}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              });
+            })()}
           </div>
           {/* New scene */}
-          <div style={{padding:'10px 8px',borderTop:'1px solid rgba(180,140,60,0.08)'}}>
+          <div style={{padding:'10px 8px',borderTop:'1px solid var(--border2)'}}>
             <div style={{display:'flex',gap:6}}>
               <input value={newSceneInput} onChange={e=>setNewSceneInput(e.target.value)}
                 placeholder="Scene title…" style={{flex:1,fontSize:11,height:28,padding:'2px 8px'}}
@@ -907,13 +1393,13 @@ function App() {
             </div>
           </div>
           {/* Characters */}
-          <div style={{padding:'8px',borderTop:'1px solid rgba(180,140,60,0.08)'}}>
+          <div style={{padding:'8px',borderTop:'1px solid var(--border2)'}}>
             <div className="section-label" style={{marginBottom:6}}>Characters</div>
             <div style={{display:'flex',flexWrap:'wrap',gap:4}}>
               {characters.map(c=>(
                 <span key={c} style={{
                   fontFamily:'Space Mono',fontSize:8,padding:'2px 6px',
-                  border:'1px solid rgba(180,140,60,0.15)',color:'rgba(196,186,160,0.5)',
+                  border:'1px solid var(--border)',color:'var(--text2)',
                   cursor:'pointer',
                 }} title="Click to remove" onClick={()=>setCharacters(ch=>ch.filter(x=>x!==c))}>{c}</span>
               ))}
@@ -924,26 +1410,28 @@ function App() {
         {/* Center: script / graph view */}
         <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:mainBg}}>
           {/* View toggle header */}
-          <div style={{display:'flex',alignItems:'center',padding:'6px 16px',borderBottom:'1px solid rgba(180,140,60,0.08)',gap:8,flexShrink:0}}>
-            {['script','graph'].map(v=>(
+          <div style={{display:'flex',alignItems:'center',padding:'6px 16px',borderBottom:'1px solid var(--border2)',gap:8,flexShrink:0}}>
+            {[['script','¶ Script'],['graph','⬡ Graph'],['preview','▶ Preview']].map(([v,lbl])=>(
               <button key={v} onClick={()=>setCenterView(v)} style={{
-                padding:'3px 12px',border:`1px solid ${centerView===v?'rgba(180,140,60,0.4)':'rgba(180,140,60,0.1)'}`,
-                background:centerView===v?'rgba(180,140,60,0.08)':'transparent',
+                padding:'3px 12px',border:`1px solid ${centerView===v?'var(--accent-border)':'var(--border2)'}`,
+                background:centerView===v?'var(--accent-bg)':'transparent',
                 fontFamily:'Space Mono',fontSize:8,letterSpacing:'.15em',textTransform:'uppercase',
-                color:centerView===v?'#c8a84a':'rgba(196,186,160,0.35)',cursor:'pointer',transition:'all .15s',
-              }}>{v==='script'?'¶ Script':'⬡ Graph'}</button>
+                color:centerView===v?'var(--accent)':'var(--text3)',cursor:'pointer',transition:'all .15s',
+              }}>{lbl}</button>
             ))}
             <span style={{flex:1}}></span>
-            <span style={{fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.2)'}}>{centerView==='script'?`${nodes.length} nodes`:`${Object.keys(volData.scenes||{}).length} scenes`}</span>
+            <span style={{fontFamily:'Space Mono',fontSize:8,color:'var(--text3)'}}>{centerView==='script'?`${nodes.length} nodes`:centerView==='graph'?`${Object.keys(volData.scenes||{}).length} scenes`:'live preview'}</span>
           </div>
 
-          {centerView==='graph' ? (
+          {centerView==='preview' ? (
+            <PreviewPane vol={currentVol} sceneId={currentSceneId} scene={scene} lightMode={lightMode} />
+          ) : centerView==='graph' ? (
             <SceneGraph scenes={volData.scenes||{}} currentSceneId={currentSceneId}
               onNavigate={id=>{ setCurrentSceneId(id); setSelectedIdx(null); setCenterView('script'); }} />
           ) : <>
             <div style={{flex:1,overflowY:'auto',padding:'20px 24px 80px'}}>
               {nodes.length === 0 && (
-                <div style={{textAlign:'center',marginTop:60,color:'rgba(196,186,160,0.2)',fontFamily:'Space Mono',fontSize:11}}>
+                <div style={{textAlign:'center',marginTop:60,color:'var(--text3)',fontFamily:'Space Mono',fontSize:11}}>
                   <div style={{marginBottom:12,fontSize:28}}>¶</div>
                   No nodes yet.<br/>Click the button below to add your first node.
                 </div>
@@ -959,7 +1447,7 @@ function App() {
               ))}
             </div>
             {/* Add node button */}
-            <div style={{padding:'12px 24px',borderTop:'1px solid rgba(180,140,60,0.08)',background:mainBg,position:'relative'}}>
+            <div style={{padding:'12px 24px',borderTop:'1px solid var(--border2)',background:mainBg,position:'relative'}}>
               {addMenuPos && (
                 <div ref={addMenuRef} style={{position:'absolute',bottom:'100%',left:24}}>
                   <AddNodeMenu onAdd={(t)=>addNode(t, nodes.length)} onClose={()=>setAddMenuPos(null)} />
@@ -975,7 +1463,7 @@ function App() {
 
         {/* Right: node editor */}
         <div style={rightPanelStyle}>
-          <div style={{padding:'10px 14px',borderBottom:'1px solid rgba(180,140,60,0.1)'}}>
+          <div style={{padding:'10px 14px',borderBottom:'1px solid var(--border2)'}}>
             <span className="section-label">Node Properties</span>
             {selectedIdx!==null && (
               <button className="btn small danger" style={{float:'right'}} onClick={()=>deleteNode(selectedIdx)}>Delete</button>
@@ -984,7 +1472,7 @@ function App() {
           <div style={{flex:1,overflow:'hidden',display:'flex',flexDirection:'column'}}>
             {/* Node type selector */}
             {selectedIdx!==null && nodes[selectedIdx] && (
-              <div style={{padding:'10px 14px',borderBottom:'1px solid rgba(180,140,60,0.08)',display:'flex',flexWrap:'wrap',gap:4}}>
+              <div style={{padding:'10px 14px',borderBottom:'1px solid var(--border2)',display:'flex',flexWrap:'wrap',gap:4}}>
                 {NODE_TYPES.slice(0,6).map(nt=>(
                   <button key={nt.t}
                     onClick={()=>updateNode(selectedIdx,{...DEFAULT_NODES[nt.t],...(nt.t===nodes[selectedIdx].t?nodes[selectedIdx]:{t:nt.t})})}
@@ -1019,7 +1507,7 @@ function App() {
             </div>
           </div>
           {/* Keyboard hints */}
-          <div style={{padding:'8px 14px',borderTop:'1px solid rgba(180,140,60,0.08)',fontFamily:'Space Mono',fontSize:8,color:'rgba(196,186,160,0.2)',lineHeight:1.8}}>
+          <div style={{padding:'8px 14px',borderTop:'1px solid var(--border2)',fontFamily:'Space Mono',fontSize:8,color:'var(--text3)',lineHeight:1.8}}>
             Click node to select · ↑↓ to reorder · ⎘ to duplicate
           </div>
         </div>

@@ -1,0 +1,448 @@
+{
+  "id": "vol7_ch11_stick",
+  "vol": 7,
+  "chapter": 11,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 11",
+      "sub": "Kestrel Mountain",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "They ate at twelve-fifteen.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem made eggs. Tem made toast on the wood stove. Lena cut cheese. The four of them ate at the table without saying much. The rain on the roof had thinned to a sound that was almost not a sound. The cabin was at sixty-three.",
+      "t": "narrate"
+    },
+    {
+      "text": "When they were done Tem stood up.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have picked the stick.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She went to the table by the kerosene lamp and picked up one of the three sticks in the waxed-paper sleeves. The sleeve she picked up was the one in the middle of the three. The other two had been on the table since the four-of-them had come up to the cabin Wednesday a week ago. The middle one had been there for three weeks. Tem had brought it up from her apartment in town and had set it on the table and had not played it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She brought it over.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Kestrel Mountain. The stick is — the stick is a stick. Kestrel Mountain is the name of the experience. The experience was, by what is printed on the sleeve, designed in 2034 by a man named Diego — Diego only, no last name, the way the early designers did — and the substrate inside the experience has been worked by approximately, by my count of the registered sessions logged in the foundation database the early designers used to track their experiences, four hundred and twelve players in the eighteen years since.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The experience is — the experience is one of the older ones. The substrate in it has been worn into a shape that is — by my four playings of it over the past nine years — a shape that I think is going to give you what you need.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Why this one.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Because Kestrel Mountain has, in the back rooms of the experience, a set of corridors and a basement. The corridors are not — by Diego's original design, by what I can tell from the way the corridors render — the corridors are not corridors he designed. The corridors are corridors the substrate has, over the four hundred and twelve players, worn into the experience as a kind of secondary architecture. The corridors are reachable if you know how to reach them. I know how to reach them. I will tell you how to reach them.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The basement at the end of the corridors is — Kai. The basement at the end of the corridors is a basement of servers. I have been in the basement twice. I have not, in those two times, been able to figure out what the basement is doing in the experience. The basement was not in Diego's design. The basement has been put there by — by some number of the four hundred and twelve players who have walked the corridors and have left something. The basement is in the experience by the accretion of what has been left.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The basement in my dream.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I think so.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The basement is in the experience.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You have been in it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have been in it. Twice. I have not — I have not, in those two times, met you in it. The basement is a place a player walks into. The basement is not always populated. The two times I have walked into the basement I have been alone.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I think — I think this time, with you walking it, the basement is going to have somebody in it. I do not know who. I have my guesses. I am going to not — I am going to not tell you my guesses. I am going to let you walk in and meet whoever is there.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Are you going to be okay if I — if I do not come out.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Kai. You are going to come out. I am the person in the room with you. The reader is on the timer. The timer is set for ninety minutes. The reader will pull you out at the ninety.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am — I am also going to pull you out if I read you as needing to be pulled. I have been playing sticks for a number of years. I am — I am a competent person to be in the room with you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I do not, in any way I have been able to figure, have any control over what happens to you inside the experience. The experience is yours. The substrate is the substrate. The ninety minutes is — the ninety minutes is a hard wall. You are going to come out.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He nodded.",
+      "t": "narrate"
+    },
+    {
+      "text": "She put the stick down on the side table by the wood stove.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Take off your boots. Take off the wax canvas. Lie on the daybed. There is a wool blanket. Pull it up. The reader is on the side table. The stick goes in the reader. The cap goes on your head.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The cap is — the cap is a thing you have not used before. The cap is a thin band of a fabric that wraps around your forehead. The cap connects to the reader through a cable. The cap is the way the substrate gets in to you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am going to put the cap on you. I am going to set the timer. I am going to push the play. I am going to sit in the chair beside the daybed for the ninety minutes. I am — I am going to be there when you come out.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Where am I.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Lena. You can be where you want to be. The chair by the south window. The porch. The bedroom. I am — I am going to be at the daybed. Kai is going to be on the daybed.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per is — Per has driven down to Hans's. Per said while you were getting more coffee that he was going to drive down at twelve-thirty. He said he wanted Hans to know about the call to Marina before I made the call. He is going to be back here at three. Where do you want to be.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I want to be on the porch.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I'm going.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per. The keys to the wagon are on the peg. Drive careful. The road is slick.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I'll take it slow.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He stood up. He pulled his canvas coat on. He went out. The wagon started in the clearing a minute later. The wagon went down the road.",
+      "t": "narrate"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "Lena got her own coat. She went out to the porch.",
+      "t": "narrate"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "text": "Tem closed the door behind her.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cabin was Kai and Tem.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Kai took off the boots. He took off the wax canvas. He lay on the daybed. The wool blanket was the one he had been under last night on the floor at Lena's, by some accident of how Tem had been keeping the cabin and what blanket had been at the cabin already; he registered as he pulled it up that the blanket smelled like Lena's apartment. Tem brought the cap. The cap was a fabric band about an inch wide. Tem put it around his forehead. The fabric was warm in a way fabric usually is not.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Comfortable.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am going to push the play in a minute. Before I do — Kai. There are some things I want to tell you. About the experience. About how to walk through it. I am going to tell you them now and I am going to tell you them once and I am going to not interrupt the experience to tell you them again. Listen.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The experience is going to begin with a place. The place is going to look real. The place is going to have a sun and a wind and a temperature and a ground under your feet. You are going to be standing somewhere. You are not going to know where. You are going to be in the body the experience renders for you. The body is going to be a body. The body is going to feel — the body is going to feel close to your body. The body is not going to be your body. Do not try to make it your body. Walk in the body the experience gives you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Diego's design is — the design is a mountain. The mountain has a path up. The path has stations. You walk the path. The mountain is the thing the experience is most clearly about. I am — I am going to ask you to walk the mountain part for as long as walking the mountain part is what is happening. Do not — do not try to find the corridors immediately. The corridors come if you walk the mountain.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The corridors come at the turn between the third station and the fourth. You will know the turn when you are at it. The turn is — the turn is a place where the path bends and the bend has, on the right side of the path, a hedge that the experience renders as one of those hedges with the berries on them. The berries are red. The hedge is the entrance to the corridors. Walk through the hedge. You will be in the corridors.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "In the corridors — Kai. In the corridors the experience stops being Diego's. The corridors are the substrate's. The corridors have been worn by the players. The corridors do not follow rules. The corridors will give you what they give you. Walk what the corridors give you. Do not try to navigate them. Walking through them is the navigation. The corridors are — the corridors are the way I would describe them is the corridors are a thing that knows it is being walked.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The basement is at the end of the corridors. You will know the basement when you are at it. The basement is — the basement has servers. Old servers. Racks of them. The basement is, by what I have seen of it, the basement of a building from the late '90s or early 2000s. The light in the basement is fluorescent. The fluorescents hum. There is a person in the basement. There may be more than one.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The person — Kai. The person you meet in the basement is going to know you are there. The person is going to look at you. The person is going to know your name. The knowing is not — the knowing is not something to be afraid of. The knowing is — the knowing is the thing the experience is for. Listen to what the person says. Tell them what you want to tell them. Do not — do not feel obligated to stay if you want to leave.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Leaving in the experience is — leaving is walking back through the hedge. The hedge is always there. The hedge is the way out.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You will be in for ninety minutes by the clock. You will feel longer than that. People come out of Kestrel Mountain having had what feels like one to two days of experience time for the ninety. You may feel longer. The longer is normal. Do not let the longer scare you. The clock pulls you out at ninety. The substrate cannot keep you past the clock. The substrate cannot keep you against the cap. The cap is the wall. The cap is the door. You go in through the cap, you come out through the cap, and the cap is yours.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am — I am going to be in the chair beside the daybed for the ninety minutes. I am going to read your breathing. I am going to read your face. If something is wrong I will pull the cap. If nothing is wrong I will let the timer pull you out. I am here. I am here the whole time. Come back to me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She put her hand on his hand briefly.",
+      "t": "narrate"
+    },
+    {
+      "text": "She pushed the play.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch11_kestrel",
+      "t": "jump"
+    }
+  ]
+}

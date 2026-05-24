@@ -1,0 +1,509 @@
+{
+  "id": "vol7_ch19_cedar",
+  "vol": 7,
+  "chapter": 19,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Olaf Carved the Bell",
+      "sub": "Half past four",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "per",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Cale and Finn came up at four thirty-eight. Two trucks came up the road one behind the other — Cale's F-150 in front with both of them in it, and Finn's Toyota behind, which Cale had driven because Finn had been too shaken at the trailhead at four-fifteen to drive the cabin road. The crow was on the dashboard of Finn's Toyota.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn came up the porch first, with Cale behind him. Finn was carrying a canvas bag the way a person carries a canvas bag he has been carrying for an hour and a half without being able to set down. The crow walked from the dashboard of the Toyota onto Finn's shoulder when Finn opened the door.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem opened the cabin door.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come in.",
+      "t": "say"
+    },
+    {
+      "text": "He came in. The crow was on his shoulder. The canvas bag in his right hand. Cale came in behind him.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Per. Roy.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Cale.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Cale Mitchell.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Roy Hummel.",
+      "t": "say"
+    },
+    {
+      "text": "The five of them stood at the table for a count.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I have — I have the cedar.",
+      "t": "say"
+    },
+    {
+      "text": "He set the canvas bag on the table. He took out a handkerchief that had been folded around something. He unfolded the handkerchief. The cedar piece — about the size of his thumb — was inside.",
+      "t": "narrate"
+    },
+    {
+      "text": "He set the cedar on the table beside the four bowls. He took the notebook out of the bag. He set the notebook on the table beside the cedar. He stepped back.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I am going to need to tell you what came out of the stick. I am going to need a count to do it. Can I sit down.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Finn. Sit. Drink water. I will get you water.",
+      "t": "say"
+    },
+    {
+      "text": "She went to the kitchen. Finn sat at the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow walked from his shoulder to the table. The crow walked across the table and stopped at the cedar piece. The crow stood beside the cedar and looked at it. The crow lowered its head. The crow tapped the table beside the cedar once with its beak.",
+      "t": "narrate"
+    },
+    {
+      "char": "crow",
+      "text": "Aria.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The crow just said her name.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The crow is named Aria.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The crow.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The crow. Brandon named her in 2042. He never said it aloud. She has the same name as the daughter because — by what the old man at the second pool told me in the stick, by what's in Brandon's notebook there on the table — they overlap. The crow is one of the vessels. The crow is the bell. The crow is going to ring.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "What is the cedar.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Olaf's hand. From 1976. A piece Olaf carved as a symbol piece for the foundation. An open hand holding a bell. That's the bell from Werner Junior's poem.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Olaf gave the cedar to Eddvard in '76 to take down to the foundation in Eugene. Eddvard never took it down. He kept it in a drawer of the desk at the cabin until he died in '42. Tem found it after. She has had it in a drawer of the writing desk at her apartment in town for three years.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Per — the cedar is at Tem's apartment in town and is also on this table, because the substrate moved it during my playing of Tideline Survey this afternoon. The substrate gave me the cedar at the bottom of the second pool. I came out of the stick with the cedar in my shirt pocket.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The substrate is doing what it has been doing since Wednesday with the bowl. Both pieces are now somewhere they weren't before. The cedar in my hand right now and the cedar in Tem's drawer in town are the same cedar, by whatever measure of identity the substrate is using.",
+      "t": "say"
+    },
+    {
+      "text": "Per did not, for a count, do anything. Then he stood up. He went around the table. He bent down and looked at the cedar.",
+      "t": "narrate"
+    },
+    {
+      "text": "He looked at it carefully. The carved hand was open. The hand was holding the bell. The bell was the size of a thimble. The carving was — by Per's read at this angle, by every measure of how the hand had been the hand he had known for fifty years from his mother's bowl and from the four bowls now on this table — Olaf's hand.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Olaf.",
+      "t": "say"
+    },
+    {
+      "text": "The crow, beside him on the table, tilted its head.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Olaf carved this in 1976.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Olaf gave it to Eddvard to take down.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Eddvard kept it for sixty-six years.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Tem has had it for ten.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The substrate moved it onto the table this afternoon.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Olaf carved the bell that the daughter is going to ring.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Per sat down on the chair beside the table because his legs were — by what Per registered at the table — not, for the moment, going to hold him.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem came back with a glass of water for Finn. She set it down. She saw the crow on the table beside the cedar. She saw Per in the chair. She did not, for a count, say anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Finn. The notebook.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Brandon's. From the experience. The substrate gave it to me along with the cedar. The notebook has Brandon's writing in it. Thirty-eight entries from January to October of 2050. Brandon was at the second pool of Tideline Survey thirty-eight times in those nine months. He was at the pool to sit with people he had lost.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The substrate gave him the company of his dead at the pool. Tem — he had Maria there. He had Eli. He had Iris. He had an old dog from when he was a boy. He had them at the pool. He was at the pool to be with them.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "At the thirty-eighth playing, four days before he died, the old man at the pool — the imprint at the second pool — turned to Brandon for the first time in all thirty-eight playings. The old man asked Brandon to give the crow to the person who would come to the pool after Brandon was gone. Brandon agreed. The crow has been mine since November of '50, eleven months later.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The notebook is on the table. I'm going to ask the room to read it. Tem to read it, since she's been holding Brandon's papers since '50 and has been reading his hand the longest. The last entry. The conversation with the old man. Per, the conversation has Brandon's three instructions. The instructions are what we are going to do when the crow rings.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I will read.",
+      "t": "say"
+    },
+    {
+      "text": "She picked up the notebook.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem read the notebook for the next hour. She read the first entry. She read the second. She read the third. She read each of the thirty-eight entries in order. The cast — Per and Roy and Cale and Finn at the table, the crow on the table beside the cedar — listened. Tem did not, in the hour, look up from the page. She read in the voice she used when she was reading another person's writing aloud — the voice of a person who had decided that her job was to give the writing back to the room as the writer had written it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Brandon at the pool with Maria. Brandon at the pool with Eli, with Iris, with the old dog from his boyhood in Tillamook. Most of the entries were Maria — fifteen entries with Maria at the pool beside Brandon in the substrate's rendering of the headland where Brandon had not been able to be with her for twelve years.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per registered, listening to Tem read, that Brandon Tillman — whom Per had not met when Brandon was alive — had been a man who had loved his wife the way a man loves a wife when the wife is gone. Brandon at the pool with Maria was a man Per understood. Per had known the shape of the carrying: Marit surviving Olaf for fifty-one years, Per having been a son who watched his mother carry the bowl as the carrying-companion Olaf had been. Brandon had been at the carrying his own way. Brandon had been at it for twelve years.",
+      "t": "narrate"
+    },
+    {
+      "text": "When Tem got to the last entry — October 4, 2050 — the room was quiet.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "October 4, 2050. The thirty-eighth playing. I went to the second pool. The old man was there. I sat with him. He turned to me — for the first time in thirty-eight playings, he turned to me. He said: Brandon. I said: yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He said: there is going to be a person who comes here in some number of years who has been carrying my crow. I said: Aria. He said: no. The person carrying the crow. I said: the crow is yours. He said: the crow is mine. I am going to need you to give the crow to the person who comes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The crow is going to need to be at this pool with him. The crow is going to need to see what is at the bottom of the pool. The crow is going to need to take what is at the bottom to him. Do you understand. I said: yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He said: it will not be soon. It will be after you are gone. I said: I am gone. He said: when. I said: I do not know. He said: soon enough. Give the crow now. I said: I will. He turned back to the pool.",
+      "t": "say"
+    },
+    {
+      "text": "Tem stopped reading. She set the notebook on the table beside the cedar.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "The three instructions.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The old man gave them to me in the experience this afternoon. The instructions are Brandon's. Brandon left them with the old man to give to the person who would come. I am the person. The old man gave me the instructions. I am going to give them to the room.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "First. The crow is the bell. The crow is going to ring. Be where you can hear when the crow rings.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Second. The bowls are going to know before we do. The bowls are going to give us a count of seconds before the crow rings. The four bowls in the room are going to go very still. The figures on the bowls are going to stop moving. The figures are going to be in a position that is the position of a daughter at the door with her hand on the bell. We are going to have a count of seconds. We use the count to be in the room. We use the count to get to the room if we are not in the room.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Third. After the crow rings, the daughter is going to come. She is going to come into the cabin at the door. The cabin is where she comes.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The cabin Olaf and Eddvard built in '79.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Roy did not, for a count, do anything. Then he stood up. He said: \"I am going to need a minute.\" He went to the door of the cabin. He stood at the door. He put his hand on the doorframe. He stood there with his hand on the doorframe for some count Per did not measure.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The bowls are facing the door because they are saying here.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The bowls have been telling us. We have been figuring out what they have been telling us. We are figuring it out now. They have been saying here for some time. We did not understand.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "We thought they were saying we are getting ready. They are getting ready. They are also saying here. Here is the door. Here is the cabin. The cabin is where she comes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Kai and Lena came up at six-oh-five. Kai's truck up the road. Lena in the wool sweater and the coat, Kai in his flannel. They had the crow's perch from Finn's apartment — Finn had texted Lena to bring it, but the crow had settled on the table beside the cedar and did not need it. Lena and Kai brought it in anyway.",
+      "t": "narrate"
+    },
+    {
+      "text": "The seven of them were at the cabin.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem made dinner. Bean soup — white beans she had soaked overnight, leeks Hans had given her at the bakery yesterday, salt cod she had been keeping in the cabin's pantry since Per had brought her a kilo from his mother's freezer in July. The cabin filled with the smell of the soup.",
+      "t": "narrate"
+    },
+    {
+      "text": "The seven of them ate at the table. The bowls were beside them. The cedar with the bell was beside the bowls. The notebook was beside the cedar. The crow was on the back of one of the chairs.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per ate the soup. He had not, in his life, eaten dinner with seven other people at this cabin. He had eaten with Olaf, Marit, and Eddvard in '80 when the four of them had been celebrating the cabin's completion. With Marit and Eddvard and Hans at Eddvard's sixty-fifth in '99. By himself in maybe '38. He had been at this cabin enough times to know the cabin's sounds and smells and wood and wind through the cedars outside. He had not been at the cabin's dining table with seven other people who had been carrying the work the cabin was about.",
+      "t": "narrate"
+    },
+    {
+      "text": "The seven ate and talked. The talk was — Per registered as he ate — not the kind of talk a person could plan. Seven people at a dinner table eating soup and bread and not, for the moment, doing the carrying. The soup. Hans's brioche this morning. Whether Marina had gotten to Eugene safely — she had texted Tem at four-fifty from the foundation's office to say she had arrived and was meeting the director at five.",
+      "t": "narrate"
+    },
+    {
+      "text": "Wren — Lena said Wren had been at the Daily Grind this afternoon when Lena had been at her apartment getting the crow's perch, and Wren had asked if she could come to the cabin sometime. Lena had said yes, in a week or two, when things had settled. Jameson and Hannes — Kai said they had been at his shop before he closed, asking if they could come to a Tuesday-night dinner Aud was having at the diner that Aud had told them about at the wall last night. The small things the town was doing. The seven of them ate.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch19_ring",
+      "t": "jump"
+    }
+  ]
+}

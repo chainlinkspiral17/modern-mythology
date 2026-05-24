@@ -1,0 +1,135 @@
+{
+  "id": "vol1_ch3_club",
+  "vol": 1,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Act One — The Underworld",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_club_dance.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_club_thump.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Underworld",
+      "sub": "Intercut · Dancing · Loud Music",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "INTERCUT — scenes of the group dancing at the club."
+    },
+    {
+      "t": "show",
+      "char": "helen",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "margaret",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Helen",
+      "expr": "neutral",
+      "text": "Aye —"
+    },
+    {
+      "t": "say",
+      "char": "Margaret",
+      "expr": "neutral",
+      "text": "And seconded. Any of the males want to ratify this amendment?"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I think we're being bullied — into moving in place quickly, to loud music."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Overpriced drinks. Cover charges. Restrooms crusted wiv sex and excess."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Well, that I can abide. But see no reason to invite back ghosts of dramas past."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "A most suitable entrance into the underworld — for all its modern limitations."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch3_complete",
+      "val": true
+    },
+    {
+      "t": "narrate",
+      "text": "— End of Act One, Part II —"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

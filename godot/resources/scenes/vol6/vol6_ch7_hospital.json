@@ -1,0 +1,524 @@
+{
+  "id": "vol6_ch7_hospital",
+  "vol": 6,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — The Week",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_hospital_waiting_room.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Week",
+      "sub": "Saturday — 23:48 — New Auburn General",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "sad",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is in the waiting room when Ben arrives."
+    },
+    {
+      "t": "narrate",
+      "text": "She is in a chair against the back wall. She has, on her lap, a paper cup of coffee from the vending machine that she has not drunk. She is, when Ben comes through the door, very small."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben crosses the room."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits beside her."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, immediately, say anything."
+    },
+    {
+      "t": "narrate",
+      "text": "After a moment, Maya leans her head against his shoulder."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does not move."
+    },
+    {
+      "t": "narrate",
+      "text": "After a long minute, Maya says, very quietly:"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "F.T. was right.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "He didn't know it would be her.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "She's — she's going to be okay. They said the surgery is straightforward. She's seventy-one but she's strong. They said three weeks in rehab. Then home.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Ben.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "She fell because she was tired.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "She has been carrying this for thirty-seven years. Since 1989. Since my grandfather. She has — she has been holding it for thirty-seven years. And then I came, and then this week happened, and she — she let it down. She let it down enough to fall.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Maya. Letting it down is what she was supposed to do.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I know.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "She is not going to die.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I know.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "She is going to be in a rehab facility for three weeks and then she is going to come home and you are going to make her tea every afternoon and she is going to teach you the Morse and you are going to sit with her at the radio and she is going to be okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I know.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Maya.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Where are you going to stay while she's in rehab.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A pause."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I — I don't know. I haven't — the social worker came down. I told her I have a friend. I — I do not, technically, have a guardian alternate listed.",
+      "expr": "sad"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben thinks for half a second."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Stay at my house.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Ben — ",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Maya. My mom is a nurse. She works nights. My dad will say yes. Gracie will lose her mind. The dog likes you. I have a basement. There's a real bedroom down there with a real door. It's three weeks. We're inside the same school district. We have the room. Stay at my house.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is quiet for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Are you sure.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Maya.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I am sure.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She exhales."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They sit in the waiting room for another forty minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "The surgeon comes out at twelve-twenty-eight AM. The surgery has gone well. Mrs. Caldwell is in recovery. She will be moved to a regular room in the morning. Maya will be able to see her at six."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, who has not slept, agrees to come home with Ben for a few hours."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben drives her."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The Kowalski house, when they arrive, is dark except for the kitchen light. Ben's mother is at the table. Ben's mother is in her scrubs. Ben's mother had been called by Ben's father at eleven, and Ben's father had said Linda Caldwell broke her hip and our boy is at the hospital with her granddaughter and I think we are going to need to have a conversation."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben's mother has, in the time since, made up the bed in the basement. Ben's mother has, in the time since, set out a clean towel and a toothbrush still in its package. Ben's mother has, in the time since, decided what she is going to say to Maya when Maya comes through the door."
+    },
+    {
+      "t": "narrate",
+      "text": "What she says, when Maya comes through the door, is:"
+    },
+    {
+      "t": "show",
+      "char": "sam_mom",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "sad",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Anita Kowalski",
+      "text": "Sweetheart. There's a bed downstairs. There's a glass of water on the nightstand. There are clean clothes on the chair, my old t-shirt, you'll swim in it, that's fine. Bathroom is at the bottom of the stairs. We'll talk in the morning. Sleep.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Thank you, Mrs. Kowalski.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita Kowalski",
+      "text": "Anita. Please.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya nods."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya goes downstairs."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben stays in the kitchen."
+    },
+    {
+      "t": "narrate",
+      "text": "His mother looks at him."
+    },
+    {
+      "t": "say",
+      "char": "Anita Kowalski",
+      "text": "Ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Ma.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita Kowalski",
+      "text": "You're going to need to tell me what's going on. Not tonight. In the next couple of days.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah. I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita Kowalski",
+      "text": "You're going to tell me everything.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita Kowalski",
+      "text": "You're going to tell me even if it scares me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Ma.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She nods."
+    },
+    {
+      "t": "say",
+      "char": "Anita Kowalski",
+      "text": "Go to bed. I'm going to wait up for your dad. He's still at work. He's going to want to know the kid is okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "She is, Ma. She's okay. They both are.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita Kowalski",
+      "text": "Good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He hugs her."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes upstairs to bed."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "His mother sits at the table for another hour, in her scrubs, until her husband comes home from the late shift at the water plant smelling of chlorine, and they sit together at the kitchen table, and they talk quietly, and they decide, between the two of them, that whatever Ben tells them this week, they are going to believe him."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, the Texas night does its small late-Saturday work."
+    },
+    {
+      "t": "narrate",
+      "text": "In Maya's grandmother's house, three blocks away, the shortwave radio sits dark, untouched, for the first night in five days."
+    },
+    {
+      "t": "narrate",
+      "text": "In a hospital recovery room, Linda Caldwell sleeps the patient sleep of a woman who has just, for the first time in thirty-seven years, allowed her own body to fail — and who is, in the failure, also being permitted, for the first time in thirty-seven years, to rest."
+    },
+    {
+      "t": "narrate",
+      "text": "In the Henderson house, Mr. Henderson is on the couch in the living room with his wife, who has not, this evening, been able to bring herself to leave him alone in their bed and who, instead, has decided they are sleeping out here, together, with the lamp on, until the new arrangement settles."
+    },
+    {
+      "t": "narrate",
+      "text": "In a warehouse in Graustark, Frasier Temple — alerted by his Demons at twelve fourteen AM Central — stands at the door of his cathedral for the first time in some months, looks out at the dark of the parking lot, considers, briefly, walking to his car, and decides — after a long minute — to go back inside."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits at his workbench. He looks at the silver-spoon riverboat in its glass case. He thinks, Linda. Good for you, kid."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes back to work."
+    },
+    {
+      "t": "narrate",
+      "text": "The Lovers card, in some other deck on some other table, would tonight have been showing — for the first time in many printings — both figures clothed, which is how the card sometimes prints when its meaning is not, this week, about romance, but about the deeper choice the Lovers also represent: the choice to remain in the same room as the other person, and to keep being two, on purpose, against pressure."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen and Jim, on the couch."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya and her grandmother, across the city, tethered by a phone line that is not, at this hour, ringing."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, in her cornflower blue bedroom, asleep, with her father's text from ten minutes ago — love you, Sammy. tomorrow we drive to the lake. early. bring a jacket. — face-up on her dresser."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben and Maya, in two rooms of the same house, both, finally, asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego and his mother, at the safehouse, both asleep in the same bed."
+    },
+    {
+      "t": "narrate",
+      "text": "The town hums."
+    },
+    {
+      "t": "narrate",
+      "text": "The summer continues."
+    },
+    {
+      "t": "narrate",
+      "text": "The week, somehow — against pressure, against every reasonable expectation — has not killed any of them."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

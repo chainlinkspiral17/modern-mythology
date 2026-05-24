@@ -1,0 +1,81 @@
+{
+  "id": "vol1_trailer_faust3",
+  "vol": 1,
+  "chapter": 0,
+  "type": "chapter",
+  "title": "Trailer — FAUST 3",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "A TRAILER FOR A COMING ATTRACTION:"
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "Reading Goethe’s Faust in the tub, smoking judiciously the last of my reefer, peeling back foiled squares of holiday fudge — I realize I must concoct mine own interpretation."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "I will write a post-modern screenplay full of playful update, cultural significance — it will do what all good sequel reboots do."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Here be the Internet as player, the spy cam as eye of fate, the indie emo wiccan soothsayer post-industrialized world we live in."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "I will rename Mephistopheles — Dickens Dean. And Satan — Antagonist."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Cast myself and friends as in-player parts and summon post-production magic."
+    },
+    {
+      "t": "narrate",
+      "text": "CUE TITLE TEXT: FAUST 3"
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "Keep the name. It is universal. Timeless."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Shoot the intimate on iphone and digital cameras, and as the world expands make significant beauty in HD."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "It hurts to think this play has already started and I just now realize it must be completed."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "I could never be Goethe — can just be me and let he himself shine through."
+    },
+    {
+      "t": "say",
+      "char": "The Fool",
+      "expr": "neutral",
+      "text": "Faust I could play myself — as did he."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_prelude_editing_suite"
+    }
+  ]
+}

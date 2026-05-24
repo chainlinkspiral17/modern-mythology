@@ -1,0 +1,1487 @@
+{
+  "id": "vol6_ch17_table",
+  "vol": 6,
+  "chapter": 17,
+  "type": "chapter",
+  "title": "Ch 17 — The Four-Thirty Table",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Four-Thirty Table",
+      "sub": "Friday — 04:43 — Miller House",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "bianca",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca is at the kitchen window at four forty-three when Don Geller's porch light comes on across the cul-de-sac."
+    },
+    {
+      "t": "narrate",
+      "text": "Don, this morning, is — by his light — on schedule. Five oh-two would be the on-time light. Four forty-three is eight minutes early. Bianca registers the eight minutes. She does not know what the eight minutes mean. She imagines, in the way she has been imagining small things about Don all summer from the kitchen window, that Don has, this morning, woken up eight minutes early for a reason she is not going to know. A dream. A dog. A leg cramp. The fact of a sixty-some-year-old man's body waking him at the hour his body is going to wake him, which is, on some mornings, not the hour the alarm has been set for."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I am going to remember this in a year."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I am going to remember the four forty-three Don-light, and the fact that it was, this morning, the first thing I wrote down in my head as I was waiting for Eileen to arrive."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, today, know why she is going to remember it."
+    },
+    {
+      "t": "narrate",
+      "text": "She has learned, this summer, to trust the noticing without the explanation."
+    },
+    {
+      "t": "narrate",
+      "text": "She refills her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes to the front door and opens it partway, because Eileen is going to arrive in seventeen minutes and Bianca has, as of Monday, decided that the door being open partway at five AM is the small welcome she is willing to extend without having to stand at the door itself to do the extending."
+    },
+    {
+      "t": "narrate",
+      "text": "She returns to the kitchen."
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen arrives at five oh-two."
+    },
+    {
+      "t": "narrate",
+      "text": "She comes in without knocking. She is carrying the small French-press insulated coffee pot she had been threatening to bring on Monday and had, on Monday, forgotten. She is also carrying a small tote bag with, visible at the top, what looks like two small jars of preserves and a loaf of something wrapped in foil."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Bianca. I got carried away.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I see.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "The peach is from my neighbor — not Jim's side, the other side, Peggy, the one whose husband is dying. She has been canning since June. She's been bringing me jars. I can't eat them all. I'm going to start distributing. You get two. The other one is for Anita.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Peggy's husband is dying?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah. Pancreatic. Six weeks, maybe two months. He's home. She's canning.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca does not, immediately, know what to say to this."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I know. I know. I'm telling you so you know. Peggy has been — Peggy is doing her version of what I was doing in February through June, which is keeping her hands moving because her hands are the only part of her that will still function. Mine was the sewing table list. Hers is the peach preserves. She is going to run out of peaches in about ten days and then she is going to be in a bad way. I am going to figure out what to do about that when I get there.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "You are — ",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I'm fine. Peggy's not my crisis. Peggy is the person across the fence. I am doing my version of what I can do. I bring you the jar.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca takes the jar."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts it on the counter next to the coffee pot."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Thank you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Anita's at six twenty?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "That's what she said yesterday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Let's sit.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They sit."
+    },
+    {
+      "t": "narrate",
+      "text": "The first hour is the first hour of the table as it has been for two sessions now."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen has brought, in her French press, the coffee from the place on Magnolia that is, by Eileen's taste, better than what Bianca's Cuisinart produces. The Cuisinart is still on, running its own pot on the counter in the small ambient hum of a household appliance that has been running on every morning of the past sixteen weeks. The two coffees coexist."
+    },
+    {
+      "t": "narrate",
+      "text": "They talk, at first, about Peggy."
+    },
+    {
+      "t": "narrate",
+      "text": "Not the canning. Peggy herself. Peggy is, by Eileen's telling, sixty-eight. Peggy had been a teacher — elementary school, second grade, for thirty-one years at the same school in New Auburn. Peggy had retired three years ago. Peggy's husband is seventy-three and had been, until April, still working part-time at a hardware store in New Auburn. Peggy and her husband had been, by Eileen's telling, the kind of couple who had been making the small plans retired couples make — a trip to the Pacific Northwest that had been on a calendar for eighteen months. The trip was scheduled for May. The diagnosis came in March."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca listens."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Did they go.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "No. By May he couldn't fly. They drove to Galveston. Three days. They came home. They have been home since.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A small silence."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I tell you because — ",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Eileen. I know why you're telling me. It's fine. Tell me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I tell you because you are — you are one of the two people in this town I can, right now, tell that kind of thing to without having to frame it. You are the first. Anita is the second. I have not — I have not, in the years before this year, been a person who had a Peggy. And now I have a Peggy, and I can tell you, and you can hear it, and I can go on to the next thing. That is — that is what the table is for. I want you to know I know that.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca drinks her coffee."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They sit."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "You okay this week?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca thinks."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Carlos called me back Tuesday. About the radio.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Oh.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "He's going to ship it. Next week, he said. It's in his garage. He hasn't touched it since 2005. He said — he said he was glad I was asking, which was — that was a thing to hear from my brother.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "So the radio is — the radio is coming. I don't know what I'm going to do with it yet.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "What are your options.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca thinks."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Put it on a shelf and look at it for a year. Try to learn how to fix it. Give it to somebody who would know. Put it on the shelf and leave it there forever.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "You like any of those.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I like the first one. I like the second one some days. I do not like the third one, not because giving it away would be wrong — because I am not, this year, in the mood to give anything away.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "The fourth one is — it's the default. It's what most things do. They sit on shelves until somebody else, eventually, decides what to do with them.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I'm not, I think, going to do the fourth one.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I'm going to do the first one for a year. And then, if I am, in a year, still thinking about the second one, I'll do it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "That's a good answer.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Thank you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They drink their coffee."
+    },
+    {
+      "t": "show",
+      "char": "anita",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Anita arrives at six twenty-one."
+    },
+    {
+      "t": "narrate",
+      "text": "She comes in through the back door because she has walked over from her own house rather than driving, because Bianca's house is four streets from the Kowalskis' and Anita — who has, between the ER parking lot and Bianca's kitchen, already been in two enclosed spaces this morning — had decided she wanted the small twenty-minute walk through the pre-dawn to get her body back under her own authority before she sat with other people again."
+    },
+    {
+      "t": "narrate",
+      "text": "She is in scrubs."
+    },
+    {
+      "t": "narrate",
+      "text": "She is in the specific clean scrubs she had changed into at the hospital before coming off shift, which is what Anita does on nights she is coming directly somewhere rather than going home. Her ponytail is low and loose. She has, in her hand, a small white bakery bag."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca stands to greet her."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Sit. I'll hug you after my coffee.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca sits."
+    },
+    {
+      "t": "narrate",
+      "text": "Anita goes to the coffee pot — Eileen's French press — and pours herself a cup. She adds two sugars and a small splash of half-and-half Bianca has, since Eileen's first visit, started keeping in the fridge. She drinks the first half of the cup standing at the counter, in the specific way an ER nurse drinks the first half of a coffee, which is fast and without registering the taste."
+    },
+    {
+      "t": "narrate",
+      "text": "She exhales."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She hugs Bianca, briefly, and Eileen, longer."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Good morning, ladies.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "How was it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Two MVAs, a baby with a fever that turned out to be nothing, an old man who wanted his wife to come with him and she wouldn't — she's his second wife, she's thirty years younger, she was tired — and a kid who had gotten into his mother's oxy. The kid is going to be fine. His mother isn't.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "How old.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Fourteen.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Jesus, Anita.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Yeah.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks the second half of the coffee."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Okay. Subject change. What are we doing this morning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "We are sitting at a table. We are not fixing anything. We are not performing okay for each other. That is the table's rule.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Works for me. Bianca, did I see a peach jar on the counter?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "From Peggy. Eileen brought it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Peggy is the one whose husband is dying.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Okay. I'll take mine home after.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She opens the bakery bag. Inside are three kolaches from the place on Alamosa that the ER staff has, for twenty years, agreed is the best kolache place in New Auburn. They are — she reports — one apricot, one cream cheese, one sausage."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I got one of each. Y'all fight over them. I'm going to take the sausage because I don't care if I carry sausage smell into Ben's bedroom when I get home.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Take the sausage.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I'll do the cream cheese.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Apricot.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They eat."
+    },
+    {
+      "t": "narrate",
+      "text": "For about twenty minutes, the three of them do the thing that happens when the table becomes a three-person table for the first time, which is a certain amount of logistical small talk to calibrate the shape. Anita is the one who does most of the talking in this phase, because Anita is the newcomer to the room's established weather and is, in the way middle children do when they enter an unfamiliar room, calibrating by being the one who speaks first on most topics so that she can, by the speaking, test the room's rhythm."
+    },
+    {
+      "t": "narrate",
+      "text": "She talks about the ER. She talks about Gracie, who is — she reports — one page away from finishing the sticker activity book and has announced to Bill that the finishing is going to be on Sunday and that there is going to be a small ceremony for which Bill is expected to supply cake. She talks about Ben, briefly — Ben has been getting better at something he will not explain to me, which I gather has to do with his right foot. Coach K has, apparently, been the person making him get better at it. I do not understand football. I have, for three weeks now, been listening to my son describe his coach with a small reverence I have not heard him use before for anyone. I am not going to interrogate it. I am going to let it happen."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca laughs at this. The laugh is the first laugh of the morning and the laugh is, by Anita's steer, exactly the laugh Anita had been going for."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Jim wants to take Ben to a game in the fall.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Does Jim know football.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Jim played tight end in high school in Beaumont. Jim has not, in forty-two years, mentioned it. I found out in July when he said I want to take that kid to a game. I asked him how he knew which kid. He said your friend Anita's boy. I said you haven't met Ben. He said Maya told me about him. It turns out Jim and Maya have been, since June, having a specific small conversation in the basement when Maya comes by that neither of them has told anybody else about.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Maya comes by your basement?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Maya comes by when she is passing between her grandmother's and your house. About once a week. She comes in the front. Jim, who as you know was in the basement mostly for the first few weeks of the summer, had been doing his small basement work and had one Tuesday in June heard Maya at the kitchen table with me and had come up and had — for the first time since April — said hello. Maya had, that day, a very question about radios that her grandmother had mentioned that her grandfather had known how to do. Maya had asked me. I did not know. I had called Jim up. Jim, who as you both know was a photographer and not a radio guy, had nonetheless known enough about the period to answer the small question. The conversation had gone on for about twelve minutes. Maya had, the following Tuesday, come back with a second question. And a third. It has become a thing. Every Tuesday. Small things. A fifteen-minute basement conversation on some small technical question that is, every week, her grandfather-adjacent.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca, at the table, registers — with a small private surprise — that she has not, until this minute, known about this."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "That's lovely.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I know. I didn't want to — I didn't want to make it a thing. It's Jim and Maya's thing. I wasn't — I wasn't sure whether to tell you even now. But the kolaches made me feel generous.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Anita laughs."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "The kolaches do that.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "At seven oh-six Anita says: \"My mother.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca looks up."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "My mother is eighty-one. She is in Pharr. I have not been down to see her since March. I have been thinking — I have been thinking, the past two weeks, that I should drive down in September. For a weekend. Not to do anything. Just to sit with her. She is not — she is not sick. She is fine. She is eighty-one. She has been eighty-one in the specific way eighty-one is for a woman who has been running a house with six kids' worth of ongoing gravity for fifty years, and she is now, at eighty-one, finally, by her own report, tired.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "How many of you are there.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Six.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Six, Jesus.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Four girls, two boys. I am the third girl. Middle of the middle, my mother used to call me, because I am also the third of six total. The math is — the math is that I was the one whose name got said when my mother had run out of names, which was every time my mother had run out of names, which was most days. There is a specific small thing that happens to the third of six that does not, generally, happen to the first or the second or the last. The specific small thing is you learn to move without waiting to be called.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Yeah. Which. Is useful in the ER. Is also why Bill, about ten years ago, stopped trying to keep me from jumping out of the car at accidents on the highway.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "You jump out of the car at accidents.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Anita.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Tell me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Not much to tell. I have been an ER nurse since 1997. I have, in my trunk, a small go-bag — gloves, a compact trauma kit, a reflective vest, a headlamp, a pair of trauma shears. The bag has been in my trunk since 2011. When I see a wreck on the side of the road that has happened within the last few minutes and where no first responders are yet on scene, I stop. I get out. I do what I can do for the first ten minutes. Then an ambulance arrives and I hand off and I go back to my car. I have, by rough count, done this fourteen times in fifteen years. Of the fourteen, eleven of the people I stopped for lived. Of the three who didn't, two would not have lived regardless and one — one, I think, would have had a better chance if I had been two minutes earlier, but I was not, and the two minutes were not mine to have, and I have — I have made my peace with that one.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "The kitchen is, for a beat, very quiet."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Anita.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Does Ben know about the go-bag.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Ben has known about the go-bag since he was nine. Ben found it in the trunk when we were loading up for a family trip. He asked what it was. I told him. He has not, since, mentioned it to me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Bill knows.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Bill knows. Bill has, twice, asked me to leave it at home. I said I would. I lied both times. By the third conversation Bill had stopped asking. Bill and I have, since, been in the agreement we are in, which is that he does not ask me to stop, and I do not make the stopping a thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Jesus, Anita.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I am telling you because we are at the four-thirty table and the four-thirty table does not perform okay for each other. I am also telling you because it is relevant to the small thing I have been thinking about, which is driving down to Pharr in September. My mother, when I tell her about the bag — which I have, twice — laughs. She laughs in the specific way a woman who raised six kids on a farm in the Valley laughs at a daughter who has become an ER nurse and has a go-bag in her trunk. The laugh is not dismissive. The laugh is — the laugh is recognition. My mother recognizes me. Her middle-of-the-middle. She has always recognized me. The recognition is the thing I have, since I left the Valley in 1993, been getting from my mother, and I have been, this summer, thinking that I have not been down to see her enough in the past year, and that I should go in September, because she is eighty-one and the next year and the year after that are going to be the specific years where the math of how many visits I have left starts to become the kind of math I do not want to do.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Go in September.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Take Gracie.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I'm taking Gracie. Not Ben. Ben is in football. Ben cannot be spared. Gracie has been asking. Gracie has not seen my mother since Christmas.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "That sounds right.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The three of them sit for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "What is the thing each of you has been thinking about. I have given mine.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Am I going first or is Bianca.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "You go. I did mine for Eileen earlier. I'll do it again for you after.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen thinks for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Mine is — mine is smaller than Anita's.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Everything is smaller than Anita's. I am the middle of six. I am, generally, in any room, the one whose thing is either the biggest or the smallest, because the middle in a farm family does not do the medium thing, the medium thing is handled by the older ones, I was raised to go to the edges. Go.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen laughs."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Okay. Mine is — I have been, for twenty-six years, the person in my household who makes things function. I have not, in those twenty-six years, had a specific small thing that was mine. I did — I had a garden, for a while, in the early 2000s, but the garden was also, in the way of gardens, for the house. I had a book club that met once a month from 2007 to 2014 that was closer to mine, but then Jim's father got sick and I dropped out and I didn't pick it back up. I have — I have been thinking, since June, that Jim is doing a thing that is, right now, only his — the photography class, the camera is his again. He has a thing. And I have been thinking — I have been thinking that I would like to also have a thing. I do not, yet, know what the thing is. I have been considering — and I want you both to understand that I have been holding this question for two months and I have not yet told Jim — I have been considering taking up the piano again.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "You play piano.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I played piano. I played through high school. I had a teacher. I had a — I had a small talent, not enough to go to conservatory, but enough that I played other people's weddings for a hundred dollars apiece through college. I stopped when I had Jesse. I have not touched one in twenty years.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "You have one in the house.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I have the piano from my mother that has been in the den under a cover since 2006. It is out of tune. The tuning is maybe two hundred dollars. The lessons are — the lessons I would want are harder to find in New Auburn. I have been thinking I would take a drive into Austin once a week for a proper teacher.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Do it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah. I'm going to. I think. I am going to tell Jim in the next two weeks. I wanted — I wanted to tell you both first. Because — because I needed to hear myself say it out loud to two other people before I said it to my husband. That is the thing the table is for.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Eileen. The piano is — the piano is a wonderful thing.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Thank you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Two hundred bucks for the tune-up is a bargain. I know a guy. I'll text you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Thanks.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen looks at Bianca."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Your turn.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Mine is the radio.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "The radio.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "My father fixed radios. He was — he had a workbench in the garage in Lubbock. He fixed them for money, on the side, and for pleasure, mostly. He died in 2003 at the workbench with an unfinished project in front of him that had been for my brother's son. My brother finished the project. My nephew is — my nephew is in his thirties now, in Houston. The radio my father was working on ended up in my brother's garage and has been there since 2005. I called Monday. I asked Carlos if I could have it. He said yes. It's coming next week.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "You going to fix it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Maybe. Not soon. I am going to put it on a shelf and look at it for a year and decide.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Do you know how to fix a radio.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "No. I knew, at six, the names of the parts. I have not — I have not done anything with that in forty-two years.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Why is the radio the thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca thinks."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Because my father — my father did a thing, every Saturday morning of my childhood, which was to go to the workbench and lay out the parts on a white cloth and sit in front of them and take, on most Saturdays, four hours to fix one radio. He was not, in his life, a man who did a lot that was only his. He had a job he was fine at. He had a wife who was, by all accounts, the love of his life. He had six kids — ",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Wait. Six.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah. Six. I was the fifth.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Bianca.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "You are the fifth of six.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I did not know that.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "It has not — it has not come up. My four older siblings are all in Lubbock. Carlos is in Houston. I am here. We are not — we are not close. We are fine. We talk at holidays. But we are not close.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Huh.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Anyway. My father had his four hours on Saturdays. He had, by the end of those four hours, a working radio. I have been thinking, since Monday, that I have not, in my adult life, had a four-hour-on-a-Saturday thing. I don't, honestly, know that I want the radio to be that. I want the radio to be on the shelf so that, every time I see it, I remember that my father had a four-hour-on-a-Saturday thing, and that I — might. If I decide to. And that the not-deciding is its own decision, and that if I sit with the radio for a year without touching it, I will learn something about what I actually want the four hours to be for.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Yeah. Okay. That's the answer.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Bianca. You are the fifth of six and you did not mention it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I told you I was from Lubbock.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "You told me you were from Lubbock. You did not tell me there were five other of you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah. I don't — I don't lead with it. I left in 1985. The Lubbock part of me is — the Lubbock part of me is at the back of the house. The radio is the front of the house, Texas-wise.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "The middle-of-the-middle daughter from a six-kid farm family in the Valley and the fifth-of-six daughter from Lubbock are at the same four-thirty table in mid-August drinking coffee from the place on Magnolia.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca laughs."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen laughs."
+    },
+    {
+      "t": "narrate",
+      "text": "Anita, after a beat, laughs too."
+    },
+    {
+      "t": "narrate",
+      "text": "The laughter, in the kitchen, is the loudest sound the room has produced this morning."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam comes downstairs at seven thirty-four."
+    },
+    {
+      "t": "narrate",
+      "text": "She is in her Kwik Stop polo. She is carrying her backpack. She has, Bianca registers, the specific clean morning face of a seventeen-year-old who has, this Friday, slept better than she has been sleeping."
+    },
+    {
+      "t": "narrate",
+      "text": "She comes into the kitchen."
+    },
+    {
+      "t": "narrate",
+      "text": "She stops at the doorway."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Hi.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Hi, Sammy. Eileen and Anita are here.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I see. Hi, Eileen. Hi, Anita.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Morning, sweetheart.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Sam. Ben said you helped a couple with a broken-down Peugeot at the Kwik Stop yesterday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, at the doorway, blinks."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Ben knows about that?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Maya told him. I don't know who told her. Small town, kid.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah. I helped them a little. Gave them — gave them a twenty.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Anita, in the specific way Anita has of knowing when a kid is rounding a number down, says: \"A twenty. Uh-huh.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay, maybe more than a twenty.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Sam. For what it's worth. Coming from the ER, where I have seen many versions of many people on the worst day of their lives: it is usually the right thing to give the money. Not always. Usually. You have a good read. Trust the read.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, at the doorway, does not, immediately, respond."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Thanks, Anita.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Get to work. Have a good Friday. The table is ongoing. Next time you are down at the right hour on a right morning, you are welcome.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam looks at her mother."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca, at the table, meets the look."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam pours herself coffee. She puts the coffee in a travel mug. She kisses her mother on the temple. She says goodbye to Eileen and Anita. She leaves out the front door."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The Corolla starts in the driveway. The Corolla pulls out. The Corolla is gone."
+    },
+    {
+      "t": "narrate",
+      "text": "The three of them, at the table, listen to it."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I did not know Anita was going to know about the Peugeot.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I didn't know I was going to know either. Ben mentioned it at dinner last night. He had heard it from Maya. I filed it. I figured I would not bring it up with you unless I could bring it up to Sam first. Your kid handled it well.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "She's going to leave.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I'm telling you because Bill and I have been watching her at our house for the past two months when she comes by. She has the specific small thing on her face that kids have the summer before their senior year when they have already, in their heads, left. She has not told you. You already know. I am only confirming what you already know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca does not, immediately, respond."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah. I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "She is going to be fine. You are going to be fine. The transition is the transition. It is not the thing. It is the transition that happens before the thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Ladies. Are we having a moment.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "We are having a moment.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Good. We are having them about once an hour now. I want to track. We are up to the rate a table like this should be having them at. I want that documented.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca laughs."
+    },
+    {
+      "t": "narrate",
+      "text": "Anita laughs."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen laughs."
+    },
+    {
+      "t": "narrate",
+      "text": "The kitchen, again, is loud."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "At seven fifty-two Anita stands."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I have to go home. Bill is going to be up and Gracie is going to be up and Daisy is going to need to be let out and my body is going to shut down in about ninety minutes. I am going to take my peach jar. I am going to go home. I am going to sleep until two. Bianca. Thank you for the morning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca stands."
+    },
+    {
+      "t": "narrate",
+      "text": "She hugs Anita. The hug is the kind of hug two women have when they have, in the past three hours, moved a thing between them from one register to another."
+    },
+    {
+      "t": "narrate",
+      "text": "Anita hugs Eileen."
+    },
+    {
+      "t": "narrate",
+      "text": "Anita takes her peach jar and her scrubs and her empty kolache bag and her tote and she leaves out the back door, because that is the way she came in, and because she has, at seven fifty-two in mid-August, the small walk home through the four streets of the subdivision at the hour when the sprinklers are just starting their Friday cycle and the morning light is just beginning to be the morning light."
+    },
+    {
+      "t": "narrate",
+      "text": "The back door closes."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen and Bianca are, again, the two of them."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Anita is a lot.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Anita is — Anita is the right amount.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "She is. She is the right amount. I have been — I have been sitting with her for eight months at various tables and I had not known, until this morning, about the go-bag.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I had not known about any of it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I am, I think, going to have Eileen and Anita at this table once a week for the rest of the summer.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah. I was — I was going to propose that.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Friday mornings.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Friday mornings.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Five to seven thirty.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Done.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "At eight eleven Eileen leaves."
+    },
+    {
+      "t": "narrate",
+      "text": "The kitchen, at eight eleven, smells of three kinds of coffee and three kinds of kolache and the small residual warmth of three women who have, for a little under four hours, been at a table."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca clears the cups."
+    },
+    {
+      "t": "narrate",
+      "text": "She rinses them. She puts them in the dishwasher. She wipes the table. She puts the peach jar on the counter beside the loaf of whatever Eileen had brought wrapped in foil, which Bianca had, during the morning, forgotten to ask about and which she now, opening the foil, discovers is a small cinnamon coffee cake from the bakery Eileen had mentioned."
+    },
+    {
+      "t": "narrate",
+      "text": "She cuts a slice of the coffee cake."
+    },
+    {
+      "t": "narrate",
+      "text": "She takes it to the back porch."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch17_porch"
+    }
+  ]
+}

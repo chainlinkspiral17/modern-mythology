@@ -1,0 +1,707 @@
+{
+  "id": "vol6_ch21_cosmic",
+  "vol": 6,
+  "chapter": 21,
+  "type": "chapter",
+  "title": "Ch 21 — Cosmic, Saturday",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_exterior_morning.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Cosmic, Saturday",
+      "sub": "Saturday — 09:46 — Cosmic Comics",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The keys, this morning, are not heavy."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya registers this at nine forty-six at the front door of Cosmic Comics, with the ring in her hand, and registers that it is the first Saturday in five weeks the keys have not been heavy. The keys are the same keys. Her hand is the same hand. The shop has, by some Saturday-morning shift she did not feel happen, become a building she is coming to and not a building she is being entrusted with."
+    },
+    {
+      "t": "narrate",
+      "text": "She unlocks the deadbolt. She unlocks the bottom lock. She pushes the door open."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_interior.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The brass bell above the door — the one from the 1994 estate sale that the previous owner had heard something in — chimes its small dry chime. The light in the shop at nine forty-seven on a Saturday in mid-August is the slanting morning light coming through the painted Galactus on the front window and laying the painted Galactus across the floor in the long purple bars that have been the shop's morning for as long as the painted Galactus has been on the window."
+    },
+    {
+      "t": "narrate",
+      "text": "She locks the door behind her. She flips the CLOSED sign to face inward. She does not, yet, turn it."
+    },
+    {
+      "t": "narrate",
+      "text": "She crosses to the back office."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_office.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Rick's spiral notebook is on the desk where it has been since Sunday. The list is on its standard page. The Speak & Spell, on the shelf above the file cabinet, is in the yellow morning light. The red speaker grille is dim. The crack in the lower-left corner of the housing is the same crack it has been since 2014."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, from habit, looks at it. The grille is dim."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns on the back-office computer. She starts the Mr. Coffee. She gets a coffee. She comes back to the front. She unlocks the door. She flips the sign to OPEN."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_interior.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "She is ready."
+    },
+    {
+      "t": "narrate",
+      "text": "The first hour is slower than she had been bracing for."
+    },
+    {
+      "t": "narrate",
+      "text": "By eleven the shop has had nine customers — about double the standard Saturday-eleven count, which is the evidence that Comicpalooza Dallas, which ended Thursday and which the shop's regulars have, since yesterday, been processing, is going to make this a big day."
+    },
+    {
+      "t": "narrate",
+      "text": "The customers in the first hour are mostly the regulars. Phil — who had asked about the Saga hardcover on Tuesday and who has, since, come back twice — comes in at ten forty-three to look at the new arrivals. He stays for forty minutes. He buys two single issues and a back-issue Hellboy he had been thinking about for six months. He talks, at the counter while Maya rings him up, about a panel he had streamed from Comicpalooza on Friday night."
+    },
+    {
+      "t": "show",
+      "char": "phil",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Phil",
+      "text": "The Mantlo retrospective. Did you see it?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I didn't. I worked till eight.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Phil",
+      "text": "It was something. There's a guy writing a book. The book is going to be the first proper biography. They had Mantlo's brother on the panel. They played some old audio. Maya, it was a thing.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I'll find the panel.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Phil",
+      "text": "Watch it tonight.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I will.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Phil pays. He leaves. The bell chimes."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Hal calls at eleven fifteen."
+    },
+    {
+      "t": "show",
+      "char": "hal",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya picks up. \"Cosmic. Maya.\""
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "Kid. How's the day.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Better than expected. Twelve in already. The Comicpalooza halo is real.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "Saturday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "Comicpalooza halo?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "How many through the door so far?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Fifteen. Now sixteen. Sorry, customer.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "Take it, kid. I'll call back at three.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Thanks, Hal.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She hangs up. She rings up the next customer."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "By twelve forty-five the shop has had twenty-two customers and the floor is at fifteen people simultaneously — three at the new arrivals shelf, four at the back issues, two at the manga wall, two at the Pokémon section, two at the YA section, one at the small bench by the front window that Rick had put there in 2018 for kids whose parents wanted them out of the way for ten minutes, and one — Maya catches at the back of the floor in her peripheral vision — wandering."
+    },
+    {
+      "t": "narrate",
+      "text": "The wanderer is a man in his forties in a faded STAR WARS t-shirt with the Empire logo in the late-seventies print. Maya does not place him by name. She has seen him. He is a once-a-month regular. Two weeks ago he had bought a single issue of Saga and a small gum-pack of bag-and-board."
+    },
+    {
+      "t": "narrate",
+      "text": "She rings up the customer in front of her. She glances back at the wanderer."
+    },
+    {
+      "t": "narrate",
+      "text": "The wanderer is at the doorway of the back office. The back-office door is open. She has been, all morning, going in and out for things and has not, since opening, closed it."
+    },
+    {
+      "t": "narrate",
+      "text": "The wanderer is looking into the back office. The wanderer is looking, specifically, at the shelf above the file cabinet."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, at the counter, with the customer's change in her hand, has about one second to decide what to do. She looks at the shelf above the file cabinet. The Speak & Spell is slightly visible from her angle. The Speak & Spell, from her angle, has — for the first time since June — a red glow at the speaker grille."
+    },
+    {
+      "t": "show",
+      "char": "tombell",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "The wanderer reaches into the back office. He picks up the Speak & Spell. He turns. He walks out of the back office. He walks, with the Speak & Spell in his hands, into the back of the shop. He is not quite present. His attention has slipped one room sideways and he is, in the slip, doing a thing his body has decided to do without consulting his head."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya finishes counting the change. She hands it to the customer. \"Have a good one.\" The customer leaves. She has six more in line."
+    },
+    {
+      "t": "narrate",
+      "text": "She says, to the woman next, the one buying the Pokémon plush for her grandson: \"Ma'am. I'm sorry. Can you give me thirty seconds. I have an inventory thing I have to handle.\""
+    },
+    {
+      "t": "narrate",
+      "text": "The woman says: \"Of course, sweetheart.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Maya steps out from behind the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "She crosses the floor at her own pace — the pace of a sixteen-year-old who has, in four months, learned that walking with apparent calm through a busy room while moving toward a problem is the only way to keep the room from noticing there is a problem."
+    },
+    {
+      "t": "narrate",
+      "text": "The wanderer is near the back-issue boxes. The Speak & Spell is in his right hand. He is, at twelve feet, moving the Speak & Spell slowly back and forth in front of his face — the way somebody moves an instrument that is telling them something and they are trying to figure out what."
+    },
+    {
+      "t": "narrate",
+      "text": "The other customers have not noticed."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya reaches the wanderer. She says, in the quiet voice she has been training all summer for moments like this: \"Hey. That's a — that's a display piece. I should get it back on the shelf.\""
+    },
+    {
+      "t": "narrate",
+      "text": "The wanderer does not, immediately, respond. His face has the not-quite-present look."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Sir. I'm gonna take that. It's an old display piece. I keep it in the back.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The wanderer blinks. She reaches out. She takes the Speak & Spell from his hand — gently, the way you take a thing from a child who has wandered off with it. The Speak & Spell, the moment it leaves his hand, goes dim. The red speaker grille fades. By the time the Speak & Spell is fully in her hand the grille is dark."
+    },
+    {
+      "t": "narrate",
+      "text": "The wanderer blinks again. He looks around. He registers — she can see the registration arrive, in his eyes — that he is at the back-issue boxes of a comic shop holding nothing, and that the kid who runs the shop has, in front of him, just taken something out of his hands."
+    },
+    {
+      "t": "say",
+      "char": "Tom Bell",
+      "text": "I'm — sorry, what was that?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Just an old display piece I keep in the back. You okay? You looked a little zoned out for a sec.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Tom Bell",
+      "text": "Yeah. Yeah, weird. I — I guess I was. Must have been the heat. I just — I just walked in from the parking lot.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah. The AC's working overtime today. It's a lot to come in from out there and be in here. Take your time. There's water at the front near the register if you want.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Tom Bell",
+      "text": "Thanks, kid.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Sure thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She turns. She walks back to the counter at her own pace. The Speak & Spell, in her hand, is dark."
+    },
+    {
+      "t": "narrate",
+      "text": "She passes the woman with the Pokémon plush. Maya says, not losing pace: \"Thanks for waiting, ma'am. Right with you.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She continues to the counter. She steps behind it. She sets the Speak & Spell on the shelf under the register where she has been keeping her wallet during the shift. She does not put the Speak & Spell back in the office. The office is, for the rest of the day, a back room she does not want the Speak & Spell to be in."
+    },
+    {
+      "t": "narrate",
+      "text": "She rings up the Pokémon plush."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The wanderer comes back at one fifteen. He is — Maya registers him at the door, on the way in — fully himself again. The not-quite-present look is gone. He is, on entering, doing the thing returning customers do."
+    },
+    {
+      "t": "show",
+      "char": "tombell",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "He sees Maya. He comes up to the counter."
+    },
+    {
+      "t": "say",
+      "char": "Tom Bell",
+      "text": "Hey. So — I came in a little while ago and was weird. I'm sorry. I think I really did just walk in too fast out of the heat. I — anyway. I'm Tom. I come in once a month. Tom Bell.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I've seen you, Tom. It's fine. Heat does what it does.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Tom Bell",
+      "text": "I was gonna grab three issues. The ones I came in for.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Go ahead.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He browses for ten minutes. He brings three issues to the counter. Maya rings them up. He pays. He says, on the way out: \"Thanks for being chill about the weird thing earlier.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Sure thing, Tom. Stay hydrated.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tom Bell leaves. The bell chimes."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, at the counter, glances at the Speak & Spell on the shelf under the register. The grille is dim."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, in the next two hours, tell anyone about it."
+    },
+    {
+      "t": "narrate",
+      "text": "She rings. She helps. A father comes in with a six-year-old who wants the new Bone omnibus. She walks them to the section. She lets the kid pick it. The father pays. The kid clutches the comic to his chest as they leave."
+    },
+    {
+      "t": "narrate",
+      "text": "A woman in her thirties comes in at three oh-four asking about a graphic novel her therapist had recommended for her seventeen-year-old daughter who is going through some specific small thing this summer. Maya, who has been reading more YA this past month because Wren has been pushing her on it, walks the woman to the YA shelf and recommends three. The woman picks two. She buys them. She thanks Maya in the voice of a parent who has just been helped through a thing."
+    },
+    {
+      "t": "narrate",
+      "text": "The bell chimes."
+    },
+    {
+      "t": "narrate",
+      "text": "Hal calls at three oh-six."
+    },
+    {
+      "t": "show",
+      "char": "hal",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya picks up. \"Cosmic. Maya.\""
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "How's the day, kid.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Thirty-eight customers in. The floor is at like twenty. We're at the busiest the store has been on a Saturday this summer.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "Okay. Good. The Comicpalooza halo is real.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Hal.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Quick weird thing. The Speak & Spell did the thing. A customer picked it up and walked it through the store. I intercepted. He was confused, recovered fast, no harm. The Speak & Spell went dim when I took it from him. I'm holding it under the register now.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "A long beat on Hal's end."
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "Was the customer okay.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah. He came back. Bought three issues. Told me his name. He was a little embarrassed but he didn't seem — he didn't seem touched.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "You handle it however you think you should. Rick will want to know on Sunday. I'll tell him if you want me to. You can also text him. Either is fine.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I'll text him.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "Good. Anything else?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "No.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "I'll call again Monday. You're doing fine, kid.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Thanks, Hal.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She hangs up. She rings up the next customer."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, in the rest of the afternoon, text Rick. She decides at about three thirty that she will text him at close. She files. She handles. She moves on."
+    },
+    {
+      "t": "narrate",
+      "text": "The Speak & Spell, on the shelf under the register, is dim for the rest of the day. Every twenty minutes or so she glances down at it. It is, every time, dim. She rings."
+    },
+    {
+      "t": "narrate",
+      "text": "By five the floor count has dropped to about ten. By six it is at six. By seven it is at three. By seven thirty it is at one — a regular she knows by face who has come in for a single issue and who is, at the back-issue boxes, making the Saturday-night decision of do I buy three more or do I save it for next week."
+    },
+    {
+      "t": "narrate",
+      "text": "The regular buys five. The regular leaves at seven fifty-two. The bell chimes. The shop is empty."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, at the counter, surveys the floor. The total from the register report is fifty-four customers in eleven hours."
+    },
+    {
+      "t": "narrate",
+      "text": "Fifty-four is, by Curtis's standards as Curtis had once mentioned in a passing conversation with Wren in late June, a good Saturday. A good Saturday at Cosmic, by Curtis's standards, is forty-five. Fifty-four is the count of a kid who has, alone on her first solo Saturday, beat Curtis's good-Saturday number."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, in her face, do anything with this."
+    },
+    {
+      "t": "narrate",
+      "text": "She does the close. She counts the till. She separates the cash from the card receipts. She runs the register report. She pulls the bag-and-board waste from the small bin under the register. She wipes the counter. She turns off the back fluorescents in sections. She does the walk-through of the aisles to make sure the shelves are face-front."
+    },
+    {
+      "t": "narrate",
+      "text": "By eight twenty-six the close is done."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_office.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "She picks up the Speak & Spell from under the register. She carries it back to the office. She does not put it back on the shelf above the file cabinet. She sets it instead on Rick's desk, next to the spiral notebook, with a small folded sticky-note on which she writes, in her own handwriting: Saturday — went red for a customer named Tom Bell, recovered fast. Held under register all day. Texting you now."
+    },
+    {
+      "t": "narrate",
+      "text": "She locks the back-office door behind her. She texts Rick."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "hey rick. quick one. the s&s went red today for a customer. one named tom bell, comes in monthly. he picked it up and walked it. i intercepted. he recovered fast. came back after, fine. bought three issues. no harm. it stayed dim under the register the rest of the day. note on your desk. see you tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The reply comes in three minutes."
+    },
+    {
+      "t": "show",
+      "char": "rick",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "kid. you handled it perfectly. i'll be back at 11 tomorrow. tom bell is fine, he's been a regular for years, no history of anything weird. the s&s does what it does. you read it right. nothing to do tonight. eat dinner. sleep. see you tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya reads the reply twice. She puts the phone in her bag. She goes out the back door. She locks it. She tests the deadbolt. She tests it again. She walks to her bike at the rack."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_bike_path_dusk.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The ride home is twenty-three minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "The light at eight forty-six PM in mid-August is the lavender Texas does in the long Saturday-night dusk window. The cicadas on the cedar route are at their full volume. The air is finally beginning to drop into a livable register."
+    },
+    {
+      "t": "narrate",
+      "text": "She rides."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, on the ride: I sold fifty-four people forty-eight worth of comics on a day I was alone in the shop. I handled the Speak & Spell. I texted Rick. Hal called twice. The day was the day."
+    },
+    {
+      "t": "narrate",
+      "text": "A beat of pedaling."
+    },
+    {
+      "t": "narrate",
+      "text": "I am sixteen."
+    },
+    {
+      "t": "narrate",
+      "text": "Another beat."
+    },
+    {
+      "t": "narrate",
+      "text": "I have been, in the past four months, being trained for a thing I do not have a name for. I do not know whether the thing is going to be a job. I do not know whether it is going to be a part-time thing through senior year. I do not know whether the paid part comes later or never. I just know I have, in this past four months, been doing a thing that has been turning me into a person who can be alone in a shop on a busy Saturday and not, by the alone-ness, lose the competence."
+    },
+    {
+      "t": "narrate",
+      "text": "She rides."
+    },
+    {
+      "t": "narrate",
+      "text": "I want to keep doing it."
+    },
+    {
+      "t": "narrate",
+      "text": "She rides."
+    },
+    {
+      "t": "narrate",
+      "text": "I am going to ask Rick next week if I can keep working through senior year. Two days a week. Saturdays, maybe Wednesdays. I don't know if he'll say yes. He probably will. I want to ask."
+    },
+    {
+      "t": "narrate",
+      "text": "She rides the last three blocks."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch21_porch"
+    }
+  ]
+}

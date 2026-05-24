@@ -10,8 +10,10 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <script type="text/babel" src="vn-skins.jsx"></script>
+<script type="text/babel" src="vn-settings.jsx"></script>
 <script type="text/babel" src="vn-scenes.jsx"></script>
 <script type="text/babel" src="vn-video.jsx"></script>
+<script type="text/babel" src="vn-music.jsx"></script>
 <script type="text/babel" src="vn-engine.jsx"></script>
 <script type="text/babel" src="vn-menu.jsx"></script>
 <style>
@@ -63,29 +65,104 @@ function Stage({ children }) {
     return () => window.removeEventListener('resize', fit);
   }, []);
 
+  // Global click → fire mm-advance (bypasses CSS transform hit-test issues)
+  // Skip if clicking on interactive UI elements (choices, buttons, overlays)
+  const handleClick = (e) => {
+    const interactive = e.target.closest('button, [data-no-advance], input, textarea, select, a');
+    if (interactive) return;
+    document.dispatchEvent(new CustomEvent('mm-advance', { detail: { x: e.clientX, y: e.clientY } }));
+  };
+
+  // Global keydown → fire mm-advance for Space/Enter
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.code === 'Space' || e.code === 'Enter') {
+        e.preventDefault();
+        document.dispatchEvent(new CustomEvent('mm-advance', { detail: { key: e.code } }));
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, []);
+
   return (
-    <div id="game-stage" style={{
-      width: W, height: H,
-      transform: `translate(${offset.x}px,${offset.y}px) scale(${scale})`,
-      transformOrigin: 'top left',
-    }}>
-      {children}
+    // Full-viewport wrapper captures all clicks BEFORE the transform
+    <div style={{ position:'fixed', inset:0, cursor:'pointer' }} onClick={handleClick}>
+      <div id="game-stage" style={{
+        position: 'absolute',
+        width: W, height: H,
+        transform: `translate(${offset.x}px,${offset.y}px) scale(${scale})`,
+        transformOrigin: 'top left',
+      }}>
+        {children}
+      </div>
     </div>
   );
 }
 
+// ── Preview mode — receive scene from Scene Editor ────────────────────────
+function usePreviewMode() {
+  const params = new URLSearchParams(window.location.search);
+  const isPreview = params.get('preview') === '1';
+  const previewVol = parseInt(params.get('vol') || '1');
+  const previewScene = params.get('scene') || null;
+  return { isPreview, previewVol, previewScene };
+}
+
 // ── App Root ─────────────────────────────────────────────────────────────────
 function App() {
-  const [appState, setAppState] = useState({ screen: 'menu', vol: null });
+  const { isPreview, previewVol, previewScene } = usePreviewMode();
+  const [appState, setAppState] = useState(() => {
+    if (isPreview) return { screen: 'game', vol: previewVol, previewSceneId: previewScene };
+    return { screen: 'menu', vol: null, previewSceneId: null };
+  });
+  const [injectedScene, setInjectedScene] = useState(null);
+
+  // Listen for scene injection from Scene Editor parent
+  useEffect(() => {
+    if (!isPreview) return;
+
+    // Wait for all external Babel scripts to be ready before signalling
+    const signal = () => {
+      window.parent.postMessage({ type: '__mm_preview_ready' }, '*');
+    };
+
+    // Check if key globals are available yet
+    const waitForEngine = (attempts) => {
+      if (typeof GameScreen !== 'undefined' && typeof getSkin !== 'undefined') {
+        signal();
+        // Signal again after short delay as insurance
+        setTimeout(signal, 500);
+      } else if (attempts > 0) {
+        setTimeout(() => waitForEngine(attempts - 1), 200);
+      } else {
+        signal(); // give up waiting, signal anyway
+      }
+    };
+    waitForEngine(20); // up to 4 seconds
+
+    const handler = (e) => {
+      if (e.data?.type === '__mm_preview') {
+        setInjectedScene(e.data.scene || null);
+        setAppState(s => ({ ...s, vol: e.data.vol, previewSceneId: e.data.sceneId }));
+      }
+    };
+    window.addEventListener('message', handler);
+    return () => window.removeEventListener('message', handler);
+  }, [isPreview]);
 
   return (
     <Stage>
       {appState.screen === 'menu' && (
-        <MainMenu onPlay={(vol) => setAppState({ screen: 'game', vol })} />
+        <div data-no-advance style={{width:'100%',height:'100%'}}>
+          <MainMenu onPlay={(vol, sceneId) => setAppState({ screen: 'game', vol, previewSceneId: sceneId || null })} />
+        </div>
       )}
       {appState.screen === 'game' && (
         <GameScreen
           vol={appState.vol}
+          previewSceneId={appState.previewSceneId}
+          injectedScene={injectedScene}
           onReturn={() => setAppState({ screen: 'menu', vol: null })}
         />
       )}

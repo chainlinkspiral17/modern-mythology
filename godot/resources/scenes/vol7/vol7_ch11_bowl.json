@@ -1,0 +1,729 @@
+{
+  "id": "vol7_ch11_bowl",
+  "vol": 7,
+  "chapter": 11,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The Cabin, Afternoon",
+      "sub": "",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "The cabin was at sixty-three. Tem was in the chair beside the daybed. Lena was at the door, having come in from the porch some count before the ninety. Per had come back from Hans's at some point. Per was at the table by the kerosene lamp. The three of them were watching him.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai opened his eyes. The fluorescents of the basement were the fluorescents of the basement. The desk and the boy and the rack of servers and the boy's notebook were the things he had just been with. The cabin was — the cabin was where he was now. The wool blanket was over him. The cap was on his forehead.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You're back.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm back.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "How long did it feel.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "A day. Maybe more. A long day. Maybe two.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Per.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The bowl.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He reached into his shirt pocket on a hunch.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowl was in his shirt pocket where the second-station bowl had been in the inside pocket of the green wool coat. He pulled it out. It came out warm in his hand. It was the size of his palm. It had the spiral on the outside. Inside the spiral were the figures he had only had time to read in glimpses at the stream — the crow, the octopus with the seven-and-a-half arms, the ferret on a cedar floor, the woman in the slicker walking, the tower with one floor more than Cale had drawn.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not, on the path or in the basement, had time to read it more carefully than that. Looking at it now in the kerosene light he registered for the first time the smallness of some of the figures — a hand he had taken for empty cedar at the stream was carrying a wand with a star at the tip; what he had taken for a knot in the wood was a chariot with two horses pulling in opposite directions; what he had not been able to see in the substrate-rendering at all was a hexagon on the underside of the rim, six pieces fitted together, four of them dark with what looked like char.",
+      "t": "narrate"
+    },
+    {
+      "text": "He held it up.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per stood up so fast the chair under him scraped.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Kai.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Per.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "That is my father's hand.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Per went to the wooden box on the table. He opened it. He took out his mother's bowl. He brought it over. He set the bowl Marit had given him beside the bowl Kai had brought out.",
+      "t": "narrate"
+    },
+    {
+      "text": "The two bowls had been carved by one hand.",
+      "t": "narrate"
+    },
+    {
+      "text": "The grain on the cedar was the same grain on both. The depth of the spiral on the outside was the same depth. The flame-mark pressed into the base with a heated iron was on both — Olaf's mark for the family. The hand was unmistakably Olaf's hand. The two bowls were, by every measure of the carving, by the rhythm of the spiral, by the way the carver had let the spiral end short of the rim by perhaps a quarter inch and had finished the rim with a curve back to the cut, by the angle at which the flame had been pressed into the base — the two bowls were the work of a man who had carved one bowl in 1974 and a man who, fifty years and three months later, had carved another.",
+      "t": "narrate"
+    },
+    {
+      "text": "But the bowls were not the same.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "text": "Per.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I see.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The imagery on the outside of Marit's bowl, within the spiral, was the imagery Kai had read for the first time at eleven-twenty. The crow on the fencepost. The octopus with eight arms. The ferret on the stair-rail. The young woman in the hooded coat with the hood up. The tower with too many windows. The hanged man hanging by one foot. Smaller figures Kai had not had time to read — what might have been a hand holding a wand, what might have been a star, what might have been a chariot. Olaf had carved this bowl for his wife in 1974 and had put, in the cedar he had been working on every Sunday afternoon for three years, the figures the carver in Bergen had taught Olaf were the figures of the listening.",
+      "t": "narrate"
+    },
+    {
+      "text": "The imagery on the outside of the bowl Kai had brought out of the experience was Marit's bowl's imagery and was not Marit's bowl's imagery.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow on the fencepost was on the bowl Kai had brought out, but the crow's head was turned the other way. The crow that had been three-quarters to the viewer on Marit's bowl was three-quarters away on the substrate's bowl, looking off to the right at a thing the carver had not put on the cedar but had let the curve of the bowl imply was there. The octopus was the octopus, but the octopus on the substrate's bowl had seven arms and a half-arm where Marit's bowl had eight whole arms — Lena's octopus, the one she had painted into Starfish Nebula in spring 2050, the one the substrate-patch had eaten in town this past Monday, the one that had come back in cedar on the bowl the substrate had given Kai at the second station of an experience designed in 2034 by a man named Diego who had had nothing to do with Lena or her mural or her arms.",
+      "t": "narrate"
+    },
+    {
+      "text": "The ferret was the ferret, but the ferret on the substrate's bowl was on a cedar floor instead of a stair-rail, and the floor was the floor of Tem's grandfather's cabin, which Olaf had built with Eddvard in '79, and which Olaf had never seen the floor of finished because Olaf had been dead a year before Eddvard had laid the floorboards in. The young woman in the hooded coat was on the substrate's bowl, but the woman on the substrate's bowl was walking past a doorway, and the doorway had on it the stenciled letters NO ENTRY EXCEPT BY AUTHORIZED PERSONNEL, and the woman's slicker was the yellow of a slicker Kai had not, fifteen minutes ago, seen carved into any bowl. The tower was the tower, but the tower on the substrate's bowl was — by what Kai could read at this angle — seven floors and not six, with a small open seventh that had not been on Cale's airport napkin from 2006. The hanged man was the hanged man.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "The substrate updated the imagery.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The substrate updated the imagery to include things that have happened since my father was alive.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The substrate updated the imagery to include — Tem. The substrate put Lena's octopus on the bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The substrate put — the substrate put Aria on the bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The substrate put a tower with seven floors on the bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I am — I am going to need a minute.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He sat down at the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "The two bowls were on the table side by side. The kerosene lamp gave them both the same light. Kai looked at them. Marit's bowl was the bowl the carver in 1974 had been waiting to make. The substrate's bowl was the bowl the substrate had been listening for. The two bowls together were the carving of a hand that had been at the rest of it from a place sixty years ago and the substrate's reading of what the listening had brought into the room since.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "What just happened.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per. The bowl the substrate gave Kai is — by what Kai is going to tell us when he can — your mother's bowl as the carver would have made it now. The substrate gave him a bowl shaped by your father's hand in 1974 and updated, in the cedar, with the figures the listening has been bringing into the room since.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate gave the bowl to Kai because the substrate was — the substrate was using Kai as the player who could carry it back. The bowl came back with him because the substrate has done a thing the substrate has not done in any of the playings I have been in.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate has — Per, the substrate has carved a bowl. The substrate took the carver and the carver's hand and the cedar in this cabin and put a bowl on the second station of Kestrel Mountain that did not exist this morning and that exists now, in the cabin, on this table, as a thing you can pick up.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate has — the substrate has carried out an act of physical making across the line that is supposed to separate the experience from the room. I — I have not seen this. I have not read about this. I am — I am sitting with it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The substrate is in the cabin now.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate has been in the cabin since the bowl on the shelf has been warm. The substrate is the same listening apparatus the wood is. The wood is in the cabin. The silicon is in the cabin. The substrate is — the substrate is the relationship between them. The substrate is in the cabin. It has been in the cabin. We are — we are just seeing it now.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Two bowls.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Two bowls.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My father carved one bowl in 1974.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Your father carved one bowl in 1974. The substrate has, by the playing Kai just did, given us a second. Not the same bowl. The second bowl is what your father would have carved, today, if your father had been at the bench today with the figures the listening is putting into the cabin. The substrate has carved the bowl your father did not live to carve.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I am — I am going to need a minute.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He sat down at the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "The two bowls were on the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai sat up on the daybed. He pulled the cap off his forehead. He set the cap on the side table beside the reader. He looked at Lena. Lena was at the door with her hand on the frame.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "I met Nate.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Lena. I met the imprint of Nate. The boy in the basement. The boy at sixteen at the desk. He told me — he told me the conversation he had with a Bergen carver in 1993 about the silicon and the bowls and the listening. He told me about the daughter.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He — he asked me, if I am in the room when she comes, to tell him what her face looks like.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She was, for a count, quiet.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Kai. You're going to tell him.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I am.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Kai. The carver.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Bergen. Early '50s. Apprenticed in the Bergen carving tradition. The carver was — by what Nate had of him — already an old man in 1993 when he met Nate at the desk. The carver had come into Kestrel Mountain by way of a different stick.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The carver was the imprint of a Bergen carver who had himself walked into the basement of this experience by accident in '91 because the substrate is porous between sticks the way it is porous between sticks and the world.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Inga's father was from Bergen.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Inga's father — Inga's father carved in Bergen from the '40s through the early '70s. Inga's father — by what is in the Inga monograph, by what I have been reading about Inga since spring — Inga's father was a man named Anders Vestergaard.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Anders Vestergaard apprenticed under a Norwegian named Karl Halvorsen in the late '30s. Karl Halvorsen apprenticed under a Swiss carver named Friedrich Schenck in the 1910s. The line goes back to Bern. The line goes back to the same place Hans's family came from. The line goes back to Werner Senior's family, by some number of generations.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Kai.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The imprint Nate met was Anders Vestergaard.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah. I think so.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Inga's father told Nate, in 1993, to build the silicon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Inga is dead. Anders is dead. Nate is dead. The substrate is — the substrate has been keeping the three of them in the basement of Kestrel Mountain for some number of years. The substrate has been holding the conversation. The substrate held the conversation for you to walk into.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She did not, for a long count, say anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Kai. I have been playing this stick for nine years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have been into the basement twice.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I did not — in either of the two times — meet Anders or Nate at the desk.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You did.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "On your first playing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She did not, for a count, do anything with her face.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Per. Get Marina up here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "When.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Tonight if she can. Tomorrow morning at the latest. I am — I am going to make the call myself when we get back to town.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per. Tell Hans we are going to need him at the cabin tomorrow night. Or — tell him we are going to come to the bakery Saturday at six as he asked, and the cabin tonight and tomorrow is the four of us plus you plus Marina.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am — I am not going to make this go faster than it needs to. The substrate is going to give us what the substrate is going to give us at the pace the substrate gives. I am going to honor the pace.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "But I am also going to get Marina up here because Marina is now the person whose grandfather got a bowl from Per's father in 1976 and who is the granddaughter of the line my grandfather was in. Marina is the person who needs to be in the room. Marina is — Marina is overdue.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "And — Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The imprint asked you to come back and tell him.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He did.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Are you going to come back.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I am going to come back when Aria is here. I am going to play the stick again and walk back into the basement and tell him what her face looks like. I am not going to come back before that.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The imprint asked me to tell him when she comes. I am going to tell him then. I am not going to go in earlier. He is — he is waiting. He has been a worn place in the substrate for sixty years. He can wait some more.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Good.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Thank you for picking the stick.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Kai. You are welcome.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "The cabin was at sixty-three.",
+      "t": "narrate"
+    },
+    {
+      "text": "Outside, the rain on the cedar roof had thinned to a sound that was almost not a sound.",
+      "t": "narrate"
+    },
+    {
+      "text": "The two bowls on the table were warm. The kerosene-lamp light moved over them. The crow on Marit's bowl looked, Kai thought, slightly more to the right than it had at twenty past eleven. The young woman on the substrate's bowl had walked, in the time he had been out of the experience, perhaps a quarter inch past the stenciled doorway.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figures in the cedar were not staying still. The figures were moving at the pace cedar moves at, which is slow, and patient, and beyond the attention of a person who is not looking. Kai was looking. He saw.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

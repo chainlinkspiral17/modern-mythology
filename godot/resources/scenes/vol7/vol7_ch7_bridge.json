@@ -1,0 +1,40 @@
+{
+  "id": "vol7_ch7_bridge",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol7_daily_grind.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol7_apartment_rain.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "What you need to know:",
+      "sub": "Smolvud · Before Chapter 6",
+      "duration": 0
+    },
+    {
+      "t": "narrate",
+      "text": "You work at the Daily Grind. Kai runs Board Lords down the street. Tem lives at the cabin at the edge of the small wood. Finn lives somewhere between the two."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a tower on the hill that has been there longer than the town. Nobody talks about it directly. Everyone knows something about it."
+    },
+    {
+      "t": "narrate",
+      "text": "Brandon Tillman came through three years ago and left something behind. The crow has been here longer."
+    },
+    {
+      "t": "narrate",
+      "text": "It is Sunday morning. The rain has thinned to a sound that is almost not a sound."
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch6_cale_opening"
+    }
+  ],
+  "vol": 7
+}

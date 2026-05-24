@@ -1,0 +1,37 @@
+{
+  "id": "vol4_end",
+  "nodes": [
+    {
+      "t": "flag",
+      "key": "vol4_casper_met",
+      "val": true
+    },
+    {
+      "t": "narrate",
+      "text": "He doesn't tell you to leave. He doesn't tell you to stay."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls out his own can. Studies the wall. Studies you."
+    },
+    {
+      "t": "say",
+      "char": "CASPER",
+      "expr": "neutral",
+      "text": "You got a tag?"
+    },
+    {
+      "t": "think",
+      "char": null,
+      "text": "He's asking your name. Not your government name. Your real one."
+    },
+    {
+      "t": "narrate",
+      "text": "— End of Demo —"
+    },
+    {
+      "t": "end"
+    }
+  ],
+  "vol": 4
+}

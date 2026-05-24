@@ -1,0 +1,789 @@
+{
+  "id": "vol7_ch3_apartment",
+  "vol": 7,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Saturday",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_lena_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 3",
+      "sub": "Saturday",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "text": "Lena woke at six-forty in an apartment that held the cold she had set for it the night before. The thermostat above the bed read sixty-one. She put on the wool socks, the jeans, a long flannel that had been her uncle's before her aunt's before hers, and crossed the small hall to the main room.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Tem was on the couch under the wool blanket Lena kept folded over the back. She was awake but not sitting up. She lay on her side watching the ceiling.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "text": "Coffee?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "A nod against the pillow.",
+      "t": "narrate"
+    },
+    {
+      "text": "She went to the kitchen, set the kettle, filled the cone with the dark French Soren had given her on her birthday last year. She poured two cups. The smell filled the kitchen, then the main room, in the way that good coffee will when the apartment is small enough.",
+      "t": "narrate"
+    },
+    {
+      "text": "She set Tem's on the end table beside the couch and took her own to the chair across from her.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem sat up, holding the cup in both hands. Her hair was flat on one side. Her eyes were the eyes of a person who had slept eight hours in a bed not her own and woken halfway through the rest she actually needed.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I should not have slept that long.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "You needed it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "They drank. The window over the kitchen sink looked out on the alley and on the wall of the building opposite, and on that wall was the Starfish Nebula mural Lena had painted across two months in the spring of 2050. She had counted the patches yesterday morning. Three on Friday. Four yesterday. She did not count them this morning.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I'm sorry I crashed here.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Stop.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I'm not — I am registering that I crashed at your place after a Friday in which the four of us did not know what to do. That's an asymmetry I want to be careful about.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "You don't have to make space for every feeling I might have.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Tem looked at her over the cup.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I am a person. I can have a feeling. I can hold it. You don't have to manage it for me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "A long beat. Tem set the cup down.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "That's fair.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm sorry. It came out hot.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "It came out the way you meant it. It's fine. I'll try to do that less.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm not asking you to change.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know you're not. I'll still try.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The rain on the roof dropped a notch. Lena drank her coffee. After a minute Tem said, without looking at her:",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Tell me about the painting.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Which one.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The one you have been failing to make for two years.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Lena set her cup down.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "You know about that.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know you've been working on something. I know it hasn't come. I know you don't talk about it. I have been waiting to ask. I wanted to ask before I drove up today.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Why today?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Because I think the next few weeks are going to be busy and I don't want to forget you've had a thing you've been failing at, in your studio, every day, while everything else has been happening. The painting is what you've been doing. The patches are not what you've been doing. I don't want the patches to be the thing I ask about.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Lena turned the cup in her hands.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "It's a big piece. Six by eight. Oil. I started it after Starfish Nebula. I told myself when I finished Starfish that the next thing I made was going to be the thing. The painting that was the painting. I haven't made it. I've started it eleven times. I've stripped it back eleven times. The canvas is thick enough now that I could paint a different painting on top of the underpainting and have it be fine. I cannot get past the underpainting.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "What's it supposed to be about.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I don't know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm not being coy. I have a feeling. The feeling started about the alley. About what it means to make a thirty-foot mural on a wall in an alley and have it stay there while I go on making the small painting nobody sees. The mural is for everyone. The painting is for me. I started thinking the new piece was going to be about the difference between them. Then I started painting and the painting did not want to be about that. It wanted to be about something else. I tried to paint what it wanted. The trying didn't work. I went back to what I'd thought it was about. That didn't work either. Two years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Have you considered making a different painting.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I have.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "And.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I don't want to. I want to make this one. I want to know what it is.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Have you written to Jorgen.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Lena looked up.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "How do you know about Jorgen.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Petra. Last winter. Jorgen's gallerist in Portland told her you and he had been corresponding. She mentioned it to me one Sunday. I haven't brought it up since. I've been waiting for you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Petra.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm going to have a word with Petra.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She didn't gossip. She wouldn't. She told me because she thought I was the person who should know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Why you?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I don't know, Lena. Probably because she has watched the two of us have coffee on Wednesdays for a year and a half and has drawn her own conclusions. Petra draws her own conclusions about most things. She has drawn most of them right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Lena drank.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I've written to him. He says the room is mine if I want it. He says I'd need to be there by the end of September. He says the workshop needs me for a year. He says if I show up for less than a year he'd rather I not show up at all. He says he's in a good window.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "What does the good window mean.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "It means he isn't manic. It means his head is clear in the way it needs to be clear for him to take on someone else.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "What does it mean when the window closes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "It means he gets bad.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "How bad.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I don't know all of it. I've heard from Hannah at the Portland gallery. Hannah's known the ex-wife for years. The ex-wife told her he can be frightening when he's manic. Not violent. The word she used was consuming. He works for sixteen-hour stretches and he expects whoever's around him to be inside the work with him at his cadence. I would be the person around him. I would have to be inside the work.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "And when the manic ends.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He stops working. He doesn't talk to anyone. He doesn't eat enough. The ex-wife said she'd find him in the workshop sitting in front of a finished painting for twelve hours, not eating, not drinking, not seeming to know she was in the room.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "And you're thinking about going.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Why.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Lena thought about it.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Because the painting isn't coming. Because I've been at the Daily Grind for two and a half years and I'm very good at it and it isn't what I'm doing. Because Jorgen is the only painter on this coast whose work I look at and feel that he has seen the thing I've been trying to see. I don't want to make work that looks like his. I want to make work that comes from where his comes from. I think I'd learn that from him in a year and not from anyone else, anywhere, including by myself.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Even with the manic.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "That's the question.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The kettle on the stove had cooled. Through the kitchen window the rain had picked up in the way rain picks up when the front is reorganizing itself. Lena watched Tem look down at the floor and then back up and then down again, and recognized the small thing Tem did with her face when she was about to say something she had been working out for some time.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I want to tell you something. I've been with someone like Jorgen before.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "You have.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Not exactly. Near enough. Before I came back to Smolvud full-time. The year I was twenty. I lived in Eugene and I worked under a printmaker. He was forty-four. I was twenty. Eight months. I learned a lot from him. The teaching and the personal and what he wanted from me became three things I could not, at twenty, hold separately. I left. I came home. I have not, since, talked about it. I'm telling you because the question you're asking yourself about Jorgen is a question I asked myself about a different person in a different town when I was younger. I want you to know I asked it. I want you to know I'm older than you and I have a stake in what you decide and I'm trying to keep my stake out of the deciding.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Lena sat with that.",
+      "t": "narrate"
+    },
+    {
+      "text": "The room had gotten quiet in the specific way rooms get quiet when a thing has been said that the room had been keeping out for a while. Lena could hear the rain on the kitchen window. She could hear the small click of the radiator pipe in the corner that ran whether the heat was on or off, in a way the building's super had been promising to fix since 2049.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "That's the second hard thing you've told me in eighteen months.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Was the first one April.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "April was the first one.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "This is the second one.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "This is the second one.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Lena set the cup down on the floor beside her chair. She put her face in her hands for a second and then took her hands away.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I had a teacher too. Before I came here. The year I was nineteen. She was a sculptor. She was thirty-six. Ten months. The same — the same shape. I left at twenty. I came here. I have not told anyone. Petra doesn't know. Hannah doesn't know. Kai and Finn don't know. You're the first.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Tem did not, for a long beat, do anything with her face. Then she nodded once, slowly, and looked at the floor and looked back up.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Thank you for telling me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm telling you because you told me. I want you to know I'm not — I'm not telling you because I think you're like her. I'm telling you because you told me yours and I had mine.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I want to say one thing about April and then I want to never have to say it again.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "All right.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I have not, since April, thought about anything else. I have thought about you almost every day since you walked me to your door at six in the morning. I have not said anything because I did not know if the saying was the right thing or the wrong thing. I am twenty-three and I do not always know. I am telling you now, in this room, that the not-saying has been heavy. If you do not want it to be a thing again, that is a thing I can hear. If you do want it to be a thing again, I want to know. I do not want to spend the rest of the year not knowing. That's the only thing I have.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Tem held the cup with both hands and did not look at her for a long count.",
+      "t": "narrate"
+    },
+    {
+      "text": "When she did look up her face was not what Lena had expected it to be. It was not opened. It was not closed. It was, more than anything else, scared.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I want it to be a thing again. I have wanted it to be a thing again since April. I have not said anything because I am older than you and you told me about the teacher last winter at Petra's once, half a sentence, and stopped, and I read the half-sentence and decided I was not going to be the person you had to navigate again. I decided this without asking you. I am — I am sorry. I should have asked you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "You should have asked me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm asking you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I want it to be a thing again.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I want it to be a thing again.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "They both held their cups. Neither of them moved.",
+      "t": "narrate"
+    },
+    {
+      "text": "After a while Tem said, \"I have to drive up to the cabin.\"",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I have to drive up to the cabin.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Finn's coming up after his route.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I don't know what to do with this in the next three hours.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Drive up. Be at the cabin. Be with Finn. Come back tomorrow.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Don't make a plan about this on the drive up.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I wasn't going to.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "You were going to.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "A breath of a laugh.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I was going to.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Don't.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Tem stood. She folded the wool blanket and put it back over the couch. She washed her cup at the sink. She put on her coat. At the door she did not put a hand on Lena's shoulder. She looked at her for a beat. Lena looked back.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Tomorrow.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "text": "Tomorrow.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "text": "The door closed. The apartment, after she was gone, was quieter than it had been in any morning Lena could remember.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Lena stood in the kitchen for a minute. Then she went to the window and looked at the alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four patches were where they had been. The rain ran down the wall in a thin steady sheet. The patches did not seem, from this distance, to have changed since yesterday.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not document them.",
+      "t": "narrate"
+    },
+    {
+      "text": "She got dressed for the studio.",
+      "t": "narrate"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "scene": "vol7_ch3_studio",
+      "t": "jump"
+    }
+  ]
+}

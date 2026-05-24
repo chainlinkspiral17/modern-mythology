@@ -1,0 +1,125 @@
+{
+  "id": "vol6_ch6_tome",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Three Hundred in Twenties",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_nexcorp_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Three Hundred in Twenties",
+      "sub": "Friday — 07:33 — NexCorp Fueling Station",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "claire",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Claire is at the counter, paying for a Diet Coke and a bag of pretzels, when Tomé's car pulls into the lot. She watches it through the front window. Tomé is, Frasier had said, the third contractor — Vince's relief, Boyd's swap. He is younger than Vince. He is driving a silver compact rental with a yellow air freshener visible through the windshield. He does not get out immediately. He is on his phone. He is, Claire suspects, calling Vince to confirm Vince is at the swap point. Vince does not pick up. Tomé waits."
+    },
+    {
+      "t": "narrate",
+      "text": "Claire pays. She walks out of the station. She crosses the lot. She walks directly to Tomé's driver's side window and knocks, twice, with the small efficient knuckle-knock of a woman who has, in many parking lots in many states, established the habit."
+    },
+    {
+      "t": "show",
+      "char": "tome",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Tomé rolls down the window."
+    },
+    {
+      "t": "say",
+      "char": "Tomé",
+      "text": "Yeah?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Hi. Plans changed. Vince is gone. The van's been picked up. I need a ride to the next truck stop. I'll pay you two hundred for the ride. Three if you don't ask questions.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tomé looks at her. Tomé is, Claire has noted, much younger than Vince — maybe twenty-six, maybe twenty-eight. He has the alert nervous look of a man who has only been doing this work for a year or two and who is not, yet, hardened to it."
+    },
+    {
+      "t": "say",
+      "char": "Tomé",
+      "text": "Ma'am, I don't know what — ",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Tomé. I know your name. I know what you were here to do. I know what Vince was doing and I know where the van is going. I am not law enforcement. I am paying you cash. I want you to drive me to the next truck stop and then continue west on your own and never come back to this exit. Three hundred. I have it in twenties.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tomé stares at her."
+    },
+    {
+      "t": "say",
+      "char": "Tomé",
+      "text": "How do you — ",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Tomé. Yes or no. Twenty seconds.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tomé looks at the dashboard. He looks at the station. He looks at the van — which, he can see, is no longer at pump six. The van is, at this moment, pulling out of the lot, with a man Tomé does not recognize at the wheel."
+    },
+    {
+      "t": "say",
+      "char": "Tomé",
+      "text": "Get in.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She gets in. She buckles her seatbelt. She hands him three hundred-dollar bills before he has finished pulling out."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_boyd"
+    }
+  ]
+}

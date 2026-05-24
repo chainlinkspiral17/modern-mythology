@@ -1,0 +1,617 @@
+{
+  "id": "vol6_ch14_substation_nine",
+  "vol": 6,
+  "chapter": 14,
+  "type": "chapter",
+  "title": "Ch 14 — Substation Nine",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_henderson_garage_afternoon.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Substation Nine",
+      "sub": "Wednesday — 17:15 — Henderson Garage",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse is in the garage with the door open at five fifteen PM when the kid with the flyer comes up the driveway."
+    },
+    {
+      "t": "narrate",
+      "text": "The garage door is open because the temperature has dropped from the day's high of one hundred and three to the early-evening of ninety-six, and ninety-six is the threshold at which Jesse, in August, will leave the door up while he plays. The Telecaster is plugged in. The amp is at three-quarter volume. He is doing the small repeated work he has been doing every afternoon this week, which is the lead break on a song the band has been working on for a month called Substation Nine."
+    },
+    {
+      "t": "narrate",
+      "text": "The song is not, by Suburban Blight standards, finished."
+    },
+    {
+      "t": "narrate",
+      "text": "The song is, by Jesse's private measure, the closest the band has come to writing the song he has been trying, all summer, to write."
+    },
+    {
+      "t": "narrate",
+      "text": "The kid coming up the driveway is — Jesse, looking up from the strings — fourteen, maybe fifteen, on a skateboard, with a stack of paper flyers held against his chest under one elbow. Jesse knows the kid by face but not by name. He is one of the kids who has, in the past few weeks, started skating the cul-de-sacs in the late afternoons, in the small roving way kids on skateboards in Texas suburbs roam in late summer when school is about to start and there is, this week, nothing to do."
+    },
+    {
+      "t": "narrate",
+      "text": "The kid stops at the foot of the driveway."
+    },
+    {
+      "t": "say",
+      "char": "Kid",
+      "text": "You Jesse?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse turns the amp down."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Kid",
+      "text": "Saturday at the Foxhole. Owner asked me to drop these. He said you'd want one.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The kid skates up the driveway. He pulls a single flyer from the stack. He hands it to Jesse. He skates back down."
+    },
+    {
+      "t": "say",
+      "char": "Kid",
+      "text": "Bring your own water. The bar's a rip.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The kid skates off down the cul-de-sac."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse watches him go."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at the flyer."
+    },
+    {
+      "t": "narrate",
+      "text": "The flyer is the kind of flyer The Foxhole has been making since the venue opened in 2019. Half-letter, photocopied, two colors — black ink on a paper that is, today, a faded mustard yellow. The top of the flyer has the venue name in the typeface The Foxhole has been using since the beginning: a hand-drawn block lettering that the original owner's girlfriend had done in 2019 and that nobody, in seven years, has updated."
+    },
+    {
+      "t": "narrate",
+      "text": "Beneath the title: SATURDAY 8/22 — DOORS 8 PM // 21+ // CASH BAR — 9 PM: SUBURBAN BLIGHT (NEW AUBURN'S OWN) — 11 PM: DJ CHESS (SAN ANTONIO)."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse looks at the flyer for a long minute."
+    },
+    {
+      "t": "narrate",
+      "text": "Suburban Blight is — NEW AUBURN'S OWN. Which is the venue's standard parenthetical for any local act, and which is, Jesse registers, the first time Suburban Blight has been called New Auburn's Own in print on a flyer for a venue in New Auburn."
+    },
+    {
+      "t": "narrate",
+      "text": "DJ Chess is — SAN ANTONIO. Which means The Foxhole has, for its Saturday slot, brought in a DJ from San Antonio. Which means the venue is, for the first time since Suburban Blight has been booking small slots there, pairing the band with somebody from outside the immediate region."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse has, this summer, been roughly aware of DJ Chess. The name has been on flyers at three or four other venues Suburban Blight has played in the past two months — not as the headliner of those nights, but as the headliner of the night before or the night after, in the small overlapping booking patterns that small venues in this part of Texas use when they have, for the season, chosen to start running a regular DJ slot. Jesse has not, before this afternoon, paid attention."
+    },
+    {
+      "t": "narrate",
+      "text": "He pays attention now."
+    },
+    {
+      "t": "narrate",
+      "text": "He sets the flyer on the workbench."
+    },
+    {
+      "t": "narrate",
+      "text": "He picks the Telecaster back up."
+    },
+    {
+      "t": "narrate",
+      "text": "He plays Substation Nine through twice. The lead break, on the second pass, is — by his own internal sense, which is, this summer, becoming a thing he has begun to trust — almost what he wants it to be. Not yet. By Saturday it will be."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_nate_garage_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Practice that night is at seven in Nate's garage instead of Jesse's, because Nate's mother is having Jesse's parents over for dinner and the configuration of Wednesday evening has, at some point in the morning, been negotiated by the two mothers in the way the mothers of band members negotiate the small logistics of teenage boys having a band."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse drives to Nate's at six-forty. The route to Nate's is across town — twenty-two minutes, if he takes the back roads, which he does. The back roads are the ones he has been taking, all summer, for the small eleven minutes of being in a moving vehicle with his attention to himself, and also for the small fact that the back roads go past two of the addresses he has been tracking on the map."
+    },
+    {
+      "t": "narrate",
+      "text": "The map is in his glove compartment. The map is a single folded sheet of printer paper from a Rand McNally pdf he had downloaded in early June, with the local New Auburn-Harmony Creek Estates corridor printed at one-to-twelve-thousand scale, and his own handwritten annotations in three colors of ballpoint pen — black for addresses he has registered, red for addresses where something has, by his observation, changed in the past six weeks, and blue for addresses where the change is, by his read, active: trucks coming and going, lights on at hours that do not match the building's stated occupancy, vehicles parked overnight that are not residents'."
+    },
+    {
+      "t": "narrate",
+      "text": "He has, by Wednesday evening, fourteen black, four red, and one blue."
+    },
+    {
+      "t": "narrate",
+      "text": "The blue is the unit at the back of the strip mall on Live Oak Street that contains The Foxhole."
+    },
+    {
+      "t": "narrate",
+      "text": "He had, in late July, registered that the unit at the rear of the strip mall — the one whose front-facing storefront window has been papered over since the previous tenant, a payday-loan operation, had closed in March — had begun, in the past three weeks, to be visited at night by a small white panel van. The van arrives between one and three AM. The van stays between forty and ninety minutes. The van leaves. There is no signage on the unit. There is no permit displayed in the window. The papered-over window has, by Jesse's three observations, been re-papered over twice since the original papering — once in early July, once in early August — in a way that suggests the paper has been lifted from the inside and then replaced."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse has not, for two weeks, been able to confirm what is in the unit. The blue annotation is the only blue annotation on his map. The Foxhole is across the parking lot. He has not, until this afternoon's flyer, registered that the geography of his map and the geography of his band were, this Saturday, going to converge."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls into Nate's driveway at seven oh-two."
+    },
+    {
+      "t": "narrate",
+      "text": "Nate's garage is bigger than Jesse's. Nate's parents had, in 2018, converted the rear half of their two-car garage into a small finished room with sound dampening on the walls and a separate window AC that does not, technically, count as part of the house's HVAC envelope. The conversion had been Nate's father's project. Nate's father — a man in his fifties named Walt who works in commercial insurance and who plays the bass himself in a wedding band that performs three times a year — had finished the conversion the summer Nate had turned fifteen, with the small clarity of a man who had decided that his son was going to have, in their house, the room he himself had not had at fifteen in the house in Houston his own father had, in 1972, refused to let him put a drum kit into."
+    },
+    {
+      "t": "narrate",
+      "text": "Walt is in the kitchen when Jesse comes in. He is in his work shirt, having just come home. He is making a sandwich."
+    },
+    {
+      "t": "say",
+      "char": "Walt",
+      "text": "Hey, Jess. They're already set up.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Hey, Walt. Thanks for the room.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Walt waves it off."
+    },
+    {
+      "t": "say",
+      "char": "Walt",
+      "text": "You guys ready for Saturday?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse pauses for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "You knew about Saturday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Walt",
+      "text": "Carl told Nate. Nate told me at dinner Monday. The Foxhole is a real venue, Jess. You guys are — you guys are coming up. Don't make a big deal. But also — kid. That's a thing. I want you to know I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, in the kitchen, does not, immediately, know what to do with this."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Thanks, Walt.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Walt",
+      "text": "Go play. They're waiting.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse goes to the garage."
+    },
+    {
+      "t": "show",
+      "char": "carl",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "em",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Carl is at the kit. Nate is plugged in. Em is at the mic."
+    },
+    {
+      "t": "narrate",
+      "text": "Em — backing vocals, occasional keys, eighteen, the band's I am from Fort Worth energy — is the one who looks up first when Jesse comes in. Em has the small careful look on her face that Jesse has been seeing on her face for about two weeks. The look is the look of a person who has been deciding whether to say a thing and who has, on this particular Wednesday, decided."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Jesse.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Hey.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Let's run Substation Nine first. I want to get it in our hands. Then Blowback, then Grid Failure, then the new one Carl wrote, then we work on the set order for Saturday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She is, Jesse registers, running the practice. She has not, in the past four months, run a practice. She has, all summer, deferred to him. She is, this evening, deferring less."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, in the moment, push back."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He plugs in."
+    },
+    {
+      "t": "narrate",
+      "text": "They run Substation Nine. The song is not finished. The song's structure is — verse, chorus, verse, chorus, the lead break Jesse has been working on, a third verse, a final chorus. The lead break is the part the band has been waiting on, because the lead break is the part Jesse has been writing, and the part that Jesse has been writing is the part that, when it finally lands, will tell the band whether the song is the song."
+    },
+    {
+      "t": "narrate",
+      "text": "They play it. The lead break, tonight, is the closest it has come."
+    },
+    {
+      "t": "narrate",
+      "text": "Carl, behind the kit, hears it the way drummers hear a bandmate's improvement — by the way his own playing changes underneath it. Carl, on the second time through the break, does a small fill on the second-to-last bar that he has not done before, and the fill is — by every band member's small unspoken assent — the right fill."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Jess.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "That's the song.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Yeah. The break's there. The lyrics need one more pass. The bridge — there's no bridge. We need a bridge before Saturday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Nate",
+      "text": "We have three days.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "We have three days. Jess, can you write a bridge in three days?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse thinks."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah. I can.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Good. Then we play it Saturday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "We've never played a song this new at a show, Em. The Foxhole — that's a paying audience. We could — we could play the older stuff. We don't have to put a brand-new song into the set.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Jess. I want to put it in the set.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Why.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Em looks at him."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Because the song is the thing you have been writing all summer. Because the song is — Jess. The song is about the substation. The substation is the thing this town does not, by general agreement, talk about. The Foxhole is in New Auburn, twelve miles from the substation. The Foxhole's audience on Saturday is going to be — it's going to be people who live close enough to the substation that they will, when you sing the chorus, register what you are singing about. I want to play it for them. I want it to be the second song in the set. I want to see what the room does.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, with the Telecaster in his hands, does not, for a long moment, respond."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: Em is right."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: Em is doing, at eighteen, the thing I should, at twenty, have been doing in this band all summer."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I have been writing the song without ever saying out loud what the song is about. Em has been waiting for me to say it. Em has, tonight, decided that if I am not going to say it, she is going to make me play it for an audience."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Okay, Em. Yeah. Second in the set.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carl",
+      "text": "Cool.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Nate",
+      "text": "Bridge by Friday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Bridge by Friday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They run the rest of the set. Blowback, which Sam had requested on a Thursday in May at Jesse's garage and which has, in the months since, become the song the band uses to anchor the middle of any set. Grid Failure, which is the older song they had been touring with all spring. The new song Carl wrote, which is called Box Fan and which is — by Carl's stated intent — just about a box fan, that's it, no metaphor, leave me alone. And the cover they have been doing for two months, the Pixies' Here Comes Your Man, which is the song they always end on because Em sings the lead and because Em singing Here Comes Your Man in a small Texas venue at the end of a set has, on every previous occasion, gotten the room to applaud in the specific warm way rooms applaud when a band has, in their estimation, given them something the band did not have to give."
+    },
+    {
+      "t": "narrate",
+      "text": "By nine the set is run twice through. By nine-fifteen they are negotiating the order."
+    },
+    {
+      "t": "narrate",
+      "text": "The order Em proposes: Grid Failure (open, hard, fast), Substation Nine (the new one, second, with the audience still warm but now paying attention), Box Fan (third, lighter, gives Carl the sing-along chorus), Blowback (fourth, the slower middle), Here Comes Your Man (closer)."
+    },
+    {
+      "t": "say",
+      "char": "Nate",
+      "text": "Flip Substation Nine and Blowback.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carl",
+      "text": "Substation Nine second. Em is right. Open hard, then immediately do the weird one, then ease into the rest. The room is going to remember the second song.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Nate concedes. The set order is Grid Failure, Substation Nine, Box Fan, Blowback, Here Comes Your Man."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, in the garage, with the order written on the back of the flyer in Nate's handwriting, registers — with the small careful attention that he has, all summer, been giving to things that are not, technically, the conspiracy — that the band has, this evening, made its first set list as a band that has been booked at a venue called The Foxhole on a Saturday night for which they will, at the end of the night, be paid actual money."
+    },
+    {
+      "t": "narrate",
+      "text": "The fact lands on him. He does not, in the moment, perform the landing."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Cool. I'll have the bridge by Friday. We run it Friday at five.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The band agrees."
+    },
+    {
+      "t": "narrate",
+      "text": "Practice ends at nine forty-six. Carl breaks down the kit. Nate unplugs. Em packs her own mic, which she has, since June, been bringing to every practice in a small soft case her mother had given her at her high school graduation. They load Jesse's Telecaster and amp into Jesse's car. Carl carries his snare to his mother's car at the curb. Nate's bass stays at Nate's."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "em",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "In the driveway, while Carl is at the curb, Em comes up to Jesse."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Jess.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Substation Nine. The bridge. Don't write it about the substation.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Write the bridge about — write it about the people. Write the bridge about us. Write it about the people in this room and the people we know and the people we have, this summer, started — started taking care of, in our small ways. The verses are about the substation. The chorus is about the substation. The bridge needs to be the part where the song says — where the song says and here we are anyway. You know what I mean?",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse looks at her for a long beat."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah, Em. I know what you mean.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Okay. Good. Get sleep.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Em goes to her car."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse stands in the driveway for a minute."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, with the small surprise of a kid who has, in the past two hours, been told twice — once by Walt, once by Em — that the things he has been quietly working on are visible to other people: Em has been watching me write this song for months. Em has known what I am writing about. Em has been waiting for the bridge. Em is — Em is the band. Em is the band in a way I have not, this summer, been registering she is."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I have been writing the song. Em has been keeping the band."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, with the small careful honesty he is, this summer, occasionally able to do: I have been treating the band as the thing I get to do while I do the more important thing, which is the map. Em has been treating the band as the thing."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: Em is right."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets in the Civic. He drives home."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch14_live_oak"
+    }
+  ]
+}

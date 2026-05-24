@@ -1,0 +1,177 @@
+{
+  "id": "vol1_ch4_club_sharp",
+  "vol": 1,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Act One — Club #",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_club_sharp.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Club #",
+      "sub": "A logo from another volume",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "Joan takes Faust by the hand and leads him to a beautiful car waiting outside. They get in, tear around town, and wind up at a club in the heart of nowhere, beating with life — people overflowing from its seams."
+    },
+    {
+      "t": "narrate",
+      "text": "EXT. CLUB SHARP — NIGHT"
+    },
+    {
+      "t": "narrate",
+      "text": "Club Sharp has a # for a logo. Dickens Dean seems to have the run of the place. There is a gigantic arcade downstairs, several dance floors, and a bowling alley. Music and movement seem to flow from one area to the next."
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "joan",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "We fled worlds of ruin and decay. Making something new. Because as ideas, Joan and I were strongest."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "We were each made in some way perfect — reflecting a singular point of view."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Have you met this creator yet? And do I get my chance?"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Gosh, no. We seem to exist to please him — much as he exists to please his own creator."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "And so on, and so forth. Until we finite-loop back in on ourselves. But let's not get ahead of the narrative."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "But understand — this knowledge hides a terrible price."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Doesn't it always?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Just by coming here and meeting with us — you've begun to split your reality into many pieces. You have to be careful with this wonderful life you've been given. Respect others in your journeys. Watch for signs and patterns. And reflect inwardly as often as you can."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Insanity will try to breach your firewall. Corrupt your data. So fortify your defense."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "No joke. Mania creeps inside. So you either have to want it in you — or not."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"What if insanity was a large part of me to begin with?\"",
+          "goto": 21
+        },
+        {
+          "text": "\"Then I'll fortify. I have things to make.\"",
+          "goto": 24
+        },
+        {
+          "text": "[Say nothing. Watch the dance floors.]",
+          "goto": 27
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "What if insanity was a large part of me to begin with?"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You shouldn't joke. That's no joke."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch4_club_sharp_b"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Then I'll fortify. I have things to make. I'll guard the walls."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Good answer. Mostly."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch4_club_sharp_b"
+    },
+    {
+      "t": "narrate",
+      "text": "You watch the floors below shift and refract. The dancers are not quite synchronized but are not quite not, either. Joan lets the silence sit. Dickens Dean smiles in a register Faust has not seen."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch4_club_sharp_b"
+    }
+  ]
+}

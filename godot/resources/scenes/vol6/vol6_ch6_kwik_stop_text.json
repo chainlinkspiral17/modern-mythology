@@ -1,0 +1,105 @@
+{
+  "id": "vol6_ch6_kwik_stop_text",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — In Sixty-Two Minutes",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kwik_stop_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "In Sixty-Two Minutes",
+      "sub": "Friday — 07:30 — Kwik Stop",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam's phone buzzes. The message is from her mother."
+    },
+    {
+      "t": "say",
+      "char": "Mom",
+      "text": "He went in. They're in the room together. Lawyer's there. I'm going to be okay. Eat lunch. Dad sends his love.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam reads it twice. She types back."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I love him too. Tell him.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mom",
+      "text": "I will, baby. Ramirez says he'll have him home by 5. We're having dinner together tonight. All three of us. He wants to.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "ok mom. love you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mom",
+      "text": "love you, baby.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam puts the phone face-down on the counter. She picks up the rag. She wipes the counter. A customer comes in — an older man, regular, wants two scratch-offs and a coffee. She rings him up. She hands him his coffee. He says, \"Thanks, miss.\" He leaves."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts the rag down. She looks out the window at the parking lot. The white sedan is not there. The white sedan is, she now knows, ninety-eight miles west, at a NexCorp fueling station, doing whatever Claire is doing."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "I do not know how this morning will end. I know my father is, right now, choosing the worse and harder thing. I know Diego is somewhere west of me being driven, at this moment, by a man whose name I do not know. I know the four of my friends are at their stations doing the small ordinary work of being teenagers in a Texas town on a Friday in late May."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "The older system has, this morning, sent me to the Kwik Stop to be the visible safe daughter. The older system has a sense of irony."
+    },
+    {
+      "t": "narrate",
+      "text": "She rings up another customer."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_fueling_station"
+    }
+  ]
+}

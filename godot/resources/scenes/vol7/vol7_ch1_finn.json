@@ -1,0 +1,261 @@
+{
+  "id": "vol7_ch1_finn",
+  "vol": 7,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "Ch 1 — Finn",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Finn",
+      "sub": "2:14 PM — The Cabin",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The hours between ten-thirty and two went slowly."
+    },
+    {
+      "t": "narrate",
+      "text": "The three of them did the things people do at a cabin in the rain in the middle of a Thursday morning. Tem read from the John Frank novel for an hour at the small wooden table beside the kerosene lamp; Lena, in the second chair, watched the cedars through the south-facing window and let her own thoughts settle into something she could carry; Kai, who had for the first hour tried to play one of the slow sticks Tem had brought up and had given up after twenty minutes because his hands were not, this morning, doing what he wanted them to do, sat on the daybed and turned a small piece of cedar over and over in his hands like a worry-stone."
+    },
+    {
+      "t": "narrate",
+      "text": "At eleven-forty Tem made a second breakfast — toast, jam, the last of the coffee, slices of the apple Lena had brought up Wednesday. They ate at the table without conversation. The conversation that had needed to happen had happened."
+    },
+    {
+      "t": "narrate",
+      "text": "At twelve-twenty the rain briefly thinned."
+    },
+    {
+      "t": "narrate",
+      "text": "At twelve-twenty-five it thickened again."
+    },
+    {
+      "t": "narrate",
+      "text": "At one-oh-eight Tem's phone buzzed. She looked at it. She said: \"Finn passed the second creek crossing. He's an hour out. The road is holding.\""
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "The crow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "He says the crow has been on the dashboard since he left the headland. The crow has not moved.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Did he say the crow has done anything specific.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tem looked at her phone again."
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "He says — and I am reading this exactly — the crow has been looking at me like it is waiting for me to remember something.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Finn arrived at two-fourteen."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The truck pulled up to the small gravel turnaround in front of the cabin's porch. The truck was an older Toyota that had belonged to Finn's grandfather and that Finn had, since 2048, been keeping running at the small expense his organic-co-op income could afford. The headlights through the rain swung across the cedars at the side of the cabin, steadied on the porch, cut."
+    },
+    {
+      "t": "narrate",
+      "text": "The driver's door opened."
+    },
+    {
+      "t": "narrate",
+      "text": "Finn got out."
+    },
+    {
+      "t": "narrate",
+      "text": "He was in the wet thrift-store coat that had been his sister's, the small wool cap his mother had knitted him in 2049, the boots the locals all wore. He had a duffel bag in his left hand. He was holding his right hand close to his chest."
+    },
+    {
+      "t": "narrate",
+      "text": "On the dashboard inside the truck, visible through the windshield, the crow stood with its wings half-spread, looking at the cabin."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Tem opened the cabin door."
+    },
+    {
+      "t": "narrate",
+      "text": "Lena, behind her, came to the door and stood beside her in the small entry."
+    },
+    {
+      "t": "narrate",
+      "text": "Kai, behind both of them, was on the daybed and did not, for the moment, get up."
+    },
+    {
+      "t": "narrate",
+      "text": "Finn came up the porch steps."
+    },
+    {
+      "t": "narrate",
+      "text": "He did not, immediately, speak. He looked at Tem. He looked at Lena. He looked past them into the cabin at Kai. He registered the three of them."
+    },
+    {
+      "t": "say",
+      "char": "finn",
+      "name": "Finn",
+      "text": "Sorry I'm late.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "You're not.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "finn",
+      "name": "Finn",
+      "text": "There's — I have to tell you. The crow on the way up — the crow gave me something.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He held up the right hand he had been holding close to his chest."
+    },
+    {
+      "t": "narrate",
+      "text": "In his palm was a small piece of charred wood. The wood was about three inches long, irregular, the edges burnt black, the grain visible in the unburnt parts. The grain was yellow in a way the local woods were not. Lena, looking at it, registered the yellow as wrong before she registered anything else."
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Finn.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "finn",
+      "name": "Finn",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Get out of the rain, Finn.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She stepped back from the door."
+    },
+    {
+      "t": "narrate",
+      "text": "Finn came inside."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow on the dashboard of the truck stayed where it was."
+    },
+    {
+      "t": "narrate",
+      "text": "The rain continued."
+    },
+    {
+      "t": "narrate",
+      "text": "The cabin held them."
+    },
+    {
+      "t": "narrate",
+      "text": "The four of them sat at the small wooden table."
+    },
+    {
+      "t": "narrate",
+      "text": "The piece of charred wood lay on the table between them, on the small folded cloth Tem had set down for it. The kerosene lamp was lit, this afternoon, against the rain-darkened light. The cabin was at sixty-three degrees by the thermometer."
+    },
+    {
+      "t": "narrate",
+      "text": "Tem looked at the wood for a long time."
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, after the okay, say anything else."
+    },
+    {
+      "t": "narrate",
+      "text": "Lena and Kai and Finn watched her."
+    },
+    {
+      "t": "narrate",
+      "text": "The rain continued."
+    },
+    {
+      "t": "narrate",
+      "text": "After a while Lena got up and put the kettle back on."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

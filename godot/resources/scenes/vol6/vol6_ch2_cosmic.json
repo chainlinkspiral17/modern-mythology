@@ -1,0 +1,398 @@
+{
+  "id": "vol6_ch2_cosmic",
+  "vol": 6,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Ch 2 — Cosmic Comics",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_comics.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Cosmic Comics",
+      "sub": "Linden Strip Mall · Monday · 11:38",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is at the counter when the bell above the door chimes."
+    },
+    {
+      "t": "narrate",
+      "text": "She has been re-alphabetizing the indie rack since ten. Rick had not asked her to. Rick was, in fact, napping in the back office when she'd come in at nine-forty-five with two iced coffees from the Kwik Stop — one for him, one for her — and had set his on the counter and gone to the indie rack without a word."
+    },
+    {
+      "t": "narrate",
+      "text": "Rick had not woken up for another forty minutes. When he had, he had come out of the back office, nodded at the coffee, nodded at Maya, taken his coffee, and returned to the office to do whatever it was Rick did in the office when the store was quiet, which was, as far as Maya could tell, mostly sit."
+    },
+    {
+      "t": "narrate",
+      "text": "The bell chimes. A woman Maya does not recognize comes in."
+    },
+    {
+      "t": "show",
+      "char": "reporter",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She is maybe thirty. Dark hair, shoulder-length, pulled back with the small practical tension of somebody who does not like it in her face. She is wearing a press lanyard on a blue cord. The lanyard says HOUSTON CHRONICLE."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya straightens up behind the counter."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Morning. Can I help you?\""
+    },
+    {
+      "t": "say",
+      "char": "Reporter",
+      "role": "— Houston Chronicle —",
+      "expr": "neutral",
+      "text": "\"Hi. Is Rick in?\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"He's in the back. Can I tell him who's asking?\""
+    },
+    {
+      "t": "say",
+      "char": "Reporter",
+      "role": "— Houston Chronicle —",
+      "expr": "neutral",
+      "text": "\"Yeah. Tell him it's the friend of the friend. From the piece.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Maya looks at her. The woman's face is neutral."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"One second.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She goes to the back office. Rick is at the desk, reading the Love and Rockets volume again. He has been reading that specific volume for three days now. Maya has noticed."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "rick",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Rick. Someone's here to see you. She said to tell you she's the friend of the friend. From the piece.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Rick does not look up from Love and Rockets for two full seconds. When he does, his face has done the small thing faces do when a person who has been waiting for a specific knock at the door has just heard it."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Okay, kiddo. Send her back.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Is she —\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"She's fine. She's a reporter. She's following a thing. She's not a threat. Send her back. Then stay at the counter until she leaves. If anybody else walks in while she's here, tap the glass twice with your key. Got it?\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Thanks, kiddo.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Maya returns to the front. She gestures the woman through. The woman follows, nods at Maya once in thanks, and disappears into the back."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya returns to the indie rack."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, immediately, resume alphabetizing. She stands at the rack and reads, without reading, the spines of a short run of small-press books she has already sorted."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks — with the small careful attention she has been training herself into for the past six weeks — about the press lanyard, about the phrase friend of the friend, about the piece, about Rick's face."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "Rick is a node. My grandmother is a node. F.T. is a node. Whatever the network is, it has already been running in this town before I got here. I have been inserted into it. I do not yet know what my own position is."
+    },
+    {
+      "t": "narrate",
+      "text": "She returns to alphabetizing. Twenty minutes later, the reporter leaves. She nods at Maya again on the way out. She does not speak. The bell chimes."
+    },
+    {
+      "t": "narrate",
+      "text": "Rick does not come out of the back office."
+    },
+    {
+      "t": "interlude",
+      "text": "12:02",
+      "sub": "Rick emerges",
+      "duration": 1600
+    },
+    {
+      "t": "show",
+      "char": "rick",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "At 12:02, Rick finally emerges. He looks older than he had at nine. He crosses to the counter. He says, in the small careful voice he uses for things he means:"
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Maya, kiddo. I need to ask you something. You don't have to answer. If you say no, I'll drop it.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Has F.T. talked to you yet?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Maya looks at him."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "This is the test. He already knows. The question is whether I lie or tell the truth."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Yeah. Yesterday afternoon.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Rick nods, slowly. He seems to have expected that answer, and to have nonetheless been bracing for it."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"What did he tell you.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Three things. He said Diego is alive. He said the water tower is rebroadcasting my grandmother's shortwave. And he said my dad is the reason F.T. can reach me.\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Is that true?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Rick is quiet."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Yes. All three. Your dad is — your dad is not in a good place, Maya. But before he wasn't in a good place, he spent a long time making sure that if he ever wasn't in a good place, there would be people around you who could be. I am one of those people. F.T. is another. Your grandmother knew some of this before you came. Not all. Enough.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Who is F.T.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Rick looks at her. He looks at her for a long time."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"That's a question you're going to have to ask him yourself, kiddo. I'm not allowed to answer it for him. I can tell you he's a friend. I can tell you he's been watching this town for longer than I have. I can tell you he's doing what he can from where he is. That's what I've got.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Where is he.\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Same answer.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Rick.\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Kiddo.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Rick nods. He puts his hand, briefly, on the counter between them — not on hers, not quite touching, just present. Then he moves it. Then he says, in his normal voice:"
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Take lunch early. There's a bookstore in New Auburn called The Bindery. It's owned by a guy named Hal. Hal is a friend of mine. Go in. Ask for the Borges section. Pick up the copy of Labyrinths on the third shelf from the top. Inside there will be an envelope. Bring the envelope back. Don't open it. Bring me my sandwich from the deli across the street while you're there. Turkey, no mayo, extra pickle. Here's twenty for the sandwich and the gas.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He hands her a twenty. Maya takes it."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"New Auburn's forty minutes each way, Rick.\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"I know. I'm giving you the afternoon. Close the store when you get back and take off. I'll settle up with you Friday.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Maya.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"You're doing fine, kid. Better than fine. Just keep noticing.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"That's what he said, too.\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Yeah. He would.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She leaves. The bell chimes as she goes."
+    },
+    {
+      "t": "flag",
+      "key": "maya_knows_ft",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch2_pit_stop_kitchen"
+    }
+  ]
+}

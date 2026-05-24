@@ -1,0 +1,302 @@
+{
+  "id": "vol6_ch18_letter",
+  "vol": 6,
+  "chapter": 18,
+  "type": "chapter",
+  "title": "Ch 18 — The Letter",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_diego_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Letter",
+      "sub": "Friday — 09:00 — Home",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "He showers."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls the regular curtains in his bedroom — not the blackout ones, those are for the Saturday sleep. Today is Friday, and Friday's sleep is the shorter sleep, the one he gets between nine and three before the Friday evening."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets into bed in shorts and a t-shirt."
+    },
+    {
+      "t": "narrate",
+      "text": "The room, in the daylight through the regular curtains, is dimmer than the day outside but not, by mid-August Texas standards, fully dim."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps at nine."
+    },
+    {
+      "t": "narrate",
+      "text": "He dreams of the stockroom."
+    },
+    {
+      "t": "narrate",
+      "text": "The dream is the stockroom at two-fifteen, with the fluorescents and the bale and the pile of pallets to his right. He is standing at the bale with his hand on its side, the way he had been standing at the bale in real time. The dream version of him is registering, again, the absence of the watcher. The dream version is registering it the way the real him had not been able to in the moment — calmly, with the small calm that comes when a thing has happened once and the body remembers it can."
+    },
+    {
+      "t": "narrate",
+      "text": "In the dream he is alone."
+    },
+    {
+      "t": "narrate",
+      "text": "The dream is, by what he will recognize in the months after this dream, a return."
+    },
+    {
+      "t": "narrate",
+      "text": "The dream is: I have been here once before. I can come back."
+    },
+    {
+      "t": "narrate",
+      "text": "He wakes at three eleven."
+    },
+    {
+      "t": "narrate",
+      "text": "He lies on his back for a minute. The room is dim. The clock on the dresser says three eleven. He has, by the math he is now able to do without effort, slept six hours and eleven minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets up."
+    },
+    {
+      "t": "narrate",
+      "text": "At three forty-five he writes the letter to his father."
+    },
+    {
+      "t": "narrate",
+      "text": "He writes at the small desk that has been his desk since he was nine. He writes on a piece of plain white printer paper from the printer in his grandmother's office. He writes in pen — the blue pen his grandmother keeps in the kitchen drawer with the bills."
+    },
+    {
+      "t": "narrate",
+      "text": "The letter is fourteen lines."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not write what he has been thinking about."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not write: I am thinking about coming to see you."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not write: I have been carrying something this year."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not write: I am sixteen and I am, by some measure I do not entirely understand, starting to get better."
+    },
+    {
+      "t": "narrate",
+      "text": "He writes:"
+    },
+    {
+      "t": "narrate",
+      "text": "*Papá.*"
+    },
+    {
+      "t": "narrate",
+      "text": "*I am thinking about you. I have been working a job this summer at a grocery store. The night shift. The work is good. The team is good. My grandmother is well. School starts in three weeks. I am — I am getting through the summer.*"
+    },
+    {
+      "t": "narrate",
+      "text": "*I would like to hear from you. Tell me about the town. Tell me about the work. Tell me about anything you want to. I have not heard your voice in some time.*"
+    },
+    {
+      "t": "narrate",
+      "text": "*I am going to write again. If you would like to write back, that would mean a lot. If you cannot, I will keep writing anyway.*"
+    },
+    {
+      "t": "narrate",
+      "text": "*Yo te quiero, Papá.*"
+    },
+    {
+      "t": "narrate",
+      "text": "*Tu hijo, Diego.*"
+    },
+    {
+      "t": "narrate",
+      "text": "He reads it."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not change anything."
+    },
+    {
+      "t": "narrate",
+      "text": "He folds it. He puts it in a plain white envelope from the box of envelopes his grandmother keeps in the drawer with the bills. He writes the address on the envelope — the small house in San Luis Potosí his father has been at since 2017, the address his aunt in Monterrey had sent him in July."
+    },
+    {
+      "t": "narrate",
+      "text": "He sets the envelope on the corner of the desk."
+    },
+    {
+      "t": "narrate",
+      "text": "He will mail it Wednesday from the small postal annex on Magnolia, three blocks away, where the international mailbox is by the door and where he can drop the letter without having to interact with the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "He stands at the desk a moment."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at the envelope."
+    },
+    {
+      "t": "narrate",
+      "text": "The first one is going Wednesday. The second one will go in two weeks. The third one — the one that asks — will go in October."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns off the lamp. He goes downstairs."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_grandmother_kitchen_morning.jpg"
+    },
+    {
+      "t": "show",
+      "char": "abuela",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "His grandmother is in the kitchen making the early dinner. The kitchen smells of onions and the small bay leaf she uses in *caldo*. She is at the stove with her back to him. She does not turn when he comes in."
+    },
+    {
+      "t": "say",
+      "char": "abuela",
+      "text": "*The letter.*",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He stops in the doorway."
+    },
+    {
+      "t": "say",
+      "char": "diego",
+      "text": "*Yes.*",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "abuela",
+      "text": "*I saw the envelope on your desk when I went up at three thirty to put your laundry on the bed. I did not, mijo, read the letter. I saw only the envelope and the address. I am going to ask you one question.*",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He waits."
+    },
+    {
+      "t": "say",
+      "char": "abuela",
+      "text": "*Did you write what you wanted to write.*",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "diego",
+      "text": "*Yes, abuela.*",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "abuela",
+      "text": "*Good.*",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "She stirs the *caldo*."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits at the table."
+    },
+    {
+      "t": "narrate",
+      "text": "She brings him a small bowl of the *caldo* with a piece of bread on the side. She brings him a glass of water. She sits, today, with him — Friday-evening-before-Saturday-inventory is, this week only, a sitting evening, because tonight is the night before the long Saturday."
+    },
+    {
+      "t": "narrate",
+      "text": "She watches him eat the first spoonful."
+    },
+    {
+      "t": "say",
+      "char": "abuela",
+      "text": "*The watcher in your head. He has been quieter today.*",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks up."
+    },
+    {
+      "t": "say",
+      "char": "abuela",
+      "text": "*I do not know what the watcher is. I have known, since June, that you have one. I have been waiting for the day you would come home from a shift and the watcher would be quieter. Today is the day. The first day. There will be other days.*",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "diego",
+      "text": "*Abuela.*",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "abuela",
+      "text": "*Eat your caldo, mijo.*",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He eats."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, the rest of the evening, ask anything more."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

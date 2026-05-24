@@ -1,0 +1,1081 @@
+{
+  "id": "vol7_ch10_morning",
+  "vol": 7,
+  "chapter": 10,
+  "type": "chapter",
+  "title": "Wednesday Morning",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_lena_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 10",
+      "sub": "Wednesday Morning",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Kai woke at five-forty on the floor of Lena's living room. He had not, in three years, slept on the floor of her apartment. The floor was new because the couch had Finn on it and the bed had Lena and Tem. He had put the braided rag rug from in front of the sink under his hip and a rolled-up sweater under his neck and the wool blanket Lena had pulled from the closet over the rest of him. He had slept five hours.",
+      "t": "narrate"
+    },
+    {
+      "text": "He lay on his back a minute and looked at the ceiling. The ceiling had three water stains in a configuration Lena had once explained was proof her upstairs neighbor's bathtub leaked at the back-right corner of its drain ring. The stains had been there since 2050. The leak had been fixed in 2051. The stains had not been painted over because Lena had said, the night she told him, that painting them over would be a lie she did not want to live with.",
+      "t": "narrate"
+    },
+    {
+      "text": "He could hear, from the bedroom, Lena's breath and Tem's. The two of them had gone to bed at maybe eleven-thirty. Lena had been at the bedroom door for a beat looking back at the three of them and had said: all right, we're going to sleep, knock if you need us. The we in we're going to sleep had been the we of a couple four days old, and Kai had heard it and not commented.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn on the couch was, by what Kai could see, also awake. Finn was on his back with his hands folded across his chest. Finn's eyes were closed. Finn's breath was the breath of a person who was awake and pretending not to be.",
+      "t": "narrate"
+    },
+    {
+      "text": "The patch on the Starfish Nebula mural was not visible from his position on the floor. At one in the morning before he had lain down he had gone to the window with a glass of water and looked. The fourth patch had grown overnight. The octopus had been gone since Monday by Lena's account. The patch now was past where the octopus had been, into the section where Lena had painted a triangular kite of starfish over what was meant to be a tide pool. The kite was, in the orange of the laundromat's safety light, half-eaten.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had stood at the window with the water for some minutes. He had drunk the water. He had gone back to the rug.",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat up. The light at five-forty through the kitchen window made the apartment look like the apartment of a person he did not know. He stood up. He folded the rug back to its place in front of the sink. He folded the blanket. He set the sweater on the arm of the couch beside Finn.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Finn opened his eyes when the sweater hit the arm.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Hey.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hey, Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You haven't slept.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Not since two.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You okay?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I'm okay. I was lying here listening to the rain.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "What time.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Five-forty.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn sat up. He pulled the blanket off himself and folded it the way of a person who had grown up in a house where the blankets were a shared resource and the folding mattered. He set the folded blanket on the back of the couch.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai went to the kitchen. He put the kettle on. The kettle was the steel one Lena had bought at Margit's two summers ago for nine tokens. She had told him once that it was the kettle her grandmother had used in Salem when Lena was a child. He pulled the cone filter down from the shelf above the stove and the bag of the dark French from the cabinet. He measured the beans. He ground them in the hand grinder Lena kept on the counter — a thing he had never used and had to figure out by holding it briefly before he started — and his hands at the grinder were, this morning, steady in a way they had not been on Tuesday at the bench.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Smells right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "You want eggs.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'll do them. You're doing coffee.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn opened the fridge. There were four eggs in the carton on the second shelf and the small block of cheddar Lena bought from the cheese-factory truck on Wednesdays. He took the eggs. He took the cheese. He took the heel of a loaf that had to be Hans's bread by the way it was wrapped. He put the cast iron on the stove. He turned the burner. The kettle came up at five fifty-eight.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai poured. He brought one cup to the bedroom door and stood there a beat without knocking and decided against. He set the cup on the side table outside the bedroom where Lena kept the lamp she did not use. The lamp had not been used since he had been coming over. He set the cup beside the lamp and went back to the kitchen.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Lena's awake.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "How can you tell.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Heard the bed when she rolled over a minute ago. She'll come out before the eggs are done.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "She came out at six-oh-three. Lena was in the flannel she had been in last night and the wool socks. Her hair was pulled back. She came into the kitchen, saw the cup outside the bedroom door, picked it up, walked to the chair by the window, sat down, drank.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Thanks.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem's asleep. She'll be up in twenty.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Eggs in five.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Hi, Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Hi, Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The three of them did not, for a while, talk. The rain on the roof had thinned since two-something in the morning. The kitchen window was the same gray-blue as the ceiling stains. Kai could hear the early traffic on Hemlock. Finn served the eggs to the small plates Lena pulled down for him. He cut three pieces of bread from the heel and put them on the plates. He grated some of the cheddar over the eggs. He brought the plates to the table by the window.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai poured himself a cup and sat at the table. Lena moved over from the chair. Finn brought his plate. The three of them ate.",
+      "t": "narrate"
+    },
+    {
+      "text": "After the eggs Lena got up to make more coffee. She stood at the counter with her back to them and worked the cone and the kettle. She did not, for a long count, say anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I had it again.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The octopus.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Forty-three this time. From the moment I woke up until I sat up. It was just there. I was not writing it down, but the count was — the count was just there in my head, the way a song is in your head when you wake up and you cannot make it stop. Forty-three by the time my feet were on the floor.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She did not turn. She kept her hands on the cone.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "It used to be the word. Now it's the count. The number forty-three was the thing I woke up with. Not the word. Just the number that the word would have been if I had been writing it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Have you been writing it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Not since the drive up. I have not written it once in the apartment in six days. I have been — I have been letting myself not. The count came anyway. The count was the count of what I would have been writing if I had been doing the thing the substrate wanted me to do.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She poured. She came back to the table with the second pot.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Tem said the leak takes the shape of the thing each of us already had inside. The thing I had inside was the count, apparently. Not the word. The word was the shape the count took the first time. Now the count is happening without the word.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Lena. That's a — that's a change.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You should tell Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm going to tell Tem. I was telling you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The three of them were quiet again.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I dreamed the crow last night.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tell us.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The crow was in a room I have not been in. The room was — it was the kind of room a person has been in but a person has not been in for a long time. The kind of room where the dust on the windowsill is older than the wallpaper. The crow was on a chair in the middle of the room and the crow was waiting. I came into the room. The crow looked at me. The crow said — the crow said a thing I cannot remember now. The thing was a word. The word was not English. I do not — I do not speak the word. The crow said the word twice. Then the dream was over.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The crow has been saying words to you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Not until last night. The crow at the apartment has not said anything in nine months. The dream was the first time.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "What are you going to do.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I am going to drive to Cape Perpetua tomorrow. The crow's been on the dashboard since I got here. I'll bring the crow. I'll bring the wood. I'll walk the headland trail. If the crow says the word again, the crow says it. If the crow does not say it, the crow does not. I am going to let the crow tell me what comes next.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tomorrow.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tomorrow.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Why not today.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Because today the four of us need to be in a room together. I cannot drive out of town today and leave you to figure out the rest. Tomorrow.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn said, \"Kai. What about you.\" Kai did not, for a beat, answer. He had been waiting for one of them to ask since he had come into the apartment at midnight and had not been able, when Tem had asked him at the door how he was, to say.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "I want to play the stick.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The two of them looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "One of the sticks Tem brought to the cabin. I tried last Thursday and gave up at twenty minutes because my hands were not doing what I wanted them to. I want to try again. The ferret in the dream is — the ferret is louder this week than last. The basement is louder. The talking is louder. I keep — I keep going to the dream and I keep not getting where the dream is taking me. I want to take the dream as far as it goes. The stick is — the stick is the way.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem said the substrate is leaking. Tem said the leak is what's been doing this to us. Playing the stick is — playing the stick is putting yourself further into the substrate. Are you sure that is the right way.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "No.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I am not sure. I am — I am not. I have been thinking about it since Saturday. The ferret is not stopping. The basement is not stopping. The talking is not stopping. The substrate is doing what the substrate is doing whether I play the stick or not. The stick is the only thing I have not tried. I want to try.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "When.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "This afternoon. I want to go up to the cabin after the bakery is open. I want Tem to be there with me when I play. The reader is at the cabin. The sticks are at the cabin.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem and the cabin.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah, Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You should come up. After the Grind closes. You and Finn. Be there for the after part. The way Tem was for me when she texted us on Saturday. Be there for the after.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She did not, for a count, respond.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I will.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You'll come up.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I'll come up.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Tem came out at six-twenty-two. She was in the wool sweater she had been in yesterday and the jeans and the wool socks. The blue of her hair had faded a little more since Tuesday — the gray that had been at the edges Sunday was now most of the way through. The leather thong was holding the dreads back. She came into the kitchen and stopped at the doorway and looked at the three of them at the table.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "text": "I missed the eggs.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "There's a piece of bread left.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I'll have it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She came to the table. Lena got up and got her a cup and poured. Tem sat in the chair Lena had been in. Lena stood by the kitchen counter behind her. The four of them looked at each other.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Kai is going to play the stick.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You decided that on the drive down from Tuesday night, or this morning.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "This morning. Just now.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She drank from the cup.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "All right. Which stick.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Whichever one you tell me to.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I'll tell you when we get to the cabin. I want to think about it during the drive. It matters which one. The wrong one would be a waste of the playing.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Lena and Finn after work.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You'll be at the cabin when he comes out.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She looked at Lena.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "You all right with this.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem. I'm — I am scared for him. I am also — I am also at the place where what I think doesn't matter. The ferret is not stopping. The substrate is not stopping. Kai is going to do what Kai is going to do. I am all right with it because there is not a version of this morning where I am not.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She drank from the cup again. She picked up the piece of bread that was left and ate it without butter.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "The patches.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The kite is half gone. The patch from the octopus is into the kite now. By tomorrow it'll be into the section with the radio tower.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "And the sanderling across from Board Lords.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I haven't looked this morning. I'll look on the way to the shop.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Are you opening the shop.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm opening it. Sunday and Monday closed was enough. Today I open. I'll do the morning and then I'll drive up at eleven. The shop closes at eleven on Wednesdays and I'm not staying past.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah, Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "What is the stick going to be like.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Tem held the cup in both hands.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Kai. I am not going to be able to tell you. I have played a number of sticks for a number of years. They are different every time. The sticks I have played twice have been different the second time. The sticks I have played five times have been different the fifth time than the second. The stick I have been playing for the past three weeks — Estuary 7 — has become a thing I do not have words for, partly because what is happening in it has been about me, and the playing of a stick is one of the more private things a person can do, and partly because the substrate in it has been doing what it has been doing since the second week of July. I am not the person to tell you what the stick is going to be like. I am going to tell you what I can. I am going to be in the room when you come out. I am going to ask you what you saw. I am going to listen. I am going to not, when you tell me what you saw, tell you what I have seen. We are going to do this one stick at a time. We are going to do it as carefully as I know how to do it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Kai.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You should know that the sticks are not, in the place we are about to put you, safe. People who play sticks the way the people who really play them play them have come out of sticks — have come out of experiences — having lost time. Having lost weight. Having had relationships they were in dissolve over the next six months because the people they came out as were not, by every measure that mattered to the people who loved them, the same people who went in. The sticks are popular because the experiences in them are extraordinary. The experiences are extraordinary because the substrate gives them. The substrate gives them by taking. The taking is what we are walking you into.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I would not, if you were not already in the substrate up to your collar by virtue of the ferret in the dream, recommend the playing. I am recommending the playing because the substrate has decided you are in this whether or not you sit down with the stick. The sitting down with the stick is — the sitting down is the version of being-in-this where you have a chair and a reader and a person in the room with you. I am the person in the room with you. The chair is the chair at the cabin in front of the wood stove. The reader is the reader my grandfather kept at the cabin from 2042 until I inherited it in 2046. The reader is a good reader. The reader is not, by anything I know, the source of the trouble. The trouble is the substrate. The reader is just the door.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You have been thinking about this for some time.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have been thinking about you playing a stick since 2050.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Jesus.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have not, in those two years, recommended it. I have been waiting for the moment you needed it. The moment is this Wednesday morning. I am — I am sorry it has been the moment for some time and I did not tell you. I did not know how to tell you. The not-knowing-how was my failure, and I am holding it, and I am going to tell you everything I should have told you over the past two years on the drive up. We have an hour. I will use the hour.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Tem went into the bathroom at six-forty. The shower came on. The pipes did the low knocking that Lena had told him once was something to do with the water-pressure tank in the building's basement and was, by the landlord's calculation, not worth fixing because the building was a hundred and four years old and there were eight other plumbing problems ahead of it on the list.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I want to come up to the cabin now.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He looked at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Not after work. Now.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I know. The Grind. Soren is sick anyway. Wren comes in at six-eleven on Fridays and it's Wednesday. The morning rush is the cortado man and the woman with the syrup question and the brother-and-sister pair to the bus, and they can have their day at the Charging Station for once. I'll text Soren that I'm sick. I'll text Petra. I want to come up with you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You haven't slept.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Neither have you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I slept five hours.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I slept six. I'm fine. I want to come up.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He looked at Finn.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I think you should let her come up.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tem said you'll be at the cabin when I come out. She said you. You and Finn after work. That's what Tem said.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem said that ten minutes ago when she did not know I had had the count for forty-three this morning. I want to come up. I am — I am asking. I am not asking you. I am telling you what I want, and I am asking myself, and I am deciding.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "You should tell Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'll tell her when she's out of the shower.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "At six fifty-one Tem came out of the bathroom in the wool sweater and the jeans she had been in. Her hair was wet. The blue was bluer wet than it had been dry.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Tem. I want to come up with you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Tem stopped. She looked at Lena. She looked at Kai. She looked at Finn. She looked back at Lena.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "You're not going to argue.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I'm not going to argue.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "You were going to say it was Kai's morning and the cabin was Kai's cabin and you needed to be there for him alone.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I was.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "And.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "And I changed my mind. The count's at forty-three. You're not going to sit at this apartment all day waiting. Come up.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I'll be at the apartment. I'll drive up at three after I close out at the co-op. If the crow does anything I'll come up sooner.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Drive careful.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I will.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "scene": "vol7_ch10_per",
+      "t": "jump"
+    }
+  ]
+}

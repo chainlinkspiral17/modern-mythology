@@ -1,0 +1,174 @@
+{
+  "id": "vol6_ch3_parking_lot",
+  "vol": 6,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Ch 3 — Parking Lot",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_lot.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Cosmic Comics — Parking Lot",
+      "sub": "Tuesday · 12:14",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The white sedan is parked in the lot when Sam comes out."
+    },
+    {
+      "t": "narrate",
+      "text": "The driver — the woman with the HOUSTON CHRONICLE lanyard — is alone. She does not make eye contact as Sam crosses the lot. She is reading something on a tablet."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam gets into the Corolla. She pulls out. She does not look at the sedan as she passes. In the rearview, just before she turns onto Linden, she sees the sedan pull out behind her."
+    },
+    {
+      "t": "narrate",
+      "text": "The sedan takes the left turn Sam takes. The sedan stays three cars back for the entire five-minute drive to the Kwik Stop — where Sam is not scheduled but where she is going anyway, because she has decided she wants Jen to see her with her hair up and her eyes clear and her back straight, so that Jen knows, without being told, that Sam has heard her."
+    },
+    {
+      "t": "narrate",
+      "text": "When Sam parks at the Kwik Stop, the sedan does not park. It drives past, turns at the next intersection, and is gone."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kwikstop_interior.jpg"
+    },
+    {
+      "t": "show",
+      "char": "jen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam goes inside. Jen is at the register. Jen sees her."
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "\"You're not on.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"I know.\""
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "\"You want a shift?\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"No. I want a slushie. Blue.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Jen looks at her for a long moment."
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "\"On the house.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam makes the slushie. She pays anyway — a dollar seventy-nine in cash. Jen takes it without comment. Jen puts the cash in her tip cup instead of the register."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam drinks the slushie at one of the three tables by the window. She reads the day-old paper Jen has folded there. The paper is running a feature on local high school sports banquets."
+    },
+    {
+      "t": "narrate",
+      "text": "At 12:31, her phone buzzes."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "role": "— text · 12:31 —",
+      "expr": "neutral",
+      "text": "Where you at, Sammy?"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "Kwik Stop. Got a slushie."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "Okay. Be careful driving home. Lot of construction on Linden."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "Will do."
+    },
+    {
+      "t": "narrate",
+      "text": "She finishes the slushie. She drops the cup in the trash. She waves at Jen. She leaves."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "There is no construction on Linden. She drives it anyway. She notices, at the intersection with Fifth, a NexCorp van parked at the corner lot of a dental office that is closed on Tuesdays. The van's engine is running. The van is facing her direction."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not slow down. She does not speed up. She drives the posted limit."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "Maya is right. I am going to be fast when I decide. I am not deciding today."
+    },
+    {
+      "t": "narrate",
+      "text": "She drives home."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch3_pit_stop_office"
+    }
+  ]
+}

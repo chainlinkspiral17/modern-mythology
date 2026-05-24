@@ -1,0 +1,487 @@
+{
+  "id": "vol7_ch12_kai",
+  "vol": 7,
+  "chapter": 12,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 12",
+      "sub": "Thursday Afternoon",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "He left at ten-thirty. He had drunk the coffee. He had eaten a piece of bread Lena had cut for him. He had taken the eighth piece back into the canvas bag with the rest of the hexagon, because he had to take it to Kai before he went home.",
+      "t": "narrate"
+    },
+    {
+      "text": "He drove the three blocks to Board Lords. Kai was at the counter. There was a kid in the back of the shop on the bench by the front window with a board across his lap. Finn waved at Kai from the door and held up the canvas bag and pointed to the back office. Kai held up two fingers. Finn went to the back office.",
+      "t": "narrate"
+    },
+    {
+      "text": "The back office was the back office. Devon's old desk against the wall, a chair Devon had also left, two cardboard boxes of bearings on the floor. Finn sat at the chair. He took the cloth out of the bag. He laid the hexagon on the desk.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai came in two minutes later. Kai closed the door behind him. Kai looked at the desk.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "That's — that's the same face.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah. I went to Lena's first. She — she said. She said she's going to paint the face into the alley wall tonight. Where the substrate has been eating.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Olaf's hand.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "On the cedar in the middle.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai sat down on the box of bearings. He put his elbows on his knees. He looked at the hexagon for a long count.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "The crow said her name.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "At the headland.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "At the headland.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "And Brandon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "And Brandon. Before Aria.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai nodded.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I am — I am going to tell you a thing I did not, last night, tell Lena on the phone. I will tell her tonight at the cabin. I am telling you now because you are the one with the crow and the wood and the face and you should know first.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The bowl the substrate carved yesterday — the second bowl, the one with the updated imagery — the bowl is moving.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Moving.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The figures on the bowl are moving. Slowly. By a quarter inch at a time. The crow's head moved a few degrees in the time we ate dinner last night. The young woman walked past the stenciled doorway by maybe an inch over six hours.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The substrate carved the bowl and the substrate is — the substrate is keeping the bowl running. The bowl is — the bowl is a kind of animation. The figures are not staying where Olaf would have put them. The figures are moving as the substrate listens.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Kai.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The cedar face in the middle of the hexagon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The face turned this morning.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Turned.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Lena held the piece up to her kitchen window. The face — the face turned toward the Starfish Nebula. The closed eyes did not open. The face turned its angle.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I — Kai, the cedar is doing what the bowl is doing. Slow. Patient. Beyond the attention of a person who is not looking. Lena saw.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Kai sat with that.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Finn. The substrate has crossed the line.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The substrate is not — the substrate is not waiting anymore for the slow-sticks to be the door. The substrate is making the wood do the moving.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The substrate is — the substrate is operating on objects in the room. The substrate is in the room with us. The substrate has been in the room with us since the bowl on Tem's shelf went warm in July, and we have been figuring out at what speed the substrate is making things happen.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "And the speed today is — Finn, the speed today is faster than yesterday.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tonight at the cabin.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Five.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Five. Marina's coming in at ten.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah, Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The crow has been bringing me wood for nine months. Today is the day the crow finished. Today is the day the hexagon completes. Today is the day the cedar face is at the center.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Today is the day the crow speaks. The crow finishing — the crow finishing is the crow telling me the crow is done. The crow is — the crow has done what Brandon left it with me to do.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The crow brought me her face. The crow brought me her name.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "What's the crow going to do now.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I don't know. The crow is on the dashboard of the truck in your parking lot. I — I am going to take the crow with me to the cabin. I am going to see what the crow does when we get there.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He stood up.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Five. Cabin.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Five. Cabin.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Thank you for driving down to Lena's first.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "You're the second stop.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I know. Thank you for the order.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn folded the cloth. He put the hexagon back in the canvas bag. He left the office. He went out through the shop. The kid was still on the bench with the board. Kai was already moving toward the counter to take the kid's repair.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn went out. The crow was on the dashboard. He got in the truck. He drove home.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_finn_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "He was at his apartment at eleven-fifteen.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow flew off the dashboard into the apartment ahead of him and went to the back of the chair in the bedroom.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn took the canvas bag to the kitchen table. He took the hexagon out. He laid it on the cloth. The cedar face in the center was — by his read at this angle, in the light of the kitchen at noon — facing the kitchen window. The eyes were closed. The orientation of the curls was the orientation a face would have if the face were looking out the kitchen window.",
+      "t": "narrate"
+    },
+    {
+      "text": "The kitchen window faced south. South was the direction of Cape Perpetua, the Starfish Nebula, Kai's apartment, Tem's apartment, the tower on the bluff above old-Yachats. The face was looking out at the town.",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat at the table. He drank a glass of water.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "All right. We have until five.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow made a single click in the throat.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn drank the rest of the water. He went into the bedroom. He lay down on the bed. He had not slept properly in three nights. He was going to need some part of the afternoon to rest. He set the alarm on the phone for three. He closed his eyes.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow on the back of the chair stayed where it was.",
+      "t": "narrate"
+    },
+    {
+      "text": "The rain on the roof was the rain.",
+      "t": "narrate"
+    },
+    {
+      "text": "He slept.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

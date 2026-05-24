@@ -1,0 +1,280 @@
+{
+  "id": "vol7_ch20_door",
+  "vol": 7,
+  "chapter": 20,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "3:02 AM",
+      "sub": "The door",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "The knock came again.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem registered the second knock the way she had registered the first — by the sound passing through the cedar wall of the cabin and into the space behind her sternum, where the bell-note the crow had made was still vibrating. The kind of knock a person makes at a door when the person knows the people inside are awake. Confident. Not loud. The knock of somebody who had come up the road and across the porch and was now at the door, waiting.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem was at the table. Per was beside her. Lena beside Per. Cale and Finn and Kai and Roy were across the table from them. The seven were where they had been when the crow had rung. The bowls were where they had been. The crow was where it had been, beside the bell-piece, beak now closed.",
+      "t": "narrate"
+    },
+    {
+      "text": "The room was holding the sound the crow had made the way a room holds a sound that has been the sound a room has been built to receive.",
+      "t": "narrate"
+    },
+    {
+      "text": "Nobody, at the second knock, moved.",
+      "t": "narrate"
+    },
+    {
+      "text": "The third knock came.",
+      "t": "narrate"
+    },
+    {
+      "text": "The third knock was the same as the second.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem stood up. She did not, in standing up, register that she had decided to stand. She had been at the table. The third knock had come. Her body had stood. She was — by the time she registered the standing — at the table standing.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I am going to the door.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I will come.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per. You stay at the table. The bowls stay at the table. The crow stays at the table. The cedar stays at the table. The notebook stays at the table. The seven of us at the cabin — six of you at the table, me at the door — we are going to be in the configuration the third instruction was about. The cabin is where she comes. I am the person who opens. The opening is mine because the cabin is mine. I am going to open.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes, Per.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Open.",
+      "t": "say"
+    },
+    {
+      "text": "She walked to the door. The cabin from the table to the door was twelve feet — by what Tem had measured at sixteen when Eddvard had asked her to figure out the dimensions for a math project. The twelve feet at three-oh-two on the first of September of 2052 were twelve feet she walked the way she had walked them in dreams since spring of 2049.",
+      "t": "narrate"
+    },
+    {
+      "text": "The dreams had not been the cabin-and-the-door dreams. The walking now, at the door, was the walking the dreams had been getting her ready for.",
+      "t": "narrate"
+    },
+    {
+      "text": "She reached the door.",
+      "t": "narrate"
+    },
+    {
+      "text": "She put her hand on the doorknob.",
+      "t": "narrate"
+    },
+    {
+      "text": "The doorknob was the cedar knob Eddvard had carved in '79. The knob was warm — warm in the way the bowls had been warm. It had not, in any of the years Tem had been at the cabin, been warm before.",
+      "t": "narrate"
+    },
+    {
+      "text": "She turned the knob.",
+      "t": "narrate"
+    },
+    {
+      "text": "She opened the door.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "The porch was lit by the cabin's south window and by what was left of the kerosene lamp's light coming through the open door behind her.",
+      "t": "narrate"
+    },
+    {
+      "text": "On the porch, at the door, was a person.",
+      "t": "narrate"
+    },
+    {
+      "text": "The person was a young woman in a yellow slicker. The slicker's hood was up. The hair under the hood was — by what Tem could see in the cabin's spilled light — curling and dark. The slicker was the yellow Finn had described from Cape Perpetua. The hair was what Lena had painted on the alley wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face under the hood — Tem could not, at the angle, see the face. The face was in the hood's shadow. The face was — by some quality of how the figure was holding herself — turned slightly down so that the hood's brim took the face into the shadow.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I am Tem.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "I know.",
+      "t": "say"
+    },
+    {
+      "text": "The voice was — Tem registered — the voice of a young woman maybe twenty years old. The voice was a voice Tem had not heard. No accent Tem could place. Clear. Not loud.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Come in.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "Tem. I can't come in. Not tonight. Not yet. I'm going to be at this door for a count and then I'm not going to be here. I want you to understand why before I go.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Tell me.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "There are six other people in your cabin behind you. Each of them has been carrying me a different way.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "The man whose father carved my face. The man who knew my father when my father was sixteen. The man whose detective gave him my crow. The man who met the boy in the basement. The man whose bowl came down the coast. The woman who painted me on the alley wall.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "The six of them have been bringing me into the room for years. I'm here because they brought me. I'm not going to be more here tonight than they can take. I'm going to come to each of them in the form they've been making for me. That's what I can do tonight.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "The form I have for you",
+      "t": "say"
+    },
+    {
+      "text": "The figure paused, the way a young woman pauses when she is choosing what to say.",
+      "t": "narrate"
+    },
+    {
+      "char": "figure",
+      "text": "the form I have for you is going to be different. You'll see.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Why now.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "Because of the bell. The bell rang. I came.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Are you — are you going to come back.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "When.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "I can't say. I don't get to know that part. I'm sorry, Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Okay.",
+      "t": "say"
+    },
+    {
+      "char": "figure",
+      "text": "Go back to the table.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Okay.",
+      "t": "say"
+    },
+    {
+      "text": "She turned.",
+      "t": "narrate"
+    },
+    {
+      "text": "She walked back to the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "She sat in her chair.",
+      "t": "narrate"
+    },
+    {
+      "text": "She looked at the door.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch20_each",
+      "t": "jump"
+    }
+  ],
+  "title": "3:02 AM"
+}

@@ -1,0 +1,139 @@
+{
+  "id": "vol7_ch8_kitchen",
+  "vol": 7,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — The Kitchen",
+  "nodes": [
+    {
+      "t": "show",
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Bread. Cheese. The soup from Wednesday. I haven't eaten since this morning.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "warm",
+      "text": "\"I'll do it.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He got up and went into the kitchen, and as he passed her he put his hand briefly on her shoulder, which was not a thing Kai did, and she registered it as Kai registering that the apartment was hers and that the four of them had walked into it without asking and that he was telling her, with the hand, that he knew."
+    },
+    {
+      "t": "narrate",
+      "text": "He took the wool sweater off and hung it over the back of the kitchen chair. He was in a long-sleeve under it that had the thrift-store wear at the elbows that Lena recognized as the wear-pattern Margit's stuff had after it had been through a dryer too many times. He found the soup pot. He set it on the stove. He found the bread. He found the cheese. He started cutting."
+    },
+    {
+      "t": "narrate",
+      "text": "For maybe two minutes nobody spoke."
+    },
+    {
+      "t": "narrate",
+      "text": "The sound in the apartment was Kai cutting bread on the small wooden board."
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"You went to ChillWave.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"I did.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"Cale told you.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Yes.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Tem closed her eyes for a beat and opened them."
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "tired",
+      "text": "\"All of it?\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"I don't know what all of it is. He told me about Nate at sixteen. The basement. Pattern persistence. The conversation in March '94 about a daughter. He told me Brandon came to him in 2049. He told me you came to him in July.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"He told you about the airport.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"He told me about the airport. The napkin. He told me to be careful with the gallery on the sixth floor.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Tem put her face in her hands for a count and took her hands away. She was not, by her face, surprised. She was something else — a kind of release Lena had not seen on her before."
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "softening",
+      "text": "\"He's been waiting since July,\" Tem said. \"I knew on the day I went in that he had something to say. I did not ask him to say it. I was not ready, and I was not sure I was ever going to be ready, and I had decided to make him hold it until I figured out whether I was. He has been holding it for two months. I'm sorry, Cale.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"He's not here.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"I'll tell him I'm sorry tomorrow. He said he'd come up?\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"He said he'd come up in the morning if you wanted him to.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "warm",
+      "text": "\"I want him to.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"What did Cale tell you about the daughter.\""
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch8_the_daughter"
+    }
+  ]
+}

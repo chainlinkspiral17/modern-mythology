@@ -1,0 +1,367 @@
+{
+  "id": "vol7_ch5_roy",
+  "vol": 7,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "Roy",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 5",
+      "sub": "Roy",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Kai opened the shop at ten on Sunday like he opened it on every Sunday since 2048.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not slept well. Three hours, then up, then another two, then up again at six. The first thing he did at six was check the wall across Main from his apartment window. The patch on the side of the laundromat building was where it had been Friday and where it had been yesterday. Bigger today, maybe. He could not be sure from his window. He had not gone out to look.",
+      "t": "narrate"
+    },
+    {
+      "text": "He showered. Coffee at the kitchen counter standing up. Two slices of toast with the butter Hans gave him every other Tuesday for moving boxes at the bakery. Wool sweater — his grandmother had made it in 2048 — and the wax canvas jacket that had been Devon's before Devon left for Portland, and the boots. Four blocks to the shop.",
+      "t": "narrate"
+    },
+    {
+      "text": "The patch on the sanderling mural across from Board Lords was where it had been Friday. He looked at it for about ten seconds standing on the sidewalk, then unlocked the front door.",
+      "t": "narrate"
+    },
+    {
+      "text": "He flipped the CLOSED to OPEN. Turned on the small fluorescent over the repair counter in the back. Put on the kettle in the back room. Woke the lathe. Stood at the front of the shop for a minute looking out at Main.",
+      "t": "narrate"
+    },
+    {
+      "text": "Smolvud on a Sunday morning in late August in the rain. The Daily Grind would have its small rush from seven to nine and then nothing until eleven. The Missing Link was open. Hans's bakery was closed on Sundays. Petra's bookstore opened at one. The Charging Station was open.",
+      "t": "narrate"
+    },
+    {
+      "text": "The first hour was nothing. He cleaned the glass on the deck wall. He tightened the trucks on a board a kid had left for a tune-up on Friday. He drank a second cup of coffee at the counter.",
+      "t": "narrate"
+    },
+    {
+      "text": "At eleven-oh-six the bell over the door rang.",
+      "t": "narrate"
+    },
+    {
+      "text": "The man was mid-sixties, maybe older. Heavy. Orange Hawaiian shirt under a wax canvas coat he had not, on entering, taken off. Khakis. Brown leather boat shoes that nobody on the Smolvud coast wore in August in the rain. He was smiling. The smile was the smile of a person who had been smiling for so long the smile was no longer about anything specific. The smile was the smile he wore.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai recognized him after about two seconds. Roy. He didn't know the last name. The Hawaiian shirt guy from the south end. He had been at the Daily Grind a hundred times. At the Charging Station. At the museum once when Kai had gone down to look at the Inga bench with Devon in 2049. Kai had never spoken to him. Kai's mother had told him in 2046, when Kai was eighteen: don't get into a conversation with that one. He'll keep you for an hour.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "roy",
+      "expr": "happy",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Roy crossed the shop floor with the smile. He put a hand on the counter without leaning on it.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Kai?",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Roy Hummel. You probably don't know me. I've been around. I see you at the Daily Grind. Lena makes me a hot chocolate sometimes. Sweet kid.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "Kai didn't say anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "I was wondering if you might be the Kai who's friends with the Hermit kid. Finn. The one who walks at Cape Perpetua.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Finn's my friend.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Good, good. I'm asking on behalf of someone. They wanted me to ask you something. Hope that's all right.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Who.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Doesn't matter who. They asked me to ask you a question. I'm doing them a favor. Small thing.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "What's the question.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Roy leaned in just a little. The smile was still there.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "They want to know whether your friend Finn has been in possession of materials that belong to the museum-town historical society.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "Kai held the counter with his right hand and felt his right hand close on it.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Materials.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "That's the word they used.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "What kind of materials.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "They didn't say.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "They didn't say.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "That's right.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "Kai looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Who's they.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Like I said. Doesn't matter. Just doing a favor.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "It matters to me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I figured. I'll tell them you asked.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "The bell had not rung. The shop was the two of them. Kai could hear the kettle in the back room which had come up to a boil twenty minutes ago and which he had not, in all that time, gotten to.",
+      "t": "narrate"
+    },
+    {
+      "text": "He let go of the counter.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Roy.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yeah.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I don't know what you're asking. I don't know who's asking it through you. I don't know what materials you're talking about. I'm not going to know any of those things in the next ten seconds, so the question is what you want from me right now.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Just the answer.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "To a question I don't understand.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Has Finn been in possession of materials that belong to the museum-town historical society. Yes or no.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "How would I know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "You're his friend.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Friends don't catalog each other's possessions.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Some do.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I don't.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Roy held the smile.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "All right. I'll tell them you don't know.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tell them whatever you want.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I will. Have a good Sunday, Kai. Tell Lena hi from me at the Grind. She's a sweet kid.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "He turned. He walked to the door at the same speed he had walked in. The bell rang. He was gone.",
+      "t": "narrate"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "expr": "serious",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "text": "Kai stood at the counter for a long count.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went into the back and turned off the kettle. He came back out. He picked up his phone from the counter and called Finn. Four rings. Voicemail. He did not leave a message.",
+      "t": "narrate"
+    },
+    {
+      "text": "He texted: call me. now.",
+      "t": "narrate"
+    },
+    {
+      "text": "Three minutes. Five. He stood at the front of the shop with the phone in his hand. At eleven-eighteen he flipped the OPEN to CLOSED, locked the front door, pulled the wax canvas back on, and walked.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch5_cabin",
+      "t": "jump"
+    }
+  ]
+}

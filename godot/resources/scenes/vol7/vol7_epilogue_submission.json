@@ -1,0 +1,169 @@
+{
+  "id": "vol7_epilogue_submission",
+  "vol": 7,
+  "chapter": 23,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The Submission",
+      "sub": "September 2, 2052",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "text": "Tem looked at the blank template. The river coming down from the cedars. The bar of sand at the mouth. The flats. The bluff. The forested ridge. The same coastal estuary the substrate had been holding for fifty-five years.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not, for a long count, do anything. She looked at the template. She held the headset's controls in her hands. The cursor at the planner's-view blinked at the center of the template, waiting for her to place something.",
+      "t": "narrate"
+    },
+    {
+      "text": "She moved the cursor. She moved it to the position on the template that corresponded to the cabin she was sitting in.",
+      "t": "narrate"
+    },
+    {
+      "text": "She placed one drone.",
+      "t": "narrate"
+    },
+    {
+      "text": "The drone — a single Oneironautics Inc. drone-unit, rendered in the planner's-view — held at the cabin position. The substrate registered the placement. The clock at the upper-right began to count.",
+      "t": "narrate"
+    },
+    {
+      "text": "A label appeared at the upper-left of the view: T. Egilsdóttir — submission begun September 2, 2052.",
+      "t": "narrate"
+    },
+    {
+      "text": "The clock counted. 0:01.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem took off the headset. She set it on the kitchen table beside the disc-case.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "Kai was across the table. He had finished his coffee. He had been watching her for the length of the playthrough — perhaps twenty minutes by the wall clock. Finn was beside Kai. He had brought his chair over from the kitchen window at some point during the playthrough.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I saw what they built.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "What did they build.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Dean built the tower and the town. Olaf built the cabin and the four bowls. Eddvard built the mill. Marit built a cedar grove east of Smolvud, fifty-one years old and still growing. Aud built the diner. Brandon built Tideline Survey and the pools. The Schencks built the press in Bern. Lindholm built the foundation in Eugene. Olaus built a small cove south of Bandon that held for three generations and then didn't.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All of them.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "All of them played the stick. All of them submitted plans. All of them built what they submitted in the world. The lives I have been living in are the renderings.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "And you.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I placed a drone.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Where.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "At the cabin.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "What are you going to build.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I don't know yet. I have placed the drone. The clock is counting. I have begun. The building is the next thing.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Vol VIII.",
+      "t": "say"
+    },
+    {
+      "text": "The cabin held the three of them.",
+      "t": "narrate"
+    },
+    {
+      "text": "Outside, the mist on the cedars had been the mist on the cedars all morning. The rain had not returned. The September coastal sky was gray and would be gray for some hours yet.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai stood up from the table. He walked to the stove. He added a piece of cedar to the fire.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn stayed at the table. Tem stayed at the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "She looked at the disc-case. It was the case Cale had brought up the previous day at two-oh-five. The disc was inside the player. The player was on the table beside the headset.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not put the disc back in the case.",
+      "t": "narrate"
+    },
+    {
+      "text": "She left the disc inside the player.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

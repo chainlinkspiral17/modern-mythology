@@ -1,0 +1,600 @@
+{
+  "id": "vol7_ch21_leaving",
+  "vol": 7,
+  "chapter": 21,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_starfish_alley.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Monday",
+      "sub": "September 1 — morning",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "The crowd in the alley had been at the wall for nearly two hours when the leaving began.",
+      "t": "narrate"
+    },
+    {
+      "text": "It began without anyone calling for it. The face on the wall had been closed-eyed since seven thirty-eight. Petra had brought out the coffee thermos and the four mugs. Greta had brought brioche and rye from Hans's van. The thirty-five people had eaten and drunk and stood at the wall and looked at the face. The morning was moving. People had lives to return to.",
+      "t": "narrate"
+    },
+    {
+      "text": "Margaret from the co-op was the first.",
+      "t": "narrate"
+    },
+    {
+      "text": "She crossed from the wall to Tem at the entrance of the alley. She had been at the wall since six-thirty when she had walked over from her apartment above the co-op. She had a thermos of her own in her hand, empty. Her face was the face of a woman who had been awake longer than usual on a Monday and who was, by what Tem could see of her, holding herself together by familiar means.",
+      "t": "narrate"
+    },
+    {
+      "char": "margaret",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Margaret.",
+      "t": "say"
+    },
+    {
+      "char": "margaret",
+      "text": "I have to open at eleven.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "margaret",
+      "text": "I'll see you tomorrow at the bakery.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes, Margaret.",
+      "t": "say"
+    },
+    {
+      "text": "Margaret put her hand on Tem's arm. She held it there for a count. Then she lifted her hand and walked down Hemlock toward Main.",
+      "t": "narrate"
+    },
+    {
+      "text": "Three other townspeople left behind Margaret in the next ten minutes. Quietly. With nods to Tem at the entrance. No goodbye-speeches. The leaving had been given a shape by Margaret and the shape held.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per went to Marit at the milk crate at ten-fifty.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marit was seated on the milk crate with her bowl in her lap. She had been seated since seven-fifty when Lena had brought her the crate from inside the bookstore. Per had not asked her to sit. He had registered, at the wall at seven forty-five, that his sixty-eight-year-old mother was at the end of what her body could give, and Lena had brought the crate before Per had finished registering. Marit had been on the crate for three hours.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per put his hand on her shoulder.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Mama.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I'm going to take you down to Hans's. You're going to lie down. Greta has the bed made for you in the upstairs room.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "She did not, by Per's read, have the strength to argue. She did not want to argue. She had been at the bowl for sixty-eight years and at the arrival for one night and one morning, and she was at the limit of what one stretch of life could ask of a sixty-eight-year-old body that had carried what hers had carried.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per helped her up from the milk crate. She came up slowly. She held her bowl against her chest with both hands the way she had been holding it since six-thirty.",
+      "t": "narrate"
+    },
+    {
+      "text": "He walked her down the alley to his truck. He helped her into the passenger seat. He belted her in. He set her bowl on her lap with the seatbelt around the bowl as well — Per had been belting in the bowl on car rides since Sunday morning.",
+      "t": "narrate"
+    },
+    {
+      "char": "marit",
+      "text": "Per.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Mama.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Take me home.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes, Mama.",
+      "t": "say"
+    },
+    {
+      "text": "He closed her door. He went around. He got in. He drove her down to Hans's.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marina came to Tem at the alley's entrance at eleven. She was in her foundation coat. Her wagon was parked at the head of Hemlock where she had left it last night.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Tem. I have to go.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "The director's expecting me at five. I called him from Eugene yesterday morning and told him what was beginning. He told me to come straight back from the cabin Monday morning, by whatever schedule the morning gave. I need to be in the office tonight to brief him before the board meeting tomorrow at nine. The foundation needs my witness on the cabin and the wall before the board sees the field reports.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes, Marina.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I'll call you Wednesday.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Marina put her hand on Tem's arm — the same hand that had been on her grandfather's bowl at the milk crate twenty minutes ago, the hand that had been opening up across the four days she had been in town from the foundation-administrative grip to something looser, something more like a hand of a woman who had been carrying the work for some time and was, this morning, accepting that she had been carrying it. She held Tem's arm for a count. Then she lifted the hand.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marina.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Thank you for letting me be at the cabin last night.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marina. Yes.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I am going to Eugene to do what I do. I will be back.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know.",
+      "t": "say"
+    },
+    {
+      "text": "Marina walked to her wagon. She drove north on 101.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy had been at Aud's side since the face had closed its eyes. He had Olaus's bowl in the canvas bag at his feet at the wall. He had not, by Tem's read, let his hand off the canvas bag's strap.",
+      "t": "narrate"
+    },
+    {
+      "char": "aud",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Aud.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I've got to open the diner at eleven. I'm late. I want you to come.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "It'll be your first day at the diner as the carrier. The whole town's going to be in the diner today after this. I want you behind the counter beside me. I want them to see you there.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Aud. Yes.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Olaus would want you behind the counter today.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Olaus would.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Come.",
+      "t": "say"
+    },
+    {
+      "text": "The two of them walked together down the alley to Aud's car. Roy carried Olaus's bowl in the canvas bag at his side. Aud walked beside him with her hand at his elbow the way she had been walking beside him at the wall. Roy belted the bowl into the passenger seat. He got in the back. Aud drove.",
+      "t": "narrate"
+    },
+    {
+      "text": "The Missing Link diner opened at eleven-oh-eight.",
+      "t": "narrate"
+    },
+    {
+      "text": "Petra closed the back door of the bookstore at eleven-fifteen. She had been at the bookstore since four AM. She was sixty-one. She had reached the end of her capacity for a Monday. She walked over to Tem at the alley's entrance.",
+      "t": "narrate"
+    },
+    {
+      "char": "petra",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Petra.",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "I am going home to sleep.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes, Petra.",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "I will come up to the cabin Wednesday for dinner. If you want me up.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Petra. Yes. Wednesday.",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "I will bring bread.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Petra walked home up Cedar.",
+      "t": "narrate"
+    },
+    {
+      "text": "Cale came to Tem at the alley's entrance at eleven-eighteen. He had Brandon's notebook in the inside pocket of his coat. He had been carrying the notebook since Sunday night when Finn had handed it to him at the cabin for the drive down.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I'm going to the store.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I'll log the morning's patches at the back-room desk. I'll call if anything's moved.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale. Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Cale took the notebook from his coat pocket. He held it.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "The notebook. Do you want this at the cabin or at the store.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Store. For now. I want it in the back-room safe with the substrate-logs. It can come back up Wednesday when Petra comes.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "He put the notebook back in his coat.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "She came.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She came.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I've been waiting to be at a wall with Nate Dean in some way for thirty years.",
+      "t": "say"
+    },
+    {
+      "text": "He stopped. He picked at the cuticle of his thumb.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "I have not, since.",
+      "t": "say"
+    },
+    {
+      "text": "He looked at the alley.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "I'll be at the store. Call.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "He walked to his F-150. He drove down Main to ChillWave Video. He unlocked the front door at twelve forty-eight.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Lena, Finn, Kai were at the wall with Tem at eleven-thirty. The four of them were the only members of the cast still at the alley. The crowd had thinned to perhaps twelve people, mostly older townspeople who did not have shifts to return to. Hans had gone back to his van and started baking the Tuesday bread. Greta was at the van's open back door arranging the empty brioche baskets in stacks.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I'm going to take the crow to my apartment. Wren texted at ten and asked if she could come over and see the crow. I said one o'clock. I want her to have her time with it.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes, Lena.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Will the crow stay with me tonight, do you think.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I think it will. It came down from the cabin on Finn's shoulder this morning. The substrate has been moving it since Friday. I don't think it's going back to your apartment for good. I think it's going to be wherever the next thing is. But for the afternoon and probably tonight, yes.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "All right.",
+      "t": "say"
+    },
+    {
+      "text": "She walked to Finn. The crow had been on Finn's shoulder since six-thirty in the cabin's kitchen.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Aria.",
+      "t": "say"
+    },
+    {
+      "text": "The crow looked at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Come.",
+      "t": "say"
+    },
+    {
+      "text": "The crow stepped from Finn's shoulder to Lena's outstretched arm. The crow walked up the arm to Lena's shoulder. Lena turned to Finn.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Wren will be at my apartment at one. I want the crow with her at one. I will bring the crow back up to the cabin tomorrow or whenever you tell me.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tomorrow. After Wren has had her count with it.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "She turned to Tem.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Lena.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm going to be at my apartment with Wren and the crow for the afternoon. I'll come up to the cabin tomorrow with the crow. Is that all right.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "That is the right shape.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "All right.",
+      "t": "say"
+    },
+    {
+      "text": "She walked to her car with the crow on her shoulder. She drove to her apartment on Cedar Place.",
+      "t": "narrate"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "scene": "vol7_ch21_cabin",
+      "t": "jump"
+    }
+  ],
+  "title": "Monday"
+}

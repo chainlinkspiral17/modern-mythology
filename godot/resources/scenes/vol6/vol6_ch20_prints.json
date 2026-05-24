@@ -1,0 +1,642 @@
+{
+  "id": "vol6_ch20_prints",
+  "vol": 6,
+  "chapter": 20,
+  "type": "chapter",
+  "title": "Ch 20 — The Prints",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_henderson_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Prints",
+      "sub": "Friday — 22:38 — Home",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, on the drive home, take the back road past the strip mall again. He takes the front road, which is faster. The strip mall is not, this evening, in his route."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls into his parents' driveway at ten thirty-eight. His mother's car is in the driveway. His father's truck is also in the driveway. The kitchen light is on."
+    },
+    {
+      "t": "show",
+      "char": "jim",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "His father is at the kitchen table. His father has, on the table, a small set of black-and-white photographs — the contact prints from this week's photography class assignment, the assignment of which Jesse knows only that it has been about small things at the back of the house. His father is examining the prints with the small careful attention his father has, since June, been applying to most of his tasks."
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim looks up when Jesse comes in."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "You're late.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I — I drove past the venue. The DJ was in there programming her lights. I went in.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "She let you stay?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "She used me. She had me at the back of the room listening to her cues. She wanted somebody whose ears weren't already used to the room.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "That was generous of her.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "It was — it was generous of her in the way working people are generous. She got use out of me. I got — I got an hour and a half in the room with a working DJ.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim, at the table, nods slowly."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Sit. You want coffee.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "It's ten-forty, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "It's decaf. Your mother started drinking decaf in July. I have been, by attrition, also drinking decaf. The pot's fresh.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the counter, pours himself a cup. He sits across from his father at the table. The contact prints are between them."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "What's the assignment.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Things at the back of the house. Doesn't matter which house. Doesn't matter which back. Just — look at the back of houses. See what you find. I have been doing — I have been doing the back of our garden.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He turns one of the contact prints toward Jesse. The print is of the small space behind the garden shed at the back of the Henderson yard, which has, since June, been the small patch of gravel and the small empty terra-cotta pot Eileen had put there in 2019 and had never planted. The print captures, in the way black and white captures these things, the small ambient layer of dust on the pot and the small shadow the pot casts at — Jesse can see, by the angle — about six PM on a clear afternoon."
+    },
+    {
+      "t": "narrate",
+      "text": "The print is — Jesse registers, looking — good."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Dad. This is — this is good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Yeah?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah. The pot is — the pot is the whole picture. The shadow makes it. I would not have thought a picture of the back of our shed would be a picture I would want to look at twice. I want to look at this one twice.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim, at the table, smiles — the slow specific smile of a man who has, in mid-August, been told by his son that a small piece of the work he has been doing is good and who has, in the way of a man who has not been able to receive his son's praise for some specific months, decided to receive it."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Thank you, Jesse.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A beat."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "How was practice.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "We — we got the bridge. The new one. Substation Nine. The bridge is the song. We're playing it second tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "What's the song about.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the table, thinks for a beat. He has, until this evening, not told his father what the song is about. He has not told him because he has, since April, not been telling his father anything that touched the substation — the substation has been the thing his father has been recovering from in the basement. The recovery, by mid-August, is, by Eileen's report and by his own observation, substantial. His father is, this evening, sitting at the kitchen table with contact prints of the back of the shed."
+    },
+    {
+      "t": "narrate",
+      "text": "He can, this evening, tell him what the song is about."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "It's about the substation, Dad. The one that closed in April. It's about the people who are still in the parking lot.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim, at the table, is for a beat very still."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I — I should have told you that before now. I'm — I'm telling you now.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A long beat."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Are you in the parking lot in the song.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I'm — yeah. The bridge is — the bridge is here we are anyway. The bridge is about the parking lot.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim, at the table, looks at the contact print of the pot."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "The song is going to land tomorrow, son. The room is going to know what you are saying. The people who are in The Foxhole on a Saturday night in mid-August in this town are going to know what the substation is. They are going to register what you are saying. Some of them are going to register what you are saying and they are going to be uncomfortable. Some of them are going to register what you are saying and they are going to be — they are going to be glad somebody finally said it. The mix in the room is going to be — is going to be both of those things. You are going to feel it from the stage. You are going to have to play through it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Don't apologize for the song. Don't introduce it with a small I want to dedicate this to. Just play it. The song does the work. Your introduction would only — your introduction would only undercut the song.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "I'm — I'm going to be glad about it, Jesse. I am going to be glad about it for the rest of my life. The song you wrote is — the song you wrote is the song this town did not know it needed to be written about it. You wrote it. You are twenty. The work you did this summer is going to — is going to be the thing that people in this town remember as the moment somebody finally said something out loud.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the table, does not, immediately, respond."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Are you going to come tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim, at the table, is for a beat very still."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Son.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "I am — I am going to come. I am going to come for the first three songs. I am going to leave before the fourth. The Foxhole is — The Foxhole is across the parking lot from the strip mall I have not been on the property of since March. I can do — I can do an hour. I cannot do longer than that. I want to tell you the truth about it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Dad. You don't — you don't have to come.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "I am coming. I am coming for the song. I am coming because the song is — the song is the song. I want to be there for it. I am going to be in the back. You are not going to — you are not going to perform for me. You are going to play. I am going to be there. After the third song I am going to leave. Your mother will be at home. She will be — she will be there when I get back. The driving back is what I do. I want you to know what I am going to do so that, when you see me leave, you don't — you don't think it is about the song. It is about the parking lot.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Okay, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The two of them sit, at the table, with the contact prints between them."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Thank you, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Yeah, son.",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen comes downstairs at eleven oh-six. She is in her robe."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "You two are up late.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "We were talking about the show.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I'm coming.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Mom.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Don't Mom me. I am coming. I am coming for the whole set. I will be in the back with your father for the first three songs and then I will sit at the bar by myself for the last two. I am not going to embarrass you. I am going to — I am going to be a person at a bar at the back of a venue while my son plays his band's set. That is what I am going to do.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the table, laughs."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Mom. Yeah.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I have, this morning, told Bianca and Anita at the four-thirty table that I am going to take up the piano again. I am, by some specific coincidence, in the mood to do other small things I have been thinking about for a while. Watching my son play a paying gig at The Foxhole on a Saturday night is one of them. Decided this afternoon.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim, at the table, looks at Eileen."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Piano?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Piano. We are going to talk about it tomorrow over breakfast.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Bedtime, gentlemen. Both of you. Tomorrow is a thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She kisses Jesse on the temple. She kisses Jim on the temple. She goes upstairs."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim, at the table, after Eileen is gone, looks at Jesse."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "She's going to take up the piano.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Apparently.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "I did not know that.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Neither did I.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim, after a beat, smiles — the slow specific smile."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Your mother is — your mother is the most surprising person I have ever known. Twenty-eight years in. She is still — she is still the most surprising.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Bed.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He gets up. He puts his cup in the sink. He goes to the door. He turns."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "The print of the pot is — the print of the pot is good. I'm going to — I'm going to think about it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "I'll print you a copy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He goes upstairs."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_jesse_bedroom_dark.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "In his bedroom he sits on the edge of the bed for a beat. He picks up the small spiral notebook with the bridge lyrics on the page he has been using. He looks at the page. The bridge, in his handwriting, is on the page. He puts the notebook on the nightstand. He gets undressed. He gets in bed. He lies on his back."
+    },
+    {
+      "t": "narrate",
+      "text": "The bridge is the song. Chess at the back of the room saying I'll listen. Dad coming for the first three songs. Mom at the bar at the back for the last two. Walt at his kitchen counter on Wednesday saying kid, that's a thing. The song is going to land tomorrow. It is going to land in a room that includes people who do not know what the substation is, and people who know exactly what the substation is, and people who used to work at the substation, and people whose families used to work at the substation, and people who, by some summer-of-2026 reading, would prefer not to be reminded of the substation. The song is going to do something to that room. He does not, this Friday at eleven-thirty PM, fully know what."
+    },
+    {
+      "t": "narrate",
+      "text": "He is going to play it as well as he can. The bridge is the bridge. The bridge is his. The song is for the people in the parking lot. They are, all of them, in the parking lot."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns off the lamp."
+    },
+    {
+      "t": "narrate",
+      "text": "The room is dark."
+    },
+    {
+      "t": "narrate",
+      "text": "Through the window, the cicadas are loud."
+    },
+    {
+      "t": "narrate",
+      "text": "Across town, at a different house in a different cul-de-sac, Ben is asleep with the alarm set for ten and Mister the cat at his feet."
+    },
+    {
+      "t": "narrate",
+      "text": "At the Cypress Motel, Chess and Ramón have, by midnight, gone back to their rooms — Chess in 12, Ramón in 14. The lighting cues are locked. The set is ready."
+    },
+    {
+      "t": "narrate",
+      "text": "In a different cul-de-sac, Diego, at Centro, is doing the inventory — three hours into a count that is going to last until eight."
+    },
+    {
+      "t": "narrate",
+      "text": "In yet a different cul-de-sac, Maya is asleep. Linda is asleep. The cat that is half-Kowalski is not, this evening, at the Caldwell house. The cat is at the Kowalskis'."
+    },
+    {
+      "t": "narrate",
+      "text": "In yet a different cul-de-sac, Bianca is asleep. Sam is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "The town, in the small ways towns in mid-August on a Friday night before a Saturday do this work, holds."
+    },
+    {
+      "t": "narrate",
+      "text": "The Saturday is tomorrow."
+    },
+    {
+      "t": "narrate",
+      "text": "The Saturday is the day the threads converge."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight, in the dark, the threads are still apart."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight, in the dark, the bridge is on the small spiral notebook page on Jesse's nightstand, in his own handwriting, in the small kid's-handwriting it has been written in, waiting for tomorrow."
+    },
+    {
+      "t": "narrate",
+      "text": "Sleep."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

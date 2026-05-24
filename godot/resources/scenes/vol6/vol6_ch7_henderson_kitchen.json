@@ -1,0 +1,503 @@
+{
+  "id": "vol6_ch7_henderson_kitchen",
+  "vol": 6,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — Pot Roast",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_henderson_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Pot Roast",
+      "sub": "Saturday — 18:47 — Henderson House",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen has made pot roast."
+    },
+    {
+      "t": "narrate",
+      "text": "The pot roast has been in the oven since two-thirty. The smell of it has, for the past four hours, been rising through the house — past the laundry room, past the half-bath, down the basement stairs, and into the small converted broom closet off the garage where Mr. Henderson has been since five PM Friday."
+    },
+    {
+      "t": "narrate",
+      "text": "He has not come up."
+    },
+    {
+      "t": "narrate",
+      "text": "The smell has been reaching him."
+    },
+    {
+      "t": "narrate",
+      "text": "Whatever he has been doing down there — Eileen does not yet know — has been, in some small part of itself, smelling pot roast for four hours."
+    },
+    {
+      "t": "narrate",
+      "text": "She sets the table for four. Her own seat. Jesse's. Ben's. And a fourth, at the head of the table, which she has not, in eight days, set."
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse comes home from his shift at five-fifty-eight. He goes upstairs to shower. He comes down at six-twenty in clean clothes. Ben arrives at six-twenty-two, in a button-down shirt his mother had washed for him this afternoon when he had told her, vaguely, that he was going to a friend's for dinner and it might be a thing."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The three of them sit in the kitchen."
+    },
+    {
+      "t": "narrate",
+      "text": "They do not, immediately, eat."
+    },
+    {
+      "t": "narrate",
+      "text": "The pot roast stays in the oven on warm. The table, set, waits."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen pours coffee. She pours one for herself, one for Ben, one for Jesse — even though Jesse does not drink coffee, has never drunk coffee, has, on the occasions Eileen has offered, declined politely. Tonight Jesse takes the cup."
+    },
+    {
+      "t": "narrate",
+      "text": "He sips."
+    },
+    {
+      "t": "narrate",
+      "text": "He winces, slightly."
+    },
+    {
+      "t": "narrate",
+      "text": "He sets it down."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "It is a lot, isn't it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah, Mom. It is.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She nods."
+    },
+    {
+      "t": "narrate",
+      "text": "They wait."
+    },
+    {
+      "t": "narrate",
+      "text": "At seven oh-eight the basement door opens."
+    },
+    {
+      "t": "narrate",
+      "text": "Footsteps on the stairs."
+    },
+    {
+      "t": "narrate",
+      "text": "Three of them, slow, the way Mr. Henderson always climbs stairs — the small habitual two-step pause halfway up that Eileen has been hearing for twenty-three years."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the table, grips Ben's wrist briefly. Ben does not move."
+    },
+    {
+      "t": "show",
+      "char": "mr_henderson",
+      "expr": "sad",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Mr. Henderson comes through the doorway."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks — Ben registers, with the small specific attention he has been training all spring — like a man who has not slept in two days and who has, in those two days, been somewhere very far from his own kitchen and is, this evening, only just returning to it."
+    },
+    {
+      "t": "narrate",
+      "text": "His eyes adjust to the kitchen light."
+    },
+    {
+      "t": "narrate",
+      "text": "His eyes — Ben sees, and Eileen sees, and Jesse, who has been watching for this most carefully, sees first — his pupils contract normally."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Hey, Jim.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Mr. Henderson looks at her."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at Jesse."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at Ben."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at the table."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at the fourth chair."
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "Eileen. Did you make pot roast.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I did.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "Can I — can I sit.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Please.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He sits."
+    },
+    {
+      "t": "narrate",
+      "text": "He puts his hands flat on the table."
+    },
+    {
+      "t": "narrate",
+      "text": "He breathes."
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "I'm — I'm back.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen does not, immediately, respond."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets up. She gets the pot roast from the oven. She sets it on the table. She gets the carrots and the potatoes and the small dish of horseradish her husband, since 1999, has put on his pot roast. She sets it all down."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Eat, Jim.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He eats."
+    },
+    {
+      "t": "narrate",
+      "text": "He eats slowly. He eats one bite at a time. He chews each bite for longer than is strictly necessary, in the way a man chews who has, somewhere in the last forty-eight hours, forgotten that food is something his body is allowed to want."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen does not, at first, ask him anything."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does not, at first, say anything."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse — who is sitting next to his father, on his right — puts his hand on his father's forearm. Briefly. Once. Then takes it away."
+    },
+    {
+      "t": "narrate",
+      "text": "Mr. Henderson does not look at his son. But he stops chewing for a long second. Then he resumes."
+    },
+    {
+      "t": "narrate",
+      "text": "After perhaps eight minutes, Mr. Henderson sets down his fork."
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "I would like to tell you all what happened. I do not know how much of it I can tell. I do not know what I — I want to try.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Take your time, Jim.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He takes his time."
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "There was a — there was an arrangement. In 1998. When we were — when we first moved to Harmony Creek. The substation went up the year before. The substation had — had a contract with NexCorp Residential Solutions. The contract was for — for ambient signal management. They needed — Eileen. They needed a small number of — eyes. People with cameras. People with — with a kind of attention. The arrangement was — they would not interfere with our lives. They would only ask, occasionally, for — photographs. Specific photographs. From specific angles. At specific times. They would compensate. Modestly. The compensation was — it paid for the down payment on this house. It paid for Jesse's preschool. It paid for things I was, at the time, unable to pay for any other way. I was — I said yes. I did not — I did not understand what I was saying yes to.",
+      "expr": "sad"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen does not interrupt."
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "It was — for years, it was just photographs. Just — pictures. Of intersections. Of — of houses I did not know. I would — I would take the picture. They would pay me. It was small. It was easy. I told myself it was — I told myself many things.",
+      "expr": "sad"
+    },
+    {
+      "t": "narrate",
+      "text": "He pauses."
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "Then — Eileen. Then in 2011 — there was a — they put something in the camera. Or in me. I do not know which. After that — I would go down to the darkroom. I would develop the prints. The prints had — they had things in them I had not photographed. I had — I had photographed the same things I had always photographed. But the prints were — they were different. And after — after the prints came out, I would — I would know things. About — about the people in the prints. About where they were. About what they were doing. I — I would tell — I would tell, and they would pay. More, by then. Much more.",
+      "expr": "sad"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse closes his eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "Mr. Henderson keeps going. His voice does not change."
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "In April — Eileen — in April this year, the substation began — broadcasting — at me. Through the camera. I do not — I do not know how to explain it. It was not — it was not a voice. It was a — it was a direction. The camera would tell me where to point. The prints would — the prints would report. I was — I was not, by then, fully — fully me. I was — I was an eye. I was only an eye. The eye was — the eye was theirs.",
+      "expr": "sad"
+    },
+    {
+      "t": "narrate",
+      "text": "He pauses."
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "And then — Saturday last, I — there was a kid. The Ramos boy. The eye — the eye saw him. The eye — I — I told them where he would be. That night. I told them. And then on Tuesday morning I saw, in the prints, a man in a charcoal suit looking at me. He was not — he was not real. Or he was. I do not — I do not know. But he was — he was seeing me back. And after I saw that — Eileen, after I saw that, I began to — I began to fight. Not on the — not on the surface. On the inside. I would — every print, after, I would try to — to leave a thing. A small thing. The note on the bill. The pencil writing. The eye did not know I was doing it. The eye — the eye thought I was being a good eye. But the small things — they were mine. They were — the only mine I had left.",
+      "expr": "sad"
+    },
+    {
+      "t": "narrate",
+      "text": "He stops."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at Eileen."
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "I am — Eileen, I am sorry.",
+      "expr": "sad"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen, across the table, is crying — quietly, without sobbing, the way a woman who has been waiting for a confession for fourteen months cries when the confession finally arrives."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Jim. We are going to get you help.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "I do not — I do not know what kind of help.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Neither do I. We are going to find out.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at Ben."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Mr. Henderson. There is a man in Graustark named Frasier Temple. He runs — he runs the kind of system that probably knows what was put in your camera. Maya — Maya Daigle, who is one of our — one of our friends — has a way to ask him. We can ask. We can find out what it is. We can find out if it can be — if it can be removed.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Mr. Henderson looks at Ben."
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "You're — you're the diner boy. Jesse's friend.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yes sir.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "Ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yes sir.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "You're a good boy, Ben. Thank you for being — thank you for being here.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yes sir.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yes, Jim.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "Could I — could I have some pot roast.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She laughs. It is the small wet laugh of a woman who has just, in her own kitchen, gotten her husband back."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "You've been eating pot roast for ten minutes, Jim.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "Have I?",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yes, love. You have. And it's still warm.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks down at his plate. He looks at the half-eaten roast in front of him."
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "Oh.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He picks up his fork."
+    },
+    {
+      "t": "narrate",
+      "text": "He eats."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch7_henderson_driveway"
+    }
+  ]
+}

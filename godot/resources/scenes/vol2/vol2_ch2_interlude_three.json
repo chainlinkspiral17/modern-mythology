@@ -1,0 +1,117 @@
+{
+  "id": "vol2_ch2_interlude_three",
+  "vol": 2,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "ii. Third Interlude — The Paper",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_school_newspaper.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Third Interlude",
+      "sub": "— the school paper —",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "School started. The football season began. And I joined the school newspaper on a whim."
+    },
+    {
+      "t": "narrate",
+      "text": "While the football season was a glorious disaster and worthy of further commentary later on — the newspaper whim turned out to be one of the best things to happen to me in Small Wood."
+    },
+    {
+      "t": "narrate",
+      "text": "I had enough distinction at writing, design, reporting and editing to fill many capacities in an understaffed, underfunded academic endeavor and help make it shine in truly successful terms."
+    },
+    {
+      "t": "narrate",
+      "text": "The gig also got me out and about in the town under the pretext of scooping — digging my nose in and spending more time than necessary in a school or county library."
+    },
+    {
+      "t": "narrate",
+      "text": "It should be noted that Katrina was a photographer for the paper. Shannon a features writer. And it was Jay Rose who pencilled the one and only comic strip — DriftWood — about a teenager named Wood and his yearnings to leave the small town forever."
+    },
+    {
+      "t": "narrate",
+      "text": "Most of my friendships in Small Wood were forged out of that classroom and the late nights — that I learned to manage myself and others, finding an escape from the spotlight of athletics."
+    },
+    {
+      "t": "narrate",
+      "text": "From that very first day, I took to the newspaper with a passion. I'd write my stories on bus rides to and fro football games, with headphones on, and ask just enough questions to get plenty of dirty looks and sideways glances."
+    },
+    {
+      "t": "narrate",
+      "text": "I enjoyed the itching sensation from when a good idea gnawed at me, and the pressure of a deadline sawed through any mental laziness that accumulated over the course of a week. Writing kept me honest and sane, I discovered — as there was a good deal of dishonesty and insanity going around."
+    },
+    {
+      "t": "narrate",
+      "text": "It was no big secret that Shannon had a thing for me — but I brushed her aside and all but ignored her. I did not and still do not enjoy hurting the feelings of others, but I was young and dumb and made the mistake of trying to have it both ways and be a nice guy."
+    },
+    {
+      "t": "narrate",
+      "text": "Within a week of her writing notes, having friends relay vague come-ons and hints, I figured she'd moved on. Hell — I saw her riding shotgun on Derek's arm and was instantly relieved, and thought nothing more on the matter — until her lips found mine."
+    },
+    {
+      "t": "narrate",
+      "text": "So she kissed me. And I might have kissed back a little. It was sensation and it was good — but my head knew better and I started talking, and that sure did the trick."
+    },
+    {
+      "t": "narrate",
+      "text": "She was tears and bitter anger and she quietly exploded on me. I just stood there silent while she lashed into me — and it sure enough hurt — but there was something about her and the situation that made me numb."
+    },
+    {
+      "t": "narrate",
+      "text": "I did not understand her feelings, and all I could give back in return were looks of confusion. Up to this point I was not passionate about Small Wood girls at all — save for summertime romances, vacation liaisons, and bookstore glances. I was cold and insensitive for the most part. I was permanently nice and curious and could listen to them talk for hours, but when it came to giving — I didn't know what it was I could offer."
+    },
+    {
+      "t": "narrate",
+      "text": "I wanted so much that teenage-girl presence in my life — that female half that was more wise and connected than my own twitchy male uncomfortable-in-my-own-skin nonsense — and I took advantage of their friendships because I saw them as good people I wanted in my life."
+    },
+    {
+      "t": "narrate",
+      "text": "I suppose the reason I kept a tangible thread alive and well between us was because I didn't know that many people, and while I didn't have any passionate longing for Shannon, she was decent company and I very much valued that in a human being."
+    },
+    {
+      "t": "narrate",
+      "text": "I couldn't explain my position in regards to her so I did my best to stand there and let the backlash wash over me. The guilt I was feeling for hurting her was replaced by my anger for her own seething resentment. It was unfair, and while I understood it, it hurt me deeply."
+    },
+    {
+      "t": "narrate",
+      "text": "I was a big puppy dog set upon by a pack of mean bitches who extended their resentment to my little sister as well. Uncool, Zeus."
+    },
+    {
+      "t": "narrate",
+      "text": "Derek was a teammate. I was the new kid. So I got my ass a little kicked on the playing field by him and his friends. I suppose I welcomed that — playing the part of the whipping boy, to assail my own guilt."
+    },
+    {
+      "t": "narrate",
+      "text": "Nothing got broken or beat up too bad. But a little penance went a long way."
+    },
+    {
+      "t": "narrate",
+      "text": "One day, harsh words were exchanged — and when it came to baritone ball-shaking bravado, I unleashed the honest truth and my godawful rage. Teenage angst — if left unchecked — explodes. Just like every other goddamn adolescent emotion. No short fuses. All or nothing."
+    },
+    {
+      "t": "narrate",
+      "text": "When I get well and truly angry and I lay into you, the last thing I attack is the body. Derek and the others learned this as the days went on. I laughed it all off and thought it was all in good fun."
+    },
+    {
+      "t": "narrate",
+      "text": "Within a month, I went from being the weird new kid to the likable nerd on the football team."
+    },
+    {
+      "t": "interlude",
+      "text": "End Third Interlude",
+      "sub": "",
+      "duration": 1800
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch2_disappearance"
+    }
+  ]
+}

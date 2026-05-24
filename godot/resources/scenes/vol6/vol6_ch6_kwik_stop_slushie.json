@@ -1,0 +1,157 @@
+{
+  "id": "vol6_ch6_kwik_stop_slushie",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Blue Raspberry",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kwik_stop_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Blue Raspberry",
+      "sub": "Friday — 12:04 — Kwik Stop",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The bell over the door chimes."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam looks up."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben. Ben is in his Pit Stop shirt. His apron is off. He is, she registers, walking with the small specific casualness of a man who is trying very hard not to walk with anything other than casualness, which is — for those who know how to read Ben — a tell."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam's heart begins to do a slow steady thing in her chest."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben walks to the counter. He picks up a blue raspberry slushie cup. He fills it. He brings it to the counter. He sets it down."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam rings him up."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Three twenty-nine.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben hands her a five."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Diego is at a safehouse. He is alive. He is concussed and dehydrated but he is alive. The van got him out of the subdivision Wednesday night. The intercept happened this morning at seven thirty. Boyd — the man who hurt him — is in Nevada by tonight. Vince walked. Tomé took a payoff. Diego asked about you. He asked your name. That was the first word he said when Doyle put him in the van.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam holds the five in her hand. She does not, immediately, give him the change. She does not, immediately, do anything."
+    },
+    {
+      "t": "narrate",
+      "text": "Then her face does the thing faces do when the thing the face has been holding for five days finally — finally — has somewhere to go."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam puts the five in the register. She gives Ben his change. The change is one dollar and seventy-one cents. She places the change in his palm. She closes his fingers over it, gently, with both of her hands."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not cry at the counter. The store is, for this moment, empty, but the security camera at the corner is on, and Sam Miller has, in the past five days, learned to live as if the cameras were always recording."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Thank you for the slushie order, sir.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "My pleasure, miss.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He turns. He walks to the door. He pushes it open. He pauses, half outside, and says, over his shoulder, in his normal voice:"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Hey. You good for tomorrow morning?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah, Ben. I'm good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay. See you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The bell chimes. He leaves."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam stands behind the counter for one minute. Then two. Then she goes to the back, into the small employee bathroom, and she turns on the tap, and she leans her forehead against the cold porcelain of the sink, and she cries — quietly, with the particular efficient relief of a person who has been carrying a five-day-long grief that has just, finally, been given permission to start putting itself down."
+    },
+    {
+      "t": "narrate",
+      "text": "She cries for two minutes. She washes her face. She comes back out. She finishes her shift."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_jesse_bedroom"
+    }
+  ]
+}

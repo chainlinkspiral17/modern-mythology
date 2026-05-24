@@ -1,0 +1,84 @@
+{
+  "id": "vol5_ch0_closing",
+  "vol": 5,
+  "chapter": "0",
+  "type": "chapter",
+  "title": "Ch 0 — The Notebook",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "John stood for a while at the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "The hum of the fluorescents resumed its B-flat dirge. The clock on the kitchen wall continued failing to keep time. He poured the coffee Frasier had not finished into the sink and rinsed the mug and set it back on the rack to dry."
+    },
+    {
+      "t": "narrate",
+      "text": "He sat down on the stool Frasier had just vacated, opened his notebook, and began to write. His pen moved in the frantic, slightly desperate scratching that had become his only reliable response to being in the presence of Frasier Temple."
+    },
+    {
+      "t": "narrate",
+      "text": "He wrote down what Frasier had said about the patterns and the walls. He wrote down what the man in booth six had said about the walls, almost the same words, hours apart, between two people who had no reason to know each other. He wrote down the colors he had seen on Frasier's phone, even though one of them did not have a name. He wrote down Architect of Decay and underlined it twice."
+    },
+    {
+      "t": "think",
+      "char": "John",
+      "text": "I think something is starting."
+    },
+    {
+      "t": "think",
+      "char": "John",
+      "text": "I think something has been starting for a long time and I am only now noticing."
+    },
+    {
+      "t": "narrate",
+      "text": "He closed the notebook. The folded napkin, white and cheap and shaped almost like a flower, sat between the pages where he had tucked it."
+    },
+    {
+      "t": "narrate",
+      "text": "The bell over the front door rang."
+    },
+    {
+      "t": "narrate",
+      "text": "A patron entered, sat in booth four, ordered coffee without looking at the menu. John brought the coffee. The patron drank the coffee. The patron paid in cash, exactly correct, including tip. On the way out, the patron did not say anything. The patron did not need to."
+    },
+    {
+      "t": "narrate",
+      "text": "John watched the door swing closed. He watched the parking lot beyond the door, the pre-dawn light starting, finally, to thin the dark. He watched his own reflection in the glass — shadowed eyes, gaunt face, a young man at a counter waiting for his cue."
+    },
+    {
+      "t": "think",
+      "char": "John",
+      "text": "Suspended between acts. The Fool, on the cliff edge, one foot already out over the abyss. Behind him, the world he was supposed to be leaving. Below him, a fall he had not yet agreed to."
+    },
+    {
+      "t": "narrate",
+      "text": "He picked up the rag. He wiped the counter. The movement was automatic."
+    },
+    {
+      "t": "narrate",
+      "text": "The hum continued. The night, by whatever name, kept being night."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, somewhere across the river, something that was not exactly thunder rolled once across the flat Louisiana sky, and then was quiet, and then resumed being something that was not exactly thunder."
+    },
+    {
+      "t": "narrate",
+      "text": "The cycle, paused, took its breath."
+    },
+    {
+      "t": "narrate",
+      "text": "The Fool, listening, took his."
+    },
+    {
+      "t": "flag",
+      "key": "vol5_ch0_complete",
+      "val": true
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "id": "vol1_ch2_pharmacy_mirror",
+  "vol": 1,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Act One — Fortress of Solitude",
+  "nodes": [
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Immortal animal spirit dancing on cave wall — I cannot grasp but merely perceive some primal truth into this quest, inserted dis-honestly."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust stands up and inspects himself in the mirror."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "My world of possibility expands with each new breath. They give this drug to shut-ins — agoraphfolk struggling with writer's block."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust looks at his phone."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Time to make some work. Dime-this corporate skrill. All the tech-pharm nerds — holla at me, please."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust exits the office, emerges into the drugstore proper, looks out at the slow medicated trickle of society."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_pharmacy_floor.jpg"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "From my whitewalled fortress of solitude I emerge and bask upon my kingdom — of cheap fluorescents and impulse buys. For I rule it well."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "deborah",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Deborah is helping a customer at the front table. Faust saunters up."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Everything going great today."
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "neutral",
+      "text": "Bit early to tell."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Some days I feel like an IV drip."
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "neutral",
+      "text": "Pretty much sums up my view of purgatory."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "old_woman",
+      "expr": "warm",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "A customer interrupts — a happy old woman."
+    },
+    {
+      "t": "say",
+      "char": "Old Woman",
+      "expr": "warm",
+      "text": "When most the ones my age learn how to be happy, they've already lost so much time. So enjoy it. Be young and happy forever."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust checks the bottle and hands it over to her."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Another happy customer served."
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "neutral",
+      "text": "Another one who sees the light oncoming."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I feel like Charon ferrying."
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "neutral",
+      "text": "Aptly put."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "eric",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust's other assistant, Eric, enters."
+    },
+    {
+      "t": "say",
+      "char": "Eric",
+      "expr": "neutral",
+      "text": "Yo yo ma in the hizzouse."
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "neutral",
+      "text": "What he got in that grill?"
+    },
+    {
+      "t": "say",
+      "char": "Eric",
+      "expr": "neutral",
+      "text": "Just a bridge and two f-holes."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "MC R-I-B is back!"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust and Eric palm-shake. Eric puts down lunch."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I smell me some Vietnamese."
+    },
+    {
+      "t": "narrate",
+      "text": "Deborah is already digging into hers."
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "neutral",
+      "text": "So good. Give it over."
+    },
+    {
+      "t": "say",
+      "char": "Eric",
+      "expr": "neutral",
+      "text": "Six eggrolls between the three of us."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Hint: lunch is on me — because I want three."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch2_park"
+    }
+  ]
+}

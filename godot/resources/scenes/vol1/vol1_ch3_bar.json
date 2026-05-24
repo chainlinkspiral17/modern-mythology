@@ -1,0 +1,174 @@
+{
+  "id": "vol1_ch3_bar",
+  "vol": 1,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Act One — A Hip Bar",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_bar_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "A Hip Bar",
+      "sub": "INT. · Night · Chalk table in the back",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "INT. A HIP BAR — NIGHT"
+    },
+    {
+      "t": "narrate",
+      "text": "The Handsome Triumvirate wander in and make their way to the chalk table."
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner is on the phone."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Be home later. Drinking with the boys. To steer them out of trouble. Love you too."
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Shots all around."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "None for me. Ginger beer, thanks."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'll help carry. Chalk table's open."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Going out for a smoke — join you so on."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust and Jacob sit at the table."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Emily, Helen, and Margaret are on their way."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "They're trying to set me up with Margaret."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Yeah. We boned."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Figured."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Already drawing up some wacky shit. Still hot for teacher or star pupil — move, but quick, else some one will. There's timing, and then there's timing."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"Time and place for everything — you know this.\"",
+          "goto": 24
+        },
+        {
+          "text": "\"From where you look, sure. From where I sit, no.\"",
+          "goto": 26
+        },
+        {
+          "text": "[Say nothing. Let him finish.]",
+          "goto": 28
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Time and place for everything. You know this."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch3_bar_b"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "From where you look, sure. From where I sit — no. Don't count me out."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch3_bar_b"
+    },
+    {
+      "t": "narrate",
+      "text": "You let it sit. Jacob shrugs, half-respectful. He has known you long enough to read a silence."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch3_bar_b"
+    }
+  ]
+}

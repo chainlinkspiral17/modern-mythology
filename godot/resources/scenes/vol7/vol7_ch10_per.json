@@ -1,0 +1,313 @@
+{
+  "id": "vol7_ch10_per",
+  "vol": 7,
+  "chapter": 10,
+  "type": "chapter",
+  "title": "Wednesday — The Shop",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 10",
+      "sub": "Wednesday Morning",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Kai opened the shop at seven-twenty. He had walked over from Lena's in the rain that had picked up again after he left. The rain on Main was the same rain it had been since Tuesday afternoon.",
+      "t": "narrate"
+    },
+    {
+      "text": "The patch on the sanderling mural across from Board Lords was bigger than it had been yesterday morning. He stopped on the sidewalk in front of it and looked. The sanderling's body was now most of the way gone. The patch had taken the head this week. The bird had been a sanderling on a wet beach at low tide and was now, by the substrate's quiet expansion, mostly a flat black shape with a beak and one foot.",
+      "t": "narrate"
+    },
+    {
+      "text": "He did not, this morning, do anything about it. He went into the shop. He flipped the CLOSED to OPEN. He turned on the back light. He put the kettle out. He stood at the front window for a count and drank coffee out of the chipped Tidewater mug Devon had left when he moved.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "Hans came across from the bakery at seven-thirty-two. Hans was in the apron and the flour and the not-having-put-a-coat-on. He had bread in the cloth.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hans.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "You're back.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm back.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Today is good.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah, Hans.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "You haven't slept properly.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I slept five hours.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "That is not properly. Eat the bread. Whatever today is, do it after the bread.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I had eggs at Lena's.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Eat the bread anyway. The eggs at Lena's are not bread. Eat the bread.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He set it on the counter. Hans, who did not stay in conversation past the point his hands had something to be doing somewhere else, was about to turn for the door when he stopped.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "My son-in-law is in town.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Per.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Per.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I thought he was up in Eugene through August.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "He was. He came home Tuesday. He has been at my house since Tuesday afternoon. He has been at the bakery this morning because he could not sleep and the only person up in this house at four was me. He has been at the back kitchen for three hours.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "He came home because his mother has been calling him about her bowl.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai did not, immediately, respond.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "His mother's bowl.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Marit's bowl. My wife's. She has had a bowl from her own mother since 1971. The bowl has been warm since the second week of July. She called Per in Eugene three weeks ago and she has been calling him every Sunday since. He came home on Tuesday because she called him on Sunday and she was crying. He has been at the bakery this morning because his mother is at our house and is sleeping and Per could not be in the house with the bowl warm and his mother asleep and his thoughts.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hans.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You're telling me this now.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I am telling you this now because Tem is at the cabin today and Tem has been carrying a warm bowl since the second week of July and Tem has been carrying it alone, and Per has been carrying his mother's warm bowl since Sunday, and the two of them are in the same town, and the two of them should be at the same table. Saturday at six was the table I had in mind. But Saturday is not today. Per is at the bakery now.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm going to the cabin at eleven.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Take Per with you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hans.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Take him. He is going to want to come. He has been waiting for somebody to ask him.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "He is in the back kitchen with the oven.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'll come over at ten-fifty.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Good. Eat the bread.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He went. The bell rang. Hans walked back in the rain without a coat.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Kai stood at the counter with the loaf in the cloth and looked at the door. Hans had told him, in the four years he had been the man who came over with bread, fewer things about his life than Kai could count on a hand. Hans had not, in those four years, ever brought up Marit's bowl. Kai had not known Marit had a bowl. Kai had not known Per's mother was Hans's wife's family. The bowl had been on Hans's wife's mother's shelf since 1971 and Kai had not known.",
+      "t": "narrate"
+    },
+    {
+      "text": "He drank the coffee. He picked up the bread. He cut a piece and ate it standing at the counter. The bread was the bread Hans made on Wednesdays with the rye flour from the small mill up the river. The bread was good. The bread was always good.",
+      "t": "narrate"
+    },
+    {
+      "text": "At eight-fifteen Lena texted: \"picking up Tem from her place. We'll be there at 10:30.\" He texted back: \"Hans's son-in-law Per is coming up with me. His mother has a warm bowl. Hans told me ten minutes ago.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "She replied in two minutes: \"Marit's bowl. Yeah. Tem said. We knew that one. Tem didn't know Per was in town.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat with that. He did not, for a count, do anything. Then he texted: \"who else does Tem know about.\" Lena replied: \"we'll talk in the truck.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "By nine-thirty the shop had been to one customer, a man named Eddie Roe who had bought a set of bearings and not stayed for conversation. Kai had cleaned the front glass. He had checked the deck wall. He had stood at the front window twice looking at the sanderling mural and not gone outside.",
+      "t": "narrate"
+    },
+    {
+      "text": "At nine-fifty he turned off the back light. He pulled the kettle off the burner. He flipped the OPEN to CLOSED. He wrote a note on a piece of register paper and taped it to the inside of the door above the sign: \"Family thing. Back Friday. — Kai.\" He locked the front. He went around to the back. He pulled the truck out of the alley and drove the three blocks to the bakery.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch10_cabin",
+      "t": "jump"
+    }
+  ]
+}

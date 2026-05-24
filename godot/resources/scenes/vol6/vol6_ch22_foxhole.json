@@ -1,0 +1,915 @@
+{
+  "id": "vol6_ch22_foxhole",
+  "vol": 6,
+  "chapter": 22,
+  "type": "chapter",
+  "title": "Ch 22 — The Foxhole",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_strip_mall_exterior_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Foxhole",
+      "sub": "Saturday — 17:52 — New Auburn",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The Foxhole is on the back side of the strip mall on Old San Antonio Road in New Auburn."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse pulls into the lot at five fifty-two. The Civic has been making a noise since June that he has been not addressing. The noise had been louder on the drive over. He cuts the engine. He sits for a count with both hands on the wheel."
+    },
+    {
+      "t": "narrate",
+      "text": "He has been awake since seven AM Friday. He has slept maybe four hours in the back of the Civic at his mother's that afternoon. The bridge for Substation Nine — the four-line stanza Em had told him to write Wednesday at practice and had told him to write correctly Thursday at her kitchen table and had told him to stop fucking with Friday at five in his garage — is in his head, more or less. He thinks. He cannot, in the Civic in the lot, recite it out loud."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets out."
+    },
+    {
+      "t": "narrate",
+      "text": "He takes the Telecaster out of the trunk. He takes the small amp out of the trunk. He puts the strap of the gig bag over his shoulder and picks up the amp by the handle. He locks the Civic. The Civic clunks the way it has been clunking since the door's locking mechanism started to go in 2024."
+    },
+    {
+      "t": "narrate",
+      "text": "He walks to the back door of the venue."
+    },
+    {
+      "t": "narrate",
+      "text": "Em's car is in the lot. Carl's truck is in the lot. Nate's beat-up Mazda is in the lot. The Cypress Motel sign across the road is on. Two doors down at the back of the strip mall is the unit — the unit Jesse has been watching since June, the unit with the white panel van that comes Tuesday and Wednesday nights between eleven and one, the unit that is, this evening at five fifty-two, dark."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at the unit for a count."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes inside."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_foxhole_interior_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The Foxhole's load-in is the Foxhole's load-in. He has done two of them, both as openers for other bands. This is the first time he is doing the Foxhole's load-in as the band the venue has booked the night for."
+    },
+    {
+      "t": "show",
+      "char": "em",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "carl",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "nate",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Em is on the stage with her mic in her hand checking the cord. Carl is at the kit, half-assembled, looking at the snare's wing nut. Nate is plugging the bass into the house DI. Chess is at the small DJ booth at the side of the stage with her laptop open and Ramón at her elbow."
+    },
+    {
+      "t": "narrate",
+      "text": "Em sees him."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Jess.",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Em.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "How are your hands.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at his hands. He flexes them."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Fine.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "You sleep.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Some.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Bridge.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Got it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She turns back to the cord. He goes to the stage and sets the amp down at his position. He plugs in the Telecaster. He flips the amp on. He plays the open A at low volume. The note rings clean. He plays the open D. The note rings clean."
+    },
+    {
+      "t": "narrate",
+      "text": "He kneels beside the amp. He pulls the bridge lyrics out of his back pocket — written, in his own kid's-handwriting, on the back of the flyer for last week's open mic in Selma — and reads them over once."
+    },
+    {
+      "t": "narrate",
+      "text": "He puts the page back in his pocket."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Sound check is at six twenty. The Foxhole's sound guy is a man named Ricky who has been at the board since 2009 and who has, over the years, become legendary in the southwest Texas small-venue circuit for being the only sound guy in a hundred-mile radius who actually listens during sound check rather than nodding while reading his phone. Ricky is fifty-three. Ricky has white hair pulled back in a small tail. Ricky drinks Topo Chico from the cooler under the board."
+    },
+    {
+      "t": "narrate",
+      "text": "Ricky says, from the back: Suburban Blight. Drums first. Carl, give me the kick."
+    },
+    {
+      "t": "narrate",
+      "text": "Carl gives him the kick. Ricky listens. Ricky adjusts something. Ricky says: Snare. Just the snare. Five hits, even."
+    },
+    {
+      "t": "narrate",
+      "text": "Carl hits the snare five times. Ricky says: Good. Hi-hat."
+    },
+    {
+      "t": "narrate",
+      "text": "The sound check moves through the kit, through Nate's bass, through Em's mic, through Jesse's Telecaster. Ricky takes about twenty minutes. By six forty-three he is satisfied."
+    },
+    {
+      "t": "narrate",
+      "text": "From the back: All right. You sound like a band. The room's gonna eat about a third of the highs once we have a hundred and twenty people in it. I'll compensate at the board. Don't worry about it. Em, your mic's good. Jess, leave your knob where it is. Carl, when you do the fill on the third bar of the third song you do the high tom too hard. Hit it like you want to be married to it, not like you're mad at it."
+    },
+    {
+      "t": "narrate",
+      "text": "Carl says: Got it. Ricky says: Good. Doors are at eight. You go on at nine."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes to the cooler. He gets a Topo Chico."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_foxhole_dressing_room.jpg"
+    },
+    {
+      "t": "show",
+      "char": "em",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "carl",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "nate",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Doors open at eight. Jesse and Em and Carl and Nate are in the small dressing room at the back of the venue. The dressing room is, by Foxhole standard, a storage closet with two folding chairs and a clothing rack and a sign on the door that says DRESSING ROOM in marker. The fluorescent overhead has a slow buzz. The four of them are spread across the room: Em on one folding chair stretching her neck, Carl on the floor against the wall with his sticks rolling between his palms, Nate on the second folding chair on his phone, Jesse standing at the rack with one hand on the metal."
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Anyone want to say anything.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Nate",
+      "text": "No.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carl",
+      "text": "Bridge.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "What about it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carl",
+      "text": "Jess. The bridge. You good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carl",
+      "text": "You're going to play it. Don't think about it. Em comes in on the second line. I'm gonna hold the high-hat through the whole thing. Nate's gonna keep the root walk the way we ran it Friday. The bridge is gonna do what the bridge is gonna do.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah, Carl.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Jess.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She gets up. She crosses the room. She is five-three. He is six-one. She puts both her hands on either side of his face, like a girl her grandmother's age — like an actual grandmother — and looks up at him."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "The song is yours. The room is mine. We are going to play the songs we have practiced. The bridge is the bridge. Carl is going to play the kit. Nate is going to play the bass. I am going to sing. You are going to play the lead and you are going to sing the bridge. We are going to do that for forty-five minutes. Then we are going to get off the stage. Then Chess is going to play her set. Then we are going to drink and go home. Yes?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He breathes out."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yes, Em.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She lets go of his face. She sits back down. She stretches her neck again."
+    },
+    {
+      "t": "narrate",
+      "text": "At eight fifty-eight Ricky knocks on the door. He says: Five. He goes."
+    },
+    {
+      "t": "narrate",
+      "text": "The four of them stand up. Carl rolls up off the floor. Nate puts his phone in his back pocket. Em shakes out her hands."
+    },
+    {
+      "t": "narrate",
+      "text": "They walk down the small hallway to the stage door."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_foxhole_stage.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ricky, at the board across the room: All right. Going up."
+    },
+    {
+      "t": "narrate",
+      "text": "The house lights dim. The crowd noise rises and then dips and then rises again — the standard pre-show shift of a room of about a hundred and ten people deciding to give the next forty-five minutes of their attention to the band that is about to come on. Em walks out first. Carl behind her. Nate behind Carl. Jesse last."
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "He gets to his position. The Telecaster is on the strap. The amp is at his right. The cord is at his left. The set list — written on the back of the same flyer the bridge is on — is at his feet, taped to the floor with masking tape Ricky put down at six forty-eight."
+    },
+    {
+      "t": "narrate",
+      "text": "GRID FAILURE"
+    },
+    {
+      "t": "narrate",
+      "text": "SUBSTATION NINE"
+    },
+    {
+      "t": "narrate",
+      "text": "BOX FAN"
+    },
+    {
+      "t": "narrate",
+      "text": "BLOWBACK"
+    },
+    {
+      "t": "narrate",
+      "text": "HERE COMES YOUR MAN"
+    },
+    {
+      "t": "show",
+      "char": "em",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Hey. We're Suburban Blight. We're from this town. Thanks for coming out. Here's our first one.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Carl counts off."
+    },
+    {
+      "t": "narrate",
+      "text": "Grid Failure opens with the bass figure Nate has been playing since 2024. The bass figure goes for four bars. Then Carl comes in on the kick. Then Jesse comes in with the rhythm guitar — open chords, downstroke, the way the song wants. Then Em."
+    },
+    {
+      "t": "narrate",
+      "text": "The room moves. Not all of the room. Most of the room is standing and bobbing and listening — the standard middle bell of a small Texas venue audience. About a third of the room is moving more — the kind of moving Carl plays for and Em sings for and Jesse, on the back side of the stage with his left hand on the neck, is trying not to be distracted by."
+    },
+    {
+      "t": "narrate",
+      "text": "At the front of the stage against the lip is one kid. The kid is twenty-five, six-two, in a black T-shirt for a band Jesse does not recognize, with hair down to his shoulders. The kid is at the rail. By the second verse the kid is fully headbanging."
+    },
+    {
+      "t": "narrate",
+      "text": "Em, on backing vocals during the bridge of Grid Failure, gives the kid a quick grin. The kid goes harder."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, on stage, registers — without looking at Em, without looking at the kid, with his eyes on the fretboard — that the kid has just become the room's permission slip. The kid lets the rest of the room not have to perform reverence. The kid is going to do the heavy lifting at the front for the whole set."
+    },
+    {
+      "t": "narrate",
+      "text": "Grid Failure ends. The applause is louder than the band's previous applause averages. By Jesse's count, the applause is the loudest applause the band has gotten for this song in twelve playings. The kid's whoop comes a quarter-second before the rest."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Thank you. This next one — this next one is new. It's called Substation Nine.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Carl counts off."
+    },
+    {
+      "t": "narrate",
+      "text": "The opening figure is the four-bar thing Jesse has been playing since June. He plays it the way he has played it in the garage twenty-six times. He plays it the way he has played it at sound check. He plays it now in the room, with the amp through the PA, with a hundred and ten people in front of him — and the figure sounds different. The figure has, in the Foxhole, the weight a song-opening has when the room has already decided to pay attention to the band playing it."
+    },
+    {
+      "t": "narrate",
+      "text": "The first verse comes. The room settles. He sings."
+    },
+    {
+      "t": "narrate",
+      "text": "The lyrics are about a town that has been pretending for thirty years not to know what the substation is. He had not, until he gave the song to Em on Wednesday, said this out loud to anyone, including to himself in any sentence that had a subject and a verb. The lyrics had said it for him. The lyrics had been saying it for him since March."
+    },
+    {
+      "t": "narrate",
+      "text": "The first chorus comes. The room has stopped moving. The kid at the rail is still headbanging. The rest of the room is heavy. The rest of the room is — Jesse can feel it through the stage, through the cord, through the amp's slight tremble against his right calf — listening."
+    },
+    {
+      "t": "narrate",
+      "text": "The second verse."
+    },
+    {
+      "t": "narrate",
+      "text": "The second chorus."
+    },
+    {
+      "t": "narrate",
+      "text": "Then the bridge."
+    },
+    {
+      "t": "narrate",
+      "text": "The four-chord progression he had figured out on Wednesday and had set lyrics to between Wednesday night and Thursday morning and had brought to band on Friday and had heard the band lock into in his garage at five PM Friday — that progression now, in The Foxhole, opens with the suspended fourth chord that resolves to the third on the second bar. Em comes in on the second line. He sings the bridge."
+    },
+    {
+      "t": "narrate",
+      "text": "here we are anyway"
+    },
+    {
+      "t": "narrate",
+      "text": "with the thing we have been carrying"
+    },
+    {
+      "t": "narrate",
+      "text": "and the room we are carrying it in"
+    },
+    {
+      "t": "narrate",
+      "text": "and the people we are carrying it with"
+    },
+    {
+      "t": "narrate",
+      "text": "and the small late evening, in mid-august"
+    },
+    {
+      "t": "narrate",
+      "text": "when the door is open two inches and the light is faint"
+    },
+    {
+      "t": "narrate",
+      "text": "and we are in the parking lot"
+    },
+    {
+      "t": "narrate",
+      "text": "but not closer"
+    },
+    {
+      "t": "narrate",
+      "text": "The last line is the last line."
+    },
+    {
+      "t": "narrate",
+      "text": "The room, on the last line, does the thing. The thing is — Jesse, with both hands on the Telecaster, holding the last chord and letting it ring, will not be able to fully describe later — a held breath that exhales out into an attention the room had not, before the bridge, been giving. The room has heard the line. The room knows what the line is about. The room is twelve miles from the substation. Most of the room lives close enough to the substation that nine of them probably have a story."
+    },
+    {
+      "t": "narrate",
+      "text": "Carl rolls the high-hat. Nate walks the root down. Em comes back in on the third verse. Jesse plays the lead break clean for the first time in twelve playings."
+    },
+    {
+      "t": "narrate",
+      "text": "Substation Nine ends."
+    },
+    {
+      "t": "narrate",
+      "text": "The applause is not the Grid Failure applause. The applause is shorter. Quieter. The kind of applause a room gives a song that has just done something to it. The kid at the rail does not whoop. The kid at the rail, for the first time in the set, has both his hands on the rail and is breathing."
+    },
+    {
+      "t": "narrate",
+      "text": "Em, at the mic, lets the silence sit for two seconds longer than she would have on Wednesday."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Thanks. This next one is about a box fan.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Carl counts off. Box Fan lightens the room. The room laughs in the third bar. By the chorus the kid at the rail is back. The set is back."
+    },
+    {
+      "t": "narrate",
+      "text": "The rest of the set is the rest of the set. Blowback. Here Comes Your Man. Em singing the Pixies cover at the close. The room singing along on the here comes your man — most rooms do. By the last verse the kid at the rail is singing too."
+    },
+    {
+      "t": "narrate",
+      "text": "The set ends at nine forty-three. The applause is what a small Texas venue audience gives a band that, in forty-five minutes, they have decided to remember."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Thanks, y'all. We're Suburban Blight. We'll be around. Chess is up in fifteen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They walk off."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Backstage Jesse drinks half a bottle of water in two pulls."
+    },
+    {
+      "t": "show",
+      "char": "carl",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Carl claps him on the shoulder once on the way past."
+    },
+    {
+      "t": "show",
+      "char": "nate",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Nate",
+      "text": "Yeah, dude.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "em",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Em comes through the door last. She is in the small post-set state of a vocalist who has just finished singing for forty-five minutes. She puts her hand on the rack and breathes."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Substation.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "The bridge.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "You played it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "The room heard it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah, Em.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at him. She does not, at this hour, hug him or say I'm proud of you or do any of the things she might have done at nineteen or that her mother would have done now. She is eighteen and she is the front of a band that has, tonight, played the song the band had been waiting to play."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Good work.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah, Em.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She goes back out front to catch Chess's first track."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_foxhole_bar.jpg"
+    },
+    {
+      "t": "show",
+      "char": "chess",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "By ten Chess is up and the room is hers. Chess opens with a Cumbia remix that has a small substation hum in the low register that nobody on the stage but Chess and Jesse will recognize as a substation hum. Chess winks at Jesse from the booth on her way to the first drop."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the bar in the back, drinks a beer he is not technically old enough to buy but that he has been buying at this venue since he was nineteen. The bartender, who knows, does not ask. The bartender slides him the bottle. He drinks."
+    },
+    {
+      "t": "narrate",
+      "text": "Carl is at the front by the rail with two girls from Selma who came up for the show. Nate is at the door of the venue with his phone, on a call with somebody who is probably his girlfriend. Em is at the booth talking to Chess about a song they have been talking about for a month."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse watches the room. The kid who had been at the rail is now talking to a different kid who he had apparently come with. The two of them are at a high-top to the left of the stage. The kid is gesturing. The other kid is nodding. The kid is, probably, doing the thing concertgoers do which is to tell their friends about the song they just heard."
+    },
+    {
+      "t": "narrate",
+      "text": "The song. The bridge."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the bar, drinks. He does not, tonight, perform thinking about it."
+    },
+    {
+      "t": "narrate",
+      "text": "By midnight he is — by his own count — done. He has been awake since seven AM Friday. He has played the set. He has watched Chess open her set. He has, somewhere in the third track of Chess's set, registered the moment the night had become the night and the night's work had been done."
+    },
+    {
+      "t": "show",
+      "char": "em",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I'm gonna head.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Drive safe. Text me when you're home.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He hugs Em. He goes to the bar and claps Carl on the shoulder. He goes to the door and waves at Nate, who is still on the phone and waves back. He goes out the back."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_civic_parked_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The lot at midnight oh-six is mostly cars. The Civic is two rows back. He starts walking toward it. He gets halfway across the lot."
+    },
+    {
+      "t": "narrate",
+      "text": "He stops."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks across the lot at the back of the strip mall. The unit at the back is dark. The white panel van is not in the lot. The dark sedan is not in the lot. The unit, on the night his band has played its biggest gig at the venue across the lot from this unit, is not active."
+    },
+    {
+      "t": "narrate",
+      "text": "He stands at the Civic for a long count."
+    },
+    {
+      "t": "narrate",
+      "text": "The dark might mean nothing. The dark might mean the people who run the unit decided that a Saturday with a hundred and twenty people across the lot was a night to be elsewhere. The dark might mean they moved the operation. The dark might mean the operation has, by some apparatus-shape thing Jesse does not yet understand, ended."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, at midnight oh-six on a Saturday in mid-August in a parking lot in New Auburn, find out tonight which one it is."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets in the Civic. He drives."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_henderson_kitchen.jpg"
+    },
+    {
+      "t": "show",
+      "char": "jim",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls into his parents' driveway at twelve thirty-one. The kitchen light is on. He gets out. He goes up the walk. He opens the front door quietly."
+    },
+    {
+      "t": "narrate",
+      "text": "His father is at the kitchen table. Jim has, on the table in front of him, a sheet of paper. Jesse, at the kitchen doorway, recognizes the sheet of paper. The sheet of paper is the lyric sheet for Substation Nine that Eileen had brought home for him from the band's printed flyer earlier this week. Jim has been reading it."
+    },
+    {
+      "t": "narrate",
+      "text": "Jim looks up when Jesse comes in. Jim does not say anything for a count."
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "How was it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the kitchen doorway, does not, at twelve thirty-one in the morning after a forty-five-minute set at the venue across the lot from the unit, fully know what to say."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Dad. The bridge landed.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim looks down at the lyric sheet."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Yeah, son. I figured.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He folds the lyric sheet. He puts it in the breast pocket of his shirt. He gets up. He crosses the kitchen. He puts his hand briefly on Jesse's shoulder."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Eat. Sleep.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He goes up the stairs."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse stands at the kitchen doorway for a long count. Then he goes to the refrigerator. He gets the leftover enchiladas his mother had made Thursday. He heats them up. He eats them at the table where his father had been reading the lyric sheet."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps at one fifteen."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch22_sunday"
+    }
+  ]
+}

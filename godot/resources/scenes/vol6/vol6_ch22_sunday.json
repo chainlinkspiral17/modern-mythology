@@ -1,0 +1,106 @@
+{
+  "id": "vol6_ch22_sunday",
+  "vol": 6,
+  "chapter": 22,
+  "type": "chapter",
+  "title": "Ch 22 — Sunday",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_bianca_back_porch_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "1:15 AM",
+      "sub": "Sunday — 01:15 — The Town",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "At one fifteen Sunday morning the town is in the dark."
+    },
+    {
+      "t": "narrate",
+      "text": "At the Henderson house on Magnolia, Jesse is at the kitchen table eating enchiladas his mother heated for him before going up to bed. The lyric sheet for Substation Nine is in the breast pocket of the shirt his father is wearing to sleep in. Jim is, by one fifteen, asleep with the shirt on, which is the first time in four years Jim has, on a Saturday, fallen asleep in a shirt he means to wear in the morning."
+    },
+    {
+      "t": "narrate",
+      "text": "At the Kazantzakis house on Live Oak, Eileen is asleep beside her husband. Coach K had carried the folding chair from the truck to the garage when they got home at eleven forty. He had not, when they got into bed, said anything. She had put her hand briefly on his chest. He had taken her hand and held it. They had slept."
+    },
+    {
+      "t": "narrate",
+      "text": "At the Diaz house at the end of Magnolia loop, Diego has been awake since three forty-two. He is in the dark in his bedroom with the curtains pulled. He has not turned on the light. He has not picked up his phone. He is, for the next two hours, going to lie in the dark thinking about an October letter. He is going to draft three versions in his head before sunrise. He is going to write the first of the three on Wednesday after the second letter is gone."
+    },
+    {
+      "t": "narrate",
+      "text": "At the Marin house on Elm, Bianca is on the back porch with the cordless on the patio table beside her. She is not, this hour, on the line with anyone. She is wearing the green terrycloth robe Mike gave her in 2019. The crepe myrtle has stopped doing what it does at this hour, which is to drop. The cicadas have stopped at this hour, which is to wind down. The cul-de-sac is, by one fifteen, the cul-de-sac it is on every Saturday at one fifteen — quiet, dark, with the standard four porch lights still on at the four houses that keep them on."
+    },
+    {
+      "t": "narrate",
+      "text": "Don Geller's light is one of the four."
+    },
+    {
+      "t": "narrate",
+      "text": "She has been on the back porch since eleven, when Eileen Henderson — who had come over at ten fourteen and stayed for the kouglof and the coffee and an hour of Friday-table talk in a Saturday register — had gone home. Sammy had come home at four. They had eaten dinner together at six. Sammy had gone out at seven to a thing one of her friends was doing. Sammy had come back at ten. Sammy had hugged her mother at the kitchen counter and had gone upstairs and was, by ten thirty, asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca had come out to the porch."
+    },
+    {
+      "t": "narrate",
+      "text": "She has been here three hours."
+    },
+    {
+      "t": "narrate",
+      "text": "She has not, in three hours, decided anything. She has been letting the Saturday be what the Saturday was. Carlos called this morning. Carlos said her sister's name. Eileen came by at ten fourteen. Eileen ate kouglof. The radio is on a FedEx truck somewhere. The radio will be at the house Wednesday. Friday she will tell the four-thirty table about Rosa. Wednesday she will figure out what to do with the radio."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, this hour, decide."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits."
+    },
+    {
+      "t": "narrate",
+      "text": "The Saturday is over."
+    },
+    {
+      "t": "narrate",
+      "text": "The Sunday is the day before school."
+    },
+    {
+      "t": "narrate",
+      "text": "The summer has, by Sunday, exactly one day left."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes inside at one twenty. She locks the back door. She goes upstairs. She passes the door to Sammy's room — open about three inches, the way Sammy sleeps. She does not look in. She gets into bed."
+    },
+    {
+      "t": "narrate",
+      "text": "The room is dark."
+    },
+    {
+      "t": "narrate",
+      "text": "She sleeps."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

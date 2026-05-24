@@ -1,0 +1,125 @@
+{
+  "id": "vol1_ch4_dream_bed",
+  "vol": 1,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Act One — The Dream Bed",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_dream_bed.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "INT. Dream Bed",
+      "sub": "Watches in purple gibberish · Paintings breathing",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "INT. DREAM BED — NIGHT"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust sits up, checking his watch. It glows purple with gibberish. Next to him in bed is the woman. Both of them are naked under the covers. The windows glow with a yellow sort of barrier. Paintings on walls and floors pulse with life."
+    },
+    {
+      "t": "show",
+      "char": "woman",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm afraid I'm going to have to kick you out."
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "Do you do this to all your dreamgirls?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Trying to be a gentleman. But let me have this corner pocket of unfettered thought, and slumber."
+    },
+    {
+      "t": "narrate",
+      "text": "The woman gets out of bed, her body glowing colder as it leaves the heat of the bed."
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "Fine, Faust. Your thoughts are your own."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust leans in close, kissing her as she pulls away."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Thanks for respecting my secret scheming, baby."
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "I just hope you keep me reasonably near."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "You may be more real than all else."
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "No wonder you keep secrets from me, Faust."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I may not be able to answer all your questions — but I'll strive for honesty in all things."
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "Honesty screws up the world, Faust. There are degrees."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust lets go of the woman. She fades away."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch4_dream_bar"
+    }
+  ]
+}

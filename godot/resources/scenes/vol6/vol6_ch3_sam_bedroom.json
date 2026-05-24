@@ -1,0 +1,116 @@
+{
+  "id": "vol6_ch3_sam_bedroom",
+  "vol": 6,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Ch 3 — Sam's Bedroom",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_sam_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "1428 Meadowlark Circle — Sam's Bedroom",
+      "sub": "Tuesday · 22:34",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam is in bed. Lamp off. She has not showered. She has not, in fact, done anything for the last hour except stare at the ceiling and think, in a measured orderly way, about what she has learned today."
+    },
+    {
+      "t": "narrate",
+      "text": "The catalogue so far —"
+    },
+    {
+      "t": "narrate",
+      "text": "Her father is part of it, in a way she does not yet know the size of. Graciela is part of a network. Maya is part of the network, and was inserted by the network, and is not, herself, managing it."
+    },
+    {
+      "t": "narrate",
+      "text": "F.T. is running at least part of the network and is either in New Orleans or Graustark and has some connection to Jimmy Daigle that predates Jimmy Daigle's current condition. Rick, Hal, the reporter in the sedan, the partner in the sedan, Miriam (whose name Sam has not yet been given but whose existence she has inferred from context), and at least one other adult Sam cannot yet place — these are nodes."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben has been doing the same work from a different entry point for three months, without knowing there was a network, and is about to discover that there is one. Jesse's father is somehow involved but is probably, Sam now suspects, a victim of the apparatus rather than its agent."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego is alive. Diego is being held. Diego is not okay, which Maya has told her to interpret as the worse meaning. Sunday is the hinge. She, Sam, has five days to practice."
+    },
+    {
+      "t": "narrate",
+      "text": "She sleeps badly. But she does sleep."
+    },
+    {
+      "t": "interlude",
+      "text": "01:17",
+      "sub": "Through two walls",
+      "duration": 1600
+    },
+    {
+      "t": "narrate",
+      "text": "At 01:17 she is briefly awake, and she hears, from her parents' bedroom down the hall, her father's phone vibrate. She hears it through two walls. She hears him pick it up."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "role": "— quietly · through two walls —",
+      "expr": "neutral",
+      "text": "\"Understood.\""
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "role": "— a moment later —",
+      "expr": "neutral",
+      "text": "\"I'll handle it.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She files both words. She goes back to sleep."
+    },
+    {
+      "t": "interlude",
+      "text": "03:03",
+      "sub": "A dream",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "At 03:03 she dreams, for the first time in her life, of her father as a young man in a photograph she has never seen — a photograph of him at twenty-something, in a uniform she does not recognize, standing in front of a building she does not recognize, shaking hands with a man in a charcoal suit whose face, in the dream, is only partially visible, but whose eyes, when they meet hers — because they do meet hers, because the dream is not just a record but an attention — are exactly the eyes she had felt on her, this morning, from a person who was not, physically, in the Kwik Stop when she looked up from the slushie machine and registered that she had been being watched."
+    },
+    {
+      "t": "narrate",
+      "text": "She wakes at 03:04. She writes the dream down. She goes back to sleep. She does not, this time, dream."
+    },
+    {
+      "t": "flag",
+      "key": "sam_dream_charcoal_suit",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch3_coda"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "id": "vol5_ch0_model_city",
+  "vol": 5,
+  "chapter": "0",
+  "type": "chapter",
+  "title": "Ch 0 — Model City",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "Frasier turned the phone screen toward him. On the screen, a sequence of geometric shapes pulsed in slow rotation, blue and green and a color John had never seen on a screen before, a kind of luminous bruise that did not seem to belong to the visible spectrum. The shapes were, perhaps, a city seen from above. The shapes were, perhaps, a circuit. The shapes were, perhaps, both."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "expr": "neutral",
+      "text": "\"Working on a new model city myself. More — resilient. Thought you should see.\""
+    },
+    {
+      "t": "say",
+      "char": "John",
+      "expr": "neutral",
+      "text": "\"Why.\""
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "expr": "neutral",
+      "text": "\"Because someone has to be the witness, Johnny. That's your job. I appreciate that you take it seriously.\""
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "expr": "amused",
+      "text": "\"I appreciate that you take it more seriously than you should.\""
+    },
+    {
+      "t": "narrate",
+      "text": "John looked at his own notebook, open beside the coffee mug. Filled with cryptic observations, overheard snippets, hand-drawn diagrams of Graustark's warped ley lines. He was trying to document the decay. Frasier was, evidently, building new decays from scratch."
+    },
+    {
+      "t": "think",
+      "char": "John",
+      "text": "Architect of Decay, John had scribbled once, in the margin, next to Frasier's name. He had circled it. He still wasn't sure if it was a job title or a warning label."
+    },
+    {
+      "t": "say",
+      "char": "John",
+      "expr": "tired",
+      "text": "\"Maybe the story isn't about understanding it. Maybe it's just about — surviving it.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Frasier clapped him on the shoulder. The contact was a jolt that vibrated through John's weary bones, a jolt that felt suspiciously like a small, deliberate transmission."
+    },
+    {
+      "t": "think",
+      "char": "John",
+      "text": "Hello, the jolt seemed to say, on a frequency below speech. Hello. Stay alert. Sorry about what's coming."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "expr": "amused",
+      "text": "\"Surviving? Where's the fun in that? The trick isn't to survive the fall, Johnny. It's to learn how to fly on the way down.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He paused at the door. Hand on the push bar. A final pronouncement waiting to be delivered."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "expr": "amused",
+      "text": "\"Or,\" Frasier said, \"at the very least — learn how to write about the landing.\""
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He was gone. The kitchen door swung once, twice, and stilled. The smell of burnt sugar lingered for a long time, and then began, slowly, to leave."
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_ch0_closing"
+    }
+  ]
+}

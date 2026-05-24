@@ -1,0 +1,154 @@
+{
+  "id": "vol2_ch2_ghost",
+  "vol": 2,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "ii. The Ghost on the Beach",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_cannery_dawn.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "After the storm",
+      "sub": "David Jarvis · Coopers Bay",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "In the immediate months following the death of his father, David Jarvis moved himself fifteen miles north and found work in a cannery."
+    },
+    {
+      "t": "narrate",
+      "text": "He was a frequent and noisy drunk both on the job and off, and made few friends. His uncle had taken it upon himself to salvage the remnants of the circus, but David wanted nothing more to do with it."
+    },
+    {
+      "t": "narrate",
+      "text": "Jeff had the foresight to relocate the tiny operation to the new township of Coopers Bay — which would later become the coastal retreat of choice due to its relative proximity to Portland and the overwhelming and untapped natural beauty that surrounded the place."
+    },
+    {
+      "t": "narrate",
+      "text": "David chose this new profession as a means to work his way onto a commercial fishing boat — an area he had no experience in, but also one where he'd have to be competing against hardened veterans born into the industry, as had their still-employed fathers before them."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "A week after the disaster",
+      "sub": "Beach · Night",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "A week after the disaster at Cliffside, while David holed up in rented lodgings on the physical mend, he wandered out onto the beach to watch the sunset and break the silence of his self-imposed exile. He related the tale of what happened next with irregular flourishes and inventions — and my own interpretation is as such."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "expr": "neutral",
+      "text": "I walked down to the water's edge. It was after dark, and the moon could not be seen behind the clouds."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "expr": "neutral",
+      "text": "In fact, light was hard to come by. What little of it shone was caught up in water that gleamed off the fresh tide's edge. There was a plague of sand fleas — newly emerged to congregate and swarm upon the living and the dead."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "expr": "neutral",
+      "text": "It was sitting there after some time, I noticed a bodily form working its way upon shore. At first I thought it to be a lone sea lion. Then it stood upright. I stood and strained my eyes to see."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "expr": "neutral",
+      "text": "It was a woman. Naked to the world. The weather this time of year was loathe to tolerate well-bundled — so I rushed to her, so that I might cover her."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "expr": "neutral",
+      "text": "The sand at night would seem to go on forever, what with the ebb and pull of the ocean giving and taking away the surface — but eventually I got near enough to call out to her and be heard."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "expr": "neutral",
+      "text": "She was in up to her navel. Her arms out — dragging them along the surface. People say I wanted to make her real again. Bring her back to life."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "expr": "neutral",
+      "text": "She walked out to me. Her arms out for me to take her in and hold her. She was walking on two good legs. So I don't know what to think myself, let alone explain to others."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "expr": "neutral",
+      "text": "She didn't say a word. She just stood there. The water at her knees. And I just stared back at her."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "expr": "neutral",
+      "text": "I hate to say it — but a real chill crept over me. My body was telling me that this was no good, and every small hair on my body went tight."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "expr": "neutral",
+      "text": "I backed away slowly, not wanting to take my eyes off her. And she just kept standing there with her hands out. Naked as she always was for the entire world to see."
+    },
+    {
+      "t": "narrate",
+      "text": "But it was just David out there alone that night, and the only witness to the dramatic rebirth and reconfigurement of Delores Wiebe."
+    },
+    {
+      "t": "narrate",
+      "text": "No words were reported exchanged between the two. No real objective contact was made. It had the makings of a ghost story, and could only be dismissed or embraced as such."
+    },
+    {
+      "t": "narrate",
+      "text": "It was true that Delores had a younger sister — Rachel. But the two were about as different as two blood-related siblings could possibly be, and a case of mistaken identity was out of the question."
+    },
+    {
+      "t": "narrate",
+      "text": "Rachel was married at age fifteen to the captain of a San Francisco–based light cargo vessel, and was not seen in Small Wood again until her twenty-eighth year."
+    },
+    {
+      "t": "narrate",
+      "text": "So it was that David spread the tale of the one-time mermaid, full-time ghost, who haunted the shores of Small Wood with frequent regularity."
+    },
+    {
+      "t": "narrate",
+      "text": "It was noted in public record that no one associated with Delores and her short, strange life died under irregular circumstances, nor did they report any unusual supernatural out-of-the-ordinariness amid the everyday humdrum, nor receive any death-rattle messages from the beyond."
+    },
+    {
+      "t": "narrate",
+      "text": "As hauntings were reported then tallied in later years, the frequency attributed to Delores Wiebe manifestations rose. Nude young women emerging from the water silently and unexpectedly happened far more often than one might imagine."
+    },
+    {
+      "t": "narrate",
+      "text": "David, while not believing Delores alive, did also not think her dead. He was a harsh realist who enjoyed storytelling and conniving a few dollars out of an unwilling victim — but almost seemed to refuse to believe his own tale when it ended and his consideration of it began."
+    },
+    {
+      "t": "narrate",
+      "text": "To everyone else in Small Wood, the strange report of Delores had little to no value. Yet it was a curiosity that consumed David. And to the select few that knew the young man, it was more a product of his psychological grief and torment than an actual real supernatural manifestation of the tragedy that lingered."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_delores_ghost",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch2_interlude_three"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "id": "vol7_ch6_pattern_persistence",
+  "vol": 7,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Pattern Persistence",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "He looked at the cuticle."
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"That's the part. The part I gave Brandon the surface answer to. The surface answer is compression and encoding. We were trying to push how much could be stored in how small a piece of physical material. Nate had ideas about substrate density that were ahead of where the field was. He was reading papers in '93 that the journals didn't think were serious. He had ideas about encoding patterns in a medium that, when read back, recovered not just the data but the conditions of the recording. The room. The hands. The intent. You laughed at this in 1993.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"You don't laugh at it now.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"You don't laugh at it now. The slow sticks do a piece of it.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"What was the not-surface.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He was quiet for a count."
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"He was working on consciousness encoding from sixteen. He didn't call it that. He called it pattern persistence. What he was trying to do — and he told me this on a Saturday in March '94, four in the morning, we'd been awake eighteen hours and he was tired enough to talk — was figure out how to encode a person's attention onto a medium. Not data. Not memory. The state of a mind in the act of attending to a thing.\""
+    },
+    {
+      "t": "think",
+      "char": "Lena",
+      "text": "She had to take a breath."
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "surprised",
+      "text": "\"At sixteen.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"He'd been thinking about it since he was eleven, by what he told me that night. He'd been working on it since thirteen. He came to Smolvud at fourteen with the work already going. The basement was where he had the room and the machine and somebody to sit in it with him.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Why was he doing it.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He looked up."
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"He had a daughter.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, for a long count, say anything."
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "surprised",
+      "text": "\"At sixteen.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Not at sixteen. He told me that night that he was going to have one someday and that the daughter was the work. He said I'm going to bring her here. I don't know how yet. I'm going to figure out how. I asked him where she was. He said she's not anywhere yet. She's what's going to come from the work. I thought he was tired. I thought he was being sixteen at four in the morning. I went home. I never brought it up. He never brought it up.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"We worked together another year on the surface project and then I left for Eugene and we didn't stay in touch and I assumed for thirty years that the daughter conversation had been the kind of thing a brilliant kid says at three in the morning and then forgets.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"He didn't forget.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"He built a tower in 2010 and died in it in 2042. He spent thirty-two years working on what he was working on at sixteen. Brandon Tillman thought the daughter was either here now or coming. I don't know what here means in this context. I haven't been to the tower in ten years.\""
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch6_brandon"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "id": "vol7_ch8_goodnight",
+  "vol": 7,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — Goodnight",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "It was past nine."
+    },
+    {
+      "t": "narrate",
+      "text": "Lena looked at her phone on the side table and registered that they had been in the apartment for over three hours and that she was, by the kind of exhaustion that hits at the end of a long day in which people have said true things to each other in a small room, not going to be useful for any more thinking tonight. She said so."
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "tired",
+      "text": "\"I am not going to be useful for any more thinking tonight.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "tired",
+      "text": "\"Same.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"Same.\""
+    },
+    {
+      "t": "show",
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"I'm fine to keep going if we need to.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "warm",
+      "text": "\"Finn. You're not. You haven't slept since Friday. You're saying you're fine because you don't know how to say you're not.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Finn said, after a beat, \"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"We sleep. We meet at the cabin tomorrow. Cale comes up. Five of us. We figure out the next thing then.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"All right. The cabin at noon.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"I'll close the shop tomorrow.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"You don't have to.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"I'm closing it. I closed it today. The shop will be closed tomorrow. The shop will be closed until we know what we're doing.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"All right.\""
+    },
+    {
+      "t": "narrate",
+      "text": "There was a small shuffle at the door about who was driving back where. Kai said he would walk to the shop and pick up his truck and drive himself home. Finn said he would drop Tem at the cabin on his way to his apartment and come back down in the morning. Tem said she did not want to be at the cabin tonight."
+    },
+    {
+      "t": "narrate",
+      "text": "The room paused on that."
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "Tem said, \"I want to stay here. If it's all right.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She said it to Lena."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"Yeah. Stay.\"",
+          "goto": 20
+        },
+        {
+          "text": "[EMPATHY] You feel the ask in it — not just for a place to sleep.",
+          "check": {
+            "skill": "empathy",
+            "diff": 5
+          },
+          "pass": 20,
+          "fail": 20
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "warm",
+      "text": "Lena said, \"Yeah. Stay.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Kai and Finn took their coats off the hooks. Kai put a hand on Lena's shoulder again at the door, the same way he had on the way in. Finn looked at Tem for a long beat without saying anything and then at Lena and then back at Tem."
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "warm",
+      "text": "He said, \"Take care of each other tonight.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "warm",
+      "text": "Tem said, \"Yeah, Finn.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He went down the stairwell. Kai followed. The door closed behind them. Lena turned the deadbolt. She had not, in three years in the apartment, locked the deadbolt at night. She locked it now."
+    },
+    {
+      "t": "flag",
+      "key": "vol7_ch7_tem_stays",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch8_dark"
+    }
+  ]
+}

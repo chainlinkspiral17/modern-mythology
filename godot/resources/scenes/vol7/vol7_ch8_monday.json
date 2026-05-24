@@ -1,0 +1,559 @@
+{
+  "id": "vol7_ch8_monday",
+  "vol": 7,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "Monday",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_lena_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 8",
+      "sub": "Monday",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "She woke before Tem.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bedroom at six was gray with the rain-light, the same gray it had been every morning of the last week. She lay there a minute looking at the small crack in the ceiling above the closet that the upstairs neighbor's bathtub had made in 2050. Tem on her back beside her with one arm above the blanket and the other under it. The wool blanket pulled up to Tem's collarbone. The hair on the pillow fanned out the way her hair always fanned when she had slept on her back without a tie.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena did not move for a count.",
+      "t": "narrate"
+    },
+    {
+      "text": "Then she got up the way she got up most mornings, which was without thinking about it. She pulled the door of the bedroom closed behind her so the light from the kitchen would not wake Tem. She put on the wool socks. She put the kettle on. She stood at the kitchen window in her flannel and looked at the alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "The patch on the Starfish Nebula mural had grown overnight. The fourth one. It was now most of the size of the other three put together.",
+      "t": "narrate"
+    },
+    {
+      "text": "The mural's bottom-left quadrant — the section where she had painted the small octopus with the seven and a half arms because she had been thinking, in spring of 2050, about how the octopus you painted should not be the octopus a person expected — was, this morning, half-eaten. The patch had taken the seven and a half arms.",
+      "t": "narrate"
+    },
+    {
+      "text": "She made the coffee. She drank it standing at the window. She did not think about the patch, which was not the same as not seeing it.",
+      "t": "narrate"
+    },
+    {
+      "text": "At six-forty she pulled on the boots and the coat and went downstairs.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_bookstore.jpg",
+      "t": "bg"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "The bookstore was on the ground floor of the same building. Petra's front door was on Hemlock. The small back door that Lena used when she came down to make coffee for Petra in the mornings was off the alley, two doors down from the back stairwell. Lena had been making coffee for Petra on Monday mornings since 2050 because Petra had gotten her into the apartment when nobody else in town had had a one-bedroom under nine hundred a month and because Lena had decided, in her first month, that she was going to make herself useful in small ways or she was going to feel like a tenant for the rest of her time in the building.",
+      "t": "narrate"
+    },
+    {
+      "text": "She unlocked the back door. The bookstore was at sixty-two. The cat — Petra's cat, who was old enough that her name had stopped getting used and the cat just got called the cat — was on the small wool pillow in the front-window display where she always was. The cat opened one eye when Lena came in and closed it again.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena went to the small kitchenette in the back of the store and put Petra's kettle on. Petra liked her coffee made in the cone with the dark French Soren had been roasting, which was the same coffee Lena drank at home. Lena had fought Petra about the cone for a year before realizing the fight was Petra's pleasure and that Petra wanted Lena to fight her about it. Lena had stopped fighting. The coffee was now made the way Petra wanted it made, and Petra still complained about it on Monday mornings, and the complaining was the small ritual of Lena's Monday.",
+      "t": "narrate"
+    },
+    {
+      "text": "She heard Petra on the phone before she saw her. Petra was in the back office with the door closed, which Petra usually did not have closed at seven in the morning when the only person in the building was Lena. Lena could hear Petra's voice through the door but not the words. The voice was Petra in mediation register, which Lena had heard Petra do on the phone three times in two years and which Lena recognized as Petra's I-am-going-to-bring-this-down voice. The tone was even. The pace was slow. The sentences were short.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena finished the coffee. She poured Petra's into the small clay mug Petra had bought at Margit's in 2009. She set it on the desk outside the office door. She poured her own into the second cup and stood at the front of the store looking out at Hemlock through the rain.",
+      "t": "narrate"
+    },
+    {
+      "text": "Petra came out at seven-twenty. She picked up the cup. She drank from it standing. She did not, immediately, complain about the coffee.",
+      "t": "narrate"
+    },
+    {
+      "char": "petra",
+      "text": "Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Hi.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "I am going up the river this morning. Eli Holsten and Jonas Vass have been threatening to sue each other over the fence on the back forty for nine months and Jonas's wife called me at six because Jonas walked the line yesterday afternoon with a chainsaw. I have to go up there before Eli also walks the line with something. I won't be back until afternoon. Will you open?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Petra at her usual fight register. Jonas walked the line yesterday afternoon with a chainsaw. Lena registered the chainsaw and registered that Petra had not slept since Jonas's wife had called and that Petra was, by the level of her composure, somewhere past anger and into the calm a person gets when she has decided to fix something.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "What time should I expect you back.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "Two. Three. If I am not back by four call me and ask me where I am. If I do not pick up call my brother in Eugene and he will know where I would have been by then.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "There are two holds in the office. The Marsden woman is coming for hers at noon. The other is for whoever walks in and asks for Inga's monograph, which somebody will. The till is unlocked. The float is one-twenty in tens and fives and ones. There is a sandwich in the small fridge if you do not eat. Eat it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I will.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "The coffee is too hot.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "It is not.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "It is.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "You are leaving.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "I am leaving.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Petra set the cup down half-empty, pulled her coat off the hook by the office door, and was out the back through the alley in under ninety seconds. Lena heard the wagon start and pull away.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bookstore at seven-thirty on a Monday morning was Lena's.",
+      "t": "narrate"
+    },
+    {
+      "text": "She opened the front at nine. She turned the CLOSED sign. The first customer came in at nine-eleven, which was a man named Edgar Lindstrom whom Lena had known by face for two years and whose name she had only learned that summer when Petra had introduced them. Edgar bought a book from the new-arrivals shelf without asking what it was. He paid in tokens. He left.",
+      "t": "narrate"
+    },
+    {
+      "text": "She made another coffee.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bell rang at nine-thirty-two. A woman came in with two children — a boy of maybe seven and a girl of four — and asked if Petra had any of the picture books by the Norwegian woman Aud at the Missing Link had been buying for her grandchildren. Lena did not know the name. She walked the woman to the children's section and they looked together. The girl pulled three books off the shelf and sat down on the carpet with all three open in front of her in a way that suggested she was going to be there a while. The mother looked at Lena. Lena said, take your time, the carpet's clean. The mother smiled in the way Smolvud mothers smiled at the women behind counters who took their time, which was a small particular smile that meant I see you doing this and I will tell other women, and she did sit down.",
+      "t": "narrate"
+    },
+    {
+      "text": "The Marsden woman came in for her hold at eleven-forty. The hold was a 1984 hardcover of a novel Lena had never heard of with a torn dust jacket Petra had taped along the spine. Mrs. Marsden paid in cash. She had a question about another book that Lena did not know how to answer and Lena said she would ask Petra and call her, and Mrs. Marsden said don't bother, I'll come in Wednesday, and left.",
+      "t": "narrate"
+    },
+    {
+      "text": "The mother and the children left at eleven-fifty with two of the three picture books. The girl had not wanted to leave the third behind. The mother told the girl they would come back on Saturday for the third. The girl walked out crying. The mother looked at Lena over her shoulder and rolled her eyes in a way that was not unkind to the girl, just tired.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bell rang at eleven-fifty-eight.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "roy",
+      "expr": "happy",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Roy Hummel came in. He was not, this morning, in the orange Hawaiian. He was in a long-sleeved chambray button-down and the same khakis and the same boat shoes. The wax canvas coat was over his arm rather than on. The smile he came in with was the same one he always came in with.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Lena.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Hi, Roy.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Petra in?",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "She's up the river. She'll be back this afternoon.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Good morning for a drive.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "It is.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I'm looking for a few books. Wonder if Petra carries them.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "What are you looking for.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He named three. The first was The Architecture of Inland Water by an author whose name he gave as something Norwegian. The second was Pattern Persistence: Selected Essays by an author Lena did not catch because she had stopped breathing for a half-second. The third was The Seven Floors of the Glass House by no author given.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena, behind the counter, did not, for a beat, do anything with her face.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I don't think we have any of those. I can check the catalog.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Don't trouble.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I want to. It'll take a minute.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She turned to the small terminal Petra kept on the counter and ran the three titles. None came up. She had not expected them to. The terminal hummed in the small careful way Petra's terminals hummed because Petra did not like fast electronics and bought the slow ones on purpose. Lena typed slowly. She typed slowly because she needed the time more than the terminal did.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "None in the system. Petra might know them. I can leave her a note.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Don't leave her a note. I'll come back when she's in.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Roy did not, for a count, leave. He set the wax canvas coat on the small table by the window display and walked the new-arrivals shelf, picking up two books and putting them down. He picked up the picture book the girl had not been allowed to take and looked at the cover and put it down. He came back to the counter.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "How's Soren?",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He's well.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I haven't seen him in the shop the last few mornings.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He had a bug last week. He's better now.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Good. Tell him Roy says hi.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I will.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "How's Tem.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "There it was.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Tem's well.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "She's been out at the cabin a lot.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "She splits her time.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "She does. Always has.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "You been up there?",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "To the cabin?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "To the cabin.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "She kept her hand on the counter.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Once or twice.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Beautiful country up there.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "It is.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He smiled.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "How about Jorgen Aas's place. You been up to the river house?",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "She did not, this time, manage to keep her face entirely flat. The half-second of registration was enough. Roy saw it. The smile widened a degree.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "He's a hell of a painter. I was up there in June. Bought a small one off him for the wife. She likes it. Doesn't know what it is. Likes it anyway.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He's a hell of a painter.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "He is. You thinking about going up there. I hear you've been corresponding.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "She held the counter.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Roy.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yeah.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I don't know who tells you the things you know. But I'm asking you to leave my correspondence with Jorgen out of conversation in this shop or any other shop in town.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He held the smile. He held it.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Sure thing, Lena. Wasn't trying to pry. Small town. People talk.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Have a good Monday.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "He picked the wax canvas off the table. He walked to the door. He opened it. The bell rang. He turned in the doorway.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Tell Petra I came by.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He left.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch8_aria",
+      "t": "jump"
+    }
+  ]
+}

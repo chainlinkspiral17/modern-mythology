@@ -1,0 +1,386 @@
+{
+  "id": "vol6_ch21_porch",
+  "vol": 6,
+  "chapter": 21,
+  "type": "chapter",
+  "title": "Ch 21 — The Porch",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_caldwell_porch_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Porch",
+      "sub": "Saturday — 21:09 — Home",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother is on the porch when she pulls up."
+    },
+    {
+      "t": "show",
+      "char": "linda",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The porch light is on. Linda is in the wicker chair. She has, on the small table beside her, two glasses of iced tea — the one she has been drinking, and the one she has poured for Maya in advance."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya parks the bike. She climbs the porch steps."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "How was the shop, sweetheart.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Fifty-four customers. Curtis's good Saturday number is forty-five. I beat it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Linda smiles."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Curtis is going to be a little annoyed when he hears.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah. He is. He'll get over it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "How was the rest of it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, in the second chair with the iced tea in her hand, thinks for a beat. She says: \"Grandma. The Speak & Spell did the thing today.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Linda is, for a beat, very still."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Tell me.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya tells her. Briefly. The wanderer. The device. The slow walk through the back of the store. The intercept. The blink. Must have been the heat. The recovery. She tells her about the text to Hal. She tells her about Rick's reply. She does not dramatize."
+    },
+    {
+      "t": "narrate",
+      "text": "Linda listens."
+    },
+    {
+      "t": "narrate",
+      "text": "When Maya is done Linda says: \"You handled it the way Rick said. Rick is right. You read it right. The Speak & Spell does what it does. Most days it does not do anything. On days it does, the doing is — by what we have learned about it over thirty-seven years — almost always small. It picks a person. It picks a thing it wants to tell them. The person almost always recovers within an hour. The telling almost always lands somewhere the person will, in the months after, register without knowing they are registering it. The harm is almost always nothing.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Why did it pick him.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Sweetheart. We don't know. We have never known. The Speak & Spell is one of the objects in our network that operates by a logic the network has never figured out. It picks who it picks. It does what it does. We have, over thirty-seven years, learned to handle it by intercepting fast and not making a thing about the picking. The not-making-a-thing is what keeps the picked person whole.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Linda. Can I ask you something.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Yeah, sweetheart.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Has it ever picked somebody it should not have picked. Someone — someone the network does not want it to have picked.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "Linda is quiet a long beat."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Twice that I know of. Both before you were born. The first time was 1991. The second was 2003. Both times the person it picked was the wrong person. Both times we had a repair to do.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Who repaired it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Your grandfather repaired the first one. He was alive in 1991. He sat with the person who had been picked for three weeks. The picking was un-done. The person did not, after the un-doing, know they had ever been picked. The picking was, by the end of three weeks, gone.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "And the 2003 one.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "I repaired the 2003 one. By then your grandfather had been gone for three years. I had to learn how to do it. I learned. I sat with the person who had been picked for five weeks because I was slower than your grandfather had been. The picking was un-done. The person did not, after the un-doing, know.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Yeah, sweetheart.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Today's was the right person?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "By what you have told me, yes. Tom Bell is the right person. The picking was small. He will, in the months after, register a thing without knowing what he is registering. The harm is nothing. You handled it the way it wanted handling.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya drinks her iced tea."
+    },
+    {
+      "t": "narrate",
+      "text": "The porch light is on. The cicadas are loud. The cul-de-sac is quiet. Don Geller's porch light, three doors down — although Maya does not know this is the same Don Geller whose five-oh-two porch light Bianca Marin two miles away has been watching every morning since June — is also on."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I am going to ask Rick to let me work through senior year.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "How.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Sweetheart. You have been doing this work for four months. The asking was always going to come at the end of August. You are doing it on schedule. Ask Rick tomorrow. He will say yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I am going to ask. I don't want to assume.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Asking is the right move. Asking is always the right move when you are sixteen and you are asking a man who has been good to you for a job he has not yet offered.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, in the second chair, drinks her iced tea. The two of them sit on the porch in the quiet of a Saturday at nine oh-four PM."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Maya.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "You did good today, sweetheart.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya does not, immediately, respond. She says: \"Thanks, Grandma.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Thanks, Grandma.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her iced tea. The porch holds them."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, this evening, write anything down."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, on the porch, that she might. She has been keeping a small notebook of the days the Speak & Spell does the thing — a notebook Rick gave her in week three, a notebook with three entries in it for three different small things that have, in the past three months, happened in the shop, none of them as large as today. She has the notebook in her bag."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, this evening, take it out. She decides she will write it in tomorrow morning before her shift. The day deserves a sleep before it gets put on a page."
+    },
+    {
+      "t": "narrate",
+      "text": "She finishes her iced tea. She gets up. She goes inside."
+    },
+    {
+      "t": "narrate",
+      "text": "She makes a sandwich. She eats it standing at the counter. She drinks a glass of water."
+    },
+    {
+      "t": "narrate",
+      "text": "She comes back out to the porch. Linda is asleep in the wicker."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya stands in the doorway watching her grandmother breathe — the small steady rhythm of a woman who has, this summer, finally been allowed to rest. Linda's hip had healed in June. The healing had been the first full healing in two years. Linda had, since the healing, slept more deeply on the porch than she had in her bed."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya goes back inside. She gets the small light blanket from the back of the couch. She comes back to the porch. She drapes the blanket over her grandmother."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns off the porch light. She sits in the second chair in the dark."
+    },
+    {
+      "t": "narrate",
+      "text": "She watches the cul-de-sac for a while. The cul-de-sac is quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "A car comes down the street at nine fifty-three. The car is not a car Maya recognizes. The car is going slow — the way cars go slow on a residential street when the driver is looking for an address. At the corner, the car turns left, and the left turn takes it away from her grandmother's house."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya watches the corner for another two minutes. The car does not come back."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, with the careful attention she has been training all summer: probably nothing."
+    },
+    {
+      "t": "narrate",
+      "text": "Probably, in the version of this summer she is choosing to be in, almost everything is probably nothing. Tomorrow morning Rick is coming in at eleven. She is going to ask. He is going to say yes."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets up. She goes inside. She locks the front door. She turns off the kitchen light. She climbs the stairs."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_maya_bedroom.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "She passes her grandmother's bedroom door, which is open because her grandmother is on the porch. She goes inside and turns back the covers on her grandmother's bed so that when her grandmother comes inside in twenty minutes — which her grandmother will, having been woken by the cooler air or the cicadas or her own internal clock — the bed will be ready."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns back the covers. She goes to her own room. She undresses. She gets into bed. She lies on her back and looks at the pale yellow ceiling."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, tomorrow."
+    },
+    {
+      "t": "narrate",
+      "text": "She sleeps."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

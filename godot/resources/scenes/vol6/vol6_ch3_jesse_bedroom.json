@@ -1,0 +1,289 @@
+{
+  "id": "vol6_ch3_jesse_bedroom",
+  "vol": 6,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Ch 3 — Jesse's Bedroom",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_jesse_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Jesse Henderson's Bedroom",
+      "sub": "Tuesday · 21:46",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse has been in his bedroom since seven. He has eaten dinner — chicken and rice, which his mother made, which he ate without tasting — and he has been sitting on the floor with his back against his bed ever since, with his Telecaster unplugged in his lap, not playing it, just holding it."
+    },
+    {
+      "t": "narrate",
+      "text": "His phone pings."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "hey."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "hey. you ok?"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "yeah. sort of. i met maya today. we talked. she filled me in."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "jess i don't know what to do about your dad."
+    },
+    {
+      "t": "narrate",
+      "text": "He stares at the screen."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "me neither."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "ben says we wait for one more thing. maya says sunday or monday. i am trying to be patient."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "are you ok. like, at home. with him."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse looks up at his bedroom door. It is closed. Behind it, somewhere in the house, he can hear the faint sound of his mother running the dishwasher. He cannot hear his father. His father has been in the darkroom since six-fifteen."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "idk. he's been weird. mom is pretending she doesn't notice. he doesn't come up for meals some nights. he goes down there and stays down there."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "is he scary weird or sad weird."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse thinks."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "both. mostly sad. sometimes scary. not at me. at himself."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "ok. that's a data point. hold on to it. we'll figure it out."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "jess"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "thank you for trusting me."
+    },
+    {
+      "t": "narrate",
+      "text": "He puts the phone face-down on the carpet. He picks up the Telecaster. He strums a single unplugged chord — E minor. The first chord he ever learned, the chord he plays when he does not know what to play. The strings hum. The hum goes nowhere, because the amp is off, but the guitar, against his chest, vibrates."
+    },
+    {
+      "t": "narrate",
+      "text": "It has always been a comforting vibration. It is less comforting tonight."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks about the photograph of the man in the charcoal suit. He thinks about the kid at the streetlight across from McClary's, who Ben saw, who should not have been visible, who waved. He thinks about his father, alone in the red light of the darkroom, looking at prints that had people in them who were not in the frame."
+    },
+    {
+      "t": "think",
+      "char": "Jesse",
+      "text": "My dad is being used as a camera. And he is the only person in the house who does not know it."
+    },
+    {
+      "t": "think",
+      "char": "Jesse",
+      "text": "My mom knows something is wrong. My mom is going to need to be told. My mom is not, yet, going to believe me. That is the next thing."
+    },
+    {
+      "t": "narrate",
+      "text": "He sets the guitar aside. He picks up the phone. He texts Ben:"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "role": "— text · to Ben —",
+      "expr": "neutral",
+      "text": "hey. i need help with my mom. not tonight. soon. thinking maybe this weekend. will you help."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben replies in eight seconds."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "yes. bring her to the pit stop on saturday morning. i'll be on shift. tell her it's breakfast. i'll handle it."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse exhales."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "thanks, ben."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "it's what friends do, jess."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse sets the phone down. He does not, tonight, cry. But his eyes fill, briefly, and he lets them, and he does not wipe them, and he sits on the floor of his bedroom with the Telecaster beside him and his mother running the dishwasher one floor down and his father in the red light two floors below, and he thinks, in the small settled voice that has begun, in the past twenty-four hours, to be an interior voice he recognizes as his own adult one:"
+    },
+    {
+      "t": "think",
+      "char": "Jesse",
+      "text": "I am going to be okay. I am going to be okay if I have Ben and Sam and Maya. I am, as of tonight, going to have Ben and Sam and Maya."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets up. He puts the Telecaster back in its case. He opens his bedroom door. He goes downstairs to say goodnight to his mother — because he has not, he realizes, said goodnight to his mother in eight days."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_henderson_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "mrs_henderson",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She is at the sink, drying her hands."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Henderson",
+      "expr": "neutral",
+      "text": "\"Hey, kiddo.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Hey, Mom.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He hugs her. She is startled, briefly, then pats his back in the way mothers pat the backs of teenage boys when the teenage boys hug them for no apparent reason — which is to say with the small careful warmth of not wanting to make the hug feel remarkable in case the remarkable-ness might cause the hugger to reconsider."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Henderson",
+      "expr": "neutral",
+      "text": "\"You okay, Jess?\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Yeah, Mom. Just — yeah. Night.\""
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Henderson",
+      "expr": "neutral",
+      "text": "\"Goodnight, sweetheart.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He goes back upstairs."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch3_sam_bedroom"
+    }
+  ]
+}

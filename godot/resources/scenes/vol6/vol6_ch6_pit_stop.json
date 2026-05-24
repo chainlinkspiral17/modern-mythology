@@ -1,0 +1,159 @@
+{
+  "id": "vol6_ch6_pit_stop",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — He's Safe",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_pit_stop_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "He's Safe",
+      "sub": "Friday — 09:18 — Pit Stop Diner",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is at the grill. The breakfast rush has just ended. He is wiping down the line. His phone, in the pocket of his apron, has not, this morning, buzzed."
+    },
+    {
+      "t": "narrate",
+      "text": "The phone, at 09:18, buzzes."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben takes it out."
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "text": "He's safe. Maya knows. Tell Sam at lunch. Don't text her. Walk over. — H.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "H. Hal. The bookshop guy. Ben reads the message. He reads it again. He puts the phone back. He breathes for maybe four seconds. Then he opens the office door. The morning manager — a woman named Brenda who has been at the Pit Stop since 2008 and who has, since Wednesday, been treating Ben with a small careful deference that Ben has not, yet, asked her to explain — looks up."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Brenda. I need to take a forty-five at lunch. Walk over to the Kwik Stop. Personal.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Brenda",
+      "text": "Take an hour. Take two if you need.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Thanks, Brenda.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Brenda",
+      "text": "Ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Brenda",
+      "text": "You good?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I'm good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Brenda",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben goes back to the grill. The grill hisses."
+    },
+    {
+      "t": "think",
+      "char": "Ben",
+      "text": "Jesse needs to know. Maya knows. Sam doesn't yet. Diego is alive."
+    },
+    {
+      "t": "think",
+      "char": "Ben",
+      "text": "I am going to tell Sam by walking up to the counter at noon and ordering a slushie I don't want. I am going to wait for the store to be empty. I am going to say his name."
+    },
+    {
+      "t": "think",
+      "char": "Ben",
+      "text": "I am going to be the one who gets to say it to her."
+    },
+    {
+      "t": "think",
+      "char": "Ben",
+      "text": "I have been waiting, my whole life, for the day I get to be the one who says good news to a friend in a convenience store."
+    },
+    {
+      "t": "narrate",
+      "text": "He keeps wiping the line."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_kwik_stop_slushie"
+    }
+  ]
+}

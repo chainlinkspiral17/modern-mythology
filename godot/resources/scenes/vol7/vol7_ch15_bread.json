@@ -1,0 +1,720 @@
+{
+  "id": "vol7_ch15_bread",
+  "vol": 7,
+  "chapter": 15,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 15",
+      "sub": "Saturday Morning",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "They sat down for bread at six oh-one. Hans had cut a loaf of the seeded rye and a loaf of the morning's white. He had set out a pat of butter Greta had churned at four AM. He had set out a jar of plum preserves Greta had put up in '49 and that the family had been eating since. He had set out small dishes of honey from a hive Hans's son-in-law's brother kept in Yachats. He had set out coffee in a press for the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per came in from the back kitchen with a basket of the morning's brötchen. He set the basket in the center of the table. He sat down beside his mother. He put his hand briefly on her shoulder and did not, immediately, take it off.",
+      "t": "narrate"
+    },
+    {
+      "text": "The ten of them were at the table. Tem at one end. Hans at the other. Greta beside Hans. Marit beside Greta. Marina across from Marit. Per beside Marina. Cale beside Per. Kai beside Cale. Finn beside Kai. Lena at the end opposite Cale, beside Tem.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bread went around. For maybe four minutes nobody spoke. The eating was the eating of ten people who had been hungry, by some logic of how the morning had been arranged, and who had been waiting for the bread. Marina ate. The seeded rye was the best bread she had eaten in some years. She registered this without saying it.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "I am going to put it down.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The table looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "I have been holding a thing since 1989. I am going to put it down at this table. I am going to put it down because today is the day for it, and the right people are here. Greta knows what I am going to say. She has known for forty years. She has not — by her own reading of how I should put it down — said it for me. I am going to say it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Greta is here. Marit is here. Per is here. The four of you are here. Cale is here. Marina is here. I am going to say it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Take the time.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He drank from his coffee.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "My brother Werner Junior took over the press in Bern in '86 when our father died. Werner Senior had been printing for the network since the early '60s. He had known about the network since his own father had pulled him into it in the 1920s — my brother told me this in '88. Friedrich Schenck, my grandfather, was a carver in Bern who became a printer because his hands could not, by his sixties, hold a chisel anymore. He became a printer to keep doing the work. The press has been the family's instrument of the work since.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Werner Junior took it over. In '89 he decided to print a poem cycle he had been writing for some years. The cycle was not the kind of writing the press had been doing. The press did manuals. Recipes. Instructional pieces for the network. The cycle was Werner's own. He printed twenty-one copies by hand and gave one to each of the twenty members of the network as he understood the network at that time, and one to himself. I got my copy in the mail in November of '89.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I read it. It had — by Werner's careful design — five poems on the bowls and the listening, three on his children, two on his garden, and one at the end. The end poem was about a young woman in a yellow slicker who would come to the family. The poem named her. Werner had named her Aria.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The poem had her arriving at the family's house in Bern at three in the morning in a rain that had been raining for a long time. The poem had her standing on the doorstep. Her hand on the bell-pull. Werner did not let her ring. The poem ended with her hand on the pull and the family inside the house not knowing she was at the door.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I read it twenty-three times that November. In the mornings before I opened the bakery, in the evenings after I closed. I did not know what to do with the poem. I was thirty-seven. I was a baker in Smolvud, Oregon. I did not have a place to put it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I called Werner the third week of November. I asked him: brother. The Aria poem. What is the poem. Werner said: Hans. It is what it is. I have been writing about her since the early seventies. I have been writing because I have been seeing her. Three times. The first in '73, in the print shop at three in the morning. The second in '78, at the house at two in the afternoon. The third in '81, at the cemetery where our mother is buried. She has been visiting me. She has not said anything any of the times. She stands at a distance. She looks at me. The poem is what I have been making of it. The work I have to do for her. I am printing it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I asked: brother. Is she real.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Werner said: Hans. She is as real as the bread you bake on Wednesdays. She is the work the family has been doing for a hundred and fifteen years. She is going to come. She is going to come somewhere. Bern. Bandon. Smolvud. I do not know. I am putting the poem in the world because the poem is what I have to do.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I said: brother. I will keep my copy. He said: keep it well. There may come a day when you are in a room with people who need to read it. I said: I will.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "That was the conversation. I have not, in the thirty-three years since, had reason to take the poem out of the drawer where I have kept it. Twice I have taken it out. Once in 2031 when Roy came in asking after the cycle by name. Once in 2049 when I came home from the cemetery the day we buried Margit — Kai's grandmother — and I sat in the chair by the window and read it once. The other years, no.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I am going to put the poem on the table now.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He stood up. He went to the back kitchen. He came back with a folder. He set the folder on the dining table at his end and opened it.",
+      "t": "narrate"
+    },
+    {
+      "text": "He took out a slim chapbook — by Marina's read at this distance, twenty-some pages, hand-bound with a stitch along the spine, the cover plain cream paper with a single word printed in dark blue: Bowls. Werner's title. He set the chapbook in the middle of the table.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "The Aria poem is the last one. Page nineteen. Anyone at this table who wants to read it can read it. I am — I am going to ask Marit to read it first, because Marit has been the closest carrier.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Hans.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "I have not — I have not been a poet in my life. I am — I am going to read it to myself first and then I will read it to the table.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Take your time.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She picked up the chapbook. She opened it carefully to page nineteen. She read for two minutes without saying anything. Her face did not, in the two minutes, do much. Then she set the chapbook down on the table in front of her.",
+      "t": "narrate"
+    },
+    {
+      "char": "marit",
+      "text": "Hans.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Werner saw Aria in 1973.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Three years before Olaf carved my bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Olaf went to Bern in the summer of '73 with the cutter base on the deployment to NATO exercises. He was off the cutter for six weeks in Europe. He came home with three notebooks of writing he had done while he was over there. The notebooks were in the desk in his office. I read them after he died. Per read them too. Per burned them with the rest of the papers in '86.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "There was a passage in them from late July of '73 where Olaf wrote about a visit he had made to a Werner Schenck Junior in Bern. The visit had been arranged by the foundation. The visit was — Olaf wrote — a meeting of an Oregon carver who had been working alone for some years and a Swiss printer who had just lost his father and was about to take over the press. The visit was in late July of '73.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "The visit included, by Olaf's notebook, a conversation about a young woman the printer had seen at his print shop at three in the morning earlier that month.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Marina sat back in her chair. She did not say anything for a count.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Marit.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Marit nodded.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Your husband met Werner Junior the same year Werner saw Aria the first time.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Your husband knew about the seeing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "And he came home and carved your bowl three years later.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "So the bowl — your bowl was Olaf's answer to what Werner had told him.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Yes. By my reading.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Marina was quiet a long count.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Then the bowl on the cabin table that the substrate carved into a version with Aria's face inside it — the face on the cedar Finn pulled out of his duffel, which is Olaf's hand — the face Lena painted on the alley wall yesterday morning —",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "All of it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Olaf has been carving her face since 1976.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Marit.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I am going to need a minute.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She got up. She went to the window at the side of the bakery that looked out on Hemlock. She stood at the window with her hands flat on the sill. She looked out at the street. The rain on the sidewalk was the rain on the sidewalk. The sky was the gray-blue. The Daily Grind across the street had now flipped its CLOSED to OPEN and the lights were on inside. The morning was the morning.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had not, in six years at the foundation, been in a room where the work she had been doing at a desk in Eugene was being unfolded by the people who had been carrying it at the closest distance. She had been at a desk. They had been carrying. The unfolding was — she registered at the window — the unfolding was the room.",
+      "t": "narrate"
+    },
+    {
+      "text": "She put her hands on the sill and watched the rain.",
+      "t": "narrate"
+    },
+    {
+      "text": "—",
+      "t": "narrate"
+    },
+    {
+      "text": "When she came back to the table Marit was reading the poem aloud. The poem was Werner's. The poem was in English, by some translation Werner had made of his own German for the cycle. The poem was twenty-three lines. The poem had the young woman at the door of the Schenck house in Bern at three in the morning in a rain that had been raining for some hours. The poem had the family inside the house. The poem had the young woman on the step with her hand on the bell-pull and the family inside not knowing. The poem ended:",
+      "t": "narrate"
+    },
+    {
+      "text": "the bell-pull was the bell-pull",
+      "t": "narrate"
+    },
+    {
+      "text": "the bell was the bell that had been at the door of the house since the house was built",
+      "t": "narrate"
+    },
+    {
+      "text": "the daughter at the door was the daughter the house had been\nbuilt to receive",
+      "t": "narrate"
+    },
+    {
+      "text": "the family inside the house had been keeping it warm for her since\nthe day they had become the family",
+      "t": "narrate"
+    },
+    {
+      "text": "the daughter did not ring the bell",
+      "t": "narrate"
+    },
+    {
+      "text": "the daughter waited",
+      "t": "narrate"
+    },
+    {
+      "text": "the rain on the bell-pull was the rain\nthe rain continued",
+      "t": "narrate"
+    },
+    {
+      "text": "she would ring",
+      "t": "narrate"
+    },
+    {
+      "text": "she would ring when the room was ready",
+      "t": "narrate"
+    },
+    {
+      "text": "Marit set the chapbook on the table. Nobody, for a long count, spoke.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Hans.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Thank you for the poem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Cale, beside Per, picked at the cuticle of his thumb.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Hans.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yeah, Cale.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The room is ready.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Cale.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I think the room is ready.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I do too. I — I have been thinking it since Tem called me this morning at four-fifteen to tell me Marit was coming to the bakery at six. I had been planning to give the poem at the bakery anyway. The four-fifteen call was — the four-fifteen call was the signal.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Hans set his cup down.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans. We have been — I have been talking with Cale about Roy on the porch of the cabin Thursday night. We think Roy has the fourth bowl. The bowl Olaf gave Olaus in '76 or '77. The bowl that went missing in '31. We think Roy came to this town in '31 with that bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "We think Roy has been at this town for twenty-one years with the bowl in his apartment or wherever he keeps things. We think Roy is — Roy is the third carrier in this town. Roy has been at the edge of the network the way you have been at the edge. Roy is — Roy is not, by what we are figuring out, what we have been reading him as.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I have known Roy has the bowl since '37.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The table went still.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "I am going to put it down too. Today is the day for it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He drank from his coffee.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "In '37 Roy came into the bakery in November and stood at the front counter and bought a loaf of the rye. He had been coming in for six years by then. He had not, since the conversation about the poem cycle in '31, asked for anything other than bread. On the morning in November of '37 he paid for the rye and as he was leaving he turned at the door and said: Hans. The Olaus family had a bowl your friend Olaf carved. I have it. It is at my apartment. I have been keeping it. I want you to know. He did not wait for me to answer. He went out the door.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I went home that night and I did not sleep. I came back to the bakery at four the next morning and started the day's bread.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "At ten that morning Roy came in again. He bought a loaf of the seeded white. He paid. He turned at the door and said: Hans. I am not going to talk about the bowl with you. I told you because you should know. I am not going to ask you anything. I am not going to tell you anything else about it. The bowl is mine to keep. I am keeping it. You should know that. The knowing is the conversation. The conversation is done.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "He went out the door. He has been at the bakery three hundred times since. He has not, in the fifteen years since November of '37, mentioned the bowl. I have not asked. The conversation was done. I have been carrying the knowing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I have not told Greta. Greta has not asked. I have not told my brother. My brother does not know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Roy is one of us. One of us in a way I do not have a clean account of. He came to this town with the bowl in '31. He told me he had it in '37. He has not, in the years since, done anything I have read as moving against the network. He has watched. He has been at the Daily Grind. He has been at the Charging Station. He has been at every business in this town at every hour.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "He has been doing what Tem has been doing. Watching. Roy and Tem have been the two watchers in this town for some years. Roy the older. Roy whose presence has been visible. Tem the one whose presence has not. I have known about both of them.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I am putting it down because today is the day for it. We have Tem and Cale and the four young people and Marit and Marina and me and Greta and Per at this table. This is the room Werner's poem was about. This is the room Aria is going to ring the bell of.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I am going to ask Roy to come to the bakery tomorrow morning at six.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The table did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Hans.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You are going to ask Roy.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I am going to ask Roy. I have not, in fifty-three years, invited Roy to anything. I have been making the bakery not-his-place since 2031. The not-his-place was the right call for those decades. The decades are over. I am going to ask him tomorrow morning. He will come.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Hans.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Roy is going to bring the bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Roy is going to bring the bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Cale.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I am going to need you here. I am going to need all of you here. Tomorrow at six. For the first time in fifty-one years all four bowls will be in one place.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "We will be here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "scene": "vol7_ch15_wagon",
+      "t": "jump"
+    }
+  ]
+}

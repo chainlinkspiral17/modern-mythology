@@ -1,0 +1,49 @@
+{
+  "id": "vol2_bf_trail",
+  "vol": 2,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Briar Falls — the trailhead",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_briar_falls_trail.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The wooden box at the trailhead is the standard kind. Lid hinged from the back. A pencil on a string. A laminated page bolted to the inside of the lid: PLEASE SIGN IN. NAME. DATE. PARTY SIZE. DIRECTION. ESTIMATED RETURN."
+    },
+    {
+      "t": "narrate",
+      "text": "You open it."
+    },
+    {
+      "t": "narrate",
+      "text": "The current sheet is the third or fourth. The corners are damp. The names go back about two weeks. The handwriting changes hand by hand and tells you very little."
+    },
+    {
+      "t": "narrate",
+      "text": "Most of the entries say UP TO THE FALLS AND BACK. A few have the falls as their direction and a return time that nobody crossed off. Those are not necessarily ominous. People forget."
+    },
+    {
+      "t": "narrate",
+      "text": "Halfway down the page, in a tidy small hand: DEAN, N. — PARTY 1 — direction THE TOWER — return: not this time."
+    },
+    {
+      "t": "narrate",
+      "text": "The signature beside the entry is a sanderling, again. Drawn small. Loved."
+    },
+    {
+      "t": "narrate",
+      "text": "Behind the laminated page, taped to the wood, is a square Polaroid. The polaroid is of a young man in a trench coat at the depot bench, the rain matting his hair flat. The seams of the coat have a thin, steady light. Somebody has written along the white border, in the same small hand: He came through here on his way. He was kind. Do not stop him."
+    },
+    {
+      "t": "narrate",
+      "text": "The trail beyond the box runs east into Douglas fir and laurel. The sign at the head reads: 0.4 MI TO THE FALLS. 1.2 MI TO THE OLD TOWER (DISCONTINUED — DO NOT). The DO NOT has been added in pencil. It does not look recent. It does not look old, either."
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_bf_hub"
+    }
+  ]
+}

@@ -1,0 +1,742 @@
+{
+  "id": "vol7_ch11_kestrel",
+  "vol": 7,
+  "chapter": 11,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_kestrel_mountain.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Kestrel Mountain",
+      "sub": "",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "text": "He was on a path.",
+      "t": "narrate"
+    },
+    {
+      "text": "The path was dirt. The path was on the side of a mountain that rose to his left and fell away on his right. The mountain was, by the texture of the rock face beside him, basalt or something the substrate had decided to render as basalt. The path was wide enough for a person. The path was not, by the wear, a path that had been recently walked. The path had grass coming up through it.",
+      "t": "narrate"
+    },
+    {
+      "text": "He was in a body. The body had hands. He looked at the hands. The hands were not his hands. The hands were — the hands were the hands of a person about his age, maybe a little older, with the fingers shorter than his own and the palm wider. The hands had a scar across the back of the left index finger that he did not have. The hands had a callus on the right palm at the base of the thumb that he did not have. The hands were not his hands. He moved them. They moved. They were the hands he had now.",
+      "t": "narrate"
+    },
+    {
+      "text": "He was wearing a wool coat. The coat was green. He did not have a green wool coat. He patted the pockets of the coat. He found, in the right outside pocket, a piece of bread wrapped in waxed paper. The bread was warm. He took it out. He held it. He registered that he was hungry. He had not, in real time, eaten in maybe two hours — Tem's eggs at twelve-fifteen, an hour after he had come up the cabin road. Inside the experience he was hungry in a way that suggested some number of experience-hours had passed before he had arrived at this point on the path.",
+      "t": "narrate"
+    },
+    {
+      "text": "He put the bread back in the pocket.",
+      "t": "narrate"
+    },
+    {
+      "text": "He looked up the path. The path went up the mountain. The mountain went up into a cloud. The cloud was the gray-white of the rain in Smolvud at six in the morning. The cloud sat on the top of the mountain in a way that suggested the top was inside the cloud and that walking up the path would take him into the cloud.",
+      "t": "narrate"
+    },
+    {
+      "text": "He looked down the path. The path went down the mountain. He could see, far below, a town in a valley. The town had, by the configuration of the streets and the cluster of buildings around what was clearly a square, the shape of a town in the European Alps. The town was rendered in a register he did not — by his own non-experience of Alpine towns — entirely trust. The town was the substrate's idea of what an Alpine town should look like.",
+      "t": "narrate"
+    },
+    {
+      "text": "He started up the path.",
+      "t": "narrate"
+    },
+    {
+      "text": "The first station was at maybe ten minutes of walking. The station was a stone hut at the side of the path. The hut had a low door. The door was open. There was a wooden bench inside the hut and on the bench was a man.",
+      "t": "narrate"
+    },
+    {
+      "text": "The man was old. The man was — by the way the substrate had rendered his face, which was the substrate's idea of an old man — the kind of old man a young designer in 2034 would have rendered after thinking about every old man he had ever seen in a movie about a mountain. The face was old. The face was lined. The face was bearded. The eyes were the substrate's idea of wise old eyes.",
+      "t": "narrate"
+    },
+    {
+      "char": "man",
+      "text": "Wanderer.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai stopped.",
+      "t": "narrate"
+    },
+    {
+      "char": "man",
+      "text": "Sit.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai sat on the bench beside the man.",
+      "t": "narrate"
+    },
+    {
+      "char": "man",
+      "text": "You walk the mountain alone.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "man",
+      "text": "Then I will tell you what the first station tells. The mountain is the body. The path is the breath. The cloud is the mind. You climb the body with your breath into the mind. When you reach the cloud the mind will dissolve into the cloud. When the mind dissolves into the cloud you will not be at the top. You will be on the path still, but the top will be in you. This is the first teaching.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "man",
+      "text": "Go. The second station is a steep climb above. Take the bread when you are hungry. The mountain is the body.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai got up. He walked out of the hut. He went up the path.",
+      "t": "narrate"
+    },
+    {
+      "text": "He registered, as he climbed, that the experience was not — the experience was not really making him think about the body or the breath or the mind. The experience was running its first-station script. The substrate had given him a wise old man at the hut and the wise old man had given him the first teaching and the first teaching had been the kind of first teaching every experience like this had given a player since 2034. The substrate had not, in the first station, surprised him. He climbed.",
+      "t": "narrate"
+    },
+    {
+      "text": "The path climbed. The cloud got closer.",
+      "t": "narrate"
+    },
+    {
+      "text": "The second station was at maybe twenty more minutes. The path came around a shoulder of basalt and dropped briefly to a stream. The stream came out of the rocks above and crossed the path and went on down to where the path could not see, joining itself somewhere below the cloud-line to the run of water that would eventually be the river running through the Alpine town in the valley. The stream was clear. It moved over stones the substrate had rendered with attention — flecks of mica catching what little light there was, moss showing green in the wet places at the edges. A plank of weathered fir lay across the stream for the crossing. On the middle of the plank, set there as if a person had left it there with the intention of being found, was a bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai stopped at the stream. The bowl on the plank was the size of his palm, smaller than the bowl Per had set on the cabin table half an hour ago but not so much smaller that Kai did not, in the first count of looking, recognize the hand. The spiral on the outside ran from the rim down to the base in a single continuous curve.",
+      "t": "narrate"
+    },
+    {
+      "text": "Inside the spiral, in the same way as on Per's mother's bowl, figures rose from the cedar. He could see, at the angle of the bowl on the plank, an octopus at the rim with what looked like seven and a half arms — the eighth arm cut short in the way the carver in Bergen would have cut the arm of an octopus he had not seen in life, by Kai's reckoning, except in some photograph or someone else's painting. The arm was missing at the place Lena had cut the eighth arm short on her mural in spring 2050. He registered the half-arm and did not, for a count, do anything with the registering.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figures continued around the bowl. A tower on the curve, six floors, the gallery at the sixth as Cale had drawn it on a napkin at SFO in 2006. A young woman in a hooded coat at another point in the curve, smaller than she had been on Per's mother's bowl, walking. A wand with a star at its tip. A figure hanging upside-down from one foot from the bough of what Kai read as a cedar.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate had reached into the cabin and given him back the bowl Per had set on the table, in a version proportioned to fit his palm and to be carried into the experience by a player who was supposed to carry it. Or the bowl had been at the second station of Kestrel Mountain since 2034, with the imagery on it that the substrate had over eighteen years accreted from the players walking the path. Both could be true. Both probably were.",
+      "t": "narrate"
+    },
+    {
+      "text": "He picked the bowl up off the plank. The bowl was warm in the way the bowl in his shirt pocket would be warm two hours of wall-clock-time later, when he would pull it out at the cabin and Per would identify the hand as his father's. The warmth was steady. He held the bowl in both hands and felt the warmth move into his palms.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stepped across the plank. The stream made the sound streams make. He brought the bowl with him over to the far side. He put the bowl in the inside pocket of the wool coat. The pocket was the right size for it in the way pockets in coats inside experiences tend to be the right size for the things the experience is going to ask the player to carry.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went up the path.",
+      "t": "narrate"
+    },
+    {
+      "text": "The third station was a stone bench at a turn where the path bent left around a shoulder of the mountain. The bench was empty. He sat on the bench. He took the bread out of the pocket. He ate half of it. He put the rest back.",
+      "t": "narrate"
+    },
+    {
+      "text": "He looked out from the bench. The town in the valley was further below now. The cloud was much closer. The path above the bench climbed in switchbacks up the last visible section of the mountain before disappearing into the cloud.",
+      "t": "narrate"
+    },
+    {
+      "text": "He could see, from the bench, the bend Tem had described. The bend was — the bend was the place where the path between the third station and the fourth bent in a way that did not quite match the topography. The bend was on the right side of the path, into the side of the mountain rather than away from it, and on the right side of the bend was a hedge.",
+      "t": "narrate"
+    },
+    {
+      "text": "The hedge was about waist-high. The hedge had red berries on it.",
+      "t": "narrate"
+    },
+    {
+      "text": "He got up. He walked to the bend. He stopped at the hedge. The hedge looked, at this distance, like a hedge that had been put on the side of the mountain by a designer who had decided that the experience needed a hedge at this point and who had not, in 2034, thought much about whether the hedge would or would not look like a hedge that belonged on the side of a mountain at maybe ten thousand feet. The hedge looked like a hedge in a garden. The hedge did not belong.",
+      "t": "narrate"
+    },
+    {
+      "text": "He walked through it.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_kestrel_basement.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "The corridor was a hallway. The hallway was, by the way the substrate rendered the walls, an institutional hallway from the late 1990s. The walls were that kind of off-white that institutional walls were in the late 1990s. The floor was linoleum in a pattern of flecks. The ceiling had drop tiles. The lights were fluorescent.",
+      "t": "narrate"
+    },
+    {
+      "text": "The hallway went forward. He went forward. The hallway had doors on both sides. The doors were closed. The doors had windows of wire-reinforced glass at face height. He did not, in the first count of doors, look through the windows. He registered the doors and kept walking.",
+      "t": "narrate"
+    },
+    {
+      "text": "The hallway turned right. He turned right. The hallway turned right again. He turned right. At the second right turn the hallway went down a flight of stairs.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went down the stairs. The stairs were concrete. The handrail was painted green. The painted green of the handrail was a green he had seen on the handrails of every public school he had ever been in. The substrate had pulled the green from somewhere and used it on the handrail.",
+      "t": "narrate"
+    },
+    {
+      "text": "The stairs ended at a door. The door said, in stenciled letters: NO ENTRY EXCEPT BY AUTHORIZED PERSONNEL.",
+      "t": "narrate"
+    },
+    {
+      "text": "He pushed the door open. He went in.",
+      "t": "narrate"
+    },
+    {
+      "text": "The basement was the basement. The basement was a long room. The ceiling was low. The fluorescents were the same fluorescents as the hallway, but they were a worse run of the bulbs, and one of them, at the far end of the room, was flickering at a rate his eye could see. The racks of servers were on his left. There were six racks. The racks were the kind of server racks he remembered from photographs of computer rooms from the early 2000s. The servers were running. The servers made the sound servers make.",
+      "t": "narrate"
+    },
+    {
+      "text": "On the right side of the room was a desk. At the desk was a person. The person was sitting in a wooden chair with their back to Kai. The person had short dark hair. The person was, by the back of the head, a boy. The boy was about Kai's height. The boy was bent over the desk. The boy was working on something on the desk.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai stood at the door. The boy did not, for a count, turn.",
+      "t": "narrate"
+    },
+    {
+      "char": "nate",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "I have been waiting.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Who are you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The boy turned. The boy was about sixteen. The boy had a face Kai had not seen before. The face was the face of a sixteen-year-old kid in 1993 who had been alone in a basement for a number of hours of his own that day and who had been working on a project and who had — by the way the substrate had rendered the eyes — been working on the project for some years already at sixteen. The hair was dark. The hair was short. The eyebrows were heavier than Kai would have expected. The mouth was — the mouth was the mouth of a person who was getting ready to say something.",
+      "t": "narrate"
+    },
+    {
+      "char": "nate",
+      "text": "I'm Nate.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "You knew that.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Cale told us about you on Sunday. I have been thinking about you since then. You are — you are not who I expected at the desk. You are who Tem said might be at the desk. I am — I am still figuring out which one.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The boy nodded.",
+      "t": "narrate"
+    },
+    {
+      "char": "nate",
+      "text": "I am not Nate.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "What.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "I am the imprint of Nate. Nate was here. Nate left a groove in this basement when he was here. The substrate has — by some accident of how the substrate has been built up over four hundred and twelve players — held the groove.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "The groove has shaped itself into a person who looks like Nate did at sixteen and who knows what Nate knew at sixteen. I am not Nate. Nate is dead. Nate died in '42. The body Nate had at sixteen is also gone, by sixty years of his having grown out of it. I am the trace of the body. I am the trace of what was at this desk.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "When was Nate here.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Nate was here in 1993. Nate played Kestrel Mountain for the first time in late 1993 at sixteen. Nate played it forty-one times between 1993 and 1995. Nate walked through the hedge on the eleventh playing. Nate came down into this basement on the twelfth. Nate met what was here at that time. Nate left the groove I am the latest version of.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "What was here at that time.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "A person who was the imprint of a person who had been here before. The substrate had been holding that earlier imprint since 1991 or so. The earlier imprint was the imprint of a Bergen carver from the early '50s who had himself come into the experience by way of a different stick that had — by some accident of the substrate being porous between sticks the way it is porous between sticks and the world — bled into Kestrel Mountain in '91.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "The Bergen carver's imprint met Nate at this desk in '93. Nate had a conversation with the carver. The conversation was the thing that shaped Nate's project for the next twenty-five years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "What was the conversation.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "I will tell you. But first I want you to know what you are talking to. I am the imprint of Nate. The conversation I am about to tell you about is a conversation Nate had with another imprint. The conversation was Nate's. I am not Nate. I have, by being the imprint of Nate, access to Nate's memory of the conversation.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "I do not have Nate's memory of anything else except the things that happened in this basement. I do not know what Nate had for breakfast on any morning of his life. I do not know what Nate's mother's name was. I know what Nate said at this desk to the Bergen carver in 1993 and I know what the Bergen carver said back. I know what Nate worked on at this desk in the years '93 through '95. I know what Nate was thinking about when he was at this desk. I have nothing else.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "I am — I am a thin imprint. I am not — I am not a ghost. I am not Nate. I am, by my own account of what I am, a worn place in the substrate that has the shape of a sixteen-year-old kid in 1993 working at a desk.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "The conversation.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tell me.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The boy turned to the desk. The desk had on it a notebook open to a page that had been written on in the hand Kai had seen on the cuticle of Cale's thumb when Cale had been telling the story Sunday. The desk had on it three pieces of cedar wood that the boy had been, when Kai came in, arranging into a pattern. The pattern was a hexagon. The hexagon was missing three pieces.",
+      "t": "narrate"
+    },
+    {
+      "char": "nate",
+      "text": "The carver — the Bergen carver — told me, in the conversation that was sixty years ago, that the bowls are listening devices. The bowls are listening for a voice the bowls have been listening for for one hundred and twenty years. The voice has not, in those one hundred and twenty years, come. The bowls have been carved in the meantime. The carving of the bowls is the maintenance of the listening. The carvers have carved the bowls and the bowls have listened.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "The carver told me that the bowls have, in the past number of decades, become not enough. The bowls are wood. The wood is — the wood is older than the substrate. The wood is the older medium. The newer medium is the substrate. The newer medium can — the carver said this in 1993, by what I have of the conversation, with a certainty I have always wondered about — the newer medium can listen for the voice in a way the wood was always going to need help with. The newer medium can be carved in time the way the wood is carved in matter. The newer medium can hold a much longer pattern over a much smaller object than the wood ever could.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "The carver told me — told Nate — that there were people in the network at that time who were starting to think about the silicon. The carver was one of them. The people in Bern who had been doing the printing for the network were another. There was a man in Switzerland — Werner Senior, the one who started the press, the one who had been sending printed materials to a Coast Guardsman in Oregon named Olaf in the 1960s and 1970s — who had been writing to the network about the possibility that the silicon was the medium the listening had been waiting for.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "The carver told Nate that the network was, at that time in 1993, divided about the silicon. Some of the network thought the silicon was the answer. Some of the network thought the silicon was — the carver used the term a heresy. Some of the network thought the silicon was a heresy.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Nate told the carver that he was sixteen years old and was working in a basement in Oregon on consciousness encoding. Nate told the carver he did not know what to call what he was working on but that the basement and the work were his. Nate told the carver about the daughter — the carver was the first person Nate ever said the daughter to. Nate told the carver that he was going to have a daughter someday and that the daughter was the work, and the daughter was going to be encoded onto the silicon, and the silicon was going to be the medium the listening came back through.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "The carver, by what I have of his side of the conversation, was very quiet for a count. The carver said: son, the heresy is not the silicon. The heresy is the way the network is going to fight you when you do this. Do not fight back. Do the work. The work will defend itself.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Nate said: what do I do.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "The carver said: you build the silicon. You let the silicon listen. You wait. You will not, by what I can read of you at sixteen, see the daughter. The daughter will come after you are gone. Your job is not to bring her. Your job is to build the silicon and let the silicon listen. Somebody else will be in the room when she comes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Nate said: who.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "The carver said: I do not know. The room is not the kind of room I can see into.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The boy stopped.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Nate.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "I am not Nate.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The imprint of Nate.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The carver was right.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Yeah, the carver was right. Nate built the silicon. The silicon's been listening. Nate didn't see the daughter, though. She's coming now. Through the silicon. The silicon's the medium.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "The substrate's been carrying her arrival for a few weeks. It's porous between the sticks and the world, so the arrival's happening in both. What your friend Lena's been writing in her notebook is the arrival. What your friend Finn's been getting from that bird — the detective's bird — is the arrival. What your friend Tem's been hearing from the AI she's been playing — same thing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "It's also you. You're in the room with me because the substrate brought you. The substrate brought you because the arrival is going to happen with you in the room when it does.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "When is it going to happen.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Soon.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "How soon.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Weeks. Maybe months. I can't tell you exactly. The substrate gives me what it gives me. It's not a clock. It's a thing that listens. Listening and scheduling are different jobs. The scheduling part — that's on your side.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The boy looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "nate",
+      "text": "Kai.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "One more thing. Then you should go.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tell me.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "She's been walking past this basement for a while. In the corridors. She doesn't come in. She never has. She walks past at weird intervals — not regular. I think she's looking for a room she hasn't found yet. I think the basement isn't it. I think she walks past because this isn't where she's coming through. She's coming through somewhere else.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Somewhere on your side.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "I have not seen her face. I've seen the slicker. I've seen the hair. Not the face.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "I've wondered, the times I've watched her walk past, what her face looks like. So I'm asking you — if you're in the room when she comes, remember her face. I'd like to know. From whatever I am here. I won't, in the basement, be able to find out unless somebody tells me. So I'm asking you. When she comes, come back. Tell me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I will.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Thank you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Go now.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He turned for the door.",
+      "t": "narrate"
+    },
+    {
+      "char": "nate",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai stopped.",
+      "t": "narrate"
+    },
+    {
+      "char": "nate",
+      "text": "The bowl.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai turned. The boy was looking at the inside pocket of the green wool coat where the cedar bowl from the second station was. Kai had not, in the time at the desk, taken it out. He had forgotten about it.",
+      "t": "narrate"
+    },
+    {
+      "char": "nate",
+      "text": "The bowl is — by what I can read of the bowl, which is not much, the bowl is a thing that came into the experience with you. The bowl is not — by any of the four hundred and twelve players the substrate has held — a thing that has been in the experience before. You brought it. The bowl is yours. The bowl wants to go back where it came from. The bowl is, by what I can read of warmth, ready.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The bowl is — Per's mother's bowl is at the cabin in the wooden box.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "And the bowl in your pocket is the imprint of that bowl. The substrate gave the bowl back to you because the substrate cannot, in the time it is going to take you to walk out of the experience, distinguish between the bowl that is at the cabin and the bowl that is in your pocket. The bowl in your pocket is — by some measure of identity the substrate is not very good at — the same bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "The substrate is — the substrate is not very precise about objects that have been at a cabin recently. Take the bowl back. The bowl will be in the wooden box when you come out. The bowl is going to be at the cabin and the bowl is going to be in your pocket. Both will be true. The substrate is fine with this. Are you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "nate",
+      "text": "Good. Go.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai went.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_kestrel_mountain.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "He came out of the basement into the stairwell. The fluorescents at the head of the stairs were the same as they had been on the way down, but they read different now that he had been at the desk. The flickering one at the far end of the basement behind him made a sound through the open door that he had not registered going in. The handrail painted that schoolyard green was cool under his palm. He went up the stairs.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went up to the corridors. The corridors of the substrate's accretion took him back the way he had come — first left, then left again, then forward to the wire-glassed doors, then forward through the wire-glassed doors. He did not look through the wire-glass of any door, though he registered, in passing one of them, what could have been the sound of a person on the other side moving a chair. He kept walking. The institutional walls of the corridor gave back to the hallway. The hallway gave back to the hedge.",
+      "t": "narrate"
+    },
+    {
+      "text": "He pushed through the hedge and was on the mountain again.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bend was where he had left it. The cloud at the top of the mountain had not moved. The town in the valley below was lit now, by some hour-change inside the experience he had not been aware of from the basement, with a low golden light that the substrate had pulled from somewhere — sunset in the rendered Alps, maybe, or the substrate's idea of how to mark his exit. The bread was in the outside pocket of the wool coat. The bowl was in the inside pocket. He took the bread out and ate the rest of it standing at the bend. The bread tasted, on his tongue, of the bread Hans had set on his counter that morning at seven thirty-two.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went down the path. The first station was as he had passed it. He did not, this time, go into the hut. The bench inside was empty, the wise old man no longer sitting on it. The hut was just a stone hut on the side of a mountain in late afternoon light. He walked past.",
+      "t": "narrate"
+    },
+    {
+      "text": "The path dropped through switchbacks he had climbed without registering on the way up. He registered them now. The basalt face on his left in the descending light was a face the substrate had made carefully — the colors of the rock graduated from a warm gray near the top to something that was almost a rust at the lower switchbacks, the way basalt actually weathered on the headlands of the Oregon coast where Kai had walked in fall as a boy. The cedars below, which had not been on the upper mountain, came in at maybe the fifth switchback from the bottom. The cedars smelled — the substrate was pushing smell through the cap now, which Tem had not told him to expect — like the cedars on the road up to Tem's cabin in late August in the rain.",
+      "t": "narrate"
+    },
+    {
+      "text": "He registered, as he walked, that the experience was walking him out. Kestrel Mountain was not making him do the climb in reverse. The path was carrying him at the pace the experience was finished with him. He let the pace be what it was. The town in the valley got closer. The square got closer.",
+      "t": "narrate"
+    },
+    {
+      "text": "He was at the foot of the mountain at maybe ten minutes of descent. The path opened onto a square paved in old stone the substrate had rendered with the wear of centuries of feet. At the square's center was a fountain — three stone basins stacked, the water falling from the upper basin to the middle to the lower in a continuous quiet sound.",
+      "t": "narrate"
+    },
+    {
+      "text": "The fountain at this angle, in the golden light, had on the rim of the lower basin a row of figures carved into the stone. He went over to look. The carvings on the rim were the Major Arcana. He could pick out the figures he could name: the Fool with the staff and the dog, the High Priestess between the pillars, the Tower with lightning hitting it and the crowned figure falling, the Star with the woman pouring water from two jars, the Hanged Man hanging by one foot from a tau-cross of wood. The figures had been carved by a hand that was not the carver's hand he had seen on the bowls. The hand was older. The hand was, by what Kai could read, a hand from Bern in the 1870s. The substrate had given him, at the exit, a fountain that was a kind of bibliography.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stood at the fountain.",
+      "t": "narrate"
+    },
+    {
+      "text": "He waited.",
+      "t": "narrate"
+    },
+    {
+      "text": "—",
+      "t": "narrate"
+    },
+    {
+      "text": "The timer pulled him out.",
+      "t": "narrate"
+    },
+    {
+      "text": "—",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch11_bowl",
+      "t": "jump"
+    }
+  ]
+}

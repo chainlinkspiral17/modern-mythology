@@ -1,0 +1,147 @@
+{
+  "id": "vol6_ch7_safehouse",
+  "vol": 6,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — Family Only",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_safehouse_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Family Only",
+      "sub": "Saturday — 14:22 — Safehouse",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, Maya, and Jesse are not at the safehouse."
+    },
+    {
+      "t": "narrate",
+      "text": "The safehouse is, by Hal's protocol — agreed upon Friday night with the doctor and the grandmother and Doyle — open today only to family. Diego's mother arrived at six-thirty this morning from San Antonio. She is, at this moment, in the bedroom with Diego, who is sitting up for the first time, drinking water, looking at her, talking, slowly, in Spanish, about nothing in particular."
+    },
+    {
+      "t": "show",
+      "char": "graciela_ramos",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, on the porch, Diego's grandmother — Graciela Ramos, who has not left the safehouse since arriving last night at ten — is on the phone."
+    },
+    {
+      "t": "narrate",
+      "text": "She is on the phone with Sam."
+    },
+    {
+      "t": "narrate",
+      "text": "She has been talking with Sam for forty minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "She is telling Sam, in the slow careful way she tells things, what Diego has — between sleep and water and his mother — said about the five days. Not the worst of it. Graciela is, herself, learning the worst of it as Diego comes back to himself, and is choosing carefully which pieces to relay to Sam. The pieces she is relaying are the ones that will, in Graciela's judgment, give Sam what Sam needs to know without giving her what Sam does not yet need to carry."
+    },
+    {
+      "t": "say",
+      "char": "Graciela Ramos",
+      "text": "Diego asked about you again this morning. He asked twice. He asked when he could see you. The doctor said Monday, maybe Tuesday. Diego said Monday. The doctor said we will see how Diego feels.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Graciela Ramos",
+      "text": "Diego asked about your father, mija. I told him your father turned himself in yesterday. Diego cried. He cried because he had been afraid your father had — I will not say it. I will say only: Diego cried because he had been afraid for you, even in there. Even in the room they kept him in. He had been carrying you, mija. He had been carrying the worry about you. Now he can put it down.",
+      "expr": "sad"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "sad",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, in her Corolla in the parking lot of the Kwik Stop where she had come, on her break, to take this call in private, sits with the phone against her ear and weeps quietly."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Graciela. Tell him. Tell him I love him. Tell him he should not have been carrying me. Tell him I have been carrying him too. Tell him — tell him Monday.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Graciela Ramos",
+      "text": "I will, mija.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Graciela.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Graciela Ramos",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Thank you.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Graciela Ramos",
+      "text": "Mija. Always.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They hang up."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam sits in the car for another five minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "Then she goes back into the Kwik Stop. She finishes her break. She works her shift."
+    },
+    {
+      "t": "narrate",
+      "text": "The shift is, today, easy. The shift is, today, just a shift."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch7_henderson_kitchen"
+    }
+  ]
+}

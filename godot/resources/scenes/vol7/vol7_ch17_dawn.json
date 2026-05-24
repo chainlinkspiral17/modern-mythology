@@ -1,0 +1,267 @@
+{
+  "id": "vol7_ch17_dawn",
+  "vol": 7,
+  "chapter": 17,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Sunday",
+      "sub": "Before dawn",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Tem woke at three forty-eight.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cabin was at fifty-five by the thermometer. The stove had banked at midnight.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had been the last to bed — Marina at ten in the loft, Cale and Per in the chairs by the stove at ten-thirty, Finn on the floor by the south window at eleven, Kai on the daybed at eleven-fifteen, Lena beside her in the bedroom at eleven-twenty. Tem had stayed at the table with the three bowls until twelve-twenty.",
+      "t": "narrate"
+    },
+    {
+      "text": "What she had been watching at midnight: the crow on Marit's bowl had turned its head all the way to the right and was looking at a point outside the bowl's spiral — looking at the substrate-bowl beside it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The young woman on the substrate-bowl was well past the stenciled doorway and was walking, by Tem's read, toward Marina's grandfather's bowl. Marina's grandfather, on the third bowl, had his eyes on the rim — the rim now faced the substrate-bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "The three bowls were — Tem had registered at midnight — coordinating.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had gone to bed. She had slept three hours and forty-two minutes.",
+      "t": "narrate"
+    },
+    {
+      "text": "She lay in the bedroom with Lena's breath beside her and listened to the cabin.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cabin at three forty-eight on the last Sunday morning of August in 2052 was the quiet of a cabin holding six sleepers and three bowls and the rain that had been coming down since Wednesday and had not, in five days, stopped. The rain on the cedar roof was the rain.",
+      "t": "narrate"
+    },
+    {
+      "text": "She got up.",
+      "t": "narrate"
+    },
+    {
+      "text": "She put on the wool sweater. She put on the jeans. She tied the dreadlocks back with the leather thong.",
+      "t": "narrate"
+    },
+    {
+      "text": "The blue of the dye in the mirror over the basin — she lit the kerosene candle — was now mostly gray. The thrift-store dye held three weeks if you were lucky. She had been at the dye for nineteen days.",
+      "t": "narrate"
+    },
+    {
+      "text": "She would go to Margit's on Tuesday and get more if Tuesday was a day for Margit's. She did not, this morning, know if Tuesday was a day for Margit's.",
+      "t": "narrate"
+    },
+    {
+      "text": "She went to the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "The three bowls in the dim of the kerosene lamp she lit were where she had left them. The crow on Marit's bowl had moved another small turn. The young woman on the substrate-bowl had walked another inch.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marina's grandfather had — by Tem's read at the table — raised his face to look not at the rim now but above the rim. The carved figure was looking at something outside the bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem looked at the bowls.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Today.",
+      "t": "say"
+    },
+    {
+      "text": "The bowls did not, by anything she could see, respond. The figures continued to move at the cedar-pace.",
+      "t": "narrate"
+    },
+    {
+      "text": "She made coffee.",
+      "t": "narrate"
+    },
+    {
+      "text": "By five-fifteen the cabin was up.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai came off the daybed at four forty-five. He came to the table without speaking and Tem poured him a cup.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "Lena came out at four fifty-five. Tem poured her a cup.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Cale came out of the chair at five-oh-eight and went out to the porch to smoke. Per came out at five-fifteen. Marina came down the loft ladder at five-twenty.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn rolled off the floor at five twenty-two and went to the south window to look at his crow on Kai's truck.",
+      "t": "narrate"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "The crow was on the truck. Finn came back to the table.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "The crow is fine.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The crow has been on Kai's truck since I left her there last night.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The crow has not — by the way the crow is standing on the dashboard — gone anywhere.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The crow is waiting.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "They left the cabin at five thirty-five.",
+      "t": "narrate"
+    },
+    {
+      "text": "Two trucks and the wagon. Cale and Marina in the wagon with Tem driving. Per and Lena and Finn in Cale's F-150 with Cale driving. Kai in his own truck with the crow on the dashboard.",
+      "t": "narrate"
+    },
+    {
+      "text": "The three vehicles went down the cabin road in the gray-before-dawn. The rain on the windshields was steady.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem drove.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Marina. Today is a long day. I want you to be at the bakery as the foundation and as a person. Both.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yesterday you came in as the foundation. Today you can come in as both. The room knows you now.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Thank you, Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marina. I am — I am going to ask you to do a thing at the bakery.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am going to ask you, when Roy comes in, to be the foundation in the room more than you are anything else.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy is going to need to see the foundation. He has not, in twenty-one years, seen the foundation. He has been waiting. You are it. Be it.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I will.",
+      "t": "say"
+    },
+    {
+      "text": "Cale, behind them, had been quiet. Per, in Cale's truck, had been — by Tem's mirror — sitting between Lena and Finn in the cab and looking at his hands.",
+      "t": "narrate"
+    },
+    {
+      "text": "The road went down through the alders. The Sitka stand opened. The coast highway took them in. At ten to six they were at Hemlock.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch17_bakery",
+      "t": "jump"
+    }
+  ],
+  "title": "Sunday"
+}

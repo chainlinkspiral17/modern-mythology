@@ -1,0 +1,53 @@
+{
+  "id": "vol7_ch6_get_going",
+  "vol": 7,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Get Going",
+  "nodes": [
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Get home, Lena. Eat. Be at the apartment when the others come down. Tell Tem what I told you. Tell her I'll come up tomorrow if she wants me to.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"I will.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She got up. At the doorway she paused with her hand on the frame."
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "warm",
+      "text": "\"Thanks, Cale.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He had gone back to picking at the thumb. He did not look up when she said it."
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Go on.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She went out through the front. The bell rang twice. Outside the rain had started up again and her hair was wet through by the time she was at the corner. The stick in her inside pocket pressed against her hip. She kept her hand on the outside of the coat over it the whole way home."
+    },
+    {
+      "t": "flag",
+      "key": "vol7_ch6_complete",
+      "val": true
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "vol1_link_menu",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "The Missing Link — the menu",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "The menu is laminated and slightly tacky. It has been hand-typed on a typewriter and photocopied at some point in the last decade or two. The header reads THE MISSING LINK in the same chipped enamel as the sign, and below it, in smaller letters: We have what we have."
+    },
+    {
+      "t": "narrate",
+      "text": "THE FAUST — BLT with extra ham. Named for a regular who has not been in for nine years. Owner will not take it off the menu. $6.50."
+    },
+    {
+      "t": "narrate",
+      "text": "THE PASADENA — fried egg, garlic toast, the hot sauce nobody asks the name of. Listed as For the rocket scientist. $5."
+    },
+    {
+      "t": "narrate",
+      "text": "SMOLVUD TOAST — sourdough, butter, cinnamon. Comes dipped in stout if you ask, no charge for the asking. $3."
+    },
+    {
+      "t": "narrate",
+      "text": "SANDERLING EGGS — two over easy, side of patty sausage, a slice of orange that does not belong on the plate but is always there. $5.50."
+    },
+    {
+      "t": "narrate",
+      "text": "THE CALE — coffee, slow drip, no second cup. $2. The footnote reads: One is enough. Anyone who tells you otherwise is selling."
+    },
+    {
+      "t": "narrate",
+      "text": "BRIAR FALLS PIE — chess pie, served cold. The footnote reads: Aunt Sybil's. We do not have the recipe and we do not need it."
+    },
+    {
+      "t": "narrate",
+      "text": "F.T.'S FLOAT — root beer, a scoop of vanilla, and a single book of matches set on the saucer beside it. $4. The match is not for lighting."
+    },
+    {
+      "t": "narrate",
+      "text": "LAFAYETTE — black coffee. The price line reads: no charge for the coffee, ask the owner about the second cup."
+    },
+    {
+      "t": "narrate",
+      "text": "Below the main menu, separated by a hand-ruled line, a CHILDREN'S MENU lists exactly one item: A glass of milk and three crackers. The footnote: No charge for the third cracker."
+    },
+    {
+      "t": "narrate",
+      "text": "On the back of the menu, in a different hand and in pencil, somebody has written: If you are reading this and you are alone, the second cup is yours."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_hub"
+    }
+  ]
+}

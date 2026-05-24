@@ -1,0 +1,139 @@
+{
+  "id": "vol1_ch4_club_sharp_b",
+  "vol": 1,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Act One — Too Real",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_club_sharp.jpg"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "joan",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Coming from my feminine ideal — hello there. Are you trying to seduce me?"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You've had too much to drink. Stop skipping script."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I play my part well enough, lovely miss. But — clearly — I presume."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Clearly, you need a shot of absinthe to clear away cobwebs."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "You are a mean one when you're beguiled."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "I've got my own hero's journey to complete. So stop making eyes at me — the both of you."
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean shrugs. Faust looks at her, trying to get at her. He leans in close."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I can see every last eyelash and blemish of skin. You are far too real in my mind's eye to be a dream."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "To me — you aren't real enough yet. You're so much smoke and ash. I don't know whether to breathe you in or spit you out."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust straightens up."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"Can I see you again tomorrow?\"",
+          "goto": 14
+        },
+        {
+          "text": "\"I have to go. The friends I came with.\"",
+          "goto": 18
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Can I see you again tomorrow?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Her — no. Me — yes."
+    },
+    {
+      "t": "flag",
+      "key": "faust_asked_for_joan",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch4_waking"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I have to go. The friends I came with. I shouldn't leave them."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "A loyal man. We'll see you again. You won't have to find us."
+    },
+    {
+      "t": "flag",
+      "key": "faust_asked_for_joan",
+      "val": false
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch4_waking"
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "id": "vol6_ch2_pit_stop_kitchen",
+  "vol": 6,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Ch 2 — Pit Stop Kitchen",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_pit_stop_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Pit Stop Diner — Kitchen",
+      "sub": "Monday · 12:22",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben Kowalski is on the grill. He has been on the grill since eleven, working the lunch rush. The lunch rush at the Pit Stop is not really a rush — it is a steady shuffle of HOA maintenance guys, retirees, a handful of NexCorp van drivers on their midday break, and the occasional salesman passing through New Auburn on the state highway."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben can handle it with one hand. He has, in fact, handled it with one hand, for the past three weeks, because his left wrist is in a brace he does not talk about and has not, to anyone at the Pit Stop, explained."
+    },
+    {
+      "t": "narrate",
+      "text": "The brace is from Saturday night. The brace is from the backyard-wrestling thing at the McClary place, which Ben has been attending on Saturdays since March, because the McClary kid is a junior wrestling coach at the high school, because the scene is — Ben has been telling himself — just a scene, it's just kids letting off steam, and because Ben has been watching, without putting it in those words, for the specific pattern he has been watching for."
+    },
+    {
+      "t": "narrate",
+      "text": "The specific pattern: which off-duty officers show up. Which parents tacitly encourage what. Which kids get hurt. Which kids, having been hurt, do not, in subsequent weeks, come back."
+    },
+    {
+      "t": "narrate",
+      "text": "On Saturday, Ben had — for the first time — entered the ring himself. Not because he wanted to. Because one of the officers, off-duty, had said, in the particular casual voice adult men used when they were escalating something in the presence of teenagers — \"you ever wrestle, big guy?\" Ben had said no. The officer had said you should try. The small crowd had gotten larger."
+    },
+    {
+      "t": "narrate",
+      "text": "The kid Ben ended up facing was sixteen, from the wrestling team, a lightweight but fast. The kid had been told, by somebody, to go hard."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben had gone easier than he knew how to. The kid had gone as hard as he'd been told to. The match had ended in under a minute. Ben had let the kid throw him. The kid, bouncing back up, triumphant, had not known Ben had let him."
+    },
+    {
+      "t": "narrate",
+      "text": "The officer who had proposed the match had clapped Ben on the shoulder afterward and said, in the same casual voice — \"thought so. you're the quiet type, aren't ya.\" Ben had nodded. The officer had said — \"come back next Saturday. we'll put you in with somebody your size.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Ben had gone home. Ben had, without anyone seeing, wrapped his own wrist — which had twisted on the mat in a way the kid had not caused and that Ben had, in fact, engineered himself, slightly, to create a small plausible reason to sit out the next one."
+    },
+    {
+      "t": "narrate",
+      "text": "He had written it all down on Sunday. He was writing it down now, too, in his head, while he worked the grill."
+    },
+    {
+      "t": "narrate",
+      "text": "He was cataloguing the specific cars in the parking lot from the kitchen window. He was noting that the unmarked NexCorp van he had flagged on Thursday was not in the lot today. He was noting that a black pickup with Louisiana plates was, for the second day in a row, parked at the edge of the Pit Stop lot without its driver coming in."
+    },
+    {
+      "t": "narrate",
+      "text": "He was also thinking about Diego."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben did not, Ben had realized at about eleven-thirty AM, know Diego well. Ben and Diego were not friends, exactly. They were the kind of acquaintance a big quiet teenager at the diner had with a compact serious teenager at the gas station — which is to say, they had worked the same shifts on a shared sidewalk and had, over the past two years, spoken to each other maybe forty times, mostly about the weather and about the contents of vending machines."
+    },
+    {
+      "t": "narrate",
+      "text": "But Ben had noticed the red dot system."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben had noticed the red dots because Ben had, one afternoon in March, been at the Gas & Go buying a Powerade, and Diego had been working, and Diego's phone had been face-up on the counter beside the register, and the wallpaper on Diego's phone had been a photograph of a calendar — a calendar Ben had recognized, because Ben's own mother had a calendar from the same brand on her refrigerator — and on the photograph, Ben had been able to see, in the upper right corner of the image, the small colored dots Diego had been placing on specific days. Two colors. Blue. Red."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben had not mentioned it to Diego. Ben had, however, added the observation to his legal pad."
+    },
+    {
+      "t": "narrate",
+      "text": "He added now, mentally, a new entry:"
+    },
+    {
+      "t": "think",
+      "char": "Ben",
+      "text": "Ramos kid: red dots escalating March through May. Red dots are his own system. Red dots flag something he had noticed at the Gas & Go about specific shifts. Ramos kid disappears on a Saturday night after a Saturday shift. Saturday shift would have had a red dot. I would bet the Powerade I am not buying today that Saturday's red dot was the reason."
+    },
+    {
+      "t": "narrate",
+      "text": "He slid the spatula under a burger. He flipped it. The grease hissed."
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Behind him, Jesse pushed through the kitchen's swinging door."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Hey, Ben.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Hey, Jess.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Can I — hey. Weird ask.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Shoot.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"You have five minutes after your shift? I need to — can we talk? Out back?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Ben looked at him. Jesse was, at twenty, taller than Ben in height but slighter, all knees and elbows, with the kind of hair that had been a choice in 2018 and had, since, become a habit. He was wearing his Pit Stop shirt untucked and a band tee underneath — Suburban Blight, which was the name of Jesse's own band. He looked tired. He looked, specifically, like a kid who had not slept because of something he had seen."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Yeah. Dumpster at two-fifteen. Bring two Powerades.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Thanks, man.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Jess.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Everything okay with your dad?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse's face, at the word dad, went briefly blank."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Why are you asking about my dad.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Saturday night you mentioned he was in the darkroom again. I saw your face when you said it. That's why I'm asking.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse looked at him."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Dumpster at two-fifteen. I'll bring three Powerades.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He pushed back out through the swinging door."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben returned to the grill. The burger, he registered, was done. He slid it onto a bun. He called the order up."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch2_kwik_stop"
+    }
+  ]
+}

@@ -1,0 +1,562 @@
+{
+  "id": "vol6_ch9_safehouse",
+  "vol": 6,
+  "chapter": 9,
+  "type": "chapter",
+  "title": "Ch 9 — Hi, Sam",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_safehouse_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Hi, Sam",
+      "sub": "Tuesday — 09:47 — Safehouse",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam comes in."
+    },
+    {
+      "t": "narrate",
+      "text": "He has been at the safehouse since Friday afternoon. He has, in the four days since, slept eighteen of every twenty-four hours. He has, in the eighteen, been mostly quiet. He has, in the six, been with his grandmother and his mother and Dr. Patel and Doyle, who has not — by his own choice — left."
+    },
+    {
+      "t": "narrate",
+      "text": "Today is the first day Sam is allowed to come."
+    },
+    {
+      "t": "narrate",
+      "text": "She comes in alone."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She comes in carrying a small spiral-bound notebook from the Kwik Stop and a blue raspberry slushie in a paper cup, the lid taped on with the red plastic spoon already inserted through the cross-cut, the way Diego likes it."
+    },
+    {
+      "t": "narrate",
+      "text": "She sets the slushie on the bedside table."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits in the chair beside the bed."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, immediately, speak."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the bed, looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Hi, Sam.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Hi, Diego.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "You cut your hair.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She has not cut her hair."
+    },
+    {
+      "t": "narrate",
+      "text": "He realizes, after a second, that she has not cut her hair. Her hair is, in fact, exactly as she has worn it for the past two years."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Sorry. I — I think I dreamed your hair was different.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She smiles."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "It's okay. I dreamed your hair was different too. You had longer hair in the dream. You looked like you were in a band.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "He laughs, faintly."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Sam.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "How long did this take.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Five days, Diego. We got you out Friday morning. It's Tuesday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks about this."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "It felt like longer.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I had a dream you came to the Gas & Go and pressed your hand to my forehead. The way you did in February.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She is quiet for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Diego. That was Friday morning. About an hour before they got you out. I was at the Kwik Stop. I was at the counter. I — I did press my hand to my own forehead, in the bathroom on my break, because I had a headache. And while I was pressing, I — I thought about you. I thought, I hope he can feel this. I didn't know — I don't know how to talk about this stuff yet. But I felt it go somewhere.",
+      "expr": "thinking"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "It went somewhere, Sam. I was in the room. I felt it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Diego.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "There is a person — there is a man named Frasier Temple. He has imps. He sent the imp to you. Sam — I mean Maya — Maya is going to tell you all of this. There is a network. We are inside it. We are okay. You are okay. You are going to be okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I want to meet Maya.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "You will. Soon. Not today. Today is just me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Sam.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Will you hold my hand.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She takes his hand."
+    },
+    {
+      "t": "narrate",
+      "text": "She holds it."
+    },
+    {
+      "t": "narrate",
+      "text": "She holds it for a long time."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps, holding her hand. She does not move. The slushie, on the bedside table, slowly melts. Dr. Patel comes in once and out once. Diego's grandmother is on the back porch. Doyle is in the kitchen making coffee. Diego's mother is in town buying him new socks because he has not, since the room, been able to bear the socks he had been put in, which had been, by the time Doyle pulled the blanket off him in the van, gray with five days of his own sweat."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam sits for two hours."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, in the two hours, let go."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Six Weeks Later",
+      "sub": "The Notebook",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The notebook is the small spiral-bound one Sam brought to the safehouse."
+    },
+    {
+      "t": "narrate",
+      "text": "He starts writing in it, at her suggestion, the second week of recovery."
+    },
+    {
+      "t": "narrate",
+      "text": "He writes the dream first."
+    },
+    {
+      "t": "narrate",
+      "text": "He writes it because Maya, when she finally visits — three days after Sam, on a Friday in early June, with her grandmother out of the hospital and Maya driving the Subaru Miriam has loaned them indefinitely — tells him about the imps."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Diego. I want you to write down the dream. I want you to write down the device on the wall. I want you to write down what Boyd told you. I want you to write all of it down before you forget it. We are going to need it. Not today. But eventually. The notebook is going to be one of the things we have, when we have to explain to people, later, what it was like.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego writes."
+    },
+    {
+      "t": "narrate",
+      "text": "He writes slowly. His hand is — for some weeks — not steady. He writes a page a day. He writes the dream first because the dream is the thing that hurts least to put down. He writes Boyd's last visit second, because Boyd's last visit is the thing that has been, in his head, the most complete piece. He writes the device on the wall third."
+    },
+    {
+      "t": "narrate",
+      "text": "He writes the room itself last."
+    },
+    {
+      "t": "narrate",
+      "text": "The room takes him four months to write."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "He finishes it, finally, on a Sunday in October, at Sam's kitchen table, with Sam beside him reading a book, and Sam's mother at the stove making a soup that smells of the small specific home a mother's stove can become."
+    },
+    {
+      "t": "narrate",
+      "text": "He closes the notebook."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I am done with this part.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Are you sure?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yes. I want to put it on a shelf for a while.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Where do you want it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yours. The blue bedroom. The shelf above the desk. Where the bayou photograph is.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay, mi vida. I'll take care of it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She takes the notebook upstairs. She places it on the shelf above her desk, beside her grandmother's bayou photograph and the cracked mirror shard she had, in mid-July, found in the parking lot of the Kwik Stop and had, without quite knowing why, brought home."
+    },
+    {
+      "t": "narrate",
+      "text": "The notebook stays on the shelf."
+    },
+    {
+      "t": "narrate",
+      "text": "It stays there for the rest of Sam's time in that room."
+    },
+    {
+      "t": "narrate",
+      "text": "When Sam goes to college in the fall of 2027, the notebook goes with her, in the box of small important things she does not want to lose, and it sits on her dorm desk, and it sits on her apartment shelf, and it eventually, in 2031, sits on her own first kitchen table when she is twenty-three and has, by then, become the person Diego had, in the five days, dreamed she would already be."
+    },
+    {
+      "t": "narrate",
+      "text": "But that is the future."
+    },
+    {
+      "t": "narrate",
+      "text": "For now, in October, Sam closes the bedroom door behind her and goes back downstairs."
+    },
+    {
+      "t": "narrate",
+      "text": "The soup is ready."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego is at the table."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam's mother is pouring."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam sits."
+    },
+    {
+      "t": "narrate",
+      "text": "They eat."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The Strength card, in some other deck on some other table, would, today, be showing — the figure is not subduing the lion. The figure has her hand, gently, on the lion's open mouth. The lion's open mouth is not, in this card, threatening. The lion's open mouth is, in this card, in the middle of a small private confession the figure is helping the lion to make."
+    },
+    {
+      "t": "narrate",
+      "text": "The lion, in Diego's case, is the room."
+    },
+    {
+      "t": "narrate",
+      "text": "The room, by October, is a thing the lion can describe."
+    },
+    {
+      "t": "narrate",
+      "text": "The figure with the gentle hand on the open mouth is — the figure is many people. Sam. Maya. Doyle. Dr. Patel. His grandmother. His mother. Frasier Temple, at his workbench in the warehouse, who has — the imps will report to Diego, eventually, in a chat window six months from now — kept, on a small private server in the warehouse, an audio file of the three-pulse acknowledgment the device on the wall made the night Boyd told Diego he was being given the stomach bug."
+    },
+    {
+      "t": "narrate",
+      "text": "The audio file is six seconds long."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego listens to it once."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not need to listen to it again."
+    },
+    {
+      "t": "narrate",
+      "text": "He keeps it, anyway, on his phone."
+    },
+    {
+      "t": "narrate",
+      "text": "In the years to come, when he is an adult and the work he has chosen to do is, in part, the small careful work of helping other people who have been in rooms like the room come to be able to describe their own rooms — trauma counselor, the official title, though Diego will not, generally, use the title aloud — he will, on bad nights, listen to the six seconds."
+    },
+    {
+      "t": "narrate",
+      "text": "The six seconds will, on those nights, be enough."
+    },
+    {
+      "t": "narrate",
+      "text": "The lion, on the card, lays its head, eventually, in the lap of the figure."
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Strength is — not the absence of fear. it is the small steady act of asking the fear to lie down beside you and sleep.",
+      "expr": "thinking"
+    },
+    {
+      "t": "narrate",
+      "text": "He underlines it."
+    },
+    {
+      "t": "narrate",
+      "text": "He closes the notebook."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "He hands it to Sam."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The chapter ends."
+    },
+    {
+      "t": "narrate",
+      "text": "The summer goes on."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

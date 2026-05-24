@@ -1,0 +1,552 @@
+{
+  "id": "vol6_ch2_dumpster",
+  "vol": 6,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Ch 2 — Back Dumpster",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_pit_stop_dumpster.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Pit Stop Diner — Back Dumpster",
+      "sub": "Monday · 14:17",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben has been off shift for four minutes. He is at the dumpster. He has his work shirt off and his tank top on and his apron slung over his shoulder, and he is drinking the first Powerade. Jesse arrives at 14:17 carrying the second and a crumpled paper bag."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Hey.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Hey.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse hands Ben the second Powerade. He leans against the dumpster, which he has never leaned against before, because Jesse has a fastidious relationship to surfaces that have been touched by grease. His leaning against it now, Ben registers, is its own kind of tell."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "(without preamble) \"My dad took pictures.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Of the town. He does this. He's had the camera forever. But he's — the prints, Ben. The prints. I was in the garage this morning and I saw them on the line. They have — people in them. People that aren't in the actual pictures. He had the raw film still in a holder. I looked at the negatives. The negatives don't have the people. The prints do.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is quiet."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"I'm not crazy.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"I know.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"You know?\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Yeah, Jess. I know.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Why do you —\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Because Saturday night at the McClary place, when I was waiting for my ride after the match, I was standing by the fence at the back of the yard, and there was a kid — maybe eight, maybe nine — sitting on the curb across the street in a spot I know for a fact wasn't lit by the streetlight. I could see him. I shouldn't have been able to. He waved at me. I waved back. When I looked again, two seconds later, he was gone.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"I didn't think anything about it until I got home and realized the streetlight across from McClary's has been out since February. Whole block's dark. But the kid wasn't.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"You didn't mention this.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"I was going to put it in the pad. I hadn't, yet.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"You have a pad.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Yeah, Jess. I have a pad.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"What kind of pad.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"A legal pad.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Ben.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"What are you putting in the legal pad.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "(carefully) \"License plates. Cars that idle in the lot too long. Officers who come off-duty and act on-duty. Which parents at McClary's are encouraging what. Which kids come back. Which don't. Things like that.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Jesus, Ben.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"How long.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Since March.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse exhales. He slides down the side of the dumpster until he is crouched at the base of it, elbows on his knees. He says, to his hands:"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Diego didn't come in today.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"I know.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Sam hasn't said anything.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Sam is, right now, learning how to say nothing. She is not going to say anything for a little while. That is correct.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Ben. How do you know that.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"I don't. I'm guessing. Based on what I know about Sam and what I know about her dad.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Her dad.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Ben. Her dad is the chief.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "narrate",
+      "text": "A long quiet."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"I brought the prints.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"You want to see them?\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse opens the paper bag. He takes out three eight-by-tens. He hands them to Ben. Ben looks at them."
+    },
+    {
+      "t": "narrate",
+      "text": "In the first — the NexCorp Gas & Go. Under the overhang, in the shadow, a tall woman with blue dreadlocks, yellow slicker, holding a cardboard tube. Ben has never seen her. He immediately feels, looking at her, that she is not from here, and that she is not hostile, and that she has been, in some sense, waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "In the second — the cul-de-sac at the end of Meadowlark. Across the far lawn, a small figure four feet tall in a wide hat, smoking. Ben looks at the figure for a long time. The figure does not, in the print, look threatening. The figure looks, if anything, bored in the patient way adults get bored at school pageants. Waiting out the program."
+    },
+    {
+      "t": "narrate",
+      "text": "In the third — the front entrance of the subdivision. Under the archway. A man in a charcoal suit, looking directly at the camera."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben stares at the third photograph for a long time."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"This one's looking at your dad.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"How does your dad feel about that.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Ben. I don't know. He hasn't said anything. He's been — since Saturday night, he's been really weird. Quieter than usual. Mom asked him at dinner if he felt okay. He said yes. He did not, Ben. He did not feel okay. I saw him in the kitchen at two in the morning just standing there looking at the microwave.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Just looking at it.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Just looking at it.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is quiet."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "(eventually) \"Can I keep these.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Dad will notice.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Can I take pictures of them with my phone, then give them back to you, and you put them back on the line before your dad comes home.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Yeah. Yeah, that works.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Ben takes out his phone. He photographs all three. He hands them back to Jesse. Jesse puts them in the bag."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Jess.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"We're going to need a third person who isn't us.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Like who.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Like Sam.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "(short laugh) \"Sam is going to have her hands full.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Yeah. That's why.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"You think she knows.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"I think she's about to.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Ben.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"What do we do.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Ben finishes his Powerade. He crushes the bottle."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"We keep noticing. We keep the pad. We do not, yet, go to anyone. We wait for one more thing. One more thing we can all three point at and say — this one, this is the one that makes the rest real. Then we talk to Sam. Then, maybe, we do something.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"How long until the one more thing.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Jess. I don't know. Soon. I'm not — I'm not psychic. I'm just patient.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"You're a little psychic, Ben.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"I am not.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"You called Saturday's thing. You knew they'd come for me next.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Ben looks at him. Ben had not, until this moment, told Jesse he had been watching the wrestling thing because he had been expecting Jesse, or someone like Jesse, to be invited in next. The fact that Jesse had, in retrospect, intuited this was its own small data point."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"I guessed. Different from psychic.\""
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Yeah, yeah. Whatever. Okay.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse stood up from his crouch. He dusted off his jeans. He turned to go back inside. At the back door he paused. He said, without turning:"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "\"Thanks for the Powerade.\""
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "\"Thanks for the pictures.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse went inside. The screen door slapped shut behind him. Ben stood at the dumpster for another minute. He thought about the photograph of the man in the charcoal suit. He thought about the fact that the photograph was, in a way Ben did not fully understand but had begun to accept, looking back."
+    },
+    {
+      "t": "narrate",
+      "text": "He crushed the Powerade bottle one more time, for good measure, and walked to his truck."
+    },
+    {
+      "t": "flag",
+      "key": "ben_has_prints",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch2_bindery"
+    }
+  ]
+}

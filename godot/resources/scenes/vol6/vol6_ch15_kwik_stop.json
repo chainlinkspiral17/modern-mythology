@@ -1,0 +1,1493 @@
+{
+  "id": "vol6_ch15_kwik_stop",
+  "vol": 6,
+  "chapter": 15,
+  "type": "chapter",
+  "title": "Ch 15 — The Red Peugeot",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kwik_stop_interior_morning.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Red Peugeot",
+      "sub": "Thursday — 08:02 — Kwik Stop",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam clocks in at eight oh-two."
+    },
+    {
+      "t": "narrate",
+      "text": "The microwave clock, set nine minutes fast on purpose because Jen the day manager says it helps the closers, reads eight-eleven. The actual clock by the office door reads eight oh-two. Sam has, over two summers, stopped doing the small math of converting between them. The microwave is the closer-clock. The wall clock is the open-clock. Both are right in the small ways the Kwik Stop has decided they are right, and both are wrong in the small ways it has decided they are wrong, and Sam, at seventeen, has the small equanimity of a counter girl who has stopped requiring a single canonical time."
+    },
+    {
+      "t": "narrate",
+      "text": "She ties on her apron."
+    },
+    {
+      "t": "narrate",
+      "text": "She refills the coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "She wipes the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "She is on the eight-to-four. Jen is at the back office doing the deposit paperwork from yesterday. Skip Donnelly's replacement at the Gas & Go across the intersection has been a guy named Rory since June, and Rory is, by Sam's eight-AM count of the cars in the Gas & Go lot, doing his job the way Skip used to: not very. Rory has, in three months, not noticed that Sam can see his customers from the Kwik Stop window. Sam has, in three months, decided that the not-noticing is one more piece of the small inheritance the spring has left her."
+    },
+    {
+      "t": "narrate",
+      "text": "The morning starts the way Thursday mornings start."
+    },
+    {
+      "t": "narrate",
+      "text": "A construction guy comes in at eight-fourteen for a breakfast burrito and a coffee. A woman Sam has not seen before comes in at eight twenty-six for a pack of Marlboro Lights. A high school kid Sam vaguely recognizes from school comes in at eight forty-four for a Red Bull and a bag of jerky. By nine the store has had eleven customers, which is the standard Thursday morning rate, and Sam has — between rings — done the work of restocking the front cooler from the walk-in, which is a job that is technically Jen's and that Sam has, over two summers, stopped pointing out to Jen because Jen has stopped pretending Sam doesn't do it."
+    },
+    {
+      "t": "narrate",
+      "text": "At nine oh-six her phone, on the counter beside the register, vibrates."
+    },
+    {
+      "t": "narrate",
+      "text": "She picks it up."
+    },
+    {
+      "t": "narrate",
+      "text": "The text is from Diego."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "morning. on my way home from shift. wanted to say hi.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She reads it."
+    },
+    {
+      "t": "narrate",
+      "text": "She types back, with the small care she has been bringing to her replies since June:"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "morning. drive safe. love you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The reply comes in nine seconds."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "love you. i'll text later.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She puts the phone down."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, after, look at it for a long minute. She wipes the counter. She refills the coffee. She rings up an older man for two scratch-offs and a coffee and, when he has left, allows herself permission of remembering that her boyfriend, the boy who is not, this summer, the boy who can be in her actual physical company for more than the small portions his nervous system permits, is — by his text — alive and on a road and going home to his grandmother and that this, today, is what she has."
+    },
+    {
+      "t": "narrate",
+      "text": "She has, in the past two months, been getting better at the small permission."
+    },
+    {
+      "t": "narrate",
+      "text": "The permission is its own weather."
+    },
+    {
+      "t": "narrate",
+      "text": "She returns to the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "The red car pulls into the lot at nine forty-seven."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, at the counter, looks up because the car comes in slowly and stops in the lot's far corner instead of pulling up to a pump, and because the car is, on its surface, not a car she has seen in this lot before. The car is small. The car is European. The car is — she registers, in the way she has been registering things this summer — red, in the way of a car that has been red for forty years and that has, in the past five years, started to fade in the small uneven patches a forty-year-old red paint job fades in when the car has lived its life mostly outdoors."
+    },
+    {
+      "t": "narrate",
+      "text": "The driver gets out. The driver is — from her angle, through the front window, with the lottery-decal-and-dead-cigarette-brand layers between her and the lot — a man in his late twenties or early thirties. He is in a t-shirt that is the color t-shirts become when they have been worn three days in a row. He goes to the front of the car. He pops the hood."
+    },
+    {
+      "t": "narrate",
+      "text": "The passenger door opens. A woman gets out. She is maybe a year or two younger than the man. She is wearing a tank top and shorts. She fans herself with what looks, from the counter, like a folded brochure. She walks around to the front of the car and stands beside the man."
+    },
+    {
+      "t": "narrate",
+      "text": "The two of them, at the engine, do the thing two people do at an engine that has just failed."
+    },
+    {
+      "t": "narrate",
+      "text": "The hood, after a few seconds, has a small steady plume of steam coming out of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam watches them for thirty seconds."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, with the small careful attention her body has, this summer, been doing on its own: that car is dead."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: they are not from here."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: they are about to come inside."
+    },
+    {
+      "t": "show",
+      "char": "jen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She turns to Jen, who has come up from the back office with the deposit bag."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Jen. Two people. Car broke down in the lot. They're going to come in.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jen looks through the window."
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "Yeah. Take it. I'm gonna run the deposit to the bank. Be back in twenty. You good?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "Don't let them sit in the cooler aisle.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Jen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "I know. I'm saying.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Jen leaves."
+    },
+    {
+      "t": "narrate",
+      "text": "The bell chimes."
+    },
+    {
+      "t": "show",
+      "char": "mark",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Mark — Sam will learn his name in fourteen minutes — comes in alone at nine fifty-one."
+    },
+    {
+      "t": "narrate",
+      "text": "He is tall. He is thin. He has not shaved in some days. His t-shirt is, up close, the t-shirt of a brewery in Oakland that Sam has not heard of, but the brewery's name on the front of the shirt is in a font that registers, to Sam, as the kind of font Northern Californian breweries use, the small clean sans-serif that has been the visual register of West Coast craft beer for about fifteen years."
+    },
+    {
+      "t": "narrate",
+      "text": "He comes to the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "He does the thing men do when they have to ask a stranger for help and have decided to lead with the thing that does not, technically, ask for help."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Hey. Could I get a bottle of water.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Sure. The cold ones are in the back cooler. Door on the left.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Thanks.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He goes to the back cooler. He gets two bottles. He brings them up. He sets them on the counter. He pulls a leather wallet out of his back pocket — old, brown, the leather worn at the edges in the specific way wallets that have been carried for a decade wear — and opens it. He looks in it for slightly longer than is, technically, necessary. He pulls out a five."
+    },
+    {
+      "t": "narrate",
+      "text": "He hands her the five."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Hey. The car. The red one. Out front.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "It's done. The engine. We were trying to make it to — we were trying to get east. The car has been — it's been on its last legs for a while. It's — it's done.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "She rings up the water. She gives him a dollar fifty-eight back in change. She watches his face while she does it."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Where you trying to get to.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Atlanta.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "How far were you?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "From Oakland.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Oh.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He laughs, very small."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Yeah. About halfway.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "What kind of car is it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Eighty-six Peugeot. 505 Turbo. Was my dad's. He gave it to me when I moved out west in 2014. It — it's been a project. He kept it up till he died. I've been keeping it up since. The parts have gotten — the parts have gotten harder. We were going to — we were going to get to Atlanta and figure out the next car when we got there.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "He takes the change."
+    },
+    {
+      "t": "narrate",
+      "text": "He puts the change in his front pocket."
+    },
+    {
+      "t": "narrate",
+      "text": "He stands at the counter with the two bottles of water in his hand and does not, immediately, leave."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, behind the counter, does the small careful thing she has been training herself to do all summer when an adult is at the counter and is not, quite, asking for the thing he needs to ask for."
+    },
+    {
+      "t": "narrate",
+      "text": "She waits."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Sorry. The — the car is dead. I think it's the head gasket but it doesn't really matter what it is. We're trying to figure out what to do. Is there — is there a tow yard around here you'd recommend.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah. There's a guy in New Auburn. Bobby's. They tow and they do European cars sometimes — not often, but they have a guy. He's the only one in the area I'd send a Peugeot to. They're not cheap.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Yeah. Of course.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Can I — can I get you their number?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Yeah, that would be — yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She gets a Post-it from the small pad by the register. She writes Bobby's number on it from memory. She has, this summer, called Bobby's three times — once for a guy whose F-150 had blown a tire in the lot in June, once for a woman whose minivan had lost its alternator in July, once for an elderly man whose Corolla had simply refused to start last week — and she has, by the third call, learned the number by heart."
+    },
+    {
+      "t": "narrate",
+      "text": "She hands him the Post-it."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Thanks.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "There's an outlet at the table by the window if you and your —",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She does not have the word for what the woman in the lot is to him."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Lucy. My wife.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "If you and Lucy want to come in. The AC is on. The table's open. Bobby's is going to take an hour, hour and a half to get out here. You don't want to be at the car in this heat for that.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Thank you. We'll — we'll come in.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah. Take your time.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He goes."
+    },
+    {
+      "t": "narrate",
+      "text": "The bell chimes."
+    },
+    {
+      "t": "narrate",
+      "text": "She watches him cross the lot."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: eighty-six Peugeot."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: halfway."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, with the small involuntary thing her interior does when she registers the shape of a person's situation: they are not going to make Atlanta on the budget they have."
+    },
+    {
+      "t": "narrate",
+      "text": "She rings up a customer who has come in for cigarettes."
+    },
+    {
+      "t": "show",
+      "char": "lucy",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy comes in at ten oh-six."
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy is — Sam registers, in the way she has been registering things this summer — the more guarded of the two. Lucy walks into the Kwik Stop the way a person walks into a place they have already decided is going to disappoint them. Lucy is in a tank top that has the small sweat outline tank tops get when they have been worn in a hot car. Lucy's hair is in a loose bun on top of her head. Lucy has, on her left wrist, a small thin gold bangle that Sam registers as the kind of bangle a woman in her late twenties does not, generally, take off."
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy goes to the table by the window."
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy sits."
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy does not, immediately, look at Sam."
+    },
+    {
+      "t": "show",
+      "char": "mark",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Mark comes in a minute later. He sits across from Lucy. He sets the two water bottles on the table. He has, in his hand, his phone. He is, Sam can see from the counter, dialing Bobby's number from the Post-it."
+    },
+    {
+      "t": "narrate",
+      "text": "He puts the phone to his ear."
+    },
+    {
+      "t": "narrate",
+      "text": "He talks for maybe a minute. The conversation has the cadence of a man getting a tow estimate from a tow yard. He nods. He says yeah, he says uh-huh, he says okay, that — okay. He hangs up."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at Lucy."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "It's eighty-five for the tow. They can be here in an hour. The diagnostic is another hundred and twenty before they touch it. If it's the head gasket — and it's the head gasket — the work is, for the Peugeot, is going to be — it's going to be at least two thousand dollars in parts and labor. He said realistically three. He said honestly we might be looking for a buyer for parts and not a fix.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy is very still for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "Did you tell him to come.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Not yet. I wanted — I wanted to talk to you first.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "Mark.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "We have three twenty in cash. We have two forty in checking. The credit card is at the limit. The eighty-five for the tow would leave us with two thirty-five, which would not pay for the diagnostic, which would mean the car would be sitting at his lot for a week while we figured out what to do, and the lot fee starts on day three at twenty-five a day.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "Mark is, by Sam's count from the counter, doing the math in his head that men do when their wife has just laid out the actual numbers and there is, in the actual numbers, no math that works."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Yeah. I know.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "We need — Mark. We need to think about this.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Yeah.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "They sit, the two of them, at the table by the window."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, behind the counter, does not, in the moment, do anything."
+    },
+    {
+      "t": "narrate",
+      "text": "She rings up a customer. She wipes the counter. She watches them, peripherally, in the convex security mirror above the door. They are not, she registers, talking. They are sitting across from each other with the two bottles of water between them and Lucy is fanning herself with the brochure and Mark is looking at his phone with the screen off, the way a man looks at his phone with the screen off when he does not want to look at his wife and is also pretending not to want to."
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy, at the table, eventually looks at Sam."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam does not, immediately, look back."
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy looks at Sam for maybe four seconds — Sam can feel it in the periphery, the weight of being looked at by an adult woman who is, in the moment, deciding whether the counter girl is the kind of person it is okay to ask for a thing."
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy looks away."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, in the moment, ask."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "A regular comes in at ten twenty-two — Stan, retired, in for his morning lottery tickets, the same five he buys every morning. Sam rings him up. Stan says, on his way out: that's a hell of a Peugeot out there. You don't see those around here. Sam says: yeah. Stan leaves. The bell chimes."
+    },
+    {
+      "t": "narrate",
+      "text": "Mark and Lucy, at the table, register Stan's comment."
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "Mark. We have to figure out what to do.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "I know.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "The car is — Mark. The car is gone. We can't fix it. We don't have it. We need to figure out — we need to figure out how to get to Atlanta without the car.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Yeah.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "And we need to figure out what to do with the car.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "I know.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "And we need to figure out where to sleep tonight.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "I know.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "A long silence at the table."
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "I told you in El Paso the car was not going to make it.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "Mark, at the table, does not respond."
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "I told you. I said Mark, the car is not going to make it, and you said the car has made every other trip, the car will make this one, and I — I let you. I let you decide. And the car did not make it, Mark, and we are in a Kwik Stop in a town I have never heard of and we have three hundred and twenty dollars and we cannot, today, afford the tow, let alone the diagnostic, let alone the fix, and we cannot, this week, afford to be here for the days the car would be at the lot, and I want you to — I want you to acknowledge that I told you in El Paso.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Lucy. You told me in El Paso. I heard you. I made the wrong call. I'm — I'm sorry.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy, at the table, does not, immediately, respond."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her water."
+    },
+    {
+      "t": "narrate",
+      "text": "She fans herself with the brochure."
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "Okay. What do we do now.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, at the counter, has been, for the duration of the exchange, doing a small arithmetic of her own."
+    },
+    {
+      "t": "narrate",
+      "text": "The arithmetic is the specific math of: what is in my wallet, what is owed to me Friday, what can I do without until Friday, and what is the smallest specific thing I can do that would, today, make the difference between Mark and Lucy being stuck at this Kwik Stop and Mark and Lucy being able to leave."
+    },
+    {
+      "t": "narrate",
+      "text": "The wallet has, by her count this morning when she had checked at home, one hundred and sixty-three dollars in cash. Friday's paycheck — the cash portion, which is the tips Jen runs through the till at the end of each week — is going to be roughly two hundred. Sam has, in her checking account, a balance of about four hundred dollars from the spring's accumulated savings. She does not, generally, withdraw from the checking account in the summer because the checking account is the senior-year account, the thing she has been quietly keeping for the books and the application fees and the small costs of being a high-school senior in a year when she is going to have to be careful."
+    },
+    {
+      "t": "narrate",
+      "text": "The cash in the wallet is, today, what she has."
+    },
+    {
+      "t": "narrate",
+      "text": "The math she does, in her head, while wiping the counter: she can spare one twenty. One twenty leaves her with forty-three until Friday, which is enough for gas in the Corolla and a sandwich at the Pit Stop on Friday at noon if she wants one. Friday's tips will refill her. The senior-year account stays untouched."
+    },
+    {
+      "t": "narrate",
+      "text": "One twenty is not, by any reasonable read of Mark and Lucy's situation, going to fix anything. One twenty does not pay the tow. One twenty does not pay the diagnostic. One twenty does not begin to pay the fix."
+    },
+    {
+      "t": "narrate",
+      "text": "But one twenty might pay for a motel room tonight, and a couple of meals, and the small oxygen that would let Mark and Lucy get to a Friday morning where they could call somebody from a place that was not the side of a Kwik Stop in mid-August at one PM in the heat."
+    },
+    {
+      "t": "narrate",
+      "text": "She finishes wiping the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: if I offer it, Lucy is going to refuse."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: if I offer it the right way, Lucy is going to almost-refuse, and Mark is going to take it, and Lucy is going to let him."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I have to figure out the right way in the next ten seconds."
+    },
+    {
+      "t": "narrate",
+      "text": "She walks around the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "She crosses the floor to the table by the window."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, on the walk, fully know what she is going to say."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Hey.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Mark and Lucy both look up."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I — I overheard. I'm sorry. The store is small.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy's eyes do the thing eyes do when a stranger has just acknowledged having heard a private conversation."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I don't know your situation. I'm not going to pretend I do. But — I have one twenty in my wallet. It's mine. It's not the store's. You can have it. It's not — it's not enough to do any of what you need to do. But it might be enough to — to get a motel tonight. Eat. Make a call from somewhere with AC. I'm — I'm offering it because I can. You don't have to take it. You don't have to talk about it. You can just — take it, if you want, and figure the rest out from there.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, on the speech, reach for her wallet."
+    },
+    {
+      "t": "narrate",
+      "text": "She wants to give them the option of refusing without any physical pressure."
+    },
+    {
+      "t": "narrate",
+      "text": "Mark looks at Lucy."
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy looks at Mark."
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "We don't — we don't need — ",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Luce.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy looks at him."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Luce. Take it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy is silent for a long beat."
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "Why.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, at the table, thinks for a second."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Because my dad — my dad had a thing happen to him, last year, and the help he needed at the time was the kind of help that does not, generally, come from people you know. It came from people he didn't know. I have been, this whole summer, watching how that worked out for him. I think — I think I have learned, this summer, that sometimes you give the help you can give to the people who happen to be in front of you, and you don't get to know what they do with it, and you don't get to ask. So this is — this is the help I can give. You can take it or not take it. I'm not — I'm not going to remember this conversation in a week. You shouldn't either.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy looks at her for a long moment."
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy is — Sam can see, with the small careful attention she has been training all summer — registering several things at once. The fact that Sam has just told her something that is, on its face, true and that Lucy does not have a good way to deflect. The fact that Sam has framed the offer in a way that releases Lucy from the small debt of having to remember the encounter as charity. The fact that Sam is seventeen and is doing this the way an adult would do it, which is, Lucy realizes, not the way Lucy at seventeen would have known how to do."
+    },
+    {
+      "t": "say",
+      "char": "Lucy",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She gets her wallet from the small drawer under the counter where she has been keeping it during the shift. She comes back. She takes out six twenties. She sets them on the table beside the water bottles. She does not, in setting them down, push them across or do any of the small theatrical gestures that would, by their gesture, recharge the debt she had just released."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "There's a motel called the Cypress on the eastern edge of town, off the Linden exit. Forty-five a night. They take cash. The owner is a guy named Hal — different Hal, not the one in New Auburn — he's, he's quiet. He won't ask questions. There's a bus station two blocks west of the motel. The bus to Atlanta runs once a day, leaves at six AM, takes about twenty hours, costs about eighty per person if you buy at the counter. I don't know the exact number. The Greyhound site will.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Lucy, at the table, has not picked up the money."
+    },
+    {
+      "t": "narrate",
+      "text": "Mark, after a beat, picks it up."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Thank you. I — I don't know how to —",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "You don't have to. Drink your water.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She returns to the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not look at them again for several minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "The bell chimes at ten thirty-eight."
+    },
+    {
+      "t": "narrate",
+      "text": "A construction guy comes in for a Powerade. Sam rings him up. Stan's wife — Sam knows her from Stan's stories — comes in at ten forty-six for a single can of Diet Coke and a copy of the New Auburn Sentinel. Sam rings her up. Stan's wife says, on her way out: Stan said the Peugeot was something. He was right. Sam says: yeah. Stan's wife leaves. The bell chimes."
+    },
+    {
+      "t": "narrate",
+      "text": "Mark and Lucy, at the table, drink their water and talk in the small quiet way Sam can hear without being able to make out the words."
+    },
+    {
+      "t": "narrate",
+      "text": "At ten fifty-three Mark gets up. He goes to the counter."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Hey. Sam.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her name tag."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Sam. I called the tow. He's going to come for the car. We're going to walk to the bus station. We're going to leave the car with him as a — as collateral against eventually paying him for the tow, and if we — if we figure out how to get money to him for the diagnostic, he'll do it, and if we don't, he keeps the car for parts. He said that's fine.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "We're going to take a six AM bus tomorrow. Tonight we're going to walk to the Cypress. We — Lucy needs an hour to sit. Then we go.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "Sam.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Mark looks at her for a long beat."
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "I'm going to remember this.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mark. I told Lucy not to.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Mark",
+      "text": "I know. I'm telling you anyway. I'm — I'm going to remember this. You — you handled this in a way I have not been handled by, in a long time. I want you to know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, behind the counter, does not, immediately, respond."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay. Thanks for saying.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He nods."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes back to the table."
+    },
+    {
+      "t": "narrate",
+      "text": "At eleven oh-eight the tow truck pulls into the lot."
+    },
+    {
+      "t": "narrate",
+      "text": "The driver — a kid in his early twenties Sam recognizes as one of Bobby's regulars — backs the truck up to the Peugeot. He gets out. He shakes Mark's hand. He looks at the car. He whistles, in the way mechanics whistle at cars they have not seen the like of in some time. He hooks the car up. He talks to Mark for a few minutes, presumably going through the paperwork on the collateral arrangement."
+    },
+    {
+      "t": "narrate",
+      "text": "By eleven twenty-eight the Peugeot is on the truck."
+    },
+    {
+      "t": "narrate",
+      "text": "The truck pulls out of the lot."
+    },
+    {
+      "t": "narrate",
+      "text": "Mark and Lucy stand in the lot for a minute and watch the Peugeot disappear up Gallatin."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Then they pick up the duffel bag they have pulled from the back seat — the only luggage they have decided to take with them on the walk, which means the rest is in the car going to Bobby's lot to sit indefinitely — and they walk, slowly, in the eleven-thirty heat, east on the access road toward the Linden exit and the Cypress motel two miles beyond."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, at the counter, watches them go."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, with the small careful interior her summer has been giving her: Lucy never said thank you."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: Mark said it twice. Lucy did not."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: that is — that is okay. Lucy was not going to be able to. Lucy is going to be the person who, in eight months, in Atlanta, when this is a story she and Mark tell their friends, is going to remember this Kwik Stop and is going to have a moment of having to live with the fact that she did not, that day, say thank you to a counter girl who had given them one twenty out of her wallet."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: that is going to be Lucy's to live with. That is not mine."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I am not, today, supposed to be carrying that."
+    },
+    {
+      "t": "narrate",
+      "text": "She wipes the counter."
+    },
+    {
+      "t": "show",
+      "char": "jen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Jen comes back from the bank at eleven forty-one."
+    },
+    {
+      "t": "narrate",
+      "text": "Jen looks at the table by the window. The two empty water bottles are on the table. The brochure-fan is on the table. Mark and Lucy are gone."
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "Where'd they go.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Tow came. Truck took the car. They walked to the Cypress.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jen looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "Sammy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "Did you give them money.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam thinks about lying for a beat. She decides not to."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "How much.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "One twenty.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "From your own wallet.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jen looks at her for a long beat."
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "Sammy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "Don't make a habit. Once a summer is fine. Once a summer is — once a summer is what you do. But don't make a habit. People who break down in this lot will, by August next year, know that the Kwik Stop has a kid working there who hands out twenties. And then we will have a different kind of problem.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "You good?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I'm good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "Lunch is in twenty. Take the second half-hour. I'll watch the front.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Jen goes to the back office."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, at the counter, registers — with the small surprise her interior is occasionally able to do — that Jen has known what she did before Sam told her. Jen had walked in, looked at the table, looked at the absent Peugeot in the lot, looked at Sam, and known. The asking was, in some sense, a courtesy — Jen giving Sam the small dignity of being asked rather than caught."
+    },
+    {
+      "t": "narrate",
+      "text": "Jen has, over two summers, also been training Sam."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam has, until this morning, not entirely registered that."
+    },
+    {
+      "t": "narrate",
+      "text": "She wipes the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "At eleven fifty-eight she takes her lunch at the table by the window."
+    },
+    {
+      "t": "narrate",
+      "text": "The table is the table Mark and Lucy were at. The two empty water bottles are still there — Sam has not, yet, cleared them. The brochure-fan is still there. The brochure is for a national park she has never been to: the Channel Islands, off the coast of California. The brochure has, on the front, a photograph of a small sailboat in an inlet at sunset."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam picks up the brochure."
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at the front."
+    },
+    {
+      "t": "narrate",
+      "text": "She unfolds it, slowly."
+    },
+    {
+      "t": "narrate",
+      "text": "Inside, the brochure has the small information a national-park brochure has — hours, fees, recommended hikes. On the inside back panel, in pencil, in handwriting she does not recognize but which she presumes is Lucy's, there is a small list."
+    },
+    {
+      "t": "narrate",
+      "text": "The list reads: gas for the day — $80 / food (sandwiches?) — $25 / coffee — $8 / motel maybe — $60–80 / mark's meds at walgreens — $40 / $$ remaining at end of day — ?"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam reads the list twice."
+    },
+    {
+      "t": "narrate",
+      "text": "She refolds the brochure. She puts it back on the table where Lucy had left it."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: Mark's meds."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: Lucy was tracking the day's expenses by hand on the back of a national-park brochure, in a 1986 Peugeot, on the third day of a drive from Oakland to Atlanta."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: they are going to get to Atlanta. The bus is going to take them. The friend's couch is going to be there. They are going to be okay. Probably."
+    },
+    {
+      "t": "narrate",
+      "text": "She eats her sandwich — the one her mother had made her this morning, turkey and mustard on the slightly overlarge slices Bianca has, since the lake morning in May, started cutting because Mike used to cut them that way — and she watches the parking lot, where the absence of the red Peugeot is the most visible thing in the lot's small Thursday afternoon."
+    },
+    {
+      "t": "narrate",
+      "text": "Stan's wife had gone home with her newspaper. Stan was, by now, on his porch reading it. Mrs. Delacroix would, at some point this afternoon, walk past the Kwik Stop on her way to the comic shop because Mrs. Delacroix had, since June, started walking when the heat was below one hundred. The construction guys were on their lunch break at the site three blocks down. The summer, in the small ways summers do this work, was, this Thursday at noon, ordinary."
+    },
+    {
+      "t": "narrate",
+      "text": "She finishes her sandwich."
+    },
+    {
+      "t": "narrate",
+      "text": "She clears the water bottles."
+    },
+    {
+      "t": "narrate",
+      "text": "She leaves the brochure where it was."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes back behind the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "The afternoon is the afternoon."
+    },
+    {
+      "t": "narrate",
+      "text": "Customers come in. Sam rings them up. Jen, at the back office, does the small accounting work that Thursdays are for. The thermometer outside the Kwik Stop, stuck at ninety-seven for three summers, still reads ninety-seven. The actual temperature, by two PM, is one hundred and four. The Kwik Stop's AC, doing what it can, holds the inside at a steady seventy-three."
+    },
+    {
+      "t": "narrate",
+      "text": "At three forty-six Sam's phone, on the counter, vibrates."
+    },
+    {
+      "t": "narrate",
+      "text": "She picks it up."
+    },
+    {
+      "t": "narrate",
+      "text": "The text is from Diego."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "hey. just woke up. how's your shift.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She types back:"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "ok. couple from oakland broke down in the lot. helped them out. was a thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "they ok?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "i think so. they're at the cypress tonight. bus tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "you ok?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "yeah. i think so. i'll tell you later.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "ok. love you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "love you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She puts the phone down."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I will tell him later."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: later might be tomorrow. Later might be Sunday. Later might be in October at the kitchen table when he has, by then, figured out how to be in a room with me again. The specific later does not, today, matter."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: the saying-I-will-tell-him is the part that matters."
+    },
+    {
+      "t": "narrate",
+      "text": "She wipes the counter."
+    },
+    {
+      "t": "show",
+      "char": "jen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She clocks out at four oh-six."
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "Drive safe, Sammy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah, Jen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "She walks out the back to the Corolla."
+    },
+    {
+      "t": "narrate",
+      "text": "The lot, in the four-PM heat, is empty of customers. The asphalt is doing its shimmer. The thermometer reads ninety-seven. The actual temperature is one hundred and six, which is — by Sam's count — the highest the thermometer's actual-vs-displayed gap has gotten this summer."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets in the Corolla."
+    },
+    {
+      "t": "narrate",
+      "text": "She starts it."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns the AC on full."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits for a minute waiting for the cabin to cool."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch15_home"
+    }
+  ]
+}

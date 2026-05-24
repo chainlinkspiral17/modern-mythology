@@ -1,0 +1,259 @@
+{
+  "id": "vol7_ch15_wagon",
+  "vol": 7,
+  "chapter": 15,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 15",
+      "sub": "Saturday Morning",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "The morning broke up at eight-twenty. Hans had to open the bakery at nine. Greta had to set up the front. The dining table had to be cleared and the worktable wiped down and the bread for the morning's customers brought from the back to the front cases. The ten of them at the table got up and helped with the clearing.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marina, at the worktable with Greta, learned how Greta wiped the table with a particular cloth Greta had been using since '88 and which Greta kept washed and folded in a particular drawer because the cloth — by Greta's account — was the only cloth that did the wipe properly. Marina folded the cloth back into the drawer where Greta had said it lived.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Thank you for the morning.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "greta",
+      "text": "Marina. You are family at this bakery now. Come for bread when you are in town. I am at the front Tuesday through Saturday. Hans is at the back. We are here.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I will come.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "greta",
+      "text": "Good.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "text": "She rode with Tem in the wagon back up the cabin road. The road was the road. The first creek crossing came at nine-fifteen. The Sitka stand at the top of the switchbacks was the Sitka stand. The cabin in the clearing was the cabin.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem parked. They sat in the wagon for a count with the engine off.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "marina",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Tomorrow at six.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Tomorrow at six.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Roy is coming.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy is coming.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I have been at this for six years and the week has — the week has changed what I have been at. I am — I am going to write the foundation tonight. I am going to write the director. I am going to tell him what is happening here. I am going to tell him the foundation has been at this from too great a distance for too many decades.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I am going to ask him to release the remaining bowls to the people who have been carrying their families' work. I am going to ask him to fund a — to fund a thing I do not yet have the name for, that is what this room is. I am — Tem, I am going to ask him.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marina.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Write the letter. Send it. What we have is what we have, with or without the foundation. We would prefer the foundation. It is going to be what it is either way.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Tem. The poem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "She would ring when the room was ready.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "The room is — the room is ready.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes, Marina.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "She is going to ring.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "They got out of the wagon. They went up the porch. Tem put the kettle on. The three bowls were on the table where Tem had left them at four-fifty. The crow was on the porch railing — the crow had ridden back up with them in the wagon on Tem's instruction; Finn had taken Kai's truck back to town and the crow had stayed for the cabin afternoon — and the crow was, by what Marina could see at this angle, looking at the cedar Eddvard had carved that was still on the porch railing where Tem had found it Thursday morning.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow was looking at the cedar.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marina watched the crow watch the cedar. The crow tilted its head once, the way a crow tilts its head when the crow is registering something.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow tapped the railing once with its beak. She went inside.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

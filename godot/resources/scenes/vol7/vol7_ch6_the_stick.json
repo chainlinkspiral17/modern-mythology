@@ -1,0 +1,87 @@
+{
+  "id": "vol7_ch6_the_stick",
+  "vol": 7,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — The Stick",
+  "nodes": [
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"The stick.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Yours. Bench behind you, third slot in the wooden box. Don't pay me. We'll settle later.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She turned. The wooden box held three sticks. The third was Estuary 7, Ines Rocha 2046 in his small careful hand on the white label. She put it in the inside pocket of her coat."
+    },
+    {
+      "t": "narrate",
+      "text": "He stayed in the chair."
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"One more thing.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Go ahead.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"When you go to the tower — and you will, the four of you, in the next few weeks — be careful with the gallery on the sixth floor.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "surprised",
+      "text": "\"How do you know about the floors.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"I ran into him at SFO in '06. We had a layover. We had a beer. He was twenty-eight and excited the way people are excited when they're about to start the project they've been planning their whole life. He told me he was building a tower on the bluff above old-Yachats. He drew it for me on a napkin. He told me which floor would do what. I've thought about that napkin for sixteen years.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"And the gallery.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"The gallery was where the unfinished work was going to go. The pieces he started and didn't solve. He knew at twenty-eight he was going to die before some of them were finished. He told me he wanted somewhere to put them. They're up there now. Or what he made of them is. Or what they've made of themselves in ten years of being alone in a room is. Be careful.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"What's there.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"I don't know. I have a guess. I won't tell you the guess. I want you to walk into the room with the room, not with my guess about it.\""
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch6_get_going"
+    }
+  ]
+}

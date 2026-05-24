@@ -1,0 +1,585 @@
+{
+  "id": "vol7_ch17_roy",
+  "vol": 7,
+  "chapter": 17,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Roy",
+      "sub": "Six-twelve",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "At six twelve the bell rang at the front of the bakery.",
+      "t": "narrate"
+    },
+    {
+      "text": "Greta would not have let a customer in this early. The bell was Roy.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem stood up.",
+      "t": "narrate"
+    },
+    {
+      "text": "The ten of them at the table looked at her. She walked to the front of the room. Greta came out from behind the front counter and held up one hand to Tem — I have this — and Tem stopped halfway. Greta went to the door. She opened it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy was at the door.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy was in the Hawaiian shirt under the wax canvas coat. Roy was in the boots. Roy had his hat in his hand — a man at a door who had taken his hat off because the door was the door of a place he had decided to enter with respect.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy had, in his left hand against his hip, a small wooden box. The box was the size of Per's box. The box was old. The box had a spiral carved into the lid.",
+      "t": "narrate"
+    },
+    {
+      "char": "greta",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Greta.",
+      "t": "say"
+    },
+    {
+      "char": "greta",
+      "text": "Come in.",
+      "t": "say"
+    },
+    {
+      "text": "He came in.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stood at the door for a count. He looked across the room at the ten at the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem registered, watching him: Roy at the door at six twelve was a man whose face had stopped doing the smile he wore that Hans had been describing him with for years, and was doing instead the face of a man who was meeting a moment he had been preparing for for twenty-one years.",
+      "t": "narrate"
+    },
+    {
+      "text": "He looked at Hans.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Roy. Come to the table. The brioche is cut. The coffee is in the press. There is a chair at the head opposite me for you. We have been waiting.",
+      "t": "say"
+    },
+    {
+      "text": "Roy did not, for a count, move.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Mm.",
+      "t": "say"
+    },
+    {
+      "text": "Roy walked to the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "He set the wooden box on the table at the head opposite Hans. He sat down.",
+      "t": "narrate"
+    },
+    {
+      "text": "The chair at the head opposite Hans was the chair Hans had set there for him — the chair Hans had set as if welcoming the man Roy was about to reveal himself to be.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Hans. I owe you twenty-one years of conversation. I am going to give you the conversation now.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I am going to give it to all of you at the table because this is the gathering, and I am not, today, going to be the man at the edge of the table. I am going to be at the table.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "You have been the watcher this town has not been able to see. You have been at the cabin.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have not been able to figure out the shape of you in two years of trying. I am sorry. I have been at the wrong resolution. I am going to be at a different one starting today.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy. Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Cale Mitchell. Nate Dean's friend from the basement on the Alsea River. I have read every word Brandon wrote about you.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have stood across the street from ChillWave Video at maybe a hundred different hours of the day for the past two years trying to figure out whether you knew what I had to tell you, and whether I had to be the one to tell you.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have decided I do not have to be the one. The table is. I will tell you anyway, because now I am at the table.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Cale picked at the cuticle of his thumb.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Kai. Lena. Finn. I will not address you yet. I am going to address you when I have given the older people what I owe them. You will hear the address. It will take some time.",
+      "t": "say"
+    },
+    {
+      "text": "The three of them did not, for the count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Marina Lindholm.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "You have been the foundation.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I have been the foundation.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have been waiting for the foundation to be in this room with me for twenty-one years. I am glad you are here. I am, Marina.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have been a man without a network for twenty-one years. The network is here. You are the network.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I am going to say some things to you that I have not said to any foundation operative, because no foundation operative has been in a room with me. Be ready.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I will be.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Marit Egilsson.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Roy Hummel.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Marit, I am going to ask you for the largest favor I have ever asked anybody.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I am going to ask you to read the eighth poem of Werner Junior's cycle one more time, after I have said what I am going to say.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have been told the poem was at this table yesterday. I have been told you read it aloud. The poem is what we are here for. I am asking you to read it again. Will you.",
+      "t": "say"
+    },
+    {
+      "text": "Marit did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "marit",
+      "text": "Roy. I will.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Aud.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Aud. I have been at your diner three times. The first was in '32 when I was new to town and had not registered who you were and you served me coffee at the counter and said three things to me and one of the three was: Roy. You are carrying.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "You said that to me at the counter in '32. I have been holding it for twenty years. I did not know how you knew. I did not know who you were.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I figured out in '38 that you had been at the foundation in Eugene. I figured out in '46 that you had retired in '30. I figured out in '49 that you and Henrik Lindholm had been close.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I figured out in '50, when Brandon Tillman put you in his papers, that you were the third watcher in this town.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have been carrying the carrying-knowledge since '32. I am sorry I have not come to you. I kept the distance because I did not know what to bring. I did not have the foundation. I did not have Hans. I did not have Tem.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I had a bowl in my apartment and what you said to me at the counter and twenty years. I am sorry, Aud.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I knew you in '32 because I'd been at the foundation eighteen years and I knew what a carrier looked like when one walked in.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I didn't come to you either. I'd retired. I was at the diner. I had my own carrying I was figuring out from inside it. I'm as much at fault for the not-coming as you are.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "We've been at the same table-edge for twenty years and we have not, in those twenty years, sat at the table together. We're sitting at the table today.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Thank you for saying what you said.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Thank you for hearing it.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja, Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I am — I am going to put it down.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Take the time.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I came to Smolvud in October of 1931. I had been in Bandon for the previous six years working on a fishing boat out of the small commercial harbor. I had been at the boat since 1925 when I had come over from Norway. I was twenty-six in '31. I was forty when the bowl came to me.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "In April of '31 a woman named Inga Skarsgaard who was Olaus's widow's sister came to the boat at the dock at five in the morning. She had a wooden box.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "She had — by the way she was holding the box and by the way she looked at me — she had been instructed to come by someone whose instruction she had been waiting for some weeks to receive. She handed me the box.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "She said: Roy Hummel. The bowl is yours. The bowl was Olaus's. Olaus has been dead fifty-three years. The bowl has been in the family until now.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The family cannot — by the death of my sister last week, by the death of the last person in the family who could carry — the family cannot carry the bowl. The bowl is yours. The bowl told the foundation to come to you. The foundation has come.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Inga did not stay. She handed me the box. She went back to her car. She drove off. I had the box at the dock at five in the morning in April. I did not, for the count of an hour, open it.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I opened the box at six. The bowl was inside. I had seen Olaus's bowl twice in my life.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The first was in '20 when I was fifteen and had been at Olaus's family's house in Bandon for a dinner that my father had taken me to. My father had been a friend of Olaus's brother. The bowl had been on the kitchen shelf. I touched it that night, with my father's permission.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The second time was in '27 at Olaus's wake at the family's house. I touched it again at the wake. The bowl was a thing I knew about as a thing the family had.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The bowl in the box in April of '31 was the bowl I had touched twice.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I sat with it for a week. I went on my fishing runs. I came home in the evenings to the small room I rented from a woman in Bandon. I sat at the table with the bowl in front of me each evening. I did not know what to do.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "At the end of the week — May of '31 — I made the decision. I would leave Bandon. I would take the bowl. I would go up the coast to a town the bowl had told me, at some moment that week, was the town.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The town was Smolvud. Hans, by the way I had been at the bowl that week, by the way the bowl had been at me — the town was Smolvud. I did not know why. I knew where.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I packed a bag. I gave notice on the boat. I took the bus up. I came into Smolvud in October because it took me five months to wind up my Bandon life.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I arrived on a Thursday. I rented the apartment on Cedar Place from a man who had been listing it for six months. I moved in. I put the bowl on the kitchen shelf. I started figuring out what I was supposed to do.",
+      "t": "say"
+    },
+    {
+      "text": "Roy stopped. He drank from the coffee cup Greta had set in front of him.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "I went into Hans's bakery for the first time in November of '31, a month after I arrived. I had been told — by the bowl, by some quality of how the bowl had been instructing me from the kitchen shelf — that the bakery on Hemlock was the place I would find the printed materials the network had been making.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I went in. Hans was at the front. I asked Hans if he had a copy of the Werner Junior poem cycle. Hans said no. I knew Hans was lying.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Hans's brother had printed the cycle two years earlier and Hans had a copy by every reasoning of how Werner would have sent his brother in Oregon one. Hans said no. I respected the no.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I said: Hans. I understand. I will not ask again. I went out.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I came back the next morning. I bought bread. I said nothing about the cycle. I bought bread the morning after that. And the morning after that.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have been buying bread at Hans's bakery five days a week for twenty-one years and I have not, in the three hundred visits, mentioned the cycle again.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have come for the bread. The bread has been Hans's signal to me that he is carrying. The bread has been my signal to him that I am respecting the no.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "In '37 I came into the bakery on a morning in November and I told Hans I had the bowl. Hans is right about the conversation. I told him I had it. I told him I would not talk about it. I have not talked about it in fifteen years. Today is the first day.",
+      "t": "say"
+    },
+    {
+      "text": "Roy stopped. He looked at the box on the table in front of him.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "I have not, in the years I have been in this town, been alone. I have been at the apartment with the bowl. The bowl has been the company.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "By what I have been able to read of it over twenty-one years, the bowl has been listening with me. The bowl has been the carrying-companion.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have not, in any of the years, been able to tell anyone about it. The foundation taught me at the dock in '31, when Inga gave it to me, that the bowl was not for telling. The bowl was for keeping. I have kept it.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The bowl is in this box. I am going to open the box. I am going to put the bowl on the table.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The bowl is going to be at the table with the three other bowls that have been at the cabin since Marina brought hers up Thursday night.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The four bowls are going to be in one room for the first time in fifty-one years.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I am asking, before I open the box, that the table give me a count to do this. The count is for me.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Take the count, Roy.",
+      "t": "say"
+    },
+    {
+      "text": "Roy did not, for the count he took, do anything.",
+      "t": "narrate"
+    },
+    {
+      "text": "Then he opened the box.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch17_aria",
+      "t": "jump"
+    }
+  ]
+}

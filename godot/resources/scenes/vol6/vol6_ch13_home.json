@@ -1,0 +1,320 @@
+{
+  "id": "vol6_ch13_home",
+  "vol": 6,
+  "chapter": 13,
+  "type": "chapter",
+  "title": "Ch 13 — The Chart",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Chart",
+      "sub": "Friday — 11:52 — Kowalski House",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The drive home is fifteen minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls into the driveway at eleven fifty-two."
+    },
+    {
+      "t": "narrate",
+      "text": "His mother's car is in the driveway. The garage is open. His father's truck is on the street, where Bill parks on Fridays because the trash trucks come Friday afternoons and Bill has been parking on the street for the trash trucks since 2014."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes in through the garage."
+    },
+    {
+      "t": "show",
+      "char": "bill",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill is at the kitchen table with the Sentinel."
+    },
+    {
+      "t": "narrate",
+      "text": "Bill is, by Bill tradition, doing the Friday crossword in pen. His mother is, by the angle of the bedroom door from the hallway, in the bedroom — the night-shift sleep, the eight-AM-to-three-PM sleep she does on days she works a ten-hour straight night. Daisy, the family's twelve-year-old golden, is at Bill's feet."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "How was conditioning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Light. They're easing us off for tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Vinton.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Depth chart up at noon?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill, by the small Bill-tradition he has been doing all summer when the conversation about football has had to happen, looks up from the crossword."
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "You think you're starting?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben thinks a beat."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I think so. Coach K hasn't said. But I think so. The half-line work this week was good. The cone work is where he wants it. I think I'm at TE-1.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill returns to the crossword."
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "If you are. Tell Coach Dale to put you in the rotation for the second-half conditioning. The first-half guys get tired. Second-half guys get the points.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Coach Dale doesn't do that, Dad. Coach K does.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Then tell Coach K. Same advice.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah. I'll mention it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "I'm not telling you to coach yourself, Ben. I'm telling you what I know. Use it or don't.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah. Thanks, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill returns to the crossword."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, at the kitchen counter, makes himself a sandwich."
+    },
+    {
+      "t": "narrate",
+      "text": "He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes. He watches, with the sound off, the noon news, which has — at twelve oh-five — a story about the heat that has been in every noon broadcast for three weeks and that says, today, the heat is going to break by Tuesday."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at the time."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets up."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I'm going back. Chart goes up at noon.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "I figured.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I'll text you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben goes to the door."
+    },
+    {
+      "t": "narrate",
+      "text": "At the door he pauses."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill looks up."
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Thanks.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "For what.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben thinks."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I don't know. For — for the advice.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Ben. The advice is free. The thanks is unnecessary.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "But thanks anyway.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks down at the crossword."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben goes out the door."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "In the Civic he sits for a count with both hands on the wheel."
+    },
+    {
+      "t": "narrate",
+      "text": "He has, in the past two hours, eaten a sandwich, sat with the dog, watched five minutes of the noon news, and had a forty-second exchange with his father at the kitchen table that was, by Bill's standard, one of the longest forty-second exchanges Bill has had with him this summer."
+    },
+    {
+      "t": "narrate",
+      "text": "He starts the car."
+    },
+    {
+      "t": "narrate",
+      "text": "He drives back to the school."
+    },
+    {
+      "t": "narrate",
+      "text": "The chart goes up at noon."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

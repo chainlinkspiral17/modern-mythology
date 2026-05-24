@@ -1,0 +1,43 @@
+{
+  "id": "vol1_link_q_coat",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_shuttle_bench.jpg"
+    },
+    {
+      "t": "show",
+      "char": "trenchcoat",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks down at his cuffs, like the question reminded him of something he had been meaning to check."
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"Same as what's in you, mostly. Just newer. It hasn't learned yet how to be quiet about it.\""
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"Yours did, once. You probably remember the year. People said you were a bright kid. They meant it the regular way. Then they stopped meaning it the regular way, and you noticed, and you put it away.\""
+    },
+    {
+      "t": "think",
+      "char": null,
+      "text": "You are not sure what year he means. You are not sure he is wrong about it."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_outside_hub"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "id": "vol6_ch6_safehouse",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Yes",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_safehouse_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Yes",
+      "sub": "Friday — 19:46 — Safehouse",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The safehouse is a small frame house on a county road thirty-two miles southeast of the FM-3411 exit, on a property owned, on paper, by a woman named Linda Caldwell — Maya's grandmother — through a trust that had been set up in 1991 for purposes nobody who did not own the trust had ever been told."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego is in the back bedroom. A doctor — a woman named Dr. Sajna Patel, who is, in fact, an actual pediatrician, who has been Hal's friend for fifteen years, who had driven down from New Auburn this afternoon at Hal's request — is at his bedside. She has set the IV. She has cleaned the worst of the cuts. She has confirmed: concussion is mild, dehydration is severe but treatable, no fractures, no internal bleeding."
+    },
+    {
+      "t": "show",
+      "char": "dr_patel",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Dr. Patel",
+      "text": "He's going to be okay. He needs forty-eight hours of fluids and quiet. Then he needs his grandmother, his mother, and a lot of soup.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego's grandmother is in the front room, on the phone with Diego's mother in San Antonio. They will both be at the safehouse tomorrow morning. Hal is in the kitchen, making sandwiches, because Hal is a bookshop owner and that is, in Hal's experience, what one does at a safehouse on a Friday evening. Claire is on the back porch, on the phone with her editor at the Houston Chronicle, beginning the careful slow work of telling the editor that the piece they have been waiting on for nine months is, as of tonight, ready to be filed in a window of three days."
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "In the back bedroom, Diego — who has been mostly asleep since the van — opens his eyes."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Dr. Patel.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Dr. Patel",
+      "text": "Yes, sweetheart.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "My phone.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Dr. Patel",
+      "text": "Doyle has it. Do you want it?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She gets it from Doyle. She brings it to him. She helps him hold it. Diego unlocks the screen with the small effort of a kid whose hands are shaking. He opens his thread with Sam. He reads, at the top, the unread message from Sunday afternoon: bored. u alive?"
+    },
+    {
+      "t": "narrate",
+      "text": "He smiles, faintly. He types, with both thumbs, slowly:"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "yes. sorry it took so long.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He sends it. He hands the phone back to Dr. Patel. He closes his eyes. He sleeps."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_sam_bedroom"
+    }
+  ]
+}

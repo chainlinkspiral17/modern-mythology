@@ -1,0 +1,336 @@
+{
+  "id": "vol6_ch17_porch",
+  "vol": 6,
+  "chapter": 17,
+  "type": "chapter",
+  "title": "Ch 17 — Elsewhere",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_back_porch.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Elsewhere",
+      "sub": "Friday — 08:22 — Miller House",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "bianca",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The back porch, at eight twenty-two, is in the specific warm morning Texas does in mid-August when the ninety-five of the day has not yet fully settled in and the porch is in the small shaded window where a woman in a robe can sit and eat coffee cake without, yet, sweating through the robe."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca sits in her mother's wicker chair."
+    },
+    {
+      "t": "narrate",
+      "text": "She eats the coffee cake."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, this morning, about her father."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks about her mother. She thinks about the house in Lubbock. She thinks about Carlos. She thinks about the other four — the oldest brother in Lubbock who she has not spoken to on the phone since Christmas, the two older sisters in Lubbock whom she speaks to once a month each, the younger sister who had moved to Albuquerque in 1993 and who had died of ovarian cancer in 2018 and whose funeral Bianca had flown to alone because Mike had been working and because the flying had been the small private thing Bianca had needed to do without making it a family trip. The younger sister's name had been Rosa. Rosa had been the sixth. Rosa had been the one who had, in the farm family of five-and-then-six, been the specific youngest whose later-life illness had — by the family's quiet consensus — been the thing that had made the five of them, afterward, less interested in being a family together than they had been before."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca had not, in eight years, told anyone about Rosa."
+    },
+    {
+      "t": "narrate",
+      "text": "She has not told Sam. She has not told Mike. She has not, until this morning, been asked about any of it by anybody who was in a position to hear the whole story."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, on the porch: Anita is going to ask me about Rosa next Friday."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, Anita is going to ask me about Rosa because Anita is the middle of six and Anita knows, by instinct, that a woman who says she is the fifth of six and stops there is a woman who has an older or a younger that the fifth is not, this morning, telling the table about."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, Anita is going to ask carefully. Anita is going to ask in a way that gives me room to not answer if I don't want to. I am going to answer."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I am going to tell Anita about Rosa. I am, next Friday, going to tell the table about Rosa. I have not told anybody. I have been — I have been holding Rosa for eight years without telling anybody. The holding was, until this summer, a thing I had decided to do."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: it is not, this summer, the thing I am going to keep doing."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I am going to tell Eileen and Anita next Friday."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: that is the deciding that is, this morning, the fourth one."
+    },
+    {
+      "t": "narrate",
+      "text": "She eats the coffee cake."
+    },
+    {
+      "t": "narrate",
+      "text": "She finishes the coffee cake."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits on the porch."
+    },
+    {
+      "t": "narrate",
+      "text": "The sprinklers in the cul-de-sac — Friday is a sprinkler day — are running their long morning cycle. The cicadas in the crepe myrtle are warming up. A mockingbird in the neighbor's oak is doing the specific four-note imitation it has been doing every morning all summer and that Bianca has, in the past six weeks, come to know as one of the small sounds of her mornings."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, finally: this is — this is enough, for this morning."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: the rest is next Friday."
+    },
+    {
+      "t": "narrate",
+      "text": "She leaves the wicker chair."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes inside."
+    },
+    {
+      "t": "narrate",
+      "text": "She washes the plate."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts the plate in the drying rack."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes upstairs."
+    },
+    {
+      "t": "narrate",
+      "text": "She takes off the robe."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets dressed for the day."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_office.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "At nine seventeen AM Friday she is at her desk in the small office off the master bedroom, paying the August bills that have come in this week."
+    },
+    {
+      "t": "narrate",
+      "text": "The electric bill is ninety-six dollars, which is up from last August by twenty-one percent, which is — she registers, paying it — the small local evidence of the summer having been hotter."
+    },
+    {
+      "t": "narrate",
+      "text": "The water bill is fifty-eight."
+    },
+    {
+      "t": "narrate",
+      "text": "The cable bill is one seventy-two."
+    },
+    {
+      "t": "narrate",
+      "text": "The Visa bill is — she opens it — higher than she had expected, because it has, on it, the charge from the grocery run she had done Tuesday at the H-E-B that had been larger than her usual run because she had stocked up on the specific things she had been meaning to stock up on for weeks."
+    },
+    {
+      "t": "narrate",
+      "text": "She pays them all online."
+    },
+    {
+      "t": "narrate",
+      "text": "The online payment, at nine twenty-eight, goes through."
+    },
+    {
+      "t": "narrate",
+      "text": "The house, on Friday, has been — financially, at least — kept."
+    },
+    {
+      "t": "narrate",
+      "text": "She closes the laptop."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes back downstairs."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_kitchen.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "She starts the second pot of coffee of the day — which is, she registers, different than the second pot on the days when the second pot was just for her. Today the second pot is just the pot. The first pot had been the three-woman pot. The second pot is hers."
+    },
+    {
+      "t": "narrate",
+      "text": "She pours a cup."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits at the kitchen table."
+    },
+    {
+      "t": "narrate",
+      "text": "The house is quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "The sprinklers have finished their cycle."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas are, by nine forty-one, fully on."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, sitting: Mike."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I have not, all morning, thought about Mike. I did not think about him for the whole of the three-woman table. I did not think about him for the coffee cake. I did not think about him at the desk paying the bills. I am thinking about him now."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: he would be glad about Eileen and Anita. He would be — he would be glad I have them. He was always — he was always, in his way, glad when I had friends."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: he is in Alabama. He is, per the last letter, fine. He is going to call in October for the twenty-minute window we are allowed. He has, by the letter, been reading the same two novels on a rotation because the facility has a limited library and he has, in the eleven weeks since he got there, been going through them at a rate that is going to outpace the library's turnover unless he slows down."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I miss him."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: missing him is — this morning, after the three-woman table — the specific small thing I am allowed to do today that does not require anything else of me."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits with the missing for a while."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, today, cry."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not need to."
+    },
+    {
+      "t": "narrate",
+      "text": "She finishes the coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "She washes the cup."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes on with the Friday."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Elsewhere in town, Diego, who had gotten home at eight thirty and had eaten eggs with his grandmother and had climbed into bed by nine, is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, at the Kwik Stop, is on shift."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is at football."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is at the comic shop."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, who is on the eleven-to-seven at the Pit Stop, is just now arriving."
+    },
+    {
+      "t": "narrate",
+      "text": "Linda, at her own porch, is watching the morning do its morning thing."
+    },
+    {
+      "t": "narrate",
+      "text": "Peggy, across the fence from Eileen's house, is canning."
+    },
+    {
+      "t": "narrate",
+      "text": "Anita, in her own bed, is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen, in her kitchen, is talking to Jim about a piano."
+    },
+    {
+      "t": "narrate",
+      "text": "The Friday, in the small ways Fridays in mid-August do this work, moves forward."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca, at her kitchen table, with the second pot's coffee finished, does the thing she has been, all summer, getting better at, which is to sit in the house at an ordinary hour with no specific task in front of her and not, in the sitting, need to fill the space with an argument about whether she is okay."
+    },
+    {
+      "t": "narrate",
+      "text": "She is not okay."
+    },
+    {
+      "t": "narrate",
+      "text": "She is also not not-okay."
+    },
+    {
+      "t": "narrate",
+      "text": "She is, this Friday morning, the specific woman sitting at her specific kitchen table in her specific life in her specific summer, and the specificity is — she has decided — enough."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets up."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes about her day."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

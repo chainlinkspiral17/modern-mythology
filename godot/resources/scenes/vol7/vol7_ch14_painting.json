@@ -1,0 +1,465 @@
+{
+  "id": "vol7_ch14_painting",
+  "vol": 7,
+  "chapter": 14,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 14",
+      "sub": "Friday",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "The count at five forty-three when Kai's truck came down the last switchback above the town was three hundred and eighteen. Lena had not been writing it down. She had slept beside Tem in Tem's bed with the count at one hundred and eighty-two when she had closed her eyes at eleven-twenty. She had woken at three with the count at two hundred and forty-something — the count had moved in her sleep — and had lain in the dark beside Tem and listened to Tem's breathing and to the rain on the cedar roof. The count had gone up at maybe one a minute. She had gotten up at five.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had made coffee in the cabin's cone and had taken a cup to the table where the three bowls were and had sat with them. The cabin had been quiet. Per was asleep in the chair by the wood stove with the wool blanket pulled up to his shoulders. Cale was asleep in the other chair, his head fallen back against the chair's wooden post. Finn was asleep on the floor by the south window. Marina was asleep in the loft above the kitchen. Tem was asleep in the bedroom. Kai was on the daybed with his arm over his eyes.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowls in the dim pre-dawn light coming through the south window had been doing what they had been doing. The crow on Marit's bowl had its head turned at a different angle than it had been at midnight. The young woman on the substrate-bowl had walked further past the stenciled doorway. The man on Marina's grandfather's bowl had his eyes now slightly above the rim of the bowl he was carved into, looking — by what Lena could read in the pre-dawn — at the kerosene lamp on the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had carried the cup back to the bedroom and had sat on the edge of the bed.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "What time.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Five-fifteen.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The count.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Two hundred and ninety-something.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale is going to drive you down.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Cale's asleep.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale woke twenty minutes ago and pretended he had not so the rest of us could get the last sleep. Cale is in the chair with his eyes closed because he is — he is being careful with the morning. Go put your hand on his shoulder. He will get up.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm scared.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah. I know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I do not know how to paint a face I have not yet seen the eyes of.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You are not going to. The cedar has the closed eyes. You are going to paint the closed eyes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The painting is — the painting is not finished by you. You are putting the face on the wall. Someone else — by what the substrate is doing — is going to open the eyes. You are not.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You are doing the strokes the count tells you to do. The eyes stay closed.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Lena. Come back.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She had gone over. Tem had reached up from under the blanket and had put her hand on the back of Lena's neck. They had not, for a count, said anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Come back here when you are done. I will be here. The room will be here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You are not — you are not going alone. You have Cale. You have Kai. You have us in the room. Come back when you are done.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I will.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "She had put her hand on Cale's shoulder. He had opened his eyes. He had not pretended otherwise. He had said, \"All right.\" He had stood. He had put on his coat. He had gone outside to start his truck.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had gotten the canvas bag from the table with the eighth piece in it. Kai had texted Lena at four to say he would drive his own truck down, that he wanted to be at the shop early, that he would stop by the alley by seven-thirty. He had pulled out of the clearing before Cale had finished scraping the windshield. She had gotten in Cale's truck. Cale had not, on the road, said anything. She had counted, in her head, by ones, all the way to the town.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_starfish_alley.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Cale parked behind the Salty Tome. The alley at five forty-five was the gray-blue of late August on the Oregon coast at the hour before the sun would be making itself known through the cloud cover. The rain had been steady all night. The puddles in the alley were the puddles. The dumpster behind Petra's was the dumpster.",
+      "t": "narrate"
+    },
+    {
+      "text": "She stood at the alley entrance and looked at the wall. The Starfish Nebula mural in the gray-blue light was the mural. The patch had grown overnight — by what she could see at this distance, the patch had taken the right side of the sandstone arches sometime between when she had left the apartment yesterday morning and now. The patch was the size of her torso, maybe slightly bigger. The patch was the place where the face was going to go.",
+      "t": "narrate"
+    },
+    {
+      "text": "She walked into the alley. She stopped at the wall. She put her hand on the wall over the patch. The wall was cool. The bricks under the patch were the bricks. The substrate had eaten the paint and had not, in the eating, touched the brick.",
+      "t": "narrate"
+    },
+    {
+      "text": "She turned. Cale was at the alley entrance. He had two coffees — he had been to the Daily Grind through the alley shortcut at the back, in for two minutes, back with two takeaway cups. He stood at the entrance of the alley with the two cups in his hands. He did not, for a count, come any further in.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Come halfway.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He came halfway. She walked over. She took the coffee.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Thank you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm going to set up at the wall. You stand where you stand. I'll tell you when I need you closer. I don't think I will.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "If — if anything happens to the wall while I'm painting that I am not registering, you tell me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "What kind of anything.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I do not know. The eyes opening. The face moving. The substrate doing the thing the substrate has been doing on the bowls.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I am — I am going to be at the wall with the brush. I am not going to be reading the wall. You are going to be reading the wall. You will tell me what happens.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Cale.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "If somebody comes in the alley I do not know — somebody who is not Kai at seven-thirty, somebody who is not Petra coming down to the bookstore — you tell me. Don't engage them. Just tell me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "If Roy comes in the alley.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He won't. The alley is closed at the far end. The far end is the brick of the laundromat. The alley has only the one entrance. He could come in. I do not think he will. He has not, in any of his three visits to me, come down the alley. He comes in the front of the bookstore. He will go to the bookstore at eleven. We will be done by then.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She drank from the coffee. She set the cup on a milk crate that had been at the foot of the wall since 2050 — the one she used for setting things down when she had been working on the mural. She opened the canvas bag.",
+      "t": "narrate"
+    },
+    {
+      "text": "She took out the eighth piece. She held it in her hand. The cedar in the alley light was the cedar. The face on it was the face. The eyes were closed. The hair was curling. The angle of the face had turned slightly — in the alley this morning the face was, by Lena's read of it, looking up. The face had its closed eyes facing the brick wall above the patch, looking at the place on the wall where the face was about to be painted.",
+      "t": "narrate"
+    },
+    {
+      "text": "She set the cedar on the milk crate in front of the cup. She unwrapped, from the canvas bag, the brush. The brush was the sable Finn had given her — his grandfather's brush, inherited in '49, the one Finn had used in October 2050 to do the quick portrait of Lena she had told him she hated. She would give it back.",
+      "t": "narrate"
+    },
+    {
+      "text": "She opened the jar of bone black she had brought down in the canvas bag. The bone black was the pigment she ground from the batch she made every six months in the studio behind the Daily Grind — by her own reading of how it took to brick, the right black for the wall. The bone black was the black she had used for the octopus's eyes in 2050. She wet the brush in the jar of medium. She set the brush against the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "—",
+      "t": "narrate"
+    },
+    {
+      "text": "She painted from five fifty-eight until eight forty-two. Two hours and forty-four minutes. She did not, in those hours, look at the cedar on the milk crate.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had taken the cedar's face into her, by some accident of how looking at the cedar in the alley light at five fifty-something had moved the face from the cedar to the inside of her head, and she was now painting from the inside of her head. The brush did not, in those hours, leave the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "The brush did the strokes the count told it to do. She was at three hundred and forty-something when she had set the brush against the wall at five fifty-eight. By six-twenty the count was four hundred. By seven the count was four hundred and fifty. By eight the count was five-fifty. The count had slowed since she had started painting, as if the substrate had been releasing the count at the rate the painting could take it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She painted the closed-eyed face. She painted from the hair down. She painted the curling of the hair in the bone black against the brick — long, dark-when-wet, curling at the ends. She painted the line of the forehead. She painted the closed lids of the eyes. She painted the lashes against the closed lids. She painted the bridge of the nose.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not, in painting the bridge of the nose, register that she had no reference for what the nose looked like. The nose was a nose. The nose was, by what came out of the brush, the right nose for the face she was painting.",
+      "t": "narrate"
+    },
+    {
+      "text": "She painted the mouth. The mouth was closed. The line of the upper lip was — by what came out of the brush — the line of a mouth that had been closed for a long time. The line of the lower lip was the lower lip.",
+      "t": "narrate"
+    },
+    {
+      "text": "She painted the line of the jaw. She painted the curve of the neck where the neck became the collarbone. She did not paint the body. The body was not, by what the substrate had cleared on the wall, in the count. The body would be on a wall somewhere else — possibly on the alley wall in some later week, possibly on a different wall in a different month. The body was not Lena's painting today.",
+      "t": "narrate"
+    },
+    {
+      "text": "She finished the line of the collarbone. The count was at six hundred and twelve. She stepped back.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall was the face.",
+      "t": "narrate"
+    },
+    {
+      "text": "—",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The patch.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "What about it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The patch has stopped eating.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Stopped where.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Stopped at the collarbone. It'd been growing the whole time you painted — same direction as the brush. Clearing the wall ahead of you. You finished. It finished.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She did not, for a count, do anything. She looked at the face on the wall. The face was in the cleared space of the patch. The face filled the patch. The face had been painted into the place the substrate had cleared. The patch was no longer eating. The substrate had — by what Cale was reading from the alley entrance — finished what it had been doing on this wall.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch14_figure",
+      "t": "jump"
+    }
+  ],
+  "title": "Friday"
+}

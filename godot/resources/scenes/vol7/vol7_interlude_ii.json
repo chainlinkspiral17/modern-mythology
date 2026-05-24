@@ -1,0 +1,199 @@
+{
+  "id": "vol7_interlude_ii",
+  "vol": 7,
+  "chapter": 0,
+  "type": "chapter",
+  "title": "Frequency Interlude II",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol8_static_dark.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Frequency Interlude II",
+      "sub": "Between the Awakening and the Welcome Mat",
+      "duration": 3000
+    },
+    {
+      "t": "narrate",
+      "text": "[ INTERCEPTED — frequency drift, source: a modified Speak & Spell in the back room of Cosmic Comics, Harmony Creek Estates, TX ]"
+    },
+    {
+      "t": "narrate",
+      "text": "The Speak & Spell, which has not been the same since the night it sang Old MacDonald in the voice of early Einstürzende Neubauten attempting Cumbia, transmits without being asked:"
+    },
+    {
+      "t": "narrate",
+      "text": "T-R-I-U-M-V-I-R-A-T-E. Triumvirate. Correct. Try again. T-R-I-U-M-V-I-R-A-T-E. Triumvirate. Correct. Try again."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya hears it from the kitchen. She does not turn it off. She writes the word in her notebook, then writes it three times more, then crosses out the first three. She circles the fourth. Underneath, in pencil, very small: who else."
+    },
+    {
+      "t": "narrate",
+      "text": "She has never been to Oregon."
+    },
+    {
+      "t": "narrate",
+      "text": "[ FINN — Cape Perpetua trail, 6:42 AM, fog bank approaching ]"
+    },
+    {
+      "t": "narrate",
+      "text": "The emergency radio in his pack does the patterned-static thing again. He is used to it now. He does not stop walking. The Cumbia does not surface this morning; instead, briefly, distantly, like a transmission from a country with a different alphabet, he hears a girl's voice — young, dry, somewhere south — say help me find them."
+    },
+    {
+      "t": "narrate",
+      "text": "He stops walking. The fog reaches him. The radio resumes its standard hiss."
+    },
+    {
+      "t": "narrate",
+      "text": "He marks the GPS coordinate on his phone. He does not know why. He does not know the girl. He will find out, in November, that her name was Maya, and that the message was meant for him, and that the route she sent him on goes through a cannery he has been avoiding his whole life."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow lands on the fence post beside him. The crow has been waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "[ INTERCEPTED — node TX-LA-01, telemetry update, source: Frasier Temple's eldest Demon, now transmitting from a jury-rigged speaker in the warehouse cathedral, dawn ]"
+    },
+    {
+      "t": "narrate",
+      "text": "Update: signal anomaly previously logged as adjacent vector now confirmed bilateral. Pacific spillover detected. Frequency: integrated. Frequency: corrupted. Frequency: same frequency. Repeat: same frequency. Do not confuse this with reassurance."
+    },
+    {
+      "t": "narrate",
+      "text": "Note: shadow-code architecture in Pacific Northwest sector resembles known D. Dean signature, modified. Suggest the architect has been busy. Suggest the architect was always going to be busy."
+    },
+    {
+      "t": "narrate",
+      "text": "Note: a young woman in Smolvud, Oregon, this morning woke with charcoal under her fingernails. She has never used charcoal. The charcoal is from a wall in Graustark, TX, that she has never seen. The charcoal is also somehow newer than she is."
+    },
+    {
+      "t": "narrate",
+      "text": "Recommend: continue observation. Recommend: prepare for guests."
+    },
+    {
+      "t": "narrate",
+      "text": "The Demon does its not-quite-sigh again. The Demon has, since the Static Opera, developed something dangerously close to compassion."
+    },
+    {
+      "t": "narrate",
+      "text": "[ LENA — apartment above The Salty Tome, Smolvud, OR — 6:42 AM Pacific, the same minute Finn's radio goes quiet ]"
+    },
+    {
+      "t": "narrate",
+      "text": "She is awake before her alarm. Her hand is on her thigh. Her thigh has charcoal on it in the shape of three letters: S U N. Her sketchbook is on the bedside table where she left it. The sketchbook has not been opened. The pencils are in the drawer, also where she left them. There is no charcoal in the apartment."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, calmly, not mine."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, less calmly, whose."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets up. She makes coffee. She does not wash her thigh for an hour. She wants to see if it changes."
+    },
+    {
+      "t": "narrate",
+      "text": "It does not change. It also does not wash off, eventually, for three days."
+    },
+    {
+      "t": "narrate",
+      "text": "By the time it does, she has started the zine. She calls it Static Truths. The first issue runs to four photocopied pages. On the back cover, without quite knowing why, she draws an octopus."
+    },
+    {
+      "t": "narrate",
+      "text": "[ AZRAEL — Angel of Transitions, log entry for the same morning ]"
+    },
+    {
+      "t": "narrate",
+      "text": "And on three coastlines simultaneously, three frequencies that had been mistaken for separate broadcasts revealed themselves as one signal interrupted by geography."
+    },
+    {
+      "t": "narrate",
+      "text": "I note for the record: the same crow."
+    },
+    {
+      "t": "narrate",
+      "text": "I note for the record: the same charcoal."
+    },
+    {
+      "t": "narrate",
+      "text": "I note for the record: the same hum, picked up by a different ear."
+    },
+    {
+      "t": "narrate",
+      "text": "The wheel does not turn faster. The wheel is the same wheel. There is only the one wheel."
+    },
+    {
+      "t": "narrate",
+      "text": "[ AT A JETTY, SMOLVUD, OREGON — fog ]"
+    },
+    {
+      "t": "narrate",
+      "text": "The Frog has been here for an hour. The Frog will be here for another four. The Frog is not, technically, fishing. The Frog is waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "Around four in the afternoon, three young people will pass this jetty without noticing him. The Frog will note them. The Frog will note their totems trailing behind them, invisible to them, visible to him: a crow, an octopus, a ferret, all walking in step."
+    },
+    {
+      "t": "narrate",
+      "text": "The Frog will roll a fresh smoke. The Frog will say, to nobody in particular, in a voice like rocks in a tumble dryer:"
+    },
+    {
+      "t": "narrate",
+      "text": "Right on schedule, pink ones. Right on schedule."
+    },
+    {
+      "t": "narrate",
+      "text": "The fog will accept the smoke. The fog will not give it back."
+    },
+    {
+      "t": "narrate",
+      "text": "The cycle, breathing, takes its next step."
+    },
+    {
+      "t": "narrate",
+      "text": "ACT III"
+    },
+    {
+      "t": "narrate",
+      "text": "LAND OF MILK & HONEY"
+    },
+    {
+      "t": "narrate",
+      "text": "Smolvud, Oregon"
+    },
+    {
+      "t": "narrate",
+      "text": "Twenty-two chapters and an epilogue. The fog finally has a frequency."
+    },
+    {
+      "t": "narrate",
+      "text": "Sticky, complicated, and usually curdled."
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch1_morning"
+    }
+  ]
+}

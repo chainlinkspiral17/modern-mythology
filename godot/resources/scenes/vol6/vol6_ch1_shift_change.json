@@ -1,0 +1,122 @@
+{
+  "id": "vol6_ch1_shift_change",
+  "vol": 6,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "Ch 1 — Jen",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kwikstop_interior.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Kwik Stop",
+      "sub": "Gallatin Ave · Sunday · 16:17",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "jen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "\"How's it been, Sammy?\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Quiet. One beer sale. The stockroom light is buzzing again.\""
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "\"Yeah, it's been buzzing since March. Corporate sent a guy last week. The guy said the light is fine.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"The light is not fine.\""
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "\"I know.\""
+    },
+    {
+      "t": "narrate",
+      "text": "They have, over the past year, developed a quiet rhythm with the handoff — done in under two minutes, with the clean professionalism of two women who understand that the particular small dignity of retail work is never, under any circumstances, letting the count get sloppy."
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "\"Sammy. Diego come by today?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam pauses. Jen is asking with a small careful flatness that Sam has never, in two years of working with Jen, quite heard before."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"No. He didn't.\""
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "\"His grandma came by. Around two. Before you got here. She was — Sammy, she was in her church clothes. On a Sunday afternoon. She was looking for him. She didn't come in. I saw her through the window. She walked around the store once. She looked at the Gas & Go across the intersection for maybe two minutes. Then she got in her car and she left. She was alone.\""
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "\"Sammy. Call his grandma. Tonight. Before you talk to anyone else. Including your dad.\""
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"Why.\"",
+          "goto": 17
+        },
+        {
+          "text": "[Listen. Wait for the rest of it.]",
+          "goto": 17
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "\"Because she was alone when she came by, Sammy, and she'd been crying, and she hadn't called the police.\""
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "\"Clock out. Go home. Eat something. Call her.\""
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch1_graciela"
+    }
+  ]
+}

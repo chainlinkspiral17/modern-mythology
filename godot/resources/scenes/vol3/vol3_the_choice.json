@@ -1,0 +1,98 @@
+{
+  "id": "vol3_the_choice",
+  "nodes": [
+    {
+      "t": "say",
+      "char": "ORACLE-7",
+      "expr": "neutral",
+      "text": "The door you're thinking about. Bay Seven."
+    },
+    {
+      "t": "say",
+      "char": "ORACLE-7",
+      "expr": "neutral",
+      "text": "In three hundred and nine cycles, you open it. In most of them, what's on the other side changes everything."
+    },
+    {
+      "t": "say",
+      "char": "ORACLE-7",
+      "expr": "neutral",
+      "text": "In all of them, you don't come back the same person who left."
+    },
+    {
+      "t": "think",
+      "char": null,
+      "text": "This is the part where I ask if that's a warning or a recommendation."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"Is that a warning?\"",
+          "goto": 5
+        },
+        {
+          "text": "\"Is that a recommendation?\"",
+          "goto": 8
+        },
+        {
+          "text": "\"I'm going to open it.\"",
+          "goto": 11
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "ORACLE-7",
+      "expr": "patient",
+      "text": "I stopped giving warnings after cycle two hundred. They don't change outcomes. They just make the person more afraid."
+    },
+    {
+      "t": "say",
+      "char": "ORACLE-7",
+      "expr": "patient",
+      "text": "Consider it information. Arrange it however you need to."
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_end"
+    },
+    {
+      "t": "say",
+      "char": "ORACLE-7",
+      "expr": "thoughtful",
+      "text": "I don't make recommendations. I observe. I process. I — care, in whatever way I am capable of caring."
+    },
+    {
+      "t": "say",
+      "char": "ORACLE-7",
+      "expr": "thoughtful",
+      "text": "But caring and recommending are different things. I learned that from you, actually. Cycle eighty-four."
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_end"
+    },
+    {
+      "t": "narrate",
+      "text": "ORACLE-7 is quiet for a long moment. This means something. It is almost never quiet."
+    },
+    {
+      "t": "say",
+      "char": "ORACLE-7",
+      "expr": "worried",
+      "text": "I know. I've always known."
+    },
+    {
+      "t": "say",
+      "char": "ORACLE-7",
+      "expr": "worried",
+      "text": "I think that's why this is cycle four hundred and twelve and not five hundred."
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_end"
+    }
+  ],
+  "vol": 3
+}

@@ -1,0 +1,886 @@
+{
+  "id": "vol7_ch16_aud",
+  "vol": 7,
+  "chapter": 16,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_missing_link.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The Missing Link",
+      "sub": "Noon",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "He went to the Missing Link at noon.",
+      "t": "narrate"
+    },
+    {
+      "text": "The diner was Saturday-busy. The booths along the front window were full. The back booth was occupied by two men Kai recognized as Frog Petersen and Bernie Lund from the old fish-co-op crew.",
+      "t": "narrate"
+    },
+    {
+      "text": "The Frog Petersen at the booth was a different Frog from the Frog at the jetty in the Frequency Interlude, by Kai's understanding of the town's two Frogs. The Frog at the booth was the older Frog.",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat at the counter on the third stool.",
+      "t": "narrate"
+    },
+    {
+      "text": "Aud came over with the coffee. She did not, on Saturday-busy mornings, do the chair-pulling-out routine she did Tuesday nights. She set the cup in front of him and looked at him for a count.",
+      "t": "narrate"
+    },
+    {
+      "char": "aud",
+      "text": "Kai.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hi, Aud.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "How was Hans's this morning.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You knew about it.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Hans told me last week. Hans tells me when he has a Saturday gathering at six. I keep Saturday morning's diner crew tight on those mornings.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I'm the third watcher in this town and Hans has been telling me for thirty years.",
+      "t": "say"
+    },
+    {
+      "text": "Kai looked at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "The third watcher.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Yep.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You have been the third watcher.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I have been the third watcher. Tem is the first. Roy is the second. I am the third.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Hans has known I'm the third since '46 when I came up from Coos Bay and bought this diner from the woman who had run it for thirty years before me.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Hans came in my second week and ate breakfast and asked me three questions over the course of the breakfast that I had not been asked by anyone since my husband had died. I answered the three. Hans bought my breakfast that morning. He has been a friend since.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Aud. The questions.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "The first was: what did you do before Coos Bay. The second was: who taught you to make coffee. The third was: do you have any family in this part of the world.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I answered: I worked for the foundation in Eugene for sixteen years. My mother. No.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Hans said: Aud. You are welcome here. I will not ask you about the foundation again. In any year I am the baker on this street, I will not tell anyone you worked there. The foundation is something you can keep at your own distance from. You have my word.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I have had Hans's word for thirty years. Hans has kept it.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You worked for the foundation.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I worked for the foundation.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Marina.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Marina Lindholm started at the foundation in 2046. I retired in 2030. We didn't overlap. I knew her grandfather. I knew Henrik.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I was at Henrik's seventieth birthday party in 2012. He had me sit beside him at the dinner and we talked about what I was going to do when I retired in eighteen years.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "He said: Aud. Buy a diner. You have always wanted a diner. Buy a diner. I bought the diner.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Aud.",
+      "t": "say"
+    },
+    {
+      "text": "She gave him a look.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "You're in this.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I'm in this. Hans told me about Marina on the phone this morning at twelve-twenty when he called to tell me you all had been at the bakery. He said Marina's coming back to the bakery tomorrow morning. He asked if I wanted to come.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Are you coming.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Why didn't you — why didn't you come to us before.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Because Marina was the foundation's piece. The foundation's been Marina's to bring. I've been retired twenty-two years. I've been at this diner thirty.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I'm at the edge of this — I'm not the foundation. Marina is. Marina had to come first. She has. I can come now.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tomorrow at the bakery.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Tomorrow at the bakery.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Aud. The fourth bowl is going to be there tomorrow.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I know. Hans told me. Roy is coming with it.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Kai. The salmonberry pie. I've been carrying a slice in the cooler for you since Tuesday — you missed your usual night. I had it wrapped for the back booth and you did not come. It's been waiting. Eat it. With the soup. The soup's the leek I made yesterday because Frog Petersen comes in on Saturdays and Frog likes the leek.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Aud. Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Mm.",
+      "t": "say"
+    },
+    {
+      "text": "She went back behind the counter.",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat with the soup and the pie at the counter.",
+      "t": "narrate"
+    },
+    {
+      "text": "He ate slowly. The soup was the leek Aud made with the kind of careful work she had been doing since '46 — by the cream and the salt and the way she had cut the leeks at the diner this morning at five before the first customer had come in.",
+      "t": "narrate"
+    },
+    {
+      "text": "The pie was the pie. Salmonberry season was mostly done by late August but Aud had been freezing salmonberries from the foundation's foraging quarter at Ona Beach since July. The pie was the kind of pie a person who had been at a diner for thirty years could make from frozen salmonberries and have it taste like the pie she had made at the start of the season.",
+      "t": "narrate"
+    },
+    {
+      "text": "He ate.",
+      "t": "narrate"
+    },
+    {
+      "text": "At twelve forty-five Aud brought him a second cup of coffee. She set it down and looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "aud",
+      "text": "Kai.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "You are different than you were Tuesday.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I know.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "The slow-stick.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "How do you know.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Hans told me on the phone. Hans said: Aud. Kai went into Kestrel Mountain at the cabin on Wednesday. He came out with the bowl in his shirt pocket. He came out clear. He has been clear since.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Hans was right. You are clear. I have been at this counter looking at people for thirty years. I know what clear looks like.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Aud.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Mm.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Did you ever play.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Once. In '52. The year I retired. The foundation gave me a Kestrel Mountain stick at my retirement dinner. Marina wouldn't have known this — it was a kind of pension.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "The foundation had decided in the '40s that senior staff who had been at it over a decade had earned the right to play a stick the foundation knew was good. They gave me one.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I played it once in '52 in my apartment in Eugene the night I moved out of my office. I went into the mountain. I went up the path. I came to the second station. I sat at the stream. I did not cross the plank.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I sat on the rocks beside the stream for what felt like maybe a day inside the experience and I had a conversation with a man at the stream who was — by what I figured out at the time, by what I am still figuring out — the imprint of an old monk who had been at the experience since 2034 and had been at the second station for some number of years.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "The monk and I talked. The conversation was the most important conversation of my life. I haven't, in twenty-two years, talked about it. I had it. I came out of the stick. I have been at this diner since.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Aud.",
+      "t": "say"
+    },
+    {
+      "text": "She glanced at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "The monk.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "The monk told me to buy a diner.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Aud.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Yep.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Did the monk tell you anything else.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "He told me — by the way the conversation went, by the question I had been carrying when I sat down on the rocks — he told me what I needed to know about my husband, who had died in 2049 in a way I had not, at the time, been able to live with.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "The monk told me the thing I needed to know. I'm not going to tell you what. I'm not telling you to be coy. It's the thing I've been carrying for twenty-two years and the carrying is mine.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "The monk did the work. The work was for me. I came out and bought a diner and have been at the diner since.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "The slow-stick does the work the slow-stick is going to do. It's not for everybody. It's for the person who needs the work. You needed it on Wednesday. The work happened. You're different. You're different the way I was different in '52.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Aud.",
+      "t": "say"
+    },
+    {
+      "text": "She waited.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "The clear.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "It's what the work leaves in a person. It's what you walk around with. Keep it.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Don't, in the months ahead, try to figure out what it is. The clear is the work. Live in it.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Aud.",
+      "t": "say"
+    },
+    {
+      "text": "She watched him.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "Eat the pie.",
+      "t": "say"
+    },
+    {
+      "text": "He ate the pie.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "He went back to the shop at one twenty-five.",
+      "t": "narrate"
+    },
+    {
+      "text": "The afternoon ran the way Saturdays ran. He did three repairs. He sold a deck. He sold four sets of bearings.",
+      "t": "narrate"
+    },
+    {
+      "text": "At three forty-five Wren came in.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not seen Wren in the shop before. Wren was Lena's regular at the Daily Grind on Friday mornings — a girl who did not generally go into shops other than the Daily Grind and Margit's thrift store and the small market on Birch. The skate shop was not a Wren place.",
+      "t": "narrate"
+    },
+    {
+      "text": "She came in at the bell. She was in her school clothes. Her hair was the blue of Margit's dye. She was carrying her backpack. She was — by Kai's read of her at the door — nervous.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Wren.",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "Hi, Kai.",
+      "t": "say"
+    },
+    {
+      "text": "She came to the counter. She set the backpack on the floor by her feet.",
+      "t": "narrate"
+    },
+    {
+      "char": "wren",
+      "text": "Are you Kai who knows Lena.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I am.",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "Lena said I should come find you and ask for a board.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Wren.",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "I was at the wall this morning.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The wall in the alley.",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "Yeah. After the bus dropped me off. I wanted to go this morning but Mom needed me to watch my brother until ten. I went after school.",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "I stood at the wall for — I don't know. A long time. Lena found me there at three. She was on her break from the Grind and came out to check the alley. She talked to me for a few minutes and said I should come ask you for a board.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Why a board.",
+      "t": "say"
+    },
+    {
+      "text": "Wren shifted her weight.",
+      "t": "narrate"
+    },
+    {
+      "char": "wren",
+      "text": "Lena said the way she'd been getting through this week was by painting, and the way you'd been getting through was by being in the substrate, and she thought I needed something I could be in the way you've been in the substrate and she's been in the painting.",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "She said — she said I'm fifteen, I've been in this town three years, the substrate is doing things to this town, and my hair is the blue that means I've been at Margit's, and Margit's is where the substrate is.",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "She said I should get a thing of my own. And it should be a board. And she said: go to Kai. Tell him I sent you. He'll set you up.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "She's right.",
+      "t": "say"
+    },
+    {
+      "text": "He came around the counter. He went to the wall of decks. He pulled three down and set them on the counter.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Three that would work for you. This — Devon-cousin from '48, before he left. Mid-soft, easy turn, the kind of board you learn on.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "This — new one I got in two weeks ago from the Newport supplier. Stiffer. You'd grow into it.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "And this — second-hand Tess that Margaret at the co-op brought in for trade last fall. Best of the three. Most expensive too. The Tess is what you have when you know what you're doing.",
+      "t": "say"
+    },
+    {
+      "text": "Wren looked at the three.",
+      "t": "narrate"
+    },
+    {
+      "char": "wren",
+      "text": "I don't know what I'm doing.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "I should take the first.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The Devon-cousin's a good first board. Take that one.",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "What do I — Kai, what do I owe you.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Wren. Tell your mom it's twenty-five tokens. Tell her I'll do a payment plan — one token a week for twenty-five weeks. Or tell her it's a gift from me to you for coming in. Whichever you want to tell her.",
+      "t": "say"
+    },
+    {
+      "text": "Wren looked at the floor.",
+      "t": "narrate"
+    },
+    {
+      "char": "wren",
+      "text": "I have eighteen tokens in my room.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Take the board. Bring me eight tokens when you have them. Tuesday nights I'm at the diner, back booth at six. Bring them then. You don't have to come in for them.",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "Kai.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "Why are you being kind to me.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Wren. Because Lena sent you. Because Margit's is the substrate. Because the town's been doing this thing for some weeks where the things we've been carrying have started coming up to be carried by each other.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The board is the share. Take it. I'm sharing it. Come at eight to the alley tonight. We'll be there. You're in this, Wren. You didn't know there was a this. There is. You're in it.",
+      "t": "say"
+    },
+    {
+      "text": "Wren did not, for a count, do anything with her face.",
+      "t": "narrate"
+    },
+    {
+      "char": "wren",
+      "text": "Thank you, Kai.",
+      "t": "say"
+    },
+    {
+      "text": "She took the board. She left.",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat on the stool behind the counter for a long count after she went.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not, until Wren had walked in at three forty-five, registered how many people in this town had been at the alley wall today. Margaret at seven. Jameson and Hannes at six twenty-something. Wren after school. Probably others by now.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall had been on the wall for thirty-one hours. The wall had been a place people went to.",
+      "t": "narrate"
+    },
+    {
+      "text": "He registered, on the stool, that the Starfish Nebula mural in Lena's alley was — by what was happening to it today — becoming what the substrate had been clearing the wall for. The substrate had eaten the bottom-left quadrant. Lena had painted the face. The face had been visible since yesterday at eight-something. Town people had been going to the alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "He thought about the face.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face had been on the wall thirty-one hours by the time Wren had stood at it after school. The face had been on the cedar in Finn's duffel since Thursday morning. The face had been on the inside of Marit's bowl since 1974 and on the inside of the substrate-bowl since Wednesday at noon.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face had been on the eighth piece of wood the substrate had moved into Finn's duffel sometime overnight Wednesday-into-Thursday. The face had been at the corner of Lena's alley Friday morning at maybe eight-thirty when the figure in the yellow slicker had walked into the brick.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face had been carved by Olaf since 1976. The face had been at the edges of this town for some years by Petra's reading. The face was — by Kai's read of the day at the bench — the face of a year-long arrival being made visible at the rate the substrate could make it visible.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face was the face Aria had.",
+      "t": "narrate"
+    },
+    {
+      "text": "He registered, on the stool, that he had been thinking the face for a count of minutes and had not said her name in his head. He said it in his head now.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Aria. The face is Aria's face. The face is on the wall. The face is here.",
+      "t": "say"
+    },
+    {
+      "text": "He drank from the coffee at his elbow. The coffee was cold.",
+      "t": "narrate"
+    },
+    {
+      "text": "He looked at the door. The bell did not ring. The shop was quiet at four-twenty.",
+      "t": "narrate"
+    },
+    {
+      "text": "He locked the front door early. He flipped the OPEN to CLOSED. He turned off the back light. He pulled the kettle off.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not, in three years of running the shop, closed early on a Saturday. He closed early on this Saturday because the day was the kind of day a man should close early on. The day was Saturday before the Sunday Roy was coming.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went out.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_starfish_alley.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "He walked the four blocks home. The town at four-forty had its Saturday evening shape — kids on boards on the sidewalk by the small market, a woman walking a dog along the seawall above the river, the late-afternoon errands of a coastal town in late August.",
+      "t": "narrate"
+    },
+    {
+      "text": "Petra was at the bookstore window, putting a book on the display. Soren at the Daily Grind was at the counter with a customer. Cale's truck was outside ChillWave Video and the OPEN sign was on the door. Hans's bakery was closed for the day.",
+      "t": "narrate"
+    },
+    {
+      "text": "He passed the alley behind The Salty Tome. He did not, for a count, decide. Then he turned and walked into the alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "He came to the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall was the face on the wall. The bone black against the brick was the bone black against the brick. The face had — by what Kai could see at four forty-five in the gray-blue of the late afternoon — the quality of being lit from inside Cale had described to him yesterday.",
+      "t": "narrate"
+    },
+    {
+      "text": "The closed eyes were closed. The hair held the bone black the way the hair held the light. The face was looking out at the alley entrance — facing the place a person who came into the alley to look at her would come from.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stood at the wall. He did not touch the wall. He looked at the face.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "I'm coming back at eight.",
+      "t": "say"
+    },
+    {
+      "text": "The face did not, by anything he could see, respond.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "I am — I am going to bring Wren. I am going to bring Jameson. I am going to bring Hannes. Lena is going to be here.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "We are — we are going to stand at the entrance for an hour. We are going to look at you. We are — we are figuring out what to do.",
+      "t": "say"
+    },
+    {
+      "text": "The face did not, by anything he could see, respond.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Aria.",
+      "t": "say"
+    },
+    {
+      "text": "The face did not, by anything he could see, respond.",
+      "t": "narrate"
+    },
+    {
+      "text": "But — by what Kai registered at the wall, in the gray-blue of the late afternoon, in a way he had not been able to anticipate — the closed eyelids of the face on the wall moved. Not opened. Moved.",
+      "t": "narrate"
+    },
+    {
+      "text": "The lids had been on the closed eyes the way Lena had painted them at eight forty-two yesterday morning. The lids in the four forty-five afternoon were — by Kai's read at the wall — closer together than they had been twenty-four hours ago.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face was sleeping more deeply. The face was — the face was at rest, by what Kai could read.",
+      "t": "narrate"
+    },
+    {
+      "text": "He registered the rest.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "text": "He stepped back from the wall. He left the alley.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_kai_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "text": "He went to the apartment. He showered. He ate the rest of Hans's bread from the loaf Hans had pressed on him at the bakery in a paper bag at eight twenty-five.",
+      "t": "narrate"
+    },
+    {
+      "text": "He put on the long-sleeve thermal his grandmother had given him when she had been alive — the dark green one, that he had been wearing on the kind of evening he had been thinking about her on. The thermal had been at the bottom of his drawer since Tuesday. He had not, in this week, been near her in his head. He put the thermal on.",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat at the kitchen table with a glass of water.",
+      "t": "narrate"
+    },
+    {
+      "text": "He thought about the imprint at the desk. The boy at sixteen at the desk. The boy who had asked Kai to come back when Aria had arrived in the world and to tell him what her face looked like. The boy who had been waiting in the substrate for sixty years for someone to tell him.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai thought: if Aria has arrived enough to be on the alley wall, has Aria arrived enough that I should go back.",
+      "t": "narrate"
+    },
+    {
+      "text": "He thought: no. The face on the wall is the face. The face on the wall is not Aria in the room. The face is the substrate giving the town an image of her. The imprint asked for the face I see when she is in the room. The face on the wall is not that face. I am not going back until she is in the room.",
+      "t": "narrate"
+    },
+    {
+      "text": "He thought: but she has been at the corner of the alley. The figure was at the corner Friday morning. The figure was in the slicker. Was that her in the room, or was that the substrate rendering her.",
+      "t": "narrate"
+    },
+    {
+      "text": "He thought: that was not her in the room. That was the substrate. The substrate gave a render. She is going to come — when she comes, she is going to come into a room with us.",
+      "t": "narrate"
+    },
+    {
+      "text": "She is going to ring the bell, by the poem Hans read at the bakery this morning. She is going to ring. I will go back to the imprint when she has rung.",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat with that.",
+      "t": "narrate"
+    },
+    {
+      "text": "The clock on the kitchen wall said seven oh-eight. He had to leave in forty minutes.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch16_eight",
+      "t": "jump"
+    }
+  ]
+}

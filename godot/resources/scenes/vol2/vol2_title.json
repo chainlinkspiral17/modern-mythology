@@ -1,0 +1,120 @@
+{
+  "id": "vol2_title",
+  "vol": 2,
+  "chapter": 0,
+  "type": "chapter",
+  "title": "Title Page & Preface",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": null
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Small Wood Volumes",
+      "sub": "By D.N. Dean",
+      "duration": 4200
+    },
+    {
+      "t": "narrate",
+      "text": "Small Wood Volumes."
+    },
+    {
+      "t": "narrate",
+      "text": "By D.N. Dean."
+    },
+    {
+      "t": "interlude",
+      "text": "Author's Note",
+      "sub": "—",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Curiously enough, I've never been a writer. I am a computer scientist at a local university who found this notebook left in a copy shop several years back, and lost track of it."
+    },
+    {
+      "t": "narrate",
+      "text": "What's odd about my find is that it was written in an old notebook I'd half-started and lost at some diner while my father moved us cross-country — and was later finished by someone else."
+    },
+    {
+      "t": "narrate",
+      "text": "What are the odds, huh?"
+    },
+    {
+      "t": "interlude",
+      "text": "preface",
+      "sub": "",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "You need a title, it says to me — the little voice behind my thoughts."
+    },
+    {
+      "t": "narrate",
+      "text": "small wood volumes. (I fill this in later.)"
+    },
+    {
+      "t": "narrate",
+      "text": "Up awake at hours when the company I keep is made up of figments and fragments. I write because words keep coming — that is, the thoughts are neverending. I eat crumbs that are the remains of yesterday. The transition time between then and now, thoughts racing before the dawn of another day."
+    },
+    {
+      "t": "narrate",
+      "text": "The frenzy takes me and I must keep going — I must not stop. I have to write about all of them. Those who know their place. The ones who live with damaged goods, whose only dream is to come up even on the karmic scale. My heart goes out to them, and their restless thoughts. Pollution of hurt and grief spills out like split trash bags on the sidewalk."
+    },
+    {
+      "t": "narrate",
+      "text": "This is an essay on nothing. No thesis body to be found. An example made in maps on walls — delineating who we are by where we live. Status and circumstance. The rise and fall of a nobody. No name given. Small Town Blues."
+    },
+    {
+      "t": "narrate",
+      "text": "Music sits softly on my ears. Headphones hug and comfort. I make up a fiction to dilute the facts of this life. My story is simple and easy, so I'll begin there and take you someplace else."
+    },
+    {
+      "t": "narrate",
+      "text": "It's not that my history unnerves me — it is just that it has been so long since I've sat down to write seriously, I don't think I can tell the truth without boring myself. So I must fabricate, and you must settle. You found these words and continue reading of your own accord."
+    },
+    {
+      "t": "narrate",
+      "text": "I lived in a town called Small Wood, on the coast of Oregon. I moved from there three years ago, after many endings occurred all at once. I kept a diary while I was living there — collecting scraps of what I thought to be history, art, and a living fiction of the town I lived in."
+    },
+    {
+      "t": "narrate",
+      "text": "I write this in recollection, and add the remnants from the old life where their place belongs. Know this is all a puzzle to me. Thousands of pieces, all touching and connecting in so many ways."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm not sure which piece goes first."
+    },
+    {
+      "t": "narrate",
+      "text": "This is a story not as it was, nor how I wanted it to be. It is the story of ghosts that live on, failures that haunt, peoples that persist, and death that goes unremarked upon."
+    },
+    {
+      "t": "narrate",
+      "text": "There is no structure to the telling of this story. There is no one medium for ideas to stick to."
+    },
+    {
+      "t": "narrate",
+      "text": "such is life."
+    },
+    {
+      "t": "narrate",
+      "text": "A beginning, now — to set the stage, to pull the curtain back and have our narrator come in on cue."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_preface_read",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_briar_falls_interlude"
+    }
+  ]
+}

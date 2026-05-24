@@ -1,0 +1,751 @@
+{
+  "id": "vol6_ch22_bianca",
+  "vol": 6,
+  "chapter": 22,
+  "type": "chapter",
+  "title": "Ch 22 — Saturday",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_bianca_kitchen_dark.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Saturday",
+      "sub": "Saturday — 04:11 — Bianca's Kitchen",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca wakes at four eleven."
+    },
+    {
+      "t": "narrate",
+      "text": "She has been waking at four eleven on Saturdays for eight weeks. The number is not the alarm. The alarm is set for six. Her body, on Saturdays, beats the alarm by an hour and forty-nine minutes and her body has been doing this since the second week of July, when she had, on a Sunday afternoon, looked at the kitchen calendar and counted backward and understood that what she had been calling insomnia was, on Saturdays only, a thing her body was choosing."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets up."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, this morning, turn on the lamp. She has been making coffee in the dark on Saturdays since the third Saturday. The kitchen knows where things are. Her hand knows where the kettle is, where the grinder is, where the green terrycloth robe is on the hook by the back door. She puts the kettle on the burner. She measures the beans. The grinder makes the noise it makes. She pours the water."
+    },
+    {
+      "t": "narrate",
+      "text": "The cul-de-sac through the kitchen window is dark."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her coffee at the table."
+    },
+    {
+      "t": "narrate",
+      "text": "She is allowed, this morning, to think about Mike."
+    },
+    {
+      "t": "narrate",
+      "text": "Yesterday at the four-thirty table she had not. Friday morning the table had been the not-Mike hour — Eileen and Anita on the other two chairs, the three of them with their three cups, none of them performing okay for the others. Friday is the table. Saturday is hers. The arrangement is, by the eighth Saturday of it, the thing she did not, back in June, know she was building."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks about him."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks about him the way she has, for eight Saturdays, been allowed to think about him: not the apparatus, not the courthouse in May, not the decisions in 2017 and 2019 and 2023, but the man as he had been for the sixteen years before any of it. Mike's French toast, which he cut Mike's-thickness. Mike on Sunday afternoons in the early years, watching the Cowboys with his feet on the coffee table. Mike when Sammy was three, doing the little-cup-of-warm-water bath ritual. Mike in 2019 giving her the green terrycloth robe she is wearing."
+    },
+    {
+      "t": "narrate",
+      "text": "She is wearing the robe because she wears it on Saturdays. The other days she has, since June, been wearing the cotton one her sister Carmen sent her after Mike's sentencing. The cotton one is fine. The cotton one is the weekday robe. The terrycloth one is heavier and Mike has been gone since May."
+    },
+    {
+      "t": "narrate",
+      "text": "The not-crying is the thing her body has agreed to give her in exchange for the four-eleven wake. She is not sure when the agreement was reached. She knows by the eighth Saturday it has held."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "The kitchen clock, on the wall above the toaster, ticks. The refrigerator hum cycles up at four thirty-six and back down at four forty-two. The cul-de-sac stays dark."
+    },
+    {
+      "t": "narrate",
+      "text": "At five oh-two Don's light comes on."
+    },
+    {
+      "t": "narrate",
+      "text": "On time. Don's light has been coming on at five oh-two for as long as Bianca has lived in this house, which is nineteen years next May. Don is seventy-three. Don's light is one of the four facts of the cul-de-sac mornings that have, since June, become Bianca's calendar. Don's light at five oh-two. The Salazars' sprinkler at five thirty. The Beecher kid's bike on the sidewalk at five forty-five for the Express-News route. The Sunday paper at six fifteen, which doesn't apply Saturdays."
+    },
+    {
+      "t": "narrate",
+      "text": "She nods to it."
+    },
+    {
+      "t": "narrate",
+      "text": "Carlos calls at nine seventeen."
+    },
+    {
+      "t": "narrate",
+      "text": "She has been awake five hours by then. She has eaten one piece of toast with peach jam at six forty-something. Sammy has been up since seven, has come downstairs in her Kwik Stop polo and the jeans she has been wearing too many days in a row, has eaten cereal, has kissed her mother on the cheek, has driven to the Kwik Stop. The Corolla is gone. The driveway is empty. Bianca is on the back porch in the wicker chair with the second pot of coffee on the small table beside her and the cordless on the table too. She had been expecting Carlos to call this week. She had not been expecting him at nine seventeen on a Saturday."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_bianca_back_porch_morning.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "She picks up on the second ring."
+    },
+    {
+      "t": "show",
+      "char": "carlos",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Carlos.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Bianca. The radio's going out today. I wanted you to know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Today.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "FedEx ground. They pick up Houston on Saturday between eight and noon. I'm in the window. The truck'll be at my house in about an hour. The radio'll be at yours Wednesday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She is quiet a beat."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "I been meaning to ship it since Monday. I told you Monday I was shipping it Tuesday. I told you Tuesday I was shipping it Wednesday. I told myself Wednesday I was shipping it Thursday. I shipped it this morning at eight-thirty. I wanted you to know it actually moved.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Carlos.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Thank you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Yeah, Bianca. Of course.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A pause on the line. She hears, faintly, the sound of his coffee maker — Carlos has had the same coffee maker since he and Lupe moved into the Heights house in 2008. The coffee maker makes a specific gurgle near the end of the cycle. The gurgle is on the line."
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "How are you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks for a beat. She wants to give him an honest answer. Carlos has asked her this question many times since May. She has, since May, been giving him a fine in a register that has, between the two of them, stood in for a longer answer they have not had the time or the medium for. The cordless on the back porch in the wicker chair on a Saturday morning at nine seventeen — Sammy out of the house, Don's light long off, the cicadas warming up — is, possibly, the medium."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Carlos, I am tired.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Not the tired tired. The other one. The one where I keep waking up at four-eleven on Saturdays because my body has decided four-eleven on Saturdays is a thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Bianca.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I know. I'm not — I'm okay, Carlos. I'm telling you because you asked. I have been, in eight weeks, more okay than I was in June. June was bad. July was bad with structure. August has been — August has been a different shape. I have two women who come over Friday mornings. The four-thirty table. We sit. We do not perform okay for each other. It is the closest thing I have to having other adults in the house.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "That's good, Bianca.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "It is. It's new. Eileen Henderson — Jim's wife — has been carrying her own thing this summer and Anita Kowalski has been carrying hers and the three of us, by way of not knowing what else to do with ourselves at four-thirty in the morning, found each other. The table is the table.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "And Sammy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Sammy is going to be all right. She has been working at the Kwik Stop. She has been watching the cul-de-sac the way she watches everything which is to be paying attention to things I do not know she is paying attention to and then asking me about them six weeks later. She is going to apply early to UT-Austin. She told me Wednesday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "She's going to get in.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "She is.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "And Mike.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She is quiet a moment."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Mike is in Alabama. Mike is, by his last letter, fine. He has been reading two novels on rotation because the prison library is small and he has been keeping the rotation slow on purpose. The October phone call is on the calendar. The arrangement is the arrangement.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Bianca.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "What.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "I'm sorry I haven't called more.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Carlos. Stop. You called Monday. You called back Tuesday. The radio is going out today. We are doing what the seventh and the fifth of six kids do. We are okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A pause."
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Bianca.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A longer pause."
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "I think about Rosa.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "She is, for a beat, very still."
+    },
+    {
+      "t": "narrate",
+      "text": "The wicker chair is the wicker chair. The crepe myrtle has begun to do its work, which is to say a small breeze has moved through it for the first time this morning and the dropped blossoms on the patio bricks have shifted a quarter inch east. The cicadas in the crepe myrtle are at their morning volume, which is loud but not yet the full afternoon loud. The cordless in her hand is the cordless."
+    },
+    {
+      "t": "narrate",
+      "text": "The name Rosa, on the line, sits."
+    },
+    {
+      "t": "narrate",
+      "text": "Carlos had not, on Monday or Tuesday or any phone call since June, said the name. He had not, in the eight years since the funeral in 2018, said the name to her on a phone or in a kitchen or anywhere. The unspokenness of Rosa had been, between Carlos and Bianca, the structure of their adult relationship. Carlos had not gone to the funeral. Bianca had flown to Phoenix alone. Mike had wanted to go and had been in court that week and could not. Bianca had told Mike not to worry about it. Bianca had also told herself not to worry about it. Bianca had not, in the eight years since, been able to fully describe what had been true about the flying-to-Phoenix-alone, except that it had been a thing she had done, that her sister Rosa had died of an overdose at fifty-one, that her brother Carlos who lived three hours from Phoenix had not come, and that the not-coming had been a thing that lived between her and Carlos that they had agreed, by their silence, would not be the front of the room."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Carlos.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "I know.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I — ",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Bianca. I know. I know I didn't go. I know I told myself I couldn't. I — I want to say it. I told myself work. I told myself Lupe was sick. Lupe wasn't sick. Lupe was tired and we had been fighting that month about my mother and I told myself I couldn't leave her and go to Phoenix. The leaving was the issue. I could have left. I chose not to.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Carlos.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "You flew alone.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I flew alone.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Mike wanted to go.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Mike wanted to go. He couldn't get out of court. He felt awful about it.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "You — Bianca. You should not have flown alone.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "She closes her eyes."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Carlos, I am not going to do this on the phone.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Okay.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I am also not going to not do this on the phone, because you have just done a thing you have not done in eight years, which is to say her name.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Yeah.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "So I am going to say something now, on the phone, and I would like you to listen and not respond. Is that all right.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Yeah.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "She breathes."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I think about her on Saturdays.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "A long count."
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Bianca.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I told you to listen.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Okay.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I do not know why Saturdays. I have been thinking about it for eight weeks. I think the reason is that Saturdays were the day she used to call. She called on Saturdays. I had not — I had not, in the eight years, let myself remember that. I have, in the past two months, been remembering it. It is — it is a thing I am working on. I am going to tell my four-thirty table next Friday. They do not know I had a sister named Rosa. I have not told them because the table is — the table is for the things I have figured out how to put down, and Rosa has not been a thing I have figured out how to put down. I am going to put her down on Friday because the table is the table and I am going to learn to put her down.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "A long count."
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Bianca.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "She does not stop him this time."
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "I think about her on Saturdays too.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "She opens her eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "The crepe myrtle. The cicadas. The wicker. The patio bricks. The cordless. Don's porch, across the cul-de-sac, in the morning light. The kitchen window. The radio that will be at the house Wednesday. Her father's radio that he had been restoring the year he died, that had sat on the workbench half-restored for a year, that Carlos had taken down and finished and given to Carlos Jr. who at nine no longer wanted it, and that has been on a shelf in Carlos's garage in Houston for twenty-one years, and that is, this morning, in a box on Carlos's front step waiting for the FedEx truck."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Carlos. We have been doing the same Saturday-morning thinking for eight years and not telling each other.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "That is a thing siblings find out about each other in their forties.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She laughs — a small, single laugh, not unkind, the laugh of a woman who has been alone in a kitchen for eight Saturdays at four-eleven and who has just learned that her brother three hours from Phoenix has been alone in his own kitchen on those same Saturdays doing the same work."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Carlos.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Thank you for shipping the radio.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "Yeah, Bianca.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "And for saying her name.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "I should have said it eight years ago.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "You said it today. That is when you said it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A long count."
+    },
+    {
+      "t": "say",
+      "char": "Carlos",
+      "text": "I love you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I love you too, Carlos.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The line clicks."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She sits with the cordless in her hand."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas are louder by a degree. Don's porch is, by nine twenty-two, in full sun. Don himself is, possibly, at the front window with his own coffee — Don's mornings are a thing she has been imagining at the kitchen window for nineteen years and has, in those nineteen years, never asked him about. She does not know what Don does on Saturday mornings. She knows the porch light. She knows the time. She has been making a relationship out of a porch light for nineteen years."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts the cordless down on the patio table."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets up. She goes inside. She makes a second pot — the second pot is for the second time today, which is unusual; she does not, generally, drink a second pot — and brings it out and sits back down."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, this morning, cry."
+    },
+    {
+      "t": "narrate",
+      "text": "She has not cried about Rosa since 2018. She does not cry now. The not-crying is not because she is suppressing. The not-crying is because she had cried then — for two weeks, daily, in the kitchen, in the bathroom, in the car at the long-term parking at Phoenix Sky Harbor — and the crying had done what crying does and had ended and had been, since 2018, a closed account."
+    },
+    {
+      "t": "narrate",
+      "text": "What is opening, this morning, is not the crying."
+    },
+    {
+      "t": "narrate",
+      "text": "What is opening is — she does not, this morning, have the word for it. She will, possibly, have the word for it by Friday. She will tell the four-thirty table. Eileen will hold one end. Anita will hold the other."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca will say: I had a sister named Rosa. She died in 2018. She was fifty-one. She had been struggling for nineteen years. I flew to Phoenix alone for the funeral and have not, since then, said her name in this town. My brother Carlos in Houston has been thinking about her on Saturdays for eight years and so have I and we did not, until today, tell each other."
+    },
+    {
+      "t": "narrate",
+      "text": "The four-thirty table will hold it."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas continue."
+    },
+    {
+      "t": "narrate",
+      "text": "At ten-fourteen the doorbell rings."
+    },
+    {
+      "t": "narrate",
+      "text": "She is not, at ten-fourteen on a Saturday morning, expecting anybody. Sammy at the Kwik Stop until four. Mike in Alabama. Carmen in San Diego, who has not visited since 2022. The Beecher kid does not, at ten-fourteen, do the route."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets up. She crosses the kitchen."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_bianca_kitchen_morning.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Through the front-door glass she can see who is on the porch."
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen Henderson. In jeans and the lavender sleeveless blouse. Holding a paper bag from the bakery on Magnolia."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca opens the door."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I am sorry to come by without calling. I was at the bakery. I bought too much. I have been carrying it around the cul-de-sac trying to give it away. Anita wasn't home. Maya's grandmother is asleep on the porch which I am not, this morning, going to wake. You are home. Will you take a kouglof.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Eileen. Come in.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen comes in. Bianca closes the door behind her."
+    },
+    {
+      "t": "narrate",
+      "text": "The morning, with another adult in the house at ten-fourteen, is no longer the morning Bianca was, at nine seventeen, on the line with her brother about. The morning has shifted. The Friday table has come, by Eileen's specific Saturday choice to walk her bakery overage around the cul-de-sac, into Saturday."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca puts the kouglof on the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts on a third pot."
+    },
+    {
+      "t": "narrate",
+      "text": "The two of them sit at the kitchen table."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas, outside the kitchen window, are at their late-morning volume."
+    },
+    {
+      "t": "narrate",
+      "text": "The radio, in a box, is on a FedEx truck somewhere between Houston and Harmony Creek."
+    },
+    {
+      "t": "narrate",
+      "text": "The Saturday continues."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch22_inventory"
+    }
+  ]
+}

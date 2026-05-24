@@ -1,0 +1,230 @@
+{
+  "id": "vol6_ch15_home",
+  "vol": 6,
+  "chapter": 15,
+  "type": "chapter",
+  "title": "Ch 15 — Room 7",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_corolla_driving.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Room 7",
+      "sub": "Thursday — 16:15 — New Auburn",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "She drives home."
+    },
+    {
+      "t": "narrate",
+      "text": "She takes the back route — the small road through the older part of the subdivision that goes past the Cypress motel two miles east of where she should be turning. She does not, technically, intend to drive past the Cypress. She drives past the Cypress."
+    },
+    {
+      "t": "narrate",
+      "text": "The Cypress is — she sees, slowing the Corolla — a motel from the 1970s, single-story, twelve rooms in a long L around a small empty parking lot. There are three cars in the lot. None of them are the Peugeot, of course, but Sam had not been looking for the Peugeot. She had been looking for the small evidence of two people walking the access road in the heat."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not see them."
+    },
+    {
+      "t": "narrate",
+      "text": "They are, presumably, by four-fifteen, inside one of the rooms with the AC on."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not stop."
+    },
+    {
+      "t": "narrate",
+      "text": "She drives past the Cypress and continues home."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_kitchen.jpg"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "bianca",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "At the kitchen table at four forty-eight she eats a piece of cold chicken her mother had left in the fridge for her."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca is at the back porch with the wicker chair and an iced tea. Bianca, who has been at the porch since three, looks up when Sam comes in."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "How was work.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Fine. Slow afternoon.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam eats the chicken."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, this evening, tell her mother about Mark and Lucy."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, this evening, tell anyone."
+    },
+    {
+      "t": "narrate",
+      "text": "The small fact of having one twenty in her wallet that she had handed to two strangers and that is no longer hers is — for tonight, at the kitchen table at four forty-eight — the small private weight she is, for one evening, going to carry alone."
+    },
+    {
+      "t": "narrate",
+      "text": "Tomorrow she will, at some point, tell Maya. Probably. She has not yet decided."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight she eats the chicken."
+    },
+    {
+      "t": "narrate",
+      "text": "She washes the plate."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_sam_bedroom.jpg"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "She goes upstairs to her room."
+    },
+    {
+      "t": "narrate",
+      "text": "She lies on her back on the bed."
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at the ceiling."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, in the small careful voice her interior has, this summer, become: Lucy never said thank you."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: Mark said it twice."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: that is the way the day is. That is not, today, mine to fix."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I have, in the past forty-eight days, become a person who can hand a stranger one twenty and not need to have the gratitude back. That is a thing I had not, in May, known I was going to be able to do."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: tomorrow I am going to be at the Kwik Stop again, eight to four. Friday is payday. The wallet refills. The world goes on."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: the small fact of one twenty, in cash, in a duffel bag walking east on the Linden access road in the August heat at eleven-thirty AM, is a fact that exists in the world tonight whether or not anyone but me and Mark and Lucy and Jen and the brochure remembers it."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: it exists. That is enough."
+    },
+    {
+      "t": "narrate",
+      "text": "She closes her eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "The fan, in her bedroom, clicks on the third rotation. She has, over the summer, stopped counting. The clicks are, by August, just clicks."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, the Texas dusk is doing its slow gold thing."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca, on the porch, is reading."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The Peugeot is, by Bobby's evening estimate, going to sit in his lot for at least three weeks before it becomes parts."
+    },
+    {
+      "t": "narrate",
+      "text": "Mark and Lucy, in Room 7 of the Cypress, are asleep by seven PM, having eaten the small early dinner the gas-station-adjacent McDonald's had provided them for fourteen dollars, and having decided, between them, that the Atlanta bus at six AM is going to be the bus they take and that the trip is, from this Kwik Stop on, going to be a bus trip and not a car trip, and that the Peugeot — Mark's father's car, which Mark has been, in some specific sense, driving since 2014 — is no longer his."
+    },
+    {
+      "t": "narrate",
+      "text": "Mark, in Room 7, before he sleeps, thinks about his father."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not tell Lucy."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps when the street sounds outside blur to a nothing in his mind."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

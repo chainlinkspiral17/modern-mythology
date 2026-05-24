@@ -1,0 +1,51 @@
+{
+  "id": "vol2_briar_falls_interlude",
+  "vol": 2,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Interlude — Briar Falls",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_briar_falls_rest_stop.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_rest_stop_wind.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Briar Falls",
+      "sub": "Rest Stop · Small Wood · mid-nineties",
+      "duration": 3000
+    },
+    {
+      "t": "narrate",
+      "text": "The exit comes up after a long curve and the sign for it is the same brown as every other state-park sign and the same letters in the same recessed sans-serif. BRIAR FALLS REST AREA — 1/4 MI. Underneath, a smaller sign: NO OVERNIGHT PARKING. NO DUMPING. PLEASE LATCH GATE."
+    },
+    {
+      "t": "narrate",
+      "text": "The asphalt of the rest stop is grey-going-on-green where the moss has the upper hand. A picnic shelter, a low brick building with two doors marked, a wooden box at the trailhead, a curve of railing where the bluff begins."
+    },
+    {
+      "t": "narrate",
+      "text": "A blue Chrysler minivan with faux wood trim pulls in. Oregon plates, or close enough. The side door slides open with the particular complaint side doors of that vintage made. A family gets out the way families get out at rest stops in the middle of a long day — without ceremony, without conversation, in a known order."
+    },
+    {
+      "t": "narrate",
+      "text": "Father, with the keys still in his hand. Mother, pulling a sweatshirt over a t-shirt because the wood is cooler than the highway was. Teenage brother, headphones already in, the cord disappearing into the kangaroo pocket of his hoodie. Tween sister, the last out, sneakers untied on purpose. And a black-and-white border collie, who waits to be told and then is not told and then gets out anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "The dog stands a moment at the open door and looks across the lot. Not at anything in the lot. Past it. At something it has decided about."
+    },
+    {
+      "t": "narrate",
+      "text": "You are also here. You came in earlier. They have not noticed you. They will not notice you. That is the way of rest stops. You have some time before you have to be anywhere again."
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_bf_hub"
+    }
+  ]
+}

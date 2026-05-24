@@ -1,0 +1,327 @@
+{
+  "id": "vol6_ch4_maya_floor",
+  "vol": 6,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Ch 4 — For Whoever Is Ready",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_maya_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is on her hands and knees on the floor of her bedroom. The rug has been pulled back. The floorboards of the bedroom are the original 1991 pine, worn to a soft honey color by three decades of Ms. Caldwell's careful footsteps. Maya has been counting boards from the window. Three in. The third board looks no different from the others."
+    },
+    {
+      "t": "show",
+      "char": "ms_caldwell",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother is in the doorway, hands folded, watching without pressing. She has not crossed the threshold."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Honey. You do not have to."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I know."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "I can come in if you want. I can stay in the hall if you want."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Stay. Please."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Okay."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya takes a kitchen knife from the floor beside her — her grandmother had produced it without comment fifteen minutes ago when Maya had come into the kitchen and said, Grandma, I want to look tonight. Her grandmother had set down her tea and said only, Come on, honey, I'll walk up with you."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya slides the knife under the edge of the third board. The board lifts. Easier than she expects. Somebody has lifted it before."
+    },
+    {
+      "t": "narrate",
+      "text": "Under the board is a small shallow cavity. In the cavity is a single flat manila envelope, yellowed at the edges, sealed. On the front, in a handwriting Maya has never seen before — her grandfather's — is written, in pencil: for whoever is ready."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya lifts the envelope out. She sits back on her heels. She looks up at her grandmother."
+    },
+    {
+      "t": "show",
+      "char": "ms_caldwell",
+      "expr": "sad",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother is crying, silently, with the small dignified crying of older women who have been waiting seventeen years for a specific door to open and have, this evening, heard it unlatch."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Open it, sweetheart. I'm alright."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya opens the envelope. Inside is one photograph. Black and white. Eight-by-ten. The paper has the particular weight of mid-seventies gelatin silver printing, which Maya has learned to recognize from the framed prints her grandfather had left around this house."
+    },
+    {
+      "t": "narrate",
+      "text": "The photograph shows a dock at dusk. Two men. One with his back to the camera, thin, wearing a raincoat, handing a wooden crate down from the rail of a small boat. The other man receiving the crate, facing the camera at a three-quarters angle, a man of maybe forty, clean-shaven, wearing a charcoal suit that does not, in any way, fit the scene — a charcoal suit at a dock at dusk in Graustark in 1978."
+    },
+    {
+      "t": "narrate",
+      "text": "The man's face is younger than Maya has ever seen this face, but it is, unmistakably, the same face. The face in Jesse's father's photograph. The face Sam had dreamed about Tuesday night. The face on Dante D'Ambrosio's desk. The face Joanna LeMoine had opened her door to four days after the Calamity, the face that had said not today. I will be back when the child is ready. Rest."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "surprised",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma. This man —"
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Yes."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Do you know his name."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Your grandfather called him the one who asks. Your grandfather did not know his real name. Your grandfather was told, once, that the name he used was a handle, not a name. The handle was Dean."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "D. Dean."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Is that what he calls himself now."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yes."
+    },
+    {
+      "t": "show",
+      "char": "ms_caldwell",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ms. Caldwell is quiet for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Well. He has, apparently, not needed to update his business cards."
+    },
+    {
+      "t": "narrate",
+      "text": "A small laugh. Dry. Both of them."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma. Mr. Dean has been — he was at a funeral in Graustark last week. I know this because he talked to a woman named Joanna LeMoine whose name I have also heard. He has been around this whole time."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Yes, honey. I suspect he has."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "What do I — what do I do with this."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Nothing, tonight. You put it back in the envelope. You put the envelope under the board. You put the rug back. You come downstairs and I will make you a sandwich and you will eat it because you have not eaten since eleven, which I noticed."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Yes."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Should I — should I tell F.T. I've seen it."
+    },
+    {
+      "t": "narrate",
+      "text": "Ms. Caldwell considers this."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "No, honey. I don't think so. Not yet. If this photograph is what I think it is, then F.T. — the one you're calling F.T. — already knows it exists, because he is, as you have guessed, the kind of person who knows what exists. What he does not know is what you are going to do with the knowing. Give him one week before you tell him. One week in which the knowing is yours. You will need it."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Okay."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya slides the photograph back into the envelope. She slides the envelope back into the cavity. She replaces the board. She smooths the rug back over it. She stands."
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother, still in the doorway, opens her arms. Maya goes. Her grandmother holds her."
+    },
+    {
+      "t": "show",
+      "char": "ms_caldwell",
+      "expr": "happy",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "I am so proud of you, sweetheart. I am so proud of your grandfather. I am so proud of your father, who has been, despite everything, a man who arranged for you to be protected by people who loved him before he became the man he has become. You are not alone. You have never been alone. You are, in fact, at the center of a long quiet kindness a great many people have been paying into for forty years."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya holds onto her. She does not cry this time. She has cried already. She is, now, simply absorbing."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "the man in the charcoal suit knew my grandfather in 1978."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "the man in the charcoal suit visited Joanna LeMoine last week."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "the man in the charcoal suit is eighty-something and does not look it."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "the man in the charcoal suit is not, as I had begun to suspect, the enemy."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "the man in the charcoal suit is the author of the errand F.T. is running."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "F.T. is working for Mr. Dean. Or with him. Or against him. Or — some third arrangement the categories do not quite cover."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "I have one week."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "I am going to use it."
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother kisses her on the forehead."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Now come eat your sandwich, sweetheart."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya goes downstairs. The radio, in her grandmother's room, is silent. It will, as Ms. Caldwell has been tracking, remain silent until Saturday. Saturday is three days away. Friday — though Maya does not, yet, know this — is two."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch4_kitchen"
+    }
+  ]
+}

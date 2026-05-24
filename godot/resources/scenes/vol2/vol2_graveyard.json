@@ -1,0 +1,91 @@
+{
+  "id": "vol2_graveyard",
+  "nodes": [
+    {
+      "t": "flag",
+      "key": "vol2_funeral_attended",
+      "val": true
+    },
+    {
+      "t": "narrate",
+      "text": "Later, at the gravesite, the minister says something about roots and returns. He doesn't know your aunt at all and it shows."
+    },
+    {
+      "t": "narrate",
+      "text": "Jo stands beside you. Not touching. Not quite."
+    },
+    {
+      "t": "say",
+      "char": "Jo",
+      "expr": "neutral",
+      "text": "She left you the house."
+    },
+    {
+      "t": "think",
+      "char": null,
+      "text": "Of course she did. Of course."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"I'll sell it.\"",
+          "goto": 5
+        },
+        {
+          "text": "\"I hadn't thought about it yet.\"",
+          "goto": 8
+        },
+        {
+          "text": "\"What do you think I should do?\"",
+          "goto": 11
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Jo",
+      "expr": "hurt",
+      "text": "That's — okay. That's your right."
+    },
+    {
+      "t": "narrate",
+      "text": "She doesn't say: she wanted you to come home. She doesn't have to."
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_end"
+    },
+    {
+      "t": "say",
+      "char": "Jo",
+      "expr": "neutral",
+      "text": "You never do."
+    },
+    {
+      "t": "narrate",
+      "text": "But she says it gently, which is the most alarming thing Jo has done in your recent memory."
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_end"
+    },
+    {
+      "t": "say",
+      "char": "Jo",
+      "expr": "surprised",
+      "text": "You're asking me?"
+    },
+    {
+      "t": "say",
+      "char": "Jo",
+      "expr": "softening",
+      "text": "...I think she wanted someone in it. She hated empty houses."
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_end"
+    }
+  ],
+  "vol": 2
+}

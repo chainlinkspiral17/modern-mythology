@@ -1,7 +1,60 @@
 {
   "backgrounds": [],
   "characters": {
-    "stranger": {
+    "cale": {
+      "displayName": "Cale",
+      "folder": "assets/characters/cale/",
+      "expressions": ["neutral", "tired", "warm"],
+      "volumes": [7]
+    },
+    "john": {
+      "displayName": "John Frank",
+      "folder": "assets/characters/john/",
+      "expressions": ["neutral", "tired", "surprised", "amused"],
+      "volumes": [5]
+    },
+    "frasier": {
+      "displayName": "Frasier Temple",
+      "folder": "assets/characters/frasier/",
+      "expressions": ["neutral", "amused", "excited", "calculating"],
+      "volumes": [5]
+    },
+    "sam": {
+      "displayName": "Sam Miller",
+      "folder": "assets/characters/sam/",
+      "expressions": ["neutral", "tired", "surprised", "cold"],
+      "volumes": [6]
+    },
+    "maya": {
+      "displayName": "Maya Daigle",
+      "folder": "assets/characters/maya/",
+      "expressions": ["neutral", "surprised", "tired", "calculating"],
+      "volumes": [6]
+    },
+    "graciela": {
+      "displayName": "Graciela Ramos",
+      "folder": "assets/characters/graciela/",
+      "expressions": ["neutral", "warm", "cold"],
+      "volumes": [6]
+    },
+    "jen": {
+      "displayName": "Jen",
+      "folder": "assets/characters/jen/",
+      "expressions": ["neutral", "cold"],
+      "volumes": [6]
+    },
+    "rick": {
+      "displayName": "Rick",
+      "folder": "assets/characters/rick/",
+      "expressions": ["neutral"],
+      "volumes": [6]
+    },
+    "chief_miller": {
+      "displayName": "Chief Miller",
+      "folder": "assets/characters/chief_miller/",
+      "expressions": ["neutral", "warm", "cold"],
+      "volumes": [6]
+    },
       "displayName": "Stranger",
       "folder": "assets/characters/stranger/",
       "expressions": ["neutral", "warm", "amused", "surprised", "impressed"],

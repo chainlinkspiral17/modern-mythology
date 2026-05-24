@@ -1,0 +1,103 @@
+{
+  "id": "vol1_interlude_demographic",
+  "vol": 1,
+  "chapter": 0,
+  "type": "chapter",
+  "title": "Interlude 1 — Target Demographic",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "interlude 1 — target demographic"
+    },
+    {
+      "t": "narrate",
+      "text": "MONTAGE OF IMAGES, INTERNET MEME-ISH:"
+    },
+    {
+      "t": "narrate",
+      "text": "I am the target they want to reach — their demographic if you will. Disconnected age, so easy it would be to unionize our like-minded culturally significant dopplegangers."
+    },
+    {
+      "t": "narrate",
+      "text": "In others we trust."
+    },
+    {
+      "t": "narrate",
+      "text": "Our individual hopes and fears rest with the many who — just like us, nothing like us — divide our selves along so many lines where does one allegiance begin another entwined frayed end."
+    },
+    {
+      "t": "narrate",
+      "text": "How strong our convictions, we pardon bare comfort passion forfeit in due processed manufactured winter closed for. Church bells rage on the hour glorious to earhold several blocks away."
+    },
+    {
+      "t": "narrate",
+      "text": "INFOGRAPHIC: Taste in music defined as follows — a mix of genres, an arrow through personal experience running parallel but never intersecting the dissemination of good times along an all right quotidian."
+    },
+    {
+      "t": "narrate",
+      "text": "OR: Today is Sunday. I worship the Sun, or at least pause in place to firmly address with a hand and a squint the Sun I give a smile and word to, as it is a good Sun."
+    },
+    {
+      "t": "narrate",
+      "text": "AS: I worship many a thing. The state of mind I’ve occupied since earliest memory is of worship — abject — live in praise of it all."
+    },
+    {
+      "t": "narrate",
+      "text": "PICTURE AND TEXT — my first memory: two-dimensional car driving up a storybook hill with sunshining bright behind."
+    },
+    {
+      "t": "narrate",
+      "text": "CRUDE ANIMATION AND VOICE OF CHILD: An old woman asked a young me what is it when I held a ladybug up to the sky. I replied everything. She tried to correct me."
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "neutral",
+      "text": "I smile on the world always hope that is enough to get me to the next."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "I write to begin something — the act itself brings about dimension. Every line carries certain candid suspense."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "I want to tell you all about the fictional world to come. If I’m too eager to begin, forgive me — I’m just excited is all."
+    },
+    {
+      "t": "narrate",
+      "text": "DISCLAIMER: within this filmed textual experience — a pseudo-documented journey deemed worthy of your attention. Pick and choose to believe what you will. You are both the audience and not."
+    },
+    {
+      "t": "say",
+      "char": "Voice Over",
+      "expr": "neutral",
+      "text": "(weak) I try to be heard so please hear me. Ba— my voice is getting through."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "There were many paths before. I selfishly wanted to be — do everything."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Parents indulged the dreamer and here I am enacting great schemes."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "I always wanted to write. Never wanted to be a Writer."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_trailer_faust3"
+    }
+  ]
+}

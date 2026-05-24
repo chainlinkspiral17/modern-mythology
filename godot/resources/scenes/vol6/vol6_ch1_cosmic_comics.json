@@ -1,0 +1,91 @@
+{
+  "id": "vol6_ch1_cosmic_comics",
+  "vol": 6,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "Ch 1 — Cosmic Comics",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_comics.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Cosmic Comics",
+      "sub": "Linden Strip Mall · Sunday · 15:22",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Cosmic Comics is in the strip mall on Linden, wedged between the Sally Beauty and the Great Clips. Its front window features a painted mural of Galactus that the owner has been meaning to update since 2018 and has not."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya Daigle is in the back, going through the DO NOT SORT YET pile with the patient indifference of a sixteen-year-old who has been given the kind of task adults use to keep teenagers busy."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya's phone, in her back pocket, buzzes. It is a notification from the browser on her old ThinkPad. The notification reads: new message from F.T."
+    },
+    {
+      "t": "show",
+      "char": "rick",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Rick, I'm gonna run home for lunch. Be back at four.\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Four's fine. Bring me a sweet tea from the Kwik Stop if you pass.\""
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "\"Everything okay, Maya?\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Yeah, Rick. Just forgot my charger.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He returns to his book. She leaves."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Rick waits until she is out of sight. Then he picks up the store's landline phone — the one that has not been used to call anyone else in eleven years — and dials a number he has never written down."
+    },
+    {
+      "t": "narrate",
+      "text": "The voice says only: \"Rick.\" / \"She got another one. I thought you'd want to know.\" / \"She's fine. She's doing what she should be doing. Let her. Don't interfere.\" / \"Close up early today. Lock the back. There's a pickup in town with the wrong address.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Rick sets the phone down. He reverses the OPEN sign. He checks the deadbolt on the service door, which is locked, and has been locked since he got in this morning, but which he checks anyway — because Rick has been doing what the voice on the phone tells him for twenty-four years, since the voice got him out of a situation in Beaumont in 2002 that Rick has, otherwise, not thought about in some time."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch1_maya_bedroom"
+    }
+  ]
+}

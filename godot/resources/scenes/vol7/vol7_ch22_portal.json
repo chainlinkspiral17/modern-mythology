@@ -1,0 +1,407 @@
+{
+  "id": "vol7_ch22_portal",
+  "vol": 7,
+  "chapter": 22,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The Fourth Floor",
+      "sub": "The portal room",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Fourth floor. The stairs ended at a landing with a single door at the south wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "The door was unmarked. It was cedar. Above the door's handle was a window, six inches by six, set into the cedar at chest height. The window had been ordinary glass when the tower was built. In the years since, the glass had gone translucent — a related kind of translucency to what Tem had seen at the alley wall, but denser. The cedar around the window was unchanged. The window itself was milky, as if its glass had been replaced by a single thick layer of frosted substrate.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem stood at the door. Kai and Finn behind her at the landing.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate was running on the other side of the door. Tem could feel it through the cedar — the air pressure on the cedar's far side was different from the air pressure in the landing. The cedar was warm at the handle. Warm in the way the doorknob at the cabin had been warm at three this morning.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem put her hand on the cedar beside the window. The cedar was warm. She did not, for a count, put her face to the window. Then she did.",
+      "t": "narrate"
+    },
+    {
+      "text": "She looked through. The portal room was sixty feet by sixty.",
+      "t": "narrate"
+    },
+    {
+      "text": "The smart-glass on the far wall was rendering — not the setting, but the substrate itself, its own movement made visible at high resolution against the wall. The room's air was full of it. The substrate moved through that air the way water moves through a creek that has not been dammed for the season. Slowly. It made the room, by Tem's read through the translucent window, a place where the air was thicker than ordinary air.",
+      "t": "narrate"
+    },
+    {
+      "text": "Light moving through the substrate moved at the speed of light, but the substrate gave the light a quality of delay, as if the room held it a half-second longer than ordinary rooms.",
+      "t": "narrate"
+    },
+    {
+      "text": "There was a door on the room's far side. The door was cedar. It had no markings. The door's handle was at the far wall directly opposite the door Tem was looking through.",
+      "t": "narrate"
+    },
+    {
+      "text": "Standing at the far door, with her hand on the handle —",
+      "t": "narrate"
+    },
+    {
+      "text": "Aria.",
+      "t": "narrate"
+    },
+    {
+      "text": "She was in the yellow rain slicker. The hood was down.",
+      "t": "narrate"
+    },
+    {
+      "text": "Her hair was dyed curly blue.",
+      "t": "narrate"
+    },
+    {
+      "text": "Her glasses were purple-rimmed.",
+      "t": "narrate"
+    },
+    {
+      "text": "She was in jeans and the boots Lena had painted on the alley wall on Friday morning. She had a small canvas bag over one shoulder.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had not yet opened the far door. She was at the door with her hand on the handle.",
+      "t": "narrate"
+    },
+    {
+      "text": "Aria turned her head. She looked at the door where Tem was at the window. She did not move. She did not come toward the window. She did not speak.",
+      "t": "narrate"
+    },
+    {
+      "text": "She saw Tem.",
+      "t": "narrate"
+    },
+    {
+      "text": "Her face — through the translucent window, which rendered her at half-resolution — was the face Tem had seen at the cabin door at three. The face Tem could not commit to memory. A face she could see and could not, later, recover.",
+      "t": "narrate"
+    },
+    {
+      "text": "She held Tem's gaze for a count. She raised the hand that was not on the door's handle.",
+      "t": "narrate"
+    },
+    {
+      "text": "She raised it in a small wave — the wave a young woman makes to someone she knows when she is leaving for the airport and does not want to make a fuss.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "text": "Then she raised her own hand against the translucent window and waved back. The wave Tem made was the wave an aunt makes to a niece she has been at the front porch of her own house with, who is leaving in a car for somewhere the aunt has helped pack for, who is going to be all right.",
+      "t": "narrate"
+    },
+    {
+      "text": "Aria smiled. The smile, through the translucent window, was visible as a smile.",
+      "t": "narrate"
+    },
+    {
+      "text": "She turned back to the far door. She opened it. She walked through.",
+      "t": "narrate"
+    },
+    {
+      "text": "The door closed behind her.",
+      "t": "narrate"
+    },
+    {
+      "text": "The room was empty.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate kept running.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem stepped back from the window. Kai and Finn at the landing looked at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "She left.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "We saw.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "She waved.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She waved.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Did she — did she know us.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She knew us.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Then we go.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "The three of them turned from the door. They went back down the stairs. They did not visit five, six, or seven. The portal room was the point. They saw her leave. They reached the third-floor landing. They did not stop. They reached the second-floor landing. They did not stop. They reached the lobby.",
+      "t": "narrate"
+    },
+    {
+      "text": "The reception desk. The photograph of Dean at forty-eight. Tem stopped at the desk. She looked at the photograph.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "He was looking at his daughter when this was taken. She was at the photographer's left.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "How do you know.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She was twelve. He was forty-eight. She had been in the studio with him for the shoot. She is standing, by his eye-line in the portrait, at about where a twelve-year-old would have been standing if she had been waiting for him to finish.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "He was looking at her.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He was looking at her. He's been looking at her in this portrait, in this lobby, since 2013. He's still looking at her. He has been here looking at her since he died.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He is still in the tower.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He's in the photograph. He's at the lobby. He's at the cover-art of every stick the company has released since '42. He's dead.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The Dean who is in the tower is the Dean who is in his images. The Dean who is in his images has been here looking at her at the photographer's left for thirty-nine years. He's been waiting for her to come back through the room upstairs. He'll go on waiting.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "She came down the stairs from seven. She always comes down. The portrait sees her every time.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "They walked to the double-doors. The doors opened from the inside without a panel. They stepped out onto the gravel. The doors eased closed behind them. Kai turned and tried the handle from the outside. There was no handle. The doors had resealed.",
+      "t": "narrate"
+    },
+    {
+      "text": "They walked to the wagon. They did not, for a count, get in. They stood in the clearing. The seventh floor's smart-glass was running the garden. The vegetation moved gently against the glass in the late-afternoon light.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Dean is up there.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Reading. Or sitting.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Doing what a man does in a garden he built when he is no longer alive.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He is at every floor. The lobby in the portrait. The second floor in the photographs. The third floor in the open book. The seventh floor in the garden. He is not at the fourth. The fourth is hers.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The fourth is hers.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "She will come back.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She will come back. She comes back through the fourth floor every time. She goes up to seven. She is with the gardens and the photographs of her father. She comes back down. She goes through the fourth floor again. She does this between her travels.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "We saw a traveling.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "We saw a traveling.",
+      "t": "say"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "They got in the wagon. Tem turned the wagon around in the clearing. They drove back down Old Yachats Road. They went around the chain at the bottom. They turned south on 101.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "The September coastal afternoon had gone to early evening by the time they passed Yachats at four fifty-six. The light over the ocean was the long gray-gold of a Pacific Northwest September dusk. They drove south.",
+      "t": "narrate"
+    },
+    {
+      "text": "They reached Smolvud at six-fifteen. They drove up to the cabin. They got to the cabin at six-forty.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "The cabin was cold. Kai built the fire back up. Tem heated the rye in the oven. Finn cut the rye. They ate. The disc-case was still on the kitchen table where Cale had left it.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I'll play it tomorrow.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tomorrow.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I want to sleep tonight. I want to wake up at the cabin and play it in daylight.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "The three of them ate the rye at six fifty-five. The two bowls were on the dining table. The cedar bell-piece was beside them. The disc-case was on the kitchen table. At nine they went to bed. Kai in the chair by the stove. Finn on the floor by the south window. Tem in the bedroom. The cabin held them. The mist on the cedars outside was the same mist that had been there since dawn.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate at the tower forty-three miles north was running in the portal room on the fourth floor without anyone in the room.",
+      "t": "narrate"
+    },
+    {
+      "text": "Dean was on the seventh floor.",
+      "t": "narrate"
+    },
+    {
+      "text": "He was not, by the substrate's measure of these things, alone — Aria came back through the fourth floor and went up to seven sometimes — but he was alone tonight.",
+      "t": "narrate"
+    },
+    {
+      "text": "He was reading.",
+      "t": "narrate"
+    },
+    {
+      "text": "He was waiting.",
+      "t": "narrate"
+    },
+    {
+      "text": "He would go on waiting.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

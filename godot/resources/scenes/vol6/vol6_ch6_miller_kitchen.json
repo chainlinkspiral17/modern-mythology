@@ -1,0 +1,203 @@
+{
+  "id": "vol6_ch6_miller_kitchen",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — The Chicken",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Chicken",
+      "sub": "Friday — 17:42 — 1428 Meadowlark Circle",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Sam is home. Her father is home. Her mother is at the stove. The stove is doing the thing it always does on Friday nights, which is roast something — tonight, a chicken — in the cast-iron, with potatoes and carrots and an entire head of garlic that her mother breaks open with the back of a knife and tucks into the bottom of the pan."
+    },
+    {
+      "t": "narrate",
+      "text": "Her father is at the table. He is not in uniform. He is in jeans and the plaid shirt he wears when he is not, technically, performing as the Chief."
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "When Sam comes in, he stands. He hugs her. He hugs her in the way he has not hugged her since she was twelve. She hugs him back. She does not cry. He does not cry. Her mother, at the stove, also does not cry, though her shoulders shake very slightly, and she does not turn from the cast-iron, and the chicken keeps roasting."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Hey, Sammy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Hey, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Long day.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah. Yours?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Long.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "You good?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Yeah, Sammy. I'm good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They sit. Her mother brings the chicken to the table. They eat. They do not, for the first ten minutes of dinner, talk about any of it. They talk, instead, about the cat her mother has been thinking of adopting, which Sam has, this evening, decided to be in favor of. They talk about the pickle jar in the fridge that has, Sam's mother claims, been there since 2022 and that they should, finally, throw out. They talk about a movie her father wants to watch tomorrow night with her — a movie from the eighties, one Sam has never seen, one her father has been quietly recommending to her for three years and which she has, until this Friday, never agreed to. She agrees to it now."
+    },
+    {
+      "t": "narrate",
+      "text": "He smiles. The smile is small and tired and real."
+    },
+    {
+      "t": "narrate",
+      "text": "At seven oh-three the phone in the kitchen rings. It is the landline. The landline never rings. Sam's father had, in 2014, kept it active because he had read a column in the New Auburn Sentinel about how landlines were good for emergencies, and because he had liked the column, and because the cost was small."
+    },
+    {
+      "t": "show",
+      "char": "sam_mom",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam's mother answers it. She listens for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Sam's Mom",
+      "text": "Yes. He's right here.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She holds the phone out to Sam's father. He takes it."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Miller.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He listens. His face — Sam, watching, can see — does the small thing it does when a man has been told a thing he had not, until that moment, been certain whether he would be told."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Okay. Thank you for letting me know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He hangs up. He sits down."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "That was Hernando. They got him. The Ramos kid. He's at a safehouse. He's banged up but he's going to be fine. The mother and the grandmother have been told. They're with him now.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Her mother, at the stove, leans against the counter, and lets the breath out she has been holding all afternoon."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sammy. I want you to know I had nothing to do with the rescue. I was not allowed to. I was, by then, a witness, not an officer. But the rescue was, in part — the rescue happened today because I told them everything I knew this morning. Ramirez routed it to the right people. The right people moved fast.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Dad. Thank you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sammy. I'm sorry.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They eat the rest of the chicken. The chicken is, Sam will later remember as the second-best her mother ever made. The best is the one she will make on the Sunday night before the arraignment. But they do not, tonight, know about Sunday yet. Tonight, they eat."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_safehouse"
+    }
+  ]
+}

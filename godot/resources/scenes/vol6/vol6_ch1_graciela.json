@@ -1,0 +1,189 @@
+{
+  "id": "vol6_ch1_graciela",
+  "vol": 6,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "Ch 1 — Graciela",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_graciela_kitchen.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "892 Ashberry Drive",
+      "sub": "Harmony Creek Estates · Sunday · 16:39",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "graciela",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The light, at this hour, does the particular thing Texas light does in late May — flattening out against the manicured lawns, turning the white stucco of the houses a high-noon cream, making the palms along the median cast long blade-shaped shadows."
+    },
+    {
+      "t": "narrate",
+      "text": "Graciela Ramos is in the kitchen at the small round table under the window. In front of her is a rosary she is not, at this moment, using, and a cup of black coffee she is not, at this moment, drinking, and a cordless landline phone, on the table, that is face-up, that has not been used since 2017 but that is, this afternoon, plugged in and charging."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "warm",
+      "text": "\"Mija, gracias. Sit.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "cold",
+      "text": "\"You did not call your father on the way.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"No.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "warm",
+      "text": "\"Good girl.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "cold",
+      "text": "\"Sam. My grandson was taken. Last night. At eleven-fifty-two. I heard the truck leave the driveway.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "cold",
+      "text": "\"Because my grandson kissed me goodnight at nine-thirty and told me he loved me, which he did not, on a Saturday, normally say. He said it with the small specific pressure of a boy saying goodbye. He did not know he was saying goodbye. He knew enough to say it anyway.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "cold",
+      "text": "\"The truck was driven by two sets of hands — it pulled out slowly, the way Diego drives when he is backing up, but it shifted into third gear by the corner of Ashberry and Linden, which Diego never does. Diego drives in fourth gear on our street. The shifting was wrong. The person driving was not my grandson.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "neutral",
+      "text": "\"Your father came by this morning at seven. He sat in his truck at the end of the driveway for eleven minutes. Then he drove away. He did not come to my door.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam stares at her. The cold from the Kwik Stop and the cold from her bedroom this morning have, at this point, converged into something that is no longer cold — something more like a still point inside her chest, from which she can observe, calmly and from a small safe distance, the architecture of a problem she has been refusing, all day, to name."
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "neutral",
+      "text": "\"I think my grandson saw something at the Gas & Go that he was not meant to see. I think he told one person. I think that one person told the wrong person. I think your father is either the one who decided, or the one who was told by the person who decided. I do not know which. I do not, yet, care which.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "neutral",
+      "text": "\"Mija. You are seventeen. I should not ask you for anything. But I have prayed on this since four-forty-nine this morning and the answer has been the same for eleven hours. You are the one who can walk into that house tonight, and tomorrow, and next week, and hear the things I cannot hear because I am not in that house.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"You want me to spy on my dad.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "warm",
+      "text": "\"I want you to listen to your dad.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "warm",
+      "text": "\"I know what I am asking. I will not be offended if you refuse. Whatever you decide, I am on your side. You are a good girl. Diego loves you. I love you too, mija. I have for some time.\""
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"I'll do it.\"",
+          "goto": 21
+        },
+        {
+          "text": "[She has been sitting here since four forty-nine this morning. Alone with this for eleven hours.]",
+          "goto": 21
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"I'll do it.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "warm",
+      "text": "\"Thank you, mija.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "neutral",
+      "text": "\"Sleep. Eat. Act normal. Do not go looking for the truck. The truck is the bait.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Who is they.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "neutral",
+      "text": "\"Mija. That is the thing we do not, yet, know.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Graciela puts her hand over Sam's, and for a moment the two of them stay that way, and the kitchen is very quiet, and the cordless phone on the table blinks its small green charge light, and outside on Ashberry Drive the sprinklers are not running because the sprinklers on this block do not run until six PM on Sundays."
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "warm",
+      "text": "\"Go, mija. Go home. Call me if anything happens. Call me from a parking lot, not from your house.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "warm",
+      "text": "\"I am very sorry you are having this afternoon. It is not fair. I know.\""
+    },
+    {
+      "t": "flag",
+      "key": "vol6_ch1_graciela_meeting",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch1_garage"
+    }
+  ]
+}

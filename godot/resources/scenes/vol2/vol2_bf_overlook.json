@@ -1,0 +1,41 @@
+{
+  "id": "vol2_bf_overlook",
+  "vol": 2,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Briar Falls — the falls",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_briar_falls_overlook.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The railing is bolted into a slab of basalt at the edge of the lot, where the asphalt stops with no fanfare and the bluff begins."
+    },
+    {
+      "t": "narrate",
+      "text": "Briar Falls drop in two stages, then a third you cannot see. The first stage is the long shallow one — the water spreading and slowing along a tilted shelf, white at the lip, then the second stage takes the volume and concentrates it and the water remembers what it is and lets go. The third stage is where the canyon turns and the falls go into the woods proper. The mist comes back up from the third stage as a slow soft column, and the column does not move with the wind."
+    },
+    {
+      "t": "narrate",
+      "text": "The mist coming up the column is warmer than the air at the railing. You feel it on the underside of your forearms."
+    },
+    {
+      "t": "narrate",
+      "text": "Tied to the railing, with three half-hitches and a finish that means whoever tied it tied a lot of knots in their life: a faded piece of red ribbon and, attached to the ribbon by a brass loop, a key. Brass-color, but stamped on the side, in the kind of stamp that only counts: 707. It is not for any lock that is here."
+    },
+    {
+      "t": "narrate",
+      "text": "You consider untying the ribbon. You do not. It is not your knot."
+    },
+    {
+      "t": "narrate",
+      "text": "Below the railing, on the wet shelf above the second stage, a single feather. Long and grey, with a white tip. Not a sanderling. Larger. Not a hawk either. You decide, against your better judgement, to forget you saw the feather."
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_bf_hub"
+    }
+  ]
+}

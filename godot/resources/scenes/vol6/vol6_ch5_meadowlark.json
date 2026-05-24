@@ -1,0 +1,187 @@
+{
+  "id": "vol6_ch5_meadowlark",
+  "vol": 6,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "Ch 5 — Three Things",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_sam_bedroom_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Three Things",
+      "sub": "Thursday — 22:14 — 1428 Meadowlark",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "In the kitchen at 1428 Meadowlark, Sam comes home to a house that is, for the first time in some years, completely dark except for the small under-cabinet light her mother leaves on when her mother is awake upstairs. Sam goes up. Her bedroom door is open. Her mother is sitting on her bed."
+    },
+    {
+      "t": "show",
+      "char": "mrs_miller",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Hey, Sammy."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Hey, Mom."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Did you have a good time."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah. It was good."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Sammy, sit."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam sits."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Your father is downstairs in his office. He'll be up in a bit. I want to tell you something first, alone, because I didn't get to tell you enough of it last night."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay."
+    },
+    {
+      "t": "narrate",
+      "text": "Her mother takes her hand."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Your father has, tomorrow morning, agreed to meet with Detective Ramirez at the NAPD substation at seven AM. He is going to give Ramirez a — everything he has. What he knows. Who he knows. What he's done. Everything. This is not a negotiation. This is him making a full statement with a lawyer. Ramirez has agreed to keep him out of custody through the weekend so he can see the — the rescue thing, which I am not supposed to know about but which I know about, through. He will be arrested Monday morning."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam stares at her."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "He wanted me to tell you three things. I'm going to tell you them. One. He loves you. He has loved you every second of your life including the seconds he was doing the bad things. He wants you to understand the two facts do not cancel each other. Two. He is asking you, for Monday, if you will come to the arraignment if it happens on Monday afternoon. Not to support him. Just to be there. He does not expect you to and will not be angry if you refuse. But he is asking. Three. The blue tin in his sock drawer also has, inside it, a letter to you that he has been updating over the years. It is in a manila envelope. He is asking you not to read it until — until he's gone to wherever he goes after Monday. I don't know when that is. He thinks it might be six, seven years. Maybe ten. It depends on what he can plead to."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam does not, immediately, speak."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "I am going to stand by him. We have talked about it. We agreed. I am not going to leave him. I want you to know that separately from his decision, because you are seventeen, and you get to make your own."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "sad",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I will come to the arraignment."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Sammy, you don't have to —"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I said I will come. I love him. I don't like him right now but I love him. He's my dad."
+    },
+    {
+      "t": "narrate",
+      "text": "Her mother cries, quietly, for about ten seconds. Then she stops. She kisses Sam on the forehead. She says, \"I'm proud of you.\" She gets up. She leaves Sam's room. She closes the door behind her."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam sits on her bed. Outside, the rain has stopped entirely. The Texas night is doing its post-storm thing — the cicadas tuning up, the mockingbirds confused by the sudden change of pressure, the small far-off hum of the substation that Sam has, all her life, not heard and that she is, this week, starting to."
+    },
+    {
+      "t": "narrate",
+      "text": "She takes out her phone. She texts Ben: home. She texts Maya: home. She texts Jesse: home. She gets, within four minutes, three replies: home, home, home. She puts the phone down. She lies on her back on the bed. She watches the ceiling fan. She counts the clicks. Three, six, nine."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "Friday."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "Saturday."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "Monday."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "The Emperor is stepping down on Monday and I am going to be there when he does."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "I am ready for all of it. I didn't know I would be. But I am."
+    },
+    {
+      "t": "narrate",
+      "text": "She sleeps."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch5_radio"
+    }
+  ]
+}

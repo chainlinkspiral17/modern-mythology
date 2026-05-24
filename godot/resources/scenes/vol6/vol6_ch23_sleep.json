@@ -1,0 +1,736 @@
+{
+  "id": "vol6_ch23_sleep",
+  "vol": 6,
+  "chapter": 23,
+  "type": "chapter",
+  "title": "Ch 23 — Sleep",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_henderson_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Sleep",
+      "sub": "Sunday — Evening — The Town",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Across town at the same hour, the Henderson kitchen is — by Eileen's afternoon arrangement — the kitchen of three people having Sunday dinner."
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jim",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim is at his usual chair. Eileen is at hers. Jesse, who had slept until eleven and had spent the afternoon at the small fold-out table in the garage going through the pedalboard he is going to set up for the Tuesday-after-school practice, is at his."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen has made a pot roast."
+    },
+    {
+      "t": "narrate",
+      "text": "The pot roast is — Jesse registers, halfway through his second helping — the pot roast Eileen has been making on Sunday nights since he was three. She has not made it since April. She had made it tonight without announcement."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Mom. The pot roast.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I — I have not had this pot roast since April.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I made it because I felt like making it. I felt like making it because today is Sunday and tomorrow is school and the boy is starting his last year of being a boy in this house, and the pot roast is the pot roast.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jim, after a beat, smiles — the slow Jim-smile."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Eat.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They eat."
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "We're going to look at the piano on Wednesday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "What piano.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Your mother and I drove out to the piano store in New Auburn this morning while you were sleeping. We looked at three uprights. There's a Yamaha that your mother liked. We're going back Wednesday to make a decision.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "You're buying a piano.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "We are buying a piano.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Mom.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Where is it going to go.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "The dining room. The dining room is going to be the piano room. We don't dine in the dining room. We dine here. The dining room has been, for fourteen years, the room where the small table that holds the lamp lives. The small table can move. The dining room is going to be the piano room.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "I am, by Wednesday afternoon, going to spend more money on a piano than I have ever spent on any single object that is not a vehicle.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "And I am going to be glad about it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the table, looks at his parents."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Mom. I'm — I'm really glad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Eat your pot roast, son. We have ice cream for after.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_jesse_bedroom.jpg"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "At nine-thirty Jesse is in his bedroom. He has the small spiral notebook with the bridge lyric on the page. He has a different notebook open beside it — the one he uses for general song-writing, the one he has been using since 2023."
+    },
+    {
+      "t": "narrate",
+      "text": "He writes in the second notebook a single line: the next song is the one about my mother and the piano."
+    },
+    {
+      "t": "narrate",
+      "text": "He underlines it."
+    },
+    {
+      "t": "narrate",
+      "text": "He closes the notebook."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns out the light."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets in bed."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas, through the window, are loud."
+    },
+    {
+      "t": "narrate",
+      "text": "Through the wall he can hear his parents in the living room — the small low murmur of a conversation he cannot quite make out, the small specific Sunday-night conversation of two people who have been married twenty-eight years and who are, this evening, planning a piano."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+    },
+    {
+      "t": "show",
+      "char": "anita",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "bill",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "gracie",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben gets home at five forty-one."
+    },
+    {
+      "t": "narrate",
+      "text": "He showers. He eats the small specific Anita-Sunday dinner — chicken and rice — at the kitchen with Bill and Gracie. Anita has, this Sunday, the night off. She is at the table with them, in her sweatpants, drinking the small specific Sunday glass of red wine she has on the Sundays she does not have the night shift the next morning."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "So. School tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "Sixth grade.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Senior year.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Football?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Practice every afternoon. Game Friday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "We'll be there.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I switched two shifts this week. I will be at every game this season. I have already done the schedule with Helen. The schedule is set.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Mom.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Thanks.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I am not missing my son's senior season, Benjamin. The schedule is set. Don't make a thing about it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Gracie, who has been watching this exchange with the careful attention Gracie has been bringing to all family conversations since she turned eleven, speaks."
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "Dad. Are you going to come too.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "I am at every game. You know that, Gracie.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "I know. I just wanted to ask.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill",
+      "text": "Asked and answered.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Gracie eats her rice."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_ben_bedroom_dark.jpg"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "After dinner Ben goes upstairs. He packs his backpack for the morning. He sets the alarm for six. He gets in bed at nine forty-eight."
+    },
+    {
+      "t": "narrate",
+      "text": "Mister, the half-Kowalski cat, comes through the door cracked the small specific way Ben has been cracking it for a month, and curls up at his feet."
+    },
+    {
+      "t": "narrate",
+      "text": "The room is dark."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas are loud."
+    },
+    {
+      "t": "narrate",
+      "text": "Tomorrow Ben is at school at seven-thirty for early bird. Tomorrow Ben is in homeroom at eight. Tomorrow Ben is at football practice at three-thirty. Tomorrow is the first day of his senior year. Tomorrow is the day after the day before."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, just before sleep: the right foot is the right foot."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_maya_bedroom.jpg"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "In her bedroom on the same night, Maya has been going through the small box of school supplies her grandmother bought her on the small Tuesday trip to the Walmart in New Auburn three weeks ago. The box has, in it: the small specific binder she uses, the small pack of pens she likes, the index cards she has been using since freshman year, and a single small new notebook she has been saving for the first day."
+    },
+    {
+      "t": "narrate",
+      "text": "She lays the supplies out on the desk in the order she will pack them in the morning."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets in bed at ten oh-five."
+    },
+    {
+      "t": "narrate",
+      "text": "The cat that is half-Kowalski is, this evening, at the Kowalskis'. Maya is alone in her room. The fan is on. The cicadas are loud."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, just before sleep: Rick will say yes."
+    },
+    {
+      "t": "narrate",
+      "text": "She sleeps."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_diego_bedroom.jpg"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in his room, is at the desk again at ten forty-five."
+    },
+    {
+      "t": "narrate",
+      "text": "He has the laptop open. He is looking at the schedule the school had sent in the mail two weeks ago. He is registering the rooms his classes will be in. He is registering that the Spanish IV teacher is the same teacher he had for Spanish III last year and that the calculus teacher is somebody he has not had before."
+    },
+    {
+      "t": "narrate",
+      "text": "He closes the laptop."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets in bed."
+    },
+    {
+      "t": "narrate",
+      "text": "The blackout curtains are doing what they do."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, before sleep: the math is going slow on purpose."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca is in her bed at eleven-oh-two."
+    },
+    {
+      "t": "narrate",
+      "text": "The book — the one about the woman in her late forties and the bee balm — is on the nightstand. She had finished it on the porch at eight twenty this evening. The ending was — by her own internal sense — fine. Not the ending she would have written. Fine."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, before sleep: Sammy is going to UT-Austin. I am going to be at the kitchen window tomorrow morning. The sitting is what I do."
+    },
+    {
+      "t": "narrate",
+      "text": "She sleeps."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_culdesac_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The cul-de-sacs of the town, in the small Sunday-night way the cul-de-sacs of towns in mid-August do this, hold."
+    },
+    {
+      "t": "narrate",
+      "text": "The Geller porch light at the end of the Caldwell cul-de-sac is on. Don's silhouette, at eleven-thirty, is at the window. He is doing the same Sunday-night thing he has been doing since 2009, which is sitting at the window with a small glass of water and watching the cul-de-sac for the small specific eleven-PM-to-midnight window when his late wife had used to walk the dog."
+    },
+    {
+      "t": "narrate",
+      "text": "The dog has been gone since 2018."
+    },
+    {
+      "t": "narrate",
+      "text": "Don sits at the window anyway."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_henderson_kitchen.jpg"
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jim",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "In a different cul-de-sac, the Henderson living room light goes off at eleven-eighteen. Eileen and Jim climb the stairs together."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Wednesday. Yamaha.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Yamaha.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They go to bed."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_culdesac_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "In a different cul-de-sac, the Caldwell porch light is off. Linda is asleep. Maya is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "In a different cul-de-sac, the Kowalski house is dark. Ben is asleep. Gracie is asleep. Bill and Anita are in their bed. Anita, who had been awake at her four-AM-equivalent which is her Sunday-night ten-PM, is asleep by ten-thirty. Bill, beside her, is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "In a different cul-de-sac, the Salinas house has the kitchen light still on. Bianca, who had gone to bed at eleven-oh-two, has gotten up at eleven-thirty for a glass of water, is downstairs, has not yet gone back up. She is at the kitchen window, in her green terrycloth robe, looking at the cul-de-sac. The car Sammy will drive to school in the morning is in the driveway."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her water."
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at the car."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: that car will, by next August, be in Austin most of the time."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: the car will be home for Thanksgiving and Christmas and spring break and the summer, but the car will, by next August, be a car that lives in Austin."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts down the glass."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns out the kitchen light."
+    },
+    {
+      "t": "narrate",
+      "text": "She climbs the stairs."
+    },
+    {
+      "t": "narrate",
+      "text": "She sleeps."
+    },
+    {
+      "t": "narrate",
+      "text": "In a different cul-de-sac, the Garcia house — Diego's grandmother's house — is dark. Diego is asleep. His grandmother, who had been on the porch with her rosary as she has been since 1979, is in her bed. The rosary is on her nightstand. The eyes are closed."
+    },
+    {
+      "t": "narrate",
+      "text": "She is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "The town holds."
+    },
+    {
+      "t": "narrate",
+      "text": "The summer is, by midnight, over."
+    },
+    {
+      "t": "narrate",
+      "text": "The Monday is tomorrow."
+    },
+    {
+      "t": "narrate",
+      "text": "The Monday is the first day of school."
+    },
+    {
+      "t": "narrate",
+      "text": "The first day of school is the day the year starts."
+    },
+    {
+      "t": "narrate",
+      "text": "The year starts."
+    },
+    {
+      "t": "narrate",
+      "text": "Sleep."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

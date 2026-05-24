@@ -1,0 +1,119 @@
+{
+  "id": "vol7_ch6_chillwave",
+  "vol": 7,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — ChillWave",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol7_chillwave_interior.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Cale was not at the counter. The lights were on. The bell rang as she came in and she stood there a count and then walked around the counter and through the doorway to the back, because Cale had told her two years ago that if she ever needed something from the back when he was not at the counter she should just go and get it. She had never, until now, taken him up on it."
+    },
+    {
+      "t": "narrate",
+      "text": "The back was where the inventory lived. Cedar shelves alphabetized by designer, a wooden crate by the door for new arrivals, a workbench in the corner with a soldering iron and the small precision tools Cale used on the older readers when somebody brought one in."
+    },
+    {
+      "t": "narrate",
+      "text": "He was at the workbench."
+    },
+    {
+      "t": "show",
+      "char": "cale",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He looked up."
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Hi.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Hi, Cale. Bell rang. I came around.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Good. I told you to.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Two years ago.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Still good.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He set down the small thing he had been working on. He was not surprised to see her. There was something on his face she had not seen there before — not relief exactly, more like the held breath of somebody who had been counting how long they were going to have to keep holding it."
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"It's not nine yet.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"I'm not here for the stick.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He raised an eyebrow."
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Or — I am, but that's not why I came in.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Why did you come in.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She told him. The phone call. Roy at the shop. The materials question. Tem saying it might be that bad. Lena needing to be somewhere that was not her apartment, the studio, or the bookstore for the eight hours until they all met at six."
+    },
+    {
+      "t": "narrate",
+      "text": "He listened to the whole thing without interrupting. When she finished he looked at the workbench for a beat and then at her."
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Sit.\""
+    },
+    {
+      "t": "narrate",
+      "text": "There was a chair. She sat. He unplugged the soldering iron from the strip on the wall, moved a few small parts off the bench into a tray, pulled a second chair over from the corner, and sat."
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch6_nate"
+    }
+  ]
+}

@@ -1,0 +1,292 @@
+{
+  "id": "vol6_ch2_maya_bedroom",
+  "vol": 6,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Ch 2 — Maya's Bedroom",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_maya_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Maya Daigle's Bedroom",
+      "sub": "Monday · 22:46",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is not asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "The shortwave downstairs has been silent since nine. Her grandmother went to bed at nine-thirty. The house has been quiet for an hour and seventeen minutes. Maya's ThinkPad is open on the desk. She has not opened the chat window."
+    },
+    {
+      "t": "narrate",
+      "text": "She is lying on top of the bedspread in the clothes she wore all day, staring at the ceiling."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "Sam Miller is coming to the shop tomorrow."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "Rick told me to keep noticing. F.T. told me to keep noticing. Graciela Ramos, who I have never met, is apparently in a parallel thread with a grown woman I have also never met, who is probably the reporter in the Houston Chronicle lanyard. A man named Hal in New Auburn runs a bookshop and takes envelopes."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "I am the youngest person in this network and the only one new to it. The network is not mine. But the network has decided that I am part of it. And the network is, as far as I can tell, running in my direction."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "I am going to be careful. I am going to be useful. I am not going to be a hero. I am going to be Maya."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks this with a small steady clarity that surprises her, because she has not, in her life until this summer, known what she was like when she was alone with a plan. She now knows."
+    },
+    {
+      "t": "narrate",
+      "text": "The ThinkPad dings. A message from F.T."
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "role": "— chat —",
+      "expr": "neutral",
+      "text": "sleep, kid. tomorrow is important. three of you are about to start being a thing. don't rush it. let sam come in her own speed. she's going to be fast. let her be fast. you're the one who holds the tempo. that is your actual job."
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "role": "— chat —",
+      "expr": "neutral",
+      "text": "also: your grandmother knows you know. she has known for a week. she is proud of you. she just does not have the vocabulary to say so. please be kind to her."
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "role": "— chat —",
+      "expr": "neutral",
+      "text": "— f.t."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya reads the message. She gets up. She crosses the hall. She opens her grandmother's bedroom door, quietly, just an inch."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_grandmother_bedroom.jpg"
+    },
+    {
+      "t": "show",
+      "char": "grandmother",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother is awake in the dark."
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "(in the soft tired voice of a woman who has been waiting for this exact knock) \"Maya, honey.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Grandma.\""
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "\"Come in here.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Maya goes in. She sits on the edge of the bed. Her grandmother takes her hand."
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "\"I've been waiting to tell you. I didn't know how. I was going to tell you this weekend. I'm sorry it took me this long.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Grandma. It's okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "\"It's not, honey. But thank you.\""
+    },
+    {
+      "t": "narrate",
+      "text": "They sit in the dark for a while. Her grandmother's hand on her hand."
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "(eventually) \"There will be men in this house at some point. Not bad men. Men who look like bad men, and who act like bad men, and whose purpose is good. When they come, I need you to let me do the talking. Can you do that for me.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Yes.\""
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "\"Good girl.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Grandma. Why is there a radio in your room on 1776 kHz.\""
+    },
+    {
+      "t": "narrate",
+      "text": "A small silence."
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "\"Because your grandfather put it there, Maya. In 1989. When he got out. He taught me how to listen to it. He said — Linda, one day somebody's going to talk to you on this thing, and you're going to know when they do, and then you're going to know what to do.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"My grandfather.\""
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "\"Your grandfather.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"What did he — what was he out of.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother is quiet for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "\"Honey. Your grandfather was a photographer. In Graustark. In the seventies. He took a picture he should not have taken. It cost him fifteen years.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Maya stares at her in the dark."
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "(very gently) \"Go to sleep, honey. Tomorrow's a big day. We'll talk more. There's a lot you need to know, and I'm going to try to be the one to tell it. I have been afraid. I am still afraid. But I'm done pretending I'm not.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Grandma.\""
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "\"Yes, honey.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"I love you.\""
+    },
+    {
+      "t": "say",
+      "char": "Grandmother",
+      "expr": "neutral",
+      "text": "\"I love you too, sweetheart. Go to bed.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Maya kisses her grandmother on the forehead. She goes back to her room. She closes her door."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, tonight, write in the notebook. She lies down. She turns off the lamp."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "I have a grandfather. He took a picture. This town has been coming for pictures for a long time."
+    },
+    {
+      "t": "narrate",
+      "text": "She sleeps."
+    },
+    {
+      "t": "flag",
+      "key": "maya_knows_grandfather",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch2_coda"
+    }
+  ]
+}

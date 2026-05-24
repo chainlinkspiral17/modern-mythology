@@ -1,0 +1,41 @@
+{
+  "id": "vol1_link_booth",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "The Missing Link — the photographs",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "The booth in the corner has a wall of framed photographs above it. None of them are labeled. None of them are recent. All of them are square."
+    },
+    {
+      "t": "narrate",
+      "text": "A man in his sixties at the edge of a forest, holding a wooden frame the size of a doorway. The frame has nothing in it. He is smiling like he has just put something down for the first time in a long while."
+    },
+    {
+      "t": "narrate",
+      "text": "A young woman seated at a bar, late forties light, a drink half-finished and a paperback face-down. The paperback's title is not visible. The bar is one you do not recognize and yet feel you have stood in."
+    },
+    {
+      "t": "narrate",
+      "text": "A boy of fourteen or fifteen at a workbench. His hands are out of focus because they are in motion. There is a soldering iron and what looks, at this distance, like the back of a computer that should not exist in the year the photograph was taken."
+    },
+    {
+      "t": "narrate",
+      "text": "A sanderling — the small shorebird — painted on a mural on the side of a brick building. The mural is intact in the photograph. A square patch of it, fresh white primer, sits at the bottom right, as if someone had begun erasing it and stopped."
+    },
+    {
+      "t": "narrate",
+      "text": "Three children on a flat suburban sidewalk holding bicycles. The middle one is looking up at the camera in a way that suggests she has just figured out who is taking the picture."
+    },
+    {
+      "t": "narrate",
+      "text": "A polaroid, this one, smaller than the others and not in a frame — taped to the wall with brittle tape that has yellowed. A young man in a trench coat at a depot bench. The polaroid was taken in the rain. The seams of the coat are not glowing. They are not yet glowing. The date written in pen along the white border, in someone else's hand, is a date that has not happened yet."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_hub"
+    }
+  ]
+}

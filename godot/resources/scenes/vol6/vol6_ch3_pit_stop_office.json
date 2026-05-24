@@ -1,0 +1,106 @@
+{
+  "id": "vol6_ch3_pit_stop_office",
+  "vol": 6,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Ch 3 — Pit Stop Back Office",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_pit_stop_office.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Pit Stop Diner — Back Office",
+      "sub": "Tuesday · 15:48",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is at the small desk in the back office. His shift ended at two. He is not, technically, supposed to be in the office. He is here because he is writing."
+    },
+    {
+      "t": "narrate",
+      "text": "He is writing a list, and the list is starting to feel like a thing he is going to have to show someone."
+    },
+    {
+      "t": "narrate",
+      "text": "The list, at 15:48, reads —"
+    },
+    {
+      "t": "narrate",
+      "text": "1. Ramos kid — missing since Saturday night, 11:52 PM per neighbor reports via Sam per Jen per my own math. Not reported as missing by his grandmother to PSA. Not reported as missing by PSA internally. Silence is the information."
+    },
+    {
+      "t": "narrate",
+      "text": "2. Louisiana pickup in Pit Stop lot, Sunday and Monday, driver never enters. Plate: LA 7R3-G92. I ran it in my head against the pattern I noticed in March — it matches a plate I saw at the McClary fence Saturday night after the match. Same vehicle. Different driver? Unknown."
+    },
+    {
+      "t": "narrate",
+      "text": "3. White sedan in Kwik Stop lot, two people, press lanyard. Not threatening. Probably allies. Confirmed by — well, not confirmed. Inferred. Presence at both the Kwik Stop and the comic shop parking lot within 90 minutes of Sam Miller's visit to same. Sedan is moving with Sam, not against her."
+    },
+    {
+      "t": "narrate",
+      "text": "4. Unmarked NexCorp van, Gas & Go lot, Sunday 15:11, handoff with the Louisiana pickup. Envelope. Cash. Skip Donnelly did not see this because Skip was on his phone, which I am now beginning to think is not an accident of Skip's work ethic but an arranged condition."
+    },
+    {
+      "t": "narrate",
+      "text": "5. Jesse's dad — developing photographs containing people not in original frame. Jesse has eight-by-tens. I have phone photographs of them."
+    },
+    {
+      "t": "narrate",
+      "text": "6. Backyard wrestling thing — escalating. Saturday's officer-initiated match was a test. Test of what? Whether I'd go in the ring? Whether I'd go in the ring and lose gracefully? Tentative read: they are looking for compliant bodies in the teen-age demographic. Me. Jesse, next. Diego, already?"
+    },
+    {
+      "t": "narrate",
+      "text": "7. Diego as possible already-taken compliant body — cross-ref red-dot system on his phone. He was tracking specific shifts at the Gas & Go. He saw something. He told someone. Wrong someone. Now he's — where?"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben sets down the pen. He rereads the list."
+    },
+    {
+      "t": "narrate",
+      "text": "He is, he registers, no longer a person who has a legal pad as a hobby. He is, he registers, a person who is building a case for something — and the something is starting to look large enough that Ben is going to have to start making decisions about what he is willing to do if the something turns out to be as large as the list is beginning to suggest."
+    },
+    {
+      "t": "narrate",
+      "text": "He is seventeen. He is six-foot-four. He is about to be late for his optional double, which Jesse had, in fact, requested this morning."
+    },
+    {
+      "t": "narrate",
+      "text": "He puts the list in the bottom drawer of the desk, beneath the folded apron. He closes the drawer. He stands. He goes to the grill."
+    },
+    {
+      "t": "narrate",
+      "text": "The grill is hot. The grill is ready. The grill does not know about the list and would not, if it did, be able to do anything about it. Ben picks up the spatula. He gets to work."
+    },
+    {
+      "t": "flag",
+      "key": "ben_has_list",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch3_jesse_bedroom"
+    }
+  ]
+}

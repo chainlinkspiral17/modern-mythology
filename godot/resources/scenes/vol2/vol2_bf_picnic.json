@@ -1,0 +1,45 @@
+{
+  "id": "vol2_bf_picnic",
+  "vol": 2,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Briar Falls — the picnic shelter",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_briar_falls_picnic.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The shelter is a six-by-six post-and-beam square with a corrugated metal roof and three picnic tables under it. Two tables are bolted to the slab. The third is loose, set off-square, like somebody had been planning to make off with it and changed their mind."
+    },
+    {
+      "t": "narrate",
+      "text": "On the nearest table, somebody has carved into the wood with what looks like a key:"
+    },
+    {
+      "t": "narrate",
+      "text": "F + B   1994 — and beside it, in different hand and earlier wood, J. and someone has filled in the rest of the name with a knife and then someone else has scratched the rest back out, leaving J. alone with an unfinished hyphen."
+    },
+    {
+      "t": "narrate",
+      "text": "Below those: a small careful sanderling, the same shorebird the Smolvud brochure has on its cover. Whoever drew it loved the bird."
+    },
+    {
+      "t": "narrate",
+      "text": "The shelter floor is concrete and dry. Cigarette butts swept toward the corner without being picked up. A flattened pack of Camel Lights, the soft kind. A bottle cap from a Henry Weinhard's root beer."
+    },
+    {
+      "t": "narrate",
+      "text": "On the middle table, a paperback face-down, splayed, the spine cracked. The cover faces away. You turn it over with two fingers. It is a copy of GREAT EXPECTATIONS, the Bantam paperback, the schoolbook edition. Somebody has dog-eared one page and left it; somebody has, in pencil, underlined a single sentence about waiting. You do not memorize the sentence. You will think you remember it later and you will be wrong about it."
+    },
+    {
+      "t": "narrate",
+      "text": "A pair of sunglasses on the bench, lenses snapped, one ear missing. Not anyone's. Just left."
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_bf_hub"
+    }
+  ]
+}

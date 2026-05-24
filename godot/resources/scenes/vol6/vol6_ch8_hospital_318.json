@@ -1,0 +1,536 @@
+{
+  "id": "vol6_ch8_hospital_318",
+  "vol": 6,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "Ch 8 — Room 318",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_hospital_room.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Room 318",
+      "sub": "Sunday — 10:47 — New Auburn General",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "linda_caldwell",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Linda Caldwell is sitting up."
+    },
+    {
+      "t": "narrate",
+      "text": "She has, in the night, been moved from recovery to the regular floor. Her hip is in a brace and a cast. She has an IV in her right hand, which is the hand she would, normally, use for the Morse key, and she has noticed this and has, in her quiet way, registered the irony."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "anita",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "When Maya comes through the door, with Anita and Gracie behind her, Linda's whole face changes."
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Sweetheart.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya goes to the bed."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, immediately, embrace her grandmother — Linda's hip will not, this week, tolerate embraces — but she takes Linda's free hand in both of hers and holds it, and she puts her forehead against the back of her grandmother's hand, and she stays that way for maybe twenty seconds."
+    },
+    {
+      "t": "narrate",
+      "text": "Linda strokes Maya's hair with the IV hand, gently, ignoring the IV."
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "I'm sorry I scared you, baby.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "I'm here. I'm here, sweetheart. Sit. Tell me about the people in this room.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya straightens. She gestures."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "This is Anita Kowalski. She's Ben's mother. They are taking care of me until you come home. This is Gracie. She is Ben's little sister. She has a dog named Daisy. She would like to tell you about Daisy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Linda smiles."
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Anita. Thank you. Bless you.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Nothing to thank me for, ma'am. We're glad to have her.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Gracie. Tell me about Daisy.",
+      "expr": "happy"
+    },
+    {
+      "t": "show",
+      "char": "gracie",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Gracie comes around to the side of the bed. Gracie sits on the visitor's chair, which is too large for her. She leans forward."
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "Daisy is a mutt. Daisy is technically a coward. She is afraid of butterflies and ceiling fans and the vacuum. But she is brave about people. She is very brave about Maya. She slept on Maya's foot at breakfast which is something she only does for people she has decided to keep.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Linda laughs."
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Daisy has good instincts.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "She has the best instincts.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Linda. We're going to step out for a few minutes. Let you and Maya have a moment. We'll be in the cafeteria. Maya, take your time.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She gestures Gracie. Gracie, reluctantly, follows."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The door closes."
+    },
+    {
+      "t": "narrate",
+      "text": "Linda and Maya are alone."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Maya. Sit.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya sits."
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "I've been thinking, since I woke up. I want to tell you some things while I have the strength to. I'm going to be okay. The doctor said three weeks. But I want to use the morning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya nods."
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Your grandfather. Thomas. I told you he took a picture in Graustark in the seventies. I told you it cost him fifteen years. I want to tell you what the picture was.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma. You don't have to.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "I want to. I have wanted to for forty-eight years. I have not, until now, had the right person to tell.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Thomas worked for the Beaumont Enterprise for two years out of college, then quit to freelance. He shot mostly architecture and event work — weddings, school portraits, the occasional industrial commission. In 1976 he was hired by a company called Ardent Reclamation Holdings to document a chemical dump site outside Graustark. The site had been listed for cleanup. The company wanted before-and-after photographs. It was, in his understanding, a public-relations contract.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "He took the photographs. He developed them in his home darkroom in Beaumont. One of the photographs — one — showed something the company had not, in his briefing, told him about. A small structure inside the dump perimeter that was not on the site map. A — a building, Maya. A building roughly the size of a single-wide trailer, with a single door, no windows, and three trucks parked outside it, and a man standing at the door of the building who was looking, in the photograph, directly into Thomas's camera even though Thomas had not — Thomas was certain he had not — been close enough for the man to see him. The man in the photograph was wearing a charcoal suit.",
+      "expr": "neutral"
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "Maya's heart does the slow steady thing it has been doing this week."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Yes, baby.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "The man in the suit.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "He's still — ",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Yes, sweetheart. He is still.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Thomas — Thomas knew, the second he saw the print, that he had photographed something he should not have. He developed only the one print of that frame. He destroyed the negative. He hid the print in a book in our apartment. He went back to Ardent the next day and turned in the other photographs and told them the assignment was done.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "For three weeks, nothing happened. Then one morning Thomas went to the parking lot of his studio and his car was gone. Not stolen — moved. It had been parked four blocks away, in front of a fire hydrant, where the police would, in the natural course of their morning, have to ticket it. The ticket arrived. With it, two days later, came a — visit. From a man in a charcoal suit. The man in the photograph. He came to our apartment. I was nineteen, Maya. We had been married six months. He came to our door. He sat in our kitchen. He drank a cup of coffee I made him. He was — I want you to understand — he was very polite. He did not threaten Thomas. He told Thomas, simply, that there was a photograph in our apartment that did not belong to us, and that he would be coming back the following day to collect it, and that if the photograph was not, in his estimation, all of the photograph, he would have to come back a third time, and the third time would not be a coffee.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "He left.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Thomas spent the night looking for the print. He had hidden it so well — he had hidden it inside a copy of Moby-Dick in the back of the closet — that even he, by the morning, was not sure he could find it again. He did, finally, just before noon, find it. He looked at it for a long time. He copied it — three copies, on cheap film, the best he could do with the small Polaroid we had in the apartment. He hid the copies in three different places. Then he gave the original to the man in the suit, when the man came back at three.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "The man took the original. He did not, that day, ask if there were copies. He left.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Thomas went to the police that afternoon — to the New Auburn city police, not the Beaumont police, because he did not trust the Beaumont police. He told them what he had photographed. He showed them one of the copies. The police — they were polite. They took notes. They said they would be in touch. They were never in touch. Three days later Thomas was arrested at our apartment, at three AM, on charges of trafficking unlicensed photographic chemicals. Which was — Maya, it was nonsense. He had a darkroom in our apartment. The chemicals were the same chemicals every photographer in 1976 had. But the charges were the charges, and the charges led to a search of the darkroom, which led to a discovery of additional chemicals he had not, in fact, owned, and which led to a prosecution that took six months and a sentence, in 1977, of fifteen years.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is silent."
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "I waited. I worked. I — I kept the apartment. I learned the radio. The radio was your grandfather's. He had built it himself. He had told me, before he was arrested, that if anything ever happened to him, the radio was the way I would, eventually, hear from his — his friends. He did not, at the time, tell me what he meant by friends. I learned, over the years, what he meant. They were people who had — who had, in different ways, also crossed the man in the suit. They were people who had been — who had been quietly looking out for each other, at a distance, since at least 1968. The radio was their network.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Your grandfather served twelve of his fifteen years. He came home in 1989. He was — Maya. He was not the man who had gone in. He was thinner. He was quieter. He had been, in prison, beaten on three separate occasions by men who were not, exactly, prisoners. Each beating had been preceded by a small calling card slipped under his cell door — a card with no writing, just a small embossed D. He understood. He told me, when he came home, that the D was a reminder, not a threat. The reminder was: we have not forgotten you, and we will not, ever, forget you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "He lived eleven more years. He died in 2000 of complications from a kidney condition the prison doctors had, for nine years, declined to treat. He never took another photograph. He kept the radio. He taught me how to listen. He taught me the cadence — the Morse he had learned in the navy in 1968, the Morse the friends used. He told me, on his last night, that someone — someone — would, eventually, ask me to be ready, and that when they asked, I would know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "In April this year, your father called me. He said — he said Linda, my daughter needs to come live with you for a while. Will you take her. And I said — Maya. I said yes immediately. I said yes before he had finished asking. And after he hung up I went upstairs, and I plugged the radio in for the first time in eleven years, and I put it on 1776 kilohertz, and I waited.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "I have been waiting for you, sweetheart. Your whole life. I have been waiting for you to be the person you are now. And the past six weeks have been — they have been the happiest six weeks of my life since 1976. I want you to know that. I want you to know that, Maya. The fall on the stairs was not — it was not unhappiness. It was — it was relief. My body finally letting itself rest. Because you are here. Because the person I have been waiting for has come.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is crying."
+    },
+    {
+      "t": "narrate",
+      "text": "She is crying quietly, with the careful efficiency of a sixteen-year-old who has learned, in the past two weeks, that crying is something her body needs to do but that does not need, on every occasion, to be loud."
+    },
+    {
+      "t": "narrate",
+      "text": "Linda strokes her hair with the IV hand."
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "I'm sorry I waited so long to tell you the whole thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma. It's okay.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "I was — I was waiting until you were ready.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I know.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "You're ready.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "I'm going to be home in three weeks. We are going to sit at the radio together. I am going to teach you the Morse. I am going to teach you what your grandfather taught me. You are — Maya, you are going to be one of the friends. You already are. The radio knows you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma. There's a man in Graustark named Frasier Temple.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Linda's face changes."
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Of course there is.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "You know him.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "I know of him. Your grandfather mentioned him once, in 1999. He said there is a young man working in a warehouse in Graustark who is going to be one of us, and we are going to know him, in time, by his fondness for jokes that nobody else thinks are funny. I have not, until this minute, heard the name. But I know him. Tell me about him.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya tells her."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya tells her about the Demons. About the Speak & Spell. About the warehouse. About Frasier's attachment to it, his reluctance to leave, the Beaumont rescue of Rick in 2002, the imps now active in Harmony Creek, the rescue of Diego, the giving-of-the-stomach-bug to Boyd."
+    },
+    {
+      "t": "narrate",
+      "text": "Linda listens with a small bright attention. She does not, at any point, interrupt. When Maya is done, she nods once."
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Sweetheart. He is one of the friends. He is, in fact, by your description, the most active of the friends in some time. You are going to meet him. Not soon. But you are going to meet him. And when you do, you are going to tell him your grandfather knew his name in 1999, and that we have been, in our small way, watching for him.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma. He is — he is sad. I think he needs help.",
+      "expr": "sad"
+    },
+    {
+      "t": "narrate",
+      "text": "Linda smiles, faintly."
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "Of course he does, baby. They all do. We all do. That is what the friends are for. We help each other. None of us is going to be — cured — of the thing the man in the suit started. But we sit at the radio, and we tell each other we are still here, and that is — that is most of what help is.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya nods."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma. I love you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda Caldwell",
+      "text": "I love you too, sweetheart. Now. Go get the eleven-year-old back. I want to hear more about Daisy.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya laughs."
+    },
+    {
+      "t": "narrate",
+      "text": "She laughs the small clean laugh of a person whose grandmother has, within the same hour, told her the worst story in her family's history and has then asked to hear about a dog."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes to the door."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets Anita and Gracie."
+    },
+    {
+      "t": "show",
+      "char": "anita",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "gracie",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "They come back in. Gracie tells Linda, at length, about Daisy. Linda listens. Linda asks, occasionally, the kind of question that confirms she is paying attention. Anita stands by the window with her hand on Maya's shoulder."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya stands beside her grandmother's bed."
+    },
+    {
+      "t": "narrate",
+      "text": "The morning, in Room 318 of New Auburn General, is — for the first time in some weeks — tender."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch8_courthouse"
+    }
+  ]
+}

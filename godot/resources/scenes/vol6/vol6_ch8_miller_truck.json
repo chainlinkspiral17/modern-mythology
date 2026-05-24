@@ -1,0 +1,186 @@
+{
+  "id": "vol6_ch8_miller_truck",
+  "vol": 6,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "Ch 8 — Two Vehicles",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_truck_interior_dawn.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Two Vehicles",
+      "sub": "Sunday — 05:42 — IH-10 Eastbound",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The truck has been on the highway for nineteen minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "The sky over the median is the particular pre-dawn blue Texas does in late May — not yet light, no longer dark, the color that lives for about eight minutes between the two and that Sam Miller has, in seventeen years, not, until this morning, been awake to see from the cab of her father's truck."
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Her father is at the wheel."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She is in the passenger seat with a thermos of coffee her mother had made at five and a denim jacket on her lap that the AC is, despite it being May, running cold enough for her to need."
+    },
+    {
+      "t": "narrate",
+      "text": "The radio is off."
+    },
+    {
+      "t": "narrate",
+      "text": "They have not, since pulling out of the driveway, spoken."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "This is not, Sam realizes, the silence she had expected. She had expected, this morning, a careful adult silence — the kind silence is when two people know there is a conversation to have and have chosen, for the moment, not to start it. This silence is different. This silence is the silence of two people who have been doing the same drive together since one of them was five — to the same lake, in the same truck, on countless Sunday mornings before whichever Little League season or fishing trip had been the day's official excuse — and who do not, at this hour and on this drive, need to fill it."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "She is, she realizes, comforted by it."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "She had not expected, this morning, to be comforted by anything."
+    },
+    {
+      "t": "narrate",
+      "text": "At 06:14 her father reaches across the console without taking his eyes off the road and adjusts the AC down two clicks."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Cold?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "A little.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I always run it too cold.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sorry, Sammy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "It's okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She unfolds the jacket. She puts it on."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "You sleep okay?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah. You?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "No.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Me either, then.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He laughs — a small surprised exhale of a laugh."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sammy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Thanks for coming this morning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The truck eats the highway. The sky shifts another half-shade lighter. A semi passes them on the left. The driver of the semi raises one finger off the steering wheel in the small specific Texas-driver acknowledgment, and her father — without lifting his hand from the wheel — returns it."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch8_lake_palestine"
+    }
+  ]
+}

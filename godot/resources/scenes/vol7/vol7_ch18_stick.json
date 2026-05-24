@@ -1,0 +1,336 @@
+{
+  "id": "vol7_ch18_stick",
+  "vol": 7,
+  "chapter": 18,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Sunday Afternoon",
+      "sub": "The stick",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "text": "Eight twelve at the back door of the bakery. The cast had been dispersing for fifteen minutes. Cale's truck was already gone. Per had walked across town to Hans's house to be with Marit until the afternoon. Marina had pulled her wagon out at five to eight and was, by now, halfway down the coast highway toward Eugene.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena and Kai were on the sidewalk in front of the bakery saying goodbye to Aud, who was walking the four blocks to the Missing Link to open the diner for the church crowd. Roy was at the front, helping Hans put the rye and country loaves into the cases.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn had been at the truck. He had been about to get in when Tem came out of the back door with a brown paper bag in her hand.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "text": "Finn. A minute.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have a thing for you.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have been holding it two years. I am — I have been holding it because I did not, in the two years, know who it was for. I have known since Thursday morning when Cale told us the dream Nate had had in '94.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The thing is yours. I am giving it to you now.",
+      "t": "say"
+    },
+    {
+      "text": "She handed him the bag.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bag was the kind of brown paper bag Hans had been selling bread in for forty years. The bag had something in it about the weight and size of a small book.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "It is a stick. It was Brandon's. He had it in his apartment when he died. Petra and I cleaned out the apartment in November of '50, in the second week after he died. We had been at the apartment six times. The stick was on his desk in the back office.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I took it the first time I went, on the third day after he died, because I did not want Petra to find it and ask me what it was. I have had it at my apartment in town since November of '50. I have not played it. I do not have Lena's reader at my apartment. I have only the cabin reader.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have not, in the two years, brought the stick to the cabin. I have been holding it for the person who would walk in with the right reason to play it. The person is you. The reason is what is happening this week.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Take the stick. Play it today if you can. Play it at the cabin tonight if not. The reader at the cabin is the reader your grandfather used. It is the right reader for this stick.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Brandon's stick.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Brandon's stick.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "What is it.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I do not know. I have not, in the two years, looked. The bag has been closed since November of '50. I have not opened it.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The stick is yours. The opening is yours.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "text": "She went to the wagon. The wagon had been waiting on Hemlock at the curb. Per was not at the wagon — he was at Hans's house. Cale was already at his truck heading up. Tem was driving up alone with the box of four bowls in the back seat.",
+      "t": "narrate"
+    },
+    {
+      "text": "She said over her shoulder before getting in: Finn. We're all up at the cabin tonight. Roy is coming up at four. Come up when you can. I will be there.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had driven up.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Finn stood at the truck with the brown paper bag. The crow on his dashboard had — by what he could see through the window — turned its head to look at the bag.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_smolvud_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "He drove home. The town at eight-thirty on a Sunday morning in late August was a town getting ready for the church people. Aud was at the Missing Link with the lights on. Soren's Daily Grind had its OPEN sign out. The bookstore would not open until after church. The bakery — Greta was at the front, the cases filling — would have its line of post-service customers at eight forty-five.",
+      "t": "narrate"
+    },
+    {
+      "text": "He passed the alley behind The Salty Tome on his way home. He slowed at the entrance. The face on the alley wall in the morning light — by what he could see at the alley's length — was at rest. The closed eyelids were closed. The face was where Lena had painted it Friday morning.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face was — Finn registered as he slowed — a thing the town now had on a wall. The face was a piece of town infrastructure. The face had taken its place there in the way a thing takes its place when a thing has been waiting for the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "He kept driving.",
+      "t": "narrate"
+    },
+    {
+      "text": "He pulled into the small lot behind his apartment at eight thirty-six. He took the bag. The crow came off the dashboard and onto his shoulder when he opened the truck door. He carried the crow up the back stairs to his apartment.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_kai_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "He set the bag on the kitchen table. He stood at the table and looked at the bag for a count. Then he opened it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The stick was inside. In its waxed-paper sleeve — the kind the foundation had been packaging sticks in since the '30s, the kind Tem had at the cabin, the kind Cale had at ChillWave. The sleeve was old. The wax yellowed at the edges. A small label on the front with handwriting Finn did not know.",
+      "t": "narrate"
+    },
+    {
+      "text": "The handwriting was — by Finn's read of the careful spacing and the round loops — Brandon's hand. The label read: Tideline Survey 2018 — Hjarvard Ulrich — B. Tillman, January 2050.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn looked at the label. He had not, until this moment, seen Brandon's handwriting other than once on a check Brandon had given to the co-op for a delivery in '49 that Margaret had let Finn see. The handwriting on the sleeve was the same. Brandon had labeled the sleeve in January of '50, ten months before he died.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn registered, at the table, that Brandon had played the stick before he died. Or Brandon had bought the stick and labeled it and had not, in the ten months between January and October, played it. Or Brandon had played it once. Or three times. Or more. There was no way to know without playing it.",
+      "t": "narrate"
+    },
+    {
+      "text": "He took the stick out of the sleeve. The standard SCUMM stick — a dark plastic rectangle about the size of his palm, with the gold connector at one end. The stick was clean. No marks on it. He set it on the table beside the sleeve.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow on his shoulder hopped down to the table and walked over and stood on the sleeve. The crow looked at the stick.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Friend. This was Brandon's.",
+      "t": "say"
+    },
+    {
+      "text": "The crow tilted its head.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I'm going to play it this afternoon. Here. Not at the cabin. At my own table, with the reader I bought in '49 because I wanted to be able to play sticks when Tem was not at the cabin.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "With you in the room. Brandon's crow. Brandon's stick. You should be here.",
+      "t": "say"
+    },
+    {
+      "text": "The crow tapped the table once with its beak.",
+      "t": "narrate"
+    },
+    {
+      "text": "He made coffee at nine. Ate two slices of Hans's bread he had taken home last night. Drank the coffee. Sat at the table with the stick and the sleeve and the crow and looked at all three.",
+      "t": "narrate"
+    },
+    {
+      "text": "He thought about whether to call Tem. He decided not to. Tem had said: Play it today if you can. He could play it now. The reader was at his apartment. The crow was at his apartment. The morning was his.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not been alone in a room since Thursday night at the cabin. The being-alone today was — by Finn's read of his body at the table — what the playing would need.",
+      "t": "narrate"
+    },
+    {
+      "text": "He took the stick to the bedroom. The reader was on the side table — the compact one he had bought from Cale in '49 for thirty tokens, at a discount to clear inventory. The reader had been used twice in three years: an experience by Danish designer Astrid Holm in '49, a longer one by a Portland man in '50. Not used since.",
+      "t": "narrate"
+    },
+    {
+      "text": "He set the stick in the reader. He put the cap from the side-table drawer on his forehead. The cap was clean. He had used it twice. The cap was warm in the way it had been warm at the cabin two days ago when Tem had put hers on Kai. He had not registered, in the year and a half he had owned the cap without using it, that the cap held its warmth that way.",
+      "t": "narrate"
+    },
+    {
+      "text": "He set the reader's timer for ninety minutes the way Tem had set it for Kai. He came back out to the table. He picked up the crow. The crow let him. He carried the crow to the bedroom.",
+      "t": "narrate"
+    },
+    {
+      "text": "He set the crow on the back of the chair beside the bed — the chair Brandon had not, in his life, sat in, but which Finn had been carrying since '46 when his grandmother had given it to him.",
+      "t": "narrate"
+    },
+    {
+      "text": "He lay down on the bed. He pulled the wool blanket up.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I'll be back in ninety minutes.",
+      "t": "say"
+    },
+    {
+      "text": "The crow tapped the back of the chair with its beak. Finn pushed play.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch18_pool",
+      "t": "jump"
+    }
+  ],
+  "title": "Sunday Afternoon"
+}

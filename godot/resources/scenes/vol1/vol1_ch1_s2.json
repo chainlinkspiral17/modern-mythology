@@ -1,0 +1,114 @@
+{
+  "id": "vol1_ch1_s2",
+  "nodes": [
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "Here is the myth of you: you were born in a world that had already decided what you were. You have been arguing with that decision ever since."
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "The argument is the story. Not the conclusion — the argument."
+    },
+    {
+      "t": "think",
+      "char": null,
+      "text": "He's either the wisest person you've ever met or the kind of crazy that sounds like wisdom."
+    },
+    {
+      "t": "think",
+      "char": null,
+      "text": "The distinction, you're realizing, may not matter as much as you thought."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"What are you?\"",
+          "goto": 5
+        },
+        {
+          "text": "\"Why are you telling me this?\"",
+          "goto": 8
+        },
+        {
+          "text": "[LOGIC] The coffee appeared without anyone taking an order. The booth was empty when you walked in.",
+          "check": {
+            "skill": "logic",
+            "diff": 9
+          },
+          "pass": 11,
+          "fail": 8
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "amused",
+      "text": "Something old. Something that remembers when the stories were new."
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "amused",
+      "text": "Something that has been watching your kind make the same mistakes for so long that the mistakes have started to look like a tradition."
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "amused",
+      "text": "I find it, against all reason, charming."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_end"
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "Because you are at a crossroads. Not the metaphorical kind — though those too. The actual kind."
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "You came here looking for a direction. I'm one of the things that lives at crossroads."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_end"
+    },
+    {
+      "t": "think",
+      "char": null,
+      "text": "The coffee. The empty booth. The way he knew your face."
+    },
+    {
+      "t": "think",
+      "char": null,
+      "text": "You add it up slowly, the way you do when you don't want the answer to be true."
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "impressed",
+      "text": "There it is. Yes. You're putting it together."
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "impressed",
+      "text": "Most people look right at the seams and see upholstery. You're different."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_end"
+    }
+  ],
+  "vol": 1
+}

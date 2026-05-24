@@ -1,0 +1,120 @@
+{
+  "id": "vol6_ch6_kwik_stop_open",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — The Actual Clock",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kwik_stop_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Actual Clock",
+      "sub": "Friday — 06:56 — Kwik Stop",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Sam clocks in. Jen is at the back counter doing the morning prep — the coffee carafes, the breakfast burrito warmer, the small stack of NEW AUBURN SENTINEL papers stacked beside the register."
+    },
+    {
+      "t": "show",
+      "char": "jen",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Jen looks up."
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "Morning, Sammy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Morning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jen looks at her for a second longer than usual."
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "You good today.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I'm good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "text": "You let me know if you need a break, alright? I'm here all day.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jen does not, this morning, ask about Diego. Jen had, on Wednesday afternoon when Detective Ramirez left, walked over from the back office where she had been doing inventory and had said, quietly: Sammy. I don't know what's happening but I'm here, and I'm going to act like I don't know what's happening, and that's because that's what I think you need from me. Sam had nodded. Jen had returned to inventory. It was the most adult thing anybody but Graciela had said to Sam in a week."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam puts on her apron. She stocks the front cooler. She watches the parking lot. She watches the clock — the actual clock, the one on the wall by the office door, which is not nine minutes fast. The actual clock reads 06:58. The microwave clock reads 07:07."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "In sixty-two minutes my mother will text me."
+    },
+    {
+      "t": "narrate",
+      "text": "She works."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_interstate"
+    }
+  ]
+}

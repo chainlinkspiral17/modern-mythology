@@ -1,0 +1,161 @@
+{
+  "id": "vol1_prelude_editing_suite",
+  "vol": 1,
+  "chapter": 0,
+  "type": "chapter",
+  "title": "Prelude in the Editing Suite",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "PRELUDE IN THE EDITING SUITE"
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "You two who have been here since the beginning — why even start if all we dare dream to do is break-even in this marginal marketplace?"
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "What do you mean start? Where in time are you looking?"
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "From you, the writer, they expect something they have always known but never witnessed — brought forth from your inner eye and rendered by myself and others to tickle their wicked fantasy."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "We know our audience — cultured in good reads if not great literature, tenured instead in a random sampling must-see tv. Flicks, movies, film, cinema swallowed up whole. Tunes as beating hearts and emotional anchor. Games to explore from all sides and angles in astonishment. Doing shit on the regular and finding humor in it all."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "They expect the finest things rendered explicit — and I count myself among them. (nerding out) The Trilogies on repeat. My nerdcore is in truth scrapwork — an old faded fallen-to-love quilt for but the latest of stories, descend from the greatest of stories, a pantheon of classics writ into collected skin bound together illustrated man."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "You may bang at those doors to get but a glimpse other side — all swell and good — but know there are other worlds than these."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "To find an audience for this Frankenstein thing beyond mad."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "When we started was it not fear of fame that kept us running towards failure."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "The crowds we might attract might utterly destroy us if not compromise everything we’re working towards."
+    },
+    {
+      "t": "narrate",
+      "text": "The three sigh."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "Can’t we just sit here and think a minute."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "It is in silence mind races and eye truly sees."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "And all I feel is love for friends and family."
+    },
+    {
+      "t": "narrate",
+      "text": "Enter the FOOL, a disheveled and insane merry prankster."
+    },
+    {
+      "t": "say",
+      "char": "The Fool",
+      "expr": "neutral",
+      "text": "All the questions you’ve asked yourself you’ve answered yourself — so to answer your question (pointing at each) no, you’re just afraid, you’re just a pussy. Within you is power. Make something awesome, understandable, and good — simply good — that transcends all expectation. So permission to go nuts, absolutely batshit crazy, as long as you’re having a good time we’re having a good time."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Give this thing a shot in the arm — can’t feel the pulse here — amp up the soundtrack, swell their emotions, dim the lights just so, cue flashy credit sequence, lull ’em in for the ride to come."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "Keep things simple. Don’t think for a minute half-way smart patrons won’t notice how much of a hack you truly are."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Hey now — I just use the tools that are given. Sometimes it works, sometimes it’s absolute shite — at least I’m delivering that beautiful dream. So don’t forget what you write is only seen and heard because of my scheme."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "You cheapen and whore our premature baby to any who’d press up gainst glass to see."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "A fitting if crude analogy — but unlike you I am proud to call my child perfectly imperfect. All we need really."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "Don’t forget — this is collaboration, plain and simple, sum of the whole not of the part. You three but a small fraction wrapped up in your own short-sighted drama."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "Agreed. So now we begin?"
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "hear hear."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "Finally."
+    },
+    {
+      "t": "narrate",
+      "text": "The director shrugs and starts the film."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_missing_link"
+    }
+  ]
+}

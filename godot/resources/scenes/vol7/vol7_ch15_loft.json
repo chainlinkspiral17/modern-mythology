@@ -1,0 +1,623 @@
+{
+  "id": "vol7_ch15_loft",
+  "vol": 7,
+  "chapter": 15,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 15",
+      "sub": "Saturday",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "text": "Marina woke at four-twenty in the loft above the kitchen.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had been on the cabin's loft mattress for two nights. The mattress was Eddvard's — he had slept on it from '79 until '42. Tem had told her this at eleven on Thursday when Tem had pulled the wool blankets out of the cedar chest and made the bed for her. The mattress, by the wear and the smell and the slight depression Eddvard's body had made over forty-three years, was a mattress that had held a man Marina had not met and whose granddaughter had made her a bed on it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had not, on the first night, slept much. She had lain in the loft and listened to the rain and to the six people below her sleeping in the various places Tem had set them, and she had counted, by some logic of her own, the breaths of the six.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per's breath was the breath of a man in his sixties who had been carrying a heavy thing for two days and had put it down at this cabin on Wednesday and was sleeping the sleep of the put-down. Cale's breath was light — Cale had not, by what she had read of him in the hours she had been with the room Thursday night, slept deeply in some time. Finn's breath was the regular slow breath of a man who walked headlands. Kai's breath was the breath of a man who had been in a slow-stick on Wednesday and was still working out what that meant. Tem's breath in the bedroom was below her. Lena's beside Tem's. The six were the six.",
+      "t": "narrate"
+    },
+    {
+      "text": "On the second night — Friday into Saturday — she had slept five hours. She had woken at four-twenty because four-twenty had been her morning-wake at the foundation since 2046 and her body had not, in two days at the cabin, surrendered the habit.",
+      "t": "narrate"
+    },
+    {
+      "text": "Below her, Tem was awake. She knew this because she could hear the cone-filter sound from the kitchen — the kettle's pre-whistle, the run of the water through the grounds, the way Tem set the cup down on the table without making more sound than she had to. The sound of a woman who had been making coffee in this room for six years.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marina sat up. She pulled on the wool sweater she had worn yesterday and the jeans. She came down the loft ladder.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "text": "Marina.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Coffee.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Tem poured. The cup was the cup Tem had given her Thursday night — a heavy ceramic cup that Tem had said her grandfather had bought at the estate sale of a woman who had run a pottery in the cheese-factory-town until 1991. The cup held the heat. Marina took it.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Did you sleep.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Some. More than Thursday.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah. The cabin gets you on the second night.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "The bakery at six.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah. We're leaving here at five. Cale's already at his truck — he came down five minutes ago. Kai is awake. Lena is awake. Finn is up and at the truck with the crow. Per drove down last night to be at Hans's by five-thirty.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The five of us in the cabin are going down in two trucks. Cale's and Kai's. The wagon stays here for me to come back up to after.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "You are coming back up.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am. The bowls are at the cabin. I am not — I am not leaving the bowls at the cabin all day with the cabin empty. I am coming back up after the bakery.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I will be down in town in the afternoon. The bakery is six to eight or maybe nine. I will be back at the cabin by ten and at the apartment in town by three.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I will ride with you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "If you want.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I want.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She drank from the cup.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Marina.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans does not know you yet.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "No.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am going to introduce you when we get there. I am going to introduce you as the foundation's coast operative since 2046 and as the granddaughter of the man Olaf gave the second bowl to in 1976. I am going to introduce you in that order because I want Hans to register the foundation piece first.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The foundation is — Hans has been at a distance from the foundation for fifty years. Hans has known about the foundation since his brother in Bern told him in 1969 that there was a foundation. Hans has not, in any of the years since, contacted them. He has been waiting for the foundation to come to him on a day the foundation would know was the day to come.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "This is the day. You are the foundation. I want you to come in as the foundation first.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Tem. What if I am — what if I am also coming in as a person who is forty-one and tired and who has been at the cabin for two nights and is — by my own reading of myself at four-twenty this morning — slightly out of my depth.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marina. The two are not — the two are not in conflict. You are the foundation and you are a person who is forty-one and tired. Come in as both.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans is going to make you welcome. Hans's wife is going to be at the bakery. Hans's mother-in-law — no, Per's mother — is going to be there. Marit. Marit is sixty-eight and has been carrying the bowl Olaf carved her for fifty-one years and has not, in those years, been in a room with any of the people who are going to be at this bakery this morning.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She is going to be in the room with us at six. She is — Marit is the person who has been carrying the longest at the closest distance and who has been most alone. You and Marit are going to meet. The meeting is going to matter. I want you to know it is going to matter.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come. We have to leave in twenty minutes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "They came down the road in the gray hour before dawn. Cale's F-150 in front. Kai's truck behind. The two trucks held all five of them — Tem and Marina with Cale, Lena and Finn and Kai with Kai.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow rode on Kai's dashboard because Finn had been at the truck for ten minutes warming it up and the crow had walked from Finn's truck to Kai's of its own accord while Finn was inside saying goodbye to Per's wooden box of papers Tem was looking after. Marina registered, from the passenger seat of Cale's truck, the crow walking. The crow walked the way a crow walked when the crow had been domesticated for nine months by being on a man's shoulder and a man's dashboard and a man's kitchen table. Marina had not, until this morning, seen the crow walk.",
+      "t": "narrate"
+    },
+    {
+      "text": "Cale drove. He did not, on the road, say much.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Marina. I am — Marina, I am glad you are here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Thank you, Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I have been at this for thirty years from the wrong end. You have been at it from the other end. I am — I am glad you are here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Thank you, Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He said nothing else on the road.",
+      "t": "narrate"
+    },
+    {
+      "text": "The road was the road. The first creek crossing came at twenty past five. The second at five-thirty. The Sitka stand opened into the alders. The alders opened onto the coast highway. The coast highway took them into Smolvud at five forty-six.",
+      "t": "narrate"
+    },
+    {
+      "text": "The town at five forty-six on a Saturday in late August was the kind of quiet that came before the bakery was open. The Daily Grind had a light on inside but had not yet flipped the CLOSED to OPEN. The Missing Link's diner was dark. The Charging Station was open — the Charging Station was open at all hours, for the freight drivers who came up the road at three in the morning and needed coffee — but the Charging Station was the only light on Main other than the streetlight.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "Cale drove to Hemlock. The bakery's back-kitchen light was on. Hans had been at the bakery since four. Marina had read about this light in a foundation report from 2049 — Hans's back-kitchen light at four AM had been listed as one of the reliable markers a foundation operative on the coast could use to know whether the town was running normally. She had not, in three years of working off that report, expected to be at the back door under that light at five forty-seven in the morning on the last Saturday of August in 2052.",
+      "t": "narrate"
+    },
+    {
+      "text": "She was at the back door now.",
+      "t": "narrate"
+    },
+    {
+      "text": "Cale parked. Kai parked behind him. The five of them got out.",
+      "t": "narrate"
+    },
+    {
+      "text": "Hans opened the back door at five forty-eight. Hans was sixty-eight. Hans was in the apron and the flour and the small wool cap Greta had knitted him in 2046 because Hans had said he could not, after sixty, work in a kitchen at four AM in winter without something on his head. Hans had flour on the left side of the cap where his hand had brushed it without thinking.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "hans",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Hans.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Kai. Lena. Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The three of them said his name back. Hans's eye went to Marina last. He looked at her for a count.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "And you are.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans. This is Marina Lindholm. Foundation operative on this coast since 2046. Granddaughter of Henrik Lindholm in San Francisco, who got the second bowl from Olaf in 1976. She is — she came up to the cabin Thursday night. She has been with us at the cabin for two days. She is — Hans, she is the foundation come to see us.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Hans looked at Marina. Marina did not, for a count, do anything with her face.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Hans.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Marina Lindholm.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Werner — my brother — told me in 1969 in a letter that the foundation had a man in San Francisco named Lindholm. He spelled the name three times in the letter to make sure I had it. He had written the name down for me so I would know who to contact if I ever decided to come in.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I have been carrying your grandfather's name in a letter in a drawer of the desk in my bedroom for fifty-three years. I have not, in those fifty-three years, written to him. He died in 2018 by what I read in the foundation's quarterly six months later. I have been carrying his name since.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Hans.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I — I am — I am sorry I did not come sooner.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Marina. You did not know. The foundation did not, in any of the reports I have read of them, know about me. I have been outside what the foundation knew about. I have been off the map for fifty-three years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The not-coming is not yours. The not-coming is mine. I have been the one who did not write. I am — I am the one apologizing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Marina did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Hans. The foundation is — the foundation is here now.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The foundation is here now.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He stepped back from the door.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Come in. Marit is here. Greta is here. Per is at the back kitchen. The bread is on the table. The coffee is on. Come in.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The bakery's main room at five forty-nine was warm in a way the cabin had not been at five. Marina came in last. She closed the back door behind her. The main room had three long tables: the worktable, the cooling rack table, and the dining table Hans had moved in in 2046 when his daughter and Per had gotten married and the wedding meal had needed somewhere to happen. The dining table was set for ten.",
+      "t": "narrate"
+    },
+    {
+      "text": "Greta was at the kettle. Sixty-six. The kind of woman who had been keeping a house and a bakery and a Swiss husband running for forty-five years by being competent at every job nobody had thought to thank her for. She had a wool sweater on under the apron. She had the same brown eyes as Hans's wedding-photo on the wall behind her. She turned when Marina came in.",
+      "t": "narrate"
+    },
+    {
+      "char": "greta",
+      "text": "Marina.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Greta.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "greta",
+      "text": "Per's been telling me about you all morning. He came down at five-thirty and has been on the bench in the back kitchen with a coffee. Sit. Coffee in a minute.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "Marit was at the dining table. Sixty-eight. Per's mother. She was in a blue cardigan that had been her sister's before it had been hers. Marit had her hands flat on the table. She looked up when Marina came in.",
+      "t": "narrate"
+    },
+    {
+      "char": "marit",
+      "text": "Marina.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Marit.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Henrik Lindholm's granddaughter.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "I have been waiting for you my whole life.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Marina did not, for a count, do anything. Then she walked to the dining table and sat in the chair across from Marit.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "I am sorry it took me forty-one years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "You did not know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I knew about the bowl since 2046. I knew about your family since 2050. I did not — I did not come because the foundation did not order me to come. I have been here three times in two years and I have not come to your son and I have not come to you. I am — I am sorry, Marit.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "The foundation.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "The foundation has been keeping you at a distance from us.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "I am not angry with you, Marina. I have been angry with the foundation for fifty-one years. I have not been angry with the people who work for the foundation. I have been angry with the institution.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "You are sitting across from me at sixty-eight and you are forty-one. The institution is older than both of us. The institution will be angry-with-able for some time after we are both gone.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "I am glad to be at the table with you. Today is for that.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Thank you, Marit.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "scene": "vol7_ch15_bread",
+      "t": "jump"
+    }
+  ],
+  "title": "Saturday"
+}

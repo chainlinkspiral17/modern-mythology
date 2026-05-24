@@ -1,0 +1,468 @@
+{
+  "id": "vol6_ch12_porch",
+  "vol": 6,
+  "chapter": 12,
+  "type": "chapter",
+  "title": "Ch 12 — The Staying",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_caldwell_porch_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Staying",
+      "sub": "21:00 — Caldwell House",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The ride home is twenty-three minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "The light at nine PM in mid-August is the lavender Texas does in the small window between the day's heat dropping off and the night's full dark settling. The cicadas are loud. The cedar scrub on the route she takes has, in the past two months, become her route — she has been taking it because the main road is busier at this hour and because the cedar route gives her the interior twenty minutes of moving through air without anybody else's voice in it."
+    },
+    {
+      "t": "narrate",
+      "text": "She rides."
+    },
+    {
+      "t": "narrate",
+      "text": "At a stoplight three blocks from her grandmother's house, her phone buzzes."
+    },
+    {
+      "t": "narrate",
+      "text": "She checks it at the next stop."
+    },
+    {
+      "t": "narrate",
+      "text": "It is from Wren."
+    },
+    {
+      "t": "say",
+      "char": "Wren",
+      "text": "how was the rest of the day?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, one-handed at the curb, types back:"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "good. curtis is okay. truck wednesday confirmed late.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Wren",
+      "text": "good kid. see you wednesday morning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She puts the phone back in her bag."
+    },
+    {
+      "t": "narrate",
+      "text": "She rides the last three blocks."
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother is on the porch."
+    },
+    {
+      "t": "show",
+      "char": "linda_caldwell",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The porch light is on. Linda is in the wicker chair — the one she has been in every evening this week, at the careful pace of a seventy-one-year-old whose hip is healed but who does not yet take the healed-ness for granted — with a glass of iced tea on the small table beside her and a paperback in her lap that she has, by the look of the page, read maybe twelve pages of in the past hour."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya parks the bike."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother looks up."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "How was the shop, sweetheart.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "It was good, Grandma. It was fine.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Sit. Tell me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya sits in the second porch chair."
+    },
+    {
+      "t": "narrate",
+      "text": "She tells her grandmother about Delia from Diamond. She tells her about Wren's hair. She tells her, briefly, about the shape of the thing with Curtis — without naming it as a shape, just the fact that Wren had said something at lunch and Curtis had said something at close and that the day had, in its quiet way, been about being trusted with a thing she had not, until this morning, been entrusted with at this scale."
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother listens."
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother does not, while Maya is talking, interrupt."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Sweetheart.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah, Grandma.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Curtis is a good man. Most of the men who have worked at small shops for nineteen years are. The ones who aren't, leave. Curtis stayed. You can trust the staying, even when the man is, in a given week, a little raw. The staying is the data.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya thinks about this."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Grandma.",
+      "expr": "thinking"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "You learned things from somebody about this. Where did you learn it from.",
+      "expr": "thinking"
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother thinks for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Honey. I worked for forty-one years at the office of a small accounting firm in New Auburn. Three partners. One assistant — me. The partners changed every fifteen years or so, the way partners do. The assistants did not change. I was the assistant. I watched four generations of partners come and go. The good ones had the staying. They stayed for the work, not for the title. The bad ones came in, hated the work, performed for the title, and left when the title stopped performing for them. By my third year I could tell, on a partner's first day, whether they were a stay-er or a leave-er. By my fifteenth year I had started telling Rick when his clients were going to be one or the other. By my thirtieth year I had stopped having to tell him because by then I had taught him to see it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "You knew Rick before you worked for him?",
+      "expr": "surprised"
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother smiles."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Sweetheart, Rick's father was one of those partners. Rick was twelve when he first came into the office. I gave him a stack of bookkeeping ledgers to look at while his father had a meeting. He read the ledgers for two hours. He asked me, at the end of those two hours, what the ledgers were. I told him. He nodded. He came back the next week. By the time he was sixteen he was helping me with the filing on Saturdays. By the time he was twenty he had decided not to be an accountant. By the time he was twenty-five he had opened the comic shop with the money his uncle left him. I have known Rick Pelfrey for forty-nine years, sweetheart. He is the longest professional relationship of my life.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is quiet."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I didn't know.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "There are a lot of things, sweetheart, that you don't know. Some of them you will learn this summer. Some of them you will learn later. Some of them you will learn after I am gone. The order of the learning is not for me to arrange. I just answer when you ask.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya drinks her iced tea."
+    },
+    {
+      "t": "narrate",
+      "text": "The two of them sit on the porch for a long minute."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "How is Curtis doing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya thinks."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "He is doing the work.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Yes. He is the kind of man who, when something else is hard, holds onto the work harder. The work is the constant. The work is the thing he can do when everything else is harder than he can manage. Let him do the work. Don't try to make him talk about what is hard. He will, when he is ready, talk about it. Until then the work is the kindness you give him by letting him do it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah, Grandma.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "And what Wren told you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Sweetheart. I am not asking what she told you. I am asking how you are carrying it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya thinks."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I am carrying it. I haven't, today, done anything with it. I think tomorrow I will not do anything with it either. The doing — the doing might come next week. Or it might not. The thing might be a thing I just hold for her until she has the next part of it figured out.",
+      "expr": "thinking"
+    },
+    {
+      "t": "narrate",
+      "text": "Linda nods."
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Yes. That is the right shape of carrying. Holding is, often, what we are asked to do. The doing is rarer than the holding. Most of what we are asked to do, in life, is to hold.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "Good girl.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "The two of them sit on the porch in the quiet of a Tuesday at nine forty-eight PM."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas are loud. The cedar smell, off the route Maya rode home on, is faint on her clothes. The iced tea in the second glass has, by the warmth of the night, condensed about half its outer surface into a small ring on the small table."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya gets up at ten oh-three."
+    },
+    {
+      "t": "narrate",
+      "text": "She kisses her grandmother on the forehead."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes inside."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_caldwell_kitchen_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "She makes a sandwich. She eats it at the kitchen counter. She drinks a glass of water."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_caldwell_porch_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "She comes back out to the porch."
+    },
+    {
+      "t": "narrate",
+      "text": "Linda is asleep in the wicker."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya stands in the doorway watching her grandmother breathe — the small steady rhythm of a woman who has, this summer, finally been allowed to rest."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes back inside. She gets the small light blanket from the back of the couch. She comes back to the porch. She drapes the blanket over her grandmother."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns off the porch light."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits in the second chair in the dark."
+    },
+    {
+      "t": "narrate",
+      "text": "The cul-de-sac is quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "She watches it for a few minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets up."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes inside."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "She locks the front door."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns off the kitchen light."
+    },
+    {
+      "t": "narrate",
+      "text": "She climbs the stairs."
+    },
+    {
+      "t": "narrate",
+      "text": "She passes her grandmother's bedroom door, which is open because her grandmother is on the porch. She goes inside and turns back the covers on her grandmother's bed so that when her grandmother comes inside in twenty minutes — which her grandmother will, having been woken by the cooler air or the cicadas or her own internal clock — the bed will be ready."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns back the covers."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes to her own room."
+    },
+    {
+      "t": "narrate",
+      "text": "She undresses."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets into bed."
+    },
+    {
+      "t": "narrate",
+      "text": "She lies on her back and looks at the pale yellow ceiling."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, tomorrow."
+    },
+    {
+      "t": "narrate",
+      "text": "She sleeps."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, on the porch, Linda Caldwell wakes at ten oh-six. She is, briefly, confused. Then she remembers — porch, granddaughter at the shop, soup in the kitchen — and she stands up slowly, at the careful pace a woman moves at when her hip is healed but she does not yet take the healed-ness for granted. She walks inside. She finds the bed turned back. She smiles in the private way she has been smiling, this summer, when she finds the evidence of her granddaughter's presence in the house."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets into bed."
+    },
+    {
+      "t": "narrate",
+      "text": "She sleeps."
+    },
+    {
+      "t": "narrate",
+      "text": "The house, for both of them, is quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "The radio, on the windowsill, stays off."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas, outside, eventually fall."
+    },
+    {
+      "t": "narrate",
+      "text": "The night holds."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

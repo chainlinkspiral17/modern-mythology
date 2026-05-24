@@ -1,0 +1,91 @@
+{
+  "id": "vol6_ch2_gas_oracles",
+  "vol": 6,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Ch 2 — Gas Station Oracles & Slushie Futures",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kwikstop_exterior.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol6_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Chapter 2",
+      "sub": "Gas Station Oracles & Slushie Futures",
+      "duration": 3200
+    },
+    {
+      "t": "interlude",
+      "text": "The Magician, reversed.",
+      "sub": "Every tool in Harmony Creek knows what it is for. None of them has asked the question back.",
+      "duration": 3400
+    },
+    {
+      "t": "interlude",
+      "text": "Harmony Creek Estates",
+      "sub": "Monday · 09:04",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Monday arrives the way Mondays arrive in Harmony Creek Estates: dressed up as itself, indistinguishable from Sunday or Tuesday except for the slight increase in traffic on the arterials and the fact that the sprinklers, on Mondays, do not run."
+    },
+    {
+      "t": "narrate",
+      "text": "Mondays are resting days. The lawns, per the HOA's Residential Conduct Standards, are permitted to thirst on Mondays, as part of what the handbook refers to, without apparent irony, as the landscape's narrative of endurance."
+    },
+    {
+      "t": "narrate",
+      "text": "The thermometer at the Kwik Stop, which has been stuck at 97 degrees for the past three summers because Jen the day manager does not believe in paying to replace a thermometer, reads 97 degrees."
+    },
+    {
+      "t": "narrate",
+      "text": "The actual temperature is 89. By one PM it will be 104."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam Miller has the noon-to-eight."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya Daigle has Cosmic Comics until five."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse Henderson has the Pit Stop Diner, three-to-eleven, closing."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben Kowalski has the morning prep at the Pit Stop, six-to-two, and an optional double until close if Jesse needs help — which Jesse, without yet knowing it, is going to."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego Ramos is, for the purposes of the Harmony Creek Estates Private Security Authority's database, unreachable at scheduled workplace, contact pending. His shift supervisor, Skip Donnelly, filed the notation this morning at 08:14 in the small checkbox field the NexCorp employment system provides for such occasions. He did not, in filing it, call Diego's grandmother."
+    },
+    {
+      "t": "narrate",
+      "text": "The small checkbox field is cross-referenced, per NexCorp's HR protocol, to Chief Miller's office at 08:15."
+    },
+    {
+      "t": "narrate",
+      "text": "Chief Miller receives the notification."
+    },
+    {
+      "t": "narrate",
+      "text": "Chief Miller does not act on it."
+    },
+    {
+      "t": "narrate",
+      "text": "He archives it in a folder on his workstation labeled PENDING — R. The folder contains, as of this morning, four other notifications, the oldest of which dates to 2019."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch2_cosmic"
+    }
+  ]
+}

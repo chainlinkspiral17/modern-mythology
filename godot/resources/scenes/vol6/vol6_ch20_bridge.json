@@ -1,0 +1,995 @@
+{
+  "id": "vol6_ch20_bridge",
+  "vol": 6,
+  "chapter": 20,
+  "type": "chapter",
+  "title": "Ch 20 — Substation Nine",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_jesse_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Substation Nine",
+      "sub": "Friday — 16:12 — Jesse's Bedroom",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The bridge is on the small spiral notebook page Jesse has been carrying in his back pocket since Wednesday, and he has not, since Wednesday, set it to music until this afternoon at four-twelve PM in his bedroom with the unplugged Telecaster in his lap."
+    },
+    {
+      "t": "narrate",
+      "text": "The chord progression he had played Wednesday night — three chords, the right three — has, in the two days since, become four chords. The fourth chord is a small suspended thing he had not been intending and that had, on Thursday afternoon at four-something, simply happened under his fingers when he had been running the three through and had let the third chord hang for a beat too long. The fourth chord turned out to be the bridge's resolution."
+    },
+    {
+      "t": "narrate",
+      "text": "He plays it through."
+    },
+    {
+      "t": "narrate",
+      "text": "The bridge, with the four chords, is — by his own internal sense which is, by August, becoming a thing he can trust — the bridge. The lyrics, which he had drafted in the notebook on Wednesday night and which he had refined in the kitchen Thursday morning before going to the Pit Stop, have settled into eight lines. The eight lines are the lines that, when Em hears them at five-thirty this evening, are going to be the lines."
+    },
+    {
+      "t": "narrate",
+      "text": "He plays the bridge through twice more."
+    },
+    {
+      "t": "narrate",
+      "text": "He puts the Telecaster down."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets ready for practice."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_jesse_garage.jpg"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Practice today is at his garage. Carl pulled up with the snare at four-forty-eight. Nate came over with the bass at four-fifty-two. Em arrived at five-oh-one with the small portable mic stand she has, since June, been bringing to every practice in the small soft case her mother had given her at her high school graduation."
+    },
+    {
+      "t": "show",
+      "char": "em",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Em comes into the garage. She looks at Jesse."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Bridge?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Show me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He plays it. He plays it once through with the chords only, then once through with the chords and the lyric on top, sung in the small not-yet-fully-committed register he uses when he is showing a band a thing for the first time and is, in the showing, leaving room for them to push back on it."
+    },
+    {
+      "t": "narrate",
+      "text": "The bridge, in his garage, in the four-fifty-three PM heat, sounds — by his own listening, which is the listening of a kid who has been writing songs since 2023 and who is, at twenty, beginning to learn the difference between a thing he wrote that he likes and a thing he wrote that is, by the small objective measure songs have, good — sounds good."
+    },
+    {
+      "t": "show",
+      "char": "carl",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Em listens."
+    },
+    {
+      "t": "narrate",
+      "text": "Em, when he has finished the second pass, does the specific small Em-thing of being silent for a beat that is one syllable longer than the beat the band has come to expect from her."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Jess.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carl",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "nate",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "nate",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Nate",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Run it with the band. From the top of the song.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They run it."
+    },
+    {
+      "t": "narrate",
+      "text": "Substation Nine, with the bridge, is — Jesse registers as the song comes around to the bridge and Em comes in on the harmony she has, on the spot, decided is the right harmony for the second line — the song he has been trying to write all summer."
+    },
+    {
+      "t": "narrate",
+      "text": "The bridge lands."
+    },
+    {
+      "t": "narrate",
+      "text": "The bridge lands in the specific way a bridge lands when the song has, in its bones, been waiting for it, and when the bridge — when it arrives — is the small structural moment that the song's earlier parts have been, by the song's own internal logic, asking for."
+    },
+    {
+      "t": "narrate",
+      "text": "The song ends."
+    },
+    {
+      "t": "narrate",
+      "text": "The garage, after the song, is, for a beat, very quiet."
+    },
+    {
+      "t": "say",
+      "char": "Carl",
+      "text": "That's the song.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Nate",
+      "text": "That's the song.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "That's the song.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "We play it second tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "I want to run it three more times. Then Box Fan, then Blowback, then Here Comes Your Man. Then we run the whole set top to bottom in order, no stopping. Then we go home.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Carl",
+      "text": "Yes, ma'am.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Nate",
+      "text": "Yes, ma'am.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Don't yes ma'am me, Carl. I'm eighteen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Carl, behind the kit, grins."
+    },
+    {
+      "t": "narrate",
+      "text": "They run it again."
+    },
+    {
+      "t": "narrate",
+      "text": "By seven-twenty practice is done."
+    },
+    {
+      "t": "narrate",
+      "text": "The set, by the run-through Em had insisted on, is — the band agrees — ready. Not perfect. Ready. Substation Nine with the bridge sits at the second slot exactly where Em had said it should sit on Wednesday night. The transition from Grid Failure into it has the small tonal break the set wants. Box Fan lightens after. Blowback anchors the middle. Here Comes Your Man — Em singing lead — closes."
+    },
+    {
+      "t": "narrate",
+      "text": "Carl breaks down the kit. Nate unplugs. Em packs her mic."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_jesse_driveway_evening.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "em",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "In the driveway, Em comes up to Jesse."
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "You did the work.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "We did the work.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "The bridge is yours. The bridge is the song. I told you on Wednesday what to write. You wrote it. The fact that I told you to does not — does not make it mine. I want you to take this one.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, in the driveway, for a beat, does not respond."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Em.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Thanks.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "Don't make it a thing. Get sleep. Tomorrow is — tomorrow is gonna be tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Em gets in her car. She pulls out."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at his garage, alone, stands in the driveway for a beat after the band has gone."
+    },
+    {
+      "t": "narrate",
+      "text": "The song is the song. Tomorrow night at nine PM he is going to play it at The Foxhole. He is twenty. He is going to play, at twenty, the first song he has written that is the song. He has a band. The band has named the song the song. They are, tomorrow, going to play it for whatever audience The Foxhole has at nine on a Saturday in mid-August. The audience is going to be the audience."
+    },
+    {
+      "t": "narrate",
+      "text": "He is going to drive past the strip mall on the way home from the Pit Stop tomorrow afternoon, the way he has been driving past it on Friday and Wednesday for two months. He is going to register whatever is or is not at the unit, and he is going to do nothing with the registering, because tomorrow is a gig night and the gig is the gig."
+    },
+    {
+      "t": "narrate",
+      "text": "He should, tonight, go past once. Just to know. Yeah. He'll go past on the way back from getting dinner."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes inside. He eats a sandwich his mother had left in the fridge for him. Eileen is, this evening, out — she is at the bakery on Magnolia, picking up the cinnamon coffee cake she had promised to bring to the Sunday afternoon thing at the Kowalskis'. Jim is, by the absence of his truck in the driveway, also out."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the kitchen counter, eats the sandwich. He'll take the Civic past the strip mall on the way to nothing in particular. Just the drive-by. Eight-thirty PM Friday — the same hour he would otherwise be at home."
+    },
+    {
+      "t": "narrate",
+      "text": "He picks up his keys. He goes."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_strip_mall_exterior_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "The drive-by is the small drive-by he has, since June, been doing."
+    },
+    {
+      "t": "narrate",
+      "text": "He takes the back road. He takes the small parallel side road that leads to the strip mall on Live Oak. He approaches from the south, the way he always approaches, with the small angle that puts the strip mall's back unit on his right as he passes."
+    },
+    {
+      "t": "narrate",
+      "text": "The unit, this Friday at eight-thirty-nine PM, is dark. The papered-over front window is — Jesse, slowing the Civic past the front of the strip mall to look — papered over. The chalk marquee at The Foxhole at the front of the strip mall now reads, in someone's handwriting from this morning: SAT 8/22 — DOORS 8 — SUBURBAN BLIGHT 9 — DJ CHESS 11."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse reads it. He reads his band's name on the marquee for the second time in his life."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: huh."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls past the marquee. He pulls into the strip mall's main lot. He intends, in the moment of pulling in, to just circle the lot and leave. He does not intend to stop."
+    },
+    {
+      "t": "narrate",
+      "text": "But then he sees, in the lot in front of The Foxhole's front door, a 2019 Toyota Tacoma he has not seen before, and a smaller cargo van with a logo on the side that says RAMÓN VARGAS LIGHTING — SAN ANTONIO, and the front door of The Foxhole is propped open with a small black road case."
+    },
+    {
+      "t": "narrate",
+      "text": "There is light inside."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, in the Civic, in the lot, pulls into a parking spot. He sits. Somebody is in there. By the Tacoma and the lighting van, almost certainly DJ Chess. He is, at nine on a Saturday, opening for her. She is, this Friday at eight-forty PM, in the venue."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits with the arithmetic of should I go in for about twelve seconds."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets out of the Civic. He walks across the lot to the propped-open door."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_foxhole_interior_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The room, when he steps inside, is in the small magic-hour state of a venue being rehearsed in."
+    },
+    {
+      "t": "narrate",
+      "text": "The house lights are mostly off. There is one work light at the back of the room. The stage at the front is lit, in slow rotation, by six programmable LED fixtures mounted on two vertical truss towers at the lip of the stage. The lights are doing — Jesse registers, standing at the door — a slow specific cycle of deep blue into deep purple into a small magenta, with a single white spike at the end of the cycle that comes and goes in maybe two seconds."
+    },
+    {
+      "t": "narrate",
+      "text": "The PA is playing, at the small volume DJs use when programming, a four-on-the-floor track that Jesse does not recognize and that has, by the way the bass is hitting the room's back wall, the feel of a track that has been chosen specifically for its low end."
+    },
+    {
+      "t": "narrate",
+      "text": "At the small DJ booth at the side of the stage, a woman is at a laptop. At the front of the stage, a man with a smaller laptop and a DMX controller is doing the work of programming."
+    },
+    {
+      "t": "show",
+      "char": "chess",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The woman, at the booth, looks up when Jesse comes in. She is — Jesse registers — around thirty, Tejana, in a black t-shirt and jeans and a small thin gold chain around her neck. Her hair is short. Her eyes do the thing eyes do when their owner is, in the middle of a task, registering an interruption and is doing the small calculation of how to handle the interruption with the minimum cost to the task."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Hey. You the opener?",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah. Suburban Blight. I was — I was driving by. I saw the door open.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Come in. Walk to the back. Stand against the back wall. Don't move for thirty seconds.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He walks to the back. He stands against the back wall."
+    },
+    {
+      "t": "narrate",
+      "text": "She nods at the man at the front. She says: Run it again. The man, at the controller, runs it again. The lights cycle. The track plays. The bass, on the back wall, does a specific thing Jesse registers — the bass is hitting the back wall and is, on the third beat of every measure, doing a small reflective doubling that he can feel in his sternum."
+    },
+    {
+      "t": "narrate",
+      "text": "Thirty seconds pass."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Well?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "It's — there's a specific bass thing on the back wall on every third beat. It's doubling. Not bad. Just — it's a thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Yeah?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She says, to the man at the front: Take three off the eighty hertz. Try it again. The man does the small knob-turn on the controller."
+    },
+    {
+      "t": "narrate",
+      "text": "The track plays again. The bass, on the back wall, hits — Jesse registers — cleaner. The doubling is gone. The kick is, in the way the kick should sit in this room, sitting where it should."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Better?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah. That's — that's clean now.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She says, to the man: Lock it. That's the eighty for the room. The man, at the controller, does the small lock-it gesture."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Good. Thanks for the ears, man. What's your name?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Jesse. Henderson.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She says — and her name comes out in the way it comes out, with the front consonant softer than English would put it, in the register of someone who has named herself with the small phoneme her own first language gives the word: Chess."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, in the moment, parses the sound. He parses it both ways. The English Chess and the soft Spanish Chess. He does not, in the small four-second window his head has, decide which one to give back."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Hi, Chess.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He says it the English way."
+    },
+    {
+      "t": "narrate",
+      "text": "She registers — Jesse can see the small micro-registration in the small tilt of her head — that he has used the English. She does not correct him."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Hi, Jesse.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She says it the same way she said her own name. Which means, Jesse parses, two seconds later, that Jesse in her mouth is the soft J — Jyess-ee."
+    },
+    {
+      "t": "narrate",
+      "text": "He registers it. He does not, in the moment, do anything with the registering."
+    },
+    {
+      "t": "show",
+      "char": "ramon",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "This is Ramón. He's my brother. He's doing the lighting.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ramón, at the front of the stage, raises a hand without looking up from the controller."
+    },
+    {
+      "t": "say",
+      "char": "Ramón",
+      "text": "Hey, man.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Hey, Ramón.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "We're gonna program for another two hours. You're welcome to stay if you want. We're just — we're working. Don't expect entertainment. But the sound at the back is useful. If we run cues and you have ears that are not in this room every weekend, that's data.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the back of the room, thinks for a beat. She is offering him the job of being a second pair of ears for the next two hours. She is not offering him a friendship. The offer is the working-professional one of treating him, for the duration of a task, as a peer. He has nothing else to do."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I can stay for a while. I can't stay all night — I have an early thing tomorrow morning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Yeah. Stay an hour. That'll get us through the first three cues.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He stands at the back wall. He listens."
+    },
+    {
+      "t": "narrate",
+      "text": "For the next sixty-three minutes, Jesse stands at the back of The Foxhole and listens to Chess and Ramón program three lighting cues to three different tracks Chess is going to use in her Saturday set."
+    },
+    {
+      "t": "narrate",
+      "text": "The three tracks are — Jesse registers, by Chess's small offhand commentary as she cues them up — a 2019 deep-house track from a Berlin producer, a small remix of a Selena song that Chess has done herself and that she has been playing in her set for about four months, and an experimental track from a producer in Mexico City that is, by the way Chess introduces it to Ramón, the new one. It's weird. We need to figure out the lights for it."
+    },
+    {
+      "t": "narrate",
+      "text": "Ramón programs the lights. Chess plays the tracks. Jesse, at the back, says things when asked."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "The blue is good. The purple is too long. By the time the kick re-enters, you're three seconds past the purple. Cut the purple to four bars.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Yeah. He's right. Cut it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ramón cuts it."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "The white spike on the chorus is — the white spike is great. It's the right spike. But the cycle that comes after it goes back to the deep blue too fast. There's no — there's no breath. Hold the white for an extra beat.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Hold it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ramón holds it."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I have no idea what to do with that one. I don't know what the song is doing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Neither do we.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ramón",
+      "text": "We'll figure it out. Probably.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The track, by Jesse's count, has no clear downbeat for the first ninety seconds of the four-minute version Chess plays. The beat comes in at ninety-one seconds and is, when it comes in, the kind of beat that makes Jesse register — with the attention his summer has been training — that this song is the song Chess is going to use to take the room from one place to another at some specific point in her set."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "When does that one go in your set.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "About forty minutes in. Right before the closing run.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Okay. The song is the bridge. Of the set.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Chess is quiet for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at him."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "You think about set order.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah. I'm — I'm in a band. We — we've been working on set order this week.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Suburban Blight.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "What's your set tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Five songs. Grid Failure opens. Then a new one we just put together this week. Then Box Fan, which is just a song about a box fan. Then Blowback. Then a Pixies cover, Here Comes Your Man, with our backing vocalist on lead.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Why is the new one second.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Because — because it's the song. Em — our backing vocalist — said the room would still be warming up but already paying attention, and that the new one is the one we want them to remember.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Em is right.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "What's the new one about.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the back of the room, thinks for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "It's — it's about the substation. The one that closed in April. It's about — it's about the people who are still here, who knew about the substation when it was running, and who are, this summer, still in the parking lot.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Chess looks at him for a long moment."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "I'll listen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She turns back to the laptop. The conversation, by her turning back, is over."
+    },
+    {
+      "t": "narrate",
+      "text": "At ten-eleven Jesse looks at his phone. He has been at the venue for about an hour and a half. He has, by the Chess-rate of one cue every twenty-some minutes, helped lock four cues. The fifth is in progress. He should go. He has, this evening, met the person whose name is on the flyer next to his. She is not, by tomorrow, going to remember him as anything other than the kid who heard the bass on the back wall. That is fine. That is the shape of how this works."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Chess. I gotta head.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Chess, at the booth, looks up."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Yeah. Thanks for the ears, Jesse.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She says it the soft way."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Thanks for letting me stay. Good to meet you. See you tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "See you tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ramón, at the front, raises a hand without looking up."
+    },
+    {
+      "t": "say",
+      "char": "Ramón",
+      "text": "Bye, man.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse goes to the door. At the door, he pauses for a beat. He turns."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Chess.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Chess looks up."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "What time do you go on?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Eleven.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I'll — I'll be in the room.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "text": "Yeah. You'll be in the room.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She says it without weight. She says it in the small working-professional way of a DJ confirming that the opener will, by virtue of being at the venue at nine, also be at the venue at eleven, and that the confirmation is not, by the math of how DJ-and-opener relationships work, a thing."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the door, registers the not-being-a-thing. He nods. He goes."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_civic_parked_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "In the parking lot, in the Civic, with the door closed, he sits for a minute."
+    },
+    {
+      "t": "narrate",
+      "text": "He just had a sixty-three-minute conversation with a working DJ. The conversation was about lighting cues and bass on the back wall and the song that goes forty minutes into her set. The conversation was not friendly. It was not anything other than a working professional and a kid who happened to walk in at the right time and who happened to have ears that worked."
+    },
+    {
+      "t": "narrate",
+      "text": "It was, in some way, the most important conversation he has had with an adult about music in his life. Chess does not, by tomorrow, remember him. Chess has many openers. Chess will, in the next year, have several hundred more conversations like the one they just had. The conversation will land in him as a thing he will remember for a long time. For Chess, it will be the Friday-night programming session at The Foxhole when the opener walked in and the bass at the back wall was eighty hertz too hot. That is the asymmetry. The asymmetry is fine."
+    },
+    {
+      "t": "narrate",
+      "text": "He is, this Friday at ten-fifteen PM, twenty years old. The asymmetry is also the data. The data is what the next ten years of his life is going to be made of. He is okay with that."
+    },
+    {
+      "t": "narrate",
+      "text": "He starts the Civic. He drives home."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch20_prints"
+    }
+  ]
+}

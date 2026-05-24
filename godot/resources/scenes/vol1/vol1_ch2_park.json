@@ -1,0 +1,276 @@
+{
+  "id": "vol1_ch2_park",
+  "vol": 1,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Act One — The Park",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_park_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Park",
+      "sub": "Later · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "EXT. THE PARK — DAY"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust is jogging with his friend, Jacob."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "What have you been reading, my friend?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Oh, let's see — Ratifying Nations of the Comprehensive Nuclear Test Ban Treaty."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I just started reading — funnily enough — the book whose title character I was named after."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "So how is it as a translation? Hear us yanks can't quite get it right."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Not too shabby. Taking my time with it. Have this funny feeling life is getting weirder."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Lay off the recreational, man — you're wigging me out a bit. Here."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "No big deal. Well — it is a big deal. Found some fun stuff out about my grandparents."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "People are always finding out cool stuff about grandparents. Grandparents are awesome for all the shit they lived through."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Well said. But my relations, while awesome, ran to the kooky occult side of things. Dabbled in sex magick and the like."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Go on."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm not sure if my grand-dad was Jack Parsons or L. Ron Hubbard."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I know of Monsieur Xenu — but not of this Parsons dude."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"Long story short, let me sum it up.\"",
+          "goto": 22
+        },
+        {
+          "text": "\"Buckle up. This one earns its bourbon.\"",
+          "goto": 22
+        }
+      ]
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_grandparents_montage.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "A Ken Burns Montage",
+      "sub": "circa 1946",
+      "duration": 2400
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Lafayette — as I'll call L. Ron — always wanted to be a sailor boy. Dreamed big dreams. And boy, how he schemed."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Loved his genre books, his science fictions, cowboys, jungles, outer space creatures."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Lived a wonderful life — if only in his own head. Submarine commander and deep-cover (yet decorated) secret agent."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Medical discharge. Drifting about Los Angeles in with New Age, better-living, better-looking people — drawn to his larger-than-life escapades."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "They were not all entirely stupid. Jack Parsons was perhaps brilliant — a non-academic rocket scientist, founding father, wicked eccentric."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "His tastes ran to the occult. His lofty Pasadena mansion — home to many like-minded explorers, also traversing the edge of existence."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Lafayette and Parsons were best friends, worst enemies — each seeking the same thing from their own extreme, gazing into the abyss of their reflection."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "They shared a woman. Her name was Betty. She was my grandmother. And here I am, five decades later."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_park_day.jpg"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Cut back to the jogging."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I'll have to read up on that."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Me too. There's more cool shit to it."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Funky family skeletons do that chicken dance."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Tell me about it."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_jacob_apartment.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Jacob's Apartment",
+      "sub": "Later · Day",
+      "duration": 1600
+    },
+    {
+      "t": "narrate",
+      "text": "INT. JACOB'S APARTMENT — DAY. Jacob and Faust playing video games."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "So what's been new with you?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Working on cool video games. Smorking. Getting laid regular. Playing some bass. Top Gear torrented for later this evening."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch2_painting"
+    }
+  ]
+}

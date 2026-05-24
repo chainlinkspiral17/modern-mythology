@@ -1,0 +1,58 @@
+{
+  "id": "vol1_link_hub",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "The Missing Link — inside",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_missing_link_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Look out the rain-glazed window.",
+          "scene": "vol1_link_window"
+        },
+        {
+          "text": "Read the laminated menu.",
+          "scene": "vol1_link_menu"
+        },
+        {
+          "text": "Stand by the jukebox.",
+          "scene": "vol1_link_jukebox"
+        },
+        {
+          "text": "Examine the photographs above the booth.",
+          "scene": "vol1_link_booth"
+        },
+        {
+          "text": "Take a stool at the counter.",
+          "scene": "vol1_link_counter"
+        },
+        {
+          "text": "Step outside to the bench.",
+          "scene": "vol1_link_outside"
+        },
+        {
+          "text": "Wait. The bus will come when it comes.",
+          "scene": "vol1_link_shuttle"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "vol4_standoff",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "He looks at what you've done. The silence gets long enough that it stops being a threat and starts being something else."
+    },
+    {
+      "t": "say",
+      "char": "CASPER",
+      "expr": "considering",
+      "text": "That's a lot of work for a wall nobody was using."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"The city was going to buff it anyway.\"",
+          "goto": 3
+        },
+        {
+          "text": "\"I wanted it to mean something.\"",
+          "goto": 6
+        },
+        {
+          "text": "\"I can go over it. If that's what you want.\"",
+          "goto": 9
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "CASPER",
+      "expr": "amused",
+      "text": "Ha."
+    },
+    {
+      "t": "say",
+      "char": "CASPER",
+      "expr": "amused",
+      "text": "Yeah. They're gonna buff it. Doesn't make it not mine before they do."
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_end"
+    },
+    {
+      "t": "say",
+      "char": "CASPER",
+      "expr": "surprised",
+      "text": "..."
+    },
+    {
+      "t": "say",
+      "char": "CASPER",
+      "expr": "neutral",
+      "text": "Most people don't say that."
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_end"
+    },
+    {
+      "t": "say",
+      "char": "CASPER",
+      "expr": "cold",
+      "text": "I know you could."
+    },
+    {
+      "t": "say",
+      "char": "CASPER",
+      "expr": "neutral",
+      "text": "The fact that you're asking means something. I haven't decided what yet."
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_end"
+    }
+  ],
+  "vol": 4
+}

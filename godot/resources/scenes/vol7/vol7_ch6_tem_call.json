@@ -1,0 +1,106 @@
+{
+  "id": "vol7_ch6_tem_call",
+  "vol": 7,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — The Call",
+  "nodes": [
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"I can't get up there. The bus doesn't run.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "cold",
+      "text": "\"I know.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Should I call Cale. He has a truck.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "cold",
+      "text": "\"Don't pull Cale into this yet. Stay in town. We'll come down. The four of us at your place at six.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"What happened.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "cold",
+      "text": "\"Roy Hummel came into Kai's shop this morning and asked Kai whether Finn has been in possession of materials belonging to the museum-town historical society.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She closed her eyes for a second. She knew Roy from the Daily Grind. He had been on her do not engage list since her first week behind the bar, on Soren's instruction. She had been pulling Roy's hot chocolates twice a week for two and a half years and had managed, in all that time, never to be alone in the shop with him."
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"All right,\" she said. \"I'll be at the apartment at six. Anything you need from me until then?\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "cold",
+      "text": "\"Sit. Eat. Don't go to the studio. Don't go to the bookstore. Don't be in the alley. Don't engage Roy if you see him.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"It's that bad.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "cold",
+      "text": "\"I think it might be. We'll know more by six.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She hung up."
+    },
+    {
+      "t": "narrate",
+      "text": "She stood on Main with her phone in her hand and the rain not quite raining and the patch on the sanderling about three feet square now."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Go home. Sit. Eat.",
+          "goto": 15
+        },
+        {
+          "text": "Walk to ChillWave.",
+          "goto": 15
+        },
+        {
+          "text": "[Stay on the corner a moment longer.]",
+          "goto": 15
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "She did not go home. She walked the four blocks to ChillWave."
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch6_chillwave"
+    }
+  ]
+}

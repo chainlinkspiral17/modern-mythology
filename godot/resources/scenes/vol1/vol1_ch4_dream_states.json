@@ -1,0 +1,148 @@
+{
+  "id": "vol1_ch4_dream_states",
+  "vol": 1,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Act One — Dream States",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_bedroom_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_dream_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Dream States",
+      "sub": "INT. Faust's Bedroom · Night",
+      "duration": 2600
+    },
+    {
+      "t": "narrate",
+      "text": "INT. FAUST'S BEDROOM — NIGHT"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust wakes from a bad dream. Sitting at the foot of his bed is a woman."
+    },
+    {
+      "t": "show",
+      "char": "woman",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "I did not want to alarm you."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Not alarmed. Just not awake fully."
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "You lose control of dreams, you lose control of reality."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Reality is a new day — which I live as if it were my last."
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "And what of yesterday? Did it amount to much?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Just trying to build something tangible with my friendships."
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "And yet you resist making new friends. Why is that?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I have difficulty satisfying good connections I have already."
+    },
+    {
+      "t": "narrate",
+      "text": "She moves into bed with Faust."
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "Want me to leave you be — or hold you close?"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"If you're already in my head — hold me close.\"",
+          "goto": 17
+        },
+        {
+          "text": "\"Leave me. Let me sleep this off.\"",
+          "goto": 21
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "If you're already in my head — hold me close, please."
+    },
+    {
+      "t": "narrate",
+      "text": "She hugs Faust tight."
+    },
+    {
+      "t": "flag",
+      "key": "faust_dream_woman_held",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch4_lullaby"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Leave me. Let me sleep this off — whatever you are."
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "You don't mean that. But all right. I'll be where I've been."
+    },
+    {
+      "t": "flag",
+      "key": "faust_dream_woman_held",
+      "val": false
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch4_lullaby"
+    }
+  ]
+}

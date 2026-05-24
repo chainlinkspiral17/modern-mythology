@@ -1,0 +1,180 @@
+{
+  "id": "vol6_ch2_kwik_stop",
+  "vol": 6,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Ch 2 — Kwik Stop",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kwikstop_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Kwik Stop",
+      "sub": "Monday · 13:47",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam is behind the counter when the man with the golf-shirt sunburn comes back in."
+    },
+    {
+      "t": "show",
+      "char": "sunburn_man",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He is, she registers, wearing the same clothes he had on yesterday. The sunburn has not faded. His eyes do not go to the back cooler this time. They go, briefly, to her — the same three-second look in the convex mirror he had used yesterday — and then to the little snack section, where he picks up a bag of pretzels and a Snickers."
+    },
+    {
+      "t": "narrate",
+      "text": "He brings them to the counter. He sets them down."
+    },
+    {
+      "t": "say",
+      "char": "Sunburn Man",
+      "expr": "neutral",
+      "text": "(looking at the pretzels, not at Sam) \"Hot one today.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Sunburn Man",
+      "expr": "neutral",
+      "text": "\"You working tomorrow?\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"I'm — yes.\""
+    },
+    {
+      "t": "say",
+      "char": "Sunburn Man",
+      "expr": "neutral",
+      "text": "\"Morning or evening?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam's throat goes tight. The cold returns."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "(lying, effortlessly) \"Morning. Six to two.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She is, in fact, off tomorrow. She has nothing scheduled until Wednesday."
+    },
+    {
+      "t": "narrate",
+      "text": "The man nods. He pays cash. He takes his receipt. He does not, on the way out, say anything else. The bell chimes."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam watches him cross the parking lot to the white sedan. He does not get in the driver's seat. He gets in the passenger seat. There is, Sam now sees, another person in the driver's seat — a woman she had not seen yesterday, who had not been visible through the tinted windshield from this angle until the man opened the passenger door."
+    },
+    {
+      "t": "narrate",
+      "text": "The woman is younger. The woman is also wearing a press lanyard, which Sam can see briefly flash when the man hands her the Snickers."
+    },
+    {
+      "t": "narrate",
+      "text": "The sedan pulls out. It still has no front plate."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam stares at the door for a long moment. Then she takes out her phone. She texts Graciela Ramos:"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "role": "— text · 13:48 —",
+      "expr": "neutral",
+      "text": "the sedan came back. two people this time. one of them is wearing a press lanyard. i think they are watching me. i don't know what to do."
+    },
+    {
+      "t": "narrate",
+      "text": "The reply comes in forty seconds."
+    },
+    {
+      "t": "say",
+      "char": "Graciela Ramos",
+      "role": "— text —",
+      "expr": "neutral",
+      "text": "Mija. They are not watching you. They are protecting you. Do not approach them. Do not avoid them. Continue as you have been. — G."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam reads the message three times. She puts the phone down."
+    },
+    {
+      "t": "narrate",
+      "text": "She looks around the empty Kwik Stop — the row of slushie machines grinding softly under the fluorescent lights, the buzzing stockroom light, the decal hamburger missing its eye, the coolers humming, the microwave clock reading 13:59 when the time is actually 13:50 — and she thinks, with the small clear honesty that has, since yesterday afternoon, become the tone of her interior voice:"
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "I am inside a thing. I have been inside a thing for longer than I realized. I am not the first person to notice it. Other people have been noticing it for a long time, and they are, apparently, also watching out for me."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "I am going to have to learn, quickly, how to be the kind of person who is watched out for without needing it to be named as such."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "Graciela knew the sedan. Graciela answered in forty seconds. Graciela has been in communication with people I do not know about. Graciela is a node."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, until this moment, have the word node for what she is beginning to map. The word will come later, from Maya, who will give it to her in late June at a table in the back of Cosmic Comics over two iced coffees, and who will say — \"that's what F.T. called them, and it's the least wrong word I've heard.\" Sam will say, who is F.T. Maya will say, I'm still figuring that out."
+    },
+    {
+      "t": "narrate",
+      "text": "But that is three weeks away."
+    },
+    {
+      "t": "narrate",
+      "text": "Today, in the empty Kwik Stop, Sam Miller has only the small word inside, and the small word thing, and the slightly larger word node which she has not yet met. She registers the deficit. She notes it for future correction. She wipes down the counter. She watches the parking lot."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch2_dumpster"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "vol1_ch3_judgement_day",
+  "vol": 1,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Act One — Judgement Day",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_jd_driving_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_drive_night.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Judgement Day",
+      "sub": "EXT. Driving Around · Night",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "EXT. DRIVING AROUND — NIGHT"
+    },
+    {
+      "t": "narrate",
+      "text": "Good music is playing. Everyone is tuned in and excited."
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "All right."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "The night is young. Let us find some bitches."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "If bitches ye seek — bitches you'll find."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Which is why I look for ladies."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Whatever mood strikes me, I do little to resist — as we are complex animals, fighting flawed-up nature."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "How can you both engage in and hope to supplant base instinct?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Easy to just go with it. Recognize and learn from experience."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Which is why the world needs new mythology. We three shall be the Handsome Triumvirate — but aren't we already? I mean, look at us."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Living in this land of milk and honey."
+    },
+    {
+      "t": "flag",
+      "key": "handsome_triumvirate",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch3_bar"
+    }
+  ]
+}

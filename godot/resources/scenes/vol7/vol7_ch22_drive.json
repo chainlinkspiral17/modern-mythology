@@ -1,0 +1,350 @@
+{
+  "id": "vol7_ch22_drive",
+  "vol": 7,
+  "chapter": 22,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The Tower",
+      "sub": "Old-Yachats",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "The drive up 101 from Smolvud to old-Yachats was forty-three miles.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem had not, in her adult life, driven the stretch. She had been to Yachats — present-day Yachats, a small coastal community eighteen miles south of Newport — three times: once with Eddvard in her teens on a day-trip to a bookstore that had closed in '38, once with a college boyfriend in her early twenties, once with Cale in '46 on the afternoon Cale had brought a stick back from a buyer in Florence and the two of them had stopped at a roadside café to drink coffee and look at the ocean. She had not been to old-Yachats.",
+      "t": "narrate"
+    },
+    {
+      "text": "Old-Yachats was the bluff three miles north of present-day Yachats, on a small unincorporated headland that had been bypassed when the coastal highway had been straightened in the 2020s. The bluff had been a fishing village in the early twentieth century. The village had emptied in the 1970s when the cannery in Newport closed. The bluff had been undeveloped land for forty years.",
+      "t": "narrate"
+    },
+    {
+      "text": "In 2010 a real estate trust connected to Dean had purchased the bluff. Construction on the tower had begun in 2011. The tower had been completed in 2013. Dean had lived and worked in it for twenty-nine years, until his death in 2042. The tower had been sealed since 2042.",
+      "t": "narrate"
+    },
+    {
+      "text": "This was — Tem registered as she drove north past Cape Perpetua at three-eleven — what she knew about the tower. The rest of what she knew about Dean she had learned by being a child of his era: the gaming company, Oneironautics Inc., the slow-stick technology, the early sticks Dean himself had produced, the move into substrate-design in the late '20s, the long quiet after his wife died in '31, the daughter Aria who had grown up in the tower and then had not been heard of after Dean's death, the company that had continued to release sticks for ten years after Dean was dead with no announcement of who was running it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem had played Estuary 7 sixty-three times without knowing it was, by some lineage, a Dean-product. She did not, on the drive north, take that crediting at face value any longer.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "How did you know it was the tower.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She came at the door at three last night. I saw her face for the count of the conversation we had. I won't remember the face. I'll remember what came with it.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The smell of the substrate Cale tracks in the patches — the smell I've been at the wall in for three days, the smell I've been at the cabin in since the bowls warmed. The smell came off her.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She'd been somewhere recently before she came to the door. The somewhere had the substrate in the air. At that concentration, the substrate isn't in the patches and isn't in the wall and isn't in the bowls. Those are leak.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "There's a source. There's a place where the substrate is what is in the room — not a leak from somewhere, but the room itself. That place is the tower.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You knew.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I knew.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Why didn't you say.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I had to be sure of what to do with it. I have been sure since the disc-case moved.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Dean.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Dean is dead. Dean's been dead ten years. He's at the lobby in a portrait. He's at the cover-art of every stick the company has released since '42. He's not in the tower.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The tower has been running without him — has been doing what it's been doing because something else is in it. The something else is the substrate. The substrate in the tower is what is in the air there. The portal room on the fourth floor is the entry to wherever the substrate goes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Aria.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Aria comes through the portal room. She has been coming through it. She came through it last night to be at the cabin door at three. She will come through it again.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Today.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I don't know.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "We're going to find out.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "We are going to find out.",
+      "t": "say"
+    },
+    {
+      "text": "They drove past Yachats at three-forty. The road north of Yachats was a two-lane state highway running close to the coast. The cedars on the inland side were the cedars Tem had been at the cabin in for thirty-one years. The ocean on the seaward side was the September ocean she had been at her whole life. The drive was — Tem registered — the kind of drive a person could be on without registering that it was a drive into a specific place. It was a coastal road on a September Monday afternoon.",
+      "t": "narrate"
+    },
+    {
+      "text": "The turn for the old-Yachats bluff was not signed. The road had been bypassed thirty years ago. A green metal road-marker reading Old Yachats Road sat at the turn with a chain across it the way roads get when they have been county-decommissioned. The chain hung loose on one side. Tem turned off 101 onto the road. The wagon went around the chain. The road climbed.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_smolvud_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "Old Yachats Road wound up the bluff for three-quarters of a mile. The road had been paved in the 2010s for the tower's construction trucks. The pavement had aged but had not, by Tem's read, been used much. Trees on either side had not been cut back to road-clearance in years. The wagon brushed cedar branches on both sides. The road ended in a clearing on top of the bluff. The tower was at the center of the clearing.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem stopped the wagon at the edge of the clearing. The three of them sat in the wagon and looked at the tower.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was — by what Tem could see in the late-afternoon light — seventy feet on a side at the ground floor. Square. Seven stories. Smart-glass on the upper six floors. The ground floor was cedar siding above a stone foundation, with a single set of double-doors at the center facing the clearing. The smart-glass on the upper floors was running images — the seaward face showing the ocean, the inland face showing the cedars. The tower was rendering its own setting onto itself.",
+      "t": "narrate"
+    },
+    {
+      "text": "From a distance it nearly disappeared into the bluff. Up close the rendering was visible as rendering: the seaward face's ocean did not match the actual ocean's wave-period. The inland face's cedars did not move when the wind moved.",
+      "t": "narrate"
+    },
+    {
+      "text": "The seventh floor was glass-walled including the roof. Through the seventh floor's glass — at this distance, at this angle, with the late-afternoon light through it — Tem could see what looked like vegetation. The indoor garden. The substrate's standard rendering at the top floor was set, at three forty-three on a September Monday afternoon, to garden. The garden was running.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The tower is on.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "It is on.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Nobody's been here for ten years.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Nobody human.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "The three of them got out of the wagon. The clearing was — Tem registered as her feet came down on the gravel — clean. The gravel had been raked, perhaps in the last two weeks. The grass at the edge of the gravel was cut.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Drones.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Drones.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The lobby gets cleaned. Marina said the drone-cleaning contract is on the foundation's records. The contract has been paid for ten years out of an account in Dean's estate. The drones come on Wednesdays. They clean the lobby. They rake the gravel. They cut the grass at the edges.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "How did you know that.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Marina told me on the drive back from the cabin at one this morning when we were trading what we knew. I asked her about the tower. She knew the contract.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She knew.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "She did not, Tem, say she knew we were coming up here. She did not say she suspected we would come. She told me what was in the foundation's records when I asked.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The foundation has, by Marina's read of the records, known about the tower for thirty years and has done nothing about it. The tower has been off the foundation's official map of carrying-places. The drone-cleaning contract is the only thread the foundation has on it. They've been letting it be.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Why.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "By Marina, because the foundation doesn't know what the tower is for. They know it exists. They know Dean built it. They don't know what's inside it now. They've been waiting.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "For what.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "For someone like us to come up and look.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "They walked across the gravel to the double-doors of the lobby. The doors were cedar, hand-built — not the kind of doors a corporate tower had, the kind of doors a fishing-cabin had, scaled up. Dean had built the front doors to match the cedar of the cabin he had grown up reading about. There was no handle. No doorknob. A small black panel beside the right-hand door at chest height — the size of a deck of cards. The kind of substrate-reader Tem had seen at the foundation's office in Eugene when she had visited Marina in 2049. It read what a person carried of the substrate. Not keys or fingerprints or passcodes. Substrate-signature.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem stood at the panel. She put her palm on it. The panel — for the count Tem held her palm against it — did nothing. She lifted her palm. She waited. The double-doors did nothing.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Kai.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Your turn.",
+      "t": "say"
+    },
+    {
+      "text": "Kai stepped to the panel. He put his palm on it. He had the basement-imprint of the sixteen-year-old Nate from Kestrel Mountain in him from Wednesday. He had been carrying the substrate-signature of Dean's son from Dean's own stick for five days. The panel registered something. A small green LED at the panel's corner lit up. The double-doors eased open. Kai stepped back. The three of them stood at the open doorway for a count.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Go.",
+      "t": "say"
+    },
+    {
+      "scene": "vol7_ch22_floors",
+      "t": "jump"
+    }
+  ],
+  "title": "The Tower"
+}

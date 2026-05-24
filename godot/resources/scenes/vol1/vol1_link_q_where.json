@@ -1,0 +1,40 @@
+{
+  "id": "vol1_link_q_where",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_shuttle_bench.jpg"
+    },
+    {
+      "t": "show",
+      "char": "trenchcoat",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"A town in the small wood. Up the coast. The kind of place that hasn't been written about because the people in it have been busy not writing about it.\""
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"There's a tower on a hill there. Not the one you're thinking of. There is one in every story I have walked through and they are not the same tower, except where they are.\""
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"End of the line, by the way, is a relative concept. You can take a Shillelagh from any line.\""
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_outside_hub"
+    }
+  ]
+}

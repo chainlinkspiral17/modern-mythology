@@ -1,0 +1,97 @@
+{
+  "id": "vol1_ch2_pharmacy",
+  "vol": 1,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Act One — The Drugstore",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_pharmacy_office.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "interlude",
+      "text": "The Drugstore",
+      "sub": "Office · Morning",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "INT. PHARMACY OFFICE — DAY"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust heads to his office, sits down at the computer."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Hate seeing the world not as it should be. Everyday tedium sets in, everyday — feel I can't break free."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust grabs a handful of pills."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "The latest model. Think I'll try three. Going down a stringent chalky burn — can't sell what isn't personal."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Swallow them with coffee.",
+          "goto": 10
+        },
+        {
+          "text": "[COMPOSURE] Set the bottle down. Two will do.",
+          "check": {
+            "skill": "composure",
+            "diff": 4
+          },
+          "pass": 13,
+          "fail": 10
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "He swallows them with coffee and glances about his office. The fluorescents hum like a slow apology."
+    },
+    {
+      "t": "flag",
+      "key": "faust_dose",
+      "val": 3
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch2_pharmacy_mirror"
+    },
+    {
+      "t": "narrate",
+      "text": "He sets one back into the palm of the bottle. The bottle accepts it without comment."
+    },
+    {
+      "t": "flag",
+      "key": "faust_dose",
+      "val": 2
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch2_pharmacy_mirror"
+    }
+  ]
+}

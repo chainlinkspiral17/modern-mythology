@@ -1,0 +1,113 @@
+{
+  "id": "vol7_ch6_nate",
+  "vol": 7,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Nate",
+  "nodes": [
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"I knew Nate Dean.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She did not move."
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "surprised",
+      "text": "\"Nate.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Dickens Nathaniel Dean. I haven't said his name out loud in thirty years.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Cale.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Let me. I've been turning the order of this in my head since you walked in the door and I want to get it right or I'll get it half right and stop. Let me.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She nodded."
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"He came up in '92 with his family. They'd been in Caracas — the dad was an oil guy, they'd been there I think since the eighties, I never asked. They were Americans. They came to Smolvud and rented a farmhouse ten miles up the Alsea, off Little Switzerland Road. Pasture down to the river. There was nothing else around. Nate was fourteen. I was sixteen. He came into my chemistry class in October and the teacher sat him next to me because there was an open seat and that's how it went.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She watched him pick at the cuticle of his thumb."
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"The parents were strange. I went up there twenty times in the two years and I don't think the mom said ten sentences to me total. She'd come into the kitchen while we were at the table and stand at the counter for ten minutes like she was looking for something and then walk out. The dad I saw four times maybe. Either he was at work in Newport or he was upstairs with the door shut. Nate had the run of the house. He had the run of the basement. He had built things in the basement that the Smolvud High shop teacher could not have built.\""
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"What kind of things.\"",
+          "goto": 12
+        },
+        {
+          "text": "[Listen. Let him find the order.]",
+          "goto": 12
+        },
+        {
+          "text": "[EMPATHY] His thumb. The held breath. He has been carrying this a long time.",
+          "check": {
+            "skill": "empathy",
+            "diff": 5
+          },
+          "pass": 12,
+          "fail": 12
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"A computer. He'd built it. He'd brought parts of it up from Caracas with the household goods and bought the rest through the mail and put it together. By '93 he could do things on it that nobody else on this coast could do. I don't mean nobody his age. I mean nobody.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"And you were what.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"The kid he let in. There were three of us. Me, a kid named Ray Petrocelli whose family ran the propane delivery and who moved to Colorado in '95, and a kid I won't name because she's still around and what we did in that basement is not anybody else's business. Three of us at the kitchen table or downstairs at the bench. He paid for the parts. He never asked us to. He just had money. The mom would put a casserole in front of us at six and we'd eat it and go back down. He was generous with everything except explanations. You either kept up or you didn't.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"What were you doing.\""
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch6_pattern_persistence"
+    }
+  ]
+}

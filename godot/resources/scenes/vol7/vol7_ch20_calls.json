@@ -1,0 +1,468 @@
+{
+  "id": "vol7_ch20_calls",
+  "vol": 7,
+  "chapter": 20,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "She Came",
+      "sub": "Before dawn",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "The cabin held. Tem stood at her chair for a count without sitting. The six at the table did not, for the count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "She came.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Per put his hands flat on the table. He looked at his hands for a count. Then he said, slowly, the way he said things when he was choosing each word against what he had been carrying:",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "I have not got language for what just happened. I saw — I saw my father. He was — he was about the age I am now. He was at the door the way he stood at doors. He had — he had the wool cap he wore when he was working on the boat.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He looked at me. He said — he said something with his face I am going to need a long time to figure out.",
+      "t": "say"
+    },
+    {
+      "text": "Cale was picking at the cuticle of his thumb again.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Nate at sixteen.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Brandon.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The boy. From the basement.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Olaus. The way he was at the wake of his own father in '21. He had — he had the look he had then.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have not seen that look in seventy-one years.",
+      "t": "say"
+    },
+    {
+      "text": "Lena had her arms folded across her chest the way she folded them when she was holding a thing together.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I saw her with eight arms.",
+      "t": "say"
+    },
+    {
+      "text": "Tem looked at the six of them.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I saw her.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Her her.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes. The slicker. The hair. The face under the hood. She — she came at the level the room could take her. She gave each of you what you were ready for.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She gave me — by the grandmother — she gave me the face she's going to have in the next thing. I won't remember the face. I'll remember that I saw it.",
+      "t": "say"
+    },
+    {
+      "text": "Cale absorbed this. Then he said, the way Cale said things when he had decided not to say the next ten things he was thinking:",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "She came.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She came.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "She didn't stay.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "No.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "All right.",
+      "t": "say"
+    },
+    {
+      "text": "He looked at the bowls.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes, Per.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "She was here tonight.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Tomorrow morning. The wall.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The wall. Bowls. The cedar. The seven of us. As Lena said.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Nobody went back to sleep. The seven stayed at the table. Tem made fresh coffee at three-fifty. They drank it. They did not, for the most part, talk. The crow stayed beside the cedar bell-piece. The bowls held what they had been holding.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figures on the bowls — Tem registered, looking at the four at four-fifteen — were back to the resting positions from before three. The young women had their hands at their sides again. The eyes were closed.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowls had done what they had been getting ready to do. They were resting.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "I want to call Hans's. Marit should know. She — Mama has been carrying this longer than anyone in the room. I'm not going to make her wait until noon to hear.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Call. If she wants up, drive down. We'll hold the wall trip till you're back.",
+      "t": "say"
+    },
+    {
+      "text": "Roy stood up. He crossed to the kitchen window and looked out at the dark clearing for a count, then came back.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Aud. I am going to call Aud. She has been at the diner since 2030, by her own count. She should hear from me. I would like to ask, also, if she is going to come to the wall.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes, Roy.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I'll get Petra.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Good.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "text": "Margaret. From the co-op.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes, Finn.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hans. I want to talk to Hans directly. Per's going to be on with Marit. I'll get Hans on the line and tell him to come to the wall.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Good, Kai.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm calling Wren's mother.",
+      "t": "say"
+    },
+    {
+      "text": "Tem looked at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "She asked me Friday night what came next. The next is now. Wren needs to know. Her mother needs to give the permission. I'm calling.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Call, Lena.",
+      "t": "say"
+    },
+    {
+      "text": "The seven took their phones to the corners of the cabin and made the calls. The kerosene-lamp light didn't reach the corners. The voices were quiet.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per's voice with Marit was the lowest — Tem caught the word Mama twice, the word now, the word yes.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy's voice with Aud was the most formal — Tem caught: \"Aud, this is Roy\" and \"I understand\" and \"thank you, Aud.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "Cale's voice with Petra was three sentences and a pause and a yes.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn's voice with Margaret she didn't catch at all — Finn was at the south window with his back to the room.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Hans. It happened. Tem's cabin. Three a.m. The crow rang. She came at the door. We're going down to the wall at six-thirty. The bowls. Come.",
+      "t": "say"
+    },
+    {
+      "text": "Lena's call to Wren's mother — one sentence Tem caught: \"Yvonne, it's Lena. I'm — I'm sorry to call this early. There's something happening I think Wren wants to be at.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "The seven hung up over the course of maybe ten minutes.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem made one call. She called Marina in Eugene. The phone rang four times. Marina picked up on the fifth.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Marina.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "She came.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She came.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I felt it. I'm awake. I've been awake since three. I felt the sound. The crow. I don't have a clean account. I'll explain when I get there. I'm leaving now. I'll be at the cabin by ten if I drive hard. I'll be at the wall by the time you set up. Tell Lena I'm coming.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Drive careful, Marina.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I will.",
+      "t": "say"
+    },
+    {
+      "text": "By five-thirty the cabin was at the kitchen. The calls had organized something.",
+      "t": "narrate"
+    },
+    {
+      "text": "By five-thirty: Hans had called Tem back — he was driving up with Greta and Marit. Aud had called Roy — she was opening the diner at six for people who would want a place before they came to the alley. Petra had called Cale — she was opening the bookstore early and would be at the wall by seven. Margaret had called Finn — the co-op would close for the morning, she was coming with whatever workers wanted to come. Wren's mother Yvonne had called Lena — Wren was up and dressed, the two of them were coming.",
+      "t": "narrate"
+    },
+    {
+      "text": "The town was coming.",
+      "t": "narrate"
+    },
+    {
+      "text": "The town was coming to the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "The morning event Lena had proposed at nine the night before — the seven of them taking the bowls to the alley for an hour — had become a different event.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Lena.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "It's going to be the town.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The face on the wall. The four bowls. The bell. The notebook. The crow. The town.",
+      "t": "say"
+    },
+    {
+      "text": "Lena set down the cup she had been holding. She looked at Tem.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "The wall has been mine since 2050. The face on the wall has been mine since Friday. If the town is coming to the wall, the wall is going to be the room. I painted it. I know what's on it. I'm ready.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "She poured the eighth coffee.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "At six the cast was at the trucks. Tem had loaded the four bowls into the wooden box in the back of the wagon. Finn had wrapped the cedar bell-piece in the handkerchief and put it in the pocket of his wax canvas coat. The notebook was in the inside pocket of Cale's coat. The crow was on Finn's shoulder. The seven in their layers and boots and coats were at the trucks the way the seven had been at the trucks Sunday morning at five thirty-five.",
+      "t": "narrate"
+    },
+    {
+      "text": "The three vehicles started. Tem drove the wagon down the road first. Cale's F-150 behind. Kai's truck behind that. The crow rode with Finn in Kai's truck.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The road down at six on a Monday morning — the first of September of 2052 — was a road Tem had driven a hundred times. The first creek crossing at six-twelve. The second at six-twenty. The Sitka stand opened into the alders. The alders opened onto the coast highway. The coast highway took them into Smolvud at six thirty-six.",
+      "t": "narrate"
+    },
+    {
+      "text": "The town at six thirty-six was awake. The lights at the Daily Grind were on — Soren at the counter, visible through the window as she drove past. Aud's Missing Link with its sign out. The bakery with Greta at the front and Hans at the back loading bread into his old van to drive up with Marit and Greta.",
+      "t": "narrate"
+    },
+    {
+      "text": "Hans had told Kai he would be at the alley wall by seven-thirty. The town — Tem registered as she drove down Hemlock — all of it awake.",
+      "t": "narrate"
+    },
+    {
+      "text": "She turned into the alley behind The Salty Tome. She parked at the entrance. The two trucks parked behind her.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch20_wall",
+      "t": "jump"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "vol1_ch4_lullaby",
+  "vol": 1,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Act One — In His Sleep",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_bedroom_night.jpg"
+    },
+    {
+      "t": "show",
+      "char": "woman",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I have to warn you — I generate a lot of heat."
+    },
+    {
+      "t": "say",
+      "char": "Woman",
+      "expr": "neutral",
+      "text": "Just close your eyes and talk in your sleep."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust sleeps."
+    },
+    {
+      "t": "interlude",
+      "text": "IN HIS SLEEP",
+      "sub": "Faust, talking",
+      "duration": 2200
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I remember what it was to be infant — further back even than that, maybe. I remember how beautiful childhood looked, sounded. How it all came rushing back to me."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Words sounded like music — literally the most beautiful thing. That beauty, through infancy, the reason for my golden stares. The music of speech flowed into me. Much of that beauty transferred."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Objects became the best thing ever. Naming them gave meaning, and power — to summon to our wills. Else the power of cry rendered them shrill."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "The more I could do, the more excited I became. Because I realized I was few and rare among other little ones. Perfect angels, figuring shit out, asking questions."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust is in dream."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch4_dream_bed"
+    }
+  ]
+}

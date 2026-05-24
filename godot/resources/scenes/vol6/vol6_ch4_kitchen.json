@@ -1,0 +1,417 @@
+{
+  "id": "vol6_ch4_kitchen",
+  "vol": 6,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Ch 4 — Chicken Cacciatore",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam gets home from the Kwik Stop at a quarter to seven. The rain has settled into the lighter more ambient variation it always settles into by evening. The driveway is a shallow puddle. She parks. She runs the twelve feet from the Corolla to the front door. She comes in soaking."
+    },
+    {
+      "t": "show",
+      "char": "mrs_miller",
+      "expr": "happy",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Her mother is in the kitchen. Her mother is at the stove. She is making something that smells like chicken cacciatore. Sam's mother's chicken cacciatore is, in the family's informal hierarchy of her mother's cooking, a top-five dish."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Sammy! You're soaked."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah. It's — Mom, it's coming down hard."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Go change. Dinner in ten."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam goes upstairs. She changes. She comes down."
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "tired",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Her father is at the kitchen table. He is not in uniform. He is in jeans and a short-sleeve shirt — the kind of shirt Sam has not, in some years, seen him in on a weekday evening. He has a glass of red wine. He is, when she comes in, looking at nothing in particular. He is looking in the direction of the window, which faces the cul-de-sac, which is dark and full of rain and empty."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Hey, Sammy."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Hey, Dad. You're off early."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Took the evening. Needed a break."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Oh. Okay."
+    },
+    {
+      "t": "narrate",
+      "text": "Her mother brings the platter to the table. Pasta. Chicken. Bread she made this afternoon. A salad with the vinaigrette Sam has loved since she was six. They sit. They eat."
+    },
+    {
+      "t": "narrate",
+      "text": "Her father is quiet for the first seven minutes. Sam is quiet. Her mother does the talking — the sweet light chatter she does when the room is tense in a way Sam cannot, yet, identify the source of. The chatter covers the sound of the rain hitting the windows. The chatter covers the small absence of Sam's father's voice."
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "At seven-oh-four, her father sets down his fork."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sammy."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "You ever think about —"
+    },
+    {
+      "t": "narrate",
+      "text": "He pauses. He looks at his wife. Her mother looks back. Something passes between them that Sam does not catch. Then her father looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "You ever think about where you want to be in, say, five years?"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam's heart, unexpectedly, speeds up."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I'm seventeen, Dad."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I know."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Five years is a lot."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I know."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I haven't — I haven't really thought about it."
+    },
+    {
+      "t": "narrate",
+      "text": "Her father nods. He picks up his wine. He drinks. He sets the glass down."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I'm going to say something that is going to sound strange. I want you to know it is not, I promise you, the beginning of a conversation I am about to have with you that you are not ready for. I am saying it because — because I love you. Okay."
+    },
+    {
+      "t": "show",
+      "char": "mrs_miller",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Her mother puts down her fork."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "If anything ever happened to me — anything at all — I want you to know that there is a safe deposit box at the Bank of New Auburn on Live Oak Street, box number 287, and the key is in the blue tin in my sock drawer. Inside the box is everything you need to know about me. Not just the household stuff. The other things. The things I have not told you. I put it all there three years ago. Your mother knows. I am telling you tonight because —"
+    },
+    {
+      "t": "narrate",
+      "text": "He paused. His voice did the thing voices did when a man was trying to keep a thing at a manageable volume, and the thing was, despite his best efforts, moving."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Because it has been on my mind this week. I am not dying. I am not sick. I am just — I want you to know."
+    },
+    {
+      "t": "narrate",
+      "text": "Her mother is looking at her plate. Sam does not, for a long moment, know what to do with her face."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay, Dad. Thank you for telling me."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sammy."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I have — I have not been the man I wanted to be in all the ways I wanted to be him. I have done some things I am going to have to account for. If — when — I do account for them, I want you to know that the accounting was my choice and not something that happened to me. Okay?"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam looks at him. She sees, for the first time in her seventeen years, her father as a man. Not as her father. As a man. A tired, frightened, careful man, sitting at his own kitchen table, eating his wife's cacciatore, drinking a glass of red wine, saying the only thing he has figured out how to say in the forty-eight hours since whatever happened to him on Monday happened."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay, Dad."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not say more. She does not have more. He nods, once. Her mother reaches across the table. She takes her father's hand. She holds it for maybe eight seconds. Then she lets go. They finish dinner. Nobody talks about it."
+    },
+    {
+      "t": "narrate",
+      "text": "At seven-thirty-one, her father's phone buzzes. He takes it out of his pocket. He looks at the screen. His face does the small careful neutral thing it does now, which Sam has learned, in the past three days, to read."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I have to go out for a bit, hon."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Of course."
+    },
+    {
+      "t": "narrate",
+      "text": "He stands. He kisses her mother on the temple. He squeezes Sam's shoulder on the way past. He goes to the mudroom. Sam hears him put on his uniform. Sam hears him leave through the garage. The garage door motor hums. The garage door closes."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam and her mother sit at the table."
+    },
+    {
+      "t": "show",
+      "char": "mrs_miller",
+      "expr": "sad",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Sammy."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah, Mom."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "I know you know."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam looks up. Her mother's face is the face of a woman who has been holding something for longer than Sam has been aware there was a something to hold."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I know I know."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "I'm sorry, honey."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom —"
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "I'm sorry it's your father. I'm sorry it's this town. I'm sorry I let you grow up in it. I'm sorry about a lot of things."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom, don't."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "No, Sammy. Let me. Just for a minute."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam lets her."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "I don't know everything. I know enough to know I don't know everything. I know he's decided to do something. I don't know what it is. I know he's scared. I know he's going to tell me tonight, when he gets back. And I know that whatever he's decided, you are going to be told first thing in the morning, because your father and I have discussed it and we agree on that one part."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "I love you, Sam."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I love you too, Mom."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Eat your pasta."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam eats her pasta. It is, it has always been, the best pasta."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Outside the rain comes down. At nine-seventeen, in the Kwik Stop parking lot half a mile away, the white sedan pulls up. The reporter and her partner sit in the car. They are waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "At ten-oh-four, the sedan pulls out and drives, without lights, to a position three blocks from the building on the east side of the subdivision that is not currently on any map. At ten-thirty-six, a white unmarked van pulls into the lot of the building that is not on the map. At ten-fifty-eight, the van pulls out."
+    },
+    {
+      "t": "narrate",
+      "text": "The van is transporting Diego Ramos from Zone to Zone-G. The transport is being watched. The sedan follows, three vehicles back, into the storm."
+    },
+    {
+      "t": "narrate",
+      "text": "At eleven-fifty-one, Chief Miller — who has been at the east-side building since eight-thirty — is back in his truck in his own driveway. He sits. He does not go inside. He is on the phone. At eleven-fifty-five, he hangs up. He sits in the truck for another sixteen minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "At twelve-oh-eleven, he goes inside. His wife is awake. His wife is in the kitchen. There is coffee. There is, on the kitchen table, the blue tin from his sock drawer. He sits across from her. He begins to talk."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_sam_bedroom_storm.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Upstairs, Sam is in her bed, not asleep, hearing only the low murmur of her father's voice through the floor, and her mother's softer replies, and occasionally a long silence, and the rain, which has begun, at last, to ease. She files the sounds. She waits for morning."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_highway_night_rain.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere, on a two-lane highway eighty miles west, the Houston Chronicle sedan is tailing a white unmarked van at three cars' distance through a thunderstorm that is, itself, just easing. In the sedan's backseat, unseen by any observer, a black cat — small, unregistered, the one from Gallatin Avenue, which had walked north toward the cedar scrub on Sunday and had continued west — is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "The cat had, at some point in the night, chosen to be there. The cat had not, as far as the reporter could determine, ever been invited. The cat is going to be part of Friday morning's operation, in a way neither Claire nor her partner has yet, this Wednesday night, been made aware of."
+    },
+    {
+      "t": "narrate",
+      "text": "The Empress card, reversed, nurtures what she must. Even the uninvited. The rain eases. The van keeps west. The sedan follows."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the van, is alive. He is also, in the specific harder meaning of the word, not okay. But he is, as of eleven-fifty-eight PM on Wednesday, being driven toward the only intercept point the network has managed to establish."
+    },
+    {
+      "t": "narrate",
+      "text": "Friday is coming. The five of them, in five different beds, sleep badly. They will need, in the morning, to begin the final compression."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

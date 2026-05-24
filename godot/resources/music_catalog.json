@@ -1,0 +1,212 @@
+[
+  {
+    "id": "title_theme",
+    "vol": 0,
+    "title": "Modern Mythology",
+    "src": "assets/audio/bgm/title_theme.ogg",
+    "composer": "—",
+    "desc": "The theme that plays at the beginning of everything.",
+    "unlock": {
+      "type": "key",
+      "key": "music:title_theme"
+    }
+  },
+  {
+    "id": "vol1_ambient",
+    "vol": 1,
+    "title": "The Diner at the Crossroads",
+    "src": "assets/audio/bgm/vol1_ambient.mp3",
+    "composer": "—",
+    "desc": "The diner. The stranger. The choice that starts everything.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol1_diner_ambient",
+    "vol": 1,
+    "title": "The Missing Link",
+    "src": "assets/audio/bgm/vol1_diner_ambient.mp3",
+    "composer": "—",
+    "desc": "Bus depot. Rain. No clock.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol1_drive_night",
+    "vol": 1,
+    "title": "Driving Around · Night",
+    "src": "assets/audio/bgm/vol1_drive_night.mp3",
+    "composer": "—",
+    "desc": "EXT. Judgement Day. Headlights, then more headlights.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol1_club_thump",
+    "vol": 1,
+    "title": "The Underworld",
+    "src": "assets/audio/bgm/vol1_club_thump.mp3",
+    "composer": "—",
+    "desc": "Intercut. Dancing. Loud music.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol1_dream_drone",
+    "vol": 1,
+    "title": "Dream States",
+    "src": "assets/audio/bgm/vol1_dream_drone.mp3",
+    "composer": "—",
+    "desc": "Faust's bedroom. The room behind the room.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol2_ambient",
+    "vol": 2,
+    "title": "Small Wood Variations",
+    "src": "assets/audio/bgm/vol2_ambient.mp3",
+    "composer": "—",
+    "desc": "The sound of trees that have been standing longer than the town.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol2_rest_stop_wind",
+    "vol": 2,
+    "title": "Rest Stop · Wind",
+    "src": "assets/audio/bgm/vol2_rest_stop_wind.mp3",
+    "composer": "—",
+    "desc": "Briar Falls. Mid-nineties. Twelve hours from anywhere.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol2_seagash_drone",
+    "vol": 2,
+    "title": "The Siren of Seagash",
+    "src": "assets/audio/bgm/vol2_seagash_drone.mp3",
+    "composer": "—",
+    "desc": "A history, with interludes.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol3_ambient",
+    "vol": 3,
+    "title": "Station Omega-14",
+    "src": "assets/audio/bgm/vol3_ambient.mp3",
+    "composer": "—",
+    "desc": "The hum of life support and the silence of deep space.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol4_ambient",
+    "vol": 4,
+    "title": "Five AM, No One Around",
+    "src": "assets/audio/bgm/vol4_ambient.mp3",
+    "composer": "—",
+    "desc": "The city before it remembers you're not supposed to be there.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_ambient",
+    "vol": 5,
+    "title": "D'Ambrosio's at Dawn",
+    "src": "assets/audio/bgm/vol5_ambient.mp3",
+    "composer": "—",
+    "desc": "Open 24 hours. Technically.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_warehouse_drone",
+    "vol": 5,
+    "title": "Cathedral of Rust and Code",
+    "src": "assets/audio/bgm/vol5_warehouse_drone.mp3",
+    "composer": "—",
+    "desc": "Chapter I — The Magician.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_cicadas_dusk",
+    "vol": 5,
+    "title": "Cicadas at Dusk",
+    "src": "assets/audio/bgm/vol5_cicadas_dusk.mp3",
+    "composer": "—",
+    "desc": "Chapter II — The High Priestess.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_riverboat_drone",
+    "vol": 5,
+    "title": "Static Bloom",
+    "src": "assets/audio/bgm/vol5_riverboat_drone.mp3",
+    "composer": "—",
+    "desc": "Chapter III — The Empress.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol6_ambient",
+    "vol": 6,
+    "title": "Harmony Creek Estates",
+    "src": "assets/audio/bgm/vol6_ambient.mp3",
+    "composer": "—",
+    "desc": "Sixty-eight degrees, year-round, by corporate decree.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol7_ambient",
+    "vol": 7,
+    "title": "Smolvud Ambient",
+    "src": "assets/audio/bgm/vol7_ambient.mp3",
+    "composer": "—",
+    "desc": "The kind of town that knows when you have arrived before you do.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol7_apartment_rain",
+    "vol": 7,
+    "title": "Lena's Apartment · Rain",
+    "src": "assets/audio/bgm/vol7_apartment_rain.mp3",
+    "composer": "—",
+    "desc": "Six o'clock. Four coats on four hooks.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol7_rain_on_roof",
+    "vol": 7,
+    "title": "Rain on Roof",
+    "src": "assets/audio/bgm/vol7_rain_on_roof.mp3",
+    "composer": "—",
+    "desc": "With two of them left in it the apartment was hers again.",
+    "unlock": {
+      "type": "heard"
+    }
+  }
+]

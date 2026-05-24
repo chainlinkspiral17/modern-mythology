@@ -1,0 +1,594 @@
+{
+  "id": "vol7_ch17_bakery",
+  "vol": 7,
+  "chapter": 17,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Hans's Bakery",
+      "sub": "Before six",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Hans was at the back door at five fifty-six.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had been at the bakery since three thirty. He had set the long dining table for thirteen — twelve chairs at the table and one extra at the head for whoever needed it.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had put out three loaves of the morning's bread: the seeded rye, the dark country, and a brioche he had made specifically for today.",
+      "t": "narrate"
+    },
+    {
+      "text": "Greta had told him at twelve-thirty yesterday: Hans. Tomorrow needs a brioche. The dark country and the rye are not enough. He had made it.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had been at the brioche from four to six-thirty on Saturday afternoon at home. The brioche on the table at five fifty-six was a brioche the way Hans's grandmother had made on Sundays in Bern in 1962.",
+      "t": "narrate"
+    },
+    {
+      "text": "Hans was in the apron and the flour. The wool cap was on. The flour on the left side of the cap was fresh from this morning.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Greta is at the front. Marit is at the table. Per's coming in?",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per's coming with Cale.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The bowls.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Three of them are with us. In the wagon. I have them in a wooden box on the back seat.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I did not — I did not want to bring the bowls into the bakery before Roy arrived. The bowls are in the wagon. They will come in when Roy comes in.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja. That is the right way.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Is Roy coming.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I gave him the invitation at eleven last night. I walked to his apartment. I went up the stairs. I knocked. He came to the door.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I said: Roy. The bakery tomorrow morning at six. I am asking. Bring the bowl.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "He looked at me for a count. He said: Hans. I will come.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I said: Roy. Thank you. He said: I have been waiting for you to ask for twenty-one years.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I said: I know. He said: I will be there. I came home.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He said he had been waiting.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "He said he had been waiting.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have been getting Roy wrong.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Tem. You have been getting Roy at the resolution Roy has been letting you get him at.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I have been getting him at a higher resolution because I was at the door he gave the bowl-knowing to in '37. A man who told another man at a door that he had a bowl and would not talk about it again.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "We have both been getting Roy. We have been getting him different. Today is the day we are going to get him at his actual resolution.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am — I am scared.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Tem. You are right to be. Come in. The brioche is on the table.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The brioche will keep us all grounded for the first ten minutes when Roy walks in. Eat the brioche. Be at the table. Roy will come.",
+      "t": "say"
+    },
+    {
+      "text": "She came in.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bakery's main room at five fifty-eight was warm.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marit was at the table where she had been Saturday morning, in the same blue cardigan, in the same chair. Greta was at the front of the bakery, setting out for sale two loaves of the rye and the country and twelve Sunday rolls for the church people.",
+      "t": "narrate"
+    },
+    {
+      "char": "marit",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marit.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Today is the day.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Roy is coming.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy is coming.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "I have not seen Roy in this town since I came up for Per's wedding in '46.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Roy was at the bakery the morning after the wedding when Hans and I came in for the family breakfast. Roy was at the front buying bread. He saw me. He nodded. He went out.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "I have not seen him since. He has been a man I have heard about from Per and from Hans and now from Tem and Cale. He has been a man I have not been in a room with.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marit. Today you are.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Yes. Today I am.",
+      "t": "say"
+    },
+    {
+      "text": "The others came in over the next four minutes.",
+      "t": "narrate"
+    },
+    {
+      "text": "Cale and Per at five fifty-nine, with Lena and Finn behind them.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "Marina at six oh-one — she had stopped at the wagon with Tem to help carry the wooden box, and Tem had told her to come in first. Tem would bring the box.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai came in at six oh-two with the crow on his shoulder. The crow had walked from the dashboard to Kai's shoulder when Kai opened the door and Kai had not, for the moment, removed it.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "hans",
+      "text": "Kai.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The crow.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "She wanted to come in.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "All right. The crow has been in this bakery once before.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "She came in on Brandon in '49 when Brandon and I had coffee at the front on a Sunday morning while Greta was at church. She sat on the back of the chair across from Brandon. Brandon and I talked for an hour. She was at the chair the hour. She is welcome.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Brandon was here at the bakery.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Brandon was here at the bakery six times. The first was in '47. The last was in '50, two weeks before he died.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Each of the six times we talked for an hour about whatever Brandon had been figuring out. The first time was about Olaf, who Brandon was just starting to understand.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The last time was about Aria, who Brandon had told me her name for the first time three weeks before. Brandon has been at this bakery. The bakery has been one of the rooms Brandon was carrying.",
+      "t": "say"
+    },
+    {
+      "text": "Kai did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Why have you not told us.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Kai. The not-telling was the telling. I have been at this bakery for thirty-one years.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I have been the man at the back of the bakery who knew the things Brandon was figuring out and did not, in the months Brandon was carrying them, say anything about them to anyone Brandon had not specifically said it was all right to say something to.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Brandon was a careful man. I am a careful man. The carrying has been mine. The not-telling has been part of the carrying.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I am telling you now because the right people are at this table. The carrying is over.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Thank you for the carrying.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Mm.",
+      "t": "say"
+    },
+    {
+      "text": "The crow on Kai's shoulder tapped the shoulder once with its beak.",
+      "t": "narrate"
+    },
+    {
+      "text": "Aud came in at six oh-four.",
+      "t": "narrate"
+    },
+    {
+      "text": "She was in the wool coat, the same brown leather boots, the same cap of white hair. She came in through the back door — Hans had told her last night to come in the back — and she crossed the room to Marit first.",
+      "t": "narrate"
+    },
+    {
+      "char": "aud",
+      "text": "Marit.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Aud.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "I have been waiting fifty-one years.",
+      "t": "say"
+    },
+    {
+      "text": "Marit did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "marit",
+      "text": "Sit, Aud. Be at the table.",
+      "t": "say"
+    },
+    {
+      "text": "Aud sat in the chair beside Marit.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem registered, from across the table: Marit and Aud had been in the same room exactly once before — in '46 at Per and Hans's-daughter's wedding, where Aud had been a guest because of Henrik.",
+      "t": "narrate"
+    },
+    {
+      "text": "At sixty-eight and seventy-three, they were the two oldest carriers in the room. The two had carried the longest. They sat side by side.",
+      "t": "narrate"
+    },
+    {
+      "text": "Aud put her hand briefly on Marit's hand on the table. Marit kept her hand under Aud's.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marina, across the table beside Per, watched the two old women.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem brought the box in at six oh-six.",
+      "t": "narrate"
+    },
+    {
+      "text": "She set the box on the long table at the end nearest the back door. She did not, for the moment, open it. The three bowls were inside. She would take them out when Roy came in.",
+      "t": "narrate"
+    },
+    {
+      "text": "She sat down at the table at the end opposite Hans.",
+      "t": "narrate"
+    },
+    {
+      "text": "The ten of them were at the table. Hans at the head. Marit beside Hans. Aud beside Marit. Marina beside Aud. Per beside Marina. Cale beside Per. Kai beside Cale, the crow on his shoulder. Finn beside Kai. Lena beside Finn. Tem at the other head.",
+      "t": "narrate"
+    },
+    {
+      "text": "The brioche on the table held the room.",
+      "t": "narrate"
+    },
+    {
+      "text": "They did not, for a count, speak. The brioche was the brioche. The seeded rye and the dark country were beside it. The coffee was in the press at the table's middle.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "The brioche.",
+      "t": "say"
+    },
+    {
+      "text": "The ten of them looked at it.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Greta said I had to make a brioche. She was right. The brioche is the bread my grandmother made on Sundays in Bern. The family bread.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "By what the poem cycle Werner printed in '89 has written on it, also the bread of the listening.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I have not, in twenty years, made one for any morning that was not a family birthday. Today I made one because Greta was right that today is a day for it.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Eat. The table needs the brioche before it has Roy.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I am going to need to ask you to tell me what the brioche is for.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The brioche is the recipe in the eighth poem of the cycle. By Werner's count, that's the recipe poem. It has the recipe for the family bread embedded in lines about the listening.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The bread is the listening done by hand. Cale, the family's way of making the listening into something a person can eat.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The brioche eaten at a table where the listening is happening — it is the substrate for the listening. The brioche is for today.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I am going to cut it.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Cut it. Pass it. Each of us eats a piece.",
+      "t": "say"
+    },
+    {
+      "text": "Cale stood up. He went to the brioche. He cut ten pieces — careful slices, the way Hans had taught Kai to cut bread on the night of Kai's grandmother Margit's funeral in '49 when Hans had come over and had cut the bread for the small wake.",
+      "t": "narrate"
+    },
+    {
+      "text": "Cale passed the pieces around. The ten of them held the brioche. Hans nodded once. They ate.",
+      "t": "narrate"
+    },
+    {
+      "text": "The brioche tasted like a Sunday brioche made by a man who had been in the bread for sixty years. It held them.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem ate her piece and registered, as she swallowed, that her body did something it had not done since the second week of July.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate-listening in her, which had been at low pulse since July and at higher pulse since Wednesday, quieted. The listening did not go away.",
+      "t": "narrate"
+    },
+    {
+      "text": "The listening became a thing she was less aware of by being settled in a room where the listening was being honored. The brioche had done what Hans had said the brioche did. She registered the quieting.",
+      "t": "narrate"
+    },
+    {
+      "text": "She looked at the others.",
+      "t": "narrate"
+    },
+    {
+      "text": "Each of them at the table — by some quality of how they were holding the pieces of brioche, by how Marit's eyes had closed for a moment as she ate, by how Marina had set her piece down halfway through and was looking at her hand — each of them was being quieted.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch17_roy",
+      "t": "jump"
+    }
+  ]
+}

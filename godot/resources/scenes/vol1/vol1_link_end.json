@@ -1,0 +1,24 @@
+{
+  "id": "vol1_link_end",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "The Missing Link — end",
+  "nodes": [
+    {
+      "t": "flag",
+      "key": "vol1_missing_link_complete",
+      "val": true
+    },
+    {
+      "t": "interlude",
+      "text": "End of Interlude",
+      "sub": "The Missing Link",
+      "duration": 2400
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch2_act_one"
+    }
+  ]
+}

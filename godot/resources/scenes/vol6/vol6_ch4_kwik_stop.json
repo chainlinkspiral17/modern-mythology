@@ -1,0 +1,211 @@
+{
+  "id": "vol6_ch4_kwik_stop",
+  "vol": 6,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Ch 4 — The Detective",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kwik_stop.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The rain has not stopped. It has settled into the steady insistent pattern that Texas rain settles into about once a season — heavy enough to turn the parking lot into a shallow lake at the low corner by the dumpster, light enough not to trigger the flash-flood warning, sustained enough that the local TV weather is giving it the name spring-into-summer transition event."
+    },
+    {
+      "t": "narrate",
+      "text": "The Kwik Stop is empty. Sam has been on shift for two hours. The ice cream novelty cooler has been acting up. The hot dog roller has been ignored because nobody is coming in."
+    },
+    {
+      "t": "narrate",
+      "text": "She has, between eight and ten, rung up exactly four customers: a retiree buying scratch-off tickets, a construction guy buying a breakfast burrito from the warmer that Jen had set out before leaving, a woman Sam has never seen before buying a single cigarette loose and not giving Sam an explanation for why (the Kwik Stop does not legally sell single cigarettes; Sam sold her one anyway, from her own pack, for fifty cents, because the woman had looked like a person who needed one and because Sam has never, in two years, refused that specific request), and — at ten-oh-four — a man she did recognize."
+    },
+    {
+      "t": "narrate",
+      "text": "The man was the New Auburn Police Department's Detective Ramirez. He had come in in his civilian clothes — jeans, a dark polo, a rain jacket he had shrugged off his shoulders and held over his arm as he came in. He had walked directly to the counter. He had not pretended to shop."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "ramirez",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "You Sam Miller?"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yes."
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "I'm Detective Hernando Ramirez, NAPD. I'm here off the books. Your dad doesn't know I'm talking to you. I'd appreciate it if you didn't tell him."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam had, without moving her face, gripped the edge of the counter."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "nervous",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "You filed a missing-persons report on a Diego Ramos this morning. At zero-nine-fourteen, to the PSA's online portal."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yes sir."
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "You filed it from your phone while sitting in the employee break nook of this convenience store."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yes sir."
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "The report was logged. Forty minutes later it was deleted from the system. The server shows no record of it ever having been filed. I know it was filed because I have the automated notification that pipes certain keywords to a watchlist I keep on my own time. Your report tripped the watchlist. By the time I went to look at it, it was gone."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Someone deleted it."
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "Yes."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Who can delete a PSA report?"
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "Three people. Your father, the deputy chief, and the NexCorp system admin."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "I'm not here to accuse your father of anything, Sam. I'm here to tell you that you are not imagining things, that the report did exist, and that I have a photograph of the report on my personal phone. You are not going to be able to use the PSA for this case. You need to know that going forward."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam had nodded."
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "I'm going to give you my number. I want you to save it under a woman's name. Your pediatrician. Whatever. Do not text me unless it's something I can do something about. If you do text me, assume it is not a secure thread. Speak in code."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay."
+    },
+    {
+      "t": "narrate",
+      "text": "He had handed her a card. The card said MARTINEZ RE-ROOFING & SIDING with a phone number. Sam had taken it. She had tucked it into her Kwik Stop apron pocket."
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "One more thing. Your dad is good at his job in a specific narrow way. The specific narrow way is: he does what he is told, and he is good at keeping the town quiet while he does it. He is not, as far as I can tell, the bad guy in this. He is a man who has been working for the bad guy for some years and who is, right now, realizing that he may have to decide which side of the road he is standing on. He loves you. I've known him a long time. He loves you. I am telling you this because the next two weeks are going to be hard, and you are going to be asked, at some point, to decide how much of him is the bad guy. My advice: not all of him. Not yet. Leave him room."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "Take care of yourself, Sam. Call the rerouting number if you need the rerouting number. Don't, otherwise."
+    },
+    {
+      "t": "narrate",
+      "text": "He had put on his rain jacket. He had left. The bell had chimed."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "It was now ten-eighteen. Sam was standing at the counter, empty-handed, the rain still coming down, and her hands — for the first time in three days — were shaking."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "nervous",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "She took the card out of her apron. She saved the number under Dr. Patel. Dr. Patel was not her pediatrician. Dr. Patel was, in fact, a character in a book she had been assigned in ninth grade. She had chosen the name because the character had, in the book, been trustworthy in the specific way you needed a doctor in a book to be trustworthy: she had noticed a thing and said the thing and not, in saying it, needed to be thanked."
+    },
+    {
+      "t": "narrate",
+      "text": "She put the card back in her apron. She took a breath. She made herself a coffee. The microwave clock, running nine minutes fast on purpose, read ten-twenty-seven."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch4_speak_spell"
+    }
+  ]
+}

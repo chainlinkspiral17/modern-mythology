@@ -1,0 +1,531 @@
+{
+  "id": "vol6_ch5_garage",
+  "vol": 6,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "Ch 5 — Garage Band Catharsis",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_garage_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Garage Band Catharsis",
+      "sub": "Thursday — 19:14 — Jesse Henderson's Garage",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse has swept the garage. He does not, generally, sweep the garage. His father sweeps the garage, on the first Saturday of each month, with the thoroughness of a man who believes that a floor is a kind of moral statement. Jesse has always, privately, thought of the garage as his father's territory in the same way he has thought of the darkroom as his father's territory. He has not, until this week, swept either one."
+    },
+    {
+      "t": "narrate",
+      "text": "He swept the garage at five PM because his mother asked him to. He swept it again, without being asked, at six, because the first sweep had missed a small drift of paint chips in the corner by the workbench, and because Jesse has decided — without being able to articulate exactly why — that tonight's practice should take place in a garage that has been swept twice."
+    },
+    {
+      "t": "narrate",
+      "text": "The drum kit is at the back. The amp is against the side wall. The Telecaster is on its stand, unplugged, waiting. The bass — his friend Nate's — leans against the amp. The microphone — which belongs to the band and which lives at the bassist's house when not in use — is plugged into the small mixer Jesse built from a kit in tenth grade. The strobing Christmas lights are plugged in. They strobe."
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse sits on the workbench. He is drinking a warm can of Mountain Dew. He is waiting for Nate and Carl and Em. He is, at seven-fourteen, thinking about the ten-dollar bill."
+    },
+    {
+      "t": "narrate",
+      "text": "The bill is at the Pit Stop, folded, in Ben's apron pocket. Ben had texted Jesse at eight-oh-seven PM on Wednesday: bill is safe. Jesse had replied: thanks. He had not asked for more. Ben had not offered more. Ben had offered, instead, at seven-fifty PM: do you want me at practice thursday. Jesse had replied, yes. Ben is coming tonight. Ben is also bringing Sam and Maya, because Jesse had, at eleven PM last night, texted all three at once: practice thursday at 7. suburban blight. come if you can. Sam had replied in four minutes: i'll be there. Maya had replied in seven minutes: i don't know music. is that ok. Jesse had replied: maya it's a garage band. nobody knows music. Maya had replied: ok."
+    },
+    {
+      "t": "narrate",
+      "text": "The garage door is closed against the rain, which has mostly stopped but which has left the subdivision in the specific sticky humidity that follows a Texas storm. The air in the garage smells, faintly, of turpentine and sawdust and cold metal and the Mountain Dew. Jesse sits on the workbench and drinks his Mountain Dew and listens to the rain on the garage roof, which is tapering, and tries — for the first time all day — not to think about his father. He does not, in the end, succeed."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "interlude",
+      "text": "Two Houses Down",
+      "sub": "Thursday — 19:22 — Jesse Henderson's Driveway",
+      "duration": 2000
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_driveway_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben arrives first. He is in his truck. He parks at the curb. He does not pull into the driveway, because the driveway is where Jesse's father parks, and Ben — who has never been inside this house but who has, over the past forty-one hours, begun to build a small careful map of it in his head — does not want to be where Jesse's father would park, on the theory that Jesse's father may come home during practice and that Ben does not want to be the thing Jesse's father sees first."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam arrives second. She is in the Corolla. She parks behind Ben's truck. Maya arrives third. She is on her bike, in the rain, with her backpack on and her hair wet. She chains the bike to the light post at the end of the driveway. Ben, watching her through his windshield, winces slightly — Ben has registered that Maya has been on her bike in every weather since April, that Maya is the only one of the four of them without a car, that this is a condition that has not, until this moment, been something the other three have explicitly thought about."
+    },
+    {
+      "t": "think",
+      "char": "Ben",
+      "text": "We need to get her a ride home tonight."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The three of them converge at the foot of the driveway. They do not, immediately, go up."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "How is everybody."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I don't know."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Tired."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah."
+    },
+    {
+      "t": "narrate",
+      "text": "They stand for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay. We go in. We do not talk about any of it in there. Jesse has his band practicing in twenty minutes. The band doesn't know. We do not tell the band. We sit, we watch, we eat whatever pizza Jesse's mom sends down, we leave at nine-thirty. After practice, the four of us talk in my truck for ten minutes. Then we all go home and do not do anything else tonight. Okay?"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Ben."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Thank you for being like this."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben pauses."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Sam. I've been waiting to get to have friends. I had not, until Monday, understood that waiting was over. I am — I am very glad you are my friends. I am doing what I know how to do."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam looks at him for a long moment."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay. Let's go in."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Garage",
+      "sub": "Thursday — 19:27",
+      "duration": 2000
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_garage_night.jpg"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "surprised",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, when he sees the three of them coming up the driveway together, makes the small unguarded sound a person makes when a thing he had not, consciously, expected to be given is, in fact, given. He hops off the workbench. He meets them at the door."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Guys."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam hugs him. Sam does not, generally, hug Jesse. Sam and Jesse have been in the same friend orbit since ninth grade, have sat at the same lunch table for two years, have, on some occasions, watched movies on the same couch, but have not, in Sam's memory, been huggers of each other. Sam hugs him anyway. Jesse hugs back. Briefly, firmly, with the small surprised gratitude of someone who has just discovered a category his friend group has been refusing to occupy and has, tonight, entered. Ben shakes Jesse's hand. Maya — to Ben and Sam's collective small surprise — hugs Jesse too. Maya is not, any of them will later realize, a hugger in her usual register. Maya is here to announce a membership."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Come in. Pizza's on the way. Nate and Carl and Em will be here any minute. You guys know them?"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I know Nate from Algebra."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I don't know any of them."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I know Carl. He comes into the Pit Stop on weekends."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Cool. Okay. Uh. This is them."
+    },
+    {
+      "t": "narrate",
+      "text": "The band arrives in a staggered burst over the next four minutes. Nate — the bassist, seventeen, a skateboarder whose hair has, this month, been dyed the specific green of a traffic-light go. Carl — the drummer, sixteen, smaller than the rest of them, wiry, with a nervous laugh and a left-handed kit that he has, over the past year, almost — almost — taught himself to play right-handed. Em — the backing vocalist and occasional keyboardist, eighteen, three inches taller than anybody in the garage, with a small specific I am from Fort Worth energy that Jesse has always, quietly, admired."
+    },
+    {
+      "t": "narrate",
+      "text": "They converge. They set up. They tune. There is the usual bickering about the snare head and the usual low-grade tuning conflict between the bass and the Telecaster and Carl's usual joke about the Christmas lights, which Carl has made every practice since November and which everyone laughs at anyway. Sam and Maya and Ben sit on the workbench, then on the camping chairs Jesse pulls out from under the workbench, and drink warm Mountain Dew from the cooler Nate has brought, and watch."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the mic, is doing the small pre-practice check he always does — one two one two, Carl you ready, Em ready, okay count it. Carl counts it: one, two, three, four —"
+    },
+    {
+      "t": "narrate",
+      "text": "The band launches into the song they had been working on for a month. It is called Grid Failure. It is, as far as Jesse has written the lyrics, about a specific kind of failure of a specific kind of electrical grid, but the lyrics are — Jesse will admit, privately, later — not especially good. The song is mostly riff. The riff is: distorted Telecaster doing a three-chord ascending figure over a driving eighth-note bass and a snare that hits on the and of two and four. Em's backing vocal is a long sustained syllable — ohhhh — that sits under the chord changes like a drone."
+    },
+    {
+      "t": "narrate",
+      "text": "The song is loud. The song is, in Jesse's garage, on a Thursday evening in late May after a thunderstorm, exactly what the three on the workbench need. Sam feels her shoulders drop two inches. Maya closes her eyes. Ben leans back against the garage wall and, for the first time in forty-one hours, does not think about cars."
+    },
+    {
+      "t": "interlude",
+      "text": "Grid Failure",
+      "sub": "Thursday — 20:12",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The band is on their third run-through of Grid Failure. Em has started harmonizing above Jesse's lead, a third interval that she had not tried before and that, when it lands on the downbeat of the chorus, makes Nate turn his head — the universal bassist's gesture for that is new and I approve."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I have been in this garage maybe ten times in my life. This is the first time it has felt like a garage and not, you know. A chief's house's garage."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "That's a sentence, Sam."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam laughs. It is the first time Sam has laughed in five days. Ben, across the two chairs, hears the laugh. Ben does not react externally."
+    },
+    {
+      "t": "think",
+      "char": "Ben",
+      "text": "Sam Miller laughed. First time since Sunday. The laugh was in response to Maya, in a garage, during practice. Note: this, also, is data."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben has been keeping a mental ledger of the emotional weather of the group. He has not, yet, written any of it in the legal pad. He is not sure whether the ledger belongs in the legal pad. He is beginning to suspect that it does not — that the ledger is for him, privately, as the thing he does with the attention he has been cultivating for the past three months, now that the attention has, at last, become about people rather than cars."
+    },
+    {
+      "t": "narrate",
+      "text": "At eight-seventeen the garage door rumbles. All three of them — Sam, Maya, Ben — tense. The band continues playing. They have not, with the volume of Grid Failure at this point, heard the door. The door opens two feet, then pauses. It is not Chief Miller. It is not Mr. Henderson."
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "happy",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "It is Jesse's mother, ducking under the partially opened door with a pizza box balanced on her hip and a stack of paper plates in the other hand."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Pizza! Pause for pizza!"
+    },
+    {
+      "t": "narrate",
+      "text": "Carl hits the crash once, theatrically, and the band stops."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Mom, you're a hero."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I know. Plates. Napkins. Eat. Nate, do not spill. Carl, your mother called me twice to make sure I was going to remember about your gluten thing — this pizza is half gluten-free, the side closest to the door. Em, your mother says hi. Kids —"
+    },
+    {
+      "t": "narrate",
+      "text": "Here she gestures at Sam and Ben and Maya with a small wave that is, Ben notes, more careful than her usual."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "— welcome. I've met Sam. I'm Eileen. Ben, Jesse's told me about you. Maya —"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Hi, ma'am. I'm Maya."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Hi, sweetie. I'm glad you came. Jess, baby, there's garlic knots too but I left them inside. Come up in a sec if you want them."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Thanks, Mom."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen Henderson leaves the pizza. She ducks back under the door. The door closes behind her."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The band eats. The four teenagers and the three band members eat. The Telecaster is set aside. Nate has taken his bass off. Carl has come out from behind the kit and is sitting on the floor with his back against the amp. Em has the last slice of the gluten-free side because Carl has, as he does every practice, politely offered her more than his actual need."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "So. Sam, Maya, Ben. You have a request? You guys came to hear something."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, without thinking about it, says: \"Blowback.\" Blowback is Jesse's band's second-oldest original. Jesse has not played it in four months because he has decided, quietly, that the song is not good. Sam has not, in her life, requested Blowback."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Blowback."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Why."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam shrugs, small."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "The chorus. I've always liked the chorus."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse is quiet for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "You remember Blowback."
+    },
+    {
+      "t": "say",
+      "char": "Nate",
+      "text": "Of course."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Carl?"
+    },
+    {
+      "t": "say",
+      "char": "Carl",
+      "text": "Yep."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Em?"
+    },
+    {
+      "t": "say",
+      "char": "Em",
+      "text": "I'll pick it up."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Okay. Sam. For you."
+    },
+    {
+      "t": "narrate",
+      "text": "They play Blowback. The chorus is — even Jesse will later admit — the thing that makes the song. The chorus is four lines. It goes: There is a door / The door is not locked / We have not, yet, tried / The handle."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "sad",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, on the camping chair, does not cry. She does not, she realizes, need to cry. The four lines fall into her chest in the specific way good lyrics fall into a person's chest when the person hears them at the only moment in their life that they will ever, exactly, mean. She mouths the last line under her breath. Ben, watching her, notes it. Maya, on her chair, has her head tipped back against the workbench, her eyes closed."
+    },
+    {
+      "t": "narrate",
+      "text": "The song ends. Carl twirls his stick."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Thanks, Sam. For asking."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Thanks, Jesse. For — yeah. Thanks."
+    },
+    {
+      "t": "narrate",
+      "text": "The band takes a break. At nine-oh-six the band resumes. They play one more song — a cover, Pixies' Here Comes Your Man, which Jesse's version is not quite right but which is, in Jesse's version, exactly right for a garage on a Thursday in late May. At nine-thirty, the band packs up. Nate, Carl, and Em leave first."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, Sam, Maya, and Ben stay back. Jesse pulls the garage door down halfway so the four of them can stand in the opening and talk."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay. Truck, ten minutes, as agreed."
+    },
+    {
+      "t": "narrate",
+      "text": "They walk to the curb. Ben's truck. Bench seat. Four people. It is tight. It smells of grease and Mountain Dew and old Pit Stop french fries."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch5_miller_drive"
+    }
+  ]
+}

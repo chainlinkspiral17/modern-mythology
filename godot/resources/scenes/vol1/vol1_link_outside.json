@@ -1,0 +1,41 @@
+{
+  "id": "vol1_link_outside",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "The Missing Link — outside",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_shuttle_bench.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "You step back out into the rain. The bell over the door is unsubtle about your leaving. The rain has the steady quality of rain that has been raining for longer than it needs to."
+    },
+    {
+      "t": "show",
+      "char": "trenchcoat",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He has turned to face you. Not abruptly. As though he had been planning the turn for a while and got to it now. The light at the seams of his coat is closer than you remembered."
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"You came out.\""
+    },
+    {
+      "t": "narrate",
+      "text": "It is not a question and it is not a greeting. It is a thing he has noted and is letting you hear him note."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_outside_hub"
+    }
+  ]
+}

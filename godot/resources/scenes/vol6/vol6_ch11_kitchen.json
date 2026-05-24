@@ -1,0 +1,871 @@
+{
+  "id": "vol6_ch11_kitchen",
+  "vol": 6,
+  "chapter": 11,
+  "type": "chapter",
+  "title": "Ch 11 — The Kitchen at Four Thirty",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Kitchen at Four Thirty",
+      "sub": "Mid-August — 04:11 — 1428 Meadowlark Circle",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca has been awake since four eleven."
+    },
+    {
+      "t": "narrate",
+      "text": "The number is not, exactly, a thing she has decided on. The number is the number her body has, since the second week of June, settled into. She had, in the first week, been waking at five something. By the second week she was at four forty. By the fourth week she was at four eighteen. By the sixth week she was, on most mornings, within a window of three minutes around four eleven. She has not, in some weeks now, set an alarm. The alarm is no longer the relevant instrument. Her body is the instrument. Her body wakes."
+    },
+    {
+      "t": "narrate",
+      "text": "She lies in the bed for a while after."
+    },
+    {
+      "t": "narrate",
+      "text": "This morning she lies for nineteen minutes. The ceiling above her is the ceiling she has been looking at for sixteen years — the same texture, the same small water-stain in the corner above the closet that has been the same small water-stain since the spring of 2014, when there had been a leak from the upstairs bathroom that her husband had fixed and that had nonetheless left this small stain because the underlying paint had, at the moment of the leak, absorbed a drop she had not been able to wash out. She has thought, for sixteen years, that she would, eventually, repaint that ceiling. She has not. She is, she suspects, not going to."
+    },
+    {
+      "t": "narrate",
+      "text": "At four thirty she gets up."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, in the getting up, make the bed. The bed is a queen. There is a side that is hers and a side that has, since June, not been used. She has, for sixteen weeks, been sleeping on her side and not on his. She does not, in the morning, pull his side of the comforter up. She does not pull her own up either. The bed stays open."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts on the robe that is on the hook on the back of the bedroom door. The robe is the green one — not the green plaid Mr. Henderson wears next door, but a plain dark green, terrycloth, that Mike had given her for Christmas in 2019. She has worn it almost every morning since. She puts it on."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes downstairs."
+    },
+    {
+      "t": "narrate",
+      "text": "The stairs are, in their middle three steps, the ones that creak. She has known this for sixteen years. She steps wide, on the outside edges, the way she had taught herself to step in the early years when Sammy had been small and a creaking stair would have woken her. She does not need to step wide now. Sammy is seventeen and sleeps through almost anything. But the stepping wide is a habit her body has retained, and her body, this summer, retains its habits with a small fierce loyalty she has decided not to argue with."
+    },
+    {
+      "t": "narrate",
+      "text": "The kitchen is dark."
+    },
+    {
+      "t": "show",
+      "char": "bianca",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "She does not turn on the overhead. She turns on, instead, the small under-cabinet light over the sink, which gives the kitchen the soft contained light it does in this hour. She fills the coffee pot. She measures the grounds — two scoops, which is what she has been measuring since June, which is one less scoop than the three she had measured for sixteen years before June, because the third scoop had been Mike's and she had, in the second week, stopped putting it in. The pot starts."
+    },
+    {
+      "t": "narrate",
+      "text": "She stands at the counter while it brews."
+    },
+    {
+      "t": "narrate",
+      "text": "The kitchen window faces the front yard and the cul-de-sac. At four thirty-two, the cul-de-sac is dark. The sprinklers will come on at six twelve. The newspaper — they still get the Sentinel, Mike had insisted on it for years — will arrive at six fifteen. Between four thirty and six, she will have the kitchen."
+    },
+    {
+      "t": "narrate",
+      "text": "This is, she has come to understand, the thing she has been waking up for."
+    },
+    {
+      "t": "narrate",
+      "text": "The coffee finishes brewing at four thirty-eight."
+    },
+    {
+      "t": "narrate",
+      "text": "She pours a cup. She does not, this morning, put cream in it. She had, for sixteen years, put cream in her coffee. She had stopped, in the second week of June, for no reason she had been able to articulate at the time, and the not-putting-cream-in-it had become, by the third week, the next layer of small ritual. She drinks it black."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits at the kitchen table."
+    },
+    {
+      "t": "narrate",
+      "text": "The chair she sits in is not her old chair. Her old chair had been at the long side of the table, with Mike across from her and Sammy at the head. Since June she has been sitting in Mike's chair, which is on the short side near the window. She had moved to it in the first week and had not moved back. She has not, with Sammy, discussed this. Sammy has noticed. Sammy has also not, with her, discussed it."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "She watches the cul-de-sac."
+    },
+    {
+      "t": "narrate",
+      "text": "At five oh-two the porch light at the Gellers' across the way comes on. Don Geller is going to work. Don Geller works for the city water department in New Auburn and goes in at five thirty for the early shift. Don has been going in at five thirty for as long as she can remember, and she has been watching his porch light come on at five oh-two for almost as long, because Don is the only person on the cul-de-sac who keeps the same hours she now keeps."
+    },
+    {
+      "t": "narrate",
+      "text": "Don, this morning, comes out at five oh-six. He is in his work clothes. He is carrying his lunch cooler. He gets in his truck. The truck takes a moment to start — it is, she registers, the same hesitation it has had all summer, which means Don has not yet replaced the battery, which means Don is, like her, doing the things he is doing without doing the things he is not. The truck starts. Don pulls out. The truck disappears around the corner."
+    },
+    {
+      "t": "narrate",
+      "text": "The cul-de-sac, again, is empty."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, in this hour, think about Mike."
+    },
+    {
+      "t": "narrate",
+      "text": "This is the thing she has been working on, in the small private way a person works on a thing they have not told anybody they are working on. In the first weeks she had spent these hours thinking about him. About the choices he had made in 2017, in 2019, in 2023. About the morning at the lake with Sammy that he had told her about afterward, the sandwich joke, the mustard and the mayo. About the courthouse and the man in the charcoal suit and the federal arrangement and the small careful way Hernando had explained to her, in the hallway after, what the next ten years were probably going to look like. She had thought about all of it, every morning, in this hour, for some weeks."
+    },
+    {
+      "t": "narrate",
+      "text": "By the seventh week she had registered that the thinking was not, in any useful way, accomplishing anything."
+    },
+    {
+      "t": "narrate",
+      "text": "The thinking was a tape. The tape was a tape she had made herself, in the first weeks, of the things she wanted to be sure she remembered, and the tape was now playing whether or not she put it on. By the seventh week the tape was playing in the shower, in the car, while she was running the dishwasher, in the small spaces between sentences in conversations with neighbors. She did not, by the seventh week, need any more of the tape than she was already getting."
+    },
+    {
+      "t": "narrate",
+      "text": "She had decided, sometime around the eighth week, that the four-thirty hour was going to be, on purpose, not the tape. The four-thirty hour was going to be the hour she did not, deliberately, think about him. She had not, at the time, known what the four-thirty hour was going to be instead."
+    },
+    {
+      "t": "narrate",
+      "text": "She has, in the four weeks since, been finding out."
+    },
+    {
+      "t": "narrate",
+      "text": "The four-thirty hour, as it turns out, is the hour in which she watches the cul-de-sac and remembers things from her own life that she has not, in some years, remembered. Things from before she met Mike. Things from college. Things from her childhood in Lubbock. Her father's hands, which had been the hands of a man who fixed radios for a living and who had, every Saturday morning, sat at his workbench in the garage with the small parts laid out in front of him on a square of white cloth. Her mother's voice, on the phone, calling her at college during her freshman year — long-distance, expensive, ten minutes a week, every Sunday, until her mother had died in Bianca's junior year in the spring of 1987."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks about her mother more than she has thought about her in some time."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, in the thinking, cry. She does not need to. The thinking is, in its small way, the thing she is doing instead of the tape, and the not-crying is not because she is suppressing anything — it is because the thinking is, in this hour, a thing her body wants to do, and her body is, finally, being allowed to do the things it wants to do."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "At five forty-seven she gets up and starts the second pot."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, generally, drink a second pot. She is, this morning, going to. She is going to because she has, this morning, decided that she is going to make a French toast for Sammy, and Sammy is going to come downstairs in about an hour and a half, and the second pot is going to give her something to do with her hands during the next ninety minutes that is not the not-thinking-about-Mike."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets the eggs. She gets the bread — the loaf of challah she had bought at the H-E-B yesterday, because she had, at some point Sunday night, decided that this Monday morning was going to be a French toast morning. She had not told Sammy. The French toast is going to be a small surprise. The surprise is not, she understands, the point. The point is the having-decided. The having-decided was the thing, on Sunday night, that her body had needed to do."
+    },
+    {
+      "t": "narrate",
+      "text": "She cracks the eggs. She whisks. She measures the cinnamon. She pours the milk. She slices the challah, two slices thick, the way Mike had always cut his French toast and the way she had, for sixteen years, found slightly excessive but had not, in those sixteen years, ever overruled."
+    },
+    {
+      "t": "narrate",
+      "text": "This morning, at five fifty-eight, she cuts the slices Mike's thickness."
+    },
+    {
+      "t": "narrate",
+      "text": "She is, she registers, not exactly sure why."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not interrogate it."
+    },
+    {
+      "t": "narrate",
+      "text": "The pan goes on at six oh-two."
+    },
+    {
+      "t": "narrate",
+      "text": "The first slice goes in at six oh-six."
+    },
+    {
+      "t": "narrate",
+      "text": "The smell — butter and cinnamon and the warm vanilla she had added to the egg mixture — fills the kitchen the way the smell of French toast fills a kitchen when a person has, for sixteen years, made French toast in this same pan with the same butter and the same cinnamon and the same vanilla, and when the smell has, in the small archival way smells do, become the thing the kitchen has been trained to remember as one of its mornings."
+    },
+    {
+      "t": "narrate",
+      "text": "Upstairs, she hears the small creak of Sammy's bedroom door."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns the second slice."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam comes downstairs at six fifteen."
+    },
+    {
+      "t": "narrate",
+      "text": "She is in the t-shirt and pajama pants she sleeps in. She is barefoot. Her hair is on one side of her head in the way it always is when she wakes — the small tilt that has been the same since she was three."
+    },
+    {
+      "t": "narrate",
+      "text": "She comes into the kitchen."
+    },
+    {
+      "t": "narrate",
+      "text": "She stops in the doorway."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "surprised",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Sit.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam sits."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca brings the first plate over. Two slices of French toast, with the powdered sugar and the small jug of warmed maple syrup that she had pulled out of the back of the pantry. She sets the plate in front of Sam. She kisses the top of Sam's head."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes back to the pan."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam looks at the plate."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "It's a Monday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "You don't make French toast on a Monday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I felt like it. Eat.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam picks up the fork. She pours the syrup. She cuts a piece. She puts it in her mouth."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca, at the stove, watches her without watching her."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, after the first bite, closes her eyes for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom. This is — this is really good.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Did you sleep?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca pauses, briefly. Then she says, evenly: \"I slept until four eleven, Sammy. I was up at four thirty. The coffee's strong. Eat.\""
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I slept until four eleven, Sammy. I was up at four thirty. The coffee's strong. Eat.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam looks at her."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam does not say Mom, you've been getting up at four eleven every morning since June and we have not really talked about it. Sam, who has been training herself out of saying things that close down conversations, holds the sentence inside her head and lets the sentence sit there without delivering it."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Are you having any?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "In a minute. I'm doing yours first.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Sit with me. I'll wait.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Sammy. Eat. It'll get cold.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom. Sit with me. The pan can wait two minutes. I'll wait two minutes. Sit.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca turns off the burner."
+    },
+    {
+      "t": "narrate",
+      "text": "She slides the third slice onto a plate."
+    },
+    {
+      "t": "narrate",
+      "text": "She brings the plate to the table."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits — not in Mike's chair, this morning. She sits at her own old chair, the one at the long side. The first time she has sat at her own chair in some weeks."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam notices."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, this time, does say something."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "You haven't sat in your chair in like two months.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca looks at her plate."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I know, Sammy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "It's okay. I just — I just noticed.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I know you noticed. I'm — I'm trying it. Today.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A small silence."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam pours syrup on her own second slice."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Are you — are you doing okay, Mom.",
+      "expr": "thinking"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca thinks for a long moment."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Sammy. I am — I am not okay. But I am doing the small things that, eventually, become okay. I am, this morning, sitting in my chair. I have been, for some weeks, getting up at four thirty and watching the cul-de-sac, and that is a thing I have, in the past four weeks, been doing on purpose. I am — I am working on it. I am not going to perform okay for you. I told you that in June. I am still not going to. But I am — I am working on it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam nods."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom. I want to tell you something.",
+      "expr": "thinking"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I have been — I have been thinking about college.",
+      "expr": "thinking"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca, at the table, sets down her fork."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Not — not soon. Senior year. Applications in the fall. I have been — I have been thinking. Not about which one. About — about whether to leave.",
+      "expr": "thinking"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Sammy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Of course you should leave.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Sammy. I — I want you to listen to me. You are seventeen. You have lived in this house your whole life. You have been, this past spring, through more than most people are through in their entire adulthoods. You are going to leave. You are going to go to college somewhere that you choose, for reasons that you choose, because there is something there you want. You are not going to stay in this house because of me. You are not, Sammy, going to be a person who stays.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam is quiet for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "What if — what if I want to stay.",
+      "expr": "thinking"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Then you tell me, in March, when the acceptances come in, that you want to stay. And then we talk about it then. But you don't decide it now. You don't decide it in August before senior year. You don't decide it because you are looking at me at this table and you are watching me work on the small things, and you are deciding, in your head, that I cannot be left here alone. Because, Sammy — Sammy, look at me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I can be left here alone. Not — not happily. Not without grief. But I can be. I am, in the four-thirty hour, learning how. By the time you would leave, I will know. I am working on it now so that, when the time comes, you do not have to make the decision for me. You will get to make it for you. That is the thing I am doing. I want you to know it. I want you to let me do it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam does not, immediately, respond."
+    },
+    {
+      "t": "narrate",
+      "text": "She picks up her fork."
+    },
+    {
+      "t": "narrate",
+      "text": "She cuts another piece."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay, Mom.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I love you.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I love you too, Sammy.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "They eat the French toast."
+    },
+    {
+      "t": "narrate",
+      "text": "The kitchen, in the small ways kitchens do this work, holds them."
+    },
+    {
+      "t": "narrate",
+      "text": "At six fifty-three Sam goes upstairs to shower."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca clears the plates. She rinses them in the sink. She puts them in the dishwasher. She does not, in the rinsing, hum. She has been a hummer, for years, at the sink. She is, this summer, not yet a hummer again. She suspects she will, by some autumn or other, be one again. The hum is, like the sitting in her chair, something she is letting come back at its own pace."
+    },
+    {
+      "t": "narrate",
+      "text": "She wipes the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts the syrup back in the pantry."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts the French toast pan in the sink to soak."
+    },
+    {
+      "t": "narrate",
+      "text": "The kitchen, by seven oh-four, is clean."
+    },
+    {
+      "t": "narrate",
+      "text": "She makes the third cup of coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "She takes it out to the back porch."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_back_porch.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The back porch is small. It is screened in. It has, against the back wall, a wicker chair that had been her mother's and that had come down to Texas in the move from Lubbock in 1989 and that has, in the years since, lived in three different houses with her. The chair is the chair Bianca's mother had sat in for the last six months of her life on Bianca's parents' porch in Lubbock, drinking the same coffee at the same hour, watching the back yard. Bianca had not, until June, sat in the chair regularly. Bianca, this summer, has been sitting in the chair almost every morning at this hour."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits."
+    },
+    {
+      "t": "narrate",
+      "text": "The back yard is in the small soft light a Texas back yard does at seven AM in mid-August. The grass is browning in patches. The crepe myrtle in the corner is in late bloom. The cicadas are tuning up. The light comes in at an angle that catches the small motes of dust in the screen of the porch and makes them visible as the small motes of dust they are."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, this morning, about her father."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks about her father's hands. About the white square of cloth on the workbench. About the radio she had, at six, asked him to teach her to fix, and that he had — patiently, with the small patience of a man who had been waiting for one of his children to ask — sat with her for an entire Saturday afternoon to teach her the names of the small parts. Resistor. Capacitor. Transistor. Solder. The smell of the rosin in the solder, which she has not, in years, smelled and which is, this morning at seven oh-eight on the back porch in mid-August, suddenly, vividly available to her in a way she had not, on Sunday night, been preparing herself for."
+    },
+    {
+      "t": "narrate",
+      "text": "She closes her eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "She breathes."
+    },
+    {
+      "t": "narrate",
+      "text": "Her father had died in 2003. He had been seventy-two. He had died of a heart attack at the workbench, on a Saturday morning, with a small radio in front of him that he had been halfway through repairing. The radio had been, at the time, an old GE table model from the 1950s that he had been restoring for a grandson — Bianca's brother's son, who had been, at the time, eight, and who had asked for the radio for his birthday because he had heard about radios from his uncle and had thought, in the way eight-year-old boys think, that a radio was a thing he wanted. Her father had been finishing the restoration. He had not finished it. The radio had sat on the workbench, half-restored, for a year after, before her brother had finally taken it down and had finished the work himself, and given it to his son, who had — by then — been nine and had no longer wanted it."
+    },
+    {
+      "t": "narrate",
+      "text": "The radio is, she thinks she remembers, still in her brother's house in Houston, on a shelf. She has not seen it in some years."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks about it."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, this morning, that she would like to call her brother."
+    },
+    {
+      "t": "narrate",
+      "text": "She has not called her brother in some weeks. He has, in his way, called her four times since June. She has, in her way, picked up twice. She has been — avoiding is too strong a word — not calling. She has not been calling because the thing her brother would, with the best intentions in the world, want to talk about is the thing she has been working, in the four-thirty hour, to not have on the tape."
+    },
+    {
+      "t": "narrate",
+      "text": "But the radio."
+    },
+    {
+      "t": "narrate",
+      "text": "The radio is a different thing."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I am going to call him this week. Tuesday. After Sammy has left for the day. I am going to ask him whether he still has Dad's radio. I am going to ask him whether he would want to send it to me. I am going to put it on a shelf in this house. I am going to look at it for a year. By that point I will know whether I want to learn how to repair it."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, this morning, decide further than this."
+    },
+    {
+      "t": "narrate",
+      "text": "She finishes her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas, in the crepe myrtle, are louder now."
+    },
+    {
+      "t": "narrate",
+      "text": "At seven thirty-one Sam comes downstairs in her Kwik Stop polo."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She comes to the back porch. She knocks on the door frame."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom. I'm out. Eight to four.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca turns."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Be careful driving. The intersection at Linden has been a mess all week.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I know. I'll go around through Magnolia.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mom.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Thanks for the French toast.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca smiles."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah, Sammy.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, in the doorway, lingers for a beat. She is, Bianca registers, doing the small lingering Sam has been doing all summer in the small departures — the lingering of a daughter who is, every time she leaves the house, doing a small private check-in with herself about whether she should, this morning, stay."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Go to work, Sammy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam goes."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The door closes."
+    },
+    {
+      "t": "narrate",
+      "text": "The Corolla starts in the driveway. The Corolla pulls out. The Corolla is gone."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca stays on the porch."
+    },
+    {
+      "t": "narrate",
+      "text": "She watches the yard."
+    },
+    {
+      "t": "narrate",
+      "text": "The morning continues."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch11_eileen"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "id": "vol6_ch4_storm",
+  "vol": 6,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Ch 4 — Static on the Line",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_suburbs_dawn.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Static on the Line",
+      "sub": "Chapter 4 — Wednesday",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The thunderstorm arrives early. The weather app on Sam Miller's phone had, as of Tuesday evening, been predicting the first rain at fourteen-oh-eight Wednesday afternoon, with a fifty-three percent chance of hail and a forty-one percent chance of the kind of localized flash flooding that Harmony Creek's engineered drainage system had been designed, in 1997, to render theoretical. The forecast had been wrong by approximately eight hours."
+    },
+    {
+      "t": "narrate",
+      "text": "At six-oh-four the first thunder rolls across the subdivision, deep and sustained in the way thunder rolls when it has been gathering off the Gulf since midnight, and the rain comes down not in the typical Texas way — fast, heavy, gone in twenty minutes — but in the slower more insistent way storms come down when they have decided, for some private reason, to stay a while."
+    },
+    {
+      "t": "narrate",
+      "text": "The sprinklers, on their schedule, do not run. Wednesdays are off days for the east side of the subdivision. Wednesdays receive the rain the sprinklers would otherwise have provided. The HOA has, in a memo circulated in 2014, described this arrangement as the grid's quiet efficiency."
+    },
+    {
+      "t": "narrate",
+      "text": "At six-oh-five, the first transformer on Gallatin trips. The power flickers across four blocks. At six-oh-six, the transformer resets itself. The power comes back. Everybody's clocks, except for the microwave at the Kwik Stop which was already nine minutes fast, are now forty-six seconds behind."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_gravel_turnout_rain.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "At six-oh-seven, in a white sedan parked at the gravel turnout past the last named road on the east side of the subdivision, a woman in her mid-thirties wearing a HOUSTON CHRONICLE lanyard and a man in his fifties with a fading golf-shirt sunburn exchange a look they have exchanged forty-one times in the past three days. The look does not, externally, convey anything. Internally it conveys: here it starts."
+    },
+    {
+      "t": "show",
+      "char": "claire",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "The woman picks up her phone. She calls a number that is not in her contacts and that she does not need to dial, because her phone has had the number saved under a name her partner will never ask her about."
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "It's early."
+    },
+    {
+      "t": "narrate",
+      "text": "A pause."
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Understood. We're in position."
+    },
+    {
+      "t": "narrate",
+      "text": "She hangs up. She looks at her partner."
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "They're moving him tonight."
+    },
+    {
+      "t": "show",
+      "char": "stranger",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Claire's Partner",
+      "text": "Eight days got cut to two."
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Claire's Partner",
+      "text": "Is Miller running it."
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Miller is being told."
+    },
+    {
+      "t": "say",
+      "char": "Claire's Partner",
+      "text": "How's she holding up."
+    },
+    {
+      "t": "say",
+      "char": "Claire's Partner",
+      "text": "The girl?"
+    },
+    {
+      "t": "say",
+      "char": "Claire's Partner",
+      "text": "The girl."
+    },
+    {
+      "t": "narrate",
+      "text": "The reporter — her name is Claire Moyer, she has been with the Chronicle for eleven years, and the work she is currently doing is not on any masthead she would ever be credited under — takes a long breath."
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Better than I'd be. She doesn't know it yet. But better than I'd be."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch4_sam_list"
+    }
+  ]
+}

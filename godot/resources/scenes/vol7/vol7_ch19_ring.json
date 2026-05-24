@@ -1,0 +1,320 @@
+{
+  "id": "vol7_ch19_ring",
+  "vol": 7,
+  "chapter": 19,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The Crow Rang",
+      "sub": "Three a.m.",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "text": "At nine the room got quiet. Tem had brought out a pot of mint tea Hans had grown in his garden and dried in the bakery's spare room. The seven held mugs of the tea. The kerosene lamp burned. The four bowls on the table. The cedar bell-piece beside them. The notebook beside the cedar. The crow on the back of the chair Lena had brought the perch in for — the perch was in the corner of the kitchen and the crow had not yet decided to use it.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I want to do a thing.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "What.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I want to take the cedar and the four bowls to the painted face on the alley wall.",
+      "t": "say"
+    },
+    {
+      "text": "Tem looked at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Not tonight. Tomorrow. Tomorrow morning. I want to bring the bowls and the bell-piece down to the alley. I want to set them on the milk crate at the foot of the wall. I want them at the wall for a count of an hour. The four bowls and the cedar with the bell, in proximity to the face. The face is alone on the wall right now. The bowls have been at the cabin. The face has been at the wall. I want to see what happens if they're in the same place.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Lena.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The bowls have not, in fifty-three years by Roy's count, been outside of a person's house except in transit.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I know.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "By my reading, by what Olaf would have read — they would be at risk in an alley.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I will sit at the wall the hour the bowls are at the wall. They are not going to be unattended. Cale will be there. Petra will be there. I will be there. The alley is the wall the substrate cleared. The substrate has been at the wall. Per, the bowls and the wall are different pieces of the same thing. I want them in the same room for a count. I want to see.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Lena.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I would like to come.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I would like to bring the bowls down with you. I would like to be at the wall. I have not seen the wall. I have been in this town twenty-one years and have not, until this morning before the bakery, been told a face was on it. I have not gone to look. I would like the going-to-look to be the going-with-the-bowls.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes, Roy.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Lena.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Tomorrow at seven. We will take the bowls down. Per will come. Roy will come. Cale will come. Finn will come with the crow. Kai will come. I will come. The seven of us will go down at six-thirty in the trucks. We will be at the wall by seven. We will set up. We will sit for an hour. We will come back up by ten. Marit will come up with you at noon.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Good.",
+      "t": "say"
+    },
+    {
+      "text": "At ten Cale and Roy and Finn made up the sleeping arrangements. Roy in the loft. Per in one of the chairs by the stove. Cale in the other. Finn on the floor by the south window. Kai on the daybed. Tem and Lena in the bedroom. The seven of them turned the lights down. The kerosene lamp on the table stayed lit at the low setting Tem kept it at when she wanted to be able to see the bowls in the dark.",
+      "t": "narrate"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Per went to his chair. He pulled the wool blanket over himself. He looked at the table. The four bowls warm. The cedar bell-piece warm. The crow on the back of the chair. The cabin at sixty-three. The rain on the cedar roof steady the way it had been since Wednesday.",
+      "t": "narrate"
+    },
+    {
+      "text": "He thought about Olaf. He had not, in the past five days, thought about Olaf for the length of a count without thinking about something else also. He thought about Olaf now. Olaf at thirty-eight in 1976 carving a bell-piece in the kitchen at home. Olaf giving the bell-piece to Eddvard at the dock in some afternoon Per had no memory of. Olaf telling Eddvard take this down to Eugene when you can. Eddvard saying I will.",
+      "t": "narrate"
+    },
+    {
+      "text": "Eddvard not, in the next sixty-six years, taking it down. The bell-piece in Eddvard's drawer at this cabin from '76 to '42. The bell-piece in Tem's drawer in town from '42 to now. The bell-piece at the bottom of a tide pool in a substrate experience designed by a Danish man in 2018. The bell-piece on the table at the cabin tonight, brought back by a young man with a crow.",
+      "t": "narrate"
+    },
+    {
+      "text": "Olaf carved the bell-piece in 1976 and the bell-piece is, in 2052, on the table at the cabin Olaf built with Eddvard in 1979.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per registered, in the chair by the stove, that he was at the cabin with his father in the way Tem had said this afternoon he would be.",
+      "t": "narrate"
+    },
+    {
+      "text": "He closed his eyes. The cabin held him. He slept.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "At three a.m. Per woke.",
+      "t": "narrate"
+    },
+    {
+      "text": "He did not know why. The cabin was quiet. The kerosene lamp had not gone out — Tem had set it low enough to burn through the night. The other six were asleep. The crow on the back of the chair was awake — by what Per could see at this distance, the crow was looking at the bowls on the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowls on the table were — by what Per could see in the kerosene light, by the small alarm in his body that had woken him without his asking — still.",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat up.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figures on the bowls were not moving.",
+      "t": "narrate"
+    },
+    {
+      "text": "The young women on all four bowls were — by Per's read across the table — in the same position. The four had their hands raised. The four had their hands at the height a person's hand would be at the bell-pull of a door. The four were facing the door of the cabin. The four had their other hands at their sides.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowls were in the position Brandon's third instruction had said the bowls would be in.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per's body went cold.",
+      "t": "narrate"
+    },
+    {
+      "text": "He registered that the bowls were giving the room a count of seconds.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stood up. The cabin around him was still. He looked at the door. The cedar Olaf had milled at the small mill up the river. The door Olaf and Eddvard had built in 1979.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went to Tem. He shook her shoulder. She opened her eyes immediately.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Tem. The bowls.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "She was out of bed in a count. She went to the table. She looked at the bowls. She looked at the figures. She turned to Per.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Wake them. All of them. Now.",
+      "t": "say"
+    },
+    {
+      "text": "He went to Cale. Tem went to Finn. The seven of them were up in maybe thirty seconds. The cast at three-oh-one on the morning of the first of September of 2052 was at the cabin in the bedclothes they had been in, standing in a row at the table, looking at the bowls.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowls were still.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow walked from the back of the chair across the table to the cedar bell-piece. The crow stood beside the bell-piece. The crow opened its beak.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow made a sound.",
+      "t": "narrate"
+    },
+    {
+      "text": "The sound was, by what Per heard at the table and by what every person at the table heard, quiet. One note. At a pitch Per felt before he heard. It moved through the cabin the way a sound moves through cedar.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was the bell.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow rang.",
+      "t": "narrate"
+    },
+    {
+      "text": "The seven of them at the table did not, for the count of the sound, breathe.",
+      "t": "narrate"
+    },
+    {
+      "text": "Outside, on the porch of the cabin, somebody knocked.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

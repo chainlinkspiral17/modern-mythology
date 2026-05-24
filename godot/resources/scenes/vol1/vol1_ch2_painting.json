@@ -1,0 +1,261 @@
+{
+  "id": "vol1_ch2_painting",
+  "vol": 1,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Act One — The Sitting Hour",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_apartment_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "interlude",
+      "text": "Faust's Apartment",
+      "sub": "The Easel · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "EXT. FAUST'S APARTMENT — DAY"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust has an easel set up."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Every one must have a hobby. Said Aunt Grace, who set me up — who sorta got famous in the wild and crazy seventies."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust paints."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "It's like reading to me — summoning that which exists outside and bringing it in. Painting burns an image from memory."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I've started getting better. Don't know what that means — only that I am starting to see things which should not be."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "When nightmares keep me up at odd hours, I can relax with my demons and desires made firm in the slowing of paint."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Look what I've trapped. I think three elementals — water on the left, fire on the right, air in the middle."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust takes a hit off the joint he has and leans back."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "While I painted, I talked to them — as they were modelling, and were sitting still indeed."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust looks over at his models — the three elements — while he paints."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "water",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "air",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "fire",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "It's cool how we can see ourselves as he paints us — even if it is all just tits and ass."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "Quiet while he works on me. I think he really gets it. This is so exciting — can't you see."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "You're just trying to win his favor. Make him an offer of power. Get on his good side — you're his astrological element."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "No. I think this one isn't a dick — which is exactly why shit went down so bad previously. Old white men done stupid shit."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "Reminder — he's just a kid. And look at how he's looking at me. I don't think it's the flames that are fanning his attention."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "At least he reads. The last few have been rather dimwitted. Though I think we should try and warn him."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "Not to play with fire?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Zing. You guys converse like I'm not even here. I can hear you just fine — which is cool, you dig."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "See? I told you he knew we were here."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "It's all good. He gets it."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "If he gets it, why isn't wood here?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "She's the frame, numbnuts."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "Called it. Dude is awesome."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "It could go either way yet."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "Kid knows his shit."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "However casually."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I just want to paint you. Not hash out some magical deal. So apologies if I get the details wrong — next time I'll take a reference photo."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "[Listen to Fire. Lean in.]",
+          "goto": 39
+        },
+        {
+          "text": "[Listen to Water. Stay steady.]",
+          "goto": 41
+        },
+        {
+          "text": "[Listen to Air. Take the warning.]",
+          "goto": 43
+        }
+      ]
+    },
+    {
+      "t": "flag",
+      "key": "faust_elem_favored",
+      "val": "fire"
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch2_painting_b"
+    },
+    {
+      "t": "flag",
+      "key": "faust_elem_favored",
+      "val": "water"
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch2_painting_b"
+    },
+    {
+      "t": "flag",
+      "key": "faust_elem_favored",
+      "val": "air"
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch2_painting_b"
+    }
+  ]
+}

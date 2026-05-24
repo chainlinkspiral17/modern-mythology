@@ -1,0 +1,247 @@
+{
+  "id": "vol7_ch21_tower",
+  "vol": 7,
+  "chapter": 21,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The Tower",
+      "sub": "Old-Yachats",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Cale arrived at the cabin at two-oh-five. He had the disc-case in his coat. He came up the porch steps. He came in. He did not take off the coat. He set the disc-case on the kitchen table beside the two bowls and the cedar bell-piece. He looked at the three of them.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "I'm not staying. The store needs to be open. I'll go back.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I wanted you to have it.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I'll be at the store. Call if anything else moves.",
+      "t": "say"
+    },
+    {
+      "text": "He turned. He walked back to his F-150. He drove back down to town.",
+      "t": "narrate"
+    },
+    {
+      "text": "The disc-case was the case the stick had been in when Cale had sold it to Tem at ChillWave on the eleventh of July for nineteen dollars. It was the case that had been on Tem's writing desk through July. It was the case Tem had brought back to Cale on the eighth of August when she had decided the stick was broken. It was the case Cale had put on the inventory shelf behind his register on the seventeenth of August.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was the case that had moved itself onto Cale's processing counter sometime between ten last night and one this afternoon.",
+      "t": "narrate"
+    },
+    {
+      "text": "It sat on the kitchen table at the cabin at two-oh-eight in the afternoon of the first of September of 2052 between the two bowls and the cedar bell-piece.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem looked at it. Kai looked at it. Finn looked at it. None of them, for a long count, moved to pick it up.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Are you going to play it now.",
+      "t": "say"
+    },
+    {
+      "text": "Tem looked at the disc-case. She said, after a count:",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "No.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "When.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Not before the tower.",
+      "t": "say"
+    },
+    {
+      "text": "The two of them did not, for a count, say anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "The tower.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Dean's tower. At old-Yachats.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She came from there. She came to the door at three last night, and she came from somewhere, and the somewhere is the tower.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I've been thinking about it since dawn.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The disc-case moved itself onto Cale's counter and that's the substrate telling us the time is now.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "But the now starts at the source. We go to the tower first. I look at the place she came from. Then I play the stick.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "All three of us.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "All three of us.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "When.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Now. We go up now. We're at old-Yachats by four. We're back by dark. I play it tomorrow morning at the cabin in the daylight.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Tem stood up from the table. She walked to the bedroom. She came back with her coat. She put it on. Kai stood up. Finn stood up. The three of them at the cabin.",
+      "t": "narrate"
+    },
+    {
+      "text": "The two bowls on the table. The cedar bell-piece. The disc-case.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "The bowls stay. The cedar stays. The disc stays. They are at the cabin. We come back to them.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "The three of them went out to the wagon. Tem locked the cabin door behind her — she did not, on most days, lock it, but she locked it now.",
+      "t": "narrate"
+    },
+    {
+      "text": "They got in the wagon. Tem driving. Kai in the passenger seat. Finn in the back. Tem turned the wagon around in the cabin's clearing. They drove down the cabin road to Main. They turned north on 101.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "The mist on the cedars opened to a coastal afternoon that was still gray but no longer raining. They drove north toward old-Yachats.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

@@ -1,0 +1,719 @@
+{
+  "id": "vol7_ch7_six_oclock",
+  "vol": 7,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Six O'Clock",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_lena_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 7",
+      "sub": "Six O'Clock",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "She had been at the apartment since one. She had made coffee. She had eaten a piece of bread with cheese. She had stripped the bed and put new sheets on it — she wanted the apartment to feel like an apartment that had been kept rather than one that had been slept in.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had run the small portable space heater because the apartment did not warm up otherwise. She had pulled the Estuary 7 stick out of her inside coat pocket and set it on the small wooden side table by the chair and looked at it for a long minute and put it back in her coat pocket.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had not played it. She had not, in two years at the Daily Grind and three at the apartment, played a slow stick. She did not have a reader. Cale had told her to wait until she had a reason. She had a reason now and still no reader.",
+      "t": "narrate"
+    },
+    {
+      "text": "At five-forty-eight she heard Finn's truck on Hemlock.",
+      "t": "narrate"
+    },
+    {
+      "text": "She went to the front window and looked down. Three of them got out. Tem in the wool sweater under wax canvas. Kai in his grandmother's wool. Finn in his sister's coat. The crow was not on Finn's shoulder. The crow had stayed at the truck.",
+      "t": "narrate"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "She opened the door before they knocked.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Hi.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hi, you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "They came in and took off the coats and hung them on the row of hooks by the door, which had, in three years, never had more than one coat on it at a time. Four hooks, four coats. The apartment was, with all of them in it, smaller than it was. She had known the apartment was small in the abstract. She had not, until now, registered the specific dimensions.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Sit.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Tem and Finn took the couch. Kai took the chair by the window.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Is there anything to eat.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Bread. Cheese. The soup from Wednesday. I haven't eaten since this morning.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'll do it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "text": "He got up and went into the kitchen, and as he passed her he put his hand briefly on her shoulder — not a thing Kai did — and she registered it as him knowing that he was telling her, with the hand, that he knew. He found the soup pot. He set it on the stove. He found the bread. He found the cheese. He started cutting.",
+      "t": "narrate"
+    },
+    {
+      "text": "For maybe two minutes nobody spoke.",
+      "t": "narrate"
+    },
+    {
+      "text": "The sound in the apartment was Kai cutting bread on the small wooden board.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "You went to ChillWave.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I did.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale told you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Tem closed her eyes for a beat and opened them.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "All of it?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I don't know what all of it is. He told me about Nate at sixteen. The basement. Pattern persistence. The conversation in March '94 about a daughter. He told me Brandon came to him in 2049. He told me you came to him in July.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He told you about the airport.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He told me about the airport. The napkin. He told me to be careful with the gallery on the sixth floor.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Tem put her face in her hands for a count and took her hands away. She was not, by her face, surprised. She was something else — a kind of release Lena had not seen on her before.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "He's been waiting since July. I knew on the day I went in that he had something to say. I did not ask him to say it. I was not ready, and I was not sure I was ever going to be ready, and I had decided to make him hold it until I figured out whether I was. He has been holding it for two months. I'm sorry, Cale.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He's not here.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I'll tell him I'm sorry tomorrow. He said he'd come up?",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He said he'd come up in the morning if you wanted him to.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I want him to.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Kai, from the kitchen, said without turning:",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "What did Cale tell you about the daughter.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "text": "Lena told them. The Saturday night in March 1994. I am going to have a daughter someday and the daughter is the work. I am going to bring her here. I do not know how yet. I am going to figure out how.",
+      "t": "narrate"
+    },
+    {
+      "text": "Cale had assumed for thirty years it had been a sixteen-year-old talking weird at three in the morning. Brandon Tillman had not assumed. Brandon had a working theory. He had asked Cale, in 2049, whether Nate had ever talked to him about a daughter, and Cale had told him, and Brandon had sat with it for a long time and said thank you, Cale, and left, and had been back twice in the year before he died and had not asked about the daughter again because he had what he needed.",
+      "t": "narrate"
+    },
+    {
+      "text": "When she was done she sat with her hands flat on her knees.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "The crow.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The three of them looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "The crow used to belong to Brandon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem said yesterday. The crow used to belong to Brandon. The crow has been bringing me wood for nine months. The wood is from whatever Brandon was investigating. Brandon had a working theory that included a daughter.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The wood is — the wood is part of how the daughter is coming. The crow has been bringing me her arrival, piece by piece, and I have been keeping the pieces in a cloth in a duffel bag in the corner of my kitchen.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "serious",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Kai stopped cutting. He set the knife down on the cutting board.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Finn.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "That's what it is.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You don't know that.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "No. I don't. I'm putting it together. The crow brings wood. The wood is from whatever Brandon was investigating. Brandon was investigating Nate. Nate was making a daughter. The wood is part of the daughter. Possibly. I don't know in what way. I don't know what the wood is for. But the throughline runs through all of it and the throughline points at her.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Kai picked the knife back up and resumed cutting.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Or the wood is evidence. The wood is what Brandon collected to prove what Nate was doing. The wood is forensic. The crow is bringing you the case file.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Or that.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Both could be true.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Both could be.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Both probably are.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Kai brought the soup to the small kitchen table at six-twenty-something. He had warmed the soup, cut the bread into slices thick enough to dip, found four bowls and four spoons, and set the table the way somebody sets a table who has been doing it for somebody else his whole life.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four chairs were not a matched set. The table was a small round oak from the seventies that had a wobble in one leg she had been meaning to shim for a year.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Tem sat across from Lena. Kai sat on Lena's right. Finn sat on her left. The wobble in the table met Tem's elbow.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "This table needs a shim.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have a shim at the cabin. I'll bring one next time.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Thanks.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "text": "Everybody eat.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "They ate in the way four people who had not eaten in a day eat — without talking, without slowing, with the small mechanical attention that hunger pulls out of a body. Lena finished a bowl and got up and got herself a second. Kai finished two slices of bread and reached for a third. Finn ate one bowl slowly. Tem ate half of one and stopped and held the spoon over the bowl for a count and set the spoon down.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "serious",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "text": "I have to say something.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The three of them looked at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I want to say it now while we have eaten and before we go any further. I have been sitting with it since this morning. I owe you all an apology and I want to give it before we figure out what we do next.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "expr": "serious",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Let me get through it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She pushed the bowl an inch away from her.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I have known for two years that the patches were going to start showing up. I have known for two years that the tower was leaking. I have known for two years that Brandon Tillman had been investigating Nate Dean and that I had been pulled into the work by the bench at the museum and by what Brandon told me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I did not, in the two years, tell any of you. I told myself I was waiting for the work to be ready to share. The work was not the thing that needed to be ready. I was the thing that needed to be ready.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I was not ready because being ready meant admitting I did not know what I was doing and I had decided I was the kind of person who only spoke about a thing when she knew what she was doing. That decision was wrong. The decision was wrong from the beginning.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I made all of you wait, and I made Cale wait, and I made the patches wait, and the whole time I was not protecting anybody from anything. I was protecting my image of myself as the person who could carry a thing well.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The image was what I was carrying. The image was what was heavy. I am sorry.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She did not, when she was done, look at any of them.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm going to push back on you a little. You can take it or not.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Take it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Some of what you just said is true. The image-protecting part is true. I have watched you do that for the two years I have known you and I have, on a couple of occasions, thought you were doing it and not said anything. I am going to start saying something. That part, the apology is good. I take it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The other part — the part where you say you made all of us wait and you made Cale wait and you made the patches wait — that part is too much. You did not make the patches wait. The patches are not on a schedule you set. The patches are what they are.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You did not make Cale wait. Cale told Lena he was tired of waiting. He chose to wait. He could have come to any of us at any point in the last two years and he didn't, and that's on him as much as it's on you. You do not get to take that on.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You did make us wait. That part you can have. The rest — Tem. Stop. You're doing it again.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The big apology is also a kind of image-protecting. It's the version where you are the person who can identify everything she did wrong and itemize it for the table. Don't itemize for us. We don't need the itemization. We just need you to be in the room.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Tem looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "All right.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm not — I'm not mad.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm not. The Roy thing this morning is going to take me a minute to come down from. I am still hot. I want you to know my saying this is not me being hot. This is me trying to be honest with you the way you are trying to be honest with us.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Finn, who had been eating, set his spoon down.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I want to add one thing to what Kai said, and then I'm done.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Go.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "You did not have to be ready by yourself. You decided you did. The deciding was not — Tem, the deciding was the loneliness.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "You have been lonely with this for two years and you didn't have to be. We were all here. You could have walked into Board Lords any day in 2050 and said Kai, something is happening with the patches, and he would have said all right, what do you need.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "You could have come into the Daily Grind and said the same thing to Lena. You didn't. You decided not to. The deciding was the thing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I am not — I am not blaming you for the deciding. I have been quiet about my own things for years and I am not in any position to blame you. I am saying that the wait was lonely and the loneliness was a thing you chose, and I am sorry it took until this weekend for any of us to be in a room with you about it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Tem was quiet for a long count.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah, Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She picked up her spoon. She finished the soup.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch7_night",
+      "t": "jump"
+    }
+  ]
+}

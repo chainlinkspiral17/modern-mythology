@@ -1,0 +1,63 @@
+{
+  "id": "vol2_ch2_seagash",
+  "vol": 2,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "ii. The Siren of Seagash",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_seagash_circus_old.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "ii. The Siren of Seagash",
+      "sub": "— A history, with interludes —",
+      "duration": 3200
+    },
+    {
+      "t": "narrate",
+      "text": "Her real name was Delores Wiebe."
+    },
+    {
+      "t": "narrate",
+      "text": "Born in the late 1800s. Her legs fused together during development in her mother's womb, and her toes splayed out like long thin fingers — upon which thin webbing crept part way down the lengths, joining each digit."
+    },
+    {
+      "t": "narrate",
+      "text": "A man collecting freaks squinted in just the right light and saw himself a genuine mermaid."
+    },
+    {
+      "t": "narrate",
+      "text": "His name was Eric Jarvis. A showman and grifter who was aging and looking to set down roots. Delores's parents did not abandon her so much as sell her — exhausted from the efforts of rearing her. No doubt they saw the charms of her youth slowly twisted into a parody of adolescence."
+    },
+    {
+      "t": "narrate",
+      "text": "I did not learn the daily details of her life. But I could imagine them unpleasant."
+    },
+    {
+      "t": "narrate",
+      "text": "To sell his attraction, Jarvis stripped young Delores naked and had someone carry her onto a small, semi-aquatic stage with an unnatural island — for her to pine at young men from a distance. All for the cost of a few coins."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't know why I started researching the mermaid. But I was intrigued. I knew of the Fiji Mermaid — a con job of P.T. Barnum — and wondered if this Siren may also be the somewhat convincing chimerical concoction of an over-stimulated taxidermist."
+    },
+    {
+      "t": "narrate",
+      "text": "But Ms. Wiebe was no shaved monkey fused to a tuna. I found no other pictures or photographs of her beyond the initial discovery of the carved wooden advertisement."
+    },
+    {
+      "t": "narrate",
+      "text": "In Small Wood's Elk Lodge, a newspaper clipping existed to reinforce her historical existence. I will return to its significance later on."
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch2_interlude_one"
+    }
+  ]
+}

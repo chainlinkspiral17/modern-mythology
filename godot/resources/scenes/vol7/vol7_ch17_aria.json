@@ -1,0 +1,847 @@
+{
+  "id": "vol7_ch17_aria",
+  "vol": 7,
+  "chapter": 17,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The Four Bowls",
+      "sub": "Sunday morning",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "He took the bowl out.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowl was cedar. The bowl was the size of two cupped hands. The bowl had the spiral on the outside. The bowl was — Tem registered, watching Roy lift it — the hand. Olaf's hand.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy set the bowl on the table. He looked across at Tem.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Tem. The other three.",
+      "t": "say"
+    },
+    {
+      "text": "Tem stood up.",
+      "t": "narrate"
+    },
+    {
+      "text": "She went to the box she had set at the end of the table. She opened it. She took out Marit's bowl first. She brought it over. She set it on the table beside Roy's.",
+      "t": "narrate"
+    },
+    {
+      "text": "She went back and took out the substrate-bowl. She set it on the table beside Marit's. She went back and took out Marina's grandfather's bowl. She set it on the table beside the substrate-bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four bowls were on the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy's at the head, Marit's beside it, then the substrate-bowl, then Marina's grandfather's bowl. The four had been carved by one hand over a span of '74 to '77, plus the one the substrate had carved this past Wednesday. Four bowls in a row.",
+      "t": "narrate"
+    },
+    {
+      "text": "The room did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "text": "Then the bowls did.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figures on the four bowls — Tem registered, watching from above as she stood at the table — began to align.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow on Roy's bowl, which had been facing the rim of the bowl, turned its head a full quarter-turn over the course of maybe forty seconds. The turn was visible to the eye if the eye was watching.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow on Roy's bowl, at the end of the turn, was looking at the same point on Marit's bowl as the crow on Marit's bowl was looking at on the substrate-bowl as the crow on the substrate-bowl was looking at on Marina's grandfather's bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four crows were looking — by Tem's read at the table — toward the same single point: a point in the empty air at the head of the table where there had been the chair Roy had sat in until he had stood to take his bowl out.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four crows were looking at Roy's chair.",
+      "t": "narrate"
+    },
+    {
+      "text": "The octopus on each of the four bowls — Tem registered, after the crows — began to rearrange.",
+      "t": "narrate"
+    },
+    {
+      "text": "The octopus on Roy's bowl had had its eight arms in a specific arrangement that suggested a creature at rest. Over maybe a minute, the arms moved — the eight arms moved in unison with the arms of the octopus on Marit's bowl and the seven-and-a-half arms on the substrate-bowl and the arms on Marina's grandfather's bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "At the end of the minute, all four octopi had their arms in the same arrangement — extended outward in a single direction, as if all four creatures were reaching for the same point.",
+      "t": "narrate"
+    },
+    {
+      "text": "The point they were reaching for was Roy's chair.",
+      "t": "narrate"
+    },
+    {
+      "text": "The young woman on each of the bowls — Tem registered — was moving.",
+      "t": "narrate"
+    },
+    {
+      "text": "The young woman on Roy's bowl had been in a standing position with her hand on a doorframe, looking inward at a room. Roy's bowl's young woman was at a door.",
+      "t": "narrate"
+    },
+    {
+      "text": "The young woman on Marit's bowl was — by the past week of carving — looking at the door of the cabin. The young woman on the substrate-bowl was — by Kai's reading at the cabin — walking past a stenciled doorway, her body in motion.",
+      "t": "narrate"
+    },
+    {
+      "text": "The young woman on Marina's grandfather's bowl was — by Tem's read now — looking up from the wood at something above the rim.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four young women began to move.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy's bowl's young woman walked through the doorframe.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marit's bowl's young woman walked away from the cabin door and toward the rim of her bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate-bowl's young woman walked past the stenciled doorway and continued, off the cedar's curve, in the direction of the next bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marina's grandfather's bowl's young woman — by Tem's read in the moment — raised her face, which had been turned downward. Her eyes opened.",
+      "t": "narrate"
+    },
+    {
+      "text": "The young woman on Marina's grandfather's bowl was the first of the four to have her eyes open. Tem registered the opening.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "The eyes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "She is looking at me.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She is looking at you.",
+      "t": "say"
+    },
+    {
+      "text": "Nobody, for a count, did anything. The eyes on the carved young woman on Marina's grandfather's bowl were open. They were looking up from the cedar at Marina. Marina was, by Tem's read, holding very still.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "She is looking at Marina.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "She has not — by what I have known of my bowl in twenty-one years, by what I have known of the carved young woman in my bowl who has been on the cedar facing the doorframe with her hand on the door — she has not, in those twenty-one years, walked through the doorframe.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The walking-through has happened just now.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The bowls are doing the thing they have been getting ready to do.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The bowls are arriving at the configuration they have been waiting to arrive at for a hundred and twenty years.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yes, Hans.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Is she going to ring.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Cale. I do not know. The poem said she will ring when the room is ready. This is the gathering I have known about my whole life.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "By the table, by the four bowls, by Aud and Marit and Marina and Roy and Per and the four young people and Cale — we have all the people the work has been waiting for.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "We are ready, by every measure I have. I am going to wait for what the bowls do.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I am going to be honest that I do not know if the bowls are the ringing, or if the ringing is yet to come.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah, Hans.",
+      "t": "say"
+    },
+    {
+      "text": "The eyes on Marina's grandfather's bowl stayed open. The other three young women continued to walk at the cedar-pace.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy's bowl's young woman walked through her doorframe and was, by Tem's read after a count, walking toward the rim. Marit's bowl's young woman was at her rim. The substrate-bowl's young woman was continuing in the direction of the next bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "After maybe four minutes the three other young women raised their faces. The three other pairs of eyes opened.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four young women on the four bowls — Tem registered — were now looking, with open eyes, in four directions. Marina's grandfather's woman was looking at Marina. Roy's woman was looking — by Tem's read — at Roy. Marit's woman was looking at Marit. The substrate-bowl's woman was looking at Kai.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four pairs of open eyes.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "She is looking at me.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "She is looking at me.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "She is looking at me.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "She is looking at me.",
+      "t": "say"
+    },
+    {
+      "text": "The four of them sat with the looking. The other six at the table watched.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow on Kai's shoulder hopped down to Kai's lap, then to the table. The crow walked across the table to the substrate-bowl. The crow stood on the rim of the substrate-bowl and looked down at the young woman inside it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The young woman inside the substrate-bowl looked up at the crow.",
+      "t": "narrate"
+    },
+    {
+      "char": "crow",
+      "text": "Aria.",
+      "t": "say"
+    },
+    {
+      "text": "The young woman on the cedar — by Tem's read — smiled.",
+      "t": "narrate"
+    },
+    {
+      "text": "For a long count nobody at the table said anything.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the cedar of the substrate-bowl was smiling at the crow. The crow was looking down at the face. The four bowls were on the table. The four young women had their eyes open. The four were looking at four people. Nobody moved.",
+      "t": "narrate"
+    },
+    {
+      "text": "Then the eyes on each of the four bowls — Tem registered, after maybe two minutes of smiling and looking — closed.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four faces went back to being faces with closed eyes.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four arms of the octopi returned, over a count, to their resting positions. The four crows returned their heads to where they had been. The four young women walked, over a count, back to where they had been before the alignment.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowls returned to where they had been.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figures on the bowls were now — by Tem's read at the table — in their pre-Sunday positions, except that the four young women, in their resting positions, were now standing slightly more upright than they had been before. The four were, by Tem's count, ready.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow on the rim of the substrate-bowl hopped back across the table and back up to Kai's shoulder.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "She did not ring.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "She did not ring.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Was that — was that the room being ready and the ringing not happening, or was that not the room being ready.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Kai. By every measure I have, we were ready. The bowls aligned. The eyes opened. The crow spoke. The smile happened. That was what the poem was about.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The ringing did not happen. By my reading at the table now, the ringing is not going to happen at the bakery today.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The bowls have done what the bowls have been getting ready to do. They have not, by doing it, brought her in. The bringing-in is going to be a different event. At a different time.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Mm.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "When.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Kai. I do not know.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja, Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The bowls are warm in a way I have not — I have not registered this kind of warm.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The bowls are — Hans, the bowls are at a temperature the cedar has not had in any of the days since the second week of July. Touch them.",
+      "t": "say"
+    },
+    {
+      "text": "Hans reached across to Roy's bowl. He put his palm on the side. He registered the warmth on his face.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "text": "Cale put his palm on the substrate-bowl. Per put his palm on Marit's. Marina put her palm on her grandfather's. The four bowls each had one palm on them.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four palms came off the bowls after a count. The four people who had touched the bowls did not, for the count, say anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "The bowls are not done.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The bowls are warm because they are not done. The configuration was the bowls preparing. They are now preparing more deeply. They are going to be at this temperature until the ringing. The ringing is the next event the bowls are getting ready for.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Where do the bowls stay between now and the ringing.",
+      "t": "say"
+    },
+    {
+      "text": "Roy did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "At the cabin.",
+      "t": "say"
+    },
+    {
+      "text": "The table looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "The cabin is the place. The cabin is where Eddvard's bowl has been since '79. Where my mother's — Marit, Per's mother's — bowl has been since Per brought it up. Where the substrate-bowl was carved. The cabin is for the four bowls.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "My bowl has been in my apartment for twenty-one years and the apartment has been the bowl's room. The apartment is not the bowl's room now. The cabin is.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I am asking the table to take my bowl to the cabin. I am asking Tem to keep it with the others. I am asking to be present when the ringing happens.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I am asking to be at the cabin tonight. After twenty-one years of being a man with a bowl on a shelf in an apartment, I am asking to be where the bowls are.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come up to the cabin tonight.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Bring the bowl with you. The cabin has a loft above the kitchen that Marina has been in for three nights. Marina is going down to Eugene tonight. The loft is going to be open. The loft is yours tonight.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come. The cabin holds whoever needs to be at it.",
+      "t": "say"
+    },
+    {
+      "text": "Roy did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Thank you, Tem.",
+      "t": "say"
+    },
+    {
+      "text": "Marit read the poem at seven oh-eight.",
+      "t": "narrate"
+    },
+    {
+      "text": "She read it the way she had read it Saturday morning — to herself first for a count, then to the table aloud. The poem was the same poem. The lines were the same lines.",
+      "t": "narrate"
+    },
+    {
+      "text": "She read the closing lines:",
+      "t": "narrate"
+    },
+    {
+      "text": "the bell-pull was the bell-pull",
+      "t": "narrate"
+    },
+    {
+      "text": "the bell was the bell that had been at the door of the house since the house was built",
+      "t": "narrate"
+    },
+    {
+      "text": "the daughter at the door was the daughter the house had been",
+      "t": "narrate"
+    },
+    {
+      "text": "built to receive",
+      "t": "narrate"
+    },
+    {
+      "text": "the family inside the house had been keeping it warm for her since",
+      "t": "narrate"
+    },
+    {
+      "text": "the day they had become the family",
+      "t": "narrate"
+    },
+    {
+      "text": "the daughter did not ring the bell",
+      "t": "narrate"
+    },
+    {
+      "text": "the daughter waited",
+      "t": "narrate"
+    },
+    {
+      "text": "the rain on the bell-pull was the rain",
+      "t": "narrate"
+    },
+    {
+      "text": "the rain continued",
+      "t": "narrate"
+    },
+    {
+      "text": "she would ring",
+      "t": "narrate"
+    },
+    {
+      "text": "she would ring when the room was ready",
+      "t": "narrate"
+    },
+    {
+      "text": "She closed the chapbook.",
+      "t": "narrate"
+    },
+    {
+      "char": "marit",
+      "text": "Roy. The poem.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Marit.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "She would ring when the room was ready.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "We were ready. By the alignment, by the smile — we were ready. She did not ring.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Roy. She is going to ring. The ringing is the next thing. The bowls have prepared.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "We — the eleven of us at the table — have prepared. The ringing is coming. The poem does not say when.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "It says she rings when the room is ready. We were ready this morning. We will be ready again. She rings on her time.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Be at the cabin tonight.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I will be.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Be at the cabin every night. Until she rings.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I will be.",
+      "t": "say"
+    },
+    {
+      "text": "The morning broke up at eight-fifteen.",
+      "t": "narrate"
+    },
+    {
+      "text": "Hans had to open the bakery at nine. Greta had to set up the front. The brioche had been eaten. The seeded rye and the dark country had been eaten. The coffee press had been refilled three times and was now empty. The four bowls were on the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem put the four bowls in the box she had brought the three up in. The box held the four. Roy stood beside her at the table while she did it. He watched her place his bowl in the box beside the others. He did not, in the watching, do anything other than watch.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I have to go to Eugene this afternoon. The foundation needs me to deliver the letter I wrote last night. I want to do it in person. The director will be at the office until five. I will be back by tomorrow night. I want to be at the cabin when I come back.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come up. The loft will be Roy's. You can have the chair by the south window. Finn has been there. He will move.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Marina. Take the chair. I'll take the floor.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Thank you, Finn.",
+      "t": "say"
+    },
+    {
+      "text": "The eleven at the table got up.",
+      "t": "narrate"
+    },
+    {
+      "text": "They cleared. They wiped. Aud and Marit folded the dish towels Greta had set out. Cale stacked the chairs. Roy helped Hans with the bread that needed to be brought to the front for the morning's customers.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai and Lena took the empty coffee cups to the kitchenette sink. Finn carried the box with the four bowls out to Tem's wagon. Per and Marina followed him out.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem stood at the back door before going out. She looked at Hans.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Tem. It was good. Thank Greta. Thank the brioche. Thank Roy for coming.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I have been at this bakery fifty-three years getting ready for a morning like this one.",
+      "t": "say"
+    },
+    {
+      "text": "She nodded.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "text": "She looked back at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "When she rings.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes, Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Come tell me first.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I will, Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "text": "She went out.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

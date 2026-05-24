@@ -1,0 +1,482 @@
+{
+  "id": "vol6_ch3_back_room",
+  "vol": 6,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Ch 3 — Cosmic Comics Back Room",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_back_room.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Cosmic Comics — Back Room",
+      "sub": "Tuesday · 11:02",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The door at the back of the strip mall is unlocked, exactly as promised."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam slips in. The back room of Cosmic Comics is smaller than she imagined — an L-shaped storage and office area, lit by a single overhead with a pull chain, stacked with long boxes and cardboard cartons of new releases still in shrink. There is a small desk in one corner, a mini-fridge, a calendar of cats from 2022 nobody has taken down."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is sitting on the desk. She has two iced coffees. She hands one to Sam."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Hey.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Hey.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam takes the coffee. Sam sits on an overturned milk crate opposite the desk. Maya closes the door. She slides a bolt Sam did not realize was there."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "narrate",
+      "text": "They look at each other."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is, Sam registers, about three inches shorter than she is. Dark hair in a single braid over one shoulder. Glasses. A shirt from a band Sam doesn't know. The specific careful stillness of a kid who has trained herself out of fidgeting."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"I don't know what I'm doing here.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"I know. That's fine.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"I — my boyfriend is —\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Diego. Yeah. I know.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam exhales."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Maya. How do you know.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Because somebody told me. Somebody who told me before you knew yourself, actually. I want to tell you three things, and if any of them freak you out, you can leave and I won't follow up. Okay?\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Thing one: Diego is alive. He is not at home. He is being held somewhere on the east side of the subdivision. I don't know exactly where yet, but I will by next Sunday. My source on this is a person called F.T. I don't know who F.T. is. Rick, up front, does know. Rick is not going to tell us. Rick knows some things about our dads that I don't. My grandmother knows some other things about some other people.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam is silent."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Thing two: your dad knows. About Diego. Not necessarily because he caused it — I don't know that part yet. But he knows, and he has chosen not to tell you. He came by Diego's grandmother's house Sunday morning at seven. He sat in his truck at the end of the driveway for eleven minutes. He did not knock.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam stares at her."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "(gently) \"I am sorry I am the one telling you this.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Don't — Maya. I already figured it out. I figured it out last night. I watched him text somebody under the kitchen table at dinner. It was — I already knew. Keep going.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Thing three: there are other adults in this town who know. I don't mean bad. I mean on your side. My grandmother. Rick. A bookshop guy in New Auburn named Hal. Diego's grandmother. There's a reporter from the Houston Chronicle working on something. There are two people in a white sedan parked at the Kwik Stop for the past two days —\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"I saw them —\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"— who are watching out for you. Not watching you. Watching over you. Graciela vouched for them.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam puts her forehead on her hand."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "(not quite steadily) \"Maya. This is — this is so much.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"I know.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"How did — how did you get here first.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Maya thinks about it. Then she says, honestly:"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Because my dad was in it. Not this specifically. Something like this, somewhere else, a long time ago. He sent me up here to get out of it. My grandmother has been waiting. The people she was waiting to hear from started talking to her last week. They told her I was ready.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Your dad.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Jimmy Daigle.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"I know. I mean — are you okay.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Maya pauses."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"That's a nice question. I don't — yeah. I think so. I'm not, maybe. But I'm okay for now. Thank you for asking.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Sure.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam drinks some of her coffee. Her hand is, she notices, not shaking. She had expected it to be shaking. She makes a small mental note to come back, later, to the fact that it is not."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"What do we do.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Today? Nothing. We let ourselves meet. We let me make the map I am going to make. We let you go home and practice being a regular teenager around your regular father for the next five days. F.T. thinks you are going to be fast when you decide to move. He is not wrong to think that. He also thinks we are not supposed to move yet.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Five days.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Yeah. Sunday. Rick will get a thing to me Sunday night. I will show it to you Monday. Then we make a plan.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam nods."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"I need to ask you something. And I want you to tell me the truth.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Is Diego — is he being hurt.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Maya is quiet."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"I don't know. F.T. said not okay, but alive. That is all he said. I am going to assume it is the worse of the possible meanings until I learn otherwise. I think we should both assume that. But I do not know.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam closes her eyes. Sam opens them."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Sam.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"I don't know you very well yet. But I'm going to say this, because my grandmother said it to me last night and it helped: you are allowed to be this scared. You are allowed to be this angry. What you are not allowed to be is alone in it. I'm here. I'm the one who was sent, or I volunteered, or both — I don't know. But I'm in this with you until we find him.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam looks at her for a long moment."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Thank you.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Maya.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"I might need you to tell me things like that sometimes. Even if it feels dumb.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"It won't feel dumb.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"It will.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Okay. I'll tell you anyway.\""
+    },
+    {
+      "t": "narrate",
+      "text": "They sit for a minute. Sam drinks her coffee. Maya drinks hers."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"One more thing, and then we are going to go out to the store and you are going to browse for forty-five minutes and I am going to ring you up for a back issue of something, and we are going to look like two girls who went to the comic shop together on a Tuesday.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Ben Kowalski.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Ben — the one at the Pit Stop?\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"What about him.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"He's keeping a legal pad. He has been watching cars and off-duty cops and the backyard wrestling at the McClary place since March. He's one of us. He doesn't know that yet. Jesse Henderson found out yesterday. Jesse's dad is taking photographs that are — Jesse's dad is not okay, Sam. His photographs are showing figures that were not in the frame. One of the figures is looking at him.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"His dad is —\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"His dad is something. I don't know what yet. F.T. hasn't told me. I don't know if F.T. knows. But Jesse is going to need us too.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Okay.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"That's the group. Five of us. Plus the adults who are watching. You, me, Ben, Jesse. And Diego, when we get him.\""
+    },
+    {
+      "t": "narrate",
+      "text": "When. Not if. Sam catches it. She nods."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Okay. Five.\""
+    },
+    {
+      "t": "flag",
+      "key": "pc_group_of_five",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch3_parking_lot"
+    }
+  ]
+}

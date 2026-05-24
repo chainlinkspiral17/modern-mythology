@@ -1,0 +1,76 @@
+{
+  "id": "vol6_ch1_gas_and_go",
+  "vol": 6,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "Ch 1 — NexCorp Gas & Go",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_gas_and_go.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "NexCorp Gas & Go",
+      "sub": "Gallatin Ave · Sunday · 15:04",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The Gas & Go is three blocks south on Gallatin, across the intersection with Fifth. It has eight pumps and a car wash in the rear — the full automated tunnel kind, the kind Harmony Creek Estates residents use twice a month because a clean car is, in the HOA's Residential Conduct Standards, grounds for a compliment rather than a citation. The Gas & Go was a Texaco until 2021, when NexCorp Residential Solutions acquired the franchise agreement along with the property and rebranded it in a shade of navy blue that the previous owner, a man named Gerald Pruitt, described at the time as the color of a bruise that doesn't know it's a bruise yet."
+    },
+    {
+      "t": "narrate",
+      "text": "Skip Donnelly is thirty-nine years old, shift supervisor, divorced, and vaping behind the counter. He has worked at the Gas & Go — first the Texaco, then the NexCorp Gas & Go — for six years. He has never asked about the rebranding. He has never asked about the company that signed his paychecks. He has a philosophy, which is that the things that are not his problem tend to remain not his problem as long as he does not make them his problem."
+    },
+    {
+      "t": "narrate",
+      "text": "At 15:04, a black pickup truck with Louisiana plates pulls into the lot. The truck does not pull up to a pump. It pulls around to the lot behind the car wash, which is technically for employee parking and which is not visible from the street or from the counter window. The driver does not get out. Skip does not register this. Skip is reading his phone."
+    },
+    {
+      "t": "narrate",
+      "text": "At 15:11, a white NexCorp Residential Solutions van enters the lot and parks next to the Louisiana pickup. Two men get out. They are wearing navy polo shirts with the NexCorp logo on the chest, khaki pants, work boots. They look, at a glance, like meter readers, or like the kind of people who show up to check on infrastructure. One of them taps twice on the driver's window of the pickup. The window comes down. Skip, from where he is standing, cannot see any of this."
+    },
+    {
+      "t": "narrate",
+      "text": "There is an exchange of words Skip cannot hear. The exchange lasts approximately two minutes. Skip looks up from his phone once during this period, sees nothing through the window that requires his attention, and looks back down."
+    },
+    {
+      "t": "narrate",
+      "text": "At 15:14, the driver of the Louisiana pickup hands one of the NexCorp men a small manila envelope. The envelope is not sealed. The NexCorp man opens it, looks inside, folds it once, and puts it in his back pocket. He nods. The pickup window goes up. The van pulls out of the lot and turns south on Gallatin."
+    },
+    {
+      "t": "narrate",
+      "text": "The pickup stays."
+    },
+    {
+      "t": "narrate",
+      "text": "At 15:16, Skip Donnelly looks up from his phone. He can see the back corner of the pickup from his position — just the tailgate, the Louisiana plate — parked behind the car wash, engine off, driver presumably still inside. He considers, for maybe three seconds, going out to ask if everything is okay. He decides not to. Going out to ask if everything is okay creates a conversation. A conversation creates a situation. A situation creates paperwork. Skip Donnelly has a philosophy about paperwork, which is adjacent to his philosophy about things that are not his problem."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes back to his phone."
+    },
+    {
+      "t": "narrate",
+      "text": "At 15:17, the driver of the Louisiana pickup reaches into the glovebox and takes out a small stack of index cards. The cards are held together with a rubber band. Each card has a handwritten address on it. The driver removes the rubber band, fans the cards, and selects one. He looks at it for a moment. He puts it on the passenger seat. He puts the rest of the cards back in the glovebox. He starts the engine."
+    },
+    {
+      "t": "think",
+      "char": "Henderson",
+      "text": "The address on the card, if anyone had seen it, is 892 Ashberry Drive. Diego Ramos does not live there anymore. Diego Ramos has not lived there since — technically — eleven-fifty-two last night, when he started the truck and pulled out without telling his grandmother. The driver has been handed a card by a man who should have updated him, and who has not. Errors compound."
+    },
+    {
+      "t": "narrate",
+      "text": "The pickup pulls out of the lot and turns north on Gallatin."
+    },
+    {
+      "t": "narrate",
+      "text": "Skip Donnelly watches it go. He takes a pull on his vape. He goes back to his phone."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch1_cosmic_comics"
+    }
+  ]
+}

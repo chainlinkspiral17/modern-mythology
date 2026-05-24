@@ -1,0 +1,155 @@
+{
+  "id": "vol7_ch6_sunday",
+  "vol": 7,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Sunday Morning",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_lena_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 6",
+      "sub": "Sunday Morning",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Lena did not write to Jorgen.",
+      "t": "narrate"
+    },
+    {
+      "text": "She got up at five-something on Sunday and made coffee and sat at the kitchen table with the cup and a sheet of paper and a pen the ink in which had dried. She got up and found another. She came back and wrote Jorgen at the top of the page and looked at it for ten minutes and put the pen down.",
+      "t": "narrate"
+    },
+    {
+      "text": "She drank the coffee, rinsed the cup, slid the sheet with the one word into the kitchen drawer where she kept things she was not yet ready to throw out, made another coffee, ate half a piece of bread with butter, and got back into bed.",
+      "t": "narrate"
+    },
+    {
+      "text": "She slept until eight-twelve.",
+      "t": "narrate"
+    },
+    {
+      "text": "When she woke the rain on the roof had thinned to a sound that was almost not a sound. She lay there a minute and then sat up and reached for her phone.",
+      "t": "narrate"
+    },
+    {
+      "text": "There was a message from Tem at twelve-fourteen the night before. \"Kai and Finn just got here. Something happened. Come up when you can.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "She was at the door of the apartment in twenty minutes. There was no wagon. The Sunday bus did not run to the cabin road. Kai's truck was at Board Lords, which meant Board Lords was closed at eight-thirty on a Sunday morning, which it had not been in four years. She walked over to confirm. The CLOSED sign was up.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_smolvud_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "The patch on the sanderling mural across Main was bigger than it had been Friday by an amount she could see from the sidewalk. She called Tem from the corner.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I can't get up there. The bus doesn't run.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Should I call Cale. He has a truck.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Don't pull Cale into this yet. Stay in town. We'll come down. The four of us at your place at six.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "What happened.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy Hummel came into Kai's shop this morning and asked Kai whether Finn has been in possession of materials belonging to the museum-town historical society.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She closed her eyes for a second. She knew Roy from the Daily Grind. He had been on her do not engage list since her first week behind the bar, on Soren's instruction. She had been pulling Roy's hot chocolates twice a week for two and a half years and had managed, in all that time, never to be alone in the shop with him.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "All right. I'll be at the apartment at six. Anything you need from me until then?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Sit. Eat. Don't go to the studio. Don't go to the bookstore. Don't be in the alley. Don't engage Roy if you see him.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "It's that bad.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I think it might be. We'll know more by six.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She hung up.",
+      "t": "narrate"
+    },
+    {
+      "text": "She stood on Main with her phone in her hand and the rain not quite raining and the patch on the sanderling about three feet square now. She did not go home. She walked the four blocks to ChillWave.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch6_cale",
+      "t": "jump"
+    }
+  ]
+}

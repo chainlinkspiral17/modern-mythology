@@ -1,0 +1,31 @@
+{
+  "id": "vol2_end",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "The minister finishes. People disperse into their own quiet griefs."
+    },
+    {
+      "t": "narrate",
+      "text": "The small wood at the edge of the cemetery catches the afternoon light in a way that makes it look like something is moving through it, just out of sight."
+    },
+    {
+      "t": "say",
+      "char": "Jo",
+      "expr": "neutral",
+      "text": "Come to the reception? There's enough food for three funerals."
+    },
+    {
+      "t": "narrate",
+      "text": "A small mercy. A small wood. Small volumes of everything."
+    },
+    {
+      "t": "narrate",
+      "text": "— End of Demo —"
+    },
+    {
+      "t": "end"
+    }
+  ],
+  "vol": 2
+}

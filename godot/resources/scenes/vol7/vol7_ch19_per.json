@@ -1,0 +1,310 @@
+{
+  "id": "vol7_ch19_per",
+  "vol": 7,
+  "chapter": 19,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Sunday Evening",
+      "sub": "Per",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "text": "Per drove up at three twenty-eight.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had been at Hans's house in town from eight-forty until twenty-five past three. He had spent the morning with his mother and Greta in the kitchen — Marit at the table with a cup of the cold coffee Greta had put out for her, Per across from her, Greta at the stove making the soup she made on Sundays for the church-people lunch.",
+      "t": "narrate"
+    },
+    {
+      "text": "The three of them had not, in the four hours after the bakery, said much. Marit had been somewhere inside herself after the morning, holding what had happened at the table when the carved young woman on her bowl had looked up from the cedar and acknowledged Marina. Per had been giving his mother the quiet. Greta had been making soup the way Greta did most things — by accident a kind of holding-of-the-room that the room benefited from. The three of them had been at the kitchen for four hours and the kitchen had been the kitchen.",
+      "t": "narrate"
+    },
+    {
+      "char": "marit",
+      "text": "Per.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah, Mama.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Go up to the cabin.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Marit. I am — I am at the house. I am with you.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Per. I am — I am at the house with Greta. I am not — I am not going to the cabin tonight. The cabin is going to be the cabin. I want my son at the cabin tonight. I have known the cabin since '79 when Olaf was building it.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "I have not — Per, I have not been at the cabin since 2042 either. The cabin is a place I should be again. I will come up tomorrow if Tem will have me. Tonight is — tonight is for the people who are at the cabin tonight. Go.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Marit. You should be at the cabin.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Per. I should be at the cabin tomorrow. Tonight Greta and I are going to make a stew. Hans will come home at five-thirty. The three of us will eat the stew. I will sleep at Hans's again.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Tomorrow I am — tomorrow you will come down at noon and you will take me to the cabin. We will go together. Tonight is the cast's. Go.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah, Mama.",
+      "t": "say"
+    },
+    {
+      "text": "He had gone.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had walked back to his old Buick parked outside Hans's house. He thought about what his mother had said about the cabin being a place she should be again. He thought about whether he had read her right — whether she was waiting because she was tired, or because she wanted the cast to have the night alone, or because she had been at the bakery this morning at sixty-eight years old having waited fifty-one years for the room and was now at the kitchen with Greta because she needed an afternoon of quiet before she could be in the room one more time.",
+      "t": "narrate"
+    },
+    {
+      "text": "He decided to trust the reading he could not be sure of. He got in the Buick. He drove.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "The road up at three-thirty in the rain was a road Per had not, in his life, driven this much. He had been up Wednesday with Kai. Thursday night. Down Friday morning with Hans to the bakery. Up again Friday afternoon. He had been at the cabin for sleeps Wednesday, Thursday, Friday. He had slept at Hans's last night because Marit had needed her son. This was his fifth drive up in five days.",
+      "t": "narrate"
+    },
+    {
+      "text": "The road, by the fifth time, was a road that knew him. The first switchback above the second creek crossing did not surprise him anymore. The alders coming up to the Sitka stand were the alders. The Sitka stand was — by what Per registered as he came through it — a stand of trees he had been at the bottom of in '79 when he had been nineteen and Olaf had been alive and the cabin had been a stand of studs.",
+      "t": "narrate"
+    },
+    {
+      "text": "He came up to the clearing at three fifty-two.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "Tem's wagon in the clearing. Cale's truck not there — Cale had driven down to the trailhead to meet Finn. Per parked beside the wagon.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "He sat in the Buick for a count.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not, in his life, expected to be at this cabin in the late summer of 2052 as a participant. He had been here in '79 and '80 helping to build it. In '85 for a Labor Day weekend with Marit and Olaf's brother. In '99 for Eddvard's sixty-fifth birthday. In '42 for Eddvard's funeral. He had not been here in the ten years between Eddvard's funeral and Wednesday. He had been at this cabin five days in a row.",
+      "t": "narrate"
+    },
+    {
+      "text": "He got out.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Tem had heard him on the road. She had come out at the second creek crossing the way Tem came out when someone she expected was on the road. She had a cup of coffee.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marit?",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "At Hans's with Greta. She told me to come up. She said she would come up tomorrow. She said tonight was for the cast.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marit is right.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy isn't here yet. Cale's at the trailhead waiting for Finn. Kai and Lena are coming up around six. The crow's at Lena's apartment because Finn left it at his place and Lena went to get it. By the schedule, we'll be the seven of us at the cabin by seven.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Finn was at the stick.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "What.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per. I'm not going to tell you what came out of the stick. Finn is going to come up the road in maybe forty minutes with the thing he's going to put on the table. I'm asking you to wait for Finn. That thing is Finn's to give. I want him to give it. I want you in the room when he does.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come inside, have a cup of coffee, sit at the table with me until Roy comes. The order tonight is Roy, then Finn and Cale, then Kai and Lena. By Marit's saying you should be up, she gave you a place in the order. Be in your place.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I'm going to be in the cabin with Roy for the first time.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I'm going to be — Tem, I'm going to be the person who has been carrying Olaf's name in the same room with the person who has been carrying Olaus's bowl for twenty-one years.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I am — I am scared.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy carried with the bowl alone for twenty-one years. You carried the name your father gave you alone for fifty. You've been carrying along parallel lines. The lines have not, until today, intersected.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The intersection is in the cabin. Be at the intersection. By what I read of Roy this morning, by what he said at the bakery — he's going to be glad you're here. Be glad he is.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come inside.",
+      "t": "say"
+    },
+    {
+      "text": "He came inside.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch19_roy",
+      "t": "jump"
+    }
+  ],
+  "title": "Sunday Evening"
+}

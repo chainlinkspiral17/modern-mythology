@@ -1,0 +1,58 @@
+{
+  "id": "vol2_bf_hub",
+  "vol": 2,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Briar Falls — what to look at",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_briar_falls_rest_stop.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "The low brick building.",
+          "scene": "vol2_bf_building"
+        },
+        {
+          "text": "The picnic shelter.",
+          "scene": "vol2_bf_picnic"
+        },
+        {
+          "text": "The wooden box at the trailhead.",
+          "scene": "vol2_bf_trail"
+        },
+        {
+          "text": "Down to the railing. The falls.",
+          "scene": "vol2_bf_overlook"
+        },
+        {
+          "text": "The family. From a distance.",
+          "scene": "vol2_bf_lot"
+        },
+        {
+          "text": "The dog. It has not moved.",
+          "scene": "vol2_bf_dog"
+        },
+        {
+          "text": "Get back on the road.",
+          "scene": "vol2_bf_end"
+        }
+      ]
+    }
+  ]
+}

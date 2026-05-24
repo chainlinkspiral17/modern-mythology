@@ -1,0 +1,228 @@
+{
+  "id": "vol7_ch22_floors",
+  "vol": 7,
+  "chapter": 22,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Brandon T.",
+      "sub": "The second floor",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "The lobby was clean. The floor was polished cedar. The walls were cedar paneling. The ceiling was twelve feet up. A reception desk — empty, no chair behind it — sat at the center of the lobby facing the doors. Behind the reception desk, on the wall, was a single framed photograph.",
+      "t": "narrate"
+    },
+    {
+      "text": "The photograph was Dean.",
+      "t": "narrate"
+    },
+    {
+      "text": "Dean at perhaps fifty, in a long shirt, looking past the camera at something to the photographer's left. The photograph was a standard corporate portrait — head and shoulders, slightly turned, professional lighting — but Dean was looking off, not at the camera, the way a man looks when he is at a corporate-portrait shoot and his attention is on the work he is going to return to as soon as the shoot is done.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem registered the photograph. She did not, for a count, move from the doorway. Then she walked to the reception desk. She stood at it. She looked at the photograph. Kai and Finn behind her.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "He was forty-eight here.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "How do you know.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The long shirt. The cuffs. He wore that shirt in interviews from 2010 to 2012. I've seen it in the Oneironautics promotional materials from then. He stopped wearing the long shirt in '13 when the tower was finished. He wore it for the construction years. The portrait's from the tower-completion shoot. He was forty-eight.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You followed him.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I followed his sticks. The man behind the sticks was always in the materials. I read the materials. I have not, until now, registered that I read them.",
+      "t": "say"
+    },
+    {
+      "text": "She looked at the portrait for a count. Then she turned. She said: \"Stairs.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "The stairs were at the back of the lobby, cedar, with a brass handrail. The three of them climbed. The second-floor landing opened to a large open-plan room. The Oneironautics Inc. company mark visible on the far wall in cedar relief — the mark Tem had been looking at on stick-cases for twenty years.",
+      "t": "narrate"
+    },
+    {
+      "text": "The room was the company's production studio. Server racks at the back wall, humming, their indicator lights green. Desks at the room's center, arranged in clusters of four. Computer monitors at each desk, dark. Slow-stick prototyping rigs at the south end of the room, their headsets racked on cedar wall-mounts. The room was empty of human presence. The room was also obviously running.",
+      "t": "narrate"
+    },
+    {
+      "text": "The walls were the room's archive — covered, floor to ceiling, in framed posters of every slow-stick Oneironautics Inc. had ever released.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem walked into the room. She walked along the south wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tideline Survey, 2018. The headland with the two pools. Brandon's template, commercialized.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kestrel Mountain, 2021. The basement and the desk and the boy at sixteen.",
+      "t": "narrate"
+    },
+    {
+      "text": "Cape Perpetua, 2023. The headland Brandon had walked with the crow before he died.",
+      "t": "narrate"
+    },
+    {
+      "text": "Estuary 1, 2018. Estuary 2, 2020. Estuary 3, 2022. Estuary 4, 2025. Estuary 5, 2030. Estuary 6, 2038. Estuary 7, 2046.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem stopped at Estuary 7. The poster was a half-sized rendering of the coastal template she had been at sixty-three times since July — the river coming down from the cedars, the bar of sand at the mouth, the bluff, the forested ridge. At the bottom, in small cedar-stenciled type, the credit: \"Ines Rocha, with the Oneironautics Inc. team, after a series template begun by D. Dean in 1997.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "The series went back to '97. The substrate had been in Estuary for fifty-five years. Tem registered this. She moved on.",
+      "t": "narrate"
+    },
+    {
+      "text": "The east wall had smaller framed photographs. Dean at a console in '14. Dean with two of the staff in '19 — a man Tem did not recognize and a woman who was, by something in her face Tem half-recognized, perhaps Ines Rocha at twenty-eight. Dean alone at the studio's south window looking at the ocean in '32, a year after his wife had died.",
+      "t": "narrate"
+    },
+    {
+      "text": "The last photograph on the east wall: Dean in '41, a year before he died — thin, white-haired, sitting at one of the desks in the room, at the cluster closest to the south wall, looking at something on the monitor that Tem could not see from the photograph's angle. He was at the studio. He was at the work. He died a year later.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem turned from the east wall. Kai and Finn were at the south wall looking at the Tideline Survey poster.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Tem. Come look.",
+      "t": "say"
+    },
+    {
+      "text": "Tem walked over. Kai pointed at the Tideline Survey poster's lower-right corner. The credit read: \"Brandon T., with the Oneironautics Inc. team, after a template submitted in 2046.\"",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Brandon T.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Brandon T.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Brandon Tillman submitted Tideline Survey to Oneironautics in '46 as a template.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "He played the commercialized version of his own template thirty-eight times before he died.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Finn did not, for a count, say anything. He stood at the poster and looked at the headland and the two pools.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "He built his grief here.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He did.",
+      "t": "say"
+    },
+    {
+      "text": "Finn did not, for a count, say anything more. He stood at the poster and looked at the headland and the two pools.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Let's go up.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Third floor. The staff living quarters. Bunks. A small kitchen at the east end with cedar cabinets and a wood-stove. A communal dining table that seated twelve. The bunks were made. The table was clear. A book lay open, face down, on one of the bunks at the south end. Tem walked over and looked, without touching: Bowls and the Listening, Werner Junior 1986, Schenck Press Bern. Open to the middle. Someone had been reading it when they left in '42 and had never come back to close it.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was, by Tem's read, the same book she had on the cedar shelf above her writing desk at the cabin.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem did not touch the book. She turned. She said: \"Up.\"",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch22_portal",
+      "t": "jump"
+    }
+  ]
+}

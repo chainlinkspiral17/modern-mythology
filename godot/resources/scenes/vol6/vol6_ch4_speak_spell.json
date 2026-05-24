@@ -1,0 +1,454 @@
+{
+  "id": "vol6_ch4_speak_spell",
+  "vol": 6,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Ch 4 — Triumvirate",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_back_office.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Rick is in his office when the Speak & Spell starts. The Speak & Spell has been on the shelf behind his desk for eleven years. It is a 1978 original, battered, with a small crack in the lower left corner of the red plastic housing. It had been given to Rick by a customer in 2014, who had said at the time you seem like the kind of guy who would appreciate something weird, and Rick had laughed and accepted it and had kept it there ever since, sometimes as a paperweight, sometimes as a conversation piece, never, until this morning, as a broadcaster."
+    },
+    {
+      "t": "narrate",
+      "text": "It is broadcasting now. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED — a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town."
+    },
+    {
+      "t": "narrate",
+      "text": "The grille is glowing, and the Speak & Spell is producing, in its tinny synthesized child-voice, a sequence of letters. T. R. I. U. M. V. I. R. A. T. E. Triumvirate. Correct. Try again."
+    },
+    {
+      "t": "narrate",
+      "text": "A pause. Then: T. R. I. U. M. V. I. R. A. T. E. Triumvirate. Correct. Try again."
+    },
+    {
+      "t": "narrate",
+      "text": "Another pause. F. T. says hello. Maya. Hello. Please listen. T. R. I. U. M. V. I. R. A. T. E. Triumvirate. This word is your word. You are becoming a part of it. Three of you in this town. Three more elsewhere. Do not be afraid. You are not the only one."
+    },
+    {
+      "t": "narrate",
+      "text": "The Speak & Spell falls silent. The grille stops glowing."
+    },
+    {
+      "t": "show",
+      "char": "rick",
+      "expr": "surprised",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Rick, who has been at his desk for most of the broadcast, sets down the pen he has been holding and picks up his phone. He does not dial F.T. He dials a different number, one he has had saved for nine years, one he does not, himself, fully understand the identity of. The line picks up on the second ring. The voice on the other end is older, male, with the faint distant quality of a voice coming through a bad connection even when the line is clean."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Joneses."
+    },
+    {
+      "t": "narrate",
+      "text": "A pause."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "Rick."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Your imp just addressed Maya Daigle through a 1978 Speak & Spell in my back office."
+    },
+    {
+      "t": "narrate",
+      "text": "A small amused exhale on the other end."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "Yeah, that'll happen."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "I thought you were quieter these days."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "I am. The imps are — they developed opinions. We've discussed this."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "When did you decide to bring Maya in directly."
+    },
+    {
+      "t": "narrate",
+      "text": "A longer pause. Then the voice — Frasier Temple's voice, which Rick has heard maybe eight times over the past twenty-four years — says:"
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "Rick, honestly? I didn't. The imps did. I think they like her."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Jesus, Frasier."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "Yeah. I hear you. I'll have a word with them. It was supposed to be text only until next week. But I'd rather them be affectionate with her than ignore her. She's on her grandmother's frequency already. She can take it."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "She's going to freak out."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "Ask her how freaked out she is."
+    },
+    {
+      "t": "narrate",
+      "text": "Rick looks through the one-way mirror his long-dead predecessor had installed in 1983 between the office and the sales floor. Maya is at the front counter. She is reading. She has, at this moment, Rick notes, a small sedimentary smile on her face — the smile of a kid who has just, in her own private head, received a piece of news that she finds, despite herself, funny."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "She's not freaked out. She's charmed."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "There you go."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Frasier."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Are you okay."
+    },
+    {
+      "t": "narrate",
+      "text": "A long silence. Then Frasier says, in a quieter voice:"
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "I'm okay, Rick. I'm getting older. The cathedral's a lot of building for one guy to run. But I'm okay."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Come visit."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "I can't."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Why."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "Rick. You know why."
+    },
+    {
+      "t": "narrate",
+      "text": "Rick does know why."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Yeah. I know."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "Take care of her for me. And take care of yourself. The storm's going to get worse."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Frasier."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Is the kid — is the Ramos kid —"
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "He's alive, Rick. We're going to get him. Tell Maya to hold the map for one more day. They're moving him tonight. We can't intervene tonight — we'd get all of them in the crossfire. We intercept Friday morning, from Zone-G, on the transport out. Sedan people are handling the mechanics. Your job is to keep Maya's head clear and Rick's hands on the door."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Rick's hands on the door."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "Yeah. If any of the wrong kind of men walk into your shop in the next forty-eight hours, you lock the back before they get there. You don't engage. You call the sedan. You hear me."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "I hear you."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "text": "Good. I have to go. One of my Demons has decided today is its birthday and is attempting to order a cake. I've got to dissuade it."
+    },
+    {
+      "t": "narrate",
+      "text": "Click."
+    },
+    {
+      "t": "narrate",
+      "text": "Rick sits at his desk for a long moment with the phone in his hand. Then he gets up. He goes to the front of the shop."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_comics.jpg"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "rick",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya looks up from her book."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Rick."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Yeah, kiddo."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Was that you."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Was what me."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "The Speak & Spell."
+    },
+    {
+      "t": "narrate",
+      "text": "He pauses."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Not me, no. But a friend of mine. He says hi. He says he's sorry it was weird. He says he was trying to be — quote — affectionate."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I liked it."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "I told him you did."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Rick."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Who is he."
+    },
+    {
+      "t": "show",
+      "char": "rick",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "His name is Frasier Temple. He lives in a warehouse in Graustark. He has known your dad for a long time. He is a friend. He is a genuinely strange man. He has not, in any way I have ever been able to detect, been anything other than kind to the people he has decided to be kind to. He has decided that about you."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Does he know Diego."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "No, kiddo. He knows what he knows about Diego because his imps are, as far as I can figure, eavesdropping on every electronic signal in this subdivision. That is how he knows where Diego is. That is also how he knows your grandmother's radio works. That is also why your browser has started getting F.T. messages. He has been looking out for you through his imps. The imps have opinions. The imps are, apparently, very fond of you."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Opinions."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Opinions. Yes. I know how that sounds."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya closes her book."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "sad",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Rick. Is Frasier — is he well."
+    },
+    {
+      "t": "show",
+      "char": "rick",
+      "expr": "tired",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "I don't think so, kiddo. Not entirely. He has been alone in that warehouse for a long time. He has been a friend in a specific narrow way, which is that he watches and he transmits and he keeps the lights on. I have never, in twenty-four years, seen him in person. Not once. I don't think anyone has, in a while. I think he needs more than he's getting. But he's not ready to ask."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Oh."
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at the floor."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Can we — can we help him. Sometime. After this."
+    },
+    {
+      "t": "show",
+      "char": "rick",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Rick smiles — a small tired smile."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Yeah, kid. I've been meaning to. I have not, yet, figured out how. Maybe you will. You're a Daigle. Your dad had a way of getting into that warehouse. Maybe you will."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "text": "Okay."
+    },
+    {
+      "t": "narrate",
+      "text": "The bell over the door chimes. A customer comes in. Mrs. Delacroix, mid-sixties, buys a new Archie collection every Wednesday, tips Maya fifty cents each time. Maya resumes her counter face. Rick returns to the office."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_back_office.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The Speak & Spell sits on its shelf, red grille dim, small crack in the corner, quiet. It does not, today, broadcast again. It does, at three PM, faintly hum — on and off — in a rhythm Maya, at the counter, will hear and will recognize as affection."
+    },
+    {
+      "t": "narrate",
+      "text": "She will, without being able to explain why, put her hand on the counter in the direction of the back office and spread her fingers. The Speak & Spell, through the wall, will fall still. It will, Rick will later confirm, fall still smiling."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch4_pit_stop"
+    }
+  ]
+}

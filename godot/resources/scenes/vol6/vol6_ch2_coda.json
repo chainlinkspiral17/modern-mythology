@@ -1,0 +1,97 @@
+{
+  "id": "vol6_ch2_coda",
+  "vol": 6,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Ch 2 — The Hum, Everywhere, Holds",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_culdesac_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Monday night",
+      "sub": "The summer is three days old.",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, in the cul-de-sac, the night does its Monday work. The streetlamps buzz at their subaudible frequency. A black cat crosses Prairie View."
+    },
+    {
+      "t": "narrate",
+      "text": "In a white sedan parked at the curb, two people who are not from Harmony Creek — one of whom has a press lanyard, the other of whom has a sunburn — take their shifts on a vigil neither of them has been formally assigned and neither of them has, in so many words, ever discussed. They drink cold coffee from the same thermos."
+    },
+    {
+      "t": "narrate",
+      "text": "In the darkroom at 3017 Verbena, Mr. Henderson has taken three new photographs. He is developing them now."
+    },
+    {
+      "t": "narrate",
+      "text": "In his bedroom, Jesse Henderson is not asleep. He is on his phone, reading, for the eleventh time, a text from Sam Miller that had come through at 21:44 reading only — you up."
+    },
+    {
+      "t": "narrate",
+      "text": "He has not, yet, replied. He will."
+    },
+    {
+      "t": "narrate",
+      "text": "At the Kwik Stop, Jen the day manager is closing up."
+    },
+    {
+      "t": "narrate",
+      "text": "At the Pit Stop, Ben is on a double. He is still on the grill. He is also, between orders, watching the parking lot."
+    },
+    {
+      "t": "narrate",
+      "text": "At Sam Miller's house, Sam is at her desk. Her bedroom door is closed. She is holding her phone in her lap. The text she sent Jesse at 21:44 is marked delivered, not read."
+    },
+    {
+      "t": "narrate",
+      "text": "She is waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "She is learning, in the waiting, that she is going to be a person who can wait."
+    },
+    {
+      "t": "narrate",
+      "text": "The summer is three days old. The hum, everywhere, holds."
+    },
+    {
+      "t": "narrate",
+      "text": "The Magician, reversed, watches his apprentices begin to pick up the tools they have not yet been told they know how to use."
+    },
+    {
+      "t": "narrate",
+      "text": "The tools, on their shelves, wait to be chosen."
+    },
+    {
+      "t": "flag",
+      "key": "vol6_ch2_complete",
+      "val": true
+    },
+    {
+      "t": "interlude",
+      "text": "— end of chapter 2 —",
+      "sub": "Gas Station Oracles & Slushie Futures",
+      "duration": 2800
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

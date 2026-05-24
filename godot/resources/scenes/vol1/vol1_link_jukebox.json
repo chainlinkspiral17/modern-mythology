@@ -1,0 +1,41 @@
+{
+  "id": "vol1_link_jukebox",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "The Missing Link — the jukebox",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "The jukebox is a Wurlitzer of the wrong vintage to be in a diner this size. The selection wheel sticks at K and again at S. The card behind the glass has been hand-typed on the same typewriter as the menu and has been corrected, in pencil, more than once."
+    },
+    {
+      "t": "narrate",
+      "text": "A-04 — Burzum — Det Som Engang Var. Marked WAGNER'S, underlined twice."
+    },
+    {
+      "t": "narrate",
+      "text": "B-11 — Faust (the band, the Krautrock one) — The Faust Tapes, side B. The label says: not the regular."
+    },
+    {
+      "t": "narrate",
+      "text": "C-07 — John Cale — Paris 1919. Pencilled note: ask the owner before playing C-07."
+    },
+    {
+      "t": "narrate",
+      "text": "D-02 — A song listed only as SHILLELAGH. No artist. No B-side. The card says, in someone's handwriting: Plays once a day. Has been playing for longer than the jukebox."
+    },
+    {
+      "t": "narrate",
+      "text": "E-09 — Patsy Cline — Crazy. Three pencilled crosses beside the title; you cannot tell whether they are marking the song as favored or warning you off."
+    },
+    {
+      "t": "narrate",
+      "text": "You put a finger to the glass. The selection wheel is warm. There is no coin slot."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_hub"
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "id": "vol7_ch13_porch",
+  "vol": 7,
+  "chapter": 13,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 13",
+      "sub": "The Cabin, Evening",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "text": "Cale went out to the porch at ten-fifty. He had not asked himself before he went out. He had registered, sitting at the table after Marina had agreed to stay, that he had not had a cigarette since he had left ChillWave at three. He had been smoking three a day for the past twenty years. He had had his afternoon cigarette at two-forty-five on the back porch at ChillWave. He had not had his evening cigarette. The evening cigarette was usually at eight at the apartment above the laundromat. He had been at the cabin's table during the evening cigarette hour and had not, at the time, registered that he was missing it. He registered it now at ten-fifty.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went out. He stood at the porch rail. He lit the cigarette under the eave so the rain would not put it out.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cedar Tem had found on the rail this morning was at the corner where she had left it. He looked at it while he smoked. Eddvard's hand on a piece of cedar that had been put on the porch rail by the substrate sometime between Wednesday night and Thursday morning. The cedar was the size of his thumb. The figure of the open hand on it was — by what he could see in the dim porch light from the window — palm-up, the fingers slightly curled, the way Eddvard had held his hand when he had been offering Cale tobacco at the cottage in '96.",
+      "t": "narrate"
+    },
+    {
+      "text": "He did not, for a count, do anything. The crow on Finn's dashboard was looking at him through the windshield. He saw the crow's eye in the dark and the eye was looking at him. He raised the cigarette in a small acknowledgment. The crow did not move. He smoked.",
+      "t": "narrate"
+    },
+    {
+      "text": "After a while the door behind him opened. Tem came out. She had her wool sweater on against the rain. She stood at the rail beside him.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "text": "How are you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I am — Tem, I am in the room.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I have been waiting to be inside for some number of years. I have been at the edge. I have been at the door. I have been on the porch. I have not been inside.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I have been inside for an hour tonight. I have been at the edge of it for thirty years and now I am in it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Brandon would be glad.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah, Cale. He would.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I am glad too.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "He smoked. She did not say anything for a count.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marina's bowl makes three. The fourth is somewhere.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The fourth is — by what I have been able to figure out — the fourth went to a man in Bandon in 1976 or 1977. I do not know which. The man was — by what is in Brandon's papers — the man was a fisherman named Olaus. Olaus was on the Margery with Olaf the night Olaf died. Olaus drowned that night too.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Olaus's family kept the bowl. The bowl was — the bowl was in the family's house in Bandon until 2031. In 2031 the bowl went missing. The family reported it to the local police. The bowl has been listed in the foundation's missing-bowl database since '31. Brandon was — Brandon had been trying to find it. Brandon thought the bowl was in Smolvud.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Who has it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "By Brandon's reading — by the reading Brandon was putting together in the months before he died — the bowl is at Roy's place.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Roy has been at this town since '31.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Roy showed up at Hans's bakery in '31 asking about the poem cycle. The same year.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The same year.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Roy came up the same year the bowl came down from Bandon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She nodded.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Roy is in the room.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale. Roy is at the edge. By what I think, Roy has the fourth bowl. Roy is not who I had thought. Roy is the third person in this town in 2052 who has been carrying a piece of the listening for some decades and has not said it. Roy is the visible end of a very long and not visible thing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He is also a man in his sixties who has been at the bakery three hundred times and has had a bowl in his apartment since '31 and has been — by what I can read of him at this remove — holding the bowl. I am going to ask Hans about Roy on Saturday morning when we get to the bakery. I am not, tonight, going to figure Roy out. Roy is a thing to figure out on Saturday.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Cale considered this.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "There's going to be a Roy-shape in this before we are done.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He smoked.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Marina is in.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "More so than at five.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah, Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I'm going to put this out.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He put the cigarette out in the small tin Tem kept on the porch for the people who smoked. He stood at the rail a count longer. He looked at the crow. The crow was still looking at him.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went back inside.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cabin held the six of them. The three bowls were on the table. The hexagon was on the cloth. The kerosene lamp burned. The rain on the cedar roof was steady. The cabin was at sixty-three.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cabin held.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

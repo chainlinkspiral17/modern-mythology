@@ -1,0 +1,679 @@
+{
+  "id": "vol7_ch12_morning",
+  "vol": 7,
+  "chapter": 12,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_finn_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 12",
+      "sub": "Thursday",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "text": "Finn woke at four forty-two.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had set no alarm. The apartment was at the corner of Hemlock and the alley that ran behind the bakery. Thursday was a quiet morning by the alley. He had woken at four forty-two because his body had decided, by some logic of its own that he had stopped questioning some years ago, that four forty-two was when he would wake on a Thursday in late August on the coast.",
+      "t": "narrate"
+    },
+    {
+      "text": "He lay in the bed a count and listened to the rain. The rain on the roof had thinned overnight. He could hear it as a separate sound now from the dripping in the alley. The two of them together were the cadence of the alley at four in the morning in August.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow was on the back of the chair beside the bed.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow was awake. The crow was looking at him in the way the crow looked at him in the morning when the crow had something to communicate and was waiting for him to be awake enough to receive it. The crow's eye was the yellow-and-black he had been looking at across the bedroom for nine months.",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat up.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "text": "Hey, friend.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow tilted its head.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "What've you got.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow turned its head sideways and tapped the back of the chair once with its beak. The tap was the request. The tap was the way the crow asked him to come.",
+      "t": "narrate"
+    },
+    {
+      "text": "He got up. He pulled on the wool socks he had laid by the bed. He pulled on the jeans. He pulled on the long-sleeve thermal. He went into the kitchen.",
+      "t": "narrate"
+    },
+    {
+      "text": "The kitchen was at fifty-eight. He banked the space heater in the corner. He put the kettle on. He stood at the kitchen window looking down at the alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow came into the kitchen behind him. The crow flew low through the doorway and landed on the back of the chair by the table. The crow shifted its weight from one foot to the other and looked at the duffel in the corner.",
+      "t": "narrate"
+    },
+    {
+      "text": "The duffel in the corner was the duffel that had been there nine months.",
+      "t": "narrate"
+    },
+    {
+      "text": "There were now eight pieces in the duffel. He registered the number without having opened the duffel. The crow was looking at the duffel in the way the crow looked at the duffel when there was a new piece in it that the crow had brought in overnight. The pieces had been coming faster.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went to the duffel. He unzipped it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The eight pieces of charred yellow-grained wood were on the cloth Tem had given him to keep them in. The eighth piece, the new one, was at the top. The eighth piece was bigger than the others.",
+      "t": "narrate"
+    },
+    {
+      "text": "The eighth piece had a figure carved into it. He held it up to the kitchen light. The figure was a sliver of a face. The face filled the unburnt portion of the wood. The face was the face of a young woman. The hair on the face was curling. The eyes were closed. The mouth was closed. He had not, on any of the previous seven pieces, seen a face.",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat down at the kitchen table with the wood in his hand. The crow watched him.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Friend. This is new.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow tilted its head.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "This is Aria.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The crow tilted its head the other way. He sat with the wood for a count.",
+      "t": "narrate"
+    },
+    {
+      "text": "Then he laid the eighth piece on the table. He took the cloth out of the duffel. He took the other seven pieces out one at a time and laid them on the cloth. He moved pieces. He moved the eighth. The six smaller pieces wanted to fit together. He laid the six smaller pieces in a ring — a rough hexagon, with each piece making one side. The hexagon had a hole in its center. The hole was the size and shape of the eighth piece.",
+      "t": "narrate"
+    },
+    {
+      "text": "He laid the eighth piece into the hole. It fit.",
+      "t": "narrate"
+    },
+    {
+      "text": "The eight pieces — six in a ring, one in the center, and one extra — were now, on the cloth on the kitchen table, an assembled hexagon with a face in the middle.",
+      "t": "narrate"
+    },
+    {
+      "text": "He picked up the extra piece. He turned it over. The underside had four letters scratched into it: A R I A.",
+      "t": "narrate"
+    },
+    {
+      "text": "He set the piece down on the cloth next to the hexagon.",
+      "t": "narrate"
+    },
+    {
+      "text": "The kettle whistled.",
+      "t": "narrate"
+    },
+    {
+      "text": "He made the coffee at five-oh-three. He stood at the counter and worked the cone and the kettle. He brought the coffee to the table. He sat down across from the wood.",
+      "t": "narrate"
+    },
+    {
+      "text": "He looked at the hexagon. The face in the center was the face. The hair was curling. The eyes were closed. He registered, sitting with it across the table, that the face was made of cedar — and that the cedar had been carved by the hand he had seen on Per's mother's bowl Wednesday afternoon at the cabin. The carver was Olaf. The crow had brought him a piece of cedar carved by Per's father, who had been dead since 1978.",
+      "t": "narrate"
+    },
+    {
+      "text": "He drank from the coffee. The crow on the back of the chair across the room watched him.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "When did Olaf carve this.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow tapped the back of the chair once with its beak.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Was it before he died.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow did not, this time, respond.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Or did the substrate make it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow shifted its weight from one foot to the other. He drank from the coffee.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had been talking to the crow for nine months. The crow had not, in the nine months, ever responded with anything Finn could read as English. The crow had tapped, had shifted, had on occasion made the clicking sound crows made in the throat. He had not, in the nine months, expected the crow to speak.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow said, very quietly:",
+      "t": "narrate"
+    },
+    {
+      "char": "crow",
+      "text": "Brandon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Finn set the coffee down. He looked at the crow. The crow looked at him. The crow said again, in the same quiet voice that was the voice of a crow that had only just figured out how to make the sound:",
+      "t": "narrate"
+    },
+    {
+      "char": "crow",
+      "text": "Brandon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow tilted its head.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I — I've been wondering. For nine months. I've been wondering what you would say when you said something.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "crow",
+      "text": "Brandon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "He's gone, friend.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The crow tapped the back of the chair with its beak. The tap was not the request-tap from earlier. The tap was the tap of a crow trying to communicate a piece of information about a thing the crow was still working out how to say.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I know he's not gone-gone. He left you with me. He left the wood with you. He left — he left whatever the wood is part of, with you, with me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I know. I am with you on this. I am sitting at the table at five in the morning. I am looking at the hexagon. I am — I am drinking the coffee. I am in this with you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The crow watched him. The crow did not, this time, repeat.",
+      "t": "narrate"
+    },
+    {
+      "text": "He drank from the coffee. After a count he said:",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Cape Perpetua today.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow tapped the back of the chair.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah. I'm taking you up. I am — I am taking the wood up too. The whole hexagon. The eighth piece. The cedar with her face on it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I am going to walk the headland trail. I am going to take the wood to the place I have been taking it. I am going to take you to the place you came down from. I am going to see — I am going to see what the headland gives us this morning.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow shifted its weight.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I have to go in to the co-op at six-thirty to tell Margaret I am taking the day. I will be back here at seven. We will leave at seven-fifteen. We will be at Cape Perpetua at eight-twenty. The trail at eight-thirty.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "We will be off the trail by ten if the rain stays where it is. I will get you home before noon. I am not going to keep you out long.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Friend. You said Brandon. I — I have to ask. Was that you saying his name. Or was that — was that the crow that you are now, made of the crow you were when he was alive and the substrate that has been moving through everything since July, saying his name on his behalf.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The crow did not respond.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah. I know. The question is the wrong question. I am asking it because the question is what I have. I am — I am sorry. I am going to drink the coffee and go to the co-op and come back. We will leave at seven-fifteen.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The crow tapped the back of the chair once. The tap was, by Finn's reading, the crow saying go. He drank the rest of the coffee.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "text": "He walked the four blocks in the rain. The rain was thin and steady and the kind of rain that did not really wet a person if the person was walking with intent. He walked with intent. He had the canvas cycling jacket on and the wool cap and the boots.",
+      "t": "narrate"
+    },
+    {
+      "text": "The co-op opened at six. Margaret was at the front when he came in — sixty-one years old, running the co-op since 2041, knowing Finn the way the woman who had run a co-op for two decades knew the cyclist who delivered the boxes. She was at the counter going through the morning's invoices when he came in.",
+      "t": "narrate"
+    },
+    {
+      "text": "She looked up.",
+      "t": "narrate"
+    },
+    {
+      "char": "margaret",
+      "text": "Hey, Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Hey, Margaret.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "margaret",
+      "text": "You're early.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I'm — Margaret, I have to take the day.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "margaret",
+      "text": "You all right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I'm all right. There's a — there's a family thing.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She had been working with him long enough to know that when he said family thing he meant the people in town he counted as his people. By the way he was standing at the counter she was reading, by Finn's read of her face, that it was the third.",
+      "t": "narrate"
+    },
+    {
+      "char": "margaret",
+      "text": "Take the day. Friday too if you need it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Friday I'll be back. Today's enough.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "margaret",
+      "text": "Anybody dying.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Nobody's dying, Margaret. It's — it's the kind of family thing where everybody is going to be alive at the end of it. I want you to know that. I just — I have to take the day.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She put the pen down.",
+      "t": "narrate"
+    },
+    {
+      "char": "margaret",
+      "text": "Finn. I have known you four years. You have taken three days off, total, in those four years. You took Sunday off when your dog died in '49. You took two days in '50 when your sister stopped sending mail and you drove down to your mother's.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "margaret",
+      "text": "You have not, in the year and ten months since, taken a day. You can take this day. Go. Don't tell me anything else. Go.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Thanks, Margaret.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "margaret",
+      "text": "Bring me bread from Hans tomorrow. The seeded kind.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I will.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He went back out. The rain had not changed. He walked the four blocks home.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow was on the kitchen table when he came back in — on the cloth, between the AR I A piece and the eighth piece's empty hole in the hexagon's center. The crow was looking at the empty hole. The crow was waiting.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn took the eighth piece out of his pocket. He came to the table. He set the piece back into the hole at the center of the hexagon.",
+      "t": "narrate"
+    },
+    {
+      "text": "The hexagon was complete.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow tapped the cloth once with its beak.",
+      "t": "narrate"
+    },
+    {
+      "text": "They left at seven-twelve. He carried the cloth with the hexagon folded carefully and wrapped in the canvas grocery bag. The AR I A piece he had put in the inside pocket of the jacket with the cedar face. The crow was on the dashboard.",
+      "t": "narrate"
+    },
+    {
+      "text": "Smolvud at seven-fifteen on a Thursday morning in late August was a town that had been awake an hour. The Daily Grind was open. He could see Lena through the window as he drove past — she had taken her shift this morning after all. He registered her without slowing. She did not see him drive past. The crow stayed on the dashboard.",
+      "t": "narrate"
+    },
+    {
+      "text": "He took the road south. Past Cale's place — ChillWave was dark, Cale's truck not in the lot, Cale was probably at the cabin — and on past the foundation's bench at Ona Beach and into the section of the coast highway that wound along the headlands toward Cape Perpetua. The rain on the windshield was steady. Cape Perpetua was twenty-eight minutes from town in the rain at the speed he was driving.",
+      "t": "narrate"
+    },
+    {
+      "text": "He thought, as he drove, about Maya. The voice through the emergency radio had said help me find them. He had marked the GPS coordinate on his phone and the radio had gone back to standard hiss. He had not, in the months since, looked at the notebook for that entry.",
+      "t": "narrate"
+    },
+    {
+      "text": "He thought: if Maya is going to come through, the morning is the morning.",
+      "t": "narrate"
+    },
+    {
+      "text": "He kept driving.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cape_perpetua.jpg",
+      "t": "bg"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "He pulled into the lot at Cape Perpetua at eight-eighteen. Two other vehicles — a foundation maintenance truck with a Vestergaard plaque on its tailgate, and an older Subaru he did not recognize.",
+      "t": "narrate"
+    },
+    {
+      "text": "He got out. He pulled the canvas bag with the hexagon out of the passenger seat. He held the door open for the crow. The crow flew out and went to a fence post at the edge of the lot and waited.",
+      "t": "narrate"
+    },
+    {
+      "text": "He took the third branch — the spur trail that went south along the bluff to the unmarked overlook. The crow flew ahead of him along the trail. The salal had been pruned back from the trail edges; the cuts were fresh. The foundation's drones had been here.",
+      "t": "narrate"
+    },
+    {
+      "text": "The overlook was an earthen platform at the edge of the bluff, about ten feet across, with a wooden rail along the seaward edge. The platform had a bench at its inner edge, set against the salal. The bench was wet.",
+      "t": "narrate"
+    },
+    {
+      "text": "The fog was in the trees below the platform.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stood at the rail. The crow landed on the rail beside him. He set the canvas bag on the bench. He took out the cloth. He carried the hexagon — six pieces in the ring, the cedar face in the center, the AR I A piece beside it — and set it on the platform's earthen floor between his boots and the rail.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stood with the hexagon at his feet and looked out at the fog. The fog was, by some perceptible change Finn felt before he saw it, lifting. He waited. The crow on the rail beside him did not move.",
+      "t": "narrate"
+    },
+    {
+      "text": "The fog lifted enough that the row of sea-stacks two hundred yards out from the headland began to show. The sea-stacks came out of the fog one by one. The fog continued to lift.",
+      "t": "narrate"
+    },
+    {
+      "text": "When the fog had lifted enough to see the water between the stacks Finn saw the figure.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure was at the second stack from the headland. The figure was standing on the seaward edge of the second stack, in a way no person could stand on a sea-stack at this hour with the tide what it was. The figure was standing on the water. Or on nothing.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure was in a yellow slicker. The hood was up. The hair under the hood was the substrate's idea of curling. The slicker was the yellow of the slicker Kai had described coming back from the basement of Kestrel Mountain. The slicker was the yellow of the figure on the bowl Olaf had not carved and the substrate had made.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure was, in Finn's read of the distance, not looking at him.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure was looking out to sea.",
+      "t": "narrate"
+    },
+    {
+      "text": "He did not, for a count, breathe.",
+      "t": "narrate"
+    },
+    {
+      "char": "crow",
+      "text": "Brandon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "crow",
+      "text": "Aria.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The fog moved back in between the headland and the sea-stack. The figure on the stack was, for a moment, visible through the moving fog as a sliver of yellow. Then the fog closed. The figure was gone. The sea-stack was the sea-stack.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn did not move. The crow on the rail did not move.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "She was looking at the water.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "crow",
+      "text": "Brandon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "He used to bring you here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The crow did not respond.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "He used to bring you here on his investigation. He came to this overlook because the overlook was on the route. He came with you on the dashboard the way I come with you on the dashboard.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "He came in the spring of '50 because Maya had come through. He marked the coordinate the way I marked it. He came back. He brought you. He died — he died in October of '50. Six months after Maya had come through.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "He died and you came to me. You came to me because he had told you to come to me, or because the substrate had told you to come to me, or because — Brandon — because some part of the substrate had been him, and the part that had been him had come into you, and you had come to me because you knew where I lived.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "She was looking at the water because she is — she is going to come in by water. The water is the way she is coming.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "crow",
+      "text": "Aria.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He looked down at the hexagon at his feet. The rain was on it. The cedar face in the center had not changed. The face was still closed-eyed. The cedar was wet now. The wetness made the curls of the hair show more than they had in the kitchen light.",
+      "t": "narrate"
+    },
+    {
+      "text": "He picked up the hexagon. He picked up the AR I A piece. He folded the cloth around them. He put the cloth in the canvas bag. He did not, on the way back to the truck, look back at the rail.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow flew with him along the spur trail to the trailhead and then to the lot. The Subaru was still in the lot. The driver had not come back.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn got in the truck. The crow got onto the dashboard. Finn drove out of the lot.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch12_lena",
+      "t": "jump"
+    }
+  ],
+  "title": "Thursday"
+}

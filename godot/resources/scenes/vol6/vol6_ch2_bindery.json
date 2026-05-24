@@ -1,0 +1,228 @@
+{
+  "id": "vol6_ch2_bindery",
+  "vol": 6,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Ch 2 — The Bindery",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_bindery_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Bindery",
+      "sub": "New Auburn · Monday · 14:49",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The Bindery occupies a narrow storefront on Live Oak Street, four blocks off the interstate exit for New Auburn. Its front window has books arranged in the lazy attractive chaos of a bookshop that has stopped trying to sell its books and has achieved, instead, a kind of stable ecology with them. Its interior smells of old paper, coffee grounds, and the particular dust unique to shops where ceiling fans turn slowly all summer on a single wooden beam."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya comes in. The bell over this door is different too — lower, mellower. An older bell."
+    },
+    {
+      "t": "show",
+      "char": "hal",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "A man behind the counter — sixties, white beard, Hawaiian shirt, reading a hardcover of something translated from Portuguese — looks up."
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "expr": "neutral",
+      "text": "\"Morning.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Hi. I'm looking for — um. The Borges section.\""
+    },
+    {
+      "t": "narrate",
+      "text": "The man smiles slightly."
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "expr": "neutral",
+      "text": "\"Third shelf down, back left. Past the Bolaño.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Thanks.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She goes to the back. The shop is deeper than it looks from the street — another whole room opens off to the side. The Borges section is exactly where he said. She finds Labyrinths on the third shelf. She pulls it down."
+    },
+    {
+      "t": "narrate",
+      "text": "An envelope falls out. Plain. Sealed. Nothing written on the outside. She picks it up. She tucks it inside her jacket."
+    },
+    {
+      "t": "flag",
+      "key": "maya_has_envelope",
+      "val": true
+    },
+    {
+      "t": "narrate",
+      "text": "She walks back to the counter with the copy of Labyrinths in her hand."
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "expr": "neutral",
+      "text": "(without looking up from his book) \"You want to buy that?\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"How much.\""
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "expr": "neutral",
+      "text": "\"Seven.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She hands him a ten. He rings her up. He gives her three."
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "expr": "neutral",
+      "text": "(still not looking up) \"Tell Rick I said the pickle's extra on Mondays.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"I will.\""
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "expr": "neutral",
+      "text": "\"Maya.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She pauses."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "expr": "neutral",
+      "text": "\"You didn't ask my name.\""
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "expr": "neutral",
+      "text": "\"I didn't.\""
+    },
+    {
+      "t": "say",
+      "char": "Hal",
+      "expr": "neutral",
+      "text": "\"Good girl.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She leaves."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "As she crosses the parking lot to her bike — she does not have a car; the Corolla is Sam's; Maya's bike has been, since her arrival, her full transportation stack — she glances back at the shop's front window."
+    },
+    {
+      "t": "narrate",
+      "text": "The man inside has not moved. He is still reading the Portuguese book. But the shop's other customer, a woman in a floral dress who had been in the periodicals section when Maya had come in, is now, Maya can see through the glass, at the counter, saying something to the man. The man is nodding. The man is not looking at the woman's face. The man is looking at the window — at Maya."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya waves, small and brief. The man nods, small and brief. Then he turns fully to the woman in the floral dress, and Maya is no longer the subject of the shop's attention, and the transaction, whatever it was, is over."
+    },
+    {
+      "t": "narrate",
+      "text": "She mounts her bike. She rides back toward Harmony Creek. The envelope, against her ribs, is warm from her body. She does not open it on the road."
+    },
+    {
+      "t": "narrate",
+      "text": "She will, when she gets back to Cosmic Comics, hand it to Rick unopened, as instructed. Rick will take it and nod and open the back office door and disappear into it. Maya will not see what is inside the envelope."
+    },
+    {
+      "t": "narrate",
+      "text": "But six days from now, at ten-oh-three PM on a Sunday, Maya will be sitting at her own desk in her bedroom at her grandmother's house, and Rick will text her — for the first time ever, from a number she has not, until that moment, had — a single photograph."
+    },
+    {
+      "t": "narrate",
+      "text": "The photograph will be the contents of the envelope. The photograph will be a map. The map will show the east side of Harmony Creek Estates. On the map, a small inked circle will surround a particular building that is, as F.T. had said, not currently on any map."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya will look at the map for a long time. She will, the following Monday, take the map to Sam."
+    },
+    {
+      "t": "narrate",
+      "text": "But that is six days away, and tonight is only Monday, and the summer is only three days old, and Maya is on her bike riding the long slow arterial back into her subdivision under the flat Texas afternoon light with an envelope under her jacket that she has not, will not, has promised not to, open. She pedals."
+    },
+    {
+      "t": "narrate",
+      "text": "Overhead, a crow flies. Not the cat's crow. Not any crow she has, previously, noticed. This crow is simply a crow."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not know yet that most of the crows are not simply crows. She will learn."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch2_gas_go_lot"
+    }
+  ]
+}

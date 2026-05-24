@@ -1,0 +1,73 @@
+{
+  "id": "vol6_ch1_garage",
+  "vol": 6,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "Ch 1 — The Garage",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_chief_garage.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Chief Miller's Garage",
+      "sub": "Harmony Creek Estates · Sunday · 17:02",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "warm",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam's father is in the garage. He is on the phone. He is speaking quietly. As Sam pulls in, he looks up. He says, into the phone: \"Gotta go. She's back.\" He hangs up. He slips the phone into his chest pocket. He smiles — the warm automatic smile he has been smiling at Sam since she was born, the smile Sam has never, in seventeen years, thought to question."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "expr": "warm",
+      "text": "\"Hey, Sammy.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Hey, Dad.\""
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "expr": "warm",
+      "text": "\"How was work?\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Quiet. One beer sale.\""
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "expr": "warm",
+      "text": "\"Same old.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam gets out of the Corolla. She walks past him into the house. She feels his eyes on her for perhaps three seconds longer than his eyes usually stay on her. Then she feels the attention lift."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch1_bedroom"
+    }
+  ]
+}

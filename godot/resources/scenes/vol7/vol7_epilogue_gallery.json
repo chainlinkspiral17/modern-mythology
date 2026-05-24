@@ -1,0 +1,354 @@
+{
+  "id": "vol7_epilogue_gallery",
+  "vol": 7,
+  "chapter": 23,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The Gallery",
+      "sub": "Estuary 7",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "text": "Estuary 7 opened at the planner's-view the way it had always opened.",
+      "t": "narrate"
+    },
+    {
+      "text": "The coastal template from above. The river coming down from the cedars to the east. The bar of sand at the mouth. The flats north of the river. The bluff south of it. The forested ridge behind the bluff. The drone-palette docked at the right of the view. The labor-crew palette docked below the drones. The construction primitives docked below the labor crews. The clock at the upper-right showing zero.",
+      "t": "narrate"
+    },
+    {
+      "text": "The stick had been at this opening configuration since 2046 when Ines Rocha had released it. Tem had been at this opening configuration sixty-three times since July.",
+      "t": "narrate"
+    },
+    {
+      "text": "Then the substrate did something it had not, in any of the sixty-three playthroughs, done.",
+      "t": "narrate"
+    },
+    {
+      "text": "A second clock appeared at the upper-left of the planner's-view. The second clock counted up from zero. The drone-palette was greyed out. The construction primitives were greyed out. The labor-crew palette was greyed out.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock was counting. The substrate was going to show her the saved player-builds for this template. The completed Estuary 7s of other players. The substrate was going to walk her through them.",
+      "t": "narrate"
+    },
+    {
+      "text": "The first build rendered.",
+      "t": "narrate"
+    },
+    {
+      "text": "D. Dean — submitted 2013. Completed 2042.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bluff at the southwest of the coastal template filled first. Drones placed themselves at marked positions along the bluff above the river-mouth. The drones laid the footprint of a structure on the bluff — seventy feet on a side. The footprint extruded upward through seven floor-levels. Smart-glass and cedar, seven floors, an indoor garden at the seventh-floor roof level, a portal-room marked on the fourth floor.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was the tower at old-Yachats. The tower Tem had stood in the clearing of the previous afternoon at three forty-three.",
+      "t": "narrate"
+    },
+    {
+      "text": "Then the town below the bluff rendered. The substrate placed the town of Smolvud into the template's coastline.",
+      "t": "narrate"
+    },
+    {
+      "text": "Hemlock and Main. The bakery at the corner of Main and Pine. ChillWave Video on Main. The Salty Tome at the alley behind the bookstore. The Daily Grind at the corner of Cedar and Hemlock. The Missing Link diner at the roadside. The co-op. The laundromat. Lena's apartment on Cedar Place. Tem's apartment on Cedar Place. The cabin up the road from town.",
+      "t": "narrate"
+    },
+    {
+      "text": "Smolvud was part of Dean's submission.",
+      "t": "narrate"
+    },
+    {
+      "text": "The town's existence was downstream of what Dean had laid out in Estuary 7 in 2013. Dean's build had been tower-and-town. The town had been his plan rendering for thirty-eight years.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock counted. 2:14. 2:15. The build faded to dimness — still visible, tower and town held as the gallery's first layer — and the next build began to render over it.",
+      "t": "narrate"
+    },
+    {
+      "text": "O. Egilsson — submitted 1971. Completed 1979.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cabin rendered. Not the Smolvud cabin from Dean's build — a specific cabin. Olaf's cabin, the cabin Tem was sitting in this morning with the headset on. The footprint placed itself at the center of a new build's coordinates. The cabin was the build's hub.",
+      "t": "narrate"
+    },
+    {
+      "text": "Four small radiating points appeared on the coast. The first: Marit's house in Smolvud, on the corner of Pine and Cedar. The second: Eddvard's small mill on the river, just upstream of the cabin. The third: Lindholm's office building in Eugene, off the template's southeastern frame. The fourth: Olaus's house at a small cove south of Bandon, off the template's southern frame.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four points connected to the cabin by faint substrate-lines — the bowl-network's carrying, made visible as architecture.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate was showing her what Olaf had submitted in 1971 when he was thirty-three. The plan he had laid out before he had carved the bowls in '74 through '77 and before he had built the cabin with Eddvard in '79. Olaf's plan had been the network as architecture. He had built it in the world.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem had been living in it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Olaf's cabin was inside Dean's Smolvud-bowl. The two builds overlapped at the cabin. The cabin was in both submissions. The cabin had been waiting at the overlap for thirty-eight years.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock counted. 4:32. 4:33. The build faded to the gallery's second layer.",
+      "t": "narrate"
+    },
+    {
+      "text": "E. Halvorsen — submitted 1968. Completed 1981.",
+      "t": "narrate"
+    },
+    {
+      "text": "The small mill up the river rendered. A single-building stand-alone on a creek-bend, with a water-wheel and a cedar-cutting floor and a small lumber-yard behind it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Eddvard's submission was the mill. The simplest of the builds — one building, one function, decades of use.",
+      "t": "narrate"
+    },
+    {
+      "text": "The mill had produced the cedar Olaf had used for the cabin. The mill had produced the cedar for the four bowls. The mill had produced the cedar of the door of the cabin Aria had come to at three a.m. Monday. The mill was still there.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock counted. 5:48. 5:49. The build faded to the third layer.",
+      "t": "narrate"
+    },
+    {
+      "text": "M. Egilsson — submitted 1974. Completed — ongoing.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate rendered a forest. Not a building. A cedar grove across the foothills east of Smolvud — fifty acres, the slow-growing kind of cedar grove that took half a century to mature.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marit's submission. Her drones had planted in '74. Her labor crews had tended in shifts. The completion date was ongoing — Marit's build had been growing for fifty-one years and was still growing.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem had not known about the grove. The grove was the cedar-stand on the foothills above the foundation's old cutter-base land. The cedar that had been used for foundation work for fifty years had come from Marit's grove.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marit's Estuary 7 submission had been patience as architecture. Nothing built fast. Everything tended for half a century. The substrate still rendering as ongoing because Marit was still tending. The bowl-carrying and the grove-tending were one practice.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock counted. 7:36. 7:37. The grove faded to the fourth layer.",
+      "t": "narrate"
+    },
+    {
+      "text": "A. Halvorsen — submitted 2030. Completed 2031.",
+      "t": "narrate"
+    },
+    {
+      "text": "The Missing Link diner at the roadside rendered. Twelve stools. A counter. A single-story building with a peaked cedar roof and a small parking lot. The smallest permanent structure in the gallery so far.",
+      "t": "narrate"
+    },
+    {
+      "text": "Aud's submission, after she had left the foundation in Eugene in 2030. Her plan had been to open a diner in the small Oregon coastal town she had identified as being downstream of a substrate-leak. The submission said only: the smallest possible permanent gathering-place at the edge of a town not yet known. She had built the diner in 2031. The town had grown up around the diner.",
+      "t": "narrate"
+    },
+    {
+      "text": "Aud's Estuary 7 build was the diner as the social anchor of the town. The Tuesday-night dinners — that Aud, this very Tuesday, was probably preparing to hold for Jameson and Hannes and Roy and whoever else came — were the substrate beginning to use the diner the way her submission had anticipated.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem had been eating at Aud's diner her whole adult life.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock counted. 9:21. 9:22. The diner faded to the fifth layer.",
+      "t": "narrate"
+    },
+    {
+      "text": "B. Tillman — submitted 2046. Completed 2050.",
+      "t": "narrate"
+    },
+    {
+      "text": "A tide-pool sanctuary on a small headland rendered. Drones tending water. Labor crews maintaining boardwalks. A series of pools at staggered tidal heights — an upper pool and a lower pool at the headland's seaward face.",
+      "t": "narrate"
+    },
+    {
+      "text": "They were the two pools of Tideline Survey.",
+      "t": "narrate"
+    },
+    {
+      "text": "Brandon had laid out the substrate-template that the Oneironautics team had later commercialized as a stick. He had submitted the template in 2046. He had built it as his Estuary 7 build. The template had become Tideline Survey as a separate commercial slow-stick in 2048, with Brandon credited as the original template-submitter.",
+      "t": "narrate"
+    },
+    {
+      "text": "Brandon had built his grief. He had laid out the pools where his dead would wait for him. He had played the stick — the Tideline Survey commercialization of his own template — thirty-eight times between January and October of 2050. He had died in November of 2050.",
+      "t": "narrate"
+    },
+    {
+      "text": "His build was the place his dead would wait. The crow was the bell of it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Brandon's build had passed to Finn when the substrate had given Finn the crow in November of 2050. It was now also Finn's. Finn — at the chair behind Tem this Tuesday morning, watching her play through the headset's small green LED — was carrying Brandon's build into the next thing.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock counted. 11:04. 11:05. The tide-pool faded to the sixth layer.",
+      "t": "narrate"
+    },
+    {
+      "text": "W. Schenck Sr. — submitted 1953. Completed 1958.",
+      "t": "narrate"
+    },
+    {
+      "text": "The print shop in Bern rendered. A small printing operation on an alpine creek. A two-story stone building with a slate roof. Drones at the typesetting frames. Labor crews at the binding tables. A small office at the second floor. A loading dock at the back.",
+      "t": "narrate"
+    },
+    {
+      "text": "The press had printed Bowls and the Listening in '86. The press had printed Cedar Cycle in '89. The press had printed the foundation's documents for sixty-nine years.",
+      "t": "narrate"
+    },
+    {
+      "text": "Werner Senior's submission had been in '53 — he had been twenty-eight. He had built the press in '58. Werner Junior had taken it over in '86. The Schencks had been printing what the network needed printed for ninety-nine years.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock counted. 12:48. 12:49. The press faded to the seventh layer.",
+      "t": "narrate"
+    },
+    {
+      "text": "H. Lindholm — submitted 1969. Completed 1977.",
+      "t": "narrate"
+    },
+    {
+      "text": "The foundation building in Eugene rendered. A four-story office building on the corner of 11th and Olive. Brick, with cedar trim.",
+      "t": "narrate"
+    },
+    {
+      "text": "The planner's-view rendering showed the building's interior: the director's office on the fourth floor, the archive in the basement, the apprentice-room on the second. The cutter-base land on the coast as the foundation's holding.",
+      "t": "narrate"
+    },
+    {
+      "text": "Henrik Lindholm — Marina's grandfather — had submitted the foundation in '69. He had been thirty-one. He had built it by '77. Aud had been at the building from '84 to '30. Marina had been at it since '38.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marina's grandfather had built the foundation Tem had been dealing with through Marina all summer.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock counted. 14:22. 14:23. The foundation faded to the eighth layer.",
+      "t": "narrate"
+    },
+    {
+      "text": "O. Lindholm (no relation) — submitted 1972. Completed 1976.",
+      "t": "narrate"
+    },
+    {
+      "text": "Olaus's submission rendered. A boat, a dock, a salt-shed at a small cove south of Bandon. The smallest of the builds.",
+      "t": "narrate"
+    },
+    {
+      "text": "The submission's documentation said simply: a working family on a coastal cove for three generations.",
+      "t": "narrate"
+    },
+    {
+      "text": "The build had held until 2031. Then it had not. Olaus was dead. Roy carried his bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock counted. 15:51. 15:52. The cove faded to the ninth layer.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock continued. 16:00. 17:00. 18:00.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate rendered nothing new for three minutes.",
+      "t": "narrate"
+    },
+    {
+      "text": "The nine builds held in the planner's-view as nine layers of architecture across the coastal template. The tower at the bluff. The cabin and the four radiating points. The mill. The grove. The diner. The tide-pools. The press in Bern, rendered as a small inset at the template's northeast corner. The foundation in Eugene, rendered as a similar inset at the southeast. The cove in Bandon at the southern edge.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem gazed at them.",
+      "t": "narrate"
+    },
+    {
+      "text": "She gazed at Dean's tower. She gazed at Olaf's cabin and at the bowl-radiating into the four households. She gazed at Eddvard's mill. She gazed at Marit's still-growing grove. She gazed at Aud's diner at the roadside. She gazed at Brandon's two pools. She gazed at the Schencks' press in Bern. She gazed at Lindholm's foundation in Eugene. She gazed at Olaus's small cove in Bandon.",
+      "t": "narrate"
+    },
+    {
+      "text": "She gazed on their works.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not register any one of them as more than the others. The nine builds held at the same elevation in the planner's-view. They were nine lives. Each life was a submission. Each submission had become a structure in the world. Each structure had become a piece of what Tem had been living in.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had been living in the gallery without knowing she was in it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had been carried by what these nine had built.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had not, until now, registered that she had been carried.",
+      "t": "narrate"
+    },
+    {
+      "text": "She registered now. She held the registration for the count of the substrate's silence.",
+      "t": "narrate"
+    },
+    {
+      "text": "The gallery clock hit 19:00.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate began to fade the nine builds. The fade was slow. The layers went translucent in order — Olaus's cove first, then Lindholm's foundation, then the Schencks' press, then Brandon's pools, then Aud's diner, then Marit's grove, then Eddvard's mill, then Olaf's cabin-and-network, last Dean's tower-and-town. Each fade took perhaps fifteen seconds. The gallery emptied.",
+      "t": "narrate"
+    },
+    {
+      "text": "The planner's-view returned to the blank coastal template. The clock at the upper-right reset to zero.",
+      "t": "narrate"
+    },
+    {
+      "text": "The drone-palette came alive. The construction primitives came alive. The labor-crew palette came alive.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate was asking for her submission.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_epilogue_submission",
+      "t": "jump"
+    }
+  ]
+}

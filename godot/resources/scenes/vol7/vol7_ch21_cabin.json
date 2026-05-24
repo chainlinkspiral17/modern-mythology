@@ -1,0 +1,327 @@
+{
+  "id": "vol7_ch21_cabin",
+  "vol": 7,
+  "chapter": 21,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_starfish_alley.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Back to the Cabin",
+      "sub": "Noon",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "That left Kai, Finn, Tem. The three of them at the alley's entrance at eleven-forty.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "I am packing up. Take the bread. The brioche is for tomorrow but the rye will not keep.",
+      "t": "say"
+    },
+    {
+      "text": "Tem walked to the van. Hans was at the open back door with four loaves of rye wrapped in linen on the wooden tray Greta used for transit. He gave the loaves to Tem.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Eat. You three. At the cabin. Take it up.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans. Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Tem. Ja.",
+      "t": "say"
+    },
+    {
+      "text": "He put his hand on her face for a count. His hand was the floured baker's hand it had been on her face every Sunday morning at the bakery since she had been nineteen.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Sleep tonight. The bakery is at six tomorrow. You do not have to come. But if you come, I will be there.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Hans.",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Ja.",
+      "t": "say"
+    },
+    {
+      "text": "He got in the van. Greta got in the passenger side. They drove back to the bakery.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four bowls at the milk crate were now two. Roy had taken Olaus's. Marit had Marit's at Hans's. Lindholm-Marina's was wrapped in the cloth Marina had left it in at the milk crate. Eddvard's — Tem's-by-inheritance — had been at the milk crate since six-thirty.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Kai. Finn. The bowls.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah. Up to the cabin.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "The three of them packed the two bowls into the wagon's wooden box. Tem wrapped them in the cloths Marit had brought down for the transit. Kai lifted the box into the wagon's back. The cedar bell-piece, in Finn's coat pocket since Sunday afternoon, stayed where it was.",
+      "t": "narrate"
+    },
+    {
+      "text": "The remaining twelve townspeople at the wall watched the three of them pack up without saying anything. There was no announcement that the gathering was ending. The substrate at the wall had stopped doing what it had been doing. The face had closed its eyes. The bowls were being taken back to the cabin. By each of these small movements the morning was returning to a morning.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem turned, before getting into the wagon, and looked at the wall. The face was closed-eyed. The wall was holding what it had been holding.",
+      "t": "narrate"
+    },
+    {
+      "text": "She got in the wagon. Kai got in the passenger seat. Finn followed in his Toyota. They drove up Main to the cabin road. They reached the cabin at twelve-fifteen.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "At the cabin Tem put the bowls back on the dining table where they had been Sunday night. Marit's place at the table was empty. Roy's place at the table was empty. The two remaining bowls — Lindholm-Marina's and Eddvard's-by-Tem — looked, on the dining table, the way two of four bowls look when two are gone. The table was half-empty.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cedar bell-piece was in Finn's coat. Finn took it out, unwrapped it from the handkerchief, set it on the table beside the two bowls.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow was with Lena in town. The notebook was with Cale at the store. The cabin held what was left.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai made a fire in the stove. The cabin had been cold since the seven of them had left it at six in the morning. The stove had gone out by perhaps eight. The cabin's interior had dropped to maybe fifty-five by noon. Kai built the fire back up to the morning-burn. The cabin warmed slowly.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem made coffee at the kitchen. The three of them sat at the dining table. They did not, for a count, talk. Tem brought the coffee to the table. She poured three cups. They drank. The cabin was quiet. The rain on the cedar roof — which had been falling since Wednesday — had dropped to a mist. Kai ate some of Hans's rye. Finn ate one slice. Tem ate half of one. The cabin held them.",
+      "t": "narrate"
+    },
+    {
+      "text": "At one-fifteen the cabin's landline rang. The cabin had a landline because Eddvard had run a copper line up from town in 1981 and Tem had kept it active. The phone was a black rotary phone on a small table by the kitchen window. It was the only phone at the cabin. The cabin had no cell service. Tem walked to the phone. She picked it up on the third ring.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Hello.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Tem. The disc.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "What disc.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Estuary 7. Your copy. The one you gave back to me in August. The one I put on the inventory shelf behind the register two weeks ago.",
+      "t": "say"
+    },
+    {
+      "text": "He paused. Tem could hear him picking at the cuticle.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "It's not on the inventory shelf this afternoon.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "It's on the counter in the back room. The counter where I process new arrivals. The counter where a stick sits when the store is registering it as having come in.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The stick was on the inventory shelf when I closed last night at ten.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "It's on the counter now.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Nobody's been in the store since I closed. The store was locked when I opened at one.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The disc moved itself.",
+      "t": "say"
+    },
+    {
+      "text": "Tem did not, for a count, say anything. She looked at the kitchen window. The mist on the cedars.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate moved it.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The way it moved the bell-piece out of Tideline Survey into Finn's pocket on Sunday.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I think — Tem, I think the stick is asking to be played.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Do you want me to bring it up. I can be at the cabin by two.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Bring it.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I'll come.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "He hung up. Tem held the receiver for a count after the line went dead. Then she set it on the cradle.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Estuary 7.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "It moved.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "It moved.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Cale's bringing it.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale's bringing it.",
+      "t": "say"
+    },
+    {
+      "text": "The three of them at the cabin's kitchen. Outside, the mist on the cedars.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch21_tower",
+      "t": "jump"
+    }
+  ]
+}

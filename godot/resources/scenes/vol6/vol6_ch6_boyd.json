@@ -1,0 +1,139 @@
+{
+  "id": "vol6_ch6_boyd",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Nine Minutes",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_nexcorp_restroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Nine Minutes",
+      "sub": "Friday — 07:34 — NexCorp Fueling Station",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "boyd",
+      "expr": "sad",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd is, at this moment, on the toilet. Boyd is having the worst nine minutes of his professional life. He does not, yet, know this is the worst nine minutes of his professional life. He thinks, instead, that he has the standard kind of stomach bug a man gets from drinking convenience-store coffee at four AM and eating a gas-station burrito at four-fifteen and that the bug will pass in a moment."
+    },
+    {
+      "t": "narrate",
+      "text": "The bug does not, in fact, pass. The bug intensifies. By 07:38 Boyd is leaning his forehead against the cool tile of the bathroom wall and praying — not in any organized way, more in the diffuse way men pray when they are between two acutely uncomfortable functions — for the bathroom to release him."
+    },
+    {
+      "t": "narrate",
+      "text": "The bathroom does not release him."
+    },
+    {
+      "t": "narrate",
+      "text": "The Demon attached to the fueling station's plumbing system — a small construct Frasier Temple had instantiated in 2019 and tested twice on a Houston rest area before promoting to operational status — does not have malice toward Boyd. The Demon does not, technically, have feelings about Boyd. The Demon has been given an instruction. The Demon is executing the instruction. The Demon is, in fact, mildly bored, because the instruction is cause moderate gastrointestinal distress for nine minutes, and moderate gastrointestinal distress for nine minutes is, for a Demon of the plumbing class, the equivalent of a very long red light."
+    },
+    {
+      "t": "narrate",
+      "text": "The Demon waits out the red light."
+    },
+    {
+      "t": "narrate",
+      "text": "At 07:43 the Demon releases Boyd. By the time Boyd staggers out of the bathroom, washes his hands, buys a Gatorade for the rehydration, and stumbles back to pump six —"
+    },
+    {
+      "t": "narrate",
+      "text": "The van is gone. Tomé is gone. Vince is gone."
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd stands in the middle of the lot with a Gatorade in his hand, looking at the empty space where the van had been, feeling the late-morning sun starting to come in hard, and understanding — with the small slow horror of a man whose entire chain of command has just fallen out from under him in nine minutes — that he is, professionally, finished."
+    },
+    {
+      "t": "narrate",
+      "text": "He calls his handler. The handler does not pick up. Boyd calls again. The handler does not pick up. The handler will, when the handler eventually picks up at 09:14, tell Boyd that Boyd is no longer employed and that Boyd should consider relocating to a state Boyd has never lived in. Boyd will, on the handler's recommendation, drive to Nevada. He will get there. He will live, the rest of his life, with the small persistent stomach issue the Demon had calibrated to leave behind. The stomach issue will, in some sense, be the only honest punishment the system was able to deliver to him."
+    },
+    {
+      "t": "narrate",
+      "text": "But that is a footnote. What matters, at 07:43 on a Friday morning at a NexCorp fueling station off FM-3411, is that the van is gone."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_nexcorp_fueling_station.jpg"
+    },
+    {
+      "t": "show",
+      "char": "doyle",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "sad",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego Ramos, in the back of the van, is alive. He is, for the first time in five days, in the company of someone who is not paid to hurt him."
+    },
+    {
+      "t": "say",
+      "char": "Doyle",
+      "text": "Diego. My name's Doyle. We have you. We're going to a safehouse. We're going to take care of you. You're okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the blanket, on the floor, does not, at first, respond. Then, after a long moment, in a voice that is very small and very dry and that Doyle has to lean toward to hear:"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Sam.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doyle",
+      "text": "She's at work, Diego. She's fine. We're going to call her in an hour. You're going to talk to her. Just hold on.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego closes his eyes. He sleeps."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_pit_stop"
+    }
+  ]
+}

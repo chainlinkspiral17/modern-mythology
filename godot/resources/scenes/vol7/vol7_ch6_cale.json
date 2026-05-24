@@ -1,0 +1,564 @@
+{
+  "id": "vol7_ch6_cale",
+  "vol": 7,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Cale",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_chillwave.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 6",
+      "sub": "Cale",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "text": "Cale was not at the counter. The lights were on. The bell rang as she came in and she stood there a count and then walked around the counter and through the doorway to the back, because Cale had told her two years ago that if she ever needed something from the back when he was not at the counter she should just go and get it. She had never, until now, taken him up on it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The back was where the inventory lived. Cedar shelves alphabetized by designer, a wooden crate by the door for new arrivals, a workbench in the corner with a soldering iron and the small precision tools Cale used on the older readers when somebody brought one in.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "cale",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "cale",
+      "text": "Hi.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Hi, Cale. Bell rang. I came around.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Good. I told you to.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Two years ago.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Still good.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He set down the small thing he had been working on. He was not surprised to see her. There was something on his face she had not seen there before — not relief exactly, more like the held breath of somebody who had been counting how long they were going to have to keep holding it.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "It's not nine yet.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm not here for the stick.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He raised an eyebrow.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Or — I am, but that's not why I came in.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Why did you come in.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She told him. The phone call. Roy at the shop. The materials question. Tem saying it might be that bad. Lena needing to be somewhere that was not her apartment, the studio, or the bookstore for the eight hours until they all met at six.",
+      "t": "narrate"
+    },
+    {
+      "text": "He listened to the whole thing without interrupting. When she finished he looked at the workbench for a beat and then at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Sit.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "There was a chair. She sat. He unplugged the soldering iron from the strip on the wall, moved a few small parts off the bench into a tray, pulled a second chair over from the corner, and sat.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "I knew Nate Dean.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She did not move.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Nate.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Dickens Nathaniel Dean. I haven't said his name out loud in thirty years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Let me. I've been turning the order of this in my head since you walked in the door and I want to get it right or I'll get it half right and stop. Let me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She nodded.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Nate's family came up in '92 from Caracas — they'd been there for some years, the dad was an oil guy. They were Americans. I never figured out where the family was from before Venezuela and I never asked. They lived ten miles up the Alsea, off Little Switzerland Road, in a rented farmhouse on a pasture leading down to the river. I went up there maybe twenty times in the two years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The parents were not — they were not what you'd think. They were not warm. They were not cold. They were people who were not in the room when they were in the room. The mom would come into the kitchen while we were at the table working on something and stand at the counter for ten minutes and walk back out. The dad I saw maybe four times. He was either at work in Newport or upstairs with the door closed.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She watched him pick at the cuticle of his thumb.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Nate had the run of the house. He had the run of the basement. He had built things in the basement that the Smolvud High shop teacher could not have built.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "What kind of things.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "A computer. He'd built it. He'd brought parts of it up from Caracas with the household goods and bought the rest through the mail and put it together. By '93 he could do things on it that nobody else on this coast could do. I don't mean nobody his age. I mean nobody.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "And you were what.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The kid he let in. There were three of us. Me, a kid named Ray Petrocelli whose family ran the propane delivery and who moved to Colorado in '95, and a kid I won't name because she's still around and what we did in that basement is not anybody else's business. Three of us at the kitchen table or downstairs at the bench. He paid for the parts. He never asked us to. He just had money. The mom would put a casserole in front of us at six and we'd eat it and go back down. He was generous with everything except explanations. You either kept up or you didn't.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "What were you doing.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He looked at the cuticle.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "That's the part. The part I gave Brandon the surface answer to. The surface answer is compression and encoding. We were trying to push how much could be stored in how small a piece of physical material. Nate had ideas about substrate density that were ahead of where the field was. He was reading papers in '93 that the journals didn't think were serious. He had ideas about encoding patterns in a medium that, when read back, recovered not just the data but the conditions of the recording. The room. The hands. The intent. You laughed at this in 1993.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "You don't laugh at it now.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "You don't laugh at it now. The slow sticks do a piece of it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "What was the not-surface.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He was quiet for a count.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "He was working on consciousness encoding from sixteen. He didn't call it that. He called it pattern persistence. What he was trying to do — and he told me this on a Saturday in March '94, four in the morning, we'd been awake eighteen hours and he was tired enough to talk — was figure out how to encode a person's attention onto a medium. Not data. Not memory. The state of a mind in the act of attending to a thing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She had to take a breath.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "At sixteen.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "He'd been thinking about it since he was eleven, by what he told me that night. He'd been working on it since thirteen. He came to Smolvud at fourteen with the work already going. The basement was where he had the room and the machine and somebody to sit in it with him.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Why was he doing it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He looked up.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "He had a daughter.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She did not, for a long count, say anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "At sixteen.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Not at sixteen. He told me that night that he was going to have one someday and that the daughter was the work. He said I'm going to bring her here. I don't know how yet. I'm going to figure out how. I asked him where she was. He said she's not anywhere yet. She's what's going to come from the work. I thought he was tired. I thought he was being sixteen at four in the morning. I went home. I never brought it up. He never brought it up. We worked together another year on the surface project and then I left for Eugene and we didn't stay in touch and I assumed for thirty years that the daughter conversation had been the kind of thing a brilliant kid says at three in the morning and then forgets.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He didn't forget.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "He built a tower in 2010 and died in it in 2042. He spent thirty-two years working on what he was working on at sixteen. Brandon Tillman thought the daughter was either here now or coming. I don't know what here means in this context. I haven't been to the tower in ten years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Brandon told you about her.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Brandon told me he had a working theory about Nate that included a daughter. He didn't name her to me. He asked me whether Nate had ever talked to me about a daughter. I told him about the Saturday night in March '94. He sat with that a long time. He said thank you, Cale. He left. I saw him twice more in the year before he died and he never asked about the daughter again. He had what he needed.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She sat. The transformer on the wall hummed faintly even with the iron unplugged.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Tem knows about the tower. She thinks the patches are leaking from it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "How.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "She came in here at the end of July and asked me if I would, if she asked, tell her what I knew about Nate. She didn't ask. She said she wasn't ready. She said she'd come back. She's been in twice since. We talked about the designers. She didn't bring up Nate. I've been waiting since July. You walked in instead. That's good. I was getting tired.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem's been carrying this since July.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "She's been carrying it longer than that. She came in July because she'd been at it long enough that she couldn't be at it alone any further. She'd figured out I had something to say. She has been figuring out, since Brandon died, what he knew and where the threads went. She's done it well. I've watched her do it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "She doesn't know you knew Nate.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "She's guessed. There's a difference between guessing and asking. I haven't confirmed it. I'll confirm it tonight if you tell her what I just told you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'll tell her.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He nodded.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Why me and not her, Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Because she's been carrying this alone for two years and she doesn't need to carry the next part alone. I'm telling you so when she has the conversation with me tomorrow you're in the room. I'm telling you so the four of you have what I have to say and what she's been holding at the same time. The carrying alone is what kills people in this. I knew that as soon as Brandon walked in here in 2049. I've been doing my own version for thirty years and I'm tired.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She watched him pick at the thumb.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Are you all right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Today, yes. I haven't always been. Today I'm all right. I'm telling you because telling you is what I should have done two years ago and didn't. Sorry I waited.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "You don't have to be.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I do. A little. I'll live with it. I've lived with bigger.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The stick.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yours. Bench behind you, third slot in the wooden box. Don't pay me. We'll settle later.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She turned. The wooden box held three sticks. The third was Estuary 7, Ines Rocha 2046 in his small careful hand on the white label. She put it in the inside pocket of her coat.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stayed in the chair.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "One more thing.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Go ahead.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "When you go to the tower — and you will, the four of you, in the next few weeks — be careful with the gallery on the sixth floor.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "How do you know about the floors.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I ran into him at SFO in '06. We had a layover. We had a beer. He was twenty-eight and excited the way people are excited when they're about to start the project they've been planning their whole life. He told me he was building a tower on the bluff above old-Yachats. He drew it for me on a napkin. He told me which floor would do what. I've thought about that napkin for sixteen years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "And the gallery.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The gallery was where the unfinished work was going to go. The pieces he started and didn't solve. He knew at twenty-eight he was going to die before some of them were finished. He told me he wanted somewhere to put them. They're up there now. Or what he made of them is. Or what they've made of themselves in ten years of being alone in a room is. Be careful.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "What's there.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I don't know. I have a guess. I won't tell you the guess. I want you to walk into the room with the room, not with my guess about it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She nodded.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Get home, Lena. Eat. Be at the apartment when the others come down. Tell Tem what I told you. Tell her I'll come up tomorrow if she wants me to.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I will.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She got up. At the doorway she paused with her hand on the frame.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Thanks, Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He had gone back to picking at the thumb. He did not look up when she said it.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Go on.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "text": "She went out through the front. The bell rang twice. Outside the rain had started up again and her hair was wet through by the time she was at the corner. The stick in her inside pocket pressed against her hip. She kept her hand on the outside of the coat over it the whole way home.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

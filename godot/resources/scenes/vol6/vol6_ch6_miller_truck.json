@@ -1,0 +1,134 @@
+{
+  "id": "vol6_ch6_miller_truck",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Service Roads",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_truck_interior_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Service Roads",
+      "sub": "Friday — 06:42 — IH-10 Westbound",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "He has not been to the New Auburn Police Department substation in nine years. The substation is a flat-roofed beige building in a strip-mall configuration off the New Auburn Bypass, sharing a parking lot with a payday loan store and a tax preparer. Its sign — NAPD SUBSTATION B — has been hand-touched-up by the same officer twice a year since 2014, with the same can of dark-blue enamel, in the small careful way departments maintained things they did not, technically, have the budget for."
+    },
+    {
+      "t": "narrate",
+      "text": "Chief Miller pulls into the lot at 06:42. He parks at the end space, three from the door. He puts the truck in park. He turns the engine off. He sits."
+    },
+    {
+      "t": "narrate",
+      "text": "Detective Ramirez's car is already in the lot. Ramirez is at the side door, a coffee in each hand, waiting. Ramirez does not wave. Ramirez has, Miller registers, the particular still presence of a man who has done this kind of intake before and has decided, on each occasion, to extend the small dignity of not making the moment harder than it needs to be."
+    },
+    {
+      "t": "narrate",
+      "text": "Miller takes a long breath. He thinks: Sammy is asleep. He thinks: In two hours she will be at the Kwik Stop. In two hours she will know I am here, because her mother will tell her. She will work her shift. She will do what she is told. She is, this morning and from this morning forward, exactly the daughter I had hoped to raise without ever having had any business hoping it, given what I was doing while I raised her."
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "I love her. Whatever else is true, I love her."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets out of the truck. He walks across the parking lot. Ramirez hands him a coffee."
+    },
+    {
+      "t": "show",
+      "char": "ramirez",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "Morning, Mike.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Morning, Hernando.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "Lawyer's inside. Came up from Houston last night. She's good. She's been doing this twenty-six years. She is not going to let you hang yourself.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Miller nods."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Thank you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "Mike. Last thing before we go in. You know that whatever you say in there, in the next four hours, becomes the rest of your life. There is no take-back. If you want one more night to think it over, I will lose this morning's coffee and we'll do it tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Miller looks at him."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Hernando. Sammy needs to come home from her shift today and find her mother and her father in the kitchen. She needs to have one more dinner. Then I need this to be done. Tomorrow is one more day she has to spend pretending. I am not going to make her spend it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "Okay, Mike. Let's go.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They go inside."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_kwik_stop_open"
+    }
+  ]
+}

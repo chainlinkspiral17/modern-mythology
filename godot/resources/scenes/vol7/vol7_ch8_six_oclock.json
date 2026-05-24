@@ -1,0 +1,91 @@
+{
+  "id": "vol7_ch8_six_oclock",
+  "vol": 7,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — Six O'Clock",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol7_lena_apartment_dusk.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol7_apartment_rain.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "They came down together at six."
+    },
+    {
+      "t": "narrate",
+      "text": "Lena had been at her apartment since one. She had made coffee. She had eaten a piece of bread with cheese. She had stripped the bed and put new sheets on it because she had decided, for reasons she did not interrogate, that she wanted the apartment to feel like an apartment that had been kept rather than an apartment that had been slept in. She had run the small portable space heater because the apartment did not warm up otherwise."
+    },
+    {
+      "t": "narrate",
+      "text": "She had pulled the Estuary 7 stick out of her inside coat pocket and set it on the small wooden side table by the chair and looked at it for a long minute and put it back in her coat pocket."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not played it."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not, in two years at the Daily Grind and three at the apartment, played a slow stick. She did not have a reader. She had asked Cale once whether she should buy one. He had told her to wait until she had a reason. She had waited. She had a reason now and still no reader, and the stick was a wax-paper sleeve with a name on it sitting in her coat pocket against her hip."
+    },
+    {
+      "t": "narrate",
+      "text": "At five-forty-eight she heard Finn's truck on Hemlock."
+    },
+    {
+      "t": "narrate",
+      "text": "She went to the front window and looked down. Three of them got out. Tem in the wool sweater under wax canvas. Kai in his grandmother's wool. Finn in his sister's coat. They came up the stairwell two at a time. The crow was, this time, not on Finn's shoulder. The crow had stayed at the truck."
+    },
+    {
+      "t": "narrate",
+      "text": "She opened the door before they knocked."
+    },
+    {
+      "t": "show",
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Hi.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"Hi, you.\""
+    },
+    {
+      "t": "narrate",
+      "text": "They came in and took off the coats and hung them on the row of hooks by the door which had, in three years, never had more than one coat on it at a time. Four hooks, four coats. The apartment was, with all of them in it, smaller than it was. She had known the apartment was small in the abstract. She had not, until now, registered the specific dimensions as four-people-cannot-comfortably-stand-in-this-kitchen small."
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Sit,\" she said."
+    },
+    {
+      "t": "narrate",
+      "text": "Tem and Finn took the couch. Kai took the chair by the window. Lena was about to take the kitchen chair when Kai said, \"Is there anything to eat.\""
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch8_kitchen"
+    }
+  ]
+}

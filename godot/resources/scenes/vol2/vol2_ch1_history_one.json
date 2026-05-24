@@ -1,0 +1,209 @@
+{
+  "id": "vol2_ch1_history_one",
+  "vol": 2,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "i. A Brief History of Me, Part One",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_little_switzerland.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "i.  a brief history of me",
+      "sub": "part one",
+      "duration": 3000
+    },
+    {
+      "t": "narrate",
+      "text": "This will not be a typical bit of biography."
+    },
+    {
+      "t": "narrate",
+      "text": "At this moment in time I am twenty-six years old — far more potential than actual. I was just recently told this by my mother. That I am stunted developmentally. Not as much an adult as I should be. That I regressed for many years by staying in Small Wood when I should have been moving forward."
+    },
+    {
+      "t": "narrate",
+      "text": "This latest retreat was my second stint in Small Wood. The first was years before."
+    },
+    {
+      "t": "narrate",
+      "text": "My family moved to Small Wood the summer after my sophomore year — spent overseas in Caracas, Venezuela. My dad was out of work, and we fell back to regroup in the states on my grandmother's unused piece of country property."
+    },
+    {
+      "t": "narrate",
+      "text": "If I was being more accurate — my father was enjoying the retirement he would not naturally receive."
+    },
+    {
+      "t": "narrate",
+      "text": "Part of me thinks this place is where his ending began."
+    },
+    {
+      "t": "narrate",
+      "text": "I found it to be a beautiful but fallen-upon-disrepair ranch house."
+    },
+    {
+      "t": "narrate",
+      "text": "It was two stories. Yellowed and mildewed on the outside. Shingles split and prone to falling loose. The house proper could be reached driving down from the coastal highway by turning off a small, one-lane pebble road marked by a sign stating simply — Little Switzerland."
+    },
+    {
+      "t": "narrate",
+      "text": "Surrounding the property were cow pastures, bordered on one edge by a river. The other — primal woods descend down to touch the valley."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a quiet place. Neighbors were distant and never encountered with any real frequency. Cows got loose. The river flooded. Trees split and fell across the road. These were typical of the intrusions upon day-to-day life."
+    },
+    {
+      "t": "narrate",
+      "text": "I had spent holidays in the house years before. I was familiar — but it was not my home. It was my grandmother's. It had a comfortable, lonesome feel."
+    },
+    {
+      "t": "narrate",
+      "text": "But I was a teenager — coming from a very large, alien metropole, moving to a small, isolated house within a proportionately small, isolated community that gnawed at me. I was not at heart a spoiled bright-lights big-city boy. I did not complain about the sudden and drastic change to life, and the pace of life. Yet I was always self-aware, and out of place."
+    },
+    {
+      "t": "narrate",
+      "text": "I lacked the skills my father and sister had to tend the land and raise livestock in limited quantities. I helped out where I could that summer — pulling weeds, feeding grass to the beasts, unpacking and moving into the place proper — but I was not an easy fit with the new accommodations."
+    },
+    {
+      "t": "narrate",
+      "text": "Nature and the earth to me were something easy and docile. Not wild and bursting at the seams of reality and basic human existence. I was used to orderly human constructs of society — not encroaching and persistent attacks upon my flesh and character."
+    },
+    {
+      "t": "narrate",
+      "text": "I knew the longer I was here, the longer it would get into me. At first, I was frightened of this feeling. Then it became like a second primal skin, or suit, I could dress up in."
+    },
+    {
+      "t": "narrate",
+      "text": "I remembered skinny-dipping in the chill cold waters of the river. Of hopping the fence and dodging cow pies in a mad rush to the water — and not to catch the bull's attention. I had brought friends to vacation with me here in my youth, and those memories lingered around the place with an almost empty solace."
+    },
+    {
+      "t": "narrate",
+      "text": "I was a true teenager. Halfway between innocence and aged. The world had wizened me beyond my years. My family always a wonderful blessing to have as moral poles in my life. My parents were smart, if not brilliant, in ways I'd never understand. Both so very warm, and wise, and open to my development as a human being — and my sister's as well."
+    },
+    {
+      "t": "narrate",
+      "text": "My father, on his trips into town, started rumors about a promising young athlete from Venezuela. And before long I was signed up for the local high school football team. I had no experience playing the game. None at all."
+    },
+    {
+      "t": "narrate",
+      "text": "My dad made a name for himself in his youth, owing much of his collegiate opportunity to the sport. I was expected to follow in his footsteps — at least in theory, if not actual ability."
+    },
+    {
+      "t": "narrate",
+      "text": "To appeal to my intellect and curiosity, my father hailed high school football as a cultural experience. He assured me — in a mocking tone — that I would get to know and appreciate the locals. Their customs and beliefs."
+    },
+    {
+      "t": "narrate",
+      "text": "Whenever he was playful, I always felt the sharpest pangs of joyful fear."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_road_running.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "So in preparation for joining the team, I began running along the road — up and down the property — to get myself in shape and make a better case for why this strange, tall, halfway-foreign boy should earn a spot on an already established dynasty."
+    },
+    {
+      "t": "narrate",
+      "text": "I had routinely generalized that the people of Small Wood were nothing if not unaccepting and distrusting of outsiders. Which turned out to be not far from the truth. That element is always going to be there, as it is human nature. Some towns scream to be seen by the greater cast of the public's eye. Others retreat — and you have to wonder why."
+    },
+    {
+      "t": "narrate",
+      "text": "Nothing against small towns. But with so few people, the degrees of personality are so sharply honed, and individual lifetimes so distinct, that it becomes its own parallel reality. For me, the fear of the small town was nestled firmly in my reading. H.P. Lovecraft. Stephen King. Edgar Allan Poe — all finely honed the small-town paranoia in me. My literary, thematic, cultural bias."
+    },
+    {
+      "t": "narrate",
+      "text": "For the first few days of preparing to join the football squad —"
+    },
+    {
+      "t": "narrate",
+      "text": "I was sweating, and seeing the sights around me as landmarks I had to pass on the way to better shape."
+    },
+    {
+      "t": "narrate",
+      "text": "Breathing in and out commenced with a more regular rhythm. Pounding my feet to the ground, paced to the beat of my racing heart."
+    },
+    {
+      "t": "narrate",
+      "text": "After several stretches of growing boredom and familiarity with my route, I branched off — to scale the terrain, to stimulate my own sense of adventure."
+    },
+    {
+      "t": "narrate",
+      "text": "Knotted paths leading both up and down the road, twisting alongside cricks, emerging upon tool shed areas, out-of-the-way pole barns, and the remains of fallen-in houses. Debris of lives lost in transition. Abandoned and forgotten."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_crumpled_barn_ext.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The Crumpled Barn",
+      "sub": "Off the road · Foliage",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "The first time I saw the crumpled barn, I thought it part of the hill. Foliage consuming much of the exterior — more negative space than positive. I pushed my way in and found remnants in corners, hidden in shadows. The sunlight poking through, bleached, crumbled the flesh in places."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_barn_interior.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "A cabinet of sorts held a broken marionette, sagging at the hip. At one time it danced a vaudevillian stage. But the glass fourth wall was broken. The buttons and levers that controlled the nickelodeon automaton still worked — herking and jerking the sneering puppet performer this way and that."
+    },
+    {
+      "t": "narrate",
+      "text": "His name in red paint: Jiggles the Juggler."
+    },
+    {
+      "t": "narrate",
+      "text": "His head came to rest against his shoulder after the exhausting performance. His smile and jeering eyes set upon a something across the way."
+    },
+    {
+      "t": "narrate",
+      "text": "Half hanging from the wall as audience before him — a carved wooden sign."
+    },
+    {
+      "t": "narrate",
+      "text": "A beautiful woman sat on a rock, naked from the waist up. Her dark hair covered just enough of her chest, falling down below her waist. The rest of her figure was the product of an artist's imagination — a long bluefish tail that hugged the rock, heavy surf crashed up behind her."
+    },
+    {
+      "t": "narrate",
+      "text": "In old script was writ —"
+    },
+    {
+      "t": "narrate",
+      "text": "Come Visit Today. A Twisted Beauty and a Beast. Only at The Cliffside Circus Attraction —"
+    },
+    {
+      "t": "flag",
+      "key": "vol2_found_jiggles",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol2_cliffside_circus_seen",
+      "val": true
+    },
+    {
+      "t": "interlude",
+      "text": "...",
+      "sub": "— end of part one —",
+      "duration": 2800
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch2_seagash"
+    }
+  ]
+}

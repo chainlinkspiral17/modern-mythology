@@ -1,0 +1,15 @@
+{
+  "id": "vol5_ch13_death",
+  "vol": 5,
+  "chapter": "XIII",
+  "type": "chapter",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "— Death · Walpurgisnacht in Ward C — [ Not yet written. ]"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

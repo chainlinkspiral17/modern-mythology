@@ -1,0 +1,38 @@
+{
+  "id": "vol1_end",
+  "nodes": [
+    {
+      "t": "flag",
+      "key": "vol1_ch1_complete",
+      "val": true
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, the highway hums. The diner's neon flickers in a language you are starting to read."
+    },
+    {
+      "t": "narrate",
+      "text": "The stranger smiles, and it is the smile of something that has been patient for a very long time."
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "warm",
+      "text": "We'll speak again. When you're ready."
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "warm",
+      "text": "And you will be ready. That's the thing about you — you always choose to be."
+    },
+    {
+      "t": "narrate",
+      "text": "— End of Demo —"
+    },
+    {
+      "t": "end"
+    }
+  ],
+  "vol": 1
+}

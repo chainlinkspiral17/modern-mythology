@@ -1,0 +1,128 @@
+{
+  "id": "vol7_ch8_the_vessel",
+  "vol": 7,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — The Vessel",
+  "nodes": [
+    {
+      "t": "show",
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "surprised",
+      "text": "\"A what.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"Brandon thought the substrate had been in him for a long time. Brandon thought Roy was a person whose actions were not fully his own. Brandon told me this once, the third time we met. He did not say more about it. He said I'm telling you so that if I die before this is over, you know. That was March of 2050. Brandon died eight months later.\""
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"And Roy is asking after me.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"Roy is asking after you because you have the wood. Or because somebody who knows about the wood is using Roy to ask. Or because the substrate that may be in Roy is reading you the way it reads anybody who has come into contact with the work, and the substrate wants the wood back. I don't know which of those is true. Possibly more than one. Possibly all three.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "worried",
+      "text": "\"Are we in danger.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"I don't know.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "cold",
+      "text": "\"Tem.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"Kai. I don't know. I would tell you if I did. The honest answer is I don't know. Brandon thought Roy was a vessel. Brandon also told me Roy had not, in twenty-one years in Smolvud, done anything that was provably illegal or provably violent. Brandon said the danger from Roy was not the danger of being attacked. It was the danger of being known by the wrong thing. I have been turning that sentence over in my head for two years. I still don't know what Brandon meant by it.\""
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"I think I do.\""
+    },
+    {
+      "t": "narrate",
+      "text": "The three of them looked at him."
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"Being known by the wrong thing means the wrong thing knows you. If the substrate in Roy now knows the four of us — if Roy's visit to Kai today put the four of us on the substrate's map — then the substrate has us. It does not need to do anything to us. It just has to know we exist. Once the substrate has us, anything that is using the substrate as a routing layer has access to us. The danger is not Roy. The danger is that Roy is the small visible end of a very long and not-visible thing, and that thing has just learned our names.\""
+    },
+    {
+      "t": "narrate",
+      "text": "The room was quiet for a count of ten."
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"Finn.\""
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "warm",
+      "text": "\"That was the most you have said in two days.\""
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"Sorry.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "warm",
+      "text": "\"Don't be sorry. It was good.\""
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"All right.\""
+    },
+    {
+      "t": "flag",
+      "key": "vol7_ch7_vessel_understood",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch8_goodnight"
+    }
+  ]
+}

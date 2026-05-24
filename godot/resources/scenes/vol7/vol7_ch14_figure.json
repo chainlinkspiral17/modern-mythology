@@ -1,0 +1,656 @@
+{
+  "id": "vol7_ch14_figure",
+  "vol": 7,
+  "chapter": 14,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_starfish_alley.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 14",
+      "sub": "Friday",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "text": "Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Come look.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He came over. He stood beside her at the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall was about three feet across. The hair came down to about the height of her waist. The closed eyes were at the height of her chest. The line of the jaw and the neck and the collarbone came down to the height of her hip. The face was painted in the bone black on the brick. The face had — by some accident of how the brick had taken the paint, by some accident of how Lena's hand had moved over the brick — a quality of being not painted but appeared. The face looked, by some optical effect Lena had not engineered, as if the face had always been on the wall and Lena had only revealed it by clearing the dust.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I have not seen you paint before.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I haven't painted in front of anybody but Finn in five years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I am — Lena. I am — that is the work.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The work has been waiting for you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The face moved.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "When.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Just now. As you stepped back. The lids of the closed eyes shifted. Eyes are still closed. But they moved. I could see it from here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Cale. I am — I am going to set the brush down. I am going to put the cedar back in the bag.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I am going to come over to where you are at the entrance of the alley. I am going to stand at the entrance with you. I am going to look at the wall from there.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I am — I am not yet ready to be at the wall this close after what you just said.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She put the brush in the jar of medium. She picked up the cedar from the milk crate. She put the cedar back in the canvas bag with the brush. She picked up the bag. She walked to the entrance of the alley. She stood beside Cale.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall at the distance of the alley's full length was — Lena registered as she looked — visible from the entrance in a way it would not have been visible from the entrance an hour ago. The face was the face of a young woman in a moment of waiting. The closed eyes were the closed eyes of someone who had decided to keep her eyes closed for a count longer. The mouth was the mouth of someone who was about to say something but had not yet decided to say it.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "There is a person at the far end of the alley.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The far end of the alley was the brick wall of the laundromat. The brick wall met the alley at a corner that was, by the geometry of the alley, the only place a person could come into the alley other than the entrance she and Cale were standing at. There was no door in the laundromat's brick. There was no fire escape. Past the corner the wall continued straight into the next building. There was nowhere to come from.",
+      "t": "narrate"
+    },
+    {
+      "text": "A figure was at the corner.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure was in a yellow slicker. The hood was up. The hair curling under the hood. The yellow of Finn's description from the headland. The yellow of the figure on the substrate's bowl. By Lena's read of the angle, the figure was not looking at her — the figure was looking at the mural.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Cale.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I am — I am not going to walk down there.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "No.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "She is looking at the face.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Twelve seconds. The figure did not move. The slicker was the yellow Finn had described from the headland yesterday. The hair under the slicker's hood was — at the distance, in the gray-blue light — the hair Lena had just painted into the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure turned. The figure walked around the corner of the laundromat. The corner was — by what Lena could see at the angle — a corner with no destination, because the wall continued past it into the brick wall of the building behind. The figure walked into the brick. The figure walked into the brick and was gone.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She didn't answer for a count. Then:",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "She was here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'm not going to be okay for a few minutes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "All right.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "They stood at the entrance of the alley. Neither moved.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Cale. The substrate could have put her there. Or she could have been actual. I don't know. I'm holding both. I'm going to keep holding both. I'm not going to decide today.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The face on the wall. When she was looking at it. Did it do anything.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "What.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The closed eyes opened. By the smallest amount. By a millimeter. Then they closed again. Before she walked into the brick. The face was answering her.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She did not, for a count, do anything. Then she sat down on the wet asphalt at the alley entrance. Cale sat down beside her. They sat there with the alley behind them and the town in front and the face on the wall behind them at the wall.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Cale.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Thank you for the witnessing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Lena. Thank you for the painting.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "—",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai came at seven-thirty-two. He pulled the truck up to the entrance of the alley and got out with two more coffees and a paper bag from Hans. He stopped at the entrance when he saw them sitting on the asphalt. He came over slowly.",
+      "t": "narrate"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "kai",
+      "text": "Hey.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Hey, Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He looked down the alley at the wall.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Oh.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The face is — the face is what was on the cedar.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The face is — the face is on the wall now.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He sat down beside her on the asphalt. He set the two coffees and the paper bag between the three of them. He did not, for a count, drink. He looked at the wall.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I want to come back tonight.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Why.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "To stand at the entrance of the alley and look at the face for an hour. The same way the imprint at Kestrel Mountain will be in the basement waiting for me to come tell him what her face is. I am — I am not in Kestrel Mountain tonight. I am here. The face is here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I am — I am going to come down at eight tonight and stand at the entrance and look at the face for an hour. I want to do that. I am going to do that. I am telling you because the face is yours and the wall is yours and I want — I want your blessing on me coming back.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah?",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes. Come at eight. I'll come down with you. I'll stand at the other side of the entrance. We'll look at the face together. We'll go back up to the cabin after.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He drank from his coffee.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah, Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Marina has the wagon. Marina is going to drive me back up to the cabin around ten. You are going to your shop.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I am going to my shop. I am going to be at the shop until five. I have — I have one repair I have to do and I have a kid coming in at one to look at boards and I have to call my supplier in Eugene at three about the bearings order. I will be back at the cabin by six. I will come down here at eight with Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Cale.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Thank you for being the witness this morning.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Lena was the painter. I was the man at the entrance. The thanks goes the other way.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "—",
+      "t": "narrate"
+    },
+    {
+      "text": "Petra opened the back door of the bookstore at eight twenty-six. She came out into the alley to put a bag of trash in the dumpster. She had not, by what Lena could see of her at the back door, registered the three of them sitting on the asphalt at the alley entrance. She put the bag in the dumpster. She closed the dumpster's lid. She turned and saw, on the wall of her building, the face.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not, for a count, move. She stood at the back door of her bookstore with one hand on the doorframe and looked at the face on the wall.",
+      "t": "narrate"
+    },
+    {
+      "char": "petra",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah, Petra.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "I am — I am sitting with what is on my wall.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "I'm making coffee. All three of you, come in. Door's open. Bookstore doesn't open until ten. Come in.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Petra.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "Come in, Lena. I am not — I am not going to ask you to explain at the table. I just want — I just want you in the warm. The asphalt is cold. Come inside.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The three of them got up. They went down the alley. Lena, passing the face on the wall, paused.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall in the eight-twenty-six light had a quality of being lit from inside. The bone black had not — by anything Lena had known about bone black in the years she had been grinding it — produced a luminance before. The face was lit. The closed eyes were closed. The hair held the bone black the way the hair would have held a kind of soft light. The face was on the wall and was lit and was the face she had been painting from the inside of her head from the moment she had set the brush against the brick at five fifty-eight.",
+      "t": "narrate"
+    },
+    {
+      "text": "She put her hand on the wall beside the face.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I am — I am going to be inside. I will come back at eight tonight. I will stand at the entrance with Kai. I am not going far.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The face on the wall did not, by anything Lena could see, respond. She went into the bookstore. Cale and Kai followed. Petra closed the door behind them.",
+      "t": "narrate"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "src": "assets/backgrounds/vol8_bookstore.jpg",
+      "t": "bg"
+    },
+    {
+      "scene": "vol7_ch14_petra",
+      "t": "jump"
+    }
+  ]
+}

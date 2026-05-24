@@ -1,0 +1,418 @@
+{
+  "id": "vol7_ch19_roy",
+  "vol": 7,
+  "chapter": 19,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Olaf's Son",
+      "sub": "Four o'clock",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "per",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "The cabin at three fifty-six was warm. Tem had banked the stove higher than she banked it in the mornings. The kerosene lamp on the table was lit against the gray afternoon. The four bowls were on the table at the kitchen end.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per sat at the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "The four bowls in the kerosene-lamp light. The crows. The octopi. The four young women — all four with closed eyes, all four standing more upright than they had been before the alignment at the bakery. The bowls were warm — Per registered the warmth as he sat, the air around the bowls at maybe sixty-seven against the cabin's sixty-three, the warmth coming off the cedar and not from anything else in the room.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem poured him coffee. She sat across from him. For a count they did not speak.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Marit was different this morning.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I saw.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "When the carved young woman on her bowl raised her face — Marit was at a place I have not seen her. I have known my mother sixty years. I have not seen her at that place. The place a person is at when a person has been waiting for a thing for some great number of years, and the thing is happening at the place she is sitting at.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "She was holding herself together at the kitchen all afternoon. By what I could see, she was at the edge of weeping for four hours. She did not weep. She was at the kitchen with Greta. Greta did not ask her to weep. Greta made soup.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The three of us were at the kitchen and Marit was at the edge for four hours. She has gone up to her room now to lie down. She will be down for the stew at five-thirty. She's sixty-eight and she has been carrying the bowl since 1974, when Olaf gave it to her, and she is now in the moment the bowl was given to her for. I have not — I have not known my mother in this moment before.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Your mother is okay.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She's doing what she's doing because she's one of the people who has been at this work the longest. One of the carriers. The carriers are at the moment now. Your mother is doing what a person does at the moment of the work she has been doing.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Be at the moment with her. Tomorrow she will be here. Tomorrow she will be at the cabin with us. Today she's at the kitchen with Greta because that's the place she needed today. Both places hold what she's carrying. Whatever is happening is becoming the size of the work.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "He drank from the coffee.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Olaus.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Roy is going to come up the road with Olaus's bowl. The bowl Olaf carved for Olaus in '76 or '77 — the bowl that was at the Olaus family house in Bandon from when Olaf gave it until the Olaus family could not carry it anymore in '31 — that bowl is going to be at this cabin for the first time.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I am going to be at this table when Olaus's bowl comes back to the cabin Olaf and Eddvard built. Tem, I am going to be in the room with my father in a way I have not been since 1978.",
+      "t": "say"
+    },
+    {
+      "text": "Tem did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You are going to be in the room with Olaf.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am — I am glad to be in the room with you for it.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "text": "Roy came up the road at four-twelve. His F-100 — the only one still on the road in town, by Per's count. Per had seen it parked on Cedar Place when he had walked past two summers ago. He had not, until today, registered that he had been registering Roy's truck for years.",
+      "t": "narrate"
+    },
+    {
+      "text": "The F-100 came up to the clearing and parked beside Tem's wagon. Roy got out. He had a wooden box and an overnight bag.",
+      "t": "narrate"
+    },
+    {
+      "text": "He looked at the cabin. He looked at it for what Per could see from the porch was a count he was taking. Roy was, by Per's read of him from the porch, a man who had been at the road below this cabin some number of times in the past twenty-one years without coming up. Roy had been at the road's start. Roy had not been at the cabin. Roy was looking at the cabin in 2052 for the first time he had let himself look at it.",
+      "t": "narrate"
+    },
+    {
+      "text": "He came up.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come in. Per is here.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Per is here.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes. Come in.",
+      "t": "say"
+    },
+    {
+      "text": "Roy came up the porch steps. He stopped at the door. He turned to Tem.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have not been up this road. I have been at the start of the road. I have driven past the start maybe two hundred times in twenty-one years. I have not come up. I did not come up because the road was Tem's. The road was Eddvard's. The road was Olaf's.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I did not have permission. I have not had permission for twenty-one years. I am asking, before I come through this door, for the permission.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy. You have the permission. Come in.",
+      "t": "say"
+    },
+    {
+      "text": "Roy did not, for a count, move.",
+      "t": "narrate"
+    },
+    {
+      "char": "roy",
+      "text": "Thank you, Tem.",
+      "t": "say"
+    },
+    {
+      "text": "He came in.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per stood up at the table. The two of them looked at each other for a count.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Roy Hummel.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Per Egilsson.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Olaf's son.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Olaus's bowl-keeper.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have been waiting to be in a room with you my whole life and have not, in my life, known that I was waiting.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I have been waiting to be in a room with you my whole life and have known.",
+      "t": "say"
+    },
+    {
+      "text": "Per did not, for a count, do anything. Then he walked around the table. He went to Roy. He put his arms around Roy. Roy stood very still for the count and then put his arms around Per. They stood at the door for a long count. Tem, at the table, did not say anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Roy. The bowl.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Per. The bowl is in the box. I am going to put it on the table beside the other three.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Put it.",
+      "t": "say"
+    },
+    {
+      "text": "Roy went to the table. He set the wooden box on the table. He opened it. He took out the bowl. Cedar. The spiral on the outside. The young woman at her doorframe. The crow at the rim.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy set the bowl on the table beside Marit's. The four were now in the bakery's row, transposed to the cabin's table. Per registered, looking at the four, that they had arrived where they had been waiting to be.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowls' figures, over the count of maybe a minute as Per watched, shifted. The crow on each bowl turned its head slightly. The octopi rearranged their arms. The four young women — all four, with their closed eyes — turned their heads slightly. The heads turned toward the door of the cabin.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "The bowls.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "They're facing the door.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "They're facing the door.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The bowls are getting ready.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "The bowls are at the cabin. The cabin is where the daughter will come. They have been telling us — by Werner's poem, by what Hans read at the bakery — that she comes at the door. They are facing the door.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Roy.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "When.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "Per. I do not know.",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "But the bowls are doing what they have been getting ready to do.",
+      "t": "say"
+    },
+    {
+      "scene": "vol7_ch19_cedar",
+      "t": "jump"
+    }
+  ]
+}

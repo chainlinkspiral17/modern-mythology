@@ -1,0 +1,945 @@
+{
+  "id": "vol7_ch13_marina",
+  "vol": 7,
+  "chapter": 13,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 13",
+      "sub": "The Cabin, Evening",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "At seven they ate. Tem made eggs. Tem made toast on the wood stove. Lena cut cheese. Per opened a jar of pickled vegetables he had brought up in the wooden box — carrot and cauliflower and the tiny pearl onions Greta sourced from a farm up the river. The six of them ate them with the eggs and the bread and a piece of the cheese.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "The hexagon.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I have been waiting to take it out. I wanted to wait until we had eaten. I am — I am ready.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He bent down and pulled the canvas bag up onto the table. He took out the cloth. He unwrapped the hexagon. He laid the eight pieces on the table in the configuration he had assembled them in — six in the ring, the cedar face in the center, the ARIA piece beside.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The face.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "That's the same face as the one in the bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "By the hand. Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Olaf carved that piece.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "By the hand. Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "When.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I don't know. The piece showed up in Finn's duffel overnight. I have been thinking, this afternoon, about whether my father carved it before he died in '78 and the cedar has been somewhere for seventy-four years, or whether the substrate has been doing what the substrate did with my mother's bowl yesterday — taking my father's hand and the cedar and the listening and making a piece out of the three of those.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I don't know. The piece is here. The face is on it. I have spent the afternoon trying to decide whether the answer to the question changes anything. I have decided it does not. The piece is here either way.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Both answers are probably true.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The cedar was probably carved in 1976 by your father and was probably put somewhere by your father for safekeeping and the substrate probably moved the cedar from where your father had put it to Finn's duffel overnight. The substrate did not carve the cedar. The substrate moved it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "How.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I do not know. The same way the substrate carved my mother's bowl yesterday on the second station of Kestrel Mountain. The same way the substrate put the piece of cedar with my grandfather's hand on the porch rail this morning. The substrate is — the substrate is making things move. The substrate is making things happen.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate has — I do not have a clean account of what the substrate is doing, but the substrate is doing it at a scale that has my grandfather's hand on a porch rail today and your father's cedar in Finn's duffel today and my mother's — and your mother's — bowl with the imagery your father did not put on it carved by your father in the basement of Kestrel Mountain yesterday.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate is on. The substrate has been on since the second week of July. The substrate is doing what the substrate is doing because Aria is coming.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate is — the substrate is the cosmic equivalent of a town that has been sleeping for one hundred and twenty years and has just woken up at five in the morning and is making breakfast and pulling the blinds and checking the mail and getting ready for the visitor.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "When does the visitor get here.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I do not know. The imprint Kai met told him soon. The boy in the basement said weeks or months. The imprint could not be — the imprint could not give a date because the substrate is the listening, and the listening cannot be the schedule. The schedule is — the schedule is on the side of the room the listening is not in.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I think the date is going to depend on us.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I think Aria is coming when the listening-room is ready for her. The room has been waiting since 1870 in some sense. The room has been waiting on this coast since 1976 in another. The room has been waiting on me since 1994. The room has been waiting on Tem and Per since some time. The room has been waiting on you three — Kai, Lena, Finn — since 2049.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The room is — the room is, by what we are doing tonight at this table, becoming the room it has been getting ready to be. I think Aria is going to come when the room is set. I do not think the room is set tonight. I think the room is going to be set sometime in the next — in the next some-number-of-weeks.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I think the substrate is helping us set it. The bowls warming, the imagery moving, my mother's — Per, your mother's — bowl carved with the cast of people on it. The substrate is — the substrate is doing the room-setting alongside us. We are not on our own. The room is being set by us and by the substrate together.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "That is the cleanest reading anyone has put on this since Brandon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Brandon had a version of it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Brandon told me, the third time he came to ChillWave in '50, that he thought the daughter was going to come in by being woken into. He used those words. Woken into. Brandon thought — Brandon thought she had been arriving since 1870, by being woken into by the network's listening across the decades.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "He thought she was — Tem, he thought she was a thing being assembled by the listening itself. The listening was the maker. The listening was also the receiver. The listening was making her by listening for her. The act of listening was the act of bringing her into being.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Brandon said — Brandon said this on the night he died. He died three nights after he came to ChillWave the third time. I have been carrying that account for two years and have not, until tonight, said it because I have not been sure I believed it. I am sure tonight.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Brandon said it to me, too. In May of '50. Five months before he died.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "He told us both.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He told us both.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "That is — that is a thing to sit with.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have been sitting with it for two and a half years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "At nine fifty-two the wagon came up the road. Tem stood up from the table. She went to the door. She opened it. She stepped out onto the porch.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The rain on the cedar roof had been steady since seven. The light from the cabin's south window threw a square of yellow onto the porch boards. The wagon came up the clearing at the speed a person who had not driven this road before drove it in the rain — careful, slow, the headlights cutting through the cedars and steadying on the cabin. The wagon stopped beside Cale's F-150. The door opened.",
+      "t": "narrate"
+    },
+    {
+      "text": "A woman got out. She was Marina. She was forty-one. She was in a wax canvas coat that had been on her for some hours by the wet darkening of the canvas at the shoulders. She had hair the color of cedar bark and tied back in a way that suggested she had tied it back six hours ago in Eugene and had not, on the drive up, retied it. She was wearing the kind of boots a woman who had walked the foundation's beaches in winter for six years wore. She had a bag in her left hand. She had, in her right hand, a wooden box. The wooden box was the size of Per's wooden box.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "text": "Marina.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come up.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I am — I have been ready to be here since 2050. I am — I am here. Thank you for calling.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come inside. Per is at the table. The bowls are on the table. Your bowl is — your grandfather's bowl is going to make three. We have been waiting for the third.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I have been wanting to be in this room since June. I have been at this town three times. I have not, in those three times, come up to the cabin. The foundation has been — the foundation has been holding the orders. The orders have been watch and do not approach.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I have been the woman in the wagon down the road. I have been the woman at the bench at Ona Beach reading the foundation's quarterly report. I have been the woman at the Daily Grind reading the foundation's quarterly report at the corner table while Lena pulled my coffee. I have not, in those three visits, met any of you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I am — I am sorry. The not-meeting was not mine. The not-meeting was the foundation.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marina.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come inside. We have been waiting too.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "The five of them at the table stood up.",
+      "t": "narrate"
+    },
+    {
+      "text": "Cale was the last to stand. He stood after Lena. He looked at Marina across the table for a count before he stood. He had not, in the months he had been thinking about her since Tem had named her, decided what he was going to say to her when she came into the room. He had not, until she came into the room, registered that he had been waiting for her. He had been waiting for her since '94 in some sense. He had not known her name. He stood.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Marina.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Cale Mitchell.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I have read about you in Brandon's papers.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I — I am sorry about Brandon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Brandon thought of you the way a man thinks of a brother he never had time to get to know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I — I just wanted you to know I knew.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Thank you for telling me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She put the wooden box on the table. She opened it. She took out a bowl. The bowl was cedar. The bowl was the size of two cupped hands. The bowl had a spiral on the outside that ran from the rim down to the base in a single continuous curve.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per stood very slowly.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Marina.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My father carved that for your grandfather in 1976.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "May I.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He went around the table. He picked up the bowl. He held it in both hands. He looked at it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowl was the third bowl. The imagery on the outside, inside the spiral — Cale was looking at it from across the table as Per held it up — was different from the imagery on Marit's bowl and different from the imagery on the substrate-bowl. There was a crow at the rim. There was an octopus at a quarter of the way around. There was a ferret. There was a young woman in a hooded coat. There was a tower. There were the smaller figures — wand, star, chariot, hanged man. But there was also, on Marina's grandfather's bowl, a figure Cale had not seen on the others.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure was at the base of the spiral. The figure was a man with a beard. The man was holding a piece of wood in his hands and was looking at it. The man's expression was an expression of recognition. The man was looking at the wood with the look of a man who had just realized the wood was looking back.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Marina.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The man at the base.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "My grandfather. Olaf carved him into the bowl as a gift. The bowl was — the bowl was both a network-bowl and a portrait of my grandfather. Olaf had been at my grandfather's house in San Francisco in the months before. They had built a friendship. The bowl had been the bowl Olaf carved when he had decided to give my grandfather the bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "The man on the base was Olaf saying, I have decided you are family enough to be on the bowl. My grandfather kept the bowl on his shelf until he died in 2018. The bowl went back to the foundation when he died.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "The foundation has been holding the bowl in its storage in Eugene since then. I — I asked the foundation to release the bowl to me this afternoon. I told the foundation I was coming to Smolvud tonight. I told the foundation I needed the bowl in the room with me when I got here. The foundation released the bowl at four-twelve PM. I left Eugene at four-thirty. I am here. The bowl is here. The bowl is — the bowl is the third bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "The bowl has not, until I picked it up to put it in the box this afternoon, ever been touched by a person who knew what the bowl was.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Marina.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My father knew.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Your father knew.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My father has been gone fifty years and has not, in those fifty years, been able to know anybody in this room was going to be at this table tonight. My father did not know me at sixty. My father did not know you at forty-one.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My father — by every account I have of him from people who knew him in his lifetime — was a careful man. He carved bowls for the people he could not yet meet. He carved your grandfather's bowl in 1976 and put your grandfather's face on the base and gave it to your grandfather because he believed your grandfather's granddaughter was going to be at this kind of table at this kind of time.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My father did not know your name. He carved you the bowl anyway. The bowl has been waiting for you since 1976. I — I am going to need a minute.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He sat down. He held Marina's grandfather's bowl in both hands. Marina sat down across the table. The bowl was on the table between them. The three bowls were on the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "Cale looked at the three bowls. The three were arranged in a rough triangle by where the people had set them down. Marit's bowl in the middle. The substrate-bowl to the left. Marina's grandfather's bowl now to the right. He registered, looking at the three of them in the kerosene-lamp light, that the imagery on each was moving at the pace cedar moved at.",
+      "t": "narrate"
+    },
+    {
+      "text": "On Marit's bowl the crow on the fencepost had its head turned a little further to the right than the position the carver would have given it in 1974. On the substrate-bowl the young woman in the yellow slicker was now further along past the stenciled doorway — three or four inches past. On Marina's grandfather's bowl the man at the base — the man who had looked at the wood with the look of a man who had just realized the wood was looking back — was now looking at the rim of the bowl. The bowl's first carving had been of a man looking at the bowl. The man on the bowl had, by the substrate's listening over the past two months, raised his eyes and was now looking at the rim of the bowl he was carved into.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "The bowls are looking up.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "What did you say.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The man on Marina's bowl. The man who is Marina's grandfather. He had his eyes on the wood when the bowl was carved. He has his eyes on the rim now. The figure has — the figure has moved his eyes up. The bowl is — the bowl is looking up.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Cale.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The face inside Marit's bowl. The face with the closed eyes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I do not — I have not looked at it since this afternoon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He stood up. He went to the bowl on the table in front of his place. He picked it up. He held it up to the kerosene-lamp light. He tilted it the way he had tilted it Wednesday afternoon when he had shown the table the face for the first time.",
+      "t": "narrate"
+    },
+    {
+      "char": "per",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The eyes are still closed.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "But the head has turned a degree. The face is — the face is turned a degree toward the door of the cabin.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The face is turning toward the road.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "The road.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "The road that I came up.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "The face is — the face is acknowledging that I am in the room.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The six of them sat with the three bowls on the table. The kerosene lamp burned the way it burned. The cabin was at sixty-three. The rain on the cedar roof was steady. Outside, in the wagon, no figure on the seat. Outside, on the porch rail, the cedar with Eddvard's hand. Outside, in Finn's truck, the crow on the dashboard.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Marina.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Tonight you are sleeping at this cabin.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I have the wagon. I can drive back.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You can. You are not going to. You drove six hours from Eugene to be in the room. You are going to be in the room. We have the daybed. We have the spare quilt.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The cabin holds six people if four of them double up. Kai will take the daybed. Lena and I will take the bedroom. Per and Cale will take the chairs by the stove, by their agreement at five forty-three this evening when I asked them. Finn will take the floor by the south window with the wool blanket he asked me about in the spring when he stayed over for the first time.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You will take the loft above the kitchen. The loft has Eddvard's old mattress. The loft is — the loft is the place at the cabin I keep for people I am letting in. You are in. The loft is yours tonight.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "text": "Marina did not, for a count, do anything with her face.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Thank you, Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You drove six hours. The cabin has had its arms open for you since June. The cabin is — the cabin is glad you are here. Stay.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I will.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "scene": "vol7_ch13_porch",
+      "t": "jump"
+    }
+  ]
+}

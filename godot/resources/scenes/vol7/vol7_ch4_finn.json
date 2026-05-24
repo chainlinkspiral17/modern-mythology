@@ -1,0 +1,648 @@
+{
+  "id": "vol7_ch4_finn",
+  "vol": 7,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Tem at the Cabin — Afternoon",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 4",
+      "sub": "Saturday Afternoon",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Finn pulled into the clearing at two-twenty. The crow was on the dashboard. He came up the porch steps with a duffel over his shoulder and a wax-paper package in his right hand, and Tem opened the door before he knocked.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "text": "You walked up like you were carrying something.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The crow brought it this morning. I forgot it was in my coat until I was at the porch.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He set the duffel down. He set the package on the table beside the lamp. He took off the wet coat and hung it on the peg.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Coffee's hot.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He poured himself a cup at the stove and brought it to the table. He sat across from her and pulled the wool cap off his head and ran a hand through his hair, which was wet from the walk up from the truck.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "How's the route.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Wet. There's a slide on the Tideway at the third bend. I had to walk the bike around it. The Hatfields sent down a bag of apples. They're in the truck.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Tideway slide. That's a foundation problem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "They'll be on it tomorrow.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She looked at the package on the table and then back at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I want to talk to you before we open it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She sat with her cup in her hands for a minute. She had thought about how she was going to say this on the drive up and the way she had thought about saying it now did not feel like the right way. She set the cup down.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I met a man named Brandon Tillman three times in 2050.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn's expression did not move.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "The name on the radio yesterday.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The name on the radio yesterday.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "You knew it when Finn said it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You're Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I knew you knew it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I'm telling you now because I should have said something at the table yesterday. I didn't because I'd been awake too long and because saying it in front of all three of you on five hours' sleep felt wrong. The not-saying was a small dishonesty. I am sorry.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He turned the cup half a turn in his hands.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Who was he.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She told him. Sixty-one when she met him, working at the museum-town museum, lived alone in a small house above the museum, had moved up the coast in 2042.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had gone down in March 2050 because Petra had sent her to look at a small bench installation Inga Vestergaard had made for the museum's reading room in 2031. She had sat on the bench.",
+      "t": "narrate"
+    },
+    {
+      "text": "A man had come into the reading room and sat in the chair across from her and read a book. After a long time he had said the bench is doing what you think it is doing, and when she had asked what he meant he had said he had been watching her sit on it and that in eight years at the museum he had watched maybe four people sit on the bench in a way the bench had responded to, and she was the fourth.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "What had the bench done.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I didn't know what it had done at the time. I knew I'd been registering something. The bench had felt warm. Wood doesn't feel warm. The bench had a small carved spiral on the underside of the seat that I had been running my thumb across without noticing I was doing it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Warm like the bowl.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "How do you know about the bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "You're looking at the shelf above the lamp every time you stop talking. You've looked at it three times since I sat down.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She had not realized she was doing it. She nodded once and tilted her head toward the shelf.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Get up. Touch it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He got up. He lifted the small cedar bowl off the shelf and held it in both hands, and his face did not change but he stood there a long count before he set it back.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "How long.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Since July.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "And you've told no one.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "No.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He sat back down. He looked at his coffee for a minute. When he looked back up at her his face was not what she had expected. He was not annoyed and he was not concerned in the careful way Lena would have been concerned. He was just present. He was looking at her the way he looked at the crow on his fencepost.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Why didn't you tell Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "There it was. She had known he was going to ask.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Because Lena is in love with me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He did not move. He took the answer in the way he took weather.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Are you in love with her.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She thought about it.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I am in something with her. I do not know what to call it. I have known her for eighteen months. We slept together once in April. I think about her every day. I think about you some days. I think about Kai some days. I think about her all of them.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am twenty-six and I am not in command of what that is. This morning at her apartment I told her I had wanted it to be a thing again since April and she said she had wanted the same thing. I do not know what we do with that.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am also afraid that what I want from her and what is happening in the town are about to be the same conversation, and I do not want them to be the same conversation, because she deserves the first one without the second one running underneath it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He nodded slowly.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "And you didn't tell her about the bowl because the bowl would put the second conversation underneath the first.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "He drank from his cup.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "You were going to tell her about the bowl eventually.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I was going to tell all three of you tomorrow at the cabin. I am still going to tell all three of you tomorrow at the cabin. I'm telling you this afternoon because you came up alone and the cabin made the room for it and I would rather not do the telling for the first time in front of all three of you. I have done that twice already this week. It hasn't gone well.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "It's gone fine.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "It's gone how it's gone. I want this one to go better.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He looked at the package on the table.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "There's more.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She told him about the tower.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had, for two years, been thinking that the patches on the murals were leaking from the tower above old-Yachats. She had not gone to the tower. She had not, in two years of thinking about it, walked the access road. The man who had lived in the tower was Nate Dean. He had died in 2042. The tower had been sealed since.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not know what was in it. She had been afraid of it. Brandon Tillman had been investigating Dean — that was, she was fairly sure, why Brandon had moved to the museum-town in 2042, the year Dean died, though Brandon had not said it in those words and she had not asked.",
+      "t": "narrate"
+    },
+    {
+      "text": "The wood Brandon had been collecting and that the crow had been bringing to Finn was, she thought, evidence of some kind from the work Brandon had done. She did not know what kind of evidence. She did not know what the wood was supposed to mean.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not know what was leaking from the tower or how to stop it or whether stopping it was the right thing to do or whether there was someone living in the town now who was trying to stop them from stopping it. She did not know any of it. She had been pretending, badly, to know more than she did because the pretending had been the only way she had figured out to keep going.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn listened. When she was done he sat for a while looking at the table between them, not at her.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Tem.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "It's all right not to know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "It does not feel all right.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "That's a different thing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She put her face in her hands. She held it there for a count of about six and took her hands away. She was not going to cry. She had thought, on the drive up, that she might cry when she finally said all of it out loud, and now that she had said it she felt instead a kind of low-grade sickness and a tiredness at the back of her neck that she recognized as the first physical signal of having gotten through a thing.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Open the package.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He did. The piece was, like the others, charred wood. The grain was the same yellow grain as the first two. He set the third piece on the table and took the first two from a small inside pocket of his coat and laid them out beside it.",
+      "t": "narrate"
+    },
+    {
+      "text": "He fitted them. The first piece met the second along one edge. The third met the second along the other. Together the three made a crooked plank about ten inches by three.",
+      "t": "narrate"
+    },
+    {
+      "text": "She looked at it.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Brandon kept a small wooden box at his house. He showed it to me the second time I went down. The box had pieces in it that looked like these. He had been collecting them for some years. He wouldn't tell me from where.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He said they were the only things that had survived an event he didn't want to describe. He said he thought they meant something and that he didn't, by 2050, know what. He said he was tired and dying. He said he was going to give them to whoever the next person was. He said he was going to figure out who that was before he went.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "And the crow.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I think the crow has been bringing you the box, piece by piece, for nine months. I think the box is empty by now or close to it. I think when the box is empty the crow will have done what it was set to do.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn looked at the three pieces. He put a finger to the joined edges, very lightly, and took it back.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I'm not anyone, Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Neither am I. I'm a girl who reads at a cabin and works at the bookstore on Sundays. You're a guy who delivers organic produce on a bike. The work picks who the work picks. We don't get to choose.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He nodded once. He wrapped the three pieces back in the wax paper. He put the package in his coat pocket on the peg by the door rather than back on the table.",
+      "t": "narrate"
+    },
+    {
+      "text": "When he came back to the table he sat down.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "What are we doing tomorrow.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "All four of us up here. I'll tell Lena and Kai what I've told you. We figure out what we do.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Will you come up early.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I'll be up by ten. I'll bring breakfast.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You don't have to bring breakfast.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I'm bringing breakfast.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She let him.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stayed until five. They did not talk much more about the substrate or the tower or the bowl. He told her about the slide on the Tideway and a small repair on his bike he had been trying to figure out.",
+      "t": "narrate"
+    },
+    {
+      "text": "She told him she had finished re-reading the John Frank novel on Tuesday. He asked how it had ended this time. She said it had ended differently than the first two readings, and he asked her what that meant, and she said she did not know yet and would tell him when she had figured it out. He let her.",
+      "t": "narrate"
+    },
+    {
+      "text": "Around four-thirty he heated up the soup she had taken out of the cooler and cut two pieces of the bread that had come up with her on Wednesday, and they ate at the table without talking much. The cabin held them at sixty-three by the thermometer. The rain on the roof did not change.",
+      "t": "narrate"
+    },
+    {
+      "text": "He left at five-twelve.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The crow flew off the dashboard as he opened the truck door, made one slow circle of the clearing, and landed on his right shoulder. He got into the truck. The crow stayed on his shoulder. He drove down the road, and Tem stood on the porch with her arms folded and watched the truck disappear into the cedars.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "She came back inside. She banked the stove. She washed the cups. She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been and sat with her hands on either side of it and looked at it for a long count.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was warm.",
+      "t": "narrate"
+    },
+    {
+      "text": "She put her palm flat on the table beside the bowl. The table was cool. She put her palm on the bowl. The bowl was warm. The warmth was not heat from a fire. The warmth was the warmth of a thing that had something inside it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not know what was inside it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She sat with that.",
+      "t": "narrate"
+    },
+    {
+      "text": "After a while she put the bowl back on the shelf. She made a small dinner of eggs and the rest of the bread, ate it at the table, and went to bed at nine-something. The cabin held her. The rain on the roof did not change. She slept.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "vol6_ch1_bedroom",
+  "vol": 6,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "Ch 1 — I Am Going to Find Diego",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_sam_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "tired",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "She goes inside. She goes upstairs. She closes her bedroom door. She sits on the edge of her bed. Her phone buzzes. Graciela Ramos: You came home okay? Sam types back: Yes. Talking to him tomorrow. Sleep tonight."
+    },
+    {
+      "t": "narrate",
+      "text": "She looks around her cornflower blue bedroom. The fan is still going. The fan still clicks on the third rotation, then the sixth, then the ninth. She watches the fan. She counts the clicks."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "I am going to learn how to listen."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "I am going to learn how to be my dad's daughter in a house where my dad is doing something he has not told me about."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "I am going to find Diego."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere below the thinking — in the quiet part where decisions get made before language gets to them — the decision is there. Whatever this costs, I am going to pay it."
+    },
+    {
+      "t": "narrate",
+      "text": "She stands. She crosses to the window. She looks out at the cul-de-sac. Nothing is happening on the cul-de-sac. The sprinklers are off. The lawns are green. The NexCorp logo on the mailbox across the street catches the late-afternoon light."
+    },
+    {
+      "t": "narrate",
+      "text": "A black cat — small, unregistered — crosses the far end of the cul-de-sac at a measured walk. Sam watches it until it is gone. She does not know why, but she feels, watching it go, that she has been seen. Seen, and counted, and acknowledged."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere beneath the subdivision, the hum of the water tower begins its evening cycle — below human hearing, but felt, if you were listening the way Maya Daigle had been learning to listen, in the teeth. The dogs on Meadowlark bark once. They fall silent."
+    },
+    {
+      "t": "narrate",
+      "text": "The summer, as promised, has begun."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam Miller turns away from the window. She begins the long careful work of pretending, for the benefit of her father eating dinner at the kitchen table downstairs, that today was, in every way that matters, an ordinary day. She is, she will discover, not very good at it yet. She will get better."
+    },
+    {
+      "t": "flag",
+      "key": "vol6_ch1_complete",
+      "val": true
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

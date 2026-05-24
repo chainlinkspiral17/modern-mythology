@@ -1,0 +1,45 @@
+{
+  "id": "vol2_bf_dog",
+  "vol": 2,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Briar Falls — the dog",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_briar_falls_trail.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The border collie is fourteen feet from the trailhead and you are six feet from the border collie. The dog is sitting. The dog has been sitting for longer than border collies sit."
+    },
+    {
+      "t": "narrate",
+      "text": "You watch the dog watch the box. It is not posturing. It is not nervous. It is doing the thing a dog does when a dog has read a room and is waiting to see whether you have read it also."
+    },
+    {
+      "t": "narrate",
+      "text": "You move two steps closer. The dog turns its head and looks at you, square. The black-and-white of its face is the careful, planned black-and-white of border collies. The eyes are heterochromatic — one brown, one a pale unsettling blue."
+    },
+    {
+      "t": "narrate",
+      "text": "It does not bark. It does not wag. It looks at you the way a person looks at someone they recognize but have not decided whether to greet."
+    },
+    {
+      "t": "narrate",
+      "text": "After a count, it lowers its head — not down, just an inch, deliberate — and looks back at the trailhead box. Then back at you. Then the box."
+    },
+    {
+      "t": "narrate",
+      "text": "You understand, the way you sometimes understand a thing from a dog, that you have been shown something. You also understand that this dog could, if it wanted to, tell its family any number of things, and has chosen, today, to tell them none of them."
+    },
+    {
+      "t": "narrate",
+      "text": "You take a step back. The dog releases you with its eyes. It is a release. You feel it."
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_bf_hub"
+    }
+  ]
+}

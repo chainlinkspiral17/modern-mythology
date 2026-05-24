@@ -1,0 +1,123 @@
+{
+  "id": "vol7_ch8_dark",
+  "vol": 7,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — The Dark",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol7_lena_bedroom_dark.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol7_rain_on_roof.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "With two of them left in it the apartment was hers again."
+    },
+    {
+      "t": "show",
+      "char": "tem",
+      "expr": "tired",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Lena turned and looked at Tem who was standing by the couch with her wool sweater half-pulled over her head."
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"I'm going to brush my teeth,\" Lena said. \"There's a spare toothbrush in the bathroom in the small drawer. Help yourself.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "tired",
+      "text": "\"Thanks.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"I changed the sheets this afternoon. The bed is — there's room. If you want.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Tem looked at her with the wool sweater bunched at her shoulders and her hair flat from the cap she had pulled off in the kitchen earlier and her face clean of any of the careful management she had been wearing all day."
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "softening",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "warm",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "She lay in the dark with Tem beside her and listened to the rain on the roof and to Tem's breathing slowing as Tem fell asleep. She did not sleep yet."
+    },
+    {
+      "t": "think",
+      "char": "Lena",
+      "text": "She thought about Cale's face when she had been at his door — get going, Lena."
+    },
+    {
+      "t": "think",
+      "char": "Lena",
+      "text": "She thought about Finn at the table saying the danger is that Roy is the small visible end of a very long and not-visible thing, and that thing has just learned our names."
+    },
+    {
+      "t": "think",
+      "char": "Lena",
+      "text": "She thought about Kai's hand on her shoulder."
+    },
+    {
+      "t": "think",
+      "char": "Lena",
+      "text": "She thought about the Estuary 7 stick in the inside pocket of the coat hanging on the hook by the door."
+    },
+    {
+      "t": "think",
+      "char": "Lena",
+      "text": "She thought about how she had not, today, decided about Jorgen, and how she had not, today, gone to the studio, and how the painting was still on the wall of the studio with the one bone-black brushstroke in the upper-left and the rest unchanged."
+    },
+    {
+      "t": "think",
+      "char": "Lena",
+      "text": "She thought about Tem's hand on her wrist on Thursday morning at the cabin."
+    },
+    {
+      "t": "narrate",
+      "text": "She turned on her side, away from Tem, and closed her eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "The rain on the roof did not change."
+    },
+    {
+      "t": "narrate",
+      "text": "She slept."
+    },
+    {
+      "t": "flag",
+      "key": "vol7_ch7_complete",
+      "val": true
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

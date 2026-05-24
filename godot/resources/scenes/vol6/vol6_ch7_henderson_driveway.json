@@ -1,0 +1,255 @@
+{
+  "id": "vol6_ch7_henderson_driveway",
+  "vol": 6,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — The First Part Is Done",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_henderson_driveway_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The First Part Is Done",
+      "sub": "Saturday — 22:14 — Henderson House",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben walks Jesse to the front porch."
+    },
+    {
+      "t": "narrate",
+      "text": "They sit on the steps."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "He's going to be okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "He's going to be — Jess. He's going to need a lot. But yeah. The first part is done. The first part is the worst part. The rest is just work.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "You sure.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I am, Jess. I am sure.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Why are you sure.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben thinks about it."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Because he came up the stairs by himself. Because he sat at the table. Because he asked your mom for pot roast. Those are the things that are not the eye. Those are him. He had enough of him to come up. The rest is — the rest is what the help does.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse exhales."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I love him, Ben.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I know, Jess.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I love my dad.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse cries, briefly, on the steps."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben puts an arm around his shoulders. The arm stays for maybe forty seconds. Then Ben takes it back. Jesse wipes his face on the sleeve of the button-down he is wearing tonight, the one Eileen had told him to put on for dinner."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Get some sleep, Jess. Tomorrow's the courthouse for Sam. We're not all going. But she's going to need texts. We're on text duty.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I'll text her in the morning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Ben.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Thank you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Jess.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben gets up. He walks to his truck."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "In the truck, before he starts it, his phone buzzes."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "ben. my grandmother fell down the stairs. she's at the hospital. broken hip. she's going to be okay. i'm at the er with her now. you don't have to come. i just wanted to tell you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben reads the message."
+    },
+    {
+      "t": "narrate",
+      "text": "He reads it twice."
+    },
+    {
+      "t": "narrate",
+      "text": "He starts the truck."
+    },
+    {
+      "t": "narrate",
+      "text": "He drives, not home, but to the hospital — the one on the New Auburn side of the highway, twenty-three minutes away — because Ben is the kind of person who is not, when one of his people is at an emergency room, going to wait to be invited."
+    },
+    {
+      "t": "narrate",
+      "text": "He texts back, at the first red light:"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "on my way. don't argue.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya does not, in fact, argue."
+    },
+    {
+      "t": "narrate",
+      "text": "The reply comes in eight seconds:"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "ok. third floor. waiting room. thank you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch7_hospital"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "vol1_link_q_shuttle",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_shuttle_bench.jpg"
+    },
+    {
+      "t": "show",
+      "char": "trenchcoat",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"I'm waiting for the shuttle, yes. The Shillelagh comes through here once and then doesn't.\""
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"It picks you up from the place you have agreed to be picked up from. It puts you down somewhere you have not agreed to anything about. Most people get on it the second time.\""
+    },
+    {
+      "t": "think",
+      "char": null,
+      "text": "You consider asking what the second time is. You do not."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_outside_hub"
+    }
+  ]
+}

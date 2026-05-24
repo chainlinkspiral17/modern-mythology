@@ -1,0 +1,132 @@
+{
+  "id": "vol6_ch4_sam_list",
+  "vol": 6,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Ch 4 — Wednesday List",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_sam_bedroom_storm.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam has been awake since five-fifty-two. She is at her desk now, in her pajamas, with the lamp on against the grey of the storm. She has in front of her a notebook she bought at the Kwik Stop last night on her way home — one of the small cheap spiral-bound ones they stock for high-school kids, ninety-nine cents, lined pages, stapled on the short edge. She has not, until this summer, been a person who kept a notebook."
+    },
+    {
+      "t": "narrate",
+      "text": "She is making a list. The list has a small header at the top in block capitals: WEDNESDAY LIST."
+    },
+    {
+      "t": "narrate",
+      "text": "1. Do not call dad during the day unless he calls first. If he calls first, answer on the third ring."
+    },
+    {
+      "t": "narrate",
+      "text": "2. Do not go to the Gas & Go. Do not drive past the Gas & Go. Take the alternate route to Cosmic Comics if I go there."
+    },
+    {
+      "t": "narrate",
+      "text": "3. Do not contact Maya during her shift unless she contacts me first."
+    },
+    {
+      "t": "narrate",
+      "text": "4. If sedan shows up at Kwik Stop during my shift, do not acknowledge."
+    },
+    {
+      "t": "narrate",
+      "text": "5. Eat lunch. Do not skip it."
+    },
+    {
+      "t": "narrate",
+      "text": "6. If dad asks about last night's thunder, say I slept through it."
+    },
+    {
+      "t": "narrate",
+      "text": "7. Remember that whatever F.T. is, I am, right now, being watched by someone who wants to help. It is okay to let myself be watched."
+    },
+    {
+      "t": "narrate",
+      "text": "8. Write down everything dad says today. Every sentence. Even the boring ones. Patterns are in the boring."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at the list. She crosses out item 3. She rewrites it: If Maya contacts me, answer in under five minutes. If Maya does not contact me, do not worry — she is working."
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at the list again. She adds item 9: Breathe."
+    },
+    {
+      "t": "narrate",
+      "text": "She adds item 10: It is Wednesday. Diego has been missing for four days. I am going to find him. I do not need to find him today."
+    },
+    {
+      "t": "narrate",
+      "text": "She closes the notebook. She slides it between the mattress and the box spring."
+    },
+    {
+      "t": "narrate",
+      "text": "She stands. She goes to the window. The rain is hitting the window hard. The cul-de-sac below is running with a thin sheet of water that is not, quite, flooding — the grid's quiet efficiency holding, as advertised — but that is, for the first time in Sam's memory, visible as a sheet, continuous, catching the overhead streetlight in a long rippling silver that extends across all three driveways opposite and down toward the storm drain at the bend."
+    },
+    {
+      "t": "narrate",
+      "text": "In the silver, for a single instant, she sees — she thinks she sees — a reflection that is not the lamp in her own window. Not her window at all. A different window. A different lamp. A different face."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "surprised",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "She blinks. The face is gone. It had been, she realizes with a small slow settling-in, a face she half-recognized. An older woman. Dark hair going silver. Kind eyes. A face that was not, in any way Sam could articulate, frightening."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "That was my grandmother."
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother on her mother's side had died in 2019."
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam stands at the window for another forty-five seconds. The face does not reappear. The rain keeps coming down. She turns away. She goes to the closet. She gets dressed for work."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch4_miller_office"
+    }
+  ]
+}

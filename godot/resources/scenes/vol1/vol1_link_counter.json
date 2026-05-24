@@ -1,0 +1,33 @@
+{
+  "id": "vol1_link_counter",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "The Missing Link — the counter",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "You take a stool at the counter. The vinyl is cracked in the way vinyl is always cracked in places like this. The stool spins a half-turn with no effort and stops itself, pointed exactly at the swinging door to the kitchen."
+    },
+    {
+      "t": "narrate",
+      "text": "After a moment the door swings open and an arm comes through and sets a mug down in front of you. The arm withdraws. The door swings shut."
+    },
+    {
+      "t": "narrate",
+      "text": "The mug is white, chipped at the rim, and warm against the pad of your finger when you check. The coffee inside is the exact color you would have asked for if you had been asked."
+    },
+    {
+      "t": "narrate",
+      "text": "A second mug appears, by the same method, a foot to your left. Empty. Right side up. Waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "You drink. The coffee is very good."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_hub"
+    }
+  ]
+}

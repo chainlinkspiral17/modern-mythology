@@ -1,0 +1,120 @@
+{
+  "id": "vol5_ch0_frasier",
+  "vol": 5,
+  "chapter": "0",
+  "type": "chapter",
+  "title": "Ch 0 — Frasier Temple",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "The bell over the kitchen door — the back door, the one customers were not supposed to use — did not jingle. It jangled. A discordant chord slicing through the hum, snapping the fluorescents back into focus."
+    },
+    {
+      "t": "show",
+      "char": "frasier",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Frasier Temple did not so much walk in as coalesce from the shadows of the kitchen alcove. Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable. Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both."
+    },
+    {
+      "t": "narrate",
+      "text": "His gaze landed on John. The gaze had weight. The gaze had been waiting."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "expr": "neutral",
+      "text": "\"Still chasing shadows, Johnny?\""
+    },
+    {
+      "t": "narrate",
+      "text": "The voice was a gravelly rumble, sandpaper on velvet. He pulled up a stool and straddled it backward and instantly commanded the space, as if he had built the diner around himself by sitting in it."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "expr": "amused",
+      "text": "\"Or are the shadows finally chasing you?\""
+    },
+    {
+      "t": "show",
+      "char": "john",
+      "expr": "tired",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "John",
+      "expr": "tired",
+      "text": "\"Just trying to make it make sense, Joneses.\""
+    },
+    {
+      "t": "think",
+      "char": "John",
+      "text": "The old refrain tasted like ash, the way it always did. Keeping up with Frasier Temple was like trying to map a hurricane with a crayon. You did the work knowing the work would be wrong. The wrongness was part of the point."
+    },
+    {
+      "t": "narrate",
+      "text": "Frasier laughed, a sound like rocks tumbling in a metal drum."
+    },
+    {
+      "t": "narrate",
+      "text": "He tapped the cover of his notebook. Diagrams adorned it that looked suspiciously like circuit boards woven into mandalas."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "expr": "neutral",
+      "text": "\"Sense is overrated. Structure is the illusion. You know that.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He pulled out his phone — or rather, the customized jury-rigged device that served Frasier as a phone, its casing chipped, wires peeking out like frayed nerves, screen glowing with internal light that did not match any of the available wallpapers."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "expr": "amused",
+      "text": "\"The Demons are restless tonight. They feel something coming.\""
+    },
+    {
+      "t": "think",
+      "char": "John",
+      "text": "John knew about the Demons. Everyone in Frasier's orbit eventually knew about the Demons. Frasier called them his humorous electronic imps, digital sprites birthed from code and chaos. Harmless was not the word."
+    },
+    {
+      "t": "say",
+      "char": "John",
+      "expr": "neutral",
+      "text": "\"They talking about the patterns?\""
+    },
+    {
+      "t": "narrate",
+      "text": "He gestured vaguely toward the town outside, the river, the divide between Texas and Louisiana, sense and nonsense."
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "expr": "amused",
+      "text": "\"The patterns are shifting, Johnny. The walls are getting thin.\""
+    },
+    {
+      "t": "say",
+      "char": "Frasier",
+      "expr": "amused",
+      "text": "\"You feel it, don't you. Don't lie. You feel it in your teeth. They say the Architect is getting sloppy. Or maybe — \" he grinned, a flash of brilliance and madness, \"— maybe the decay is the design.\""
+    },
+    {
+      "t": "think",
+      "char": "John",
+      "text": "He thought about the man in booth six. The walls are thin. Almost the same words. He did not mention it. He had a working theory that mentioning a thing to Frasier Temple summoned more of that thing into the world."
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_ch0_model_city"
+    }
+  ]
+}

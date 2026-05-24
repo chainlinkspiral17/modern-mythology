@@ -1,0 +1,333 @@
+{
+  "id": "vol6_ch4_pit_stop",
+  "vol": 6,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Ch 4 — The Booth",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_pit_stop_diner.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse comes in at 14:22 for his three-PM shift. He is early. He is early because he has been asked to be."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is at the back office door when Jesse comes through the kitchen."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Hey."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Hey. You asked me to come early."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah. Three things. One: the match Saturday got moved to Friday. McClary texted me this morning."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Two: your dad came by this morning. Eleven-fifteen. Bought a coffee. Sat in the back booth by the window for twenty minutes. Did not order food. Did not take his phone out. Just — sat."
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "surprised",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "My dad was here."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Why."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I don't know. He didn't say anything to anybody. He looked — Jess. He looked like a guy trying to decide whether to come inside the office and talk to me, and deciding not to, and sitting out in the booth long enough that I'd know he'd been there."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Did he see you."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Through the pass-through, maybe. He was sitting at an angle that could see the grill. I don't know if he looked."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse exhales. He sits down, heavily, on the milk crate by the walk-in."
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "nervous",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "What's three."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Three. Sam Miller filed a missing-persons report on Diego this morning. From the Kwik Stop. It was deleted from the system within forty minutes. A New Auburn detective came in to tell her. He gave her a fake-name card. He told her not to use the PSA for this."
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse is quiet for a long moment."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "How do you know this."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Because the detective's nephew comes here after his high school practice every afternoon. He came in at two and told me his uncle had had a weird morning. The nephew is sixteen. He doesn't know what he said. I know what he said."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Jesus, Ben."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "What are we going to do."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "We are going to go ahead with Saturday morning breakfast with your mom, as planned. We are going to cover Friday night's match with the caveat that I may, depending on how it's shaping up, not go in the ring this time. And we are going to, if your dad shows up in the booth again, let him sit."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Let him sit."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah. He's trying to decide something, Jess. Let him. Don't pressure him. Don't tell him we know. If he decides on his own, it's going to be cleaner."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Ben."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "How are you so calm about this."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben considers the question."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Because I've been watching cars for three months, Jess. It's the same skill. Nobody moves fast unless they're supposed to move fast. Most things resolve themselves if you let them breathe."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "That's terrifying."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Okay."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse stands. He puts his apron on. He goes to his station."
+    },
+    {
+      "t": "narrate",
+      "text": "At 14:34, twelve minutes into Jesse's shift, the bell over the diner door chimes."
+    },
+    {
+      "t": "show",
+      "char": "henderson",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Mr. Henderson, Jesse's father, walks in. He does not look at the counter. He walks directly to the back booth by the window. He sits. He does not take out his phone. He does not order. He sits."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, at the kitchen pass-through, sees him. Ben, through the office door, sees him. Jesse looks at Ben. Ben nods, once. Jesse goes back to work."
+    },
+    {
+      "t": "narrate",
+      "text": "Mr. Henderson sits in the booth for forty-one minutes. He does not, for the forty-one minutes, move."
+    },
+    {
+      "t": "narrate",
+      "text": "At 15:15 he gets up. He leaves a ten-dollar bill on the table for the coffee he did not order. He walks out. The bell chimes."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben comes out of the office. He picks up the ten-dollar bill. On the back of it, in pencil, in handwriting neither Ben nor Jesse recognizes but that Ben will, the following morning, compare against the handwritten dedication page of a photograph album Jesse's mother will show him, the pencil has written: The red light lies. I am sorry. I will come back when I can."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "surprised",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben shows the bill to Jesse through the pass-through. Jesse reads it."
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "sad",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse puts his hand on the counter. He does not cry. He breathes. He breathes for perhaps nine seconds."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "He's trying."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Jess."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "He's — he's fighting it."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Ben."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I need you to hold on to that bill for me."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Jess. I've got it."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben folds the bill. He puts it in the front pocket of his apron. The grill hisses. Jesse wipes his eyes with the back of his wrist."
+    },
+    {
+      "t": "narrate",
+      "text": "A customer at the counter asks for a refill on her coffee. Jesse pours it. Jesse smiles at her, the warm professional smile he has been using at the Pit Stop since he was fifteen. The customer smiles back. The customer does not know. The rain keeps coming."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch4_maya_floor"
+    }
+  ]
+}

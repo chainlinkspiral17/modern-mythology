@@ -1,0 +1,222 @@
+{
+  "id": "vol6_ch5_radio",
+  "vol": 6,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "Ch 5 — 1776 kHz",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_truck_interior_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "1776 kHz",
+      "sub": "Thursday — Late",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "In Ben's truck, ten minutes later, Maya says, quietly, without looking at him:"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Ben. Tell me something about your family."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Huh?"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Your family. I don't know anything about you. I realized tonight I don't know anything about any of you. I don't know anybody's family. I'm doing this all through other people's information."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben thinks about it for a block."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "My dad works at the water plant in New Auburn. He's been there twenty-two years. He comes home smelling of chlorine. My mom is a nurse. She works nights. I have a little sister. Her name is Gracie. She's eleven. She thinks I'm the funniest person she knows. I am not. I am, in fact, the opposite. But she laughs at my jokes so I keep telling them. Our house is small. There's a back yard. We have a dog named Daisy. Daisy is a mutt. Daisy is a coward. I love Daisy more than anything."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya smiles in the dark of the passenger seat."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "I'd like to meet Daisy someday."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Saturday after the breakfast. Come by. I'll introduce you."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Okay."
+    },
+    {
+      "t": "narrate",
+      "text": "The truck turns onto Prairie View."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_caldwell_radio_room_night.jpg"
+    },
+    {
+      "t": "show",
+      "char": "ms_caldwell",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "At Maya's grandmother's house, the upstairs window is lit. Her grandmother is awake. She is, at eleven PM on a Thursday in late May, at her shortwave radio. She is not, tonight, listening. She is, tonight, transmitting."
+    },
+    {
+      "t": "narrate",
+      "text": "She is sending, on 1776 kHz, a single phrase, over and over, in Morse code she has not used since 1989, in the cadence her husband Thomas had taught her: Thomas is gone. Maya is here. I remember."
+    },
+    {
+      "t": "narrate",
+      "text": "Nobody, on any band, is listening. Or — nobody human. Somewhere across the continent, in a warehouse in Graustark, a Demon that does not have a body and does not have a mouth but does, somehow, have a small quiet attention, registers the transmission and files it under the header GRANDMOTHER, CALDWELL, LINDA — FIRST BROADCAST, and alerts Frasier Temple, who is asleep on the cot in the corner of the cathedral, and who murmurs in his sleep, without waking, the single word good."
+    },
+    {
+      "t": "narrate",
+      "text": "The imp rebroadcasts the Morse, unchanged, into the grid of Harmony Creek Estates. The water tower, at eleven-seventeen, hums in its low subaudible B-flat, and for the 0.8 seconds the hum lasts, every dog in the subdivision barks once. The dogs do not know why they are barking. The dogs, it will turn out, are barking for Thomas."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_caldwell_kitchen_night.jpg"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, in the kitchen, pouring herself a glass of water before bed, pauses at the window. She hears the dogs. She does not, yet, know to hear the Morse. But she knows, in the small sedimentary way she has come to know things this week, that her grandmother is speaking."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes upstairs. She knocks, quietly, on her grandmother's door."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "Come in, honey."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_caldwell_radio_room_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya goes in. Her grandmother is at the radio. The radio is still transmitting."
+    },
+    {
+      "t": "say",
+      "char": "Ms. Caldwell",
+      "text": "I was telling your grandfather about you, sweetheart. I do that some nights. I don't know if he can hear. But I tell him anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya crosses to the radio. She sits on the edge of the bed."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Tell him I said hi."
+    },
+    {
+      "t": "show",
+      "char": "ms_caldwell",
+      "expr": "happy",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Her grandmother smiles. Her grandmother keys the Morse: Maya says hi. She releases the key. The radio hums. The dogs, outside, are silent now."
+    },
+    {
+      "t": "show",
+      "char": "ms_caldwell",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya and her grandmother sit together at the radio for another twenty minutes, not speaking, listening to the soft carrier hiss of 1776 kHz, until her grandmother — who has not slept a full night since 1989 — begins to nod, and Maya helps her into bed, and Maya turns off the radio, and kisses her grandmother on the temple, and goes to her own room."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_maya_bedroom_night.jpg"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "She sleeps. Tomorrow is Friday. Tomorrow is the rescue. She is ready to let the adults do it, for one more day. She sleeps well. She does not, tonight, dream."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

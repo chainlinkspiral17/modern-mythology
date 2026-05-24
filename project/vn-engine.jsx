@@ -3,7 +3,13 @@
 
 // ── Audio Manager ─────────────────────────────────────────────────────────
 class AudioMgr {
-  constructor() { this.bgm = null; this.sfx = []; this.bgmVol = 0.7; this.masterVol = 0.8; }
+  constructor() {
+    this.bgm = null;
+    this.bgmVol = 0.65;
+    this.sfxVol = 0.80;
+    this.voiceVol = 0.80;
+    this.activeVoice = null;
+  }
   playBgm(src) {
     if (!src) return;
     if (this.bgm && !this.bgm.paused) {
@@ -12,11 +18,32 @@ class AudioMgr {
     } else { this._startBgm(src); }
   }
   _startBgm(src) {
+    // Record that this track has been heard in-game — surfaces it in the
+    // Music Room and makes it eligible for the next-track queue.
+    try { window.MM_MUSIC_HEARD && window.MM_MUSIC_HEARD.mark(src); } catch {}
     const a = new Audio(src); a._src = src;
-    a.loop = true; a.volume = 0;
+    // Don't loop catalog tracks — chain to the next heard track instead.
+    // Falls back to looping if no queue candidate exists (see _onBgmEnded).
+    a.loop = false; a.volume = 0;
+    a.addEventListener('ended', () => this._onBgmEnded(src));
     a.play().catch(() => {});
     this.bgm = a;
-    this._fadeIn(a, this.bgmVol * this.masterVol);
+    this._fadeIn(a, this.bgmVol);
+  }
+  _onBgmEnded(endedSrc) {
+    // Bail if the user has switched away from this track in the meantime
+    // (e.g. a scene fired a new `bgm` node before this one finished).
+    if (!this.bgm || this.bgm._src !== endedSrc) return;
+    const next = (typeof window !== 'undefined' && window.MM_MUSIC_pickNext)
+      ? window.MM_MUSIC_pickNext(endedSrc) : null;
+    if (next) {
+      // Track ended cleanly; no need to fade out — just hand off to the next.
+      this.bgm = null;
+      this._startBgm(next);
+    } else if (this.bgm) {
+      // No other heard track to roll over to — loop the current one.
+      try { this.bgm.currentTime = 0; this.bgm.play().catch(() => {}); } catch {}
+    }
   }
   fadeBgm(cb) {
     if (!this.bgm) { cb && cb(); return; }
@@ -25,11 +52,22 @@ class AudioMgr {
   stopBgm() { this.fadeBgm(); this.bgm = null; }
   playSfx(src) {
     if (!src) return;
-    const a = new Audio(src); a.volume = this.masterVol; a.play().catch(() => {});
+    const a = new Audio(src); a.volume = this.sfxVol; a.play().catch(() => {});
   }
-  setVolumes(master, bgm) {
-    this.masterVol = master; this.bgmVol = bgm;
-    if (this.bgm) this.bgm.volume = bgm * master;
+  playVoice(src) {
+    if (!src) return null;
+    if (this.activeVoice) { try { this.activeVoice.pause(); } catch {} }
+    const a = new Audio(src); a.volume = this.voiceVol; a.play().catch(() => {});
+    this.activeVoice = a;
+    return a;
+  }
+  syncFromSettings(s) {
+    if (!s) return;
+    if (typeof s.bgmVol   === 'number') this.bgmVol   = s.bgmVol;
+    if (typeof s.sfxVol   === 'number') this.sfxVol   = s.sfxVol;
+    if (typeof s.voiceVol === 'number') this.voiceVol = s.voiceVol;
+    if (this.bgm) this.bgm.volume = this.bgmVol;
+    if (this.activeVoice) this.activeVoice.volume = this.voiceVol;
   }
   _fadeIn(a, target, ms = 600) {
     const step = target / (ms / 40);
@@ -47,6 +85,12 @@ class AudioMgr {
   }
 }
 const audioMgr = new AudioMgr();
+
+// Sync with SettingsStore (lives in vn-settings.jsx, loaded before this script)
+if (typeof SettingsStore !== 'undefined') {
+  audioMgr.syncFromSettings(SettingsStore.get());
+  SettingsStore.subscribe(s => audioMgr.syncFromSettings(s));
+}
 
 // ── Save System ───────────────────────────────────────────────────────────
 const SAVE_KEY = 'mm_saves';
@@ -68,22 +112,42 @@ const initState = (vol) => ({
   skills: { empathy: 3, logic: 3, composure: 2, rhetoric: 2, signal: 55 },
   relationships: {}, flags: {}, inventory: [],
   log: [], overlay: null,
-  textSpeed: 28, masterVol: 0.8, bgmVol: 0.7, fontSize: 18,
+  // Display settings pulled from SettingsStore (synced via subscription in GameScreen)
+  textSpeed: (typeof SettingsStore !== 'undefined' ? SettingsStore.derived().textSpeedMs : 28),
+  fontSize:  (typeof SettingsStore !== 'undefined' ? SettingsStore.derived().textSizePx  : 18),
+  textScale: (typeof SettingsStore !== 'undefined' ? SettingsStore.derived().textSizeScale : 1.0),
   stats: { heat: 7, rep: 3, cash: 43 },
   gameOver: false, endScene: false,
   currentScene: null,
-  videoScene: null, // active interactive video node
+  videoScene: null,
+  interlude: null,  // { text, sub, duration }
+  cgOverlay: null,  // { src, caption }
 });
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'SET_TEXT': return { ...state, displayText: action.text, fullText: action.text, isTyping: true, waitingForInput: false };
+    case 'SET_TEXT': return { 
+      ...state, 
+      displayText: action.text, 
+      fullText: action.text, 
+      isTyping: true, 
+      waitingForInput: false,
+      speaker: action.speaker !== undefined ? action.speaker : state.speaker,
+      speakerRole: action.role !== undefined ? action.role : state.speakerRole,
+      textType: action.textType || state.textType,
+    };
     case 'FINISH_TYPING': return { ...state, isTyping: false, waitingForInput: true };
     case 'SKIP_TYPING': return { ...state, displayText: state.fullText, isTyping: false, waitingForInput: true };
     case 'SET_SPEAKER': return { ...state, speaker: action.speaker, speakerRole: action.role || null, textType: action.textType || 'dialogue' };
     case 'SET_CHOICES': return { ...state, choices: action.choices, waitingForInput: false, isTyping: false };
     case 'CLEAR_CHOICES': return { ...state, choices: null };
     case 'SHOW_CHAR': return { ...state, characters: { ...state.characters, [action.pos]: { name: action.name, expr: action.expr } } };
+    case 'SHOW_AND_ADVANCE': return { ...state, characters: { ...state.characters, [action.pos]: { name: action.name, expr: action.expr } }, nodeIndex: state.nodeIndex + 1 };
+    case 'HIDE_AND_ADVANCE': return { ...state, characters: { ...state.characters, [action.pos]: null }, nodeIndex: state.nodeIndex + 1 };
+    case 'BG_AND_ADVANCE': return { ...state, background: action.src, nodeIndex: state.nodeIndex + 1 };
+    case 'BGM_AND_ADVANCE': return { ...state, bgm: action.src, nodeIndex: state.nodeIndex + 1 };
+    case 'FLAG_AND_ADVANCE': return { ...state, flags: { ...state.flags, [action.key]: action.val }, nodeIndex: state.nodeIndex + 1 };
+    case 'NOOP_AND_ADVANCE': return { ...state, nodeIndex: state.nodeIndex + 1 };
     case 'HIDE_CHAR': return { ...state, characters: { ...state.characters, [action.pos]: null } };
     case 'HIDE_ALL': return { ...state, characters: { left: null, center: null, right: null } };
     case 'SET_BG': return { ...state, background: action.src };
@@ -92,18 +156,37 @@ function reducer(state, action) {
     case 'ADD_LOG': return { ...state, log: [...state.log, action.entry].slice(-80) };
     case 'SET_OVERLAY': return { ...state, overlay: action.overlay };
     case 'SET_NODE': return { ...state, nodeIndex: action.idx, sceneId: action.sceneId || state.sceneId };
-    case 'SET_SCENE': return { ...state, currentScene: action.scene, nodeIndex: 0, sceneId: action.scene?.id };
-    case 'UPDATE_SPEED': return { ...state, textSpeed: action.val };
-    case 'UPDATE_FONTSIZE': return { ...state, fontSize: action.val };
-    case 'UPDATE_VOL': {
-      const s = { ...state, masterVol: action.master ?? state.masterVol, bgmVol: action.bgm ?? state.bgmVol };
-      audioMgr.setVolumes(s.masterVol, s.bgmVol);
-      return s;
+    case 'SET_SCENE': return { ...state, currentScene: action.scene, nodeIndex: 0, sceneId: action.scene?.id, waitingForInput: false, isTyping: false, dialogueText: '', speaker: null, choices: null, endScene: false };
+    case 'UPDATE_SETTINGS': {
+      // Sync display settings into game state when the SettingsStore changes
+      const next = { ...state };
+      if (typeof action.textSpeed === 'number') next.textSpeed = action.textSpeed;
+      if (typeof action.fontSize  === 'number') next.fontSize  = action.fontSize;
+      if (typeof action.textScale === 'number') next.textScale = action.textScale;
+      return next;
     }
     case 'LOAD_SAVE': return { ...action.save, overlay: null };
-    case 'END_SCENE': return { ...state, endScene: true, choices: null, isTyping: false, waitingForInput: false };
+    case 'ADVANCE_REQUEST': {
+      // Block advance when overlays or auto-processing is active
+      if (state.interlude || state.cgOverlay || state.videoScene) return state;
+      // Only process when genuinely waiting for player input
+      if (state.isTyping) return { ...state, displayText: state.fullText, isTyping: false, waitingForInput: true };
+      if (!state.waitingForInput || state.choices || state.endScene) return state;
+      const advScene = state.currentScene;
+      if (!advScene) return state;
+      const advNextIdx = state.nodeIndex + 1;
+      if (advNextIdx >= advScene.nodes.length) return { ...state, endScene: true, choices: null, isTyping: false, waitingForInput: false };
+      // Clear waitingForInput immediately so rapid clicks don't double-advance
+      return { ...state, nodeIndex: advNextIdx, waitingForInput: false, displayText: '', isTyping: false };
+    }
     case 'SET_VIDEO_SCENE': return { ...state, videoScene: action.node, choices: null, isTyping: false, waitingForInput: false };
     case 'CLEAR_VIDEO_SCENE': return { ...state, videoScene: null };
+    case 'SET_INTERLUDE': return { ...state, interlude: { text: action.text, sub: action.sub, duration: action.duration || 3000 }, choices: null, isTyping: false, waitingForInput: false };
+    case 'CLEAR_INTERLUDE': return { ...state, interlude: null };
+    case 'FINISH_INTERLUDE': return { ...state, interlude: null, nodeIndex: state.nodeIndex + 1, waitingForInput: false };
+    case 'SET_CG': return { ...state, cgOverlay: { src: action.src, caption: action.caption }, waitingForInput: false };
+    case 'CLEAR_CG': return { ...state, cgOverlay: null, waitingForInput: true };
+    case 'FINISH_CG': return { ...state, cgOverlay: null, nodeIndex: state.nodeIndex + 1, waitingForInput: false };
     default: return state;
   }
 }
@@ -169,6 +252,7 @@ function CharSprite({ name, expr, pos, skin }) {
     background: skin.charGradient,
     clipPath: 'polygon(37% 0%,63% 0%,68% 8%,74% 18%,76% 32%,72% 45%,64% 52%,88% 56%,96% 100%,4% 100%,12% 56%,36% 52%,28% 45%,24% 32%,26% 18%,32% 8%)',
     filter: `drop-shadow(0 0 40px ${skin.glowColor})`,
+    pointerEvents: 'none',
     ...posStyle,
   };
 
@@ -176,6 +260,7 @@ function CharSprite({ name, expr, pos, skin }) {
     position: 'absolute', bottom: 0, height: 440,
     objectFit: 'contain', objectPosition: 'bottom center',
     filter: `drop-shadow(0 0 30px ${skin.glowColor})`,
+    pointerEvents: 'none',
     ...posStyle,
   };
 
@@ -229,7 +314,7 @@ function HudBar({ vol, skin, state, onOverlay }) {
   };
 
   return (
-    <div style={hudStyle}>
+    <div style={hudStyle} onClick={e => e.stopPropagation()} data-no-advance>
       <span>{v ? `${v.title} · ${v.subtitle}` : `Vol. ${vol}`}</span>
       <div style={{display:'flex',gap:16,alignItems:'center'}}>
         {h.skills && h.skills.map((sk, i) => (
@@ -286,8 +371,8 @@ function DialogueBoxStandard({ state, skin, onAdvance, onChoice, textSpeed, onTy
       borderTop:`1px solid var(--dlg-border)`,
       minHeight:'var(--dlg-min-h)',padding:'var(--dlg-pad)',
       cursor: (waitingForInput || isTyping) && !choices && !endScene ? 'pointer' : 'default',
-    }} onClick={() => { if (!choices && !endScene) onAdvance(); }}>
-      <div style={{position:'absolute',top:0,left:44,right:44,height:1,background:'var(--dlg-rule)'}}></div>
+      zIndex:8,
+    }} onClick={e => { e.stopPropagation(); if (!choices && !endScene) onAdvance(); }}>
       {speaker && !isNarration && (
         <div style={{
           fontFamily:'var(--spk-font)',fontSize:'var(--spk-size)',
@@ -296,10 +381,10 @@ function DialogueBoxStandard({ state, skin, onAdvance, onChoice, textSpeed, onTy
         }}>{speaker}</div>
       )}
       <div style={{
-        fontFamily:'var(--txt-font)',fontSize:'var(--txt-size)',
+        fontFamily:'var(--txt-font)',fontSize:'calc(var(--txt-size) * var(--txt-scale, 1))',
         color:'var(--txt-color)',fontStyle: isThought ? 'italic' : 'var(--txt-style)',
         fontWeight:'var(--txt-weight)',lineHeight:'var(--txt-lh)',
-        maxWidth:780,opacity: isThought ? 0.75 : 1,
+        maxWidth:'min(920px, 100%)',opacity: isThought ? 0.75 : 1,
       }}>
         {isThought && '( '}
         <Typewriter text={displayText} speed={textSpeed} skin={skin}
@@ -315,7 +400,7 @@ function DialogueBoxStandard({ state, skin, onAdvance, onChoice, textSpeed, onTy
                 display:'flex',alignItems:'center',gap:12,
                 padding:'8px 16px',cursor:'pointer',
                 border:'1px solid var(--ch-border)',background:'var(--ch-bg)',
-                fontFamily:'var(--ch-font)',fontSize:'var(--ch-size)',
+                fontFamily:'var(--ch-font)',fontSize:'calc(var(--ch-size) * var(--txt-scale, 1))',
                 color: c.locked ? 'rgba(128,128,128,0.4)' : 'var(--ch-color)',
                 transition:'all 0.15s',
               }}
@@ -348,8 +433,9 @@ function DialogueBoxPaper({ state, skin, onAdvance, onChoice, textSpeed, onTypin
       background:'var(--dlg-bg)',minHeight:'var(--dlg-min-h)',
       transform:'skewY(-0.3deg)',transformOrigin:'left',
       cursor: (waitingForInput || isTyping) && !choices && !endScene ? 'pointer' : 'default',
-    }} onClick={() => { if (!choices && !endScene) onAdvance(); }}>
-      {/* Tape strips */}
+      zIndex:8,
+    }} onClick={e => { e.stopPropagation(); if (!choices && !endScene) onAdvance(); }}>
+      {/* Tape strips */}}
       {[{left:'60px',rot:'-1.5deg'},{right:'120px',rot:'2deg'}].map((t,i)=>(
         <div key={i} style={{
           position:'absolute',top:-11,width:76,height:22,
@@ -366,7 +452,7 @@ function DialogueBoxPaper({ state, skin, onAdvance, onChoice, textSpeed, onTypin
           }}>{speaker}</div>
         )}
         <div style={{
-          fontFamily:'var(--txt-font)',fontSize:'var(--txt-size)',
+          fontFamily:'var(--txt-font)',fontSize:'calc(var(--txt-size) * var(--txt-scale, 1))',
           color:'var(--txt-color)',lineHeight:'var(--txt-lh)',maxWidth:700,
         }}>
           <Typewriter text={displayText} speed={textSpeed} skin={skin} skip={!isTyping} onDone={onTypingDone} />
@@ -376,7 +462,7 @@ function DialogueBoxPaper({ state, skin, onAdvance, onChoice, textSpeed, onTypin
             {choices.map((c,i)=>(
               <div key={i} onClick={e=>{e.stopPropagation();onChoice(i);}} style={{
                 padding:'6px 14px',background:'var(--ch-bg)',color:'var(--ch-color)',
-                fontFamily:'var(--ch-font)',fontSize:'var(--ch-size)',cursor:'pointer',
+                fontFamily:'var(--ch-font)',fontSize:'calc(var(--ch-size) * var(--txt-scale, 1))',cursor:'pointer',
                 letterSpacing:'0.06em',transition:'background 0.15s',
               }}
               onMouseEnter={e=>e.currentTarget.style.background='var(--ch-hbg)'}
@@ -404,7 +490,8 @@ function DialogueBoxTerminal({ state, skin, onAdvance, onChoice, textSpeed, onTy
       background:'var(--dlg-bg)',borderTop:'1px solid var(--dlg-border)',
       minHeight:'var(--dlg-min-h)',padding:'var(--dlg-pad)',
       cursor: (waitingForInput || isTyping) && !choices && !endScene ? 'pointer' : 'default',
-    }} onClick={() => { if (!choices && !endScene) onAdvance(); }}>
+      zIndex:8,
+    }} onClick={e => { e.stopPropagation(); if (!choices && !endScene) onAdvance(); }}>
       <div style={{position:'absolute',top:0,left:0,right:0,height:1,background:'var(--dlg-rule)'}}></div>
       {speaker && (
         <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:10}}>
@@ -413,7 +500,7 @@ function DialogueBoxTerminal({ state, skin, onAdvance, onChoice, textSpeed, onTy
           {speakerRole && <span style={{fontSize:8,border:'1px solid var(--accent2)',padding:'1px 5px',color:'var(--accent2)',opacity:0.7}}>{speakerRole}</span>}
         </div>
       )}
-      <div style={{fontFamily:'var(--txt-font)',fontSize:'var(--txt-size)',color:'var(--txt-color)',lineHeight:'var(--txt-lh)',maxWidth:780}}>
+      <div style={{fontFamily:'var(--txt-font)',fontSize:'calc(var(--txt-size) * var(--txt-scale, 1))',color:'var(--txt-color)',lineHeight:'var(--txt-lh)',maxWidth:'min(920px, 100%)'}}>
         <Typewriter text={displayText} speed={textSpeed} skin={skin} skip={!isTyping} onDone={onTypingDone} />
       </div>
       {choices && (
@@ -422,7 +509,7 @@ function DialogueBoxTerminal({ state, skin, onAdvance, onChoice, textSpeed, onTy
             <div key={i} onClick={e=>{e.stopPropagation();!c.locked&&onChoice(i);}} style={{
               display:'flex',alignItems:'center',gap:10,padding:'6px 12px',
               border:'1px solid var(--ch-border)',background:'var(--ch-bg)',
-              fontFamily:'var(--ch-font)',fontSize:'var(--ch-size)',
+              fontFamily:'var(--ch-font)',fontSize:'calc(var(--ch-size) * var(--txt-scale, 1))',
               color: c.locked ? 'rgba(128,128,128,0.35)' : 'var(--ch-color)',
               cursor: c.locked ? 'not-allowed' : 'pointer',transition:'all 0.15s',
             }}
@@ -448,7 +535,7 @@ function DialogueBoxTerminal({ state, skin, onAdvance, onChoice, textSpeed, onTy
 // ── Overlays ───────────────────────────────────────────────────────────────
 function Backlog({ log, skin, onClose }) {
   return (
-    <div style={{position:'absolute',inset:0,background:'var(--ov-bg)',zIndex:50,overflow:'auto',padding:'40px 60px'}}>
+    <div onClick={e=>e.stopPropagation()} data-no-advance style={{position:'absolute',inset:0,background:'var(--ov-bg)',zIndex:50,overflow:'auto',padding:'40px 60px'}}>
       <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:30}}>
         <span style={{fontFamily:'var(--hud-font)',fontSize:10,letterSpacing:'0.25em',color:'var(--accent)',textTransform:'uppercase'}}>Dialogue Log</span>
         <span onClick={onClose} style={{cursor:'pointer',fontFamily:'var(--hud-font)',fontSize:9,color:'var(--nav-color)',letterSpacing:'0.15em',textTransform:'uppercase',border:'1px solid var(--ov-border)',padding:'4px 10px'}}>Close</span>
@@ -457,41 +544,14 @@ function Backlog({ log, skin, onClose }) {
       {[...log].reverse().map((entry,i)=>(
         <div key={i} style={{marginBottom:18,opacity: i===0?1:0.65-i*0.02,transition:'opacity 0.2s'}}>
           {entry.speaker && <div style={{fontFamily:'var(--spk-font)',fontSize:'var(--spk-size)',color:'var(--spk-color)',letterSpacing:'var(--spk-tracking)',textTransform:'uppercase',marginBottom:4}}>{entry.speaker}</div>}
-          <div style={{fontFamily:'var(--txt-font)',fontSize:'var(--txt-size)',color:'var(--ov-txt)',lineHeight:'var(--txt-lh)',fontStyle:entry.type==='narration'?'italic':'var(--txt-style)'}}>{entry.text}</div>
+          <div style={{fontFamily:'var(--txt-font)',fontSize:'calc(var(--txt-size) * var(--txt-scale, 1))',color:'var(--ov-txt)',lineHeight:'var(--txt-lh)',fontStyle:entry.type==='narration'?'italic':'var(--txt-style)'}}>{entry.text}</div>
         </div>
       ))}
     </div>
   );
 }
 
-function Settings({ state, dispatch, onClose }) {
-  return (
-    <div style={{position:'absolute',inset:0,background:'var(--ov-bg)',zIndex:50,display:'flex',alignItems:'center',justifyContent:'center'}}>
-      <div style={{width:480,padding:'40px',border:'1px solid var(--ov-border)'}}>
-        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:30}}>
-          <span style={{fontFamily:'var(--hud-font)',fontSize:10,letterSpacing:'0.25em',color:'var(--accent)',textTransform:'uppercase'}}>Settings</span>
-          <span onClick={onClose} style={{cursor:'pointer',fontFamily:'var(--hud-font)',fontSize:9,color:'var(--nav-color)',letterSpacing:'0.15em',textTransform:'uppercase',border:'1px solid var(--ov-border)',padding:'4px 10px'}}>Close</span>
-        </div>
-        {[
-          {label:'Text Speed',key:'textSpeed',min:5,max:80,step:1,val:state.textSpeed,action:(v)=>dispatch({type:'UPDATE_SPEED',val:v})},
-          {label:'Master Volume',key:'masterVol',min:0,max:1,step:0.05,val:state.masterVol,action:(v)=>dispatch({type:'UPDATE_VOL',master:v})},
-          {label:'Music Volume',key:'bgmVol',min:0,max:1,step:0.05,val:state.bgmVol,action:(v)=>dispatch({type:'UPDATE_VOL',bgm:v})},
-          {label:'Font Size',key:'fontSize',min:14,max:24,step:1,val:state.fontSize,action:(v)=>dispatch({type:'UPDATE_FONTSIZE',val:v})},
-        ].map(s=>(
-          <div key={s.key} style={{marginBottom:20}}>
-            <div style={{display:'flex',justifyContent:'space-between',marginBottom:6}}>
-              <span style={{fontFamily:'var(--hud-font)',fontSize:9,letterSpacing:'0.15em',color:'var(--ov-txt)',textTransform:'uppercase',opacity:0.7}}>{s.label}</span>
-              <span style={{fontFamily:'var(--hud-font)',fontSize:9,color:'var(--accent)'}}>{s.key.includes('Vol') ? Math.round(s.val*100)+'%' : s.val}</span>
-            </div>
-            <input type="range" min={s.min} max={s.max} step={s.step} value={s.val}
-              onChange={e=>s.action(parseFloat(e.target.value))}
-              style={{width:'100%',accentColor:'var(--accent)'}} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+// (Settings panel implementation moved to vn-settings.jsx → window.SettingsPanel)
 
 function SaveLoad({ state, dispatch, onClose }) {
   const saves = loadSaves();
@@ -505,7 +565,7 @@ function SaveLoad({ state, dispatch, onClose }) {
   };
   const slots = Array.from({length:6},(_,i)=>i+1).map(s=>({ slot:s, ...(saves.find(sv=>sv.slot===s)||null) }));
   return (
-    <div style={{position:'absolute',inset:0,background:'var(--ov-bg)',zIndex:50,display:'flex',alignItems:'center',justifyContent:'center'}}>
+    <div onClick={e=>e.stopPropagation()} data-no-advance style={{position:'absolute',inset:0,background:'var(--ov-bg)',zIndex:50,display:'flex',alignItems:'center',justifyContent:'center'}}>
       <div style={{width:520,padding:'40px',border:'1px solid var(--ov-border)'}}>
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:28}}>
           <span style={{fontFamily:'var(--hud-font)',fontSize:10,letterSpacing:'0.25em',color:'var(--accent)',textTransform:'uppercase'}}>Save / Load</span>
@@ -530,79 +590,85 @@ function SaveLoad({ state, dispatch, onClose }) {
 }
 
 // ── Scene Runner Hook ──────────────────────────────────────────────────────
+// ── Scene Runner Hook ──────────────────────────────────────────────────────
 function useSceneRunner(state, dispatch) {
+  // Keep a live ref to state so callbacks never capture stale values
+  const stateRef = React.useRef(state);
+  React.useEffect(() => { stateRef.current = state; });
+
   const advance = React.useCallback(() => {
-    if (state.choices) return;
-    if (state.isTyping) { dispatch({ type: 'SKIP_TYPING' }); return; }
-    if (!state.waitingForInput || state.endScene) return;
-    const scene = state.currentScene;
+    const s = stateRef.current;
+    if (s.choices) return;
+    if (s.isTyping) { dispatch({ type: 'SKIP_TYPING' }); return; }
+    if (!s.waitingForInput || s.endScene) return;
+    const scene = s.currentScene;
     if (!scene) return;
-    const nextIdx = state.nodeIndex + 1;
+    const nextIdx = s.nodeIndex + 1;
     if (nextIdx >= scene.nodes.length) { dispatch({ type: 'END_SCENE' }); return; }
     dispatch({ type: 'SET_NODE', idx: nextIdx });
-  }, [state, dispatch]);
+  }, [dispatch]); // only depends on dispatch (stable)
 
   const selectChoice = React.useCallback((idx) => {
-    if (!state.choices) return;
-    const c = state.choices[idx];
+    const s = stateRef.current;
+    if (!s.choices) return;
+    const c = s.choices[idx];
     if (!c || c.locked) return;
     dispatch({ type: 'CLEAR_CHOICES' });
-    const scene = state.currentScene;
+    const scene = s.currentScene;
     if (c.scene) {
       const nextScene = DEMO_SCENES[c.scene];
       if (nextScene) dispatch({ type: 'SET_SCENE', scene: nextScene });
     } else if (c.goto !== undefined) {
       dispatch({ type: 'SET_NODE', idx: c.goto });
     }
-  }, [state, dispatch]);
+  }, [dispatch]);
+
+  // Track last-processed node so StrictMode/effect re-fires can't double-advance
+  const lastProcessedRef = React.useRef({ sceneId: null, idx: -1 });
 
   // Process current node
   React.useEffect(() => {
     const scene = state.currentScene;
-    if (!scene || state.isTyping || state.waitingForInput || state.choices || state.endScene) return;
+    if (!scene || state.isTyping || state.waitingForInput || state.choices || state.endScene || state.interlude || state.cgOverlay || state.videoScene) return;
     const node = scene.nodes[state.nodeIndex];
     if (!node) { dispatch({ type: 'END_SCENE' }); return; }
+    // Guard against double-fire: only process each (scene, idx) once
+    const lp = lastProcessedRef.current;
+    if (lp.sceneId === scene.id && lp.idx === state.nodeIndex) return;
+    lastProcessedRef.current = { sceneId: scene.id, idx: state.nodeIndex };
 
     switch (node.t) {
       case 'narrate':
-        dispatch({ type: 'SET_SPEAKER', speaker: null, textType: 'narration' });
-        dispatch({ type: 'SET_TEXT', text: node.text });
+        dispatch({ type: 'SET_TEXT', text: node.text, speaker: null, textType: 'narration' });
         dispatch({ type: 'ADD_LOG', entry: { speaker: null, text: node.text, type: 'narration' } });
         break;
       case 'say':
-        dispatch({ type: 'SET_SPEAKER', speaker: node.char, role: node.role, textType: 'dialogue' });
-        dispatch({ type: 'SET_TEXT', text: node.text });
+        dispatch({ type: 'SET_TEXT', text: node.text, speaker: node.char, role: node.role, textType: 'dialogue' });
         dispatch({ type: 'ADD_LOG', entry: { speaker: node.char, text: node.text, type: 'dialogue' } });
         break;
       case 'think':
-        dispatch({ type: 'SET_SPEAKER', speaker: node.char, textType: 'thought' });
-        dispatch({ type: 'SET_TEXT', text: node.text });
+        dispatch({ type: 'SET_TEXT', text: node.text, speaker: node.char, textType: 'thought' });
         dispatch({ type: 'ADD_LOG', entry: { speaker: node.char || 'You', text: node.text, type: 'thought' } });
         break;
       case 'show':
-        dispatch({ type: 'SHOW_CHAR', name: node.char, expr: node.expr || 'neutral', pos: node.pos || 'center' });
-        dispatch({ type: 'SET_NODE', idx: state.nodeIndex + 1 });
+        dispatch({ type: 'SHOW_AND_ADVANCE', name: node.char, expr: node.expr || 'neutral', pos: node.pos || 'center' });
         break;
       case 'hide':
-        dispatch({ type: 'HIDE_CHAR', pos: node.pos });
-        dispatch({ type: 'SET_NODE', idx: state.nodeIndex + 1 });
+        dispatch({ type: 'HIDE_AND_ADVANCE', pos: node.pos });
         break;
       case 'bg':
-        dispatch({ type: 'SET_BG', src: node.src });
-        dispatch({ type: 'SET_NODE', idx: state.nodeIndex + 1 });
+        dispatch({ type: 'BG_AND_ADVANCE', src: node.src });
         break;
       case 'bgm':
-        dispatch({ type: 'SET_BGM', src: node.src });
         audioMgr.playBgm(node.src);
-        dispatch({ type: 'SET_NODE', idx: state.nodeIndex + 1 });
+        dispatch({ type: 'BGM_AND_ADVANCE', src: node.src });
         break;
       case 'sfx':
         audioMgr.playSfx(node.src);
-        dispatch({ type: 'SET_NODE', idx: state.nodeIndex + 1 });
+        dispatch({ type: 'NOOP_AND_ADVANCE' });
         break;
       case 'flag':
-        dispatch({ type: 'SET_FLAG', key: node.key, val: node.val });
-        dispatch({ type: 'SET_NODE', idx: state.nodeIndex + 1 });
+        dispatch({ type: 'FLAG_AND_ADVANCE', key: node.key, val: node.val });
         break;
       case 'choice': {
         const opts = node.opts.map(o => {
@@ -619,6 +685,21 @@ function useSceneRunner(state, dispatch) {
       case 'videoscene':
         dispatch({ type: 'SET_VIDEO_SCENE', node });
         break;
+      case 'cg':
+        dispatch({ type: 'SET_CG', src: node.src, caption: node.caption });
+        break;
+      case 'gallery':
+        // Open gallery in new tab, or redirect
+        if (node.newTab !== false) {
+          window.open(`Gallery.html${node.tab ? '#' + node.tab : ''}${node.item ? '?item=' + node.item : ''}`, '_blank');
+        } else {
+          window.location.href = `Gallery.html${node.tab ? '#' + node.tab : ''}`;
+        }
+        dispatch({ type: 'NOOP_AND_ADVANCE' });
+        break;
+      case 'interlude':
+        dispatch({ type: 'SET_INTERLUDE', text: node.text, sub: node.sub, duration: node.duration });
+        break;
       case 'jump': {
         const nextScene = DEMO_SCENES[node.scene];
         if (nextScene) dispatch({ type: 'SET_SCENE', scene: nextScene });
@@ -629,41 +710,194 @@ function useSceneRunner(state, dispatch) {
         dispatch({ type: 'END_SCENE' });
         break;
       default:
-        dispatch({ type: 'SET_NODE', idx: state.nodeIndex + 1 });
+        dispatch({ type: 'NOOP_AND_ADVANCE' });
     }
   }, [state.currentScene, state.nodeIndex, state.isTyping, state.waitingForInput, state.choices, state.endScene]);
 
   return { advance, selectChoice };
 }
 
+// ── Interlude Overlay ──────────────────────────────────────────────────────
+// Full-screen atmospheric text moment — click or auto-advance
+function InterludeOverlay({ interlude, skin, onDone }) {
+  const [visible, setVisible] = React.useState(false);
+  const [leaving, setLeaving] = React.useState(false);
+
+  React.useEffect(() => {
+    const t1 = setTimeout(() => setVisible(true), 80);
+    let t2;
+    if (interlude.duration > 0) {
+      t2 = setTimeout(() => dismiss(), interlude.duration);
+    }
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, [interlude.text]);
+
+  const dismiss = () => {
+    setLeaving(true);
+    setTimeout(onDone, 600);
+  };
+
+  return (
+    <div onClick={dismiss} style={{
+      position: 'absolute', inset: 0, zIndex: 35,
+      background: 'rgba(0,0,0,0.92)',
+      display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center',
+      gap: 20, cursor: 'pointer',
+      opacity: leaving ? 0 : visible ? 1 : 0,
+      transition: leaving ? 'opacity 0.6s ease' : 'opacity 0.8s ease',
+    }}>
+      <div style={{
+        fontFamily: 'var(--txt-font)', fontSize: 22,
+        color: 'var(--txt-color)', fontStyle: 'italic',
+        textAlign: 'center', lineHeight: 1.8,
+        maxWidth: 640, padding: '0 48px',
+        opacity: visible && !leaving ? 1 : 0,
+        transform: visible && !leaving ? 'none' : 'translateY(12px)',
+        transition: 'opacity 1s ease 0.2s, transform 1s ease 0.2s',
+      }}>
+        {interlude.text}
+      </div>
+      {interlude.sub && (
+        <div style={{
+          fontFamily: 'var(--spk-font)', fontSize: 10,
+          color: 'var(--spk-color)', letterSpacing: '0.25em',
+          textTransform: 'uppercase',
+          opacity: visible && !leaving ? 0.6 : 0,
+          transition: 'opacity 1s ease 0.6s',
+        }}>
+          {interlude.sub}
+        </div>
+      )}
+      <div style={{
+        position: 'absolute', bottom: 32,
+        fontFamily: 'var(--hud-font)', fontSize: 8,
+        color: 'var(--nav-color)', letterSpacing: '0.2em',
+        textTransform: 'uppercase', opacity: 0.4,
+        animation: 'vn-pulse 2s ease-in-out infinite',
+      }}>click to continue</div>
+    </div>
+  );
+}
+
+// ── CG Overlay ─────────────────────────────────────────────────────────────
+// Full-screen illustration with caption — click to dismiss
+function CGOverlay({ cgOverlay, skin, onDone }) {
+  const [loaded, setLoaded] = React.useState(false);
+  const [failed, setFailed] = React.useState(false);
+  return (
+    <div onClick={onDone} style={{
+      position: 'absolute', inset: 0, zIndex: 36,
+      background: 'rgba(0,0,0,0.96)',
+      display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center',
+      cursor: 'pointer',
+    }}>
+      {!failed ? (
+        <img src={cgOverlay.src} alt={cgOverlay.caption || ''}
+          onLoad={() => setLoaded(true)}
+          onError={() => setFailed(true)}
+          style={{
+            maxWidth: '88vw', maxHeight: '80vh',
+            objectFit: 'contain',
+            border: '1px solid var(--dlg-border)',
+            opacity: loaded ? 1 : 0,
+            transition: 'opacity 0.5s ease',
+          }} />
+      ) : (
+        <div style={{
+          width: 480, height: 320,
+          border: '1px solid var(--dlg-border)',
+          background: skin.sceneBg,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexDirection: 'column', gap: 12,
+        }}>
+          <div style={{fontSize: 28, color: 'var(--accent)', opacity: 0.3}}>✦</div>
+          <div style={{fontFamily: 'var(--hud-font)', fontSize: 9, color: 'var(--nav-color)', letterSpacing: '0.2em', textTransform: 'uppercase'}}>
+            {cgOverlay.src?.split('/').pop() || 'Image not found'}
+          </div>
+        </div>
+      )}
+      {cgOverlay.caption && (
+        <div style={{
+          marginTop: 16,
+          fontFamily: 'var(--txt-font)', fontSize: 14,
+          color: 'var(--txt-color)', fontStyle: 'italic',
+          textAlign: 'center', maxWidth: 560,
+          opacity: loaded || failed ? 1 : 0,
+          transition: 'opacity 0.5s ease 0.3s',
+        }}>{cgOverlay.caption}</div>
+      )}
+      <div style={{
+        position: 'absolute', bottom: 24,
+        fontFamily: 'var(--hud-font)', fontSize: 8,
+        color: 'var(--nav-color)', letterSpacing: '0.2em',
+        textTransform: 'uppercase', opacity: 0.4,
+      }}>click to continue</div>
+    </div>
+  );
+}
+
 // ── GameScreen ─────────────────────────────────────────────────────────────
-function GameScreen({ vol, onReturn }) {
+function GameScreen({ vol, onReturn, previewSceneId, injectedScene }) {
   const skin = getSkin(vol);
   const [state, dispatch] = React.useReducer(reducer, null, () => initState(vol));
   const { advance, selectChoice } = useSceneRunner(state, dispatch);
 
-  // Load initial scene
+  // Keep state.textSpeed / state.fontSize in sync with the global SettingsStore
   React.useEffect(() => {
+    if (typeof SettingsStore === 'undefined') return;
+    const apply = () => {
+      const d = SettingsStore.derived();
+      dispatch({ type: 'UPDATE_SETTINGS', textSpeed: d.textSpeedMs, fontSize: d.textSizePx, textScale: d.textSizeScale });
+    };
+    apply();
+    return SettingsStore.subscribe(apply);
+  }, []);
+
+  // Load initial scene — use injected preview scene if provided, else default
+  React.useEffect(() => {
+    if (injectedScene) {
+      dispatch({ type: 'SET_SCENE', scene: injectedScene });
+      return;
+    }
+    if (previewSceneId && window.DEMO_SCENES?.[previewSceneId]) {
+      dispatch({ type: 'SET_SCENE', scene: window.DEMO_SCENES[previewSceneId] });
+      return;
+    }
     const scene = DEMO_SCENES[vol];
     if (scene) dispatch({ type: 'SET_SCENE', scene });
-  }, [vol]);
+  }, [vol, previewSceneId, injectedScene]);
 
-  // Keyboard
+  // Stable ref so the mm-advance listener never captures a stale closure
+  const advanceRef = React.useRef(null);
+  React.useEffect(() => { advanceRef.current = advance; });
+
+  // Listen for mm-advance — dispatch ADVANCE_REQUEST directly (no stale closure)
+  React.useEffect(() => {
+    const handler = () => dispatch({ type: 'ADVANCE_REQUEST' });
+    document.addEventListener('mm-advance', handler);
+    return () => document.removeEventListener('mm-advance', handler);
+  }, [dispatch]);
+
+  // Escape key for overlay
   React.useEffect(() => {
     const handler = (e) => {
-      if (e.code === 'Space' || e.code === 'Enter') { e.preventDefault(); advance(); }
       if (e.code === 'Escape') dispatch({ type: 'SET_OVERLAY', overlay: state.overlay ? null : 'save' });
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [advance, state.overlay]);
+  }, [state.overlay]);
 
   const cssVars = Object.entries(skin.vars).reduce((acc,[k,v])=>({...acc,[k]:v}),{});
+  cssVars['--txt-scale'] = state.textScale || 1;
 
   const dlgProps = { state, skin, onAdvance: advance, onChoice: selectChoice, textSpeed: state.textSpeed, onTypingDone: () => dispatch({ type: 'FINISH_TYPING' }) };
 
   return (
-    <div style={{ position:'relative', width:'100%', height:'100%', overflow:'hidden', background: skin.sceneBg, ...cssVars, fontSize: state.fontSize }}>
+    <div
+      style={{ position:'relative', width:'100%', height:'100%', overflow:'hidden', background: skin.sceneBg, ...cssVars, fontSize: state.fontSize }}
+    >
       <BgLayer src={state.background} skin={skin} />
 
       {/* Characters */}
@@ -677,6 +911,18 @@ function GameScreen({ vol, onReturn }) {
       {skin.variant === 'paper' && <DialogueBoxPaper {...dlgProps} />}
       {skin.variant === 'terminal' && <DialogueBoxTerminal {...dlgProps} />}
       {(skin.variant === 'standard' || skin.variant === 'card') && <DialogueBoxStandard {...dlgProps} />}
+
+      {/* Interlude overlay */}
+      {state.interlude && (
+        <InterludeOverlay interlude={state.interlude} skin={skin}
+          onDone={() => dispatch({ type: 'FINISH_INTERLUDE' })} />
+      )}
+
+      {/* CG overlay */}
+      {state.cgOverlay && (
+        <CGOverlay cgOverlay={state.cgOverlay} skin={skin}
+          onDone={() => dispatch({ type: 'FINISH_CG' })} />
+      )}
 
       {/* Interactive Video Scene */}
       {state.videoScene && typeof InteractiveVideo !== 'undefined' && (
@@ -707,7 +953,7 @@ function GameScreen({ vol, onReturn }) {
 
       {/* Overlays */}
       {state.overlay === 'log' && <Backlog log={state.log} skin={skin} onClose={() => dispatch({ type: 'SET_OVERLAY', overlay: null })} />}
-      {state.overlay === 'settings' && <Settings state={state} dispatch={dispatch} onClose={() => dispatch({ type: 'SET_OVERLAY', overlay: null })} />}
+      {state.overlay === 'settings' && <SettingsPanel onClose={() => dispatch({ type: 'SET_OVERLAY', overlay: null })} />}
       {state.overlay === 'save' && <SaveLoad state={state} dispatch={dispatch} onClose={() => dispatch({ type: 'SET_OVERLAY', overlay: null })} />}
       {state.overlay === 'menu' && (
         <div style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.7)',zIndex:50,display:'flex',alignItems:'center',justifyContent:'center'}}>

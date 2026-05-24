@@ -1,0 +1,588 @@
+{
+  "id": "vol6_ch14_live_oak",
+  "vol": 6,
+  "chapter": 14,
+  "type": "chapter",
+  "title": "Ch 14 — Live Oak",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_strip_mall_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Live Oak",
+      "sub": "Wednesday — 22:30 — New Auburn",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He takes the back road. He takes the back road that goes past the strip mall on Live Oak Street, the way he has been taking the back road past the strip mall on Live Oak Street, every Wednesday and every Friday and most Mondays, since late June."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls into the parking lot at ten oh-eight. The lot is — at this hour, on a Wednesday — mostly empty. The Coin Wash next door is dark. The Bindery is dark. The other small storefronts are dark. The Foxhole's marquee — which is the small lit sign above the front door, with the venue logo and a chalk-board insert below it announcing the next show — is on. The chalk insert reads, in someone's handwriting from this afternoon: SAT 8/22 — SUBURBAN BLIGHT // DJ CHESS — DOORS 8."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse looks at it. He looks at it for longer than is, technically, necessary. His own band's name, in chalk, on the front of a venue, in his town, on a Saturday in mid-August."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, briefly: I am, at twenty, going to play a venue."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, the song is the song."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, Em is right."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls the Civic around to the back of the strip mall."
+    },
+    {
+      "t": "narrate",
+      "text": "The back of the strip mall is the loading area. The loading area is a long single strip of asphalt behind all the units, with a chain-link fence at the back separating the lot from a small drainage easement and a stand of cedar beyond. There are, behind the strip mall, three dumpsters and a small parked U-Haul that has been there for three weeks and a single sodium lamp on a pole that is, this evening, on."
+    },
+    {
+      "t": "narrate",
+      "text": "The unit at the back of the Foxhole's section of the strip mall is the unit Jesse has been tracking."
+    },
+    {
+      "t": "narrate",
+      "text": "The unit is — Jesse pulls the Civic past slowly, with the lights off, in the way he has done seven times in the past month — dark. The white panel van is not, this evening, in the loading area."
+    },
+    {
+      "t": "narrate",
+      "text": "The papered-over window is — Jesse cannot, from the car, see the window, because the window is at the front, not the back. But the back door of the unit is, from the loading area, visible. The back door is a metal service door, painted institutional gray, with no signage. The door, every other time Jesse has driven past, has been closed."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight the door is open. Two inches. A faint light is visible through the gap."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse, in the Civic, slows further. He stops the car at the corner of the lot, in the small position where the sodium lamp does not directly illuminate the Civic's silhouette and where the angle to the back door is — by his three previous reconnaissances — the angle from which he is least visible to anyone who might, from inside the unit, look out."
+    },
+    {
+      "t": "narrate",
+      "text": "He kills the engine. He sits. He watches the door for nine minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "Nothing happens. The door does not move. No one comes out. No one goes in. The faint light remains."
+    },
+    {
+      "t": "narrate",
+      "text": "At ten twenty-three, Jesse takes out his phone."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "hey. quick thing. you up?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya replies in two minutes."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "yeah. on the porch with grandma. what.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "the back door of the unit i've been tracking is open tonight. like a couple of inches. faint light inside.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A pause."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "are you near it.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "in my car at the corner of the lot.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "jesse.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "i'm not getting out.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "are you sure.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "yeah. i'm sure. i'm — i'm just looking.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "ok. stay in the car. drive home in five minutes. text me when you're home.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "maya.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "i'm not going to do anything dumb.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "i know you're not. i'm telling you anyway. drive home in five minutes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "ok.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He puts the phone down. He watches the door for two more minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "Then, at ten twenty-seven, in the periphery of the lot's far corner, a man comes out the back door of the unit."
+    },
+    {
+      "t": "narrate",
+      "text": "The man is — Jesse, at the Civic, ducks low — backlit by the faint interior light. Jesse cannot see his face. The man is medium build. The man is wearing what looks, in the sodium light, like a polo shirt and slacks. The man pulls the back door closed behind him. The man locks it — Jesse can hear, at this distance, the small click of a deadbolt turning. The man crosses the loading area to a vehicle Jesse has not, until this moment, registered, parked at the far end of the lot in the shadow of the dumpster."
+    },
+    {
+      "t": "narrate",
+      "text": "The vehicle is a sedan. Dark color. Jesse cannot, in the sodium light, read the plate."
+    },
+    {
+      "t": "narrate",
+      "text": "The man gets in. The man starts the engine. The man pulls out of the lot — in the direction away from where Jesse is parked, which Jesse registers with the small relief of a kid whose pulse has, in the past forty seconds, gotten higher than he was prepared for."
+    },
+    {
+      "t": "narrate",
+      "text": "The sedan turns left at the lot's exit and is, within seconds, gone."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse breathes. He waits another two minutes. He starts the Civic. He drives out of the lot, in the opposite direction the sedan went, and takes the long way home."
+    },
+    {
+      "t": "narrate",
+      "text": "He texts Maya at ten thirty-six from a stoplight."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "home in 10. somebody came out and locked up.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "did he see you.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "no. i'm sure.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "ok. text me when you're inside.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_henderson_bedroom_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls into his driveway at ten forty-eight. His parents' house is mostly dark. The kitchen light is on — his mother has, all summer, been leaving the kitchen light on for him on practice nights. His father's truck is in the driveway. His father, by the hour, is in bed."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes inside."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "inside.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "jesse.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "i want to tell you something. i'm not telling you to lecture you. i'm telling you because you should know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "ok.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "f.t. sent me one message in june and one in july and that's it for the summer. the imps are quiet. frasier's quiet. the substation has been an empty building since june. the apparatus has been doing — almost nothing — since the summer started. the almost nothing is the worrying thing, not the loud thing. if you have, by your own observation, found a unit at the back of a strip mall that has lights on at one in the morning and a white panel van that visits and a man in a polo shirt who locks the door behind him at ten thirty PM on a wednesday — that is, by my read, exactly the kind of thing the apparatus would be doing if the apparatus were, this summer, doing a small careful thing it did not want anyone to be watching.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "i am not saying you found something. i am saying you might have found something. i want you to be careful with it.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "ok.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "do you want me to tell f.t.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "not yet. i want to watch it for one more week. just watching. no getting closer. the foxhole is across the parking lot and we have a gig there saturday. i'm going to be in the parking lot anyway.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "okay. one week. but jesse — if anything escalates — if the door is open during your gig, if the man in the polo shows up at the gig, if the sedan parks in the foxhole's lot — you tell me immediately. and you do not, under any circumstance, walk over to the unit. you stay in the foxhole. you finish your set. you come find me afterward. okay?",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "jesse.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "how was practice.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He laughs, in the kitchen, alone."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "practice was good. em is running the band. i didn't realize until tonight. she's been running it for months. i've been the lead singer, she's been the band. the song is the song. she made me put it in the set saturday. second song. she said write the bridge about the people, not the substation. i'm — i'm going to.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "jesse.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "i love this for you. for em. for the band.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "yeah. me too.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "write the bridge.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "i will.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "goodnight.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "night, maya.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He puts the phone down on the counter. He pours a glass of water. He stands at the kitchen sink for a long minute."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the unit at the back of the strip mall is the apparatus doing something. Maya thinks so. I think so. We have, between us, decided to watch it for a week."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: Em wants me to write the bridge about the people."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the people are — the people are Em, and Carl, and Nate, and Sam, and Maya, and Ben, and Diego, and my mom, and my dad, and Linda Caldwell, and Walt who is making sandwiches at his kitchen counter on Wednesday nights, and the kid on the skateboard who told me to bring my own water."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the bridge is going to be hard."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: I can write it."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes upstairs. His parents' bedroom door is closed. The light under the door is off. His father snores in the cadence his father has snored in for as long as Jesse has known what snoring is."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse goes to his own room. He closes the door. He sits on the edge of the bed."
+    },
+    {
+      "t": "narrate",
+      "text": "He picks up his Telecaster — the one in his bedroom, the unplugged one, the smaller of his two — and he holds it in his lap, and he thinks about the bridge."
+    },
+    {
+      "t": "narrate",
+      "text": "He plays one chord. Then another. Then a third. The chord progression, by the third chord, is — by his own internal sense, which is, this week, becoming a thing he can trust — the right progression. He plays it through three times."
+    },
+    {
+      "t": "narrate",
+      "text": "Then he puts the guitar down. He gets out his notebook — the small spiral one he has been writing lyrics in since 2023 — and he writes, on a fresh page: bridge — substation nine — here we are anyway — with the thing we have been carrying, the weight of it — and the room we are carrying it in — and the people we are carrying it with — and the small late evening, in mid-august, when the door is open two inches and the light is faint, and we are in the parking lot but not closer — and the song we wrote about the substation but the bridge is not about the substation — the bridge is about the parking lot."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at what he has written. He underlines the last line."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: that's the bridge. He thinks: I'll have it set to music by Friday."
+    },
+    {
+      "t": "narrate",
+      "text": "He puts the notebook back in the desk drawer. He gets undressed. He gets in bed. He sets the alarm for nine, because tomorrow morning is the diner — he has his Pit Stop shift, eleven to seven — and he wants the morning to write."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns off the lamp."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The room is dark. Through the open window, the cicadas are loud. The neighbor's dog, three houses down, barks once at something Jesse cannot see. Then is quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, in the dark: the door was open two inches."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the man was in a polo shirt."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: the unit has lights at hours it should not have lights, and the unit is across the parking lot from the venue we are playing on Saturday, and the convergence is the world, not the conspiracy. The convergence is not something the apparatus arranged. The convergence is two facts that happen to share a parking lot."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, with the small careful honesty Em has, this evening, modeled for him: I have been treating the map as the more important thing because the map is the thing that, if it pays off, would prove I was right to be paying attention. I have been treating the band as the thing I get to do while I wait for the map to pay off. The band is the thing. The map is — the map is the small obsessive thing I do on the back roads on the way home from practice. The band is the thing."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, Em knew."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, the bridge is about the parking lot."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_maya_bedroom_night.jpg"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "In a different bedroom in a different cul-de-sac, Maya — at her grandmother's, in her own bed, with her phone on the nightstand and the porch light off and her grandmother already asleep two doors down — opens her ThinkPad on her lap."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "F.T. — quick. Jesse Henderson has been mapping nexcorp activity in town since june. tonight he found an active site at the back of the strip mall on live oak street in new auburn. small commercial unit. lights at night, white panel van, a man in a polo shirt who locked up at 10:30 tonight. i told jesse to watch it for a week with no escalation. no getting closer. but i am telling you because it is — it is the kind of thing you would want to know. — m.",
+      "expr": "serious"
+    },
+    {
+      "t": "narrate",
+      "text": "She sends it. She closes the laptop. She gets in bed."
+    },
+    {
+      "t": "narrate",
+      "text": "The reply, when it comes, comes at four-forty-one AM, while she is asleep. She will read it in the morning."
+    },
+    {
+      "t": "narrate",
+      "text": "The reply will read, in F.T.'s usual lower-case voice: \"kid. thank you for telling me. i had — i had not been watching that strip mall. i should have been. i am putting the imp on it tonight. tell jesse to keep watching but not closer. tell him saturday's gig is the gig. tell him to play the gig and let the unit be the unit. i will know more by next week. — f.t.\""
+    },
+    {
+      "t": "narrate",
+      "text": "But that is the morning."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight, on the porch with her grandmother already inside, the radio is — for the third night in a row — off."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas, in the cedar across the cul-de-sac, are loud."
+    },
+    {
+      "t": "narrate",
+      "text": "The town, in the small ways towns in mid-August do this work, holds."
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

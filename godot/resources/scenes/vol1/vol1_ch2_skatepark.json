@@ -1,0 +1,225 @@
+{
+  "id": "vol1_ch2_skatepark",
+  "vol": 1,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Act One — The Skatepark",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_skatepark_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Skatepark",
+      "sub": "The Pool · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "EXT. THE SKATEPARK — DAY"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust is with his friends Wagner and Jacob, waiting to push off into the pool. Faust talks to each in turn."
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Fun just to imagine how the world could be."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Different future points — the smallest thing."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Could change the big picture completely."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Pebbles on the water's surface."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I feel old just coming out here."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Not so bad. Giving me hope for the future."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Plz watch me epic fail plz."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "You're getting better, bro."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I need to finally try this."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Start off easy, Faust."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Break tailbone later."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Earn mad skills through trial and error."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_wagner_home.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Wagner's Home",
+      "sub": "After the park",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "INT. WAGNER'S HOME — DAY. Wagner puts up his skateboard, goes to the record player, and starts some metal."
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "This here is the shit."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "What is this I'm hearing?"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Burzum. Norwegian Black Metal."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Euronymous and Varg Vikernes."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Metal-sad — those folk so wrapped up in the story, can't see past what they are creating."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "We need to get a good crew. Take the longboat out tonight. Prowl uncertain waters."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Then let us away — to Judgement Day."
+    },
+    {
+      "t": "narrate",
+      "text": "They make haste to their ride of choice — JD, a beat-up piece of shit."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch2_complete",
+      "val": true
+    },
+    {
+      "t": "narrate",
+      "text": "— End of Act One, Part I —"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

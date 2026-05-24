@@ -1,0 +1,1313 @@
+{
+  "id": "vol6_ch22_inventory",
+  "vol": 6,
+  "chapter": 22,
+  "type": "chapter",
+  "title": "Ch 22 — Inventory",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_centro_canned_soup.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Inventory",
+      "sub": "Saturday — 06:18 — Centro Foods",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The inventory has been at the precision phase since two."
+    },
+    {
+      "t": "narrate",
+      "text": "By six eighteen Diego is in canned soup, on his fourth pass, with Russell at the head of the aisle reading codes off the master sheet in the half-voice Russell uses for inventory nights — not whispering, exactly, but pitched under the fluorescents — and Diego at the shelf with the chain-issued scanner, beeping the codes back. The scanner beeps. Diego moves one can to the left. Beep. One can. Beep. One can."
+    },
+    {
+      "t": "narrate",
+      "text": "The aisle smells like aisle. It has smelled like aisle since midnight. Cardboard, the rubber on the wheels of the pallet jack Marisol left at the head of the aisle three hours ago and forgot, the cold metal of the shelf brackets, and a faint sweet thing that is somebody's dented can of cream of mushroom leaking under the off-brand shelf at row 4F that Diego clocked at four AM and has not, since four AM, found the time to deal with. He will deal with it after eight. He has decided this. The decision is one of about nine he has been making since one AM about things he will deal with after eight."
+    },
+    {
+      "t": "show",
+      "char": "russell",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Vegetable beef. Three SKUs. Family size, regular, low sodium.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Family size, four facings, three deep.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Right.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Regular, six facings, three deep, two stragglers on top.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Stragglers count.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Just saying.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The beep."
+    },
+    {
+      "t": "narrate",
+      "text": "Russell is fifty-six. Russell is from a town outside Beaumont that Diego does not remember the name of. Russell wears the same brown work boots every shift and a pair of reading glasses he sets on the top of his head when he is not reading and never on his face. Russell has worked grocery, in some configuration, since 1991. Russell does inventory the way Russell does inventory. Diego, at the shelf, has, in five weeks, come to find Russell's calling rhythm calming the way a metronome is calming. The work is in the rhythm. The rhythm is in Russell."
+    },
+    {
+      "t": "narrate",
+      "text": "Two aisles over, Marisol is doing pasta. Marisol has been doing pasta since four thirty and Marisol has, in the last hour, said three things audible to canned soup, all of them to the room at large."
+    },
+    {
+      "t": "narrate",
+      "text": "The Friday-into-Saturday thing the supermarket invented to ruin people."
+    },
+    {
+      "t": "narrate",
+      "text": "Day side better not touch frozen. I will know. I will go in there with a flashlight at eight."
+    },
+    {
+      "t": "narrate",
+      "text": "Whoever ate the last of the coffee at three is on my list."
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol is forty-eight. Marisol is the team's loud one — not because she runs her mouth, but because when she chooses to speak she does it at a volume the room has to absorb. She is also the kindest of the five of them and Diego has known this since his second week, when she had walked him to his car at five AM in the rain on a night he had told nobody he was nervous about walking to."
+    },
+    {
+      "t": "narrate",
+      "text": "Jessa is at the back office. Jessa has been at the back office since five thirty. The reconciliation is what the last two hours of inventory are about. The day-side three are at frozen and produce, where Jessa put them because frozen and produce are where the day-side three can cost the team the least amount of cleanup on Monday. Carl from day side has already mis-stacked, by Marisol's count, eleven cases on cereal — Marisol counted them when she walked past at five — and this is going to be a Monday-morning conversation between Jessa and Don the day-side manager that has, by Diego's understanding of the long arc, happened before and will happen again. Jessa runs the night. Don runs the day. Jessa has been losing the argument about Carl in a slow careful way for four months. Diego is sixteen and has not been here long enough to know how it ends."
+    },
+    {
+      "t": "narrate",
+      "text": "BT is on cereal. BT has been on cereal six and a half hours. Jessa put him there at midnight because cereal was where BT had been comfortable all summer and because the first hour of inventory was not the hour to move a new guy. Diego had clocked Jessa doing it and had not been told she was doing it. He clocks a lot. He doesn't say."
+    },
+    {
+      "t": "narrate",
+      "text": "At five fifty he had passed the head of cereal aisle. BT had looked up. BT had nodded. Diego had nodded. Nothing else. They have not spoken since the taqueria run Tuesday morning."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug is in dairy. Doug is doing dairy alone because Doug can. Doug came to Centro in 2019 and has done dairy alone on every inventory since 2020 and is, by everyone's reckoning including his own, the fastest cooler counter in the chain north of San Antonio. Doug is forty-three. Doug reads, between aisles, in the break room, on his lunch, in the parking lot before clocking in — the kind of reading Diego had not, before this summer, thought a grown man stocking dairy did. Doug is, this week, in The Brothers Karamazov. Doug had been in Book Six at midnight. Doug, by Diego's accidental sighting at the four AM break, was nineteen pages into Book Seven. Father Zosima is dead. Diego knows about Father Zosima because Diego, in the third week of the summer, had asked Doug what he was reading and Doug had told him and Diego had checked the book out of the Harmony Creek branch library on the following Saturday and is now, in his own time, two hundred pages in."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug has not, this week, mentioned that Diego is reading the book."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego has not, this week, mentioned that he is reading the book."
+    },
+    {
+      "t": "narrate",
+      "text": "This is, Diego has come to understand, how Doug runs friendships."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego scans the next can."
+    },
+    {
+      "t": "narrate",
+      "text": "The scanner beeps."
+    },
+    {
+      "t": "narrate",
+      "text": "The scanner has been beeping like this since two AM and the beep, which had been a sound at hour one, is now mostly inside his ear. His right wrist is starting to hurt the way it has hurt at hour six of every inventory of the summer. He shifts the scanner to the left hand. The left hand is also tired but is, by his count, four hours less tired."
+    },
+    {
+      "t": "narrate",
+      "text": "He moves to the next can."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks about his grandmother. She will be up at six thirty. She will be making eggs. She is making eggs whether he is home for them or not — the eggs are about her, not him, but he wants them. He thinks about his bed. He thinks about whether the AC in his room is going to be turned up too high because his grandmother turned it down at midnight thinking he was already asleep, and how he is going to be too hot for the first fifteen minutes of sleep until he gets up to fix it, and how that fifteen minutes is going to feel like an hour. He thinks about the letter."
+    },
+    {
+      "t": "narrate",
+      "text": "He has been thinking about the letter all night, off and on, between cans. The letter is the second letter. The first letter went out in July, which was the first month he had had an address for his father in seven years, and the address had come through his aunt in Monterrey who had got it from a cousin of his father's who had got it from somebody else. The first letter had been short. He had not, in the first letter, said anything that required a reply. He had said he had finished tenth grade. He had said he was working at a grocery store for the summer. He had asked, at the end, how the weather was."
+    },
+    {
+      "t": "narrate",
+      "text": "His father had not replied."
+    },
+    {
+      "t": "narrate",
+      "text": "The second letter is going out Wednesday. The second letter will also not require a reply. The second letter will say he is reading a Russian novel that one of his coworkers recommended and that he is finding it slow but good. He will mention his grandmother's tomatoes. He will not, in the second letter, ask anything either."
+    },
+    {
+      "t": "narrate",
+      "text": "The third letter is going to ask. The third letter will go in October."
+    },
+    {
+      "t": "narrate",
+      "text": "He has been planning this for two months. He has not told anyone — not his grandmother, not Marisol who would understand, not BT who is the only person at the store close to his age. He is going to do it slow. He is going to give his father, who is somewhere in Nuevo León doing something Diego does not know how to find out about, three chances to read a letter from his son before Diego asks the son's question."
+    },
+    {
+      "t": "narrate",
+      "text": "The scanner beeps. He moves to the next can."
+    },
+    {
+      "t": "narrate",
+      "text": "The slow math is the slow math on purpose. Diego is not, this year, in a hurry to learn what his father is going to do."
+    },
+    {
+      "t": "narrate",
+      "text": "At six forty-two BT comes around the end of the aisle."
+    },
+    {
+      "t": "show",
+      "char": "bt",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He is in the gray cereal-aisle uniform polo and jeans and the boots he wears every shift. His left forearm is dusty with what is either oat-cereal residue or the bran flake stuff Centro carries the big bag of, and which Diego registers because his eye has been trained, since week one, to read what aisle somebody has been in by what they are wearing."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Russell.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Russell looks up from the clipboard."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Cereal's done.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "The whole aisle.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Whole aisle. Manifest matches. One over on the off-brand corn flakes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "How over.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "One box. The tall house brand. I went back to the receiving log from Tuesday. Tuesday delivery was one over on the manifest. The receiving guy miscounted. I wrote it on the discrepancy sheet.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Russell, the clipboard, looks at BT for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "You went back to the receiving log.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "At six in the morning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "It bothered me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "You wrote the cause on the sheet.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Russell taps his pen on the clipboard twice. Then he writes something next to cereal — BT."
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Good. Help Diego on canned soup. He's at four. Nine more aisles.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT comes down the aisle. Diego, at the shelf, watches him come."
+    },
+    {
+      "t": "narrate",
+      "text": "It is the first thing BT has done that is something Russell will tell Jessa about — not now, not before the inventory's done, but tomorrow, when she asks him over coffee how the night went. Russell will say the new kid went back to the receiving log and Jessa will not, externally, react, but she will register the sentence. Diego knows this because he has watched Russell tell Jessa things like this about him."
+    },
+    {
+      "t": "narrate",
+      "text": "BT stops at the shelf next to Diego. He holds his hand out for the scanner."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "You scan. I'll call. Saves us bending twice.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Thanks.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego gives him the scanner. They start."
+    },
+    {
+      "t": "narrate",
+      "text": "The way it works is Diego, with the master sheet on his hip, reads off the SKU and the facing count. BT pulls the unit on the shelf, scans it, confirms the read, slides it back. The two of them step right, one step, in unison. The aisle is fluorescent-bright the way grocery aisles get at six AM under inventory lights. Diego's wrist hurts. BT's shoulders are up around his ears and have been there for six and a half hours."
+    },
+    {
+      "t": "narrate",
+      "text": "For ten minutes neither of them talks beyond the work."
+    },
+    {
+      "t": "narrate",
+      "text": "Beep. Step. Beep. Step."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Doug talk to you tonight?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego looks at him."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "He passed me at three thirty going to break.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "He say anything?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "He said cans. That was it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Cans.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT thinks about this for the next two cans."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "He talked to me at the four AM. In the break room.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "He said you're going to make it. That was the whole thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, looking at the next SKU on the sheet, feels his eyes get a little hot for no reason he can identify and is glad his face is turned to the clipboard."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Doug's like that.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "He says things small.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A beat."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "That was a — that meant something to me. Just saying.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They work."
+    },
+    {
+      "t": "narrate",
+      "text": "For the next thirty minutes neither of them speaks."
+    },
+    {
+      "t": "narrate",
+      "text": "They do not talk about the taqueria. They do not talk about the song that had been on the radio in BT's car when they had pulled into the lay-by Tuesday morning, which had been an old norteño accordion song neither of them had known the name of and which BT had let play through. They do not talk about New Orleans, which Diego has heard about in pieces from Marisol and once from Russell and never from BT and which sits in the air around BT the way humidity sits in the air around August Texas. They do not talk about the cop story."
+    },
+    {
+      "t": "narrate",
+      "text": "They scan. They step. They scan. They step."
+    },
+    {
+      "t": "narrate",
+      "text": "At seven twenty-eight canned soup is done."
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Good. Canned vegetables. Same routine. Forty minutes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "They move."
+    },
+    {
+      "t": "narrate",
+      "text": "At seven fifty-eight the inventory is done."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_centro_break_room.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "marisol",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "russell",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "doug",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The team is in the break room. Jessa is in the back office finishing reconciliation. Marisol is at the table with her thermos. Russell is at the table with the day's Express-News he brought from home at midnight, on page A6, the Metro section. Doug is at the chair against the wall with the book."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug is, by Diego's accidental sighting, on page 412."
+    },
+    {
+      "t": "show",
+      "char": "bt",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "BT is at the doorway. He has his keys in his hand. He has not, since coming off the floor, sat."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Y'all. I'm going to head. I appreciate the night. The team — y'all carried me. I want you to know I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol, at the table, lifts her thermos two inches in his direction."
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "Get sleep, hon.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Doug looks up. Doug nods. Doug looks back down."
+    },
+    {
+      "t": "narrate",
+      "text": "BT looks at Diego."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Diego.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Thanks for the canned soup.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "BT goes."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "marisol",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "The team listens to BT's footsteps cross the break-room corridor, hit the dock, push the dock door open, fade."
+    },
+    {
+      "t": "narrate",
+      "text": "The dock door, at eight oh-one, closes."
+    },
+    {
+      "t": "narrate",
+      "text": "The team, in the break room, is for a beat very quiet."
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "He told me last week.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol, at the table with her thermos, looks up."
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "Told you what.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "About New Orleans. He told me last Thursday on his lunch break. He was straight with me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Russell sets the Express-News down on the table."
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Straight how.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "He told me what happened in 2022. He told me what his partner did. He told me what the kid's name was. He told me the dispatcher's name. He told me what the official write-up said and what the part of the write-up that didn't get written said. He told me what he saw when he was thirty feet away looking through the open driver's-side window. He told me what he did the next morning and what he did the morning after that. He told me what his wife said when he told her on Sunday. He told me she left in October. He told me he came down here in February. He told me he has been working cereal at this store since June because cereal at this store at midnight is the only room he can stand to be in.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol, at the table, has stopped lifting her thermos."
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "Doug.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "Why did you not tell us.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "He asked me not to.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "He asked you not to.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol does not, for a long count, respond."
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Was it true.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "How do you know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "I called Eric in Slidell on Friday morning. Eric was the partner. Eric talked. The story BT told me checks. The dispatcher's name checks. The kid's name checks. The off-the-record version is what BT said it was. The on-the-record version is what the official write-up says. BT did not, in 2022, do the thing the team has, all summer, been assuming he did.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol puts her thermos down."
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "Doug.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "You called Slidell.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "I called Slidell.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "On a Friday morning.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "To verify the story of a man we have been holding at arm's length for six weeks.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A long pause."
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Doug.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Why are you telling us now and not in June.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Doug closes the Karamazov. He sets it on the floor beside his chair."
+    },
+    {
+      "t": "say",
+      "char": "Doug",
+      "text": "Because Diego ate a burrito with him Tuesday morning and the team was, by Wednesday, talking about whether Diego should have. Because Diego is sixteen and is the youngest one of us and the team has, this week, started leaning on him to decide whether BT belongs. That is not Diego's job. Diego is here for the summer. Diego is going to senior year in three weeks. Diego does not need to be the one who carries the team's social weight about a man who has done nothing wrong since he got here. So this morning, after BT walked out of here, I figured I would carry it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The room is quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, at the table with his coffee, does not look up."
+    },
+    {
+      "t": "say",
+      "char": "Marisol",
+      "text": "Yeah, Doug.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Russell",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "jessa",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Jessa comes in at eight oh-six. She does not, on entering, ask what is happening. Jessa is fifty-two and has been running this night team for nine years and can read a break room. She crosses to the coffee pot. She refills her cup. She takes one sip. She sets the cup down."
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "Manifest's clean. We came in three cans over and two cans under. Net one over. Discrepancy sheet matches. We are done at eight thirty. Drive safe. Sleep good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at Diego."
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "Diego.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks up."
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "Stay a minute.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She leaves."
+    },
+    {
+      "t": "narrate",
+      "text": "The break room releases."
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol packs her thermos. Russell folds the Express-News. Doug picks the Karamazov up off the floor and puts it in his jacket pocket. Each of them, on the way past Diego, does one small thing. Marisol puts her hand briefly on the back of his head — the only time all summer she has touched him — and goes. Russell, without speaking, sets the folded newspaper on the table in front of Diego and says finish that crossword on the third page, kid and goes. Doug stops at the doorway, turns, looks at Diego, says nothing, and goes."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, at the table, drinks his coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "The break room is empty."
+    },
+    {
+      "t": "show",
+      "char": "jessa",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Jessa comes back at eight twelve. She sits in the chair across from him."
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "Diego.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "I have been wanting to ask you something for two weeks. I have not asked because the timing has not been right. The timing is right now. Are you going to be working here this fall.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I don't know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "You don't have to know yet.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "School is three weeks. If you want to stay through fall — fifteen hours a week, Friday nights and Saturday days, the schedule that lets you still be a senior — I want you to. The team wants you to. I am asking you because if I don't ask you, you will assume I assumed you were leaving. And I am not, this morning, going to assume.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He nods."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Can I tell you in a week.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "All right.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "Diego.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "You did good with BT this summer.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I didn't do anything.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "You ate a burrito with him. The team had decided not to and you went anyway. The team had decided not to because the team had assumed something that wasn't true. You went without knowing it wasn't true. You went because you decided to. That is what you did. The deciding was the thing. Don't tell yourself you didn't do anything.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, for a count, respond."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah, Jessa.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She gets up."
+    },
+    {
+      "t": "say",
+      "char": "Jessa",
+      "text": "Sleep good. Tonight is Friday night. Friday night is the regular shift. I'll see you at ten.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She goes."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He sits with the Express-News in front of him for a count."
+    },
+    {
+      "t": "narrate",
+      "text": "He picks up his coffee. He drinks the last of it. He puts the cup down."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets up. He puts his jacket on. He takes the Express-News under his arm. He walks out through the dock and gets in his truck."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_corolla_driving.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The drive home is twenty-two minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "He drives with the radio off. He has not, this morning, decided what music he wants in the truck. The morning sun through the windshield is the morning sun in mid-August in south Texas, which is to say it is the sun a man who is sixteen and has been working a graveyard shift since June has been trying not to be hit too directly by all summer. He pulls the visor down. The visor cuts about a third of it."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks about his father."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks about him without naming the thinking. The thinking is the thing his interior has been doing on the drives home for some weeks, and he has, over the past two weeks, stopped pretending it isn't the thinking. His father is in San Luis Potosí. His father has been there since 2017. The second letter is going Wednesday. The third letter is going in October."
+    },
+    {
+      "t": "narrate",
+      "text": "He drives."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_grandmother_kitchen_morning.jpg"
+    },
+    {
+      "t": "show",
+      "char": "abuela",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "His grandmother is at the kitchen window when he pulls in. She has been at the kitchen window every morning since June. She has her coffee. She has the radio on the windowsill — the kitchen radio, just a radio — playing the morning Spanish-language news from San Antonio."
+    },
+    {
+      "t": "narrate",
+      "text": "She meets him at the porch. She kisses his temple."
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "Mijo. Eggs.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Eggs.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He sits at the kitchen table."
+    },
+    {
+      "t": "narrate",
+      "text": "She makes the eggs. She brings them on the plate she has been bringing him eggs on since he was four. The plate is yellow with a small chip at the rim. The eggs are scrambled with a little butter and a small amount of the salt she keeps in the small wooden box on the windowsill."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits, today, across from him at the table. Saturday after a Friday-night inventory is, this summer, a sitting morning. The other mornings she stands at the counter while he eats. Saturdays she sits. The decision was hers. She made it the first Saturday and has held to it."
+    },
+    {
+      "t": "narrate",
+      "text": "She watches him eat the first bite."
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "El nuevo del equipo. Se fue a casa.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego looks up."
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "Por tu cara. Llegaste solo.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Sí, abuela. Se fue a casa.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "El inventario.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "El inventario fue el inventario. Terminó a las ocho.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "¿El equipo tomó bien la salida del nuevo?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks for a beat."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "El equipo lo tomó. Doug nos dijo esta mañana que el nuevo había estado diciendo la verdad sobre lo que le pasó antes de llegar aquí. El equipo no había creído. Doug sí. Doug había guardado la verdad todo el verano y eligió esta mañana contárnosla.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She is quiet a long count."
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "¿Y tú?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yo no había decidido. Fui con él a la taquería el martes por la mañana. El ir fue un sí que podía dar sin haber decidido. Fui porque tenía hambre y porque la taquería es buena. El ir resultó ser — según lo que dijo Doug — la única amabilidad que el nuevo recibió del equipo en todo el verano.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "Mijo.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Sí, abuela.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "El sí que puedes dar sin tener que decidir es a veces el único sí que estás, en tu posición, en posición de dar. Y el sí que menos cuesta a veces es el que más importa. Tienes dieciséis años. Estás al comienzo del largo arreglo de dar pequeños síes a las personas con las que resultas estar en habitaciones por tiempos limitados. El arreglo es el tipo de vida que, con muchos años, se convierte en una vida. Estoy orgullosa de ti. Quiero que lo sepas.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Gracias, abuela.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, on this Saturday, put her hand on the back of his head. She had done it on the first Saturday and on the second Saturday and had decided, on the third Saturday, that it had become a ritual and that rituals between grandmothers and grandsons can begin to mean less when they are repeated too cleanly. She had stopped. She had, since the third Saturday, been working out a different small physical thing she does at the table on Saturdays. She had not, by today, settled on it."
+    },
+    {
+      "t": "narrate",
+      "text": "This morning she settles on it."
+    },
+    {
+      "t": "narrate",
+      "text": "She picks up his right hand from the table. She holds it in both of hers for about four seconds. She sets it down."
+    },
+    {
+      "t": "say",
+      "char": "Abuela",
+      "text": "Eat. Sleep.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He eats the eggs."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes upstairs."
+    },
+    {
+      "t": "narrate",
+      "text": "He showers in the small upstairs bathroom that is, since June, his."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_diego_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls the blackout curtains in his bedroom — the ones his mother had driven up from San Antonio in mid-July to help him install on a Saturday afternoon while his grandmother had made lunch and had, occasionally, brought up cold lemonade."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets into bed in his shorts and a t-shirt."
+    },
+    {
+      "t": "narrate",
+      "text": "The room, behind the curtains, is dark."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps at nine-something."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not dream of the dock."
+    },
+    {
+      "t": "narrate",
+      "text": "He dreams of the kitchen."
+    },
+    {
+      "t": "narrate",
+      "text": "He dreams of his grandmother at the table picking up his right hand."
+    },
+    {
+      "t": "narrate",
+      "text": "He dreams of his father picking up his right hand at the table in San Luis Potosí, with the same gesture, in the same kitchen, with the same morning light coming through a window his grandmother's kitchen does not have but which the dream gives them anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "He wakes at three forty-two."
+    },
+    {
+      "t": "narrate",
+      "text": "He lies in the dark a long time."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, this afternoon, get back to sleep."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch22_vinton"
+    }
+  ]
+}

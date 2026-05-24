@@ -1,0 +1,107 @@
+{
+  "id": "vol1_ch2_act_one",
+  "vol": 1,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Act One — John Faust",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_bedroom_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Act One",
+      "sub": "John Faust",
+      "duration": 2800
+    },
+    {
+      "t": "narrate",
+      "text": "INT. FAUST'S BEDROOM — NIGHT"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust wakes at four a.m. with the sound of an alarm."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "If it is 4am, then I am awake."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls a tug of water to drink and gets up out of bed."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Before this waking I had lucid dreamt a dream in which I'd had riches — as a captain of industry, movie star debonair. How peculiar."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust looks in the mirror at his early-morning haggard."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "At least it wasn't one in which my teeth all fall out and death is imminent. Maybe tomorrow."
+    },
+    {
+      "t": "narrate",
+      "text": "He opens the mirror to get his vitamins. He takes one with a tug of water."
+    },
+    {
+      "t": "interlude",
+      "text": "CUT TO — Detroit",
+      "sub": "Robocop, thumping",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "IMAGES: Faust clubbing with two young girls. The Robocop music video montage of Detroit thumps in the background."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "These modern draughts, my learned trade — I down you with OCP and OTC. Yeah, you know me: your legal and commercial medicinal liaison."
+    },
+    {
+      "t": "narrate",
+      "text": "Cut back. Faust puts on his medical blue uniform and white jacket and heads to work."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Not so heavily medicated just yet, still feeling the effects of last night — though an education away from exactly who I need to be."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust bicycles to work."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Regret not loving enough, not living enough — outside my head."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch2_pharmacy"
+    }
+  ]
+}

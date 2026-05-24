@@ -1,0 +1,57 @@
+{
+  "id": "vol1_title",
+  "vol": 1,
+  "chapter": 0,
+  "type": "chapter",
+  "title": "Title Page",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": null
+    },
+    {
+      "t": "narrate",
+      "text": "modern mythology."
+    },
+    {
+      "t": "narrate",
+      "text": "a fiction by andy link"
+    },
+    {
+      "t": "narrate",
+      "text": "copyright 2010. andy link all rights reserved. any part of this publication may be reproduced, or transmitted by voice, light, thought and matter across time and space through any medium physical, temporal and/or philosophical dimension by express permission of the copyright holder."
+    },
+    {
+      "t": "narrate",
+      "text": "names and places of real people are used with the express intent of entertaining an audience in a fictional capacity. any confusion with reality is your own damn fault. any characters, real or otherwise, harmed in the act of creation are the sole responsibility of andy link."
+    },
+    {
+      "t": "narrate",
+      "text": "any emotions you feel as a result of this fiction are wholly yours to own and contemplate. any works inspired by modern mythology are going to be loved by modern mythology as the works that inspired modern mythology are loved."
+    },
+    {
+      "t": "narrate",
+      "text": "any bastard fictional children or offspring are entirely in the care of their individual creators. andy link accepts only the creations herein as his own, or as determined by a paternity test."
+    },
+    {
+      "t": "narrate",
+      "text": "this digital second edition is special to the few who find and cherish it. share it how you will, as it may change because change is coming and there’s nothing you can do to stop it."
+    },
+    {
+      "t": "narrate",
+      "text": "fly not fall."
+    },
+    {
+      "t": "narrate",
+      "text": "a chainlink spiral production of a oneironautics endeavor in so so cool productions"
+    },
+    {
+      "t": "narrate",
+      "text": "modern mythology."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_introduction"
+    }
+  ]
+}

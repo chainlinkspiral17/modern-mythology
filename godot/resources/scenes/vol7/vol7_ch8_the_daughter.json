@@ -1,0 +1,111 @@
+{
+  "id": "vol7_ch8_the_daughter",
+  "vol": 7,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — The Daughter",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "Lena told them. The Saturday night in March 1994. I am going to have a daughter someday and the daughter is the work. I am going to bring her here. I do not know how yet. I am going to figure out how."
+    },
+    {
+      "t": "narrate",
+      "text": "Cale had assumed for thirty years it had been a sixteen-year-old talking weird at three in the morning. Brandon Tillman had not assumed. Brandon had a working theory. He had asked Cale, in 2049, whether Nate had ever talked to him about a daughter, and Cale had told him, and Brandon had sat with it for a long time and said thank you, Cale, and left, and had been back twice in the year before he died and had not asked about the daughter again because he had what he needed."
+    },
+    {
+      "t": "narrate",
+      "text": "When she was done she sat with her hands flat on her knees."
+    },
+    {
+      "t": "show",
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Finn, on the couch, who had not yet spoken, said: \"The crow.\""
+    },
+    {
+      "t": "narrate",
+      "text": "The three of them looked at him."
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"The crow used to belong to Brandon,\" Finn said. \"Tem said yesterday. The crow used to belong to Brandon. The crow has been bringing me wood for nine months. The wood is from whatever Brandon was investigating. Brandon had a working theory that included a daughter. The wood is — the wood is part of how the daughter is coming. The crow has been bringing me her arrival, piece by piece, and I have been keeping the pieces in a cloth in a duffel bag in the corner of my kitchen.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Kai stopped cutting. He set the knife down on the cutting board."
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "worried",
+      "text": "\"Finn.\""
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"That's what it is.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "worried",
+      "text": "\"You don't know that.\""
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"No. I don't. I'm putting it together. The crow brings wood. The wood is from whatever Brandon was investigating. Brandon was investigating Nate. Nate was making a daughter. The wood is part of the daughter. Possibly. I don't know in what way. I don't know what the wood is for. But the throughline runs through all of it and the throughline points at her.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Kai picked the knife back up and resumed cutting."
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "calculating",
+      "text": "\"Or,\" Kai said, \"the wood is evidence. The wood is what Brandon collected to prove what Nate was doing. The wood is forensic. The crow is bringing you the case file.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Finn looked at him."
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"Or that.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"Both could be true.\""
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"Both could be.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"Both probably are.\""
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch8_the_table"
+    }
+  ]
+}

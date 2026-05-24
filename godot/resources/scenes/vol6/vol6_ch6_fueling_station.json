@@ -1,0 +1,151 @@
+{
+  "id": "vol6_ch6_fueling_station",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Vince Walks",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_nexcorp_fueling_station.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Vince Walks",
+      "sub": "Friday — 07:31 — NexCorp Fueling Station",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The unmarked van is at pump six. The driver — Vince Kane, late forties, big-shouldered, gray-stubble, the kind of man whose face had been used for trouble for so long that trouble had begun to use his face back — is leaning against the driver's door, smoking. He is, technically, on a no-smoking lot. He does not, professionally, care."
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd — late thirties, smaller than Vince, with the specific tense look of a man who has been holding in a small pressure of distress for the past two minutes and who is, very shortly, going to need a bathroom — has just gone inside the station."
+    },
+    {
+      "t": "narrate",
+      "text": "Claire pulls up at the far pump. She and Doyle get out. Doyle walks toward the van. Claire walks toward the building. Tomé's car has not yet arrived."
+    },
+    {
+      "t": "show",
+      "char": "vince",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "doyle",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Doyle reaches Vince."
+    },
+    {
+      "t": "say",
+      "char": "Doyle",
+      "text": "Vince Kane?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Vince looks up."
+    },
+    {
+      "t": "say",
+      "char": "Vince",
+      "text": "Who's asking.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Doyle holds up the NAPD courtesy badge — a small leather wallet with a New Auburn shield embossed on the inside, which Ramirez had pressed into Doyle's palm at four AM with the words don't lose this, I have to give it back by noon."
+    },
+    {
+      "t": "say",
+      "char": "Doyle",
+      "text": "Federal task force is forty-five minutes out, Vince. They're coming for the van. You can be in it when they get here, or you can not be. Your choice. Walk now, you're at a Whataburger by lunch.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Vince looks at the badge. Vince looks at Doyle. Vince looks at the van. Vince looks at the building, where Boyd is presumably finding the bathroom."
+    },
+    {
+      "t": "say",
+      "char": "Vince",
+      "text": "How do I know you're not — ",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doyle",
+      "text": "Vince. I don't have time to negotiate. Your partner Boyd has nine minutes in that bathroom because somebody made sure of it. Your relief Tomé arrives in two. The van's keys are in the ignition. I'm getting in. I'm driving. The kid in the back stays alive. You stay alive too if you walk now. Sixty seconds.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Vince looks at Doyle for a long second. Then Vince — who has, in fact, done this before, in an Arkansas truck stop in 2019 under a different employer, and who has learned over the years to recognize the difference between the kind of intervention that ends with him in a body bag and the kind that ends with him at a Whataburger by lunch — drops the cigarette. Steps on it. Drops his keys to the van's contents on the asphalt. Doyle does not look down."
+    },
+    {
+      "t": "say",
+      "char": "Vince",
+      "text": "Burger King's better.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doyle",
+      "text": "Then go to Burger King.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Vince walks. He crosses the lot, gets into a beat-up sedan parked near the dumpster — his personal car, which he had, on Wednesday, arranged to have here for exactly this contingency — and drives away."
+    },
+    {
+      "t": "narrate",
+      "text": "Doyle picks up the keys. Gets in the van. Starts the engine."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "In the back of the van, on the floor, wrapped in a blanket, Diego Ramos opens his eyes."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_tome"
+    }
+  ]
+}

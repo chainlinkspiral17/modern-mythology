@@ -1,0 +1,128 @@
+{
+  "id": "vol7_epilogue_morning",
+  "vol": 7,
+  "chapter": 23,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Epilogue",
+      "sub": "Estuary 7",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "Tuesday, September 2, 2052. Six forty-seven in the morning.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cabin at six forty-seven was the cabin after.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cedar ceiling above the kitchen was the cedar Eddvard had milled at the small mill in '79. It had aged to the color it had been at the cabin's completion plus thirty-three years of weather and stove-smoke and the breath of people who had lived under it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai was at the stove making coffee. He had been up since six-fifteen by Tem's read of the coffee's progress.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn was at the kitchen window watching the mist on the cedars the way Finn had been at the kitchen window the previous afternoon.",
+      "t": "narrate"
+    },
+    {
+      "text": "The disc-case was on the kitchen table.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai poured coffee. They drank. They did not, for a count, talk.",
+      "t": "narrate"
+    },
+    {
+      "text": "At seven Tem went to the writing desk. The writing desk was in the cabin's east room — a small annex Eddvard had added in '85, with a south-facing window and a cedar shelf above the desk where Tem kept her player and her books and her notebooks.",
+      "t": "narrate"
+    },
+    {
+      "text": "The player sat on the shelf in its case.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "She took the player down. She took the headset out of the player's case. She brought them to the kitchen table.",
+      "t": "narrate"
+    },
+    {
+      "text": "She picked up the disc-case from the kitchen table. She opened it. The disc was inside, with the Oneironautics Inc. mark and the title Estuary 7 in the cedar-stenciled type the company used.",
+      "t": "narrate"
+    },
+    {
+      "text": "She loaded the disc into the player. The player accepted it. The headset's small green LED at the temple lit up.",
+      "t": "narrate"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "She sat at the kitchen table. Kai was across the table from her. Finn had turned from the window and had come to the table.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I'm going in.",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "We'll be here.",
+      "t": "say"
+    },
+    {
+      "text": "Tem put on the headset. The green LED at her temple was steady.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_epilogue_gallery",
+      "t": "jump"
+    }
+  ],
+  "title": "Epilogue"
+}

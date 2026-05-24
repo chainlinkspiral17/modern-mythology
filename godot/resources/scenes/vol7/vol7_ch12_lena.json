@@ -1,0 +1,526 @@
+{
+  "id": "vol7_ch12_lena",
+  "vol": 7,
+  "chapter": 12,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_lena_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 12",
+      "sub": "Thursday Morning",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "He pulled into Smolvud at nine forty.",
+      "t": "narrate"
+    },
+    {
+      "text": "He drove to Lena's apartment first. The hexagon was complete. The crow was speaking. The figure had been on the stack. The leak was — by his read of it on the drive back — no longer leaking only into bodies and counts and dreams. The leak was making things now. The substrate had carved a bowl yesterday in the basement of Kestrel Mountain. The leak was finished with the interior. The leak was working at the scale of objects.",
+      "t": "narrate"
+    },
+    {
+      "text": "He parked in front of The Salty Tome. He took the canvas bag with him. He left the crow on the dashboard with the window cracked. He went up the stairs. He knocked.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena opened. She was in the work clothes from the Daily Grind morning shift. The boots were by the door, the apron was over the back of the kitchen chair, the kettle was on the stove. She was, by what he could read of her face, glad to see him.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "You went to the headland.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I did.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "What.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He held up the canvas bag.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Come in.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He came in. He set the bag on the table. He took out the cloth. He unwrapped the hexagon. He laid the eight pieces on her kitchen table in the configuration he had assembled them in: six in the ring, the cedar face in the center, the AR I A piece beside.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena stood at the table and looked at it.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "That's Olaf's hand.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "How did Olaf — how did Olaf carve a piece of cedar with Aria's face on it. Olaf died in '78.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Lena. I don't know. The eighth piece showed up overnight in the duffel. The face was already on it. I — I drove up to Cape Perpetua. I — I saw her.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Lena looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "You saw her.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "On a sea-stack. In a yellow slicker. The fog lifted briefly and she was on the second stack from the headland.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I — Lena. I am not — I am not certain. The substrate could have rendered her at the stack for me the way the substrate rendered the bowl at the second station of Kestrel Mountain for Kai. I am — I am holding the possibility of it being a render.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I am also holding the possibility of it having been her. The crow said her name. The crow said Brandon and then said Aria. The crow said them in that order.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Lena sat down at the table. She did not, for a count, say anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Finn. The crow spoke English.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Two words.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "For the first time.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "For the first time.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "And the hexagon completed.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She looked at the table. The kettle whistled. She got up and pulled it off and made two cups of coffee. She brought them to the table. She set one in front of Finn. She sat down with hers.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Tem and Per.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "At the cabin still.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "She called me at six this morning. She said Marina was driving up tonight from Eugene. Marina is going to be at the cabin by ten tonight.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The four of us — and Per — are supposed to be at the cabin at five for what Tem called the conversation we should have been having since June. Tem said the conversation needed to happen before Marina got there, and that Marina coming in at ten was when the next thing would start.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I told her I would be there. I told her I would tell Kai. Kai is at the shop. He said he would come up after he closed at four-thirty.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I'll be there.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Lena. The bowls.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The bowl Kai brought out yesterday.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "He told me — he told me on the phone last night that there were two bowls on the table. The same hand. Different imagery. Aria walking past a doorway on one. Lena's octopus on one with seven and a half arms. A tower with seven floors instead of six on one.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The substrate had — Kai said the substrate had updated the imagery to include the things that have been happening since Olaf died.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He told me too.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The cedar face on the eighth piece is — Lena. The cedar face is the face inside Marit's bowl. By his description on the phone. The face Per held up at the cabin yesterday and showed the table.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The substrate is — the substrate has been giving the same face to two people across two nights. Olaf's hand carved it. The substrate has been — the substrate has been writing the face into things.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She picked up the eighth piece. She held it in her palm.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Finn. This is her.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I have been imagining her face for two days. This is her face. This is exactly her face. The set of the mouth, the curl at the temple — this is what I have been imagining.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She held it up to the kitchen window. The kitchen window was the one over the sink that looked into the alley at the Starfish Nebula. The patch had grown again overnight. The patch had taken the kite of starfish entirely. The patch had started, in the past twenty-four hours, on the section of the mural to the right of where the kite had been — the section Lena had painted as a set of sandstone arches. The arches were eating.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena held the eighth piece in front of the window with the face turned toward the mural. She did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I — I think the face on the wood is looking at the mural.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The face is closed-eyed. I know. But — by the angle of the face. By the orientation of the hair. The face is — Finn, the face is turned toward the mural.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The substrate carved the face into a piece of yellow-grained wood somewhere in the Pacific Northwest and brought the piece to my friend's apartment through a crow, and the face on the wood is — the face on the wood is looking at my mural.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I am — I am sitting with this.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She set the eighth piece back on the table. She drank from the coffee.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Finn. I have to paint over the patch.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I have been — I have been trying not to. Tem told me on Friday that the substrate was eating the painting and that painting back would only — would only give the substrate more to eat. Tem said let it eat. The eating is the substrate communicating. Watch what it eats.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I have been watching. The substrate has been eating my octopus. The substrate has been eating my kite. The substrate has now started on my arches. The substrate has been telling me, by what it has been eating, that the bottom-left quadrant of the painting is — the bottom-left is the section the substrate has been working on.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I have been watching the eating. I have been registering the message. The message is — the message is that something is supposed to be where the eating is. The substrate has been clearing the wall. The substrate has been clearing the wall for something.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I am going to paint into the cleared space. I am going to paint the thing the substrate is clearing the wall for. I am going to paint her face.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "When.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Today. After we — after the cabin tonight. I'll paint at night when the alley is quiet.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I'll need the eighth piece. I'll need to look at it while I paint. I'll need — Finn, I'll need to look at her closed eyes and paint them with the brush you used to do that one quick portrait of me you did in October that I told you I hated. I'll need that brush.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "It's at my place.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Bring it tonight.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I will.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah, Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Thank you for driving down here first.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I drove down here first because you are the painter.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "You needed to see the face before anybody else did. The other three of us have other relationships with her. You have — you have the mural. The mural is the thing the substrate has been eating. The face is — the face is what you are going to put where the eating was.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "She did not, for a count, do anything with her face.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "scene": "vol7_ch12_kai",
+      "t": "jump"
+    }
+  ]
+}

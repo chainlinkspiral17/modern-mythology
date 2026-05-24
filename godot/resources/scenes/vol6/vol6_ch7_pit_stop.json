@@ -1,0 +1,549 @@
+{
+  "id": "vol6_ch7_pit_stop",
+  "vol": 6,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — The Three Things",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_pit_stop_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Three Things",
+      "sub": "Saturday — 09:14 — Pit Stop Diner",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The back booth at the Pit Stop is the corner one, three from the kitchen, with a window that looks out on the strip-mall parking lot and the Coin Wash next door. It is the booth where, on Wednesday, Mr. Henderson had sat for forty-one minutes without ordering. It is also the booth where Eileen Henderson, this morning, is going to sit for forty-one minutes — though she will, this time, order, and she will, this time, eat, and she will, this time, by the end of the meal, be a different woman than the one who walked in."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is at the booth when she arrives."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "He stands when she comes through the door. He does not, unlike most of the Pit Stop's regulars, give the small overfamiliar diner-greeting Brenda has trained the front-of-house staff to give. He simply waits at the booth until she crosses the floor, and then he says, in the small steady voice he has been working into all morning:"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Mrs. Henderson. Thank you for coming.",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Eileen, please.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Sit, Ben. You don't need to stand for me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He sits."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse is on shift. Jesse is, deliberately, not at the front of house. Jesse is in the kitchen with the morning prep, where he has agreed, with Ben at six AM by text, to stay until Ben taps the bell on the pass-through twice — twice means come out, once means stay back. Jesse has agreed to this because he trusts Ben. He also agreed to it because he has, in the eight days since Diego went missing, been finding that there is a small specific peace in being told what to do by someone whose attention he has begun to trust. He is in the kitchen now, doing the eggs."
+    },
+    {
+      "t": "show",
+      "char": "lydia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "A waitress — Lydia, who has been at the Pit Stop nine years, who does not, in any visible way, register that this booth is anything other than a regular Saturday-morning breakfast — comes over. She takes their order. Eileen orders the egg-white scramble and a coffee. Ben orders the short stack and a coffee. Lydia leaves."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen looks at Ben."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Okay. You said over text last night you needed to talk to me about Jim.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yes ma'am.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Eileen. Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She waits."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben takes a long breath."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Three things. The first is the easiest. Your husband came in here on Wednesday at eleven-fifteen. He sat in this booth for forty-one minutes. He did not order anything. Lydia tried twice. He said no thank you both times. He looked, the entire time, like a man who was trying to decide whether to come back into the kitchen and say something to me. He did not come back. He left at eleven fifty-six. He left a ten-dollar bill on the table.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen's face does not move."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "On the back of the bill, in pencil, in handwriting I now know to be his — Jesse confirmed yesterday — there was a note.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He takes the bill out of his front pocket. It has been folded in thirds for three days. The fold is precise. He sets it on the table between them, fold up."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "You don't have to read it now.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She unfolds it."
+    },
+    {
+      "t": "narrate",
+      "text": "She reads it."
+    },
+    {
+      "t": "narrate",
+      "text": "The red light lies. I am sorry. I will come back when I can."
+    },
+    {
+      "t": "narrate",
+      "text": "Her face still does not move."
+    },
+    {
+      "t": "narrate",
+      "text": "She reads the note three more times. Then she folds the bill back along the existing creases. She puts it in her purse. She puts the purse on the bench beside her."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Okay. Second.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Second. Jesse has, since Sunday, been finding photographs in your husband's darkroom. Eight-by-ten prints. Photographs of locations in town — the Gas & Go, Meadowlark Circle, the front entrance of the subdivision. The photographs have, in them, people. Specific people. The negatives Jesse has checked do not show those people. The prints do.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at him."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, immediately, say anything."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Jesse and I have, between us, identified two of the people. One of them is a man in a charcoal suit who, in the photograph, is looking directly at the camera. Neither of us knows him. The other is a small figure — four feet tall, in a wide hat, holding a hand-rolled cigarette — that I cannot, in good conscience, ask you to take seriously, and which I am asking you to take seriously anyway.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "And the third.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "The third is — your husband is fighting it. Whatever it is. I don't know what it is. I don't know how it works. But Jesse and I both think the note on the bill is — was — your husband telling us he is trying to come back from where it has put him. We think he came in here on Wednesday because he was trying. We think he wrote the note knowing one of us would read it. We think the note is — Eileen, I think the note is the thing he could get out before whatever's using him made him stop.",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "lydia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Lydia arrives with the coffee. They both pause. Lydia pours. Lydia leaves."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen wraps her hands around her coffee cup."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "How long has this been going on.",
+      "expr": "thinking"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "With the photographs? Per Jesse — since at least the start of May. Maybe earlier.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "How long has Jesse known.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Since Sunday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "How long have you known.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Since Monday afternoon.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She nods."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "And you waited until today to tell me because — ",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Because — Eileen, this is not — this is not the only thing happening in the town this week. There has been a — there has been a kid taken. Diego Ramos. He is, as of yesterday evening, safe. We — Jesse, me, Sam Miller, Maya Daigle — we have been on it. The adults handled the rescue, but we have been holding the information. We needed to wait until the rescue was done before we could tell anybody anything new. I'm — I'm sorry. We needed Friday to happen first.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen closes her eyes for a long moment."
+    },
+    {
+      "t": "narrate",
+      "text": "She opens them."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Sam Miller. The chief's daughter.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Maya Daigle. Linda Caldwell's granddaughter.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She nods slowly."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Okay. So you four kids.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yes ma'am.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Eileen. Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She is quiet."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Ben. I want to tell you something. I want you to hear it carefully and I want you to file it, because I think you and I are about to be on the same side of a thing for some time, and I want you to know what you're working with.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I've known something was wrong with Jim for fourteen months. I have not, until now, had a name for it. I started keeping a list of things at the same time you started keeping yours. Mine is in a steno pad in the top drawer of my sewing table, behind a jar of buttons. The list is small. It has fourteen items. Item one is, October 2024 — pupils contract irregularly under bright light. Item two is, November — won't sleep more than three hours at a stretch. Item three is, December — has begun referring to the darkroom as 'down there' instead of 'the darkroom.' And so on. Item fourteen, this past Tuesday, is referred to himself, while half-asleep, as 'the eye.'",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She pauses."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I have not shown the list to anyone. I have not told my husband I keep it. I have, for fourteen months, been waiting for someone to come to me with a sentence that would let me believe my list. You have, this morning, given me the sentence.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does not, for a moment, know what to say."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Eileen. I'm sorry.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Don't be sorry, Ben. Be glad. I have been alone with this. I am no longer alone with this. That is what your sentence has done. That is what your friend Jesse has done. That is what my husband, by writing what he wrote on that bill, has done.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her coffee."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Now. Tell me what you and the kids think we should do.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben blinks."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Eileen. We're seventeen.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "You're the ones who have a plan, Ben. I'm the one who has fourteen months of evidence and no plan. You and I are going to figure out what we do. Tell me what your group thinks the next step is.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben thinks."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Step one is — you and Jesse and I sit down with Mr. Henderson when he comes out of the darkroom. We do not confront. We do not press. We let him talk if he wants to. We sit in the kitchen with him. We eat. If he wants to write things, we give him a pen. If he wants the lights off, we turn them off. If he wants to sit in silence, we sit. The note on the bill — I will come back when I can — that means he is, sometimes, coming back. Our job is to be there when he comes back.",
+      "expr": "thinking"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Step two.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Step two is — there is a man in Graustark named Frasier Temple. He runs — he runs digital things. Imps. He has been watching this town through them. He is the one who has been telling us things. He may know what is using your husband. I can ask Maya to ask him. If he knows, we will know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Step three.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Step three is — I do not have step three yet. I think step three is whatever the answer to step two is. I think we get one and two right first.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen nods."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Okay. One thing I want from you. Not from Jesse — from you. I want you to be the one who comes to the house tonight. I am going to call Jesse home from his shift at six. I am going to make dinner. I am going to keep dinner warm. We are going to wait for Jim to come out of the darkroom. When he does, you and Jesse and I are going to sit with him. Will you do that.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Thank you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yes ma'am — Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She smiles at him for the first time."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "You're a good kid, Ben. Jesse's lucky.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "We're all lucky in this group. I'm — I'm starting to figure that out.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah. Me too.",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "lydia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Lydia brings the food."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "They eat."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch7_ben_room"
+    }
+  ]
+}

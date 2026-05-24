@@ -1,0 +1,152 @@
+{
+  "id": "vol6_ch5_miller_drive",
+  "vol": 6,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "Ch 5 — Two Houses Down",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_patrol_vehicle_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Two Houses Down",
+      "sub": "Thursday — 19:41 — Meadowlark Circle",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "A patrol vehicle turns onto Meadowlark Circle. It is Chief Miller's. He is in it. He is, at this moment, not on duty. He is, at this moment, returning from a meeting at the NAPD substation in New Auburn, the meeting he asked for three hours ago, the meeting he has been preparing for since Wednesday night in the kitchen with his wife and the blue tin, the meeting whose content he will not, for some days, be able to summarize to his daughter."
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "tired",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He is driving home slowly. He passes Jesse Henderson's house. From inside the house — from the garage, with its single open vent at the top of the door — he can hear, faintly, the distorted Telecaster doing its three-chord figure. He slows further. He can see, through the strobing Christmas lights visible at the garage vent, the bodies of teenagers. He can see, in the driveway, Ben Kowalski's truck. He can see, at the curb, his own daughter's Corolla."
+    },
+    {
+      "t": "narrate",
+      "text": "He stops. He puts the patrol vehicle in park. He does not get out. He watches the garage for perhaps forty seconds. His phone, in the cupholder, is face-down. His phone has been face-down since six-fifteen, when he came out of the New Auburn meeting and made the decision to turn it over and leave it over until morning. The phone has not buzzed in the two hours since. The phone has also not buzzed because Chief Miller has, for the first time in nine years, switched off the notification routing for his encrypted line — a piece of hardware discipline that will, by Friday morning, become evidence at a meeting he does not yet know he will be attending."
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "Sammy is in there."
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "Sammy is in there with her friends."
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "I have, somewhere in the past week, stopped being the kind of man my daughter can have a safe house around. I have been telling myself for nine years that I was."
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "The safe house is the garage. The safe house is other people's parents. The safe house is, specifically, not me."
+    },
+    {
+      "t": "think",
+      "char": "Chief Miller",
+      "text": "This is okay. This is how it works."
+    },
+    {
+      "t": "narrate",
+      "text": "He shifts the vehicle back into drive. He continues down Meadowlark. He turns into his own driveway two houses down. He parks. He does not, immediately, go inside. He sits for another six minutes. His wife, at the kitchen window, is watching him through the sheer curtain. He knows she is watching him. He does not, yet, get out."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_kitchen_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He gets out, eventually, at seven-fifty-two. He goes inside. His wife has, on the counter, a fresh plate of cacciatore leftovers warmed in the microwave, a glass of red wine, and a small stack of photographs she has pulled, over the course of the afternoon, from the album in the hall closet. The photographs are of Sam, at various ages, from one through fourteen."
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He sits at the counter. He eats. He looks at the photographs."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Hon. I'm going to be gone for a while, when this is over. I just want to be ready for that."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I know, love."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "You okay with that."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "No."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "But I'm okay with you doing what you need to do. That's different."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Eat your pasta."
+    },
+    {
+      "t": "narrate",
+      "text": "He eats his pasta. From two houses down, over the faint thump of Jesse Henderson's garage band, the storm-damp evening in Harmony Creek Estates does its small settling."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch5_truck"
+    }
+  ]
+}

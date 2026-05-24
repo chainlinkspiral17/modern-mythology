@@ -1,0 +1,95 @@
+{
+  "id": "vol6_ch1_stranger",
+  "vol": 6,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "Ch 1 — The Man at the Cooler",
+  "nodes": [
+    {"t": "bg", "src": "assets/backgrounds/vol6_kwik_stop.jpg"},
+    {"t": "interlude", "text": "Kwik Stop", "sub": "Gallatin Ave · Sunday · 14:47", "duration": 2000},
+    {
+      "t": "narrate",
+      "text": "The air-conditioning at the Kwik Stop is set by corporate to sixty-eight degrees and maintained, against all local protest, by a unit on the roof that has been serviced exactly once in seven years. It does not produce cold air. It produces the memory of cold air, filtered through lint and the ghost of every hot dog that has ever sweated on the roller grill."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam Miller has been on shift since two."
+    },
+    {
+      "t": "narrate",
+      "text": "She is leaning on the counter with her elbows on the rubber anti-fatigue mat, looking at the parking lot through the window that has been decal-ed over, in three overlapping layers, with ads for a lottery game nobody she knows plays, a cigarette brand that stopped being sold in Texas in 2019, and a cheerful cartoon hamburger holding a sign that reads TASTE HOME. The hamburger has lost one of its eyes. The eye is somewhere in the decal's adhesive layer, drifting."
+    },
+    {
+      "t": "narrate",
+      "text": "Her phone is on the counter beside the register, face-up. No texts. Not from Diego. Not from anyone."
+    },
+    {
+      "t": "narrate",
+      "text": "The clock on the microwave, which is set nine minutes fast on purpose because Jen the day manager says it helps the closers, reads 14:56. Sam does the small subtraction. 14:47. She has been counting the subtraction since she clocked in."
+    },
+    {
+      "t": "narrate",
+      "text": "The bell over the door chimes."
+    },
+    {
+      "t": "narrate",
+      "text": "A man Sam has never seen before comes in. He is in his fifties. He wears a golf shirt tucked into khaki shorts. He has a sunburn on the back of his neck in the particular shape of a person who has recently begun wearing a collared shirt after a lifetime of not. He nods at Sam."
+    },
+    {
+      "t": "show",
+      "char": "stranger",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"Afternoon.\""
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "expr": "neutral",
+      "text": "\"Afternoon.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He goes to the back cooler. Opens it. Stands in front of it for a long time — longer than anyone ever stands in front of a back cooler at the Kwik Stop, because the back cooler holds the beer, and the beer is sold by the can for a dollar twenty-nine, and the kind of decision that takes a long time at that price point is not a decision that happens in Harmony Creek Estates."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "He is, she realizes, not looking at the beer. He is looking at the reflection of Sam in the cooler glass."
+    },
+    {
+      "t": "narrate",
+      "text": "Her spine goes, briefly, cold. Cold in the way the AC has stopped being."
+    },
+    {
+      "t": "narrate",
+      "text": "Then the man turns. He picks up a single tallboy of something domestic. He brings it to the counter. He hands her a five. He does not make eye contact while she rings it up. He takes his change and his beer and his receipt, and he nods again, and he leaves."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "The man gets into a white sedan parked at the edge of the lot. He does not open the tallboy. He puts it in the cupholder. He sits in the car for maybe forty seconds, looking at nothing in particular. Then he pulls out."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "The sedan has no front license plate. Texas requires a front license plate."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam picks up her phone. She types, to Diego: hey where r u. She does not send it. She deletes it. She types, instead: bored. u alive? She sends that. The message delivers. It does not, within the three minutes she watches it, show as read."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch1_gas_and_go"
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+{
+  "id": "vol6_ch6_interstate",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — The Green Pickup",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_interstate.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Green Pickup",
+      "sub": "Friday — 07:14 — Interstate 10",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The white sedan is parked on the gravel shoulder of the I-10 service road, three miles east of the exit for FM-3411. The unmarked transport van — the one carrying Diego Ramos, the one that had been driving in slow loops through southwest Texas since eleven Wednesday night, the one Claire Moyer and her partner had been three vehicles back from in shifts of six hours on, six hours off — is, at this moment, twelve miles west of their position, parked at the back of a NexCorp-branded fueling station off the FM-3411 exit, doing what Claire had calculated as a high-probability scheduled stop: fuel, driver swap, seven-minute window."
+    },
+    {
+      "t": "narrate",
+      "text": "Claire is on her phone. The earpiece is in. The conversation is with a man whose voice she has never heard in person and who, until last night, had been a contact she identified to her partner only as F. She is not, this morning, certain whether F is Frasier Temple — Maya, via Rick, had been told the name; Claire had not. Claire's instructions had been delivered, all week, through a channel that had not used names. This morning, the channel is using a name."
+    },
+    {
+      "t": "show",
+      "char": "claire",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Claire.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Frasier Temple. Hi. It's good to hear your voice.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She smiles, briefly, despite herself."
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "You too, Frasier.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Two-mile-marker north, you'll see a green pickup. It's mine. The driver is a man named Hal — bookshop guy in New Auburn, you'll like him. He's going to be your radio relay if your line goes down. He's been there since five this morning. He'll wait.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Got it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "At the FM-3411 exit, the NexCorp station. The transport van is currently parked at pump six on the back side. There are two operatives in the van. Driver and passenger. Driver is a contractor named Vince Kane — record's clean on paper, dirty everywhere it isn't, you don't need the long version. Passenger is Diego Ramos and a second contractor, name's Boyd. Boyd is the one you have to be careful about. Boyd has, in the past, been the one who hurts the kids.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Claire's jaw tightens."
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Has he hurt — ",
+      "expr": "angry"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Yes. Less than he could have. The Demons have been — interfering with Boyd's command authority all week. We have not been able to make him a complete coward, but we have made him hesitate. Diego is, by Wednesday's last assessment, beat up but not broken. Bruises, dehydration, a moderate concussion. No broken bones. He has not been — there's no sexual assault, Claire. I want you to know that going in.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Claire exhales."
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Your window is the driver swap. They're scheduled to swap drivers at zero seven thirty. Vince hands off to a third contractor, Tomé, who arrives in a separate vehicle from the south. During the seven minutes of the swap, Boyd will go inside the station to use the restroom. He always does. It is the only consistent break in the chain we've found.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Boyd's the only obstacle.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Boyd is the obstacle. Vince and Tomé will drive whoever pays them. They are not loyal. They are paid. Boyd is — Boyd has a personal investment. Boyd is the one who would pursue.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "How do you want it played.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Your partner approaches Vince during the swap, badge out, NAPD courtesy badge — Ramirez has authorized you to flash it. You tell Vince there's a federal-level investigation closing on him in forty-five minutes and that he can either walk away from the van right now and never come back, or he can be standing next to it when the federals pull up. Vince walks. Vince has done this before. He'll be a free man inside an hour and a hundred miles from here by noon.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Tomé.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Tomé arrives at zero seven thirty-three. By the time he arrives, the van is yours. He sees the van still there but he sees Vince gone and a different man — your partner — at the wheel. He'll hesitate. Claire, this is the thing I need you to do. You go to Tomé. You get in his car. You ask him to drive you to the truck stop on the next exit. You pay him, in cash, two hundred dollars, for the ride. You tell him there's been a change of plans and his services aren't needed today. You ride with him to the next exit. You get out. You walk away. You tip him another hundred. He is not, in any meaningful sense, your enemy. He just doesn't want to be standing next to a van full of trouble. Pay him to leave. He will leave.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "That's two hundred I have.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Three hundred. I am not asking you to be poor today, Claire.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Three hundred. Okay. Where's Boyd in all this.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Boyd is in the station's bathroom for nine minutes. By the time he comes out, the van is gone. Your partner and Diego will be on FM-3411, heading north, with Hal in the green pickup leading them to the safehouse. Boyd will walk out, see no van, and have a problem. Boyd will call his handlers. By the time the handlers respond, it will be eight oh-five and the van will be inside the safehouse perimeter.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Where's the safehouse.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "You don't need to know yet. Hal does. Just trust the green pickup.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Claire is quiet for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Frasier.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Why is Boyd in the bathroom for nine minutes.",
+      "expr": "thinking"
+    },
+    {
+      "t": "narrate",
+      "text": "A pause."
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Because the Demon attached to the station's plumbing system is going to give him gastrointestinal distress consistent with a moderate stomach bug. The distress will be uncomfortable but not dangerous. He will not be able to leave the bathroom for the duration of the operation. We have, ah, been working on this technique for a little while. This is the first field test.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Claire stares at her phone."
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Frasier. You — your imps can give a man a stomach bug from a hundred miles away.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Through the water supply. Yes. We were going to do something more — invasive — but we decided this would be sufficient and ethically cleaner.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Frasier.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "This is going to be the strangest morning of my life.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Frasier Temple",
+      "text": "Yeah, Claire. I know. I'm sorry. You picked the right one. Go.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Click."
+    },
+    {
+      "t": "show",
+      "char": "doyle",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Claire turns to her partner — Doyle, her partner, who has been her colleague at the Chronicle for nine years and who is, in the small administrative fact of their working relationship, her older brother. Doyle has been listening through the second earpiece."
+    },
+    {
+      "t": "say",
+      "char": "Doyle",
+      "text": "He gives people the runs through pipes.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Apparently.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doyle",
+      "text": "Claire. We are inside a story I am not going to be able to write.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Claire",
+      "text": "Yeah, Doyle. Welcome to the part of journalism nobody covers.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She starts the car. They drive west."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_kwik_stop_text"
+    }
+  ]
+}

@@ -1,0 +1,435 @@
+{
+  "id": "vol6_ch5_truck",
+  "vol": 6,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "Ch 5 — Eight Minutes",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_truck_interior_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Eight Minutes",
+      "sub": "Thursday — 21:42 — Ben's Truck",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, in the driver's seat, does not start the engine."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay. We have eight minutes. Go. What does everyone know that the others don't."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya goes first. Maya says, in a flat steady voice that surprises Sam:"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Rick told me yesterday. F.T. is Frasier Temple. He lives in a warehouse in Graustark. He is a friend of my father's. He has been running what he calls imps — some kind of software — through the electronic systems of this subdivision for some period of time. His imps are how he knows what he knows. He told Rick they are fond of me, which is an unusual sentence. He told Rick they are moving Diego tomorrow morning from the east-side building to Zone-G, whatever Zone-G is, and that the intercept happens Friday morning, and that the sedan people are handling the mechanics."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "The sedan people have a name?"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "The woman is Claire Moyer. She's with the Houston Chronicle. She is working on a piece. Her partner is — I don't know his name. I think he's her brother. My grandmother has met them. My grandmother vouched."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay. Sam?"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "nervous",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "nervous",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "nervous",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Detective Hernando Ramirez, NAPD. Came into the Kwik Stop Wednesday. Told me the PSA deleted my missing-persons report. Gave me a fake-name card. Told me to save him as Dr. Patel. Told me my dad is — and I am quoting — doing what he is told, and he is good at keeping the town quiet while he does it. He is not, as far as I can tell, the bad guy in this. He is realizing that he may have to decide which side of the road he is standing on. Ramirez is — he's a good guy. He's off the books on this. He's outside the subdivision's PSA jurisdiction."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben nods."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "And. Last night at dinner my dad — my dad told me about a safe deposit box at the Bank of New Auburn on Live Oak. Box number 287. The key is in his sock drawer. He said if anything happens to him, what I need to know is in that box. He said he is choosing the accounting. He is not dying. He said I love you. He left at seven-thirty to handle something. He came home at midnight and talked to my mom in the kitchen for four hours. I am going to be told in the morning — this morning, today — what he decided. I have not been told yet."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Jesus."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Jess?"
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "sad",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "My dad came to the Pit Stop Wednesday afternoon. He sat in the back booth for forty-one minutes without ordering. He left a ten-dollar bill on the table on the way out with a pencil note on the back. The note said: The red light lies. I am sorry. I will come back when I can. Ben has the bill. My dad is — something is using his camera. Something is using his eyes. He is fighting it. He came to the diner to be near me. He could not come inside. He sat as close as he could. That's — that's where we are."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Jess."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Your dad is a good man."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "I'm — yeah, Sam. I know. Thanks."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay. Me. I have been keeping a legal pad for three months. You can read it whenever you want. Short version: McClary backyard wrestling is an informal recruitment filter. Certain off-duty officers show up, certain parents encourage it, certain kids get evaluated. They evaluated me Saturday. My wrist brace is fake — I engineered the injury to sit out the next match. Jesse is next. Diego, I now believe, was already evaluated earlier this spring and — flagged. The red dots on his phone, Jess — they mapped specific shifts at the Gas & Go when NexCorp handoffs were happening. He saw something. He was seen seeing it. That's what got him taken. The McClary thing is — I think the McClary thing is how they've been quietly identifying kids who can be — and I hate the word — processed."
+    },
+    {
+      "t": "narrate",
+      "text": "A long silence in the truck."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I think the building on the east side that is not on any map is either a holding location or a processing location. I do not know which. I suspect both. Frasier's imps — through Rick — are running surveillance. The reporter is working on the piece that would, if published, destroy NexCorp's cover in this town. The piece cannot go public until we have Diego out, because if it goes public before, Diego does not get out. That is the timing."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "That's why Claire has been watching Sam. She's protecting the story's source — Sam is not, yet, a source, but Sam is the key to the story's credibility, because Sam is the chief's daughter."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben nods."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah. That's my read too."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "We are in a thing."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "We are in a thing."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "What do we do tomorrow."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Tomorrow is the rescue. Tomorrow is the adults. Tomorrow is not us. Tomorrow, we stay visible and normal in our usual places and we do not go near anything out of pattern. If the rescue works, Diego is in a safe house by Friday afternoon. If it does not work, we go to Plan B. Plan B is the map and the five of us and one hell of a Saturday."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "What's Plan B."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I don't know yet. I am not going to know until we see if Plan A works. Plan A is, on paper, better. Plan A is the adults. We let them."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Saturday."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah. Saturday, separately: my breakfast with Jesse's mom. She needs to know. She is going to need to be told about the bill. She is going to need to help with Mr. Henderson, because what's using his camera is — I do not know what it is, but it is not something Mr. Henderson is going to get clear of without his wife. We have to make sure Eileen is a node before the thing using him escalates."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse exhales."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "You want to tell my mother —"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "— that her husband is being —"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Ben."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Thank you."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah, Jess."
+    },
+    {
+      "t": "narrate",
+      "text": "They sit for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Friday, I — I have the six-to-two at the Kwik Stop. I am on shift when the rescue is happening."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah. On purpose. You are in a public location, visible, with Jen as a witness, doing exactly what a seventeen-year-old should be doing. That is your alibi. That is also the thing that makes your dad sleep slightly better Friday night."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "My dad is going to be involved in the rescue."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yes. In some way. I don't know which side of it. But yes."
+    },
+    {
+      "t": "narrate",
+      "text": "A long silence."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Home. Sleep. Text each other by midnight that you made it in. We regroup Saturday morning — I'll text Maya the meet time. Jesse, I'll see you Saturday at breakfast with your mom. Sam — text me Friday morning when you're on shift. If I don't hear from you by seven-thirty, I'm calling Ramirez."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Ben. My bike's here. I —"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "I'm driving you home. Truck, now. Sam and Jesse, out."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam and Jesse get out. Ben starts the engine. Maya, in the passenger seat, looks at Ben."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Thank you."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Seatbelt, kid."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya clicks the seatbelt. The truck pulls away from the curb."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch5_meadowlark"
+    }
+  ]
+}

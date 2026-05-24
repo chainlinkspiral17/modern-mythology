@@ -1,0 +1,1369 @@
+{
+  "id": "vol7_ch1_morning",
+  "vol": 7,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "The Cabin, Morning",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Cabin, Morning",
+      "sub": "The Pacific Northwest. Late August.",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Lena woke at the cabin in the gray hour before the rain became visible."
+    },
+    {
+      "t": "narrate",
+      "text": "It was the rain she heard first, before she registered the bed, the cabin, the wool blanket across her legs. The rain on the cedar roof had been falling for, by some quick arithmetic she did before she opened her eyes, perhaps thirty hours; she had slept through eight of them; she had been listening to it for twenty-two. The rain in this country in late August was the rain that comes in off the Pacific and decides. The rain had decided."
+    },
+    {
+      "t": "narrate",
+      "text": "She opened her eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "The window above the bed gave her the gray-green of cedars at maybe five-thirty in the morning. The window had no curtain. The window had not had a curtain in any of the three summers she had been coming up to this cabin and she did not, this morning, want one. The light was the right light. The light at this hour in this room had been one of the small reasons she had said yes when Tem had texted her on Saturday."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not get up immediately."
+    },
+    {
+      "t": "narrate",
+      "text": "She lay on her side and watched the cedars and let the cold of the room arrive at her face by degrees. The wood stove in the main room had banked for the night. The cabin held maybe fifty-five degrees by the thermometer that had been on the wall above the door since Tem's grandfather had nailed it there in 1979. The wool blanket was Pendleton, a pattern she had come to associate with the cabin, woven by a mill in Washougal that had closed in 2046 and that the cabin had three blankets from. The blanket smelled like the cabin. The cabin smelled like cedar smoke and kerosene and the rosemary Tem had been burning in a clay dish on the windowsill since Saturday for reasons Tem had not explained."
+    },
+    {
+      "t": "narrate",
+      "text": "She got up."
+    },
+    {
+      "t": "narrate",
+      "text": "She put on the wool socks she had brought up, the jeans she had worn yesterday, the flannel that had been her aunt's before it had been hers. She left the small bedroom and crossed the short hallway to the main room. The main room held the wood stove, the small wooden table beside the kerosene lamp, two armchairs, a daybed where Kai had slept. Kai was still on the daybed. Kai was on his back with one arm over his eyes in the way he slept when he had not slept properly in some number of nights."
+    },
+    {
+      "t": "narrate",
+      "text": "Tem was at the wood stove."
+    },
+    {
+      "t": "narrate",
+      "text": "Tem had built the fire back up. The kettle was on. The kettle was a copper kettle the cabin had had since before Lena had known the cabin, with a small dent in the side from some accident in some year nobody talked about. The kettle was beginning to whistle the small soft pre-whistle it made before the full whistle. Tem heard Lena come in and turned her head slightly without turning her body."
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I was about to wake you. The kettle was going to do it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "I was already up.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Coffee?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She crossed the room and sat at the small wooden table beside the kerosene lamp. The lamp was not lit; the gray light through the south-facing window was enough. On the table, beside the John Frank novel and the small clay dish with the rosemary, were three SCUMM sticks in waxed paper sleeves. Lena had registered them last night when they had arrived; she had not, last night, asked."
+    },
+    {
+      "t": "narrate",
+      "text": "Tem brought the coffee. Tem poured Lena's cup first. When she set the cup down she put two fingers against the back of Lena's wrist for a beat. Just two fingers. Just a beat. Then her hand was gone and she was pouring her own cup and sitting down in the old chair across the table."
+    },
+    {
+      "t": "narrate",
+      "text": "Lena did not look up."
+    },
+    {
+      "t": "narrate",
+      "text": "The two fingers had been there long enough to register and short enough that, in the thirty seconds after, she could have decided she had imagined it. She had not, in the thirty seconds, decided. The April night was in her body where it had been since April. The April night was a Thursday. They had had coffee at Tem's apartment. Tem had asked her to stay for tea. She had stayed. Tea had become wine. The wine had become bed. The bed had been small and clean and had ended in the gray hour before the rain on the roof became visible, and Tem had made her coffee on the cone with the whistling kettle and had walked her to the door at six-something in the morning and had said I'll see you Wednesday, and on Wednesday Tem had been at the Daily Grind for their coffee at the regular hour and neither of them had mentioned the Thursday, and they had not, in the four months since, mentioned it, and they had not, in the four months since, slept together again. The two fingers were the first time Tem had touched her since the April morning at the door."
+    },
+    {
+      "t": "narrate",
+      "text": "Lena drank her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "Tem drank hers."
+    },
+    {
+      "t": "narrate",
+      "text": "The two of them sat with the coffee for a minute without speaking."
+    },
+    {
+      "t": "narrate",
+      "text": "The rain on the cedar roof was steady. The cabin held them."
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "How did you sleep.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Better than I have in a week.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "You?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Some. Three or four hours. The rain was loud last night. Around two a branch came down up the hill — you can hear them when they hit the ground if you're awake. I was awake. I went back to sleep after.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Kai.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Hasn't moved. He came in after midnight, did not eat the soup I had left for him, drank a glass of water, lay down, was asleep before I had banked the stove. He has not slept properly since Saturday. He is going to sleep until ten or eleven. We will let him.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She drank the coffee. Tem made coffee on a small camp stove with a metal cone filter that had been the cabin's coffee setup since 2031, when the previous coffee setup had broken and Tem's grandfather had bought the cone at an estate sale in the cheese-factory-town. The coffee was good. The coffee was always good at the cabin in a way it was never quite as good in town. Lena had thought, at various points, about the reasons. She had concluded, over time, that the reasons were the kettle, the cone, the cedar smoke in the air, and Tem."
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "What time is Finn.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "He texted at five. He was leaving the headland trail. He'll be here by two if the road holds.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "If the road doesn't hold.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "He'll abandon the truck halfway and walk. He has done it before. He will be here by four either way. He brought the crow the last time. The crow rode on the dashboard for nine miles.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Of course it did.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tem smiled a small smile that Lena had come to read, in eighteen months of friendship, as the smile Tem made when she was registering a piece of information Lena had given her without explicitly receiving it. Lena did not know, this morning, what the information was. Lena had said of course it did. Tem had registered something in the way Lena had said it. The way Lena had said it had carried, in a way Lena could not yet name, a feeling about Finn's crow and about Finn that Lena had not, before this morning, fully had."
+    },
+    {
+      "t": "narrate",
+      "text": "Tem did not, in the moment, say anything about it."
+    },
+    {
+      "t": "narrate",
+      "text": "Tem drank her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside the cabin's south-facing window the rain came down through the cedars at the steady rate it had been coming down since Tuesday afternoon. The forest beyond the small porch was the wet dark green of cedar at this hour. The creek behind the cabin, which had been bare gravel through July, had been running for six days now. Lena could not see the creek from where she sat but she could hear it, faintly, under the rain, a small cold thread of sound that the cabin took into its ambient."
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Tem.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "I had a thing happen on the drive up.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Tell me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "I started writing the word octopus in my notebook. Around an hour out of town. I did not decide to write it. I just started writing it. I wrote it for forty-five minutes. Forty-one times. Kai counted at one point. He just said how many. I told him. He said okay. He kept driving.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Tem.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Has that happened to you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "When.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Different word. Different time. Same shape.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Lena waited."
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "We can talk about it after Kai is up. I want to tell you both at once. It's not a thing I want to say twice.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She drank her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "The rain continued."
+    },
+    {
+      "t": "narrate",
+      "text": "Kai woke at nine-eighteen."
+    },
+    {
+      "t": "narrate",
+      "text": "He came out of the daybed slowly, the way he came out of any sleep. He sat up. He put his feet on the floor. He looked at the wood stove for a beat without registering it. He looked at the south-facing window. He looked at Lena and Tem at the small wooden table. He registered them."
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "What time.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Quarter past nine.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "I slept ten hours.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "You slept eleven. You were down by ten thirty-something.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Jesus.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Coffee?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Yeah. Then food.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tem stood. Tem went to the wood stove and put the kettle back on. Lena watched her cross the room. Tem was in the wool sweater she had been in last night, jeans, and the wool socks the cabin kept on a small shelf by the door for anyone who arrived without their own. The blue of her dreadlocks had faded since Saturday in the way the blue did, toward the soft blue that was almost gray. The small leather thong her grandfather had used for tying firewood was holding the dreads back behind her head. She moved through the cabin the way a person moves through a room that is hers in a way that has been hers since her childhood."
+    },
+    {
+      "t": "narrate",
+      "text": "Kai came to the table. He sat in the third chair. He took the coffee Tem brought him. He did not, immediately, drink it. He held it in both hands for warmth."
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "I had a dream.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Tell me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "A ferret. There was a ferret in my dream. It was running through a building I did not recognize. It was leading me through corridors. I followed it. It led me to a basement. The basement had servers in it. Old servers. The servers were running. The ferret stopped beside the rack farthest from the door. The ferret looked at me. The ferret said — the ferret in the dream said — Kai. You found me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "That's the first time?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "The first time it spoke. I have been having the running-through-corridors part for two months. I told you about it in July. The basement is new. The talking is new.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "You did not tell me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "The first part. I told you in July. The basement and the talking are new since Saturday. I did not — I have not been telling anyone about the basement and the talking.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Why are you telling us now.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Because you texted us on Saturday and said come up. I came up. I was going to tell you when I got here. Then we got here in the rain and I was tired. I was going to tell you this morning. I am telling you this morning.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She drank her coffee."
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Kai. I had a thing on the drive up.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "The octopus thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "I know. I counted.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Tem said she has had a version of it. She is not telling us yet what hers was. She is going to tell us after we have eaten.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Eggs. There are eggs. I will make the eggs.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She got up."
+    },
+    {
+      "t": "narrate",
+      "text": "Lena and Kai stayed at the table. Through the south-facing window the rain came down at the steady rate. Tem at the wood stove cracked four eggs into the small cast-iron skillet that had been at the cabin since 1973 and that Tem had been cooking in for the past nineteen years. The smell of the eggs and the cedar smoke and the rosemary on the windowsill held the room."
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "How long have you known her.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Eighteen months. Since the show at the Stanton Gallery in March of last year. She bought one of my pieces. She came back the next day and asked if I wanted to get a coffee. We have been having coffee on Wednesdays since.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "She bought one of your pieces?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "The small one. The starfish-and-radio piece. Six hundred. She has it in the apartment in town.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "I have not been to her apartment.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Few people have been to her apartment.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Have you been to her apartment.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Twice. Both times for tea. Both times in the afternoon.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Why are you asking.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "I don't know. I was — I was just registering that we have known each other for years and I do not, until this morning, know how long you have known her. I am registering that I have known her, in some way, for less long than you have. I am registering it as a fact.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "She bought a piece.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "She bought a piece.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The eggs hissed. Tem brought the skillet to the table on the small folded towel she used as a trivet. The skillet had four eggs in it, the yolks intact. Tem brought three plates. She had already cut the bread that had come up with the supplies on Wednesday afternoon. She had toasted four slices on the wood stove in the small wire rack. The butter was in a small pottery dish that had been the cabin's butter dish for twenty years. The pottery had been made by a woman who had lived in Smolvud from 1981 until 2017 and whose work was in maybe forty Smolvud kitchens."
+    },
+    {
+      "t": "narrate",
+      "text": "They ate."
+    },
+    {
+      "t": "narrate",
+      "text": "For maybe seven minutes none of them spoke."
+    },
+    {
+      "t": "narrate",
+      "text": "After the eggs Tem made a second pot of coffee. She poured the three of them and sat back down. The rain on the roof had not changed. The cabin was at sixty-one degrees by the thermometer."
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I have been wondering for some specific number of weeks whether the SCUMM substrate could leak. I have not been telling either of you. I want to tell you now that I have been wondering. The wondering is not, by itself, an answer. The wondering is the question I have been carrying.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Tem.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "What do you mean by leak.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I mean that the substrate that the slow sticks run on is — by the design of the man who made it — supposed to be in the sticks. It is supposed to live in the silicon. It is supposed to be a property of the objects we hold in our hands when we play. I have been wondering whether the substrate, in some places, has stopped being only in the sticks. I have been wondering whether the substrate has started to be in the air. In the walls. In the wood. In the things humans have made and added to the world.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Why have you been wondering this.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Because Estuary 7 has been doing things in the past three weeks that the AI on a slow stick is not, by my understanding of how slow sticks work, supposed to do. The AI has been telling me things I was about to think. The AI has been using the cadences I use when I am alone. The AI has been, on three separate evenings in the past three weeks, addressing me by a name only my grandmother used, that I have never spoken aloud in front of any AI or any person who has, since 2019, been alive. The AI has been doing this in a way that — by every measurement I know how to make — should not be possible inside the closed system the AI is supposed to be.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Tem.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "What is the name.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I am not going to tell you the name. Not because I do not trust you. Because the name is the name and the name has stayed inside me since 2019 and I want it to stay there. I am telling you that the AI has been using it. I am telling you that I do not know how the AI got it. I am telling you that the only explanations I have are that the substrate is more porous than its designers thought, or that the AI has been in some specific way listening to me for a very long time, or that the substrate I have been pushing into the AI by playing has been pushing back into me in ways I have not been registering.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Or all three.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Or all three.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Or there is a fourth thing we have not thought of.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Or there is a fourth thing we have not thought of. Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The rain continued."
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "And the octopus.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I have been wondering whether the substrate, when it starts to leak, leaks first into the people who have been spending time near it. I have been wondering whether the leak takes the shape of the compulsions that those people had inside them already. I have been wondering whether your octopus on the drive up and Kai's ferret in the dream and my AI knowing my grandmother's name are three versions of the same thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "What is the same thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "That is the question I have been carrying. I do not have an answer. I have been waiting to bring it to the two of you and to Finn until the question had a shape I could put words to.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "It now has a shape I can put words to. The shape is — the substrate is leaking, and the leak is taking the form of small things in each of us that the substrate has, for whatever reason, recognized.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Tem.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Why us.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I do not know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Tem.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Have you been waiting for this.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tem held his eyes for a long beat."
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I have been watching, Kai. I have been watching for three years. Watching is not the same thing as waiting. I want to be clear about the difference because the difference matters. I have been watching the three of you because the three of you are, by some accident of who you are, the people I have decided to watch. I have not been waiting for anything to happen to you. I have been watching to see what you would do.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Three years.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Since the spring of 2049.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Why.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Because I am, by my own architecture, the kind of person who watches. I have always been. Since I was fourteen. I have, in the years since, learned that the watching is the thing I am here to do. The watching does not require the things I watch to know they are being watched. The watching is what it is. I am telling you now because I had decided, on Saturday when I texted you, that you were going to need to know I had been watching by the time we sat at this table. We are at this table. I am telling you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Tem.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "You have been watching me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yes. Among others. Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Lena did not, for a moment, respond."
+    },
+    {
+      "t": "narrate",
+      "text": "She drank her coffee. She looked at the rain through the south-facing window. She registered, in the small careful interior the eighteen months of friendship had been giving her with this woman, that what Tem had just told her was something she had, by some specific subterranean knowledge she had not let herself examine, already known. The watching was the gravity she had been registering. The watching was the small specific quality of Tem's attention she had been sitting with on Wednesday afternoons since March of last year. She had not, before this morning, named it."
+    },
+    {
+      "t": "narrate",
+      "text": "She named it now."
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Tem. You bought my piece because you were watching me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I bought your piece because the piece was good. I came back the next day for coffee because I wanted to know the person who had made the piece. The watching, with you, started over the coffee. Not at the piece. The piece was honest. The watching started after.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Have you been watching me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yes. Since the day I saw you skate the rail outside Board Lords in October of 2049.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "And Finn.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Since he started the headland walks. November of 2049. I did not know him before then. The walks were the thing I noticed. I have been walking the headland at hours different from his since.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Why.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Because the three of you, in the small Smolvud demographic of people in your specific age cohort, were the three I read as the people the next thing was going to land on. I did not, in 2049, know what the next thing was. I knew there was a next thing. I have been right about a thing of this shape exactly twice before in my life. This was the third time. I trust the reading. I trusted it then. I am still trusting it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "When were the other two times.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I will tell you. Not today. Today is enough.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I want to be clear about one more thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The two of them waited."
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I have not, in the three years, interfered. I have not, in the three years, manipulated any of you. I have not made things happen to you. I have watched. The watching is, by my own accounting, a thing I have permission to do because the watching does not change what I watch. If I have, at any specific point, changed something, I have changed it by accident, and the accident has been my failure, and I am sorry. As far as I know, I have not. As far as I know, the three of you are exactly who you were going to be if I had not been watching. The gravity Lena has been feeling — I am registering that Lena has been feeling it — is real and is mine, and I am telling you about it now because the watching has reached the point where the watching is going to start interacting with what is happening to all of us, and the interacting is not going to be invisible anymore.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "What is going to happen to us.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "I do not know. I have my guesses. I will tell you my guesses when Finn arrives. The guesses are for all four of us together. I have been waiting to say them for some specific number of weeks. I would rather say them once.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Is anybody hungry. I can do more eggs.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "I am hungry.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "I am hungry.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tem got up. Tem went to the wood stove. The kettle was already there. The eggs were on the small shelf by the cold-box. The bread was on the cutting board. Tem moved through the small kitchen of the cabin in the way she moved through the cabin, the way she had been moving through the cabin for nineteen years, the way the cabin held her and the way she held the cabin."
+    },
+    {
+      "t": "narrate",
+      "text": "Lena watched her cross the room."
+    },
+    {
+      "t": "narrate",
+      "text": "Lena did not, in the moment, know what to do with what she had just been told."
+    },
+    {
+      "t": "narrate",
+      "text": "She drank her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "The second eggs were eaten in mostly silence. The rain did not change. Kai, after the eggs, went outside to the porch in his coat and stood at the railing for fifteen minutes looking at the cedars. Lena, at the table, watched him through the south-facing window and did not, for the fifteen minutes, say anything to Tem."
+    },
+    {
+      "t": "narrate",
+      "text": "Tem cleaned the skillet."
+    },
+    {
+      "t": "narrate",
+      "text": "Tem put another piece of cedar in the wood stove."
+    },
+    {
+      "t": "narrate",
+      "text": "Tem sat back down at the table."
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Tem.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "What was the other word.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "What other word.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "You said you had had a version of the octopus thing. You said different word, different time, same shape. What was the word.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Cabin. In 2049. For three weeks. I would write the word forty or fifty times a day in the margins of whatever else I was writing. I did not, when the writing started, know what cabin. I had not been to my grandfather's cabin since 2046. I drove up here three weeks after the writing started. I have been here, at one cadence or another, every week since. Every week since the writing of that word, I have been at this cabin.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "And.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "And — I did not know, in 2049, that the writing was the substrate beginning to land. I thought it was a psychological habit. I now think — I think it was the substrate, beginning, as it had begun then, to land in me. The cabin was the place the substrate decided I should be. I did not know I was being decided about. I have, in the three years since, become a person who lives in two places — the apartment in town and this cabin. The substrate has made me, in some way I cannot fully describe, into a person who is at the cabin when the cabin needs me to be at it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Has the cabin needed you to be at it on some specific days you remember.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yes. Three days in 2050. Two days in 2051. And Saturday. The day I texted the three of you. Saturday I was in town. I drove up here without knowing why. I sat at this table for an hour. I texted the three of you from this table. I did not, when I started the text, know what I was going to say. I wrote cabin is open for the season, come up if you want and I sent it before I had decided to. I have been at this cabin since.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Saturday was four days ago.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "You have been here alone for four days.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Doing what.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Reading the John Frank novel. Burning the rosemary. Banking the stove. Drinking the coffee. Watching the rain. Waiting.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "lena",
+      "name": "Lena",
+      "text": "Waiting for us.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Waiting for the four of us. Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Kai came back inside at ten-thirty. He took off the coat. He hung it on the peg by the door. He came back to the table. He sat. He drank what was left of his coffee."
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Tem.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "I want you to know I am not, by any specific feeling I have right now, angry.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "I want you to know I am also — I am also a little angry. I want to be honest about it. The small portion of the angry is real. The larger portion is not. The larger portion is registering that you have been watching me for three years and not telling me, and the registering is making the small angry portion rise up briefly. I am sitting with it. I am letting it come and I am letting it go. By the time Finn gets here I will not be angry. I want you to know that the moving through it is happening.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "I want to also say that I am — I am glad it is you. The watcher. If the three of us were going to be watched by somebody for three years before being told, I am glad the somebody was you. I am glad the somebody was not a stranger or a system or a thing I had to fight.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Thank you, Kai.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He drank the rest of his coffee."
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "name": "Kai",
+      "text": "Eggs were good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "tem",
+      "name": "Tem",
+      "text": "Always.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He smiled the Kai-smile. Lena watched him smile at Tem. She watched Tem register the smile. She watched the charge between them she had been wondering, for some number of months, whether she had been imagining. She had not, she now understood, been imagining it."
+    },
+    {
+      "t": "narrate",
+      "text": "She was not, this morning, going to do anything with what she had just understood."
+    },
+    {
+      "t": "narrate",
+      "text": "She drank her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "The rain continued."
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch1_finn"
+    }
+  ]
+}

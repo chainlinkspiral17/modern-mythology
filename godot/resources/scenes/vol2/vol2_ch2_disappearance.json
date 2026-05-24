@@ -1,0 +1,119 @@
+{
+  "id": "vol2_ch2_disappearance",
+  "vol": 2,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "ii. Disappearances",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_small_town_road.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Disappearances",
+      "sub": "",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Disappearances occur at a higher than normal percentile in towns such as Small Wood."
+    },
+    {
+      "t": "narrate",
+      "text": "Firstly — they get noticed. As it is hard not to notice the absence when everyone knows or knows of everyone else."
+    },
+    {
+      "t": "narrate",
+      "text": "Second — the rural quality of life is a warm blanket that can both comfort and smother. When someone wants to vanish, it is very simple to do."
+    },
+    {
+      "t": "narrate",
+      "text": "Third — small towns put up the front of being a lone beacon of light amid so much darkness. At once, people flock together for company and distance themselves just so. This duality of small-town existence is a fragile and carefully designed thing."
+    },
+    {
+      "t": "narrate",
+      "text": "And finally — the most very sad and true fact about a person who disappears off the face of the map is that they are most often never heard from again. There are always exceptions — as people are so prone to prove."
+    },
+    {
+      "t": "narrate",
+      "text": "A girl by the name of Gloria Bryant was last seen tending to chickens in a coop outside her room. Because of the unusual nature of the disappearance, and the fact that she appeared to be a content young woman of the era — foul play was immediately suspect."
+    },
+    {
+      "t": "narrate",
+      "text": "In truth she had absconded with David Jarvis to his small one-bedroom home. They lived in sin for four days enjoying each other in as many ways possible. Gloria laid low in the home tending to small inside chores and errands, and waited for David in the evenings."
+    },
+    {
+      "t": "narrate",
+      "text": "The hammer fell when David revealed to the girl that he really had no feelings for her — and was not looking forward to the prospect of marriage or the remotest possibility of commitment. Jarvis made the mistake of giving the girl too much credit. She showed a casual disdain for most men, and David figured she'd tire of him as quick as he tired of her."
+    },
+    {
+      "t": "narrate",
+      "text": "He was wrong."
+    },
+    {
+      "t": "narrate",
+      "text": "Gloria was found by the side of the road — beaten and dishevelled. Her rescuer was a travelling minister by the name of Cook. Him and his wife tended to her cuts and bruises and delivered her into the safekeeping of her parents."
+    },
+    {
+      "t": "narrate",
+      "text": "Gloria was the victim of a horrible crime. An inhuman monster. She played like she had never met Jarvis before — though several citizens had seen the two trysting together previous. Her act worked, and her description of the rapist yielded a warrant for the arrest of David Jarvis."
+    },
+    {
+      "t": "narrate",
+      "text": "Jarvis caught wind of the lynch mob headed his way and managed to get as far as the port authority before a group manacled him and beat him to death. His body was delivered to the water. And that was his burial."
+    },
+    {
+      "t": "narrate",
+      "text": "But there is a further wrinkle to this narrative that begins like this."
+    },
+    {
+      "t": "narrate",
+      "text": "David Jarvis was at once both reported killed in 1910 — and working as a fisherman later that year. Unusual consistencies such as this showed up time and time again in Small Wood records. The town population hovered at around a thousand since the first official census."
+    },
+    {
+      "t": "narrate",
+      "text": "The article included the testimony of one David Jarvis, interviewed by an out-of-town paper covering the damming of the Shohshan River. I've summed up as follows."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "role": "— after his own death —",
+      "expr": "neutral",
+      "text": "The fish will die. The industry will die. And finally the very town itself will die."
+    },
+    {
+      "t": "say",
+      "char": "David Jarvis",
+      "role": "— after his own death —",
+      "expr": "neutral",
+      "text": "If this action goes forward, there is nothing nobody can do to stop it. Those of us who still have voices are coming forward to say what needs to be said."
+    },
+    {
+      "t": "narrate",
+      "text": "It is not known when or where the interview happened exactly. If the person claiming to be David Jarvis changed his name to protect his identity, or as some altogether cruel joke — but the words were writ in print and stamped with a date."
+    },
+    {
+      "t": "narrate",
+      "text": "If it was an anomaly, it was a curious one."
+    },
+    {
+      "t": "narrate",
+      "text": "If it was more than that —"
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch2_complete",
+      "val": true
+    },
+    {
+      "t": "interlude",
+      "text": "...",
+      "sub": "— end of chapter ii —",
+      "duration": 2800
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

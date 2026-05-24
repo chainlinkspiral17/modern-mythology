@@ -1,0 +1,238 @@
+{
+  "id": "vol1_ch4_dream_bar",
+  "vol": 1,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Act One — Summoned",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_dream_bar.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "A Bar That Was Not There",
+      "sub": "It assembles around you",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "Faust lands in a bar. It materializes around him as he goes through the motions of entering, sitting down, and drawing. He sketches a portrait, quickly. It comes to life with a sudden urgency."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust is now sitting across the table from this young person — tall, attractive. The man is watching Faust draw."
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Man",
+      "expr": "neutral",
+      "text": "It seems you have summoned me."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "What I just did right there is draw a picture. Plain and simple."
+    },
+    {
+      "t": "say",
+      "char": "Man",
+      "expr": "neutral",
+      "text": "No — you clearly summoned me. Dreams have dream rules."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "You assume too much of any one thing. It is you instigating this whole encounter."
+    },
+    {
+      "t": "say",
+      "char": "Man",
+      "expr": "neutral",
+      "text": "Well — we're skipping along quick. Sort of hoped this played out the old way."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Exactly the jazz I'm working on. This table, right here. See — I'm ahead of your game, Antagonist. I know why you're here. And I'm going to lay it out early."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm going to win you to me. Not as an enemy — but as a friend who knows how to make this world so frigging awesome. I welcome your intrusion upon my life. And any attacks against my own happiness will be taken as a threat — implied, because one of us is the intruder, though I'm still not sure which."
+    },
+    {
+      "t": "say",
+      "char": "Man",
+      "expr": "neutral",
+      "text": "Not too shabby. But still — awful sloppy. Speed up. Not slow down."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust is drawing the man. He looks at his picture with strange recognition."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Not that I trust you, or want anything to do with you. But if you aren't leaving — the name is John Faust. I've got this fantastic destiny ahead of me. And I want to know who you are, and what you're hoping to do with it."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Good to meet you, John. A name I go by is Dickens Dean. And you have in fact guessed it — I am a traveller from another realm. A world much like this one. More of a time-traveller, really."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Been so many places. Done so many things. And I'm sorry if my presence here is an intrusion. Usually, my presence generates excitement and intrigue. I mostly just observe. Watch. Enjoy. Sometimes I get involved with awesome amazing people. You, sir — and your friends — may be awesome amazing people."
+    },
+    {
+      "t": "flag",
+      "key": "faust_met_dickens",
+      "val": true
+    },
+    {
+      "t": "narrate",
+      "text": "Faust extends a hand, staring across at his Nemesis. The two shake — comfortably familiar."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I feel we've met somewhere."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "In a dream, perhaps. I have a friend you need to meet."
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens beckons Joan over. She looks down at the table and realizes Faust has drawn her, too."
+    },
+    {
+      "t": "show",
+      "char": "joan",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Joan, meet John Faust. Artist — in this dream space we find ourselves."
+    },
+    {
+      "t": "narrate",
+      "text": "Joan sits next to Faust, close, looking in on the drawings."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "So you're the one people they've been talking about."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I find it strange — people are coming up to me in dreams now."
+    },
+    {
+      "t": "narrate",
+      "text": "Joan looks at Faust funny. Suddenly reality snaps into focus."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "This isn't a dream, honey."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust gets up out of his chair — drunk and staggering."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "How many have I had? I seem to have lost count."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Some first impression you are."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Where are my friends? I came with my friends."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Relax, good sir. I think the effects of Joan have just kicked in. Sit back down — I have a story to tell."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust sits. Dickens Dean signals the bar wench for more booze."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Make it quick. Feels I may wake any minute."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "This is our world. We've got you a spell."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "No spoilers."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch4_club_sharp"
+    }
+  ]
+}

@@ -1,0 +1,695 @@
+{
+  "id": "vol6_ch9_room",
+  "vol": 6,
+  "chapter": 9,
+  "type": "chapter",
+  "title": "Ch 9 — Diego's Nightmare",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_detention_room.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Diego's Nightmare",
+      "sub": "Interlude I",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "A note on form: the chapter that follows is not in its narrator's full possession of itself. Diego Ramos is, at the time these fragments occur, somewhere between a concussion and the long quiet sleep that follows it. The scenes are not in clean order. They are not in clean tense. They are presented the way Diego will, six weeks later, write them down in the small spiral notebook Sam will buy him — out of order, in pieces, not, finally, complete. What follows is the closest thing to a record of those five days he will ever, at his choosing, allow."
+    },
+    {
+      "t": "interlude",
+      "text": "Inside a Room, Number Unknown",
+      "sub": "Tuesday",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The room has no windows."
+    },
+    {
+      "t": "narrate",
+      "text": "The room has one fluorescent overhead, set behind a wire cage. The cage is, he thinks, less to protect the bulb than to protect the room from him."
+    },
+    {
+      "t": "narrate",
+      "text": "The bulb hums."
+    },
+    {
+      "t": "narrate",
+      "text": "The bulb hums in a way he recognizes from the gas station — the same hum the back-stockroom bulb at the Gas & Go has been making since March, the hum he had, in March, started writing the red dots in his calendar against. The hum is, he understands, the same network. The network has, since March, been broadcasting through his workplace. The network is, today, broadcasting through his cell."
+    },
+    {
+      "t": "narrate",
+      "text": "He is, he understands, inside the network now."
+    },
+    {
+      "t": "narrate",
+      "text": "He is not, he understands, going to be allowed to leave."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, in the room, know what day it is."
+    },
+    {
+      "t": "narrate",
+      "text": "He knows it is Sunday. Then he sleeps. He wakes. He thinks it might be Tuesday. He sleeps. He wakes. There is food. The food is a sandwich on a paper plate slid through the slot at the bottom of the door. The sandwich is white bread and bologna and yellow mustard. The sandwich is the same sandwich each time. He stops, after the third one, eating it."
+    },
+    {
+      "t": "narrate",
+      "text": "He drinks the water."
+    },
+    {
+      "t": "narrate",
+      "text": "The water tastes faintly of the substation hum. He does not know how water can taste of a hum. But it does."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "boyd",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "The man comes in."
+    },
+    {
+      "t": "narrate",
+      "text": "The man is named Boyd."
+    },
+    {
+      "t": "narrate",
+      "text": "He learns the man's name because Boyd, when he comes in, says — to the camera in the upper corner of the room, not to Diego — Boyd, present, beginning interview seventeen."
+    },
+    {
+      "t": "think",
+      "char": "Diego",
+      "text": "Seventeen."
+    },
+    {
+      "t": "think",
+      "char": "Diego",
+      "text": "I have been here longer than I think."
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd sits in the chair across from him. Boyd is smaller than Diego. Boyd's hands are smaller than Diego's hands. Boyd is, in some specific physical sense, not the man Diego had imagined would come into a room like this."
+    },
+    {
+      "t": "narrate",
+      "text": "But Boyd's eyes are not, Diego registers, eyes. Boyd's eyes are — are cameras. They are looking at Diego the way the eye of his shift supervisor's phone had looked at him on Saturday morning when Skip had set the phone face-up on the counter to film him while pretending to scroll."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego had, that morning, said to Skip: what are you doing. Skip had said: nothing, kid. Diego had said: Skip you are filming me. Skip had said: go finish stocking the cooler."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego had finished stocking the cooler."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego had clocked out."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego had driven home."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego had, in his bed at nine-thirty, kissed his grandmother goodnight and told her he loved her — which he had not, on a Saturday, normally said, but which he had needed, on this particular Saturday, to say."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego had, at eleven-fifty-two PM, heard a knock at his window."
+    },
+    {
+      "t": "narrate",
+      "text": "The knock had been quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "The knock had been from the man who would, two hours later, be Boyd."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "boyd",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd had said, through the window: kid. come outside. there is a problem with one of the trucks at the station. they need you to come look at it."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I am not on shift.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd had said: kid. come outside."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego had, in the small steady moment of recognizing that the request was not, in fact, a request, looked at Boyd."
+    },
+    {
+      "t": "narrate",
+      "text": "He had recognized Boyd."
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd was one of the men he had been writing the red dots against."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego had, in that recognition, understood three things at once:"
+    },
+    {
+      "t": "narrate",
+      "text": "One: he was not, after this moment, going to be allowed to be the person he had been before this moment."
+    },
+    {
+      "t": "narrate",
+      "text": "Two: his grandmother was, two doors away, asleep, and he was not, under any condition, going to bring this man into the same house as his grandmother."
+    },
+    {
+      "t": "narrate",
+      "text": "Three: the truck — his truck, his red pickup, his — was the only thing he could give them that would not be either his grandmother or himself."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Let me get my keys. I will drive.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "Good kid.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego had, from the window, said I love you, abuela into the dark of his bedroom — quietly enough that his grandmother, two doors away, would not, he hoped, hear, but loud enough that he, himself, would, in the room he was about to be taken to, remember he had said it."
+    },
+    {
+      "t": "narrate",
+      "text": "He had gotten his keys."
+    },
+    {
+      "t": "narrate",
+      "text": "He had walked out the front door."
+    },
+    {
+      "t": "narrate",
+      "text": "He had driven the truck off the property himself, with Boyd in the passenger seat, in the third gear that Boyd's grandmother heard from her window and that was, he had known even then, going to be the small specific sound that would tell her he was not the one driving."
+    },
+    {
+      "t": "narrate",
+      "text": "He had, in some final part of himself, hoped she would hear it."
+    },
+    {
+      "t": "narrate",
+      "text": "She had heard it."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "boyd",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd, in the room, asks him questions."
+    },
+    {
+      "t": "narrate",
+      "text": "The questions are about the calendar."
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd has the calendar. Boyd has it open on the table between them. The page is May. May has eleven red dots."
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd points at the eleven red dots."
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "Kid. Each of these dots is a shift. Each of these dots is a shift on which something happened at the gas station. Tell me what happened on each shift.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego does not, immediately, answer."
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd waits."
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd, after a long minute, hits him."
+    },
+    {
+      "t": "narrate",
+      "text": "It is not the worst Diego has ever been hit. The hit is, in some sense, controlled — Boyd has hit him in the ribs, not the face, with the small specific economy of a man who has been told to leave the face alone. The ribs hurt. The hit, in Diego's experience of Boyd over the next four days, is the standard hit. Boyd will use it eight times."
+    },
+    {
+      "t": "narrate",
+      "text": "Each time, Boyd asks the same question."
+    },
+    {
+      "t": "narrate",
+      "text": "Each time, Diego — eventually — answers a piece of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Each piece is, Diego is aware, more than he should give. Each piece is also, Diego is aware, less than Boyd is asking for."
+    },
+    {
+      "t": "think",
+      "char": "Diego",
+      "text": "Enough that Boyd believes Diego is being broken. Not enough that Boyd believes Diego is, in fact, broken."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego has been doing this math, in his head, since approximately the second hit."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not know whether the math is working."
+    },
+    {
+      "t": "narrate",
+      "text": "He hopes it is."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "There is a thing in the wall."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego sees it on the third day."
+    },
+    {
+      "t": "narrate",
+      "text": "It is in the corner above the door. It is a small black device, the size of a deck of cards, with a single red LED that is not, technically, on, but that is glowing — faintly, in a register Diego is increasingly able to see — at the same frequency as the bulb in the cage and the water and Boyd's eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "He understands, looking at it, that the device is the network. The device is the thing that is, in this room, the listener. Boyd is, in some sense, just the hand the listener uses."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, on the third day, stares at the device for a long time."
+    },
+    {
+      "t": "think",
+      "char": "Diego",
+      "text": "I see you."
+    },
+    {
+      "t": "narrate",
+      "text": "The device — Diego will swear this later, will write it in the spiral notebook, will not, even in the writing, be fully able to convince himself it had really happened — pulses, once, in response."
+    },
+    {
+      "t": "narrate",
+      "text": "The pulse is not aggression."
+    },
+    {
+      "t": "narrate",
+      "text": "The pulse is — Diego struggles to name it."
+    },
+    {
+      "t": "narrate",
+      "text": "The pulse is acknowledgment."
+    },
+    {
+      "t": "think",
+      "char": "Diego",
+      "text": "You are not, today, the one watching me."
+    },
+    {
+      "t": "think",
+      "char": "Diego",
+      "text": "You are something else's eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "The device pulses again."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego closes his own eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps in patches. The bulb in the cage stays on. The bulb has not, in the duration of his stay, been turned off. He sleeps when he can, in the small amounts the bulb permits."
+    },
+    {
+      "t": "narrate",
+      "text": "In one of the sleeps, he dreams."
+    },
+    {
+      "t": "narrate",
+      "text": "In the dream he is back at the Gas & Go. It is night. He is alone behind the counter. The lot is empty."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam comes in."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam is wearing her Kwik Stop apron."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Diego. I know where you are. You don't have to be afraid.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Sam. I am afraid.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "You can be afraid and not have to be alone in it. I am here. The others are coming.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Who are the others.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "You don't know them yet. You will. They are good. The biggest one will lift you. The one with glasses will make you laugh. The musician will give you songs. Be ready.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the dream, weeps."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, in the dream, leans across the counter and presses her palm against his forehead — the way she had, once, on a cold night in February, pressed her palm against his forehead at her car window when she had picked him up at the end of his shift and had made the small joke about him being feverish."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "We are coming, mi vida.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the dream, falls into the touch."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego wakes."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The bulb hums. The room is the same. The wall device, in its corner, pulses once."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, in the room, registers — with a small brave clarity that is not, he thinks, his own — that the dream had been, in some way, delivered."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, at the time, have a word for the delivery system."
+    },
+    {
+      "t": "narrate",
+      "text": "He will, when he is recovered enough to learn the word from Maya, learn it."
+    },
+    {
+      "t": "narrate",
+      "text": "The word is imp."
+    },
+    {
+      "t": "narrate",
+      "text": "The imp had come to him on the third night."
+    },
+    {
+      "t": "narrate",
+      "text": "The imp had brought him Sam."
+    },
+    {
+      "t": "narrate",
+      "text": "The imp had, in some small unkillable way, kept him."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "boyd",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "On the fifth day, Boyd comes in twice in the morning."
+    },
+    {
+      "t": "narrate",
+      "text": "The two visits are different."
+    },
+    {
+      "t": "narrate",
+      "text": "The first visit is the standard one. The same question. The same hit. The same partial answer."
+    },
+    {
+      "t": "narrate",
+      "text": "The second visit is — strange. Boyd comes in. Boyd sits. Boyd says nothing for two minutes. Then Boyd says, in a voice Diego has not, in five days, heard Boyd use:"
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "Kid. I need you to know something. I am about to get a stomach thing. It is not a normal stomach thing. It is being given to me. I do not know who is giving it to me. But I am going to be in the bathroom for a long time tomorrow morning. And during that time, the people who are coming for you are going to come. I want you to understand. I am not — I am not going to fight them. I am, in fact, going to be in the bathroom. I am telling you this so you know, when the door opens tomorrow morning, that the person on the other side of it is, in some specific sense, the friend.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Why are you telling me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "Kid. I have been hitting you for five days. I have been doing the standard work. I have a long career in this kind of work. But the device on the wall has been — speaking to me. The device on the wall has been telling me, since Wednesday morning, that I am being unmade. The device says I am being given the stomach thing as my retirement. The device says I am not, after the bathroom, going to be one of these guys anymore. The device says, if I tell you what is coming, the device will, in the bathroom, be merciful. So I am telling you. I am — I am not, kid, a good man. I am not going to pretend to be. But I am telling you because I would like to be, on the other side of the bathroom, slightly less of the kind of man I have been.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, on the cot, looks at the wall."
+    },
+    {
+      "t": "narrate",
+      "text": "The device pulses."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "I am going to leave now. The lights are going to stay on. The door is going to be locked. The next person who opens it will be your friend.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd stands."
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd, at the door, pauses."
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "Kid. For what it's worth. Your grandmother loves you. I have been listening to her on the radio in the room above this one for three days. She has been — sending Morse. She has not stopped. The Morse says: he is alive. she is here. we are coming. she has been saying it on a loop for three days. I do not know how she knows. But she knows.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, on the cot, weeps."
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd, at the door, does not, for a long second, look at him."
+    },
+    {
+      "t": "narrate",
+      "text": "Then Boyd closes the door."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The device, on the wall, pulses three times — slow, deliberate, the soft cadence of a being marking a thing for the record."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego sleeps."
+    },
+    {
+      "t": "narrate",
+      "text": "When he wakes, it is morning."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "doyle",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The door, when it opens, is opened by a man named Doyle."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch9_safehouse"
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+{
+  "id": "vol7_ch18_home",
+  "vol": 7,
+  "chapter": 18,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_kai_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Aria",
+      "sub": "Three twenty-two",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "The timer pulled him out at maybe what felt like five hours of substrate-time after he had set it. He opened his eyes.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bedroom at sixty-something. The wool blanket over him. The cap on his forehead. The crow on the back of the chair — where he had left it. The reader on the side table beeping the end-of-stick beep.",
+      "t": "narrate"
+    },
+    {
+      "text": "He sat up. He took the cap off. He looked at the crow.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Aria.",
+      "t": "say"
+    },
+    {
+      "text": "The crow tilted its head.",
+      "t": "narrate"
+    },
+    {
+      "char": "crow",
+      "text": "Aria.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "text": "He pulled the blanket off. He stood up. He reached into the shirt pocket of his shirt — which he had not, in the experience, been wearing; he had been wearing the wax canvas coat — and he registered before he reached that the cedar was going to be in his shirt pocket.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was.",
+      "t": "narrate"
+    },
+    {
+      "text": "He took it out. The cedar with the carved hand holding the bell was on his palm. The cedar was warm. The bell the size of a thimble. The hand open.",
+      "t": "narrate"
+    },
+    {
+      "text": "He held it up to the bedroom's ceiling light. The carved bell — by what Finn could read at this angle — the same bell as the bell at the bottom of the substrate's second pool. The substrate had given him the bell out of the experience. The substrate had put the bell in his pocket the way the substrate had put a bowl in Kai's pocket on Wednesday at the cabin.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow on the back of the chair was looking at the cedar in Finn's hand.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Friend.",
+      "t": "say"
+    },
+    {
+      "text": "The crow tapped the chair with its beak.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I am going to need to call Tem.",
+      "t": "say"
+    },
+    {
+      "text": "The crow tapped the chair again. Finn went to the kitchen.",
+      "t": "narrate"
+    },
+    {
+      "text": "He called the cabin's landline at three twenty-two. Tem picked up at the second ring.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "You played it.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I played it.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "What.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem. The stick was Tideline Survey, Hj. Ulrich design from '18. Brandon had been playing it. Brandon left me a notebook in the experience. He had been keeping it in the pocket of the wax canvas coat the substrate gave me as the body for the experience.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The notebook had his writing through 2050, entry by entry, until the fourth of October, four days before he died. He was at this stick — at the second pool of this stick — thirty-eight times. He met an imprint at the pool. The imprint is an old man in waders.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The old man told Brandon, on the fourth of October in '50, that there would be a person who would come to the stick after Brandon was gone, carrying Brandon's crow. The old man asked Brandon to give the crow to that person. Brandon did. The crow has been mine since November.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem — the crow.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Tell me.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem. The crow's name is Aria.",
+      "t": "say"
+    },
+    {
+      "text": "Tem did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "The old man at the pool told me. The crow has been named Aria since Brandon got her in '42. He never said the name aloud. He called her the bird for eight years. She has the same name as the daughter because — the old man said — they overlap.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The crow is one of the vessels. The crow is the bell. The crow is going to ring. The crow rings; the daughter comes. She has been preparing the sound for two years. It will come out when the right people are gathered. Quiet. One note. At a pitch the people present will feel before they hear.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The cedar.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem. The substrate gave me cedar. A hand carved on it. Open palm. Holding a bell the size of a thimble. The hand is Olaf's.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The old man told me Olaf carved it in '76 as a symbol piece for the foundation. He gave it to your grandfather to take down to Eugene. Your grandfather never took it down. The piece was in a drawer of the desk at the cabin from '76 to '42. You found it after Eddvard died. You have had it at your apartment in town for the past three years.",
+      "t": "say"
+    },
+    {
+      "text": "Tem did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The piece is at my apartment in the drawer of my writing desk in the bedroom. I have not looked at it in some months. I have not, in the three years, known what to do with it. I have been carrying the piece the way Brandon was carrying the crow. The piece has been mine.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem. The piece is also at the bottom of the second pool of Tideline Survey. The substrate moved it. The piece on the cedar in my apartment is that piece. The piece in the drawer of your desk in town is that piece.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I do not know — by what we have been figuring out about the substrate's not-distinguishing-well between objects in different places — I do not know if there is one piece in two places, or two pieces, or three. The piece in my hand right now is what I took out of the substrate. It may still be in the drawer at your apartment. It may still be at the bottom of the substrate pool.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I'm calling because the piece in my hand has the bell. That is the bell from Werner's poem. The crow is going to ring it.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Come up to the cabin. Now. Bring the cedar. Bring the crow. Bring the notebook from the inside pocket of the wax canvas coat if the substrate gave it back to you.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem. I didn't check for the notebook.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Check.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Hold on.",
+      "t": "say"
+    },
+    {
+      "text": "He set the phone down. He went back to the bedroom. The wax canvas coat had been the body in the substrate — not in the bedroom. He had been on the bed in his thermal and his jeans the whole time. He went to the closet. His own wax canvas coat was on the hook. He patted the right outside pocket.",
+      "t": "narrate"
+    },
+    {
+      "text": "The notebook was in his pocket. The notebook was Brandon's notebook from the substrate. Leather-bound. The size of his palm. It had been in the pocket of the substrate's coat the whole experience and was now, on the hook in his closet, in the pocket of his own actual coat.",
+      "t": "narrate"
+    },
+    {
+      "text": "He took it out. He went back to the phone. He picked it up.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Tem. The notebook is here. The substrate gave me the notebook too. Brandon's writing. The thirty-eight entries from January to October of 2050. In my hand.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Get in the truck. Come up. Now.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I will.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Bring the crow.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I am bringing the crow.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I'll have Cale meet you at the trailhead with a hot drink. Cale is at the cabin. He'll drive down. You will not be alone on the cabin road. I don't want you alone on it right now. Cale will be at the trailhead at four-fifteen.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem. Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I'll see you.",
+      "t": "say"
+    },
+    {
+      "text": "He hung up.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went to the bedroom. He put the cedar piece in a folded handkerchief from the dresser. He put the handkerchief in the right outside pocket of his actual wax canvas coat alongside the notebook. He put on the coat. He put on the boots.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went to the kitchen table. The crow was still in the bedroom on the back of the chair. He went back. He held out his arm. The crow walked from the chair to his sleeve and up to his shoulder.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Aria.",
+      "t": "say"
+    },
+    {
+      "char": "crow",
+      "text": "Aria.",
+      "t": "say"
+    },
+    {
+      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "He carried the crow out to the truck. The crow walked from his shoulder to the dashboard. He got in. He turned the engine. He drove.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

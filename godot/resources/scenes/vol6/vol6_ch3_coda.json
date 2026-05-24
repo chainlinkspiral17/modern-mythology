@@ -1,0 +1,155 @@
+{
+  "id": "vol6_ch3_coda",
+  "vol": 6,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Ch 3 — Rick Reads the Note",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_cosmic_back_office_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Outside, the subdivision hums.",
+      "sub": "Tuesday → Wednesday",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, the subdivision hums. The water tower has completed its Tuesday cycle. The NexCorp substation on Gallatin is drawing its overnight load. The cats — registered and unregistered — are doing what cats do."
+    },
+    {
+      "t": "show",
+      "char": "rick",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "In the back office of Cosmic Comics, Rick — who does not sleep much and does not, on Tuesday nights, sleep at all until midnight — is sitting at the desk with the lamp on and a small folder in front of him. The folder contains the contents of the envelope Maya delivered on Monday."
+    },
+    {
+      "t": "narrate",
+      "text": "The folder contains three things."
+    },
+    {
+      "t": "narrate",
+      "text": "The first is a hand-drawn map of the east side of Harmony Creek Estates, with a single building circled in red ink — the building not on any map."
+    },
+    {
+      "t": "narrate",
+      "text": "The second is a single Polaroid photograph, dated 1974, of a young man in a denim jacket standing in front of a storefront in what had, at the time, been Graustark. The young man is holding a camera. The young man is smiling."
+    },
+    {
+      "t": "narrate",
+      "text": "On the back of the photograph, in careful handwriting that matches the handwriting in Maya's grandmother's letters, it reads: This is the one. This is my husband. His name was Thomas. He took a picture he was not supposed to take. I am going to find the people who cost us the fifteen years, and they are not going to cost anyone else."
+    },
+    {
+      "t": "narrate",
+      "text": "The third is a note, in a different hand — the hand Rick has recognized for twenty-four years, the hand of the voice on the phone, the hand of the person who goes by F.T.:"
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "role": "— letter · F.T. —",
+      "expr": "neutral",
+      "text": "Rick — give Maya the map on Sunday night, photograph only, not the Polaroid and not the grandmother's note. The grandmother will tell her about Thomas herself, on her own timing. The map is all Maya needs right now."
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "role": "— letter · F.T. —",
+      "expr": "neutral",
+      "text": "The sedan people are handling what they need to handle. I will meet them in person when I can. Tell them I said hi if they ask."
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "role": "— letter · F.T. —",
+      "expr": "neutral",
+      "text": "One more thing. The kid Ben is running parallel without knowing. Do not contact Ben yet. Let Jesse bring him to the group Saturday. Ben will accept better from a peer than from us. Don't skip this step."
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "role": "— letter · F.T. —",
+      "expr": "neutral",
+      "text": "The Ramos boy is alive and is in the building on the map. We have eight days before they move him. Probably less."
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "role": "— letter · F.T. —",
+      "expr": "neutral",
+      "text": "— F.T."
+    },
+    {
+      "t": "narrate",
+      "text": "Rick reads the note twice. He folds it. He puts it back in the envelope. He puts the envelope in the small fireproof box under the desk — the one the store was sold with in 1984 and that Rick has never, in forty-two years, opened for its official purpose."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns off the lamp. He sits in the dark."
+    },
+    {
+      "t": "think",
+      "char": "Rick",
+      "text": "Thomas. Jesus. Fifteen years. Eight days. We're going to need everything."
+    },
+    {
+      "t": "narrate",
+      "text": "He stands. He locks up. He goes home."
+    },
+    {
+      "t": "narrate",
+      "text": "The shop, behind him, hums in its low persistent way, and the cat — which has been sitting on the roof of the building next door all evening, unseen — stretches once and continues its rounds."
+    },
+    {
+      "t": "narrate",
+      "text": "Tuesday ends. Wednesday, as promised, will bring the thunderstorm."
+    },
+    {
+      "t": "narrate",
+      "text": "The five of them, without knowing they are five yet, sleep in five separate beds across a subdivision that has not, in twenty-eight years, been the kind of place where teenagers who have noticed things live through the summer without, in the end, having to do something about it."
+    },
+    {
+      "t": "narrate",
+      "text": "The High Priestess, between her pillars, breathes."
+    },
+    {
+      "t": "narrate",
+      "text": "The scroll in her lap has, on its visible half, the letters B-O-O-K. The other half — the half under her robe — has, for the first time in Sam Miller's life, her own name."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not know this yet. But she will."
+    },
+    {
+      "t": "flag",
+      "key": "vol6_ch3_complete",
+      "val": true
+    },
+    {
+      "t": "interlude",
+      "text": "— end of chapter 3 —",
+      "sub": "Last Seen at the Circle K (Or Was It?)",
+      "duration": 2800
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

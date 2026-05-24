@@ -1,0 +1,102 @@
+{
+  "id": "vol7_ch8_finn_speaks",
+  "vol": 7,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Ch 7 — Finn Speaks",
+  "nodes": [
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"I'm not — I'm not mad.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"I know.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"I'm not. The Roy thing this morning is going to take me a minute to come down from. I am still hot. I want you to know my saying this is not me being hot. This is me trying to be honest with you the way you are trying to be honest with us.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"Yes.\""
+    },
+    {
+      "t": "show",
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Finn, who had been eating, set his spoon down."
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"Tem.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"Yeah.\""
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"I want to add one thing to what Kai said, and then I'm done.\""
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "\"Go.\""
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"You did not have to be ready by yourself. You decided you did. The deciding was not — Tem, the deciding was the loneliness. You have been lonely with this for two years and you didn't have to be. We were all here. You could have walked into Board Lords any day in 2050 and said Kai, something is happening with the patches, and he would have said all right, what do you need. You could have come into the Daily Grind and said the same thing to Lena. You didn't. You decided not to. The deciding was the thing.\""
+    },
+    {
+      "t": "say",
+      "char": "Finn",
+      "expr": "neutral",
+      "text": "\"I am not — I am not blaming you for the deciding. I have been quiet about my own things for years and I am not in any position to blame you. I am saying that the wait was lonely and the loneliness was a thing you chose, and I am sorry it took until this weekend for any of us to be in a room with you about it.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Tem was quiet for a long count."
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "softening",
+      "text": "She said, \"Yeah, Finn.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She picked up her spoon. She finished the soup."
+    },
+    {
+      "t": "flag",
+      "key": "vol7_ch7_apology_heard",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch8_roy"
+    }
+  ]
+}

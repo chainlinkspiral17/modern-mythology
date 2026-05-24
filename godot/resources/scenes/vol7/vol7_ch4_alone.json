@@ -1,0 +1,149 @@
+{
+  "id": "vol7_ch4_alone",
+  "vol": 7,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Tem at the Cabin",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 4",
+      "sub": "Tem at the Cabin",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Tem drove up alone after she left Lena's apartment. The road climbed the way it climbed. Sitka stand, alders, cedars, the switchbacks above the third creek crossing where the asphalt gave out and the gravel started. The wagon ran.",
+      "t": "narrate"
+    },
+    {
+      "text": "She was replaying what she had said.",
+      "t": "narrate"
+    },
+    {
+      "text": "Not the I want it to be a thing again. That had needed to be said and she had said it back when Lena had said it first, and she could live with that. What she was replaying was everything before. The morning's whole careful management.",
+      "t": "narrate"
+    },
+    {
+      "text": "The way she had drawn the conversation toward the painting and toward Jorgen instead of toward the thing in the room she had walked in with — the thing she had carried up the stairs to Lena's apartment last night and put down on the couch with her bag and pretended was not there. The April thing. The fact of it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had spent two and a half hours over coffee orchestrating the topic until Lena had been the one who put it on the table, and then she had let it land as if it were Lena's revelation and not also her own.",
+      "t": "narrate"
+    },
+    {
+      "text": "I have been waiting for you, she had said. As if the waiting had been a courtesy. As if she had not been hiding behind the waiting for five months because the waiting was easier than reaching.",
+      "t": "narrate"
+    },
+    {
+      "text": "She gripped the wheel through the second switchback and let the road have her attention for a minute.",
+      "t": "narrate"
+    },
+    {
+      "text": "The thing about Lena, she thought, was that Lena had been the more honest one. Lena had said the half-sentence about the teacher at Petra's last winter and had been ready, that day, to say more — Tem had seen it — and Tem had changed the subject.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena had asked, in March, whether Tem wanted to come up to the cabin for a weekend, and Tem had said the cabin was not a weekend kind of place. Lena had not asked again. Lena had been ready, again and again, and Tem had been the one who had not.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem had been the older woman in the room and the older woman in the room had been the coward.",
+      "t": "narrate"
+    },
+    {
+      "text": "And then in the same morning she had gotten up the nerve to admit she wanted Lena and had also delivered a long managed clarification about ethics and asymmetry that Lena had heard for what it was, which was Tem trying to be, on the way to admitting she wanted her, the kind of person who could deserve to.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena had been kind about it. Lena was kind. That did not make the managing less of what it was.",
+      "t": "narrate"
+    },
+    {
+      "text": "The wagon climbed. By the time the road came out of the alders into the Sitka stand below the cabin clearing she had stopped replaying and started watching the road. The rain had picked up in the last quarter hour. Two small branches were down at the second-to-last bend and she went around them.",
+      "t": "narrate"
+    },
+    {
+      "text": "She got to the cabin at twelve-forty.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "The wood stove had been out since Thursday evening. The cabin was at fifty-eight by the thermometer above the door. She built the fire back up with the cedar in the basket beside the stove, set the kettle, sat at the small wooden table beside the kerosene lamp, and let the cabin come up to temperature around her.",
+      "t": "narrate"
+    },
+    {
+      "text": "She made coffee at one and drank it at the table. Through the south window the rain came down through the cedars at the rate it had been coming down all week. The creek behind the cabin was running. The forest dripped.",
+      "t": "narrate"
+    },
+    {
+      "text": "She was thinking about the painting Lena had described. Six by eight. Eleven underpaintings. The scraped section in the lower right. Lena standing in front of it for two years. Tem had never seen it — Lena had not, in eighteen months, invited her to the studio — and now in her head she was building it out of what Lena had said and trying to read what she was building.",
+      "t": "narrate"
+    },
+    {
+      "text": "There were two readings. The first was Lena's, which was that the painting after the breakthrough painting was the hardest one a painter ever made and that two years of failing at it was just what the work cost.",
+      "t": "narrate"
+    },
+    {
+      "text": "The second was that the studio behind the Daily Grind was three blocks from the Starfish Nebula alley and that the patches in the alley had been on the wall since at least March and that the substrate had been in the alley for six months and the studio's north window opened on the same alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "Substrate did not respect interior walls. Substrate did not respect a north-facing window. If the substrate had been in the alley, it had been, by some quiet diffusion, in the studio. If it had been in the studio it had been in the underpainting.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena had been laying paint over substrate-leak for six months at minimum and possibly longer, and the painting had been failing because Lena had been trying to make a coherent surface on top of a ground that had not, in some way no painter had any reason to anticipate, agreed to be a ground.",
+      "t": "narrate"
+    },
+    {
+      "text": "Both readings could be true. Tem thought both probably were. She did not know how to tell Lena either of them. She had told Lena to go to Jorgen instead — the window is now — and the telling had been her way of getting Lena out of the studio and out of the alley and up the river to a place where, whatever the painting did or did not do, it would not be done in proximity to a substrate-leak.",
+      "t": "narrate"
+    },
+    {
+      "text": "Which was a thing Tem had no right to engineer for someone else. Lena got to decide where she painted. Lena got to decide where she lived.",
+      "t": "narrate"
+    },
+    {
+      "text": "She thought about how she would not tell Lena about the second reading and registered the not-telling as another small piece of management she was going to have to learn to stop doing.",
+      "t": "narrate"
+    },
+    {
+      "text": "She drank her coffee.",
+      "t": "narrate"
+    },
+    {
+      "text": "She heard the truck before she saw it.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch4_finn",
+      "t": "jump"
+    }
+  ]
+}

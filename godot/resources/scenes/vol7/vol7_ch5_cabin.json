@@ -1,0 +1,670 @@
+{
+  "id": "vol7_ch5_cabin",
+  "vol": 7,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "Sunday Morning",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_finn_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 5",
+      "sub": "Sunday Morning",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "text": "Finn lived in a one-bedroom above the kayak shop on the connective stretch between old-Yachats and old-Waldport. The shop had been closed since 2048 when the owner went back to New Zealand. The building belonged to the foundation now and the foundation rented the upstairs apartment to Finn for the local-token rate and a standing arrangement that Finn would unlock the building for the foundation when they needed the downstairs.",
+      "t": "narrate"
+    },
+    {
+      "text": "The building was three blocks from Board Lords if you cut across the small wood by the path. Kai cut across. He was at Finn's door at eleven-twenty-six.",
+      "t": "narrate"
+    },
+    {
+      "text": "He knocked twice. Nothing. He knocked again. He could hear the radio going faintly through the door. He tried the knob. It turned. Finn never locked it during the day.",
+      "t": "narrate"
+    },
+    {
+      "text": "He went in.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Finn was at the small kitchen table with three pieces of charred wood laid out on a folded cloth in front of him. The crow was on the back of the chair across from him. Both of them looked up when Kai came in.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "text": "Phone.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Battery's dead. I plugged it in five minutes ago. Why.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Roy Hummel just came into the shop.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Who.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hawaiian shirt guy. South end. The creep my mom told me about when I was eighteen. He came in at eleven-oh-six and asked me, on behalf of someone he wouldn't name, whether you have been in possession of materials belonging to the museum-town historical society.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn looked at the pieces of wood on the table.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Materials.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "That's the word he used.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Did he say what materials.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He said they didn't say.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Did he say who they was.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He said it didn't matter.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn ran his hand along the edge of the table for a count and then put both hands flat on it.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Sit down.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai sat. The crow on the chair-back did not move.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "He came in at eleven-oh-six and asked you about me.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Specifically.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Specifically. Used your name. Knew about the headland. Knew you were my friend.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Did he ask anything else.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "No. He asked the question. I told him I didn't know what he was talking about. He said he'd tell them I didn't know. He left.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "How long was he in the shop.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Ninety seconds. Maybe two minutes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem went to the museum-town to see Brandon Tillman in 2050.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tem went where.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem met a man named Brandon Tillman three times in 2050 at the museum-town museum. Brandon was a man who had been investigating something. Tem told me about it yesterday afternoon at the cabin. Brandon died a year ago. The wood the crow has been bringing me — these three pieces — Tem thinks they are pieces of evidence Brandon collected. Tem thinks Brandon meant for them to come to me. The crow used to belong to Brandon, by Tem's reading. Brandon trained the crow to bring me the wood after he died. It has been doing that for nine months.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai looked at his friend across the table.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "You were going to tell me when.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Today. Tem is having all of us at the cabin tonight. She's going to tell you and Lena what she told me yesterday.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "That's why she wanted us all up there.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "That's why she wanted us all up there.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai looked at the wood. The three pieces did fit. He could see the joins. The grain was a yellow he had not, in his life, seen in any of the local woods.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "And the museum-town historical society.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I don't know. Tem didn't mention them. She mentioned the museum. The historical society isn't the museum. They might be connected. They might not be. I don't know who Roy is asking on behalf of and I don't know what they think they want.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "They want the wood.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "That's a guess.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "It's a good guess.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "It is.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai rubbed the back of his neck. He was angry in a way he had not been angry in some years. The anger was not at Finn. The anger was at Roy and at whoever Roy was working for and at the fact that he had been asked, in his own shop on a Sunday morning, to inform on a friend. The anger was also, in a small and less identifiable way, at himself — he had said Finn's my friend in the first ten seconds of the conversation and that was a piece of information Roy now had that he had not had before he walked in.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "I gave him that you and I are friends.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "He probably knew.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He did know. He said it before I confirmed it. But I confirmed it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "It's all right, Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "It is not all right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn looked at him.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "What would you have done differently.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai thought about it. He could have not answered. He could have said I don't know who you're asking about. He could have walked Roy back out the door. He could have laughed in the man's face and made him leave. But Roy already knew. The shop's front window faced Main. Roy had probably watched Finn come into Board Lords on Friday morning. Roy had probably been watching for months. The information that Kai and Finn were friends was not a thing Kai had given Roy this morning. The information had been Roy's already, and Roy had led with it, and Kai had confirmed the obvious because the obvious was the obvious.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Nothing. I would have done nothing differently. The conversation was a setup. He came in to ask the question and the question was the message. He wanted me to know they were asking. He didn't care about the answer.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "What was the message.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "That they're watching us. That they know which of us is which. That the question is going to come around again.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn nodded slowly.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Tem said yesterday afternoon she was scared. I thought she was being honest. I didn't think she was being accurate. After Roy this morning I think she was being accurate.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tem is scared.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem is scared.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "The crow on the chair-back lifted its head and turned to look at the door. Both of them looked at the door. Nothing happened. The crow looked back at the wood on the table.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "What do you want to do.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Go to the cabin early. Don't wait until tonight. Get up there now and tell Tem what just happened. Then we wait for Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn stood up. He wrapped the three pieces in the wax paper. He put the package in the inside pocket of his coat. He pulled on the boots. He pulled on the coat. The crow flew from the chair-back to his shoulder and settled there.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I'm driving.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Your truck's at the shop.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'll get it later. The shop can stay closed today.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "They went out. Kai locked Finn's door behind them.",
+      "t": "narrate"
+    },
+    {
+      "text": "Which Finn had also never done in the four years Kai had known him, and the locking was the small thing that registered, more than anything else that morning, that something had changed.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "t": "bg"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Finn's truck was at the curb. They got in. The crow stayed on Finn's shoulder.",
+      "t": "narrate"
+    },
+    {
+      "text": "The drive out of town went past Board Lords. Kai looked at the sanderling patch through the rain-streaked window as they passed. He looked at his own shop with the CLOSED sign in the door at eleven-thirty-five on a Sunday morning. He looked at Main going by. People at the Daily Grind. A couple coming out of the Missing Link. A drone at the south end doing something with the planters outside the Charging Station. Roy Hummel was nowhere in sight.",
+      "t": "narrate"
+    },
+    {
+      "text": "They turned east at the edge of old-Waldport and started the climb up to the cabin road. For ten minutes neither of them said anything. The wipers ran. The crow on Finn's shoulder did not move. Kai watched the cedars come up to the road and pass.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "How much of what Tem told you yesterday is the kind of thing we should be worried about.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "All of it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "She's not — Kai. She has been carrying this alone for two years. She's not crazy. The bowl in the cabin has been warm since July. She let me touch it. It's warm. I touched it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "There's a tower.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "What tower.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The tower above old-Yachats. The glass house up the bluff. Nate Dean's tower.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "What about it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tem thinks the patches are leaking from the tower. She has not gone to the tower. She has been afraid of it. The man who used to own the tower is dead. The tower has been sealed since 2042. Tem thinks something is happening in the tower. Brandon Tillman was investigating it. Tem knew Brandon. The wood on the table is from whatever Brandon was investigating.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai thought about the tower. He had seen it from the highway every time he had driven north for the past sixteen years. He had skated the access road as a sixteen-year-old and gotten stopped at the gate by a drone that had asked him, in a synthesized voice, to please leave. He had laughed about it for weeks. He had not, since, thought about the tower as anything other than a fact about the town. The tower was a thing on a bluff. The tower was the tower.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "And Roy is asking about us because of the tower.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "That's a guess. It's a good guess.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The road climbed. The rain did not change.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "They got to the cabin at twelve-twelve. Tem was on the porch with a coffee in her hand. She had heard the truck on the road and come out to see who it was. When she saw it was Finn's truck and that Kai was in the passenger seat she set the coffee on the porch railing and waited.",
+      "t": "narrate"
+    },
+    {
+      "text": "They got out.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "tem",
+      "text": "What.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "A man named Roy Hummel came into Kai's shop forty minutes ago and asked Kai whether I have been in possession of materials belonging to the museum-town historical society.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Roy Hummel.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You know him.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I know him.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Of course you do.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She picked the coffee back up off the railing and took a sip from it without taking her eyes off the two of them.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "Come inside. Both of you. The kettle's on. I'll call Lena.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "They went inside.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

@@ -1,0 +1,639 @@
+{
+  "id": "vol6_ch13_two_a_days",
+  "vol": 6,
+  "chapter": 13,
+  "type": "chapter",
+  "title": "Ch 13 — Two-a-Days",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_football_parking_lot_dawn.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Two-a-Days",
+      "sub": "Mid-August — 05:53 — New Auburn High School",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The truck is in the lot when Ben pulls in at five fifty-three."
+    },
+    {
+      "t": "narrate",
+      "text": "The truck is the white Ford F-250 with the camper shell and the ladder rack and the tape job on the driver's-side mirror Coach K has been meaning to replace since spring. The truck is parked at the head of the lot, in the spot that has been Coach K's for as long as Ben has been at this high school — the spot closest to the field gate, the spot the assistant principal has, every August for some years, considered painting RESERVED — KAZANTZAKIS and has, every August, decided that painting it would be an admission of something, and has not."
+    },
+    {
+      "t": "show",
+      "char": "coach_k",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "The driver's-side door is open. Coach K is at the tailgate loading the equipment cart with the morning's cones and the rope ladder and the canvas bag of mouthguards he carries to every session even though most of the kids bring their own. The cab speakers are at their usual volume, which is the volume of a man who does not, anymore, hear above eight kilohertz on his left side and has compensated by raising the master."
+    },
+    {
+      "t": "narrate",
+      "text": "The song this morning is Sweet Child o' Mine."
+    },
+    {
+      "t": "narrate",
+      "text": "It is not, by Ben's count, a My Sharona morning. My Sharona mornings are Mondays. Sweet Child o' Mine is Tuesdays and Thursdays. Eye of the Tiger is Wednesdays. Africa — Ben has not, over three weeks, placed Africa on a regular day, but Africa shows up about twice a week and always, when it does, near the end of a session."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He gets out of the Civic."
+    },
+    {
+      "t": "narrate",
+      "text": "He walks across the lot."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K does not, when Ben crosses the lot, look up."
+    },
+    {
+      "t": "narrate",
+      "text": "This is a Coach K thing. Coach K does not, in the morning, perform greetings. He is at five fifty-three doing the work of getting the cart stocked, and his relationship with the cart is the relationship a man has with the physical preparations of his job when he has been doing the job for twenty years and has decided the preparations themselves are, for him, the morning prayer. Ben has, over three weeks, learned not to greet Coach K at the truck. He has learned, instead, to walk past the truck, set his bag down at the end of the player bench by the field gate, and begin his own pre-warmup — the shoulder rolls and the static stretches he has been adding to since the second day without being asked."
+    },
+    {
+      "t": "narrate",
+      "text": "He does this now."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, at the truck, registers Ben in his peripheral vision and does not, externally, react."
+    },
+    {
+      "t": "narrate",
+      "text": "The other kids start arriving at five fifty-six."
+    },
+    {
+      "t": "show",
+      "char": "brent",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Brent Kowalski's truck is the second to pull in — Brent the senior captain, the team's center, in a black F-150 that is, like Coach K's, immaculate. Brent gets out. Brent crosses the lot the way Ben does — without greeting, with the morning gravity of a kid who has been doing this job for two years and has, by his second year, become the kid the program is built around. Brent nods at Ben at the bench. Ben nods back."
+    },
+    {
+      "t": "show",
+      "char": "tucker",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker Mitchell pulls in third at five fifty-seven in the Tacoma his father gave him in May. Tucker is six-foot-five and weighs two-sixty and has, over the past year, been the team's left tackle. Tucker crosses the lot stretching his neck and not looking at anyone."
+    },
+    {
+      "t": "narrate",
+      "text": "Marcus, Leo, Diaz, Pete, Jonah — the rest of the team filters in by six oh-two. Pete, the freshman, is the last to arrive. Pete had hesitated, last week, about coming to two-a-days. Pete's father had told him to come anyway. Pete is here."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K does the equipment cart for two more minutes. At six oh-five he closes the tailgate, turns off the cab music, locks the truck, and walks the cart to the field gate."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not say anything."
+    },
+    {
+      "t": "narrate",
+      "text": "The team falls in behind him."
+    },
+    {
+      "t": "narrate",
+      "text": "The conditioning run is three miles."
+    },
+    {
+      "t": "narrate",
+      "text": "The route is the standard one — out the back gate, across the parking lot, through the gap in the fence behind the field house, onto the asphalt road that runs the perimeter of the school grounds, three loops. The asphalt at six AM in mid-August has not yet absorbed enough of the night to be cool but is, by the day's later standards, livable."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K does not, this morning, run with them. Coach K runs with the team about half the time. The other half he stations himself at the infield where the asphalt road makes its closest pass to the football field, and watches them go past."
+    },
+    {
+      "t": "narrate",
+      "text": "This morning he is on the infield."
+    },
+    {
+      "t": "narrate",
+      "text": "He has, in his hand, a stopwatch he is in fact looking at, but the stopwatch is — Ben suspects, has suspected from the first morning — partly theater. Coach K knows the team's pace by feel. The stopwatch is the prop that gives the team the data point of we are, today, at exactly the pace we should be at, and the prop is part of the morning's ritual."
+    },
+    {
+      "t": "narrate",
+      "text": "By the second mile Tucker is hurting."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K does not, when Tucker passes the infield, say anything. The not-saying-anything is, Ben has learned in three weeks, its own form of attention. It says I see you, you are doing what you need to do, finish. Tucker, who has been at this for a year longer than Ben and has learned the Coach K register before Ben did, registers it. Tucker keeps going."
+    },
+    {
+      "t": "narrate",
+      "text": "By the third mile the team has spread out."
+    },
+    {
+      "t": "narrate",
+      "text": "Brent and Ben finish at twenty-two minutes flat. Marcus at twenty-three. Leo and Diaz at twenty-four. Jonah at twenty-four-thirty. Pete, who slows and then walks the last hundred yards, comes in at twenty-six. Tucker, last, finishes at twenty-six-fifty."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K clicks the stopwatch off."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Water. Five minutes. Then weights.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The team goes to the spigots at the side of the field."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_weight_room.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The weight room is in the basement of the gym building."
+    },
+    {
+      "t": "narrate",
+      "text": "It is small. It has, in 2026, the same equipment it had in 2008 — the year the boosters last raised money for an upgrade. The benches are old. The bars are old. The plates are old. The squat rack is old, with a missing bolt on the left upright that has been missing since at least the 2017 season and that the team has, in the years since, agreed not to mention to the assistant principal because replacing the bolt would, in the school's accounting, mean replacing the rack, and the team prefers the rack with the missing bolt to no rack at all."
+    },
+    {
+      "t": "narrate",
+      "text": "The room smells of rubber and chalk and the sweet-sour of a high school weight room in August."
+    },
+    {
+      "t": "narrate",
+      "text": "The team rotates through the stations — squat, bench, deadlift, power clean, pulldown, the auxiliary work Coach K has assigned to each player by position. Ben's auxiliary work is grip. He has been doing farmer's carries with the heaviest pair of dumbbells the school owns, which are eighty-pounders that have been at the school since 1998 and have, over the years, lost the rubber coating on their handles. In a man's hand they feel like raw cast iron with decades of grip chalk worn into the metal."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is on the squat rack at six fifty-eight when Coach K comes by."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Down five from yesterday. Don't argue.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Coach.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Down five. Your knees were tight yesterday. I saw.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does not, at the rack, argue. He pulls a five-pound plate off each side. He re-racks. He does the set at the lower weight."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K watches and does not comment further."
+    },
+    {
+      "t": "narrate",
+      "text": "He moves to the bench, where Brent is doing his second set, and watches Brent's bar path for a moment, and corrects nothing because Brent's bar path is, today, what it should be."
+    },
+    {
+      "t": "narrate",
+      "text": "He moves to the deadlift platform, where Tucker is."
+    },
+    {
+      "t": "narrate",
+      "text": "He stands there for a longer beat."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Tuck.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker, mid-pull, sets the bar down."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "You're rounding at the bottom. You know you're rounding.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Tucker",
+      "text": "Yeah, Coach.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Why are you rounding.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Tucker",
+      "text": "My back's tight from the run.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Your back is tight every morning, Tuck. You are rounding because you are not, this morning, paying attention. Pay attention. Go again. Cleaner.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker resets."
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker pulls."
+    },
+    {
+      "t": "narrate",
+      "text": "The pull is cleaner."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Better. Two more like that. Then you're done with deadlift today.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He moves on."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, from the squat rack, watches."
+    },
+    {
+      "t": "narrate",
+      "text": "He registers that Coach K's coaching of Tucker is the same coaching he gives Ben, scaled to Tucker's body and Tucker's history and Tucker's current state. Coach K does not ever give a kid a generic correction. He gives each kid exactly the correction the kid's body that morning needs. Ben has been on the receiving end of these for three weeks and has, in the past week, begun to understand that the precision of the corrections is the thing Coach K is, in fact, building his career on. The wins are not, by the program's history, going to come. But the corrections, every morning, every two-a-day, every conditioning run, do."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben re-racks the bar."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits on the bench for a moment to breathe."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, at the deadlift platform, has just turned and is walking back toward the squat rack."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Ben. Three more sets at the new weight. Then bench. Eileen made me eggs this morning. I forgot to thank her. You ever forget to thank somebody for a thing they did and have it bother you all morning?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K keeps walking."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does the three sets."
+    },
+    {
+      "t": "narrate",
+      "text": "He has, in his head, registered the sentence the way he has been registering Coach K's dropped sentences for three weeks. Eileen. The wife's name is Eileen. He had not, until this morning, known the wife's name. Made me eggs this morning. I forgot to thank her. Present tense. I forgot is past — but to thank her is unfinished. Open. Tense-ambiguous, the way a sentence gets when the speaker is, in the moment of speaking, navigating an interior thing the listener cannot see."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben files it."
+    },
+    {
+      "t": "narrate",
+      "text": "He moves to bench."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_football_field_morning.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "By seven-thirty the team is at the field gate, in pads."
+    },
+    {
+      "t": "narrate",
+      "text": "Pads are the work of getting fifteen-year-old and sixteen-year-old and seventeen-year-old bodies into the equipment they are going to be hit in. Ben does this in five minutes. Brent does it in three. Pete does it in twelve. Jonah, by way of demonstrating that he can do it in two, does it in two and finishes early and then sits on the bench with his helmet in his lap and watches Pete struggling and does not — Ben notes — offer to help."
+    },
+    {
+      "t": "show",
+      "char": "pete",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker, who is in the middle of the pack on pads-on time, looks at Pete after he finishes his own. Tucker, without saying anything, walks over to Pete and adjusts the back of Pete's shoulder strap, which Pete has crossed wrong."
+    },
+    {
+      "t": "say",
+      "char": "Pete",
+      "text": "Thanks, man.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Tucker",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Tucker walks back to the bench."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, watching this, files it."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, at the field gate, claps once."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Cones. Three lines. Brent, Ben, Marcus front. Move.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The team moves."
+    },
+    {
+      "t": "narrate",
+      "text": "The cone work is the technical part of the morning."
+    },
+    {
+      "t": "narrate",
+      "text": "It is the part Ben likes best. The cone work is the repeated practice of footwork, of stance, of the first step out of the stance, of the half-step rebalance, of the cut. Ben is — Coach K told him in week one — naturally heavy on his right foot. It is a thing Ben had not, in seventeen years, been told about himself by anybody, and which, once Coach K said it, has been the thing Ben has been working on. Three weeks in, Coach K said yesterday, the right-foot heaviness is better, but not yet."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does the cone drill."
+    },
+    {
+      "t": "narrate",
+      "text": "His first step is — by his own internal sense, which is, three weeks in, becoming a thing he can trust — better. His third step, on the cut, is the same as it has been: half-balanced on the right, the lean he has been doing since he was twelve and that has been the inefficiency in his football body the whole time he has had a football body without anyone naming it."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Ben. Right foot.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben resets."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does the drill."
+    },
+    {
+      "t": "narrate",
+      "text": "This time the right foot is — slightly — even."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Better. Again.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben does it again."
+    },
+    {
+      "t": "narrate",
+      "text": "The right foot is better still."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Okay. You'll have it by Friday. Move out, Marcus is up.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben moves out of the line. He goes to the back. Marcus does the drill. Marcus's footwork is, as always, fluid in a way Ben — at six-four and two-thirty — is never going to be. But Ben is, today, less right-foot-heavy than he was yesterday, and that is what he is going to have."
+    },
+    {
+      "t": "narrate",
+      "text": "The half-line drill is the contact part."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is at tight end on the half-line. He has been at tight end since week one. Coach K has not, in three weeks, said anything to Ben about the depth chart, but Ben has — by the small evidence of being put at TE on the half-line every day — figured out without anyone saying it that Coach K is, today, planning to put him at TE-1 when the chart goes up Friday."
+    },
+    {
+      "t": "narrate",
+      "text": "The half-line is run against the second-team defense."
+    },
+    {
+      "t": "narrate",
+      "text": "The first play is an inside zone. Ben blocks down on the three-technique. He gets there. He locks. He drives. The three-technique is Jonah, who has lost weight this summer in a way that has, by Ben's view, made him quicker but not stronger, and Jonah, on the play, gets driven back two yards before he can shed."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K, on the sideline, says nothing."
+    },
+    {
+      "t": "narrate",
+      "text": "The second play is a sweep. Ben kicks out the end. The end is Diaz. The kick-out is, by the look on Coach K's face, fine."
+    },
+    {
+      "t": "narrate",
+      "text": "The third play is a play-action. Ben chips the end and releases on the drag."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K does not, on this play, say anything either."
+    },
+    {
+      "t": "narrate",
+      "text": "The drill goes for fifteen plays. Ben is on the field for all fifteen. By the eleventh play he is fully sweating in the kind of way that only happens in pads in mid-August in Texas after a three-mile run and forty-five minutes of weights. By the fifteenth play he is — by his own internal sense — at the edge of what his body has, this morning, to give."
+    },
+    {
+      "t": "narrate",
+      "text": "Coach K calls the drill at the fifteenth play."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Water. Two minutes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The team goes to the sideline."
+    },
+    {
+      "t": "narrate",
+      "text": "Brent finds Ben at the cooler."
+    },
+    {
+      "t": "say",
+      "char": "Brent",
+      "text": "Hey.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Brent",
+      "text": "You been at tight end all week.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Brent",
+      "text": "You see what he's doing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben drinks from the cooler. He sets the cup down."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Brent",
+      "text": "Friday.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Brent nods."
+    },
+    {
+      "t": "say",
+      "char": "Brent",
+      "text": "Good. You're ready.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Brent walks away."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben drinks again. He fills a second cup. He drinks that one too. He goes back to the bench."
+    },
+    {
+      "t": "narrate",
+      "text": "The morning ends at eleven oh-three."
+    },
+    {
+      "t": "narrate",
+      "text": "The conditioning at the end is light, a two-lap jog. The team does it in eleven minutes. Coach K, at the infield, does not click the stopwatch this time. Africa is on the cab speakers from the truck across the lot — Coach K had unlocked and opened the truck for the last drill, music as the closing ritual. Ben had registered the song from a hundred yards out."
+    },
+    {
+      "t": "say",
+      "char": "Coach K",
+      "text": "Good. Water. Hit the showers. Friday at noon for the chart.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "The team disperses."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben goes to the field gate, picks up his bag, walks to the locker room. He showers. He changes into the jeans and the t-shirt he had brought. He walks out to the Civic at eleven thirty-six."
+    },
+    {
+      "t": "narrate",
+      "text": "The Civic is parked four spaces down from Coach K's truck. The truck is still there. Coach K is, at the truck, talking to Coach Dale — who has driven up at some point in the last twenty minutes and parked his pickup behind Coach K's. The two of them are at the tailgate. Coach Dale has a folder open."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, on his way to the Civic, does not interrupt them."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets in."
+    },
+    {
+      "t": "narrate",
+      "text": "He drives."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch13_home"
+    }
+  ]
+}

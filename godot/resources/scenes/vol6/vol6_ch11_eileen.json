@@ -1,0 +1,578 @@
+{
+  "id": "vol6_ch11_eileen",
+  "vol": 6,
+  "chapter": 11,
+  "type": "chapter",
+  "title": "Ch 11 — Tomorrow, Five AM",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_back_porch.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Tomorrow, Five AM",
+      "sub": "08:03 — 1428 Meadowlark Circle",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "bianca",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "At eight oh-three the doorbell rings."
+    },
+    {
+      "t": "narrate",
+      "text": "She is not, at eight oh-three on a Monday morning, expecting anybody."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets up. She puts the coffee cup down on the wicker chair's arm. She crosses through the kitchen to the front of the house. She opens the door."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_kitchen.jpg"
+    },
+    {
+      "t": "show",
+      "char": "bianca",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "eileen",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen Henderson is on the porch."
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen is in jeans and a sleeveless blouse. Eileen has, in her hand, a paper bag from the bakery on Magnolia."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Bianca. I am — I am sorry to come by without calling. I was driving back from the bakery. I thought of you. I have, in this bag, two cinnamon rolls and one of those cheese danishes. I am willing to share. May I come in for half an hour.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca looks at her."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca, who has been, this summer, accepting fewer such drop-ins than her former self would have, and who has been telling herself it was because she was doing the four-thirty work, but who has also been suspecting, in the small honest part of her interior she has been getting better at consulting, that the not-accepting was because her former self had been the one with friends, and her current self has not yet quite figured out how to be the one with friends in the new arrangement —"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Eileen. Yes. Come in. I made coffee already. There's a second pot.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen comes in."
+    },
+    {
+      "t": "narrate",
+      "text": "The two of them go to the kitchen."
+    },
+    {
+      "t": "narrate",
+      "text": "They sit at the kitchen table."
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca, this time, sits in her own chair. The same one she had sat in for the French toast. Eileen sits across from her — in Mike's chair, which neither of them, Bianca notes, has commented on. Eileen has put the bakery bag on the table between them. Bianca has poured two coffees. Eileen takes hers black."
+    },
+    {
+      "t": "narrate",
+      "text": "For a moment they sit."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Bianca. How are you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca thinks."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I am — I am at four eleven on most mornings. I am working on it. I am okay. I am not okay. The four-thirty hour is the hour I am, on purpose, doing something other than the tape. The tape is — the tape is a thing I have stopped trying to argue with. It plays. I let it. It is not, today, the project. The project is the four-thirty hour.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen nods."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "You?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen thinks."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Jim is — Jim is doing okay. He is in the photography class. He likes it. He is at week four of the six. He has been taking pictures of small things — the back fence, the cat next door, his own coffee cup. He develops them in the basement. The basement, by the way, has been properly vented since July. The smell is gone. I never, until July, knew how much of my last fourteen months had been the smell. The smell is gone and I am sleeping. I sleep most nights now.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Good.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "And you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen pauses."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Bianca. I am — I am okay. I am, also, four-thirty awake some mornings. Different reason, same hour. I have been thinking — Bianca. I have been thinking about the fact that there are, in this town, several women who are, on most mornings, four-thirty awake for one reason or another. And I have been thinking that the four-thirty hour might — might be a thing some of us could, sometimes, do together.",
+      "expr": "thinking"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Eileen.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I am not — I am not proposing anything. I am floating. I am floating because I had the cinnamon rolls and I thought of you. I am — Bianca. I am thinking that, sometimes, on some Tuesdays, two or three of us could come over here at five in the morning with coffee, and we could sit at this table, and we could not, for an hour, perform okay for each other. We would not fix anything. We would just be the women at the four-thirty table. And then at six thirty we would all go home and I would put Jim's lunch together for the day and you would start your morning for Sammy and Anita Kowalski would go to bed because she'd be coming off the night shift. It would be — it would be a small thing. It would not be a group. It would be the small thing it would be.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca, at the table, does not, for a long moment, respond."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks about her mother's wicker chair on the back porch."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks about the radio in her brother's house in Houston."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: the four-thirty hour has been mine. I have been, on purpose, alone in it."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: it has been, in the way of being alone in it, the thing that has, this summer, been working."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: and now Eileen Henderson is sitting at my kitchen table at eight oh-three on a Monday morning with a bag of cinnamon rolls and is, in her gentle way, asking whether the four-thirty hour might also, sometimes, be the four-thirty table."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, finally: I am going to say yes."
+    },
+    {
+      "t": "narrate",
+      "text": "She is, she registers, slightly surprised by this."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not, at four eleven, predicted that she was going to say yes to anything today."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Eileen. I would like that. Not — not every morning. Not even most. But once in a while. Yes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen smiles."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Good.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Tomorrow?",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca laughs. It is the first laugh she has had this morning. The laugh is small and surprised and real."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Eileen. Tomorrow.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Five AM.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Five AM.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I'll bring the coffee.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I have plenty of coffee.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I'll bring it anyway. The kind I like is from the place on Magnolia. You'll like it.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen reaches into the bakery bag. She takes out a cinnamon roll. She puts it on the small plate Bianca had set in front of her. She does not yet eat it."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Anita Kowalski is on the night shift tonight. She is off tomorrow morning. I am going to, when I leave here, drive over to the Kowalskis' and see if Anita wants to be at the table tomorrow too. If she does, she is welcome. If she doesn't, she is welcome to come the time after. Or the time after that. Or never. The table will be the table. People will come or not come.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Bianca.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I have wanted to do this since June. I have been waiting until I thought you would say yes. I am sorry it took me this long. I should have come earlier.",
+      "expr": "sad"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Eileen. You came at the right time. Don't be sorry. I would have said no, in June. I am — I am ready, today, to say yes. That is — that is the thing that matters. You came when I was ready. Thank you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen reaches across the table and squeezes Bianca's hand. The squeeze is brief, firm, the squeeze of a woman who has, in the past four months, become a person who knows how to squeeze a hand without making a thing of it."
+    },
+    {
+      "t": "narrate",
+      "text": "She lets go."
+    },
+    {
+      "t": "narrate",
+      "text": "She picks up the cinnamon roll."
+    },
+    {
+      "t": "narrate",
+      "text": "She eats."
+    },
+    {
+      "t": "narrate",
+      "text": "They sit at the table for another forty minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "They talk about the cinnamon roll. They talk about the bakery on Magnolia, which has, over the summer, hired a new pastry person whose work is, by Eileen's report, better than anything that town has had in some years. They talk about the heat. They talk about Eileen's cousin in Galveston, whose roof had been torn off in the August storm two weeks ago and who had been, since, dealing with insurance. They talk about Anita Kowalski's daughter Gracie, who Eileen has not yet met but who has been, in Maya's stories, one of the more vivid eleven-year-olds Maya has ever encountered. They talk about Maya. They talk about Linda Caldwell, who is, by report, fully recovered from the fall and back to her own house, and who is, on most days, on the porch in the early mornings drinking tea."
+    },
+    {
+      "t": "narrate",
+      "text": "They do not, in the forty minutes, talk about Mike."
+    },
+    {
+      "t": "narrate",
+      "text": "They do not, in the forty minutes, talk about Jim's confession."
+    },
+    {
+      "t": "narrate",
+      "text": "They do not, in the forty minutes, talk about the substation, which has been, since July, an empty building with a FOR SALE sign in the front window that nobody has, in the six weeks the sign has been up, called about."
+    },
+    {
+      "t": "narrate",
+      "text": "They do not, in the forty minutes, talk about NexCorp."
+    },
+    {
+      "t": "narrate",
+      "text": "They talk about the small things that two women in their late forties talk about, in a kitchen, on a Monday morning, when they have decided, together, that this is going to be one of the hours in which they do not perform anything."
+    },
+    {
+      "t": "narrate",
+      "text": "It is, Bianca registers afterward, the longest she has talked about nothing with another adult since June."
+    },
+    {
+      "t": "narrate",
+      "text": "It is, she registers further, exactly the right thing."
+    },
+    {
+      "t": "narrate",
+      "text": "At eight forty-six Eileen leaves."
+    },
+    {
+      "t": "narrate",
+      "text": "She hugs Bianca at the door. The hug is brief."
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Tomorrow. Five AM.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Tomorrow.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Eileen goes to her Honda. Eileen pulls out. Eileen drives off."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Bianca stands at the door for a long moment."
+    },
+    {
+      "t": "narrate",
+      "text": "Then she closes the door. She goes back to the kitchen. She picks up the coffee cups. She takes them to the sink. She rinses them. She puts them in the dishwasher."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, at the sink: I am going to call my brother."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I am going to call him today. Not Tuesday. Today."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks: I am going to ask him about the radio."
+    },
+    {
+      "t": "narrate",
+      "text": "She picks up her phone from the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "She finds her brother's number."
+    },
+    {
+      "t": "narrate",
+      "text": "She presses call."
+    },
+    {
+      "t": "narrate",
+      "text": "The line rings. Three rings. Four. Five. The voicemail picks up. Her brother's voice, recorded, says — in the way her brother has been recording his voicemail since 2014: Hey. You've reached Carlos. Leave a message. I'll get back to you."
+    },
+    {
+      "t": "narrate",
+      "text": "She waits for the beep."
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "Carlos. Hey, it's me. I — I want to ask you something. About Dad's radio. The one he was working on when he died. Do you still have it. Call me back when you can.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She hangs up."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts the phone down."
+    },
+    {
+      "t": "narrate",
+      "text": "She stands at the counter for a long minute."
+    },
+    {
+      "t": "narrate",
+      "text": "Then she goes back to the porch."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_miller_back_porch.jpg"
+    },
+    {
+      "t": "show",
+      "char": "bianca",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas, by nine fourteen, are at their full pitch."
+    },
+    {
+      "t": "narrate",
+      "text": "The light in the back yard has shifted into the small late-morning angle. The crepe myrtle is doing its work. The grass is browning. The wicker chair, on the porch, holds her."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks the last of her coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks, this morning, about all of it — about Mike, about Sammy, about her mother, about her father, about the radio, about Eileen at the kitchen table at five AM tomorrow, about the shape her life has, in the past sixteen weeks, become — and she finds, sitting in her mother's wicker chair on the back porch on a Monday morning in mid-August, that the thinking has, today, the small quality of something her body is allowing her to do without the tape."
+    },
+    {
+      "t": "narrate",
+      "text": "The tape is — temporarily — off."
+    },
+    {
+      "t": "narrate",
+      "text": "The not-tape is — for this morning, at this hour, in this chair — the thing that is happening instead."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not know how long it will hold."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, this morning, need to know."
+    },
+    {
+      "t": "narrate",
+      "text": "The morning continues."
+    },
+    {
+      "t": "narrate",
+      "text": "The cicadas are loud."
+    },
+    {
+      "t": "narrate",
+      "text": "The kitchen, behind her, is clean."
+    },
+    {
+      "t": "narrate",
+      "text": "There is, somewhere in the house, a small wicker chair from her mother's porch in Lubbock and a soft dark green robe from her husband and a daughter's bedroom door at the top of the stairs that has been, all summer, closed during the day."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits in the chair."
+    },
+    {
+      "t": "narrate",
+      "text": "She breathes."
+    },
+    {
+      "t": "narrate",
+      "text": "The morning, in the way mornings in Texas do in mid-August, holds."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

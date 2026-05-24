@@ -1,0 +1,73 @@
+{
+  "id": "vol1_missing_link",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Interlude — The Missing Link",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_missing_link_exterior.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_diner_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "The Missing Link",
+      "sub": "Bus depot · Rain · No clock",
+      "duration": 3000
+    },
+    {
+      "t": "narrate",
+      "text": "The diner is a single rectangle of warm yellow light pinned to a wet asphalt apron. Two gas pumps, one of them retired in place. A sign hand-lettered on enamel — THE MISSING LINK — with the silhouette of a creature halfway between a man and an ape painted beneath the name with what you would have to call affection."
+    },
+    {
+      "t": "narrate",
+      "text": "Beside the diner, under a metal awning, is the depot bench. The Shillelagh stops here once a day. The schedule is taped to the wall behind cracked plexiglass; the rain has crept in along the seams and the only legible word is SHILLELAGH."
+    },
+    {
+      "t": "narrate",
+      "text": "A young man is standing at the bench. He is not sitting on it."
+    },
+    {
+      "t": "show",
+      "char": "trenchcoat",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "His hair is matted flat to his scalp with rain. His face is the pale of skin that has not seen weather for a long while. His trench coat is buttoned to the throat. At the seams of the coat — the cuffs, the lapels, the hem — there is a thin steady light, as if someone had stitched the seams with something hot and forgotten to put it out."
+    },
+    {
+      "t": "narrate",
+      "text": "He has not noticed you. Or he has, and has decided it does not require a response."
+    },
+    {
+      "t": "narrate",
+      "text": "You step in out of the rain."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_missing_link_interior.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Inside: a counter with five stools, four booths against the front windows, a jukebox in the corner blinking through its red eye. The fluorescents hum in the particular B-flat that fluorescents hum in. The coffee on the burner has been on the burner a while."
+    },
+    {
+      "t": "narrate",
+      "text": "A waitress somewhere — back kitchen, the soft sound of a knife on a board. No one comes out. You have, it seems, some time."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_hub"
+    }
+  ]
+}

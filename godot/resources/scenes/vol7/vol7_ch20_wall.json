@@ -1,0 +1,519 @@
+{
+  "id": "vol7_ch20_wall",
+  "vol": 7,
+  "chapter": 20,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_starfish_alley.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "The Wall",
+      "sub": "Monday, September 1",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "char": "tem",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "The seven of them got out. The alley at six forty-three on the first of September of 2052 was dim — rain on the asphalt and the back-door light Petra had turned on for the people coming. The face on the wall at the far end of the alley was — by what Tem could see at the alley's length — at rest. The closed eyes were closed.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "Lena went to the milk crate at the foot of the wall. She set the crate down beside the wall. She came back to Tem at the wagon.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Put the bowls on the crate.",
+      "t": "say"
+    },
+    {
+      "text": "Tem opened the back of the wagon. She lifted out the wooden box with the four bowls. She brought the box to the milk crate. She knelt. She took the four bowls out one at a time and arranged them on the crate in the order they had been at the bakery — Roy's at the right end, then Marit's, then the substrate-bowl, then Marina's grandfather's at the left.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "Finn came over. He took the cedar bell-piece out of his coat. He set the cedar on the crate beside the bowls, at the center. Cale came over. He took the notebook out of his coat. He set the notebook on the crate beside the cedar.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowls and the cedar and the notebook were at the milk crate at the foot of the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall above them was — by Tem's read at the wall — looking down at the milk crate.",
+      "t": "narrate"
+    },
+    {
+      "text": "The closed eyes were not, this morning, all the way closed. The eyes were open by what Tem could read at the wall as the smallest possible amount.",
+      "t": "narrate"
+    },
+    {
+      "text": "People started arriving at six fifty-six.",
+      "t": "narrate"
+    },
+    {
+      "text": "Petra came out the back door of the bookstore with a coffee thermos and four mugs. She set the thermos on the asphalt by the dumpster. She came to the wall.",
+      "t": "narrate"
+    },
+    {
+      "char": "petra",
+      "text": "Lena.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Petra.",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "I am here.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Petra. Thank you.",
+      "t": "say"
+    },
+    {
+      "text": "Petra stood at the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "Margaret came at six fifty-nine with two co-op workers Tem recognized by face. Margaret nodded at Finn and at Tem and went and stood at the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "Aud came at seven-oh-one — in the wool coat she had been in at the bakery yesterday. Aud came up to Roy at the wall. Aud put her hand on Roy's arm. Roy put his hand over Aud's hand. The two of them stood at the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "Jameson came at seven-oh-three with Hannes. Wren came at seven-oh-five with her mother — a woman Tem had seen at the Daily Grind perhaps three times in her life, who came up the alley behind Wren with her hand on Wren's shoulder and stopped at the wall and looked at the face on the wall and did not say anything.",
+      "t": "narrate"
+    },
+    {
+      "text": "Hans's van came up Hemlock at seven-oh-eight. Hans parked at the entrance behind the trucks. Greta got out of the passenger side. Marit got out of the back, slowly, in the blue cardigan with Greta's wool coat pulled over it — too big for her at the shoulders.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per went up the alley to meet his mother. He took her arm — not her hand, Marit didn't like being led — and let his arm be there beside hers in case she wanted it. They walked down the alley together. Marit walked carefully on the wet asphalt. She watched her feet for the first stretch and then, when she was close enough to the wall to see the face, she looked up.",
+      "t": "narrate"
+    },
+    {
+      "text": "She stopped maybe ten feet from the milk crate. She looked at the face on the wall for what Tem counted as forty-something seconds without saying anything.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena had been waiting at the milk crate. When Marit stopped looking and started walking again, Lena went and met her halfway. They stopped in front of each other. Marit didn't say anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "Hi, Marit.",
+      "t": "say"
+    },
+    {
+      "text": "Marit nodded.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "text": "I'm sorry it's so cold.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Greta gave me her coat. It's enough.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Do you want to sit. There's the crate, but it's only got the bowls. I can get you a chair from Petra.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "I want to stand at the wall.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yeah. Yes.",
+      "t": "say"
+    },
+    {
+      "text": "Marit walked the rest of the way to the milk crate. Per a step behind her. She stopped at the crate. She looked down at the bowls. She looked at her own bowl — the one Olaf had carved her in 1974, the one she had been keeping at her bedside at Hans's since Wednesday. She bent down. She picked up the bowl in both hands. She straightened slowly, the way she straightened anything she had to straighten with a bowl in her hands.",
+      "t": "narrate"
+    },
+    {
+      "text": "She held the bowl. She looked up at the face on the wall. She held the bowl that way for some count.",
+      "t": "narrate"
+    },
+    {
+      "char": "marit",
+      "text": "She's beautiful.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Marit.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "She is.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Olaf would have loved to see her.",
+      "t": "say"
+    },
+    {
+      "text": "Lena did not, at this, say anything. She stood at the crate beside Marit. After a count she reached and put her hand briefly on Marit's elbow. Marit did not look at her. Marit kept looking at the face.",
+      "t": "narrate"
+    },
+    {
+      "char": "marit",
+      "text": "Thank you for the painting, Lena.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Thank you for the bowl.",
+      "t": "say"
+    },
+    {
+      "text": "Marit looked at her then — just for a second. Then looked back at the face on the wall. She held her bowl. She did not weep.",
+      "t": "narrate"
+    },
+    {
+      "text": "The town kept coming. By seven-fifteen the alley was — Tem registered, standing back — full. Perhaps thirty people. Perhaps more. Tem counted to twenty-eight and stopped.",
+      "t": "narrate"
+    },
+    {
+      "text": "People she knew by name. People she knew by face. People she did not know. The mechanic from old-Waldport. The woman who ran the bakery on the cheese-factory-town's main street. Three teenagers from the consolidated middle school. Two of the foundation's drone-tenders in wax canvas. Soren — who had closed the Daily Grind at seven and walked over. Bernie Lund from the fish-co-op. Frog Petersen — the older town Frog, by Tem's count of Frogs.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marina's wagon came up Hemlock at seven twenty-six. She had driven straight from the foundation's hotel at three forty-five with one stop in Salem for coffee. Four and a half hours in three forty-something.",
+      "t": "narrate"
+    },
+    {
+      "text": "She came up to the wall. She put her hand on her grandfather's bowl. She did not say anything for a count.",
+      "t": "narrate"
+    },
+    {
+      "char": "marina",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I am here.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "text": "At seven-thirty the face on the wall opened its eyes.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem registered it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face had been — by what she had been watching at the wall since six forty-three — at the smallest-possible-amount of opening. At rest. The face Lena had painted with the closed eyes.",
+      "t": "narrate"
+    },
+    {
+      "text": "At seven-thirty — by what Tem could see at the wall, by what the perhaps thirty-five people in the alley were now seeing — the eyes opened.",
+      "t": "narrate"
+    },
+    {
+      "text": "The eyes opened slowly. They opened the way a person's eyes open when the person has been keeping them closed for a long time and is finally letting them open. The eyes opened all the way.",
+      "t": "narrate"
+    },
+    {
+      "text": "The eyes were the eyes Tem had seen on the figure at the door of the cabin at three.",
+      "t": "narrate"
+    },
+    {
+      "text": "The eyes were the eyes of the daughter.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall looked at the crowd at the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall looked at the people at the foot of the wall — Marit, Per, Lena, Cale, Roy, Aud, Wren, Hans, Greta, Marina, Kai, Finn, Tem — and at the people behind them.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face — by every measure Tem could take, by what was happening at the wall in the alley behind The Salty Tome at seven thirty-one on the first of September of 2052 in a town of seventeen hundred people on the Oregon coast — saw the room.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face's mouth opened.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face said one word.",
+      "t": "narrate"
+    },
+    {
+      "text": "The word was the name the figure at the cabin door had said to Tem at three.",
+      "t": "narrate"
+    },
+    {
+      "text": "The name was Tem's grandmother's private name for her.",
+      "t": "narrate"
+    },
+    {
+      "text": "Every person in the alley heard it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Then the eyes closed.",
+      "t": "narrate"
+    },
+    {
+      "text": "The mouth closed.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face returned to the closed-eyed face Lena had painted.",
+      "t": "narrate"
+    },
+    {
+      "text": "The moment passed. The wall held what it held.",
+      "t": "narrate"
+    },
+    {
+      "text": "For a long count nobody in the alley said anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "marit",
+      "text": "She named you.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She named me.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "The grandmother.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The grandmother.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "The name is yours now in front of all of them.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "marit",
+      "text": "Take it forward.",
+      "t": "say"
+    },
+    {
+      "text": "Tem did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "text": "She said the name aloud, herself, at the wall, in front of the perhaps thirty-five people in the alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "She said it the way her grandmother had said it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She said it once.",
+      "t": "narrate"
+    },
+    {
+      "char": "tem",
+      "text": "I am her.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The name has been waiting.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "It's the next thing to carry.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Yes, Lena.",
+      "t": "say"
+    },
+    {
+      "text": "The crowd in the alley did not, for a long count, leave. Petra brought out the coffee thermos and the four mugs. Greta went up to Hans's van and brought back a basket of brioche Hans had baked yesterday and a basket of the morning's rye. The crowd ate. The crowd drank coffee in the alley behind the bookstore standing at the face on the wall with the four bowls and the cedar bell-piece and Brandon's notebook at the milk crate.",
+      "t": "narrate"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Tem stood back from the wall. She stood at the entrance of the alley with the wagon and watched.",
+      "t": "narrate"
+    },
+    {
+      "text": "She watched Marit at the milk crate with her bowl held in both hands. She watched Lena beside Marit. She watched Roy and Aud at the wall with Aud's hand on Roy's arm again. She watched Cale and Per at the wall — Cale picking at the cuticle of his thumb, Per with his arm around Cale's shoulder. She watched Finn at the wall with the crow on his shoulder.",
+      "t": "narrate"
+    },
+    {
+      "text": "She watched Kai at the wall with Wren beside him — Kai had said something quietly to Wren and Wren had nodded and the two of them were standing at the wall as if Kai was being the kind of older brother Wren had never had. She watched Marina at the milk crate with her hand on her grandfather's bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "She watched Hans at the wall — the baker who had been at the bakery for thirty-one years carrying the brother's poem cycle in the desk drawer in his bedroom, looking up at the face on the wall the town had not, until this morning, known about and now knew about.",
+      "t": "narrate"
+    },
+    {
+      "text": "She watched Petra at the back door of the bookstore with her arms crossed against the morning cold, looking at the alley she had been the proprietor of for forty-one years.",
+      "t": "narrate"
+    },
+    {
+      "text": "She watched the perhaps thirty-five people in the alley at the wall. She watched the substrate doing what the substrate had been doing.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall had — Tem registered — gone back to closed-eyed. It had returned to what Lena had painted. It was waiting for the next time.",
+      "t": "narrate"
+    },
+    {
+      "text": "The next time was not at this alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "The next time was not tonight.",
+      "t": "narrate"
+    },
+    {
+      "text": "The next time was coming.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem stood at the entrance of the alley and held the name her grandmother had used for her.",
+      "t": "narrate"
+    },
+    {
+      "text": "She held it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She would carry it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She would be at the next thing when the next thing came.",
+      "t": "narrate"
+    },
+    {
+      "text": "She was — at seven forty-six on the first of September of 2052 in the alley behind The Salty Tome with perhaps thirty-five people of her town standing at the face on the wall with the bowls and the bell-piece and the notebook at the milk crate at the foot — she was in it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She was in it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cabin and the bakery and the wall and the diner and the Daily Grind and the bookstore and the co-op and the laundromat and the small mill up the river and Cape Perpetua and the ferret-dream-basement and the second pool of Tideline Survey and the basement of Kestrel Mountain and the foundation in Eugene and the print shop in Bern and the headland in Bandon and the cutter base in old-Yaquina and the apartment on Cedar Place and the loft above the kitchen at the cabin and the chair beside the daybed and the cabin's door —",
+      "t": "narrate"
+    },
+    {
+      "text": "every place the work had been done was holding what it had been built to hold.",
+      "t": "narrate"
+    },
+    {
+      "text": "She stood at the entrance of the alley and held the name and waited.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

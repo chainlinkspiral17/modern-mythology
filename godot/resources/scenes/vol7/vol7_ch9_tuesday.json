@@ -1,0 +1,619 @@
+{
+  "id": "vol7_ch9_tuesday",
+  "vol": 7,
+  "chapter": 9,
+  "type": "chapter",
+  "title": "Tuesday",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 9",
+      "sub": "Tuesday",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "He opened the shop at ten because not opening it had been Sunday and Monday and three days closed was a thing the town would talk about in a way two days were not.",
+      "t": "narrate"
+    },
+    {
+      "text": "The walk over from the apartment took eight minutes in the rain. The patch on the laundromat wall across Main from his front window was, he registered as he approached, bigger than it had been Monday morning. He did not stop.",
+      "t": "narrate"
+    },
+    {
+      "text": "He unlocked the front door, went in, flipped the CLOSED to OPEN, turned on the back light over the repair bench, pulled the kettle out from under the counter where he kept it, and put it on the small electric burner he had been using since the gas to the building got cut in 2049. Made coffee in the chipped Tidewater mug Devon had left when he moved to Portland. Stood at the front window.",
+      "t": "narrate"
+    },
+    {
+      "text": "The rain on Main was the steady kind that falls when nothing is going to change about it for the next eight hours.",
+      "t": "narrate"
+    },
+    {
+      "text": "The drone over the laundromat was, this morning, fixing a downspout that had come off in the wind on Sunday night. He watched it work for two minutes. It dropped down, did its welding, and lifted off again. Nobody on the sidewalk looked up.",
+      "t": "narrate"
+    },
+    {
+      "text": "The first customer came in at ten-fourteen. It was Jameson.",
+      "t": "narrate"
+    },
+    {
+      "text": "Jameson had two kids with him Kai had not seen before. One was about sixteen or seventeen, with a thrift coat that had seen at least three winters. The other was younger, maybe thirteen, with a wool cap pulled too low over the ears and a board under his arm that was not, by Kai's first look, his own board. The board was an old Tess Mariana from 2034. It had a long crack through the upper deck and a chunk missing from the tail.",
+      "t": "narrate"
+    },
+    {
+      "char": "jameson",
+      "text": "Kai. This is Mateo. He's my cousin. He's down from Newport for the week. The other guy is Hannes. He's just here. Hannes, Kai. Mateo, Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Hi. Hi. Hi.",
+      "t": "narrate"
+    },
+    {
+      "char": "mateo",
+      "text": "Was my dad's. He gave it to me last year. The crack got worse on the way down here yesterday.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Where on the way down.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "mateo",
+      "text": "The bus from Newport hit a bump near the cheese factory. The board was in the rack. The rack was full. The board was on the bottom. It came out cracked.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai took the board. He turned it over. The Tess Mariana stamp on the underside was the original — small, hand-cut, on the tail before the missing chunk, with the T.M. 2034 she had stopped putting on the boards in 2036. The stamp dated this one to her first year. There were maybe forty Tess Mariana boards in circulation in the world, by Kai's count. He had three at home. The one in his hands made forty.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Mateo.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "mateo",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "This is a 2034 Tess. You know that?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "mateo",
+      "text": "My dad knew. My dad got it off Tess in 2034. He was twenty. He skated it from 2034 to 2018 and then he hung it on the wall because he didn't want to break it. He gave it to me last year because he said I was old enough to be careful with it. I was careful with it. The bus broke it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The bus broke it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "mateo",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Sit down. The four of you. There's coffee. The repair is going to take me about an hour and I want to do it now while I'm thinking about it. Jameson, get them coffees. Cups are under the counter.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Jameson got them coffees. The three kids sat on the small bench against the front window that Kai kept for parents waiting on repairs. Kai took the board to the back bench, turned on the work lamp, and started.",
+      "t": "narrate"
+    },
+    {
+      "text": "The repair took ninety minutes. The crack ran through three plies of the seven-ply maple Tess had been gluing in 2034. Kai opened the crack with the small palette knife he used for this kind of work, ran wood glue into it from the tip of a syringe, clamped it, and let it sit. While the clamp held he rebuilt the missing chunk from the tail with a piece of maple he had been keeping since 2049 for exactly this kind of repair. He shaped the maple, glued it, clamped it, let it sit. He went back to the front of the shop while the second clamp held.",
+      "t": "narrate"
+    },
+    {
+      "text": "The kids had been talking. Mateo was the kind of thirteen-year-old who knew more about boards than fifteen-year-olds usually did and who had been waiting his whole conscious life to be in the same room with somebody who would understand why a 2034 Tess was the thing it was. Jameson was eating it. Hannes had stopped pretending to follow about fifteen minutes in and was looking at his phone.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai brought the board back to the front at twelve-five. The clamp marks were still on it. The repair was visible if you looked. The board was sound.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "You got it back. The repair is going to be visible for the life of the board. Don't try to hide it. That's what the repair looks like. Skate it. If it cracks again somewhere else bring it back. I won't charge you this time. Bring me a sandwich from the bakery on Hemlock and we're square.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Mateo did not, for a count, do anything with his face.",
+      "t": "narrate"
+    },
+    {
+      "char": "mateo",
+      "text": "Thank you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You're welcome. Tell your dad Kai at Board Lords does Tess work. Tell him I have three of hers at home. Tell him if he ever wants to sell the Driftwood Series one she made in '37 I will give him good token rate plus standard.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "mateo",
+      "text": "I'll tell him.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Go. Skate it down to Hemlock. Get me the sandwich.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The three of them went out. The bell rang twice. Mateo had the board. Hannes had finally put the phone away.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "hans",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "At twelve-thirty Hans came across from the bakery. Hans was sixty-eight. He had been the baker on Hemlock since 1991. He had known Kai's grandmother Margit — no relation to the thrift Margit — since the two of them had come up the coast in the late eighties and ended up in Smolvud in the same season. Margit had died in 2049. Hans had, since 2049, been the man who showed up at Kai's apartment with bread the week of every anniversary of her death and did not say anything about it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Hans came in with bread wrapped in the cloth he wrapped Kai's bread in. He set it on the counter. He was wearing his bakery apron and had not taken it off to walk over. There was flour on the apron. There was flour on his left forearm where he had been kneading. He had not put a coat on for the walk. The bakery was three doors down. Hans had walked over wet.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hans.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "You closed Sunday and Monday. You didn't come in to me Saturday for the loaf I had set aside for you. You haven't been at the Daily Grind in three days according to Soren who is sick anyway but who I asked yesterday before he got sick. I am here to ask if you are in trouble.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm not in trouble, Hans.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "You are in something.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I am in something.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Tell me what kind of something so I know what kind of nothing to do about it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "It's not — Hans. It's not nothing. I just don't know yet what it is.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Is it police.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "No.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Is it money.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "No.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Is it a girl.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "No.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Is it — ",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "It's not any of the regular things. It's a town thing. It's older than I am. It's older than you, maybe. I don't know yet. We're figuring it out. I am — Hans, I am with people who are figuring it out with me. I'm not by myself.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Hans looked at him for a long count.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Tem.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "All right. That's a person who knows what she's doing. You have Lena. You have the boy who walks. You have Tem. You're not by yourself. Good. The bread is for tonight. Eat it. I put the seeds in the way you like.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hans.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "What.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Roy Hummel came into Lena's bookstore yesterday.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Hans did not, for a beat, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Did he do anything.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He asked for three books that don't exist by those titles. He asked her about Soren. He asked her about Tem. He asked her about Jorgen Aas's place up the river.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Lena push back.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Did she push back too hard.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Some.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Roy got what he wanted then.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Yes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Hans rubbed his hand on the apron. The flour came off in a small streak.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "I have known Roy since 2031 when he came to the bakery and asked me where in Smolvud he could buy a copy of a book he could not have known to ask about by name unless somebody had told him to ask. The book was a private printing my brother made in Bern in 1989, twenty-one copies, of a poem cycle nobody outside our family has ever owned a copy of. I had a copy in Smolvud. I had told nobody. Roy walked into my shop in 2031 and asked for it. I told him I did not have it. He left. He has been in the shop maybe three hundred times since and he has never once mentioned the book. I have not, in twenty-one years, figured out how he knew.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "What I am telling you is: Roy is not a man you can, by pushing back, make stop. Roy is a man you can, by pushing back, give a piece of information you would rather he did not have. The not-pushing-back is not the friendly choice. The not-pushing-back is the careful one. Tell Lena. She is smart. She will hear it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'll tell her.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Bring your friends to the bakery on Saturday morning at six. Before I open. We will have bread. We will talk. The bakery is a place Roy does not come.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Why doesn't he come?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "I have, since 2031, made it not a place he comes.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Kai did not, for a count, ask the follow-up.",
+      "t": "narrate"
+    },
+    {
+      "text": "Hans picked up the empty cloth he had wrapped the bread in.",
+      "t": "narrate"
+    },
+    {
+      "char": "hans",
+      "text": "Eat the bread tonight. The seeds are good. You haven't eaten in two days, by your face.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I've eaten.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "You haven't eaten enough. Eat the bread tonight.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He went out. The bell rang. Hans walked back across Main in the rain to the bakery without a coat.",
+      "t": "narrate"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "Kai stood at the counter and looked at the bread. He had not, in the four years he had known Hans without his grandmother in the room as the bridge, registered that Hans had this kind of weight in him. Hans had been, for four years, the man who showed up with bread. He had also, by the account Kai had just heard, been the man who had run an interception on Roy in 2031 and won. Kai sat down on the stool behind the counter and let himself not know what to do with that for a minute.",
+      "t": "narrate"
+    },
+    {
+      "text": "Then he picked up his phone and texted Lena: \"Hans says don't push back on Roy. Says pushing gives Roy info. Says he's known him since 2031 and Roy's not a man you can stop by pushing.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena replied in two minutes: \"Yeah. He told me yesterday afternoon. He came by the bookstore at five. He said the same thing.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai set the phone down and looked at the bread and ate two slices of it standing.",
+      "t": "narrate"
+    },
+    {
+      "text": "The Tidewater Creamery driver came in at one-forty-five. A man Kai knew by face and not name, in the brown jacket all the Tidewater drivers wore, with a small clipboard. Soren wasn't picking up. Kai signed as Kai, took the box of cheese across to the Grind, let himself in with the back-door key Soren had given him in 2050, put the box in the walk-in cooler, locked back up.",
+      "t": "narrate"
+    },
+    {
+      "text": "While he was at the Grind he went up the back stairwell and knocked on Soren's apartment door.",
+      "t": "narrate"
+    },
+    {
+      "char": "soren",
+      "text": "Kai. What.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Tidewater dropped off. I put the cheese in the walk-in. Sign Wednesday.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "soren",
+      "text": "Thank you. I'm sorry.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Don't be sorry. You okay up here?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "soren",
+      "text": "I'm fine. I have soup. I have water. I'm sleeping in two-hour windows. I'll be down by Friday.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You want me to bring you soup from somewhere.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Soren almost smiled.",
+      "t": "narrate"
+    },
+    {
+      "char": "soren",
+      "text": "I have soup, Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right. Call if you need.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "soren",
+      "text": "I'll call. You all right?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm all right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "soren",
+      "text": "You don't look it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm working on it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "soren",
+      "text": "All right. Go.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai went. He locked the back. He walked across to Board Lords. The drone over the laundromat had, while he was gone, finished the downspout and was working on the frame around the small window Janet Halfmoon had painted the sanderling onto. The drone was doing the small careful repaint of the frame that the patches had not touched. The drone was working around the patches. The drone could not see them.",
+      "t": "narrate"
+    },
+    {
+      "text": "At three-twelve Roy walked past the front window. He was on the opposite side of Main, on the sidewalk in front of the laundromat. He was in the wax canvas. He had a paper cup from the Charging Station in one hand. He walked at his Roy pace, which was the pace of a man whose day was nowhere in particular. He did not, when he passed the front of Board Lords, turn his head.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai watched him from the counter. Roy went south, past the laundromat, past the shoe-repair shop, past the front of the closed Daily Grind, and on toward the connective stretch and the small wood and old-Waldport beyond.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai picked up the phone. He texted Lena, Tem, and Finn together — the first time he had used the four-of-them group thread since the cabin Saturday: \"Roy walked past the shop at 3:12. North to south. Did not look in. Going south on Main toward the small wood. Wax canvas, Charging Station cup. Heads up wherever you are.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem responded in eight seconds: \"Got it. I'm at the apartment. Lena's at the shop. Finn?\"",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn did not respond for nine minutes. When he did the message was just: \"home.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai put the phone down and watched the sidewalk for the rest of the afternoon. Roy did not come back past the window in either direction.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch9_evening",
+      "t": "jump"
+    }
+  ]
+}

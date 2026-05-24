@@ -1,0 +1,184 @@
+{
+  "id": "vol1_ch3_outside_b",
+  "vol": 1,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Act One — Black Lodge",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_bar_exterior_night.jpg"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Flight, telekinesis — there's a long list."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Cool and all. How about you?"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "I skate."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "See — that being like flying."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Jacob also flies. But in planes, though."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm the earthbound one — push come to shove."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Never say never, my friend."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I had a thought."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Just now — about what?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "A strange one. About a black lodge. People coming and going."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Getting any ideears? Or are you just ruminating?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Only expressing myself in words — when perhaps it should be painted on canvas. Or worked into something useful."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Ah, yes. I remember those days well — and want to return to projects old."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "We need to work on something again. Create other worlds to run to."
+    },
+    {
+      "t": "flag",
+      "key": "faust_black_lodge",
+      "val": true
+    },
+    {
+      "t": "narrate",
+      "text": "They are rejoined."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "emily",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "It is a good idea, my friend."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Yours are always the best."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Next to mine, you mean."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'd say they sit fairly center on all things."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Good ideas just drift amongst us."
+    },
+    {
+      "t": "say",
+      "char": "Emily",
+      "expr": "neutral",
+      "text": "Enough of this boys' club. Who wants to dance?"
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch3_club"
+    }
+  ]
+}

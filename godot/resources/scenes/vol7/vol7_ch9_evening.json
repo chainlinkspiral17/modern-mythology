@@ -1,0 +1,342 @@
+{
+  "id": "vol7_ch9_evening",
+  "vol": 7,
+  "chapter": 9,
+  "type": "chapter",
+  "title": "Tuesday Evening",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_finn_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 9",
+      "sub": "Tuesday Evening",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "text": "He closed at six. He did not, this evening, walk home. He walked the four blocks south to where Finn's truck was usually parked and saw it was at the curb in front of the kayak-shop building. He went up.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn's door was unlocked. Kai went in.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn was at the kitchen table. The cloth on the table had five pieces of charred wood on it, laid out in a shape that was not random — Finn had been arranging them. The arrangement was not yet a full thing. The pieces met at edges that fit, but the assembled shape was open at three corners, with room for more pieces. The five pieces, where they fit, made a rough irregular hexagon about ten inches across.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow was on the back of the chair across from Finn.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "text": "Hey, Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Hey.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "You eat?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Two slices of Hans's bread at noon.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "That's not eating.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You eat?",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn looked at the table.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "No.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Finn.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I forgot.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You forgot to eat for a day.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I forgot to eat since yesterday morning. I sat down at this table this morning to look at the wood and I am still sitting at it. The crow brought two more this morning. I have not been hungry. I have not, for six hours, been hungry.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "That's the wood doing it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Probably.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right. Get up. We're going to the Missing Link. Aud is open.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Get up. The wood will be on the table when you come back. The crow will watch it. The crow has been watching it for nine months. The crow can watch it for ninety more minutes.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Kai.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "What.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Thank you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Get up.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Finn got up. He pulled the wool cap over his hair and the coat over the wool cap and they went down to the truck. The crow stayed at the table with the wood.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_missing_link.jpg",
+      "t": "bg"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "The drive to the Missing Link took eleven minutes. Aud was at the counter. Aud was seventy-three. Aud knew them by name and had since they were teenagers. She seated them in the booth at the back, which was the booth she gave the kids on Tuesday nights when she could, because the Tuesday-night crowd at the front knew not to look at the back booth too long. She brought them coffee without asking. She brought them menus. She came back five minutes later.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "Meatloaf.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Fish and chips.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "The salmonberry is fresh today, you'll have it after.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "She went to put the order in. They sat with the coffee.",
+      "t": "narrate"
+    },
+    {
+      "char": "kai",
+      "text": "You have to eat.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "You can't sit at the table for six hours not eating because the wood is there.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I know.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I'm not — Finn. I'm not telling you what to do. I'm telling you what I see. You haven't slept. You haven't eaten. You are at a kitchen table arranging pieces of wood the crow brings you. You have been doing this for nine months and it has been getting worse since Saturday. By Saturday the wood was three pieces and you were eating. By Tuesday it's five pieces and you are not. The wood is taking more of you. I am telling you that as the person sitting across from you who has known you for fifteen years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "text": "Finn was quiet for a count.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "What do I do about it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "Eat the food when it gets here. Then we go to Lena's. The four of us. We sleep at Lena's tonight if we have to. You don't sleep alone tonight.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "The food came. Aud watched from the counter, by the way she always watched, which was without seeming to. Finn ate. He ate slowly and then he ate faster and then he ate the way a person eats who had not registered until the second bite that he was very hungry. Kai ate at his own pace and did not, while Finn was eating, say anything else.",
+      "t": "narrate"
+    },
+    {
+      "text": "The salmonberry pie came. They ate it. Aud brought the bill. Kai paid in tokens. The Missing Link did not, by Aud's specific arrangement with the kids who had been coming in since they were teenagers, refuse the local tokens at face value.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_finn_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "char": "kai",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "char": "finn",
+      "expr": "neutral",
+      "pos": "right",
+      "t": "show"
+    },
+    {
+      "text": "They went out into the rain at seven-forty-six. The truck was where they had left it. The crow was, when they got back to Finn's apartment, where they had left it. The five pieces of wood were where they had left them.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn picked the wood up in the cloth and put the cloth in the duffel and put the duffel over his shoulder. They went down the stairs together and got back in the truck and drove the four blocks to Hemlock.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena's window was lit when they pulled up. Kai texted: \"We're outside.\" Tem replied: \"Come up.\" The crow stayed in the truck.",
+      "t": "narrate"
+    },
+    {
+      "text": "They went up the stairs.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

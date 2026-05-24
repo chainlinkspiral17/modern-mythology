@@ -1,0 +1,52 @@
+{
+  "id": "vol2_bf_end",
+  "vol": 2,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Briar Falls — leaving",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_briar_falls_rest_stop.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "You walk back across the lot. The mother grinds her cigarette out on the underside of the bench, the way smokers do when they are about to get back into a vehicle they are not going to smoke in. The Walkman goes into the pocket of the sweatshirt. The Diet Pepsi is half gone and the father is going to finish it in the next mile."
+    },
+    {
+      "t": "narrate",
+      "text": "The teenage brother is already in the back row of the van, headphones still in, head against the window glass. The tween sister climbs into the middle row, the folded brochure in her fist. She will not unfold it for years."
+    },
+    {
+      "t": "narrate",
+      "text": "The dog has come back from the trailhead. It waits at the open door, looks once at the box behind it, and gets in. It settles between the two rows of seats and does not look out the window."
+    },
+    {
+      "t": "narrate",
+      "text": "The side door slides shut. The minivan starts. The faux wood trim catches the afternoon in the particular way faux wood trim does, which is briefly."
+    },
+    {
+      "t": "narrate",
+      "text": "They pull out of the lot. You watch the rear plate until the curve takes it."
+    },
+    {
+      "t": "narrate",
+      "text": "The rest stop is quiet again. The mist from the third stage of the falls comes up the column in the windless air. The 707 key is still tied to the railing. The paperback is still face-down on the middle table. The dog is gone."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_briar_falls_visited",
+      "val": true
+    },
+    {
+      "t": "interlude",
+      "text": "End of Interlude",
+      "sub": "Briar Falls",
+      "duration": 2600
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch1_history_one"
+    }
+  ]
+}

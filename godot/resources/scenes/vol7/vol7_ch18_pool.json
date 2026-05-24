@@ -1,0 +1,526 @@
+{
+  "id": "vol7_ch18_pool",
+  "vol": 7,
+  "chapter": 18,
+  "type": "scene",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_smolvud_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Tideline Survey",
+      "sub": "Hj. Ulrich, 2018",
+      "duration": 3,
+      "t": "interlude"
+    },
+    {
+      "text": "Finn was at a tide pool. The tide pool on a basalt headland — rendered by a designer who had been at the Oregon coast. The pool the size of a kitchen table. The basalt around it: the wear of a thing wet at every high tide for millennia.",
+      "t": "narrate"
+    },
+    {
+      "text": "The pool was clear. A sea anemone open at one corner, a green shore crab in the other corner, two purple sea stars on the wall, a hermit crab in a turban shell on the bottom.",
+      "t": "narrate"
+    },
+    {
+      "text": "He was in a body. Not his body. He looked at the hands — a man maybe twenty years older than him, fingers a little thicker, knuckles a little more knotted. On the back of the left hand: a thin scar running across the metacarpal of the index finger. The scar of a fishhook a person had not, in some moment of his life, been able to get out without cutting.",
+      "t": "narrate"
+    },
+    {
+      "text": "He was wearing a wax canvas coat. The coat had the smell of saltwater. He patted the pockets. Right outside pocket: a notebook and a pencil. The notebook was leather-bound, palm-sized. The kind of notebook Brandon would have carried.",
+      "t": "narrate"
+    },
+    {
+      "text": "He took the notebook out. The first page was in Brandon's careful handwriting.",
+      "t": "narrate"
+    },
+    {
+      "text": "\"Tideline Survey, played at home, January 12, 2050. Hj. Ulrich design from '18 with later substrate accretion. Have heard of the prior-player imprints at the second pool. Look for them.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "He turned the page.",
+      "t": "narrate"
+    },
+    {
+      "text": "\"January 13, 2050. Second playing. Walked the headland to the second pool. The pool had a man in it. Old, white-haired, in waders to the waist, kneeling at the edge of the pool, looking at the water. I sat at the pool with him. He did not speak. I did not either. We were at the pool for a count I do not remember. I left.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "Third page:",
+      "t": "narrate"
+    },
+    {
+      "text": "\"January 20, 2050. Third playing. Same pool, same man. I asked him if he had been here long. He said: I have been here since the substrate first came alive in the experience, which was '23 by my count. I asked him what he was looking at. He said: I am looking at the second pool because the second pool is the place a man can sit with a person he has lost. I asked him who he had lost. He said: my brother. I asked him: how old. He said: twenty-three when he died. I said: I am sorry. He said: come back if you want to sit with somebody.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "Fourth page:",
+      "t": "narrate"
+    },
+    {
+      "text": "\"January 27, 2050. Fourth playing. I went to the second pool. The old man was there. I sat with him. I had — by some accident of the substrate, by some quality of how Hj. Ulrich had designed the experience, by some accident of my own preparation — Maria there. Maria my wife. Maria who had died in '38. Maria was at the pool with me. I sat with her for two hours of substrate-time. She did not speak. She did not need to. I was with her. I left at the end of the playing. I have not, in the twelve years since Maria died, been in a room with her until today.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn looked up from the notebook. He was at the first pool. He had not yet walked to the second pool. The substrate had given him the notebook so he would know what the second pool was.",
+      "t": "narrate"
+    },
+    {
+      "text": "He kept turning pages. The pages went through 2050 entry by entry. Brandon had played the stick maybe twice a week from January through October. Each entry: a careful paragraph about what had happened at the second pool.",
+      "t": "narrate"
+    },
+    {
+      "text": "Sometimes Maria. Sometimes others: a man named Eli who had been Brandon's partner on the force, a woman named Iris who had been Brandon's sister, an old dog Brandon had had as a boy in Tillamook. Brandon had been using the second pool to be with the people he had lost.",
+      "t": "narrate"
+    },
+    {
+      "text": "The last entry was dated October 4, 2050.",
+      "t": "narrate"
+    },
+    {
+      "text": "\"October 4, 2050. The thirty-eighth playing. I went to the second pool. The old man was there. I sat with him. He turned to me — for the first time in thirty-eight playings, he turned to me. He said: Brandon. I said: yes. He said: there is going to be a person who comes here in some number of years who has been carrying my crow. I said: Aria. He said: no. The person carrying the crow. I said: the crow is yours. He said: the crow is mine. I am going to need you to give the crow to the person who comes. The crow is going to need to be at this pool with him. The crow is going to need to see what is at the bottom of the pool. The crow is going to need to take what is at the bottom to him. Do you understand. I said: yes. He said: it will not be soon. It will be after you are gone. I said: I am gone. He said: when. I said: I do not know. He said: soon enough. Give the crow now. I said: I will. He turned back to the pool.\"",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn registered, holding the notebook: the last entry was October 4, 2050. Brandon died October 8, 2050. Brandon had been at the second pool five days before he died. He had agreed to give the crow to whoever would be holding it after he was gone. The crow had been Finn's since November.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn closed the notebook. Put it back in the pocket of the wax canvas coat. He stood up from the first pool.",
+      "t": "narrate"
+    },
+    {
+      "text": "The headland in the substrate was rendered with the careful attention Hj. Ulrich had been able to give it in 2018. The basalt was basalt. The fog at the inland side was the fog that came in at this hour at the Oregon coast. The horizon at sea was the gray-white of a Pacific horizon in late summer. The headland was — by what Finn could read at this angle — the substrate's idea of a headland, with the marks of having been worked by some number of players over the years.",
+      "t": "narrate"
+    },
+    {
+      "text": "He walked. The path to the second pool visible in the basalt — a slight wear in the rock from the boots of people who had walked it. Worn into the substrate by the players. He followed it. He came to the second pool at maybe ten minutes of walking.",
+      "t": "narrate"
+    },
+    {
+      "text": "The second pool. Bigger than the first. The size of a dining table. Clear water. No creatures he could read at the angle. At the edge: an old man. In waders to the waist. Kneeling at the edge. White hair under a wool cap. Looking at the water.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn stood at the pool. The old man did not, for a count, turn.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "I'm Finn.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "I have been waiting for you.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I came in on Brandon's stick.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "I know.",
+      "t": "say"
+    },
+    {
+      "text": "The old man turned. His face: the face of a man maybe seventy-five, weathered, with the kind of eyes that had been looking at water for some decades. The imprint of someone who had been at the second pool of Tideline Survey since 2023. By what Finn could read at his face — the imprint of a person who had loved his brother.",
+      "t": "narrate"
+    },
+    {
+      "char": "old_man",
+      "text": "Sit. Don't look at the water yet. Look at me. We'll talk a count first.",
+      "t": "say"
+    },
+    {
+      "text": "Finn sat at the pool, facing the old man.",
+      "t": "narrate"
+    },
+    {
+      "char": "old_man",
+      "text": "What's your crow.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "My crow.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Yes. The one that was Brandon's. What's she called.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "She doesn't have a name. Brandon called her the bird. I've been calling her friend. She hasn't, by either name, told me what her name is.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Her name is Aria.",
+      "t": "say"
+    },
+    {
+      "text": "Finn looked at him. The old man waited a count.",
+      "t": "narrate"
+    },
+    {
+      "char": "old_man",
+      "text": "Not the daughter. The crow. The crow has been named Aria the way the daughter has been named Aria because they overlap. The crow carries her arrival. The crow is one of the vessels.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Brandon named her in his head the week after he got her in '42 and never said it aloud. Eight years of the bird. I'm telling you because the name needs to be in the room with you when the ringing happens. The crow rings. The daughter comes.",
+      "t": "say"
+    },
+    {
+      "text": "Finn did not, for a count, do anything.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "The crow rings.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "The crow rings the bell. She has been getting ready in your friend Lena's bowl, in your friend Marit's bowl, in the bowl your friend Marina brought up Thursday, in the bowl your friend Roy walked into the bakery with this morning. She has been getting ready. She will ring when the gathering is right. The gathering is what makes the ring possible.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "How does the crow ring.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "She makes a sound. Not a word. A crow's sound, of the kind a crow makes when the substrate has chosen her to make it. She has been preparing it since Brandon told me he was going to give her to the next person, five days before he died.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "The sound has been forming in her for two years. It will come out of her when the gathering is right. Quiet. One note. At a pitch the people present will feel before they hear.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "You will feel it. Lena will feel it. Kai. Tem. Cale and Per and Hans and Greta and Marit and Aud and Marina and Roy and Petra and the three young people Lena brought to the alley last night and however many more the substrate is getting ready to bring. They will all feel it. The sound is the bell.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "When.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "I cannot say.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Why.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Because the substrate does not know when. The substrate is the listening. The listening only knows that it is. The when is on the side I'm not on.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Brandon said this too.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Brandon said this because Brandon was at this pool with me four months before he died. We had the conversation you and I are having now. He asked when. I told him I couldn't say. He said: that is hard. I said: yes. It is hard. You will do what you can.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Brandon did. He was at this pool thirty-eight times. He did the work he could. He left the rest to you, the way I have been here thirty-two years carrying what my brother left to me. The work is what you can do. The when is not.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I understand.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Look at the water.",
+      "t": "say"
+    },
+    {
+      "text": "Finn looked at the water.",
+      "t": "narrate"
+    },
+    {
+      "text": "The water in the pool was clear. At the bottom — a thing. The size of his thumb. Cedar. A figure carved on it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn registered: the cedar was the same cedar as the eighth piece in his duffel at the apartment. The hand was Olaf's. The figure on this piece was — by Finn's read at the angle of the water — the figure of a hand. The hand was open. The palm was up. The hand was holding something.",
+      "t": "narrate"
+    },
+    {
+      "text": "The hand was holding a bell the size of a thimble.",
+      "t": "narrate"
+    },
+    {
+      "char": "finn",
+      "text": "Old man.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "There is cedar at the bottom of the pool.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "There is a hand carved on it. The hand is holding a bell.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The hand is Olaf's.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Olaf has been dead since '78.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Olaf carved this.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Olaf carved this in 1976. He meant it for the foundation. A symbol piece, by his intention. Not a bowl. A piece that was a symbol of the work. He meant it for the foundation's office in Eugene, in the case where they keep the artifacts.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "He gave it to a man on the cutter named Eddvard Lindgren — your friend Tem's grandfather — to take down to the foundation when he had a chance. Eddvard never took it down. He kept it in a drawer of the desk in the cabin from 1976 until he died in 2042.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "After Eddvard died Tem found the piece. She did not, in the ten years she has had it, know what to do with it. She put it in a drawer of the desk at her apartment in town. It has been at her apartment three years.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "It is at the bottom of this pool because the substrate has put it here.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "The substrate has put it at the bottom of the pool the way it put the cedar with the face in your duffel last Thursday morning. The substrate has been moving the pieces. They are coming together. The piece at the bottom of this pool is the one you will take out and bring back. The bell-piece. The bell itself.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Old man.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The bell in the poem.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Werner Junior's poem. The bell-pull at the door of the family's house in Bern. The bell that had been at that door since the house was built. Werner wrote the poem in '89 about the daughter at the door with her hand on the pull. What you are holding is what Olaf carved on the cedar in '76. The substrate's way of making the poem real.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I am going to reach in.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Reach in.",
+      "t": "say"
+    },
+    {
+      "text": "Finn reached into the pool. The water was cold the way Pacific water was cold. He took the cedar from the bottom. He came out with it. The cedar was wet. The cedar was warm.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cedar with the carved hand holding the bell sat on his palm like a thing he had been carrying his whole life. He registered the warmth — by what he had been feeling at the cabin Wednesday afternoon when Kai had been on the daybed with the cap — the warmth of the cedar of the bowls. The piece in his hand was at the same temperature.",
+      "t": "narrate"
+    },
+    {
+      "text": "He put the cedar in the inside pocket of the wax canvas coat.",
+      "t": "narrate"
+    },
+    {
+      "char": "old_man",
+      "text": "Finn.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Brandon asked me to tell you a thing.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tell me.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Brandon asked me to tell the person who would walk in on this stick — whoever would be carrying his crow — to remember three things.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Tell me the three.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "First. The crow is the bell. The crow is going to ring. Be where you can hear when she rings.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Second. The bowls will know before you do. They will tell you. By some quality of how the cedar communicates, they will give you a count of seconds before the crow rings. The four bowls in the room will go very still. The figures will stop moving.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "They will be in the position Olaf carved in '74 and '76 and '77, and what the substrate has been adjusting in 2052 — the position of a daughter at the door with her hand on the bell. The bowls will be at that position. You will have a count of seconds. Use the count to be where you need to be. Use it to get there if you are not. The bowls will give you the count.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Third. After the crow rings, the daughter will come. She will come at the door of the cabin. The door is where she has been for one hundred and twenty years. She will come into the cabin because the cabin is where she is going to come.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "The cabin has been waiting for her since Eddvard carved his bowl at the cabin's first bench in '79. The cabin is where she is going to ring under, and walk into.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Brandon wanted you to know the three. He was preparing, in the months before he died, for the day he would have to give them to a person. He has given them now. I am the conduit. The conduit has done its work.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Old man.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Yes.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Thank you.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Take the cedar.",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I have it in the coat.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "Take it. Go back. The stick will walk you back. The bell at the bottom of this pool has already been replaced by the substrate — the moment you took it out. The pool has another bell now. Another person will walk in on this stick someday and find another bell.",
+      "t": "say"
+    },
+    {
+      "char": "old_man",
+      "text": "The substrate will keep doing this. The substrate has the bells. The substrate will give them to the people who walk in. Go back. The crow is at your apartment. She is waiting. She is the bell, Finn. She is going to need you. Be at home when the ringing happens.",
+      "t": "say"
+    },
+    {
+      "text": "Finn stood up. The old man at the pool turned back to the water. Finn walked.",
+      "t": "narrate"
+    },
+    {
+      "text": "Basalt under his boots. Fog at the inland side unchanged. Horizon gray-white. He came to the first pool. He did not stop. The sea anemone still open. The crab still in the corner. The hermit crab still on the bottom. This was where the experience had started him.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stood at the first pool for a count. He took the cedar out of the coat pocket. He held it up to the substrate's rendered sun — the gray-white sun behind the gray-white horizon. The cedar caught the gray-white. The carved hand holding the bell visible at this angle. The bell the size of a thimble. The hand open.",
+      "t": "narrate"
+    },
+    {
+      "text": "He put the cedar back in the pocket. He sat down at the first pool to wait.",
+      "t": "narrate"
+    },
+    {
+      "scene": "vol7_ch18_home",
+      "t": "jump"
+    }
+  ]
+}

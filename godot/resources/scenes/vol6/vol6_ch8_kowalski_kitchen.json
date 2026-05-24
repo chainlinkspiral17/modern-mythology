@@ -1,0 +1,263 @@
+{
+  "id": "vol6_ch8_kowalski_kitchen",
+  "vol": 6,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "Ch 8 — Anita's Kitchen",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Anita's Kitchen",
+      "sub": "Sunday — 09:18 — Kowalski House",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Maya wakes up in the basement."
+    },
+    {
+      "t": "narrate",
+      "text": "The basement is, as Ben had promised, a real bedroom with a real door. It has a small high window through which the morning light comes in low and yellow. The bed is a queen with a quilt that Maya does not recognize, and the quilt smells faintly of lavender, in the way of quilts kept in linen closets that women like Anita Kowalski maintain with a small specific ritual every other Sunday."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya gets up. She washes her face. She uses the bathroom. She puts on the t-shirt and jeans Anita has left on the chair, which, as advertised, swim on her."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes upstairs."
+    },
+    {
+      "t": "narrate",
+      "text": "The kitchen is full."
+    },
+    {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "anita",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Ben's father — Bill, fifty-one, water-plant operator, broad-chested in a way Ben has clearly inherited — is at the stove cooking eggs. Anita is at the table in scrubs, still up from her shift, drinking coffee. Gracie is at the counter eating cereal in her pajamas. Daisy the dog is under the table."
+    },
+    {
+      "t": "show",
+      "char": "maya",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "When Maya comes in, all four of them look up, in different registers."
+    },
+    {
+      "t": "say",
+      "char": "Bill Kowalski",
+      "text": "Morning, Maya. Eggs?",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "How'd you sleep, sweetheart.",
+      "expr": "neutral"
+    },
+    {
+      "t": "show",
+      "char": "gracie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "You are wearing my mom's shirt and it looks like a dress on you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya laughs."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Yeah. Eggs would be amazing. Thank you.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "She sits at the table next to Anita. Daisy comes out from under the table and puts her head on Maya's foot. Maya rubs Daisy with her toes."
+    },
+    {
+      "t": "narrate",
+      "text": "Anita slides her phone across the table."
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I called the hospital at seven. Your grandmother is awake. She is asking for you. They moved her up to the third floor at five-forty. Room three eighteen. Visiting hours are nine to nine. I can drive you over after breakfast.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Maya looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Thank you, Mrs. Kowalski.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Anita.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Anita.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill brings over a plate. Two eggs over-easy, two pieces of toast, a strip of bacon. He sets it in front of Maya without comment."
+    },
+    {
+      "t": "say",
+      "char": "Bill Kowalski",
+      "text": "Hot sauce is in the cabinet to the left of the stove if you want it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Thank you, Mr. Kowalski.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bill Kowalski",
+      "text": "Bill.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Bill.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She eats."
+    },
+    {
+      "t": "narrate",
+      "text": "The eggs are perfect."
+    },
+    {
+      "t": "narrate",
+      "text": "Gracie watches her eat with the unembarrassed curiosity of an eleven-year-old who has, this morning, decided that Maya is the most interesting thing to ever happen to her family's kitchen and is going to need, going forward, to be observed at all meals."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, halfway through the second egg, looks up."
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Gracie.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Want to come to the hospital with me?",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Gracie's face does, for an instant, the small unguarded thing eleven-year-olds' faces do when they have been invited to a thing they had not, dared, ask for."
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "Yes.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Gracie, sweetheart, you don't have to — ",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "I want to.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "It would help me, actually. If she's awake she'll want to know about — about people. Gracie can tell her about Daisy.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Gracie nods solemnly."
+    },
+    {
+      "t": "say",
+      "char": "Gracie",
+      "text": "I will tell her about Daisy at length.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Bill snorts."
+    },
+    {
+      "t": "narrate",
+      "text": "Anita laughs."
+    },
+    {
+      "t": "narrate",
+      "text": "The kitchen, in the small bright way kitchens do this work, becomes the room where the next chapter of Maya's life is, without her quite registering it, beginning to be set."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch8_hospital_318"
+    }
+  ]
+}

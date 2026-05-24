@@ -1,0 +1,143 @@
+{
+  "id": "vol6_ch6_jesse_bedroom",
+  "vol": 6,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Blowback",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_jesse_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Blowback",
+      "sub": "Friday — 13:27 — Jesse Henderson's Bedroom",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "jesse",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse is on his bed. He has been on his bed since eleven, when he came back from running an errand for his mother — picking up a prescription at the Walgreens in New Auburn. He is supposed to be at the Pit Stop at three. His shift today is short — three to nine — because he had asked for the short."
+    },
+    {
+      "t": "narrate",
+      "text": "His phone buzzes."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "he's safe. tell you in person. truck after your shift.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse reads it. He puts the phone face-down on the bed. He stares at the ceiling."
+    },
+    {
+      "t": "think",
+      "char": "Jesse",
+      "text": "Sam knows by now."
+    },
+    {
+      "t": "think",
+      "char": "Jesse",
+      "text": "Diego is alive."
+    },
+    {
+      "t": "think",
+      "char": "Jesse",
+      "text": "I get to play music tonight."
+    },
+    {
+      "t": "think",
+      "char": "Jesse",
+      "text": "I am going to play music tonight without it being for my dad's empty booth at the diner. I am going to play it for nobody."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets up. He gets the Telecaster from its stand. He sits on the floor. He plugs into the amp. He turns the amp on, just to the practice setting, just enough that the strings have body when he hits them."
+    },
+    {
+      "t": "narrate",
+      "text": "He plays Blowback. He plays the chorus."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a door —"
+    },
+    {
+      "t": "narrate",
+      "text": "The door is not locked —"
+    },
+    {
+      "t": "narrate",
+      "text": "We have not, yet, tried —"
+    },
+    {
+      "t": "narrate",
+      "text": "The handle."
+    },
+    {
+      "t": "narrate",
+      "text": "He plays it through three times."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "His mother, downstairs, hears it through the floor. She does not, this time, come up to ask if he is okay. She stands at the foot of the stairs, her hand on the bannister, and she listens."
+    },
+    {
+      "t": "think",
+      "char": "Eileen Henderson",
+      "text": "My son is playing again."
+    },
+    {
+      "t": "think",
+      "char": "Eileen Henderson",
+      "text": "Something has changed."
+    },
+    {
+      "t": "think",
+      "char": "Eileen Henderson",
+      "text": "My husband has not come out of the darkroom in eighteen hours and I am, tomorrow morning, having breakfast with my son and the Pit Stop boy who has, apparently, been watching out for him, and I am going to have to start asking questions I have, for two months, been deciding not to ask."
+    },
+    {
+      "t": "think",
+      "char": "Eileen Henderson",
+      "text": "My son's friends are good."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns. She goes to the kitchen. She makes a pitcher of iced tea, because making iced tea is the small steady thing she does when she does not, otherwise, know what to do, and because by the time the pitcher is full, the song will be over, and Jesse will come down for lunch, and the day will continue."
+    },
+    {
+      "t": "narrate",
+      "text": "The day continues."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch6_maya_bedroom"
+    }
+  ]
+}

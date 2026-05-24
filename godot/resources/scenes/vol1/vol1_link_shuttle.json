@@ -1,0 +1,104 @@
+{
+  "id": "vol1_link_shuttle",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "The Missing Link — the shuttle",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_shuttle_bench.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "You stay where you are. The coffee in the second mug, when you check on it, has, at some point, filled itself. You do not drink it."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, headlights crawl over the wet asphalt and a shape too large for the apron pulls in, slow, without sound — or with a sound the rain is doing the work of covering. The Shillelagh is a long bus the color of old copper. It has no destination listed in the window. It has no driver visible from inside."
+    },
+    {
+      "t": "narrate",
+      "text": "The doors part. The young man at the bench steps up into the bus. He does not look back. The light at the seams of his coat goes with him into the cabin and dims it a register warmer than the depot lights had been."
+    },
+    {
+      "t": "narrate",
+      "text": "You realize you have been standing."
+    },
+    {
+      "t": "narrate",
+      "text": "The doors do not close."
+    },
+    {
+      "t": "show",
+      "char": "trenchcoat",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"We have a seat for you. We always do. You don't have to take it tonight.\""
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "[Step up into the bus.]",
+          "goto": 13
+        },
+        {
+          "text": "[Stay on the apron. Watch it go.]",
+          "goto": 16
+        }
+      ]
+    },
+    {
+      "t": "flag",
+      "key": "vol1_shuttle_boarded",
+      "val": true
+    },
+    {
+      "t": "narrate",
+      "text": "You step up. The light in the cabin reads you the way a room reads someone who has come home in the middle of a sentence. Nobody asks for fare. The doors close. The Shillelagh pulls away from the depot in the same soundless way it arrived."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_end"
+    },
+    {
+      "t": "flag",
+      "key": "vol1_shuttle_boarded",
+      "val": false
+    },
+    {
+      "t": "narrate",
+      "text": "You stay. The Shillelagh pulls away the way it came in — slow, soundless, copper. The taillights are not red. They are something on the other side of red that you do not have a word for. The road takes them."
+    },
+    {
+      "t": "narrate",
+      "text": "You stand on the apron in the rain a while longer. Then, eventually, you go in. The second mug is empty again. Or it was always empty. You decide, on balance, that it was always empty."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_end"
+    }
+  ]
+}

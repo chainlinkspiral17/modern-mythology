@@ -1,0 +1,104 @@
+{
+  "id": "vol1_ch3_outside",
+  "vol": 1,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Act One — Outside the Bar",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_bar_exterior_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Outside the Bar",
+      "sub": "Smoke break · Night",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "EXT. THE BAR — NIGHT"
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob and Emily are talking outside. Faust is inside, talking to Wagner. The two other girls are getting more drinks."
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "What sort of superpower would you have?"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"To be myself, only better.\"",
+          "goto": 11
+        },
+        {
+          "text": "\"Flight. The earthbound thing tires me.\"",
+          "goto": 13
+        },
+        {
+          "text": "\"I'd hear what people aren't saying.\"",
+          "goto": 15
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "To be myself — only better."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch3_outside_b"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Flight. The earthbound thing tires me out — and I'm starting to notice it."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch3_outside_b"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'd hear what people aren't saying. Which is, probably, half a curse."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch3_outside_b"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "vol1_link_q_name",
+  "vol": 1,
+  "chapter": 1,
+  "type": "interlude",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_shuttle_bench.jpg"
+    },
+    {
+      "t": "show",
+      "char": "trenchcoat",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"I'm not exactly named yet. It's being kept for me. Somewhere I haven't been. By someone who will, when she meets me, decide it on the spot and not be wrong.\""
+    },
+    {
+      "t": "say",
+      "char": "Stranger",
+      "expr": "neutral",
+      "text": "\"You can call me whatever you want, for the duration of the rain. It will not stick.\""
+    },
+    {
+      "t": "think",
+      "char": null,
+      "text": "You decide, in the privacy of your head, on a name. He does not flinch. He also does not confirm."
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_link_outside_hub"
+    }
+  ]
+}

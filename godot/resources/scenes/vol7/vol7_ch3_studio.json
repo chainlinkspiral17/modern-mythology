@@ -1,0 +1,312 @@
+{
+  "id": "vol7_ch3_studio",
+  "vol": 7,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "Saturday Afternoon",
+  "nodes": [
+    {
+      "src": "assets/backgrounds/vol8_studio.jpg",
+      "t": "bg"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "pos": "right",
+      "t": "hide"
+    },
+    {
+      "text": "Chapter 3",
+      "sub": "Saturday — Afternoon",
+      "duration": 3000,
+      "t": "interlude"
+    },
+    {
+      "text": "The studio was a back room behind the Daily Grind that Hans the baker had rented her in 2049. The room had been storage for the Daily Grind's previous owner. Soren did not need it. When Lena had asked, he had said the room was hers as long as she was at the Daily Grind. Twelve by sixteen. One north window. A sink. Cold concrete she had covered, in winter, with a wool rug from Margit's.",
+      "t": "narrate"
+    },
+    {
+      "text": "The canvas was on the wall. Six by eight. Stretched on bars she had made herself. The surface was the eleventh underpainting — layered grays and umbers and a green she had been mixing for months. The canvas was almost too thick to take new paint without the knife. She had scraped a section in the lower-right quadrant last week, almost back to the gesso. The relationship between the scraped section and the rest was the relationship of a wound to skin.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "She set up. The apron. The brushes. Bone black, Naples yellow, the green, titanium white onto the glass palette. Solvent at the corner of the table. Heater on, because the room was at fifty-three.",
+      "t": "narrate"
+    },
+    {
+      "text": "She stood in front of the canvas.",
+      "t": "narrate"
+    },
+    {
+      "text": "She stood in front of it for forty minutes.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not pick up a brush. After twenty she sat on the wooden stool in the corner and kept looking. The canvas kept being the canvas. The painting kept being the painting that had not, in two years, told her what it was.",
+      "t": "narrate"
+    },
+    {
+      "text": "She let herself think about Tem.",
+      "t": "narrate"
+    },
+    {
+      "text": "She let herself think about Tem in a way she had not let herself in five months. Tem at her door at six in April. Tem at the Daily Grind every Wednesday since, sitting across from her with a cup, and the small careful distance Tem had been keeping that Lena had read, every Wednesday for five months, as Tem having decided.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem on the couch this morning with her hair flat on one side saying I have wanted it to be a thing again since April.",
+      "t": "narrate"
+    },
+    {
+      "text": "The small careful distance had not been Tem deciding. It had been Tem being scared.",
+      "t": "narrate"
+    },
+    {
+      "text": "She let herself think about that.",
+      "t": "narrate"
+    },
+    {
+      "text": "The painting stayed the painting.",
+      "t": "narrate"
+    },
+    {
+      "text": "She got up at one-forty. She had put one brushstroke on the canvas — a line of bone black in the upper-left quadrant, no wider than her smallest brush, that she would decide tomorrow whether to keep.",
+      "t": "narrate"
+    },
+    {
+      "text": "She cleaned the brush. She capped the solvent. She turned off the heater. She locked the studio door behind her and stepped out into the alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "The rain was steady. She walked east up Hemlock toward Main without looking at the Starfish Nebula on the wall above her head. She was not going to think about the patches this afternoon. She was thinking about something else.",
+      "t": "narrate"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "src": "assets/backgrounds/vol8_chillwave.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "ChillWave Video at four-twelve was quiet in the way Cale ran the place on Saturday afternoons. The bell rang as she came in. Cale was at the counter with a paperback. There were no other customers. The store smelled the way it always smelled — wax-paper sleeves, the cedar shelves Cale had built himself in 2046, the tobacco he smoked on his back porch and that clung to whatever shirt he was in.",
+      "t": "narrate"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "left",
+      "t": "show"
+    },
+    {
+      "text": "He set the paperback down.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Lena.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Hi, Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "What can I do for you.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Tem mentioned a designer last week. Ines Rocha. The stick is Estuary 7.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Estuary 7.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "She said you might have a copy.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I have a copy.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Okay.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "It's not on the floor.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "It's in the back. I've had it back there four months. I've been holding it for someone. I didn't know who. I've been waiting to find out.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Yeah.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "If you've been holding it for someone else I don't have to take it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I've been holding it for you. I just didn't know it was you until you walked in here a minute ago. I want to think about it overnight before I sell it to you. I want to be sure. Come back tomorrow afternoon. I'll have it for you tomorrow if I'm sure.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "All right.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I know that's strange.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "It's not strange.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "It is, a little.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "It is, a little.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "He smiled — the small Cale-smile she had been getting from him since she was nineteen and walked into the store for the first time, when she had come up from the south coast with a duffel and a set of brushes and he had recognized, at the counter, that she was somebody who would be in the store often.",
+      "t": "narrate"
+    },
+    {
+      "char": "cale",
+      "text": "Get home dry. It's supposed to pick up around six.",
+      "expr": "happy",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Thanks, Cale.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "pos": "left",
+      "t": "hide"
+    },
+    {
+      "src": "assets/backgrounds/vol8_smolvud_rain.jpg",
+      "t": "bg"
+    },
+    {
+      "text": "She walked the three blocks to her apartment. The rain picked up on the second block. By the time she was unlocking her door her flannel was soaked through the coat.",
+      "t": "narrate"
+    },
+    {
+      "src": "assets/backgrounds/vol8_lena_apartment.jpg",
+      "t": "bg"
+    },
+    {
+      "char": "lena",
+      "expr": "neutral",
+      "pos": "center",
+      "t": "show"
+    },
+    {
+      "text": "She hung the coat. She pulled off the boots. She put the kettle on for tea.",
+      "t": "narrate"
+    },
+    {
+      "text": "She sat at the kitchen table with the cup and looked through the window at the alley and at the Starfish Nebula and at the four patches and did not, this evening, do anything about any of it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The unfinished canvas was still on the wall in the studio.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had thought she had been going to spend the day deciding about Jorgen and instead she had spent the morning in a room with a woman who had been holding for five months a thing it turned out Lena had also been holding, and the two of them had set the holding down at a kitchen table over coffee.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not know what she would do about Jorgen. She would think about Jorgen in the morning.",
+      "t": "narrate"
+    },
+    {
+      "text": "She ate a piece of toast and the last of the soup she had made earlier in the week. She was in bed by eight. She slept.",
+      "t": "narrate"
+    },
+    {
+      "pos": "center",
+      "t": "hide"
+    },
+    {
+      "text": "She woke once at two-something to the rain, hard now on the roof, and lay there for a minute thinking about Tem at the door — tomorrow — and slept again until five.",
+      "t": "narrate"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

@@ -1,0 +1,391 @@
+{
+  "id": "vol6_ch10_home",
+  "vol": 6,
+  "chapter": 10,
+  "type": "chapter",
+  "title": "Ch 10 — Sopa de Pollo",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_ramos_kitchen_morning.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Sopa de Pollo",
+      "sub": "Tuesday Morning — Ramos House",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "graciela_ramos",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "His grandmother is at the kitchen window when he pulls into the driveway. She has been at the window since six forty-five, the same as every morning since June. She has a cup of espresso. She has, on the small radio on the windowsill — the kitchen radio, which has nothing to do with the upstairs shortwave at Linda Caldwell's, and is just a radio — the morning Spanish-language news from San Antonio playing low."
+    },
+    {
+      "t": "narrate",
+      "text": "She comes to the front door before he is at the porch."
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She kisses his temple."
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "text": "mijo. eggs.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "eggs.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He sits at the table."
+    },
+    {
+      "t": "narrate",
+      "text": "She makes the eggs."
+    },
+    {
+      "t": "narrate",
+      "text": "The eggs are, this morning, scrambled with a small amount of chorizo she has crumbled into the pan because she had felt, when she went to bed at ten last night, that he might want chorizo this morning. She is right. He wants chorizo."
+    },
+    {
+      "t": "narrate",
+      "text": "He eats."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, while he eats, sit. She stands at the counter with her own coffee. She has, in the past two months, learned not to sit during his breakfast, because his breakfast is at the wrong end of his day, and the politeness of two-people-at-a-table is the politeness of two people who are about to do something together, and they are not, this morning, about to do something together. He is about to sleep. She is about to do her morning. The standing is her small respect for the asymmetry."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Abuela.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "text": "Yes, mijo.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "There's a guy at work. The other summer hire. He told the team he used to be a cop.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at him."
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "text": "And.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "And the team has — they don't believe him. Or they don't trust him. They have, in the way the team does, decided about him.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "text": "And you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "I don't know, abuela. I don't know if he's lying. I don't know if he isn't. The team has — the team has moved around me and not him. And he came out on the dock with me on second break tonight and tried to — tried to get me to be on his side about something. And I did the thing the team would have done. I — I closed the conversation.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "His grandmother, at the counter, is quiet for a long moment."
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "text": "mijo. you are sixteen years old. you have been at this job for five weeks. the team has been there for years. the team has decided what it has decided. you are not, this summer, the one who is supposed to be deciding for the team.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "text": "but.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "text": "but. the man is alone in that room. and you know what it is to be alone in a room. and the team's decision is not, by being the team's decision, automatically right. you can hold both of these things at once. you do not have to act on either of them. you can just hold them.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks about this."
+    },
+    {
+      "t": "say",
+      "char": "Diego",
+      "text": "Yeah, abuela.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She comes to the table. She puts her hand, briefly, on the top of his head. The touch is the touch she has been doing since he was four. He leans into it without thinking."
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "text": "Eat your eggs, mijo. You will think about this better after sleep.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He eats his eggs."
+    },
+    {
+      "t": "narrate",
+      "text": "She returns to the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "The radio plays the morning weather. The weather, as it has been for nine days, is heat. The forecast for Friday — the day of inventory — is one hundred and three degrees. The store is, by Texas grocery-store standard, well air-conditioned. The store will, on Friday night, be cool. The day-side three will arrive at midnight in shorts and complain anyway. Diego will, by then, have slept his Friday day. He will be ready."
+    },
+    {
+      "t": "narrate",
+      "text": "He finishes the eggs. He kisses his grandmother on the cheek. He goes upstairs. He showers in the small upstairs bathroom that is, from June onward, the only bathroom in the house except for the half-bath downstairs that his grandmother uses during the day. He pulls the blackout curtains in his bedroom — the ones he had installed in mid-July, after his mother had driven up from San Antonio and helped him put them in on a Saturday afternoon while his grandmother had made lunch and had, occasionally, brought up cold lemonade. He gets into bed in his shorts and a t-shirt. The room, behind the blackout curtains, is the dark of any room at any hour."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_ramos_bedroom.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps."
+    },
+    {
+      "t": "narrate",
+      "text": "In his sleep, sometime around eleven AM Central, he dreams of the dock."
+    },
+    {
+      "t": "narrate",
+      "text": "In the dream the dock is the dock, and the cedar scrub is the cedar scrub, and the eastern horizon is the eastern horizon. But the rust-colored haze, in the dream, is closer than it is in life. The haze is, in the dream, only a few miles out. The haze is, in the dream, also moving — slowly, the way weather moves on a still day, but visibly, in the dream, moving toward him."
+    },
+    {
+      "t": "narrate",
+      "text": "He stands on the dock and watches it come."
+    },
+    {
+      "t": "narrate",
+      "text": "In the dream he is not, exactly, afraid."
+    },
+    {
+      "t": "narrate",
+      "text": "In the dream he is, instead, waiting — for the haze to arrive, for whatever is inside the haze to arrive with it, for the small reckoning the haze is, in the dream, bringing toward the back of a Centro Foods supermarket on the edge of a New Auburn industrial corridor at four AM in mid-August."
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "bt",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "In the dream BT is on the dock with him."
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "you saw it too. I knew you did.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "In the dream Diego, watching the haze, does not deny it."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He wakes, in his bedroom, at four eleven PM."
+    },
+    {
+      "t": "narrate",
+      "text": "The blackout curtains are doing their work. The room is dark. His phone, on the nightstand, has not vibrated."
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He lies on his back for a long minute."
+    },
+    {
+      "t": "think",
+      "char": "Diego",
+      "text": "the dream was a dream."
+    },
+    {
+      "t": "think",
+      "char": "Diego",
+      "text": "I did not, on the dock, deny it."
+    },
+    {
+      "t": "think",
+      "char": "Diego",
+      "text": "I am going to have to figure out, this week, what I am going to do about BT."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets up."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls back one of the blackout curtains. The afternoon light comes in. The light is the specific late-summer light Texas does in mid-August, gold and heavy, with the small visible motes of dust the air carries when the AC has been running all day."
+    },
+    {
+      "t": "narrate",
+      "text": "His grandmother, downstairs, is making early dinner. He can smell it. Sopa de pollo. She has been telling him for two days she was going to make sopa de pollo before his Tuesday shift this week, because she has decided that sopa de pollo is a soup that sits well in a stomach for a ten-hour shift, and because she has, this summer, taken the question of what sits well in his stomach as one of the small daily questions her own attention is good for."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_ramos_kitchen_afternoon.jpg"
+    },
+    {
+      "t": "show",
+      "char": "graciela_ramos",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "diego",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He goes downstairs."
+    },
+    {
+      "t": "narrate",
+      "text": "He kisses her on the temple."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits at the table."
+    },
+    {
+      "t": "narrate",
+      "text": "She brings the soup."
+    },
+    {
+      "t": "narrate",
+      "text": "He eats."
+    },
+    {
+      "t": "narrate",
+      "text": "The clock above the stove reads four thirty-eight PM."
+    },
+    {
+      "t": "narrate",
+      "text": "He has, before his next shift starts, five hours and twenty-two minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "He eats slowly."
+    },
+    {
+      "t": "narrate",
+      "text": "His grandmother, today, sits with him."
+    },
+    {
+      "t": "narrate",
+      "text": "The asymmetry, this evening, can be, for one bowl of soup, set aside."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

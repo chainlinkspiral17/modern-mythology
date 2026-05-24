@@ -1,0 +1,503 @@
+{
+  "id": "vol6_ch8_lake_palestine",
+  "vol": 6,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "Ch 8 — The Boat Ramp",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol6_lake_palestine_dawn.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Boat Ramp",
+      "sub": "Sunday — 06:31 — Lake Palestine",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The lake is quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "The lake has been quiet since the Sinkhole, technically — Lake Palestine is far enough north of the New Auburn corridor that the water has not, since the Calamity, registered any of the chemical changes the Gulf-side reservoirs have. But the lake is quiet in a deeper way than that, this morning, because it is Sunday at six-thirty in late May and because most of the bass fishermen who would normally be out have not yet, at this hour, finished their pre-dawn coffee."
+    },
+    {
+      "t": "show",
+      "char": "chief_miller",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Her father pulls into the lot near the north boat ramp."
+    },
+    {
+      "t": "narrate",
+      "text": "He parks."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, immediately, get out."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sammy. I want to do this here because — because this was the first place I ever brought you outside the subdivision. You were five. I had — I had taken the day off because your mother was sick and you were being a handful. I brought you up here. We didn't fish. We sat on the dock and ate Cheez-Its out of a box. You told me, that morning, that when you grew up you wanted to be a quote librarian or a hawk.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam laughs, briefly."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I don't remember that.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "You wouldn't. You were five. But I remember it. I have remembered it every time I have driven up here since.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He pauses."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I want to tell you some things. Not all the things. Most of them are going to come out tomorrow at the arraignment, or in the discovery, or in the — the stuff that's going to happen over the next year. I am not going to make you sit through the whole list this morning. But there are some things I want to be the one to tell you, before a lawyer or a reporter or a man in a suit gets to. Is that okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Yes, Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He nods."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets out of the truck."
+    },
+    {
+      "t": "narrate",
+      "text": "She gets out of the truck."
+    },
+    {
+      "t": "narrate",
+      "text": "They walk to the dock — the same dock, she registers, that he is talking about, which is, twelve years on, the same wood, very slightly more weathered, with the same metal cleat at the far end where she had, at six, decided cleats were boring and had returned to the Cheez-It box. They walk to the end of the dock. They sit on the edge with their feet over the water, the way you sit on docks when you do not, on this particular morning, plan to fish."
+    },
+    {
+      "t": "narrate",
+      "text": "He hands her the thermos."
+    },
+    {
+      "t": "narrate",
+      "text": "She pours coffee for both of them."
+    },
+    {
+      "t": "narrate",
+      "text": "He drinks. He sets the cup down on the wood between them."
+    },
+    {
+      "t": "narrate",
+      "text": "He breathes."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I started in 2016.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, immediately, react."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Before I made Chief — that was the year I made Chief, in October. Before that, I was a deputy. The PSA was — different then. Smaller. The Chief at the time was a man named Ken Brower. Ken had been doing the job since the subdivision opened. He had — he had an understanding with NexCorp Residential Solutions. The understanding was, the PSA looked the other way on certain — operations — that took place inside the subdivision in exchange for two things. One: NexCorp covered the PSA's payroll, which the city of New Auburn had been threatening, every two years, to cut. Two: NexCorp made specific people — certain specific people — disappear in ways that did not look like disappearances. I want you to understand that I am, this morning, simplifying. The actual arrangement was complicated. There were — there were forms. There were — there were other agencies, other names. But that is, in essence, what it was.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He pauses."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Ken died in September of 2016. Heart attack. He was sixty-one. NexCorp came to me — a man in a suit, not the man I have been dealing with this past year, an earlier man — and offered me Chief. He offered me three things. One: a forty percent raise. Two: the same payroll arrangement, with NexCorp covering the PSA's books. Three: he said, very quietly, that there would be — favors — that I would be asked to perform from time to time, and that I would be told what they were when they came up, and that I would be told I had a choice but that the choice would not, practically, be a choice. He said this to me in the parking lot of the substation on Gallatin at eleven PM on a Thursday. I drove home. I sat in the driveway for two hours. I went inside. Your mother asked what was wrong. I told her — I told her about the raise. I did not tell her about the favors. I took the job. The first favor came in March of 2017.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "What was it.",
+      "expr": "thinking"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "The first one was small, Sammy. It was — it was a man named Kowalski. Not — not Ben's family. Different Kowalski. Older man. He had been complaining at HOA meetings about the substation. They asked me to — to handle it. Handle meant, in this case, to make sure Mr. Kowalski's rental property ran into a series of code violations that prevented him from renewing his lease. I — I did it. He left town within six weeks. I told myself, at the time, that he was a difficult man. I told myself it was just paperwork. I told myself many things.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He pauses."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "By 2019 the favors had — they had grown. By 2021 I was making — choices — about whether specific kids stayed in town. Kids who had — kids who had drawn the wrong attention. Whose parents had drawn the wrong attention. By 2023 I was — I was doing what I did this past week. Or a version of it. With — with the Ramos boy this past Saturday I was — I was told about him, in the same conversation Ken had been told about people in 2007, at the same parking lot, by the man I have, since 2018, been dealing with. The man's name is Dean. D. Dean. I do not know what the D stands for. I have asked. He has never told me. He is — Sammy. I want you to understand. He is not a normal man. He is — he is the kind of man whose presence in a room you cannot, after the meeting, fully describe. He is — he was older than me when I met him in 2017 and he has not, in nine years, gotten older. I do not know what to do with that fact. I have, for nine years, declined to think about that fact.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, on the dock, is very still."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I know who D. Dean is.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her for a long moment."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sammy. How.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Maya's grandmother. Her grandfather, too. He took a picture in Graustark in the seventies. D. Dean cost him fifteen years. He is — Dad, he is not new. He is old. Whatever he is.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Her father exhales — a long careful exhale."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Okay, Sammy. That makes — that makes some things easier to tell you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He drinks his coffee."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I was going to spend the next twenty minutes trying to explain to you how the man I have been working for is — strange — without sounding like a crazy person. You have just told me you already know. So I am going to skip that part. I am going to tell you, instead, the part that is harder for me, which is: I knew. I knew he was strange. I knew the favors were — wrong. I did them anyway. I told myself, every year, that I was doing them for you. I told myself I was doing them for the mortgage. I told myself I was doing them so we could afford the things you had. I told myself I was — managing. I was not managing, Sammy. I was — I was being managed. I want you to understand the difference. I did not, until this past week, fully understand the difference.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam is silent."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "When did you — when did you decide.",
+      "expr": "thinking"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Wednesday morning. After dinner Tuesday — when I — when I told you about the safe deposit box — I went to my office and I sat for an hour. I had had, that day, the message that the Ramos boy was being moved up. I had had — it doesn't matter. I sat for an hour. I thought about what — I thought about what kind of man I would be, in five years, if I made the move he wanted me to make Wednesday. I thought about your mother. I thought about you. I thought about Ken Brower in the parking lot in 2016, and how Ken had, by 2016, been a man I would not have, at twenty, recognized as a man I was willing to become. I — I made the decision. I called Hernando Ramirez at one AM. He did not seem surprised. He told me to come in Friday morning. I did.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "A long silence."
+    },
+    {
+      "t": "narrate",
+      "text": "The lake makes its small lake sounds."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "What did Mom know.",
+      "expr": "thinking"
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Some. Not all. She knew the favors existed. She — she has, over the years, asked enough questions to learn the shape, even when I declined to tell her the contents. She has, I think, known longer than she has said. Wednesday night I told her everything. Everything I am telling you now and the long version. She listened. She did not — she did not ask me to make any decisions about what to do. She let me make them. That was — that was, Sammy, the most generous thing she has ever done for me. I do not know if I deserved it. She gave it anyway.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam nods."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Yeah.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "What do you want from me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sammy. Nothing. I — I want you to know what I did and why I did it. I want you to be able to make your own decisions about what part of me, going forward, you keep. I do not — I do not want you to forgive me. Not on a timeline. I want you to be able to say, when you are forty-five, my dad did some things I have to figure out how to think about, and he tried, in the end, to be honest about them. That is — that is what I want. The forgiveness — the forgiveness is your business. I am not going to ask for it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam looks at the water."
+    },
+    {
+      "t": "narrate",
+      "text": "She is silent for a long minute."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Dad. I have been angry at you all week. I am still angry. I am going to be angry for a long time. I want you to know that. But I also — I love you. I have loved you my whole life. I am not, this morning, going to pretend that the love stopped because the anger started. They are — they are doing two things, in two parts of me, at the same time. I am going to live with both of them for a while. That is going to be the part where I am okay.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Her father, on the dock, makes a small sound that is not, quite, a sob."
+    },
+    {
+      "t": "narrate",
+      "text": "He puts his hand, lightly, on her shoulder."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sammy.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Dad.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Okay.",
+      "expr": "sad"
+    },
+    {
+      "t": "narrate",
+      "text": "They sit on the dock for another twenty minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "The sun comes up over the trees on the eastern shore. The light gets into the water. The water lights up. Two bass boats — finally, at seven-fifteen — emerge from the launch on the far side and begin their slow patient circuits along the cove."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I brought sandwiches. They're in the cooler in the bed.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "You brought sandwiches at six AM.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Your mother packed them. She knew we would not eat breakfast.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "What kind.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Turkey and Swiss. For both of us. Mustard for me, mayo for you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "Sam laughs."
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Dad. I have not eaten mayo since I was twelve.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He stares at her."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "What do you eat instead.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Mustard.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sammy. You have been eating mayo on every sandwich your mother and I have ever made for you for five years.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I know.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Why did you not say something.",
+      "expr": "surprised"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "Because Mom thinks it's mayo.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He is quiet for a second."
+    },
+    {
+      "t": "narrate",
+      "text": "He bursts out laughing — a real laugh, the kind of laugh that surprises him, the kind of laugh that has not, for some weeks, been available to him. The laugh goes on for maybe nine seconds."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Sammy. You are — you are something else.",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "I'm yours.",
+      "expr": "neutral"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at her."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Yeah, kid. You are.",
+      "expr": "happy"
+    },
+    {
+      "t": "narrate",
+      "text": "They eat the sandwiches."
+    },
+    {
+      "t": "narrate",
+      "text": "She eats his."
+    },
+    {
+      "t": "jump",
+      "scene": "vol6_ch8_kowalski_kitchen"
+    }
+  ]
+}

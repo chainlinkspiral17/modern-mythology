@@ -1,0 +1,74 @@
+{
+  "id": "vol7_ch6_why_lena",
+  "vol": 7,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Ch 6 — Why Me",
+  "nodes": [
+    {
+      "t": "narrate",
+      "text": "She sat with her hands in her lap. The chair under her was a folding metal one Cale had probably grabbed out of the closet when his mother visited at Christmas. It was uncomfortable. She did not move."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "\"Why me and not her, Cale.\"",
+          "goto": 2
+        },
+        {
+          "text": "[Say nothing. Wait for him to continue.]",
+          "goto": 2
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"Why me and not her, Cale.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Because she's been carrying this alone for two years and she doesn't need to carry the next part alone. I'm telling you so when she has the conversation with me tomorrow you're in the room. I'm telling you so the four of you have what I have to say and what she's been holding at the same time. The carrying alone is what kills people in this. I knew that as soon as Brandon walked in here in 2049. I've been doing my own version for thirty years and I'm tired.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She watched him pick at the thumb."
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "warm",
+      "text": "\"Are you all right.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"Today, yes. I haven't always been. Today I'm all right. I'm telling you because telling you is what I should have done two years ago and didn't. Sorry I waited.\""
+    },
+    {
+      "t": "say",
+      "char": "Lena",
+      "expr": "neutral",
+      "text": "\"You don't have to be.\""
+    },
+    {
+      "t": "say",
+      "char": "Cale",
+      "expr": "neutral",
+      "text": "\"I do. A little. I'll live with it. I've lived with bigger.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She did not have an answer to that."
+    },
+    {
+      "t": "jump",
+      "scene": "vol7_ch6_the_stick"
+    }
+  ]
+}
