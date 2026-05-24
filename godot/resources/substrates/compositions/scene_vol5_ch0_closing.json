@@ -34,12 +34,13 @@
     {
       "kind": "image",
       "path": "assets/backgrounds/vol5_dambrosios_interior.png",
-      "x": 0,
-      "y": 0,
-      "w": 1920,
-      "h": 1080,
+      "x": 260,
+      "y": 146,
+      "w": 1400,
+      "h": 788,
       "alpha": 1.0,
-      "z": 3
+      "z": 3,
+      "stretch": "fit"
     },
     {
       "kind": "image_frames",
@@ -50,10 +51,10 @@
         "assets/backgrounds/vol5_dambrosios_interior_ascii_glitch.png"
       ],
       "frame_duration": 0.55,
-      "x": 0,
-      "y": 0,
-      "w": 1920,
-      "h": 1080,
+      "x": 260,
+      "y": 146,
+      "w": 1400,
+      "h": 788,
       "alpha": 0.2,
       "z": 5,
       "modulate": "#d6a070",
@@ -66,7 +67,8 @@
         "magnitude": 5.5,
         "smoothing": 0.22,
         "update_hz": 30
-      }
+      },
+      "stretch": "fit"
     },
     {
       "kind": "image_frames",
