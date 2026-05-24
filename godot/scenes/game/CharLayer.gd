@@ -46,7 +46,7 @@ const POSITIONS := {
 }
 const SPRITE_W    := 300.0
 const SPRITE_H    := 320.0
-const SCRIM_COLOR := Color(0.0, 0.0, 0.0, 0.28)
+const SCRIM_COLOR := Color(0.0, 0.0, 0.0, 0.10)
 const IDLE_AMP    := 4.0
 const IDLE_PERIOD := 2.5
 const IDLE_PHASE  := {"left": 0.0, "center": 0.85, "right": 1.7}
