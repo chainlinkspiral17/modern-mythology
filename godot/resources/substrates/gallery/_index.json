@@ -37,6 +37,15 @@
       "set": "Image2ASCII Tests",
       "path": "gallery/fool_reference_blocks400",
       "always_unlocked": true
+    },
+    {
+      "id": "portrait_john",
+      "title": "Portrait — John Frank",
+      "set": "Chapter 0 — Portraits",
+      "type": "composition",
+      "path": "portrait_john",
+      "volume": 5,
+      "always_unlocked": true
     }
   ]
 }

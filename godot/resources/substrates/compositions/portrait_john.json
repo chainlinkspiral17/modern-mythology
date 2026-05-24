@@ -3,6 +3,32 @@
   "canvas": [370, 550],
   "bg": null,
   "windows": [
-    { "path": "pieces/portrait_john", "x": 0, "y": 0, "font_px": 10, "z": 5 }
+    { "kind": "visualizer",
+      "x": 0, "y": 380, "font_px": 11,
+      "bar_count": 60, "bar_height": 14, "bar_gap": 0,
+      "min_freq": 40, "max_freq": 14000,
+      "magnitude": 16.0, "smoothing": 0.14, "peak_decay": 0.95,
+      "wave_smooth_passes": 2,
+      "col_dim":      "#06080e",
+      "col_lo":       "#1c2a45",
+      "col_mid":      "#5a4632",
+      "col_hi":       "#ffd17a",
+      "col_peak":     "#ffffff",
+      "col_peak_tip": "#ffffff",
+      "alpha": 0.55, "z": 1 },
+
+    { "kind": "image", "path": "assets/gallery/johnfrank_ref.png",
+      "x": 0, "y": 0, "w": 370, "h": 550,
+      "alpha": 0.42, "z": 2 },
+
+    { "frames": [
+        "pieces/portrait_john",
+        "pieces/portrait_john",
+        "pieces/portrait_john",
+        "pieces/portrait_john_glitch"
+      ],
+      "frame_duration": 0.45,
+      "x": 0, "y": 0, "font_px": 10,
+      "alpha": 0.92, "z": 5 }
   ]
 }
