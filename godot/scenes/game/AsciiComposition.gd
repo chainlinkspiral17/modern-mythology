@@ -163,6 +163,7 @@ func _add_window(w: Dictionary) -> void:
 		if w.has("peak_decay"):   win.peak_decay       = float(w["peak_decay"])
 		if w.has("peak_hold"):    win.peak_hold        = bool(w["peak_hold"])
 		if w.has("wave_smooth_passes"): win.wave_smooth_passes = int(w["wave_smooth_passes"])
+		if w.has("update_hz"):    win.update_hz        = float(w["update_hz"])
 		if w.has("col_lo"):       win.col_lo           = Color(str(w["col_lo"]))
 		if w.has("col_mid"):      win.col_mid          = Color(str(w["col_mid"]))
 		if w.has("col_hi"):       win.col_hi           = Color(str(w["col_hi"]))

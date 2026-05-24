@@ -9,10 +9,10 @@
     {
       "kind": "visualizer",
       "x": 0,
-      "y": 740,
+      "y": 800,
       "font_px": 14,
-      "bar_count": 120,
-      "bar_height": 20,
+      "bar_count": 80,
+      "bar_height": 16,
       "bar_gap": 0,
       "min_freq": 30,
       "max_freq": 280,
@@ -28,7 +28,8 @@
       "col_peak": "#ffd6c0",
       "col_peak_tip": "#ffd6c0",
       "alpha": 0.22,
-      "z": 1
+      "z": 1,
+      "update_hz": 30
     },
     {
       "kind": "image",

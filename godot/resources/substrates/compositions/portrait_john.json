@@ -5,11 +5,12 @@
   "windows": [
     { "kind": "visualizer",
       "x": 0, "y": 60, "font_px": 14,
-      "bar_count": 84, "bar_height": 60, "bar_gap": 0,
+      "bar_count": 60, "bar_height": 30, "bar_gap": 0,
       "min_freq": 30, "max_freq": 480,
       "magnitude": 14.0, "smoothing": 0.34, "peak_decay": 0.92,
       "peak_hold": false,
       "wave_smooth_passes": 4,
+      "update_hz": 45,
       "col_dim":      "#06080e",
       "col_lo":       "#10182a",
       "col_mid":      "#1c2a45",

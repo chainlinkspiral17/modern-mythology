@@ -1,27 +1,48 @@
 {
   "id": "scene_vol5_ch0_booth6",
-  "canvas": [1920, 1080],
+  "canvas": [
+    1920,
+    1080
+  ],
   "bg": "#06080e",
   "windows": [
-    { "kind": "visualizer",
-      "x": 0, "y": 720, "font_px": 14,
-      "bar_count": 120, "bar_height": 22, "bar_gap": 0,
-      "min_freq": 30, "max_freq": 280,
-      "magnitude": 14.0, "smoothing": 0.34, "peak_decay": 0.92,
-      "peak_hold": false, "wave_smooth_passes": 4,
-      "col_dim":      "#06080e",
-      "col_lo":       "#10182a",
-      "col_mid":      "#1c2a45",
-      "col_hi":       "#5a4632",
-      "col_peak":     "#ffd17a",
+    {
+      "kind": "visualizer",
+      "x": 0,
+      "y": 800,
+      "font_px": 14,
+      "bar_count": 80,
+      "bar_height": 16,
+      "bar_gap": 0,
+      "min_freq": 30,
+      "max_freq": 280,
+      "magnitude": 14.0,
+      "smoothing": 0.34,
+      "peak_decay": 0.92,
+      "peak_hold": false,
+      "wave_smooth_passes": 4,
+      "col_dim": "#06080e",
+      "col_lo": "#10182a",
+      "col_mid": "#1c2a45",
+      "col_hi": "#5a4632",
+      "col_peak": "#ffd17a",
       "col_peak_tip": "#ffd17a",
-      "alpha": 0.30, "z": 1 },
-
-    { "kind": "image", "path": "assets/backgrounds/vol5_dambrosios_exterior.png",
-      "x": 0, "y": 0, "w": 1920, "h": 1080,
-      "alpha": 0.85, "z": 3 },
-
-    { "kind": "image_frames",
+      "alpha": 0.28,
+      "z": 1,
+      "update_hz": 30
+    },
+    {
+      "kind": "image",
+      "path": "assets/backgrounds/vol5_dambrosios_exterior.png",
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.85,
+      "z": 3
+    },
+    {
+      "kind": "image_frames",
       "frames": [
         "assets/backgrounds/vol5_dambrosios_exterior_ascii.png",
         "assets/backgrounds/vol5_dambrosios_exterior_ascii.png",
@@ -29,7 +50,12 @@
         "assets/backgrounds/vol5_dambrosios_exterior_ascii_glitch.png"
       ],
       "frame_duration": 0.55,
-      "x": 0, "y": 0, "w": 1920, "h": 1080,
-      "alpha": 0.42, "z": 5 }
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.42,
+      "z": 5
+    }
   ]
 }
