@@ -46,6 +46,10 @@
       }
     },
 
+    { "kind": "image", "path": "assets/gallery/portrait_border_shadow.png",
+      "x": 6, "y": 8, "w": 810, "h": 858,
+      "alpha": 0.85, "z": 7 },
+
     { "kind": "image", "path": "assets/gallery/portrait_border_warm.png",
       "x": 0, "y": 0, "w": 810, "h": 858,
       "modulate": "#9bc3ff",
