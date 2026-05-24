@@ -10,6 +10,15 @@
       "unlock_pattern": "vol5_ch0_*"
     },
     {
+      "id": "magician_arcana",
+      "title": "I — THE MAGICIAN",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "magician_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch1_*"
+    },
+    {
       "id": "tarot_fool_v2",
       "title": "0 — THE FOOL  (dashboard)",
       "set": "Major Arcana",
