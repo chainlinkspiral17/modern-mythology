@@ -260,25 +260,33 @@ func _unlock_gallery_for_scene(scene_id: String) -> void:
 
 
 func _auto_load_substrate(scene_id: String) -> void:
-	# Two parallel conventions, both probed on every scene load:
+	# Two parallel conventions, probed in order:
 	#
 	#   compositions/scene_<id>.json   layered bg (visualizer + image +
-	#                                  image_frames + border) — loaded
-	#                                  into _bg_composition.
-	#   scene/<id>.json                single ASCII piece — loaded into
-	#                                  _substrate (legacy / lightweight).
+	#                                  image_frames + border). If this
+	#                                  exists it supersedes the piece —
+	#                                  authoring both for the same scene
+	#                                  doesn't make sense (substrate
+	#                                  would just cover the composition
+	#                                  in the z-stack).
 	#
-	# Either, both, or neither may exist. Both render together when
-	# both are present, in z order: _bg_composition under _substrate.
+	#   scene/<id>.json                single ASCII piece, loaded into
+	#                                  _substrate. The legacy /
+	#                                  lightweight path; used for scenes
+	#                                  without a composition.
+	#
 	# Explicit {"t":"substrate"} / {"t":"composition"} directives can
-	# override mid-scene.
+	# still swap either mid-scene.
 	var comp_short := "scene_" + scene_id
 	var comp_path  := "res://resources/substrates/compositions/" + comp_short + ".json"
-	if FileAccess.file_exists(comp_path):
-		_bg_composition.call("load_composition", comp_short)
-	else:
-		_clear_bg_composition()
+	var has_comp: bool = FileAccess.file_exists(comp_path)
 
+	if has_comp:
+		_bg_composition.call("load_composition", comp_short)
+		_substrate.call("clear_substrate")
+		return
+
+	_clear_bg_composition()
 	var piece_short := "scene/" + scene_id
 	var piece_path  := "res://resources/substrates/" + piece_short + ".json"
 	if FileAccess.file_exists(piece_path):
