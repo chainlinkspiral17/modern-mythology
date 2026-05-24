@@ -4,22 +4,23 @@
   "bg": null,
   "windows": [
     { "kind": "visualizer",
-      "x": 0, "y": 380, "font_px": 11,
-      "bar_count": 60, "bar_height": 14, "bar_gap": 0,
-      "min_freq": 40, "max_freq": 14000,
-      "magnitude": 16.0, "smoothing": 0.14, "peak_decay": 0.95,
-      "wave_smooth_passes": 2,
+      "x": 0, "y": 30, "font_px": 11,
+      "bar_count": 90, "bar_height": 48, "bar_gap": 0,
+      "min_freq": 30, "max_freq": 480,
+      "magnitude": 14.0, "smoothing": 0.34, "peak_decay": 0.92,
+      "peak_hold": false,
+      "wave_smooth_passes": 4,
       "col_dim":      "#06080e",
-      "col_lo":       "#1c2a45",
-      "col_mid":      "#5a4632",
-      "col_hi":       "#ffd17a",
-      "col_peak":     "#ffffff",
-      "col_peak_tip": "#ffffff",
-      "alpha": 0.55, "z": 1 },
+      "col_lo":       "#10182a",
+      "col_mid":      "#1c2a45",
+      "col_hi":       "#3a78bc",
+      "col_peak":     "#9bc3ff",
+      "col_peak_tip": "#9bc3ff",
+      "alpha": 0.22, "z": 1 },
 
     { "kind": "image", "path": "assets/gallery/johnfrank_ref.png",
       "x": 0, "y": 0, "w": 370, "h": 550,
-      "alpha": 0.42, "z": 2 },
+      "alpha": 0.55, "z": 3 },
 
     { "frames": [
         "pieces/portrait_john",
@@ -29,6 +30,10 @@
       ],
       "frame_duration": 0.45,
       "x": 0, "y": 0, "font_px": 10,
-      "alpha": 0.92, "z": 5 }
+      "alpha": 0.88, "z": 5 },
+
+    { "path": "pieces/portrait_border_tarot",
+      "x": 0, "y": 0, "font_px": 10,
+      "alpha": 0.95, "z": 8 }
   ]
 }
