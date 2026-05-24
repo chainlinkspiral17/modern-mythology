@@ -36,6 +36,15 @@
       "unlock_pattern": "vol5_ch0_*"
     },
     {
+      "id": "portrait_frasier",
+      "title": "Portrait — Frasier Temple",
+      "set": "Chapter 0 — Portraits",
+      "type": "composition",
+      "path": "portrait_frasier",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_frasier"
+    },
+    {
       "id": "music_player",
       "title": "MUSIC PLAYER  (live visualizer)",
       "set": "Player Surfaces",

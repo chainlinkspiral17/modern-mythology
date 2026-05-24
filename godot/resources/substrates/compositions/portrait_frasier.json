@@ -1,0 +1,58 @@
+{
+  "id": "portrait_frasier",
+  "canvas": [810, 858],
+  "bg": null,
+  "windows": [
+    { "kind": "image", "path": "assets/gallery/portrait_vignette.png",
+      "x": 0, "y": 0, "w": 810, "h": 858,
+      "alpha": 0.35, "z": 0 },
+
+    { "kind": "visualizer",
+      "x": 0, "y": 540, "font_px": 14,
+      "bar_count": 60, "bar_height": 30, "bar_gap": 0,
+      "min_freq": 60, "max_freq": 720,
+      "magnitude": 14.0, "smoothing": 0.30, "peak_decay": 0.92,
+      "peak_hold": false,
+      "wave_smooth_passes": 4,
+      "update_hz": 45,
+      "col_dim":      "#06080e",
+      "col_lo":       "#1c1410",
+      "col_mid":      "#3a2418",
+      "col_hi":       "#a06030",
+      "col_peak":     "#ffa860",
+      "col_peak_tip": "#ffd0a0",
+      "alpha": 0.32, "z": 1 },
+
+    { "kind": "image", "path": "assets/gallery/frasier_face.png",
+      "x": 0, "y": 0, "w": 810, "h": 858,
+      "stretch": "fit",
+      "alpha": 1.0, "z": 3 },
+
+    { "kind": "image_frames",
+      "frames": [
+        "assets/gallery/portrait_frasier_face_ascii.png",
+        "assets/gallery/portrait_frasier_face_ascii.png",
+        "assets/gallery/portrait_frasier_face_ascii.png",
+        "assets/gallery/portrait_frasier_face_ascii_glitch.png"
+      ],
+      "frame_duration": 0.45,
+      "x": 0, "y": 0, "w": 810, "h": 858,
+      "modulate": "#ffe6c0",
+      "alpha": 0.45, "z": 5,
+      "audio_reactive": {
+        "freq_lo": 80, "freq_hi": 480,
+        "base_alpha": 0.30, "max_alpha": 0.70, "min_alpha": 0.20,
+        "magnitude": 6.0, "smoothing": 0.22, "update_hz": 30
+      }
+    },
+
+    { "kind": "image", "path": "assets/gallery/portrait_border_frasier_shadow.png",
+      "x": 6, "y": 8, "w": 810, "h": 858,
+      "alpha": 0.85, "z": 7 },
+
+    { "kind": "image", "path": "assets/gallery/portrait_border_frasier.png",
+      "x": 0, "y": 0, "w": 810, "h": 858,
+      "modulate": "#ffa860",
+      "alpha": 1.0, "z": 8 }
+  ]
+}
