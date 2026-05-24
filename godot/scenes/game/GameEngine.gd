@@ -55,31 +55,31 @@ func _build_layers() -> void:
 	_bg_solid = ColorRect.new()
 	_bg_solid.color = Color(0.05, 0.04, 0.03)
 	_bg_solid.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_bg_solid.z_index = -100
 	add_child(_bg_solid)
 
 	# Optional layered composition for scene backgrounds (visualizer +
-	# image refs + image_frames + border). Sits above the solid bg and
-	# below the ASCII piece substrate so a scene can stack both.
-	#
-	# z_index = -16 keeps the whole sub-tree behind the UI: composition
-	# windows use z values up to ~9 internally, and since CanvasItem
-	# z_index is additive with the parent, this guarantees the highest
-	# bg layer (-16 + 9 = -7) still renders below sibling UI at z=0.
+	# image refs + image_frames + border). z_index range -50 means
+	# composition windows (which use z=0..9 internally) render at
+	# effective z=-50..-41 — above the solid bg but well below the
+	# substrate, static bg, char layer, and UI at z=0.
 	_bg_composition = Control.new()
 	_bg_composition.set_script(COMPOSITION_SCRIPT)
 	_bg_composition.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_bg_composition.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_bg_composition.z_index = -16
+	_bg_composition.z_index = -50
 	add_child(_bg_composition)
 
 	_substrate = Control.new()
 	_substrate.set_script(SUBSTRATE_SCRIPT)
 	_substrate.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_substrate.z_index = -30
 	add_child(_substrate)
 
 	_bg = TextureRect.new()
 	_bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_bg.z_index = -10
 	add_child(_bg)
 
 	_chars = CHAR_SCENE.instantiate()
