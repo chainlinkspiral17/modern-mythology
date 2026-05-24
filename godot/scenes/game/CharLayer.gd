@@ -148,12 +148,17 @@ func hide_all() -> void:
 
 
 func activate_speaker(char_name: String) -> void:
+	# Empty char_name (called from narrate) → nobody is the active
+	# speaker, so all portraits recede to the inactive state. This
+	# lets the camera pull back during third-person narration instead
+	# of leaving the last speaker on the screen as "main".
+	var key := char_name.to_lower()
 	for pos: String in _slots:
 		var slot = _slots[pos]
 		if slot == null:
 			continue
 		var node: Control     = slot["node"]
-		var is_active: bool   = (char_name == "" or slot["name"] == char_name)
+		var is_active: bool   = (key != "" and str(slot["name"]).to_lower() == key)
 		# Active: full color, +5% scale, full alpha
 		# Inactive: deeper desat (cool gray), -8% scale, ~30% alpha — recedes
 		# noticeably so the active speaker reads as "the camera is on them"

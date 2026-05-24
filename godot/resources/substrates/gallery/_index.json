@@ -45,6 +45,15 @@
       "unlock_pattern": "vol5_ch0_frasier"
     },
     {
+      "id": "portrait_stranger",
+      "title": "Portrait — The Stranger",
+      "set": "Chapter 0 — Portraits",
+      "type": "composition",
+      "path": "portrait_stranger",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_booth6"
+    },
+    {
       "id": "music_player",
       "title": "MUSIC PLAYER  (live visualizer)",
       "set": "Player Surfaces",
