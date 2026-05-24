@@ -1,0 +1,24 @@
+{
+  "id": "tarot_fool_v2",
+  "canvas": [1920, 1080],
+  "bg": "#040610",
+  "windows": [
+    { "path": "pieces/pcb_circuit",       "x": 280,  "y": 40,   "font_px": 13, "z": 1 },
+    { "path": "pieces/mountain_left",     "x": 280,  "y": 660,  "font_px": 12, "z": 1 },
+    { "path": "pieces/cathedral_top",     "x": 1180, "y": 320,  "font_px": 14, "z": 1 },
+    { "path": "pieces/cathedral_bottom",  "x": 1180, "y": 490,  "font_px": 14, "z": 1 },
+    { "path": "pieces/glitch_cluster",    "x": 1180, "y": 660,  "font_px": 12, "z": 2 },
+    { "path": "pieces/hex_dump",          "x": 850,  "y": 820,  "font_px": 10, "z": 2 },
+
+    { "path": "pieces/cite_box_the_fool", "x": 30,   "y": 50,   "font_px": 15, "z": 3 },
+    { "path": "pieces/equations_fool",    "x": 1180, "y": 30,   "font_px": 14, "z": 3 },
+
+    { "path": "pieces/music_vu",          "x": 1680, "y": 40,   "font_px": 12, "z": 3 },
+    { "path": "pieces/music_sparkline",   "x": 1680, "y": 240,  "font_px": 12, "z": 3 },
+    { "path": "pieces/music_equalizer",   "x": 1680, "y": 420,  "font_px": 12, "z": 3 },
+
+    { "path": "pieces/fool_card_figure",  "x": 756,  "y": 100,  "font_px": 9,  "z": 5 },
+    { "path": "pieces/text_card_zero",    "x": 950,  "y": 96,   "font_px": 56, "z": 6 },
+    { "path": "pieces/text_card_fool",    "x": 870,  "y": 940,  "font_px": 56, "z": 6 }
+  ]
+}

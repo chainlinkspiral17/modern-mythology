@@ -1,0 +1,13 @@
+{
+  "id": "vol5_test_tarot_fool",
+  "vol": 5,
+  "chapter": "0",
+  "type": "test",
+  "title": "TEST — Tarot 0: The Fool",
+  "nodes": [
+    {"t": "substrate", "src": "gallery/tarot_fool"},
+    {"t": "narrate", "text": "[ Tarot 0 — The Fool. Substrate preview. Advance to exit. ]"},
+    {"t": "narrate", "text": "[ Glitch state is static for now; animation comes in Stage B. ]"},
+    {"t": "end"}
+  ]
+}

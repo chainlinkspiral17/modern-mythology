@@ -26,6 +26,9 @@ var _is_ducked:  bool     = false
 
 var _music_heard: Dictionary = {}
 
+# Spectrum analyzer on BGM bus, for visualizer windows.
+var _bgm_spectrum: AudioEffectSpectrumAnalyzerInstance = null
+
 const HEARD_PATH := "user://progress/music_heard.cfg"
 
 
@@ -51,6 +54,30 @@ func _setup_buses() -> void:
 		var panner := AudioEffectPanner.new()
 		panner.pan = 0.0
 		AudioServer.add_bus_effect(sfx_idx, panner)
+
+	# Add spectrum analyzer to BGM bus so visualizers can read magnitudes
+	var bgm_idx := AudioServer.get_bus_index("BGM")
+	if bgm_idx != -1:
+		var has_spec := false
+		for i in range(AudioServer.get_bus_effect_count(bgm_idx)):
+			if AudioServer.get_bus_effect(bgm_idx, i) is AudioEffectSpectrumAnalyzer:
+				_bgm_spectrum = AudioServer.get_bus_effect_instance(bgm_idx, i) as AudioEffectSpectrumAnalyzerInstance
+				has_spec = true
+				break
+		if not has_spec:
+			var spec := AudioEffectSpectrumAnalyzer.new()
+			spec.fft_size = AudioEffectSpectrumAnalyzer.FFT_SIZE_2048
+			AudioServer.add_bus_effect(bgm_idx, spec)
+			var spec_idx := AudioServer.get_bus_effect_count(bgm_idx) - 1
+			_bgm_spectrum = AudioServer.get_bus_effect_instance(bgm_idx, spec_idx) as AudioEffectSpectrumAnalyzerInstance
+
+
+# Returns BGM magnitude in [0..~1] for the given frequency range, or 0 if
+# the analyzer isn't initialized.
+func get_bgm_magnitude(freq_low: float, freq_high: float) -> float:
+	if _bgm_spectrum == null:
+		return 0.0
+	return _bgm_spectrum.get_magnitude_for_frequency_range(freq_low, freq_high).length()
 
 
 func _setup_players() -> void:

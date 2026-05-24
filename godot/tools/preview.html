@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ASCII grid preview</title>
+<style>
+  :root {
+    --bg: #0d121c;
+    --fg: #d1d5db;
+    --panel: #1a202c;
+    --border: #2d3748;
+  }
+  html, body { background: var(--bg); color: var(--fg); margin: 0; font-family: system-ui, sans-serif; }
+  header { padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  header label { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+  header input[type=range] { width: 160px; }
+  main { padding: 16px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .tile { background: var(--panel); border: 1px solid var(--border); padding: 12px; border-radius: 6px; overflow: auto; }
+  .tile h3 { margin: 0 0 8px; font: 12px/1 ui-monospace, monospace; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; }
+  pre.grid {
+    margin: 0;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    line-height: 1.0;
+    white-space: pre;
+    background: var(--bg);
+    padding: 8px;
+    border-radius: 4px;
+  }
+  pre.grid span { display: inline-block; }
+  .empty { color: #6b7280; font-size: 13px; }
+</style>
+</head>
+<body>
+<header>
+  <label>Load JSON(s): <input type="file" id="files" accept="application/json" multiple /></label>
+  <label>Font size: <input type="range" id="size" min="6" max="22" value="11" /><span id="sizeLabel">11px</span></label>
+  <label>Background: <input type="color" id="bg" value="#0d121c" /></label>
+  <label><input type="checkbox" id="square" /> Square cells</label>
+  <span style="margin-left:auto; font-size:12px; color:#6b7280">Drop multiple variants in to compare side-by-side.</span>
+</header>
+<main id="grid">
+  <p class="empty">Pick one or more <code>.json</code> files produced by <code>img2ascii.py</code>.</p>
+</main>
+<script>
+const filesInput = document.getElementById('files');
+const sizeInput = document.getElementById('size');
+const sizeLabel = document.getElementById('sizeLabel');
+const bgInput = document.getElementById('bg');
+const squareInput = document.getElementById('square');
+const grid = document.getElementById('grid');
+const loaded = [];
+
+function render() {
+  const fs = parseInt(sizeInput.value, 10);
+  sizeLabel.textContent = fs + 'px';
+  document.documentElement.style.setProperty('--bg', bgInput.value);
+  grid.innerHTML = '';
+  if (!loaded.length) {
+    grid.innerHTML = '<p class="empty">No files loaded.</p>';
+    return;
+  }
+  for (const data of loaded) {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    const h = document.createElement('h3');
+    h.textContent = `${data.source || 'image'} — ${data.charset} / ${data.color} — ${data.width}x${data.height}`;
+    tile.appendChild(h);
+    const pre = document.createElement('pre');
+    pre.className = 'grid';
+    pre.style.fontSize = fs + 'px';
+    pre.style.background = bgInput.value;
+    const lh = squareInput.checked ? (fs / 0.5) + 'px' : '1.0';
+    pre.style.lineHeight = lh;
+    const frag = document.createDocumentFragment();
+    for (const row of data.cells) {
+      for (const cell of row) {
+        const s = document.createElement('span');
+        s.textContent = cell.c;
+        if (cell.fg) s.style.color = cell.fg;
+        if (cell.bg) s.style.background = cell.bg;
+        frag.appendChild(s);
+      }
+      frag.appendChild(document.createTextNode('\n'));
+    }
+    pre.appendChild(frag);
+    tile.appendChild(pre);
+    grid.appendChild(tile);
+  }
+}
+
+filesInput.addEventListener('change', async (e) => {
+  loaded.length = 0;
+  for (const f of e.target.files) {
+    try {
+      const txt = await f.text();
+      const data = JSON.parse(txt);
+      if (!data.source) data.source = f.name;
+      loaded.push(data);
+    } catch (err) {
+      console.error(f.name, err);
+    }
+  }
+  loaded.sort((a, b) => (a.charset + a.color).localeCompare(b.charset + b.color));
+  render();
+});
+
+[sizeInput, bgInput, squareInput].forEach(el => el.addEventListener('input', render));
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "id": "fool_arcana",
+  "canvas": [1920, 1080],
+  "bg": "#040610",
+  "windows": [
+    { "path": "pieces/fool_card_textual", "x": 660,  "y": -10, "font_px": 12, "z": 5 },
+    { "path": "pieces/text_card_zero",    "x": 935,  "y": 20,  "font_px": 64, "z": 6 },
+    { "path": "pieces/text_card_fool",    "x": 870,  "y": 1010, "font_px": 60, "z": 6 }
+  ]
+}

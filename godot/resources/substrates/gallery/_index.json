@@ -1,0 +1,42 @@
+{
+  "items": [
+    {
+      "id": "fool_arcana",
+      "title": "0 — THE FOOL  (textual)",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "fool_arcana",
+      "always_unlocked": true
+    },
+    {
+      "id": "music_player",
+      "title": "MUSIC PLAYER  (live visualizer)",
+      "set": "Player Surfaces",
+      "type": "composition",
+      "path": "music_player",
+      "always_unlocked": true
+    },
+    {
+      "id": "tarot_fool_v2",
+      "title": "0 — THE FOOL  (dashboard)",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "tarot_fool_v2",
+      "always_unlocked": true
+    },
+    {
+      "id": "tarot_fool",
+      "title": "0 — THE FOOL  (v1)",
+      "set": "Major Arcana",
+      "path": "gallery/tarot_fool",
+      "always_unlocked": true
+    },
+    {
+      "id": "fool_reference_blocks400",
+      "title": "TEST — Reference (blocks @ 400)",
+      "set": "Image2ASCII Tests",
+      "path": "gallery/fool_reference_blocks400",
+      "always_unlocked": true
+    }
+  ]
+}

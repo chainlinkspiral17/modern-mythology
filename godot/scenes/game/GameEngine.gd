@@ -12,6 +12,7 @@ const HUD_SCENE       := preload("res://scenes/game/HudBar.tscn")
 const IN_GAME_MENU    := preload("res://scenes/game/InGameMenu.tscn")
 const SETTINGS_OV     := preload("res://scenes/menu/SettingsOverlay.tscn")
 const MUSIC_OV        := preload("res://scenes/menu/MusicPlayerOverlay.tscn")
+const SUBSTRATE_SCRIPT := preload("res://scenes/game/AsciiSubstrate.gd")
 
 var _vol:         int        = 1
 var _scene_id:    String     = ""
@@ -30,6 +31,7 @@ var _auto_timer:  float = 0.0
 var _paused:      bool  = false
 
 var _bg_solid:   ColorRect   = null
+var _substrate:  Control     = null
 var _bg:         TextureRect = null
 var _chars:      Control     = null
 var _dlg:        Control     = null
@@ -51,6 +53,11 @@ func _build_layers() -> void:
 	_bg_solid.color = Color(0.05, 0.04, 0.03)
 	_bg_solid.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_bg_solid)
+
+	_substrate = Control.new()
+	_substrate.set_script(SUBSTRATE_SCRIPT)
+	_substrate.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_substrate)
 
 	_bg = TextureRect.new()
 	_bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
@@ -188,7 +195,20 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 		push_error("GameEngine: scene not found: " + scene_id)
 		game_ended.emit()
 		return
+	_auto_load_substrate(scene_id)
 	_run_next()
+
+
+func _auto_load_substrate(scene_id: String) -> void:
+	# Convention: if res://resources/substrates/scene/<scene_id>.json exists,
+	# it loads automatically. Explicit {"t": "substrate"} directives override
+	# during the scene.
+	var short := "scene/" + scene_id
+	var path  := "res://resources/substrates/" + short + ".json"
+	if FileAccess.file_exists(path):
+		_substrate.call("load_substrate", short)
+	else:
+		_substrate.call("clear_substrate")
 
 
 func _run_next() -> void:
@@ -210,6 +230,7 @@ func _dispatch(n: Dictionary) -> void:
 		"show":       _do_show(n); _run_next()
 		"hide":       _do_hide(n); _run_next()
 		"bg":         _do_bg(n);   _run_next()
+		"substrate":  _do_substrate(n); _run_next()
 		"bgm":        _do_bgm(n);  _run_next()
 		"sfx":        _do_sfx(n);  _run_next()
 		"flag":       _do_flag(n); _run_next()
@@ -336,6 +357,11 @@ func _do_bg(n: Dictionary) -> void:
 		_bg.texture = ResourceLoader.load(path) as Texture2D
 	else:
 		_bg.texture = null
+
+
+func _do_substrate(n: Dictionary) -> void:
+	var src: String = _s(n, "src")
+	_substrate.call("load_substrate", src)
 
 
 func _do_bgm(n: Dictionary) -> void:

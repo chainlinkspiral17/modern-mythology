@@ -1,0 +1,36 @@
+{
+  "id": "music_player",
+  "canvas": [1920, 1080],
+  "bg": "#020308",
+  "windows": [
+    { "kind": "image", "path": "assets/gallery/fool.png",
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "alpha": 0.88, "z": 0 },
+
+    {
+      "frames": [
+        "pieces/fool_reference_shimmer_0",
+        "pieces/fool_reference_shimmer_1"
+      ],
+      "frame_duration": 0.60,
+      "x": -15, "y": 0, "font_px": 13,
+      "alpha": 0.50, "z": 2
+    },
+
+    { "kind": "visualizer", "x": 160, "y": 890, "font_px": 14,
+      "bar_count": 100, "bar_height": 10, "bar_gap": 0,
+      "min_freq": 40, "max_freq": 14000,
+      "magnitude": 18.0, "smoothing": 0.12, "peak_decay": 0.95,
+      "wave_smooth_passes": 3,
+      "col_dim":      "#0a1018",
+      "col_lo":       "#10304a",
+      "col_mid":      "#3a78bc",
+      "col_hi":       "#a8d0ff",
+      "col_peak":     "#ffffff",
+      "col_peak_tip": "#ffffff",
+      "alpha": 0.9, "z": 6 },
+
+    { "path": "pieces/title_fool", "x": 770, "y": 60, "font_px": 36,
+      "shadow_color": "#000000", "shadow_offset": [4, 4], "z": 8 }
+  ]
+}
