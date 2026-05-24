@@ -23,8 +23,9 @@
       "col_peak_tip": "#ffd17a",
       "alpha": 0.32, "z": 1 },
 
-    { "kind": "image", "path": "assets/gallery/johnfrank_face.png",
+    { "kind": "image", "path": "assets/gallery/johnfrank_face_cutout.png",
       "x": 0, "y": 0, "w": 810, "h": 858,
+      "stretch": "fit",
       "alpha": 1.0, "z": 3 },
 
     { "kind": "image_frames",
@@ -47,6 +48,7 @@
 
     { "kind": "image", "path": "assets/gallery/portrait_border_warm.png",
       "x": 0, "y": 0, "w": 810, "h": 858,
-      "alpha": 0.85, "z": 8 }
+      "modulate": "#9bc3ff",
+      "alpha": 0.95, "z": 8 }
   ]
 }

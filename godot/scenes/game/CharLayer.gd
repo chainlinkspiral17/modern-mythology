@@ -46,11 +46,41 @@ const POSITIONS := {
 }
 const SPRITE_W    := 300.0
 const SPRITE_H    := 320.0
-# Soft now — composition carries its own radial vignette + warm border.
 const SCRIM_COLOR := Color(0.0, 0.0, 0.0, 0.28)
 const IDLE_AMP    := 4.0
 const IDLE_PERIOD := 2.5
 const IDLE_PHASE  := {"left": 0.0, "center": 0.85, "right": 1.7}
+
+# Parallax: portraits counter-drift the bg sway (GameEngine drives the
+# bg with the same SWAY_PERIOD). Small amplitude to sell depth without
+# disorienting the figure.
+const PARALLAX_PERIOD := 5.4
+const PARALLAX_X_AMP  := 2.5
+const PARALLAX_Y_AMP  := 1.2
+
+# Active speaker pop: scale + alpha boost on the active portrait,
+# desaturate + dim non-active.
+const ACTIVE_SCALE   := 1.04
+const ACTIVE_ALPHA   := 1.00
+const INACTIVE_SCALE := 0.98
+const INACTIVE_ALPHA := 0.55
+
+# Character-keyed accent palette. Used for portrait border tint,
+# dialog speaker name color, visualizer peak hint, and the active-
+# speaker glow boost. Fall back to neutral when a character isn't
+# registered yet.
+const CHAR_ACCENTS := {
+	"john":     Color("#9bc3ff"),
+	"frasier":  Color("#ffa860"),
+	"stranger": Color("#c64878"),
+}
+const ACCENT_DEFAULT := Color("#d6c8a8")
+
+
+# Public lookup so DialogueBox / GameEngine / etc. can color speaker
+# names and other chrome consistently with portrait accents.
+func accent_for(char_name: String) -> Color:
+	return CHAR_ACCENTS.get(char_name.to_lower(), ACCENT_DEFAULT)
 
 # slot -> {name, expr, node: Control}
 var _slots: Dictionary = {"left": null, "center": null, "right": null}
@@ -63,13 +93,20 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_t += delta
+	# Counter-drift the bg sway. Negative sign so portraits move
+	# opposite to the boat list, reading as figures floating *on* the
+	# room rather than locked to it.
+	var sway_phase: float = _t * TAU / PARALLAX_PERIOD
+	var pdx: float = -sin(sway_phase) * PARALLAX_X_AMP
+	var pdy: float = -cos(sway_phase * 0.7) * PARALLAX_Y_AMP
 	for pos: String in _slots:
 		var slot = _slots[pos]
 		if slot == null:
 			continue
 		var node: Control = slot["node"]
 		var phase: float  = IDLE_PHASE[pos]
-		node.position.y   = POSITIONS[pos].y + sin((_t + phase) * TAU / IDLE_PERIOD) * IDLE_AMP
+		var idle_y: float = sin((_t + phase) * TAU / IDLE_PERIOD) * IDLE_AMP
+		node.position = POSITIONS[pos] + Vector2(pdx, idle_y + pdy)
 
 
 # ── Public API ────────────────────────────────────────────────────────────────
@@ -114,10 +151,19 @@ func activate_speaker(char_name: String) -> void:
 		var slot = _slots[pos]
 		if slot == null:
 			continue
-		var is_active: bool = (char_name == "" or slot["name"] == char_name)
-		var target: Color   = Color.WHITE if is_active else Color(0.55, 0.55, 0.55, 0.75)
-		var tw := (slot["node"] as Control).create_tween()
-		tw.tween_property(slot["node"], "modulate", target, 0.2)
+		var node: Control     = slot["node"]
+		var is_active: bool   = (char_name == "" or slot["name"] == char_name)
+		# Active: full color, +4% scale, full alpha
+		# Inactive: warm-gray desat, -2% scale, dim
+		var target_mod: Color  = Color.WHITE if is_active else Color(0.62, 0.60, 0.56, INACTIVE_ALPHA)
+		if is_active:
+			target_mod.a = ACTIVE_ALPHA
+		var target_scale: float = ACTIVE_SCALE if is_active else INACTIVE_SCALE
+		node.pivot_offset = Vector2(SPRITE_W * 0.5, SPRITE_H * 0.5)
+		var tw := node.create_tween()
+		tw.set_parallel(true)
+		tw.tween_property(node, "modulate", target_mod, 0.22)
+		tw.tween_property(node, "scale", Vector2(target_scale, target_scale), 0.22)
 
 
 func get_pos_for_char(char_name: String) -> String:

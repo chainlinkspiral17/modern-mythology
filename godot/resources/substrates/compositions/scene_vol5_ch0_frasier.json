@@ -67,6 +67,32 @@
         "smoothing": 0.22,
         "update_hz": 30
       }
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/dust_motes_0.png",
+        "assets/backgrounds/dust_motes_1.png",
+        "assets/backgrounds/dust_motes_2.png",
+        "assets/backgrounds/dust_motes_3.png"
+      ],
+      "frame_duration": 1.4,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.55,
+      "z": 7
+    },
+    {
+      "kind": "color",
+      "color": "#3a1a14",
+      "alpha": 0.16,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "z": 9
     }
   ]
 }

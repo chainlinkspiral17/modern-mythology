@@ -139,6 +139,13 @@ func _add_window(w: Dictionary) -> void:
 		_add_image_frames_window(w)
 		return
 
+	# color: solid ColorRect at the given position/size. Used for
+	# per-scene color grading (full-canvas overlay at high z) or for
+	# accent panels (e.g. a character-tinted band behind the figure).
+	if kind == "color":
+		_add_color_window(w)
+		return
+
 	var win := Control.new()
 	if kind == "visualizer":
 		win.set_script(VISUALIZER_SCRIPT)
@@ -204,6 +211,23 @@ func _add_window(w: Dictionary) -> void:
 	if kind != "visualizer" and not w.has("frames"):
 		var path: String = str(w.get("path", ""))
 		win.call_deferred("load_piece", path)
+
+func _add_color_window(w: Dictionary) -> void:
+	var rect := ColorRect.new()
+	var col_str: String = str(w.get("color", "#000000"))
+	var col := Color(col_str)
+	if w.has("alpha"):
+		col.a = float(w["alpha"])
+	rect.color = col
+	rect.position = Vector2(float(w.get("x", 0)), float(w.get("y", 0)))
+	rect.size     = Vector2(float(w.get("w", _canvas_size.x)), float(w.get("h", _canvas_size.y)))
+	if w.has("z"):
+		rect.z_index = int(w["z"])
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_canvas.add_child(rect)
+	_windows_list.append(rect)
+	_window_manifests.append(w.duplicate(true))
+
 
 func _parse_stretch(v: Variant) -> int:
 	# Manifest accepts: "scale" (default, fills w×h, may distort),
