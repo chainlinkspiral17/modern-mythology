@@ -59,11 +59,12 @@ const PARALLAX_X_AMP  := 2.5
 const PARALLAX_Y_AMP  := 1.2
 
 # Active speaker pop: scale + alpha boost on the active portrait,
-# desaturate + dim non-active.
-const ACTIVE_SCALE   := 1.04
+# desaturate + dim non-active. Non-active really pulls back so the
+# focus reads strongly during back-and-forth dialogue.
+const ACTIVE_SCALE   := 1.05
 const ACTIVE_ALPHA   := 1.00
-const INACTIVE_SCALE := 0.98
-const INACTIVE_ALPHA := 0.55
+const INACTIVE_SCALE := 0.92
+const INACTIVE_ALPHA := 0.32
 
 # Character-keyed accent palette. Used for portrait border tint,
 # dialog speaker name color, visualizer peak hint, and the active-
@@ -153,17 +154,22 @@ func activate_speaker(char_name: String) -> void:
 			continue
 		var node: Control     = slot["node"]
 		var is_active: bool   = (char_name == "" or slot["name"] == char_name)
-		# Active: full color, +4% scale, full alpha
-		# Inactive: warm-gray desat, -2% scale, dim
-		var target_mod: Color  = Color.WHITE if is_active else Color(0.62, 0.60, 0.56, INACTIVE_ALPHA)
+		# Active: full color, +5% scale, full alpha
+		# Inactive: deeper desat (cool gray), -8% scale, ~30% alpha — recedes
+		# noticeably so the active speaker reads as "the camera is on them"
+		var target_mod: Color
+		var target_scale: float
 		if is_active:
-			target_mod.a = ACTIVE_ALPHA
-		var target_scale: float = ACTIVE_SCALE if is_active else INACTIVE_SCALE
+			target_mod   = Color(1.0, 1.0, 1.0, ACTIVE_ALPHA)
+			target_scale = ACTIVE_SCALE
+		else:
+			target_mod   = Color(0.48, 0.50, 0.55, INACTIVE_ALPHA)
+			target_scale = INACTIVE_SCALE
 		node.pivot_offset = Vector2(SPRITE_W * 0.5, SPRITE_H * 0.5)
 		var tw := node.create_tween()
 		tw.set_parallel(true)
-		tw.tween_property(node, "modulate", target_mod, 0.22)
-		tw.tween_property(node, "scale", Vector2(target_scale, target_scale), 0.22)
+		tw.tween_property(node, "modulate", target_mod, 0.25)
+		tw.tween_property(node, "scale", Vector2(target_scale, target_scale), 0.25)
 
 
 func get_pos_for_char(char_name: String) -> String:
