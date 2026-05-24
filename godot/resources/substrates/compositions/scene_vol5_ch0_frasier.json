@@ -1,0 +1,60 @@
+{
+  "id": "scene_vol5_ch0_frasier",
+  "canvas": [
+    1920,
+    1080
+  ],
+  "bg": "#06080e",
+  "windows": [
+    {
+      "kind": "visualizer",
+      "x": 0,
+      "y": 740,
+      "font_px": 14,
+      "bar_count": 120,
+      "bar_height": 20,
+      "bar_gap": 0,
+      "min_freq": 30,
+      "max_freq": 280,
+      "magnitude": 14.0,
+      "smoothing": 0.34,
+      "peak_decay": 0.92,
+      "peak_hold": false,
+      "wave_smooth_passes": 4,
+      "col_dim": "#06080e",
+      "col_lo": "#1c1218",
+      "col_mid": "#6a1820",
+      "col_hi": "#a44048",
+      "col_peak": "#ffd6c0",
+      "col_peak_tip": "#ffd6c0",
+      "alpha": 0.22,
+      "z": 1
+    },
+    {
+      "kind": "image",
+      "path": "assets/backgrounds/vol5_dambrosios_interior.png",
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.88,
+      "z": 3
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/vol5_dambrosios_interior_ascii.png",
+        "assets/backgrounds/vol5_dambrosios_interior_ascii.png",
+        "assets/backgrounds/vol5_dambrosios_interior_ascii.png",
+        "assets/backgrounds/vol5_dambrosios_interior_ascii_glitch.png"
+      ],
+      "frame_duration": 0.55,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.4,
+      "z": 5
+    }
+  ]
+}
