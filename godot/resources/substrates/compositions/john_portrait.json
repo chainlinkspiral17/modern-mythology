@@ -1,8 +1,0 @@
-{
-  "id": "john_portrait",
-  "canvas": [370, 550],
-  "bg": null,
-  "windows": [
-    { "path": "pieces/john_portrait", "x": 0, "y": 0, "font_px": 10, "z": 5 }
-  ]
-}

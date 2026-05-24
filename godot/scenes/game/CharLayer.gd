@@ -2,7 +2,7 @@ extends Control
 ## Character portrait layer — left / center / right slots.
 ##
 ## Portrait source preference, per character:
-##   1. ASCII composition at  res://resources/substrates/compositions/<char>_portrait.json
+##   1. ASCII composition at  res://resources/substrates/compositions/portrait_<char>.json
 ##   2. PNG texture at        res://assets/characters/<char>/<char>_<expr>.png
 ##   3. Animated placeholder silhouette
 ##
@@ -133,7 +133,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	wrapper.modulate.a          = 0.0
 
 	var key := char_name.to_lower()
-	var comp_path := PORTRAIT_COMP_ROOT + key + "_portrait.json"
+	var comp_path := PORTRAIT_COMP_ROOT + "portrait_" + key + ".json"
 	var tex_path  := "%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr]
 
 	if FileAccess.file_exists(comp_path):
@@ -142,7 +142,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 		comp.size = Vector2(SPRITE_W, SPRITE_H)
 		comp.custom_minimum_size = Vector2(SPRITE_W, SPRITE_H)
 		wrapper.add_child(comp)
-		comp.call_deferred("load_composition", key + "_portrait")
+		comp.call_deferred("load_composition", "portrait_" + key)
 		wrapper.set_meta("kind", "composition")
 		wrapper.set_meta("comp", comp)
 		_apply_substrate_tint(wrapper, expr)
