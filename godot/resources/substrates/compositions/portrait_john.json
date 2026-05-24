@@ -1,11 +1,11 @@
 {
   "id": "portrait_john",
-  "canvas": [370, 550],
+  "canvas": [700, 1045],
   "bg": null,
   "windows": [
     { "kind": "visualizer",
-      "x": 0, "y": 30, "font_px": 11,
-      "bar_count": 90, "bar_height": 48, "bar_gap": 0,
+      "x": 0, "y": 60, "font_px": 14,
+      "bar_count": 84, "bar_height": 60, "bar_gap": 0,
       "min_freq": 30, "max_freq": 480,
       "magnitude": 14.0, "smoothing": 0.34, "peak_decay": 0.92,
       "peak_hold": false,
@@ -16,24 +16,18 @@
       "col_hi":       "#3a78bc",
       "col_peak":     "#9bc3ff",
       "col_peak_tip": "#9bc3ff",
-      "alpha": 0.22, "z": 1 },
+      "alpha": 0.25, "z": 1 },
 
     { "kind": "image", "path": "assets/gallery/johnfrank_ref.png",
-      "x": 0, "y": 0, "w": 370, "h": 550,
-      "alpha": 0.55, "z": 3 },
+      "x": 0, "y": 0, "w": 700, "h": 1045,
+      "alpha": 0.60, "z": 3 },
 
-    { "frames": [
-        "pieces/portrait_john",
-        "pieces/portrait_john",
-        "pieces/portrait_john",
-        "pieces/portrait_john_glitch"
-      ],
-      "frame_duration": 0.45,
-      "x": 0, "y": 0, "font_px": 10,
-      "alpha": 0.88, "z": 5 },
+    { "kind": "image", "path": "assets/gallery/portrait_john_ascii.png",
+      "x": 0, "y": 0, "w": 700, "h": 1045,
+      "alpha": 0.85, "z": 5 },
 
-    { "path": "pieces/portrait_border_tarot",
-      "x": 0, "y": 0, "font_px": 10,
+    { "kind": "image", "path": "assets/gallery/portrait_border_tarot.png",
+      "x": 0, "y": 0, "w": 700, "h": 1045,
       "alpha": 0.95, "z": 8 }
   ]
 }

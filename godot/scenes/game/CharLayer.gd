@@ -2,16 +2,17 @@ extends Control
 ## Character portrait layer — left / center / right slots.
 ##
 ## Portrait source preference, per character:
-##   1. ASCII composition at  res://resources/substrates/compositions/portrait_<char>.json
-##   2. PNG texture at        res://assets/characters/<char>/<char>_<expr>.png
+##   1. PNG texture at  res://assets/characters/<char>/<char>_<expr>.png
+##   2. PNG texture at  res://assets/characters/<char>/<char>_neutral.png
+##                      (tinted via modulate to imply expression)
 ##   3. Animated placeholder silhouette
 ##
-## Lookup keys are lowercased so scene scripts using either "John" or "john"
-## resolve to the same files.
+## The richer ASCII-substrate composition for each character lives at
+## res://resources/substrates/compositions/portrait_<char>.json and is
+## rendered by the gallery overlay — not here. In-scene portraits stay
+## texture-only for predictable size + fast load.
 
-const ASCII_COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
-const PORTRAIT_COMP_ROOT  := "res://resources/substrates/compositions/"
-const PORTRAIT_TEX_ROOT   := "res://assets/characters/"
+const PORTRAIT_TEX_ROOT := "res://assets/characters/"
 
 # Expression tint multipliers applied to mono substrate portraits via modulate.
 # Mirrors the table in tools/raster_substrate.py.
@@ -37,13 +38,13 @@ const EXPR_TINTS := {
 }
 
 const POSITIONS := {
-	"left":   Vector2(160, 55),
-	"center": Vector2(480, 55),
-	"right":  Vector2(800, 55),
+	"left":   Vector2(120, 160),
+	"center": Vector2(520, 160),
+	"right":  Vector2(920, 160),
 }
-const SPRITE_W    := 320.0
-const SPRITE_H    := 575.0
-const IDLE_AMP    := 5.0
+const SPRITE_W    := 240.0
+const SPRITE_H    := 360.0
+const IDLE_AMP    := 4.0
 const IDLE_PERIOD := 2.5
 const IDLE_PHASE  := {"left": 0.0, "center": 0.85, "right": 1.7}
 
@@ -127,32 +128,33 @@ func get_pos_for_char(char_name: String) -> String:
 
 func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	var wrapper := Control.new()
-	wrapper.custom_minimum_size = Vector2(SPRITE_W, SPRITE_H)
-	wrapper.size                = Vector2(SPRITE_W, SPRITE_H)
-	wrapper.position            = POSITIONS[pos]
-	wrapper.modulate.a          = 0.0
+	wrapper.clip_contents        = true
+	wrapper.custom_minimum_size  = Vector2(SPRITE_W, SPRITE_H)
+	wrapper.size                 = Vector2(SPRITE_W, SPRITE_H)
+	wrapper.position             = POSITIONS[pos]
+	wrapper.modulate.a           = 0.0
 
-	var key := char_name.to_lower()
-	var comp_path := PORTRAIT_COMP_ROOT + "portrait_" + key + ".json"
-	var tex_path  := "%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr]
+	var key  := char_name.to_lower()
+	var tex  := _resolve_portrait_texture(key, expr)
+	if tex != null:
+		# tint_holder isolates expression tint from wrapper.modulate, which
+		# activate_speaker also writes to. They compose multiplicatively.
+		var tint_holder := Control.new()
+		tint_holder.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		tint_holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		wrapper.add_child(tint_holder)
 
-	if FileAccess.file_exists(comp_path):
-		var comp := Control.new()
-		comp.set_script(ASCII_COMPOSITION_SCRIPT)
-		comp.size = Vector2(SPRITE_W, SPRITE_H)
-		comp.custom_minimum_size = Vector2(SPRITE_W, SPRITE_H)
-		wrapper.add_child(comp)
-		comp.call_deferred("load_composition", "portrait_" + key)
-		wrapper.set_meta("kind", "composition")
-		wrapper.set_meta("comp", comp)
-		_apply_substrate_tint(wrapper, expr)
-	elif ResourceLoader.exists(tex_path):
 		var tr := TextureRect.new()
-		tr.texture               = ResourceLoader.load(tex_path) as Texture2D
-		tr.stretch_mode          = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		tr.custom_minimum_size   = Vector2(SPRITE_W, SPRITE_H)
-		wrapper.add_child(tr)
+		tr.texture      = tex
+		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tint_holder.add_child(tr)
+
 		wrapper.set_meta("kind", "texture")
+		wrapper.set_meta("tint", tint_holder)
+		if not _has_expr_png(key, expr):
+			_apply_texture_tint(wrapper, expr)
 	else:
 		wrapper.add_child(_make_placeholder(char_name, expr))
 		wrapper.set_meta("kind", "placeholder")
@@ -166,13 +168,18 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 	var kind: String = wrapper.get_meta("kind", "placeholder")
 	var key := char_name.to_lower()
-	if kind == "composition":
-		_apply_substrate_tint(wrapper, expr)
-	elif kind == "texture":
-		var tr := wrapper.get_child(0) as TextureRect
-		var path := "%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr]
-		if ResourceLoader.exists(path):
-			tr.texture = ResourceLoader.load(path) as Texture2D
+	if kind == "texture":
+		var tint_holder: Control = wrapper.get_meta("tint", null) as Control
+		if tint_holder != null:
+			var tr := tint_holder.get_child(0) as TextureRect
+			var new_tex := _resolve_portrait_texture(key, expr)
+			if new_tex != null and tr != null:
+				tr.texture = new_tex
+		if _has_expr_png(key, expr):
+			if tint_holder != null:
+				tint_holder.modulate = Color.WHITE
+		else:
+			_apply_texture_tint(wrapper, expr)
 	else:
 		var ph: Control = wrapper.get_child(0)
 		if ph.has_meta("expr_lbl"):
@@ -181,15 +188,28 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 			_apply_expr_tint(ph.get_meta("border") as Panel, _char_color(char_name), expr)
 
 
-# ── Substrate (ASCII composition) portrait tint ───────────────────────────────
+# Texture lookup chain: <char>_<expr>.png → <char>_neutral.png → null.
+func _resolve_portrait_texture(key: String, expr: String) -> Texture2D:
+	var expr_path: String = "%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr]
+	if ResourceLoader.exists(expr_path):
+		return ResourceLoader.load(expr_path) as Texture2D
+	var neutral_path: String = "%s%s/%s_neutral.png" % [PORTRAIT_TEX_ROOT, key, key]
+	if ResourceLoader.exists(neutral_path):
+		return ResourceLoader.load(neutral_path) as Texture2D
+	return null
 
-func _apply_substrate_tint(wrapper: Control, expr: String) -> void:
-	# Tint the composition child rather than the wrapper so the speaker-active
-	# fade (which writes wrapper.modulate) composes cleanly with the expression.
-	var comp: Control = wrapper.get_meta("comp", null) as Control
-	if comp == null:
+
+func _has_expr_png(key: String, expr: String) -> bool:
+	return ResourceLoader.exists("%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr])
+
+
+func _apply_texture_tint(wrapper: Control, expr: String) -> void:
+	# Writes to the tint_holder child, not wrapper.modulate — leaves the
+	# wrapper free for fade-in (alpha) and activate_speaker (rgb dim).
+	var tint_holder: Control = wrapper.get_meta("tint", null) as Control
+	if tint_holder == null:
 		return
-	comp.modulate = EXPR_TINTS.get(expr, EXPR_TINTS["neutral"])
+	tint_holder.modulate = EXPR_TINTS.get(expr, EXPR_TINTS["neutral"])
 
 
 func _fade_out_free(node: Control) -> void:
