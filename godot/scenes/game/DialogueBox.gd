@@ -63,6 +63,8 @@ func show_think(char_name: String, text: String) -> void:
 	_speaker.visible = char_name != ""
 	if char_name != "":
 		_apply_speaker_accent(char_name)
+	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
+	_start_type("[i]" + text + "[/i]")
 
 
 func _apply_speaker_accent(char_name: String) -> void:
@@ -73,8 +75,6 @@ func _apply_speaker_accent(char_name: String) -> void:
 		return
 	var c: Color = char_layer.call("accent_for", char_name)
 	_speaker.add_theme_color_override("font_color", c)
-	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
-	_start_type("[i]" + text + "[/i]")
 
 
 func is_typing() -> bool:
