@@ -60,10 +60,16 @@ func _build_layers() -> void:
 	# Optional layered composition for scene backgrounds (visualizer +
 	# image refs + image_frames + border). Sits above the solid bg and
 	# below the ASCII piece substrate so a scene can stack both.
+	#
+	# z_index = -16 keeps the whole sub-tree behind the UI: composition
+	# windows use z values up to ~9 internally, and since CanvasItem
+	# z_index is additive with the parent, this guarantees the highest
+	# bg layer (-16 + 9 = -7) still renders below sibling UI at z=0.
 	_bg_composition = Control.new()
 	_bg_composition.set_script(COMPOSITION_SCRIPT)
 	_bg_composition.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_bg_composition.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_bg_composition.z_index = -16
 	add_child(_bg_composition)
 
 	_substrate = Control.new()
@@ -217,14 +223,12 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_scene_id   = scene_id
 	_node_idx   = start_at
 	_scene_data = SceneDataDB.get_scene(scene_id)
-	print("[GameEngine] _load_scene ", scene_id, " nodes=", (_scene_data.get("nodes") as Array).size() if _scene_data.has("nodes") else -1)
 	if _scene_data.is_empty():
 		push_error("GameEngine: scene not found: " + scene_id)
 		game_ended.emit()
 		return
 	_auto_load_substrate(scene_id)
 	_unlock_gallery_for_scene(scene_id)
-	print("[GameEngine] dispatching first node")
 	_run_next()
 
 
@@ -335,7 +339,6 @@ func _s(n: Dictionary, key: String, default: String = "") -> String:
 
 func _do_narrate(n: Dictionary) -> void:
 	var text: String = _s(n, "text")
-	print("[GameEngine] narrate node ", _node_idx, " :: ", text.substr(0, 40), "...")
 	_log.append({"role": "narrate", "text": text})
 	AudioMgr.set_sfx_pan(0.0)
 	AudioMgr.duck()
@@ -344,7 +347,6 @@ func _do_narrate(n: Dictionary) -> void:
 	_dlg.call("show_narrate", text)
 	AudioMgr.play_voice(_s(n, "voice"))
 	_wait()
-	print("[GameEngine] narrate _wait set, _waiting=", _waiting)
 
 
 func _do_say(n: Dictionary) -> void:
