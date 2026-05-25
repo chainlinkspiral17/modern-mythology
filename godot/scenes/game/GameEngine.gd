@@ -12,7 +12,7 @@ const HUD_SCENE       := preload("res://scenes/game/HudBar.tscn")
 const IN_GAME_MENU    := preload("res://scenes/game/InGameMenu.tscn")
 const SETTINGS_OV     := preload("res://scenes/menu/SettingsOverlay.tscn")
 const MUSIC_OV        := preload("res://scenes/menu/MusicPlayerOverlay.tscn")
-const SUBSTRATE_SCRIPT := preload("res://scenes/game/AsciiSubstrate.gd")
+const SUBSTRATE_SCRIPT := preload("res://scenes/game/AsciiSubstrateRaster.gd")
 
 var _vol:         int        = 1
 var _scene_id:    String     = ""
@@ -56,6 +56,9 @@ func _build_layers() -> void:
 
 	_substrate = Control.new()
 	_substrate.set_script(SUBSTRATE_SCRIPT)
+	# Let the GameEngine's own _bg_solid show through the substrate's
+	# letterbox bars so the aspect-fit isn't framed by a stray panel color.
+	_substrate.set("bg_color", Color(0, 0, 0, 0))
 	_substrate.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_substrate)
 
