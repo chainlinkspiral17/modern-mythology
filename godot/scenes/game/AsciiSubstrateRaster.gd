@@ -14,6 +14,7 @@ const SUBSTRATE_ROOT := "res://resources/substrates/"
 const MONO_FONT_PATH := "res://resources/fonts/SpaceMono-Regular.ttf"
 
 @export var font_pixel_size: int = 12
+@export var bg_color: Color = Color(0.020, 0.030, 0.063, 1.0)
 
 var _bg: ColorRect = null
 var _subviewport: SubViewport = null
@@ -26,7 +27,7 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 	_bg = ColorRect.new()
-	_bg.color = Color(0.020, 0.030, 0.063, 1.0)
+	_bg.color = bg_color
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_bg)

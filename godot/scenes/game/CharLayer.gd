@@ -1,6 +1,9 @@
 extends Control
 ## Character portrait layer — left / center / right slots.
-## Shows real textures when available, animated placeholder silhouettes otherwise.
+## Shows ASCII substrate portraits when available, then PNG textures,
+## then procedural placeholder silhouettes.
+
+const ASCII_RASTER_SCRIPT := preload("res://scenes/game/AsciiSubstrateRaster.gd")
 
 const POSITIONS := {
 	"left":   Vector2(160, 55),
@@ -97,17 +100,28 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	wrapper.position            = POSITIONS[pos]
 	wrapper.modulate.a          = 0.0
 
-	var tex_path := "res://assets/characters/%s/%s_%s.png" % [char_name, char_name, expr]
-	if ResourceLoader.exists(tex_path):
-		var tr := TextureRect.new()
-		tr.texture               = ResourceLoader.load(tex_path) as Texture2D
-		tr.stretch_mode          = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		tr.custom_minimum_size   = Vector2(SPRITE_W, SPRITE_H)
-		wrapper.add_child(tr)
-		wrapper.set_meta("kind", "texture")
+	var ascii_short := _ascii_portrait_short(char_name, expr)
+	if ascii_short != "":
+		var raster := Control.new()
+		raster.set_script(ASCII_RASTER_SCRIPT)
+		raster.size = Vector2(SPRITE_W, SPRITE_H)
+		raster.custom_minimum_size = Vector2(SPRITE_W, SPRITE_H)
+		raster.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		wrapper.add_child(raster)
+		raster.call_deferred("load_substrate", ascii_short)
+		wrapper.set_meta("kind", "ascii")
 	else:
-		wrapper.add_child(_make_placeholder(char_name, expr))
-		wrapper.set_meta("kind", "placeholder")
+		var tex_path := "res://assets/characters/%s/%s_%s.png" % [char_name, char_name, expr]
+		if ResourceLoader.exists(tex_path):
+			var tr := TextureRect.new()
+			tr.texture               = ResourceLoader.load(tex_path) as Texture2D
+			tr.stretch_mode          = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			tr.custom_minimum_size   = Vector2(SPRITE_W, SPRITE_H)
+			wrapper.add_child(tr)
+			wrapper.set_meta("kind", "texture")
+		else:
+			wrapper.add_child(_make_placeholder(char_name, expr))
+			wrapper.set_meta("kind", "placeholder")
 
 	add_child(wrapper)
 	var tw := wrapper.create_tween()
@@ -115,9 +129,27 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	return wrapper
 
 
+func _ascii_portrait_short(char_name: String, expr: String) -> String:
+	# Returns the short substrate path (no .json) if an ASCII portrait
+	# exists for this char+expr, else "". Falls back to neutral if a
+	# specific expression isn't authored.
+	var base := "portraits/%s_%s" % [char_name, expr]
+	if FileAccess.file_exists("res://resources/substrates/%s.json" % base):
+		return base
+	var neutral := "portraits/%s_neutral" % char_name
+	if FileAccess.file_exists("res://resources/substrates/%s.json" % neutral):
+		return neutral
+	return ""
+
+
 func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 	var kind: String = wrapper.get_meta("kind", "placeholder")
-	if kind == "texture":
+	if kind == "ascii":
+		var raster: Control = wrapper.get_child(0)
+		var short := _ascii_portrait_short(char_name, expr)
+		if short != "":
+			raster.call("load_substrate", short)
+	elif kind == "texture":
 		var tr := wrapper.get_child(0) as TextureRect
 		var path := "res://assets/characters/%s/%s_%s.png" % [char_name, char_name, expr]
 		if ResourceLoader.exists(path):
