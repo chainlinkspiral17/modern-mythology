@@ -3,17 +3,17 @@
   "vol": 5,
   "chapter": "0",
   "type": "chapter",
-  "title": "Ch 0 — Frasier Temple",
+  "title": "Ch 0 \u2014 Frasier Temple",
   "nodes": [
     {
       "t": "narrate",
-      "text": "The bell over the kitchen door — the back door, the one customers were not supposed to use — did not jingle. It jangled. A discordant chord slicing through the hum, snapping the fluorescents back into focus."
+      "text": "The bell over the kitchen door \u2014 the back door, the one customers were not supposed to use \u2014 did not jingle. It jangled. A discordant chord slicing through the hum, snapping the fluorescents back into focus."
     },
     {
       "t": "show",
       "char": "frasier",
       "expr": "neutral",
-      "pos": "right"
+      "pos": "left"
     },
     {
       "t": "narrate",
@@ -43,7 +43,7 @@
       "t": "show",
       "char": "john",
       "expr": "tired",
-      "pos": "left"
+      "pos": "right"
     },
     {
       "t": "say",
@@ -72,7 +72,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pulled out his phone — or rather, the customized jury-rigged device that served Frasier as a phone, its casing chipped, wires peeking out like frayed nerves, screen glowing with internal light that did not match any of the available wallpapers."
+      "text": "He pulled out his phone \u2014 or rather, the customized jury-rigged device that served Frasier as a phone, its casing chipped, wires peeking out like frayed nerves, screen glowing with internal light that did not match any of the available wallpapers."
     },
     {
       "t": "say",
@@ -105,7 +105,7 @@
       "t": "say",
       "char": "Frasier",
       "expr": "amused",
-      "text": "\"You feel it, don't you. Don't lie. You feel it in your teeth. They say the Architect is getting sloppy. Or maybe — \" he grinned, a flash of brilliance and madness, \"— maybe the decay is the design.\""
+      "text": "\"You feel it, don't you. Don't lie. You feel it in your teeth. They say the Architect is getting sloppy. Or maybe \u2014 \" he grinned, a flash of brilliance and madness, \"\u2014 maybe the decay is the design.\""
     },
     {
       "t": "think",

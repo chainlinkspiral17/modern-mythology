@@ -1,0 +1,43 @@
+{
+  "id": "magician_arcana",
+  "canvas": [1920, 1080],
+  "bg": "#03060c",
+  "windows": [
+    { "kind": "visualizer",
+      "mode": "spiral",
+      "x": 0, "y": 0, "font_px": 16,
+      "bar_count": 200, "bar_height": 68, "bar_gap": 0,
+      "min_freq": 40, "max_freq": 14000,
+      "magnitude": 22.0, "smoothing": 0.06, "peak_decay": 0.92,
+      "rotation_hz": 0.08,
+      "spiral_pitch": 0.28,
+      "idle_amplitude": 0.05,
+      "center_x_norm": 0.50,
+      "center_y_norm": 0.22,
+      "col_dim":      "#070a14",
+      "col_lo":       "#1a3a6a",
+      "col_mid":      "#4080c0",
+      "col_hi":       "#9bd0ff",
+      "col_peak":     "#ffd17a",
+      "col_peak_tip": "#ffffff",
+      "alpha": 1.0, "z": 0 },
+
+    {
+      "frames": [
+        "pieces/magician_shimmer_0",
+        "pieces/magician_shimmer_1",
+        "pieces/magician_shimmer_2"
+      ],
+      "frame_duration": 0.45,
+      "x": -15, "y": 0, "font_px": 13,
+      "alpha": 0.28, "z": 3
+    },
+
+    { "kind": "image", "path": "assets/gallery/magician.png",
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "alpha": 1.0, "blend_mode": "add", "z": 5 },
+
+    { "path": "pieces/title_magician", "x": 870, "y": 1010, "font_px": 36,
+      "shadow_color": "#000000", "shadow_offset": [4, 4], "z": 8 }
+  ]
+}

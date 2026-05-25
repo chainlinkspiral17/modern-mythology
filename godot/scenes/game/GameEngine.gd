@@ -12,7 +12,8 @@ const HUD_SCENE       := preload("res://scenes/game/HudBar.tscn")
 const IN_GAME_MENU    := preload("res://scenes/game/InGameMenu.tscn")
 const SETTINGS_OV     := preload("res://scenes/menu/SettingsOverlay.tscn")
 const MUSIC_OV        := preload("res://scenes/menu/MusicPlayerOverlay.tscn")
-const SUBSTRATE_SCRIPT := preload("res://scenes/game/AsciiSubstrateRaster.gd")
+const SUBSTRATE_SCRIPT   := preload("res://scenes/game/AsciiSubstrate.gd")
+const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 
 var _vol:         int        = 1
 var _scene_id:    String     = ""
@@ -30,9 +31,15 @@ var _waiting:     bool  = false
 var _auto_timer:  float = 0.0
 var _paused:      bool  = false
 
-var _bg_solid:   ColorRect   = null
-var _substrate:  Control     = null
-var _bg:         TextureRect = null
+var _bg_solid:       ColorRect   = null
+var _bg_composition: Control     = null
+var _substrate:      Control     = null
+var _bg:             TextureRect = null
+var _dlg_scrim:      ColorRect   = null
+
+# UI nodes pin themselves to this z so composition windows with
+# internal z values (1..9) can't escape and cover dialog/portraits.
+const UI_Z := 100
 var _chars:      Control     = null
 var _dlg:        Control     = null
 var _choices:    Control     = null
@@ -49,16 +56,23 @@ func _ready() -> void:
 
 
 func _build_layers() -> void:
+	# Bg stack uses natural tree order. UI nodes below are pinned at
+	# z_index = UI_Z (100) so the composition's internal z values
+	# (visualizer/image/frames/grade at z=1..9) can't escape and
+	# cover the dialog box / portraits.
 	_bg_solid = ColorRect.new()
 	_bg_solid.color = Color(0.05, 0.04, 0.03)
 	_bg_solid.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_bg_solid)
 
+	_bg_composition = Control.new()
+	_bg_composition.set_script(COMPOSITION_SCRIPT)
+	_bg_composition.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_bg_composition.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_bg_composition)
+
 	_substrate = Control.new()
 	_substrate.set_script(SUBSTRATE_SCRIPT)
-	# Let the GameEngine's own _bg_solid show through the substrate's
-	# letterbox bars so the aspect-fit isn't framed by a stray panel color.
-	_substrate.set("bg_color", Color(0, 0, 0, 0))
 	_substrate.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_substrate)
 
@@ -69,36 +83,58 @@ func _build_layers() -> void:
 
 	_chars = CHAR_SCENE.instantiate()
 	_chars.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_chars.z_index = UI_Z
 	add_child(_chars)
 
+	# Dialogue scrim — gradient panel between chars and dlg so dialogue
+	# text always has a high-contrast surface beneath it regardless of
+	# how busy the live-ASCII bg gets.
+	_dlg_scrim = ColorRect.new()
+	_dlg_scrim.color = Color(0.02, 0.02, 0.04, 0.78)
+	_dlg_scrim.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	_dlg_scrim.offset_top = -260.0
+	_dlg_scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_dlg_scrim.z_index = UI_Z
+	add_child(_dlg_scrim)
+
 	_dlg = DIALOGUE_SCENE.instantiate()
+	_dlg.z_index = UI_Z
 	add_child(_dlg)
 	_dlg.visible = false
+	# Scrim follows the dialogue's visibility so full-screen CGs and
+	# interludes aren't darkened along the bottom.
+	_dlg_scrim.visible = false
+	_dlg.visibility_changed.connect(func() -> void: _dlg_scrim.visible = _dlg.visible)
 
 	_choices = CHOICE_SCENE.instantiate()
 	_choices.anchor_left   = 0.1
 	_choices.anchor_right  = 0.9
 	_choices.anchor_top    = 0.15
 	_choices.anchor_bottom = 0.85
+	_choices.z_index = UI_Z
 	add_child(_choices)
 	_choices.visible = false
 
 	_interlude = INTERLUDE_SCENE.instantiate()
 	_interlude.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_interlude.z_index = UI_Z
 	add_child(_interlude)
 	_interlude.visible = false
 
 	_cg = CG_SCENE.instantiate()
 	_cg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_cg.z_index = UI_Z
 	add_child(_cg)
 	_cg.visible = false
 
 	_hud = HUD_SCENE.instantiate()
+	_hud.z_index = UI_Z
 	add_child(_hud)
 	_hud.connect("menu_pressed", _open_in_game_menu)
 
 	_ig_menu = IN_GAME_MENU.instantiate()
 	_ig_menu.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_ig_menu.z_index = UI_Z
 	_ig_menu.visible = false
 	add_child(_ig_menu)
 	_ig_menu.connect("resume_requested",    func() -> void: _resume_from_menu())
@@ -109,12 +145,14 @@ func _build_layers() -> void:
 
 	_settings_ov = SETTINGS_OV.instantiate()
 	_settings_ov.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_settings_ov.z_index = UI_Z + 1
 	_settings_ov.visible = false
 	add_child(_settings_ov)
 	_settings_ov.connect("closed", func() -> void: _settings_ov.visible = false)
 
 	_music_ov = MUSIC_OV.instantiate()
 	_music_ov.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_music_ov.z_index = UI_Z + 1
 	_music_ov.visible = false
 	add_child(_music_ov)
 	_music_ov.connect("closed", func() -> void: _music_ov.visible = false)
@@ -199,19 +237,78 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 		game_ended.emit()
 		return
 	_auto_load_substrate(scene_id)
+	_unlock_gallery_for_scene(scene_id)
 	_run_next()
 
 
+const _SUBSTRATE_INDEX_PATH := "res://resources/substrates/gallery/_index.json"
+
+func _unlock_gallery_for_scene(scene_id: String) -> void:
+	# Mark any gallery items whose unlock_pattern matches this scene as seen.
+	# Pattern is a glob (String.match) — e.g. "vol5_ch0_*".
+	if not FileAccess.file_exists(_SUBSTRATE_INDEX_PATH):
+		return
+	var f := FileAccess.open(_SUBSTRATE_INDEX_PATH, FileAccess.READ)
+	if f == null:
+		return
+	var data: Variant = JSON.parse_string(f.get_as_text())
+	if typeof(data) != TYPE_DICTIONARY:
+		return
+	var items_v: Variant = (data as Dictionary).get("items", [])
+	if typeof(items_v) != TYPE_ARRAY:
+		return
+	for item_v in items_v:
+		if typeof(item_v) != TYPE_DICTIONARY:
+			continue
+		var item: Dictionary = item_v
+		var pattern: String = str(item.get("unlock_pattern", ""))
+		if pattern == "":
+			continue
+		if scene_id.match(pattern):
+			SaveSystem.mark_cg_seen("substrate:" + str(item.get("id", "")))
+
+
 func _auto_load_substrate(scene_id: String) -> void:
-	# Convention: if res://resources/substrates/scene/<scene_id>.json exists,
-	# it loads automatically. Explicit {"t": "substrate"} directives override
-	# during the scene.
-	var short := "scene/" + scene_id
-	var path  := "res://resources/substrates/" + short + ".json"
-	if FileAccess.file_exists(path):
-		_substrate.call("load_substrate", short)
+	# Two parallel conventions, probed in order:
+	#
+	#   compositions/scene_<id>.json   layered bg (visualizer + image +
+	#                                  image_frames + border). If this
+	#                                  exists it supersedes the piece —
+	#                                  authoring both for the same scene
+	#                                  doesn't make sense (substrate
+	#                                  would just cover the composition
+	#                                  in the z-stack).
+	#
+	#   scene/<id>.json                single ASCII piece, loaded into
+	#                                  _substrate. The legacy /
+	#                                  lightweight path; used for scenes
+	#                                  without a composition.
+	#
+	# Explicit {"t":"substrate"} / {"t":"composition"} directives can
+	# still swap either mid-scene.
+	var comp_short := "scene_" + scene_id
+	var comp_path  := "res://resources/substrates/compositions/" + comp_short + ".json"
+	var has_comp: bool = FileAccess.file_exists(comp_path)
+
+	if has_comp:
+		_bg_composition.call("load_composition", comp_short)
+		_substrate.call("clear_substrate")
+		return
+
+	_clear_bg_composition()
+	var piece_short := "scene/" + scene_id
+	var piece_path  := "res://resources/substrates/" + piece_short + ".json"
+	if FileAccess.file_exists(piece_path):
+		_substrate.call("load_substrate", piece_short)
 	else:
 		_substrate.call("clear_substrate")
+
+
+func _clear_bg_composition() -> void:
+	# AsciiComposition rebuilds its canvas on every load; clear by
+	# wiping its children to leave _bg_composition empty + transparent.
+	for ch in _bg_composition.get_children():
+		ch.queue_free()
 
 
 func _run_next() -> void:
@@ -234,6 +331,7 @@ func _dispatch(n: Dictionary) -> void:
 		"hide":       _do_hide(n); _run_next()
 		"bg":         _do_bg(n);   _run_next()
 		"substrate":  _do_substrate(n); _run_next()
+		"composition": _do_composition(n); _run_next()
 		"bgm":        _do_bgm(n);  _run_next()
 		"sfx":        _do_sfx(n);  _run_next()
 		"flag":       _do_flag(n); _run_next()
@@ -367,6 +465,17 @@ func _do_substrate(n: Dictionary) -> void:
 	_substrate.call("load_substrate", src)
 
 
+func _do_composition(n: Dictionary) -> void:
+	# Explicit override during a scene — load a background composition
+	# into _bg_composition. src is the short path relative to
+	# resources/substrates/compositions/ (without the .json suffix).
+	var src: String = _s(n, "src")
+	if src == "":
+		_clear_bg_composition()
+	else:
+		_bg_composition.call("load_composition", src)
+
+
 func _do_bgm(n: Dictionary) -> void:
 	AudioMgr.play_bgm(_s(n, "src"))
 
@@ -439,6 +548,26 @@ func _process(delta: float) -> void:
 			_auto_timer = 0.0
 			if not AudioMgr.is_voice_playing():
 				_advance()
+	_apply_bg_sway(delta)
+
+
+# Subtle riverboat list — slow sinusoidal translate + tiny rotation on the
+# bg composition. Affects scene backgrounds only; portraits and dialog
+# stay fixed.
+var _sway_t: float = 0.0
+const SWAY_PERIOD := 5.4   # seconds per cycle
+const SWAY_X_AMP  := 6.0   # logical px
+const SWAY_Y_AMP  := 3.0
+const SWAY_ROT    := 0.006 # radians (~0.34°)
+
+func _apply_bg_sway(delta: float) -> void:
+	if _bg_composition == null or _bg_composition.get_child_count() == 0:
+		return
+	_sway_t += delta
+	var phase: float = _sway_t * TAU / SWAY_PERIOD
+	_bg_composition.position = Vector2(sin(phase) * SWAY_X_AMP, cos(phase * 0.7) * SWAY_Y_AMP)
+	_bg_composition.pivot_offset = _bg_composition.size * 0.5
+	_bg_composition.rotation = sin(phase) * SWAY_ROT
 
 
 func _input(event: InputEvent) -> void:

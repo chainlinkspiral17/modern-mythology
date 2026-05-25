@@ -22,7 +22,7 @@ RAMPS = {
     "ascii":   " .:-=+*#%@",
     "blocks":  " .:-=+*#%@░▒▓█",
 }
-CELL_ASPECT = 0.6  # SpaceMono and similar mono fonts: cell width ≈ 0.6 × height
+CELL_ASPECT = 0.6  # Approximate; override per-font with --aspect (SpaceMono ≈ 0.37)
 
 BRAILLE_BASE = 0x2800
 BRAILLE_DOTS = [(0,0),(0,1),(0,2),(1,0),(1,1),(1,2),(0,3),(1,3)]
@@ -43,10 +43,10 @@ def hex_color(rgb):
     return "#{:02x}{:02x}{:02x}".format(*rgb)
 
 
-def render_simple(img, width, ramp, color_mode):
+def render_simple(img, width, ramp, color_mode, aspect=CELL_ASPECT):
     iw, ih = img.size
     cell_w = iw / width
-    cell_h = cell_w / CELL_ASPECT
+    cell_h = cell_w / aspect
     height = max(1, int(ih / cell_h))
     cells = []
     for cy in range(height):
@@ -112,7 +112,7 @@ def render_braille(img, width, color_mode, threshold=0.5):
     return cells, width, height
 
 
-def convert(image_path, width, charset, color_mode, invert):
+def convert(image_path, width, charset, color_mode, invert, aspect=CELL_ASPECT):
     img = Image.open(image_path).convert("RGB")
     if charset == "braille":
         cells, w, h = render_braille(img, width, color_mode)
@@ -120,7 +120,7 @@ def convert(image_path, width, charset, color_mode, invert):
         ramp = RAMPS[charset]
         if invert:
             ramp = ramp[::-1]
-        cells, w, h = render_simple(img, width, ramp, color_mode)
+        cells, w, h = render_simple(img, width, ramp, color_mode, aspect)
     return {
         "width": w, "height": h,
         "charset": charset, "color": color_mode,
@@ -137,6 +137,8 @@ def main():
     ap.add_argument("--charset", choices=["ascii", "blocks", "braille"], default="ascii")
     ap.add_argument("--color", choices=["fg", "fgbg", "mono"], default="fg")
     ap.add_argument("--invert", action="store_true", help="Invert ramp (for dark-on-light)")
+    ap.add_argument("--aspect", type=float, default=CELL_ASPECT,
+                    help="Cell width/height ratio of the target font (SpaceMono ≈ 0.37)")
     ap.add_argument("--all-variants", action="store_true",
                     help="Emit every charset x color combo next to the image")
     args = ap.parse_args()
@@ -152,7 +154,7 @@ def main():
         written = []
         for cs in ("ascii", "blocks", "braille"):
             for cm in ("fg", "fgbg", "mono"):
-                data = convert(image_path, args.width, cs, cm, args.invert)
+                data = convert(image_path, args.width, cs, cm, args.invert, args.aspect)
                 out = out_dir / f"{stem}.{cs}-{cm}.json"
                 out.write_text(json.dumps(data))
                 written.append(out)
@@ -160,7 +162,7 @@ def main():
             print(p)
         return
 
-    data = convert(image_path, args.width, args.charset, args.color, args.invert)
+    data = convert(image_path, args.width, args.charset, args.color, args.invert, args.aspect)
     out = Path(args.out) if args.out else out_dir / f"{stem}.{args.charset}-{args.color}.json"
     out.write_text(json.dumps(data))
     print(out)

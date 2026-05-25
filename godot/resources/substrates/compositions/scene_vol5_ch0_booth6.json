@@ -1,0 +1,114 @@
+{
+  "id": "scene_vol5_ch0_booth6",
+  "canvas": [
+    1920,
+    1080
+  ],
+  "bg": "#06080e",
+  "windows": [
+    {
+      "kind": "visualizer",
+      "x": 0,
+      "y": 800,
+      "font_px": 14,
+      "bar_count": 80,
+      "bar_height": 16,
+      "bar_gap": 0,
+      "min_freq": 30,
+      "max_freq": 280,
+      "magnitude": 14.0,
+      "smoothing": 0.34,
+      "peak_decay": 0.92,
+      "peak_hold": false,
+      "wave_smooth_passes": 4,
+      "col_dim": "#06080e",
+      "col_lo": "#10182a",
+      "col_mid": "#1c2a45",
+      "col_hi": "#5a4632",
+      "col_peak": "#ffd17a",
+      "col_peak_tip": "#ffd17a",
+      "alpha": 0.28,
+      "z": 1,
+      "update_hz": 30
+    },
+    {
+      "kind": "image",
+      "path": "assets/backgrounds/vol5_dambrosios_exterior.png",
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 1.0,
+      "z": 3
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/vol5_dambrosios_exterior_ascii.png",
+        "assets/backgrounds/vol5_dambrosios_exterior_ascii.png",
+        "assets/backgrounds/vol5_dambrosios_exterior_ascii.png",
+        "assets/backgrounds/vol5_dambrosios_exterior_ascii_glitch.png"
+      ],
+      "frame_duration": 0.55,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.2,
+      "z": 5,
+      "modulate": "#9bbcd6",
+      "audio_reactive": {
+        "freq_lo": 40,
+        "freq_hi": 240,
+        "base_alpha": 0.18,
+        "max_alpha": 0.55,
+        "min_alpha": 0.12,
+        "magnitude": 5.5,
+        "smoothing": 0.22,
+        "update_hz": 30
+      }
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/vol5_dambrosios_exterior_water_0.png",
+        "assets/backgrounds/vol5_dambrosios_exterior_water_1.png",
+        "assets/backgrounds/vol5_dambrosios_exterior_water_2.png",
+        "assets/backgrounds/vol5_dambrosios_exterior_water_1.png"
+      ],
+      "frame_duration": 0.75,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.55,
+      "z": 6
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/dust_motes_0.png",
+        "assets/backgrounds/dust_motes_1.png",
+        "assets/backgrounds/dust_motes_2.png",
+        "assets/backgrounds/dust_motes_3.png"
+      ],
+      "frame_duration": 1.4,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.95,
+      "z": 7
+    },
+    {
+      "kind": "color",
+      "color": "#1e2a48",
+      "alpha": 0.32,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "z": 9
+    }
+  ]
+}

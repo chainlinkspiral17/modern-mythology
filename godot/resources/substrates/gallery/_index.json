@@ -6,7 +6,61 @@
       "set": "Major Arcana",
       "type": "composition",
       "path": "fool_arcana",
-      "always_unlocked": true
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_*"
+    },
+    {
+      "id": "magician_arcana",
+      "title": "I — THE MAGICIAN",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "magician_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch1_*"
+    },
+    {
+      "id": "tarot_fool_v2",
+      "title": "0 — THE FOOL  (dashboard)",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "tarot_fool_v2",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_*"
+    },
+    {
+      "id": "tarot_fool",
+      "title": "0 — THE FOOL  (v1)",
+      "set": "Major Arcana",
+      "path": "gallery/tarot_fool",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_*"
+    },
+    {
+      "id": "portrait_john",
+      "title": "Portrait — John Frank",
+      "set": "Chapter 0 — Portraits",
+      "type": "composition",
+      "path": "portrait_john",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_*"
+    },
+    {
+      "id": "portrait_frasier",
+      "title": "Portrait — Frasier Temple",
+      "set": "Chapter 0 — Portraits",
+      "type": "composition",
+      "path": "portrait_frasier",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_frasier"
+    },
+    {
+      "id": "portrait_stranger",
+      "title": "Portrait — The Stranger",
+      "set": "Chapter 0 — Portraits",
+      "type": "composition",
+      "path": "portrait_stranger",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_booth6"
     },
     {
       "id": "music_player",
@@ -17,18 +71,10 @@
       "always_unlocked": true
     },
     {
-      "id": "tarot_fool_v2",
-      "title": "0 — THE FOOL  (dashboard)",
-      "set": "Major Arcana",
-      "type": "composition",
-      "path": "tarot_fool_v2",
-      "always_unlocked": true
-    },
-    {
-      "id": "tarot_fool",
-      "title": "0 — THE FOOL  (v1)",
-      "set": "Major Arcana",
-      "path": "gallery/tarot_fool",
+      "id": "fool_reference_blocks400",
+      "title": "TEST — Reference (blocks @ 400)",
+      "set": "Image2ASCII Tests",
+      "path": "gallery/fool_reference_blocks400",
       "always_unlocked": true
     }
   ]

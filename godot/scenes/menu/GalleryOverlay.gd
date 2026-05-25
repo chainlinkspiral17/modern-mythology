@@ -19,6 +19,20 @@ const SUBSTRATE_RASTER_SCRIPT := preload("res://scenes/game/AsciiSubstrateRaster
 const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 const DEBUG_OVERLAY_SCRIPT := preload("res://scenes/menu/SubstrateDebugOverlay.gd")
 
+# Mirrors MainMenu.VOLUME_META — used to label per-volume gallery sections.
+const VOLUME_TITLES: Dictionary = {
+	1:  "Modern Mythology",
+	2:  "Small Wood Volumes",
+	3:  "The Earthman Chronicles",
+	4:  "#/Sharp",
+	5:  "Major Arcana",
+	6:  "Planned Community",
+	7:  "Land of Milk & Honey",
+	8:  "SCUMM",
+	9:  "Por Puesto",
+	10: "ROFLcopter",
+}
+
 
 func open() -> void:
 	_rebuild()
@@ -89,19 +103,51 @@ func _rebuild() -> void:
 	content.add_theme_constant_override("separation", 14)
 	scroll.add_child(content)
 
-	# Substrate (ASCII) section
+	# Substrate (ASCII) section, grouped per-volume.
+	# Items without a `volume` (e.g. Player Surfaces) go into a leading
+	# "Always Available" bucket. Items with a volume show as a section per
+	# volume, headed with the volume title from VOLUME_TITLES.
 	if not subs.is_empty():
 		content.add_child(_section_label("ASCII SUBSTRATES"))
-		var sub_flow := FlowContainer.new()
-		sub_flow.alignment = FlowContainer.ALIGNMENT_BEGIN
-		sub_flow.add_theme_constant_override("h_separation", 10)
-		sub_flow.add_theme_constant_override("v_separation", 10)
-		sub_flow.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		content.add_child(sub_flow)
+		var groups: Dictionary = {}  # key: int volume or -1 for "no volume"
+		var order: Array = []        # preserve discovery order for unkeyed
 		for item_v in subs:
 			if typeof(item_v) != TYPE_DICTIONARY:
 				continue
-			sub_flow.add_child(_make_substrate_tile(item_v as Dictionary))
+			var it: Dictionary = item_v
+			var vol: int = int(it.get("volume", -1))
+			if not groups.has(vol):
+				groups[vol] = []
+				order.append(vol)
+			(groups[vol] as Array).append(it)
+
+		var ordered_vols: Array = []
+		if order.has(-1):
+			ordered_vols.append(-1)
+		var numbered: Array = []
+		for v in order:
+			if v != -1:
+				numbered.append(v)
+		numbered.sort()
+		ordered_vols.append_array(numbered)
+
+		for vol_v in ordered_vols:
+			var vol: int = int(vol_v)
+			var header: String = ""
+			if vol == -1:
+				header = "ALWAYS AVAILABLE"
+			else:
+				var title: String = str(VOLUME_TITLES.get(vol, ""))
+				header = "VOLUME %d" % vol if title == "" else "VOLUME %d  —  %s" % [vol, title.to_upper()]
+			content.add_child(_volume_label(header))
+			var flow := FlowContainer.new()
+			flow.alignment = FlowContainer.ALIGNMENT_BEGIN
+			flow.add_theme_constant_override("h_separation", 10)
+			flow.add_theme_constant_override("v_separation", 10)
+			flow.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			content.add_child(flow)
+			for it_v in groups[vol]:
+				flow.add_child(_make_substrate_tile(it_v as Dictionary))
 
 	# CG section
 	content.add_child(_section_label("CG IMAGES"))
@@ -129,6 +175,14 @@ func _section_label(text: String) -> Label:
 	var lbl := Label.new()
 	lbl.text = text
 	_apply_font(lbl, SkinDB.F_CINZEL, 11, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.85))
+	return lbl
+
+
+func _volume_label(text: String) -> Label:
+	# Subordinate label under the ASCII SUBSTRATES section — dimmer + smaller.
+	var lbl := Label.new()
+	lbl.text = text
+	_apply_font(lbl, SkinDB.F_CINZEL, 10, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
 	return lbl
 
 
