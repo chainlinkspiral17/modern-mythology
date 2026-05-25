@@ -4,9 +4,6 @@ godot/*.import
 godot/**/*.import
 *.translation
 
-# Godot export
-godot/export_presets.cfg
-
 # OS
 .DS_Store
 Thumbs.db
