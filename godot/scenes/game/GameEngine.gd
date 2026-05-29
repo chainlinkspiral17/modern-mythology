@@ -236,6 +236,8 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 		push_error("GameEngine: scene not found: " + scene_id)
 		game_ended.emit()
 		return
+	if _chars != null:
+		_chars.call("hide_all")
 	_auto_load_substrate(scene_id)
 	_unlock_gallery_for_scene(scene_id)
 	_run_next()
@@ -574,6 +576,8 @@ func _input(event: InputEvent) -> void:
 	if _paused:
 		return
 	if event.is_action_pressed("advance"):
+		if _choices != null and _choices.visible:
+			return
 		get_viewport().set_input_as_handled()
 		if _interlude.visible:
 			_interlude.call("try_advance")
