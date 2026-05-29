@@ -1,0 +1,65 @@
+{
+  "id": "scene_vol5_ch3_empress",
+  "canvas": [1920, 1080],
+  "bg": "#0e0808",
+  "windows": [
+    {
+      "kind": "visualizer",
+      "x": 0, "y": 800, "font_px": 14,
+      "bar_count": 80, "bar_height": 16, "bar_gap": 0,
+      "min_freq": 40, "max_freq": 3000,
+      "magnitude": 14.0, "smoothing": 0.34, "peak_decay": 0.93,
+      "peak_hold": false, "wave_smooth_passes": 4, "update_hz": 30,
+      "col_dim": "#0e0808",
+      "col_lo": "#241410",
+      "col_mid": "#6a3422",
+      "col_hi": "#b06840",
+      "col_peak": "#e8a860",
+      "col_peak_tip": "#ffe0b0",
+      "alpha": 0.26
+    },
+    {
+      "kind": "image",
+      "path": "assets/backgrounds/vol5_dambrosio_dining_room.png",
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "alpha": 1.0, "z": 3
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/vol5_dambrosio_dining_room_ascii.png",
+        "assets/backgrounds/vol5_dambrosio_dining_room_ascii.png",
+        "assets/backgrounds/vol5_dambrosio_dining_room_ascii.png",
+        "assets/backgrounds/vol5_dambrosio_dining_room_ascii_glitch.png"
+      ],
+      "frame_duration": 0.6,
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "alpha": 0.2, "z": 5,
+      "modulate": "#e8b888",
+      "audio_reactive": {
+        "freq_lo": 40, "freq_hi": 2400,
+        "base_alpha": 0.16, "max_alpha": 0.48, "min_alpha": 0.1,
+        "magnitude": 5.5, "smoothing": 0.22, "update_hz": 30
+      }
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/dust_motes_0.png",
+        "assets/backgrounds/dust_motes_1.png",
+        "assets/backgrounds/dust_motes_2.png",
+        "assets/backgrounds/dust_motes_3.png"
+      ],
+      "frame_duration": 1.5,
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "alpha": 0.85, "z": 7
+    },
+    {
+      "kind": "color",
+      "color": "#3a1c12",
+      "alpha": 0.26,
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "z": 9
+    }
+  ]
+}
