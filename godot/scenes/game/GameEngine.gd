@@ -356,7 +356,8 @@ func _do_bg(n: Dictionary) -> void:
 	if ResourceLoader.exists(path):
 		_bg.texture = ResourceLoader.load(path) as Texture2D
 	else:
-		_bg.texture = null
+		var img := Image.load_from_file(ProjectSettings.globalize_path(path))
+		_bg.texture = ImageTexture.create_from_image(img) if img else null
 
 
 func _do_substrate(n: Dictionary) -> void:

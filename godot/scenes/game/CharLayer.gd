@@ -98,9 +98,16 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	wrapper.modulate.a          = 0.0
 
 	var tex_path := "res://assets/characters/%s/%s_%s.png" % [char_name, char_name, expr]
+	var tex: Texture2D = null
 	if ResourceLoader.exists(tex_path):
+		tex = ResourceLoader.load(tex_path) as Texture2D
+	else:
+		var img := Image.load_from_file(ProjectSettings.globalize_path(tex_path))
+		if img:
+			tex = ImageTexture.create_from_image(img)
+	if tex:
 		var tr := TextureRect.new()
-		tr.texture               = ResourceLoader.load(tex_path) as Texture2D
+		tr.texture               = tex
 		tr.stretch_mode          = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		tr.custom_minimum_size   = Vector2(SPRITE_W, SPRITE_H)
 		wrapper.add_child(tr)
@@ -122,6 +129,10 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 		var path := "res://assets/characters/%s/%s_%s.png" % [char_name, char_name, expr]
 		if ResourceLoader.exists(path):
 			tr.texture = ResourceLoader.load(path) as Texture2D
+		else:
+			var img := Image.load_from_file(ProjectSettings.globalize_path(path))
+			if img:
+				tr.texture = ImageTexture.create_from_image(img)
 	else:
 		var ph: Control = wrapper.get_child(0)
 		if ph.has_meta("expr_lbl"):
