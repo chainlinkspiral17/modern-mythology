@@ -3,11 +3,12 @@
   "vol": 5,
   "chapter": "0",
   "type": "chapter",
-  "title": "Ch 0 \u2014 Frasier Temple",
+  "title": "Ch 0 — Frasier Temple",
   "nodes": [
     {
       "t": "narrate",
-      "text": "The bell over the kitchen door \u2014 the back door, the one customers were not supposed to use \u2014 did not jingle. It jangled. A discordant chord slicing through the hum, snapping the fluorescents back into focus."
+      "text": "The bell over the kitchen door — the back door, the one customers were not supposed to use — did not jingle. It jangled. A discordant chord slicing through the hum, snapping the fluorescents back into focus.",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/000.mp3"
     },
     {
       "t": "show",
@@ -17,27 +18,32 @@
     },
     {
       "t": "narrate",
-      "text": "Frasier Temple did not so much walk in as coalesce from the shadows of the kitchen alcove. Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable. Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both."
+      "text": "Frasier Temple did not so much walk in as coalesce from the shadows of the kitchen alcove. Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable. Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both.",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/002.mp3"
     },
     {
       "t": "narrate",
-      "text": "His gaze landed on John. The gaze had weight. The gaze had been waiting."
+      "text": "His gaze landed on John. The gaze had weight. The gaze had been waiting.",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/003.mp3"
     },
     {
       "t": "say",
       "char": "Frasier",
       "expr": "neutral",
-      "text": "\"Still chasing shadows, Johnny?\""
+      "text": "\"Still chasing shadows, Johnny?\"",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/004.mp3"
     },
     {
       "t": "narrate",
-      "text": "The voice was a gravelly rumble, sandpaper on velvet. He pulled up a stool and straddled it backward and instantly commanded the space, as if he had built the diner around himself by sitting in it."
+      "text": "The voice was a gravelly rumble, sandpaper on velvet. He pulled up a stool and straddled it backward and instantly commanded the space, as if he had built the diner around himself by sitting in it.",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/005.mp3"
     },
     {
       "t": "say",
       "char": "Frasier",
       "expr": "amused",
-      "text": "\"Or are the shadows finally chasing you?\""
+      "text": "\"Or are the shadows finally chasing you?\"",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/006.mp3"
     },
     {
       "t": "show",
@@ -49,68 +55,81 @@
       "t": "say",
       "char": "John",
       "expr": "tired",
-      "text": "\"Just trying to make it make sense, Joneses.\""
+      "text": "\"Just trying to make it make sense, Joneses.\"",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/008.mp3"
     },
     {
       "t": "think",
       "char": "John",
-      "text": "The old refrain tasted like ash, the way it always did. Keeping up with Frasier Temple was like trying to map a hurricane with a crayon. You did the work knowing the work would be wrong. The wrongness was part of the point."
+      "text": "The old refrain tasted like ash, the way it always did. Keeping up with Frasier Temple was like trying to map a hurricane with a crayon. You did the work knowing the work would be wrong. The wrongness was part of the point.",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "Frasier laughed, a sound like rocks tumbling in a metal drum."
+      "text": "Frasier laughed, a sound like rocks tumbling in a metal drum.",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "He tapped the cover of his notebook. Diagrams adorned it that looked suspiciously like circuit boards woven into mandalas."
+      "text": "He tapped the cover of his notebook. Diagrams adorned it that looked suspiciously like circuit boards woven into mandalas.",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/011.mp3"
     },
     {
       "t": "say",
       "char": "Frasier",
       "expr": "neutral",
-      "text": "\"Sense is overrated. Structure is the illusion. You know that.\""
+      "text": "\"Sense is overrated. Structure is the illusion. You know that.\"",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pulled out his phone \u2014 or rather, the customized jury-rigged device that served Frasier as a phone, its casing chipped, wires peeking out like frayed nerves, screen glowing with internal light that did not match any of the available wallpapers."
+      "text": "He pulled out his phone — or rather, the customized jury-rigged device that served Frasier as a phone, its casing chipped, wires peeking out like frayed nerves, screen glowing with internal light that did not match any of the available wallpapers.",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/013.mp3"
     },
     {
       "t": "say",
       "char": "Frasier",
       "expr": "amused",
-      "text": "\"The Demons are restless tonight. They feel something coming.\""
+      "text": "\"The Demons are restless tonight. They feel something coming.\"",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/014.mp3"
     },
     {
       "t": "think",
       "char": "John",
-      "text": "John knew about the Demons. Everyone in Frasier's orbit eventually knew about the Demons. Frasier called them his humorous electronic imps, digital sprites birthed from code and chaos. Harmless was not the word."
+      "text": "John knew about the Demons. Everyone in Frasier's orbit eventually knew about the Demons. Frasier called them his humorous electronic imps, digital sprites birthed from code and chaos. Harmless was not the word.",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/015.mp3"
     },
     {
       "t": "say",
       "char": "John",
       "expr": "neutral",
-      "text": "\"They talking about the patterns?\""
+      "text": "\"They talking about the patterns?\"",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "He gestured vaguely toward the town outside, the river, the divide between Texas and Louisiana, sense and nonsense."
+      "text": "He gestured vaguely toward the town outside, the river, the divide between Texas and Louisiana, sense and nonsense.",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/017.mp3"
     },
     {
       "t": "say",
       "char": "Frasier",
       "expr": "amused",
-      "text": "\"The patterns are shifting, Johnny. The walls are getting thin.\""
+      "text": "\"The patterns are shifting, Johnny. The walls are getting thin.\"",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/018.mp3"
     },
     {
       "t": "say",
       "char": "Frasier",
       "expr": "amused",
-      "text": "\"You feel it, don't you. Don't lie. You feel it in your teeth. They say the Architect is getting sloppy. Or maybe \u2014 \" he grinned, a flash of brilliance and madness, \"\u2014 maybe the decay is the design.\""
+      "text": "\"You feel it, don't you. Don't lie. You feel it in your teeth. They say the Architect is getting sloppy. Or maybe — \" he grinned, a flash of brilliance and madness, \"— maybe the decay is the design.\"",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/019.mp3"
     },
     {
       "t": "think",
       "char": "John",
-      "text": "He thought about the man in booth six. The walls are thin. Almost the same words. He did not mention it. He had a working theory that mentioning a thing to Frasier Temple summoned more of that thing into the world."
+      "text": "He thought about the man in booth six. The walls are thin. Almost the same words. He did not mention it. He had a working theory that mentioning a thing to Frasier Temple summoned more of that thing into the world.",
+      "voice": "assets/audio/voice/vol5_ch0_frasier/020.mp3"
     },
     {
       "t": "jump",

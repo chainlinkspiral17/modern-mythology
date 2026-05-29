@@ -11,49 +11,60 @@
     },
     {
       "t": "narrate",
-      "text": "The sign outside D'Ambrosio's promised OPEN 24 HOURS, and the sign was technically right, but the light it cast in the pre-dawn Graustark gloom had the unsteady pulse of a heart that wanted to stop and was being talked out of it. The neon sputtered. The neon resumed. The neon sputtered."
+      "text": "The sign outside D'Ambrosio's promised OPEN 24 HOURS, and the sign was technically right, but the light it cast in the pre-dawn Graustark gloom had the unsteady pulse of a heart that wanted to stop and was being talked out of it. The neon sputtered. The neon resumed. The neon sputtered.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/001.mp3"
     },
     {
       "t": "narrate",
-      "text": "Three forty-seven AM. Or three forty-eight. The clock on the kitchen wall — a monstrous grease-stained beast that had been there longer than anyone working at D'Ambrosio's, including the owner — sagged on its single bent nail and seemed to mock linearity. Its hands swam through the numbers like confused fish. Time was liquid here, bending to the town's strange gravity."
+      "text": "Three forty-seven AM. Or three forty-eight. The clock on the kitchen wall — a monstrous grease-stained beast that had been there longer than anyone working at D'Ambrosio's, including the owner — sagged on its single bent nail and seemed to mock linearity. Its hands swam through the numbers like confused fish. Time was liquid here, bending to the town's strange gravity.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/002.mp3"
     },
     {
       "t": "narrate",
-      "text": "Somewhere out past the parking lot the river ran slow and silty, indifferent to whether the sign was on or off, indifferent to whether it was Texas on this side or Louisiana on the other. The river had its own program."
+      "text": "Somewhere out past the parking lot the river ran slow and silty, indifferent to whether the sign was on or off, indifferent to whether it was Texas on this side or Louisiana on the other. The river had its own program.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/003.mp3"
     },
     {
       "t": "narrate",
-      "text": "John Frank: grad student, mixed-media journalist (whatever that meant this week), late-night waiter at the nexus of Graustark, Texas/Louisiana, this riverboat-shaped restaurant wedged between reason and riot, between two states of being and two states of the union."
+      "text": "John Frank: grad student, mixed-media journalist (whatever that meant this week), late-night waiter at the nexus of Graustark, Texas/Louisiana, this riverboat-shaped restaurant wedged between reason and riot, between two states of being and two states of the union.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/004.mp3"
     },
     {
       "t": "think",
       "char": "John",
-      "text": "He chronicled Graustark's oddities for a website nobody he knew read. His thesis advisor included."
+      "text": "He chronicled Graustark's oddities for a website nobody he knew read. His thesis advisor included.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "He tried to map the town's intersecting realities. Its hidden frequencies. The way yesterday sometimes bled into next Tuesday without so much as a by-your-leave. He saw it in the patrons who looked slightly out of sync, their eyes holding reflections of streets that did not exist on city maps. He heard it in the static between radio stations late at night, whispers that sounded suspiciously like stage directions."
+      "text": "He tried to map the town's intersecting realities. Its hidden frequencies. The way yesterday sometimes bled into next Tuesday without so much as a by-your-leave. He saw it in the patrons who looked slightly out of sync, their eyes holding reflections of streets that did not exist on city maps. He heard it in the static between radio stations late at night, whispers that sounded suspiciously like stage directions.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/006.mp3"
     },
     {
       "t": "think",
       "char": "John",
-      "text": "Was he a witness? A participant? Hard to say. He felt like a character in someone else's slightly unhinged narrative, waiting for his scene. Suspended between acts. The Fool, maybe, poised at the cliff edge with one foot dangling over the abyss."
+      "text": "Was he a witness? A participant? Hard to say. He felt like a character in someone else's slightly unhinged narrative, waiting for his scene. Suspended between acts. The Fool, maybe, poised at the cliff edge with one foot dangling over the abyss.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "Inside, the fluorescent tubes hummed a B-flat dirge. John Frank had stopped hearing it the way you stop hearing a refrigerator, which is to say he heard it constantly, in his molars, in his sinuses, in the soft place behind his sternum where things he was trying not to think about made their nest."
+      "text": "Inside, the fluorescent tubes hummed a B-flat dirge. John Frank had stopped hearing it the way you stop hearing a refrigerator, which is to say he heard it constantly, in his molars, in his sinuses, in the soft place behind his sternum where things he was trying not to think about made their nest.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "He wiped the counter again. The steel was cool and indifferent beneath his palm. The movement was automatic, a small ritual against the larger chaos, the sort of repetitive prayer a person makes when they have stopped believing in prayer but cannot quite stop the hands."
+      "text": "He wiped the counter again. The steel was cool and indifferent beneath his palm. The movement was automatic, a small ritual against the larger chaos, the sort of repetitive prayer a person makes when they have stopped believing in prayer but cannot quite stop the hands.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bell over the front door rang once."
+      "text": "The bell over the front door rang once.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "It was not Frasier. It was too early for Frasier."
+      "text": "It was not Frasier. It was too early for Frasier.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/011.mp3"
     },
     {
       "t": "show",
@@ -63,17 +74,20 @@
     },
     {
       "t": "narrate",
-      "text": "A man John did not recognize entered, sat at booth six, ordered coffee without looking up from a paperback whose title was peeling off the spine. John brought the coffee. The man drank the coffee."
+      "text": "A man John did not recognize entered, sat at booth six, ordered coffee without looking up from a paperback whose title was peeling off the spine. John brought the coffee. The man drank the coffee.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "The man left two dollars on the table and stood up and folded the paperback into his coat pocket and, on the way out, paused at the door and said, without turning around:"
+      "text": "The man left two dollars on the table and stood up and folded the paperback into his coat pocket and, on the way out, paused at the door and said, without turning around:",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/014.mp3"
     },
     {
       "t": "say",
       "char": "Stranger",
       "expr": "neutral",
-      "text": "\"Watch yourself tonight, brother. The walls are thin.\""
+      "text": "\"Watch yourself tonight, brother. The walls are thin.\"",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/015.mp3"
     },
     {
       "t": "hide",
@@ -81,24 +95,29 @@
     },
     {
       "t": "narrate",
-      "text": "Then he was gone, and the bell rang again behind him, and the wet asphalt of the parking lot took his footprints like it took everyone's, and that was that."
+      "text": "Then he was gone, and the bell rang again behind him, and the wet asphalt of the parking lot took his footprints like it took everyone's, and that was that.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "John stood holding a damp rag, looking at booth six, where the coffee cup was still steaming."
+      "text": "John stood holding a damp rag, looking at booth six, where the coffee cup was still steaming.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/018.mp3"
     },
     {
       "t": "think",
       "char": "John",
-      "text": "He had not, he was almost certain, told the man it was night. The clock on the wall said it was almost four in the morning. The man had said night. As if the day had a different name where he came from."
+      "text": "He had not, he was almost certain, told the man it was night. The clock on the wall said it was almost four in the morning. The man had said night. As if the day had a different name where he came from.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "John folded the napkin from booth six. White, paper, cheap. He folded it once, twice, three times, and then a fourth into a shape that was not quite anything but resembled, if you squinted at it from the right angle and were willing to be generous, a flower. He tucked it into the back of his notebook."
+      "text": "John folded the napkin from booth six. White, paper, cheap. He folded it once, twice, three times, and then a fourth into a shape that was not quite anything but resembled, if you squinted at it from the right angle and were willing to be generous, a flower. He tucked it into the back of his notebook.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "He did this without thinking and forgot about it almost immediately and did not, for the next several months, understand why he had done it."
+      "text": "He did this without thinking and forgot about it almost immediately and did not, for the next several months, understand why he had done it.",
+      "voice": "assets/audio/voice/vol5_ch0_booth6/021.mp3"
     },
     {
       "t": "jump",

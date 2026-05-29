@@ -356,4 +356,26 @@ func _load_audio(src: String) -> AudioStream:
 	var path := "res://" + src
 	if ResourceLoader.exists(path):
 		return ResourceLoader.load(path) as AudioStream
+	# Fallback when the .import sidecar isn't generated yet (e.g.
+	# audio dropped in but the editor hasn't reimported). Without
+	# this, freshly-dropped voicelines silently fail to play.
+	var abs_path := ProjectSettings.globalize_path(path)
+	if not FileAccess.file_exists(abs_path):
+		return null
+	var bytes := FileAccess.get_file_as_bytes(abs_path)
+	if bytes.is_empty():
+		return null
+	var ext := src.get_extension().to_lower()
+	match ext:
+		"mp3":
+			var s := AudioStreamMP3.new()
+			s.data = bytes
+			return s
+		"ogg":
+			return AudioStreamOggVorbis.load_from_buffer(bytes)
+		"wav":
+			var w := AudioStreamWAV.new()
+			w.data = bytes
+			return w
+	push_warning("AudioMgr: unsupported audio extension '%s' for %s" % [ext, src])
 	return null
