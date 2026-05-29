@@ -78,9 +78,9 @@ func get_first_scene(vol_num: int) -> Dictionary:
 
 
 func get_next_scene_id(scene_id: String) -> String:
-	var flow_vols := ["5", "6", "7"]
+	var flow_vols: Array[String] = ["5", "6", "7"]
 	for vi in range(flow_vols.size()):
-		var vk := flow_vols[vi]
+		var vk: String = flow_vols[vi]
 		if not _vol_index.has(vk):
 			continue
 		var list: Array = _vol_index[vk]
@@ -90,7 +90,7 @@ func get_next_scene_id(scene_id: String) -> String:
 		if idx < list.size() - 1:
 			return list[idx + 1]
 		if vi + 1 < flow_vols.size():
-			var nk := flow_vols[vi + 1]
+			var nk: String = flow_vols[vi + 1]
 			if _vol_index.has(nk) and not _vol_index[nk].is_empty():
 				return _vol_index[nk][0]
 		return ""
