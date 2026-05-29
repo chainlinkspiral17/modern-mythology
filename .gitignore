@@ -6,6 +6,7 @@ godot/**/*.import
 
 # Godot export
 godot/export_presets.cfg
+build/
 
 # OS
 .DS_Store
