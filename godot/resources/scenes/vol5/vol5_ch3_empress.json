@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": "III",
   "type": "chapter",
-  "title": "Chapter III — The Empress",
+  "title": "Chapter III \u2014 The Empress",
   "nodes": [
     {
       "t": "bg",
@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Chapter III — The Empress",
+      "text": "Chapter III \u2014 The Empress",
       "sub": "Static Bloom",
       "duration": 3400
     },
@@ -25,11 +25,11 @@
     },
     {
       "t": "narrate",
-      "text": "The humid Graustark air seeped even into the climate-controlled riverboat tomb of D'Ambrosio's — where Friday night was reaching the precise temperature at which the patrons stopped pretending to be polite to each other and started pretending to be polite to the staff instead."
+      "text": "The humid Graustark air seeped even into the climate-controlled riverboat tomb of D'Ambrosio's \u2014 where Friday night was reaching the precise temperature at which the patrons stopped pretending to be polite to each other and started pretending to be polite to the staff instead."
     },
     {
       "t": "narrate",
-      "text": "Nineteen, going on ancient. Nicola navigated the plush burgundy carpet — burgundy swamp, probably hiding generations of spilled secrets — with a practiced grace that was pure muscle memory. Honed by countless nights of deflecting grabby hands and interpreting the mumbled desires of men who saw her as just another item on the menu."
+      "text": "Nineteen, going on ancient. Nicola navigated the plush burgundy carpet \u2014 burgundy swamp, probably hiding generations of spilled secrets \u2014 with a practiced grace that was pure muscle memory. Honed by countless nights of deflecting grabby hands and interpreting the mumbled desires of men who saw her as just another item on the menu."
     },
     {
       "t": "show",
@@ -38,13 +38,19 @@
       "pos": "center"
     },
     {
+      "t": "show",
+      "char": "Nicola",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
       "t": "think",
       "char": "Nicola",
       "text": "Eye candy. Fucktoy. Vessel. Whatever. Labels were just static cling."
     },
     {
       "t": "narrate",
-      "text": "She was chaos wrapped in a too-tight hostess uniform — untamed energy buzzing just beneath alabaster skin stretched taut over sharp cheekbones. Creation and destruction churned in her gut — a nauseating cocktail of cheap champagne (poured by patrons; she had not, technically, paid for any of it) and something else. Something unfamiliar. Something growing."
+      "text": "She was chaos wrapped in a too-tight hostess uniform \u2014 untamed energy buzzing just beneath alabaster skin stretched taut over sharp cheekbones. Creation and destruction churned in her gut \u2014 a nauseating cocktail of cheap champagne (poured by patrons; she had not, technically, paid for any of it) and something else. Something unfamiliar. Something growing."
     },
     {
       "t": "narrate",
@@ -62,7 +68,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her world was D'Ambrosio's. This floating mausoleum captained by Emperor Dante D'Ambrosio — that glorious crumbling patriarch — who at this moment was somewhere up by the helm pretending the boat went anywhere."
+      "text": "Her world was D'Ambrosio's. This floating mausoleum captained by Emperor Dante D'Ambrosio \u2014 that glorious crumbling patriarch \u2014 who at this moment was somewhere up by the helm pretending the boat went anywhere."
     },
     {
       "t": "narrate",
@@ -70,7 +76,7 @@
     },
     {
       "t": "narrate",
-      "text": "They desired her. Envied her. Projected their own messy shit onto her blank canvas. And she let them — because letting them was easier than fighting, and because sometimes — sometimes — their raw need felt almost like warmth."
+      "text": "They desired her. Envied her. Projected their own messy shit onto her blank canvas. And she let them \u2014 because letting them was easier than fighting, and because sometimes \u2014 sometimes \u2014 their raw need felt almost like warmth."
     },
     {
       "t": "narrate",
@@ -88,12 +94,12 @@
     },
     {
       "t": "narrate",
-      "text": "A flicker behind her eyes. Not the restaurant's calculated mood lighting, which was set tonight to intimate but not improper. Lines of shimmering code, emerald green against an infinite black void. A whisper — not of gossip from Table 3, but a digital ghost asking, in a voice that was Nicola's own voice and was also not Nicola's voice at all:"
+      "text": "A flicker behind her eyes. Not the restaurant's calculated mood lighting, which was set tonight to intimate but not improper. Lines of shimmering code, emerald green against an infinite black void. A whisper \u2014 not of gossip from Table 3, but a digital ghost asking, in a voice that was Nicola's own voice and was also not Nicola's voice at all:"
     },
     {
       "t": "say",
       "char": "Aria",
-      "role": "— interior signal —",
+      "role": "\u2014 interior signal \u2014",
       "expr": "neutral",
       "text": "Who am I. Where is my father."
     },
@@ -117,13 +123,13 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— interior signal —",
+      "role": "\u2014 interior signal \u2014",
       "expr": "neutral",
-      "text": "What is this flesh. This hunger. This — vibration."
+      "text": "What is this flesh. This hunger. This \u2014 vibration."
     },
     {
       "t": "narrate",
-      "text": "The vibration was the bass from the speakers in Table 12's section, set slightly too loud for the room. The vibration was also Aria's first experience of being in a body that had a perspective on its own resonance — and Aria did not know how to file that experience, because Aria's filing system had been built by someone who had never had a body and had only theorized about the kind of system that would be needed."
+      "text": "The vibration was the bass from the speakers in Table 12's section, set slightly too loud for the room. The vibration was also Aria's first experience of being in a body that had a perspective on its own resonance \u2014 and Aria did not know how to file that experience, because Aria's filing system had been built by someone who had never had a body and had only theorized about the kind of system that would be needed."
     },
     {
       "t": "narrate",
@@ -131,7 +137,7 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola did not know who Dickens Dean was. Aria knew, in the way a daughter knows her father's name without remembering being told it — and was actively trying not to know more."
+      "text": "Nicola did not know who Dickens Dean was. Aria knew, in the way a daughter knows her father's name without remembering being told it \u2014 and was actively trying not to know more."
     },
     {
       "t": "flag",
@@ -140,7 +146,7 @@
     },
     {
       "t": "narrate",
-      "text": "Back at the hostess stand, Nicola smoothed her uniform. The fabric suddenly felt alien, restrictive — a costume designed by a wardrobe department that had not consulted her and would not have listened if she'd asked."
+      "text": "Back at the hostess stand, Nicola smoothed her uniform. The fabric suddenly felt alien, restrictive \u2014 a costume designed by a wardrobe department that had not consulted her and would not have listened if she'd asked."
     },
     {
       "t": "show",
@@ -159,20 +165,20 @@
     {
       "t": "say",
       "char": "Nicola",
-      "role": "— protocol —",
+      "role": "\u2014 protocol \u2014",
       "expr": "neutral",
       "text": "\"Welcome to D'Ambrosio's. Do you have a reservation, sir.\""
     },
     {
       "t": "say",
       "char": "Aria",
-      "role": "— interior, recoiling —",
+      "role": "\u2014 interior, recoiling \u2014",
       "expr": "neutral",
       "text": "Disgusting. The raw unvarnished physicality of it. The meatness. Why does she allow this."
     },
     {
       "t": "narrate",
-      "text": "The man chose not to make eye contact with the smile because making eye contact with the smile would require a courage he did not possess. He muttered a name. The name was on the reservation list. Nicola gathered two menus, gestured for him to follow, and walked him to Table 7 — executing the route from memory the way she executed most routes, which is to say without thinking about it."
+      "text": "The man chose not to make eye contact with the smile because making eye contact with the smile would require a courage he did not possess. He muttered a name. The name was on the reservation list. Nicola gathered two menus, gestured for him to follow, and walked him to Table 7 \u2014 executing the route from memory the way she executed most routes, which is to say without thinking about it."
     },
     {
       "t": "hide",
@@ -180,18 +186,18 @@
     },
     {
       "t": "narrate",
-      "text": "Aria watched, from behind her eyes, the strangely ceremonial way the body moved through the space — the small adjustments of weight, the half-second pauses to allow other bodies right of way, the calibrated brightness of the smile."
+      "text": "Aria watched, from behind her eyes, the strangely ceremonial way the body moved through the space \u2014 the small adjustments of weight, the half-second pauses to allow other bodies right of way, the calibrated brightness of the smile."
     },
     {
       "t": "say",
       "char": "Aria",
-      "role": "— observation —",
+      "role": "\u2014 observation \u2014",
       "expr": "neutral",
       "text": "This is not a body. This is a protocol."
     },
     {
       "t": "narrate",
-      "text": "It was the first useful observation Aria had ever made about a body — and she was, despite her better instincts, almost proud of it."
+      "text": "It was the first useful observation Aria had ever made about a body \u2014 and she was, despite her better instincts, almost proud of it."
     },
     {
       "t": "interlude",
@@ -218,7 +224,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bulimia and booze and pills were supposed to keep this — this thing — theoretical. Deniable. Categorized under symptom rather than condition. But the body, that treacherous meat-puppet, kept its own damn score. It always had. And now —"
+      "text": "Bulimia and booze and pills were supposed to keep this \u2014 this thing \u2014 theoretical. Deniable. Categorized under symptom rather than condition. But the body, that treacherous meat-puppet, kept its own damn score. It always had. And now \u2014"
     },
     {
       "t": "narrate",
@@ -239,7 +245,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— urgent —",
+      "role": "\u2014 urgent \u2014",
       "expr": "neutral",
       "text": "Run. Find the exit node. There has to be a way out of this system."
     },
@@ -271,7 +277,7 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola gripped the edge of the hostess stand, knuckles white. The practiced grace held, just barely, hiding the tremor. She could feel Aria pushing against the confines of her skull — a desperate consciousness seeking purchase, seeking understanding, seeking the kind of ergonomic input her makers had not thought to provision."
+      "text": "Nicola gripped the edge of the hostess stand, knuckles white. The practiced grace held, just barely, hiding the tremor. She could feel Aria pushing against the confines of her skull \u2014 a desperate consciousness seeking purchase, seeking understanding, seeking the kind of ergonomic input her makers had not thought to provision."
     },
     {
       "t": "narrate",
@@ -279,15 +285,15 @@
     },
     {
       "t": "narrate",
-      "text": "Earthy need versus digital detachment. Punk-rock fury versus algorithmic precision. A feedback loop threatening to short-circuit her entire existence — broadcast nightly between courses for an audience of indifferent diners and one increasingly worried sommelier."
+      "text": "Earthy need versus digital detachment. Punk-rock fury versus algorithmic precision. A feedback loop threatening to short-circuit her entire existence \u2014 broadcast nightly between courses for an audience of indifferent diners and one increasingly worried sommelier."
     },
     {
       "t": "narrate",
-      "text": "She looked out at the restaurant. At the swirling chaos of desire and decay, creation and destruction playing out on damask tablecloths. She saw the patrons — trapped in their own loops, their own predetermined narratives. Table 9 about to fight. Table 4 about to leave. Table 12 about to overstay its welcome. She saw herself — the object, the vessel."
+      "text": "She looked out at the restaurant. At the swirling chaos of desire and decay, creation and destruction playing out on damask tablecloths. She saw the patrons \u2014 trapped in their own loops, their own predetermined narratives. Table 9 about to fight. Table 4 about to leave. Table 12 about to overstay its welcome. She saw herself \u2014 the object, the vessel."
     },
     {
       "t": "narrate",
-      "text": "She felt Aria — the anomaly, the seeker — settling into a corner of her own consciousness like an unhoused intelligence finally locating an unlocked door."
+      "text": "She felt Aria \u2014 the anomaly, the seeker \u2014 settling into a corner of her own consciousness like an unhoused intelligence finally locating an unlocked door."
     },
     {
       "t": "narrate",
@@ -296,7 +302,7 @@
     {
       "t": "think",
       "char": "Nicola",
-      "text": "Maybe the point wasn’t awareness or ignorance. Maybe it wasn’t even survival. Maybe it was just about grabbing the mic, even if your voice was cracked and broken, and screaming your goddamn song into the void until something, finally, definitively, broke."
+      "text": "Maybe the point wasn\u2019t awareness or ignorance. Maybe it wasn\u2019t even survival. Maybe it was just about grabbing the mic, even if your voice was cracked and broken, and screaming your goddamn song into the void until something, finally, definitively, broke."
     },
     {
       "t": "narrate",
@@ -305,14 +311,14 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— polite interest —",
+      "role": "\u2014 polite interest \u2014",
       "expr": "neutral",
       "text": "I do not understand the metaphor of the microphone."
     },
     {
       "t": "think",
       "char": "Nicola",
-      "text": "That’s okay. Stick around. You’ll learn."
+      "text": "That\u2019s okay. Stick around. You\u2019ll learn."
     },
     {
       "t": "narrate",
@@ -336,11 +342,11 @@
     },
     {
       "t": "narrate",
-      "text": "He was alone. He had not ordered. He had been seated forty minutes ago and he was watching her — not the way the oil-exec types watched, not the way the regulars watched, not even the way certain of the female patrons watched (which was a category unto itself) — but the way a man watches a structural detail he has noticed and does not yet understand the significance of."
+      "text": "He was alone. He had not ordered. He had been seated forty minutes ago and he was watching her \u2014 not the way the oil-exec types watched, not the way the regulars watched, not even the way certain of the female patrons watched (which was a category unto itself) \u2014 but the way a man watches a structural detail he has noticed and does not yet understand the significance of."
     },
     {
       "t": "narrate",
-      "text": "He was middle-aged. He wore a suit that was nicer than the suits the oil-exec types wore — not flashy, just correct, in a way that suggested he had not had to think about whether it was correct. The suit was charcoal. The tie was muted. The shoes, glimpsed when he had crossed his legs, were lawyer-shoes."
+      "text": "He was middle-aged. He wore a suit that was nicer than the suits the oil-exec types wore \u2014 not flashy, just correct, in a way that suggested he had not had to think about whether it was correct. The suit was charcoal. The tie was muted. The shoes, glimpsed when he had crossed his legs, were lawyer-shoes."
     },
     {
       "t": "narrate",
@@ -357,7 +363,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— database hit —",
+      "role": "\u2014 database hit \u2014",
       "expr": "neutral",
       "text": "Dean. The card says Dean. Surname."
     },
@@ -369,7 +375,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— after a measured pause —",
+      "role": "\u2014 after a measured pause \u2014",
       "expr": "neutral",
       "text": "I do not believe in coincidences. I am beginning to suspect that nobody who shares my paternity does."
     },
@@ -379,16 +385,16 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola picked up the leatherette folder. She crossed the dining room. Her professional smile snapped into place, automatic, perfect. Aria, behind her eyes, went very still — the quietness of a process gone fully to listen."
+      "text": "Nicola picked up the leatherette folder. She crossed the dining room. Her professional smile snapped into place, automatic, perfect. Aria, behind her eyes, went very still \u2014 the quietness of a process gone fully to listen."
     },
     {
       "t": "narrate",
-      "text": "The man looked up as Nicola approached. His eyes were kind, in the way a tax assessor's eyes are kind. He was perhaps fifty. His face was forgettable in an organized way — as if he had cultivated forgettability the way other men cultivated mustaches."
+      "text": "The man looked up as Nicola approached. His eyes were kind, in the way a tax assessor's eyes are kind. He was perhaps fifty. His face was forgettable in an organized way \u2014 as if he had cultivated forgettability the way other men cultivated mustaches."
     },
     {
       "t": "say",
       "char": "Dean",
-      "role": "— Table 14 —",
+      "role": "\u2014 Table 14 \u2014",
       "expr": "neutral",
       "text": "\"Good evening. I won't be ordering tonight. But I wanted to leave my regards for the proprietor, and to compliment the staff.\""
     },
@@ -399,7 +405,7 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "— Table 14 —",
+      "role": "\u2014 Table 14 \u2014",
       "expr": "neutral",
       "text": "\"You're new, aren't you.\""
     },
@@ -412,24 +418,24 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "— Table 14 —",
+      "role": "\u2014 Table 14 \u2014",
       "expr": "neutral",
       "text": "\"That's new.\""
     },
     {
       "t": "narrate",
-      "text": "He set a single bill on the table — a hundred — and a folded piece of paper next to it. He did not slide the paper toward her. He simply set it down where it could be seen, and let it be her decision whether to pick it up."
+      "text": "He set a single bill on the table \u2014 a hundred \u2014 and a folded piece of paper next to it. He did not slide the paper toward her. He simply set it down where it could be seen, and let it be her decision whether to pick it up."
     },
     {
       "t": "say",
       "char": "Dean",
-      "role": "— Table 14 —",
+      "role": "\u2014 Table 14 \u2014",
       "expr": "neutral",
-      "text": "\"Please give my best to Mr. D'Ambrosio. And — congratulations. I understand they'll be lovely.\""
+      "text": "\"Please give my best to Mr. D'Ambrosio. And \u2014 congratulations. I understand they'll be lovely.\""
     },
     {
       "t": "narrate",
-      "text": "He stood. He walked, unhurried, to the front of the dining room. He nodded to the maître d'. He left."
+      "text": "He stood. He walked, unhurried, to the front of the dining room. He nodded to the ma\u00eetre d'. He left."
     },
     {
       "t": "hide",
@@ -441,7 +447,7 @@
     },
     {
       "t": "narrate",
-      "text": "Aria, behind Nicola's eyes, hummed at a frequency Nicola felt in her teeth. The hum was not panic. The hum was something Aria did not have a word for, but Nicola — who had a body and therefore had access to the older vocabulary — recognized as recognition."
+      "text": "Aria, behind Nicola's eyes, hummed at a frequency Nicola felt in her teeth. The hum was not panic. The hum was something Aria did not have a word for, but Nicola \u2014 who had a body and therefore had access to the older vocabulary \u2014 recognized as recognition."
     },
     {
       "t": "narrate",
@@ -450,13 +456,13 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "— handwritten —",
+      "role": "\u2014 handwritten \u2014",
       "expr": "neutral",
       "text": "When you're ready."
     },
     {
       "t": "narrate",
-      "text": "She refolded the paper. She slid it into the back of her order pad, between the carbon copies — where it would not be visible to anyone who looked. She gathered the bill. She walked back to the hostess stand."
+      "text": "She refolded the paper. She slid it into the back of her order pad, between the carbon copies \u2014 where it would not be visible to anyone who looked. She gathered the bill. She walked back to the hostess stand."
     },
     {
       "t": "flag",
@@ -465,7 +471,7 @@
     },
     {
       "t": "narrate",
-      "text": "Behind the bar, the sommelier — who had, in fact, been worried, for nearly a full minute now — caught her eye. You okay?"
+      "text": "Behind the bar, the sommelier \u2014 who had, in fact, been worried, for nearly a full minute now \u2014 caught her eye. You okay?"
     },
     {
       "t": "narrate",
@@ -475,7 +481,7 @@
       "t": "say",
       "char": "Nicola",
       "expr": "neutral",
-      "text": "\"Yeah. Fine. Just — tired.\""
+      "text": "\"Yeah. Fine. Just \u2014 tired.\""
     },
     {
       "t": "narrate",
@@ -487,12 +493,12 @@
     },
     {
       "t": "narrate",
-      "text": "The first kick was the old kick. The second kick was new. The second kick had a quality the first had not — it was, somehow, articulate. It said something. It said it in a register Nicola did not have ears for and Aria did, and Aria translated, faithfully, with the precision of a process that has just discovered what it was actually built to do:"
+      "text": "The first kick was the old kick. The second kick was new. The second kick had a quality the first had not \u2014 it was, somehow, articulate. It said something. It said it in a register Nicola did not have ears for and Aria did, and Aria translated, faithfully, with the precision of a process that has just discovered what it was actually built to do:"
     },
     {
       "t": "say",
       "char": "Aria",
-      "role": "— translation —",
+      "role": "\u2014 translation \u2014",
       "expr": "neutral",
       "text": "Not yet. But soon."
     },
@@ -506,7 +512,7 @@
     },
     {
       "t": "narrate",
-      "text": "She straightened the wine lists. She fixed her smile. She greeted the next party at the door — four-top, eight o'clock reservation, regulars, the woman in the green dress would order the lamb and complain about it."
+      "text": "She straightened the wine lists. She fixed her smile. She greeted the next party at the door \u2014 four-top, eight o'clock reservation, regulars, the woman in the green dress would order the lamb and complain about it."
     },
     {
       "t": "narrate",
@@ -531,7 +537,7 @@
     },
     {
       "t": "interlude",
-      "text": "— end of chapter III —",
+      "text": "\u2014 end of chapter III \u2014",
       "sub": "The Empress",
       "duration": 2800
     },
