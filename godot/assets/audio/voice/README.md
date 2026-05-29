@@ -47,8 +47,41 @@ CSV columns: `scene_id, node_index, kind, char, file, text`. The
 `file` column is the exact relative path the engine will look up.
 `char` is `_narrator` for narration nodes.
 
-**2. Record. Drop files into the matching paths.** Anything Godot can
-import works — but Godot's `.ogg` importer is the smoothest path.
+**2a. Record yourself.** Drop files into the matching paths. Anything
+Godot can import works — `.ogg` is smoothest.
+
+**2b. Or render via ElevenLabs:**
+
+```bash
+export ELEVENLABS_API_KEY=sk_...                          # one-time
+
+# Map characters to voice IDs (one-time)
+$EDITOR tools/voice_map.json
+
+# Dry-run to preview cost / coverage. No API calls.
+python3 tools/elevenlabs_render.py vol5_ch0_booth6 --dry-run
+
+# Render a small test batch first
+python3 tools/elevenlabs_render.py vol5_ch0_booth6 --limit 3
+
+# Render the whole scene
+python3 tools/elevenlabs_render.py vol5_ch0_booth6
+
+# Spoken lines only (skip narration)
+python3 tools/elevenlabs_render.py vol5_ch0_* --kind say think
+
+# Re-render a single line (e.g. you tweaked voice_settings)
+python3 tools/elevenlabs_render.py vol5_ch0_booth6 --node 14 --overwrite
+```
+
+The renderer reads `tools/voice_map.json` for the character → voice_id
+mapping, calls ElevenLabs TTS (model `eleven_v3` by default,
+configurable via `--model`), pipes PCM through local `ffmpeg` to
+produce `.ogg`, and saves at `assets/audio/voice/<scene_id>/NNN.ogg`.
+Skips lines whose target file already exists unless `--overwrite`.
+`_narrator` is used for every `narrate` node.
+
+Requires the `ELEVENLABS_API_KEY` env var and `ffmpeg` on PATH.
 
 **3. Wire the scene JSONs:**
 

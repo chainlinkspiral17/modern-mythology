@@ -1,0 +1,37 @@
+{
+  "model": "eleven_v3",
+  "default_voice_settings": {
+    "stability": 0.45,
+    "similarity_boost": 0.75,
+    "style": 0.30,
+    "use_speaker_boost": true
+  },
+  "_comment": "Fill in voice_id values from https://elevenlabs.io/app/voice-library. Per-character voice_settings override the defaults above; omit them to use defaults. _narrator is used for any 'narrate' line.",
+  "characters": {
+    "_narrator": {
+      "voice_id": "",
+      "voice_settings": {
+        "stability": 0.55,
+        "style": 0.20
+      }
+    },
+    "john": {
+      "voice_id": ""
+    },
+    "frasier": {
+      "voice_id": "",
+      "voice_settings": {
+        "style": 0.45
+      }
+    },
+    "stranger": {
+      "voice_id": ""
+    },
+    "elicia": {
+      "voice_id": ""
+    },
+    "nicola": {
+      "voice_id": ""
+    }
+  }
+}
