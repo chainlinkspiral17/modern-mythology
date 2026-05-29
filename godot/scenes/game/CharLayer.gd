@@ -77,6 +77,7 @@ const CHAR_ACCENTS := {
 	"the_demon": Color("#7cffb0"),
 	"elicia":    Color("#b89ad6"),
 	"nicola":    Color("#e8a860"),
+	"mackenzie": Color("#9bd0ff"),
 }
 const ACCENT_DEFAULT := Color("#d6c8a8")
 

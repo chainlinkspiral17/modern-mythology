@@ -90,6 +90,15 @@
       "unlock_pattern": "vol5_ch3_empress"
     },
     {
+      "id": "portrait_mackenzie",
+      "title": "Mackenzie — SMS",
+      "set": "Chapter II — The High Priestess",
+      "type": "composition",
+      "path": "portrait_mackenzie",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch2_*"
+    },
+    {
       "id": "music_player",
       "title": "MUSIC PLAYER  (live visualizer)",
       "set": "Player Surfaces",

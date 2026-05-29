@@ -188,11 +188,21 @@
       "text": "A text from Mackenzie Roberts. Three words."
     },
     {
+      "t": "show",
+      "char": "Mackenzie",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
       "t": "say",
       "char": "Mackenzie",
       "role": "\u2014 text \u00b7 7:42pm \u2014",
       "expr": "neutral",
       "text": "Are you okay."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
     },
     {
       "t": "narrate",
