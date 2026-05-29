@@ -75,6 +75,7 @@ const CHAR_ACCENTS := {
 	"frasier":   Color("#ffa860"),
 	"stranger":  Color("#c64878"),
 	"the_demon": Color("#7cffb0"),
+	"elicia":    Color("#b89ad6"),
 }
 const ACCENT_DEFAULT := Color("#d6c8a8")
 

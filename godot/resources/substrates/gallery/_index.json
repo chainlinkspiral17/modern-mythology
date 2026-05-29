@@ -72,6 +72,15 @@
       "unlock_pattern": "vol5_ch1_magician"
     },
     {
+      "id": "portrait_elicia",
+      "title": "Portrait — Elicia Duchane",
+      "set": "Chapter II — The High Priestess",
+      "type": "composition",
+      "path": "portrait_elicia",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch2_*"
+    },
+    {
       "id": "music_player",
       "title": "MUSIC PLAYER  (live visualizer)",
       "set": "Player Surfaces",
