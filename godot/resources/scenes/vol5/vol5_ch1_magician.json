@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": "I",
   "type": "chapter",
-  "title": "Chapter I — The Magician",
+  "title": "The Magician",
   "nodes": [
     {
       "t": "bg",
@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Chapter I — The Magician",
+      "text": "I — The Magician",
       "sub": "Cathedral of Rust and Code",
       "duration": 3400
     },

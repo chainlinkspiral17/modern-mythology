@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": "II",
   "type": "chapter",
-  "title": "Chapter II — The High Priestess",
+  "title": "The High Priestess",
   "nodes": [
     {
       "t": "bg",
@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Chapter II — The High Priestess",
+      "text": "II — The High Priestess",
       "sub": "Exit Through the Gift Shop",
       "duration": 3400
     },
