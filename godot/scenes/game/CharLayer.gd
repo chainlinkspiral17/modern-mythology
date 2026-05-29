@@ -78,6 +78,8 @@ const CHAR_ACCENTS := {
 	"elicia":    Color("#b89ad6"),
 	"nicola":    Color("#e8a860"),
 	"mackenzie": Color("#9bd0ff"),
+	"dante":     Color("#c87838"),
+	"sammy":     Color("#a89a78"),
 }
 const ACCENT_DEFAULT := Color("#d6c8a8")
 

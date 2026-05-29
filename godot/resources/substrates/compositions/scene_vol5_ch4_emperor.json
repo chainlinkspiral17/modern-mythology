@@ -1,0 +1,66 @@
+{
+  "id": "scene_vol5_ch4_emperor",
+  "_note": "PLACEHOLDER bg — reuses dining_room art. The chapter is set primarily at the upper-deck helm/office, not the dining floor. Replace when helm/office reference is available.",
+  "canvas": [1920, 1080],
+  "bg": "#0c0808",
+  "windows": [
+    {
+      "kind": "visualizer",
+      "x": 0, "y": 800, "font_px": 14,
+      "bar_count": 80, "bar_height": 16, "bar_gap": 0,
+      "min_freq": 30, "max_freq": 1800,
+      "magnitude": 14.0, "smoothing": 0.42, "peak_decay": 0.95,
+      "peak_hold": false, "wave_smooth_passes": 4, "update_hz": 30,
+      "col_dim": "#0c0808",
+      "col_lo": "#2a1410",
+      "col_mid": "#6a3018",
+      "col_hi": "#a85020",
+      "col_peak": "#e88438",
+      "col_peak_tip": "#ffd090",
+      "alpha": 0.24
+    },
+    {
+      "kind": "image",
+      "path": "assets/backgrounds/vol5_dambrosio_dining_room.png",
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "alpha": 1.0, "z": 3
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/vol5_dambrosio_dining_room_ascii.png",
+        "assets/backgrounds/vol5_dambrosio_dining_room_ascii.png",
+        "assets/backgrounds/vol5_dambrosio_dining_room_ascii.png",
+        "assets/backgrounds/vol5_dambrosio_dining_room_ascii_glitch.png"
+      ],
+      "frame_duration": 0.7,
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "alpha": 0.18, "z": 5,
+      "modulate": "#d89060",
+      "audio_reactive": {
+        "freq_lo": 40, "freq_hi": 1600,
+        "base_alpha": 0.14, "max_alpha": 0.42, "min_alpha": 0.10,
+        "magnitude": 5.0, "smoothing": 0.26, "update_hz": 30
+      }
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/dust_motes_0.png",
+        "assets/backgrounds/dust_motes_1.png",
+        "assets/backgrounds/dust_motes_2.png",
+        "assets/backgrounds/dust_motes_3.png"
+      ],
+      "frame_duration": 1.6,
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "alpha": 0.85, "z": 7
+    },
+    {
+      "kind": "color",
+      "color": "#2a140a",
+      "alpha": 0.32,
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "z": 9
+    }
+  ]
+}

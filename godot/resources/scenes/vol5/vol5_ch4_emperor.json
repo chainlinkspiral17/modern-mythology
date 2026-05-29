@@ -1,12 +1,437 @@
 {
   "id": "vol5_ch4_emperor",
   "vol": 5,
-  "chapter": "IV",
+  "chapter": 4,
   "type": "chapter",
+  "title": "Chapter IV — The Emperor",
   "nodes": [
     {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_dambrosio_helm_office.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol5_riverboat_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Chapter IV — The Emperor",
+      "sub": "Thicker Than Water, Slower Than Time",
+      "duration": 3400
+    },
+    {
       "t": "narrate",
-      "text": "— The Emperor · Thicker Than Water, Slower Than Time — [ Not yet written. ]"
+      "text": "The riverboat sighed beneath Dante D'Ambrosio's feet."
+    },
+    {
+      "t": "narrate",
+      "text": "A low groan of stressed timbers and rusting metal. Or maybe that was just his own bones settling deeper into the Louisiana muck side of the border. Sixty years old. Christ. Sixty years of sweat and deals done in shadows thick as gumbo gravy, all to build this — this floating palace of fusion confusion. D'Ambrosio's. His name plastered on the side in gaudy, vaguely Italianate script that was, he was almost certain, peeling. He had not gone outside to look in eight months. The signage was a job for younger men."
+    },
+    {
+      "t": "narrate",
+      "text": "His kingdom. His goddamn cage."
+    },
+    {
+      "t": "narrate",
+      "text": "He stood near the helm — not that the boat went anywhere these days, not really, just the occasional catered chug downriver for tourists who would not know real scampi if it bit them — and surveyed the dining room from the upper deck, through the small leaded window his architect had insisted on, decades ago, calling it charming. Below, Friday night was unfolding on schedule. Tables filling. Laughter rising and falling in the predictable wave-patterns of a Friday that had not yet decided whether it wanted to be a memorable Friday or just another Friday. Nicola Greer at the hostess stand, moving with that infuriating, oblivious grace, probably unaware she was carrying the next damn complication right there under her apron."
+    },
+    {
+      "t": "narrate",
+      "text": "Dante had not yet decided, himself, whether he had noticed."
+    },
+    {
+      "t": "narrate",
+      "text": "The thing about owning a place was that you noticed everything. The thing about staying in business was that you chose, carefully and continuously, what to do with what you had noticed."
+    },
+    {
+      "t": "narrate",
+      "text": "He poured himself a bourbon, neat. No ice. Ice was for the weak. Ice diluted the truth of the thing."
+    },
+    {
+      "t": "narrate",
+      "text": "The amber liquid burned, a familiar fire that did little to warm the chill that had settled in his marrow years ago. He remembered deals made on docks slick with more than just river water. Handshakes that felt like signing away pieces of his soul, one calloused palm at a time. Necessary sacrifices, he had called them then. Building the dream."
+    },
+    {
+      "t": "narrate",
+      "text": "Now, sitting in the heart of that dream, the dream felt suspiciously like the other place. The polite term, in the papers, was his shady past. The papers used the polite term every time the sinkhole rumors started bubbling up again, which was every eighteen months or so, regular as rent. Dante had stopped reading the papers in 2009. He still received them. He used them, mostly, to wrap fish."
+    },
+    {
+      "t": "narrate",
+      "text": "He took another swallow."
+    },
+    {
+      "t": "narrate",
+      "text": "Let 'em bubble."
+    },
+    {
+      "t": "narrate",
+      "text": "The air hung thick in the helm — a miasma of yesterday's garlic, tomorrow's dread, and the ever-present humidity creeping in from the sluggish river outside, finding its way through every gap in the seals that the carpenters had assured him, in 1987, would be permanent. Permanence was a word for younger men. He ran a hand over the polished brass railing he had installed himself, in the second year, after the original brass had developed a kind of melancholy patina that the patrons had read as authentic and that he had read as laziness. The new brass was bright. The new brass was wrong, in some way he could not articulate. He maintained the new brass anyway, on the principle that a man who maintains the wrong thing maintains something, which is more than can be said for a man who maintains nothing."
+    },
+    {
+      "t": "narrate",
+      "text": "His palm came away with a faint smear. Legacy, that's what they called it. Felt more like rust settling deep in his lungs."
+    },
+    {
+      "t": "narrate",
+      "text": "His carefully constructed empire, built brick by bloody brick — and there had been, in the early days, more bloody bricks than the official history would acknowledge — felt precarious tonight. Listing to one side, maybe. He could feel the damp rot setting in. Not just in the woodwork. Somewhere deeper, in the foundations he had laid down back when he still thought sheer will could conquer anything."
+    },
+    {
+      "t": "narrate",
+      "text": "The boat, at its mooring, was not, strictly, listing. He had checked the levels last month himself, with the spirit level his father had given him for his confirmation. The boat was plumb. The listing was happening somewhere else."
+    },
+    {
+      "t": "narrate",
+      "text": "His sons. Dio mio."
+    },
+    {
+      "t": "narrate",
+      "text": "Alberto, the older one. The steady one. Mr. Logic and Order. Out in Houston now, probably crunching numbers in some glass tower at this very hour, building his own sterile version of this place, thinking he was improving on the original. Thinking he knew better. Dante snorted, the sound rough."
+    },
+    {
+      "t": "narrate",
+      "text": "Alberto was his father's grandson, alright — meticulous, ambitious, and probably just as capable of gutting you with a polite smile. Dante respected the boy, maybe. Did not much like him. Too much like looking in a mirror that did not have the decency to crack at least once across the corner. Alberto had visited in May. They had had dinner at the boat. Alberto had ordered the duck and sent it back. The duck had been correct. Dante had watched, from this same window, as the duck went back to the kitchen, and he had watched as it returned, no different in any way that mattered, and Alberto had eaten it, and they had not discussed it, and that, Dante knew, had been the entire content of the visit."
+    },
+    {
+      "t": "narrate",
+      "text": "Then there was Antonio. The restless one. The artista. All fire and inspiration and zero common sense. Off in New Orleans now, chasing some fool dream with that punk Jimmy Daigle tagging along. Antonio was the ghost of Dante's own reckless youth, a reminder of passions Dante had buried under layers of responsibility and calculated cruelty. The kid unnerved him. That untamed energy. Dangerous."
+    },
+    {
+      "t": "narrate",
+      "text": "You couldn't build anything lasting on fire alone. Fire just burned itself out. Left ashes."
+    },
+    {
+      "t": "narrate",
+      "text": "Like Dante felt most days. Ashes in his mouth."
+    },
+    {
+      "t": "narrate",
+      "text": "He had not had dinner with Antonio in three years. They spoke on the phone every six weeks, dutifully, on the first Sunday of an even-numbered month. Antonio always called. Dante always answered. Neither had ever said anything important. Both knew this. Both, in some deep, never-acknowledged way, preferred it."
+    },
+    {
+      "t": "narrate",
+      "text": "Down on the dining room floor, Nicola finished walking some out-of-town suit to Table 14 and returned to the hostess stand. Dante watched her movements — too fluid, too unaware of the weight she carried. She drifted, between greetings, with the loose-limbed grace of a girl who had not yet decided she lived in her own body."
+    },
+    {
+      "t": "narrate",
+      "text": "Kids these days. No structure. No goddamn respect for the foundations."
+    },
+    {
+      "t": "narrate",
+      "text": "He watched her go through the choreography of the floor — seat, smile, retreat, replenish. A flicker of something passed through him. Not desire, not anymore, not for years. A cold assessment. Another complication waiting to happen. Another loose cannon on his slowly sinking deck."
+    },
+    {
+      "t": "narrate",
+      "text": "He had, last week, watched her pause on her break in the back hallway, leaning against the wall by the kitchen door, her hand pressed flat against her stomach in a gesture that was, to anyone who had ever tended a pregnant woman or owned a bar, unmistakable. He had pretended he had not seen. He had walked past her on his way to the office. She had not looked up. He had not slowed. The kindness, in his world, was the not-mentioning."
+    },
+    {
+      "t": "narrate",
+      "text": "He suspected he would have to mention it eventually."
+    },
+    {
+      "t": "narrate",
+      "text": "He suspected he would do so badly."
+    },
+    {
+      "t": "narrate",
+      "text": "He suspected she would forgive him for it, because she had nowhere else to go, and that — the suspicion — was the bourbon talking, and was also, he suspected, the truth."
+    },
+    {
+      "t": "narrate",
+      "text": "A movement at Table 14 caught his eye."
+    },
+    {
+      "t": "narrate",
+      "text": "The out-of-town suit — the man Nicola had just seated, alone, no order yet — was leaving. Standing up. Smoothing his lapels with the small unconscious gesture of a man who had once cared, deeply, about his appearance, and who had since transitioned into the harder discipline of caring whether other people noticed his appearance. He was forgettable. He was forgettable in the practiced way Dante had encountered, perhaps a dozen times in his life, at meetings he had not fully understood the agenda of. Each of those meetings had cost him something later. Each cost had been priced precisely at what Dante could afford to lose without quite lighting the empire on fire."
+    },
+    {
+      "t": "narrate",
+      "text": "The man left a folded note on the table. He left a hundred-dollar bill weighted on top of it."
+    },
+    {
+      "t": "narrate",
+      "text": "He did not go through the front door. He nodded to the maître d' and exited through the side entrance, the one nearest the river, the one used mostly by smokers and by the kitchen staff bringing in deliveries. He moved with the unhurried economy of a man who knew his way around the boat better than he had any reason to."
+    },
+    {
+      "t": "narrate",
+      "text": "Dante stood at the leaded window, bourbon in hand, and watched the man cross the gangway toward the parking lot."
+    },
+    {
+      "t": "narrate",
+      "text": "He felt a thing he had not felt in some time."
+    },
+    {
+      "t": "narrate",
+      "text": "The thing was not exactly fear. It was the older, more useful cousin of fear: attention."
+    },
+    {
+      "t": "narrate",
+      "text": "He set the bourbon down. He moved to the small intercom that connected the helm to the bar. He depressed the button."
+    },
+    {
+      "t": "show",
+      "char": "Dante",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Dante",
+      "expr": "neutral",
+      "text": "Sammy."
+    },
+    {
+      "t": "narrate",
+      "text": "A pause. A crackle."
+    },
+    {
+      "t": "show",
+      "char": "Sammy",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Sammy",
+      "expr": "neutral",
+      "text": "Yeah, Mr. D."
+    },
+    {
+      "t": "say",
+      "char": "Dante",
+      "expr": "neutral",
+      "text": "The gentleman who just left from Table 14. Did he leave a card with you earlier."
+    },
+    {
+      "t": "say",
+      "char": "Sammy",
+      "expr": "neutral",
+      "text": "Yes sir."
+    },
+    {
+      "t": "say",
+      "char": "Dante",
+      "expr": "neutral",
+      "text": "You still got it."
+    },
+    {
+      "t": "say",
+      "char": "Sammy",
+      "expr": "neutral",
+      "text": "Yes sir."
+    },
+    {
+      "t": "say",
+      "char": "Dante",
+      "expr": "neutral",
+      "text": "Bring it up."
+    },
+    {
+      "t": "narrate",
+      "text": "He released the button. He returned to the window. The man was, by now, crossing the parking lot toward a dark sedan he had parked carefully in the shadow of the dumpster, beyond the reach of the security camera that Dante had installed in 2003 and that the man, somehow, had known to avoid."
+    },
+    {
+      "t": "narrate",
+      "text": "The sedan started. The sedan reversed. The sedan exited the parking lot at a sedate, legal speed, turned right onto River Road, and was gone."
+    },
+    {
+      "t": "narrate",
+      "text": "Dante watched the place where the sedan had been for a full thirty seconds before he turned away from the window."
+    },
+    {
+      "t": "narrate",
+      "text": "There was a knock. Sammy at the office door, three short raps."
+    },
+    {
+      "t": "say",
+      "char": "Dante",
+      "expr": "neutral",
+      "text": "Come."
+    },
+    {
+      "t": "narrate",
+      "text": "Sammy came. Sammy was sixty-one and had been pouring at D'Ambrosio's since the boat had opened, and had the kind of long-suffering Catholic loyalty that Dante had, over the decades, both relied on and quietly mocked. Sammy held out a small white card."
+    },
+    {
+      "t": "narrate",
+      "text": "Dante took it."
+    },
+    {
+      "t": "narrate",
+      "text": "Plain stock. Nothing embossed. Just a name and a phone number, both printed in a font that could have been Times New Roman or could have been something more careful, and a single line of italic text below."
+    },
+    {
+      "t": "narrate",
+      "text": "Mr. D. Dean. Consulting."
+    },
+    {
+      "t": "narrate",
+      "text": "Dispute resolution & legacy planning."
+    },
+    {
+      "t": "narrate",
+      "text": "Dante stared at the card."
+    },
+    {
+      "t": "narrate",
+      "text": "He read the name three times. He read the line below it twice. He turned the card over. The back was blank."
+    },
+    {
+      "t": "narrate",
+      "text": "He had not, in sixty years of dealing with consulting men in plain suits with forgettable faces, ever seen a card quite like this one. It was not the design that disturbed him. It was the way the design assumed he would understand it."
+    },
+    {
+      "t": "say",
+      "char": "Dante",
+      "expr": "neutral",
+      "text": "He say anything else, Sammy?"
+    },
+    {
+      "t": "say",
+      "char": "Sammy",
+      "expr": "neutral",
+      "text": "Said he'd be back. Said he wasn't in a hurry."
+    },
+    {
+      "t": "say",
+      "char": "Dante",
+      "expr": "neutral",
+      "text": "He pay for nothin'?"
+    },
+    {
+      "t": "say",
+      "char": "Sammy",
+      "expr": "neutral",
+      "text": "Tipped a hundred."
+    },
+    {
+      "t": "say",
+      "char": "Dante",
+      "expr": "neutral",
+      "text": "For nothing."
+    },
+    {
+      "t": "say",
+      "char": "Sammy",
+      "expr": "neutral",
+      "text": "For nothing, Mr. D."
+    },
+    {
+      "t": "narrate",
+      "text": "Dante nodded, slowly. He set the card on the desk, square to the corner, the way he set things he meant to come back to."
+    },
+    {
+      "t": "say",
+      "char": "Dante",
+      "expr": "neutral",
+      "text": "Thanks, Sammy. Get back down."
+    },
+    {
+      "t": "narrate",
+      "text": "Sammy went back down. The office door clicked shut behind him."
+    },
+    {
+      "t": "narrate",
+      "text": "Dante stood at the desk for a long moment, looking at the card."
+    },
+    {
+      "t": "narrate",
+      "text": "He had built D'Ambrosio's, brick by bloody brick, against the kind of competition that had at one point included a man named Caruso, a man named Galt, and an entity that had operated under three different LLCs out of a warehouse in Plaquemines and that had, in the spring of 1991, ceased to exist in a manner Dante had not personally arranged but had not, at the time, mourned. He had outlasted all of them. He had outlasted the patrons who had grown up in his booths and brought their grown children to his booths and would, soon, be brought by their grown children's children. He had outlasted the whole goddamn river, in some sense — the river had reshaped its bank twice in his tenure, and he was still here."
+    },
+    {
+      "t": "narrate",
+      "text": "But he had not outlasted time. Nobody outlasted time. Time was the only competitor against whom even Dante D'Ambrosio's particular brand of patience and brutality had no leverage."
+    },
+    {
+      "t": "narrate",
+      "text": "The card on the desk was, he understood with a clarity that did not require articulation, time's calling card."
+    },
+    {
+      "t": "narrate",
+      "text": "It was not personal. It was not even hostile. It was simply here, in the way a tide was here when it came in, and a man could either move his chair up the beach in good time or get his shoes wet."
+    },
+    {
+      "t": "narrate",
+      "text": "His shoes were already wet. He could feel it, through the leather. He could feel it in his marrow."
+    },
+    {
+      "t": "narrate",
+      "text": "He poured another bourbon. He drank it standing. He looked at the card, and he looked at the photograph of his wife on the wall opposite the desk — the photograph he had not replaced in twenty-three years, even though there were better photographs, because he had decided, in the year after she died, that the photograph he chose to keep up was the one he had been looking at when she was alive, and he was not in the business of revising the historical record."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, briefly, of Alberto."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, briefly, of Antonio."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought of Nicola Greer down on the floor, smiling the smile that did not reach her eyes, the slight tremor in her hand that nobody else in the dining room had registered yet. He thought of the man who had not ordered. He thought of the card on his desk."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, I have outlived more men than I have killed, but only by a small margin, and only because some of them killed themselves."
+    },
+    {
+      "t": "narrate",
+      "text": "The thought was not regret. The thought was inventory."
+    },
+    {
+      "t": "narrate",
+      "text": "He picked up the card. He held it for a moment over the small brass ashtray on the corner of the desk — the ashtray his father had given him, the one with the bent edge he had never had repaired because the bent edge was the part his father had bent. He held the card there, with the lighter from the desk drawer in his other hand, and he considered it."
+    },
+    {
+      "t": "narrate",
+      "text": "Then he set the card back down. Square to the corner. Where it would be when he came back to it."
+    },
+    {
+      "t": "narrate",
+      "text": "A man who burned his evidence was a man who was afraid. A man who kept his evidence on the corner of his desk, square, was a man who had decided to know."
+    },
+    {
+      "t": "narrate",
+      "text": "Dante D'Ambrosio had not, in sixty years, ever decided not to know."
+    },
+    {
+      "t": "narrate",
+      "text": "He drained the bourbon. He set the glass down beside the card. He stood up, smoothed his shirt — the white shirt with the red wine stain near the third button that he had not had the decency to change before service, because the stain was a small private joke he was having with himself about the futility of decency — and he walked out of the office, down the narrow stairs, into the heart of the boat that was both his kingdom and his cage."
+    },
+    {
+      "t": "narrate",
+      "text": "The dining room received him the way a congregation receives a priest who has aged into a kind of permanent fixture: with the small reverent inattention of people who have stopped, decades ago, being surprised that he was still there."
+    },
+    {
+      "t": "narrate",
+      "text": "He moved among the tables. He shook a hand. He bent to murmur something into Mrs. Karras's ear that made her laugh, which had been the goal. He clapped Sammy on the shoulder, with affection that was not, for once, performative. He nodded to Nicola at the hostess stand. Nicola, who had not until that nod been entirely sure he was going to acknowledge her this evening, returned the nod with a fractional widening of the smile that, on someone else, might have been gratitude."
+    },
+    {
+      "t": "narrate",
+      "text": "Dante D'Ambrosio, the Emperor on his crumbling throne, made the rounds of his dying empire, and the empire received him, and the river, outside, continued its slow indifferent program."
+    },
+    {
+      "t": "narrate",
+      "text": "The card on the desk upstairs sat square to the corner. Waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "The bourbon, in his veins, did its slow work."
+    },
+    {
+      "t": "narrate",
+      "text": "Sixty years. Sixty goddamn years."
+    },
+    {
+      "t": "narrate",
+      "text": "He poured another, at the bar. Sammy pretended not to notice."
+    },
+    {
+      "t": "narrate",
+      "text": "The boat groaned. The river, outside, flowed slow and dark, carrying its secrets toward the inevitable sea."
+    },
+    {
+      "t": "narrate",
+      "text": "The Emperor, at the helm of nothing, drank."
     },
     {
       "t": "end"
