@@ -71,19 +71,28 @@ const INACTIVE_ALPHA := 0.32
 # speaker glow boost. Fall back to neutral when a character isn't
 # registered yet.
 const CHAR_ACCENTS := {
-	"john":     Color("#9bc3ff"),
-	"frasier":  Color("#ffa860"),
-	"stranger": Color("#c64878"),
-	"elicia":   Color("#b89ad6"),
-	"nicola":   Color("#e8a860"),
+	"john":      Color("#9bc3ff"),
+	"frasier":   Color("#ffa860"),
+	"stranger":  Color("#c64878"),
+	"elicia":    Color("#b89ad6"),
+	"nicola":    Color("#e8a860"),
+	"the_demon": Color("#7cffb0"),
 }
 const ACCENT_DEFAULT := Color("#d6c8a8")
+
+
+# Slugify a scene-supplied char name into the canonical key used for
+# portrait composition lookups + CHAR_ACCENTS. "The Demon" → "the_demon",
+# "oil exec" → "oil_exec". Spaces collapse to underscores so scenes can
+# author display names with spaces without breaking file lookups.
+func char_key(char_name: String) -> String:
+	return char_name.strip_edges().to_lower().replace(" ", "_")
 
 
 # Public lookup so DialogueBox / GameEngine / etc. can color speaker
 # names and other chrome consistently with portrait accents.
 func accent_for(char_name: String) -> Color:
-	return CHAR_ACCENTS.get(char_name.to_lower(), ACCENT_DEFAULT)
+	return CHAR_ACCENTS.get(char_key(char_name), ACCENT_DEFAULT)
 
 # slot -> {name, expr, node: Control}
 var _slots: Dictionary = {"left": null, "center": null, "right": null}
@@ -117,22 +126,26 @@ func _process(delta: float) -> void:
 func show_character(char_name: String, expr: String, pos: String) -> void:
 	if not POSITIONS.has(pos):
 		pos = "center"
+	# Store the slug, not the raw display name, so identity checks work
+	# regardless of casing/spacing in scene JSON ("The Demon" vs "the demon").
+	var key := char_key(char_name)
 	var slot = _slots[pos]
-	if slot != null and slot["name"] != char_name:
+	if slot != null and slot["name"] != key:
 		_fade_out_free(slot["node"])
 		slot = null
 	if slot == null:
 		var node := _make_portrait(char_name, expr, pos)
-		_slots[pos] = {"name": char_name, "expr": expr, "node": node}
+		_slots[pos] = {"name": key, "expr": expr, "node": node}
 	else:
 		_update_expr(slot["node"], char_name, expr)
 		slot["expr"] = expr
 
 
 func update_expression(char_name: String, expr: String) -> void:
+	var key := char_key(char_name)
 	for pos: String in _slots:
 		var slot = _slots[pos]
-		if slot != null and slot["name"] == char_name:
+		if slot != null and slot["name"] == key:
 			_update_expr(slot["node"], char_name, expr)
 			slot["expr"] = expr
 
@@ -154,7 +167,7 @@ func activate_speaker(char_name: String) -> void:
 	# speaker, so all portraits recede to the inactive state. This
 	# lets the camera pull back during third-person narration instead
 	# of leaving the last speaker on the screen as "main".
-	var key := char_name.to_lower()
+	var key := char_key(char_name)
 	for pos: String in _slots:
 		var slot = _slots[pos]
 		if slot == null:
@@ -166,7 +179,7 @@ func activate_speaker(char_name: String) -> void:
 		var node: Control = slot["node"]
 		if node.has_meta("fading"):
 			continue
-		var is_active: bool   = (key != "" and str(slot["name"]).to_lower() == key)
+		var is_active: bool   = (key != "" and char_key(str(slot["name"])) == key)
 		# Active: full color, +5% scale, full alpha
 		# Inactive: deeper desat (cool gray), -8% scale, ~30% alpha — recedes
 		# noticeably so the active speaker reads as "the camera is on them"
@@ -186,9 +199,10 @@ func activate_speaker(char_name: String) -> void:
 
 
 func get_pos_for_char(char_name: String) -> String:
+	var key := char_key(char_name)
 	for pos: String in _slots:
 		var slot = _slots[pos]
-		if slot != null and slot["name"] == char_name:
+		if slot != null and slot["name"] == key:
 			return pos
 	return "center"
 
@@ -203,7 +217,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	wrapper.position             = POSITIONS[pos]
 	wrapper.modulate.a           = 0.0
 
-	var key       := char_name.to_lower()
+	var key       := char_key(char_name)
 	var comp_path := PORTRAIT_COMP_ROOT + "portrait_" + key + ".json"
 
 	# Scrim sits behind every portrait so the figure pops against busy
@@ -258,7 +272,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 
 func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 	var kind: String = wrapper.get_meta("kind", "placeholder")
-	var key  := char_name.to_lower()
+	var key  := char_key(char_name)
 	if kind == "composition":
 		_apply_texture_tint(wrapper, expr)
 	elif kind == "texture":

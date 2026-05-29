@@ -251,7 +251,7 @@ func _parse_stretch(v: Variant) -> int:
 	# "keep_centered" (no stretch, center within box).
 	match str(v):
 		"cover":         return TextureRect.STRETCH_KEEP_ASPECT_COVERED
-		"fit":           return TextureRect.STRETCH_KEEP_ASPECT
+		"fit":           return TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		"keep_centered": return TextureRect.STRETCH_KEEP_CENTERED
 		_:               return TextureRect.STRETCH_SCALE
 

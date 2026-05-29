@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modern Mythology — Voice Studio</title>
+<style>
+  :root {
+    --bg: #0d121c;
+    --panel: #161c2a;
+    --panel2: #1f2638;
+    --border: #2d3548;
+    --accent: #c8a268;
+    --accent-dim: #6d5c3e;
+    --text: #d8d4c8;
+    --text-dim: #7c8398;
+    --good: #7cffb0;
+    --warn: #ffb060;
+    --bad: #ff6464;
+  }
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 100vh;
+  }
+  header {
+    background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 12px 20px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  }
+  header h1 {
+    margin: 0; font: 600 16px/1.2 ui-serif, Georgia, serif; color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  header .sub { font-size: 12px; color: var(--text-dim); }
+  main {
+    display: grid; grid-template-columns: 320px 1fr; gap: 0;
+    height: calc(100vh - 56px);
+  }
+  .sidebar {
+    background: var(--panel); border-right: 1px solid var(--border);
+    padding: 16px; overflow-y: auto;
+  }
+  .content {
+    padding: 20px; overflow-y: auto;
+  }
+  .step {
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 14px; margin-bottom: 14px;
+  }
+  .step h2 {
+    margin: 0 0 8px 0; font: 600 13px/1.2 ui-sans-serif;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .step p { margin: 4px 0; font-size: 13px; color: var(--text-dim); }
+  label { display: block; font-size: 12px; color: var(--text-dim); margin-top: 8px; }
+  input[type=text], input[type=password], select, textarea {
+    width: 100%; box-sizing: border-box; background: var(--bg); border: 1px solid var(--border);
+    color: var(--text); padding: 6px 8px; border-radius: 4px; font: 13px ui-monospace, monospace;
+  }
+  input[type=file] { color: var(--text-dim); font-size: 12px; }
+  button {
+    background: var(--accent-dim); color: var(--bg); border: none;
+    padding: 6px 14px; border-radius: 4px; cursor: pointer; font: 600 12px ui-sans-serif;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    transition: background 0.12s;
+  }
+  button:hover { background: var(--accent); }
+  button:disabled { background: #333; color: #666; cursor: not-allowed; }
+  button.primary { background: var(--accent); }
+  button.danger  { background: #6e2a2a; color: var(--text); }
+  button.small   { padding: 3px 8px; font-size: 11px; }
+  .scene-info {
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .scene-info .pill {
+    background: var(--panel); border: 1px solid var(--border);
+    padding: 3px 10px; border-radius: 12px; font-size: 12px; color: var(--text-dim);
+  }
+  table.lines { width: 100%; border-collapse: collapse; }
+  table.lines th {
+    text-align: left; font-size: 11px; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 8px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: var(--bg); z-index: 1;
+  }
+  table.lines td {
+    padding: 10px 8px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.lines tr.has-audio { background: rgba(124, 255, 176, 0.04); }
+  table.lines .idx { color: var(--text-dim); font-family: ui-monospace, monospace; font-size: 12px; }
+  table.lines .kind {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-dim);
+  }
+  table.lines .char {
+    font-weight: 600; color: var(--accent); font-size: 13px;
+  }
+  table.lines .text {
+    font: 13px/1.45 ui-serif, Georgia, serif;
+    color: var(--text);
+    max-width: 520px;
+  }
+  table.lines .actions { white-space: nowrap; }
+  table.lines audio { height: 28px; }
+  .status { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .status.good { color: var(--good); }
+  .status.warn { color: var(--warn); }
+  .status.bad  { color: var(--bad); }
+  .voice-map-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
+  .voice-map-grid label { margin: 0; }
+  details { margin-top: 8px; }
+  summary { cursor: pointer; color: var(--accent); font-size: 12px; }
+  details pre {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 4px;
+    padding: 10px; font: 11px/1.4 ui-monospace, monospace; overflow-x: auto;
+    color: var(--text-dim);
+  }
+  .floating-bar {
+    position: sticky; bottom: 0; background: var(--panel);
+    border-top: 1px solid var(--border); padding: 10px 20px;
+    display: flex; gap: 12px; align-items: center;
+    margin: 20px -20px -20px -20px;
+  }
+  .floating-bar .summary { font-size: 12px; color: var(--text-dim); margin-left: auto; }
+  .help-banner {
+    background: rgba(200, 162, 104, 0.08);
+    border: 1px solid var(--accent-dim);
+    border-radius: 6px; padding: 12px 14px; margin-bottom: 14px;
+    font-size: 13px; color: var(--text);
+  }
+  .help-banner b { color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Modern Mythology — Voice Studio</h1>
+  <span class="sub">drop scene JSON · record or render · export drop-in zip</span>
+</header>
+
+<main>
+  <aside class="sidebar">
+    <div class="step">
+      <h2>1 · Load scene</h2>
+      <p>Drop the JSON file from <code>godot/resources/scenes/</code>.</p>
+      <input type="file" id="sceneFile" accept=".json">
+      <p id="sceneStatus" class="status">No scene loaded.</p>
+    </div>
+
+    <div class="step">
+      <h2>2 · Pick a method</h2>
+      <label><input type="radio" name="mode" value="record" checked> Record yourself (mic)</label>
+      <label><input type="radio" name="mode" value="upload"> Upload existing audio</label>
+      <label><input type="radio" name="mode" value="eleven"> ElevenLabs API</label>
+    </div>
+
+    <div class="step" id="elevenPanel" style="display:none;">
+      <h2>ElevenLabs</h2>
+      <label>API key
+        <input type="password" id="elevenKey" placeholder="sk_...">
+      </label>
+      <label>Model
+        <select id="elevenModel">
+          <option value="eleven_v3">eleven_v3 (expressive)</option>
+          <option value="eleven_multilingual_v2">eleven_multilingual_v2</option>
+          <option value="eleven_turbo_v2_5">eleven_turbo_v2_5 (fast/cheap)</option>
+        </select>
+      </label>
+      <label>Voice IDs (one per character)</label>
+      <div class="voice-map-grid" id="voiceMap"></div>
+      <details>
+        <summary>Where do I get voice IDs?</summary>
+        <pre>elevenlabs.io → Voice Library → pick a voice
+→ "Use this voice" → copy the ID
+(or your own cloned voices)</pre>
+      </details>
+    </div>
+
+    <div class="step">
+      <h2>3 · Export</h2>
+      <p>When you have audio for the lines you want, click <b>Export drop-in zip</b>. The zip contains <code>assets/audio/voice/&lt;scene&gt;/NNN.ogg</code> files + an updated scene JSON. Drop it into your <code>godot/</code> folder.</p>
+      <button id="exportBtn" class="primary" disabled>Export drop-in zip</button>
+      <p id="exportStatus" class="status"></p>
+    </div>
+  </aside>
+
+  <section class="content">
+    <div class="help-banner" id="helpBanner">
+      <b>How to use:</b>
+      Drop a scene JSON on the left (e.g. <code>vol5_ch0_booth6.json</code>). Each voiceable line gets a row below — pick a method on the left, then record / upload / generate per line. When you're done, hit <b>Export drop-in zip</b> on the left. Unzip it inside your <code>godot/</code> folder; the game picks the audio up on next run.
+    </div>
+
+    <div id="sceneInfo" class="scene-info" style="display:none;">
+      <span class="pill" id="sceneIdPill">—</span>
+      <span class="pill" id="sceneTitlePill">—</span>
+      <span class="pill" id="lineCountPill">0 lines</span>
+      <span style="margin-left:auto;" class="pill" id="recordedPill">0 recorded</span>
+    </div>
+
+    <table class="lines" id="linesTable" style="display:none;">
+      <thead>
+        <tr>
+          <th style="width:54px">#</th>
+          <th style="width:74px">Kind</th>
+          <th style="width:120px">Character</th>
+          <th>Line</th>
+          <th style="width:300px">Audio</th>
+        </tr>
+      </thead>
+      <tbody id="linesBody"></tbody>
+    </table>
+  </section>
+</main>
+
+<!-- JSZip for the drop-in export -->
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script>
+'use strict';
+
+const VOICE_KINDS = new Set(['narrate', 'say', 'think']);
+const DEFAULT_CHARS = ['_narrator', 'john', 'frasier', 'stranger', 'elicia', 'nicola', 'the_demon'];
+
+let scene = null;           // { id, title, nodes }
+let lines = [];             // [{ index, kind, char, charKey, text, audioBlob }]
+let voiceMap = {};          // char → voice_id
+
+const $ = (id) => document.getElementById(id);
+
+function charKey(name) {
+  return (name || '_narrator').trim().toLowerCase().replace(/\s+/g, '_');
+}
+
+// ── Scene load ────────────────────────────────────────────────────────────
+
+$('sceneFile').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const text = await file.text();
+    const json = JSON.parse(text);
+    if (!json.id || !Array.isArray(json.nodes)) {
+      throw new Error('not a scene JSON (missing id or nodes)');
+    }
+    scene = json;
+    lines = [];
+    json.nodes.forEach((node, i) => {
+      if (!VOICE_KINDS.has(node.t)) return;
+      const text = (node.text || '').trim();
+      if (!text) return;
+      const char = node.t === 'narrate' ? '_narrator' : (node.char || '_narrator');
+      lines.push({
+        index: i, kind: node.t, char, charKey: charKey(char), text,
+        audioBlob: null, audioUrl: null, status: '',
+      });
+    });
+    $('sceneStatus').textContent = `${file.name}: ${lines.length} voiceable line${lines.length===1?'':'s'}`;
+    $('sceneStatus').className = 'status good';
+    $('helpBanner').style.display = 'none';
+    renderScene();
+    buildVoiceMap();
+    $('exportBtn').disabled = false;
+  } catch (err) {
+    $('sceneStatus').textContent = 'Load failed: ' + err.message;
+    $('sceneStatus').className = 'status bad';
+  }
+});
+
+function renderScene() {
+  $('sceneInfo').style.display = 'flex';
+  $('sceneIdPill').textContent = scene.id;
+  $('sceneTitlePill').textContent = scene.title || '—';
+  $('lineCountPill').textContent = `${lines.length} lines`;
+  updateRecordedCount();
+
+  const tbody = $('linesBody');
+  tbody.innerHTML = '';
+  lines.forEach((line, listIdx) => {
+    const tr = document.createElement('tr');
+    tr.id = `row-${listIdx}`;
+
+    const idxTd = document.createElement('td');
+    idxTd.className = 'idx';
+    idxTd.textContent = String(line.index).padStart(3, '0');
+    tr.appendChild(idxTd);
+
+    const kindTd = document.createElement('td');
+    kindTd.className = 'kind';
+    kindTd.textContent = line.kind;
+    tr.appendChild(kindTd);
+
+    const charTd = document.createElement('td');
+    charTd.className = 'char';
+    charTd.textContent = line.char;
+    tr.appendChild(charTd);
+
+    const textTd = document.createElement('td');
+    textTd.className = 'text';
+    textTd.textContent = line.text;
+    tr.appendChild(textTd);
+
+    const audioTd = document.createElement('td');
+    audioTd.className = 'actions';
+    audioTd.id = `audio-cell-${listIdx}`;
+    audioTd.appendChild(buildActionWidget(listIdx));
+    tr.appendChild(audioTd);
+
+    tbody.appendChild(tr);
+  });
+  $('linesTable').style.display = 'table';
+}
+
+function buildActionWidget(listIdx) {
+  const wrap = document.createElement('div');
+  const mode = currentMode();
+  if (mode === 'record') wrap.appendChild(recordWidget(listIdx));
+  else if (mode === 'upload') wrap.appendChild(uploadWidget(listIdx));
+  else if (mode === 'eleven') wrap.appendChild(elevenWidget(listIdx));
+
+  const player = document.createElement('div');
+  player.id = `player-${listIdx}`;
+  player.style.marginTop = '6px';
+  wrap.appendChild(player);
+  refreshPlayer(listIdx);
+  return wrap;
+}
+
+function refreshPlayer(listIdx) {
+  const line = lines[listIdx];
+  const target = $(`player-${listIdx}`);
+  if (!target) return;
+  target.innerHTML = '';
+  const tr = $(`row-${listIdx}`);
+  if (line.audioBlob) {
+    if (!line.audioUrl) line.audioUrl = URL.createObjectURL(line.audioBlob);
+    const audio = document.createElement('audio');
+    audio.controls = true;
+    audio.src = line.audioUrl;
+    audio.style.width = '100%';
+    target.appendChild(audio);
+    const clear = document.createElement('button');
+    clear.className = 'small danger';
+    clear.textContent = 'Clear';
+    clear.style.marginTop = '4px';
+    clear.onclick = () => {
+      URL.revokeObjectURL(line.audioUrl);
+      line.audioBlob = null; line.audioUrl = null; line.status = '';
+      refreshPlayer(listIdx);
+      updateRecordedCount();
+    };
+    target.appendChild(clear);
+    if (tr) tr.classList.add('has-audio');
+  } else {
+    if (tr) tr.classList.remove('has-audio');
+  }
+  if (line.status) {
+    const s = document.createElement('div');
+    s.className = 'status ' + (line.statusClass || '');
+    s.textContent = line.status;
+    target.appendChild(s);
+  }
+}
+
+function updateRecordedCount() {
+  const done = lines.filter(l => l.audioBlob).length;
+  $('recordedPill').textContent = `${done} / ${lines.length} recorded`;
+  $('recordedPill').style.color = done === lines.length ? 'var(--good)' : 'var(--text-dim)';
+}
+
+// ── Mode switching ────────────────────────────────────────────────────────
+
+function currentMode() {
+  const r = document.querySelector('input[name=mode]:checked');
+  return r ? r.value : 'record';
+}
+
+document.querySelectorAll('input[name=mode]').forEach(r => {
+  r.addEventListener('change', () => {
+    $('elevenPanel').style.display = currentMode() === 'eleven' ? 'block' : 'none';
+    if (lines.length) renderScene();
+  });
+});
+
+// ── Record from mic ───────────────────────────────────────────────────────
+
+let activeRecorder = null;
+let activeChunks = null;
+
+function recordWidget(listIdx) {
+  const wrap = document.createElement('div');
+  const btn = document.createElement('button');
+  btn.textContent = '● Record';
+  btn.onclick = async () => {
+    if (activeRecorder) {
+      // already recording on another line: stop it first
+      activeRecorder.stop();
+    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const recorder = new MediaRecorder(stream);
+      const chunks = [];
+      recorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+      recorder.onstop = () => {
+        const blob = new Blob(chunks, { type: 'audio/webm' });
+        lines[listIdx].audioBlob = blob;
+        lines[listIdx].audioUrl = null;
+        lines[listIdx].status = `recorded (${(blob.size/1024).toFixed(1)} KB)`;
+        lines[listIdx].statusClass = 'good';
+        refreshPlayer(listIdx);
+        updateRecordedCount();
+        stream.getTracks().forEach(t => t.stop());
+        activeRecorder = null;
+      };
+      recorder.start();
+      activeRecorder = recorder;
+      activeChunks = chunks;
+      btn.textContent = '■ Stop';
+      btn.onclick = () => recorder.stop();
+    } catch (err) {
+      lines[listIdx].status = 'Mic error: ' + err.message;
+      lines[listIdx].statusClass = 'bad';
+      refreshPlayer(listIdx);
+    }
+  };
+  wrap.appendChild(btn);
+  return wrap;
+}
+
+// ── Upload existing audio ─────────────────────────────────────────────────
+
+function uploadWidget(listIdx) {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'audio/*';
+  input.onchange = (e) => {
+    const f = e.target.files[0];
+    if (!f) return;
+    lines[listIdx].audioBlob = f;
+    lines[listIdx].audioUrl = null;
+    lines[listIdx].status = `${f.name} (${(f.size/1024).toFixed(1)} KB)`;
+    lines[listIdx].statusClass = 'good';
+    refreshPlayer(listIdx);
+    updateRecordedCount();
+  };
+  return input;
+}
+
+// ── ElevenLabs ────────────────────────────────────────────────────────────
+
+function buildVoiceMap() {
+  const wrap = $('voiceMap');
+  wrap.innerHTML = '';
+  // Collect every character used in this scene + the defaults
+  const chars = new Set(DEFAULT_CHARS);
+  lines.forEach(l => chars.add(l.charKey));
+  Array.from(chars).sort().forEach(c => {
+    const lbl = document.createElement('label');
+    lbl.textContent = c;
+    const inp = document.createElement('input');
+    inp.type = 'text';
+    inp.placeholder = 'voice_id';
+    inp.value = voiceMap[c] || '';
+    inp.addEventListener('input', () => { voiceMap[c] = inp.value.trim(); saveVoiceMap(); });
+    wrap.appendChild(lbl);
+    wrap.appendChild(inp);
+  });
+  loadVoiceMap();
+}
+
+function saveVoiceMap() {
+  try { localStorage.setItem('mm_voice_map', JSON.stringify(voiceMap)); } catch (e) {}
+}
+function loadVoiceMap() {
+  try {
+    const v = localStorage.getItem('mm_voice_map');
+    if (v) voiceMap = Object.assign(voiceMap, JSON.parse(v));
+    document.querySelectorAll('#voiceMap input').forEach(inp => {
+      const c = inp.previousElementSibling.textContent;
+      if (voiceMap[c]) inp.value = voiceMap[c];
+    });
+  } catch (e) {}
+}
+
+function elevenWidget(listIdx) {
+  const wrap = document.createElement('div');
+  const btn = document.createElement('button');
+  btn.textContent = '⚡ Generate';
+  btn.onclick = async () => {
+    btn.disabled = true;
+    btn.textContent = '…';
+    try {
+      const blob = await renderEleven(lines[listIdx]);
+      lines[listIdx].audioBlob = blob;
+      lines[listIdx].audioUrl = null;
+      lines[listIdx].status = `generated (${(blob.size/1024).toFixed(1)} KB)`;
+      lines[listIdx].statusClass = 'good';
+    } catch (err) {
+      lines[listIdx].status = 'Failed: ' + err.message;
+      lines[listIdx].statusClass = 'bad';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '⚡ Generate';
+      refreshPlayer(listIdx);
+      updateRecordedCount();
+    }
+  };
+  wrap.appendChild(btn);
+
+  const batchBtn = document.createElement('button');
+  batchBtn.className = 'small';
+  batchBtn.style.marginLeft = '4px';
+  batchBtn.textContent = 'Generate from here →';
+  batchBtn.title = 'Generate this line and all subsequent un-recorded lines';
+  batchBtn.onclick = () => batchGenerate(listIdx);
+  wrap.appendChild(batchBtn);
+  return wrap;
+}
+
+async function renderEleven(line) {
+  const key = $('elevenKey').value.trim();
+  if (!key) throw new Error('API key missing');
+  const voiceId = (voiceMap[line.charKey] || voiceMap['_narrator'] || '').trim();
+  if (!voiceId) throw new Error(`no voice_id for "${line.charKey}"`);
+  const model = $('elevenModel').value;
+  const url = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`;
+  const resp = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'audio/mpeg',
+      'Content-Type': 'application/json',
+      'xi-api-key': key,
+    },
+    body: JSON.stringify({
+      text: line.text,
+      model_id: model,
+    }),
+  });
+  if (!resp.ok) {
+    let detail = '';
+    try { detail = (await resp.text()).slice(0, 200); } catch {}
+    throw new Error(`HTTP ${resp.status}  ${detail}`);
+  }
+  return await resp.blob();
+}
+
+async function batchGenerate(startListIdx) {
+  for (let i = startListIdx; i < lines.length; i++) {
+    if (lines[i].audioBlob) continue;
+    const row = $(`row-${i}`);
+    if (row) row.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    try {
+      lines[i].status = 'generating…'; lines[i].statusClass = 'warn';
+      refreshPlayer(i);
+      const blob = await renderEleven(lines[i]);
+      lines[i].audioBlob = blob;
+      lines[i].audioUrl = null;
+      lines[i].status = `generated (${(blob.size/1024).toFixed(1)} KB)`;
+      lines[i].statusClass = 'good';
+    } catch (err) {
+      lines[i].status = 'Failed: ' + err.message;
+      lines[i].statusClass = 'bad';
+    }
+    refreshPlayer(i);
+    updateRecordedCount();
+    await new Promise(r => setTimeout(r, 200));   // gentle pacing
+  }
+}
+
+// ── Export drop-in zip ────────────────────────────────────────────────────
+
+$('exportBtn').addEventListener('click', async () => {
+  if (!scene) return;
+  const zip = new JSZip();
+  const dir = `assets/audio/voice/${scene.id}/`;
+
+  // Embed audio files at indexed names. Extension follows the blob's mime type.
+  for (const line of lines) {
+    if (!line.audioBlob) continue;
+    const ext = extForBlob(line.audioBlob);
+    zip.file(`${dir}${String(line.index).padStart(3, '0')}.${ext}`, line.audioBlob);
+  }
+
+  // Patch the scene JSON in-place with "voice" keys for every line we
+  // have audio for. Preserve existing voice keys we didn't replace.
+  const patched = JSON.parse(JSON.stringify(scene));
+  for (const line of lines) {
+    if (!line.audioBlob) continue;
+    const ext = extForBlob(line.audioBlob);
+    patched.nodes[line.index].voice =
+      `assets/audio/voice/${scene.id}/${String(line.index).padStart(3, '0')}.${ext}`;
+  }
+  // Drop the scene JSON alongside the audio so you can copy it back.
+  const vol = patched.vol ? `vol${patched.vol}` : 'vol_unknown';
+  zip.file(`resources/scenes/${vol}/${scene.id}.json`, JSON.stringify(patched, null, 2));
+
+  zip.file('README.txt',
+    `Modern Mythology — voice drop-in for ${scene.id}\n\n` +
+    `Unzip into your "godot/" folder (the one containing project.godot).\n` +
+    `It will write:\n\n` +
+    `  godot/assets/audio/voice/${scene.id}/NNN.ogg|webm|mp3\n` +
+    `  godot/resources/scenes/${vol}/${scene.id}.json  (with "voice" keys patched in)\n\n` +
+    `Open the project in Godot once; it will reimport the new audio. Then F5.\n` +
+    `Generated ${new Date().toISOString()}\n`);
+
+  const blob = await zip.generateAsync({ type: 'blob' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `voice_dropin_${scene.id}.zip`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 60000);
+  $('exportStatus').textContent = `Wrote ${a.download}`;
+  $('exportStatus').className = 'status good';
+});
+
+function extForBlob(blob) {
+  const t = blob.type || '';
+  if (t.includes('mpeg') || t.includes('mp3')) return 'mp3';
+  if (t.includes('ogg')) return 'ogg';
+  if (t.includes('wav')) return 'wav';
+  if (t.includes('webm')) return 'webm';
+  return 'ogg';
+}
+
+// Restore voice map from localStorage on page load
+loadVoiceMap();
+</script>
+</body>
+</html>
