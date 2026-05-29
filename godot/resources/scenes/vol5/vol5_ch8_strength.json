@@ -2,14 +2,114 @@
   "id": "vol5_ch8_strength",
   "vol": 5,
   "chapter": "VIII",
-  "type": "chapter",
+  "type": "scene",
+  "title": "Strength",
   "nodes": [
-    {
-      "t": "narrate",
-      "text": "— Strength · The Ouroboros in the Ashtray — [ Not yet written. ]"
-    },
-    {
-      "t": "end"
-    }
+    {"t": "bg", "src": "assets/backgrounds/vol5_new_orleans_bar.jpg"},
+    {"t": "hide", "pos": "left"},
+    {"t": "hide", "pos": "center"},
+    {"t": "hide", "pos": "right"},
+    {"t": "interlude", "text": "VIII — Strength", "sub": "The Ouroboros in the Ashtray", "duration": 3},
+
+    {"t": "narrate", "text": "STRENGTH. The woman in white opens the lion's jaw — not with force but with grace. The lemniscate floats above her head. Infinite patience. The beast is not conquered. The beast is known. Reversed: self-doubt wearing the mask of calm. The chain you've placed on yourself that you've begun to call a choice."},
+
+    {"t": "narrate", "text": "§ Refrain 1: The Score"},
+    {"t": "narrate", "text": "The game flickered on the bar TV. Muted. Ghosts in pads chasing an electronic pigskin under the buzzing neon of three different beer signs, two of which had been advertising brands the bar no longer carried. Another meaningless third down. Douglas Forte watched. He nursed a flat domestic beer. The condensation traced clean paths through the grime on the glass, and Douglas, who had been raised by a mother who washed glasses for a living, registered the grime without making a thing of it. Some bars wanted the grime. The grime was part of the offer."},
+    {"t": "narrate", "text": "His corner booth smelled faintly of stale smoke and something else — something metallic and sad, maybe just him. He didn't flinch when the Saints inevitably failed to convert. He just watched. Stillness was a kind of armor. He had been wearing it for a long time, and like all armor it had been shaped, over the years, to fit only him."},
+
+    {"t": "narrate", "text": "§ Layer 1: The Hands"},
+    {"t": "narrate", "text": "His hands rested on the sticky tabletop."},
+    {"t": "narrate", "text": "Scarred knuckles mapped with the ghosts of busted fences and kitchen brawls from back when Dante's word was law and Douglas's word, to the people who needed it, was Dante's. Calloused cartography of a life spent holding things together. Or maybe just holding on."},
+    {"t": "narrate", "text": "He remembered the feel of wood grain under his plane in the Roberts's back yard, the morning Philip had asked him to come over and help rebuild the cedar gate the storm had taken. The satisfying thunk of a post driven true into Graustark soil. He remembered the impossible softness of her skin. The way her fingers — stained with ink or paint or charcoal, often all three at once — would trace the faded lines on his forearm where the snake tattoo ate its own tail. She had loved the tattoo. She had said it was the only honest piece of him. He had not, at the time, understood what she meant. He had laughed and asked her what made it honest. She had said, Because it's a picture of itself eating itself, and that's true."},
+    {"t": "narrate", "text": "He flexed his fingers now. Empty. Just calluses and memory."},
+    {"t": "narrate", "text": "The ouroboros on his forearm caught the neon and sent it back, dim and red, against the inside of his wrist."},
+
+    {"t": "narrate", "text": "§ Refrain 2: The Taste"},
+    {"t": "narrate", "text": "The beer was piss-warm. Tasted like regret strained through an old sock. He drank it anyway. It was part of the ritual. Part of the waiting. He wasn't sure what he was waiting for anymore."},
+    {"t": "narrate", "text": "Absolution. Oblivion. Last call. Same difference, probably."},
+    {"t": "narrate", "text": "The bartender — a tired-looking woman with eyes that had seen too many midnights and was, Douglas suspected, the owner's daughter — caught his eye from behind the bar and raised her eyebrows in the universal restaurant-worker shorthand for another? He held up two fingers. She nodded. She was not, by demeanor or training, the kind of bartender who came over to chat. He appreciated this about her. He had tipped her, on his first visit, the way you tipped people you intended to come back to, and she had accepted the tip without comment, which was the contract."},
+
+    {"t": "narrate", "text": "§ Layer 2: The Summons"},
+    {"t": "narrate", "text": "Jimmy Daigle's voice, crackling over the phone line, weeks ago, maybe months. Time got slippery these days."},
+    {"t": "narrate", "text": "Doug. Need you, man. Down here. N'awlins. Antonio's thing — it's — look. I need someone solid. Someone I can trust."},
+    {"t": "narrate", "text": "Trust. Funny word. Sounded like rust when Jimmy said it."},
+    {"t": "narrate", "text": "Still, he had come. Loyalty was an anchor, wasn't it? Or maybe just a chain. He had packed a bag — the same canvas duffle his father had carried back from Korea, which was now battered enough to look intentional — and left the gray monochrome paintings of Graustark's ruins leaning against the wall of his apartment, the ones he had been working on the year after Joanna left, the ones he had never quite finished and would, he suspected, never quite finish, because finishing them would require him to either show them to somebody or accept that he was the only audience."},
+    {"t": "narrate", "text": "He had headed south. Back into the noise. Back into the role: protector. Bodyguard. Human shield. Whatever Jimmy needed him to be."},
+    {"t": "narrate", "text": "Quiet strength. Endurance. Taming the inner beast. Or maybe just letting it sleep, heavily chained, in the corner."},
+    {"t": "narrate", "text": "The chain rattled, sometimes, in his sleep. He had stopped, in the past two years, going to anyone who could reasonably be called a friend with the news of the rattling."},
+
+    {"t": "narrate", "text": "§ Refrain 1: The Score"},
+    {"t": "narrate", "text": "Intercepted. Shit. The neon ghosts on the screen threw up their hands in digital despair. Douglas took another slow sip. Didn't matter. Just pixels burning bright before fading out. Like memory. Like her laughter echoing off the crumbling walls where she used to write her poems."},
+    {"t": "narrate", "text": "The bartender brought the second beer. He paid in cash. He waved off the change."},
+
+    {"t": "narrate", "text": "§ Layer 3: The Ghost"},
+    {"t": "narrate", "text": "Joanna."},
+    {"t": "narrate", "text": "The name itself a phantom limb ache."},
+    {"t": "narrate", "text": "He saw her sometimes, in the reflections distorted by cheap bar glass — a flash of unruly dark hair, eyes that held the wisdom of ruins. Saw her scrawling words on walls with charcoal fingers, surrounded by her court of stray dogs and one-eyed cats. Saw her fading, the chemicals burning brighter than her fierce fragile light, the way the cheap candles she liked burned brighter than the expensive ones because the wax was wrong and the wick was too thick and the heat ate the wax faster than it should have."},
+    {"t": "narrate", "text": "He had tried. To protect her. To stand between her and the void."},
+    {"t": "narrate", "text": "But some beasts couldn't be tamed. Not even by Strength itself. Some grief couldn't be carried, only endured. Her absence was a physical weight, heavier than any beam he had ever hoisted in the long winter he had spent helping Philip Roberts rebuild what the storm had not, in the end, completely taken."},
+    {"t": "narrate", "text": "He had painted the ruins gray after she was gone. He had been trying to capture the color of her leaving. The paintings had failed. The paintings had also not failed, because the paintings now leaned against the wall of his apartment in Graustark and continued, in his absence, to be the most accurate record of the period he had ever made. Failure was a category for art that had set out to do something else. The paintings had set out to be gray. The paintings were gray. By their own terms they were a success."},
+    {"t": "narrate", "text": "He took another swallow. The beer continued to taste the way it had tasted ten minutes ago."},
+
+    {"t": "narrate", "text": "§ Layer 4: The Job"},
+    {"t": "narrate", "text": "New Orleans. Ember & Ash. Antonio's playground of fusion and fire."},
+    {"t": "narrate", "text": "Jimmy running point. Edgy. Talking fast. Eyes darting in the way Jimmy's eyes had been darting since approximately 2011, when whatever switch in Jimmy that had once been able to be turned off had been, by some person or event Jimmy did not name, permanently broken. Douglas stood in the back, mostly. Watching the controlled chaos. Watching the deliveries coming through the back door. Watching the hushed conversations that stopped when he drew near."},
+    {"t": "narrate", "text": "He was the muscle. The quiet guarantee. Keep Antonio safe. Keep the project moving. Simple."},
+    {"t": "narrate", "text": "Except nothing involving Jimmy — or the D'Ambrosio legacy, or for that matter the entire blood-and-money geography of the Texas-Louisiana coast — was ever simple. He could feel the ground shifting. Same as Erica Campbell probably felt it, back in her sterile Houston office, where Douglas had been once, on a job, fifteen years ago, and where he had not understood, at the time, that he was being audited, by Erica's predecessor, for the position of the kind of man Dante D'Ambrosio could call when a man was needed. Erica's predecessor had decided yes. The yes had cost Douglas, over the next decade, several decisions that he had never quite been able to recategorize as his own."},
+    {"t": "narrate", "text": "He saw the calculation in Jimmy's eyes when Antonio wasn't looking."},
+    {"t": "narrate", "text": "The old schemer. Wearing loyalty like a mask."},
+    {"t": "narrate", "text": "The snake eating its tail."},
+
+    {"t": "narrate", "text": "§ Refrain 1: The Score"},
+    {"t": "narrate", "text": "Game over. The neon ghosts reset. Another cycle beginning."},
+    {"t": "narrate", "text": "Douglas Forte finished his beer. The silence in the bar felt louder now."},
+
+    {"t": "narrate", "text": "§ Layer 5: The Turn"},
+    {"t": "narrate", "text": "He knew it before it happened."},
+    {"t": "narrate", "text": "A vibration in the air. A shift in the shadows. Some piece of information arriving in the room without anyone having said anything. Jimmy needed a fall guy. Antonio — bless his artistic, naïve, young heart — had stepped over a line, or was about to, or had been arranged to. Deals made in Dante's shadow were coming due, the way they always came due eventually, on a calendar that had never been published and that nobody could read, but which never, in Douglas's experience, ran late."},
+    {"t": "narrate", "text": "And Douglas? Solid. Reliable. Expendable."},
+    {"t": "narrate", "text": "The anchor, cut loose to save the ship. Or maybe just to save Jimmy."},
+    {"t": "narrate", "text": "He saw the look in Jimmy's eyes one last time — earlier this evening, across the warehouse floor, when Jimmy had walked Antonio out the back stair after the older man in the charcoal suit had finally driven away. Not malice, exactly. Just the cold calculation of survival. The look of a man who had already, at some point in the previous month, run the numbers on every person in his life and had assigned each of them a value, and who was, this evening, beginning the slow respectful process of cashing in the lower-value chips."},
+    {"t": "narrate", "text": "Douglas had been one of the lower-value chips for longer than anyone, including Jimmy, suspected. He had known this for some time. He had not, until this evening, been quite sure how much time was left."},
+    {"t": "narrate", "text": "The strength wasn't in fighting it. The strength was in seeing it coming, clear-eyed, and enduring the impact."},
+    {"t": "narrate", "text": "Patience over brute force."},
+    {"t": "narrate", "text": "The inner beast, accepting the cage."},
+
+    {"t": "narrate", "text": "§ Refrain 2: The Taste"},
+    {"t": "narrate", "text": "He stood up from the booth. The cheap vinyl sighed beneath him in the way old vinyl sighed, releasing whatever heat his body had pressed into it during the hour he had spent there. He left the empty bottles on the table. He left a folded twenty under the saltshaker for the tired-looking woman behind the bar, because she had earned it without asking, which was, in his experience, the only kind of earning that mattered."},
+    {"t": "narrate", "text": "The beer tasted like betrayal now. Like ashes. Like the gray monochrome landscape of loss."},
+    {"t": "narrate", "text": "He walked out into the humid New Orleans night. Quiet. Steady. A mountain moving toward an unseen, inevitable collision."},
+    {"t": "narrate", "text": "The puzzle-box clicked shut, for now."},
+    {"t": "narrate", "text": "The refrain lingered."},
+
+    {"t": "bg", "src": "assets/backgrounds/vol5_new_orleans_room.jpg"},
+    {"t": "narrate", "text": "§ Coda: The Letter"},
+    {"t": "narrate", "text": "He walked the eight blocks back to the room above the laundromat that Jimmy had rented for him, on a month-to-month, paid in cash. The streets were Saturday-night busy in the specific Marigny way: sax from a window two stories up, somebody's grandmother shouting in patois at somebody's grandson, the distant brass of a second line that had been, a few hours ago, a wedding and was now just a parade looking for a reason to keep going. He walked through it without engaging it. The city, sensing this, returned the favor."},
+    {"t": "narrate", "text": "The room above the laundromat smelled, faintly, of dryer sheets — a smell Douglas had, after two months, come to associate with home in the small unhappy way that one comes to associate any persistent smell with the place one is currently sleeping."},
+    {"t": "narrate", "text": "He sat at the small desk under the window. He took out a piece of paper from the drawer. He took out a pen."},
+    {"t": "narrate", "text": "He wrote, at the top of the page, the date, in the way he had been taught to write dates in the third grade by a teacher whose face he had forgotten and whose handwriting he had not."},
+    {"t": "narrate", "text": "He thought for a while."},
+    {"t": "narrate", "text": "He wrote:"},
+    {"t": "narrate", "text": "J —"},
+    {"t": "narrate", "text": "I know what option four is. I figured it out tonight at the bar. I'm not going to tell you I figured it out. I'm not going to do anything different. You should not change your plan."},
+    {"t": "narrate", "text": "I want you to do me one favor when it's done. I want you to call Philip Roberts and tell him where I am. Don't tell him what happened. Just tell him where. He'll know what to do."},
+    {"t": "narrate", "text": "Tell Maya I think about her. Don't tell her how."},
+    {"t": "narrate", "text": "— D."},
+    {"t": "narrate", "text": "He read the letter back. He read it back again. He folded it in thirds. He put it in an envelope. He addressed the envelope to Jimmy, sealed it, and put it in the inside pocket of his jacket, which was hanging on the back of the chair, which was where he always hung the jacket, which was where Jimmy — who had a key to this room and who came by, occasionally, on the pretext of dropping off cash or checking in — would find it, if and when."},
+    {"t": "narrate", "text": "Then, because the letter was a thing he had done and he was now, again, only himself, he went to the small mirror above the dresser and looked at his own face."},
+    {"t": "narrate", "text": "The face looked back. Older than he remembered it being. Quieter. The kind of quiet that was not the same as peace."},
+    {"t": "narrate", "text": "He thought of Joanna. He thought of the gate at the Roberts's house, the cedar one he had hung in 2018, which would still be hanging. He thought of his mother's hands washing glasses. He thought of his ouroboros tattoo, eating itself, honest."},
+    {"t": "narrate", "text": "He went to the window. He looked down at the street. The city kept doing what the city did."},
+    {"t": "narrate", "text": "He went to bed. He slept, briefly, badly. The chain rattled once. He did not dream."},
+
+    {"t": "narrate", "text": "§ Refrain 1, final: The Score"},
+    {"t": "narrate", "text": "In the bar he had left, the TV had moved on to the next game. The neon ghosts had reset, again. New uniforms. New score. The same bartender wiping the same bar with the same rag. The booth Douglas had occupied was already taken by two younger men who would not, all evening, leave a tip."},
+    {"t": "narrate", "text": "The Saints, on the new screen, were behind by ten."},
+    {"t": "narrate", "text": "There was no reason to think they would close the gap."},
+    {"t": "narrate", "text": "There was no reason to think the gap mattered."},
+    {"t": "narrate", "text": "There was every reason, now, to keep watching anyway."},
+    {"t": "narrate", "text": "The game played on. Stillness, somewhere in the city, kept its watch."},
+
+    {"t": "end"}
   ]
 }
