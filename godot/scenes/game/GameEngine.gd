@@ -236,6 +236,12 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 		push_error("GameEngine: scene not found: " + scene_id)
 		game_ended.emit()
 		return
+	# Clear any portraits left over from the previous scene. Scenes
+	# don't all bracket their characters with show/hide pairs, so
+	# without this a character from the prior scene survives into the
+	# next one (e.g. Frasier persisting from vol5_ch0_model_city into
+	# vol5_ch1_magician).
+	_chars.call("hide_all")
 	_auto_load_substrate(scene_id)
 	_unlock_gallery_for_scene(scene_id)
 	_run_next()
@@ -573,6 +579,14 @@ func _apply_bg_sway(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if _paused:
+		return
+	# Don't process advance/menu_back while the choice menu is up.
+	# Otherwise the same mouse-click that picks an option also fires
+	# advance: ChoiceMenu's button consumes the click first, runs the
+	# callback (which sets _waiting=true on the next dialogue node),
+	# then our _input handler runs _advance() on the same event,
+	# advancing one node past the choice and skipping content.
+	if _choices.visible:
 		return
 	if event.is_action_pressed("advance"):
 		get_viewport().set_input_as_handled()

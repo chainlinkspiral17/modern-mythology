@@ -159,7 +159,13 @@ func activate_speaker(char_name: String) -> void:
 		var slot = _slots[pos]
 		if slot == null:
 			continue
-		var node: Control     = slot["node"]
+		# Skip portraits that are currently fading out — their fade
+		# tween writes modulate:a, and overlaying a modulate (rgba)
+		# tween here resurrects them visibly before queue_free fires,
+		# producing ghost portraits in the next scene.
+		var node: Control = slot["node"]
+		if node.has_meta("fading"):
+			continue
 		var is_active: bool   = (key != "" and str(slot["name"]).to_lower() == key)
 		# Active: full color, +5% scale, full alpha
 		# Inactive: deeper desat (cool gray), -8% scale, ~30% alpha — recedes
@@ -315,6 +321,12 @@ func _apply_texture_tint(wrapper: Control, expr: String) -> void:
 
 
 func _fade_out_free(node: Control) -> void:
+	# Mark the node as fading so activate_speaker (which writes the
+	# full modulate Color) doesn't race the alpha-only fade we're
+	# starting here. Without this, narration after a hide can
+	# resurrect the dimmed-but-visible portrait into the next scene.
+	node.set_meta("fading", true)
+	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var tw := node.create_tween()
 	tw.tween_property(node, "modulate:a", 0.0, 0.25)
 	tw.tween_callback(node.queue_free)
