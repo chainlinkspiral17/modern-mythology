@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": "III",
   "type": "chapter",
-  "title": "Chapter III — The Empress",
+  "title": "The Empress",
   "nodes": [
     {
       "t": "bg",
@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Chapter III — The Empress",
+      "text": "III — The Empress",
       "sub": "Static Bloom",
       "duration": 3400
     },

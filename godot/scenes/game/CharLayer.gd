@@ -274,18 +274,33 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 
 
 # Texture lookup chain: <char>_<expr>.png → <char>_neutral.png → null.
+# Falls back to Image.load_from_file when ResourceLoader doesn't have
+# the asset registered (i.e. the .import sidecar wasn't generated yet —
+# common during authoring when PNGs are dropped in but the editor
+# hasn't reimported).
 func _resolve_portrait_texture(key: String, expr: String) -> Texture2D:
 	var expr_path: String = "%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr]
-	if ResourceLoader.exists(expr_path):
-		return ResourceLoader.load(expr_path) as Texture2D
+	var t := _load_texture_with_fallback(expr_path)
+	if t != null:
+		return t
 	var neutral_path: String = "%s%s/%s_neutral.png" % [PORTRAIT_TEX_ROOT, key, key]
-	if ResourceLoader.exists(neutral_path):
-		return ResourceLoader.load(neutral_path) as Texture2D
+	return _load_texture_with_fallback(neutral_path)
+
+
+func _load_texture_with_fallback(path: String) -> Texture2D:
+	if ResourceLoader.exists(path):
+		return ResourceLoader.load(path) as Texture2D
+	var img := Image.load_from_file(ProjectSettings.globalize_path(path))
+	if img:
+		return ImageTexture.create_from_image(img)
 	return null
 
 
 func _has_expr_png(key: String, expr: String) -> bool:
-	return ResourceLoader.exists("%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr])
+	var path := "%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr]
+	if ResourceLoader.exists(path):
+		return true
+	return FileAccess.file_exists(path)
 
 
 func _apply_texture_tint(wrapper: Control, expr: String) -> void:

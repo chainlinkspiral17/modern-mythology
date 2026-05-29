@@ -457,7 +457,8 @@ func _do_bg(n: Dictionary) -> void:
 	if ResourceLoader.exists(path):
 		_bg.texture = ResourceLoader.load(path) as Texture2D
 	else:
-		_bg.texture = null
+		var img := Image.load_from_file(ProjectSettings.globalize_path(path))
+		_bg.texture = ImageTexture.create_from_image(img) if img else null
 
 
 func _do_substrate(n: Dictionary) -> void:
@@ -603,4 +604,13 @@ func _end_scene() -> void:
 	AudioMgr.stop_voice()
 	AudioMgr.unduck()
 	AudioMgr.stop_bgm()
-	game_ended.emit()
+	var next := SceneDataDB.get_next_scene_id(_scene_id)
+	if next != "":
+		var next_scene := SceneDataDB.get_scene(next)
+		var next_vol: int = int(next_scene.get("vol", _vol))
+		if next_vol != _vol:
+			_vol = next_vol
+			_apply_skin(_vol)
+		_load_scene(next)
+	else:
+		game_ended.emit()
