@@ -6,6 +6,10 @@
   "title": "A Fool Between Acts",
   "nodes": [
     {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_dambrosios_interior.png"
+    },
+    {
       "t": "narrate",
       "text": "The sign outside D'Ambrosio's promised OPEN 24 HOURS, and the sign was technically right, but the light it cast in the pre-dawn Graustark gloom had the unsteady pulse of a heart that wanted to stop and was being talked out of it. The neon sputtered. The neon resumed. The neon sputtered."
     },
