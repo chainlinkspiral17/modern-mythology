@@ -229,6 +229,22 @@ func _add_color_window(w: Dictionary) -> void:
 	_window_manifests.append(w.duplicate(true))
 
 
+# Load a Texture2D by res:// path. Falls back to Image.load_from_file
+# when ResourceLoader.exists() returns false — happens when the .import
+# sidecar is stale or absent. Without this fallback, restarting the
+# editor / running headless can drop composition images silently and
+# leave only the substrate underneath visible.
+func _load_texture_with_fallback(full_path: String) -> Texture2D:
+	if ResourceLoader.exists(full_path):
+		var t := ResourceLoader.load(full_path) as Texture2D
+		if t != null:
+			return t
+	var img := Image.load_from_file(ProjectSettings.globalize_path(full_path))
+	if img:
+		return ImageTexture.create_from_image(img)
+	return null
+
+
 func _parse_stretch(v: Variant) -> int:
 	# Manifest accepts: "scale" (default, fills w×h, may distort),
 	# "cover" (keep aspect, crop), "fit" (keep aspect, letterbox),
@@ -256,11 +272,9 @@ func _add_image_window(w: Dictionary) -> void:
 	if path == "":
 		return
 	var full := "res://" + path if not path.begins_with("res://") else path
-	if not ResourceLoader.exists(full):
-		push_warning("AsciiComposition: image not found: " + full)
-		return
-	var tex: Texture2D = ResourceLoader.load(full) as Texture2D
+	var tex: Texture2D = _load_texture_with_fallback(full)
 	if tex == null:
+		push_warning("AsciiComposition: image not found: " + full)
 		return
 	var win := TextureRect.new()
 	win.texture = tex
@@ -291,12 +305,11 @@ func _add_image_frames_window(w: Dictionary) -> void:
 	for p_v in frames_v:
 		var p: String = str(p_v)
 		var full := "res://" + p if not p.begins_with("res://") else p
-		if not ResourceLoader.exists(full):
+		var t := _load_texture_with_fallback(full)
+		if t == null:
 			push_warning("AsciiComposition: image_frames missing: " + full)
 			continue
-		var t := ResourceLoader.load(full) as Texture2D
-		if t != null:
-			textures.append(t)
+		textures.append(t)
 	if textures.is_empty():
 		return
 

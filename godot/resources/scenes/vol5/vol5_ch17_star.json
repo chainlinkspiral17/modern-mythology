@@ -2,134 +2,459 @@
   "id": "vol5_ch17_star",
   "vol": 5,
   "chapter": "XVII",
-  "type": "scene",
+  "type": "chapter",
   "title": "The Star",
   "nodes": [
-    {"t": "bg", "src": "assets/backgrounds/vol5_graustark_ruins_night.jpg"},
-    {"t": "hide", "pos": "left"},
-    {"t": "hide", "pos": "center"},
-    {"t": "hide", "pos": "right"},
-    {"t": "interlude", "text": "XVII — The Star", "sub": "Glass Skin and Obsidian Ink", "duration": 3},
-
-    {"t": "narrate", "text": "THE STAR. The naked figure kneels at the pool and pours water onto the earth and back into the pool. The eight-pointed star above her. Seven smaller stars. Her foot rests on the water without sinking. This is what comes after the Tower. This is what the lightning was clearing space for. Reversed: despair dressed as hope. The star that guides you in the wrong direction."},
-
-    {"t": "narrate", "text": "The moon tonight was a shard of broken mirror stuck in the bruised velvet throat of the Graustark sky."},
-    {"t": "narrate", "text": "Joanna LeMoine felt its borrowed light scrape against her skin — too bright, too revealing. Down here in the ruins, her chosen cathedral of decay, shadows used to be a comfort. A blanket woven from dust and forgetting. Now, even the darkness felt thin. Translucent."},
-    {"t": "narrate", "text": "Hope, they called this phase. The Star."},
-    {"t": "narrate", "text": "Sounded nice on paper."},
-    {"t": "narrate", "text": "Felt, in practice, more like having your skin peeled back layer by sensitive layer, leaving every nerve exposed to the indifferent cosmos."},
-
-    {"t": "narrate", "text": "She knelt on the rubble-strewn floor of what used to be the Old Armory. Or maybe the library. The landmarks bled together these days, in ways she had stopped trying to keep track of, in ways her notebook had stopped being able to keep track of, because the names of things were no longer, in this particular geography, the most important thing about them. The thing's function in the older system was. The library and the Armory were, both, places where men had once stored what they had decided was worth defending. That was the function. The naming was, at this distance, decoration."},
-    {"t": "narrate", "text": "A jagged piece of charcoal in her fist. Held like a weapon."},
-    {"t": "narrate", "text": "Her animal companions, her silent flea-bitten acolytes, kept their distance tonight. Huddled near a crumbling archway. Even the cat, who could not, generally, be moved by atmospheric weather. The one-eyed dog — Rumpus — emitting a low anxious thrum, the frequency of which Joanna had been learning, over the long months of their cohabitation, to read."},
-    {"t": "narrate", "text": "The frequency tonight read something is approaching."},
-    {"t": "narrate", "text": "The crow was on the I-beam. The crow had been on the I-beam since dusk. The crow had not, tonight, brought her anything. The crow was, tonight, a witness."},
-
-    {"t": "narrate", "text": "This wasn't the desperate scrawling of the Hermit anymore. The frantic attempt to ward off the silence with fragmented verses. No."},
-    {"t": "narrate", "text": "This felt different. Colder. Sharper. Necessary."},
-    {"t": "narrate", "text": "The words demanded egress. Pushed against the inside of her skull, insisting on their truth no matter how uncomfortable, how fatal, that truth might be. She was a conduit. Hollowed out by loss and chemicals — and now something else was pouring in. Starlight, maybe. Or just a purer form of madness. The two had never, in her experience, been entirely distinguishable."},
-    {"t": "narrate", "text": "She had been waiting for this night for some weeks. The 1987 receipt with the cork-hat doodle had said see you soon. The crow had brought it. The crow was, tonight, on the beam. The pull, in the past month, had been running steadily toward the world — toward the streets, toward whoever sent the message, toward the post office on Elm where she had not, in the end, gone. Tonight the pull had reversed."},
-    {"t": "narrate", "text": "Tonight the pull was running back into her."},
-    {"t": "narrate", "text": "Tonight she was, evidently, the post office."},
-
-    {"t": "narrate", "text": "Her hand moved across the stained concrete wall. The charcoal leaving stark black lines against the pale moonlit surface."},
-    {"t": "narrate", "text": "She did not, this time, write the lines as if they were her own. She wrote them as if she were taking dictation. The hand moved at a speed her mind could not, immediately, account for."},
-    {"t": "narrate", "text": "They see through me now,\nGlass skin on bone frame.\nWords like incisions,\nBleeding truths I cannot name.\nThe ruin breathes — the Star burns cold,\nA pretty lie, beautifully told?\nNo. Only this:\nThe flaw, the fracture, the abyss."},
-    {"t": "narrate", "text": "She stepped back. She read what she had written. The words sat on the wall as if they had been waiting there for her to uncover them, the way a sculptor — Michelangelo, somebody had told her once, claimed to have worked — found a figure already inside the stone and removed only what the stone did not need."},
-    {"t": "narrate", "text": "She had not, she realized, been writing."},
-    {"t": "narrate", "text": "She had been transcribing."},
-    {"t": "narrate", "text": "The wall had had the words. She had merely been the hand the wall had used to put them down."},
-
-    {"t": "narrate", "text": "She saw it all too clearly now."},
-    {"t": "narrate", "text": "The town wasn't just ruins. It was a palimpsest of bad deals and buried bodies. Layer upon layer of compromise, written and overwritten, the older writings still showing through where the newer ink had thinned."},
-    {"t": "narrate", "text": "She saw the spectral outline of Dante D'Ambrosio's ambition still clinging to the rusted hinges of forgotten warehouses, still pulsing faintly at the helm of his floating mausoleum. She saw the righteous hypocrisy of Quentin Paul etched like acid rain on the steps of the courthouse. She saw the frantic ghosts of Philip and Mackenzie Roberts trying to build a sanctuary on cursed ground, a sanctuary which had, against all reasonable expectation, held. She saw Anna Logue in Houston polishing narratives that gleamed like lies, beginning, finally, to deconstruct one. She saw Erica Campbell balancing justice on a scale already shattered, drafting through the night a contract she could not, in honor, refuse to draft. She saw Jimmy Daigle grinning down the road to damnation, his grin tightening, lately, into the small fixed expression of a man who had begun to suspect the road was running uphill. She heard Natalie David dancing between realities in a small apartment in Simons, pouring tea for a girl who was two girls. She saw John Frank in Montreal, who she had not seen or thought of in years, who was at this moment underlining the word Worse in a notebook beside a narwhal mug. She saw Frasier Temple in his cathedral of rust, the silver-spoon riverboat in his palm, the Demons whispering on his phone, the four-degree drop in temperature that had, that exact moment, just occurred in his warehouse for the third time this week."},
-    {"t": "narrate", "text": "She saw everything."},
-
-    {"t": "narrate", "text": "And everyone saw her."},
-    {"t": "narrate", "text": "They always had, she realized with a sickening lurch."},
-    {"t": "narrate", "text": "Back at D'Ambrosio's, pouring coffee, wiping tables — they hadn't seen a waitress. They had seen the cracks in her smile, the haunted hollows beneath her eyes. They had seen the girl who knew too much, felt too much, the one doomed to chronicle the fall because she was already halfway down."},
-    {"t": "narrate", "text": "Her poetry wasn't a choice. Her poetry was a symptom. A leakage. The truth spilling out because she was too broken to contain it anymore."},
-    {"t": "narrate", "text": "This had been the cost of the older system's gift to her. She had been useful to the system because she was permeable. The system, having found a permeable instrument, had used the instrument. The use was the use. The instrument was not, by the use, made any less the instrument."},
-    {"t": "narrate", "text": "She had not, until tonight, fully understood that this was her job."},
-    {"t": "narrate", "text": "She had thought she was hiding in the ruins."},
-    {"t": "narrate", "text": "She had not been hiding. She had been stationed."},
-
-    {"t": "narrate", "text": "She picked up another piece of charcoal. Her hand moved again. The wall received again."},
-    {"t": "narrate", "text": "Madness is just clarity\nWithout the comfort\nOf illusion."},
-    {"t": "narrate", "text": "The charcoal snapped in her fingers. She stared at the broken pieces in her palm."},
-    {"t": "narrate", "text": "Rejuvenation. Faith. The Star was supposed to be about hope."},
-    {"t": "narrate", "text": "But what if hope itself was the cruelest illusion. What if the guiding light just illuminated the inescapable horror of the real. What if telling the truth drove you mad not because the truth was complex, but because it was devastatingly, soul-crushingly simple."},
-    {"t": "narrate", "text": "She looked up at the moon-shard impaled in the sky. Beautiful. Terrible. Just like the words demanding to be written, clawing their way onto the wall."},
-    {"t": "narrate", "text": "She was the poet, the seer, the doomed Cassandra of the Graustark ruins. Her gift wasn't resilience; her gift was transparency. Everyone saw through her because there was nothing left to hide behind."},
-    {"t": "narrate", "text": "She picked up another piece of charcoal."},
-    {"t": "narrate", "text": "The dog whined again, a sound like tearing silk."},
-
-    {"t": "narrate", "text": "Joanna started writing again. The obsidian ink bleeding onto the concrete. Telling truths too sharp for survival."},
-    {"t": "narrate", "text": "A fragile star burning itself out in the overwhelming darkness."},
-    {"t": "narrate", "text": "I did not lose Douglas. I sent him.\nI did not lose myself. I have been spent.\nI am the page on which the older\nsystem writes its drafts.\nI do not own the writing.\nI have been writing it anyway."},
-    {"t": "narrate", "text": "She stepped back. She looked at the lines."},
-    {"t": "narrate", "text": "She thought, with the small terrible clarity that was, she suspected, the actual gift of the Star and not the consolation prize people who had not been to the Star imagined: I did not lose Douglas. I sent him."},
-    {"t": "narrate", "text": "The realization settled into her bones the way only certain realizations settled — with the small physical weight of something she had been carrying for a long time without naming. She had loved Douglas Forte. She had also, in the spring of 2019, in a conversation she had told him was about something else, planted in him the seed of the loyalty that would, she had known even then, eventually take him to New Orleans and put him in the position he was tonight in."},
-    {"t": "narrate", "text": "She had not done this consciously. She had done it honestly, in the way one carrying a permeable instrument did things — not by intention, but by being the channel through which the older system arranged what the older system needed arranged."},
-    {"t": "narrate", "text": "Douglas had needed to be in New Orleans."},
-    {"t": "narrate", "text": "The system had needed Douglas in New Orleans."},
-    {"t": "narrate", "text": "Joanna had been the instrument by which the system had moved Douglas there."},
-    {"t": "narrate", "text": "She had, over the years, told herself it had been her own fragility that had driven him away. She had let herself believe she was the wreckage he had had to flee. She had given herself the role of the woman who lost the man — because that was the legible role, the role her audience understood."},
-    {"t": "narrate", "text": "It had not been the truth. The truth was she had moved a piece on a board she had not, fully, agreed to play on. The truth was Douglas had been the piece."},
-    {"t": "narrate", "text": "She had owed him an apology for some years."},
-    {"t": "narrate", "text": "She would, she now suspected, never have the chance to deliver it."},
-
-    {"t": "narrate", "text": "She set the charcoal down."},
-    {"t": "narrate", "text": "She walked to the wall where she had written. She pressed her palm against the wet line of the last verse. The charcoal smudged under her hand. When she lifted her palm, she carried the smudge with her — the obsidian ink staining her skin, the way it had been staining her skin in different patterns for the past three years, the way it had begun, in the past month, to outlast the soap she used."},
-    {"t": "narrate", "text": "She turned to the crow on the I-beam."},
-    {"t": "say", "char": "joanna", "text": "Tell him."},
-    {"t": "narrate", "text": "The crow, who had not, ever, been instructed before in her presence, cocked its head."},
-    {"t": "say", "char": "joanna", "text": "Tell him I'm sorry. Tell him I knew. Tell him I sent him. Tell him I was used to send him. Tell him both are true."},
-    {"t": "narrate", "text": "The crow looked at her for a long moment. The crow's eyes were the small bright black they had always been. The crow did not, audibly, agree to anything."},
-    {"t": "narrate", "text": "The crow took flight."},
-    {"t": "narrate", "text": "The crow flew, in the direction of New Orleans, with the unhurried purpose of a creature on a confirmed errand."},
-    {"t": "narrate", "text": "Joanna watched it go."},
-
-    {"t": "narrate", "text": "The animals returned to her side once the crow was gone. The dog leaning against her shin. The cat, after a moment of consideration, against her other shin. Joanna sat down on a chunk of broken concrete, the moon-shard light falling across her shoulders, and allowed the animals their small comforts."},
-    {"t": "narrate", "text": "She thought, in the small honest voice the Star had finally permitted her: I am almost done."},
-    {"t": "narrate", "text": "She thought, I am almost done, and there is one more thing I have to do, and I will, in the morning, begin to do it."},
-    {"t": "narrate", "text": "She thought, I will, in the morning, walk to the post office on Elm. I will mail a letter. I will mail a letter to the address that is on the back of the 1987 receipt the crow brought me, in the handwriting under the doodle, the address I have, until tonight, refused to read because reading it would have committed me to mailing the letter."},
-    {"t": "narrate", "text": "She thought, the letter will be one sentence long. The sentence will be: I am ready."},
-    {"t": "narrate", "text": "She thought, I do not know what I am saying I am ready for. I trust that the receiver of the letter knows. I trust that the receiver will, in due course, arrive."},
-    {"t": "narrate", "text": "She thought, I will, in the meantime, finish the last verse."},
-
-    {"t": "narrate", "text": "She picked up the broken pieces of charcoal. She approached the wall again."},
-    {"t": "narrate", "text": "The wall had room, still, for one more verse."},
-    {"t": "narrate", "text": "She wrote, slowly, with the small careful precision of a woman writing the last page of a long letter:"},
-    {"t": "narrate", "text": "And the bird flew southeast.\nAnd the wall held the name.\nAnd the post office, in the morning,\nwill receive the only letter\nI have ever truly written.\nI am ready.\nCome and find me."},
-    {"t": "narrate", "text": "She stepped back. She read the verse three times. She did not, this time, smudge it with her palm. She left it dry."},
-    {"t": "narrate", "text": "The moon-shard moved a few minutes further west. The dog's whine had stopped. The cat had resumed cleaning its paw."},
-    {"t": "narrate", "text": "The crow was no longer on the I-beam. The crow was, by now, somewhere over Lafayette. The crow would arrive, if crows did the kind of thing crows did, sometime in the New Orleans late morning. The crow would deliver, in the small wordless way crows delivered such things, the message Joanna had given it. The message would arrive in Douglas Forte's hands the way certain messages arrived in certain hands: without explanation, but unmistakably."},
-    {"t": "narrate", "text": "Joanna did not, herself, need to verify the delivery. The system did not work that way. The system worked the way water worked in soil — slowly, by gravity, finding the lowest place it was needed."},
-
-    {"t": "narrate", "text": "She stood for a while by the wall."},
-    {"t": "narrate", "text": "Then she gathered her companions. She walked back along the path that wasn't a path, past the I-beam, past the place where the haberdashery had been, past the place where her own first apartment had stood, all the way back to the patched shotgun house at the edge of the void."},
-    {"t": "narrate", "text": "She did not, this time, slow at the lip of the sinkhole. The void breathed up at her in the same way it had breathed up at her in all the months and years she had been keeping the lonely watch — but the void, tonight, was not asking anything of her."},
-    {"t": "narrate", "text": "The void was, tonight, finished asking."},
-    {"t": "narrate", "text": "The void had received the answer."},
-    {"t": "narrate", "text": "She closed the door of the shotgun house behind her. Lit the candle. Sat at the desk-that-was-a-door-on-bricks. Took out a single piece of paper."},
-    {"t": "narrate", "text": "She wrote, at the top: the address from the back of the 1987 receipt."},
-    {"t": "narrate", "text": "She wrote, in the body, three words: I am ready."},
-    {"t": "narrate", "text": "She signed it, J. LeMoine."},
-    {"t": "narrate", "text": "She folded it. She placed it in an envelope. She wrote the address again on the front. She set the envelope on the desk."},
-    {"t": "narrate", "text": "In the morning she would walk to Elm Street. In the morning she would buy a stamp. In the morning she would put the envelope in the mailbox."},
-    {"t": "narrate", "text": "In the morning, the cycle that had begun, at this address, in 1987, would close."},
-    {"t": "narrate", "text": "And, in the closing, would begin again."},
-    {"t": "narrate", "text": "She blew out the candle."},
-    {"t": "narrate", "text": "She lay down on her cot. The dog at her feet. The cat at her shoulder."},
-    {"t": "narrate", "text": "The crow, over Lafayette, kept flying."},
-    {"t": "narrate", "text": "The Star, in its impaled distance, kept burning."},
-    {"t": "narrate", "text": "The Hermit, in her labyrinth, slept."},
-    {"t": "narrate", "text": "Tomorrow, she would mail the letter."},
-    {"t": "narrate", "text": "Tomorrow, the system would, in its own slow patient way, respond."},
-    {"t": "narrate", "text": "The wall, behind her in the ruin, kept its watch."},
-    {"t": "narrate", "text": "The verses, in their obsidian ink, did not, by morning, fade."},
-
-    {"t": "end"}
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_graustark_ruins_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "XVII — The Star",
+      "sub": "Glass Skin and Obsidian Ink",
+      "duration": 3
+    },
+    {
+      "t": "narrate",
+      "text": "THE STAR. The naked figure kneels at the pool and pours water onto the earth and back into the pool. The eight-pointed star above her. Seven smaller stars. Her foot rests on the water without sinking. This is what comes after the Tower. This is what the lightning was clearing space for. Reversed: despair dressed as hope. The star that guides you in the wrong direction."
+    },
+    {
+      "t": "narrate",
+      "text": "The moon tonight was a shard of broken mirror stuck in the bruised velvet throat of the Graustark sky."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna LeMoine felt its borrowed light scrape against her skin — too bright, too revealing. Down here in the ruins, her chosen cathedral of decay, shadows used to be a comfort. A blanket woven from dust and forgetting. Now, even the darkness felt thin. Translucent."
+    },
+    {
+      "t": "narrate",
+      "text": "Hope, they called this phase. The Star."
+    },
+    {
+      "t": "narrate",
+      "text": "Sounded nice on paper."
+    },
+    {
+      "t": "narrate",
+      "text": "Felt, in practice, more like having your skin peeled back layer by sensitive layer, leaving every nerve exposed to the indifferent cosmos."
+    },
+    {
+      "t": "narrate",
+      "text": "She knelt on the rubble-strewn floor of what used to be the Old Armory. Or maybe the library. The landmarks bled together these days, in ways she had stopped trying to keep track of, in ways her notebook had stopped being able to keep track of, because the names of things were no longer, in this particular geography, the most important thing about them. The thing's function in the older system was. The library and the Armory were, both, places where men had once stored what they had decided was worth defending. That was the function. The naming was, at this distance, decoration."
+    },
+    {
+      "t": "narrate",
+      "text": "A jagged piece of charcoal in her fist. Held like a weapon."
+    },
+    {
+      "t": "narrate",
+      "text": "Her animal companions, her silent flea-bitten acolytes, kept their distance tonight. Huddled near a crumbling archway. Even the cat, who could not, generally, be moved by atmospheric weather. The one-eyed dog — Rumpus — emitting a low anxious thrum, the frequency of which Joanna had been learning, over the long months of their cohabitation, to read."
+    },
+    {
+      "t": "narrate",
+      "text": "The frequency tonight read something is approaching."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow was on the I-beam. The crow had been on the I-beam since dusk. The crow had not, tonight, brought her anything. The crow was, tonight, a witness."
+    },
+    {
+      "t": "narrate",
+      "text": "This wasn't the desperate scrawling of the Hermit anymore. The frantic attempt to ward off the silence with fragmented verses. No."
+    },
+    {
+      "t": "narrate",
+      "text": "This felt different. Colder. Sharper. Necessary."
+    },
+    {
+      "t": "narrate",
+      "text": "The words demanded egress. Pushed against the inside of her skull, insisting on their truth no matter how uncomfortable, how fatal, that truth might be. She was a conduit. Hollowed out by loss and chemicals — and now something else was pouring in. Starlight, maybe. Or just a purer form of madness. The two had never, in her experience, been entirely distinguishable."
+    },
+    {
+      "t": "narrate",
+      "text": "She had been waiting for this night for some weeks. The 1987 receipt with the cork-hat doodle had said see you soon. The crow had brought it. The crow was, tonight, on the beam. The pull, in the past month, had been running steadily toward the world — toward the streets, toward whoever sent the message, toward the post office on Elm where she had not, in the end, gone. Tonight the pull had reversed."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight the pull was running back into her."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight she was, evidently, the post office."
+    },
+    {
+      "t": "narrate",
+      "text": "Her hand moved across the stained concrete wall. The charcoal leaving stark black lines against the pale moonlit surface."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, this time, write the lines as if they were her own. She wrote them as if she were taking dictation. The hand moved at a speed her mind could not, immediately, account for."
+    },
+    {
+      "t": "narrate",
+      "text": "They see through me now,\nGlass skin on bone frame.\nWords like incisions,\nBleeding truths I cannot name.\nThe ruin breathes — the Star burns cold,\nA pretty lie, beautifully told?\nNo. Only this:\nThe flaw, the fracture, the abyss."
+    },
+    {
+      "t": "narrate",
+      "text": "She stepped back. She read what she had written. The words sat on the wall as if they had been waiting there for her to uncover them, the way a sculptor — Michelangelo, somebody had told her once, claimed to have worked — found a figure already inside the stone and removed only what the stone did not need."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not, she realized, been writing."
+    },
+    {
+      "t": "narrate",
+      "text": "She had been transcribing."
+    },
+    {
+      "t": "narrate",
+      "text": "The wall had had the words. She had merely been the hand the wall had used to put them down."
+    },
+    {
+      "t": "narrate",
+      "text": "She saw it all too clearly now."
+    },
+    {
+      "t": "narrate",
+      "text": "The town wasn't just ruins. It was a palimpsest of bad deals and buried bodies. Layer upon layer of compromise, written and overwritten, the older writings still showing through where the newer ink had thinned."
+    },
+    {
+      "t": "narrate",
+      "text": "She saw the spectral outline of Dante D'Ambrosio's ambition still clinging to the rusted hinges of forgotten warehouses, still pulsing faintly at the helm of his floating mausoleum. She saw the righteous hypocrisy of Quentin Paul etched like acid rain on the steps of the courthouse. She saw the frantic ghosts of Philip and Mackenzie Roberts trying to build a sanctuary on cursed ground, a sanctuary which had, against all reasonable expectation, held. She saw Anna Logue in Houston polishing narratives that gleamed like lies, beginning, finally, to deconstruct one. She saw Erica Campbell balancing justice on a scale already shattered, drafting through the night a contract she could not, in honor, refuse to draft. She saw Jimmy Daigle grinning down the road to damnation, his grin tightening, lately, into the small fixed expression of a man who had begun to suspect the road was running uphill. She heard Natalie David dancing between realities in a small apartment in Simons, pouring tea for a girl who was two girls. She saw John Frank in Montreal, who she had not seen or thought of in years, who was at this moment underlining the word Worse in a notebook beside a narwhal mug. She saw Frasier Temple in his cathedral of rust, the silver-spoon riverboat in his palm, the Demons whispering on his phone, the four-degree drop in temperature that had, that exact moment, just occurred in his warehouse for the third time this week."
+    },
+    {
+      "t": "narrate",
+      "text": "She saw everything."
+    },
+    {
+      "t": "narrate",
+      "text": "And everyone saw her."
+    },
+    {
+      "t": "narrate",
+      "text": "They always had, she realized with a sickening lurch."
+    },
+    {
+      "t": "narrate",
+      "text": "Back at D'Ambrosio's, pouring coffee, wiping tables — they hadn't seen a waitress. They had seen the cracks in her smile, the haunted hollows beneath her eyes. They had seen the girl who knew too much, felt too much, the one doomed to chronicle the fall because she was already halfway down."
+    },
+    {
+      "t": "narrate",
+      "text": "Her poetry wasn't a choice. Her poetry was a symptom. A leakage. The truth spilling out because she was too broken to contain it anymore."
+    },
+    {
+      "t": "narrate",
+      "text": "This had been the cost of the older system's gift to her. She had been useful to the system because she was permeable. The system, having found a permeable instrument, had used the instrument. The use was the use. The instrument was not, by the use, made any less the instrument."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not, until tonight, fully understood that this was her job."
+    },
+    {
+      "t": "narrate",
+      "text": "She had thought she was hiding in the ruins."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not been hiding. She had been stationed."
+    },
+    {
+      "t": "narrate",
+      "text": "She picked up another piece of charcoal. Her hand moved again. The wall received again."
+    },
+    {
+      "t": "narrate",
+      "text": "Madness is just clarity\nWithout the comfort\nOf illusion."
+    },
+    {
+      "t": "narrate",
+      "text": "The charcoal snapped in her fingers. She stared at the broken pieces in her palm."
+    },
+    {
+      "t": "narrate",
+      "text": "Rejuvenation. Faith. The Star was supposed to be about hope."
+    },
+    {
+      "t": "narrate",
+      "text": "But what if hope itself was the cruelest illusion. What if the guiding light just illuminated the inescapable horror of the real. What if telling the truth drove you mad not because the truth was complex, but because it was devastatingly, soul-crushingly simple."
+    },
+    {
+      "t": "narrate",
+      "text": "She looked up at the moon-shard impaled in the sky. Beautiful. Terrible. Just like the words demanding to be written, clawing their way onto the wall."
+    },
+    {
+      "t": "narrate",
+      "text": "She was the poet, the seer, the doomed Cassandra of the Graustark ruins. Her gift wasn't resilience; her gift was transparency. Everyone saw through her because there was nothing left to hide behind."
+    },
+    {
+      "t": "narrate",
+      "text": "She picked up another piece of charcoal."
+    },
+    {
+      "t": "narrate",
+      "text": "The dog whined again, a sound like tearing silk."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna started writing again. The obsidian ink bleeding onto the concrete. Telling truths too sharp for survival."
+    },
+    {
+      "t": "narrate",
+      "text": "A fragile star burning itself out in the overwhelming darkness."
+    },
+    {
+      "t": "narrate",
+      "text": "I did not lose Douglas. I sent him.\nI did not lose myself. I have been spent.\nI am the page on which the older\nsystem writes its drafts.\nI do not own the writing.\nI have been writing it anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "She stepped back. She looked at the lines."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, with the small terrible clarity that was, she suspected, the actual gift of the Star and not the consolation prize people who had not been to the Star imagined: I did not lose Douglas. I sent him."
+    },
+    {
+      "t": "narrate",
+      "text": "The realization settled into her bones the way only certain realizations settled — with the small physical weight of something she had been carrying for a long time without naming. She had loved Douglas Forte. She had also, in the spring of 2019, in a conversation she had told him was about something else, planted in him the seed of the loyalty that would, she had known even then, eventually take him to New Orleans and put him in the position he was tonight in."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not done this consciously. She had done it honestly, in the way one carrying a permeable instrument did things — not by intention, but by being the channel through which the older system arranged what the older system needed arranged."
+    },
+    {
+      "t": "narrate",
+      "text": "Douglas had needed to be in New Orleans."
+    },
+    {
+      "t": "narrate",
+      "text": "The system had needed Douglas in New Orleans."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna had been the instrument by which the system had moved Douglas there."
+    },
+    {
+      "t": "narrate",
+      "text": "She had, over the years, told herself it had been her own fragility that had driven him away. She had let herself believe she was the wreckage he had had to flee. She had given herself the role of the woman who lost the man — because that was the legible role, the role her audience understood."
+    },
+    {
+      "t": "narrate",
+      "text": "It had not been the truth. The truth was she had moved a piece on a board she had not, fully, agreed to play on. The truth was Douglas had been the piece."
+    },
+    {
+      "t": "narrate",
+      "text": "She had owed him an apology for some years."
+    },
+    {
+      "t": "narrate",
+      "text": "She would, she now suspected, never have the chance to deliver it."
+    },
+    {
+      "t": "narrate",
+      "text": "She set the charcoal down."
+    },
+    {
+      "t": "narrate",
+      "text": "She walked to the wall where she had written. She pressed her palm against the wet line of the last verse. The charcoal smudged under her hand. When she lifted her palm, she carried the smudge with her — the obsidian ink staining her skin, the way it had been staining her skin in different patterns for the past three years, the way it had begun, in the past month, to outlast the soap she used."
+    },
+    {
+      "t": "narrate",
+      "text": "She turned to the crow on the I-beam."
+    },
+    {
+      "t": "say",
+      "char": "joanna",
+      "text": "Tell him."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow, who had not, ever, been instructed before in her presence, cocked its head."
+    },
+    {
+      "t": "say",
+      "char": "joanna",
+      "text": "Tell him I'm sorry. Tell him I knew. Tell him I sent him. Tell him I was used to send him. Tell him both are true."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow looked at her for a long moment. The crow's eyes were the small bright black they had always been. The crow did not, audibly, agree to anything."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow took flight."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow flew, in the direction of New Orleans, with the unhurried purpose of a creature on a confirmed errand."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna watched it go."
+    },
+    {
+      "t": "narrate",
+      "text": "The animals returned to her side once the crow was gone. The dog leaning against her shin. The cat, after a moment of consideration, against her other shin. Joanna sat down on a chunk of broken concrete, the moon-shard light falling across her shoulders, and allowed the animals their small comforts."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, in the small honest voice the Star had finally permitted her: I am almost done."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, I am almost done, and there is one more thing I have to do, and I will, in the morning, begin to do it."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, I will, in the morning, walk to the post office on Elm. I will mail a letter. I will mail a letter to the address that is on the back of the 1987 receipt the crow brought me, in the handwriting under the doodle, the address I have, until tonight, refused to read because reading it would have committed me to mailing the letter."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, the letter will be one sentence long. The sentence will be: I am ready."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, I do not know what I am saying I am ready for. I trust that the receiver of the letter knows. I trust that the receiver will, in due course, arrive."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, I will, in the meantime, finish the last verse."
+    },
+    {
+      "t": "narrate",
+      "text": "She picked up the broken pieces of charcoal. She approached the wall again."
+    },
+    {
+      "t": "narrate",
+      "text": "The wall had room, still, for one more verse."
+    },
+    {
+      "t": "narrate",
+      "text": "She wrote, slowly, with the small careful precision of a woman writing the last page of a long letter:"
+    },
+    {
+      "t": "narrate",
+      "text": "And the bird flew southeast.\nAnd the wall held the name.\nAnd the post office, in the morning,\nwill receive the only letter\nI have ever truly written.\nI am ready.\nCome and find me."
+    },
+    {
+      "t": "narrate",
+      "text": "She stepped back. She read the verse three times. She did not, this time, smudge it with her palm. She left it dry."
+    },
+    {
+      "t": "narrate",
+      "text": "The moon-shard moved a few minutes further west. The dog's whine had stopped. The cat had resumed cleaning its paw."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow was no longer on the I-beam. The crow was, by now, somewhere over Lafayette. The crow would arrive, if crows did the kind of thing crows did, sometime in the New Orleans late morning. The crow would deliver, in the small wordless way crows delivered such things, the message Joanna had given it. The message would arrive in Douglas Forte's hands the way certain messages arrived in certain hands: without explanation, but unmistakably."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna did not, herself, need to verify the delivery. The system did not work that way. The system worked the way water worked in soil — slowly, by gravity, finding the lowest place it was needed."
+    },
+    {
+      "t": "narrate",
+      "text": "She stood for a while by the wall."
+    },
+    {
+      "t": "narrate",
+      "text": "Then she gathered her companions. She walked back along the path that wasn't a path, past the I-beam, past the place where the haberdashery had been, past the place where her own first apartment had stood, all the way back to the patched shotgun house at the edge of the void."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, this time, slow at the lip of the sinkhole. The void breathed up at her in the same way it had breathed up at her in all the months and years she had been keeping the lonely watch — but the void, tonight, was not asking anything of her."
+    },
+    {
+      "t": "narrate",
+      "text": "The void was, tonight, finished asking."
+    },
+    {
+      "t": "narrate",
+      "text": "The void had received the answer."
+    },
+    {
+      "t": "narrate",
+      "text": "She closed the door of the shotgun house behind her. Lit the candle. Sat at the desk-that-was-a-door-on-bricks. Took out a single piece of paper."
+    },
+    {
+      "t": "narrate",
+      "text": "She wrote, at the top: the address from the back of the 1987 receipt."
+    },
+    {
+      "t": "narrate",
+      "text": "She wrote, in the body, three words: I am ready."
+    },
+    {
+      "t": "narrate",
+      "text": "She signed it, J. LeMoine."
+    },
+    {
+      "t": "narrate",
+      "text": "She folded it. She placed it in an envelope. She wrote the address again on the front. She set the envelope on the desk."
+    },
+    {
+      "t": "narrate",
+      "text": "In the morning she would walk to Elm Street. In the morning she would buy a stamp. In the morning she would put the envelope in the mailbox."
+    },
+    {
+      "t": "narrate",
+      "text": "In the morning, the cycle that had begun, at this address, in 1987, would close."
+    },
+    {
+      "t": "narrate",
+      "text": "And, in the closing, would begin again."
+    },
+    {
+      "t": "narrate",
+      "text": "She blew out the candle."
+    },
+    {
+      "t": "narrate",
+      "text": "She lay down on her cot. The dog at her feet. The cat at her shoulder."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow, over Lafayette, kept flying."
+    },
+    {
+      "t": "narrate",
+      "text": "The Star, in its impaled distance, kept burning."
+    },
+    {
+      "t": "narrate",
+      "text": "The Hermit, in her labyrinth, slept."
+    },
+    {
+      "t": "narrate",
+      "text": "Tomorrow, she would mail the letter."
+    },
+    {
+      "t": "narrate",
+      "text": "Tomorrow, the system would, in its own slow patient way, respond."
+    },
+    {
+      "t": "narrate",
+      "text": "The wall, behind her in the ruin, kept its watch."
+    },
+    {
+      "t": "narrate",
+      "text": "The verses, in their obsidian ink, did not, by morning, fade."
+    },
+    {
+      "t": "end"
+    }
   ]
 }

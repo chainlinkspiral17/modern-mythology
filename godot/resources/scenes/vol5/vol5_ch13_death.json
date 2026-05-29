@@ -2,102 +2,337 @@
   "id": "vol5_ch13_death",
   "vol": 5,
   "chapter": "XIII",
-  "type": "scene",
+  "type": "chapter",
   "title": "Death",
   "nodes": [
-    {"t": "bg", "src": "assets/backgrounds/vol5_hospice_room.jpg"},
-    {"t": "hide", "pos": "left"},
-    {"t": "hide", "pos": "center"},
-    {"t": "hide", "pos": "right"},
-    {"t": "interlude", "text": "XIII — Death", "sub": "Walpurgisnacht in Ward C", "duration": 3},
-
-    {"t": "narrate", "text": "DEATH. The skeleton knight rides a white horse past the fallen pope and the standing children. The sun rises in the distance. Nothing clings to him. Nothing is exempt from him. He is not cruel. He is not unkind. He is simply the one who comes when the chapter ends. Reversed: resistance. The refusal to let go of what is already gone."},
-
-    {"t": "narrate", "text": "The hospice on the second floor of St. Jude's Mercy was, on the last Tuesday in April, very quiet."},
-    {"t": "narrate", "text": "This was not unusual. The hospice was generally quiet. The hospice was, on its quietest days, the quietest part of the building, quieter even than the chapel on the ground floor where Father Anselm offered the noon mass that almost nobody attended, quieter than the staff chapel on the third floor where the night nurses sometimes sat to cry without being seen. Hospice quiet was a particular quiet. It was the quiet of rooms in which time had begun to soften at the edges, the quiet of voices kept low not out of respect but out of sympathy with the rooms themselves, the quiet that absorbed footsteps and conversations and the small distant sounds of the city outside and gave back, in their place, the steady reliable hush of equipment doing what equipment did."},
-    {"t": "narrate", "text": "Alice Newsom, in Room 217, was awake."},
-    {"t": "narrate", "text": "She had been awake since three. She had been, in some technical sense, awake since around two-thirty, but she had spent the first half-hour pretending to be asleep so the night nurse would not come in and check on her. Alice had gotten very good, over the past five months, at pretending to be asleep. The skill had not been on her list of things she wanted to learn before she died. It was on the list now, and would, by some accounting, be one of the last skills she added. She found this funny. She had not, lately, mentioned that she found it funny, because the people around her had begun to react to her finding things funny in a way that suggested they were keeping a tally somewhere of her remaining sense of humor, and that the tally was meant to be reassuring to them rather than to her."},
-    {"t": "narrate", "text": "She would, she had decided, save her remaining laughter for herself."},
-
-    {"t": "narrate", "text": "The room was lit only by the small under-cabinet light above the sink, the one Alice had asked the day staff to leave on at night, because the overhead was too bright and the dark was too dark and the under-cabinet was, like Alice, exactly enough. The walls were the color all hospital walls were — a beige with a slight green undertone that the manufacturer probably called sage and that Alice had been calling, privately, the color of agreed-upon endings. On the wall above the bed: a print of a beach Alice did not recognize. On the bedside table: a paper cup of water with a bent straw, the small plastic dispenser of mouth swabs the night nurse had refilled at midnight, a worn copy of the Book of Common Prayer Alice's daughter had brought on Sunday and that Alice had not, in the four days since, opened. On the floor by the door: a pair of slippers Alice had not worn in three weeks."},
-    {"t": "narrate", "text": "On the windowsill, in a small clear glass that had once held a votive: a single white rose."},
-    {"t": "narrate", "text": "The rose was new. The rose had not been there at midnight. The rose had not been brought by any of the night staff Alice had heard come in and out, and Alice, who had been awake, would have heard."},
-    {"t": "narrate", "text": "Alice looked at the rose. The rose looked back."},
-    {"t": "narrate", "text": "She thought, Well. There you are."},
-
-    {"t": "narrate", "text": "She had been waiting, without quite admitting it, for some kind of arrival."},
-    {"t": "narrate", "text": "Not death itself — she had stopped thinking of death as a thing that arrived, exactly, sometime around month two, when she had begun to understand that it was less a guest at the door than a slow change in the weather inside the room. The room had been getting colder for a long time. The room would, eventually, be cold enough that Alice would not need to be in it. That was the whole of it. There was no doorbell."},
-    {"t": "narrate", "text": "But there was, Alice had begun to suspect, a kind of announcement. Some preliminary courtesy that the older system extended, on its own schedule, to the people who had been paying attention. Alice had been paying attention since she was eleven. Alice knew, the way certain people knew without being told, that she was the kind of person to whom the courtesy would be extended."},
-    {"t": "narrate", "text": "The courtesy had taken its time. The courtesy was, evidently, a rose."},
-    {"t": "narrate", "text": "She approved."},
-
-    {"t": "narrate", "text": "She lay still and watched the rose for a long while. The rose did not, in any visible way, do anything. The rose was a rose. It sat in its small clear glass on the windowsill and existed in the under-cabinet light, white against the sage of the wall behind it, and it was, by any normal accounting, just a rose."},
-    {"t": "narrate", "text": "By any normal accounting."},
-    {"t": "narrate", "text": "Alice had not been on a normal accounting in some time."},
-    {"t": "narrate", "text": "She thought about the case. She thought about it the way she thought about most things now — slowly, gently, holding the pieces up to whatever interior light remained, examining them not for new information but for the quality of having held them. The case had been called Newsom v. PetroTex. She had been the plaintiff of record, though there had been forty-seven plaintiffs, and Alice had not been the most damaged of them, and had not, at the trial, said the most affecting things, and had, on the courthouse steps after the verdict, declined to be photographed, because she had not wanted her face used by anyone for any reason ever again, having spent fifty-six years being looked at and having, at sixty-eight, achieved the small private freedom of being looked at less."},
-    {"t": "narrate", "text": "The case had been Newsom v. PetroTex because Newsom came first alphabetically. That was all. She had not chosen to be the named plaintiff. The lawyer — Erica Campbell, who Alice had liked, who had been precise and tireless and who had, at one point in deposition prep, taken Alice's hand without performing the gesture — had explained the alphabetical accident to her with a small embarrassed honesty Alice had appreciated. Erica had asked, more than once, whether Alice wanted to be the one whose name went on it. Alice had said yes. Alice had not, exactly, wanted to be. Alice had simply understood that somebody would have to be, and that the somebody might as well be the one who was, of all of them, closest to no longer being a somebody."},
-    {"t": "narrate", "text": "This had been six years ago. She had still been working then. She had still been, in a manner of speaking, alive."},
-
-    {"t": "narrate", "text": "The case had won. The settlement had been the largest of its kind in the parish. PetroTex had restructured. Alice's husband — who had not lived to see the verdict, who had died of the same chemical exposure the case had been ostensibly about, who had been a small kind quiet man named Henry whom Alice had loved for forty-one years — had not been there to receive the settlement check, but the settlement check had nonetheless been made out partly in his name, because Erica Campbell had gotten that done as a matter of principle and Alice had not, at the time, understood the principle and had only, later, in the small hours of one of her early hospice nights, finally understood what Erica had been doing."},
-    {"t": "narrate", "text": "Erica had been making sure Henry had been named."},
-    {"t": "narrate", "text": "Erica had been making sure that, in whatever paper trail the verdict eventually became, Henry's name appeared in the public record as a person to whom money was owed and to whom money was paid, even though the money would necessarily go to Alice as his executor. The naming was not, technically, necessary. The naming had been Erica's gift."},
-    {"t": "narrate", "text": "Alice had not, in the six years since, thanked Erica for it. She had assumed Erica understood. She suspected Erica did. People like Erica — people who had Erica's particular gift for the small careful invisible kindness — generally understood that the most precise thanks they received was the not-being-thanked."},
-    {"t": "narrate", "text": "Tonight, in the under-cabinet light, with the white rose on the windowsill, Alice considered writing Erica a letter."},
-    {"t": "narrate", "text": "She would not. She would not because she could no longer hold a pen for more than about ninety seconds, and because the night nurse would, when she came in at four, find the unfinished letter and would, with the best possible intentions, mention it to Alice's daughter, and Alice's daughter would then attempt to finish the letter on Alice's behalf, and the letter that would arrive at Erica Campbell's desk would not be the letter Alice had meant to write."},
-    {"t": "narrate", "text": "She would, instead, simply think the thank-you. She would think it carefully, in the direction of the city of Houston. She would trust the thinking to arrive in its own time."},
-    {"t": "narrate", "text": "This was, she had come to understand, how a great deal of the thanking in the world was actually done."},
-
-    {"t": "narrate", "text": "The room shifted, very slightly, and Alice understood that she was not, this time, alone."},
-    {"t": "narrate", "text": "She did not turn her head. There was no need. The presence was not the kind of presence one looked at. The presence was the kind of presence one acknowledged by continuing to lie still and breathing the same way one had been breathing."},
-    {"t": "narrate", "text": "The presence was, she suspected, what the rose had been announcing."},
-    {"t": "narrate", "text": "She thought, Hello."},
-    {"t": "narrate", "text": "She thought, after a moment: Henry?"},
-    {"t": "narrate", "text": "She thought, after another moment: No. Not Henry. Not yet."},
-    {"t": "narrate", "text": "The presence was not Henry. The presence was older than Henry. The presence was older than Alice. The presence was older than Alice's grandmother, who had died on Alice's seventh birthday and who Alice had felt in the room, then, for the first time, in a way that had been so plain and so undramatic that Alice had not, until she was thirteen, realized that other children did not generally have the same experience."},
-    {"t": "narrate", "text": "The presence sat, as well as Alice could tell, in the chair by the window. It did not weigh the chair. It did not move the chair. The chair, Alice noticed without looking, was the chair her daughter had pulled close to the bed yesterday and had then, on her way out, pushed back against the wall, where it sat tonight in the small posture chairs sat in when they were not, immediately, needed."},
-    {"t": "narrate", "text": "The presence was, Alice thought, sitting there because the chair was the appropriate place to sit, in this room, at this hour. The presence had courtesy. The presence had been, evidently, raised well."},
-    {"t": "narrate", "text": "Alice approved. Alice's approval flowed in the direction of the chair, and the chair, possibly, accepted it."},
-
-    {"t": "narrate", "text": "She lay still for a while."},
-    {"t": "narrate", "text": "She listened to her own breathing. The breathing was a little shallower than it had been on Sunday. The breathing was, she suspected, going to be a little shallower again by the morning. The slow change in the weather had been doing its slow work."},
-    {"t": "narrate", "text": "She thought about her daughter. She thought about the small unresolved argument she and her daughter had been having for forty years about something Alice could not, now, fully reconstruct but that had had to do, at the root of it, with Alice's having been a more practical mother than her daughter had wanted. Alice had not, in the years since, been able to apologize for this, because she did not, on examination, feel that she had been wrong. She had been who she was. Her daughter had wanted who her daughter had wanted. The two had not been the same person. The distance had been the relationship, in some sense; the distance had also been the wound. Both were true. Alice had stopped trying to resolve the both-being-true."},
-    {"t": "narrate", "text": "She thought about Henry. She thought about the morning he had come in from the back garden in his old denim shirt with the cuffs rolled up and had said, Allie, the dog dug up the goddamn rose bush again, and had stood there in the kitchen doorway in the small early-July light with the dirt on his hands looking at her, and they had laughed together, the kind of small quiet laugh married people of forty years had at small things that were not actually funny, and Alice had said, I'll plant another one, and Henry had said, I'll dig it up myself this time, and they had laughed again. She had not, in the moment, registered the laugh as anything in particular. She registered it now. She had been registering it, on and off, for the last six years."},
-    {"t": "narrate", "text": "The rose on the windowsill, she suspected, had something to do with the rose bush."},
-    {"t": "narrate", "text": "The rose on the windowsill, she also suspected, had something to do with much more than the rose bush."},
-    {"t": "narrate", "text": "These were not contradictory suspicions."},
-
-    {"t": "narrate", "text": "The presence in the chair, at some point Alice did not quite mark, became two presences."},
-    {"t": "narrate", "text": "The second presence did not announce itself. The second presence simply settled in beside the first, the way a friend settles in beside another friend on a porch in the late evening, without explanation, because the first friend has been waiting and the second friend has finally arrived. Alice did not, even now, turn her head. She had been raised to give people their privacy. She extended the courtesy."},
-    {"t": "narrate", "text": "She thought, quietly, in the direction of the chair: Is one of you Henry, after all."},
-    {"t": "narrate", "text": "The chair did not, exactly, answer. The chair declined to confirm. The chair did, however, in the small way the chair was capable of communicating, intimate that the question was not, as Alice had asked it, a question that had a single answer."},
-    {"t": "narrate", "text": "Alice considered this."},
-    {"t": "narrate", "text": "She thought, after a while: Of course. Of course not just one. There would be everyone. There would have to be."},
-    {"t": "narrate", "text": "Of course. There would be Henry. There would also be her grandmother, who she had not felt since 1962, who had died on her seventh birthday and who had been waiting, evidently, in the wings of the older system, for the appointment. There would be the friend Alice had lost in her thirties to a car accident. There would be the brother she had not spoken to in twenty years and who had, six months ago, sent her a letter she had not yet answered and that she would now, evidently, never answer with a letter. There would be the small dog from her childhood whose name had been Buster and whose photograph she had carried, foolishly, in her wallet until she was forty. There would be all of them. They had all been, in the older system, in the same room the whole time. The room had only become visible to her tonight."},
-    {"t": "narrate", "text": "She felt — she felt a small specific lift, the kind of lift she had not felt since she was a young woman dancing at a wedding — the unmistakable warmth of being expected."},
-
-    {"t": "narrate", "text": "Outside the window, somewhere in the parking lot below, a car door closed softly. A late-shift visitor or an early-shift staff member. Footsteps crossed the wet asphalt, paused, resumed."},
-    {"t": "narrate", "text": "The under-cabinet light hummed at its small reliable frequency. The sage-green wall absorbed the light without commenting on it. The print of the unidentified beach hung steady above the bed. The Book of Common Prayer remained closed on the bedside table, where it had been doing, in its quiet way, exactly the work it was for."},
-    {"t": "narrate", "text": "Alice closed her eyes."},
-    {"t": "narrate", "text": "The presence in the chair did not move."},
-    {"t": "narrate", "text": "The rose on the windowsill — Alice did not need to look at it now to know — bloomed open by the smallest possible degree, the way roses sometimes did at four in the morning when nobody was watching. Or, sometimes, when somebody was."},
-    {"t": "narrate", "text": "She thought, very carefully, the thank-you to Erica Campbell. She thought it precisely. She thought it once."},
-    {"t": "narrate", "text": "She thought, Henry. I'm coming. Don't dig anything up."},
-    {"t": "narrate", "text": "She thought, Buster."},
-    {"t": "narrate", "text": "She thought, Mama."},
-    {"t": "narrate", "text": "She thought, Yes."},
-    {"t": "narrate", "text": "She thought, Yes."},
-    {"t": "narrate", "text": "She thought, Yes."},
-
-    {"t": "narrate", "text": "The under-cabinet light continued, steadily."},
-    {"t": "narrate", "text": "The hospice, on the last Tuesday in April, was very quiet."},
-    {"t": "narrate", "text": "At four-oh-six AM the night nurse, doing her standard rounds, paused at the door of Room 217. She looked in. She saw what she had been trained, in seventeen years of this work, to recognize without needing to enter the room. She crossed herself once — she was the kind of nurse who still did this, quietly, without announcing it — and went to the desk to make the small specific call that began the small specific protocol, and then to wake the chaplain, and then to call the daughter, in that order, because in seventeen years she had found that this order produced the least suffering for the largest number of people."},
-    {"t": "narrate", "text": "The chair by the window was empty."},
-    {"t": "narrate", "text": "The rose on the windowsill was bloomed."},
-    {"t": "narrate", "text": "Outside, the city of Simons, Louisiana, kept its quiet pre-dawn. A single bird that was not, technically, a bird called once into the dark, and was answered, faintly, from the direction of Houston, where in a high-rise office a lawyer named Erica Campbell, who had not slept, paused at her desk with her pen in mid-stroke and could not, for a moment that lasted perhaps three seconds, have said why."},
-    {"t": "narrate", "text": "The rose, in the window, in the under-cabinet light, did not, after Alice, change again."},
-    {"t": "narrate", "text": "The wheel turned."},
-    {"t": "narrate", "text": "Alice Newsom, having paid the required attention, stepped quietly out of the room."},
-
-    {"t": "end"}
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_hospice_room.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "XIII — Death",
+      "sub": "Walpurgisnacht in Ward C",
+      "duration": 3
+    },
+    {
+      "t": "narrate",
+      "text": "DEATH. The skeleton knight rides a white horse past the fallen pope and the standing children. The sun rises in the distance. Nothing clings to him. Nothing is exempt from him. He is not cruel. He is not unkind. He is simply the one who comes when the chapter ends. Reversed: resistance. The refusal to let go of what is already gone."
+    },
+    {
+      "t": "narrate",
+      "text": "The hospice on the second floor of St. Jude's Mercy was, on the last Tuesday in April, very quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "This was not unusual. The hospice was generally quiet. The hospice was, on its quietest days, the quietest part of the building, quieter even than the chapel on the ground floor where Father Anselm offered the noon mass that almost nobody attended, quieter than the staff chapel on the third floor where the night nurses sometimes sat to cry without being seen. Hospice quiet was a particular quiet. It was the quiet of rooms in which time had begun to soften at the edges, the quiet of voices kept low not out of respect but out of sympathy with the rooms themselves, the quiet that absorbed footsteps and conversations and the small distant sounds of the city outside and gave back, in their place, the steady reliable hush of equipment doing what equipment did."
+    },
+    {
+      "t": "narrate",
+      "text": "Alice Newsom, in Room 217, was awake."
+    },
+    {
+      "t": "narrate",
+      "text": "She had been awake since three. She had been, in some technical sense, awake since around two-thirty, but she had spent the first half-hour pretending to be asleep so the night nurse would not come in and check on her. Alice had gotten very good, over the past five months, at pretending to be asleep. The skill had not been on her list of things she wanted to learn before she died. It was on the list now, and would, by some accounting, be one of the last skills she added. She found this funny. She had not, lately, mentioned that she found it funny, because the people around her had begun to react to her finding things funny in a way that suggested they were keeping a tally somewhere of her remaining sense of humor, and that the tally was meant to be reassuring to them rather than to her."
+    },
+    {
+      "t": "narrate",
+      "text": "She would, she had decided, save her remaining laughter for herself."
+    },
+    {
+      "t": "narrate",
+      "text": "The room was lit only by the small under-cabinet light above the sink, the one Alice had asked the day staff to leave on at night, because the overhead was too bright and the dark was too dark and the under-cabinet was, like Alice, exactly enough. The walls were the color all hospital walls were — a beige with a slight green undertone that the manufacturer probably called sage and that Alice had been calling, privately, the color of agreed-upon endings. On the wall above the bed: a print of a beach Alice did not recognize. On the bedside table: a paper cup of water with a bent straw, the small plastic dispenser of mouth swabs the night nurse had refilled at midnight, a worn copy of the Book of Common Prayer Alice's daughter had brought on Sunday and that Alice had not, in the four days since, opened. On the floor by the door: a pair of slippers Alice had not worn in three weeks."
+    },
+    {
+      "t": "narrate",
+      "text": "On the windowsill, in a small clear glass that had once held a votive: a single white rose."
+    },
+    {
+      "t": "narrate",
+      "text": "The rose was new. The rose had not been there at midnight. The rose had not been brought by any of the night staff Alice had heard come in and out, and Alice, who had been awake, would have heard."
+    },
+    {
+      "t": "narrate",
+      "text": "Alice looked at the rose. The rose looked back."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, Well. There you are."
+    },
+    {
+      "t": "narrate",
+      "text": "She had been waiting, without quite admitting it, for some kind of arrival."
+    },
+    {
+      "t": "narrate",
+      "text": "Not death itself — she had stopped thinking of death as a thing that arrived, exactly, sometime around month two, when she had begun to understand that it was less a guest at the door than a slow change in the weather inside the room. The room had been getting colder for a long time. The room would, eventually, be cold enough that Alice would not need to be in it. That was the whole of it. There was no doorbell."
+    },
+    {
+      "t": "narrate",
+      "text": "But there was, Alice had begun to suspect, a kind of announcement. Some preliminary courtesy that the older system extended, on its own schedule, to the people who had been paying attention. Alice had been paying attention since she was eleven. Alice knew, the way certain people knew without being told, that she was the kind of person to whom the courtesy would be extended."
+    },
+    {
+      "t": "narrate",
+      "text": "The courtesy had taken its time. The courtesy was, evidently, a rose."
+    },
+    {
+      "t": "narrate",
+      "text": "She approved."
+    },
+    {
+      "t": "narrate",
+      "text": "She lay still and watched the rose for a long while. The rose did not, in any visible way, do anything. The rose was a rose. It sat in its small clear glass on the windowsill and existed in the under-cabinet light, white against the sage of the wall behind it, and it was, by any normal accounting, just a rose."
+    },
+    {
+      "t": "narrate",
+      "text": "By any normal accounting."
+    },
+    {
+      "t": "narrate",
+      "text": "Alice had not been on a normal accounting in some time."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought about the case. She thought about it the way she thought about most things now — slowly, gently, holding the pieces up to whatever interior light remained, examining them not for new information but for the quality of having held them. The case had been called Newsom v. PetroTex. She had been the plaintiff of record, though there had been forty-seven plaintiffs, and Alice had not been the most damaged of them, and had not, at the trial, said the most affecting things, and had, on the courthouse steps after the verdict, declined to be photographed, because she had not wanted her face used by anyone for any reason ever again, having spent fifty-six years being looked at and having, at sixty-eight, achieved the small private freedom of being looked at less."
+    },
+    {
+      "t": "narrate",
+      "text": "The case had been Newsom v. PetroTex because Newsom came first alphabetically. That was all. She had not chosen to be the named plaintiff. The lawyer — Erica Campbell, who Alice had liked, who had been precise and tireless and who had, at one point in deposition prep, taken Alice's hand without performing the gesture — had explained the alphabetical accident to her with a small embarrassed honesty Alice had appreciated. Erica had asked, more than once, whether Alice wanted to be the one whose name went on it. Alice had said yes. Alice had not, exactly, wanted to be. Alice had simply understood that somebody would have to be, and that the somebody might as well be the one who was, of all of them, closest to no longer being a somebody."
+    },
+    {
+      "t": "narrate",
+      "text": "This had been six years ago. She had still been working then. She had still been, in a manner of speaking, alive."
+    },
+    {
+      "t": "narrate",
+      "text": "The case had won. The settlement had been the largest of its kind in the parish. PetroTex had restructured. Alice's husband — who had not lived to see the verdict, who had died of the same chemical exposure the case had been ostensibly about, who had been a small kind quiet man named Henry whom Alice had loved for forty-one years — had not been there to receive the settlement check, but the settlement check had nonetheless been made out partly in his name, because Erica Campbell had gotten that done as a matter of principle and Alice had not, at the time, understood the principle and had only, later, in the small hours of one of her early hospice nights, finally understood what Erica had been doing."
+    },
+    {
+      "t": "narrate",
+      "text": "Erica had been making sure Henry had been named."
+    },
+    {
+      "t": "narrate",
+      "text": "Erica had been making sure that, in whatever paper trail the verdict eventually became, Henry's name appeared in the public record as a person to whom money was owed and to whom money was paid, even though the money would necessarily go to Alice as his executor. The naming was not, technically, necessary. The naming had been Erica's gift."
+    },
+    {
+      "t": "narrate",
+      "text": "Alice had not, in the six years since, thanked Erica for it. She had assumed Erica understood. She suspected Erica did. People like Erica — people who had Erica's particular gift for the small careful invisible kindness — generally understood that the most precise thanks they received was the not-being-thanked."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight, in the under-cabinet light, with the white rose on the windowsill, Alice considered writing Erica a letter."
+    },
+    {
+      "t": "narrate",
+      "text": "She would not. She would not because she could no longer hold a pen for more than about ninety seconds, and because the night nurse would, when she came in at four, find the unfinished letter and would, with the best possible intentions, mention it to Alice's daughter, and Alice's daughter would then attempt to finish the letter on Alice's behalf, and the letter that would arrive at Erica Campbell's desk would not be the letter Alice had meant to write."
+    },
+    {
+      "t": "narrate",
+      "text": "She would, instead, simply think the thank-you. She would think it carefully, in the direction of the city of Houston. She would trust the thinking to arrive in its own time."
+    },
+    {
+      "t": "narrate",
+      "text": "This was, she had come to understand, how a great deal of the thanking in the world was actually done."
+    },
+    {
+      "t": "narrate",
+      "text": "The room shifted, very slightly, and Alice understood that she was not, this time, alone."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not turn her head. There was no need. The presence was not the kind of presence one looked at. The presence was the kind of presence one acknowledged by continuing to lie still and breathing the same way one had been breathing."
+    },
+    {
+      "t": "narrate",
+      "text": "The presence was, she suspected, what the rose had been announcing."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, Hello."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, after a moment: Henry?"
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, after another moment: No. Not Henry. Not yet."
+    },
+    {
+      "t": "narrate",
+      "text": "The presence was not Henry. The presence was older than Henry. The presence was older than Alice. The presence was older than Alice's grandmother, who had died on Alice's seventh birthday and who Alice had felt in the room, then, for the first time, in a way that had been so plain and so undramatic that Alice had not, until she was thirteen, realized that other children did not generally have the same experience."
+    },
+    {
+      "t": "narrate",
+      "text": "The presence sat, as well as Alice could tell, in the chair by the window. It did not weigh the chair. It did not move the chair. The chair, Alice noticed without looking, was the chair her daughter had pulled close to the bed yesterday and had then, on her way out, pushed back against the wall, where it sat tonight in the small posture chairs sat in when they were not, immediately, needed."
+    },
+    {
+      "t": "narrate",
+      "text": "The presence was, Alice thought, sitting there because the chair was the appropriate place to sit, in this room, at this hour. The presence had courtesy. The presence had been, evidently, raised well."
+    },
+    {
+      "t": "narrate",
+      "text": "Alice approved. Alice's approval flowed in the direction of the chair, and the chair, possibly, accepted it."
+    },
+    {
+      "t": "narrate",
+      "text": "She lay still for a while."
+    },
+    {
+      "t": "narrate",
+      "text": "She listened to her own breathing. The breathing was a little shallower than it had been on Sunday. The breathing was, she suspected, going to be a little shallower again by the morning. The slow change in the weather had been doing its slow work."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought about her daughter. She thought about the small unresolved argument she and her daughter had been having for forty years about something Alice could not, now, fully reconstruct but that had had to do, at the root of it, with Alice's having been a more practical mother than her daughter had wanted. Alice had not, in the years since, been able to apologize for this, because she did not, on examination, feel that she had been wrong. She had been who she was. Her daughter had wanted who her daughter had wanted. The two had not been the same person. The distance had been the relationship, in some sense; the distance had also been the wound. Both were true. Alice had stopped trying to resolve the both-being-true."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought about Henry. She thought about the morning he had come in from the back garden in his old denim shirt with the cuffs rolled up and had said, Allie, the dog dug up the goddamn rose bush again, and had stood there in the kitchen doorway in the small early-July light with the dirt on his hands looking at her, and they had laughed together, the kind of small quiet laugh married people of forty years had at small things that were not actually funny, and Alice had said, I'll plant another one, and Henry had said, I'll dig it up myself this time, and they had laughed again. She had not, in the moment, registered the laugh as anything in particular. She registered it now. She had been registering it, on and off, for the last six years."
+    },
+    {
+      "t": "narrate",
+      "text": "The rose on the windowsill, she suspected, had something to do with the rose bush."
+    },
+    {
+      "t": "narrate",
+      "text": "The rose on the windowsill, she also suspected, had something to do with much more than the rose bush."
+    },
+    {
+      "t": "narrate",
+      "text": "These were not contradictory suspicions."
+    },
+    {
+      "t": "narrate",
+      "text": "The presence in the chair, at some point Alice did not quite mark, became two presences."
+    },
+    {
+      "t": "narrate",
+      "text": "The second presence did not announce itself. The second presence simply settled in beside the first, the way a friend settles in beside another friend on a porch in the late evening, without explanation, because the first friend has been waiting and the second friend has finally arrived. Alice did not, even now, turn her head. She had been raised to give people their privacy. She extended the courtesy."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, quietly, in the direction of the chair: Is one of you Henry, after all."
+    },
+    {
+      "t": "narrate",
+      "text": "The chair did not, exactly, answer. The chair declined to confirm. The chair did, however, in the small way the chair was capable of communicating, intimate that the question was not, as Alice had asked it, a question that had a single answer."
+    },
+    {
+      "t": "narrate",
+      "text": "Alice considered this."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, after a while: Of course. Of course not just one. There would be everyone. There would have to be."
+    },
+    {
+      "t": "narrate",
+      "text": "Of course. There would be Henry. There would also be her grandmother, who she had not felt since 1962, who had died on her seventh birthday and who had been waiting, evidently, in the wings of the older system, for the appointment. There would be the friend Alice had lost in her thirties to a car accident. There would be the brother she had not spoken to in twenty years and who had, six months ago, sent her a letter she had not yet answered and that she would now, evidently, never answer with a letter. There would be the small dog from her childhood whose name had been Buster and whose photograph she had carried, foolishly, in her wallet until she was forty. There would be all of them. They had all been, in the older system, in the same room the whole time. The room had only become visible to her tonight."
+    },
+    {
+      "t": "narrate",
+      "text": "She felt — she felt a small specific lift, the kind of lift she had not felt since she was a young woman dancing at a wedding — the unmistakable warmth of being expected."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside the window, somewhere in the parking lot below, a car door closed softly. A late-shift visitor or an early-shift staff member. Footsteps crossed the wet asphalt, paused, resumed."
+    },
+    {
+      "t": "narrate",
+      "text": "The under-cabinet light hummed at its small reliable frequency. The sage-green wall absorbed the light without commenting on it. The print of the unidentified beach hung steady above the bed. The Book of Common Prayer remained closed on the bedside table, where it had been doing, in its quiet way, exactly the work it was for."
+    },
+    {
+      "t": "narrate",
+      "text": "Alice closed her eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "The presence in the chair did not move."
+    },
+    {
+      "t": "narrate",
+      "text": "The rose on the windowsill — Alice did not need to look at it now to know — bloomed open by the smallest possible degree, the way roses sometimes did at four in the morning when nobody was watching. Or, sometimes, when somebody was."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, very carefully, the thank-you to Erica Campbell. She thought it precisely. She thought it once."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, Henry. I'm coming. Don't dig anything up."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, Buster."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, Mama."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, Yes."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, Yes."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, Yes."
+    },
+    {
+      "t": "narrate",
+      "text": "The under-cabinet light continued, steadily."
+    },
+    {
+      "t": "narrate",
+      "text": "The hospice, on the last Tuesday in April, was very quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "At four-oh-six AM the night nurse, doing her standard rounds, paused at the door of Room 217. She looked in. She saw what she had been trained, in seventeen years of this work, to recognize without needing to enter the room. She crossed herself once — she was the kind of nurse who still did this, quietly, without announcing it — and went to the desk to make the small specific call that began the small specific protocol, and then to wake the chaplain, and then to call the daughter, in that order, because in seventeen years she had found that this order produced the least suffering for the largest number of people."
+    },
+    {
+      "t": "narrate",
+      "text": "The chair by the window was empty."
+    },
+    {
+      "t": "narrate",
+      "text": "The rose on the windowsill was bloomed."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, the city of Simons, Louisiana, kept its quiet pre-dawn. A single bird that was not, technically, a bird called once into the dark, and was answered, faintly, from the direction of Houston, where in a high-rise office a lawyer named Erica Campbell, who had not slept, paused at her desk with her pen in mid-stroke and could not, for a moment that lasted perhaps three seconds, have said why."
+    },
+    {
+      "t": "narrate",
+      "text": "The rose, in the window, in the under-cabinet light, did not, after Alice, change again."
+    },
+    {
+      "t": "narrate",
+      "text": "The wheel turned."
+    },
+    {
+      "t": "narrate",
+      "text": "Alice Newsom, having paid the required attention, stepped quietly out of the room."
+    },
+    {
+      "t": "end"
+    }
   ]
 }

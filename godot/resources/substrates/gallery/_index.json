@@ -63,6 +63,24 @@
       "unlock_pattern": "vol5_ch0_booth6"
     },
     {
+      "id": "portrait_elicia",
+      "title": "Portrait — Elicia Duchane",
+      "set": "Chapter II — The High Priestess",
+      "type": "composition",
+      "path": "portrait_elicia",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch2_*"
+    },
+    {
+      "id": "portrait_nicola",
+      "title": "Portrait — Nicola Greer",
+      "set": "Chapter III — The Empress",
+      "type": "composition",
+      "path": "portrait_nicola",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch3_empress"
+    },
+    {
       "id": "music_player",
       "title": "MUSIC PLAYER  (live visualizer)",
       "set": "Player Surfaces",

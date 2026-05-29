@@ -2,154 +2,560 @@
   "id": "vol5_ch15_devil",
   "vol": 5,
   "chapter": "XV",
-  "type": "scene",
+  "type": "chapter",
   "title": "The Devil",
   "nodes": [
-    {"t": "bg", "src": "assets/backgrounds/vol5_new_orleans_apartment.jpg"},
-    {"t": "hide", "pos": "left"},
-    {"t": "hide", "pos": "center"},
-    {"t": "hide", "pos": "right"},
-    {"t": "interlude", "text": "XV — The Devil", "sub": "Gumbo Limbo", "duration": 3},
-
-    {"t": "narrate", "text": "THE DEVIL. The horned figure on his throne, the two figures chained below him — but look: the chains are loose. They could slip free. They do not slip free. The Devil's power is not force. The Devil's power is the belief that leaving is impossible. Reversed: release. The moment the chains are seen for what they are."},
-
-    {"t": "narrate", "text": "The ceiling fan wobbled like a dying pelican above Jimmy Daigle's head."},
-    {"t": "narrate", "text": "Stirring the thick pre-dawn New Orleans air — a gumbo of stale bourbon, sweat, cheap perfume clinging to the rented sofa he had crashed on, and something vaguely like river mud. Home sweet temporary hell. He pried one eye open. The world swam in a jaundiced filter, all bruised purples and sickly greens bleeding through the grimy apartment window. His head throbbed in time with a distant garbage truck backing up — a relentless beep-beep-beep drilling into his skull."},
-    {"t": "narrate", "text": "A hangover wasn't just a headache. A hangover was a full-body audit of last night's bad decisions. And last night? Last night had been a masterpiece of bad decisions."},
-    {"t": "narrate", "text": "He swung his legs off the sofa. The springs groaned in protest. The floor felt sticky. Everything felt sticky. This city sweated desperation, the way other cities sweated humidity, the way a particular kind of person sweated guilt — copious, obvious, and unavoidable."},
-    {"t": "narrate", "text": "He stumbled toward the kitchenette. A monument to neglect. The sink full of cloudy glasses. An ashtray overflowing like a tiny toxic volcano. A dumpster fire of a life, pungent and ripe — just how he liked it these days."},
-    {"t": "narrate", "text": "Somewhere along the line, maybe back when Graustark had started sinking, ambition had curdled into something meaner. Sharper. A hunger not just to win but to control."},
-    {"t": "narrate", "text": "The Devil, they called this card."},
-    {"t": "narrate", "text": "Sounded about right."},
-    {"t": "narrate", "text": "Felt, more to the point, familiar."},
-
-    {"t": "narrate", "text": "He found a half-empty bottle of something brown warming on the counter. Tilted it back. Fire down the hatch. Good morning, NOLA."},
-    {"t": "narrate", "text": "He caught his reflection in the greasy microwave door. Eyes bloodshot. Stubble like iron filings. Hair sticking up like he had wrestled a ghost."},
-    {"t": "narrate", "text": "Maybe he had. The ghost of Jimmy Daigle, former college jock, former semi-honest manager. Now full-time operator navigating the gothic gutter landscape of Antonio D'Ambrosio's increasingly baroque ambitions."},
-    {"t": "narrate", "text": "He had been, at twenty-two, a different person. He could still, sometimes, find that person in the back of his throat — the shape of the words yes coach came back to him sometimes, late, the way muscle memory came back to a guitar player who had not picked up a guitar in years. The person who said yes coach had been a person who believed coaches existed. The person who looked at him from the microwave door this morning had not, in some time, believed in coaches. The person at the microwave believed in plays. The person at the microwave called the plays himself."},
-    {"t": "narrate", "text": "The play this morning, he was beginning to suspect, was the one where he sacrificed the wrong piece for the right reason."},
-    {"t": "narrate", "text": "He had been telling himself, for several weeks now, that he had not yet decided. He had been telling himself this in the small persistent way a man tells himself a thing he has, in fact, already decided."},
-
-    {"t": "narrate", "text": "Ember & Ash."},
-    {"t": "narrate", "text": "Antonio's baby. Jimmy was supposed to be the midwife. The protector. Keep the dream alive, keep the kid on track. But the lines had blurred. Hadn't they."},
-    {"t": "narrate", "text": "Loyalty felt suspiciously like leverage now. Protection looked a lot like control. He found himself pulling strings, nudging things just so, whispering suggestions that sounded reasonable but tasted like poison."},
-    {"t": "narrate", "text": "Echoes of D. Dean — that phantom mentor from Faust's fever dream, back in the bad year, the year he had not let himself think about for fifteen years and that had begun, in the past month, to think about him — seemed to bounce around the humid air."},
-    {"t": "narrate", "text": "Make the world what you need it to be, Jimmy. Reality is just a poorly negotiated contract."},
-    {"t": "narrate", "text": "The voice had not, technically, been audible in years. The voice had not, technically, ever been audible — D. Dean was, properly speaking, a dream Jimmy had had once, in the spring of 2009, in the back room of a bar Jimmy could no longer locate on any map of the city he had thought, at the time, he had been in. The voice had simply continued, in the years since, to be the voice Jimmy heard in his own head when his own head was operating in a particular register."},
-    {"t": "narrate", "text": "The register was, this morning, on. The register had been on, in some sense, since he had set up the LLC for Antonio in May. The register was, increasingly, the register he heard most."},
-    {"t": "narrate", "text": "He had stopped pretending the register was just the bourbon."},
-    {"t": "narrate", "text": "The bourbon was the bourbon. The register was older."},
-
-    {"t": "narrate", "text": "He thought of Douglas Forte. Good ol' reliable Doug. Summoned down here to be the muscle. The anchor."},
-    {"t": "narrate", "text": "Forte, with his quiet strength and his haunted eyes, didn't see the grift."},
-    {"t": "narrate", "text": "— Or:"},
-    {"t": "narrate", "text": "Forte saw the grift. Forte had always seen the grift. Forte had been, since approximately the third week, watching Jimmy with the particular still attention of a carpenter watching a plank that had begun to warp. Forte had not said anything. Forte was not, by temperament, a man who said anything. Forte was a man who, when the warp passed a certain threshold, would simply stop using the plank, and would, in so doing, make a small precise adjustment to whatever he had been building, and the adjustment would absorb the loss."},
-    {"t": "narrate", "text": "Jimmy had, this past week, begun to suspect that Forte was the kind of plank who, when stopped being used, would not be wasted. Forte had a way of arranging the timing of his own departures. Forte had probably already written the letter. Forte had probably already left it in the inside pocket of a jacket that hung on the back of a chair in a room above a laundromat that Jimmy was, on the leasing paperwork, the legal occupant of and that Jimmy would, eventually, find an excuse to enter."},
-    {"t": "narrate", "text": "Jimmy did not, this morning, intend to enter the room. Jimmy intended to wait for the situation to require it."},
-    {"t": "narrate", "text": "The situation would, Jimmy estimated, require it within four to six weeks."},
-    {"t": "narrate", "text": "In this game, someone always paid the price. Better Doug than him. Better Doug than Antonio, whose potential was still — useful."},
-    {"t": "narrate", "text": "The chains of obsession, materialism, keeping Antonio's dream (and Jimmy's paycheck) afloat — they felt tight today. Heavy. Strangely comforting."},
-    {"t": "narrate", "text": "Enslavement had its perks. The chief perk, Jimmy had learned, was that enslavement absolved you of decisions. The chains made the choices. You simply continued, day by day, executing the plays the chains had already called."},
-    {"t": "narrate", "text": "He had not, in some time, called a play himself. He had begun, in the past weeks, to wonder whether he was still capable of it."},
-
-    {"t": "narrate", "text": "His phone buzzed. Rattling against the formica countertop."},
-    {"t": "narrate", "text": "Probably Antonio. Needing reassurance, or another impossible favor."},
-    {"t": "narrate", "text": "Jimmy let it buzz. Let him stew. He wandered over to the window, pushing aside a yellowed lace curtain that disintegrated slightly at his touch."},
-    {"t": "narrate", "text": "Below, the street was slowly coming alive."},
-    {"t": "narrate", "text": "A lone saxophone player coaxed a bluesy lament from his horn, the notes hanging heavy and sweet in the air. A woman in a sequined dress that had seen better decades stumbled out of a doorway, laughing too loud. A delivery man pushed a hand truck of bread across the cobblestones in a way that suggested he had been doing this exact route, at this exact hour, for thirty years and would continue to do it for as long as he was capable."},
-    {"t": "narrate", "text": "The gutter saints and sinners were stirring."},
-    {"t": "narrate", "text": "His people."},
-    {"t": "narrate", "text": "He watched the saxophone player for a long moment. The man was good. The man was very good. The man had, Jimmy had observed over the past month, exactly one tip jar that he never emptied during business hours, and exactly one signature lament that he played early in the morning before the tourists were awake, and which Jimmy had begun, recently, to suspect was the man's only true song — the one he played for no audience because there was no audience to play it for, and because the playing was the point."},
-    {"t": "narrate", "text": "The saxophone player did not, in any obvious sense, want anything from anyone."},
-    {"t": "narrate", "text": "Jimmy could not, this morning, say the same."},
-
-    {"t": "narrate", "text": "He turned away from the window."},
-    {"t": "narrate", "text": "He thought about Maya. The thought arrived unbidden, the way thoughts about Maya always did — there was no protocol for thinking about Maya, no schedule, no occasion, just the small periodic surfacing of his daughter's face at moments when Jimmy was least equipped to do anything about it."},
-    {"t": "narrate", "text": "Maya, sixteen, in Harmony Creek Estates. Living with her grandmother. Doing — whatever Maya did. He had not seen her in eleven months. He had not, technically, called her in seven. The last call had been ostensibly about her birthday, which he had remembered three days late, and had been, in practice, four minutes of him talking and ninety seconds of her saying yeah, okay, Dad. yeah. okay, in the small careful voice teenagers used when they were waiting for a phone call to be over."},
-    {"t": "narrate", "text": "He thought, with the small specific clarity that visited him only at this hour and that he relied on more than he wanted to admit: she will, eventually, be the reckoning."},
-    {"t": "narrate", "text": "He thought, less clearly: she may already be."},
-    {"t": "narrate", "text": "He thought, finally and almost in passing: whatever I am about to do to Doug, whatever I am about to allow to happen to Antonio, whatever I am running because the chains have decided I am running it — Maya is going to find out, and Maya is going to remember, and Maya is going to be old enough, by then, that the remembering will mean something."},
-    {"t": "narrate", "text": "He thought this. He set the thought down. He was good at setting thoughts down. The bourbon helped."},
-
-    {"t": "narrate", "text": "What did it all mean. This frantic scramble. This ambition soured into manipulation. This dumpster fire life."},
-    {"t": "narrate", "text": "It meant surviving. It meant controlling the narrative before it controlled you. It meant recognizing the Devil wasn't some external force — he was right here, staring back from the greasy microwave reflection, nursing a hangover and planning his next move."},
-    {"t": "narrate", "text": "The hunger was real. The power felt — good. Addictive."},
-    {"t": "narrate", "text": "He grabbed the buzzing phone. Time to make the rounds. Time to tighten the chains."},
-    {"t": "narrate", "text": "The screen, when it came on, was not Antonio. The screen said Q. PAUL."},
-    {"t": "narrate", "text": "Of course it did."},
-    {"t": "narrate", "text": "Q. PAUL was calling because Q. PAUL was always calling. Q. PAUL had been calling Antonio for weeks. Q. PAUL, today, was calling Jimmy. The escalation was the message. The escalation said I am beginning to deal with the operator and not the principal. The principal is, in some sense, no longer the principal."},
-    {"t": "narrate", "text": "Jimmy had been waiting for this call."},
-    {"t": "narrate", "text": "Jimmy had also, in a way he had not let himself fully articulate, been arranging for it."},
-    {"t": "narrate", "text": "He picked up."},
-    {"t": "say", "char": "jimmy", "text": "Quentin."},
-    {"t": "say", "char": "paul", "text": "James. I think it's time you and I had a conversation."},
-    {"t": "say", "char": "jimmy", "text": "Now?"},
-    {"t": "say", "char": "paul", "text": "Soon. Today. I'd prefer to do it in person."},
-    {"t": "say", "char": "jimmy", "text": "Alright. Where."},
-    {"t": "say", "char": "paul", "text": "There's a bar in the Marigny called the Iron Crow. I believe you know it."},
-    {"t": "narrate", "text": "Jimmy did know it. Jimmy had not, however, told Q. Paul that he knew it. The Iron Crow was a place Jimmy had drunk at, once, on his second week in New Orleans, and had not been back to. He had not told anyone about the visit. The fact that Q. Paul knew about the visit was, itself, a piece of information."},
-    {"t": "say", "char": "paul", "text": "Three o'clock. Don't bring anyone."},
-
-    {"t": "narrate", "text": "Jimmy stood at the window for a long moment with the phone in his hand."},
-    {"t": "narrate", "text": "He thought, the chains just tightened."},
-    {"t": "narrate", "text": "He thought, the chains just tightened, and I am, evidently, the link being adjusted."},
-    {"t": "narrate", "text": "He thought, with a small surprise that was almost — almost — relief: this is what it feels like when you are not, in fact, the operator. This is what it feels like when you are the operated."},
-    {"t": "narrate", "text": "He had not, since approximately 2011, been the operated. He had, for thirteen years, been the one tightening the chains on other people. He had assumed, in the small unspoken arrogance of those years, that the chains had only ever been pointing one way."},
-    {"t": "narrate", "text": "The chains, this morning, were pointing back."},
-    {"t": "narrate", "text": "He poured another finger of the warm bourbon. He drank it. He set the glass down. He looked at his reflection in the microwave door."},
-    {"t": "narrate", "text": "The Devil looked back."},
-    {"t": "narrate", "text": "The Devil, this morning, did not look as confident as he had looked yesterday."},
-    {"t": "narrate", "text": "The Devil looked, in fact — and Jimmy registered this without quite knowing what to do with the registering — afraid."},
-
-    {"t": "narrate", "text": "He turned away from the microwave. He picked up the buzzing phone, which had, in the meantime, begun to buzz again. This time it actually was Antonio."},
-    {"t": "narrate", "text": "He looked at the screen. He let it ring. He let it ring four times. He let it ring six."},
-    {"t": "narrate", "text": "On the seventh ring he answered."},
-    {"t": "say", "char": "jimmy", "text": "Hey, kid."},
-    {"t": "say", "char": "antonio", "text": "Where are you."},
-    {"t": "say", "char": "jimmy", "text": "Apartment."},
-    {"t": "say", "char": "antonio", "text": "Get to the warehouse. Now. Something happened with the gas line."},
-    {"t": "say", "char": "jimmy", "text": "What kind of something."},
-    {"t": "say", "char": "antonio", "text": "The kind of something where there's a city inspector in my office and he is asking me questions I don't have answers to and he came in without an appointment and his name is not on the schedule of anyone I know who works for the city."},
-    {"t": "narrate", "text": "Jimmy was quiet for a moment."},
-    {"t": "say", "char": "antonio", "text": "Jimmy."},
-    {"t": "say", "char": "jimmy", "text": "I'm here."},
-    {"t": "say", "char": "antonio", "text": "Get over here."},
-    {"t": "say", "char": "jimmy", "text": "I'm coming. Stall him. Don't sign anything. Don't agree to anything. If he asks you about permits, you tell him you'll call your lawyer."},
-    {"t": "say", "char": "antonio", "text": "My lawyer is —"},
-    {"t": "say", "char": "jimmy", "text": "Yeah. I know. Tell him anyway."},
-
-    {"t": "narrate", "text": "Jimmy stood in the kitchenette in his stained undershirt at six twenty-three AM with two phones — the one Antonio had just called him on, and the second one, the one he kept in a drawer for calls he did not, ever, want associated with the first one — and considered, for the first time in some weeks, whether the play he had been running was the play he had thought he was running."},
-    {"t": "narrate", "text": "The city inspector was not, of course, a city inspector. The city inspector was Q. Paul's. Q. Paul had moved up the timetable. Q. Paul had decided to apply pressure to Antonio in the morning so that Q. Paul could close the deal with Jimmy in the afternoon. The morning move was the leverage for the afternoon move."},
-    {"t": "narrate", "text": "Jimmy understood. Jimmy had run the same play, in different jurisdictions, perhaps eleven times."},
-    {"t": "narrate", "text": "The being-on-the-receiving-end was different."},
-    {"t": "narrate", "text": "Jimmy realized, with the small lateral clarity he sometimes got at this hour: the play Q. Paul was running this afternoon required Doug."},
-    {"t": "narrate", "text": "Required Doug, specifically. Doug was the hinge. Q. Paul knew about Doug. Q. Paul knew that Doug was in the room above the laundromat. Q. Paul knew, somehow — somehow — that the room above the laundromat was leased in Jimmy's name. The afternoon meeting at the Iron Crow would, Jimmy was almost certain, conclude with Q. Paul instructing Jimmy as to what role Doug was going to play in the next phase, and Jimmy would, with the precise calm of an operator who had already done the math, agree."},
-    {"t": "narrate", "text": "Jimmy had, until ten minutes ago, been planning to use Doug himself."},
-    {"t": "narrate", "text": "The fact that Q. Paul also wanted to use Doug — and that Q. Paul had figured out how to make Jimmy do it — meant, Jimmy realized, that Jimmy was no longer, exactly, the architect of the play. Jimmy was now an instrument inside a play whose architect was somewhere else. The architect had foreseen Jimmy's intentions. The architect had folded Jimmy's intentions into the larger design."},
-    {"t": "narrate", "text": "The architect was D. Dean. Or the architect was Q. Paul. Or the architect was some third entity Jimmy had not yet identified, of whom Q. Paul and D. Dean were the visible operators."},
-    {"t": "narrate", "text": "Jimmy, this morning, was not sure which."},
-    {"t": "narrate", "text": "Jimmy, this morning, was beginning to suspect it did not matter."},
-    {"t": "narrate", "text": "The chains were the chains. He had put them on, link by link, in the small daily acts of the past thirteen years. He had not, in any of those acts, noticed that he was forging the chain. He had assumed he was, each time, cutting one. He had been wrong. He had been wrong, possibly, the entire time."},
-
-    {"t": "narrate", "text": "He set the second phone down. He put the first phone in his pocket. He pulled on his jeans, the same jeans he had been wearing yesterday and that had a small dried smear of something on the left thigh he chose not to investigate. He pulled on his boots. He took one last swallow of the bourbon. He left the bottle uncapped, because uncapping it had always felt like a commitment and recapping it had always felt like a lie, and he had stopped lying to bottles in 2017."},
-    {"t": "narrate", "text": "At the door, with his hand on the knob, he paused."},
-    {"t": "narrate", "text": "He thought, with the small clean surprise of a man who has just realized something about himself he was not, until that moment, prepared to know:"},
-    {"t": "narrate", "text": "If Doug already knew. If Doug had already left a letter. If Doug had been, this whole time, waiting for me to do exactly what I am about to do — then the play I have been running is not, has never been, the play I thought I was running. The play I have been running is the play Doug has been letting me run."},
-    {"t": "narrate", "text": "The play Doug has been letting me run is the play that gets Doug somewhere Doug wanted to go."},
-    {"t": "narrate", "text": "Doug, at this moment, is somewhere I am not, doing something I am not, choosing the timing of his own departure."},
-    {"t": "narrate", "text": "Doug is, in this play, the operator."},
-    {"t": "narrate", "text": "I am the operated."},
-    {"t": "narrate", "text": "I have been the operated for some time."},
-    {"t": "narrate", "text": "The thought arrived and did not leave. The thought sat in his chest like a small cold weight, the kind of weight a man learns to carry by not, at first, acknowledging it."},
-    {"t": "narrate", "text": "He acknowledged it."},
-    {"t": "narrate", "text": "He opened the door."},
-    {"t": "narrate", "text": "He went out into the New Orleans morning, where the saxophone player was still, faintly, audible from two blocks down, finishing the lament he played for no audience."},
-    {"t": "narrate", "text": "Jimmy walked in the other direction."},
-    {"t": "narrate", "text": "The Devil, at the door of his rented apartment, became somebody else's instrument, quietly, on a Tuesday morning, while a saxophone played for nobody and a city woke up around him to its slow beautiful rotten work."},
-    {"t": "narrate", "text": "The chains, holding. The hand, no longer his own, lifting them."},
-    {"t": "narrate", "text": "He kept walking."},
-    {"t": "narrate", "text": "The grift, today, was him."},
-
-    {"t": "end"}
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_new_orleans_apartment.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "XV — The Devil",
+      "sub": "Gumbo Limbo",
+      "duration": 3
+    },
+    {
+      "t": "narrate",
+      "text": "THE DEVIL. The horned figure on his throne, the two figures chained below him — but look: the chains are loose. They could slip free. They do not slip free. The Devil's power is not force. The Devil's power is the belief that leaving is impossible. Reversed: release. The moment the chains are seen for what they are."
+    },
+    {
+      "t": "narrate",
+      "text": "The ceiling fan wobbled like a dying pelican above Jimmy Daigle's head."
+    },
+    {
+      "t": "narrate",
+      "text": "Stirring the thick pre-dawn New Orleans air — a gumbo of stale bourbon, sweat, cheap perfume clinging to the rented sofa he had crashed on, and something vaguely like river mud. Home sweet temporary hell. He pried one eye open. The world swam in a jaundiced filter, all bruised purples and sickly greens bleeding through the grimy apartment window. His head throbbed in time with a distant garbage truck backing up — a relentless beep-beep-beep drilling into his skull."
+    },
+    {
+      "t": "narrate",
+      "text": "A hangover wasn't just a headache. A hangover was a full-body audit of last night's bad decisions. And last night? Last night had been a masterpiece of bad decisions."
+    },
+    {
+      "t": "narrate",
+      "text": "He swung his legs off the sofa. The springs groaned in protest. The floor felt sticky. Everything felt sticky. This city sweated desperation, the way other cities sweated humidity, the way a particular kind of person sweated guilt — copious, obvious, and unavoidable."
+    },
+    {
+      "t": "narrate",
+      "text": "He stumbled toward the kitchenette. A monument to neglect. The sink full of cloudy glasses. An ashtray overflowing like a tiny toxic volcano. A dumpster fire of a life, pungent and ripe — just how he liked it these days."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere along the line, maybe back when Graustark had started sinking, ambition had curdled into something meaner. Sharper. A hunger not just to win but to control."
+    },
+    {
+      "t": "narrate",
+      "text": "The Devil, they called this card."
+    },
+    {
+      "t": "narrate",
+      "text": "Sounded about right."
+    },
+    {
+      "t": "narrate",
+      "text": "Felt, more to the point, familiar."
+    },
+    {
+      "t": "narrate",
+      "text": "He found a half-empty bottle of something brown warming on the counter. Tilted it back. Fire down the hatch. Good morning, NOLA."
+    },
+    {
+      "t": "narrate",
+      "text": "He caught his reflection in the greasy microwave door. Eyes bloodshot. Stubble like iron filings. Hair sticking up like he had wrestled a ghost."
+    },
+    {
+      "t": "narrate",
+      "text": "Maybe he had. The ghost of Jimmy Daigle, former college jock, former semi-honest manager. Now full-time operator navigating the gothic gutter landscape of Antonio D'Ambrosio's increasingly baroque ambitions."
+    },
+    {
+      "t": "narrate",
+      "text": "He had been, at twenty-two, a different person. He could still, sometimes, find that person in the back of his throat — the shape of the words yes coach came back to him sometimes, late, the way muscle memory came back to a guitar player who had not picked up a guitar in years. The person who said yes coach had been a person who believed coaches existed. The person who looked at him from the microwave door this morning had not, in some time, believed in coaches. The person at the microwave believed in plays. The person at the microwave called the plays himself."
+    },
+    {
+      "t": "narrate",
+      "text": "The play this morning, he was beginning to suspect, was the one where he sacrificed the wrong piece for the right reason."
+    },
+    {
+      "t": "narrate",
+      "text": "He had been telling himself, for several weeks now, that he had not yet decided. He had been telling himself this in the small persistent way a man tells himself a thing he has, in fact, already decided."
+    },
+    {
+      "t": "narrate",
+      "text": "Ember & Ash."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio's baby. Jimmy was supposed to be the midwife. The protector. Keep the dream alive, keep the kid on track. But the lines had blurred. Hadn't they."
+    },
+    {
+      "t": "narrate",
+      "text": "Loyalty felt suspiciously like leverage now. Protection looked a lot like control. He found himself pulling strings, nudging things just so, whispering suggestions that sounded reasonable but tasted like poison."
+    },
+    {
+      "t": "narrate",
+      "text": "Echoes of D. Dean — that phantom mentor from Faust's fever dream, back in the bad year, the year he had not let himself think about for fifteen years and that had begun, in the past month, to think about him — seemed to bounce around the humid air."
+    },
+    {
+      "t": "narrate",
+      "text": "Make the world what you need it to be, Jimmy. Reality is just a poorly negotiated contract."
+    },
+    {
+      "t": "narrate",
+      "text": "The voice had not, technically, been audible in years. The voice had not, technically, ever been audible — D. Dean was, properly speaking, a dream Jimmy had had once, in the spring of 2009, in the back room of a bar Jimmy could no longer locate on any map of the city he had thought, at the time, he had been in. The voice had simply continued, in the years since, to be the voice Jimmy heard in his own head when his own head was operating in a particular register."
+    },
+    {
+      "t": "narrate",
+      "text": "The register was, this morning, on. The register had been on, in some sense, since he had set up the LLC for Antonio in May. The register was, increasingly, the register he heard most."
+    },
+    {
+      "t": "narrate",
+      "text": "He had stopped pretending the register was just the bourbon."
+    },
+    {
+      "t": "narrate",
+      "text": "The bourbon was the bourbon. The register was older."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought of Douglas Forte. Good ol' reliable Doug. Summoned down here to be the muscle. The anchor."
+    },
+    {
+      "t": "narrate",
+      "text": "Forte, with his quiet strength and his haunted eyes, didn't see the grift."
+    },
+    {
+      "t": "narrate",
+      "text": "— Or:"
+    },
+    {
+      "t": "narrate",
+      "text": "Forte saw the grift. Forte had always seen the grift. Forte had been, since approximately the third week, watching Jimmy with the particular still attention of a carpenter watching a plank that had begun to warp. Forte had not said anything. Forte was not, by temperament, a man who said anything. Forte was a man who, when the warp passed a certain threshold, would simply stop using the plank, and would, in so doing, make a small precise adjustment to whatever he had been building, and the adjustment would absorb the loss."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy had, this past week, begun to suspect that Forte was the kind of plank who, when stopped being used, would not be wasted. Forte had a way of arranging the timing of his own departures. Forte had probably already written the letter. Forte had probably already left it in the inside pocket of a jacket that hung on the back of a chair in a room above a laundromat that Jimmy was, on the leasing paperwork, the legal occupant of and that Jimmy would, eventually, find an excuse to enter."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy did not, this morning, intend to enter the room. Jimmy intended to wait for the situation to require it."
+    },
+    {
+      "t": "narrate",
+      "text": "The situation would, Jimmy estimated, require it within four to six weeks."
+    },
+    {
+      "t": "narrate",
+      "text": "In this game, someone always paid the price. Better Doug than him. Better Doug than Antonio, whose potential was still — useful."
+    },
+    {
+      "t": "narrate",
+      "text": "The chains of obsession, materialism, keeping Antonio's dream (and Jimmy's paycheck) afloat — they felt tight today. Heavy. Strangely comforting."
+    },
+    {
+      "t": "narrate",
+      "text": "Enslavement had its perks. The chief perk, Jimmy had learned, was that enslavement absolved you of decisions. The chains made the choices. You simply continued, day by day, executing the plays the chains had already called."
+    },
+    {
+      "t": "narrate",
+      "text": "He had not, in some time, called a play himself. He had begun, in the past weeks, to wonder whether he was still capable of it."
+    },
+    {
+      "t": "narrate",
+      "text": "His phone buzzed. Rattling against the formica countertop."
+    },
+    {
+      "t": "narrate",
+      "text": "Probably Antonio. Needing reassurance, or another impossible favor."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy let it buzz. Let him stew. He wandered over to the window, pushing aside a yellowed lace curtain that disintegrated slightly at his touch."
+    },
+    {
+      "t": "narrate",
+      "text": "Below, the street was slowly coming alive."
+    },
+    {
+      "t": "narrate",
+      "text": "A lone saxophone player coaxed a bluesy lament from his horn, the notes hanging heavy and sweet in the air. A woman in a sequined dress that had seen better decades stumbled out of a doorway, laughing too loud. A delivery man pushed a hand truck of bread across the cobblestones in a way that suggested he had been doing this exact route, at this exact hour, for thirty years and would continue to do it for as long as he was capable."
+    },
+    {
+      "t": "narrate",
+      "text": "The gutter saints and sinners were stirring."
+    },
+    {
+      "t": "narrate",
+      "text": "His people."
+    },
+    {
+      "t": "narrate",
+      "text": "He watched the saxophone player for a long moment. The man was good. The man was very good. The man had, Jimmy had observed over the past month, exactly one tip jar that he never emptied during business hours, and exactly one signature lament that he played early in the morning before the tourists were awake, and which Jimmy had begun, recently, to suspect was the man's only true song — the one he played for no audience because there was no audience to play it for, and because the playing was the point."
+    },
+    {
+      "t": "narrate",
+      "text": "The saxophone player did not, in any obvious sense, want anything from anyone."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy could not, this morning, say the same."
+    },
+    {
+      "t": "narrate",
+      "text": "He turned away from the window."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought about Maya. The thought arrived unbidden, the way thoughts about Maya always did — there was no protocol for thinking about Maya, no schedule, no occasion, just the small periodic surfacing of his daughter's face at moments when Jimmy was least equipped to do anything about it."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, sixteen, in Harmony Creek Estates. Living with her grandmother. Doing — whatever Maya did. He had not seen her in eleven months. He had not, technically, called her in seven. The last call had been ostensibly about her birthday, which he had remembered three days late, and had been, in practice, four minutes of him talking and ninety seconds of her saying yeah, okay, Dad. yeah. okay, in the small careful voice teenagers used when they were waiting for a phone call to be over."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, with the small specific clarity that visited him only at this hour and that he relied on more than he wanted to admit: she will, eventually, be the reckoning."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, less clearly: she may already be."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, finally and almost in passing: whatever I am about to do to Doug, whatever I am about to allow to happen to Antonio, whatever I am running because the chains have decided I am running it — Maya is going to find out, and Maya is going to remember, and Maya is going to be old enough, by then, that the remembering will mean something."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought this. He set the thought down. He was good at setting thoughts down. The bourbon helped."
+    },
+    {
+      "t": "narrate",
+      "text": "What did it all mean. This frantic scramble. This ambition soured into manipulation. This dumpster fire life."
+    },
+    {
+      "t": "narrate",
+      "text": "It meant surviving. It meant controlling the narrative before it controlled you. It meant recognizing the Devil wasn't some external force — he was right here, staring back from the greasy microwave reflection, nursing a hangover and planning his next move."
+    },
+    {
+      "t": "narrate",
+      "text": "The hunger was real. The power felt — good. Addictive."
+    },
+    {
+      "t": "narrate",
+      "text": "He grabbed the buzzing phone. Time to make the rounds. Time to tighten the chains."
+    },
+    {
+      "t": "narrate",
+      "text": "The screen, when it came on, was not Antonio. The screen said Q. PAUL."
+    },
+    {
+      "t": "narrate",
+      "text": "Of course it did."
+    },
+    {
+      "t": "narrate",
+      "text": "Q. PAUL was calling because Q. PAUL was always calling. Q. PAUL had been calling Antonio for weeks. Q. PAUL, today, was calling Jimmy. The escalation was the message. The escalation said I am beginning to deal with the operator and not the principal. The principal is, in some sense, no longer the principal."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy had been waiting for this call."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy had also, in a way he had not let himself fully articulate, been arranging for it."
+    },
+    {
+      "t": "narrate",
+      "text": "He picked up."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Quentin."
+    },
+    {
+      "t": "say",
+      "char": "paul",
+      "text": "James. I think it's time you and I had a conversation."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Now?"
+    },
+    {
+      "t": "say",
+      "char": "paul",
+      "text": "Soon. Today. I'd prefer to do it in person."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Alright. Where."
+    },
+    {
+      "t": "say",
+      "char": "paul",
+      "text": "There's a bar in the Marigny called the Iron Crow. I believe you know it."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy did know it. Jimmy had not, however, told Q. Paul that he knew it. The Iron Crow was a place Jimmy had drunk at, once, on his second week in New Orleans, and had not been back to. He had not told anyone about the visit. The fact that Q. Paul knew about the visit was, itself, a piece of information."
+    },
+    {
+      "t": "say",
+      "char": "paul",
+      "text": "Three o'clock. Don't bring anyone."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy stood at the window for a long moment with the phone in his hand."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, the chains just tightened."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, the chains just tightened, and I am, evidently, the link being adjusted."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, with a small surprise that was almost — almost — relief: this is what it feels like when you are not, in fact, the operator. This is what it feels like when you are the operated."
+    },
+    {
+      "t": "narrate",
+      "text": "He had not, since approximately 2011, been the operated. He had, for thirteen years, been the one tightening the chains on other people. He had assumed, in the small unspoken arrogance of those years, that the chains had only ever been pointing one way."
+    },
+    {
+      "t": "narrate",
+      "text": "The chains, this morning, were pointing back."
+    },
+    {
+      "t": "narrate",
+      "text": "He poured another finger of the warm bourbon. He drank it. He set the glass down. He looked at his reflection in the microwave door."
+    },
+    {
+      "t": "narrate",
+      "text": "The Devil looked back."
+    },
+    {
+      "t": "narrate",
+      "text": "The Devil, this morning, did not look as confident as he had looked yesterday."
+    },
+    {
+      "t": "narrate",
+      "text": "The Devil looked, in fact — and Jimmy registered this without quite knowing what to do with the registering — afraid."
+    },
+    {
+      "t": "narrate",
+      "text": "He turned away from the microwave. He picked up the buzzing phone, which had, in the meantime, begun to buzz again. This time it actually was Antonio."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked at the screen. He let it ring. He let it ring four times. He let it ring six."
+    },
+    {
+      "t": "narrate",
+      "text": "On the seventh ring he answered."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Hey, kid."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Where are you."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Apartment."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Get to the warehouse. Now. Something happened with the gas line."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "What kind of something."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "The kind of something where there's a city inspector in my office and he is asking me questions I don't have answers to and he came in without an appointment and his name is not on the schedule of anyone I know who works for the city."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy was quiet for a moment."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Jimmy."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "I'm here."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Get over here."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "I'm coming. Stall him. Don't sign anything. Don't agree to anything. If he asks you about permits, you tell him you'll call your lawyer."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "My lawyer is —"
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Yeah. I know. Tell him anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy stood in the kitchenette in his stained undershirt at six twenty-three AM with two phones — the one Antonio had just called him on, and the second one, the one he kept in a drawer for calls he did not, ever, want associated with the first one — and considered, for the first time in some weeks, whether the play he had been running was the play he had thought he was running."
+    },
+    {
+      "t": "narrate",
+      "text": "The city inspector was not, of course, a city inspector. The city inspector was Q. Paul's. Q. Paul had moved up the timetable. Q. Paul had decided to apply pressure to Antonio in the morning so that Q. Paul could close the deal with Jimmy in the afternoon. The morning move was the leverage for the afternoon move."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy understood. Jimmy had run the same play, in different jurisdictions, perhaps eleven times."
+    },
+    {
+      "t": "narrate",
+      "text": "The being-on-the-receiving-end was different."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy realized, with the small lateral clarity he sometimes got at this hour: the play Q. Paul was running this afternoon required Doug."
+    },
+    {
+      "t": "narrate",
+      "text": "Required Doug, specifically. Doug was the hinge. Q. Paul knew about Doug. Q. Paul knew that Doug was in the room above the laundromat. Q. Paul knew, somehow — somehow — that the room above the laundromat was leased in Jimmy's name. The afternoon meeting at the Iron Crow would, Jimmy was almost certain, conclude with Q. Paul instructing Jimmy as to what role Doug was going to play in the next phase, and Jimmy would, with the precise calm of an operator who had already done the math, agree."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy had, until ten minutes ago, been planning to use Doug himself."
+    },
+    {
+      "t": "narrate",
+      "text": "The fact that Q. Paul also wanted to use Doug — and that Q. Paul had figured out how to make Jimmy do it — meant, Jimmy realized, that Jimmy was no longer, exactly, the architect of the play. Jimmy was now an instrument inside a play whose architect was somewhere else. The architect had foreseen Jimmy's intentions. The architect had folded Jimmy's intentions into the larger design."
+    },
+    {
+      "t": "narrate",
+      "text": "The architect was D. Dean. Or the architect was Q. Paul. Or the architect was some third entity Jimmy had not yet identified, of whom Q. Paul and D. Dean were the visible operators."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy, this morning, was not sure which."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy, this morning, was beginning to suspect it did not matter."
+    },
+    {
+      "t": "narrate",
+      "text": "The chains were the chains. He had put them on, link by link, in the small daily acts of the past thirteen years. He had not, in any of those acts, noticed that he was forging the chain. He had assumed he was, each time, cutting one. He had been wrong. He had been wrong, possibly, the entire time."
+    },
+    {
+      "t": "narrate",
+      "text": "He set the second phone down. He put the first phone in his pocket. He pulled on his jeans, the same jeans he had been wearing yesterday and that had a small dried smear of something on the left thigh he chose not to investigate. He pulled on his boots. He took one last swallow of the bourbon. He left the bottle uncapped, because uncapping it had always felt like a commitment and recapping it had always felt like a lie, and he had stopped lying to bottles in 2017."
+    },
+    {
+      "t": "narrate",
+      "text": "At the door, with his hand on the knob, he paused."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, with the small clean surprise of a man who has just realized something about himself he was not, until that moment, prepared to know:"
+    },
+    {
+      "t": "narrate",
+      "text": "If Doug already knew. If Doug had already left a letter. If Doug had been, this whole time, waiting for me to do exactly what I am about to do — then the play I have been running is not, has never been, the play I thought I was running. The play I have been running is the play Doug has been letting me run."
+    },
+    {
+      "t": "narrate",
+      "text": "The play Doug has been letting me run is the play that gets Doug somewhere Doug wanted to go."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug, at this moment, is somewhere I am not, doing something I am not, choosing the timing of his own departure."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug is, in this play, the operator."
+    },
+    {
+      "t": "narrate",
+      "text": "I am the operated."
+    },
+    {
+      "t": "narrate",
+      "text": "I have been the operated for some time."
+    },
+    {
+      "t": "narrate",
+      "text": "The thought arrived and did not leave. The thought sat in his chest like a small cold weight, the kind of weight a man learns to carry by not, at first, acknowledging it."
+    },
+    {
+      "t": "narrate",
+      "text": "He acknowledged it."
+    },
+    {
+      "t": "narrate",
+      "text": "He opened the door."
+    },
+    {
+      "t": "narrate",
+      "text": "He went out into the New Orleans morning, where the saxophone player was still, faintly, audible from two blocks down, finishing the lament he played for no audience."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy walked in the other direction."
+    },
+    {
+      "t": "narrate",
+      "text": "The Devil, at the door of his rented apartment, became somebody else's instrument, quietly, on a Tuesday morning, while a saxophone played for nobody and a city woke up around him to its slow beautiful rotten work."
+    },
+    {
+      "t": "narrate",
+      "text": "The chains, holding. The hand, no longer his own, lifting them."
+    },
+    {
+      "t": "narrate",
+      "text": "He kept walking."
+    },
+    {
+      "t": "narrate",
+      "text": "The grift, today, was him."
+    },
+    {
+      "t": "end"
+    }
   ]
 }

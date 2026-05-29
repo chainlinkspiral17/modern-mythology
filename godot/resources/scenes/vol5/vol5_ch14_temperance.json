@@ -2,102 +2,333 @@
   "id": "vol5_ch14_temperance",
   "vol": 5,
   "chapter": "XIV",
-  "type": "scene",
+  "type": "chapter",
   "title": "Temperance",
   "nodes": [
-    {"t": "bg", "src": "assets/backgrounds/vol5_montreal_apartment.jpg"},
-    {"t": "hide", "pos": "left"},
-    {"t": "hide", "pos": "center"},
-    {"t": "hide", "pos": "right"},
-    {"t": "interlude", "text": "XIV — Temperance", "sub": "The Moderate Temperature of Tuesday", "duration": 3},
-
-    {"t": "narrate", "text": "TEMPERANCE. The angel stands with one foot in the water, one on land, pouring liquid between two cups in an endless patient exchange. Nothing spills. The triangle on the robe. The path behind leading to a distant crown. The art of the between. Reversed: excess. The imbalance that has been called balance for so long it has forgotten the difference."},
-
-    {"t": "narrate", "text": "A note on the chronology: this chapter takes place several years after the events of the chapters that surround it. The Major Arcana is not, in this respect, a calendar. The Major Arcana is a deck. Cards may be drawn in any order. They reveal their order, in retrospect, by the company they keep."},
-
-    {"t": "narrate", "text": "John Frank considered the dust motes performing their intricate silent ballet in the shaft of late-morning Montreal sunlight slicing through his apartment window."},
-    {"t": "narrate", "text": "Were they random. Or was there a choreographer — some unseen Prime Mover dictating their lazy pirouettes. He suspected, based on past experience in places decidedly less stable than Montreal (hello, Graustark, you beautiful disaster), that the answer was probably both. And, separately, neither. He had given up, around the time he turned thirty-eight, on insisting that any single answer to a question about the universe needed to be the only answer."},
-    {"t": "narrate", "text": "He sighed. A sound barely audible over the gurgle of the coffee maker. Middle age, he had concluded, was largely about developing a tolerance for ambiguity and lukewarm coffee. The first one was harder. The first one was, in some sense, what middle age was for."},
-
-    {"t": "narrate", "text": "His apartment, years after the Graustark — event — was a cluttered archive of selves."},
-    {"t": "narrate", "text": "Movie posters (mostly Criterion Collection reprints now, less the frantic blockbusters of his youth) jostled for wall space with pages torn from obscure literary journals. Notebooks filled with fragmented observations and abandoned narratives formed precarious ziggurats on every available surface. He was still a writer. Still an observer. The frantic urgency, the need to decode the chaos that had defined his Graustark years, had mellowed. Tempered. Like steel cooled too slowly, leaving it strong but perhaps lacking a certain edge."},
-    {"t": "narrate", "text": "He poured coffee into a mug that inexplicably featured a cartoon narwhal."},
-    {"t": "narrate", "text": "Where had it come from. Probably acquired during the Great Post-Graustark Diaspora, those blurry years of drifting before he had landed here, in this city of pleasant grey stone and politely circling seasons. The narwhal had a single horn and a small benevolent smile and was holding, between its flippers, what appeared to be a tiny accordion. The mug was, by any aesthetic measure, ridiculous. The mug was also, by some less aesthetic measure he had stopped trying to articulate, perfect. He drank from it every morning. It had been, for some years now, the only mug he drank from."},
-    {"t": "narrate", "text": "He added a careful splash of oat milk. A concession to arteries, if not aesthetics. Balance. Moderation. The keywords of this current life chapter. Less Faustian striving. More — mindful Tuesday management."},
-
-    {"t": "narrate", "text": "He sat at his desk, a landscape of paper drifts."},
-    {"t": "narrate", "text": "He was nominally working on a freelance piece about the burgeoning scene of Algorithmic Comfort Food restaurants downtown — places where the menu was generated weekly by a recommender system trained on the staff's collective childhoods, the dishes drifting steadily, week by week, toward an emergent consensus comfort food that nobody had grown up with but that everybody, on tasting, claimed to recognize. Riveting stuff. The piece was due Friday. The piece was three weeks late."},
-    {"t": "narrate", "text": "Mostly, though, he found himself staring out the window at the alleyway tapestry: overflowing recycling bins, a surprisingly persistent patch of moss on the opposite brick wall, the occasional stray cat navigating the urban topography with admirable stealth. His perspective had shifted. Once, he would have seen omens, coded messages, hints of intersecting realities in that alley. Now? Now it was just an alley."},
-    {"t": "narrate", "text": "Mostly."},
-    {"t": "narrate", "text": "Though the way the light hit that one specific graffiti-scarred drainpipe sometimes —"},
-    {"t": "narrate", "text": "He shook his head. He had been telling himself, for some years now, that it was just the light. He had also been quietly noting, in the small private notebook he kept in the kitchen drawer — the one not on his desk, not in the ziggurats, the one nobody else would ever read — the dates and times the light had hit the drainpipe in the particular way. The dates were not random. The dates clustered."},
-    {"t": "narrate", "text": "He had not, yet, drawn the conclusion the dates were inviting him to draw."},
-    {"t": "narrate", "text": "He had, in some sense, already drawn it. The drawing was the not-yet. Temperance, he had begun to suspect, was the small private discipline of knowing a thing while continuing to allow it to remain not yet known."},
-
-    {"t": "narrate", "text": "Stasis. Was that what this equilibrium felt like."},
-    {"t": "narrate", "text": "He missed Graustark sometimes, in the way one might miss a particularly vivid life-threatening fever dream. He missed the sheer intensity of it, the feeling that reality was a thin membrane ready to rip open at any moment. He missed Frasier Temple's brilliant terrifying pronouncements echoing through the rust cathedral. He missed deciphering the coded warnings in Elicia Duchane's icy gaze across the D'Ambrosio's floor. He even, sometimes, missed the confusing weight of Dante's patriarchal disappointment, which had not been directed at him personally but which had filled the dining room every evening like a kind of weather and which had given everyone in the room — including the patrons, including the busboys — the small invigorating sense of being measured by a standard they had not consented to."},
-    {"t": "narrate", "text": "Simpler times. Hilarious. But undeniably — charged."},
-    {"t": "narrate", "text": "The current times, by contrast, were tepid. The current times were oat milk. The current times were a freelance piece about restaurants whose menus were generated by recommender systems. The current times were, John was the first to admit, exactly what he had wanted, exactly what he had earned, exactly what the version of him that had stood at the counter at three forty-seven AM in a B-flat hum had promised himself if he ever got out."},
-    {"t": "narrate", "text": "The version that had stood at the counter had not, at the time, factored in that getting out would feel like this."},
-
-    {"t": "narrate", "text": "Did he yearn for missed opportunities. Perhaps."},
-    {"t": "narrate", "text": "The Great Unwritten Graustark Novel haunted his hard drive like a digital ghost. The folder was named gtk_drft_v6_FINAL_actual. He had not opened the folder in eleven months. The folder contained, by his last count, ninety-seven thousand words of what he had once thought was the book and what he now suspected was the long careful note-taking that any book required and that some books, having required it, never themselves required of being written."},
-    {"t": "narrate", "text": "The relationships left unresolved. Frayed connections lost in the static of disaster and distance. There was a quiet ache there. A low-frequency yearning for the what if. But it wasn't consuming. It was just — background noise. Like the hum of the refrigerator. Like the distant traffic on Saint-Laurent. Part of the ambient texture of being."},
-    {"t": "narrate", "text": "He still emailed Mackenzie Roberts twice a year. She still emailed back. The emails were short. The emails contained, increasingly, photographs of the children Mackenzie and Philip had had, in the end — two, both girls, the older one named for Mackenzie's brother in the way mothers named children for brothers they had lost and did not, otherwise, talk about."},
-    {"t": "narrate", "text": "He still received, every November, a Christmas card from Erica Campbell. The card was always a museum reproduction, never a religious image, always with two careful sentences in handwriting that had, over the years, gotten very slightly looser. The most recent card had said: John — Houston is mostly the same. The painter and I are mostly the same. I am mostly happy. — E. He had read the three mostlys as, collectively, the closest thing to a confession Erica had ever made to him in fifteen years of acquaintance. He had been, at the time, moved."},
-    {"t": "narrate", "text": "He did not write her back. He never wrote her back. They had agreed, without ever discussing it, that the cards were one-way. The agreement was a kind of restraint they both, in their separate ways, valued."},
-
-    {"t": "narrate", "text": "He opened a notebook. The pages filled with his familiar scrawl. He wasn't mapping conspiracies anymore, just — observing. Blending the disparate elements. Graustark's chaos. The quiet intellectualism of his ongoing (if glacially paced) graduate studies. The lingering residue of past emotional tolls."},
-    {"t": "narrate", "text": "Temperance wasn't about finding a perfect midpoint. It was about holding the opposites in suspension. Acknowledging the complexity without demanding a simple resolution. Finding the middle path, even if that path mostly involved navigating the grocery store aisles or trying to remember where he had parked."},
-    {"t": "narrate", "text": "He picked up his pen."},
-    {"t": "narrate", "text": "Maybe write a footnote about the dust motes. Explore the inherent narrative potential of the narwhal mug. Life felt less like a grand opera now, more like a series of nested anecdotes, slightly absurd, quietly profound. He was content, he supposed, to just — be. A middle-aged man in a Montreal apartment. Drinking adequate coffee. Observing the alley. Occasionally visited by the ghosts of his former, more frantic selves."},
-    {"t": "narrate", "text": "Just another Tuesday."},
-    {"t": "narrate", "text": "And maybe, just maybe, that was equilibrium enough."},
-
-    {"t": "narrate", "text": "His phone, on the desk, buzzed once."},
-    {"t": "narrate", "text": "He looked down. A text from a number not in his contacts. The number had a Texas area code. He had not received a text from a Texas area code in — he counted, briefly, the way a man counts steps coming downstairs in the dark — six years."},
-    {"t": "narrate", "text": "The text was four words long."},
-    {"t": "narrate", "text": "did you feel it"},
-    {"t": "narrate", "text": "He stared at the screen."},
-    {"t": "narrate", "text": "He did not, immediately, reply. He did not know who the sender was. He had a small tight intuition about who the sender was, the kind of intuition that arrived before the cognition and that he had learned, in his Graustark years, to register without honoring. The intuition said Frasier. The cognition said unknown. Temperance was holding both."},
-    {"t": "narrate", "text": "He had felt something, this morning. He had felt it just before the coffee maker had started gurgling. A small sub-bass shift. The kind of vibration that lived in his molars before it lived in his ears. He had attributed it, at the time, to a passing truck. He had attributed it, on further reflection, to a passing truck that wasn't there. He had attributed it, on yet further reflection, to nothing, in the small useful way he attributed most things to nothing in his Montreal life, because the alternative was to start, again, mapping."},
-    {"t": "narrate", "text": "He had not, this morning, started mapping."},
-    {"t": "narrate", "text": "He looked at the text. He looked at the dust motes. He looked at the drainpipe in the alley, which the light was, at this exact moment, hitting in the particular way."},
-    {"t": "narrate", "text": "He set the phone down."},
-    {"t": "narrate", "text": "He picked the phone back up."},
-    {"t": "narrate", "text": "He typed, slowly, a single word in reply:"},
-    {"t": "narrate", "text": "yes."},
-    {"t": "narrate", "text": "He sent it."},
-    {"t": "narrate", "text": "He set the phone back down. He waited. He counted, internally, the seconds. Forty-seven seconds. Fifty. Sixty."},
-    {"t": "narrate", "text": "The phone did not, immediately, reply."},
-    {"t": "narrate", "text": "The phone, eventually, never replied to that particular thread again."},
-
-    {"t": "narrate", "text": "John sat with the silence for a long time."},
-    {"t": "narrate", "text": "The dust motes performed their ballet. The narwhal mug, on the coaster he had bought for it, held the last of the coffee. The alley below the window did its small alley work. The patch of moss on the opposite brick wall did its small moss work. The recycling bin was full, in the way the recycling bin was always full on a Tuesday, the city collection coming on Wednesdays."},
-    {"t": "narrate", "text": "He thought, something is starting again."},
-    {"t": "narrate", "text": "He thought, something is starting again somewhere I am not, and somebody I used to know thought to ask whether I had felt the edge of it."},
-    {"t": "narrate", "text": "He thought, temperance is being able to know this and not, immediately, do anything."},
-    {"t": "narrate", "text": "He thought, after a while: I will, eventually, do something. The doing will not be today."},
-
-    {"t": "narrate", "text": "He reopened the notebook. He uncapped the pen."},
-    {"t": "narrate", "text": "He wrote, at the top of a fresh page, the date."},
-    {"t": "narrate", "text": "He wrote, beneath the date: Hum returning. Different vector. Note: not Graustark. Somewhere — newer. Cleaner. Worse."},
-    {"t": "narrate", "text": "He underlined the word Worse."},
-    {"t": "narrate", "text": "He looked at the line for a long minute. Then he closed the notebook. He set the pen on top of it. He stood up. He carried the narwhal mug to the kitchen. He rinsed it. He set it upside-down on the rack to dry."},
-    {"t": "narrate", "text": "He returned to the desk. He looked at the drainpipe in the alley. The light, now, had moved. The drainpipe was just a drainpipe. The moment, whatever it had been, had passed."},
-    {"t": "narrate", "text": "He sat down. He opened his email. He began, dutifully, to draft the next paragraph of the Algorithmic Comfort Food piece. The paragraph would be competent. The paragraph would be filed, eventually, by Friday — though not, in fact, this Friday, but the next one, which his editor had quietly come to accept as the actual deadline three years ago without bothering to say so."},
-    {"t": "narrate", "text": "He drafted. The dust motes resumed. The moss persisted. The alley was, again, just an alley."},
-    {"t": "narrate", "text": "Temperance held."},
-    {"t": "narrate", "text": "But on the desk, beside the narwhal mug's coaster, the phone — still face-up, still showing the four-word thread that had been opened and not, today, continued — pulsed once with the small subtle vibration of a thread that had been read, by the other party, on the other end, and acknowledged."},
-    {"t": "narrate", "text": "Just once. Just briefly."},
-    {"t": "narrate", "text": "John did not, this time, pick up the phone."},
-    {"t": "narrate", "text": "But he noted it."},
-    {"t": "narrate", "text": "He had begun, again, to note things."},
-    {"t": "narrate", "text": "The mapping had not, in the end, ever quite stopped."},
-    {"t": "narrate", "text": "It had just, for a season, been temperate."},
-
-    {"t": "narrate", "text": "¹ Self 1: The Fool, earnest documentarian, slightly panicked. Self 2: Faustian bargainer, seeking transcendence, possibly trading soul for decent Wi-Fi. Self 3: Hardboiled investigator (never quite took hold, frankly). Self 4: This guy. The one with the coffee. (Further selves under consideration, pending funding.) Self 5, possibly: The one who picks the phone back up."},
-
-    {"t": "end"}
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_montreal_apartment.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "XIV — Temperance",
+      "sub": "The Moderate Temperature of Tuesday",
+      "duration": 3
+    },
+    {
+      "t": "narrate",
+      "text": "TEMPERANCE. The angel stands with one foot in the water, one on land, pouring liquid between two cups in an endless patient exchange. Nothing spills. The triangle on the robe. The path behind leading to a distant crown. The art of the between. Reversed: excess. The imbalance that has been called balance for so long it has forgotten the difference."
+    },
+    {
+      "t": "narrate",
+      "text": "A note on the chronology: this chapter takes place several years after the events of the chapters that surround it. The Major Arcana is not, in this respect, a calendar. The Major Arcana is a deck. Cards may be drawn in any order. They reveal their order, in retrospect, by the company they keep."
+    },
+    {
+      "t": "narrate",
+      "text": "John Frank considered the dust motes performing their intricate silent ballet in the shaft of late-morning Montreal sunlight slicing through his apartment window."
+    },
+    {
+      "t": "narrate",
+      "text": "Were they random. Or was there a choreographer — some unseen Prime Mover dictating their lazy pirouettes. He suspected, based on past experience in places decidedly less stable than Montreal (hello, Graustark, you beautiful disaster), that the answer was probably both. And, separately, neither. He had given up, around the time he turned thirty-eight, on insisting that any single answer to a question about the universe needed to be the only answer."
+    },
+    {
+      "t": "narrate",
+      "text": "He sighed. A sound barely audible over the gurgle of the coffee maker. Middle age, he had concluded, was largely about developing a tolerance for ambiguity and lukewarm coffee. The first one was harder. The first one was, in some sense, what middle age was for."
+    },
+    {
+      "t": "narrate",
+      "text": "His apartment, years after the Graustark — event — was a cluttered archive of selves."
+    },
+    {
+      "t": "narrate",
+      "text": "Movie posters (mostly Criterion Collection reprints now, less the frantic blockbusters of his youth) jostled for wall space with pages torn from obscure literary journals. Notebooks filled with fragmented observations and abandoned narratives formed precarious ziggurats on every available surface. He was still a writer. Still an observer. The frantic urgency, the need to decode the chaos that had defined his Graustark years, had mellowed. Tempered. Like steel cooled too slowly, leaving it strong but perhaps lacking a certain edge."
+    },
+    {
+      "t": "narrate",
+      "text": "He poured coffee into a mug that inexplicably featured a cartoon narwhal."
+    },
+    {
+      "t": "narrate",
+      "text": "Where had it come from. Probably acquired during the Great Post-Graustark Diaspora, those blurry years of drifting before he had landed here, in this city of pleasant grey stone and politely circling seasons. The narwhal had a single horn and a small benevolent smile and was holding, between its flippers, what appeared to be a tiny accordion. The mug was, by any aesthetic measure, ridiculous. The mug was also, by some less aesthetic measure he had stopped trying to articulate, perfect. He drank from it every morning. It had been, for some years now, the only mug he drank from."
+    },
+    {
+      "t": "narrate",
+      "text": "He added a careful splash of oat milk. A concession to arteries, if not aesthetics. Balance. Moderation. The keywords of this current life chapter. Less Faustian striving. More — mindful Tuesday management."
+    },
+    {
+      "t": "narrate",
+      "text": "He sat at his desk, a landscape of paper drifts."
+    },
+    {
+      "t": "narrate",
+      "text": "He was nominally working on a freelance piece about the burgeoning scene of Algorithmic Comfort Food restaurants downtown — places where the menu was generated weekly by a recommender system trained on the staff's collective childhoods, the dishes drifting steadily, week by week, toward an emergent consensus comfort food that nobody had grown up with but that everybody, on tasting, claimed to recognize. Riveting stuff. The piece was due Friday. The piece was three weeks late."
+    },
+    {
+      "t": "narrate",
+      "text": "Mostly, though, he found himself staring out the window at the alleyway tapestry: overflowing recycling bins, a surprisingly persistent patch of moss on the opposite brick wall, the occasional stray cat navigating the urban topography with admirable stealth. His perspective had shifted. Once, he would have seen omens, coded messages, hints of intersecting realities in that alley. Now? Now it was just an alley."
+    },
+    {
+      "t": "narrate",
+      "text": "Mostly."
+    },
+    {
+      "t": "narrate",
+      "text": "Though the way the light hit that one specific graffiti-scarred drainpipe sometimes —"
+    },
+    {
+      "t": "narrate",
+      "text": "He shook his head. He had been telling himself, for some years now, that it was just the light. He had also been quietly noting, in the small private notebook he kept in the kitchen drawer — the one not on his desk, not in the ziggurats, the one nobody else would ever read — the dates and times the light had hit the drainpipe in the particular way. The dates were not random. The dates clustered."
+    },
+    {
+      "t": "narrate",
+      "text": "He had not, yet, drawn the conclusion the dates were inviting him to draw."
+    },
+    {
+      "t": "narrate",
+      "text": "He had, in some sense, already drawn it. The drawing was the not-yet. Temperance, he had begun to suspect, was the small private discipline of knowing a thing while continuing to allow it to remain not yet known."
+    },
+    {
+      "t": "narrate",
+      "text": "Stasis. Was that what this equilibrium felt like."
+    },
+    {
+      "t": "narrate",
+      "text": "He missed Graustark sometimes, in the way one might miss a particularly vivid life-threatening fever dream. He missed the sheer intensity of it, the feeling that reality was a thin membrane ready to rip open at any moment. He missed Frasier Temple's brilliant terrifying pronouncements echoing through the rust cathedral. He missed deciphering the coded warnings in Elicia Duchane's icy gaze across the D'Ambrosio's floor. He even, sometimes, missed the confusing weight of Dante's patriarchal disappointment, which had not been directed at him personally but which had filled the dining room every evening like a kind of weather and which had given everyone in the room — including the patrons, including the busboys — the small invigorating sense of being measured by a standard they had not consented to."
+    },
+    {
+      "t": "narrate",
+      "text": "Simpler times. Hilarious. But undeniably — charged."
+    },
+    {
+      "t": "narrate",
+      "text": "The current times, by contrast, were tepid. The current times were oat milk. The current times were a freelance piece about restaurants whose menus were generated by recommender systems. The current times were, John was the first to admit, exactly what he had wanted, exactly what he had earned, exactly what the version of him that had stood at the counter at three forty-seven AM in a B-flat hum had promised himself if he ever got out."
+    },
+    {
+      "t": "narrate",
+      "text": "The version that had stood at the counter had not, at the time, factored in that getting out would feel like this."
+    },
+    {
+      "t": "narrate",
+      "text": "Did he yearn for missed opportunities. Perhaps."
+    },
+    {
+      "t": "narrate",
+      "text": "The Great Unwritten Graustark Novel haunted his hard drive like a digital ghost. The folder was named gtk_drft_v6_FINAL_actual. He had not opened the folder in eleven months. The folder contained, by his last count, ninety-seven thousand words of what he had once thought was the book and what he now suspected was the long careful note-taking that any book required and that some books, having required it, never themselves required of being written."
+    },
+    {
+      "t": "narrate",
+      "text": "The relationships left unresolved. Frayed connections lost in the static of disaster and distance. There was a quiet ache there. A low-frequency yearning for the what if. But it wasn't consuming. It was just — background noise. Like the hum of the refrigerator. Like the distant traffic on Saint-Laurent. Part of the ambient texture of being."
+    },
+    {
+      "t": "narrate",
+      "text": "He still emailed Mackenzie Roberts twice a year. She still emailed back. The emails were short. The emails contained, increasingly, photographs of the children Mackenzie and Philip had had, in the end — two, both girls, the older one named for Mackenzie's brother in the way mothers named children for brothers they had lost and did not, otherwise, talk about."
+    },
+    {
+      "t": "narrate",
+      "text": "He still received, every November, a Christmas card from Erica Campbell. The card was always a museum reproduction, never a religious image, always with two careful sentences in handwriting that had, over the years, gotten very slightly looser. The most recent card had said: John — Houston is mostly the same. The painter and I are mostly the same. I am mostly happy. — E. He had read the three mostlys as, collectively, the closest thing to a confession Erica had ever made to him in fifteen years of acquaintance. He had been, at the time, moved."
+    },
+    {
+      "t": "narrate",
+      "text": "He did not write her back. He never wrote her back. They had agreed, without ever discussing it, that the cards were one-way. The agreement was a kind of restraint they both, in their separate ways, valued."
+    },
+    {
+      "t": "narrate",
+      "text": "He opened a notebook. The pages filled with his familiar scrawl. He wasn't mapping conspiracies anymore, just — observing. Blending the disparate elements. Graustark's chaos. The quiet intellectualism of his ongoing (if glacially paced) graduate studies. The lingering residue of past emotional tolls."
+    },
+    {
+      "t": "narrate",
+      "text": "Temperance wasn't about finding a perfect midpoint. It was about holding the opposites in suspension. Acknowledging the complexity without demanding a simple resolution. Finding the middle path, even if that path mostly involved navigating the grocery store aisles or trying to remember where he had parked."
+    },
+    {
+      "t": "narrate",
+      "text": "He picked up his pen."
+    },
+    {
+      "t": "narrate",
+      "text": "Maybe write a footnote about the dust motes. Explore the inherent narrative potential of the narwhal mug. Life felt less like a grand opera now, more like a series of nested anecdotes, slightly absurd, quietly profound. He was content, he supposed, to just — be. A middle-aged man in a Montreal apartment. Drinking adequate coffee. Observing the alley. Occasionally visited by the ghosts of his former, more frantic selves."
+    },
+    {
+      "t": "narrate",
+      "text": "Just another Tuesday."
+    },
+    {
+      "t": "narrate",
+      "text": "And maybe, just maybe, that was equilibrium enough."
+    },
+    {
+      "t": "narrate",
+      "text": "His phone, on the desk, buzzed once."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked down. A text from a number not in his contacts. The number had a Texas area code. He had not received a text from a Texas area code in — he counted, briefly, the way a man counts steps coming downstairs in the dark — six years."
+    },
+    {
+      "t": "narrate",
+      "text": "The text was four words long."
+    },
+    {
+      "t": "narrate",
+      "text": "did you feel it"
+    },
+    {
+      "t": "narrate",
+      "text": "He stared at the screen."
+    },
+    {
+      "t": "narrate",
+      "text": "He did not, immediately, reply. He did not know who the sender was. He had a small tight intuition about who the sender was, the kind of intuition that arrived before the cognition and that he had learned, in his Graustark years, to register without honoring. The intuition said Frasier. The cognition said unknown. Temperance was holding both."
+    },
+    {
+      "t": "narrate",
+      "text": "He had felt something, this morning. He had felt it just before the coffee maker had started gurgling. A small sub-bass shift. The kind of vibration that lived in his molars before it lived in his ears. He had attributed it, at the time, to a passing truck. He had attributed it, on further reflection, to a passing truck that wasn't there. He had attributed it, on yet further reflection, to nothing, in the small useful way he attributed most things to nothing in his Montreal life, because the alternative was to start, again, mapping."
+    },
+    {
+      "t": "narrate",
+      "text": "He had not, this morning, started mapping."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked at the text. He looked at the dust motes. He looked at the drainpipe in the alley, which the light was, at this exact moment, hitting in the particular way."
+    },
+    {
+      "t": "narrate",
+      "text": "He set the phone down."
+    },
+    {
+      "t": "narrate",
+      "text": "He picked the phone back up."
+    },
+    {
+      "t": "narrate",
+      "text": "He typed, slowly, a single word in reply:"
+    },
+    {
+      "t": "narrate",
+      "text": "yes."
+    },
+    {
+      "t": "narrate",
+      "text": "He sent it."
+    },
+    {
+      "t": "narrate",
+      "text": "He set the phone back down. He waited. He counted, internally, the seconds. Forty-seven seconds. Fifty. Sixty."
+    },
+    {
+      "t": "narrate",
+      "text": "The phone did not, immediately, reply."
+    },
+    {
+      "t": "narrate",
+      "text": "The phone, eventually, never replied to that particular thread again."
+    },
+    {
+      "t": "narrate",
+      "text": "John sat with the silence for a long time."
+    },
+    {
+      "t": "narrate",
+      "text": "The dust motes performed their ballet. The narwhal mug, on the coaster he had bought for it, held the last of the coffee. The alley below the window did its small alley work. The patch of moss on the opposite brick wall did its small moss work. The recycling bin was full, in the way the recycling bin was always full on a Tuesday, the city collection coming on Wednesdays."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, something is starting again."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, something is starting again somewhere I am not, and somebody I used to know thought to ask whether I had felt the edge of it."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, temperance is being able to know this and not, immediately, do anything."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, after a while: I will, eventually, do something. The doing will not be today."
+    },
+    {
+      "t": "narrate",
+      "text": "He reopened the notebook. He uncapped the pen."
+    },
+    {
+      "t": "narrate",
+      "text": "He wrote, at the top of a fresh page, the date."
+    },
+    {
+      "t": "narrate",
+      "text": "He wrote, beneath the date: Hum returning. Different vector. Note: not Graustark. Somewhere — newer. Cleaner. Worse."
+    },
+    {
+      "t": "narrate",
+      "text": "He underlined the word Worse."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked at the line for a long minute. Then he closed the notebook. He set the pen on top of it. He stood up. He carried the narwhal mug to the kitchen. He rinsed it. He set it upside-down on the rack to dry."
+    },
+    {
+      "t": "narrate",
+      "text": "He returned to the desk. He looked at the drainpipe in the alley. The light, now, had moved. The drainpipe was just a drainpipe. The moment, whatever it had been, had passed."
+    },
+    {
+      "t": "narrate",
+      "text": "He sat down. He opened his email. He began, dutifully, to draft the next paragraph of the Algorithmic Comfort Food piece. The paragraph would be competent. The paragraph would be filed, eventually, by Friday — though not, in fact, this Friday, but the next one, which his editor had quietly come to accept as the actual deadline three years ago without bothering to say so."
+    },
+    {
+      "t": "narrate",
+      "text": "He drafted. The dust motes resumed. The moss persisted. The alley was, again, just an alley."
+    },
+    {
+      "t": "narrate",
+      "text": "Temperance held."
+    },
+    {
+      "t": "narrate",
+      "text": "But on the desk, beside the narwhal mug's coaster, the phone — still face-up, still showing the four-word thread that had been opened and not, today, continued — pulsed once with the small subtle vibration of a thread that had been read, by the other party, on the other end, and acknowledged."
+    },
+    {
+      "t": "narrate",
+      "text": "Just once. Just briefly."
+    },
+    {
+      "t": "narrate",
+      "text": "John did not, this time, pick up the phone."
+    },
+    {
+      "t": "narrate",
+      "text": "But he noted it."
+    },
+    {
+      "t": "narrate",
+      "text": "He had begun, again, to note things."
+    },
+    {
+      "t": "narrate",
+      "text": "The mapping had not, in the end, ever quite stopped."
+    },
+    {
+      "t": "narrate",
+      "text": "It had just, for a season, been temperate."
+    },
+    {
+      "t": "narrate",
+      "text": "¹ Self 1: The Fool, earnest documentarian, slightly panicked. Self 2: Faustian bargainer, seeking transcendence, possibly trading soul for decent Wi-Fi. Self 3: Hardboiled investigator (never quite took hold, frankly). Self 4: This guy. The one with the coffee. (Further selves under consideration, pending funding.) Self 5, possibly: The one who picks the phone back up."
+    },
+    {
+      "t": "end"
+    }
   ]
 }

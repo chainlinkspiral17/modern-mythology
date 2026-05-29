@@ -1,5 +1,5 @@
 {
-  "id": "portrait_elicia",
+  "id": "portrait_nicola",
   "canvas": [810, 858],
   "bg": null,
   "windows": [
@@ -10,49 +10,49 @@
     { "kind": "visualizer",
       "x": 0, "y": 540, "font_px": 14,
       "bar_count": 60, "bar_height": 30, "bar_gap": 0,
-      "min_freq": 40, "max_freq": 1600,
-      "magnitude": 14.0, "smoothing": 0.40, "peak_decay": 0.94,
+      "min_freq": 50, "max_freq": 2400,
+      "magnitude": 14.0, "smoothing": 0.34, "peak_decay": 0.93,
       "peak_hold": false,
       "wave_smooth_passes": 4,
       "update_hz": 45,
       "col_dim":      "#06080e",
-      "col_lo":       "#161028",
-      "col_mid":      "#3a2a55",
-      "col_hi":       "#8a6aa0",
-      "col_peak":     "#c8a0d8",
-      "col_peak_tip": "#f0d8ff",
+      "col_lo":       "#241410",
+      "col_mid":      "#6a3422",
+      "col_hi":       "#b06840",
+      "col_peak":     "#e8a860",
+      "col_peak_tip": "#ffe0b0",
       "alpha": 0.32, "z": 1 },
 
-    { "kind": "image", "path": "assets/gallery/nicola_face.png",
+    { "kind": "image", "path": "assets/gallery/elicia_face.png",
       "x": 0, "y": 0, "w": 810, "h": 858,
       "stretch": "fit",
       "alpha": 1.0, "z": 3 },
 
     { "kind": "image_frames",
       "frames": [
-        "assets/gallery/portrait_nicola_face_ascii.png",
-        "assets/gallery/portrait_nicola_face_ascii.png",
-        "assets/gallery/portrait_nicola_face_ascii.png",
-        "assets/gallery/portrait_nicola_face_ascii_glitch.png"
+        "assets/gallery/portrait_elicia_face_ascii.png",
+        "assets/gallery/portrait_elicia_face_ascii.png",
+        "assets/gallery/portrait_elicia_face_ascii.png",
+        "assets/gallery/portrait_elicia_face_ascii_glitch.png"
       ],
       "frame_duration": 0.5,
       "x": 0, "y": 0, "w": 810, "h": 858,
-      "modulate": "#e6dcff",
+      "modulate": "#ffe6cc",
       "alpha": 0.45, "z": 5,
       "audio_reactive": {
-        "freq_lo": 40, "freq_hi": 1400,
+        "freq_lo": 50, "freq_hi": 2000,
         "base_alpha": 0.32, "max_alpha": 0.62, "min_alpha": 0.22,
         "magnitude": 5.0, "smoothing": 0.26, "update_hz": 30
       }
     },
 
-    { "kind": "image", "path": "assets/gallery/portrait_border_nicola_shadow.png",
+    { "kind": "image", "path": "assets/gallery/portrait_border_elicia_shadow.png",
       "x": 6, "y": 8, "w": 810, "h": 858,
       "alpha": 0.85, "z": 7 },
 
-    { "kind": "image", "path": "assets/gallery/portrait_border_nicola.png",
+    { "kind": "image", "path": "assets/gallery/portrait_border_elicia.png",
       "x": 0, "y": 0, "w": 810, "h": 858,
-      "modulate": "#b89ad6",
+      "modulate": "#e8a860",
       "alpha": 1.0, "z": 8 }
   ]
 }

@@ -2,152 +2,592 @@
   "id": "vol5_ch7_chariot",
   "vol": 5,
   "chapter": "VII",
-  "type": "scene",
+  "type": "chapter",
   "title": "The Chariot",
   "nodes": [
-    {"t": "bg", "src": "assets/backgrounds/vol5_new_orleans_office.jpg"},
-    {"t": "hide", "pos": "left"},
-    {"t": "hide", "pos": "center"},
-    {"t": "hide", "pos": "right"},
-    {"t": "interlude", "text": "VII — The Chariot", "sub": "Two Horses, One Wreck", "duration": 3},
-
-    {"t": "narrate", "text": "THE CHARIOT. The armored figure holds no reins — the sphinxes are controlled by will alone. Forward motion, absolute. Victory through discipline. And reversed: the chariot careening off the road. Speed without direction. The will that no longer knows what it is willing toward."},
-
-    {"t": "narrate", "text": "Antonio D'Ambrosio had been told, by a girlfriend in his early twenties, that he had two speeds: gone and about to be gone."},
-    {"t": "narrate", "text": "The girlfriend had not, at the time, intended it as a compliment. Antonio had taken it as one anyway, because he had been twenty-three and stupid and convinced that velocity was a substitute for direction, and because the only thing more flattering to a young man's vanity than a true criticism was a true criticism delivered with the tonal certainty of an aphorism. He had broken up with the girl two months later — gone, then more gone — and the line had stayed with him, the way the most useful diagnoses do, for the next eleven years."},
-    {"t": "narrate", "text": "He thought about it now, climbing the rusted iron stair to the cramped office above what would, eventually, be Ember & Ash."},
-    {"t": "narrate", "text": "The phrase had begun, in the past year, to feel less like a compliment and more like a verdict."},
-
-    {"t": "narrate", "text": "The office was hot. The office was always hot. The office was hot because it was August in New Orleans and because the window air-conditioning unit Jimmy had installed had been installed by Jimmy, which meant it ran, technically, but in the particular way that things installed by Jimmy ran — at half capacity, with a faint smell of melting plastic, and with a personality."},
-    {"t": "narrate", "text": "Antonio crossed to the desk, dropped the rolled architectural plans, picked up the half-empty bottle of bourbon from the file cabinet, and sat down without pouring."},
-    {"t": "narrate", "text": "The phone on the desk was buzzing."},
-    {"t": "narrate", "text": "It had been buzzing for three minutes."},
-    {"t": "narrate", "text": "He looked at it. The screen said Q. PAUL. It did not say Quentin, because Antonio had refused, on principle, to give Quentin Paul the dignity of a first name in his contacts, and it did not say Mr. Paul, because Antonio had refused, on principle, to give him the dignity of an honorific. The compromise had been the initial. The compromise was, like most of Antonio's compromises, less satisfying in practice than it had been in theory."},
-    {"t": "narrate", "text": "He let the phone buzz."},
-    {"t": "narrate", "text": "He counted, in his head, the seconds until it would go to voicemail. He had, over the course of the summer, gotten very good at this count. The phone went to voicemail at twenty-seven seconds. He had timed it, the first week, with a stopwatch."},
-    {"t": "narrate", "text": "The phone buzzed for twenty-seven seconds."},
-    {"t": "narrate", "text": "The phone went to voicemail."},
-    {"t": "narrate", "text": "Antonio uncapped the bourbon, smelled it, recapped the bourbon, and set it back on the desk."},
-    {"t": "narrate", "text": "He picked up the phone. He did not, this time, listen to the voicemail. He had, two weeks ago, started a small private experiment: do not listen to the voicemails. See if the world ends. So far the world had not ended. The voicemails had simply accumulated, like silt at a river bend, and Antonio had begun to notice that the silt itself constituted a kind of message — that the volume of unlistened voicemails from Q. PAUL was, by mid-August, a more accurate index of his relationship with Q. PAUL than any single voicemail would have been."},
-    {"t": "narrate", "text": "He put the phone face-down on the desk."},
-
-    {"t": "narrate", "text": "Ember & Ash was Antonio's fever dream made manifest."},
-    {"t": "narrate", "text": "That was the description he had used in the prospectus he had circulated, the prospectus that had landed him the loan, the prospectus that had also embarrassed him enough that he had, six months later, removed his own name from the masthead of the early publicity materials and replaced it with the corporate name of the LLC Jimmy Daigle had set up for him on a Tuesday afternoon over po' boys."},
-    {"t": "narrate", "text": "The warehouse below the office: exposed brick scarred with generations of graffiti prayers and curses. Towering ceilings lost in shadow. The floor littered with salvaged materials waiting for transformation. It smelled of old wood, ambition, and the faint unsettling tang of ozone — like Frasier Temple's workshop in Graustark, but with more existential dread and worse plumbing. Antonio's vision: Creole meets Italian meets Southeast Asian street food meets — performance art? He still wasn't entirely sure. It was bold, chaotic, probably doomed."},
-    {"t": "narrate", "text": "Just like the prospectus had said. Just like Antonio himself, maybe."},
-    {"t": "narrate", "text": "The crew was outside, on their thirty-minute lunch. Spanish on the radio. A hammer doing the slow bored work of hanging a thing the hanger had no opinion about. The hammer had been hanging the same thing — a section of reclaimed cypress beam, the beam Antonio had spent three weeks tracking down at a salvage yard outside Lafayette and had paid a great deal of money for and had loved more, when it arrived, than he had any business loving an inanimate object — for two days."},
-    {"t": "narrate", "text": "The beam was not, in Antonio's professional opinion, going up straight. He had pointed this out to the foreman yesterday. The foreman had said, Boss, it's straight enough. Antonio had said, It needs to be straight, not straight enough. The foreman had said, Boss, in this building, in this town, in this neighborhood, that is the same word."},
-    {"t": "narrate", "text": "Antonio had not, at the time, conceded the point. He was beginning, this morning, to suspect the foreman had been correct."},
-
-    {"t": "narrate", "text": "He stood. He paced. The office was twelve feet by ten. He could pace it in eight strides. He had, over the past three months, paced it perhaps six thousand times. The carpet under the route showed the path."},
-    {"t": "narrate", "text": "His mind ran the inventory."},
-    {"t": "narrate", "text": "The buildout was four months behind schedule. The kitchen equipment, ordered in March, had arrived in June and was the wrong gauge for the gas line, which meant either retrofitting the equipment (expensive) or retrofitting the gas line (also expensive, plus city permits Antonio did not currently have the political cover to obtain). The website was not built. The hire list was incomplete. The chef Antonio had courted from Houston — Lila Bao, the one who had run the pop-up that had made the Chronicle's best-of list two years running — had said yes in writing in May and had begun, in July, to send the kind of three-line emails that meant she was being courted by somebody with a better offer."},
-    {"t": "narrate", "text": "Quentin Paul was calling. Q. PAUL was calling. Q. PAUL had been calling, with increasing frequency, since the conversation in early July in which Antonio had told him, politely, that he did not need any external guidance on the project, and Q. PAUL had purred of course in the voice that meant we will see about that."},
-    {"t": "narrate", "text": "His father had not visited since May. His father did not call. They spoke on the first Sunday of even-numbered months, and August was not an even-numbered month, and the next call was therefore six weeks away, and Antonio could feel — viscerally, sitting in the hot office with the cypress beam not going up straight downstairs — that something was going to happen before that call, and that the call would, in retrospect, become the last clean conversation he and his father had ever had."},
-    {"t": "narrate", "text": "He was not, at thirty-four, ready for that to be true."},
-    {"t": "narrate", "text": "He was also not, at thirty-four, in any position to do anything about it."},
-
-    {"t": "narrate", "text": "He picked up the phone. He thumbed past the unread voicemail from Q. PAUL. He found Jimmy."},
-    {"t": "narrate", "text": "Jimmy answered on the second ring. He always did. It was one of Jimmy's few unambiguous virtues."},
-    {"t": "say", "char": "jimmy", "text": "Hey, kid."},
-    {"t": "say", "char": "antonio", "text": "You at the warehouse?"},
-    {"t": "say", "char": "jimmy", "text": "Round the corner. Five minutes."},
-    {"t": "say", "char": "antonio", "text": "Get here in three."},
-    {"t": "say", "char": "jimmy", "text": "Two."},
-    {"t": "say", "char": "antonio", "text": "Bring coffee."},
-    {"t": "say", "char": "jimmy", "text": "On it."},
-    {"t": "narrate", "text": "Antonio set the phone down. He felt, briefly, the small calming hum of having delegated a decision he had not yet had to make. Jimmy would arrive. Jimmy would assess. Jimmy would propose, with the particular calm of a man who had spent a decade managing other people's emergencies, the three or four moves available, ranked by how much they would cost in money versus how much they would cost in dignity. Antonio would pick. Antonio would commit. Antonio would, on the strength of having committed, feel briefly competent. The briefly competent feeling would last about forty minutes."},
-    {"t": "narrate", "text": "This was the rhythm. This was the chariot, drawn by two horses pulling in opposite directions: Antonio's vision (which insisted on the cypress beam being straight, the chef being Lila Bao, the menu being Creole meets Italian meets Southeast Asian street food meets performance art) and Antonio's circumstance (which suggested, with mounting clarity, that the cypress beam would settle for straight enough, the chef would settle for whoever Jimmy could find on short notice, and the menu would settle for whatever the staff, when finally hired, could actually execute)."},
-    {"t": "narrate", "text": "The two horses, between them, kept the chariot moving. The chariot was not, Antonio increasingly suspected, going where he had planned."},
-
-    {"t": "narrate", "text": "He stood at the small leaded window of the office and looked out at the neighborhood. The Marigny on a Saturday afternoon: ancient oaks dripping Spanish moss like weary debutantes. Wrought iron balconies rusting into lacework. Gaudy. Eye-catching. Like a bruise blooming on pale skin. The kind of beauty Antonio had moved here for and had now been living inside for nine months and had, somewhere in month six, stopped seeing the way one stops seeing the wallpaper in a house one has inherited and is in the process of slowly disliking."},
-    {"t": "narrate", "text": "Across the street, an older man Antonio did not recognize was leaning against a streetlight, smoking. He wore a charcoal suit. He wore lawyer-shoes. He was watching the warehouse."},
-    {"t": "narrate", "text": "He was watching, more specifically, the door to the office stair Antonio had just climbed."},
-    {"t": "narrate", "text": "Antonio stepped back from the window without thinking. The way you step back from the edge of a roof when you suddenly remember the height."},
-    {"t": "narrate", "text": "When he looked again — carefully, from an angle — the man was still there. The cigarette had advanced a centimeter. The man had not, otherwise, moved."},
-    {"t": "narrate", "text": "Antonio crossed back to the desk. Picked up his phone. Thumbed Jimmy."},
-    {"t": "say", "char": "jimmy", "text": "Yeah?"},
-    {"t": "say", "char": "antonio", "text": "You see a guy on the corner across the street."},
-    {"t": "say", "char": "jimmy", "text": "What kind of guy."},
-    {"t": "say", "char": "antonio", "text": "Charcoal suit. Older. Smoking."},
-    {"t": "narrate", "text": "A pause. Then Jimmy's voice, carefully neutral, the voice he used when he had already drawn a conclusion and was choosing whether to share it."},
-    {"t": "say", "char": "jimmy", "text": "Yeah. I see him."},
-    {"t": "say", "char": "antonio", "text": "You know him."},
-    {"t": "say", "char": "jimmy", "text": "I know the type. Stay upstairs. I'm coming up the back way."},
-    {"t": "narrate", "text": "Antonio stood at the desk. The bottle of bourbon at his elbow looked, suddenly, less like a bad decision and more like a tool whose specific function he was about to need. He uncapped it. Poured one finger into the chipped glass on the desk. Drank it."},
-    {"t": "narrate", "text": "The bourbon burned. The bourbon helped."},
-
-    {"t": "narrate", "text": "The office door opened from the back stair. Jimmy slipped in, closed it behind him, set two coffees on the desk, glanced at the bottle, glanced at the empty glass, and chose — for once — not to comment."},
-    {"t": "say", "char": "jimmy", "text": "Okay. Sit down. Don't look out the window."},
-    {"t": "narrate", "text": "Antonio sat. He had not, until Jimmy said it, registered that he had been about to look out the window again."},
-    {"t": "narrate", "text": "Jimmy crossed to the leaded window himself. Stood at an angle that allowed him to see the corner across the street while remaining, from the corner's perspective, invisible. He watched for perhaps thirty seconds."},
-    {"t": "narrate", "text": "Then he stepped back. He turned to Antonio. His face was the face Jimmy used when he was about to deliver bad news he had already decided how to manage."},
-    {"t": "say", "char": "jimmy", "text": "Okay. Couple of things."},
-    {"t": "say", "char": "antonio", "text": "Yeah."},
-    {"t": "say", "char": "jimmy", "text": "First. He's Q. Paul's. I've seen him before. He's the guy Q. Paul sends when Q. Paul wants to be seen sending somebody. So this is — this is the message itself, you understand. The message is I sent a guy. The guy doesn't have to do anything."},
-    {"t": "narrate", "text": "Antonio felt the bourbon stop helping."},
-    {"t": "say", "char": "jimmy", "text": "Second. He's not just Q. Paul's. I want to be honest with you, kid. I've also seen him at — other things. He works for more than one shop. I don't know what his deal is, but I know his face shows up around money that's getting moved, and I know his face is showing up here, today, on a Saturday, when the crew is on lunch. So whoever sent him — Paul or somebody else — knows the schedule of this jobsite. Which means somebody on the crew is talking. Or somebody at the supply yard. Or somebody at the bank."},
-    {"t": "say", "char": "antonio", "text": "Or somebody in this office."},
-    {"t": "narrate", "text": "Jimmy's face did not move."},
-    {"t": "say", "char": "jimmy", "text": "Or somebody in this office. Yeah."},
-    {"t": "narrate", "text": "Antonio looked at him for a long moment. Jimmy looked back, levelly, the way he always did when Antonio asked the question Antonio had not, technically, asked."},
-    {"t": "say", "char": "jimmy", "text": "Not me. For what it's worth."},
-    {"t": "say", "char": "antonio", "text": "For what it's worth."},
-    {"t": "say", "char": "jimmy", "text": "Yeah, kid. I know."},
-
-    {"t": "narrate", "text": "They sat for a while. The hammer downstairs had not resumed; the crew was still on lunch. The window air-conditioner cycled on, ran for forty seconds, cycled off. The room got, in the course of the cycle, half a degree cooler, and then immediately a full degree warmer."},
-    {"t": "say", "char": "antonio", "text": "What do I do."},
-    {"t": "say", "char": "jimmy", "text": "Couple of options. None of 'em great. One. You wait him out. He's there to be seen, you let him be seen, he leaves, you don't react. This costs you nothing today and probably a little something later. Two. You go out and say hello. This is the ballsy move. It tells Paul you're not scared, which has the disadvantage of being a lie. Three. You call your dad."},
-    {"t": "narrate", "text": "Antonio laughed once, a short sharp sound that surprised both of them."},
-    {"t": "say", "char": "antonio", "text": "Three is not on the table."},
-    {"t": "say", "char": "jimmy", "text": "I know it's not on the table. I'm just telling you it's an option in the abstract."},
-    {"t": "say", "char": "antonio", "text": "Why are you telling me it's an option in the abstract."},
-    {"t": "say", "char": "jimmy", "text": "Because, kid, in two months when we are deeper in this than we are now, you are going to come to me and say Jimmy, why didn't I call my dad, and I want to be able to point at this conversation and tell you I told you it was an option."},
-    {"t": "say", "char": "antonio", "text": "Jimmy. What's option four."},
-    {"t": "narrate", "text": "Jimmy was quiet for a moment."},
-    {"t": "say", "char": "jimmy", "text": "Option four is you let me handle it."},
-    {"t": "say", "char": "antonio", "text": "What does that mean."},
-    {"t": "say", "char": "jimmy", "text": "It means you let me handle it."},
-    {"t": "say", "char": "antonio", "text": "Jimmy."},
-    {"t": "say", "char": "jimmy", "text": "Kid."},
-    {"t": "say", "char": "antonio", "text": "What does that mean."},
-    {"t": "narrate", "text": "A pause. Then, very gently, the way you tell a child something you wish you did not have to:"},
-    {"t": "say", "char": "jimmy", "text": "It means you don't ask me what it means."},
-
-    {"t": "narrate", "text": "Antonio sat with that for a long time."},
-    {"t": "narrate", "text": "The downstairs hammer started up again. The crew was back from lunch. A radio came on, salsa this time, somebody's choice. The office got slowly, then suddenly, much hotter; the window unit, in protest at having been asked to do its job, made a small grinding noise and gave up entirely."},
-    {"t": "narrate", "text": "Antonio looked at the bourbon bottle. He did not pour another. He looked at the architectural plans rolled up on the desk, the plans he had loved when they were drafted, the plans that had committed him to a building he was no longer entirely sure he wanted. He looked at his phone, face-down, full of unread voicemails from Q. PAUL."},
-    {"t": "narrate", "text": "He looked at Jimmy."},
-    {"t": "narrate", "text": "Jimmy was waiting."},
-    {"t": "say", "char": "antonio", "text": "Option four."},
-    {"t": "say", "char": "jimmy", "text": "You sure."},
-    {"t": "say", "char": "antonio", "text": "No."},
-    {"t": "say", "char": "jimmy", "text": "You sure?"},
-    {"t": "say", "char": "antonio", "text": "Yeah, Jimmy. Option four."},
-    {"t": "narrate", "text": "Jimmy nodded once. He drank his coffee in three long swallows. He stood up."},
-    {"t": "say", "char": "jimmy", "text": "Stay upstairs another twenty minutes. Don't look out the window. I'll text you when it's clear."},
-    {"t": "say", "char": "antonio", "text": "Jimmy."},
-    {"t": "say", "char": "jimmy", "text": "Yeah."},
-    {"t": "say", "char": "antonio", "text": "I'm going to ask you, in two months, what option four was."},
-    {"t": "say", "char": "jimmy", "text": "I know you are, kid."},
-    {"t": "say", "char": "antonio", "text": "And you're not going to tell me."},
-    {"t": "say", "char": "jimmy", "text": "No."},
-    {"t": "say", "char": "antonio", "text": "Okay."},
-    {"t": "narrate", "text": "Jimmy left through the back stair. The office door clicked shut. Antonio sat at the desk and listened to the salsa from the crew's radio downstairs and the slow grinding death of the air-conditioner and the small interior sound — somewhere just behind his sternum, where the bourbon had not, in the end, reached — of a chariot picking up speed on a road he had not chosen."},
-    {"t": "narrate", "text": "He looked at the phone."},
-    {"t": "narrate", "text": "He picked it up."},
-    {"t": "narrate", "text": "He thumbed past the voicemails from Q. PAUL. He found the contact for DAD. He held his thumb above the number for a long count, eight, nine, ten, eleven seconds."},
-    {"t": "narrate", "text": "He set the phone down."},
-    {"t": "narrate", "text": "He did not call."},
-    {"t": "narrate", "text": "Outside, somewhere around the corner, the older man in the charcoal suit was walking, unhurried, back toward the dark sedan he had parked carefully in the shadow of the dumpster. He flicked the cigarette into the gutter. He got into the sedan. He drove away."},
-    {"t": "narrate", "text": "He had been there for forty minutes."},
-    {"t": "narrate", "text": "He had been seen."},
-    {"t": "narrate", "text": "The message had been delivered."},
-    {"t": "narrate", "text": "The chariot, drawn by its two horses, kept moving."},
-    {"t": "narrate", "text": "Antonio D'Ambrosio sat in the hot office above his unfinished restaurant, and, for the first time in eleven years, did not feel certain that he had two speeds."},
-    {"t": "narrate", "text": "He felt, briefly and clearly, that he had only one."},
-    {"t": "narrate", "text": "The remaining speed was gone."},
-
-    {"t": "end"}
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_new_orleans_office.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "VII — The Chariot",
+      "sub": "Two Horses, One Wreck",
+      "duration": 3
+    },
+    {
+      "t": "narrate",
+      "text": "THE CHARIOT. The armored figure holds no reins — the sphinxes are controlled by will alone. Forward motion, absolute. Victory through discipline. And reversed: the chariot careening off the road. Speed without direction. The will that no longer knows what it is willing toward."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio D'Ambrosio had been told, by a girlfriend in his early twenties, that he had two speeds: gone and about to be gone."
+    },
+    {
+      "t": "narrate",
+      "text": "The girlfriend had not, at the time, intended it as a compliment. Antonio had taken it as one anyway, because he had been twenty-three and stupid and convinced that velocity was a substitute for direction, and because the only thing more flattering to a young man's vanity than a true criticism was a true criticism delivered with the tonal certainty of an aphorism. He had broken up with the girl two months later — gone, then more gone — and the line had stayed with him, the way the most useful diagnoses do, for the next eleven years."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought about it now, climbing the rusted iron stair to the cramped office above what would, eventually, be Ember & Ash."
+    },
+    {
+      "t": "narrate",
+      "text": "The phrase had begun, in the past year, to feel less like a compliment and more like a verdict."
+    },
+    {
+      "t": "narrate",
+      "text": "The office was hot. The office was always hot. The office was hot because it was August in New Orleans and because the window air-conditioning unit Jimmy had installed had been installed by Jimmy, which meant it ran, technically, but in the particular way that things installed by Jimmy ran — at half capacity, with a faint smell of melting plastic, and with a personality."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio crossed to the desk, dropped the rolled architectural plans, picked up the half-empty bottle of bourbon from the file cabinet, and sat down without pouring."
+    },
+    {
+      "t": "narrate",
+      "text": "The phone on the desk was buzzing."
+    },
+    {
+      "t": "narrate",
+      "text": "It had been buzzing for three minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked at it. The screen said Q. PAUL. It did not say Quentin, because Antonio had refused, on principle, to give Quentin Paul the dignity of a first name in his contacts, and it did not say Mr. Paul, because Antonio had refused, on principle, to give him the dignity of an honorific. The compromise had been the initial. The compromise was, like most of Antonio's compromises, less satisfying in practice than it had been in theory."
+    },
+    {
+      "t": "narrate",
+      "text": "He let the phone buzz."
+    },
+    {
+      "t": "narrate",
+      "text": "He counted, in his head, the seconds until it would go to voicemail. He had, over the course of the summer, gotten very good at this count. The phone went to voicemail at twenty-seven seconds. He had timed it, the first week, with a stopwatch."
+    },
+    {
+      "t": "narrate",
+      "text": "The phone buzzed for twenty-seven seconds."
+    },
+    {
+      "t": "narrate",
+      "text": "The phone went to voicemail."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio uncapped the bourbon, smelled it, recapped the bourbon, and set it back on the desk."
+    },
+    {
+      "t": "narrate",
+      "text": "He picked up the phone. He did not, this time, listen to the voicemail. He had, two weeks ago, started a small private experiment: do not listen to the voicemails. See if the world ends. So far the world had not ended. The voicemails had simply accumulated, like silt at a river bend, and Antonio had begun to notice that the silt itself constituted a kind of message — that the volume of unlistened voicemails from Q. PAUL was, by mid-August, a more accurate index of his relationship with Q. PAUL than any single voicemail would have been."
+    },
+    {
+      "t": "narrate",
+      "text": "He put the phone face-down on the desk."
+    },
+    {
+      "t": "narrate",
+      "text": "Ember & Ash was Antonio's fever dream made manifest."
+    },
+    {
+      "t": "narrate",
+      "text": "That was the description he had used in the prospectus he had circulated, the prospectus that had landed him the loan, the prospectus that had also embarrassed him enough that he had, six months later, removed his own name from the masthead of the early publicity materials and replaced it with the corporate name of the LLC Jimmy Daigle had set up for him on a Tuesday afternoon over po' boys."
+    },
+    {
+      "t": "narrate",
+      "text": "The warehouse below the office: exposed brick scarred with generations of graffiti prayers and curses. Towering ceilings lost in shadow. The floor littered with salvaged materials waiting for transformation. It smelled of old wood, ambition, and the faint unsettling tang of ozone — like Frasier Temple's workshop in Graustark, but with more existential dread and worse plumbing. Antonio's vision: Creole meets Italian meets Southeast Asian street food meets — performance art? He still wasn't entirely sure. It was bold, chaotic, probably doomed."
+    },
+    {
+      "t": "narrate",
+      "text": "Just like the prospectus had said. Just like Antonio himself, maybe."
+    },
+    {
+      "t": "narrate",
+      "text": "The crew was outside, on their thirty-minute lunch. Spanish on the radio. A hammer doing the slow bored work of hanging a thing the hanger had no opinion about. The hammer had been hanging the same thing — a section of reclaimed cypress beam, the beam Antonio had spent three weeks tracking down at a salvage yard outside Lafayette and had paid a great deal of money for and had loved more, when it arrived, than he had any business loving an inanimate object — for two days."
+    },
+    {
+      "t": "narrate",
+      "text": "The beam was not, in Antonio's professional opinion, going up straight. He had pointed this out to the foreman yesterday. The foreman had said, Boss, it's straight enough. Antonio had said, It needs to be straight, not straight enough. The foreman had said, Boss, in this building, in this town, in this neighborhood, that is the same word."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio had not, at the time, conceded the point. He was beginning, this morning, to suspect the foreman had been correct."
+    },
+    {
+      "t": "narrate",
+      "text": "He stood. He paced. The office was twelve feet by ten. He could pace it in eight strides. He had, over the past three months, paced it perhaps six thousand times. The carpet under the route showed the path."
+    },
+    {
+      "t": "narrate",
+      "text": "His mind ran the inventory."
+    },
+    {
+      "t": "narrate",
+      "text": "The buildout was four months behind schedule. The kitchen equipment, ordered in March, had arrived in June and was the wrong gauge for the gas line, which meant either retrofitting the equipment (expensive) or retrofitting the gas line (also expensive, plus city permits Antonio did not currently have the political cover to obtain). The website was not built. The hire list was incomplete. The chef Antonio had courted from Houston — Lila Bao, the one who had run the pop-up that had made the Chronicle's best-of list two years running — had said yes in writing in May and had begun, in July, to send the kind of three-line emails that meant she was being courted by somebody with a better offer."
+    },
+    {
+      "t": "narrate",
+      "text": "Quentin Paul was calling. Q. PAUL was calling. Q. PAUL had been calling, with increasing frequency, since the conversation in early July in which Antonio had told him, politely, that he did not need any external guidance on the project, and Q. PAUL had purred of course in the voice that meant we will see about that."
+    },
+    {
+      "t": "narrate",
+      "text": "His father had not visited since May. His father did not call. They spoke on the first Sunday of even-numbered months, and August was not an even-numbered month, and the next call was therefore six weeks away, and Antonio could feel — viscerally, sitting in the hot office with the cypress beam not going up straight downstairs — that something was going to happen before that call, and that the call would, in retrospect, become the last clean conversation he and his father had ever had."
+    },
+    {
+      "t": "narrate",
+      "text": "He was not, at thirty-four, ready for that to be true."
+    },
+    {
+      "t": "narrate",
+      "text": "He was also not, at thirty-four, in any position to do anything about it."
+    },
+    {
+      "t": "narrate",
+      "text": "He picked up the phone. He thumbed past the unread voicemail from Q. PAUL. He found Jimmy."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy answered on the second ring. He always did. It was one of Jimmy's few unambiguous virtues."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Hey, kid."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "You at the warehouse?"
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Round the corner. Five minutes."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Get here in three."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Two."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Bring coffee."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "On it."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio set the phone down. He felt, briefly, the small calming hum of having delegated a decision he had not yet had to make. Jimmy would arrive. Jimmy would assess. Jimmy would propose, with the particular calm of a man who had spent a decade managing other people's emergencies, the three or four moves available, ranked by how much they would cost in money versus how much they would cost in dignity. Antonio would pick. Antonio would commit. Antonio would, on the strength of having committed, feel briefly competent. The briefly competent feeling would last about forty minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "This was the rhythm. This was the chariot, drawn by two horses pulling in opposite directions: Antonio's vision (which insisted on the cypress beam being straight, the chef being Lila Bao, the menu being Creole meets Italian meets Southeast Asian street food meets performance art) and Antonio's circumstance (which suggested, with mounting clarity, that the cypress beam would settle for straight enough, the chef would settle for whoever Jimmy could find on short notice, and the menu would settle for whatever the staff, when finally hired, could actually execute)."
+    },
+    {
+      "t": "narrate",
+      "text": "The two horses, between them, kept the chariot moving. The chariot was not, Antonio increasingly suspected, going where he had planned."
+    },
+    {
+      "t": "narrate",
+      "text": "He stood at the small leaded window of the office and looked out at the neighborhood. The Marigny on a Saturday afternoon: ancient oaks dripping Spanish moss like weary debutantes. Wrought iron balconies rusting into lacework. Gaudy. Eye-catching. Like a bruise blooming on pale skin. The kind of beauty Antonio had moved here for and had now been living inside for nine months and had, somewhere in month six, stopped seeing the way one stops seeing the wallpaper in a house one has inherited and is in the process of slowly disliking."
+    },
+    {
+      "t": "narrate",
+      "text": "Across the street, an older man Antonio did not recognize was leaning against a streetlight, smoking. He wore a charcoal suit. He wore lawyer-shoes. He was watching the warehouse."
+    },
+    {
+      "t": "narrate",
+      "text": "He was watching, more specifically, the door to the office stair Antonio had just climbed."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio stepped back from the window without thinking. The way you step back from the edge of a roof when you suddenly remember the height."
+    },
+    {
+      "t": "narrate",
+      "text": "When he looked again — carefully, from an angle — the man was still there. The cigarette had advanced a centimeter. The man had not, otherwise, moved."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio crossed back to the desk. Picked up his phone. Thumbed Jimmy."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Yeah?"
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "You see a guy on the corner across the street."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "What kind of guy."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Charcoal suit. Older. Smoking."
+    },
+    {
+      "t": "narrate",
+      "text": "A pause. Then Jimmy's voice, carefully neutral, the voice he used when he had already drawn a conclusion and was choosing whether to share it."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Yeah. I see him."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "You know him."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "I know the type. Stay upstairs. I'm coming up the back way."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio stood at the desk. The bottle of bourbon at his elbow looked, suddenly, less like a bad decision and more like a tool whose specific function he was about to need. He uncapped it. Poured one finger into the chipped glass on the desk. Drank it."
+    },
+    {
+      "t": "narrate",
+      "text": "The bourbon burned. The bourbon helped."
+    },
+    {
+      "t": "narrate",
+      "text": "The office door opened from the back stair. Jimmy slipped in, closed it behind him, set two coffees on the desk, glanced at the bottle, glanced at the empty glass, and chose — for once — not to comment."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Okay. Sit down. Don't look out the window."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio sat. He had not, until Jimmy said it, registered that he had been about to look out the window again."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy crossed to the leaded window himself. Stood at an angle that allowed him to see the corner across the street while remaining, from the corner's perspective, invisible. He watched for perhaps thirty seconds."
+    },
+    {
+      "t": "narrate",
+      "text": "Then he stepped back. He turned to Antonio. His face was the face Jimmy used when he was about to deliver bad news he had already decided how to manage."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Okay. Couple of things."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "First. He's Q. Paul's. I've seen him before. He's the guy Q. Paul sends when Q. Paul wants to be seen sending somebody. So this is — this is the message itself, you understand. The message is I sent a guy. The guy doesn't have to do anything."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio felt the bourbon stop helping."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Second. He's not just Q. Paul's. I want to be honest with you, kid. I've also seen him at — other things. He works for more than one shop. I don't know what his deal is, but I know his face shows up around money that's getting moved, and I know his face is showing up here, today, on a Saturday, when the crew is on lunch. So whoever sent him — Paul or somebody else — knows the schedule of this jobsite. Which means somebody on the crew is talking. Or somebody at the supply yard. Or somebody at the bank."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Or somebody in this office."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy's face did not move."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Or somebody in this office. Yeah."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio looked at him for a long moment. Jimmy looked back, levelly, the way he always did when Antonio asked the question Antonio had not, technically, asked."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Not me. For what it's worth."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "For what it's worth."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Yeah, kid. I know."
+    },
+    {
+      "t": "narrate",
+      "text": "They sat for a while. The hammer downstairs had not resumed; the crew was still on lunch. The window air-conditioner cycled on, ran for forty seconds, cycled off. The room got, in the course of the cycle, half a degree cooler, and then immediately a full degree warmer."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "What do I do."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Couple of options. None of 'em great. One. You wait him out. He's there to be seen, you let him be seen, he leaves, you don't react. This costs you nothing today and probably a little something later. Two. You go out and say hello. This is the ballsy move. It tells Paul you're not scared, which has the disadvantage of being a lie. Three. You call your dad."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio laughed once, a short sharp sound that surprised both of them."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Three is not on the table."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "I know it's not on the table. I'm just telling you it's an option in the abstract."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Why are you telling me it's an option in the abstract."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Because, kid, in two months when we are deeper in this than we are now, you are going to come to me and say Jimmy, why didn't I call my dad, and I want to be able to point at this conversation and tell you I told you it was an option."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Jimmy. What's option four."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy was quiet for a moment."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Option four is you let me handle it."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "What does that mean."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "It means you let me handle it."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Jimmy."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Kid."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "What does that mean."
+    },
+    {
+      "t": "narrate",
+      "text": "A pause. Then, very gently, the way you tell a child something you wish you did not have to:"
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "It means you don't ask me what it means."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio sat with that for a long time."
+    },
+    {
+      "t": "narrate",
+      "text": "The downstairs hammer started up again. The crew was back from lunch. A radio came on, salsa this time, somebody's choice. The office got slowly, then suddenly, much hotter; the window unit, in protest at having been asked to do its job, made a small grinding noise and gave up entirely."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio looked at the bourbon bottle. He did not pour another. He looked at the architectural plans rolled up on the desk, the plans he had loved when they were drafted, the plans that had committed him to a building he was no longer entirely sure he wanted. He looked at his phone, face-down, full of unread voicemails from Q. PAUL."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked at Jimmy."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy was waiting."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Option four."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "You sure."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "No."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "You sure?"
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Yeah, Jimmy. Option four."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy nodded once. He drank his coffee in three long swallows. He stood up."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Stay upstairs another twenty minutes. Don't look out the window. I'll text you when it's clear."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Jimmy."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "I'm going to ask you, in two months, what option four was."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "I know you are, kid."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "And you're not going to tell me."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "No."
+    },
+    {
+      "t": "say",
+      "char": "antonio",
+      "text": "Okay."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy left through the back stair. The office door clicked shut. Antonio sat at the desk and listened to the salsa from the crew's radio downstairs and the slow grinding death of the air-conditioner and the small interior sound — somewhere just behind his sternum, where the bourbon had not, in the end, reached — of a chariot picking up speed on a road he had not chosen."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked at the phone."
+    },
+    {
+      "t": "narrate",
+      "text": "He picked it up."
+    },
+    {
+      "t": "narrate",
+      "text": "He thumbed past the voicemails from Q. PAUL. He found the contact for DAD. He held his thumb above the number for a long count, eight, nine, ten, eleven seconds."
+    },
+    {
+      "t": "narrate",
+      "text": "He set the phone down."
+    },
+    {
+      "t": "narrate",
+      "text": "He did not call."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, somewhere around the corner, the older man in the charcoal suit was walking, unhurried, back toward the dark sedan he had parked carefully in the shadow of the dumpster. He flicked the cigarette into the gutter. He got into the sedan. He drove away."
+    },
+    {
+      "t": "narrate",
+      "text": "He had been there for forty minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "He had been seen."
+    },
+    {
+      "t": "narrate",
+      "text": "The message had been delivered."
+    },
+    {
+      "t": "narrate",
+      "text": "The chariot, drawn by its two horses, kept moving."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio D'Ambrosio sat in the hot office above his unfinished restaurant, and, for the first time in eleven years, did not feel certain that he had two speeds."
+    },
+    {
+      "t": "narrate",
+      "text": "He felt, briefly and clearly, that he had only one."
+    },
+    {
+      "t": "narrate",
+      "text": "The remaining speed was gone."
+    },
+    {
+      "t": "end"
+    }
   ]
 }

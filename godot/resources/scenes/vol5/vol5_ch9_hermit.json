@@ -2,107 +2,358 @@
   "id": "vol5_ch9_hermit",
   "vol": 5,
   "chapter": "IX",
-  "type": "scene",
+  "type": "chapter",
   "title": "The Hermit",
   "nodes": [
-    {"t": "bg", "src": "assets/backgrounds/vol5_graustark_ruins.jpg"},
-    {"t": "hide", "pos": "left"},
-    {"t": "hide", "pos": "center"},
-    {"t": "hide", "pos": "right"},
-    {"t": "interlude", "text": "IX — The Hermit", "sub": "Labyrinth of Scrawled Echoes", "duration": 3},
-
-    {"t": "narrate", "text": "THE HERMIT. The old man stands alone on a mountaintop, lantern raised. He is not lost. He chose the mountain. The lantern is not for him — it is for those below who are still climbing. Reversed: the isolation that has curdled into hiding. The light turned inward until it burns."},
-
-    {"t": "narrate", "text": "The ruin-scape of Graustark breathed Joanna LeMoine in and out with the slow, rattling sigh of a dying lung."},
-    {"t": "narrate", "text": "Twilight bled purple and bruise-grey across the fractured skyline, catching on shards of glass embedded in crumbling concrete like malevolent constellations. This wasn't just a place. It was a library of decay. A labyrinth built from the collapsed narratives of a thousand lives abruptly ended or rerouted by the earth's hungry yawn three years prior."},
-    {"t": "narrate", "text": "And Joanna — Joanna was its sole spectral librarian. Its resident ghost. Haunting the stacks of rubble and rust the way a cat haunts a house it has decided, by some process opaque to the humans, has become its territory. The cat does not request the territory. The cat does not earn it. The cat simply moves in, and after a sufficient interval the humans either accept the arrangement or move out."},
-    {"t": "narrate", "text": "The humans, in this case, had moved out."},
-    {"t": "narrate", "text": "Mostly."},
-
-    {"t": "narrate", "text": "She moved with a stillness that belied the tremor in her hands. A side effect of the chemical solace she chased to keep the louder silences at bay — the silences she had stopped trying to explain to her sister on the phone, the silences she had stopped, eventually, trying to explain to herself."},
-    {"t": "narrate", "text": "Her companions kept pace at a respectful distance."},
-    {"t": "narrate", "text": "The three-legged calico cat with eyes like chips of obsidian, who had appeared on Joanna's makeshift porch one morning eight months ago with the air of a creature filing a tenancy claim and had, by the end of the day, won the claim by the simple expedient of not leaving."},
-    {"t": "narrate", "text": "The one-eyed shepherd mix — Joanna had named him Rumpus, against his apparent wishes — whose bark sounded suspiciously like choked laughter. Rumpus had been, in some prior life, somebody's pet. He still wore the faded brown collar he had been wearing on the day Joanna found him asleep in the shadow of the collapsed bandstand, and Joanna had, in a year of trying, never quite been able to bring herself to remove it. The collar bore no tag. The tag had been ripped off, possibly by violence, possibly by snagging it on a fence. Joanna had stopped speculating in month four."},
-    {"t": "narrate", "text": "And the crow. The crow had no name. The crow refused all names, in the way crows do, by simply continuing to be a crow regardless of what you called it. The crow had begun, two months ago, to leave Joanna gifts. Bottle caps, mostly. Iridescent beetle wings. Once, memorably, a small flat key the crow had clearly stolen from somewhere — Joanna had set the key on the windowsill and had not, in the four weeks since, found the lock it belonged to. Tonight the crow was perched on a section of rusted I-beam ten feet above her, head cocked, watching the work with the patient unblinking attention of an editor."},
-    {"t": "narrate", "text": "The animals understood the territory. They knew the paths that weren't paths. The doorways that opened onto nothing but memory or sky. They were her familiars. Her chorus. Her pack."},
-
-    {"t": "narrate", "text": "Tonight, the air felt thin. Stretched. As if the membrane between worlds was wearing dangerously sheer in a way Joanna's body, before her mind, had registered."},
-    {"t": "narrate", "text": "She trailed her fingers along a rusted I-beam jutting from the earth like the bone of some long-dead behemoth. Once, she had balanced trays here. Navigating the chaotic energy of D'Ambrosio's. Reciting specials. Dodging leers. The I-beam had been part of the kitchen's structural skeleton, before. The kitchen had been on the third floor of the Adelphia's Building, before. The Adelphia's Building had been a building, before."},
-    {"t": "narrate", "text": "Now, she balanced on the precipice of — something else."},
-    {"t": "narrate", "text": "Solitude wasn't emptiness. It was a different kind of fullness, echoing with whispers the living couldn't hear."},
-    {"t": "narrate", "text": "Weird fiction made flesh. She had read enough of the right authors, in her late teens, to recognize the genre she had ended up living inside."},
-
-    {"t": "narrate", "text": "She found a relatively smooth section of wall inside the gutted shell of what might have been a haberdashery — or maybe the small library, the landmarks bled together these days — the plaster peeling back like sunburnt skin in long ragged strips that had, in places, formed second textures of their own. Her sanctuary was wherever she found a surface clean enough, solid enough, to hold the words that clawed their way out."},
-    {"t": "narrate", "text": "Her pockets yielded not keys or coins, but chalk nubs, charcoal shards, a stolen lipstick — her ink, scavenged like everything else."},
-    {"t": "narrate", "text": "The animals settled around her. Silent sentinels. The cat began meticulously cleaning a paw, ignoring the vastness of the situation in the way only cats could ignore vastness. The dog lay its head on its remaining paw, emitting a low whine that was not quite distress and not quite contentment but a frequency particular to Rumpus, a frequency Joanna had begun to read as acknowledgment. The crow, on the I-beam, observed."},
-    {"t": "narrate", "text": "Her audience."},
-    {"t": "narrate", "text": "Her hand moved, almost of its own volition. The chalk scraped — a lonely sound swallowed instantly by the ruins."},
-    {"t": "narrate", "text": "The map is not the territory.\nThe territory eats the map.\nLines blur — walls breathe — the sinkhole sighs.\nMemory, a creepypasta told by ghosts\nTo ghosts."},
-    {"t": "narrate", "text": "The words weren't hers. Not entirely. They felt — downloaded. Like echoes caught in the liminal static between stations, between realities. Sometimes she felt like a conduit. A Borges character trapped in a library of infinite, decaying pages, doomed to transcribe fragments of a book that could never be completed, whose author was perhaps the ruin itself."},
-    {"t": "narrate", "text": "She paused. Sucked chalk dust from her fingertip. The chalk dust tasted, faintly, of the limestone they had dug out of the riverbed in the cleanup year, the limestone they had left in piles at the edges of the void because the void had not, in the end, accepted it back."},
-    {"t": "narrate", "text": "Had that support beam always bent at that precise impossible angle? Was that the wind whistling through the rebar, or was it laughter?"},
-    {"t": "narrate", "text": "The town played tricks. It remembered things. It rearranged itself when you weren't looking — like finding a child's doll, pristine and untouched, sitting on the jagged edge of the sinkhole one morning, only for it to be gone an hour later. Like the recurring dream of walking through D'Ambrosio's, only the patrons were her animals, dressed in suits, discussing futures markets."},
-    {"t": "narrate", "text": "She added, beneath the first verse:"},
-    {"t": "narrate", "text": "Reflection in the stagnant pool\n(Oil-slick rainbow)\nShows the sky — shows the void — shows the face\nI wore before this one."},
-
-    {"t": "narrate", "text": "She stepped back. Head tilted."},
-    {"t": "narrate", "text": "The poem felt incomplete. Always incomplete. Like a message in a bottle thrown into an indifferent void. But the act itself was the thing. Introspection. Withdrawal. Finding a flicker of meaning in the wreckage. The wisdom of isolation wasn't about answers. It was about learning to live with the questions, learning to read the strange calligraphy of decay."},
-    {"t": "narrate", "text": "The crow, on the I-beam, made the small clicking sound it made when it had something to add to the conversation."},
-    {"t": "narrate", "text": "Joanna looked up."},
-    {"t": "narrate", "text": "The crow flew down. Landed on the chalked wall, an inch above the last line of the poem. Cocked its head. Pecked, twice, at a particular spot in the plaster — not at the chalk, but a few inches to the right of the chalk, at a place where the plaster bulged faintly in a way Joanna had not noticed."},
-    {"t": "narrate", "text": "She crossed to the wall. Pressed her palm against the spot. The plaster gave, slightly. Came away in her hand in a chip the size of a quarter."},
-    {"t": "narrate", "text": "Behind the chip, embedded in the wall, was a folded piece of paper. Old. Yellowed. The kind of paper that had been folded and tucked into a wall in 1987 by somebody who had thought, at the time, that they were leaving a small private joke for whoever happened to find it during the next renovation."},
-    {"t": "narrate", "text": "Joanna eased the paper out. The crow watched, intent."},
-    {"t": "narrate", "text": "She unfolded it."},
-    {"t": "narrate", "text": "It was a receipt. From Adelphia's Deli, dated August 14, 1987. For one egg salad, one black coffee, and one slice of pie. Total: $4.85. Paid in cash. The receipt bore, in the bottom margin, a doodle in faded ballpoint ink: a small four-foot-tall figure in a cork hat, smoking a hand-rolled cigarette, sitting beside a river. The figure was unmistakable. The figure was unmistakable in a way that made the hair on the back of Joanna's neck rise, because she had never seen the figure before in her life and yet recognized it the way one recognizes a face from a dream one has not yet had."},
-    {"t": "narrate", "text": "On the back of the receipt, in the same faded ink, three words:"},
-    {"t": "narrate", "text": "See you soon."},
-
-    {"t": "narrate", "text": "Joanna sat down on a chunk of broken concrete. The cat, sensing the shift, stopped cleaning its paw. The dog raised its head. The crow remained on the wall, unmoved."},
-    {"t": "narrate", "text": "She turned the receipt over again. The doodle. The greeting."},
-    {"t": "narrate", "text": "She thought, with the small calm clarity that was, these days, the closest thing she had to courage: I am being told something."},
-    {"t": "narrate", "text": "She thought, immediately after: I am being told something I am supposed to remember when I see it again."},
-    {"t": "narrate", "text": "She folded the receipt carefully. She put it in the breast pocket of her jacket, the one that buttoned, the one she had stitched a small inner lining into precisely so that she could keep the things she was not yet ready to lose."},
-    {"t": "narrate", "text": "The crow, satisfied, flew back up to the I-beam."},
-
-    {"t": "narrate", "text": "A wind rose, briefly, through the ruin-scape. The air went from thin to thinner. The membrane wore another half-degree sheerer."},
-    {"t": "narrate", "text": "Joanna stood. She crossed back to the chalked wall. She picked up the chalk again. She began to write, beneath the second verse, a third — but the third did not, this time, feel downloaded. The third felt like her own:"},
-    {"t": "narrate", "text": "And the bird brings me the past\nIn small bright pieces.\nAnd I am being asked, in language\nI am only beginning to learn,\nTo read."},
-    {"t": "narrate", "text": "She set down the chalk."},
-    {"t": "narrate", "text": "Rumpus the dog whined — a different whine this time. The frequency had shifted. Not acknowledgment now. Something more like attention."},
-    {"t": "narrate", "text": "Joanna scanned the deepening shadows."},
-    {"t": "narrate", "text": "Something felt different tonight. Something more than the membrane. A shift in the atmospheric pressure. A deeper silence falling. The world holding its breath."},
-    {"t": "narrate", "text": "She gathered her animal companions close. Their familiar warmth a fragile shield against the encroaching chill. The cat allowed itself to be gathered, an indignity it would extract payment for later. The dog leaned heavily against her shin. The crow, watching from the I-beam, neither moved nor objected."},
-
-    {"t": "narrate", "text": "Her voice, when she spoke, was a haunting whisper, lost almost instantly in the vast emptiness."},
-    {"t": "say", "char": "joanna", "text": "Okay. Let's go find another page."},
-    {"t": "narrate", "text": "The Hermit, lantern held aloft — a scavenged flashlight, actually, flickering weakly, batteries Joanna had been meaning to replace for a week — led her small procession deeper into the beautiful terrifying labyrinth she now called home."},
-    {"t": "narrate", "text": "They moved through what had been Houston Street. They passed the place where the Adelphia's Building had stood. They passed the place where her own first apartment had stood, the one above the dry cleaner, the one where she had written her first real poems on the back of menus stolen from D'Ambrosio's and where she had, one summer night in her early twenties, kissed Douglas Forte for the first time on the fire escape that no longer existed in any direction."},
-    {"t": "narrate", "text": "She did not slow at any of these places. She had stopped slowing at them in month nine. Slowing was a kind of permission she had decided not to grant herself, because granting it once was a precedent, and precedent was the only currency the ruin-scape understood."},
-
-    {"t": "narrate", "text": "At the lip of the sinkhole proper she paused. The void breathed up at her — the rich smell of mineral water and old roots and something else, something faintly metallic, the smell of a vein somewhere deep that had been opened and not yet closed. She had stood at this lip many times. She had once, in the bad winter, lowered herself into the void on a knotted rope and spent two hours in the dim glow of her flashlight cataloging what she found at the bottom. She had not, since, told anyone what she had found at the bottom. She did not, even now, allow herself to enumerate it in her own thoughts."},
-    {"t": "narrate", "text": "Tonight the void breathed up the way the void always breathed up. Tonight she did not, for the first time in months, feel the small specific tug she had stopped describing to herself as invitation."},
-    {"t": "narrate", "text": "The pull, this evening, was running the other way."},
-    {"t": "narrate", "text": "The pull, this evening, was toward the world. Toward the streets. Toward the small lit windows of what was left of the town. Toward, perhaps, the post office on Elm where the mail was still, miraculously, delivered three days a week. The pull had a direction. The pull had a destination Joanna could not yet name."},
-    {"t": "narrate", "text": "She thought, something is starting."},
-    {"t": "narrate", "text": "She thought, with the small clear honesty her best poems also had: something has been starting for a long time, and I am only now beginning to be the kind of person who can notice."},
-    {"t": "narrate", "text": "The crow, behind her, took flight."},
-
-    {"t": "narrate", "text": "The animals followed her back along the path that wasn't a path, past the I-beam, past the chalked wall, past the place where the haberdashery had been. The cat broke off, eventually, on its own business, vanishing into a gap between two collapsed walls with the small uncomplaining efficiency of a creature with appointments. Rumpus stayed at her heel. The crow circled overhead in the wide patient orbit of a bird who had decided, this evening, to escort."},
-    {"t": "narrate", "text": "At the threshold of her makeshift shelter — the back half of what had been a small shotgun house, the front half of which had folded into the void in 2021 and which Joanna had patched, with Philip Roberts's help one weekend, into something almost weatherproof — she paused."},
-    {"t": "narrate", "text": "She put her hand on the door frame."},
-    {"t": "narrate", "text": "She took the receipt out of her breast pocket. Looked at it again, one more time, by the failing light of the flashlight."},
-    {"t": "narrate", "text": "The doodle of the four-foot figure in the cork hat looked back. Cheerful. Implacable. See you soon."},
-    {"t": "narrate", "text": "She put the receipt back in her pocket. She stepped inside. Rumpus padded in after her. The crow settled on the patched roof above the door, with the proprietary air of a creature who has decided to stand the night watch and does not require to be asked."},
-    {"t": "narrate", "text": "The flashlight flickered. The flashlight failed. Joanna found the candle she kept in the niche beside the door. Lit it. The small yellow light bloomed against the salvaged walls."},
-    {"t": "narrate", "text": "She sat at her small desk — a door laid across two stacks of bricks — and opened the notebook she had carried with her, and uncapped the pen."},
-    {"t": "narrate", "text": "She wrote, at the top of a fresh page, the date."},
-    {"t": "narrate", "text": "She wrote, beneath the date: Today the bird brought me 1987."},
-    {"t": "narrate", "text": "She wrote, beneath that: Tomorrow I think the bird may bring me whoever sent it."},
-    {"t": "narrate", "text": "The candle flickered. Held."},
-    {"t": "narrate", "text": "Outside, on the patched roof, the crow shifted its weight, made the small contented chirr of a sentinel settling in for the long shift, and watched the dark."},
-    {"t": "narrate", "text": "The Hermit, in her labyrinth, kept the lantern."},
-
-    {"t": "end"}
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_graustark_ruins.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "IX — The Hermit",
+      "sub": "Labyrinth of Scrawled Echoes",
+      "duration": 3
+    },
+    {
+      "t": "narrate",
+      "text": "THE HERMIT. The old man stands alone on a mountaintop, lantern raised. He is not lost. He chose the mountain. The lantern is not for him — it is for those below who are still climbing. Reversed: the isolation that has curdled into hiding. The light turned inward until it burns."
+    },
+    {
+      "t": "narrate",
+      "text": "The ruin-scape of Graustark breathed Joanna LeMoine in and out with the slow, rattling sigh of a dying lung."
+    },
+    {
+      "t": "narrate",
+      "text": "Twilight bled purple and bruise-grey across the fractured skyline, catching on shards of glass embedded in crumbling concrete like malevolent constellations. This wasn't just a place. It was a library of decay. A labyrinth built from the collapsed narratives of a thousand lives abruptly ended or rerouted by the earth's hungry yawn three years prior."
+    },
+    {
+      "t": "narrate",
+      "text": "And Joanna — Joanna was its sole spectral librarian. Its resident ghost. Haunting the stacks of rubble and rust the way a cat haunts a house it has decided, by some process opaque to the humans, has become its territory. The cat does not request the territory. The cat does not earn it. The cat simply moves in, and after a sufficient interval the humans either accept the arrangement or move out."
+    },
+    {
+      "t": "narrate",
+      "text": "The humans, in this case, had moved out."
+    },
+    {
+      "t": "narrate",
+      "text": "Mostly."
+    },
+    {
+      "t": "narrate",
+      "text": "She moved with a stillness that belied the tremor in her hands. A side effect of the chemical solace she chased to keep the louder silences at bay — the silences she had stopped trying to explain to her sister on the phone, the silences she had stopped, eventually, trying to explain to herself."
+    },
+    {
+      "t": "narrate",
+      "text": "Her companions kept pace at a respectful distance."
+    },
+    {
+      "t": "narrate",
+      "text": "The three-legged calico cat with eyes like chips of obsidian, who had appeared on Joanna's makeshift porch one morning eight months ago with the air of a creature filing a tenancy claim and had, by the end of the day, won the claim by the simple expedient of not leaving."
+    },
+    {
+      "t": "narrate",
+      "text": "The one-eyed shepherd mix — Joanna had named him Rumpus, against his apparent wishes — whose bark sounded suspiciously like choked laughter. Rumpus had been, in some prior life, somebody's pet. He still wore the faded brown collar he had been wearing on the day Joanna found him asleep in the shadow of the collapsed bandstand, and Joanna had, in a year of trying, never quite been able to bring herself to remove it. The collar bore no tag. The tag had been ripped off, possibly by violence, possibly by snagging it on a fence. Joanna had stopped speculating in month four."
+    },
+    {
+      "t": "narrate",
+      "text": "And the crow. The crow had no name. The crow refused all names, in the way crows do, by simply continuing to be a crow regardless of what you called it. The crow had begun, two months ago, to leave Joanna gifts. Bottle caps, mostly. Iridescent beetle wings. Once, memorably, a small flat key the crow had clearly stolen from somewhere — Joanna had set the key on the windowsill and had not, in the four weeks since, found the lock it belonged to. Tonight the crow was perched on a section of rusted I-beam ten feet above her, head cocked, watching the work with the patient unblinking attention of an editor."
+    },
+    {
+      "t": "narrate",
+      "text": "The animals understood the territory. They knew the paths that weren't paths. The doorways that opened onto nothing but memory or sky. They were her familiars. Her chorus. Her pack."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight, the air felt thin. Stretched. As if the membrane between worlds was wearing dangerously sheer in a way Joanna's body, before her mind, had registered."
+    },
+    {
+      "t": "narrate",
+      "text": "She trailed her fingers along a rusted I-beam jutting from the earth like the bone of some long-dead behemoth. Once, she had balanced trays here. Navigating the chaotic energy of D'Ambrosio's. Reciting specials. Dodging leers. The I-beam had been part of the kitchen's structural skeleton, before. The kitchen had been on the third floor of the Adelphia's Building, before. The Adelphia's Building had been a building, before."
+    },
+    {
+      "t": "narrate",
+      "text": "Now, she balanced on the precipice of — something else."
+    },
+    {
+      "t": "narrate",
+      "text": "Solitude wasn't emptiness. It was a different kind of fullness, echoing with whispers the living couldn't hear."
+    },
+    {
+      "t": "narrate",
+      "text": "Weird fiction made flesh. She had read enough of the right authors, in her late teens, to recognize the genre she had ended up living inside."
+    },
+    {
+      "t": "narrate",
+      "text": "She found a relatively smooth section of wall inside the gutted shell of what might have been a haberdashery — or maybe the small library, the landmarks bled together these days — the plaster peeling back like sunburnt skin in long ragged strips that had, in places, formed second textures of their own. Her sanctuary was wherever she found a surface clean enough, solid enough, to hold the words that clawed their way out."
+    },
+    {
+      "t": "narrate",
+      "text": "Her pockets yielded not keys or coins, but chalk nubs, charcoal shards, a stolen lipstick — her ink, scavenged like everything else."
+    },
+    {
+      "t": "narrate",
+      "text": "The animals settled around her. Silent sentinels. The cat began meticulously cleaning a paw, ignoring the vastness of the situation in the way only cats could ignore vastness. The dog lay its head on its remaining paw, emitting a low whine that was not quite distress and not quite contentment but a frequency particular to Rumpus, a frequency Joanna had begun to read as acknowledgment. The crow, on the I-beam, observed."
+    },
+    {
+      "t": "narrate",
+      "text": "Her audience."
+    },
+    {
+      "t": "narrate",
+      "text": "Her hand moved, almost of its own volition. The chalk scraped — a lonely sound swallowed instantly by the ruins."
+    },
+    {
+      "t": "narrate",
+      "text": "The map is not the territory.\nThe territory eats the map.\nLines blur — walls breathe — the sinkhole sighs.\nMemory, a creepypasta told by ghosts\nTo ghosts."
+    },
+    {
+      "t": "narrate",
+      "text": "The words weren't hers. Not entirely. They felt — downloaded. Like echoes caught in the liminal static between stations, between realities. Sometimes she felt like a conduit. A Borges character trapped in a library of infinite, decaying pages, doomed to transcribe fragments of a book that could never be completed, whose author was perhaps the ruin itself."
+    },
+    {
+      "t": "narrate",
+      "text": "She paused. Sucked chalk dust from her fingertip. The chalk dust tasted, faintly, of the limestone they had dug out of the riverbed in the cleanup year, the limestone they had left in piles at the edges of the void because the void had not, in the end, accepted it back."
+    },
+    {
+      "t": "narrate",
+      "text": "Had that support beam always bent at that precise impossible angle? Was that the wind whistling through the rebar, or was it laughter?"
+    },
+    {
+      "t": "narrate",
+      "text": "The town played tricks. It remembered things. It rearranged itself when you weren't looking — like finding a child's doll, pristine and untouched, sitting on the jagged edge of the sinkhole one morning, only for it to be gone an hour later. Like the recurring dream of walking through D'Ambrosio's, only the patrons were her animals, dressed in suits, discussing futures markets."
+    },
+    {
+      "t": "narrate",
+      "text": "She added, beneath the first verse:"
+    },
+    {
+      "t": "narrate",
+      "text": "Reflection in the stagnant pool\n(Oil-slick rainbow)\nShows the sky — shows the void — shows the face\nI wore before this one."
+    },
+    {
+      "t": "narrate",
+      "text": "She stepped back. Head tilted."
+    },
+    {
+      "t": "narrate",
+      "text": "The poem felt incomplete. Always incomplete. Like a message in a bottle thrown into an indifferent void. But the act itself was the thing. Introspection. Withdrawal. Finding a flicker of meaning in the wreckage. The wisdom of isolation wasn't about answers. It was about learning to live with the questions, learning to read the strange calligraphy of decay."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow, on the I-beam, made the small clicking sound it made when it had something to add to the conversation."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna looked up."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow flew down. Landed on the chalked wall, an inch above the last line of the poem. Cocked its head. Pecked, twice, at a particular spot in the plaster — not at the chalk, but a few inches to the right of the chalk, at a place where the plaster bulged faintly in a way Joanna had not noticed."
+    },
+    {
+      "t": "narrate",
+      "text": "She crossed to the wall. Pressed her palm against the spot. The plaster gave, slightly. Came away in her hand in a chip the size of a quarter."
+    },
+    {
+      "t": "narrate",
+      "text": "Behind the chip, embedded in the wall, was a folded piece of paper. Old. Yellowed. The kind of paper that had been folded and tucked into a wall in 1987 by somebody who had thought, at the time, that they were leaving a small private joke for whoever happened to find it during the next renovation."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna eased the paper out. The crow watched, intent."
+    },
+    {
+      "t": "narrate",
+      "text": "She unfolded it."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a receipt. From Adelphia's Deli, dated August 14, 1987. For one egg salad, one black coffee, and one slice of pie. Total: $4.85. Paid in cash. The receipt bore, in the bottom margin, a doodle in faded ballpoint ink: a small four-foot-tall figure in a cork hat, smoking a hand-rolled cigarette, sitting beside a river. The figure was unmistakable. The figure was unmistakable in a way that made the hair on the back of Joanna's neck rise, because she had never seen the figure before in her life and yet recognized it the way one recognizes a face from a dream one has not yet had."
+    },
+    {
+      "t": "narrate",
+      "text": "On the back of the receipt, in the same faded ink, three words:"
+    },
+    {
+      "t": "narrate",
+      "text": "See you soon."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna sat down on a chunk of broken concrete. The cat, sensing the shift, stopped cleaning its paw. The dog raised its head. The crow remained on the wall, unmoved."
+    },
+    {
+      "t": "narrate",
+      "text": "She turned the receipt over again. The doodle. The greeting."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, with the small calm clarity that was, these days, the closest thing she had to courage: I am being told something."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, immediately after: I am being told something I am supposed to remember when I see it again."
+    },
+    {
+      "t": "narrate",
+      "text": "She folded the receipt carefully. She put it in the breast pocket of her jacket, the one that buttoned, the one she had stitched a small inner lining into precisely so that she could keep the things she was not yet ready to lose."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow, satisfied, flew back up to the I-beam."
+    },
+    {
+      "t": "narrate",
+      "text": "A wind rose, briefly, through the ruin-scape. The air went from thin to thinner. The membrane wore another half-degree sheerer."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna stood. She crossed back to the chalked wall. She picked up the chalk again. She began to write, beneath the second verse, a third — but the third did not, this time, feel downloaded. The third felt like her own:"
+    },
+    {
+      "t": "narrate",
+      "text": "And the bird brings me the past\nIn small bright pieces.\nAnd I am being asked, in language\nI am only beginning to learn,\nTo read."
+    },
+    {
+      "t": "narrate",
+      "text": "She set down the chalk."
+    },
+    {
+      "t": "narrate",
+      "text": "Rumpus the dog whined — a different whine this time. The frequency had shifted. Not acknowledgment now. Something more like attention."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna scanned the deepening shadows."
+    },
+    {
+      "t": "narrate",
+      "text": "Something felt different tonight. Something more than the membrane. A shift in the atmospheric pressure. A deeper silence falling. The world holding its breath."
+    },
+    {
+      "t": "narrate",
+      "text": "She gathered her animal companions close. Their familiar warmth a fragile shield against the encroaching chill. The cat allowed itself to be gathered, an indignity it would extract payment for later. The dog leaned heavily against her shin. The crow, watching from the I-beam, neither moved nor objected."
+    },
+    {
+      "t": "narrate",
+      "text": "Her voice, when she spoke, was a haunting whisper, lost almost instantly in the vast emptiness."
+    },
+    {
+      "t": "say",
+      "char": "joanna",
+      "text": "Okay. Let's go find another page."
+    },
+    {
+      "t": "narrate",
+      "text": "The Hermit, lantern held aloft — a scavenged flashlight, actually, flickering weakly, batteries Joanna had been meaning to replace for a week — led her small procession deeper into the beautiful terrifying labyrinth she now called home."
+    },
+    {
+      "t": "narrate",
+      "text": "They moved through what had been Houston Street. They passed the place where the Adelphia's Building had stood. They passed the place where her own first apartment had stood, the one above the dry cleaner, the one where she had written her first real poems on the back of menus stolen from D'Ambrosio's and where she had, one summer night in her early twenties, kissed Douglas Forte for the first time on the fire escape that no longer existed in any direction."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not slow at any of these places. She had stopped slowing at them in month nine. Slowing was a kind of permission she had decided not to grant herself, because granting it once was a precedent, and precedent was the only currency the ruin-scape understood."
+    },
+    {
+      "t": "narrate",
+      "text": "At the lip of the sinkhole proper she paused. The void breathed up at her — the rich smell of mineral water and old roots and something else, something faintly metallic, the smell of a vein somewhere deep that had been opened and not yet closed. She had stood at this lip many times. She had once, in the bad winter, lowered herself into the void on a knotted rope and spent two hours in the dim glow of her flashlight cataloging what she found at the bottom. She had not, since, told anyone what she had found at the bottom. She did not, even now, allow herself to enumerate it in her own thoughts."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight the void breathed up the way the void always breathed up. Tonight she did not, for the first time in months, feel the small specific tug she had stopped describing to herself as invitation."
+    },
+    {
+      "t": "narrate",
+      "text": "The pull, this evening, was running the other way."
+    },
+    {
+      "t": "narrate",
+      "text": "The pull, this evening, was toward the world. Toward the streets. Toward the small lit windows of what was left of the town. Toward, perhaps, the post office on Elm where the mail was still, miraculously, delivered three days a week. The pull had a direction. The pull had a destination Joanna could not yet name."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, something is starting."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, with the small clear honesty her best poems also had: something has been starting for a long time, and I am only now beginning to be the kind of person who can notice."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow, behind her, took flight."
+    },
+    {
+      "t": "narrate",
+      "text": "The animals followed her back along the path that wasn't a path, past the I-beam, past the chalked wall, past the place where the haberdashery had been. The cat broke off, eventually, on its own business, vanishing into a gap between two collapsed walls with the small uncomplaining efficiency of a creature with appointments. Rumpus stayed at her heel. The crow circled overhead in the wide patient orbit of a bird who had decided, this evening, to escort."
+    },
+    {
+      "t": "narrate",
+      "text": "At the threshold of her makeshift shelter — the back half of what had been a small shotgun house, the front half of which had folded into the void in 2021 and which Joanna had patched, with Philip Roberts's help one weekend, into something almost weatherproof — she paused."
+    },
+    {
+      "t": "narrate",
+      "text": "She put her hand on the door frame."
+    },
+    {
+      "t": "narrate",
+      "text": "She took the receipt out of her breast pocket. Looked at it again, one more time, by the failing light of the flashlight."
+    },
+    {
+      "t": "narrate",
+      "text": "The doodle of the four-foot figure in the cork hat looked back. Cheerful. Implacable. See you soon."
+    },
+    {
+      "t": "narrate",
+      "text": "She put the receipt back in her pocket. She stepped inside. Rumpus padded in after her. The crow settled on the patched roof above the door, with the proprietary air of a creature who has decided to stand the night watch and does not require to be asked."
+    },
+    {
+      "t": "narrate",
+      "text": "The flashlight flickered. The flashlight failed. Joanna found the candle she kept in the niche beside the door. Lit it. The small yellow light bloomed against the salvaged walls."
+    },
+    {
+      "t": "narrate",
+      "text": "She sat at her small desk — a door laid across two stacks of bricks — and opened the notebook she had carried with her, and uncapped the pen."
+    },
+    {
+      "t": "narrate",
+      "text": "She wrote, at the top of a fresh page, the date."
+    },
+    {
+      "t": "narrate",
+      "text": "She wrote, beneath the date: Today the bird brought me 1987."
+    },
+    {
+      "t": "narrate",
+      "text": "She wrote, beneath that: Tomorrow I think the bird may bring me whoever sent it."
+    },
+    {
+      "t": "narrate",
+      "text": "The candle flickered. Held."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, on the patched roof, the crow shifted its weight, made the small contented chirr of a sentinel settling in for the long shift, and watched the dark."
+    },
+    {
+      "t": "narrate",
+      "text": "The Hermit, in her labyrinth, kept the lantern."
+    },
+    {
+      "t": "end"
+    }
   ]
 }

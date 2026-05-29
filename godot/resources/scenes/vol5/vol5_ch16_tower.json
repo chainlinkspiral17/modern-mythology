@@ -2,133 +2,452 @@
   "id": "vol5_ch16_tower",
   "vol": 5,
   "chapter": "XVI",
-  "type": "scene",
+  "type": "chapter",
   "title": "The Tower",
   "nodes": [
-    {"t": "bg", "src": "assets/backgrounds/vol5_elicia_apartment.jpg"},
-    {"t": "hide", "pos": "left"},
-    {"t": "hide", "pos": "center"},
-    {"t": "hide", "pos": "right"},
-    {"t": "interlude", "text": "XVI — The Tower", "sub": "Evangeline in Render Queue", "duration": 3},
-
-    {"t": "narrate", "text": "THE TOWER. Lightning splits the crown from the top of the stone tower. Two figures fall. The crown itself is airborne. The sky is black. The tower was built wrong — built on false foundations, built for pride — and the lightning has found this out. Reversed: the disaster that was narrowly avoided, which turns out to be worse."},
-
-    {"t": "narrate", "text": "The Montreal apartment, once Elicia Duchane's sleek command center, now resembled the ruins of some forgotten exposition — perhaps the Columbian, after the crowds had gone home and the plaster gods had started to crack and the workmen had not yet been hired to take them down."},
-    {"t": "narrate", "text": "Data slates lay like fallen monoliths on the floor amidst drifts of rejected script pages. Cables snaked across surfaces like dormant metallic ivy. The teacup that had belonged to her mother — the one she had not, in Graustark, packed; the one she had carried separately, in her purse, the entire drive north because she had not been able to bring herself to surrender it to a box — sat on the kitchen counter where it had sat for eleven months, unused, full of dust."},
-    {"t": "narrate", "text": "Her carefully constructed reality, built on foundations of ambition and meticulously controlled narratives, was undergoing a rather dramatic, unscheduled demolition."},
-    {"t": "narrate", "text": "The Tower, struck by lightning. How very — on the nose."},
-
-    {"t": "narrate", "text": "She stood by the window. Watching the indifferent city lights prick the bruise-colored Montreal dusk. Lights of the harbour gleam red and gold afar. Except it wasn't Grand-Pré, and the only forest primeval was the one growing wild and tangled in her own mind, and Longfellow had been, as Longfellow generally was, useful only in the small specific way that the wrong poem at the right moment was useful: by being so wrong it made you laugh, briefly, against your will."},
-    {"t": "narrate", "text": "She, the director, the manipulator of light and shadow, felt suddenly acutely like a character trapped in someone else's overwrought melodrama — perhaps penned by Longfellow himself after a bad clam bake."},
-    {"t": "narrate", "text": "A faded dreamer, indeed."},
-
-    {"t": "narrate", "text": "The structures she had built were crumbling."},
-    {"t": "narrate", "text": "Her career — shimmering and ephemeral as a web series watched on borrowed bandwidth, the Whispers from the Liminal server having gone down a week ago and her hosting provider having sent two emails about overdue payment that Elicia had not, yet, opened. Her relationships — edited down to convenient plot points, leaving messy truths on the cutting room floor and a small unresolved chorus of texts in her phone from people who had once thought they mattered to her and who had, eventually, stopped thinking so. Her very self, that carefully curated protagonist of her own ongoing self-documentation — that, also, crumbling."},
-    {"t": "narrate", "text": "Not slowly. Not like dignified ruins succumbing to time and moss. Abruptly. Violently. Like a faulty CGI effect tearing through the screen — the kind that exposed the green of the screen behind it for a single horrifying frame before the render engine caught up and re-applied the illusion."},
-    {"t": "narrate", "text": "Except this time the render engine was not catching up."},
-    {"t": "narrate", "text": "A necessary destruction, the Tower card promised. A breaking down of false premises, outdated beliefs. A spiritual decluttering."},
-    {"t": "narrate", "text": "It felt mostly like eviction."},
-    {"t": "narrate", "text": "She had received, this morning, an actual eviction notice. Not metaphorically. Three months in arrears. The landlord had left it taped to the door in the small Quebecois white envelope landlords used here, with the tape applied in the exact location that had previously held the lease renewal, the lease renewal having been a polite invitation and the eviction notice being its impolite cousin. The notice was on the table now, still in its envelope. She had not opened it. She did not, for once, need to open it to know what it said."},
-    {"t": "narrate", "text": "Three months. She had not paid rent in three months. She had not, fully, registered that she had not paid rent. The rent, like the Whispers from the Liminal server bill, had become one of the things her ambient anxiety had managed by simply refusing to acknowledge it."},
-    {"t": "narrate", "text": "The ambient anxiety was, this evening, no longer managing. The ambient anxiety was, this evening, requesting executive intervention."},
-
-    {"t": "narrate", "text": "She picked up the heavy glass award. Some digital media accolade for Whispers from the Liminal. Its sharp edges cool against her palm. She had won it in 2022. She had not, at the ceremony, been able to remember the name of the woman who had presented it to her, which was embarrassing because the woman had been kind to her at the after-party and had offered her professional advice Elicia had ignored."},
-    {"t": "narrate", "text": "False premises. Oh, she had built her fortress on those, hadn't she. The premise that control was possible. The premise that illusion was sustainable. The premise that keeping everyone at arm's length somehow protected her."},
-    {"t": "narrate", "text": "Hilarious, in retrospect."},
-    {"t": "narrate", "text": "A dark chuckle escaped her lips, dry as old parchment."},
-    {"t": "narrate", "text": "The old order changeth, yielding place to new. Thanks, Tennyson. Super helpful right now."},
-    {"t": "narrate", "text": "She set the award down on the table beside the eviction notice. The two objects, side by side. They went well together. They could, conceivably, be a still life. Two Aspects of a Career, Late October, Montreal, Mixed Media."},
-    {"t": "narrate", "text": "She did not, this evening, photograph them. She had stopped photographing things. The not-photographing had been, three months ago, the first quiet symptom her body had given her of what her mind was now, finally, beginning to acknowledge."},
-
-    {"t": "narrate", "text": "Her gaze fell on a stack of storyboards for the abandoned music video project. Fluid lines depicted yearning figures against stark alien landscapes. She had chased beauty, yes — but a specific controlled kind. A romanticism filtered through a cynical lens. An American myth — the lone artist, the visionary forging meaning from chaos — that she had tried to update, digitize, deconstruct."},
-    {"t": "narrate", "text": "And in doing so, perhaps she had only hollowed it out."},
-    {"t": "narrate", "text": "Leaving — this. Render queue errors and psychic debris."},
-    {"t": "narrate", "text": "The music video project had been for an artist Elicia had liked very much, an artist whose new album she had genuinely admired, an artist who had paid her, up front, in good faith, an amount of money that Elicia had then spent, in the months that followed, on a series of small bad decisions which had culminated, last Thursday, in Elicia deleting the entire project from her drive at four AM during what she could now recognize as a small dissociative episode. The artist did not, yet, know. The artist would, eventually, find out. The artist would be, when she found out, kind about it, which was somehow worse."},
-    {"t": "narrate", "text": "Elicia owed approximately four thousand dollars, in addition to the rent. She had approximately one hundred and forty in checking. She had not, in some weeks, looked at savings."},
-
-    {"t": "narrate", "text": "She hadn't summoned them. They had simply gatecrashed."},
-    {"t": "narrate", "text": "Ghosts of past projects. Past lovers. (MrMyst, a particularly persistent poltergeist, who had texted her last night for the first time in fourteen months with the single word hey and to whom she had not, this time, replied.) Past selves. All demanding attention. All pointing, with the unrelenting cheerfulness of ghosts, at the cracks in the facade."},
-    {"t": "narrate", "text": "The Tower demanded confrontation. No more artful dodging. No more manipulating the narrative. Just the stark unvarnished truth of the fall."},
-    {"t": "narrate", "text": "She had been waiting, she realized, for someone to come and hand her this truth. She had been waiting, in some small part of herself, for Mackenzie Roberts to call again. Or for Philip to drive up. Or for John Frank, even, who lived in this very city, who was forty-five minutes away by metro, whom she had not contacted in any of the nine months she had been here despite knowing his address, his phone number, the name of his café."},
-    {"t": "narrate", "text": "She had been waiting because waiting required nothing of her. Waiting was the costume she wore in the absence of her director's clothes."},
-    {"t": "narrate", "text": "The waiting was, this evening, no longer working."},
-
-    {"t": "narrate", "text": "She thought of Philip and Mackenzie Roberts. Back in whatever remained of Graustark. Tending their garden. Mending their fences. Embodying a quiet endurance she had admired but never truly understood."},
-    {"t": "narrate", "text": "Theirs was a different kind of American myth, maybe. Rooted. Resilient. Not the frantic consuming fire she had mistaken for passion. They had — she knew this, dimly, from the brief Christmas card she had received and that had also, like the eviction notice, sat unopened on the table for several weeks before she had finally pried it open with her thumbnail one bad evening — they had had the second baby. The card had a photograph of two small girls. Mackenzie had named the older one for the brother she had lost in the Sinkhole. The younger one was named, Mackenzie had written in her careful round handwriting, for whoever she turns out to be. We're calling her Sam for now."},
-    {"t": "narrate", "text": "Elicia had, on reading the card, started crying for the first time in eight months. She had stopped, eight minutes later, when the crying began to feel less like grief and more like performance. She did not, she had realized, know how to grieve without being, simultaneously, the director of her own grieving. The director's chair was something her body refused to leave even when the body itself had begun, in some quiet way, to fail."},
-    {"t": "narrate", "text": "That was the Tower. The Tower was the realization that the chair was the failure."},
-    {"t": "narrate", "text": "The chair had to come down."},
-
-    {"t": "narrate", "text": "Was there nobility in ruins. Could she find poetry in the collapse."},
-    {"t": "narrate", "text": "She turned on her camera. The little red light a baleful eye in the dimming room."},
-    {"t": "narrate", "text": "She had not turned on her camera in eleven weeks. The red light, unfamiliar to her after so long, looked aggressive — looked, in fact, the way she imagined the red light looked to her interview subjects in their first thirty seconds, the small predatory eye telling them their words were now being recorded and there was no taking them back."},
-    {"t": "narrate", "text": "She faced the lens. Her own reflection staring back. Stark. Unadorned. No crew. No script. No safety net."},
-    {"t": "narrate", "text": "Just Elicia Duchane and the wreckage."},
-    {"t": "narrate", "text": "She had not, in years, been on her own side of the camera. The few times she had appeared in Whispers from the Liminal she had appeared as Anya, the cartographer's apprentice, in costume, in character, with her hair done by someone who did this professionally. She had not, on camera, ever been just Elicia."},
-    {"t": "narrate", "text": "She did not, this evening, know how to be just Elicia."},
-    {"t": "narrate", "text": "She sat in front of the camera anyway."},
-
-    {"t": "say", "char": "elicia", "text": "Alright. Scene One. Take One."},
-    {"t": "narrate", "text": "She paused."},
-    {"t": "narrate", "text": "She did not, immediately, have anything else to say."},
-    {"t": "narrate", "text": "The red light continued. The camera continued recording. The room held its breath."},
-    {"t": "narrate", "text": "She thought, after a long moment: I have been telling other people's stories for twelve years because I have not known how to tell my own. I have not known how to tell my own because telling it would require admitting that the protagonist of my own story is not, has never been, a director. The protagonist of my own story is a woman who very much would like to be loved and who learned, around the age of fourteen, that she was not going to be — and who decided, instead, to be admired, because admired was the closest she could get."},
-    {"t": "narrate", "text": "Admired is not enough."},
-    {"t": "narrate", "text": "Admired has not, ever, been enough."},
-    {"t": "narrate", "text": "She did not, in front of the camera, say any of this out loud."},
-    {"t": "narrate", "text": "She did, in front of the camera, allow her face to do the small honest collapsing that the realization required."},
-    {"t": "narrate", "text": "She allowed it to be recorded."},
-    {"t": "narrate", "text": "The red light blinked. The room was very quiet. Outside, the November Montreal evening did its grey careful work."},
-
-    {"t": "narrate", "text": "She let the camera record for thirteen minutes."},
-    {"t": "narrate", "text": "She did not speak. She did not perform. She simply sat in front of the lens with her face doing whatever her face was doing, which was, by minute four, weeping, and which was, by minute nine, no longer weeping, and which was, by minute twelve, something for which she did not, even with her professional vocabulary, have a name."},
-    {"t": "narrate", "text": "At minute thirteen she reached forward and pressed the small silver button on the camera that ended the recording. The red light went out."},
-    {"t": "narrate", "text": "She did not, immediately, know what she was going to do with the recording."},
-    {"t": "narrate", "text": "She knew, however, that she was not going to delete it."},
-    {"t": "narrate", "text": "She knew, in fact, with the small clean certainty that arrived at the end of certain breakdowns and that was, she suspected, the gift the Tower offered in compensation for everything else it took, that she was eventually going to show the recording to someone. The recording would be, in some form, her next project. The recording would be, in some form, the only project worth making."},
-    {"t": "narrate", "text": "She did not know who she would show it to. That was a problem for next week."},
-
-    {"t": "narrate", "text": "She stood up. Her knees clicked in the way her knees had begun to click in the past year. She crossed the room to the kitchen counter. She picked up her mother's teacup."},
-    {"t": "narrate", "text": "She blew the dust off it."},
-    {"t": "narrate", "text": "She washed it, carefully, with the small green sponge she kept by the sink. She dried it with a cloth. She set it back on the counter, clean, on the small porcelain saucer that had always belonged to it and that she had not, in eleven months, allowed it to sit on, because she had been treating the cup as an artifact rather than an object and artifacts did not sit on saucers."},
-    {"t": "narrate", "text": "The cup, on its saucer, looked the way her mother had always set it. The cup, on its saucer, looked correct."},
-    {"t": "narrate", "text": "She put the kettle on. She made tea. She did not, this time, drink from the narwhal mug she had bought in the second month, the one she had always disliked, the one she had kept anyway because the disliking had felt, perversely, comforting. She drank from her mother's cup."},
-    {"t": "narrate", "text": "The tea was the cheapest tea in the cupboard. The tea was excellent."},
-
-    {"t": "narrate", "text": "She returned to the table. The eviction notice. The award. The little still life she had refused to photograph."},
-    {"t": "narrate", "text": "She picked up the eviction notice. She tore the envelope open with her thumbnail. She read the notice. The notice said exactly what she had known it would say. The notice gave her thirty days."},
-    {"t": "narrate", "text": "Thirty days was, she calculated, enough time."},
-    {"t": "narrate", "text": "She did not, immediately, know what it was enough time for. She knew only that she would, in the thirty days, find out."},
-    {"t": "narrate", "text": "She sat down at the desk. She opened her laptop. The laptop, which had been asleep, woke slowly. She opened her email — the email she had not, in three weeks, opened. There were four hundred and twelve unread messages."},
-    {"t": "narrate", "text": "She scrolled past most of them. She found two she was looking for, even though she had not realized she was looking for them."},
-    {"t": "narrate", "text": "The first was from her hosting provider. Subject line: FINAL NOTICE — WHISPERSFROMTHELIMINAL.NET. She did not open it. She archived it. The site could go down. The site had, frankly, been overdue to go down for some time."},
-    {"t": "narrate", "text": "The second was from John Frank. The subject line was Hi. The email was three weeks old. She had not noticed it. The body of the email was four sentences:"},
-    {"t": "narrate", "text": "Eli — I heard you were in Montreal. From the Roberts. I am also in Montreal. I have been here for some years. You don't have to write back. But if you want to get coffee, I am at a place called Cafe Olimpico most Tuesday mornings. — J."},
-    {"t": "narrate", "text": "She read the email twice."},
-    {"t": "narrate", "text": "She read it a third time."},
-    {"t": "narrate", "text": "She had, she realized, been waiting for exactly this email for nine months. She had been waiting for it the way a person waited for a letter they had not allowed themselves to ask anyone to write."},
-
-    {"t": "narrate", "text": "She opened a reply. She typed:"},
-    {"t": "narrate", "text": "J — Yes. — E."},
-    {"t": "narrate", "text": "She hit send before she could revise it."},
-    {"t": "narrate", "text": "She closed the laptop."},
-    {"t": "narrate", "text": "She sat in the wreckage of her apartment, with her mother's clean teacup beside her, and the eviction notice opened, and the camera with thirteen minutes of footage on it, and the dust still settling on most surfaces, and the small bright certainty that she had, this evening, finally allowed something to fall in her that had been waiting, for a very long time, to be allowed."},
-    {"t": "narrate", "text": "The Tower had, indeed, been struck by lightning."},
-    {"t": "narrate", "text": "She had, evidently, survived the strike."},
-    {"t": "narrate", "text": "The ruins were now hers to walk."},
-    {"t": "narrate", "text": "She picked up the camera again. She turned it on. She held it at arm's length. She faced the lens."},
-    {"t": "narrate", "text": "The red light came back on."},
-    {"t": "narrate", "text": "She did not, this time, perform."},
-    {"t": "say", "char": "elicia", "text": "Hi. My name is Elicia. I have been telling stories about other people for a long time. Tonight I'm going to start telling one about myself. I don't know how long it's going to take. I don't know if it will be any good. I am going to tell it anyway."},
-    {"t": "narrate", "text": "She paused."},
-    {"t": "say", "char": "elicia", "text": "Take Two."},
-    {"t": "narrate", "text": "She set the camera down, still recording, on the windowsill. The little red light kept its watch."},
-    {"t": "narrate", "text": "Outside, the November Montreal night settled in, indifferent and beautiful and entirely uninterested in her — which was, she now understood, the gift the city had been offering her the entire eleven months. Not anonymity. Permission."},
-    {"t": "narrate", "text": "She drank her tea. She let the camera record her drinking it."},
-    {"t": "narrate", "text": "The wreckage, around her, kept being wreckage."},
-    {"t": "narrate", "text": "She, in the middle of it, kept being herself."},
-    {"t": "narrate", "text": "It was, for the first time in twelve years, enough."},
-
-    {"t": "end"}
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_elicia_apartment.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "XVI — The Tower",
+      "sub": "Evangeline in Render Queue",
+      "duration": 3
+    },
+    {
+      "t": "narrate",
+      "text": "THE TOWER. Lightning splits the crown from the top of the stone tower. Two figures fall. The crown itself is airborne. The sky is black. The tower was built wrong — built on false foundations, built for pride — and the lightning has found this out. Reversed: the disaster that was narrowly avoided, which turns out to be worse."
+    },
+    {
+      "t": "narrate",
+      "text": "The Montreal apartment, once Elicia Duchane's sleek command center, now resembled the ruins of some forgotten exposition — perhaps the Columbian, after the crowds had gone home and the plaster gods had started to crack and the workmen had not yet been hired to take them down."
+    },
+    {
+      "t": "narrate",
+      "text": "Data slates lay like fallen monoliths on the floor amidst drifts of rejected script pages. Cables snaked across surfaces like dormant metallic ivy. The teacup that had belonged to her mother — the one she had not, in Graustark, packed; the one she had carried separately, in her purse, the entire drive north because she had not been able to bring herself to surrender it to a box — sat on the kitchen counter where it had sat for eleven months, unused, full of dust."
+    },
+    {
+      "t": "narrate",
+      "text": "Her carefully constructed reality, built on foundations of ambition and meticulously controlled narratives, was undergoing a rather dramatic, unscheduled demolition."
+    },
+    {
+      "t": "narrate",
+      "text": "The Tower, struck by lightning. How very — on the nose."
+    },
+    {
+      "t": "narrate",
+      "text": "She stood by the window. Watching the indifferent city lights prick the bruise-colored Montreal dusk. Lights of the harbour gleam red and gold afar. Except it wasn't Grand-Pré, and the only forest primeval was the one growing wild and tangled in her own mind, and Longfellow had been, as Longfellow generally was, useful only in the small specific way that the wrong poem at the right moment was useful: by being so wrong it made you laugh, briefly, against your will."
+    },
+    {
+      "t": "narrate",
+      "text": "She, the director, the manipulator of light and shadow, felt suddenly acutely like a character trapped in someone else's overwrought melodrama — perhaps penned by Longfellow himself after a bad clam bake."
+    },
+    {
+      "t": "narrate",
+      "text": "A faded dreamer, indeed."
+    },
+    {
+      "t": "narrate",
+      "text": "The structures she had built were crumbling."
+    },
+    {
+      "t": "narrate",
+      "text": "Her career — shimmering and ephemeral as a web series watched on borrowed bandwidth, the Whispers from the Liminal server having gone down a week ago and her hosting provider having sent two emails about overdue payment that Elicia had not, yet, opened. Her relationships — edited down to convenient plot points, leaving messy truths on the cutting room floor and a small unresolved chorus of texts in her phone from people who had once thought they mattered to her and who had, eventually, stopped thinking so. Her very self, that carefully curated protagonist of her own ongoing self-documentation — that, also, crumbling."
+    },
+    {
+      "t": "narrate",
+      "text": "Not slowly. Not like dignified ruins succumbing to time and moss. Abruptly. Violently. Like a faulty CGI effect tearing through the screen — the kind that exposed the green of the screen behind it for a single horrifying frame before the render engine caught up and re-applied the illusion."
+    },
+    {
+      "t": "narrate",
+      "text": "Except this time the render engine was not catching up."
+    },
+    {
+      "t": "narrate",
+      "text": "A necessary destruction, the Tower card promised. A breaking down of false premises, outdated beliefs. A spiritual decluttering."
+    },
+    {
+      "t": "narrate",
+      "text": "It felt mostly like eviction."
+    },
+    {
+      "t": "narrate",
+      "text": "She had received, this morning, an actual eviction notice. Not metaphorically. Three months in arrears. The landlord had left it taped to the door in the small Quebecois white envelope landlords used here, with the tape applied in the exact location that had previously held the lease renewal, the lease renewal having been a polite invitation and the eviction notice being its impolite cousin. The notice was on the table now, still in its envelope. She had not opened it. She did not, for once, need to open it to know what it said."
+    },
+    {
+      "t": "narrate",
+      "text": "Three months. She had not paid rent in three months. She had not, fully, registered that she had not paid rent. The rent, like the Whispers from the Liminal server bill, had become one of the things her ambient anxiety had managed by simply refusing to acknowledge it."
+    },
+    {
+      "t": "narrate",
+      "text": "The ambient anxiety was, this evening, no longer managing. The ambient anxiety was, this evening, requesting executive intervention."
+    },
+    {
+      "t": "narrate",
+      "text": "She picked up the heavy glass award. Some digital media accolade for Whispers from the Liminal. Its sharp edges cool against her palm. She had won it in 2022. She had not, at the ceremony, been able to remember the name of the woman who had presented it to her, which was embarrassing because the woman had been kind to her at the after-party and had offered her professional advice Elicia had ignored."
+    },
+    {
+      "t": "narrate",
+      "text": "False premises. Oh, she had built her fortress on those, hadn't she. The premise that control was possible. The premise that illusion was sustainable. The premise that keeping everyone at arm's length somehow protected her."
+    },
+    {
+      "t": "narrate",
+      "text": "Hilarious, in retrospect."
+    },
+    {
+      "t": "narrate",
+      "text": "A dark chuckle escaped her lips, dry as old parchment."
+    },
+    {
+      "t": "narrate",
+      "text": "The old order changeth, yielding place to new. Thanks, Tennyson. Super helpful right now."
+    },
+    {
+      "t": "narrate",
+      "text": "She set the award down on the table beside the eviction notice. The two objects, side by side. They went well together. They could, conceivably, be a still life. Two Aspects of a Career, Late October, Montreal, Mixed Media."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, this evening, photograph them. She had stopped photographing things. The not-photographing had been, three months ago, the first quiet symptom her body had given her of what her mind was now, finally, beginning to acknowledge."
+    },
+    {
+      "t": "narrate",
+      "text": "Her gaze fell on a stack of storyboards for the abandoned music video project. Fluid lines depicted yearning figures against stark alien landscapes. She had chased beauty, yes — but a specific controlled kind. A romanticism filtered through a cynical lens. An American myth — the lone artist, the visionary forging meaning from chaos — that she had tried to update, digitize, deconstruct."
+    },
+    {
+      "t": "narrate",
+      "text": "And in doing so, perhaps she had only hollowed it out."
+    },
+    {
+      "t": "narrate",
+      "text": "Leaving — this. Render queue errors and psychic debris."
+    },
+    {
+      "t": "narrate",
+      "text": "The music video project had been for an artist Elicia had liked very much, an artist whose new album she had genuinely admired, an artist who had paid her, up front, in good faith, an amount of money that Elicia had then spent, in the months that followed, on a series of small bad decisions which had culminated, last Thursday, in Elicia deleting the entire project from her drive at four AM during what she could now recognize as a small dissociative episode. The artist did not, yet, know. The artist would, eventually, find out. The artist would be, when she found out, kind about it, which was somehow worse."
+    },
+    {
+      "t": "narrate",
+      "text": "Elicia owed approximately four thousand dollars, in addition to the rent. She had approximately one hundred and forty in checking. She had not, in some weeks, looked at savings."
+    },
+    {
+      "t": "narrate",
+      "text": "She hadn't summoned them. They had simply gatecrashed."
+    },
+    {
+      "t": "narrate",
+      "text": "Ghosts of past projects. Past lovers. (MrMyst, a particularly persistent poltergeist, who had texted her last night for the first time in fourteen months with the single word hey and to whom she had not, this time, replied.) Past selves. All demanding attention. All pointing, with the unrelenting cheerfulness of ghosts, at the cracks in the facade."
+    },
+    {
+      "t": "narrate",
+      "text": "The Tower demanded confrontation. No more artful dodging. No more manipulating the narrative. Just the stark unvarnished truth of the fall."
+    },
+    {
+      "t": "narrate",
+      "text": "She had been waiting, she realized, for someone to come and hand her this truth. She had been waiting, in some small part of herself, for Mackenzie Roberts to call again. Or for Philip to drive up. Or for John Frank, even, who lived in this very city, who was forty-five minutes away by metro, whom she had not contacted in any of the nine months she had been here despite knowing his address, his phone number, the name of his café."
+    },
+    {
+      "t": "narrate",
+      "text": "She had been waiting because waiting required nothing of her. Waiting was the costume she wore in the absence of her director's clothes."
+    },
+    {
+      "t": "narrate",
+      "text": "The waiting was, this evening, no longer working."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought of Philip and Mackenzie Roberts. Back in whatever remained of Graustark. Tending their garden. Mending their fences. Embodying a quiet endurance she had admired but never truly understood."
+    },
+    {
+      "t": "narrate",
+      "text": "Theirs was a different kind of American myth, maybe. Rooted. Resilient. Not the frantic consuming fire she had mistaken for passion. They had — she knew this, dimly, from the brief Christmas card she had received and that had also, like the eviction notice, sat unopened on the table for several weeks before she had finally pried it open with her thumbnail one bad evening — they had had the second baby. The card had a photograph of two small girls. Mackenzie had named the older one for the brother she had lost in the Sinkhole. The younger one was named, Mackenzie had written in her careful round handwriting, for whoever she turns out to be. We're calling her Sam for now."
+    },
+    {
+      "t": "narrate",
+      "text": "Elicia had, on reading the card, started crying for the first time in eight months. She had stopped, eight minutes later, when the crying began to feel less like grief and more like performance. She did not, she had realized, know how to grieve without being, simultaneously, the director of her own grieving. The director's chair was something her body refused to leave even when the body itself had begun, in some quiet way, to fail."
+    },
+    {
+      "t": "narrate",
+      "text": "That was the Tower. The Tower was the realization that the chair was the failure."
+    },
+    {
+      "t": "narrate",
+      "text": "The chair had to come down."
+    },
+    {
+      "t": "narrate",
+      "text": "Was there nobility in ruins. Could she find poetry in the collapse."
+    },
+    {
+      "t": "narrate",
+      "text": "She turned on her camera. The little red light a baleful eye in the dimming room."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not turned on her camera in eleven weeks. The red light, unfamiliar to her after so long, looked aggressive — looked, in fact, the way she imagined the red light looked to her interview subjects in their first thirty seconds, the small predatory eye telling them their words were now being recorded and there was no taking them back."
+    },
+    {
+      "t": "narrate",
+      "text": "She faced the lens. Her own reflection staring back. Stark. Unadorned. No crew. No script. No safety net."
+    },
+    {
+      "t": "narrate",
+      "text": "Just Elicia Duchane and the wreckage."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not, in years, been on her own side of the camera. The few times she had appeared in Whispers from the Liminal she had appeared as Anya, the cartographer's apprentice, in costume, in character, with her hair done by someone who did this professionally. She had not, on camera, ever been just Elicia."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, this evening, know how to be just Elicia."
+    },
+    {
+      "t": "narrate",
+      "text": "She sat in front of the camera anyway."
+    },
+    {
+      "t": "say",
+      "char": "elicia",
+      "text": "Alright. Scene One. Take One."
+    },
+    {
+      "t": "narrate",
+      "text": "She paused."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, immediately, have anything else to say."
+    },
+    {
+      "t": "narrate",
+      "text": "The red light continued. The camera continued recording. The room held its breath."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, after a long moment: I have been telling other people's stories for twelve years because I have not known how to tell my own. I have not known how to tell my own because telling it would require admitting that the protagonist of my own story is not, has never been, a director. The protagonist of my own story is a woman who very much would like to be loved and who learned, around the age of fourteen, that she was not going to be — and who decided, instead, to be admired, because admired was the closest she could get."
+    },
+    {
+      "t": "narrate",
+      "text": "Admired is not enough."
+    },
+    {
+      "t": "narrate",
+      "text": "Admired has not, ever, been enough."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, in front of the camera, say any of this out loud."
+    },
+    {
+      "t": "narrate",
+      "text": "She did, in front of the camera, allow her face to do the small honest collapsing that the realization required."
+    },
+    {
+      "t": "narrate",
+      "text": "She allowed it to be recorded."
+    },
+    {
+      "t": "narrate",
+      "text": "The red light blinked. The room was very quiet. Outside, the November Montreal evening did its grey careful work."
+    },
+    {
+      "t": "narrate",
+      "text": "She let the camera record for thirteen minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not speak. She did not perform. She simply sat in front of the lens with her face doing whatever her face was doing, which was, by minute four, weeping, and which was, by minute nine, no longer weeping, and which was, by minute twelve, something for which she did not, even with her professional vocabulary, have a name."
+    },
+    {
+      "t": "narrate",
+      "text": "At minute thirteen she reached forward and pressed the small silver button on the camera that ended the recording. The red light went out."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, immediately, know what she was going to do with the recording."
+    },
+    {
+      "t": "narrate",
+      "text": "She knew, however, that she was not going to delete it."
+    },
+    {
+      "t": "narrate",
+      "text": "She knew, in fact, with the small clean certainty that arrived at the end of certain breakdowns and that was, she suspected, the gift the Tower offered in compensation for everything else it took, that she was eventually going to show the recording to someone. The recording would be, in some form, her next project. The recording would be, in some form, the only project worth making."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not know who she would show it to. That was a problem for next week."
+    },
+    {
+      "t": "narrate",
+      "text": "She stood up. Her knees clicked in the way her knees had begun to click in the past year. She crossed the room to the kitchen counter. She picked up her mother's teacup."
+    },
+    {
+      "t": "narrate",
+      "text": "She blew the dust off it."
+    },
+    {
+      "t": "narrate",
+      "text": "She washed it, carefully, with the small green sponge she kept by the sink. She dried it with a cloth. She set it back on the counter, clean, on the small porcelain saucer that had always belonged to it and that she had not, in eleven months, allowed it to sit on, because she had been treating the cup as an artifact rather than an object and artifacts did not sit on saucers."
+    },
+    {
+      "t": "narrate",
+      "text": "The cup, on its saucer, looked the way her mother had always set it. The cup, on its saucer, looked correct."
+    },
+    {
+      "t": "narrate",
+      "text": "She put the kettle on. She made tea. She did not, this time, drink from the narwhal mug she had bought in the second month, the one she had always disliked, the one she had kept anyway because the disliking had felt, perversely, comforting. She drank from her mother's cup."
+    },
+    {
+      "t": "narrate",
+      "text": "The tea was the cheapest tea in the cupboard. The tea was excellent."
+    },
+    {
+      "t": "narrate",
+      "text": "She returned to the table. The eviction notice. The award. The little still life she had refused to photograph."
+    },
+    {
+      "t": "narrate",
+      "text": "She picked up the eviction notice. She tore the envelope open with her thumbnail. She read the notice. The notice said exactly what she had known it would say. The notice gave her thirty days."
+    },
+    {
+      "t": "narrate",
+      "text": "Thirty days was, she calculated, enough time."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, immediately, know what it was enough time for. She knew only that she would, in the thirty days, find out."
+    },
+    {
+      "t": "narrate",
+      "text": "She sat down at the desk. She opened her laptop. The laptop, which had been asleep, woke slowly. She opened her email — the email she had not, in three weeks, opened. There were four hundred and twelve unread messages."
+    },
+    {
+      "t": "narrate",
+      "text": "She scrolled past most of them. She found two she was looking for, even though she had not realized she was looking for them."
+    },
+    {
+      "t": "narrate",
+      "text": "The first was from her hosting provider. Subject line: FINAL NOTICE — WHISPERSFROMTHELIMINAL.NET. She did not open it. She archived it. The site could go down. The site had, frankly, been overdue to go down for some time."
+    },
+    {
+      "t": "narrate",
+      "text": "The second was from John Frank. The subject line was Hi. The email was three weeks old. She had not noticed it. The body of the email was four sentences:"
+    },
+    {
+      "t": "narrate",
+      "text": "Eli — I heard you were in Montreal. From the Roberts. I am also in Montreal. I have been here for some years. You don't have to write back. But if you want to get coffee, I am at a place called Cafe Olimpico most Tuesday mornings. — J."
+    },
+    {
+      "t": "narrate",
+      "text": "She read the email twice."
+    },
+    {
+      "t": "narrate",
+      "text": "She read it a third time."
+    },
+    {
+      "t": "narrate",
+      "text": "She had, she realized, been waiting for exactly this email for nine months. She had been waiting for it the way a person waited for a letter they had not allowed themselves to ask anyone to write."
+    },
+    {
+      "t": "narrate",
+      "text": "She opened a reply. She typed:"
+    },
+    {
+      "t": "narrate",
+      "text": "J — Yes. — E."
+    },
+    {
+      "t": "narrate",
+      "text": "She hit send before she could revise it."
+    },
+    {
+      "t": "narrate",
+      "text": "She closed the laptop."
+    },
+    {
+      "t": "narrate",
+      "text": "She sat in the wreckage of her apartment, with her mother's clean teacup beside her, and the eviction notice opened, and the camera with thirteen minutes of footage on it, and the dust still settling on most surfaces, and the small bright certainty that she had, this evening, finally allowed something to fall in her that had been waiting, for a very long time, to be allowed."
+    },
+    {
+      "t": "narrate",
+      "text": "The Tower had, indeed, been struck by lightning."
+    },
+    {
+      "t": "narrate",
+      "text": "She had, evidently, survived the strike."
+    },
+    {
+      "t": "narrate",
+      "text": "The ruins were now hers to walk."
+    },
+    {
+      "t": "narrate",
+      "text": "She picked up the camera again. She turned it on. She held it at arm's length. She faced the lens."
+    },
+    {
+      "t": "narrate",
+      "text": "The red light came back on."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, this time, perform."
+    },
+    {
+      "t": "say",
+      "char": "elicia",
+      "text": "Hi. My name is Elicia. I have been telling stories about other people for a long time. Tonight I'm going to start telling one about myself. I don't know how long it's going to take. I don't know if it will be any good. I am going to tell it anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "She paused."
+    },
+    {
+      "t": "say",
+      "char": "elicia",
+      "text": "Take Two."
+    },
+    {
+      "t": "narrate",
+      "text": "She set the camera down, still recording, on the windowsill. The little red light kept its watch."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, the November Montreal night settled in, indifferent and beautiful and entirely uninterested in her — which was, she now understood, the gift the city had been offering her the entire eleven months. Not anonymity. Permission."
+    },
+    {
+      "t": "narrate",
+      "text": "She drank her tea. She let the camera record her drinking it."
+    },
+    {
+      "t": "narrate",
+      "text": "The wreckage, around her, kept being wreckage."
+    },
+    {
+      "t": "narrate",
+      "text": "She, in the middle of it, kept being herself."
+    },
+    {
+      "t": "narrate",
+      "text": "It was, for the first time in twelve years, enough."
+    },
+    {
+      "t": "end"
+    }
   ]
 }
