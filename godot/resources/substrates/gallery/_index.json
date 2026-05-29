@@ -63,6 +63,15 @@
       "unlock_pattern": "vol5_ch0_booth6"
     },
     {
+      "id": "portrait_the_demon",
+      "title": "The Demon — imp_07",
+      "set": "Chapter I — The Magician",
+      "type": "composition",
+      "path": "portrait_the_demon",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch1_magician"
+    },
+    {
       "id": "music_player",
       "title": "MUSIC PLAYER  (live visualizer)",
       "set": "Player Surfaces",

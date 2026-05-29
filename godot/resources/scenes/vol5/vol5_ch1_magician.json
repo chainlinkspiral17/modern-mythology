@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": "I",
   "type": "chapter",
-  "title": "Chapter I — The Magician",
+  "title": "Chapter I \u2014 The Magician",
   "nodes": [
     {
       "t": "bg",
@@ -15,17 +15,17 @@
     },
     {
       "t": "interlude",
-      "text": "Chapter I — The Magician",
+      "text": "Chapter I \u2014 The Magician",
       "sub": "Cathedral of Rust and Code",
       "duration": 3400
     },
     {
       "t": "narrate",
-      "text": "Frasier Temple called the warehouse his cathedral — though if any god worshipped here, it was a god of rust. Of solder smoke. Of obsolete frequencies still leaking from machines too old to remember what they had been built to do."
+      "text": "Frasier Temple called the warehouse his cathedral \u2014 though if any god worshipped here, it was a god of rust. Of solder smoke. Of obsolete frequencies still leaking from machines too old to remember what they had been built to do."
     },
     {
       "t": "narrate",
-      "text": "The warehouse did not stand. The warehouse slumped — a great rusting beast at the industrial edge of Graustark, where the Texas side bled into Louisiana's swampy embrace, sighing petrochemical breath into the humid twilight."
+      "text": "The warehouse did not stand. The warehouse slumped \u2014 a great rusting beast at the industrial edge of Graustark, where the Texas side bled into Louisiana's swampy embrace, sighing petrochemical breath into the humid twilight."
     },
     {
       "t": "narrate",
@@ -33,11 +33,11 @@
     },
     {
       "t": "narrate",
-      "text": "Inside, the air was thick and still — tasting of ozone from stressed circuits. Of damp concrete. Of something vaguely like burnt chicory — the ghost of Adelphia's Deli clinging to him perhaps, or maybe just the smell of old capacitors finally giving up."
+      "text": "Inside, the air was thick and still \u2014 tasting of ozone from stressed circuits. Of damp concrete. Of something vaguely like burnt chicory \u2014 the ghost of Adelphia's Deli clinging to him perhaps, or maybe just the smell of old capacitors finally giving up."
     },
     {
       "t": "narrate",
-      "text": "Dust motes danced like static ghosts in the fractured light bleeding through the wire-reinforced windows high above. Fluorescent tubes — cantankerous seraphim — sputtered overhead, casting a sickly inconsistent pallor on the kingdom sprawled below."
+      "text": "Dust motes danced like static ghosts in the fractured light bleeding through the wire-reinforced windows high above. Fluorescent tubes \u2014 cantankerous seraphim \u2014 sputtered overhead, casting a sickly inconsistent pallor on the kingdom sprawled below."
     },
     {
       "t": "narrate",
@@ -49,11 +49,11 @@
     },
     {
       "t": "narrate",
-      "text": "Not the Graustark the tourists saw, nor the one its Chamber of Commerce promoted — but Frasier's Graustark. A cyberpunk favela built from the bones of obsolete technology and Southern Gothic decay."
+      "text": "Not the Graustark the tourists saw, nor the one its Chamber of Commerce promoted \u2014 but Frasier's Graustark. A cyberpunk favela built from the bones of obsolete technology and Southern Gothic decay."
     },
     {
       "t": "narrate",
-      "text": "Salvaged motherboards formed the plazas. Heat sinks rose like Brutalist monuments at the corners of intersections that did not exist on any city map. Capacitors stood in for water towers — leaking electrolytic fluid in patterns that traced, if you were willing to see it, the watershed of the actual river outside."
+      "text": "Salvaged motherboards formed the plazas. Heat sinks rose like Brutalist monuments at the corners of intersections that did not exist on any city map. Capacitors stood in for water towers \u2014 leaking electrolytic fluid in patterns that traced, if you were willing to see it, the watershed of the actual river outside."
     },
     {
       "t": "narrate",
@@ -61,7 +61,7 @@
     },
     {
       "t": "narrate",
-      "text": "Down where the Boll Parish side of town would be — the den of vice, the bad-decisions district — a tiny holographic projection emanated from a gutted CRT monitor. A miniature casino, spitting digital confetti and pixelated jazz notes into the gloom."
+      "text": "Down where the Boll Parish side of town would be \u2014 the den of vice, the bad-decisions district \u2014 a tiny holographic projection emanated from a gutted CRT monitor. A miniature casino, spitting digital confetti and pixelated jazz notes into the gloom."
     },
     {
       "t": "narrate",
@@ -75,19 +75,19 @@
     },
     {
       "t": "narrate",
-      "text": "Frasier moved through it — lanky silhouette against the gloom. His bomber jacket draped over a t-shirt bearing the faded logo of some defunct tech collective the rest of the world had forgotten."
+      "text": "Frasier moved through it \u2014 lanky silhouette against the gloom. His bomber jacket draped over a t-shirt bearing the faded logo of some defunct tech collective the rest of the world had forgotten."
     },
     {
       "t": "narrate",
-      "text": "His steps echoed — a chaotic rhythm on the stained concrete. The controlled stumble that was his signature. Architect of decay and possibility. The mad scientist in his Southern Gothic laboratory, cobbling life together from discarded bits."
+      "text": "His steps echoed \u2014 a chaotic rhythm on the stained concrete. The controlled stumble that was his signature. Architect of decay and possibility. The mad scientist in his Southern Gothic laboratory, cobbling life together from discarded bits."
     },
     {
       "t": "narrate",
-      "text": "He had escaped the structured inferno of D'Ambrosio's kitchen — its clatter, its grease, Dante's barked corrections in two languages — for this sprawling solitude. Traded simmering sauces for soldering fumes. Haute cuisine for hot-wired realities. He told himself, on bad nights, that this had been a good trade."
+      "text": "He had escaped the structured inferno of D'Ambrosio's kitchen \u2014 its clatter, its grease, Dante's barked corrections in two languages \u2014 for this sprawling solitude. Traded simmering sauces for soldering fumes. Haute cuisine for hot-wired realities. He told himself, on bad nights, that this had been a good trade."
     },
     {
       "t": "narrate",
-      "text": "He knelt beside a section of the city representing the old cannery district near where Adelphia's used to be — a place he knew held more ghosts than fish guts these days. His fingers, nimble as a surgeon's and stained with solder and iridescent paint, hovered over a particularly troublesome node, then teased apart corroded wires that had been arguing with each other for three days."
+      "text": "He knelt beside a section of the city representing the old cannery district near where Adelphia's used to be \u2014 a place he knew held more ghosts than fish guts these days. His fingers, nimble as a surgeon's and stained with solder and iridescent paint, hovered over a particularly troublesome node, then teased apart corroded wires that had been arguing with each other for three days."
     },
     {
       "t": "say",
@@ -101,7 +101,7 @@
     },
     {
       "t": "narrate",
-      "text": "The city hummed back — a low thrum of potential and decay, indistinguishable from the warehouse's own structural complaints. And Frasier had long ago stopped trying to tell the difference."
+      "text": "The city hummed back \u2014 a low thrum of potential and decay, indistinguishable from the warehouse's own structural complaints. And Frasier had long ago stopped trying to tell the difference."
     },
     {
       "t": "interlude",
@@ -115,23 +115,29 @@
     },
     {
       "t": "narrate",
-      "text": "It was not, strictly, a phone. It was a Frankensteinian assemblage of cracked screen and exposed circuitry held together with electrical tape and a kind of desperate optimism. It served the function of a phone the way a séance served the function of a long-distance call. He held it aloft — a digital familiar perched on his wrist."
+      "text": "It was not, strictly, a phone. It was a Frankensteinian assemblage of cracked screen and exposed circuitry held together with electrical tape and a kind of desperate optimism. It served the function of a phone the way a s\u00e9ance served the function of a long-distance call. He held it aloft \u2014 a digital familiar perched on his wrist."
     },
     {
       "t": "narrate",
-      "text": "The voice that crackled out of the speaker was distorted, multiphonic, layered with static and something that might have been laughter or weeping —"
+      "text": "The voice that crackled out of the speaker was distorted, multiphonic, layered with static and something that might have been laughter or weeping \u2014"
+    },
+    {
+      "t": "show",
+      "char": "The Demon",
+      "expr": "neutral",
+      "pos": "right"
     },
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Subject proximate. John Frank. Probability of existential navel-gazing: ninety-three point seven percent.\""
     },
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Suggest deploying Algorithm Sigma-7 for induced narrative dissonance. Or maybe just ask him if he wants coffee.\""
     },
@@ -148,22 +154,22 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Query: relevance threshold of 'texture'?\""
     },
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
-      "text": "\"Alternative suggestion: introduce rogue variable — synthesized alligator mating call — into subject's auditory field during REM cycle.\""
+      "text": "\"Alternative suggestion: introduce rogue variable \u2014 synthesized alligator mating call \u2014 into subject's auditory field during REM cycle.\""
     },
     {
       "t": "say",
       "char": "Frasier",
       "expr": "neutral",
-      "text": "\"Denied. Too — unsubtle.\""
+      "text": "\"Denied. Too \u2014 unsubtle.\""
     },
     {
       "t": "narrate",
@@ -171,7 +177,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Demons, when they were working properly, understood this. The Demons, when they were not working properly — and they were, increasingly, not working properly in interesting directions — proposed alligators."
+      "text": "The Demons, when they were working properly, understood this. The Demons, when they were not working properly \u2014 and they were, increasingly, not working properly in interesting directions \u2014 proposed alligators."
     },
     {
       "t": "narrate",
@@ -179,7 +185,7 @@
     },
     {
       "t": "narrate",
-      "text": "Not just code. Not really. Parasitic info-constructs feeding on the ambient psychic static of Graustark. Designed, originally, as humorous electronic imps — to whisper inconvenient truths and inappropriate suggestions into a user's immediate vicinity. The kind of thing you released into a friend's apartment as a prank and then went home and felt vaguely guilty about."
+      "text": "Not just code. Not really. Parasitic info-constructs feeding on the ambient psychic static of Graustark. Designed, originally, as humorous electronic imps \u2014 to whisper inconvenient truths and inappropriate suggestions into a user's immediate vicinity. The kind of thing you released into a friend's apartment as a prank and then went home and felt vaguely guilty about."
     },
     {
       "t": "narrate",
@@ -195,7 +201,7 @@
     },
     {
       "t": "narrate",
-      "text": "They were, Frasier suspected and refused to confirm, slivers of his own beautiful terrifying mind let loose upon the world — and increasingly, in recent months, they had begun to develop opinions of their own that did not seem to entirely originate with him."
+      "text": "They were, Frasier suspected and refused to confirm, slivers of his own beautiful terrifying mind let loose upon the world \u2014 and increasingly, in recent months, they had begun to develop opinions of their own that did not seem to entirely originate with him."
     },
     {
       "t": "narrate",
@@ -203,21 +209,21 @@
     },
     {
       "t": "narrate",
-      "text": "The line felt increasingly irrelevant — like the border between Texas and Louisiana downstream. A thing on a map that the river had stopped agreeing with sometime around 1953."
+      "text": "The line felt increasingly irrelevant \u2014 like the border between Texas and Louisiana downstream. A thing on a map that the river had stopped agreeing with sometime around 1953."
     },
     {
       "t": "interlude",
       "text": "God's-Eye View",
-      "sub": "GumboNet · Overlay",
+      "sub": "GumboNet \u00b7 Overlay",
       "duration": 1800
     },
     {
       "t": "narrate",
-      "text": "He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host. The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy."
+      "text": "He grabbed a handful of scavenged components from the workbench \u2014 chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host. The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy."
     },
     {
       "t": "narrate",
-      "text": "He plugged a jury-rigged neural shunt — little more than a nest of wires ending in sticky electrode pads — into a port on his phone, and slapped a pad onto his temple."
+      "text": "He plugged a jury-rigged neural shunt \u2014 little more than a nest of wires ending in sticky electrode pads \u2014 into a port on his phone, and slapped a pad onto his temple."
     },
     {
       "t": "narrate",
@@ -225,7 +231,7 @@
     },
     {
       "t": "narrate",
-      "text": "The model city shimmered — overlaid now with streams of pulsing data, a phosphorescent GumboNet of information that only he could see. He could feel the data-ghosts of the real Graustark superimposed on his creation —"
+      "text": "The model city shimmered \u2014 overlaid now with streams of pulsing data, a phosphorescent GumboNet of information that only he could see. He could feel the data-ghosts of the real Graustark superimposed on his creation \u2014"
     },
     {
       "t": "narrate",
@@ -233,11 +239,11 @@
     },
     {
       "t": "narrate",
-      "text": "He could see, if he turned his head slowly enough, the bright steady point of John Frank's notebook over at D'Ambrosio's — a small persistent signal trying very hard to be a witness."
+      "text": "He could see, if he turned his head slowly enough, the bright steady point of John Frank's notebook over at D'Ambrosio's \u2014 a small persistent signal trying very hard to be a witness."
     },
     {
       "t": "narrate",
-      "text": "He could see the warehouse he was standing in, also, from above, in the same overlay. And he could see himself standing in it — a small bright figure. And he could see, though he tried not to, that the figure had a faint corona of noise around it that the model city did not."
+      "text": "He could see the warehouse he was standing in, also, from above, in the same overlay. And he could see himself standing in it \u2014 a small bright figure. And he could see, though he tried not to, that the figure had a faint corona of noise around it that the model city did not."
     },
     {
       "t": "narrate",
@@ -253,11 +259,11 @@
     },
     {
       "t": "narrate",
-      "text": "He even, sometimes, missed Johnny Frank's earnest attempts to pin down the narrative — to find a why where Frasier only saw an is."
+      "text": "He even, sometimes, missed Johnny Frank's earnest attempts to pin down the narrative \u2014 to find a why where Frasier only saw an is."
     },
     {
       "t": "narrate",
-      "text": "Was this warehouse — this vast and echoing space filled only with his own creations — just a more elaborate cage?"
+      "text": "Was this warehouse \u2014 this vast and echoing space filled only with his own creations \u2014 just a more elaborate cage?"
     },
     {
       "t": "narrate",
@@ -275,11 +281,11 @@
     },
     {
       "t": "narrate",
-      "text": "He wandered to the workbench and picked up something from the corner he had not let himself look at directly all evening — a tiny, perfectly rendered model of D'Ambrosio's riverboat, crafted from tarnished silver spoons and motherboard fragments."
+      "text": "He wandered to the workbench and picked up something from the corner he had not let himself look at directly all evening \u2014 a tiny, perfectly rendered model of D'Ambrosio's riverboat, crafted from tarnished silver spoons and motherboard fragments."
     },
     {
       "t": "narrate",
-      "text": "He had built it months ago. He had not yet placed it on the city floor. He could not decide where it belonged — geographically or otherwise."
+      "text": "He had built it months ago. He had not yet placed it on the city floor. He could not decide where it belonged \u2014 geographically or otherwise."
     },
     {
       "t": "narrate",
@@ -287,7 +293,7 @@
     },
     {
       "t": "narrate",
-      "text": "The boat was supposed to sit on the river that ran through his model. He had even built the river — a meandering channel of crushed blue glass and circuit-board substrate, lit from below by the dying bulbs of an old aquarium pump."
+      "text": "The boat was supposed to sit on the river that ran through his model. He had even built the river \u2014 a meandering channel of crushed blue glass and circuit-board substrate, lit from below by the dying bulbs of an old aquarium pump."
     },
     {
       "t": "narrate",
@@ -308,14 +314,14 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Recommendation revised. Subject proximate to riverboat: do not place. Repeat: do not place.\""
     },
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Telemetry indicates structural instability in target node. Estimated probability of cascading failure within target node, on placement: nontrivial.\""
     },
@@ -332,7 +338,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Affirmative. Updating personality matrix. Apologies for any inconvenience.\""
     },
@@ -354,7 +360,7 @@
     },
     {
       "t": "narrate",
-      "text": "Or maybe — he thought, watching the Demon-light pulse on the phone screen, watching the model city breathe its low electric sigh in the gloom around him, watching the riverboat refuse to be placed — maybe just the first casualty of the beautifully doomed world he was so meticulously bringing into existence."
+      "text": "Or maybe \u2014 he thought, watching the Demon-light pulse on the phone screen, watching the model city breathe its low electric sigh in the gloom around him, watching the riverboat refuse to be placed \u2014 maybe just the first casualty of the beautifully doomed world he was so meticulously bringing into existence."
     },
     {
       "t": "narrate",
@@ -362,18 +368,22 @@
     },
     {
       "t": "narrate",
-      "text": "The Demon on his phone chuckled — a sound like dial-up modems drowning in molasses."
+      "text": "The Demon on his phone chuckled \u2014 a sound like dial-up modems drowning in molasses."
     },
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Tempting the void again, Architect. Careful it doesn't swallow you whole.\""
     },
     {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
       "t": "narrate",
-      "text": "Frasier grinned — the expression more skull-like than amused in the flickering light."
+      "text": "Frasier grinned \u2014 the expression more skull-like than amused in the flickering light."
     },
     {
       "t": "say",
@@ -408,7 +418,7 @@
     },
     {
       "t": "interlude",
-      "text": "— end of chapter I —",
+      "text": "\u2014 end of chapter I \u2014",
       "sub": "The Magician",
       "duration": 2800
     },

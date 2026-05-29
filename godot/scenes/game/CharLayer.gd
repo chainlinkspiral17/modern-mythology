@@ -71,17 +71,25 @@ const INACTIVE_ALPHA := 0.32
 # speaker glow boost. Fall back to neutral when a character isn't
 # registered yet.
 const CHAR_ACCENTS := {
-	"john":     Color("#9bc3ff"),
-	"frasier":  Color("#ffa860"),
-	"stranger": Color("#c64878"),
+	"john":      Color("#9bc3ff"),
+	"frasier":   Color("#ffa860"),
+	"stranger":  Color("#c64878"),
+	"the_demon": Color("#7cffb0"),
 }
 const ACCENT_DEFAULT := Color("#d6c8a8")
+
+
+# Normalizes a scene-data character name to a lookup key: lowercased,
+# spaces → underscores. "The Demon" → "the_demon", matching both
+# CHAR_ACCENTS and the composition filename portrait_the_demon.json.
+func _key(char_name: String) -> String:
+	return char_name.to_lower().strip_edges().replace(" ", "_")
 
 
 # Public lookup so DialogueBox / GameEngine / etc. can color speaker
 # names and other chrome consistently with portrait accents.
 func accent_for(char_name: String) -> Color:
-	return CHAR_ACCENTS.get(char_name.to_lower(), ACCENT_DEFAULT)
+	return CHAR_ACCENTS.get(_key(char_name), ACCENT_DEFAULT)
 
 # slot -> {name, expr, node: Control}
 var _slots: Dictionary = {"left": null, "center": null, "right": null}
@@ -195,7 +203,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	wrapper.position             = POSITIONS[pos]
 	wrapper.modulate.a           = 0.0
 
-	var key       := char_name.to_lower()
+	var key       := _key(char_name)
 	var comp_path := PORTRAIT_COMP_ROOT + "portrait_" + key + ".json"
 
 	# Scrim sits behind every portrait so the figure pops against busy
@@ -250,7 +258,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 
 func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 	var kind: String = wrapper.get_meta("kind", "placeholder")
-	var key  := char_name.to_lower()
+	var key  := _key(char_name)
 	if kind == "composition":
 		_apply_texture_tint(wrapper, expr)
 	elif kind == "texture":
