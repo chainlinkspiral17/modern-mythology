@@ -1,0 +1,66 @@
+{
+  "id": "scene_vol5_ch1_magician",
+  "canvas": [1920, 1080],
+  "bg": "#0a0608",
+  "windows": [
+    {
+      "kind": "visualizer",
+      "x": 0, "y": 800, "font_px": 14,
+      "bar_count": 80, "bar_height": 16, "bar_gap": 0,
+      "min_freq": 40, "max_freq": 6000,
+      "magnitude": 16.0, "smoothing": 0.16, "peak_decay": 0.9,
+      "peak_hold": true, "wave_smooth_passes": 2,
+      "update_hz": 30,
+      "col_dim": "#0a0608",
+      "col_lo": "#2a0e12",
+      "col_mid": "#7a1820",
+      "col_hi": "#c83040",
+      "col_peak": "#ff5a6a",
+      "col_peak_tip": "#ffd0d0",
+      "alpha": 0.30
+    },
+    {
+      "kind": "image",
+      "path": "assets/backgrounds/vol5_warehouse_cathedral.png",
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "alpha": 1.0, "z": 3
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/vol5_warehouse_cathedral_ascii.png",
+        "assets/backgrounds/vol5_warehouse_cathedral_ascii.png",
+        "assets/backgrounds/vol5_warehouse_cathedral_ascii.png",
+        "assets/backgrounds/vol5_warehouse_cathedral_ascii_glitch.png"
+      ],
+      "frame_duration": 0.5,
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "alpha": 0.2, "z": 5,
+      "modulate": "#ff7a6a",
+      "audio_reactive": {
+        "freq_lo": 60, "freq_hi": 3000,
+        "base_alpha": 0.16, "max_alpha": 0.5, "min_alpha": 0.1,
+        "magnitude": 6.0, "smoothing": 0.16, "update_hz": 30
+      }
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/dust_motes_0.png",
+        "assets/backgrounds/dust_motes_1.png",
+        "assets/backgrounds/dust_motes_2.png",
+        "assets/backgrounds/dust_motes_3.png"
+      ],
+      "frame_duration": 1.4,
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "alpha": 0.85, "z": 7
+    },
+    {
+      "kind": "color",
+      "color": "#2a0a12",
+      "alpha": 0.28,
+      "x": 0, "y": 0, "w": 1920, "h": 1080,
+      "z": 9
+    }
+  ]
+}

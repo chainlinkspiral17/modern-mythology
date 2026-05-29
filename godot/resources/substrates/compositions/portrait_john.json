@@ -1,0 +1,58 @@
+{
+  "id": "portrait_john",
+  "canvas": [810, 858],
+  "bg": null,
+  "windows": [
+    { "kind": "image", "path": "assets/gallery/portrait_vignette.png",
+      "x": 0, "y": 0, "w": 810, "h": 858,
+      "alpha": 0.35, "z": 0 },
+
+    { "kind": "visualizer",
+      "x": 0, "y": 540, "font_px": 14,
+      "bar_count": 60, "bar_height": 16, "bar_gap": 0,
+      "min_freq": 30, "max_freq": 320,
+      "magnitude": 14.0, "smoothing": 0.30, "peak_decay": 0.92,
+      "peak_hold": false,
+      "wave_smooth_passes": 4,
+      "update_hz": 45,
+      "col_dim":      "#06080e",
+      "col_lo":       "#10182a",
+      "col_mid":      "#1c2a45",
+      "col_hi":       "#5a4632",
+      "col_peak":     "#ffd17a",
+      "col_peak_tip": "#ffd17a",
+      "alpha": 0.32, "z": 1 },
+
+    { "kind": "image", "path": "assets/gallery/johnfrank_face_cutout.png",
+      "x": 0, "y": 0, "w": 810, "h": 858,
+      "stretch": "fit",
+      "alpha": 1.0, "z": 3 },
+
+    { "kind": "image_frames",
+      "frames": [
+        "assets/gallery/portrait_john_face_ascii.png",
+        "assets/gallery/portrait_john_face_ascii.png",
+        "assets/gallery/portrait_john_face_ascii.png",
+        "assets/gallery/portrait_john_face_ascii_glitch.png"
+      ],
+      "frame_duration": 0.45,
+      "x": 0, "y": 0, "w": 810, "h": 858,
+      "modulate": "#ffe6c0",
+      "alpha": 0.45, "z": 5,
+      "audio_reactive": {
+        "freq_lo": 40, "freq_hi": 260,
+        "base_alpha": 0.30, "max_alpha": 0.70, "min_alpha": 0.20,
+        "magnitude": 6.0, "smoothing": 0.22, "update_hz": 30
+      }
+    },
+
+    { "kind": "image", "path": "assets/gallery/portrait_border_shadow.png",
+      "x": 6, "y": 8, "w": 810, "h": 858,
+      "alpha": 0.85, "z": 7 },
+
+    { "kind": "image", "path": "assets/gallery/portrait_border_warm.png",
+      "x": 0, "y": 0, "w": 810, "h": 858,
+      "modulate": "#9bc3ff",
+      "alpha": 1.0, "z": 8 }
+  ]
+}

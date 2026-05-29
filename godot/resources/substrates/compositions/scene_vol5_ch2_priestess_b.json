@@ -1,0 +1,97 @@
+{
+  "id": "scene_vol5_ch2_priestess_b",
+  "canvas": [
+    1920,
+    1080
+  ],
+  "bg": "#0a0814",
+  "windows": [
+    {
+      "kind": "visualizer",
+      "x": 0,
+      "y": 800,
+      "font_px": 14,
+      "bar_count": 80,
+      "bar_height": 16,
+      "bar_gap": 0,
+      "min_freq": 30,
+      "max_freq": 2000,
+      "magnitude": 14.0,
+      "smoothing": 0.4,
+      "peak_decay": 0.94,
+      "peak_hold": false,
+      "wave_smooth_passes": 4,
+      "update_hz": 30,
+      "col_dim": "#0a0814",
+      "col_lo": "#161028",
+      "col_mid": "#3a2a55",
+      "col_hi": "#8a6aa0",
+      "col_peak": "#e0a878",
+      "col_peak_tip": "#ffd6b0",
+      "alpha": 0.24
+    },
+    {
+      "kind": "image",
+      "path": "assets/backgrounds/vol5_bungalow_dusk.png",
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 1.0,
+      "z": 3
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/vol5_bungalow_dusk_ascii.png",
+        "assets/backgrounds/vol5_bungalow_dusk_ascii.png",
+        "assets/backgrounds/vol5_bungalow_dusk_ascii.png",
+        "assets/backgrounds/vol5_bungalow_dusk_ascii_glitch.png"
+      ],
+      "frame_duration": 0.6,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.2,
+      "z": 5,
+      "modulate": "#b89ad6",
+      "audio_reactive": {
+        "freq_lo": 40,
+        "freq_hi": 1800,
+        "base_alpha": 0.16,
+        "max_alpha": 0.48,
+        "min_alpha": 0.1,
+        "magnitude": 5.5,
+        "smoothing": 0.22,
+        "update_hz": 30
+      }
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/dust_motes_0.png",
+        "assets/backgrounds/dust_motes_1.png",
+        "assets/backgrounds/dust_motes_2.png",
+        "assets/backgrounds/dust_motes_3.png"
+      ],
+      "frame_duration": 1.6,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.85,
+      "z": 7
+    },
+    {
+      "kind": "color",
+      "color": "#1a1230",
+      "alpha": 0.3,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "z": 9
+    }
+  ]
+}

@@ -3,11 +3,11 @@
   "vol": 5,
   "chapter": "II",
   "type": "chapter",
-  "title": "The High Priestess",
+  "title": "Chapter II \u2014 The High Priestess",
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_bungalow_dusk.jpg"
+      "src": "assets/backgrounds/vol5_bungalow_dusk.png"
     },
     {
       "t": "bgm",
@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "II — The High Priestess",
+      "text": "Chapter II \u2014 The High Priestess",
       "sub": "Exit Through the Gift Shop",
       "duration": 3400
     },
@@ -25,11 +25,11 @@
     },
     {
       "t": "narrate",
-      "text": "Packing was not packing. Packing was curation — shedding a narrative skin before migrating to the next location. The next temporary set for the ongoing, increasingly unscripted tragicomedy of her life."
+      "text": "Packing was not packing. Packing was curation \u2014 shedding a narrative skin before migrating to the next location. The next temporary set for the ongoing, increasingly unscripted tragicomedy of her life."
     },
     {
       "t": "narrate",
-      "text": "Cardboard boxes gaped like hungry mouths along the warped hardwood floor of the living room — half-filled with the detritus of a two-year stint in a town that had, against her better judgment and her professional prudence, gotten under her skin:"
+      "text": "Cardboard boxes gaped like hungry mouths along the warped hardwood floor of the living room \u2014 half-filled with the detritus of a two-year stint in a town that had, against her better judgment and her professional prudence, gotten under her skin:"
     },
     {
       "t": "narrate",
@@ -55,7 +55,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her eyes — the pale, intelligent, evaluative eyes that had served her well in two industries and one unfortunate marriage — moved across the room in the practiced sweep of someone who could no longer enter a space without first checking the framing."
+      "text": "Her eyes \u2014 the pale, intelligent, evaluative eyes that had served her well in two industries and one unfortunate marriage \u2014 moved across the room in the practiced sweep of someone who could no longer enter a space without first checking the framing."
     },
     {
       "t": "think",
@@ -74,11 +74,11 @@
     },
     {
       "t": "narrate",
-      "text": "Her web series — Whispers from the Liminal — had drunk deep from this town's poisoned well. Oh, the material. She had framed Graustark's rust as existential patina. The sinkhole's lingering psychic miasma as compelling thematic resonance. The way the locals occasionally lost an hour and recovered it with the wrong shoes on as Lynchian quotidian."
+      "text": "Her web series \u2014 Whispers from the Liminal \u2014 had drunk deep from this town's poisoned well. Oh, the material. She had framed Graustark's rust as existential patina. The sinkhole's lingering psychic miasma as compelling thematic resonance. The way the locals occasionally lost an hour and recovered it with the wrong shoes on as Lynchian quotidian."
     },
     {
       "t": "narrate",
-      "text": "She had directed the town's ambient despair the way a method actor directed her own breakdown — intimately, with notes."
+      "text": "She had directed the town's ambient despair the way a method actor directed her own breakdown \u2014 intimately, with notes."
     },
     {
       "t": "narrate",
@@ -90,11 +90,11 @@
     },
     {
       "t": "narrate",
-      "text": "They wrote essays — actual essays, with citations — posted to forums Elicia could not bring herself to read, because reading them constituted, in some metaphysical accounting she could not articulate but profoundly believed in, cheating. They searched for gnosis in what was, often, just bad wiring or Elicia forgetting to pay the electric bill."
+      "text": "They wrote essays \u2014 actual essays, with citations \u2014 posted to forums Elicia could not bring herself to read, because reading them constituted, in some metaphysical accounting she could not articulate but profoundly believed in, cheating. They searched for gnosis in what was, often, just bad wiring or Elicia forgetting to pay the electric bill."
     },
     {
       "t": "narrate",
-      "text": "Humans. Hilariously, tragically predictable. Always needing a map — even if it led directly off a cliff."
+      "text": "Humans. Hilariously, tragically predictable. Always needing a map \u2014 even if it led directly off a cliff."
     },
     {
       "t": "narrate",
@@ -106,11 +106,11 @@
     },
     {
       "t": "narrate",
-      "text": "She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production. Picked up because it had caught the light just so. Kept because it had refused, in two years of attempted disposal, to leave the apartment by any normal route."
+      "text": "She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight \u2014 found near the sinkhole's edge during her first week of pre-production. Picked up because it had caught the light just so. Kept because it had refused, in two years of attempted disposal, to leave the apartment by any normal route."
     },
     {
       "t": "narrate",
-      "text": "She had thrown it out twice. It had returned twice — in different ways, neither of which she had been able to satisfactorily explain to herself or to the cleaning lady."
+      "text": "She had thrown it out twice. It had returned twice \u2014 in different ways, neither of which she had been able to satisfactorily explain to herself or to the cleaning lady."
     },
     {
       "t": "narrate",
@@ -127,11 +127,11 @@
     },
     {
       "t": "narrate",
-      "text": "Her carefully constructed reality — the one in which she was the aloof director, the manipulator of narratives, the woman who kept everyone at arm's length and metabolized her own emotions in a controlled studio environment with adequate ventilation — felt decidedly chipped tonight."
+      "text": "Her carefully constructed reality \u2014 the one in which she was the aloof director, the manipulator of narratives, the woman who kept everyone at arm's length and metabolized her own emotions in a controlled studio environment with adequate ventilation \u2014 felt decidedly chipped tonight."
     },
     {
       "t": "narrate",
-      "text": "The walls were crumbling. Not just the bungalow's plaster — which was atrocious, and which the landlord had been promising to address for fourteen months."
+      "text": "The walls were crumbling. Not just the bungalow's plaster \u2014 which was atrocious, and which the landlord had been promising to address for fourteen months."
     },
     {
       "t": "narrate",
@@ -148,7 +148,7 @@
     },
     {
       "t": "narrate",
-      "text": "Served her right, probably. Karma — that tedious cosmic bookkeeper — had come to settle the account. The account had been substantial. And Elicia had been, in retrospect, surprisingly bad at math."
+      "text": "Served her right, probably. Karma \u2014 that tedious cosmic bookkeeper \u2014 had come to settle the account. The account had been substantial. And Elicia had been, in retrospect, surprisingly bad at math."
     },
     {
       "t": "narrate",
@@ -162,33 +162,33 @@
     },
     {
       "t": "narrate",
-      "text": "She picked up a script page from the table — notes for the Whispers choose-your-own-adventure episode. She had been promising the audience the episode for six months. The audience had been patient. The audience would not, she suspected, be patient much longer."
+      "text": "She picked up a script page from the table \u2014 notes for the Whispers choose-your-own-adventure episode. She had been promising the audience the episode for six months. The audience had been patient. The audience would not, she suspected, be patient much longer."
     },
     {
       "t": "narrate",
-      "text": "Option A — Confront the shadow self in the abandoned slaughterhouse."
+      "text": "Option A \u2014 Confront the shadow self in the abandoned slaughterhouse."
     },
     {
       "t": "narrate",
-      "text": "Option B — Attend the interdimensional tea party with the sentient mannequins."
+      "text": "Option B \u2014 Attend the interdimensional tea party with the sentient mannequins."
     },
     {
       "t": "narrate",
-      "text": "Option C — Realize free will is an illusion and embrace the comforting void."
+      "text": "Option C \u2014 Realize free will is an illusion and embrace the comforting void."
     },
     {
       "t": "choice",
       "opts": [
         {
-          "text": "[A — the slaughterhouse]",
+          "text": "[A \u2014 the slaughterhouse]",
           "goto": 41
         },
         {
-          "text": "[B — the mannequins]",
+          "text": "[B \u2014 the mannequins]",
           "goto": 43
         },
         {
-          "text": "[C — the comforting void]",
+          "text": "[C \u2014 the comforting void]",
           "goto": 45
         }
       ]
