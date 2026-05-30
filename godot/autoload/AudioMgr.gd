@@ -247,6 +247,13 @@ func enqueue_music(src: String) -> bool:
 		return false
 	_queue.append(src)
 	queue_changed.emit()
+	# If nothing is playing right now, the queue would just sit until
+	# some other track finishes — but nothing's going to finish. Kick
+	# off the head immediately so character-show actually produces
+	# music. Skip while we're mid-fade or have a pending switch; the
+	# queue head will be picked up by _pick_next when those settle.
+	if not _bgm.playing and not _paused and _pending_src == "" and _fade_timer <= 0.0:
+		play_next()
 	return true
 
 
@@ -283,6 +290,12 @@ func unlock_tracks_for_character(char_key: String) -> int:
 		var key := "music:" + id
 		if SaveSystem.mark_unlocked(key):
 			newly_unlocked += 1
+			# Mark heard at the moment of unlock so MusicPlayerOverlay
+			# shows the track with a filled ● dot immediately, even
+			# before the queue gets around to playing it. Treats
+			# "the character that owns this track has appeared" as
+			# equivalent to having heard the track for catalog purposes.
+			_mark_heard(src)
 			track_unlocked.emit(src, entry.get("title", id))
 		enqueue_music(src)
 	return newly_unlocked

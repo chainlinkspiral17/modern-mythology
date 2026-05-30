@@ -599,55 +599,61 @@ func _process(delta: float) -> void:
 			_auto_timer = 0.0
 			if not AudioMgr.is_voice_playing():
 				_advance()
-	_apply_bg_sway(delta)
-	_apply_bg_pan(delta)
+	_apply_bg_motion(delta)
 
 
-# Subtle riverboat list — slow sinusoidal translate + tiny rotation on the
-# bg composition. Affects scene backgrounds only; portraits and dialog
-# stay fixed.
-var _sway_t: float = 0.0
-const SWAY_PERIOD := 5.4   # seconds per cycle
-const SWAY_X_AMP  := 6.0   # logical px
-const SWAY_Y_AMP  := 3.0
-const SWAY_ROT    := 0.006 # radians (~0.34°)
-
-func _apply_bg_sway(delta: float) -> void:
-	if _bg_composition == null or _bg_composition.get_child_count() == 0:
-		return
-	_sway_t += delta
-	var phase: float = _sway_t * TAU / SWAY_PERIOD
-	_bg_composition.position = Vector2(sin(phase) * SWAY_X_AMP, cos(phase * 0.7) * SWAY_Y_AMP)
-	_bg_composition.pivot_offset = _bg_composition.size * 0.5
-	_bg_composition.rotation = sin(phase) * SWAY_ROT
-
-
-# Ken-Burns-style idle drift on the raw bg TextureRect (_bg). The bg is
-# rendered with STRETCH_KEEP_ASPECT_COVERED so the source already
-# extends past the viewport; this slowly pans across the extra area and
-# breathes the zoom slightly. Period is much longer than the riverboat
-# sway so the two motions don't fight each other. _bg_pan_phase is
-# randomized per scene so the same source doesn't always reveal the
-# same edge first.
+# Background idle motion — combines two layers:
+#  • Ken-Burns drift: slow x/y pan + zoom breath. Long period (25s)
+#    so it reads as cinematic, not nervous.
+#  • Riverboat sway:  small high-frequency wobble + micro-rotation,
+#    layered on top to keep the frame from feeling locked.
+# Both layers compose into one transform per node and apply to
+# whichever bg layer is live (the TextureRect _bg for plain bgs,
+# the _bg_composition for ASCII comp scenes — or both, if both
+# happen to be active). Previously these ran as two separate
+# methods and the second overwrote the first; that's why scenes
+# using comp showed only sway and scenes using plain bg showed no
+# motion.
+var _sway_t:       float = 0.0
 var _bg_pan_t:     float = 0.0
 var _bg_pan_phase: float = 0.0
-const BG_PAN_PERIOD := 25.0   # seconds per full pan cycle
-const BG_PAN_X_AMP  := 40.0   # logical px
+const SWAY_PERIOD   := 5.4
+const SWAY_X_AMP    := 6.0
+const SWAY_Y_AMP    := 3.0
+const SWAY_ROT      := 0.006
+const BG_PAN_PERIOD := 25.0
+const BG_PAN_X_AMP  := 40.0
 const BG_PAN_Y_AMP  := 25.0
-const BG_ZOOM_BASE  := 1.04   # static base zoom (4%) so pan never reveals an edge
-const BG_ZOOM_AMP   := 0.012  # ±1.2% breathing on top
+const BG_ZOOM_BASE  := 1.04
+const BG_ZOOM_AMP   := 0.012
 
-func _apply_bg_pan(delta: float) -> void:
-	if _bg == null or _bg.texture == null:
-		return
+func _apply_bg_motion(delta: float) -> void:
+	_sway_t   += delta
 	_bg_pan_t += delta
 	var t: float = (_bg_pan_t + _bg_pan_phase) * TAU / BG_PAN_PERIOD
-	_bg.pivot_offset = _bg.size * 0.5
-	# Lissajous-style: x and y on different harmonics so the motion
-	# doesn't trace a simple ellipse.
-	_bg.position = Vector2(sin(t) * BG_PAN_X_AMP, cos(t * 0.65) * BG_PAN_Y_AMP)
-	var s := BG_ZOOM_BASE + sin(t * 0.4) * BG_ZOOM_AMP
-	_bg.scale = Vector2(s, s)
+	# Lissajous-style pan: x/y on different harmonics so it doesn't
+	# trace a simple ellipse.
+	var pan_pos := Vector2(sin(t) * BG_PAN_X_AMP, cos(t * 0.65) * BG_PAN_Y_AMP)
+	var pan_scale := BG_ZOOM_BASE + sin(t * 0.4) * BG_ZOOM_AMP
+
+	var sway_phase: float = _sway_t * TAU / SWAY_PERIOD
+	var sway_pos := Vector2(sin(sway_phase) * SWAY_X_AMP, cos(sway_phase * 0.7) * SWAY_Y_AMP)
+	var sway_rot := sin(sway_phase) * SWAY_ROT
+
+	var total_pos := pan_pos + sway_pos
+	var total_scale := Vector2(pan_scale, pan_scale)
+
+	if _bg != null and _bg.texture != null:
+		_bg.pivot_offset = _bg.size * 0.5
+		_bg.position     = total_pos
+		_bg.scale        = total_scale
+		_bg.rotation     = sway_rot
+
+	if _bg_composition != null and _bg_composition.get_child_count() > 0:
+		_bg_composition.pivot_offset = _bg_composition.size * 0.5
+		_bg_composition.position     = total_pos
+		_bg_composition.scale        = total_scale
+		_bg_composition.rotation     = sway_rot
 
 
 func _input(event: InputEvent) -> void:
