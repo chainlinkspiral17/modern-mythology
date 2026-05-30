@@ -130,7 +130,17 @@
     "desc": "Open 24 hours. Technically.",
     "unlock": {
       "type": "heard"
-    }
+    },
+    "chapters": [
+      "vol5_ch0_booth6",
+      "vol5_ch0_frasier",
+      "vol5_ch0_model_city",
+      "vol5_ch0_closing"
+    ],
+    "chars": [
+      "john",
+      "_narrator"
+    ]
   },
   {
     "id": "vol5_warehouse_drone",
@@ -141,7 +151,14 @@
     "desc": "Chapter I — The Magician.",
     "unlock": {
       "type": "heard"
-    }
+    },
+    "chapters": [
+      "vol5_ch1_magician"
+    ],
+    "chars": [
+      "frasier",
+      "the_demon"
+    ]
   },
   {
     "id": "vol5_cicadas_dusk",
@@ -152,7 +169,14 @@
     "desc": "Chapter II — The High Priestess.",
     "unlock": {
       "type": "heard"
-    }
+    },
+    "chapters": [
+      "vol5_ch2_priestess",
+      "vol5_ch2_priestess_b"
+    ],
+    "chars": [
+      "elicia"
+    ]
   },
   {
     "id": "vol5_riverboat_drone",
@@ -163,7 +187,13 @@
     "desc": "Chapter III — The Empress.",
     "unlock": {
       "type": "heard"
-    }
+    },
+    "chapters": [
+      "vol5_ch3_empress"
+    ],
+    "chars": [
+      "nicola"
+    ]
   },
   {
     "id": "vol6_ambient",

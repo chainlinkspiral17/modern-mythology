@@ -14,6 +14,7 @@ const SETTINGS_OV     := preload("res://scenes/menu/SettingsOverlay.tscn")
 const MUSIC_OV        := preload("res://scenes/menu/MusicPlayerOverlay.tscn")
 const SUBSTRATE_SCRIPT   := preload("res://scenes/game/AsciiSubstrate.gd")
 const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
+const UNLOCK_TOAST_SCRIPT := preload("res://scenes/game/UnlockToast.gd")
 
 var _vol:         int        = 1
 var _scene_id:    String     = ""
@@ -49,6 +50,7 @@ var _hud:        Control     = null
 var _ig_menu:    Control     = null
 var _settings_ov: Control   = null
 var _music_ov:   Control     = null
+var _toast:      Control     = null
 
 
 func _ready() -> void:
@@ -157,6 +159,12 @@ func _build_layers() -> void:
 	add_child(_music_ov)
 	_music_ov.connect("closed", func() -> void: _music_ov.visible = false)
 
+	_toast = Control.new()
+	_toast.set_script(UNLOCK_TOAST_SCRIPT)
+	_toast.z_index = UI_Z + 2
+	add_child(_toast)
+	AudioMgr.track_unlocked.connect(_on_track_unlocked)
+
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
@@ -244,7 +252,35 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_chars.call("hide_all")
 	_auto_load_substrate(scene_id)
 	_unlock_gallery_for_scene(scene_id)
+	_apply_chapter_music_context(scene_id)
 	_run_next()
+
+
+# Tell AudioMgr which catalog tracks belong to the current chapter.
+func _on_track_unlocked(_src: String, title: String) -> void:
+	if _toast != null:
+		_toast.call("show_toast", {
+			"title":    "Music unlocked",
+			"subtitle": title,
+		})
+
+
+# Used when the queue empties — it restarts from this chapter's list
+# instead of going silent or globbing across volumes.
+func _apply_chapter_music_context(scene_id: String) -> void:
+	var ch_val = _scene_data.get("chapter", "")
+	var ch_id  := scene_id + "::" + str(ch_val)
+	var tracks: Array = []
+	for entry: Dictionary in SceneDataDB.get_music_catalog():
+		var matches := false
+		if entry.get("chapter_id", "") == scene_id:
+			matches = true
+		var chapters_list: Array = entry.get("chapters", [])
+		if scene_id in chapters_list:
+			matches = true
+		if matches:
+			tracks.append(entry.get("src", ""))
+	AudioMgr.set_chapter(ch_id, tracks)
 
 
 const _SUBSTRATE_INDEX_PATH := "res://resources/substrates/gallery/_index.json"
@@ -439,11 +475,16 @@ func _resolve_check(check: Dictionary) -> void:
 
 
 func _do_show(n: Dictionary) -> void:
+	var char_name: String = n.get("char", "")
 	_chars.call("show_character",
-		n.get("char", "").to_lower(),
+		char_name.to_lower(),
 		n.get("expr", "neutral"),
 		n.get("pos",  "center")
 	)
+	# Use the CharLayer slug fn so "The Demon"/"oil exec"/etc collapse
+	# the same way they do for portrait lookups + accents.
+	var char_key: String = _chars.call("char_key", char_name)
+	AudioMgr.unlock_tracks_for_character(char_key)
 
 
 func _do_hide(n: Dictionary) -> void:
@@ -465,6 +506,9 @@ func _do_bg(n: Dictionary) -> void:
 	else:
 		var img := Image.load_from_file(ProjectSettings.globalize_path(path))
 		_bg.texture = ImageTexture.create_from_image(img) if img else null
+	# Randomize the pan phase per bg so different scenes don't all
+	# reveal the same edge first — feels less mechanical.
+	_bg_pan_phase = randf() * BG_PAN_PERIOD
 
 
 func _do_substrate(n: Dictionary) -> void:
@@ -556,6 +600,7 @@ func _process(delta: float) -> void:
 			if not AudioMgr.is_voice_playing():
 				_advance()
 	_apply_bg_sway(delta)
+	_apply_bg_pan(delta)
 
 
 # Subtle riverboat list — slow sinusoidal translate + tiny rotation on the
@@ -575,6 +620,34 @@ func _apply_bg_sway(delta: float) -> void:
 	_bg_composition.position = Vector2(sin(phase) * SWAY_X_AMP, cos(phase * 0.7) * SWAY_Y_AMP)
 	_bg_composition.pivot_offset = _bg_composition.size * 0.5
 	_bg_composition.rotation = sin(phase) * SWAY_ROT
+
+
+# Ken-Burns-style idle drift on the raw bg TextureRect (_bg). The bg is
+# rendered with STRETCH_KEEP_ASPECT_COVERED so the source already
+# extends past the viewport; this slowly pans across the extra area and
+# breathes the zoom slightly. Period is much longer than the riverboat
+# sway so the two motions don't fight each other. _bg_pan_phase is
+# randomized per scene so the same source doesn't always reveal the
+# same edge first.
+var _bg_pan_t:     float = 0.0
+var _bg_pan_phase: float = 0.0
+const BG_PAN_PERIOD := 25.0   # seconds per full pan cycle
+const BG_PAN_X_AMP  := 40.0   # logical px
+const BG_PAN_Y_AMP  := 25.0
+const BG_ZOOM_BASE  := 1.04   # static base zoom (4%) so pan never reveals an edge
+const BG_ZOOM_AMP   := 0.012  # ±1.2% breathing on top
+
+func _apply_bg_pan(delta: float) -> void:
+	if _bg == null or _bg.texture == null:
+		return
+	_bg_pan_t += delta
+	var t: float = (_bg_pan_t + _bg_pan_phase) * TAU / BG_PAN_PERIOD
+	_bg.pivot_offset = _bg.size * 0.5
+	# Lissajous-style: x and y on different harmonics so the motion
+	# doesn't trace a simple ellipse.
+	_bg.position = Vector2(sin(t) * BG_PAN_X_AMP, cos(t * 0.65) * BG_PAN_Y_AMP)
+	var s := BG_ZOOM_BASE + sin(t * 0.4) * BG_ZOOM_AMP
+	_bg.scale = Vector2(s, s)
 
 
 func _input(event: InputEvent) -> void:

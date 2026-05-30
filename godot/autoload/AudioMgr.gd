@@ -223,6 +223,71 @@ func set_shuffle(enabled: bool) -> void:
 	_shuffle = enabled
 
 
+# ── Queue API ─────────────────────────────────────────────────────────────────
+# Explicit FIFO queue that GameEngine pushes to whenever a character with
+# an associated music track is shown. When BGM finishes naturally, the
+# head of the queue plays next. When the queue empties, _pick_next falls
+# back to the current chapter's first associated track.
+
+var _queue:          Array = []      # Array[String] of src paths
+var _chapter_id:     String = ""     # set by GameEngine on scene load
+var _chapter_tracks: Array = []      # Array[String] for empty-queue refill
+
+signal queue_changed
+signal track_unlocked(src: String, title: String)
+
+
+func get_queue() -> Array:
+	return _queue.duplicate()
+
+
+func enqueue_music(src: String) -> bool:
+	# Strict dedupe — already queued or currently playing → drop.
+	if src == "" or src == _current_src or src in _queue:
+		return false
+	_queue.append(src)
+	queue_changed.emit()
+	return true
+
+
+func clear_queue() -> void:
+	if _queue.is_empty():
+		return
+	_queue.clear()
+	queue_changed.emit()
+
+
+func set_chapter(chapter_id: String, tracks: Array) -> void:
+	# GameEngine calls this on every scene load. tracks is the ordered
+	# list of catalog srcs that should refill the queue when it empties.
+	_chapter_id = chapter_id
+	_chapter_tracks = tracks.duplicate()
+
+
+# Enqueue + unlock all catalog tracks whose "chars" field includes the
+# given character key. Called by GameEngine on every "show" directive.
+# Returns the number of tracks newly unlocked (0 = nothing new).
+func unlock_tracks_for_character(char_key: String) -> int:
+	if char_key == "":
+		return 0
+	var catalog: Array = SceneDataDB.get_music_catalog()
+	var newly_unlocked := 0
+	for entry: Dictionary in catalog:
+		var chars: Array = entry.get("chars", [])
+		if char_key not in chars:
+			continue
+		var src: String = entry.get("src", "")
+		var id:  String = entry.get("id",  "")
+		if src == "" or id == "":
+			continue
+		var key := "music:" + id
+		if SaveSystem.mark_unlocked(key):
+			newly_unlocked += 1
+			track_unlocked.emit(src, entry.get("title", id))
+		enqueue_music(src)
+	return newly_unlocked
+
+
 func play_next() -> void:
 	var next := _pick_next(_current_src)
 	if next != "":
@@ -292,40 +357,27 @@ func _on_bgm_finished() -> void:
 
 
 func _pick_next(current_src: String) -> String:
-	var catalog: Array = SceneDataDB.get_music_catalog()
-	if catalog.is_empty():
-		return ""
-	if not _shuffle:
-		var cur_idx := -1
-		for i in catalog.size():
-			if (catalog[i] as Dictionary).get("src", "") == current_src:
-				cur_idx = i
-				break
-		if cur_idx >= 0 and cur_idx + 1 < catalog.size():
-			return (catalog[cur_idx + 1] as Dictionary).get("src", "")
-		return (catalog[0] as Dictionary).get("src", "")
+	# 1) Queue head wins — that's what GameEngine has enqueued via
+	#    character shows.
+	if not _queue.is_empty():
+		var head: String = _queue.pop_front()
+		queue_changed.emit()
+		return head
 
-	var current_vol := 0
-	for track: Dictionary in catalog:
-		if track.get("src", "") == current_src:
-			current_vol = track.get("vol", 0)
-			break
+	# 2) Queue empty → refill from the current chapter's tracks. Start
+	#    at the first track that isn't what we just played (avoid 1-track
+	#    immediate repeat when a chapter has multiple tracks). Falls
+	#    through to the very first if all match.
+	if not _chapter_tracks.is_empty():
+		for src: String in _chapter_tracks:
+			if src != current_src:
+				return src
+		return _chapter_tracks[0]
 
-	var same_vol: Array = []
-	var other_vol: Array = []
-	for track: Dictionary in catalog:
-		var src: String = track.get("src", "")
-		if src != current_src and _music_heard.has(src):
-			if track.get("vol", 0) == current_vol:
-				same_vol.append(src)
-			else:
-				other_vol.append(src)
-
-	if not same_vol.is_empty():
-		return same_vol[0]
-	if not other_vol.is_empty():
-		return other_vol[0]
-	return ""
+	# 3) No chapter context yet → loop the current track. Better than
+	#    silence when GameEngine hasn't set chapter context (intro,
+	#    menus, save loads mid-scene).
+	return current_src
 
 
 func _mark_heard(src: String) -> void:
