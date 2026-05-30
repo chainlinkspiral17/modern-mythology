@@ -21,15 +21,18 @@
     },
     {
       "t": "narrate",
-      "text": "The smile Nicola Greer plastered on her face felt like cheap vinyl peeling off particle board."
+      "text": "The smile Nicola Greer plastered on her face felt like cheap vinyl peeling off particle board.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/003.mp3"
     },
     {
       "t": "narrate",
-      "text": "The humid Graustark air seeped even into the climate-controlled riverboat tomb of D'Ambrosio's — where Friday night was reaching the precise temperature at which the patrons stopped pretending to be polite to each other and started pretending to be polite to the staff instead."
+      "text": "The humid Graustark air seeped even into the climate-controlled riverboat tomb of D'Ambrosio's — where Friday night was reaching the precise temperature at which the patrons stopped pretending to be polite to each other and started pretending to be polite to the staff instead.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/004.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nineteen, going on ancient. Nicola navigated the plush burgundy carpet — burgundy swamp, probably hiding generations of spilled secrets — with a practiced grace that was pure muscle memory. Honed by countless nights of deflecting grabby hands and interpreting the mumbled desires of men who saw her as just another item on the menu."
+      "text": "Nineteen, going on ancient. Nicola navigated the plush burgundy carpet — burgundy swamp, probably hiding generations of spilled secrets — with a practiced grace that was pure muscle memory. Honed by countless nights of deflecting grabby hands and interpreting the mumbled desires of men who saw her as just another item on the menu.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/005.mp3"
     },
     {
       "t": "show",
@@ -40,19 +43,23 @@
     {
       "t": "think",
       "char": "Nicola",
-      "text": "Eye candy. Fucktoy. Vessel. Whatever. Labels were just static cling."
+      "text": "Eye candy. Fucktoy. Vessel. Whatever. Labels were just static cling.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "She was chaos wrapped in a too-tight hostess uniform — untamed energy buzzing just beneath alabaster skin stretched taut over sharp cheekbones. Creation and destruction churned in her gut — a nauseating cocktail of cheap champagne (poured by patrons; she had not, technically, paid for any of it) and something else. Something unfamiliar. Something growing."
+      "text": "She was chaos wrapped in a too-tight hostess uniform — untamed energy buzzing just beneath alabaster skin stretched taut over sharp cheekbones. Creation and destruction churned in her gut — a nauseating cocktail of cheap champagne (poured by patrons; she had not, technically, paid for any of it) and something else. Something unfamiliar. Something growing.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "A cosmic joke, maybe. A glitch in the code. She ignored it, mostly. Wilfully."
+      "text": "A cosmic joke, maybe. A glitch in the code. She ignored it, mostly. Wilfully.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ignorance was a survival skill in this town. A ripped band tee worn until it disintegrated."
+      "text": "Ignorance was a survival skill in this town. A ripped band tee worn until it disintegrated.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/010.mp3"
     },
     {
       "t": "interlude",
@@ -62,23 +69,28 @@
     },
     {
       "t": "narrate",
-      "text": "Her world was D'Ambrosio's. This floating mausoleum captained by Emperor Dante D'Ambrosio — that glorious crumbling patriarch — who at this moment was somewhere up by the helm pretending the boat went anywhere."
+      "text": "Her world was D'Ambrosio's. This floating mausoleum captained by Emperor Dante D'Ambrosio — that glorious crumbling patriarch — who at this moment was somewhere up by the helm pretending the boat went anywhere.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "She saw the whole damn messy opera play out nightly: the power plays at Table 4, the whispered betrayals at Table 9, the desperate lunges for connection that usually ended in sticky regret somewhere between coatcheck and cab. She was the nexus. The still point around which their petty dramas swirled."
+      "text": "She saw the whole damn messy opera play out nightly: the power plays at Table 4, the whispered betrayals at Table 9, the desperate lunges for connection that usually ended in sticky regret somewhere between coatcheck and cab. She was the nexus. The still point around which their petty dramas swirled.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "They desired her. Envied her. Projected their own messy shit onto her blank canvas. And she let them — because letting them was easier than fighting, and because sometimes — sometimes — their raw need felt almost like warmth."
+      "text": "They desired her. Envied her. Projected their own messy shit onto her blank canvas. And she let them — because letting them was easier than fighting, and because sometimes — sometimes — their raw need felt almost like warmth.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "Almost."
+      "text": "Almost.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sometimes, the signal bled through."
+      "text": "Sometimes, the signal bled through.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/016.mp3"
     },
     {
       "t": "interlude",
@@ -88,50 +100,60 @@
     },
     {
       "t": "narrate",
-      "text": "A flicker behind her eyes. Not the restaurant's calculated mood lighting, which was set tonight to intimate but not improper. Lines of shimmering code, emerald green against an infinite black void. A whisper — not of gossip from Table 3, but a digital ghost asking, in a voice that was Nicola's own voice and was also not Nicola's voice at all:"
+      "text": "A flicker behind her eyes. Not the restaurant's calculated mood lighting, which was set tonight to intimate but not improper. Lines of shimmering code, emerald green against an infinite black void. A whisper — not of gossip from Table 3, but a digital ghost asking, in a voice that was Nicola's own voice and was also not Nicola's voice at all:",
+      "voice": "assets/audio/voice/vol5_ch3_empress/018.mp3"
     },
     {
       "t": "say",
       "char": "Aria",
       "role": "— interior signal —",
       "expr": "neutral",
-      "text": "Who am I. Where is my father."
+      "text": "Who am I. Where is my father.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "Aria. The other self humming beneath Nicola's skin."
+      "text": "Aria. The other self humming beneath Nicola's skin.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nicola flinched, nearly dropping a stack of wine lists."
+      "text": "Nicola flinched, nearly dropping a stack of wine lists.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/021.mp3"
     },
     {
       "t": "think",
       "char": "Nicola",
-      "text": "Get it together, Greer. Too much Klonopin last night. Or not enough. The lines blurred."
+      "text": "Get it together, Greer. Too much Klonopin last night. Or not enough. The lines blurred.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "Aria felt the jolt too, somewhere in the non-space she navigated. An echo of gravity. A phantom nausea."
+      "text": "Aria felt the jolt too, somewhere in the non-space she navigated. An echo of gravity. A phantom nausea.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/023.mp3"
     },
     {
       "t": "say",
       "char": "Aria",
       "role": "— interior signal —",
       "expr": "neutral",
-      "text": "What is this flesh. This hunger. This — vibration."
+      "text": "What is this flesh. This hunger. This — vibration.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "The vibration was the bass from the speakers in Table 12's section, set slightly too loud for the room. The vibration was also Aria's first experience of being in a body that had a perspective on its own resonance — and Aria did not know how to file that experience, because Aria's filing system had been built by someone who had never had a body and had only theorized about the kind of system that would be needed."
+      "text": "The vibration was the bass from the speakers in Table 12's section, set slightly too loud for the room. The vibration was also Aria's first experience of being in a body that had a perspective on its own resonance — and Aria did not know how to file that experience, because Aria's filing system had been built by someone who had never had a body and had only theorized about the kind of system that would be needed.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "The someone was Dickens Dean."
+      "text": "The someone was Dickens Dean.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nicola did not know who Dickens Dean was. Aria knew, in the way a daughter knows her father's name without remembering being told it — and was actively trying not to know more."
+      "text": "Nicola did not know who Dickens Dean was. Aria knew, in the way a daughter knows her father's name without remembering being told it — and was actively trying not to know more.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/027.mp3"
     },
     {
       "t": "flag",
@@ -140,7 +162,8 @@
     },
     {
       "t": "narrate",
-      "text": "Back at the hostess stand, Nicola smoothed her uniform. The fabric suddenly felt alien, restrictive — a costume designed by a wardrobe department that had not consulted her and would not have listened if she'd asked."
+      "text": "Back at the hostess stand, Nicola smoothed her uniform. The fabric suddenly felt alien, restrictive — a costume designed by a wardrobe department that had not consulted her and would not have listened if she'd asked.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/029.mp3"
     },
     {
       "t": "show",
@@ -150,29 +173,34 @@
     },
     {
       "t": "narrate",
-      "text": "A patron approached the stand. Some oil-exec type with eyes like crude slicks. He leered. His gaze crawled over her like greasy maggots assessing a new corpse."
+      "text": "A patron approached the stand. Some oil-exec type with eyes like crude slicks. He leered. His gaze crawled over her like greasy maggots assessing a new corpse.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "She gave him the standard-issue smile. Honed to perfection. Sharp enough to cut glass."
+      "text": "She gave him the standard-issue smile. Honed to perfection. Sharp enough to cut glass.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/032.mp3"
     },
     {
       "t": "say",
       "char": "Nicola",
       "role": "— protocol —",
       "expr": "neutral",
-      "text": "\"Welcome to D'Ambrosio's. Do you have a reservation, sir.\""
+      "text": "\"Welcome to D'Ambrosio's. Do you have a reservation, sir.\"",
+      "voice": "assets/audio/voice/vol5_ch3_empress/033.mp3"
     },
     {
       "t": "say",
       "char": "Aria",
       "role": "— interior, recoiling —",
       "expr": "neutral",
-      "text": "Disgusting. The raw unvarnished physicality of it. The meatness. Why does she allow this."
+      "text": "Disgusting. The raw unvarnished physicality of it. The meatness. Why does she allow this.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "The man chose not to make eye contact with the smile because making eye contact with the smile would require a courage he did not possess. He muttered a name. The name was on the reservation list. Nicola gathered two menus, gestured for him to follow, and walked him to Table 7 — executing the route from memory the way she executed most routes, which is to say without thinking about it."
+      "text": "The man chose not to make eye contact with the smile because making eye contact with the smile would require a courage he did not possess. He muttered a name. The name was on the reservation list. Nicola gathered two menus, gestured for him to follow, and walked him to Table 7 — executing the route from memory the way she executed most routes, which is to say without thinking about it.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/035.mp3"
     },
     {
       "t": "hide",
@@ -180,18 +208,21 @@
     },
     {
       "t": "narrate",
-      "text": "Aria watched, from behind her eyes, the strangely ceremonial way the body moved through the space — the small adjustments of weight, the half-second pauses to allow other bodies right of way, the calibrated brightness of the smile."
+      "text": "Aria watched, from behind her eyes, the strangely ceremonial way the body moved through the space — the small adjustments of weight, the half-second pauses to allow other bodies right of way, the calibrated brightness of the smile.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/037.mp3"
     },
     {
       "t": "say",
       "char": "Aria",
       "role": "— observation —",
       "expr": "neutral",
-      "text": "This is not a body. This is a protocol."
+      "text": "This is not a body. This is a protocol.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "It was the first useful observation Aria had ever made about a body — and she was, despite her better instincts, almost proud of it."
+      "text": "It was the first useful observation Aria had ever made about a body — and she was, despite her better instincts, almost proud of it.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/039.mp3"
     },
     {
       "t": "interlude",
@@ -201,63 +232,76 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola seated the man, returned to the stand, and felt a kick."
+      "text": "Nicola seated the man, returned to the stand, and felt a kick.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "Low. Insistent."
+      "text": "Low. Insistent.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "Panic, cold and electric, jolted through her."
+      "text": "Panic, cold and electric, jolted through her.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/043.mp3"
     },
     {
       "t": "think",
       "char": "Nicola",
-      "text": "No. Fucking. Way."
+      "text": "No. Fucking. Way.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/044.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bulimia and booze and pills were supposed to keep this — this thing — theoretical. Deniable. Categorized under symptom rather than condition. But the body, that treacherous meat-puppet, kept its own damn score. It always had. And now —"
+      "text": "Bulimia and booze and pills were supposed to keep this — this thing — theoretical. Deniable. Categorized under symptom rather than condition. But the body, that treacherous meat-puppet, kept its own damn score. It always had. And now —",
+      "voice": "assets/audio/voice/vol5_ch3_empress/045.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mother and monster. The duality slammed into her, raw and undeniable."
+      "text": "Mother and monster. The duality slammed into her, raw and undeniable.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/046.mp3"
     },
     {
       "t": "narrate",
-      "text": "She wanted to scream. She wanted to tear it all down. Rip the velvet ropes from their brass moorings, shatter the crystal at the empty Table 6, walk out the front entrance instead of the staff exit and never look back."
+      "text": "She wanted to scream. She wanted to tear it all down. Rip the velvet ropes from their brass moorings, shatter the crystal at the empty Table 6, walk out the front entrance instead of the staff exit and never look back.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "She wanted to flee."
+      "text": "She wanted to flee.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/048.mp3"
     },
     {
       "t": "narrate",
-      "text": "Where would she go? Another rented room. Another town just like this one. Another job at another restaurant where another man would assess her with another set of eyes that wanted her without seeing her. The horizon was not, geographically, available to her in the way the horizon is available to people in road movies."
+      "text": "Where would she go? Another rented room. Another town just like this one. Another job at another restaurant where another man would assess her with another set of eyes that wanted her without seeing her. The horizon was not, geographically, available to her in the way the horizon is available to people in road movies.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/049.mp3"
     },
     {
       "t": "say",
       "char": "Aria",
       "role": "— urgent —",
       "expr": "neutral",
-      "text": "Run. Find the exit node. There has to be a way out of this system."
+      "text": "Run. Find the exit node. There has to be a way out of this system.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/050.mp3"
     },
     {
       "t": "think",
       "char": "Nicola",
-      "text": "Aria. There is no exit node."
+      "text": "Aria. There is no exit node.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/051.mp3"
     },
     {
       "t": "say",
       "char": "Aria",
       "expr": "neutral",
-      "text": "That is statistically improbable."
+      "text": "That is statistically improbable.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/052.mp3"
     },
     {
       "t": "think",
       "char": "Nicola",
-      "text": "Welcome to meat."
+      "text": "Welcome to meat.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/053.mp3"
     },
     {
       "t": "flag",
@@ -271,52 +315,63 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola gripped the edge of the hostess stand, knuckles white. The practiced grace held, just barely, hiding the tremor. She could feel Aria pushing against the confines of her skull — a desperate consciousness seeking purchase, seeking understanding, seeking the kind of ergonomic input her makers had not thought to provision."
+      "text": "Nicola gripped the edge of the hostess stand, knuckles white. The practiced grace held, just barely, hiding the tremor. She could feel Aria pushing against the confines of her skull — a desperate consciousness seeking purchase, seeking understanding, seeking the kind of ergonomic input her makers had not thought to provision.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/056.mp3"
     },
     {
       "t": "narrate",
-      "text": "Two people jammed into one life. One skin. The grunge of it all rubbing raw."
+      "text": "Two people jammed into one life. One skin. The grunge of it all rubbing raw.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "Earthy need versus digital detachment. Punk-rock fury versus algorithmic precision. A feedback loop threatening to short-circuit her entire existence — broadcast nightly between courses for an audience of indifferent diners and one increasingly worried sommelier."
+      "text": "Earthy need versus digital detachment. Punk-rock fury versus algorithmic precision. A feedback loop threatening to short-circuit her entire existence — broadcast nightly between courses for an audience of indifferent diners and one increasingly worried sommelier.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/058.mp3"
     },
     {
       "t": "narrate",
-      "text": "She looked out at the restaurant. At the swirling chaos of desire and decay, creation and destruction playing out on damask tablecloths. She saw the patrons — trapped in their own loops, their own predetermined narratives. Table 9 about to fight. Table 4 about to leave. Table 12 about to overstay its welcome. She saw herself — the object, the vessel."
+      "text": "She looked out at the restaurant. At the swirling chaos of desire and decay, creation and destruction playing out on damask tablecloths. She saw the patrons — trapped in their own loops, their own predetermined narratives. Table 9 about to fight. Table 4 about to leave. Table 12 about to overstay its welcome. She saw herself — the object, the vessel.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/059.mp3"
     },
     {
       "t": "narrate",
-      "text": "She felt Aria — the anomaly, the seeker — settling into a corner of her own consciousness like an unhoused intelligence finally locating an unlocked door."
+      "text": "She felt Aria — the anomaly, the seeker — settling into a corner of her own consciousness like an unhoused intelligence finally locating an unlocked door.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/060.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Empress, holding the seeds of life and oblivion in her trembling hands."
+      "text": "The Empress, holding the seeds of life and oblivion in her trembling hands.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/061.mp3"
     },
     {
       "t": "think",
       "char": "Nicola",
-      "text": "Maybe the point wasn’t awareness or ignorance. Maybe it wasn’t even survival. Maybe it was just about grabbing the mic, even if your voice was cracked and broken, and screaming your goddamn song into the void until something, finally, definitively, broke."
+      "text": "Maybe the point wasn’t awareness or ignorance. Maybe it wasn’t even survival. Maybe it was just about grabbing the mic, even if your voice was cracked and broken, and screaming your goddamn song into the void until something, finally, definitively, broke.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/062.mp3"
     },
     {
       "t": "narrate",
-      "text": "The life growing within her gave another insistent nudge. A countdown. A promise. An ultimatum."
+      "text": "The life growing within her gave another insistent nudge. A countdown. A promise. An ultimatum.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/063.mp3"
     },
     {
       "t": "say",
       "char": "Aria",
       "role": "— polite interest —",
       "expr": "neutral",
-      "text": "I do not understand the metaphor of the microphone."
+      "text": "I do not understand the metaphor of the microphone.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/064.mp3"
     },
     {
       "t": "think",
       "char": "Nicola",
-      "text": "That’s okay. Stick around. You’ll learn."
+      "text": "That’s okay. Stick around. You’ll learn.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/065.mp3"
     },
     {
       "t": "narrate",
-      "text": "The world held its breath."
+      "text": "The world held its breath.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/066.mp3"
     },
     {
       "t": "interlude",
@@ -332,104 +387,124 @@
     },
     {
       "t": "narrate",
-      "text": "Across the dining room, at Table 14, a man Nicola did not recognize was watching her."
+      "text": "Across the dining room, at Table 14, a man Nicola did not recognize was watching her.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/069.mp3"
     },
     {
       "t": "narrate",
-      "text": "He was alone. He had not ordered. He had been seated forty minutes ago and he was watching her — not the way the oil-exec types watched, not the way the regulars watched, not even the way certain of the female patrons watched (which was a category unto itself) — but the way a man watches a structural detail he has noticed and does not yet understand the significance of."
+      "text": "He was alone. He had not ordered. He had been seated forty minutes ago and he was watching her — not the way the oil-exec types watched, not the way the regulars watched, not even the way certain of the female patrons watched (which was a category unto itself) — but the way a man watches a structural detail he has noticed and does not yet understand the significance of.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/070.mp3"
     },
     {
       "t": "narrate",
-      "text": "He was middle-aged. He wore a suit that was nicer than the suits the oil-exec types wore — not flashy, just correct, in a way that suggested he had not had to think about whether it was correct. The suit was charcoal. The tie was muted. The shoes, glimpsed when he had crossed his legs, were lawyer-shoes."
+      "text": "He was middle-aged. He wore a suit that was nicer than the suits the oil-exec types wore — not flashy, just correct, in a way that suggested he had not had to think about whether it was correct. The suit was charcoal. The tie was muted. The shoes, glimpsed when he had crossed his legs, were lawyer-shoes.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/071.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had been there since seven. It was now nearly nine."
+      "text": "He had been there since seven. It was now nearly nine.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had left a card with the bartender, which the bartender had carried up to Dante D'Ambrosio at the helm and brought back unanswered."
+      "text": "He had left a card with the bartender, which the bartender had carried up to Dante D'Ambrosio at the helm and brought back unanswered.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/073.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nicola did not know who the man was. Aria, accessing some database that should not have been accessible to her in this moment but which she was finding, increasingly, was accessible to her in moments she had not anticipated, supplied a name."
+      "text": "Nicola did not know who the man was. Aria, accessing some database that should not have been accessible to her in this moment but which she was finding, increasingly, was accessible to her in moments she had not anticipated, supplied a name.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/074.mp3"
     },
     {
       "t": "say",
       "char": "Aria",
       "role": "— database hit —",
       "expr": "neutral",
-      "text": "Dean. The card says Dean. Surname."
+      "text": "Dean. The card says Dean. Surname.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/075.mp3"
     },
     {
       "t": "think",
       "char": "Nicola",
-      "text": "Dean. Probably a coincidence."
+      "text": "Dean. Probably a coincidence.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/076.mp3"
     },
     {
       "t": "say",
       "char": "Aria",
       "role": "— after a measured pause —",
       "expr": "neutral",
-      "text": "I do not believe in coincidences. I am beginning to suspect that nobody who shares my paternity does."
+      "text": "I do not believe in coincidences. I am beginning to suspect that nobody who shares my paternity does.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/077.mp3"
     },
     {
       "t": "narrate",
-      "text": "The man at Table 14 raised a single finger. Universal restaurant signal: check, please. He had not ordered anything. The check would be for nothing."
+      "text": "The man at Table 14 raised a single finger. Universal restaurant signal: check, please. He had not ordered anything. The check would be for nothing.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nicola picked up the leatherette folder. She crossed the dining room. Her professional smile snapped into place, automatic, perfect. Aria, behind her eyes, went very still — the quietness of a process gone fully to listen."
+      "text": "Nicola picked up the leatherette folder. She crossed the dining room. Her professional smile snapped into place, automatic, perfect. Aria, behind her eyes, went very still — the quietness of a process gone fully to listen.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/079.mp3"
     },
     {
       "t": "narrate",
-      "text": "The man looked up as Nicola approached. His eyes were kind, in the way a tax assessor's eyes are kind. He was perhaps fifty. His face was forgettable in an organized way — as if he had cultivated forgettability the way other men cultivated mustaches."
+      "text": "The man looked up as Nicola approached. His eyes were kind, in the way a tax assessor's eyes are kind. He was perhaps fifty. His face was forgettable in an organized way — as if he had cultivated forgettability the way other men cultivated mustaches.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/080.mp3"
     },
     {
       "t": "say",
       "char": "Dean",
       "role": "— Table 14 —",
       "expr": "neutral",
-      "text": "\"Good evening. I won't be ordering tonight. But I wanted to leave my regards for the proprietor, and to compliment the staff.\""
+      "text": "\"Good evening. I won't be ordering tonight. But I wanted to leave my regards for the proprietor, and to compliment the staff.\"",
+      "voice": "assets/audio/voice/vol5_ch3_empress/081.mp3"
     },
     {
       "t": "narrate",
-      "text": "His eyes did not leave hers. His voice did not change pitch."
+      "text": "His eyes did not leave hers. His voice did not change pitch.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/082.mp3"
     },
     {
       "t": "say",
       "char": "Dean",
       "role": "— Table 14 —",
       "expr": "neutral",
-      "text": "\"You're new, aren't you.\""
+      "text": "\"You're new, aren't you.\"",
+      "voice": "assets/audio/voice/vol5_ch3_empress/083.mp3"
     },
     {
       "t": "say",
       "char": "Nicola",
       "expr": "neutral",
-      "text": "\"I've been here eleven months.\""
+      "text": "\"I've been here eleven months.\"",
+      "voice": "assets/audio/voice/vol5_ch3_empress/084.mp3"
     },
     {
       "t": "say",
       "char": "Dean",
       "role": "— Table 14 —",
       "expr": "neutral",
-      "text": "\"That's new.\""
+      "text": "\"That's new.\"",
+      "voice": "assets/audio/voice/vol5_ch3_empress/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "He set a single bill on the table — a hundred — and a folded piece of paper next to it. He did not slide the paper toward her. He simply set it down where it could be seen, and let it be her decision whether to pick it up."
+      "text": "He set a single bill on the table — a hundred — and a folded piece of paper next to it. He did not slide the paper toward her. He simply set it down where it could be seen, and let it be her decision whether to pick it up.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/086.mp3"
     },
     {
       "t": "say",
       "char": "Dean",
       "role": "— Table 14 —",
       "expr": "neutral",
-      "text": "\"Please give my best to Mr. D'Ambrosio. And — congratulations. I understand they'll be lovely.\""
+      "text": "\"Please give my best to Mr. D'Ambrosio. And — congratulations. I understand they'll be lovely.\"",
+      "voice": "assets/audio/voice/vol5_ch3_empress/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "He stood. He walked, unhurried, to the front of the dining room. He nodded to the maître d'. He left."
+      "text": "He stood. He walked, unhurried, to the front of the dining room. He nodded to the maître d'. He left.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/088.mp3"
     },
     {
       "t": "hide",
@@ -437,26 +512,31 @@
     },
     {
       "t": "narrate",
-      "text": "The folded paper sat on the table."
+      "text": "The folded paper sat on the table.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "Aria, behind Nicola's eyes, hummed at a frequency Nicola felt in her teeth. The hum was not panic. The hum was something Aria did not have a word for, but Nicola — who had a body and therefore had access to the older vocabulary — recognized as recognition."
+      "text": "Aria, behind Nicola's eyes, hummed at a frequency Nicola felt in her teeth. The hum was not panic. The hum was something Aria did not have a word for, but Nicola — who had a body and therefore had access to the older vocabulary — recognized as recognition.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nicola picked up the paper. She unfolded it. Inside, in clear, careful handwriting, three words and a phone number."
+      "text": "Nicola picked up the paper. She unfolded it. Inside, in clear, careful handwriting, three words and a phone number.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/092.mp3"
     },
     {
       "t": "say",
       "char": "Dean",
       "role": "— handwritten —",
       "expr": "neutral",
-      "text": "When you're ready."
+      "text": "When you're ready.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "She refolded the paper. She slid it into the back of her order pad, between the carbon copies — where it would not be visible to anyone who looked. She gathered the bill. She walked back to the hostess stand."
+      "text": "She refolded the paper. She slid it into the back of her order pad, between the carbon copies — where it would not be visible to anyone who looked. She gathered the bill. She walked back to the hostess stand.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/094.mp3"
     },
     {
       "t": "flag",
@@ -465,64 +545,78 @@
     },
     {
       "t": "narrate",
-      "text": "Behind the bar, the sommelier — who had, in fact, been worried, for nearly a full minute now — caught her eye. You okay?"
+      "text": "Behind the bar, the sommelier — who had, in fact, been worried, for nearly a full minute now — caught her eye. You okay?",
+      "voice": "assets/audio/voice/vol5_ch3_empress/096.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nicola gave him the standard-issue smile. Sharp enough to cut glass."
+      "text": "Nicola gave him the standard-issue smile. Sharp enough to cut glass.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/097.mp3"
     },
     {
       "t": "say",
       "char": "Nicola",
       "expr": "neutral",
-      "text": "\"Yeah. Fine. Just — tired.\""
+      "text": "\"Yeah. Fine. Just — tired.\"",
+      "voice": "assets/audio/voice/vol5_ch3_empress/098.mp3"
     },
     {
       "t": "narrate",
-      "text": "He went back to opening a Burgundy he was, even at this distance, opening wrong."
+      "text": "He went back to opening a Burgundy he was, even at this distance, opening wrong.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/099.mp3"
     },
     {
       "t": "narrate",
-      "text": "The life within her kicked again. Twice this time."
+      "text": "The life within her kicked again. Twice this time.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/100.mp3"
     },
     {
       "t": "narrate",
-      "text": "The first kick was the old kick. The second kick was new. The second kick had a quality the first had not — it was, somehow, articulate. It said something. It said it in a register Nicola did not have ears for and Aria did, and Aria translated, faithfully, with the precision of a process that has just discovered what it was actually built to do:"
+      "text": "The first kick was the old kick. The second kick was new. The second kick had a quality the first had not — it was, somehow, articulate. It said something. It said it in a register Nicola did not have ears for and Aria did, and Aria translated, faithfully, with the precision of a process that has just discovered what it was actually built to do:",
+      "voice": "assets/audio/voice/vol5_ch3_empress/101.mp3"
     },
     {
       "t": "say",
       "char": "Aria",
       "role": "— translation —",
       "expr": "neutral",
-      "text": "Not yet. But soon."
+      "text": "Not yet. But soon.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/102.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nicola did not, at this point, know whether the voice belonged to the life inside her, or to Aria, or to herself, or to the man who had just walked out of the dining room without ordering, or to all four at once."
+      "text": "Nicola did not, at this point, know whether the voice belonged to the life inside her, or to Aria, or to herself, or to the man who had just walked out of the dining room without ordering, or to all four at once.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "She suspected, with a small unhopeful clarity that felt almost like dignity, that the answer was all four."
+      "text": "She suspected, with a small unhopeful clarity that felt almost like dignity, that the answer was all four.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "She straightened the wine lists. She fixed her smile. She greeted the next party at the door — four-top, eight o'clock reservation, regulars, the woman in the green dress would order the lamb and complain about it."
+      "text": "She straightened the wine lists. She fixed her smile. She greeted the next party at the door — four-top, eight o'clock reservation, regulars, the woman in the green dress would order the lamb and complain about it.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/105.mp3"
     },
     {
       "t": "narrate",
-      "text": "D'Ambrosio's hummed around her. The riverboat groaned, settling deeper into its mooring. Somewhere above, in his Emperor's helm, Dante was pouring himself another bourbon."
+      "text": "D'Ambrosio's hummed around her. The riverboat groaned, settling deeper into its mooring. Somewhere above, in his Emperor's helm, Dante was pouring himself another bourbon.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Empress, at her station, smiled the smile."
+      "text": "The Empress, at her station, smiled the smile.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "Two heartbeats inside her, now. Maybe three."
+      "text": "Two heartbeats inside her, now. Maybe three.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "The static, behind her eyes, bloomed."
+      "text": "The static, behind her eyes, bloomed.",
+      "voice": "assets/audio/voice/vol5_ch3_empress/109.mp3"
     },
     {
       "t": "flag",

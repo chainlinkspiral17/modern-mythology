@@ -21,27 +21,33 @@
     },
     {
       "t": "narrate",
-      "text": "Elicia Duchane moved through the rented bungalow on the decaying fringe of Graustark like a phantom preparing for her final fade-out."
+      "text": "Elicia Duchane moved through the rented bungalow on the decaying fringe of Graustark like a phantom preparing for her final fade-out.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/003.mp3"
     },
     {
       "t": "narrate",
-      "text": "Packing was not packing. Packing was curation — shedding a narrative skin before migrating to the next location. The next temporary set for the ongoing, increasingly unscripted tragicomedy of her life."
+      "text": "Packing was not packing. Packing was curation — shedding a narrative skin before migrating to the next location. The next temporary set for the ongoing, increasingly unscripted tragicomedy of her life.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/004.mp3"
     },
     {
       "t": "narrate",
-      "text": "Cardboard boxes gaped like hungry mouths along the warped hardwood floor of the living room — half-filled with the detritus of a two-year stint in a town that had, against her better judgment and her professional prudence, gotten under her skin:"
+      "text": "Cardboard boxes gaped like hungry mouths along the warped hardwood floor of the living room — half-filled with the detritus of a two-year stint in a town that had, against her better judgment and her professional prudence, gotten under her skin:",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "Thrift-store tarot decks sticky with spilled wine. Camera lenses like detached insect eyes. Hard drives humming with the ghosts of projects past, present, and perpetually pending. A teacup that had belonged to her mother and that she had, three times in the last week, picked up and put down without packing."
+      "text": "Thrift-store tarot decks sticky with spilled wine. Camera lenses like detached insect eyes. Hard drives humming with the ghosts of projects past, present, and perpetually pending. A teacup that had belonged to her mother and that she had, three times in the last week, picked up and put down without packing.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "Graustark. Just another backdrop. Wasn't it?"
+      "text": "Graustark. Just another backdrop. Wasn't it?",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "Another perfectly dilapidated stage for exploring the human condition's rather tiresome insistence on suffering beautifully. Bless its corrupted little heart."
+      "text": "Another perfectly dilapidated stage for exploring the human condition's rather tiresome insistence on suffering beautifully. Bless its corrupted little heart.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/008.mp3"
     },
     {
       "t": "show",
@@ -51,20 +57,24 @@
     },
     {
       "t": "narrate",
-      "text": "She paused in the doorway between the living room and what the rental listing had generously called the studio, and what was, in fact, a converted laundry alcove with very good acoustics and a powerful overhead light."
+      "text": "She paused in the doorway between the living room and what the rental listing had generously called the studio, and what was, in fact, a converted laundry alcove with very good acoustics and a powerful overhead light.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her eyes — the pale, intelligent, evaluative eyes that had served her well in two industries and one unfortunate marriage — moved across the room in the practiced sweep of someone who could no longer enter a space without first checking the framing."
+      "text": "Her eyes — the pale, intelligent, evaluative eyes that had served her well in two industries and one unfortunate marriage — moved across the room in the practiced sweep of someone who could no longer enter a space without first checking the framing.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/011.mp3"
     },
     {
       "t": "think",
       "char": "Elicia",
-      "text": "Wide shot. Establishing."
+      "text": "Wide shot. Establishing.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "The director's tic. Incurable."
+      "text": "The director's tic. Incurable.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/013.mp3"
     },
     {
       "t": "interlude",
@@ -74,85 +84,105 @@
     },
     {
       "t": "narrate",
-      "text": "Her web series — Whispers from the Liminal — had drunk deep from this town's poisoned well. Oh, the material. She had framed Graustark's rust as existential patina. The sinkhole's lingering psychic miasma as compelling thematic resonance. The way the locals occasionally lost an hour and recovered it with the wrong shoes on as Lynchian quotidian."
+      "text": "Her web series — Whispers from the Liminal — had drunk deep from this town's poisoned well. Oh, the material. She had framed Graustark's rust as existential patina. The sinkhole's lingering psychic miasma as compelling thematic resonance. The way the locals occasionally lost an hour and recovered it with the wrong shoes on as Lynchian quotidian.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had directed the town's ambient despair the way a method actor directed her own breakdown — intimately, with notes."
+      "text": "She had directed the town's ambient despair the way a method actor directed her own breakdown — intimately, with notes.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "And her audience? Her audience had adored it."
+      "text": "And her audience? Her audience had adored it.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "Cult following did not begin to cover it. They parsed every frame. Every glitchy sound cue. They built spreadsheets of her lighting choices."
+      "text": "Cult following did not begin to cover it. They parsed every frame. Every glitchy sound cue. They built spreadsheets of her lighting choices.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "They wrote essays — actual essays, with citations — posted to forums Elicia could not bring herself to read, because reading them constituted, in some metaphysical accounting she could not articulate but profoundly believed in, cheating. They searched for gnosis in what was, often, just bad wiring or Elicia forgetting to pay the electric bill."
+      "text": "They wrote essays — actual essays, with citations — posted to forums Elicia could not bring herself to read, because reading them constituted, in some metaphysical accounting she could not articulate but profoundly believed in, cheating. They searched for gnosis in what was, often, just bad wiring or Elicia forgetting to pay the electric bill.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "Humans. Hilariously, tragically predictable. Always needing a map — even if it led directly off a cliff."
+      "text": "Humans. Hilariously, tragically predictable. Always needing a map — even if it led directly off a cliff.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "She knew about the cliff. She had drawn it herself, several times. In storyboards. On napkins. And once, memorably, on the back of a parking ticket she had then handed to a meter maid in lieu of payment. The cliff was a recurring motif. The cliff was, perhaps, her best one."
+      "text": "She knew about the cliff. She had drawn it herself, several times. In storyboards. On napkins. And once, memorably, on the back of a parking ticket she had then handed to a meter maid in lieu of payment. The cliff was a recurring motif. The cliff was, perhaps, her best one.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had not, until quite recently, considered the possibility that she was standing on it."
+      "text": "She had not, until quite recently, considered the possibility that she was standing on it.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production. Picked up because it had caught the light just so. Kept because it had refused, in two years of attempted disposal, to leave the apartment by any normal route."
+      "text": "She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production. Picked up because it had caught the light just so. Kept because it had refused, in two years of attempted disposal, to leave the apartment by any normal route.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had thrown it out twice. It had returned twice — in different ways, neither of which she had been able to satisfactorily explain to herself or to the cleaning lady."
+      "text": "She had thrown it out twice. It had returned twice — in different ways, neither of which she had been able to satisfactorily explain to herself or to the cleaning lady.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "She held it up now, between thumb and forefinger."
+      "text": "She held it up now, between thumb and forefinger.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her reflection fractured. Multiplied. A dozen Elicias staring back, each slightly different, none quite whole."
+      "text": "Her reflection fractured. Multiplied. A dozen Elicias staring back, each slightly different, none quite whole.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/026.mp3"
     },
     {
       "t": "think",
       "char": "Elicia",
-      "text": "Broken glass fractal. Apt."
+      "text": "Broken glass fractal. Apt.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her carefully constructed reality — the one in which she was the aloof director, the manipulator of narratives, the woman who kept everyone at arm's length and metabolized her own emotions in a controlled studio environment with adequate ventilation — felt decidedly chipped tonight."
+      "text": "Her carefully constructed reality — the one in which she was the aloof director, the manipulator of narratives, the woman who kept everyone at arm's length and metabolized her own emotions in a controlled studio environment with adequate ventilation — felt decidedly chipped tonight.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "The walls were crumbling. Not just the bungalow's plaster — which was atrocious, and which the landlord had been promising to address for fourteen months."
+      "text": "The walls were crumbling. Not just the bungalow's plaster — which was atrocious, and which the landlord had been promising to address for fourteen months.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "Hers."
+      "text": "Hers.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/030.mp3"
     },
     {
       "t": "think",
       "char": "Elicia",
-      "text": "Damn it, MrMyst."
+      "text": "Damn it, MrMyst.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "The name a sour taste on her mental palate. Another fleeting relationship. Another expertly executed emotional hit-and-run. Only this time she was the one left sputtering by the roadside while the taillights receded around the bend."
+      "text": "The name a sour taste on her mental palate. Another fleeting relationship. Another expertly executed emotional hit-and-run. Only this time she was the one left sputtering by the roadside while the taillights receded around the bend.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "Served her right, probably. Karma — that tedious cosmic bookkeeper — had come to settle the account. The account had been substantial. And Elicia had been, in retrospect, surprisingly bad at math."
+      "text": "Served her right, probably. Karma — that tedious cosmic bookkeeper — had come to settle the account. The account had been substantial. And Elicia had been, in retrospect, surprisingly bad at math.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "Still. The nervous breakdown bubbling just beneath the surface felt rather unchic. She had always preferred her crises to be at least photogenic. This one was developing in unbecoming directions."
+      "text": "Still. The nervous breakdown bubbling just beneath the surface felt rather unchic. She had always preferred her crises to be at least photogenic. This one was developing in unbecoming directions.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/034.mp3"
     },
     {
       "t": "interlude",
@@ -162,19 +192,23 @@
     },
     {
       "t": "narrate",
-      "text": "She picked up a script page from the table — notes for the Whispers choose-your-own-adventure episode. She had been promising the audience the episode for six months. The audience had been patient. The audience would not, she suspected, be patient much longer."
+      "text": "She picked up a script page from the table — notes for the Whispers choose-your-own-adventure episode. She had been promising the audience the episode for six months. The audience had been patient. The audience would not, she suspected, be patient much longer.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "Option A — Confront the shadow self in the abandoned slaughterhouse."
+      "text": "Option A — Confront the shadow self in the abandoned slaughterhouse.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "Option B — Attend the interdimensional tea party with the sentient mannequins."
+      "text": "Option B — Attend the interdimensional tea party with the sentient mannequins.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "Option C — Realize free will is an illusion and embrace the comforting void."
+      "text": "Option C — Realize free will is an illusion and embrace the comforting void.",
+      "voice": "assets/audio/voice/vol5_ch2_priestess/039.mp3"
     },
     {
       "t": "choice",
