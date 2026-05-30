@@ -15,6 +15,7 @@ const MUSIC_OV        := preload("res://scenes/menu/MusicPlayerOverlay.tscn")
 const SUBSTRATE_SCRIPT   := preload("res://scenes/game/AsciiSubstrate.gd")
 const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 const UNLOCK_TOAST_SCRIPT := preload("res://scenes/game/UnlockToast.gd")
+const BG_FRAME_SCRIPT     := preload("res://scenes/game/BgFrame.gd")
 
 var _vol:         int        = 1
 var _scene_id:    String     = ""
@@ -36,6 +37,7 @@ var _bg_solid:       ColorRect   = null
 var _bg_composition: Control     = null
 var _substrate:      Control     = null
 var _bg:             TextureRect = null
+var _bg_frame:       Control     = null
 var _dlg_scrim:      ColorRect   = null
 
 # UI nodes pin themselves to this z so composition windows with
@@ -87,6 +89,18 @@ func _build_layers() -> void:
 	_bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_bg)
+
+	# Matte frame above the bg image to cover aspect bars. The live
+	# _substrate sits between _bg_solid and _bg, so without this it
+	# pokes through the letterbox/pillarbox gaps. Frame paints solid
+	# bars over those gaps plus a thin gold rule along the bg edge.
+	# Custom Control with _draw — keyed off _bg.texture aspect.
+	_bg_frame = Control.new()
+	_bg_frame.set_script(BG_FRAME_SCRIPT)
+	_bg_frame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_bg_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_bg_frame)
+	_bg_frame.set("bg_node", _bg)
 
 	_chars = CHAR_SCENE.instantiate()
 	_chars.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -514,6 +528,8 @@ func _do_bg(n: Dictionary) -> void:
 	# Randomize the pan phase per bg so different scenes don't all
 	# reveal the same edge first — feels less mechanical.
 	_bg_pan_phase = randf() * BG_PAN_PERIOD
+	if _bg_frame != null:
+		_bg_frame.queue_redraw()
 
 
 func _do_substrate(n: Dictionary) -> void:
