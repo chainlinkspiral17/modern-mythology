@@ -85,8 +85,16 @@ func _build_layers() -> void:
 	# image is visible. Cover-mode was cropping ~22-40px off most
 	# sources, plus my prior BG_ZOOM_BASE=1.04 was zooming on top of
 	# that crop — combined, large chunks of every bg sat off-screen.
-	# The skin's _bg_solid sits behind to fill any aspect bars.
 	_bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	# Without EXPAND_IGNORE_SIZE, the TextureRect's intrinsic minimum
+	# size comes from the texture itself. The vol5 bgs are 2659x1536 —
+	# way larger than the 1280x720 viewport — so the rect was forced
+	# to texture-native dimensions, blowing past viewport edges and
+	# leaving only the center crop visible. This is what made ch3 (and
+	# every other plain-bg scene) look "way zoomed in" no matter the
+	# stretch_mode. IGNORE_SIZE lets anchors win → rect = viewport →
+	# stretch_mode places the whole texture inside the viewport.
+	_bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_bg)
 
