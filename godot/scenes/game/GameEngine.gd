@@ -79,7 +79,12 @@ func _build_layers() -> void:
 	add_child(_substrate)
 
 	_bg = TextureRect.new()
-	_bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	# Fit (letterbox/pillarbox) instead of cover so the entire source
+	# image is visible. Cover-mode was cropping ~22-40px off most
+	# sources, plus my prior BG_ZOOM_BASE=1.04 was zooming on top of
+	# that crop — combined, large chunks of every bg sat off-screen.
+	# The skin's _bg_solid sits behind to fill any aspect bars.
+	_bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_bg)
 
@@ -602,56 +607,48 @@ func _process(delta: float) -> void:
 	_apply_bg_motion(delta)
 
 
-# Background idle motion — combines two layers:
-#  • Ken-Burns drift: slow x/y pan + zoom breath. Long period (25s)
-#    so it reads as cinematic, not nervous.
-#  • Riverboat sway:  small high-frequency wobble + micro-rotation,
-#    layered on top to keep the frame from feeling locked.
-# Both layers compose into one transform per node and apply to
-# whichever bg layer is live (the TextureRect _bg for plain bgs,
-# the _bg_composition for ASCII comp scenes — or both, if both
-# happen to be active). Previously these ran as two separate
-# methods and the second overwrote the first; that's why scenes
-# using comp showed only sway and scenes using plain bg showed no
-# motion.
+# Background idle motion. Bg now displays in fit-mode (whole image
+# visible with thin aspect bars), so the previous Ken-Burns pan +
+# 1.04 base zoom — which assumed cover-mode with crop margin to pan
+# across — would just slide the image past the visible area
+# exposing the solid color underneath. Keeping:
+#  • Riverboat sway:  small wobble + micro-rotation for life.
+#  • Zoom breath:     very subtle ±0.4% breathing so the frame
+#                     doesn't feel locked. Stays well within where
+#                     letterbox bars would notice.
+# No translation pan — that pushed image past its own edges.
 var _sway_t:       float = 0.0
 var _bg_pan_t:     float = 0.0
 var _bg_pan_phase: float = 0.0
 const SWAY_PERIOD   := 5.4
-const SWAY_X_AMP    := 6.0
-const SWAY_Y_AMP    := 3.0
-const SWAY_ROT      := 0.006
+const SWAY_X_AMP    := 4.0
+const SWAY_Y_AMP    := 2.0
+const SWAY_ROT      := 0.004
 const BG_PAN_PERIOD := 25.0
-const BG_PAN_X_AMP  := 40.0
-const BG_PAN_Y_AMP  := 25.0
-const BG_ZOOM_BASE  := 1.04
-const BG_ZOOM_AMP   := 0.012
+const BG_ZOOM_BASE  := 1.0
+const BG_ZOOM_AMP   := 0.004
 
 func _apply_bg_motion(delta: float) -> void:
 	_sway_t   += delta
 	_bg_pan_t += delta
 	var t: float = (_bg_pan_t + _bg_pan_phase) * TAU / BG_PAN_PERIOD
-	# Lissajous-style pan: x/y on different harmonics so it doesn't
-	# trace a simple ellipse.
-	var pan_pos := Vector2(sin(t) * BG_PAN_X_AMP, cos(t * 0.65) * BG_PAN_Y_AMP)
 	var pan_scale := BG_ZOOM_BASE + sin(t * 0.4) * BG_ZOOM_AMP
 
 	var sway_phase: float = _sway_t * TAU / SWAY_PERIOD
 	var sway_pos := Vector2(sin(sway_phase) * SWAY_X_AMP, cos(sway_phase * 0.7) * SWAY_Y_AMP)
 	var sway_rot := sin(sway_phase) * SWAY_ROT
 
-	var total_pos := pan_pos + sway_pos
 	var total_scale := Vector2(pan_scale, pan_scale)
 
 	if _bg != null and _bg.texture != null:
 		_bg.pivot_offset = _bg.size * 0.5
-		_bg.position     = total_pos
+		_bg.position     = sway_pos
 		_bg.scale        = total_scale
 		_bg.rotation     = sway_rot
 
 	if _bg_composition != null and _bg_composition.get_child_count() > 0:
 		_bg_composition.pivot_offset = _bg_composition.size * 0.5
-		_bg_composition.position     = total_pos
+		_bg_composition.position     = sway_pos
 		_bg_composition.scale        = total_scale
 		_bg_composition.rotation     = sway_rot
 
