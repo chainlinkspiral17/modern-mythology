@@ -72,6 +72,14 @@
       "always_unlocked": true
     },
     {
+      "id": "chariot_arcana",
+      "title": "VII — THE CHARIOT",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "chariot_arcana",
+      "always_unlocked": true
+    },
+    {
       "id": "fool_blocks",
       "title": "0 — THE FOOL  (mosaic)",
       "set": "Major Arcana (Block Art)",

@@ -1,0 +1,172 @@
+{
+  "asset": "assets/gallery/chariot.png",
+  "scene_id": "vol5_ch7_chariot",
+  "character": "antonio",
+  "arcana": "VII - THE CHARIOT",
+  "subtitle": "Ember & Ash Restaurant — Two Horses, One Wreck",
+  "palette": "rust_orange_industrial_white",
+  "location_text": "EMBER & ASH RESTAURANT — Acadian / NOLA-adjacent. The night of.",
+
+  "ciphers": [
+    {
+      "id": "cha_wreck",
+      "kind": "scene_centerpiece",
+      "text": "wrecked SUV at the centre of the diagram — Antonio's chariot, DOA",
+      "anchor_norm": [0.40, 0.45],
+      "encoding_hint": "the chariot card traditionally shows control over duality (two sphinxes/horses); here the wreck is the literal answer — Antonio did NOT keep control. The pillar that was supposed to support the chariot (scaffolding VIP) is what falls. 'TWO HORSES, ONE WRECK' = the duality collapsed.",
+      "reveals": "vol5_chariot_wreck_seen"
+    },
+    {
+      "id": "cha_sphinx_dog",
+      "kind": "creature",
+      "text": "sphinx-laid dog beside the wreck — sentinel",
+      "anchor_norm": [0.55, 0.55],
+      "encoding_hint": "the dog ties to the Fool's FAITH (Strength card precursor). In the Chariot tradition, the two sphinxes flank the cart — here, one dog. Half the duality. The other half is the absence: the missing sphinx is Antonio himself.",
+      "reveals": "vol5_chariot_sphinx_link"
+    },
+    {
+      "id": "cha_status_doa",
+      "kind": "system_status",
+      "text_lines": [
+        "node: ember.ash.rest.bbs",
+        "sysop: the_charioteer (D.O.A.)",
+        "quentin call complete",
+        "jimmy joining unknown",
+        "scaffolding check in progress"
+      ],
+      "anchor_norm": [0.84, 0.90],
+      "encoding_hint": "the BBS network status panel is the chapter's diagnostic surface. SYSOP IS D.O.A. — Antonio has already crashed by the time the player is reading this. The QUENTIN CALL COMPLETE links to the Hierophant card's phone-call binding. SCAFFOLDING CHECK IN PROGRESS foreshadows the structural failure that drops the chariot.",
+      "reveals": "vol5_chariot_diagnostic",
+      "cross_references": ["hierophant.json::hie_booth (quentin call source)"]
+    },
+    {
+      "id": "cha_liquid_gold",
+      "kind": "menu_drinks",
+      "text_lines": [
+        "THE CREOLE NEGRONI · Local NOLA gin, Campari, sweet vermouth, orange bitters",
+        "VENETIAN SAZERAC · Rye whiskey, Peychaud's, absinthe rinse, Italian amaro twist",
+        "THE CHARIOT'S FLAME · Mezcal cocktail, chili, lime, flaming garnish",
+        "BAYOU CRAFT BREWS (LIST)"
+      ],
+      "anchor_norm": [0.75, 0.20],
+      "encoding_hint": "the LIQUID GOLD DISPENSARY menu — three signature cocktails. THE CHARIOT'S FLAME is the one Antonio ordered last. The Negroni and Sazerac trace NOLA/Acadian/Italian lineage of the D'Ambrosio family (Dante = Italian; the Venetian Sazerac links to the family).",
+      "reveals": "vol5_chariot_drinks_menu"
+    },
+    {
+      "id": "cha_menu_food",
+      "kind": "menu_food",
+      "text_lines": [
+        "REDFISH PICCATA — pan-seared redfish",
+        "JIMMY'S SABOTAGE JAMBALAYA — saboteur's portion, slow-cooked, andouille, chicken, spice-packed",
+        "TIRAMISU 'SOUTHERN COMFORT' — espresso, mascarpone, ladyfingers, Southern Comfort liqueur"
+      ],
+      "anchor_norm": [0.25, 0.78],
+      "encoding_hint": "the food menu names two characters: JIMMY (the saboteur — also one of Hierophant's kneelers) and TIRAMISU 'SOUTHERN COMFORT' (the dolce, suggesting the chapter's emotional weather is mock-Southern comfort, ie. the Acadian welcome that bites). The dish names are also UI hooks — clicking each could reveal lore.",
+      "reveals": "vol5_chariot_food_menu"
+    },
+    {
+      "id": "cha_layout",
+      "kind": "seating_map",
+      "text": "THE LAYOUT [seating map] — Scaffolding VIP / Main Floor / Patio / Bar Section / Kitchen",
+      "anchor_norm": [0.78, 0.55],
+      "encoding_hint": "the seating map is a literal building plan. SCAFFOLDING VIP is the upper section — the section that fails. The wreck happens because the scaffolding VIP collapses (it's literally scaffolding holding people up). 'SCAFFOLDING CHECK IN PROGRESS' in the status panel is the foreman noticing too late.",
+      "reveals": "vol5_chariot_layout_seen"
+    },
+    {
+      "id": "cha_bricks",
+      "kind": "label_tag",
+      "text": "BRICKS! tag in the bottom-left — industrial finish call-out",
+      "anchor_norm": [0.06, 0.62],
+      "encoding_hint": "Ember & Ash is a converted brick warehouse — same architectural lineage as Frasier's Cathedral of Rust and Code. 'BRICKS!' is the playful annotation on a designer mood board.",
+      "reveals": "vol5_chariot_bricks_seen"
+    },
+    {
+      "id": "cha_charioteer",
+      "kind": "named_entity",
+      "text": "sysop label reads 'the_charioteer' — Antonio's BBS handle",
+      "anchor_norm": [0.88, 0.93],
+      "encoding_hint": "Antonio operates as 'the_charioteer' on the ember.ash.rest.bbs network. The D.O.A. marker means his BBS process is dead — possibly literally (the wreck) or operationally (he's offline as of now).",
+      "reveals": "vol5_charioteer_handle"
+    }
+  ],
+
+  "hotspots": [
+    {
+      "id": "cha_wreck_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.32, 0.32, 0.24, 0.30],
+      "interact": "chariot.wreck.examined",
+      "unlocks": "vol5_chariot_wreck_seen",
+      "notes": "the crashed SUV centerpiece — touching it begins the wreck-reconstruction mechanic"
+    },
+    {
+      "id": "cha_dog_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.55, 0.50, 0.10, 0.18],
+      "interact": "chariot.dog.touched",
+      "unlocks": "vol5_chariot_sphinx_link"
+    },
+    {
+      "id": "cha_drinks_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.66, 0.06, 0.30, 0.32],
+      "interact": "chariot.drinks.examined",
+      "unlocks": "vol5_chariot_drinks_menu"
+    },
+    {
+      "id": "cha_food_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.08, 0.62, 0.32, 0.28],
+      "interact": "chariot.food.examined",
+      "unlocks": "vol5_chariot_food_menu"
+    },
+    {
+      "id": "cha_layout_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.66, 0.40, 0.30, 0.28],
+      "interact": "chariot.layout.examined",
+      "unlocks": "vol5_chariot_layout_seen"
+    },
+    {
+      "id": "cha_status_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.66, 0.78, 0.30, 0.18],
+      "interact": "chariot.status.examined",
+      "unlocks": "vol5_chariot_diagnostic"
+    },
+    {
+      "id": "cha_scaffold_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.02, 0.08, 0.10, 0.55],
+      "interact": "chariot.scaffold.examined",
+      "unlocks": "vol5_chariot_scaffold_check"
+    }
+  ],
+
+  "easter_eggs": [
+    "the SYSOP D.O.A. tag is the entire chapter's premise in two letters — Antonio is reading his own diagnostic after the fact, or somebody else is reading it FOR him, depending on how you parse the POV.",
+    "QUENTIN CALL COMPLETE in the status panel is the second half of the Hierophant card's BLACK COFFEE NEAT booth scene. Cards V and VII are bound by one phone call.",
+    "JIMMY'S SABOTAGE JAMBALAYA is the menu item AND the chapter's true antagonist mechanism — Jimmy (Hierophant's south kneeler) sabotages the scaffolding. Or the chicken.",
+    "the SCAFFOLDING VIP section is where the wreck happens. The whole layout is the chapter, read as architecture instead of narrative.",
+    "TWO HORSES ONE WRECK is the Tarot Chariot's traditional 'control of duality' inverted — the duality was never controlled. Antonio is half of the team that crashed because the other half didn't exist."
+  ],
+
+  "links_forward": [
+    "vol5_chariot_wreck_seen",
+    "vol5_chariot_sphinx_link",
+    "vol5_chariot_drinks_menu",
+    "vol5_chariot_food_menu",
+    "vol5_chariot_layout_seen",
+    "vol5_chariot_diagnostic",
+    "vol5_chariot_scaffold_check",
+    "vol5_charioteer_handle",
+    "vol5_chariot_bricks_seen"
+  ],
+
+  "cross_references": {
+    "phone_call_originates_at": "hierophant.json::hie_booth",
+    "jimmy_also_kneels_at":     "hierophant.json (south kneeler)",
+    "scaffolding_architecture_with": "magician.json (warehouse 47 / industrial conversion)",
+    "dog_as_sentinel_pairs_with": "fool.json::dog_companion (FAITH / Strength)"
+  }
+}

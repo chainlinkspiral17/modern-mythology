@@ -25,6 +25,7 @@ const MAGICIAN_VISUALIZER_SCRIPT := preload("res://scenes/menu/MagicianVisualize
 const PRIESTESS_VISUALIZER_SCRIPT := preload("res://scenes/menu/PriestessVisualizer.gd")
 const EMPEROR_VISUALIZER_SCRIPT := preload("res://scenes/menu/EmperorVisualizer.gd")
 const HIEROPHANT_VISUALIZER_SCRIPT := preload("res://scenes/menu/HierophantVisualizer.gd")
+const CHARIOT_VISUALIZER_SCRIPT := preload("res://scenes/menu/ChariotVisualizer.gd")
 const TAROT_SYNTH_SCRIPT      := preload("res://scenes/menu/TarotSynthOverlay.gd")
 
 # Per-card dedicated visualizers — bypass the generic fullscreen viewer
@@ -451,6 +452,15 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		hp.mouse_filter = Control.MOUSE_FILTER_STOP
 		add_child(hp)
 		hp.connect("closed", func() -> void: hp.queue_free())
+		return
+	if short_path == "chariot_arcana":
+		var cp := Control.new()
+		cp.set_script(CHARIOT_VISUALIZER_SCRIPT)
+		cp.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		cp.z_index = 12
+		cp.mouse_filter = Control.MOUSE_FILTER_STOP
+		add_child(cp)
+		cp.connect("closed", func() -> void: cp.queue_free())
 		return
 	# Tarot Synth — type:"overlay" entry in the gallery index, opens
 	# the playable instrument as a fullscreen overlay

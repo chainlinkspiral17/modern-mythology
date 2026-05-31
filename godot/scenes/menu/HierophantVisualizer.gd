@@ -1,39 +1,44 @@
 extends "res://scenes/menu/TarotVisualizerBase.gd"
-## HierophantVisualizer — Sunday Dress, Stiff & Biting.
+## HierophantVisualizer — Sweaty Sunday Sermonettes.
 ##
-## Maya at St. Jude's Acadian Church, Sunday morning, before the
-## 7am mass. Child POV: the world is too large, the system is
-## above her, the dress physically bites. The painted card carries
-## the inherited form — Petrine keys, triple tiara, the AVDI ET
-## TACE banner, the two kneeling acolytes (M and Y), the rose
-## window, the carpet with three layered Latin lines.
+## REBUILD for the new sketch-diagram art. Setting: St. Jude's
+## Acadian Church, Sunday morning, before brunch. The new card is
+## a multi-vignette autopsy of inherited authority — Father Quentin
+## Paul on the throne flanked by TRADITION and CONFORMITY pillars,
+## four kneelers around the Rosh floor symbol, the D'Ambrosio's
+## corner booth where Quentin takes BLACK COFFEE NEAT and tells
+## Antonio: "Just remember who your friends are."
+##
+## Significantly different POV from the prior Maya child-experiencer
+## card — this is the AUTHORITY's surface, with the child experience
+## reduced to one of four multi-witness panels.
 ##
 ##   • CARD HOTSPOTS — seven rects on the painted Hierophant:
-##       DRESS   the dress that bites her back (signature mechanic)
-##       KEYS    crossed Petrine keys above the rose window
-##       CROWN   the triple papal tiara
-##       MAYA    her own kneeling acolyte figure (M)
-##       Y       the unnamed companion acolyte (mystery)
-##       WINDOW  the 8-segment rose window (red/blue/yellow/green)
-##       BANNER  AVDI · ET · TACE (chapter command)
+##       SERMON      Quentin on the throne (center)
+##       TRADITION   the left pillar
+##       CONFORMITY  the right pillar
+##       ROSH        the floor symbol (ritual binding sigil)
+##       ACOLYTES    the four kneelers — cycles identity per click
+##       BOOTH       the D'Ambrosio's corner-booth panel (Antonio
+##                   warning, BLACK COFFEE NEAT, Quentin's spot)
+##       WITNESS     the [MULTI-WITNESS POV] panels (right side)
 ##
-##   • BBS CONSOLE — `maya@pew:~$`. Public: help · dress · keys ·
-##     crown · maya · y · window · banner · carpet · recall · count ·
-##     look · listen · clear · exit. Hidden: avdi · tace · silent ·
-##     mass · ecclesia · sanctifica · petrine · tiara · rose ·
-##     beatitudes · bite · stiff · sunday · companion · quent · paul ·
-##     catechism · acadian · st_jude · itch · scratch · candide ·
-##     voltaire · plus cross-character routes.
+##   • BBS CONSOLE — `quentin@stjude:~$` prompt. Public commands cover
+##     all mechanics. Hidden lore: rosh · binding · ritual · pillars ·
+##     antonio · friends · uncertain · maya · jimmy · john · ribbed ·
+##     witness · sweaty · sermonette · acadian · sunday · brunch ·
+##     phone · park · church_vibe · courtroom · bones · bleached ·
+##     demon · persistent_demon · vignette · four_vignette · voltaire ·
+##     candide · cross-character routes.
 
 # ── Game state ───────────────────────────────────────────────────
-var dress_touches: int = 0          # the bite count — Maya's body log
-var keys_touched: bool = false
-var crown_touched: bool = false
-var maya_touched: bool = false
-var y_touched: int = 0              # 0..3 progressive identity reveal
-var window_segments: int = 0        # 0..8 colors collected
-var banner_read: bool = false
-var carpet_read_stage: int = 0      # 0..3 — three layered latin lines
+var sermon_count: int = 0
+var tradition_touched: bool = false
+var conformity_touched: bool = false
+var rosh_invocations: int = 0      # the floor symbol — 0..7 ramp
+var acolyte_idx: int = 0           # 0..3 which kneeler identified
+var booth_read: bool = false
+var witness_idx: int = 0           # 0..3 cycle through 4 vignettes
 var hotspots_seen: Dictionary = {}
 var commands_run: Dictionary = {}
 var memory: PackedStringArray = []
@@ -46,49 +51,54 @@ var status_label: Label
 var console_input: LineEdit
 var console_log: RichTextLabel
 
-# Maya's body-log — the dress bites in different places each time
-const DRESS_BITES := [
-    "the dress bites her back.",
-    "the dress bites her under the arm.",
-    "the dress bites where the collar meets the throat.",
-    "the dress bites where the elastic is.",
-    "the dress bites where the lace meets the skin.",
-    "the dress bites because it was made for a different girl.",
-    "the dress bites because it remembers the girl it was made for.",
-    "the dress bites because the dress is the hierophant.",
+# Four kneelers around the Rosh floor symbol — each is one of the
+# named characters being inducted into the system.
+const ACOLYTES := [
+    "north kneeler · MAYA · seven · the dress still bites · she does not look up",
+    "east kneeler · ANTONIO · forty-three · he is here because Quentin said to be",
+    "south kneeler · JIMMY · age-uncertain · he came in late · he is sweating",
+    "west kneeler · JOHN · timeless · the cook · the wiper · the dog at his side",
 ]
 
-# Y reveal stages — the unnamed companion's identity surfaces slowly
-const Y_REVEALS := [
-    "Y is beside her. Y kneels too. Y is also seven.",
-    "Y has a different last name. Y's mother is here. Y's mother is praying.",
-    "Y is Father Quent's nephew. Y will be a priest, eventually. Y already knows.",
+# Multi-witness POV cycle — each click on the WITNESS panel rotates
+# through one of the four vignettes that surround the central scene.
+const WITNESSES := [
+    "[VIGNETTE 1 · official reception & archive] Press number. Sermon parsed. Theorpter. Trees. Boxed. Selling.",
+    "[VIGNETTE 2 · sensory · skin] Heavy suit in Texas heat. Black engraved sweat. Eye lid most. The cologne is cologne.",
+    "[VIGNETTE 3 · persistent demon UI] One demon sits in the rafters and tracks who confesses what. The demon is not banished here. The cathedral runs on demon.",
+    "[VIGNETTE 4 · D'Ambrosio's corner booth] BLACK COFFEE NEAT. Quentin orders before he arrives. The friends remark is for Antonio. The remark is for the player.",
 ]
 
-# Rose window 8 segments (cycle through them on click)
-const WINDOW_COLORS := [
-    "RED",     "BLUE",    "YELLOW",  "GREEN",
-    "RED",     "BLUE",    "YELLOW",  "GREEN",
-]
-
-# Three layered Latin carpet lines (revealed in order)
-const CARPET_LINES := [
-    "ECCLESIA SEMPER REFORMANDA — always reforming. it never stops.",
-    "ANIMA CHRISTI SANCTIFICA ME — sanctify me. she does not know what this means.",
-    "DOMINICA MASS · 7 · 9 · 11 — three masses. the chapter is before the seven.",
+# Rosh invocation reveals — each click on the floor symbol unfolds
+# the binding ritual one step further.
+const ROSH_REVEALS := [
+    "the Rosh sigil glows once. ritual binding initiated.",
+    "the four kneelers lean in. their dresses bite. their suits sweat.",
+    "the pillars TRADITION and CONFORMITY shake very slightly.",
+    "Quentin speaks. you cannot hear what he says. the kneelers can.",
+    "the sermon ends. nobody stood up. nobody knelt down. it was already done.",
+    "the binding holds. the binding has always held.",
+    "the Rosh sigil dims. it does not need to glow to remain bound.",
 ]
 
 
 func _init() -> void:
     _card_path  = "res://assets/gallery/hierophant.png"
+    # Substrate composition stays UNSET — the existing
+    # resources/substrates/compositions/hierophant_card.json was
+    # rendered from the prior Maya child-POV painted card, not this
+    # Quentin authority card. Fall back to the painted PNG until
+    # the substrate is regenerated from the new source.
+    _composition_path = ""
     _hooks_path = "res://resources/puzzle_hooks/hierophant.json"
     _ambient_audio_path = "res://assets/audio/bgm/vol5_ambient.ogg"
-    # Papal red / blue / gold — but seen through a child's hot-skin POV
-    C_BG = Color(0.060, 0.040, 0.060)
-    C_GOLD = Color(0.95, 0.78, 0.30)
-    C_GOLD_HI = Color(1.0, 0.92, 0.50)
-    C_TEXT = Color(0.85, 0.78, 0.62)
-    C_TEXT_DIM = Color(0.45, 0.40, 0.42)
+    # Bleached-bone whites + courtroom blues per the CHURCH_VIBE.EXE
+    # annotation on the card.
+    C_BG = Color(0.06, 0.07, 0.09)
+    C_GOLD = Color(0.92, 0.90, 0.82)        # bleached bone
+    C_GOLD_HI = Color(1.0, 0.98, 0.90)       # bone-hi
+    C_TEXT = Color(0.78, 0.82, 0.90)         # courtroom blue
+    C_TEXT_DIM = Color(0.36, 0.40, 0.50)
 
 
 func _build_chrome() -> void:
@@ -97,17 +107,19 @@ func _build_chrome() -> void:
     _build_card_hotspots()
 
 
-# Per-region hotspots on the painted Hierophant card.
+# Per-region hotspots on the new Hierophant sketch card.
+# Coordinates are normalized to the painted-card area; the wrapper
+# scales them to the actual on-screen card size.
 func _build_card_hotspots() -> void:
     if card_rect == null: return
     var defs := [
-        ["dress",  Rect2(0.41, 0.76, 0.18, 0.20), "feel the dress bite",        _do_dress],
-        ["keys",   Rect2(0.41, 0.03, 0.18, 0.10), "touch the crossed keys",     _do_keys],
-        ["crown",  Rect2(0.45, 0.11, 0.10, 0.10), "touch the triple crown",     _do_crown],
-        ["maya",   Rect2(0.30, 0.70, 0.14, 0.20), "be the kneeling Maya",       _do_maya],
-        ["y",      Rect2(0.55, 0.70, 0.14, 0.20), "look at the other acolyte",  _do_y],
-        ["window", Rect2(0.41, 0.13, 0.18, 0.16), "count the window segments",  _do_window],
-        ["banner", Rect2(0.24, 0.01, 0.52, 0.07), "read the AVDI banner",       _do_banner],
+        ["sermon",     Rect2(0.40, 0.30, 0.20, 0.40), "approach the sermon",       _do_sermon],
+        ["tradition",  Rect2(0.32, 0.20, 0.05, 0.55), "TRADITION pillar",          _do_tradition],
+        ["conformity", Rect2(0.61, 0.20, 0.05, 0.55), "CONFORMITY pillar",         _do_conformity],
+        ["rosh",       Rect2(0.40, 0.70, 0.20, 0.18), "invoke the Rosh sigil",     _do_rosh],
+        ["acolytes",   Rect2(0.32, 0.62, 0.34, 0.28), "kneeler ring",              _do_acolytes],
+        ["booth",      Rect2(0.04, 0.62, 0.18, 0.24), "D'Ambrosio's corner booth", _do_booth],
+        ["witness",    Rect2(0.66, 0.08, 0.30, 0.66), "MULTI-WITNESS POV",         _do_witness],
     ]
     for d in defs:
         var btn := Button.new()
@@ -121,13 +133,13 @@ func _build_card_hotspots() -> void:
             rect.size.y * card_rect.size.y)
         btn.tooltip_text = str(d[2])
         var sb := StyleBoxFlat.new()
-        sb.bg_color = Color(0.95, 0.30, 0.30, 0.0)
-        sb.border_color = Color(0.95, 0.30, 0.30, 0.0)
+        sb.bg_color = Color(0.85, 0.92, 1.0, 0.0)
+        sb.border_color = Color(0.85, 0.92, 1.0, 0.0)
         sb.set_border_width_all(1)
         btn.add_theme_stylebox_override("normal", sb)
         var bsh := sb.duplicate() as StyleBoxFlat
-        bsh.bg_color = Color(0.95, 0.30, 0.30, 0.22)
-        bsh.border_color = Color(1.0, 0.92, 0.50, 0.85)
+        bsh.bg_color = Color(0.85, 0.92, 1.0, 0.16)
+        bsh.border_color = Color(1.0, 0.98, 0.90, 0.80)
         btn.add_theme_stylebox_override("hover", bsh)
         btn.add_theme_stylebox_override("focus", bsh)
         btn.pressed.connect(d[3])
@@ -140,7 +152,7 @@ func _build_bottom_strip() -> void:
     bot.anchor_top = 1;  bot.anchor_bottom = 1
     bot.offset_top = -170
     var bps := StyleBoxFlat.new()
-    bps.bg_color = Color(0.04, 0.025, 0.04, 0.85)
+    bps.bg_color = Color(0.04, 0.05, 0.08, 0.88)
     bps.border_color = C_GOLD
     bps.border_width_top = 1
     bot.add_theme_stylebox_override("panel", bps)
@@ -156,20 +168,20 @@ func _build_bottom_strip() -> void:
     console_log.size_flags_vertical = Control.SIZE_EXPAND_FILL
     console_log.add_theme_font_size_override("normal_font_size", 11)
     console_log.add_theme_color_override("default_color",
-        Color(0.92, 0.80, 0.62))
+        Color(0.85, 0.88, 0.95))
     vbox.add_child(console_log)
 
     var inrow := HBoxContainer.new()
     inrow.add_theme_constant_override("separation", 4)
     var prompt := Label.new()
-    prompt.text = "maya@pew:~$ "
+    prompt.text = "quentin@stjude:~$ "
     prompt.add_theme_color_override("font_color", C_GOLD_HI)
     prompt.add_theme_font_size_override("font_size", 12)
     inrow.add_child(prompt)
     console_input = LineEdit.new()
     console_input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
     console_input.add_theme_color_override("font_color",
-        Color(1.0, 0.92, 0.55))
+        Color(0.95, 0.95, 0.92))
     console_input.text_submitted.connect(_on_command)
     inrow.add_child(console_input)
     vbox.add_child(inrow)
@@ -179,24 +191,24 @@ func _build_bottom_strip() -> void:
     vbox.add_child(actrow)
 
     tally_btn = Button.new()
-    tally_btn.text = "  ✠ bites 0/8 · window 0/4 · Y 0/3  "
+    tally_btn.text = "  ✠ sermon 0 · rosh 0/7 · witnesses 0/4 · acolytes 0/4  "
     tally_btn.add_theme_color_override("font_color", C_GOLD_HI)
     tally_btn.add_theme_font_size_override("font_size", 11)
     var wbs := StyleBoxFlat.new()
-    wbs.bg_color = Color(C_GOLD.r * 0.18, C_GOLD.g * 0.18, C_GOLD.b * 0.18, 0.55)
+    wbs.bg_color = Color(0.18, 0.20, 0.30, 0.6)
     wbs.border_color = C_GOLD
     wbs.set_border_width_all(1)
     tally_btn.add_theme_stylebox_override("normal", wbs)
     var wbh := wbs.duplicate() as StyleBoxFlat
-    wbh.bg_color = Color(C_GOLD.r * 0.40, C_GOLD.g * 0.40, C_GOLD.b * 0.40, 0.7)
+    wbh.bg_color = Color(0.32, 0.36, 0.50, 0.78)
     wbh.border_color = C_GOLD_HI
     tally_btn.add_theme_stylebox_override("hover", wbh)
-    tally_btn.pressed.connect(_do_dress)
+    tally_btn.pressed.connect(_do_sermon)
     tally_btn.tooltip_text = "click card regions for distinct mechanics"
     actrow.add_child(tally_btn)
 
     status_label = Label.new()
-    status_label.text = "click the card · dress · keys · crown · maya · y · window · banner"
+    status_label.text = "click the card · sermon · pillars · rosh · acolytes · booth · witness"
     status_label.add_theme_color_override("font_color",
         Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.80))
     status_label.add_theme_font_size_override("font_size", 10)
@@ -204,344 +216,314 @@ func _build_bottom_strip() -> void:
     status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
     actrow.add_child(status_label)
 
-    _log("[color=#ffd070]> V · THE HIEROPHANT · vol.5 ch.5 · St. Jude's, Sunday[/color]")
-    _log("[color=#a87830]> before the 7am mass. parking lot. heat already rising.[/color]")
-    _log("[color=#ffd070]> AVDI · ET · TACE[/color]")
-    _log("[color=#a87830]>   (hear · and · be silent)[/color]")
-    _log("[color=#a87830]> type [color=#ffe896]help[/color] · the dress bites whether you read this or not.[/color]")
+    _log("[color=#e8e0c8]> V · THE HIEROPHANT · vol.5 ch.5 · St. Jude's Acadian Church[/color]")
+    _log("[color=#6878a0]> [SYSTEM STATUS: ACADIAN CHURCH / BRUNCH / PHONE / PARK][/color]")
+    _log("[color=#e8e0c8]> SWEATY SUNDAY SERMONETTES — already running.[/color]")
+    _log("[color=#6878a0]> Quentin says: \"Just remember who your friends are.\"[/color]")
+    _log("[color=#6878a0]> type [color=#fffeec]help[/color] · the binding does not require your participation.[/color]")
 
     console_input.grab_focus()
 
 
 # ── Tableau registration ─────────────────────────────────────────
 func _build_thematic_widget() -> void:
-    var c_gold := C_GOLD_HI
-    var c_red := Color(0.85, 0.25, 0.28, 0.95)
-    var c_red_dim := Color(0.50, 0.18, 0.20, 0.85)
-    var c_blue := Color(0.35, 0.45, 0.85, 0.95)
-    var c_blue_dim := Color(0.22, 0.28, 0.50, 0.85)
-    var c_cream := Color(0.92, 0.85, 0.68, 0.95)
-    var c_stone := Color(0.55, 0.50, 0.48, 0.85)
-    var c_child := Color(0.95, 0.75, 0.65, 0.95)   # warm child skin
+    var c_bone := Color(0.94, 0.90, 0.78, 0.95)
+    var c_bone_dim := Color(0.55, 0.52, 0.45, 0.85)
+    var c_bone_hot := Color(1.0, 0.98, 0.88, 1.0)
+    var c_blue := Color(0.55, 0.65, 0.88, 0.95)
+    var c_blue_dim := Color(0.28, 0.34, 0.52, 0.85)
+    var c_red := Color(0.85, 0.30, 0.30, 0.92)
+    var c_demon := Color(0.50, 0.18, 0.22, 0.85)
+    var c_child := Color(0.95, 0.78, 0.70, 0.95)
+    var c_pillar := Color(0.72, 0.68, 0.60, 0.90)
 
     # ────────────────────────────────────────────────────────────
-    # NORTH — above her / the unreachable system / keys / crown
+    # NORTH — what hangs above the sermon
     # ────────────────────────────────────────────────────────────
-    _register_segment({"dir": Dir.NORTH, "row": 0, "tint": c_gold,
+    _register_segment({"dir": Dir.NORTH, "row": 0, "tint": c_bone,
         "font_size": 13, "requires": null,
         "ascii":
 """
-       ╔═══════════════════════════════════════════════════╗
-       ║   V  ░░  THE HIEROPHANT  ░░  ACADIAN · ST. JUDE'S║
-       ╚═══════════════════════════════════════════════════╝
-        ─── Sunday Dress, Stiff & Biting ─── parking lot ───
+       ╔═══════════════════════════════════════════════════════╗
+       ║   V · THE HIEROPHANT · SWEATY SUNDAY SERMONETTES     ║
+       ║       [SYSTEM STATUS: CHURCH · BRUNCH · PHONE · PARK] ║
+       ╚═══════════════════════════════════════════════════════╝
+        ─── inherited authority · running on Sunday at idle ───
 """
     })
-    _register_segment({"dir": Dir.NORTH, "row": 1, "tint": c_gold,
-        "font_size": 12,
+    _register_segment({"dir": Dir.NORTH, "row": 1, "tint": c_pillar,
+        "font_size": 11,
         "requires": null,
         "ascii":
 """
               ┌──────────────────────────────────┐
-              │      A V D I  ·  E T  ·  T A C E │
-              │      ───────────────────────     │
-              │       (hear · and · be silent)   │
-              │      ─── carved into the lintel ─│
-              │      ─── carved into the carpet ─│
-              │      ─── carved into the child ─ │
+              │      TRADITION   |   CONFORMITY  │
+              │       ▓▓▓▓▓▓▓    |    ▓▓▓▓▓▓▓     │
+              │       ▓▓▓▓▓▓▓    |    ▓▓▓▓▓▓▓     │
+              │       ▓▓▓▓▓▓▓    |    ▓▓▓▓▓▓▓     │
+              │  ─── two pillars · one chair ───  │
+              │  ─── the chair holds the man ───  │
+              │  ─── the man holds the chair ───  │
               └──────────────────────────────────┘
 """
     })
-    _register_segment({"dir": Dir.NORTH, "row": 2, "tint": c_gold,
+    _register_segment({"dir": Dir.NORTH, "row": 2, "tint": c_blue,
         "font_size": 12,
-        "requires": func(): return banner_read,
+        "requires": func(): return sermon_count >= 1,
         "ascii":
 """
-       ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-     ░▒▒▓▓████  KEYSTONE · HIEROPHANT  ████▓▓▒▒░
-       ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-        AVDI  — hear what you are told.
-        ET    — and. the conjunction is the bind.
-        TACE  — be silent. do not answer back.
-        ─── the chapter's command to her ───
-        ─── the chapter's command to you ───
+              ╔══════════════════════════════════════╗
+              ║   CHURCH_VIBE.EXE                    ║
+              ║   ─ palette: bleached-bone whites ─  ║
+              ║   ─ secondary: courtroom blues ─     ║
+              ║   ─ font: ringed neat ─              ║
+              ║   ─ runtime: Sundays from 6:42 AM ─  ║
+              ║   ─ exit code: still pending ─       ║
+              ╚══════════════════════════════════════╝
 """
     })
-    _register_segment({"dir": Dir.NORTH, "row": 3, "tint": c_gold,
+    _register_segment({"dir": Dir.NORTH, "row": 3, "tint": c_demon,
         "font_size": 11,
-        "requires": func(): return keys_touched,
+        "requires": func(): return commands_run.get("demon", 0) >= 1
+                          or commands_run.get("persistent_demon", 0) >= 1,
         "ascii":
 """
-              ╔══════════════════════════════════╗
-              ║    ░  ✠ CROSSED KEYS ✠  ░         ║
-              ║                                  ║
-              ║    one key for heaven.           ║
-              ║    one key for earth.            ║
-              ║    crossed at the bow.           ║
-              ║    held by no one.               ║
-              ║                                  ║
-              ║    above the rose window.        ║
-              ║    above where she can reach.    ║
-              ╚══════════════════════════════════╝
+              ┌──────────────────────────────────┐
+              │  [PERSISTENT_DEMON_UI]           │
+              │  one demon sits in the rafters.  │
+              │  it tracks who confesses what.   │
+              │  it is not banished here.        │
+              │  the cathedral RUNS on demon.    │
+              │  Frasier banished his two.       │
+              │  Quentin keeps his.              │
+              └──────────────────────────────────┘
 """
     })
-    _register_segment({"dir": Dir.NORTH, "row": 4, "tint": c_gold,
+    _register_segment({"dir": Dir.NORTH, "row": 4, "tint": c_bone_hot,
         "font_size": 11,
-        "requires": func(): return crown_touched,
-        "ascii":
-"""
-              ╔══════════════════════════════════╗
-              ║      ░  ▓▓▓▓ TIARA ▓▓▓▓  ░       ║
-              ║      ░ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ░         ║
-              ║      ░░░░░░░░░░░░░░░░░░          ║
-              ║      ─── three tiers ───         ║
-              ║      ─ TEACHING ─                ║
-              ║      ─ GOVERNING ─               ║
-              ║      ─ SANCTIFYING ─             ║
-              ║      three rings she must pass.  ║
-              ╚══════════════════════════════════╝
-"""
-    })
-    _register_segment({"dir": Dir.NORTH, "row": 5, "tint": c_red,
-        "font_size": 11,
-        "requires": func(): return window_segments >= 4,
+        "requires": func(): return rosh_invocations >= 4,
         "ascii":
 """
               ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-            ░░  ROSE WINDOW · 8 segments         ░░
-            ░░     R · B · Y · G · R · B · Y · G  ░░
-            ░░     red / blue / yellow / green   ░░
-            ░░  ─ four colors twice ─            ░░
-            ░░  ─ eight beatitudes ─             ░░
-            ░░  ─ seven sacraments + baptism ─   ░░
-            ░░  ─ Maya counts to four ─          ░░
-            ░░  ─ then loses count ─             ░░
+            ░░ THE BINDING HOLDS · ROSH @ 4/7  ░░
+            ░░ the sigil dimmed once but held.  ░░
+            ░░ the four kneelers do not stand.  ░░
+            ░░ they would. they don't.          ░░
               ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
     })
-    _register_segment({"dir": Dir.NORTH, "row": 6, "tint": c_gold,
+    _register_segment({"dir": Dir.NORTH, "row": 5, "tint": c_bone,
+        "font_size": 11,
+        "requires": func(): return witness_idx >= 3,
+        "ascii":
+"""
+              ╔══════════════════════════════════╗
+              ║   VN_DESIGN_NOTES — FOUR        ║
+              ║   VIGNETTE STRUCTURE             ║
+              ║   ─ vignette 1: reception        ║
+              ║   ─ vignette 2: sensory          ║
+              ║   ─ vignette 3: persistent_demon ║
+              ║   ─ vignette 4: corner booth     ║
+              ║   ─ all four observed ─ COMPASS  ║
+              ║     V-node marked complete       ║
+              ╚══════════════════════════════════╝
+"""
+    })
+    _register_segment({"dir": Dir.NORTH, "row": 6, "tint": c_bone_hot,
         "font_size": 11,
         "requires": func(): return hotspots_seen.size() >= 6,
         "ascii":
 """
               ┌──────────────────────────────────┐
-              │  ░ THE CARD IS THE CATECHISM ░   │
-              │  every figure points to a rule.  │
-              │  every rule points to a figure.  │
-              │  Maya is being inducted.         │
-              │  the dress is doing the work.    │
-              │  the player has been doing it    │
-              │  too, by reading this far.       │
+              │  ░ KEYSTONE · HIEROPHANT ░       │
+              │  AVDI ET TACE has been inherited │
+              │  whole, untranslated, by every   │
+              │  card in this deck except one.   │
+              │  the exception is THE FOOL.      │
+              │  the Fool refuses translation    │
+              │  by refusing the language.       │
               └──────────────────────────────────┘
 """
     })
 
     # ────────────────────────────────────────────────────────────
-    # SOUTH — below / floor / carpet / dress that bites / her body
+    # SOUTH — what kneels below / floor / bodies
     # ────────────────────────────────────────────────────────────
-    _register_segment({"dir": Dir.SOUTH, "row": 0, "tint": c_stone,
+    _register_segment({"dir": Dir.SOUTH, "row": 0, "tint": c_blue_dim,
         "font_size": 12, "requires": null,
         "ascii":
 """
-       ════════ THE CARPET · St. Jude's ═════════════════════
-        ░ red carpet runner ─ five colors of thread ─        ░
-        ░ words woven in, three rows deep:                   ░
-        ░   row 1: ECCLESIA SEMPER REFORMANDA                ░
-        ░   row 2: ANIMA CHRISTI SANCTIFICA ME               ░
-        ░   row 3: DOMINICA MASS  7  9  11                   ░
+       ════════════ THE FLOOR · St. Jude's ════════════════════
+            ░ red runner ░ four kneelers ░ Rosh sigil at        ░
+            ░ centre ░ the wood smells of last week's wax ░     ░
+            ░ AVDI ET TACE woven into the carpet edges ░        ░
 """
     })
     _register_segment({"dir": Dir.SOUTH, "row": 1, "tint": c_child,
         "font_size": 11,
-        "requires": func(): return dress_touches >= 1,
+        "requires": func(): return acolyte_idx >= 1,
         "ascii":
 """
-              ┌──────────────────────────────────┐
-              │  ░ MAYA's body log ░             │
-              │  the dress bites her back.       │
-              │  the seam is in the wrong place. │
-              │  the lace is stiff with starch.  │
-              │  her shoulder blades know first. │
-              │  her ribs know next.             │
-              └──────────────────────────────────┘
+              ┌────────────────────────────────┐
+              │  NORTH kneeler · MAYA · 7      │
+              │  ░ the dress still bites       │
+              │  ░ she does not look up        │
+              │  ░ she has not moved           │
+              │  ░ this is her chapter 5       │
+              │    from a different angle      │
+              └────────────────────────────────┘
 """
     })
-    _register_segment({"dir": Dir.SOUTH, "row": 2, "tint": c_red_dim,
+    _register_segment({"dir": Dir.SOUTH, "row": 2, "tint": c_bone,
         "font_size": 11,
-        "requires": func(): return dress_touches >= 4,
+        "requires": func(): return acolyte_idx >= 2,
         "ascii":
 """
-              ╔══════════════════════════════════╗
-              ║   the dress bites ░ four ░ times ║
-              ║   ─ each bite a different place ─║
-              ║                                  ║
-              ║   she does not scratch. she does ║
-              ║   not move. she does not speak.  ║
-              ║                                  ║
-              ║   AVDI ET TACE has been heard.   ║
-              ║   AVDI ET TACE has been obeyed.  ║
-              ╚══════════════════════════════════╝
+              ┌────────────────────────────────┐
+              │  EAST kneeler · ANTONIO · 43   │
+              │  ░ he is here because Quentin  │
+              │    said to be                  │
+              │  ░ his hands are folded wrong  │
+              │  ░ he is rehearsing the wreck  │
+              │    that is coming in vol7      │
+              └────────────────────────────────┘
 """
     })
     _register_segment({"dir": Dir.SOUTH, "row": 3, "tint": c_red,
         "font_size": 11,
-        "requires": func(): return dress_touches >= 8,
+        "requires": func(): return acolyte_idx >= 3,
+        "ascii":
+"""
+              ┌────────────────────────────────┐
+              │  SOUTH kneeler · JIMMY · ?     │
+              │  ░ age-uncertain · came late   │
+              │  ░ he is sweating              │
+              │  ░ his hands are not folded    │
+              │  ░ the saboteur kneels too     │
+              │  ░ but reserves the right to   │
+              │    sabotage the kneeling       │
+              └────────────────────────────────┘
+"""
+    })
+    _register_segment({"dir": Dir.SOUTH, "row": 4, "tint": c_bone_dim,
+        "font_size": 11,
+        "requires": func(): return acolyte_idx >= 4,
+        "ascii":
+"""
+              ┌────────────────────────────────┐
+              │  WEST kneeler · JOHN · timeless│
+              │  ░ the cook · the wiper        │
+              │  ░ the dog at his side         │
+              │  ░ the only one who could      │
+              │    have refused. who chose     │
+              │    not to. who chose to wipe   │
+              │    the counter on this side    │
+              │    of the door instead.        │
+              └────────────────────────────────┘
+"""
+    })
+    _register_segment({"dir": Dir.SOUTH, "row": 5, "tint": c_bone_hot,
+        "font_size": 11,
+        "requires": func(): return rosh_invocations >= 7,
         "ascii":
 """
               ╔══════════════════════════════════╗
-              ║  ░ THE DRESS IS THE HIEROPHANT ░ ║
+              ║  ░ ROSH FULLY INVOKED ░          ║
               ║                                  ║
-              ║  the figure on the card is the   ║
-              ║  excuse. the actual hierophant   ║
-              ║  is the garment.                 ║
+              ║  the sigil dims. the binding     ║
+              ║  holds. the four do not stand.   ║
               ║                                  ║
-              ║  it bites because that is what   ║
-              ║  was inherited. she bleeds a     ║
-              ║  little. she will be told it     ║
-              ║  was the heat.                   ║
+              ║  the binding was never sealed    ║
+              ║  by the ritual. the binding was  ║
+              ║  the showing-up.                 ║
               ╚══════════════════════════════════╝
 """
     })
-    _register_segment({"dir": Dir.SOUTH, "row": 4, "tint": c_cream,
+    _register_segment({"dir": Dir.SOUTH, "row": 6, "tint": c_red,
         "font_size": 11,
-        "requires": func(): return carpet_read_stage >= 1,
+        "requires": func(): return booth_read,
         "ascii":
 """
-              ┌──── carpet · row 1 ──────────────┐
-              │  ECCLESIA SEMPER REFORMANDA      │
-              │  ─── always reforming ───        │
-              │  the institution is never done.  │
-              │  it has been reforming for       │
-              │  centuries. it will reform       │
-              │  through her too. starting now.  │
+              ┌──────────────────────────────────┐
+              │  D'AMBROSIO'S corner booth       │
+              │  ░ BLACK COFFEE NEAT             │
+              │  ░ ordered before he arrives     │
+              │  ░ the waitress writes 'Quentin' │
+              │    without asking the name       │
+              │  ░ the booth is reserved by      │
+              │    long-standing fact            │
               └──────────────────────────────────┘
-"""
-    })
-    _register_segment({"dir": Dir.SOUTH, "row": 5, "tint": c_blue,
-        "font_size": 11,
-        "requires": func(): return carpet_read_stage >= 2,
-        "ascii":
-"""
-              ┌──── carpet · row 2 ──────────────┐
-              │  ANIMA CHRISTI SANCTIFICA ME     │
-              │  ─── sanctify me ───             │
-              │  she does not know what          │
-              │  SANCTIFICA means.               │
-              │  she repeats it under her breath │
-              │  because it sounds like SCRATCH. │
-              │  she would scratch if she could. │
-              └──────────────────────────────────┘
-"""
-    })
-    _register_segment({"dir": Dir.SOUTH, "row": 6, "tint": c_gold,
-        "font_size": 11,
-        "requires": func(): return carpet_read_stage >= 3,
-        "ascii":
-"""
-              ┌──── carpet · row 3 ──────────────┐
-              │  DOMINICA MASS  7  9  11         │
-              │  ─── the schedule ───            │
-              │  this chapter is before the 7.   │
-              │  the heat is already up. the     │
-              │  doors are open for the carpet   │
-              │  to air. she counts to seven on  │
-              │  the carpet rows. she gets there.│
-              └──────────────────────────────────┘
+              ░ "Just remember who your friends ░
+              ░ are, Antonio. In these          ░
+              ░ uncertain times."               ░
 """
     })
 
     # ────────────────────────────────────────────────────────────
-    # EAST — forward / who she'll be / catechism / Y identity
+    # EAST — multi-witness POV / forward
     # ────────────────────────────────────────────────────────────
-    _register_segment({"dir": Dir.EAST, "row": 0, "tint": c_gold,
+    _register_segment({"dir": Dir.EAST, "row": 0, "tint": c_blue,
         "font_size": 11, "requires": null,
         "ascii":
 """
 
-         ┌── CATECHISM · pending ─────────────────┐
-         │  age 7   first communion               │
-         │  age 12  confirmation                  │
-         │  age 14  she stops attending           │
-         │  age 19  she comes back, briefly       │
-         │  age 31  she has not been back since   │
-         │                                        │
-         │  ─ the schedule does not know this yet ─│
+         ┌── [MULTI-WITNESS POV] · OFFICIAL ──────┐
+         │  press number                          │
+         │  sermon parsed                         │
+         │  Theorpter · trees · boxed             │
+         │  selling smelock                       │
+         │  ─ archive accepts ─                   │
          └────────────────────────────────────────┘
 """
     })
-    _register_segment({"dir": Dir.EAST, "row": 1, "tint": c_cream,
+    _register_segment({"dir": Dir.EAST, "row": 1, "tint": c_blue,
         "font_size": 11,
-        "requires": func(): return y_touched >= 1,
+        "requires": func(): return witness_idx >= 1,
         "ascii":
 """
 
-              ┌────────────────────────────────┐
-              │  Y · the other acolyte         │
-              │  ░ Y is beside her             │
-              │  ░ Y kneels too                │
-              │  ░ Y is also seven             │
-              │  ░ Y has not said anything     │
-              │    today. AVDI ET TACE applies │
-              │    to Y just the same.         │
-              └────────────────────────────────┘
+         ┌── [MULTI-WITNESS POV] · SENSORY ───────┐
+         │  Heavy suit in Texas heat.             │
+         │  Black engraved sweat. Saliva-soaked   │
+         │  collar. Eye lid most. The cologne is  │
+         │  cologne and nothing else.             │
+         │  ─ body receives ─                     │
+         └────────────────────────────────────────┘
 """
     })
-    _register_segment({"dir": Dir.EAST, "row": 2, "tint": c_cream,
+    _register_segment({"dir": Dir.EAST, "row": 2, "tint": c_demon,
         "font_size": 11,
-        "requires": func(): return y_touched >= 2,
+        "requires": func(): return witness_idx >= 2,
         "ascii":
 """
 
-              ┌────────────────────────────────┐
-              │  Y · more visible              │
-              │  ░ Y has a different last name │
-              │  ░ Y's mother is in the back   │
-              │  ░ Y's mother is praying with  │
-              │    her eyes open               │
-              │  ░ Y's mother is from out of   │
-              │    town. she is here for this. │
-              └────────────────────────────────┘
+         ┌── [MULTI-WITNESS POV] · DEMON ─────────┐
+         │  one demon in the rafters tracks       │
+         │  every confession by name.             │
+         │  the cathedral RUNS on the demon.      │
+         │  Frasier banished both his demons.     │
+         │  Quentin keeps his. it knows the cost. │
+         │  ─ ledger accumulates ─                │
+         └────────────────────────────────────────┘
 """
     })
-    _register_segment({"dir": Dir.EAST, "row": 3, "tint": c_gold,
+    _register_segment({"dir": Dir.EAST, "row": 3, "tint": c_red,
         "font_size": 11,
-        "requires": func(): return y_touched >= 3,
+        "requires": func(): return witness_idx >= 3,
         "ascii":
 """
 
-              ╔════════════════════════════════╗
-              ║   Y · identified               ║
-              ║                                ║
-              ║   Y is Father Quent's nephew.  ║
-              ║   Y will be a priest, in time. ║
-              ║   Y already knows.             ║
-              ║                                ║
-              ║   Maya does not know what      ║
-              ║   ALREADY KNOWS means.         ║
-              ║                                ║
-              ║   ░ vol5_y_identified = TRUE ░ ║
-              ╚════════════════════════════════╝
+         ┌── [MULTI-WITNESS POV] · BOOTH ─────────┐
+         │  BLACK COFFEE NEAT — ordered ahead.    │
+         │  "Just remember who your friends are." │
+         │  the line is for ANTONIO.              │
+         │  the line is also for the player.      │
+         │  Antonio kneels. the line lands.       │
+         │  ─ binding sealed ─                    │
+         └────────────────────────────────────────┘
 """
     })
-    _register_segment({"dir": Dir.EAST, "row": 4, "tint": c_blue,
-        "font_size": 11,
-        "requires": func(): return commands_run.get("priestess", 0) >= 1
-                          or commands_run.get("elicia", 0) >= 1,
-        "ascii":
-"""
-
-              ┌──────────────────────────────────┐
-              │  ░ cross-card · PRIESTESS ░      │
-              │  Elicia is the adult observer.   │
-              │  Maya is the child experiencer.  │
-              │  one records. one is being       │
-              │  recorded INTO.                  │
-              │  they are the same shape from    │
-              │  different angles in time.       │
-              └──────────────────────────────────┘
-"""
-    })
-    _register_segment({"dir": Dir.EAST, "row": 5, "tint": c_red,
+    _register_segment({"dir": Dir.EAST, "row": 4, "tint": c_bone_hot,
         "font_size": 11,
         "requires": func(): return commands_run.get("emperor", 0) >= 1
                           or commands_run.get("dante", 0) >= 1,
@@ -550,39 +532,39 @@ func _build_thematic_widget() -> void:
 
               ┌──────────────────────────────────┐
               │  ░ cross-card · EMPEROR ░        │
-              │  the vineyard belongs to Dante.  │
-              │  the Acadian (Father Quent's     │
-              │  uncle) runs it on his behalf.   │
-              │  the wine for the 9am mass:      │
-              │  Acadian Vineyard '94.           │
-              │  GAS STATION RED on the table.   │
+              │  the Acadian vineyard is Dante's │
+              │  on paper. Quentin's uncle runs  │
+              │  it. Quentin says the 9am wine.  │
+              │  Dante signs the lease.          │
+              │  Quentin pours the lease.        │
+              │  the wine is the same wine.      │
               └──────────────────────────────────┘
 """
     })
-    _register_segment({"dir": Dir.EAST, "row": 6, "tint": c_gold,
+    _register_segment({"dir": Dir.EAST, "row": 5, "tint": c_red,
         "font_size": 11,
-        "requires": func(): return banner_read and dress_touches >= 4,
+        "requires": func(): return commands_run.get("antonio", 0) >= 1
+                          or commands_run.get("chariot", 0) >= 1,
         "ascii":
 """
 
-              ╔══════════════════════════════════╗
-              ║  ░ HIEROPHANT FULL RECEIVED ░    ║
-              ║                                  ║
-              ║  ▓ AVDI ET TACE banner read.     ║
-              ║  ▓ Dress has bitten four times.  ║
-              ║  ▓ Maya has not spoken.          ║
-              ║  ▓ Maya has not moved.           ║
-              ║                                  ║
-              ║  she is now a member.            ║
-              ║  the system has installed itself.║
-              ╚══════════════════════════════════╝
+              ┌──────────────────────────────────┐
+              │  ░ cross-card · CHARIOT ░        │
+              │  Antonio is Chariot's POV.       │
+              │  the wreck is ahead of him.      │
+              │  Quentin made the phone call     │
+              │  that left him here this morning │
+              │  instead of behind that wheel.   │
+              │  the binding bought time.        │
+              │  the binding costs.              │
+              └──────────────────────────────────┘
 """
     })
 
     # ────────────────────────────────────────────────────────────
-    # WEST — past / Acadian inheritance / parents / heat
+    # WEST — past / Acadian inheritance / books / cards
     # ────────────────────────────────────────────────────────────
-    _register_segment({"dir": Dir.WEST, "row": 0, "tint": c_cream,
+    _register_segment({"dir": Dir.WEST, "row": 0, "tint": c_bone,
         "font_size": 11, "requires": null,
         "ascii":
 """
@@ -591,260 +573,243 @@ func _build_thematic_widget() -> void:
               │  ─── parish est. 1898 ───        │
               │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
               │  ▓ Father Paul (pastor)          │
-              │  ▓ Father Quent (deacon, Acadian)│
+              │  ▓ Father Quentin (deacon)       │
               │  ▓ Acadian Vineyard donates wine │
               │  ▓ carpet replaced 1976          │
               │  ▓ next replacement: never       │
               └──────────────────────────────────┘
 """
     })
-    _register_segment({"dir": Dir.WEST, "row": 1, "tint": c_child,
+    _register_segment({"dir": Dir.WEST, "row": 1, "tint": c_pillar,
         "font_size": 11,
-        "requires": null,
+        "requires": func(): return tradition_touched,
         "ascii":
 """
               ┌──────────────────────────────────┐
-              │  MAYA · age 7 · Sunday morning   │
-              │  ─── before the 7am mass ───     │
-              │ ░ the dress was her cousin's.    │
-              │ ░ the cousin was a year older.   │
-              │ ░ the cousin grew faster than    │
-              │   anyone expected.               │
-              │ ░ Maya was told it would fit.    │
-              │ ░ Maya was told incorrectly.     │
+              │  ░ PILLAR · TRADITION ░           │
+              │  what came before is the chair.  │
+              │  the chair does not change.      │
+              │  the man on the chair changes.   │
+              │  the chair forgets him within    │
+              │  a generation. the chair         │
+              │  remains.                        │
               └──────────────────────────────────┘
 """
     })
-    _register_segment({"dir": Dir.WEST, "row": 2, "tint": c_cream,
+    _register_segment({"dir": Dir.WEST, "row": 2, "tint": c_pillar,
         "font_size": 11,
-        "requires": func(): return commands_run.get("quent", 0) >= 1
-                          or commands_run.get("paul", 0) >= 1
-                          or commands_run.get("father", 0) >= 1,
+        "requires": func(): return conformity_touched,
         "ascii":
 """
               ┌──────────────────────────────────┐
-              │  FATHER PAUL · 58 · pastor       │
-              │  ─ believes in process ─         │
-              │  ─ believes in patience ─        │
-              │  ─ does not believe in the heat ─│
-              │                                  │
-              │  FATHER QUENT · 34 · Acadian     │
-              │  ─ believes in form ─            │
-              │  ─ believes in inheritance ─     │
-              │  ─ wears the heat as a vestment ─│
+              │  ░ PILLAR · CONFORMITY ░          │
+              │  the same shape every Sunday.    │
+              │  the kneelers shaped by the      │
+              │  shape they kneel into.          │
+              │  the door open from one side.    │
+              │  the door not noticed by those   │
+              │  shaped to face the throne.      │
               └──────────────────────────────────┘
 """
     })
     _register_segment({"dir": Dir.WEST, "row": 3, "tint": c_blue,
         "font_size": 11,
-        "requires": func(): return commands_run.get("petrine", 0) >= 1
-                          or commands_run.get("peter", 0) >= 1,
-        "ascii":
-"""
-              ┌──────────────────────────────────┐
-              │  PETRINE KEYS                    │
-              │  ░ one to bind, one to loose     │
-              │  ░ given to Peter on the rock    │
-              │  ░ passed hand to hand for       │
-              │    two thousand years            │
-              │  ░ Maya knows none of this.      │
-              │  ░ Maya knows the keys are above │
-              │    her head and unreachable.     │
-              │  ░ that is enough.               │
-              └──────────────────────────────────┘
-"""
-    })
-    _register_segment({"dir": Dir.WEST, "row": 4, "tint": c_stone,
-        "font_size": 11,
-        "requires": func(): return commands_run.get("heat", 0) >= 1
-                          or commands_run.get("sunday", 0) >= 1,
-        "ascii":
-"""
-              ┌──────────────────────────────────┐
-              │  HEAT · the Acadian summer       │
-              │  ░ already at 6:42 AM            │
-              │  ░ the doors are open            │
-              │  ░ the cicadas have not          │
-              │    started yet. they will.       │
-              │  ░ the dress is wool blend.      │
-              │  ░ she was told it would breathe │
-              │  ░ wool does not.                │
-              └──────────────────────────────────┘
-"""
-    })
-    _register_segment({"dir": Dir.WEST, "row": 5, "tint": c_red_dim,
-        "font_size": 10,
         "requires": func(): return commands_run.get("voltaire", 0) >= 1
                           or commands_run.get("candide", 0) >= 1,
         "ascii":
 """
               ┌──────────────────────────────────┐
-              │  ░ VOLTAIRE elsewhere ░          │
-              │  Frasier has the cassette.       │
-              │  Dante's father underlined the   │
-              │  garden line.                    │
-              │  here, in the parish, Voltaire   │
-              │  is the name on a banned list    │
-              │  in the church library closet,   │
-              │  three doors from where she      │
-              │  kneels.                         │
+              │  ░ VOLTAIRE · banned shelf ░     │
+              │  CANDIDE is on the parish's      │
+              │  banned-book closet list.        │
+              │  three doors from where Maya     │
+              │  kneels. Quentin signed the      │
+              │  list. Father Paul did not.      │
+              │  the list disagrees with         │
+              │  itself, quietly.                │
+              └──────────────────────────────────┘
+"""
+    })
+    _register_segment({"dir": Dir.WEST, "row": 4, "tint": c_bone_dim,
+        "font_size": 11,
+        "requires": func(): return commands_run.get("priestess", 0) >= 1
+                          or commands_run.get("elicia", 0) >= 1,
+        "ascii":
+"""
+              ┌──────────────────────────────────┐
+              │  ░ cross-card · PRIESTESS ░       │
+              │  Elicia has a tape of this       │
+              │  sermon. Quentin did not consent │
+              │  to be recorded. she did not     │
+              │  ask. her ethic permits this.    │
+              │  she would tell you so.          │
+              └──────────────────────────────────┘
+"""
+    })
+    _register_segment({"dir": Dir.WEST, "row": 5, "tint": c_blue,
+        "font_size": 11,
+        "requires": func(): return commands_run.get("frasier", 0) >= 1
+                          or commands_run.get("magician", 0) >= 1,
+        "ascii":
+"""
+              ┌──────────────────────────────────┐
+              │  ░ cross-card · MAGICIAN ░        │
+              │  Frasier's warehouse is a temple │
+              │  with rust for stained glass.    │
+              │  this temple has stained glass   │
+              │  with rust for rust.             │
+              │  one chose to build his temple.  │
+              │  the other inherited his to run. │
               └──────────────────────────────────┘
 """
     })
     _register_segment({"dir": Dir.WEST, "row": 6, "tint": c_red,
         "font_size": 11,
-        "requires": func(): return dress_touches >= 8 and banner_read,
+        "requires": func(): return booth_read and witness_idx >= 3,
         "ascii":
 """
               ╔══════════════════════════════════╗
-              ║  ░ THE INHERITANCE COMPLETE ░    ║
+              ║  ░ THE FRIENDS REMARK ░          ║
               ║                                  ║
-              ║  it is not the keys. it is not   ║
-              ║  the crown. it is not the        ║
-              ║  banner. it is not the carpet.   ║
+              ║  Antonio hears it inside the     ║
+              ║  sermon. it reads as benediction.║
               ║                                  ║
-              ║  it is the dress.                ║
+              ║  the player hears it outside.    ║
+              ║  it reads as threat.             ║
               ║                                  ║
-              ║  ─ the system installs from      ║
-              ║    the skin inward. ─            ║
+              ║  both readings are correct.      ║
+              ║  the line is doing both jobs.    ║
               ╚══════════════════════════════════╝
 """
     })
 
 
 # ── Mechanics ────────────────────────────────────────────────────
-func _do_dress() -> void:
-    dress_touches += 1
-    hotspots_seen["hie_dress"] = true
+func _do_sermon() -> void:
+    sermon_count += 1
+    hotspots_seen["sermon"] = true
     _refresh_tally()
-    # A small sharp pinch — short high square
-    _active_notes.append({"time":0.0,"freq":1100.0,"wave":"square",
-        "atk":0.001,"dur":0.04,"rel":0.05})
-    _active_notes.append({"time":0.0,"freq":220.0,"wave":"triangle",
-        "atk":0.005,"dur":0.10,"rel":0.10})
-    var line: String = DRESS_BITES[min(dress_touches - 1,
-                                        DRESS_BITES.size() - 1)]
-    _memorize("dress: " + line)
-    status_label.text = line
-    _log("[color=#e85060]· %s[/color]" % line)
-    SaveSystem.mark_unlocked("vol5_dress_bites_seen")
-    if dress_touches == 8:
-        _log("[color=#ffd070]· ░░ THE DRESS IS THE HIEROPHANT ─ system installed.[/color]")
-        SaveSystem.mark_unlocked("vol5_dress_is_hierophant")
+    # Quentin's voice = mid-range sustained tone
+    _active_notes.append({"time":0.0,"freq":196.0,"wave":"sine",
+        "atk":0.04,"dur":0.45,"rel":0.55})
+    _memorize("sermon #%d" % sermon_count)
+    var lines := [
+        "Quentin clears his throat. the kneelers do not move.",
+        "Quentin speaks. it is in Latin. it does not need to be heard.",
+        "Quentin pauses. the pause does the work the words can't.",
+        "Quentin smiles slightly. somebody in the back coughs anyway.",
+        "Quentin says 'AVDI ET TACE.' Maya hears SCRATCH again. she does not.",
+        "Quentin says 'BLESSED ARE WE.' the demon in the rafters takes a note.",
+    ]
+    var i: int = min(sermon_count - 1, lines.size() - 1)
+    status_label.text = lines[i]
+    _log("[color=#fffeec]· sermon %d · %s[/color]" % [sermon_count, lines[i]])
+    if sermon_count == 1:
+        SaveSystem.mark_unlocked("vol5_sermon_attended")
 
 
-func _do_keys() -> void:
-    if not keys_touched:
-        keys_touched = true
-        hotspots_seen["hie_keys"] = true
+func _do_tradition() -> void:
+    if not tradition_touched:
+        tradition_touched = true
+        hotspots_seen["tradition"] = true
         _refresh_tally()
-        _memorize("crossed keys touched")
-        status_label.text = "✠ one for heaven · one for earth · crossed."
-        _log("[color=#ffd070]· ✠ crossed keys — Petrine, unreachable.[/color]")
-        SaveSystem.mark_unlocked("vol5_keys_seen")
-    _active_notes.append({"time":0.0,"freq":523.0,"wave":"sine",
-        "atk":0.03,"dur":0.35,"rel":0.45})
+        _memorize("TRADITION touched")
+        status_label.text = "TRADITION — the chair, not the man."
+        _log("[color=#c8c4b0]· ▓ TRADITION pillar touched · the chair, not the man.[/color]")
+        SaveSystem.mark_unlocked("vol5_pillar_tradition")
+    _active_notes.append({"time":0.0,"freq":146.8,"wave":"sawtooth",
+        "atk":0.03,"dur":0.35,"rel":0.40})
+    if tradition_touched and conformity_touched:
+        _log("[color=#fffeec]· ░░ BOTH PILLARS — the throne is bound.[/color]")
+        SaveSystem.mark_unlocked("vol5_hierophant_throne_bound")
 
 
-func _do_crown() -> void:
-    if not crown_touched:
-        crown_touched = true
-        hotspots_seen["hie_crown"] = true
+func _do_conformity() -> void:
+    if not conformity_touched:
+        conformity_touched = true
+        hotspots_seen["conformity"] = true
         _refresh_tally()
-        _memorize("triple crown touched")
-        status_label.text = "▓▓▓ tiara — teaching · governing · sanctifying."
-        _log("[color=#ffd070]· ▓▓▓ triple crown — three rings to pass.[/color]")
-        SaveSystem.mark_unlocked("vol5_tiara_seen")
-    # Three ascending tones
-    _active_notes.append({"time":0.0,"freq":261.6,"wave":"sine",
-        "atk":0.02,"dur":0.20,"rel":0.20})
-    _active_notes.append({"time":0.0,"freq":329.6,"wave":"sine",
-        "atk":0.02,"dur":0.20,"rel":0.20})
-    _active_notes.append({"time":0.0,"freq":392.0,"wave":"sine",
-        "atk":0.02,"dur":0.25,"rel":0.30})
+        _memorize("CONFORMITY touched")
+        status_label.text = "CONFORMITY — the shape they kneel into."
+        _log("[color=#c8c4b0]· ▓ CONFORMITY pillar touched · the shape they kneel into.[/color]")
+        SaveSystem.mark_unlocked("vol5_pillar_conformity")
+    _active_notes.append({"time":0.0,"freq":164.8,"wave":"sawtooth",
+        "atk":0.03,"dur":0.35,"rel":0.40})
+    if tradition_touched and conformity_touched:
+        _log("[color=#fffeec]· ░░ BOTH PILLARS — the throne is bound.[/color]")
+        SaveSystem.mark_unlocked("vol5_hierophant_throne_bound")
 
 
-func _do_maya() -> void:
-    if not maya_touched:
-        maya_touched = true
-        hotspots_seen["hie_acolyte_maya"] = true
-        _refresh_tally()
-        _memorize("maya acolyte selected")
-        status_label.text = "Maya · 7 · kneeling · dress biting · silent."
-        _log("[color=#f8b8a0]· M · Maya · the acolyte on the left.[/color]")
-    # Make the dress bite too — she IS the dress's host
-    _do_dress()
-
-
-func _do_y() -> void:
-    if y_touched >= Y_REVEALS.size():
-        status_label.text = "Y is identified. nothing more is offered."
+func _do_rosh() -> void:
+    if rosh_invocations >= ROSH_REVEALS.size():
+        status_label.text = "the Rosh sigil has shown what it shows."
         return
-    y_touched += 1
-    hotspots_seen["hie_acolyte_y"] = true
+    rosh_invocations += 1
+    hotspots_seen["rosh"] = true
     _refresh_tally()
-    _active_notes.append({"time":0.0,"freq":392.0,"wave":"triangle",
-        "atk":0.02,"dur":0.18,"rel":0.20})
-    var line: String = Y_REVEALS[y_touched - 1]
-    _memorize("Y: " + line)
+    # Low sub-bass + sustained mid — ritual chord
+    _active_notes.append({"time":0.0,"freq":98.0,"wave":"sawtooth",
+        "atk":0.04,"dur":0.55,"rel":0.60})
+    _active_notes.append({"time":0.0,"freq":196.0,"wave":"sine",
+        "atk":0.04,"dur":0.50,"rel":0.55})
+    var line: String = ROSH_REVEALS[rosh_invocations - 1]
+    _memorize("Rosh #%d · %s" % [rosh_invocations, line])
     status_label.text = line
-    _log("[color=#f8e0b0]· Y · %s[/color]" % line)
-    if y_touched >= Y_REVEALS.size():
-        SaveSystem.mark_unlocked("vol5_y_identified")
+    _log("[color=#a8b8d8]· ✠ rosh %d/7 · %s[/color]" % [rosh_invocations, line])
+    if rosh_invocations >= ROSH_REVEALS.size():
+        SaveSystem.mark_unlocked("vol5_rosh_binding_complete")
 
 
-func _do_window() -> void:
-    window_segments += 1
-    hotspots_seen["hie_rose_window"] = true
-    _refresh_tally()
-    var idx: int = (window_segments - 1) % WINDOW_COLORS.size()
-    var color_name: String = WINDOW_COLORS[idx]
-    _memorize("window segment %d : %s" % [window_segments, color_name])
-    # Pitch by color
-    var freqs := {"RED": 261.6, "BLUE": 329.6,
-                  "YELLOW": 392.0, "GREEN": 440.0}
-    var freq: float = float(freqs.get(color_name, 261.6))
-    _active_notes.append({"time":0.0,"freq":freq,"wave":"sine",
-        "atk":0.02,"dur":0.25,"rel":0.25})
-    status_label.text = "rose window: segment %d · %s." % [
-        window_segments, color_name]
-    _log("[color=#a0b0e8]· ░ rose window segment %d : %s[/color]" %
-         [window_segments, color_name])
-    if window_segments == 8:
-        _log("[color=#ffd070]· ░░ all 8 segments counted — 4 colors, twice.[/color]")
-        SaveSystem.mark_unlocked("vol5_glass_colors_seen")
-
-
-func _do_banner() -> void:
-    banner_read = true
-    hotspots_seen["hie_banner"] = true
-    _refresh_tally()
-    # The keystone chord — slow imperial fifth
-    for f in [196.0, 293.7, 392.0]:
-        _active_notes.append({"time":0.0,"freq":f,"wave":"sine",
-            "atk":0.05,"dur":0.55,"rel":0.55})
-    _memorize("AVDI ET TACE read")
-    status_label.text = "AVDI · ET · TACE — hear, and be silent."
-    _log("[color=#ffd070]· ░ KEYSTONE ─ AVDI · ET · TACE[/color]")
-    _log("[color=#a87830]·   the chapter's command, to her and to you.[/color]")
-    SaveSystem.mark_unlocked("vol5_audi_et_tace_known")
-
-
-func _do_carpet() -> void:
-    if carpet_read_stage >= CARPET_LINES.size():
-        status_label.text = "the carpet has been read down through to the schedule."
+func _do_acolytes() -> void:
+    if acolyte_idx >= ACOLYTES.size():
+        status_label.text = "all four kneelers identified."
         return
-    carpet_read_stage += 1
+    acolyte_idx += 1
+    hotspots_seen["acolytes"] = true
     _refresh_tally()
-    _active_notes.append({"time":0.0,"freq":175.0,"wave":"triangle",
+    _active_notes.append({"time":0.0,"freq":293.7,"wave":"triangle",
         "atk":0.02,"dur":0.20,"rel":0.25})
-    var line: String = CARPET_LINES[carpet_read_stage - 1]
-    _memorize("carpet: " + line)
+    var line: String = ACOLYTES[acolyte_idx - 1]
+    _memorize("acolyte · " + line)
     status_label.text = line
-    _log("[color=#e8d8a8]· carpet row %d · %s[/color]" %
-         [carpet_read_stage, line])
-    if carpet_read_stage >= CARPET_LINES.size():
-        SaveSystem.mark_unlocked("vol5_carpet_read")
+    _log("[color=#e8d0c0]· kneeler %d/4 · %s[/color]" % [acolyte_idx, line])
+    if acolyte_idx == ACOLYTES.size():
+        _log("[color=#fffeec]· ░ all four kneelers named — the ring is complete.[/color]")
+        SaveSystem.mark_unlocked("vol5_acolyte_ring_complete")
+
+
+func _do_booth() -> void:
+    if not booth_read:
+        booth_read = true
+        hotspots_seen["booth"] = true
+        _refresh_tally()
+        _memorize("D'Ambrosio's corner booth · BLACK COFFEE NEAT")
+        status_label.text = "BLACK COFFEE NEAT · Quentin's spot · the line lands on Antonio."
+        _log("[color=#e85060]· ☕ D'Ambrosio's booth · BLACK COFFEE NEAT · Quentin's spot.[/color]")
+        _log("[color=#c84050]·   \"Just remember who your friends are, Antonio. In these[/color]")
+        _log("[color=#c84050]·    uncertain times.\"[/color]")
+        SaveSystem.mark_unlocked("vol5_booth_warning")
+    # Coffee cup tap
+    _active_notes.append({"time":0.0,"freq":640.0,"wave":"square",
+        "atk":0.001,"dur":0.05,"rel":0.06})
+
+
+func _do_witness() -> void:
+    if witness_idx >= WITNESSES.size():
+        status_label.text = "all four witnesses seen."
+        return
+    witness_idx += 1
+    hotspots_seen["witness"] = true
+    _refresh_tally()
+    _active_notes.append({"time":0.0,"freq":440.0 + witness_idx * 30,
+        "wave":"sine","atk":0.02,"dur":0.18,"rel":0.20})
+    var line: String = WITNESSES[witness_idx - 1]
+    _memorize("witness " + str(witness_idx) + " · " + line)
+    status_label.text = "witness %d/4 → next vignette." % witness_idx
+    _log("[color=#a8b8d8]· %s[/color]" % line)
+    if witness_idx == WITNESSES.size():
+        _log("[color=#fffeec]· ░ all four vignettes observed — COMPASS V-node ready.[/color]")
+        SaveSystem.mark_unlocked("vol5_hierophant_four_vignettes")
 
 
 func _on_hotspot(hs: Dictionary) -> void:
@@ -852,16 +817,7 @@ func _on_hotspot(hs: Dictionary) -> void:
     var hs_id := str(hs.get("id",""))
     hotspots_seen[hs_id] = true
     _memorize("hotspot: " + hs_id)
-    match hs_id:
-        "hie_dress":         _do_dress()
-        "hie_keys":          _do_keys()
-        "hie_crown":         _do_crown()
-        "hie_acolyte_maya":  _do_maya()
-        "hie_acolyte_y":     _do_y()
-        "hie_rose_window":   _do_window()
-        "hie_banner":        _do_banner()
-        _:
-            status_label.text = "[ %s ]" % str(hs.get("interact", hs_id))
+    status_label.text = "[ %s ]" % str(hs.get("interact", hs_id))
 
 
 # ── Console commands ─────────────────────────────────────────────
@@ -870,7 +826,7 @@ func _on_command(text: String) -> void:
     console_input.text = ""
     if line == "":
         return
-    _log("[color=#ffd070]> %s[/color]" % text)
+    _log("[color=#fffeec]> %s[/color]" % text)
     commands_run[line] = int(commands_run.get(line, 0)) + 1
     _memorize("typed: " + line)
     var parts := line.split(" ", false)
@@ -880,22 +836,23 @@ func _on_command(text: String) -> void:
         # Public
         "help", "?":
             _cmd_help()
-        "dress", "bite":
-            _do_dress()
-        "keys":
-            _do_keys()
-        "crown", "tiara":
-            _do_crown()
-        "maya":
-            _do_maya()
-        "y":
-            _do_y()
-        "window", "rose":
-            _do_window()
-        "banner", "motto":
-            _do_banner()
-        "carpet":
-            _do_carpet()
+        "sermon", "preach":
+            _do_sermon()
+        "tradition":
+            _do_tradition()
+        "conformity":
+            _do_conformity()
+        "pillars":
+            if not tradition_touched: _do_tradition()
+            if not conformity_touched: _do_conformity()
+        "rosh", "binding", "invoke":
+            _do_rosh()
+        "acolytes", "kneelers", "kneeler", "ring":
+            _do_acolytes()
+        "booth", "coffee", "neat":
+            _do_booth()
+        "witness", "vignette", "witnesses":
+            _do_witness()
         "recall", "memory":
             _cmd_memory()
         "count", "counts":
@@ -908,157 +865,155 @@ func _on_command(text: String) -> void:
             console_log.clear()
         "exit", "quit", "close":
             closed.emit()
-        # Hidden — motto components
-        "avdi", "audi", "hear":
-            _log("[color=#ffd070]  AVDI — hear what you are told.[/color]")
-            _log("[color=#a87830]  she does. she has no choice.[/color]")
-        "tace", "silent":
-            _log("[color=#ffd070]  TACE — be silent. do not answer back.[/color]")
-            _log("[color=#a87830]  she is. she has not been given language for the bite.[/color]")
-        "et", "and":
-            _log("[color=#a87830]  ET — the conjunction is the bind.[/color]")
-        # Hidden — symbology
-        "petrine", "peter":
-            _log("[color=#a0b0e8]  Peter's keys: bind and loose.[/color]")
-            _log("[color=#a87830]  unreachable above the rose window.[/color]")
-        "rose", "glass":
-            _log("[color=#a0b0e8]  8 segments · 4 colors · she counts to four.[/color]")
-        "beatitudes", "eight":
-            _log("[color=#a0b0e8]  eight blessings. eight segments. same count.[/color]")
-        "sacraments", "seven":
-            _log("[color=#a0b0e8]  seven sacraments plus baptism = 8.[/color]")
-            _log("[color=#a87830]  the window has chosen its math.[/color]")
-        "ecclesia", "reformanda":
-            _log("[color=#ffd070]  ECCLESIA SEMPER REFORMANDA — always reforming.[/color]")
-            if carpet_read_stage < 1: _do_carpet()
-        "sanctifica", "anima", "christi":
-            _log("[color=#a0b0e8]  ANIMA CHRISTI SANCTIFICA ME — sanctify me.[/color]")
-            _log("[color=#a87830]  she hears SCRATCH. she would.[/color]")
-            if carpet_read_stage < 2:
-                while carpet_read_stage < 2: _do_carpet()
-        "mass", "schedule":
-            _log("[color=#ffd070]  DOMINICA MASS · 7 · 9 · 11[/color]")
-            _log("[color=#a87830]  this chapter is before the 7. heat already up.[/color]")
-            if carpet_read_stage < 3:
-                while carpet_read_stage < 3: _do_carpet()
-        # Hidden — body
-        "itch", "scratch":
-            _log("[color=#e85060]  she does not scratch. AVDI ET TACE applies.[/color]")
-        "bite", "stiff":
-            _do_dress()
-        "sunday":
-            _log("[color=#a87830]  Sunday at 6:42 AM. wool blend dress. cicadas pending.[/color]")
-        "heat":
-            _log("[color=#a87830]  Acadian summer. doors open for carpet airing.[/color]")
+        # Hidden — system
+        "sweaty", "sermonette", "sermonettes":
+            _log("[color=#e8e0c8]  sweaty sunday sermonette · 7:00 AM · doors open ↓[/color]")
+        "acadian", "st_jude", "stjude", "church":
+            _log("[color=#a8b8d8]  St. Jude's Acadian Church · est. 1898.[/color]")
+        "brunch":
+            _log("[color=#a8b8d8]  status: BRUNCH — Quentin will be in his booth by 9.[/color]")
+        "phone":
+            _log("[color=#a8b8d8]  status: PHONE — the call to Antonio was placed 06:18.[/color]")
+        "park":
+            _log("[color=#a8b8d8]  status: PARK — the lot fills first. the lot empties last.[/color]")
+        "system_status":
+            _log("[color=#a8b8d8]  CHURCH · BRUNCH · PHONE · PARK — all four active.[/color]")
+        "church_vibe", "vibe":
+            _log("[color=#fffeec]  CHURCH_VIBE.EXE · bleached-bone whites · courtroom blues[/color]")
+        "bones", "bleached", "white":
+            _log("[color=#fffeec]  the cathedral wears bleached bone. it's a colour, not a metaphor. mostly.[/color]")
+        "blue", "courtroom":
+            _log("[color=#a8b8d8]  the blue is from photo references of municipal courtrooms.[/color]")
+        # Hidden — ritual
+        "ritual":
+            _do_rosh()
+        "demon", "persistent_demon":
+            _log("[color=#a85050]  one demon · rafters · ledger of every confession.[/color]")
+            _log("[color=#7a3838]  Frasier banished his two. Quentin keeps his one.[/color]")
+        "vignette", "four_vignette", "vignettes":
+            _do_witness()
         # Hidden — people
-        "companion", "acolyte":
-            _do_y()
-        "quent", "father_quent":
-            _log("[color=#e8d8a8]  Father Quent · 34 · Acadian · wears the heat as a vestment.[/color]")
-        "paul", "father_paul":
-            _log("[color=#e8d8a8]  Father Paul · 58 · pastor · believes in patience.[/color]")
-        "father":
-            _log("[color=#e8d8a8]  two fathers. one believes in process, one in form.[/color]")
-        "catechism":
-            _log("[color=#ffd070]  age 7 · 12 · then she stops at 14.[/color]")
-        # Hidden — places
-        "acadian", "st_jude", "stjude":
-            _log("[color=#e8d8a8]  St. Jude's Acadian Church · parish est. 1898.[/color]")
-        # Cross-character
-        "elicia", "priestess":
-            _log("[color=#a09a8a]  Elicia is the adult-observer. Maya is the child-experiencer.[/color]")
-            _log("[color=#7a7468]  same shape, different angle in time.[/color]")
-        "frasier", "magician":
-            _log("[color=#88c8d0]  Frasier's cathedral runs on rust. yours runs on incense.[/color]")
-        "dante", "emperor":
-            _log("[color=#c89060]  the vineyard is his. Quent's uncle runs it.[/color]")
-            _log("[color=#a87040]  the 9am wine is Acadian '94. GAS STATION RED.[/color]")
-        "nicola", "empress":
-            _log("[color=#c8807a]  Nicola passes the parking lot in Vol6, alone.[/color]")
-        "john", "fool":
-            _log("[color=#c89868]  John never enters a church. the counter is his chapel.[/color]")
+        "quentin":
+            _log("[color=#fffeec]  Father Quentin Paul · 34 · Acadian · wears the heat as vestment.[/color]")
+            _log("[color=#c8c4b0]  has not banished his demon. is not interested in banishing it.[/color]")
+        "paul":
+            _log("[color=#c8c4b0]  Father Paul · 58 · pastor · believes in patience.[/color]")
+            _log("[color=#a89c80]  did not sign the banned-book list.[/color]")
+        "antonio":
+            _log("[color=#e85060]  Antonio D'Ambrosio · 43 · Dante's nephew · Chariot POV.[/color]")
+            _log("[color=#c84050]  the friends remark lands on him. it lands on you too.[/color]")
+        "friends":
+            _log("[color=#e85060]  \"Just remember who your friends are, Antonio.[/color]")
+            _log("[color=#c84050]   In these uncertain times.\"[/color]")
+            _log("[color=#7a3030]  the line does two jobs simultaneously.[/color]")
+        "uncertain":
+            _log("[color=#c84050]  uncertain times — manufactured uncertainty, in this case.[/color]")
+        "maya":
+            _log("[color=#e8c4b0]  Maya · 7 · north kneeler · the dress still bites.[/color]")
+            _log("[color=#a89080]  her chapter from a different angle.[/color]")
+        "jimmy":
+            _log("[color=#a85050]  Jimmy · south kneeler · saboteur · sweating.[/color]")
+            _log("[color=#7a3030]  reserves the right to sabotage the kneeling.[/color]")
+        "john":
+            _log("[color=#c8a878]  John · west kneeler · cook · wiper · dog at his side.[/color]")
+            _log("[color=#7a6850]  the only one who could have refused. chose to wipe the counter instead.[/color]")
+        # Hidden — cross-card
+        "magician", "frasier":
+            _log("[color=#88c8d0]  Frasier · rust-temple builder · two demons banished.[/color]")
+        "emperor", "dante":
+            _log("[color=#c89060]  Dante · the vineyard is his on paper. Quentin's uncle runs it.[/color]")
+        "empress", "nicola":
+            _log("[color=#c8807a]  Nicola · she passes the parking lot in Vol6, alone.[/color]")
+        "priestess", "elicia":
+            _log("[color=#a09a8a]  Elicia · tape of this sermon · Quentin did not consent.[/color]")
+        "fool":
+            _log("[color=#c89868]  the Fool refuses the language. the only card that can.[/color]")
+        "chariot":
+            _log("[color=#e8d070]  Antonio's card. the wreck. the phone call bought time.[/color]")
+        # Hidden — books
         "voltaire", "candide":
-            _log("[color=#e85060]  on the banned list in the church library closet.[/color]")
-            _log("[color=#a87830]  three doors from where she kneels.[/color]")
+            _log("[color=#a8b8d8]  CANDIDE · on the parish banned-book list.[/color]")
+            _log("[color=#586878]  three doors from where Maya kneels.[/color]")
+        # Hidden — sensory
+        "texas", "heat":
+            _log("[color=#c8a878]  the suit is wool blend. the suit was a mistake.[/color]")
+        "ribbed", "engraved":
+            _log("[color=#c8a878]  black engraved sweat — the salt outlines his collar.[/color]")
         _:
             if line == "tip":
-                _log("[color=#a87830]  no tip. the collection plate comes later.[/color]")
+                _log("[color=#586878]  the collection plate is on its way.[/color]")
             elif line == "rust_code.bbs":
-                _log("[color=#e85060]  blocked at the parish firewall.[/color]")
+                _log("[color=#a85050]  blocked at the parish firewall.[/color]")
             else:
-                _log("[color=#5a3040]? unknown. try: help · banner · dress[/color]")
+                _log("[color=#586878]? unknown. try: help · pillars · rosh[/color]")
 
 
 func _cmd_help() -> void:
-    _log("[color=#ffd070]commands (visible):[/color]")
-    _log("  [color=#ffe896]dress[/color]      — feel the dress bite")
-    _log("  [color=#ffe896]keys[/color]       — touch the crossed keys")
-    _log("  [color=#ffe896]crown[/color]      — touch the triple tiara")
-    _log("  [color=#ffe896]maya[/color]       — be the kneeling acolyte")
-    _log("  [color=#ffe896]y[/color]          — look at the other acolyte (3 reveals)")
-    _log("  [color=#ffe896]window[/color]     — count rose-window segments")
-    _log("  [color=#ffe896]banner[/color]     — read AVDI ET TACE (keystone)")
-    _log("  [color=#ffe896]carpet[/color]     — read the three Latin rows")
-    _log("  [color=#ffe896]recall[/color]     — discovery log")
-    _log("  [color=#ffe896]count[/color]      — tallies")
-    _log("  [color=#ffe896]look · listen · clear · exit[/color]")
-    _log("[color=#a87830](some commands are unlisted. the parish keeps secrets.)[/color]")
+    _log("[color=#fffeec]commands (visible):[/color]")
+    _log("  [color=#fffeec]sermon[/color]     — Quentin speaks")
+    _log("  [color=#fffeec]tradition[/color]  — left pillar")
+    _log("  [color=#fffeec]conformity[/color] — right pillar")
+    _log("  [color=#fffeec]pillars[/color]    — touch both")
+    _log("  [color=#fffeec]rosh[/color]       — invoke the floor sigil (7 stages)")
+    _log("  [color=#fffeec]acolytes[/color]   — identify the four kneelers")
+    _log("  [color=#fffeec]booth[/color]      — D'Ambrosio's corner booth · Quentin's spot")
+    _log("  [color=#fffeec]witness[/color]    — cycle multi-witness vignettes (4)")
+    _log("  [color=#fffeec]recall[/color]     — discovery log")
+    _log("  [color=#fffeec]count[/color]      — tallies")
+    _log("  [color=#fffeec]look · listen · clear · exit[/color]")
+    _log("[color=#586878](some commands are unlisted. the parish keeps its books.)[/color]")
 
 
 func _cmd_memory() -> void:
-    _log("[color=#ffd070]── memory · %d entries ──[/color]" % memory.size())
+    _log("[color=#fffeec]── memory · %d entries ──[/color]" % memory.size())
     var shown := 0
     for entry in memory:
         if shown >= 20:
-            _log("[color=#a87830]  ... (%d more)[/color]" %
+            _log("[color=#586878]  ... (%d more)[/color]" %
                  (memory.size() - shown))
             break
-        _log("  [color=#e8d8a8]· %s[/color]" % entry)
+        _log("  [color=#c8c4b0]· %s[/color]" % entry)
         shown += 1
 
 
 func _cmd_count() -> void:
-    _log("[color=#ffd070]── tallies ────────────────[/color]")
-    _log("  dress bites: [color=#e85060]%d / 8[/color]" % dress_touches)
-    _log("  keys:        [color=#ffe896]%s[/color]" %
-         ("touched" if keys_touched else "untouched"))
-    _log("  crown:       [color=#ffe896]%s[/color]" %
-         ("touched" if crown_touched else "untouched"))
-    _log("  maya:        [color=#ffe896]%s[/color]" %
-         ("acolyte" if maya_touched else "not yet"))
-    _log("  Y:           [color=#e8d8a8]%d / %d reveals[/color]" %
-         [y_touched, Y_REVEALS.size()])
-    _log("  window:      [color=#a0b0e8]%d / 8 segments[/color]" % window_segments)
-    _log("  banner:      [color=#ffd070]%s[/color]" %
-         ("read" if banner_read else "unread"))
-    _log("  carpet:      [color=#e8d8a8]%d / 3 rows[/color]" % carpet_read_stage)
-    _log("  hotspots:    [color=#ffd070]%d[/color]" % hotspots_seen.size())
-    _log("  commands run:[color=#ffd070] %d[/color]" % commands_run.size())
+    _log("[color=#fffeec]── tallies ────────────────[/color]")
+    _log("  sermon:      [color=#fffeec]%d[/color]" % sermon_count)
+    _log("  pillars:     [color=#c8c4b0]%s · %s[/color]" % [
+         "T✓" if tradition_touched else "T─",
+         "C✓" if conformity_touched else "C─"])
+    _log("  rosh:        [color=#a8b8d8]%d / 7 invocations[/color]" % rosh_invocations)
+    _log("  acolytes:    [color=#e8d0c0]%d / 4 named[/color]" % acolyte_idx)
+    _log("  booth:       [color=#e85060]%s[/color]" %
+         ("read" if booth_read else "unread"))
+    _log("  witnesses:   [color=#a8b8d8]%d / 4 vignettes[/color]" % witness_idx)
+    _log("  hotspots:    [color=#fffeec]%d[/color]" % hotspots_seen.size())
+    _log("  commands run:[color=#fffeec] %d[/color]" % commands_run.size())
 
 
 func _cmd_look() -> void:
-    _log("[color=#e8d8a8]· St. Jude's parking lot. sun already up.[/color]")
-    _log("[color=#e8d8a8]· crossed keys above the rose window.[/color]")
-    _log("[color=#e8d8a8]· triple tiara on the figure between her and the keys.[/color]")
-    _log("[color=#e8d8a8]· two kneelers: M (her) and Y (the other).[/color]")
-    _log("[color=#e8d8a8]· carpet underfoot. three latin rows woven in.[/color]")
-    _log("[color=#a87830]· AVDI ET TACE banner across the lintel.[/color]")
-    _log("[color=#e85060]· the dress. always the dress.[/color]")
+    _log("[color=#c8c4b0]· St. Jude's interior. Sunday. 6:42 AM.[/color]")
+    _log("[color=#c8c4b0]· Quentin on the throne. heavy suit. unmoved.[/color]")
+    _log("[color=#c8c4b0]· TRADITION pillar left · CONFORMITY pillar right.[/color]")
+    _log("[color=#c8c4b0]· four kneelers around the Rosh floor symbol.[/color]")
+    _log("[color=#586878]· corner booth visible from the lectern. coffee already ordered.[/color]")
+    _log("[color=#586878]· four multi-witness panels along the right wall.[/color]")
+    _log("[color=#586878]· one demon in the rafters. tracking. not banished.[/color]")
 
 
 func _cmd_listen() -> void:
-    _log("[color=#e8d8a8]· no cicadas yet. they will start at 7.[/color]")
-    _log("[color=#e8d8a8]· Father Paul rehearsing the kyrie under his breath.[/color]")
-    _log("[color=#e8d8a8]· car doors closing. the parishioners arriving.[/color]")
-    _log("[color=#a87830]· the carpet absorbing every footstep.[/color]")
-    _log("[color=#a87830]· her own breath, slightly held against the wool.[/color]")
+    _log("[color=#c8c4b0]· Father Paul rehearsing the kyrie under his breath.[/color]")
+    _log("[color=#c8c4b0]· cicadas just starting outside. it is going to be hot.[/color]")
+    _log("[color=#586878]· the demon making a sound that is not quite a sound.[/color]")
+    _log("[color=#586878]· coffee, somewhere. pouring.[/color]")
+    _log("[color=#586878]· Quentin's voice. low. ahead of the room.[/color]")
 
 
 func _refresh_tally() -> void:
     if tally_btn != null:
-        tally_btn.text = "  ✠ bites %d/8 · window %d/8 · Y %d/%d  " % [
-            dress_touches, window_segments,
-            y_touched, Y_REVEALS.size()]
+        var p := (1 if tradition_touched else 0) + (1 if conformity_touched else 0)
+        tally_btn.text = "  ✠ sermon %d · pillars %d/2 · rosh %d/7 · witnesses %d/4 · acolytes %d/4  " % [
+            sermon_count, p, rosh_invocations, witness_idx, acolyte_idx]
 
 
 func _memorize(entry: String) -> void:
@@ -1072,32 +1027,31 @@ func _log(line: String) -> void:
         console_log.append_text(line + "\n")
 
 
-# ── Process / heat shimmer / audio-reactive ASCII pulse ──────────
+# ── Process / heat / audio-reactive ASCII pulse ──────────────────
 func _process(delta: float) -> void:
     super(delta)
-    heat_phase = fmod(heat_phase + delta * 0.8, TAU)
+    heat_phase = fmod(heat_phase + delta * 0.7, TAU)
     if card_rect != null:
-        # Heat shimmer + slight red bias proportional to dress_touches
-        var shim := 1.0 + sin(heat_phase) * 0.018
-        var red_bias := dress_touches * 0.012
+        var shim := 1.0 + sin(heat_phase) * 0.020
+        # Red bias grows with rosh invocations — the binding flushes in
+        var red_bias := rosh_invocations * 0.010
         card_rect.modulate = Color(
             1.0 * shim + red_bias,
-            0.96 * shim,
-            0.92 * shim - red_bias * 0.5)
-    # Audio-reactive ASCII pulse
+            0.97 * shim,
+            0.95 * shim - red_bias * 0.4)
     tableau_pulse += delta
     var amp: float = 0.0
     var am := get_node_or_null("/root/AudioMgr")
     if am != null and am.has_method("get_bgm_magnitude"):
         amp = clamp(float(am.call("get_bgm_magnitude", 80.0, 3200.0)) * 10.0,
                      0.0, 1.0)
-    var base_amp = 0.08 + amp * 0.30
+    var base_amp = 0.07 + amp * 0.28
     var idx := 0
     for seg in _segments:
         if not seg.get("shown", false): continue
         var lbl: Label = seg.get("label")
         if lbl == null: continue
-        var phase = tableau_pulse * 1.7 + idx * 0.41
+        var phase = tableau_pulse * 1.6 + idx * 0.43
         var pulse_val = sin(phase) * 0.5 + 0.5
         var tint: Color = seg.get("tint", C_TEXT)
         var lifted := tint.lerp(C_GOLD_HI, pulse_val * base_amp)
@@ -1110,7 +1064,7 @@ func _input(event: InputEvent) -> void:
     super(event)
     if event is InputEventKey and event.pressed and not event.echo:
         if event.keycode == KEY_SPACE and not console_input.has_focus():
-            _do_dress()
+            _do_sermon()
             get_viewport().set_input_as_handled()
         match event.keycode:
             KEY_W: pan_by(Vector2(0, -80))
