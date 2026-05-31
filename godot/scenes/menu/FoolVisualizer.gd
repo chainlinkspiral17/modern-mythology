@@ -50,6 +50,7 @@ var console_log: RichTextLabel
 
 func _init() -> void:
     _card_path  = "res://assets/gallery/fool.png"
+    _composition_path = "fool_card"   # mosaic-block substrate centerpiece
     _hooks_path = "res://resources/puzzle_hooks/fool.json"
     _ambient_audio_path = "res://assets/audio/bgm/title_theme.ogg"
     C_BG = Color(0.040, 0.034, 0.020)

@@ -97,6 +97,7 @@ const MONITOR_CLIPS := [
 
 func _init() -> void:
     _card_path  = "res://assets/gallery/high_priestess.png"
+    _composition_path = "high_priestess_card"
     _hooks_path = "res://resources/puzzle_hooks/high_priestess.json"
     _ambient_audio_path = "res://assets/audio/bgm/vol5_cicadas_dusk.ogg"
     # Halftone B&W palette — the only color in the deck this monochrome

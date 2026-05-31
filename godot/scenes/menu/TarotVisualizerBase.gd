@@ -57,10 +57,19 @@ var C_GOLD_HI  := Color(1.0,  0.85, 0.59)
 var C_TEXT     := Color(0.85, 0.72, 0.50)
 var C_TEXT_DIM := Color(0.52, 0.40, 0.22)
 
+## AsciiComposition script for loading mosaic-block substrate compositions
+## as the card centerpiece when _composition_path is set.
+const ASCII_COMPOSITION_SCRIPT = preload("res://scenes/game/AsciiComposition.gd")
+
 var hooks: Dictionary = {}
 var canvas: Control                # the BIG world
 var viewport_box: Control          # fixed-size visible area
-var card_rect: TextureRect
+var card_rect: Control             # wrapper that hosts either a TextureRect
+                                    # (painted PNG) or an AsciiComposition
+                                    # (substrate). Layout coords (.position
+                                    # / .size) are the same either way so
+                                    # subclass hotspots are unaffected.
+var card_composition: Node = null  # AsciiComposition instance when used
 var hotspot_btns: Array = []
 var tableaux: Array = []           # Array of {dir, label}
 var minimap: Control
@@ -128,43 +137,11 @@ func _build_chrome() -> void:
     canvas.mouse_filter = Control.MOUSE_FILTER_PASS
     viewport_box.add_child(canvas)
 
-    # Card image in the center of the canvas.
-    # Use _load_image_with_fallback so the card loads even when the
-    # PNG hasn't been .import'd by the editor yet (running from
-    # un-imported source).
-    var card_tex: Texture2D = _load_image_with_fallback(_card_path)
-    if card_tex != null:
-        card_rect = TextureRect.new()
-        card_rect.texture = card_tex
-        card_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-        card_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-        var tex_sz := (card_rect.texture as Texture2D).get_size()
-        var card_h := CARD_PIXEL_H
-        var card_w := tex_sz.x * (card_h / tex_sz.y)
-        card_rect.size = Vector2(card_w, card_h)
-        card_rect.position = Vector2(
-            (CANVAS_SIZE - card_w) * 0.5,
-            (CANVAS_SIZE - card_h) * 0.5
-        )
-        card_rect.mouse_filter = Control.MOUSE_FILTER_PASS
-        canvas.add_child(card_rect)
-        # Soft golden frame around the card to lift it from the tableaux
-        var frame := ColorRect.new()
-        frame.color = Color(C_GOLD_HI.r, C_GOLD_HI.g, C_GOLD_HI.b, 0.0)
-        frame.position = card_rect.position - Vector2(6, 6)
-        frame.size = card_rect.size + Vector2(12, 12)
-        frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
-        var fs := StyleBoxFlat.new()
-        fs.bg_color = Color(0,0,0,0)
-        fs.border_color = C_GOLD
-        fs.set_border_width_all(2)
-        # Attach via Panel; simpler than draw-loop
-        var fp := Panel.new()
-        fp.position = card_rect.position - Vector2(6, 6)
-        fp.size = card_rect.size + Vector2(12, 12)
-        fp.add_theme_stylebox_override("panel", fs)
-        fp.mouse_filter = Control.MOUSE_FILTER_IGNORE
-        canvas.add_child(fp)
+    # Card centerpiece — substrate composition takes precedence, falling
+    # back to the painted PNG. The wrapper Control's position+size are
+    # the layout reference subclass hotspots use, so swapping the inner
+    # render path doesn't move any hotspots.
+    _build_card_surface()
 
     # Hotspots on the card — same coords as card_rect
     _build_hotspots()
@@ -217,6 +194,98 @@ func _build_chrome() -> void:
     minimap.offset_left = -130; minimap.offset_top = -130
     minimap.mouse_filter = Control.MOUSE_FILTER_IGNORE
     add_child(minimap)
+
+
+## Build the central card surface. Order of preference:
+##   1. _composition_path → mosaic-block substrate composition
+##      (renders the painted card as ASCII mosaic + crisp engine-font
+##      text overlays per resources/substrates/compositions/<id>.json).
+##   2. _card_path → painted PNG.
+##   3. Neither → empty wrapper, no centerpiece.
+##
+## The wrapper Control `card_rect` lives at the canvas center and is
+## the reference for subclass hotspots. The inner renderer fills it.
+func _build_card_surface() -> void:
+    # Decide target wrapper dimensions. For compositions we read the
+    # manifest's canvas size; for PNGs we use the texture aspect.
+    var card_w: float = 700.0
+    var card_h: float = CARD_PIXEL_H
+    var composition_canvas: Vector2 = Vector2.ZERO
+
+    if _composition_path != "":
+        var comp_full := "res://resources/substrates/compositions/" \
+                          + _composition_path + ".json"
+        if FileAccess.file_exists(comp_full):
+            var f := FileAccess.open(comp_full, FileAccess.READ)
+            var data: Variant = JSON.parse_string(f.get_as_text())
+            f.close()
+            if typeof(data) == TYPE_DICTIONARY and data.has("canvas"):
+                var arr = data["canvas"]
+                composition_canvas = Vector2(float(arr[0]), float(arr[1]))
+                # Card height fixed; width derived from manifest aspect
+                card_w = composition_canvas.x * (card_h / composition_canvas.y)
+        else:
+            push_warning("Visualizer: composition not found: " + comp_full)
+
+    if _composition_path == "" or composition_canvas == Vector2.ZERO:
+        var card_tex: Texture2D = _load_image_with_fallback(_card_path)
+        if card_tex == null:
+            # Nothing to render — leave card_rect as an empty wrapper at
+            # canvas center so hotspots fail soft instead of crashing.
+            card_rect = Control.new()
+            card_rect.size = Vector2(card_w, card_h)
+            card_rect.position = Vector2(
+                (CANVAS_SIZE - card_w) * 0.5,
+                (CANVAS_SIZE - card_h) * 0.5)
+            card_rect.mouse_filter = Control.MOUSE_FILTER_PASS
+            canvas.add_child(card_rect)
+            return
+        var tex_sz := card_tex.get_size()
+        card_w = tex_sz.x * (card_h / tex_sz.y)
+
+    # Build the wrapper at the canvas center
+    card_rect = Control.new()
+    card_rect.size = Vector2(card_w, card_h)
+    card_rect.position = Vector2(
+        (CANVAS_SIZE - card_w) * 0.5,
+        (CANVAS_SIZE - card_h) * 0.5)
+    card_rect.mouse_filter = Control.MOUSE_FILTER_PASS
+    canvas.add_child(card_rect)
+
+    # Fill the wrapper with either composition or texture
+    if _composition_path != "" and composition_canvas != Vector2.ZERO:
+        var comp := Control.new()
+        comp.set_script(ASCII_COMPOSITION_SCRIPT)
+        comp.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        # Scale composition canvas down to fit wrapper
+        var s_x := card_w / composition_canvas.x
+        var s_y := card_h / composition_canvas.y
+        comp.scale = Vector2(s_x, s_y)
+        card_rect.add_child(comp)
+        comp.call_deferred("load_composition", _composition_path)
+        card_composition = comp
+    else:
+        var card_tex: Texture2D = _load_image_with_fallback(_card_path)
+        if card_tex != null:
+            var tr := TextureRect.new()
+            tr.texture = card_tex
+            tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+            tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+            tr.anchor_right = 1; tr.anchor_bottom = 1
+            tr.mouse_filter = Control.MOUSE_FILTER_PASS
+            card_rect.add_child(tr)
+
+    # Soft golden frame around the card — applies to both modes
+    var frame_panel := Panel.new()
+    frame_panel.position = card_rect.position - Vector2(6, 6)
+    frame_panel.size = card_rect.size + Vector2(12, 12)
+    var fs := StyleBoxFlat.new()
+    fs.bg_color = Color(0, 0, 0, 0)
+    fs.border_color = C_GOLD
+    fs.set_border_width_all(2)
+    frame_panel.add_theme_stylebox_override("panel", fs)
+    frame_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    canvas.add_child(frame_panel)
 
 
 func _build_hotspots() -> void:

@@ -58,6 +58,7 @@ const MIRROR_STAGES := [
 
 func _init() -> void:
     _card_path  = "res://assets/gallery/emperor.png"
+    _composition_path = "emperor_card"
     _hooks_path = "res://resources/puzzle_hooks/emperor.json"
     _ambient_audio_path = "res://assets/audio/bgm/vol5_ambient.ogg"
     # Sepia monochrome

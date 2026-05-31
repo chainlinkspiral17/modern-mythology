@@ -100,6 +100,7 @@ const ARIA_FLAGS := [
 
 func _init() -> void:
     _card_path  = "res://assets/gallery/empress.png"
+    _composition_path = "empress_card"
     _hooks_path = "res://resources/puzzle_hooks/empress.json"
     _ambient_audio_path = "res://assets/audio/bgm/vol5_riverboat_drone.ogg"
     C_BG = Color(0.04, 0.05, 0.05)

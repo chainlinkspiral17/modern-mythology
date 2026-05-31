@@ -59,6 +59,7 @@ var console_log: RichTextLabel
 
 func _init() -> void:
     _card_path  = "res://assets/gallery/magician.png"
+    _composition_path = "magician_card"
     _hooks_path = "res://resources/puzzle_hooks/magician.json"
     _ambient_audio_path = "res://assets/audio/bgm/vol5_warehouse_drone.ogg"
     C_BG = Color(0.020, 0.028, 0.035)
