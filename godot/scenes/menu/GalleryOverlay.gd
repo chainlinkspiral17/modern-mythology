@@ -18,6 +18,7 @@ const SUBSTRATE_INDEX := "res://resources/substrates/gallery/_index.json"
 const SUBSTRATE_RASTER_SCRIPT := preload("res://scenes/game/AsciiSubstrateRaster.gd")
 const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 const DEBUG_OVERLAY_SCRIPT := preload("res://scenes/menu/SubstrateDebugOverlay.gd")
+const CARD_INTERACTIVE_SCRIPT := preload("res://scenes/menu/CardInteractiveLayer.gd")
 
 # Mirrors MainMenu.VOLUME_META — used to label per-volume gallery sections.
 const VOLUME_TITLES: Dictionary = {
@@ -314,6 +315,19 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 			else:
 				debug_overlay.visible = false)
 		viewer.add_child(debug_btn)
+
+	# Interactive layer — adds clickable hotspots + cipher reveals +
+	# per-card synth note trigger if a puzzle_hooks entry exists for
+	# this asset id. Sits above the composition, below the close hint.
+	# Resolves both arcana ids and portrait ids via the layer's bind().
+	var card_interactive := Control.new()
+	card_interactive.set_script(CARD_INTERACTIVE_SCRIPT)
+	card_interactive.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	card_interactive.z_index = 15
+	card_interactive.mouse_filter = Control.MOUSE_FILTER_PASS
+	viewer.add_child(card_interactive)
+	# Defer bind so _ready has fired and audio is initialized
+	card_interactive.call_deferred("bind", short_path)
 
 	var close_lbl := Label.new()
 	close_lbl.text = "CLICK TO CLOSE — %s" % title
