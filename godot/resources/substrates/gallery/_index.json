@@ -2,7 +2,7 @@
   "items": [
     {
       "id": "tarot_synth",
-      "title": "♬ TAROT SYNTH (playable)",
+      "title": "♬ TAROT SYNTH ★ (PLAYABLE)",
       "set": "Instruments",
       "type": "overlay",
       "path": "TarotSynthOverlay",
@@ -12,8 +12,8 @@
     },
     {
       "id": "fool_arcana",
-      "title": "0 — THE FOOL  (textual)",
-      "set": "Major Arcana",
+      "title": "0 — THE FOOL ★ (BBS TERMINAL)",
+      "set": "Major Arcana — Playable",
       "type": "composition",
       "path": "fool_arcana",
       "volume": 5,
@@ -66,7 +66,7 @@
     },
     {
       "id": "tarot_fool_v2",
-      "title": "0 — THE FOOL  (dashboard)",
+      "title": "0 — Fool (legacy dashboard)",
       "set": "Major Arcana",
       "type": "composition",
       "path": "tarot_fool_v2",
@@ -75,7 +75,7 @@
     },
     {
       "id": "tarot_fool",
-      "title": "0 — THE FOOL  (v1)",
+      "title": "0 — Fool (legacy v1 ASCII)",
       "set": "Major Arcana",
       "path": "gallery/tarot_fool",
       "volume": 5,

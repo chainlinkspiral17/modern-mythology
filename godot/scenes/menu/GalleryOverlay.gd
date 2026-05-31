@@ -20,6 +20,7 @@ const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 const DEBUG_OVERLAY_SCRIPT := preload("res://scenes/menu/SubstrateDebugOverlay.gd")
 const CARD_INTERACTIVE_SCRIPT := preload("res://scenes/menu/CardInteractiveLayer.gd")
 const FOOL_VISUALIZER_SCRIPT  := preload("res://scenes/menu/FoolVisualizer.gd")
+const TAROT_SYNTH_SCRIPT      := preload("res://scenes/menu/TarotSynthOverlay.gd")
 
 # Per-card dedicated visualizers — bypass the generic fullscreen viewer
 # when entries here match the item's path. Each visualizer is bespoke
@@ -277,9 +278,9 @@ func _make_substrate_tile(item: Dictionary) -> Control:
 
 
 func _view_substrate_fullscreen(short_path: String, title: String, kind: String = "substrate") -> void:
-	# Dedicated visualizer route — bespoke per-arcana experience
-	# (Fool's RUST_CODE.BBS terminal, etc). Bypasses the generic
-	# composition viewer when one exists for this asset.
+	# Dedicated visualizer route — bespoke per-arcana experience.
+	# Matches by path first (specific to a card), then by kind
+	# (handles new entry types like "overlay" / "playable").
 	if short_path == "fool_arcana":
 		var fv := Control.new()
 		fv.set_script(FOOL_VISUALIZER_SCRIPT)
@@ -288,6 +289,17 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		fv.mouse_filter = Control.MOUSE_FILTER_STOP
 		add_child(fv)
 		fv.connect("closed", func() -> void: fv.queue_free())
+		return
+	# Tarot Synth — type:"overlay" entry in the gallery index, opens
+	# the playable instrument as a fullscreen overlay
+	if kind == "overlay" or short_path == "TarotSynthOverlay":
+		var ts := Control.new()
+		ts.set_script(TAROT_SYNTH_SCRIPT)
+		ts.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		ts.z_index = 12
+		ts.mouse_filter = Control.MOUSE_FILTER_STOP
+		add_child(ts)
+		ts.connect("closed", func() -> void: ts.queue_free())
 		return
 
 	var viewer := ColorRect.new()
