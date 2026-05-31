@@ -239,6 +239,7 @@ function collectItemIds(data){
 function Stage({ node, clipUrl, currentTime, duration, selIdx, onSelect, onUpdateHotspot, onCreateHotspot, videoRef, showGuide }){
   const regionRef = useRef(null);
   const drag = useRef(null);          // {mode, idx, ox, oy, sx, sy, base}
+  const draftRef = useRef(null);      // latest create-rect, read on mouseup (avoids setState-in-updater)
   const [draft, setDraft] = useState(null); // create-rect preview {x,y,w,h}
   const layout = node.layout || DEFAULT_LAYOUT;
   const split = layout.mode==='split' ? clamp(layout.split ?? 0.62, 0.3, 0.85) : 1;
@@ -263,10 +264,12 @@ function Stage({ node, clipUrl, currentTime, duration, selIdx, onSelect, onUpdat
       const d = drag.current; if (!d) return;
       const p = pctFromEvent(e);
       if (d.mode==='create'){
-        setDraft({
+        const rect = {
           x: Math.min(d.sx, p.x), y: Math.min(d.sy, p.y),
           w: Math.abs(p.x - d.sx), h: Math.abs(p.y - d.sy),
-        });
+        };
+        draftRef.current = rect;
+        setDraft(rect);
       } else if (d.mode==='move'){
         const nx = clamp(d.base.x + (p.x - d.sx), 0, 100 - d.base.w);
         const ny = clamp(d.base.y + (p.y - d.sy), 0, 100 - d.base.h);
@@ -280,10 +283,9 @@ function Stage({ node, clipUrl, currentTime, duration, selIdx, onSelect, onUpdat
     const onUp = ()=>{
       const d = drag.current; drag.current = null;
       if (d && d.mode==='create'){
-        setDraft(prev=>{
-          if (prev && prev.w>3 && prev.h>3) onCreateHotspot({ x:r1(prev.x), y:r1(prev.y), w:r1(prev.w), h:r1(prev.h) });
-          return null;
-        });
+        const rect = draftRef.current; draftRef.current = null;
+        setDraft(null);
+        if (rect && rect.w>3 && rect.h>3) onCreateHotspot({ x:r1(rect.x), y:r1(rect.y), w:r1(rect.w), h:r1(rect.h) });
       }
     };
     window.addEventListener('mousemove', onMove);
