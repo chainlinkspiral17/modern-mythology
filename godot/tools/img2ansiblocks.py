@@ -74,7 +74,8 @@ def face_crop(img, margin=1.9, up_bias=0.30):
 
 
 def convert(image_path, width, dither, bg_index, palette, mode="vga16",
-            colors=12, do_face_crop=False, autocontrast=False, gamma=1.0):
+            colors=12, do_face_crop=False, autocontrast=False, gamma=1.0,
+            cell_aspect=1.0):
     img = Image.open(image_path)
     if do_face_crop:
         img = face_crop(img)
@@ -85,8 +86,10 @@ def convert(image_path, width, dither, bg_index, palette, mode="vga16",
         lut = [min(255, int((i / 255.0) ** (1.0 / gamma) * 255)) for i in range(256)]
         img = img.point(lut * 3)
     iw, ih = img.size
-    # Square sub-pixels: sub-grid is `width` wide; height keeps image aspect.
-    sub_h = max(2, round(width * ih / iw))
+    # `cell_aspect` = font sub-pixel width / height (advance / (lineheight/2)).
+    # 1.0 assumes square sub-pixels; SpaceMono is ~0.82 (taller cells), so pass
+    # 0.82 to keep the image undistorted when rendered in-engine.
+    sub_h = max(2, round(width * (ih / iw) * cell_aspect))
     if sub_h % 2:
         sub_h += 1
     rows = sub_h // 2
@@ -147,6 +150,9 @@ def main():
                     help="crop square centered on the largest detected face")
     ap.add_argument("--autocontrast", action="store_true", help="stretch tonal range")
     ap.add_argument("--gamma", type=float, default=1.0, help="gamma lift (>1 brightens)")
+    ap.add_argument("--cell-aspect", type=float, default=1.0,
+                    help="font sub-pixel w/h (1.0=square; SpaceMono≈0.82 keeps "
+                         "in-engine render undistorted)")
     args = ap.parse_args()
 
     image_path = Path(args.image)
@@ -155,7 +161,8 @@ def main():
 
     data = convert(image_path, args.width, not args.no_dither, args.bg_index, VGA16,
                    mode=args.mode, colors=args.colors, do_face_crop=args.face_crop,
-                   autocontrast=args.autocontrast, gamma=args.gamma)
+                   autocontrast=args.autocontrast, gamma=args.gamma,
+                   cell_aspect=args.cell_aspect)
     out = Path(args.out) if args.out else image_path.with_suffix(".halfblock.json")
     out.write_text(json.dumps(data))
     print(out)
