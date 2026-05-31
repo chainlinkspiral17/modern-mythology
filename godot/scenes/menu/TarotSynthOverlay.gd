@@ -343,13 +343,13 @@ func _preset(timbre: String) -> Dictionary:
 
 
 func _scale_snap(semi: int, scale: Array) -> int:
-    var oct := int(floor(semi / 12.0))
-    var in_oct = semi - oct * 12
-    var best := scale[0]
-    var best_d := 999
+    var oct: int = int(floor(semi / 12.0))
+    var in_oct: int = semi - oct * 12
+    var best: int = int(scale[0])
+    var best_d: int = 999
     for s in scale:
-        var d = abs(s - in_oct)
-        if d < best_d: best_d = d; best = s
+        var d: int = int(abs(int(s) - in_oct))
+        if d < best_d: best_d = d; best = int(s)
     return oct * 12 + best
 
 
