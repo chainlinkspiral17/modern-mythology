@@ -1,6 +1,48 @@
 {
   "items": [
     {
+      "id": "fool_blocks",
+      "title": "0 — THE FOOL  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/fool_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "magician_blocks",
+      "title": "I — THE MAGICIAN  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/magician_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "high_priestess_blocks",
+      "title": "II — THE HIGH PRIESTESS  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/high_priestess_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "empress_blocks",
+      "title": "III — THE EMPRESS  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/empress_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "emperor_blocks",
+      "title": "IV — THE EMPEROR  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/emperor_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "hierophant_blocks",
+      "title": "V — THE HIEROPHANT  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/hierophant_blocks",
+      "always_unlocked": true
+    },
+    {
       "id": "fool_arcana",
       "title": "0 — THE FOOL  (textual)",
       "set": "Major Arcana",
