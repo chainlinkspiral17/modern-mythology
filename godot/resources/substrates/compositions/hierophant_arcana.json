@@ -35,25 +35,13 @@
       "z": 0
     },
     {
-      "kind": "image",
-      "path": "assets/gallery/hierophant.png",
+      "kind": "static",
+      "path": "gallery/hierophant_clean_blocks",
       "x": 0,
       "y": 0,
-      "w": 1376,
-      "h": 768,
-      "alpha": 1.0,
-      "blend_mode": "add",
+      "font_px": 6,
       "z": 5,
-      "audio_reactive": {
-        "freq_lo": 60,
-        "freq_hi": 4000,
-        "base_alpha": 0.95,
-        "max_alpha": 1.0,
-        "min_alpha": 0.85,
-        "magnitude": 4.0,
-        "smoothing": 0.1,
-        "update_hz": 30
-      }
+      "alpha": 1.0
     }
   ]
 }

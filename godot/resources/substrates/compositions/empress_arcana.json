@@ -35,25 +35,13 @@
       "z": 0
     },
     {
-      "kind": "image",
-      "path": "assets/gallery/empress.png",
+      "kind": "static",
+      "path": "gallery/empress_clean_blocks",
       "x": 0,
       "y": 0,
-      "w": 1920,
-      "h": 1047,
-      "alpha": 1.0,
-      "blend_mode": "add",
+      "font_px": 6,
       "z": 5,
-      "audio_reactive": {
-        "freq_lo": 60,
-        "freq_hi": 4000,
-        "base_alpha": 0.97,
-        "max_alpha": 1.0,
-        "min_alpha": 0.9,
-        "magnitude": 3.0,
-        "smoothing": 0.1,
-        "update_hz": 30
-      }
+      "alpha": 1.0
     }
   ]
 }

@@ -527,6 +527,23 @@ func _do_bg(n: Dictionary) -> void:
 	if src == "":
 		_bg.texture = null
 		return
+	# Prefer substrate mosaic over painted PNG when one is available.
+	# The image filename's basename (e.g. vol5_dambrosios_interior) gets
+	# matched against gallery/<base>_clean_blocks; if found, the
+	# substrate layer takes over and the painted-PNG TextureRect is
+	# hidden so it can't bleed over the mosaic.
+	var base := src.get_file().get_basename()
+	var mosaic_short := "gallery/" + base + "_clean_blocks"
+	var mosaic_path := "res://resources/substrates/" + mosaic_short + ".json"
+	if FileAccess.file_exists(mosaic_path):
+		_substrate.call("load_substrate", mosaic_short)
+		_bg.texture = null
+		_bg.visible = false
+		if _bg_frame != null:
+			_bg_frame.queue_redraw()
+		return
+	# Fallback: painted PNG.
+	_bg.visible = true
 	var path := "res://" + src
 	if ResourceLoader.exists(path):
 		_bg.texture = ResourceLoader.load(path) as Texture2D

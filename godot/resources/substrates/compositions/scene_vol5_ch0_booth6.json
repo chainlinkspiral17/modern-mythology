@@ -32,14 +32,13 @@
       "update_hz": 30
     },
     {
-      "kind": "image",
-      "path": "assets/backgrounds/vol5_dambrosios_exterior.png",
+      "kind": "static",
+      "path": "gallery/vol5_dambrosios_exterior_clean_blocks",
       "x": 0,
       "y": 0,
-      "w": 1920,
-      "h": 1080,
-      "alpha": 1.0,
-      "z": 3
+      "font_px": 6,
+      "z": 3,
+      "alpha": 1.0
     },
     {
       "kind": "image_frames",

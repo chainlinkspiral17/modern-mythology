@@ -1,42 +1,54 @@
 {
   "id": "portrait_mackenzie",
-  "canvas": [810, 858],
+  "canvas": [
+    810,
+    858
+  ],
   "bg": "#05080c",
   "windows": [
-    { "kind": "image", "path": "assets/gallery/portrait_vignette.png",
-      "x": 0, "y": 0, "w": 810, "h": 858,
-      "alpha": 0.30, "z": 0 },
-
-    { "kind": "visualizer",
-      "x": 0, "y": 600, "font_px": 14,
-      "bar_count": 60, "bar_height": 14, "bar_gap": 0,
-      "min_freq": 200, "max_freq": 6000,
-      "magnitude": 16.0, "smoothing": 0.18, "peak_decay": 0.9,
+    {
+      "kind": "image",
+      "path": "assets/gallery/portrait_vignette.png",
+      "x": 0,
+      "y": 0,
+      "w": 810,
+      "h": 858,
+      "alpha": 0.3,
+      "z": 0
+    },
+    {
+      "kind": "visualizer",
+      "x": 0,
+      "y": 600,
+      "font_px": 14,
+      "bar_count": 60,
+      "bar_height": 14,
+      "bar_gap": 0,
+      "min_freq": 200,
+      "max_freq": 6000,
+      "magnitude": 16.0,
+      "smoothing": 0.18,
+      "peak_decay": 0.9,
       "peak_hold": false,
       "wave_smooth_passes": 1,
       "update_hz": 30,
-      "col_dim":      "#05080c",
-      "col_lo":       "#10202e",
-      "col_mid":      "#1f4458",
-      "col_hi":       "#3a7a9a",
-      "col_peak":     "#9bd0ff",
+      "col_dim": "#05080c",
+      "col_lo": "#10202e",
+      "col_mid": "#1f4458",
+      "col_hi": "#3a7a9a",
+      "col_peak": "#9bd0ff",
       "col_peak_tip": "#d6ecff",
-      "alpha": 0.20, "z": 1 },
-
-    { "kind": "image_frames",
-      "frames": [
-        "assets/gallery/portrait_phone_mackenzie_0.png",
-        "assets/gallery/portrait_phone_mackenzie_1.png"
-      ],
-      "frame_duration": 0.7,
-      "x": 145, "y": 80, "w": 520, "h": 660,
-      "stretch": "fit",
-      "alpha": 0.96, "z": 5,
-      "audio_reactive": {
-        "freq_lo": 200, "freq_hi": 4000,
-        "base_alpha": 0.90, "max_alpha": 1.0, "min_alpha": 0.82,
-        "magnitude": 5.0, "smoothing": 0.14, "update_hz": 30
-      }
+      "alpha": 0.2,
+      "z": 1
+    },
+    {
+      "kind": "static",
+      "path": "gallery/portrait_phone_mackenzie_clean_blocks",
+      "x": 145,
+      "y": 80,
+      "font_px": 6,
+      "z": 5,
+      "alpha": 0.96
     }
   ]
 }
