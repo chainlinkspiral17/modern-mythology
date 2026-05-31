@@ -24,8 +24,10 @@ GAL = Path("godot/assets/gallery")
 
 # (cx, cy, radius_px) of the Gemini ✦ in each card.
 MARKS = {
-    "empress":  (1830, 945, 46),
-    "magician": (1835, 1223, 24),
+    "empress":    (1830, 945,  46),
+    "magician":   (1835, 1223, 24),
+    "hierophant": (2640, 1413, 44),
+    "chariot":    (2630, 1428, 50),
 }
 
 # Empress-only: the current "NICOLA" nametag bbox (to be erased)
@@ -263,6 +265,23 @@ def process_magician() -> None:
     print(f"    QA: /tmp/magician_watermark_after.png")
 
 
+def process_simple(name: str) -> None:
+    """Simple watermark-only erase for cards that don't need any extra
+    compositing (no nametag flip, no Aria glow, etc.)."""
+    src = GAL / f"{name}.png"
+    if not src.exists():
+        print(f"  ! missing: {src}")
+        return
+    img, rgba, has_a = load_bgr(src)
+    print(f"  · {name}: erase watermark")
+    cx, cy, r = MARKS[name]
+    inpaint_diamond(img, cx, cy, r, algorithm=cv2.INPAINT_NS)
+    save_with_alpha(img, rgba, has_a, src)
+    qa = img[max(0, cy - 90): cy + 90, max(0, cx - 130): cx + 130]
+    cv2.imwrite(f"/tmp/{name}_watermark_after.png", qa)
+    print(f"    QA: /tmp/{name}_watermark_after.png")
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print(__doc__)
@@ -272,6 +291,11 @@ if __name__ == "__main__":
         process_empress()
     if target in ("magician", "all"):
         process_magician()
-    if target not in ("empress", "magician", "all"):
-        print(f"unknown target: {target}")
+    if target in ("hierophant", "all"):
+        process_simple("hierophant")
+    if target in ("chariot", "all"):
+        process_simple("chariot")
+    valid = {"empress", "magician", "hierophant", "chariot", "all"}
+    if target not in valid:
+        print(f"unknown target: {target}  (valid: {sorted(valid)})")
         sys.exit(1)
