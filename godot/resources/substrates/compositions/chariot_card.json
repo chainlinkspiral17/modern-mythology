@@ -1,0 +1,17 @@
+{
+  "id": "chariot_card",
+  "canvas": [
+    2056,
+    1144
+  ],
+  "bg": "#040610",
+  "windows": [
+    {
+      "path": "gallery/chariot_clean_blocks",
+      "x": 0,
+      "y": 0,
+      "font_px": 6,
+      "z": 1
+    }
+  ]
+}

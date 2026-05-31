@@ -163,10 +163,22 @@ def build(spec):
 
 
 ROMAN = {"fool": "0", "magician": "I", "high_priestess": "II",
-         "empress": "III", "emperor": "IV", "hierophant": "V"}
+         "empress": "III", "emperor": "IV", "hierophant": "V",
+         "lovers": "VI", "chariot": "VII", "strength": "VIII",
+         "hermit": "IX", "wheel": "X", "justice": "XI",
+         "hanged_man": "XII", "death": "XIII", "temperance": "XIV",
+         "devil": "XV", "tower": "XVI", "star": "XVII", "moon": "XVIII",
+         "sun": "XIX", "judgement": "XX", "world": "XXI"}
 NAME = {"fool": "THE FOOL", "magician": "THE MAGICIAN",
         "high_priestess": "THE HIGH PRIESTESS", "empress": "THE EMPRESS",
-        "emperor": "THE EMPEROR", "hierophant": "THE HIEROPHANT"}
+        "emperor": "THE EMPEROR", "hierophant": "THE HIEROPHANT",
+        "lovers": "THE LOVERS", "chariot": "THE CHARIOT",
+        "strength": "STRENGTH", "hermit": "THE HERMIT",
+        "wheel": "WHEEL OF FORTUNE", "justice": "JUSTICE",
+        "hanged_man": "THE HANGED MAN", "death": "DEATH",
+        "temperance": "TEMPERANCE", "devil": "THE DEVIL",
+        "tower": "THE TOWER", "star": "THE STAR", "moon": "THE MOON",
+        "sun": "THE SUN", "judgement": "JUDGEMENT", "world": "THE WORLD"}
 
 
 def register(card):

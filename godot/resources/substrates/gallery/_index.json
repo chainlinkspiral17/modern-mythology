@@ -170,6 +170,21 @@
       "always_unlocked": true
     },
     {
+      "id": "chariot_blocks",
+      "title": "VII — THE CHARIOT  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/chariot_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "chariot_card",
+      "title": "VII — THE CHARIOT  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "chariot_card",
+      "always_unlocked": true
+    },
+    {
       "id": "tarot_fool",
       "title": "0 — Fool (legacy v1 ASCII)",
       "set": "Major Arcana (Legacy)",

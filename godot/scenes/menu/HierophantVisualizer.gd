@@ -84,12 +84,9 @@ const ROSH_REVEALS := [
 
 func _init() -> void:
     _card_path  = "res://assets/gallery/hierophant.png"
-    # Substrate composition stays UNSET — the existing
-    # resources/substrates/compositions/hierophant_card.json was
-    # rendered from the prior Maya child-POV painted card, not this
-    # Quentin authority card. Fall back to the painted PNG until
-    # the substrate is regenerated from the new source.
-    _composition_path = ""
+    # Composition was regenerated from the new Quentin sketch art via
+    # img2ansiblocks.py + build_arcana_card.py — safe to wire now.
+    _composition_path = "hierophant_card"
     _hooks_path = "res://resources/puzzle_hooks/hierophant.json"
     _ambient_audio_path = "res://assets/audio/bgm/vol5_ambient.ogg"
     # Bleached-bone whites + courtroom blues per the CHURCH_VIBE.EXE

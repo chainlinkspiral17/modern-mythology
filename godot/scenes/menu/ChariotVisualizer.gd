@@ -90,7 +90,7 @@ const SCAFFOLD_STAGES := [
 
 func _init() -> void:
     _card_path  = "res://assets/gallery/chariot.png"
-    _composition_path = ""   # no substrate composition exists yet for Chariot
+    _composition_path = "chariot_card"   # mosaic-block centerpiece
     _hooks_path = "res://resources/puzzle_hooks/chariot.json"
     _ambient_audio_path = "res://assets/audio/bgm/vol5_riverboat_drone.ogg"
     # Rust orange + industrial white + diagnostic blue
