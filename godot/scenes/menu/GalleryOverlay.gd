@@ -20,6 +20,7 @@ const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 const DEBUG_OVERLAY_SCRIPT := preload("res://scenes/menu/SubstrateDebugOverlay.gd")
 const CARD_INTERACTIVE_SCRIPT := preload("res://scenes/menu/CardInteractiveLayer.gd")
 const FOOL_VISUALIZER_SCRIPT  := preload("res://scenes/menu/FoolVisualizer.gd")
+const EMPRESS_VISUALIZER_SCRIPT := preload("res://scenes/menu/EmpressVisualizer.gd")
 const TAROT_SYNTH_SCRIPT      := preload("res://scenes/menu/TarotSynthOverlay.gd")
 
 # Per-card dedicated visualizers — bypass the generic fullscreen viewer
@@ -150,14 +151,29 @@ func _rebuild() -> void:
 				var title: String = str(VOLUME_TITLES.get(vol, ""))
 				header = "VOLUME %d" % vol if title == "" else "VOLUME %d  —  %s" % [vol, title.to_upper()]
 			content.add_child(_volume_label(header))
-			var flow := FlowContainer.new()
-			flow.alignment = FlowContainer.ALIGNMENT_BEGIN
-			flow.add_theme_constant_override("h_separation", 10)
-			flow.add_theme_constant_override("v_separation", 10)
-			flow.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			content.add_child(flow)
+			# Sub-group by `set` field (chapter / arcana / instruments)
+			# Sort: Major Arcana first → Chapter 0/I/II/… in numeric/roman
+			# order → portraits set bucket → instruments last.
+			var by_set: Dictionary = {}
+			var set_order: Array = []
 			for it_v in groups[vol]:
-				flow.add_child(_make_substrate_tile(it_v as Dictionary))
+				var it_d: Dictionary = it_v as Dictionary
+				var sset: String = str(it_d.get("set", "—"))
+				if not by_set.has(sset):
+					by_set[sset] = []
+					set_order.append(sset)
+				(by_set[sset] as Array).append(it_d)
+			set_order.sort_custom(_set_sort_compare)
+			for sset in set_order:
+				content.add_child(_chapter_label(str(sset)))
+				var flow := FlowContainer.new()
+				flow.alignment = FlowContainer.ALIGNMENT_BEGIN
+				flow.add_theme_constant_override("h_separation", 10)
+				flow.add_theme_constant_override("v_separation", 10)
+				flow.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				content.add_child(flow)
+				for it_v in by_set[sset]:
+					flow.add_child(_make_substrate_tile(it_v as Dictionary))
 
 	# CG section
 	content.add_child(_section_label("CG IMAGES"))
@@ -186,6 +202,75 @@ func _section_label(text: String) -> Label:
 	lbl.text = text
 	_apply_font(lbl, SkinDB.F_CINZEL, 11, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.85))
 	return lbl
+
+
+# Try multiple naming conventions to find a card thumbnail image.
+# fool_arcana → fool.png; portrait_dante → portrait_dante_0.png;
+# tarot_synth → tarot_synth.png if it exists.
+func _resolve_thumbnail(item_id: String) -> Texture2D:
+	if item_id == "":
+		return null
+	var candidates: Array = []
+	# Arcana cards
+	var arcana_base := item_id.replace("_arcana", "")
+	candidates.append("res://assets/gallery/%s.png" % arcana_base)
+	# Portraits — use first frame of the cycle
+	if item_id.begins_with("portrait_"):
+		candidates.append("res://assets/gallery/%s_0.png" % item_id)
+	# Generic — id.png
+	candidates.append("res://assets/gallery/%s.png" % item_id)
+	# Synth + other interactive — bespoke icons could land here later
+	for p in candidates:
+		if ResourceLoader.exists(p):
+			return load(p) as Texture2D
+	return null
+
+
+func _chapter_label(text: String) -> Label:
+	# Sub-grouping header under a volume (chapter/arcana/instruments)
+	var lbl := Label.new()
+	lbl.text = "  ▸ " + text
+	_apply_font(lbl, SkinDB.F_CINZEL, 9, Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.65))
+	return lbl
+
+
+# Sort sub-groups within a volume header. Major Arcana first, then
+# chapters (parse roman numerals or arabic), then portraits, then
+# instruments/other. Returns true if a should appear BEFORE b.
+func _set_sort_compare(a: String, b: String) -> bool:
+	return _set_sort_key(a) < _set_sort_key(b)
+
+
+func _set_sort_key(s: String) -> int:
+	var sl := s.to_lower()
+	# Major Arcana / its variants first
+	if sl.contains("major arcana") and not sl.contains("playable"):
+		return 0
+	if sl.contains("major arcana") and sl.contains("playable"):
+		return 1
+	# Chapter <roman/number> — extract a number for ordering
+	if sl.contains("chapter"):
+		# Try arabic number first
+		var n := 999
+		for tok in s.split(" "):
+			if tok.is_valid_int():
+				n = int(tok); break
+		# Roman numeral fallback
+		const ROMAN := {"0":0,"i":1,"ii":2,"iii":3,"iv":4,"v":5,"vi":6,
+		                "vii":7,"viii":8,"ix":9,"x":10,"xi":11,"xii":12,
+		                "xiii":13,"xiv":14,"xv":15,"xvi":16,"xvii":17,
+		                "xviii":18,"xix":19,"xx":20,"xxi":21}
+		if n == 999:
+			for tok in s.split(" "):
+				var lt := tok.to_lower().rstrip(",.:")
+				if ROMAN.has(lt):
+					n = ROMAN[lt]; break
+		return 100 + n
+	if sl.contains("portrait"):
+		return 800
+	if sl.contains("instrument"):
+		return 900
+	return 999
 
 
 func _volume_label(text: String) -> Label:
@@ -234,6 +319,29 @@ func _make_substrate_tile(item: Dictionary) -> Control:
 	tile.add_theme_stylebox_override("pressed", hover_style)
 
 	if is_seen:
+		# Card thumbnail — if there's a matching gallery image for the
+		# id, use it as the tile background so the gallery actually
+		# shows the cards as cards rather than text labels.
+		var thumb_tex: Texture2D = _resolve_thumbnail(str(item.get("id","")))
+		if thumb_tex != null:
+			var thumb := TextureRect.new()
+			thumb.texture = thumb_tex
+			thumb.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			thumb.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+			thumb.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			thumb.modulate = Color(1, 1, 1, 0.92)
+			thumb.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			tile.add_child(thumb)
+			# Dark scrim across the bottom so the title text remains
+			# readable against bright card art
+			var scrim := ColorRect.new()
+			scrim.anchor_top = 0.55
+			scrim.anchor_bottom = 1.0
+			scrim.anchor_left = 0; scrim.anchor_right = 1
+			scrim.color = Color(0, 0, 0, 0.55)
+			scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			tile.add_child(scrim)
+
 		var v := VBoxContainer.new()
 		v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		v.offset_left = 10
@@ -244,8 +352,15 @@ func _make_substrate_tile(item: Dictionary) -> Control:
 		v.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		tile.add_child(v)
 
+		# When there's a thumbnail, push the labels to the bottom so
+		# they read over the dark scrim instead of covering the art
+		if thumb_tex != null:
+			var spacer := Control.new()
+			spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+			v.add_child(spacer)
+
 		var kind := Label.new()
-		kind.text = "// ASCII"
+		kind.text = "// %s" % str(item.get("type", "ASCII")).to_upper()
 		_apply_font(kind, SkinDB.F_CINZEL, 9, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
 		v.add_child(kind)
 
@@ -254,11 +369,6 @@ func _make_substrate_tile(item: Dictionary) -> Control:
 		_apply_font(title, SkinDB.F_CINZEL, 14, C_TXT)
 		title.autowrap_mode = TextServer.AUTOWRAP_WORD
 		v.add_child(title)
-
-		var set_lbl := Label.new()
-		set_lbl.text = str(item.get("set", ""))
-		_apply_font(set_lbl, SkinDB.F_IMFELL_R, 10, Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.55))
-		v.add_child(set_lbl)
 
 		var path: String = str(item.get("path", ""))
 		var title_str: String = str(item.get("title", item.get("id", "")))
@@ -289,6 +399,15 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		fv.mouse_filter = Control.MOUSE_FILTER_STOP
 		add_child(fv)
 		fv.connect("closed", func() -> void: fv.queue_free())
+		return
+	if short_path == "empress_arcana":
+		var ev := Control.new()
+		ev.set_script(EMPRESS_VISUALIZER_SCRIPT)
+		ev.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		ev.z_index = 12
+		ev.mouse_filter = Control.MOUSE_FILTER_STOP
+		add_child(ev)
+		ev.connect("closed", func() -> void: ev.queue_free())
 		return
 	# Tarot Synth — type:"overlay" entry in the gallery index, opens
 	# the playable instrument as a fullscreen overlay
