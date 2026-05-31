@@ -1,0 +1,125 @@
+{
+  "asset": "assets/gallery/empress.png",
+  "scene_id": "vol5_ch3_empress",
+  "character": "nicola",
+  "secondary_character": "aria",
+  "arcana": "III - THE EMPRESS",
+  "palette": "split_burgundy_emerald",
+  "format": "dual_pov",
+
+  "ciphers": [
+    {
+      "id": "ems_caption",
+      "kind": "story_prompt",
+      "text": "This prison of meat. Find the exit node. There has to be a way out of this system.",
+      "anchor_norm": [0.50, 0.85],
+      "reveals": "vol5_keystone_empress"
+    },
+    {
+      "id": "ems_biometrics_alert",
+      "kind": "data_overlay",
+      "text_lines": [
+        "BIOMETRICS: ANXIETY SPIKE: ALERT",
+        "EXIT_NODE_SEARCH: ACTIVE",
+        "SYSTEM: CONFINED"
+      ],
+      "anchor_norm": [0.80, 0.40],
+      "encoding_hint": "Aria's HUD readout — these strings recur as system flags in vol5_ch3 dialogue",
+      "reveals": "vol5_aria_handshake"
+    },
+    {
+      "id": "ems_code_stream",
+      "kind": "code_stream",
+      "text_lines": [
+        "code sown behind eyes",
+        "code_streams stream",
+        "get rovsrs code"
+      ],
+      "anchor_norm": [0.62, 0.32],
+      "encoding_hint": "fragmented — read in reverse, 'get rovsrs' anagrams to 'get rovers' which references a future module",
+      "reveals": "vol5_rovers_module"
+    },
+    {
+      "id": "ems_venus_glyph",
+      "kind": "sigil",
+      "text": "♀",
+      "anchor_norm": [0.30, 0.78],
+      "reveals": "vol5_venus_sigil_collected"
+    },
+    {
+      "id": "ems_lobster_sigil",
+      "kind": "sigil",
+      "text": "lobster carved into the throne base — moon-card foreshadowing",
+      "anchor_norm": [0.40, 0.80],
+      "reveals": "vol5_moon_sigil_collected"
+    }
+  ],
+
+  "hotspots": [
+    {
+      "id": "ems_nicola_book",
+      "shape": "rect_norm",
+      "rect": [0.45, 0.45, 0.10, 0.20],
+      "interact": "empress.book.examined",
+      "unlocks": "lore:nicolas_journal"
+    },
+    {
+      "id": "ems_klonopin",
+      "shape": "rect_norm",
+      "rect": [0.27, 0.40, 0.04, 0.08],
+      "interact": "empress.klonopin.examined",
+      "unlocks": "lore:nicolas_prescription"
+    },
+    {
+      "id": "ems_champagne",
+      "shape": "rect_norm",
+      "rect": [0.32, 0.32, 0.04, 0.15],
+      "interact": "empress.champagne.examined",
+      "unlocks": "lore:cheap_house_pour"
+    },
+    {
+      "id": "ems_ram_left",
+      "shape": "rect_norm",
+      "rect": [0.36, 0.15, 0.08, 0.12],
+      "interact": "empress.ram.left.touched",
+      "unlocks": "lore:aries_inheritance"
+    },
+    {
+      "id": "ems_ram_right",
+      "shape": "rect_norm",
+      "rect": [0.56, 0.15, 0.08, 0.12],
+      "interact": "empress.ram.right.touched",
+      "unlocks": "lore:aries_inheritance"
+    },
+    {
+      "id": "ems_split_toggle",
+      "shape": "rect_norm",
+      "rect": [0.49, 0.05, 0.02, 0.90],
+      "interact": "empress.split.toggle",
+      "unlocks": "vol5_dual_pov_node",
+      "notes": "vertical centerline strip — clicking flips which POV dominates the gallery view; reveals the dual_pov_node which is shared with the Emperor's mirror floor cipher"
+    }
+  ],
+
+  "easter_eggs": [
+    "Empress card is mislabeled IV (should be III). Either Gemini hiccup or intentional pairing with the Emperor's IV — possible 'inheritance swap' theme where she ascends to his number",
+    "split POV centerline can be toggled — burgundy/gold = Nicola's sensory POV, emerald = Aria's data overlay",
+    "fleur-de-lis on tablecloth mirrors the New Orleans iconography of later vol5 chapters",
+    "ram-head throne is the SAME throne as Emperor card — Nicola sits on it next, suggesting she's the inheritor of D'Ambrosio's empire",
+    "design_notes line in the painted UI is canonical lore for the dual-POV mechanic"
+  ],
+
+  "links_forward": [
+    "vol5_keystone_empress",
+    "vol5_aria_handshake",
+    "vol5_rovers_module",
+    "vol5_venus_sigil_collected",
+    "vol5_moon_sigil_collected",
+    "vol5_dual_pov_node"
+  ],
+
+  "cross_references": {
+    "ram_throne_shared_with": "emperor.json::emp_ram_left, emp_ram_right",
+    "dual_pov_paired_with":  "emperor.json::emp_floor_mirror"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "asset": "assets/gallery/emperor.png",
+  "scene_id": "vol5_ch4_emperor",
+  "character": "dante",
+  "arcana": "IV - THE EMPEROR",
+  "palette": "sepia_monochrome",
+
+  "ciphers": [
+    {
+      "id": "emp_throne_motto",
+      "kind": "latin_motto",
+      "text": "AVTORITAS POTESTAS IMPERIVM",
+      "anchor_norm": [0.50, 0.95],
+      "reveals": "vol5_keystone_emperor"
+    },
+    {
+      "id": "emp_ascii_wall_left",
+      "kind": "ascii_glyph_field",
+      "anchor_norm": [0.20, 0.50],
+      "encoding_hint": "first-character-per-row spells a riddle",
+      "reveals": "vol5_keystone_emperor_part_2"
+    },
+    {
+      "id": "emp_ascii_wall_right",
+      "kind": "ascii_glyph_field",
+      "anchor_norm": [0.80, 0.50],
+      "encoding_hint": "mirror of the left wall — characters differ where the riddle inverts",
+      "reveals": "vol5_keystone_emperor_part_3"
+    },
+    {
+      "id": "emp_floor_mirror",
+      "kind": "visual_inversion",
+      "anchor_norm": [0.50, 0.92],
+      "encoding_hint": "the two reflected faces below the throne are upside-down doppelgangers — they speak when read flipped",
+      "reveals": "vol5_dual_pov_node"
+    }
+  ],
+
+  "hotspots": [
+    {
+      "id": "emp_ankh",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.40, 0.07, 0.20],
+      "interact": "emperor.ankh.touched",
+      "unlocks": "music:vol5_emperor_theme"
+    },
+    {
+      "id": "emp_ram_left",
+      "shape": "rect_norm",
+      "rect": [0.39, 0.22, 0.07, 0.10],
+      "interact": "emperor.ram.left.touched",
+      "unlocks": "lore:aries_left_horn"
+    },
+    {
+      "id": "emp_ram_right",
+      "shape": "rect_norm",
+      "rect": [0.54, 0.22, 0.07, 0.10],
+      "interact": "emperor.ram.right.touched",
+      "unlocks": "lore:aries_right_horn"
+    },
+    {
+      "id": "emp_glass",
+      "shape": "rect_norm",
+      "rect": [0.30, 0.55, 0.06, 0.10],
+      "interact": "emperor.glass.examined",
+      "unlocks": "lore:bourbon_1971"
+    }
+  ],
+
+  "easter_eggs": [
+    "the mirror reflections of Dante's face on the floor are upside-down — they're not his reflection but his successor's, suggesting the throne passes",
+    "ASCII walls behind the throne contain a hidden first-character-per-row riddle that resolves to the family motto",
+    "two ram heads — left horn carries the inverted aries glyph, right is upright; reading them together reveals chapter's true tarot orientation"
+  ],
+
+  "links_forward": [
+    "vol5_keystone_emperor",
+    "vol5_keystone_emperor_part_2",
+    "vol5_keystone_emperor_part_3",
+    "vol5_dual_pov_node"
+  ]
+}
