@@ -122,9 +122,12 @@ func _build() -> void:
 	_catalog = SceneDataDB.get_music_catalog()
 	var cur_vol := -2
 	for entry: Dictionary in _catalog:
-		# Skip key-locked tracks that haven't been unlocked yet
+		# TESTING: every track unlocked. To restore key-gated locks, set
+		# UNLOCK_ALL = false. (Was: skip tracks whose unlock.type=="key"
+		# until SaveSystem.is_unlocked(key) flips true.)
+		const UNLOCK_ALL := true
 		var unlock: Dictionary = entry.get("unlock", {})
-		if unlock.get("type", "") == "key":
+		if not UNLOCK_ALL and unlock.get("type", "") == "key":
 			if not SaveSystem.is_unlocked(unlock.get("key", "")):
 				continue
 
