@@ -205,10 +205,10 @@ func _process(_delta: float) -> void:
 
 
 func _sample_voice(v: Voice) -> float:
-    var sample := 0.0
-    var harmonic_count := v.harmonic.size()
-    var voice_count := max(1, v.voices)
-    var arp_step := 0.08
+    var sample: float = 0.0
+    var harmonic_count: int = v.harmonic.size()
+    var voice_count: int = max(1, v.voices)
+    var arp_step: float = 0.08
     for arp_idx in v.arp.size():
         var arp_start = arp_idx * arp_step
         if v.time < arp_start: continue
