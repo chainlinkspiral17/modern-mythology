@@ -109,6 +109,15 @@
       "unlock_pattern": "vol5_ch0_booth6"
     },
     {
+      "id": "portrait_the_demon",
+      "title": "Portrait — The Demon",
+      "set": "Chapter I — The Magician",
+      "type": "composition",
+      "path": "portrait_the_demon",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch1_*"
+    },
+    {
       "id": "portrait_elicia",
       "title": "Portrait — Elicia Duchane",
       "set": "Chapter II — The High Priestess",
