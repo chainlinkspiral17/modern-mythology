@@ -1,6 +1,14 @@
 {
   "items": [
     {
+      "id": "empress_card",
+      "title": "III \u2014 THE EMPRESS  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "empress_card",
+      "always_unlocked": true
+    },
+    {
       "id": "hierophant_card",
       "title": "V \u2014 THE HIEROPHANT  (composition)",
       "set": "Major Arcana (Block Art)",
@@ -14,14 +22,6 @@
       "set": "Major Arcana (Block Art)",
       "type": "composition",
       "path": "emperor_card",
-      "always_unlocked": true
-    },
-    {
-      "id": "empress_card",
-      "title": "III \u2014 THE EMPRESS  (composition)",
-      "set": "Major Arcana (Block Art)",
-      "type": "composition",
-      "path": "empress_card",
       "always_unlocked": true
     },
     {
