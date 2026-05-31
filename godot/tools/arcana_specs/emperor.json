@@ -1,0 +1,37 @@
+{
+  "card": "emperor",
+  "source": "assets/gallery/emperor.png",
+  "width": 560,
+  "elements": [
+    {
+      "box": [
+        628,
+        22,
+        1292,
+        86
+      ],
+      "lines": [
+        "IV   THE EMPEROR"
+      ],
+      "size": 42,
+      "fg": "#e6a85a",
+      "panel": "#0a0806",
+      "align": "center"
+    },
+    {
+      "box": [
+        548,
+        86,
+        1372,
+        124
+      ],
+      "lines": [
+        "Thicker Than Water, Slower Than Time"
+      ],
+      "size": 20,
+      "fg": "#c08850",
+      "panel": "#0a0806",
+      "align": "center"
+    }
+  ]
+}

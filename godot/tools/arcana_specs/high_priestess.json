@@ -1,0 +1,52 @@
+{
+  "card": "high_priestess",
+  "source": "assets/gallery/high_priestess.png",
+  "width": 560,
+  "elements": [
+    {
+      "box": [
+        532,
+        4,
+        1396,
+        52
+      ],
+      "lines": [
+        "II   THE HIGH PRIESTESS"
+      ],
+      "size": 30,
+      "fg": "#f0ece0",
+      "panel": "#0a0a0a",
+      "align": "center"
+    },
+    {
+      "box": [
+        686,
+        52,
+        1236,
+        84
+      ],
+      "lines": [
+        "Exit Through the Gift Shop"
+      ],
+      "size": 17,
+      "fg": "#bab6aa",
+      "panel": "#0a0a0a",
+      "align": "center"
+    },
+    {
+      "box": [
+        110,
+        892,
+        1812,
+        928
+      ],
+      "lines": [
+        "The map was never about finding a destination. It was about what you became along the way."
+      ],
+      "size": 17,
+      "fg": "#dad6ca",
+      "panel": "#0a0a0a",
+      "align": "center"
+    }
+  ]
+}

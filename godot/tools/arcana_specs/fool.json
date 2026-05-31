@@ -1,0 +1,201 @@
+{
+  "card": "fool",
+  "source": "assets/gallery/fool.png",
+  "width": 560,
+  "elements": [
+    {
+      "box": [
+        86,
+        10,
+        900,
+        52
+      ],
+      "lines": [
+        "WELCOME TO RUST_CODE.BBS    /    GRAUSTARK_FRONTIER    /    ACTIVE NODES: 64"
+      ],
+      "size": 22,
+      "fg": "#bfe0ff",
+      "panel": "#0a1424",
+      "align": "left"
+    },
+    {
+      "box": [
+        884,
+        14,
+        1330,
+        50
+      ],
+      "lines": [
+        "GRAFFITI ARTIFACTS: TAG THE SYSTEM."
+      ],
+      "size": 17,
+      "fg": "#e8dcc0",
+      "panel": "#1a1016",
+      "align": "left"
+    },
+    {
+      "box": [
+        1268,
+        334,
+        1628,
+        380
+      ],
+      "lines": [
+        "II — THE PRECIPICE DOOR"
+      ],
+      "size": 18,
+      "fg": "#ffd884",
+      "panel": "#0d0b08",
+      "align": "left"
+    },
+    {
+      "box": [
+        1300,
+        378,
+        1676,
+        460
+      ],
+      "lines": [
+        "IV — DEMOSCENE_VIBE.EXE",
+        "PARTICLE SYNCHRONIZATION"
+      ],
+      "size": 16,
+      "fg": "#ffd884",
+      "panel": "#0d0b08",
+      "align": "left"
+    },
+    {
+      "box": [
+        92,
+        283,
+        244,
+        314
+      ],
+      "lines": [
+        "THE FOOL."
+      ],
+      "size": 13,
+      "fg": "#2a2418",
+      "panel": "#d9cfb0",
+      "align": "left"
+    },
+    {
+      "box": [
+        42,
+        800,
+        388,
+        862
+      ],
+      "lines": [
+        "THE CARD: The Fool stands at the precipice,",
+        "knapsack on a stick, dog yapping at his heels.",
+        "0 — outside the sequence, prior to it, containing it.",
+        "The journey hasn't started; it's always about to."
+      ],
+      "size": 12,
+      "fg": "#1c1810",
+      "panel": "#e6ddc6",
+      "align": "left"
+    },
+    {
+      "box": [
+        42,
+        866,
+        388,
+        920
+      ],
+      "lines": [
+        "UPRIGHT: Beginnings, naivety, free spirit,",
+        "innocence, leap of faith, infinite potential,",
+        "the witness who hasn't yet committed."
+      ],
+      "size": 12,
+      "fg": "#1c1810",
+      "panel": "#e6ddc6",
+      "align": "left"
+    },
+    {
+      "box": [
+        42,
+        924,
+        388,
+        994
+      ],
+      "lines": [
+        "REVERSED: Recklessness, foolishness, paraly-",
+        "sis disguised as openness, the 24-hour diner",
+        "of the soul where you never actually leave."
+      ],
+      "size": 12,
+      "fg": "#1c1810",
+      "panel": "#e6ddc6",
+      "align": "left"
+    },
+    {
+      "box": [
+        330,
+        818,
+        1232,
+        908
+      ],
+      "lines": [
+        "0     THE FOOL  —  BETWEEN ACTS"
+      ],
+      "size": 38,
+      "fg": "#f2eedc",
+      "panel": "#0d0b08",
+      "align": "left"
+    },
+    {
+      "box": [
+        344,
+        898,
+        1140,
+        948
+      ],
+      "lines": [
+        "“One foot off the cliff, the other still wiping the counter.”"
+      ],
+      "size": 19,
+      "fg": "#d6cfe0",
+      "panel": "#0d0b08",
+      "align": "left"
+    },
+    {
+      "box": [
+        344,
+        980,
+        1196,
+        1026
+      ],
+      "lines": [
+        "POV: John Frank    ·    LOCATION: D’Ambrosio’s, Graustark TX/LA — 3:47 AM"
+      ],
+      "size": 14,
+      "fg": "#9ab0d8",
+      "panel": "#0d0b08",
+      "align": "left"
+    },
+    {
+      "box": [
+        1552,
+        798,
+        1918,
+        936
+      ],
+      "lines": [
+        "VN DESIGN NOTES:",
+        "Establishing shot: D'Ambrosio's interior,",
+        "dawn-not-quite-dawn lighting.",
+        "UI: notebook-as-inventory metaphor.",
+        "Frasier's entrance triggers first 'choice'",
+        "beat — illusory. Color palette: jaundiced",
+        "fluorescent yellow, blue-grey shadow."
+      ],
+      "size": 11,
+      "fg": "#d8cfb0",
+      "panel": "#0d0b08",
+      "align": "left"
+    }
+  ]
+}

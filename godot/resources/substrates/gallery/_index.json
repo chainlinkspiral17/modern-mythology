@@ -174,6 +174,96 @@
       "set": "Image2ASCII Tests",
       "path": "gallery/fool_reference_blocks400",
       "always_unlocked": true
+    },
+    {
+      "id": "empress_card",
+      "title": "III — THE EMPRESS  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "empress_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "hierophant_card",
+      "title": "V — THE HIEROPHANT  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "hierophant_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "emperor_card",
+      "title": "IV — THE EMPEROR  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "emperor_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "high_priestess_card",
+      "title": "II — THE HIGH PRIESTESS  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "high_priestess_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "magician_card",
+      "title": "I — THE MAGICIAN  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "magician_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "fool_card",
+      "title": "0 — THE FOOL  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "fool_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "fool_blocks",
+      "title": "0 — THE FOOL  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/fool_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "magician_blocks",
+      "title": "I — THE MAGICIAN  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/magician_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "high_priestess_blocks",
+      "title": "II — THE HIGH PRIESTESS  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/high_priestess_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "empress_blocks",
+      "title": "III — THE EMPRESS  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/empress_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "emperor_blocks",
+      "title": "IV — THE EMPEROR  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/emperor_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "hierophant_blocks",
+      "title": "V — THE HIEROPHANT  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/hierophant_blocks",
+      "always_unlocked": true
     }
   ]
 }
