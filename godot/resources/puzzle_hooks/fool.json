@@ -1,0 +1,158 @@
+{
+  "asset": "assets/gallery/fool.png",
+  "scene_id": "vol5_ch0_booth6",
+  "character": "john",
+  "arcana": "0 - THE FOOL",
+  "subtitle": "Between Acts",
+  "palette": "noir_jaundiced",
+  "quote": "One foot off the cliff, the other still wiping the counter.",
+  "location_text": "D'Ambrosio's, Graustark TX/LA - 3:47 AM",
+  "format_note": "BBS-aesthetic chrome — full diner scene with card preview, classified-ad layout, console hints. The most overtly meta of the cards so far.",
+
+  "ciphers": [
+    {
+      "id": "fool_bbs_header",
+      "kind": "system_banner",
+      "text": "WELCOME TO RUST_CODE.BBS / GRAUSTARK_FRONTIER / ACTIVE NODES: 64",
+      "anchor_norm": [0.30, 0.04],
+      "encoding_hint": "RUST_CODE.BBS is the in-fiction shared system the cards are nodes of. 64 active nodes = the chapter count when all volumes finish. Direct link to the Priestess card's NARRATIVE STRUCTURE COMPASS.",
+      "reveals": "vol5_rust_code_bbs_known",
+      "cross_references": ["high_priestess.json::pri_compass_badge"],
+      "priority": "HIGH — naming the meta-system"
+    },
+    {
+      "id": "fool_graffiti_tags",
+      "kind": "graffiti_pair",
+      "text_lines": ["FRANKLY", "FOOLISH"],
+      "anchor_norm": [0.78, 0.10],
+      "encoding_hint": "FRANK + LY = John Frank; FOOL + ISH = the arcana. The graffiti spells the chapter's title backwards through the character's name — diegetic-meta. Both painted in the same hand suggests author signature.",
+      "reveals": "vol5_graffiti_signature_seen",
+      "priority": "HIGH — graphic identity reveal"
+    },
+    {
+      "id": "fool_precipice_door",
+      "kind": "labeled_artifact",
+      "text": "II — THE PRECIPICE DOOR.",
+      "anchor_norm": [0.80, 0.32],
+      "encoding_hint": "label II — but the FOOL is 0; this label points to the High Priestess (II) as the next door. The PRECIPICE DOOR is the threshold between actor and observer, and Elicia is the observer. The Fool's first step off the cliff is INTO Elicia's archive.",
+      "reveals": "vol5_precipice_door_known",
+      "cross_references": ["high_priestess.json"]
+    },
+    {
+      "id": "fool_demoscene_vibe",
+      "kind": "labeled_module",
+      "text": "IV — DEMOSCENE_VIBE.EXE / PARTICLE SYNCHRONIZATION",
+      "anchor_norm": [0.83, 0.38],
+      "encoding_hint": "label IV → Emperor connection. DEMOSCENE_VIBE.EXE is the aesthetic engine of the project itself (matches the tarot_synth + ASCII walls). Dante's empire = the synchronization layer.",
+      "reveals": "vol5_demoscene_module_visible",
+      "cross_references": ["emperor.json", "tarot_synth"]
+    },
+    {
+      "id": "fool_card_within_card",
+      "kind": "recursive_artifact",
+      "text": "small classic-tarot-style Fool card pinned at the upper-left, complete with own border + title and 'THE FOOL' label",
+      "anchor_norm": [0.07, 0.20],
+      "encoding_hint": "the card-within-the-card shows the TRADITIONAL Fool iconography (cliff edge, sun, dog) while the surrounding scene shows the MODERN version (diner counter, jaundiced light). The recursion is the chapter's argument: every modern person occupies an ancient archetype.",
+      "reveals": "vol5_fool_double_seen",
+      "priority": "MEDIUM — visual thesis statement"
+    },
+    {
+      "id": "fool_dog_companion",
+      "kind": "fellow_traveler",
+      "text": "white-and-grey dog beside the counter — traditional Fool companion",
+      "anchor_norm": [0.25, 0.72],
+      "encoding_hint": "the dog is the only character besides John in the scene. May be a named entity in vol5_ch0_booth6 prose — TBD. If unnamed, this is its first canonical visual.",
+      "reveals": "vol5_dog_introduced",
+      "named_entity": "dog (unnamed)"
+    },
+    {
+      "id": "fool_bindle",
+      "kind": "iconographic_artifact",
+      "text": "knotted bindle on a stick over John's shoulder",
+      "anchor_norm": [0.30, 0.18],
+      "encoding_hint": "traditional Fool's bundle — anachronistic for a 1990s diner worker. The bindle being there at all signals the scene is operating in mythic time as much as clock time.",
+      "reveals": "lore:bindle_seen"
+    },
+    {
+      "id": "fool_vn_design_notes",
+      "kind": "meta_inline",
+      "text_lines": [
+        "Establishing shot: D'Ambrosio's interior, dawn-not-quite-dawn lighting",
+        "GE notebook-co-inventory metaphor",
+        "Frasier's entrance triggers first 'choice' beat — illusory",
+        "Color palette: jaundiced fluorescent yellow, bleeding shadow"
+      ],
+      "anchor_norm": [0.83, 0.78],
+      "encoding_hint": "VN DESIGN NOTES rendered IN the card — fourth wall. 'Frasier's entrance triggers first \"choice\" beat — illusory' is a player-facing tell that the first choice in vol5_ch0 doesn't matter, the path is fixed.",
+      "reveals": "vol5_design_notes_visible",
+      "priority": "HIGH — explicit design transparency"
+    },
+    {
+      "id": "fool_card_reading",
+      "kind": "inline_oracle",
+      "text_lines": [
+        "THE CARD: The Fool stands at the precipice, knapsack on a stick, dog yapping at his heels. A sun outside the awnings: it sleeps. He's journey hasn't started; it's always about to.",
+        "UPRIGHT: Beginnings, naivete, free spirit, innocence, leap of faith, infinite potential, the witness who hasn't yet committed.",
+        "REVERSED: Recklessness, foolishness, paralysis disguised as openness, the 24-hour diner of the soul where you never actually leave."
+      ],
+      "anchor_norm": [0.12, 0.86],
+      "encoding_hint": "Full oracle text printed in the card chrome. The REVERSED meaning ('24-hour diner of the soul where you never actually leave') is the chapter's true register — John has been at this counter long before the scene starts.",
+      "reveals": "lore:fool_oracle_read"
+    },
+    {
+      "id": "fool_console_inventory",
+      "kind": "ui_chrome",
+      "text_lines": ["NOTEBOOK","INVENTORY","RESTART","weapon","shield"],
+      "anchor_norm": [0.10, 0.50],
+      "encoding_hint": "in-card UI affordances suggesting this scene IS a RPG/VN screen. Notebook + inventory + restart hint at the gameplay loop. weapon/shield slots labeled but empty — Fool starts with nothing.",
+      "reveals": "vol5_inventory_console_visible"
+    }
+  ],
+
+  "hotspots": [
+    {"id":"fool_dog","shape":"rect_norm","rect":[0.22,0.68,0.12,0.20],
+     "interact":"fool.dog.touched","unlocks":"vol5_dog_introduced"},
+    {"id":"fool_bindle","shape":"rect_norm","rect":[0.26,0.10,0.10,0.20],
+     "interact":"fool.bindle.touched","unlocks":"lore:bindle_seen"},
+    {"id":"fool_graffiti","shape":"rect_norm","rect":[0.74,0.04,0.16,0.14],
+     "interact":"fool.graffiti.read","unlocks":"vol5_graffiti_signature_seen"},
+    {"id":"fool_precipice","shape":"rect_norm","rect":[0.78,0.28,0.18,0.10],
+     "interact":"fool.precipice_door.touched","unlocks":"vol5_precipice_door_known"},
+    {"id":"fool_demoscene_mod","shape":"rect_norm","rect":[0.78,0.36,0.18,0.06],
+     "interact":"fool.demoscene_module.touched","unlocks":"vol5_demoscene_module_visible"},
+    {"id":"fool_inner_card","shape":"rect_norm","rect":[0.02,0.06,0.14,0.36],
+     "interact":"fool.inner_card.examined","unlocks":"vol5_fool_double_seen"},
+    {"id":"fool_design_notes","shape":"rect_norm","rect":[0.78,0.72,0.20,0.20],
+     "interact":"fool.design_notes.read","unlocks":"vol5_design_notes_visible"},
+    {"id":"fool_counter","shape":"rect_norm","rect":[0.30,0.78,0.40,0.18],
+     "interact":"fool.counter.wiped","unlocks":"lore:counter_wiped_again",
+     "notes":"clicking the counter triggers a sound cue (rag on formica). Easter egg: 64 wipes = unlocks alt prologue (matches ACTIVE NODES: 64)"}
+  ],
+
+  "easter_eggs": [
+    "title BBS 'RUST_CODE.BBS' is the in-fiction unifying system — every card is a node. The Priestess calls the same thing the NARRATIVE STRUCTURE COMPASS. Two names for the same meta-layer.",
+    "ACTIVE NODES: 64 — at full project completion the chapter count should hit 64",
+    "Graustark TX/LA' — slash suggests the town straddles state lines, or is fictional/uncertain. Possible boundary-narrative clue for vol6/7",
+    "3:47 AM = the chapter's actual time; the dawn-not-quite-dawn lighting in VN DESIGN NOTES is the lighting cue for vol5_ch0 scene art",
+    "VN DESIGN NOTES box explicitly tells the player that Frasier's entrance triggers 'illusory' choice — narrative determinism is in-text canon",
+    "graffiti hand: FRANKLY and FOOLISH share style — may appear elsewhere in vol5 graffiti scenes (warehouse, riverboat exterior)"
+  ],
+
+  "links_forward": [
+    "vol5_rust_code_bbs_known",
+    "vol5_graffiti_signature_seen",
+    "vol5_precipice_door_known",
+    "vol5_demoscene_module_visible",
+    "vol5_fool_double_seen",
+    "vol5_dog_introduced",
+    "vol5_design_notes_visible",
+    "vol5_inventory_console_visible"
+  ],
+
+  "cross_references": {
+    "meta_system_shared_with": "high_priestess.json::pri_compass_badge (RUST_CODE.BBS = NARRATIVE STRUCTURE COMPASS)",
+    "labeled_module_emperor": "emperor.json (IV - DEMOSCENE_VIBE.EXE label)",
+    "labeled_module_priestess": "high_priestess.json (II - THE PRECIPICE DOOR label)",
+    "design_transparency_paired_with": "high_priestess.json::pri_compass_badge"
+  }
+}
