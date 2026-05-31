@@ -335,11 +335,11 @@ func _input(event: InputEvent) -> void:
             KEY_SPACE:
                 _do_wipe()
                 get_viewport().set_input_as_handled()
-            KEY_W:    _pan_target.y -= 80
-            KEY_S:    _pan_target.y += 80
-            KEY_A:    _pan_target.x -= 80
-            KEY_D:    _pan_target.x += 80
-            KEY_UP:    _pan_target.y -= 80
-            KEY_DOWN:  _pan_target.y += 80
-            KEY_LEFT:  _pan_target.x -= 80
-            KEY_RIGHT: _pan_target.x += 80
+            KEY_W:     pan_by(Vector2(0, -80))
+            KEY_S:     pan_by(Vector2(0, 80))
+            KEY_A:     pan_by(Vector2(-80, 0))
+            KEY_D:     pan_by(Vector2(80, 0))
+            KEY_UP:    pan_by(Vector2(0, -80))
+            KEY_DOWN:  pan_by(Vector2(0, 80))
+            KEY_LEFT:  pan_by(Vector2(-80, 0))
+            KEY_RIGHT: pan_by(Vector2(80, 0))

@@ -356,6 +356,16 @@ func _apply_pan() -> void:
         minimap.queue_redraw()
 
 
+## Helpers for subclasses to pan without touching private members
+## directly (Godot 4.6 stricter inherited-member access).
+func pan_by(delta_vec: Vector2) -> void:
+    _pan_target += delta_vec
+
+
+func recenter() -> void:
+    _center_on_card()
+
+
 # ── SYNTH (kept same as before) ──────────────────────────────────
 func _init_synth() -> void:
     _gen = AudioStreamGenerator.new()
