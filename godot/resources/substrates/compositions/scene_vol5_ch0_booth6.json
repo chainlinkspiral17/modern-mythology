@@ -41,16 +41,6 @@
       "alpha": 1.0
     },
     {
-      "kind": "static",
-      "path": "gallery/vol5_dambrosios_exterior_clean_blocks",
-      "x": 0,
-      "y": 0,
-      "font_px": 6,
-      "z": 5,
-      "alpha": 0.2,
-      "modulate": "#9bbcd6"
-    },
-    {
       "kind": "image_frames",
       "frames": [
         "assets/backgrounds/vol5_dambrosios_exterior_water_0.png",
