@@ -19,6 +19,14 @@ const SUBSTRATE_RASTER_SCRIPT := preload("res://scenes/game/AsciiSubstrateRaster
 const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 const DEBUG_OVERLAY_SCRIPT := preload("res://scenes/menu/SubstrateDebugOverlay.gd")
 const CARD_INTERACTIVE_SCRIPT := preload("res://scenes/menu/CardInteractiveLayer.gd")
+const FOOL_VISUALIZER_SCRIPT  := preload("res://scenes/menu/FoolVisualizer.gd")
+
+# Per-card dedicated visualizers — bypass the generic fullscreen viewer
+# when entries here match the item's path. Each visualizer is bespoke
+# to its arcana's theme. Start with the Fool's RUST_CODE.BBS terminal.
+const DEDICATED_VISUALIZERS := {
+	"fool_arcana": "FOOL_VISUALIZER_SCRIPT",
+}
 
 # Mirrors MainMenu.VOLUME_META — used to label per-volume gallery sections.
 const VOLUME_TITLES: Dictionary = {
@@ -269,6 +277,19 @@ func _make_substrate_tile(item: Dictionary) -> Control:
 
 
 func _view_substrate_fullscreen(short_path: String, title: String, kind: String = "substrate") -> void:
+	# Dedicated visualizer route — bespoke per-arcana experience
+	# (Fool's RUST_CODE.BBS terminal, etc). Bypasses the generic
+	# composition viewer when one exists for this asset.
+	if short_path == "fool_arcana":
+		var fv := Control.new()
+		fv.set_script(FOOL_VISUALIZER_SCRIPT)
+		fv.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		fv.z_index = 12
+		fv.mouse_filter = Control.MOUSE_FILTER_STOP
+		add_child(fv)
+		fv.connect("closed", func() -> void: fv.queue_free())
+		return
+
 	var viewer := ColorRect.new()
 	viewer.color = Color(0, 0, 0, 0.96)
 	viewer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

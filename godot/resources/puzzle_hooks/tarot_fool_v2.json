@@ -1,0 +1,22 @@
+{
+  "asset": "compositions/tarot_fool_v2.json",
+  "kind": "ascii_variant_dashboard",
+  "of_card": "fool.json",
+  "format": "composition",
+
+  "ciphers": [
+    {
+      "id": "tfv2_dashboard_layout",
+      "kind": "format_variant",
+      "text": "Fool rendered as a dashboard composition (HUD-flanked tarot card, predates the painted fool.png)",
+      "encoding_hint": "the dashboard layout is the same chrome the procedural Magician/Emperor/etc passes used before the AI-painted versions landed. The Fool was prototyped here first.",
+      "reveals": "vol5_fool_variant_v2_seen"
+    }
+  ],
+
+  "links_forward": ["vol5_fool_variant_v2_seen"],
+  "cross_references": {
+    "canonical_card": "fool.json",
+    "sibling_variants": ["tarot_fool", "fool_arcana"]
+  }
+}

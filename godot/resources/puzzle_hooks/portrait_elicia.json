@@ -1,0 +1,52 @@
+{
+  "asset_pattern": "assets/gallery/portrait_elicia_*.png",
+  "composition": "portrait_elicia",
+  "character": "elicia",
+  "scene_id": "vol5_ch2_priestess",
+  "palette": "halftone_monochrome",
+  "frame_count": 10,
+  "frame_kinds": {
+    "0": "clean", "1": "light_slice_glitch", "2": "clean",
+    "3": "rgb_shift", "4": "heavy_combo", "5": "clean",
+    "6": "large_displace", "7": "clean",
+    "8": "scanline_tear", "9": "heavy_combo"
+  },
+
+  "ciphers": [
+    {
+      "id": "elc_halftone_only",
+      "kind": "visual_property",
+      "text": "rendered in halftone B&W — the only portrait in the deck without color",
+      "encoding_hint": "Elicia is the OBSERVER. Color is the actor's medium; she records in monochrome. Her glitch frames are the only place color enters (faint chromatic aberration on rgb_shift) — when corruption hits, even the observer leaks.",
+      "reveals": "vol5_elicia_observer_role",
+      "cross_references": ["high_priestess.json::format_note"]
+    },
+    {
+      "id": "elc_journal_arm",
+      "kind": "tool",
+      "text": "writing in journal — pen visible",
+      "encoding_hint": "her hand is always in the act of recording. Specifically the PERSONAL TAROT SYMBOLOGY NOTES journal — her interpretations of the same arcana the player is navigating.",
+      "reveals": "lore:elicia_tarot_journal",
+      "cross_references": ["high_priestess.json::pri_tarot_notes_journal"]
+    },
+    {
+      "id": "elc_glitch_color_bleed",
+      "kind": "visual_property",
+      "text": "glitch frames briefly introduce color — burgundy + emerald (matches Empress dual-POV palette)",
+      "encoding_hint": "when Elicia corrupts, she TEMPORARILY adopts the Empress palette. Suggests Elicia is the ground truth and Nicola+Aria are her observations made into characters.",
+      "reveals": "vol5_elicia_empress_link",
+      "cross_references": ["empress.json::ems_split_toggle"]
+    }
+  ],
+
+  "links_forward": [
+    "vol5_elicia_observer_role",
+    "lore:elicia_tarot_journal",
+    "vol5_elicia_empress_link"
+  ],
+
+  "cross_references": {
+    "card": "high_priestess.json",
+    "observer_of": "all (per format_note in high_priestess.json)"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "asset": "assets/gallery/hierophant.png",
+  "scene_id": "vol5_ch5_hierophant",
+  "character": "maya",
+  "secondary_characters": ["father_quent", "father_paul"],
+  "arcana": "V - THE HIEROPHANT",
+  "subtitle": "Sunday Dress, Stiff & Biting",
+  "palette": "papal_red_blue_gold",
+  "location_text": "St. Jude's Acadian Church, parking lot, Sunday morning",
+
+  "ciphers": [
+    {
+      "id": "hie_dress_bites",
+      "kind": "child_pov_phrase",
+      "text": "the dress bites her back",
+      "anchor_norm": [0.50, 0.92],
+      "encoding_hint": "Maya's recurring body-felt sentence — the dress that physically bites is the inherited form (sacrament, doctrine, Sunday-best conformity). The dress as the actual hierophant.",
+      "reveals": "vol5_dress_bites_seen"
+    },
+    {
+      "id": "hie_crossed_keys",
+      "kind": "sigil",
+      "text": "crossed keys above the rose window",
+      "anchor_norm": [0.50, 0.10],
+      "encoding_hint": "Petrine keys: heaven and earth. In Maya's POV they sit unreachable above her, a system she's being inducted into without consent.",
+      "reveals": "vol5_keys_seen"
+    },
+    {
+      "id": "hie_triple_crown",
+      "kind": "sigil",
+      "text": "triple papal tiara on the hierophant figure",
+      "anchor_norm": [0.50, 0.16],
+      "encoding_hint": "three tiers = teaching / governing / sanctifying. Three rings the child must pass through.",
+      "reveals": "vol5_tiara_seen"
+    },
+    {
+      "id": "hie_two_acolytes",
+      "kind": "presence_count",
+      "text": "two kneeling acolytes — M and Y — Maya beside an unnamed companion",
+      "anchor_norm": [[0.38, 0.78], [0.62, 0.78]],
+      "encoding_hint": "M = Maya. Y = ? (possibly her companion in the church scene — check vol5_ch5 prose). The pair recurs in catechism scenes; finding Y's identity unlocks a side path.",
+      "reveals": "vol5_y_identified"
+    },
+    {
+      "id": "hie_stained_glass_8seg",
+      "kind": "color_count",
+      "text": "8-segment rose window — red / blue / yellow / green alternating",
+      "anchor_norm": [0.50, 0.20],
+      "encoding_hint": "8 segments and 4 colors — matches the sacraments-of-seven plus baptism doubled, or the 8 beatitudes. Counts as a 'collect the colors' puzzle if extended.",
+      "reveals": "vol5_glass_colors_seen"
+    },
+    {
+      "id": "hie_carpet_thread",
+      "kind": "labeled_artifact",
+      "text_lines": [
+        "ECCLESIA SEMPER REFORMANDA",
+        "ANIMA CHRISTI SANCTIFICA ME",
+        "DOMINICA MASS 7 9 11"
+      ],
+      "anchor_norm": [0.50, 0.85],
+      "encoding_hint": "carpet stripes carry liturgical texts. The MASS schedule grounds the chapter at 'before the 7am mass' — dawn / hot Acadian summer.",
+      "reveals": "vol5_carpet_read"
+    },
+    {
+      "id": "hie_avdi_et_tace",
+      "kind": "latin_motto",
+      "text": "AVDI · ET · TACE",
+      "anchor_norm": [0.50, 0.04],
+      "encoding_hint": "'Hear and be silent.' The chapter's command to Maya. The chapter's command to the player.",
+      "reveals": "vol5_audi_et_tace_known",
+      "priority": "HIGH — chapter thesis in two words"
+    }
+  ],
+
+  "hotspots": [
+    {"id":"hie_dress","shape":"rect_norm","rect":[0.42,0.78,0.16,0.18],
+     "interact":"hierophant.dress.touched","unlocks":"vol5_dress_bites_seen"},
+    {"id":"hie_keys","shape":"rect_norm","rect":[0.42,0.04,0.16,0.10],
+     "interact":"hierophant.keys.touched","unlocks":"vol5_keys_seen"},
+    {"id":"hie_crown","shape":"rect_norm","rect":[0.46,0.12,0.08,0.08],
+     "interact":"hierophant.crown.touched","unlocks":"vol5_tiara_seen"},
+    {"id":"hie_acolyte_maya","shape":"rect_norm","rect":[0.32,0.72,0.12,0.18],
+     "interact":"hierophant.maya.touched","unlocks":"vol5_dress_bites_seen"},
+    {"id":"hie_acolyte_y","shape":"rect_norm","rect":[0.56,0.72,0.12,0.18],
+     "interact":"hierophant.y.touched","unlocks":"vol5_y_identified"},
+    {"id":"hie_rose_window","shape":"rect_norm","rect":[0.42,0.14,0.16,0.14],
+     "interact":"hierophant.window.examined","unlocks":"vol5_glass_colors_seen"},
+    {"id":"hie_banner","shape":"rect_norm","rect":[0.25,0.02,0.50,0.06],
+     "interact":"hierophant.banner.read","unlocks":"vol5_audi_et_tace_known"}
+  ],
+
+  "easter_eggs": [
+    "the chapter's full title is the actual command on Maya — 'Sunday Dress, Stiff & Biting' as both literal physical sensation and metaphor for inherited form",
+    "the second acolyte 'Y' is unnamed in the visual but referenced — possibly Father Quent's nephew or Father Paul's altar boy; check ch5 prose for the named companion",
+    "the carpet's three Latin lines are layered: REFORMANDA (always reforming) / SANCTIFICA ME (sanctify me) / MASS SCHEDULE (the actual time grid). Three registers — historical, personal, institutional."
+  ],
+
+  "links_forward": [
+    "vol5_dress_bites_seen",
+    "vol5_keys_seen",
+    "vol5_tiara_seen",
+    "vol5_y_identified",
+    "vol5_glass_colors_seen",
+    "vol5_carpet_read",
+    "vol5_audi_et_tace_known"
+  ],
+
+  "cross_references": {
+    "shared_acadian_setting_with": "magician.json (Frasier in industrial Graustark — Acadian-adjacent)",
+    "child_pov_paired_with": "high_priestess.json (Elicia is the adult-observer to Maya's child-experiencer)",
+    "two_kneeling_pair_with": "fool.json::dog_companion (the Fool also has a single companion figure)"
+  }
+}

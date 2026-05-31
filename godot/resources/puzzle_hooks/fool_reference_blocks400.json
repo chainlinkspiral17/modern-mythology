@@ -1,0 +1,22 @@
+{
+  "asset": "substrates/pieces/fool_reference_blocks400.json",
+  "kind": "ascii_reference_piece",
+  "of_card": "fool.json",
+  "format": "substrate",
+
+  "ciphers": [
+    {
+      "id": "frb_400_blocks",
+      "kind": "format_variant",
+      "text": "Fool rendered as a 400-block ASCII reference grid — earliest sketch form",
+      "encoding_hint": "the 400 in the name = 20x20 block grid. Demoscene-style large-pixel rendering of the Fool. Historical artifact of the project's visual development.",
+      "reveals": "vol5_fool_reference_seen"
+    }
+  ],
+
+  "links_forward": ["vol5_fool_reference_seen"],
+  "cross_references": {
+    "canonical_card": "fool.json",
+    "lineage_position": "earliest"
+  }
+}

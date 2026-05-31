@@ -1,0 +1,44 @@
+{
+  "asset": "scenes/menu/TarotSynthOverlay.gd",
+  "kind": "playable_instrument",
+  "format": "overlay",
+  "compass_role": "synth_node",
+
+  "ciphers": [
+    {
+      "id": "syn_sequence_v_iv_iii",
+      "kind": "play_sequence_unlock",
+      "text": "playing V → IV → III in order at any tempo triggers Aria's handshake",
+      "encoding_hint": "V (Hierophant) → IV (Emperor) → III (Empress). The 'inheritance' sequence — institution → patriarch → mother. Matches Aria's data-overlay sigils on Empress card.",
+      "reveals": "vol5_aria_handshake",
+      "input_pattern": [5, 4, 3],
+      "cross_references": ["empress.json::ems_biometrics_alert"]
+    },
+    {
+      "id": "syn_sequence_o_xxi",
+      "kind": "play_sequence_unlock",
+      "text": "playing 0 → XXI (Fool then World) closes the journey loop",
+      "encoding_hint": "first → last. Completes the major arcana arc; unlocks the COMPASS's center node animation.",
+      "reveals": "vol5_compass_loop_closed",
+      "input_pattern": [0, 21]
+    },
+    {
+      "id": "syn_chord_burgundy",
+      "kind": "play_chord_unlock",
+      "text": "any 3 cards from row 1 (LOVERS/CHARIOT/STRENGTH/HERMIT/WHEEL/JUSTICE/HANGED/DEATH) played simultaneously",
+      "encoding_hint": "burgundy row chord — Nicola's spectrum. Unlocks Empress's split-toggle independently of the badge click.",
+      "reveals": "empress.ems_split_toggle.via_synth"
+    }
+  ],
+
+  "links_forward": [
+    "vol5_aria_handshake",
+    "vol5_compass_loop_closed",
+    "empress.ems_split_toggle.via_synth"
+  ],
+
+  "cross_references": {
+    "feeds_compass_node": "tarot_synth (compass-as-instrument hybrid in _COMPASS.md)",
+    "unlocks_via_input": "all 22 arcana cards"
+  }
+}

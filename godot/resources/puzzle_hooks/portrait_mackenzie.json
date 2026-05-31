@@ -1,0 +1,24 @@
+{
+  "asset_pattern": "assets/gallery/portrait_mackenzie_*.png",
+  "composition": "portrait_mackenzie",
+  "character": "mackenzie",
+  "scene_id": "vol5_ch0_model_city",
+  "palette": "noir_jaundiced",
+
+  "ciphers": [
+    {
+      "id": "mac_model_city_pov",
+      "kind": "pov_link",
+      "text": "Mackenzie appears in the model city scene — the same model Frasier builds in his Magician card",
+      "encoding_hint": "Mackenzie sees Frasier's miniature D'Ambrosio's-empire diorama. May provide commentary the player can dig out via her portrait's cipher reveals.",
+      "reveals": "vol5_mackenzie_witnessed_model",
+      "cross_references": ["magician.json::mag_model_city"]
+    }
+  ],
+
+  "links_forward": ["vol5_mackenzie_witnessed_model"],
+  "cross_references": {
+    "scene_link": "magician.json (shared model-city motif)"
+  },
+  "notes": "Sparse hooks until more of her prose is mined for puzzle-worthy elements."
+}
