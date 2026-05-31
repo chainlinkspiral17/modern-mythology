@@ -43,20 +43,48 @@ A radial graph view, navigable from the gallery, that shows:
   cross_reference path between them (lore-graph traversal)
 - Lock-state legend in the corner
 
-## Unlock Path
+## Unlock Path (two tiers)
 
-The compass itself is locked until:
+The compass has TWO unlock states because it serves two different
+roles:
 
+### Tier 1 — MainMenu access
+Flag: `compass:menu_unlocked` in SaveSystem.
+Fires when the player either:
+- Clicks the COMPASS badge on the High Priestess card
+  (`pri_compass_badge` hotspot), OR
+- Encounters the RUST_CODE.BBS header three times across different
+  cards (`vol5_rust_code_bbs_known` accumulator)
+
+Test override: `CompassOverlay.TESTING_ALWAYS_MENU_UNLOCKED = true`
+keeps the menu button visible during dev. Production flip = false.
+
+### Tier 2 — In-game navigation agent
+Flag: `compass:ingame_unlocked` in SaveSystem.
+Strictly puzzle-gated — **no test override**. The in-game compass is
+the AGENT of transition between chapter / scene / puzzle / element,
+not a free-toggle overlay. The player must solve the dedicated
+in-game unlock puzzle before they can use the compass to navigate
+mid-playthrough.
+
+Once both tiers unlock, the compass:
+- Appears as a button in MainMenu (tier 1)
+- Appears at transition moments only, in-game (tier 2):
+  - Scene-end
+  - Chapter-end
+  - Puzzle-solved
+  - Element-completed
+
+It does NOT appear via arbitrary hotkey mid-scene. Call sites pass a
+`CompassOverlay.InGameContext` value when invoking so we can audit
+invalid invocations.
+
+API:
+```gdscript
+CompassOverlay.is_menu_unlocked()   # → bool, includes test override
+CompassOverlay.is_ingame_unlocked() # → bool, strict
+CompassOverlay.unlock_for_ingame()  # call when puzzle solves
 ```
-vol5_meta_compass_unlocked = TRUE
-```
-
-which fires when the player either:
-
-- Clicks the COMPASS badge on the High Priestess card (`pri_compass_badge`
-  hotspot), OR
-- Encounters the RUST_CODE.BBS header three times across different cards
-  (`vol5_rust_code_bbs_known` accumulator)
 
 ## Implementation surface
 
