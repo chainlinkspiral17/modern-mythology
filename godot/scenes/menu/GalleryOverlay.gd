@@ -21,6 +21,7 @@ const DEBUG_OVERLAY_SCRIPT := preload("res://scenes/menu/SubstrateDebugOverlay.g
 const CARD_INTERACTIVE_SCRIPT := preload("res://scenes/menu/CardInteractiveLayer.gd")
 const FOOL_VISUALIZER_SCRIPT  := preload("res://scenes/menu/FoolVisualizer.gd")
 const EMPRESS_VISUALIZER_SCRIPT := preload("res://scenes/menu/EmpressVisualizer.gd")
+const MAGICIAN_VISUALIZER_SCRIPT := preload("res://scenes/menu/MagicianVisualizer.gd")
 const TAROT_SYNTH_SCRIPT      := preload("res://scenes/menu/TarotSynthOverlay.gd")
 
 # Per-card dedicated visualizers — bypass the generic fullscreen viewer
@@ -408,6 +409,15 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		ev.mouse_filter = Control.MOUSE_FILTER_STOP
 		add_child(ev)
 		ev.connect("closed", func() -> void: ev.queue_free())
+		return
+	if short_path == "magician_arcana":
+		var mv := Control.new()
+		mv.set_script(MAGICIAN_VISUALIZER_SCRIPT)
+		mv.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		mv.z_index = 12
+		mv.mouse_filter = Control.MOUSE_FILTER_STOP
+		add_child(mv)
+		mv.connect("closed", func() -> void: mv.queue_free())
 		return
 	# Tarot Synth — type:"overlay" entry in the gallery index, opens
 	# the playable instrument as a fullscreen overlay
