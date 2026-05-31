@@ -80,7 +80,11 @@ func _ready() -> void:
     _init_synth()
     _init_ambient()
     _build_thematic_widget()
-    _center_on_card()
+    # Center after a frame so layout has settled and we have a real
+    # size to anchor against. Also wire resized so window changes
+    # re-center.
+    call_deferred("_center_on_card")
+    resized.connect(_center_on_card)
     set_process(true)
     set_process_input(true)
 
@@ -340,12 +344,21 @@ func _add_tableau(dir: int, ascii_art: String, tint: Color,
 
 # ── Camera ───────────────────────────────────────────────────────
 func _center_on_card() -> void:
-    var view_sz := size
+    # Use viewport rect — `size` may be (0,0) at _ready before layout
+    # has settled, which would land the card in the top-left corner.
+    var vp := get_viewport()
+    var view_sz: Vector2 = (vp.get_visible_rect().size
+                            if vp != null else size)
+    if view_sz.x <= 0 or view_sz.y <= 0:
+        view_sz = size
+    if view_sz.x <= 0 or view_sz.y <= 0:
+        view_sz = Vector2(1280, 720)
     var card_center := Vector2(CANVAS_SIZE * 0.5, CANVAS_SIZE * 0.5)
     if card_rect != null:
         card_center = card_rect.position + card_rect.size * 0.5
     _pan_target = card_center - view_sz * 0.5
     _pan = _pan_target
+    _apply_pan()
 
 
 func _apply_pan() -> void:
