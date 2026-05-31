@@ -189,10 +189,12 @@
       "type": "heard"
     },
     "chapters": [
-      "vol5_ch3_empress"
+      "vol5_ch3_empress",
+      "vol5_ch4_emperor"
     ],
     "chars": [
-      "nicola"
+      "nicola",
+      "dante"
     ]
   },
   {
