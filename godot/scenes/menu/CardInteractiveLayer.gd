@@ -304,8 +304,8 @@ func _show_cipher_for_hotspot(hs: Dictionary) -> void:
         var rect: Array = hs.get("rect", [0,0,0,0])
         var hs_cx = rect[0] + rect[2] / 2.0
         var hs_cy = rect[1] + rect[3] / 2.0
-        var best = null
-        var best_d = INF
+        var best: Variant = null
+        var best_d: float = INF
         for c_v in hooks["ciphers"]:
             var c: Dictionary = c_v
             var a = c.get("anchor_norm", [0.5, 0.5])
