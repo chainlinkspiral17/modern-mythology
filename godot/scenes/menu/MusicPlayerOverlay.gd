@@ -8,6 +8,10 @@ const C_GOLD   := Color(0.78, 0.66, 0.29)
 const C_BG     := Color(0.024, 0.020, 0.014, 0.97)
 const C_BORDER := Color(0.70, 0.55, 0.24, 0.35)
 const C_TXT    := Color(0.83, 0.79, 0.69)
+
+# TESTING: every track in the catalog shows up + plays regardless of
+# SaveSystem unlock state. Flip to false to restore lock-gating.
+const UNLOCK_ALL_TRACKS := true
 const C_DIM    := Color(0.45, 0.43, 0.36, 0.6)
 
 var _track_buttons: Dictionary = {}
@@ -122,12 +126,10 @@ func _build() -> void:
 	_catalog = SceneDataDB.get_music_catalog()
 	var cur_vol := -2
 	for entry: Dictionary in _catalog:
-		# TESTING: every track unlocked. To restore key-gated locks, set
-		# UNLOCK_ALL = false. (Was: skip tracks whose unlock.type=="key"
-		# until SaveSystem.is_unlocked(key) flips true.)
-		const UNLOCK_ALL := true
+		# TESTING: every track unlocked. To restore key-gated locks, flip
+		# UNLOCK_ALL_TRACKS (declared at script scope above) to false.
 		var unlock: Dictionary = entry.get("unlock", {})
-		if not UNLOCK_ALL and unlock.get("type", "") == "key":
+		if not UNLOCK_ALL_TRACKS and unlock.get("type", "") == "key":
 			if not SaveSystem.is_unlocked(unlock.get("key", "")):
 				continue
 

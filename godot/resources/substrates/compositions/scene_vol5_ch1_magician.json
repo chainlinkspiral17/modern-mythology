@@ -40,31 +40,14 @@
       "alpha": 1.0
     },
     {
-      "kind": "image_frames",
-      "frames": [
-        "assets/backgrounds/vol5_warehouse_cathedral_ascii.png",
-        "assets/backgrounds/vol5_warehouse_cathedral_ascii.png",
-        "assets/backgrounds/vol5_warehouse_cathedral_ascii.png",
-        "assets/backgrounds/vol5_warehouse_cathedral_ascii_glitch.png"
-      ],
-      "frame_duration": 0.5,
+      "kind": "static",
+      "path": "gallery/vol5_warehouse_cathedral_clean_blocks",
       "x": 0,
       "y": 0,
-      "w": 1920,
-      "h": 1080,
-      "alpha": 0.2,
+      "font_px": 6,
       "z": 5,
-      "modulate": "#ff7a6a",
-      "audio_reactive": {
-        "freq_lo": 60,
-        "freq_hi": 3000,
-        "base_alpha": 0.16,
-        "max_alpha": 0.5,
-        "min_alpha": 0.1,
-        "magnitude": 6.0,
-        "smoothing": 0.16,
-        "update_hz": 30
-      }
+      "alpha": 0.2,
+      "modulate": "#ff7a6a"
     },
     {
       "kind": "image_frames",
