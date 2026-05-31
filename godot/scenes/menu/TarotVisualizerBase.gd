@@ -32,6 +32,14 @@ extends Control
 signal closed
 
 var _card_path: String = ""
+var _composition_path: String = ""   # opt-in: substrate composition id
+                                      # under resources/substrates/compositions/.
+                                      # When set, supersedes _card_path.
+var _substrate_animate: bool = false  # opt-in: glitch+scanline+blink FX
+var _substrate_severity: float = 0.15 # base glitch severity (0..1).
+                                      # Subclasses can raise per §11 (Tower=hot).
+var _face_rect_norm: Rect2 = Rect2(0.30, 0.10, 0.40, 0.35)  # normalized face
+                                                            # region for blink
 var _hooks_path: String = ""
 var _ambient_audio_path: String = ""
 
