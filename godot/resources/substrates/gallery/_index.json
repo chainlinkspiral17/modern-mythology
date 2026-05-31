@@ -187,6 +187,16 @@
       "always_unlocked": true
     },
     {
+      "id": "tarot_fool_v2",
+      "title": "0 — Fool (legacy dashboard)",
+      "set": "Major Arcana (Legacy)",
+      "type": "composition",
+      "path": "tarot_fool_v2",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_*",
+      "always_unlocked": true
+    },
+    {
       "id": "tarot_fool",
       "title": "0 — Fool (legacy v1 ASCII)",
       "set": "Major Arcana (Legacy)",
@@ -196,13 +206,115 @@
       "always_unlocked": true
     },
     {
-      "id": "tarot_fool_v2",
-      "title": "0 — Fool (legacy dashboard)",
-      "set": "Major Arcana (Legacy)",
-      "type": "composition",
-      "path": "tarot_fool_v2",
+      "id": "vol5_bungalow_dusk_blocks",
+      "title": "Bungalow — Dusk  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_bungalow_dusk_blocks",
       "volume": 5,
-      "unlock_pattern": "vol5_ch0_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_dambrosio_dining_room_blocks",
+      "title": "D'AMBROSIO'S — Dining Room  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_dambrosio_dining_room_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_dambrosios_exterior_blocks",
+      "title": "D'AMBROSIO'S — Exterior  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_dambrosios_exterior_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_dambrosios_interior_blocks",
+      "title": "D'AMBROSIO'S — Interior  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_dambrosios_interior_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_riverboat_interior_blocks",
+      "title": "Riverboat — Interior  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_riverboat_interior_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_dambrosios_riverboat_nicola_blocks",
+      "title": "Riverboat — Nicola POV  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_dambrosios_riverboat_nicola_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_warehouse_cathedral_blocks",
+      "title": "Warehouse — Cathedral of Rust  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_warehouse_cathedral_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_dante_blocks",
+      "title": "Dante D'Ambrosio  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_dante_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_elicia_blocks",
+      "title": "Elicia Duchane  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_elicia_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_frasier_blocks",
+      "title": "Frasier Temple  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_frasier_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_john_blocks",
+      "title": "John Frank  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_john_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_phone_mackenzie_blocks",
+      "title": "Mackenzie (phone)  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_phone_mackenzie_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_nicola_blocks",
+      "title": "Nicola Greer  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_nicola_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_the_demon_blocks",
+      "title": "The Demon  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_the_demon_blocks",
+      "volume": 5,
       "always_unlocked": true
     },
     {
