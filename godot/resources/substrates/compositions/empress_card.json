@@ -1,0 +1,87 @@
+{
+  "id": "empress_card",
+  "canvas": [
+    2056,
+    1118
+  ],
+  "bg": "#040610",
+  "windows": [
+    {
+      "path": "gallery/empress_clean_blocks",
+      "x": 0,
+      "y": 0,
+      "font_px": 6,
+      "z": 1
+    },
+    {
+      "x": 649,
+      "y": 26,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/empress_ov_0_0"
+    },
+    {
+      "x": 804,
+      "y": 52,
+      "font_px": 43,
+      "z": 5,
+      "path": "pieces/empress_ov_0_1"
+    },
+    {
+      "x": 840,
+      "y": 109,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/empress_ov_1_0"
+    },
+    {
+      "x": 947,
+      "y": 128,
+      "font_px": 22,
+      "z": 5,
+      "path": "pieces/empress_ov_1_1"
+    },
+    {
+      "x": 293,
+      "y": 972,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/empress_ov_2_0"
+    },
+    {
+      "x": 576,
+      "y": 996,
+      "font_px": 18,
+      "z": 5,
+      "path": "pieces/empress_ov_2_1"
+    },
+    {
+      "x": 578,
+      "y": 1014,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/empress_ov_3_0"
+    },
+    {
+      "x": 887,
+      "y": 1035,
+      "font_px": 14,
+      "z": 5,
+      "path": "pieces/empress_ov_3_1"
+    },
+    {
+      "x": 107,
+      "y": 1044,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/empress_ov_4_0"
+    },
+    {
+      "x": 510,
+      "y": 1070,
+      "font_px": 12,
+      "z": 5,
+      "path": "pieces/empress_ov_4_1"
+    }
+  ]
+}

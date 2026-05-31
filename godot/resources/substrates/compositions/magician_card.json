@@ -1,0 +1,73 @@
+{
+  "id": "magician_card",
+  "canvas": [
+    2056,
+    1502
+  ],
+  "bg": "#040610",
+  "windows": [
+    {
+      "path": "gallery/magician_clean_blocks",
+      "x": 0,
+      "y": 0,
+      "font_px": 6,
+      "z": 1
+    },
+    {
+      "x": 2,
+      "y": 19,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/magician_ov_0_0"
+    },
+    {
+      "x": 21,
+      "y": 51,
+      "font_px": 43,
+      "z": 5,
+      "path": "pieces/magician_ov_0_1"
+    },
+    {
+      "x": 26,
+      "y": 133,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/magician_ov_1_0"
+    },
+    {
+      "x": 45,
+      "y": 163,
+      "font_px": 24,
+      "z": 5,
+      "path": "pieces/magician_ov_1_1"
+    },
+    {
+      "x": 332,
+      "y": 1201,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/magician_ov_2_0"
+    },
+    {
+      "x": 570,
+      "y": 1232,
+      "font_px": 25,
+      "z": 5,
+      "path": "pieces/magician_ov_2_1"
+    },
+    {
+      "x": 533,
+      "y": 1263,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/magician_ov_3_0"
+    },
+    {
+      "x": 704,
+      "y": 1295,
+      "font_px": 16,
+      "z": 5,
+      "path": "pieces/magician_ov_3_1"
+    }
+  ]
+}

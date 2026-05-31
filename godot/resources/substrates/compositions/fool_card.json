@@ -1,0 +1,185 @@
+{
+  "id": "fool_card",
+  "canvas": [
+    2056,
+    1118
+  ],
+  "bg": "#040610",
+  "windows": [
+    {
+      "path": "gallery/fool_clean_blocks",
+      "x": 0,
+      "y": 0,
+      "font_px": 6,
+      "z": 1
+    },
+    {
+      "x": 75,
+      "y": -6,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_0_0"
+    },
+    {
+      "x": 94,
+      "y": 16,
+      "font_px": 23,
+      "z": 5,
+      "path": "pieces/fool_ov_0_1"
+    },
+    {
+      "x": 929,
+      "y": -2,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_1_0"
+    },
+    {
+      "x": 949,
+      "y": 21,
+      "font_px": 18,
+      "z": 5,
+      "path": "pieces/fool_ov_1_1"
+    },
+    {
+      "x": 1341,
+      "y": 340,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_2_0"
+    },
+    {
+      "x": 1360,
+      "y": 367,
+      "font_px": 19,
+      "z": 5,
+      "path": "pieces/fool_ov_2_1"
+    },
+    {
+      "x": 1375,
+      "y": 387,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_3_0"
+    },
+    {
+      "x": 1394,
+      "y": 422,
+      "font_px": 17,
+      "z": 5,
+      "path": "pieces/fool_ov_3_1"
+    },
+    {
+      "x": 81,
+      "y": 285,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_4_0"
+    },
+    {
+      "x": 101,
+      "y": 308,
+      "font_px": 14,
+      "z": 5,
+      "path": "pieces/fool_ov_4_1"
+    },
+    {
+      "x": 28,
+      "y": 837,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_5_0"
+    },
+    {
+      "x": 47,
+      "y": 849,
+      "font_px": 13,
+      "z": 5,
+      "path": "pieces/fool_ov_5_1"
+    },
+    {
+      "x": 28,
+      "y": 908,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_6_0"
+    },
+    {
+      "x": 47,
+      "y": 925,
+      "font_px": 13,
+      "z": 5,
+      "path": "pieces/fool_ov_6_1"
+    },
+    {
+      "x": 28,
+      "y": 970,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_7_0"
+    },
+    {
+      "x": 47,
+      "y": 995,
+      "font_px": 13,
+      "z": 5,
+      "path": "pieces/fool_ov_7_1"
+    },
+    {
+      "x": 336,
+      "y": 856,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_8_0"
+    },
+    {
+      "x": 355,
+      "y": 891,
+      "font_px": 41,
+      "z": 5,
+      "path": "pieces/fool_ov_8_1"
+    },
+    {
+      "x": 351,
+      "y": 942,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_9_0"
+    },
+    {
+      "x": 370,
+      "y": 971,
+      "font_px": 20,
+      "z": 5,
+      "path": "pieces/fool_ov_9_1"
+    },
+    {
+      "x": 351,
+      "y": 1029,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_10_0"
+    },
+    {
+      "x": 370,
+      "y": 1060,
+      "font_px": 15,
+      "z": 5,
+      "path": "pieces/fool_ov_10_1"
+    },
+    {
+      "x": 1645,
+      "y": 835,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/fool_ov_11_0"
+    },
+    {
+      "x": 1664,
+      "y": 863,
+      "font_px": 12,
+      "z": 5,
+      "path": "pieces/fool_ov_11_1"
+    }
+  ]
+}

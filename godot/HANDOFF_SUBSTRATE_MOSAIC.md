@@ -60,18 +60,27 @@ render ~1.22× taller than the previews. To undistort, regenerate with
 `--cell-aspect 0.82` (the default is left at 1.0 so nothing already committed
 shifts). Verify the exact value against a real render first.
 
+## Compositions (generated)
+
+`build_arcana_card.py` now emits, per card:
+- `gallery/<card>_clean_blocks.json` — aspect-correct clean mosaic (`--cell-aspect 0.82`).
+- `pieces/<card>_ov_<n>_<k>.json` — per text block: a fine **mask** piece (mosaic
+  font, exactly covers the painted-text box) + a crisp **text** piece centred on
+  the box. Decoupling mask from text keeps large titles vertically aligned.
+- `compositions/<card>_card.json` — the manifest (bg mosaic z=1, masks z=4,
+  text z=5), registered in `gallery/_index.json` as `<card>_card`.
+
+Load in-engine via the gallery (`Major Arcana (Block Art)` → `… (composition)`).
+Verify alignment; tune any residual side-label bleed by widening that element's
+`box` in the spec and re-running the builder. The PIL preview at
+`/tmp/blockart/<card>_card.png` renders the manifest exactly as Godot will.
+
 ## Next steps (need Godot in the loop)
 
-1. **Compositions.** Wire each card as an `AsciiComposition`: clean mosaic as the
-   background window + the spec's text as overlay pieces (text pieces at large
-   `font_px`, opaque panel = box to mask). Coordinates are in the spec; map
-   source-px → canvas-px per axis (mind the aspect). Register in `gallery/_index.json`.
-   Alternatively bake `/tmp/blockart/<card>_final.png` as a gallery texture for a
-   quick, guaranteed-correct path.
+1. **Verify** the six compositions render aligned in your Godot (no engine here).
 2. **Animation** (requested): glitch / scanline sweep + subtle facial drift +
-   blink on the portrait region. This is runtime GDScript (per-cell substitution
-   per `SUBSTRATE_STYLE_GUIDE.md` §11, or a CRT shader on the raster output) —
-   author and tune it against the live engine.
+   blink on the portrait region. Runtime GDScript (per-cell substitution per
+   `SUBSTRATE_STYLE_GUIDE.md` §11, or a CRT shader on the raster output).
 3. **Remaining arcana.** Same pipeline for cards 6–21 as their paintings arrive:
    add `assets/gallery/<card>.png`, write `arcana_specs/<card>.json`, run the
-   builder, register.
+   builder.
