@@ -22,9 +22,14 @@ var _built:     bool   = false
 
 
 func open() -> void:
-	if not _built:
-		_build()
-		_built = true
+	# Always rebuild — cheap and avoids stale-cache bugs after
+	# unlock changes or hot-reload of the catalog.
+	for ch in get_children():
+		ch.queue_free()
+	_track_buttons.clear()
+	_built = false
+	_build()
+	_built = true
 	_refresh()
 	visible = true
 
@@ -124,7 +129,10 @@ func _build() -> void:
 	scroll.add_child(track_vbox)
 
 	_catalog = SceneDataDB.get_music_catalog()
+	print("[MusicPlayer] catalog size: ", _catalog.size(),
+	      " · UNLOCK_ALL_TRACKS=", UNLOCK_ALL_TRACKS)
 	var cur_vol := -2
+	var _added := 0
 	for entry: Dictionary in _catalog:
 		# TESTING: every track unlocked. To restore key-gated locks, flip
 		# UNLOCK_ALL_TRACKS (declared at script scope above) to false.
@@ -180,6 +188,8 @@ func _build() -> void:
 		t_btn.add_child(t_hbox)
 		track_vbox.add_child(t_btn)
 		_track_buttons[src] = {"btn": t_btn, "dot": dot_lbl, "name": name_lbl}
+		_added += 1
+	print("[MusicPlayer] added ", _added, " track buttons")
 
 	# Connect track change signal
 	AudioMgr.track_changed.connect(_on_track_changed)
