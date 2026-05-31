@@ -1,0 +1,114 @@
+{
+  "asset": "assets/gallery/magician.png",
+  "scene_id": "vol5_ch1_magician",
+  "character": "frasier",
+  "arcana": "I - THE MAGICIAN",
+  "subtitle": "Cathedral of Rust and Code",
+  "palette": "dark_teal_industrial",
+  "quote": "Wakey wakey, eggs and bakey. Reality subroutine glitching.",
+
+  "ciphers": [
+    {
+      "id": "mag_infinity_sigil",
+      "kind": "data_sigil",
+      "text": "∞ rendered in code-stream particles",
+      "anchor_norm": [0.55, 0.18],
+      "encoding_hint": "the infinity drawn by Frasier's soldering iron is composed of binary fragments — read clockwise from the right loop's top",
+      "reveals": "vol5_magician_ascending_node"
+    },
+    {
+      "id": "mag_steamboat_in_model",
+      "kind": "cross_card_link",
+      "text": "miniature red steamboat in the model city Frasier is wiring",
+      "anchor_norm": [0.55, 0.78],
+      "encoding_hint": "Frasier is modeling/predicting D'Ambrosio's empire BEFORE meeting the Emperor — the red steamboat in his diorama is the same boat from the IV - EMPEROR card",
+      "reveals": "vol5_magician_emperor_link",
+      "cross_references": ["emperor.json::scene"]
+    },
+    {
+      "id": "mag_demons_swirl",
+      "kind": "presence_count",
+      "text": "two warehouse demons visible in the periphery",
+      "anchor_norm": [[0.32, 0.50], [0.85, 0.42]],
+      "encoding_hint": "demon count maps to portrait_the_demon.json — pair = the demonic infestation Frasier is debugging",
+      "reveals": "vol5_demon_summon_count",
+      "cross_references": ["portrait_the_demon"]
+    },
+    {
+      "id": "mag_crt_readout",
+      "kind": "data_overlay",
+      "text": "lower-right CRT monitor displaying live biometric/process readout",
+      "anchor_norm": [0.88, 0.85],
+      "encoding_hint": "matches the empress.json::ems_biometrics_alert overlay structure — same diagnostic system, different chapter",
+      "reveals": "vol5_diagnostic_grid",
+      "cross_references": ["empress.json::ems_biometrics_alert"]
+    },
+    {
+      "id": "mag_paint_can",
+      "kind": "sigil",
+      "text": "paint can on the desk reading 'COUNTY ROAD' (partial / illegible)",
+      "anchor_norm": [0.10, 0.62],
+      "encoding_hint": "the partial label is a route reference — full text appears in vol5_ch3_empress's prose as Nicola walks past the abandoned warehouses",
+      "reveals": "vol5_county_road_clue"
+    }
+  ],
+
+  "hotspots": [
+    {
+      "id": "mag_soldering_iron",
+      "shape": "rect_norm",
+      "rect": [0.55, 0.20, 0.08, 0.18],
+      "interact": "magician.iron.touched",
+      "unlocks": "tarot_synth::magician_pulse_arp_preset"
+    },
+    {
+      "id": "mag_model_city",
+      "shape": "rect_norm",
+      "rect": [0.30, 0.65, 0.55, 0.30],
+      "interact": "magician.model.examined",
+      "unlocks": "lore:graustark_overlay_map"
+    },
+    {
+      "id": "mag_steamboat",
+      "shape": "rect_norm",
+      "rect": [0.55, 0.80, 0.08, 0.08],
+      "interact": "magician.steamboat.touched",
+      "unlocks": "vol5_magician_emperor_link"
+    },
+    {
+      "id": "mag_demon_left",
+      "shape": "rect_norm",
+      "rect": [0.28, 0.45, 0.10, 0.18],
+      "interact": "magician.demon.left.touched",
+      "unlocks": "lore:demon_left_inventory"
+    },
+    {
+      "id": "mag_demon_right",
+      "shape": "rect_norm",
+      "rect": [0.82, 0.38, 0.10, 0.20],
+      "interact": "magician.demon.right.touched",
+      "unlocks": "lore:demon_right_inventory"
+    }
+  ],
+
+  "easter_eggs": [
+    "the infinity symbol Frasier traces is the SAME glyph the Priestess card hides in her shelf books — Magician (active) creates it, Priestess (passive) reads it",
+    "model city contains predictive placement of D'Ambrosio's empire BEFORE Frasier has met Dante — implies the magician sees forward",
+    "subtle green data-stream embedded in the rust girders mirrors the emerald-green data overlay from Empress (Aria's POV) — Frasier and Aria operate in the same medium",
+    "CRT in lower-right shows what looks like a heart rate trace — Frasier is monitoring something/someone remotely"
+  ],
+
+  "links_forward": [
+    "vol5_magician_ascending_node",
+    "vol5_magician_emperor_link",
+    "vol5_demon_summon_count",
+    "vol5_diagnostic_grid",
+    "vol5_county_road_clue"
+  ],
+
+  "cross_references": {
+    "steamboat_shared_with": "emperor.json::scene_throne",
+    "biometric_overlay_shared_with": "empress.json::ems_biometrics_alert",
+    "infinity_sigil_shared_with": "high_priestess.json::shelf_books"
+  }
+}

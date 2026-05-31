@@ -1,0 +1,158 @@
+{
+  "asset": "assets/gallery/high_priestess.png",
+  "scene_id": "vol5_ch2_priestess",
+  "character": "elicia",
+  "arcana": "II - THE HIGH PRIESTESS",
+  "subtitle": "Exit Through the Gift Shop",
+  "palette": "halftone_monochrome",
+  "quote": "The map was never about finding a destination. It was about what you became along the way.",
+  "format_note": "intentional B&W halftone — different aesthetic from the rest of the deck, marks Elicia as observer/recorder rather than actor",
+
+  "ciphers": [
+    {
+      "id": "pri_anya_tapes",
+      "kind": "named_character_introduction",
+      "text": "stack of VHS tapes labeled 'Anya' on the upper shelf",
+      "anchor_norm": [0.82, 0.18],
+      "encoding_hint": "Anya is not yet a named character in the project — these tapes are forward-seeding. Multiple tapes suggests Anya is documented/recorded by Elicia. Possible vol6 or vol7 reveal.",
+      "reveals": "vol5_anya_introduced",
+      "named_entity": "anya",
+      "priority": "HIGH — first canonical appearance of this character"
+    },
+    {
+      "id": "pri_compass_badge",
+      "kind": "meta_reference",
+      "text": "circular badge in lower-right reading 'MODERN MYTHOLOGY · NARRATIVE STRUCTURE COMPASS (HIGH PRIESTESS Node)'",
+      "anchor_norm": [0.92, 0.82],
+      "encoding_hint": "fourth-wall — Elicia's card explicitly identifies itself as a node in the project's narrative structure compass. Implies the deck itself is a meta-system the player can navigate. Touching this badge in-game could unlock a dev-notes/structure overlay or the alt-ending branch.",
+      "reveals": "vol5_meta_compass_unlocked",
+      "priority": "HIGH — fourth-wall hook"
+    },
+    {
+      "id": "pri_tarot_notes_journal",
+      "kind": "lore_artifact",
+      "text": "journal labeled 'PERSONAL TAROT SYMBOLOGY NOTES' on desk",
+      "anchor_norm": [0.46, 0.85],
+      "encoding_hint": "Elicia's personal interpretation of the major arcana — could become a collectible journal in-game with her annotations on every card (each annotation = lore drop for that arcana)",
+      "reveals": "lore:elicia_tarot_journal"
+    },
+    {
+      "id": "pri_shelf_books",
+      "kind": "lore_artifact_stack",
+      "text_lines": [
+        "MYSTERY CULT TEXTS (19th C. Reprint)",
+        "OCCULT SYMBOLOGY of the ASCENDANT"
+      ],
+      "anchor_norm": [0.78, 0.50],
+      "encoding_hint": "her source material — book titles reveal she's studying the same systems the project itself uses. 'OCCULT SYMBOLOGY of the ASCENDANT' = key for the meta-compass; the ASCENDANT is another arcana keyword to watch for",
+      "reveals": "lore:elicia_research_stack",
+      "cross_references": ["magician.json::mag_infinity_sigil"]
+    },
+    {
+      "id": "pri_editing_waveform",
+      "kind": "diagetic_audio",
+      "text": "computer monitor showing video-editing software w/ waveform",
+      "anchor_norm": [0.10, 0.55],
+      "encoding_hint": "she's editing audio/video — the waveform could be matched against the project's actual voice clips to identify which scene she's reviewing. Possible audio-cipher: scrubbing the waveform plays a hidden line.",
+      "reveals": "vol5_priestess_editing_clip",
+      "cross_references": ["assets/audio/voice/vol5_ch2_priestess"]
+    },
+    {
+      "id": "pri_pomegranate_journal",
+      "kind": "sigil",
+      "text": "pomegranate sigil embossed on the closed leather journal beside her tarot notes",
+      "anchor_norm": [0.40, 0.85],
+      "encoding_hint": "pomegranate is the High Priestess's traditional veil-pattern — matches the existing high_priestess_arcana procedural rendering",
+      "reveals": "vol5_pomegranate_sigil_collected"
+    },
+    {
+      "id": "pri_swamp_window",
+      "kind": "scene_link",
+      "text": "swampy cypress visible through the window — Graustark setting",
+      "anchor_norm": [0.20, 0.20],
+      "encoding_hint": "establishes location continuity with vol5_ch3_empress (also Graustark) and vol5_ch5_hierophant (Acadian)",
+      "reveals": "lore:graustark_locked_in"
+    }
+  ],
+
+  "hotspots": [
+    {
+      "id": "pri_anya_tapes_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.78, 0.15, 0.10, 0.10],
+      "interact": "priestess.anya_tapes.examined",
+      "unlocks": "vol5_anya_introduced",
+      "notes": "clicking the tapes opens an inventory/list of tape labels — primary reveal vector for Anya as a character"
+    },
+    {
+      "id": "pri_compass_badge_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.88, 0.78, 0.08, 0.10],
+      "interact": "priestess.compass.touched",
+      "unlocks": "vol5_meta_compass_unlocked",
+      "notes": "meta unlock — could reveal the narrative structure overlay (where each arcana sits in the story graph) or a dev-commentary track"
+    },
+    {
+      "id": "pri_journal_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.42, 0.80, 0.10, 0.10],
+      "interact": "priestess.journal.examined",
+      "unlocks": "lore:elicia_tarot_journal"
+    },
+    {
+      "id": "pri_camera_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.70, 0.28, 0.10, 0.10],
+      "interact": "priestess.camera.touched",
+      "unlocks": "vol5_priestess_camera"
+    },
+    {
+      "id": "pri_lantern_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.62, 0.20, 0.06, 0.12],
+      "interact": "priestess.lantern.touched",
+      "unlocks": "vol5_priestess_lantern"
+    },
+    {
+      "id": "pri_wine_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.55, 0.62, 0.04, 0.16],
+      "interact": "priestess.wine.examined",
+      "unlocks": "lore:gas_station_red"
+    },
+    {
+      "id": "pri_editing_monitor_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.05, 0.40, 0.18, 0.30],
+      "interact": "priestess.monitor.examined",
+      "unlocks": "vol5_priestess_editing_clip"
+    }
+  ],
+
+  "easter_eggs": [
+    "the priestess card is the ONLY one in halftone B&W — marks her as the observer/archivist rather than an actor. She RECORDS, doesn't act.",
+    "Anya tapes are forward-seeded — character name introduced visually before any prose mentions her. When she eventually appears in dialogue, players who clicked the tapes get a 'recognition' beat.",
+    "the NARRATIVE STRUCTURE COMPASS badge is the most explicit fourth-wall element in the entire deck. Game-design-wise it argues for an unlockable 'structure view' showing the arcana network",
+    "books on the shelf reference the actual study system the player is engaged in — Elicia is the in-fiction scholar of the same tarot the game uses for chapters",
+    "Anya tape labels visible: at least two cassettes — could be authored as Anya_1.tape, Anya_2.tape inventory items",
+    "the crystal shards on the desk could be glass from a broken mirror — paired with the Emperor card's mirror-reflection cipher = the dual_pov_node lineage"
+  ],
+
+  "links_forward": [
+    "vol5_anya_introduced",
+    "vol5_meta_compass_unlocked",
+    "lore:elicia_tarot_journal",
+    "lore:elicia_research_stack",
+    "vol5_priestess_editing_clip",
+    "vol5_pomegranate_sigil_collected",
+    "vol5_priestess_camera",
+    "vol5_priestess_lantern",
+    "lore:gas_station_red"
+  ],
+
+  "cross_references": {
+    "shared_swamp_setting_with": "empress.json (Graustark)",
+    "shared_research_methodology_with": "magician.json (Elicia studies what Frasier builds)",
+    "introduces_character": "anya (new — not yet in prose)"
+  }
+}
