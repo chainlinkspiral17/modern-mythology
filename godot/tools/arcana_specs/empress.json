@@ -1,0 +1,82 @@
+{
+  "card": "empress",
+  "source": "assets/gallery/empress.png",
+  "width": 560,
+  "elements": [
+    {
+      "box": [
+        622,
+        40,
+        1298,
+        118
+      ],
+      "lines": [
+        "III   THE EMPRESS"
+      ],
+      "size": 40,
+      "fg": "#e8c87a",
+      "panel": "#0a0f0a",
+      "align": "center"
+    },
+    {
+      "box": [
+        800,
+        118,
+        1120,
+        152
+      ],
+      "lines": [
+        "Static Bloom"
+      ],
+      "size": 21,
+      "fg": "#b89a5a",
+      "panel": "#0a0f0a",
+      "align": "center"
+    },
+    {
+      "box": [
+        290,
+        926,
+        1630,
+        964
+      ],
+      "lines": [
+        "This prison of meat. Find the exit node. There has to be a way out of this system."
+      ],
+      "size": 17,
+      "fg": "#dac4a2",
+      "panel": "#0a0f0a",
+      "align": "center"
+    },
+    {
+      "box": [
+        556,
+        966,
+        1364,
+        992
+      ],
+      "lines": [
+        "SYMBOLISM  ·  IMAGERY  ·  PALETTE"
+      ],
+      "size": 13,
+      "fg": "#c0a060",
+      "panel": "#0a0f0a",
+      "align": "center"
+    },
+    {
+      "box": [
+        116,
+        994,
+        1804,
+        1026
+      ],
+      "lines": [
+        "Too-tight hostess uniform. Klonopin. Cheap champagne. Emerald-green code behind the eyes. The kick from inside. Velvet ropes. Brass moorings."
+      ],
+      "size": 11,
+      "fg": "#b0a880",
+      "panel": "#0a0f0a",
+      "align": "center"
+    }
+  ]
+}

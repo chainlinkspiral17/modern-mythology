@@ -1,0 +1,67 @@
+{
+  "card": "magician",
+  "source": "assets/gallery/magician.png",
+  "width": 560,
+  "elements": [
+    {
+      "box": [
+        18,
+        34,
+        792,
+        122
+      ],
+      "lines": [
+        "I   THE MAGICIAN"
+      ],
+      "size": 40,
+      "fg": "#cfe6e0",
+      "panel": "#0e1a1e",
+      "align": "left"
+    },
+    {
+      "box": [
+        40,
+        140,
+        584,
+        198
+      ],
+      "lines": [
+        "Cathedral of Rust and Code"
+      ],
+      "size": 22,
+      "fg": "#8fb6b0",
+      "panel": "#0e1a1e",
+      "align": "left"
+    },
+    {
+      "box": [
+        326,
+        1138,
+        1596,
+        1198
+      ],
+      "lines": [
+        "“Wakey wakey, eggs and bakey. Reality subroutine glitching.”"
+      ],
+      "size": 23,
+      "fg": "#e4dcc6",
+      "panel": "#0c1418",
+      "align": "center"
+    },
+    {
+      "box": [
+        514,
+        1196,
+        1432,
+        1246
+      ],
+      "lines": [
+        "POV: Frasier Temple    ·    LOCATION: Warehouse, industrial Graustark"
+      ],
+      "size": 15,
+      "fg": "#9ab2ba",
+      "panel": "#0c1418",
+      "align": "center"
+    }
+  ]
+}

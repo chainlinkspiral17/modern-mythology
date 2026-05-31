@@ -30,18 +30,20 @@ import numpy as np, cv2
 
 ROOT = Path(__file__).resolve().parent.parent      # godot/
 FONT = ROOT / "resources/fonts/SpaceMono-Regular.ttf"
-PREVIEW_CELL_W = 3                                  # px per mosaic cell in preview
+PREVIEW_CELL_W = 4                                  # px per mosaic cell in preview
+BOX_MARGIN = 16                                     # px expansion to catch bleed
 
 
 def inpaint_text(src_img, elements):
     arr = np.array(src_img.convert("RGB"))
     H, W = arr.shape[:2]
     mask = np.zeros((H, W), np.uint8)
+    m = BOX_MARGIN
     for e in elements:
         if not e.get("inpaint", True):
             continue
         x0, y0, x1, y1 = e["box"]
-        mask[max(0, y0):min(H, y1), max(0, x0):min(W, x1)] = 255
+        mask[max(0, y0 - m):min(H, y1 + m), max(0, x0 - m):min(W, x1 + m)] = 255
     mask = cv2.dilate(mask, np.ones((5, 5), np.uint8), iterations=1)
     out = cv2.inpaint(arr, mask, 4, cv2.INPAINT_TELEA)
     return Image.fromarray(out)
@@ -76,7 +78,7 @@ def render_preview(mosaic_json, elements, scale, out_png):
         # Panel masks the FULL painted-text box (scaled), so the painting
         # never bleeds around the new text regardless of small coord error.
         if panel:
-            pad = max(3, round(size * scale * 0.18))
+            pad = BOX_MARGIN * scale
             d.rectangle([x0 * scale - pad, y0 * scale - pad,
                          x1 * scale + pad, y1 * scale + pad], fill=panel)
         for i, l in enumerate(lines):
