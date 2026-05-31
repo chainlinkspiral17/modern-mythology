@@ -8,7 +8,8 @@
       "path": "TarotSynthOverlay",
       "volume": 5,
       "unlock_pattern": "vol5_ch4_*",
-      "notes": "opens scenes/menu/TarotSynthOverlay.gd — overlay type, not composition. Gallery needs case in open_item() to instantiate the script."
+      "notes": "opens scenes/menu/TarotSynthOverlay.gd — overlay type, not composition. Gallery needs case in open_item() to instantiate the script.",
+      "always_unlocked": true
     },
     {
       "id": "fool_arcana",
@@ -17,7 +18,8 @@
       "type": "composition",
       "path": "fool_arcana",
       "volume": 5,
-      "unlock_pattern": "vol5_ch0_*"
+      "unlock_pattern": "vol5_ch0_*",
+      "always_unlocked": true
     },
     {
       "id": "magician_arcana",
@@ -26,7 +28,8 @@
       "type": "composition",
       "path": "magician_arcana",
       "volume": 5,
-      "unlock_pattern": "vol5_ch1_*"
+      "unlock_pattern": "vol5_ch1_*",
+      "always_unlocked": true
     },
     {
       "id": "high_priestess_arcana",
@@ -35,7 +38,8 @@
       "type": "composition",
       "path": "high_priestess_arcana",
       "volume": 5,
-      "unlock_pattern": "vol5_ch2_*"
+      "unlock_pattern": "vol5_ch2_*",
+      "always_unlocked": true
     },
     {
       "id": "empress_arcana",
@@ -44,7 +48,8 @@
       "type": "composition",
       "path": "empress_arcana",
       "volume": 5,
-      "unlock_pattern": "vol5_ch3_*"
+      "unlock_pattern": "vol5_ch3_*",
+      "always_unlocked": true
     },
     {
       "id": "emperor_arcana",
@@ -53,7 +58,8 @@
       "type": "composition",
       "path": "emperor_arcana",
       "volume": 5,
-      "unlock_pattern": "vol5_ch4_*"
+      "unlock_pattern": "vol5_ch4_*",
+      "always_unlocked": true
     },
     {
       "id": "hierophant_arcana",
@@ -62,7 +68,8 @@
       "type": "composition",
       "path": "hierophant_arcana",
       "volume": 5,
-      "unlock_pattern": "vol5_ch5_*"
+      "unlock_pattern": "vol5_ch5_*",
+      "always_unlocked": true
     },
     {
       "id": "tarot_fool_v2",
@@ -71,7 +78,8 @@
       "type": "composition",
       "path": "tarot_fool_v2",
       "volume": 5,
-      "unlock_pattern": "vol5_ch0_*"
+      "unlock_pattern": "vol5_ch0_*",
+      "always_unlocked": true
     },
     {
       "id": "tarot_fool",
@@ -79,7 +87,8 @@
       "set": "Major Arcana",
       "path": "gallery/tarot_fool",
       "volume": 5,
-      "unlock_pattern": "vol5_ch0_*"
+      "unlock_pattern": "vol5_ch0_*",
+      "always_unlocked": true
     },
     {
       "id": "portrait_john",
@@ -88,7 +97,8 @@
       "type": "composition",
       "path": "portrait_john",
       "volume": 5,
-      "unlock_pattern": "vol5_ch0_*"
+      "unlock_pattern": "vol5_ch0_*",
+      "always_unlocked": true
     },
     {
       "id": "portrait_frasier",
@@ -97,7 +107,8 @@
       "type": "composition",
       "path": "portrait_frasier",
       "volume": 5,
-      "unlock_pattern": "vol5_ch0_frasier"
+      "unlock_pattern": "vol5_ch0_frasier",
+      "always_unlocked": true
     },
     {
       "id": "portrait_stranger",
@@ -106,7 +117,8 @@
       "type": "composition",
       "path": "portrait_stranger",
       "volume": 5,
-      "unlock_pattern": "vol5_ch0_booth6"
+      "unlock_pattern": "vol5_ch0_booth6",
+      "always_unlocked": true
     },
     {
       "id": "portrait_the_demon",
@@ -115,7 +127,8 @@
       "type": "composition",
       "path": "portrait_the_demon",
       "volume": 5,
-      "unlock_pattern": "vol5_ch1_*"
+      "unlock_pattern": "vol5_ch1_*",
+      "always_unlocked": true
     },
     {
       "id": "portrait_elicia",
@@ -124,7 +137,8 @@
       "type": "composition",
       "path": "portrait_elicia",
       "volume": 5,
-      "unlock_pattern": "vol5_ch2_*"
+      "unlock_pattern": "vol5_ch2_*",
+      "always_unlocked": true
     },
     {
       "id": "portrait_nicola",
@@ -133,7 +147,8 @@
       "type": "composition",
       "path": "portrait_nicola",
       "volume": 5,
-      "unlock_pattern": "vol5_ch3_empress"
+      "unlock_pattern": "vol5_ch3_empress",
+      "always_unlocked": true
     },
     {
       "id": "portrait_dante",
@@ -142,7 +157,8 @@
       "type": "composition",
       "path": "portrait_dante",
       "volume": 5,
-      "unlock_pattern": "vol5_ch4_*"
+      "unlock_pattern": "vol5_ch4_*",
+      "always_unlocked": true
     },
     {
       "id": "music_player",
