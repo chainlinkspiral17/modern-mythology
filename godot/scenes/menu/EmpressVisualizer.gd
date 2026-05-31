@@ -375,8 +375,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.NORTH, "row": 3, "tint": c_em_hot,
         "font_size": 11,
-        "requires": func(): return commands_run.get("rovers", 0) >= 1
-                          or commands_run.get("code", 0) >= 1,
+        "requires": func(): return commands_run.get("rovers", 0) >= 1 or commands_run.get("code", 0) >= 1,
         "ascii":
 """
        ╔══════════════════════════════════════════════════╗
@@ -632,8 +631,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.EAST, "row": 5, "tint": c_em_hot,
         "font_size": 11,
-        "requires": func(): return commands_run.get("exit_node", 0) >= 1
-                          or commands_run.get("prison", 0) >= 1,
+        "requires": func(): return commands_run.get("exit_node", 0) >= 1 or commands_run.get("prison", 0) >= 1,
         "ascii":
 """
 
@@ -687,8 +685,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.WEST, "row": 1, "tint": c_burg_dim,
         "font_size": 11,
-        "requires": func(): return commands_run.get("venus", 0) >= 1
-                          or commands_run.get("♀", 0) >= 1,
+        "requires": func(): return commands_run.get("venus", 0) >= 1 or commands_run.get("♀", 0) >= 1,
         "ascii":
 """
               ┌──── ♀ VENUS ─────────────────┐
@@ -702,8 +699,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.WEST, "row": 2, "tint": c_burg_dim,
         "font_size": 11,
-        "requires": func(): return commands_run.get("lobster", 0) >= 1
-                          or commands_run.get("moon", 0) >= 1,
+        "requires": func(): return commands_run.get("lobster", 0) >= 1 or commands_run.get("moon", 0) >= 1,
         "ascii":
 """
               ┌──── ░ LOBSTER · throne base ─┐
@@ -718,8 +714,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.WEST, "row": 3, "tint": c_burg,
         "font_size": 11,
-        "requires": func(): return commands_run.get("fleur", 0) >= 1
-                          or commands_run.get("new_orleans", 0) >= 1,
+        "requires": func(): return commands_run.get("fleur", 0) >= 1 or commands_run.get("new_orleans", 0) >= 1,
         "ascii":
 """
               ┌──── fleur-de-lis ────────────┐

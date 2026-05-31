@@ -281,8 +281,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.NORTH, "row": 3, "tint": c_demon,
         "font_size": 11,
-        "requires": func(): return commands_run.get("demon", 0) >= 1
-                          or commands_run.get("persistent_demon", 0) >= 1,
+        "requires": func(): return commands_run.get("demon", 0) >= 1 or commands_run.get("persistent_demon", 0) >= 1,
         "ascii":
 """
               ┌──────────────────────────────────┐
@@ -522,8 +521,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.EAST, "row": 4, "tint": c_bone_hot,
         "font_size": 11,
-        "requires": func(): return commands_run.get("emperor", 0) >= 1
-                          or commands_run.get("dante", 0) >= 1,
+        "requires": func(): return commands_run.get("emperor", 0) >= 1 or commands_run.get("dante", 0) >= 1,
         "ascii":
 """
 
@@ -540,8 +538,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.EAST, "row": 5, "tint": c_red,
         "font_size": 11,
-        "requires": func(): return commands_run.get("antonio", 0) >= 1
-                          or commands_run.get("chariot", 0) >= 1,
+        "requires": func(): return commands_run.get("antonio", 0) >= 1 or commands_run.get("chariot", 0) >= 1,
         "ascii":
 """
 
@@ -611,8 +608,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.WEST, "row": 3, "tint": c_blue,
         "font_size": 11,
-        "requires": func(): return commands_run.get("voltaire", 0) >= 1
-                          or commands_run.get("candide", 0) >= 1,
+        "requires": func(): return commands_run.get("voltaire", 0) >= 1 or commands_run.get("candide", 0) >= 1,
         "ascii":
 """
               ┌──────────────────────────────────┐
@@ -629,8 +625,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.WEST, "row": 4, "tint": c_bone_dim,
         "font_size": 11,
-        "requires": func(): return commands_run.get("priestess", 0) >= 1
-                          or commands_run.get("elicia", 0) >= 1,
+        "requires": func(): return commands_run.get("priestess", 0) >= 1 or commands_run.get("elicia", 0) >= 1,
         "ascii":
 """
               ┌──────────────────────────────────┐
@@ -645,8 +640,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.WEST, "row": 5, "tint": c_blue,
         "font_size": 11,
-        "requires": func(): return commands_run.get("frasier", 0) >= 1
-                          or commands_run.get("magician", 0) >= 1,
+        "requires": func(): return commands_run.get("frasier", 0) >= 1 or commands_run.get("magician", 0) >= 1,
         "ascii":
 """
               ┌──────────────────────────────────┐

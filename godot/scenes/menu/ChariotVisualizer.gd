@@ -548,8 +548,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.EAST, "row": 6, "tint": c_rust_hot,
         "font_size": 11,
-        "requires": func(): return commands_run.get("hierophant", 0) >= 1
-                          or commands_run.get("quentin", 0) >= 1,
+        "requires": func(): return commands_run.get("hierophant", 0) >= 1 or commands_run.get("quentin", 0) >= 1,
         "ascii":
 """
 
@@ -652,8 +651,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.WEST, "row": 5, "tint": c_diag,
         "font_size": 11,
-        "requires": func(): return commands_run.get("frasier", 0) >= 1
-                          or commands_run.get("magician", 0) >= 1,
+        "requires": func(): return commands_run.get("frasier", 0) >= 1 or commands_run.get("magician", 0) >= 1,
         "ascii":
 """
               ┌──────────────────────────────────┐

@@ -448,8 +448,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.EAST, "row": 2, "tint": c_sepia,
         "font_size": 11,
-        "requires": func(): return commands_run.get("steamboat", 0) >= 1
-                          or commands_run.get("magician", 0) >= 1,
+        "requires": func(): return commands_run.get("steamboat", 0) >= 1 or commands_run.get("magician", 0) >= 1,
         "ascii":
 """
 
@@ -466,8 +465,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.EAST, "row": 3, "tint": c_blood,
         "font_size": 11,
-        "requires": func(): return commands_run.get("empress", 0) >= 1
-                          or commands_run.get("nicola", 0) >= 1,
+        "requires": func(): return commands_run.get("empress", 0) >= 1 or commands_run.get("nicola", 0) >= 1,
         "ascii":
 """
 
@@ -484,8 +482,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.EAST, "row": 4, "tint": c_sepia_hot,
         "font_size": 11,
-        "requires": func(): return commands_run.get("hierophant", 0) >= 1
-                          or commands_run.get("acadian", 0) >= 1,
+        "requires": func(): return commands_run.get("hierophant", 0) >= 1 or commands_run.get("acadian", 0) >= 1,
         "ascii":
 """
 
@@ -501,8 +498,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.EAST, "row": 5, "tint": c_smoke,
         "font_size": 10,
-        "requires": func(): return mirror_gazes >= 4 and
-                                  ram_l_touched and ram_r_touched,
+        "requires": func(): return mirror_gazes >= 4 and ram_l_touched and ram_r_touched,
         "ascii":
 """
 
@@ -573,8 +569,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.WEST, "row": 3, "tint": c_blood,
         "font_size": 11,
-        "requires": func(): return commands_run.get("1971", 0) >= 1
-                          or commands_run.get("bourbon", 0) >= 1,
+        "requires": func(): return commands_run.get("1971", 0) >= 1 or commands_run.get("bourbon", 0) >= 1,
         "ascii":
 """
               ╔══════════════════════════════════╗
@@ -608,8 +603,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.WEST, "row": 5, "tint": c_parch,
         "font_size": 11,
-        "requires": func(): return commands_run.get("priestess", 0) >= 1
-                          or commands_run.get("elicia", 0) >= 1,
+        "requires": func(): return commands_run.get("priestess", 0) >= 1 or commands_run.get("elicia", 0) >= 1,
         "ascii":
 """
               ┌──────────────────────────────────┐
@@ -625,8 +619,7 @@ func _build_thematic_widget() -> void:
     })
     _register_segment({"dir": Dir.WEST, "row": 6, "tint": c_sepia_dim,
         "font_size": 11,
-        "requires": func(): return commands_run.get("john", 0) >= 1
-                          or commands_run.get("fool", 0) >= 1,
+        "requires": func(): return commands_run.get("john", 0) >= 1 or commands_run.get("fool", 0) >= 1,
         "ascii":
 """
               ┌──────────────────────────────────┐
