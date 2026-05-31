@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_church_exterior.jpg"
+      "src": "assets/backgrounds/vol5_dambrosios_exterior.png"
     },
     {
       "t": "hide",
@@ -97,7 +97,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_riverboat_interior.jpg"
+      "src": "assets/backgrounds/vol5_dambrosio_dining_room.jpg"
     },
     {
       "t": "narrate",
@@ -168,7 +168,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_new_orleans_office.jpg"
+      "src": "assets/backgrounds/vol5_dambrosios_interior.png"
     },
     {
       "t": "narrate",
@@ -275,7 +275,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_graustark_park.jpg"
+      "src": "assets/backgrounds/vol5_bungalow_dusk.png"
     },
     {
       "t": "narrate",

@@ -19,6 +19,24 @@
       "unlock_pattern": "vol5_ch1_*"
     },
     {
+      "id": "high_priestess_arcana",
+      "title": "II — THE HIGH PRIESTESS",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "high_priestess_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch2_*"
+    },
+    {
+      "id": "empress_arcana",
+      "title": "III — THE EMPRESS",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "empress_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch3_*"
+    },
+    {
       "id": "emperor_arcana",
       "title": "IV — THE EMPEROR",
       "set": "Major Arcana",
@@ -26,6 +44,15 @@
       "path": "emperor_arcana",
       "volume": 5,
       "unlock_pattern": "vol5_ch4_*"
+    },
+    {
+      "id": "hierophant_arcana",
+      "title": "V — THE HIEROPHANT",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "hierophant_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch5_*"
     },
     {
       "id": "tarot_fool_v2",
