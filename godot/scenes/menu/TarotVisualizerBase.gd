@@ -79,8 +79,9 @@ func _build_chrome() -> void:
     bg.mouse_filter = Control.MOUSE_FILTER_STOP
     add_child(bg)
 
-    # Card art full-screen, KEEP_ASPECT_CENTERED so the full card
-    # always shows; thematic widgets layer above
+    # Card art is the DOMINANT visual — full screen, untouched. All
+    # thematic widgets go in narrow margin strips at top/bottom or
+    # small corner panels; nothing covers the body of the card.
     if _card_path != "" and ResourceLoader.exists(_card_path):
         card_rect = TextureRect.new()
         card_rect.texture = load(_card_path)
@@ -88,6 +89,11 @@ func _build_chrome() -> void:
         card_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
         card_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
         card_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        # z=1 — above the bg color, below all subclass widgets that
+        # are z=2+ (the subtle particle overlays still float OVER it,
+        # but big UI panels sit in margin strips that don't clip
+        # into the card body)
+        card_rect.z_index = 1
         add_child(card_rect)
 
     # Title strip

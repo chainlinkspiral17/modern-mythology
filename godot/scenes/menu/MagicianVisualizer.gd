@@ -1,237 +1,207 @@
 extends "res://scenes/menu/TarotVisualizerBase.gd"
-## MagicianVisualizer — "Cathedral of Rust and Code".
+## MagicianVisualizer — minimal, card-first.
 ##
-## The Magician card shows Frasier in an abandoned warehouse drawing
-## an infinity sigil out of code-stream particles with a soldering
-## iron, demons swirling at the edges, a miniature model city he's
-## wiring below, and a CRT terminal in the corner.
-##
-## Thematic widget set:
-##   1. CODE-RAIN backdrop overlay — green digital-rain glyphs falling
-##      slowly behind the card art (subtle so it doesn't compete)
-##   2. INFINITY SIGIL TRACER — a glowing ∞ overlay above Frasier's
-##      position pulses on each synth note + slowly auto-rotates;
-##      click it to trigger a "sigil close" chord (3 notes)
-##   3. CRT TERMINAL panel in lower-right showing live signal:
-##      • DEMON.PROC count from puzzle_hooks
-##      • IRON.TEMP fluctuating
-##      • CODE.STREAM scrolling lorem-ipsum-style fragments
-##   4. AMBIENT: warehouse drone loops underneath
-##
-## Together these are the "Cathedral of Rust and Code" — the chapter's
-## title rendered as audio + visual liturgy.
+## Card dominates. Two thin strips at top + bottom for chrome.
+## Click on the card → ambient synth pulse. Click puzzle-hook
+## hotspots → cipher panel slides up + signature chord.
 
-# Code rain state
-var _rain_cols: Array = []     # per column: y (head position), speed, glyph_set
-var _rain_t: float = 0.0
-const RAIN_GLYPH_POOL := "01∞◆▓▒░│║=#%&*+/<>?"
-
-# Sigil tracer state
-var sigil_rect: Control
-var _sigil_t: float = 0.0
-var _sigil_pulse: float = 0.0
-
-# CRT terminal state
-var crt_panel: PanelContainer
-var crt_log: RichTextLabel
-var _crt_t: float = 0.0
-var _iron_temp: float = 580.0
+var status_label: Label
+var cipher_panel: PanelContainer
+var cipher_log: RichTextLabel
+var sigil_t: float = 0.0
+var sigil_pulse: float = 0.0
 
 
 func _init() -> void:
     _card_path  = "res://assets/gallery/magician.png"
     _hooks_path = "res://resources/puzzle_hooks/magician.json"
     _ambient_audio_path = "res://assets/audio/bgm/vol5_warehouse_drone.ogg"
-    # Cool industrial palette overrides
     C_BG = Color(0.020, 0.025, 0.030)
-    C_GOLD = Color(0.45, 0.78, 0.82)
-    C_GOLD_HI = Color(0.78, 0.95, 1.0)
+    C_GOLD = Color(0.55, 0.85, 0.88)
+    C_GOLD_HI = Color(0.82, 0.98, 1.0)
 
 
-# ── THEMATIC WIDGETS ─────────────────────────────────────────────
+func _build_chrome() -> void:
+    var bg := ColorRect.new()
+    bg.color = C_BG
+    bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+    bg.mouse_filter = Control.MOUSE_FILTER_STOP
+    add_child(bg)
+
+    if _card_path != "" and ResourceLoader.exists(_card_path):
+        card_rect = TextureRect.new()
+        card_rect.texture = load(_card_path)
+        card_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+        card_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+        card_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+        card_rect.mouse_filter = Control.MOUSE_FILTER_PASS
+        card_rect.z_index = 1
+        add_child(card_rect)
+        card_rect.gui_input.connect(_on_card_click)
+
+    _build_hotspots()
+
+    var top := _strip_panel(true)
+    var top_row := HBoxContainer.new()
+    top_row.add_theme_constant_override("separation", 12)
+    top.add_child(top_row)
+    _hdr_label(top_row, "I · THE MAGICIAN",
+               "Cathedral of Rust and Code · vol.5 ch.1")
+    var close := Button.new()
+    close.text = "[ × CLOSE ]"
+    close.flat = true
+    close.add_theme_color_override("font_color", C_GOLD_HI)
+    close.pressed.connect(func() -> void: closed.emit())
+    top_row.add_child(close)
+
+    var bot := _strip_panel(false)
+    var bot_row := HBoxContainer.new()
+    bot_row.add_theme_constant_override("separation", 16)
+    bot.add_child(bot_row)
+
+    var sigil_btn := Button.new()
+    sigil_btn.text = "  ∞  TRACE THE SIGIL"
+    sigil_btn.add_theme_color_override("font_color", C_GOLD_HI)
+    sigil_btn.add_theme_font_size_override("font_size", 13)
+    var ss := StyleBoxFlat.new()
+    ss.bg_color = Color(C_GOLD.r * 0.3, C_GOLD.g * 0.3, C_GOLD.b * 0.3, 0.6)
+    ss.border_color = C_GOLD
+    ss.set_border_width_all(1)
+    sigil_btn.add_theme_stylebox_override("normal", ss)
+    var ssh := ss.duplicate() as StyleBoxFlat
+    ssh.bg_color = Color(C_GOLD.r * 0.55, C_GOLD.g * 0.55, C_GOLD.b * 0.55, 0.7)
+    ssh.border_color = C_GOLD_HI
+    sigil_btn.add_theme_stylebox_override("hover", ssh)
+    sigil_btn.pressed.connect(_on_sigil)
+    bot_row.add_child(sigil_btn)
+
+    status_label = Label.new()
+    status_label.text = "click hotspots on the card · trace the sigil ·"
+    status_label.add_theme_color_override("font_color",
+        Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7))
+    status_label.add_theme_font_size_override("font_size", 10)
+    status_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+    status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    bot_row.add_child(status_label)
+
+    cipher_panel = PanelContainer.new()
+    cipher_panel.anchor_left = 0.25; cipher_panel.anchor_right = 0.75
+    cipher_panel.anchor_top = 1; cipher_panel.anchor_bottom = 1
+    cipher_panel.offset_top = -180; cipher_panel.offset_bottom = -70
+    var cps := StyleBoxFlat.new()
+    cps.bg_color = Color(0.0, 0.05, 0.06, 0.92)
+    cps.border_color = C_GOLD_HI
+    cps.set_border_width_all(1)
+    cipher_panel.add_theme_stylebox_override("panel", cps)
+    cipher_panel.z_index = 6
+    cipher_panel.visible = false
+    add_child(cipher_panel)
+    cipher_log = RichTextLabel.new()
+    cipher_log.bbcode_enabled = true
+    cipher_log.fit_content = true
+    cipher_log.add_theme_font_size_override("normal_font_size", 11)
+    cipher_log.add_theme_color_override("default_color", C_TEXT)
+    cipher_panel.add_child(cipher_log)
+
+
+func _hdr_label(row: HBoxContainer, title_text: String, sub_text: String) -> void:
+    var t := Label.new()
+    t.text = title_text
+    t.add_theme_color_override("font_color", C_GOLD_HI)
+    t.add_theme_font_size_override("font_size", 15)
+    t.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+    row.add_child(t)
+    var s := Label.new()
+    s.text = sub_text
+    s.add_theme_color_override("font_color",
+        Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7))
+    s.add_theme_font_size_override("font_size", 10)
+    s.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+    s.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    row.add_child(s)
+
+
+func _strip_panel(top: bool) -> PanelContainer:
+    var p := PanelContainer.new()
+    p.anchor_left = 0; p.anchor_right = 1
+    if top:
+        p.anchor_top = 0; p.anchor_bottom = 0
+        p.offset_bottom = 40
+    else:
+        p.anchor_top = 1; p.anchor_bottom = 1
+        p.offset_top = -60
+    var sb := StyleBoxFlat.new()
+    sb.bg_color = Color(0, 0, 0, 0.65)
+    sb.border_color = C_GOLD
+    if top: sb.border_width_bottom = 1
+    else:   sb.border_width_top = 1
+    p.add_theme_stylebox_override("panel", sb)
+    p.z_index = 5
+    add_child(p)
+    return p
+
+
 func _build_thematic_widget() -> void:
-    # 1) Code rain — full-screen overlay drawn below the chrome
-    var rain := _CodeRain.new()
-    rain.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-    rain.mouse_filter = Control.MOUSE_FILTER_IGNORE
-    rain.z_index = -1
-    add_child(rain)
-    move_child(rain, 1)   # behind card art but in front of bg color
-
-    # 2) Infinity sigil tracer — clickable, sits roughly over
-    # Frasier's hand in the card art
-    sigil_rect = _SigilTracer.new()
-    sigil_rect.anchor_left = 0.42; sigil_rect.anchor_right = 0.58
-    sigil_rect.anchor_top = 0.15;  sigil_rect.anchor_bottom = 0.30
-    sigil_rect.mouse_filter = Control.MOUSE_FILTER_STOP
-    sigil_rect.gui_input.connect(_on_sigil_input)
-    add_child(sigil_rect)
-
-    # 3) CRT terminal panel — lower-left so it doesn't clash with the
-    # base class info panel in lower-right
-    crt_panel = PanelContainer.new()
-    crt_panel.anchor_left = 0.02; crt_panel.anchor_right = 0.35
-    crt_panel.anchor_top = 0.72;  crt_panel.anchor_bottom = 0.97
-    var ps := StyleBoxFlat.new()
-    ps.bg_color = Color(0.0, 0.05, 0.03, 0.92)
-    ps.border_color = Color(0.30, 0.95, 0.45, 0.85)
-    ps.set_border_width_all(1)
-    crt_panel.add_theme_stylebox_override("panel", ps)
-    add_child(crt_panel)
-
-    var crt_vbox := VBoxContainer.new()
-    crt_vbox.add_theme_constant_override("separation", 2)
-    crt_panel.add_child(crt_vbox)
-
-    var crt_hdr := Label.new()
-    crt_hdr.text = "● CRT // RUST_CODE.BBS // NODE 1"
-    crt_hdr.add_theme_color_override("font_color",
-        Color(0.30, 0.95, 0.45))
-    crt_hdr.add_theme_font_size_override("font_size", 9)
-    crt_vbox.add_child(crt_hdr)
-
-    crt_log = RichTextLabel.new()
-    crt_log.bbcode_enabled = true
-    crt_log.scroll_following = true
-    crt_log.size_flags_vertical = Control.SIZE_EXPAND_FILL
-    crt_log.add_theme_font_size_override("normal_font_size", 10)
-    crt_log.add_theme_color_override("default_color",
-        Color(0.30, 0.95, 0.45))
-    crt_vbox.add_child(crt_log)
-    _crt_print("[color=#ffd96e]>[/color] iron.warmup()")
-    _crt_print("[color=#88c870]  rust = thawing[/color]")
-    _crt_print("[color=#88c870]  signal = OK[/color]")
+    pass
 
 
-func _crt_print(line: String) -> void:
-    if crt_log == null: return
-    crt_log.append_text(line + "\n")
-
-
-# ── Sigil interaction ────────────────────────────────────────────
-func _on_sigil_input(event: InputEvent) -> void:
+func _on_card_click(event: InputEvent) -> void:
     if event is InputEventMouseButton and event.pressed:
-        # Trigger 3-note "sigil close" chord
-        var triad := [220.0, 277.2, 329.6]
-        for f in triad:
-            _active_notes.append({
-                "time": 0.0, "freq": f, "wave": "square",
-                "atk": 0.005, "dur": 0.4, "rel": 0.3,
-            })
-        _crt_print("[color=#ffd96e]>[/color] sigil.close()")
-        _crt_print("[color=#88c870]  chord = A C# E[/color]")
-        _sigil_pulse = 1.0
-        if hooks.has("hotspots"):
-            for h_v in hooks["hotspots"]:
-                if str(h_v.get("id","")) == "mag_soldering_iron":
-                    SaveSystem.mark_unlocked(str(h_v.get("unlocks","")))
+        _active_notes.append({
+            "time": 0.0, "freq": 165.0 + randf() * 80,
+            "wave": "sawtooth",
+            "atk": 0.005, "dur": 0.20, "rel": 0.2,
+        })
 
 
-# ── _process — drive thematic animations ─────────────────────────
+func _on_sigil() -> void:
+    sigil_pulse = 1.0
+    # A-C#-E chord, square waves
+    for f in [220.0, 277.2, 329.6]:
+        _active_notes.append({
+            "time": 0.0, "freq": f, "wave": "square",
+            "atk": 0.005, "dur": 0.4, "rel": 0.3,
+        })
+    if status_label != null:
+        status_label.text = "∞ closed · chord A C# E"
+    SaveSystem.mark_unlocked("vol5_iron_summons_link")
+
+
+func _on_hotspot(hs: Dictionary) -> void:
+    super(hs)
+    if cipher_panel == null or cipher_log == null: return
+    cipher_log.clear()
+    cipher_log.append_text("[color=#a8e8f0]▷ %s[/color]\n" %
+        str(hs.get("interact", hs.get("id", ""))))
+    var matched: Dictionary = {}
+    var hs_id = str(hs.get("id",""))
+    for c_v in hooks.get("ciphers", []):
+        var c: Dictionary = c_v
+        var cid = str(c.get("id",""))
+        if cid == hs_id or hs_id.contains(cid) or cid.contains(hs_id):
+            matched = c; break
+    if not matched.is_empty():
+        if matched.has("text"):
+            cipher_log.append_text("  %s\n" % str(matched["text"]))
+        if matched.has("encoding_hint"):
+            cipher_log.append_text(
+                "  [color=#3a7878]↳ %s[/color]\n" %
+                str(matched["encoding_hint"]))
+        if matched.has("reveals"):
+            cipher_log.append_text(
+                "  [color=#a8e8f0]→ reveals: %s[/color]\n" %
+                str(matched["reveals"]))
+    cipher_panel.visible = true
+    cipher_panel.modulate.a = 0
+    var tw := cipher_panel.create_tween()
+    tw.tween_property(cipher_panel, "modulate:a", 1.0, 0.25)
+    _active_notes.append({
+        "time": 0.0, "freq": 220.0, "wave": "sawtooth",
+        "atk": 0.005, "dur": 0.5, "rel": 0.5,
+    })
+
+
 func _process(delta: float) -> void:
     super(delta)
-    _sigil_t += delta
-    _crt_t += delta
-    if sigil_rect != null:
-        sigil_rect.queue_redraw()
-    _sigil_pulse = maxf(0.0, _sigil_pulse - delta * 1.2)
-    # Iron temp oscillation + occasional log line
-    _iron_temp += (sin(_crt_t * 1.5) * 8.0 - 4.0) * delta
-    if _crt_t > 2.4:
-        _crt_t = 0.0
-        var demon_count := 0
-        if hooks.has("ciphers"):
-            for c_v in hooks["ciphers"]:
-                if str(c_v.get("kind","")) == "presence_count":
-                    demon_count = 2
-                    break
-        var pool := [
-            "[color=#3a5028]  ...[/color]",
-            "[color=#88c870]  iron.temp = %d°C[/color]" % int(_iron_temp),
-            "[color=#88c870]  demon.proc = %d[/color]" % demon_count,
-            "[color=#88c870]  stream = active[/color]",
-            "[color=#ffd96e]  ∞ = stable[/color]",
-            "[color=#88c870]  model_city.ping → riverboat[/color]",
-        ]
-        _crt_print(pool[randi() % pool.size()])
-
-
-# ── Nested view classes ─────────────────────────────────────────
-class _CodeRain extends Control:
-    var t: float = 0.0
-    var cols: Array = []
-    var initialized: bool = false
-
-    func _process(d: float) -> void:
-        t += d
-        if not initialized:
-            var n := int(size.x / 14.0)
-            cols.resize(n)
-            for i in n:
-                cols[i] = {
-                    "head": randf() * size.y,
-                    "speed": 40.0 + randf() * 80.0,
-                    "len": 8 + (randi() % 16),
-                }
-            initialized = true
-        for c in cols:
-            c["head"] += c["speed"] * d
-            if c["head"] > size.y + 200:
-                c["head"] = -randf() * 200
-        queue_redraw()
-
-    func _draw() -> void:
-        if not initialized: return
-        var font := ThemeDB.fallback_font
-        var pool := "01∞◆▓▒░│║=#%&*+/<>?"
-        for i in cols.size():
-            var c = cols[i]
-            var x = i * 14
-            var head_y: float = c["head"]
-            var length: int = c["len"]
-            for k in length:
-                var y = head_y - k * 14
-                if y < -14 or y > size.y + 14: continue
-                var alpha = max(0.0, (1.0 - float(k) / length) * 0.5)
-                if k == 0:
-                    alpha = 0.85
-                var glyph := pool[randi() % pool.length()]
-                draw_string(font, Vector2(x, y),
-                            glyph, HORIZONTAL_ALIGNMENT_LEFT, -1, 11,
-                            Color(0.30, 0.95, 0.45, alpha))
-
-
-class _SigilTracer extends Control:
-    var t: float = 0.0
-    var pulse: float = 0.0
-
-    func _process(d: float) -> void:
-        t += d
-
-    func _draw() -> void:
-        var s := size
-        if s.x < 10 or s.y < 10: return
-        var cx = s.x * 0.5
-        var cy = s.y * 0.5
-        var rx = s.x * 0.42
-        var ry = s.y * 0.35
-        # Lemniscate of Bernoulli (figure-8)
-        var pts := PackedVector2Array()
-        var samples := 64
-        for i in samples + 1:
-            var theta = i / float(samples) * TAU + t * 0.4
-            var denom = 1.0 + sin(theta) * sin(theta)
-            var x = cx + rx * cos(theta) / denom
-            var y = cy + ry * sin(theta) * cos(theta) / denom
-            pts.append(Vector2(x, y))
-        var col := Color(0.78, 0.95, 1.0, 0.85)
-        var dim := Color(0.30, 0.55, 0.70, 0.55)
-        for i in range(1, pts.size()):
-            draw_line(pts[i-1], pts[i], col, 1.5)
-        # Pulse glow ring on the lemniscate's center
-        if pulse > 0.0:
-            draw_arc(Vector2(cx, cy), 8 + pulse * 18, 0, TAU, 32,
-                      Color(1, 0.95, 0.7, pulse), 2.0)
-        # Subtle outer halo
-        draw_arc(Vector2(cx, cy), max(rx, ry) + 4, 0, TAU, 48,
-                  Color(0.3, 0.7, 0.85, 0.20), 1.0)
+    sigil_t += delta
+    sigil_pulse = maxf(0.0, sigil_pulse - delta * 1.2)
