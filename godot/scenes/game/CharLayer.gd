@@ -280,6 +280,8 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	wrapper.set_meta("tint", tint_holder)
 
 	if FileAccess.file_exists(comp_path):
+		print("[CharLayer] LOADING SUBSTRATE COMPOSITION for ",
+		      char_name, " (key=", key, ") from ", comp_path)
 		var comp := Control.new()
 		comp.set_script(ASCII_COMPOSITION_SCRIPT)
 		comp.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -289,6 +291,8 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 		wrapper.set_meta("kind", "composition")
 		_apply_texture_tint(wrapper, expr)
 	else:
+		print("[CharLayer] FALLBACK TO PAINTED PNG for ",
+		      char_name, " (key=", key, ") · expected comp at ", comp_path)
 		var tex := _resolve_portrait_texture(key, expr)
 		if tex != null:
 			var tr := TextureRect.new()

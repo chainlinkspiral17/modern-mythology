@@ -66,7 +66,7 @@ func _build() -> void:
 	var header_row := HBoxContainer.new()
 	outer.add_child(header_row)
 	var title_lbl := Label.new()
-	title_lbl.text = "MUSIC PLAYER"
+	title_lbl.text = "MUSIC PLAYER · UNLOCKED TEST · v4"
 	_apply_font(title_lbl, SkinDB.F_CINZEL, 13, C_GOLD)
 	title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header_row.add_child(title_lbl)
