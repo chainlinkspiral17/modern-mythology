@@ -18,7 +18,7 @@ regions stay clean.
 """
 import argparse, json, sys
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageOps, ImageEnhance
 
 # Canonical 16-color VGA / CP437 / ANSI palette (low-intensity 0-7, high 8-15).
 VGA16 = [
@@ -46,8 +46,44 @@ def hex_color(rgb):
     return "#{:02x}{:02x}{:02x}".format(*rgb)
 
 
-def convert(image_path, width, dither, bg_index, palette, mode="vga16", colors=12):
-    img = Image.open(image_path).convert("RGB")
+def face_crop(img, margin=1.9, up_bias=0.30):
+    """Crop a portrait square centered on the largest detected face, with
+    headroom for hair (up_bias) and room below for shoulders. Returns the
+    original image unchanged if no face is found. RGBA alpha is preserved."""
+    import numpy as np, cv2
+    rgb = img.convert("RGB")
+    arr = np.array(rgb)
+    gray = cv2.cvtColor(arr, cv2.COLOR_RGB2GRAY)
+    cascade = cv2.CascadeClassifier(
+        cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+    faces = cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5,
+                                     minSize=(40, 40))
+    if len(faces) == 0:
+        return img
+    x, y, w, h = max(faces, key=lambda f: f[2] * f[3])
+    cx = x + w / 2.0
+    cy = y + h / 2.0
+    half = max(w, h) * margin / 2.0
+    # Shift the crop centre up so hair gets headroom and the chest fills below.
+    cy_crop = cy + half * up_bias
+    x0 = int(round(cx - half)); x1 = int(round(cx + half))
+    y0 = int(round(cy_crop - half)); y1 = int(round(cy_crop + half))
+    iw, ih = img.size
+    x0 = max(0, x0); y0 = max(0, y0); x1 = min(iw, x1); y1 = min(ih, y1)
+    return img.crop((x0, y0, x1, y1))
+
+
+def convert(image_path, width, dither, bg_index, palette, mode="vga16",
+            colors=12, do_face_crop=False, autocontrast=False, gamma=1.0):
+    img = Image.open(image_path)
+    if do_face_crop:
+        img = face_crop(img)
+    img = img.convert("RGB")
+    if autocontrast:
+        img = ImageOps.autocontrast(img, cutoff=1)
+    if gamma != 1.0:
+        lut = [min(255, int((i / 255.0) ** (1.0 / gamma) * 255)) for i in range(256)]
+        img = img.point(lut * 3)
     iw, ih = img.size
     # Square sub-pixels: sub-grid is `width` wide; height keeps image aspect.
     sub_h = max(2, round(width * ih / iw))
@@ -107,6 +143,10 @@ def main():
     ap.add_argument("--mode", choices=["vga16", "adaptive"], default="adaptive",
                     help="vga16 = authentic palette; adaptive = harmonized image palette")
     ap.add_argument("--colors", type=int, default=12, help="adaptive palette size")
+    ap.add_argument("--face-crop", action="store_true",
+                    help="crop square centered on the largest detected face")
+    ap.add_argument("--autocontrast", action="store_true", help="stretch tonal range")
+    ap.add_argument("--gamma", type=float, default=1.0, help="gamma lift (>1 brightens)")
     args = ap.parse_args()
 
     image_path = Path(args.image)
@@ -114,7 +154,8 @@ def main():
         sys.exit(f"not found: {image_path}")
 
     data = convert(image_path, args.width, not args.no_dither, args.bg_index, VGA16,
-                   mode=args.mode, colors=args.colors)
+                   mode=args.mode, colors=args.colors, do_face_crop=args.face_crop,
+                   autocontrast=args.autocontrast, gamma=args.gamma)
     out = Path(args.out) if args.out else image_path.with_suffix(".halfblock.json")
     out.write_text(json.dumps(data))
     print(out)
