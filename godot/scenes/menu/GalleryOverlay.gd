@@ -206,24 +206,27 @@ func _section_label(text: String) -> Label:
 
 
 # Try multiple naming conventions to find a card thumbnail image.
-# fool_arcana → fool.png; portrait_dante → portrait_dante_0.png;
-# tarot_synth → tarot_synth.png if it exists.
+# Falls back to raw image read so it works even before Godot has
+# .import-ed the assets (running from un-opened source).
 func _resolve_thumbnail(item_id: String) -> Texture2D:
 	if item_id == "":
 		return null
 	var candidates: Array = []
-	# Arcana cards
 	var arcana_base := item_id.replace("_arcana", "")
 	candidates.append("res://assets/gallery/%s.png" % arcana_base)
-	# Portraits — use first frame of the cycle
 	if item_id.begins_with("portrait_"):
 		candidates.append("res://assets/gallery/%s_0.png" % item_id)
-	# Generic — id.png
 	candidates.append("res://assets/gallery/%s.png" % item_id)
-	# Synth + other interactive — bespoke icons could land here later
 	for p in candidates:
 		if ResourceLoader.exists(p):
-			return load(p) as Texture2D
+			var t := load(p)
+			if t is Texture2D: return t
+		# Un-imported fallback
+		var abs_path: String = ProjectSettings.globalize_path(p)
+		if FileAccess.file_exists(abs_path):
+			var img := Image.load_from_file(abs_path)
+			if img != null:
+				return ImageTexture.create_from_image(img)
 	return null
 
 

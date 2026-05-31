@@ -121,9 +121,13 @@ func _build_chrome() -> void:
     viewport_box.add_child(canvas)
 
     # Card image in the center of the canvas.
-    if _card_path != "" and ResourceLoader.exists(_card_path):
+    # Use _load_image_with_fallback so the card loads even when the
+    # PNG hasn't been .import'd by the editor yet (running from
+    # un-imported source).
+    var card_tex: Texture2D = _load_image_with_fallback(_card_path)
+    if card_tex != null:
         card_rect = TextureRect.new()
-        card_rect.texture = load(_card_path)
+        card_rect.texture = card_tex
         card_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
         card_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
         var tex_sz := (card_rect.texture as Texture2D).get_size()
@@ -377,6 +381,27 @@ func pan_by(delta_vec: Vector2) -> void:
 
 func recenter() -> void:
     _center_on_card()
+
+
+## Load a Texture2D resilient to un-imported assets. Tries Godot's
+## ResourceLoader first (which requires a .import sidecar), then
+## falls back to raw Image.load_from_file from the on-disk path.
+## Lets the visualizer work from an un-opened project source tree
+## where Godot hasn't yet generated import data.
+static func _load_image_with_fallback(res_path: String) -> Texture2D:
+    if res_path == "":
+        return null
+    if ResourceLoader.exists(res_path):
+        var t := load(res_path)
+        if t is Texture2D:
+            return t
+    # Fallback: read the raw file from disk
+    var abs_path: String = ProjectSettings.globalize_path(res_path)
+    if FileAccess.file_exists(abs_path):
+        var img := Image.load_from_file(abs_path)
+        if img != null:
+            return ImageTexture.create_from_image(img)
+    return null
 
 
 # ── SYNTH (kept same as before) ──────────────────────────────────
