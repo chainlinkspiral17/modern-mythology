@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "id": "tarot_synth",
+      "title": "♬ TAROT SYNTH (playable)",
+      "set": "Instruments",
+      "type": "overlay",
+      "path": "TarotSynthOverlay",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch4_*",
+      "notes": "opens scenes/menu/TarotSynthOverlay.gd — overlay type, not composition. Gallery needs case in open_item() to instantiate the script."
+    },
+    {
       "id": "fool_arcana",
       "title": "0 — THE FOOL  (textual)",
       "set": "Major Arcana",

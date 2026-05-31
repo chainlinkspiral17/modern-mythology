@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TAROT SYNTH · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  /* ── palette pulled from the gallery cards ────────────────── */
+  :root {
+    --bg-0:        #050304;
+    --bg-1:        #0e0908;
+    --ink:         #1a1410;
+    --sepia-lo:    #3a2614;
+    --sepia-mid:   #8a5a26;
+    --sepia-hi:    #d8a060;
+    --sepia-peak:  #ffd896;
+    --burgundy:    #7a1e26;
+    --burgundy-hi: #c8333c;
+    --emerald-lo:  #1f4a2a;
+    --emerald:     #4ea060;
+    --emerald-hi:  #a8e89c;
+    --gold:        #d8a060;
+    --gold-hi:     #ffd896;
+    --rule:        #553318;
+    --text:        #c8a878;
+    --text-dim:    #7a5828;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: "Courier New", "DejaVu Sans Mono", monospace;
+    user-select: none;
+    overflow: hidden;
+    height: 100vh;
+  }
+  body {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "header header header"
+      "wallL  main   wallR"
+      "wallL  seq    wallR"
+      "wallL  trans  wallR";
+    gap: 4px;
+    padding: 8px;
+  }
+  /* ─── side ASCII wall art ────────────────────────────────── */
+  .wall {
+    width: 96px;
+    background-color: var(--bg-1);
+    background-size: contain;
+    background-repeat: repeat-y;
+    background-position: center top;
+    image-rendering: pixelated;
+    border: 1px solid var(--rule);
+    opacity: 0.65;
+  }
+  .wall.left  { grid-area: wallL;
+                background-image: url("../assets/gallery/ui_ascii_wall_left.png"); }
+  .wall.right { grid-area: wallR;
+                background-image: url("../assets/gallery/ui_ascii_wall_right.png"); }
+
+  /* ─── header ─────────────────────────────────────────────── */
+  header {
+    grid-area: header;
+    display: flex; justify-content: space-between; align-items: center;
+    border: 1px solid var(--gold);
+    padding: 6px 14px;
+    background: linear-gradient(180deg, var(--ink) 0%, var(--bg-1) 100%);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 18px; letter-spacing: 0.18em;
+    color: var(--gold-hi);
+    text-shadow: 1px 1px 0 var(--ink);
+  }
+  header .status {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+  }
+  header .now {
+    font-size: 12px;
+    color: var(--emerald-hi);
+  }
+
+  /* ─── main card grid ─────────────────────────────────────── */
+  main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 4px;
+    padding: 4px;
+    background: var(--bg-1);
+    border: 1px solid var(--rule);
+    min-height: 360px;
+  }
+  .card {
+    position: relative;
+    background-color: var(--bg-0);
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--rule);
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.06s, transform 0.04s;
+    image-rendering: pixelated;
+  }
+  .card:hover  { border-color: var(--gold); }
+  .card.pressed {
+    border-color: var(--gold-hi);
+    transform: scale(0.97);
+    box-shadow: 0 0 18px var(--gold);
+  }
+  .card.locked {
+    filter: brightness(0.35) saturate(0.4) hue-rotate(-20deg);
+    cursor: not-allowed;
+  }
+  .card .num {
+    position: absolute; top: 4px; left: 4px;
+    font-size: 11px; font-weight: bold;
+    color: var(--gold-hi);
+    text-shadow: 1px 1px 0 var(--ink);
+  }
+  .card .name {
+    position: absolute; bottom: 2px; left: 0; right: 0;
+    font-size: 9px; letter-spacing: 0.06em;
+    text-align: center;
+    color: var(--text);
+    background: rgba(0, 0, 0, 0.55);
+    padding: 2px 0;
+    text-transform: uppercase;
+  }
+  .card .key {
+    position: absolute; top: 4px; right: 4px;
+    font-size: 9px;
+    color: var(--emerald-hi);
+    background: rgba(0, 0, 0, 0.55);
+    padding: 1px 4px;
+  }
+  /* per-row palette accents */
+  .card.row-0 { box-shadow: inset 0 -2px 0 var(--sepia-mid); }
+  .card.row-1 { box-shadow: inset 0 -2px 0 var(--burgundy); }
+  .card.row-2 { box-shadow: inset 0 -2px 0 var(--emerald); }
+
+  /* ─── 16-step sequencer ──────────────────────────────────── */
+  .seq {
+    grid-area: seq;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 4px;
+    padding: 4px;
+    background: var(--bg-1);
+    border: 1px solid var(--rule);
+  }
+  .seq .lanes {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .seq .lane-label {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    color: var(--text-dim);
+    background: var(--bg-0);
+    border: 1px solid var(--rule);
+  }
+  .lane {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 2px;
+  }
+  .step {
+    background: var(--bg-0);
+    border: 1px solid var(--rule);
+    cursor: pointer;
+    min-height: 22px;
+    position: relative;
+  }
+  .step:hover { border-color: var(--gold); }
+  .step.on   { background: var(--sepia-mid); border-color: var(--gold-hi); }
+  .step.beat { border-left: 2px solid var(--text-dim); }
+  .step.cursor::after {
+    content: ""; position: absolute;
+    inset: 0;
+    background: rgba(255, 216, 150, 0.35);
+    animation: cursorFlash 0.18s linear;
+  }
+  .step .card-mini {
+    width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    opacity: 0.5;
+    image-rendering: pixelated;
+    pointer-events: none;
+  }
+  @keyframes cursorFlash {
+    from { opacity: 1; } to { opacity: 0; }
+  }
+
+  /* ─── transport ──────────────────────────────────────────── */
+  .transport {
+    grid-area: trans;
+    display: flex; gap: 8px; align-items: center;
+    padding: 6px 10px;
+    background: var(--bg-1);
+    border: 1px solid var(--rule);
+    font-size: 11px;
+  }
+  .transport button {
+    background: var(--ink);
+    color: var(--gold-hi);
+    border: 1px solid var(--rule);
+    padding: 4px 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .transport button:hover { border-color: var(--gold-hi); }
+  .transport button.active { background: var(--burgundy); color: var(--gold-hi); }
+  .transport .group {
+    display: flex; gap: 4px; align-items: center;
+    border-left: 1px solid var(--rule);
+    padding-left: 10px;
+    margin-left: 4px;
+  }
+  .transport label { color: var(--text-dim); font-size: 10px; }
+  .transport input[type=range] {
+    width: 90px; accent-color: var(--gold-hi);
+  }
+  .transport select {
+    background: var(--ink); color: var(--gold-hi);
+    border: 1px solid var(--rule);
+    padding: 3px 6px;
+    font-family: inherit; font-size: 11px;
+  }
+
+  /* drag-drop overlay for swapping art */
+  .drop-hint {
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    color: var(--gold-hi);
+    display: none; align-items: center; justify-content: center;
+    font-size: 24px; letter-spacing: 0.2em;
+    pointer-events: none;
+    z-index: 100;
+  }
+  .drop-hint.show { display: flex; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>TAROT SYNTH · MAJOR ARCANA</h1>
+    <div class="now" id="now-playing">—</div>
+    <div class="status" id="status">[ click a card · type 1-y · drag PNG onto card to swap ]</div>
+  </header>
+
+  <div class="wall left"></div>
+  <div class="wall right"></div>
+
+  <main id="grid"></main>
+
+  <div class="seq">
+    <div class="lanes">
+      <div class="lane-label">LANE 1</div>
+      <div class="lane-label">LANE 2</div>
+      <div class="lane-label">LANE 3</div>
+      <div class="lane-label">LANE 4</div>
+    </div>
+    <div class="lanes" id="seq-lanes"></div>
+  </div>
+
+  <div class="transport">
+    <button id="play">▶ PLAY</button>
+    <button id="stop">■ STOP</button>
+    <button id="clear">⌫ CLEAR</button>
+    <div class="group">
+      <label>BPM</label>
+      <input type="range" id="bpm" min="40" max="200" value="92">
+      <span id="bpm-val">92</span>
+    </div>
+    <div class="group">
+      <label>SCALE</label>
+      <select id="scale">
+        <option value="phrygian"  selected>phrygian</option>
+        <option value="dorian">dorian</option>
+        <option value="locrian">locrian</option>
+        <option value="aeolian">aeolian (minor)</option>
+        <option value="harmonic">harmonic minor</option>
+      </select>
+    </div>
+    <div class="group">
+      <label>ROOT</label>
+      <select id="root">
+        <option value="33" selected>A1</option>
+        <option value="38">D2</option>
+        <option value="40">E2</option>
+        <option value="45">A2</option>
+      </select>
+    </div>
+    <div class="group">
+      <label>VOL</label>
+      <input type="range" id="vol" min="0" max="100" value="60">
+    </div>
+    <div class="group" style="margin-left: auto;">
+      <span style="color: var(--text-dim);">step</span>
+      <span id="step-display" style="color: var(--gold-hi);">— / 16</span>
+    </div>
+  </div>
+
+  <div class="drop-hint" id="drop-hint">DROP PNG ON A CARD TO SWAP</div>
+
+<script>
+"use strict";
+
+// ── 22 Major Arcana ───────────────────────────────────────────────
+const ARCANA = [
+  // [num, name, art-filename, key-binding, timbre-preset, semitone-offset]
+  [ 0, "FOOL",         "fool.png",            "1",  "pulse_soft",     0],
+  [ 1, "MAGICIAN",     "magician.png",        "2",  "pulse_arp",      2],
+  [ 2, "PRIESTESS",    "high_priestess.png",  "3",  "tri_chorus",     3],
+  [ 3, "EMPRESS",      "empress.png",         "4",  "bell_rich",      5],
+  [ 4, "EMPEROR",      "emperor.png",         "5",  "saw_drive",      7],
+  [ 5, "HIEROPHANT",   "hierophant.png",      "6",  "organ_stack",    8],
+  [ 6, "LOVERS",       null,                  "7",  "duet_bell",     10],
+  [ 7, "CHARIOT",      null,                  "8",  "saw_pulse",     12],
+  [ 8, "STRENGTH",     null,                  "q",  "rich_brass",    14],
+  [ 9, "HERMIT",       null,                  "w",  "tri_lonely",    15],
+  [10, "WHEEL",        null,                  "e",  "pulse_arp_fast",17],
+  [11, "JUSTICE",      null,                  "r",  "bell_balanced", 19],
+  [12, "HANGED",       null,                  "t",  "drone_low",     20],
+  [13, "DEATH",        null,                  "y",  "saw_decay",     22],
+  [14, "TEMPERANCE",   null,                  "u",  "tri_flow",      24],
+  [15, "DEVIL",        null,                  "i",  "saw_distort",   26],
+  [16, "TOWER",        null,                  "o",  "noise_burst",   27],
+  [17, "STAR",         null,                  "p",  "bell_high",     29],
+  [18, "MOON",         null,                  "a",  "tri_warble",    31],
+  [19, "SUN",          null,                  "s",  "pulse_bright",  33],
+  [20, "JUDGEMENT",    null,                  "d",  "organ_choir",   34],
+  [21, "WORLD",        null,                  "f",  "rich_pad",      36],
+];
+
+// ── Scales (intervals from root) ─────────────────────────────────
+const SCALES = {
+  phrygian:  [0, 1, 3, 5, 7, 8, 10],
+  dorian:    [0, 2, 3, 5, 7, 9, 10],
+  locrian:   [0, 1, 3, 5, 6, 8, 10],
+  aeolian:   [0, 2, 3, 5, 7, 8, 10],
+  harmonic:  [0, 2, 3, 5, 7, 8, 11],
+};
+
+// ── Web Audio ─────────────────────────────────────────────────────
+let ac;
+let masterGain;
+function initAudio() {
+  if (ac) return;
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  masterGain = ac.createGain();
+  masterGain.gain.value = 0.6;
+  masterGain.connect(ac.destination);
+}
+
+function scaleSnap(semi) {
+  // snap a raw semitone offset to the current scale
+  const scale = SCALES[document.getElementById('scale').value];
+  const oct = Math.floor(semi / 12);
+  let inOct = semi - oct * 12;
+  // find nearest scale degree
+  let best = scale[0], bestD = Infinity;
+  for (const s of scale) {
+    const d = Math.abs(s - inOct);
+    if (d < bestD) { bestD = d; best = s; }
+  }
+  return oct * 12 + best;
+}
+
+function midiToFreq(midi) {
+  return 440 * Math.pow(2, (midi - 69) / 12);
+}
+
+// Per-timbre voice — small but distinct waveform + envelope combos
+function trigger(timbre, midi, vel=0.7) {
+  initAudio();
+  if (ac.state === "suspended") ac.resume();
+  const now = ac.currentTime;
+  const freq = midiToFreq(midi);
+
+  const env = ac.createGain();
+  env.gain.value = 0;
+  env.connect(masterGain);
+
+  // shared chain components
+  const filter = ac.createBiquadFilter();
+  filter.type = "lowpass";
+  filter.frequency.value = 3600;
+  filter.Q.value = 1.2;
+  filter.connect(env);
+
+  const presets = {
+    pulse_soft:   { wave: "square",   atk: 0.02, dec: 0.15, sus: 0.5, rel: 0.5,  detune: 8,   filt: 1800, dur: 1.0 },
+    pulse_arp:    { wave: "square",   atk: 0.005,dec: 0.08, sus: 0.0, rel: 0.2,  detune: 4,   filt: 3000, dur: 0.5, arp: [0,7,12] },
+    tri_chorus:   { wave: "triangle", atk: 0.04, dec: 0.20, sus: 0.6, rel: 0.6,  detune: 14,  filt: 2400, dur: 1.2, voices: 3 },
+    bell_rich:    { wave: "sine",     atk: 0.002,dec: 0.35, sus: 0.1, rel: 0.9,  detune: 6,   filt: 4800, dur: 1.6, harmonic: [1, 2, 2.756, 5.4] },
+    saw_drive:    { wave: "sawtooth", atk: 0.01, dec: 0.12, sus: 0.7, rel: 0.4,  detune: 11,  filt: 2200, dur: 0.9, drive: true },
+    organ_stack:  { wave: "sine",     atk: 0.05, dec: 0.05, sus: 0.85, rel: 0.4, detune: 3,   filt: 3200, dur: 1.0, harmonic: [1, 2, 3, 4] },
+    duet_bell:    { wave: "sine",     atk: 0.003,dec: 0.30, sus: 0.2, rel: 0.7,  detune: 9,   filt: 4200, dur: 1.4, harmonic: [1, 1.5, 2] },
+    saw_pulse:    { wave: "sawtooth", atk: 0.01, dec: 0.10, sus: 0.6, rel: 0.25, detune: 7,   filt: 2600, dur: 0.6 },
+    rich_brass:   { wave: "sawtooth", atk: 0.06, dec: 0.10, sus: 0.8, rel: 0.4,  detune: 13,  filt: 2000, dur: 1.2, voices: 2 },
+    tri_lonely:   { wave: "triangle", atk: 0.08, dec: 0.10, sus: 0.7, rel: 0.8,  detune: 0,   filt: 1400, dur: 1.4 },
+    pulse_arp_fast:{wave: "square",   atk: 0.003,dec: 0.04, sus: 0.0, rel: 0.1,  detune: 3,   filt: 3400, dur: 0.4, arp: [0,4,7,12,16] },
+    bell_balanced:{ wave: "sine",     atk: 0.002,dec: 0.4,  sus: 0.05,rel: 1.0,  detune: 5,   filt: 5200, dur: 1.8, harmonic: [1, 2, 3] },
+    drone_low:    { wave: "sine",     atk: 0.3,  dec: 0.0,  sus: 0.95,rel: 1.5,  detune: 7,   filt: 800,  dur: 2.4, transpose: -12 },
+    saw_decay:    { wave: "sawtooth", atk: 0.005,dec: 0.6,  sus: 0.0, rel: 0.4,  detune: 17,  filt: 1600, dur: 1.2 },
+    tri_flow:     { wave: "triangle", atk: 0.10, dec: 0.10, sus: 0.7, rel: 0.6,  detune: 6,   filt: 2800, dur: 1.2, voices: 2 },
+    saw_distort:  { wave: "sawtooth", atk: 0.005,dec: 0.10, sus: 0.7, rel: 0.4,  detune: 22,  filt: 3000, dur: 0.9, drive: true, voices: 2 },
+    noise_burst:  { wave: "noise",    atk: 0.001,dec: 0.20, sus: 0.0, rel: 0.15, detune: 0,   filt: 1200, dur: 0.5 },
+    bell_high:    { wave: "sine",     atk: 0.002,dec: 0.20, sus: 0.05,rel: 0.6,  detune: 4,   filt: 6000, dur: 1.2, harmonic: [1, 3, 5] },
+    tri_warble:   { wave: "triangle", atk: 0.04, dec: 0.10, sus: 0.6, rel: 0.5,  detune: 18,  filt: 1600, dur: 1.0, vibrato: 6 },
+    pulse_bright: { wave: "square",   atk: 0.005,dec: 0.05, sus: 0.7, rel: 0.3,  detune: 6,   filt: 4800, dur: 0.8 },
+    organ_choir:  { wave: "triangle", atk: 0.08, dec: 0.05, sus: 0.9, rel: 0.6,  detune: 10,  filt: 2400, dur: 1.4, harmonic: [1, 2, 3], voices: 3 },
+    rich_pad:     { wave: "sawtooth", atk: 0.15, dec: 0.15, sus: 0.7, rel: 1.2,  detune: 12,  filt: 2200, dur: 2.0, voices: 3 },
+  };
+  const p = presets[timbre] || presets.pulse_soft;
+
+  filter.frequency.value = p.filt;
+
+  if (p.drive) {
+    const shaper = ac.createWaveShaper();
+    shaper.curve = (function(){
+      const c = new Float32Array(1024);
+      for (let i = 0; i < 1024; i++) {
+        const x = (i / 1024) * 2 - 1;
+        c[i] = Math.tanh(x * 2.5);
+      }
+      return c;
+    })();
+    shaper.connect(filter);
+    filter.disconnect();
+    shaper.connect(env);
+    filter.connect = (() => shaper)();
+  }
+
+  // Voice spawning
+  const baseMidi = midi + (p.transpose || 0);
+  const voices = p.voices || 1;
+  const harmonics = p.harmonic || [1];
+  const arpNotes = p.arp || [0];
+  const arpStep = 0.08;
+
+  arpNotes.forEach((semi, arpIdx) => {
+    const arpDelay = arpIdx * arpStep;
+    harmonics.forEach((mul, hIdx) => {
+      for (let v = 0; v < voices; v++) {
+        let osc;
+        if (p.wave === "noise") {
+          const buf = ac.createBuffer(1, ac.sampleRate * 0.5, ac.sampleRate);
+          const d = buf.getChannelData(0);
+          for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * 0.6;
+          osc = ac.createBufferSource();
+          osc.buffer = buf;
+        } else {
+          osc = ac.createOscillator();
+          osc.type = p.wave;
+          osc.frequency.value = midiToFreq(baseMidi + semi) * mul;
+        }
+        if (osc.detune && p.detune) {
+          osc.detune.value = (v - (voices - 1) / 2) * p.detune;
+        }
+        if (p.vibrato && osc.frequency) {
+          const lfo = ac.createOscillator();
+          lfo.frequency.value = 5.5;
+          const lfoG = ac.createGain();
+          lfoG.gain.value = p.vibrato;
+          lfo.connect(lfoG); lfoG.connect(osc.frequency);
+          lfo.start(now + arpDelay);
+          lfo.stop(now + arpDelay + p.dur + 0.2);
+        }
+        const start = now + arpDelay;
+        osc.connect(filter);
+        osc.start(start);
+        osc.stop(start + p.dur + p.rel + 0.05);
+      }
+    });
+  });
+
+  // ADSR on env
+  env.gain.cancelScheduledValues(now);
+  env.gain.setValueAtTime(0, now);
+  env.gain.linearRampToValueAtTime(vel,            now + p.atk);
+  env.gain.linearRampToValueAtTime(vel * p.sus,    now + p.atk + p.dec);
+  env.gain.setValueAtTime(vel * p.sus,             now + p.dur);
+  env.gain.linearRampToValueAtTime(0,              now + p.dur + p.rel);
+}
+
+// ── Build card grid ───────────────────────────────────────────────
+const grid = document.getElementById('grid');
+ARCANA.forEach(([num, name, art, key, timbre, semi], idx) => {
+  const card = document.createElement('div');
+  card.className = 'card row-' + (Math.floor(idx / 8) % 3);
+  card.dataset.idx = idx;
+  if (art) {
+    card.style.backgroundImage = `url("../assets/gallery/${art}")`;
+  } else {
+    card.classList.add('locked');
+  }
+  card.innerHTML = `
+    <span class="num">${num.toString().padStart(2,'0')}</span>
+    <span class="key">${key.toUpperCase()}</span>
+    <span class="name">${name}</span>
+  `;
+  card.addEventListener('mousedown', () => playCard(idx));
+  card.addEventListener('dragover',  e => { e.preventDefault(); card.style.opacity = 0.6; });
+  card.addEventListener('dragleave', () => card.style.opacity = 1);
+  card.addEventListener('drop', e => {
+    e.preventDefault();
+    card.style.opacity = 1;
+    const f = e.dataTransfer.files[0];
+    if (!f || !f.type.startsWith('image/')) return;
+    const r = new FileReader();
+    r.onload = ev => {
+      card.style.backgroundImage = `url("${ev.target.result}")`;
+      card.classList.remove('locked');
+    };
+    r.readAsDataURL(f);
+  });
+  grid.appendChild(card);
+});
+
+// 2 blank padding cells to fill the 4x6=24 grid
+for (let i = 0; i < 2; i++) {
+  const blank = document.createElement('div');
+  blank.className = 'card locked';
+  blank.style.background = 'var(--bg-0)';
+  blank.innerHTML = '<span class="name" style="background:transparent;color:var(--text-dim)">—</span>';
+  grid.appendChild(blank);
+}
+
+// ── Build sequencer ───────────────────────────────────────────────
+const seqLanes = document.getElementById('seq-lanes');
+const SEQ_LANES = 4;
+const SEQ_STEPS = 16;
+const pattern = Array.from({length: SEQ_LANES}, () =>
+  Array(SEQ_STEPS).fill(null));
+
+for (let L = 0; L < SEQ_LANES; L++) {
+  const lane = document.createElement('div');
+  lane.className = 'lane';
+  for (let s = 0; s < SEQ_STEPS; s++) {
+    const step = document.createElement('div');
+    step.className = 'step' + (s % 4 === 0 ? ' beat' : '');
+    step.dataset.lane = L;
+    step.dataset.step = s;
+    step.addEventListener('click', () => toggleStep(L, s));
+    lane.appendChild(step);
+  }
+  seqLanes.appendChild(lane);
+}
+
+let selectedCard = 4;   // default to Emperor as the "active selection"
+function toggleStep(L, s) {
+  if (pattern[L][s] === null) {
+    pattern[L][s] = selectedCard;
+    const stepEl = seqLanes.children[L].children[s];
+    stepEl.classList.add('on');
+    stepEl.innerHTML = '';
+    const mini = document.createElement('div');
+    mini.className = 'card-mini';
+    const art = ARCANA[selectedCard][2];
+    if (art) mini.style.backgroundImage = `url("../assets/gallery/${art}")`;
+    stepEl.appendChild(mini);
+  } else {
+    pattern[L][s] = null;
+    const stepEl = seqLanes.children[L].children[s];
+    stepEl.classList.remove('on');
+    stepEl.innerHTML = '';
+  }
+}
+
+// ── Play / trigger ────────────────────────────────────────────────
+function playCard(idx) {
+  const card = grid.children[idx];
+  if (!card || card.classList.contains('locked')) return;
+  const [num, name, art, key, timbre, semi] = ARCANA[idx];
+  const root = parseInt(document.getElementById('root').value);
+  const midi = scaleSnap(root + semi);
+  const vel  = parseInt(document.getElementById('vol').value) / 100;
+  trigger(timbre, midi, vel);
+  selectedCard = idx;
+  // visual feedback
+  card.classList.add('pressed');
+  setTimeout(() => card.classList.remove('pressed'), 90);
+  document.getElementById('now-playing').textContent =
+    `▶ ${num.toString().padStart(2,'0')} · ${name} · ${timbre}`;
+}
+
+// ── Transport ─────────────────────────────────────────────────────
+let playing = false;
+let curStep = 0;
+let stepInterval = null;
+const playBtn = document.getElementById('play');
+const stopBtn = document.getElementById('stop');
+const clearBtn = document.getElementById('clear');
+const bpmEl = document.getElementById('bpm');
+const bpmVal = document.getElementById('bpm-val');
+const stepDisp = document.getElementById('step-display');
+bpmEl.addEventListener('input', () => { bpmVal.textContent = bpmEl.value; restartLoop(); });
+
+function tick() {
+  // clear previous cursor
+  document.querySelectorAll('.step.cursor').forEach(s => s.classList.remove('cursor'));
+  for (let L = 0; L < SEQ_LANES; L++) {
+    const stepEl = seqLanes.children[L].children[curStep];
+    stepEl.classList.add('cursor');
+    const cardIdx = pattern[L][curStep];
+    if (cardIdx !== null) {
+      const [num, name, art, key, timbre, semi] = ARCANA[cardIdx];
+      const root = parseInt(document.getElementById('root').value);
+      const midi = scaleSnap(root + semi);
+      trigger(timbre, midi, 0.7);
+    }
+  }
+  stepDisp.textContent = `${(curStep + 1).toString().padStart(2,'0')} / 16`;
+  curStep = (curStep + 1) % SEQ_STEPS;
+}
+
+function startLoop() {
+  playing = true;
+  playBtn.classList.add('active');
+  const bpm = parseInt(bpmEl.value);
+  const interval = 60000 / bpm / 4;  // 16th notes
+  if (stepInterval) clearInterval(stepInterval);
+  stepInterval = setInterval(tick, interval);
+}
+function stopLoop() {
+  playing = false;
+  playBtn.classList.remove('active');
+  if (stepInterval) clearInterval(stepInterval);
+  stepInterval = null;
+  curStep = 0;
+  document.querySelectorAll('.step.cursor').forEach(s => s.classList.remove('cursor'));
+  stepDisp.textContent = '— / 16';
+}
+function restartLoop() {
+  if (playing) { stopLoop(); startLoop(); }
+}
+
+playBtn.addEventListener('click', () => playing ? stopLoop() : startLoop());
+stopBtn.addEventListener('click', stopLoop);
+clearBtn.addEventListener('click', () => {
+  for (let L = 0; L < SEQ_LANES; L++) {
+    for (let s = 0; s < SEQ_STEPS; s++) {
+      pattern[L][s] = null;
+      const e = seqLanes.children[L].children[s];
+      e.classList.remove('on');
+      e.innerHTML = '';
+    }
+  }
+});
+
+// ── Master volume ─────────────────────────────────────────────────
+document.getElementById('vol').addEventListener('input', e => {
+  if (masterGain) masterGain.gain.value = parseInt(e.target.value) / 100;
+});
+
+// ── Keyboard ──────────────────────────────────────────────────────
+const keyMap = new Map(ARCANA.map(([n,name,a,k], i) => [k, i]));
+window.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  if (e.key === ' ') { e.preventDefault(); playing ? stopLoop() : startLoop(); return; }
+  const idx = keyMap.get(e.key.toLowerCase());
+  if (idx !== undefined) {
+    e.preventDefault();
+    playCard(idx);
+  }
+});
+
+// ── Drag-drop hint ────────────────────────────────────────────────
+window.addEventListener('dragenter', e => {
+  if (e.dataTransfer && e.dataTransfer.types.includes('Files')) {
+    document.getElementById('drop-hint').classList.add('show');
+  }
+});
+window.addEventListener('dragleave', e => {
+  if (!e.relatedTarget) document.getElementById('drop-hint').classList.remove('show');
+});
+window.addEventListener('drop', e => {
+  document.getElementById('drop-hint').classList.remove('show');
+});
+
+// suspend AudioContext until first user gesture
+document.body.addEventListener('click', () => { initAudio(); if (ac && ac.state==='suspended') ac.resume(); }, {once:true});
+</script>
+</body>
+</html>
