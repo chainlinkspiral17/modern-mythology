@@ -395,73 +395,50 @@ func _make_substrate_tile(item: Dictionary) -> Control:
 	return tile
 
 
+## Spawn a dedicated visualizer over the gallery picker. Hides the
+## picker's existing children while the visualizer is open so they
+## can't bleed through underneath (z_index doesn't always win against
+## sibling Controls inside the same Control parent). Restores them
+## when the visualizer emits `closed`.
+func _spawn_visualizer(script: Script) -> Control:
+	# Record + hide existing children so the visualizer renders alone
+	var hidden_siblings: Array = []
+	for ch in get_children():
+		if ch.visible:
+			hidden_siblings.append(ch)
+			ch.visible = false
+	var v := Control.new()
+	v.set_script(script)
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.z_index = 12
+	v.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(v)
+	v.connect("closed", func() -> void:
+		for sib in hidden_siblings:
+			if is_instance_valid(sib):
+				sib.visible = true
+		v.queue_free())
+	return v
+
+
 func _view_substrate_fullscreen(short_path: String, title: String, kind: String = "substrate") -> void:
 	# Dedicated visualizer route — bespoke per-arcana experience.
 	# Matches by path first (specific to a card), then by kind
 	# (handles new entry types like "overlay" / "playable").
 	if short_path == "fool_arcana":
-		var fv := Control.new()
-		fv.set_script(FOOL_VISUALIZER_SCRIPT)
-		fv.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		fv.z_index = 12
-		fv.mouse_filter = Control.MOUSE_FILTER_STOP
-		add_child(fv)
-		fv.connect("closed", func() -> void: fv.queue_free())
-		return
+		_spawn_visualizer(FOOL_VISUALIZER_SCRIPT); return
 	if short_path == "empress_arcana":
-		var ev := Control.new()
-		ev.set_script(EMPRESS_VISUALIZER_SCRIPT)
-		ev.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		ev.z_index = 12
-		ev.mouse_filter = Control.MOUSE_FILTER_STOP
-		add_child(ev)
-		ev.connect("closed", func() -> void: ev.queue_free())
-		return
+		_spawn_visualizer(EMPRESS_VISUALIZER_SCRIPT); return
 	if short_path == "magician_arcana":
-		var mv := Control.new()
-		mv.set_script(MAGICIAN_VISUALIZER_SCRIPT)
-		mv.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		mv.z_index = 12
-		mv.mouse_filter = Control.MOUSE_FILTER_STOP
-		add_child(mv)
-		mv.connect("closed", func() -> void: mv.queue_free())
-		return
+		_spawn_visualizer(MAGICIAN_VISUALIZER_SCRIPT); return
 	if short_path == "high_priestess_arcana":
-		var pv := Control.new()
-		pv.set_script(PRIESTESS_VISUALIZER_SCRIPT)
-		pv.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		pv.z_index = 12
-		pv.mouse_filter = Control.MOUSE_FILTER_STOP
-		add_child(pv)
-		pv.connect("closed", func() -> void: pv.queue_free())
-		return
+		_spawn_visualizer(PRIESTESS_VISUALIZER_SCRIPT); return
 	if short_path == "emperor_arcana":
-		var ep := Control.new()
-		ep.set_script(EMPEROR_VISUALIZER_SCRIPT)
-		ep.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		ep.z_index = 12
-		ep.mouse_filter = Control.MOUSE_FILTER_STOP
-		add_child(ep)
-		ep.connect("closed", func() -> void: ep.queue_free())
-		return
+		_spawn_visualizer(EMPEROR_VISUALIZER_SCRIPT); return
 	if short_path == "hierophant_arcana":
-		var hp := Control.new()
-		hp.set_script(HIEROPHANT_VISUALIZER_SCRIPT)
-		hp.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		hp.z_index = 12
-		hp.mouse_filter = Control.MOUSE_FILTER_STOP
-		add_child(hp)
-		hp.connect("closed", func() -> void: hp.queue_free())
-		return
+		_spawn_visualizer(HIEROPHANT_VISUALIZER_SCRIPT); return
 	if short_path == "chariot_arcana":
-		var cp := Control.new()
-		cp.set_script(CHARIOT_VISUALIZER_SCRIPT)
-		cp.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		cp.z_index = 12
-		cp.mouse_filter = Control.MOUSE_FILTER_STOP
-		add_child(cp)
-		cp.connect("closed", func() -> void: cp.queue_free())
-		return
+		_spawn_visualizer(CHARIOT_VISUALIZER_SCRIPT); return
 	# Tarot Synth — type:"overlay" entry in the gallery index, opens
 	# the playable instrument as a fullscreen overlay
 	if kind == "overlay" or short_path == "TarotSynthOverlay":

@@ -257,10 +257,15 @@ func _build_card_surface() -> void:
         var comp := Control.new()
         comp.set_script(ASCII_COMPOSITION_SCRIPT)
         comp.mouse_filter = Control.MOUSE_FILTER_IGNORE
-        # Scale composition canvas down to fit wrapper
-        var s_x := card_w / composition_canvas.x
-        var s_y := card_h / composition_canvas.y
-        comp.scale = Vector2(s_x, s_y)
+        # Anchor the composition Control to fill the wrapper. Don't use
+        # comp.scale here — AsciiComposition has its own _fit_canvas that
+        # scales its internal _canvas based on self.size. Setting scale
+        # instead would leave self.size at (0,0) and _fit_canvas would
+        # bail out early, leaving the mosaic invisible.
+        comp.anchor_left = 0; comp.anchor_top = 0
+        comp.anchor_right = 1; comp.anchor_bottom = 1
+        comp.offset_left = 0; comp.offset_top = 0
+        comp.offset_right = 0; comp.offset_bottom = 0
         card_rect.add_child(comp)
         comp.call_deferred("load_composition", _composition_path)
         card_composition = comp
