@@ -117,6 +117,15 @@
       "unlock_pattern": "vol5_ch3_empress"
     },
     {
+      "id": "portrait_dante",
+      "title": "Portrait — Dante D'Ambrosio",
+      "set": "Chapter IV — The Emperor",
+      "type": "composition",
+      "path": "portrait_dante",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch4_*"
+    },
+    {
       "id": "music_player",
       "title": "MUSIC PLAYER  (live visualizer)",
       "set": "Player Surfaces",
