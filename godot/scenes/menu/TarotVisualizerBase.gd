@@ -386,21 +386,36 @@ func recenter() -> void:
 ## Load a Texture2D resilient to un-imported assets. Tries Godot's
 ## ResourceLoader first (which requires a .import sidecar), then
 ## falls back to raw Image.load_from_file from the on-disk path.
-## Lets the visualizer work from an un-opened project source tree
-## where Godot hasn't yet generated import data.
+## Verbose print on failure paths so the user can see WHY the card
+## isn't appearing.
 static func _load_image_with_fallback(res_path: String) -> Texture2D:
     if res_path == "":
+        push_warning("Visualizer: empty card path")
         return null
+    print("[Visualizer] trying to load: ", res_path)
     if ResourceLoader.exists(res_path):
         var t := load(res_path)
         if t is Texture2D:
+            print("[Visualizer] ✓ loaded via ResourceLoader")
             return t
+        else:
+            print("[Visualizer] ResourceLoader returned non-Texture2D: ", t)
+    else:
+        print("[Visualizer] ResourceLoader.exists() → false (no .import sidecar)")
     # Fallback: read the raw file from disk
     var abs_path: String = ProjectSettings.globalize_path(res_path)
+    print("[Visualizer] fallback: trying raw read at ", abs_path)
     if FileAccess.file_exists(abs_path):
         var img := Image.load_from_file(abs_path)
         if img != null:
+            print("[Visualizer] ✓ loaded via raw Image.load_from_file (",
+                  img.get_size(), ")")
             return ImageTexture.create_from_image(img)
+        else:
+            push_warning("Visualizer: Image.load_from_file returned null for "
+                          + abs_path)
+    else:
+        push_warning("Visualizer: file does NOT exist on disk: " + abs_path)
     return null
 
 
