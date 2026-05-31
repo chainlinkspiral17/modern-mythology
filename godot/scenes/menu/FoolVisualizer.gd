@@ -26,12 +26,17 @@ extends "res://scenes/menu/TarotVisualizerBase.gd"
 
 # ── Game state ───────────────────────────────────────────────────
 var wipe_count: int = 0
-var dog_clicks: int = 0
+var pet_count: int = 0
+var fall_count: int = 0
+var bindle_examined: bool = false
+var graffiti_seen: bool = false
 var oracle_read: bool = false
+var dog_clicks: int = 0     # legacy alias for pet_count
 var hotspots_seen: Dictionary = {}     # hs_id -> true
 var commands_run: Dictionary = {}      # cmd -> count
 var memory: PackedStringArray = []     # discovery log
 var time_phase: float = 0.0            # 0=midnight 1=dawn
+var tableau_pulse: float = 0.0         # audio-reactive ASCII tint
 
 # Stickers / labels that unlock as you go
 var stickers_unlocked: int = 0
@@ -55,6 +60,48 @@ func _init() -> void:
 func _build_chrome() -> void:
     super()
     _build_bottom_strip()
+    _build_card_hotspots()
+
+
+# Per-region mechanics on the painted Fool: each rect over the card
+# triggers a distinct action.
+#   WIPE   — John's hand+rag (center-low)
+#   PET    — the dog (left of John)
+#   FALL   — the bindle bag / journey-stick (upper-left, the leap)
+#   READ   — the inner Fool card preview (oracle text)
+#   TAG    — the FRANKLY/FOOLISH graffiti (upper-right wall)
+func _build_card_hotspots() -> void:
+    if card_rect == null: return
+    var defs := [
+        ["wipe",  Rect2(0.40, 0.58, 0.20, 0.16), "wipe the counter",     _do_wipe],
+        ["pet",   Rect2(0.20, 0.50, 0.16, 0.30), "pet the dog",          _do_pet],
+        ["fall",  Rect2(0.28, 0.10, 0.12, 0.18), "take the leap",        _do_fall],
+        ["read",  Rect2(0.03, 0.10, 0.13, 0.40), "read the inner card",  _do_read_oracle],
+        ["tag",   Rect2(0.72, 0.05, 0.20, 0.10), "examine the graffiti", _do_tag],
+    ]
+    for d in defs:
+        var btn := Button.new()
+        btn.flat = true
+        var rect: Rect2 = d[1]
+        btn.position = card_rect.position + Vector2(
+            rect.position.x * card_rect.size.x,
+            rect.position.y * card_rect.size.y)
+        btn.size = Vector2(
+            rect.size.x * card_rect.size.x,
+            rect.size.y * card_rect.size.y)
+        btn.tooltip_text = str(d[2])
+        var sb := StyleBoxFlat.new()
+        sb.bg_color = Color(1, 0.85, 0.40, 0.0)
+        sb.border_color = Color(1, 0.85, 0.40, 0.0)
+        sb.set_border_width_all(1)
+        btn.add_theme_stylebox_override("normal", sb)
+        var bsh := sb.duplicate() as StyleBoxFlat
+        bsh.bg_color = Color(1, 0.85, 0.40, 0.22)
+        bsh.border_color = Color(1, 0.85, 0.40, 0.70)
+        btn.add_theme_stylebox_override("hover", bsh)
+        btn.add_theme_stylebox_override("focus", bsh)
+        btn.pressed.connect(d[3])
+        canvas.add_child(btn)
 
 
 func _build_bottom_strip() -> void:
@@ -105,24 +152,28 @@ func _build_bottom_strip() -> void:
     actrow.add_theme_constant_override("separation", 12)
     vbox.add_child(actrow)
 
+    # Compact multi-mechanic tally — wipe is one of several actions
+    # now, so the giant WIPE button is replaced by a single small
+    # readout that updates per-mechanic.
     wipe_btn = Button.new()
-    wipe_btn.text = "  WIPE  ( 0 / 64 )"
+    wipe_btn.text = "  ░ wipe 0 · pet 0 · fall 0 ░  "
     wipe_btn.add_theme_color_override("font_color", C_GOLD_HI)
-    wipe_btn.add_theme_font_size_override("font_size", 12)
+    wipe_btn.add_theme_font_size_override("font_size", 11)
     var wbs := StyleBoxFlat.new()
-    wbs.bg_color = Color(C_GOLD.r * 0.3, C_GOLD.g * 0.3, C_GOLD.b * 0.3, 0.6)
+    wbs.bg_color = Color(C_GOLD.r * 0.25, C_GOLD.g * 0.25, C_GOLD.b * 0.25, 0.5)
     wbs.border_color = C_GOLD
     wbs.set_border_width_all(1)
     wipe_btn.add_theme_stylebox_override("normal", wbs)
     var wbh := wbs.duplicate() as StyleBoxFlat
-    wbh.bg_color = Color(C_GOLD.r * 0.6, C_GOLD.g * 0.6, C_GOLD.b * 0.6, 0.75)
+    wbh.bg_color = Color(C_GOLD.r * 0.5, C_GOLD.g * 0.5, C_GOLD.b * 0.5, 0.7)
     wbh.border_color = C_GOLD_HI
     wipe_btn.add_theme_stylebox_override("hover", wbh)
     wipe_btn.pressed.connect(_do_wipe)
+    wipe_btn.tooltip_text = "click the card regions for distinct actions"
     actrow.add_child(wipe_btn)
 
     status_label = Label.new()
-    status_label.text = "type 'help' · drag to pan · click card to listen"
+    status_label.text = "click the card · wipe · pet · fall · read · tag"
     status_label.add_theme_color_override("font_color",
         Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7))
     status_label.add_theme_font_size_override("font_size", 10)
@@ -613,11 +664,151 @@ func _build_thematic_widget() -> void:
 """
     })
 
+    # ────────────────────────────────────────────────────────────
+    # PET milestones — tableau grows around the dog
+    # ────────────────────────────────────────────────────────────
+    _register_segment({"dir": Dir.WEST, "row": 7, "tint": c_amber,
+        "font_size": 11,
+        "requires": func(): return pet_count >= 5,
+        "ascii":
+"""
+                ╭──────────────────────╮
+                │   ░▒▓ THE DOG ▓▒░    │
+                │  she's leaned in     │
+                │  ▒░ five times now ░▒│
+                │  her name is on the  │
+                │  tip of his tongue.  │
+                ╰──────────────────────╯
+"""
+    })
+    _register_segment({"dir": Dir.NORTH, "row": 8, "tint": c_dream,
+        "font_size": 11,
+        "requires": func(): return pet_count >= 10,
+        "ascii":
+"""
+              ▒▒▒▒                       ▒▒▒▒
+            ▒▒░░░░▒▒        ten          ▒▒░░░░▒▒
+           ▒░░░░░░░░▒    ▒  pets later   ▒░░░░░░░░▒
+            ▒▒░░░░▒▒    ▒    he calls   ▒▒░░░░▒▒
+              ▒▒▒▒      ▒    her FAITH.   ▒▒▒▒
+                        ▒
+"""
+    })
+
+    # ────────────────────────────────────────────────────────────
+    # FALL milestones — the leap proper
+    # ────────────────────────────────────────────────────────────
+    _register_segment({"dir": Dir.SOUTH, "row": 8, "tint": c_dream,
+        "font_size": 11,
+        "requires": func(): return fall_count >= 1,
+        "ascii":
+"""
+                        ╱
+                       ╱
+                      ╱     one foot off
+                     ╱     the other still
+                    ╱      wiping. always
+                   ╱       still wiping.
+                  ╱
+"""
+    })
+    _register_segment({"dir": Dir.SOUTH, "row": 9, "tint": c_red,
+        "font_size": 11,
+        "requires": func(): return fall_count >= 3,
+        "ascii":
+"""
+              ╔══════════════════════════════════╗
+              ║   ░▒▓ THE LEAP ▓▒░               ║
+              ║  the diner shrinks behind you    ║
+              ║  the dog watches calmly          ║
+              ║  she does not bark               ║
+              ║  she knows you'll come back      ║
+              ║  she knows you'll fall again     ║
+              ╚══════════════════════════════════╝
+"""
+    })
+    _register_segment({"dir": Dir.EAST, "row": 7, "tint": c_amber_hot,
+        "font_size": 11,
+        "requires": func(): return fall_count >= 5,
+        "ascii":
+"""
+              the moon falls sideways.
+              you fall the same way.
+                  ◐ ◑ ◐ ◑ ◐ ◑
+              landing was always optional.
+              ─── five leaps in ───
+              ─── infinity to go ───
+"""
+    })
+
+    # ────────────────────────────────────────────────────────────
+    # TAG / graffiti — author signature thread
+    # ────────────────────────────────────────────────────────────
+    _register_segment({"dir": Dir.EAST, "row": 8, "tint": c_red,
+        "font_size": 11,
+        "requires": func(): return graffiti_seen,
+        "ascii":
+"""
+              ▒▓█  FRANKLY · FOOLISH  █▓▒
+              the author admits
+              to having signed
+              the dream they wrote
+              ─── the diner is a card ───
+              ─── you are reading it ───
+"""
+    })
+
+
+# ── Mechanics ────────────────────────────────────────────────────
+func _do_pet() -> void:
+    pet_count += 1
+    dog_clicks = pet_count   # keep tableau predicates working
+    _refresh_tally()
+    _active_notes.append({"time":0.0,"freq":420.0,"wave":"square",
+        "atk":0.001,"dur":0.06,"rel":0.10})
+    _memorize("pet #%d" % pet_count)
+    status_label.text = ["the dog leans into your hand.",
+        "the dog wags. tail tracks east.",
+        "the dog yips once, quietly.",
+        "the dog rests her head on your shoe.",
+        "the dog knows your weight by name."][pet_count % 5]
+    _log("[color=#ffd896]· pet #%d.  %s[/color]" % [pet_count, status_label.text])
+
+
+func _do_fall() -> void:
+    fall_count += 1
+    _refresh_tally()
+    _active_notes.append({"time":0.0,"freq":80.0,"wave":"sawtooth",
+        "atk":0.001,"dur":0.45,"rel":0.6})
+    _memorize("fall #%d" % fall_count)
+    var lines := ["one foot off. the other still wiping.",
+        "two feet off. the dog watches calmly.",
+        "no feet. the diner shrinks behind.",
+        "you don't land. you don't have to.",
+        "you fall the way the moon falls — sideways."]
+    status_label.text = lines[min(fall_count - 1, lines.size() - 1)]
+    _log("[color=#a878e0]· fall #%d.  %s[/color]" % [fall_count, status_label.text])
+    SaveSystem.mark_unlocked("vol5_fool_leap_%d" % fall_count)
+
+
+func _do_read_oracle() -> void:
+    oracle_read = true
+    _cmd_oracle()
+
+
+func _do_tag() -> void:
+    graffiti_seen = true
+    hotspots_seen["fool_graffiti"] = true
+    _memorize("tag examined")
+    status_label.text = "FRANKLY · FOOLISH — the author signs."
+    _log("[color=#e85530]· author signature on the brick wall.[/color]")
+    SaveSystem.mark_unlocked("vol5_graffiti_signature_seen")
+
 
 # ── Wipe ─────────────────────────────────────────────────────────
 func _do_wipe() -> void:
     wipe_count += 1
-    wipe_btn.text = "  WIPE  ( %d / 64 )" % wipe_count
+    _refresh_tally()
     _active_notes.append({
         "time": 0.0, "freq": 130.0 + randf() * 30,
         "wave": "triangle", "atk": 0.005, "dur": 0.18, "rel": 0.15,
@@ -682,6 +873,12 @@ func _on_command(text: String) -> void:
             _cmd_help()
         "wipe":
             _do_wipe()
+        "pet":
+            _do_pet()
+        "fall", "leap", "jump":
+            _do_fall()
+        "tag", "graffiti":
+            _do_tag()
         "bark":
             _trigger_dog_bark()
         "oracle":
@@ -749,6 +946,9 @@ func _on_command(text: String) -> void:
 func _cmd_help() -> void:
     _log("[color=#d8a060]commands (visible):[/color]")
     _log("  [color=#ffd896]wipe[/color]       — wipe the counter")
+    _log("  [color=#ffd896]pet[/color]        — pet the dog")
+    _log("  [color=#ffd896]fall[/color]       — take the leap")
+    _log("  [color=#ffd896]tag[/color]        — examine the graffiti")
     _log("  [color=#ffd896]bark[/color]       — the dog speaks")
     _log("  [color=#ffd896]oracle[/color]     — read the card")
     _log("  [color=#ffd896]memory[/color]     — what you've discovered")
@@ -838,22 +1038,53 @@ func _memorize(entry: String) -> void:
         memory.remove_at(0)
 
 
+func _refresh_tally() -> void:
+    if wipe_btn != null:
+        wipe_btn.text = "  ░ wipe %d · pet %d · fall %d ░  " % [
+            wipe_count, pet_count, fall_count]
+
+
 func _log(line: String) -> void:
     if console_log != null:
         console_log.append_text(line + "\n")
 
 
-# ── Process / time drift ────────────────────────────────────────
+# ── Process / time drift / audio-reactive ASCII pulse ──────────
 func _process(delta: float) -> void:
     super(delta)
-    # Time-of-day creeps forward — 600 seconds per full phase cycle
+    # Time-of-day drift
     time_phase = fmod(time_phase + delta / 600.0, 1.0)
     if card_rect != null:
-        # Very subtle modulate shift toward dawn — gold tint at full
         var dawn := 0.5 + sin(time_phase * TAU) * 0.5
         card_rect.modulate = Color(1.0 + dawn * 0.05,
                                     1.0 + dawn * 0.03,
                                     0.97 - dawn * 0.02)
+    # Audio-reactive pulse running THROUGH the ASCII tableau.
+    # Sample BGM magnitude (falls back to constant if no analyzer).
+    # Each visible tableau segment gets its modulate alpha+tint
+    # modulated by a sine wave offset by segment index — produces a
+    # ripple that flows across the cardinal directions as the music
+    # plays.
+    tableau_pulse += delta
+    var amp: float = 0.0
+    var am := get_node_or_null("/root/AudioMgr")
+    if am != null and am.has_method("get_bgm_magnitude"):
+        amp = clamp(float(am.call("get_bgm_magnitude", 80.0, 3200.0)) * 10.0,
+                     0.0, 1.0)
+    # Baseline so it ripples even without audio
+    var base_amp = 0.10 + amp * 0.40
+    var idx := 0
+    for seg in _segments:
+        if not seg.get("shown", false): continue
+        var lbl: Label = seg.get("label")
+        if lbl == null: continue
+        var phase = tableau_pulse * 2.4 + idx * 0.35
+        var pulse_val = sin(phase) * 0.5 + 0.5
+        var tint: Color = seg.get("tint", C_TEXT)
+        var lifted := tint.lerp(C_GOLD_HI, pulse_val * base_amp)
+        lifted.a = tint.a * (0.85 + pulse_val * base_amp * 0.30)
+        lbl.modulate = lifted
+        idx += 1
 
 
 func _input(event: InputEvent) -> void:
