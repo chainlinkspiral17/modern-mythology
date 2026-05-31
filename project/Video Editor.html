@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Editor — Modern Mythology</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="vn-data.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<!-- Canonical chapter data (DEMO_SCENES) — same source the game + Scene Editor read -->
+<script src="vn-scenes.jsx"></script>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body,#root{width:100%;height:100%;overflow:hidden;}
+  html,body,#root{background:var(--bg0);}
+  html.light,body.light{background:var(--bg0) !important;}
+
+  :root {
+    --bg0:#080604; --bg1:#0e0c09; --bg2:#141208; --bg3:#1a1610;
+    --border:rgba(180,140,60,0.15); --border2:rgba(180,140,60,0.08);
+    --text:#c4baa0; --text2:rgba(196,186,160,0.55); --text3:rgba(196,186,160,0.28);
+    --accent:#c8a84a; --accent-bg:rgba(180,140,60,0.08);
+    --accent-border:rgba(180,140,60,0.4);
+    --input-bg:rgba(255,255,255,0.04); --input-border:rgba(180,140,60,0.18);
+    --input-focus:rgba(180,140,60,0.5); --scrollbar:rgba(180,140,60,0.22);
+    --danger:rgba(200,60,40,0.6); --danger-border:rgba(200,60,40,0.3);
+    --video:#e878f0; --video-bg:rgba(232,120,240,0.08); --video-border:rgba(232,120,240,0.4);
+    --sb-opt:#12100c;
+  }
+  body.light {
+    --bg0:#f8f4ec; --bg1:#f0ebe0; --bg2:#e8e2d4; --bg3:#ddd7c8;
+    --border:rgba(100,75,20,0.22); --border2:rgba(100,75,20,0.12);
+    --text:#1a1408; --text2:rgba(26,20,8,0.6); --text3:rgba(26,20,8,0.35);
+    --accent:#7a5418; --accent-bg:rgba(122,84,24,0.1);
+    --accent-border:rgba(122,84,24,0.45);
+    --input-bg:rgba(255,255,255,0.8); --input-border:rgba(100,75,20,0.28);
+    --input-focus:rgba(122,84,24,0.65); --scrollbar:rgba(100,75,20,0.18);
+    --danger:rgba(160,30,10,0.8); --danger-border:rgba(160,30,10,0.4);
+    --video:#a02fb0; --video-bg:rgba(160,47,176,0.1); --video-border:rgba(160,47,176,0.45);
+    --sb-opt:#f0ebe0;
+  }
+
+  body{color:var(--text);font-family:'Space Mono',monospace;}
+  html,body{transition:background 0.2s,color 0.2s;}
+  ::-webkit-scrollbar{width:5px;height:5px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:var(--scrollbar);border-radius:2px;}
+
+  input,textarea,select{
+    background:var(--input-bg);border:1px solid var(--input-border);
+    color:var(--text);font-family:'Courier Prime',monospace;font-size:13px;
+    padding:6px 10px;outline:none;resize:vertical;
+    transition:border-color 0.15s,background 0.2s;
+  }
+  input:focus,textarea:focus,select:focus{border-color:var(--input-focus);}
+  input[type=number]{width:72px;}
+  input[type=range]{padding:0;}
+  select option{background:var(--sb-opt);}
+  textarea{line-height:1.6;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:5px 12px;border:1px solid var(--border);
+    background:var(--accent-bg);color:var(--text2);
+    font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;
+    text-transform:uppercase;cursor:pointer;transition:all 0.15s;white-space:nowrap;
+  }
+  .btn:hover{border-color:var(--accent-border);color:var(--accent);}
+  .btn.accent{border-color:var(--accent-border);color:var(--accent);}
+  .btn.video{border-color:var(--video-border);color:var(--video);background:var(--video-bg);}
+  .btn.danger{border-color:var(--danger-border);color:var(--danger);}
+  .btn.danger:hover{border-color:var(--danger);opacity:0.9;}
+  .btn.small{padding:3px 8px;font-size:8px;}
+  .btn.icon{padding:4px 7px;border:none;background:transparent;color:var(--text3);font-size:13px;}
+  .btn.icon:hover{color:var(--accent);background:transparent;}
+
+  .section-label{
+    font-family:'Cinzel',serif;font-size:8px;letter-spacing:0.28em;
+    color:var(--text3);text-transform:uppercase;filter:brightness(1.3);
+  }
+  body.light .section-label{filter:none;}
+
+  .toggle-group{display:flex;gap:4px;}
+  .toggle-btn{
+    padding:4px 10px;border:1px solid var(--border);
+    background:transparent;color:var(--text3);
+    font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;
+    text-transform:uppercase;cursor:pointer;transition:all 0.15s;
+  }
+  .toggle-btn.active{border-color:var(--accent-border);background:var(--accent-bg);color:var(--accent);}
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useMemo, useCallback } = React;
+
+// ── Constants (kept in sync with Scene Editor.html) ─────────────────────────
+const SAVE_KEY   = 'mm_editor_scenes';
+const EDITED_KEY = 'mm_editor_edited_scenes';
+const THEME_KEY  = 'mm_editor_theme';
+
+const VOLS = [
+  { vol:1,  title:'Modern Mythology',       skin:'literary'  },
+  { vol:2,  title:'Small Wood Volumes',     skin:'literary'  },
+  { vol:3,  title:'The Earthman Chronicles',skin:'signal'    },
+  { vol:4,  title:'#/Sharp',                skin:'zine'      },
+  { vol:5,  title:'Major Arcana',           skin:'arcana'    },
+  { vol:6,  title:'Planned Community',      skin:'suburban'  },
+  { vol:7,  title:'Land of Milk & Honey',   skin:'pastoral'  },
+  { vol:8,  title:'SCUMM',                  skin:'scumm'     },
+  { vol:9,  title:'Por Puesto',             skin:'caliente'  },
+  { vol:10, title:'ROFLcopter',             skin:'glitch'    },
+];
+
+const ALL_VERBS = ['Look At','Pick Up','Talk To','Use','Open','Close','Walk To','Push','Pull','Give','Examine','Take','Speak','Tag','Scan','Interface','Query'];
+const ACTION_TYPES = ['narrate','say','add_item','jump_scene','set_flag'];
+
+// Skin → verb-set presets (mirror of vn-video.jsx VERB_SETS).
+const VERB_SETS = {
+  scumm:    ['Walk To','Pick Up','Talk To','Look At','Use','Open','Close','Push','Pull','Give'],
+  literary: ['Examine','Take','Speak','Open','Use'],
+  signal:   ['Scan','Interface','Query','Look At','Use'],
+  zine:     ['Look At','Pick Up','Talk To','Tag','Walk To'],
+  default:  ['Look At','Pick Up','Talk To','Use','Open'],
+};
+
+const DEFAULT_LAYOUT = { mode:'fullbleed', split:0.62 };
+
+// ── Persistence (compatible with Scene Editor) ──────────────────────────────
+function loadData() {
+  try { return JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); } catch { return null; }
+}
+function loadEditedSet() {
+  try { return new Set(JSON.parse(localStorage.getItem(EDITED_KEY) || '[]')); }
+  catch { return new Set(); }
+}
+function persistEditorState(data, editedSet) {
+  try {
+    const out = {};
+    Object.entries(data).forEach(([vol, vd]) => {
+      const scenes = {};
+      Object.entries(vd.scenes || {}).forEach(([id, sc]) => {
+        if (!editedSet.has(id)) return;
+        const clean = { ...sc };
+        delete clean.__canonical; delete clean.__edited;
+        scenes[id] = clean;
+      });
+      if (Object.keys(scenes).length) out[vol] = { scenes };
+    });
+    localStorage.setItem(SAVE_KEY, JSON.stringify(out));
+    localStorage.setItem(EDITED_KEY, JSON.stringify([...editedSet]));
+  } catch {}
+}
+
+function humanize(slug){ return (slug||'').replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); }
+function inferSceneMeta(id){
+  const ch = id.match(/^vol(\d+)_ch(\d+)_(.*)$/);
+  if (ch) return { type:'chapter', chapter:parseInt(ch[2],10), title:`Ch ${parseInt(ch[2],10)} — ${humanize(ch[3])}` };
+  const it = id.match(/^vol(\d+)_int_(.*)$/);
+  if (it) return { type:'interlude', chapter:0, title:`Interlude — ${humanize(it[2])}` };
+  const vm = id.match(/^vol(\d+)_(.*)$/);
+  if (vm) return { type:'chapter', title:humanize(vm[2]) };
+  return {};
+}
+function buildCanonicalData(){
+  const out = {};
+  for (let v=1; v<=10; v++) out[v] = { scenes:{} };
+  const D = (typeof window!=='undefined' && window.DEMO_SCENES) || {};
+  Object.entries(D).forEach(([key, scene])=>{
+    if (!scene || typeof scene!=='object' || !Array.isArray(scene.nodes)) return;
+    let vol = scene.vol;
+    const id = scene.id || key;
+    if (vol==null){ const m=id.match(/vol(\d+)/); if (m) vol=parseInt(m[1]); else if (/^\d+$/.test(key)) vol=parseInt(key); }
+    if (!vol || vol<1 || vol>10) return;
+    const inf = inferSceneMeta(id);
+    out[vol].scenes[id] = {
+      ...scene, id, vol,
+      chapter: scene.chapter ?? inf.chapter ?? 0,
+      type: scene.type || inf.type || 'chapter',
+      title: scene.title || inf.title || id,
+      __canonical:true,
+    };
+  });
+  return out;
+}
+function initData(){
+  const canonical = buildCanonicalData();
+  const saved = loadData();
+  if (!saved) return canonical;
+  Object.entries(saved).forEach(([vol, vd])=>{
+    if (!canonical[vol]) canonical[vol] = { scenes:{} };
+    Object.entries(vd.scenes||{}).forEach(([id, sc])=>{
+      canonical[vol].scenes[id] = { ...sc, id, vol:parseInt(vol), __edited:true };
+    });
+  });
+  return canonical;
+}
+
+// ── Small utilities ─────────────────────────────────────────────────────────
+const clamp = (n,lo,hi)=>Math.max(lo,Math.min(hi,n));
+const r1 = n => Math.round(n*10)/10;
+function fmtTime(s){
+  if (s==null || isNaN(s)) return '0:00.0';
+  const m = Math.floor(s/60), sec = s-m*60;
+  return `${m}:${sec.toFixed(1).padStart(4,'0')}`;
+}
+
+// Find every videoscene node across the working data.
+function collectVideoScenes(data){
+  const out = [];
+  Object.values(data).forEach(vd=>{
+    Object.values(vd.scenes||{}).forEach(scene=>{
+      (scene.nodes||[]).forEach((n,idx)=>{
+        if (n.t==='videoscene') out.push({ sceneId:scene.id, vol:scene.vol, title:scene.title, nodeIdx:idx, node:n });
+      });
+    });
+  });
+  return out;
+}
+// Item ids known to the project (from add_item actions anywhere).
+function collectItemIds(data){
+  const ids = new Set();
+  collectVideoScenes(data).forEach(v=>{
+    (v.node.hotspots||[]).forEach(h=>{
+      Object.values(h.actions||{}).forEach(a=>{ if (a?.t==='add_item' && a.item?.id) ids.add(a.item.id); });
+    });
+  });
+  return [...ids];
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  STAGE  — video preview + draggable spatial hotspots
+// ════════════════════════════════════════════════════════════════════════════
+function Stage({ node, clipUrl, currentTime, duration, selIdx, onSelect, onUpdateHotspot, onCreateHotspot, videoRef, showGuide }){
+  const regionRef = useRef(null);
+  const drag = useRef(null);          // {mode, idx, ox, oy, sx, sy, base}
+  const [draft, setDraft] = useState(null); // create-rect preview {x,y,w,h}
+  const layout = node.layout || DEFAULT_LAYOUT;
+  const split = layout.mode==='split' ? clamp(layout.split ?? 0.62, 0.3, 0.85) : 1;
+
+  const pctFromEvent = (e)=>{
+    const r = regionRef.current.getBoundingClientRect();
+    return {
+      x: clamp((e.clientX - r.left)/r.width*100, 0, 100),
+      y: clamp((e.clientY - r.top)/r.height*100, 0, 100),
+    };
+  };
+
+  // Active hotspots at the current playhead.
+  const isActive = (h)=>{
+    if (h.timeStart!=null && currentTime < h.timeStart) return false;
+    if (h.timeEnd!=null && currentTime > h.timeEnd) return false;
+    return true;
+  };
+
+  useEffect(()=>{
+    const onMove = (e)=>{
+      const d = drag.current; if (!d) return;
+      const p = pctFromEvent(e);
+      if (d.mode==='create'){
+        setDraft({
+          x: Math.min(d.sx, p.x), y: Math.min(d.sy, p.y),
+          w: Math.abs(p.x - d.sx), h: Math.abs(p.y - d.sy),
+        });
+      } else if (d.mode==='move'){
+        const nx = clamp(d.base.x + (p.x - d.sx), 0, 100 - d.base.w);
+        const ny = clamp(d.base.y + (p.y - d.sy), 0, 100 - d.base.h);
+        onUpdateHotspot(d.idx, { x:r1(nx), y:r1(ny) });
+      } else if (d.mode==='resize'){
+        const nw = clamp(d.base.w + (p.x - d.sx), 3, 100 - d.base.x);
+        const nh = clamp(d.base.h + (p.y - d.sy), 3, 100 - d.base.y);
+        onUpdateHotspot(d.idx, { w:r1(nw), h:r1(nh) });
+      }
+    };
+    const onUp = ()=>{
+      const d = drag.current; drag.current = null;
+      if (d && d.mode==='create'){
+        setDraft(prev=>{
+          if (prev && prev.w>3 && prev.h>3) onCreateHotspot({ x:r1(prev.x), y:r1(prev.y), w:r1(prev.w), h:r1(prev.h) });
+          return null;
+        });
+      }
+    };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    return ()=>{ window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
+  }, [onUpdateHotspot, onCreateHotspot]);
+
+  const startCreate = (e)=>{
+    if (e.button!==0) return;
+    const p = pctFromEvent(e);
+    drag.current = { mode:'create', sx:p.x, sy:p.y };
+    setDraft({ x:p.x, y:p.y, w:0, h:0 });
+    onSelect(null);
+  };
+  const startMove = (e, idx, h)=>{
+    e.stopPropagation();
+    const p = pctFromEvent(e);
+    drag.current = { mode:'move', idx, sx:p.x, sy:p.y, base:{ x:h.x, y:h.y, w:h.w, h:h.h } };
+    onSelect(idx);
+  };
+  const startResize = (e, idx, h)=>{
+    e.stopPropagation();
+    const p = pctFromEvent(e);
+    drag.current = { mode:'resize', idx, sx:p.x, sy:p.y, base:{ x:h.x, y:h.y, w:h.w, h:h.h } };
+    onSelect(idx);
+  };
+
+  const verbSet = VERB_SETS[node.verbSet] || VERB_SETS.default;
+  const activeForGuide = (node.hotspots||[]).filter(isActive);
+
+  return (
+    <div style={{
+      position:'relative', width:'100%', aspectRatio:'16 / 9',
+      background:'#000', border:'1px solid var(--border)', overflow:'hidden',
+      boxShadow:'0 8px 40px rgba(0,0,0,0.5)',
+    }}>
+      {/* Video region (top `split` fraction in split mode, full otherwise) */}
+      <div ref={regionRef} onMouseDown={startCreate}
+        style={{
+          position:'absolute', top:0, left:0, right:0,
+          height:`${split*100}%`, overflow:'hidden', cursor:'crosshair',
+          background: node.bgFallback || 'radial-gradient(ellipse 80% 60% at 50% 40%,rgba(20,40,80,0.55) 0%,rgba(6,8,16,1) 72%)',
+        }}>
+        {clipUrl ? (
+          <video ref={videoRef} src={clipUrl} playsInline muted
+            style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',pointerEvents:'none'}} />
+        ) : (
+          <div style={{position:'absolute',inset:0,display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',gap:8,pointerEvents:'none'}}>
+            <div style={{fontFamily:'Space Mono',fontSize:9,letterSpacing:'0.3em',color:'var(--text3)',textTransform:'uppercase'}}>
+              {node.src ? node.src : 'no clip loaded'}
+            </div>
+            <div style={{fontFamily:'Courier Prime',fontSize:12,color:'var(--text3)',fontStyle:'italic',opacity:0.6}}>
+              Load a local clip to scrub frames · drag on the stage to draw a hotspot
+            </div>
+          </div>
+        )}
+
+        {/* Hotspot boxes */}
+        {(node.hotspots||[]).map((h,idx)=>{
+          const active = isActive(h);
+          const sel = idx===selIdx;
+          return (
+            <div key={h.id||idx}
+              onMouseDown={e=>startMove(e, idx, h)}
+              style={{
+                position:'absolute', left:`${h.x}%`, top:`${h.y}%`, width:`${h.w}%`, height:`${h.h}%`,
+                border: sel ? '1.5px solid var(--video)' : active ? '1px solid var(--accent)' : '1px dashed rgba(196,186,160,0.3)',
+                background: sel ? 'rgba(232,120,240,0.12)' : active ? 'rgba(200,168,74,0.07)' : 'rgba(255,255,255,0.02)',
+                cursor:'move', zIndex: sel?20:10, boxSizing:'border-box',
+                transition:'border-color .1s, background .1s',
+              }}>
+              <div style={{
+                position:'absolute', top:-1, left:-1, fontFamily:'Space Mono', fontSize:8,
+                padding:'1px 5px', letterSpacing:'0.1em', whiteSpace:'nowrap',
+                color: sel?'#000':'var(--text2)', background: sel?'var(--video)':'rgba(0,0,0,0.6)',
+              }}>{h.label || `#${idx}`}{!active && ' ·zzz'}</div>
+              {sel && (
+                <div onMouseDown={e=>startResize(e, idx, h)} title="resize"
+                  style={{position:'absolute',right:-5,bottom:-5,width:11,height:11,background:'var(--video)',cursor:'nwse-resize',border:'1px solid #000'}} />
+              )}
+            </div>
+          );
+        })}
+
+        {/* create-draft rectangle */}
+        {draft && (
+          <div style={{position:'absolute',left:`${draft.x}%`,top:`${draft.y}%`,width:`${draft.w}%`,height:`${draft.h}%`,
+            border:'1.5px dashed var(--video)',background:'rgba(232,120,240,0.1)',pointerEvents:'none',zIndex:30}} />
+        )}
+
+        {/* Floating overlay guide (full-bleed): dialogue band ghost at bottom of video */}
+        {showGuide && layout.mode==='fullbleed' && (
+          <OverlayGuide verbs={verbSet} activeHotspots={activeForGuide} floating />
+        )}
+      </div>
+
+      {/* Input band (split mode): the player-input overlay sits below the video */}
+      {layout.mode==='split' && (
+        <div style={{
+          position:'absolute', left:0, right:0, bottom:0, height:`${(1-split)*100}%`,
+          borderTop:'1px solid var(--video-border)',
+          background:'linear-gradient(180deg, rgba(8,6,4,0.96), rgba(8,6,4,1))',
+          padding:'10px 16px', overflow:'hidden',
+        }}>
+          {showGuide && <OverlayGuide verbs={verbSet} activeHotspots={activeForGuide} />}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Visual guide for "player input overlay over the video".
+function OverlayGuide({ verbs, activeHotspots, floating }){
+  return (
+    <div style={{
+      ...(floating ? { position:'absolute', left:0, right:0, bottom:0, padding:'10px 16px',
+        background:'linear-gradient(180deg, transparent, rgba(8,6,4,0.85))' } : {}),
+      pointerEvents:'none',
+    }}>
+      <div style={{display:'flex',gap:6,flexWrap:'wrap',marginBottom:6}}>
+        {verbs.map(v=>(
+          <span key={v} style={{fontFamily:'Space Mono',fontSize:8,letterSpacing:'0.12em',textTransform:'uppercase',
+            color:'var(--text3)',border:'1px solid var(--border2)',padding:'2px 7px'}}>{v}</span>
+        ))}
+      </div>
+      <div style={{fontFamily:'Courier Prime',fontSize:11,color:'var(--text2)',fontStyle:'italic'}}>
+        {activeHotspots.length
+          ? `${activeHotspots.length} hotspot${activeHotspots.length===1?'':'s'} live: ${activeHotspots.map(h=>h.label).join(' · ')}`
+          : 'Player input overlay — dialogue & verb labels render here.'}
+      </div>
+    </div>
+  );
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  TIMELINE  — playhead + per-hotspot time-window lanes
+// ════════════════════════════════════════════════════════════════════════════
+function Timeline({ node, currentTime, duration, selIdx, onSelect, onUpdateHotspot, onSeek }){
+  const trackRef = useRef(null);
+  const drag = useRef(null); // {mode, idx, base}
+  const dur = duration || 10;
+
+  const timeFromEvent = (e)=>{
+    const r = trackRef.current.getBoundingClientRect();
+    return clamp((e.clientX - r.left)/r.width, 0, 1) * dur;
+  };
+
+  useEffect(()=>{
+    const onMove = (e)=>{
+      const d = drag.current; if (!d) return;
+      const t = timeFromEvent(e);
+      if (d.mode==='seek'){ onSeek(t); return; }
+      const h = node.hotspots[d.idx]; if (!h) return;
+      const s = h.timeStart ?? 0, en = h.timeEnd ?? dur;
+      if (d.mode==='start'){ onUpdateHotspot(d.idx, { timeStart: r1(clamp(t, 0, en-0.1)) }); }
+      else if (d.mode==='end'){ onUpdateHotspot(d.idx, { timeEnd: r1(clamp(t, s+0.1, dur)) }); }
+      else if (d.mode==='move'){
+        const span = en - s;
+        let ns = clamp(d.base.s + (t - d.startT), 0, dur - span);
+        onUpdateHotspot(d.idx, { timeStart:r1(ns), timeEnd:r1(ns+span) });
+      }
+    };
+    const onUp = ()=>{ drag.current = null; };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    return ()=>{ window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
+  }, [node, dur, onUpdateHotspot, onSeek]);
+
+  const ticks = [];
+  const step = dur<=6 ? 1 : dur<=20 ? 2 : dur<=60 ? 5 : 10;
+  for (let t=0; t<=dur+0.001; t+=step) ticks.push(t);
+
+  const seekDown = (e)=>{ drag.current={mode:'seek'}; onSeek(timeFromEvent(e)); };
+
+  return (
+    <div style={{userSelect:'none'}}>
+      {/* Ruler */}
+      <div ref={trackRef} onMouseDown={seekDown}
+        style={{position:'relative',height:22,borderBottom:'1px solid var(--border)',cursor:'text',background:'var(--bg2)'}}>
+        {ticks.map(t=>(
+          <div key={t} style={{position:'absolute',left:`${t/dur*100}%`,top:0,bottom:0,borderLeft:'1px solid var(--border2)'}}>
+            <span style={{position:'absolute',left:3,top:3,fontFamily:'Space Mono',fontSize:8,color:'var(--text3)'}}>{fmtTime(t)}</span>
+          </div>
+        ))}
+        <Playhead pct={currentTime/dur*100} tall />
+      </div>
+
+      {/* Lanes */}
+      <div style={{position:'relative',maxHeight:150,overflowY:'auto'}}>
+        {(node.hotspots||[]).length===0 && (
+          <div style={{padding:'14px',fontFamily:'Courier Prime',fontSize:11,color:'var(--text3)',fontStyle:'italic'}}>
+            No hotspots yet — draw one on the stage above.
+          </div>
+        )}
+        {(node.hotspots||[]).map((h,idx)=>{
+          const s = h.timeStart ?? 0, en = h.timeEnd ?? dur;
+          const always = h.timeStart==null && h.timeEnd==null;
+          const sel = idx===selIdx;
+          return (
+            <div key={h.id||idx} onClick={()=>onSelect(idx)}
+              style={{position:'relative',height:26,borderBottom:'1px solid var(--border2)',
+                background: sel?'var(--video-bg)':'transparent',cursor:'pointer'}}>
+              <span style={{position:'absolute',left:6,top:6,fontFamily:'Space Mono',fontSize:8,color:sel?'var(--video)':'var(--text3)',zIndex:2,pointerEvents:'none',whiteSpace:'nowrap'}}>
+                {h.label || `#${idx}`}
+              </span>
+              {/* window bar */}
+              <div
+                onMouseDown={e=>{ e.stopPropagation(); drag.current={mode:'move',idx,base:{s},startT:timeFromEvent(e)}; onSelect(idx); }}
+                style={{
+                  position:'absolute', top:5, height:16,
+                  left:`${s/dur*100}%`, width:`${(en-s)/dur*100}%`,
+                  background: always ? 'repeating-linear-gradient(45deg,var(--video-bg),var(--video-bg) 5px,transparent 5px,transparent 10px)' : 'var(--video-bg)',
+                  border:`1px solid var(--video-border)`, cursor:'grab',
+                }}>
+                {/* edge handles */}
+                <div onMouseDown={e=>{e.stopPropagation();drag.current={mode:'start',idx};onSelect(idx);}}
+                  style={{position:'absolute',left:-3,top:-1,bottom:-1,width:7,cursor:'ew-resize',background:'var(--video)'}} title="drag start" />
+                <div onMouseDown={e=>{e.stopPropagation();drag.current={mode:'end',idx};onSelect(idx);}}
+                  style={{position:'absolute',right:-3,top:-1,bottom:-1,width:7,cursor:'ew-resize',background:'var(--video)'}} title="drag end" />
+              </div>
+              <Playhead pct={currentTime/dur*100} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function Playhead({ pct, tall }){
+  return (
+    <div style={{position:'absolute',left:`${clamp(pct,0,100)}%`,top:0,bottom:0,width:0,borderLeft:'1px solid var(--accent)',
+      boxShadow:'0 0 4px var(--accent)',zIndex:5,pointerEvents:'none'}}>
+      {tall && <div style={{position:'absolute',top:-4,left:-4,width:9,height:9,background:'var(--accent)',transform:'rotate(45deg)'}} />}
+    </div>
+  );
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  PROPERTY PANELS
+// ════════════════════════════════════════════════════════════════════════════
+function field(lbl, children, hint){
+  return (
+    <div style={{marginBottom:12}}>
+      <div style={{fontFamily:'Cinzel,serif',fontSize:8,letterSpacing:'.25em',color:'var(--text3)',textTransform:'uppercase',marginBottom:5}}>{lbl}</div>
+      {children}
+      {hint && <div style={{fontFamily:'Space Mono',fontSize:8,color:'var(--text3)',marginTop:3}}>{hint}</div>}
+    </div>
+  );
+}
+
+function NodeProps({ node, onUpdate, onLoadClip, clipName, duration }){
+  const layout = node.layout || DEFAULT_LAYOUT;
+  const setLayout = (patch)=>onUpdate({ ...node, layout:{ ...layout, ...patch } });
+  return (
+    <div style={{padding:'14px 16px'}}>
+      <div className="section-label" style={{marginBottom:12,color:'var(--video)'}}>▶ Video Scene</div>
+
+      {field('Clip source (in-game path)',
+        <input value={node.src||''} onChange={e=>onUpdate({...node,src:e.target.value})}
+          placeholder="assets/video/vol3_station_loop.mp4" style={{width:'100%'}} />,
+        'The path the engine loads at runtime.')}
+
+      {field('Preview clip (local file)',
+        <div style={{display:'flex',gap:8,alignItems:'center',flexWrap:'wrap'}}>
+          <label className="btn video" style={{cursor:'pointer'}}>
+            Load local clip…
+            <input type="file" accept="video/*" style={{display:'none'}}
+              onChange={e=>{ const f=e.target.files?.[0]; if (f) onLoadClip(f); }} />
+          </label>
+          {clipName && <span style={{fontFamily:'Space Mono',fontSize:9,color:'var(--text2)',maxWidth:150,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{clipName}</span>}
+        </div>,
+        clipName ? `Scrubbing local file (${fmtTime(duration)}). Not saved — only the path above is.` : 'For timing hotspots against real frames. Edited in your NLE.')}
+
+      {field('Loop',
+        <div className="toggle-group">
+          <button className={`toggle-btn${node.loop!==false?' active':''}`} onClick={()=>onUpdate({...node,loop:true})}>Loop</button>
+          <button className={`toggle-btn${node.loop===false?' active':''}`} onClick={()=>onUpdate({...node,loop:false})}>Once</button>
+        </div>)}
+
+      {field('Screen layout',
+        <div className="toggle-group">
+          <button className={`toggle-btn${layout.mode==='fullbleed'?' active':''}`} onClick={()=>setLayout({mode:'fullbleed'})}>Full-bleed</button>
+          <button className={`toggle-btn${layout.mode==='split'?' active':''}`} onClick={()=>setLayout({mode:'split'})}>Split (video top)</button>
+        </div>,
+        'Per-scene. Split puts the player-input overlay in a band below the video.')}
+
+      {layout.mode==='split' && field(`Video height — ${Math.round((layout.split??0.62)*100)}%`,
+        <input type="range" min={30} max={85} value={Math.round((layout.split??0.62)*100)} style={{width:'100%'}}
+          onChange={e=>setLayout({split: parseInt(e.target.value)/100})} />)}
+
+      {field('Verb set (overlay preview)',
+        <select value={node.verbSet||'default'} onChange={e=>onUpdate({...node,verbSet:e.target.value==='default'?undefined:e.target.value})} style={{width:'100%'}}>
+          {Object.keys(VERB_SETS).map(k=><option key={k} value={k}>{k}</option>)}
+        </select>,
+        'Which verb vocabulary the skin shows. Mirrors vn-video.jsx.')}
+
+      {field('Fallback background (no clip)',
+        <textarea rows={2} value={node.bgFallback||''} onChange={e=>onUpdate({...node,bgFallback:e.target.value||undefined})}
+          placeholder="radial-gradient(…)" style={{width:'100%',fontSize:10}} />)}
+    </div>
+  );
+}
+
+function HotspotProps({ node, idx, sceneIds, itemIds, onUpdate, onDelete, currentTime }){
+  const h = node.hotspots[idx];
+  if (!h) return null;
+  const upd = (patch)=>onUpdate(idx, patch);
+  const toggleVerb = (v)=>{
+    const vs = h.verbs||[];
+    upd({ verbs: vs.includes(v) ? vs.filter(x=>x!==v) : [...vs,v] });
+  };
+  const updAction = (verb, act)=>upd({ actions:{ ...(h.actions||{}), [verb]:act } });
+
+  return (
+    <div style={{padding:'14px 16px'}}>
+      <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:12}}>
+        <span className="section-label" style={{color:'var(--video)'}}>◆ Hotspot #{idx}</span>
+        <button className="btn icon danger" onClick={()=>onDelete(idx)} title="delete hotspot">✕</button>
+      </div>
+
+      {field('Label', <input value={h.label||''} onChange={e=>upd({label:e.target.value})} placeholder="Console Panel" style={{width:'100%'}} />)}
+
+      {field('Position & size (% of video)',
+        <div style={{display:'flex',gap:6,flexWrap:'wrap'}}>
+          {[['X','x'],['Y','y'],['W','w'],['H','h']].map(([lbl,k])=>(
+            <div key={k}>
+              <div style={{fontSize:7,color:'var(--text3)',marginBottom:2}}>{lbl}%</div>
+              <input type="number" value={h[k]??0} min={0} max={100} style={{width:54}}
+                onChange={e=>upd({[k]:parseFloat(e.target.value)||0})} />
+            </div>
+          ))}
+        </div>, 'Or drag the box on the stage.')}
+
+      {field('Time window',
+        <div style={{display:'flex',gap:10,flexWrap:'wrap',alignItems:'flex-end'}}>
+          <div>
+            <div style={{fontSize:7,color:'var(--text3)',marginBottom:2}}>Start (s)</div>
+            <input type="number" value={h.timeStart??''} placeholder="0" step={0.1} style={{width:64}}
+              onChange={e=>upd({timeStart:e.target.value===''?null:parseFloat(e.target.value)})} />
+          </div>
+          <div>
+            <div style={{fontSize:7,color:'var(--text3)',marginBottom:2}}>End (s)</div>
+            <input type="number" value={h.timeEnd??''} placeholder="∞" step={0.1} style={{width:64}}
+              onChange={e=>upd({timeEnd:e.target.value===''?null:parseFloat(e.target.value)})} />
+          </div>
+          <button className="btn small" onClick={()=>upd({timeStart:null,timeEnd:null})}>Always</button>
+          <button className="btn small" onClick={()=>upd({timeStart:r1(currentTime)})} title="set start to playhead">⟵ playhead</button>
+        </div>, 'Blank = always active. Or drag the bar on the timeline.')}
+
+      {field('Active verbs',
+        <div style={{display:'flex',flexWrap:'wrap',gap:4}}>
+          {ALL_VERBS.map(v=>(
+            <span key={v} onClick={()=>toggleVerb(v)} style={{
+              fontFamily:'Space Mono',fontSize:8,padding:'2px 7px',cursor:'pointer',
+              border:`1px solid ${(h.verbs||[]).includes(v)?'var(--video-border)':'var(--border2)'}`,
+              background:(h.verbs||[]).includes(v)?'var(--video-bg)':'transparent',
+              color:(h.verbs||[]).includes(v)?'var(--video)':'var(--text3)',transition:'all .1s',
+            }}>{v}</span>
+          ))}
+        </div>)}
+
+      {field('Actions & branching',
+        <div>
+          {(h.verbs||[]).length===0 && <div style={{fontFamily:'Courier Prime',fontSize:11,color:'var(--text3)',fontStyle:'italic'}}>Pick a verb above to wire its action.</div>}
+          {(h.verbs||[]).map(v=>(
+            <ActionEditor key={v} verb={v} action={h.actions?.[v]} sceneIds={sceneIds} itemIds={itemIds}
+              onChange={act=>updAction(v, act)} />
+          ))}
+        </div>)}
+    </div>
+  );
+}
+
+function ActionEditor({ verb, action, sceneIds, itemIds, onChange }){
+  const t = action?.t || 'narrate';
+  const upd = (patch)=>onChange({ ...action, ...patch });
+  return (
+    <div style={{marginBottom:8,paddingLeft:10,borderLeft:'1px solid var(--video-border)'}}>
+      <div style={{display:'flex',gap:6,alignItems:'center',marginBottom:5}}>
+        <span style={{fontFamily:'Space Mono',fontSize:8,color:'var(--video)',minWidth:54}}>{verb}</span>
+        <select value={t} onChange={e=>onChange({ t:e.target.value })} style={{fontSize:9,padding:'2px 4px',height:24}}>
+          {ACTION_TYPES.map(a=><option key={a} value={a}>{a}</option>)}
+        </select>
+      </div>
+      {(t==='narrate'||t==='say') && <>
+        {t==='say' && <input value={action?.char||''} onChange={e=>upd({char:e.target.value})} placeholder="Character" style={{width:'100%',marginBottom:4,fontSize:11}} />}
+        <textarea rows={2} value={action?.text||''} onChange={e=>upd({text:e.target.value})} placeholder="Text…" style={{width:'100%',fontSize:11}} />
+      </>}
+      {t==='add_item' && <div style={{display:'flex',gap:6,flexWrap:'wrap'}}>
+        <input value={action?.item?.id||''} onChange={e=>upd({item:{...action?.item,id:e.target.value}})} placeholder="item_id" style={{width:110,fontSize:11}} />
+        <input value={action?.item?.name||''} onChange={e=>upd({item:{...action?.item,name:e.target.value}})} placeholder="Display name" style={{flex:1,fontSize:11}} />
+        <input value={action?.item?.desc||''} onChange={e=>upd({item:{...action?.item,desc:e.target.value}})} placeholder="Description" style={{width:'100%',fontSize:11,marginTop:4}} />
+      </div>}
+      {t==='jump_scene' && <div style={{display:'flex',gap:6,flexWrap:'wrap'}}>
+        <input list="vid-scene-ids" value={action?.scene||''} onChange={e=>upd({scene:e.target.value})} placeholder="jump to scene_id" style={{flex:1,fontSize:11,minWidth:120}} />
+        <input list="vid-item-ids" value={action?.requires||''} onChange={e=>upd({requires:e.target.value||undefined})} placeholder="requires item" style={{flex:1,fontSize:11,minWidth:100}} />
+        <input value={action?.failText||''} onChange={e=>upd({failText:e.target.value||undefined})} placeholder="fail text (if gated)" style={{width:'100%',fontSize:11,marginTop:4}} />
+      </div>}
+      {t==='set_flag' && <div style={{display:'flex',gap:6,flexWrap:'wrap'}}>
+        <input value={action?.key||''} onChange={e=>upd({key:e.target.value})} placeholder="flag_key" style={{flex:1,fontSize:11}} />
+        <input value={action?.message||''} onChange={e=>upd({message:e.target.value})} placeholder="result message" style={{flex:1,fontSize:11}} />
+      </div>}
+    </div>
+  );
+}
+
+// Branching summary for the current video scene.
+function BranchPanel({ node, onGoScene }){
+  const edges = [];
+  (node.hotspots||[]).forEach(h=>{
+    Object.entries(h.actions||{}).forEach(([verb,a])=>{
+      if (a?.t==='jump_scene' && a.scene) edges.push({ from:h.label||'?', verb, to:a.scene, gated:a.requires });
+      if (a?.t==='set_flag' && a.key) edges.push({ from:h.label||'?', verb, flag:a.key });
+      if (a?.t==='add_item' && a.item?.id) edges.push({ from:h.label||'?', verb, item:a.item.id });
+    });
+  });
+  if (!edges.length) return null;
+  return (
+    <div style={{padding:'12px 16px',borderTop:'1px solid var(--border2)'}}>
+      <div className="section-label" style={{marginBottom:8}}>⬡ Branching & logic</div>
+      {edges.map((e,i)=>(
+        <div key={i} style={{display:'flex',alignItems:'center',gap:6,fontFamily:'Space Mono',fontSize:9,color:'var(--text2)',marginBottom:4}}>
+          <span style={{color:'var(--video)',minWidth:0,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',maxWidth:90}}>{e.from}</span>
+          <span style={{color:'var(--text3)'}}>·{e.verb}·</span>
+          {e.to && <><span style={{color:'#60c8c8'}}>→</span>
+            <span onClick={()=>onGoScene(e.to)} style={{color:'#60c8c8',cursor:'pointer',textDecoration:'underline',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{e.to}</span>
+            {e.gated && <span style={{color:'var(--accent)'}} title={`requires ${e.gated}`}>🔒{e.gated}</span>}</>}
+          {e.flag && <span style={{color:'var(--accent)'}}>⚑ {e.flag}</span>}
+          {e.item && <span style={{color:'#7ab8e8'}}>＋ {e.item}</span>}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  IMPORT / EXPORT
+// ════════════════════════════════════════════════════════════════════════════
+function IOModal({ node, onImport, onClose }){
+  const [json, setJson] = useState(JSON.stringify(node, null, 2));
+  const [copied, setCopied] = useState(false);
+  const doCopy = ()=>navigator.clipboard.writeText(json).then(()=>{ setCopied(true); setTimeout(()=>setCopied(false),1500); });
+  const doImport = ()=>{
+    try {
+      const p = JSON.parse(json);
+      if (p && p.t==='videoscene') { onImport(p); onClose(); }
+      else alert('Expected a videoscene node object ({ "t":"videoscene", … }).');
+    } catch(e){ alert('Invalid JSON: '+e.message); }
+  };
+  return (
+    <div style={{position:'fixed',inset:0,background:'rgba(0,0,0,0.7)',zIndex:100,display:'flex',alignItems:'center',justifyContent:'center'}}>
+      <div style={{width:640,height:520,background:'var(--bg1)',border:'1px solid var(--accent-border)',display:'flex',flexDirection:'column'}}>
+        <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'12px 16px',borderBottom:'1px solid var(--border)'}}>
+          <span className="section-label">Video node — Import / Export</span>
+          <div style={{display:'flex',gap:8}}>
+            <button className="btn" onClick={doCopy}>{copied?'✓ Copied!':'Copy'}</button>
+            <button className="btn accent" onClick={doImport}>Import node</button>
+            <button className="btn" onClick={onClose}>Close</button>
+          </div>
+        </div>
+        <textarea value={json} onChange={e=>setJson(e.target.value)}
+          style={{flex:1,width:'100%',fontFamily:'Space Mono',fontSize:11,padding:16,border:'none',resize:'none',background:'var(--bg0)',color:'var(--text)',lineHeight:1.6}} />
+        <div style={{padding:'8px 16px',borderTop:'1px solid var(--border2)',fontFamily:'Space Mono',fontSize:9,color:'var(--text3)'}}>
+          Round-trips with Scene Editor & vn-scenes.jsx · edits auto-save to the shared editor store
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  APP
+// ════════════════════════════════════════════════════════════════════════════
+function App(){
+  const [data, setData] = useState(()=>initData());
+  const [editedSet, setEditedSet] = useState(()=>loadEditedSet());
+  const [vol, setVol] = useState(1);
+  const [sel, setSel] = useState(null);        // { sceneId, nodeIdx }
+  const [selHotspot, setSelHotspot] = useState(null);
+  const [lightMode, setLightMode] = useState(()=>localStorage.getItem(THEME_KEY)==='light');
+  const [showIO, setShowIO] = useState(false);
+  const [showGuide, setShowGuide] = useState(true);
+
+  // playback
+  const videoRef = useRef(null);
+  const [clipUrl, setClipUrl] = useState(null);
+  const [clipName, setClipName] = useState(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(10);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(()=>{
+    document.body.classList.toggle('light', lightMode);
+    localStorage.setItem(THEME_KEY, lightMode?'light':'dark');
+  }, [lightMode]);
+
+  const allVideoScenes = useMemo(()=>collectVideoScenes(data), [data]);
+  const itemIds = useMemo(()=>collectItemIds(data), [data]);
+  const sceneIds = useMemo(()=>{
+    const ids=[]; Object.values(data).forEach(vd=>Object.keys(vd.scenes||{}).forEach(id=>ids.push(id))); return ids.sort();
+  }, [data]);
+  const volVideoScenes = allVideoScenes.filter(v=>v.vol===vol);
+  const allScenesInVol = useMemo(()=>Object.values(data[vol]?.scenes||{}).sort((a,b)=>(a.id>b.id?1:-1)), [data, vol]);
+
+  // Resolve the selected node live from data.
+  const node = sel ? data[VOLS.find(v=>data[v.vol]?.scenes?.[sel.sceneId])?.vol || vol]?.scenes?.[sel.sceneId]?.nodes?.[sel.nodeIdx] : null;
+  const selScene = sel ? Object.values(data).map(vd=>vd.scenes?.[sel.sceneId]).find(Boolean) : null;
+  const selVol = selScene?.vol;
+
+  // ── data mutation: write a scene back, mark edited, persist ───────────────
+  const writeScene = useCallback((sceneVol, sceneId, mutator)=>{
+    setData(prev=>{
+      const next = { ...prev };
+      const vd = { ...next[sceneVol], scenes:{ ...next[sceneVol].scenes } };
+      const scene = { ...vd.scenes[sceneId] };
+      scene.nodes = mutator(scene.nodes.slice());
+      scene.__edited = true;
+      vd.scenes[sceneId] = scene;
+      next[sceneVol] = vd;
+      const es = new Set(editedSet); es.add(sceneId);
+      setEditedSet(es);
+      persistEditorState(next, es);
+      return next;
+    });
+  }, [editedSet]);
+
+  const updateNode = useCallback((newNode)=>{
+    if (!sel || selVol==null) return;
+    writeScene(selVol, sel.sceneId, nodes=>{ nodes[sel.nodeIdx] = newNode; return nodes; });
+  }, [sel, selVol, writeScene]);
+
+  const updateHotspot = useCallback((idx, patch)=>{
+    if (!node) return;
+    const hotspots = node.hotspots.slice();
+    hotspots[idx] = { ...hotspots[idx], ...patch };
+    updateNode({ ...node, hotspots });
+  }, [node, updateNode]);
+
+  const createHotspot = useCallback((geom)=>{
+    if (!node) return;
+    const h = { id:`hs_${Date.now()}`, label:'New Hotspot', ...geom, timeStart:null, timeEnd:null, verbs:['Look At'], actions:{} };
+    const hotspots = [...(node.hotspots||[]), h];
+    updateNode({ ...node, hotspots });
+    setSelHotspot(hotspots.length-1);
+  }, [node, updateNode]);
+
+  const deleteHotspot = useCallback((idx)=>{
+    if (!node) return;
+    updateNode({ ...node, hotspots:node.hotspots.filter((_,i)=>i!==idx) });
+    setSelHotspot(null);
+  }, [node, updateNode]);
+
+  // Add a fresh videoscene node to a scene.
+  const addVideoNode = (sceneId)=>{
+    const sv = Object.values(data).find(vd=>vd.scenes?.[sceneId])?.scenes?.[sceneId]?.vol || vol;
+    let newIdx;
+    writeScene(sv, sceneId, nodes=>{
+      newIdx = nodes.length;
+      nodes.push({ t:'videoscene', src:'', loop:true, bgFallback:'', layout:{...DEFAULT_LAYOUT}, hotspots:[] });
+      return nodes;
+    });
+    setSel({ sceneId, nodeIdx:newIdx });
+    setSelHotspot(null);
+  };
+
+  // ── clip / playback ───────────────────────────────────────────────────────
+  const loadClip = (file)=>{
+    if (clipUrl) URL.revokeObjectURL(clipUrl);
+    const url = URL.createObjectURL(file);
+    setClipUrl(url); setClipName(file.name); setPlaying(false); setCurrentTime(0);
+  };
+  useEffect(()=>{ return ()=>{ if (clipUrl) URL.revokeObjectURL(clipUrl); }; }, [clipUrl]);
+  // reset clip when switching scenes
+  useEffect(()=>{ setClipUrl(null); setClipName(null); setCurrentTime(0); setPlaying(false); setSelHotspot(null); }, [sel?.sceneId, sel?.nodeIdx]);
+
+  useEffect(()=>{
+    const v = videoRef.current; if (!v || !clipUrl) return;
+    const onTime = ()=>setCurrentTime(v.currentTime);
+    const onMeta = ()=>setDuration(v.duration || 10);
+    v.addEventListener('timeupdate', onTime);
+    v.addEventListener('loadedmetadata', onMeta);
+    return ()=>{ v.removeEventListener('timeupdate', onTime); v.removeEventListener('loadedmetadata', onMeta); };
+  }, [clipUrl]);
+
+  const togglePlay = ()=>{
+    const v = videoRef.current;
+    if (v && clipUrl){ if (playing){ v.pause(); } else { v.play().catch(()=>{}); } setPlaying(p=>!p); }
+    else setPlaying(p=>!p); // no clip: just toggles (timeline still usable via seek)
+  };
+  const seek = (t)=>{
+    setCurrentTime(t);
+    const v = videoRef.current; if (v && clipUrl) v.currentTime = t;
+  };
+
+  const goScene = (sceneId)=>{
+    const found = allVideoScenes.find(v=>v.sceneId===sceneId);
+    if (found){ setVol(found.vol); setSel({ sceneId, nodeIdx:found.nodeIdx }); }
+    else alert(`"${sceneId}" has no video node. Open it in the Scene Editor to add one, or add it here from the scene list.`);
+  };
+
+  const sideBg = 'var(--bg1)';
+
+  return (
+    <div style={{width:'100%',height:'100%',display:'flex',flexDirection:'column',overflow:'hidden',background:'var(--bg0)'}}>
+      {/* datalists for branching autocomplete */}
+      <datalist id="vid-scene-ids">{sceneIds.map(id=><option key={id} value={id} />)}</datalist>
+      <datalist id="vid-item-ids">{itemIds.map(id=><option key={id} value={id} />)}</datalist>
+
+      {/* Top bar */}
+      <div style={{height:46,borderBottom:'1px solid var(--border)',display:'flex',alignItems:'center',gap:12,padding:'0 16px',background:'var(--bg1)',flexShrink:0}}>
+        <a href="Modern Mythology.html" style={{textDecoration:'none'}}><button className="btn">← Game</button></a>
+        <a href="Scene Editor.html" style={{textDecoration:'none'}}><button className="btn">Scenes</button></a>
+        <a href="Asset Manager.html" style={{textDecoration:'none'}}><button className="btn">Assets</button></a>
+        <div style={{width:1,height:20,background:'var(--border)'}}></div>
+        <span style={{fontFamily:'Cinzel,serif',fontSize:10,letterSpacing:'0.2em',color:'var(--video)'}}>▶ Video Editor</span>
+        {sel && <>
+          <span style={{fontFamily:'Space Mono',fontSize:9,color:'var(--text3)'}}>—</span>
+          <span style={{fontFamily:'Space Mono',fontSize:9,color:'var(--text2)',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',maxWidth:240}}>{selScene?.title || sel.sceneId}</span>
+          <span style={{fontFamily:'Space Mono',fontSize:8,color:'var(--text3)'}}>· node {sel.nodeIdx} · {node?.hotspots?.length||0} hotspots</span>
+        </>}
+        <div style={{flex:1}}></div>
+        <button className={`toggle-btn${showGuide?' active':''}`} onClick={()=>setShowGuide(g=>!g)} title="Toggle the overlay guide on the stage">Overlay guide</button>
+        <div style={{width:1,height:20,background:'var(--border)'}}></div>
+        <button className={`btn${lightMode?' accent':''}`} onClick={()=>setLightMode(v=>!v)} title={lightMode?'Dark mode':'Light mode'} style={{minWidth:36,justifyContent:'center',fontSize:13,padding:'4px 10px'}}>{lightMode?'☀':'◑'}</button>
+        <button className="btn accent" disabled={!node} onClick={()=>node&&setShowIO(true)}>Import / Export</button>
+      </div>
+
+      <div style={{flex:1,display:'flex',overflow:'hidden'}}>
+        {/* LEFT — scene list */}
+        <div style={{background:sideBg,borderRight:'1px solid var(--border2)',width:240,flexShrink:0,display:'flex',flexDirection:'column',overflow:'hidden'}}>
+          <div style={{display:'flex',flexWrap:'wrap',borderBottom:'1px solid var(--border2)'}}>
+            {VOLS.map(v=>(
+              <button key={v.vol} onClick={()=>setVol(v.vol)} title={v.title}
+                style={{flex:'1 0 18%',padding:'7px 0',border:'none',borderBottom:vol===v.vol?'2px solid var(--video)':'2px solid transparent',
+                  background:vol===v.vol?'var(--video-bg)':'transparent',color:vol===v.vol?'var(--video)':'var(--text3)',
+                  fontFamily:'Space Mono',fontSize:9,cursor:'pointer'}}>{String(v.vol).padStart(2,'0')}</button>
+            ))}
+          </div>
+          <div style={{padding:'10px 12px',flex:1,overflowY:'auto'}}>
+            <div className="section-label" style={{marginBottom:8}}>Video scenes · {VOLS.find(v=>v.vol===vol)?.title}</div>
+            {volVideoScenes.length===0 && <div style={{fontFamily:'Courier Prime',fontSize:11,color:'var(--text3)',fontStyle:'italic',marginBottom:12}}>None yet. Add one to a scene below.</div>}
+            {volVideoScenes.map(v=>{
+              const active = sel && sel.sceneId===v.sceneId && sel.nodeIdx===v.nodeIdx;
+              return (
+                <div key={v.sceneId+'_'+v.nodeIdx} onClick={()=>{ setSel({sceneId:v.sceneId,nodeIdx:v.nodeIdx}); }}
+                  style={{padding:'8px 10px',marginBottom:5,cursor:'pointer',border:`1px solid ${active?'var(--video-border)':'var(--border2)'}`,
+                    background:active?'var(--video-bg)':'transparent',transition:'all .12s'}}>
+                  <div style={{fontFamily:'Space Mono',fontSize:11,color:active?'var(--video)':'var(--text)',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{v.title||v.sceneId}</div>
+                  <div style={{fontFamily:'Space Mono',fontSize:8,color:'var(--text3)',marginTop:2}}>{v.node.hotspots?.length||0} hotspots · {v.node.src?'clip set':'no clip'}</div>
+                </div>
+              );
+            })}
+
+            <div className="section-label" style={{margin:'16px 0 8px'}}>Add video node to scene</div>
+            <select id="addto" defaultValue="" style={{width:'100%',fontSize:11,marginBottom:6}}>
+              <option value="" disabled>Pick a scene…</option>
+              {allScenesInVol.map(s=><option key={s.id} value={s.id}>{s.title||s.id}</option>)}
+            </select>
+            <button className="btn video" style={{width:'100%',justifyContent:'center'}}
+              onClick={()=>{ const id=document.getElementById('addto').value; if (id) addVideoNode(id); else alert('Pick a scene first.'); }}>
+              + Add video scene node
+            </button>
+          </div>
+        </div>
+
+        {/* CENTER — stage + timeline */}
+        <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:'var(--bg0)'}}>
+          {!node ? (
+            <div style={{flex:1,display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',gap:10,color:'var(--text3)'}}>
+              <div style={{fontFamily:'Cinzel,serif',fontSize:13,letterSpacing:'0.2em',color:'var(--video)'}}>▶ VIDEO EDITOR</div>
+              <div style={{fontFamily:'Courier Prime',fontSize:13,fontStyle:'italic',maxWidth:420,textAlign:'center',lineHeight:1.7}}>
+                Select a video scene on the left, or add a video node to any scene. Then load a clip, drag hotspots onto the frame, and time them on the timeline. Edits round-trip with the Scene Editor.
+              </div>
+            </div>
+          ) : (
+            <>
+              <div style={{flex:1,overflowY:'auto',padding:'18px 22px'}}>
+                <div style={{maxWidth:900,margin:'0 auto'}}>
+                  <Stage node={node} clipUrl={clipUrl} currentTime={currentTime} duration={duration}
+                    selIdx={selHotspot} onSelect={setSelHotspot}
+                    onUpdateHotspot={updateHotspot} onCreateHotspot={createHotspot}
+                    videoRef={videoRef} showGuide={showGuide} />
+
+                  {/* Transport */}
+                  <div style={{display:'flex',alignItems:'center',gap:14,margin:'12px 0 8px'}}>
+                    <button className="btn video" onClick={togglePlay} style={{minWidth:64,justifyContent:'center'}}>{playing?'❚❚ Pause':'▶ Play'}</button>
+                    <span style={{fontFamily:'Space Mono',fontSize:11,color:'var(--text2)'}}>{fmtTime(currentTime)} / {fmtTime(duration)}</span>
+                    <input type="range" min={0} max={duration} step={0.05} value={currentTime} style={{flex:1}}
+                      onChange={e=>seek(parseFloat(e.target.value))} />
+                    {!clipUrl && <span style={{fontFamily:'Space Mono',fontSize:8,color:'var(--text3)'}}>scrubbing without clip (load one to see frames)</span>}
+                  </div>
+
+                  <Timeline node={node} currentTime={currentTime} duration={duration}
+                    selIdx={selHotspot} onSelect={setSelHotspot} onUpdateHotspot={updateHotspot} onSeek={seek} />
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* RIGHT — properties */}
+        <div style={{background:sideBg,borderLeft:'1px solid var(--border2)',width:320,flexShrink:0,display:'flex',flexDirection:'column',overflow:'hidden'}}>
+          {!node ? (
+            <div style={{padding:24,fontFamily:'Courier Prime',fontSize:12,color:'var(--text3)',fontStyle:'italic'}}>No video scene selected.</div>
+          ) : (
+            <div style={{flex:1,overflowY:'auto'}}>
+              <NodeProps node={node} onUpdate={updateNode} onLoadClip={loadClip} clipName={clipName} duration={duration} />
+              <div style={{borderTop:'1px solid var(--border)'}}>
+                {selHotspot!=null && node.hotspots[selHotspot]
+                  ? <HotspotProps node={node} idx={selHotspot} sceneIds={sceneIds} itemIds={itemIds}
+                      onUpdate={updateHotspot} onDelete={deleteHotspot} currentTime={currentTime} />
+                  : <div style={{padding:'14px 16px',fontFamily:'Courier Prime',fontSize:11,color:'var(--text3)',fontStyle:'italic'}}>
+                      Select a hotspot (on the stage or timeline) to edit it — or drag a new box on the frame.
+                    </div>}
+              </div>
+              <BranchPanel node={node} onGoScene={goScene} />
+            </div>
+          )}
+        </div>
+      </div>
+
+      {showIO && node && <IOModal node={node} onClose={()=>setShowIO(false)} onImport={n=>updateNode(n)} />}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

@@ -346,8 +346,17 @@ function InteractiveVideo({ node, skin, state, dispatch, onExit }) {
   const [debugMode, setDebugMode] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
 
-  const verbs = getVerbs(skin);
+  // Verb vocabulary: a node-authored verbSet (from the Video Editor) wins over
+  // the skin default, so a single scene can override its skin's verbs.
+  const verbs = (node.verbSet && VERB_SETS[node.verbSet]) || getVerbs(skin);
   const isScumm = skin.variant === 'scumm';
+
+  // Authored screen layout (Video Editor writes node.layout). 'split' reserves a
+  // band below the video for the player-input overlay; 'fullbleed' (default)
+  // fills the frame. SCUMM keeps its classic verb strip regardless.
+  const layout = node.layout || { mode: 'fullbleed' };
+  const isSplit = layout.mode === 'split' && !isScumm;
+  const splitFrac = Math.max(0.3, Math.min(0.85, layout.split != null ? layout.split : 0.62));
 
   // Start video
   useEffect(() => {
@@ -451,12 +460,11 @@ function InteractiveVideo({ node, skin, state, dispatch, onExit }) {
     }
   };
 
-  const videoAreaHeight = isScumm ? 'calc(100% - 200px)' : '100%';
-
   return (
     <div style={{position:'absolute',inset:0,display:'flex',flexDirection:'column'}}>
-      {/* Video area */}
-      <div style={{position:'relative',flex:1,overflow:'hidden',background:skin.sceneBg}}>
+      {/* Video area — split mode shrinks it to the top fraction; the band below
+          hosts the player-input overlay. Hotspot %s are relative to this area. */}
+      <div style={{position:'relative',...(isSplit?{flex:`0 0 ${splitFrac*100}%`}:{flex:1}),overflow:'hidden',background:skin.sceneBg}}>
         {/* Background / video */}
         {node.src ? (
           <video ref={videoRef} src={node.src} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}} playsInline />
@@ -530,6 +538,17 @@ function InteractiveVideo({ node, skin, state, dispatch, onExit }) {
             onDismiss={() => setDialogResult(null)} />
         )}
       </div>
+
+      {/* Input band (authored 'split' layout) — the player-input overlay region
+          below the video. Dialogue still surfaces over the video's lower edge. */}
+      {isSplit && (
+        <div style={{flex:1,minHeight:0,background:'var(--dlg-bg,rgba(0,0,0,0.85))',borderTop:'1px solid var(--dlg-border)',position:'relative'}}>
+          {resultMsg && (
+            <div style={{position:'absolute',top:10,left:'50%',transform:'translateX(-50%)',fontFamily:'var(--txt-font)',fontSize:13,fontStyle:'italic',color:'var(--txt-color)'}}>{resultMsg}</div>
+          )}
+          <InventoryBar inventory={inventory} skin={skin} />
+        </div>
+      )}
 
       {/* SCUMM verb strip */}
       {isScumm && (
