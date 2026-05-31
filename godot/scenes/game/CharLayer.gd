@@ -119,6 +119,44 @@ func _process(delta: float) -> void:
 		var phase: float  = IDLE_PHASE[pos]
 		var idle_y: float = sin((_t + phase) * TAU / IDLE_PERIOD) * IDLE_AMP
 		node.position = POSITIONS[pos] + Vector2(pdx, idle_y + pdy)
+		# ── Subtle breath: ±1% scale on the tint_holder, longer period
+		# than position sway so the two motions don't beat against each
+		# other. Reads as the figure inhaling.
+		var breath_phase: float = (_t + phase * 0.6) * TAU / (IDLE_PERIOD * 1.7)
+		var breath_s: float = 1.0 + sin(breath_phase) * 0.010
+		var tint_holder: Control = node.get_meta("tint", null)
+		if tint_holder != null:
+			tint_holder.pivot_offset = tint_holder.size * 0.5
+			tint_holder.scale = Vector2(breath_s, breath_s)
+		# ── Random eye-blink overlay — thin dark band at eye-level
+		# fades in/out over ~140 ms every 3-7s. Cheap blink without
+		# needing per-portrait eye-frame data.
+		var next_blink: float = node.get_meta("next_blink", -1.0)
+		if next_blink < 0.0 or _t > next_blink:
+			_fire_blink(node)
+			node.set_meta("next_blink", _t + 3.0 + randf() * 4.0)
+		# ── Border redraw so ASCII frame tracks position + breath
+		var border: Control = node.get_meta("border", null)
+		if border != null:
+			border.queue_redraw()
+
+
+# Single-frame blink: a thin dark band at eye-level fades in/out
+# over ~120 ms. Reads as a blink without any actual frame data on
+# the portrait.
+func _fire_blink(node: Control) -> void:
+	var tint_holder: Control = node.get_meta("tint", null)
+	if tint_holder == null: return
+	var blink := ColorRect.new()
+	blink.color = Color(0.02, 0.02, 0.03, 0.0)
+	blink.anchor_left = 0.10; blink.anchor_right = 0.90
+	blink.anchor_top = 0.30;  blink.anchor_bottom = 0.42
+	blink.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	tint_holder.add_child(blink)
+	var tw := blink.create_tween()
+	tw.tween_property(blink, "color:a", 0.55, 0.06)
+	tw.tween_property(blink, "color:a", 0.0,  0.08)
+	tw.tween_callback(blink.queue_free)
 
 
 # ── Public API ────────────────────────────────────────────────────────────────
@@ -160,6 +198,10 @@ func hide_at(pos: String) -> void:
 func hide_all() -> void:
 	for pos: String in _slots:
 		hide_at(pos)
+	# Scene transitions clear ASCII ghosts — fresh scene gets a
+	# clean substrate. Individual character hides leave their
+	# silhouette behind on purpose; only the bulk clear sweeps.
+	_clear_ghosts()
 
 
 func activate_speaker(char_name: String) -> void:
@@ -264,6 +306,16 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 			wrapper.add_child(_make_placeholder(char_name, expr))
 			wrapper.set_meta("kind", "placeholder")
 
+	# ── ASCII frame around the portrait — drawn last so it sits on
+	# top of the texture / composition. Tracks the breath scale by
+	# being a sibling of tint_holder (also breathes via wrapper position).
+	_make_border(wrapper, char_name)
+
+	# Tag the wrapper with pos + char so the ghost spawner on
+	# dismiss can place + tint the silhouette correctly.
+	wrapper.set_meta("pos", pos)
+	wrapper.set_meta("char", char_name)
+
 	add_child(wrapper)
 	var tw := wrapper.create_tween()
 	tw.tween_property(wrapper, "modulate:a", 1.0, 0.3)
@@ -341,9 +393,144 @@ func _fade_out_free(node: Control) -> void:
 	# resurrect the dimmed-but-visible portrait into the next scene.
 	node.set_meta("fading", true)
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# Spawn an ASCII silhouette ghost at the dismiss position before
+	# the live portrait fades out. The ghost lingers on the scene as
+	# a faded after-image of the character.
+	_spawn_ghost(node)
 	var tw := node.create_tween()
-	tw.tween_property(node, "modulate:a", 0.0, 0.25)
+	tw.tween_property(node, "modulate:a", 0.0, 0.35)
 	tw.tween_callback(node.queue_free)
+
+
+# ── ASCII border ──────────────────────────────────────────────────────
+# Tall thin Control that draws a 1-char-wide frame around the portrait
+# using box-drawing glyphs in the character's accent color. Re-renders
+# each frame via _process triggering queue_redraw, so it tracks the
+# breath scale + parallax sway.
+class _AsciiBorder extends Control:
+	var accent: Color = Color.WHITE
+	var char_name: String = ""
+	var t: float = 0.0
+	func _process(d: float) -> void:
+		t += d
+	func _draw() -> void:
+		var s := size
+		if s.x < 8 or s.y < 8: return
+		var font := ThemeDB.fallback_font
+		var fpx := 14
+		var cell_x := 7
+		var cell_y := 16
+		var cols := int(s.x / cell_x)
+		var rows := int(s.y / cell_y)
+		if cols < 4 or rows < 4: return
+		# Corners + edges
+		var c_bright := Color(accent.r * 1.0, accent.g * 1.0,
+		                     accent.b * 1.0, 0.85)
+		var c_dim := Color(accent.r * 0.55, accent.g * 0.55,
+		                  accent.b * 0.55, 0.65)
+		# Pulse — corners brighten in a wave
+		var pulse: float = (sin(t * 1.4) + 1.0) * 0.5
+		var c_pulse := c_bright.lerp(c_dim, pulse)
+		var corners := [
+			Vector2(0, 0),                       # top-left
+			Vector2((cols - 1) * cell_x, 0),     # top-right
+			Vector2(0, (rows - 1) * cell_y),     # bot-left
+			Vector2((cols - 1) * cell_x,
+			       (rows - 1) * cell_y),          # bot-right
+		]
+		var corner_glyphs := ["╔", "╗", "╚", "╝"]
+		for i in 4:
+			draw_string(font, corners[i] + Vector2(0, cell_y - 2),
+			            corner_glyphs[i],
+			            HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_pulse)
+		# Top + bottom edges
+		for c in range(1, cols - 1):
+			var x = c * cell_x
+			var glyph := "═"
+			if c == cols / 2:
+				glyph = "╦"   # subtle middle tee
+			draw_string(font, Vector2(x, cell_y - 2), glyph,
+			            HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
+			var glyph2 := "═"
+			if c == cols / 2:
+				glyph2 = "╩"
+			draw_string(font, Vector2(x, (rows - 1) * cell_y + cell_y - 2),
+			            glyph2, HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
+		# Left + right edges
+		for r in range(1, rows - 1):
+			var y = r * cell_y
+			draw_string(font, Vector2(0, y + cell_y - 2), "║",
+			            HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
+			draw_string(font, Vector2((cols - 1) * cell_x, y + cell_y - 2),
+			            "║", HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
+		# A row of accent characters at the top — character name shorthand
+		if char_name != "":
+			var lbl := "[ %s ]" % char_name.to_upper()
+			draw_string(font, Vector2(cell_x * 2, cell_y - 2), lbl,
+			            HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_bright)
+
+
+func _make_border(wrapper: Control, char_name: String) -> Control:
+	var b := _AsciiBorder.new()
+	b.accent = accent_for(char_name)
+	b.char_name = char_name
+	b.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	b.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# z above the portrait so the frame sits on top of the texture
+	b.z_index = 5
+	wrapper.add_child(b)
+	wrapper.set_meta("border", b)
+	return b
+
+
+# ── ASCII silhouette ghost on dismiss ──────────────────────────────
+# When a portrait fades out, we spawn a Control containing a Label
+# of ASCII-block characters in the shape of a generic figure, at low
+# alpha, in the character's accent color. The ghost lingers on the
+# scene until cleared by hide_all (scene end / chapter change).
+const _GHOST_ASCII := """    ▄▄▄▄▄
+   ▐█████▌
+   ▐██▀██▌
+    ▐████▌
+   ▐██████▌
+  ▐████████▌
+   ▐██████▌
+    ██████
+    ██▌▐██
+    ██▌▐██
+"""
+
+var _ghosts: Array = []
+
+func _spawn_ghost(node: Control) -> void:
+	var pos: String = node.get_meta("pos", "center")
+	var char_name: String = node.get_meta("char", "")
+	var ghost := Label.new()
+	ghost.text = _GHOST_ASCII
+	ghost.add_theme_font_size_override("font_size", 14)
+	ghost.modulate = Color(0.0, 0.0, 0.0, 0.0)
+	var accent := accent_for(char_name)
+	ghost.add_theme_color_override("font_color",
+		Color(accent.r, accent.g, accent.b, 1.0))
+	ghost.position = POSITIONS.get(pos, Vector2(490, 80)) + Vector2(40, 30)
+	ghost.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(ghost)
+	# fade IN as the live portrait fades OUT — they cross-fade
+	var tw_g: Tween = ghost.create_tween()
+	tw_g.tween_property(ghost, "modulate:a", 0.30, 0.40)
+	# subtle slow drift upward
+	tw_g.parallel().tween_property(ghost, "position:y",
+		ghost.position.y - 8, 1.2)
+	_ghosts.append(ghost)
+
+
+func _clear_ghosts() -> void:
+	for g in _ghosts:
+		if is_instance_valid(g):
+			var tw_c: Tween = g.create_tween()
+			tw_c.tween_property(g, "modulate:a", 0.0, 0.30)
+			tw_c.tween_callback(g.queue_free)
+	_ghosts.clear()
 
 
 # ── Placeholder portrait ──────────────────────────────────────────────────────
