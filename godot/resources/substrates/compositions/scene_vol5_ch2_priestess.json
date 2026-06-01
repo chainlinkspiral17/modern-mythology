@@ -31,13 +31,41 @@
       "alpha": 0.24
     },
     {
-      "kind": "static",
-      "path": "gallery/vol5_bungalow_dusk_clean_blocks",
+      "kind": "image",
+      "path": "assets/backgrounds/vol5_bungalow_dusk.png",
       "x": 0,
       "y": 0,
-      "font_px": 6,
-      "z": 3,
-      "alpha": 1.0
+      "w": 1920,
+      "h": 1080,
+      "alpha": 1.0,
+      "z": 3
+    },
+    {
+      "kind": "image_frames",
+      "frames": [
+        "assets/backgrounds/vol5_bungalow_dusk_ascii.png",
+        "assets/backgrounds/vol5_bungalow_dusk_ascii.png",
+        "assets/backgrounds/vol5_bungalow_dusk_ascii.png",
+        "assets/backgrounds/vol5_bungalow_dusk_ascii_glitch.png"
+      ],
+      "frame_duration": 0.6,
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "alpha": 0.2,
+      "z": 5,
+      "modulate": "#b89ad6",
+      "audio_reactive": {
+        "freq_lo": 40,
+        "freq_hi": 1800,
+        "base_alpha": 0.16,
+        "max_alpha": 0.48,
+        "min_alpha": 0.1,
+        "magnitude": 5.5,
+        "smoothing": 0.22,
+        "update_hz": 30
+      }
     },
     {
       "kind": "image_frames",

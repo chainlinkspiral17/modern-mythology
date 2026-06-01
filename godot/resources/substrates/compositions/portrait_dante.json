@@ -1,44 +1,50 @@
 {
   "id": "portrait_dante",
-  "canvas": [
-    810,
-    858
-  ],
+  "canvas": [810, 858],
   "bg": "#0c0806",
   "windows": [
-    {
-      "kind": "visualizer",
-      "x": 0,
-      "y": 600,
-      "font_px": 14,
-      "bar_count": 60,
-      "bar_height": 28,
-      "bar_gap": 0,
-      "min_freq": 60,
-      "max_freq": 720,
-      "magnitude": 14.0,
-      "smoothing": 0.3,
-      "peak_decay": 0.92,
+    { "kind": "visualizer",
+      "x": 0, "y": 600, "font_px": 14,
+      "bar_count": 60, "bar_height": 28, "bar_gap": 0,
+      "min_freq": 60, "max_freq": 720,
+      "magnitude": 14.0, "smoothing": 0.30, "peak_decay": 0.92,
       "peak_hold": false,
       "wave_smooth_passes": 4,
       "update_hz": 45,
-      "col_dim": "#0c0806",
-      "col_lo": "#3a2614",
-      "col_mid": "#8a5a26",
-      "col_hi": "#d8a060",
-      "col_peak": "#ffd896",
+      "col_dim":      "#0c0806",
+      "col_lo":       "#3a2614",
+      "col_mid":      "#8a5a26",
+      "col_hi":       "#d8a060",
+      "col_peak":     "#ffd896",
       "col_peak_tip": "#ffffff",
-      "alpha": 0.28,
-      "z": 1
-    },
-    {
-      "kind": "static",
-      "path": "gallery/portrait_dante_clean_blocks",
-      "x": 0,
-      "y": 0,
-      "font_px": 6,
-      "z": 5,
-      "alpha": 1.0
+      "alpha": 0.28, "z": 1 },
+
+    { "kind": "image_frames",
+      "frames": [
+        "assets/gallery/portrait_dante_0.png",
+        "assets/gallery/portrait_dante_0.png",
+        "assets/gallery/portrait_dante_2.png",
+        "assets/gallery/portrait_dante_1.png",
+        "assets/gallery/portrait_dante_0.png",
+        "assets/gallery/portrait_dante_5.png",
+        "assets/gallery/portrait_dante_3.png",
+        "assets/gallery/portrait_dante_5.png",
+        "assets/gallery/portrait_dante_5.png",
+        "assets/gallery/portrait_dante_7.png",
+        "assets/gallery/portrait_dante_4.png",
+        "assets/gallery/portrait_dante_8.png",
+        "assets/gallery/portrait_dante_5.png",
+        "assets/gallery/portrait_dante_6.png",
+        "assets/gallery/portrait_dante_9.png"
+      ],
+      "frame_duration": 0.22,
+      "x": 0, "y": 0, "w": 810, "h": 858,
+      "alpha": 1.0, "z": 5,
+      "audio_reactive": {
+        "freq_lo": 80, "freq_hi": 3200,
+        "base_alpha": 0.95, "max_alpha": 1.0, "min_alpha": 0.85,
+        "magnitude": 4.0, "smoothing": 0.12, "update_hz": 30
+      }
     }
   ]
 }

@@ -35,13 +35,25 @@
       "z": 0
     },
     {
-      "kind": "static",
-      "path": "gallery/high_priestess_clean_blocks",
+      "kind": "image",
+      "path": "assets/gallery/high_priestess.png",
       "x": 0,
       "y": 0,
-      "font_px": 6,
+      "w": 1920,
+      "h": 941,
+      "alpha": 1.0,
+      "blend_mode": "add",
       "z": 5,
-      "alpha": 1.0
+      "audio_reactive": {
+        "freq_lo": 60,
+        "freq_hi": 4000,
+        "base_alpha": 0.97,
+        "max_alpha": 1.0,
+        "min_alpha": 0.9,
+        "magnitude": 3.0,
+        "smoothing": 0.1,
+        "update_hz": 30
+      }
     }
   ]
 }

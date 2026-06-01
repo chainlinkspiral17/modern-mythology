@@ -1,44 +1,41 @@
 {
   "id": "portrait_the_demon",
-  "canvas": [
-    810,
-    858
-  ],
+  "canvas": [810, 858],
   "bg": "#020806",
   "windows": [
-    {
-      "kind": "visualizer",
-      "x": 0,
-      "y": 120,
-      "font_px": 14,
-      "bar_count": 60,
-      "bar_height": 44,
-      "bar_gap": 0,
-      "min_freq": 80,
-      "max_freq": 8000,
-      "magnitude": 18.0,
-      "smoothing": 0.12,
-      "peak_decay": 0.88,
+    { "kind": "visualizer",
+      "x": 0, "y": 120, "font_px": 14,
+      "bar_count": 60, "bar_height": 44, "bar_gap": 0,
+      "min_freq": 80, "max_freq": 8000,
+      "magnitude": 18.0, "smoothing": 0.12, "peak_decay": 0.88,
       "peak_hold": true,
       "wave_smooth_passes": 1,
       "update_hz": 45,
-      "col_dim": "#041208",
-      "col_lo": "#0d3a22",
-      "col_mid": "#1f7a48",
-      "col_hi": "#3fd07a",
-      "col_peak": "#7CFFB0",
+      "col_dim":      "#041208",
+      "col_lo":       "#0d3a22",
+      "col_mid":      "#1f7a48",
+      "col_hi":       "#3fd07a",
+      "col_peak":     "#7CFFB0",
       "col_peak_tip": "#d6ffe6",
-      "alpha": 0.3,
-      "z": 1
-    },
-    {
-      "kind": "static",
-      "path": "gallery/portrait_the_demon_clean_blocks",
-      "x": 0,
-      "y": 0,
-      "font_px": 6,
-      "z": 5,
-      "alpha": 0.92
+      "alpha": 0.30, "z": 1 },
+
+    { "kind": "image_frames",
+      "frames": [
+        "assets/gallery/portrait_the_demon_0.png",
+        "assets/gallery/portrait_the_demon_1.png",
+        "assets/gallery/portrait_the_demon_0.png",
+        "assets/gallery/portrait_the_demon_2.png",
+        "assets/gallery/portrait_the_demon_1.png",
+        "assets/gallery/portrait_the_demon_3.png"
+      ],
+      "frame_duration": 0.3,
+      "x": 0, "y": 0, "w": 810, "h": 858,
+      "alpha": 0.92, "z": 5,
+      "audio_reactive": {
+        "freq_lo": 200, "freq_hi": 4000,
+        "base_alpha": 0.80, "max_alpha": 1.0, "min_alpha": 0.70,
+        "magnitude": 6.0, "smoothing": 0.10, "update_hz": 30
+      }
     }
   ]
 }
