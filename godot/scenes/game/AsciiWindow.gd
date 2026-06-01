@@ -78,10 +78,14 @@ func load_piece(short_path: String) -> void:
 	if FileAccess.file_exists(png_path):
 		var tex := _load_texture(png_path)
 		if tex != null:
+			print("[AsciiWindow] PNG fast path: ", png_path)
 			_loaded_path = short_path
 			_clear_viewports()
 			_make_image_window(tex)
 			return
+		print("[AsciiWindow] PNG found but failed to load: ", png_path)
+	else:
+		print("[AsciiWindow] no PNG, fallback BBCode for: ", short_path)
 	var data := _read_piece_json(short_path)
 	if data.is_empty():
 		return

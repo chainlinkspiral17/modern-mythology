@@ -82,11 +82,15 @@ func load_substrate(short_path: String) -> void:
 	if FileAccess.file_exists(png_path):
 		var tex: Texture2D = _load_texture(png_path)
 		if tex != null:
+			print("[AsciiSubstrateRaster] PNG fast path: ", png_path)
 			_current_path = short_path
 			_texture_rect.texture = tex
 			# Hide the SubViewport path's texture binding
 			_label.text = ""
 			return
+		print("[AsciiSubstrateRaster] PNG found but failed to load: ", png_path)
+	else:
+		print("[AsciiSubstrateRaster] no PNG, fallback BBCode for: ", short_path)
 	var full_path: String = SUBSTRATE_ROOT + short_path + ".json"
 	if not FileAccess.file_exists(full_path):
 		push_warning("AsciiSubstrateRaster: not found: " + full_path)
