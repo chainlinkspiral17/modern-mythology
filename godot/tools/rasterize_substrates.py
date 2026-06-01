@@ -22,12 +22,12 @@ from PIL import Image
 SUB_ROOT = Path("godot/resources/substrates")
 GALLERY = SUB_ROOT / "gallery"
 
-# Cell rendering size in pixels. 4x8 keeps total image small while
-# preserving the half-block sub-pixel character (▀ = top half FG +
-# bottom half BG). At 320 cells wide this is a 1280x... image —
-# small enough to load instantly, large enough to display crisply.
-CELL_W = 4
-CELL_H = 8
+# Cell rendering size in pixels. Bigger → sharper visuals + bigger PNG.
+# Half-block character (▀ = top half FG + bottom half BG) means CELL_H
+# wants to be even. 6x12 gives detailed gallery view without bloating
+# the PNGs to insanity.
+CELL_W = 6
+CELL_H = 12
 
 
 def parse_color(s) -> tuple:
