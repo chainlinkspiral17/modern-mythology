@@ -71,28 +71,68 @@ func _ready() -> void:
 func load_piece(short_path: String) -> void:
 	if short_path == "":
 		return
-	# PNG fast path — see AsciiSubstrateRaster.load_substrate for
-	# rationale. If a pre-rasterized PNG exists alongside the JSON,
-	# load it directly into a TextureRect instead of building BBCode.
-	var png_path := "res://resources/substrates/" + short_path + ".png"
-	if FileAccess.file_exists(png_path):
-		var tex := _load_texture(png_path)
-		if tex != null:
-			print("[AsciiWindow] PNG fast path: ", png_path)
-			_loaded_path = short_path
-			_clear_viewports()
-			_make_image_window(tex)
-			return
-		print("[AsciiWindow] PNG found but failed to load: ", png_path)
-	else:
-		print("[AsciiWindow] no PNG, fallback BBCode for: ", short_path)
+	# Direct-draw fast path. No BBCode parser, no PNG cache. Reads the
+	# substrate cells once, sets the cell store, queues a redraw — `_draw`
+	# renders the half-block grid via draw_rect calls.
 	var data := _read_piece_json(short_path)
 	if data.is_empty():
 		return
 	_loaded_path = short_path
 	_clear_viewports()
-	_make_viewport_for_data(data)
-	call_deferred("_finalize_all")
+	_cells = data.get("cells", [])
+	if data.has("bg"):
+		_bg_color = Color(str(data["bg"]))
+	queue_redraw()
+
+
+# Cached cells + bg for direct-draw rendering. Populated by load_piece.
+var _cells: Array = []
+var _bg_color: Color = Color(0.02, 0.025, 0.05, 1.0)
+
+
+func _draw() -> void:
+	if _cells.is_empty():
+		return
+	var rows: int = _cells.size()
+	var cols: int = 0
+	for r in _cells:
+		var rn: int = (r as Array).size()
+		if rn > cols: cols = rn
+	if rows == 0 or cols == 0:
+		return
+	# Fit cells to this Control's current size.
+	var fit_cw: float = max(1.0, size.x / float(cols))
+	var fit_ch: float = max(1.0, size.y / float(rows))
+	if size.x <= 0 or size.y <= 0:
+		# Fall back to a fixed cell pixel size if our size hasn't been set yet
+		fit_cw = 4.0
+		fit_ch = 8.0
+		size = Vector2(cols * fit_cw, rows * fit_ch)
+	var half_h: float = fit_ch * 0.5
+	for y in range(rows):
+		var row: Array = _cells[y]
+		var py: float = y * fit_ch
+		for x in range(row.size()):
+			var cell: Variant = row[x]
+			if typeof(cell) != TYPE_DICTIONARY:
+				continue
+			var c: String = str((cell as Dictionary).get("c", " "))
+			var fg_v: Variant = (cell as Dictionary).get("fg")
+			var bg_v: Variant = (cell as Dictionary).get("bg")
+			var fg: Color = Color(str(fg_v)) if fg_v != null else Color.WHITE
+			var bg: Color = Color(str(bg_v)) if bg_v != null else _bg_color
+			var px: float = x * fit_cw
+			if c == "▀":
+				draw_rect(Rect2(px, py, fit_cw, half_h), fg)
+				draw_rect(Rect2(px, py + half_h, fit_cw, fit_ch - half_h), bg)
+			elif c == "▄":
+				draw_rect(Rect2(px, py, fit_cw, half_h), bg)
+				draw_rect(Rect2(px, py + half_h, fit_cw, fit_ch - half_h), fg)
+			elif c == " ":
+				if bg_v != null:
+					draw_rect(Rect2(px, py, fit_cw, fit_ch), bg)
+			else:
+				draw_rect(Rect2(px, py, fit_cw, fit_ch), fg)
 
 
 func _load_texture(res_path: String) -> Texture2D:
