@@ -877,6 +877,9 @@ func _on_command(text: String) -> void:
             _cmd_listen()
         "clear", "cls":
             console_log.clear()
+        "graustark", "river", "delta":
+            _log("[color=#ff9650]  ≈≈ Graustark · Ember & Ash sits inland · the river runs behind.[/color]")
+            _log("[color=#a0664a]  the wreck didn't reach the river · just the scaffold.[/color]")
         "exit", "quit", "close":
             closed.emit()
         # Hidden — diagnostic

@@ -822,6 +822,9 @@ func _on_command(text: String) -> void:
             _cmd_listen()
         "clear", "cls":
             console_log.clear()
+        "graustark", "river", "delta":
+            _log("[color=#88e8f0]  ≈≈ Graustark · the warehouse roof sees the river through the smog.[/color]")
+            _log("[color=#3a7878]  industrial Acadian-adjacent · the sigil resonates over water.[/color]")
         "exit", "quit", "close":
             closed.emit()
         # Hidden lore

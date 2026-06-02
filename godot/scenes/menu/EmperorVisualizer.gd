@@ -800,6 +800,9 @@ func _on_command(text: String) -> void:
             _cmd_listen()
         "clear", "cls":
             console_log.clear()
+        "graustark", "river", "delta":
+            _log("[color=#c89060]  ≈≈ Graustark · the throne overlooks the river but he never looks.[/color]")
+            _log("[color=#a87040]  the steamboat is on the river. the river is on him.[/color]")
         "exit", "quit", "close":
             closed.emit()
         # Hidden lore — motto components

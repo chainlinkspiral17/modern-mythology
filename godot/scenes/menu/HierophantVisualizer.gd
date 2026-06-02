@@ -854,6 +854,9 @@ func _on_command(text: String) -> void:
             _cmd_listen()
         "clear", "cls":
             console_log.clear()
+        "graustark", "river", "delta":
+            _log("[color=#a8b8d8]  ≈≈ Graustark · St. Jude's sits on the east bank.[/color]")
+            _log("[color=#586878]  the parish baptisms are river water · he uses tap.[/color]")
         "exit", "quit", "close":
             closed.emit()
         # Hidden — system

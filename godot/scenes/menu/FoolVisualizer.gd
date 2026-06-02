@@ -886,6 +886,9 @@ func _on_command(text: String) -> void:
             _cmd_oracle()
         "clear", "cls":
             console_log.clear()
+        "graustark", "river", "delta":
+            _log("[color=#c89868]  ≈≈ Graustark · the cliff is over the river · the leap is into it.[/color]")
+            _log("[color=#a87858]  county road 17 follows the river east · the dog knows the route.[/color]")
         "exit", "quit", "close":
             closed.emit()
         # Memory / state

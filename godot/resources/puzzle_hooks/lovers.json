@@ -1,0 +1,95 @@
+{
+  "asset": "assets/gallery/lovers_back.png",
+  "scene_id": "vol5_ch6_lovers",
+  "character": "—",
+  "secondary_characters": ["unknown", "absent"],
+  "arcana": "VI - THE LOVERS",
+  "subtitle": "The Card Stays Face-Down",
+  "palette": "tarnished_gold_deep_purple",
+  "location_text": "The Graustark river between two banks. The deck refuses to deal this one face-up.",
+
+  "ciphers": [
+    {
+      "id": "lov_face_down",
+      "kind": "absence_centerpiece",
+      "text": "the card's back is shown — ornate pattern, no figures, no resolution",
+      "anchor_norm": [0.50, 0.50],
+      "encoding_hint": "VI is the only major arcana to never resolve face-up. The Priestess's journal annotation flagged it: 'VI THE LOVERS — uncast. The card stays face-down.' The Emperor's mirror succession lands close to a Lovers-coded reveal but stops at INHERITANCE rather than romance. The chapter's core gesture is the refusal itself.",
+      "reveals": "vol5_lovers_card_attempted"
+    },
+    {
+      "id": "lov_pair_lattice",
+      "kind": "implicit_pair_table",
+      "text_lines": [
+        "Frasier & Aria       — the cathedral signal & the data overlay",
+        "Quentin & Antonio    — the friends remark; the bought time",
+        "John & Faith         — the cook and the dog at his side",
+        "Anya & Elicia        — across the tape, across the year",
+        "Nicola & Dante       — succession, not romance",
+        "Maya & Y             — too young; just kneelers"
+      ],
+      "anchor_norm": [0.50, 0.85],
+      "encoding_hint": "the Lovers card refuses but the pairs exist throughout the deck. each pair is an implicit Lovers reading that the chapter declines to render explicit. acknowledging a pair via the PAIRS mechanic adds it to the player's read; none are confirmed.",
+      "reveals": "vol5_pair_lattice_seen"
+    },
+    {
+      "id": "lov_graustark_split",
+      "kind": "geography_keystone",
+      "text": "the Graustark river runs between the two banks where the lovers stand",
+      "anchor_norm": [0.50, 0.70],
+      "encoding_hint": "the deck's central geography. the river separates everyone who matters. nobody crosses on the Lovers card — that crossing is what would let the card flip. it never happens.",
+      "reveals": "vol5_graustark_keystone"
+    },
+    {
+      "id": "lov_uncast_kin",
+      "kind": "uncast_arcana_register",
+      "text_lines": [
+        "VI    THE LOVERS    — refused",
+        "XI    JUSTICE        — refused (Priestess: 'I am not the one to draw it')",
+        "XX    JUDGEMENT      — refused (Priestess: 'the deck refuses')"
+      ],
+      "anchor_norm": [0.50, 0.10],
+      "encoding_hint": "three majors stay face-down across the deck. the pattern is: the cards demanding RESOLUTION are the ones the chapter declines to render. romance, justice, final judgement — all kept open.",
+      "reveals": "vol5_three_refused"
+    }
+  ],
+
+  "hotspots": [
+    {"id":"lov_flip",    "shape":"rect_norm", "rect":[0.30, 0.20, 0.40, 0.60], "interact":"lovers.flip.attempt", "unlocks":"vol5_lovers_card_attempted"},
+    {"id":"lov_pairs",   "shape":"rect_norm", "rect":[0.05, 0.78, 0.40, 0.18], "interact":"lovers.pair.cycle",   "unlocks":"vol5_pair_lattice_seen"},
+    {"id":"lov_wait",    "shape":"rect_norm", "rect":[0.65, 0.04, 0.25, 0.10], "interact":"lovers.wait",        "unlocks":"vol5_lovers_waited"},
+    {"id":"lov_listen",  "shape":"rect_norm", "rect":[0.04, 0.04, 0.22, 0.12], "interact":"lovers.listen",      "unlocks":"vol5_lovers_listened"},
+    {"id":"lov_mirror",  "shape":"rect_norm", "rect":[0.74, 0.42, 0.18, 0.30], "interact":"lovers.mirror",      "unlocks":"vol5_lovers_mirror"},
+    {"id":"lov_graustark","shape":"rect_norm","rect":[0.10, 0.42, 0.18, 0.30], "interact":"lovers.graustark",   "unlocks":"vol5_graustark_keystone"}
+  ],
+
+  "easter_eggs": [
+    "VI is the ONLY major arcana visualizer that doesn't fully resolve. Other cards have a clear keystone reveal; this one's keystone is the refusal itself.",
+    "every hotspot has a 'satisfied' state but the card never flips. the deepest reveal is via the WAIT mechanic — nothing changes, and that IS the answer.",
+    "the implicit pair lattice is the most explicit cross-card index in the deck — naming each character pairing that the chapter declines to consummate.",
+    "JUSTICE (XI) and JUDGEMENT (XX) are also face-down per Priestess journal. The Lovers card includes a small register of those siblings."
+  ],
+
+  "links_forward": [
+    "vol5_lovers_card_attempted",
+    "vol5_pair_lattice_seen",
+    "vol5_graustark_keystone",
+    "vol5_three_refused",
+    "vol5_lovers_waited",
+    "vol5_lovers_listened",
+    "vol5_lovers_mirror"
+  ],
+
+  "cross_references": {
+    "absence_pattern_with": "high_priestess.json (journal annotation: 'VI THE LOVERS — uncast')",
+    "succession_proximity": "emperor.json (mirror succession lands near a Lovers reveal but stops at INHERITANCE)",
+    "implicit_pair_sources": {
+      "frasier_aria":    ["magician.json", "empress.json (Aria channel)"],
+      "quentin_antonio": ["hierophant.json::booth", "chariot.json::status (quentin call complete)"],
+      "john_faith":      ["fool.json::dog companion"],
+      "anya_elicia":     ["high_priestess.json::pri_anya_tapes"],
+      "nicola_dante":    ["empress.json::ems_ram_*", "emperor.json::emp_ram_* (shared throne)"],
+      "maya_y":          ["hierophant.json::hie_acolyte_*"]
+    }
+  }
+}

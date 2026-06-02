@@ -72,6 +72,16 @@
       "always_unlocked": true
     },
     {
+      "id": "lovers_arcana",
+      "title": "VI — THE LOVERS",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "lovers_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch6_*",
+      "always_unlocked": true
+    },
+    {
       "id": "chariot_arcana",
       "title": "VII — THE CHARIOT",
       "set": "Major Arcana",

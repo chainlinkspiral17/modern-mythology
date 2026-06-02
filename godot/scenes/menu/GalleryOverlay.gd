@@ -25,6 +25,7 @@ const MAGICIAN_VISUALIZER_SCRIPT := preload("res://scenes/menu/MagicianVisualize
 const PRIESTESS_VISUALIZER_SCRIPT := preload("res://scenes/menu/PriestessVisualizer.gd")
 const EMPEROR_VISUALIZER_SCRIPT := preload("res://scenes/menu/EmperorVisualizer.gd")
 const HIEROPHANT_VISUALIZER_SCRIPT := preload("res://scenes/menu/HierophantVisualizer.gd")
+const LOVERS_VISUALIZER_SCRIPT := preload("res://scenes/menu/LoversVisualizer.gd")
 const CHARIOT_VISUALIZER_SCRIPT := preload("res://scenes/menu/ChariotVisualizer.gd")
 const TAROT_SYNTH_SCRIPT      := preload("res://scenes/menu/TarotSynthOverlay.gd")
 
@@ -437,6 +438,8 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		_spawn_visualizer(EMPEROR_VISUALIZER_SCRIPT); return
 	if short_path == "hierophant_arcana":
 		_spawn_visualizer(HIEROPHANT_VISUALIZER_SCRIPT); return
+	if short_path == "lovers_arcana":
+		_spawn_visualizer(LOVERS_VISUALIZER_SCRIPT); return
 	if short_path == "chariot_arcana":
 		_spawn_visualizer(CHARIOT_VISUALIZER_SCRIPT); return
 	# Tarot Synth — type:"overlay" entry in the gallery index, opens
