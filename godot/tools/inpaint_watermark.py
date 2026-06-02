@@ -24,13 +24,15 @@ GAL = Path("godot/assets/gallery")
 
 # (cx, cy, radius_px) of the Gemini ✦ in each card.
 MARKS = {
-    "empress":    (1830, 945,  46),
+    "empress":    (2645, 1420, 75),
     "magician":   (2645, 1432, 54),
-    "hierophant": (2640, 1413, 44),
+    "hierophant": (2645, 1420, 75),
     "chariot":    (2630, 1428, 50),
     "strength":   (2620, 1413, 75),
     "hermit":     (2640, 1420, 60),
     "fool":       (2655, 1410, 75),
+    "lovers":     (2645, 1420, 75),
+    "emperor":    (2645, 1420, 75),
     "hanged_man": (2640, 1420, 65),
     "justice":    (2650, 1425, 65),
     "death":      (2650, 1430, 75),
@@ -301,10 +303,11 @@ if __name__ == "__main__":
         print(__doc__)
         sys.exit(1)
     target = sys.argv[1]
-    # Two cards have bespoke routines (Empress flips a nametag, Magician
-    # had its own historical entry point); everything else flows through
-    # process_simple(). MARKS is the source of truth for what's known.
-    BESPOKE = {"empress": process_empress, "magician": process_magician}
+    # Magician keeps its bespoke entry point; the old Empress nametag-flip
+    # routine no longer applies to the new sketch-diagram Empress card, so
+    # it falls through to process_simple() like the rest. MARKS is the
+    # source of truth for what's known.
+    BESPOKE = {"magician": process_magician}
     valid = set(MARKS.keys()) | {"all"}
     if target not in valid:
         print(f"unknown target: {target}  (valid: {sorted(valid)})")
