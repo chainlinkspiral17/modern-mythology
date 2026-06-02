@@ -36,6 +36,8 @@ MARKS = {
     "death":      (2650, 1430, 75),
     "temperance": (2650, 1430, 70),
     "devil":      (2658, 1428, 60),
+    "star":       (2645, 1420, 70),
+    "tower":      (2645, 1425, 70),
 }
 
 # Empress-only: the current "NICOLA" nametag bbox (to be erased)
