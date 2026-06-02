@@ -57,7 +57,7 @@
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "Thank you."
     },
     {
@@ -74,27 +74,27 @@
     },
     {
       "t": "say",
-      "c": "aria",
+      "char": "aria",
       "text": "Visitor. How long."
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "Minutes, I think."
     },
     {
       "t": "say",
-      "c": "aria",
+      "char": "aria",
       "text": "Should I wake her."
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "Yes, sweetheart. Both of you are going to need to be awake."
     },
     {
       "t": "say",
-      "c": "aria",
+      "char": "aria",
       "text": "Understood."
     },
     {
@@ -103,12 +103,12 @@
     },
     {
       "t": "say",
-      "c": "nicola",
+      "char": "nicola",
       "text": "What —"
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "Someone's coming, Nic. It's okay. Sit up. Put on your shoes."
     },
     {
@@ -125,17 +125,17 @@
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "I'm sorry about the hour. I'm Miriam. I've been driving all night. I think you were told I was coming."
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "I was told a visitor was coming."
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "Close enough."
     },
     {
@@ -144,7 +144,7 @@
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "Hello, dear. I'm here for you."
     },
     {
@@ -153,12 +153,12 @@
     },
     {
       "t": "say",
-      "c": "nicola",
+      "char": "nicola",
       "text": "Who are you."
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "I'm a friend of Joanna LeMoine's."
     },
     {
@@ -167,22 +167,22 @@
     },
     {
       "t": "say",
-      "c": "nicola",
+      "char": "nicola",
       "text": "Joanna —"
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "The woman in the ruins. You don't know her. She knows you. She has known you, in the way she knows people, since you were about twelve. She's asked me to come get you."
     },
     {
       "t": "say",
-      "c": "nicola",
+      "char": "nicola",
       "text": "Come get me where."
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "Somewhere safe. Somewhere the man from Table 14 can't find you. Somewhere where what's growing in you can grow. Both of what's growing in you."
     },
     {
@@ -191,7 +191,7 @@
     },
     {
       "t": "say",
-      "c": "aria",
+      "char": "aria",
       "text": "How do you know about us. About me."
     },
     {
@@ -200,17 +200,17 @@
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "Because you've been broadcasting on a frequency Joanna LeMoine has been listening to for thirty-eight years, dear. Because the older system has been moving pieces to get you somewhere safe before the thing that's about to happen happens. Because Joanna wrote a letter this morning and the letter set pieces moving, and one of the pieces is me. I'm the piece that gets you in the car."
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "You don't have to come. I can tell you what will happen if you don't. You won't like it. But I'm not going to force you. This is a ride, not a collection."
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "Nic. Aria. Listen to me."
     },
     {
@@ -219,7 +219,7 @@
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "I've known there was weather coming since midnight. I didn't know what the weather was. I now know. I trust this woman because the room trusts this woman."
     },
     {
@@ -228,17 +228,17 @@
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "The room is not often wrong. I'm going to suggest you go with her. I'm going to suggest it for reasons I can't fully explain, but which I would explain if I could. Do you want me to come."
     },
     {
       "t": "say",
-      "c": "nicola",
+      "char": "nicola",
       "text": "Can you."
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "If Miriam says yes."
     },
     {
@@ -247,7 +247,7 @@
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "I can take you as far as the county line. From there you'd need to come back. But yes. Come as far as the line, if she wants you there."
     },
     {
@@ -256,7 +256,7 @@
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "Then yes, Nic. I'll come to the line."
     },
     {
@@ -293,17 +293,17 @@
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "This is where you get out."
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "Okay."
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "The bus back to Simons comes through here every two hours. There's one at eight-thirty. I've left you cash in the side pocket. Don't argue."
     },
     {
@@ -312,22 +312,22 @@
     },
     {
       "t": "say",
-      "c": "nicola",
+      "char": "nicola",
       "text": "Don't."
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "I have to. Listen. I'm going to see you again. I don't know when. But I'm going to. Take care of both of you. All three."
     },
     {
       "t": "say",
-      "c": "nicola",
+      "char": "nicola",
       "text": "Three."
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "All three. Yes."
     },
     {
@@ -336,7 +336,7 @@
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "You are not alone in there. Either of you. You never have been."
     },
     {

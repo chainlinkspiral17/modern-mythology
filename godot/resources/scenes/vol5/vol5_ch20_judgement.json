@@ -61,27 +61,27 @@
     },
     {
       "t": "say",
-      "c": "erica",
+      "char": "erica",
       "text": "Jordan."
     },
     {
       "t": "say",
-      "c": "jordan",
+      "char": "jordan",
       "text": "Eri. I'm here."
     },
     {
       "t": "say",
-      "c": "erica",
+      "char": "erica",
       "text": "I need to come over."
     },
     {
       "t": "say",
-      "c": "jordan",
+      "char": "jordan",
       "text": "Come over."
     },
     {
       "t": "say",
-      "c": "erica",
+      "char": "erica",
       "text": "I'm coming."
     },
     {
@@ -106,7 +106,7 @@
     },
     {
       "t": "say",
-      "c": "clerk",
+      "char": "clerk",
       "text": "Go, Joanna. Go now."
     },
     {
@@ -131,7 +131,7 @@
     },
     {
       "t": "say",
-      "c": "dante",
+      "char": "dante",
       "text": "I know you, you sonofabitch. I knew you in 1987. You haven't aged."
     },
     {
@@ -148,37 +148,37 @@
     },
     {
       "t": "say",
-      "c": "maya",
+      "char": "maya",
       "text": "Dad?"
     },
     {
       "t": "say",
-      "c": "jimmy",
+      "char": "jimmy",
       "text": "Maya. Listen to me. Listen carefully. Something is happening in Graustark and I need you to stay inside your grandmother's house for the rest of the day. Don't go out. Don't answer the door. I'm going to send someone to get you. It will probably be tomorrow. His name is Philip Roberts."
     },
     {
       "t": "say",
-      "c": "maya",
+      "char": "maya",
       "text": "Dad. I'm sixteen. I'm not in kindergarten."
     },
     {
       "t": "say",
-      "c": "jimmy",
+      "char": "jimmy",
       "text": "I know. I know. Do it anyway. Please."
     },
     {
       "t": "say",
-      "c": "maya",
+      "char": "maya",
       "text": "Okay, Dad. I will."
     },
     {
       "t": "say",
-      "c": "jimmy",
+      "char": "jimmy",
       "text": "I love you."
     },
     {
       "t": "say",
-      "c": "maya",
+      "char": "maya",
       "text": "I know."
     },
     {
@@ -191,7 +191,7 @@
     },
     {
       "t": "say",
-      "c": "natalie",
+      "char": "natalie",
       "text": "Okay. I hear you. Tell me where."
     },
     {
@@ -212,7 +212,7 @@
     },
     {
       "t": "say",
-      "c": "douglas",
+      "char": "douglas",
       "text": "I know. It's okay. I knew, eventually. I forgive you."
     },
     {
@@ -225,7 +225,7 @@
     },
     {
       "t": "say",
-      "c": "philip",
+      "char": "philip",
       "text": "I'll get them. You call Elicia. Tell her whatever we hear, she hears."
     },
     {
@@ -234,7 +234,7 @@
     },
     {
       "t": "say",
-      "c": "jimmy",
+      "char": "jimmy",
       "text": "Mrs. Roberts. My name is Jimmy Daigle. You don't know me. My daughter is in Harmony Creek Estates. Her name is Maya. I need someone to drive up and get her and bring her to your house until I can come. I'll pay for gas, for your time, for whatever you need. Philip Roberts was recommended to me by a mutual friend. May I please speak to him."
     },
     {
@@ -247,7 +247,7 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Something is happening. I don't know what. I am going to keep the camera rolling. I am going to show you what this is, in real time, as I find out."
     },
     {
@@ -256,7 +256,7 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Yes. Whatever you need. I'm in Montreal. I'm coming home."
     },
     {
@@ -265,7 +265,7 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Apparently I'm going home. To a home I have not, until now, considered home. We'll see if it is. We'll see if I get there."
     },
     {
@@ -278,7 +278,7 @@
     },
     {
       "t": "say",
-      "c": "child",
+      "char": "child",
       "text": "Mama. Mom. It's okay. I know where we're going. Stay in the car."
     },
     {
@@ -287,12 +287,12 @@
     },
     {
       "t": "say",
-      "c": "aria",
+      "char": "aria",
       "text": "Miriam. She spoke."
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "Yes, dear. She's been waiting. It's a big day for all of you."
     },
     {

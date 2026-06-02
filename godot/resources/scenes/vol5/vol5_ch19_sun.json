@@ -49,7 +49,7 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "I am broke, I am evicted in twenty-three days, I have been filming myself every night for the past eleven days, I think I may finally be making a thing that is mine, and I have not had a real conversation with anyone in fourteen months. I am here because you wrote me a kind email and I don't have the energy to be clever about it. Please do not be kind to me right now. Kind will make me cry. I want to be, instead, dry."
     },
     {
@@ -58,42 +58,42 @@
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "Okay. Dry. Noted. How's the coffee."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "The coffee is excellent. The chair is terrible. You come here every Tuesday."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "I do."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Why."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "Because the café has dust motes, and the dust motes have a pattern, and I have, for reasons I decline to fully articulate, been tracking the pattern."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "What's the pattern."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "It clusters on Tuesdays."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Of course it does."
     },
     {
@@ -114,17 +114,17 @@
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "The discipline of being temperate turns out to be more interesting when the temperature in the room is changing."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "John, my darling, if you have something to say, say it."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "I'll say it eventually. I'm not ready."
     },
     {
@@ -133,12 +133,12 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Fine. But I want to know, when you're ready, that I am the first person you tell."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "You will be."
     },
     {
@@ -167,27 +167,27 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "I'm fourteen minutes late."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "Twelve. I was generous."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "You are always generous."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "Not always."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Increasingly."
     },
     {
@@ -196,17 +196,17 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "What's wrong."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "Why do you think something's wrong."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Because you're writing about dust motes again, and you only write about dust motes when you're avoiding telling me something."
     },
     {
@@ -215,17 +215,17 @@
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "You said, when you're ready, I should tell you first."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Yes."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "I'm not ready. But I think I'm getting closer."
     },
     {
@@ -234,12 +234,12 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Is it about Graustark."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "I don't think it's about Graustark anymore. I think it's about something that's starting somewhere else. I think Graustark was the pattern we all learned on. I think the pattern is — transferring."
     },
     {
@@ -248,32 +248,32 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Transferring where."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "I don't know yet."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "John."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "Yes."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "When you find out, you tell me. That's the deal."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "That's the deal."
     },
     {
@@ -282,27 +282,27 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "I want a croissant. I've earned a croissant."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "You have earned a croissant."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Get two."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "One, Elicia."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "One. Fine."
     },
     {
@@ -311,47 +311,47 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "What was that."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "You saw it."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Yes."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "I don't know what it was."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "That woman is not from here."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "No."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "That woman is looking for someone."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "Maybe."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "That woman is in your pattern, John."
     },
     {
@@ -360,7 +360,7 @@
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "Yes. I think she is."
     },
     {
@@ -385,22 +385,22 @@
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Tell me."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "Tomorrow."
     },
     {
       "t": "say",
-      "c": "elicia",
+      "char": "elicia",
       "text": "Tomorrow, then."
     },
     {
       "t": "say",
-      "c": "john",
+      "char": "john",
       "text": "Tomorrow."
     },
     {

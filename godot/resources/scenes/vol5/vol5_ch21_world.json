@@ -37,17 +37,17 @@
     },
     {
       "t": "say",
-      "c": "frog",
+      "char": "frog",
       "text": "Poke that hole much harder, pink one. And somethin' uglier than you gonna come lookin'."
     },
     {
       "t": "say",
-      "c": "child",
+      "char": "child",
       "text": "Ain't scared."
     },
     {
       "t": "say",
-      "c": "frog",
+      "char": "frog",
       "text": "Course not. Ignorance is bliss, ain't it? Why d'you think folks build towns on sinkholes to begin with?"
     },
     {
@@ -56,7 +56,7 @@
     },
     {
       "t": "say",
-      "c": "frog",
+      "char": "frog",
       "text": "World's done turnin' its page, seems like. Folks integratin'. Completing their arcs. Wholesome nonsense."
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "t": "say",
-      "c": "dean",
+      "char": "dean",
       "text": "Ms. LeMoine. I received your letter. I have been waiting to receive it for some years. I want to say thank you. I also want to say: not today. I will be back when the child is ready. You have done your part. Please rest."
     },
     {
@@ -90,7 +90,7 @@
     },
     {
       "t": "say",
-      "c": "frog",
+      "char": "frog",
       "text": "See. Completion. Integration. Everyone findin' their slot in the grand design, connectin' the dots like they knew the picture all along. Makes ya wanna puke, don't it."
     },
     {
@@ -127,12 +127,12 @@
     },
     {
       "t": "say",
-      "c": "child",
+      "char": "child",
       "text": "Don't feel finished, Frog."
     },
     {
       "t": "say",
-      "c": "frog",
+      "char": "frog",
       "text": "Never is, pink one. That's the cosmic punchline. It ain't an ending. It's just the universe takin' a deep breath — before the next chapter starts. Cycle starts anew. Lessons learned? Who knows. Maybe. Maybe you just get better at duckin'."
     },
     {
@@ -141,7 +141,7 @@
     },
     {
       "t": "say",
-      "c": "frog",
+      "char": "frog",
       "text": "Ready for the next round?"
     },
     {
@@ -166,12 +166,12 @@
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "What movie, dear?"
     },
     {
       "t": "say",
-      "c": "third",
+      "char": "third",
       "text": "I don't know. I've never seen one. What do you recommend."
     },
     {
@@ -180,12 +180,12 @@
     },
     {
       "t": "say",
-      "c": "miriam",
+      "char": "miriam",
       "text": "Princess Mononoke. Start there."
     },
     {
       "t": "say",
-      "c": "third",
+      "char": "third",
       "text": "Thank you. I have been hoping somebody would answer that question."
     },
     {
@@ -206,7 +206,7 @@
     },
     {
       "t": "say",
-      "c": "frog",
+      "char": "frog",
       "text": "Act One, pink one. Down. Next up: the planned communities. The suburbs. The NexCorp vans. The kid in the garage. Young Sam gettin' her heart broken open by the world. Maya goin' through her archives. Jesse's dad's camera eyes. Backyard Beatdowns. Dial-up screams. The whole greige apparatus. Tch."
     },
     {
@@ -215,7 +215,7 @@
     },
     {
       "t": "say",
-      "c": "frog",
+      "char": "frog",
       "text": "Then: Smolvud. The coast. Kai and the ferret. Lena and her octopus. Finn and his crow. My favorite little triumvirate. Real scrappy, that bunch."
     },
     {
