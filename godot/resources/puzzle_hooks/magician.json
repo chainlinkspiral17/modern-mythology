@@ -69,7 +69,8 @@
       "rect": [0.55, 0.20, 0.08, 0.18],
       "interact": "magician.iron.touched",
       "unlocks": "tarot_synth::magician_pulse_arp_preset",
-      "cursor": "take"
+      "cursor": "take",
+      "gives_item": "magician_iron"
     },
     {
       "id": "mag_model_city",
@@ -112,6 +113,17 @@
       "cursor": "examine",
       "gated_by": "vol5_demoscene_module_visible",
       "notes": "DORMANT: appears only after the player has read the IV - DEMOSCENE_VIBE.EXE label on the Fool card. Frasier's CRT now displays the same particle-sync waveform the Fool's diner classified-ad pointed at — the two cards share the same render engine."
+    },
+    {
+      "id": "mag_paint_can",
+      "shape": "rect_norm",
+      "rect": [0.08, 0.58, 0.08, 0.10],
+      "interact": "magician.paint_can.examined",
+      "unlocks": "vol5_county_road_clue",
+      "cursor": "examine",
+      "requires_item": "fool_bindle",
+      "on_used_unlocks": "vol5_bindle_county_road_match",
+      "notes": "with the bindle armed, the partial 'COUNTY ROAD' label on the paint can completes against a hand-drawn map John has been carrying — the two halves of the route finally meet."
     }
   ],
 

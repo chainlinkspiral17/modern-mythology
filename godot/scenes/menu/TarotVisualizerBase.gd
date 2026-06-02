@@ -60,6 +60,7 @@ var C_TEXT_DIM := Color(0.52, 0.40, 0.22)
 ## AsciiComposition script for loading mosaic-block substrate compositions
 ## as the card centerpiece when _composition_path is set.
 const ASCII_COMPOSITION_SCRIPT = preload("res://scenes/game/AsciiComposition.gd")
+const INVENTORY_BAR_SCRIPT = preload("res://scenes/menu/InventoryBar.gd")
 
 var hooks: Dictionary = {}
 var canvas: Control                # the BIG world
@@ -74,6 +75,7 @@ var hotspot_btns: Array = []
 var tableaux: Array = []           # Array of {dir, label}
 var minimap: Control
 var ambient_player: AudioStreamPlayer
+var inventory_bar: Control
 
 var _pan: Vector2 = Vector2.ZERO   # canvas offset from viewport top-left
 var _pan_target: Vector2 = Vector2.ZERO
@@ -95,10 +97,16 @@ var _cipher_label_text: RichTextLabel = null
 var _cipher_label_hint: Label = null
 var _cipher_label_unlock: Label = null
 
+# Custom cursors — loaded once per visualizer instance.
+const CURSOR_MANIFEST_PATH := "res://assets/cursors/_manifest.json"
+var _cursor_textures: Dictionary = {}     # kind ("examine" ...) → Texture2D
+var _cursor_hotspots: Dictionary = {}     # kind → Vector2 hotspot offset
+
 
 func _ready() -> void:
     set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
     mouse_filter = Control.MOUSE_FILTER_STOP
+    _load_cursors()
     _load_hooks()
     _build_chrome()
     _init_synth()
@@ -109,8 +117,43 @@ func _ready() -> void:
     resized.connect(_center_on_card)
     if not SaveSystem.unlocked_changed.is_connected(_on_unlock_emitted):
         SaveSystem.unlocked_changed.connect(_on_unlock_emitted)
+    tree_exiting.connect(_on_tree_exiting)
     set_process(true)
     set_process_input(true)
+
+
+func _on_tree_exiting() -> void:
+    # Uninstall every custom cursor texture we installed in _load_cursors
+    # so they don't bleed into the rest of the menu UI after we close.
+    # set_custom_mouse_cursor(null, shape) restores the built-in shape.
+    for kind in _cursor_textures.keys():
+        Input.set_custom_mouse_cursor(null, _cursor_for(kind))
+
+
+func _load_cursors() -> void:
+    if not FileAccess.file_exists(CURSOR_MANIFEST_PATH):
+        return
+    var f := FileAccess.open(CURSOR_MANIFEST_PATH, FileAccess.READ)
+    var data: Variant = JSON.parse_string(f.get_as_text())
+    f.close()
+    if typeof(data) != TYPE_DICTIONARY:
+        return
+    for kind in data.keys():
+        var entry: Dictionary = data[kind]
+        var path: String = str(entry.get("path", ""))
+        if not ResourceLoader.exists(path):
+            continue
+        var tex: Texture2D = load(path)
+        if tex == null:
+            continue
+        _cursor_textures[kind] = tex
+        var hs_arr = entry.get("hotspot", [0, 0])
+        var hot := Vector2(float(hs_arr[0]), float(hs_arr[1]))
+        _cursor_hotspots[kind] = hot
+        # Install the custom texture for the built-in shape this kind
+        # uses. Buttons then just set mouse_default_cursor_shape to the
+        # matching shape and the custom PNG shows automatically.
+        Input.set_custom_mouse_cursor(tex, _cursor_for(kind), hot)
 
 
 func _load_hooks() -> void:
@@ -201,6 +244,17 @@ func _build_chrome() -> void:
     minimap.offset_left = -130; minimap.offset_top = -130
     minimap.mouse_filter = Control.MOUSE_FILTER_IGNORE
     add_child(minimap)
+
+    # Inventory bar — bottom-edge strip. Collapsed (offscreen) until
+    # the player picks up their first item. Listens to Inventory
+    # autoload signals to populate slots. Arming/disarming an item
+    # rebuilds hotspots so the cursor reflects the new armed state
+    # (compatible requires_item hotspots flip to CURSOR_USE).
+    inventory_bar = Control.new()
+    inventory_bar.set_script(INVENTORY_BAR_SCRIPT)
+    add_child(inventory_bar)
+    inventory_bar.item_armed.connect(func(_id: String) -> void: _build_hotspots())
+    inventory_bar.item_disarmed.connect(func(_id: String) -> void: _build_hotspots())
 
 
 ## Build the central card surface. Order of preference:
@@ -326,7 +380,15 @@ func _build_hotspots() -> void:
         btn.size = Vector2(rect[2] * card_rect.size.x,
                             rect[3] * card_rect.size.y)
         btn.tooltip_text = str(hs.get("interact", hs.get("id", "")))
-        btn.mouse_default_cursor_shape = _cursor_for(str(hs.get("cursor", "examine")))
+        # Pick the cursor: requires_item hotspots show CURSOR_USE while
+        # the matching item is armed, otherwise fall back to the
+        # hotspot's normal cursor field. gives_item hotspots prefer
+        # CURSOR_TAKE if no explicit cursor field is set.
+        var declared_cursor := str(hs.get("cursor", ""))
+        var req_item := str(hs.get("requires_item", ""))
+        var gives_item := str(hs.get("gives_item", ""))
+        var live_cursor := _live_cursor_for(declared_cursor, gives_item, req_item)
+        btn.mouse_default_cursor_shape = _cursor_for(live_cursor)
         var sb := StyleBoxFlat.new()
         sb.bg_color = Color(1, 0.85, 0.40, 0.0)
         sb.border_color = Color(1, 0.85, 0.40, 0.0)
@@ -340,14 +402,18 @@ func _build_hotspots() -> void:
         var captured := hs
         # Hover pulse — soft alpha tween while the cursor is inside.
         # Replays from scratch on each entry so the player gets a fresh
-        # heartbeat-style throb rather than a flat tint.
+        # heartbeat-style throb rather than a flat tint. Cursor swap is
+        # handled automatically by mouse_default_cursor_shape above —
+        # the custom PNGs were installed once in _load_cursors().
         btn.mouse_entered.connect(func() -> void: _hotspot_pulse_start(btn, bsh))
         btn.mouse_exited.connect(func() -> void: _hotspot_pulse_stop(btn, bsh))
         # Two-step press: reveal cipher (always runs, even if a subclass
-        # overrides _on_hotspot without calling super), then run the
-        # subclass game-logic via the virtual _on_hotspot hook.
+        # overrides _on_hotspot without calling super), then handle
+        # inventory carry/use, then run subclass game-logic.
+        var btn_ref := btn
         var on_press := func() -> void:
-            _reveal_cipher(captured)
+            _reveal_cipher(captured, btn_ref)
+            _handle_inventory_click(captured)
             _on_hotspot(captured)
         btn.pressed.connect(on_press)
         canvas.add_child(btn)
@@ -355,7 +421,9 @@ func _build_hotspots() -> void:
 
 
 ## Map a JSON `cursor` string to a Godot cursor shape. Unknown values
-## fall back to the magnifier (examine) — most hotspots want it.
+## fall back to the magnifier (examine) — most hotspots want it. Used
+## as a fallback when the custom-cursor texture for that kind isn't
+## loaded yet.
 func _cursor_for(kind: String) -> int:
     match kind:
         "take":     return Control.CURSOR_POINTING_HAND
@@ -364,6 +432,41 @@ func _cursor_for(kind: String) -> int:
         "navigate": return Control.CURSOR_ARROW
         "exit":     return Control.CURSOR_FORBIDDEN
         _:          return Control.CURSOR_HELP
+
+
+## Resolve the live cursor name for a hotspot at build time.
+## Priority: requires_item (when armed) > declared > inferred from
+## gives_item > "examine" default.
+func _live_cursor_for(declared: String, gives: String, requires: String) -> String:
+    if requires != "" and inventory_bar != null \
+        and inventory_bar.has_method("armed_item") \
+        and inventory_bar.armed_item() == requires:
+        return "use"
+    if declared != "":
+        return declared
+    if gives != "":
+        return "take"
+    return "examine"
+
+
+## Handle gives_item / requires_item on a clicked hotspot.
+## gives_item: add to Inventory if not already there. requires_item:
+## only fires if the matching item is currently armed in the
+## InventoryBar — in which case we mark a combined unlock and let
+## the Inventory autoload emit `item_used`.
+func _handle_inventory_click(hs: Dictionary) -> void:
+    var gives := str(hs.get("gives_item", ""))
+    if gives != "":
+        var from := str(hooks.get("scene_id", ""))
+        Inventory.add(gives, from)
+    var requires := str(hs.get("requires_item", ""))
+    if requires != "" and inventory_bar != null \
+        and inventory_bar.armed_item() == requires:
+        var combined_key := str(hs.get("on_used_unlocks",
+            "use:" + requires + ":on:" + str(hs.get("id", ""))))
+        SaveSystem.mark_unlocked(combined_key)
+        Inventory.mark_used(requires, str(hs.get("id", "")),
+            bool(hs.get("consume_on_use", false)))
 
 
 # ── Hotspot hover pulse ───────────────────────────────────────────
@@ -602,36 +705,32 @@ func _on_hotspot(hs: Dictionary) -> void:
 # panel, and mark its reveal flag. Always-fire — bypasses the
 # subclass _on_hotspot override.
 
-func _reveal_cipher(hs: Dictionary) -> void:
+func _reveal_cipher(hs: Dictionary, anchor_btn: Control = null) -> void:
     var matched := _match_cipher_for(hs)
+    _ensure_cipher_panel()
+    _cipher_label_head.text = "▷ " + str(hs.get("interact", hs.get("id", "")))
     if matched.is_empty():
-        # Hotspot has no cipher (rare — e.g. pure game-action ones).
-        # Surface a thin placeholder so the click still feels alive.
-        _ensure_cipher_panel()
-        _cipher_label_head.text = "▷ " + str(hs.get("interact", hs.get("id", "")))
         _cipher_label_text.text = ""
         _cipher_label_hint.text = ""
         _cipher_label_unlock.text = ""
-        _show_cipher_panel()
-        return
-    _ensure_cipher_panel()
-    _cipher_label_head.text = "▷ " + str(hs.get("interact", hs.get("id", "")))
-    var body := str(matched.get("text", ""))
-    if matched.has("text_lines"):
-        var lines := PackedStringArray()
-        for line_v in matched["text_lines"]:
-            lines.append(str(line_v))
-        if body != "":
-            body += "\n"
-        body += "\n".join(lines)
-    _cipher_label_text.text = body
-    _cipher_label_hint.text = str(matched.get("encoding_hint", ""))
-    var reveals_key := str(matched.get("reveals", ""))
-    if reveals_key != "":
-        SaveSystem.mark_unlocked(reveals_key)
-        _cipher_label_unlock.text = "→ " + reveals_key
     else:
-        _cipher_label_unlock.text = ""
+        var body := str(matched.get("text", ""))
+        if matched.has("text_lines"):
+            var lines := PackedStringArray()
+            for line_v in matched["text_lines"]:
+                lines.append(str(line_v))
+            if body != "":
+                body += "\n"
+            body += "\n".join(lines)
+        _cipher_label_text.text = body
+        _cipher_label_hint.text = str(matched.get("encoding_hint", ""))
+        var reveals_key := str(matched.get("reveals", ""))
+        if reveals_key != "":
+            SaveSystem.mark_unlocked(reveals_key)
+            _cipher_label_unlock.text = "→ " + reveals_key
+        else:
+            _cipher_label_unlock.text = ""
+    _anchor_cipher_panel_near(anchor_btn)
     _show_cipher_panel()
 
 
@@ -675,13 +774,13 @@ func _match_cipher_for(hs: Dictionary) -> Dictionary:
 func _ensure_cipher_panel() -> void:
     if _cipher_panel != null and is_instance_valid(_cipher_panel):
         return
+    # No anchor preset — we position it manually near the clicked
+    # hotspot, with edge avoidance in _anchor_cipher_panel_near().
     _cipher_panel = PanelContainer.new()
-    _cipher_panel.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-    _cipher_panel.offset_right = -18
-    _cipher_panel.offset_top = 56
-    _cipher_panel.offset_left = -380
-    _cipher_panel.custom_minimum_size = Vector2(360, 0)
+    _cipher_panel.custom_minimum_size = Vector2(340, 0)
+    _cipher_panel.size = Vector2(340, 0)
     _cipher_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+    _cipher_panel.z_index = 10
     var sb := StyleBoxFlat.new()
     sb.bg_color = Color(0.03, 0.02, 0.04, 0.92)
     sb.border_color = C_GOLD_HI
@@ -727,6 +826,46 @@ func _show_cipher_panel() -> void:
     _cipher_panel.modulate.a = 0.0
     var tw := create_tween()
     tw.tween_property(_cipher_panel, "modulate:a", 1.0, 0.25)
+
+
+# Place the cipher panel near the clicked hotspot, on whichever side
+# has more room. The panel is parented to `self` (the visualizer), so
+# we work in self-local coords. The hotspot button is parented to
+# `canvas` which scrolls — translate via global_position so the panel
+# follows the actual on-screen position rather than the world coord.
+func _anchor_cipher_panel_near(anchor_btn: Control) -> void:
+    if anchor_btn == null or not is_instance_valid(anchor_btn):
+        # No anchor info — fall back to a fixed top-right placement.
+        _cipher_panel.position = Vector2(size.x - 360.0 - 18.0, 56.0)
+        return
+    # Force a layout pass so size reflects current content.
+    _cipher_panel.reset_size()
+    var panel_sz: Vector2 = _cipher_panel.size
+    if panel_sz.x < 320.0: panel_sz.x = 340.0
+    if panel_sz.y < 80.0: panel_sz.y = 120.0
+
+    # Translate hotspot button rect to self-local coords.
+    var btn_tl: Vector2 = anchor_btn.global_position - global_position
+    var btn_sz: Vector2 = anchor_btn.size
+    var btn_br: Vector2 = btn_tl + btn_sz
+    var margin := 14.0
+    var view: Vector2 = size
+
+    # Prefer right side, fall back to left if there's no room.
+    var px: float
+    if view.x - btn_br.x - margin >= panel_sz.x:
+        px = btn_br.x + margin
+    elif btn_tl.x - margin >= panel_sz.x:
+        px = btn_tl.x - margin - panel_sz.x
+    else:
+        # Center horizontally as a last resort.
+        px = clamp((view.x - panel_sz.x) * 0.5, margin, view.x - panel_sz.x - margin)
+
+    # Vertical: align panel top with hotspot center, but clamp to viewport.
+    var hot_cy: float = btn_tl.y + btn_sz.y * 0.5
+    var py: float = hot_cy - panel_sz.y * 0.3
+    py = clamp(py, 56.0, view.y - panel_sz.y - margin)
+    _cipher_panel.position = Vector2(px, py)
 
 
 # Live-refresh hotspots when a cross-card unlock fires. This is what

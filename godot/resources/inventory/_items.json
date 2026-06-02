@@ -1,0 +1,17 @@
+{
+  "_doc": "Inventory catalog. Each entry: { name, icon, blurb, from_card }. Icon path is res://; render at 32x32 in the bar.",
+
+  "fool_bindle": {
+    "name": "John's bindle",
+    "icon": "res://assets/inventory/bindle.png",
+    "from_card": "fool",
+    "blurb": "A knotted handkerchief on a stick. Light enough for a Fool starting a journey; heavy with anachronism."
+  },
+
+  "magician_iron": {
+    "name": "Frasier's soldering iron",
+    "icon": "res://assets/inventory/soldering_iron.png",
+    "from_card": "magician",
+    "blurb": "Cathedral-grade, still warm. The tip has traced the same infinity glyph too many times to draw anything else."
+  }
+}
