@@ -38,6 +38,10 @@ MARKS = {
     "devil":      (2658, 1428, 60),
     "star":       (2645, 1420, 70),
     "tower":      (2645, 1425, 70),
+    "sun":        (2645, 1420, 70),
+    "judgement":  (2645, 1420, 65),
+    "world":      (2650, 1425, 80),
+    "moon":       (2645, 1420, 65),
 }
 
 # Empress-only: the current "NICOLA" nametag bbox (to be erased)
