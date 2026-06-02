@@ -25,7 +25,7 @@ GAL = Path("godot/assets/gallery")
 # (cx, cy, radius_px) of the Gemini ✦ in each card.
 MARKS = {
     "empress":    (1830, 945,  46),
-    "magician":   (1835, 1223, 24),
+    "magician":   (2645, 1432, 54),
     "hierophant": (2640, 1413, 44),
     "chariot":    (2630, 1428, 50),
 }
