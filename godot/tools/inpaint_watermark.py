@@ -29,6 +29,8 @@ MARKS = {
     "hierophant": (2640, 1413, 44),
     "chariot":    (2630, 1428, 50),
     "strength":   (2620, 1413, 75),
+    "hermit":     (2640, 1420, 60),
+    "fool":       (2655, 1410, 75),
 }
 
 # Empress-only: the current "NICOLA" nametag bbox (to be erased)
@@ -288,15 +290,17 @@ if __name__ == "__main__":
         print(__doc__)
         sys.exit(1)
     target = sys.argv[1]
-    if target in ("empress", "all"):
-        process_empress()
-    if target in ("magician", "all"):
-        process_magician()
-    if target in ("hierophant", "all"):
-        process_simple("hierophant")
-    if target in ("chariot", "all"):
-        process_simple("chariot")
-    valid = {"empress", "magician", "hierophant", "chariot", "all"}
+    # Two cards have bespoke routines (Empress flips a nametag, Magician
+    # had its own historical entry point); everything else flows through
+    # process_simple(). MARKS is the source of truth for what's known.
+    BESPOKE = {"empress": process_empress, "magician": process_magician}
+    valid = set(MARKS.keys()) | {"all"}
     if target not in valid:
         print(f"unknown target: {target}  (valid: {sorted(valid)})")
         sys.exit(1)
+    targets = list(MARKS.keys()) if target == "all" else [target]
+    for name in targets:
+        if name in BESPOKE:
+            BESPOKE[name]()
+        else:
+            process_simple(name)
