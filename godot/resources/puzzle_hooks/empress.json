@@ -52,6 +52,15 @@
       "text": "lobster carved into the throne base — moon-card foreshadowing",
       "anchor_norm": [0.40, 0.80],
       "reveals": "vol5_moon_sigil_collected"
+    },
+    {
+      "id": "ems_aria_handshake_marker",
+      "kind": "dormant_cross_card",
+      "text": "the same waveform Frasier's CRT was scrolling — bleeding through the upper-right corner of Nicola's HUD overlay",
+      "anchor_norm": [0.82, 0.41],
+      "encoding_hint": "DORMANT until you've found the diagnostic grid on the Magician card. Empress(III) is the body's intelligence; Magician(I) is the engineer's. They're reading the same vital sign from opposite ends of the city. The handshake fires every time Aria stabilizes Nicola, whether Frasier knows it or not.",
+      "reveals": "vol5_aria_handshake_pair_seen",
+      "cross_references": ["magician.json::mag_crt_readout"]
     }
   ],
 
@@ -61,35 +70,40 @@
       "shape": "rect_norm",
       "rect": [0.45, 0.45, 0.10, 0.20],
       "interact": "empress.book.examined",
-      "unlocks": "lore:nicolas_journal"
+      "unlocks": "lore:nicolas_journal",
+      "cursor": "closer"
     },
     {
       "id": "ems_klonopin",
       "shape": "rect_norm",
       "rect": [0.27, 0.40, 0.04, 0.08],
       "interact": "empress.klonopin.examined",
-      "unlocks": "lore:nicolas_prescription"
+      "unlocks": "lore:nicolas_prescription",
+      "cursor": "examine"
     },
     {
       "id": "ems_champagne",
       "shape": "rect_norm",
       "rect": [0.32, 0.32, 0.04, 0.15],
       "interact": "empress.champagne.examined",
-      "unlocks": "lore:cheap_house_pour"
+      "unlocks": "lore:cheap_house_pour",
+      "cursor": "examine"
     },
     {
       "id": "ems_ram_left",
       "shape": "rect_norm",
       "rect": [0.36, 0.15, 0.08, 0.12],
       "interact": "empress.ram.left.touched",
-      "unlocks": "lore:aries_inheritance"
+      "unlocks": "lore:aries_inheritance",
+      "cursor": "examine"
     },
     {
       "id": "ems_ram_right",
       "shape": "rect_norm",
       "rect": [0.56, 0.15, 0.08, 0.12],
       "interact": "empress.ram.right.touched",
-      "unlocks": "lore:aries_inheritance"
+      "unlocks": "lore:aries_inheritance",
+      "cursor": "examine"
     },
     {
       "id": "ems_split_toggle",
@@ -97,7 +111,18 @@
       "rect": [0.49, 0.05, 0.02, 0.90],
       "interact": "empress.split.toggle",
       "unlocks": "vol5_dual_pov_node",
+      "cursor": "navigate",
       "notes": "vertical centerline strip — clicking flips which POV dominates the gallery view; reveals the dual_pov_node which is shared with the Emperor's mirror floor cipher"
+    },
+    {
+      "id": "ems_aria_handshake_marker",
+      "shape": "rect_norm",
+      "rect": [0.76, 0.36, 0.12, 0.10],
+      "interact": "empress.aria_handshake.spotted",
+      "unlocks": "vol5_aria_handshake_pair_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_diagnostic_grid",
+      "notes": "DORMANT: appears only after the player has examined the CRT readout on the Magician card. The same biometric overlay structure is now visible bleeding through Nicola's HUD — Aria (Empress side) and Frasier's diagnostic stream are reading the SAME signal from two different rooms. Empress(III) = nature; Magician(I) = artifice; same vital sign."
     }
   ],
 

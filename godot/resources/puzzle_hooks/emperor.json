@@ -33,6 +33,24 @@
       "anchor_norm": [0.50, 0.92],
       "encoding_hint": "the two reflected faces below the throne are upside-down doppelgangers — they speak when read flipped",
       "reveals": "vol5_dual_pov_node"
+    },
+    {
+      "id": "emp_steamboat_throne",
+      "kind": "dormant_cross_card",
+      "text": "the red steamboat motif — same hull, same angle — carved into the front lintel of Dante's throne",
+      "anchor_norm": [0.50, 0.66],
+      "encoding_hint": "DORMANT until you've found the steamboat in Frasier's model city on the Magician card. The classical Magician(I) → Emperor(IV) movement is conscious will → manifested empire — Frasier's predictive model has stopped being prediction and become Dante's seat of power. Same boat, two timelines.",
+      "reveals": "vol5_emperor_steamboat_recognized",
+      "cross_references": ["magician.json::mag_steamboat_in_model"]
+    },
+    {
+      "id": "emp_demoscene_engine_marker",
+      "kind": "dormant_cross_card",
+      "text": "tiny upper-left watermark: 'rendered by DEMOSCENE_VIBE.EXE'",
+      "anchor_norm": [0.13, 0.13],
+      "encoding_hint": "DORMANT until you've read the IV - DEMOSCENE_VIBE.EXE label on the Fool card. The label was numbered IV from the start. The Fool's footnote naming an unbuilt engine has been Dante's render watermark all along — the empire shows up in the credits.",
+      "reveals": "vol5_emperor_demoscene_marker_seen",
+      "cross_references": ["fool.json::fool_demoscene_vibe"]
     }
   ],
 
@@ -42,28 +60,76 @@
       "shape": "rect_norm",
       "rect": [0.40, 0.40, 0.07, 0.20],
       "interact": "emperor.ankh.touched",
-      "unlocks": "music:vol5_emperor_theme"
+      "unlocks": "music:vol5_emperor_theme",
+      "cursor": "take"
     },
     {
       "id": "emp_ram_left",
       "shape": "rect_norm",
       "rect": [0.39, 0.22, 0.07, 0.10],
       "interact": "emperor.ram.left.touched",
-      "unlocks": "lore:aries_left_horn"
+      "unlocks": "lore:aries_left_horn",
+      "cursor": "examine"
     },
     {
       "id": "emp_ram_right",
       "shape": "rect_norm",
       "rect": [0.54, 0.22, 0.07, 0.10],
       "interact": "emperor.ram.right.touched",
-      "unlocks": "lore:aries_right_horn"
+      "unlocks": "lore:aries_right_horn",
+      "cursor": "examine"
     },
     {
       "id": "emp_glass",
       "shape": "rect_norm",
       "rect": [0.30, 0.55, 0.06, 0.10],
       "interact": "emperor.glass.examined",
-      "unlocks": "lore:bourbon_1971"
+      "unlocks": "lore:bourbon_1971",
+      "cursor": "examine"
+    },
+    {
+      "id": "emp_ascii_wall_left_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.10, 0.30, 0.18, 0.50],
+      "interact": "emperor.ascii_wall_left.read",
+      "unlocks": "vol5_keystone_emperor_part_2",
+      "cursor": "closer"
+    },
+    {
+      "id": "emp_ascii_wall_right_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.72, 0.30, 0.18, 0.50],
+      "interact": "emperor.ascii_wall_right.read",
+      "unlocks": "vol5_keystone_emperor_part_3",
+      "cursor": "closer"
+    },
+    {
+      "id": "emp_floor_mirror_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.86, 0.20, 0.10],
+      "interact": "emperor.floor_mirror.examined",
+      "unlocks": "vol5_dual_pov_node",
+      "cursor": "closer"
+    },
+    {
+      "id": "emp_steamboat_throne",
+      "shape": "rect_norm",
+      "rect": [0.46, 0.62, 0.08, 0.08],
+      "interact": "emperor.steamboat.recognized",
+      "unlocks": "vol5_emperor_steamboat_recognized",
+      "cursor": "examine",
+      "gated_by": "vol5_magician_emperor_link",
+      "notes": "DORMANT: appears only after the player has clicked the steamboat in Frasier's model city on the Magician card. The same red boat motif is now visible carved into the front of Dante's throne — Magician's prediction has become the Emperor's seat. Classical Magician(I) → Emperor(IV): will → realized structure."
+    },
+    {
+      "id": "emp_demoscene_engine_marker",
+      "shape": "rect_norm",
+      "rect": [0.06, 0.10, 0.14, 0.06],
+      "interact": "emperor.demoscene_marker.read",
+      "unlocks": "vol5_emperor_demoscene_marker_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_demoscene_module_visible",
+      "notes": "DORMANT: appears only after reading the IV - DEMOSCENE_VIBE.EXE label on Fool. The same engine name is now visible inscribed in the upper-left of the throne room as a render-engine watermark — the Fool's footnote was always the Emperor's renderer."
     }
   ],
 

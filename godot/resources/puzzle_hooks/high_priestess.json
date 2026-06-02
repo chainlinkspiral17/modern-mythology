@@ -72,6 +72,24 @@
       "anchor_norm": [0.20, 0.20],
       "encoding_hint": "establishes location continuity with vol5_ch3_empress (also Graustark) and vol5_ch5_hierophant (Acadian)",
       "reveals": "lore:graustark_locked_in"
+    },
+    {
+      "id": "pri_fool_archive",
+      "kind": "dormant_cross_card",
+      "text": "a single Polaroid pinned to the archive wall — the same recursive Fool card John has been wiping the counter beneath, in miniature, taped over a date in the previous year",
+      "anchor_norm": [0.39, 0.44],
+      "encoding_hint": "DORMANT until you've examined the card-within-the-card on Fool. Elicia (Priestess II) is the canonical OBSERVER of the Fool's journey — she has already archived the recursive image John doesn't yet know he's inside. The Polaroid is pinned over a date that hasn't happened yet from John's POV; this is the OBSERVER's tense.",
+      "reveals": "vol5_priestess_fool_archive_seen",
+      "cross_references": ["fool.json::fool_card_within_card"]
+    },
+    {
+      "id": "pri_infinity_glyph",
+      "kind": "dormant_cross_card",
+      "text": "the infinity sigil — same orientation as Frasier's tracing — embossed on the spine of OCCULT SYMBOLOGY of the ASCENDANT",
+      "anchor_norm": [0.79, 0.50],
+      "encoding_hint": "DORMANT until you've clicked the soldering iron on the Magician card. Magician (I) is the conscious will that DRAWS the sigil; Priestess (II) is the unconscious archive that READS it. The traditional Magician/Priestess opposition is rendered here as an active/receptive split on the SAME glyph — Frasier inscribes, Elicia preserves.",
+      "reveals": "vol5_priestess_infinity_glyph_seen",
+      "cross_references": ["magician.json::mag_infinity_sigil"]
     }
   ],
 
@@ -82,6 +100,7 @@
       "rect": [0.78, 0.15, 0.10, 0.10],
       "interact": "priestess.anya_tapes.examined",
       "unlocks": "vol5_anya_introduced",
+      "cursor": "examine",
       "notes": "clicking the tapes opens an inventory/list of tape labels — primary reveal vector for Anya as a character"
     },
     {
@@ -90,6 +109,7 @@
       "rect": [0.88, 0.78, 0.08, 0.10],
       "interact": "priestess.compass.touched",
       "unlocks": "vol5_meta_compass_unlocked",
+      "cursor": "examine",
       "notes": "meta unlock — could reveal the narrative structure overlay (where each arcana sits in the story graph) or a dev-commentary track"
     },
     {
@@ -97,35 +117,60 @@
       "shape": "rect_norm",
       "rect": [0.42, 0.80, 0.10, 0.10],
       "interact": "priestess.journal.examined",
-      "unlocks": "lore:elicia_tarot_journal"
+      "unlocks": "lore:elicia_tarot_journal",
+      "cursor": "closer"
     },
     {
       "id": "pri_camera_hotspot",
       "shape": "rect_norm",
       "rect": [0.70, 0.28, 0.10, 0.10],
       "interact": "priestess.camera.touched",
-      "unlocks": "vol5_priestess_camera"
+      "unlocks": "vol5_priestess_camera",
+      "cursor": "take"
     },
     {
       "id": "pri_lantern_hotspot",
       "shape": "rect_norm",
       "rect": [0.62, 0.20, 0.06, 0.12],
       "interact": "priestess.lantern.touched",
-      "unlocks": "vol5_priestess_lantern"
+      "unlocks": "vol5_priestess_lantern",
+      "cursor": "examine"
     },
     {
       "id": "pri_wine_hotspot",
       "shape": "rect_norm",
       "rect": [0.55, 0.62, 0.04, 0.16],
       "interact": "priestess.wine.examined",
-      "unlocks": "lore:gas_station_red"
+      "unlocks": "lore:gas_station_red",
+      "cursor": "examine"
     },
     {
       "id": "pri_editing_monitor_hotspot",
       "shape": "rect_norm",
       "rect": [0.05, 0.40, 0.18, 0.30],
       "interact": "priestess.monitor.examined",
-      "unlocks": "vol5_priestess_editing_clip"
+      "unlocks": "vol5_priestess_editing_clip",
+      "cursor": "closer"
+    },
+    {
+      "id": "pri_fool_archive",
+      "shape": "rect_norm",
+      "rect": [0.34, 0.36, 0.10, 0.16],
+      "interact": "priestess.fool_archive.examined",
+      "unlocks": "vol5_priestess_fool_archive_seen",
+      "cursor": "closer",
+      "gated_by": "vol5_fool_double_seen",
+      "notes": "DORMANT: appears only after the player has examined the card-within-the-card on Fool. A small pinned snapshot of THAT recursive Fool image is now visible here on Elicia's archive wall — she's been keeping a copy of every Fool she's observed, and there's exactly one. The Fool is in her archive before he knows he's being archived."
+    },
+    {
+      "id": "pri_infinity_glyph",
+      "shape": "rect_norm",
+      "rect": [0.76, 0.46, 0.06, 0.08],
+      "interact": "priestess.infinity_glyph.found",
+      "unlocks": "vol5_priestess_infinity_glyph_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_magician_ascending_node",
+      "notes": "DORMANT: appears only after the player has clicked the soldering iron on the Magician card (revealing the infinity sigil). The same glyph is now visible embossed on the spine of OCCULT SYMBOLOGY of the ASCENDANT on her shelf — Frasier draws it, Elicia reads it, they've been studying each other in different alphabets."
     }
   ],
 
