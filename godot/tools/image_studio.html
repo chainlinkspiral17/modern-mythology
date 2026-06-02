@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modern Mythology — Image Studio</title>
+<style>
+  :root {
+    --bg: #0d121c;
+    --panel: #161c2a;
+    --panel2: #1f2638;
+    --border: #2d3548;
+    --accent: #c8a268;
+    --accent-dim: #6d5c3e;
+    --text: #d8d4c8;
+    --text-dim: #7c8398;
+    --good: #7cffb0;
+    --warn: #ffb060;
+    --bad: #ff6464;
+  }
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 100vh;
+  }
+  header {
+    background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 12px 20px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  }
+  header h1 {
+    margin: 0; font: 600 16px/1.2 ui-serif, Georgia, serif; color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  header .sub { font-size: 12px; color: var(--text-dim); }
+  main {
+    display: grid; grid-template-columns: 320px 1fr; gap: 0;
+    height: calc(100vh - 56px);
+  }
+  .sidebar {
+    background: var(--panel); border-right: 1px solid var(--border);
+    padding: 16px; overflow-y: auto;
+  }
+  .step {
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 12px; margin-bottom: 12px;
+  }
+  .step h2 {
+    margin: 0 0 8px 0; font: 600 12px/1 ui-sans-serif, sans-serif;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .step p { margin: 4px 0; font-size: 12px; color: var(--text-dim); }
+  .step input[type=file] {
+    background: var(--bg); color: var(--text); border: 1px solid var(--border);
+    border-radius: 4px; padding: 6px; font-size: 12px; width: 100%; margin: 4px 0;
+  }
+  .status { font-size: 11px; color: var(--text-dim); margin-top: 6px; }
+  .status.good { color: var(--good); }
+  .status.warn { color: var(--warn); }
+  .status.bad { color: var(--bad); }
+  button {
+    background: var(--accent-dim); color: var(--text); border: 1px solid var(--accent-dim);
+    border-radius: 4px; padding: 7px 12px; font-size: 13px; cursor: pointer;
+  }
+  button:hover:not([disabled]) { background: var(--accent); color: var(--bg); }
+  button.primary {
+    background: var(--accent); color: var(--bg); border-color: var(--accent);
+    font-weight: 600; width: 100%; padding: 10px;
+  }
+  button[disabled] { opacity: 0.4; cursor: not-allowed; }
+  .content { padding: 16px; overflow-y: auto; }
+  .scene-info {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; align-items: center;
+  }
+  .pill {
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 12px;
+    padding: 4px 10px; font-size: 11px; color: var(--text);
+  }
+  .help-banner {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 6px;
+    padding: 14px 16px; margin-bottom: 14px;
+    font-size: 13px; color: var(--text);
+  }
+  .help-banner b { color: var(--accent); }
+  .help-banner code {
+    background: var(--bg); padding: 1px 4px; border-radius: 3px;
+    font-size: 12px; color: var(--accent);
+  }
+  .directive {
+    display: grid; grid-template-columns: 84px 1fr 220px 220px; gap: 14px;
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 12px; margin-bottom: 10px; align-items: center;
+  }
+  .directive.has-replacement {
+    border-color: var(--good);
+    box-shadow: 0 0 0 1px rgba(124, 255, 176, 0.2);
+  }
+  .directive .kind {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 3px;
+    padding: 4px 8px; text-align: center; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent);
+  }
+  .directive .meta { font-size: 12px; color: var(--text); }
+  .directive .meta .path {
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px;
+    color: var(--text-dim); word-break: break-all; margin-top: 2px;
+  }
+  .directive .meta .label { font-weight: 600; color: var(--accent); }
+  .image-cell {
+    width: 220px; height: 124px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 4px; position: relative; display: flex; align-items: center;
+    justify-content: center; overflow: hidden;
+  }
+  .image-cell img {
+    max-width: 100%; max-height: 100%; object-fit: contain;
+  }
+  .image-cell .ph {
+    font-size: 11px; color: var(--text-dim); text-align: center; padding: 6px;
+  }
+  .image-cell .label {
+    position: absolute; top: 4px; left: 6px; background: rgba(0,0,0,0.6);
+    color: var(--text); font-size: 10px; padding: 2px 6px; border-radius: 3px;
+  }
+  .replace-input { font-size: 11px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Modern Mythology — Image Studio</h1>
+  <span class="sub">drop scene JSON · queue image replacements · export drop-in zip</span>
+</header>
+
+<main>
+  <aside class="sidebar">
+    <div class="step">
+      <h2>1 · Load scene</h2>
+      <p>Drop the JSON file from <code>godot/resources/scenes/</code>.</p>
+      <input type="file" id="sceneFile" accept=".json">
+      <p id="sceneStatus" class="status">No scene loaded.</p>
+    </div>
+
+    <div class="step">
+      <h2>2 · (Optional) Index current assets</h2>
+      <p>Drop your existing <code>godot/assets/</code> folder to see current image previews. Browser-only — files stay on your machine.</p>
+      <input type="file" id="assetsFolder" webkitdirectory directory multiple>
+      <p id="assetsStatus" class="status">No asset folder indexed.</p>
+    </div>
+
+    <div class="step">
+      <h2>3 · Export</h2>
+      <p>Queued replacements get bundled at their target asset paths into a zip. Unzip into your <code>godot/</code> folder; Godot reimports on next launch.</p>
+      <button id="exportBtn" class="primary" disabled>Export drop-in zip</button>
+      <p id="exportStatus" class="status"></p>
+    </div>
+  </aside>
+
+  <section class="content">
+    <div class="help-banner" id="helpBanner">
+      <b>How to use:</b>
+      Drop a scene JSON on the left (e.g. <code>vol5_ch0_frasier.json</code>). Every <code>show</code> and <code>bg</code> directive in the scene gets a row below — drop a replacement image into the right-hand cell to queue it. When you're done, hit <b>Export drop-in zip</b>. Unzip it inside your <code>godot/</code> folder; the game picks up the new images on next reimport.
+    </div>
+
+    <div id="sceneInfo" class="scene-info" style="display:none;">
+      <span class="pill" id="sceneIdPill">—</span>
+      <span class="pill" id="sceneTitlePill">—</span>
+      <span class="pill" id="dirCountPill">0 directives</span>
+      <span style="margin-left:auto;" class="pill" id="queuedPill">0 queued</span>
+    </div>
+
+    <div id="directivesList"></div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script>
+'use strict';
+
+const IMAGE_KINDS = new Set(['show', 'bg', 'cg']);
+// CharLayer.gd looks up portrait_<key>_<expr>.png, falls back to
+// portrait_<key>_neutral.png. We'll surface both so the user can
+// drop in either.
+const PORTRAIT_GALLERY_BASE = 'assets/gallery/';
+const PORTRAIT_CHAR_BASE    = 'assets/characters/';
+
+let scene = null;             // { id, title, nodes }
+let directives = [];          // [{ index, kind, targetPath, fallbackPath, meta, replacement: File|null }]
+let assetIndex = {};          // basename → File (from webkitdirectory drop)
+
+const $ = (id) => document.getElementById(id);
+
+function charKey(name) {
+  return String(name || '').trim().toLowerCase().replace(/\s+/g, '_');
+}
+
+function indexFilename(p) {
+  if (!p) return '';
+  return p.split('/').pop();
+}
+
+function resolveTargets(node) {
+  // Returns array of {primary, fallbacks, label} for one node
+  const kind = node.t;
+  if (kind === 'bg') {
+    const src = String(node.src || '');
+    if (!src) return null;
+    return {
+      kind: 'bg',
+      primary: src.startsWith('assets/') ? src : 'assets/' + src,
+      fallbacks: [],
+      label: 'background',
+      meta: src,
+    };
+  }
+  if (kind === 'show') {
+    const char = String(node.char || '');
+    const expr = String(node.expr || 'neutral');
+    const key = charKey(char);
+    if (!key) return null;
+    // Primary: portrait_<key>_<expr>.png in gallery
+    const primary = `${PORTRAIT_GALLERY_BASE}portrait_${key}_${expr}.png`;
+    const fallbacks = [
+      `${PORTRAIT_GALLERY_BASE}portrait_${key}_neutral.png`,
+      `${PORTRAIT_GALLERY_BASE}portrait_${key}_0.png`,
+      `${PORTRAIT_GALLERY_BASE}portrait_${key}_face.png`,
+      `${PORTRAIT_CHAR_BASE}${key}/${key}_${expr}.png`,
+      `${PORTRAIT_CHAR_BASE}${key}/${key}_neutral.png`,
+    ];
+    return {
+      kind: 'show',
+      primary,
+      fallbacks,
+      label: `${char} · ${expr}`,
+      meta: `${char} (${key}) · expr=${expr}`,
+    };
+  }
+  if (kind === 'cg') {
+    const src = String(node.src || '');
+    if (!src) return null;
+    return {
+      kind: 'cg',
+      primary: src.startsWith('assets/') ? src : 'assets/' + src,
+      fallbacks: [],
+      label: 'CG image',
+      meta: src,
+    };
+  }
+  return null;
+}
+
+function loadScene(text) {
+  let parsed;
+  try { parsed = JSON.parse(text); }
+  catch (e) {
+    $('sceneStatus').textContent = 'Failed to parse JSON: ' + e.message;
+    $('sceneStatus').className = 'status bad';
+    return;
+  }
+  scene = parsed;
+  const nodes = parsed.nodes || [];
+  directives = [];
+  for (let i = 0; i < nodes.length; i++) {
+    const n = nodes[i];
+    if (!IMAGE_KINDS.has(n.t)) continue;
+    const t = resolveTargets(n);
+    if (!t) continue;
+    directives.push({
+      index: i,
+      kind: t.kind,
+      primary: t.primary,
+      fallbacks: t.fallbacks,
+      label: t.label,
+      meta: t.meta,
+      replacement: null,
+      replacementName: '',
+    });
+  }
+  $('sceneStatus').textContent = `Loaded ${parsed.id || 'scene'} (${nodes.length} nodes, ${directives.length} image directives)`;
+  $('sceneStatus').className = 'status good';
+  $('sceneInfo').style.display = 'flex';
+  $('sceneIdPill').textContent  = parsed.id || '—';
+  $('sceneTitlePill').textContent = parsed.title || '—';
+  $('dirCountPill').textContent = directives.length + ' directives';
+  $('helpBanner').style.display = 'none';
+  renderDirectives();
+  updateExportState();
+}
+
+function findInAssetIndex(targetPath) {
+  // assetIndex is keyed by basename. Find file by basename first.
+  const bn = indexFilename(targetPath);
+  return assetIndex[bn] || null;
+}
+
+function renderDirectives() {
+  const root = $('directivesList');
+  root.innerHTML = '';
+  directives.forEach((d, idx) => {
+    const row = document.createElement('div');
+    row.className = 'directive' + (d.replacement ? ' has-replacement' : '');
+
+    const kind = document.createElement('div');
+    kind.className = 'kind';
+    kind.textContent = d.kind;
+    row.appendChild(kind);
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML =
+      `<div class="label">${d.label}</div>` +
+      `<div>node #${d.index}</div>` +
+      `<div class="path">${d.primary}</div>` +
+      (d.fallbacks.length ? `<div class="path" style="opacity:0.6">fallbacks: ${d.fallbacks.length}</div>` : '');
+    row.appendChild(meta);
+
+    // Current image cell — search the asset index
+    const cur = document.createElement('div');
+    cur.className = 'image-cell';
+    const curLabel = document.createElement('div');
+    curLabel.className = 'label';
+    curLabel.textContent = 'CURRENT';
+    cur.appendChild(curLabel);
+    const curFile = findInAssetIndex(d.primary) ||
+      d.fallbacks.map(p => findInAssetIndex(p)).find(f => f) || null;
+    if (curFile) {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(curFile);
+      cur.appendChild(img);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'ph';
+      ph.textContent = '(no asset indexed for this path — drop your godot/assets folder above to preview)';
+      cur.appendChild(ph);
+    }
+    row.appendChild(cur);
+
+    // Replacement cell
+    const rep = document.createElement('div');
+    rep.className = 'image-cell';
+    const repLabel = document.createElement('div');
+    repLabel.className = 'label';
+    repLabel.textContent = d.replacement ? 'QUEUED' : 'REPLACE';
+    rep.appendChild(repLabel);
+    if (d.replacement) {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(d.replacement);
+      rep.appendChild(img);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'ph';
+      ph.textContent = '(drop PNG/JPG here)';
+      rep.appendChild(ph);
+    }
+    // Hidden file input + click handler on cell
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.style.display = 'none';
+    input.className = 'replace-input';
+    input.onchange = (e) => {
+      const f = e.target.files[0];
+      if (!f) return;
+      d.replacement = f;
+      d.replacementName = f.name;
+      renderDirectives();
+      updateExportState();
+    };
+    rep.appendChild(input);
+    rep.style.cursor = 'pointer';
+    rep.onclick = () => input.click();
+    // Drag-drop on the cell
+    rep.ondragover = (e) => { e.preventDefault(); rep.style.outline = '1px dashed var(--accent)'; };
+    rep.ondragleave = () => { rep.style.outline = ''; };
+    rep.ondrop = (e) => {
+      e.preventDefault();
+      rep.style.outline = '';
+      const f = e.dataTransfer.files[0];
+      if (!f || !f.type.startsWith('image/')) return;
+      d.replacement = f;
+      d.replacementName = f.name;
+      renderDirectives();
+      updateExportState();
+    };
+    row.appendChild(rep);
+
+    root.appendChild(row);
+  });
+}
+
+function updateExportState() {
+  const queued = directives.filter(d => d.replacement).length;
+  $('queuedPill').textContent = queued + ' queued';
+  $('exportBtn').disabled = queued === 0;
+}
+
+async function exportZip() {
+  const zip = new JSZip();
+  for (const d of directives) {
+    if (!d.replacement) continue;
+    // Write replacement to its primary target path
+    const buf = await d.replacement.arrayBuffer();
+    zip.file('godot/' + d.primary, buf);
+  }
+  const blob = await zip.generateAsync({ type: 'blob' });
+  const a = document.createElement('a');
+  const sceneId = (scene && scene.id) || 'scene';
+  a.href = URL.createObjectURL(blob);
+  a.download = `images_${sceneId}.zip`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  $('exportStatus').textContent = `Exported images_${sceneId}.zip`;
+  $('exportStatus').className = 'status good';
+}
+
+// ── Wire up inputs ─────────────────────────────────────────────────────────
+
+$('sceneFile').addEventListener('change', async (e) => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const text = await f.text();
+  loadScene(text);
+});
+
+$('assetsFolder').addEventListener('change', (e) => {
+  assetIndex = {};
+  let imgCount = 0;
+  for (const f of e.target.files) {
+    if (!f.type.startsWith('image/')) continue;
+    assetIndex[f.name] = f;
+    imgCount++;
+  }
+  $('assetsStatus').textContent = `Indexed ${imgCount} images.`;
+  $('assetsStatus').className = 'status good';
+  if (directives.length) renderDirectives();
+});
+
+$('exportBtn').addEventListener('click', exportZip);
+
+// Drag-drop scene JSON onto the whole window too
+window.addEventListener('dragover', (e) => { e.preventDefault(); });
+window.addEventListener('drop', async (e) => {
+  e.preventDefault();
+  if (e.target.closest('.image-cell')) return;  // cell handles its own
+  for (const f of e.dataTransfer.files) {
+    if (f.name.endsWith('.json')) {
+      const text = await f.text();
+      loadScene(text);
+      return;
+    }
+  }
+});
+</script>
+</body>
+</html>
