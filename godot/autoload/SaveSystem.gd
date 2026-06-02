@@ -8,6 +8,7 @@ const MAX_SLOTS     := 8
 
 signal save_written(slot: int)
 signal save_deleted(slot: int)
+signal unlocked_changed(key: String)
 
 var _seen_cgs:  Dictionary = {}
 var _unlocked:  Dictionary = {}
@@ -97,6 +98,7 @@ func mark_unlocked(key: String) -> bool:
 		return false
 	_unlocked[key] = true
 	_save_unlocks()
+	unlocked_changed.emit(key)
 	return true
 
 

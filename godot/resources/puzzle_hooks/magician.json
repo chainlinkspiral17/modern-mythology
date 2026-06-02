@@ -50,6 +50,15 @@
       "anchor_norm": [0.10, 0.62],
       "encoding_hint": "the partial label is a route reference — full text appears in vol5_ch3_empress's prose as Nicola walks past the abandoned warehouses",
       "reveals": "vol5_county_road_clue"
+    },
+    {
+      "id": "mag_demoscene_echo",
+      "kind": "dormant_cross_card",
+      "text": "Frasier's CRT now scrolls the same particle-sync waveform from the Fool's IV - DEMOSCENE_VIBE.EXE label",
+      "anchor_norm": [0.77, 0.14],
+      "encoding_hint": "DORMANT until you've read the demoscene module label on the Fool card. The two scenes share the same render engine — the diner's classified-ad layout and Frasier's CRT are two windows on the same broadcast. Once you've seen it on one card, it's been there on the other all along.",
+      "reveals": "vol5_demoscene_pair_seen",
+      "cross_references": ["fool.json::fool_demoscene_vibe"]
     }
   ],
 
@@ -59,35 +68,50 @@
       "shape": "rect_norm",
       "rect": [0.55, 0.20, 0.08, 0.18],
       "interact": "magician.iron.touched",
-      "unlocks": "tarot_synth::magician_pulse_arp_preset"
+      "unlocks": "tarot_synth::magician_pulse_arp_preset",
+      "cursor": "take"
     },
     {
       "id": "mag_model_city",
       "shape": "rect_norm",
       "rect": [0.30, 0.65, 0.55, 0.30],
       "interact": "magician.model.examined",
-      "unlocks": "lore:graustark_overlay_map"
+      "unlocks": "lore:graustark_overlay_map",
+      "cursor": "closer"
     },
     {
       "id": "mag_steamboat",
       "shape": "rect_norm",
       "rect": [0.55, 0.80, 0.08, 0.08],
       "interact": "magician.steamboat.touched",
-      "unlocks": "vol5_magician_emperor_link"
+      "unlocks": "vol5_magician_emperor_link",
+      "cursor": "examine"
     },
     {
       "id": "mag_demon_left",
       "shape": "rect_norm",
       "rect": [0.28, 0.45, 0.10, 0.18],
       "interact": "magician.demon.left.touched",
-      "unlocks": "lore:demon_left_inventory"
+      "unlocks": "lore:demon_left_inventory",
+      "cursor": "examine"
     },
     {
       "id": "mag_demon_right",
       "shape": "rect_norm",
       "rect": [0.82, 0.38, 0.10, 0.20],
       "interact": "magician.demon.right.touched",
-      "unlocks": "lore:demon_right_inventory"
+      "unlocks": "lore:demon_right_inventory",
+      "cursor": "examine"
+    },
+    {
+      "id": "mag_demoscene_echo",
+      "shape": "rect_norm",
+      "rect": [0.70, 0.10, 0.14, 0.08],
+      "interact": "magician.demoscene_echo.spotted",
+      "unlocks": "vol5_magician_demoscene_echo_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_demoscene_module_visible",
+      "notes": "DORMANT: appears only after the player has read the IV - DEMOSCENE_VIBE.EXE label on the Fool card. Frasier's CRT now displays the same particle-sync waveform the Fool's diner classified-ad pointed at — the two cards share the same render engine."
     }
   ],
 

@@ -106,27 +106,50 @@
       "anchor_norm": [0.10, 0.50],
       "encoding_hint": "in-card UI affordances suggesting this scene IS a RPG/VN screen. Notebook + inventory + restart hint at the gameplay loop. weapon/shield slots labeled but empty — Fool starts with nothing.",
       "reveals": "vol5_inventory_console_visible"
+    },
+    {
+      "id": "fool_steamboat_echo",
+      "kind": "dormant_cross_card",
+      "text": "a red steamboat, reflected in the diner window — the same boat Frasier is modeling in the warehouse across town",
+      "anchor_norm": [0.47, 0.47],
+      "encoding_hint": "DORMANT until you've found the steamboat on the Magician card. Frasier's model predicts the empire; this echo proves the prediction has already landed in John's peripheral vision. Two cards, one boat, one town.",
+      "reveals": "vol5_steamboat_pair_seen",
+      "cross_references": ["magician.json::mag_steamboat_in_model", "emperor.json"]
     }
   ],
 
   "hotspots": [
     {"id":"fool_dog","shape":"rect_norm","rect":[0.22,0.68,0.12,0.20],
-     "interact":"fool.dog.touched","unlocks":"vol5_dog_introduced"},
+     "interact":"fool.dog.touched","unlocks":"vol5_dog_introduced",
+     "cursor":"examine"},
     {"id":"fool_bindle","shape":"rect_norm","rect":[0.26,0.10,0.10,0.20],
-     "interact":"fool.bindle.touched","unlocks":"lore:bindle_seen"},
+     "interact":"fool.bindle.touched","unlocks":"lore:bindle_seen",
+     "cursor":"take"},
     {"id":"fool_graffiti","shape":"rect_norm","rect":[0.74,0.04,0.16,0.14],
-     "interact":"fool.graffiti.read","unlocks":"vol5_graffiti_signature_seen"},
+     "interact":"fool.graffiti.read","unlocks":"vol5_graffiti_signature_seen",
+     "cursor":"examine"},
     {"id":"fool_precipice","shape":"rect_norm","rect":[0.78,0.28,0.18,0.10],
-     "interact":"fool.precipice_door.touched","unlocks":"vol5_precipice_door_known"},
+     "interact":"fool.precipice_door.touched","unlocks":"vol5_precipice_door_known",
+     "cursor":"closer"},
     {"id":"fool_demoscene_mod","shape":"rect_norm","rect":[0.78,0.36,0.18,0.06],
-     "interact":"fool.demoscene_module.touched","unlocks":"vol5_demoscene_module_visible"},
+     "interact":"fool.demoscene_module.touched","unlocks":"vol5_demoscene_module_visible",
+     "cursor":"examine"},
     {"id":"fool_inner_card","shape":"rect_norm","rect":[0.02,0.06,0.14,0.36],
-     "interact":"fool.inner_card.examined","unlocks":"vol5_fool_double_seen"},
+     "interact":"fool.inner_card.examined","unlocks":"vol5_fool_double_seen",
+     "cursor":"closer"},
     {"id":"fool_design_notes","shape":"rect_norm","rect":[0.78,0.72,0.20,0.20],
-     "interact":"fool.design_notes.read","unlocks":"vol5_design_notes_visible"},
+     "interact":"fool.design_notes.read","unlocks":"vol5_design_notes_visible",
+     "cursor":"examine"},
     {"id":"fool_counter","shape":"rect_norm","rect":[0.30,0.78,0.40,0.18],
      "interact":"fool.counter.wiped","unlocks":"lore:counter_wiped_again",
-     "notes":"clicking the counter triggers a sound cue (rag on formica). Easter egg: 64 wipes = unlocks alt prologue (matches ACTIVE NODES: 64)"}
+     "cursor":"examine",
+     "notes":"clicking the counter triggers a sound cue (rag on formica). Easter egg: 64 wipes = unlocks alt prologue (matches ACTIVE NODES: 64)"},
+    {"id":"fool_steamboat_echo","shape":"rect_norm","rect":[0.42,0.42,0.10,0.10],
+     "interact":"fool.steamboat_echo.spotted",
+     "unlocks":"vol5_fool_steamboat_echo_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_magician_emperor_link",
+     "notes":"DORMANT: appears only after the player discovers the steamboat in Frasier's model city on the Magician card. A reflection of the same red boat is now visible in the diner window — the empire is already in John's peripheral vision."}
   ],
 
   "easter_eggs": [

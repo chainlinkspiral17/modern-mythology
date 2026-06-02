@@ -88,6 +88,13 @@ var _active_notes: Array = []
 
 var _t: float = 0.0
 
+# Cipher reveal panel (lazy-built on first click)
+var _cipher_panel: PanelContainer = null
+var _cipher_label_head: Label = null
+var _cipher_label_text: RichTextLabel = null
+var _cipher_label_hint: Label = null
+var _cipher_label_unlock: Label = null
+
 
 func _ready() -> void:
     set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -97,11 +104,11 @@ func _ready() -> void:
     _init_synth()
     _init_ambient()
     _build_thematic_widget()
-    # Center after a frame so layout has settled and we have a real
-    # size to anchor against. Also wire resized so window changes
-    # re-center.
+    # Centering, layout, and live-refresh on cross-card unlocks.
     call_deferred("_center_on_card")
     resized.connect(_center_on_card)
+    if not SaveSystem.unlocked_changed.is_connected(_on_unlock_emitted):
+        SaveSystem.unlocked_changed.connect(_on_unlock_emitted)
     set_process(true)
     set_process_input(true)
 
@@ -294,9 +301,22 @@ func _build_card_surface() -> void:
 
 
 func _build_hotspots() -> void:
+    # Clear any existing hotspot buttons (live-refresh after a gated_by
+    # unlock fires must rebuild from scratch, not stack new buttons on
+    # top of stale ones).
+    for prev in hotspot_btns:
+        if is_instance_valid(prev):
+            prev.queue_free()
+    hotspot_btns.clear()
     for hs_v in hooks.get("hotspots", []):
         var hs: Dictionary = hs_v
         if card_rect == null: continue
+        # Gated hotspots stay dormant until the gating unlock fires.
+        # Skip silently — the player will discover they've "woken up"
+        # when they return to this card after the cross-card reveal.
+        var gate := str(hs.get("gated_by", ""))
+        if gate != "" and not SaveSystem.is_unlocked(gate):
+            continue
         var btn := Button.new()
         btn.flat = true
         var rect: Array = hs.get("rect", [0.0, 0.0, 0.1, 0.1])
@@ -306,6 +326,7 @@ func _build_hotspots() -> void:
         btn.size = Vector2(rect[2] * card_rect.size.x,
                             rect[3] * card_rect.size.y)
         btn.tooltip_text = str(hs.get("interact", hs.get("id", "")))
+        btn.mouse_default_cursor_shape = _cursor_for(str(hs.get("cursor", "examine")))
         var sb := StyleBoxFlat.new()
         sb.bg_color = Color(1, 0.85, 0.40, 0.0)
         sb.border_color = Color(1, 0.85, 0.40, 0.0)
@@ -317,9 +338,57 @@ func _build_hotspots() -> void:
         btn.add_theme_stylebox_override("hover", bsh)
         btn.add_theme_stylebox_override("focus", bsh)
         var captured := hs
-        btn.pressed.connect(func() -> void: _on_hotspot(captured))
+        # Hover pulse — soft alpha tween while the cursor is inside.
+        # Replays from scratch on each entry so the player gets a fresh
+        # heartbeat-style throb rather than a flat tint.
+        btn.mouse_entered.connect(func() -> void: _hotspot_pulse_start(btn, bsh))
+        btn.mouse_exited.connect(func() -> void: _hotspot_pulse_stop(btn, bsh))
+        # Two-step press: reveal cipher (always runs, even if a subclass
+        # overrides _on_hotspot without calling super), then run the
+        # subclass game-logic via the virtual _on_hotspot hook.
+        var on_press := func() -> void:
+            _reveal_cipher(captured)
+            _on_hotspot(captured)
+        btn.pressed.connect(on_press)
         canvas.add_child(btn)
         hotspot_btns.append(btn)
+
+
+## Map a JSON `cursor` string to a Godot cursor shape. Unknown values
+## fall back to the magnifier (examine) — most hotspots want it.
+func _cursor_for(kind: String) -> int:
+    match kind:
+        "take":     return Control.CURSOR_POINTING_HAND
+        "use":      return Control.CURSOR_DRAG
+        "closer":   return Control.CURSOR_CROSS
+        "navigate": return Control.CURSOR_ARROW
+        "exit":     return Control.CURSOR_FORBIDDEN
+        _:          return Control.CURSOR_HELP
+
+
+# ── Hotspot hover pulse ───────────────────────────────────────────
+# Per-button tween that lives on the StyleBoxFlat's bg_color alpha.
+# We hold the tween on a meta so mouse_exited can stop it cleanly.
+
+func _hotspot_pulse_start(btn: Button, sbox: StyleBoxFlat) -> void:
+    var prior = btn.get_meta("pulse_tw", null)
+    if prior != null and is_instance_valid(prior):
+        prior.kill()
+    var sb := sbox.duplicate() as StyleBoxFlat
+    btn.add_theme_stylebox_override("hover", sb)
+    var apply_alpha := func(a: float) -> void:
+        sb.bg_color = Color(1, 0.85, 0.40, a)
+        sb.border_color = Color(1, 0.85, 0.40, clamp(a * 2.6, 0.0, 1.0))
+    var tw := create_tween().set_loops()
+    tw.tween_method(apply_alpha, 0.18, 0.55, 0.8)
+    tw.tween_method(apply_alpha, 0.55, 0.18, 0.8)
+    btn.set_meta("pulse_tw", tw)
+
+func _hotspot_pulse_stop(btn: Button, _sbox: StyleBoxFlat) -> void:
+    var prior = btn.get_meta("pulse_tw", null)
+    if prior != null and is_instance_valid(prior):
+        prior.kill()
+        btn.remove_meta("pulse_tw")
 
 
 # ── Tableau registration (subclass API) ──────────────────────────
@@ -525,6 +594,148 @@ func _on_hotspot(hs: Dictionary) -> void:
     _trigger_synth_pulse()
     if hs.has("unlocks"):
         SaveSystem.mark_unlocked(str(hs["unlocks"]))
+
+
+# ── Cipher reveal panel ──────────────────────────────────────────
+# Find the cipher matching this hotspot (by id, then by anchor
+# proximity), render its text + encoding_hint into the floating
+# panel, and mark its reveal flag. Always-fire — bypasses the
+# subclass _on_hotspot override.
+
+func _reveal_cipher(hs: Dictionary) -> void:
+    var matched := _match_cipher_for(hs)
+    if matched.is_empty():
+        # Hotspot has no cipher (rare — e.g. pure game-action ones).
+        # Surface a thin placeholder so the click still feels alive.
+        _ensure_cipher_panel()
+        _cipher_label_head.text = "▷ " + str(hs.get("interact", hs.get("id", "")))
+        _cipher_label_text.text = ""
+        _cipher_label_hint.text = ""
+        _cipher_label_unlock.text = ""
+        _show_cipher_panel()
+        return
+    _ensure_cipher_panel()
+    _cipher_label_head.text = "▷ " + str(hs.get("interact", hs.get("id", "")))
+    var body := str(matched.get("text", ""))
+    if matched.has("text_lines"):
+        var lines := PackedStringArray()
+        for line_v in matched["text_lines"]:
+            lines.append(str(line_v))
+        if body != "":
+            body += "\n"
+        body += "\n".join(lines)
+    _cipher_label_text.text = body
+    _cipher_label_hint.text = str(matched.get("encoding_hint", ""))
+    var reveals_key := str(matched.get("reveals", ""))
+    if reveals_key != "":
+        SaveSystem.mark_unlocked(reveals_key)
+        _cipher_label_unlock.text = "→ " + reveals_key
+    else:
+        _cipher_label_unlock.text = ""
+    _show_cipher_panel()
+
+
+func _match_cipher_for(hs: Dictionary) -> Dictionary:
+    var hs_id := str(hs.get("id", ""))
+    var ciphers := hooks.get("ciphers", []) as Array
+    # Exact ID match first.
+    for c_v in ciphers:
+        var c: Dictionary = c_v
+        var c_id := str(c.get("id", ""))
+        if c_id == "": continue
+        if c_id == hs_id or hs_id.begins_with(c_id) or c_id.begins_with(hs_id):
+            return c
+    # Otherwise nearest-anchor in normalized space.
+    if ciphers.is_empty(): return {}
+    var rect: Array = hs.get("rect", [0,0,0,0])
+    var cx: float = float(rect[0]) + float(rect[2]) * 0.5
+    var cy: float = float(rect[1]) + float(rect[3]) * 0.5
+    var best: Dictionary = {}
+    var best_d: float = INF
+    for c_v in ciphers:
+        var c: Dictionary = c_v
+        var a = c.get("anchor_norm", null)
+        if typeof(a) != TYPE_ARRAY or a.size() < 2: continue
+        # cross_card_link ciphers can have a list-of-points anchor;
+        # average them.
+        var ax: float = 0.0
+        var ay: float = 0.0
+        if typeof(a[0]) == TYPE_ARRAY:
+            for pt in a:
+                ax += float(pt[0]); ay += float(pt[1])
+            ax /= a.size(); ay /= a.size()
+        else:
+            ax = float(a[0]); ay = float(a[1])
+        var d: float = abs(ax - cx) + abs(ay - cy)
+        if d < best_d:
+            best_d = d; best = c
+    return best
+
+
+func _ensure_cipher_panel() -> void:
+    if _cipher_panel != null and is_instance_valid(_cipher_panel):
+        return
+    _cipher_panel = PanelContainer.new()
+    _cipher_panel.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+    _cipher_panel.offset_right = -18
+    _cipher_panel.offset_top = 56
+    _cipher_panel.offset_left = -380
+    _cipher_panel.custom_minimum_size = Vector2(360, 0)
+    _cipher_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+    var sb := StyleBoxFlat.new()
+    sb.bg_color = Color(0.03, 0.02, 0.04, 0.92)
+    sb.border_color = C_GOLD_HI
+    sb.set_border_width_all(1)
+    _cipher_panel.add_theme_stylebox_override("panel", sb)
+    add_child(_cipher_panel)
+    var vb := VBoxContainer.new()
+    vb.add_theme_constant_override("separation", 6)
+    _cipher_panel.add_child(vb)
+    _cipher_label_head = Label.new()
+    _cipher_label_head.add_theme_color_override("font_color", C_GOLD_HI)
+    _cipher_label_head.add_theme_font_size_override("font_size", 11)
+    vb.add_child(_cipher_label_head)
+    _cipher_label_text = RichTextLabel.new()
+    _cipher_label_text.fit_content = true
+    _cipher_label_text.bbcode_enabled = false
+    _cipher_label_text.add_theme_color_override("default_color", C_TEXT)
+    _cipher_label_text.add_theme_font_size_override("normal_font_size", 10)
+    _cipher_label_text.custom_minimum_size = Vector2(340, 0)
+    vb.add_child(_cipher_label_text)
+    _cipher_label_hint = Label.new()
+    _cipher_label_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    _cipher_label_hint.custom_minimum_size.x = 340
+    _cipher_label_hint.add_theme_color_override("font_color", C_TEXT_DIM)
+    _cipher_label_hint.add_theme_font_size_override("font_size", 9)
+    vb.add_child(_cipher_label_hint)
+    _cipher_label_unlock = Label.new()
+    _cipher_label_unlock.add_theme_color_override("font_color", C_GOLD)
+    _cipher_label_unlock.add_theme_font_size_override("font_size", 9)
+    vb.add_child(_cipher_label_unlock)
+    var dismiss := Button.new()
+    dismiss.text = "[ × ]"
+    dismiss.flat = true
+    dismiss.alignment = HORIZONTAL_ALIGNMENT_RIGHT
+    dismiss.add_theme_color_override("font_color", C_GOLD)
+    dismiss.pressed.connect(func() -> void: _cipher_panel.visible = false)
+    vb.add_child(dismiss)
+    _cipher_panel.visible = false
+
+
+func _show_cipher_panel() -> void:
+    _cipher_panel.visible = true
+    _cipher_panel.modulate.a = 0.0
+    var tw := create_tween()
+    tw.tween_property(_cipher_panel, "modulate:a", 1.0, 0.25)
+
+
+# Live-refresh hotspots when a cross-card unlock fires. This is what
+# makes the "wait, did something new appear here?" moment work — the
+# player marks a Fool cipher, switches to Magician, and the gated
+# hotspot is already lit by the time the visualizer rebuilds.
+func _on_unlock_emitted(_key: String) -> void:
+    if card_rect == null: return
+    _build_hotspots()
 
 
 # ── AMBIENT ──────────────────────────────────────────────────────
