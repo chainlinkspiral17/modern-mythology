@@ -31,6 +31,8 @@ MARKS = {
     "strength":   (2620, 1413, 75),
     "hermit":     (2640, 1420, 60),
     "fool":       (2655, 1410, 75),
+    "hanged_man": (2640, 1420, 65),
+    "justice":    (2650, 1425, 65),
 }
 
 # Empress-only: the current "NICOLA" nametag bbox (to be erased)
