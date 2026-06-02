@@ -28,6 +28,7 @@ MARKS = {
     "magician":   (2645, 1432, 54),
     "hierophant": (2640, 1413, 44),
     "chariot":    (2630, 1428, 50),
+    "strength":   (2620, 1413, 75),
 }
 
 # Empress-only: the current "NICOLA" nametag bbox (to be erased)
