@@ -19,6 +19,7 @@ const SUBSTRATE_RASTER_SCRIPT := preload("res://scenes/game/AsciiSubstrateRaster
 const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 const DEBUG_OVERLAY_SCRIPT := preload("res://scenes/menu/SubstrateDebugOverlay.gd")
 const CARD_INTERACTIVE_SCRIPT := preload("res://scenes/menu/CardInteractiveLayer.gd")
+const DISCOVERIES_PANEL_SCRIPT := preload("res://scenes/menu/DiscoveriesPanel.gd")
 const FOOL_VISUALIZER_SCRIPT  := preload("res://scenes/menu/FoolVisualizer.gd")
 const EMPRESS_VISUALIZER_SCRIPT := preload("res://scenes/menu/EmpressVisualizer.gd")
 const MAGICIAN_VISUALIZER_SCRIPT := preload("res://scenes/menu/MagicianVisualizer.gd")
@@ -103,6 +104,12 @@ func _rebuild() -> void:
 	count_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	count_lbl.horizontal_alignment  = HORIZONTAL_ALIGNMENT_RIGHT
 	header_row.add_child(count_lbl)
+	# Discoveries pill — invisible until first cipher reveal, then
+	# lights up with a live count. Click to expand a list of finds
+	# grouped by card. The "wait, the gallery has a layer" hook.
+	var discoveries := Control.new()
+	discoveries.set_script(DISCOVERIES_PANEL_SCRIPT)
+	header_row.add_child(discoveries)
 	var close_btn := Button.new()
 	close_btn.text = "✕"
 	close_btn.custom_minimum_size = Vector2(32, 32)
