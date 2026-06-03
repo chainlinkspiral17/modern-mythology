@@ -69,24 +69,61 @@
       "encoding_hint": "'Hear and be silent.' The chapter's command to Maya. The chapter's command to the player.",
       "reveals": "vol5_audi_et_tace_known",
       "priority": "HIGH — chapter thesis in two words"
+    },
+    {
+      "id": "hie_emperor_authority",
+      "kind": "dormant_cross_card",
+      "text": "the bishop's crozier — identical curl, identical bands — is Dante's ceremonial staff from the throne room",
+      "anchor_norm": [0.50, 0.44],
+      "encoding_hint": "DORMANT until you've heard the Emperor's theme (clicking Dante's ankh on card IV). The classical Emperor(IV) → Hierophant(V) adjacency is civil authority → religious authority — and Modern Mythology renders it as the SAME held object in two vestments. AVTORITAS POTESTAS IMPERIVM (the throne room) and AVDI ET TACE (the church) are the two halves of how the institution speaks: imperium gives the command, sacramentum requires the silence that hears it.",
+      "reveals": "vol5_hierophant_emperor_authority_seen",
+      "cross_references": ["emperor.json::emp_throne_motto", "emperor.json::emp_ankh"]
+    },
+    {
+      "id": "hie_priestess_lens",
+      "kind": "dormant_cross_card",
+      "text": "a dark circular lens reflected in the blue segment of the rose window — Elicia's camera, three rows back",
+      "anchor_norm": [0.69, 0.20],
+      "encoding_hint": "DORMANT until you've touched Elicia's camera on the Priestess card. Priestess(II) is the canonical OBSERVER of every sacrament; she sits in the pew, she records, she does not partake. The Hierophant performs; the Priestess archives the performance. The same II/V opposition the deck uses everywhere — celebrant ↔ witness.",
+      "reveals": "vol5_hierophant_priestess_lens_seen",
+      "cross_references": ["high_priestess.json::pri_camera_hotspot"]
     }
   ],
 
   "hotspots": [
     {"id":"hie_dress","shape":"rect_norm","rect":[0.42,0.78,0.16,0.18],
-     "interact":"hierophant.dress.touched","unlocks":"vol5_dress_bites_seen"},
+     "interact":"hierophant.dress.touched","unlocks":"vol5_dress_bites_seen",
+     "cursor":"examine"},
     {"id":"hie_keys","shape":"rect_norm","rect":[0.42,0.04,0.16,0.10],
-     "interact":"hierophant.keys.touched","unlocks":"vol5_keys_seen"},
+     "interact":"hierophant.keys.touched","unlocks":"vol5_keys_seen",
+     "cursor":"examine"},
     {"id":"hie_crown","shape":"rect_norm","rect":[0.46,0.12,0.08,0.08],
-     "interact":"hierophant.crown.touched","unlocks":"vol5_tiara_seen"},
+     "interact":"hierophant.crown.touched","unlocks":"vol5_tiara_seen",
+     "cursor":"examine"},
     {"id":"hie_acolyte_maya","shape":"rect_norm","rect":[0.32,0.72,0.12,0.18],
-     "interact":"hierophant.maya.touched","unlocks":"vol5_dress_bites_seen"},
+     "interact":"hierophant.maya.touched","unlocks":"vol5_dress_bites_seen",
+     "cursor":"examine"},
     {"id":"hie_acolyte_y","shape":"rect_norm","rect":[0.56,0.72,0.12,0.18],
-     "interact":"hierophant.y.touched","unlocks":"vol5_y_identified"},
+     "interact":"hierophant.y.touched","unlocks":"vol5_y_identified",
+     "cursor":"examine"},
     {"id":"hie_rose_window","shape":"rect_norm","rect":[0.42,0.14,0.16,0.14],
-     "interact":"hierophant.window.examined","unlocks":"vol5_glass_colors_seen"},
+     "interact":"hierophant.window.examined","unlocks":"vol5_glass_colors_seen",
+     "cursor":"closer"},
     {"id":"hie_banner","shape":"rect_norm","rect":[0.25,0.02,0.50,0.06],
-     "interact":"hierophant.banner.read","unlocks":"vol5_audi_et_tace_known"}
+     "interact":"hierophant.banner.read","unlocks":"vol5_audi_et_tace_known",
+     "cursor":"examine"},
+    {"id":"hie_emperor_authority","shape":"rect_norm","rect":[0.46,0.34,0.08,0.20],
+     "interact":"hierophant.crozier.recognized",
+     "unlocks":"vol5_hierophant_emperor_authority_seen",
+     "cursor":"examine",
+     "gated_by":"music:vol5_emperor_theme",
+     "notes":"DORMANT: appears only after the player has clicked Dante's ankh on the Emperor card. The bishop's crozier in the church's left hand is — line for line — Dante's ceremonial staff in different vestments. Classical IV↔V adjacency: civil order and religious order are wielded by the same hand. AVTORITAS POTESTAS IMPERIVM ↔ AVDI ET TACE — both halves of the authority compact."},
+    {"id":"hie_priestess_lens","shape":"rect_norm","rect":[0.66,0.16,0.06,0.08],
+     "interact":"hierophant.lens.spotted",
+     "unlocks":"vol5_hierophant_priestess_lens_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_camera",
+     "notes":"DORMANT: appears only after the player has touched Elicia's camera on the Priestess card. The same lens — circular, dark, unmistakable — is now visible reflected in one of the rose window's blue segments. The archivist is in the church before the rite, behind the player, documenting what AUDI ET TACE forbids speaking of. Priestess II is the canonical observer of every sacrament she herself declines to perform."}
   ],
 
   "easter_eggs": [

@@ -51,16 +51,67 @@
       "anchor_norm": [0.50, 0.10],
       "encoding_hint": "three majors stay face-down across the deck. the pattern is: the cards demanding RESOLUTION are the ones the chapter declines to render. romance, justice, final judgement — all kept open.",
       "reveals": "vol5_three_refused"
+    },
+    {
+      "id": "lov_hierophant_witness",
+      "kind": "dormant_cross_card",
+      "text": "AVDI ET TACE — faintly inscribed across the upper border of the face-down back",
+      "anchor_norm": [0.40, 0.07],
+      "encoding_hint": "DORMANT until you've read the Hierophant's motto on card V. The whole rite the Hierophant performs is for the card that doesn't flip. AVDI ET TACE — hear and be silent — is the player's instruction for the Lovers card too: the discovery is the refusal to consummate the reading. Hierophant(V) → Lovers(VI) adjacency rendered as inscription: the institution writes its command across the face the lovers won't show.",
+      "reveals": "vol5_lovers_hierophant_witness_seen",
+      "cross_references": ["hierophant.json::hie_avdi_et_tace"]
+    },
+    {
+      "id": "lov_emperor_throne_inverse",
+      "kind": "dormant_cross_card",
+      "text": "the throne from card IV embossed in miniature on the face-down back — with two seats, one always empty",
+      "anchor_norm": [0.50, 0.67],
+      "encoding_hint": "DORMANT until the player has recognized the steamboat motif on the Emperor's throne. The throne that Empress(III) inherits (succession, the throne held by one) is the throne the Lovers(VI) refuse to occupy (union, the throne that would hold two). The deck's spine renders the same furniture twice: once as inheritance, once as the empty seat that proves nobody crosses.",
+      "reveals": "vol5_lovers_emperor_throne_inverse_seen",
+      "cross_references": ["emperor.json::emp_steamboat_throne", "empress.json::ems_ram_left"]
+    },
+    {
+      "id": "lov_john_faith_confirmed",
+      "kind": "pair_confirmation",
+      "text": "JOHN & FAITH — confirmed",
+      "anchor_norm": [0.11, 0.86],
+      "encoding_hint": "DORMANT until you've touched the dog on the Fool card. The first entry in the pair lattice flips from implicit (the chapter's refusal to name the dog) to confirmed (the dog has a name now: Faith). The Lovers card refuses to consummate any of the pairs but it WILL register them as they become legible — the lattice is itself the card's true reveal, accumulating across the deck.",
+      "reveals": "vol5_lovers_pair_john_faith_confirmed",
+      "cross_references": ["fool.json::fool_dog", "fool.json::fool_dog_companion"]
     }
   ],
 
   "hotspots": [
-    {"id":"lov_flip",    "shape":"rect_norm", "rect":[0.30, 0.20, 0.40, 0.60], "interact":"lovers.flip.attempt", "unlocks":"vol5_lovers_card_attempted"},
-    {"id":"lov_pairs",   "shape":"rect_norm", "rect":[0.05, 0.78, 0.40, 0.18], "interact":"lovers.pair.cycle",   "unlocks":"vol5_pair_lattice_seen"},
-    {"id":"lov_wait",    "shape":"rect_norm", "rect":[0.65, 0.04, 0.25, 0.10], "interact":"lovers.wait",        "unlocks":"vol5_lovers_waited"},
-    {"id":"lov_listen",  "shape":"rect_norm", "rect":[0.04, 0.04, 0.22, 0.12], "interact":"lovers.listen",      "unlocks":"vol5_lovers_listened"},
-    {"id":"lov_mirror",  "shape":"rect_norm", "rect":[0.74, 0.42, 0.18, 0.30], "interact":"lovers.mirror",      "unlocks":"vol5_lovers_mirror"},
-    {"id":"lov_graustark","shape":"rect_norm","rect":[0.10, 0.42, 0.18, 0.30], "interact":"lovers.graustark",   "unlocks":"vol5_graustark_keystone"}
+    {"id":"lov_flip",    "shape":"rect_norm", "rect":[0.30, 0.20, 0.40, 0.60], "interact":"lovers.flip.attempt", "unlocks":"vol5_lovers_card_attempted",
+     "cursor":"closer"},
+    {"id":"lov_pairs",   "shape":"rect_norm", "rect":[0.05, 0.78, 0.40, 0.18], "interact":"lovers.pair.cycle",   "unlocks":"vol5_pair_lattice_seen",
+     "cursor":"examine"},
+    {"id":"lov_wait",    "shape":"rect_norm", "rect":[0.65, 0.04, 0.25, 0.10], "interact":"lovers.wait",        "unlocks":"vol5_lovers_waited",
+     "cursor":"navigate"},
+    {"id":"lov_listen",  "shape":"rect_norm", "rect":[0.04, 0.04, 0.22, 0.12], "interact":"lovers.listen",      "unlocks":"vol5_lovers_listened",
+     "cursor":"examine"},
+    {"id":"lov_mirror",  "shape":"rect_norm", "rect":[0.74, 0.42, 0.18, 0.30], "interact":"lovers.mirror",      "unlocks":"vol5_lovers_mirror",
+     "cursor":"closer"},
+    {"id":"lov_graustark","shape":"rect_norm","rect":[0.10, 0.42, 0.18, 0.30], "interact":"lovers.graustark",   "unlocks":"vol5_graustark_keystone",
+     "cursor":"closer"},
+    {"id":"lov_hierophant_witness","shape":"rect_norm","rect":[0.32, 0.04, 0.16, 0.06],
+     "interact":"lovers.audi_inscription.read",
+     "unlocks":"vol5_lovers_hierophant_witness_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_audi_et_tace_known",
+     "notes":"DORMANT: appears only after the player has read AUDI ET TACE on the Hierophant card. The motto is now faintly inscribed across the upper border of the face-down back — the rite the Hierophant was always performing was for THIS card. The institution requires the silence the Lovers card insists on."},
+    {"id":"lov_emperor_throne_inverse","shape":"rect_norm","rect":[0.42, 0.62, 0.16, 0.10],
+     "interact":"lovers.empty_throne.seen",
+     "unlocks":"vol5_lovers_emperor_throne_inverse_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_emperor_steamboat_recognized",
+     "notes":"DORMANT: appears only after the player has recognized the steamboat motif on Dante's throne. A small impression of the SAME throne is now visible on the card back — but with two seats, one always empty. The Emperor's seat holds one; the Lovers' seat would hold two. The mirror at the deck's spine is succession ↔ refusal: Empress(III) inherits the throne, Lovers(VI) decline to occupy it."},
+    {"id":"lov_john_faith_confirmed","shape":"rect_norm","rect":[0.06, 0.84, 0.10, 0.04],
+     "interact":"lovers.john_faith.confirmed",
+     "unlocks":"vol5_lovers_pair_john_faith_confirmed",
+     "cursor":"examine",
+     "gated_by":"vol5_dog_introduced",
+     "notes":"DORMANT: appears only after the player has touched John's dog on the Fool card. The first pair in the implicit-pair lattice — JOHN & FAITH — flips from speculation to confirmed. The dog has a name now. Subsequent pair-confirmations would slot in alongside this one as their partner-cards' hooks fire."}
   ],
 
   "easter_eggs": [

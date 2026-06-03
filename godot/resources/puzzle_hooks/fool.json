@@ -115,6 +115,57 @@
       "encoding_hint": "DORMANT until you've found the steamboat on the Magician card. Frasier's model predicts the empire; this echo proves the prediction has already landed in John's peripheral vision. Two cards, one boat, one town.",
       "reveals": "vol5_steamboat_pair_seen",
       "cross_references": ["magician.json::mag_steamboat_in_model", "emperor.json"]
+    },
+    {
+      "id": "fool_clock",
+      "kind": "atmospheric_anchor",
+      "text": "the wall clock above the door reads 3:47 AM",
+      "anchor_norm": [0.50, 0.05],
+      "encoding_hint": "The clock will not move while the player is on this card. Only the painted shadow under it shifts, very slowly. The chapter is a held breath; the Fool's leap is canonically a pose, not an event. Examine it once and the held-breath read becomes visible the next time you enter the diner.",
+      "reveals": "vol5_fool_clock_read"
+    },
+    {
+      "id": "fool_door_bell",
+      "kind": "interactive_sound",
+      "text": "the small bell on a coil above the door",
+      "anchor_norm": [0.55, 0.06],
+      "encoding_hint": "Tapping the bell does nothing on first visit — the diner is too dead. After the Priestess's tapes are examined the bell answers with two distinct tones (open / close) that aren't the same chord. Elicia heard him leave; she has not yet heard him arrive anywhere. The asymmetry is the chapter.",
+      "reveals": "vol5_fool_bell_tapped"
+    },
+    {
+      "id": "fool_fluorescent",
+      "kind": "atmospheric_anchor",
+      "text": "the dawn-jaundiced fluorescent strip along the ceiling tile seam",
+      "anchor_norm": [0.51, 0.02],
+      "encoding_hint": "An ambient tick gates onto the soundtrack once noticed. The fluorescents are John's metronome — every time you return to the Fool card after noticing them, the tick is there under whatever else is playing.",
+      "reveals": "vol5_fool_fluorescent_ticked"
+    },
+    {
+      "id": "fool_anya_tape_label",
+      "kind": "dormant_cross_card",
+      "text": "a cassette spine labeled 'JOHN_47AM_3' tucked behind the BBS console",
+      "anchor_norm": [0.08, 0.45],
+      "encoding_hint": "DORMANT until you've examined Anya's tapes on the Priestess. Elicia has been recording the Fool too, has been for a while — and she shelves him next to Anya. '_3' means there are at least three tapes; the player only ever sees one. The Priestess archive is older than the chapter — the Fool was filed before he leapt.",
+      "reveals": "vol5_fool_anya_tape_label_seen",
+      "cross_references": ["high_priestess.json::pri_anya_tapes"]
+    },
+    {
+      "id": "fool_lovers_face_down",
+      "kind": "dormant_cross_card",
+      "text": "a second tiny card tucked behind the recursive Fool card on the diner wall — face-down, ornate pattern",
+      "anchor_norm": [0.11, 0.34],
+      "encoding_hint": "DORMANT until you've attempted to flip the Lovers card on VI. The card-within-the-card on Fool now has its OWN refused pair tucked behind it — the recursion goes both ways. Every modern person occupies an ancient archetype AND every ancient archetype hides a refused union behind it.",
+      "reveals": "vol5_fool_lovers_face_down_seen",
+      "cross_references": ["lovers.json::lov_flip"]
+    },
+    {
+      "id": "fool_audi_et_tace_tag",
+      "kind": "dormant_cross_card",
+      "text": "a small tag on the bindle reading AVDI ET TACE in the same dog-eared hand as the Hierophant's banner",
+      "anchor_norm": [0.31, 0.18],
+      "encoding_hint": "DORMANT until you've read the Hierophant's motto. The seeker also obeys the rite. The Fool may be 0 but he wears the institution's instruction stitched into his bag — the deck's two ends meet on a luggage tag. AUDI ET TACE addresses Maya in the church; it addresses John in the diner; it addresses the player on whatever screen they're on. Three rooms, one command.",
+      "reveals": "vol5_fool_audi_et_tace_seen",
+      "cross_references": ["hierophant.json::hie_avdi_et_tace"]
     }
   ],
 
@@ -153,7 +204,34 @@
      "unlocks":"vol5_fool_steamboat_echo_seen",
      "cursor":"examine",
      "gated_by":"vol5_magician_emperor_link",
-     "notes":"DORMANT: appears only after the player discovers the steamboat in Frasier's model city on the Magician card. A reflection of the same red boat is now visible in the diner window — the empire is already in John's peripheral vision."}
+     "notes":"DORMANT: appears only after the player discovers the steamboat in Frasier's model city on the Magician card. A reflection of the same red boat is now visible in the diner window — the empire is already in John's peripheral vision."},
+    {"id":"fool_clock","shape":"rect_norm","rect":[0.46,0.02,0.08,0.06],
+     "interact":"fool.clock.examined","unlocks":"vol5_fool_clock_read",
+     "cursor":"examine",
+     "notes":"the wall clock above the door reads 3:47 AM. No matter how long the player lingers it stays at 3:47 — only the painted shadow under the clock moves, very slowly. The Fool's pause is canonically the chapter's whole register."},
+    {"id":"fool_door_bell","shape":"rect_norm","rect":[0.52,0.04,0.06,0.05],
+     "interact":"fool.bell.tapped","unlocks":"vol5_fool_bell_tapped",
+     "cursor":"take",
+     "notes":"the small bell on a coil above the door. Tapping it makes no sound on first visit — the diner is too dead. After the Priestess card's tapes are examined the bell answers with TWO distinct tones (one for opening, one for closing) that aren't the same chord — Elicia heard him leave, she has not yet heard him arrive anywhere."},
+    {"id":"fool_fluorescent","shape":"rect_norm","rect":[0.36,0.00,0.30,0.04],
+     "interact":"fool.fluorescent.noticed","unlocks":"vol5_fool_fluorescent_ticked",
+     "cursor":"examine",
+     "notes":"the dawn-jaundiced fluorescent strip running along the ceiling tile seam. Notice it once and you'll start hearing its tick under the ambient track."},
+    {"id":"fool_anya_tape_label","shape":"rect_norm","rect":[0.04,0.42,0.08,0.06],
+     "interact":"fool.anya_tape_label.spotted","unlocks":"vol5_fool_anya_tape_label_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_anya_introduced",
+     "notes":"DORMANT: appears only after the player has examined the Anya tapes on the Priestess card. A small cassette spine labeled 'JOHN_47AM_3' is now visible tucked behind the BBS console on the counter — Elicia has been recording him too, has been for a while, and she shelves him next to Anya. The archive is older than the chapter."},
+    {"id":"fool_lovers_face_down","shape":"rect_norm","rect":[0.06,0.30,0.10,0.08],
+     "interact":"fool.lovers_card.recognized","unlocks":"vol5_fool_lovers_face_down_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_lovers_card_attempted",
+     "notes":"DORMANT: appears only after the player has attempted to flip the Lovers card on VI. The recursive Fool card pinned on the diner wall now shows a SECOND tiny card tucked behind it — face-down, in the same ornate pattern as the Lovers card. The card-within-the-card now has its own refused pair."},
+    {"id":"fool_audi_et_tace_tag","shape":"rect_norm","rect":[0.28,0.16,0.08,0.04],
+     "interact":"fool.bindle_tag.read","unlocks":"vol5_fool_audi_et_tace_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_audi_et_tace_known",
+     "notes":"DORMANT: appears only after the player has read AVDI ET TACE on the Hierophant. A small tag on John's bindle now visibly reads the same two words in the same dog-eared hand — the seeker also obeys the rite. The Fool may be 0 but he still wears the institution's instruction stitched into his bag."}
   ],
 
   "easter_eggs": [
