@@ -94,7 +94,13 @@
      "interact":"strength.death_mirror.warmer","unlocks":"vol5_strength_death_mirror_warmer_seen",
      "cursor":"examine",
      "gated_by":"vol5_death_strength_mirror_seen",
-     "notes":"DORMANT: appears only after the player has noticed the gloved-hand mirror on the Death card. The bare hand on the lion's jaw is now visibly the same hand as Ward C's gloved version — but at the warmer temperature. VIII ↔ XIII mirror reads both ways: Strength is Death warmed; Death is Strength clinical. Same gesture, two thermostats; the deck's gentlest opposition."}
+     "notes":"DORMANT: appears only after the player has noticed the gloved-hand mirror on the Death card. The bare hand on the lion's jaw is now visibly the same hand as Ward C's gloved version — but at the warmer temperature. VIII ↔ XIII mirror reads both ways: Strength is Death warmed; Death is Strength clinical. Same gesture, two thermostats; the deck's gentlest opposition."},
+    {"id":"str_unnamed_is_xvii","shape":"rect_norm","rect":[0.30,0.36,0.20,0.20],
+     "interact":"strength.unnamed.is_xvii",
+     "unlocks":"vol5_strength_is_xvii_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_star_offering_diorama_entered",
+     "notes":"DORMANT: appears only after the player has entered the Star's annual-offering diorama. The un-named figure on the Strength card now visibly carries a single new detail in her coat pocket — a corner of the same pre-printed D'AMBROSIO INDUSTRIAL form sticking out. The same figure performs the offering at XVII; the same coat carries the same form across both chapters. VIII ↔ XVII is the deck's gentlest spine — the gesture of the bare hand on the lion's jaw is the gesture of the bare hand on the vessel's rim. Two animals: the beast at peace and the river receiving. The chapter is the same labor at two temperatures.\n\n→ wakes content on Hermit (IX) and the Sinkhole Nexus thread."}
   ],
 
   "easter_eggs": [

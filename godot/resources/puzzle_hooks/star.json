@@ -75,7 +75,25 @@
      "interact":"star.tower_smoke.observed","unlocks":"vol5_star_tower_aftermath_seen",
      "cursor":"closer",
      "gated_by":"vol5_tower_queue_seen",
-     "notes":"DORMANT: appears only after the player has seen the failed render queue on the Tower card. The render farm at the edge of the clearing is still standing, still smoking. XVI → XVII rendered as visible aftermath — the Star arrives moments after the Tower, in the same frame, with the smoke still rising. The chapter's hope is what's left after a survivable collapse, not what is hoped for in advance."}
+     "notes":"DORMANT: appears only after the player has seen the failed render queue on the Tower card. The render farm at the edge of the clearing is still standing, still smoking. XVI → XVII rendered as visible aftermath — the Star arrives moments after the Tower, in the same frame, with the smoke still rising. The chapter's hope is what's left after a survivable collapse, not what is hoped for in advance."},
+    {"id":"str_eight_stars_are_names","shape":"rect_norm","rect":[0.30,0.16,0.40,0.18],
+     "interact":"star.eight_stars.are_names",
+     "unlocks":"vol5_star_eight_stars_are_names_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_star_water_was_offering_seen",
+     "notes":"DORMANT: appears only after the player has read the vessels-as-offering hotspot. The eight stars now visibly cluster as a small star-chart with faint labels — four on the upper half marked '+' (the four she pulled), three on the lower half marked '—' (the three she could not reach), and the central largest unmarked. The eighth star is herself. The chapter renders her survival as the eighth point of the same constellation — the rescuer counted among the recovered. The Star's hope is the realization that she belongs in the count she keeps.\n\n→ wakes the Nexus thread further. Cross-wakes content on Strength (VIII) and Hermit (IX)."},
+    {"id":"str_anniversary_thursday","shape":"rect_norm","rect":[0.40,0.40,0.20,0.10],
+     "interact":"star.thursday.anniversary",
+     "unlocks":"vol5_star_thursday_anniversary_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_lovers_sinkhole_unmarked_seen",
+     "notes":"DORMANT: appears only after the Lovers' sinkhole-unmarked-date hotspot fires. A small annotation now visibly appears at the horizon line — '+4y / Thursday' — the painted XVII falls on the Nexus anniversary, year four. The Tower's collapse Thursday morning was not coincidental in chapter-time but it was coincidental in the year; the un-named figure's annual offering was scheduled long before XVI fell. The chapter's open sky is the open sky she would have walked to anyway; the Tower happens to be in the same frame.\n\n→ deepens the Nexus thread."},
+    {"id":"str_offering_diorama_entry","shape":"rect_norm","rect":[0.22,0.56,0.20,0.18],
+     "interact":"star.offering.fetched",
+     "unlocks":"vol5_star_offering_diorama_entered",
+     "cursor":"closer",
+     "opens_diorama":"star_offering",
+     "notes":"ENTRY HOTSPOT: clicking the two empty vessels dispatches demon_archivist.17 to retrieve the year-four offering log. The diorama renders the offering as a witness log — no dialogue, only the archivist's observation beats. The un-named figure arrives, sets her vessels, reads her page, pours +IV into the river (eight rings — same count as the eight stars), pours — into the river (one long ring downstream), signs her dash, and walks home. Frasier watches from the still-smoking render farm at the eastern fence; he does not approach. The deck's first witness-log diorama; the chapter's most repeated typographic motif (the dash) reaches its fourth annual repetition."}
   ],
 
   "easter_eggs": [
