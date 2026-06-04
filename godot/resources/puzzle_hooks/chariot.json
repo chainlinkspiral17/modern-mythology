@@ -87,6 +87,42 @@
       "anchor_norm": [0.88, 0.93],
       "encoding_hint": "Antonio operates as 'the_charioteer' on the ember.ash.rest.bbs network. The D.O.A. marker means his BBS process is dead — possibly literally (the wreck) or operationally (he's offline as of now).",
       "reveals": "vol5_charioteer_handle"
+    },
+    {
+      "id": "cha_quentin_voicemail",
+      "kind": "dormant_cross_card",
+      "text": "Quentin's voicemail — placed from the St. Jude's booth, three rows back from the rite",
+      "anchor_norm": [0.84, 0.85],
+      "encoding_hint": "DORMANT until you've read AVDI ET TACE on the Hierophant. V → VII adjacency: the Hierophant performs the rite that demands silence; the same booth places the call that summons the Charioteer into motion. The status panel said QUENTIN CALL COMPLETE from the start — clicking now plays the actual voicemail. Antonio committed to the drive because Quentin asked him to. The institution's command (AUDI ET TACE) and the friend's call (the booth phone) are the same gesture in two registers.",
+      "reveals": "vol5_chariot_quentin_voicemail_heard",
+      "cross_references": ["hierophant.json::hie_banner", "hierophant.json::hie_avdi_et_tace"]
+    },
+    {
+      "id": "cha_jimmy_acolyte",
+      "kind": "dormant_cross_card",
+      "text": "the kneeling boy 'Y' from the Hierophant card is Jimmy — Y of JIMMY'S SABOTAGE JAMBALAYA",
+      "anchor_norm": [0.20, 0.78],
+      "encoding_hint": "DORMANT until you've touched the unnamed Y-acolyte on the Hierophant. The Lovers card's implicit-pair lattice listed MAYA & Y as 'too young; just kneelers' — refusing to commit to the pairing. The Chariot card confirms it indirectly: Y was Jimmy, who became the kitchen's saboteur, whose sabotage IS the wreck. The cards trace the boy from the pew to the burning kitchen via the menu item with his name on it.",
+      "reveals": "vol5_chariot_jimmy_acolyte_seen",
+      "cross_references": ["hierophant.json::hie_acolyte_y", "lovers.json::lov_pair_lattice"]
+    },
+    {
+      "id": "cha_dog_faith_witness",
+      "kind": "dormant_cross_card",
+      "text": "the sphinx-laid dog is Faith — the same dog from John's diner, now beside the wreck",
+      "anchor_norm": [0.60, 0.62],
+      "encoding_hint": "DORMANT until you've touched John's dog on the Fool. The classical Chariot card shows TWO sphinxes — the controlled duality. Modern Mythology renders the duality as ONE dog seen twice across the deck: at the Fool's feet at 3:47 AM, at the wreck site by sunrise. Faith does not appear at the wreck — Faith was already at the wreck before John finished wiping the counter. The card's TWO HORSES, ONE WRECK premise is also TWO STATIONS, ONE DOG.",
+      "reveals": "vol5_chariot_faith_witness_seen",
+      "cross_references": ["fool.json::fool_dog", "fool.json::fool_dog_companion"]
+    },
+    {
+      "id": "cha_lovers_pair_confirmation",
+      "kind": "pair_confirmation",
+      "text": "QUENTIN & ANTONIO — confirmed",
+      "anchor_norm": [0.92, 0.88],
+      "encoding_hint": "DORMANT until you've read the Lovers' pair lattice on VI. The Lovers card declined to confirm any pair from its lattice — the chapter's whole gesture is the refusal. The Chariot card has no such patience: the BBS diagnostic prints the pair as a system fact. 'the_charioteer (D.O.A.) ↔ booth_caller (Quentin).' Second entry in the pair lattice flips from implicit to confirmed (John & Faith was the first). The Lovers refuse; the deck consummates anyway, in the registers the Lovers won't speak.",
+      "reveals": "vol5_lovers_pair_quentin_antonio_confirmed",
+      "cross_references": ["lovers.json::lov_pair_lattice", "lovers.json::lov_pairs"]
     }
   ],
 
@@ -97,6 +133,7 @@
       "rect": [0.32, 0.32, 0.24, 0.30],
       "interact": "chariot.wreck.examined",
       "unlocks": "vol5_chariot_wreck_seen",
+      "cursor": "closer",
       "notes": "the crashed SUV centerpiece — touching it begins the wreck-reconstruction mechanic"
     },
     {
@@ -104,42 +141,88 @@
       "shape": "rect_norm",
       "rect": [0.55, 0.50, 0.10, 0.18],
       "interact": "chariot.dog.touched",
-      "unlocks": "vol5_chariot_sphinx_link"
+      "unlocks": "vol5_chariot_sphinx_link",
+      "cursor": "examine"
     },
     {
       "id": "cha_drinks_hotspot",
       "shape": "rect_norm",
       "rect": [0.66, 0.06, 0.30, 0.32],
       "interact": "chariot.drinks.examined",
-      "unlocks": "vol5_chariot_drinks_menu"
+      "unlocks": "vol5_chariot_drinks_menu",
+      "cursor": "examine"
     },
     {
       "id": "cha_food_hotspot",
       "shape": "rect_norm",
       "rect": [0.08, 0.62, 0.32, 0.28],
       "interact": "chariot.food.examined",
-      "unlocks": "vol5_chariot_food_menu"
+      "unlocks": "vol5_chariot_food_menu",
+      "cursor": "examine"
     },
     {
       "id": "cha_layout_hotspot",
       "shape": "rect_norm",
       "rect": [0.66, 0.40, 0.30, 0.28],
       "interact": "chariot.layout.examined",
-      "unlocks": "vol5_chariot_layout_seen"
+      "unlocks": "vol5_chariot_layout_seen",
+      "cursor": "closer"
     },
     {
       "id": "cha_status_hotspot",
       "shape": "rect_norm",
       "rect": [0.66, 0.78, 0.30, 0.18],
       "interact": "chariot.status.examined",
-      "unlocks": "vol5_chariot_diagnostic"
+      "unlocks": "vol5_chariot_diagnostic",
+      "cursor": "examine"
     },
     {
       "id": "cha_scaffold_hotspot",
       "shape": "rect_norm",
       "rect": [0.02, 0.08, 0.10, 0.55],
       "interact": "chariot.scaffold.examined",
-      "unlocks": "vol5_chariot_scaffold_check"
+      "unlocks": "vol5_chariot_scaffold_check",
+      "cursor": "examine"
+    },
+    {
+      "id": "cha_quentin_voicemail",
+      "shape": "rect_norm",
+      "rect": [0.74, 0.82, 0.20, 0.06],
+      "interact": "chariot.quentin_voicemail.played",
+      "unlocks": "vol5_chariot_quentin_voicemail_heard",
+      "cursor": "take",
+      "gated_by": "vol5_audi_et_tace_known",
+      "notes": "DORMANT: appears only after the player has read AVDI ET TACE on the Hierophant. The status panel's QUENTIN CALL COMPLETE line is now interactive — clicking plays the voicemail Quentin left from St. Jude's booth, three rows back from the rite. The same hand that told Maya to be silent placed the call that summoned the Charioteer. V → VII adjacency: the institution's command completes itself in motion."
+    },
+    {
+      "id": "cha_jimmy_acolyte",
+      "shape": "rect_norm",
+      "rect": [0.10, 0.74, 0.22, 0.08],
+      "interact": "chariot.jimmy_acolyte.recognized",
+      "unlocks": "vol5_chariot_jimmy_acolyte_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_y_identified",
+      "notes": "DORMANT: appears only after the player has touched the unnamed Y-acolyte on the Hierophant card. JIMMY'S SABOTAGE JAMBALAYA on the food menu now has a small annotation: the kneeling boy who couldn't speak in church is the saboteur in the kitchen. Maya & Y is the implicit pair the Lovers card declined to confirm — the Chariot confirms it by showing Y was Jimmy all along."
+    },
+    {
+      "id": "cha_dog_faith_witness",
+      "shape": "rect_norm",
+      "rect": [0.56, 0.58, 0.10, 0.10],
+      "interact": "chariot.faith.witnessed",
+      "unlocks": "vol5_chariot_faith_witness_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_dog_introduced",
+      "notes": "DORMANT: appears only after the player has touched John's dog on the Fool. The sphinx-laid dog beside the wreck IS Faith. Same dog, two stations of the journey — she leaves the diner counter at 3:47 AM, ends up beside Antonio's wreck. The Fool's lone companion becomes the Chariot's lone sentinel. Classical sphinx-pair is canonically TWO; the deck renders it as one dog twice."
+    },
+    {
+      "id": "cha_lovers_pair_confirmation",
+      "shape": "rect_norm",
+      "rect": [0.84, 0.86, 0.14, 0.06],
+      "interact": "chariot.qa_pair.confirmed",
+      "unlocks": "vol5_lovers_pair_quentin_antonio_confirmed",
+      "cursor": "examine",
+      "gated_by": "vol5_pair_lattice_seen",
+      "notes": "DORMANT: appears only after the player has read the Lovers' pair lattice on VI. The sysop line 'the_charioteer (D.O.A.)' gains a second line: '↔ booth_caller (Quentin)' — the QUENTIN & ANTONIO pair from the Lovers lattice is confirmed by the BBS itself. The Lovers card refused to consummate the reading; the Chariot's diagnostic does it anyway, posthumously. Second entry in the pair lattice flips from speculation to confirmed."
     }
   ],
 

@@ -166,6 +166,19 @@
       "encoding_hint": "DORMANT until you've read the Hierophant's motto. The seeker also obeys the rite. The Fool may be 0 but he wears the institution's instruction stitched into his bag — the deck's two ends meet on a luggage tag. AUDI ET TACE addresses Maya in the church; it addresses John in the diner; it addresses the player on whatever screen they're on. Three rooms, one command.",
       "reveals": "vol5_fool_audi_et_tace_seen",
       "cross_references": ["hierophant.json::hie_avdi_et_tace"]
+    },
+    {
+      "id": "fool_charioteer_scroll",
+      "kind": "dormant_cross_card",
+      "text_lines": [
+        "WELCOME TO RUST_CODE.BBS / GRAUSTARK_FRONTIER",
+        "sysop ember.ash.rest.bbs: the_charioteer (D.O.A.)",
+        "ACTIVE NODES: 63"
+      ],
+      "anchor_norm": [0.50, 0.04],
+      "encoding_hint": "DORMANT until you've read the Chariot's sysop handle. The diner's BBS header has been the project's whole meta-system since the Fool's first frame. Now it carries an obituary. ACTIVE NODES dropped from 64 to 63 — the node count was a chapter count, the chapter count was a person count, the person count is now one short. The Fool wipes his counter inside a network that has been counting its dead all night.",
+      "reveals": "vol5_fool_charioteer_scroll_seen",
+      "cross_references": ["chariot.json::cha_charioteer", "chariot.json::cha_status_doa"]
     }
   ],
 
@@ -231,7 +244,12 @@
      "interact":"fool.bindle_tag.read","unlocks":"vol5_fool_audi_et_tace_seen",
      "cursor":"examine",
      "gated_by":"vol5_audi_et_tace_known",
-     "notes":"DORMANT: appears only after the player has read AVDI ET TACE on the Hierophant. A small tag on John's bindle now visibly reads the same two words in the same dog-eared hand — the seeker also obeys the rite. The Fool may be 0 but he still wears the institution's instruction stitched into his bag."}
+     "notes":"DORMANT: appears only after the player has read AVDI ET TACE on the Hierophant. A small tag on John's bindle now visibly reads the same two words in the same dog-eared hand — the seeker also obeys the rite. The Fool may be 0 but he still wears the institution's instruction stitched into his bag."},
+    {"id":"fool_charioteer_scroll","shape":"rect_norm","rect":[0.30,0.02,0.40,0.04],
+     "interact":"fool.bbs_banner.read","unlocks":"vol5_fool_charioteer_scroll_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_charioteer_handle",
+     "notes":"DORMANT: appears only after the player has read the sysop handle on the Chariot card. The RUST_CODE.BBS / GRAUSTARK_FRONTIER header banner now scrolls a second line at boot: 'sysop ember.ash.rest.bbs: the_charioteer (D.O.A.) — ACTIVE NODES: 63.' The active node count drops by one. The diner's BBS already knows the Chariot crashed; John is wiping a counter inside a network that has been counting its dead all night."}
   ],
 
   "easter_eggs": [

@@ -78,6 +78,15 @@
       "encoding_hint": "DORMANT until you've touched the dog on the Fool card. The first entry in the pair lattice flips from implicit (the chapter's refusal to name the dog) to confirmed (the dog has a name now: Faith). The Lovers card refuses to consummate any of the pairs but it WILL register them as they become legible — the lattice is itself the card's true reveal, accumulating across the deck.",
       "reveals": "vol5_lovers_pair_john_faith_confirmed",
       "cross_references": ["fool.json::fool_dog", "fool.json::fool_dog_companion"]
+    },
+    {
+      "id": "lov_quentin_antonio_confirmed",
+      "kind": "pair_confirmation",
+      "text": "QUENTIN & ANTONIO — confirmed",
+      "anchor_norm": [0.23, 0.86],
+      "encoding_hint": "DORMANT until the Chariot's status panel has played Quentin's voicemail. The Lovers card declined the pairing in its own register; the Chariot card confirms it from the wreck site as a BBS diagnostic — sysop (the_charioteer) ↔ booth_caller (Quentin). The Lovers register the confirmation grudgingly: the line lights, the pattern darkens around it, the card still does not flip. Two of six pair-lattice entries now confirmed; four (Frasier&Aria, Anya&Elicia, Nicola&Dante, Maya&Y) remain implicit and await their own cross-card hooks.",
+      "reveals": "vol5_lovers_pair_quentin_antonio_lovers_seen",
+      "cross_references": ["chariot.json::cha_quentin_voicemail", "chariot.json::cha_lovers_pair_confirmation"]
     }
   ],
 
@@ -111,7 +120,13 @@
      "unlocks":"vol5_lovers_pair_john_faith_confirmed",
      "cursor":"examine",
      "gated_by":"vol5_dog_introduced",
-     "notes":"DORMANT: appears only after the player has touched John's dog on the Fool card. The first pair in the implicit-pair lattice — JOHN & FAITH — flips from speculation to confirmed. The dog has a name now. Subsequent pair-confirmations would slot in alongside this one as their partner-cards' hooks fire."}
+     "notes":"DORMANT: appears only after the player has touched John's dog on the Fool card. The first pair in the implicit-pair lattice — JOHN & FAITH — flips from speculation to confirmed. The dog has a name now. Subsequent pair-confirmations would slot in alongside this one as their partner-cards' hooks fire."},
+    {"id":"lov_quentin_antonio_confirmed","shape":"rect_norm","rect":[0.18, 0.84, 0.10, 0.04],
+     "interact":"lovers.quentin_antonio.confirmed",
+     "unlocks":"vol5_lovers_pair_quentin_antonio_lovers_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_chariot_quentin_voicemail_heard",
+     "notes":"DORMANT: appears only after the player has played Quentin's voicemail on the Chariot card. Second entry in the implicit-pair lattice — QUENTIN & ANTONIO — flips from speculation to confirmed. The Lovers card refused to render the pair; the Chariot card confirms it as a system fact (sysop ↔ booth_caller). The Lovers register the confirmation grudgingly: the line lights up, the pattern darkens around it, the card still doesn't flip."}
   ],
 
   "easter_eggs": [
