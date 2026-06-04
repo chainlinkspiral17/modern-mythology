@@ -323,7 +323,13 @@
       "cursor": "examine",
       "gated_by": "vol5_hierophant_call_1_played",
       "notes": "DORMANT: appears only after the player has played Call 1 (Antonio) in the Hierophant booth diorama. The BBS status panel's 'quentin call complete' line now visibly carries a small annotation: 'origin: st_judes.bbs vestibule booth — 06:35 CT — duration 70 s.' The call the panel logged is now sourced. The diagnostic surface that has been showing 'complete' from the start was complete TO Antonio; daemon_observer surfaced the source FROM Quent. The same call, two demons, two endpoints."
-    }
+    },
+    {"id":"cha_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.86,0.08,0.08],
+     "interact":"chariot.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_chariot_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"VII — THE CHARIOT · 'the black pickup'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to motion is that she does not drive; she rides. The Chariot episode is twenty-two minutes of her literally in a car behind a black pickup with Louisiana plates, filming through the windshield. The pickup is the same pickup that arrives in vol6 ch1. She filmed it three years before vol6's diegetic timeline. RES_SOL_VERIFY's compliance comment under the episode ('vehicle plate not redacted — pls advise') is the deck's clearest evidence that NexCorp has been watching vol5's archivist for years and has chosen not to act on her surveillance of theirs."}
   ],
 
   "easter_eggs": [

@@ -123,7 +123,13 @@
      "unlocks":"vol5_world_frog_diorama_entered",
      "cursor":"closer",
      "opens_diorama":"world_frog",
-     "notes":"ENTRY HOTSPOT: clicking the Frog at the wreath's center opens the deck's closing oracle. The Frog reads all 22 arcana in order with brief qualified verdicts ('mostly' as the deck's signature discipline). Click any card row to read the Frog's gloss. The reading ends with XXI THE WORLD — the deck reads the chapter the reader is in. The Frog is the only diorama-source that is not a demon (the_frog speaks for itself; integrity MOSTLY)."}
+     "notes":"ENTRY HOTSPOT: clicking the Frog at the wreath's center opens the deck's closing oracle. The Frog reads all 22 arcana in order with brief qualified verdicts ('mostly' as the deck's signature discipline). Click any card row to read the Frog's gloss. The reading ends with XXI THE WORLD — the deck reads the chapter the reader is in. The Frog is the only diorama-source that is not a demon (the_frog speaks for itself; integrity MOSTLY)."},
+    {"id":"wld_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.86,0.1,0.1],
+     "interact":"world.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_world_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XXI — THE WORLD · 'the wreath'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to closure is that she does not close. The World episode is her honest record of a circle with a gap. The wreath is a wreath of Halsey wildflowers from Plot IV; the gap is the void mother's silhouette; the slow rotation across twenty-two minutes brings the gap to dead center by the credits. The deck's last card is the deck's most reserved figure rendered as the absence the chapter contains. The Frog at XXI does not read the episode aloud, but the Frog's silence is congruent with Elicia's. The deck's closing image is the series' closing image. The series taught the deck how to end."}
   ],
 
   "easter_eggs": [

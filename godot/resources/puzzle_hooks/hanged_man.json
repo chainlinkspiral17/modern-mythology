@@ -140,7 +140,13 @@
      "unlocks":"vol5_hanged_aria_bathroom_rhyme_seen",
      "cursor":"examine",
      "gated_by":"vol5_aria_bathroom_fallback",
-     "notes":"DORMANT: appears only after the Empress Aria-log diorama surfaces the bathroom-as-fallback evaluation. Natalie's apartment doorway now visibly shows a faint emerald HUD overlay along its frame — Aria's geometry, the same fallback Aria registered for Nicola, mapped onto Natalie's space. The Empress chapter's posture (alone in a chamber with the bathroom one room away as registered exit) IS the Hanged Man chapter's posture, six months later, on a different POV. III ↔ XII rendered as a shared body-architecture across two characters."}
+     "notes":"DORMANT: appears only after the Empress Aria-log diorama surfaces the bathroom-as-fallback evaluation. Natalie's apartment doorway now visibly shows a faint emerald HUD overlay along its frame — Aria's geometry, the same fallback Aria registered for Nicola, mapped onto Natalie's space. The Empress chapter's posture (alone in a chamber with the bathroom one room away as registered exit) IS the Hanged Man chapter's posture, six months later, on a different POV. III ↔ XII rendered as a shared body-architecture across two characters."},
+    {"id":"hng_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.04,0.1,0.1],
+     "interact":"hanged_man.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_hanged_man_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XII — THE HANGED MAN · 'the vigil'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to vigil is the relationship of a person who has held many. The Hanged Man episode is her own all-night reading restaged for Natalie's hands. The three cards that repeat (Hanged Man, Moon, Star) are the three cards Elicia drew at her own vigil years earlier and could not shuffle out of. Natalie does not know Elicia held the vigil first. Natalie's comment under the episode — 'i did this. i still do this.' — is the deck's quietest acknowledgment that two women on different schedules have been holding the same vigil. The deck's XII chapter is partly Natalie's version. The episode is partly Elicia's."}
   ],
 
   "easter_eggs": [

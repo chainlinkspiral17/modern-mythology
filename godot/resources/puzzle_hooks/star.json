@@ -93,7 +93,13 @@
      "unlocks":"vol5_star_offering_diorama_entered",
      "cursor":"closer",
      "opens_diorama":"star_offering",
-     "notes":"ENTRY HOTSPOT: clicking the two empty vessels dispatches demon_archivist.17 to retrieve the year-four offering log. The diorama renders the offering as a witness log — no dialogue, only the archivist's observation beats. The un-named figure arrives, sets her vessels, reads her page, pours +IV into the river (eight rings — same count as the eight stars), pours — into the river (one long ring downstream), signs her dash, and walks home. Frasier watches from the still-smoking render farm at the eastern fence; he does not approach. The deck's first witness-log diorama; the chapter's most repeated typographic motif (the dash) reaches its fourth annual repetition."}
+     "notes":"ENTRY HOTSPOT: clicking the two empty vessels dispatches demon_archivist.17 to retrieve the year-four offering log. The diorama renders the offering as a witness log — no dialogue, only the archivist's observation beats. The un-named figure arrives, sets her vessels, reads her page, pours +IV into the river (eight rings — same count as the eight stars), pours — into the river (one long ring downstream), signs her dash, and walks home. Frasier watches from the still-smoking render farm at the eastern fence; he does not approach. The deck's first witness-log diorama; the chapter's most repeated typographic motif (the dash) reaches its fourth annual repetition."},
+    {"id":"str_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.04,0.1,0.1],
+     "interact":"star.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_star_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XVII — THE STAR · 'the river offering'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to the un-named figure is the relationship of the only consistent witness. The Star episode is the only existing document of the figure's annual offering. Elicia filmed it from a hide on the opposite bank without permission. She has filmed each subsequent year too — years two, three, four, the same offering, the same dash signature — but only year one aired. The other three years are on a partition of her archive labelled 'private — release contingent on figure's consent.' The figure has not given consent. Elicia will not air them. The Star card is partly the chapter of the deck's most disciplined refusal."}
   ],
 
   "easter_eggs": [

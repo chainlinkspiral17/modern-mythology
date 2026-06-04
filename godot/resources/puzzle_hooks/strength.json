@@ -100,7 +100,13 @@
      "unlocks":"vol5_strength_is_xvii_seen",
      "cursor":"examine",
      "gated_by":"vol5_star_offering_diorama_entered",
-     "notes":"DORMANT: appears only after the player has entered the Star's annual-offering diorama. The un-named figure on the Strength card now visibly carries a single new detail in her coat pocket — a corner of the same pre-printed D'AMBROSIO INDUSTRIAL form sticking out. The same figure performs the offering at XVII; the same coat carries the same form across both chapters. VIII ↔ XVII is the deck's gentlest spine — the gesture of the bare hand on the lion's jaw is the gesture of the bare hand on the vessel's rim. Two animals: the beast at peace and the river receiving. The chapter is the same labor at two temperatures.\n\n→ wakes content on Hermit (IX) and the Sinkhole Nexus thread."}
+     "notes":"DORMANT: appears only after the player has entered the Star's annual-offering diorama. The un-named figure on the Strength card now visibly carries a single new detail in her coat pocket — a corner of the same pre-printed D'AMBROSIO INDUSTRIAL form sticking out. The same figure performs the offering at XVII; the same coat carries the same form across both chapters. VIII ↔ XVII is the deck's gentlest spine — the gesture of the bare hand on the lion's jaw is the gesture of the bare hand on the vessel's rim. Two animals: the beast at peace and the river receiving. The chapter is the same labor at two temperatures.\n\n→ wakes content on Hermit (IX) and the Sinkhole Nexus thread."},
+    {"id":"str_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.04,0.1,0.1],
+     "interact":"strength.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_strength_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"VIII — STRENGTH · 'the woman at the fence'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to gentleness is the relationship of a camera operator to a working method she is trying to learn. The Strength episode is her case for being-unafraid as documentation discipline. She filmed the woman feeding the stray for eleven consecutive evenings; on the eleventh, the dog was not there; she filmed the woman waiting anyway. The un-named figure is canonically the same actress as IX and XVII; Elicia has filmed her three times and never asked her name. The dash signature on the deck's Strength card is also the dash that closes the un-named figure's casting credit in this episode."}
   ],
 
   "easter_eggs": [

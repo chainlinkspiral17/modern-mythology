@@ -96,7 +96,13 @@
      "unlocks":"vol5_judgement_ensemble_diorama_entered",
      "cursor":"closer",
      "opens_diorama":"ensemble_tape",
-     "notes":"ENTRY HOTSPOT: clicking the empty center position dispatches daemon_listener.02 to fetch ENSEMBLE_01 (50:00, integrity 0.97 — refusal noted). The diorama renders the full recording as a scrubbable waveform; 15 event markers across 50 minutes. Five spoken lines (Frasier opens, Frank's trumpet, Maya quotes Quent, Dante names the dancer, the un-named figure on the river). Two Faith tail-thumps. Three Frog croaks (XXI oracle present at XX's edge). The chapter is the gathering held; daemon_listener.02's integrity report notes 'refusal noted' — the verdict-render is what the demon agreed not to surface."}
+     "notes":"ENTRY HOTSPOT: clicking the empty center position dispatches daemon_listener.02 to fetch ENSEMBLE_01 (50:00, integrity 0.97 — refusal noted). The diorama renders the full recording as a scrubbable waveform; 15 event markers across 50 minutes. Five spoken lines (Frasier opens, Frank's trumpet, Maya quotes Quent, Dante names the dancer, the un-named figure on the river). Two Faith tail-thumps. Three Frog croaks (XXI oracle present at XX's edge). The chapter is the gathering held; daemon_listener.02's integrity report notes 'refusal noted' — the verdict-render is what the demon agreed not to surface."},
+    {"id":"jdg_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.04,0.1,0.1],
+     "interact":"judgement.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_judgement_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XX — JUDGEMENT · 'the ensemble gesture'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to ensemble is that she rejects solos. The Judgement episode is her gathering. She cast twelve people to rehearse one gesture — slow raising of the right hand to the level of the eye, held three seconds, lowered to the heart. The twelve people are the actual twelve survivors of the Sinkhole Nexus. She did not tell them they were survivors when she cast them. They learned by being cast. Frasier's comment under this episode ('the gesture is multiplied') is the deck's quietest confirmation. The deck's Judgement chapter is partly Elicia's casting record made public."}
   ],
 
   "easter_eggs": [

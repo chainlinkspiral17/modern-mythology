@@ -194,7 +194,13 @@
       "gated_by": "vol5_magician_painting_acknowledged",
       "opens_diorama": "frasier_dante_painting",
       "notes": "ENTRY HOTSPOT: appears after the graphite study has been examined. Clicking the study dispatches demon_archivist.01 to retrieve the recorded conversation from seven years prior — Dante's office, Tuesday afternoon, the painting handed across the desk. demon_archivist.04 (Dante's office endpoint) co-holds the recording; the substrate has been waiting seven years for an authorized listener. The diorama plays the conversation in full (10:18) with eight payload markers: the painting handed over, Dante calling John 'a good waiter,' Dante choosing 'fired,' Frasier choosing 'quit,' the commitment to hang it here, the envelope-not-for-painting distinction, Frasier's 'I painted it because I saw him,' the back-stairs exit, and Dante hanging the painting alone in eight minutes of post-Frasier silence. The deck's most preserved object passing from maker to keeper, recorded by both endpoints, retrieved (in vol6) by Alberto."
-    }
+    },
+    {"id":"mag_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.04,0.08,0.08],
+     "interact":"magician.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_magician_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"I — THE MAGICIAN · 'the trace'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to Frasier is the relationship of an archivist to a maker who does not know he is being archived. The Magician was the episode she was most afraid to make, because filming Frasier directly would have broken her cover with him. She cast an electrician instead. The breathing server rack is her metaphor for what Frasier is doing inside his workshop — a piece of hardware so loaded with intention it has become a creature. The episode aired with no acknowledgment; Frasier commented 'the trace is correct' under it the same day."}
   ],
 
   "easter_eggs": [

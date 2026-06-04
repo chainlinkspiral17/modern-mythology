@@ -128,7 +128,13 @@
      "interact":"justice.marta.in_ward","unlocks":"vol5_justice_marta_in_ward_seen",
      "cursor":"examine",
      "gated_by":"vol5_ward_c_marta_present",
-     "notes":"DORMANT: appears only after the player has read the Bed 5 nurse's note in the Death (XIII) Ward C diorama. Mrs. Romero's photo on Erica's bench now visibly has a hospital admit-band tucked behind it. Marta Romero — Anna's mother, Erica's client — was in Bed 5 of Ward C the night of Walpurgisnacht. Comfortable. Family stayed until 22:00. The case the chapter argues is the case of a living plaintiff who is one ward over. Erica did not know. The PetroTex side did. They have been arguing against a deposition they knew was being given by a woman in a hospital bed."}
+     "notes":"DORMANT: appears only after the player has read the Bed 5 nurse's note in the Death (XIII) Ward C diorama. Mrs. Romero's photo on Erica's bench now visibly has a hospital admit-band tucked behind it. Marta Romero — Anna's mother, Erica's client — was in Bed 5 of Ward C the night of Walpurgisnacht. Comfortable. Family stayed until 22:00. The case the chapter argues is the case of a living plaintiff who is one ward over. Erica did not know. The PetroTex side did. They have been arguing against a deposition they knew was being given by a woman in a hospital bed."},
+    {"id":"jus_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.86,0.1,0.1],
+     "interact":"justice.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_justice_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XI — JUSTICE · 'deposition room b'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to legal truth is the relationship of a person whose own records were inadmissible to a system that requires admissibility. The Justice episode is her statement of method: the deck's records precede the deck's trials. The court reporter types a future deposition; the seal on the cabinet is honey wax; the law firm's lobby reads CAMPBELL & ASSOC. The actress is the same actress who plays Erica Campbell in vol5. Erica has not seen the episode. When she sees it (vol6 reserve) she will recognize the typing as her own."}
   ],
 
   "easter_eggs": [

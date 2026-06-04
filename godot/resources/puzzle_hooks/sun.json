@@ -89,7 +89,13 @@
      "interact":"sun.static.dispelled","unlocks":"vol5_sun_static_dispelled_seen",
      "cursor":"examine",
      "gated_by":"vol5_moon_static_seen",
-     "notes":"DORMANT: appears only after the player has read Natalie's static field on the Moon card. The wall section that was the Moon's 4:3 static field is now visibly clean morning light — the static dissolved by direct sun. XVIII → XIX is the night trio's closing transition. The Moon's grain becomes the Sun's mote; same medium, different time of day."}
+     "notes":"DORMANT: appears only after the player has read Natalie's static field on the Moon card. The wall section that was the Moon's 4:3 static field is now visibly clean morning light — the static dissolved by direct sun. XVIII → XIX is the night trio's closing transition. The Moon's grain becomes the Sun's mote; same medium, different time of day."},
+    {"id":"sn_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.86,0.08,0.08],
+     "interact":"sun.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_sun_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XIX — THE SUN · 'four motes'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to small attention is the relationship of a watcher who counts the slightest things. The Sun episode is her self-portrait as the watcher of motes. She cast Frank because his stillness matched hers and his counting was faster. The phone call he makes at the end is the call she is waiting to receive in vol5's Sun chapter (Frank → Elicia, 42 seconds, Saturday morning). The bookmark closes the loop between the episode and the deck. She filmed the call's first take three years before he made it. The deck's most coincident bookmark is the deck's least coincidental — she was waiting."}
   ],
 
   "easter_eggs": [

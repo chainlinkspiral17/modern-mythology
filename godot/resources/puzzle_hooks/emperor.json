@@ -230,7 +230,13 @@
       "cursor": "closer",
       "opens_diorama": "emperor_appointment",
       "notes": "ENTRY HOTSPOT: clicking the bottom-left of the painted scene (where Dante's bourbon glass sits on a small desk) dispatches daemon_scribe.04 to fetch Dante's leather appointment book (mon-fri, page 16-20 of 366). Each weekday is a page; clickable time slots reveal what's written. Wednesday is the focal page (the day of the painted Empress dinner). Slot 14: 'alma (private)' redacted by subject — daemon_scribe respects the not-writing. Forward seed for vol6 (Alma's identity)."
-    }
+    },
+    {"id":"emp_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.86,0.08,0.08],
+     "interact":"emperor.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_emperor_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"IV — THE EMPEROR · 'the chairman at the bbq'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to Dante is the relationship of a former records-office employee to her former employer. She worked the D'Ambrosio Household Archive in the 1990s; she left when she realized what she was filing. The Emperor episode is the document of that resignation. The silent BBQ, the unanimous arrival, the ram-head door knocker — these are her catalogue of authority's appetite for compliance without speech. Dante never knew she made it. He would have recognized the patio if he watched. He does not watch."}
   ],
 
   "easter_eggs": [

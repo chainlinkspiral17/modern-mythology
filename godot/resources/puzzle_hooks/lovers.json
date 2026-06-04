@@ -171,7 +171,13 @@
      "unlocks":"vol5_lovers_pair_erica_anna_confirmed",
      "cursor":"examine",
      "gated_by":"vol5_wheel_files_diorama_entered",
-     "notes":"DORMANT: appears only after the player has entered the Wheel files diorama. The Lovers' pair lattice line ERICA&ANNA flips from implicit to confirmed — but the confirmation reads as the friendship that predates the case. Mrs. Romero entrusted the photo to Anna; Anna gave it to Erica because Erica is her friend. The case is built on a pair the deck never names as such. The Lovers' lattice acknowledges friendship as the deck's overlooked pair category. Fifth pair confirmed; only Anya&Elicia (which Elicia archives ambiguously) and the un-named-woman&Faith (which the deck refuses to render as a pair) remain implicit. The chapter is approaching its accounting."}
+     "notes":"DORMANT: appears only after the player has entered the Wheel files diorama. The Lovers' pair lattice line ERICA&ANNA flips from implicit to confirmed — but the confirmation reads as the friendship that predates the case. Mrs. Romero entrusted the photo to Anna; Anna gave it to Erica because Erica is her friend. The case is built on a pair the deck never names as such. The Lovers' lattice acknowledges friendship as the deck's overlooked pair category. Fifth pair confirmed; only Anya&Elicia (which Elicia archives ambiguously) and the un-named-woman&Faith (which the deck refuses to render as a pair) remain implicit. The chapter is approaching its accounting."},
+    {"id":"lov_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.86,0.1,0.1],
+     "interact":"lovers.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_lovers_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"VI — THE LOVERS · 'the cousin at the wedding'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to pairing is the relationship of a person who does not pair to a chapter that demands it. She made the Lovers episode about cousins because cousins are her exact bond — adjacent silence across a tablecloth, a tape passed without a word. The ANYA_03 tape that changes hands in the episode is the actual ANYA_03 tape now on her vol5 archive shelf. The cousin who hands it over is the same actress who plays the un-named figure at VIII/IX/XVII. The deck's Lovers card and the deck's un-named figure are the same casting decision."}
   ],
 
   "easter_eggs": [

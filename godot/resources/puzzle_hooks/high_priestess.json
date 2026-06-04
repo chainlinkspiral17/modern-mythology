@@ -221,6 +221,16 @@
       "cursor": "closer",
       "opens_diorama": "anya_tape",
       "notes": "ENTRY HOTSPOT: clicking the Anya tape stack dispatches daemon_listener.02 to fetch ANYA_03 side B (14:22 in, 280 sec, integrity 0.96). The diorama renders the tape as a scrubbable waveform with six event markers; click any event to seek + reveal. The cousin thing surfaces twice in this tape; vol6 reads back on three more (ANYA_07, ANYA_11)."
+    },
+    {
+      "id": "pri_pomegranate_hour_shelf",
+      "shape": "rect_norm",
+      "rect": [0.66, 0.30, 0.20, 0.18],
+      "interact": "priestess.pomegranate_hour.shelf",
+      "unlocks": "vol5_priestess_pomegranate_hour_shelf",
+      "cursor": "closer",
+      "gated_by": "lore:elicia_tarot_journal",
+      "notes": "DORMANT: appears only after the player has read Elicia's tarot symbology journal. A second tape shelf — previously read as the lower edge of the Anya stack — now visibly resolves as a separate, labelled shelf marked in her hand: 'VEIL.tv RIPS · POMEGRANATE HOUR · S1 · 22 ep.' Twenty-two VHS spines are now visible, each labelled with one Major Arcana numeral (0–XXI) in burgundy ink. Elicia made a Lynch-tonal web series across vol3–vol5; each episode mirrors one arcana, each foreshadows vol6 (Planned Community / Harmony Creek Estates / NexCorp) and vol7 (Land of Milk & Honey / Halsey orchards). The host (her) does not speak in any episode. See _POMEGRANATE_HOUR.md for the full series doc. Unlocking this shelf wakes a per-card hotspot on every Major Arcana — Elicia's relationship to that arcana, expressed as the episode she made for it. → wakes 22 cross-card hotspots."
     }
   ],
 

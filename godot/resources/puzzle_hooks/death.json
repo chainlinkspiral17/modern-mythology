@@ -99,7 +99,13 @@
      "interact":"death.ward.entered","unlocks":"vol5_death_ward_diorama_entered",
      "cursor":"closer",
      "opens_diorama":"ward_c",
-     "notes":"ENTRY HOTSPOT: clicking the centre of the painted ward zooms the player into the Ward C diorama — an interactive ASCII layout of the six beds + nursing station, with the night-nurse's 06:00 handover report distributed across the bed hotspots. Reveals fire SaveSystem unlocks that wake content on Hanged Man (Simon was here), Justice (Marta was here), and Emperor (Dante was here). The diorama is the chapter's playable form."}
+     "notes":"ENTRY HOTSPOT: clicking the centre of the painted ward zooms the player into the Ward C diorama — an interactive ASCII layout of the six beds + nursing station, with the night-nurse's 06:00 handover report distributed across the bed hotspots. Reveals fire SaveSystem unlocks that wake content on Hanged Man (Simon was here), Justice (Marta was here), and Emperor (Dante was here). The diorama is the chapter's playable form."},
+    {"id":"dth_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.04,0.1,0.1],
+     "interact":"death.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_death_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XIII — DEATH · 'ward c'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to count is total. The Death episode is her practice scale — six beds, two empty, the nurse doing the arithmetic at 3 AM. The ward she filmed in is canonically Harmony Creek Memorial. The hallway poster credits NexCorp Health Network. The episode predicts vol5's XIII chapter so precisely that the deck's painted Death card is in some sense the second take. Elicia did not set out to predict; she set out to count. The accuracy is the count's consequence, not its intent."}
   ],
 
   "easter_eggs": [

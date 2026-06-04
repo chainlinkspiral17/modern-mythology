@@ -93,7 +93,13 @@
      "interact":"temperance.six_beds.recognized","unlocks":"vol5_temperance_six_beds_recognized",
      "cursor":"examine",
      "gated_by":"vol5_death_six_beds_counted",
-     "notes":"DORMANT: appears only after the player has counted the empty beds on the Death card. A small subdial on Frank's clock now visibly reads '6 - 2 = 4 / four still warm.' Frank does the Death card's arithmetic from across town — the moderate Tuesday holds the ward's count as a quiet measurement. XIII → XIV adjacency: the ward's body count becomes the Temperance chapter's working temperature."}
+     "notes":"DORMANT: appears only after the player has counted the empty beds on the Death card. A small subdial on Frank's clock now visibly reads '6 - 2 = 4 / four still warm.' Frank does the Death card's arithmetic from across town — the moderate Tuesday holds the ward's count as a quiet measurement. XIII → XIV adjacency: the ward's body count becomes the Temperance chapter's working temperature."},
+    {"id":"tmp_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.86,0.08,0.08],
+     "interact":"temperance.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_temperance_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XIV — TEMPERANCE · 'two cups'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to patience is that she has more of it than anyone she has filmed. The Temperance episode is her case that the camera can hold what a kitchen table holds. She filmed the entire twenty-two minutes from a fixed tripod without operator presence. The man (Frank) was not directed; he sat. The two cups (cold coffee, warm chamomile) are his actual cups; he brought them. The chamomile is Halsey Apiaries single-source. Frank does not yet know the episode exists. He will find it via her tarot journal in vol5's Sun chapter; the bookmark will close the loop."}
   ],
 
   "easter_eggs": [

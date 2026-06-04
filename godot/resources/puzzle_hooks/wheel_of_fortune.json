@@ -156,7 +156,13 @@
      "unlocks":"vol5_wheel_files_diorama_entered",
      "cursor":"closer",
      "opens_diorama":"wheel_files",
-     "notes":"ENTRY HOTSPOT: clicking the Fortress Menu in the painted scene dispatches daemon_archivist.10 to fetch the four LAWYER_FILES_INDEX.EXE files in full. File 3 (Alberto's Call Log) contains six clickable rows with Erica's red-ink marginalia; several wire cross-card unlocks for Emperor (Dante audit), Hierophant (Quent recorded himself), Devil (Daigle ducked), and a 23 Feb unidentified-caller forward seed. The Fortress Menu in the painted scene is the daemon's table of contents; the diorama is the daemon's full delivery."}
+     "notes":"ENTRY HOTSPOT: clicking the Fortress Menu in the painted scene dispatches daemon_archivist.10 to fetch the four LAWYER_FILES_INDEX.EXE files in full. File 3 (Alberto's Call Log) contains six clickable rows with Erica's red-ink marginalia; several wire cross-card unlocks for Emperor (Dante audit), Hierophant (Quent recorded himself), Devil (Daigle ducked), and a 23 Feb unidentified-caller forward seed. The Fortress Menu in the painted scene is the daemon's table of contents; the diorama is the daemon's full delivery."},
+    {"id":"whl_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.86,0.08,0.08],
+     "interact":"wheel_of_fortune.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_wheel_of_fortune_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"X — THE WHEEL OF FORTUNE · 'the phone tree'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to chance is that she rejects it. The Wheel episode is her demonstration that what looks like fortune is a phone tree someone is dialing. She made the calls herself, eleven times, across one night. The eleven 'yeses' on screen are real yeses she received. She does not show the questions. The episode is her thesis statement for the entire archive: the deck's apparent randomness is a network of consent given without comprehension. Three of the eleven interiors are Harmony Creek Estates kitchens; NexCorp call-center B-roll opens the episode for six seconds. The Wheel is also her clearest preview of vol6's structural conceit."}
   ],
 
   "easter_eggs": [

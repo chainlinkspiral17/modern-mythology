@@ -96,7 +96,13 @@
      "unlocks":"vol5_moon_sigils_diorama_entered",
      "cursor":"closer",
      "opens_diorama":"moon_sigils",
-     "notes":"ENTRY HOTSPOT: clicking the static field dispatches daemon_listener.18 to resolve Natalie's three sigils from the broadcast. The diorama renders the 4:3 static as a live-scrambling ASCII field with three sigil overlays; click each sigil to read Natalie's gloss + claim. The chapter's verb-coming-home is rendered as three readings, each ending 'is mine.'"}
+     "notes":"ENTRY HOTSPOT: clicking the static field dispatches daemon_listener.18 to resolve Natalie's three sigils from the broadcast. The diorama renders the 4:3 static as a live-scrambling ASCII field with three sigil overlays; click each sigil to read Natalie's gloss + claim. The chapter's verb-coming-home is rendered as three readings, each ending 'is mine.'"},
+    {"id":"mn_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.86,0.1,0.1],
+     "interact":"moon.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_moon_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XVIII — THE MOON · 'static'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to broadcast is the relationship of a person who has watched static and seen her own handwriting. The Moon episode is the one she is most willing to admit is autobiographical. The woman watching the television is Elicia in costume — the only episode she acts in. The sigils that appear in the static are sigils she drew at her own vigil, the same vigil that produced the three repeating cards of XII. Natalie's comment under the episode ('this is my apartment. how. how. how.') is the deck's quietest acknowledgment that two women's sigils coincide on the same handwriting. The Moon's reading-out-of-static is the deck's method, given a face."}
   ],
 
   "easter_eggs": [

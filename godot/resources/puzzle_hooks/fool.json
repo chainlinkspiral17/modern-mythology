@@ -292,7 +292,13 @@
      "interact":"fool.dawn.pre_echo","unlocks":"vol5_fool_dawn_pre_echo_seen",
      "cursor":"examine",
      "gated_by":"vol5_world_fool_return_seen",
-     "notes":"DORMANT: appears only after the player has seen the dawn-lit diner corner on the World card. The 3:47 AM clock now visibly carries a faint smudge on its minute hand — the same smudge the World's dawn version carries on its 06:18. Same clock, same hand, eventually moved. 0 ↔ XXI reads both directions: World shows the clock at dawn, Fool shows the dawn already implicit at 3:47. The chapter that didn't move was the chapter waiting for the World to let it."}
+     "notes":"DORMANT: appears only after the player has seen the dawn-lit diner corner on the World card. The 3:47 AM clock now visibly carries a faint smudge on its minute hand — the same smudge the World's dawn version carries on its 06:18. Same clock, same hand, eventually moved. 0 ↔ XXI reads both directions: World shows the clock at dawn, Fool shows the dawn already implicit at 3:47. The chapter that didn't move was the chapter waiting for the World to let it."},
+    {"id":"fool_pomegranate_hour","shape":"rect_norm","rect":[0.14,0.84,0.1,0.1],
+     "interact":"fool.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_fool_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"0 — THE FOOL · 'the boy who couldn't remember which diner'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to beginnings is that she archives them after the fact and has never participated in one. The Fool was her first episode and her oldest tape. She has decades of footage of moments-before-knowing. The diner episode is her composite. The waiter (played by an actor whose face she remembered for ten years before casting him) is her sublimated record of John Frank, whom she has watched at the Fool's actual diner for so long that she has accumulated a duty of care she will not act on. She made the Fool episode to discharge the duty into the archive."}
   ],
 
   "easter_eggs": [

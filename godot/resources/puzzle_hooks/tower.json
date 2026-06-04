@@ -96,7 +96,13 @@
      "unlocks":"vol5_tower_log_diorama_entered",
      "cursor":"closer",
      "opens_diorama":"tower_log",
-     "notes":"ENTRY HOTSPOT: clicking the frozen render queue dispatches daemon_render.16 to stream RENDER_FARM_LOG_47.txt live. Each job emits its abort reason; the log truncates itself at the end; the file size increases as the log writes about its inability to complete. Click any job header for the abort payload. The chapter's recursion (Job 47 is the render of the engine failing) is rendered as the diorama's structural premise."}
+     "notes":"ENTRY HOTSPOT: clicking the frozen render queue dispatches daemon_render.16 to stream RENDER_FARM_LOG_47.txt live. Each job emits its abort reason; the log truncates itself at the end; the file size increases as the log writes about its inability to complete. Click any job header for the abort payload. The chapter's recursion (Job 47 is the render of the engine failing) is rendered as the diorama's structural premise."},
+    {"id":"twr_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.04,0.1,0.1],
+     "interact":"tower.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_tower_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XVI — THE TOWER · 'the collapse of the water tower'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to collapse is that she did not film the Nexus. She filmed the rehearsal. The Tower episode is seven amateur angles of an old water tower's collapse, edited into one composite. The date is wrong by years; the location is wrong by miles; the structure is wrong. The episode is the closest she came to documenting the Sinkhole and the chapter at which she turned aside. The sealed envelope on her vol5 archive shelf (SINKHOLE — 17 untranscribed minutes) is the document she did not make this episode out of. The deck respects the refusal as the chapter. The Tower is what she filmed instead."}
   ],
 
   "easter_eggs": [

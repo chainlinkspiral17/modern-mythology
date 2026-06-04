@@ -125,7 +125,13 @@
      "unlocks":"vol5_devil_daigle_19_calls_seen",
      "cursor":"examine",
      "gated_by":"vol5_wheel_alberto_warned_daigle",
-     "notes":"DORMANT: appears only after the player has read Erica's marginalia on the 19 Feb Alberto-Daigle row in the Wheel diorama. The middle barstool's amber-bulb shadow now visibly carries faint tally marks — nineteen of them, in two rows of nine and a single one set apart. Daigle knew by call seven. He sat through twelve more rings choosing not to. The chapter's UNCOMFORTABLE INSIDE status is partly the architecture, partly the welded chair — and partly the count carved into the bulb's shadow by a man who would rather take the count than the call."}
+     "notes":"DORMANT: appears only after the player has read Erica's marginalia on the 19 Feb Alberto-Daigle row in the Wheel diorama. The middle barstool's amber-bulb shadow now visibly carries faint tally marks — nineteen of them, in two rows of nine and a single one set apart. Daigle knew by call seven. He sat through twelve more rings choosing not to. The chapter's UNCOMFORTABLE INSIDE status is partly the architecture, partly the welded chair — and partly the count carved into the bulb's shadow by a man who would rather take the count than the call."},
+    {"id":"dvl_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.86,0.1,0.1],
+     "interact":"devil.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_devil_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XV — THE DEVIL · 'the HOA meeting'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to community is suspicious. The Devil episode is her clearest statement that 'community' is a verb requiring a silencing. The Harmony Creek HOA meeting she filmed is the actual HOA's actual meeting; she had press credentials from a defunct local paper. The vote 'silenced' is the secretary's actual record. Vol6 ch3 will return to the same meeting room. The Handsome Triumvirate cameo (Jacob, Wagner, Faust from vol1 picking up honey jars at the welcome table) is her wink at vol1: the boys think they live in milk and honey; she filmed the moment they pick up the price. Faust takes two jars. Vol7 will recover them."}
   ],
 
   "easter_eggs": [

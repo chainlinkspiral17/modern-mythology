@@ -183,7 +183,13 @@
      "unlocks":"vol5_hierophant_tower_crozier_snap_seen",
      "cursor":"examine",
      "gated_by":"vol5_tower_hierophant_inverse_seen",
-     "notes":"DORMANT: appears only after the player has recognized the Hierophant's crozier in the Tower's fault line. The bishop's staff in the painted card now shows a hairline crack at the same point the Tower's wall fractures — the institutional spine carries its own future snap. V → XVI mirror reads both directions: the Tower shows where the snap will be; the Hierophant shows the spine waiting to be snapped. The crack is in the wood before lightning finds it."}
+     "notes":"DORMANT: appears only after the player has recognized the Hierophant's crozier in the Tower's fault line. The bishop's staff in the painted card now shows a hairline crack at the same point the Tower's wall fractures — the institutional spine carries its own future snap. V → XVI mirror reads both directions: the Tower shows where the snap will be; the Hierophant shows the spine waiting to be snapped. The crack is in the wood before lightning finds it."},
+    {"id":"hie_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.04,0.1,0.08],
+     "interact":"hierophant.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_hierophant_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"V — THE HIEROPHANT · 'father on cable'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to organized religion is the relationship of a daughter to a father who broadcast it. Her father (vol6/7 reserve) hosted a Channel 14 call-in show for nineteen years. The Hierophant episode is a restaging of his show with a different priest and a different small town, but the 9:09 pm cable interference is her father's actual interference, sampled from a tape she has kept since adolescence. The 'from Beaumont' caller is real; he called her father every week; he also calls Cosmic Comics' Rick in vol6. Elicia knows both phone trees."}
   ],
 
   "easter_eggs": [
