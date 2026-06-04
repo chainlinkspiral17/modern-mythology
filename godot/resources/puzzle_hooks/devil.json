@@ -1,0 +1,103 @@
+{
+  "asset": "assets/gallery/devil.png",
+  "scene_id": "vol5_ch15_devil",
+  "character": "—",
+  "secondary_characters": ["daigle"],
+  "arcana": "XV - THE DEVIL",
+  "subtitle": "Gumbo Limbo",
+  "palette": "jaundiced_amber_swamp_green",
+  "location_text": "Daigle's bar — Gulf coast, jaundiced amber light, Wednesday after Tuesday.",
+  "format_note": "VI ↔ XV mirror: Lovers' refusal becomes Devil's binding. Same furniture in opposite registers — Lovers won't sit, Devil won't leave.",
+
+  "ciphers": [
+    {
+      "id": "dvl_daigles_bar",
+      "kind": "scene_centerpiece",
+      "text": "Daigle's bar — counter the length of the frame, three stools, the middle one taller than the others",
+      "anchor_norm": [0.50, 0.50],
+      "encoding_hint": "the classical Devil card shows the figure on a half-pillar, two chained figures below. Modern Mythology renders the pillar as a barstool — the throne is a chair you don't get up from. The middle stool is taller because somebody is always sitting on it. The chain is not pictured; it's diegetic.",
+      "reveals": "vol5_devil_bar_seen"
+    },
+    {
+      "id": "dvl_gumbo_limbo_fish",
+      "kind": "named_creature",
+      "text": "a small blue Gumbo Limbo fish carved into the bar's edge — reef-fauna, Gulf-coast specific",
+      "anchor_norm": [0.46, 0.42],
+      "encoding_hint": "the Gumbo Limbo is a Caribbean reef fish — the deck's first appearance of a non-narwhal sea creature. The narwhal carried wet stations through XII; the Gumbo Limbo opens a Gulf register at XV. Two water-fauna lineages: one cold-water (narwhal), one warm-water (Gumbo Limbo). The deck's geography is splitting.",
+      "reveals": "vol5_devil_gumbo_fish_seen"
+    },
+    {
+      "id": "dvl_lovers_inversion",
+      "kind": "mirror_pair",
+      "text": "the same furniture as the Lovers card — but every piece chained to the next",
+      "anchor_norm": [0.50, 0.62],
+      "encoding_hint": "VI ↔ XV mirror: the Lovers card refused to sit at the table; the Devil card has chained the table to the floor. Same wood, same grain, opposite gravity. The classical Devil's chains are loose enough to lift over the head; Modern Mythology's chains are welded — the binding is structural, not voluntary. The card the Lovers refused has become the room nobody can leave.",
+      "reveals": "vol5_devil_lovers_inversion_seen",
+      "cross_references": ["lovers.json::lov_emperor_throne_inverse"]
+    },
+    {
+      "id": "dvl_amber_light",
+      "kind": "palette_note",
+      "text": "jaundiced amber light — the bar is lit at one bulb, two stops too warm",
+      "anchor_norm": [0.80, 0.18],
+      "encoding_hint": "the Devil's lighting is its physics. Amber too warm for skin reading produces the jaundice cue; the chapter's whole color register is illness-adjacent. The single bulb means the room cannot be lit any other way; the Devil's bondage in this chapter is to the room's electrical limit.",
+      "reveals": "vol5_devil_amber_seen"
+    },
+    {
+      "id": "dvl_uncomfortable_inside",
+      "kind": "status_label",
+      "text": "DEVIL_STATUS panel reads 'UNCOMFORTABLE INSIDE'",
+      "anchor_norm": [0.88, 0.86],
+      "encoding_hint": "the status panel labels the chapter's condition in two words. UNCOMFORTABLE INSIDE is the deck's bluntest interior weather. The Devil card admits its own discomfort as the system status — there is no allegorical screen between the player and the diagnosis. The bondage is the discomfort being legible as the state.",
+      "reveals": "vol5_devil_uncomfortable_inside_seen"
+    }
+  ],
+
+  "hotspots": [
+    {"id":"dvl_bar","shape":"rect_norm","rect":[0.10,0.46,0.80,0.18],
+     "interact":"devil.bar.examined","unlocks":"vol5_devil_bar_seen","cursor":"closer"},
+    {"id":"dvl_middle_stool","shape":"rect_norm","rect":[0.46,0.50,0.10,0.30],
+     "interact":"devil.stool.observed","unlocks":"vol5_devil_stool_seen","cursor":"examine"},
+    {"id":"dvl_gumbo_fish","shape":"rect_norm","rect":[0.42,0.40,0.10,0.08],
+     "interact":"devil.fish.touched","unlocks":"vol5_devil_gumbo_fish_seen","cursor":"examine"},
+    {"id":"dvl_amber_bulb","shape":"rect_norm","rect":[0.76,0.10,0.12,0.16],
+     "interact":"devil.bulb.examined","unlocks":"vol5_devil_amber_seen","cursor":"examine"},
+    {"id":"dvl_status","shape":"rect_norm","rect":[0.82,0.82,0.16,0.10],
+     "interact":"devil.status.read","unlocks":"vol5_devil_uncomfortable_inside_seen","cursor":"examine"},
+    {"id":"dvl_lovers_inversion","shape":"rect_norm","rect":[0.30,0.56,0.40,0.16],
+     "interact":"devil.lovers_inversion.recognized","unlocks":"vol5_devil_lovers_inversion_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_lovers_emperor_throne_inverse_seen",
+     "notes":"DORMANT: appears only after the player has recognized the throne-inverse on the Lovers card. The Lovers' two-seat throne (one always empty) reappears here as the bar — three stools, the middle one taller, all welded to the floor. The classical VI ↔ XV mirror is rendered as the same furniture in opposite registers: Lovers refused to sit; Devil welded the option closed."},
+    {"id":"dvl_devils_flame","shape":"rect_norm","rect":[0.10,0.18,0.20,0.16],
+     "interact":"devil.flame.spotted","unlocks":"vol5_devil_chariot_flame_recognized",
+     "cursor":"examine",
+     "gated_by":"vol5_chariot_drinks_menu",
+     "notes":"DORMANT: appears only after the player has examined the drinks menu on the Chariot card. The Chariot's signature cocktail 'THE CHARIOT'S FLAME' is now visibly the drink the middle barstool has in front of it — the menu lived at Ember & Ash, but the drink moved with the chapter that follows the wreck. VII → XV is the deck's flame chain: the cocktail Antonio ordered last is the cocktail the Devil's middle seat still holds."}
+  ],
+
+  "easter_eggs": [
+    "the Devil's bondage in this chapter is structural — the furniture is welded, the bulb is one wattage, the room cannot be lit otherwise. The chains are not pictured because they are the architecture.",
+    "the Gumbo Limbo fish opens the deck's warm-water fauna register; the narwhal closes its cold-water register at XII. Two seas, two creatures, opposite latitudes — the deck's geography is splitting around the Gulf.",
+    "UNCOMFORTABLE INSIDE in the status panel is the bluntest weather report in the deck. The Devil refuses the metaphorical screen and labels the chapter's condition directly. The bondage is the diagnosis being legible.",
+    "the middle barstool is taller than the others because somebody is always sitting on it. The deck shows the throne by showing the wear.",
+    "Wednesday in the deck — Monday (Chariot) was the wreck, Tuesday (Temperance) was the moderation, Wednesday (Devil) is the day the body returns to the room that doesn't let go."
+  ],
+
+  "links_forward": [
+    "vol5_devil_bar_seen",
+    "vol5_devil_stool_seen",
+    "vol5_devil_gumbo_fish_seen",
+    "vol5_devil_amber_seen",
+    "vol5_devil_uncomfortable_inside_seen",
+    "vol5_devil_lovers_inversion_seen",
+    "vol5_devil_chariot_flame_recognized"
+  ],
+
+  "cross_references": {
+    "lovers_inverse_with": "lovers.json::lov_emperor_throne_inverse (VI ↔ XV mirror furniture)",
+    "chariot_flame_chain_with": "chariot.json::cha_liquid_gold (signature cocktail)",
+    "warm_water_fauna_opens": "tower.json, star.json (XVI-XVII — Gulf coast continues)",
+    "weekday_chain_with": "chariot.json (Mon), temperance.json (Tue), devil.json (Wed)"
+  }
+}

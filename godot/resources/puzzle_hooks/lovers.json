@@ -131,7 +131,12 @@
      "interact":"lovers.justice.flipped_anyway","unlocks":"vol5_lovers_justice_flipped_anyway_seen",
      "cursor":"examine",
      "gated_by":"vol5_justice_lovers_refusal_seen",
-     "notes":"DORMANT: appears only after the player has noticed the Priestess journal annotation on the Justice card. The lov_uncast_kin register reorders itself: VI THE LOVERS stays refused, XX JUDGEMENT stays refused, but XI JUSTICE now reads 'refused → flipped anyway → dual-POV.' The three refused cards are no longer equal. Justice's renumbering and dual-POV split made it the only refused card that rendered itself; Lovers and Judgement still hold the line. The deck's relationship to its own refusals becomes legible."}
+     "notes":"DORMANT: appears only after the player has noticed the Priestess journal annotation on the Justice card. The lov_uncast_kin register reorders itself: VI THE LOVERS stays refused, XX JUDGEMENT stays refused, but XI JUSTICE now reads 'refused → flipped anyway → dual-POV.' The three refused cards are no longer equal. Justice's renumbering and dual-POV split made it the only refused card that rendered itself; Lovers and Judgement still hold the line. The deck's relationship to its own refusals becomes legible."},
+    {"id":"lov_devil_welded","shape":"rect_norm","rect":[0.74, 0.42, 0.18, 0.30],
+     "interact":"lovers.devil.welded","unlocks":"vol5_lovers_devil_welded_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_devil_lovers_inversion_seen",
+     "notes":"DORMANT: appears only after the player has recognized the Lovers-furniture inversion on the Devil card. The Lovers' mirror hotspot now visibly shows the same furniture welded to the floor — the option to sit was preserved here by refusal; on Devil it was preserved by welding. VI ↔ XV mirror reads both ways: Lovers refused so the chair would remain a choice; Devil welded so the chair would remain a sentence. Two preservation strategies, same furniture."}
   ],
 
   "easter_eggs": [

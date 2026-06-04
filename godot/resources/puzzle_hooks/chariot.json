@@ -233,6 +233,16 @@
       "cursor": "examine",
       "gated_by": "vol5_hanged_unknown_number_seen",
       "notes": "DORMANT: appears only after the player has recognized the unknown-number 23:47 line on the Hanged Man card. The BBS status panel gains a third sysop entry: 'natalie@simons_apt (NO ANSWER).' The booth-call chain V → VII → XII is now legible from the wreck site: Quentin called three numbers, Antonio picked up and died, Natalie did not pick up and waits. The deck's call chain closes when the Charioteer card admits its caller was reaching for someone who didn't come."
+    },
+    {
+      "id": "cha_flame_at_daigles",
+      "shape": "rect_norm",
+      "rect": [0.74, 0.06, 0.16, 0.10],
+      "interact": "chariot.flame.at_daigles",
+      "unlocks": "vol5_chariot_flame_at_daigles_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_devil_chariot_flame_recognized",
+      "notes": "DORMANT: appears only after the player has spotted THE CHARIOT'S FLAME on Daigle's bar. The drinks menu now has a small annotation next to the signature cocktail: 'last poured: vol5_ch15 — middle stool, Wednesday.' The drink that was Antonio's last is the drink the Devil's middle seat still holds. The menu remembers its own movement. VII → XV chain confirmed from both ends."
     }
   ],
 

@@ -1,0 +1,110 @@
+{
+  "asset": "assets/gallery/temperance.png",
+  "scene_id": "vol5_ch14_temperance",
+  "character": "frank",
+  "arcana": "XIV - TEMPERANCE",
+  "subtitle": "The Moderate Temperature of Tuesday",
+  "palette": "oatmeal_beige_pale_emerald",
+  "location_text": "Frank's municipal apartment — the observation chamber. Tuesday after the worst Monday.",
+  "format_note": "VII ↔ XIV mirror: Chariot's failed duality control becomes Temperance's careful blending. The chapter is what happens once the worst is over and the system has not yet decided whether to call it recovery.",
+
+  "ciphers": [
+    {
+      "id": "tmp_observation_chamber",
+      "kind": "scene_centerpiece",
+      "text": "the observation chamber — Frank at the small table, two cups in front of him, neither lifted",
+      "anchor_norm": [0.50, 0.50],
+      "encoding_hint": "the classical Temperance card is the alchemist pouring water between two vessels at slightly different heights — the blend that doesn't spill. Modern Mythology renders the two vessels as two cups untouched, waiting. Frank's posture is the alchemist's; the act of blending hasn't happened yet because the temperature has not yet been moderate enough.",
+      "reveals": "vol5_temperance_chamber_seen"
+    },
+    {
+      "id": "tmp_tuesday_clock",
+      "kind": "named_time",
+      "text": "the wall clock — Tuesday, the small subdial reads 'after the worst'",
+      "anchor_norm": [0.86, 0.20],
+      "encoding_hint": "Frank's clocks always carry a chapter-state subdial; Tuesday's reads 'after the worst.' The chapter's title 'The Moderate Temperature of Tuesday' is literally the clock's report. Tuesday in the deck is the day the body has decided to keep living, before it has decided what to do about it.",
+      "reveals": "vol5_temperance_tuesday_clock_seen"
+    },
+    {
+      "id": "tmp_two_cups",
+      "kind": "paired_objects",
+      "text": "two cups — left: cold black coffee; right: warm chamomile. Both Frank's. He has not chosen between them.",
+      "anchor_norm": [0.46, 0.62],
+      "encoding_hint": "the two cups are the chapter's blend question — which temperature is moderate enough to drink. The classical Temperance pour has not happened; Frank is in the long preparation. The deck's only character who needs both cups in the frame to read his own state.",
+      "reveals": "vol5_temperance_two_cups_seen"
+    },
+    {
+      "id": "tmp_chariot_undone",
+      "kind": "mirror_pair",
+      "text": "a small framed photo on Frank's desk: the Ember & Ash restaurant before the scaffolding fell",
+      "anchor_norm": [0.18, 0.30],
+      "encoding_hint": "VII ↔ XIV mirror: the Chariot's wreck site, photographed before. Frank keeps the image because the chapter's whole work is moderating his relationship to motion that has already crashed. Temperance is the after-Chariot card; the photo on the desk is the unblended pour the chapter is learning to make from.",
+      "reveals": "vol5_temperance_chariot_photo_seen",
+      "cross_references": ["chariot.json::cha_wreck"]
+    },
+    {
+      "id": "tmp_municipal_floorplan",
+      "kind": "diagram",
+      "text": "MUNICIPAL_APT_FLOORPLAN — pinned next to the clock, three rooms, only one used",
+      "anchor_norm": [0.80, 0.62],
+      "encoding_hint": "Frank's apartment has three rooms; the floorplan shows him using one. The unused rooms are the chapter's unspent moderate temperatures. The classical Temperance figure stands in a river with one foot on land — Frank's floorplan is the deck's interior version of the same straddle.",
+      "reveals": "vol5_temperance_floorplan_seen"
+    },
+    {
+      "id": "tmp_sun_pre_echo",
+      "kind": "forward_seed",
+      "text": "a single mote of dust visible in the slant of pale-emerald light",
+      "anchor_norm": [0.40, 0.20],
+      "encoding_hint": "the dust mote is the Sun card (XIX) seeded early. Frank is the POV of both Temperance and the Sun; the chapter's first pattern-recognition-in-dust-mote moment happens here, with Tuesday's light. XIV → XIX is Frank's spine — moderating now toward pattern-finding later.",
+      "reveals": "vol5_temperance_sun_pre_echo",
+      "cross_references": ["sun.json (XIX, Frank's POV, dust motes)"]
+    }
+  ],
+
+  "hotspots": [
+    {"id":"tmp_chamber","shape":"rect_norm","rect":[0.30,0.40,0.40,0.40],
+     "interact":"temperance.chamber.observed","unlocks":"vol5_temperance_chamber_seen","cursor":"closer"},
+    {"id":"tmp_tuesday_clock","shape":"rect_norm","rect":[0.80,0.14,0.16,0.20],
+     "interact":"temperance.clock.read","unlocks":"vol5_temperance_tuesday_clock_seen","cursor":"examine"},
+    {"id":"tmp_two_cups","shape":"rect_norm","rect":[0.36,0.56,0.20,0.14],
+     "interact":"temperance.cups.examined","unlocks":"vol5_temperance_two_cups_seen","cursor":"take"},
+    {"id":"tmp_floorplan","shape":"rect_norm","rect":[0.72,0.56,0.24,0.18],
+     "interact":"temperance.floorplan.examined","unlocks":"vol5_temperance_floorplan_seen","cursor":"closer"},
+    {"id":"tmp_dust_mote","shape":"rect_norm","rect":[0.36,0.16,0.10,0.10],
+     "interact":"temperance.dust.noticed","unlocks":"vol5_temperance_sun_pre_echo","cursor":"examine"},
+    {"id":"tmp_chariot_photo","shape":"rect_norm","rect":[0.10,0.24,0.14,0.16],
+     "interact":"temperance.chariot_photo.recognized","unlocks":"vol5_temperance_chariot_photo_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_chariot_wreck_seen",
+     "notes":"DORMANT: appears only after the player has examined the wreck on the Chariot card. A small framed photo on Frank's desk shows Ember & Ash before the scaffolding fell. Frank keeps it on the desk because Temperance is the moderating-relationship-to-prior-motion card; the chapter learns to pour from a vessel that already broke."},
+    {"id":"tmp_six_bed_arithmetic","shape":"rect_norm","rect":[0.84,0.38,0.12,0.10],
+     "interact":"temperance.six_beds.recognized","unlocks":"vol5_temperance_six_beds_recognized",
+     "cursor":"examine",
+     "gated_by":"vol5_death_six_beds_counted",
+     "notes":"DORMANT: appears only after the player has counted the empty beds on the Death card. A small subdial on Frank's clock now visibly reads '6 - 2 = 4 / four still warm.' Frank does the Death card's arithmetic from across town — the moderate Tuesday holds the ward's count as a quiet measurement. XIII → XIV adjacency: the ward's body count becomes the Temperance chapter's working temperature."}
+  ],
+
+  "easter_eggs": [
+    "Tuesday in the deck is the after-the-worst day. Monday is Chariot (the wreck); Tuesday is Temperance (the moderation); Wednesday will be the Devil. Frank's clock subdial tracks the chapter's day of the week as canon.",
+    "the two cups in front of Frank — black coffee (cold) and chamomile (warm) — are the alchemist's vessels at different temperatures. The classical Temperance pour is the blend; Frank has not yet poured.",
+    "the dust mote on this card is the Sun card's first appearance. Frank's POV runs XIV → XIX (Temperance to Sun); pattern recognition in dust motes is a habit that starts moderate and warms.",
+    "the framed photo on Frank's desk is the Chariot wreck site before the fall. Temperance moderates a relationship to prior crash — VII ↔ XIV mirror as visible documentation.",
+    "the three-room floorplan with one room used is Frank's interior version of the classical Temperance figure's foot-in-river-foot-on-land straddle. The unused rooms are the chapter's unspent moderate temperatures."
+  ],
+
+  "links_forward": [
+    "vol5_temperance_chamber_seen",
+    "vol5_temperance_tuesday_clock_seen",
+    "vol5_temperance_two_cups_seen",
+    "vol5_temperance_floorplan_seen",
+    "vol5_temperance_sun_pre_echo",
+    "vol5_temperance_chariot_photo_seen",
+    "vol5_temperance_six_beds_recognized"
+  ],
+
+  "cross_references": {
+    "chariot_mirror_with": "chariot.json::cha_wreck (the photographed before)",
+    "frank_spine_forward_to": "sun.json (XIX — same POV, dust motes warmed)",
+    "ward_arithmetic_with": "death.json::dth_six_beds"
+  }
+}

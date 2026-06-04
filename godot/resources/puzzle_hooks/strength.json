@@ -83,7 +83,12 @@
      "interact":"strength.lemniscate.recognized","unlocks":"vol5_strength_magician_lemniscate_seen",
      "cursor":"examine",
      "gated_by":"vol5_magician_ascending_node",
-     "notes":"DORMANT: appears only after the player has clicked the soldering iron on the Magician card. The infinity floating over Strength's head is the SAME inscription Frasier drew — now worn as a halo instead of traced as a sigil. Magician(I) inscribes; Priestess(II) archives; Strength(VIII) embodies. Three positions on one glyph; the deck's spine."}
+     "notes":"DORMANT: appears only after the player has clicked the soldering iron on the Magician card. The infinity floating over Strength's head is the SAME inscription Frasier drew — now worn as a halo instead of traced as a sigil. Magician(I) inscribes; Priestess(II) archives; Strength(VIII) embodies. Three positions on one glyph; the deck's spine."},
+    {"id":"str_death_mirror_warmer","shape":"rect_norm","rect":[0.40,0.50,0.08,0.10],
+     "interact":"strength.death_mirror.warmer","unlocks":"vol5_strength_death_mirror_warmer_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_death_strength_mirror_seen",
+     "notes":"DORMANT: appears only after the player has noticed the gloved-hand mirror on the Death card. The bare hand on the lion's jaw is now visibly the same hand as Ward C's gloved version — but at the warmer temperature. VIII ↔ XIII mirror reads both ways: Strength is Death warmed; Death is Strength clinical. Same gesture, two thermostats; the deck's gentlest opposition."}
   ],
 
   "easter_eggs": [
