@@ -71,42 +71,176 @@ Possible echoes in the deck where the void may be detectable:
   he knows it. he wrote the rule for what not to write." —
   the rule may be partly the rule for not writing about her
 
-## The two sons — design space
+## The two sons — assigned
 
-The deck has not yet named the two sons. The user reserves the
-right to assign them; the worldbuilding here is the SHAPE of
-the relationship, not the casting.
+**ANTONIO D'AMBROSIO (VII THE CHARIOT)** — the elder son. The
+the_charioteer. Sysop of ember.ash.rest.bbs. Dead in the
+scaffolding fall Sunday morning. Friends with Daigle (XV)
+through the bar. On Quent's trust-list Wednesday morning. The
+brother who took the call and drove.
 
-**Vector questions for sons casting:**
+**ALBERTO MARROQUÍN-D'AMBROSIO (X THE WHEEL)** — the younger
+son. Carries his mother's surname (vol6 hook on naming
+convention). The middleman in the case prep. Holds Dante's call
+log; holds Quent's call log; held Daigle's call log nineteen
+times in fourteen minutes the night his brother died and Daigle
+would not pick up. The brother who tried.
 
-1. Are both sons named characters already in vol5?
-   - Possible candidates from the existing painted cards:
-     John Frank (0), Frasier Temple (I), Simon (XII absent
-     figure), Frank (XIV/XIX — note distinct from John Frank),
-     Quentin (V Father Quent, complicating: a priest as
-     potential son), Antonio (VII, deceased).
-   - Or one or both are vol6 introductions.
+## How the assignment reframes existing chapters
 
-2. Are they vying through different vectors?
-   - The classical pattern is one through ambition, one through
-     refusal. Vol5 has both registers available: e.g., a son
-     who BUILDS in parallel (Frasier-coded), a son who STEPS
-     AWAY (Fool-coded or Hermit-coded).
+### VII — THE CHARIOT
 
-3. What does "vying" look like in chapter-level acts?
-   - Cards that have Dante in some form: IV Emperor (direct),
-     XIII Death (Bed 6 — Dante is in the ward), III Empress
-     (the throne he shares, possibly through Nicola), IV
-     appointment book (Wednesday slot includes Quentin walking
-     the boat), the barge voicelog (Quent + Dante,
-     two-character conversation — IF QUENT IS ONE OF THE
-     SONS, this conversation re-reads entirely).
+Antonio dying is not a tragic side character's death. It is the
+death of Dante's heir-apparent on the chapter the deck dedicates
+to his arc. The wreck site at Ember & Ash carries the empire's
+succession problem at its centre. Father Quent's Sunday morning
+booth call sends ONE OF DANTE'S SONS to Daigle's bar to undo a
+scaffolding decision Quent made on Wednesday at the barge while
+Dante watched. The chain V → VII is the chain of an institution
+killing a king's son with a friend's reluctant cooperation.
 
-4. What about the void mother's name?
-   - Whether she has a name is the second open question. If she
-     does, the name is reserved for vol6 reveal. If she doesn't
-     — if the void is permanent — the deck's central refusal
-     is the refusal to name her.
+The wreck card's BBS diagnostic ("sysop the_charioteer DOA")
+reads in the new key as the empire losing its appointed
+inheritor on a Monday morning. The Wheel chapter at X (the
+following case-prep night three weeks later) is Alberto
+inheriting nothing but a brother's case file and a phone log
+he can't stop dialing.
+
+### X — THE WHEEL OF FORTUNE
+
+Alberto's call log is not the work of a useful witness. It is
+the work of a brother. Each row of the call log is a brother
+trying to do family management at a phone:
+- 10 Feb 19:14 — Dante calls Alberto first. The father calling
+  the surviving son. The call is four minutes eighteen seconds.
+  Likely about Antonio: the funeral, the empire, the next move.
+- 10 Feb 19:42 — Dante calls back exactly 23m44s later. The
+  callback pattern is the father's grief tempo. Alberto's red-
+  ink marginalia note ("THIS one exceptional. why?") now reads
+  as a son tracking his father's mourning rhythm.
+- 13 Feb — Father Quent calls Alberto three times. Quent is
+  trying to bring the boy back into the institutional fold.
+  The "Q wouldn't say who 'him' is" notation is Quent refusing
+  to name the brother who died.
+- 19 Feb — Alberto calls Daigle 19 times. THIS IS NOT A WARNING
+  CALL TO A FRIEND. THIS IS A BROTHER TRYING TO SAVE A
+  BROTHER. The deck's most desperate phone log. Daigle did
+  not pick up because he could not bear to confirm what he
+  already knew.
+
+### XV — THE DEVIL
+
+Daigle's morning note ('he knew by call seven') re-reads in
+the new key. Daigle didn't refuse to pick up because he didn't
+want to be the person who knew about the scaffolding. He
+refused to pick up because **he didn't want to be the person
+who confirmed to Antonio's brother that Antonio was already
+dead**. The amber bulb's UNCOMFORTABLE INSIDE is the
+discomfort of having loved the older brother and being unable
+to tell the younger.
+
+The Chariot's Flame on the menu is not a private name made
+public. It is Daigle keeping Antonio's drink on the board.
+The drink is grief management. Daigle pours one for the middle
+barstool every night. The middle barstool's "the chapter's
+true POV withhold" is now legible: the middle barstool is for
+Antonio. The drink is for Antonio. Daigle is the bartender of
+a friend who is not there.
+
+### IV — THE EMPEROR
+
+Dante's two-mirror-faces hotspot now resolves with names: the
+two upside-down successor faces are ANTONIO (face right of
+mirror centre) and ALBERTO (face left of mirror centre). One
+face is dead by Monday. The mirror has held both for as long
+as the painted chapter exists; Dante writes the appointment
+book BEFORE the wreck, and the diary's daily 21:30 'boat,
+alone — don't write what for' slot is partly the slot of a
+father preparing for the inheritance fight that arrives at
+07:11 Monday with one son short.
+
+### III — THE EMPRESS
+
+NICOLA & DANTE pair lattice is now answerable: Nicola is
+**Antonio's wife or partner**. The painted dinner scene where
+Dante deliberately lies about the anchor and Nicola anxiety-
+spikes is the dinner where the father is engineering Antonio's
+choice about the boat. Aria's exit-node search runs through
+that dinner because Aria is reading the wife of the heir-
+apparent being cornered by his father.
+
+The Empress chapter's Aria HUD overlay's CONFINED status is
+the confinement of being the wife of a man whose father will
+not stop testing him.
+
+Vol6 hook: the OTHER son's partner — Alberto's, if he has one
+— is reserved. Alberto carries his mother's surname; if he
+has a partner, the deck has not surfaced them yet.
+
+### V — THE HIEROPHANT
+
+Father Quent is friends with the family. The Wednesday barge
+walkthrough is Quent and Dante working through the next
+week's business including Antonio (referenced by first name)
+and the scaffolding decision. Quent's Sunday booth call sends
+the elder son to die.
+
+Quent's two booth-call decisions read differently now:
+- Call 1 (Antonio) — calling the elder son and giving him an
+  errand he doesn't want to call about (probably because Dante
+  asked Quent to keep the family at arm's length from this
+  particular conversation)
+- Call 2 (Natalie) — the unrelated zone-shifted decline that
+  Quent attempts at 06:38 CT. The Hanged Man is still in
+  the play, structurally separate from the family.
+- Call 3 (Carlie) — the housekeeper. Quent's relationship to
+  the family extends to the staff.
+
+The booth-call chain is the chain of family management by a
+priest who is a family friend.
+
+### XIII — DEATH
+
+Mr. D in Bed 6 is Dante. The Asheville dentist daughter is —
+problematic — Dante's daughter? Or a different daughter? Or
+the chapter's confusing of relations under sedation?
+
+(The Asheville dentist daughter remains a vol6 question. She
+may be a third child the deck has not yet acknowledged; she
+may be Alberto's wife if vol6 names her; she may be one of
+the void mother's surviving relatives.)
+
+The no Mrs. D notation continues to hold: Dante's wife — the
+mother of Antonio and Alberto — was not at Ward C with him.
+The void mother extends to absence even in his chapters of
+infirmity.
+
+### XX — JUDGEMENT
+
+The ensemble at the Judgement chapter has Antonio absent
+('we are doing this without him' — Frasier's first line at
+00:33). The chapter renders the family's quiet grief: Alberto
+is there in the ensemble (Wheel POV); Antonio is not.
+
+Frasier's line names the absence by saying 'him' without a
+name. The deck's withheld names continue to do their work.
+
+## The void mother
+
+She is the mother of Antonio and Alberto. She has not been
+named in any vol5 chapter. The deck preserves her absence as
+a structural feature. Vol6 may surface her name, or may not.
+The void is the second inheritance.
+
+Possible vol6 hooks for the void mother:
+- An Anya tape mentions her (Anya's "cousin" thread may be
+  related; the cousin is the cousin OF someone known to
+  Elicia; the void mother's family is the most likely
+  source).
+- Alberto's surname (Marroquín) is hers. Her family is named
+  even when she is not.
+- A specific Dante diary slot from a year-ago page — Alma at
+  14:00 — may be related (Alma is the deck's deepest withhold).
 
 ## Tone & emotional register
 

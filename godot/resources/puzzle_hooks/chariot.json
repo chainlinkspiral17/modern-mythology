@@ -235,6 +235,26 @@
       "notes": "DORMANT: appears only after the player has recognized the unknown-number 23:47 line on the Hanged Man card. The BBS status panel gains a third sysop entry: 'natalie@simons_apt (NO ANSWER).' The booth-call chain V → VII → XII is now legible from the wreck site: Quentin called three numbers, Antonio picked up and died, Natalie did not pick up and waits. The deck's call chain closes when the Charioteer card admits its caller was reaching for someone who didn't come."
     },
     {
+      "id": "cha_antonio_is_son",
+      "shape": "rect_norm",
+      "rect": [0.32, 0.40, 0.24, 0.20],
+      "interact": "chariot.antonio_is_son.recognized",
+      "unlocks": "vol5_chariot_antonio_is_son_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_emperor_two_sons_acknowledged",
+      "notes": "DORMANT: appears only after the Emperor's two-mirror-faces hotspot fires (the two upside-down successor faces resolve as Antonio and Alberto). The painted wreck centerpiece now visibly carries a small gold band on Antonio's hand — a signet ring, family crest, the kind only a son of an empire would wear unaware. The_charioteer DOA is Dante's elder son DOA. The chapter at VII is the chapter where the empire loses its appointed heir on a Monday morning to a scaffolding decision Father Quent reversed on a Sunday. The Wheel chapter at X is the chapter where his brother inherits a call log instead of an empire. IV → VII → X is the inheritance spine of vol5."
+    },
+    {
+      "id": "cha_alberto_brother_failure",
+      "shape": "rect_norm",
+      "rect": [0.72, 0.86, 0.14, 0.10],
+      "interact": "chariot.alberto.brother_failure",
+      "unlocks": "vol5_chariot_alberto_brother_failure_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_chariot_antonio_is_son_seen",
+      "notes": "DORMANT: appears only after Antonio-as-son is recognized. The BBS diagnostic panel now visibly carries a new sysop line beneath the_charioteer DOA: 'brother_relay: a.marroquin@fortress.bbs — 19 attempts, last contact 19 Feb 22:14, no acknowledgement.' Alberto called Daigle nineteen times the night of the wreck not as middleman but as BROTHER trying to save BROTHER. The chapter's painted diagnostic shows the failed brother-relay alongside the failed sysop. Two D'Ambrosio sons rendered in one diagnostic line: one DOA, one trying."
+    },
+    {
       "id": "cha_antonio_was_trusted",
       "shape": "rect_norm",
       "rect": [0.46, 0.40, 0.16, 0.10],

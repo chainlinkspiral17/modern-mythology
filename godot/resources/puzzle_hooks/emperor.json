@@ -162,6 +162,16 @@
       "notes": "DORMANT: appears only after the player has read Erica's marginalia on the 19:42 Dante callback row in the Wheel diorama. The ankh sceptre in Dante's hand now visibly carries a small carved tally mark every 22-25 degrees around its shaft. The 22-25 minute Dante callback pattern is rendered as the sceptre's geometric notation — the Emperor's authority operates at a regular rhythm, and the rhythm is the case's true timing. 'Wait until the audit clears' became canonical at 19:42 Feb 10; the audit cleared the wrong way three days later. The Emperor's chapter is the chapter that orders the wait, on the same shaft he holds in the painted scene."
     },
     {
+      "id": "emp_grief_callback_window",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.40, 0.08, 0.12],
+      "interact": "emperor.grief_callback.recognized",
+      "unlocks": "vol5_emperor_grief_callback_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_wheel_alberto_grief_tempo_seen",
+      "notes": "DORMANT: appears only after the Wheel's Alberto-grief-tempo hotspot fires. Dante's ankh sceptre now visibly carries a single deep notch at the 22-degree mark — the depth of a grieving father's regular callback. The 22-25 minute window is not Dante's authority pattern; it is the time it takes Dante to put down the phone after talking about his dead son and pick it back up to talk to the living one. The chapter's authority register is also mourning. Dante's appointment book's 21:30 'boat, alone — don't write what for' slot is partly the slot of a father refusing to write that he is grieving his elder son one hour per evening, six nights a week."
+    },
+    {
       "id": "emp_two_mirror_faces",
       "shape": "rect_norm",
       "rect": [0.40, 0.86, 0.20, 0.10],
