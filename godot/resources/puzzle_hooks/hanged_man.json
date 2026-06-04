@@ -106,7 +106,12 @@
      "interact":"hanged.hermit_mirror.recognized","unlocks":"vol5_hanged_hermit_mirror_confirmed",
      "cursor":"examine",
      "gated_by":"vol5_hermit_hanged_mirror_seen",
-     "notes":"DORMANT: appears only after the player has noticed the upward-falling shadow on the Hermit card. The downward shadow is now visibly the Hermit's shadow inverted — same proportions, same diffusion, opposite direction. The IX ↔ XII mirror is the deck's gentlest opposition; the two cards complete each other once both shadows are seen."}
+     "notes":"DORMANT: appears only after the player has noticed the upward-falling shadow on the Hermit card. The downward shadow is now visibly the Hermit's shadow inverted — same proportions, same diffusion, opposite direction. The IX ↔ XII mirror is the deck's gentlest opposition; the two cards complete each other once both shadows are seen."},
+    {"id":"hng_sigils_completed_later","shape":"rect_norm","rect":[0.14,0.58,0.12,0.08],
+     "interact":"hanged.sigils.completed_later","unlocks":"vol5_hanged_sigils_completed_later_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_moon_sigils_completed",
+     "notes":"DORMANT: appears only after the player has read the completed sigils in the Moon's static field. The notebook on the Hanged Man counter now visibly shows the three sigils not just unfinished — but waiting. The pages are uncreased; the ink is fresh; the chapter knows its own completion happens six chapters later. XII → XVIII is Natalie's whole arc: the writing waits, the static reads it back."}
   ],
 
   "easter_eggs": [

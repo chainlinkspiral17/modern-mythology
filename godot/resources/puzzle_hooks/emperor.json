@@ -130,6 +130,16 @@
       "cursor": "examine",
       "gated_by": "vol5_demoscene_module_visible",
       "notes": "DORMANT: appears only after reading the IV - DEMOSCENE_VIBE.EXE label on Fool. The same engine name is now visible inscribed in the upper-left of the throne room as a render-engine watermark — the Fool's footnote was always the Emperor's renderer."
+    },
+    {
+      "id": "emp_ankh_constellation_pair",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.36, 0.10, 0.20],
+      "interact": "emperor.ankh.constellation_pair",
+      "unlocks": "vol5_emperor_ankh_constellation_pair_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_star_emperor_inverse_seen",
+      "notes": "DORMANT: appears only after the player has recognized the ankh constellation on the Star card. Dante's ankh in the painted scene now visibly leaves a faint star-trail behind it as he holds it — the sceptre is already inscribing the future constellation. IV ↔ XVII mirror reads both directions: Star shows the sky pattern; Emperor shows where the pattern was drawn from. Possession and observation in the same hand."
     }
   ],
 

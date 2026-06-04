@@ -1,0 +1,97 @@
+{
+  "asset": "assets/gallery/star.png",
+  "scene_id": "vol5_ch17_star",
+  "character": "—",
+  "arcana": "XVII - THE STAR",
+  "subtitle": "Glass Skin and Christian Ice",
+  "palette": "midnight_blue_silver_starlight",
+  "location_text": "An open clearing, late Thursday night — the first hours after the Tower's collapse, sky uncovered.",
+  "format_note": "IV ↔ XVII mirror: Emperor's structure becomes the Star's open sky. The same overhead as the throne room, but without the roof. The chapter that arrives in the absence of cover.",
+
+  "ciphers": [
+    {
+      "id": "str_open_sky",
+      "kind": "scene_centerpiece",
+      "text": "the sky — uncovered, eight stars visible, the largest dead-center",
+      "anchor_norm": [0.50, 0.30],
+      "encoding_hint": "the classical Star card shows a single figure pouring water by starlight. Modern Mythology shows the sky uncovered after the Tower collapse — the figure is implied (you, looking). The eight stars are the Hierophant's eight stained-glass segments inverted to the heavens; the central largest is the Star traditionally called The Hope. The deck renders hope as what becomes visible once the cover is gone.",
+      "reveals": "vol5_star_sky_seen"
+    },
+    {
+      "id": "str_glass_skin",
+      "kind": "title_phrase_anchor",
+      "text": "the chapter subtitle, faint on the bottom border — 'glass skin and Christian ice'",
+      "anchor_norm": [0.50, 0.94],
+      "encoding_hint": "GLASS SKIN — translucent, fragile, observed. CHRISTIAN ICE — Acadian-Catholic register cooled, the Hierophant's heat removed. The subtitle pairs the chapter's two textures: the body has become readable through, the religious vocabulary has stopped burning. Together: hope as the sustainable form of being seen-through.",
+      "reveals": "vol5_star_subtitle_read"
+    },
+    {
+      "id": "str_emperor_inverse",
+      "kind": "mirror_pair",
+      "text": "a single ankh-shaped constellation low on the horizon — the same shape as Dante's throne ankh",
+      "anchor_norm": [0.18, 0.74],
+      "encoding_hint": "IV ↔ XVII mirror: the Emperor's ankh sceptre becomes the Star's constellation. The structure he held in hand is the structure the sky holds in pattern. Two registers of the same symbol — possessed and observed. The Star's hope is the realization that the symbol doesn't need to be wielded.",
+      "reveals": "vol5_star_emperor_inverse_seen",
+      "cross_references": ["emperor.json::emp_ankh"]
+    },
+    {
+      "id": "str_tower_aftermath",
+      "kind": "scene_link",
+      "text": "the silhouette of Evangeline's render farm at the edge of the clearing — still standing, still smoking",
+      "anchor_norm": [0.86, 0.78],
+      "encoding_hint": "the Tower's collapse is in the same frame. The Star card arrives moments after; the smoke is still rising. The classical Star's hope is not abstract — it's the hope that follows a survivable collapse. XVI → XVII adjacency rendered as visible aftermath: the Tower is still in the picture because the chapter is what's left after.",
+      "reveals": "vol5_star_tower_aftermath_seen",
+      "cross_references": ["tower.json::twr_render_queue"]
+    },
+    {
+      "id": "str_pouring_absent",
+      "kind": "absence",
+      "text": "two vessels on the ground, both empty — the classical pour has already happened",
+      "anchor_norm": [0.30, 0.62],
+      "encoding_hint": "the classical Star figure pours water from two vessels — one onto land, one back into the river. This card shows the vessels after, both empty. The chapter's hope is the residue of an act already done; the figure has already given what could be given, and is now just the witness to the sky.",
+      "reveals": "vol5_star_vessels_emptied_seen"
+    }
+  ],
+
+  "hotspots": [
+    {"id":"str_sky","shape":"rect_norm","rect":[0.20,0.16,0.60,0.30],
+     "interact":"star.sky.observed","unlocks":"vol5_star_sky_seen","cursor":"closer"},
+    {"id":"str_subtitle","shape":"rect_norm","rect":[0.20,0.92,0.60,0.06],
+     "interact":"star.subtitle.read","unlocks":"vol5_star_subtitle_read","cursor":"examine"},
+    {"id":"str_vessels","shape":"rect_norm","rect":[0.24,0.56,0.16,0.16],
+     "interact":"star.vessels.examined","unlocks":"vol5_star_vessels_emptied_seen","cursor":"examine"},
+    {"id":"str_emperor_constellation","shape":"rect_norm","rect":[0.10,0.70,0.18,0.14],
+     "interact":"star.ankh_constellation.recognized","unlocks":"vol5_star_emperor_inverse_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_keystone_emperor",
+     "notes":"DORMANT: appears only after the player has read the Emperor's throne motto. A small constellation low on the horizon is now visibly ankh-shaped — the same symbol Dante holds in IV. Possessed becomes observed; sceptre becomes pattern. IV ↔ XVII mirror: the structure he held is the structure the sky holds; the Star's hope is the realization that the symbol doesn't need to be wielded."},
+    {"id":"str_tower_smoke","shape":"rect_norm","rect":[0.80,0.70,0.18,0.20],
+     "interact":"star.tower_smoke.observed","unlocks":"vol5_star_tower_aftermath_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_tower_queue_seen",
+     "notes":"DORMANT: appears only after the player has seen the failed render queue on the Tower card. The render farm at the edge of the clearing is still standing, still smoking. XVI → XVII rendered as visible aftermath — the Star arrives moments after the Tower, in the same frame, with the smoke still rising. The chapter's hope is what's left after a survivable collapse, not what is hoped for in advance."}
+  ],
+
+  "easter_eggs": [
+    "the Star's eight visible stars rhyme with the Hierophant's eight stained-glass segments. Same count, two ceilings: V was the institutional roof, XVII is the absence of roof. The chapter inverts the Hierophant's coverage.",
+    "the classical Star figure pours water from two vessels; this card shows the vessels after, both empty. The chapter's hope is the residue of an act already completed; the figure becomes the witness.",
+    "the Tower is still in the picture — XVI → XVII is rendered as visible aftermath. The deck refuses to skip the dependency; the Star's hope is contextual to the collapse that authorized the open sky.",
+    "GLASS SKIN and CHRISTIAN ICE — the chapter's two textures. Translucent + cooled. The body readable through, the religious vocabulary stopped burning. Together: a sustainable form of being seen-through.",
+    "the Star is the first card in the deck's night trio (XVII Star, XVIII Moon, XIX Sun). The trio carries hope → illusion → clarity; this chapter is the trio's threshold."
+  ],
+
+  "links_forward": [
+    "vol5_star_sky_seen",
+    "vol5_star_subtitle_read",
+    "vol5_star_vessels_emptied_seen",
+    "vol5_star_emperor_inverse_seen",
+    "vol5_star_tower_aftermath_seen"
+  ],
+
+  "cross_references": {
+    "emperor_mirror": "emperor.json::emp_ankh (sceptre → constellation)",
+    "tower_adjacency": "tower.json::twr_render_queue (the visible aftermath)",
+    "hierophant_inverted_count": "hierophant.json::hie_stained_glass_8seg (eight segments → eight stars)",
+    "night_trio_starts": "moon.json (XVIII), sun.json (XIX)"
+  }
+}

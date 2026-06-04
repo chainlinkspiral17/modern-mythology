@@ -123,7 +123,13 @@
      "unlocks":"vol5_hierophant_priestess_lens_seen",
      "cursor":"examine",
      "gated_by":"vol5_priestess_camera",
-     "notes":"DORMANT: appears only after the player has touched Elicia's camera on the Priestess card. The same lens — circular, dark, unmistakable — is now visible reflected in one of the rose window's blue segments. The archivist is in the church before the rite, behind the player, documenting what AUDI ET TACE forbids speaking of. Priestess II is the canonical observer of every sacrament she herself declines to perform."}
+     "notes":"DORMANT: appears only after the player has touched Elicia's camera on the Priestess card. The same lens — circular, dark, unmistakable — is now visible reflected in one of the rose window's blue segments. The archivist is in the church before the rite, behind the player, documenting what AUDI ET TACE forbids speaking of. Priestess II is the canonical observer of every sacrament she herself declines to perform."},
+    {"id":"hie_tower_crozier_snap","shape":"rect_norm","rect":[0.46,0.40,0.08,0.16],
+     "interact":"hierophant.crozier_snap.seen",
+     "unlocks":"vol5_hierophant_tower_crozier_snap_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_tower_hierophant_inverse_seen",
+     "notes":"DORMANT: appears only after the player has recognized the Hierophant's crozier in the Tower's fault line. The bishop's staff in the painted card now shows a hairline crack at the same point the Tower's wall fractures — the institutional spine carries its own future snap. V → XVI mirror reads both directions: the Tower shows where the snap will be; the Hierophant shows the spine waiting to be snapped. The crack is in the wood before lightning finds it."}
   ],
 
   "easter_eggs": [

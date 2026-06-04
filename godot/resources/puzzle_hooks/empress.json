@@ -123,6 +123,16 @@
       "cursor": "examine",
       "gated_by": "vol5_diagnostic_grid",
       "notes": "DORMANT: appears only after the player has examined the CRT readout on the Magician card. The same biometric overlay structure is now visible bleeding through Nicola's HUD — Aria (Empress side) and Frasier's diagnostic stream are reading the SAME signal from two different rooms. Empress(III) = nature; Magician(I) = artifice; same vital sign."
+    },
+    {
+      "id": "ems_moon_collapse",
+      "shape": "rect_norm",
+      "rect": [0.46, 0.05, 0.08, 0.20],
+      "interact": "empress.moon_collapse.recognized",
+      "unlocks": "vol5_empress_moon_collapse_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_moon_empress_inversion_seen",
+      "notes": "DORMANT: appears only after the player has recognized the Empress dual-POV collapsing into Natalie on the Moon card. The vertical centerline on the Empress now shows a faint annotation: 'III ↔ XVIII: this split waits for Natalie.' The Empress chapter's dual-POV mechanic was the deck's first split; the Moon chapter is where the split's argument is closed. Nicola/Aria are not the same person, but they have the same relationship to the static that Natalie has alone. The Empress card learns this from the Moon, not the other way."
     }
   ],
 
