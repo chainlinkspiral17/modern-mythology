@@ -125,7 +125,13 @@
      "interact":"wheel.dambrosios.witness","unlocks":"vol5_wheel_dambrosios_witness_seen",
      "cursor":"examine",
      "gated_by":"vol5_chariot_breakfast_witness_seen",
-     "notes":"DORMANT: appears only after the Chariot SMS thread surfaces the 06:55 breakfast witness. The corner of Erica's monitor now visibly shows a small green sticky note: 'D'AMBROSIO'S — 06:30 wed — Antonio & me & Nicola D. — three of us at the same diner before any of us knew we'd be the same case file.' The Wheel chapter's case prep is happening hours after Erica recognized the through-line of who breakfast'd where. The fortress's walls were slightly transparent because Erica had already seen too much."}
+     "notes":"DORMANT: appears only after the Chariot SMS thread surfaces the 06:55 breakfast witness. The corner of Erica's monitor now visibly shows a small green sticky note: 'D'AMBROSIO'S — 06:30 wed — Antonio & me & Nicola D. — three of us at the same diner before any of us knew we'd be the same case file.' The Wheel chapter's case prep is happening hours after Erica recognized the through-line of who breakfast'd where. The fortress's walls were slightly transparent because Erica had already seen too much."},
+    {"id":"whl_files_diorama_entry","shape":"rect_norm","rect":[0.70,0.22,0.28,0.40],
+     "interact":"wheel.files.fetched",
+     "unlocks":"vol5_wheel_files_diorama_entered",
+     "cursor":"closer",
+     "opens_diorama":"wheel_files",
+     "notes":"ENTRY HOTSPOT: clicking the Fortress Menu in the painted scene dispatches daemon_archivist.10 to fetch the four LAWYER_FILES_INDEX.EXE files in full. File 3 (Alberto's Call Log) contains six clickable rows with Erica's red-ink marginalia; several wire cross-card unlocks for Emperor (Dante audit), Hierophant (Quent recorded himself), Devil (Daigle ducked), and a 23 Feb unidentified-caller forward seed. The Fortress Menu in the painted scene is the daemon's table of contents; the diorama is the daemon's full delivery."}
   ],
 
   "easter_eggs": [

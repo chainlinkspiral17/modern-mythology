@@ -150,6 +150,16 @@
       "cursor": "examine",
       "gated_by": "vol5_ward_c_dante_present",
       "notes": "DORMANT: appears only after the player has read the Bed 6 nurse's note in the Death (XIII) Ward C diorama. The throne in the painted scene now visibly shows a small hospital admit-band looped around its base. Mr. D., 70, dentist daughter in Asheville. Dante D'Ambrosio was in Bed 6 of Ward C the night of Walpurgisnacht. The throne the chapter renders is a chapter Dante is rendering FROM HIS BED — the painted Emperor scene is the chapter Dante is having while still admitted. 'Nothing changed all week. He knows.' The Emperor's chapter is the Emperor narrating his own ward residence as a throne room."
+    },
+    {
+      "id": "emp_audit_window",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.50, 0.10, 0.12],
+      "interact": "emperor.audit_window",
+      "unlocks": "vol5_emperor_audit_window_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_wheel_dante_audit_window",
+      "notes": "DORMANT: appears only after the player has read Erica's marginalia on the 19:42 Dante callback row in the Wheel diorama. The ankh sceptre in Dante's hand now visibly carries a small carved tally mark every 22-25 degrees around its shaft. The 22-25 minute Dante callback pattern is rendered as the sceptre's geometric notation — the Emperor's authority operates at a regular rhythm, and the rhythm is the case's true timing. 'Wait until the audit clears' became canonical at 19:42 Feb 10; the audit cleared the wrong way three days later. The Emperor's chapter is the chapter that orders the wait, on the same shaft he holds in the painted scene."
     }
   ],
 

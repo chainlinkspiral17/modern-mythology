@@ -181,6 +181,16 @@
       "cursor": "examine",
       "gated_by": "vol5_sun_priestess_journal_seen",
       "notes": "DORMANT: appears only after the player has read Elicia's tarot journal entry on the Sun card from Frank's desk. The journal on her own card now shows a small marker between two pages — the SUN entry has been read by someone else, and the marker is the deck's quiet acknowledgement that her annotation traveled. II ↔ XIX mirror closes from both sides: she wrote about Frank, Frank read about himself, the journal now knows it was read."
+    },
+    {
+      "id": "pri_23feb_redacted",
+      "shape": "rect_norm",
+      "rect": [0.10, 0.15, 0.10, 0.10],
+      "interact": "priestess.23feb.redacted",
+      "unlocks": "vol5_priestess_23feb_redacted_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_wheel_unidentified_23feb",
+      "notes": "DORMANT: appears only after the player has read the 23 Feb unattributed-caller row in the Wheel diorama (the four-second call Alberto answered, listened to, hung up on, and refused to write down). One of Elicia's Anya tapes now visibly has a paper sleeve replaced — the original sleeve is gone; the replacement is unlabeled. daemon_archivist.10's integrity report on the Wheel diorama was 0.99 (1 row redacted); daemon_listener.02's archive shows the corresponding redaction here. Two demons agree that one event in the deck's interior is structurally withheld. The 23 Feb caller is not in the deck. The deck knows this on purpose."
     }
   ],
 

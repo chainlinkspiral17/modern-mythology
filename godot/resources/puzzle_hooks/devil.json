@@ -83,7 +83,13 @@
      "interact":"devil.quent_change_of_mind.seen","unlocks":"vol5_devil_quent_relay_seen",
      "cursor":"examine",
      "gated_by":"vol5_chariot_daigle_relay_seen",
-     "notes":"DORMANT: appears only after the Chariot SMS thread surfaces Antonio's 07:02 relay from Daigle ('hes been waiting for u to change ur mind'). The Devil card's middle barstool now visibly has a hand-written note slipped under the drink: 'Q — Thursday — undo.' Father Quent had made up his mind to leave the scaffolding standing; Daigle was waiting for him to unmake it. The unmaking was Antonio's job. The wreck was the late delivery of an undecision. V → VII → XV is the booth-call chain's economic register: an institution buys time; the bought time runs out at the bar."}
+     "notes":"DORMANT: appears only after the Chariot SMS thread surfaces Antonio's 07:02 relay from Daigle ('hes been waiting for u to change ur mind'). The Devil card's middle barstool now visibly has a hand-written note slipped under the drink: 'Q — Thursday — undo.' Father Quent had made up his mind to leave the scaffolding standing; Daigle was waiting for him to unmake it. The unmaking was Antonio's job. The wreck was the late delivery of an undecision. V → VII → XV is the booth-call chain's economic register: an institution buys time; the bought time runs out at the bar."},
+    {"id":"dvl_daigle_19_calls","shape":"rect_norm","rect":[0.46,0.46,0.10,0.10],
+     "interact":"devil.daigle.19_calls",
+     "unlocks":"vol5_devil_daigle_19_calls_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_wheel_alberto_warned_daigle",
+     "notes":"DORMANT: appears only after the player has read Erica's marginalia on the 19 Feb Alberto-Daigle row in the Wheel diorama. The middle barstool's amber-bulb shadow now visibly carries faint tally marks — nineteen of them, in two rows of nine and a single one set apart. Daigle knew by call seven. He sat through twelve more rings choosing not to. The chapter's UNCOMFORTABLE INSIDE status is partly the architecture, partly the welded chair — and partly the count carved into the bulb's shadow by a man who would rather take the count than the call."}
   ],
 
   "easter_eggs": [
