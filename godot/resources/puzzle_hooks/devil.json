@@ -73,7 +73,17 @@
      "interact":"devil.flame.spotted","unlocks":"vol5_devil_chariot_flame_recognized",
      "cursor":"examine",
      "gated_by":"vol5_chariot_drinks_menu",
-     "notes":"DORMANT: appears only after the player has examined the drinks menu on the Chariot card. The Chariot's signature cocktail 'THE CHARIOT'S FLAME' is now visibly the drink the middle barstool has in front of it — the menu lived at Ember & Ash, but the drink moved with the chapter that follows the wreck. VII → XV is the deck's flame chain: the cocktail Antonio ordered last is the cocktail the Devil's middle seat still holds."}
+     "notes":"DORMANT: appears only after the player has examined the drinks menu on the Chariot card. The Chariot's signature cocktail 'THE CHARIOT'S FLAME' is now visibly the drink the middle barstool has in front of it — the menu lived at Ember & Ash, but the drink moved with the chapter that follows the wreck. VII → XV is the deck's flame chain: the cocktail Antonio ordered last is the cocktail the Devil's middle seat still holds."},
+    {"id":"dvl_private_name_surrendered","shape":"rect_norm","rect":[0.18,0.50,0.14,0.06],
+     "interact":"devil.private_name.surrendered","unlocks":"vol5_devil_private_name_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_chariot_flame_private_name",
+     "notes":"DORMANT: appears only after the Chariot SMS thread surfaces Antonio's 07:05 text about THE CHARIOT'S FLAME being their private name. The menu chalkboard now visibly shows a faint earlier name beneath the current one — the private name Daigle and Antonio had for the drink before Daigle put it on the public board. The deck's signature drink at the Devil card is a name surrendered: the bar's bondage is partly the bondage of private things made menu items. Daigle wrote it up because Antonio wasn't there to object."},
+    {"id":"dvl_quent_change_of_mind","shape":"rect_norm","rect":[0.32,0.32,0.16,0.10],
+     "interact":"devil.quent_change_of_mind.seen","unlocks":"vol5_devil_quent_relay_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_chariot_daigle_relay_seen",
+     "notes":"DORMANT: appears only after the Chariot SMS thread surfaces Antonio's 07:02 relay from Daigle ('hes been waiting for u to change ur mind'). The Devil card's middle barstool now visibly has a hand-written note slipped under the drink: 'Q — Thursday — undo.' Father Quent had made up his mind to leave the scaffolding standing; Daigle was waiting for him to unmake it. The unmaking was Antonio's job. The wreck was the late delivery of an undecision. V → VII → XV is the booth-call chain's economic register: an institution buys time; the bought time runs out at the bar."}
   ],
 
   "easter_eggs": [

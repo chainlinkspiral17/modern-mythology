@@ -133,6 +133,16 @@
       "cursor": "examine",
       "gated_by": "vol5_moon_empress_inversion_seen",
       "notes": "DORMANT: appears only after the player has recognized the Empress dual-POV collapsing into Natalie on the Moon card. The vertical centerline on the Empress now shows a faint annotation: 'III ↔ XVIII: this split waits for Natalie.' The Empress chapter's dual-POV mechanic was the deck's first split; the Moon chapter is where the split's argument is closed. Nicola/Aria are not the same person, but they have the same relationship to the static that Natalie has alone. The Empress card learns this from the Moon, not the other way."
+    },
+    {
+      "id": "ems_dambrosios_breakfast",
+      "shape": "rect_norm",
+      "rect": [0.24, 0.46, 0.10, 0.10],
+      "interact": "empress.dambrosios.breakfast",
+      "unlocks": "vol5_empress_breakfast_witness_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_chariot_breakfast_witness_seen",
+      "notes": "DORMANT: appears only after the Chariot SMS thread surfaces the 06:55 breakfast witness. The fleur-de-lis tablecloth now visibly shows a small faint texture in the lower corner — the texture of D'Ambrosio's diner formica, where Nicola was sitting earlier this same morning. Antonio sat next to Erica Campbell at the same diner; Nicola did not eat. The Empress's dinner-table chapter is a chapter Nicola is having AFTER a breakfast nobody else knows she didn't eat at. Aria's anxiety-spike baseline was set hours before the painted scene began."
     }
   ],
 

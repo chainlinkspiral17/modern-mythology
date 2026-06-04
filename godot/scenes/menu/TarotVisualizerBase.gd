@@ -67,7 +67,8 @@ const INVENTORY_BAR_SCRIPT = preload("res://scenes/menu/InventoryBar.gd")
 # room rendered as an interactive ASCII layout with its own
 # ambient audio. Register additional dioramas here by id.
 const DIORAMA_SCRIPTS := {
-    "ward_c": preload("res://scenes/menu/DeathWardDiorama.gd"),
+    "ward_c":      preload("res://scenes/menu/DeathWardDiorama.gd"),
+    "chariot_sms": preload("res://scenes/menu/ChariotSmsDiorama.gd"),
 }
 
 var hooks: Dictionary = {}

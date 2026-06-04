@@ -243,6 +243,16 @@
       "cursor": "examine",
       "gated_by": "vol5_devil_chariot_flame_recognized",
       "notes": "DORMANT: appears only after the player has spotted THE CHARIOT'S FLAME on Daigle's bar. The drinks menu now has a small annotation next to the signature cocktail: 'last poured: vol5_ch15 — middle stool, Wednesday.' The drink that was Antonio's last is the drink the Devil's middle seat still holds. The menu remembers its own movement. VII → XV chain confirmed from both ends."
+    },
+    {
+      "id": "cha_sms_thread_entry",
+      "shape": "rect_norm",
+      "rect": [0.32, 0.32, 0.24, 0.30],
+      "interact": "chariot.sms.fetched",
+      "unlocks": "vol5_chariot_sms_diorama_entered",
+      "cursor": "closer",
+      "opens_diorama": "chariot_sms",
+      "notes": "ENTRY HOTSPOT: clicking the painted wreck centerpiece dispatches daemon_courier.07 to fetch Antonio's outbound SMS thread (06:42-07:11 CT) from ember.ash.rest.bbs. The diorama plays the 29 minutes between Father Quent's booth call and the scaffolding fall at 8x real-time speed; messages animate in at their timestamps; click any delivered message to surface its payload (cross-card unlocks for Empress, Wheel, Devil)."
     }
   ],
 

@@ -120,7 +120,12 @@
      "interact":"wheel.anna.arrival_pre_echo","unlocks":"vol5_wheel_anna_arrival_pre_echo_seen",
      "cursor":"examine",
      "gated_by":"vol5_justice_wireframe_seen",
-     "notes":"DORMANT: appears only after the player has examined Anna's wireframe deconstruction on the Justice card. The empty PAINTER'S SPACE on the floorplan now visibly shows a thin pencil sketch — Anna's wireframe in early form. She isn't here yet, but the deck has already drawn the line her work will take. X → XI is the deck's tightest character adjacency: the Wheel chapter renders Anna's absence as architectural; Justice renders her arrival as the wireframe pinned above the drafting table."}
+     "notes":"DORMANT: appears only after the player has examined Anna's wireframe deconstruction on the Justice card. The empty PAINTER'S SPACE on the floorplan now visibly shows a thin pencil sketch — Anna's wireframe in early form. She isn't here yet, but the deck has already drawn the line her work will take. X → XI is the deck's tightest character adjacency: the Wheel chapter renders Anna's absence as architectural; Justice renders her arrival as the wireframe pinned above the drafting table."},
+    {"id":"whl_dambrosios_witness","shape":"rect_norm","rect":[0.08,0.14,0.10,0.08],
+     "interact":"wheel.dambrosios.witness","unlocks":"vol5_wheel_dambrosios_witness_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_chariot_breakfast_witness_seen",
+     "notes":"DORMANT: appears only after the Chariot SMS thread surfaces the 06:55 breakfast witness. The corner of Erica's monitor now visibly shows a small green sticky note: 'D'AMBROSIO'S — 06:30 wed — Antonio & me & Nicola D. — three of us at the same diner before any of us knew we'd be the same case file.' The Wheel chapter's case prep is happening hours after Erica recognized the through-line of who breakfast'd where. The fortress's walls were slightly transparent because Erica had already seen too much."}
   ],
 
   "easter_eggs": [
