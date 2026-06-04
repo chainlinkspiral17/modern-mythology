@@ -520,5 +520,346 @@ is "the absent figure"), XXI (BBS count restored).
 
 ---
 
-(Cards VIII through XXI continue in the next commits — see
-_UNLOCK_WEB_2.md and _UNLOCK_WEB_3.md.)
+---
+
+### VIII — STRENGTH
+
+The un-named woman's outbound is the deck's gentle-axis vector.
+Faith's lion-form, the lemniscate halo, the river crossing, and
+the Hierophant dress unworn all wake content on specific cards.
+
+**Live:** 0, I (lemniscate echo back), IV (ankh-wielding rhyme),
+V (dress unworn), XIII (warmer mirror), XVI (gentle vs.
+revelation), XX (gesture rhyme), XXI (LION corner figure).
+
+- L → 0 Fool: Faith iris match.
+- L → I Magician: lemniscate worn back to inscribed.
+- P → II Priestess: the un-named woman's single page in her
+  archive folder.
+- F → III Empress: Aria's anxiety-spike baseline ↔ lion's
+  heart rate (vol6 sensor).
+- L → IV Emperor: hand gesture matches ankh-wielding.
+- L → V Hierophant: dress unworn on riverbank.
+- P → VI Lovers: un-named figure & Faith as the unrefused pair.
+- L → VII Chariot: Faith identified at the wreck.
+- P → IX Hermit: the figure's signature is the same dash as
+  the Hermit's pseudo-signature (both un-named).
+- P → X Wheel: nothing wired; the river is in Erica's case file
+  geography.
+- P → XI Justice: the river separates court and studio at
+  XI — the same river the figure crosses at VIII.
+- P → XII Hanged Man: the hand on the lion's jaw rhymes with
+  the hand on Natalie's deck cut.
+- L → XIII Death: gloved-hand mirror.
+- P → XIV Temperance: the moderation rhymes with the gentleness.
+- P → XV Devil: the river is one bank from Daigle's pier.
+- P → XVI Tower: the river is downhill from the render farm.
+- P → XVII Star: the un-named figure at VIII and the un-named
+  pourer at XVII share the dash signature.
+- P → XVIII Moon: the river is in Natalie's broadcast.
+- P → XIX Sun: Faith's calm radiates to the four-mote pattern.
+- L → XX Judgement: Faith's tail thump at the ensemble.
+- L → XXI World: LION corner.
+
+---
+
+### IX — THE HERMIT
+
+The Hermit's outbound is the deck's quietest. Mostly the staff/
+crozier echo and the HERMIT_01 tape's existence. The Hermit's
+silence is itself the chapter; he doesn't radiate much.
+
+**Live:** II (HERMIT_01 tape archive), V (staff lineage),
+XII (shadow mirror reciprocal), XX (silence rhyme).
+
+- P → 0 Fool: nothing wired; the lantern wax and the diner
+  candle (proposed) share stock.
+- P → I Magician: a Magician demon in the periphery carries
+  a lantern.
+- L → II Priestess: HERMIT_01 tape in lantern base.
+- F → III Empress: nothing wired; Aria's silence pairs.
+- P → IV Emperor: staff-lineage reciprocal.
+- L → V Hierophant: staff-lineage reciprocal.
+- P → VI Lovers: Hermit & his agreement-with-Elicia pair.
+- P → VII Chariot: the Hermit's clearing is upriver from the
+  wreck site.
+- P → VIII Strength: dash-signature rhyme.
+- P → X Wheel: Erica's working night solitude rhymes with
+  the Hermit's chosen.
+- F → XI Justice: vol6 hook — Hermit is or was a lawyer.
+- L → XII Hanged Man: shadow mirror (downward vs upward).
+- P → XIII Death: the Hermit's exile rhymes with Mr. S.'s
+  walkout.
+- F → XIV Temperance: Frank's discipline rhymes with the
+  Hermit's solitude.
+- F → XV Devil: Daigle's bondage rhymes inversely with chosen
+  solitude.
+- P → XVI Tower: nothing wired; the lantern guttered before
+  the engine crashed.
+- F → XVII Star: the Hermit's six-pointed star inside the
+  lantern is one of the Star's eight.
+- P → XVIII Moon: the Hermit's silence renders Natalie's
+  static legible.
+- P → XIX Sun: the Hermit's lantern is six feet of light;
+  the Sun is six feet of pattern.
+- L → XX Judgement: the Hermit's silence is the ensemble's
+  silence.
+- F → XXI World: the Hermit is the only figure absent from the
+  wreath (vol6: the Hermit declined the gathering).
+
+---
+
+### X — THE WHEEL OF FORTUNE
+
+Erica's outbound is the deck's institutional-knowledge vector.
+The case prep file 3 (Alberto's log) seeds 4 cards. The
+Fortress Menu's other three files (slate / red / gold) have
+proposed outbound seeds in vol6.
+
+**Live:** II (23 Feb redaction agreement), IV (audit window),
+V (Quent recorded himself), VII (breakfast witness reciprocal),
+XI (Anna arrival pre-echo + wireframe + settlement), XIII
+(Erica's signature timestamp), XV (19-call burst), XIX (Sun's
+Saturday signature timestamp matches).
+
+- P → 0 Fool: the BBS ACTIVE NODES count Erica indirectly
+  restored.
+- P → I Magician: Anna's wireframe lineage rooted in Frasier's
+  model city.
+- L → II Priestess: 23 Feb agreement.
+- P → III Empress: the breakfast at D'Ambrosio's where Erica
+  ate, Nicola didn't.
+- L → IV Emperor: 22-25 min callback canonized as ankh tally.
+- L → V Hierophant: Quent recorded himself.
+- P → VI Lovers: Erica & Anna pair confirmation (friends before
+  the case).
+- L → VII Chariot: D'Ambrosio's breakfast witness.
+- P → VIII Strength: nothing wired; the river is in geography.
+- P → IX Hermit: Erica's working night solitude.
+- L → XI Justice: tightest character adjacency (live, three gates).
+- P → XII Hanged Man: the apartment Natalie's at is on the same
+  block as Erica's old apartment (vol6 hook).
+- P → XIII Death: Mrs. R = Marta Romero, Erica's client.
+- P → XIV Temperance: Erica & Frank were college roommates
+  (vol6 hook).
+- P → XV Devil: 19 calls tally on amber bulb.
+- L → XV Devil: already wired via Alberto warned Daigle.
+- P → XVI Tower: Erica's law firm represents the render farm
+  (vol6 contractor lead).
+- P → XVII Star: nothing wired; the night sky is over Houston too.
+- P → XVIII Moon: Erica watched the static-field broadcast
+  while case-prepping (vol6).
+- L → XIX Sun: 3:47 AM ↔ Frank's Saturday 06:11 phone call.
+- P → XX Judgement: Erica is one of the ensemble.
+- L → XXI World: Erica's case opens the World's footer ledger.
+
+---
+
+### XI — JUSTICE
+
+The dual-POV outbound radiates from two angles: Erica's bench
+and Anna's studio. Marta Romero's photo is shared between them,
+and the photo's two readings reach multiple cards.
+
+**Live:** III (dual-POV inheritance reciprocal), VI (refused-
+flipped annotation), X (Wheel reciprocals — three live), XIII
+(Marta in Ward C), XXI (lattice closure references).
+
+- P → 0 Fool: the case file timeline references John as a
+  witness at D'Ambrosio's (he served Erica breakfast).
+- P → I Magician: Anna's wireframe inherits from Frasier's
+  predictive city.
+- P → II Priestess: Anna's mother Marta was a parishioner at
+  St. Jude's — overlap with Hierophant.
+- L → III Empress: dual-POV inheritance.
+- P → IV Emperor: PetroTex case roots in Dante's empire.
+- P → V Hierophant: Quent recorded himself; some of those tapes
+  could be subpoenaed.
+- L → VI Lovers: Erica & Anna pair candidate.
+- P → VII Chariot: Antonio's death is in the case timeline.
+- P → VIII Strength: the river divides court (left) and studio
+  (right).
+- F → IX Hermit: vol6 — Hermit's old practice is referenced.
+- L → X Wheel: Wheel ↔ Justice three-gate adjacency.
+- P → XII Hanged Man: Natalie's apartment & Anna's studio are
+  the same building (vol6 hook).
+- L → XIII Death: Marta Romero in Bed 5.
+- L → XIV Temperance: Frank reads Anna's wireframe (vol6).
+- P → XV Devil: the case names Daigle's bar as a venue.
+- F → XVI Tower: Anna's wireframe is rendered on Evangeline's
+  farm (vol6).
+- P → XVII Star: Anna's "what I poured" reference (the
+  un-named figure is Anna).
+- F → XVIII Moon: Natalie's broadcast carries case audio.
+- P → XIX Sun: Frank reads Anna's wireframe Sun page.
+- P → XX Judgement: the verdict refused — Erica & Anna both
+  in the ensemble.
+- L → XXI World: lattice closure.
+
+---
+
+### XII — THE HANGED MAN
+
+Natalie's outbound is the deck's longest single-character spine
+(XII → XVIII). Simon as absent figure radiates to Ward C; the
+phone log radiates to the booth chain.
+
+**Live:** 0 (clock hour-match), II (NATALIE_147AM tape proposed),
+III (Aria's bathroom-fallback rhyme), V (Call 2 origin),
+VII (Antonio absent — vol6), IX (shadow mirror), X (apartment
+geography — proposed), XII → XIII (Simon walks out), XII → XVIII
+(sigils complete), XVII (the river the candle's wax falls toward),
+XX (Natalie tests the gesture), XXI (the chapter is hers).
+
+- P → 0 Fool: clock hour-match (3:47 AM CT ↔ 1:47 AM PT).
+- P → I Magician: Simon was Frasier's neighbor (vol6).
+- L → II Priestess: ANYA tape archive has a NATALIE_147AM next
+  to it.
+- L → III Empress: Aria's bathroom-fallback ↔ Natalie's vigil.
+- F → IV Emperor: vol6 — Dante is Natalie's father.
+- L → V Hierophant: Call 2 origin.
+- L → VI Lovers: Natalie & Simon implicit lattice entry.
+- L → VII Chariot: third call recipient.
+- P → VIII Strength: hand-on-deck-cut gesture.
+- L → IX Hermit: shadow mirror (live both ways).
+- P → X Wheel: nothing wired; vol6 — apartment is on Erica's
+  block.
+- P → XI Justice: Natalie's apartment is the same building as
+  Anna's studio (vol6).
+- L → XIII Death: Simon's walkout (Mr. S).
+- L → XIV Temperance: Frank visits Natalie's apartment in vol6.
+- P → XV Devil: nothing wired; the candle stock was Daigle's.
+- F → XVI Tower: vol6 — Natalie's broadcast and the render
+  farm share a substrate.
+- P → XVII Star: the river the candle's wax falls toward.
+- L → XVIII Moon: sigils complete (Natalie's spine).
+- F → XIX Sun: Natalie's morning after the broadcast.
+- L → XX Judgement: Natalie tests the gesture.
+- L → XXI World: the chapter is hers.
+
+---
+
+### XIII — DEATH
+
+The Ward C diorama outbound: 6 inbound cards activated on bed
+clicks (currently 3 live, 3 proposed in vol6 expansion).
+e.s.'s shift report carries every patient as a potential edge.
+
+**Live:** 0 (Faith absent), I (Frasier modeled Ward C —
+proposed), IV (Bed 6 admit-band), VIII (mirror), IX (the
+walkout rhymes with chosen solitude), XII (Bed 4 walkout =
+Simon), XIV (Frank moderates Tuesday after the death),
+XVI (the death of the engine), XIX (Frank's chamber is
+across town from Ward C), XX (Mr. K's "is it the ceiling"
+becomes diegetic at XX).
+
+- L → 0 Fool: Faith's empty corner.
+- P → I Magician: Frasier modeled Ward C in his diorama.
+- P → II Priestess: archive of e.s.'s handover.
+- L → III Empress: Aria reads Mr. D's vitals from offsite.
+- L → IV Emperor: Bed 6 admit-band.
+- P → V Hierophant: chaplain's room used.
+- P → VI Lovers: nothing yet wired; vol6 reveals which Lovers
+  pair was in the ward.
+- L → VII Chariot: Antonio's death is in the wider case (the
+  ward's prior week).
+- L → VIII Strength: gentle hand at warmer mirror.
+- P → IX Hermit: the walkout chapter is one Hermit could write.
+- L → X Wheel: Marta Romero is Erica's client.
+- L → XI Justice: Marta Romero is alive on the chapter.
+- L → XII Hanged Man: Mr. S walkout.
+- L → XIV Temperance: the nurse signs off "until Tuesday."
+- P → XV Devil: nothing yet wired.
+- P → XVI Tower: the death of the engine.
+- P → XVII Star: nothing wired.
+- P → XVIII Moon: Mr. K's ceiling-question and Natalie's
+  static-reading are the same gesture.
+- L → XIX Sun: Frank's chamber is across town.
+- L → XX Judgement: Mr. K's "is it the ceiling" becomes the
+  ensemble's whispered line.
+- L → XXI World: the World's pair lattice has a Ward C row.
+
+---
+
+### XIV — TEMPERANCE
+
+Frank's outbound is the deck's quietest discipline-radiator.
+The Tuesday notebook is mostly blank; what fires from it is
+silence's outbound. The two cups, the photograph on his desk,
+and the dust mote each reach one card.
+
+**Live:** XIII (Frank's clock subdial confirms ward count),
+XIX (Frank's spine), XX (Frank in ensemble).
+
+- P → 0 Fool: nothing wired; the diner's quiet rhymes.
+- P → I Magician: Frasier's CRT reads Frank remotely.
+- P → II Priestess: archive of Frank's Tuesday notebook.
+- P → III Empress: pale-emerald light shared.
+- P → IV Emperor: nothing yet wired; vol6 hook (Dante's
+  daughter in Asheville is Frank's college roommate?).
+- P → V Hierophant: Catholic discipline.
+- F → VI Lovers: Frank & Tuesday pair (vol6).
+- L → VII Chariot: photograph on the desk.
+- P → VIII Strength: moderation's rhyme.
+- F → IX Hermit: Frank's discipline rhymes with chosen
+  solitude.
+- F → X Wheel: vol6 — college roommate.
+- P → XI Justice: Frank reads Anna's wireframe.
+- P → XII Hanged Man: vol6 — Frank visits Natalie.
+- L → XIII Death: clock subdial.
+- L → XIII Death: Frank does the ward count.
+- F → XV Devil: nothing wired; Daigle's bar is not Frank's
+  register.
+- P → XVI Tower: nothing wired; Frank watches the smoke from
+  his window.
+- P → XVII Star: Frank notices the open sky.
+- P → XVIII Moon: Frank's notebook records the static
+  broadcast at midnight Friday.
+- L → XIX Sun: Saturday entry attachment A.
+- L → XX Judgement: the smile at minute 22.
+- P → XXI World: the dust pattern at the wreath's edge.
+
+---
+
+### XV — THE DEVIL
+
+Daigle's bar outbound: the bar is the deck's centripetal node.
+Calls Daigle received but didn't pick up, drinks moved from
+Antonio to the middle barstool, and Father Quent's name on
+the chalkboard each radiate.
+
+**Live:** IV (Dante's pier slot at 21:30), V (Quent change of
+mind), VI (welded chair), VII (flame chain), X (19-call tally),
+XI (case file names Daigle's bar), XVI (amber bulb cooked the
+line), XX (UNCOMFORTABLE INSIDE inhabits the ensemble's discomfort),
+XXI (corner figure — proposed).
+
+- P → 0 Fool: counter rhymes with welded bar.
+- P → I Magician: nothing wired; Frasier modeled Daigle's.
+- P → II Priestess: archive of Daigle's morning note.
+- P → III Empress: nothing wired; Aria's anxiety-spike rhyme.
+- L → IV Emperor: Dante's pier slot.
+- L → V Hierophant: Daigle relay reciprocal.
+- L → VI Lovers: welded chair.
+- L → VII Chariot: flame chain.
+- P → VIII Strength: the river one bank from the pier.
+- P → IX Hermit: nothing yet wired.
+- L → X Wheel: 19-call burst tally.
+- P → XI Justice: Daigle's bar named in PetroTex case file.
+- P → XII Hanged Man: candle wax stock shared.
+- P → XIII Death: nothing yet wired; Bed 4 vol6 reveal —
+  Simon was at Daigle's the night before.
+- P → XIV Temperance: nothing wired; Frank avoids the bar.
+- P → XVI Tower: amber bulb cooked the line.
+- F → XVII Star: vol6 hook.
+- P → XVIII Moon: nothing wired.
+- P → XIX Sun: nothing wired.
+- L → XX Judgement: UNCOMFORTABLE INSIDE rhymes with the
+  ensemble's discomfort.
+- L → XXI World: Daigle's bar in the wreath's southern
+  geography.
+
+---
+
+(Cards XVI through XXI continue in the next commit.)
+
