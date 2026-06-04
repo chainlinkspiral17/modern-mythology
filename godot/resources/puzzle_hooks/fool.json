@@ -263,7 +263,12 @@
      "interact":"fool.faith.iris_seen","unlocks":"vol5_fool_faith_iris_seen",
      "cursor":"examine",
      "gated_by":"vol5_strength_faith_lineage",
-     "notes":"DORMANT: appears only after the player has recognized Faith's lineage on the Strength card. The dog's iris under the counter is now drawn with the same calm yellow ring as the lion's. The Fool's companion is the Strength card's beast at the diner-table scale — three sizes, one creature, one eye. Faith's whole arc visible in her sleeping face."}
+     "notes":"DORMANT: appears only after the player has recognized Faith's lineage on the Strength card. The dog's iris under the counter is now drawn with the same calm yellow ring as the lion's. The Fool's companion is the Strength card's beast at the diner-table scale — three sizes, one creature, one eye. Faith's whole arc visible in her sleeping face."},
+    {"id":"fool_dawn_pre_echo","shape":"rect_norm","rect":[0.46,0.02,0.08,0.06],
+     "interact":"fool.dawn.pre_echo","unlocks":"vol5_fool_dawn_pre_echo_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_world_fool_return_seen",
+     "notes":"DORMANT: appears only after the player has seen the dawn-lit diner corner on the World card. The 3:47 AM clock now visibly carries a faint smudge on its minute hand — the same smudge the World's dawn version carries on its 06:18. Same clock, same hand, eventually moved. 0 ↔ XXI reads both directions: World shows the clock at dawn, Fool shows the dawn already implicit at 3:47. The chapter that didn't move was the chapter waiting for the World to let it."}
   ],
 
   "easter_eggs": [

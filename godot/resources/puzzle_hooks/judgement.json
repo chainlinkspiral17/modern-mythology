@@ -1,0 +1,109 @@
+{
+  "asset": "assets/gallery/judgement.png",
+  "scene_id": "vol5_ch20_judgement",
+  "character": "ensemble",
+  "arcana": "XX - JUDGEMENT",
+  "subtitle": "Pattern Recognition in Dust Notes",
+  "palette": "cyan_neon_ensemble_grey",
+  "location_text": "The whole cast on one stage — first time the deck has rendered the ensemble together. Sunday.",
+  "format_note": "I ↔ XX mirror: Magician's will → Judgement's awakening. Same gesture (the figure raising one arm) at two scales — Magician one-figure, Judgement all-figures. Also the deck's THIRD REFUSED card per Priestess journal — and unlike Justice, Judgement HOLDS the refusal. The chapter renders the ensemble without rendering the verdict.",
+
+  "ciphers": [
+    {
+      "id": "jdg_ensemble_first",
+      "kind": "scene_centerpiece",
+      "text": "the whole cast in one frame — first time in vol5 the deck has rendered every named POV together",
+      "anchor_norm": [0.50, 0.50],
+      "encoding_hint": "the classical Judgement card shows the dead rising at the angel's trumpet. Modern Mythology renders the same gathering without the calling — every named character stands in the frame because the chapter has reached the structural moment when they must all be visible together. The angel is offscreen; the trumpet is implicit. Nobody answers a call here; the chapter is the gathering itself.",
+      "reveals": "vol5_judgement_ensemble_seen"
+    },
+    {
+      "id": "jdg_magician_mirror",
+      "kind": "mirror_pair",
+      "text": "every figure on stage has one arm raised — the Magician's 'as above' gesture, multiplied across the ensemble",
+      "anchor_norm": [0.50, 0.30],
+      "encoding_hint": "I ↔ XX mirror: the Magician's solo gesture rendered en masse. Modern Mythology refuses to depict a single judging figure — instead, the gesture that was Frasier's alone at I is now everyone's at XX. The classical sequence one → many is the deck's structural premise; Judgement is where the premise becomes diegetic.",
+      "reveals": "vol5_judgement_magician_mirror_seen",
+      "cross_references": ["magician.json::mag_infinity_sigil"]
+    },
+    {
+      "id": "jdg_third_refused",
+      "kind": "refused_arcana",
+      "text": "the chapter's own footer, faint: 'XX — third refused. Priestess: the deck refuses.'",
+      "anchor_norm": [0.50, 0.94],
+      "encoding_hint": "the THIRD refused arcana per the Priestess journal (VI Lovers, XI Justice, XX Judgement). Justice flipped anyway; Lovers stays face-down; Judgement holds. The chapter renders the ENSEMBLE but refuses to render the VERDICT — Modern Mythology's Judgement is the gathering without the calling. The Priestess journal's annotation is the chapter's footer, visible by the player but not addressed by the figures on stage.",
+      "reveals": "vol5_judgement_third_refused_known"
+    },
+    {
+      "id": "jdg_dust_notes",
+      "kind": "title_phrase_anchor",
+      "text": "small placards in front of each figure read DUST NOTES — Frank's notebook page from XIX, expanded across the ensemble",
+      "anchor_norm": [0.30, 0.78],
+      "encoding_hint": "Sun (XIX) was Pattern Recognition in Dust Motes; Judgement (XX) is Pattern Recognition in Dust Notes. The placards are Frank's notebook page distributed — each figure carries the chapter's working method. The chapter's awakening is methodological: the cast does not rise from the dead, they rise from the noise into pattern.",
+      "reveals": "vol5_judgement_dust_notes_seen",
+      "cross_references": ["sun.json::sn_dust_notes_pre_echo"]
+    },
+    {
+      "id": "jdg_no_verdict",
+      "kind": "absence_centerpiece",
+      "text": "the central position on the stage is empty — no angel, no trumpet, no judge",
+      "anchor_norm": [0.50, 0.42],
+      "encoding_hint": "the chapter's refusal is structural. The figure who would render the verdict is not in the frame; the position is preserved (the staging acknowledges the absence) but unfilled. The classical Judgement's angel is the chapter's specific refusal — the cast is gathered, the verdict isn't called. The deck has not appointed the figure who would do the calling.",
+      "reveals": "vol5_judgement_no_verdict_seen"
+    }
+  ],
+
+  "hotspots": [
+    {"id":"jdg_ensemble","shape":"rect_norm","rect":[0.20,0.40,0.60,0.40],
+     "interact":"judgement.ensemble.read","unlocks":"vol5_judgement_ensemble_seen","cursor":"closer"},
+    {"id":"jdg_subtitle","shape":"rect_norm","rect":[0.20,0.92,0.60,0.06],
+     "interact":"judgement.subtitle.read","unlocks":"vol5_judgement_subtitle_read","cursor":"examine"},
+    {"id":"jdg_dust_notes","shape":"rect_norm","rect":[0.18,0.70,0.40,0.18],
+     "interact":"judgement.dust_notes.read","unlocks":"vol5_judgement_dust_notes_seen","cursor":"closer"},
+    {"id":"jdg_empty_center","shape":"rect_norm","rect":[0.46,0.36,0.08,0.20],
+     "interact":"judgement.center.observed","unlocks":"vol5_judgement_no_verdict_seen","cursor":"examine"},
+    {"id":"jdg_footer","shape":"rect_norm","rect":[0.20,0.90,0.60,0.04],
+     "interact":"judgement.refused_footer.read","unlocks":"vol5_judgement_third_refused_known","cursor":"examine"},
+    {"id":"jdg_magician_gesture","shape":"rect_norm","rect":[0.20,0.20,0.60,0.20],
+     "interact":"judgement.gesture.recognized","unlocks":"vol5_judgement_magician_mirror_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_magician_ascending_node",
+     "notes":"DORMANT: appears only after the player has clicked the soldering iron on the Magician card. The 'as above, so below' gesture Frasier made alone at I is now visibly multiplied across the ensemble at XX. I ↔ XX mirror: one figure's will becomes the cast's awakening, same gesture at two scales. The classical sequence one → many is rendered diegetically; the cast is in the position the chapter requires them to be."},
+    {"id":"jdg_sun_notes","shape":"rect_norm","rect":[0.60,0.70,0.18,0.18],
+     "interact":"judgement.sun_notes.recognized","unlocks":"vol5_judgement_sun_notes_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_sun_dust_notes_pre_echo",
+     "notes":"DORMANT: appears only after the player has read Frank's 'DUST NOTES' notebook title on the Sun card. The placards in front of each figure are now visibly Frank's notebook page — the title he wrote at XIX is the chapter's working method at XX. Sun seeded the title; Judgement distributes it. Pattern recognition expanded from one POV's working notebook to ensemble methodology."},
+    {"id":"jdg_lovers_company","shape":"rect_norm","rect":[0.04,0.04,0.18,0.06],
+     "interact":"judgement.lovers_company.recognized","unlocks":"vol5_judgement_lovers_company_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_three_refused",
+     "notes":"DORMANT: appears only after the player has read the three-refused register on the Lovers card. A small upper-left annotation now reads 'XX — joins VI in the refused. JUSTICE moved.' The deck's relationship to its refusals is legible from XX's footer: Justice flipped, Judgement holds, Lovers holds. Two cards still face-down out of three; Judgement is in good refused company."}
+  ],
+
+  "easter_eggs": [
+    "Judgement is the FIRST chapter to render the whole ensemble in one frame. Up to XX, vol5 has been POV-by-POV; XX is the structural moment when the cast must be visible together. The chapter renders the gathering without rendering the calling.",
+    "the Magician's 'as above, so below' gesture is now everyone's. I ↔ XX mirror: one figure's will at I becomes the ensemble's awakening at XX. Same gesture, two scales — the classical sequence one → many becomes diegetic.",
+    "Judgement HOLDS the refusal. Justice (XI) flipped face-up anyway; Judgement does not. The chapter renders the ensemble but refuses to render the verdict. The angel position on the stage is empty by design.",
+    "Sun XIX → Judgement XX: 'Pattern Recognition in Dust Motes' → 'Pattern Recognition in Dust Notes.' One vowel apart, one chapter apart. Frank's notebook title from the Sun card is the placard each figure now carries.",
+    "the chapter is Sunday — closing the work-week ladder (Mon Chariot, Tue Temperance, Wed Devil, Thu Tower, Fri Moon, Sat Sun, Sun Judgement). Seven days, seven cards; the deck's structural week."
+  ],
+
+  "links_forward": [
+    "vol5_judgement_ensemble_seen",
+    "vol5_judgement_subtitle_read",
+    "vol5_judgement_dust_notes_seen",
+    "vol5_judgement_no_verdict_seen",
+    "vol5_judgement_third_refused_known",
+    "vol5_judgement_magician_mirror_seen",
+    "vol5_judgement_sun_notes_seen",
+    "vol5_judgement_lovers_company_seen"
+  ],
+
+  "cross_references": {
+    "magician_mirror": "magician.json::mag_infinity_sigil (I ↔ XX, will → awakening)",
+    "sun_method_inheritance": "sun.json::sn_dust_notes_pre_echo (XIX seeds, XX distributes)",
+    "refused_kin": "lovers.json::lov_uncast_kin, justice.json (XI flipped)",
+    "weekday_chain_closes": "chariot.json (Mon) through sun.json (Sat); judgement.json is Sun(day)"
+  }
+}

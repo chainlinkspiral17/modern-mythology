@@ -136,7 +136,12 @@
      "interact":"lovers.devil.welded","unlocks":"vol5_lovers_devil_welded_seen",
      "cursor":"examine",
      "gated_by":"vol5_devil_lovers_inversion_seen",
-     "notes":"DORMANT: appears only after the player has recognized the Lovers-furniture inversion on the Devil card. The Lovers' mirror hotspot now visibly shows the same furniture welded to the floor — the option to sit was preserved here by refusal; on Devil it was preserved by welding. VI ↔ XV mirror reads both ways: Lovers refused so the chair would remain a choice; Devil welded so the chair would remain a sentence. Two preservation strategies, same furniture."}
+     "notes":"DORMANT: appears only after the player has recognized the Lovers-furniture inversion on the Devil card. The Lovers' mirror hotspot now visibly shows the same furniture welded to the floor — the option to sit was preserved here by refusal; on Devil it was preserved by welding. VI ↔ XV mirror reads both ways: Lovers refused so the chair would remain a choice; Devil welded so the chair would remain a sentence. Two preservation strategies, same furniture."},
+    {"id":"lov_lattice_closed","shape":"rect_norm","rect":[0.05, 0.78, 0.40, 0.18],
+     "interact":"lovers.lattice.closed","unlocks":"vol5_lovers_lattice_closed_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_world_pair_lattice_accounted",
+     "notes":"DORMANT: appears only after the player has read the pair-lattice accounting in the World's footer. The lov_pairs hotspot now visibly shows each row's resolution state: three confirmed (JOHN&FAITH, QUENTIN&ANTONIO, MAYA&Y indirect), three implicit (FRASIER&ARIA, ANYA&ELICIA, NICOLA&DANTE). The Lovers' lattice closes at the World card; the chapter at VI refused to consummate any pair, the chapter at XXI accounted for all six. Refusal and accounting are the same gesture at two scales."}
   ],
 
   "easter_eggs": [

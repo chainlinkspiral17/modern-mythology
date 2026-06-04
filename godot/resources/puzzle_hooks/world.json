@@ -1,0 +1,147 @@
+{
+  "asset": "assets/gallery/world.png",
+  "scene_id": "vol5_ch21_world",
+  "character": "—",
+  "secondary_characters": ["the_frog"],
+  "arcana": "XXI - THE WORLD",
+  "subtitle": "Frog Knows Best, Mostly",
+  "palette": "wreath_green_full_spectrum",
+  "location_text": "The wreath at the deck's spine — every named space in vol5 visible in the four corners. The closer.",
+  "format_note": "0 ↔ XXI mirror: Fool's beginning becomes the World's closing. The deck's longest reach across a single character is John's: the diner counter at the Fool's frame returns here, dawn-lit, with the dog asleep and the wipes counted. The cycle does not end; it closes such that the next opening is already implicit.",
+
+  "ciphers": [
+    {
+      "id": "wld_wreath",
+      "kind": "scene_centerpiece",
+      "text": "the wreath — laurel-and-vine, full circle, four corner figures (ox / lion / eagle / man) each annotated with a vol5 character name",
+      "anchor_norm": [0.50, 0.50],
+      "encoding_hint": "the classical World card shows a dancing figure in a laurel wreath, with the four evangelist-figures (Tetramorph) at the corners. Modern Mythology renders the dancer as offscreen — the wreath is empty, four corners filled. OX = Dante (Emperor), LION = Faith (Strength's beast), EAGLE = Evangeline (Tower), MAN = Frank (Sun + Temperance). The four named cards are the deck's structural pillars; the dancer's absence at the center is the chapter's signature.",
+      "reveals": "vol5_world_wreath_seen"
+    },
+    {
+      "id": "wld_frog_knows",
+      "kind": "title_phrase_anchor",
+      "text": "the chapter's title — 'Frog Knows Best, Mostly' — inscribed across the bottom border",
+      "anchor_norm": [0.50, 0.94],
+      "encoding_hint": "the World card's subtitle introduces the deck's ONLY explicit oracle. The Frog has been absent every prior card; arrives at XXI to render the chapter's verdict. MOSTLY — the qualification is the chapter's argument. The deck's final card is also the deck's most hedged: knowledge is partial, the closure is qualified. The Frog is the deck's quietest authority.",
+      "reveals": "vol5_world_subtitle_read"
+    },
+    {
+      "id": "wld_fool_return",
+      "kind": "mirror_pair",
+      "text": "the upper-left corner shows D'Ambrosio's diner — dawn-lit, the counter wiped clean, the dog asleep, the bindle on its hook",
+      "anchor_norm": [0.16, 0.18],
+      "encoding_hint": "0 ↔ XXI mirror: the deck's first frame returns as the deck's final corner. The Fool's 3:47 AM diner is now at dawn — the clock has moved. The dog is asleep. The bindle is hung. The counter is clean. Modern Mythology's closure: the chapter that didn't move IS the chapter that ended, because the time of day finally changed.",
+      "reveals": "vol5_world_fool_return_seen",
+      "cross_references": ["fool.json::fool_vigil_position"]
+    },
+    {
+      "id": "wld_three_refused_visible",
+      "kind": "ledger",
+      "text_lines": [
+        "VI    THE LOVERS    — refused, held",
+        "XI    JUSTICE        — refused, flipped",
+        "XX    JUDGEMENT      — refused, held"
+      ],
+      "anchor_norm": [0.84, 0.86],
+      "encoding_hint": "the three refused cards are listed in a small footer. Two held, one flipped. The deck's final card acknowledges the refusals as part of its closing — the World does not consummate the Lovers or the Judgement; the wreath closes around their face-down state. Justice's flip is itself a kind of refusal kept. The deck's relationship to its own NO is the deck's identity at closing.",
+      "reveals": "vol5_world_three_refused_seen",
+      "cross_references": ["lovers.json::lov_uncast_kin", "judgement.json::jdg_third_refused"]
+    },
+    {
+      "id": "wld_pair_lattice_state",
+      "kind": "ledger",
+      "text_lines": [
+        "JOHN & FAITH        — confirmed",
+        "QUENTIN & ANTONIO   — confirmed",
+        "FRASIER & ARIA      — implicit (signal handshake)",
+        "ANYA & ELICIA       — implicit (tape lineage)",
+        "NICOLA & DANTE      — implicit (throne succession)",
+        "MAYA & Y            — confirmed (Y = Jimmy, indirect)"
+      ],
+      "anchor_norm": [0.16, 0.86],
+      "encoding_hint": "the Lovers' pair lattice — six rows — accounted for at the deck's close. Three explicit confirmations (John&Faith via Fool, Quentin&Antonio via Chariot, Maya&Y via Chariot's Jimmy reveal), three implicit (handshakes, tapes, thrones — confirmed by cross-card hooks but not by name). The World's wreath closes around six pairs in three states. The deck does not consummate any of them; it accounts for all of them.",
+      "reveals": "vol5_world_pair_lattice_accounted",
+      "cross_references": ["lovers.json::lov_pair_lattice"]
+    },
+    {
+      "id": "wld_active_nodes_final",
+      "kind": "system_status",
+      "text": "the BBS header from the Fool card — now reading 'ACTIVE NODES: 64' again",
+      "anchor_norm": [0.50, 0.06],
+      "encoding_hint": "Fool's banner read ACTIVE NODES: 64 at chapter 0. Chariot's wreck dropped the count to 63 at VII. The World's wreath restores the count to 64 — not because the_charioteer is back online, but because the chapter renders the gathering at the count the deck began with. Closure as numeric restoration. 64 = the full deck, the four suits at 16 each plus the Majors at 22, or whatever arithmetic the chapter is using. The number is the deck's quiet brag: we landed on the count we left from.",
+      "reveals": "vol5_world_node_count_restored",
+      "cross_references": ["fool.json::fool_bbs_header", "chariot.json::cha_charioteer"]
+    }
+  ],
+
+  "hotspots": [
+    {"id":"wld_wreath","shape":"rect_norm","rect":[0.30,0.30,0.40,0.40],
+     "interact":"world.wreath.read","unlocks":"vol5_world_wreath_seen","cursor":"closer"},
+    {"id":"wld_subtitle","shape":"rect_norm","rect":[0.20,0.92,0.60,0.06],
+     "interact":"world.subtitle.read","unlocks":"vol5_world_subtitle_read","cursor":"examine"},
+    {"id":"wld_three_refused","shape":"rect_norm","rect":[0.78,0.82,0.20,0.12],
+     "interact":"world.three_refused.read","unlocks":"vol5_world_three_refused_seen","cursor":"examine"},
+    {"id":"wld_pair_ledger","shape":"rect_norm","rect":[0.04,0.82,0.30,0.16],
+     "interact":"world.pair_ledger.read","unlocks":"vol5_world_pair_lattice_accounted","cursor":"closer"},
+    {"id":"wld_active_nodes","shape":"rect_norm","rect":[0.30,0.02,0.40,0.06],
+     "interact":"world.active_nodes.read","unlocks":"vol5_world_node_count_restored","cursor":"examine"},
+    {"id":"wld_frog","shape":"rect_norm","rect":[0.46,0.46,0.10,0.10],
+     "interact":"world.frog.consulted","unlocks":"vol5_world_frog_consulted","cursor":"take"},
+    {"id":"wld_corner_ox","shape":"rect_norm","rect":[0.04,0.04,0.18,0.18],
+     "interact":"world.corner_ox.read","unlocks":"vol5_world_corner_ox_seen","cursor":"examine"},
+    {"id":"wld_corner_lion","shape":"rect_norm","rect":[0.78,0.04,0.18,0.18],
+     "interact":"world.corner_lion.read","unlocks":"vol5_world_corner_lion_seen","cursor":"examine"},
+    {"id":"wld_corner_eagle","shape":"rect_norm","rect":[0.78,0.78,0.18,0.18],
+     "interact":"world.corner_eagle.read","unlocks":"vol5_world_corner_eagle_seen","cursor":"examine"},
+    {"id":"wld_corner_man","shape":"rect_norm","rect":[0.04,0.78,0.18,0.18],
+     "interact":"world.corner_man.read","unlocks":"vol5_world_corner_man_seen","cursor":"examine"},
+    {"id":"wld_fool_return","shape":"rect_norm","rect":[0.10,0.12,0.16,0.14],
+     "interact":"world.fool_return.recognized","unlocks":"vol5_world_fool_return_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_fool_clock_read",
+     "notes":"DORMANT: appears only after the player has examined the 3:47 AM clock on the Fool card. The upper-left corner of the World's wreath now visibly shows the same diner — but dawn-lit, the counter wiped clean, the dog asleep, the bindle on its hook. 0 ↔ XXI mirror: the deck's first frame returns as the deck's final corner. The chapter that didn't move IS the chapter that ended, because the time of day finally changed."},
+    {"id":"wld_wreath_ensemble","shape":"rect_norm","rect":[0.32,0.32,0.36,0.36],
+     "interact":"world.wreath_ensemble.read","unlocks":"vol5_world_wreath_ensemble_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_judgement_ensemble_seen",
+     "notes":"DORMANT: appears only after the player has read the ensemble on the Judgement card. The wreath's center, empty at first read, now visibly contains the negative space of the Judgement card's ensemble — every figure's shape as a hole in the laurel. XX → XXI: Judgement gathered the cast and refused to render the verdict; World closes the wreath around their absence. The dancer at the World's center is the gathered cast withheld. Two refusals composing one closure."}
+  ],
+
+  "easter_eggs": [
+    "the dancing figure at the center of the classical World card is the chapter's most explicit absence. Modern Mythology refuses to depict the dancer; the center is empty, the four corners are full, the wreath closes around what would have been the resolution.",
+    "the Frog is the deck's only oracle — absent every prior card, arrives at XXI to render the verdict. MOSTLY is the qualification: the deck's final knowledge is hedged. The Frog is the deck's quietest authority.",
+    "the four corners assign the Tetramorph to four chapters: OX = Emperor (IV), LION = Strength (VIII), EAGLE = Tower (XVI), MAN = Sun/Temperance (XIX/XIV). The structural pillars are named.",
+    "0 ↔ XXI mirror returns the Fool's diner — dawn-lit instead of 3:47 AM. The clock finally moved. Closure renders the same scene at a different hour.",
+    "ACTIVE NODES: 64 is restored. Fool opened with 64, Chariot dropped it to 63 (the_charioteer D.O.A.), World returns the count not by resurrection but by reaching the chapter count the deck began with. The number is the deck's quiet brag.",
+    "the pair lattice from the Lovers card is accounted for in the World's footer: three confirmed, three implicit. The deck does not consummate any of the six; it accounts for all of them. World accounts; Lovers refused; Judgement held. The deck's relationship to pairing is in three positions across three cards."
+  ],
+
+  "links_forward": [
+    "vol5_world_wreath_seen",
+    "vol5_world_subtitle_read",
+    "vol5_world_three_refused_seen",
+    "vol5_world_pair_lattice_accounted",
+    "vol5_world_node_count_restored",
+    "vol5_world_frog_consulted",
+    "vol5_world_corner_ox_seen",
+    "vol5_world_corner_lion_seen",
+    "vol5_world_corner_eagle_seen",
+    "vol5_world_corner_man_seen",
+    "vol5_world_fool_return_seen",
+    "vol5_world_wreath_ensemble_seen"
+  ],
+
+  "cross_references": {
+    "fool_mirror": "fool.json (0 ↔ XXI, the first scene returns at dawn)",
+    "judgement_adjacency": "judgement.json::jdg_ensemble_first (XX → XXI: gathered cast → closed wreath)",
+    "tetramorph_corners": {
+      "ox": "emperor.json (IV)",
+      "lion": "strength.json (VIII, Faith)",
+      "eagle": "tower.json (XVI, Evangeline)",
+      "man": "sun.json (XIX, Frank) and temperance.json (XIV)"
+    },
+    "pair_lattice_closes": "lovers.json::lov_pair_lattice",
+    "node_count_closes": "fool.json::fool_bbs_header, chariot.json::cha_charioteer"
+  }
+}

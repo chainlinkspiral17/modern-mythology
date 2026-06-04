@@ -171,6 +171,16 @@
       "cursor": "examine",
       "gated_by": "vol5_magician_ascending_node",
       "notes": "DORMANT: appears only after the player has clicked the soldering iron on the Magician card (revealing the infinity sigil). The same glyph is now visible embossed on the spine of OCCULT SYMBOLOGY of the ASCENDANT on her shelf — Frasier draws it, Elicia reads it, they've been studying each other in different alphabets."
+    },
+    {
+      "id": "pri_journal_sun_read",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.78, 0.14, 0.10],
+      "interact": "priestess.journal.sun_read",
+      "unlocks": "vol5_priestess_journal_sun_read_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_sun_priestess_journal_seen",
+      "notes": "DORMANT: appears only after the player has read Elicia's tarot journal entry on the Sun card from Frank's desk. The journal on her own card now shows a small marker between two pages — the SUN entry has been read by someone else, and the marker is the deck's quiet acknowledgement that her annotation traveled. II ↔ XIX mirror closes from both sides: she wrote about Frank, Frank read about himself, the journal now knows it was read."
     }
   ],
 

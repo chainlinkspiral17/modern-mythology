@@ -143,6 +143,16 @@
       "cursor": "examine",
       "gated_by": "vol5_strength_magician_lemniscate_seen",
       "notes": "DORMANT: appears only after the player has recognized the lemniscate halo on the Strength card. The infinity Frasier traces is now visibly being WORN by a figure in the distant model city — a tiny lion-tamer on the diorama, sigil floating above. The Magician drew the glyph; Strength wears it; the Magician can now see her wearing it. The deck closes the inscription loop. I → VIII is the deck's longest reach across one symbol."
+    },
+    {
+      "id": "mag_ensemble_gesture_seen",
+      "shape": "rect_norm",
+      "rect": [0.50, 0.18, 0.10, 0.20],
+      "interact": "magician.ensemble_gesture.seen",
+      "unlocks": "vol5_magician_ensemble_gesture_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_judgement_magician_mirror_seen",
+      "notes": "DORMANT: appears only after the player has recognized the multiplied gesture on the Judgement card. Frasier's solo 'as above, so below' posture now visibly shows a faint chorus of other arms behind him — the rest of the ensemble pre-rendered as ghost-figures in his rust girders. I ↔ XX mirror reads both directions: Judgement multiplied the gesture; Magician was already implying it. The chapter at I knew the ensemble at XX was coming."
     }
   ],
 
