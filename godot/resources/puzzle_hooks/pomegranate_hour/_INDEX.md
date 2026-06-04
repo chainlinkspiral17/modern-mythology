@@ -25,7 +25,7 @@ up) for series-level conceits and recurring elements.
 | XIII| DEATH           | `13_death.md`           | 23 min  | DRAFTED  |
 | XIV | TEMPERANCE      | `14_temperance.md`      | —       | pending  |
 | XV  | THE DEVIL       | `15_devil.md`           | 30 min  | DRAFTED  |
-| XVI | THE TOWER       | `16_tower.md`           | —       | pending  |
+| XVI | THE TOWER       | `16_tower.md`           | 33 min  | DRAFTED  |
 | XVII| THE STAR        | `17_star.md`            | 17 min  | DRAFTED  |
 | XVIII| THE MOON       | `18_moon.md`            | —       | pending  |
 | XIX | THE SUN         | `19_sun.md`             | —       | pending  |
