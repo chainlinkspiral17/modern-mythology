@@ -145,6 +145,16 @@
       "notes": "DORMANT: appears only after the Chariot SMS thread surfaces the 06:55 breakfast witness. The fleur-de-lis tablecloth now visibly shows a small faint texture in the lower corner — the texture of D'Ambrosio's diner formica, where Nicola was sitting earlier this same morning. Antonio sat next to Erica Campbell at the same diner; Nicola did not eat. The Empress's dinner-table chapter is a chapter Nicola is having AFTER a breakfast nobody else knows she didn't eat at. Aria's anxiety-spike baseline was set hours before the painted scene began."
     },
     {
+      "id": "ems_anchor_was_truth",
+      "shape": "rect_norm",
+      "rect": [0.46, 0.74, 0.10, 0.10],
+      "interact": "empress.anchor.was_truth",
+      "unlocks": "vol5_empress_anchor_was_truth_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_barge_anchor_fouling",
+      "notes": "DORMANT: appears only after the Dante+Quent barge voicelog surfaces the anchor-fouling note. The faint emerald HUD overlay near Nicola's wine glass now visibly carries a single biometric line: 'host_tell: anchor_lie / detection: certain / response: held.' Aria registered the moment Dante said 'aesthetic' to Nicola and labelled it as the lie Dante had pre-decided to tell. Nicola's face did not change because Nicola already knew the truth: the anchor was fouling because the ground at the boat's mooring was a tributary of the same fault network the Sinkhole opened along. Nicola's family worked the orchard above the river; the family's groundwater changed after the Nexus; the anchor's modern fouling is a posthumous geological aftershock of the event Nicola's people survived. Aria's CONFINED status is also confinement inside the deck's hardest knowledge: the dinner-table lie is the same lie the family has been telling about the ground for years."
+    },
+    {
       "id": "ems_nicola_family_crest",
       "shape": "rect_norm",
       "rect": [0.10, 0.74, 0.10, 0.08],

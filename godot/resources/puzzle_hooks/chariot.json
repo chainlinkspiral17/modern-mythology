@@ -195,6 +195,16 @@
       "notes": "DORMANT: appears only after the player has read AVDI ET TACE on the Hierophant. The status panel's QUENTIN CALL COMPLETE line is now interactive — clicking plays the voicemail Quentin left from St. Jude's booth, three rows back from the rite. The same hand that told Maya to be silent placed the call that summoned the Charioteer. V → VII adjacency: the institution's command completes itself in motion."
     },
     {
+      "id": "cha_jimmy_was_witness",
+      "shape": "rect_norm",
+      "rect": [0.20, 0.86, 0.18, 0.06],
+      "interact": "chariot.jimmy.was_witness",
+      "unlocks": "vol5_chariot_jimmy_was_witness_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_maya_y_not_saying_is_act",
+      "notes": "DORMANT: appears only after the Maya & Y parking lot voicelog surfaces Y's 06:50 articulation ('if she said she'd have to do something'). The JIMMY'S SABOTAGE JAMBALAYA menu line now visibly carries a small chalk annotation in the kitchen-staff register: 'jimmy — saw quent in booth, age 7, 19 years ago / current age: 26 / current role: line cook, ember & ash.' Y was Jimmy at the kneeling; Jimmy is the line cook at Antonio's restaurant nineteen years later. The chapter's saboteur is the boy who watched Father Quent place the booth calls all those years ago and grew up choosing to do something the housekeeper would not say. The Hierophant chapter at V is partly the chapter of teaching Jimmy what silence is for; the Chariot chapter at VII is partly the chapter of Jimmy answering the lesson in his own register."
+    },
+    {
       "id": "cha_jimmy_acolyte",
       "shape": "rect_norm",
       "rect": [0.10, 0.74, 0.22, 0.08],
