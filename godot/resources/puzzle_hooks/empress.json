@@ -145,6 +145,16 @@
       "notes": "DORMANT: appears only after the Chariot SMS thread surfaces the 06:55 breakfast witness. The fleur-de-lis tablecloth now visibly shows a small faint texture in the lower corner — the texture of D'Ambrosio's diner formica, where Nicola was sitting earlier this same morning. Antonio sat next to Erica Campbell at the same diner; Nicola did not eat. The Empress's dinner-table chapter is a chapter Nicola is having AFTER a breakfast nobody else knows she didn't eat at. Aria's anxiety-spike baseline was set hours before the painted scene began."
     },
     {
+      "id": "ems_succession_partner",
+      "shape": "rect_norm",
+      "rect": [0.34, 0.16, 0.16, 0.12],
+      "interact": "empress.succession_partner.recognized",
+      "unlocks": "vol5_empress_succession_partner_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_emperor_two_sons_acknowledged",
+      "notes": "DORMANT: appears only after the Emperor's two-mirror-faces hotspot fires. The ram-head throne above Nicola now visibly bears a small inscribed annotation in the wood: '(succession through —— ) — IV's son.' The blank where the son's name would be is the deck's preserved withhold. Nicola's relationship to the empire is through one of Dante's two sons. The painted dual-POV chapter is a chapter of Nicola sitting in a chair her partner stands to inherit. Aria's anxiety-spike baseline includes the structural pressure of being adjacent to a succession dispute. III ↔ IV is the deck's family-throne mirror; the deck refuses to name which son's partner Nicola is, but the throne acknowledges the structural fact. The other son's potential partner is one of the deck's reserved positions — vol6 hook."
+    },
+    {
       "id": "ems_aria_log_diorama_entry",
       "shape": "rect_norm",
       "rect": [0.76, 0.36, 0.20, 0.20],

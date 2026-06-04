@@ -162,6 +162,16 @@
       "notes": "DORMANT: appears only after the player has read Erica's marginalia on the 19:42 Dante callback row in the Wheel diorama. The ankh sceptre in Dante's hand now visibly carries a small carved tally mark every 22-25 degrees around its shaft. The 22-25 minute Dante callback pattern is rendered as the sceptre's geometric notation — the Emperor's authority operates at a regular rhythm, and the rhythm is the case's true timing. 'Wait until the audit clears' became canonical at 19:42 Feb 10; the audit cleared the wrong way three days later. The Emperor's chapter is the chapter that orders the wait, on the same shaft he holds in the painted scene."
     },
     {
+      "id": "emp_two_mirror_faces",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.86, 0.20, 0.10],
+      "interact": "emperor.two_mirror_faces.recognized",
+      "unlocks": "vol5_emperor_two_sons_acknowledged",
+      "cursor": "closer",
+      "gated_by": "vol5_emp_wed_boat_private",
+      "notes": "DORMANT: appears only after the Emperor diorama surfaces the recurring 21:30 boat-alone slot (the slot Dante refuses to write content for). The floor mirror's two upside-down faces now visibly resolve as TWO DISTINCT FACES — not one composite successor. Dante has two adult sons; the throne accommodates that fact by reflecting them in mirror form, side by side. The succession reading the deck has previously interpreted as singular is now legible as a two-claimant problem. Neither son is named here; the resolution is reserved for later cards or vol6. The chapter's authority is the authority of a father with two heirs and the rule for what not to write about how he chose between them. (Or about how the throne will choose, after he stops choosing.) The void where their mother would sit is also legible in this corner of the painted scene — the bench beside the throne is unoccupied by design."
+    },
+    {
       "id": "emp_barge_voicelog_entry",
       "shape": "rect_norm",
       "rect": [0.30, 0.55, 0.10, 0.10],
