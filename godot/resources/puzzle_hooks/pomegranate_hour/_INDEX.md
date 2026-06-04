@@ -13,16 +13,16 @@ up) for series-level conceits and recurring elements.
 | I   | THE MAGICIAN    | `01_magician.md`        | 23 min  | DRAFTED  |
 | II  | HIGH PRIESTESS  | `02_high_priestess.md`  | 14 min  | DRAFTED  |
 | III | THE EMPRESS     | `03_empress.md`         | 22 min  | DRAFTED  |
-| IV  | THE EMPEROR     | `04_emperor.md`         | —       | pending  |
+| IV  | THE EMPEROR     | `04_emperor.md`         | 24 min  | DRAFTED  |
 | V   | THE HIEROPHANT  | `05_hierophant.md`      | 26 min  | DRAFTED  |
-| VI  | THE LOVERS      | `06_lovers.md`          | —       | pending  |
+| VI  | THE LOVERS      | `06_lovers.md`          | 27 min  | DRAFTED  |
 | VII | THE CHARIOT     | `07_chariot.md`         | 22 min  | DRAFTED  |
 | VIII| STRENGTH        | `08_strength.md`        | 19 min  | DRAFTED  |
-| IX  | THE HERMIT      | `09_hermit.md`          | —       | pending  |
+| IX  | THE HERMIT      | `09_hermit.md`          | 30 min  | DRAFTED  |
 | X   | WHEEL OF FORTUNE| `10_wheel_of_fortune.md`| 22 min  | DRAFTED  |
 | XI  | JUSTICE         | `11_justice.md`         | 25 min  | DRAFTED  |
 | XII | THE HANGED MAN  | `12_hanged_man.md`      | 28 min  | DRAFTED  |
-| XIII| DEATH           | `13_death.md`           | —       | pending  |
+| XIII| DEATH           | `13_death.md`           | 23 min  | DRAFTED  |
 | XIV | TEMPERANCE      | `14_temperance.md`      | —       | pending  |
 | XV  | THE DEVIL       | `15_devil.md`           | 30 min  | DRAFTED  |
 | XVI | THE TOWER       | `16_tower.md`           | —       | pending  |
