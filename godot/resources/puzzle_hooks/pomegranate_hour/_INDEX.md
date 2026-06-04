@@ -10,18 +10,18 @@ up) for series-level conceits and recurring elements.
 | ep  | arcana          | filename                | runtime | status   |
 |-----|-----------------|-------------------------|---------|----------|
 | 0   | THE FOOL        | `00_fool.md`            | 22 min  | DRAFTED  |
-| I   | THE MAGICIAN    | `01_magician.md`        | —       | pending  |
+| I   | THE MAGICIAN    | `01_magician.md`        | 23 min  | DRAFTED  |
 | II  | HIGH PRIESTESS  | `02_high_priestess.md`  | 14 min  | DRAFTED  |
 | III | THE EMPRESS     | `03_empress.md`         | —       | pending  |
 | IV  | THE EMPEROR     | `04_emperor.md`         | —       | pending  |
-| V   | THE HIEROPHANT  | `05_hierophant.md`      | —       | pending  |
+| V   | THE HIEROPHANT  | `05_hierophant.md`      | 26 min  | DRAFTED  |
 | VI  | THE LOVERS      | `06_lovers.md`          | —       | pending  |
 | VII | THE CHARIOT     | `07_chariot.md`         | 22 min  | DRAFTED  |
 | VIII| STRENGTH        | `08_strength.md`        | —       | pending  |
 | IX  | THE HERMIT      | `09_hermit.md`          | —       | pending  |
-| X   | WHEEL OF FORTUNE| `10_wheel_of_fortune.md`| —       | pending  |
+| X   | WHEEL OF FORTUNE| `10_wheel_of_fortune.md`| 22 min  | DRAFTED  |
 | XI  | JUSTICE         | `11_justice.md`         | —       | pending  |
-| XII | THE HANGED MAN  | `12_hanged_man.md`      | —       | pending  |
+| XII | THE HANGED MAN  | `12_hanged_man.md`      | 28 min  | DRAFTED  |
 | XIII| DEATH           | `13_death.md`           | —       | pending  |
 | XIV | TEMPERANCE      | `14_temperance.md`      | —       | pending  |
 | XV  | THE DEVIL       | `15_devil.md`           | 30 min  | DRAFTED  |
