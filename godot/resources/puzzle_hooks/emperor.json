@@ -140,6 +140,16 @@
       "cursor": "examine",
       "gated_by": "vol5_star_emperor_inverse_seen",
       "notes": "DORMANT: appears only after the player has recognized the ankh constellation on the Star card. Dante's ankh in the painted scene now visibly leaves a faint star-trail behind it as he holds it — the sceptre is already inscribing the future constellation. IV ↔ XVII mirror reads both directions: Star shows the sky pattern; Emperor shows where the pattern was drawn from. Possession and observation in the same hand."
+    },
+    {
+      "id": "emp_dante_in_ward",
+      "shape": "rect_norm",
+      "rect": [0.30, 0.60, 0.16, 0.12],
+      "interact": "emperor.dante.in_ward",
+      "unlocks": "vol5_emperor_dante_in_ward_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_ward_c_dante_present",
+      "notes": "DORMANT: appears only after the player has read the Bed 6 nurse's note in the Death (XIII) Ward C diorama. The throne in the painted scene now visibly shows a small hospital admit-band looped around its base. Mr. D., 70, dentist daughter in Asheville. Dante D'Ambrosio was in Bed 6 of Ward C the night of Walpurgisnacht. The throne the chapter renders is a chapter Dante is rendering FROM HIS BED — the painted Emperor scene is the chapter Dante is having while still admitted. 'Nothing changed all week. He knows.' The Emperor's chapter is the Emperor narrating his own ward residence as a throne room."
     }
   ],
 

@@ -105,7 +105,12 @@
      "interact":"justice.alberto.named_earlier","unlocks":"vol5_justice_alberto_named_earlier_seen",
      "cursor":"examine",
      "gated_by":"vol5_wheel_albertos_log_seen",
-     "notes":"DORMANT: appears only after the player has opened Alberto's Call Log on the Wheel. The case file on Erica's bench now visibly has 'Alberto — see X' annotated in her own hand. Alberto was named at the Wheel; Justice acknowledges the prior naming. The deck does not introduce characters at the courtroom; the courtroom remembers."}
+     "notes":"DORMANT: appears only after the player has opened Alberto's Call Log on the Wheel. The case file on Erica's bench now visibly has 'Alberto — see X' annotated in her own hand. Alberto was named at the Wheel; Justice acknowledges the prior naming. The deck does not introduce characters at the courtroom; the courtroom remembers."},
+    {"id":"jus_marta_in_ward","shape":"rect_norm","rect":[0.16,0.50,0.16,0.10],
+     "interact":"justice.marta.in_ward","unlocks":"vol5_justice_marta_in_ward_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_ward_c_marta_present",
+     "notes":"DORMANT: appears only after the player has read the Bed 5 nurse's note in the Death (XIII) Ward C diorama. Mrs. Romero's photo on Erica's bench now visibly has a hospital admit-band tucked behind it. Marta Romero — Anna's mother, Erica's client — was in Bed 5 of Ward C the night of Walpurgisnacht. Comfortable. Family stayed until 22:00. The case the chapter argues is the case of a living plaintiff who is one ward over. Erica did not know. The PetroTex side did. They have been arguing against a deposition they knew was being given by a woman in a hospital bed."}
   ],
 
   "easter_eggs": [

@@ -62,6 +62,14 @@ var C_TEXT_DIM := Color(0.52, 0.40, 0.22)
 const ASCII_COMPOSITION_SCRIPT = preload("res://scenes/game/AsciiComposition.gd")
 const INVENTORY_BAR_SCRIPT = preload("res://scenes/menu/InventoryBar.gd")
 
+# Diorama overlays — fullscreen Control scripts spawned when a hotspot
+# declares an `opens_diorama` field. Each diorama is a hand-crafted
+# room rendered as an interactive ASCII layout with its own
+# ambient audio. Register additional dioramas here by id.
+const DIORAMA_SCRIPTS := {
+    "ward_c": preload("res://scenes/menu/DeathWardDiorama.gd"),
+}
+
 var hooks: Dictionary = {}
 var canvas: Control                # the BIG world
 var viewport_box: Control          # fixed-size visible area
@@ -409,9 +417,12 @@ func _build_hotspots() -> void:
         btn.mouse_exited.connect(func() -> void: _hotspot_pulse_stop(btn, bsh))
         # Two-step press: reveal cipher (always runs, even if a subclass
         # overrides _on_hotspot without calling super), then handle
-        # inventory carry/use, then run subclass game-logic.
+        # inventory carry/use, then run subclass game-logic. Diorama
+        # hotspots additionally spawn their overlay before everything
+        # else so the player enters the diorama immediately on click.
         var btn_ref := btn
         var on_press := func() -> void:
+            _maybe_open_diorama(captured)
             _reveal_cipher(captured, btn_ref)
             _handle_inventory_click(captured)
             _on_hotspot(captured)
@@ -447,6 +458,29 @@ func _live_cursor_for(declared: String, gives: String, requires: String) -> Stri
     if gives != "":
         return "take"
     return "examine"
+
+
+## Spawn a diorama overlay when the hotspot declares one. The diorama
+## is parented to self with a high z_index, listens for its `closed`
+## signal, and frees itself on close. Unknown diorama ids fall through
+## silently — the rest of the hotspot's behaviour (cipher reveal,
+## inventory, subclass game logic) still runs.
+func _maybe_open_diorama(hs: Dictionary) -> void:
+    var diorama_id := str(hs.get("opens_diorama", ""))
+    if diorama_id == "":
+        return
+    if not DIORAMA_SCRIPTS.has(diorama_id):
+        push_warning("TarotVisualizerBase: unknown diorama id '%s'" % diorama_id)
+        return
+    var script: Script = DIORAMA_SCRIPTS[diorama_id]
+    var overlay := Control.new()
+    overlay.set_script(script)
+    overlay.z_index = 20
+    add_child(overlay)
+    var on_close := func() -> void:
+        if is_instance_valid(overlay):
+            overlay.queue_free()
+    overlay.connect("closed", on_close)
 
 
 ## Handle gives_item / requires_item on a clicked hotspot.

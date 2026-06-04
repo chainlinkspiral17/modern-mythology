@@ -111,7 +111,12 @@
      "interact":"hanged.sigils.completed_later","unlocks":"vol5_hanged_sigils_completed_later_seen",
      "cursor":"examine",
      "gated_by":"vol5_moon_sigils_completed",
-     "notes":"DORMANT: appears only after the player has read the completed sigils in the Moon's static field. The notebook on the Hanged Man counter now visibly shows the three sigils not just unfinished — but waiting. The pages are uncreased; the ink is fresh; the chapter knows its own completion happens six chapters later. XII → XVIII is Natalie's whole arc: the writing waits, the static reads it back."}
+     "notes":"DORMANT: appears only after the player has read the completed sigils in the Moon's static field. The notebook on the Hanged Man counter now visibly shows the three sigils not just unfinished — but waiting. The pages are uncreased; the ink is fresh; the chapter knows its own completion happens six chapters later. XII → XVIII is Natalie's whole arc: the writing waits, the static reads it back."},
+    {"id":"hng_simon_in_ward","shape":"rect_norm","rect":[0.40,0.26,0.16,0.10],
+     "interact":"hanged.simon.in_ward","unlocks":"vol5_hanged_simon_in_ward_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_ward_c_simon_walkout_seen",
+     "notes":"DORMANT: appears only after the player has read the Bed 4 walkout report in the Death (XIII) Ward C diorama. The empty stool across the kitchen counter from Natalie now visibly has a hospital armband on it — Mr. S., signed out of Ward C at 03:55 AMA, four hours after Natalie sat down at this counter. He asked the nurse at 03:30 whether the candle had gone out; Natalie's voicemail-two said the candle was two-thirds at 00:12. The candle in two registers, the same candle, the deck has been routing them past each other for two chapters."}
   ],
 
   "easter_eggs": [
