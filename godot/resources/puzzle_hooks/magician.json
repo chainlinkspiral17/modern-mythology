@@ -155,6 +155,16 @@
       "notes": "ENTRY HOTSPOT: clicking the painted model city dispatches demon_scribe.01 to fetch the full top-down view + Frasier's annotations on each element. 9 model elements (steamboat, warehouse 47, st. jude's miniature, ember & ash, daigle's pier, render farm site (empty), empress chamber, anya's block (unwired), infinity sigil overhead). Click any element to read Frasier's notes on what it predicts. The model is the deck's predictive architecture rendered as inventory."
     },
     {
+      "id": "mag_painting_in_dantes_office",
+      "shape": "rect_norm",
+      "rect": [0.08, 0.18, 0.14, 0.18],
+      "interact": "magician.painting.in_dantes_office",
+      "unlocks": "vol5_magician_painting_acknowledged",
+      "cursor": "examine",
+      "gated_by": "vol5_emperor_frasier_painting_seen",
+      "notes": "DORMANT: appears only after the Emperor's Frasier-painting hotspot fires (the painting is found on Dante's wall). The upper-left of Frasier's workshop now visibly carries a small worn paper pinned to the rust girders — a graphite sketch labelled 'study 4 — waiter cosmic — D'Ambrosio diner — for the larger painting.' The graphite study is unmistakably John Frank's posture. Frasier's notes pinned beside the sketch read in his hand: 'I painted him cosmic because he is, and because the family is paid to forget that he is. I gave the painting to D. on the way out because the painting is the argument I refused to make in person. He kept the painting. He says he fired me. I say I quit. Both of us preserve the disagreement; the painting preserves the subject. Three witnesses, three readings, one canvas. The painting is the deck's only honest portrait of an employee of this household. The deck's working method is render the worker as cosmic and let the employer keep the indictment.' → wakes content on Fool (0): John doesn't know the painting exists."
+    },
+    {
       "id": "mag_aria_routing_received",
       "shape": "rect_norm",
       "rect": [0.84, 0.78, 0.10, 0.10],

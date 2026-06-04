@@ -162,6 +162,26 @@
       "notes": "DORMANT: appears only after the player has read Erica's marginalia on the 19:42 Dante callback row in the Wheel diorama. The ankh sceptre in Dante's hand now visibly carries a small carved tally mark every 22-25 degrees around its shaft. The 22-25 minute Dante callback pattern is rendered as the sceptre's geometric notation — the Emperor's authority operates at a regular rhythm, and the rhythm is the case's true timing. 'Wait until the audit clears' became canonical at 19:42 Feb 10; the audit cleared the wrong way three days later. The Emperor's chapter is the chapter that orders the wait, on the same shaft he holds in the painted scene."
     },
     {
+      "id": "emp_frasier_painting",
+      "shape": "rect_norm",
+      "rect": [0.74, 0.30, 0.12, 0.16],
+      "interact": "emperor.frasier_painting.examined",
+      "unlocks": "vol5_emperor_frasier_painting_seen",
+      "cursor": "closer",
+      "gated_by": "vol5_magician_model_diorama_entered",
+      "notes": "DORMANT: appears only after the player has entered the Magician's model city diorama (Frasier's predictive scale model). The painted throne-room wall behind Dante now visibly carries a framed painting that wasn't legible at first read: a waiter in a white button-up shirt, tie, and apron, holding a round drink tray. The waiter is rendered as a COSMIC BEING — body composed of star-field, the tray reflecting a galaxy spiral, the apron threaded with constellation outlines. The painting is signed in the lower-right corner: 'F. Temple. the day I quit. (or was fired — your call.)' Dante kept the painting. The disagreement is the relationship. Frasier maintains he quit; Dante would say he fired him. Both accounts have been preserved by both parties for years. The painting hangs in the office of the man who would say the painter was dismissed. The deck's class-vision-statement: the lowest-status worker in the family's employ is rendered as the universe's largest, and the employer who took offence at the rendering keeps the painting on his wall. The chapter's authority register is also the chapter of preserving a critique. → wakes content on Magician (I) and Fool (0)."
+    },
+    {
+      "id": "emp_unmarked_photo_facing_in",
+      "shape": "rect_norm",
+      "rect": [0.62, 0.30, 0.06, 0.10],
+      "interact": "emperor.unmarked_photo.observed",
+      "unlocks": "vol5_emperor_unmarked_photo_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_emp_wed_boat_private",
+      "notes": "DORMANT: appears only after the Emperor appointment diorama surfaces the recurring 21:30 boat-alone slot. An unmarked photo frame on the throne-room wall, FACING IN — the back of the frame faces the painted room. Dante is the only person who looks at what's in the frame; he has positioned it so no visitor can read it. The contents are reserved. The frame has been on the wall facing in for years. The Sinkhole Nexus reading of this hotspot: the frame contains a photograph of someone lost in the sinkhole, and Dante has chosen to grant the photograph the dignity of being seen only by him. Forward seed for vol6 — the photograph's subject is reserved; the gesture is rendered. → vol6 hook."
+    },
+    {
       "id": "emp_grief_callback_window",
       "shape": "rect_norm",
       "rect": [0.40, 0.40, 0.08, 0.12],

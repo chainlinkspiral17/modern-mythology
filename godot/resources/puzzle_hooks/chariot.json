@@ -255,6 +255,16 @@
       "notes": "DORMANT: appears only after the Devil's middle-stool-is-Antonio's hotspot fires. The BBS status panel gains a new sysop entry: 'loan_account: daigles_bar.bbs — no-interest, 0% APR, principal outstanding $24,300 / paid forgiven on borrower hardship 19 Feb 22:14 (creditor DOA earlier same week).' Antonio personally floated Daigle the no-interest startup loan for the bar. The loan was not from Dante; it was from Antonio. The loan was active when Antonio died; the principal outstanding was forgiven by Antonio's estate (Alberto, presumably, signing the forgiveness) on the night Daigle would not pick up the brother's calls. Daigle's UNCOMFORTABLE INSIDE includes a debt-free bar. The chapter's chain V → VII → XV is also a chain of money: Quent sent Antonio, Antonio's loan was forgiven, Daigle could not pick up. Three institutional men exchanging a friend through a bar's ledger."
     },
     {
+      "id": "cha_charioteer_handle_origin",
+      "shape": "rect_norm",
+      "rect": [0.84, 0.86, 0.14, 0.06],
+      "interact": "chariot.charioteer_handle.origin",
+      "unlocks": "vol5_chariot_charioteer_handle_origin_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_hierophant_sinkhole_memorial_seen",
+      "notes": "DORMANT: appears only after the Hierophant's sinkhole-memorial hotspot fires. The 'sysop: the_charioteer' label on the BBS panel gains a small parenthetical in fine ink underneath: '(handle est. III IUL — IV years before. drove the recovery van.)' Antonio's BBS handle is older than the bar; it dates to the day of the sinkhole, when he was 18 or 19 and drove the recovery vehicle for survivors his father's company employed. The_charioteer is not a romantic restaurateur's handle; it is the survivor's handle of an elder son who handled the aftermath of a Nexus. The handle held for fifteen years; it survived the painted wreck on a Monday morning because the chapter's true charioteer-act was the drive he made at 18, not the drive he made at 33. The Sinkhole Nexus thread connects the deck's death-of-the-heir to the deck's foundational trauma: same vehicle, same driver, fifteen years apart. → wakes the Nexus thread further."
+    },
+    {
       "id": "cha_alberto_brother_failure",
       "shape": "rect_norm",
       "rect": [0.72, 0.86, 0.14, 0.10],
