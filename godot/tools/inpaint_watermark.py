@@ -44,6 +44,7 @@ MARKS = {
     "judgement":  (2645, 1420, 65),
     "world":      (2650, 1425, 80),
     "moon":       (2645, 1420, 65),
+    "wheel_of_fortune": (2650, 1425, 70),
 }
 
 # Empress-only: the current "NICOLA" nametag bbox (to be erased)

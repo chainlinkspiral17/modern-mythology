@@ -1,41 +1,158 @@
 {
   "asset": "assets/gallery/wheel_of_fortune.png",
   "scene_id": "vol5_ch10_wheel",
-  "character": "—",
-  "arcana": "X - WHEEL OF FORTUNE",
-  "subtitle": "The Card That Hasn't Been Drawn Yet",
-  "palette": "uncast",
-  "format_note": "STUB: this card has no painted art in this build. Hooks file reserves the unlock keys and cross-references so the network around it stays consistent; full content arrives when the art does.",
+  "character": "erica",
+  "arcana": "X - THE WHEEL OF FORTUNE",
+  "subtitle": "Closing Arguments Against Chaos",
+  "palette": "fortress_blue_corporate_steel",
+  "location_text": "Houston law office — Erica Campbell's Fortress Menu. The night before the case turns.",
+  "format_note": "X → XI is the deck's TIGHTEST character adjacency — same lawyer, same case, two chapters. The Wheel is Erica's CASE PREPARATION; Justice is the courtroom that follows. Classical X ↔ XI pairing is fate ↔ choice; Modern Mythology renders it as the office (the fortress) ↔ the court (the open room where the fortress's walls stop working).",
 
   "ciphers": [
     {
-      "id": "whl_uncast_placeholder",
-      "kind": "absence_centerpiece",
-      "text": "the Wheel has not turned yet — chapter X exists as a position the lattice expects but the deck has not filled",
-      "anchor_norm": [0.50, 0.50],
-      "encoding_hint": "X sits between IX Hermit (chosen solitude) and XI Justice (one of the THREE REFUSED). Tarot tradition: fate, the turn, the cycle that does not consult. Modern Mythology has not painted the turning yet — but every chapter from VIII onward has acted as if the wheel were already in motion. The placeholder card is the deck admitting that motion without yet rendering it.",
-      "reveals": "vol5_wheel_placeholder_seen"
+      "id": "whl_fortress_menu",
+      "kind": "scene_centerpiece",
+      "text": "LAWYER_FILES_INDEX.EXE — a Fortress Menu with four items, each color-coded",
+      "anchor_norm": [0.78, 0.30],
+      "encoding_hint": "the classical Wheel of Fortune is a turning disc with four creatures at the corners reading sacred books. Modern Mythology renders the wheel as a database index — four files, each a sealed corner of the case. The Fortress Menu is Erica's working surface; the case turns when she picks the file that has not been opened in this state for too long. The wheel is not pictured because the wheel is the act of selection.",
+      "reveals": "vol5_wheel_menu_seen"
+    },
+    {
+      "id": "whl_indexed_files",
+      "kind": "menu_item",
+      "text_lines": [
+        "1. Indexed Files       (Corporate Slate)",
+        "2. The Denied Motion   (Denied Red)",
+        "3. Alberto's Call Log  (Contact Blue)",
+        "4. PetroTex Settlement (Settlement Gold)"
+      ],
+      "anchor_norm": [0.82, 0.42],
+      "encoding_hint": "the four files are the four corners of the classical Wheel. CORPORATE SLATE is the bulk of the case (boring, large, slate-grey); THE DENIED MOTION is red because Erica's motion was denied (the case's first turning); ALBERTO'S CALL LOG is blue because contact is the colour of who-knew-what-when; PETROTEX SETTLEMENT is gold because money is gold and the settlement is the case's possible exit. Four corners, one wheel.",
+      "reveals": "vol5_wheel_four_files_seen"
+    },
+    {
+      "id": "whl_fortress_floorplan",
+      "kind": "diagram",
+      "text_lines": [
+        "ERICA'S DESK   ·   CONFERENCE ROOM",
+        "FILE ARCHIVES",
+        "PAINTER'S SPACE",
+        "OFFICE",
+        "GLASS WALLS"
+      ],
+      "anchor_norm": [0.78, 0.66],
+      "encoding_hint": "HOUSTON_OFFICE_FLOORPLAN — six named zones in the Fortress. PAINTER'S SPACE is Anna's room (Anna will appear at XI Justice in her studio across the river). The Wheel chapter renders Anna's space as PRESENT but EMPTY — Anna hasn't arrived. GLASS WALLS is the chapter's literal architecture (transparent walls) and its anxiety (the fortress's defenses are see-through). The classical Wheel's spinning is the rotation between desk and conference room and archives — work in motion.",
+      "reveals": "vol5_wheel_floorplan_seen"
+    },
+    {
+      "id": "whl_glass_walls_transparent",
+      "kind": "status_label",
+      "text_lines": [
+        "POV: ERICA CAMPBELL",
+        "STATUS: ARGUING AGAINST CHAOS",
+        "WALLS: SLIGHTLY TRANSPARENT"
+      ],
+      "anchor_norm": [0.86, 0.86],
+      "encoding_hint": "the LEGAL_FORTRESS_STATUS panel reads the chapter's three diagnostic lines. ARGUING AGAINST CHAOS is the classical Wheel's premise — order vs randomness as the figure on the spinning disc. SLIGHTLY TRANSPARENT is the chapter's specific failure mode — the fortress is built but the walls are not opaque. Erica is arguing against chaos in a room chaos can see her arguing in.",
+      "reveals": "vol5_wheel_status_seen"
+    },
+    {
+      "id": "whl_denied_motion",
+      "kind": "named_artifact",
+      "text": "The Denied Motion — file 2, red — Erica's first move at trial, ruled out",
+      "anchor_norm": [0.84, 0.46],
+      "encoding_hint": "the Denied Motion is the case's first wheel-turn. The motion was denied; the case did not start the way Erica wanted. The classical Wheel's premise (the wheel turns regardless of who's on top) is rendered as a ruling already against her — the chapter begins on the down-stroke. Justice (XI) will read out the consequences; the Wheel (X) shows the wheel already in motion when Erica arrives.",
+      "reveals": "vol5_wheel_denied_motion_seen",
+      "cross_references": ["justice.json::jus_petrotex_case"]
+    },
+    {
+      "id": "whl_albertos_call_log",
+      "kind": "named_artifact",
+      "text": "Alberto's Call Log — file 3, blue — contact patterns logged across the night before the hearing",
+      "anchor_norm": [0.84, 0.50],
+      "encoding_hint": "Alberto (named, new) is the Wheel chapter's contact node. The call log is blue because contact is who-knew-what-when. Alberto is unaccounted for elsewhere in vol5; the Wheel chapter introduces him as the case's relational pivot. The classical Wheel's four creatures reading sacred books become here four files reading a case; Alberto is the file that reads back.",
+      "reveals": "vol5_wheel_albertos_log_seen",
+      "named_entity": "alberto"
+    },
+    {
+      "id": "whl_petrotex_settlement",
+      "kind": "named_artifact",
+      "text": "PetroTex Settlement — file 4, gold — the exit Erica has not yet decided whether to take",
+      "anchor_norm": [0.84, 0.54],
+      "encoding_hint": "the settlement is the chapter's possible exit — the wheel's still point. Erica can take it; the case ends; chaos wins by being paid off. Justice (XI) is the chapter where the settlement IS NOT TAKEN (the scales shatter instead). The Wheel chapter renders the exit as available; Justice renders it as refused. X → XI: choice present → choice declined.",
+      "reveals": "vol5_wheel_settlement_seen",
+      "cross_references": ["justice.json::jus_petrotex_case"]
     }
   ],
 
   "hotspots": [
-    {"id":"whl_placeholder","shape":"rect_norm","rect":[0.30,0.30,0.40,0.40],
-     "interact":"wheel.placeholder.acknowledged","unlocks":"vol5_wheel_placeholder_seen",
-     "cursor":"closer"}
+    {"id":"whl_menu","shape":"rect_norm","rect":[0.70,0.22,0.28,0.40],
+     "interact":"wheel.menu.read","unlocks":"vol5_wheel_menu_seen","cursor":"closer"},
+    {"id":"whl_floorplan","shape":"rect_norm","rect":[0.70,0.58,0.28,0.26],
+     "interact":"wheel.floorplan.examined","unlocks":"vol5_wheel_floorplan_seen","cursor":"closer"},
+    {"id":"whl_status","shape":"rect_norm","rect":[0.78,0.82,0.20,0.14],
+     "interact":"wheel.status.read","unlocks":"vol5_wheel_status_seen","cursor":"examine"},
+    {"id":"whl_subtitle","shape":"rect_norm","rect":[0.20,0.14,0.50,0.08],
+     "interact":"wheel.subtitle.read","unlocks":"vol5_wheel_subtitle_read","cursor":"examine"},
+    {"id":"whl_corporate_slate","shape":"rect_norm","rect":[0.72,0.30,0.26,0.04],
+     "interact":"wheel.file1.opened","unlocks":"vol5_wheel_corporate_slate_seen","cursor":"take"},
+    {"id":"whl_denied_motion_file","shape":"rect_norm","rect":[0.72,0.42,0.26,0.04],
+     "interact":"wheel.file2.opened","unlocks":"vol5_wheel_denied_motion_seen","cursor":"take"},
+    {"id":"whl_alberto_log_file","shape":"rect_norm","rect":[0.72,0.48,0.26,0.04],
+     "interact":"wheel.file3.opened","unlocks":"vol5_wheel_albertos_log_seen","cursor":"take"},
+    {"id":"whl_settlement_file","shape":"rect_norm","rect":[0.72,0.54,0.26,0.04],
+     "interact":"wheel.file4.opened","unlocks":"vol5_wheel_settlement_seen","cursor":"take"},
+    {"id":"whl_painters_space","shape":"rect_norm","rect":[0.74,0.68,0.10,0.06],
+     "interact":"wheel.painters_space.observed","unlocks":"vol5_wheel_painters_space_empty",
+     "cursor":"examine",
+     "notes":"the floorplan zone labeled PAINTER'S SPACE is canonically Anna's room. On the Wheel card it is PRESENT BUT EMPTY — Anna hasn't arrived. Justice (XI) renders Anna in her studio across the river; the Wheel chapter renders the absence as architectural."},
+    {"id":"whl_justice_preview","shape":"rect_norm","rect":[0.04,0.20,0.62,0.40],
+     "interact":"wheel.justice_preview.observed","unlocks":"vol5_wheel_justice_preview_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_justice_scales_seen",
+     "notes":"DORMANT: appears only after the player has examined the shattered scales on the Justice card. The left half of the Wheel card — currently a blue computer-monitor glow — now visibly shows a ghost of the courtroom from XI. The fortress at X already contains the courtroom at XI as a transparency on the desk monitor. Erica is doing the case prep while the case's outcome is rendered on her screen. The wheel turned before she sat down; the chapter is her arguing anyway."},
+    {"id":"whl_settlement_refused_later","shape":"rect_norm","rect":[0.72,0.54,0.26,0.04],
+     "interact":"wheel.settlement.refused_later","unlocks":"vol5_wheel_settlement_refused_later_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_justice_petrotex_case_seen",
+     "notes":"DORMANT: appears only after the player has read the PetroTex case file on the Justice card. The settlement file on this menu now visibly carries a strike-through — the exit was available at X, refused by XI. The chapter's color-gold is now annotated 'refused.' Classical X ↔ XI pairing as gate: choice present at fate's wheel, choice declined at justice's bench."},
+    {"id":"whl_anna_arrival_pre_echo","shape":"rect_norm","rect":[0.74,0.68,0.10,0.06],
+     "interact":"wheel.anna.arrival_pre_echo","unlocks":"vol5_wheel_anna_arrival_pre_echo_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_justice_wireframe_seen",
+     "notes":"DORMANT: appears only after the player has examined Anna's wireframe deconstruction on the Justice card. The empty PAINTER'S SPACE on the floorplan now visibly shows a thin pencil sketch — Anna's wireframe in early form. She isn't here yet, but the deck has already drawn the line her work will take. X → XI is the deck's tightest character adjacency: the Wheel chapter renders Anna's absence as architectural; Justice renders her arrival as the wireframe pinned above the drafting table."}
   ],
 
   "easter_eggs": [
-    "the Wheel is the only chapter in vol5 not yet painted. Every other major card has art; X stays open. The user has not generated it. The deck is conscious of the gap.",
-    "X sits between two cards about stillness — Hermit's chosen, Justice's refused. The Wheel is the cycle between two refusals to participate; that the Wheel itself is absent in this build is the deck's truest reading of fate.",
-    "X is also one of the four 'card without a face' positions in the deck: VI (Lovers, face-down), X (Wheel, not painted), XI (Justice, refused), XX (Judgement, refused). Four refusals to render — close to a quartile of the Majors."
+    "X and XI are the deck's tightest character adjacency — same lawyer, same case, two chapters. Wheel is the case preparation in the Fortress; Justice is the courtroom that follows. The wheel turns from desk to bench.",
+    "the four color-coded files (Slate / Red / Blue / Gold) are the four creatures at the corners of the classical Wheel of Fortune card. Modern Mythology renders the spinning as the act of selection — opening one file rather than another is the wheel turning.",
+    "PAINTER'S SPACE on the floorplan is Anna's room — but Anna is not yet in it. The chapter renders her absence as architecture. Justice (XI) will fill the space in dual-POV.",
+    "the LEGAL_FORTRESS_STATUS line 'WALLS: SLIGHTLY TRANSPARENT' is the chapter's whole anxiety — the fortress is built, but visibility goes both ways. The classical Wheel's premise (the wheel turns regardless of who's on top) becomes specific: the fortress is the wheel that turns, and you can see through it.",
+    "Alberto is introduced by name here — file 3, blue, the contact node. He doesn't appear elsewhere in vol5 (yet); the Wheel chapter is his canonical first naming.",
+    "Justice was once X and Strength was XI in pre-1909 decks; this card carries the numbering swap implicitly by being Justice's preparation. X-as-Wheel and XI-as-Justice is the swap stabilized; the Wheel's spinning has settled into the position it was always supposed to occupy."
   ],
 
   "links_forward": [
-    "vol5_wheel_placeholder_seen"
+    "vol5_wheel_menu_seen",
+    "vol5_wheel_four_files_seen",
+    "vol5_wheel_floorplan_seen",
+    "vol5_wheel_status_seen",
+    "vol5_wheel_subtitle_read",
+    "vol5_wheel_corporate_slate_seen",
+    "vol5_wheel_denied_motion_seen",
+    "vol5_wheel_albertos_log_seen",
+    "vol5_wheel_settlement_seen",
+    "vol5_wheel_painters_space_empty",
+    "vol5_wheel_justice_preview_seen",
+    "vol5_wheel_settlement_refused_later_seen",
+    "vol5_wheel_anna_arrival_pre_echo_seen"
   ],
 
   "cross_references": {
-    "between_chosen_and_refused": "hermit.json (IX, chosen solitude) and justice.json (XI, refused reading)",
-    "uncast_kin": "lovers.json::lov_uncast_kin (VI / XI / XX all refused or unrendered)"
+    "justice_adjacency_with": "justice.json (XI — same lawyer, same case, same PetroTex file)",
+    "anna_painters_space_with": "justice.json::jus_anna_wireframe (the empty room on X is the studio at XI)",
+    "settlement_chain_with": "justice.json::jus_scales_shattered (offered, refused, scales shattered)",
+    "alberto_first_appearance": "vol5_ch10_wheel — named here, forward to TBD",
+    "numbering_swap_stabilized": "justice.json::jus_xi_or_viii (X-as-Wheel = the swap settled)"
   }
 }

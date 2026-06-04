@@ -95,7 +95,17 @@
      "interact":"justice.dual_pov.recognized","unlocks":"vol5_justice_dual_pov_inheritance_seen",
      "cursor":"examine",
      "gated_by":"vol5_dual_pov_node",
-     "notes":"DORMANT: appears only after the player has activated the dual_pov_node on Empress or Emperor. A small floor annotation reads 'DUAL-POV: III (Empress, sensory ↔ data) → XI (Justice, court ↔ studio). The mechanic the Empress invented at chapter III is the mechanic Justice runs at chapter XI — Nicola/Aria become Erica/Anna at structural scale.' III → XI is the dual-POV inheritance line; the deck's only two split cards."}
+     "notes":"DORMANT: appears only after the player has activated the dual_pov_node on Empress or Emperor. A small floor annotation reads 'DUAL-POV: III (Empress, sensory ↔ data) → XI (Justice, court ↔ studio). The mechanic the Empress invented at chapter III is the mechanic Justice runs at chapter XI — Nicola/Aria become Erica/Anna at structural scale.' III → XI is the dual-POV inheritance line; the deck's only two split cards."},
+    {"id":"jus_wheel_fortress_echo","shape":"rect_norm","rect":[0.08,0.56,0.20,0.18],
+     "interact":"justice.wheel_fortress.recognized","unlocks":"vol5_justice_wheel_fortress_echo_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_wheel_menu_seen",
+     "notes":"DORMANT: appears only after the player has read the Fortress Menu on the Wheel of Fortune card. The PetroTex case file on Erica's bench now visibly shows the four Wheel files tucked inside as a single labelled stack — CORPORATE SLATE / DENIED RED / CONTACT BLUE / SETTLEMENT GOLD. The fortress's four corners are present in the courtroom as the case-file's interior. X → XI is the deck's tightest character adjacency; what Erica selected from in the office is what she now argues from at the bench."},
+    {"id":"jus_alberto_named_earlier","shape":"rect_norm","rect":[0.14,0.66,0.16,0.08],
+     "interact":"justice.alberto.named_earlier","unlocks":"vol5_justice_alberto_named_earlier_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_wheel_albertos_log_seen",
+     "notes":"DORMANT: appears only after the player has opened Alberto's Call Log on the Wheel. The case file on Erica's bench now visibly has 'Alberto — see X' annotated in her own hand. Alberto was named at the Wheel; Justice acknowledges the prior naming. The deck does not introduce characters at the courtroom; the courtroom remembers."}
   ],
 
   "easter_eggs": [
