@@ -861,5 +861,316 @@ XXI (corner figure — proposed).
 
 ---
 
-(Cards XVI through XXI continue in the next commit.)
+---
+
+### XVI — THE TOWER
+
+Evangeline's outbound is the deck's render-engine vector. The
+log truncation, the demoscene chain crash, the visible smoke,
+and the crozier-shaped fault line each reach into specific cards.
+Self-truncating so most outbound is one-shot at the moment of
+collapse.
+
+**Live:** I (engine chain), V (crozier snap reciprocal),
+XV (amber bulb chain origin), XVII (visible smoke), XX (the
+render of the engine failing is the deck's structural premise),
+XXI (the wreath has scorch marks at the eagle corner).
+
+- P → 0 Fool: DEMOSCENE_VIBE label was always the engine
+  watermark.
+- L → I Magician: engine chain (Magician built, Tower crashed).
+- P → II Priestess: archive of RENDER_FARM_LOG_47.
+- L → III Empress: Aria off-chain 0.4 sec note.
+- P → IV Emperor: throne watermark cracks with the engine.
+- L → V Hierophant: crozier-shaped fault.
+- P → VI Lovers: Evangeline & render farm pair (vol6).
+- P → VII Chariot: render farm geography 2 mi from wreck.
+- P → VIII Strength: nothing yet wired.
+- P → IX Hermit: nothing yet wired.
+- P → X Wheel: Erica's firm represents the farm.
+- P → XI Justice: Anna's wireframe rendered on the farm.
+- F → XII Hanged Man: Natalie's broadcast and the engine
+  share substrate.
+- P → XIII Death: the death of the engine ↔ Ward C arithmetic.
+- P → XIV Temperance: Frank watches the smoke from his window.
+- P → XV Devil: amber bulb cooked the line (live origin).
+- L → XV Devil: already live.
+- L → XVII Star: visible smoke at clearing edge.
+- P → XVIII Moon: nothing wired; the broadcast carries log
+  fragments.
+- P → XIX Sun: Frank's window faces east toward the farm.
+- L → XX Judgement: the engine's failure is the gathering's
+  unrendered verdict.
+- L → XXI World: scorched eagle corner of the wreath.
+
+---
+
+### XVII — THE STAR
+
+The un-named figure's outbound is the deck's other gentle-axis
+radiator (rhymes with VIII). The water poured, the smoke
+included in inventory, the eight stars, the empty vessels — each
+radiates one or two cards. Less active outbound than VIII because
+the chapter is about residue not motion.
+
+**Live:** IV (ankh constellation), XVI (visible smoke seen),
+XVIII (stars rhyme with sigils), XX (un-named figure's one
+sentence at the ensemble), XXI (closure adjacency).
+
+- P → 0 Fool: the night sky implicit at 3:47.
+- P → I Magician: nothing yet wired.
+- F → II Priestess: archive item "what i poured."
+- P → III Empress: Aria's silence at the chapter close.
+- L → IV Emperor: ankh constellation.
+- P → V Hierophant: nothing yet wired; the chapter's hope
+  rhymes with the chapter's silence after AVDI ET TACE.
+- F → VI Lovers: the un-named figure & the river pair (vol6).
+- P → VII Chariot: nothing yet wired.
+- P → VIII Strength: dash-signature shared.
+- P → IX Hermit: nothing yet wired; the six-pointed star.
+- P → X Wheel: nothing wired; Houston has the same night sky.
+- P → XI Justice: vol6 — the un-named figure is Anna.
+- P → XII Hanged Man: the river the candle wax falls toward.
+- F → XIII Death: vol6 — the figure is at the ward.
+- P → XIV Temperance: Frank sees the open sky.
+- P → XV Devil: nothing yet wired.
+- F → XVI Tower: smoke is the neighbor's weather.
+- L → XVI Tower: already live (smoke aftermath).
+- P → XVIII Moon: eight stars rhyme with three sigils.
+- P → XIX Sun: pre-dawn condition.
+- P → XX Judgement: the figure's "i poured the water already."
+- L → XXI World: closure adjacency (XVII → XXI is one stop
+  past XVIII Moon's static).
+
+---
+
+### XVIII — THE MOON
+
+Natalie's outbound from her second chapter is the deck's
+broadcast vector. Each sigil reading reaches its corresponding
+card; the static-field broadcast itself reaches the cards being
+broadcast.
+
+**Live:** I (Magician's worn sigil reflected — proposed-live),
+III (dual-POV collapse), XII (sigils complete reciprocal),
+XVII (stars rhyme), XIX (static dispelled), XX (Natalie at
+ensemble), XXI (the chapter is hers again).
+
+- P → 0 Fool: the BBS active node count broadcast.
+- L → I Magician: worn sigil reflection.
+- P → II Priestess: vol6 — Anya tapes reflect Moon broadcast.
+- L → III Empress: collapse reciprocal.
+- P → IV Emperor: Dante asleep at this hour.
+- F → V Hierophant: Quent's voicemail on Natalie's broadcast
+  (vol6).
+- F → VI Lovers: pair lattice entry for Natalie & Simon.
+- P → VII Chariot: nothing yet wired.
+- P → VIII Strength: the river the candle's wax falls toward.
+- P → IX Hermit: silence inverts.
+- P → X Wheel: nothing yet wired.
+- P → XI Justice: Anna sees the broadcast (vol6).
+- L → XII Hanged Man: sigils complete reciprocal.
+- L → XIII Death: Mr. K's ceiling-question rhymes.
+- P → XIV Temperance: Frank's Tuesday notebook on Friday.
+- P → XV Devil: nothing yet wired.
+- P → XVI Tower: broadcast carries log fragments.
+- L → XVII Star: stars rhyme with sigils.
+- L → XIX Sun: static dispelled.
+- L → XX Judgement: Natalie at ensemble.
+- L → XXI World: chapter is hers.
+
+---
+
+### XIX — THE SUN
+
+Frank's outbound from his second chapter completes the
+discipline. The four-mote pattern's lemniscate radiates back
+through the lemniscate chain (I, II, VIII). The 42-second
+phone call to Elicia is a single live edge.
+
+**Live:** 0 (BBS chain via Priestess journal pages), II
+(bookmark reciprocal), X (timestamp match), XIII (Frank's
+chamber relationship to Ward C), XIV (Tuesday → Saturday
+spine), XVIII (static dispelled reciprocal), XX (Frank in
+ensemble), XXI (closing reading mentions Frank).
+
+- L → 0 Fool: BBS chain.
+- P → I Magician: nothing yet wired.
+- L → II Priestess: bookmark reciprocal.
+- P → III Empress: pale-emerald light shared.
+- P → IV Emperor: vol6 — dentist daughter shared character.
+- P → V Hierophant: Frank attended St. Jude's once.
+- F → VI Lovers: Frank & his discipline pair.
+- P → VII Chariot: Wednesday's photograph.
+- P → VIII Strength: lemniscate read in dust mote.
+- P → IX Hermit: discipline rhymes.
+- L → X Wheel: 3:47 ↔ 06:11 timestamps.
+- P → XI Justice: Frank reads Anna's wireframe.
+- F → XII Hanged Man: vol6 visit.
+- L → XIII Death: Ward C is across town.
+- L → XIV Temperance: Tuesday → Saturday completion.
+- P → XV Devil: nothing yet wired.
+- P → XVI Tower: Frank watches the smoke.
+- P → XVII Star: Frank notices the open sky.
+- L → XVIII Moon: static dispelled.
+- L → XX Judgement: Frank's smile at minute 22.
+- L → XXI World: Frog's reading mentions Frank twice.
+
+---
+
+### XX — JUDGEMENT
+
+The Judgement ensemble outbound: every figure in the gathering
+radiates back to their home chapter, plus the chapter's refusal
+of the verdict closes a relationship with VI Lovers and XI
+Justice. The most-connected outbound card.
+
+**Live:** 0 (ensemble origin), I (gesture multiplied), II
+(ENSEMBLE_01 tape), IV (dancer named in advance), V (Maya quotes
+Quent), VI (refused company), VII (Antonio "the absent figure"),
+VIII (Faith's tail thump), IX (the held silence), X (Wheel's
+Erica stares at empty center), XI (Anna in ensemble), XII
+(Natalie tests gesture), XIII (Mr. K's ceiling-question
+diegetic), XIV (Frank's smile), XVII (un-named figure's one
+sentence), XVIII (Natalie's eyes close), XIX (Frank twice
+mentioned in the Frog reading), XXI (the gathering closes
+the wreath).
+
+- L → 0 Fool: ensemble origin.
+- L → I Magician: gesture multiplied.
+- L → II Priestess: ENSEMBLE_01 recording.
+- L → III Empress: Aria does not speak (Aria's silence).
+- P → IV Emperor: Dante named the dancer.
+- L → V Hierophant: Maya's whisper of Quent's permission.
+- L → VI Lovers: refused company.
+- L → VII Chariot: Antonio absent figure.
+- L → VIII Strength: Faith tail thump.
+- L → IX Hermit: held silence.
+- L → X Wheel: Erica stares.
+- L → XI Justice: Anna in ensemble.
+- L → XII Hanged Man: Natalie tests gesture.
+- L → XIII Death: Mr. K's ceiling-question.
+- L → XIV Temperance: Frank's smile minute 22.
+- L → XV Devil: UNCOMFORTABLE INSIDE rhymes.
+- L → XVI Tower: engine failure is the verdict refused.
+- P → XVII Star: un-named figure's one sentence.
+- L → XVIII Moon: Natalie's eyes close.
+- L → XIX Sun: Frank named twice.
+- L → XXI World: wreath closes around the absence.
+
+---
+
+### XXI — THE WORLD
+
+The closing card's outbound is reciprocal-heavy. The Frog's
+reading reaches every other card; the wreath's footer (three
+refused, pair lattice accounted, ACTIVE NODES 64) restores or
+acknowledges state on most cards.
+
+**Live:** 0 (closing mirror; the diner returns), I (Magician's
+borrowed gesture acknowledged), II (closing reading mentions),
+IV (OX corner), V (the chapter's silence acknowledged), VI
+(lattice closed), VII (BBS count restored), VIII (LION corner),
+IX (the agreement kept on the second attempt), X (Wheel's
+night ended), XI (verdict carried forward), XII (her chapter
+was hers), XIII (ward arithmetic acknowledged), XIV (discipline
+was content), XV (bar opened again), XVI (file size increasing),
+XVII (water poured, smoke included), XVIII (verbs came home),
+XIX (correct silence), XX (gathering was enough).
+
+- L → 0 Fool: dawn-lit corner; diner returns.
+- L → I Magician: Frog says "gestures are made to be borrowed."
+- P → II Priestess: Frog says "she broke one. the breaking is
+  in the archive."
+- P → III Empress: Frog says "the body is fine. (mostly.)"
+- L → IV Emperor: OX corner; Frog says "he wrote the rule for
+  what not to write."
+- P → V Hierophant: Frog says "the chapter is the chain."
+- L → VI Lovers: lattice closed.
+- P → VII Chariot: Frog says "the wreck was warned."
+- L → VIII Strength: LION corner; Frog says "the lion is the
+  dog."
+- L → IX Hermit: Frog says "the agreement was kept on the
+  second attempt."
+- F → X Wheel: vol6 — the night that ended has consequences.
+- L → X Wheel: Frog says "the night ended."
+- L → XI Justice: Frog says "the shattered scales are the
+  verdict carried forward."
+- L → XII Hanged Man: Frog says "the chapter was hers."
+- L → XIII Death: Frog says "both empties were correct
+  emptings."
+- L → XIV Temperance: Frog says "the discipline was the
+  content."
+- P → XV Devil: Frog says "the bar opened again."
+- L → XVI Tower: Frog says "the file size increases."
+- L → XVII Star: Frog says "she did not interpret it."
+- L → XVIII Moon: Frog says "the candle was hers."
+- L → XIX Sun: Frog says "the reply was correct silence."
+- L → XX Judgement: Frog says "the gathering was enough."
+
+---
+
+## Summary of the network's growth runway
+
+The matrix shows the deck has, by rough count across all 22 cards
+documented:
+
+- **Live edges (wired now):** ~84 across the discovery layer +
+  10 diorama-internal unlocks + ~10 World reciprocals = ~104
+  total active. (The matrix marks L for every position where any
+  flavour of edge is live — gated_by, opens_diorama, or cross-
+  referenced cipher.)
+
+- **Proposed edges (vol5-completable):** ~200. These are the
+  positions where the deck has seeded a connection in the painted
+  art / pitch+script doc, but no hotspot has been wired yet.
+  Each is roughly: one new gated hotspot + matching cipher on
+  the target card, with the gate keyed to a SaveSystem unlock
+  on the source.
+
+- **Forward seeds (vol6+):** ~40. The deck implies these but
+  they belong to vol6+ — characters not yet introduced (Carlie,
+  Alma, the 23 Feb caller, the cousin), unrevealed identities
+  (the un-named woman, the dancer), or events that haven't
+  happened yet.
+
+## Suggested growth order
+
+1. **Wire all "P" edges from cards with low live count.** Cards
+   XIV Temperance (4 L), XVII Star (4 L), XIX Sun (5 L) have the
+   thinnest live outbound; their proposed edges are mostly small
+   gated hotspots that would multiply the network for low cost.
+
+2. **Wire the "P" edges that close pair-lattice rows.** Lovers'
+   pair lattice has Erica&Anna, Frasier&Aria, Anya&Elicia,
+   Nicola&Dante as implicit but not confirmed. Each needs a
+   cross-card hook to fire the confirmation; suggested order:
+   Erica&Anna (vol5-completable via X→XI), Anya&Elicia
+   (via Priestess archive), Frasier&Aria (via III→I signal
+   handshake), Nicola&Dante (via III→IV throne succession).
+
+3. **Wire the "F" edges as the deck's vol6 hooks.** Each forward
+   seed is a vol6 setup; making sure the vol5 side has the
+   appropriate gated_by hotspot ready means vol6 just needs to
+   fire the unlock key from its own content.
+
+4. **Watch the most-targeted cards' inbound count.** Cards that
+   accumulate many inbound gates can develop "discovery
+   congestion" — players hit multiple wakeups on a single visit
+   and may overlook some. The Judgement card is the network's
+   most-targeted node (17+ inbound) — its UI may need a
+   dedicated catalog hotspot that lists what woke and when.
+
+## Closing note
+
+The unlock-web matrix is the deck's network in matrix form. The
+network's invariant is that NO CARD IS ISOLATED — every Major
+Arcana has at least 18 potential edges to other cards (across
+live + proposed + forward states). That isn't symmetry by chance;
+the deck was designed so that every chapter's act in some way
+reaches every other chapter's room. The matrix shows the deck
+acting on its own premise.
+
+The Frog says: mostly.
+
 
