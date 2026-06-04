@@ -145,6 +145,16 @@
       "notes": "DORMANT: appears only after the player has recognized the lemniscate halo on the Strength card. The infinity Frasier traces is now visibly being WORN by a figure in the distant model city — a tiny lion-tamer on the diorama, sigil floating above. The Magician drew the glyph; Strength wears it; the Magician can now see her wearing it. The deck closes the inscription loop. I → VIII is the deck's longest reach across one symbol."
     },
     {
+      "id": "mag_model_diorama_entry",
+      "shape": "rect_norm",
+      "rect": [0.30, 0.65, 0.55, 0.30],
+      "interact": "magician.model.diorama_open",
+      "unlocks": "vol5_magician_model_diorama_entered",
+      "cursor": "closer",
+      "opens_diorama": "magician_model",
+      "notes": "ENTRY HOTSPOT: clicking the painted model city dispatches demon_scribe.01 to fetch the full top-down view + Frasier's annotations on each element. 9 model elements (steamboat, warehouse 47, st. jude's miniature, ember & ash, daigle's pier, render farm site (empty), empress chamber, anya's block (unwired), infinity sigil overhead). Click any element to read Frasier's notes on what it predicts. The model is the deck's predictive architecture rendered as inventory."
+    },
+    {
       "id": "mag_aria_routing_received",
       "shape": "rect_norm",
       "rect": [0.84, 0.78, 0.10, 0.10],

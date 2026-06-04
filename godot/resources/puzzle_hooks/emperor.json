@@ -162,6 +162,16 @@
       "notes": "DORMANT: appears only after the player has read Erica's marginalia on the 19:42 Dante callback row in the Wheel diorama. The ankh sceptre in Dante's hand now visibly carries a small carved tally mark every 22-25 degrees around its shaft. The 22-25 minute Dante callback pattern is rendered as the sceptre's geometric notation — the Emperor's authority operates at a regular rhythm, and the rhythm is the case's true timing. 'Wait until the audit clears' became canonical at 19:42 Feb 10; the audit cleared the wrong way three days later. The Emperor's chapter is the chapter that orders the wait, on the same shaft he holds in the painted scene."
     },
     {
+      "id": "emp_barge_voicelog_entry",
+      "shape": "rect_norm",
+      "rect": [0.30, 0.55, 0.10, 0.10],
+      "interact": "emperor.barge_voicelog.fetched",
+      "unlocks": "vol5_emperor_barge_voicelog_entered",
+      "cursor": "closer",
+      "opens_diorama": "barge_voicelog",
+      "notes": "ENTRY HOTSPOT: clicking the small barge model at the foot of Dante's throne dispatches demon_observer.04+.05 to fetch Dante & Father Quent's barge BBS link conversation, Wed 09:00-09:12 CT. Two demons captured the same conversation from opposite endpoints; integrity 0.91 avg. The recording surfaces: the anchor-fouling Dante will lie to Nicola about, Quent naming Antonio as the friend-he-trusts, the PetroTex hand-off from throne to crozier, Dante's confession ('I am waiting for the council to forget the date-shift'), Quent's Wednesday-morning decision to leave the scaffolding standing (reversed Sunday — see Hierophant booth diorama), Quent asking after Alma by name (Alma is known to Quent — vol6 forward seed). The deck's most network-rich two-character voice log."
+    },
+    {
       "id": "emp_appointment_diorama_entry",
       "shape": "rect_norm",
       "rect": [0.06, 0.84, 0.20, 0.12],

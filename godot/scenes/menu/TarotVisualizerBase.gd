@@ -80,6 +80,9 @@ const DIORAMA_SCRIPTS := {
     "emperor_appointment": preload("res://scenes/menu/EmperorAppointmentDiorama.gd"),
     "hanged_voicemails":   preload("res://scenes/menu/HangedManVoicemailsDiorama.gd"),
     "empress_aria_log":    preload("res://scenes/menu/EmpressAriaLogDiorama.gd"),
+    "fool_bbs":            preload("res://scenes/menu/FoolBbsDiorama.gd"),
+    "magician_model":      preload("res://scenes/menu/MagicianModelCityDiorama.gd"),
+    "barge_voicelog":      preload("res://scenes/menu/DanteQuentBargeDiorama.gd"),
 }
 
 var hooks: Dictionary = {}

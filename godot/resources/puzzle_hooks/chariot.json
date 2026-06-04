@@ -235,6 +235,16 @@
       "notes": "DORMANT: appears only after the player has recognized the unknown-number 23:47 line on the Hanged Man card. The BBS status panel gains a third sysop entry: 'natalie@simons_apt (NO ANSWER).' The booth-call chain V → VII → XII is now legible from the wreck site: Quentin called three numbers, Antonio picked up and died, Natalie did not pick up and waits. The deck's call chain closes when the Charioteer card admits its caller was reaching for someone who didn't come."
     },
     {
+      "id": "cha_antonio_was_trusted",
+      "shape": "rect_norm",
+      "rect": [0.46, 0.40, 0.16, 0.10],
+      "interact": "chariot.antonio.was_trusted",
+      "unlocks": "vol5_chariot_antonio_was_trusted_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_barge_antonio_named",
+      "notes": "DORMANT: appears only after the barge voicelog surfaces Quent's naming of Antonio as the friend-he-trusts. The wreck centerpiece now visibly carries a small annotation on Antonio's collar: 'trusted Wed, called Sun, dead Mon.' The three days that name the spine. Antonio was on the trust-list Wednesday morning at 09:01:16; Antonio took Quent's call Sunday morning at 06:35; Antonio died Monday morning at 07:11. The Chariot card is the chapter that lives in that three-day span; the painted scene is the spine's tail."
+    },
+    {
       "id": "cha_flame_at_daigles",
       "shape": "rect_norm",
       "rect": [0.74, 0.06, 0.16, 0.10],
