@@ -145,6 +145,16 @@
       "notes": "DORMANT: appears only after the player has recognized the lemniscate halo on the Strength card. The infinity Frasier traces is now visibly being WORN by a figure in the distant model city — a tiny lion-tamer on the diorama, sigil floating above. The Magician drew the glyph; Strength wears it; the Magician can now see her wearing it. The deck closes the inscription loop. I → VIII is the deck's longest reach across one symbol."
     },
     {
+      "id": "mag_aria_routing_received",
+      "shape": "rect_norm",
+      "rect": [0.84, 0.78, 0.10, 0.10],
+      "interact": "magician.aria_routing.received",
+      "unlocks": "vol5_magician_aria_routing_received_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_aria_frasier_reading",
+      "notes": "DORMANT: appears only after the Empress Aria-log diorama surfaces the routing handoff. The lower-right CRT on Frasier's workbench now visibly shows a small text annotation in the lower-left corner: 'routing received: aria.runtime / source: chamber_dinner_3 / spike registered.' Frasier received the trace at 19:20 local; he did not know it was Nicola; he knew it was someone. The Magician chapter's Frasier&Aria pair-lattice entry is the diagnostic he can read but not name. I ↔ III handshake confirmed from both endpoints."
+    },
+    {
       "id": "mag_ensemble_gesture_seen",
       "shape": "rect_norm",
       "rect": [0.50, 0.18, 0.10, 0.20],

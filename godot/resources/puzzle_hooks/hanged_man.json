@@ -122,7 +122,19 @@
      "unlocks":"vol5_hanged_call_origin_seen",
      "cursor":"examine",
      "gated_by":"vol5_hierophant_call_2_played",
-     "notes":"DORMANT: appears only after the player has played Call 2 (no answer) in the Hierophant booth diorama. The 23:47 PT incoming-decline line on Natalie's phone log now visibly carries an annotation in fine ink: 'origin: st_judes.bbs vestibule booth — 06:38 CT, no zone-shifted note left.' The unknown caller was Father Quent. Natalie did not answer because she did not recognize the number; the church number she would not have recognized anyway. The booth-call chain V → XII closes from both sides."}
+     "notes":"DORMANT: appears only after the player has played Call 2 (no answer) in the Hierophant booth diorama. The 23:47 PT incoming-decline line on Natalie's phone log now visibly carries an annotation in fine ink: 'origin: st_judes.bbs vestibule booth — 06:38 CT, no zone-shifted note left.' The unknown caller was Father Quent. Natalie did not answer because she did not recognize the number; the church number she would not have recognized anyway. The booth-call chain V → XII closes from both sides."},
+    {"id":"hng_voicemails_diorama_entry","shape":"rect_norm","rect":[0.74,0.56,0.20,0.18],
+     "interact":"hanged.voicemails.fetched",
+     "unlocks":"vol5_hanged_voicemails_diorama_entered",
+     "cursor":"closer",
+     "opens_diorama":"hanged_voicemails",
+     "notes":"ENTRY HOTSPOT: clicking the phone log on the painted card dispatches daemon_courier.12 to fetch the three outbound voicemails Natalie left for Simon. Each message has text-scroll playback; the third surfaces the chapter's deepest cruelty (Simon lit the candle before he left). The phone log on the painted card was already the OUTBOUND record; the diorama surfaces the audio. Three messages, no replies."},
+    {"id":"hng_aria_bathroom_rhyme","shape":"rect_norm","rect":[0.12,0.22,0.14,0.10],
+     "interact":"hanged.aria_bathroom.rhyme",
+     "unlocks":"vol5_hanged_aria_bathroom_rhyme_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_aria_bathroom_fallback",
+     "notes":"DORMANT: appears only after the Empress Aria-log diorama surfaces the bathroom-as-fallback evaluation. Natalie's apartment doorway now visibly shows a faint emerald HUD overlay along its frame — Aria's geometry, the same fallback Aria registered for Nicola, mapped onto Natalie's space. The Empress chapter's posture (alone in a chamber with the bathroom one room away as registered exit) IS the Hanged Man chapter's posture, six months later, on a different POV. III ↔ XII rendered as a shared body-architecture across two characters."}
   ],
 
   "easter_eggs": [

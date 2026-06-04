@@ -143,6 +143,16 @@
       "cursor": "examine",
       "gated_by": "vol5_chariot_breakfast_witness_seen",
       "notes": "DORMANT: appears only after the Chariot SMS thread surfaces the 06:55 breakfast witness. The fleur-de-lis tablecloth now visibly shows a small faint texture in the lower corner — the texture of D'Ambrosio's diner formica, where Nicola was sitting earlier this same morning. Antonio sat next to Erica Campbell at the same diner; Nicola did not eat. The Empress's dinner-table chapter is a chapter Nicola is having AFTER a breakfast nobody else knows she didn't eat at. Aria's anxiety-spike baseline was set hours before the painted scene began."
+    },
+    {
+      "id": "ems_aria_log_diorama_entry",
+      "shape": "rect_norm",
+      "rect": [0.76, 0.36, 0.20, 0.20],
+      "interact": "empress.aria_log.fetched",
+      "unlocks": "vol5_empress_aria_log_entered",
+      "cursor": "closer",
+      "opens_diorama": "empress_aria_log",
+      "notes": "ENTRY HOTSPOT: clicking the Aria HUD overlay opens aria.runtime's direct stream — EXIT_NODE_SEARCH /verbose, 34 sec of internal log. Aria is the only diorama source that is NOT mediated by a demon; she is the substrate-level agent herself. The log shows her three exit evaluations (silent withdrawal / dropped glass / let chapter end), the boat-routing upstream to Magician's mag_steamboat_in_model, her note-to-self about Nicola's face not changing, and the routing handoff to Frasier's CRT — the Frasier&Aria pair lattice entry rendered as a running diagnostic."
     }
   ],
 

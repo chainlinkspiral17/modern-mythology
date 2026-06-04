@@ -141,7 +141,25 @@
      "interact":"lovers.lattice.closed","unlocks":"vol5_lovers_lattice_closed_seen",
      "cursor":"closer",
      "gated_by":"vol5_world_pair_lattice_accounted",
-     "notes":"DORMANT: appears only after the player has read the pair-lattice accounting in the World's footer. The lov_pairs hotspot now visibly shows each row's resolution state: three confirmed (JOHN&FAITH, QUENTIN&ANTONIO, MAYA&Y indirect), three implicit (FRASIER&ARIA, ANYA&ELICIA, NICOLA&DANTE). The Lovers' lattice closes at the World card; the chapter at VI refused to consummate any pair, the chapter at XXI accounted for all six. Refusal and accounting are the same gesture at two scales."}
+     "notes":"DORMANT: appears only after the player has read the pair-lattice accounting in the World's footer. The lov_pairs hotspot now visibly shows each row's resolution state: three confirmed (JOHN&FAITH, QUENTIN&ANTONIO, MAYA&Y indirect), three implicit (FRASIER&ARIA, ANYA&ELICIA, NICOLA&DANTE). The Lovers' lattice closes at the World card; the chapter at VI refused to consummate any pair, the chapter at XXI accounted for all six. Refusal and accounting are the same gesture at two scales."},
+    {"id":"lov_frasier_aria_confirmed","shape":"rect_norm","rect":[0.30,0.84,0.10,0.04],
+     "interact":"lovers.frasier_aria.confirmed",
+     "unlocks":"vol5_lovers_pair_frasier_aria_confirmed",
+     "cursor":"examine",
+     "gated_by":"vol5_aria_frasier_reading",
+     "notes":"DORMANT: appears only after Aria's log diorama surfaces the routing handoff to Frasier's CRT (the moment Aria's summary lands on the other reader's screen). The Lovers' pair lattice line FRASIER&ARIA flips from implicit to confirmed — but the chapter's whole work is preserved by the confirmation: neither party knows the other party knows. The Lovers card refused; the deck consummated through demonic intermediaries. Third pair confirmed; three implicit remain (Anya&Elicia, Nicola&Dante, the un-named woman & Faith)."},
+    {"id":"lov_nicola_dante_confirmed","shape":"rect_norm","rect":[0.42,0.84,0.10,0.04],
+     "interact":"lovers.nicola_dante.confirmed",
+     "unlocks":"vol5_lovers_pair_nicola_dante_confirmed",
+     "cursor":"examine",
+     "gated_by":"vol5_emp_wed_empress_dinner",
+     "notes":"DORMANT: appears only after the Emperor appointment diorama surfaces the Wednesday 19:00 dinner notes (the painted Empress scene). The Lovers' pair lattice line NICOLA&DANTE flips from implicit to confirmed — but the confirmation is succession, not romance. Dante writes the lie about the anchor for himself to remember to tell. The pairing is institutional (the throne passes) and adversarial (the dinner is engineered). The Lovers' lattice acknowledges both registers as the same pair. Fourth pair confirmed."},
+    {"id":"lov_erica_anna_confirmed","shape":"rect_norm","rect":[0.54,0.84,0.10,0.04],
+     "interact":"lovers.erica_anna.confirmed",
+     "unlocks":"vol5_lovers_pair_erica_anna_confirmed",
+     "cursor":"examine",
+     "gated_by":"vol5_wheel_files_diorama_entered",
+     "notes":"DORMANT: appears only after the player has entered the Wheel files diorama. The Lovers' pair lattice line ERICA&ANNA flips from implicit to confirmed — but the confirmation reads as the friendship that predates the case. Mrs. Romero entrusted the photo to Anna; Anna gave it to Erica because Erica is her friend. The case is built on a pair the deck never names as such. The Lovers' lattice acknowledges friendship as the deck's overlooked pair category. Fifth pair confirmed; only Anya&Elicia (which Elicia archives ambiguously) and the un-named-woman&Faith (which the deck refuses to render as a pair) remain implicit. The chapter is approaching its accounting."}
   ],
 
   "easter_eggs": [

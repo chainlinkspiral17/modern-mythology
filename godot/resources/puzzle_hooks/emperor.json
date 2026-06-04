@@ -160,6 +160,16 @@
       "cursor": "examine",
       "gated_by": "vol5_wheel_dante_audit_window",
       "notes": "DORMANT: appears only after the player has read Erica's marginalia on the 19:42 Dante callback row in the Wheel diorama. The ankh sceptre in Dante's hand now visibly carries a small carved tally mark every 22-25 degrees around its shaft. The 22-25 minute Dante callback pattern is rendered as the sceptre's geometric notation — the Emperor's authority operates at a regular rhythm, and the rhythm is the case's true timing. 'Wait until the audit clears' became canonical at 19:42 Feb 10; the audit cleared the wrong way three days later. The Emperor's chapter is the chapter that orders the wait, on the same shaft he holds in the painted scene."
+    },
+    {
+      "id": "emp_appointment_diorama_entry",
+      "shape": "rect_norm",
+      "rect": [0.06, 0.84, 0.20, 0.12],
+      "interact": "emperor.appointment.fetched",
+      "unlocks": "vol5_emperor_appointment_diorama_entered",
+      "cursor": "closer",
+      "opens_diorama": "emperor_appointment",
+      "notes": "ENTRY HOTSPOT: clicking the bottom-left of the painted scene (where Dante's bourbon glass sits on a small desk) dispatches daemon_scribe.04 to fetch Dante's leather appointment book (mon-fri, page 16-20 of 366). Each weekday is a page; clickable time slots reveal what's written. Wednesday is the focal page (the day of the painted Empress dinner). Slot 14: 'alma (private)' redacted by subject — daemon_scribe respects the not-writing. Forward seed for vol6 (Alma's identity)."
     }
   ],
 

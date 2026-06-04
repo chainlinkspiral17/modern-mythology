@@ -67,16 +67,19 @@ const INVENTORY_BAR_SCRIPT = preload("res://scenes/menu/InventoryBar.gd")
 # room rendered as an interactive ASCII layout with its own
 # ambient audio. Register additional dioramas here by id.
 const DIORAMA_SCRIPTS := {
-    "ward_c":           preload("res://scenes/menu/DeathWardDiorama.gd"),
-    "chariot_sms":      preload("res://scenes/menu/ChariotSmsDiorama.gd"),
-    "hierophant_booth": preload("res://scenes/menu/HierophantBoothDiorama.gd"),
-    "wheel_files":      preload("res://scenes/menu/WheelFilesDiorama.gd"),
-    "anya_tape":        preload("res://scenes/menu/PriestessTapeDiorama.gd"),
-    "hermit_tape":      preload("res://scenes/menu/HermitTapeDiorama.gd"),
-    "ensemble_tape":    preload("res://scenes/menu/JudgementTapeDiorama.gd"),
-    "tower_log":        preload("res://scenes/menu/TowerRenderLogDiorama.gd"),
-    "moon_sigils":      preload("res://scenes/menu/MoonSigilsDiorama.gd"),
-    "world_frog":       preload("res://scenes/menu/WorldFrogDiorama.gd"),
+    "ward_c":              preload("res://scenes/menu/DeathWardDiorama.gd"),
+    "chariot_sms":         preload("res://scenes/menu/ChariotSmsDiorama.gd"),
+    "hierophant_booth":    preload("res://scenes/menu/HierophantBoothDiorama.gd"),
+    "wheel_files":         preload("res://scenes/menu/WheelFilesDiorama.gd"),
+    "anya_tape":           preload("res://scenes/menu/PriestessTapeDiorama.gd"),
+    "hermit_tape":         preload("res://scenes/menu/HermitTapeDiorama.gd"),
+    "ensemble_tape":       preload("res://scenes/menu/JudgementTapeDiorama.gd"),
+    "tower_log":           preload("res://scenes/menu/TowerRenderLogDiorama.gd"),
+    "moon_sigils":         preload("res://scenes/menu/MoonSigilsDiorama.gd"),
+    "world_frog":          preload("res://scenes/menu/WorldFrogDiorama.gd"),
+    "emperor_appointment": preload("res://scenes/menu/EmperorAppointmentDiorama.gd"),
+    "hanged_voicemails":   preload("res://scenes/menu/HangedManVoicemailsDiorama.gd"),
+    "empress_aria_log":    preload("res://scenes/menu/EmpressAriaLogDiorama.gd"),
 }
 
 var hooks: Dictionary = {}
