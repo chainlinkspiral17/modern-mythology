@@ -78,7 +78,13 @@
      "interact":"judgement.lovers_company.recognized","unlocks":"vol5_judgement_lovers_company_seen",
      "cursor":"examine",
      "gated_by":"vol5_three_refused",
-     "notes":"DORMANT: appears only after the player has read the three-refused register on the Lovers card. A small upper-left annotation now reads 'XX — joins VI in the refused. JUSTICE moved.' The deck's relationship to its refusals is legible from XX's footer: Justice flipped, Judgement holds, Lovers holds. Two cards still face-down out of three; Judgement is in good refused company."}
+     "notes":"DORMANT: appears only after the player has read the three-refused register on the Lovers card. A small upper-left annotation now reads 'XX — joins VI in the refused. JUSTICE moved.' The deck's relationship to its refusals is legible from XX's footer: Justice flipped, Judgement holds, Lovers holds. Two cards still face-down out of three; Judgement is in good refused company."},
+    {"id":"jdg_ensemble_tape_entry","shape":"rect_norm","rect":[0.42,0.46,0.16,0.10],
+     "interact":"judgement.ensemble_tape.fetched",
+     "unlocks":"vol5_judgement_ensemble_diorama_entered",
+     "cursor":"closer",
+     "opens_diorama":"ensemble_tape",
+     "notes":"ENTRY HOTSPOT: clicking the empty center position dispatches daemon_listener.02 to fetch ENSEMBLE_01 (50:00, integrity 0.97 — refusal noted). The diorama renders the full recording as a scrubbable waveform; 15 event markers across 50 minutes. Five spoken lines (Frasier opens, Frank's trumpet, Maya quotes Quent, Dante names the dancer, the un-named figure on the river). Two Faith tail-thumps. Three Frog croaks (XXI oracle present at XX's edge). The chapter is the gathering held; daemon_listener.02's integrity report notes 'refusal noted' — the verdict-render is what the demon agreed not to surface."}
   ],
 
   "easter_eggs": [

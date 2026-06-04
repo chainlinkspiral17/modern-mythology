@@ -71,6 +71,9 @@ const DIORAMA_SCRIPTS := {
     "chariot_sms":      preload("res://scenes/menu/ChariotSmsDiorama.gd"),
     "hierophant_booth": preload("res://scenes/menu/HierophantBoothDiorama.gd"),
     "wheel_files":      preload("res://scenes/menu/WheelFilesDiorama.gd"),
+    "anya_tape":        preload("res://scenes/menu/PriestessTapeDiorama.gd"),
+    "hermit_tape":      preload("res://scenes/menu/HermitTapeDiorama.gd"),
+    "ensemble_tape":    preload("res://scenes/menu/JudgementTapeDiorama.gd"),
 }
 
 var hooks: Dictionary = {}
