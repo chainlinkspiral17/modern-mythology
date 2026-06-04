@@ -253,6 +253,16 @@
       "cursor": "closer",
       "opens_diorama": "chariot_sms",
       "notes": "ENTRY HOTSPOT: clicking the painted wreck centerpiece dispatches daemon_courier.07 to fetch Antonio's outbound SMS thread (06:42-07:11 CT) from ember.ash.rest.bbs. The diorama plays the 29 minutes between Father Quent's booth call and the scaffolding fall at 8x real-time speed; messages animate in at their timestamps; click any delivered message to surface its payload (cross-card unlocks for Empress, Wheel, Devil)."
+    },
+    {
+      "id": "cha_booth_call_origin",
+      "shape": "rect_norm",
+      "rect": [0.80, 0.90, 0.10, 0.04],
+      "interact": "chariot.booth_call.origin",
+      "unlocks": "vol5_chariot_booth_call_origin_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_hierophant_call_1_played",
+      "notes": "DORMANT: appears only after the player has played Call 1 (Antonio) in the Hierophant booth diorama. The BBS status panel's 'quentin call complete' line now visibly carries a small annotation: 'origin: st_judes.bbs vestibule booth — 06:35 CT — duration 70 s.' The call the panel logged is now sourced. The diagnostic surface that has been showing 'complete' from the start was complete TO Antonio; daemon_observer surfaced the source FROM Quent. The same call, two demons, two endpoints."
     }
   ],
 

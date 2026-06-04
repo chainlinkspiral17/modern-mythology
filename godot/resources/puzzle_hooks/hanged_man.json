@@ -116,7 +116,13 @@
      "interact":"hanged.simon.in_ward","unlocks":"vol5_hanged_simon_in_ward_seen",
      "cursor":"examine",
      "gated_by":"vol5_ward_c_simon_walkout_seen",
-     "notes":"DORMANT: appears only after the player has read the Bed 4 walkout report in the Death (XIII) Ward C diorama. The empty stool across the kitchen counter from Natalie now visibly has a hospital armband on it — Mr. S., signed out of Ward C at 03:55 AMA, four hours after Natalie sat down at this counter. He asked the nurse at 03:30 whether the candle had gone out; Natalie's voicemail-two said the candle was two-thirds at 00:12. The candle in two registers, the same candle, the deck has been routing them past each other for two chapters."}
+     "notes":"DORMANT: appears only after the player has read the Bed 4 walkout report in the Death (XIII) Ward C diorama. The empty stool across the kitchen counter from Natalie now visibly has a hospital armband on it — Mr. S., signed out of Ward C at 03:55 AMA, four hours after Natalie sat down at this counter. He asked the nurse at 03:30 whether the candle had gone out; Natalie's voicemail-two said the candle was two-thirds at 00:12. The candle in two registers, the same candle, the deck has been routing them past each other for two chapters."},
+    {"id":"hng_call_origin_st_judes","shape":"rect_norm","rect":[0.74,0.56,0.20,0.04],
+     "interact":"hanged.call_origin.st_judes",
+     "unlocks":"vol5_hanged_call_origin_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_hierophant_call_2_played",
+     "notes":"DORMANT: appears only after the player has played Call 2 (no answer) in the Hierophant booth diorama. The 23:47 PT incoming-decline line on Natalie's phone log now visibly carries an annotation in fine ink: 'origin: st_judes.bbs vestibule booth — 06:38 CT, no zone-shifted note left.' The unknown caller was Father Quent. Natalie did not answer because she did not recognize the number; the church number she would not have recognized anyway. The booth-call chain V → XII closes from both sides."}
   ],
 
   "easter_eggs": [
