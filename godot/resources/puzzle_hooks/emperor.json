@@ -172,6 +172,16 @@
       "notes": "DORMANT: appears only after the player has entered the Magician's model city diorama (Frasier's predictive scale model). The painted throne-room wall behind Dante now visibly carries a framed painting that wasn't legible at first read: a waiter in a white button-up shirt, tie, and apron, holding a round drink tray. The waiter is rendered as a COSMIC BEING — body composed of star-field, the tray reflecting a galaxy spiral, the apron threaded with constellation outlines. The painting is signed in the lower-right corner: 'F. Temple. the day I quit. (or was fired — your call.)' Dante kept the painting. The disagreement is the relationship. Frasier maintains he quit; Dante would say he fired him. Both accounts have been preserved by both parties for years. The painting hangs in the office of the man who would say the painter was dismissed. The deck's class-vision-statement: the lowest-status worker in the family's employ is rendered as the universe's largest, and the employer who took offence at the rendering keeps the painting on his wall. The chapter's authority register is also the chapter of preserving a critique. → wakes content on Magician (I) and Fool (0)."
     },
     {
+      "id": "emp_painting_handover_remembered",
+      "shape": "rect_norm",
+      "rect": [0.74, 0.30, 0.12, 0.16],
+      "interact": "emperor.painting_handover.remembered",
+      "unlocks": "vol5_emperor_painting_handover_remembered_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_painting_handover_diorama_entered",
+      "notes": "DORMANT: appears only after the player has entered the Frasier+Dante painting-handover diorama. The painting on the throne-room wall now visibly carries a small additional detail in the lower-left corner of the frame — the original picture-hardware nail, slightly bent. Dante hung the painting himself, alone, in eight minutes of silence on the Tuesday afternoon. The bent nail is the chapter's quietest record of the act. He has not replaced the hardware in seven years. The Emperor's authority is partly the authority of a man who decided where the painting would hang and never moved it. Vol6 forward seed: when Alberto retrieves the painting from this wall after Dante is in Bed 6, the bent nail comes with him to the storage unit; the storage unit's inside-door bulb hangs on the same hardware."
+    },
+    {
       "id": "emp_unmarked_photo_facing_in",
       "shape": "rect_norm",
       "rect": [0.62, 0.30, 0.06, 0.10],

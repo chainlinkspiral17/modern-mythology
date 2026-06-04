@@ -183,6 +183,17 @@
       "cursor": "examine",
       "gated_by": "vol5_judgement_magician_mirror_seen",
       "notes": "DORMANT: appears only after the player has recognized the multiplied gesture on the Judgement card. Frasier's solo 'as above, so below' posture now visibly shows a faint chorus of other arms behind him — the rest of the ensemble pre-rendered as ghost-figures in his rust girders. I ↔ XX mirror reads both directions: Judgement multiplied the gesture; Magician was already implying it. The chapter at I knew the ensemble at XX was coming."
+    },
+    {
+      "id": "mag_painting_handover_diorama_entry",
+      "shape": "rect_norm",
+      "rect": [0.08, 0.18, 0.14, 0.18],
+      "interact": "magician.painting_handover.fetched",
+      "unlocks": "vol5_painting_handover_diorama_entered",
+      "cursor": "closer",
+      "gated_by": "vol5_magician_painting_acknowledged",
+      "opens_diorama": "frasier_dante_painting",
+      "notes": "ENTRY HOTSPOT: appears after the graphite study has been examined. Clicking the study dispatches demon_archivist.01 to retrieve the recorded conversation from seven years prior — Dante's office, Tuesday afternoon, the painting handed across the desk. demon_archivist.04 (Dante's office endpoint) co-holds the recording; the substrate has been waiting seven years for an authorized listener. The diorama plays the conversation in full (10:18) with eight payload markers: the painting handed over, Dante calling John 'a good waiter,' Dante choosing 'fired,' Frasier choosing 'quit,' the commitment to hang it here, the envelope-not-for-painting distinction, Frasier's 'I painted it because I saw him,' the back-stairs exit, and Dante hanging the painting alone in eight minutes of post-Frasier silence. The deck's most preserved object passing from maker to keeper, recorded by both endpoints, retrieved (in vol6) by Alberto."
     }
   ],
 

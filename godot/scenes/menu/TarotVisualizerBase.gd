@@ -89,6 +89,7 @@ const DIORAMA_SCRIPTS := {
     "alberto_marta_call":   preload("res://scenes/menu/AlbertoMartaCallDiorama.gd"),
     "maya_y_parking":       preload("res://scenes/menu/MayaYParkingLotDiorama.gd"),
     "star_offering":        preload("res://scenes/menu/StarAnnualOfferingDiorama.gd"),
+    "frasier_dante_painting": preload("res://scenes/menu/FrasierDantePaintingDiorama.gd"),
 }
 
 var hooks: Dictionary = {}
