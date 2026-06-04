@@ -145,6 +145,16 @@
       "notes": "DORMANT: appears only after the Chariot SMS thread surfaces the 06:55 breakfast witness. The fleur-de-lis tablecloth now visibly shows a small faint texture in the lower corner — the texture of D'Ambrosio's diner formica, where Nicola was sitting earlier this same morning. Antonio sat next to Erica Campbell at the same diner; Nicola did not eat. The Empress's dinner-table chapter is a chapter Nicola is having AFTER a breakfast nobody else knows she didn't eat at. Aria's anxiety-spike baseline was set hours before the painted scene began."
     },
     {
+      "id": "ems_nicola_family_crest",
+      "shape": "rect_norm",
+      "rect": [0.10, 0.74, 0.10, 0.08],
+      "interact": "empress.nicola.family_crest",
+      "unlocks": "vol5_empress_nicola_family_crest_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_chariot_antonio_is_son_seen",
+      "notes": "DORMANT: appears only after Antonio-as-son is recognized. The fleur-de-lis tablecloth now visibly carries a small embroidered applique in the lower-left corner — a different family crest beneath the fleur. Nicola's family. The crest is not from a noble line; it is a working-family crest from a village that supplied the D'Ambrosios with seasonal labor for generations. Nicola married Antonio because the marriage was good for her people's standing with the family. Her anxiety-spike at the painted dinner is partly the anxiety of a woman who watched her family bow to the people whose son she now sleeps with. Aria's CONFINED status reads in this register as the confinement of a class transition that did not include consent."
+    },
+    {
       "id": "ems_succession_partner",
       "shape": "rect_norm",
       "rect": [0.34, 0.16, 0.16, 0.12],

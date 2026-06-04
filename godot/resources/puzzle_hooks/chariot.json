@@ -245,6 +245,16 @@
       "notes": "DORMANT: appears only after the Emperor's two-mirror-faces hotspot fires (the two upside-down successor faces resolve as Antonio and Alberto). The painted wreck centerpiece now visibly carries a small gold band on Antonio's hand — a signet ring, family crest, the kind only a son of an empire would wear unaware. The_charioteer DOA is Dante's elder son DOA. The chapter at VII is the chapter where the empire loses its appointed heir on a Monday morning to a scaffolding decision Father Quent reversed on a Sunday. The Wheel chapter at X is the chapter where his brother inherits a call log instead of an empire. IV → VII → X is the inheritance spine of vol5."
     },
     {
+      "id": "cha_antonio_gave_loan",
+      "shape": "rect_norm",
+      "rect": [0.84, 0.78, 0.14, 0.06],
+      "interact": "chariot.antonio.gave_loan",
+      "unlocks": "vol5_chariot_antonio_gave_loan_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_devil_middle_stool_seat_resolved",
+      "notes": "DORMANT: appears only after the Devil's middle-stool-is-Antonio's hotspot fires. The BBS status panel gains a new sysop entry: 'loan_account: daigles_bar.bbs — no-interest, 0% APR, principal outstanding $24,300 / paid forgiven on borrower hardship 19 Feb 22:14 (creditor DOA earlier same week).' Antonio personally floated Daigle the no-interest startup loan for the bar. The loan was not from Dante; it was from Antonio. The loan was active when Antonio died; the principal outstanding was forgiven by Antonio's estate (Alberto, presumably, signing the forgiveness) on the night Daigle would not pick up the brother's calls. Daigle's UNCOMFORTABLE INSIDE includes a debt-free bar. The chapter's chain V → VII → XV is also a chain of money: Quent sent Antonio, Antonio's loan was forgiven, Daigle could not pick up. Three institutional men exchanging a friend through a bar's ledger."
+    },
+    {
       "id": "cha_alberto_brother_failure",
       "shape": "rect_norm",
       "rect": [0.72, 0.86, 0.14, 0.10],

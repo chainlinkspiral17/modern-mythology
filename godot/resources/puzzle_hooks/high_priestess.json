@@ -193,6 +193,16 @@
       "notes": "DORMANT: appears only after the player has read the 23 Feb unattributed-caller row in the Wheel diorama (the four-second call Alberto answered, listened to, hung up on, and refused to write down). One of Elicia's Anya tapes now visibly has a paper sleeve replaced — the original sleeve is gone; the replacement is unlabeled. daemon_archivist.10's integrity report on the Wheel diorama was 0.99 (1 row redacted); daemon_listener.02's archive shows the corresponding redaction here. Two demons agree that one event in the deck's interior is structurally withheld. The 23 Feb caller is not in the deck. The deck knows this on purpose."
     },
     {
+      "id": "pri_former_archivist",
+      "shape": "rect_norm",
+      "rect": [0.88, 0.78, 0.08, 0.10],
+      "interact": "priestess.former_archivist.recognized",
+      "unlocks": "vol5_priestess_former_archivist_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_wheel_alberto_is_son_seen",
+      "notes": "DORMANT: appears only after the Wheel's Alberto-is-son hotspot fires. The compass badge ('MODERN MYTHOLOGY · NARRATIVE STRUCTURE COMPASS (HIGH PRIESTESS Node)') now visibly carries a faint older stamp underneath: 'D'AMBROSIO HOUSEHOLD ARCHIVE — RECORDS OFFICE — 1990s.' Elicia worked for the family's records office when she was younger. She left when she realized what she was archiving. Her current practice — the Anya tapes, the HERMIT_01, the journal annotating every chapter — is a parallel archive: she keeps records the family cannot reach. The compass-as-meta-system overlay is also her former office stamp recontextualized. Two systems on one badge: institutional and personal."
+    },
+    {
       "id": "pri_anya_tape_diorama_entry",
       "shape": "rect_norm",
       "rect": [0.76, 0.13, 0.10, 0.14],
