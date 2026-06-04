@@ -23,14 +23,14 @@ up) for series-level conceits and recurring elements.
 | XI  | JUSTICE         | `11_justice.md`         | 25 min  | DRAFTED  |
 | XII | THE HANGED MAN  | `12_hanged_man.md`      | 28 min  | DRAFTED  |
 | XIII| DEATH           | `13_death.md`           | 23 min  | DRAFTED  |
-| XIV | TEMPERANCE      | `14_temperance.md`      | —       | pending  |
+| XIV | TEMPERANCE      | `14_temperance.md`      | 21 min  | DRAFTED  |
 | XV  | THE DEVIL       | `15_devil.md`           | 30 min  | DRAFTED  |
 | XVI | THE TOWER       | `16_tower.md`           | 33 min  | DRAFTED  |
 | XVII| THE STAR        | `17_star.md`            | 17 min  | DRAFTED  |
 | XVIII| THE MOON       | `18_moon.md`            | 29 min  | DRAFTED  |
-| XIX | THE SUN         | `19_sun.md`             | —       | pending  |
+| XIX | THE SUN         | `19_sun.md`             | 22 min  | DRAFTED  |
 | XX  | JUDGEMENT       | `20_judgement.md`       | 26 min  | DRAFTED  |
-| XXI | THE WORLD       | `21_world.md`           | —       | pending  |
+| XXI | THE WORLD       | `21_world.md`           | 30 min  | DRAFTED  |
 
 ## script format
 
