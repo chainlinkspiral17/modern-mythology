@@ -59,6 +59,15 @@
       "encoding_hint": "DORMANT until you've read the demoscene module label on the Fool card. The two scenes share the same render engine — the diner's classified-ad layout and Frasier's CRT are two windows on the same broadcast. Once you've seen it on one card, it's been there on the other all along.",
       "reveals": "vol5_demoscene_pair_seen",
       "cross_references": ["fool.json::fool_demoscene_vibe"]
+    },
+    {
+      "id": "mag_lemniscate_worn_echo",
+      "kind": "dormant_cross_card",
+      "text": "a tiny lion-tamer figure in the model city, infinity sigil floating above her",
+      "anchor_norm": [0.57, 0.15],
+      "encoding_hint": "DORMANT until the Strength card's lemniscate halo is recognized. Frasier draws the sigil; Strength wears it; the model city he has been wiring shows her wearing it back. The Magician's diorama renders the future of his own inscription — I → VIII is the deck's longest reach across one symbol. The classical 'as above, so below' is here as 'as inscribed, so worn.'",
+      "reveals": "vol5_magician_lemniscate_worn_echo_seen",
+      "cross_references": ["strength.json::str_lemniscate_halo", "strength.json::str_lemniscate_magician_echo"]
     }
   ],
 
@@ -124,6 +133,16 @@
       "requires_item": "fool_bindle",
       "on_used_unlocks": "vol5_bindle_county_road_match",
       "notes": "with the bindle armed, the partial 'COUNTY ROAD' label on the paint can completes against a hand-drawn map John has been carrying — the two halves of the route finally meet."
+    },
+    {
+      "id": "mag_lemniscate_worn_echo",
+      "shape": "rect_norm",
+      "rect": [0.50, 0.10, 0.14, 0.10],
+      "interact": "magician.lemniscate.worn_echo",
+      "unlocks": "vol5_magician_lemniscate_worn_echo_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_strength_magician_lemniscate_seen",
+      "notes": "DORMANT: appears only after the player has recognized the lemniscate halo on the Strength card. The infinity Frasier traces is now visibly being WORN by a figure in the distant model city — a tiny lion-tamer on the diorama, sigil floating above. The Magician drew the glyph; Strength wears it; the Magician can now see her wearing it. The deck closes the inscription loop. I → VIII is the deck's longest reach across one symbol."
     }
   ],
 

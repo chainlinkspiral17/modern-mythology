@@ -179,6 +179,15 @@
       "encoding_hint": "DORMANT until you've read the Chariot's sysop handle. The diner's BBS header has been the project's whole meta-system since the Fool's first frame. Now it carries an obituary. ACTIVE NODES dropped from 64 to 63 — the node count was a chapter count, the chapter count was a person count, the person count is now one short. The Fool wipes his counter inside a network that has been counting its dead all night.",
       "reveals": "vol5_fool_charioteer_scroll_seen",
       "cross_references": ["chariot.json::cha_charioteer", "chariot.json::cha_status_doa"]
+    },
+    {
+      "id": "fool_faith_iris_match",
+      "kind": "dormant_cross_card",
+      "text": "Faith's iris under the counter — same calm yellow ring as the lion's eye on Strength VIII",
+      "anchor_norm": [0.28, 0.77],
+      "encoding_hint": "DORMANT until the player has recognized Faith's lineage on the Strength card. Three sizes, one creature, one eye: the dog at the Fool's feet, the sentinel at the Chariot wreck, the beast on the Strength riverbank. The whole arc is now legible in her sleeping face on this card — she's already the lion at 3:47 AM, just at the scale that fits the diner. The deck's longest-running animal is in the Fool's frame from the start.",
+      "reveals": "vol5_fool_faith_iris_seen",
+      "cross_references": ["strength.json::str_faith_lion_pair", "chariot.json::cha_dog_faith_witness"]
     }
   ],
 
@@ -249,7 +258,12 @@
      "interact":"fool.bbs_banner.read","unlocks":"vol5_fool_charioteer_scroll_seen",
      "cursor":"examine",
      "gated_by":"vol5_charioteer_handle",
-     "notes":"DORMANT: appears only after the player has read the sysop handle on the Chariot card. The RUST_CODE.BBS / GRAUSTARK_FRONTIER header banner now scrolls a second line at boot: 'sysop ember.ash.rest.bbs: the_charioteer (D.O.A.) — ACTIVE NODES: 63.' The active node count drops by one. The diner's BBS already knows the Chariot crashed; John is wiping a counter inside a network that has been counting its dead all night."}
+     "notes":"DORMANT: appears only after the player has read the sysop handle on the Chariot card. The RUST_CODE.BBS / GRAUSTARK_FRONTIER header banner now scrolls a second line at boot: 'sysop ember.ash.rest.bbs: the_charioteer (D.O.A.) — ACTIVE NODES: 63.' The active node count drops by one. The diner's BBS already knows the Chariot crashed; John is wiping a counter inside a network that has been counting its dead all night."},
+    {"id":"fool_faith_iris_match","shape":"rect_norm","rect":[0.24,0.74,0.08,0.06],
+     "interact":"fool.faith.iris_seen","unlocks":"vol5_fool_faith_iris_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_strength_faith_lineage",
+     "notes":"DORMANT: appears only after the player has recognized Faith's lineage on the Strength card. The dog's iris under the counter is now drawn with the same calm yellow ring as the lion's. The Fool's companion is the Strength card's beast at the diner-table scale — three sizes, one creature, one eye. Faith's whole arc visible in her sleeping face."}
   ],
 
   "easter_eggs": [
