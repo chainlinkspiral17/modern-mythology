@@ -78,7 +78,12 @@
      "interact":"hermit.staff.recognized","unlocks":"vol5_hermit_staff_crozier_recognized",
      "cursor":"examine",
      "gated_by":"vol5_hierophant_emperor_authority_seen",
-     "notes":"DORMANT: appears only after the player has recognized that the bishop's crozier IS Dante's staff on the Hierophant card. The Hermit's hooked staff is the third position of the same wood — civil staff (Emperor), religious crozier (Hierophant), wandering crook (Hermit). The Hermit's authority is over himself; the staff is the same."}
+     "notes":"DORMANT: appears only after the player has recognized that the bishop's crozier IS Dante's staff on the Hierophant card. The Hermit's hooked staff is the third position of the same wood — civil staff (Emperor), religious crozier (Hierophant), wandering crook (Hermit). The Hermit's authority is over himself; the staff is the same."},
+    {"id":"her_hanged_shadow_confirmed","shape":"rect_norm","rect":[0.42,0.70,0.16,0.10],
+     "interact":"hermit.hanged_shadow.confirmed","unlocks":"vol5_hermit_hanged_shadow_confirmed",
+     "cursor":"examine",
+     "gated_by":"vol5_hanged_hermit_mirror_seen",
+     "notes":"DORMANT: appears only after the player has observed Natalie's downward shadow on the Hanged Man card. The Hermit's upward shadow is now visibly the inverse of Natalie's downward one — same diffusion, same proportions, mirror axis. IX ↔ XII completes itself once both shadows are read; the deck's gentlest opposition closes."}
   ],
 
   "easter_eggs": [

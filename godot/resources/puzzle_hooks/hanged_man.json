@@ -1,0 +1,139 @@
+{
+  "asset": "assets/gallery/hanged_man.png",
+  "scene_id": "vol5_ch12_hanged_man",
+  "character": "natalie",
+  "arcana": "XII - THE HANGED MAN",
+  "subtitle": "Gravity is Optional After Midnight",
+  "palette": "candle_amber_shadow_navy",
+  "location_text": "Simon's Apartment, LA — 1:47 AM. Natalie's vigil.",
+
+  "ciphers": [
+    {
+      "id": "hng_vigil_position",
+      "kind": "scene_centerpiece",
+      "text": "Natalie at the kitchen counter — not hanging, but suspended in the same vertical the card's tradition demands",
+      "anchor_norm": [0.50, 0.50],
+      "encoding_hint": "the classical Hanged Man is suspended by one foot — the forced posture of surrender. Modern Mythology's Hanged Man is Natalie at 1:47 AM in someone else's apartment — the same suspension by different gravity. The chapter's premise is that midnight has already passed and the body has not chosen what comes next. The Hermit (IX) chose this stillness; Natalie was put in it.",
+      "reveals": "vol5_hanged_vigil_seen"
+    },
+    {
+      "id": "hng_maroon_deck",
+      "kind": "named_object",
+      "text": "the maroon-backed tarot deck on the counter — face-down, full deck, cut once",
+      "anchor_norm": [0.32, 0.62],
+      "encoding_hint": "Natalie carries the deck. The cut means she has drawn but not turned. The maroon back is the deck's only red — Lovers' tarnished gold goes red here. The deck-within-the-deck is the chapter's mirror: a Hanged Man card looks at her looking at a Hanged Man card.",
+      "reveals": "vol5_hanged_deck_seen"
+    },
+    {
+      "id": "hng_single_wick_candle",
+      "kind": "named_object",
+      "text": "a beeswax candle — single wick, lit, burned to about half",
+      "anchor_norm": [0.46, 0.42],
+      "encoding_hint": "ONE wick: the inventory specified 'Single Wick — Active.' A single wick is the Hermit's lantern brought indoors. The candle is the chapter's clock — the wax line marks how long she has waited. Half-burned means the chapter started before midnight and the player arrived in the middle.",
+      "reveals": "vol5_hanged_candle_seen",
+      "cross_references": ["hermit.json::her_lantern_alone"]
+    },
+    {
+      "id": "hng_notebook",
+      "kind": "named_object",
+      "text": "Natalie's notebook — open to a page of sigils, none finished",
+      "anchor_norm": [0.18, 0.58],
+      "encoding_hint": "the notebook is Natalie's working journal. The sigils she draws here become legible on the Moon card (XVIII) — same hand, different chapter. XII → XVIII is the Hanged Man's preparation for the Moon's reading; she draws unfinished sigils now, will trace them through static later.",
+      "reveals": "vol5_hanged_notebook_seen",
+      "cross_references": ["moon.json (XVIII, Natalie's sigils in static)"]
+    },
+    {
+      "id": "hng_phone_log",
+      "kind": "ledger",
+      "text_lines": [
+        "23:14 — outgoing — Simon (no answer)",
+        "23:47 — incoming — unknown number (declined)",
+        "00:12 — outgoing — Simon (no answer)",
+        "00:58 — outgoing — Simon (no answer)"
+      ],
+      "anchor_norm": [0.78, 0.62],
+      "encoding_hint": "the phone log is the chapter's chronology. Natalie has been calling. Simon has not answered. The incoming unknown number at 23:47 is left as a hook — possibly Quentin's booth call from the Hierophant card, possibly Elicia, possibly the deck itself. The Hanged Man chapter is what happens when someone refuses to pick up.",
+      "reveals": "vol5_hanged_phone_log_seen"
+    },
+    {
+      "id": "hng_apartment_key",
+      "kind": "carried_object",
+      "text": "an apartment key on a ring with a small narwhal charm",
+      "anchor_norm": [0.62, 0.78],
+      "encoding_hint": "the key is Natalie's permission to be here; the narwhal charm is the water-fauna through-line. The Hanged Man chapter's narwhal is on a keyring — the smallest scale the creature appears at. From Justice's mug (XI) to the Hanged Man's keychain (XII) the narwhal shrinks; from XIII Death onward it disappears.",
+      "reveals": "vol5_hanged_narwhal_keychain",
+      "cross_references": ["justice.json::jus_narwhal_mug"]
+    },
+    {
+      "id": "hng_hermit_mirror",
+      "kind": "mirror_pair",
+      "text": "Natalie's shadow falls downward in candlelight — the Hermit's fell upward",
+      "anchor_norm": [0.50, 0.84],
+      "encoding_hint": "IX ↔ XII mirror: same vertical, opposite direction. Hermit's shadow climbed; Hanged Man's falls. The deck's gentlest opposition is rendered as two figures alone at the same hour with the same dark, lit differently — one chose, one was chosen for. Natalie's vigil at 1:47 AM is the Hermit's solitude with the choice removed.",
+      "reveals": "vol5_hanged_hermit_mirror_seen",
+      "cross_references": ["hermit.json::her_hanged_man_pre_echo"]
+    }
+  ],
+
+  "hotspots": [
+    {"id":"hng_vigil","shape":"rect_norm","rect":[0.42,0.40,0.16,0.40],
+     "interact":"hanged.vigil.observed","unlocks":"vol5_hanged_vigil_seen",
+     "cursor":"closer"},
+    {"id":"hng_deck","shape":"rect_norm","rect":[0.28,0.58,0.12,0.10],
+     "interact":"hanged.deck.examined","unlocks":"vol5_hanged_deck_seen",
+     "cursor":"take"},
+    {"id":"hng_candle","shape":"rect_norm","rect":[0.42,0.36,0.08,0.14],
+     "interact":"hanged.candle.examined","unlocks":"vol5_hanged_candle_seen",
+     "cursor":"examine"},
+    {"id":"hng_notebook","shape":"rect_norm","rect":[0.14,0.54,0.12,0.16],
+     "interact":"hanged.notebook.read","unlocks":"vol5_hanged_notebook_seen",
+     "cursor":"closer"},
+    {"id":"hng_phone_log","shape":"rect_norm","rect":[0.74,0.56,0.20,0.18],
+     "interact":"hanged.phone_log.read","unlocks":"vol5_hanged_phone_log_seen",
+     "cursor":"closer"},
+    {"id":"hng_key","shape":"rect_norm","rect":[0.58,0.74,0.10,0.10],
+     "interact":"hanged.key.examined","unlocks":"vol5_hanged_narwhal_keychain",
+     "cursor":"take"},
+    {"id":"hng_shadow_downward","shape":"rect_norm","rect":[0.42,0.78,0.16,0.16],
+     "interact":"hanged.shadow.observed","unlocks":"vol5_hanged_hermit_mirror_seen",
+     "cursor":"examine"},
+    {"id":"hng_unknown_number","shape":"rect_norm","rect":[0.74,0.58,0.20,0.04],
+     "interact":"hanged.unknown_number.recognized","unlocks":"vol5_hanged_unknown_number_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_chariot_quentin_voicemail_heard",
+     "notes":"DORMANT: appears only after the player has played Quentin's voicemail on the Chariot. The 23:47 incoming-unknown line on Natalie's phone log is now annotated: 'origin: ember.ash.rest.bbs booth_caller.' Quentin called Natalie too. The St. Jude's booth dialed in three directions that night: Antonio (the Charioteer) picked up; Natalie did not; the third recipient is still unaccounted for. V → VII → XII is the deck's call chain; Natalie's refusal to answer is the Hanged Man chapter."},
+    {"id":"hng_hermit_mirror_marker","shape":"rect_norm","rect":[0.44,0.82,0.12,0.04],
+     "interact":"hanged.hermit_mirror.recognized","unlocks":"vol5_hanged_hermit_mirror_confirmed",
+     "cursor":"examine",
+     "gated_by":"vol5_hermit_hanged_mirror_seen",
+     "notes":"DORMANT: appears only after the player has noticed the upward-falling shadow on the Hermit card. The downward shadow is now visibly the Hermit's shadow inverted — same proportions, same diffusion, opposite direction. The IX ↔ XII mirror is the deck's gentlest opposition; the two cards complete each other once both shadows are seen."}
+  ],
+
+  "easter_eggs": [
+    "Natalie's vigil is the Hermit's solitude with the choice removed. IX → XII is the deck's spine on the topic of being alone — chosen, then assigned.",
+    "the narwhal through-line scales down: mug (XI) → keychain (XII) → absent (XIII onward). Faith carries the dog through dry stations, the narwhal carries through wet, and both stop at Death.",
+    "the maroon-backed deck is the only red in the deck's color tradition; Lovers' tarnished gold goes red here. Natalie carries a tarot deck inside the deck itself — the chapter's recursion is the smaller deck's cut card.",
+    "the unknown-number call at 23:47 is the third branch of Quentin's booth-call chain. Antonio picked up and died; Natalie didn't pick up and waits; the third recipient hasn't been named yet.",
+    "the Hanged Man chapter is also the chapter where Natalie's sigil-drawing begins — the same hand will read sigils in static on the Moon card (XVIII). XII prepares XVIII; the deck's longest single-character thread runs through these two cards."
+  ],
+
+  "links_forward": [
+    "vol5_hanged_vigil_seen",
+    "vol5_hanged_deck_seen",
+    "vol5_hanged_candle_seen",
+    "vol5_hanged_notebook_seen",
+    "vol5_hanged_phone_log_seen",
+    "vol5_hanged_narwhal_keychain",
+    "vol5_hanged_hermit_mirror_seen",
+    "vol5_hanged_unknown_number_seen",
+    "vol5_hanged_hermit_mirror_confirmed"
+  ],
+
+  "cross_references": {
+    "hermit_mirror_with": "hermit.json::her_hanged_man_pre_echo",
+    "candle_inherits_from_lantern": "hermit.json::her_lantern_alone",
+    "narwhal_lineage_with": "justice.json::jus_narwhal_mug",
+    "sigil_continuation_in": "moon.json (XVIII — same hand)",
+    "phone_chain_with": "chariot.json::cha_quentin_voicemail, hierophant.json::hie_banner"
+  }
+}

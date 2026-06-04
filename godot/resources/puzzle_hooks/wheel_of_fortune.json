@@ -1,0 +1,41 @@
+{
+  "asset": "assets/gallery/wheel_of_fortune.png",
+  "scene_id": "vol5_ch10_wheel",
+  "character": "—",
+  "arcana": "X - WHEEL OF FORTUNE",
+  "subtitle": "The Card That Hasn't Been Drawn Yet",
+  "palette": "uncast",
+  "format_note": "STUB: this card has no painted art in this build. Hooks file reserves the unlock keys and cross-references so the network around it stays consistent; full content arrives when the art does.",
+
+  "ciphers": [
+    {
+      "id": "whl_uncast_placeholder",
+      "kind": "absence_centerpiece",
+      "text": "the Wheel has not turned yet — chapter X exists as a position the lattice expects but the deck has not filled",
+      "anchor_norm": [0.50, 0.50],
+      "encoding_hint": "X sits between IX Hermit (chosen solitude) and XI Justice (one of the THREE REFUSED). Tarot tradition: fate, the turn, the cycle that does not consult. Modern Mythology has not painted the turning yet — but every chapter from VIII onward has acted as if the wheel were already in motion. The placeholder card is the deck admitting that motion without yet rendering it.",
+      "reveals": "vol5_wheel_placeholder_seen"
+    }
+  ],
+
+  "hotspots": [
+    {"id":"whl_placeholder","shape":"rect_norm","rect":[0.30,0.30,0.40,0.40],
+     "interact":"wheel.placeholder.acknowledged","unlocks":"vol5_wheel_placeholder_seen",
+     "cursor":"closer"}
+  ],
+
+  "easter_eggs": [
+    "the Wheel is the only chapter in vol5 not yet painted. Every other major card has art; X stays open. The user has not generated it. The deck is conscious of the gap.",
+    "X sits between two cards about stillness — Hermit's chosen, Justice's refused. The Wheel is the cycle between two refusals to participate; that the Wheel itself is absent in this build is the deck's truest reading of fate.",
+    "X is also one of the four 'card without a face' positions in the deck: VI (Lovers, face-down), X (Wheel, not painted), XI (Justice, refused), XX (Judgement, refused). Four refusals to render — close to a quartile of the Majors."
+  ],
+
+  "links_forward": [
+    "vol5_wheel_placeholder_seen"
+  ],
+
+  "cross_references": {
+    "between_chosen_and_refused": "hermit.json (IX, chosen solitude) and justice.json (XI, refused reading)",
+    "uncast_kin": "lovers.json::lov_uncast_kin (VI / XI / XX all refused or unrendered)"
+  }
+}

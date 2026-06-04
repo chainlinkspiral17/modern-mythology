@@ -223,6 +223,16 @@
       "cursor": "examine",
       "gated_by": "vol5_pair_lattice_seen",
       "notes": "DORMANT: appears only after the player has read the Lovers' pair lattice on VI. The sysop line 'the_charioteer (D.O.A.)' gains a second line: '↔ booth_caller (Quentin)' — the QUENTIN & ANTONIO pair from the Lovers lattice is confirmed by the BBS itself. The Lovers card refused to consummate the reading; the Chariot's diagnostic does it anyway, posthumously. Second entry in the pair lattice flips from speculation to confirmed."
+    },
+    {
+      "id": "cha_third_recipient_natalie",
+      "shape": "rect_norm",
+      "rect": [0.66, 0.96, 0.30, 0.04],
+      "interact": "chariot.third_recipient.named",
+      "unlocks": "vol5_chariot_third_recipient_named",
+      "cursor": "examine",
+      "gated_by": "vol5_hanged_unknown_number_seen",
+      "notes": "DORMANT: appears only after the player has recognized the unknown-number 23:47 line on the Hanged Man card. The BBS status panel gains a third sysop entry: 'natalie@simons_apt (NO ANSWER).' The booth-call chain V → VII → XII is now legible from the wreck site: Quentin called three numbers, Antonio picked up and died, Natalie did not pick up and waits. The deck's call chain closes when the Charioteer card admits its caller was reaching for someone who didn't come."
     }
   ],
 

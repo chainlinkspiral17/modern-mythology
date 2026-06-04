@@ -126,7 +126,12 @@
      "unlocks":"vol5_lovers_pair_quentin_antonio_lovers_seen",
      "cursor":"examine",
      "gated_by":"vol5_chariot_quentin_voicemail_heard",
-     "notes":"DORMANT: appears only after the player has played Quentin's voicemail on the Chariot card. Second entry in the implicit-pair lattice — QUENTIN & ANTONIO — flips from speculation to confirmed. The Lovers card refused to render the pair; the Chariot card confirms it as a system fact (sysop ↔ booth_caller). The Lovers register the confirmation grudgingly: the line lights up, the pattern darkens around it, the card still doesn't flip."}
+     "notes":"DORMANT: appears only after the player has played Quentin's voicemail on the Chariot card. Second entry in the implicit-pair lattice — QUENTIN & ANTONIO — flips from speculation to confirmed. The Lovers card refused to render the pair; the Chariot card confirms it as a system fact (sysop ↔ booth_caller). The Lovers register the confirmation grudgingly: the line lights up, the pattern darkens around it, the card still doesn't flip."},
+    {"id":"lov_justice_flipped_anyway","shape":"rect_norm","rect":[0.40, 0.10, 0.20, 0.05],
+     "interact":"lovers.justice.flipped_anyway","unlocks":"vol5_lovers_justice_flipped_anyway_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_justice_lovers_refusal_seen",
+     "notes":"DORMANT: appears only after the player has noticed the Priestess journal annotation on the Justice card. The lov_uncast_kin register reorders itself: VI THE LOVERS stays refused, XX JUDGEMENT stays refused, but XI JUSTICE now reads 'refused → flipped anyway → dual-POV.' The three refused cards are no longer equal. Justice's renumbering and dual-POV split made it the only refused card that rendered itself; Lovers and Judgement still hold the line. The deck's relationship to its own refusals becomes legible."}
   ],
 
   "easter_eggs": [
