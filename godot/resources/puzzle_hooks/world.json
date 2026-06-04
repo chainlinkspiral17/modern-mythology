@@ -105,7 +105,13 @@
      "interact":"world.wreath_ensemble.read","unlocks":"vol5_world_wreath_ensemble_seen",
      "cursor":"examine",
      "gated_by":"vol5_judgement_ensemble_seen",
-     "notes":"DORMANT: appears only after the player has read the ensemble on the Judgement card. The wreath's center, empty at first read, now visibly contains the negative space of the Judgement card's ensemble — every figure's shape as a hole in the laurel. XX → XXI: Judgement gathered the cast and refused to render the verdict; World closes the wreath around their absence. The dancer at the World's center is the gathered cast withheld. Two refusals composing one closure."}
+     "notes":"DORMANT: appears only after the player has read the ensemble on the Judgement card. The wreath's center, empty at first read, now visibly contains the negative space of the Judgement card's ensemble — every figure's shape as a hole in the laurel. XX → XXI: Judgement gathered the cast and refused to render the verdict; World closes the wreath around their absence. The dancer at the World's center is the gathered cast withheld. Two refusals composing one closure."},
+    {"id":"wld_frog_diorama_entry","shape":"rect_norm","rect":[0.46,0.46,0.10,0.10],
+     "interact":"world.frog.consulted",
+     "unlocks":"vol5_world_frog_diorama_entered",
+     "cursor":"closer",
+     "opens_diorama":"world_frog",
+     "notes":"ENTRY HOTSPOT: clicking the Frog at the wreath's center opens the deck's closing oracle. The Frog reads all 22 arcana in order with brief qualified verdicts ('mostly' as the deck's signature discipline). Click any card row to read the Frog's gloss. The reading ends with XXI THE WORLD — the deck reads the chapter the reader is in. The Frog is the only diorama-source that is not a demon (the_frog speaks for itself; integrity MOSTLY)."}
   ],
 
   "easter_eggs": [

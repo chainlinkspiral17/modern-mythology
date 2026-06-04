@@ -74,6 +74,9 @@ const DIORAMA_SCRIPTS := {
     "anya_tape":        preload("res://scenes/menu/PriestessTapeDiorama.gd"),
     "hermit_tape":      preload("res://scenes/menu/HermitTapeDiorama.gd"),
     "ensemble_tape":    preload("res://scenes/menu/JudgementTapeDiorama.gd"),
+    "tower_log":        preload("res://scenes/menu/TowerRenderLogDiorama.gd"),
+    "moon_sigils":      preload("res://scenes/menu/MoonSigilsDiorama.gd"),
+    "world_frog":       preload("res://scenes/menu/WorldFrogDiorama.gd"),
 }
 
 var hooks: Dictionary = {}

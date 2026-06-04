@@ -78,7 +78,13 @@
      "interact":"moon.faith_absence.noticed","unlocks":"vol5_moon_faith_absence_noticed",
      "cursor":"examine",
      "gated_by":"vol5_death_no_faith_seen",
-     "notes":"DORMANT: appears only after the player has noticed Faith's absence from Ward C on the Death card. The classical Moon-card dog/wolf pair is replaced here by two narwhal-shaped static reflections — Faith carried dry stations through XII and exited; the narwhal carried wet and returned here in spectral form. The deck's two through-line creatures perform the chapter's substitution from opposite directions: cold-water spectre takes the warm-blooded dog's place."}
+     "notes":"DORMANT: appears only after the player has noticed Faith's absence from Ward C on the Death card. The classical Moon-card dog/wolf pair is replaced here by two narwhal-shaped static reflections — Faith carried dry stations through XII and exited; the narwhal carried wet and returned here in spectral form. The deck's two through-line creatures perform the chapter's substitution from opposite directions: cold-water spectre takes the warm-blooded dog's place."},
+    {"id":"mn_sigils_diorama_entry","shape":"rect_norm","rect":[0.20,0.20,0.60,0.40],
+     "interact":"moon.sigils.fetched",
+     "unlocks":"vol5_moon_sigils_diorama_entered",
+     "cursor":"closer",
+     "opens_diorama":"moon_sigils",
+     "notes":"ENTRY HOTSPOT: clicking the static field dispatches daemon_listener.18 to resolve Natalie's three sigils from the broadcast. The diorama renders the 4:3 static as a live-scrambling ASCII field with three sigil overlays; click each sigil to read Natalie's gloss + claim. The chapter's verb-coming-home is rendered as three readings, each ending 'is mine.'"}
   ],
 
   "easter_eggs": [
