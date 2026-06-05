@@ -30,7 +30,7 @@ up) for series-level conceits and recurring elements.
 | XVIII| THE MOON       | `18_moon.md`            | 29 min  | DRAFTED  |
 | XIX | THE SUN         | `19_sun.md`             | 22 min  | DRAFTED  |
 | XX  | JUDGEMENT       | `20_judgement.md`       | 26 min  | DRAFTED  |
-| XXI | THE WORLD       | `21_world.md`           | 30 min  | DRAFTED  |
+| XXI | THE WORLD       | `21_world.md`           | 38 min  | DRAFTED  |
 
 ## script format
 
