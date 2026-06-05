@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# RunwayML API key (runway_render.py)
+.runway_key

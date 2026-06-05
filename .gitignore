@@ -12,3 +12,6 @@ Thumbs.db
 *.swp
 *.swo
 .vscode/
+
+# Runway-generated videos — curate manually; commit a piece by piece
+godot/assets/video/generated/
