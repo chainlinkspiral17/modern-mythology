@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modern Mythology — Resolve Studio</title>
+<style>
+  :root {
+    --bg: #0d121c;
+    --panel: #161c2a;
+    --panel2: #1f2638;
+    --border: #2d3548;
+    --accent: #c8a268;
+    --accent-dim: #6d5c3e;
+    --sync: #7cb0ff;
+    --sync-dim: #3e5c82;
+    --text: #d8d4c8;
+    --text-dim: #7c8398;
+    --good: #7cffb0;
+    --warn: #ffb060;
+    --bad: #ff6464;
+  }
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 100vh;
+  }
+  header {
+    background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 12px 20px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  }
+  header h1 {
+    margin: 0; font: 600 16px/1.2 ui-serif, Georgia, serif; color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  header .sub { font-size: 12px; color: var(--text-dim); }
+  header .spacer { flex: 1; }
+  main {
+    display: grid; grid-template-columns: 340px 1fr; gap: 0;
+    height: calc(100vh - 56px);
+  }
+  .sidebar {
+    background: var(--panel); border-right: 1px solid var(--border);
+    padding: 14px; overflow-y: auto;
+  }
+  .content { padding: 18px 20px; overflow-y: auto; }
+  .step {
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 12px 14px; margin-bottom: 14px;
+  }
+  .step h2 {
+    margin: 0 0 10px 0; font: 600 12px/1.2 ui-sans-serif;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .step.sync h2 { color: var(--sync); }
+  .step p { margin: 4px 0; font-size: 13px; color: var(--text-dim); }
+  label { display: block; font-size: 11px; color: var(--text-dim);
+    margin-top: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  input[type=text], input[type=number], select, textarea {
+    width: 100%; box-sizing: border-box; background: var(--bg); border: 1px solid var(--border);
+    color: var(--text); padding: 6px 8px; border-radius: 4px;
+    font: 13px ui-monospace, monospace;
+  }
+  textarea { resize: vertical; min-height: 50px; font-family: ui-serif, Georgia, serif; }
+  button {
+    background: var(--accent-dim); color: var(--bg); border: none;
+    padding: 6px 14px; border-radius: 4px; cursor: pointer; font: 600 12px ui-sans-serif;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    transition: background 0.12s;
+  }
+  button:hover { background: var(--accent); }
+  button:disabled { background: #333; color: #666; cursor: not-allowed; }
+  button.primary { background: var(--accent); }
+  button.sync    { background: var(--sync-dim); }
+  button.sync:hover { background: var(--sync); }
+  button.danger  { background: #6e2a2a; color: var(--text); }
+  button.ghost   { background: transparent; border: 1px solid var(--border);
+                   color: var(--text-dim); }
+  button.ghost:hover { border-color: var(--accent); color: var(--accent); }
+  button.small   { padding: 3px 8px; font-size: 11px; }
+  .row { display: flex; gap: 8px; }
+  .row > * { flex: 1; }
+  .row.tight { gap: 4px; }
+  .toolbar { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0; }
+  .pill {
+    display: inline-block; background: var(--panel); border: 1px solid var(--border);
+    padding: 2px 8px; border-radius: 10px; font-size: 11px; color: var(--text-dim);
+    font-family: ui-monospace, monospace;
+  }
+  .pill.sync { color: var(--sync); border-color: var(--sync-dim); }
+
+  /* action list */
+  .action-list { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+  .action-item {
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 4px;
+    padding: 8px 10px; cursor: pointer; transition: border-color 0.12s;
+    display: grid; grid-template-columns: auto 28px 1fr auto; gap: 8px; align-items: center;
+  }
+  .action-item:hover { border-color: var(--accent-dim); }
+  .action-item.selected { border-color: var(--accent); background: var(--bg); }
+  .action-item.sync.selected { border-color: var(--sync); }
+  .action-item .ai-num {
+    font-family: ui-monospace, monospace; color: var(--text-dim); font-size: 11px;
+  }
+  .action-item .ai-handle {
+    color: var(--text-dim); cursor: grab; font-size: 14px; user-select: none;
+    text-align: center;
+  }
+  .action-item .ai-body {
+    overflow: hidden;
+  }
+  .action-item .ai-kind {
+    font: 600 12px ui-monospace, monospace; color: var(--text);
+  }
+  .action-item.sync .ai-kind { color: var(--sync); }
+  .action-item .ai-meta {
+    font-size: 10px; color: var(--text-dim); font-family: ui-monospace, monospace;
+    margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  details summary {
+    cursor: pointer; padding: 4px 0; color: var(--text-dim); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  details summary:hover { color: var(--accent); }
+
+  .help-banner {
+    background: rgba(200,162,104,0.06); border: 1px solid var(--accent-dim);
+    color: var(--text); padding: 10px 14px; border-radius: 4px; margin-bottom: 14px;
+    font-size: 12px;
+  }
+  .help-banner.sync {
+    background: rgba(124,176,255,0.05); border-color: var(--sync-dim);
+  }
+  .help-banner code {
+    font-family: ui-monospace, monospace; background: var(--bg);
+    padding: 1px 6px; border-radius: 3px; color: var(--accent);
+  }
+
+  .preset-list { display: flex; flex-direction: column; gap: 4px; }
+  .preset-row {
+    display: flex; gap: 6px; align-items: center;
+    padding: 4px 6px; background: var(--panel2); border-radius: 3px;
+    font-size: 12px;
+  }
+  .preset-row .pname { flex: 1; font-family: ui-monospace, monospace; color: var(--text); }
+  .preset-row .pdesc { color: var(--text-dim); font-size: 10px; }
+
+  .empty-state { color: var(--text-dim); font-size: 12px; text-align: center; padding: 14px 4px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Resolve Studio</h1>
+  <span class="sub">action composer for resolve_bridge.py — Linux, separate projects per volume</span>
+  <div class="spacer"></div>
+  <button id="exportBtn" class="primary">Export actions.json</button>
+  <button id="importBtn" class="ghost">Import…</button>
+  <input type="file" id="importInput" accept=".json" style="display:none">
+</header>
+
+<main>
+
+  <aside class="sidebar">
+    <div class="step">
+      <h2>Project</h2>
+      <p>The volume picks the project. <code>Major Arcana → MM_vol5_major_arcana</code>.</p>
+      <label for="volume">Volume</label>
+      <select id="volume">
+        <option value="vol5" selected>vol5 — Major Arcana</option>
+        <option value="vol6">vol6 — Planned Community</option>
+        <option value="vol7">vol7 — Land of Milk & Honey</option>
+        <option value="marketing">marketing</option>
+        <option value="scratch">scratch</option>
+      </select>
+      <label for="projectName">Project name</label>
+      <input type="text" id="projectName" readonly>
+    </div>
+
+    <div class="step">
+      <h2>Action list</h2>
+      <p id="actionSummary" style="font-size:11px">no actions yet</p>
+      <div id="actionList" class="action-list"></div>
+      <div class="toolbar">
+        <button id="addEnsureBtn" class="small">+ Ensure project</button>
+        <button id="addImportBtn" class="small">+ Import manifest</button>
+        <button id="addTimelineBtn" class="small">+ Build timeline</button>
+        <button id="addSyncBtn" class="small sync">+ Sync metadata back</button>
+      </div>
+      <div class="toolbar">
+        <button id="addImportFilesBtn" class="small ghost">+ Import files</button>
+        <button id="addSetMetaBtn" class="small ghost">+ Set metadata</button>
+        <button id="dupBtn" class="small ghost">Duplicate</button>
+        <button id="delBtn" class="small danger">Delete</button>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>Presets</h2>
+      <p>Common action sequences. Click to append to the action list.</p>
+      <div id="presetList" class="preset-list"></div>
+    </div>
+
+    <details class="step">
+      <summary>How to run the actions</summary>
+      <div style="margin-top:10px; font-size:12px; color:var(--text-dim); line-height:1.55;">
+        <p>1. Start Resolve. Enable <code>Preferences → System → General → External scripting using: Local</code>.</p>
+        <p>2. Build actions here. Export <code>actions.json</code>.</p>
+        <p>3. Run:</p>
+        <pre style="background:var(--bg); padding:6px 8px; border-radius:3px; overflow:auto; font-size:11px; color:var(--accent);">python3 godot/tools/resolve_bridge.py actions.json --dry-run
+python3 godot/tools/resolve_bridge.py actions.json</pre>
+        <p>Or, skip the JSON entirely and import a Runway manifest directly:</p>
+        <pre style="background:var(--bg); padding:6px 8px; border-radius:3px; overflow:auto; font-size:11px; color:var(--accent);">python3 godot/tools/resolve_bridge.py \
+  --from-runway-manifest godot/assets/video/generated/manifest.json \
+  --volume vol5 \
+  --timeline</pre>
+        <p>If the env vars aren't set, the bridge auto-bootstraps from <code>/opt/resolve</code>.</p>
+      </div>
+    </details>
+  </aside>
+
+  <section class="content">
+    <div id="helpBanner" class="help-banner">
+      The action list runs in order against a running Resolve. Default flow:
+      <strong>ensure project → import Runway manifest → build a timeline → sync metadata back</strong>.
+      The sync step is the loop-closer — it pulls markers, comments, and flag colors
+      back into the manifest under a <code>resolve.*</code> subkey so the rest of the
+      deck's tooling knows which Runway clips have been graded or flagged.
+    </div>
+
+    <div id="editor" style="display:none;">
+
+      <!-- ensure_project -->
+      <div class="step" data-kind="ensure_project" style="display:none;">
+        <h2>Ensure project</h2>
+        <p>Create the project if it doesn't exist; otherwise switch to it.</p>
+        <label>Project name</label>
+        <input type="text" id="ep_project">
+      </div>
+
+      <!-- import_from_runway_manifest -->
+      <div class="step" data-kind="import_from_runway_manifest" style="display:none;">
+        <h2>Import from Runway manifest</h2>
+        <p>Read a Runway manifest, import SUCCEEDED entries grouped by tag into <code>bin_prefix/&lt;tag&gt;</code>.</p>
+        <label>Project</label>
+        <input type="text" id="ifm_project">
+        <label>Manifest path (relative to repo)</label>
+        <input type="text" id="ifm_manifest" value="godot/assets/video/generated/manifest.json">
+        <label>Bin prefix</label>
+        <input type="text" id="ifm_bin_prefix" value="Runway">
+        <label>Status filter (comma-separated)</label>
+        <input type="text" id="ifm_status_filter" value="SUCCEEDED">
+      </div>
+
+      <!-- timeline_from_manifest -->
+      <div class="step" data-kind="timeline_from_manifest" style="display:none;">
+        <h2>Build timeline from manifest</h2>
+        <p>Append manifest entries to a new timeline in the chosen order.</p>
+        <label>Project</label>
+        <input type="text" id="tfm_project">
+        <label>Manifest path</label>
+        <input type="text" id="tfm_manifest" value="godot/assets/video/generated/manifest.json">
+        <label>Timeline name</label>
+        <input type="text" id="tfm_name" placeholder="auto-named if blank">
+        <div class="row">
+          <div>
+            <label>Framerate</label>
+            <select id="tfm_framerate">
+              <option value="23.976">23.976</option>
+              <option value="24" selected>24</option>
+              <option value="25">25</option>
+              <option value="29.97">29.97</option>
+              <option value="30">30</option>
+              <option value="60">60</option>
+            </select>
+          </div>
+          <div>
+            <label>Order</label>
+            <select id="tfm_order">
+              <option value="manifest" selected>manifest order</option>
+              <option value="submitted_at">submission time</option>
+            </select>
+          </div>
+        </div>
+        <label>Tag filter (comma-separated; blank = all tags)</label>
+        <input type="text" id="tfm_tag_filter" placeholder="vol5, whispers, pomegranate">
+      </div>
+
+      <!-- sync_metadata_out -->
+      <div class="step sync" data-kind="sync_metadata_out" style="display:none;">
+        <h2>↩ Sync metadata back into the manifest</h2>
+        <p>For each clip in the project that matches a manifest entry, pull markers, Comments, and flag color back into the manifest under <code>resolve.*</code>. This is what closes the loop — once you've graded/marked clips in Resolve, run this to let the rest of the deck's tools see your decisions.</p>
+        <label>Project</label>
+        <input type="text" id="sm_project">
+        <label>Manifest path (will be rewritten)</label>
+        <input type="text" id="sm_manifest" value="godot/assets/video/generated/manifest.json">
+        <label>Output path (optional; defaults to overwriting the manifest)</label>
+        <input type="text" id="sm_output" placeholder="leave blank to overwrite">
+      </div>
+
+      <!-- import_files -->
+      <div class="step" data-kind="import_files" style="display:none;">
+        <h2>Import files</h2>
+        <p>Bring an explicit list of files into a specific bin.</p>
+        <label>Project</label>
+        <input type="text" id="if_project">
+        <label>Bin (slash-separated path under root)</label>
+        <input type="text" id="if_bin" value="Imports">
+        <label>Files (one path per line)</label>
+        <textarea id="if_files" placeholder="godot/assets/video/...mp4&#10;godot/assets/video/...mp4"></textarea>
+        <label>Description (optional, applied to all)</label>
+        <input type="text" id="if_description">
+        <label>Keywords (comma-separated, optional)</label>
+        <input type="text" id="if_keywords">
+      </div>
+
+      <!-- set_metadata -->
+      <div class="step" data-kind="set_metadata" style="display:none;">
+        <h2>Set metadata on a clip</h2>
+        <p>Write description / keywords / notes onto a specific clip by filename.</p>
+        <label>Project</label>
+        <input type="text" id="sd_project">
+        <label>Clip filename</label>
+        <input type="text" id="sd_clip" placeholder="kwik_stop_sunday_2pm.mp4">
+        <label>Description</label>
+        <textarea id="sd_description"></textarea>
+        <label>Keywords (comma-separated)</label>
+        <input type="text" id="sd_keywords">
+        <label>Notes (Comments field)</label>
+        <textarea id="sd_notes"></textarea>
+      </div>
+
+      <div class="step" style="display:flex; gap:8px; align-items:center;">
+        <button id="updateBtn" class="primary">Update action</button>
+        <div class="spacer" style="flex:1;"></div>
+        <span id="kindPill" class="pill"></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+'use strict';
+
+const VOLUME_PROJECTS = {
+  vol5: 'MM_vol5_major_arcana',
+  vol6: 'MM_vol6_planned_community',
+  vol7: 'MM_vol7_milk_and_honey',
+  whispers: 'MM_vol5_major_arcana',
+  pomegranate: 'MM_vol5_major_arcana',
+  marketing: 'MM_marketing',
+  scratch: 'MM_scratch',
+};
+
+const LS_ACTIONS = 'mm_resolve_actions_v1';
+
+let actions = [];
+let selectedIdx = -1;
+
+const $ = (id) => document.getElementById(id);
+
+// ── Init ──────────────────────────────────────────────────────────────────
+
+function init() {
+  loadActions();
+  bindEvents();
+  setProjectFromVolume();
+  renderActions();
+  renderPresets();
+  if (actions.length) selectAction(0);
+}
+
+function loadActions() {
+  try {
+    const raw = localStorage.getItem(LS_ACTIONS);
+    if (raw) actions = JSON.parse(raw);
+  } catch { actions = []; }
+  if (!Array.isArray(actions)) actions = [];
+}
+
+function saveActions() {
+  localStorage.setItem(LS_ACTIONS, JSON.stringify(actions));
+}
+
+function bindEvents() {
+  $('volume').addEventListener('change', setProjectFromVolume);
+  $('addEnsureBtn').onclick = () => appendNew('ensure_project');
+  $('addImportBtn').onclick = () => appendNew('import_from_runway_manifest');
+  $('addTimelineBtn').onclick = () => appendNew('timeline_from_manifest');
+  $('addSyncBtn').onclick = () => appendNew('sync_metadata_out');
+  $('addImportFilesBtn').onclick = () => appendNew('import_files');
+  $('addSetMetaBtn').onclick = () => appendNew('set_metadata');
+  $('dupBtn').onclick = onDuplicate;
+  $('delBtn').onclick = onDelete;
+  $('updateBtn').onclick = onUpdate;
+  $('exportBtn').onclick = onExport;
+  $('importBtn').onclick = () => $('importInput').click();
+  $('importInput').onchange = onImport;
+}
+
+function setProjectFromVolume() {
+  $('projectName').value = VOLUME_PROJECTS[$('volume').value];
+}
+
+// ── Action defaults ───────────────────────────────────────────────────────
+
+function blankAction(kind) {
+  const project = VOLUME_PROJECTS[$('volume').value];
+  const manifest = 'godot/assets/video/generated/manifest.json';
+  switch (kind) {
+    case 'ensure_project':
+      return { action: kind, project };
+    case 'import_from_runway_manifest':
+      return {
+        action: kind, project, manifest,
+        bin_prefix: 'Runway',
+        status_filter: ['SUCCEEDED'],
+      };
+    case 'timeline_from_manifest':
+      return {
+        action: kind, project, manifest,
+        name: '', framerate: 24, order: 'manifest', tag_filter: null,
+      };
+    case 'sync_metadata_out':
+      return { action: kind, project, manifest, output: null };
+    case 'import_files':
+      return {
+        action: kind, project, bin: 'Imports', files: [],
+        metadata: { description: '', keywords: [] },
+      };
+    case 'set_metadata':
+      return {
+        action: kind, project, clip: '',
+        description: '', keywords: [], notes: '',
+      };
+  }
+  return null;
+}
+
+function appendNew(kind) {
+  const a = blankAction(kind);
+  if (!a) return;
+  actions.push(a);
+  saveActions();
+  selectAction(actions.length - 1);
+}
+
+// ── Render the list ───────────────────────────────────────────────────────
+
+function renderActions() {
+  const list = $('actionList');
+  list.innerHTML = '';
+  if (!actions.length) {
+    list.innerHTML = '<div class="empty-state">No actions yet. Use the buttons above or pick a preset.</div>';
+    $('actionSummary').textContent = 'no actions yet';
+    return;
+  }
+  actions.forEach((act, i) => {
+    const isSync = act.action === 'sync_metadata_out';
+    const el = document.createElement('div');
+    el.className = 'action-item' + (i === selectedIdx ? ' selected' : '') + (isSync ? ' sync' : '');
+    el.onclick = () => selectAction(i);
+
+    const num = document.createElement('span');
+    num.className = 'ai-num';
+    num.textContent = String(i + 1).padStart(2, '0');
+    el.appendChild(num);
+
+    const handle = document.createElement('span');
+    handle.className = 'ai-handle';
+    handle.textContent = '⋮⋮';
+    handle.draggable = true;
+    handle.ondragstart = (e) => {
+      e.stopPropagation();
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', String(i));
+    };
+    el.appendChild(handle);
+
+    el.ondragover = (e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; };
+    el.ondrop = (e) => {
+      e.preventDefault();
+      const from = parseInt(e.dataTransfer.getData('text/plain'), 10);
+      if (Number.isFinite(from) && from !== i) reorderAction(from, i);
+    };
+
+    const body = document.createElement('div');
+    body.className = 'ai-body';
+    const kind = document.createElement('div');
+    kind.className = 'ai-kind';
+    kind.textContent = act.action;
+    body.appendChild(kind);
+    const meta = document.createElement('div');
+    meta.className = 'ai-meta';
+    meta.textContent = summarize(act);
+    body.appendChild(meta);
+    el.appendChild(body);
+
+    list.appendChild(el);
+  });
+  const syncCount = actions.filter(a => a.action === 'sync_metadata_out').length;
+  $('actionSummary').innerHTML = `${actions.length} action${actions.length===1?'':'s'}`
+    + (syncCount ? ` <span class="pill sync">↩ ${syncCount} sync</span>` : '');
+}
+
+function summarize(act) {
+  switch (act.action) {
+    case 'ensure_project': return `project=${act.project}`;
+    case 'import_from_runway_manifest': return `${act.manifest} → ${act.bin_prefix}/`;
+    case 'timeline_from_manifest':
+      return `${act.name || '(auto-name)'} @ ${act.framerate}fps · ${act.order}`;
+    case 'sync_metadata_out': return `${act.manifest} ← Resolve`;
+    case 'import_files': return `${(act.files||[]).length} file(s) → ${act.bin}`;
+    case 'set_metadata': return `clip=${act.clip || '(none)'}`;
+  }
+  return '';
+}
+
+function reorderAction(from, to) {
+  const item = actions.splice(from, 1)[0];
+  actions.splice(to, 0, item);
+  if (selectedIdx === from) selectedIdx = to;
+  else if (from < selectedIdx && to >= selectedIdx) selectedIdx -= 1;
+  else if (from > selectedIdx && to <= selectedIdx) selectedIdx += 1;
+  saveActions();
+  renderActions();
+}
+
+function onDuplicate() {
+  if (selectedIdx < 0) return;
+  const copy = JSON.parse(JSON.stringify(actions[selectedIdx]));
+  actions.splice(selectedIdx + 1, 0, copy);
+  saveActions();
+  selectAction(selectedIdx + 1);
+}
+
+function onDelete() {
+  if (selectedIdx < 0) return;
+  if (!confirm(`Delete action ${selectedIdx + 1}?`)) return;
+  actions.splice(selectedIdx, 1);
+  saveActions();
+  selectAction(Math.min(selectedIdx, actions.length - 1));
+}
+
+// ── Editor ────────────────────────────────────────────────────────────────
+
+function selectAction(i) {
+  selectedIdx = i;
+  if (i < 0 || i >= actions.length) {
+    $('editor').style.display = 'none';
+    $('helpBanner').style.display = 'block';
+    renderActions();
+    return;
+  }
+  const act = actions[i];
+  $('editor').style.display = 'block';
+  $('helpBanner').style.display = 'none';
+
+  // hide all step blocks, show only the matching one
+  document.querySelectorAll('.step[data-kind]').forEach(el => {
+    el.style.display = el.dataset.kind === act.action ? 'block' : 'none';
+  });
+  $('kindPill').textContent = act.action;
+  $('kindPill').className = 'pill' + (act.action === 'sync_metadata_out' ? ' sync' : '');
+
+  // populate fields
+  switch (act.action) {
+    case 'ensure_project':
+      $('ep_project').value = act.project || '';
+      break;
+    case 'import_from_runway_manifest':
+      $('ifm_project').value = act.project || '';
+      $('ifm_manifest').value = act.manifest || '';
+      $('ifm_bin_prefix').value = act.bin_prefix || 'Runway';
+      $('ifm_status_filter').value = (act.status_filter || ['SUCCEEDED']).join(',');
+      break;
+    case 'timeline_from_manifest':
+      $('tfm_project').value = act.project || '';
+      $('tfm_manifest').value = act.manifest || '';
+      $('tfm_name').value = act.name || '';
+      $('tfm_framerate').value = String(act.framerate || 24);
+      $('tfm_order').value = act.order || 'manifest';
+      $('tfm_tag_filter').value = Array.isArray(act.tag_filter) ? act.tag_filter.join(',') : '';
+      break;
+    case 'sync_metadata_out':
+      $('sm_project').value = act.project || '';
+      $('sm_manifest').value = act.manifest || '';
+      $('sm_output').value = act.output || '';
+      break;
+    case 'import_files':
+      $('if_project').value = act.project || '';
+      $('if_bin').value = act.bin || 'Imports';
+      $('if_files').value = (act.files || []).join('\n');
+      $('if_description').value = (act.metadata && act.metadata.description) || '';
+      $('if_keywords').value = ((act.metadata && act.metadata.keywords) || []).join(',');
+      break;
+    case 'set_metadata':
+      $('sd_project').value = act.project || '';
+      $('sd_clip').value = act.clip || '';
+      $('sd_description').value = act.description || '';
+      $('sd_keywords').value = (act.keywords || []).join(',');
+      $('sd_notes').value = act.notes || '';
+      break;
+  }
+  renderActions();
+}
+
+function onUpdate() {
+  if (selectedIdx < 0) return;
+  const act = actions[selectedIdx];
+  switch (act.action) {
+    case 'ensure_project':
+      act.project = $('ep_project').value.trim();
+      break;
+    case 'import_from_runway_manifest':
+      act.project = $('ifm_project').value.trim();
+      act.manifest = $('ifm_manifest').value.trim();
+      act.bin_prefix = $('ifm_bin_prefix').value.trim() || 'Runway';
+      act.status_filter = csvList($('ifm_status_filter').value);
+      break;
+    case 'timeline_from_manifest':
+      act.project = $('tfm_project').value.trim();
+      act.manifest = $('tfm_manifest').value.trim();
+      act.name = $('tfm_name').value.trim();
+      act.framerate = parseFloat($('tfm_framerate').value);
+      act.order = $('tfm_order').value;
+      const tags = csvList($('tfm_tag_filter').value);
+      act.tag_filter = tags.length ? tags : null;
+      break;
+    case 'sync_metadata_out':
+      act.project = $('sm_project').value.trim();
+      act.manifest = $('sm_manifest').value.trim();
+      const out = $('sm_output').value.trim();
+      act.output = out || null;
+      break;
+    case 'import_files':
+      act.project = $('if_project').value.trim();
+      act.bin = $('if_bin').value.trim() || 'Imports';
+      act.files = $('if_files').value.split('\n').map(s => s.trim()).filter(Boolean);
+      act.metadata = {
+        description: $('if_description').value.trim(),
+        keywords: csvList($('if_keywords').value),
+      };
+      break;
+    case 'set_metadata':
+      act.project = $('sd_project').value.trim();
+      act.clip = $('sd_clip').value.trim();
+      act.description = $('sd_description').value.trim();
+      act.keywords = csvList($('sd_keywords').value);
+      act.notes = $('sd_notes').value.trim();
+      break;
+  }
+  saveActions();
+  renderActions();
+  flash('updateBtn', 'Saved');
+}
+
+function csvList(s) {
+  return (s || '')
+    .split(',')
+    .map(t => t.trim())
+    .filter(Boolean);
+}
+
+function flash(btnId, msg) {
+  const b = $(btnId);
+  const old = b.textContent;
+  b.textContent = msg;
+  b.disabled = true;
+  setTimeout(() => { b.textContent = old; b.disabled = false; }, 900);
+}
+
+// ── Presets ───────────────────────────────────────────────────────────────
+
+const PRESETS = [
+  {
+    name: 'Vol5 — ingest Runway + lay out',
+    desc: 'ensure → import → timeline. No sync yet.',
+    build: () => {
+      const p = 'MM_vol5_major_arcana';
+      const m = 'godot/assets/video/generated/manifest.json';
+      return [
+        { action: 'ensure_project', project: p },
+        {
+          action: 'import_from_runway_manifest',
+          project: p, manifest: m,
+          bin_prefix: 'Runway', status_filter: ['SUCCEEDED'],
+        },
+        {
+          action: 'timeline_from_manifest',
+          project: p, manifest: m,
+          name: '', framerate: 24, order: 'manifest',
+          tag_filter: ['vol5', 'whispers', 'pomegranate'],
+        },
+      ];
+    },
+  },
+  {
+    name: '↩ Vol5 — sync metadata back',
+    desc: 'just the sync — run after grading/marking in Resolve.',
+    build: () => {
+      const p = 'MM_vol5_major_arcana';
+      const m = 'godot/assets/video/generated/manifest.json';
+      return [
+        { action: 'ensure_project', project: p },
+        { action: 'sync_metadata_out', project: p, manifest: m, output: null },
+      ];
+    },
+  },
+  {
+    name: 'Vol5 — full loop',
+    desc: 'ensure → import → timeline → sync. The whole round trip.',
+    build: () => {
+      const p = 'MM_vol5_major_arcana';
+      const m = 'godot/assets/video/generated/manifest.json';
+      return [
+        { action: 'ensure_project', project: p },
+        {
+          action: 'import_from_runway_manifest',
+          project: p, manifest: m,
+          bin_prefix: 'Runway', status_filter: ['SUCCEEDED'],
+        },
+        {
+          action: 'timeline_from_manifest',
+          project: p, manifest: m,
+          name: '', framerate: 24, order: 'manifest', tag_filter: null,
+        },
+        { action: 'sync_metadata_out', project: p, manifest: m, output: null },
+      ];
+    },
+  },
+  {
+    name: 'Vol6 — ingest Runway',
+    desc: 'same shape, vol6 project.',
+    build: () => {
+      const p = 'MM_vol6_planned_community';
+      const m = 'godot/assets/video/generated/manifest.json';
+      return [
+        { action: 'ensure_project', project: p },
+        {
+          action: 'import_from_runway_manifest',
+          project: p, manifest: m,
+          bin_prefix: 'Runway', status_filter: ['SUCCEEDED'],
+        },
+        {
+          action: 'timeline_from_manifest',
+          project: p, manifest: m,
+          name: '', framerate: 24, order: 'manifest', tag_filter: ['vol6'],
+        },
+      ];
+    },
+  },
+];
+
+function renderPresets() {
+  const list = $('presetList');
+  list.innerHTML = '';
+  PRESETS.forEach((preset) => {
+    const row = document.createElement('div');
+    row.className = 'preset-row';
+
+    const main = document.createElement('div');
+    main.style.flex = '1';
+    const name = document.createElement('div');
+    name.className = 'pname';
+    name.textContent = preset.name;
+    main.appendChild(name);
+    const desc = document.createElement('div');
+    desc.className = 'pdesc';
+    desc.textContent = preset.desc;
+    main.appendChild(desc);
+    row.appendChild(main);
+
+    const useBtn = document.createElement('button');
+    useBtn.className = 'small' + (preset.name.includes('↩') ? ' sync' : '');
+    useBtn.textContent = 'Add';
+    useBtn.onclick = () => {
+      const built = preset.build();
+      actions = actions.concat(built);
+      saveActions();
+      selectAction(actions.length - built.length);
+    };
+    row.appendChild(useBtn);
+
+    list.appendChild(row);
+  });
+}
+
+// ── Export / import ───────────────────────────────────────────────────────
+
+function onExport() {
+  if (!actions.length) {
+    alert('No actions to export.');
+    return;
+  }
+  if (selectedIdx >= 0) onUpdate();
+  const blob = new Blob(
+    [JSON.stringify({ actions }, null, 2)],
+    { type: 'application/json' }
+  );
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  const date = new Date().toISOString().slice(0, 10);
+  a.download = `resolve_actions_${date}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+}
+
+function onImport(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  file.text().then((text) => {
+    try {
+      const data = JSON.parse(text);
+      const imported = Array.isArray(data) ? data : data.actions;
+      if (!Array.isArray(imported)) throw new Error('not an action list');
+      if (actions.length && !confirm(
+        `Replace current ${actions.length} action(s) with imported ${imported.length}?`
+      )) return;
+      actions = imported;
+      saveActions();
+      selectAction(actions.length ? 0 : -1);
+    } catch (err) {
+      alert('Import failed: ' + err.message);
+    }
+  });
+  e.target.value = '';
+}
+
+init();
+</script>
+</body>
+</html>
