@@ -12,7 +12,7 @@ extends "res://scenes/menu/DioramaBase.gd"
 ## warmest — fluorescent diner hum + occasional booth-bell at the
 ## door (the diner is implied behind the terminal).
 ##
-## See pitches/00_fool (in _PITCHES.md) for the source script.
+## See lore/pitches/00_fool.md (catalogued in lore/_PITCHES.md) for the source script.
 
 const _COMMANDS := {
     "help": {

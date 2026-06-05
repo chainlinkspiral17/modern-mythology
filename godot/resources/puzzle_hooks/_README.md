@@ -6,6 +6,14 @@ read. The hooks themselves don't need any engine code today; they're
 JSON sidecars next to the assets that any future puzzle/cipher system
 can introspect.
 
+> **Note:** as of mid-2025, long-form lore — chapter pitches, episode
+> scripts, character accumulations, worldbuilding reference docs — lives
+> at the repo-root `lore/` directory, not here. This directory holds only
+> the engine-consumed JSON hooks plus this README. Hook `notes` fields
+> may reference paths like `lore/_POMEGRANATE_HOUR.md`; those are prose
+> cross-references, not code paths, and exist only to point a reader to
+> the canonical writeup of a concept the hook surfaces.
+
 ## Schema
 
 ```json

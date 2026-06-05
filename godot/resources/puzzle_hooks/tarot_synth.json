@@ -38,7 +38,7 @@
   ],
 
   "cross_references": {
-    "feeds_compass_node": "tarot_synth (compass-as-instrument hybrid in _COMPASS.md)",
+    "feeds_compass_node": "tarot_synth (compass-as-instrument hybrid in lore/_COMPASS.md)",
     "unlocks_via_input": "all 22 arcana cards"
   }
 }

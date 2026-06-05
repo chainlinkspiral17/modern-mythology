@@ -12,7 +12,7 @@ extends "res://scenes/menu/DioramaBase.gd"
 ## ~440 Hz, very faint) and an occasional code-stream particle
 ## sound (high-frequency tick at random intervals).
 ##
-## See pitches/01_magician (in _PITCHES.md) for the source script.
+## See lore/pitches/01_magician.md (catalogued in lore/_PITCHES.md) for the source script.
 
 const _MODEL_ELEMENTS := [
     {
