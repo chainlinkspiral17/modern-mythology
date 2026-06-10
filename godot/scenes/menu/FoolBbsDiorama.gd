@@ -115,7 +115,7 @@ func _build_content() -> void:
     buttons_row.add_theme_constant_override("separation", 6)
     vb.add_child(buttons_row)
     for cmd in ["help", "nodes", "sysop", "who", "compass", "faith", "64", "oracle"]:
-        var captured := cmd
+        var captured: String = cmd
         var b := Button.new()
         b.text = " " + cmd + " "
         b.flat = false
@@ -235,7 +235,7 @@ func _ambient_sample(phase: float, step: float) -> Vector2:
         var bell_t0: float = get_meta("bell_t0")
         var ch_t := phase - bell_t0
         if ch_t >= 0.0 and ch_t < 0.6:
-            var env := clamp(1.0 - ch_t / 0.6, 0.0, 1.0)
+            var env: float = clamp(1.0 - ch_t / 0.6, 0.0, 1.0)
             bell = sin(840.0 * ch_t * TAU) * env * 0.10
         if ch_t > 0.6:
             remove_meta("bell_t0")

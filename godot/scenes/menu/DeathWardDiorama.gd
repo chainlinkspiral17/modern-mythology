@@ -177,7 +177,7 @@ func _ambient_sample(phase: float, step: float) -> Vector2:
     for p in _ping_active:
         p.time += step
         if p.time < p.dur:
-            var env := clamp(1.0 - p.time / p.dur, 0.0, 1.0)
+            var env: float = clamp(1.0 - p.time / p.dur, 0.0, 1.0)
             ping_sum += sin(p.freq * p.time * TAU) * env * 0.18
             rem.append(p)
     _ping_active = rem

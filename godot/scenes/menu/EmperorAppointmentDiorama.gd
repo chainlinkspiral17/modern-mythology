@@ -278,8 +278,8 @@ func _on_slot_pressed(slot: Dictionary) -> void:
         reveal(str(payload.get("head", slot.get("time", ""))),
                 str(payload.get("body", "")), unlock_key)
     else:
-        var head := str(slot.get("time", "")) + "  ·  " + _DAYS[_day_idx]["label"]
-        var body := str(slot.get("text", ""))
+        var head: String = str(slot.get("time", "")) + "  ·  " + str(_DAYS[_day_idx]["label"])
+        var body: String = str(slot.get("text", ""))
         reveal(head, body, unlock_key)
 
 

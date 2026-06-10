@@ -51,20 +51,6 @@ const VOLUME_TITLES: Dictionary = {
 	10: "ROFLcopter",
 }
 
-# Mirrors MainMenu.VOLUME_META — used to label per-volume gallery sections.
-const VOLUME_TITLES: Dictionary = {
-	1:  "Modern Mythology",
-	2:  "Small Wood Volumes",
-	3:  "The Earthman Chronicles",
-	4:  "#/Sharp",
-	5:  "Major Arcana",
-	6:  "Planned Community",
-	7:  "Land of Milk & Honey",
-	8:  "SCUMM",
-	9:  "Por Puesto",
-	10: "ROFLcopter",
-}
-
 
 func open() -> void:
 	_rebuild()

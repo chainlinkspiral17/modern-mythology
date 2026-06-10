@@ -368,7 +368,7 @@ func _on_diorama_tick(delta: float) -> void:
 # parallel.
 
 func _ambient_sample(phase: float, step: float) -> Vector2:
-    var progress := clamp(_elapsed / 1740.0, 0.0, 1.0)
+    var progress: float = clamp(_elapsed / 1740.0, 0.0, 1.0)
     var tick_hz: float = lerp(22.0, 60.0, progress)
     _tick_phase += step * tick_hz
     var tick := 0.0
@@ -376,14 +376,14 @@ func _ambient_sample(phase: float, step: float) -> Vector2:
         tick = -0.05 * (1.0 - fmod(_tick_phase, 1.0) / 0.02)
     # Engine drone — low rumble that warms with progress
     _engine_phase += step * 80.0
-    var engine := sin(_engine_phase * TAU) * 0.04 * progress
-    var engine2 := sin(_engine_phase * 0.5 * TAU) * 0.03 * progress
-    var noise := (randf() - 0.5) * (0.008 + 0.012 * progress)
+    var engine: float = sin(_engine_phase * TAU) * 0.04 * progress
+    var engine2: float = sin(_engine_phase * 0.5 * TAU) * 0.03 * progress
+    var noise: float = (randf() - 0.5) * (0.008 + 0.012 * progress)
     var chime := 0.0
     if _next_chime_at > 0.0 and phase < _next_chime_at + 0.2:
         var ch_t := phase - _next_chime_at
         if ch_t >= 0.0 and ch_t < 0.2:
-            var env := clamp(1.0 - ch_t / 0.2, 0.0, 1.0)
+            var env: float = clamp(1.0 - ch_t / 0.2, 0.0, 1.0)
             chime = sin(1320.0 * ch_t * TAU) * env * 0.12
         if ch_t > 0.2:
             _next_chime_at = -1.0

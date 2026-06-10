@@ -198,7 +198,7 @@ func _ambient_sample(_phase: float, step: float) -> Vector2:
     if _croak_active:
         _croak_phase += step
         if _croak_phase < 0.42:
-            var env := clamp(1.0 - _croak_phase / 0.42, 0.0, 1.0)
+            var env: float = clamp(1.0 - _croak_phase / 0.42, 0.0, 1.0)
             croak = sin(_croak_phase * 130.0 * TAU) * env * 0.12 \
                   + sin(_croak_phase * 65.0 * TAU) * env * 0.08
         else:

@@ -210,7 +210,7 @@ func _ambient_sample(phase: float, step: float) -> Vector2:
     if has_meta("bell_t0"):
         var bt: float = phase - get_meta("bell_t0")
         if bt >= 0.0 and bt < 1.2:
-            var env := clamp(1.0 - bt / 1.2, 0.0, 1.0)
+            var env: float = clamp(1.0 - bt / 1.2, 0.0, 1.0)
             bell = sin(220.0 * bt * TAU) * env * 0.04 + sin(440.0 * bt * TAU) * env * 0.02
         if bt > 1.2:
             remove_meta("bell_t0")
