@@ -233,6 +233,41 @@ const SLOTS = [
     flavor: "A two-foot section of fluorescent tube light, slightly yellowed at the ends, mounted in a thin metal channel. Faint internal glow — the tube isn't quite off. A small dead moth inside one end. Floats horizontally across the dark ground; the tube's glow tints the surrounding pixels green-white.",
     target: 'assets/gallery/items/fool_fluorescent_strip.png' },
 
+  // ── Framework action card art (shared across every arcana) ─────────
+  // These are the universal verbs in the action tableau. Files live at
+  // assets/gallery/cards/framework_<id>.png so they're shared across
+  // every arcana — the engine detects framework cards (they have the
+  // double_success / single_success / failure schema) and routes
+  // through that path automatically.
+  ...[
+    { id: 'walk', flavor:
+      "Mid-stride: a foot lifting off a diner floor tile. Apron tied. The next step toward something — direction ambiguous. Painted in chiaroscuro: warm light on the lifting foot, cool blue floor ahead. Mood: simple resolved motion." },
+    { id: 'sprint', flavor:
+      "A figure moving faster than the diner air should permit: motion blur on the apron strings, one hand catching the counter edge to pivot. Booth backs streak slightly. The composition is diagonal — energy crossing the frame. Same warm/cool palette." },
+    { id: 'focus', flavor:
+      "Tight on John's eyes (or just one eye) catching a single warm reflected light. The rest of the frame fades to dark warm gradient. A small painted halo of focus around the iris. Mood: the moment before clarity." },
+    { id: 'search', flavor:
+      "Hands rummaging through a half-open drawer or beneath a booth bench. Out-of-focus diner light spills across the knuckles. A few small indistinct items visible inside the drawer — none legible. The painting is the act of looking, not the find." },
+    { id: 'short_rest', flavor:
+      "John's elbows on the counter, head tilted toward his cupped palm, eyes half-closed. A wisp of steam from a mug at the edge of frame. The fluorescents soften him. A two-breath pause turned into a held still life." },
+    { id: 'long_rest', flavor:
+      "John slumped sideways into the corner of a booth seat, apron still tied, one hand cradling his forehead, the other open palm-up on the table. The booth lamp above pools warm light around him. The painted moment is sleep approaching, not sleep itself." },
+    { id: 'distraction', flavor:
+      "An object knocked off the counter mid-air — a coffee cup tipped sideways, contents arcing into the frame. Behind it, a visitor's head turned away toward the sound. The room interrupted. No one in the frame caused it on purpose." },
+    { id: 'guard', flavor:
+      "John standing braced, both hands flat on the counter, arms locked, weight forward — bracing against something coming. The frame is rendered slightly colder than usual, the fluorescents flickering once. Mood: ready to absorb." },
+    { id: 'close_call', flavor:
+      "Two dice in mid-air above the counter, suspended at the apex of a throw, just starting to fall. One face is showing, one is not. The painting holds the instant before the result. Warm overhead light, soft cast shadow on the formica." },
+    { id: 'spend_it', flavor:
+      "A pocket-watch-sized brass token being tossed back over the shoulder, glinting once mid-air. The figure tossing it is out of frame except for the hand. The painted moment is small payment, willingly given." },
+    { id: 'improvise', flavor:
+      "John's hand mid-motion improvising with whatever's at hand: holding a soda spoon, a folded napkin, an order pad — three quick gestures composited in the same frame as overlapping translucencies. Movement-study aesthetic. Same diner light." },
+  ].map(o => ({
+    tab: 'cards', cat: 'framework', label: 'Framework — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/framework_' + o.id + '.png'
+  })),
+
   // ── Action card art ────────────────────────────────────────────────
   // Each Fool-unique action card. Each flavor is the SPECIFIC painted
   // moment for that verb — not a generic "card art" stub. The engine
@@ -298,6 +333,26 @@ const SLOTS = [
     tab: 'gravity', cat: 'fool', label: 'Gravity — ' + o.id.replace(/_/g, ' '),
     flavor: o.flavor,
     target: 'assets/gallery/cards/fool_gravity_' + o.id + '.png'
+  })),
+
+  // ── Meeples / board tokens ─────────────────────────────────────────
+  // Small tokens shown on the board at each station. The engine
+  // composites them at scaled coordinates over the board image, so
+  // these need to read at ~28×28 px while still feeling like board-
+  // game wooden meeples (or painted standees). 1:1 square framing,
+  // transparent or near-transparent background ideal.
+  ...[
+    { id: 'john', flavor: "John Frank as a board-game meeple — small painted figure, apron tied, three-quarter view standing. Aged-wood standee aesthetic with a hand-painted face. Yellow accent." },
+    { id: 'frasier', flavor: "Frasier Temple as a board-game meeple — bomber jacket + notebook, slight forward lean. Orange/amber accent." },
+    { id: 'stranger', flavor: "The Booth-Six Stranger as a meeple — hooded, goggles up, hunched over a glow-screen. Red accent." },
+    { id: 'faith', flavor: "Faith the dog as a small painted meeple — sitting, head turned, white-and-grey. Green accent on the base." },
+    { id: 'dawn_cook', flavor: "The Dawn Cook as a meeple — plaid + apron, paperback in one hand. Cream/grey accent." },
+    { id: 'bbs_caller', flavor: "BBS Caller as a meeple — represented by a tiny standing CRT terminal on a base, phosphor-green glow inside. No human silhouette." },
+    { id: 'anya_recording', flavor: "Anya's Recording as a meeple — a vertical cassette tape standee with a ghost-painted woman's face faintly overlaid. Violet accent." },
+  ].map(o => ({
+    tab: 'visitors', cat: 'meeple', label: 'Meeple — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor + " 1:1, ~256×256, transparent or dark warm background.",
+    target: 'assets/gallery/meeples/' + o.id + '.png'
   })),
 
   // ── Backgrounds: the location ──────────────────────────────────────

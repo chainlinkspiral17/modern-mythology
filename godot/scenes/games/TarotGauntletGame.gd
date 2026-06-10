@@ -55,7 +55,7 @@ var _game_over: bool = false
 
 # ── UI refs (built in _build_ui) ─────────────────────────────────────
 var _bg: ColorRect = null
-var _codex: TextureRect = null
+var _inv_box: VBoxContainer = null
 var _phase_label: Label = null
 var _turn_label: Label = null
 var _time_label: Label = null
@@ -70,8 +70,10 @@ var _tableau_scroll: ScrollContainer = null
 var _log: RichTextLabel = null
 var _advance_btn: Button = null
 var _board_root: Control = null
-var _board_meeple: Label = null
-var _board_visitor_nodes: Dictionary = {}   # visitor_id → Label
+var _board_expand_btn: Button = null
+var _board_fullscreen: bool = false
+var _board_meeple: Control = null
+var _board_visitor_nodes: Dictionary = {}   # visitor_id → Control (Label or TextureRect)
 var _board_space_nodes: Dictionary = {}     # space_id → Label
 var _gravity_card_label: RichTextLabel = null
 var _end_overlay: Control = null
@@ -182,6 +184,15 @@ func _load_texture_silent(path: String) -> Texture2D:
 	return t
 
 func _art_path_card(cid: String) -> String:
+	# Framework cards (shared across every arcana) live at
+	#   assets/gallery/cards/framework_<id>.png
+	# Arcana-unique cards at:
+	#   assets/gallery/cards/<arcana>_<id>.png
+	# Framework cards in _action_cards always have a "double_success"
+	# field; arcana cards use the "effects" key instead.
+	var card: Dictionary = _action_cards.get(cid, {})
+	if card.has("double_success") or card.has("passive_effect"):
+		return "res://assets/gallery/cards/framework_" + cid + ".png"
 	return "res://assets/gallery/cards/" + _arcana_id + "_" + cid + ".png"
 
 func _art_path_gravity(cid: String) -> String:
@@ -195,6 +206,9 @@ func _art_path_visitor_face(vid: String) -> String:
 
 func _art_path_board() -> String:
 	return "res://assets/gallery/locations/" + _location_id + "_gauntlet_board.png"
+
+func _art_path_meeple(id: String) -> String:
+	return "res://assets/gallery/meeples/" + id + ".png"
 
 
 # ── Data loading ─────────────────────────────────────────────────────
@@ -348,6 +362,20 @@ func _build_ui() -> void:
 	board_panel.add_theme_stylebox_override("panel", _make_panel_style())
 	_board_root.add_child(board_panel)
 	add_child(_board_root)
+	# Fullscreen toggle — small button pinned to the top-right of
+	# the board area. Click → board expands over the whole game.
+	_board_expand_btn = Button.new()
+	_board_expand_btn.text = "⛶"
+	_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
+	_board_expand_btn.add_theme_font_size_override("font_size", 14)
+	_board_expand_btn.custom_minimum_size = Vector2(28, 22)
+	_board_expand_btn.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	_board_expand_btn.offset_left = -34
+	_board_expand_btn.offset_top = 4
+	_board_expand_btn.offset_right = -4
+	_board_expand_btn.offset_bottom = 26
+	_board_expand_btn.pressed.connect(_toggle_board_fullscreen)
+	_board_root.add_child(_board_expand_btn)
 	_render_board()
 
 	# ── Right column: codex card + gravity card + visitor states + log
@@ -363,28 +391,29 @@ func _build_ui() -> void:
 	# Codex card (the gallery image, pinned) — fixed size, NOT expand_fill
 	# (was eating all the right-column height and squeezing the log to
 	# nothing).
-	var codex_panel := PanelContainer.new()
-	codex_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	codex_panel.custom_minimum_size = Vector2(420, 180)
-	var codex_vb := VBoxContainer.new()
-	codex_panel.add_child(codex_vb)
-	var codex_title := Label.new()
-	codex_title.text = "  CODEX"
-	codex_title.add_theme_color_override("font_color", C_ACCENT)
-	codex_title.add_theme_font_size_override("font_size", 11)
-	codex_vb.add_child(codex_title)
-	_codex = TextureRect.new()
-	_codex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	_codex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	_codex.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_codex.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	var codex_path: String = _location.get("bg_codex_card", "res://assets/gallery/fool.png")
-	if not codex_path.begins_with("res://"):
-		codex_path = "res://" + codex_path
-	if ResourceLoader.exists(codex_path):
-		_codex.texture = ResourceLoader.load(codex_path) as Texture2D
-	codex_vb.add_child(_codex)
-	right.add_child(codex_panel)
+	# INVENTORY panel — replaces the old CODEX thumbnail (which was
+	# just decorative duplication of the gallery card). Shows what
+	# the player has actually picked up, with item art if present
+	# and a clear BINDLE assembly indicator at the top.
+	var inv_panel := PanelContainer.new()
+	inv_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	inv_panel.custom_minimum_size = Vector2(420, 170)
+	var inv_vb := VBoxContainer.new()
+	inv_panel.add_child(inv_vb)
+	var inv_title := Label.new()
+	inv_title.text = "  INVENTORY / BINDLE"
+	inv_title.add_theme_color_override("font_color", C_ACCENT)
+	inv_title.add_theme_font_size_override("font_size", 11)
+	inv_vb.add_child(inv_title)
+	var inv_scroll := ScrollContainer.new()
+	inv_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	inv_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	inv_vb.add_child(inv_scroll)
+	_inv_box = VBoxContainer.new()
+	_inv_box.add_theme_constant_override("separation", 3)
+	_inv_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	inv_scroll.add_child(_inv_box)
+	right.add_child(inv_panel)
 
 	# Gravity card display — single thin line. Shows deck size before
 	# any draw ("Gravity deck: 12 remaining"), then the drawn card's
@@ -564,8 +593,12 @@ func _render_board() -> void:
 		bg.name = "board_bg"
 		bg.texture = bg_tex
 		bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		bg.modulate = Color(1, 1, 1, 0.55)
+		# STRETCH_SCALE (not KEEP_ASPECT) so the image fills the panel
+		# exactly — labels are positioned in the same panel rect, so
+		# they only align with the painted stations when the image
+		# covers the same rect.
+		bg.stretch_mode = TextureRect.STRETCH_SCALE
+		bg.modulate = Color(1, 1, 1, 0.5)
 		bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_board_root.add_child(bg)
 	# Draw spaces as labels positioned per the JSON's pos_xy.
@@ -598,30 +631,76 @@ func _render_board() -> void:
 		var xy2: Array = s.get("pos_xy", [0, 0])
 		var nx: float = (float(xy2[0]) - bx_min) * sx + 40.0
 		var ny: float = (float(xy2[1]) - by_min) * sy + 30.0
+		# Node marker: small filled disc/diamond at each station so
+		# the board reads as a board even without/with the bg image.
+		var marker := Panel.new()
+		marker.name = "marker_" + sid
+		marker.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		marker.custom_minimum_size = Vector2(12, 12)
+		marker.size = Vector2(12, 12)
+		marker.position = Vector2(nx - 6, ny - 6)
+		var mst := StyleBoxFlat.new()
+		var kind: String = s.get("kind", "named")
+		match kind:
+			"threshold": mst.bg_color = Color(0.55, 0.95, 0.65, 0.9)
+			"search":    mst.bg_color = Color(0.95, 0.78, 0.40, 0.9)
+			_:           mst.bg_color = Color(0.82, 0.78, 0.70, 0.8)
+		mst.border_color = Color(0, 0, 0, 0.8)
+		mst.set_border_width_all(1)
+		mst.set_corner_radius_all(6)
+		marker.add_theme_stylebox_override("panel", mst)
+		_board_root.add_child(marker)
 		var node := _make_space_label(s)
-		node.position = Vector2(nx - 60.0, ny - 14.0)
+		node.position = Vector2(nx + 10.0, ny - 8.0)
 		node.name = "space_" + sid
 		_board_root.add_child(node)
 		_board_space_nodes[sid] = node
-	# Player meeple
-	_board_meeple = Label.new()
-	_board_meeple.text = "★ John"
-	_board_meeple.add_theme_color_override("font_color", C_ACCENT)
-	_board_meeple.add_theme_font_size_override("font_size", 14)
-	_board_meeple.name = "player_meeple"
+	# Player meeple — image if present, otherwise styled label.
+	var player_art: Texture2D = _load_texture_silent(_art_path_meeple("john"))
+	if player_art:
+		var mp := TextureRect.new()
+		mp.texture = player_art
+		mp.custom_minimum_size = Vector2(28, 28)
+		mp.size = Vector2(28, 28)
+		mp.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		mp.name = "player_meeple"
+		_board_meeple = mp
+	else:
+		var lbl_m := Label.new()
+		lbl_m.text = "★"
+		lbl_m.add_theme_color_override("font_color", C_ACCENT)
+		lbl_m.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
+		lbl_m.add_theme_constant_override("outline_size", 4)
+		lbl_m.add_theme_font_size_override("font_size", 18)
+		lbl_m.name = "player_meeple"
+		_board_meeple = lbl_m
 	_board_root.add_child(_board_meeple)
-	# Visitor meeples
+	# Visitor meeples — image if present, otherwise small colored dot.
 	for vid in _visitors_state:
 		var v: Dictionary = _visitors_state[vid]
-		if v.get("arrived", false):
-			var vdef: Dictionary = _visitors_def[vid]
-			var lbl := Label.new()
-			lbl.text = "● " + vdef.get("name", vid)
-			lbl.add_theme_color_override("font_color", Color(vdef.get("accent", "#c8a268")))
-			lbl.add_theme_font_size_override("font_size", 11)
-			lbl.name = "visitor_" + vid
-			_board_root.add_child(lbl)
-			_board_visitor_nodes[vid] = lbl
+		if not v.get("arrived", false):
+			continue
+		var vdef: Dictionary = _visitors_def[vid]
+		var vis_art: Texture2D = _load_texture_silent(_art_path_meeple(vid))
+		var vnode: Control
+		if vis_art:
+			var vm := TextureRect.new()
+			vm.texture = vis_art
+			vm.custom_minimum_size = Vector2(22, 22)
+			vm.size = Vector2(22, 22)
+			vm.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			vnode = vm
+		else:
+			var dot := Label.new()
+			dot.text = "●"
+			dot.add_theme_color_override("font_color", Color(vdef.get("accent", "#c8a268")))
+			dot.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
+			dot.add_theme_constant_override("outline_size", 3)
+			dot.add_theme_font_size_override("font_size", 14)
+			vnode = dot
+		vnode.name = "visitor_" + vid
+		_board_root.add_child(vnode)
+		_board_visitor_nodes[vid] = vnode
 	_position_meeples()
 
 
@@ -669,6 +748,12 @@ func _make_space_label(s: Dictionary) -> Label:
 		fs = 9
 	l.add_theme_color_override("font_color", col)
 	l.add_theme_font_size_override("font_size", fs)
+	# Outline + slight shadow so labels read over any painted background.
+	l.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
+	l.add_theme_constant_override("outline_size", 4)
+	l.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.6))
+	l.add_theme_constant_override("shadow_offset_x", 1)
+	l.add_theme_constant_override("shadow_offset_y", 1)
 	l.mouse_filter = Control.MOUSE_FILTER_PASS
 	# Make it clickable. Adjacent free-move costs 1 Time, no card needed.
 	# Spaces farther away still need explicit movement cards (Walk /
@@ -724,6 +809,32 @@ func _show_move_popup() -> void:
 	popup.position = Vector2i(int(get_viewport().get_mouse_position().x),
 		int(get_viewport().get_mouse_position().y))
 	popup.popup()
+
+
+func _toggle_board_fullscreen() -> void:
+	# Expand the board to fill the whole game viewport (covering
+	# the right column + bottom strip). Click the button again to
+	# restore the normal three-column layout.
+	_board_fullscreen = not _board_fullscreen
+	if _board_fullscreen:
+		_board_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		_board_root.offset_top = 52
+		_board_root.offset_left = 8
+		_board_root.offset_right = -8
+		_board_root.offset_bottom = -8
+		_board_expand_btn.text = "⤓"
+		_board_expand_btn.tooltip_text = "Restore normal layout"
+		_board_root.z_index = 10
+	else:
+		_board_root.set_anchors_preset(Control.PRESET_LEFT_WIDE)
+		_board_root.offset_top = 52
+		_board_root.offset_left = 8
+		_board_root.offset_bottom = -214
+		_board_root.offset_right = -440
+		_board_expand_btn.text = "⛶"
+		_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
+		_board_root.z_index = 0
+	_render_board()
 
 
 func _prompt_pick_destination(max_hops: int, reason: String) -> void:
@@ -929,6 +1040,73 @@ func _card_summary(card: Dictionary) -> String:
 	return "\n".join(lines)
 
 
+func _render_inventory() -> void:
+	if _inv_box == null:
+		return
+	for c in _inv_box.get_children():
+		c.queue_free()
+	# Bindle assembly status line first
+	var status := RichTextLabel.new()
+	status.bbcode_enabled = true
+	status.fit_content = true
+	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	status.add_theme_color_override("default_color", C_TEXT)
+	status.add_theme_font_size_override("normal_font_size", 10)
+	if _bindle_assembled:
+		status.text = "[color=#ffd07a][b]BINDLE assembled[/b][/color] — play LEAP at a threshold."
+	else:
+		var have_stick: bool = _inventory.has("stick")
+		var have_cloth: bool = _inventory.has("cloth")
+		var have_contents: bool = _has_contents()
+		status.text = "BINDLE: %s · %s · %s" % [
+			"[color=#7cffb0]stick[/color]" if have_stick else "[color=#7c8398]stick[/color]",
+			"[color=#7cffb0]cloth[/color]" if have_cloth else "[color=#7c8398]cloth[/color]",
+			"[color=#7cffb0]contents[/color]" if have_contents else "[color=#7c8398]contents[/color]",
+		]
+	_inv_box.add_child(status)
+	# Empty-state hint
+	if _inventory.is_empty():
+		var empty := Label.new()
+		empty.text = "  (nothing yet — Search at a pile space)"
+		empty.add_theme_font_size_override("font_size", 9)
+		empty.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.5))
+		_inv_box.add_child(empty)
+		return
+	# Item rows
+	for item_id: String in _inventory:
+		var item: Dictionary = _items_def.get(item_id, {})
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 4)
+		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var art: Texture2D = _load_texture_silent(_art_path_item(item_id))
+		if art:
+			var ico := TextureRect.new()
+			ico.texture = art
+			ico.custom_minimum_size = Vector2(24, 24)
+			ico.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			ico.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			row.add_child(ico)
+		var lbl := RichTextLabel.new()
+		lbl.bbcode_enabled = true
+		lbl.fit_content = true
+		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		lbl.add_theme_color_override("default_color", C_TEXT)
+		lbl.add_theme_font_size_override("normal_font_size", 10)
+		var cat: String = item.get("category", "")
+		var tag: String = ""
+		match cat:
+			"bindle_component": tag = "[color=#c8a268][b]B[/b][/color] "
+			"bindle_contents":  tag = "[color=#ffd07a][b]C[/b][/color] "
+			"consumable":       tag = "[color=#7cffb0][b]u[/b][/color] "
+			"passive":          tag = "[color=#9bc3ff][b]p[/b][/color] "
+			_:                  tag = ""
+		lbl.text = "%s%s" % [tag, item.get("title", item_id)]
+		row.add_child(lbl)
+		_inv_box.add_child(row)
+
+
 func _render_visitors() -> void:
 	for c in _visitors_box.get_children():
 		c.queue_free()
@@ -1025,6 +1203,7 @@ func _render() -> void:
 	_render_hand()
 	_render_tableau()
 	_render_visitors()
+	_render_inventory()
 	_update_advance_label()
 
 
