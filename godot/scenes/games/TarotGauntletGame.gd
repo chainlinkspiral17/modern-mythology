@@ -727,33 +727,48 @@ func _render_visitors() -> void:
 	for vid in _visitors_def:
 		var v: Dictionary = _visitors_def[vid]
 		var st: Dictionary = _visitors_state.get(vid, {})
-		var line := Label.new()
-		line.add_theme_font_size_override("font_size", 10)
-		var name_s: String = v.get("name", vid)
-		var status := ""
+		# Fully-hidden visitors (e.g. conditional Anya before her trigger)
+		# don't even occupy a slot in the list.
+		if v.get("hidden_until_arrived", false) and not st.get("arrived", false):
+			continue
+		var arrived: bool = st.get("arrived", false)
+		var name_s: String = v.get("name", vid) if arrived else String(v.get("placeholder_name", "someone"))
+		var accent: String = v.get("accent", "#c8a268") if arrived else "#6e6258"
+		var status: String = ""
+		var hint_line: String = ""
+
 		if st.get("connected", false):
 			status = " [color=#7cffb0]✓ connected[/color]"
 		elif st.get("claimed_turn", -1) >= 0:
 			var remaining: int = int(_setup.get("claim_turns_to_consume", 2)) - (_turn - int(st["claimed_turn"]))
 			status = " [color=#ff8060]✕ claimed (%d turns left)[/color]" % remaining
-		elif st.get("arrived", false):
+		elif arrived:
 			status = " [color=#c8a268]· at %s[/color]" % st.get("pos", "?")
 		elif st.has("scheduled_turn"):
 			var diff: int = int(st["scheduled_turn"]) - _turn
+			# Escalating hint: index by proximity to arrival (last hint = arriving now)
+			var hints: Array = v.get("pre_arrival_hints", [])
+			if not hints.is_empty():
+				var idx: int = clamp(hints.size() - 1 - max(0, diff), 0, hints.size() - 1)
+				hint_line = String(hints[idx])
 			if diff <= 0:
-				status = " [color=#7c8398]· arriving…[/color]"
+				status = " [color=#7c8398]· any moment[/color]"
 			else:
-				status = " [color=#7c8398]· arrives in %d[/color]" % diff
+				status = " [color=#7c8398]· ~%dt[/color]" % diff
 		else:
-			status = " [color=#7c8398]· dormant[/color]"
-		line.text = "● " + name_s + status
-		line.add_theme_color_override("font_color", Color(v.get("accent", "#c8a268")))
+			# Dormant unscheduled (e.g. conditional w/o hidden flag): show nothing
+			# rather than leak that they exist
+			continue
+
 		var rt := RichTextLabel.new()
 		rt.bbcode_enabled = true
 		rt.fit_content = true
 		rt.add_theme_color_override("default_color", C_TEXT)
 		rt.add_theme_font_size_override("normal_font_size", 10)
-		rt.text = "[color=%s]●[/color] %s%s" % [v.get("accent", "#c8a268"), name_s, status]
+		if hint_line != "" and not arrived:
+			rt.text = "[color=%s]●[/color] [i]%s[/i]%s\n   [color=#7c8398][i]%s[/i][/color]" % [accent, name_s, status, hint_line]
+		else:
+			rt.text = "[color=%s]●[/color] %s%s" % [accent, name_s, status]
 		_visitors_box.add_child(rt)
 
 

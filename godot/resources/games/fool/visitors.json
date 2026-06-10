@@ -14,7 +14,13 @@
       },
       "lore_token": "frasier_seen",
       "lore_text": "Still chasing shadows. Frasier sees you, you see Frasier.",
-      "accent": "#ffa860"
+      "accent": "#ffa860",
+      "placeholder_name": "someone in the back",
+      "pre_arrival_hints": [
+        "Voices murmur somewhere past the kitchen door.",
+        "Footsteps in the alcove — someone is waiting to come through.",
+        "The kitchen door swings. Someone is about to step out."
+      ]
     },
     {
       "id": "stranger",
@@ -56,7 +62,13 @@
       },
       "lore_token": "shift_change_seen",
       "lore_text": "Shift change. The next person who'll wipe this counter.",
-      "accent": "#d6c8a8"
+      "accent": "#d6c8a8",
+      "placeholder_name": "a truck in the lot",
+      "pre_arrival_hints": [
+        "Headlights swing across the parking lot — a truck idles.",
+        "A car door slams. Someone's outside smoking by the dumpster.",
+        "Boots crunch the gravel. The back door rattles in its frame."
+      ]
     },
     {
       "id": "bbs_caller",
@@ -69,7 +81,13 @@
       },
       "lore_token": "sysop_ember_ash",
       "lore_text": "sysop ember.ash.rest.bbs — the network has been counting the dead all night.",
-      "accent": "#9bc3ff"
+      "accent": "#9bc3ff",
+      "placeholder_name": "an unread line on the BBS",
+      "pre_arrival_hints": [
+        "The BBS terminal blinks an unread line in the corner.",
+        "The modem chirps. A connection is opening.",
+        "Text scrolls fast on the register screen. Someone is typing now."
+      ]
     },
     {
       "id": "anya_recording",
@@ -78,7 +96,8 @@
       "connect_via": {"kind": "auto_on_bundle_with_contents", "contents": "cassette_spine"},
       "lore_token": "priestess_older_than_chapter",
       "lore_text": "The Priestess is older than the chapter. Elicia has been recording you for years.",
-      "accent": "#b89ad6"
+      "accent": "#b89ad6",
+      "hidden_until_arrived": true
     }
   ]
 }
