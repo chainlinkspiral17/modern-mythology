@@ -23,7 +23,7 @@
     },
     {
       "t": "interlude",
-      "text": "V — The Hierophant",
+      "text": "V \u2014 The Hierophant",
       "sub": "Sweaty Sunday Sermonettes",
       "duration": 3
     },
@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "§ I. Maya Daigle, Age 7, Outside St. Jude's Acadian Church"
+      "text": "\u00a7 I. Maya Daigle, Age 7, Outside St. Jude's Acadian Church"
     },
     {
       "t": "narrate",
@@ -41,11 +41,11 @@
     },
     {
       "t": "narrate",
-      "text": "Maya's itchy Sunday dress stuck to her back. The dress was new. The dress was stiff. The dress had a tag that bit her between the shoulder blades every time she breathed in, and she had been breathing in all morning because the church inside had smelled wrong — like old incense and wet wood and something older than either of those, something Daddy said was just the building settling but Maya knew better, because buildings did not settle in a smell."
+      "text": "Maya's itchy Sunday dress stuck to her back. The dress was new. The dress was stiff. The dress had a tag that bit her between the shoulder blades every time she breathed in, and she had been breathing in all morning because the church inside had smelled wrong \u2014 like old incense and wet wood and something older than either of those, something Daddy said was just the building settling but Maya knew better, because buildings did not settle in a smell."
     },
     {
       "t": "narrate",
-      "text": "Daddy was talking to some men near the church steps. His voice was the low rumble he used when he was talking to other grown-ups — not the bright voice he used when he talked to her. Daddy looked tired. Not regular tired. Strings-cut tired. Like a puppet whose puppet-man had walked away from the show."
+      "text": "Daddy was talking to some men near the church steps. His voice was the low rumble he used when he was talking to other grown-ups \u2014 not the bright voice he used when he talked to her. Daddy looked tired. Not regular tired. Strings-cut tired. Like a puppet whose puppet-man had walked away from the show."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mr. Paul stopped near Daddy. Clapped one of the other men on the shoulder — a hard, deliberate sound, the sound of two pieces of wood being put together in a way that meant something. His voice wasn't loud like the preachers inside, but it felt louder somehow. Like it pushed the air out of the way."
+      "text": "Mr. Paul stopped near Daddy. Clapped one of the other men on the shoulder \u2014 a hard, deliberate sound, the sound of two pieces of wood being put together in a way that meant something. His voice wasn't loud like the preachers inside, but it felt louder somehow. Like it pushed the air out of the way."
     },
     {
       "t": "narrate",
@@ -101,7 +101,7 @@
     },
     {
       "t": "narrate",
-      "text": "§ II. Gloria Reyes, Waitress, D'Ambrosio's Brunch Shift"
+      "text": "\u00a7 II. Gloria Reyes, Waitress, D'Ambrosio's Brunch Shift"
     },
     {
       "t": "narrate",
@@ -144,9 +144,21 @@
       "text": "She hurried back toward the kitchen. The scent of old hymnals and hypocrisy clung to her apron."
     },
     {
+      "t": "show",
+      "char": "gloria",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
       "t": "say",
       "char": "gloria",
       "text": "He'll be there till three. Same as last week."
+    },
+    {
+      "t": "show",
+      "char": "hector",
+      "expr": "neutral",
+      "pos": "right"
     },
     {
       "t": "say",
@@ -172,7 +184,13 @@
     },
     {
       "t": "narrate",
-      "text": "§ III. Antonio D'Ambrosio, Mid-Afternoon Phone Call"
+      "text": "\u00a7 III. Antonio D'Ambrosio, Mid-Afternoon Phone Call"
+    },
+    {
+      "t": "show",
+      "char": "antonio",
+      "expr": "neutral",
+      "pos": "center"
     },
     {
       "t": "say",
@@ -181,11 +199,17 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio pinched the bridge of his nose. The phone hot against his ear. Even miles away in New Orleans — even with the Mississippi between them and several hundred miles of bad highway and the entire fucking idea of distance as a category — Paul's voice had the power to fray his nerves like a frayed extension cord finding a damp puddle."
+      "text": "Antonio pinched the bridge of his nose. The phone hot against his ear. Even miles away in New Orleans \u2014 even with the Mississippi between them and several hundred miles of bad highway and the entire fucking idea of distance as a category \u2014 Paul's voice had the power to fray his nerves like a frayed extension cord finding a damp puddle."
     },
     {
       "t": "narrate",
-      "text": "He paced the cramped office above his still-unfinished restaurant, Ember & Ash. The air was thick with sawdust and ambition and the particular smell of a building under renovation that had not yet decided whether the renovation would be completed. Below, the sounds of the construction crew on their thirty-minute lunch — Spanish on the radio, a hammer doing the slow bored work of hanging a thing the hanger had no opinion about."
+      "text": "He paced the cramped office above his still-unfinished restaurant, Ember & Ash. The air was thick with sawdust and ambition and the particular smell of a building under renovation that had not yet decided whether the renovation would be completed. Below, the sounds of the construction crew on their thirty-minute lunch \u2014 Spanish on the radio, a hammer doing the slow bored work of hanging a thing the hanger had no opinion about."
+    },
+    {
+      "t": "show",
+      "char": "paul",
+      "expr": "neutral",
+      "pos": "left"
     },
     {
       "t": "say",
@@ -198,7 +222,7 @@
     },
     {
       "t": "narrate",
-      "text": "Which meant — Antonio realized with the slow lurch of a man who has just understood something he had been deliberately not understanding — that Paul was beginning to consider Antonio the open one."
+      "text": "Which meant \u2014 Antonio realized with the slow lurch of a man who has just understood something he had been deliberately not understanding \u2014 that Paul was beginning to consider Antonio the open one."
     },
     {
       "t": "narrate",
@@ -251,7 +275,7 @@
     {
       "t": "say",
       "char": "antonio",
-      "text": "Hey, J. Call me back when you got a minute. Got some — got some weather coming in from the east. Nothing urgent. Just — call me."
+      "text": "Hey, J. Call me back when you got a minute. Got some \u2014 got some weather coming in from the east. Nothing urgent. Just \u2014 call me."
     },
     {
       "t": "narrate",
@@ -279,7 +303,7 @@
     },
     {
       "t": "narrate",
-      "text": "§ IV. John Frank, Late Afternoon, Park near the Old Armory"
+      "text": "\u00a7 IV. John Frank, Late Afternoon, Park near the Old Armory"
     },
     {
       "t": "narrate",
@@ -291,11 +315,11 @@
     },
     {
       "t": "narrate",
-      "text": "Quentin Paul. Even from a distance, commanding attention. The suit still immaculate, despite the day's accumulated sweat and sin. He walked with that unwavering, purposeful gait — like a man marching toward either salvation or conquest, probably both."
+      "text": "Quentin Paul. Even from a distance, commanding attention. The suit still immaculate, despite the day's accumulated sweat and sin. He walked with that unwavering, purposeful gait \u2014 like a man marching toward either salvation or conquest, probably both."
     },
     {
       "t": "narrate",
-      "text": "John scribbled in his notebook: Hierophant. Tradition. Institution. Interpretation of Sacred Knowledge. But the rigidity — borders on tyranny?"
+      "text": "John scribbled in his notebook: Hierophant. Tradition. Institution. Interpretation of Sacred Knowledge. But the rigidity \u2014 borders on tyranny?"
     },
     {
       "t": "narrate",
@@ -303,7 +327,7 @@
     },
     {
       "t": "narrate",
-      "text": "Paul adjusted his tie. Pulled out a phone. His voice carried faintly on the breeze — sharp, clipped, commanding. Giving orders. Imposing structure on something at the other end of the line that resented, at the same volume, having structure imposed upon it."
+      "text": "Paul adjusted his tie. Pulled out a phone. His voice carried faintly on the breeze \u2014 sharp, clipped, commanding. Giving orders. Imposing structure on something at the other end of the line that resented, at the same volume, having structure imposed upon it."
     },
     {
       "t": "narrate",

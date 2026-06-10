@@ -23,7 +23,7 @@
     },
     {
       "t": "interlude",
-      "text": "XI — Justice",
+      "text": "XI \u2014 Justice",
       "sub": "Scales Already Shattered",
       "duration": 3
     },
@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "§ I. Erica Campbell, the next morning"
+      "text": "\u00a7 I. Erica Campbell, the next morning"
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had been working on it since five-thirty AM. The first three pages were the easy part — recitals, definitions, the standard architectural scaffolding any properly drafted instrument required. The next eight pages were the hard part, because the next eight pages had to do something Erica had not, in fourteen years of practice, had to do quite this way: they had to construct a legal vehicle that would let Alberto D'Ambrosio rescue his brother after his brother had made a specific bad decision, without being either visible to the brother as a rescue or deniable to a third party as a transaction. The vehicle had to perform two contradictory functions at once. The vehicle had to be, in two distinct senses, invisible: invisible to Antonio's pride, and invisible to whoever would, eventually, be looking for evidence of Alberto's involvement."
+      "text": "She had been working on it since five-thirty AM. The first three pages were the easy part \u2014 recitals, definitions, the standard architectural scaffolding any properly drafted instrument required. The next eight pages were the hard part, because the next eight pages had to do something Erica had not, in fourteen years of practice, had to do quite this way: they had to construct a legal vehicle that would let Alberto D'Ambrosio rescue his brother after his brother had made a specific bad decision, without being either visible to the brother as a rescue or deniable to a third party as a transaction. The vehicle had to perform two contradictory functions at once. The vehicle had to be, in two distinct senses, invisible: invisible to Antonio's pride, and invisible to whoever would, eventually, be looking for evidence of Alberto's involvement."
     },
     {
       "t": "narrate",
@@ -124,9 +124,21 @@
       "text": "At eight forty-seven AM her assistant Marcus, who was not supposed to be at the office on a Saturday but who had texted her at six and asked if she needed anything and to whom Erica had said no thank you and who had come in anyway, knocked on her door and pushed it open carrying two coffees."
     },
     {
+      "t": "show",
+      "char": "erica",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
       "t": "say",
       "char": "erica",
       "text": "You shouldn't be here, Marcus."
+    },
+    {
+      "t": "show",
+      "char": "marcus",
+      "expr": "neutral",
+      "pos": "right"
     },
     {
       "t": "say",
@@ -207,7 +219,7 @@
     },
     {
       "t": "narrate",
-      "text": "She looked at the eleven-page draft on her monitor. She looked at the second monitor, where the Newsom v. PetroTex settlement still sat open from yesterday in case she needed to reference its boilerplate. She looked at the small framed photograph on the corner of the desk, the only personal item in the office — her mother, age fifty-one, in a sun hat in Galveston in 1996, smiling at someone outside the frame whose identity Erica had never been told."
+      "text": "She looked at the eleven-page draft on her monitor. She looked at the second monitor, where the Newsom v. PetroTex settlement still sat open from yesterday in case she needed to reference its boilerplate. She looked at the small framed photograph on the corner of the desk, the only personal item in the office \u2014 her mother, age fifty-one, in a sun hat in Galveston in 1996, smiling at someone outside the frame whose identity Erica had never been told."
     },
     {
       "t": "narrate",
@@ -240,7 +252,7 @@
     {
       "t": "say",
       "char": "erica",
-      "text": "And Marcus —"
+      "text": "And Marcus \u2014"
     },
     {
       "t": "say",
@@ -259,7 +271,7 @@
     },
     {
       "t": "narrate",
-      "text": "He went to do it. Erica stood up. She crossed to the glass wall. The Houston Saturday outside was beginning, slowly, to fill in. Cars on the freeway. The hawk from yesterday — or the hawk's shift-relief — circling on a thermal twelve stories below."
+      "text": "He went to do it. Erica stood up. She crossed to the glass wall. The Houston Saturday outside was beginning, slowly, to fill in. Cars on the freeway. The hawk from yesterday \u2014 or the hawk's shift-relief \u2014 circling on a thermal twelve stories below."
     },
     {
       "t": "narrate",
@@ -287,11 +299,11 @@
     },
     {
       "t": "narrate",
-      "text": "§ II. Anna Logue, the same morning, across town"
+      "text": "\u00a7 II. Anna Logue, the same morning, across town"
     },
     {
       "t": "narrate",
-      "text": "The Helvetica Neue Bold proclaiming D'AMBROSIO'S: EMBER & ASH on Anna Logue's third monitor — curated, naturally, for optimal color fidelity and minimal eye strain — felt less like branding and more like an accusation."
+      "text": "The Helvetica Neue Bold proclaiming D'AMBROSIO'S: EMBER & ASH on Anna Logue's third monitor \u2014 curated, naturally, for optimal color fidelity and minimal eye strain \u2014 felt less like branding and more like an accusation."
     },
     {
       "t": "narrate",
@@ -303,11 +315,11 @@
     },
     {
       "t": "narrate",
-      "text": "The whole damn campaign for Alberto D'Ambrosio's Houston concept — a phoenix-from-the-ashes narrative built on questionable insurance claims and inherited trauma — felt off-brand. Not her brand, anyway. Her brand was clean lines, negative space, ethically sourced typefaces, and the quiet hum of expensive air purifiers in her meticulously greige Houston high-rise office, three floors down from a law firm whose name, if she squinted at the building directory in the lobby, she would recognize from the Texas Monthly coverage of the PetroTex case last year."
+      "text": "The whole damn campaign for Alberto D'Ambrosio's Houston concept \u2014 a phoenix-from-the-ashes narrative built on questionable insurance claims and inherited trauma \u2014 felt off-brand. Not her brand, anyway. Her brand was clean lines, negative space, ethically sourced typefaces, and the quiet hum of expensive air purifiers in her meticulously greige Houston high-rise office, three floors down from a law firm whose name, if she squinted at the building directory in the lobby, she would recognize from the Texas Monthly coverage of the PetroTex case last year."
     },
     {
       "t": "narrate",
-      "text": "This D'Ambrosio gig. Messy. Garish. Smelled faintly of desperation and possibly — gumbo. Ugh."
+      "text": "This D'Ambrosio gig. Messy. Garish. Smelled faintly of desperation and possibly \u2014 gumbo. Ugh."
     },
     {
       "t": "narrate",
@@ -319,7 +331,7 @@
     },
     {
       "t": "narrate",
-      "text": "Deep. Profoundly generic. She had written it, of course, channeling that specific blend of faux-mysticism and aspirational consumerism that clients like Alberto seemed to eat up with a reclaimed artisanal spoon. But lately, the words echoed back with a disquieting resonance. Her own meticulously ordered world — the precise grid system of her calendar, the carefully balanced portfolio, the relationship with Ben (bless his equally anxious, MFA-burdened heart) — felt increasingly unstable. Like a badly kerned headline about to fall off the page."
+      "text": "Deep. Profoundly generic. She had written it, of course, channeling that specific blend of faux-mysticism and aspirational consumerism that clients like Alberto seemed to eat up with a reclaimed artisanal spoon. But lately, the words echoed back with a disquieting resonance. Her own meticulously ordered world \u2014 the precise grid system of her calendar, the carefully balanced portfolio, the relationship with Ben (bless his equally anxious, MFA-burdened heart) \u2014 felt increasingly unstable. Like a badly kerned headline about to fall off the page."
     },
     {
       "t": "narrate",
@@ -327,7 +339,7 @@
     },
     {
       "t": "narrate",
-      "text": "She adjusted her oversized, architecturally inspired glasses. This wasn't design; it was damage control. Crafting corporate narratives. Shaping perceptions. Polishing turds until they shone — or at least reflected market share."
+      "text": "She adjusted her oversized, architecturally inspired glasses. This wasn't design; it was damage control. Crafting corporate narratives. Shaping perceptions. Polishing turds until they shone \u2014 or at least reflected market share."
     },
     {
       "t": "narrate",
@@ -338,6 +350,12 @@
       "text": "Her phone buzzed. Ben."
     },
     {
+      "t": "show",
+      "char": "ben",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "say",
       "char": "ben",
       "text": "coffee shop vibes later? need to deconstruct the inherent performativity of latte art."
@@ -345,6 +363,12 @@
     {
       "t": "narrate",
       "text": "Anna smiled faintly. Ben. Her fellow traveler in the land of neurotic over-analysis. Their relationship wasn't exactly passion; it was more like a peer-reviewed study in shared anxieties and meticulously curated vintage sweaters. Comfortable. Predictable. And maybe, just maybe, contributing to the vague sense of hollowness she was trying so hard to ignore."
+    },
+    {
+      "t": "show",
+      "char": "anna",
+      "expr": "neutral",
+      "pos": "left"
     },
     {
       "t": "say",
@@ -365,7 +389,7 @@
     },
     {
       "t": "narrate",
-      "text": "Alberto kept calling. His voice too close, too demanding, hinting at — well, she preferred not to analyze those particular data points. He saw her, she suspected, as another asset to be acquired, another element to control in his grand design. It was exhausting. It was also, she admitted with a flicker of self-disgust, vaguely flattering in a deeply problematic way."
+      "text": "Alberto kept calling. His voice too close, too demanding, hinting at \u2014 well, she preferred not to analyze those particular data points. He saw her, she suspected, as another asset to be acquired, another element to control in his grand design. It was exhausting. It was also, she admitted with a flicker of self-disgust, vaguely flattering in a deeply problematic way."
     },
     {
       "t": "narrate",
@@ -377,7 +401,7 @@
     },
     {
       "t": "narrate",
-      "text": "Deconstruction. That felt right. Like those Corporate Idols pieces she did on the side, twisting familiar brand marks into commentaries on consumer culture. That felt true. This — this felt like putting lipstick on a vaguely menacing pig. A pig possibly involved in whatever shady dealings had funded this whole phoenix-rising enterprise in the first place."
+      "text": "Deconstruction. That felt right. Like those Corporate Idols pieces she did on the side, twisting familiar brand marks into commentaries on consumer culture. That felt true. This \u2014 this felt like putting lipstick on a vaguely menacing pig. A pig possibly involved in whatever shady dealings had funded this whole phoenix-rising enterprise in the first place."
     },
     {
       "t": "narrate",
@@ -385,11 +409,11 @@
     },
     {
       "t": "narrate",
-      "text": "But Anna felt a glitch in the matrix. A hairline crack spreading across the polished surface of her world. The weight of consequences, the imbalance she had ignored — it was tipping the scales."
+      "text": "But Anna felt a glitch in the matrix. A hairline crack spreading across the polished surface of her world. The weight of consequences, the imbalance she had ignored \u2014 it was tipping the scales."
     },
     {
       "t": "narrate",
-      "text": "Her quest, she realized, wasn't about nailing the D'Ambrosio campaign anymore. It wasn't about billable hours or impressing Alberto or even finding the perfect shade of millennial pink. It was about stripping away the layers of artifice — her own included — and finding something real beneath."
+      "text": "Her quest, she realized, wasn't about nailing the D'Ambrosio campaign anymore. It wasn't about billable hours or impressing Alberto or even finding the perfect shade of millennial pink. It was about stripping away the layers of artifice \u2014 her own included \u2014 and finding something real beneath."
     },
     {
       "t": "narrate",
@@ -417,7 +441,7 @@
     },
     {
       "t": "narrate",
-      "text": "And began, on a new layer above it, to build a Corporate Idols version of the D'Ambrosio mark — the elegant, fictional, vaguely Italianate script of the flagship riverboat twisted just enough that the ascenders of the D and the b became, recognizably, the wrought-iron columns of a courtroom; the apostrophe, recognizably, a gavel; the underline, recognizably, the kind of redaction-bar that appeared in declassified documents. Subtle enough to deny. Specific enough to read. The kind of piece that would, if she ever exhibited it, get her sued or hired, depending entirely on the lawyer. Possibly both. Probably both."
+      "text": "And began, on a new layer above it, to build a Corporate Idols version of the D'Ambrosio mark \u2014 the elegant, fictional, vaguely Italianate script of the flagship riverboat twisted just enough that the ascenders of the D and the b became, recognizably, the wrought-iron columns of a courtroom; the apostrophe, recognizably, a gavel; the underline, recognizably, the kind of redaction-bar that appeared in declassified documents. Subtle enough to deny. Specific enough to read. The kind of piece that would, if she ever exhibited it, get her sued or hired, depending entirely on the lawyer. Possibly both. Probably both."
     },
     {
       "t": "narrate",
@@ -425,7 +449,7 @@
     },
     {
       "t": "narrate",
-      "text": "At ten o'clock she leaned back, looked at what she had made, and felt — for the first time in eighteen months — the small pure heat in the chest that meant she had made a true thing."
+      "text": "At ten o'clock she leaned back, looked at what she had made, and felt \u2014 for the first time in eighteen months \u2014 the small pure heat in the chest that meant she had made a true thing."
     },
     {
       "t": "narrate",
@@ -473,7 +497,7 @@
     },
     {
       "t": "narrate",
-      "text": "He was, however, beginning to think — in the way men of his line of work were paid to think — that the two appointments might, eventually, prove to be the same one."
+      "text": "He was, however, beginning to think \u2014 in the way men of his line of work were paid to think \u2014 that the two appointments might, eventually, prove to be the same one."
     },
     {
       "t": "narrate",

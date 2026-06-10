@@ -23,7 +23,7 @@
     },
     {
       "t": "interlude",
-      "text": "IV — The Emperor",
+      "text": "IV \u2014 The Emperor",
       "sub": "Thicker Than Water, Slower Than Time",
       "duration": 3
     },
@@ -45,7 +45,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sixty years of sweat and deals done in shadows thick as gumbo gravy, all to build this — this floating palace of fusion confusion. D'Ambrosio's. His name plastered on the side in gaudy, vaguely Italianate script that was, he was almost certain, peeling."
+      "text": "Sixty years of sweat and deals done in shadows thick as gumbo gravy, all to build this \u2014 this floating palace of fusion confusion. D'Ambrosio's. His name plastered on the side in gaudy, vaguely Italianate script that was, he was almost certain, peeling."
     },
     {
       "t": "narrate",
@@ -97,7 +97,7 @@
     },
     {
       "t": "narrate",
-      "text": "The air hung thick in the helm — a miasma of yesterday's garlic, tomorrow's dread, and the ever-present humidity creeping in from the sluggish river outside."
+      "text": "The air hung thick in the helm \u2014 a miasma of yesterday's garlic, tomorrow's dread, and the ever-present humidity creeping in from the sluggish river outside."
     },
     {
       "t": "narrate",
@@ -125,7 +125,7 @@
     },
     {
       "t": "narrate",
-      "text": "Alberto was his father's grandson — meticulous, ambitious, and probably just as capable of gutting you with a polite smile. Dante respected the boy, maybe. Did not much like him. Too much like looking in a mirror that did not have the decency to crack at least once across the corner."
+      "text": "Alberto was his father's grandson \u2014 meticulous, ambitious, and probably just as capable of gutting you with a polite smile. Dante respected the boy, maybe. Did not much like him. Too much like looking in a mirror that did not have the decency to crack at least once across the corner."
     },
     {
       "t": "narrate",
@@ -149,7 +149,7 @@
     },
     {
       "t": "narrate",
-      "text": "Down on the dining room floor, Nicola finished walking some out-of-town suit to Table 14 and returned to the hostess stand. Dante watched her movements — too fluid, too unaware of the weight she carried."
+      "text": "Down on the dining room floor, Nicola finished walking some out-of-town suit to Table 14 and returned to the hostess stand. Dante watched her movements \u2014 too fluid, too unaware of the weight she carried."
     },
     {
       "t": "narrate",
@@ -177,7 +177,7 @@
     },
     {
       "t": "narrate",
-      "text": "The out-of-town suit — the man Nicola had just seated, alone, no order yet — was leaving. Standing up. Smoothing his lapels with the small unconscious gesture of a man who had once cared, deeply, about his appearance."
+      "text": "The out-of-town suit \u2014 the man Nicola had just seated, alone, no order yet \u2014 was leaving. Standing up. Smoothing his lapels with the small unconscious gesture of a man who had once cared, deeply, about his appearance."
     },
     {
       "t": "narrate",
@@ -208,9 +208,21 @@
       "text": "He set the bourbon down. He moved to the small intercom that connected the helm to the bar. He depressed the button."
     },
     {
+      "t": "show",
+      "char": "dante",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
       "t": "say",
       "char": "dante",
       "text": "Sammy."
+    },
+    {
+      "t": "show",
+      "char": "sammy",
+      "expr": "neutral",
+      "pos": "right"
     },
     {
       "t": "say",
@@ -353,7 +365,7 @@
     },
     {
       "t": "narrate",
-      "text": "He poured another bourbon. He drank it standing. He looked at the card, and he looked at the photograph of his wife on the wall opposite the desk — the photograph he had not replaced in twenty-three years, because he had decided, in the year after she died, that the photograph he chose to keep up was the one he had been looking at when she was alive."
+      "text": "He poured another bourbon. He drank it standing. He looked at the card, and he looked at the photograph of his wife on the wall opposite the desk \u2014 the photograph he had not replaced in twenty-three years, because he had decided, in the year after she died, that the photograph he chose to keep up was the one he had been looking at when she was alive."
     },
     {
       "t": "narrate",
@@ -377,7 +389,7 @@
     },
     {
       "t": "narrate",
-      "text": "He picked up the card. He held it for a moment over the small brass ashtray on the corner of the desk — the ashtray his father had given him, the one with the bent edge he had never had repaired because the bent edge was the part his father had bent. He held the card there, lighter in his other hand."
+      "text": "He picked up the card. He held it for a moment over the small brass ashtray on the corner of the desk \u2014 the ashtray his father had given him, the one with the bent edge he had never had repaired because the bent edge was the part his father had bent. He held the card there, lighter in his other hand."
     },
     {
       "t": "narrate",
@@ -393,7 +405,7 @@
     },
     {
       "t": "narrate",
-      "text": "He drained the bourbon. He stood up, smoothed his shirt — the white shirt with the red wine stain near the third button that he had not had the decency to change before service — and he walked out of the office, down the narrow stairs, into the heart of the boat that was both his kingdom and his cage."
+      "text": "He drained the bourbon. He stood up, smoothed his shirt \u2014 the white shirt with the red wine stain near the third button that he had not had the decency to change before service \u2014 and he walked out of the office, down the narrow stairs, into the heart of the boat that was both his kingdom and his cage."
     },
     {
       "t": "narrate",
