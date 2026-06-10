@@ -292,12 +292,15 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	var tint_holder := Control.new()
 	tint_holder.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	tint_holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# tint_holder needs clip_contents so manually-positioned textures
+	# (top-biased COVER, see _layout_portrait_texture) don't bleed
+	# outside the slot bounds.
+	tint_holder.clip_contents = true
 	wrapper.add_child(tint_holder)
 	wrapper.set_meta("tint", tint_holder)
 
 	if not has_face and FileAccess.file_exists(comp_path):
-		print("[CharLayer] LOADING SUBSTRATE COMPOSITION for ",
-		      char_name, " (key=", key, ") from ", comp_path)
+		print("[CharLayer] %s (key=%s): COMPOSITION  %s" % [char_name, key, comp_path])
 		var comp := Control.new()
 		comp.set_script(ASCII_COMPOSITION_SCRIPT)
 		comp.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -307,26 +310,31 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 		wrapper.set_meta("kind", "composition")
 		_apply_texture_tint(wrapper, expr)
 	else:
-		var tex := _resolve_portrait_texture(key, expr)
+		var resolved := _resolve_portrait_texture_verbose(key, expr)
+		var tex: Texture2D = resolved["texture"]
+		var path: String   = resolved["path"]
 		if tex != null:
+			print("[CharLayer] %s (key=%s): TEXTURE      %s  [%dx%d]" %
+				  [char_name, key, path, int(tex.get_size().x), int(tex.get_size().y)])
 			var tr := TextureRect.new()
-			tr.texture      = tex
-			# Stretch mode adapts to the source aspect so any asset
-			# shape (square face crop, square card art, landscape
-			# gallery card, tall full-body) renders without the figure
-			# walking off-screen. See _pick_stretch_mode below.
-			# EXPAND_IGNORE_SIZE forces the rect to the slot dimensions
-			# rather than the texture's native size, which would
-			# otherwise blow huge cards past the slot.
-			tr.stretch_mode = _pick_stretch_mode(tex)
-			tr.expand_mode  = TextureRect.EXPAND_IGNORE_SIZE
-			tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-			tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			tr.texture       = tex
+			tr.mouse_filter  = Control.MOUSE_FILTER_IGNORE
 			tint_holder.add_child(tr)
+			# Manually compute scale + position to fill the slot with
+			# the source — always COVER (no letterbox), with a face-bias
+			# vertical alignment so tall full-body images show head +
+			# torso instead of cropping the head off. See
+			# _layout_portrait_texture for the math.
+			_layout_portrait_texture(tr, tex)
 			wrapper.set_meta("kind", "texture")
 			if not _has_expr_png(key, expr):
 				_apply_texture_tint(wrapper, expr)
 		else:
+			# Nothing matched — log every path we tried so the author can
+			# see which name / location to use.
+			print("[CharLayer] %s (key=%s): PLACEHOLDER  no asset found" % [char_name, key])
+			for tried in resolved["tried"]:
+				print("    tried: %s" % tried)
 			tint_holder.queue_free()
 			wrapper.remove_meta("tint")
 			wrapper.add_child(_make_placeholder(char_name, expr))
@@ -360,6 +368,8 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 			var new_tex := _resolve_portrait_texture(key, expr)
 			if new_tex != null and tr != null:
 				tr.texture = new_tex
+				# Relayout — new texture may be a different aspect.
+				_layout_portrait_texture(tr, new_tex)
 		if _has_expr_png(key, expr):
 			if tint_holder != null:
 				tint_holder.modulate = Color.WHITE
@@ -376,78 +386,161 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 const PORTRAIT_GALLERY_ROOT := "res://assets/gallery/"
 
 
-# Texture lookup chain — prefers new gallery art over the old per-expression
-# slabs in characters/. Order:
-#   1. gallery/<char>_face.png        ← tight face+torso crop, ideal for slot
-#   2. gallery/portrait_<char>_face.png  ← card-style face frame
-#   3. gallery/portrait_<char>_0.png   ← first animation frame
-#   4. gallery/<char>.png              ← landscape gallery card (vol6+ chars
-#                                         often only have this; stretch-mode
-#                                         logic handles the aspect mismatch)
-#   5. characters/<char>/<char>_<expr>.png  ← old per-expression art
-#   6. characters/<char>/<char>_neutral.png ← old neutral fallback
+# Texture lookup chain — every plausible path the user might have
+# placed art at, in preference order. Diagnostic mode is on (verbose
+# resolver below) so the Godot console shows exactly which path was
+# chosen per character — if a char shows up as PLACEHOLDER, the
+# console lists every path that was tried so you know what to name
+# the asset.
 #
-# Stretch-mode picking (see _pick_stretch_mode) adapts to whatever shape
-# actually loads — square face crop, square card, landscape gallery card,
-# tall full-body — so the figure never walks off-screen.
+# Order, most-canonical first:
+#   1.  gallery/<char>_face.png            ← face+torso crop, ideal slot
+#   2.  gallery/portrait_<char>_face.png   ← card-style face frame
+#   3.  gallery/portrait_<char>_0.png      ← first animation frame
+#   4.  gallery/<char>.png                 ← gallery card (canonical)
+#   5.  gallery/<char>.jpg                 ← gallery card jpg variant
+#   6.  gallery/<char>_portrait.png        ← alternative naming
+#   7.  gallery/<char>_clean.png           ← already-used "clean" suffix
+#   8.  gallery/<char>_neutral.png         ← matches scene expr default
+#   9.  characters/<char>/<char>_<expr>.png ← old per-expression
+#  10.  characters/<char>/<char>_neutral.png ← old neutral
+#  11.  characters/<char>.png              ← flat alternative
+#  12.  portraits/<char>.png               ← if you keep a separate dir
 #
-# Falls back to Image.load_from_file when ResourceLoader doesn't have
-# the asset registered (i.e. the .import sidecar wasn't generated yet —
-# common during authoring when PNGs are dropped in but the editor
-# hasn't reimported).
+# Stretch logic moved into _layout_portrait_texture below — always
+# COVER (no letterbox), top-biased vertically so tall body shots show
+# head + torso instead of cropping the face off.
+func _resolve_portrait_texture_verbose(key: String, expr: String) -> Dictionary:
+	var tried := [
+		"%s%s_face.png" % [PORTRAIT_GALLERY_ROOT, key],
+		"%sportrait_%s_face.png" % [PORTRAIT_GALLERY_ROOT, key],
+		"%sportrait_%s_0.png" % [PORTRAIT_GALLERY_ROOT, key],
+		"%s%s.png" % [PORTRAIT_GALLERY_ROOT, key],
+		"%s%s.jpg" % [PORTRAIT_GALLERY_ROOT, key],
+		"%s%s_portrait.png" % [PORTRAIT_GALLERY_ROOT, key],
+		"%s%s_clean.png" % [PORTRAIT_GALLERY_ROOT, key],
+		"%s%s_neutral.png" % [PORTRAIT_GALLERY_ROOT, key],
+		"%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr],
+		"%s%s/%s_neutral.png" % [PORTRAIT_TEX_ROOT, key, key],
+		"%s%s.png" % [PORTRAIT_TEX_ROOT, key],
+		"res://assets/portraits/%s.png" % [key],
+	]
+	for path: String in tried:
+		var t := _load_texture_with_fallback(path)
+		if t != null:
+			return {"texture": t, "path": path, "tried": tried}
+	# Fuzzy fallback — scan gallery/ for any file whose stem contains the
+	# key (case-insensitive). Catches naming variants like
+	# johnfrank_face.png when key=john, sam_miller_neutral.png when
+	# key=sam_miller, etc.
+	var fuzzy := _find_in_gallery_index(key)
+	if fuzzy["texture"] != null:
+		tried.append(fuzzy["path"] + "  (fuzzy)")
+		return {"texture": fuzzy["texture"], "path": fuzzy["path"], "tried": tried}
+	return {"texture": null, "path": "", "tried": tried}
+
+
+# Lazy-built case-insensitive index of every PNG/JPG in assets/gallery/.
+# Used by the fuzzy fallback in _resolve_portrait_texture_verbose. Keyed
+# by lowercase filename stem; value is the full res:// path.
+static var _gallery_index: Dictionary = {}
+static var _gallery_index_built: bool = false
+
+func _build_gallery_index() -> void:
+	if _gallery_index_built:
+		return
+	_gallery_index_built = true
+	var dir := DirAccess.open(PORTRAIT_GALLERY_ROOT)
+	if dir == null:
+		return
+	dir.list_dir_begin()
+	var fn := dir.get_next()
+	while fn != "":
+		if not dir.current_is_dir():
+			var lower := fn.to_lower()
+			if lower.ends_with(".png") or lower.ends_with(".jpg") or lower.ends_with(".jpeg"):
+				var stem := lower.get_basename()
+				_gallery_index[stem] = PORTRAIT_GALLERY_ROOT + fn
+		fn = dir.get_next()
+	print("[CharLayer] gallery index built · %d entries" % _gallery_index.size())
+
+
+func _find_in_gallery_index(key: String) -> Dictionary:
+	_build_gallery_index()
+	var k := key.to_lower()
+	# Prefer canonical suffixes if any stem matches them exactly.
+	var preferred := [k + "_face", k + "_portrait", k + "_clean",
+	                  k, "portrait_" + k + "_face", "portrait_" + k + "_0",
+	                  "portrait_" + k, k + "_neutral"]
+	for stem: String in preferred:
+		if stem in _gallery_index:
+			var path: String = _gallery_index[stem]
+			var t := _load_texture_with_fallback(path)
+			if t != null:
+				return {"texture": t, "path": path}
+	# Substring fallback — any filename whose stem CONTAINS the key.
+	# Sorted by stem length asc so the closest match wins (e.g.
+	# "john" matches "johnfrank" before "johnfrank_face_cutout").
+	var candidates: Array = []
+	for stem in _gallery_index:
+		if k in stem:
+			candidates.append(stem)
+	candidates.sort_custom(func(a, b): return a.length() < b.length())
+	for stem: String in candidates:
+		var path: String = _gallery_index[stem]
+		var t := _load_texture_with_fallback(path)
+		if t != null:
+			return {"texture": t, "path": path}
+	return {"texture": null, "path": ""}
+
+
+# Back-compat: callers (update_expr) still use the old resolver name.
 func _resolve_portrait_texture(key: String, expr: String) -> Texture2D:
-	# New gallery art, face-cropped first.
-	var face_path: String = "%s%s_face.png" % [PORTRAIT_GALLERY_ROOT, key]
-	var t := _load_texture_with_fallback(face_path)
-	if t != null:
-		return t
-	var card_face: String = "%sportrait_%s_face.png" % [PORTRAIT_GALLERY_ROOT, key]
-	t = _load_texture_with_fallback(card_face)
-	if t != null:
-		return t
-	var card_first: String = "%sportrait_%s_0.png" % [PORTRAIT_GALLERY_ROOT, key]
-	t = _load_texture_with_fallback(card_first)
-	if t != null:
-		return t
-	# Landscape gallery card — common for vol6+ chars without face crops yet.
-	var gallery_path: String = "%s%s.png" % [PORTRAIT_GALLERY_ROOT, key]
-	t = _load_texture_with_fallback(gallery_path)
-	if t != null:
-		return t
-	# Old per-expression / neutral art at characters/<char>/.
-	var expr_path: String = "%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr]
-	t = _load_texture_with_fallback(expr_path)
-	if t != null:
-		return t
-	var neutral_path: String = "%s%s/%s_neutral.png" % [PORTRAIT_TEX_ROOT, key, key]
-	return _load_texture_with_fallback(neutral_path)
+	return _resolve_portrait_texture_verbose(key, expr)["texture"]
 
 
-# Adaptive stretch mode based on source aspect vs slot aspect.
-# The slot is 300×320 (aspect 0.9375). Sources we encounter:
-#   · face crops at 300×330, 278×302  (aspect ~0.92-0.95)  ← matches slot
-#   · card portraits at 810×858       (aspect 0.94)        ← matches slot
-#   · landscape gallery cards         (aspect 1.5-1.8)     ← wider
-#   · tall full-body characters/      (aspect 0.55-0.65)   ← taller
-#   · square placeholders / icons     (aspect 1.0)         ← roughly matches
-#
-# When the source is close to the slot aspect, COVER fills the slot tightly
-# (any minor mismatch crops the edges, preserving the figure). When the
-# source is significantly different, FIT (KEEP_ASPECT_CENTERED) shows the
-# whole image with letterbox/pillarbox bars — better to see the figure
-# letterboxed than to have it cropped off-screen.
-const _SLOT_ASPECT: float = SPRITE_W / SPRITE_H
-const _ASPECT_TOLERANCE: float = 0.25   # ±25% — within this, use COVER
+# Manual layout that always fills the slot. Compute scale to COVER
+# the slot, then position with horizontal-center, vertical-top-bias.
+# Wrapper has clip_contents so anything outside the slot bounds is
+# cropped away. Net behavior:
+#   · square face crops (~slot aspect) → fills tight, centered
+#   · square card portraits → fills tight, centered
+#   · landscape gallery cards → fills width, top-biased so head shows
+#   · tall full-body images  → fills height, head shows (legs crop)
+# No letterbox bars. No tiny figures floating in empty slots.
+const _SLOT_ASPECT: float       = SPRITE_W / SPRITE_H
+const _TOP_BIAS_RATIO: float    = 0.85   # if src_aspect / slot_aspect < this, top-align
 
-func _pick_stretch_mode(tex: Texture2D) -> int:
+func _layout_portrait_texture(tr: TextureRect, tex: Texture2D) -> void:
 	var sz := tex.get_size()
-	if sz.y <= 0.0:
-		return TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	if sz.x <= 0.0 or sz.y <= 0.0:
+		# Defensive — fall back to full-rect cover.
+		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		tr.expand_mode  = TextureRect.EXPAND_IGNORE_SIZE
+		return
+	# Scale so the smaller dimension fills the slot — same math as
+	# STRETCH_KEEP_ASPECT_COVERED, but we do it ourselves so we can
+	# bias the crop alignment.
+	var s: float = maxf(SPRITE_W / sz.x, SPRITE_H / sz.y)
+	var disp_w: float = sz.x * s
+	var disp_h: float = sz.y * s
+	# Horizontal: center (figures usually centered in their crops).
+	var x_off: float = (SPRITE_W - disp_w) * 0.5
+	# Vertical: if source is significantly taller than slot, top-align
+	# so the face/head is visible (full-body crops put the face at the
+	# top). Otherwise center.
 	var src_aspect: float = sz.x / sz.y
 	var ratio: float = src_aspect / _SLOT_ASPECT
-	if ratio < (1.0 - _ASPECT_TOLERANCE) or ratio > (1.0 + _ASPECT_TOLERANCE):
-		return TextureRect.STRETCH_KEEP_ASPECT_CENTERED   # fit — letterbox/pillarbox
-	return TextureRect.STRETCH_KEEP_ASPECT_COVERED         # cover — fills slot
+	var y_off: float
+	if ratio < _TOP_BIAS_RATIO:
+		y_off = 0.0
+	else:
+		y_off = (SPRITE_H - disp_h) * 0.5
+	tr.expand_mode  = TextureRect.EXPAND_IGNORE_SIZE
+	tr.stretch_mode = TextureRect.STRETCH_SCALE
+	tr.size = Vector2(disp_w, disp_h)
+	tr.position = Vector2(x_off, y_off)
 
 
 func _load_texture_with_fallback(path: String) -> Texture2D:
