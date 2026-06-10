@@ -37,8 +37,13 @@
       "t": "narrate"
     },
     {
-      "text": "Tem registered the second knock the way she had registered the first — by the sound passing through the cedar wall of the cabin and into the space behind her sternum, where the bell-note the crow had made was still vibrating. The kind of knock a person makes at a door when the person knows the people inside are awake. Confident. Not loud. The knock of somebody who had come up the road and across the porch and was now at the door, waiting.",
+      "text": "Tem registered the second knock the way she had registered the first \u2014 by the sound passing through the cedar wall of the cabin and into the space behind her sternum, where the bell-note the crow had made was still vibrating. The kind of knock a person makes at a door when the person knows the people inside are awake. Confident. Not loud. The knock of somebody who had come up the road and across the porch and was now at the door, waiting.",
       "t": "narrate"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol7_cabin_door_302am.png",
+      "caption": "The cabin door at 3:02 AM. A figure on the porch in the rain."
     },
     {
       "text": "Tem was at the table. Per was beside her. Lena beside Per. Cale and Finn and Kai and Roy were across the table from them. The seven were where they had been when the crow had rung. The bowls were where they had been. The crow was where it had been, beside the bell-piece, beak now closed.",
@@ -61,7 +66,7 @@
       "t": "narrate"
     },
     {
-      "text": "Tem stood up. She did not, in standing up, register that she had decided to stand. She had been at the table. The third knock had come. Her body had stood. She was — by the time she registered the standing — at the table standing.",
+      "text": "Tem stood up. She did not, in standing up, register that she had decided to stand. She had been at the table. The third knock had come. Her body had stood. She was \u2014 by the time she registered the standing \u2014 at the table standing.",
       "t": "narrate"
     },
     {
@@ -86,7 +91,7 @@
     },
     {
       "char": "tem",
-      "text": "Per. You stay at the table. The bowls stay at the table. The crow stays at the table. The cedar stays at the table. The notebook stays at the table. The seven of us at the cabin — six of you at the table, me at the door — we are going to be in the configuration the third instruction was about. The cabin is where she comes. I am the person who opens. The opening is mine because the cabin is mine. I am going to open.",
+      "text": "Per. You stay at the table. The bowls stay at the table. The crow stays at the table. The cedar stays at the table. The notebook stays at the table. The seven of us at the cabin \u2014 six of you at the table, me at the door \u2014 we are going to be in the configuration the third instruction was about. The cabin is where she comes. I am the person who opens. The opening is mine because the cabin is mine. I am going to open.",
       "t": "say"
     },
     {
@@ -105,7 +110,7 @@
       "t": "say"
     },
     {
-      "text": "She walked to the door. The cabin from the table to the door was twelve feet — by what Tem had measured at sixteen when Eddvard had asked her to figure out the dimensions for a math project. The twelve feet at three-oh-two on the first of September of 2052 were twelve feet she walked the way she had walked them in dreams since spring of 2049.",
+      "text": "She walked to the door. The cabin from the table to the door was twelve feet \u2014 by what Tem had measured at sixteen when Eddvard had asked her to figure out the dimensions for a math project. The twelve feet at three-oh-two on the first of September of 2052 were twelve feet she walked the way she had walked them in dreams since spring of 2049.",
       "t": "narrate"
     },
     {
@@ -121,7 +126,7 @@
       "t": "narrate"
     },
     {
-      "text": "The doorknob was the cedar knob Eddvard had carved in '79. The knob was warm — warm in the way the bowls had been warm. It had not, in any of the years Tem had been at the cabin, been warm before.",
+      "text": "The doorknob was the cedar knob Eddvard had carved in '79. The knob was warm \u2014 warm in the way the bowls had been warm. It had not, in any of the years Tem had been at the cabin, been warm before.",
       "t": "narrate"
     },
     {
@@ -145,11 +150,11 @@
       "t": "narrate"
     },
     {
-      "text": "The person was a young woman in a yellow slicker. The slicker's hood was up. The hair under the hood was — by what Tem could see in the cabin's spilled light — curling and dark. The slicker was the yellow Finn had described from Cape Perpetua. The hair was what Lena had painted on the alley wall.",
+      "text": "The person was a young woman in a yellow slicker. The slicker's hood was up. The hair under the hood was \u2014 by what Tem could see in the cabin's spilled light \u2014 curling and dark. The slicker was the yellow Finn had described from Cape Perpetua. The hair was what Lena had painted on the alley wall.",
       "t": "narrate"
     },
     {
-      "text": "The face under the hood — Tem could not, at the angle, see the face. The face was in the hood's shadow. The face was — by some quality of how the figure was holding herself — turned slightly down so that the hood's brim took the face into the shadow.",
+      "text": "The face under the hood \u2014 Tem could not, at the angle, see the face. The face was in the hood's shadow. The face was \u2014 by some quality of how the figure was holding herself \u2014 turned slightly down so that the hood's brim took the face into the shadow.",
       "t": "narrate"
     },
     {
@@ -163,7 +168,7 @@
       "t": "say"
     },
     {
-      "text": "The voice was — Tem registered — the voice of a young woman maybe twenty years old. The voice was a voice Tem had not heard. No accent Tem could place. Clear. Not loud.",
+      "text": "The voice was \u2014 Tem registered \u2014 the voice of a young woman maybe twenty years old. The voice was a voice Tem had not heard. No accent Tem could place. Clear. Not loud.",
       "t": "narrate"
     },
     {
@@ -222,7 +227,7 @@
     },
     {
       "char": "tem",
-      "text": "Are you — are you going to come back.",
+      "text": "Are you \u2014 are you going to come back.",
       "t": "say"
     },
     {

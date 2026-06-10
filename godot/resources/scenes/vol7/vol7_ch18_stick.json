@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "src": "assets/backgrounds/vol7_bakery_back_alley.jpg",
       "t": "bg"
     },
     {
@@ -72,7 +72,7 @@
     },
     {
       "char": "tem",
-      "text": "I have been holding it two years. I am — I have been holding it because I did not, in the two years, know who it was for. I have known since Thursday morning when Cale told us the dream Nate had had in '94.",
+      "text": "I have been holding it two years. I am \u2014 I have been holding it because I did not, in the two years, know who it was for. I have known since Thursday morning when Cale told us the dream Nate had had in '94.",
       "t": "say"
     },
     {
@@ -168,7 +168,7 @@
       "t": "hide"
     },
     {
-      "text": "She went to the wagon. The wagon had been waiting on Hemlock at the curb. Per was not at the wagon — he was at Hans's house. Cale was already at his truck heading up. Tem was driving up alone with the box of four bowls in the back seat.",
+      "text": "She went to the wagon. The wagon had been waiting on Hemlock at the curb. Per was not at the wagon \u2014 he was at Hans's house. Cale was already at his truck heading up. Tem was driving up alone with the box of four bowls in the back seat.",
       "t": "narrate"
     },
     {
@@ -186,23 +186,23 @@
       "t": "show"
     },
     {
-      "text": "Finn stood at the truck with the brown paper bag. The crow on his dashboard had — by what he could see through the window — turned its head to look at the bag.",
+      "text": "Finn stood at the truck with the brown paper bag. The crow on his dashboard had \u2014 by what he could see through the window \u2014 turned its head to look at the bag.",
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_smolvud_rain.jpg",
+      "src": "assets/backgrounds/vol7_cale_truck_back_alley.jpg",
       "t": "bg"
     },
     {
-      "text": "He drove home. The town at eight-thirty on a Sunday morning in late August was a town getting ready for the church people. Aud was at the Missing Link with the lights on. Soren's Daily Grind had its OPEN sign out. The bookstore would not open until after church. The bakery — Greta was at the front, the cases filling — would have its line of post-service customers at eight forty-five.",
+      "text": "He drove home. The town at eight-thirty on a Sunday morning in late August was a town getting ready for the church people. Aud was at the Missing Link with the lights on. Soren's Daily Grind had its OPEN sign out. The bookstore would not open until after church. The bakery \u2014 Greta was at the front, the cases filling \u2014 would have its line of post-service customers at eight forty-five.",
       "t": "narrate"
     },
     {
-      "text": "He passed the alley behind The Salty Tome on his way home. He slowed at the entrance. The face on the alley wall in the morning light — by what he could see at the alley's length — was at rest. The closed eyelids were closed. The face was where Lena had painted it Friday morning.",
+      "text": "He passed the alley behind The Salty Tome on his way home. He slowed at the entrance. The face on the alley wall in the morning light \u2014 by what he could see at the alley's length \u2014 was at rest. The closed eyelids were closed. The face was where Lena had painted it Friday morning.",
       "t": "narrate"
     },
     {
-      "text": "The face was — Finn registered as he slowed — a thing the town now had on a wall. The face was a piece of town infrastructure. The face had taken its place there in the way a thing takes its place when a thing has been waiting for the wall.",
+      "text": "The face was \u2014 Finn registered as he slowed \u2014 a thing the town now had on a wall. The face was a piece of town infrastructure. The face had taken its place there in the way a thing takes its place when a thing has been waiting for the wall.",
       "t": "narrate"
     },
     {
@@ -240,11 +240,11 @@
       "t": "narrate"
     },
     {
-      "text": "The stick was inside. In its waxed-paper sleeve — the kind the foundation had been packaging sticks in since the '30s, the kind Tem had at the cabin, the kind Cale had at ChillWave. The sleeve was old. The wax yellowed at the edges. A small label on the front with handwriting Finn did not know.",
+      "text": "The stick was inside. In its waxed-paper sleeve \u2014 the kind the foundation had been packaging sticks in since the '30s, the kind Tem had at the cabin, the kind Cale had at ChillWave. The sleeve was old. The wax yellowed at the edges. A small label on the front with handwriting Finn did not know.",
       "t": "narrate"
     },
     {
-      "text": "The handwriting was — by Finn's read of the careful spacing and the round loops — Brandon's hand. The label read: Tideline Survey 2018 — Hjarvard Ulrich — B. Tillman, January 2050.",
+      "text": "The handwriting was \u2014 by Finn's read of the careful spacing and the round loops \u2014 Brandon's hand. The label read: Tideline Survey 2018 \u2014 Hjarvard Ulrich \u2014 B. Tillman, January 2050.",
       "t": "narrate"
     },
     {
@@ -256,7 +256,7 @@
       "t": "narrate"
     },
     {
-      "text": "He took the stick out of the sleeve. The standard SCUMM stick — a dark plastic rectangle about the size of his palm, with the gold connector at one end. The stick was clean. No marks on it. He set it on the table beside the sleeve.",
+      "text": "He took the stick out of the sleeve. The standard SCUMM stick \u2014 a dark plastic rectangle about the size of his palm, with the gold connector at one end. The stick was clean. No marks on it. He set it on the table beside the sleeve.",
       "t": "narrate"
     },
     {
@@ -295,11 +295,11 @@
       "t": "narrate"
     },
     {
-      "text": "He had not been alone in a room since Thursday night at the cabin. The being-alone today was — by Finn's read of his body at the table — what the playing would need.",
+      "text": "He had not been alone in a room since Thursday night at the cabin. The being-alone today was \u2014 by Finn's read of his body at the table \u2014 what the playing would need.",
       "t": "narrate"
     },
     {
-      "text": "He took the stick to the bedroom. The reader was on the side table — the compact one he had bought from Cale in '49 for thirty tokens, at a discount to clear inventory. The reader had been used twice in three years: an experience by Danish designer Astrid Holm in '49, a longer one by a Portland man in '50. Not used since.",
+      "text": "He took the stick to the bedroom. The reader was on the side table \u2014 the compact one he had bought from Cale in '49 for thirty tokens, at a discount to clear inventory. The reader had been used twice in three years: an experience by Danish designer Astrid Holm in '49, a longer one by a Portland man in '50. Not used since.",
       "t": "narrate"
     },
     {
@@ -311,7 +311,7 @@
       "t": "narrate"
     },
     {
-      "text": "He set the crow on the back of the chair beside the bed — the chair Brandon had not, in his life, sat in, but which Finn had been carrying since '46 when his grandmother had given it to him.",
+      "text": "He set the crow on the back of the chair beside the bed \u2014 the chair Brandon had not, in his life, sat in, but which Finn had been carrying since '46 when his grandmother had given it to him.",
       "t": "narrate"
     },
     {

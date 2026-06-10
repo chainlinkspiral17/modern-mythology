@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "src": "assets/backgrounds/vol7_estuary_7_planner_view.jpg",
       "t": "bg"
     },
     {
@@ -31,6 +31,11 @@
       "t": "narrate"
     },
     {
+      "t": "cg",
+      "src": "assets/cg/vol7_blank_template.png",
+      "caption": "The blank template. The river. The bar of sand. The flats. The bluff. The forested ridge."
+    },
+    {
       "text": "She did not, for a long count, do anything. She looked at the template. She held the headset's controls in her hands. The cursor at the planner's-view blinked at the center of the template, waiting for her to place something.",
       "t": "narrate"
     },
@@ -43,11 +48,11 @@
       "t": "narrate"
     },
     {
-      "text": "The drone — a single Oneironautics Inc. drone-unit, rendered in the planner's-view — held at the cabin position. The substrate registered the placement. The clock at the upper-right began to count.",
+      "text": "The drone \u2014 a single Oneironautics Inc. drone-unit, rendered in the planner's-view \u2014 held at the cabin position. The substrate registered the placement. The clock at the upper-right began to count.",
       "t": "narrate"
     },
     {
-      "text": "A label appeared at the upper-left of the view: T. Egilsdóttir — submission begun September 2, 2052.",
+      "text": "A label appeared at the upper-left of the view: T. Egilsd\u00f3ttir \u2014 submission begun September 2, 2052.",
       "t": "narrate"
     },
     {
@@ -71,7 +76,7 @@
       "t": "show"
     },
     {
-      "text": "Kai was across the table. He had finished his coffee. He had been watching her for the length of the playthrough — perhaps twenty minutes by the wall clock. Finn was beside Kai. He had brought his chair over from the kitchen window at some point during the playthrough.",
+      "text": "Kai was across the table. He had finished his coffee. He had been watching her for the length of the playthrough \u2014 perhaps twenty minutes by the wall clock. Finn was beside Kai. He had brought his chair over from the kitchen window at some point during the playthrough.",
       "t": "narrate"
     },
     {

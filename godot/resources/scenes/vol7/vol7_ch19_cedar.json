@@ -39,8 +39,13 @@
       "t": "show"
     },
     {
-      "text": "Cale and Finn came up at four thirty-eight. Two trucks came up the road one behind the other — Cale's F-150 in front with both of them in it, and Finn's Toyota behind, which Cale had driven because Finn had been too shaken at the trailhead at four-fifteen to drive the cabin road. The crow was on the dashboard of Finn's Toyota.",
+      "text": "Cale and Finn came up at four thirty-eight. Two trucks came up the road one behind the other \u2014 Cale's F-150 in front with both of them in it, and Finn's Toyota behind, which Cale had driven because Finn had been too shaken at the trailhead at four-fifteen to drive the cabin road. The crow was on the dashboard of Finn's Toyota.",
       "t": "narrate"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol7_olafs_bell.png",
+      "caption": "Olaf's bell. Cedar. Carved with the spiral his son will later set in the bowl."
     },
     {
       "text": "Finn came up the porch first, with Cale behind him. Finn was carrying a canvas bag the way a person carries a canvas bag he has been carrying for an hour and a half without being able to set down. The crow walked from the dashboard of the Toyota onto Finn's shoulder when Finn opened the door.",
@@ -101,11 +106,11 @@
     },
     {
       "char": "finn",
-      "text": "I have — I have the cedar.",
+      "text": "I have \u2014 I have the cedar.",
       "t": "say"
     },
     {
-      "text": "He set the canvas bag on the table. He took out a handkerchief that had been folded around something. He unfolded the handkerchief. The cedar piece — about the size of his thumb — was inside.",
+      "text": "He set the canvas bag on the table. He took out a handkerchief that had been folded around something. He unfolded the handkerchief. The cedar piece \u2014 about the size of his thumb \u2014 was inside.",
       "t": "narrate"
     },
     {
@@ -162,7 +167,7 @@
     },
     {
       "char": "finn",
-      "text": "The crow. Brandon named her in 2042. He never said it aloud. She has the same name as the daughter because — by what the old man at the second pool told me in the stick, by what's in Brandon's notebook there on the table — they overlap. The crow is one of the vessels. The crow is the bell. The crow is going to ring.",
+      "text": "The crow. Brandon named her in 2042. He never said it aloud. She has the same name as the daughter because \u2014 by what the old man at the second pool told me in the stick, by what's in Brandon's notebook there on the table \u2014 they overlap. The crow is one of the vessels. The crow is the bell. The crow is going to ring.",
       "t": "say"
     },
     {
@@ -192,7 +197,7 @@
     },
     {
       "char": "finn",
-      "text": "Per — the cedar is at Tem's apartment in town and is also on this table, because the substrate moved it during my playing of Tideline Survey this afternoon. The substrate gave me the cedar at the bottom of the second pool. I came out of the stick with the cedar in my shirt pocket.",
+      "text": "Per \u2014 the cedar is at Tem's apartment in town and is also on this table, because the substrate moved it during my playing of Tideline Survey this afternoon. The substrate gave me the cedar at the bottom of the second pool. I came out of the stick with the cedar in my shirt pocket.",
       "t": "say"
     },
     {
@@ -205,7 +210,7 @@
       "t": "narrate"
     },
     {
-      "text": "He looked at it carefully. The carved hand was open. The hand was holding the bell. The bell was the size of a thimble. The carving was — by Per's read at this angle, by every measure of how the hand had been the hand he had known for fifty years from his mother's bowl and from the four bowls now on this table — Olaf's hand.",
+      "text": "He looked at it carefully. The carved hand was open. The hand was holding the bell. The bell was the size of a thimble. The carving was \u2014 by Per's read at this angle, by every measure of how the hand had been the hand he had known for fifty years from his mother's bowl and from the four bowls now on this table \u2014 Olaf's hand.",
       "t": "narrate"
     },
     {
@@ -288,7 +293,7 @@
       "t": "say"
     },
     {
-      "text": "Per sat down on the chair beside the table because his legs were — by what Per registered at the table — not, for the moment, going to hold him.",
+      "text": "Per sat down on the chair beside the table because his legs were \u2014 by what Per registered at the table \u2014 not, for the moment, going to hold him.",
       "t": "narrate"
     },
     {
@@ -307,12 +312,12 @@
     },
     {
       "char": "finn",
-      "text": "The substrate gave him the company of his dead at the pool. Tem — he had Maria there. He had Eli. He had Iris. He had an old dog from when he was a boy. He had them at the pool. He was at the pool to be with them.",
+      "text": "The substrate gave him the company of his dead at the pool. Tem \u2014 he had Maria there. He had Eli. He had Iris. He had an old dog from when he was a boy. He had them at the pool. He was at the pool to be with them.",
       "t": "say"
     },
     {
       "char": "finn",
-      "text": "At the thirty-eighth playing, four days before he died, the old man at the pool — the imprint at the second pool — turned to Brandon for the first time in all thirty-eight playings. The old man asked Brandon to give the crow to the person who would come to the pool after Brandon was gone. Brandon agreed. The crow has been mine since November of '50, eleven months later.",
+      "text": "At the thirty-eighth playing, four days before he died, the old man at the pool \u2014 the imprint at the second pool \u2014 turned to Brandon for the first time in all thirty-eight playings. The old man asked Brandon to give the crow to the person who would come to the pool after Brandon was gone. Brandon agreed. The crow has been mine since November of '50, eleven months later.",
       "t": "say"
     },
     {
@@ -340,24 +345,24 @@
       "t": "narrate"
     },
     {
-      "text": "Tem read the notebook for the next hour. She read the first entry. She read the second. She read the third. She read each of the thirty-eight entries in order. The cast — Per and Roy and Cale and Finn at the table, the crow on the table beside the cedar — listened. Tem did not, in the hour, look up from the page. She read in the voice she used when she was reading another person's writing aloud — the voice of a person who had decided that her job was to give the writing back to the room as the writer had written it.",
+      "text": "Tem read the notebook for the next hour. She read the first entry. She read the second. She read the third. She read each of the thirty-eight entries in order. The cast \u2014 Per and Roy and Cale and Finn at the table, the crow on the table beside the cedar \u2014 listened. Tem did not, in the hour, look up from the page. She read in the voice she used when she was reading another person's writing aloud \u2014 the voice of a person who had decided that her job was to give the writing back to the room as the writer had written it.",
       "t": "narrate"
     },
     {
-      "text": "Brandon at the pool with Maria. Brandon at the pool with Eli, with Iris, with the old dog from his boyhood in Tillamook. Most of the entries were Maria — fifteen entries with Maria at the pool beside Brandon in the substrate's rendering of the headland where Brandon had not been able to be with her for twelve years.",
+      "text": "Brandon at the pool with Maria. Brandon at the pool with Eli, with Iris, with the old dog from his boyhood in Tillamook. Most of the entries were Maria \u2014 fifteen entries with Maria at the pool beside Brandon in the substrate's rendering of the headland where Brandon had not been able to be with her for twelve years.",
       "t": "narrate"
     },
     {
-      "text": "Per registered, listening to Tem read, that Brandon Tillman — whom Per had not met when Brandon was alive — had been a man who had loved his wife the way a man loves a wife when the wife is gone. Brandon at the pool with Maria was a man Per understood. Per had known the shape of the carrying: Marit surviving Olaf for fifty-one years, Per having been a son who watched his mother carry the bowl as the carrying-companion Olaf had been. Brandon had been at the carrying his own way. Brandon had been at it for twelve years.",
+      "text": "Per registered, listening to Tem read, that Brandon Tillman \u2014 whom Per had not met when Brandon was alive \u2014 had been a man who had loved his wife the way a man loves a wife when the wife is gone. Brandon at the pool with Maria was a man Per understood. Per had known the shape of the carrying: Marit surviving Olaf for fifty-one years, Per having been a son who watched his mother carry the bowl as the carrying-companion Olaf had been. Brandon had been at the carrying his own way. Brandon had been at it for twelve years.",
       "t": "narrate"
     },
     {
-      "text": "When Tem got to the last entry — October 4, 2050 — the room was quiet.",
+      "text": "When Tem got to the last entry \u2014 October 4, 2050 \u2014 the room was quiet.",
       "t": "narrate"
     },
     {
       "char": "tem",
-      "text": "October 4, 2050. The thirty-eighth playing. I went to the second pool. The old man was there. I sat with him. He turned to me — for the first time in thirty-eight playings, he turned to me. He said: Brandon. I said: yes.",
+      "text": "October 4, 2050. The thirty-eighth playing. I went to the second pool. The old man was there. I sat with him. He turned to me \u2014 for the first time in thirty-eight playings, he turned to me. He said: Brandon. I said: yes.",
       "t": "say"
     },
     {
@@ -474,7 +479,7 @@
       "t": "show"
     },
     {
-      "text": "Kai and Lena came up at six-oh-five. Kai's truck up the road. Lena in the wool sweater and the coat, Kai in his flannel. They had the crow's perch from Finn's apartment — Finn had texted Lena to bring it, but the crow had settled on the table beside the cedar and did not need it. Lena and Kai brought it in anyway.",
+      "text": "Kai and Lena came up at six-oh-five. Kai's truck up the road. Lena in the wool sweater and the coat, Kai in his flannel. They had the crow's perch from Finn's apartment \u2014 Finn had texted Lena to bring it, but the crow had settled on the table beside the cedar and did not need it. Lena and Kai brought it in anyway.",
       "t": "narrate"
     },
     {
@@ -482,7 +487,7 @@
       "t": "narrate"
     },
     {
-      "text": "Tem made dinner. Bean soup — white beans she had soaked overnight, leeks Hans had given her at the bakery yesterday, salt cod she had been keeping in the cabin's pantry since Per had brought her a kilo from his mother's freezer in July. The cabin filled with the smell of the soup.",
+      "text": "Tem made dinner. Bean soup \u2014 white beans she had soaked overnight, leeks Hans had given her at the bakery yesterday, salt cod she had been keeping in the cabin's pantry since Per had brought her a kilo from his mother's freezer in July. The cabin filled with the smell of the soup.",
       "t": "narrate"
     },
     {
@@ -494,11 +499,11 @@
       "t": "narrate"
     },
     {
-      "text": "The seven ate and talked. The talk was — Per registered as he ate — not the kind of talk a person could plan. Seven people at a dinner table eating soup and bread and not, for the moment, doing the carrying. The soup. Hans's brioche this morning. Whether Marina had gotten to Eugene safely — she had texted Tem at four-fifty from the foundation's office to say she had arrived and was meeting the director at five.",
+      "text": "The seven ate and talked. The talk was \u2014 Per registered as he ate \u2014 not the kind of talk a person could plan. Seven people at a dinner table eating soup and bread and not, for the moment, doing the carrying. The soup. Hans's brioche this morning. Whether Marina had gotten to Eugene safely \u2014 she had texted Tem at four-fifty from the foundation's office to say she had arrived and was meeting the director at five.",
       "t": "narrate"
     },
     {
-      "text": "Wren — Lena said Wren had been at the Daily Grind this afternoon when Lena had been at her apartment getting the crow's perch, and Wren had asked if she could come to the cabin sometime. Lena had said yes, in a week or two, when things had settled. Jameson and Hannes — Kai said they had been at his shop before he closed, asking if they could come to a Tuesday-night dinner Aud was having at the diner that Aud had told them about at the wall last night. The small things the town was doing. The seven of them ate.",
+      "text": "Wren \u2014 Lena said Wren had been at the Daily Grind this afternoon when Lena had been at her apartment getting the crow's perch, and Wren had asked if she could come to the cabin sometime. Lena had said yes, in a week or two, when things had settled. Jameson and Hannes \u2014 Kai said they had been at his shop before he closed, asking if they could come to a Tuesday-night dinner Aud was having at the diner that Aud had told them about at the wall last night. The small things the town was doing. The seven of them ate.",
       "t": "narrate"
     },
     {

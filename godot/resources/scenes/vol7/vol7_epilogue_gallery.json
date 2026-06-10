@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "src": "assets/backgrounds/vol7_estuary_7_planner_view.jpg",
       "t": "bg"
     },
     {
@@ -29,6 +29,11 @@
     {
       "text": "Estuary 7 opened at the planner's-view the way it had always opened.",
       "t": "narrate"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol7_estuary_7_opening.png",
+      "caption": "Estuary 7. Planner's view. The river coming down from the cedars."
     },
     {
       "text": "The coastal template from above. The river coming down from the cedars to the east. The bar of sand at the mouth. The flats north of the river. The bluff south of it. The forested ridge behind the bluff. The drone-palette docked at the right of the view. The labor-crew palette docked below the drones. The construction primitives docked below the labor crews. The clock at the upper-right showing zero.",
@@ -55,11 +60,11 @@
       "t": "narrate"
     },
     {
-      "text": "D. Dean — submitted 2013. Completed 2042.",
+      "text": "D. Dean \u2014 submitted 2013. Completed 2042.",
       "t": "narrate"
     },
     {
-      "text": "The bluff at the southwest of the coastal template filled first. Drones placed themselves at marked positions along the bluff above the river-mouth. The drones laid the footprint of a structure on the bluff — seventy feet on a side. The footprint extruded upward through seven floor-levels. Smart-glass and cedar, seven floors, an indoor garden at the seventh-floor roof level, a portal-room marked on the fourth floor.",
+      "text": "The bluff at the southwest of the coastal template filled first. Drones placed themselves at marked positions along the bluff above the river-mouth. The drones laid the footprint of a structure on the bluff \u2014 seventy feet on a side. The footprint extruded upward through seven floor-levels. Smart-glass and cedar, seven floors, an indoor garden at the seventh-floor roof level, a portal-room marked on the fourth floor.",
       "t": "narrate"
     },
     {
@@ -83,15 +88,15 @@
       "t": "narrate"
     },
     {
-      "text": "The gallery clock counted. 2:14. 2:15. The build faded to dimness — still visible, tower and town held as the gallery's first layer — and the next build began to render over it.",
+      "text": "The gallery clock counted. 2:14. 2:15. The build faded to dimness \u2014 still visible, tower and town held as the gallery's first layer \u2014 and the next build began to render over it.",
       "t": "narrate"
     },
     {
-      "text": "O. Egilsson — submitted 1971. Completed 1979.",
+      "text": "O. Egilsson \u2014 submitted 1971. Completed 1979.",
       "t": "narrate"
     },
     {
-      "text": "The cabin rendered. Not the Smolvud cabin from Dean's build — a specific cabin. Olaf's cabin, the cabin Tem was sitting in this morning with the headset on. The footprint placed itself at the center of a new build's coordinates. The cabin was the build's hub.",
+      "text": "The cabin rendered. Not the Smolvud cabin from Dean's build \u2014 a specific cabin. Olaf's cabin, the cabin Tem was sitting in this morning with the headset on. The footprint placed itself at the center of a new build's coordinates. The cabin was the build's hub.",
       "t": "narrate"
     },
     {
@@ -99,7 +104,7 @@
       "t": "narrate"
     },
     {
-      "text": "The four points connected to the cabin by faint substrate-lines — the bowl-network's carrying, made visible as architecture.",
+      "text": "The four points connected to the cabin by faint substrate-lines \u2014 the bowl-network's carrying, made visible as architecture.",
       "t": "narrate"
     },
     {
@@ -119,7 +124,7 @@
       "t": "narrate"
     },
     {
-      "text": "E. Halvorsen — submitted 1968. Completed 1981.",
+      "text": "E. Halvorsen \u2014 submitted 1968. Completed 1981.",
       "t": "narrate"
     },
     {
@@ -127,7 +132,7 @@
       "t": "narrate"
     },
     {
-      "text": "Eddvard's submission was the mill. The simplest of the builds — one building, one function, decades of use.",
+      "text": "Eddvard's submission was the mill. The simplest of the builds \u2014 one building, one function, decades of use.",
       "t": "narrate"
     },
     {
@@ -139,15 +144,15 @@
       "t": "narrate"
     },
     {
-      "text": "M. Egilsson — submitted 1974. Completed — ongoing.",
+      "text": "M. Egilsson \u2014 submitted 1974. Completed \u2014 ongoing.",
       "t": "narrate"
     },
     {
-      "text": "The substrate rendered a forest. Not a building. A cedar grove across the foothills east of Smolvud — fifty acres, the slow-growing kind of cedar grove that took half a century to mature.",
+      "text": "The substrate rendered a forest. Not a building. A cedar grove across the foothills east of Smolvud \u2014 fifty acres, the slow-growing kind of cedar grove that took half a century to mature.",
       "t": "narrate"
     },
     {
-      "text": "Marit's submission. Her drones had planted in '74. Her labor crews had tended in shifts. The completion date was ongoing — Marit's build had been growing for fifty-one years and was still growing.",
+      "text": "Marit's submission. Her drones had planted in '74. Her labor crews had tended in shifts. The completion date was ongoing \u2014 Marit's build had been growing for fifty-one years and was still growing.",
       "t": "narrate"
     },
     {
@@ -163,7 +168,7 @@
       "t": "narrate"
     },
     {
-      "text": "A. Halvorsen — submitted 2030. Completed 2031.",
+      "text": "A. Halvorsen \u2014 submitted 2030. Completed 2031.",
       "t": "narrate"
     },
     {
@@ -175,7 +180,7 @@
       "t": "narrate"
     },
     {
-      "text": "Aud's Estuary 7 build was the diner as the social anchor of the town. The Tuesday-night dinners — that Aud, this very Tuesday, was probably preparing to hold for Jameson and Hannes and Roy and whoever else came — were the substrate beginning to use the diner the way her submission had anticipated.",
+      "text": "Aud's Estuary 7 build was the diner as the social anchor of the town. The Tuesday-night dinners \u2014 that Aud, this very Tuesday, was probably preparing to hold for Jameson and Hannes and Roy and whoever else came \u2014 were the substrate beginning to use the diner the way her submission had anticipated.",
       "t": "narrate"
     },
     {
@@ -187,11 +192,11 @@
       "t": "narrate"
     },
     {
-      "text": "B. Tillman — submitted 2046. Completed 2050.",
+      "text": "B. Tillman \u2014 submitted 2046. Completed 2050.",
       "t": "narrate"
     },
     {
-      "text": "A tide-pool sanctuary on a small headland rendered. Drones tending water. Labor crews maintaining boardwalks. A series of pools at staggered tidal heights — an upper pool and a lower pool at the headland's seaward face.",
+      "text": "A tide-pool sanctuary on a small headland rendered. Drones tending water. Labor crews maintaining boardwalks. A series of pools at staggered tidal heights \u2014 an upper pool and a lower pool at the headland's seaward face.",
       "t": "narrate"
     },
     {
@@ -203,7 +208,7 @@
       "t": "narrate"
     },
     {
-      "text": "Brandon had built his grief. He had laid out the pools where his dead would wait for him. He had played the stick — the Tideline Survey commercialization of his own template — thirty-eight times between January and October of 2050. He had died in November of 2050.",
+      "text": "Brandon had built his grief. He had laid out the pools where his dead would wait for him. He had played the stick \u2014 the Tideline Survey commercialization of his own template \u2014 thirty-eight times between January and October of 2050. He had died in November of 2050.",
       "t": "narrate"
     },
     {
@@ -211,7 +216,7 @@
       "t": "narrate"
     },
     {
-      "text": "Brandon's build had passed to Finn when the substrate had given Finn the crow in November of 2050. It was now also Finn's. Finn — at the chair behind Tem this Tuesday morning, watching her play through the headset's small green LED — was carrying Brandon's build into the next thing.",
+      "text": "Brandon's build had passed to Finn when the substrate had given Finn the crow in November of 2050. It was now also Finn's. Finn \u2014 at the chair behind Tem this Tuesday morning, watching her play through the headset's small green LED \u2014 was carrying Brandon's build into the next thing.",
       "t": "narrate"
     },
     {
@@ -219,7 +224,7 @@
       "t": "narrate"
     },
     {
-      "text": "W. Schenck Sr. — submitted 1953. Completed 1958.",
+      "text": "W. Schenck Sr. \u2014 submitted 1953. Completed 1958.",
       "t": "narrate"
     },
     {
@@ -231,7 +236,7 @@
       "t": "narrate"
     },
     {
-      "text": "Werner Senior's submission had been in '53 — he had been twenty-eight. He had built the press in '58. Werner Junior had taken it over in '86. The Schencks had been printing what the network needed printed for ninety-nine years.",
+      "text": "Werner Senior's submission had been in '53 \u2014 he had been twenty-eight. He had built the press in '58. Werner Junior had taken it over in '86. The Schencks had been printing what the network needed printed for ninety-nine years.",
       "t": "narrate"
     },
     {
@@ -239,7 +244,7 @@
       "t": "narrate"
     },
     {
-      "text": "H. Lindholm — submitted 1969. Completed 1977.",
+      "text": "H. Lindholm \u2014 submitted 1969. Completed 1977.",
       "t": "narrate"
     },
     {
@@ -251,7 +256,7 @@
       "t": "narrate"
     },
     {
-      "text": "Henrik Lindholm — Marina's grandfather — had submitted the foundation in '69. He had been thirty-one. He had built it by '77. Aud had been at the building from '84 to '30. Marina had been at it since '38.",
+      "text": "Henrik Lindholm \u2014 Marina's grandfather \u2014 had submitted the foundation in '69. He had been thirty-one. He had built it by '77. Aud had been at the building from '84 to '30. Marina had been at it since '38.",
       "t": "narrate"
     },
     {
@@ -263,7 +268,7 @@
       "t": "narrate"
     },
     {
-      "text": "O. Lindholm (no relation) — submitted 1972. Completed 1976.",
+      "text": "O. Lindholm (no relation) \u2014 submitted 1972. Completed 1976.",
       "t": "narrate"
     },
     {
@@ -331,7 +336,7 @@
       "t": "narrate"
     },
     {
-      "text": "The substrate began to fade the nine builds. The fade was slow. The layers went translucent in order — Olaus's cove first, then Lindholm's foundation, then the Schencks' press, then Brandon's pools, then Aud's diner, then Marit's grove, then Eddvard's mill, then Olaf's cabin-and-network, last Dean's tower-and-town. Each fade took perhaps fifteen seconds. The gallery emptied.",
+      "text": "The substrate began to fade the nine builds. The fade was slow. The layers went translucent in order \u2014 Olaus's cove first, then Lindholm's foundation, then the Schencks' press, then Brandon's pools, then Aud's diner, then Marit's grove, then Eddvard's mill, then Olaf's cabin-and-network, last Dean's tower-and-town. Each fade took perhaps fifteen seconds. The gallery emptied.",
       "t": "narrate"
     },
     {

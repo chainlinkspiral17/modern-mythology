@@ -77,6 +77,11 @@
       "t": "narrate"
     },
     {
+      "t": "cg",
+      "src": "assets/cg/vol7_floured_hand_on_face.png",
+      "caption": "Hans's floured baker's hand on Tem's face. Sunday morning, every Sunday morning."
+    },
+    {
       "char": "hans",
       "text": "Sleep tonight. The bakery is at six tomorrow. You do not have to come. But if you come, I will be there.",
       "t": "say"
@@ -96,7 +101,7 @@
       "t": "narrate"
     },
     {
-      "text": "The four bowls at the milk crate were now two. Roy had taken Olaus's. Marit had Marit's at Hans's. Lindholm-Marina's was wrapped in the cloth Marina had left it in at the milk crate. Eddvard's — Tem's-by-inheritance — had been at the milk crate since six-thirty.",
+      "text": "The four bowls at the milk crate were now two. Roy had taken Olaus's. Marit had Marit's at Hans's. Lindholm-Marina's was wrapped in the cloth Marina had left it in at the milk crate. Eddvard's \u2014 Tem's-by-inheritance \u2014 had been at the milk crate since six-thirty.",
       "t": "narrate"
     },
     {
@@ -135,7 +140,7 @@
       "t": "bg"
     },
     {
-      "text": "At the cabin Tem put the bowls back on the dining table where they had been Sunday night. Marit's place at the table was empty. Roy's place at the table was empty. The two remaining bowls — Lindholm-Marina's and Eddvard's-by-Tem — looked, on the dining table, the way two of four bowls look when two are gone. The table was half-empty.",
+      "text": "At the cabin Tem put the bowls back on the dining table where they had been Sunday night. Marit's place at the table was empty. Roy's place at the table was empty. The two remaining bowls \u2014 Lindholm-Marina's and Eddvard's-by-Tem \u2014 looked, on the dining table, the way two of four bowls look when two are gone. The table was half-empty.",
       "t": "narrate"
     },
     {
@@ -151,7 +156,7 @@
       "t": "narrate"
     },
     {
-      "text": "Tem made coffee at the kitchen. The three of them sat at the dining table. They did not, for a count, talk. Tem brought the coffee to the table. She poured three cups. They drank. The cabin was quiet. The rain on the cedar roof — which had been falling since Wednesday — had dropped to a mist. Kai ate some of Hans's rye. Finn ate one slice. Tem ate half of one. The cabin held them.",
+      "text": "Tem made coffee at the kitchen. The three of them sat at the dining table. They did not, for a count, talk. Tem brought the coffee to the table. She poured three cups. They drank. The cabin was quiet. The rain on the cedar roof \u2014 which had been falling since Wednesday \u2014 had dropped to a mist. Kai ate some of Hans's rye. Finn ate one slice. Tem ate half of one. The cabin held them.",
       "t": "narrate"
     },
     {
@@ -243,7 +248,7 @@
     },
     {
       "char": "cale",
-      "text": "I think — Tem, I think the stick is asking to be played.",
+      "text": "I think \u2014 Tem, I think the stick is asking to be played.",
       "t": "say"
     },
     {

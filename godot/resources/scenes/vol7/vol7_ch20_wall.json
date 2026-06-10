@@ -33,7 +33,7 @@
       "t": "show"
     },
     {
-      "text": "The seven of them got out. The alley at six forty-three on the first of September of 2052 was dim — rain on the asphalt and the back-door light Petra had turned on for the people coming. The face on the wall at the far end of the alley was — by what Tem could see at the alley's length — at rest. The closed eyes were closed.",
+      "text": "The seven of them got out. The alley at six forty-three on the first of September of 2052 was dim \u2014 rain on the asphalt and the back-door light Petra had turned on for the people coming. The face on the wall at the far end of the alley was \u2014 by what Tem could see at the alley's length \u2014 at rest. The closed eyes were closed.",
       "t": "narrate"
     },
     {
@@ -47,12 +47,17 @@
       "t": "narrate"
     },
     {
+      "t": "cg",
+      "src": "assets/cg/vol7_the_wall_milk_crate.png",
+      "caption": "The wall. Lena's milk crate at its foot. September 1, six-thirty AM."
+    },
+    {
       "char": "lena",
       "text": "Put the bowls on the crate.",
       "t": "say"
     },
     {
-      "text": "Tem opened the back of the wagon. She lifted out the wooden box with the four bowls. She brought the box to the milk crate. She knelt. She took the four bowls out one at a time and arranged them on the crate in the order they had been at the bakery — Roy's at the right end, then Marit's, then the substrate-bowl, then Marina's grandfather's at the left.",
+      "text": "Tem opened the back of the wagon. She lifted out the wooden box with the four bowls. She brought the box to the milk crate. She knelt. She took the four bowls out one at a time and arranged them on the crate in the order they had been at the bakery \u2014 Roy's at the right end, then Marit's, then the substrate-bowl, then Marina's grandfather's at the left.",
       "t": "narrate"
     },
     {
@@ -70,7 +75,7 @@
       "t": "narrate"
     },
     {
-      "text": "The face on the wall above them was — by Tem's read at the wall — looking down at the milk crate.",
+      "text": "The face on the wall above them was \u2014 by Tem's read at the wall \u2014 looking down at the milk crate.",
       "t": "narrate"
     },
     {
@@ -114,19 +119,19 @@
       "t": "narrate"
     },
     {
-      "text": "Aud came at seven-oh-one — in the wool coat she had been in at the bakery yesterday. Aud came up to Roy at the wall. Aud put her hand on Roy's arm. Roy put his hand over Aud's hand. The two of them stood at the wall.",
+      "text": "Aud came at seven-oh-one \u2014 in the wool coat she had been in at the bakery yesterday. Aud came up to Roy at the wall. Aud put her hand on Roy's arm. Roy put his hand over Aud's hand. The two of them stood at the wall.",
       "t": "narrate"
     },
     {
-      "text": "Jameson came at seven-oh-three with Hannes. Wren came at seven-oh-five with her mother — a woman Tem had seen at the Daily Grind perhaps three times in her life, who came up the alley behind Wren with her hand on Wren's shoulder and stopped at the wall and looked at the face on the wall and did not say anything.",
+      "text": "Jameson came at seven-oh-three with Hannes. Wren came at seven-oh-five with her mother \u2014 a woman Tem had seen at the Daily Grind perhaps three times in her life, who came up the alley behind Wren with her hand on Wren's shoulder and stopped at the wall and looked at the face on the wall and did not say anything.",
       "t": "narrate"
     },
     {
-      "text": "Hans's van came up Hemlock at seven-oh-eight. Hans parked at the entrance behind the trucks. Greta got out of the passenger side. Marit got out of the back, slowly, in the blue cardigan with Greta's wool coat pulled over it — too big for her at the shoulders.",
+      "text": "Hans's van came up Hemlock at seven-oh-eight. Hans parked at the entrance behind the trucks. Greta got out of the passenger side. Marit got out of the back, slowly, in the blue cardigan with Greta's wool coat pulled over it \u2014 too big for her at the shoulders.",
       "t": "narrate"
     },
     {
-      "text": "Per went up the alley to meet his mother. He took her arm — not her hand, Marit didn't like being led — and let his arm be there beside hers in case she wanted it. They walked down the alley together. Marit walked carefully on the wet asphalt. She watched her feet for the first stretch and then, when she was close enough to the wall to see the face, she looked up.",
+      "text": "Per went up the alley to meet his mother. He took her arm \u2014 not her hand, Marit didn't like being led \u2014 and let his arm be there beside hers in case she wanted it. They walked down the alley together. Marit walked carefully on the wet asphalt. She watched her feet for the first stretch and then, when she was close enough to the wall to see the face, she looked up.",
       "t": "narrate"
     },
     {
@@ -172,7 +177,7 @@
       "t": "say"
     },
     {
-      "text": "Marit walked the rest of the way to the milk crate. Per a step behind her. She stopped at the crate. She looked down at the bowls. She looked at her own bowl — the one Olaf had carved her in 1974, the one she had been keeping at her bedside at Hans's since Wednesday. She bent down. She picked up the bowl in both hands. She straightened slowly, the way she straightened anything she had to straighten with a bowl in her hands.",
+      "text": "Marit walked the rest of the way to the milk crate. Per a step behind her. She stopped at the crate. She looked down at the bowls. She looked at her own bowl \u2014 the one Olaf had carved her in 1974, the one she had been keeping at her bedside at Hans's since Wednesday. She bent down. She picked up the bowl in both hands. She straightened slowly, the way she straightened anything she had to straighten with a bowl in her hands.",
       "t": "narrate"
     },
     {
@@ -219,15 +224,15 @@
       "t": "say"
     },
     {
-      "text": "Marit looked at her then — just for a second. Then looked back at the face on the wall. She held her bowl. She did not weep.",
+      "text": "Marit looked at her then \u2014 just for a second. Then looked back at the face on the wall. She held her bowl. She did not weep.",
       "t": "narrate"
     },
     {
-      "text": "The town kept coming. By seven-fifteen the alley was — Tem registered, standing back — full. Perhaps thirty people. Perhaps more. Tem counted to twenty-eight and stopped.",
+      "text": "The town kept coming. By seven-fifteen the alley was \u2014 Tem registered, standing back \u2014 full. Perhaps thirty people. Perhaps more. Tem counted to twenty-eight and stopped.",
       "t": "narrate"
     },
     {
-      "text": "People she knew by name. People she knew by face. People she did not know. The mechanic from old-Waldport. The woman who ran the bakery on the cheese-factory-town's main street. Three teenagers from the consolidated middle school. Two of the foundation's drone-tenders in wax canvas. Soren — who had closed the Daily Grind at seven and walked over. Bernie Lund from the fish-co-op. Frog Petersen — the older town Frog, by Tem's count of Frogs.",
+      "text": "People she knew by name. People she knew by face. People she did not know. The mechanic from old-Waldport. The woman who ran the bakery on the cheese-factory-town's main street. Three teenagers from the consolidated middle school. Two of the foundation's drone-tenders in wax canvas. Soren \u2014 who had closed the Daily Grind at seven and walked over. Bernie Lund from the fish-co-op. Frog Petersen \u2014 the older town Frog, by Tem's count of Frogs.",
       "t": "narrate"
     },
     {
@@ -267,11 +272,11 @@
       "t": "narrate"
     },
     {
-      "text": "The face had been — by what she had been watching at the wall since six forty-three — at the smallest-possible-amount of opening. At rest. The face Lena had painted with the closed eyes.",
+      "text": "The face had been \u2014 by what she had been watching at the wall since six forty-three \u2014 at the smallest-possible-amount of opening. At rest. The face Lena had painted with the closed eyes.",
       "t": "narrate"
     },
     {
-      "text": "At seven-thirty — by what Tem could see at the wall, by what the perhaps thirty-five people in the alley were now seeing — the eyes opened.",
+      "text": "At seven-thirty \u2014 by what Tem could see at the wall, by what the perhaps thirty-five people in the alley were now seeing \u2014 the eyes opened.",
       "t": "narrate"
     },
     {
@@ -291,11 +296,11 @@
       "t": "narrate"
     },
     {
-      "text": "The face on the wall looked at the people at the foot of the wall — Marit, Per, Lena, Cale, Roy, Aud, Wren, Hans, Greta, Marina, Kai, Finn, Tem — and at the people behind them.",
+      "text": "The face on the wall looked at the people at the foot of the wall \u2014 Marit, Per, Lena, Cale, Roy, Aud, Wren, Hans, Greta, Marina, Kai, Finn, Tem \u2014 and at the people behind them.",
       "t": "narrate"
     },
     {
-      "text": "The face — by every measure Tem could take, by what was happening at the wall in the alley behind The Salty Tome at seven thirty-one on the first of September of 2052 in a town of seventeen hundred people on the Oregon coast — saw the room.",
+      "text": "The face \u2014 by every measure Tem could take, by what was happening at the wall in the alley behind The Salty Tome at seven thirty-one on the first of September of 2052 in a town of seventeen hundred people on the Oregon coast \u2014 saw the room.",
       "t": "narrate"
     },
     {
@@ -441,15 +446,15 @@
       "t": "narrate"
     },
     {
-      "text": "She watched Marit at the milk crate with her bowl held in both hands. She watched Lena beside Marit. She watched Roy and Aud at the wall with Aud's hand on Roy's arm again. She watched Cale and Per at the wall — Cale picking at the cuticle of his thumb, Per with his arm around Cale's shoulder. She watched Finn at the wall with the crow on his shoulder.",
+      "text": "She watched Marit at the milk crate with her bowl held in both hands. She watched Lena beside Marit. She watched Roy and Aud at the wall with Aud's hand on Roy's arm again. She watched Cale and Per at the wall \u2014 Cale picking at the cuticle of his thumb, Per with his arm around Cale's shoulder. She watched Finn at the wall with the crow on his shoulder.",
       "t": "narrate"
     },
     {
-      "text": "She watched Kai at the wall with Wren beside him — Kai had said something quietly to Wren and Wren had nodded and the two of them were standing at the wall as if Kai was being the kind of older brother Wren had never had. She watched Marina at the milk crate with her hand on her grandfather's bowl.",
+      "text": "She watched Kai at the wall with Wren beside him \u2014 Kai had said something quietly to Wren and Wren had nodded and the two of them were standing at the wall as if Kai was being the kind of older brother Wren had never had. She watched Marina at the milk crate with her hand on her grandfather's bowl.",
       "t": "narrate"
     },
     {
-      "text": "She watched Hans at the wall — the baker who had been at the bakery for thirty-one years carrying the brother's poem cycle in the desk drawer in his bedroom, looking up at the face on the wall the town had not, until this morning, known about and now knew about.",
+      "text": "She watched Hans at the wall \u2014 the baker who had been at the bakery for thirty-one years carrying the brother's poem cycle in the desk drawer in his bedroom, looking up at the face on the wall the town had not, until this morning, known about and now knew about.",
       "t": "narrate"
     },
     {
@@ -461,7 +466,7 @@
       "t": "narrate"
     },
     {
-      "text": "The face on the wall had — Tem registered — gone back to closed-eyed. It had returned to what Lena had painted. It was waiting for the next time.",
+      "text": "The face on the wall had \u2014 Tem registered \u2014 gone back to closed-eyed. It had returned to what Lena had painted. It was waiting for the next time.",
       "t": "narrate"
     },
     {
@@ -493,7 +498,7 @@
       "t": "narrate"
     },
     {
-      "text": "She was — at seven forty-six on the first of September of 2052 in the alley behind The Salty Tome with perhaps thirty-five people of her town standing at the face on the wall with the bowls and the bell-piece and the notebook at the milk crate at the foot — she was in it.",
+      "text": "She was \u2014 at seven forty-six on the first of September of 2052 in the alley behind The Salty Tome with perhaps thirty-five people of her town standing at the face on the wall with the bowls and the bell-piece and the notebook at the milk crate at the foot \u2014 she was in it.",
       "t": "narrate"
     },
     {
@@ -501,7 +506,7 @@
       "t": "narrate"
     },
     {
-      "text": "The cabin and the bakery and the wall and the diner and the Daily Grind and the bookstore and the co-op and the laundromat and the small mill up the river and Cape Perpetua and the ferret-dream-basement and the second pool of Tideline Survey and the basement of Kestrel Mountain and the foundation in Eugene and the print shop in Bern and the headland in Bandon and the cutter base in old-Yaquina and the apartment on Cedar Place and the loft above the kitchen at the cabin and the chair beside the daybed and the cabin's door —",
+      "text": "The cabin and the bakery and the wall and the diner and the Daily Grind and the bookstore and the co-op and the laundromat and the small mill up the river and Cape Perpetua and the ferret-dream-basement and the second pool of Tideline Survey and the basement of Kestrel Mountain and the foundation in Eugene and the print shop in Bern and the headland in Bandon and the cutter base in old-Yaquina and the apartment on Cedar Place and the loft above the kitchen at the cabin and the chair beside the daybed and the cabin's door \u2014",
       "t": "narrate"
     },
     {
