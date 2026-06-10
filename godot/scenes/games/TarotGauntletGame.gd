@@ -521,21 +521,67 @@ func _render_board() -> void:
 
 
 func _make_space_label(s: Dictionary) -> Label:
+	# Clickable space label. Click → walk there if adjacent and you
+	# have a Walk/Step Toward card in hand (consumes it + Time).
 	var l := Label.new()
 	var label: String = s.get("label", s.get("id", ""))
+	var sid: String = s.get("id", "")
 	var kind: String = s.get("kind", "named")
 	var pile := ""
 	if kind == "search":
 		pile = "  [%d]" % _pile_state.get(s.get("search_pile", ""), []).size()
-	l.text = label + pile
+	# Mark the current player position with a chevron so the user can
+	# always see where they are.
+	var here: String = "» " if sid == _player_pos else "  "
+	l.text = here + label + pile
 	var col: Color = C_TEXT
 	if kind == "threshold":
 		col = Color(0.55, 0.95, 0.65)
 	elif kind == "search":
 		col = Color(0.95, 0.78, 0.40)
+	if sid == _player_pos:
+		col = C_ACCENT
 	l.add_theme_color_override("font_color", col)
 	l.add_theme_font_size_override("font_size", 11)
+	l.mouse_filter = Control.MOUSE_FILTER_PASS
+	# Make it clickable. Adjacent free-move costs 1 Time, no card needed.
+	# Spaces farther away still need explicit movement cards (Walk /
+	# Sprint / Step Toward / Move Player Toward Threshold).
+	l.gui_input.connect(func(ev: InputEvent) -> void:
+		if not (ev is InputEventMouseButton):
+			return
+		var mb := ev as InputEventMouseButton
+		if mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT:
+			_on_space_clicked(sid))
 	return l
+
+
+func _on_space_clicked(target_pos: String) -> void:
+	if _game_over or _phase != Phase.ACTION:
+		_log_line("[i](can't move outside the action phase)[/i]")
+		return
+	if target_pos == _player_pos:
+		_log_line("[i]you're already at %s[/i]" % target_pos)
+		return
+	# Must be adjacent
+	var adj: Array = (_location.get("adjacency", {}) as Dictionary).get(_player_pos, [])
+	if not (target_pos in adj):
+		_log_line("[i]%s isn't adjacent to %s — play Walk / Sprint to move farther[/i]" %
+			[target_pos, _player_pos])
+		return
+	# Hidden threshold can't be clicked
+	if target_pos == "precipice_door" and not _flags.get("precipice_revealed", false):
+		_log_line("[i]you don't see a way through there yet[/i]")
+		return
+	# Costs 1 Time, no card consumed (free walk to adjacent).
+	if _time < 1:
+		_log_line("[i]not enough Time to walk[/i]")
+		return
+	_time -= 1
+	_player_pos = target_pos
+	_audio_sfx("card_play")
+	_log_line("→ walked to [b]%s[/b]" % target_pos)
+	_render()
 
 
 func _position_meeples() -> void:
@@ -637,6 +683,9 @@ func _render() -> void:
 	_health_label.text  = "Health %d" % _health
 	_player_pos_label.text = "at: " + _player_pos
 	_bindle_label.text = "Bindle: " + _bindle_display()
+	# Rebuild the board so the » chevron + highlight color follow
+	# the player to their new space. Cheap (~20 labels).
+	_render_board()
 	_position_meeples()
 	_render_hand()
 	_render_visitors()
@@ -799,8 +848,14 @@ func _resolve_effect(e: Dictionary) -> void:
 		"lose_time":
 			_time = max(0, _time - int(e.get("amount", 0)))
 		"gain_inertia":
-			_inertia = min(12, _inertia + int(e.get("amount", 0)))
-			_log_line("[color=#ff8060]+%d Inertia[/color] → %d" % [e.get("amount", 0), _inertia])
+			# GUARD flag (set by a successful Guard card) absorbs the
+			# next Gravity-card Inertia tick.
+			if _flags.get("guard_ignore_next_gravity_inertia", false):
+				_flags["guard_ignore_next_gravity_inertia"] = false
+				_log_line("[color=#7cffb0]GUARD absorbed +%d Inertia.[/color]" % e.get("amount", 0))
+			else:
+				_inertia = min(12, _inertia + int(e.get("amount", 0)))
+				_log_line("[color=#ff8060]+%d Inertia[/color] → %d" % [e.get("amount", 0), _inertia])
 		"lose_inertia":
 			_inertia = max(0, _inertia - int(e.get("amount", 0)))
 			_log_line("[color=#7cffb0]-%d Inertia[/color] → %d" % [e.get("amount", 0), _inertia])
@@ -1028,7 +1083,7 @@ func _resolve_framework_card(card: Dictionary) -> void:
 	var result: String = roll["result"]
 	var line: String = roll["line"]
 	_log_line("[i]threshold roll: %s → %s[/i]" % [line, result])
-	# Apply outcome
+	# Apply outcome — log flavor AND apply mechanical effect.
 	match result:
 		"ss":
 			_log_line("★★ " + card.get("double_success", ""))
@@ -1036,11 +1091,96 @@ func _resolve_framework_card(card: Dictionary) -> void:
 			_log_line("★  " + card.get("single_success", ""))
 		"fail":
 			_log_line("✕  " + card.get("failure", ""))
-	# Specific card behaviors that need engine support — currently
-	# resolved purely as flavor logs; mechanical fallout (move N
-	# spaces, recover N health) handled by the per-card effects[]
-	# block in arcana cards. Framework cards are still flavor-only
-	# until a future pass.
+	_apply_framework_card_mechanic(card.get("id", ""), result)
+
+
+# Maps framework-card id × result into actual state changes. Was
+# missing in the first cut — framework cards logged flavor but
+# didn't move/heal/search. User noticed: "the player should be
+# able to play the cards they chose in the order they wanted, right,
+# it seems to do it automatically?" → because nothing visibly
+# happened from a click, the player couldn't tell their action
+# landed.
+func _apply_framework_card_mechanic(cid: String, result: String) -> void:
+	match cid:
+		"walk":
+			match result:
+				"ss":   _move_player_toward_nearest_threshold(2)
+				"s":    _move_player_toward_nearest_threshold(1)
+				"fail":
+					_move_player_toward_nearest_threshold(1)
+					_time = max(0, _time - 1)
+		"sprint":
+			match result:
+				"ss":   _move_player_toward_nearest_threshold(3)
+				"s":
+					_move_player_toward_nearest_threshold(2)
+					_time = max(0, _time - 1)
+				"fail":
+					_move_player_toward_nearest_threshold(1)
+					_time = max(0, _time - 2)
+		"search":
+			# At a search space, take the top item.
+			var pile_id := _pile_at_pos(_player_pos)
+			if pile_id == "":
+				_log_line("[i]no search pile at %s[/i]" % _player_pos)
+				return
+			match result:
+				"ss":   _take_top_item_at_pos(); _take_top_item_at_pos()  # peek+take
+				"s":    _take_top_item_at_pos()
+				"fail": pass
+		"short_rest":
+			match result:
+				"ss":   _health = min(5, _health + 2)
+				"s":    _health = min(5, _health + 1)
+				"fail": pass
+		"long_rest":
+			match result:
+				"ss":   _health = min(5, _health + 3)
+				"s":    _health = min(5, _health + 2)
+				"fail":
+					_health = min(5, _health + 1)
+					_time = max(0, _time - 1)
+		"focus":
+			# Successful FOCUS lowers Inertia by 1 (sharpens you against
+			# the room). Failure no-ops.
+			if result == "ss":
+				_inertia = max(0, _inertia - 2)
+			elif result == "s":
+				_inertia = max(0, _inertia - 1)
+		"distraction":
+			match result:
+				"ss":
+					_pop_top_gravity_card()
+					_move_player_toward_nearest_threshold(1)
+				"s":
+					_pop_top_gravity_card()
+				"fail":
+					_inertia = min(12, _inertia + 1)
+		"guard":
+			# Sets a flag that next Gravity-card Inertia tick is ignored.
+			if result == "ss" or result == "s":
+				_flags["guard_ignore_next_gravity_inertia"] = true
+				if result == "ss":
+					_move_player_toward_nearest_threshold(1)
+		"close_call":
+			# Reroll — for now, no-op past the dice roll itself. (A real
+			# reroll requires tracking the last-rolled card; future pass.)
+			pass
+		"spend_it":
+			_time += 1
+		"improvise":
+			# Replays the last-played card's mechanic. Currently no-op
+			# until we track last-played card state.
+			pass
+
+
+func _pop_top_gravity_card() -> void:
+	if _gravity_draw_pile.is_empty():
+		return
+	var cid: String = _gravity_draw_pile.pop_back()
+	_gravity_discard_pile.append(cid)
+	_log_line("[i]cancelled next Gravity card: %s[/i]" % cid)
 
 
 func _roll_arcana_dice(n: int) -> Dictionary:
