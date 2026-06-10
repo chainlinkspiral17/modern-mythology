@@ -163,87 +163,141 @@
 
 const SLOTS = [
   // ── Arcana card art (the gallery card pinned in the codex) ─────────
+  // The face of the major-arcana card itself. Vertical painted tarot
+  // composition WITHOUT the printed frame, title, or numerals — the
+  // engine pins this image in the codex panel and adds chrome on top.
   { tab: 'arcana', cat: 'fool', label: 'Fool (canonical card)',
-    flavor: "BBS-aesthetic; John Frank at the counter; recursive Fool card on the wall; 3:47 AM.",
+    flavor: "John Frank at the diner counter, mid-night-shift, wiping a single spot of formica. On the wall behind him, a small framed Fool tarot card showing a tiny abstract figure at a counter (recursive — the card-within-the-card). On the wall a clock reads 3:47 (painted in-world signage, allowed). To his right, a CRT-green BBS terminal mounted under the counter. A grey-and-white dog (Faith) curled at his feet. The composition has the structure of a tarot card face — central figure, iconographic background — but NO printed card border, NO title bar, NO 0 or Roman numeral.",
     target: 'assets/gallery/fool.png' },
   { tab: 'arcana', cat: 'fool', label: 'Fool — reversed (alt skin)',
-    flavor: "Inertia 12 state: the 24-hour diner of the soul.",
+    flavor: "The same composition as the canonical Fool, but in the Inertia-12 collapse state: every threshold around the figure has been painted over (parking lot a flat painted door, river window a painted window). The counter glows from within. The figure is more frozen, less alive. The recursive Fool card on the wall is duller. Same painted tarot structure, same NO printed card border / NO title bar rule.",
     target: 'assets/gallery/fool_reversed.png' },
 
   // ── Visitor portraits ──────────────────────────────────────────────
+  // Same painting technique as the cards. Faces of people who walk
+  // into a 3:47 AM diner. Each face is its own kind of tiredness.
   { tab: 'visitors', cat: 'fool', label: 'Frasier Temple',
-    flavor: "Bomber jacket, hair like a hurricane, notebook tucked under arm.",
+    flavor: "Late-thirties, weathered. Faded bomber jacket over a Western shirt. Hair like a hurricane that doesn't know it's stopped. Notebook tucked under one arm, pen behind the ear. Eyes on something just past the viewer's shoulder — the man who can never quite see what he's chasing. Backlit by parking-lot sodium light through a window.",
     target: 'assets/gallery/frasier_face.png' },
   { tab: 'visitors', cat: 'fool', label: 'The Booth-Six Stranger',
-    flavor: "Goggles, hood, glow-screen page; gaze turned up at John.",
+    flavor: "Indeterminate age, hood up over a thin grey beanie, oversized aviator-shape goggles pushed up on the forehead. Lower face lit green by a glowing handheld screen below frame. Looking UP at the viewer (i.e. at John) — they were watching him before he turned. Booth wall paneling behind them in deep red shadow.",
     target: 'assets/gallery/stranger_face.png' },
   { tab: 'visitors', cat: 'fool', label: 'Faith (the dog)',
-    flavor: "White-and-grey; calm yellow ring of an eye; the lion's child-form.",
+    flavor: "Medium-sized mongrel, white with grey patches, the build of a smaller lion. One ear up, one half-down. A single calm yellow eye visible, the other in shadow. Sat low, head turned three-quarters toward the viewer. Diner-floor linoleum tile faintly visible beneath. Mood: ancient + unbothered + watching.",
     target: 'assets/gallery/faith_face.png' },
   { tab: 'visitors', cat: 'fool', label: 'The Dawn Cook',
-    flavor: "Apron over flannel; shift change; the next person who'll wipe this counter.",
+    flavor: "Mid-forties, plaid flannel under a stained white apron, a hairnet barely containing grey-streaked hair. Caught just inside the diner door — the parking lot still in their hood. A cigarette behind one ear, an unread paperback in one hand. Eyes are kind and exhausted. They are the next person who will wipe this counter for twelve years.",
     target: 'assets/gallery/dawn_cook_face.png' },
   { tab: 'visitors', cat: 'fool', label: 'The BBS Caller',
-    flavor: "Mostly off-screen — represented by the terminal phosphor.",
+    flavor: "DELIBERATELY ABSTRACTED: a CRT terminal screen at portrait crop, phosphor-green glow filling the frame. The 'face' is the screen itself — a few visible scanlines, a soft glowing cursor, the faint outline of a user behind the glass (a reflection or a ghost projection, not a real person). If a human is implied at all, it's only as a vague silhouette in the cursor's afterimage.",
     target: 'assets/gallery/bbs_caller_face.png' },
   { tab: 'visitors', cat: 'fool', label: "Anya's Recording",
-    flavor: "Cassette spine glowing. Ghost-overlay; she isn't physically there.",
+    flavor: "A cassette tape mounted vertically, label side facing the viewer (the label reads as a painted texture — no legible text on it). Translucent overlay of a woman's face emerging from / fading into the cassette spine — late thirties, dark hair, eyes half-closed as if mid-thought. Ghost-double-exposure feel. Warm tape-machine light beneath, cold night around.",
     target: 'assets/gallery/anya_recording_face.png' },
 
-  // ── Item icons (for the inventory display) ─────────────────────────
+  // ── Item icons (museum-plate aesthetic, painted) ───────────────────
+  // Single object centered on a dark warm gradient. Soft rim light.
+  // NO surface, NO hand, NO scene, NO label text on the object itself
+  // unless the description says it's painted signage on the object.
   { tab: 'items', cat: 'fool', label: 'The Stick (broken broom handle)',
-    flavor: "Splintered wood, propped against the freezer for eleven years.",
+    flavor: "A snapped wooden broom handle, splintered at one end, dust-greyed where it stood against a wall for eleven years. Old varnish flaking in patches. Floating diagonally across the frame.",
     target: 'assets/gallery/items/fool_stick.png' },
   { tab: 'items', cat: 'fool', label: 'The Cloth (folded napkin)',
-    flavor: "White with permanent creases.",
+    flavor: "A folded diner cloth napkin, white-going-cream from washing. Sharp creases held permanent by a thousand foldings. One corner slightly singed. Suspended flat in the frame, casting a soft shadow on the dark ground.",
     target: 'assets/gallery/items/fool_cloth.png' },
   { tab: 'items', cat: 'fool', label: 'Contents — Pocket Money',
-    flavor: "Crumpled bills from the till.",
+    flavor: "A loose wad of crumpled small-denomination American bills, ones and fives mostly, secured by a faded rubber band. Curled corners, coffee stain on the outermost bill. (Numerals on the bills are abstract painted suggestions, not legible cash — keep it texture, not typography.)",
     target: 'assets/gallery/items/fool_contents_money.png' },
   { tab: 'items', cat: 'fool', label: 'Contents — Cassette Spine JOHN_47AM_3',
-    flavor: "Faded label, handwriting.",
+    flavor: "A single TDK-style audio cassette tape lying spine-up, label edge facing the viewer. The painted label texture suggests handwriting but the letters are pure paint-strokes — no legible text. Magnetic tape slightly extruded from one reel. Floats on the dark warm ground.",
     target: 'assets/gallery/items/fool_contents_cassette.png' },
   { tab: 'items', cat: 'fool', label: 'Contents — Scratched Penny',
-    flavor: "Discolored, with a deep scratch across the face.",
+    flavor: "A single 1980s American penny, oxidized brown-green, with a long diagonal scratch across Lincoln's face — fresh and bright against the patina. Closely cropped, the penny nearly fills the square frame. Soft rim light on its edge.",
     target: 'assets/gallery/items/fool_contents_penny.png' },
   { tab: 'items', cat: 'fool', label: 'Contents — Note from Booth 6',
-    flavor: "Folded napkin with a single line of writing.",
+    flavor: "A small folded paper napkin with one short line of handwritten paint-strokes across it (treat the writing as a painted gesture, not legible English). The napkin is creased in quarters, slightly damp at one corner. Floats over the dark ground.",
     target: 'assets/gallery/items/fool_contents_note.png' },
   { tab: 'items', cat: 'fool', label: 'Contents — Graffiti Tag (FRANKLY/FOOLISH)',
-    flavor: "Scratched into the table corner, two words, one hand.",
+    flavor: "A small rectangle of formica scraped/cut from a booth table corner, the words FRANKLY / FOOLISH scratched into it (this is painted signage IN-WORLD — keep these two words legible, hand-scratched, twenty years of grime in the grooves). The formica chip itself is the icon, floating on dark ground.",
     target: 'assets/gallery/items/fool_contents_graffiti.png' },
   { tab: 'items', cat: 'fool', label: 'Stale Coffee (cup #4)',
-    flavor: "Ceramic mug, lipstick on the rim.",
+    flavor: "A heavy white ceramic diner mug, slight crack in the rim, faint lipstick smear on one side, cold black coffee filling it. Steam absent — the cup has been there for hours. Painted in chiaroscuro, the lip of the mug catches the warm light.",
     target: 'assets/gallery/items/fool_stale_coffee.png' },
   { tab: 'items', cat: 'fool', label: 'The Card Within The Card',
-    flavor: "A tiny pinned-up Fool tarot card.",
+    flavor: "A miniature printed Fool tarot card pinned to an unseen surface with a single brass tack. The card-within-the-card shows a tiny abstract figure in the same painted style as everything else — recursive but NOT identical (it's a smaller, simpler echo). The pin's shadow falls across the bottom right. Crop tight on the card itself.",
     target: 'assets/gallery/items/fool_card_within_card.png' },
   { tab: 'items', cat: 'fool', label: 'The Booth-Six Notebook',
-    flavor: "Smudged notebook with the stranger's writing.",
+    flavor: "A wirebound 3x5 reporter's notebook, spiral edge to one side, slightly bent corners. The visible page covered in painted pen-marks suggesting handwriting (no legible letters). Pen clipped to the cover. The notebook is laid flat across the square frame.",
     target: 'assets/gallery/items/fool_booth_six_notebook.png' },
   { tab: 'items', cat: 'fool', label: 'The Fluorescent Strip',
-    flavor: "A foot of buzzing ceiling tile.",
+    flavor: "A two-foot section of fluorescent tube light, slightly yellowed at the ends, mounted in a thin metal channel. Faint internal glow — the tube isn't quite off. A small dead moth inside one end. Floats horizontally across the dark ground; the tube's glow tints the surrounding pixels green-white.",
     target: 'assets/gallery/items/fool_fluorescent_strip.png' },
 
   // ── Action card art ────────────────────────────────────────────────
-  // Each Fool-unique action card. (Framework cards are generic.)
-  ...['wipe_counter', 'address_the_bell', 'call_faith', 'sit_with',
-      'short_rest', 'address_the_bbs_banner', 'step_toward', 'pick_up',
-      'bundle', 'leap'].map(id => ({
-    tab: 'cards', cat: 'fool', label: 'Action — ' + id.replace(/_/g, ' '),
-    flavor: 'Card art, vertical orientation, ~400×560.',
-    target: 'assets/gallery/cards/fool_' + id + '.png'
+  // Each Fool-unique action card. Each flavor is the SPECIFIC painted
+  // moment for that verb — not a generic "card art" stub. The engine
+  // adds title strip + cost + outcome track on top, so the painting
+  // is the entire face of the card.
+  ...[
+    { id: 'wipe_counter', flavor:
+      "Close on John's hand in motion: a damp cloth orbits the same spot of formica counter, frozen mid-arc. The countertop sheens under a single fluorescent tube. His other hand braces the edge. Face mostly out of frame — just the jaw + cuff. The painted moment is the loop itself: nothing happens, but the hand keeps moving." },
+    { id: 'address_the_bell', flavor:
+      "John leans across the order window toward the brass call-bell, fingertip suspended a quarter-inch above the striker. The kitchen behind is dark; the bell catches the diner light like a small planet. Mood: somebody is about to be named." },
+    { id: 'call_faith', flavor:
+      "Low angle, John's mouth open mid-syllable saying a name. A grey-and-white dog's ear lifts from below the counter into the frame's bottom-right. Booth-grey shadows. The light on his face is yellow." },
+    { id: 'sit_with', flavor:
+      "Across-the-booth POV: John just slid into the red vinyl bench opposite someone — visible only as a hand on a coffee cup, a sleeve, a notebook page edge. The diner light glances off the formica tabletop between them." },
+    { id: 'short_rest', flavor:
+      "Bird's-eye-ish view of the counter: John's head is laid sideways on his folded forearms. A cold coffee cup, a folded napkin, the cassette deck of his radio at the far edge. The fluorescents above hum into a long exposure halo. Eyes closed. Tired weight." },
+    { id: 'address_the_bbs_banner', flavor:
+      "John leans toward a phosphor-green CRT terminal mounted under the counter. The screen reflects faintly in his glasses (if he has them) or his eyes (if he doesn't). The terminal is the only light source — green wash over his face. Off-screen ambient diner is barely there." },
+    { id: 'step_toward', flavor:
+      "Behind-John shot: he's walking toward a doorway/threshold (parking lot or river window — keep ambiguous), one foot lifted mid-step, apron strings trailing. The diner falls away into reflected dark. The threshold ahead is a rectangle of cold blue light." },
+    { id: 'pick_up', flavor:
+      "Tight on hands: John crouched, fingertips closing around a small object on the floor or in a booth crease. Don't show which object — keep it half-hidden. Knee on the linoleum. Low warm light from one side." },
+    { id: 'bundle', flavor:
+      "Hands tying a cloth bundle around the end of a broken broom handle. The cloth (a folded napkin) is opening slightly to show one ambiguous small item nested inside (don't make the contents legible). Composition: the stick crosses diagonally, the bundle is the focal point. Counter top edge faintly visible." },
+    { id: 'leap', flavor:
+      "The river-window threshold from inside the diner, John mid-climb across the sill — one leg in, one leg out. Beyond the window: huge cold blue, a hint of river current. Behind him, the warm yellow diner pulling like a magnet. It's a single suspended frame — the painting is the choice itself, not the result." },
+  ].map(o => ({
+    tab: 'cards', cat: 'fool', label: 'Action — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/fool_' + o.id + '.png'
   })),
 
   // ── Gravity card art ───────────────────────────────────────────────
-  ...['the_clock_holds', 'wipe_the_same_spot', 'still_chasing_shadows',
-      'the_fluorescent_tick', 'the_counter_wants_wiping',
-      'the_graffiti_hand', 'the_bell_rings', 'the_painted_pose',
-      'the_steamboat_echo', 'the_fellow_traveler', 'twelve_years',
-      'nine_locust_seventeen_door'].map(id => ({
-    tab: 'gravity', cat: 'fool', label: 'Gravity — ' + id.replace(/_/g, ' '),
-    flavor: 'Card art, vertical, ~400×560. The room being the room.',
-    target: 'assets/gallery/cards/fool_gravity_' + id + '.png'
+  // Gravity cards = the ROOM acting on the player. No human focal
+  // point. Environmental, slightly colder + greener than the action
+  // cards.
+  ...[
+    { id: 'the_clock_holds', flavor:
+      "Close-up of an aging diner wall clock, the second hand stuck at the 42-second mark, vibrating slightly as if it's trying to move forward. The clock face yellow with age. Faint reflection of a fluorescent tube in the glass. No figure. Painted." },
+    { id: 'wipe_the_same_spot', flavor:
+      "Empty counter, viewer's POV. A single damp ring on the formica with concentric water-stain halos around it — the ghost of a thousand previous wipes. A cloth lies abandoned beside it. No hand, no person — just the evidence of the loop." },
+    { id: 'still_chasing_shadows', flavor:
+      "Long shot down the booth aisle: between two booths, a man-shaped shadow on the wall that isn't connected to any visible person. The booth seats are red vinyl. The shadow has the silhouette of a tall man with a notebook. (Frasier seen as a flicker.) No characters in frame." },
+    { id: 'the_fluorescent_tick', flavor:
+      "Looking straight up at a ceiling fluorescent tube. The tube has a black spot in the middle, ticking like Morse code. Around it, the asbestos-grid ceiling fans out. The light beats — paint the moment of the click." },
+    { id: 'the_counter_wants_wiping', flavor:
+      "The counter sweats faint phantom spills that aren't there — coffee rings, lipstick smears, a half-circle of soda — all in pale ghost-pigment. No hand, no person. The room is asking to be cleaned." },
+    { id: 'the_graffiti_hand', flavor:
+      "Tight on a corner of a booth table where the words FRANKLY / FOOLISH are scratched into the formica. The scratched letters glow faintly, like graphite touched by static electricity. The hand that wrote it isn't there — but the painting feels like it just left." },
+    { id: 'the_bell_rings', flavor:
+      "The brass order-window bell mid-strike, blurred slightly with sympathetic vibration. A small halo of warm air ripples off it. Nobody's hand in frame. Kitchen behind it pitch dark. Sound implied as light." },
+    { id: 'the_painted_pose', flavor:
+      "On a diner wall, a small framed painting of a man at a counter wiping a spot — the man in the painting is John, painted in the same style as this card. He's looking back out of the painting. The painting is the only thing illuminated. (Card-within-card recursion, but the moment is the recognition.)" },
+    { id: 'the_steamboat_echo', flavor:
+      "Through the river-window: a red-painted riverboat passing outside in the dark, the only color in the frame. Lit windows blurred by water and condensation. Inside the diner is barely visible at the edge — the river is the actor." },
+    { id: 'the_fellow_traveler', flavor:
+      "A booth booth-window at night. In the reflection of the glass, two silhouettes side by side where the inside of the diner shows only one body. The 'other' silhouette is slightly fainter, slightly leaning. Pure reflection ambiguity." },
+    { id: 'twelve_years', flavor:
+      "A close shot of the counter edge where it's been wiped so many times the laminate has worn through to the chipboard underneath in the exact size and shape of one cloth. Twelve growth rings of wear visible. No figure. The painting IS time." },
+    { id: 'nine_locust_seventeen_door', flavor:
+      "The under-counter lockbox. Brass dial, etched with the address 9 LOCUST / 17 DOOR. Painted plainly, dim warm light from the counter above, a key in the lock half-turned. The painting is the address — keep it legible (this is signage, not UI). Nothing else in frame." },
+  ].map(o => ({
+    tab: 'gravity', cat: 'fool', label: 'Gravity — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/fool_gravity_' + o.id + '.png'
   })),
 
   // ── Backgrounds: the location ──────────────────────────────────────
@@ -265,23 +319,25 @@ const SLOTS = [
     target: 'assets/gallery/locations/dambrosios_reversed_state.png' },
 
   // ── CGs (finale + ending screens) ──────────────────────────────────
+  // Pulled back to a full-scene mid-shot. Same painting technique as
+  // the cards — these are the boxes-of-game finale illustrations.
   { tab: 'cg', cat: 'fool', label: 'Finale — WIPE THE SAME SPOT FOREVER',
-    flavor: 'The counter glows. John pinned at the counter, eyes open.',
+    flavor: "Wide shot of the diner counter. John stands behind it, cloth in hand, frozen mid-wipe. His eyes are wide open but his face is slack — he is no longer driving the gesture. The counter glows faintly from underneath (warm red leakage through the formica seams) — the room has him. Around him: the diner has subtly emptied of detail (Booth 6 shadowed, jukebox dark, the river window a flat dark rectangle).",
     target: 'assets/cg/fool_finale_wipe_forever.png' },
   { tab: 'cg', cat: 'fool', label: 'Finale — THE 24-HOUR DINER OF THE SOUL',
-    flavor: 'All exits gone. Time loops back to 3:47.',
+    flavor: "Wide-angle reverse: looking down the long axis of the diner. Every threshold has been bricked over, welded shut, painted on the wall. The parking lot door is now a painted door that doesn't open. The river window is a painted window. The diner is a sealed terrarium, lit warm yellow forever. John small in the center, very still. The wall clock reads 3:47 — keep this readable, it's painted in-world.",
     target: 'assets/cg/fool_finale_24_hour_diner.png' },
   { tab: 'cg', cat: 'fool', label: 'Finale — THE EMPTY ROOM',
-    flavor: 'Faith curled alone. Counter polished. No-one to be a beginning for.',
+    flavor: "The diner from a low angle, completely empty of people. Counter polished mirror-clean. One stool out of alignment. Faith the dog curled alone on the linoleum near the register. Lights humming. The painting's mood is what gets left when the person who used to be here is gone — not violence, just absence. No John in frame.",
     target: 'assets/cg/fool_finale_empty_room.png' },
   { tab: 'cg', cat: 'fool', label: 'Win — LEAP via Parking Lot',
-    flavor: "The leap into Graustark. Mundane world below.",
+    flavor: "Exterior wide-shot from above the parking lot. John mid-stride walking away from the diner, the diner's lit yellow windows shrinking behind him. The parking lot empties into a small Texas/Louisiana road, mundane gas station signage glowing in the distance. Dawn pre-light blue at the horizon. Camera tilted slightly down toward him — small figure, big mundane world.",
     target: 'assets/cg/fool_leap_parking_lot.png' },
   { tab: 'cg', cat: 'fool', label: 'Win — LEAP via River Window',
-    flavor: "The leap into the substrate. Volumes 6+.",
+    flavor: "Exterior, from out over the river looking back at the diner. The river is full of strange currents (the substrate's swirl, like ink in water). John mid-fall from the open river window, bindle clutched across his chest, falling toward the current. The water is starting to receive him — slight glow rising up around the impact point. The diner behind him glows like a single warm bead.",
     target: 'assets/cg/fool_leap_river_window.png' },
   { tab: 'cg', cat: 'fool', label: 'Win — LEAP via Precipice Door',
-    flavor: "The leap into Elicia's archive. Priestess-witnessed.",
+    flavor: "Interior, a narrow door at the back of the diner that wasn't there a moment ago has opened onto a soft archive-light room beyond. Tape-reels visible at the far end, a faint figure standing waiting (Elicia, painted as a silhouette — don't render her face). John has just stepped through the threshold, his back to the viewer, the diner light dying behind him.",
     target: 'assets/cg/fool_leap_precipice_door.png' },
 
   // ── SFX ────────────────────────────────────────────────────────────
@@ -425,31 +481,98 @@ function render() {
   for (const slot of list) wrap.appendChild(makeRow(slot));
 }
 
-// ── Style guide that gets prepended to every Gemini prompt ─────
-// Tunes the model toward the project's literary-noir aesthetic.
-const STYLE_GUIDE = "Modern Mythology project — late-1990s VN-aesthetic mixed media. Muted ambers + dark teals. Hand-painted brushwork over photographic underlay. Slight ASCII / dither texture overlay. Not stylized cartoon, not photoreal. Mood: literary noir, held-breath cinema. Reference: Disco Elysium portraits, Kentucky Route Zero compositions, Beksiński texture density.";
+// ── Shared style guide ───────────────────────────────────────────
+// Every prompt prepends this. The goal: every asset in the Tarot
+// Gauntlet — cards, items, visitor portraits, the board itself —
+// must look like it belongs in the SAME physical artifact: a high-
+// end indie horror board game with hand-painted card faces over
+// photographic underlayers. If you regenerate one slot, it has to
+// sit next to the others on the table.
+const STYLE_GUIDE = [
+  "PROJECT: Modern Mythology — Tarot Gauntlet. A solo card-and-dice horror board game in a 24-hour Texas/Louisiana diner at 3:47 AM.",
+  "",
+  "UNIFIED VISUAL LANGUAGE — every asset across the game must look like it belongs in the SAME boxed board game:",
+  "  · Medium: hand-painted gouache + oil over a photographic underlay. Visible brushwork. Coarse linen-paper grain. A faint ASCII/dither overlay barely readable in the shadows.",
+  "  · Palette: muted ambers + dark teals + dried-blood reds + cigarette-smoke greys. Highlights are warm sodium-vapor yellow; shadows are cold fluorescent green. Never saturated. Never neon.",
+  "  · Light: a single dominant warm source (diner fluorescents, jukebox glow, headlamps) cutting through a humid blue dark. High contrast, deep shadows, soft rim light on faces.",
+  "  · Era cues: late-1990s Americana — laminated menus, CRT modems, payphones, BBSes, cassette tapes, scratched formica, fluorescent tubes.",
+  "  · Mood: literary noir. Held-breath cinema. NOT cartoon. NOT photoreal. NOT anime. NOT 3D-render. NOT digital-painterly slick.",
+  "  · Reference quality bar: Disco Elysium character portraits, Kentucky Route Zero compositions, Mansions of Madness 2e components, Final Girl card backs, Beksiński texture density. Aim for printed-board-game-component quality.",
+  "",
+  "HARD RULES (apply to EVERY asset — the engine composites text and chrome itself):",
+  "  · NO TEXT of any kind on the image. No card titles, no captions, no Roman numerals, no signatures, no logos, no watermarks, no number readouts, no UI labels, no speech bubbles. Painted signage IN THE WORLD (a diner menu board, a neon sign) is fine ONLY when the slot explicitly asks for it.",
+  "  · NO CARD FRAME or border. No rounded rectangle, no ornamental edge, no drop shadow, no UI chrome. The engine draws those.",
+  "  · NO COLLAGE of multiple panels. One image, one composition.",
+  "  · Keep the focal subject centered or rule-of-thirds; leave breathing room at the top edge (engine overlays a title bar there).",
+].join("\n");
+
+// Hard negative prompt block — appended to every generation.
+const NEGATIVE = [
+  "AVOID: any rendered text, letters, numbers, signature, watermark, logo; card borders or frames; UI chrome or button shapes; tarot-card title bars or roman numerals; anime/manga style; modern 3D render look; Marvel/Pixar polish; AI smoothness; floating particles; lens flare; vignette stickers; multiple panels or collage; figures with extra fingers/limbs."
+].join(" ");
+
+// Per-tab composition + aspect rules. The shared style guide tells
+// the model HOW to paint; these tell it WHAT to paint and how to
+// frame it for this specific slot type.
+const TAB_HINTS = {
+  arcana:
+    "FORMAT: Full vertical tarot-card composition, 1024×1536 (2:3). " +
+    "COMPOSITION: One central figure or symbolic tableau, painted as if it's the face of a tarot card — but WITHOUT any printed card border, title bar, or numerals (engine adds those). Iconographic background symbols painted into the scene, not pasted on. " +
+    "POSE/MOOD: still, hieratic, slightly off-center; the figure regards the viewer or is mid-act. The painting is the card face; pretend a board game's art director just delivered it for a print run.",
+
+  visitors:
+    "FORMAT: Character portrait at 3:4 (768×1024), face + upper chest, ~headshot framing with breathing room above the head. " +
+    "COMPOSITION: One person, alone, against a soft dark warm background — diner-booth shadow, kitchen wall, parking-lot night. Lighting motivated by the diner (counter fluorescents from below, jukebox glow from one side, headlights through a window). " +
+    "POSE/MOOD: caught mid-thought, mid-shift, mid-arrival — NOT a smiling portrait. Eyes carry the scene. Neutral or weary expression. Painted in the same gouache-over-photo style as the cards so the face sits next to the action art without clashing.",
+
+  items:
+    "FORMAT: Single object, 1:1 (1024×1024), centered. " +
+    "COMPOSITION: Museum-catalogue plate but PAINTED, not photographed. Object floats against a warm dark gradient background, faint cast shadow below, soft rim light tracing the silhouette. Same gouache + photo-grain technique as the rest of the deck. " +
+    "FOCAL OBJECT ONLY — no hand holding it, no scene around it, no second object, no surface beneath it. Imagine a Final Girl 'consumable item' tile cropped for inclusion in a hand of cards.",
+
+  cards:
+    "FORMAT: Action-card art, vertical 5:7 (640×896), full bleed. " +
+    "COMPOSITION: One iconic moment — a single gesture or environmental beat that names the card. Think 'a still from a film' rather than 'an illustration of a verb'. Composition leaves room AT THE TOP for the engine's title strip; the subject anchors the lower 2/3. " +
+    "NO TEXT, NO CARD FRAME, NO TITLE BAR — engine adds the title, cost, and outcome track on top. " +
+    "STYLE LOCK: identical brushwork and palette to the visitor portraits + item plates. These are face-up cards in the same deck.",
+
+  gravity:
+    "FORMAT: Gravity-card art, vertical 5:7 (640×896), full bleed. " +
+    "COMPOSITION: The ROOM doing something — environmental dread rather than character action. A fluorescent stuttering, a payphone ringing alone, the river outside the window pressing against the glass. No human focal point. If a person appears, they're a silhouette or partial — the room is the actor. " +
+    "PALETTE SHIFT: lean slightly colder + greener than the action cards so Gravity feels different in hand. Same brushwork, same paper grain. " +
+    "NO TEXT, NO FRAME — engine overlays the title.",
+
+  bg:
+    "FORMAT: Wide environmental piece. The Gauntlet-board version is 1600×1000 (16:10), painted as a board-game TILE: top-down or 3-quarter overhead view of the location, every named station rendered as a clearly delineated region with a small painted sign/label AND a small node marker (a circle, a card-back rectangle, or a footprint) that the player will click. " +
+    "Faint hand-painted lines suggest pathways between adjacent stations (subtle — the engine draws meeples + chevrons on top). " +
+    "Same gouache-over-photo technique as everything else. NO figures, NO meeples (those are engine-composited). The station labels ARE allowed and required — keep them small, hand-lettered, painted into the scene.",
+
+  cg:
+    "FORMAT: Full-screen narrative beat, 16:9 (1920×1080), cinematic. " +
+    "COMPOSITION: One iconic story moment — the win/loss/reversal CG. Same painted style as the cards but scaled up and pulled back. May include the player character at long-shot or mid-shot scale. " +
+    "NO subtitle bar, NO letterbox bars, NO title text — engine handles all overlays.",
+
+  sfx: "(audio — copy this prompt into your audio tool)",
+  bgm: "(audio — copy this prompt into your audio tool)",
+};
 
 // Build a per-slot prompt from the slot's flavor + tab category.
 function suggestedPromptFor(slot) {
-  const tabHints = {
-    arcana:   "Full vertical tarot card composition, ornate borders, central figure, iconographic symbols, 1024×1536 portrait.",
-    visitors: "Character portrait, face + upper torso, slot-friendly 3:4 framing, neutral expression, dark warm background.",
-    items:    "Single object on dark warm background, soft rim light, 1:1 square framing, no UI chrome.",
-    cards:    "Action card art, vertical 5:7 framing, single iconic moment, no text overlay (text added by engine).",
-    gravity:  "Gravity card art, vertical 5:7, abstracted environmental mood — the ROOM doing something, not a character action.",
-    bg:       "Wide environmental establishing shot, 16:10, painted lighting, no figures (figures composited later). For the *Gauntlet board* asset specifically, treat the image as a printed board-game tile: every named station readable, faint pathways between adjacent stations, the engine overlays meeples + chevrons on top.",
-    cg:       "Full-screen narrative beat, 16:9, single iconic moment, cinematic framing.",
-    sfx:      "(audio — no image prompt)",
-    bgm:      "(audio — no image prompt)",
-  };
-  const tabHint = tabHints[slot.tab] || "";
-  return [
+  const tabHint = TAB_HINTS[slot.tab] || "";
+  const isAudio = slot.tab === 'sfx' || slot.tab === 'bgm';
+  const parts = [
     STYLE_GUIDE,
     "",
-    "Asset: " + slot.label,
-    "Brief: " + slot.flavor,
-    tabHint ? "Format: " + tabHint : "",
-  ].filter(Boolean).join("\n");
+    "ASSET: " + slot.label,
+    "BRIEF: " + slot.flavor,
+    "",
+    "PER-TYPE RULES — " + tabHint,
+  ];
+  if (!isAudio) {
+    parts.push("");
+    parts.push("NEGATIVE PROMPT (do not include): " + NEGATIVE);
+  }
+  return parts.filter(Boolean).join("\n");
 }
 
 function makeRow(slot) {
