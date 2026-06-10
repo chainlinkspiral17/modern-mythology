@@ -35,6 +35,7 @@ var _paused:      bool  = false
 
 var _bg_solid:       ColorRect   = null
 var _bg_composition: Control     = null
+var _composition_active: bool    = false
 var _substrate:      Control     = null
 var _bg:             TextureRect = null
 var _bg_frame:       Control     = null
@@ -361,10 +362,12 @@ func _auto_load_substrate(scene_id: String) -> void:
 
 	if has_comp:
 		_bg_composition.call("load_composition", comp_short)
+		_composition_active = true
 		_substrate.call("clear_substrate")
 		return
 
 	_clear_bg_composition()
+	_composition_active = false
 	var piece_short := "scene/" + scene_id
 	var piece_path  := "res://resources/substrates/" + piece_short + ".json"
 	if FileAccess.file_exists(piece_path):
@@ -527,6 +530,18 @@ func _do_bg(n: Dictionary) -> void:
 	if src == "":
 		_bg.texture = null
 		return
+	# Composition supersedes bg PNG. When a scene_<id>.json composition
+	# is loaded, it already contains the bg image as a window (alongside
+	# ASCII flicker, dust motes, color grade) and the redundant bg PNG
+	# plus BgFrame matte completely cover those layers — collapsing the
+	# composed look back to a plain PNG. Skip the bg paint so the
+	# composition stays visible. Scenes without a composition still
+	# render via _bg as before.
+	if _composition_active:
+		_bg.texture = null
+		if _bg_frame != null:
+			_bg_frame.queue_redraw()
+		return
 	var path := "res://" + src
 	if ResourceLoader.exists(path):
 		_bg.texture = ResourceLoader.load(path) as Texture2D
@@ -552,8 +567,15 @@ func _do_composition(n: Dictionary) -> void:
 	var src: String = _s(n, "src")
 	if src == "":
 		_clear_bg_composition()
+		_composition_active = false
 	else:
 		_bg_composition.call("load_composition", src)
+		_composition_active = true
+		# Stale bg PNG would now sit on top of the new composition and
+		# cover it; clear so the composition is what shows.
+		_bg.texture = null
+		if _bg_frame != null:
+			_bg_frame.queue_redraw()
 
 
 func _do_bgm(n: Dictionary) -> void:

@@ -64,7 +64,7 @@ const PARALLAX_Y_AMP  := 1.2
 const ACTIVE_SCALE   := 1.05
 const ACTIVE_ALPHA   := 1.00
 const INACTIVE_SCALE := 0.92
-const INACTIVE_ALPHA := 0.32
+const INACTIVE_ALPHA := 0.55
 
 # Character-keyed accent palette. Used for portrait border tint,
 # dialog speaker name color, visualizer peak hint, and the active-
@@ -196,12 +196,22 @@ func hide_at(pos: String) -> void:
 
 
 func hide_all() -> void:
+	# Scene transitions hard-clear portraits + ghosts immediately.
+	# Cross-fade (with ghost silhouette) is reserved for hide_at
+	# during a scene; on scene/chapter change we drop everything
+	# in the same frame so the next scene starts clean instead of
+	# overlapping a half-faded prior portrait with new dialogue.
 	for pos: String in _slots:
-		hide_at(pos)
-	# Scene transitions clear ASCII ghosts — fresh scene gets a
-	# clean substrate. Individual character hides leave their
-	# silhouette behind on purpose; only the bulk clear sweeps.
-	_clear_ghosts()
+		var slot = _slots.get(pos)
+		if slot != null:
+			var node: Control = slot["node"]
+			if is_instance_valid(node):
+				node.queue_free()
+			_slots[pos] = null
+	for g in _ghosts:
+		if is_instance_valid(g):
+			g.queue_free()
+	_ghosts.clear()
 
 
 func activate_speaker(char_name: String) -> void:
@@ -467,11 +477,9 @@ class _AsciiBorder extends Control:
 			            HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
 			draw_string(font, Vector2((cols - 1) * cell_x, y + cell_y - 2),
 			            "║", HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
-		# A row of accent characters at the top — character name shorthand
-		if char_name != "":
-			var lbl := "[ %s ]" % char_name.to_upper()
-			draw_string(font, Vector2(cell_x * 2, cell_y - 2), lbl,
-			            HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_bright)
+		# Speaker name on the portrait used to duplicate the dialogue
+		# box's name label; removed so the portrait reads as a clean
+		# framed figure without text competing for attention.
 
 
 func _make_border(wrapper: Control, char_name: String) -> Control:
