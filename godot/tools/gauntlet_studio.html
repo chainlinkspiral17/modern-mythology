@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modern Mythology — Tarot Gauntlet Asset Studio</title>
+<style>
+  :root {
+    --bg: #0d121c; --panel: #161c2a; --panel2: #1f2638;
+    --border: #2d3548; --accent: #c8a268; --accent-dim: #6d5c3e;
+    --text: #d8d4c8; --text-dim: #7c8398;
+    --good: #7cffb0; --warn: #ffb060; --bad: #ff6464;
+    --cat-arcana: #c8a268; --cat-visitor: #9bc3ff; --cat-item: #c2ff9b;
+    --cat-card: #ffd6a8; --cat-bg: #ff9ad8; --cat-cg: #ffb060; --cat-sfx: #aab5ff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 100vh; }
+  header { background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 10px 18px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  header h1 { margin: 0; font: 600 16px/1.2 ui-serif, Georgia, serif;
+    color: var(--accent); letter-spacing: 0.02em; }
+  header .sub { font-size: 12px; color: var(--text-dim); }
+  header .spacer { flex: 1; }
+  header .stats { font-size: 11px; color: var(--text-dim); }
+  header .stats b { color: var(--text); font-weight: 600; }
+  main { display: grid; grid-template-columns: 280px 1fr; height: calc(100vh - 50px); }
+  .sidebar { background: var(--panel); border-right: 1px solid var(--border);
+    padding: 14px; overflow-y: auto; }
+  .step { background: var(--panel2); border: 1px solid var(--border); border-radius: 5px;
+    padding: 10px 12px; margin-bottom: 12px; }
+  .step h2 { margin: 0 0 6px 0; font: 600 11px/1 ui-sans-serif, sans-serif;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.07em; }
+  .step p { margin: 4px 0; font-size: 12px; color: var(--text-dim); }
+  .step input[type=file] { background: var(--bg); color: var(--text); border: 1px solid var(--border);
+    border-radius: 3px; padding: 5px; font-size: 11px; width: 100%; margin: 4px 0; }
+  .status { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+  .status.good { color: var(--good); }
+  button { background: var(--accent-dim); color: var(--text); border: 1px solid var(--accent-dim);
+    border-radius: 3px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+  button:hover:not([disabled]) { background: var(--accent); color: var(--bg); }
+  button.primary { background: var(--accent); color: var(--bg); border-color: var(--accent);
+    font-weight: 600; width: 100%; padding: 9px; }
+  button[disabled] { opacity: 0.4; cursor: not-allowed; }
+  button.toggle { padding: 4px 9px; font-size: 11px; background: var(--bg);
+    border: 1px solid var(--border); color: var(--text-dim); }
+  button.toggle.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+  .content { display: flex; flex-direction: column; overflow: hidden; }
+  .tabs { display: flex; gap: 4px; padding: 12px 16px 0; border-bottom: 1px solid var(--border);
+    background: var(--panel); flex-wrap: wrap; }
+  .tab { background: transparent; border: 1px solid transparent; border-bottom: none;
+    padding: 8px 12px; font-size: 12px; color: var(--text-dim); cursor: pointer;
+    border-radius: 4px 4px 0 0; }
+  .tab:hover { color: var(--text); }
+  .tab.active { background: var(--bg); border-color: var(--border); color: var(--accent); }
+  .tab .count { font-size: 11px; color: var(--text-dim); margin-left: 4px; }
+  .tab.active .count { color: var(--accent); }
+  .tab-content { flex: 1; padding: 14px 16px; overflow-y: auto; background: var(--bg); }
+
+  .help-banner { background: var(--panel); border: 1px solid var(--border); border-radius: 5px;
+    padding: 12px 14px; margin-bottom: 12px; font-size: 12px; color: var(--text); }
+  .help-banner b { color: var(--accent); }
+  .help-banner code { background: var(--bg); padding: 1px 4px; border-radius: 3px;
+    font-size: 11px; color: var(--accent); }
+
+  .row { display: grid; grid-template-columns: 60px 1fr 180px 180px; gap: 12px;
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 5px;
+    padding: 10px; margin-bottom: 8px; align-items: center; }
+  .row.has-replacement { border-color: var(--good); }
+  .row .kind { background: var(--bg); border: 1px solid var(--border); border-radius: 3px;
+    padding: 3px 6px; text-align: center; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); }
+  .row .meta .label { font-weight: 600; color: var(--accent); font-size: 13px; }
+  .row .meta .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .row .meta .path { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px;
+    color: var(--text-dim); word-break: break-all; margin-top: 3px; }
+  .row .meta .flavor { font-style: italic; color: var(--text); margin-top: 4px; }
+  .image-cell { width: 180px; height: 100px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 3px; position: relative; display: flex; align-items: center;
+    justify-content: center; overflow: hidden; cursor: pointer; }
+  .image-cell img, .image-cell audio { max-width: 100%; max-height: 100%; }
+  .image-cell .ph { font-size: 10px; color: var(--text-dim); text-align: center; padding: 6px; }
+  .image-cell .label { position: absolute; top: 4px; left: 6px; background: rgba(0,0,0,0.7);
+    color: var(--text); font-size: 10px; padding: 2px 6px; border-radius: 3px; }
+
+  audio { width: 100%; }
+  .empty { padding: 40px 20px; text-align: center; color: var(--text-dim); }
+  .empty h3 { margin: 0 0 6px 0; color: var(--text); font-weight: 500; font-size: 16px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Gauntlet Asset Studio</h1>
+  <span class="sub">drop replacements · export drop-in zip for assets/</span>
+  <span class="spacer"></span>
+  <span class="stats" id="stats">
+    <b id="statQueued">0</b> queued of <b id="statTotal">0</b> slots
+  </span>
+</header>
+
+<main>
+  <aside class="sidebar">
+    <div class="step">
+      <h2>1 · (Optional) drop assets/ folder</h2>
+      <p>Drop <code>godot/assets/</code> so existing files preview in their slot. Browser-only.</p>
+      <input type="file" id="assetsInput" webkitdirectory directory multiple>
+      <p id="assetsStatus" class="status">No assets indexed.</p>
+    </div>
+
+    <div class="step">
+      <h2>2 · Pick scope</h2>
+      <p>Filter slots by arcana / location / category.</p>
+      <div id="scopeFilters" style="display:flex;flex-wrap:wrap;gap:4px;"></div>
+    </div>
+
+    <div class="step">
+      <h2>3 · Export</h2>
+      <p>Queued replacements bundled at their target paths. Unzip into your <code>godot/</code> folder.</p>
+      <button id="exportBtn" class="primary" disabled>Export drop-in zip</button>
+      <p id="exportStatus" class="status"></p>
+    </div>
+  </aside>
+
+  <section class="content">
+    <div class="tabs">
+      <button class="tab active" data-tab="arcana">Arcana cards <span class="count" id="cntArcana">0</span></button>
+      <button class="tab" data-tab="visitors">Visitors <span class="count" id="cntVisitors">0</span></button>
+      <button class="tab" data-tab="items">Items <span class="count" id="cntItems">0</span></button>
+      <button class="tab" data-tab="cards">Action cards <span class="count" id="cntCards">0</span></button>
+      <button class="tab" data-tab="gravity">Gravity cards <span class="count" id="cntGravity">0</span></button>
+      <button class="tab" data-tab="bg">Backgrounds <span class="count" id="cntBg">0</span></button>
+      <button class="tab" data-tab="cg">CGs <span class="count" id="cntCg">0</span></button>
+      <button class="tab" data-tab="sfx">SFX <span class="count" id="cntSfx">0</span></button>
+      <button class="tab" data-tab="bgm">BGM <span class="count" id="cntBgm">0</span></button>
+    </div>
+    <div class="tab-content" id="tabContent">
+      <div class="empty"><h3>Loading slots…</h3></div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script>
+'use strict';
+
+// ── Slot manifest ──────────────────────────────────────────────────────────
+// Generated from godot/resources/games/fool/* + lore. Each entry is one
+// authorable asset slot: target path + label + flavor hint + category.
+
+const SLOTS = [
+  // ── Arcana card art (the gallery card pinned in the codex) ─────────
+  { tab: 'arcana', cat: 'fool', label: 'Fool (canonical card)',
+    flavor: "BBS-aesthetic; John Frank at the counter; recursive Fool card on the wall; 3:47 AM.",
+    target: 'assets/gallery/fool.png' },
+  { tab: 'arcana', cat: 'fool', label: 'Fool — reversed (alt skin)',
+    flavor: "Inertia 12 state: the 24-hour diner of the soul.",
+    target: 'assets/gallery/fool_reversed.png' },
+
+  // ── Visitor portraits ──────────────────────────────────────────────
+  { tab: 'visitors', cat: 'fool', label: 'Frasier Temple',
+    flavor: "Bomber jacket, hair like a hurricane, notebook tucked under arm.",
+    target: 'assets/gallery/frasier_face.png' },
+  { tab: 'visitors', cat: 'fool', label: 'The Booth-Six Stranger',
+    flavor: "Goggles, hood, glow-screen page; gaze turned up at John.",
+    target: 'assets/gallery/stranger_face.png' },
+  { tab: 'visitors', cat: 'fool', label: 'Faith (the dog)',
+    flavor: "White-and-grey; calm yellow ring of an eye; the lion's child-form.",
+    target: 'assets/gallery/faith_face.png' },
+  { tab: 'visitors', cat: 'fool', label: 'The Dawn Cook',
+    flavor: "Apron over flannel; shift change; the next person who'll wipe this counter.",
+    target: 'assets/gallery/dawn_cook_face.png' },
+  { tab: 'visitors', cat: 'fool', label: 'The BBS Caller',
+    flavor: "Mostly off-screen — represented by the terminal phosphor.",
+    target: 'assets/gallery/bbs_caller_face.png' },
+  { tab: 'visitors', cat: 'fool', label: "Anya's Recording",
+    flavor: "Cassette spine glowing. Ghost-overlay; she isn't physically there.",
+    target: 'assets/gallery/anya_recording_face.png' },
+
+  // ── Item icons (for the inventory display) ─────────────────────────
+  { tab: 'items', cat: 'fool', label: 'The Stick (broken broom handle)',
+    flavor: "Splintered wood, propped against the freezer for eleven years.",
+    target: 'assets/gallery/items/fool_stick.png' },
+  { tab: 'items', cat: 'fool', label: 'The Cloth (folded napkin)',
+    flavor: "White with permanent creases.",
+    target: 'assets/gallery/items/fool_cloth.png' },
+  { tab: 'items', cat: 'fool', label: 'Contents — Pocket Money',
+    flavor: "Crumpled bills from the till.",
+    target: 'assets/gallery/items/fool_contents_money.png' },
+  { tab: 'items', cat: 'fool', label: 'Contents — Cassette Spine JOHN_47AM_3',
+    flavor: "Faded label, handwriting.",
+    target: 'assets/gallery/items/fool_contents_cassette.png' },
+  { tab: 'items', cat: 'fool', label: 'Contents — Scratched Penny',
+    flavor: "Discolored, with a deep scratch across the face.",
+    target: 'assets/gallery/items/fool_contents_penny.png' },
+  { tab: 'items', cat: 'fool', label: 'Contents — Note from Booth 6',
+    flavor: "Folded napkin with a single line of writing.",
+    target: 'assets/gallery/items/fool_contents_note.png' },
+  { tab: 'items', cat: 'fool', label: 'Contents — Graffiti Tag (FRANKLY/FOOLISH)',
+    flavor: "Scratched into the table corner, two words, one hand.",
+    target: 'assets/gallery/items/fool_contents_graffiti.png' },
+  { tab: 'items', cat: 'fool', label: 'Stale Coffee (cup #4)',
+    flavor: "Ceramic mug, lipstick on the rim.",
+    target: 'assets/gallery/items/fool_stale_coffee.png' },
+  { tab: 'items', cat: 'fool', label: 'The Card Within The Card',
+    flavor: "A tiny pinned-up Fool tarot card.",
+    target: 'assets/gallery/items/fool_card_within_card.png' },
+  { tab: 'items', cat: 'fool', label: 'The Booth-Six Notebook',
+    flavor: "Smudged notebook with the stranger's writing.",
+    target: 'assets/gallery/items/fool_booth_six_notebook.png' },
+  { tab: 'items', cat: 'fool', label: 'The Fluorescent Strip',
+    flavor: "A foot of buzzing ceiling tile.",
+    target: 'assets/gallery/items/fool_fluorescent_strip.png' },
+
+  // ── Action card art ────────────────────────────────────────────────
+  // Each Fool-unique action card. (Framework cards are generic.)
+  ...['wipe_counter', 'address_the_bell', 'call_faith', 'sit_with',
+      'short_rest', 'address_the_bbs_banner', 'step_toward', 'pick_up',
+      'bundle', 'leap'].map(id => ({
+    tab: 'cards', cat: 'fool', label: 'Action — ' + id.replace(/_/g, ' '),
+    flavor: 'Card art, vertical orientation, ~400×560.',
+    target: 'assets/gallery/cards/fool_' + id + '.png'
+  })),
+
+  // ── Gravity card art ───────────────────────────────────────────────
+  ...['the_clock_holds', 'wipe_the_same_spot', 'still_chasing_shadows',
+      'the_fluorescent_tick', 'the_counter_wants_wiping',
+      'the_graffiti_hand', 'the_bell_rings', 'the_painted_pose',
+      'the_steamboat_echo', 'the_fellow_traveler', 'twelve_years',
+      'nine_locust_seventeen_door'].map(id => ({
+    tab: 'gravity', cat: 'fool', label: 'Gravity — ' + id.replace(/_/g, ' '),
+    flavor: 'Card art, vertical, ~400×560. The room being the room.',
+    target: 'assets/gallery/cards/fool_gravity_' + id + '.png'
+  })),
+
+  // ── Backgrounds: the location ──────────────────────────────────────
+  { tab: 'bg', cat: 'dambrosios', label: "D'Ambrosio's interior — Gauntlet view",
+    flavor: 'Top-down or 3/4 view of the diner. Counter centered. Booth 6 + Kitchen Alcove flanking. Bell + register + card wall + river window below. ~1600×1000.',
+    target: 'assets/gallery/locations/dambrosios_gauntlet_board.png' },
+  { tab: 'bg', cat: 'dambrosios', label: "D'Ambrosio's — claimed / 24-hour-diner-of-the-soul state",
+    flavor: 'The losing-state version: exits gone, counter glowing, alone.',
+    target: 'assets/gallery/locations/dambrosios_reversed_state.png' },
+
+  // ── CGs (finale + ending screens) ──────────────────────────────────
+  { tab: 'cg', cat: 'fool', label: 'Finale — WIPE THE SAME SPOT FOREVER',
+    flavor: 'The counter glows. John pinned at the counter, eyes open.',
+    target: 'assets/cg/fool_finale_wipe_forever.png' },
+  { tab: 'cg', cat: 'fool', label: 'Finale — THE 24-HOUR DINER OF THE SOUL',
+    flavor: 'All exits gone. Time loops back to 3:47.',
+    target: 'assets/cg/fool_finale_24_hour_diner.png' },
+  { tab: 'cg', cat: 'fool', label: 'Finale — THE EMPTY ROOM',
+    flavor: 'Faith curled alone. Counter polished. No-one to be a beginning for.',
+    target: 'assets/cg/fool_finale_empty_room.png' },
+  { tab: 'cg', cat: 'fool', label: 'Win — LEAP via Parking Lot',
+    flavor: "The leap into Graustark. Mundane world below.",
+    target: 'assets/cg/fool_leap_parking_lot.png' },
+  { tab: 'cg', cat: 'fool', label: 'Win — LEAP via River Window',
+    flavor: "The leap into the substrate. Volumes 6+.",
+    target: 'assets/cg/fool_leap_river_window.png' },
+  { tab: 'cg', cat: 'fool', label: 'Win — LEAP via Precipice Door',
+    flavor: "The leap into Elicia's archive. Priestess-witnessed.",
+    target: 'assets/cg/fool_leap_precipice_door.png' },
+
+  // ── SFX ────────────────────────────────────────────────────────────
+  { tab: 'sfx', cat: 'gauntlet', label: 'Card play',
+    flavor: 'Quiet card flip / soft thump.',
+    target: 'assets/audio/sfx/gauntlet_card_play.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Dice roll',
+    flavor: 'Soft tumble against ceramic.',
+    target: 'assets/audio/sfx/gauntlet_dice_roll.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Bell tone',
+    flavor: 'Brass bell, single ring. Two of these = the two tones of the door bell.',
+    target: 'assets/audio/sfx/gauntlet_bell_tone.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Gravity card draw',
+    flavor: 'Low scrape — the room reaching for you.',
+    target: 'assets/audio/sfx/gauntlet_gravity_draw.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Visitor arrives',
+    flavor: 'Soft chime; the door bell ringing thinly.',
+    target: 'assets/audio/sfx/gauntlet_visitor_arrive.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Visitor claimed by Shadow',
+    flavor: 'Dropped tone; brass cooling.',
+    target: 'assets/audio/sfx/gauntlet_visitor_claimed.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Visitor connection (warm)',
+    flavor: 'Two-note rising chime.',
+    target: 'assets/audio/sfx/gauntlet_visitor_connect.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Item pickup',
+    flavor: 'Paper rustle / cloth fold / coin tap depending on item.',
+    target: 'assets/audio/sfx/gauntlet_item_pickup.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Bundle assembled',
+    flavor: 'Cloth knotting closed. Quiet, deliberate.',
+    target: 'assets/audio/sfx/gauntlet_bundle.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Win sting (LEAP)',
+    flavor: 'Held breath releasing. A single rising chord.',
+    target: 'assets/audio/sfx/gauntlet_win.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Loss sting (reversed)',
+    flavor: 'Falling tone, then silence.',
+    target: 'assets/audio/sfx/gauntlet_loss.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Lore token revealed',
+    flavor: 'Small bright ping.',
+    target: 'assets/audio/sfx/gauntlet_lore_token.ogg' },
+
+  // ── BGM ────────────────────────────────────────────────────────────
+  { tab: 'bgm', cat: 'dambrosios', label: "D'Ambrosio's ambient — Gauntlet loop",
+    flavor: '47 Hz drone. Fluorescent buzz. Distant clock tick. Loopable 2-3 min.',
+    target: 'assets/audio/bgm/gauntlet_dambrosios_ambient.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: "D'Ambrosio's tension — Inertia ≥ 8",
+    flavor: 'Same loop, lower-passed. Add subharmonic. Optional.',
+    target: 'assets/audio/bgm/gauntlet_dambrosios_tension.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: "D'Ambrosio's release — Win",
+    flavor: '15-second outro played on LEAP. Rising; resolves.',
+    target: 'assets/audio/bgm/gauntlet_dambrosios_release.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: "D'Ambrosio's reversed — Loss",
+    flavor: '15-second outro played on reversal. Settling into stasis.',
+    target: 'assets/audio/bgm/gauntlet_dambrosios_reversed.ogg' },
+];
+
+let assetIndex = {};
+let queue = {};
+let activeTab = 'arcana';
+let activeScope = '';
+const $ = (id) => document.getElementById(id);
+const baseName = (p) => p.split('/').pop();
+
+function indexAssets(files) {
+  assetIndex = {};
+  let n = 0;
+  for (const f of files) {
+    if (!f.type.startsWith('image/') && !f.type.startsWith('audio/')) continue;
+    assetIndex[f.name] = f;
+    const rp = f.webkitRelativePath || '';
+    const m = rp.match(/assets\/(.+)$/);
+    if (m) assetIndex['assets/' + m[1]] = f;
+    n++;
+  }
+  $('assetsStatus').textContent = `Indexed ${n} assets.`;
+  $('assetsStatus').className = 'status good';
+  render();
+}
+
+function findAsset(p) { return assetIndex[p] || assetIndex[baseName(p)] || null; }
+
+function rebuildScopeFilters() {
+  const scopes = new Set();
+  for (const s of SLOTS) scopes.add(s.cat);
+  const wrap = $('scopeFilters');
+  wrap.innerHTML = '';
+  const all = document.createElement('button');
+  all.className = 'toggle' + (activeScope === '' ? ' active' : '');
+  all.textContent = 'all';
+  all.onclick = () => { activeScope = ''; rebuildScopeFilters(); render(); };
+  wrap.appendChild(all);
+  for (const s of Array.from(scopes).sort()) {
+    const b = document.createElement('button');
+    b.className = 'toggle' + (activeScope === s ? ' active' : '');
+    b.textContent = s;
+    b.onclick = () => { activeScope = (activeScope === s ? '' : s); rebuildScopeFilters(); render(); };
+    wrap.appendChild(b);
+  }
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;',
+  }[c]));
+}
+
+function tabCount(tab) {
+  return SLOTS.filter(s => s.tab === tab && (activeScope === '' || s.cat === activeScope)).length;
+}
+
+function render() {
+  // Update counts on each tab
+  $('cntArcana').textContent   = tabCount('arcana');
+  $('cntVisitors').textContent = tabCount('visitors');
+  $('cntItems').textContent    = tabCount('items');
+  $('cntCards').textContent    = tabCount('cards');
+  $('cntGravity').textContent  = tabCount('gravity');
+  $('cntBg').textContent       = tabCount('bg');
+  $('cntCg').textContent       = tabCount('cg');
+  $('cntSfx').textContent      = tabCount('sfx');
+  $('cntBgm').textContent      = tabCount('bgm');
+  // Update header stats
+  $('statQueued').textContent  = Object.keys(queue).length;
+  $('statTotal').textContent   = SLOTS.length;
+  $('exportBtn').disabled      = Object.keys(queue).length === 0;
+
+  const wrap = $('tabContent');
+  wrap.innerHTML = '';
+  const help = document.createElement('div');
+  help.className = 'help-banner';
+  help.innerHTML = `<b>How to use:</b> Each row is a target asset slot for the Tarot Gauntlet. Click the right-hand "REPLACE" cell (or drop a file onto it) to queue a replacement. When done, hit <b>Export drop-in zip</b>. Unzip into your <code>godot/</code> folder; Godot reimports on next launch. SFX accept .ogg / .wav; images accept .png / .jpg.`;
+  wrap.appendChild(help);
+
+  const list = SLOTS.filter(s => s.tab === activeTab && (activeScope === '' || s.cat === activeScope));
+  if (list.length === 0) {
+    const e = document.createElement('div');
+    e.className = 'empty';
+    e.innerHTML = '<h3>No slots in this scope</h3>';
+    wrap.appendChild(e);
+    return;
+  }
+  for (const slot of list) wrap.appendChild(makeRow(slot));
+}
+
+function makeRow(slot) {
+  const row = document.createElement('div');
+  row.className = 'row' + (queue[slot.target] ? ' has-replacement' : '');
+  row.innerHTML = `
+    <div class="kind">${slot.tab}</div>
+    <div class="meta">
+      <div class="label">${escapeHtml(slot.label)}</div>
+      <div class="path">${escapeHtml(slot.target)}</div>
+      <div class="flavor">${escapeHtml(slot.flavor)}</div>
+    </div>
+  `;
+  const cur = makeCell('CURRENT', findAsset(slot.target), slot.target);
+  row.appendChild(cur);
+  const rep = makeCell(queue[slot.target] ? 'QUEUED' : 'REPLACE', queue[slot.target] || null, slot.target);
+  rep.classList.add('replace-cell');
+  rep.style.cursor = 'pointer';
+  const isAudio = slot.target.endsWith('.ogg') || slot.target.endsWith('.wav') || slot.target.endsWith('.mp3');
+  const inp = document.createElement('input');
+  inp.type = 'file';
+  inp.accept = isAudio ? 'audio/*' : 'image/*';
+  inp.style.display = 'none';
+  inp.onchange = (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    queue[slot.target] = f; render();
+  };
+  rep.appendChild(inp);
+  rep.onclick = () => inp.click();
+  rep.ondragover = (e) => { e.preventDefault(); rep.style.outline = '1px dashed var(--accent)'; };
+  rep.ondragleave = () => { rep.style.outline = ''; };
+  rep.ondrop = (e) => {
+    e.preventDefault(); rep.style.outline = '';
+    const f = e.dataTransfer.files[0]; if (!f) return;
+    queue[slot.target] = f; render();
+  };
+  row.appendChild(rep);
+  return row;
+}
+
+function makeCell(labelText, file, targetPath) {
+  const c = document.createElement('div');
+  c.className = 'image-cell';
+  const lbl = document.createElement('div');
+  lbl.className = 'label';
+  lbl.textContent = labelText;
+  c.appendChild(lbl);
+  if (file) {
+    if (file.type.startsWith('audio/') || targetPath.endsWith('.ogg') || targetPath.endsWith('.wav') || targetPath.endsWith('.mp3')) {
+      const a = document.createElement('audio');
+      a.controls = true;
+      a.src = URL.createObjectURL(file);
+      c.appendChild(a);
+    } else {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      c.appendChild(img);
+    }
+  } else {
+    const ph = document.createElement('div');
+    ph.className = 'ph';
+    ph.textContent = labelText === 'CURRENT' ? '(no asset indexed)' : '(drop file here)';
+    c.appendChild(ph);
+  }
+  return c;
+}
+
+async function exportZip() {
+  const zip = new JSZip();
+  for (const [target, file] of Object.entries(queue)) {
+    const buf = await file.arrayBuffer();
+    zip.file('godot/' + target, buf);
+  }
+  const blob = await zip.generateAsync({ type: 'blob' });
+  const a = document.createElement('a');
+  const dateStr = new Date().toISOString().slice(0, 10);
+  a.href = URL.createObjectURL(blob);
+  a.download = `gauntlet_assets_${dateStr}.zip`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  $('exportStatus').textContent = `Exported ${Object.keys(queue).length} files.`;
+  $('exportStatus').className = 'status good';
+}
+
+$('assetsInput').addEventListener('change', e => indexAssets(e.target.files));
+$('exportBtn').addEventListener('click', exportZip);
+document.querySelectorAll('.tab').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    b.classList.add('active');
+    activeTab = b.dataset.tab;
+    render();
+  });
+});
+
+rebuildScopeFilters();
+render();
+</script>
+</body>
+</html>

@@ -429,12 +429,63 @@ func _spawn_visualizer(script: Script) -> Control:
 	return v
 
 
+## When the arcana has a built Tarot Gauntlet scenario, overlay a
+## "▷ PLAY" button on top of the visualizer that launches it. Pressing
+## the button replaces the visualizer with the gauntlet scene.
+const TAROT_GAUNTLET_SCENE := preload("res://scenes/games/TarotGauntletGame.tscn")
+
+func _add_play_button_overlay(parent_visualizer: Control,
+							  arcana: String, location: String, hand: String) -> void:
+	if parent_visualizer == null:
+		return
+	var btn := Button.new()
+	btn.text = "▷ PLAY THE LEAP"
+	btn.add_theme_font_size_override("font_size", 14)
+	btn.add_theme_color_override("font_color", Color(0.05, 0.05, 0.08))
+	var st := StyleBoxFlat.new()
+	st.bg_color = Color(0.95, 0.78, 0.40, 0.95)
+	st.border_color = Color(0.40, 0.30, 0.10)
+	st.set_border_width_all(2)
+	st.set_corner_radius_all(4)
+	st.content_margin_left = 16
+	st.content_margin_right = 16
+	st.content_margin_top = 8
+	st.content_margin_bottom = 8
+	btn.add_theme_stylebox_override("normal", st)
+	btn.add_theme_stylebox_override("hover", st)
+	btn.add_theme_stylebox_override("pressed", st)
+	btn.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+	btn.offset_left = -220
+	btn.offset_top = -64
+	btn.offset_right = -28
+	btn.offset_bottom = -28
+	btn.z_index = 20
+	parent_visualizer.add_child(btn)
+	btn.pressed.connect(func() -> void: _launch_gauntlet(parent_visualizer, arcana, location, hand))
+
+
+func _launch_gauntlet(visualizer: Control, arcana: String, location: String, hand: String) -> void:
+	var game := TAROT_GAUNTLET_SCENE.instantiate()
+	game.start_scenario(arcana, location, hand)
+	game.z_index = 30
+	add_child(game)
+	# Hide the visualizer while playing — restore via signal
+	if visualizer:
+		visualizer.visible = false
+	game.connect("game_ended", func(_outcome: String, _summary: Dictionary) -> void:
+		game.queue_free()
+		if visualizer and is_instance_valid(visualizer):
+			visualizer.visible = true)
+
+
 func _view_substrate_fullscreen(short_path: String, title: String, kind: String = "substrate") -> void:
 	# Dedicated visualizer route — bespoke per-arcana experience.
 	# Matches by path first (specific to a card), then by kind
 	# (handles new entry types like "overlay" / "playable").
 	if short_path == "fool_arcana":
-		_spawn_visualizer(FOOL_VISUALIZER_SCRIPT); return
+		var v := _spawn_visualizer(FOOL_VISUALIZER_SCRIPT)
+		_add_play_button_overlay(v, "fool", "dambrosios", "john_frank")
+		return
 	if short_path == "empress_arcana":
 		_spawn_visualizer(EMPRESS_VISUALIZER_SCRIPT); return
 	if short_path == "magician_arcana":
