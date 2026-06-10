@@ -128,13 +128,13 @@ func _process(delta: float) -> void:
 		if tint_holder != null:
 			tint_holder.pivot_offset = tint_holder.size * 0.5
 			tint_holder.scale = Vector2(breath_s, breath_s)
-		# ── Random eye-blink overlay — thin dark band at eye-level
-		# fades in/out over ~140 ms every 3-7s. Cheap blink without
-		# needing per-portrait eye-frame data.
-		var next_blink: float = node.get_meta("next_blink", -1.0)
-		if next_blink < 0.0 or _t > next_blink:
-			_fire_blink(node)
-			node.set_meta("next_blink", _t + 3.0 + randf() * 4.0)
+		# Blink overlay disabled — was a fixed-anchor dark band at
+		# slot y=30-42%, which only aligned with eye-level when the
+		# portrait was a tight face crop centered in the slot. With
+		# the face-zoom + top-bias layout (which moves the face area
+		# higher), the band landed below the eyes and read as a
+		# random box flashing across the chest. Killing it is cleaner
+		# than re-deriving eye position per asset shape.
 		# ── Border redraw so ASCII frame tracks position + breath
 		var border: Control = node.get_meta("border", null)
 		if border != null:
@@ -244,9 +244,14 @@ func activate_speaker(char_name: String) -> void:
 			target_mod   = Color(0.48, 0.50, 0.55, INACTIVE_ALPHA)
 			target_scale = INACTIVE_SCALE
 		node.pivot_offset = Vector2(SPRITE_W * 0.5, SPRITE_H * 0.5)
+		# Target figure_holder (not the wrapper) so the dimming only
+		# affects the figure — the static backdrop and scrim behind it
+		# stay at full strength, giving the inactive speaker a solid
+		# visual ground instead of bleeding through to the scene bg.
+		var target: Node = node.get_meta("figure_holder", node)
 		var tw := node.create_tween()
 		tw.set_parallel(true)
-		tw.tween_property(node, "modulate", target_mod, 0.25)
+		tw.tween_property(target, "modulate", target_mod, 0.25)
 		tw.tween_property(node, "scale", Vector2(target_scale, target_scale), 0.25)
 
 
@@ -260,6 +265,38 @@ func get_pos_for_char(char_name: String) -> String:
 
 
 # ── Portrait construction ─────────────────────────────────────────────────────
+
+# Fuzzy-static backdrop — dark warm noise that sits behind every
+# portrait so the scene bg doesn't bleed through when the figure's
+# alpha drops (inactive speaker, fading out, etc.). 64×64 tile of
+# per-pixel random luminance in the 0.06-0.22 range with a slight
+# warm tint, tiled across the slot. The tile is fixed once at
+# instantiation — no per-frame work.
+const _STATIC_TILE_SIZE: int = 64
+const _STATIC_LUM_MIN: float = 0.06
+const _STATIC_LUM_MAX: float = 0.22
+const _STATIC_WARM_TINT: Color = Color(1.08, 0.96, 0.84)
+
+func _make_static_backdrop() -> TextureRect:
+	var img := Image.create(_STATIC_TILE_SIZE, _STATIC_TILE_SIZE, false, Image.FORMAT_RGBA8)
+	var span: float = _STATIC_LUM_MAX - _STATIC_LUM_MIN
+	for y in _STATIC_TILE_SIZE:
+		for x in _STATIC_TILE_SIZE:
+			var n: float = _STATIC_LUM_MIN + randf() * span
+			img.set_pixel(x, y, Color(
+				n * _STATIC_WARM_TINT.r,
+				n * _STATIC_WARM_TINT.g,
+				n * _STATIC_WARM_TINT.b,
+				1.0))
+	var tex := ImageTexture.create_from_image(img)
+	var tr := TextureRect.new()
+	tr.texture       = tex
+	tr.stretch_mode  = TextureRect.STRETCH_TILE
+	tr.expand_mode   = TextureRect.EXPAND_IGNORE_SIZE
+	tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	tr.mouse_filter  = Control.MOUSE_FILTER_IGNORE
+	return tr
+
 
 func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	var wrapper := Control.new()
@@ -278,25 +315,40 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	var face_png  := "%s%s_face.png" % [PORTRAIT_GALLERY_ROOT, key]
 	var has_face  := FileAccess.file_exists(face_png) or ResourceLoader.exists(face_png)
 
-	# Scrim sits behind every portrait so the figure pops against busy
-	# scene backgrounds. Composition / texture sit on top of it inside
-	# the tint_holder.
+	# Fuzzy-static backdrop — opaque dark warm noise. Lives BEHIND
+	# everything else in the slot so when the figure dims (inactive
+	# speaker, alpha 0.55) the scene bg doesn't bleed through. Lives
+	# outside `figure_holder` so activate_speaker's modulate doesn't
+	# also dim the backdrop.
+	wrapper.add_child(_make_static_backdrop())
+
+	# Subtle dark scrim above the static, below the figure — keeps the
+	# figure popping against the noise without burying the noise entirely.
 	var scrim := ColorRect.new()
 	scrim.color = SCRIM_COLOR
 	scrim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	wrapper.add_child(scrim)
 
-	# tint_holder isolates expression tint from wrapper.modulate (which
-	# activate_speaker writes). They compose multiplicatively.
+	# figure_holder is the layer activate_speaker modulates. Splitting
+	# it from wrapper means the static backdrop stays full-strength
+	# even when the figure recedes — visual ground for the dimmed
+	# silhouette instead of bg bleed-through.
+	var figure_holder := Control.new()
+	figure_holder.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	figure_holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	wrapper.add_child(figure_holder)
+	wrapper.set_meta("figure_holder", figure_holder)
+
+	# tint_holder isolates expression tint from figure_holder.modulate
+	# (which activate_speaker writes). They compose multiplicatively.
+	# clip_contents so manually-positioned textures (face-zoom layout)
+	# don't bleed outside the slot bounds.
 	var tint_holder := Control.new()
 	tint_holder.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	tint_holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	# tint_holder needs clip_contents so manually-positioned textures
-	# (top-biased COVER, see _layout_portrait_texture) don't bleed
-	# outside the slot bounds.
 	tint_holder.clip_contents = true
-	wrapper.add_child(tint_holder)
+	figure_holder.add_child(tint_holder)
 	wrapper.set_meta("tint", tint_holder)
 
 	if not has_face and FileAccess.file_exists(comp_path):
