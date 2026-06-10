@@ -170,13 +170,13 @@ func _load_data() -> void:
 	# Merge core + arcana-unique action cards into a flat dict by id
 	var core_deck := _load_json(FRAMEWORK_CORE)
 	var arc_deck  := _load_json(arc_root + "action_cards.json")
-	for c in core_deck.get("cards", []):
+	for c: Dictionary in core_deck.get("cards", []):
 		_action_cards[c["id"]] = c
-	for c in arc_deck.get("cards", []):
+	for c: Dictionary in arc_deck.get("cards", []):
 		_action_cards[c["id"]] = c
 	# Visitors → id-keyed dict
 	var v_def := _load_json(arc_root + "visitors.json")
-	for v in v_def.get("visitors", []):
+	for v: Dictionary in v_def.get("visitors", []):
 		_visitors_def[v["id"]] = v
 	# Items + piles
 	var i_def := _load_json(arc_root + "items.json")
@@ -190,7 +190,7 @@ func _load_data() -> void:
 # ── Run initialization ──────────────────────────────────────────────
 
 func _init_run() -> void:
-	var start := _setup.get("starting_state", {})
+	var start: Dictionary = _setup.get("starting_state", {})
 	_player_pos = start.get("player_pos", "counter")
 	_time       = int(start.get("time", 6))
 	_next_time_reset = _time
@@ -234,7 +234,7 @@ func _init_run() -> void:
 
 	# Shuffle Gravity deck
 	_gravity_draw_pile = []
-	for c in _gravity_deck_def.get("cards", []):
+	for c: Dictionary in _gravity_deck_def.get("cards", []):
 		_gravity_draw_pile.append(c["id"])
 	_gravity_draw_pile.shuffle()
 
@@ -425,13 +425,13 @@ func _render_board() -> void:
 	# Draw spaces as labels positioned per the JSON's pos_xy.
 	# Coordinates are in the JSON's coordinate space; we scale to fit
 	# the board panel's actual size.
-	var spaces := _location.get("spaces", [])
+	var spaces: Array = _location.get("spaces", [])
 	# Find bounds
 	var bx_min := INF
 	var bx_max := -INF
 	var by_min := INF
 	var by_max := -INF
-	for s in spaces:
+	for s: Dictionary in spaces:
 		var xy: Array = s.get("pos_xy", [0, 0])
 		bx_min = minf(bx_min, float(xy[0]))
 		bx_max = maxf(bx_max, float(xy[0]))
@@ -442,7 +442,7 @@ func _render_board() -> void:
 		panel_size = Vector2(700, 480)
 	var sx: float = (panel_size.x - 80) / maxf(1.0, bx_max - bx_min)
 	var sy: float = (panel_size.y - 60) / maxf(1.0, by_max - by_min)
-	for s in spaces:
+	for s: Dictionary in spaces:
 		var sid: String = s.get("id", "")
 		if not s.get("always_visible", true) and sid != "precipice_door":
 			continue
@@ -543,7 +543,7 @@ func _card_summary(card: Dictionary) -> String:
 		]
 	# For arcana cards with effect lists, summarize key effects
 	var lines: PackedStringArray = []
-	for e in card.get("effects", []):
+	for e: Dictionary in card.get("effects", []):
 		lines.append("· " + str(e))
 	return "\n".join(lines)
 
@@ -644,7 +644,7 @@ func _can_play_card(card: Dictionary) -> bool:
 	if _time < cost:
 		return false
 	# Check requires[]
-	for req in card.get("requires", []):
+	for req: Dictionary in card.get("requires", []):
 		if not _check_requirement(req):
 			return false
 	# Special: LEAP only when conditions met
@@ -683,14 +683,14 @@ func _has_contents() -> bool:
 
 
 func _pile_at_pos(pos: String) -> String:
-	for s in _location.get("spaces", []):
+	for s: Dictionary in _location.get("spaces", []):
 		if s.get("id", "") == pos:
 			return s.get("search_pile", "")
 	return ""
 
 
 func _is_threshold(pos: String) -> bool:
-	for s in _location.get("spaces", []):
+	for s: Dictionary in _location.get("spaces", []):
 		if s.get("id", "") == pos and s.get("kind", "") == "threshold":
 			return true
 	return false
@@ -927,7 +927,7 @@ func _move_player_toward_nearest_threshold(spaces: int) -> void:
 	var adj: Dictionary = _location.get("adjacency", {})
 	# Find threshold ids
 	var thresholds: Array = []
-	for s in _location.get("spaces", []):
+	for s: Dictionary in _location.get("spaces", []):
 		if s.get("kind", "") == "threshold":
 			var tid: String = s.get("id", "")
 			# Skip hidden thresholds
@@ -955,7 +955,7 @@ func _move_player_toward_nearest_threshold(spaces: int) -> void:
 				_player_pos = path[step]
 				_log_line("[i]stepped toward → %s[/i]" % _player_pos)
 			return
-		for nbr in adj.get(cur, []):
+		for nbr: String in adj.get(cur, []):
 			if not prev.has(nbr):
 				prev[nbr] = cur
 				queue.append(nbr)
@@ -1110,7 +1110,7 @@ func _phase_shadow() -> void:
 
 
 func _find_gravity_card(cid: String) -> Dictionary:
-	for c in _gravity_deck_def.get("cards", []):
+	for c: Dictionary in _gravity_deck_def.get("cards", []):
 		if c.get("id", "") == cid:
 			return c
 	return {}
@@ -1199,7 +1199,7 @@ func _trigger_win(threshold: String) -> void:
 	_audio_sfx("win")
 	# Find threshold's ending lore token
 	var ending_token := ""
-	for t in _setup.get("thresholds", []):
+	for t: Dictionary in _setup.get("thresholds", []):
 		if t.get("id", "") == threshold:
 			ending_token = t.get("ending_lore_token", "")
 	if ending_token != "":
@@ -1229,7 +1229,7 @@ func _trigger_loss(reason: String) -> void:
 	var finale_title := ""
 	var finale_flavor := ""
 	var candidates: Array = []
-	for f in _finale_def.get("finales", []):
+	for f: Dictionary in _finale_def.get("finales", []):
 		if f.get("triggered_by", "") == reason:
 			candidates.append(f)
 	if candidates.is_empty() and not _finale_def.get("finales", []).is_empty():
