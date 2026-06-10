@@ -230,15 +230,26 @@ func _resolve_thumbnail(item_id: String) -> Texture2D:
 		candidates.append("res://assets/gallery/%s_0.png" % item_id)
 	candidates.append("res://assets/gallery/%s.png" % item_id)
 	for p in candidates:
-		if ResourceLoader.exists(p):
-			var t := load(p)
-			if t is Texture2D: return t
-		# Un-imported fallback
+		# Try Image.load_from_file FIRST — it accepts any format
+		# (auto-detects PNG/JPEG by header bytes), and crucially
+		# doesn't push a red error to the Output console when the
+		# file is corrupt or a JPEG mislabeled as PNG. ResourceLoader
+		# is strict about format vs extension and pushes errors that
+		# clutter the log without helping the user.
 		var abs_path: String = ProjectSettings.globalize_path(p)
 		if FileAccess.file_exists(abs_path):
 			var img := Image.load_from_file(abs_path)
 			if img != null:
 				return ImageTexture.create_from_image(img)
+		# ResourceLoader fallback for .import-cached textures (faster
+		# than re-decoding from disk if Godot already imported).
+		if ResourceLoader.exists(p):
+			# Suppress the load-error spam by checking with
+			# ResourceLoader.load_threaded_request — no, simpler:
+			# just call load() and accept any error noise IF the
+			# disk-direct path above already failed.
+			var t := load(p)
+			if t is Texture2D: return t
 	return null
 
 

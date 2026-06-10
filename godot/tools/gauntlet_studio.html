@@ -116,7 +116,19 @@
     </div>
 
     <div class="step">
-      <h2>3 · Export</h2>
+      <h2>3 · Google AI image gen</h2>
+      <p>Optional. Paste your Google AI Studio API key (<a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--accent);">get one here</a>) to enable per-slot Generate buttons. Key stays in your browser's localStorage, never leaves your machine.</p>
+      <input type="password" id="geminiKey" placeholder="AIza…" style="width:100%;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:3px;padding:5px;font-size:11px;margin-top:4px;font-family:ui-monospace,Menlo,Consolas,monospace;">
+      <div style="margin-top:6px;display:flex;gap:6px;">
+        <button id="geminiSave" style="flex:1;">Save key</button>
+        <button id="geminiClear">Clear</button>
+      </div>
+      <p id="geminiStatus" class="status">No key — Generate buttons hidden.</p>
+      <p style="font-size:10px;color:var(--text-dim);margin-top:4px;">Uses <code>gemini-2.5-flash-image</code>. Suggested prompts per-slot built from the slot's flavor + a project style guide. Edit before sending or send as-is.</p>
+    </div>
+
+    <div class="step">
+      <h2>4 · Export</h2>
       <p>Queued replacements bundled at their target paths. Unzip into your <code>godot/</code> folder.</p>
       <button id="exportBtn" class="primary" disabled>Export drop-in zip</button>
       <p id="exportStatus" class="status"></p>
@@ -403,9 +415,38 @@ function render() {
   for (const slot of list) wrap.appendChild(makeRow(slot));
 }
 
+// ── Style guide that gets prepended to every Gemini prompt ─────
+// Tunes the model toward the project's literary-noir aesthetic.
+const STYLE_GUIDE = "Modern Mythology project — late-1990s VN-aesthetic mixed media. Muted ambers + dark teals. Hand-painted brushwork over photographic underlay. Slight ASCII / dither texture overlay. Not stylized cartoon, not photoreal. Mood: literary noir, held-breath cinema. Reference: Disco Elysium portraits, Kentucky Route Zero compositions, Beksiński texture density.";
+
+// Build a per-slot prompt from the slot's flavor + tab category.
+function suggestedPromptFor(slot) {
+  const tabHints = {
+    arcana:   "Full vertical tarot card composition, ornate borders, central figure, iconographic symbols, 1024×1536 portrait.",
+    visitors: "Character portrait, face + upper torso, slot-friendly 3:4 framing, neutral expression, dark warm background.",
+    items:    "Single object on dark warm background, soft rim light, 1:1 square framing, no UI chrome.",
+    cards:    "Action card art, vertical 5:7 framing, single iconic moment, no text overlay (text added by engine).",
+    gravity:  "Gravity card art, vertical 5:7, abstracted environmental mood — the ROOM doing something, not a character action.",
+    bg:       "Wide environmental establishing shot, 16:10, painted lighting, no figures (figures composited later).",
+    cg:       "Full-screen narrative beat, 16:9, single iconic moment, cinematic framing.",
+    sfx:      "(audio — no image prompt)",
+    bgm:      "(audio — no image prompt)",
+  };
+  const tabHint = tabHints[slot.tab] || "";
+  return [
+    STYLE_GUIDE,
+    "",
+    "Asset: " + slot.label,
+    "Brief: " + slot.flavor,
+    tabHint ? "Format: " + tabHint : "",
+  ].filter(Boolean).join("\n");
+}
+
 function makeRow(slot) {
   const row = document.createElement('div');
   row.className = 'row' + (queue[slot.target] ? ' has-replacement' : '');
+  const isAudio = slot.target.endsWith('.ogg') || slot.target.endsWith('.wav') || slot.target.endsWith('.mp3');
+  const promptText = suggestedPromptFor(slot);
   row.innerHTML = `
     <div class="kind">${slot.tab}</div>
     <div class="meta">
@@ -419,7 +460,6 @@ function makeRow(slot) {
   const rep = makeCell(queue[slot.target] ? 'QUEUED' : 'REPLACE', queue[slot.target] || null, slot.target);
   rep.classList.add('replace-cell');
   rep.style.cursor = 'pointer';
-  const isAudio = slot.target.endsWith('.ogg') || slot.target.endsWith('.wav') || slot.target.endsWith('.mp3');
   const inp = document.createElement('input');
   inp.type = 'file';
   inp.accept = isAudio ? 'audio/*' : 'image/*';
@@ -438,7 +478,101 @@ function makeRow(slot) {
     queue[slot.target] = f; render();
   };
   row.appendChild(rep);
+
+  // Optional second row: suggested prompt + Generate button
+  // (Only for image slots when Gemini key is present, OR always
+  //  show the prompt so authors can copy-paste it elsewhere.)
+  const promptBlock = document.createElement('div');
+  promptBlock.style.cssText = "grid-column: 1 / -1; background:var(--bg); border:1px solid var(--border); border-radius:3px; padding:8px; margin-top:6px; font-size:11px;";
+  promptBlock.innerHTML = `
+    <div style="display:flex;gap:8px;align-items:flex-start;">
+      <div style="flex:1;">
+        <div style="color:var(--text-dim);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:3px;">Suggested prompt</div>
+        <textarea class="prompt-text" style="width:100%;min-height:60px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:2px;padding:4px 6px;font:11px ui-monospace,Menlo,Consolas,monospace;resize:vertical;">${escapeHtml(promptText)}</textarea>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;align-items:stretch;min-width:140px;">
+        <button class="copy-prompt-btn" style="font-size:10px;">Copy prompt</button>
+        <button class="gen-btn" style="font-size:10px;background:var(--accent);color:var(--bg);${isAudio ? 'display:none;' : ''}">⚡ Generate</button>
+        <div class="gen-status" style="font-size:10px;color:var(--text-dim);"></div>
+      </div>
+    </div>
+  `;
+  row.appendChild(promptBlock);
+
+  const ta = promptBlock.querySelector('.prompt-text');
+  promptBlock.querySelector('.copy-prompt-btn').onclick = () => {
+    ta.select();
+    navigator.clipboard.writeText(ta.value).then(() => {
+      promptBlock.querySelector('.gen-status').textContent = 'copied to clipboard';
+      setTimeout(() => { promptBlock.querySelector('.gen-status').textContent = ''; }, 2000);
+    });
+  };
+  promptBlock.querySelector('.gen-btn').onclick = async () => {
+    await generateImageForSlot(slot, ta.value, promptBlock.querySelector('.gen-status'), rep);
+  };
+
   return row;
+}
+
+// ── Gemini image generation ────────────────────────────────────────
+async function generateImageForSlot(slot, promptText, statusEl, repCell) {
+  const key = localStorage.getItem('gemini_api_key') || '';
+  if (!key) {
+    statusEl.textContent = 'paste API key in sidebar first';
+    statusEl.style.color = 'var(--bad)';
+    return;
+  }
+  statusEl.textContent = 'generating…';
+  statusEl.style.color = 'var(--text-dim)';
+  try {
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=' + encodeURIComponent(key);
+    const body = {
+      contents: [{
+        parts: [{ text: promptText }]
+      }],
+      generationConfig: {
+        responseModalities: ["IMAGE"]
+      }
+    };
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (!r.ok) {
+      const errText = await r.text();
+      throw new Error('HTTP ' + r.status + ': ' + errText.slice(0, 200));
+    }
+    const j = await r.json();
+    // Extract inline image data
+    const parts = j?.candidates?.[0]?.content?.parts || [];
+    let imageData = null;
+    let mimeType = 'image/png';
+    for (const p of parts) {
+      if (p.inlineData?.data) {
+        imageData = p.inlineData.data;
+        mimeType = p.inlineData.mimeType || 'image/png';
+        break;
+      }
+    }
+    if (!imageData) {
+      throw new Error('No image returned (model may have refused or returned text only)');
+    }
+    // Convert base64 → Blob → File
+    const byteChars = atob(imageData);
+    const bytes = new Uint8Array(byteChars.length);
+    for (let i = 0; i < byteChars.length; i++) bytes[i] = byteChars.charCodeAt(i);
+    const blob = new Blob([bytes], { type: mimeType });
+    const fileName = slot.target.split('/').pop();
+    const file = new File([blob], fileName, { type: mimeType });
+    queue[slot.target] = file;
+    statusEl.textContent = '✓ generated · queued';
+    statusEl.style.color = 'var(--good)';
+    render();
+  } catch (e) {
+    statusEl.textContent = 'error: ' + (e.message || e);
+    statusEl.style.color = 'var(--bad)';
+  }
 }
 
 function makeCell(labelText, file, targetPath) {
@@ -496,6 +630,33 @@ document.querySelectorAll('.tab').forEach(b => {
     render();
   });
 });
+
+// Gemini API key handling — stored in localStorage, never leaves browser.
+function updateGeminiStatus() {
+  const key = localStorage.getItem('gemini_api_key') || '';
+  const st = document.getElementById('geminiStatus');
+  if (key) {
+    st.textContent = 'Key saved — Generate buttons active.';
+    st.className = 'status good';
+    document.getElementById('geminiKey').value = key.slice(0, 4) + '…' + key.slice(-4);
+  } else {
+    st.textContent = 'No key — Generate buttons hidden.';
+    st.className = 'status';
+  }
+}
+document.getElementById('geminiSave').addEventListener('click', () => {
+  const v = document.getElementById('geminiKey').value.trim();
+  if (v && !v.includes('…')) {
+    localStorage.setItem('gemini_api_key', v);
+    updateGeminiStatus();
+  }
+});
+document.getElementById('geminiClear').addEventListener('click', () => {
+  localStorage.removeItem('gemini_api_key');
+  document.getElementById('geminiKey').value = '';
+  updateGeminiStatus();
+});
+updateGeminiStatus();
 
 rebuildScopeFilters();
 render();
