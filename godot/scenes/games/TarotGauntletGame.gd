@@ -165,6 +165,38 @@ func _audio_sfx(key: String) -> void:
 	AudioMgr.play_sfx(path)
 
 
+# ── Art loading helpers ─────────────────────────────────────────────
+# All gauntlet art lives under res://assets/gallery/... at the paths
+# the gauntlet_studio.html tool writes. _load_texture_silent returns
+# null if the file isn't there (so missing art doesn't crash or spam
+# red errors — the renderer falls back to text).
+
+func _load_texture_silent(path: String) -> Texture2D:
+	if path == "":
+		return null
+	if not path.begins_with("res://"):
+		path = "res://" + path
+	if not ResourceLoader.exists(path):
+		return null
+	var t := ResourceLoader.load(path) as Texture2D
+	return t
+
+func _art_path_card(cid: String) -> String:
+	return "res://assets/gallery/cards/" + _arcana_id + "_" + cid + ".png"
+
+func _art_path_gravity(cid: String) -> String:
+	return "res://assets/gallery/cards/" + _arcana_id + "_gravity_" + cid + ".png"
+
+func _art_path_item(item_id: String) -> String:
+	return "res://assets/gallery/items/" + _arcana_id + "_" + item_id + ".png"
+
+func _art_path_visitor_face(vid: String) -> String:
+	return "res://assets/gallery/" + vid + "_face.png"
+
+func _art_path_board() -> String:
+	return "res://assets/gallery/locations/" + _location_id + "_gauntlet_board.png"
+
+
 # ── Data loading ─────────────────────────────────────────────────────
 
 func _load_json(path: String) -> Dictionary:
@@ -210,13 +242,13 @@ func _load_data() -> void:
 	print("[Gauntlet] loaded:")
 	print("    setup: %s starting_hand=%s" % [
 		"OK" if not _setup.is_empty() else "MISSING",
-		(_setup.get("starting_state", {}) as Dictionary).get("starting_hand", []),
+		str((_setup.get("starting_state", {}) as Dictionary).get("starting_hand", [])),
 	])
 	print("    action cards: %d (core+arcana, ids: %s)" %
-		[_action_cards.size(), _action_cards.keys()])
+		[_action_cards.size(), str(_action_cards.keys())])
 	print("    gravity cards: %d" % (_gravity_deck_def.get("cards", []) as Array).size())
 	print("    visitors: %d" % _visitors_def.size())
-	print("    piles: %s" % _piles_def.keys())
+	print("    piles: %s" % str(_piles_def.keys()))
 	print("    location spaces: %d" % (_location.get("spaces", []) as Array).size())
 	print("    hand: %s" % _hand.get("name", "MISSING"))
 	print("    die faces: %d" % ((_die.get("die", {}) as Dictionary).get("faces", []) as Array).size())
@@ -369,6 +401,8 @@ func _build_ui() -> void:
 	right.add_child(grav_panel)
 
 	# Visitors — gets the freed vertical space from the relocated log
+	# Wrapped in a ScrollContainer so multi-line hints can't push the
+	# panel taller than its allotted column space.
 	var v_panel := PanelContainer.new()
 	v_panel.add_theme_stylebox_override("panel", _make_panel_style())
 	v_panel.custom_minimum_size = Vector2(420, 120)
@@ -380,9 +414,14 @@ func _build_ui() -> void:
 	v_title.add_theme_color_override("font_color", C_ACCENT)
 	v_title.add_theme_font_size_override("font_size", 11)
 	v_vb.add_child(v_title)
+	var v_scroll := ScrollContainer.new()
+	v_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	v_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	v_vb.add_child(v_scroll)
 	_visitors_box = VBoxContainer.new()
-	_visitors_box.add_theme_constant_override("separation", 1)
-	v_vb.add_child(_visitors_box)
+	_visitors_box.add_theme_constant_override("separation", 3)
+	_visitors_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	v_scroll.add_child(_visitors_box)
 	right.add_child(v_panel)
 
 	# Log moved OUT of the right column — it now lives in the bottom
@@ -460,6 +499,12 @@ func _build_ui() -> void:
 	hand_label.add_theme_font_size_override("font_size", 10)
 	hand_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hand_title_hb.add_child(hand_label)
+	var move_btn := Button.new()
+	move_btn.text = "Move ↪"
+	move_btn.add_theme_font_size_override("font_size", 11)
+	move_btn.tooltip_text = "Pick an adjacent space to walk to (costs 1 Time, action phase only)."
+	move_btn.pressed.connect(_show_move_popup)
+	hand_title_hb.add_child(move_btn)
 	_advance_btn = Button.new()
 	_advance_btn.text = "Advance →"
 	_advance_btn.add_theme_font_size_override("font_size", 11)
@@ -506,10 +551,23 @@ func _make_track_label(text: String) -> Label:
 func _render_board() -> void:
 	# Clear
 	for c in _board_root.get_children():
-		if c.name.begins_with("space_") or c.name.begins_with("visitor_") or c.name == "player_meeple":
+		if c.name.begins_with("space_") or c.name.begins_with("visitor_") or c.name == "player_meeple" or c.name == "board_bg":
 			c.queue_free()
 	_board_space_nodes.clear()
 	_board_visitor_nodes.clear()
+	# Background image layer (rendered first so labels draw on top).
+	# If the location-specific board art is missing, fall back to the
+	# bare grid we used to render.
+	var bg_tex: Texture2D = _load_texture_silent(_art_path_board())
+	if bg_tex:
+		var bg := TextureRect.new()
+		bg.name = "board_bg"
+		bg.texture = bg_tex
+		bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		bg.modulate = Color(1, 1, 1, 0.55)
+		bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_board_root.add_child(bg)
 	# Draw spaces as labels positioned per the JSON's pos_xy.
 	# Coordinates are in the JSON's coordinate space; we scale to fit
 	# the board panel's actual size.
@@ -568,28 +626,49 @@ func _render_board() -> void:
 
 
 func _make_space_label(s: Dictionary) -> Label:
-	# Clickable space label. Click → walk there if adjacent and you
-	# have a Walk/Step Toward card in hand (consumes it + Time).
+	# Clickable space label. Click → walk there if adjacent (costs 1 Time).
+	# Label visibility is tiered to reduce visual clutter:
+	#   · current position: full label, accent color, chevron
+	#   · adjacent spaces:  full label, normal color
+	#   · search piles:     full label dimmed amber
+	#   · thresholds:       full label dimmed green
+	#   · other named:      tiny dot only
 	var l := Label.new()
 	var label: String = s.get("label", s.get("id", ""))
 	var sid: String = s.get("id", "")
 	var kind: String = s.get("kind", "named")
+	var adj: Array = (_location.get("adjacency", {}) as Dictionary).get(_player_pos, [])
+	var is_here: bool = (sid == _player_pos)
+	var is_adjacent: bool = (sid in adj)
 	var pile := ""
 	if kind == "search":
 		pile = "  [%d]" % _pile_state.get(s.get("search_pile", ""), []).size()
-	# Mark the current player position with a chevron so the user can
-	# always see where they are.
-	var here: String = "» " if sid == _player_pos else "  "
-	l.text = here + label + pile
 	var col: Color = C_TEXT
-	if kind == "threshold":
-		col = Color(0.55, 0.95, 0.65)
-	elif kind == "search":
-		col = Color(0.95, 0.78, 0.40)
-	if sid == _player_pos:
+	var fs: int = 10
+	if is_here:
+		l.text = "» " + label + pile
 		col = C_ACCENT
+		fs = 12
+	elif is_adjacent:
+		l.text = "· " + label + pile
+		col = C_TEXT
+		fs = 10
+	elif kind == "threshold":
+		l.text = label
+		col = Color(0.55, 0.95, 0.65, 0.65)
+		fs = 9
+	elif kind == "search":
+		l.text = label + pile
+		col = Color(0.95, 0.78, 0.40, 0.65)
+		fs = 9
+	else:
+		# Tiny dot only — keeps the position click-target but removes
+		# the label from the visual noise floor.
+		l.text = "·"
+		col = Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.35)
+		fs = 9
 	l.add_theme_color_override("font_color", col)
-	l.add_theme_font_size_override("font_size", 11)
+	l.add_theme_font_size_override("font_size", fs)
 	l.mouse_filter = Control.MOUSE_FILTER_PASS
 	# Make it clickable. Adjacent free-move costs 1 Time, no card needed.
 	# Spaces farther away still need explicit movement cards (Walk /
@@ -601,6 +680,50 @@ func _make_space_label(s: Dictionary) -> Label:
 		if mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT:
 			_on_space_clicked(sid))
 	return l
+
+
+func _show_move_popup() -> void:
+	# Move chooser — shows the adjacent spaces so the player doesn't
+	# have to know they can also click space labels on the board.
+	if _phase != Phase.ACTION:
+		_log_line("[i](Move only works during the Action phase.)[/i]")
+		return
+	if _game_over:
+		return
+	if _time < 1:
+		_log_line("[i]not enough Time to walk[/i]")
+		return
+	var adj: Array = (_location.get("adjacency", {}) as Dictionary).get(_player_pos, [])
+	if adj.is_empty():
+		_log_line("[i]nowhere adjacent[/i]")
+		return
+	var popup := PopupMenu.new()
+	popup.add_theme_font_size_override("font_size", 12)
+	# Label by space id → printable label
+	var space_label_by_id: Dictionary = {}
+	for s: Dictionary in (_location.get("spaces", []) as Array):
+		space_label_by_id[s.get("id", "")] = s.get("label", s.get("id", ""))
+	var visible_targets: Array = []
+	for nbr: String in adj:
+		# Hidden threshold can't be walked into until revealed
+		if nbr == "precipice_door" and not _flags.get("precipice_revealed", false):
+			continue
+		var pretty: String = String(space_label_by_id.get(nbr, nbr))
+		popup.add_item("→ " + pretty + "   [1 Time]")
+		visible_targets.append(nbr)
+	if visible_targets.is_empty():
+		_log_line("[i]no walkable adjacency from %s[/i]" % _player_pos)
+		popup.queue_free()
+		return
+	add_child(popup)
+	popup.id_pressed.connect(func(idx: int) -> void:
+		if idx >= 0 and idx < visible_targets.size():
+			_on_space_clicked(String(visible_targets[idx]))
+		popup.queue_free())
+	popup.close_requested.connect(func() -> void: popup.queue_free())
+	popup.position = Vector2i(int(get_viewport().get_mouse_position().x),
+		int(get_viewport().get_mouse_position().y))
+	popup.popup()
 
 
 func _on_space_clicked(target_pos: String) -> void:
@@ -662,6 +785,11 @@ func _render_hand() -> void:
 		btn.custom_minimum_size = Vector2(84, 50)
 		btn.clip_text = true
 		btn.tooltip_text = String(card.get("flavor", "")) + "\n\n" + _card_summary(card)
+		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
+		if art:
+			btn.icon = art
+			btn.expand_icon = true
+			btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 		var playable: bool = _can_play_card(card)
 		btn.disabled = (not playable) or (_phase != Phase.ACTION) or _game_over
 		btn.pressed.connect(_on_play_card.bind(cid))
@@ -702,6 +830,11 @@ func _render_tableau() -> void:
 		btn.custom_minimum_size = Vector2(84, 50)
 		btn.clip_text = true
 		btn.tooltip_text = String(card.get("flavor", "")) + "\n\n" + _card_summary(card)
+		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
+		if art:
+			btn.icon = art
+			btn.expand_icon = true
+			btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 		# Buyable during PLANNING + Time ≥ cost
 		var can_buy: bool = (_phase == Phase.PLANNING) and (_time >= time_cost) and not _game_over
 		btn.disabled = not can_buy
@@ -783,16 +916,32 @@ func _render_visitors() -> void:
 			# rather than leak that they exist
 			continue
 
+		# Row: optional face image + text label
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 4)
+		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		if arrived:
+			var face: Texture2D = _load_texture_silent(_art_path_visitor_face(vid))
+			if face:
+				var face_rect := TextureRect.new()
+				face_rect.texture = face
+				face_rect.custom_minimum_size = Vector2(28, 28)
+				face_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+				face_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+				row.add_child(face_rect)
 		var rt := RichTextLabel.new()
 		rt.bbcode_enabled = true
 		rt.fit_content = true
+		rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		rt.add_theme_color_override("default_color", C_TEXT)
-		rt.add_theme_font_size_override("normal_font_size", 10)
+		rt.add_theme_font_size_override("normal_font_size", 9)
 		if hint_line != "" and not arrived:
-			rt.text = "[color=%s]●[/color] [i]%s[/i]%s\n   [color=#7c8398][i]%s[/i][/color]" % [accent, name_s, status, hint_line]
+			rt.text = "[color=%s]●[/color] [i]%s[/i]%s\n[color=#7c8398][i]   %s[/i][/color]" % [accent, name_s, status, hint_line]
 		else:
 			rt.text = "[color=%s]●[/color] %s%s" % [accent, name_s, status]
-		_visitors_box.add_child(rt)
+		row.add_child(rt)
+		_visitors_box.add_child(row)
 
 
 # ── Render-all ───────────────────────────────────────────────────────

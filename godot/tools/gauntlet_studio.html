@@ -247,11 +247,21 @@ const SLOTS = [
   })),
 
   // ── Backgrounds: the location ──────────────────────────────────────
-  { tab: 'bg', cat: 'dambrosios', label: "D'Ambrosio's interior — Gauntlet view",
-    flavor: 'Top-down or 3/4 view of the diner. Counter centered. Booth 6 + Kitchen Alcove flanking. Bell + register + card wall + river window below. ~1600×1000.',
+  // The Gauntlet board image is composited UNDER the engine's space labels +
+  // meeples (engine draws labels/chevrons/visitor dots on top), so the
+  // prompt should make sure each named station is rendered as a clear
+  // visual region the player can read at a glance. ~1600×1000.
+  { tab: 'bg', cat: 'dambrosios', label: "D'Ambrosio's Gauntlet board (movement map)",
+    flavor: [
+      "Top-down/3-quarter view of the diner laid out as a STYLIZED BOARD-GAME MAP. Treat it like a Final Girl / Mansions of Madness location card: each named station is a clearly delineated region with a small painted label/sign and a subtle node icon (a circle, a card-back rectangle, or a footprint) marking the walkable spot. Labels should match the engine: PARKING LOT (top threshold), HOSTESS STAND (empty/dark), BACK DOOR, BAR (closed/dark, dust covers on stools), BOOTH 1 / BOOTH 4 / BOOTH 6, KITCHEN ALCOVE, GRILL, DISH STATION, ORDER WINDOW, COUNTER (centered, the heart), BAR STOOLS, UNDER COUNTER, JUKEBOX, BELL, PAY PHONE, CIG MACHINE, REGISTER, BATHROOM, CARD WALL, RIVER WINDOW (bottom threshold), PRECIPICE DOOR (hidden until revealed — draw it as a thin door silhouette).",
+      "Subtle pale lines between adjacent stations to suggest paths (don't make them harsh — they're the substrate the engine draws meeples over).",
+      "Color palette: warm linoleum + cool fluorescents. The closed half (Bar, Hostess Stand) tinted dimmer. The Card Wall lit. The river window glowing faintly outside.",
+      "NO text overlay other than the small station labels — UI text is added by the engine. NO characters/meeples — those are also rendered by the engine on top.",
+      "1600×1000."
+    ].join("\n\n"),
     target: 'assets/gallery/locations/dambrosios_gauntlet_board.png' },
   { tab: 'bg', cat: 'dambrosios', label: "D'Ambrosio's — claimed / 24-hour-diner-of-the-soul state",
-    flavor: 'The losing-state version: exits gone, counter glowing, alone.',
+    flavor: 'Same board layout as the main version, but the LOSING state: all thresholds gone (parking lot painted over, river window bricked, precipice door welded). Counter glows from within. Booths empty. Color palette desaturated except for the counter\'s red glow. Same station labels for engine compatibility.',
     target: 'assets/gallery/locations/dambrosios_reversed_state.png' },
 
   // ── CGs (finale + ending screens) ──────────────────────────────────
@@ -427,7 +437,7 @@ function suggestedPromptFor(slot) {
     items:    "Single object on dark warm background, soft rim light, 1:1 square framing, no UI chrome.",
     cards:    "Action card art, vertical 5:7 framing, single iconic moment, no text overlay (text added by engine).",
     gravity:  "Gravity card art, vertical 5:7, abstracted environmental mood — the ROOM doing something, not a character action.",
-    bg:       "Wide environmental establishing shot, 16:10, painted lighting, no figures (figures composited later).",
+    bg:       "Wide environmental establishing shot, 16:10, painted lighting, no figures (figures composited later). For the *Gauntlet board* asset specifically, treat the image as a printed board-game tile: every named station readable, faint pathways between adjacent stations, the engine overlays meeples + chevrons on top.",
     cg:       "Full-screen narrative beat, 16:9, single iconic moment, cinematic framing.",
     sfx:      "(audio — no image prompt)",
     bgm:      "(audio — no image prompt)",
