@@ -65,6 +65,8 @@ var _player_pos_label: Label = null
 var _bindle_label: Label = null
 var _visitors_box: VBoxContainer = null
 var _hand_box: HBoxContainer = null
+var _tableau_box: HBoxContainer = null
+var _tableau_scroll: ScrollContainer = null
 var _log: RichTextLabel = null
 var _advance_btn: Button = null
 var _board_root: Control = null
@@ -402,14 +404,38 @@ func _build_ui() -> void:
 	# ── Bottom: hand + advance button ────────────────────────────────
 	var bottom := PanelContainer.new()
 	bottom.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	bottom.offset_top = -228
+	bottom.offset_top = -340
 	bottom.offset_left = 8
 	bottom.offset_right = -8
 	bottom.offset_bottom = -6
 	bottom.add_theme_stylebox_override("panel", _make_panel_style())
 	add_child(bottom)
 	var bottom_vb := VBoxContainer.new()
+	bottom_vb.add_theme_constant_override("separation", 6)
 	bottom.add_child(bottom_vb)
+
+	# ── Tableau row (shop) ────────────────────────────────────────
+	# Non-starter cards available for purchase. Always visible so the
+	# player sees what they could buy; only clickable during PLANNING
+	# (when Time can be spent on card acquisition).
+	var tableau_title_hb := HBoxContainer.new()
+	bottom_vb.add_child(tableau_title_hb)
+	var tableau_label := Label.new()
+	tableau_label.text = "  TABLEAU  ·  (click to buy during planning · Time = cost)"
+	tableau_label.add_theme_color_override("font_color", C_ACCENT)
+	tableau_label.add_theme_font_size_override("font_size", 11)
+	tableau_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	tableau_title_hb.add_child(tableau_label)
+	_tableau_scroll = ScrollContainer.new()
+	_tableau_scroll.custom_minimum_size = Vector2(0, 84)
+	_tableau_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	_tableau_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	bottom_vb.add_child(_tableau_scroll)
+	_tableau_box = HBoxContainer.new()
+	_tableau_box.add_theme_constant_override("separation", 6)
+	_tableau_scroll.add_child(_tableau_box)
+
+	# ── Hand row ─────────────────────────────────────────────────
 	var hand_title_hb := HBoxContainer.new()
 	bottom_vb.add_child(hand_title_hb)
 	var hand_label := Label.new()
@@ -620,6 +646,66 @@ func _render_hand() -> void:
 		_hand_box.add_child(btn)
 
 
+# Tableau: every non-starter card in the action tableau, available for
+# purchase during the Planning phase. Sorted by time cost so the cheap
+# cards lead. Always visible (so the player can see what's in the shop
+# from any phase), only buyable during PLANNING when the player has
+# enough Time.
+func _render_tableau() -> void:
+	if _tableau_box == null:
+		return
+	for c in _tableau_box.get_children():
+		c.queue_free()
+	# Build list of buyable cards: anything in _action_cards that isn't
+	# a starter AND isn't LEAP (LEAP doesn't get purchased — it's a
+	# special card that becomes playable when conditions are met; it
+	# gets added to hand automatically once BUNDLE is assembled).
+	var buyables: Array = []
+	for cid: String in _action_cards.keys():
+		var card: Dictionary = _action_cards[cid]
+		if card.get("starter", false):
+			continue
+		if cid == "leap" or cid == "bundle":
+			continue   # milestone awards, not purchases
+		buyables.append(cid)
+	buyables.sort_custom(func(a: String, b: String) -> bool:
+		return int(_action_cards[a].get("time_cost", 1)) < int(_action_cards[b].get("time_cost", 1)))
+
+	for cid: String in buyables:
+		var card: Dictionary = _action_cards[cid]
+		var time_cost: int = int(card.get("time_cost", 1))
+		var btn := Button.new()
+		btn.text = "%s\n[%d]" % [card.get("title", cid), time_cost]
+		btn.add_theme_font_size_override("font_size", 10)
+		btn.custom_minimum_size = Vector2(110, 70)
+		btn.tooltip_text = String(card.get("flavor", "")) + "\n\n" + _card_summary(card)
+		# Buyable during PLANNING + Time ≥ cost
+		var can_buy: bool = (_phase == Phase.PLANNING) and (_time >= time_cost) and not _game_over
+		btn.disabled = not can_buy
+		# Dim style outside planning so it reads as preview, not shop
+		if _phase != Phase.PLANNING:
+			btn.modulate = Color(0.7, 0.65, 0.55, 0.7)
+		btn.pressed.connect(_on_buy_card.bind(cid))
+		_tableau_box.add_child(btn)
+
+
+func _on_buy_card(cid: String) -> void:
+	if _phase != Phase.PLANNING or _game_over:
+		return
+	var card: Dictionary = _action_cards.get(cid, {})
+	var time_cost: int = int(card.get("time_cost", 1))
+	if _time < time_cost:
+		_log_line("[i]not enough Time to buy %s (need %d, have %d)[/i]" %
+			[card.get("title", cid), time_cost, _time])
+		return
+	_time -= time_cost
+	_hand_cards.append(cid)
+	_audio_sfx("card_play")
+	_log_line("[color=#7cffb0]✦ bought [b]%s[/b][/color]  (Time %d → %d)" %
+		[card.get("title", cid), _time + time_cost, _time])
+	_render()
+
+
 func _card_summary(card: Dictionary) -> String:
 	# For framework cards (with ★★/★/✕ lines)
 	if card.has("double_success"):
@@ -676,6 +762,16 @@ func _render_visitors() -> void:
 func _render() -> void:
 	if _game_over:
 		return
+	# Auto-grant milestone cards into hand — these are awards, not
+	# purchases, so they shouldn't sit in the tableau shop for the
+	# user to figure out they need to buy. Granted the moment the
+	# trigger condition fires.
+	if _has_all_bindle_components() and not _bindle_assembled and not ("bundle" in _hand_cards):
+		_hand_cards.append("bundle")
+		_log_line("[color=#ffd07a][b]BUNDLE in hand[/b] — all three components collected.[/color]")
+	if _bindle_assembled and not ("leap" in _hand_cards):
+		_hand_cards.append("leap")
+		_log_line("[color=#ffd07a][b]LEAP in hand[/b] — bindle assembled.[/color]")
 	_phase_label.text = "PHASE: " + Phase.keys()[_phase]
 	_turn_label.text  = "Turn %d" % _turn
 	_time_label.text  = "Time %d / %d" % [_time, _next_time_reset]
@@ -688,6 +784,7 @@ func _render() -> void:
 	_render_board()
 	_position_meeples()
 	_render_hand()
+	_render_tableau()
 	_render_visitors()
 	_update_advance_label()
 
@@ -770,6 +867,10 @@ func _has_contents() -> bool:
 		if String(it).begins_with("contents_"):
 			return true
 	return false
+
+
+func _has_all_bindle_components() -> bool:
+	return _inventory.has("stick") and _inventory.has("cloth") and _has_contents()
 
 
 func _pile_at_pos(pos: String) -> String:
@@ -1258,14 +1359,19 @@ func _phase_action() -> void:
 
 
 func _phase_planning() -> void:
-	_log_line("[i]planning. Time will reset to %d.[/i]" % _next_time_reset)
 	# Free reset of starters back into hand if they were played
-	for cid in _action_cards:
+	for cid: String in _action_cards.keys():
 		var card: Dictionary = _action_cards[cid]
 		if card.get("starter", false) and not (cid in _hand_cards):
 			_hand_cards.append(cid)
 	_time = _next_time_reset
 	_next_time_reset = 6
+	# If the Bindle has been assembled but LEAP isn't in hand yet,
+	# add it now. (LEAP is awarded by BUNDLE, never purchased.)
+	if _bindle_assembled and not ("leap" in _hand_cards):
+		_hand_cards.append("leap")
+		_log_line("[color=#ffd07a][b]LEAP added to your hand.[/b][/color]")
+	_log_line("[color=#c8a268][i]planning. Time reset to %d. Click TABLEAU cards (above hand) to buy.[/i][/color]" % _time)
 
 
 func _phase_shadow() -> void:
