@@ -532,7 +532,7 @@ const PORTRAIT_GALLERY_ROOT := "res://assets/gallery/"
 # COVER (no letterbox), top-biased vertically so tall body shots show
 # head + torso instead of cropping the face off.
 func _resolve_portrait_texture_verbose(key: String, expr: String) -> Dictionary:
-	var tried := [
+	var tried: Array[String] = [
 		"%s%s_face.png" % [PORTRAIT_GALLERY_ROOT, key],
 		"%sportrait_%s_face.png" % [PORTRAIT_GALLERY_ROOT, key],
 		"%sportrait_%s_0.png" % [PORTRAIT_GALLERY_ROOT, key],
@@ -543,9 +543,23 @@ func _resolve_portrait_texture_verbose(key: String, expr: String) -> Dictionary:
 		"%s%s_neutral.png" % [PORTRAIT_GALLERY_ROOT, key],
 		"%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr],
 		"%s%s/%s_neutral.png" % [PORTRAIT_TEX_ROOT, key, key],
+		"%s%s/%s_happy.png" % [PORTRAIT_TEX_ROOT, key, key],
+		"%s%s/%s_serious.png" % [PORTRAIT_TEX_ROOT, key, key],
+		"%s%s/%s_tired.png" % [PORTRAIT_TEX_ROOT, key, key],
+		"%s%s/%s_sad.png" % [PORTRAIT_TEX_ROOT, key, key],
+		"%s%s/%s_surprised.png" % [PORTRAIT_TEX_ROOT, key, key],
 		"%s%s.png" % [PORTRAIT_TEX_ROOT, key],
 		"res://assets/portraits/%s.png" % [key],
 	]
+	# bulk_intake puts disambiguation per-volume subdirs:
+	# assets/characters/vol5/<char>/<char>_<expr>.png etc. The engine
+	# doesn't know the current scene's vol, so try all of them.
+	for v in [5, 6, 7, 1, 2]:
+		tried.append("%svol%d/%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, v, key, key, expr])
+		tried.append("%svol%d/%s/%s_neutral.png" % [PORTRAIT_TEX_ROOT, v, key, key])
+		tried.append("%svol%d/%s/%s_happy.png" % [PORTRAIT_TEX_ROOT, v, key, key])
+		tried.append("%svol%d/%s/%s_serious.png" % [PORTRAIT_TEX_ROOT, v, key, key])
+		tried.append("%svol%d/%s/%s.png" % [PORTRAIT_TEX_ROOT, v, key, key])
 	for path: String in tried:
 		var t := _load_texture_with_fallback(path)
 		if t != null:
@@ -571,19 +585,32 @@ func _build_gallery_index() -> void:
 	if _gallery_index_built:
 		return
 	_gallery_index_built = true
-	var dir := DirAccess.open(PORTRAIT_GALLERY_ROOT)
+	# Scan gallery/ flat, then characters/ recursively up to 2 levels
+	# deep (catches characters/<char>/ AND characters/vol<N>/<char>/).
+	_scan_dir_for_index(PORTRAIT_GALLERY_ROOT, 0, 1)
+	_scan_dir_for_index(PORTRAIT_TEX_ROOT, 0, 2)
+	print("[CharLayer] asset index built · %d entries" % _gallery_index.size())
+
+
+func _scan_dir_for_index(path: String, depth: int, max_depth: int) -> void:
+	var dir := DirAccess.open(path)
 	if dir == null:
 		return
 	dir.list_dir_begin()
 	var fn := dir.get_next()
 	while fn != "":
-		if not dir.current_is_dir():
+		var full := path + fn
+		if dir.current_is_dir():
+			if depth < max_depth and fn != "." and fn != "..":
+				_scan_dir_for_index(full + "/", depth + 1, max_depth)
+		else:
 			var lower := fn.to_lower()
 			if lower.ends_with(".png") or lower.ends_with(".jpg") or lower.ends_with(".jpeg"):
 				var stem := lower.get_basename()
-				_gallery_index[stem] = PORTRAIT_GALLERY_ROOT + fn
+				# Don't overwrite earlier hits — first match (gallery) wins.
+				if not _gallery_index.has(stem):
+					_gallery_index[stem] = full
 		fn = dir.get_next()
-	print("[CharLayer] gallery index built · %d entries" % _gallery_index.size())
 
 
 func _find_in_gallery_index(key: String) -> Dictionary:
