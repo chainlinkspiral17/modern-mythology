@@ -326,11 +326,12 @@ func _build_ui() -> void:
 	right.add_theme_constant_override("separation", 6)
 	add_child(right)
 
-	# Codex card (the gallery image, pinned)
+	# Codex card (the gallery image, pinned) — fixed size, NOT expand_fill
+	# (was eating all the right-column height and squeezing the log to
+	# nothing).
 	var codex_panel := PanelContainer.new()
 	codex_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	codex_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	codex_panel.custom_minimum_size = Vector2(420, 280)
+	codex_panel.custom_minimum_size = Vector2(420, 180)
 	var codex_vb := VBoxContainer.new()
 	codex_panel.add_child(codex_vb)
 	var codex_title := Label.new()
@@ -351,22 +352,24 @@ func _build_ui() -> void:
 	codex_vb.add_child(_codex)
 	right.add_child(codex_panel)
 
-	# Gravity card display
+	# Gravity card display — single thin line. Shows deck size before
+	# any draw ("Gravity deck: 12 remaining"), then the drawn card's
+	# title + flavor.
 	var grav_panel := PanelContainer.new()
 	grav_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	grav_panel.custom_minimum_size = Vector2(420, 80)
+	grav_panel.custom_minimum_size = Vector2(420, 56)
 	_gravity_card_label = RichTextLabel.new()
 	_gravity_card_label.bbcode_enabled = true
 	_gravity_card_label.fit_content = true
 	_gravity_card_label.add_theme_color_override("default_color", C_TEXT)
-	_gravity_card_label.text = "[color=#c8a268]GRAVITY[/color]\n[i]drawn this turn:[/i] —"
+	_gravity_card_label.text = "[color=#c8a268]GRAVITY DECK[/color] — 12 cards remaining"
 	grav_panel.add_child(_gravity_card_label)
 	right.add_child(grav_panel)
 
-	# Visitors
+	# Visitors — moderate fixed height, scrollable if needed
 	var v_panel := PanelContainer.new()
 	v_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	v_panel.custom_minimum_size = Vector2(420, 140)
+	v_panel.custom_minimum_size = Vector2(420, 120)
 	var v_vb := VBoxContainer.new()
 	v_panel.add_child(v_vb)
 	var v_title := Label.new()
@@ -383,7 +386,12 @@ func _build_ui() -> void:
 	var log_panel := PanelContainer.new()
 	log_panel.add_theme_stylebox_override("panel", _make_panel_style())
 	log_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	log_panel.custom_minimum_size = Vector2(420, 100)
+	log_panel.size_flags_stretch_ratio = 3.0   # log gets 3× the share of
+	                                           # spare vertical space —
+	                                           # diagnostics need to be
+	                                           # readable when data is
+	                                           # missing.
+	log_panel.custom_minimum_size = Vector2(420, 180)
 	_log = RichTextLabel.new()
 	_log.bbcode_enabled = true
 	_log.scroll_following = true
