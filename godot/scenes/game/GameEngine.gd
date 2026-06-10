@@ -529,6 +529,7 @@ func _do_bg(n: Dictionary) -> void:
 	var src: String = _s(n, "src")
 	if src == "":
 		_bg.texture = null
+		print("[GameEngine] BG  (cleared)")
 		return
 	# Composition supersedes bg PNG. When a scene_<id>.json composition
 	# is loaded, it already contains the bg image as a window (alongside
@@ -541,13 +542,24 @@ func _do_bg(n: Dictionary) -> void:
 		_bg.texture = null
 		if _bg_frame != null:
 			_bg_frame.queue_redraw()
+		print("[GameEngine] BG  %s  → suppressed (composition active)" % src)
 		return
 	var path := "res://" + src
+	var via: String = "missing"
 	if ResourceLoader.exists(path):
 		_bg.texture = ResourceLoader.load(path) as Texture2D
+		via = "ResourceLoader"
 	else:
 		var img := Image.load_from_file(ProjectSettings.globalize_path(path))
 		_bg.texture = ImageTexture.create_from_image(img) if img else null
+		via = "Image.load_from_file" if img else "FAILED — no asset at path"
+	if _bg.texture != null:
+		var sz := _bg.texture.get_size()
+		print("[GameEngine] BG  %s  via %s  [%dx%d]" %
+			  [src, via, int(sz.x), int(sz.y)])
+	else:
+		print("[GameEngine] BG  %s  via %s  ← scene references this but it doesn't exist" %
+			  [src, via])
 	# Randomize the pan phase per bg so different scenes don't all
 	# reveal the same edge first — feels less mechanical.
 	_bg_pan_phase = randf() * BG_PAN_PERIOD
