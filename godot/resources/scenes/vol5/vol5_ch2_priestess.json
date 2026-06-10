@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Chapter II — The High Priestess",
+      "text": "Chapter II \u2014 The High Priestess",
       "sub": "Exit Through the Gift Shop",
       "duration": 3400
     },
@@ -214,15 +214,15 @@
       "t": "choice",
       "opts": [
         {
-          "text": "[A — the slaughterhouse]",
+          "text": "[A \u2014 the slaughterhouse]",
           "goto": 41
         },
         {
-          "text": "[B — the mannequins]",
+          "text": "[B \u2014 the mannequins]",
           "goto": 43
         },
         {
-          "text": "[C — the comforting void]",
+          "text": "[C \u2014 the comforting void]",
           "goto": 45
         }
       ]

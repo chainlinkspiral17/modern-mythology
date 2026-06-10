@@ -689,6 +689,8 @@ func _input(event: InputEvent) -> void:
 	if _choices.visible:
 		return
 	if event.is_action_pressed("advance"):
+		if _choices != null and _choices.visible:
+			return
 		get_viewport().set_input_as_handled()
 		if _interlude.visible:
 			_interlude.call("try_advance")

@@ -106,7 +106,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— interior signal —",
+      "role": "\u2014 interior signal \u2014",
       "expr": "neutral",
       "text": "Who am I. Where is my father.",
       "voice": "assets/audio/voice/vol5_ch3_empress/019.mp3"
@@ -135,7 +135,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— interior signal —",
+      "role": "\u2014 interior signal \u2014",
       "expr": "neutral",
       "text": "What is this flesh. This hunger. This — vibration.",
       "voice": "assets/audio/voice/vol5_ch3_empress/024.mp3"
@@ -184,7 +184,7 @@
     {
       "t": "say",
       "char": "Nicola",
-      "role": "— protocol —",
+      "role": "\u2014 protocol \u2014",
       "expr": "neutral",
       "text": "\"Welcome to D'Ambrosio's. Do you have a reservation, sir.\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/033.mp3"
@@ -192,7 +192,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— interior, recoiling —",
+      "role": "\u2014 interior, recoiling \u2014",
       "expr": "neutral",
       "text": "Disgusting. The raw unvarnished physicality of it. The meatness. Why does she allow this.",
       "voice": "assets/audio/voice/vol5_ch3_empress/034.mp3"
@@ -214,7 +214,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— observation —",
+      "role": "\u2014 observation \u2014",
       "expr": "neutral",
       "text": "This is not a body. This is a protocol.",
       "voice": "assets/audio/voice/vol5_ch3_empress/038.mp3"
@@ -279,7 +279,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— urgent —",
+      "role": "\u2014 urgent \u2014",
       "expr": "neutral",
       "text": "Run. Find the exit node. There has to be a way out of this system.",
       "voice": "assets/audio/voice/vol5_ch3_empress/050.mp3"
@@ -357,7 +357,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— polite interest —",
+      "role": "\u2014 polite interest \u2014",
       "expr": "neutral",
       "text": "I do not understand the metaphor of the microphone.",
       "voice": "assets/audio/voice/vol5_ch3_empress/064.mp3"
@@ -418,7 +418,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— database hit —",
+      "role": "\u2014 database hit \u2014",
       "expr": "neutral",
       "text": "Dean. The card says Dean. Surname.",
       "voice": "assets/audio/voice/vol5_ch3_empress/075.mp3"
@@ -432,7 +432,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— after a measured pause —",
+      "role": "\u2014 after a measured pause \u2014",
       "expr": "neutral",
       "text": "I do not believe in coincidences. I am beginning to suspect that nobody who shares my paternity does.",
       "voice": "assets/audio/voice/vol5_ch3_empress/077.mp3"
@@ -455,7 +455,7 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "— Table 14 —",
+      "role": "\u2014 Table 14 \u2014",
       "expr": "neutral",
       "text": "\"Good evening. I won't be ordering tonight. But I wanted to leave my regards for the proprietor, and to compliment the staff.\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/081.mp3"
@@ -468,7 +468,7 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "— Table 14 —",
+      "role": "\u2014 Table 14 \u2014",
       "expr": "neutral",
       "text": "\"You're new, aren't you.\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/083.mp3"
@@ -483,7 +483,7 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "— Table 14 —",
+      "role": "\u2014 Table 14 \u2014",
       "expr": "neutral",
       "text": "\"That's new.\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/085.mp3"
@@ -496,7 +496,7 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "— Table 14 —",
+      "role": "\u2014 Table 14 \u2014",
       "expr": "neutral",
       "text": "\"Please give my best to Mr. D'Ambrosio. And — congratulations. I understand they'll be lovely.\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/087.mp3"
@@ -528,7 +528,7 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "— handwritten —",
+      "role": "\u2014 handwritten \u2014",
       "expr": "neutral",
       "text": "When you're ready.",
       "voice": "assets/audio/voice/vol5_ch3_empress/093.mp3"
@@ -578,7 +578,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "— translation —",
+      "role": "\u2014 translation \u2014",
       "expr": "neutral",
       "text": "Not yet. But soon.",
       "voice": "assets/audio/voice/vol5_ch3_empress/102.mp3"
@@ -625,7 +625,7 @@
     },
     {
       "t": "interlude",
-      "text": "— end of chapter III —",
+      "text": "\u2014 end of chapter III \u2014",
       "sub": "The Empress",
       "duration": 2800
     },

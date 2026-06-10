@@ -88,7 +88,7 @@
     {
       "t": "interlude",
       "text": "The Editing Suite",
-      "sub": "Anya · The Cartographer's Compass",
+      "sub": "Anya \u00b7 The Cartographer's Compass",
       "duration": 2000
     },
     {
@@ -119,7 +119,7 @@
     {
       "t": "say",
       "char": "Anya",
-      "role": "— in the cut —",
+      "role": "\u2014 in the cut \u2014",
       "expr": "neutral",
       "text": "\"The map was never about finding a destination.\"",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/022.mp3"
@@ -127,7 +127,7 @@
     {
       "t": "say",
       "char": "Anya",
-      "role": "— in the cut —",
+      "role": "\u2014 in the cut \u2014",
       "expr": "neutral",
       "text": "\"It was about what you became along the way.\"",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/023.mp3"
@@ -233,12 +233,22 @@
       "pos": "right"
     },
     {
+      "t": "show",
+      "char": "Mackenzie",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
       "t": "say",
       "char": "Mackenzie",
-      "role": "— text · 7:42pm —",
+      "role": "\u2014 text \u00b7 7:42pm \u2014",
       "expr": "neutral",
       "text": "Are you okay.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/043.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
     },
     {
       "t": "hide",
@@ -262,7 +272,7 @@
     {
       "t": "say",
       "char": "Elicia",
-      "role": "— text · sent —",
+      "role": "\u2014 text \u00b7 sent \u2014",
       "expr": "neutral",
       "text": "Define okay.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/048.mp3"
@@ -314,7 +324,7 @@
     },
     {
       "t": "interlude",
-      "text": "— end of chapter II —",
+      "text": "\u2014 end of chapter II \u2014",
       "sub": "The High Priestess",
       "duration": 2800
     },

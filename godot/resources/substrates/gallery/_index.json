@@ -398,12 +398,13 @@
       "always_unlocked": true
     },
     {
-      "id": "music_player",
-      "title": "MUSIC PLAYER  (live visualizer)",
-      "set": "Player Surfaces",
+      "id": "magician_arcana",
+      "title": "I — THE MAGICIAN",
+      "set": "Major Arcana",
       "type": "composition",
-      "path": "music_player",
-      "always_unlocked": true
+      "path": "magician_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch1_*"
     },
     {
       "id": "fool_reference_blocks400",

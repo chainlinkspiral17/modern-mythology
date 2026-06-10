@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Chapter I — The Magician",
+      "text": "Chapter I \u2014 The Magician",
       "sub": "Cathedral of Rust and Code",
       "duration": 3400
     },
@@ -152,7 +152,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Subject proximate. John Frank. Probability of existential navel-gazing: ninety-three point seven percent.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/028.mp3"
@@ -160,7 +160,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Suggest deploying Algorithm Sigma-7 for induced narrative dissonance. Or maybe just ask him if he wants coffee.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/029.mp3"
@@ -180,7 +180,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Query: relevance threshold of 'texture'?\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/032.mp3"
@@ -188,7 +188,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Alternative suggestion: introduce rogue variable — synthesized alligator mating call — into subject's auditory field during REM cycle.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/033.mp3"
@@ -253,7 +253,7 @@
     {
       "t": "interlude",
       "text": "God's-Eye View",
-      "sub": "GumboNet · Overlay",
+      "sub": "GumboNet \u00b7 Overlay",
       "duration": 1800
     },
     {
@@ -375,7 +375,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Recommendation revised. Subject proximate to riverboat: do not place. Repeat: do not place.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/069.mp3"
@@ -383,7 +383,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Telemetry indicates structural instability in target node. Estimated probability of cascading failure within target node, on placement: nontrivial.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/070.mp3"
@@ -403,7 +403,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Affirmative. Updating personality matrix. Apologies for any inconvenience.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/073.mp3"
@@ -446,10 +446,14 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "— imp —",
+      "role": "\u2014 imp \u2014",
       "expr": "neutral",
       "text": "\"Tempting the void again, Architect. Careful it doesn't swallow you whole.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/081.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
     },
     {
       "t": "hide",
@@ -499,7 +503,7 @@
     },
     {
       "t": "interlude",
-      "text": "— end of chapter I —",
+      "text": "\u2014 end of chapter I \u2014",
       "sub": "The Magician",
       "duration": 2800
     },
