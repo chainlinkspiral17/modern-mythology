@@ -3,7 +3,7 @@
   "title": "D'Ambrosio's, Graustark TX/LA",
   "subtitle": "3:47 AM",
   "bg_codex_card": "assets/gallery/fool.png",
-  "notes": "Board layout per lore/_TAROT_GAUNTLET.md §IV.12, expanded with side-spaces so movement is meaningful (was 10 spaces, now 20). New spaces have small per-pos effects when the player ENDS their action phase standing there — see space_effects.",
+  "notes": "Board layout per lore/_TAROT_GAUNTLET.md §IV.12, expanded with side-spaces so movement is meaningful. The state-of-the-room (BAR closed, HOSTESS STAND empty, BACK DOOR cold-air-only) is THE LEAP scenario's signature — future scenario setup cards will flip these flags (e.g. the bar is open during the Devil scenario, hostess stand is staffed in the Empress scenario, etc.). New spaces have small per-pos effects when the player ENDS their action phase standing there — see space_effects.",
   "spaces": [
     {"id": "parking_lot",     "label": "PARKING LOT",     "kind": "threshold", "pos_xy": [600,   60], "always_visible": true},
     {"id": "hostess_stand",   "label": "HOSTESS STAND",   "kind": "named",     "pos_xy": [600,  130], "flavor": "empty at this hour", "drift_attractor": true},
@@ -21,16 +21,18 @@
 
     {"id": "counter",         "label": "COUNTER",         "kind": "named",     "pos_xy": [600,  340], "is_start": true},
     {"id": "bar_stools",      "label": "BAR STOOLS",      "kind": "named",     "pos_xy": [720,  430]},
-    {"id": "under_counter",   "label": "UNDER COUNTER",   "kind": "named",     "pos_xy": [600,  430]},
+    {"id": "under_counter",   "label": "UNDER COUNTER",   "kind": "search",    "pos_xy": [600,  430], "search_pile": "under_counter"},
+
+    {"id": "jukebox",         "label": "JUKEBOX",         "kind": "search",    "pos_xy": [1000, 310], "search_pile": "jukebox", "flavor": "Sits at the dark end of the bar. Three tracks loaded. Quarter taped to the side.", "drift_attractor": false},
 
     {"id": "bell",            "label": "BELL",            "kind": "named",     "pos_xy": [600,  530]},
-    {"id": "pay_phone",       "label": "PAY PHONE",       "kind": "named",     "pos_xy": [780,  530]},
+    {"id": "pay_phone",       "label": "PAY PHONE",       "kind": "search",    "pos_xy": [780,  530], "search_pile": "pay_phone"},
     {"id": "cig_machine",     "label": "CIG MACHINE",     "kind": "named",     "pos_xy": [880,  610]},
 
     {"id": "register",        "label": "REGISTER",        "kind": "search",    "pos_xy": [600,  630], "search_pile": "register"},
     {"id": "bathroom",        "label": "BATHROOM",        "kind": "named",     "pos_xy": [780,  680]},
 
-    {"id": "card_wall",       "label": "CARD WALL",       "kind": "named",     "pos_xy": [600,  720]},
+    {"id": "card_wall",       "label": "CARD WALL",       "kind": "search",    "pos_xy": [600,  720], "search_pile": "card_wall"},
 
     {"id": "river_window",    "label": "RIVER WINDOW",    "kind": "threshold", "pos_xy": [600,  820], "always_visible": true},
     {"id": "precipice_door",  "label": "PRECIPICE DOOR",  "kind": "threshold", "pos_xy": [600,  920], "always_visible": false}
@@ -39,7 +41,8 @@
     "parking_lot":    ["hostess_stand", "back_door", "booth_1"],
     "hostess_stand":  ["parking_lot", "booth_1", "booth_6", "counter"],
     "back_door":      ["parking_lot", "kitchen_alcove"],
-    "bar":            ["booth_1", "booth_4"],
+    "bar":            ["booth_1", "booth_4", "jukebox"],
+    "jukebox":        ["bar", "booth_4", "bar_stools"],
     "booth_1":        ["parking_lot", "hostess_stand", "bar", "booth_4"],
 
     "kitchen_alcove": ["back_door", "grill", "order_window"],
@@ -47,11 +50,11 @@
     "dish_station":   ["grill"],
     "order_window":   ["kitchen_alcove", "grill", "counter"],
 
-    "booth_4":        ["booth_1", "bar", "booth_6"],
+    "booth_4":        ["booth_1", "bar", "booth_6", "jukebox"],
     "booth_6":        ["hostess_stand", "booth_4", "counter"],
 
     "counter":        ["hostess_stand", "booth_6", "order_window", "bar_stools", "under_counter"],
-    "bar_stools":     ["counter"],
+    "bar_stools":     ["counter", "jukebox"],
     "under_counter":  ["counter", "bell"],
 
     "bell":           ["under_counter", "pay_phone", "register"],
@@ -109,6 +112,9 @@
     },
     "back_door": {
       "on_end_action_phase": [{"kind": "log", "text": "Cold air through the back. Smell of asphalt + river."}]
+    },
+    "jukebox": {
+      "on_end_action_phase": [{"kind": "log", "text": "The selected side spins one more time before clicking off."}]
     }
   },
   "events": [

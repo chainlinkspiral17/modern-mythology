@@ -20,6 +20,26 @@
         "contents_graffiti_tag"
       ],
       "draw_one_keep_or_putback": true
+    },
+    "under_counter": {
+      "label": "Under the Counter",
+      "notes": "Working-shift detritus. The stuff the next manager would throw away if they ever found it.",
+      "items": ["tip_jar_quarters", "apron_keyring", "back_office_clock_key"]
+    },
+    "pay_phone": {
+      "label": "Pay Phone",
+      "notes": "Things people leave behind when the call doesn't go through.",
+      "items": ["payphone_quarter", "wrong_number_slip", "coiled_handset_cord"]
+    },
+    "card_wall": {
+      "label": "The Card Wall",
+      "notes": "Patrons leave tarot cards pinned to the wall over decades. Yours is somewhere in here.",
+      "items": ["tarot_pin", "patron_signed_fool", "pinned_hermit_below"]
+    },
+    "jukebox": {
+      "label": "Jukebox (B-side selections)",
+      "notes": "Three tracks have been programmed into the box. Selecting one swaps the diner's BGM until another is chosen. Tracks are reusable — playing them does NOT consume the slot.",
+      "items": ["track_cicadas_dusk", "track_riverboat_drone", "track_warehouse_drone"]
     }
   },
   "items": {
@@ -105,6 +125,133 @@
       "passive_effects": [
         {"kind": "on_die_face", "face": "pause", "additional_effect": [{"kind": "lose_inertia", "amount": 1}]}
       ]
+    },
+
+    "tip_jar_quarters": {
+      "title": "Tip-Jar Quarters",
+      "category": "consumable",
+      "flavor": "What you didn't declare. Sixty-three of them, sticky from cola.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "gain_time", "amount": 2},
+        {"kind": "discard_self"}
+      ]
+    },
+    "apron_keyring": {
+      "title": "The Apron Keyring",
+      "category": "passive",
+      "flavor": "Every key for every door you stopped opening. Walk-in. Office. The bar. The lockbox you were never shown.",
+      "hands": 0,
+      "passive_effects": [
+        {"kind": "threshold_roll_dice_modifier", "when_kind": "threshold", "bonus_dice": 1, "note": "+1 die on any threshold roll while held"}
+      ]
+    },
+    "back_office_clock_key": {
+      "title": "The Back-Office Clock Key",
+      "category": "consumable",
+      "flavor": "Reset the punch clock. Just this once. Nobody will check tomorrow because tomorrow isn't yours.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "set_next_time_reset", "value": 8},
+        {"kind": "discard_self"}
+      ]
+    },
+
+    "payphone_quarter": {
+      "title": "The Payphone Quarter",
+      "category": "consumable",
+      "flavor": "Heads up. A call goes out. Someone comes faster.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "advance_next_visitor_arrival", "by": 2},
+        {"kind": "discard_self"}
+      ]
+    },
+    "wrong_number_slip": {
+      "title": "Wrong-Number Slip",
+      "category": "consumable",
+      "flavor": "Whoever they wanted, it wasn't you. A small relief, dialed in a strange hand.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "discard_self"}
+      ]
+    },
+    "coiled_handset_cord": {
+      "title": "The Coiled Handset Cord",
+      "category": "passive",
+      "flavor": "It curls back like it's trying to remember a number. You hold it. You don't dial.",
+      "hands": 0,
+      "passive_effects": [
+        {"kind": "on_die_face", "face": "pause", "additional_effect": [{"kind": "lose_inertia", "amount": 1}]}
+      ]
+    },
+
+    "tarot_pin": {
+      "title": "The Tarot Pin",
+      "category": "passive",
+      "flavor": "A brass pin from the bottom-left corner of someone else's Fool. You wear it. The deck notices.",
+      "hands": 0,
+      "passive_effects": [
+        {"kind": "on_die_face", "face": "faith", "additional_effect": [{"kind": "gain_time", "amount": 1}]}
+      ]
+    },
+    "patron_signed_fool": {
+      "title": "The Patron-Signed Fool",
+      "category": "consumable",
+      "flavor": "Someone wrote WE SEE YOU on the back. Twelve years ago. In your handwriting.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "reveal_lore_token", "token": "the_card_signed_back"},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "discard_self"}
+      ],
+      "ending_lore_token": "the_card_signed_back"
+    },
+    "pinned_hermit_below": {
+      "title": "The Hermit, Pinned Below the Fool",
+      "category": "consumable",
+      "flavor": "A second card under yours. Whoever pinned it knew something about the order of things.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "gain_time", "amount": 2},
+        {"kind": "advance_next_visitor_arrival", "by": 1},
+        {"kind": "discard_self"}
+      ]
+    },
+
+    "track_cicadas_dusk": {
+      "title": "B-Side · CICADAS AT DUSK",
+      "category": "jukebox_track",
+      "flavor": "The summer drone of insects, recorded outside this diner in 1987. Whoever cut the master is dead.",
+      "hands": 0,
+      "effects_on_use": [
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_cicadas_dusk.ogg", "label": "CICADAS AT DUSK"},
+        {"kind": "lose_inertia", "amount": 1}
+      ],
+      "reusable": true
+    },
+    "track_riverboat_drone": {
+      "title": "B-Side · RIVERBOAT DRONE",
+      "category": "jukebox_track",
+      "flavor": "Low engines and water. The boat that takes nobody from the river window.",
+      "hands": 0,
+      "effects_on_use": [
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_riverboat_drone.ogg", "label": "RIVERBOAT DRONE"},
+        {"kind": "gain_time", "amount": 1}
+      ],
+      "reusable": true
+    },
+    "track_warehouse_drone": {
+      "title": "B-Side · WAREHOUSE DRONE",
+      "category": "jukebox_track",
+      "flavor": "Forty hertz of empty room. The track that sounds like the diner already does.",
+      "hands": 0,
+      "effects_on_use": [
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_warehouse_drone.ogg", "label": "WAREHOUSE DRONE"},
+        {"kind": "gain_inertia", "amount": 1}
+      ],
+      "reusable": true
     }
   },
   "unlockable_items_from_other_arcana": [

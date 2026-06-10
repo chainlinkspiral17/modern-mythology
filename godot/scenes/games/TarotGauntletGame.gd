@@ -1068,6 +1068,12 @@ func _resolve_effect(e: Dictionary) -> void:
 			if not opts.is_empty():
 				_log_line("[i]choose: %s[/i]" % opts[0].get("label", ""))
 				_resolve_effects(opts[0].get("effects", []))
+		"play_jukebox_track":
+			var bgm_path: String = e.get("bgm", "")
+			var label: String = e.get("label", "track")
+			if bgm_path != "":
+				AudioMgr.play_bgm(bgm_path)
+				_log_line("[color=#c8a268]♪ jukebox · now playing [b]%s[/b][/color]" % label)
 		_:
 			_log_line("[i](unhandled effect: %s)[/i]" % kind)
 
@@ -1102,14 +1108,20 @@ func _take_top_item_at_pos() -> void:
 		_log_line("[i]nothing to take here[/i]")
 		return
 	var item_id: String = _pile_state[pile_id].pop_front()
-	# Contents pile: choose one (first for now)
 	var items_dict := _items_def
-	if items_dict.has(item_id) and items_dict[item_id].get("category", "") == "bindle_contents":
-		# Just take it
-		pass
+	var item: Dictionary = items_dict.get(item_id, {})
+	# Reusable pile items (e.g. jukebox tracks): trigger their on-use
+	# effects immediately and cycle the entry to the bottom of the pile
+	# instead of putting them into inventory.
+	if item.get("reusable", false):
+		_audio_sfx("item_pickup")
+		_log_line("[color=#c8a268]selected: %s[/color]" % item.get("title", item_id))
+		if item.has("effects_on_use"):
+			_resolve_effects(item["effects_on_use"])
+		_pile_state[pile_id].append(item_id)
+		return
 	_inventory.append(item_id)
 	_audio_sfx("item_pickup")
-	var item: Dictionary = items_dict.get(item_id, {})
 	_log_line("[color=#c8a268]picked up: %s[/color]" % item.get("title", item_id))
 	# on_pickup hooks
 	if item.has("on_pickup"):
