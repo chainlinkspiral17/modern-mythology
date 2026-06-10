@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_missing_link.jpg",
+      "src": "assets/backgrounds/vol7_missing_link_interior.jpg",
       "t": "bg"
     },
     {
@@ -202,7 +202,7 @@
     },
     {
       "char": "kai",
-      "text": "Why didn't you — why didn't you come to us before.",
+      "text": "Why didn't you \u2014 why didn't you come to us before.",
       "t": "say"
     },
     {
@@ -212,7 +212,7 @@
     },
     {
       "char": "aud",
-      "text": "I'm at the edge of this — I'm not the foundation. Marina is. Marina had to come first. She has. I can come now.",
+      "text": "I'm at the edge of this \u2014 I'm not the foundation. Marina is. Marina had to come first. She has. I can come now.",
       "t": "say"
     },
     {
@@ -242,7 +242,7 @@
     },
     {
       "char": "aud",
-      "text": "Kai. The salmonberry pie. I've been carrying a slice in the cooler for you since Tuesday — you missed your usual night. I had it wrapped for the back booth and you did not come. It's been waiting. Eat it. With the soup. The soup's the leek I made yesterday because Frog Petersen comes in on Saturdays and Frog likes the leek.",
+      "text": "Kai. The salmonberry pie. I've been carrying a slice in the cooler for you since Tuesday \u2014 you missed your usual night. I had it wrapped for the back booth and you did not come. It's been waiting. Eat it. With the soup. The soup's the leek I made yesterday because Frog Petersen comes in on Saturdays and Frog likes the leek.",
       "t": "say"
     },
     {
@@ -264,7 +264,7 @@
       "t": "narrate"
     },
     {
-      "text": "He ate slowly. The soup was the leek Aud made with the kind of careful work she had been doing since '46 — by the cream and the salt and the way she had cut the leeks at the diner this morning at five before the first customer had come in.",
+      "text": "He ate slowly. The soup was the leek Aud made with the kind of careful work she had been doing since '46 \u2014 by the cream and the salt and the way she had cut the leeks at the diner this morning at five before the first customer had come in.",
       "t": "narrate"
     },
     {
@@ -336,7 +336,7 @@
     },
     {
       "char": "aud",
-      "text": "Once. In '52. The year I retired. The foundation gave me a Kestrel Mountain stick at my retirement dinner. Marina wouldn't have known this — it was a kind of pension.",
+      "text": "Once. In '52. The year I retired. The foundation gave me a Kestrel Mountain stick at my retirement dinner. Marina wouldn't have known this \u2014 it was a kind of pension.",
       "t": "say"
     },
     {
@@ -351,7 +351,7 @@
     },
     {
       "char": "aud",
-      "text": "I sat on the rocks beside the stream for what felt like maybe a day inside the experience and I had a conversation with a man at the stream who was — by what I figured out at the time, by what I am still figuring out — the imprint of an old monk who had been at the experience since 2034 and had been at the second station for some number of years.",
+      "text": "I sat on the rocks beside the stream for what felt like maybe a day inside the experience and I had a conversation with a man at the stream who was \u2014 by what I figured out at the time, by what I am still figuring out \u2014 the imprint of an old monk who had been at the experience since 2034 and had been at the second station for some number of years.",
       "t": "say"
     },
     {
@@ -395,7 +395,7 @@
     },
     {
       "char": "aud",
-      "text": "He told me — by the way the conversation went, by the question I had been carrying when I sat down on the rocks — he told me what I needed to know about my husband, who had died in 2049 in a way I had not, at the time, been able to live with.",
+      "text": "He told me \u2014 by the way the conversation went, by the question I had been carrying when I sat down on the rocks \u2014 he told me what I needed to know about my husband, who had died in 2049 in a way I had not, at the time, been able to live with.",
       "t": "say"
     },
     {
@@ -461,7 +461,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "src": "assets/backgrounds/vol7_board_lords_interior.jpg",
       "t": "bg"
     },
     {
@@ -477,11 +477,11 @@
       "t": "narrate"
     },
     {
-      "text": "He had not seen Wren in the shop before. Wren was Lena's regular at the Daily Grind on Friday mornings — a girl who did not generally go into shops other than the Daily Grind and Margit's thrift store and the small market on Birch. The skate shop was not a Wren place.",
+      "text": "He had not seen Wren in the shop before. Wren was Lena's regular at the Daily Grind on Friday mornings \u2014 a girl who did not generally go into shops other than the Daily Grind and Margit's thrift store and the small market on Birch. The skate shop was not a Wren place.",
       "t": "narrate"
     },
     {
-      "text": "She came in at the bell. She was in her school clothes. Her hair was the blue of Margit's dye. She was carrying her backpack. She was — by Kai's read of her at the door — nervous.",
+      "text": "She came in at the bell. She was in her school clothes. Her hair was the blue of Margit's dye. She was carrying her backpack. She was \u2014 by Kai's read of her at the door \u2014 nervous.",
       "t": "narrate"
     },
     {
@@ -535,7 +535,7 @@
     },
     {
       "char": "wren",
-      "text": "I stood at the wall for — I don't know. A long time. Lena found me there at three. She was on her break from the Grind and came out to check the alley. She talked to me for a few minutes and said I should come ask you for a board.",
+      "text": "I stood at the wall for \u2014 I don't know. A long time. Lena found me there at three. She was on her break from the Grind and came out to check the alley. She talked to me for a few minutes and said I should come ask you for a board.",
       "t": "say"
     },
     {
@@ -554,7 +554,7 @@
     },
     {
       "char": "wren",
-      "text": "She said — she said I'm fifteen, I've been in this town three years, the substrate is doing things to this town, and my hair is the blue that means I've been at Margit's, and Margit's is where the substrate is.",
+      "text": "She said \u2014 she said I'm fifteen, I've been in this town three years, the substrate is doing things to this town, and my hair is the blue that means I've been at Margit's, and Margit's is where the substrate is.",
       "t": "say"
     },
     {
@@ -573,17 +573,17 @@
     },
     {
       "char": "kai",
-      "text": "Three that would work for you. This — Devon-cousin from '48, before he left. Mid-soft, easy turn, the kind of board you learn on.",
+      "text": "Three that would work for you. This \u2014 Devon-cousin from '48, before he left. Mid-soft, easy turn, the kind of board you learn on.",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "This — new one I got in two weeks ago from the Newport supplier. Stiffer. You'd grow into it.",
+      "text": "This \u2014 new one I got in two weeks ago from the Newport supplier. Stiffer. You'd grow into it.",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "And this — second-hand Tess that Margaret at the co-op brought in for trade last fall. Best of the three. Most expensive too. The Tess is what you have when you know what you're doing.",
+      "text": "And this \u2014 second-hand Tess that Margaret at the co-op brought in for trade last fall. Best of the three. Most expensive too. The Tess is what you have when you know what you're doing.",
       "t": "say"
     },
     {
@@ -612,12 +612,12 @@
     },
     {
       "char": "wren",
-      "text": "What do I — Kai, what do I owe you.",
+      "text": "What do I \u2014 Kai, what do I owe you.",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "Wren. Tell your mom it's twenty-five tokens. Tell her I'll do a payment plan — one token a week for twenty-five weeks. Or tell her it's a gift from me to you for coming in. Whichever you want to tell her.",
+      "text": "Wren. Tell your mom it's twenty-five tokens. Tell her I'll do a payment plan \u2014 one token a week for twenty-five weeks. Or tell her it's a gift from me to you for coming in. Whichever you want to tell her.",
       "t": "say"
     },
     {
@@ -685,7 +685,7 @@
       "t": "narrate"
     },
     {
-      "text": "He registered, on the stool, that the Starfish Nebula mural in Lena's alley was — by what was happening to it today — becoming what the substrate had been clearing the wall for. The substrate had eaten the bottom-left quadrant. Lena had painted the face. The face had been visible since yesterday at eight-something. Town people had been going to the alley.",
+      "text": "He registered, on the stool, that the Starfish Nebula mural in Lena's alley was \u2014 by what was happening to it today \u2014 becoming what the substrate had been clearing the wall for. The substrate had eaten the bottom-left quadrant. Lena had painted the face. The face had been visible since yesterday at eight-something. Town people had been going to the alley.",
       "t": "narrate"
     },
     {
@@ -701,7 +701,7 @@
       "t": "narrate"
     },
     {
-      "text": "The face had been carved by Olaf since 1976. The face had been at the edges of this town for some years by Petra's reading. The face was — by Kai's read of the day at the bench — the face of a year-long arrival being made visible at the rate the substrate could make it visible.",
+      "text": "The face had been carved by Olaf since 1976. The face had been at the edges of this town for some years by Petra's reading. The face was \u2014 by Kai's read of the day at the bench \u2014 the face of a year-long arrival being made visible at the rate the substrate could make it visible.",
       "t": "narrate"
     },
     {
@@ -742,7 +742,7 @@
       "t": "bg"
     },
     {
-      "text": "He walked the four blocks home. The town at four-forty had its Saturday evening shape — kids on boards on the sidewalk by the small market, a woman walking a dog along the seawall above the river, the late-afternoon errands of a coastal town in late August.",
+      "text": "He walked the four blocks home. The town at four-forty had its Saturday evening shape \u2014 kids on boards on the sidewalk by the small market, a woman walking a dog along the seawall above the river, the late-afternoon errands of a coastal town in late August.",
       "t": "narrate"
     },
     {
@@ -758,11 +758,11 @@
       "t": "narrate"
     },
     {
-      "text": "The face on the wall was the face on the wall. The bone black against the brick was the bone black against the brick. The face had — by what Kai could see at four forty-five in the gray-blue of the late afternoon — the quality of being lit from inside Cale had described to him yesterday.",
+      "text": "The face on the wall was the face on the wall. The bone black against the brick was the bone black against the brick. The face had \u2014 by what Kai could see at four forty-five in the gray-blue of the late afternoon \u2014 the quality of being lit from inside Cale had described to him yesterday.",
       "t": "narrate"
     },
     {
-      "text": "The closed eyes were closed. The hair held the bone black the way the hair held the light. The face was looking out at the alley entrance — facing the place a person who came into the alley to look at her would come from.",
+      "text": "The closed eyes were closed. The hair held the bone black the way the hair held the light. The face was looking out at the alley entrance \u2014 facing the place a person who came into the alley to look at her would come from.",
       "t": "narrate"
     },
     {
@@ -780,12 +780,12 @@
     },
     {
       "char": "kai",
-      "text": "I am — I am going to bring Wren. I am going to bring Jameson. I am going to bring Hannes. Lena is going to be here.",
+      "text": "I am \u2014 I am going to bring Wren. I am going to bring Jameson. I am going to bring Hannes. Lena is going to be here.",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "We are — we are going to stand at the entrance for an hour. We are going to look at you. We are — we are figuring out what to do.",
+      "text": "We are \u2014 we are going to stand at the entrance for an hour. We are going to look at you. We are \u2014 we are figuring out what to do.",
       "t": "say"
     },
     {
@@ -802,15 +802,15 @@
       "t": "narrate"
     },
     {
-      "text": "But — by what Kai registered at the wall, in the gray-blue of the late afternoon, in a way he had not been able to anticipate — the closed eyelids of the face on the wall moved. Not opened. Moved.",
+      "text": "But \u2014 by what Kai registered at the wall, in the gray-blue of the late afternoon, in a way he had not been able to anticipate \u2014 the closed eyelids of the face on the wall moved. Not opened. Moved.",
       "t": "narrate"
     },
     {
-      "text": "The lids had been on the closed eyes the way Lena had painted them at eight forty-two yesterday morning. The lids in the four forty-five afternoon were — by Kai's read at the wall — closer together than they had been twenty-four hours ago.",
+      "text": "The lids had been on the closed eyes the way Lena had painted them at eight forty-two yesterday morning. The lids in the four forty-five afternoon were \u2014 by Kai's read at the wall \u2014 closer together than they had been twenty-four hours ago.",
       "t": "narrate"
     },
     {
-      "text": "The face was sleeping more deeply. The face was — the face was at rest, by what Kai could read.",
+      "text": "The face was sleeping more deeply. The face was \u2014 the face was at rest, by what Kai could read.",
       "t": "narrate"
     },
     {
@@ -839,7 +839,7 @@
       "t": "narrate"
     },
     {
-      "text": "He put on the long-sleeve thermal his grandmother had given him when she had been alive — the dark green one, that he had been wearing on the kind of evening he had been thinking about her on. The thermal had been at the bottom of his drawer since Tuesday. He had not, in this week, been near her in his head. He put the thermal on.",
+      "text": "He put on the long-sleeve thermal his grandmother had given him when she had been alive \u2014 the dark green one, that he had been wearing on the kind of evening he had been thinking about her on. The thermal had been at the bottom of his drawer since Tuesday. He had not, in this week, been near her in his head. He put the thermal on.",
       "t": "narrate"
     },
     {
@@ -863,7 +863,7 @@
       "t": "narrate"
     },
     {
-      "text": "He thought: that was not her in the room. That was the substrate. The substrate gave a render. She is going to come — when she comes, she is going to come into a room with us.",
+      "text": "He thought: that was not her in the room. That was the substrate. The substrate gave a render. She is going to come \u2014 when she comes, she is going to come into a room with us.",
       "t": "narrate"
     },
     {

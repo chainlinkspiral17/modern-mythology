@@ -31,7 +31,7 @@
       "t": "narrate"
     },
     {
-      "text": "She had been on the cabin's loft mattress for two nights. The mattress was Eddvard's — he had slept on it from '79 until '42. Tem had told her this at eleven on Thursday when Tem had pulled the wool blankets out of the cedar chest and made the bed for her. The mattress, by the wear and the smell and the slight depression Eddvard's body had made over forty-three years, was a mattress that had held a man Marina had not met and whose granddaughter had made her a bed on it.",
+      "text": "She had been on the cabin's loft mattress for two nights. The mattress was Eddvard's \u2014 he had slept on it from '79 until '42. Tem had told her this at eleven on Thursday when Tem had pulled the wool blankets out of the cedar chest and made the bed for her. The mattress, by the wear and the smell and the slight depression Eddvard's body had made over forty-three years, was a mattress that had held a man Marina had not met and whose granddaughter had made her a bed on it.",
       "t": "narrate"
     },
     {
@@ -39,15 +39,15 @@
       "t": "narrate"
     },
     {
-      "text": "Per's breath was the breath of a man in his sixties who had been carrying a heavy thing for two days and had put it down at this cabin on Wednesday and was sleeping the sleep of the put-down. Cale's breath was light — Cale had not, by what she had read of him in the hours she had been with the room Thursday night, slept deeply in some time. Finn's breath was the regular slow breath of a man who walked headlands. Kai's breath was the breath of a man who had been in a slow-stick on Wednesday and was still working out what that meant. Tem's breath in the bedroom was below her. Lena's beside Tem's. The six were the six.",
+      "text": "Per's breath was the breath of a man in his sixties who had been carrying a heavy thing for two days and had put it down at this cabin on Wednesday and was sleeping the sleep of the put-down. Cale's breath was light \u2014 Cale had not, by what she had read of him in the hours she had been with the room Thursday night, slept deeply in some time. Finn's breath was the regular slow breath of a man who walked headlands. Kai's breath was the breath of a man who had been in a slow-stick on Wednesday and was still working out what that meant. Tem's breath in the bedroom was below her. Lena's beside Tem's. The six were the six.",
       "t": "narrate"
     },
     {
-      "text": "On the second night — Friday into Saturday — she had slept five hours. She had woken at four-twenty because four-twenty had been her morning-wake at the foundation since 2046 and her body had not, in two days at the cabin, surrendered the habit.",
+      "text": "On the second night \u2014 Friday into Saturday \u2014 she had slept five hours. She had woken at four-twenty because four-twenty had been her morning-wake at the foundation since 2046 and her body had not, in two days at the cabin, surrendered the habit.",
       "t": "narrate"
     },
     {
-      "text": "Below her, Tem was awake. She knew this because she could hear the cone-filter sound from the kitchen — the kettle's pre-whistle, the run of the water through the grounds, the way Tem set the cup down on the table without making more sound than she had to. The sound of a woman who had been making coffee in this room for six years.",
+      "text": "Below her, Tem was awake. She knew this because she could hear the cone-filter sound from the kitchen \u2014 the kettle's pre-whistle, the run of the water through the grounds, the way Tem set the cup down on the table without making more sound than she had to. The sound of a woman who had been making coffee in this room for six years.",
       "t": "narrate"
     },
     {
@@ -85,7 +85,7 @@
       "t": "say"
     },
     {
-      "text": "Tem poured. The cup was the cup Tem had given her Thursday night — a heavy ceramic cup that Tem had said her grandfather had bought at the estate sale of a woman who had run a pottery in the cheese-factory-town until 1991. The cup held the heat. Marina took it.",
+      "text": "Tem poured. The cup was the cup Tem had given her Thursday night \u2014 a heavy ceramic cup that Tem had said her grandfather had bought at the estate sale of a woman who had run a pottery in the cheese-factory-town until 1991. The cup held the heat. Marina took it.",
       "t": "narrate"
     },
     {
@@ -126,7 +126,7 @@
     },
     {
       "char": "tem",
-      "text": "Yeah. We're leaving here at five. Cale's already at his truck — he came down five minutes ago. Kai is awake. Lena is awake. Finn is up and at the truck with the crow. Per drove down last night to be at Hans's by five-thirty.",
+      "text": "Yeah. We're leaving here at five. Cale's already at his truck \u2014 he came down five minutes ago. Kai is awake. Lena is awake. Finn is up and at the truck with the crow. Per drove down last night to be at Hans's by five-thirty.",
       "expr": "neutral",
       "t": "say"
     },
@@ -144,7 +144,7 @@
     },
     {
       "char": "tem",
-      "text": "I am. The bowls are at the cabin. I am not — I am not leaving the bowls at the cabin all day with the cabin empty. I am coming back up after the bakery.",
+      "text": "I am. The bowls are at the cabin. I am not \u2014 I am not leaving the bowls at the cabin all day with the cabin empty. I am coming back up after the bakery.",
       "expr": "neutral",
       "t": "say"
     },
@@ -214,7 +214,7 @@
     },
     {
       "char": "tem",
-      "text": "The foundation is — Hans has been at a distance from the foundation for fifty years. Hans has known about the foundation since his brother in Bern told him in 1969 that there was a foundation. Hans has not, in any of the years since, contacted them. He has been waiting for the foundation to come to him on a day the foundation would know was the day to come.",
+      "text": "The foundation is \u2014 Hans has been at a distance from the foundation for fifty years. Hans has known about the foundation since his brother in Bern told him in 1969 that there was a foundation. Hans has not, in any of the years since, contacted them. He has been waiting for the foundation to come to him on a day the foundation would know was the day to come.",
       "expr": "serious",
       "t": "say"
     },
@@ -226,13 +226,13 @@
     },
     {
       "char": "marina",
-      "text": "Tem. What if I am — what if I am also coming in as a person who is forty-one and tired and who has been at the cabin for two nights and is — by my own reading of myself at four-twenty this morning — slightly out of my depth.",
+      "text": "Tem. What if I am \u2014 what if I am also coming in as a person who is forty-one and tired and who has been at the cabin for two nights and is \u2014 by my own reading of myself at four-twenty this morning \u2014 slightly out of my depth.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "Marina. The two are not — the two are not in conflict. You are the foundation and you are a person who is forty-one and tired. Come in as both.",
+      "text": "Marina. The two are not \u2014 the two are not in conflict. You are the foundation and you are a person who is forty-one and tired. Come in as both.",
       "expr": "serious",
       "t": "say"
     },
@@ -244,13 +244,13 @@
     },
     {
       "char": "tem",
-      "text": "Hans is going to make you welcome. Hans's wife is going to be at the bakery. Hans's mother-in-law — no, Per's mother — is going to be there. Marit. Marit is sixty-eight and has been carrying the bowl Olaf carved her for fifty-one years and has not, in those years, been in a room with any of the people who are going to be at this bakery this morning.",
+      "text": "Hans is going to make you welcome. Hans's wife is going to be at the bakery. Hans's mother-in-law \u2014 no, Per's mother \u2014 is going to be there. Marit. Marit is sixty-eight and has been carrying the bowl Olaf carved her for fifty-one years and has not, in those years, been in a room with any of the people who are going to be at this bakery this morning.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "She is going to be in the room with us at six. She is — Marit is the person who has been carrying the longest at the closest distance and who has been most alone. You and Marit are going to meet. The meeting is going to matter. I want you to know it is going to matter.",
+      "text": "She is going to be in the room with us at six. She is \u2014 Marit is the person who has been carrying the longest at the closest distance and who has been most alone. You and Marit are going to meet. The meeting is going to matter. I want you to know it is going to matter.",
       "expr": "serious",
       "t": "say"
     },
@@ -275,7 +275,7 @@
       "t": "hide"
     },
     {
-      "text": "They came down the road in the gray hour before dawn. Cale's F-150 in front. Kai's truck behind. The two trucks held all five of them — Tem and Marina with Cale, Lena and Finn and Kai with Kai.",
+      "text": "They came down the road in the gray hour before dawn. Cale's F-150 in front. Kai's truck behind. The two trucks held all five of them \u2014 Tem and Marina with Cale, Lena and Finn and Kai with Kai.",
       "t": "narrate"
     },
     {
@@ -288,7 +288,7 @@
     },
     {
       "char": "cale",
-      "text": "Marina. I am — Marina, I am glad you are here.",
+      "text": "Marina. I am \u2014 Marina, I am glad you are here.",
       "expr": "serious",
       "t": "say"
     },
@@ -300,7 +300,7 @@
     },
     {
       "char": "cale",
-      "text": "I have been at this for thirty years from the wrong end. You have been at it from the other end. I am — I am glad you are here.",
+      "text": "I have been at this for thirty years from the wrong end. You have been at it from the other end. I am \u2014 I am glad you are here.",
       "expr": "serious",
       "t": "say"
     },
@@ -319,15 +319,15 @@
       "t": "narrate"
     },
     {
-      "text": "The town at five forty-six on a Saturday in late August was the kind of quiet that came before the bakery was open. The Daily Grind had a light on inside but had not yet flipped the CLOSED to OPEN. The Missing Link's diner was dark. The Charging Station was open — the Charging Station was open at all hours, for the freight drivers who came up the road at three in the morning and needed coffee — but the Charging Station was the only light on Main other than the streetlight.",
+      "text": "The town at five forty-six on a Saturday in late August was the kind of quiet that came before the bakery was open. The Daily Grind had a light on inside but had not yet flipped the CLOSED to OPEN. The Missing Link's diner was dark. The Charging Station was open \u2014 the Charging Station was open at all hours, for the freight drivers who came up the road at three in the morning and needed coffee \u2014 but the Charging Station was the only light on Main other than the streetlight.",
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "src": "assets/backgrounds/vol7_hans_bakery_back_kitchen.jpg",
       "t": "bg"
     },
     {
-      "text": "Cale drove to Hemlock. The bakery's back-kitchen light was on. Hans had been at the bakery since four. Marina had read about this light in a foundation report from 2049 — Hans's back-kitchen light at four AM had been listed as one of the reliable markers a foundation operative on the coast could use to know whether the town was running normally. She had not, in three years of working off that report, expected to be at the back door under that light at five forty-seven in the morning on the last Saturday of August in 2052.",
+      "text": "Cale drove to Hemlock. The bakery's back-kitchen light was on. Hans had been at the bakery since four. Marina had read about this light in a foundation report from 2049 \u2014 Hans's back-kitchen light at four AM had been listed as one of the reliable markers a foundation operative on the coast could use to know whether the town was running normally. She had not, in three years of working off that report, expected to be at the back door under that light at five forty-seven in the morning on the last Saturday of August in 2052.",
       "t": "narrate"
     },
     {
@@ -390,7 +390,7 @@
     },
     {
       "char": "tem",
-      "text": "Hans. This is Marina Lindholm. Foundation operative on this coast since 2046. Granddaughter of Henrik Lindholm in San Francisco, who got the second bowl from Olaf in 1976. She is — she came up to the cabin Thursday night. She has been with us at the cabin for two days. She is — Hans, she is the foundation come to see us.",
+      "text": "Hans. This is Marina Lindholm. Foundation operative on this coast since 2046. Granddaughter of Henrik Lindholm in San Francisco, who got the second bowl from Olaf in 1976. She is \u2014 she came up to the cabin Thursday night. She has been with us at the cabin for two days. She is \u2014 Hans, she is the foundation come to see us.",
       "expr": "serious",
       "t": "say"
     },
@@ -418,7 +418,7 @@
     },
     {
       "char": "hans",
-      "text": "Werner — my brother — told me in 1969 in a letter that the foundation had a man in San Francisco named Lindholm. He spelled the name three times in the letter to make sure I had it. He had written the name down for me so I would know who to contact if I ever decided to come in.",
+      "text": "Werner \u2014 my brother \u2014 told me in 1969 in a letter that the foundation had a man in San Francisco named Lindholm. He spelled the name three times in the letter to make sure I had it. He had written the name down for me so I would know who to contact if I ever decided to come in.",
       "expr": "serious",
       "t": "say"
     },
@@ -442,7 +442,7 @@
     },
     {
       "char": "marina",
-      "text": "I — I am — I am sorry I did not come sooner.",
+      "text": "I \u2014 I am \u2014 I am sorry I did not come sooner.",
       "expr": "serious",
       "t": "say"
     },
@@ -454,7 +454,7 @@
     },
     {
       "char": "hans",
-      "text": "The not-coming is not yours. The not-coming is mine. I have been the one who did not write. I am — I am the one apologizing.",
+      "text": "The not-coming is not yours. The not-coming is mine. I have been the one who did not write. I am \u2014 I am the one apologizing.",
       "expr": "serious",
       "t": "say"
     },
@@ -464,7 +464,7 @@
     },
     {
       "char": "marina",
-      "text": "Hans. The foundation is — the foundation is here now.",
+      "text": "Hans. The foundation is \u2014 the foundation is here now.",
       "expr": "serious",
       "t": "say"
     },
@@ -562,7 +562,7 @@
     },
     {
       "char": "marina",
-      "text": "I knew about the bowl since 2046. I knew about your family since 2050. I did not — I did not come because the foundation did not order me to come. I have been here three times in two years and I have not come to your son and I have not come to you. I am — I am sorry, Marit.",
+      "text": "I knew about the bowl since 2046. I knew about your family since 2050. I did not \u2014 I did not come because the foundation did not order me to come. I have been here three times in two years and I have not come to your son and I have not come to you. I am \u2014 I am sorry, Marit.",
       "expr": "serious",
       "t": "say"
     },

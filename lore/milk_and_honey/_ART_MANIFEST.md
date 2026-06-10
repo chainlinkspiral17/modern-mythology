@@ -62,24 +62,76 @@ they're punctuation marks in the prose, not ambient bgs.
 
 ---
 
+## Shop interiors
+
+Most of vol7's action happens *inside* the town's shops — Board Lords,
+ChillWave, the Salty Tome, the Daily Grind, Hans's bakery, the Missing
+Link, Lena's studio. Previously every scene in these shops used a
+single generic establishing-shot bg (vol8_board_lords.jpg, etc.).
+That reads as a storefront, not a room with people in it.
+
+Each shop now has its own canonical interior — and the multi-room
+shops (Hans's bakery, the Salty Tome) have sub-room variants so the
+prose's named locations get their own image.
+
+### Board Lords (Kai's skate shop)
+
+| path | scenes | hook |
+|---|---|---|
+| `assets/backgrounds/vol7_board_lords_interior.jpg` | ch2_morning, ch5_roy, ch9_tuesday, ch10_per, ch12_kai, ch16_aud, ch16_shop | Kai's interior. Counter at front. Skate decks on the wall behind. Bench in the back where kids sit. Cedar shelves. The bell over the door. |
+
+### ChillWave (Cale's record/video shop)
+
+| path | scenes | hook |
+|---|---|---|
+| `assets/backgrounds/vol7_chillwave_interior.jpg` *(existing)* | ch3_studio, ch6_cale, ch6_chillwave | Cale's interior. Counter at front, register, the bell. Lights low. Inventory crates by the door. |
+
+### The Salty Tome (Petra's bookstore)
+
+| path | scenes | hook |
+|---|---|---|
+| `assets/backgrounds/vol7_salty_tome_interior.jpg` | ch8_aria, ch8_monday, ch14_figure | Petra's interior — front counter, the wall where her paintings hang, the front door on Hemlock. |
+| `assets/backgrounds/vol7_salty_tome_kitchenette.jpg` | ch14_petra | The kitchenette at the back. Petra's cat on a wool pillow. The small back door that opens onto the alley. |
+
+### The Daily Grind (Lena's coffee shop)
+
+| path | scenes | hook |
+|---|---|---|
+| `assets/backgrounds/vol7_daily_grind_interior.jpg` | ch2_morning, ch2_afternoon, ch7_bridge | Lena's interior. Front counter, espresso machine, small seating area. Where she opens at six oh-four. |
+
+### Hans's bakery (Hans + Greta, the long Sunday-morning table)
+
+| path | scenes | hook |
+|---|---|---|
+| `assets/backgrounds/vol7_hans_bakery_front.jpg` | ch17_roy | The front of the bakery. The bell at six twelve. Customers arrive. Counter, display case, hand-lettered signs. |
+| `assets/backgrounds/vol7_hans_bakery_dining_table.jpg` | ch15_bread, ch17_aria | The long dining table set for thirteen. Where Sunday morning bread is eaten together. The cedar bowl handed to Aria here. |
+| `assets/backgrounds/vol7_hans_bakery_back_kitchen.jpg` | ch15_loft, ch15_wagon, ch17_bakery | Hans's back kitchen. The wood stove, the floured work surfaces. Where Hans is at five fifty-six. The back door. |
+
+### The Missing Link (Aud's bar)
+
+| path | scenes | hook |
+|---|---|---|
+| `assets/backgrounds/vol7_missing_link_interior.jpg` | ch9_evening, ch16_aud | Bar interior. Aud at the counter, seventy-three years old, knows everyone by name. Booths along the wall. |
+
+### Lena's studio (back room behind the Daily Grind)
+
+| path | scenes | hook |
+|---|---|---|
+| `assets/backgrounds/vol7_lena_studio_interior.jpg` | ch3_studio | The studio Hans rented her in 2049. Previous storage room. Her wall with painted canvases. The brush in the jar of medium. The milk crate with cedar. |
+
+---
+
 ## What's still missing
 
-Locations the prose names that don't yet have their own bg path
-(currently still using the generic cabin / road bgs):
+Locations the prose names that don't yet have their own bg path:
 
-- **The Daily Grind** — Lena's workplace, named throughout vol7. Currently using `vol8_daily_grind.jpg`. Once that file exists it's fine; only the naming convention (vol7 vs vol8) needs reconciling.
-- **The Salty Tome** — Petra's bookstore. Currently using `vol8_bookstore.jpg`. Same naming reconciliation.
-- **ChillWave** — Cale's shop. Currently using `vol8_chillwave.jpg`. Same.
-- **Hans's bakery interior** (front, not the back alley) — Currently using `vol8_hans_bakery.jpg`. Same.
-- **The cabin loft** — the mattress, Eddvard's '79-onward bed (ch15_loft). Currently reusing `vol8_cabin_interior.jpg`. Probably warrants its own loft-specific view.
-- **The Missing Link** — Finn's drinking hole (ch16_aud, ch9_evening). Currently using `vol8_missing_link.jpg`. Naming reconciliation.
-- **Board Lords** — Kai's skate shop (ch5_roy, ch9_tuesday, ch10_per, ch12_kai, ch16_shop). Currently using `vol8_board_lords.jpg`. Naming reconciliation.
+- **The cabin loft** — the mattress, Eddvard's '79-onward bed (ch15_loft). Currently reusing `vol8_cabin_interior.jpg`. Warrants its own loft-specific view.
 - **Cape Perpetua** — drive vista (ch12_morning). Currently using `vol8_cape_perpetua.jpg`. Naming reconciliation.
+- **Lena's apartment kitchen, dawn, dusk, night, dark** — these *do* have specific paths already (`vol7_lena_apartment_dawn.jpg`, `_dusk`, `_night`, `_bedroom_dark`, `_kitchen_table`) — kept.
+- **Kai's apartment** — single path currently (`vol8_kai_apartment.jpg`). Lower priority than shops.
+- **Finn's apartment above the kayak shop** — single path (`vol8_finn_apartment.jpg`). Lower priority.
 
-The "vol8_" prefix on these existing references is a leftover from
-when this volume was being numbered differently. Recommend a future
-pass to rename `vol8_*` to `vol7_*` and update the scene JSONs in
-lockstep — the new bgs added by this manifest already use `vol7_`.
+The `vol8_*` prefix on remaining references (kai_apartment, finn_apartment, cape_perpetua, the cabin variants) is a leftover from when this volume was being numbered differently. Recommend a future pass to rename `vol8_*` to `vol7_*` in lockstep with scene JSON updates — all bgs added by this manifest use `vol7_`.
 
 ---
 

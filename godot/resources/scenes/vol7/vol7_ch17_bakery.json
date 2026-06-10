@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "src": "assets/backgrounds/vol7_hans_bakery_back_kitchen.jpg",
       "t": "bg"
     },
     {
@@ -37,7 +37,7 @@
       "t": "narrate"
     },
     {
-      "text": "He had been at the bakery since three thirty. He had set the long dining table for thirteen — twelve chairs at the table and one extra at the head for whoever needed it.",
+      "text": "He had been at the bakery since three thirty. He had set the long dining table for thirteen \u2014 twelve chairs at the table and one extra at the head for whoever needed it.",
       "t": "narrate"
     },
     {
@@ -88,7 +88,7 @@
     },
     {
       "char": "tem",
-      "text": "I did not — I did not want to bring the bowls into the bakery before Roy arrived. The bowls are in the wagon. They will come in when Roy comes in.",
+      "text": "I did not \u2014 I did not want to bring the bowls into the bakery before Roy arrived. The bowls are in the wagon. They will come in when Roy comes in.",
       "t": "say"
     },
     {
@@ -168,7 +168,7 @@
     },
     {
       "char": "tem",
-      "text": "I am — I am scared.",
+      "text": "I am \u2014 I am scared.",
       "t": "say"
     },
     {
@@ -263,7 +263,7 @@
       "t": "show"
     },
     {
-      "text": "Marina at six oh-one — she had stopped at the wagon with Tem to help carry the wooden box, and Tem had told her to come in first. Tem would bring the box.",
+      "text": "Marina at six oh-one \u2014 she had stopped at the wagon with Tem to help carry the wooden box, and Tem had told her to come in first. Tem would bring the box.",
       "t": "narrate"
     },
     {
@@ -404,7 +404,7 @@
       "t": "narrate"
     },
     {
-      "text": "She was in the wool coat, the same brown leather boots, the same cap of white hair. She came in through the back door — Hans had told her last night to come in the back — and she crossed the room to Marit first.",
+      "text": "She was in the wool coat, the same brown leather boots, the same cap of white hair. She came in through the back door \u2014 Hans had told her last night to come in the back \u2014 and she crossed the room to Marit first.",
       "t": "narrate"
     },
     {
@@ -436,7 +436,7 @@
       "t": "narrate"
     },
     {
-      "text": "Tem registered, from across the table: Marit and Aud had been in the same room exactly once before — in '46 at Per and Hans's-daughter's wedding, where Aud had been a guest because of Henrik.",
+      "text": "Tem registered, from across the table: Marit and Aud had been in the same room exactly once before \u2014 in '46 at Per and Hans's-daughter's wedding, where Aud had been a guest because of Henrik.",
       "t": "narrate"
     },
     {
@@ -531,7 +531,7 @@
     },
     {
       "char": "hans",
-      "text": "The brioche eaten at a table where the listening is happening — it is the substrate for the listening. The brioche is for today.",
+      "text": "The brioche eaten at a table where the listening is happening \u2014 it is the substrate for the listening. The brioche is for today.",
       "t": "say"
     },
     {
@@ -555,7 +555,7 @@
       "t": "say"
     },
     {
-      "text": "Cale stood up. He went to the brioche. He cut ten pieces — careful slices, the way Hans had taught Kai to cut bread on the night of Kai's grandmother Margit's funeral in '49 when Hans had come over and had cut the bread for the small wake.",
+      "text": "Cale stood up. He went to the brioche. He cut ten pieces \u2014 careful slices, the way Hans had taught Kai to cut bread on the night of Kai's grandmother Margit's funeral in '49 when Hans had come over and had cut the bread for the small wake.",
       "t": "narrate"
     },
     {
@@ -583,7 +583,7 @@
       "t": "narrate"
     },
     {
-      "text": "Each of them at the table — by some quality of how they were holding the pieces of brioche, by how Marit's eyes had closed for a moment as she ate, by how Marina had set her piece down halfway through and was looking at her hand — each of them was being quieted.",
+      "text": "Each of them at the table \u2014 by some quality of how they were holding the pieces of brioche, by how Marit's eyes had closed for a moment as she ate, by how Marina had set her piece down halfway through and was looking at her hand \u2014 each of them was being quieted.",
       "t": "narrate"
     },
     {

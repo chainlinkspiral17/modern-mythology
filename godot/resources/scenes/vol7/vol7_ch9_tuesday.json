@@ -6,7 +6,7 @@
   "title": "Tuesday",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "src": "assets/backgrounds/vol7_board_lords_interior.jpg",
       "t": "bg"
     },
     {
@@ -90,7 +90,7 @@
       "t": "say"
     },
     {
-      "text": "Kai took the board. He turned it over. The Tess Mariana stamp on the underside was the original — small, hand-cut, on the tail before the missing chunk, with the T.M. 2034 she had stopped putting on the boards in 2036. The stamp dated this one to her first year. There were maybe forty Tess Mariana boards in circulation in the world, by Kai's count. He had three at home. The one in his hands made forty.",
+      "text": "Kai took the board. He turned it over. The Tess Mariana stamp on the underside was the original \u2014 small, hand-cut, on the tail before the missing chunk, with the T.M. 2034 she had stopped putting on the boards in 2036. The stamp dated this one to her first year. There were maybe forty Tess Mariana boards in circulation in the world, by Kai's count. He had three at home. The one in his hands made forty.",
       "t": "narrate"
     },
     {
@@ -202,7 +202,7 @@
       "t": "show"
     },
     {
-      "text": "At twelve-thirty Hans came across from the bakery. Hans was sixty-eight. He had been the baker on Hemlock since 1991. He had known Kai's grandmother Margit — no relation to the thrift Margit — since the two of them had come up the coast in the late eighties and ended up in Smolvud in the same season. Margit had died in 2049. Hans had, since 2049, been the man who showed up at Kai's apartment with bread the week of every anniversary of her death and did not say anything about it.",
+      "text": "At twelve-thirty Hans came across from the bakery. Hans was sixty-eight. He had been the baker on Hemlock since 1991. He had known Kai's grandmother Margit \u2014 no relation to the thrift Margit \u2014 since the two of them had come up the coast in the late eighties and ended up in Smolvud in the same season. Margit had died in 2049. Hans had, since 2049, been the man who showed up at Kai's apartment with bread the week of every anniversary of her death and did not say anything about it.",
       "t": "narrate"
     },
     {
@@ -253,7 +253,7 @@
     },
     {
       "char": "kai",
-      "text": "It's not — Hans. It's not nothing. I just don't know yet what it is.",
+      "text": "It's not \u2014 Hans. It's not nothing. I just don't know yet what it is.",
       "expr": "neutral",
       "t": "say"
     },
@@ -295,13 +295,13 @@
     },
     {
       "char": "hans",
-      "text": "Is it — ",
+      "text": "Is it \u2014 ",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "It's not any of the regular things. It's a town thing. It's older than I am. It's older than you, maybe. I don't know yet. We're figuring it out. I am — Hans, I am with people who are figuring it out with me. I'm not by myself.",
+      "text": "It's not any of the regular things. It's a town thing. It's older than I am. It's older than you, maybe. I don't know yet. We're figuring it out. I am \u2014 Hans, I am with people who are figuring it out with me. I'm not by myself.",
       "expr": "neutral",
       "t": "say"
     },
@@ -596,7 +596,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai picked up the phone. He texted Lena, Tem, and Finn together — the first time he had used the four-of-them group thread since the cabin Saturday: \"Roy walked past the shop at 3:12. North to south. Did not look in. Going south on Main toward the small wood. Wax canvas, Charging Station cup. Heads up wherever you are.\"",
+      "text": "Kai picked up the phone. He texted Lena, Tem, and Finn together \u2014 the first time he had used the four-of-them group thread since the cabin Saturday: \"Roy walked past the shop at 3:12. North to south. Did not look in. Going south on Main toward the small wood. Wax canvas, Charging Station cup. Heads up wherever you are.\"",
       "t": "narrate"
     },
     {

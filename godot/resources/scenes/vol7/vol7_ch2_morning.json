@@ -60,7 +60,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_daily_grind.jpg",
+      "src": "assets/backgrounds/vol7_daily_grind_interior.jpg",
       "t": "bg"
     },
     {
@@ -112,7 +112,7 @@
       "t": "narrate"
     },
     {
-      "text": "Wren was fifteen. Wren was the daughter of a climate-migrant family who had come up from a town in the Sacramento Valley in 2039, when Wren had been three. Wren had hair the color of the dye Margit's thrift store had been carrying since 2046 — a blue that fell, in the same color family as Tem's, somewhere between azure and slate.",
+      "text": "Wren was fifteen. Wren was the daughter of a climate-migrant family who had come up from a town in the Sacramento Valley in 2039, when Wren had been three. Wren had hair the color of the dye Margit's thrift store had been carrying since 2046 \u2014 a blue that fell, in the same color family as Tem's, somewhere between azure and slate.",
       "t": "narrate"
     },
     {
@@ -250,7 +250,7 @@
       "t": "say"
     },
     {
-      "text": "She turned to a page in her notebook — the small spiral notebook she carried for her schoolwork — and showed Lena.",
+      "text": "She turned to a page in her notebook \u2014 the small spiral notebook she carried for her schoolwork \u2014 and showed Lena.",
       "t": "narrate"
     },
     {
@@ -378,7 +378,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "src": "assets/backgrounds/vol7_board_lords_interior.jpg",
       "t": "bg"
     },
     {
@@ -422,11 +422,11 @@
       "t": "say"
     },
     {
-      "text": "Jameson said, Kai. Jameson laid the broken deck on the counter — a clean snap across the middle, the wood bright at the break. Kai picked up the front half and turned it over.",
+      "text": "Jameson said, Kai. Jameson laid the broken deck on the counter \u2014 a clean snap across the middle, the wood bright at the break. Kai picked up the front half and turned it over.",
       "t": "narrate"
     },
     {
-      "text": "The graphics on the bottom were a piece by Lena — one of the Board Lords runs she had done in 2050, the Octopus Garden series, a hundred decks total, of which Jameson's was, by the small numbered stamp at the tail, deck number forty-one.",
+      "text": "The graphics on the bottom were a piece by Lena \u2014 one of the Board Lords runs she had done in 2050, the Octopus Garden series, a hundred decks total, of which Jameson's was, by the small numbered stamp at the tail, deck number forty-one.",
       "t": "narrate"
     },
     {
@@ -456,7 +456,7 @@
       "t": "say"
     },
     {
-      "text": "Jameson asked if Kai could order him a different one. Kai went to the wall behind the counter where the new decks were. He pulled down a deck from the new Lena run she had finished in March — the Tide Pool Geometries series.",
+      "text": "Jameson asked if Kai could order him a different one. Kai went to the wall behind the counter where the new decks were. He pulled down a deck from the new Lena run she had finished in March \u2014 the Tide Pool Geometries series.",
       "t": "narrate"
     },
     {
@@ -494,7 +494,7 @@
       "t": "say"
     },
     {
-      "text": "Jameson said thank you. He took the deck. He picked up the broken halves of the old deck and tucked them under his arm — Kai noted this with a small approval — and he left.",
+      "text": "Jameson said thank you. He took the deck. He picked up the broken halves of the old deck and tucked them under his arm \u2014 Kai noted this with a small approval \u2014 and he left.",
       "t": "narrate"
     },
     {
@@ -518,7 +518,7 @@
       "t": "hide"
     },
     {
-      "text": "The patch was on the wall of the building across Main from Board Lords, on the brick wall between the laundromat and the shoe-repair shop. The wall had, since 2048, been painted with a mural by a woman named Janet Halfmoon — a wife-of-fisherman from old-Waldport who had taken up muralism in her sixties. The mural across from Board Lords was a thirty-foot painting of a sanderling on a wet beach at low tide.",
+      "text": "The patch was on the wall of the building across Main from Board Lords, on the brick wall between the laundromat and the shoe-repair shop. The wall had, since 2048, been painted with a mural by a woman named Janet Halfmoon \u2014 a wife-of-fisherman from old-Waldport who had taken up muralism in her sixties. The mural across from Board Lords was a thirty-foot painting of a sanderling on a wet beach at low tide.",
       "t": "narrate"
     },
     {
@@ -590,7 +590,7 @@
       "t": "narrate"
     },
     {
-      "text": "Around twenty minutes into the drive, just past the second creek crossing, the radio in the back of the truck — the shortwave receiver from his grandfather — turned itself on.",
+      "text": "Around twenty minutes into the drive, just past the second creek crossing, the radio in the back of the truck \u2014 the shortwave receiver from his grandfather \u2014 turned itself on.",
       "t": "narrate"
     },
     {
@@ -598,7 +598,7 @@
       "t": "narrate"
     },
     {
-      "text": "After about ninety seconds the hum resolved into a voice. A man's voice. Older. Something in it Finn could not place but that landed as familiar — a Texan inflection, maybe, or just the inflection of somebody who had been a long time alone.",
+      "text": "After about ninety seconds the hum resolved into a voice. A man's voice. Older. Something in it Finn could not place but that landed as familiar \u2014 a Texan inflection, maybe, or just the inflection of somebody who had been a long time alone.",
       "t": "narrate"
     },
     {
@@ -606,7 +606,7 @@
       "t": "narrate"
     },
     {
-      "text": "\"— Brandon Tillman —\"",
+      "text": "\"\u2014 Brandon Tillman \u2014\"",
       "t": "narrate"
     },
     {
@@ -885,7 +885,7 @@
     },
     {
       "char": "lena",
-      "text": "Just — I want to remember what the morning was like before the patch. I made thirty-two coffees. Wren told me what the machine said. Jameson got a deck. I want to keep that part of the morning. I don't know why.",
+      "text": "Just \u2014 I want to remember what the morning was like before the patch. I made thirty-two coffees. Wren told me what the machine said. Jameson got a deck. I want to keep that part of the morning. I don't know why.",
       "expr": "neutral",
       "t": "say"
     },

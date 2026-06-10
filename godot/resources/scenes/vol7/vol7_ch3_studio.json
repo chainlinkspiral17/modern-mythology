@@ -6,7 +6,7 @@
   "title": "Saturday Afternoon",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_studio.jpg",
+      "src": "assets/backgrounds/vol7_lena_studio_interior.jpg",
       "t": "bg"
     },
     {
@@ -23,7 +23,7 @@
     },
     {
       "text": "Chapter 3",
-      "sub": "Saturday — Afternoon",
+      "sub": "Saturday \u2014 Afternoon",
       "duration": 3000,
       "t": "interlude"
     },
@@ -32,7 +32,7 @@
       "t": "narrate"
     },
     {
-      "text": "The canvas was on the wall. Six by eight. Stretched on bars she had made herself. The surface was the eleventh underpainting — layered grays and umbers and a green she had been mixing for months. The canvas was almost too thick to take new paint without the knife. She had scraped a section in the lower-right quadrant last week, almost back to the gesso. The relationship between the scraped section and the rest was the relationship of a wound to skin.",
+      "text": "The canvas was on the wall. Six by eight. Stretched on bars she had made herself. The surface was the eleventh underpainting \u2014 layered grays and umbers and a green she had been mixing for months. The canvas was almost too thick to take new paint without the knife. She had scraped a section in the lower-right quadrant last week, almost back to the gesso. The relationship between the scraped section and the rest was the relationship of a wound to skin.",
       "t": "narrate"
     },
     {
@@ -82,7 +82,7 @@
       "t": "narrate"
     },
     {
-      "text": "She got up at one-forty. She had put one brushstroke on the canvas — a line of bone black in the upper-left quadrant, no wider than her smallest brush, that she would decide tomorrow whether to keep.",
+      "text": "She got up at one-forty. She had put one brushstroke on the canvas \u2014 a line of bone black in the upper-left quadrant, no wider than her smallest brush, that she would decide tomorrow whether to keep.",
       "t": "narrate"
     },
     {
@@ -98,11 +98,11 @@
       "t": "hide"
     },
     {
-      "src": "assets/backgrounds/vol8_chillwave.jpg",
+      "src": "assets/backgrounds/vol7_chillwave_interior.jpg",
       "t": "bg"
     },
     {
-      "text": "ChillWave Video at four-twelve was quiet in the way Cale ran the place on Saturday afternoons. The bell rang as she came in. Cale was at the counter with a paperback. There were no other customers. The store smelled the way it always smelled — wax-paper sleeves, the cedar shelves Cale had built himself in 2046, the tobacco he smoked on his back porch and that clung to whatever shirt he was in.",
+      "text": "ChillWave Video at four-twelve was quiet in the way Cale ran the place on Saturday afternoons. The bell rang as she came in. Cale was at the counter with a paperback. There were no other customers. The store smelled the way it always smelled \u2014 wax-paper sleeves, the cedar shelves Cale had built himself in 2046, the tobacco he smoked on his back porch and that clung to whatever shirt he was in.",
       "t": "narrate"
     },
     {
@@ -236,7 +236,7 @@
       "t": "say"
     },
     {
-      "text": "He smiled — the small Cale-smile she had been getting from him since she was nineteen and walked into the store for the first time, when she had come up from the south coast with a duffel and a set of brushes and he had recognized, at the counter, that she was somebody who would be in the store often.",
+      "text": "He smiled \u2014 the small Cale-smile she had been getting from him since she was nineteen and walked into the store for the first time, when she had come up from the south coast with a duffel and a set of brushes and he had recognized, at the counter, that she was somebody who would be in the store often.",
       "t": "narrate"
     },
     {
@@ -302,7 +302,7 @@
       "t": "hide"
     },
     {
-      "text": "She woke once at two-something to the rain, hard now on the roof, and lay there for a minute thinking about Tem at the door — tomorrow — and slept again until five.",
+      "text": "She woke once at two-something to the rain, hard now on the roof, and lay there for a minute thinking about Tem at the door \u2014 tomorrow \u2014 and slept again until five.",
       "t": "narrate"
     },
     {

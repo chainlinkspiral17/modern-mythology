@@ -36,7 +36,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn was at the kitchen table. The cloth on the table had five pieces of charred wood on it, laid out in a shape that was not random — Finn had been arranging them. The arrangement was not yet a full thing. The pieces met at edges that fit, but the assembled shape was open at three corners, with room for more pieces. The five pieces, where they fit, made a rough irregular hexagon about ten inches across.",
+      "text": "Finn was at the kitchen table. The cloth on the table had five pieces of charred wood on it, laid out in a shape that was not random \u2014 Finn had been arranging them. The arrangement was not yet a full thing. The pieces met at edges that fit, but the assembled shape was open at three corners, with room for more pieces. The five pieces, where they fit, made a rough irregular hexagon about ten inches across.",
       "t": "narrate"
     },
     {
@@ -184,7 +184,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_missing_link.jpg",
+      "src": "assets/backgrounds/vol7_missing_link_interior.jpg",
       "t": "bg"
     },
     {
@@ -251,7 +251,7 @@
     },
     {
       "char": "kai",
-      "text": "I'm not — Finn. I'm not telling you what to do. I'm telling you what I see. You haven't slept. You haven't eaten. You are at a kitchen table arranging pieces of wood the crow brings you. You have been doing this for nine months and it has been getting worse since Saturday. By Saturday the wood was three pieces and you were eating. By Tuesday it's five pieces and you are not. The wood is taking more of you. I am telling you that as the person sitting across from you who has known you for fifteen years.",
+      "text": "I'm not \u2014 Finn. I'm not telling you what to do. I'm telling you what I see. You haven't slept. You haven't eaten. You are at a kitchen table arranging pieces of wood the crow brings you. You have been doing this for nine months and it has been getting worse since Saturday. By Saturday the wood was three pieces and you were eating. By Tuesday it's five pieces and you are not. The wood is taking more of you. I am telling you that as the person sitting across from you who has known you for fifteen years.",
       "expr": "serious",
       "t": "say"
     },

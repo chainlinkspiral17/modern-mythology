@@ -3,10 +3,10 @@
   "vol": 7,
   "chapter": 10,
   "type": "chapter",
-  "title": "Wednesday — The Shop",
+  "title": "Wednesday \u2014 The Shop",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "src": "assets/backgrounds/vol7_board_lords_interior.jpg",
       "t": "bg"
     },
     {
@@ -302,7 +302,7 @@
       "t": "narrate"
     },
     {
-      "text": "At nine-fifty he turned off the back light. He pulled the kettle off the burner. He flipped the OPEN to CLOSED. He wrote a note on a piece of register paper and taped it to the inside of the door above the sign: \"Family thing. Back Friday. — Kai.\" He locked the front. He went around to the back. He pulled the truck out of the alley and drove the three blocks to the bakery.",
+      "text": "At nine-fifty he turned off the back light. He pulled the kettle off the burner. He flipped the OPEN to CLOSED. He wrote a note on a piece of register paper and taped it to the inside of the door above the sign: \"Family thing. Back Friday. \u2014 Kai.\" He locked the front. He went around to the back. He pulled the truck out of the alley and drove the three blocks to the bakery.",
       "t": "narrate"
     },
     {

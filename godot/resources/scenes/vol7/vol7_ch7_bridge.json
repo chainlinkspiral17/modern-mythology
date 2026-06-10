@@ -3,7 +3,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol7_daily_grind.jpg"
+      "src": "assets/backgrounds/vol7_daily_grind_interior.jpg"
     },
     {
       "t": "bgm",
@@ -12,7 +12,7 @@
     {
       "t": "interlude",
       "text": "What you need to know:",
-      "sub": "Smolvud · Before Chapter 6",
+      "sub": "Smolvud \u00b7 Before Chapter 6",
       "duration": 0
     },
     {

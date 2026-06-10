@@ -3,10 +3,10 @@
   "vol": 7,
   "chapter": 8,
   "type": "chapter",
-  "title": "Monday — Afternoon",
+  "title": "Monday \u2014 Afternoon",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_bookstore.jpg",
+      "src": "assets/backgrounds/vol7_salty_tome_interior.jpg",
       "t": "bg"
     },
     {
@@ -23,7 +23,7 @@
     },
     {
       "text": "Chapter 8",
-      "sub": "Monday — Afternoon",
+      "sub": "Monday \u2014 Afternoon",
       "duration": 3000,
       "t": "interlude"
     },
@@ -72,7 +72,7 @@
       "t": "say"
     },
     {
-      "text": "She told her. The three book titles — The Architecture of Inland Water, Pattern Persistence: Selected Essays, The Seven Floors of the Glass House. The Soren question. The Tem question. The Jorgen question. The line about being up at Jorgen's in June and buying a small one for the wife.",
+      "text": "She told her. The three book titles \u2014 The Architecture of Inland Water, Pattern Persistence: Selected Essays, The Seven Floors of the Glass House. The Soren question. The Tem question. The Jorgen question. The line about being up at Jorgen's in June and buying a small one for the wife.",
       "t": "narrate"
     },
     {
@@ -99,7 +99,7 @@
     },
     {
       "char": "lena",
-      "text": "I don't know. Hannah at the Portland gallery, possibly. Jorgen himself, possibly. Petra, less possibly. Possibly nobody — possibly Roy is guessing because Roy reads people and reads them well.",
+      "text": "I don't know. Hannah at the Portland gallery, possibly. Jorgen himself, possibly. Petra, less possibly. Possibly nobody \u2014 possibly Roy is guessing because Roy reads people and reads them well.",
       "expr": "neutral",
       "t": "say"
     },
@@ -265,7 +265,7 @@
     },
     {
       "char": "tem",
-      "text": "Brandon told him in 2050. Cale held the name for two years. He said it this morning at the cabin in front of Kai and Finn. He hadn't planned to. It came out. He said he was sorry for the way it came out and Kai said don't be sorry, it came out, that's all right. Then Lena — then we sat with it. Then you called.",
+      "text": "Brandon told him in 2050. Cale held the name for two years. He said it this morning at the cabin in front of Kai and Finn. He hadn't planned to. It came out. He said he was sorry for the way it came out and Kai said don't be sorry, it came out, that's all right. Then Lena \u2014 then we sat with it. Then you called.",
       "expr": "serious",
       "t": "say"
     },
