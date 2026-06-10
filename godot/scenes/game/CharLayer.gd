@@ -86,6 +86,52 @@ const CHAR_ACCENTS := {
 const ACCENT_DEFAULT := Color("#d6c8a8")
 
 
+# ── Facing / horizontal flip ─────────────────────────────────────────
+# Auto-flip so portraits face inward toward the center of the screen.
+# Default assumption: art is drawn facing RIGHT. Left slot stays
+# unflipped (already faces right toward center); right slot mirrors
+# (then faces left toward center); center stays unflipped.
+const AUTO_FLIP_BY_POS := {
+	"left":   false,
+	"center": false,
+	"right":  true,
+}
+
+# Per-character orientation override. Add entries here when a
+# character's art is drawn facing LEFT by default, or "forward" when
+# it's a symmetrical face crop where flipping looks wrong. Keys not
+# listed default to "right" and follow AUTO_FLIP_BY_POS.
+const CHAR_FACING := {
+	# examples — uncomment + edit to match your art:
+	# "frasier":  "forward",   # face crop, symmetrical
+	# "antonio":  "left",      # art faces left → inverts the slot rule
+}
+
+
+func _compute_flip(key: String, pos: String, scene_facing: String) -> bool:
+	# Scene-JSON `facing` field beats everything:
+	#   "forward" → never flip (figure faces viewer)
+	#   "left"    → force figure to face left
+	#   "right"   → force figure to face right
+	if scene_facing == "forward":
+		return false
+	if scene_facing == "left" or scene_facing == "right":
+		# pos's effective facing AFTER auto-flip: left/center face
+		# right (unflipped), right faces left (flipped).
+		var natural_faces_right: bool = pos != "right"
+		var want_right: bool = scene_facing == "right"
+		return natural_faces_right != want_right
+	# Per-char default
+	var face: String = CHAR_FACING.get(key, "right")
+	if face == "forward":
+		return false
+	var should_flip: bool = AUTO_FLIP_BY_POS.get(pos, false)
+	if face == "left":
+		# Art is mirrored relative to default — invert the slot rule.
+		should_flip = not should_flip
+	return should_flip
+
+
 # Slugify a scene-supplied char name into the canonical key used for
 # portrait composition lookups + CHAR_ACCENTS. "The Demon" → "the_demon",
 # "oil exec" → "oil_exec". Spaces collapse to underscores so scenes can
@@ -131,8 +177,13 @@ func _process(delta: float) -> void:
 		var breath_s: float = 1.0 + sin(breath_phase) * 0.010
 		var tint_holder: Control = node.get_meta("tint", null)
 		if tint_holder != null:
+			# Combine breath scale with horizontal flip (set in
+			# show_character via "flip_x" meta — -1 to mirror, +1
+			# to keep natural orientation). Multiplying lets one
+			# operation respect the other.
+			var flip_x: float = node.get_meta("flip_x", 1.0)
 			tint_holder.pivot_offset = tint_holder.size * 0.5
-			tint_holder.scale = Vector2(breath_s, breath_s)
+			tint_holder.scale = Vector2(flip_x * breath_s, breath_s)
 		# Blink overlay disabled — was a fixed-anchor dark band at
 		# slot y=30-42%, which only aligned with eye-level when the
 		# portrait was a tight face crop centered in the slot. With
@@ -166,12 +217,15 @@ func _fire_blink(node: Control) -> void:
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
-func show_character(char_name: String, expr: String, pos: String) -> void:
+func show_character(char_name: String, expr: String, pos: String, facing: String = "") -> void:
 	if not POSITIONS.has(pos):
 		pos = "center"
 	# Store the slug, not the raw display name, so identity checks work
 	# regardless of casing/spacing in scene JSON ("The Demon" vs "the demon").
 	var key := char_key(char_name)
+	# Compute horizontal flip — auto-inward by default, scene-JSON
+	# `facing` field overrides if present.
+	var should_flip: bool = _compute_flip(key, pos, facing)
 	# If this character is already shown at a DIFFERENT position, free
 	# that portrait first — the new show is the character moving, not a
 	# second copy. Without this, scene JSONs that re-show the same
@@ -194,12 +248,16 @@ func show_character(char_name: String, expr: String, pos: String) -> void:
 		slot = null
 	if slot == null:
 		var node := _make_portrait(char_name, expr, pos)
+		node.set_meta("flip_x", -1.0 if should_flip else 1.0)
 		_slots[pos] = {"name": key, "expr": expr, "node": node}
 	else:
 		# Same character in this slot — just update expression. No new
 		# portrait node, no duplicate, no fade-in.
 		_update_expr(slot["node"], char_name, expr)
 		slot["expr"] = expr
+		# Allow scene-JSON facing to re-flip an existing portrait
+		# without recreating it (char turns to face away mid-scene).
+		slot["node"].set_meta("flip_x", -1.0 if should_flip else 1.0)
 
 
 func update_expression(char_name: String, expr: String) -> void:

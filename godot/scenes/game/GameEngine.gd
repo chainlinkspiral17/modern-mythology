@@ -514,7 +514,8 @@ func _do_show(n: Dictionary) -> void:
 	_chars.call("show_character",
 		char_name.to_lower(),
 		n.get("expr", "neutral"),
-		n.get("pos",  "center")
+		n.get("pos",  "center"),
+		n.get("facing", "")
 	)
 	# Use the CharLayer slug fn so "The Demon"/"oil exec"/etc collapse
 	# the same way they do for portrait lookups + accents.
