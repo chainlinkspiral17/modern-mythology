@@ -309,7 +309,7 @@ func _build_ui() -> void:
 	_board_root.set_anchors_preset(Control.PRESET_LEFT_WIDE)
 	_board_root.offset_top = 52
 	_board_root.offset_left = 8
-	_board_root.offset_bottom = -240
+	_board_root.offset_bottom = -214
 	_board_root.offset_right = -440
 	var board_panel := PanelContainer.new()
 	board_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -324,7 +324,7 @@ func _build_ui() -> void:
 	right.offset_top = 52
 	right.offset_right = -8
 	right.offset_left = -432
-	right.offset_bottom = -240
+	right.offset_bottom = -214
 	right.add_theme_constant_override("separation", 6)
 	add_child(right)
 
@@ -368,10 +368,11 @@ func _build_ui() -> void:
 	grav_panel.add_child(_gravity_card_label)
 	right.add_child(grav_panel)
 
-	# Visitors — moderate fixed height, scrollable if needed
+	# Visitors — gets the freed vertical space from the relocated log
 	var v_panel := PanelContainer.new()
 	v_panel.add_theme_stylebox_override("panel", _make_panel_style())
 	v_panel.custom_minimum_size = Vector2(420, 120)
+	v_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	var v_vb := VBoxContainer.new()
 	v_panel.add_child(v_vb)
 	var v_title := Label.new()
@@ -384,42 +385,57 @@ func _build_ui() -> void:
 	v_vb.add_child(_visitors_box)
 	right.add_child(v_panel)
 
-	# Log
-	var log_panel := PanelContainer.new()
-	log_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	log_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	log_panel.size_flags_stretch_ratio = 3.0   # log gets 3× the share of
-	                                           # spare vertical space —
-	                                           # diagnostics need to be
-	                                           # readable when data is
-	                                           # missing.
-	log_panel.custom_minimum_size = Vector2(420, 180)
-	_log = RichTextLabel.new()
-	_log.bbcode_enabled = true
-	_log.scroll_following = true
-	_log.add_theme_color_override("default_color", C_TEXT)
-	log_panel.add_child(_log)
-	right.add_child(log_panel)
+	# Log moved OUT of the right column — it now lives in the bottom
+	# strip alongside the hand. See bottom panel below.
 
-	# ── Bottom: tableau + hand + advance button ────────────────────
-	# Two compact card rows (tableau on top, hand on bottom). Both
-	# rows scroll horizontally so a long hand or full shop can't
-	# push the panel up over the board.
+	# ── Bottom strip: LOG (left, wide) + cards stack (right) ──────
+	# Layout request: log on top of the bottom area, hand runs flush
+	# into it on the right. So the bottom is one HBox — log fills
+	# most of the width, the card stack (tableau row above hand row)
+	# sits flush against its right edge.
 	var bottom := PanelContainer.new()
 	bottom.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	bottom.offset_top = -198
+	bottom.offset_top = -210
 	bottom.offset_left = 8
 	bottom.offset_right = -8
 	bottom.offset_bottom = -6
 	bottom.add_theme_stylebox_override("panel", _make_panel_style())
 	add_child(bottom)
-	var bottom_vb := VBoxContainer.new()
-	bottom_vb.add_theme_constant_override("separation", 3)
-	bottom.add_child(bottom_vb)
+	var bottom_hb := HBoxContainer.new()
+	bottom_hb.add_theme_constant_override("separation", 6)
+	bottom.add_child(bottom_hb)
 
-	# ── Tableau row (shop) ────────────────────────────────────────
+	# Left: log (takes the spare horizontal space)
+	var log_vb := VBoxContainer.new()
+	log_vb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	log_vb.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	bottom_hb.add_child(log_vb)
+	var log_title := Label.new()
+	log_title.text = "  LOG"
+	log_title.add_theme_color_override("font_color", C_ACCENT)
+	log_title.add_theme_font_size_override("font_size", 10)
+	log_vb.add_child(log_title)
+	var log_panel := PanelContainer.new()
+	log_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	log_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	log_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_log = RichTextLabel.new()
+	_log.bbcode_enabled = true
+	_log.scroll_following = true
+	_log.add_theme_color_override("default_color", C_TEXT)
+	log_panel.add_child(_log)
+	log_vb.add_child(log_panel)
+
+	# Right: tableau (top) + hand (bottom), flush against the log
+	var cards_vb := VBoxContainer.new()
+	cards_vb.add_theme_constant_override("separation", 3)
+	cards_vb.custom_minimum_size = Vector2(540, 0)
+	cards_vb.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	bottom_hb.add_child(cards_vb)
+
+	# Tableau row (shop)
 	var tableau_title_hb := HBoxContainer.new()
-	bottom_vb.add_child(tableau_title_hb)
+	cards_vb.add_child(tableau_title_hb)
 	var tableau_label := Label.new()
 	tableau_label.text = "  TABLEAU  · click to buy in planning"
 	tableau_label.add_theme_color_override("font_color", C_ACCENT)
@@ -427,17 +443,17 @@ func _build_ui() -> void:
 	tableau_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tableau_title_hb.add_child(tableau_label)
 	_tableau_scroll = ScrollContainer.new()
-	_tableau_scroll.custom_minimum_size = Vector2(0, 60)
+	_tableau_scroll.custom_minimum_size = Vector2(540, 60)
 	_tableau_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	_tableau_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	bottom_vb.add_child(_tableau_scroll)
+	cards_vb.add_child(_tableau_scroll)
 	_tableau_box = HBoxContainer.new()
 	_tableau_box.add_theme_constant_override("separation", 4)
 	_tableau_scroll.add_child(_tableau_box)
 
-	# ── Hand row ─────────────────────────────────────────────────
+	# Hand row
 	var hand_title_hb := HBoxContainer.new()
-	bottom_vb.add_child(hand_title_hb)
+	cards_vb.add_child(hand_title_hb)
 	var hand_label := Label.new()
 	hand_label.text = "  HAND"
 	hand_label.add_theme_color_override("font_color", C_ACCENT)
@@ -455,10 +471,10 @@ func _build_ui() -> void:
 	close_btn.pressed.connect(_on_leave)
 	hand_title_hb.add_child(close_btn)
 	var hand_scroll := ScrollContainer.new()
-	hand_scroll.custom_minimum_size = Vector2(0, 60)
+	hand_scroll.custom_minimum_size = Vector2(540, 60)
 	hand_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	hand_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	bottom_vb.add_child(hand_scroll)
+	cards_vb.add_child(hand_scroll)
 	_hand_box = HBoxContainer.new()
 	_hand_box.add_theme_constant_override("separation", 4)
 	hand_scroll.add_child(_hand_box)
