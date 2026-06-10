@@ -510,6 +510,16 @@ func _resolve_portrait_texture(key: String, expr: String) -> Texture2D:
 # No letterbox bars. No tiny figures floating in empty slots.
 const _SLOT_ASPECT: float       = SPRITE_W / SPRITE_H
 const _TOP_BIAS_RATIO: float    = 0.85   # if src_aspect / slot_aspect < this, top-align
+# Face-zoom past pure cover for near-slot / landscape sources. Pulls
+# in 15% past cover so the face dominates the slot instead of sitting
+# at the slot's natural framing distance. (Tall sources skip this —
+# they're already filling the height; further zoom would crop the head.)
+const _FACE_ZOOM: float         = 1.15
+# Vertical bias for near-slot / landscape sources. Subtracted from the
+# centered y_off, which shifts the visible content up — the face area
+# of the source lands in the upper third of the slot instead of the
+# middle. 0.08 = 8% of slot height of upward shift.
+const _FACE_Y_BIAS: float       = 0.08
 
 func _layout_portrait_texture(tr: TextureRect, tex: Texture2D) -> void:
 	var sz := tex.get_size()
@@ -519,24 +529,26 @@ func _layout_portrait_texture(tr: TextureRect, tex: Texture2D) -> void:
 		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		tr.expand_mode  = TextureRect.EXPAND_IGNORE_SIZE
 		return
-	# Scale so the smaller dimension fills the slot — same math as
-	# STRETCH_KEEP_ASPECT_COVERED, but we do it ourselves so we can
-	# bias the crop alignment.
-	var s: float = maxf(SPRITE_W / sz.x, SPRITE_H / sz.y)
+	var src_aspect: float = sz.x / sz.y
+	var ratio: float = src_aspect / _SLOT_ASPECT
+	# Scale: for tall sources, pure COVER (filling slot is enough; further
+	# zoom would crop the face). For near-slot / landscape sources, apply
+	# _FACE_ZOOM past cover so the face dominates instead of floating at
+	# the source's natural framing distance.
+	var cover_s: float = maxf(SPRITE_W / sz.x, SPRITE_H / sz.y)
+	var s: float = cover_s if ratio < _TOP_BIAS_RATIO else cover_s * _FACE_ZOOM
 	var disp_w: float = sz.x * s
 	var disp_h: float = sz.y * s
 	# Horizontal: center (figures usually centered in their crops).
 	var x_off: float = (SPRITE_W - disp_w) * 0.5
-	# Vertical: if source is significantly taller than slot, top-align
-	# so the face/head is visible (full-body crops put the face at the
-	# top). Otherwise center.
-	var src_aspect: float = sz.x / sz.y
-	var ratio: float = src_aspect / _SLOT_ASPECT
+	# Vertical: for tall sources, top-align (head already at the top of
+	# the source). For near-slot / landscape, center then bias UPWARD by
+	# _FACE_Y_BIAS — the face area lands in the upper third of the slot.
 	var y_off: float
 	if ratio < _TOP_BIAS_RATIO:
 		y_off = 0.0
 	else:
-		y_off = (SPRITE_H - disp_h) * 0.5
+		y_off = (SPRITE_H - disp_h) * 0.5 - SPRITE_H * _FACE_Y_BIAS
 	tr.expand_mode  = TextureRect.EXPAND_IGNORE_SIZE
 	tr.stretch_mode = TextureRect.STRETCH_SCALE
 	tr.size = Vector2(disp_w, disp_h)
