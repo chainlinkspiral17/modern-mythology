@@ -16,6 +16,11 @@ const ASCII_COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd
 const PORTRAIT_COMP_ROOT := "res://resources/substrates/compositions/"
 const PORTRAIT_TEX_ROOT  := "res://assets/characters/"
 
+# Debug: overlay the resolved asset path on each portrait so you can
+# see which file the engine loaded while playing through the game.
+# Set to false to hide the overlay once you're done debugging.
+const DEBUG_ASSET_OVERLAY: bool = true
+
 # Expression tint multipliers applied to mono substrate portraits via modulate.
 # Mirrors the table in tools/raster_substrate.py.
 const EXPR_TINTS := {
@@ -167,14 +172,32 @@ func show_character(char_name: String, expr: String, pos: String) -> void:
 	# Store the slug, not the raw display name, so identity checks work
 	# regardless of casing/spacing in scene JSON ("The Demon" vs "the demon").
 	var key := char_key(char_name)
+	# If this character is already shown at a DIFFERENT position, free
+	# that portrait first — the new show is the character moving, not a
+	# second copy. Without this, scene JSONs that re-show the same
+	# character at a new position (e.g. kai shown at "right" then later
+	# at "center") leave both portraits on screen and the bug surfaces
+	# as "the same character appears twice" or "portraits repeating
+	# across scenes."
+	for other_pos: String in _slots:
+		if other_pos == pos:
+			continue
+		var other_slot = _slots[other_pos]
+		if other_slot != null and other_slot["name"] == key:
+			_fade_out_free(other_slot["node"])
+			_slots[other_pos] = null
+			break
 	var slot = _slots[pos]
 	if slot != null and slot["name"] != key:
+		# Different character in this slot — replace.
 		_fade_out_free(slot["node"])
 		slot = null
 	if slot == null:
 		var node := _make_portrait(char_name, expr, pos)
 		_slots[pos] = {"name": key, "expr": expr, "node": node}
 	else:
+		# Same character in this slot — just update expression. No new
+		# portrait node, no duplicate, no fade-in.
 		_update_expr(slot["node"], char_name, expr)
 		slot["expr"] = expr
 
@@ -298,6 +321,41 @@ func _make_static_backdrop() -> TextureRect:
 	return tr
 
 
+# Debug overlay: small monospace label at the bottom of the portrait
+# wrapper showing the resolved asset path. Lives above ALL other slot
+# children (including the ASCII border) so it stays readable while
+# debugging. Disabled by setting DEBUG_ASSET_OVERLAY=false at top.
+func _add_asset_overlay(wrapper: Control, path: String) -> void:
+	# Shorten the path — strip res:// and the long common prefix
+	# so the label fits in the 300-wide slot.
+	var short := path
+	short = short.replace("res://assets/", "")
+	short = short.replace("res://resources/substrates/compositions/", "comp/")
+	# Bg backing so the text is legible over any portrait color.
+	var bg := ColorRect.new()
+	bg.color = Color(0.0, 0.0, 0.0, 0.72)
+	bg.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	bg.offset_top = -18.0
+	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	bg.z_index = 200   # above border + figure
+	wrapper.add_child(bg)
+	var lbl := Label.new()
+	lbl.text = short
+	lbl.add_theme_font_size_override("font_size", 9)
+	lbl.add_theme_color_override("font_color", Color(0.95, 0.85, 0.55))
+	lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
+	lbl.add_theme_constant_override("outline_size", 2)
+	lbl.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	lbl.offset_top = -16.0
+	lbl.offset_left = 4.0
+	lbl.offset_right = -4.0
+	lbl.clip_text = true
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	lbl.z_index = 201
+	wrapper.add_child(lbl)
+
+
 func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	var wrapper := Control.new()
 	wrapper.clip_contents        = true
@@ -351,6 +409,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	figure_holder.add_child(tint_holder)
 	wrapper.set_meta("tint", tint_holder)
 
+	var resolved_path := ""
 	if not has_face and FileAccess.file_exists(comp_path):
 		print("[CharLayer] %s (key=%s): COMPOSITION  %s" % [char_name, key, comp_path])
 		var comp := Control.new()
@@ -361,6 +420,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 		comp.call_deferred("load_composition", "portrait_" + key)
 		wrapper.set_meta("kind", "composition")
 		_apply_texture_tint(wrapper, expr)
+		resolved_path = comp_path
 	else:
 		var resolved := _resolve_portrait_texture_verbose(key, expr)
 		var tex: Texture2D = resolved["texture"]
@@ -381,6 +441,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 			wrapper.set_meta("kind", "texture")
 			if not _has_expr_png(key, expr):
 				_apply_texture_tint(wrapper, expr)
+			resolved_path = path
 		else:
 			# Nothing matched — log every path we tried so the author can
 			# see which name / location to use.
@@ -391,6 +452,14 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 			wrapper.remove_meta("tint")
 			wrapper.add_child(_make_placeholder(char_name, expr))
 			wrapper.set_meta("kind", "placeholder")
+			resolved_path = "PLACEHOLDER (no asset)"
+
+	# Asset-path overlay — a small label at the bottom of the slot
+	# showing the file path the engine loaded. Sits ABOVE everything
+	# else so it stays visible while debugging asset assignments.
+	# Toggle via DEBUG_ASSET_OVERLAY (top of file) once you're done.
+	if DEBUG_ASSET_OVERLAY:
+		_add_asset_overlay(wrapper, resolved_path)
 
 	# ── ASCII frame around the portrait — drawn last so it sits on
 	# top of the texture / composition. Tracks the breath scale by

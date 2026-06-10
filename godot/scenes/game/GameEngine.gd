@@ -17,6 +17,11 @@ const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 const UNLOCK_TOAST_SCRIPT := preload("res://scenes/game/UnlockToast.gd")
 const BG_FRAME_SCRIPT     := preload("res://scenes/game/BgFrame.gd")
 
+# Debug: overlay the resolved bg asset path on the bg image so you
+# can see which file each scene's bg directive is loading while
+# playing. Disable once you're done debugging.
+const DEBUG_BG_OVERLAY: bool = true
+
 var _vol:         int        = 1
 var _scene_id:    String     = ""
 var _scene_data:  Dictionary = {}
@@ -525,6 +530,30 @@ func _do_hide(n: Dictionary) -> void:
 		_chars.call("hide_at", pos)
 
 
+# Persistent label in the top-right corner of the viewport showing
+# the bg asset path the engine is currently loading. Created lazily
+# on first call, then just updated with new text.
+var _bg_debug_label: Label = null
+
+func _set_bg_debug_label(src: String) -> void:
+	if _bg_debug_label == null:
+		_bg_debug_label = Label.new()
+		_bg_debug_label.add_theme_font_size_override("font_size", 10)
+		_bg_debug_label.add_theme_color_override("font_color", Color(0.95, 0.85, 0.55))
+		_bg_debug_label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
+		_bg_debug_label.add_theme_constant_override("outline_size", 3)
+		_bg_debug_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		_bg_debug_label.offset_left  = -560.0
+		_bg_debug_label.offset_top   = 6.0
+		_bg_debug_label.offset_right = -8.0
+		_bg_debug_label.offset_bottom = 22.0
+		_bg_debug_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		_bg_debug_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_bg_debug_label.z_index = UI_Z + 3
+		add_child(_bg_debug_label)
+	_bg_debug_label.text = "bg: " + src
+
+
 func _do_bg(n: Dictionary) -> void:
 	var src: String = _s(n, "src")
 	if src == "":
@@ -565,6 +594,10 @@ func _do_bg(n: Dictionary) -> void:
 	_bg_pan_phase = randf() * BG_PAN_PERIOD
 	if _bg_frame != null:
 		_bg_frame.queue_redraw()
+	# Debug overlay — small label in the top-right corner of the
+	# bg showing the asset path. Toggle via DEBUG_BG_OVERLAY below.
+	if DEBUG_BG_OVERLAY:
+		_set_bg_debug_label(src)
 
 
 func _do_substrate(n: Dictionary) -> void:
