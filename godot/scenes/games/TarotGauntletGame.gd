@@ -99,9 +99,27 @@ func _ready() -> void:
 	_build_ui()
 	_init_run()
 	_audio_play_bgm()
+	# Surface data-load failures in the in-game log so the user doesn't
+	# have to dig through Godot's Output panel to see why nothing's
+	# happening. If any of these are missing, the run is unplayable.
+	if _setup.is_empty() or _action_cards.is_empty() or _location.is_empty():
+		_log_line("[color=#ff6464][b]DATA LOAD FAILED[/b][/color]")
+		_log_line("Missing data files at: [code]%s[/code]" % DATA_ROOT)
+		_log_line("  setup_the_leap.json: %s" % ("OK" if not _setup.is_empty() else "[color=#ff6464]MISSING[/color]"))
+		_log_line("  action_cards.json: %s (%d cards merged)" % [
+			"OK" if not _action_cards.is_empty() else "[color=#ff6464]MISSING[/color]",
+			_action_cards.size()])
+		_log_line("  locations/%s.json: %s" % [_location_id,
+			"OK" if not _location.is_empty() else "[color=#ff6464]MISSING[/color]"])
+		_log_line("[i]Check Godot's Output panel for the full diagnostic.[/i]")
+		_log_line("")
 	_log_line("[color=#c8a268][b]%s[/b][/color] — %s" %
 			  [_setup.get("title", "THE LEAP"), _setup.get("subtitle", "")])
 	_log_line("[i]%s[/i]" % _setup.get("epigraph_upright", ""))
+	_log_line("")
+	_log_line("[color=#7c8398]Hand: %s[/color]" % _hand_cards)
+	_log_line("[color=#7c8398]Phase: %s — click cards to play, then Advance →[/color]" %
+		Phase.keys()[_phase])
 	_log_line("")
 	_render()
 
@@ -163,6 +181,7 @@ func _load_json(path: String) -> Dictionary:
 
 func _load_data() -> void:
 	var arc_root := DATA_ROOT + _arcana_id + "/"
+	print("[Gauntlet] loading data from %s" % arc_root)
 	_setup           = _load_json(arc_root + "setup_the_leap.json")
 	_gravity_deck_def = _load_json(arc_root + "gravity_deck.json")
 	_finale_def      = _load_json(arc_root + "finale.json")
@@ -185,6 +204,20 @@ func _load_data() -> void:
 	# Location + hand
 	_location = _load_json(DATA_ROOT + "locations/" + _location_id + ".json")
 	_hand     = _load_json(DATA_ROOT + "hands/"     + _hand_id     + ".json")
+	# Diagnostic summary — surfaces in Godot's Output console.
+	print("[Gauntlet] loaded:")
+	print("    setup: %s starting_hand=%s" % [
+		"OK" if not _setup.is_empty() else "MISSING",
+		(_setup.get("starting_state", {}) as Dictionary).get("starting_hand", []),
+	])
+	print("    action cards: %d (core+arcana, ids: %s)" %
+		[_action_cards.size(), _action_cards.keys()])
+	print("    gravity cards: %d" % (_gravity_deck_def.get("cards", []) as Array).size())
+	print("    visitors: %d" % _visitors_def.size())
+	print("    piles: %s" % _piles_def.keys())
+	print("    location spaces: %d" % (_location.get("spaces", []) as Array).size())
+	print("    hand: %s" % _hand.get("name", "MISSING"))
+	print("    die faces: %d" % ((_die.get("die", {}) as Dictionary).get("faces", []) as Array).size())
 
 
 # ── Run initialization ──────────────────────────────────────────────
