@@ -311,11 +311,15 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 		if tex != null:
 			var tr := TextureRect.new()
 			tr.texture      = tex
-			# COVERED (not CENTERED) — the face crop assets are already
-			# framed face+torso at slot-friendly aspect (~0.94). Cover
-			# fills the slot with the figure; any minor aspect mismatch
-			# crops the edges rather than leaving letterbox bars.
-			tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+			# Stretch mode adapts to the source aspect so any asset
+			# shape (square face crop, square card art, landscape
+			# gallery card, tall full-body) renders without the figure
+			# walking off-screen. See _pick_stretch_mode below.
+			# EXPAND_IGNORE_SIZE forces the rect to the slot dimensions
+			# rather than the texture's native size, which would
+			# otherwise blow huge cards past the slot.
+			tr.stretch_mode = _pick_stretch_mode(tex)
+			tr.expand_mode  = TextureRect.EXPAND_IGNORE_SIZE
 			tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 			tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			tint_holder.add_child(tr)
@@ -374,12 +378,18 @@ const PORTRAIT_GALLERY_ROOT := "res://assets/gallery/"
 
 # Texture lookup chain — prefers new gallery art over the old per-expression
 # slabs in characters/. Order:
-#   1. gallery/<char>_face.png      ← tight face+torso crop, ideal for slot
-#   2. gallery/portrait_<char>_face.png ← card-style face frame
-#   3. gallery/portrait_<char>_0.png    ← first animation frame (still
-#                                          better than the old full-body)
-#   4. characters/<char>/<char>_<expr>.png  ← old per-expression art
-#   5. characters/<char>/<char>_neutral.png ← old neutral fallback
+#   1. gallery/<char>_face.png        ← tight face+torso crop, ideal for slot
+#   2. gallery/portrait_<char>_face.png  ← card-style face frame
+#   3. gallery/portrait_<char>_0.png   ← first animation frame
+#   4. gallery/<char>.png              ← landscape gallery card (vol6+ chars
+#                                         often only have this; stretch-mode
+#                                         logic handles the aspect mismatch)
+#   5. characters/<char>/<char>_<expr>.png  ← old per-expression art
+#   6. characters/<char>/<char>_neutral.png ← old neutral fallback
+#
+# Stretch-mode picking (see _pick_stretch_mode) adapts to whatever shape
+# actually loads — square face crop, square card, landscape gallery card,
+# tall full-body — so the figure never walks off-screen.
 #
 # Falls back to Image.load_from_file when ResourceLoader doesn't have
 # the asset registered (i.e. the .import sidecar wasn't generated yet —
@@ -399,6 +409,11 @@ func _resolve_portrait_texture(key: String, expr: String) -> Texture2D:
 	t = _load_texture_with_fallback(card_first)
 	if t != null:
 		return t
+	# Landscape gallery card — common for vol6+ chars without face crops yet.
+	var gallery_path: String = "%s%s.png" % [PORTRAIT_GALLERY_ROOT, key]
+	t = _load_texture_with_fallback(gallery_path)
+	if t != null:
+		return t
 	# Old per-expression / neutral art at characters/<char>/.
 	var expr_path: String = "%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr]
 	t = _load_texture_with_fallback(expr_path)
@@ -406,6 +421,33 @@ func _resolve_portrait_texture(key: String, expr: String) -> Texture2D:
 		return t
 	var neutral_path: String = "%s%s/%s_neutral.png" % [PORTRAIT_TEX_ROOT, key, key]
 	return _load_texture_with_fallback(neutral_path)
+
+
+# Adaptive stretch mode based on source aspect vs slot aspect.
+# The slot is 300×320 (aspect 0.9375). Sources we encounter:
+#   · face crops at 300×330, 278×302  (aspect ~0.92-0.95)  ← matches slot
+#   · card portraits at 810×858       (aspect 0.94)        ← matches slot
+#   · landscape gallery cards         (aspect 1.5-1.8)     ← wider
+#   · tall full-body characters/      (aspect 0.55-0.65)   ← taller
+#   · square placeholders / icons     (aspect 1.0)         ← roughly matches
+#
+# When the source is close to the slot aspect, COVER fills the slot tightly
+# (any minor mismatch crops the edges, preserving the figure). When the
+# source is significantly different, FIT (KEEP_ASPECT_CENTERED) shows the
+# whole image with letterbox/pillarbox bars — better to see the figure
+# letterboxed than to have it cropped off-screen.
+const _SLOT_ASPECT: float = SPRITE_W / SPRITE_H
+const _ASPECT_TOLERANCE: float = 0.25   # ±25% — within this, use COVER
+
+func _pick_stretch_mode(tex: Texture2D) -> int:
+	var sz := tex.get_size()
+	if sz.y <= 0.0:
+		return TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	var src_aspect: float = sz.x / sz.y
+	var ratio: float = src_aspect / _SLOT_ASPECT
+	if ratio < (1.0 - _ASPECT_TOLERANCE) or ratio > (1.0 + _ASPECT_TOLERANCE):
+		return TextureRect.STRETCH_KEEP_ASPECT_CENTERED   # fit — letterbox/pillarbox
+	return TextureRect.STRETCH_KEEP_ASPECT_COVERED         # cover — fills slot
 
 
 func _load_texture_with_fallback(path: String) -> Texture2D:
