@@ -28,6 +28,12 @@
       "duration": 3
     },
     {
+      "t": "show",
+      "char": "paul",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "narrate",
       "text": "THE HIEROPHANT. He holds the keys to what is sacred, and to what is not. Tradition. Institution. The interpretation of knowledge too dangerous to leave in the hands of those who have not been authorized to hold it. Reversed: rigidity. Dogma as weapon. The man who mistakes his office for the divine."
     },

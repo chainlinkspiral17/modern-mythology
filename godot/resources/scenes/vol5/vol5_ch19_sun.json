@@ -28,6 +28,12 @@
       "duration": 3
     },
     {
+      "t": "show",
+      "char": "john",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "narrate",
       "text": "A note on the chronology: this chapter, like Temperance, takes place several years after the events of the chapters that precede it. The Sun is the card that comes after the Moon not in time but in sequence. Sequence, as the deck has been reminding us, is not chronology. Sequence is the order in which the cards agree to be read."
     },

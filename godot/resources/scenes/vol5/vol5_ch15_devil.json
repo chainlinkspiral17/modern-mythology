@@ -28,6 +28,12 @@
       "duration": 3
     },
     {
+      "t": "show",
+      "char": "antonio",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "narrate",
       "text": "THE DEVIL. The horned figure on his throne, the two figures chained below him \u2014 but look: the chains are loose. They could slip free. They do not slip free. The Devil's power is not force. The Devil's power is the belief that leaving is impossible. Reversed: release. The moment the chains are seen for what they are."
     },

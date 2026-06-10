@@ -28,6 +28,12 @@
       "duration": 3
     },
     {
+      "t": "show",
+      "char": "joanna",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "narrate",
       "text": "THE HERMIT. The old man stands alone on a mountaintop, lantern raised. He is not lost. He chose the mountain. The lantern is not for him \u2014 it is for those below who are still climbing. Reversed: the isolation that has curdled into hiding. The light turned inward until it burns."
     },

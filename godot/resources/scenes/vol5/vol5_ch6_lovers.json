@@ -28,6 +28,12 @@
       "duration": 3
     },
     {
+      "t": "show",
+      "char": "mackenzie",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "narrate",
       "text": "THE LOVERS. Two figures under an angel's benediction. The mountain behind them. The sun above. What looks like paradise is a choice. The choice is never without cost. Reversed: misalignment. The couple who have stopped speaking the same language and have not yet admitted it."
     },

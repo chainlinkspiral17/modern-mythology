@@ -28,6 +28,12 @@
       "duration": 3
     },
     {
+      "t": "show",
+      "char": "natalie",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "narrate",
       "text": "THE HANGED MAN. He hangs by one foot from a living tree. His face is calm. The halo around his head suggests this is not punishment. He chose the tree. He is learning something that cannot be learned any other way. Reversed: the suspension that has become avoidance. The enlightenment that is actually just fear of coming down."
     },

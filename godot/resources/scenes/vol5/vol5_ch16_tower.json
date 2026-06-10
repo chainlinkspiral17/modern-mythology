@@ -28,6 +28,12 @@
       "duration": 3
     },
     {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "narrate",
       "text": "THE TOWER. Lightning splits the crown from the top of the stone tower. Two figures fall. The crown itself is airborne. The sky is black. The tower was built wrong \u2014 built on false foundations, built for pride \u2014 and the lightning has found this out. Reversed: the disaster that was narrowly avoided, which turns out to be worse."
     },

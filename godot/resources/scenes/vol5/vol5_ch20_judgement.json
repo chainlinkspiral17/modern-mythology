@@ -28,6 +28,12 @@
       "duration": 3
     },
     {
+      "t": "show",
+      "char": "erica",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "narrate",
       "text": "The chapter that follows takes place on a single Tuesday morning in late April \u2014 the same morning Joanna LeMoine walked to the post office on Elm Street, the same morning Alice Newsom's rose bloomed open on the windowsill, the same morning a silver-haired woman named Miriam drove south in a 2009 Subaru with a crow on her roof and a pregnant girl in her back seat. It is the morning the ground beneath Graustark finally refuses what it has been asked, for three years, to hold.\n\nIt is the morning John Frank, in Montreal, receives the text that reads did you feel it.\n\nIt is, in every other sense, a morning."
     },

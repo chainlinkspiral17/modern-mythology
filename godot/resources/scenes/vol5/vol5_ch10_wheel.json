@@ -28,6 +28,12 @@
       "duration": 3
     },
     {
+      "t": "show",
+      "char": "erica",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "narrate",
       "text": "THE WHEEL OF FORTUNE. It turns. It has always been turning. The sphinx at the top does not look down. The figures on the wheel do not choose their position. The wheel is not cruel. The wheel is not kind. The wheel is simply the wheel. Reversed: bad luck that was always luck. The fall that was built into the rise."
     },

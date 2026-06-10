@@ -28,6 +28,12 @@
       "duration": 3
     },
     {
+      "t": "show",
+      "char": "antonio",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "narrate",
       "text": "THE CHARIOT. The armored figure holds no reins \u2014 the sphinxes are controlled by will alone. Forward motion, absolute. Victory through discipline. And reversed: the chariot careening off the road. Speed without direction. The will that no longer knows what it is willing toward."
     },
