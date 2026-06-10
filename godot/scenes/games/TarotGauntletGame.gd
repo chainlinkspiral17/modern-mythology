@@ -401,38 +401,38 @@ func _build_ui() -> void:
 	log_panel.add_child(_log)
 	right.add_child(log_panel)
 
-	# ── Bottom: hand + advance button ────────────────────────────────
+	# ── Bottom: tableau + hand + advance button ────────────────────
+	# Two compact card rows (tableau on top, hand on bottom). Both
+	# rows scroll horizontally so a long hand or full shop can't
+	# push the panel up over the board.
 	var bottom := PanelContainer.new()
 	bottom.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	bottom.offset_top = -340
+	bottom.offset_top = -198
 	bottom.offset_left = 8
 	bottom.offset_right = -8
 	bottom.offset_bottom = -6
 	bottom.add_theme_stylebox_override("panel", _make_panel_style())
 	add_child(bottom)
 	var bottom_vb := VBoxContainer.new()
-	bottom_vb.add_theme_constant_override("separation", 6)
+	bottom_vb.add_theme_constant_override("separation", 3)
 	bottom.add_child(bottom_vb)
 
 	# ── Tableau row (shop) ────────────────────────────────────────
-	# Non-starter cards available for purchase. Always visible so the
-	# player sees what they could buy; only clickable during PLANNING
-	# (when Time can be spent on card acquisition).
 	var tableau_title_hb := HBoxContainer.new()
 	bottom_vb.add_child(tableau_title_hb)
 	var tableau_label := Label.new()
-	tableau_label.text = "  TABLEAU  ·  (click to buy during planning · Time = cost)"
+	tableau_label.text = "  TABLEAU  · click to buy in planning"
 	tableau_label.add_theme_color_override("font_color", C_ACCENT)
-	tableau_label.add_theme_font_size_override("font_size", 11)
+	tableau_label.add_theme_font_size_override("font_size", 10)
 	tableau_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tableau_title_hb.add_child(tableau_label)
 	_tableau_scroll = ScrollContainer.new()
-	_tableau_scroll.custom_minimum_size = Vector2(0, 84)
+	_tableau_scroll.custom_minimum_size = Vector2(0, 60)
 	_tableau_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	_tableau_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	bottom_vb.add_child(_tableau_scroll)
 	_tableau_box = HBoxContainer.new()
-	_tableau_box.add_theme_constant_override("separation", 6)
+	_tableau_box.add_theme_constant_override("separation", 4)
 	_tableau_scroll.add_child(_tableau_box)
 
 	# ── Hand row ─────────────────────────────────────────────────
@@ -441,22 +441,27 @@ func _build_ui() -> void:
 	var hand_label := Label.new()
 	hand_label.text = "  HAND"
 	hand_label.add_theme_color_override("font_color", C_ACCENT)
-	hand_label.add_theme_font_size_override("font_size", 11)
+	hand_label.add_theme_font_size_override("font_size", 10)
 	hand_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hand_title_hb.add_child(hand_label)
 	_advance_btn = Button.new()
 	_advance_btn.text = "Advance →"
-	_advance_btn.add_theme_font_size_override("font_size", 12)
+	_advance_btn.add_theme_font_size_override("font_size", 11)
 	_advance_btn.pressed.connect(_on_advance)
 	hand_title_hb.add_child(_advance_btn)
 	var close_btn := Button.new()
 	close_btn.text = "Leave"
-	close_btn.add_theme_font_size_override("font_size", 12)
+	close_btn.add_theme_font_size_override("font_size", 11)
 	close_btn.pressed.connect(_on_leave)
 	hand_title_hb.add_child(close_btn)
+	var hand_scroll := ScrollContainer.new()
+	hand_scroll.custom_minimum_size = Vector2(0, 60)
+	hand_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	hand_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	bottom_vb.add_child(hand_scroll)
 	_hand_box = HBoxContainer.new()
-	_hand_box.add_theme_constant_override("separation", 6)
-	bottom_vb.add_child(_hand_box)
+	_hand_box.add_theme_constant_override("separation", 4)
+	hand_scroll.add_child(_hand_box)
 
 
 func _make_panel_style() -> StyleBoxFlat:
@@ -637,8 +642,9 @@ func _render_hand() -> void:
 		var btn := Button.new()
 		var time_cost: int = int(card.get("time_cost", 1))
 		btn.text = "%s\n[%d]" % [card.get("title", cid), time_cost]
-		btn.add_theme_font_size_override("font_size", 11)
-		btn.custom_minimum_size = Vector2(108, 70)
+		btn.add_theme_font_size_override("font_size", 9)
+		btn.custom_minimum_size = Vector2(84, 50)
+		btn.clip_text = true
 		btn.tooltip_text = String(card.get("flavor", "")) + "\n\n" + _card_summary(card)
 		var playable: bool = _can_play_card(card)
 		btn.disabled = (not playable) or (_phase != Phase.ACTION) or _game_over
@@ -676,8 +682,9 @@ func _render_tableau() -> void:
 		var time_cost: int = int(card.get("time_cost", 1))
 		var btn := Button.new()
 		btn.text = "%s\n[%d]" % [card.get("title", cid), time_cost]
-		btn.add_theme_font_size_override("font_size", 10)
-		btn.custom_minimum_size = Vector2(110, 70)
+		btn.add_theme_font_size_override("font_size", 9)
+		btn.custom_minimum_size = Vector2(84, 50)
+		btn.clip_text = true
 		btn.tooltip_text = String(card.get("flavor", "")) + "\n\n" + _card_summary(card)
 		# Buyable during PLANNING + Time ≥ cost
 		var can_buy: bool = (_phase == Phase.PLANNING) and (_time >= time_cost) and not _game_over
