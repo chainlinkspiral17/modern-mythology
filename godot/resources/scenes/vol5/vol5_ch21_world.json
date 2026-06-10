@@ -36,19 +36,34 @@
       "text": "Down here by the river \u2014 where the Minstral's Green steamship rusts quiet like a beached metal whale dreaming of deeper waters \u2014 the Child squats. Poking a stick at a crawdad hole. Mud squishes between bare toes. That black egg doohickey hangs quiet 'round the neck today \u2014 dark and cool against the skin. Not humming like sometimes.\n\nNot humming, in fact, since Tuesday. Tuesday last. The Tuesday everything got rearranged.\n\nPerched on the ship's broken paddlewheel cover \u2014 lookin' for all the world like he owns the place, which maybe he does \u2014 sits the Frog.\n\nFour feet tall if he's an inch. Cork hat shading those big ol' unblinking eyes. Rollin' a cigarette between webbed fingers with the unhurried economy of a being who had learned, somewhere in the Paleozoic, that haste was a mammalian invention and not one he had chosen to adopt.\n\nSmoke curls up lazy into the humid air."
     },
     {
+      "t": "show",
+      "char": "the_frog",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
       "t": "say",
       "c": "frog",
-      "text": "Poke that hole much harder, pink one. And somethin' uglier than you gonna come lookin'."
+      "text": "Poke that hole much harder, pink one. And somethin' uglier than you gonna come lookin'.",
+      "char": "the_frog"
+    },
+    {
+      "t": "show",
+      "char": "natalie",
+      "expr": "neutral",
+      "pos": "right"
     },
     {
       "t": "say",
       "c": "child",
-      "text": "Ain't scared."
+      "text": "Ain't scared.",
+      "char": "natalie"
     },
     {
       "t": "say",
       "c": "frog",
-      "text": "Course not. Ignorance is bliss, ain't it? Why d'you think folks build towns on sinkholes to begin with?"
+      "text": "Course not. Ignorance is bliss, ain't it? Why d'you think folks build towns on sinkholes to begin with?",
+      "char": "the_frog"
     },
     {
       "t": "narrate",
@@ -57,7 +72,8 @@
     {
       "t": "say",
       "c": "frog",
-      "text": "World's done turnin' its page, seems like. Folks integratin'. Completing their arcs. Wholesome nonsense."
+      "text": "World's done turnin' its page, seems like. Folks integratin'. Completing their arcs. Wholesome nonsense.",
+      "char": "the_frog"
     },
     {
       "t": "narrate",

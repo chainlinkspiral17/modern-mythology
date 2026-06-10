@@ -48,9 +48,16 @@
       "text": "She had answered his three-week-old email, seven months ago, with one word: Yes.\n\nHe had, the following Tuesday, arrived at the caf\u00e9 at ten. She had arrived at ten forty-three. She had looked, when she came in through the door, like a woman who had, in the recent past, been inside a building that was collapsing and who had, on exiting the building, not yet fully understood that she was still covered in dust.\n\nShe had sat across from him. She had ordered an espresso. She had said, without preamble:"
     },
     {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "say",
       "c": "elicia",
-      "text": "I am broke, I am evicted in twenty-three days, I have been filming myself every night for the past eleven days, I think I may finally be making a thing that is mine, and I have not had a real conversation with anyone in fourteen months. I am here because you wrote me a kind email and I don't have the energy to be clever about it. Please do not be kind to me right now. Kind will make me cry. I want to be, instead, dry."
+      "text": "I am broke, I am evicted in twenty-three days, I have been filming myself every night for the past eleven days, I think I may finally be making a thing that is mine, and I have not had a real conversation with anyone in fourteen months. I am here because you wrote me a kind email and I don't have the energy to be clever about it. Please do not be kind to me right now. Kind will make me cry. I want to be, instead, dry.",
+      "char": "elicia"
     },
     {
       "t": "narrate",

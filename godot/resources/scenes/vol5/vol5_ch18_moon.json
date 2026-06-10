@@ -56,9 +56,16 @@
       "text": "Natalie did not, for a long moment, move.\n\nShe had, in the past few years, had conversations with her cards. She had had small practical exchanges with the apartment's ambient weather. She had, once, received a message from the kettle. But this \u2014 the record player as transmitter, a voice that was not a recording but was using a recording as its carrier, a name spoken into the room when there was nobody, technically, in the room who could have spoken it \u2014 this was new.\n\nThe new thing did not frighten her. The new thing, she observed with the small professional detachment of a dancer who had learned to watch her own body from a slight distance, clarified her posture. Her shoulders dropped half an inch. Her breath lengthened. Her hands, which had been folded in her lap, unfolded and rested on her knees, palms up, in the receiving position she had learned to take, without being told to, when important information was arriving."
     },
     {
+      "t": "show",
+      "char": "natalie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
       "t": "say",
       "c": "natalie",
-      "text": "Thank you."
+      "text": "Thank you.",
+      "char": "natalie"
     },
     {
       "t": "narrate",

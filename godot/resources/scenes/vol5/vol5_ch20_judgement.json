@@ -60,29 +60,46 @@
       "text": "In Houston, high in her sterile tower, the Italian marble floor beneath Erica Campbell's expensive shoes did shudder \u2014 or perhaps it was only the vibration traveling up her own spine from the epicenter miles away. She had been at her desk for five days. The PetroTex settlement papers, open in the second tab of her monitor for reasons she could no longer reconstruct, blurred into meaningless glyphs.\n\nJustice. Accountability. Hollow words against the raw tectonics of consequence.\n\nThe true cost wasn't tallied in courtrooms. It was here. Now. In the silent scream of the earth itself. In the ghosts rising with the dust, the faces she had cross-examined and the faces she had lost, Mrs. Romero's folded hands at the back of the courtroom and the photograph of Henry Newsom in the settlement file and the ten thousand smaller faces the system had shown her, one at a time, over fourteen years of practice.\n\nThe Wheel had stopped spinning. The Wheel had flown off its axle entirely.\n\nShe gripped her desk. The abyss not yawning below. Opening up within.\n\nAwaken. This felt more like being flayed.\n\nShe reached for the phone. She thumbed the painter's contact. She pressed call. He picked up on the second ring."
     },
     {
+      "t": "show",
+      "char": "erica",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
       "t": "say",
       "c": "erica",
-      "text": "Jordan."
+      "text": "Jordan.",
+      "char": "erica"
+    },
+    {
+      "t": "show",
+      "char": "jordan",
+      "expr": "neutral",
+      "pos": "right"
     },
     {
       "t": "say",
       "c": "jordan",
-      "text": "Eri. I'm here."
+      "text": "Eri. I'm here.",
+      "char": "jordan"
     },
     {
       "t": "say",
       "c": "erica",
-      "text": "I need to come over."
+      "text": "I need to come over.",
+      "char": "erica"
     },
     {
       "t": "say",
       "c": "jordan",
-      "text": "Come over."
+      "text": "Come over.",
+      "char": "jordan"
     },
     {
       "t": "say",
       "c": "erica",
-      "text": "I'm coming."
+      "text": "I'm coming.",
+      "char": "erica"
     },
     {
       "t": "narrate",
@@ -105,9 +122,16 @@
       "text": "Amidst the actual Graustark rubble, Joanna LeMoine felt the concrete canvas beneath her hand buck. The charcoal snapped. The larger truth she had glimpsed wasn't serene. It was ravenous.\n\nShe was at the post office on Elm. She had, three minutes before, handed the envelope to the clerk. The clerk had stamped it. The envelope had gone into the outgoing bin. Joanna had turned to leave. Joanna was, at the moment the earth began, halfway to the door.\n\nThe floor tiles of the post office cracked in a single precise line from the outgoing bin to Joanna's feet. The line passed between her shoes. The line continued to the door. The door, on the line's arrival, opened of its own accord."
     },
     {
+      "t": "show",
+      "char": "aria",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "say",
       "c": "clerk",
-      "text": "Go, Joanna. Go now."
+      "text": "Go, Joanna. Go now.",
+      "char": "aria"
     },
     {
       "t": "narrate",
@@ -130,9 +154,16 @@
       "text": "On the spectral deck of his sinking riverboat kingdom, the phantom of Dante D'Ambrosio felt the last mooring lines snap.\n\nThe boat \u2014 which had not, technically, ever sailed anywhere \u2014 was sailing now. Not down the river. Down. Into the river. The hull listing in the specific way a hull lists when a hull has finally, after forty-one years, agreed to let the river take it.\n\nThe weight of his legacy, the ghosts of his deals, pulled him down not into memory but into the churning mud of consequence. Control yielded \u2014 irrevocably \u2014 to the primal chaos he had tried to pave over with overpriced pasta and bad bourbon.\n\nHis empire, exposed as the cage it always was, collapsed around him.\n\nHe was at the helm. He had been at the helm, on this particular morning, for sixty consecutive hours. He had not slept. He had not eaten. He had been drinking the same bourbon he had poured at the beginning and had not, once, let the glass go empty. The card \u2014 Mr. D. Dean. Consulting. \u2014 was still on his desk, square to the corner, where he had placed it nine months before.\n\nHe looked at the card one last time."
     },
     {
+      "t": "show",
+      "char": "john",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
       "t": "say",
       "c": "dante",
-      "text": "I know you, you sonofabitch. I knew you in 1987. You haven't aged."
+      "text": "I know you, you sonofabitch. I knew you in 1987. You haven't aged.",
+      "char": "john"
     },
     {
       "t": "narrate",
