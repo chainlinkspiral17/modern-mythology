@@ -271,6 +271,12 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 
 	var key       := char_key(char_name)
 	var comp_path := PORTRAIT_COMP_ROOT + "portrait_" + key + ".json"
+	# Clean face crop is the canonical "portrait slot" image. When it
+	# exists we use it directly — face + torso, no card chrome around
+	# the figure. Composition with full card art is a fallback for
+	# characters that don't have a face crop yet.
+	var face_png  := "%s%s_face.png" % [PORTRAIT_GALLERY_ROOT, key]
+	var has_face  := FileAccess.file_exists(face_png) or ResourceLoader.exists(face_png)
 
 	# Scrim sits behind every portrait so the figure pops against busy
 	# scene backgrounds. Composition / texture sit on top of it inside
@@ -289,7 +295,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	wrapper.add_child(tint_holder)
 	wrapper.set_meta("tint", tint_holder)
 
-	if FileAccess.file_exists(comp_path):
+	if not has_face and FileAccess.file_exists(comp_path):
 		print("[CharLayer] LOADING SUBSTRATE COMPOSITION for ",
 		      char_name, " (key=", key, ") from ", comp_path)
 		var comp := Control.new()
@@ -301,13 +307,15 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 		wrapper.set_meta("kind", "composition")
 		_apply_texture_tint(wrapper, expr)
 	else:
-		print("[CharLayer] FALLBACK TO PAINTED PNG for ",
-		      char_name, " (key=", key, ") · expected comp at ", comp_path)
 		var tex := _resolve_portrait_texture(key, expr)
 		if tex != null:
 			var tr := TextureRect.new()
 			tr.texture      = tex
-			tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			# COVERED (not CENTERED) — the face crop assets are already
+			# framed face+torso at slot-friendly aspect (~0.94). Cover
+			# fills the slot with the figure; any minor aspect mismatch
+			# crops the edges rather than leaving letterbox bars.
+			tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 			tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 			tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			tint_holder.add_child(tr)
@@ -361,14 +369,39 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 			_apply_expr_tint(ph.get_meta("border") as Panel, _char_color(char_name), expr)
 
 
-# Texture lookup chain: <char>_<expr>.png → <char>_neutral.png → null.
+const PORTRAIT_GALLERY_ROOT := "res://assets/gallery/"
+
+
+# Texture lookup chain — prefers new gallery art over the old per-expression
+# slabs in characters/. Order:
+#   1. gallery/<char>_face.png      ← tight face+torso crop, ideal for slot
+#   2. gallery/portrait_<char>_face.png ← card-style face frame
+#   3. gallery/portrait_<char>_0.png    ← first animation frame (still
+#                                          better than the old full-body)
+#   4. characters/<char>/<char>_<expr>.png  ← old per-expression art
+#   5. characters/<char>/<char>_neutral.png ← old neutral fallback
+#
 # Falls back to Image.load_from_file when ResourceLoader doesn't have
 # the asset registered (i.e. the .import sidecar wasn't generated yet —
 # common during authoring when PNGs are dropped in but the editor
 # hasn't reimported).
 func _resolve_portrait_texture(key: String, expr: String) -> Texture2D:
+	# New gallery art, face-cropped first.
+	var face_path: String = "%s%s_face.png" % [PORTRAIT_GALLERY_ROOT, key]
+	var t := _load_texture_with_fallback(face_path)
+	if t != null:
+		return t
+	var card_face: String = "%sportrait_%s_face.png" % [PORTRAIT_GALLERY_ROOT, key]
+	t = _load_texture_with_fallback(card_face)
+	if t != null:
+		return t
+	var card_first: String = "%sportrait_%s_0.png" % [PORTRAIT_GALLERY_ROOT, key]
+	t = _load_texture_with_fallback(card_first)
+	if t != null:
+		return t
+	# Old per-expression / neutral art at characters/<char>/.
 	var expr_path: String = "%s%s/%s_%s.png" % [PORTRAIT_TEX_ROOT, key, key, expr]
-	var t := _load_texture_with_fallback(expr_path)
+	t = _load_texture_with_fallback(expr_path)
 	if t != null:
 		return t
 	var neutral_path: String = "%s%s/%s_neutral.png" % [PORTRAIT_TEX_ROOT, key, key]
