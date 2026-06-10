@@ -1,0 +1,16 @@
+{
+  "scope": "fool",
+  "notes": "The Fool's six-face arcana die. Replaces a standard d6 on Threshold Rolls during a Fool run. Other arcana have their own dies that swap in when their scenario is played.",
+  "die": {
+    "id": "fool_die",
+    "title": "Fool Die",
+    "faces": [
+      {"face": 1, "symbol": "LEAP",     "result": "ss",     "description": "Success ★★. Spend 1 Time and advance two spaces in your Setup's success direction."},
+      {"face": 2, "symbol": "PAUSE",    "result": "s",      "description": "Success ★. The clock holds; the Inertia Track does not tick this turn if the card resolves."},
+      {"face": 3, "symbol": "ONE FOOT", "result": "partial","description": "Partial. Spend 2 Action cards to convert to ★."},
+      {"face": 4, "symbol": "TWO FEET", "result": "partial","description": "Partial. Spend 2 Action cards to convert to ★."},
+      {"face": 5, "symbol": "WIPE",     "result": "fail",   "description": "Failure. The counter takes the action; nothing else does. +1 Bindle Token."},
+      {"face": 6, "symbol": "DOG",      "result": "wild",   "description": "Wild. Counts as ★ if Faith is adjacent to you; counts as failure otherwise."}
+    ]
+  }
+}

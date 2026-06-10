@@ -1,0 +1,84 @@
+{
+  "scope": "fool",
+  "notes": "Six Visitors. Three on board at game start, three arrive on schedule. Spec: lore/_TAROT_GAUNTLET.md §IV.6.",
+  "visitors": [
+    {
+      "id": "frasier",
+      "name": "Frasier Temple",
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "kitchen_alcove", "to": "counter"},
+      "connect_via": {
+        "kind": "card_at_pos_with_visitor_adjacent",
+        "card": "sit_with",
+        "player_pos": "counter",
+        "visitor_pos": "counter"
+      },
+      "lore_token": "frasier_seen",
+      "lore_text": "Still chasing shadows. Frasier sees you, you see Frasier.",
+      "accent": "#ffa860"
+    },
+    {
+      "id": "stranger",
+      "name": "The Booth-Six Stranger",
+      "arrival": {"kind": "on_board_at_start", "pos": "booth_6"},
+      "connect_via": {
+        "kind": "composite",
+        "all_of": [
+          {"kind": "took_item", "item": "cloth"},
+          {"kind": "stood_on", "pos": "card_wall"}
+        ]
+      },
+      "lore_token": "stranger_seen_first",
+      "lore_text": "You were seen first. There was an observer before the deck.",
+      "accent": "#c64878"
+    },
+    {
+      "id": "faith",
+      "name": "Faith",
+      "arrival": {"kind": "on_board_at_start", "pos": "under_counter"},
+      "connect_via": {
+        "kind": "card_played_n_times",
+        "card": "call_faith",
+        "times": 2
+      },
+      "is_leap_witness": true,
+      "lore_token": "faith_named",
+      "lore_text": "The dog's name is Faith. She is also the mandatory leap witness.",
+      "accent": "#7cffb0"
+    },
+    {
+      "id": "dawn_cook",
+      "name": "The Dawn Cook",
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "parking_lot", "to": "kitchen_alcove"},
+      "connect_via": {
+        "kind": "card_at_pos_on_arrival_turn",
+        "card": "short_rest",
+        "player_pos": "kitchen_alcove"
+      },
+      "lore_token": "shift_change_seen",
+      "lore_text": "Shift change. The next person who'll wipe this counter.",
+      "accent": "#d6c8a8"
+    },
+    {
+      "id": "bbs_caller",
+      "name": "The BBS Caller",
+      "arrival": {"kind": "scheduled", "turn": 6, "from": "(signal)", "to": "register"},
+      "connect_via": {
+        "kind": "card_at_pos",
+        "card": "address_the_bbs_banner",
+        "player_pos": "register"
+      },
+      "lore_token": "sysop_ember_ash",
+      "lore_text": "sysop ember.ash.rest.bbs — the network has been counting the dead all night.",
+      "accent": "#9bc3ff"
+    },
+    {
+      "id": "anya_recording",
+      "name": "Anya's Recording",
+      "arrival": {"kind": "conditional", "if_contents": "cassette_spine"},
+      "connect_via": {"kind": "auto_on_bundle_with_contents", "contents": "cassette_spine"},
+      "lore_token": "priestess_older_than_chapter",
+      "lore_text": "The Priestess is older than the chapter. Elicia has been recording you for years.",
+      "accent": "#b89ad6"
+    }
+  ]
+}

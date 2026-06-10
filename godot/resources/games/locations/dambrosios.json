@@ -1,0 +1,59 @@
+{
+  "id": "dambrosios",
+  "title": "D'Ambrosio's, Graustark TX/LA",
+  "subtitle": "3:47 AM",
+  "bg_codex_card": "assets/gallery/fool.png",
+  "notes": "Board layout per lore/_TAROT_GAUNTLET.md §IV.12. Adjacency follows the diagram. The COUNTER is central. The PRECIPICE DOOR threshold is hidden at game start.",
+  "spaces": [
+    {"id": "parking_lot",   "label": "PARKING LOT",       "kind": "threshold", "pos_xy": [600, 60],   "always_visible": true},
+    {"id": "kitchen_alcove","label": "KITCHEN ALCOVE",    "kind": "search",    "pos_xy": [380, 200],  "search_pile": "kitchen_alcove"},
+    {"id": "booth_6",       "label": "BOOTH 6",           "kind": "search",    "pos_xy": [820, 200],  "search_pile": "booth_6"},
+    {"id": "counter",       "label": "COUNTER",           "kind": "named",     "pos_xy": [600, 320],  "is_start": true, "frasier_arrival": true},
+    {"id": "under_counter", "label": "UNDER COUNTER",     "kind": "named",     "pos_xy": [600, 440],  "faith_start": true},
+    {"id": "bell",          "label": "BELL",              "kind": "named",     "pos_xy": [600, 540],  "bell_tones": true},
+    {"id": "register",      "label": "REGISTER",          "kind": "search",    "pos_xy": [600, 640],  "search_pile": "register", "bbs_caller_arrival": true},
+    {"id": "card_wall",     "label": "CARD WALL",         "kind": "named",     "pos_xy": [600, 740],  "stranger_witness_space": true},
+    {"id": "river_window",  "label": "RIVER WINDOW",      "kind": "threshold", "pos_xy": [600, 860],  "always_visible": true},
+    {"id": "precipice_door","label": "PRECIPICE DOOR",    "kind": "threshold", "pos_xy": [600, 980],  "always_visible": false}
+  ],
+  "adjacency": {
+    "parking_lot":    ["kitchen_alcove", "booth_6"],
+    "kitchen_alcove": ["parking_lot", "counter"],
+    "booth_6":        ["parking_lot", "counter"],
+    "counter":        ["kitchen_alcove", "booth_6", "under_counter", "bell"],
+    "under_counter":  ["counter"],
+    "bell":           ["counter", "register"],
+    "register":       ["bell", "card_wall"],
+    "card_wall":      ["register", "river_window"],
+    "river_window":   ["card_wall", "precipice_door"],
+    "precipice_door": ["river_window"]
+  },
+  "events": [
+    {
+      "id": "dawn_not_quite_dawn",
+      "title": "DAWN-NOT-QUITE-DAWN",
+      "auto_at_turn": 1,
+      "effect": {"kind": "global_threshold_dice_bonus", "amount": 1},
+      "flavor": "The light is on your side."
+    }
+  ],
+  "events_deck": [
+    {"id": "the_demons_restless", "title": "THE DEMONS ARE RESTLESS TONIGHT",
+     "effect": {"kind": "spawn_visitor", "visitor": "digital_sprite", "at": "register"},
+     "flavor": "A new face on the BBS."},
+    {"id": "river_program",       "title": "THE RIVER HAS ITS OWN PROGRAM",
+     "effect": {"kind": "close_threshold", "threshold": "river_window", "turns": 2}},
+    {"id": "bbs_hums",            "title": "THE BBS HUMS",
+     "effect": {"kind": "draw_extra_item_per_turn_for", "turns": 3}},
+    {"id": "three_forty_seven",   "title": "3:47 EXACTLY",
+     "effect": {"kind": "set_next_time_reset", "value": 3}},
+    {"id": "who_taught",          "title": "WHO TAUGHT YOU TO BE A FOOL?",
+     "effect": {"kind": "peek_gravity_top", "n": 3, "rearrange": true}},
+    {"id": "second_counter_wipe", "title": "A SECOND COUNTER WIPE",
+     "effect": {"kind": "modify_card", "card": "wipe_counter", "field": "gain_time", "to": 2}},
+    {"id": "no_one_drove_by",     "title": "NO ONE'S DRIVEN BY IN AN HOUR",
+     "effect": {"kind": "cancel_visitor_arrival", "visitor": "dawn_cook"}},
+    {"id": "bell_third_tone",     "title": "THE BELL HAS A THIRD TONE",
+     "effect": {"kind": "spawn_extra_visitor_random_pool"}}
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "scope": "fool",
+  "notes": "Bindle components live as TOP items in their respective search piles. Contents pile holds 5 options drawn one-at-a-time. Other items are scattered in piles. Spec: lore/_TAROT_GAUNTLET.md §IV.5, §IV.13.",
+  "piles": {
+    "kitchen_alcove": {
+      "label": "Kitchen Alcove",
+      "items": ["stick", "stale_coffee", "fluorescent_strip"]
+    },
+    "booth_6": {
+      "label": "Booth 6",
+      "items": ["cloth", "card_within_card", "booth_six_notebook"]
+    },
+    "register": {
+      "label": "Register (Contents pile — pick one)",
+      "items_contents_pool": [
+        "contents_pocket_money",
+        "contents_cassette_spine",
+        "contents_scratched_penny",
+        "contents_note_from_booth_six",
+        "contents_graffiti_tag"
+      ],
+      "draw_one_keep_or_putback": true
+    }
+  },
+  "items": {
+    "stick": {
+      "title": "The Stick",
+      "category": "bindle_component",
+      "flavor": "Broken broom handle propped against the freezer for eleven years. Nobody has thrown it away. Nobody has used it.",
+      "hands": 1
+    },
+    "cloth": {
+      "title": "The Cloth",
+      "category": "bindle_component",
+      "flavor": "A cloth napkin folded for the next customer. The creases are permanent.",
+      "hands": 1,
+      "on_pickup": [{"kind": "advance_stranger_connection"}]
+    },
+    "contents_pocket_money": {
+      "title": "Pocket Money From the Till",
+      "category": "bindle_contents",
+      "flavor": "Twelve years of unpaid hours, finally taken.",
+      "ending_lore_token": "leaving_with_what_was_owed",
+      "cross_arcana_unlock": "twelve_years_cashed_out"
+    },
+    "contents_cassette_spine": {
+      "title": "The Cassette Spine — JOHN_47AM_3",
+      "category": "bindle_contents",
+      "flavor": "Elicia archived you while you slept on your feet.",
+      "ending_lore_token": "leaving_with_record_of_being_seen",
+      "cross_arcana_unlock": "priestess_archive_overlay",
+      "side_effects": [{"kind": "spawn_visitor_at_bundle", "visitor": "anya_recording"}]
+    },
+    "contents_scratched_penny": {
+      "title": "A Scratched Penny From Your Apron",
+      "category": "bindle_contents",
+      "flavor": "The smallest weight that's still mine.",
+      "ending_lore_token": "leaving_with_smallest_weight",
+      "cross_arcana_unlock": "apron_penny_die_modifier"
+    },
+    "contents_note_from_booth_six": {
+      "title": "A Note From Booth 6",
+      "category": "bindle_contents",
+      "flavor": "The message that was meant for me.",
+      "ending_lore_token": "leaving_with_message",
+      "cross_arcana_unlock": "booth_six_note_handcard"
+    },
+    "contents_graffiti_tag": {
+      "title": "The Graffiti Tag From the Table",
+      "category": "bindle_contents",
+      "flavor": "FRANKLY / FOOLISH. Scratched twenty years ago. Taken back.",
+      "ending_lore_token": "leaving_with_proof",
+      "cross_arcana_unlock": "graffiti_hand_item"
+    },
+    "stale_coffee": {
+      "title": "Stale Coffee (cup #4 of the night)",
+      "category": "consumable",
+      "flavor": "Cold rim. Familiar bitterness.",
+      "hands": 1,
+      "effects_on_use": [{"kind": "recover_health", "amount": 1}, {"kind": "discard_self"}]
+    },
+    "card_within_card": {
+      "title": "The Card Within the Card",
+      "category": "passive",
+      "flavor": "A small printed Fool, pinned to the booth wall.",
+      "hands": 0,
+      "passive_effects": [
+        {"kind": "threshold_roll_dice_modifier", "when_at_pos": "card_wall", "bonus_dice": 1}
+      ]
+    },
+    "booth_six_notebook": {
+      "title": "The Booth-Six Notebook",
+      "category": "passive",
+      "flavor": "Smudged. The stranger's hand.",
+      "hands": 1,
+      "passive_effects": [
+        {"kind": "log", "text": "The stranger watched you read it."}
+      ]
+    },
+    "fluorescent_strip": {
+      "title": "The Fluorescent Strip",
+      "category": "passive",
+      "flavor": "The metronome of the ceiling tile.",
+      "hands": 0,
+      "passive_effects": [
+        {"kind": "on_die_face", "face": "pause", "additional_effect": [{"kind": "lose_inertia", "amount": 1}]}
+      ]
+    }
+  },
+  "unlockable_items_from_other_arcana": [
+    {
+      "id": "audi_et_tace_tag",
+      "title": "AUDI ET TACE Luggage Tag",
+      "unlocked_by_arcana": "hierophant",
+      "flavor": "AVDI ET TACE. Listen and be silent.",
+      "effects": [{"kind": "once_per_game_skip_gravity_card"}]
+    },
+    {
+      "id": "steamboat_echo_item",
+      "title": "The Steamboat Echo",
+      "unlocked_by_arcana": "magician",
+      "flavor": "Red, in the diner window.",
+      "effects": [{"kind": "extra_lore_token_at_game_end", "amount": 1}]
+    },
+    {
+      "id": "painted_pose_item",
+      "title": "The Painted Pose",
+      "unlocked_by_arcana": "magician_painting_acknowledged",
+      "flavor": "John is in a painting in a room he'll never enter.",
+      "effects": [{"kind": "reveal_lore_token_at_end", "token": "painted_pose_recognition"}]
+    },
+    {
+      "id": "charioteer_sysop_handle",
+      "title": "The Charioteer's Sysop Handle",
+      "unlocked_by_arcana": "chariot",
+      "flavor": "DOA. Inheritance pending. You can log in.",
+      "effects": [{"kind": "once_per_game_redraw_gravity"}]
+    },
+    {
+      "id": "counter_slip",
+      "title": "A Number-of-the-Counter Slip",
+      "unlocked_by_default": true,
+      "flavor": "A receipt with a four-digit hand-written number on it.",
+      "effects": [{"kind": "delay_claim_countdown_by_1"}]
+    }
+  ]
+}

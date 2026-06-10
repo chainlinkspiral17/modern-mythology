@@ -1,0 +1,146 @@
+{
+  "scope": "fool",
+  "notes": "Fool-unique action cards joined into the shared tableau when the Fool arcana is in play. Spec: lore/_TAROT_GAUNTLET.md §IV.10.",
+  "cards": [
+    {
+      "id": "wipe_counter",
+      "title": "WIPE COUNTER",
+      "time_cost": 0,
+      "starter": true,
+      "flavor": "The cloth is warm. The formica is colder.",
+      "requires": [],
+      "effects": [
+        {"kind": "if_at", "pos": "counter", "then": [
+          {"kind": "gain_time", "amount": 1},
+          {"kind": "gain_inertia", "amount": 1},
+          {"kind": "log", "text": "The tempting comfort. +1 Time, +1 Inertia."}
+        ]},
+        {"kind": "else", "then": [
+          {"kind": "log", "text": "No effect — you're not at the counter."}
+        ]}
+      ]
+    },
+    {
+      "id": "address_the_bell",
+      "title": "ADDRESS THE BELL",
+      "time_cost": 1,
+      "starter": true,
+      "flavor": "Tap the brass. Listen for the second tone.",
+      "requires": [{"kind": "at_pos", "pos": "bell"}],
+      "effects": [
+        {"kind": "ring_bell_tone"},
+        {"kind": "if_both_tones_rung", "then": [
+          {"kind": "advance_next_visitor_arrival", "by": 1}
+        ]},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "call_faith",
+      "title": "CALL FAITH",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "She's a good dog. She knows her name now.",
+      "requires": [],
+      "effects": [
+        {"kind": "move_visitor", "visitor": "faith", "to": "player_pos"},
+        {"kind": "increment_meta", "key": "call_faith_count"},
+        {"kind": "if_meta_at_least", "key": "call_faith_count", "value": 3,
+         "then": [{"kind": "gain_inertia", "amount": 1, "note": "she's tired"}]}
+      ]
+    },
+    {
+      "id": "sit_with",
+      "title": "SIT WITH",
+      "time_cost": 0,
+      "starter": false,
+      "flavor": "Stay put. Be witnessed.",
+      "requires": [],
+      "effects": [
+        {"kind": "end_action_phase"},
+        {"kind": "if_visitor_adjacent", "visitor": "frasier", "and_player_at": "counter",
+         "then": [{"kind": "mark_connection", "visitor": "frasier"}]}
+      ]
+    },
+    {
+      "id": "short_rest",
+      "title": "SHORT REST",
+      "time_cost": 1,
+      "starter": true,
+      "flavor": "Lean on the counter for two breaths.",
+      "requires": [],
+      "effects": [
+        {"kind": "recover_health", "amount": 1},
+        {"kind": "if_at_pos_and_visitor_arrived_this_turn",
+         "pos": "kitchen_alcove", "visitor": "dawn_cook",
+         "then": [{"kind": "mark_connection", "visitor": "dawn_cook"}]}
+      ]
+    },
+    {
+      "id": "address_the_bbs_banner",
+      "title": "ADDRESS THE BBS BANNER",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "RUST_CODE.BBS — type, listen.",
+      "requires": [{"kind": "at_pos", "pos": "register"}],
+      "effects": [
+        {"kind": "if_visitor_present", "visitor": "bbs_caller",
+         "then": [{"kind": "mark_connection", "visitor": "bbs_caller"}],
+         "else": [{"kind": "log", "text": "The terminal is dark. Nothing answers."}]}
+      ]
+    },
+    {
+      "id": "step_toward",
+      "title": "STEP TOWARD",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "Pick a door. Move one foot.",
+      "requires": [],
+      "effects": [
+        {"kind": "move_player_toward_threshold", "spaces": 1}
+      ]
+    },
+    {
+      "id": "pick_up",
+      "title": "PICK UP",
+      "time_cost": 0,
+      "starter": false,
+      "flavor": "Wrap your fingers around it.",
+      "requires": [{"kind": "item_at_pos", "any": true}],
+      "effects": [
+        {"kind": "take_item_at_pos"}
+      ]
+    },
+    {
+      "id": "bundle",
+      "title": "BUNDLE",
+      "time_cost": 0,
+      "starter": false,
+      "flavor": "Cloth around stick, contents inside.",
+      "requires": [
+        {"kind": "inventory_has", "item": "stick"},
+        {"kind": "inventory_has", "item": "cloth"},
+        {"kind": "inventory_has_contents", "any": true}
+      ],
+      "effects": [
+        {"kind": "assemble_bindle"},
+        {"kind": "if_contents_is", "contents": "cassette_spine",
+         "then": [{"kind": "auto_connect_visitor", "visitor": "anya_recording"}]}
+      ]
+    },
+    {
+      "id": "leap",
+      "title": "LEAP",
+      "time_cost": 3,
+      "starter": false,
+      "flavor": "One foot off the cliff. The other already.",
+      "requires": [
+        {"kind": "at_threshold"},
+        {"kind": "win_conditions_met"}
+      ],
+      "effects": [
+        {"kind": "trigger_win", "from_threshold": "player_pos"}
+      ]
+    }
+  ]
+}
