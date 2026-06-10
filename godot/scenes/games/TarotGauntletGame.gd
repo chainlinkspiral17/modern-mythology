@@ -726,6 +726,58 @@ func _show_move_popup() -> void:
 	popup.popup()
 
 
+func _prompt_pick_destination(max_hops: int, reason: String) -> void:
+	# Card-driven movement: BFS from the current position within
+	# max_hops, then a PopupMenu of every reachable destination.
+	# Replaces the old "auto-route to nearest threshold" behavior —
+	# the player chooses where they go, every time.
+	if _game_over or max_hops <= 0:
+		return
+	var adj_map: Dictionary = _location.get("adjacency", {})
+	var dist: Dictionary = {_player_pos: 0}
+	var queue: Array = [_player_pos]
+	while not queue.is_empty():
+		var cur: String = queue.pop_front()
+		var d: int = int(dist[cur])
+		if d >= max_hops:
+			continue
+		for nbr: String in adj_map.get(cur, []):
+			if dist.has(nbr):
+				continue
+			if nbr == "precipice_door" and not _flags.get("precipice_revealed", false):
+				continue
+			dist[nbr] = d + 1
+			queue.append(nbr)
+	dist.erase(_player_pos)
+	if dist.is_empty():
+		_log_line("[i]nowhere to step from %s[/i]" % _player_pos)
+		return
+	var popup := PopupMenu.new()
+	popup.add_theme_font_size_override("font_size", 12)
+	var space_label_by_id: Dictionary = {}
+	for s: Dictionary in (_location.get("spaces", []) as Array):
+		space_label_by_id[s.get("id", "")] = s.get("label", s.get("id", ""))
+	var keys: Array = dist.keys()
+	keys.sort_custom(func(a: String, b: String) -> bool: return int(dist[a]) < int(dist[b]))
+	for tid: String in keys:
+		var hops: int = int(dist[tid])
+		var label_s: String = String(space_label_by_id.get(tid, tid))
+		var suffix: String = "" if hops == 1 else "s"
+		popup.add_item("→ %s   (%d hop%s)" % [label_s, hops, suffix])
+	add_child(popup)
+	popup.id_pressed.connect(func(idx: int) -> void:
+		if idx >= 0 and idx < keys.size():
+			_player_pos = String(keys[idx])
+			_audio_sfx("card_play")
+			_log_line("→ %s to [b]%s[/b]" % [reason, _player_pos])
+			_render()
+		popup.queue_free())
+	popup.close_requested.connect(func() -> void: popup.queue_free())
+	popup.position = Vector2i(int(get_viewport().get_mouse_position().x),
+		int(get_viewport().get_mouse_position().y))
+	popup.popup()
+
+
 func _on_space_clicked(target_pos: String) -> void:
 	if _game_over or _phase != Phase.ACTION:
 		_log_line("[i](can't move outside the action phase)[/i]")
@@ -1211,7 +1263,9 @@ func _resolve_effect(e: Dictionary) -> void:
 		"mark_connection":
 			_connect_visitor(e.get("visitor", ""))
 		"move_player_toward_threshold":
-			_move_player_toward_nearest_threshold(int(e.get("spaces", 1)))
+			# Was: auto-route to nearest threshold. Now: prompt the
+			# player for their destination (within N hops).
+			_prompt_pick_destination(int(e.get("spaces", 1)), "stepped")
 		"take_item_at_pos":
 			_take_top_item_at_pos()
 		"assemble_bindle":
@@ -1405,19 +1459,19 @@ func _apply_framework_card_mechanic(cid: String, result: String) -> void:
 	match cid:
 		"walk":
 			match result:
-				"ss":   _move_player_toward_nearest_threshold(2)
-				"s":    _move_player_toward_nearest_threshold(1)
+				"ss":   _prompt_pick_destination(2, "walked")
+				"s":    _prompt_pick_destination(1, "walked")
 				"fail":
-					_move_player_toward_nearest_threshold(1)
+					_prompt_pick_destination(1, "stumbled toward")
 					_time = max(0, _time - 1)
 		"sprint":
 			match result:
-				"ss":   _move_player_toward_nearest_threshold(3)
+				"ss":   _prompt_pick_destination(3, "sprinted")
 				"s":
-					_move_player_toward_nearest_threshold(2)
+					_prompt_pick_destination(2, "sprinted")
 					_time = max(0, _time - 1)
 				"fail":
-					_move_player_toward_nearest_threshold(1)
+					_prompt_pick_destination(1, "sprinted poorly")
 					_time = max(0, _time - 2)
 		"search":
 			# At a search space, take the top item.
@@ -1452,7 +1506,7 @@ func _apply_framework_card_mechanic(cid: String, result: String) -> void:
 			match result:
 				"ss":
 					_pop_top_gravity_card()
-					_move_player_toward_nearest_threshold(1)
+					_prompt_pick_destination(1, "moved")
 				"s":
 					_pop_top_gravity_card()
 				"fail":
@@ -1462,7 +1516,7 @@ func _apply_framework_card_mechanic(cid: String, result: String) -> void:
 			if result == "ss" or result == "s":
 				_flags["guard_ignore_next_gravity_inertia"] = true
 				if result == "ss":
-					_move_player_toward_nearest_threshold(1)
+					_prompt_pick_destination(1, "moved on guard")
 		"close_call":
 			# Reroll — for now, no-op past the dice roll itself. (A real
 			# reroll requires tracking the last-rolled card; future pass.)
