@@ -352,32 +352,94 @@ matching LOCATION at least once.
 
 ### H1 — FRASIER TEMPLE  (Magician upright)
 
-> *Painter. Diorama maker. He's the man who can hold four
-> things still on a table for long enough to call them a
-> city. The shadow he carries IS the shadow other characters
-> face in his warehouse — but he's its master, not its victim.*
+> *Tinkerer. Painter. Sysop. He's traced the lemniscate so
+> many times in the air over the workbench that he's done it
+> without noticing for a decade. The warehouse demons keep
+> the soldering iron warm; he keeps them busy enough to leave
+> the rest of the building alone. The Magician upright isn't
+> placement — it's the act of HOLDING four contradictory
+> things together by a small repeated gesture. Frasier is
+> what reality hacking looks like when it's quiet and
+> domesticated.*
 
-- **Action card set**: PLACE WATER, PLACE EARTH, PLACE FIRE,
-  PLACE AIR, STEADY THE TABLE, SKETCH, GLAZE, WHISPER, INVOKE
-  (win card)
-- **Ultimate**: THE FIRST PAINTING — once per run, replay any
-  card already in your discard pile at half cost
-- **Starting cards drawn**: PLACE WATER + STEADY THE TABLE +
-  SKETCH + 3 framework starters
-- **Carryover unlocks**:
-  - Cleared L1 (Warehouse) → can carry one painted element
-    into any subsequent location (e.g. PAINTED RIVER in the
-    diner makes the River Window threshold easier)
-  - Cleared L0 (Diner) → unlocks DIORAMA OF THE DINER, a
-    table-sub-board variant in L1 runs
-- **Mix-and-match notes**:
-  - Frasier @ L0 Diner: PLACE actions become PROP actions —
-    you arrange the booths and chairs deliberately. Inertia
-    falls every time you arrange a space "correctly" (each
-    space has a preferred arrangement in the data).
-  - Frasier @ L2 Archive: WHISPER becomes the only way to
-    talk to a sitter without breaking Priestess silence —
-    his cards already understand quiet handling.
+#### Action card set (the toolkit)
+
+- **SOLDER** — mend any broken thing here (a busted bulb, a
+  silent phone, a stuck door); costs 1 Time + 1 Inertia/tension
+- **TRACE THE LEMNISCATE** — the infinity loop in the air.
+  Once played, the NEXT framework dice fail can be re-read
+  as a single success (the gesture re-routes outcome)
+- **INVOKE A DEMON** — summon a warehouse demon as a
+  temporary visitor. They count as a connection for one
+  turn, then DEPART back to the warehouse. You owe them
+  one Inertia/tension for use.
+- **BIND** — lock a placed item / a visitor / a threshold
+  in its current state. Bound things can't be moved by
+  Drift, Gravity, or Inertia for 3 turns. (Magician's
+  signature: hold the contradictions.)
+- **READ THE BBS** — at any terminal-shaped space (REGISTER
+  in Diner, MAILBOX in Warehouse, TERMINAL in Archive,
+  etc.), peek the next 2 destiny cards
+- **HACK THE THRESHOLD** — turn one non-threshold space
+  into a threshold for this turn only. The "leap card"
+  becomes playable from that space if all other conditions
+  are met. One-shot per run.
+- **SCATTER** — sacrifice ANY 2 placed/held items to undo
+  the last Inertia/tension tick. The disassembly is itself
+  a gesture.
+- **SKETCH** — at any space, log a lore-token-style note of
+  what's here; later runs in this location will reference it
+- **GLAZE** — protect one already-placed/bound object from
+  the next Drift/Gravity hit (cheaper than BIND, single-use)
+- **INVOKE** *(win card)* — the four-element / four-suit
+  assembly. Variant per location (in L1 it's the model city;
+  in L0 it's arranging the booths into a constellation; in
+  L2 it's queuing four tapes; in L3 it's stacking four
+  rites)
+
+#### Ultimate · THE FIRST PAINTING
+
+Once per run. Frasier paints what's in front of him —
+the painting BECOMES the thing for one turn. Effect:
+duplicate any one currently-placed/held element so it
+counts as TWO for the win condition. The duplicate
+disappears at end of turn but its effect persists.
+
+#### Carryover unlocks
+
+- Cleared L1 (Warehouse): the lemniscate is now in your
+  muscle memory — TRACE THE LEMNISCATE gains a second
+  charge per run
+- Cleared L0 (Diner): unlocks DIORAMA OF THE DINER as a
+  table-sub-board variant in L1 — the model city you've
+  been working on becomes D'Ambrosio's
+- Cleared L2 (Archive): the tape archive is now indexed
+  for Frasier — READ THE BBS at any terminal also reveals
+  one inventory item visitors are carrying
+- Cleared L3 (Church): the rites are partially recorded in
+  his hand — INVOKE costs 1 less Time
+
+#### Mix-and-match: Frasier reshading each location
+
+| @ Location | What changes | Why |
+|---|---|---|
+| **L0 Diner** (Fool reversed) | Inertia falls 1 every time Frasier BINDS a booth or pre-placed item. The Diner is a room he's MENTALLY MODELED for years — fixing things in place runs against the Diner's "wipe forever" shadow. Hosting a visitor at a BOUND space prevents them from drifting. INVOKE win-card becomes "arrange the booths into a constellation that maps the model city" — different geometry, same gesture. | The Magician's verb (hold together) is the natural counter to the Fool's shadow (slip away). Frasier's tools were almost designed for this room. |
+| **L2 Archive** (Priestess reversed) | INVOKE A DEMON breaks the no-speak rule loudly — costs +3 PRESSURE-TO-SPEAK. But READ THE BBS replaces LISTEN entirely; Frasier doesn't observe, he queries. SOLDER mends a broken tape on the spot (the Archive has shelved tapes that crackle — Frasier can fix one per run, which Elicia herself never does). | Magician's reality-hacking is incompatible with Priestess's discipline of silence. The friction IS the play. Frasier brings the wrong toolkit on purpose. |
+| **L3 Church** (Hierophant reversed) | INVOKE A DEMON is sacrilege — costs +3 DOCTRINE WEAR. But BIND, used on a sacred object, treats it AS the rite (you can shortcut a rite step by binding instead of performing). The bishop will sense it. | The Magician's gestures are pre-religious; they predate doctrine and contradict it. Frasier in a church is a heresy in slow motion. |
+| **L1 Warehouse** *(home location)* | Default tuning. Frasier is at home here. INVOKE A DEMON costs 0 Tension (the warehouse demons are his roommates). HACK THE THRESHOLD applies to any of the studio's four walls (a leap THROUGH the painting is possible — and the leap CG is uniquely his). | Each hand has one location where their toolkit costs the least to use. Frasier's is the Warehouse. |
+| **L4 The Long Road** (Chariot reversed) | INVOKE A DEMON summons a passenger who will drive a shift for him (skip a Fatigue tick). BIND locks the cargo against damage from rough roads. SOLDER fixes a broken engine on the side of the highway, no shop needed. | The Magician's tools turn a Chariot run into a series of small magical hacks: he doesn't drive efficiently, he makes the drive impossible-to-fail by binding it together. |
+
+#### The Frasier pattern (broader)
+
+His presence in any location *makes the location more
+literal*. The Diner's wipe-the-same-spot loop becomes a
+literal placement puzzle; the Archive's silence becomes a
+debugging problem; the Church's doctrine becomes machine
+state to bind/unbind. Frasier doesn't enter rooms — he
+*reduces them to gestures he can repeat*. The cost is that
+every demon he invokes is one he later has to feed; carry-
+over Inertia/tension flows back to L1 Warehouse on his next
+visit there. The warehouse is a balance sheet.
 
 ### H2 — ELICIA  (Priestess upright)
 
@@ -421,6 +483,50 @@ matching LOCATION at least once.
 - Action card set themed on movement + control + cargo
 - Ultimate: THE SECOND HAND — once per run, override a
   Fatigue tick
+
+---
+
+## The reshade principle
+
+The Frasier table above is the model for every hand. Each
+hand's toolkit reshades every location it visits in a
+specific, principled way — not just "the player uses
+different cards." The hand's UPRIGHT arcana frames how
+their tools INTERPRET the location's REVERSED arcana shadow:
+
+- **John Frank (Fool ↑)** reshades by *staying still in a
+  room that wants you to commit*. His tools are slow, his
+  cost is patience. In other locations: he's the watcher
+  who knows the place from the outside. Frasier's warehouse
+  through John's eyes is *eleven years of someone else's
+  obsession*.
+- **Frasier (Magician ↑)** reshades by *making everything
+  literal and bindable*. Reduces rooms to gestures. Costs
+  in demons-owed.
+- **Elicia (Priestess ↑)** reshades by *receiving rather
+  than acting*. Her presence in the Diner means the room
+  is being RECORDED for the first time; the Diner's
+  Inertia doesn't tick when she's present at a space (she
+  takes the tick into her tape instead, where it becomes
+  lore). Her cost: every recording fills the archive, and
+  the archive eventually weighs.
+- **Maya (Hierophant ↑)** reshades by *imposing protocol
+  on places that have none*. In the Diner, she makes
+  WIPE COUNTER into a ritual — the cloth becomes a vestment.
+  Inertia rises faster when she's present (the room
+  resists ritual), but each ritual completion is a 2x
+  connection.
+- **(Chariot ↑)** reshades by *being in motion in static
+  rooms*. Their presence keeps any space from going
+  "stuck" (drift attractors weaken).
+
+The design rule: **every hand×location pair should produce
+a sentence that explains how the run feels.** Not "John
+plays the Diner" but "John plays the Diner = staying still
+in the room that wants him to leave." Not "Frasier plays
+the Archive" but "Frasier plays the Archive = trying to
+fix tapes Elicia would have just left." Each combination
+is a small thesis.
 
 ---
 
