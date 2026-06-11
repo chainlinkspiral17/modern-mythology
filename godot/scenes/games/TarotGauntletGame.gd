@@ -113,10 +113,32 @@ func start_scenario(arcana: String = "fool",
 
 
 func _ready() -> void:
+	set_process_unhandled_key_input(true)
 	_load_data()
 	_build_ui()
 	_init_run()
 	_audio_play_bgm()
+	# Force an extra board render after layout settles so the map is
+	# visible on the very first frame (not just after the user expands
+	# or interacts with something).
+	call_deferred("_render_board")
+	call_deferred("_render")
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	# Esc closes any open modal first, then exits fullscreen board.
+	if event is InputEventKey and (event as InputEventKey).pressed:
+		var key: InputEventKey = event
+		if key.keycode == KEY_ESCAPE:
+			# Topmost modal first
+			var dim: Node = get_node_or_null("pane_modal_dim")
+			if dim != null and is_instance_valid(dim):
+				_close_pane_modal(dim as ColorRect)
+				get_viewport().set_input_as_handled()
+				return
+			if _board_fullscreen:
+				_toggle_board_fullscreen()
+				get_viewport().set_input_as_handled()
 	# Surface data-load failures in the in-game log so the user doesn't
 	# have to dig through Godot's Output panel to see why nothing's
 	# happening. If any of these are missing, the run is unplayable.
@@ -519,8 +541,7 @@ func _build_ui() -> void:
 	inv_panel.custom_minimum_size = Vector2(420, 170)
 	var inv_vb := VBoxContainer.new()
 	inv_panel.add_child(inv_vb)
-	inv_vb.add_child(_make_pane_header("INVENTORY / BINDLE",
-		func() -> void: _open_pane_modal("Inventory & Bindle", _build_inventory_modal_body)))
+	inv_vb.add_child(_make_pane_header("INVENTORY / BINDLE", "inventory"))
 	var inv_scroll := ScrollContainer.new()
 	inv_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	inv_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -539,8 +560,7 @@ func _build_ui() -> void:
 	grav_panel.custom_minimum_size = Vector2(420, 72)
 	var grav_vb := VBoxContainer.new()
 	grav_panel.add_child(grav_vb)
-	grav_vb.add_child(_make_pane_header("GRAVITY",
-		func() -> void: _open_pane_modal("Gravity Deck", _build_gravity_modal_body)))
+	grav_vb.add_child(_make_pane_header("GRAVITY", "gravity"))
 	_gravity_card_label = RichTextLabel.new()
 	_gravity_card_label.bbcode_enabled = true
 	_gravity_card_label.fit_content = true
@@ -558,8 +578,7 @@ func _build_ui() -> void:
 	v_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	var v_vb := VBoxContainer.new()
 	v_panel.add_child(v_vb)
-	v_vb.add_child(_make_pane_header("VISITORS",
-		func() -> void: _open_pane_modal("Visitors", _build_visitors_modal_body)))
+	v_vb.add_child(_make_pane_header("VISITORS", "visitors"))
 	var v_scroll := ScrollContainer.new()
 	v_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	v_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -595,8 +614,7 @@ func _build_ui() -> void:
 	log_vb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	log_vb.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	bottom_hb.add_child(log_vb)
-	log_vb.add_child(_make_pane_header("LOG",
-		func() -> void: _open_pane_modal("Full Log", _build_log_modal_body)))
+	log_vb.add_child(_make_pane_header("LOG", "log"))
 	var log_panel := PanelContainer.new()
 	log_panel.add_theme_stylebox_override("panel", _make_panel_style())
 	log_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -684,7 +702,7 @@ func _make_panel_style() -> StyleBoxFlat:
 # Header row with a title label + a small ⛶ expand button. Used at
 # the top of every right-column pane so clicking the button opens a
 # detailed modal of that pane's contents.
-func _make_pane_header(title: String, on_expand: Callable) -> Control:
+func _make_pane_header(title: String, modal_key: String) -> Control:
 	var hb := HBoxContainer.new()
 	hb.add_theme_constant_override("separation", 4)
 	var lbl := Label.new()
@@ -695,12 +713,29 @@ func _make_pane_header(title: String, on_expand: Callable) -> Control:
 	hb.add_child(lbl)
 	var btn := Button.new()
 	btn.text = "⛶"
-	btn.tooltip_text = "Expand " + title
+	btn.tooltip_text = "Expand " + title + " (Esc to close)"
 	btn.add_theme_font_size_override("font_size", 10)
 	btn.custom_minimum_size = Vector2(26, 18)
-	btn.pressed.connect(on_expand)
+	# bind(modal_key) wraps the String into a Callable arg — avoids any
+	# closure-capture weirdness from inline lambdas inside add_child().
+	btn.pressed.connect(_open_pane_modal_by_key.bind(modal_key))
 	hb.add_child(btn)
 	return hb
+
+
+# Dispatch a pane-expand request to the correct title + body builder.
+# Used as the connect target from _make_pane_header so the closure is
+# the well-known bind() form, not an inline multi-line lambda.
+func _open_pane_modal_by_key(key: String) -> void:
+	match key:
+		"log":
+			_open_pane_modal("Full Log", _build_log_modal_body)
+		"inventory":
+			_open_pane_modal("Inventory & Bindle", _build_inventory_modal_body)
+		"gravity":
+			_open_pane_modal("Gravity Deck", _build_gravity_modal_body)
+		"visitors":
+			_open_pane_modal("Visitors", _build_visitors_modal_body)
 
 
 # Generic pane modal — dim background, centered panel with a header
@@ -715,30 +750,28 @@ func _close_pane_modal(dim: ColorRect) -> void:
 
 
 func _open_pane_modal(title: String, body_builder: Callable) -> void:
+	# Tear down any existing modal first so stacked opens can't trap input.
+	var existing: Node = get_node_or_null("pane_modal_dim")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.75)
 	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.z_index = 100
 	dim.name = "pane_modal_dim"
-	dim.modulate = Color(1, 1, 1, 0)   # fade in
-	dim.gui_input.connect(func(ev: InputEvent) -> void:
-		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
-			_close_pane_modal(dim))
+	dim.modulate = Color(1, 1, 1, 0)
+	dim.gui_input.connect(_on_modal_dim_input.bind(dim))
 	add_child(dim)
 	var fade_in := create_tween()
-	fade_in.tween_property(dim, "modulate:a", 1.0, 0.16).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	fade_in.tween_property(dim, "modulate:a", 1.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	var view: Vector2 = get_viewport_rect().size
 	var pop := PanelContainer.new()
 	pop.add_theme_stylebox_override("panel", _make_panel_style())
 	pop.size = Vector2(view.x * 0.72, view.y * 0.72)
 	pop.position = (view - pop.size) * 0.5
 	pop.mouse_filter = Control.MOUSE_FILTER_STOP
-	# Subtle entrance — start a hair smaller and scale up
-	pop.pivot_offset = pop.size * 0.5
-	pop.scale = Vector2(0.96, 0.96)
-	var scale_t := create_tween()
-	scale_t.tween_property(pop, "scale", Vector2(1.0, 1.0), 0.20).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	pop.name = "pane_modal_panel"
 	dim.add_child(pop)
 	var pop_vb := VBoxContainer.new()
 	pop_vb.add_theme_constant_override("separation", 6)
@@ -747,13 +780,15 @@ func _open_pane_modal(title: String, body_builder: Callable) -> void:
 	var title_lbl := Label.new()
 	title_lbl.text = "  " + title
 	title_lbl.add_theme_color_override("font_color", C_ACCENT)
-	title_lbl.add_theme_font_size_override("font_size", 14)
+	title_lbl.add_theme_font_size_override("font_size", 16)
 	title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title_lbl)
+	# Prominent close button — explicit ✕ Close text + ESC hint.
 	var close := Button.new()
-	close.text = "✕  Close"
-	close.add_theme_font_size_override("font_size", 12)
-	close.pressed.connect(func() -> void: _close_pane_modal(dim))
+	close.text = "✕  Close  (Esc)"
+	close.add_theme_font_size_override("font_size", 13)
+	close.custom_minimum_size = Vector2(140, 28)
+	close.pressed.connect(_close_pane_modal.bind(dim))
 	header.add_child(close)
 	pop_vb.add_child(header)
 	pop_vb.add_child(HSeparator.new())
@@ -765,6 +800,13 @@ func _open_pane_modal(title: String, body_builder: Callable) -> void:
 	if body != null:
 		body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		scroll.add_child(body)
+
+
+# Dim background click handler — closes the modal when clicking
+# outside the centered panel.
+func _on_modal_dim_input(ev: InputEvent, dim: ColorRect) -> void:
+	if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+		_close_pane_modal(dim)
 
 
 func _make_track_label(text: String) -> Label:
@@ -1053,7 +1095,7 @@ func _show_move_popup() -> void:
 
 func _toggle_board_fullscreen() -> void:
 	# Expand the board to fill the whole game viewport (covering
-	# the right column + bottom strip). Click the button again to
+	# the right column + bottom strip). Click again or hit Esc to
 	# restore the normal three-column layout.
 	_board_fullscreen = not _board_fullscreen
 	if _board_fullscreen:
@@ -1062,8 +1104,9 @@ func _toggle_board_fullscreen() -> void:
 		_board_root.offset_left = 8
 		_board_root.offset_right = -8
 		_board_root.offset_bottom = -8
-		_board_expand_btn.text = "⤓"
-		_board_expand_btn.tooltip_text = "Restore normal layout"
+		_board_expand_btn.text = "✕  Exit Fullscreen"
+		_board_expand_btn.tooltip_text = "Restore normal layout (Esc)"
+		_board_expand_btn.custom_minimum_size = Vector2(140, 22)
 		_board_root.z_index = 10
 	else:
 		_board_root.set_anchors_preset(Control.PRESET_LEFT_WIDE)
@@ -1073,6 +1116,7 @@ func _toggle_board_fullscreen() -> void:
 		_board_root.offset_right = -440
 		_board_expand_btn.text = "⛶"
 		_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
+		_board_expand_btn.custom_minimum_size = Vector2(28, 20)
 		_board_root.z_index = 0
 	_render_board()
 
