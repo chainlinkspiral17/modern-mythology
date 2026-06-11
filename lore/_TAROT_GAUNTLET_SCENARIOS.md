@@ -369,10 +369,23 @@ matching LOCATION at least once.
 - **TRACE THE LEMNISCATE** — the infinity loop in the air.
   Once played, the NEXT framework dice fail can be re-read
   as a single success (the gesture re-routes outcome)
-- **INVOKE A DEMON** — summon a warehouse demon as a
-  temporary visitor. They count as a connection for one
-  turn, then DEPART back to the warehouse. You owe them
-  one Inertia/tension for use.
+- **INVOKE A DEMON** — summon a warehouse demon to a SPACE
+  on the board (not as a visitor — as a *wiring*). The
+  demon takes residence in that space and IMPRINTS a flavor
+  onto it for the rest of the run:
+    · TEXTURE demons add atmosphere — that space now reduces
+      Inertia/tension by 1 when ended on
+    · CONNECTION demons act as bridge — a space they're
+      wired into becomes ADJACENT to any other demon-wired
+      space (Frasier lays parallel circuits across the
+      board)
+    · POWER demons feed actions — at a power-wired space,
+      one card play this turn is free
+  You owe each demon one Inertia/tension when invoked. They
+  remain until end of run or until ABJURED (a card that
+  costs 2 tension to unwire them). Frasier carries six
+  demon types in his hand; only some are appropriate for
+  any given location (no warehouse demon works in a church).
 - **BIND** — lock a placed item / a visitor / a threshold
   in its current state. Bound things can't be moved by
   Drift, Gravity, or Inertia for 3 turns. (Magician's
@@ -443,23 +456,119 @@ visit there. The warehouse is a balance sheet.
 
 ### H2 — ELICIA  (Priestess upright)
 
-> *Archivist. She doesn't speak unless she has to. The
-> archives speak through her hands instead. She has been
-> recording everyone in this gauntlet, and most of them don't
-> know it.*
+> *Archivist, recorder, editor. The laptop comes with her;
+> the camera lives in the bag at her hip; the lapel mic is
+> always clipped, batteries fresh. She is not just an
+> archivist — she is the DIRECTOR who has been recording
+> THE POMEGRANATE HOUR episodes through this entire gauntlet,
+> one per arcana, twenty-two of them. Each room she visits,
+> she is filming. Each visitor she meets is unwitting cast.
+> Her shadow (Priestess reversed) is the urge to speak in
+> the cut — to interrupt the recording with her own voice.*
 
-- **Action card set**: LISTEN, CATALOG, REWIND, THE THIRD
-  EAR, AUDI ET TACE (passive), TAPE-LOG, FIRST PLAY, SEAL
-  THE INDEX, BEAR WITNESS, OBSERVE (win card)
-- **Ultimate**: THE FIRST RECORDING — once per run, peek
-  the entire remaining destiny deck without revealing it to
-  the room
-- **Mix-and-match notes**:
-  - Elicia @ L0 Diner: LISTEN at search piles peeks the top 2
-    items without taking either; CATALOG records the tile
-    contents as a lore token without picking them up. The
-    Diner's inertia is harder for her because she doesn't
-    physically act — she records.
+#### The kit (carries to every location)
+
+Elicia starts every run with these THREE items already in
+her inventory. They're the equivalent of John's bindle —
+but unlike the bindle, they're the TOOLS for her win, not
+the win itself:
+
+- **THE LAPTOP** — her editing station. Movable. Whenever she
+  ends an ACTION phase standing on a space, the laptop's
+  "post" pile fills 1 tick toward EDIT. (Each space she
+  edits at becomes part of the episode's "rhythm.")
+- **THE CAMERA** — captures FOOTAGE at any space. One charge
+  per location-space-per-run; the camera "remembers" what's
+  there.
+- **THE LAPEL MIC** — captures AUDIO at any space. Different
+  pile than footage. Audio from where visitors are speaking
+  is worth 2x.
+
+#### The bindle equivalent: AN EPISODE
+
+She wins by assembling a complete POMEGRANATE HOUR episode
+about the location. The episode requires:
+
+- **FOOTAGE** from at least 3 different spaces (recorded
+  with the CAMERA action card)
+- **AUDIO** from at least 2 visitor interactions (recorded
+  with the MIC card while they're present and speaking)
+- **EDIT** completed at the laptop — a final-cut action she
+  plays during PLANNING that consumes all gathered FOOTAGE +
+  AUDIO and emits a finished episode card
+
+The episode itself is themed by the LOCATION'S reversed
+arcana — Elicia at the Diner makes EPISODE 0 · THE FOOL
+(reversed reading). Elicia at the Warehouse makes EPISODE
+I · THE MAGICIAN. Same gauntlet, different episode each
+location. Over 22 runs at 22 locations, the full Pomegranate
+Hour gets assembled.
+
+#### Action card set
+
+- **ROLL CAMERA** — at any space, record FOOTAGE of it. One
+  per space per run. Free if you're alone here, +1 PRESSURE
+  if a visitor is watching.
+- **HOT MIC** — at any space with a visitor, capture AUDIO
+  of their voice. The visitor must be SPEAKING — i.e. they
+  just arrived this turn OR they're at a connection-relevant
+  space. Without that, you get room tone instead (worth less).
+- **CUTAWAY** — drop the laptop here for one turn; future
+  ROLL CAMERA shots at adjacent spaces get a +1 bonus
+- **ROUGH CUT** — at the laptop, assemble a 1-minute pass.
+  Counts as 1 partial visitor connection if you have enough
+  raw material. Doesn't fully connect, but tilts the
+  visitor toward yes.
+- **B-ROLL** — passive: every move logs an environmental
+  detail to the FOOTAGE pile automatically (lightweight,
+  for connecting the cuts)
+- **PLAYBACK** — at the laptop, play a recorded tape AT
+  a visitor; if it's relevant to them, they connect
+  immediately (this is how she avoids speaking)
+- **THE THIRD EAR** — passive: at any threshold space, peek
+  the next Gravity card
+- **REWIND** — once per run, undo the last move (Priestess
+  time-fold; expensive — costs the laptop's current edit
+  progress)
+- **CATALOG** — record one Lore Token without claiming it
+  (the archive remembers without you committing — same as
+  before)
+- **CUT TO BLACK** *(win card)* — at the laptop, play this
+  with FOOTAGE ≥ 3 + AUDIO ≥ 2 + the laptop in EDIT-ready
+  state. Episode is finished. Run ends in win.
+
+#### Ultimate · THE FIRST RECORDING
+
+Once per run. She plays back a tape she made BEFORE this
+run started — a tape from her archive that's relevant to
+the current location. Effect: reveal one currently-hidden
+visitor's connect_via requirement in full, in plain English,
+displayed as a tooltip on their meeple for the rest of the
+run. (Lore: she's been recording everyone for years; she
+knows the secret of how to reach them.)
+
+#### Carryover unlocks
+
+- Cleared L2 (Archive): a tape from THIS run's location
+  joins her archive. On the next run at the same location,
+  she starts with that tape playable (counts as one
+  pre-filled audio slot).
+- Cleared L0 (Diner): unlocks DINER ROOM TONE — passive
+  +1 audio per turn in any subsequent Diner-shaped space
+- Across all 22 locations: each completed episode unlocks
+  the NEXT episode's location for free playback in the
+  meta-gallery (Pomegranate Hour becomes diegetically
+  available as a finished show).
+
+#### Mix-and-match: Elicia reshading each location
+
+| @ Location | What changes | Why |
+|---|---|---|
+| **L0 Diner** (Fool reversed) | The diner becomes a film set. Inertia doesn't tick when she's standing on a space she's already recorded (the room is being remembered correctly). But she has to GET the recordings before the room slips — visitors who get consumed before HOT MIC captures them are gone from the episode forever. Her win is EPISODE 0 — the Fool reversed reading rendered as a half-hour radio drama. | Her presence transforms the Diner from a place into a subject. The 3:47 AM dread becomes documentary footage of 3:47 AM. |
+| **L1 Warehouse** (Magician reversed) | She and Frasier exist in the same room at the same time often — Pomegranate Hour Episode I is largely about him. ROLL CAMERA on Frasier (the visitor here) is worth +2 FOOTAGE. But the warehouse demons jam her audio — HOT MIC has a 30% chance to capture nothing per try. | The Magician's reality-hack interferes with documentation; she has to outwait the interference. |
+| **L2 Archive** *(home)* | Default tuning. The laptop already has previous episodes loaded. PLAYBACK costs 0. She knows where every tape is — search is free here. | Home location: lowest friction. |
+| **L3 Church** (Hierophant reversed) | HOT MIC during a rite is blasphemous and powerful — captures audio worth 3x but raises DOCTRINE WEAR by 2. The bishop's voice on tape is the episode's centerpiece if you can get it. | The Priestess records what the Hierophant transmits — the act of recording the rite IS the heresy. |
+| **L4 Road** (Chariot reversed) | The laptop drains its battery while moving — must EDIT at a stop. Visitors are passing truckers (CB calls = HOT MIC opportunities). The episode is a road movie. | Chariot's motion conflicts with her stationary editing process; she has to plan stops. |
 
 ### H3 — MAYA  (Hierophant upright)
 
@@ -503,13 +612,16 @@ their tools INTERPRET the location's REVERSED arcana shadow:
 - **Frasier (Magician ↑)** reshades by *making everything
   literal and bindable*. Reduces rooms to gestures. Costs
   in demons-owed.
-- **Elicia (Priestess ↑)** reshades by *receiving rather
-  than acting*. Her presence in the Diner means the room
-  is being RECORDED for the first time; the Diner's
-  Inertia doesn't tick when she's present at a space (she
-  takes the tick into her tape instead, where it becomes
-  lore). Her cost: every recording fills the archive, and
-  the archive eventually weighs.
+- **Elicia (Priestess ↑)** reshades by *turning every room
+  into a subject*. She arrives with a laptop, a camera, and
+  a lapel mic. Her win at any location is to film + record
+  + edit a half-hour Pomegranate Hour episode about that
+  location's reversed arcana. The Diner becomes EPISODE 0
+  · THE FOOL; the Warehouse becomes EPISODE I · THE
+  MAGICIAN; etc. Across 22 runs at 22 locations, the full
+  show gets assembled. Her cost: every audio captures the
+  room's bad ambient; her shadow is the urge to narrate
+  over what was already true.
 - **Maya (Hierophant ↑)** reshades by *imposing protocol
   on places that have none*. In the Diner, she makes
   WIPE COUNTER into a ritual — the cloth becomes a vestment.
