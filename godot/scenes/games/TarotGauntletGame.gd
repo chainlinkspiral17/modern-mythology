@@ -3532,14 +3532,46 @@ func _trigger_win(threshold: String) -> void:
 			contents = it
 			break
 	GauntletState.record_win(_arcana_id, _location_id, contents, _lore_tokens_collected, "")
-	_show_end_screen(true, "★ THE LEAP",
-		"From the %s — '%s'\n\nThe leap rendered.\n%d Lore Tokens collected." %
-		[threshold, ending_token, _lore_tokens_collected.size()])
+	# CG image path per threshold
+	var cg_path: String = _win_cg_path(threshold)
+	# Threshold-specific narrative
+	var narrative: String = _win_narrative(threshold, ending_token, contents)
+	_show_end_screen(true, "★  THE LEAP", narrative, cg_path)
 	game_ended.emit("win", {
 		"threshold": threshold,
 		"contents": contents,
 		"lore_tokens": _lore_tokens_collected,
 	})
+
+
+func _win_cg_path(threshold: String) -> String:
+	match threshold:
+		"parking_lot":   return "res://assets/cg/fool_leap_parking_lot.png"
+		"river_window":  return "res://assets/cg/fool_leap_river_window.png"
+		"precipice_door": return "res://assets/cg/fool_leap_precipice_door.png"
+	return ""
+
+
+func _win_narrative(threshold: String, ending_token: String, contents: String) -> String:
+	var head: String = ""
+	match threshold:
+		"parking_lot":
+			head = "You step off the curb into the parking lot. The fluorescents dim behind you. The sodium light ahead is mundane, ordinary, awake. Whatever Graustark is, you're walking into it now."
+		"river_window":
+			head = "The window unlatches like it was always going to. You climb over the sill and the river receives you — its current is a substrate you've felt under everything but never named. You leap into the dark water and the dark water knows your name."
+		"precipice_door":
+			head = "The door you couldn't see all night is open. The room beyond is lit warm — tape reels turning, a woman at the far end, waiting. Elicia has been recording you since before you started here. You step through, and the door closes softly behind you."
+	var contents_line: String = ""
+	if contents != "":
+		var c_item: Dictionary = _items_def.get(contents, {})
+		var c_token: String = String(c_item.get("ending_lore_token", ""))
+		contents_line = "\n\nYou carry %s with you — %s." % [
+			c_item.get("title", contents),
+			c_token.replace("_", " ") if c_token != "" else "the smallest weight that's still yours"]
+	var lore_line: String = ""
+	if not _lore_tokens_collected.is_empty():
+		lore_line = "\n\nLore tokens collected:\n  · " + "\n  · ".join(_lore_tokens_collected)
+	return head + contents_line + lore_line
 
 
 func _trigger_loss(reason: String) -> void:
@@ -3561,7 +3593,8 @@ func _trigger_loss(reason: String) -> void:
 		finale_title = f.get("title", "")
 		finale_flavor = f.get("flavor", "")
 	GauntletState.record_loss(_arcana_id, _location_id, finale_id, _lore_tokens_collected)
-	_show_end_screen(false, "REVERSED · " + finale_title, finale_flavor)
+	var cg_path: String = _loss_cg_path(finale_id)
+	_show_end_screen(false, "REVERSED · " + finale_title, finale_flavor, cg_path)
 	game_ended.emit("loss", {
 		"reason": reason,
 		"finale": finale_id,
@@ -3569,46 +3602,101 @@ func _trigger_loss(reason: String) -> void:
 	})
 
 
-func _show_end_screen(won: bool, title: String, body: String) -> void:
+func _loss_cg_path(finale_id: String) -> String:
+	match finale_id:
+		"wipe_the_same_spot_forever":      return "res://assets/cg/fool_finale_wipe_forever.png"
+		"twenty_four_hour_diner_of_the_soul": return "res://assets/cg/fool_finale_24_hour_diner.png"
+		"the_empty_room":                  return "res://assets/cg/fool_finale_empty_room.png"
+	return ""
+
+
+func _show_end_screen(won: bool, title: String, body: String, cg_path: String = "") -> void:
 	if _end_overlay != null:
 		_end_overlay.queue_free()
 	_end_overlay = Control.new()
 	_end_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_end_overlay.z_index = 200
+	# Heavy dim — cinematic.
 	var dim := ColorRect.new()
-	dim.color = Color(0, 0, 0, 0.78)
+	dim.color = Color(0, 0, 0, 0.92)
 	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	_end_overlay.add_child(dim)
+	# Centered ~80% cinematic panel, large image + text below.
+	var view: Vector2 = get_viewport_rect().size
 	var panel := PanelContainer.new()
-	panel.set_anchors_preset(Control.PRESET_CENTER)
-	panel.offset_left = -360
-	panel.offset_right = 360
-	panel.offset_top = -160
-	panel.offset_bottom = 160
 	panel.add_theme_stylebox_override("panel", _make_panel_style())
+	panel.size = Vector2(min(view.x * 0.84, 980.0), min(view.y * 0.88, 680.0))
+	panel.position = (view - panel.size) * 0.5
 	_end_overlay.add_child(panel)
 	var vb := VBoxContainer.new()
-	vb.add_theme_constant_override("separation", 14)
+	vb.add_theme_constant_override("separation", 12)
 	panel.add_child(vb)
+	# CG image at the top (or a placeholder bar if missing) — gives
+	# the finale weight even before art is generated.
+	var cg_tex: Texture2D = _load_texture_silent(cg_path) if cg_path != "" else null
+	var cg_panel := PanelContainer.new()
+	cg_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	cg_panel.custom_minimum_size = Vector2(0, 340)
+	cg_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	vb.add_child(cg_panel)
+	if cg_tex:
+		var img := TextureRect.new()
+		img.texture = cg_tex
+		img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		img.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		img.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		cg_panel.add_child(img)
+	else:
+		var ph := Label.new()
+		ph.text = "(finale CG art not yet generated)\nGenerate it in gauntlet_studio.html at\n  %s" % cg_path
+		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.40))
+		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		ph.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		ph.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		cg_panel.add_child(ph)
+	# Title — large, color-coded
 	var t := Label.new()
 	t.text = title
 	t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	t.add_theme_color_override("font_color", C_GOOD if won else C_BAD)
-	t.add_theme_font_size_override("font_size", 22)
+	t.add_theme_font_size_override("font_size", 26)
 	vb.add_child(t)
+	# Narrative + lore tokens, scrollable so long endings fit
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	vb.add_child(scroll)
 	var b := RichTextLabel.new()
 	b.bbcode_enabled = true
 	b.fit_content = true
-	b.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	b.text = "[i]%s[/i]\n\nLore Tokens: %s" % [body, ", ".join(_lore_tokens_collected)]
+	b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	b.text = "[i]%s[/i]" % body
 	b.add_theme_color_override("default_color", C_TEXT)
-	vb.add_child(b)
+	b.add_theme_font_size_override("normal_font_size", 13)
+	scroll.add_child(b)
+	# Buttons
+	var actions := HBoxContainer.new()
+	actions.add_theme_constant_override("separation", 10)
+	vb.add_child(actions)
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	actions.add_child(spacer)
 	var btn := Button.new()
-	btn.text = "Leave"
+	btn.text = "Leave the Diner"
+	btn.add_theme_font_size_override("font_size", 14)
+	btn.custom_minimum_size = Vector2(180, 36)
 	btn.pressed.connect(_on_leave)
-	vb.add_child(btn)
+	actions.add_child(btn)
 	add_child(_end_overlay)
+	# Fade-in for cinematic feel
+	_end_overlay.modulate = Color(1, 1, 1, 0)
+	var t_in := create_tween()
+	t_in.tween_property(_end_overlay, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 
 func _on_leave() -> void:
