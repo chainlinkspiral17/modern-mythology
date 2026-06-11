@@ -69,5 +69,6 @@
     {"id": "river_window", "label": "RIVER WINDOW", "ending_lore_token": "leap_into_substrate_lunch", "visible_from_start": true}
   ],
 
-  "notes": "Medium-difficulty companion to THE LEAP. Same diner, different shift. Inertia ticks at +2 per turn instead of +1. Two helper visitors on the board reduce the cost of being elsewhere. The bar is still closed; that's the Evening setup. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+  "max_turns": 10,
+  "notes": "Medium-difficulty companion to THE LEAP. Same diner, different shift. Inertia ticks at +2 per turn instead of +1. Two helper visitors on the board reduce the cost of being elsewhere. The bar is still closed; that's the Evening setup. max_turns 10 — lunch service ends; if you haven't met conditions, you're behind. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
 }

@@ -69,5 +69,6 @@
     {"id": "river_window", "label": "RIVER WINDOW", "ending_lore_token": "leap_into_substrate_evening", "visible_from_start": true}
   ],
 
-  "notes": "Hard-difficulty companion to THE LEAP. Bar is OPEN — the closed half of the diner from THE LEAP is in play, with its own visitor spawns and pull. Inertia ticks +2 at the bottom of the scale and +3 once it hits 7. Starts already at 1 inertia + 4 sanity. The room expects you to use every helper. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+  "max_turns": 12,
+  "notes": "Hard-difficulty companion to THE LEAP. Bar is OPEN — the closed half of the diner from THE LEAP is in play, with its own visitor spawns and pull. Inertia ticks +2 at the bottom of the scale and +3 once it hits 7. Starts already at 1 inertia + 4 sanity. The room expects you to use every helper. max_turns 12 — last call is final. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
 }

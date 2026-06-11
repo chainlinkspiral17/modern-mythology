@@ -158,6 +158,14 @@ var _end_overlay: Control = null
 # "evening_service". Names the setup_<id>.json file the engine
 # loads, and optionally a gravity_deck_<id>.json variant.
 var _scenario_id: String = "the_leap"
+# Escalation: every time the gravity deck recycles, the room
+# "learns you." This bumps the per-turn Inertia tick by 1 and is
+# announced in the log. THE LEAP rarely sees a reshuffle; longer
+# scenarios see one or two.
+var _room_attention: int = 0
+# Counts deck recycles (incremented in _reshuffle_gravity_discard)
+# so the log can name which wave the player is in.
+var _gravity_recycle_count: int = 0
 
 const C_BG: Color    = Color(0.045, 0.040, 0.030)
 const C_PANEL: Color = Color(0.085, 0.070, 0.050, 1.0)
@@ -167,6 +175,17 @@ const C_DIM: Color   = Color(0.55, 0.50, 0.40)
 const C_ACCENT: Color = Color(0.95, 0.78, 0.40)
 const C_GOOD: Color  = Color(0.55, 0.95, 0.65)
 const C_BAD: Color   = Color(0.95, 0.45, 0.45)
+
+# How many turns a visitor will sit at progress 0 (no GREET yet)
+# before they stand up and leave. The room's mood-shaped clock.
+# Helpers and Faith are exempt. Per-visitor overrides via the
+# `patience` field on the visitor def.
+const PATIENCE_BY_MOOD := {
+	"jovial":      8,
+	"preoccupied": 6,
+	"gruff":       5,
+	"left_alone":  4,
+}
 
 
 # ── Entry point ──────────────────────────────────────────────────────
@@ -598,6 +617,7 @@ func _init_run() -> void:
 				_visitors_state[vid] = {
 					"pos": arr.get("pos", "counter"),
 					"arrived": true,
+					"arrived_turn": 1,
 					"connected": false,
 					"claimed_turn": -1,
 					"progress": 0,
@@ -3555,7 +3575,8 @@ func _render() -> void:
 		_show_toast("[b]LEAP[/b] unlocked — play it at any open threshold.", "#ffd07a")
 	_phase_label.text = "PHASE: " + Phase.keys()[_phase]
 	_phase_label.tooltip_text = _phase_what_now(_phase) + "\n\n(Click for full rules.)"
-	_turn_label.text  = "Turn %d" % _turn
+	var max_turns_ui: int = int(_setup.get("max_turns", 14))
+	_turn_label.text  = "Turn %d / %d" % [_turn, max_turns_ui]
 	_time_label.text  = "Time %d / %d" % [_time, _next_time_reset]
 	_inertia_label.text = "Inertia %d / 12" % _inertia
 	_sanity_label.text  = "Sanity %d" % _sanity
@@ -4139,7 +4160,8 @@ func _resolve_effect(e: Dictionary) -> void:
 				break
 		"consume_order_for_visitor_at_my_pos":
 			# DELIVER follow-on. The visitor's order_item is consumed
-			# from inventory.
+			# from inventory, and the delivered-order count ticks up
+			# so the lunch/evening win conditions can see it.
 			for vid_c in _visitors_state:
 				var vst_c: Dictionary = _visitors_state[vid_c]
 				if not vst_c.get("arrived", false): continue
@@ -4150,6 +4172,7 @@ func _resolve_effect(e: Dictionary) -> void:
 					_inventory.erase(ord_id2)
 					var ititle2: String = String(_items_def.get(ord_id2, {}).get("title", ord_id2))
 					_log_line("[color=#7c8398][i]   You set the %s down. They take it.[/i][/color]" % ititle2)
+					_flags["orders_delivered"] = int(_flags.get("orders_delivered", 0)) + 1
 					break
 		"ready_oldest_order":
 			# ADDRESS THE BELL follow-on. First pending order in the
@@ -5253,10 +5276,20 @@ func _phase_action() -> void:
 	_last_played_cid = ""
 	# Per-scenario baseline inertia tick (per-turn). Default 1.
 	# Setup JSON's starting_state.inertia_per_turn overrides.
+	# _room_attention adds an extra +1 per gravity-deck recycle.
 	var tick: int = int((_setup.get("starting_state", {}) as Dictionary).get("inertia_per_turn", 1))
+	tick += _room_attention
 	if tick > 0:
 		_inertia = min(12, _inertia + tick)
-	_log_line("\n[color=#c8a268][b]── turn %d ──[/b][/color]" % _turn)
+	# Time-of-day deadline. Each scenario's setup may declare
+	# `max_turns`; on turn N+1 the shift ends and the engine forces
+	# a win-check. THE LEAP: 14 turns by default. RUSH: 10. EVENING: 12.
+	var max_turns: int = int(_setup.get("max_turns", 14))
+	if _turn > max_turns:
+		_log_line("\n[color=#ff8060][b]── the shift is over ──[/b][/color]")
+		_force_end_of_shift_check()
+		return
+	_log_line("\n[color=#c8a268][b]── turn %d / %d ──[/b][/color]" % [_turn, max_turns])
 	# Visitor arrivals scheduled for this turn
 	var arrivals_this_turn: Array = []
 	for vid in _visitors_state:
@@ -5264,6 +5297,7 @@ func _phase_action() -> void:
 		if not st.get("arrived", false) and st.has("scheduled_turn"):
 			if int(st["scheduled_turn"]) <= _turn:
 				st["arrived"] = true
+				st["arrived_turn"] = _turn
 				st["pos"] = st.get("arrival_pos", "counter")
 				var name_s: String = _visitors_def.get(vid, {}).get("name", vid)
 				_log_line("[i]→ %s arrives at %s[/i]" % [name_s, st["pos"]])
@@ -5304,6 +5338,9 @@ func _check_togo_deliveries() -> void:
 			_inertia = max(0, _inertia - int(reward["lose_inertia"]))
 		if reward.has("lore_token"):
 			_collect_lore_token(String(reward["lore_token"]))
+		# Counts toward the lunch/evening "orders delivered" win
+		# threshold, same as a dine-in deliver.
+		_flags["orders_delivered"] = int(_flags.get("orders_delivered", 0)) + 1
 		_show_toast("Delivered [b]%s[/b]" % ititle, "#7cffb0")
 
 
@@ -5411,6 +5448,13 @@ func _reshuffle_gravity_discard() -> void:
 	else:
 		_log_line("[color=#c8a268][i]· the deck reshuffles. %d return; %d still in play and stay out.[/i][/color]" %
 			[returning.size(), staying_out.size()])
+	# Escalation: the room has now seen John for one full cycle. It's
+	# paying more attention. Each recycle adds 1 to the per-turn
+	# Inertia tick, telegraphed as "the room learns you."
+	_gravity_recycle_count += 1
+	_room_attention += 1
+	_log_line("[color=#ff8060][b]» the room learns you ·[/b][/color] [color=#ff8060]+1 Inertia/turn[/color] [color=#7c8398](attention = %d)[/color]" % _room_attention)
+	_show_toast("The room is paying more attention", "#ff8060")
 
 
 # Does this Gravity card have an effect that's still active right
@@ -5666,6 +5710,11 @@ func _phase_upkeep() -> void:
 		_log_line("[color=#7cffb0]Faith steady · -1 Inertia[/color]")
 	# Threat pieces tick during UPKEEP.
 	_tick_threats_upkeep()
+	# Mood-gated visitor patience. A visitor still at progress 0
+	# (never greeted) for `patience` turns since arrival stands up
+	# and leaves — counts as a self-claim. Helpers, Faith, and the
+	# stranger (whose connect path is composite) are exempt.
+	_tick_visitor_patience()
 	# Precipice door reveal check
 	var present := 0
 	for vid in _visitors_state:
@@ -5678,6 +5727,74 @@ func _phase_upkeep() -> void:
 
 
 # ── End conditions ──────────────────────────────────────────────────
+
+func _tick_visitor_patience() -> void:
+	# Each Upkeep: for any visitor who's arrived, unconnected, not
+	# already claimed, has helper:false, has no special connect_via,
+	# and is still at progress 0 — count turns since arrival. If we
+	# hit their patience limit they stand up and leave (self-claim).
+	for vid in _visitors_state:
+		var st: Dictionary = _visitors_state[vid]
+		if not st.get("arrived", false): continue
+		if st.get("connected", false): continue
+		if int(st.get("claimed_turn", -1)) >= 0: continue
+		if int(st.get("progress", 0)) > 0: continue
+		var vdef: Dictionary = _visitors_def.get(vid, {})
+		if vdef.get("helper", false): continue
+		if vid == "faith": continue
+		# Visitors with a composite/auto connect path don't need
+		# the waiter sequence at all — they wait on their own
+		# rules and shouldn't time out on patience.
+		var cv: Dictionary = vdef.get("connect_via", {})
+		if not cv.is_empty(): continue
+		var patience: int = int(vdef.get("patience",
+			PATIENCE_BY_MOOD.get(String(vdef.get("mood", "preoccupied")), 6)))
+		var arrived_turn: int = int(st.get("arrived_turn", 1))
+		var elapsed: int = _turn - arrived_turn
+		var remaining: int = patience - elapsed
+		# Telegraph at 2 turns out and 1 turn out so the player
+		# can triage.
+		if remaining == 2:
+			_log_line("[color=#ff8060][i]· %s is checking the time.[/i][/color]" %
+				_visitors_def.get(vid, {}).get("name", vid))
+		elif remaining == 1:
+			_log_line("[color=#ff8060][i]· %s is gathering their things.[/i][/color]" %
+				_visitors_def.get(vid, {}).get("name", vid))
+		elif remaining <= 0:
+			st["claimed_turn"] = _turn
+			st["walked_off"] = true
+			_log_line("[color=#ff5040][b]✕ %s walks out without being greeted.[/b][/color]" %
+				_visitors_def.get(vid, {}).get("name", vid))
+			_show_toast("%s walked out" % _visitors_def.get(vid, {}).get("name", vid), "#ff5040")
+
+
+# Force a win-check at end of shift (time-of-day deadline). If the
+# scenario's win conditions are met right now, trigger the win. If
+# not, trigger a loss with reason "shift_over".
+func _force_end_of_shift_check() -> void:
+	if _game_over:
+		return
+	# Reuse the same predicate the LEAP card uses but without
+	# requiring a threshold. Different scenarios have different
+	# win shapes, so check by scenario.
+	var wc: Dictionary = _setup.get("win_conditions", {})
+	var connected_count: int = _connections_made.size()
+	var need_connected: int = int(wc.get("require_visitors_connected_min", 3))
+	# Orders served (lunch/evening only)
+	var orders_served: int = int(_flags.get("orders_delivered", 0))
+	var need_orders: int = int(wc.get("require_orders_delivered_min", 0))
+	# Inertia ceiling
+	var max_inertia: int = int(wc.get("require_inertia_below", 99))
+	var meets: bool = (connected_count >= need_connected
+		and orders_served >= need_orders
+		and _inertia < max_inertia)
+	if meets:
+		_log_line("[color=#7cffb0][b]· you made it to closing. The shift holds.[/b][/color]")
+		_trigger_win("shift_end")
+	else:
+		_log_line("[color=#ff5040][b]· the shift ends with you behind.[/b][/color]")
+		_trigger_loss("shift_over")
+
 
 func _check_game_end() -> void:
 	if _game_over:

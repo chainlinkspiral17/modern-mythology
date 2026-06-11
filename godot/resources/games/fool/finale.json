@@ -55,6 +55,16 @@
       "effects": [
         {"kind": "end_game", "outcome": "reversed_fool"}
       ]
+    },
+    {
+      "id": "the_shift_ends_behind",
+      "title": "BEHIND, AT CLOSING",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "The shift ends and you are still in the middle of it. Tickets you never delivered. Tables you never reached. A booth where someone waited an hour and finally stood up. The relief that doesn't come is the room's last gift.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_fool"}
+      ]
     }
   ],
   "post_loss_behavior": {

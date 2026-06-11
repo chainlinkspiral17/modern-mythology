@@ -60,5 +60,6 @@
     {"id": "precipice_door","label": "PRECIPICE DOOR","ending_lore_token": "leap_into_priestess",   "visible_from_start": false,
      "appears_when": "visitors_on_board_min:4"}
   ],
-  "notes": "Spec source: lore/_TAROT_GAUNTLET.md §IV.2-IV.6."
+  "max_turns": 14,
+  "notes": "Spec source: lore/_TAROT_GAUNTLET.md §IV.2-IV.6. max_turns 14 — 3:47 AM has a long off-shift before dawn."
 }
