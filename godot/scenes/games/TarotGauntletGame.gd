@@ -1748,12 +1748,13 @@ func _render_board() -> void:
 	for inst: Dictionary in _threats_active:
 		var tid: String = String(inst.get("id", ""))
 		var tdef: Dictionary = _threats_def.get(inst.get("def_id", ""), {})
+		var ticks: int = int(inst.get("ticks_remaining", 0))
+		var glyph_text: String = "%s %d" % [String(tdef.get("glyph", "✕")), ticks]
 		var tnode: Control
 		if _board_threat_nodes.has(tid) and is_instance_valid(_board_threat_nodes[tid]):
 			tnode = _board_threat_nodes[tid]
 		else:
 			var glyph := Label.new()
-			glyph.text = String(tdef.get("glyph", "✕"))
 			glyph.add_theme_color_override("font_color", Color(tdef.get("tint", "#ff8060")))
 			glyph.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
 			tnode = glyph
@@ -1765,14 +1766,17 @@ func _render_board() -> void:
 				tnode.position = _board_marker_pos[tp] - tms * 0.5
 			_board_content.add_child(tnode)
 			_board_threat_nodes[tid] = tnode
-		tnode.custom_minimum_size = Vector2(threat_meeple_size, threat_meeple_size)
-		tnode.size = Vector2(threat_meeple_size, threat_meeple_size)
 		if tnode is Label:
+			(tnode as Label).text = glyph_text
 			(tnode as Label).add_theme_constant_override("outline_size", int(max(2, 3.0 * ui_scale)))
 			(tnode as Label).add_theme_font_size_override("font_size", int(max(11, 16.0 * ui_scale)))
-		tnode.tooltip_text = "[%s]\n%s\n\n%s" % [
+		# Two-glyph cluster needs more horizontal room than a single dot.
+		tnode.custom_minimum_size = Vector2(threat_meeple_size * 1.8, threat_meeple_size)
+		tnode.size = Vector2(threat_meeple_size * 1.8, threat_meeple_size)
+		tnode.tooltip_text = "[%s]\n%s\n\n%d turn(s) until it fades on its own.\n%s" % [
 			String(tdef.get("title", "threat")),
 			String(tdef.get("flavor", "")),
+			ticks,
 			_threat_clear_hint(tdef)]
 	_position_meeples()
 
@@ -3964,6 +3968,9 @@ func _threat_clear_hint(tdef: Dictionary) -> String:
 		return "(no clear path)"
 	var card_def: Dictionary = _action_cards.get(card, {})
 	var ctitle: String = String(card_def.get("title", card.to_upper()))
+	var radius: int = int(cb.get("clear_radius", 0))
+	if radius > 0:
+		return "Clear by playing %s here or on an adjacent space." % ctitle
 	return "Clear by playing %s here." % ctitle
 
 
@@ -3982,37 +3989,46 @@ func _spawn_threat(def_id: String, pos_override: String = "") -> void:
 	if pos == "":
 		return
 	# One-per-(def_id, pos): the room doesn't stack identical messes.
+	# If the same threat would respawn on the same space, refresh its
+	# countdown instead of stacking a second copy.
 	for existing: Dictionary in _threats_active:
 		if existing.get("def_id", "") == def_id and existing.get("pos", "") == pos:
+			existing["ticks_remaining"] = int(tdef.get("max_ticks", 99))
+			_log_line("[color=#ff8060][i]· the %s lingers on (%d turns).[/i][/color]" %
+				[String(tdef.get("title", def_id)).to_lower(), int(existing["ticks_remaining"])])
 			return
 	var tid: String = "t%d" % _threats_next_serial
 	_threats_next_serial += 1
-	_threats_active.append({"id": tid, "def_id": def_id, "pos": pos})
+	var ticks: int = int(tdef.get("max_ticks", 99))
+	_threats_active.append({"id": tid, "def_id": def_id, "pos": pos, "ticks_remaining": ticks})
 	var spawn_msg: String = String(tdef.get("spawn_message", ""))
 	if spawn_msg != "":
-		_log_line("[color=#ff8060]✕ %s[/color] [color=#7c8398][i]%s[/i][/color]" %
-			[String(tdef.get("title", def_id)), spawn_msg])
+		_log_line("[color=#ff8060]✕ %s[/color] [color=#7c8398][i]%s · %d turns until it fades on its own[/i][/color]" %
+			[String(tdef.get("title", def_id)), spawn_msg, ticks])
 	else:
-		_log_line("[color=#ff8060]✕ %s[/color]" % String(tdef.get("title", def_id)))
+		_log_line("[color=#ff8060]✕ %s[/color] [color=#7c8398][i](%d turns)[/i][/color]" %
+			[String(tdef.get("title", def_id)), ticks])
 	_show_toast("Threat · [b]%s[/b]" % String(tdef.get("title", def_id)), "#ff8060")
 
 
 func _clear_threats_at(pos: String, card_id: String) -> bool:
-	# Returns true if at least one threat was cleared. card_id is the
-	# card the player just played; the threat's `cleared_by.card` must
-	# match. Called from CLEAN's effects (and any future targeted card).
+	# Returns true if at least one threat was cleared. The threat's
+	# `cleared_by.card` must match `card_id`, and `pos` must be at
+	# (or within `clear_radius` of) the threat's space.
 	if pos == "":
 		return false
 	var cleared_any: bool = false
 	var remaining: Array = []
 	for inst: Dictionary in _threats_active:
-		if inst.get("pos", "") != pos:
-			remaining.append(inst)
-			continue
 		var tdef: Dictionary = _threats_def.get(inst.get("def_id", ""), {})
 		var cb: Dictionary = tdef.get("cleared_by", {})
 		var need_card: String = String(cb.get("card", ""))
 		if need_card != "" and need_card != card_id:
+			remaining.append(inst)
+			continue
+		var radius: int = int(cb.get("clear_radius", 0))
+		var tpos: String = String(inst.get("pos", ""))
+		if not _within_radius(pos, tpos, radius):
 			remaining.append(inst)
 			continue
 		# Cleared.
@@ -4024,27 +4040,60 @@ func _clear_threats_at(pos: String, card_id: String) -> bool:
 			_log_line("[color=#7cffb0]✓ cleared:[/color] [b]%s[/b]" % String(tdef.get("title", "threat")))
 		cleared_any = true
 	_threats_active = remaining
-	if cleared_any:
-		# Drop board nodes for the cleared instances on next render.
-		# _render_board reconciles _board_threat_nodes against
-		# _threats_active so we just trigger a render.
-		pass
 	return cleared_any
 
 
+# True if `from` is `target` or within `radius` adjacency hops of it
+# (radius 0 = exact match, radius 1 = adjacent).
+func _within_radius(from: String, target: String, radius: int) -> bool:
+	if from == target:
+		return true
+	if radius <= 0:
+		return false
+	var adj_map: Dictionary = _location.get("adjacency", {})
+	var visited: Dictionary = {from: true}
+	var frontier: Array = [from]
+	for _hop in range(radius):
+		var next_frontier: Array = []
+		for s: String in frontier:
+			for nbr: String in adj_map.get(s, []):
+				if nbr == target:
+					return true
+				if not visited.has(nbr):
+					visited[nbr] = true
+					next_frontier.append(nbr)
+		frontier = next_frontier
+	return false
+
+
 # Ongoing per-Upkeep tick — every active threat applies its
-# `ongoing_per_upkeep` effects.
+# `ongoing_per_upkeep` effects, then decrements its countdown.
+# When the countdown hits 0 the threat expires harmlessly.
 func _tick_threats_upkeep() -> void:
 	if _threats_active.is_empty():
 		return
-	for inst: Dictionary in _threats_active.duplicate():
+	var survivors: Array = []
+	for inst: Dictionary in _threats_active:
 		var tdef: Dictionary = _threats_def.get(inst.get("def_id", ""), {})
 		var fx: Array = tdef.get("ongoing_per_upkeep", [])
-		if fx.is_empty():
-			continue
-		_log_line("[color=#ff8060][i]· %s — %s[/i][/color]" %
-			[String(tdef.get("title", "threat")).to_lower(), String(tdef.get("flavor", ""))])
-		_resolve_effects(fx)
+		if not fx.is_empty():
+			_log_line("[color=#ff8060][i]· %s — %s[/i][/color]" %
+				[String(tdef.get("title", "threat")).to_lower(), String(tdef.get("flavor", ""))])
+			_resolve_effects(fx)
+		# Decrement countdown
+		var tr: int = int(inst.get("ticks_remaining", 99))
+		tr -= 1
+		if tr <= 0:
+			var em: String = String(tdef.get("expired_message", ""))
+			if em != "":
+				_log_line("[color=#c8a268]· %s fades.[/color] [color=#7c8398][i]%s[/i][/color]" %
+					[String(tdef.get("title", "threat")), em])
+			else:
+				_log_line("[color=#c8a268]· %s fades.[/color]" % String(tdef.get("title", "threat")))
+		else:
+			inst["ticks_remaining"] = tr
+			survivors.append(inst)
+	_threats_active = survivors
 
 
 # Faith's mess follows her — if she's moved, the wet patch went with
@@ -4952,11 +5001,9 @@ func _trigger_win(threshold: String) -> void:
 	# Threshold-specific narrative
 	var narrative: String = _win_narrative(threshold, ending_token, contents)
 	_show_end_screen(true, "★  THE LEAP", narrative, cg_path)
-	game_ended.emit("win", {
-		"threshold": threshold,
-		"contents": contents,
-		"lore_tokens": _lore_tokens_collected,
-	})
+	# game_ended fires from _on_leave when the player dismisses the
+	# screen — emitting it now would tear the overlay down with the
+	# scene before they see the ending.
 
 
 func _win_cg_path(threshold: String) -> String:
@@ -5010,18 +5057,18 @@ func _trigger_loss(reason: String) -> void:
 	GauntletState.record_loss(_arcana_id, _location_id, finale_id, _lore_tokens_collected)
 	var cg_path: String = _loss_cg_path(finale_id)
 	_show_end_screen(false, "REVERSED · " + finale_title, finale_flavor, cg_path)
-	game_ended.emit("loss", {
-		"reason": reason,
-		"finale": finale_id,
-		"lore_tokens": _lore_tokens_collected,
-	})
+	# game_ended fires when the player dismisses the end screen via
+	# _on_leave — emitting it here would tear the scene down and the
+	# player would never see the finale.
 
 
 func _loss_cg_path(finale_id: String) -> String:
 	match finale_id:
-		"wipe_the_same_spot_forever":      return "res://assets/cg/fool_finale_wipe_forever.png"
+		"wipe_the_same_spot_forever":         return "res://assets/cg/fool_finale_wipe_forever.png"
 		"twenty_four_hour_diner_of_the_soul": return "res://assets/cg/fool_finale_24_hour_diner.png"
-		"the_empty_room":                  return "res://assets/cg/fool_finale_empty_room.png"
+		"the_empty_room":                     return "res://assets/cg/fool_finale_empty_room.png"
+		"the_room_listens_back":              return "res://assets/cg/fool_finale_room_listens.png"
+		"the_three_forty_seven_minute":       return "res://assets/cg/fool_finale_three_forty_seven.png"
 	return ""
 
 

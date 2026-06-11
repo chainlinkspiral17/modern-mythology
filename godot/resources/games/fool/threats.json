@@ -1,6 +1,6 @@
 {
   "scope": "fool",
-  "notes": "Threats are meeples spawned onto the board by Gravity cards (sometimes Events). While present they impose an ongoing per-turn penalty during UPKEEP. The player clears them by playing the listed `cleared_by` card at the listed `at_pos`, or by standing on the same space and triggering an action that names them. Examples in this scenario: Faith makes a wet patch under the counter; the bathroom needs cleaning; a miasmic funk rolls in from the river window.",
+  "notes": "Threats are meeples spawned onto the board by Gravity cards. While present they impose an ongoing per-Upkeep penalty until cleared by the listed `cleared_by` card at the threat's space, OR until their `max_ticks` countdown expires and the room moves on. The countdown is the visible counter — every threat carries a number that ticks down each Upkeep so the threat is bounded.",
   "threats": {
     "faith_mess": {
       "title": "FAITH MADE A MESS",
@@ -10,11 +10,13 @@
       "default_pos": "under_counter",
       "spawn_at_visitor": "faith",
       "spawn_message": "Faith leaves a wet patch where she was lying.",
+      "max_ticks": 4,
       "ongoing_per_upkeep": [
         {"kind": "gain_inertia", "amount": 1, "note": "you can't stop noticing it"}
       ],
-      "cleared_by": {"card": "clean", "at_pos_matches_threat": true},
-      "cleared_message": "Mopped. Faith looks elsewhere."
+      "cleared_by": {"card": "clean", "at_pos_matches_threat": true, "clear_radius": 0},
+      "cleared_message": "Mopped. Faith looks elsewhere.",
+      "expired_message": "The patch dries on its own. The room moves on."
     },
     "bathroom_funk": {
       "title": "THE BATHROOM NEEDS CLEANING",
@@ -23,11 +25,13 @@
       "flavor": "The light in there is buzzing wrong, and somebody left the tap on.",
       "default_pos": "bathroom",
       "spawn_message": "Something in the bathroom turns on the smell.",
+      "max_ticks": 4,
       "ongoing_per_upkeep": [
         {"kind": "lose_sanity", "amount": 1, "note": "knowing it's there"}
       ],
-      "cleared_by": {"card": "clean", "at_pos_matches_threat": true},
-      "cleared_message": "Bleach, paper, twenty seconds. The room remembers being a room."
+      "cleared_by": {"card": "clean", "at_pos_matches_threat": true, "clear_radius": 0},
+      "cleared_message": "Bleach, paper, twenty seconds. The room remembers being a room.",
+      "expired_message": "Whatever was wrong in there sorts itself out. The door swings shut."
     },
     "river_miasma": {
       "title": "MIASMA · THE RIVER WINDOW",
@@ -36,11 +40,13 @@
       "flavor": "A green-grey haze pressed against the window. Smells like turned earth.",
       "default_pos": "river_window",
       "spawn_message": "The river window fogs over from the outside.",
+      "max_ticks": 2,
       "ongoing_per_upkeep": [
         {"kind": "lose_sanity", "amount": 1, "note": "miasma seeping through the seal"}
       ],
-      "cleared_by": {"card": "clean", "at_pos_matches_threat": true},
-      "cleared_message": "You wipe the inside. The fog stays outside where fog belongs."
+      "cleared_by": {"card": "clean", "at_pos_matches_threat": true, "clear_radius": 1},
+      "cleared_message": "You wipe the inside. The fog stays outside where fog belongs.",
+      "expired_message": "The wind shifts. The fog peels off the glass and is gone."
     },
     "grill_grease_fire": {
       "title": "GREASE ON THE GRILL",
@@ -49,11 +55,13 @@
       "flavor": "A line of smoke from the unattended grill. Not yet fire. Almost.",
       "default_pos": "grill",
       "spawn_message": "The grill smolders. Nobody's watching it but you.",
+      "max_ticks": 3,
       "ongoing_per_upkeep": [
         {"kind": "gain_inertia", "amount": 1, "note": "the smell sits in your apron"}
       ],
-      "cleared_by": {"card": "clean", "at_pos_matches_threat": true},
-      "cleared_message": "Scraped down. The smoke clears."
+      "cleared_by": {"card": "clean", "at_pos_matches_threat": true, "clear_radius": 1},
+      "cleared_message": "Scraped down. The smoke clears.",
+      "expired_message": "The grill cools itself. The smoke thins, then stops."
     },
     "fluorescent_swarm": {
       "title": "A SWARM AT THE FLUORESCENT",
@@ -62,11 +70,14 @@
       "flavor": "Whatever they are, they aren't moths. They tick like the light does.",
       "default_pos": "booth_6",
       "spawn_message": "A swarm gathers under the buzzing light over BOOTH 6.",
+      "max_ticks": 3,
       "ongoing_per_upkeep": [
         {"kind": "lose_sanity", "amount": 1, "note": "ticking, ticking"}
       ],
-      "cleared_by": {"card": "clean", "at_pos_matches_threat": true},
-      "cleared_message": "A swat of cloth. They scatter. The light clicks back to its normal tick."
+      "cleared_by": {"card": "clean", "at_pos_matches_threat": true, "clear_radius": 0},
+      "cleared_message": "A swat of cloth. They scatter. The light clicks back to its normal tick.",
+      "expired_message": "They scatter on their own. The tick of the light returns to normal."
     }
   }
 }
+

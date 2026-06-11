@@ -35,6 +35,26 @@
         {"kind": "remove_all_visitors_from_board"},
         {"kind": "end_game", "outcome": "reversed_fool"}
       ]
+    },
+    {
+      "id": "the_room_listens_back",
+      "title": "THE ROOM LISTENS BACK",
+      "triggered_by": "sanity_zero",
+      "weight": 0.5,
+      "flavor": "The fluorescent goes solid. Three forty-seven AM solidifies, the way ice solidifies. You set the cloth down and the counter is colder than the cloth. The river, somewhere, runs the wrong direction. Somewhere across town a painter finishes you. You hum a song you have never heard. Faith is asleep. You are not. You are listening to the diner, and the diner — finally — is listening to you. It has been waiting for this.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_fool"}
+      ]
+    },
+    {
+      "id": "the_three_forty_seven_minute",
+      "title": "THE 3:47 MINUTE",
+      "triggered_by": "sanity_zero",
+      "weight": 0.5,
+      "flavor": "The clock has been holding the same minute all night. You only just noticed. You don't move. You don't put the cloth down. The next person to push the door open finds an empty diner and a rag still warm on the formica. They will keep wiping the same spot. They will not know they are doing it.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_fool"}
+      ]
     }
   ],
   "post_loss_behavior": {
