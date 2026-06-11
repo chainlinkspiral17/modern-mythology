@@ -1,480 +1,533 @@
-# TAROT GAUNTLET · SCENARIO CARDS
+# TAROT GAUNTLET · SCENARIO + HAND + LOCATION SYSTEM
 
-*Rough scenario sketches for the first run of arcana boxes, each
-keeping the shared framework chrome (5-phase loop, action tableau,
-Threshold dice, Gravity deck, Inertia track) but reshaping the
-location mechanics + win loop to match the arcana's tarot meaning.*
+*Final Girl-style mix-and-match. Pick a HAND (upright arcana,
+action card set), a LOCATION (reversed arcana, destiny deck), and
+a SCENARIO CARD (one of three plays for that location). Each
+combination is its own play. Win-streaks unlock new items per
+location and new action cards per hand.*
 
-*Parent doc: [`_TAROT_GAUNTLET.md`](_TAROT_GAUNTLET.md)
-(§VIII has the one-liners; this doc fleshes out the first ones).*
-
----
-
-## Design template
-
-Every scenario card is a JSON setup file like
-`fool/setup_the_leap.json`, plus its own deck of action cards,
-gravity cards, finale cards, items, and (optionally) a unique
-location file. The framework provides:
-
-- 5-phase turn loop: **Action → Planning → Shadow → Drift → Upkeep**
-- Threshold dice (6 faces: SS / S / S / fail / fail / wild)
-- 11 framework action cards (Walk, Sprint, Focus, Search, Short
-  Rest, Long Rest, Distraction, Guard, Close Call, Spend It,
-  Improvise)
-- Time as per-turn action budget, carries over
-- Modal infrastructure (card view, pane modals, finale CG, etc.)
-
-**What each scenario card must specify:**
-
-1. **Setting + atmosphere prose** — the scene the player walks into
-2. **Tension stat** — by default this is Inertia, but each arcana
-   can rename / reshape it (the Magician's is *Disorder*, the
-   Priestess's is *Pressure-to-Speak*, etc.)
-3. **Win condition** — derived from the arcana's verb
-4. **Loss conditions** — typically a Shadow-Track max + a per-arcana
-   reversal state, plus the universal Health = 0
-5. **Visitor concept + roster** — who comes through, what their
-   connection requires
-6. **The "Bindle" equivalent** — the three-things-that-must-come-
-   together pattern, named for the arcana
-7. **Arcana-unique action cards** — 8-10 verbs only this arcana can
-   play, layered on top of the framework 11
-8. **Gravity deck** — 12 cards including 3 endgame
-9. **Finale cards** — 3 reversal states
+*Parent doc: [`_TAROT_GAUNTLET.md`](_TAROT_GAUNTLET.md).*
 
 ---
 
-## 0 · THE FOOL — additional variants
+## The model, in one breath
 
-The canonical Fool scenario is **THE LEAP** at D'Ambrosio's. The
-Fool is "the moment before commitment" — every Fool variant should
-preserve that core but change the room.
+Final Girl ships boxes of (Final Girl × Killer × Location). The
+Tarot Gauntlet ships boxes of:
 
-### 0a — THE LEAP (canonical, already built)
+| Component | What it is | Tarot side |
+|---|---|---|
+| **HAND** | a playable character with an action-card set + ultimate | UPRIGHT arcana |
+| **LOCATION** | a board + destiny deck (gravity cards + finales) | REVERSED arcana |
+| **SCENARIO** | one of three setup cards per location — different starting state, schedule, win twist | per-location variant |
 
-- Location: D'Ambrosio's diner, 3:47 AM
-- Hand: John Frank
-- Bindle: stick + cloth + contents
-- Tension: Inertia (0–12, "the 24-hour diner of the soul")
+A run is **HAND × LOCATION × SCENARIO**. The hand's upright
+arcana and the location's reversed arcana don't have to match;
+that's the point. John Frank (Fool upright) can play in Frasier's
+warehouse (Magician reversed) and the run becomes "the Fool
+testing himself against the Magician's failed assembly." Frasier
+(Magician upright) can play in D'Ambrosio's diner (Fool reversed)
+and the run becomes "the Magician arranging things in a room
+that wants nothing arranged."
+
+Most arcana are FIRST encountered as a location (the box you
+buy, the destiny deck you play against). They become PLAYABLE as
+a hand only after you've cleared their location at least once —
+you can't carry the Magician until you've understood his shadow.
+
+---
+
+## Component anatomy
+
+### A LOCATION provides:
+
+1. The **board** — spaces, adjacency, attractors, threshold spaces
+2. The **destiny deck** = Gravity deck + Finale cards, themed by
+   the REVERSED arcana
+3. The **Inertia / tension stat** rename (each location's stat
+   has a flavor name)
+4. The **win condition** the scenario card pins to
+5. **Visitor roster** that arrives during play (some on board at
+   start, some scheduled, some conditional)
+6. **Item piles** at search spaces — half the items are universal
+   to that location, half unlock from completed runs
+7. **Scenario cards** — three variants per location
+
+### A HAND provides:
+
+1. **Character meeple + portrait**
+2. **Action card set** (~10 cards) themed by the UPRIGHT arcana
+3. An **Ultimate** — one-shot powerful card, name + flavor
+4. A **starting hand** that draws from the framework 11 plus
+   their unique cards
+5. **Carryover unlocks** — cross-arcana items their previous
+   completions made available
+
+### A SCENARIO CARD provides:
+
+1. **Title + subtitle** (the specific play, e.g. "THE LEAP /
+   Between Acts · 3:47 AM")
+2. **Setup variant**:
+   - Player starting space
+   - Starting Time / Inertia
+   - Which visitors are on board at start vs. scheduled vs.
+     conditional
+   - Which thresholds are visible from the start
+   - Any items pre-placed in inventory (e.g. "you start carrying
+     the cassette spine — but the till is already empty")
+3. **A scenario-specific twist** — a flag the engine reads. E.g.
+   "the bar is OPEN tonight" toggles a normally-closed space
+   to active
+
+---
+
+## LOCATIONS · sketched (10 listed, 3 in detail)
+
+### L0 — D'AMBROSIO'S DINER  (Fool Reversed)
+
+> *3:47 AM. The 24-hour diner of the soul. Inertia is the
+> shadow — the urge to wipe the same spot of formica for another
+> twelve years.*
+
+- **Destiny deck**: the existing 12-card Gravity deck (THE
+  CLOCK HOLDS, WIPE THE SAME SPOT, etc.) with 3 endgame at
+  the bottom
+- **Tension stat**: INERTIA (0-12)
+- **Finales** (three reversal states): WIPE THE SAME SPOT
+  FOREVER / 24-HOUR DINER OF THE SOUL / THE EMPTY ROOM
+- **Board**: 23 spaces, three thresholds (Parking Lot / River
+  Window / Precipice Door)
+- **Search piles**: Kitchen Alcove / Booth 6 / Under Counter /
+  Pay Phone / Card Wall / Register / Jukebox (reusable tracks)
+
+#### Scenarios at this location
+
+##### L0.S1 — THE LEAP  *(canonical, built)*
+
+> 3:47 AM. Cloth in hand. Bindle to assemble. Leap by dawn.
+
+- Starting state: counter, Time 6, Inertia 0, Health 5
+- Hand starting deck: walk / focus / search / short_rest /
+  wipe_counter / address_the_bell
+- Visitors on board at start: stranger (Booth 6), Faith (Under
+  Counter)
+- Visitors scheduled: Frasier (T3 → Counter), Dawn Cook (T5 →
+  Kitchen Alcove), BBS Caller (T6 → Register)
 - Win: BUNDLE assembled + 3 connections + Faith adjacent +
   Inertia < 7 + at threshold → play LEAP
-- Loss: Inertia 12 OR 3 patrons consumed OR Health 0
 
-### 0b — THE STAIRWELL  *(alternate scenario)*
+##### L0.S2 — THE SHIFT CHANGE  *(new — alternate setup)*
 
-> 18 flights down the side of a tall building, hot summer night.
-> The fire alarm has been going for an hour. The elevator stopped
-> working at the 14th floor. You came in for the 17th-floor
-> tenant who isn't answering their phone. Now you're walking
-> down with someone else's dog.
+> 5:42 AM. The cook is here already. Dawn is bleeding into the
+> windows. You've already wiped the counter eight times. The
+> stranger is gone but the booth is still warm. Frasier is
+> outside, undecided about coming in.
 
-- **Location**: Stairwell, 11 landings (one per floor 17 down to
-  street level + roof). The board is a vertical column.
-  - Each landing is a space; up/down are the only adjacencies
-  - Landings 4-7 have apartments that opened during the alarm
-    (the visitors come from these)
-  - Landing 1 (Street) and Landing 11 (Roof) are thresholds
-- **Bindle**: a NAME (whose dog), an ADDRESS (where to take them),
-  WATER (the dog is panting)
-- **Tension**: Inertia *("the alarm sound is still in your teeth")*
-- **Win**: get the dog to STREET LEVEL with the right name +
-  address, OR get to the ROOF and prove the alarm was nothing
-- **Loss**: alarm escalates past Inertia 12 (the building's actually
-  on fire) / dog dies of dehydration (you lose track of Water) /
-  three neighbors get separated from their kids (3 patrons consumed)
-- **Unique mechanic**: every space change costs +1 Time per landing
-  you DESCEND past your starting floor (going down is harder than
-  going up — the framing inverts the usual "exit threshold" logic)
-- **Visitors**: a kid with no shoes, a building super on a walkie,
-  a tenant in slippers, a paramedic on a stretchered call, the
-  dog itself (FAITH equivalent), a phantom-elevator caller
+- Starting state: counter, Time 4 (less budget — the night's
+  half-over), Inertia 4, Health 4
+- Hand starting deck: same as Leap but +1 starter copy of
+  WIPE COUNTER (the muscle memory is deep)
+- Visitors on board at start: dawn_cook (Kitchen Alcove —
+  arrived BEFORE you got the chance), Faith (Under Counter)
+- Visitors scheduled: Frasier (T2 → Parking Lot — he might
+  not come in), BBS Caller (T4 → Register)
+- Conditional: stranger (already left — their cloth is on the
+  table at Booth 6, untouched, no warmth)
+- Twist: PARKING LOT threshold starts CLOSED (Frasier's car
+  is blocking the door); opens when Frasier connects or
+  leaves
+- Win: same shape but you can't connect with the stranger
+  through SIT WITH (already gone) — must take the cloth
+  from Booth 6 + visit Card Wall (composite connect)
+- Flavor: a softer, more wistful run. You're not racing
+  toward the leap; you're realizing it's still possible at
+  the end of the shift.
 
-### 0c — THE LAST CALL  *(alternate scenario)*
+##### L0.S3 — THE BLACKOUT  *(new — alternate setup)*
 
-> The pirate radio station is going off the air at midnight. You
-> have 40 minutes until the broadcaster reads the sign-off
-> announcement. There are still calls coming in, and one of them
-> is for you.
+> The power's been out for forty minutes. Lights run on the
+> jukebox's battery and one fluorescent over the booth at the
+> back. The phone doesn't work. Visitors are coming in for the
+> warmth and the candles you didn't know were under the
+> counter.
 
-- Location: small radio station booth + four lit-up phone-call
-  hotspots representing the four lines
-- Hand: a young John Frank (pre-D'Ambrosio's, working an overnight
-  switchboard)
-- Bindle: the right CALLER, the right SONG, the right SIGN-OFF
-- Tension: SHOW TIME (counts down from 40)
-- Win: route the right caller into the right song into the right
-  sign-off in the last minute of the show
-- Loss: dead air for 3+ rounds / sign-off goes wrong / your line
-  rings out (Health 0)
-
----
-
-## I · THE MAGICIAN — primary scenarios
-
-The Magician's verb is **ASSEMBLE**. They take the four elements
-on the table (Cups / Pentacles / Swords / Wands) and combine them
-into something that wasn't there before. The shadow is **FAILED
-ASSEMBLY** — components scatter, the diorama collapses.
-
-The Magician hand: **Maya Lin / Frasier Temple** (the painter
-character with the diorama studio).
-
-### I.a — THE STEAMBOAT ECHO  *(primary)*
-
-> Frasier's studio. The model city is half-assembled on the
-> table. Four elements are missing: a piece of WATER (the river),
-> a piece of EARTH (the bluffs), a piece of FIRE (the diner's
-> light), a piece of AIR (the steamboat whistle). Each is hidden
-> in a different room of the apartment. The painting is due
-> tomorrow morning at the gallery.
-
-- **Location**: Frasier's apartment-studio. Five rooms (Kitchen,
-  Hall, Studio, Bathroom, Window). The model city sits in Studio.
-- **Hand**: Frasier Temple
-- **Bindle (the four elements)**: WATER + EARTH + FIRE + AIR
-- **Tension**: DISORDER (0–10) *("the studio is half-finished
-  and the studio is going to stay that way")*
-- **Win**: All four elements PLACED on the model city in the
-  studio + 3 PATRONS witnessed your placement
-- **Loss**: Disorder 10 (everything scatters) / two elements
-  refuse to fit / a critic arrives before the model is done
-- **Unique mechanic — THE TABLE**: the model city in Studio is
-  the win location. Each element placed locks it in (can't be
-  removed). But every PLANNING phase, one already-placed element
-  has a 1-in-4 chance of falling off if you weren't in Studio
-  last turn (the table holds nothing without your hand on it).
-- **Unique action cards** (~8 ideas):
-  - **PLACE WATER / EARTH / FIRE / AIR** — only playable while
-    holding the matching element, only in Studio. Locks it on.
-  - **STEADY THE TABLE** — at Studio, prevents next Drift-fall
-  - **SKETCH** — at any room, draw +1 Item card from this room's
-    pile, but burn 1 Time
-  - **GLAZE** — at Studio, polish a placed element so the next
-    fall-off doesn't dislodge it
-  - **WHISPER** — talk to a patron without breaking your focus
-    (alternate connection method)
-- **Visitors**: a buyer from the gallery, a critic from the
-  newspaper, Frasier's ex-wife, a model the diorama is based on,
-  an old painting teacher, Faith (the dog, again — she's the
-  fellow traveler across runs)
-- **Gravity deck themes**: THE LIGHT GOES OFF (a brush dries), THE
-  TABLE LURCHES (one element falls), THE CRITIC ARRIVES EARLY,
-  YOUR HAND SHAKES (next placement has +1 cost), etc.
-
-### I.b — THE FOUR ON THE TABLE  *(alternate scenario)*
-
-> A back-room poker game. Four other players. You have a quarter
-> of the pot in front of you, and you came in tonight to LEAVE
-> with what you brought. The game has 12 hands left before dawn.
-
-- Location: round poker table, 5 seats. Spaces are SEATS — you
-  can shift to read different players.
-- Hand: a card-mechanic-savvy John Frank
-- Bindle (the four pots): CASH + WATCH + RING + PHOTOGRAPH —
-  these are what each opponent has on the table
-- Tension: TILT (0–10)
-- Win: leave with what you arrived with (Cash intact) + at least
-  one of the other three pots taken (you talked someone out of
-  their watch / ring / photograph in conversation, not by
-  winning a hand)
-- Loss: TILT 10 / you bet your own item / 3 hands without speaking
-- **Unique mechanic — HANDS-PER-TURN**: each turn is a single
-  poker hand. The ACTION phase = your hand. The SHADOW phase =
-  the opposing player's hand (which the engine plays on rails).
-  DRIFT = the river / showdown. UPKEEP = the table re-shuffles.
-
-### I.c — THE BROADCAST  *(alternate scenario)*
-
-> Pirate radio station. 30 minutes to broadcast. You have to
-> assemble a 30-minute show from four reels: INTRO / NEWS /
-> MUSIC / INTERVIEW. The reels are scattered through the building.
-
-- Location: 5 rooms of the radio building (booth, archive, news
-  desk, music library, lobby)
-- Bindle: the four reels, in the right order, in the booth
-- Tension: AIR TIME (countdown)
-- Win: broadcast goes out at 30:00 with all four reels and the
-  sign-off
-- Loss: dead air / wrong reel cued / sign-off forgotten / the
-  raid happens before broadcast (loss CG: the FCC at the door)
+- Starting state: counter, Time 5, Inertia 6 (started high —
+  the dark makes the room feel heavier)
+- Hand starting deck: walk / focus / short_rest / wipe_counter
+  / address_the_bell (no SEARCH — you can't see)
+- Visitors on board at start: stranger (Booth 6), Faith (Under
+  Counter), dawn_cook (Bar Stools — came in for the warmth)
+- Visitors scheduled: bbs_caller (T2 → Pay Phone — line is
+  dead, they came in person), Frasier (T4 → Hostess Stand)
+- Twist: most spaces start UNREVEALED; only the candle-lit
+  spaces (Counter, Bar Stools, Booth 4, Booth 6) are visible
+  at start. Revealing a space costs 1 Time.
+- Special item: under_counter pile has a flashlight added at
+  the top — picking it up REVEALS all spaces
+- Win: bindle assembled + 3 connections + leap at a revealed
+  threshold (PARKING LOT, RIVER WINDOW). Precipice Door cannot
+  be revealed this scenario.
 
 ---
 
-## II · THE HIGH PRIESTESS — primary scenarios
+### L1 — FRASIER'S WAREHOUSE  (Magician Reversed)
 
-Verb: **OBSERVE**. The Priestess archives. She does not speak.
-The shadow is **THE URGE TO SPEAK** — the silence breaks and the
-archive corrupts.
+> *The diorama studio. Tables of half-assembled model cities.
+> Failed assembly is the shadow — components scatter, what you
+> placed yesterday is on the floor today. The Magician
+> reversed: a craftsman in the middle of unmaking.*
 
-Hand: **Elicia** (the archivist from vol5 — already a character
-in the codebase).
+- **Destiny deck**: 12 gravity cards themed on collapse +
+  scatter + the table going wrong (THE TABLE LURCHES, THE
+  GLUE DRIES, THE LIGHT BURNS OUT, etc.)
+- **Tension stat**: DISORDER (0-10)
+- **Finales**: SCATTERED FOREVER (everything falls) /
+  COLLABORATIVE COLLAPSE (a visitor finishes it for you, wrong)
+  / THE LAST PIECE (you place the wrong final element and it
+  locks)
+- **Board**: 5 rooms (Kitchen / Hallway / Studio / Bathroom /
+  Window), plus the Studio's TABLE is itself a sub-board of
+  4 element slots
+- **Search piles**: drawer (Kitchen) / bookshelf (Hallway) /
+  scrap-pile (Studio corner) / medicine cabinet (Bathroom)
 
-### II.a — THE ARCHIVE  *(primary)*
+#### Scenarios at this location
 
-> The basement tape archive. Wall-to-wall reels. Tonight someone
-> is coming to find a specific recording, and you have to find
-> it FIRST and place it in the listening room without saying a
-> word. Three voices will arrive between now and dawn. You will
-> hear them. You will not speak.
+##### L1.S1 — THE STEAMBOAT ECHO  *(canonical for the Warehouse)*
 
-- **Location**: 4 archive rooms + 1 listening room + 1 stairs
-  (the entry threshold from upstairs).
-- **Hand**: Elicia
-- **Bindle (the three index keys)**: CATALOG NUMBER + SIDE LABEL
-  + DECK ASSIGNMENT — three layers of identification that
-  pinpoint the right tape from thousands.
-- **Tension**: PRESSURE-TO-SPEAK (0–10) *("the urge to answer
-  is rising — every time you don't answer, it rises more")*
-- **Win**: the right tape, queued in the listening room, when
-  the third voice arrives + you haven't spoken yet
-- **Loss**: Pressure-to-Speak 10 (you answer; everything heard
-  this run wipes) / you take the wrong tape into listening (it
-  IS heard, it ISN'T the truth, you lose) / a voice waits 3
-  turns without being heard (they leave with nothing — you
-  failed to receive)
-- **Unique mechanic — NO SPEAK**: regular action cards that
-  involve SPEECH (CALL FAITH, ADDRESS THE BELL, SIT WITH) raise
-  Pressure-to-Speak by their cost. Most cards are RE-WRITTEN
-  for the Priestess box to be physical / observational.
-- **Unique action cards**:
-  - **LISTEN** — at any archive room, peek the top 3 items of
-    its pile without taking any
-  - **CATALOG** — record one Lore Token without claiming it
-    (the archive remembers without you committing)
-  - **REWIND** — return last turn's actions to "as if not done"
-    (once per run) — Priestess time-fold
-  - **THE THIRD EAR** — at listening room, peek at next Gravity
-    card
-  - **AUDI ET TACE** — passive in hand: −1 Pressure-to-Speak per turn
-- **Visitors**: each visitor has a Question they want answered.
-  Connection = playing the RIGHT tape (item) in their presence.
-  Wrong tape = pressure to speak rises. No tape played = they
-  leave with nothing.
+> The model city has four elements missing. The buyer comes
+> tomorrow morning. You haven't slept.
 
-### II.b — THE LISTENING ROOM  *(alternate scenario)*
+- Starting state: Studio, Time 5, Disorder 2, Health 5
+- Bindle equivalent: WATER + EARTH + FIRE + AIR placed on the
+  TABLE sub-board (each room has one of them hidden)
+- Twist: every PLANNING phase, if you weren't in the Studio
+  last turn, one already-placed element has a 25% chance of
+  falling off
+- Win: all four elements placed + 3 patrons witnessed + you
+  finish in the Studio
+- Loss: Disorder 10 / two elements simultaneously fall (the
+  table's foundation cracks) / the buyer arrives early (a
+  fixed-turn threat)
 
-> A medium's parlor. Three sitters arrive over the night, each
-> paying in coin. You give them something true — but it has to
-> come through you without you saying it. They have to LEAVE
-> believing the dead spoke.
+##### L1.S2 — THE FIRE INSPECTION  *(alternate)*
 
-- Location: parlor (table + 3 chairs + curtained alcove) + a
-  back room with a few props
-- Bindle: the three sitters' True Things (one each, drawn from
-  their own bring-along objects)
-- Tension: DOUBT (rises if you fake, falls if you reveal)
-- Win: three true readings before dawn (one per sitter), all
-  without saying anything that wasn't already in the room
+> The fire inspector is in the building. The studio is a fire
+> hazard — solvents on shelves, no clear exit, the model city
+> takes up most of the floor. You need to make this look like
+> a workplace by the time they come up the stairs.
 
----
+- Starting state: Studio (cluttered), Time 6, Disorder 8 (yes,
+  starting HIGH — the room is a mess), Health 5
+- Twist: DISORDER must be brought DOWN below 3 by the time the
+  inspector visitor arrives (T4). Inspector is a one-turn
+  visit; if Disorder > 3 when they arrive, automatic loss.
+- Action cards re-weighted toward CLEAN / TIDY / HIDE
+- Win: pass inspection (Disorder < 3 at T4) + 3 patrons
+  testifying for you + your tools still where you can use them
+  (don't tidy everything into oblivion)
 
-## V · THE HIEROPHANT — primary scenarios
+##### L1.S3 — THE COMMISSION  *(alternate)*
 
-Verb: **TRANSMIT**. The Hierophant passes doctrine to the next
-generation. The shadow is **THE DOCTRINE BREAKS** — the
-transmission corrupts; the next generation receives a lie.
+> A wealthy patron commissioned the centerpiece. They visit
+> at 8 PM to approve. You have between now and then to finish
+> something they'll recognize as theirs.
 
-The motto from existing references: **AUDI ET TACE** (Listen
-and be silent — what the Priestess does as a verb is what the
-Hierophant inherits as a sacrament).
-
-Hand: **Maya** (a young inheritor — the next-generation
-character).
-
-### V.a — THE VESTRY  *(primary)*
-
-> Behind the altar of a small church between services. The
-> visiting bishop arrives in the morning. Three rites need to
-> be in order: COMMUNION (the wafers + wine), CONFESSION (the
-> screen + the seal), BLESSING (the oil + the script). Each
-> rite has a precise protocol. Speaking out of turn breaks
-> the chain.
-
-- **Location**: 5 spaces — Sanctuary, Vestry, Confessional,
-  Sacristy, Bell Tower. The Bell Tower is the threshold
-  (where the bishop's car approaches).
-- **Hand**: Maya, novice
-- **Bindle (the three rites)**: COMMUNION SET + CONFESSION SEAL
-  + BLESSING OIL — each is in a specific room, each has its own
-  protocol
-- **Tension**: DOCTRINE WEAR (0–10) *("the words begin to mean
-  something else")*
-- **Win**: all three rites set up correctly + bishop arrives +
-  you bless him (Communion in Sanctuary, Confession in Vestry,
-  Blessing in Sacristy) without breaking the seal of any
-- **Loss**: Doctrine Wear 10 (the rite means something else
-  now) / you bless the wrong person (a visitor at the wrong
-  rite) / the bishop arrives before you're ready
-- **Unique mechanic — PROTOCOL ORDER**: each rite has 3
-  sub-steps that must be done in a specific order. You can do
-  them in any order across the night but BREAKING the order
-  within a single rite costs Doctrine Wear.
-- **Unique action cards**:
-  - **GENUFLECT** — at any altar, +1 Time + lose 1 Pressure
-  - **SAY THE WORDS** — at Sanctuary, advance the Communion step
-  - **SEAL THE CONFESSION** — at Vestry, lock a visitor's
-    Confession step (next rite step requires this)
-  - **POUR OIL** — at Sacristy, advance the Blessing step
-  - **RING THE BELL** — at Bell Tower, summon the next visitor
-    forward (advance arrival)
-- **Visitors**: the parish secretary (arrives with bishop's
-  schedule), the verger (gives you the keys), an old parishioner
-  who confesses something genuinely heavy, a young couple
-  wanting a blessing they aren't ready for, a stranger who
-  arrives wrong (HIEROPHANT-shadow tempter — must be turned
-  away cleanly)
-
-### V.b — THE GENERATION TABLE  *(alternate)*
-
-> The night the patriarch dies. The family is gathered in the
-> dining room. You are the inheritor. By morning, you must have
-> passed on three things to the next generation already at the
-> table: a STORY, an OBJECT, a NAME. Get any of them wrong and
-> the line breaks.
-
-- Location: dining room (5 chairs around a table) + kitchen +
-  porch
-- Bindle: the right STORY for one child + the right OBJECT for
-  another + the right NAME for a third
-- Tension: GRIEF (rises if the room cries, falls if you laugh
-  together)
+- Starting state: Studio, Time 6, Disorder 4
+- Twist: the patron's "thing" is one of FIVE candidates (drawn
+  randomly each run — a house, a boat, a portrait, a memory,
+  a name). You learn which one through visitor interactions
+  before they arrive.
+- Win: the right element placed + 3 visitors confirming you
+  read the patron right + patron approves on arrival
+- Cross-arcana hook: if the patron's "thing" is a CASSETTE,
+  this run unlocks Elicia's archive overlay
 
 ---
 
-## VII · THE CHARIOT — primary scenarios
+### L2 — ELICIA'S ARCHIVE  (Priestess Reversed)
 
-Verb: **DRIVE**. The Chariot controls direction by mastery of
-contradiction (the two sphinxes). The shadow is **D.O.A.** —
-the journey ends but the driver arrives dead. The existing
-references hint at a sysop named DOA in the BBS network.
+> *Basement tape archive. The shadow is THE URGE TO SPEAK —
+> every time you don't answer, the urge rises. Speech corrupts
+> the recordings. The Priestess reversed: knowing the truth and
+> being forced to say it.*
 
-Hand: **a long-haul trucker / a sysop / a courier** — three
-possible inheritors of the Chariot's verb.
+- **Tension stat**: PRESSURE-TO-SPEAK (0-10)
+- **Finales**: SPOKE / WIPED THE TAPE / NEVER FOUND IT
+- **Board**: 4 archive rooms + listening room + stairs (threshold)
+- **Destiny deck**: cards about voices rising, calls from
+  upstairs, an unrecorded sound, etc.
 
-### VII.a — THE LONG HAUL  *(primary)*
+#### Scenarios at this location
 
-> Overnight haul, Graustark to Houston. The truck has 11 stops
-> on the route. You're behind schedule by an hour. The cargo
-> in back is something the company won't tell you about. By
-> dawn you have to be unloaded at the dock, your hours-of-
-> service legal, and the cargo intact.
+##### L2.S1 — THE TAPE  *(canonical)*
 
-- **Location**: the highway as a linear board (11 stops, each
-  a space), plus your TRUCK (which you can step into/out of at
-  any stop). Stops include: gas stations, weigh stations, a
-  rest area, a closed diner, the dock at the end.
-- **Hand**: a trucker character (Maya's brother? — open
-  question, but a Chariot hand should be one of the named
-  characters)
-- **Bindle (the three legalities)**: HOURS LOG (must be filled),
-  WEIGHT TICKET (must be valid), CARGO MANIFEST (must be
-  signed)
-- **Tension**: FATIGUE (0–10) *("you have not slept in 22
-  hours")*
-- **Win**: reach DOCK (last stop) by dawn + all three documents
-  in order + cargo unbroken (no Sprint failures on rough roads)
-- **Loss**: Fatigue 10 (you fall asleep at the wheel) / weight
-  ticket fails at a weigh station / DOA cargo (sealed crate
-  opens during a Sprint failure — and you can't un-see it)
-- **Unique mechanic — DRIVING ROLLS**: instead of Threshold
-  rolls, the Chariot rolls DRIVING dice — same 6 faces but a
-  failure increments FATIGUE *and* damages the cargo. Every
-  third turn must include at least one DRIVING roll or the
-  truck stops.
-- **Unique action cards**:
-  - **SHIFT** — change which stop you're at (free for 1 hop,
-    2 Time for 2 hops, requires a DRIVING roll)
-  - **CHECK MIRRORS** — peek the next 2 Gravity cards
-  - **CB CALL** — connect with another trucker visitor
-  - **REST** — at a rest area, lose 2 Fatigue + lose 1 Time
-  - **SIGN THE BILL** — at the dock, finalize the cargo manifest
-  - **THE SECOND HAND** — once per run, override a Fatigue tick
+> A voice arrives at midnight wanting a specific recording.
+> Find it and play it without speaking.
 
-### VII.b — THE SYSOP'S LAST LOG  *(alternate)*
+##### L2.S2 — THE OPENING  *(alternate)*
 
-> A BBS sysop's terminal. The system goes dark at 6 AM. You
-> have to migrate the archives + answer three users + log out
-> clean. Doors are virtual; spaces are screens.
+> The archive is being opened to the public tomorrow. You
+> have one night to decide which tapes go on display and which
+> stay sealed. Three visitors arrive with strong opinions.
 
-- Location: a TUI of 5 screens (HOME / USERS / ARCHIVE /
-  MAILBOX / TERM)
-- Bindle: ARCHIVE EXPORTED + USERS NOTIFIED + LOG ROTATED
-- Tension: SYSTEM LOAD (rises with every command)
-- Win: clean shutdown at 6:00:00, all three columns green
+##### L2.S3 — THE WIPE  *(alternate)*
+
+> A bag-man arrived with a list of tapes to be destroyed
+> tonight. You can refuse, hide, or comply. Each tape has
+> a name on its spine you recognize.
 
 ---
 
-## Cross-arcana threading (carry-over)
+### L3 — MAYA'S CHURCH  (Hierophant Reversed)
 
-Each scenario's `cross_arcana_unlock` field on its items names
-a hook the NEXT run reads. Examples:
+> *Doctrine wears. The shadow is the rite breaking under the
+> celebrant. AUDI ET TACE inverted: silence is no longer
+> sacred; it's complicit.*
 
-- Fool's CASSETTE SPINE → unlocks PRIESTESS ARCHIVE OVERLAY in
-  the Priestess box (some tapes are already pre-indexed when
-  you arrive)
-- Magician's PLACED WATER → unlocks RIVER WINDOW threshold in
-  any Fool replay (the river already runs through Frasier's
-  diorama; the next Fool run sees that diorama in his
-  apartment if you visit there)
-- Hierophant's SEALED CONFESSION → adds a CONFESSED visitor
-  to the next Priestess run (they arrive carrying the secret
-  you sealed)
-- Chariot's HOURS LOG → if completed clean, the next Fool's
-  Dawn Cook visitor arrives ONE turn earlier (the trucker
-  drops them off)
+- **Tension stat**: DOCTRINE WEAR (0-10)
+- **Finales**: THE WORD BROKE / THE NEXT GENERATION REFUSED /
+  THE OLD PRIEST RETURNED
+- Scenarios: THE VESTRY / THE WEDDING / THE FUNERAL
 
-These threads are why the GauntletState autoload exists —
-it persists across scenarios. Each scenario only has to NAME
-the threads it produces; the consuming scenario reads them
-on setup.
+### L4 — THE LONG ROAD  (Chariot Reversed)
+
+> *Linear board. The shadow is DOA — the journey ends with
+> the driver dead.*
+
+- **Tension stat**: FATIGUE (0-10), uses DRIVING dice variant
+- **Finales**: DEAD AT THE WHEEL / WRONG CARGO / NEVER ARRIVED
+- Scenarios: THE LONG HAUL / THE SYSOP'S LAST LOG / RUN-AWAY
+  CAB
+
+### L5–L9 — sketched only
+
+| L | Location | Reversed arcana | Tension | One-line shadow |
+|---|---|---|---|---|
+| L5 | The Greenhouse | Empress reversed | ROT | The garden rots faster than you can tend |
+| L6 | The Precinct | Emperor reversed | LEDGER | Cases stack faster than you can close them |
+| L7 | The Bedroom | Lovers reversed | INDECISION | Two visitors won't align on three choices |
+| L8 | The Vault | Strength reversed | STRAIN | Hold what you can't hold |
+| L9 | The Cabin | Hermit reversed | LONELINESS | The room empties of meaning around you |
 
 ---
 
-## Implementation priority (after THE LEAP polish lands)
+## HANDS · sketched (5 listed, 4 in detail)
 
-1. **MAGICIAN: THE STEAMBOAT ECHO** — the next full arcana
-   build. Reuses the location-board pattern, introduces the
-   "four-element assembly" mechanic, gives the cross-arcana
-   threading a real first test.
-2. **PRIESTESS: THE ARCHIVE** — second full build. Introduces
-   the "speech is dangerous" inversion of the framework cards
-   and the "no-take peek" Listen mechanic.
-3. **HIEROPHANT: THE VESTRY** — third. Introduces
-   protocol-order (do these N steps in this order).
-4. **CHARIOT: THE LONG HAUL** — fourth. Introduces the linear-
-   board variant.
+Each hand carries an UPRIGHT arcana and the action card set
+that arcana implies. Hands are unlocked by clearing their
+matching LOCATION at least once.
 
-After these four, the framework has been stretched in four
-directions (assembly, observation, ordered ritual, linear
-journey) and can comfortably absorb the remaining 18 arcana.
+### H0 — JOHN FRANK  (Fool upright)
+
+> *The witness who hasn't yet committed. The cloth in his
+> hand has been warm for eleven years. He carries the LEAP
+> because nobody else in any of these rooms has been holding
+> still long enough to.*
+
+- **Action card set**: WIPE COUNTER, ADDRESS THE BELL, CALL
+  FAITH, SIT WITH, SHORT REST, ADDRESS THE BBS BANNER, STEP
+  TOWARD, PICK UP, BUNDLE (milestone), LEAP (win card)
+- **Ultimate**: TWELVE YEARS — once per run, ignore the next
+  Inertia tick AND drop one already-claimed visitor's claim
+  marker (the room remembers your tenure)
+- **Starting cards drawn**: WIPE COUNTER + SIT WITH +
+  ADDRESS THE BELL + plus 3 framework starters
+- **Carryover unlocks**:
+  - Cleared L0 (Diner) once → unlocks BAR (closed) → BAR
+    becomes a search space in subsequent Diner runs
+  - Cleared L1 (Warehouse) once → John can carry one already-
+    placed element as a starting inventory item
+- **Mix-and-match notes**:
+  - John @ L1 Warehouse: the Fool's slowness vs. the Magician's
+    scattering. SIT WITH becomes a stabilizing action — when
+    John sits with someone in the Studio, the table doesn't
+    fall that turn.
+  - John @ L2 Archive: SIT WITH at the listening room
+    bypasses the no-speak constraint (he doesn't talk; he just
+    waits with the visitor)
+  - John @ L3 Church: WIPE COUNTER becomes a sacrilege action
+    if used on the altar — a Fool in a Hierophant's room
+    misunderstands what gets cleaned.
+
+### H1 — FRASIER TEMPLE  (Magician upright)
+
+> *Painter. Diorama maker. He's the man who can hold four
+> things still on a table for long enough to call them a
+> city. The shadow he carries IS the shadow other characters
+> face in his warehouse — but he's its master, not its victim.*
+
+- **Action card set**: PLACE WATER, PLACE EARTH, PLACE FIRE,
+  PLACE AIR, STEADY THE TABLE, SKETCH, GLAZE, WHISPER, INVOKE
+  (win card)
+- **Ultimate**: THE FIRST PAINTING — once per run, replay any
+  card already in your discard pile at half cost
+- **Starting cards drawn**: PLACE WATER + STEADY THE TABLE +
+  SKETCH + 3 framework starters
+- **Carryover unlocks**:
+  - Cleared L1 (Warehouse) → can carry one painted element
+    into any subsequent location (e.g. PAINTED RIVER in the
+    diner makes the River Window threshold easier)
+  - Cleared L0 (Diner) → unlocks DIORAMA OF THE DINER, a
+    table-sub-board variant in L1 runs
+- **Mix-and-match notes**:
+  - Frasier @ L0 Diner: PLACE actions become PROP actions —
+    you arrange the booths and chairs deliberately. Inertia
+    falls every time you arrange a space "correctly" (each
+    space has a preferred arrangement in the data).
+  - Frasier @ L2 Archive: WHISPER becomes the only way to
+    talk to a sitter without breaking Priestess silence —
+    his cards already understand quiet handling.
+
+### H2 — ELICIA  (Priestess upright)
+
+> *Archivist. She doesn't speak unless she has to. The
+> archives speak through her hands instead. She has been
+> recording everyone in this gauntlet, and most of them don't
+> know it.*
+
+- **Action card set**: LISTEN, CATALOG, REWIND, THE THIRD
+  EAR, AUDI ET TACE (passive), TAPE-LOG, FIRST PLAY, SEAL
+  THE INDEX, BEAR WITNESS, OBSERVE (win card)
+- **Ultimate**: THE FIRST RECORDING — once per run, peek
+  the entire remaining destiny deck without revealing it to
+  the room
+- **Mix-and-match notes**:
+  - Elicia @ L0 Diner: LISTEN at search piles peeks the top 2
+    items without taking either; CATALOG records the tile
+    contents as a lore token without picking them up. The
+    Diner's inertia is harder for her because she doesn't
+    physically act — she records.
+
+### H3 — MAYA  (Hierophant upright)
+
+> *Novice. Maybe still in training. Carries the rites for
+> the next generation. She CAN speak — must speak — and her
+> shadow is the wrong sermon, not silence.*
+
+- **Action card set**: GENUFLECT, SAY THE WORDS, SEAL THE
+  CONFESSION, POUR OIL, RING THE BELL, BLESSING, KEEPER OF
+  THE BOOK, AT THE PULPIT, INHERIT, TRANSMIT (win card)
+- **Ultimate**: THE PRAYER YOU MEMORIZED AT NINE — once per
+  run, freeze Doctrine Wear / equivalent tension for one
+  full turn
+
+### H4 — (unspecified Chariot character)  (Chariot upright)
+
+> *Driver, sysop, courier, or runner. Open name. Carries
+> mastery of contradiction (the two sphinxes pulling in
+> opposite directions). Drives.*
+
+- Action card set themed on movement + control + cargo
+- Ultimate: THE SECOND HAND — once per run, override a
+  Fatigue tick
+
+---
+
+## UNLOCK SYSTEM (cross-arcana progression)
+
+Per Final Girl's "play streaks unlock content" model:
+
+### Unlocked by LOCATION clears
+
+When a hand clears a location for the first time, the LOCATION
+itself unlocks:
+- A new ITEM is added to one of its search piles for future runs
+  (e.g. clearing the Diner once adds a BAR KEY to the Under
+  Counter pile)
+- A new SPACE becomes accessible (the BAR opens for the rest of
+  the campaign, etc.)
+- A new DESTINY CARD is added to the location's deck
+
+### Unlocked by HAND clears
+
+When a hand clears any location, they unlock one of their own:
+- A new ACTION CARD added to their starting deck
+- Their ULTIMATE gets a +1 charge (used twice per run instead of
+  once)
+- A new VISITOR variant becomes available
+
+### Unlocked by HAND × LOCATION combos
+
+Specific pairings unlock special items:
+- John @ L1 cleared → John can carry CASSETTE SPINE from the
+  warehouse into L2 (Archive), where it's already pre-indexed
+- Frasier @ L0 cleared → Frasier unlocks PAINTED DINER, a
+  variant element he can place during his L1 runs
+- Elicia @ L0 cleared → her archive now contains a tape of
+  John's run; in her L2 runs, listening to that tape gives
+  +1 visitor pre-arrival hint
+- Maya @ L0 cleared → the church inherits a sermon about
+  D'Ambrosio's; her L3 runs gain +1 GENUFLECT starter
+
+### Unlocked by SCENARIO clears
+
+Each scenario, when first beaten, unlocks the NEXT scenario for
+that location. Each location ships with all three scenarios
+buildable, but locked in sequence:
+- S1 (canonical) is unlocked from the start
+- S2 unlocks after S1 is beaten
+- S3 unlocks after S2 is beaten
+
+S3 of each location is the "hard mode" / "true ending" variant —
+the run that tests whether you've actually mastered the room.
+
+---
+
+## IMPLEMENTATION PRIORITY
+
+Given the current state (THE LEAP is built, ready-ish for play):
+
+1. **Author all three Fool/Diner scenario cards** as separate
+   JSON files (currently we only have `setup_the_leap.json`;
+   need `setup_the_shift_change.json` and `setup_the_blackout.json`).
+   This proves the per-location scenario-variant system works
+   without touching new arcana yet.
+
+2. **Refactor the gallery launch UI** to show a 3-step picker:
+   pick LOCATION → pick HAND → pick SCENARIO. Currently the
+   gallery launches straight into "the_leap." Need a setup
+   chooser that resolves into the right setup_*.json + hand
+   + scenario combination.
+
+3. **Build LOCATION L1 (Frasier's Warehouse)** as the first
+   non-Fool location, with its own Gravity deck themed on
+   Magician-reversed (the table going wrong). Three scenarios
+   for it. Frasier becomes an UNLOCKED hand after his location
+   clears.
+
+4. **Wire HAND H1 (Frasier)** as a playable mix-and-match —
+   Frasier can play L0 (Diner) AND L1 (Warehouse).
+
+5. **Iterate** — L2 / L3 / etc. each follow the same pattern:
+   location first (sketches new destiny deck + finale set),
+   hand follows.
+
+After L0/L1 are both playable with both H0/H1 (4 combinations
+× 3 scenarios = 12 distinct runs), the engine's modularity is
+proven and the remaining arcana boxes are content work.
 
 ---
 
 ## Open questions
 
-- **Hand-character cross-pollination**: should John appear as a
-  visitor in someone else's arcana run? Yes — the existing item
-  `painted_pose_item` already implies this (John in a painting
-  in a room he'll never enter — Magician's diorama).
+- **Where does the gallery picker live?** Suggestion: replace
+  the current "▷ PLAY THE LEAP" hotspot in the Fool gallery card
+  with a "▷ ENTER THE GAUNTLET" hotspot that opens the 3-step
+  picker as a modal.
 
-- **Threshold dice swap**: should each arcana have its own die
-  faces? Fool uses 6-face SS/S/S/fail/fail/wild. Chariot maybe
-  uses DRIVING dice with different distribution (more failures
-  if Fatigue is high). The framework allows this via
-  `die.json` per-arcana.
+- **Do hands have separate dice?** Probably yes — John's die
+  is the existing 6-face SS/S/S/fail/fail/wild. Frasier's
+  might have a STEADY face instead of a wild. Each hand JSON
+  declares its die.
 
-- **Inertia/tension stat rename**: is showing the player
-  "PRESSURE-TO-SPEAK 7 / 10" cleaner than just generically
-  "TENSION 7 / 10"? The literal label sells the arcana; keep
-  per-arcana names.
+- **Cross-arcana unlocks: persistent or session-local?**
+  Persistent via GauntletState autoload, already in place. Each
+  run reads the state on setup to determine which unlocks
+  apply.
 
-- **Win-condition triggers**: each arcana's win condition is
-  the equivalent of LEAP. Should the win card always be named
-  the verb (LEAP, ASSEMBLE, OBSERVE, TRANSMIT, DRIVE)? Yes —
-  consistent visual language across runs.
-
-- **Loss CG variants**: same three-finale pattern across all
-  arcana? Each arcana could have its own three reversal states
-  (each tied to one loss path). The Fool already has this:
-  WIPE THE SAME SPOT FOREVER / 24-HOUR DINER / THE EMPTY ROOM.
+- **Difficulty curve**: should some location × hand combos be
+  marked "expert" — i.e. you can pick them but they're tuned
+  hard? Or should we just trust the player to pick what
+  interests them? Suggest: no difficulty rating. The mismatch
+  IS the interest.
