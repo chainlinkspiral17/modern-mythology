@@ -1,17 +1,11 @@
 {
   "scope": "fool",
-  "notes": "Six Visitors. Three on board at game start, three arrive on schedule. Spec: lore/_TAROT_GAUNTLET.md §IV.6.",
+  "notes": "Six Visitors. Three on board at game start, three arrive on schedule. The DEFAULT connection path is the four-card waiter sequence: GREET → LISTEN → DELIVER → SIT WITH. Some visitors have a SPECIAL bypass path (composite or auto-trigger). Each visitor has a `mood` (jovial / gruff / preoccupied / left_alone) and per-step flavor lines so the same mechanical sequence reads as a real conversation per character.",
   "visitors": [
     {
       "id": "frasier",
       "name": "Frasier Temple",
       "arrival": {"kind": "scheduled", "turn": 3, "from": "kitchen_alcove", "to": "counter"},
-      "connect_via": {
-        "kind": "card_at_pos_with_visitor_adjacent",
-        "card": "sit_with",
-        "player_pos": "counter",
-        "visitor_pos": "counter"
-      },
       "lore_token": "frasier_seen",
       "lore_text": "Still chasing shadows. Frasier sees you, you see Frasier.",
       "accent": "#ffa860",
@@ -20,7 +14,14 @@
         "Voices murmur somewhere past the kitchen door.",
         "Footsteps in the alcove — someone is waiting to come through.",
         "The kitchen door swings. Someone is about to step out."
-      ]
+      ],
+      "mood": "preoccupied",
+      "steps": {
+        "greet":   "Frasier looks up from his notebook just long enough to register that you exist. He goes back to writing.",
+        "listen":  "He tells you about the model. The river isn't right. The whole thing won't hold unless the river is right. You nod.",
+        "deliver": "You pour him a coffee he didn't ask for. He takes it without looking, drinks half in one go.",
+        "sit_with": "Frasier sets his notebook on the counter and turns it toward you. The handwriting is yours, except where it isn't. He nods, like you've finally caught up to him."
+      }
     },
     {
       "id": "stranger",
@@ -35,7 +36,15 @@
       },
       "lore_token": "stranger_seen_first",
       "lore_text": "You were seen first. There was an observer before the deck.",
-      "accent": "#c64878"
+      "accent": "#c64878",
+      "mood": "left_alone",
+      "tutorial_note": "The stranger doesn't want to be sat with. Pick up the cloth from their booth and visit the CARD WALL — they connect through what you take to heart, not what you bring them.",
+      "steps": {
+        "greet":   "They don't look up. The glow of their handheld screen washes their hood in green.",
+        "listen":  "Nothing. The screen they're reading from is the only voice in the booth.",
+        "deliver": "You set down a coffee. It cools untouched.",
+        "sit_with": "The stranger does not lift their eyes. SIT WITH won't connect them — try the booth's cloth and the card wall."
+      }
     },
     {
       "id": "faith",
@@ -49,17 +58,20 @@
       "is_leap_witness": true,
       "lore_token": "faith_named",
       "lore_text": "The dog's name is Faith. She is also the mandatory leap witness.",
-      "accent": "#7cffb0"
+      "accent": "#7cffb0",
+      "mood": "jovial",
+      "tutorial_note": "Faith is a dog. Use CALL FAITH twice.",
+      "steps": {
+        "greet":   "Faith thumps her tail twice. Once for hello. Once for you.",
+        "listen":  "She presses her nose against your shin. The pressure means: yes.",
+        "deliver": "A piece of jerky from the back room. She accepts it slowly, like it's owed.",
+        "sit_with": "Faith doesn't sit with — she stands up. Try CALL FAITH again."
+      }
     },
     {
       "id": "dawn_cook",
       "name": "The Dawn Cook",
       "arrival": {"kind": "scheduled", "turn": 5, "from": "parking_lot", "to": "kitchen_alcove"},
-      "connect_via": {
-        "kind": "card_at_pos_on_arrival_turn",
-        "card": "short_rest",
-        "player_pos": "kitchen_alcove"
-      },
       "lore_token": "shift_change_seen",
       "lore_text": "Shift change. The next person who'll wipe this counter.",
       "accent": "#d6c8a8",
@@ -68,17 +80,19 @@
         "Headlights swing across the parking lot — a truck idles.",
         "A car door slams. Someone's outside smoking by the dumpster.",
         "Boots crunch the gravel. The back door rattles in its frame."
-      ]
+      ],
+      "mood": "gruff",
+      "steps": {
+        "greet":   "The cook grunts once, half-recognizes you, half doesn't. They're already tying the apron.",
+        "listen":  "They tell you the grill needs the third burner re-lit. They say it like they're listing weather.",
+        "deliver": "You light the third burner. The cook nods, satisfied, doesn't say thanks.",
+        "sit_with": "The cook leans against the counter beside you. Wordless. The apron is on. The counter is taken care of."
+      }
     },
     {
       "id": "bbs_caller",
       "name": "The BBS Caller",
       "arrival": {"kind": "scheduled", "turn": 6, "from": "(signal)", "to": "register"},
-      "connect_via": {
-        "kind": "card_at_pos",
-        "card": "address_the_bbs_banner",
-        "player_pos": "register"
-      },
       "lore_token": "sysop_ember_ash",
       "lore_text": "sysop ember.ash.rest.bbs — the network has been counting the dead all night.",
       "accent": "#9bc3ff",
@@ -87,7 +101,14 @@
         "The BBS terminal blinks an unread line in the corner.",
         "The modem chirps. A connection is opening.",
         "Text scrolls fast on the register screen. Someone is typing now."
-      ]
+      ],
+      "mood": "preoccupied",
+      "steps": {
+        "greet":   "The cursor on the register screen pulses. A line types itself: HELLO, JOHN.",
+        "listen":  "The caller is paging through the diner's BBS archive. They want a specific message you posted in 1989.",
+        "deliver": "You scroll the archive to the right thread. They read it. Three new lines arrive.",
+        "sit_with": "WE SEE YOU. RETURN AT YOUR DISCRETION. The cursor blinks twice and waits."
+      }
     },
     {
       "id": "anya_recording",
@@ -97,7 +118,41 @@
       "lore_token": "priestess_older_than_chapter",
       "lore_text": "The Priestess is older than the chapter. Elicia has been recording you for years.",
       "accent": "#b89ad6",
-      "hidden_until_arrived": true
+      "hidden_until_arrived": true,
+      "mood": "preoccupied",
+      "tutorial_note": "Anya connects automatically when you BUNDLE with the cassette spine as contents.",
+      "steps": {
+        "greet":   "The cassette spins one full reel.",
+        "listen":  "A woman's voice you almost remember says your name.",
+        "deliver": "She names the year. It was before you started here.",
+        "sit_with": "The tape ends. The spool clicks. The recording was already finished."
+      }
     }
-  ]
+  ],
+  "default_step_lines_by_mood": {
+    "jovial": {
+      "greet":   "They look up and smile.",
+      "listen":  "They tell you, easily.",
+      "deliver": "You give them what they asked for. They thank you.",
+      "sit_with": "They share the silence with you."
+    },
+    "gruff": {
+      "greet":   "They glance up. Nod once.",
+      "listen":  "They tell you in three words.",
+      "deliver": "You do the thing. They accept it like it's owed.",
+      "sit_with": "They sit. The silence is theirs."
+    },
+    "preoccupied": {
+      "greet":   "They register you slowly.",
+      "listen":  "They tell you sideways, as if mostly to themselves.",
+      "deliver": "You give them what they asked for. They take it without looking.",
+      "sit_with": "They sit. The silence is a long held breath."
+    },
+    "left_alone": {
+      "greet":   "They don't look up.",
+      "listen":  "They don't answer.",
+      "deliver": "You set it down. They don't touch it.",
+      "sit_with": "They do not lift their eyes. This may not be the path."
+    }
+  }
 }

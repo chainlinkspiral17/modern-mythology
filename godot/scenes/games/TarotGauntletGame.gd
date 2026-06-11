@@ -29,6 +29,7 @@ var _action_cards: Dictionary = {}       # id → card def (merged Fool + core)
 var _gravity_deck_def: Dictionary = {}
 var _finale_def: Dictionary = {}
 var _visitors_def: Dictionary = {}       # id → visitor def
+var _step_defaults_by_mood: Dictionary = {}  # mood → {step → fallback line}
 var _items_def: Dictionary = {}          # id → item def
 var _piles_def: Dictionary = {}          # pile_id → {label, items[]}
 var _location: Dictionary = {}
@@ -113,6 +114,7 @@ var _last_played_cid: String = ""
 var _board_meeple: Control = null
 var _board_visitor_nodes: Dictionary = {}   # visitor_id → Control (Label or TextureRect)
 var _board_space_nodes: Dictionary = {}     # space_id → Label
+var _board_marker_pos: Dictionary = {}      # space_id → Vector2 (marker center)
 var _gravity_card_label: RichTextLabel = null
 var _end_overlay: Control = null
 
@@ -395,10 +397,11 @@ func _load_data() -> void:
 		_action_cards[c["id"]] = c
 	for c: Dictionary in arc_deck.get("cards", []):
 		_action_cards[c["id"]] = c
-	# Visitors → id-keyed dict
+	# Visitors → id-keyed dict, plus the mood→step fallback table.
 	var v_def := _load_json(arc_root + "visitors.json")
 	for v: Dictionary in v_def.get("visitors", []):
 		_visitors_def[v["id"]] = v
+	_step_defaults_by_mood = v_def.get("default_step_lines_by_mood", {})
 	# Items + piles
 	var i_def := _load_json(arc_root + "items.json")
 	_piles_def = i_def.get("piles", {})
@@ -438,6 +441,10 @@ func _init_run() -> void:
 	for vid in _visitors_def:
 		var v: Dictionary = _visitors_def[vid]
 		var arr: Dictionary = v.get("arrival", {})
+		# `progress` tracks the visitor's connection step: 0 = arrived
+		# but unmet, 1 = greeted, 2 = listened-to, 3 = delivered-to,
+		# 4 = connected. SIT WITH requires progress=3 (the waiter
+		# sequence: GREET → LISTEN → DELIVER → SIT WITH).
 		match arr.get("kind", ""):
 			"on_board_at_start":
 				_visitors_state[vid] = {
@@ -445,6 +452,7 @@ func _init_run() -> void:
 					"arrived": true,
 					"connected": false,
 					"claimed_turn": -1,
+					"progress": 0,
 				}
 			"scheduled":
 				_visitors_state[vid] = {
@@ -454,6 +462,7 @@ func _init_run() -> void:
 					"arrival_pos": arr.get("to", "counter"),
 					"connected": false,
 					"claimed_turn": -1,
+					"progress": 0,
 				}
 			"conditional":
 				_visitors_state[vid] = {
@@ -462,6 +471,7 @@ func _init_run() -> void:
 					"connected": false,
 					"claimed_turn": -1,
 					"condition": arr,
+					"progress": 0,
 				}
 
 	# Item piles: copy the items[] array so we can pop from it.
@@ -611,31 +621,34 @@ func _build_ui() -> void:
 	add_child(right)
 
 	# Codex card (the gallery image, pinned) — fixed size, NOT expand_fill
-	# (was eating all the right-column height and squeezing the log to
-	# nothing).
-	# INVENTORY panel — replaces the old CODEX thumbnail (which was
-	# just decorative duplication of the gallery card). Shows what
-	# the player has actually picked up, with item art if present
-	# and a clear BINDLE assembly indicator at the top.
-	var inv_panel := PanelContainer.new()
-	inv_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	inv_panel.custom_minimum_size = Vector2(420, 170)
-	var inv_vb := VBoxContainer.new()
-	inv_panel.add_child(inv_vb)
-	inv_vb.add_child(_make_pane_header("INVENTORY / BINDLE", "inventory"))
-	var inv_scroll := ScrollContainer.new()
-	inv_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	inv_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	inv_vb.add_child(inv_scroll)
-	_inv_box = VBoxContainer.new()
-	_inv_box.add_theme_constant_override("separation", 3)
-	_inv_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	inv_scroll.add_child(_inv_box)
-	right.add_child(inv_panel)
+	# Right column order (top → bottom):
+	#   1. VISITORS  — dominant pane, expand_fill, the game IS them
+	#   2. GRAVITY   — single thin line under it
+	#   3. INVENTORY/BINDLE — compact, no expand_fill
+	# Was inverted (inventory dominant); user feedback: "the strangers
+	# window pane should really be the dominant one over the inventory.
+	# the game is really built around their comings and goings."
 
-	# Gravity card display — single thin line. Shows deck size before
-	# any draw ("Gravity deck: 12 remaining"), then the drawn card's
-	# title + flavor.
+	# VISITORS — dominant
+	var v_panel := PanelContainer.new()
+	v_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	v_panel.custom_minimum_size = Vector2(420, 280)
+	v_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	v_panel.size_flags_stretch_ratio = 3.0   # take the lion's share
+	var v_vb := VBoxContainer.new()
+	v_panel.add_child(v_vb)
+	v_vb.add_child(_make_pane_header("VISITORS", "visitors"))
+	var v_scroll := ScrollContainer.new()
+	v_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	v_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	v_vb.add_child(v_scroll)
+	_visitors_box = VBoxContainer.new()
+	_visitors_box.add_theme_constant_override("separation", 3)
+	_visitors_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	v_scroll.add_child(_visitors_box)
+	right.add_child(v_panel)
+
+	# GRAVITY — single thin line
 	var grav_panel := PanelContainer.new()
 	grav_panel.add_theme_stylebox_override("panel", _make_panel_style())
 	grav_panel.custom_minimum_size = Vector2(420, 72)
@@ -650,25 +663,22 @@ func _build_ui() -> void:
 	grav_vb.add_child(_gravity_card_label)
 	right.add_child(grav_panel)
 
-	# Visitors — gets the freed vertical space from the relocated log
-	# Wrapped in a ScrollContainer so multi-line hints can't push the
-	# panel taller than its allotted column space.
-	var v_panel := PanelContainer.new()
-	v_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	v_panel.custom_minimum_size = Vector2(420, 120)
-	v_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	var v_vb := VBoxContainer.new()
-	v_panel.add_child(v_vb)
-	v_vb.add_child(_make_pane_header("VISITORS", "visitors"))
-	var v_scroll := ScrollContainer.new()
-	v_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	v_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	v_vb.add_child(v_scroll)
-	_visitors_box = VBoxContainer.new()
-	_visitors_box.add_theme_constant_override("separation", 3)
-	_visitors_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	v_scroll.add_child(_visitors_box)
-	right.add_child(v_panel)
+	# INVENTORY / BINDLE — compact, not expand_fill
+	var inv_panel := PanelContainer.new()
+	inv_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	inv_panel.custom_minimum_size = Vector2(420, 140)
+	var inv_vb := VBoxContainer.new()
+	inv_panel.add_child(inv_vb)
+	inv_vb.add_child(_make_pane_header("INVENTORY / BINDLE", "inventory"))
+	var inv_scroll := ScrollContainer.new()
+	inv_scroll.custom_minimum_size = Vector2(0, 100)
+	inv_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	inv_vb.add_child(inv_scroll)
+	_inv_box = VBoxContainer.new()
+	_inv_box.add_theme_constant_override("separation", 3)
+	_inv_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	inv_scroll.add_child(_inv_box)
+	right.add_child(inv_panel)
 
 	# Log moved OUT of the right column — it now lives in the bottom
 	# strip alongside the hand. See bottom panel below.
@@ -1127,6 +1137,7 @@ func _render_board() -> void:
 		c.queue_free()
 	_board_space_nodes.clear()
 	_board_visitor_nodes.clear()
+	_board_marker_pos.clear()
 	# Background image layer (rendered first so labels draw on top).
 	# If the location-specific board art is missing, fall back to the
 	# bare grid we used to render.
@@ -1146,7 +1157,7 @@ func _render_board() -> void:
 		# image as ATMOSPHERIC TEXTURE / mood, not a literal map. The
 		# engine-drawn markers + adjacency lines are the authoritative
 		# board.
-		bg.modulate = Color(1, 1, 1, 0.20)
+		bg.modulate = Color(1, 1, 1, 0.12)
 		bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_board_content.add_child(bg)
 	# Draw spaces as labels positioned per the JSON's pos_xy.
@@ -1230,6 +1241,7 @@ func _render_board() -> void:
 		marker.custom_minimum_size = Vector2(12, 12)
 		marker.size = Vector2(12, 12)
 		marker.position = Vector2(nx - 6, ny - 6)
+		_board_marker_pos[sid] = Vector2(nx, ny)
 		var mst := StyleBoxFlat.new()
 		var kind: String = s.get("kind", "named")
 		match kind:
@@ -1319,27 +1331,29 @@ func _make_space_label(s: Dictionary) -> Label:
 		pile = "  [%d]" % _pile_state.get(s.get("search_pile", ""), []).size()
 	var col: Color = C_TEXT
 	var fs: int = 10
+	# Every space gets its full label now — user feedback: "the map
+	# also needs more labels for locations." Tier the prominence by
+	# relevance: current pos > adjacent > thresholds/search > other.
 	if is_here:
 		l.text = "» " + label + pile
 		col = C_ACCENT
 		fs = 12
 	elif is_adjacent:
-		l.text = "· " + label + pile
+		l.text = label + pile
 		col = C_TEXT
 		fs = 10
 	elif kind == "threshold":
 		l.text = label
-		col = Color(0.55, 0.95, 0.65, 0.65)
+		col = Color(0.55, 0.95, 0.65, 0.78)
 		fs = 9
 	elif kind == "search":
 		l.text = label + pile
-		col = Color(0.95, 0.78, 0.40, 0.65)
+		col = Color(0.95, 0.78, 0.40, 0.78)
 		fs = 9
 	else:
-		# Tiny dot only — keeps the position click-target but removes
-		# the label from the visual noise floor.
-		l.text = "·"
-		col = Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.35)
+		# Show the full label too, just dim.
+		l.text = label
+		col = Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55)
 		fs = 9
 	l.add_theme_color_override("font_color", col)
 	l.add_theme_font_size_override("font_size", fs)
@@ -1534,22 +1548,32 @@ func _on_space_clicked(target_pos: String) -> void:
 
 
 func _position_meeples() -> void:
-	# Player at current pos — tween between rounds, don't teleport.
-	if _board_meeple and _board_space_nodes.has(_player_pos):
-		var anchor: Label = _board_space_nodes[_player_pos]
-		var target: Vector2 = anchor.position + Vector2(0, 18)
+	# Anchor meeples to the MARKER CENTER (not the label position) so
+	# they line up with the colored station discs. The marker centers
+	# are stored in _board_marker_pos during _render_board.
+	# Player meeple: just below + slightly right of the marker.
+	if _board_meeple and _board_marker_pos.has(_player_pos):
+		var mc: Vector2 = _board_marker_pos[_player_pos]
+		# offset by half the meeple size + a small gap so it doesn't
+		# cover the marker itself
+		var mp_size: Vector2 = _board_meeple.size if _board_meeple.size.x > 0 else Vector2(28, 28)
+		var target: Vector2 = mc - mp_size * 0.5 + Vector2(0, 14)
 		_tween_node_to(_board_meeple, target, 0.32)
-	# Visitors at their positions — tween too
+	# Visitor meeples — stack vertically below the marker, all
+	# centered on the marker's x axis.
 	var vid_pos_stack: Dictionary = {}   # pos → stack offset count
 	for vid in _board_visitor_nodes:
 		var v: Dictionary = _visitors_state[vid]
 		var p: String = v.get("pos", "")
-		if _board_space_nodes.has(p):
-			var anchor2: Label = _board_space_nodes[p]
+		if _board_marker_pos.has(p):
+			var mc2: Vector2 = _board_marker_pos[p]
+			var node: Control = _board_visitor_nodes[vid]
+			var ns: Vector2 = node.size if node.size.x > 0 else Vector2(22, 22)
 			var idx: int = int(vid_pos_stack.get(p, 0))
 			vid_pos_stack[p] = idx + 1
-			var vtarget: Vector2 = anchor2.position + Vector2(0, 36 + idx * 14)
-			_tween_node_to(_board_visitor_nodes[vid], vtarget, 0.36)
+			# Visitors stack below the player slot
+			var vtarget: Vector2 = mc2 - ns * 0.5 + Vector2(0, 34 + idx * 16)
+			_tween_node_to(node, vtarget, 0.36)
 
 
 # ── Hand + visitor rendering ─────────────────────────────────────────
@@ -1882,6 +1906,8 @@ func _tooltip_for_visitor(vid: String) -> String:
 	var st: Dictionary = _visitors_state.get(vid, {})
 	var lines: PackedStringArray = []
 	lines.append("● " + String(v.get("name", vid)))
+	if v.has("mood"):
+		lines.append("mood: " + String(v.get("mood", "")))
 	if st.get("connected", false):
 		lines.append("✓ connected")
 		if v.has("lore_text"):
@@ -1891,10 +1917,20 @@ func _tooltip_for_visitor(vid: String) -> String:
 		lines.append("✕ claimed — %d turn(s) until consumed" % max(0, remaining))
 	elif st.get("arrived", false):
 		lines.append("at " + String(st.get("pos", "?")).replace("_", " "))
-	# Connect requirement
+		# Waiter-sequence progress bar
+		var p: int = int(st.get("progress", 0))
+		var labels: PackedStringArray = ["GREET", "LISTEN", "DELIVER", "SIT WITH"]
+		var marks: PackedStringArray = []
+		for i in labels.size():
+			var prefix: String = "✓ " if p > i else ("→ " if p == i else "  ")
+			marks.append(prefix + labels[i])
+		lines.append("Sequence: " + "  ".join(marks))
+	# Special connect path (composite / card_played_n_times / etc.)
 	var cv: Dictionary = v.get("connect_via", {})
 	if not cv.is_empty() and not st.get("connected", false):
-		lines.append("Connect: " + _describe_connect_via_plain(cv))
+		lines.append("(or: " + _describe_connect_via_plain(cv) + ")")
+	if v.has("tutorial_note"):
+		lines.append("[hint] " + String(v.get("tutorial_note", "")))
 	return "\n".join(lines)
 
 
@@ -2544,7 +2580,63 @@ func _check_requirement(req: Dictionary) -> bool:
 			return _is_threshold(_player_pos)
 		"win_conditions_met":
 			return _win_conditions_met()
+		"visitor_at_my_pos":
+			# True if any arrived, unconnected visitor shares my space
+			for vid in _visitors_state:
+				var st: Dictionary = _visitors_state[vid]
+				if st.get("arrived", false) and not st.get("connected", false) and st.get("pos", "") == _player_pos:
+					return true
+			return false
+		"visitor_at_my_pos_progress_at_least":
+			# True if any arrived, unconnected visitor at my space has
+			# progress >= n. Used by LISTEN / DELIVER / SIT WITH
+			# requirement chain.
+			var n: int = int(req.get("n", 1))
+			for vid in _visitors_state:
+				var st: Dictionary = _visitors_state[vid]
+				if (st.get("arrived", false) and not st.get("connected", false)
+						and st.get("pos", "") == _player_pos
+						and int(st.get("progress", 0)) >= n):
+					return true
+			return false
 	return true
+
+
+func _step_index(step: String) -> int:
+	# Progress encoding: greet=1, listen=2, deliver=3, sit_with=4
+	match step:
+		"greet":    return 1
+		"listen":   return 2
+		"deliver":  return 3
+		"sit_with": return 4
+	return 0
+
+
+# Per-visitor (or per-mood fallback) flavor when a step lands.
+# Visitor JSON's steps[step] takes priority; if missing, fall back
+# to default_step_lines_by_mood[mood][step] from the visitors_def
+# top-level.
+func _log_visitor_step_line(vid: String, step: String) -> void:
+	var v: Dictionary = _visitors_def.get(vid, {})
+	var name_s: String = String(v.get("name", vid))
+	var line: String = ""
+	# Per-visitor line takes priority
+	var steps_dict: Dictionary = v.get("steps", {})
+	if steps_dict.has(step):
+		line = String(steps_dict.get(step, ""))
+	if line == "":
+		# Fall back to mood-default. _visitors_def is the
+		# per-visitor dict; mood defaults are stored as a separate
+		# top-level field on the JSON which the engine reads as
+		# _step_defaults_by_mood.
+		var mood: String = String(v.get("mood", "preoccupied"))
+		var defaults: Dictionary = _step_defaults_by_mood.get(mood, {})
+		line = String(defaults.get(step, ""))
+	# Log a verbed-line header + the flavor underneath
+	var verb_label: String = step.replace("_", " ").to_upper()
+	_log_line("[color=#7cffb0]→ %s[/color] [b]%s[/b]" % [verb_label, name_s])
+	if line != "":
+		_log_line("[color=#7c8398][i]   %s[/i][/color]" % line)
 
 
 func _has_contents() -> bool:
@@ -2804,6 +2896,34 @@ func _resolve_effect(e: Dictionary) -> void:
 				if vst_p.get("arrived", false) and not vst_p.get("connected", false) and vst_p.get("pos", "") == _player_pos:
 					_connect_visitor(vid_p)
 					break
+		"advance_visitor_step":
+			# GREET / LISTEN / DELIVER / SIT WITH all funnel through
+			# here. The card's effect names which step it is; we find
+			# the highest-progress unconnected visitor at the player's
+			# space and bump their progress one. Then log the per-
+			# visitor flavor line for that step (falling back to a
+			# mood-default if no per-visitor line is set).
+			var step_name: String = String(e.get("step", ""))
+			var target_vid: String = ""
+			var best_progress: int = -1
+			for vid_s in _visitors_state:
+				var vst_s: Dictionary = _visitors_state[vid_s]
+				if not vst_s.get("arrived", false): continue
+				if vst_s.get("connected", false): continue
+				if vst_s.get("pos", "") != _player_pos: continue
+				var p: int = int(vst_s.get("progress", 0))
+				if p > best_progress:
+					best_progress = p
+					target_vid = vid_s
+			if target_vid == "":
+				_log_line("[i]nobody here to %s[/i]" % step_name)
+				return
+			# Advance progress
+			var step_idx: int = _step_index(step_name)
+			if step_idx > 0:
+				_visitors_state[target_vid]["progress"] = step_idx
+			# Log the per-visitor / per-mood flavor line for this step
+			_log_visitor_step_line(target_vid, step_name)
 		_:
 			_log_line("[i](unhandled effect: %s)[/i]" % kind)
 
@@ -3815,6 +3935,10 @@ func _run_drift() -> void:
 		if st.get("connected", false):
 			continue
 		if int(st.get("claimed_turn", -1)) >= 0:
+			continue
+		# Engaged (player has already greeted / listened / delivered)
+		# visitors don't drift — they wait for you to come back.
+		if int(st.get("progress", 0)) > 0:
 			continue
 		var cur: String = String(st.get("pos", ""))
 		if cur == "":

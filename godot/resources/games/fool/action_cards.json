@@ -45,8 +45,49 @@
       "effects": [
         {"kind": "move_visitor", "visitor": "faith", "to": "player_pos"},
         {"kind": "increment_meta", "key": "call_faith_count"},
-        {"kind": "if_meta_at_least", "key": "call_faith_count", "value": 3,
+        {"kind": "if_meta_at_least", "key": "call_faith_count", "value": 2,
+         "then": [{"kind": "auto_connect_visitor", "visitor": "faith"}]},
+        {"kind": "if_meta_at_least", "key": "call_faith_count", "value": 4,
          "then": [{"kind": "gain_inertia", "amount": 1, "note": "she's tired"}]}
+      ]
+    },
+    {
+      "id": "greet",
+      "title": "GREET",
+      "time_cost": 0,
+      "starter": true,
+      "flavor": "Acknowledge them. The first beat of any connection.",
+      "requires": [{"kind": "visitor_at_my_pos"}],
+      "effects": [
+        {"kind": "advance_visitor_step", "step": "greet"}
+      ]
+    },
+    {
+      "id": "listen",
+      "title": "LISTEN",
+      "time_cost": 1,
+      "starter": true,
+      "flavor": "Hear them out. Don't fill the silence.",
+      "requires": [
+        {"kind": "visitor_at_my_pos"},
+        {"kind": "visitor_at_my_pos_progress_at_least", "n": 1}
+      ],
+      "effects": [
+        {"kind": "advance_visitor_step", "step": "listen"}
+      ]
+    },
+    {
+      "id": "deliver",
+      "title": "DELIVER",
+      "time_cost": 1,
+      "starter": true,
+      "flavor": "Give them what they came for. Coffee. A tape. A door held.",
+      "requires": [
+        {"kind": "visitor_at_my_pos"},
+        {"kind": "visitor_at_my_pos_progress_at_least", "n": 2}
+      ],
+      "effects": [
+        {"kind": "advance_visitor_step", "step": "deliver"}
       ]
     },
     {
@@ -54,9 +95,13 @@
       "title": "SIT WITH",
       "time_cost": 1,
       "starter": false,
-      "flavor": "Stay put. Be witnessed. The action passes.",
-      "requires": [],
+      "flavor": "Stay put. Be witnessed. The connection closes. The action passes.",
+      "requires": [
+        {"kind": "visitor_at_my_pos"},
+        {"kind": "visitor_at_my_pos_progress_at_least", "n": 3}
+      ],
       "effects": [
+        {"kind": "advance_visitor_step", "step": "sit_with"},
         {"kind": "connect_visitor_at_my_pos"},
         {"kind": "end_action_phase"}
       ]
