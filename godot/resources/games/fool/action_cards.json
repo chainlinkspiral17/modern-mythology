@@ -25,7 +25,8 @@
       "title": "CALL FAITH",
       "time_cost": 1,
       "starter": false,
-      "flavor": "She's a good dog. She knows her name now.",
+      "available_in_locations": ["dambrosios"],
+      "flavor": "She's a good dog. She knows her name now. (She's the diner's dog — this card only works here.)",
       "requires": [],
       "effects": [
         {"kind": "move_visitor", "visitor": "faith", "to": "player_pos"},

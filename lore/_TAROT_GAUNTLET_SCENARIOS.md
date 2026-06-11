@@ -70,9 +70,13 @@ sit with yourself.
 2. **Action card set** (~10 cards) themed by the UPRIGHT arcana —
    UNIVERSAL by default, travels with the hand from location to
    location. Cards that need a specific space (WIPE COUNTER needs
-   a "counter") self-gate via `requires`. Cards can opt-in to
-   location-locking via `available_in_locations: [...]` for the
-   rare verb that genuinely doesn't translate.
+   a "counter") self-gate via `requires`. Cards that depend on a
+   LOCATION-scoped visitor or item (CALL FAITH calls Faith, who
+   only exists at D'Ambrosio's) opt-in to location-locking via
+   `available_in_locations: [...]` and are simply NOT loaded
+   when the hand plays elsewhere. The pattern: if a card's
+   referent (space, visitor, item) is location-scoped, the card
+   gets locked to that location. Most cards are universal.
 3. An **Ultimate** — one-shot powerful card, name + flavor
 4. A **starting hand** drawn from framework + their arcana-unique cards
 5. **Carryover unlocks** — cross-arcana items their previous
