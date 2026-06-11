@@ -785,6 +785,27 @@ $('exportBundleBtn').onclick = async () => {
 };
 
 // ── Boot ────────────────────────────────────────────────────────
+// Try to auto-load the live catalog from disk (works when the
+// studio is served via http, e.g. `python -m http.server` from
+// the repo root). Falls back to the bundled DEFAULT_CATALOG
+// silently when fetch is blocked (file:// origin).
+(async () => {
+  try {
+    const r = await fetch('../resources/music_catalog.json', {cache: 'no-store'});
+    if (r.ok) {
+      const parsed = await r.json();
+      catalog = parsed.map(t => ({...t, chars: [...(t.chars||[])], chapters: [...(t.chapters||[])]}));
+      $('catalogStatus').textContent = `Auto-loaded ${catalog.length} tracks from music_catalog.json.`;
+      $('catalogStatus').className = 'status good';
+      rebuildScopeFilters();
+      render();
+      return;
+    }
+  } catch (e) {
+    // Fall through to bundled default below.
+  }
+  $('catalogStatus').textContent = `Using bundled catalog (${catalog.length} tracks). Drop the live JSON to update.`;
+})();
 rebuildScopeFilters();
 render();
 </script>

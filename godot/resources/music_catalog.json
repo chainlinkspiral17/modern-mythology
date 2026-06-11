@@ -1,5 +1,20 @@
 [
   {
+    "id": "credits_theme",
+    "vol": 0,
+    "title": "Credits — Modern Mythology",
+    "src": "assets/audio/bgm/credits_theme.ogg",
+    "composer": "—",
+    "desc": "End-of-volume credits theme. The first pad of title_theme returning slower, lower, resolved.",
+    "unlock": {
+      "type": "key",
+      "key": "music:credits_theme"
+    },
+    "chapters": [
+      "credits"
+    ]
+  },
+  {
     "id": "title_theme",
     "vol": 0,
     "title": "Modern Mythology",
@@ -31,6 +46,22 @@
     ]
   },
   {
+    "id": "vol1_club_thump",
+    "vol": 1,
+    "title": "The Underworld",
+    "src": "assets/audio/bgm/vol1_club_thump.mp3",
+    "composer": "—",
+    "desc": "Intercut. Dancing. Loud music.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol1_ch3_club",
+      "vol1_ch4_club_sharp",
+      "vol1_ch4_club_sharp_b"
+    ]
+  },
+  {
     "id": "vol1_diner_ambient",
     "vol": 1,
     "title": "The Missing Link",
@@ -48,38 +79,6 @@
       "vol1_link_counter",
       "vol1_link_jukebox",
       "vol1_link_menu"
-    ]
-  },
-  {
-    "id": "vol1_drive_night",
-    "vol": 1,
-    "title": "Driving Around · Night",
-    "src": "assets/audio/bgm/vol1_drive_night.mp3",
-    "composer": "—",
-    "desc": "EXT. Judgement Day. Headlights, then more headlights.",
-    "unlock": {
-      "type": "heard"
-    },
-    "chapters": [
-      "vol1_ch3_judgement_day",
-      "vol1_ch3_outside",
-      "vol1_ch3_outside_b"
-    ]
-  },
-  {
-    "id": "vol1_club_thump",
-    "vol": 1,
-    "title": "The Underworld",
-    "src": "assets/audio/bgm/vol1_club_thump.mp3",
-    "composer": "—",
-    "desc": "Intercut. Dancing. Loud music.",
-    "unlock": {
-      "type": "heard"
-    },
-    "chapters": [
-      "vol1_ch3_club",
-      "vol1_ch4_club_sharp",
-      "vol1_ch4_club_sharp_b"
     ]
   },
   {
@@ -101,6 +100,123 @@
     ]
   },
   {
+    "id": "vol1_drive_night",
+    "vol": 1,
+    "title": "Driving Around · Night",
+    "src": "assets/audio/bgm/vol1_drive_night.mp3",
+    "composer": "—",
+    "desc": "EXT. Judgement Day. Headlights, then more headlights.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol1_ch3_judgement_day",
+      "vol1_ch3_outside",
+      "vol1_ch3_outside_b"
+    ]
+  },
+  {
+    "id": "vol1_faust_theme",
+    "vol": 1,
+    "title": "Faust III",
+    "src": "assets/audio/bgm/vol1_faust_theme.ogg",
+    "composer": "—",
+    "desc": "An echo of Sharp's bass but warmer — the same world from another mouth. Faust's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "faust3"
+    ]
+  },
+  {
+    "id": "vol1_milestone_choice",
+    "vol": 1,
+    "title": "The Choice (resolved)",
+    "src": "assets/audio/bgm/vol1_milestone_choice.ogg",
+    "composer": "—",
+    "desc": "Released when Vol 1's central choice is committed. A held breath finally let out.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:vol1_choice"
+    },
+    "chapters": [
+      "vol1_end"
+    ]
+  },
+  {
+    "id": "vol1_painting",
+    "vol": 1,
+    "title": "The Painting",
+    "src": "assets/audio/bgm/vol1_painting.ogg",
+    "composer": "—",
+    "desc": "A slow oil-tone pad. The painting that knows you saw it.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol1_ch2_painting",
+      "vol1_ch2_painting_b"
+    ]
+  },
+  {
+    "id": "vol1_pharmacy",
+    "vol": 1,
+    "title": "The Pharmacy Mirror",
+    "src": "assets/audio/bgm/vol1_pharmacy.ogg",
+    "composer": "—",
+    "desc": "Pharmacy fluorescent buzz. The mirror that doesn't quite reflect right.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol1_ch2_pharmacy",
+      "vol1_ch2_pharmacy_mirror"
+    ]
+  },
+  {
+    "id": "vol1_sharp_theme",
+    "vol": 1,
+    "title": "Sharp",
+    "src": "assets/audio/bgm/vol1_sharp_theme.ogg",
+    "composer": "—",
+    "desc": "Low bass swell, basement amp buzz. Sharp's signature, played whenever Sharp shows up.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "sharp"
+    ]
+  },
+  {
+    "id": "vol1_stranger_theme",
+    "vol": 1,
+    "title": "The Stranger",
+    "src": "assets/audio/bgm/vol1_stranger_theme.ogg",
+    "composer": "—",
+    "desc": "A single sustained tone in the upper register. The Stranger arrives at the booth.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "stranger"
+    ]
+  },
+  {
+    "id": "vol1_title",
+    "vol": 1,
+    "title": "Crossroads · Title",
+    "src": "assets/audio/bgm/vol1_title.mp3",
+    "composer": "—",
+    "desc": "Volume 1 title card. Warm pad + radio hush. The full deck has not yet been dealt.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol1_title"
+    ]
+  },
+  {
     "id": "vol2_ambient",
     "vol": 2,
     "title": "Small Wood Variations",
@@ -118,6 +234,63 @@
       "vol2_briar_falls_interlude",
       "vol2_bf_hub",
       "vol2_ch1_history_one"
+    ]
+  },
+  {
+    "id": "vol2_briar_falls_night",
+    "vol": 2,
+    "title": "Briar Falls · After Dark",
+    "src": "assets/audio/bgm/vol2_briar_falls_night.ogg",
+    "composer": "—",
+    "desc": "Pine-wind drone, owl on a far ridge. Late at Briar Falls.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol2_bf_end"
+    ]
+  },
+  {
+    "id": "vol2_graveyard_solo",
+    "vol": 2,
+    "title": "The Graveyard",
+    "src": "assets/audio/bgm/vol2_graveyard_solo.ogg",
+    "composer": "—",
+    "desc": "A single low pad, no field-recording layer. The quietest track in Vol 2.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol2_graveyard"
+    ]
+  },
+  {
+    "id": "vol2_lena_theme",
+    "vol": 2,
+    "title": "Lena",
+    "src": "assets/audio/bgm/vol2_lena_theme.ogg",
+    "composer": "—",
+    "desc": "Acoustic guitar single-note phrase, repeated, mid-period Mark Hollis register. Lena's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "lena"
+    ]
+  },
+  {
+    "id": "vol2_milestone_seagash",
+    "vol": 2,
+    "title": "Seagash, Closed",
+    "src": "assets/audio/bgm/vol2_milestone_seagash.ogg",
+    "composer": "—",
+    "desc": "Released when the Seagash mystery's last interlude resolves.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:vol2_seagash"
+    },
+    "chapters": [
+      "vol2_end"
     ]
   },
   {
@@ -176,6 +349,66 @@
     ]
   },
   {
+    "id": "vol3_antonio_theme",
+    "vol": 3,
+    "title": "Antonio",
+    "src": "assets/audio/bgm/vol3_antonio_theme.ogg",
+    "composer": "—",
+    "desc": "Single piano figure on the upbeat, returning each time the call doesn't connect.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "antonio"
+    ]
+  },
+  {
+    "id": "vol3_call_drop",
+    "vol": 3,
+    "title": "The Call Drops",
+    "src": "assets/audio/bgm/vol3_call_drop.ogg",
+    "composer": "—",
+    "desc": "Antonio mid-sentence, the line going hollow. A single note holding for too long.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "antonio"
+    ],
+    "chapters": [
+      "vol3_the_choice"
+    ]
+  },
+  {
+    "id": "vol3_milestone_choice",
+    "vol": 3,
+    "title": "Decompression",
+    "src": "assets/audio/bgm/vol3_milestone_choice.ogg",
+    "composer": "—",
+    "desc": "Released when Vol 3's choice resolves. The pressure equalizes.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:vol3_choice"
+    },
+    "chapters": [
+      "vol3_end"
+    ]
+  },
+  {
+    "id": "vol3_tobor_theme",
+    "vol": 3,
+    "title": "Tobor",
+    "src": "assets/audio/bgm/vol3_tobor_theme.ogg",
+    "composer": "—",
+    "desc": "Metallic resonator + held vacuum hum. The robot's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "tobor"
+    ]
+  },
+  {
     "id": "vol4_ambient",
     "vol": 4,
     "title": "Five AM, No One Around",
@@ -192,6 +425,81 @@
     "chapters": [
       "vol4_standoff",
       "vol4_end"
+    ]
+  },
+  {
+    "id": "vol4_dante_theme",
+    "vol": 4,
+    "title": "Dante D'Ambrosio",
+    "src": "assets/audio/bgm/vol4_dante_theme.ogg",
+    "composer": "—",
+    "desc": "A bowed double-bass note held until the bow leaves the string. The father.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "dante"
+    ]
+  },
+  {
+    "id": "vol4_milestone_standoff",
+    "vol": 4,
+    "title": "The Standoff (resolved)",
+    "src": "assets/audio/bgm/vol4_milestone_standoff.ogg",
+    "composer": "—",
+    "desc": "Released when the Vol 4 standoff resolves. The room finally lets you sit down.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:vol4_standoff"
+    },
+    "chapters": [
+      "vol4_end"
+    ]
+  },
+  {
+    "id": "vol4_nicola_theme",
+    "vol": 4,
+    "title": "Nicola",
+    "src": "assets/audio/bgm/vol4_nicola_theme.ogg",
+    "composer": "—",
+    "desc": "A short three-note descending figure on a detuned upright piano. Nicola's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "nicola"
+    ]
+  },
+  {
+    "id": "vol4_standoff_strings",
+    "vol": 4,
+    "title": "Five AM Strings",
+    "src": "assets/audio/bgm/vol4_standoff_strings.ogg",
+    "composer": "—",
+    "desc": "A single sustained note from a Lo-fi taped cello at the climax of the standoff.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "nicola",
+      "dante"
+    ],
+    "chapters": [
+      "vol4_standoff"
+    ]
+  },
+  {
+    "id": "vol5_alberto_theme",
+    "vol": 5,
+    "title": "Alberto · Sunglasses Indoors",
+    "src": "assets/audio/bgm/vol5_alberto_theme.ogg",
+    "composer": "—",
+    "desc": "Bowed cello single note, dampened. The grieving son.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "alberto"
     ]
   },
   {
@@ -216,21 +524,45 @@
     ]
   },
   {
-    "id": "vol5_warehouse_drone",
+    "id": "vol5_anya_theme",
     "vol": 5,
-    "title": "Cathedral of Rust and Code",
-    "src": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+    "title": "Anya · The Recording",
+    "src": "assets/audio/bgm/vol5_anya_theme.ogg",
     "composer": "—",
-    "desc": "Chapter I — The Magician.",
+    "desc": "Found-tape hiss + an almost-melody just under the noise floor. Anya's signature.",
     "unlock": {
       "type": "heard"
     },
-    "chapters": [
-      "vol5_ch1_magician"
-    ],
     "chars": [
-      "frasier",
-      "the_demon"
+      "anya_recording"
+    ]
+  },
+  {
+    "id": "vol5_bbs_caller_theme",
+    "vol": 5,
+    "title": "Sysop · ember.ash.rest.bbs",
+    "src": "assets/audio/bgm/vol5_bbs_caller_theme.ogg",
+    "composer": "—",
+    "desc": "Modem handshake + low fluorescent buzz.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "bbs_caller"
+    ]
+  },
+  {
+    "id": "vol5_bus_kid_theme",
+    "vol": 5,
+    "title": "The Bus Kid",
+    "src": "assets/audio/bgm/vol5_bus_kid_theme.ogg",
+    "composer": "—",
+    "desc": "A bright wood-block tap + a smile of brass. The helper's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "bus_kid"
     ]
   },
   {
@@ -253,6 +585,139 @@
     ]
   },
   {
+    "id": "vol5_elicia_theme_solo",
+    "vol": 5,
+    "title": "Elicia · Tape Reel",
+    "src": "assets/audio/bgm/vol5_elicia_theme_solo.ogg",
+    "composer": "—",
+    "desc": "Cassette-spool noise + a soft sustained voice-tone (no vocal). Elicia's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "elicia"
+    ]
+  },
+  {
+    "id": "vol5_frasier_theme_solo",
+    "vol": 5,
+    "title": "Frasier · Notebook",
+    "src": "assets/audio/bgm/vol5_frasier_theme_solo.ogg",
+    "composer": "—",
+    "desc": "The pen scratch behind the warehouse drone — distinct from the chapter ambient.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "frasier"
+    ]
+  },
+  {
+    "id": "vol5_gauntlet_loss",
+    "vol": 5,
+    "title": "Twenty-Four Hours (reversed)",
+    "src": "assets/audio/bgm/vol5_gauntlet_loss.ogg",
+    "composer": "—",
+    "desc": "Released the first time you lose any Tarot Gauntlet scenario.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:gauntlet_loss"
+    }
+  },
+  {
+    "id": "vol5_gauntlet_win",
+    "vol": 5,
+    "title": "The Leap (won)",
+    "src": "assets/audio/bgm/vol5_gauntlet_win.ogg",
+    "composer": "—",
+    "desc": "Released the first time you win any Tarot Gauntlet scenario.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:gauntlet_win"
+    }
+  },
+  {
+    "id": "vol5_john_theme",
+    "vol": 5,
+    "title": "John Frank",
+    "src": "assets/audio/bgm/vol5_john_theme.ogg",
+    "composer": "—",
+    "desc": "An apron-tied phrase: a single mid-range pad, a slow heartbeat below. John's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "john"
+    ]
+  },
+  {
+    "id": "vol5_line_cook_theme",
+    "vol": 5,
+    "title": "The Line Cook",
+    "src": "assets/audio/bgm/vol5_line_cook_theme.ogg",
+    "composer": "—",
+    "desc": "Heat-vent hum + a single brass bell strike at the start. The cook's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "line_cook"
+    ]
+  },
+  {
+    "id": "vol5_mackenzie_theme",
+    "vol": 5,
+    "title": "Mackenzie · Receiver",
+    "src": "assets/audio/bgm/vol5_mackenzie_theme.ogg",
+    "composer": "—",
+    "desc": "Phone-line static + a single piano left-hand figure.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "mackenzie"
+    ]
+  },
+  {
+    "id": "vol5_maya_theme",
+    "vol": 5,
+    "title": "Maya · The Trick",
+    "src": "assets/audio/bgm/vol5_maya_theme.ogg",
+    "composer": "—",
+    "desc": "Music-box loop, ten seconds long, slightly varied each pass.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "maya_kid"
+    ]
+  },
+  {
+    "id": "vol5_milestone_bindle",
+    "vol": 5,
+    "title": "The Bindle",
+    "src": "assets/audio/bgm/vol5_milestone_bindle.ogg",
+    "composer": "—",
+    "desc": "Released the first time you successfully assemble the Bindle in THE LEAP.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:bindle_assembled"
+    }
+  },
+  {
+    "id": "vol5_noon_room_room",
+    "vol": 5,
+    "title": "Noon Room Room",
+    "src": "assets/audio/bgm/vol5_noon_room_room.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Lunch Service jukebox B-side. Lake Charles accordion, brass-mic'd dance-floor sound.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [],
+    "chars": []
+  },
+  {
     "id": "vol5_riverboat_drone",
     "vol": 5,
     "title": "Static Bloom",
@@ -272,17 +737,36 @@
     ]
   },
   {
-    "id": "vol5_noon_room_room",
+    "id": "vol5_the_demon_theme",
     "vol": 5,
-    "title": "Noon Room Room",
-    "src": "assets/audio/bgm/vol5_noon_room_room.ogg",
+    "title": "The Man at the Bar",
+    "src": "assets/audio/bgm/vol5_the_demon_theme.ogg",
     "composer": "—",
-    "desc": "Tarot Gauntlet · Lunch Service jukebox B-side. Lake Charles accordion, brass-mic'd dance-floor sound.",
+    "desc": "A cold sine pad about a half-step out of tune with everything around it.",
     "unlock": {
       "type": "heard"
     },
-    "chapters": [],
-    "chars": []
+    "chars": [
+      "the_demon"
+    ]
+  },
+  {
+    "id": "vol5_warehouse_drone",
+    "vol": 5,
+    "title": "Cathedral of Rust and Code",
+    "src": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+    "composer": "—",
+    "desc": "Chapter I — The Magician.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol5_ch1_magician"
+    ],
+    "chars": [
+      "frasier",
+      "the_demon"
+    ]
   },
   {
     "id": "vol5_where_the_bar_used_to_be",
@@ -298,6 +782,20 @@
     "chars": []
   },
   {
+    "id": "vol6_alma_theme",
+    "vol": 6,
+    "title": "Alma · Pleasant Beige",
+    "src": "assets/audio/bgm/vol6_alma_theme.ogg",
+    "composer": "—",
+    "desc": "Saccharine corporate-jingle-adjacent two-note motif. Alma's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "alma"
+    ]
+  },
+  {
     "id": "vol6_ambient",
     "vol": 6,
     "title": "Harmony Creek Estates",
@@ -307,6 +805,44 @@
     "unlock": {
       "type": "heard"
     }
+  },
+  {
+    "id": "vol6_corporate_hum",
+    "vol": 6,
+    "title": "Sixty-Eight, Year-Round",
+    "src": "assets/audio/bgm/vol6_corporate_hum.ogg",
+    "composer": "—",
+    "desc": "HVAC system + a single sine pad at 68 Hz. Clean. Inhuman. The planned community at rest.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": []
+  },
+  {
+    "id": "vol6_milestone_phc",
+    "vol": 6,
+    "title": "The Community (acknowledged)",
+    "src": "assets/audio/bgm/vol6_milestone_phc.ogg",
+    "composer": "—",
+    "desc": "Released at the Vol 6 turning point.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:vol6_phc"
+    }
+  },
+  {
+    "id": "vol6_planning_office",
+    "vol": 6,
+    "title": "The Planning Office",
+    "src": "assets/audio/bgm/vol6_planning_office.ogg",
+    "composer": "—",
+    "desc": "Office-air recirc + a single fluorescent buzz, no human movement.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol6_planning_office"
+    ]
   },
   {
     "id": "vol7_ambient",
@@ -334,6 +870,79 @@
     ]
   },
   {
+    "id": "vol7_aria_theme",
+    "vol": 7,
+    "title": "Aria",
+    "src": "assets/audio/bgm/vol7_aria_theme.ogg",
+    "composer": "—",
+    "desc": "A single hand-bell strike, then a held silence of three seconds, then again. Aria's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "aria"
+    ]
+  },
+  {
+    "id": "vol7_bread_table",
+    "vol": 7,
+    "title": "Bread, Table, Family",
+    "src": "assets/audio/bgm/vol7_bread_table.ogg",
+    "composer": "—",
+    "desc": "Kitchen fire crackle, distant German hymn fragment, table set for nine.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol7_ch15_bread"
+    ]
+  },
+  {
+    "id": "vol7_hymn_fragment",
+    "vol": 7,
+    "title": "Hymn Fragment · From Another Room",
+    "src": "assets/audio/bgm/vol7_hymn_fragment.ogg",
+    "composer": "—",
+    "desc": "A German hymn played on a far piano in another room of the house. Recurs across the family scenes.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol7_ch15_bread",
+      "vol7_ch16_aud",
+      "vol7_ch17_aria"
+    ]
+  },
+  {
+    "id": "vol7_marit_theme",
+    "vol": 7,
+    "title": "Marit",
+    "src": "assets/audio/bgm/vol7_marit_theme.ogg",
+    "composer": "—",
+    "desc": "An older voice humming a hymn fragment, very close to the mic. (No legible vocal.)",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "marit"
+    ]
+  },
+  {
+    "id": "vol7_milestone_bell",
+    "vol": 7,
+    "title": "Aria Rings the Bell",
+    "src": "assets/audio/bgm/vol7_milestone_bell.ogg",
+    "composer": "—",
+    "desc": "Released at Vol 7's title moment.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:aria_rings_bell"
+    },
+    "chapters": [
+      "vol7_ch17_aria"
+    ]
+  },
+  {
     "id": "vol7_rain_on_roof",
     "vol": 7,
     "title": "Rain on Roof",
@@ -350,78 +959,17 @@
     ]
   },
   {
-    "id": "vol1_title",
-    "vol": 1,
-    "title": "Crossroads · Title",
-    "src": "assets/audio/bgm/vol1_title.mp3",
-    "composer": "—",
-    "desc": "Volume 1 title card. Warm pad + radio hush. The full deck has not yet been dealt.",
-    "unlock": {
-      "type": "heard"
-    },
-    "chapters": [
-      "vol1_title"
-    ]
-  },
-  {
-    "id": "vol3_call_drop",
-    "vol": 3,
-    "title": "The Call Drops",
-    "src": "assets/audio/bgm/vol3_call_drop.ogg",
-    "composer": "—",
-    "desc": "Antonio mid-sentence, the line going hollow. A single note holding for too long.",
-    "unlock": {
-      "type": "heard"
-    },
-    "chars": [
-      "antonio"
-    ],
-    "chapters": [
-      "vol3_the_choice"
-    ]
-  },
-  {
-    "id": "vol4_standoff_strings",
-    "vol": 4,
-    "title": "Five AM Strings",
-    "src": "assets/audio/bgm/vol4_standoff_strings.ogg",
-    "composer": "—",
-    "desc": "A single sustained note from a Lo-fi taped cello at the climax of the standoff.",
-    "unlock": {
-      "type": "heard"
-    },
-    "chars": [
-      "nicola",
-      "dante"
-    ],
-    "chapters": [
-      "vol4_standoff"
-    ]
-  },
-  {
-    "id": "vol6_corporate_hum",
-    "vol": 6,
-    "title": "Sixty-Eight, Year-Round",
-    "src": "assets/audio/bgm/vol6_corporate_hum.ogg",
-    "composer": "—",
-    "desc": "HVAC system + a single sine pad at 68 Hz. Clean. Inhuman. The planned community at rest.",
-    "unlock": {
-      "type": "heard"
-    },
-    "chapters": []
-  },
-  {
-    "id": "vol7_bread_table",
+    "id": "vol7_werner_theme",
     "vol": 7,
-    "title": "Bread, Table, Family",
-    "src": "assets/audio/bgm/vol7_bread_table.ogg",
+    "title": "Werner",
+    "src": "assets/audio/bgm/vol7_werner_theme.ogg",
     "composer": "—",
-    "desc": "Kitchen fire crackle, distant German hymn fragment, table set for nine.",
+    "desc": "A slow upright piano with the una corda pedal in. The bread-maker's signature.",
     "unlock": {
       "type": "heard"
     },
-    "chapters": [
-      "vol7_ch15_bread"
+    "chars": [
+      "werner"
     ]
   }
 ]

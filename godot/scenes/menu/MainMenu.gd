@@ -304,6 +304,14 @@ func _select_vol(vol: int) -> void:
 	for v in _vol_buttons:
 		_style_vol_btn(_vol_buttons[v] as Button, v == vol, false)
 	_populate_chapters(vol)
+	# Picking a volume unlocks every track tagged to that vol in
+	# the music catalog. They're added to the Music Player's
+	# unlocked list and queued so the playlist naturally pulls
+	# them in once the current track finishes. The title theme is
+	# already unlocked from app-start; opening Volume 1 introduces
+	# Volume 1's music, etc.
+	if AudioMgr.has_method("unlock_volume"):
+		AudioMgr.unlock_volume(vol)
 
 
 func _populate_chapters(vol: int) -> void:

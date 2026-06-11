@@ -295,13 +295,38 @@ func set_chapter(chapter_id: String, tracks: Array) -> void:
 # given character key. Called by GameEngine on every "show" directive.
 # Returns the number of tracks newly unlocked (0 = nothing new).
 func unlock_tracks_for_character(char_key: String) -> int:
-	if char_key == "":
-		return 0
+	return _unlock_tracks_matching(func(entry: Dictionary) -> bool:
+		return char_key != "" and (char_key in entry.get("chars", [])))
+
+
+# Same shape, but matches a scene/chapter id against the entry's
+# `chapters` field. Called from GameEngine when a scene loads —
+# the music player picks up the scene's track unlocks even if no
+# `show` directive on the page lists a character. Returns count
+# newly unlocked.
+func unlock_tracks_for_chapter(chapter_id: String) -> int:
+	return _unlock_tracks_matching(func(entry: Dictionary) -> bool:
+		return chapter_id != "" and (chapter_id in entry.get("chapters", [])))
+
+
+# Unlocks every track in the given volume (1-22). Called when the
+# player picks a volume in the main menu — opening a volume unlocks
+# all of its music for the Music Player, with new entries appended
+# to the playback queue so progression naturally pulls them in.
+# Title theme (vol 0) is always unlocked at boot via MainMenu.
+func unlock_volume(vol_n: int) -> int:
+	return _unlock_tracks_matching(func(entry: Dictionary) -> bool:
+		return int(entry.get("vol", -1)) == vol_n)
+
+
+# Shared core: iterate the catalog, mark heard + unlocked + enqueue
+# every entry that the predicate matches. Returns count newly
+# unlocked (first-time only).
+func _unlock_tracks_matching(predicate: Callable) -> int:
 	var catalog: Array = SceneDataDB.get_music_catalog()
 	var newly_unlocked := 0
 	for entry: Dictionary in catalog:
-		var chars: Array = entry.get("chars", [])
-		if char_key not in chars:
+		if not predicate.call(entry):
 			continue
 		var src: String = entry.get("src", "")
 		var id:  String = entry.get("id",  "")
@@ -401,7 +426,7 @@ func _on_bgm_finished() -> void:
 
 func _pick_next(current_src: String) -> String:
 	# 1) Queue head wins — that's what GameEngine has enqueued via
-	#    character shows.
+	#    character shows + scene loads + volume opens.
 	if not _queue.is_empty():
 		var head: String = _queue.pop_front()
 		queue_changed.emit()
@@ -417,10 +442,36 @@ func _pick_next(current_src: String) -> String:
 				return src
 		return _chapter_tracks[0]
 
-	# 3) No chapter context yet → loop the current track. Better than
-	#    silence when GameEngine hasn't set chapter context (intro,
-	#    menus, save loads mid-scene).
+	# 3) No chapter context → use the player's UNLOCKED PLAYLIST as
+	#    the fallback rotation. Every heard/unlocked track in the
+	#    catalog is fair game; we pick the first one that isn't what
+	#    just played (avoid an immediate repeat) and the playlist
+	#    loops naturally as it exhausts. When the player progresses
+	#    far enough to hear new tracks, those join the rotation
+	#    automatically next time we pick.
+	var heard: Array = _heard_playback_order()
+	if not heard.is_empty():
+		for src: String in heard:
+			if src != current_src:
+				return src
+		return heard[0]
+
+	# 4) Nothing heard yet (very early app start) → loop current.
 	return current_src
+
+
+# Returns all heard tracks in catalog order — the "playlist" that
+# AudioMgr.play_next falls through to when no queue/chapter is set.
+# Sorted by the catalog's own ordering so the volume progression
+# reads naturally.
+func _heard_playback_order() -> Array:
+	var out: Array = []
+	var catalog: Array = SceneDataDB.get_music_catalog()
+	for entry: Dictionary in catalog:
+		var src: String = String(entry.get("src", ""))
+		if src != "" and src in _music_heard:
+			out.append(src)
+	return out
 
 
 func _mark_heard(src: String) -> void:

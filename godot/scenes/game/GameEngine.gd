@@ -314,6 +314,11 @@ func _apply_chapter_music_context(scene_id: String) -> void:
 		if matches:
 			tracks.append(entry.get("src", ""))
 	AudioMgr.set_chapter(ch_id, tracks)
+	# Also unlock any tracks tagged to this scene so the Music
+	# Player picks them up as the player progresses, even without
+	# a `show` directive naming a tracked character on this page.
+	if AudioMgr.has_method("unlock_tracks_for_chapter"):
+		AudioMgr.unlock_tracks_for_chapter(ch_id)
 
 
 const _SUBSTRATE_INDEX_PATH := "res://resources/substrates/gallery/_index.json"
@@ -625,7 +630,20 @@ func _do_composition(n: Dictionary) -> void:
 
 
 func _do_bgm(n: Dictionary) -> void:
-	AudioMgr.play_bgm(_s(n, "src"))
+	# By default, scene-data `bgm` directives ENQUEUE the track —
+	# the queue picks it up when the current track finishes (or
+	# immediately if nothing is playing). That keeps transitions
+	# soft: a player walking from one scene into another doesn't
+	# hear an instant cut. Set `"hard": true` on the directive for
+	# moments that NEED a hard swap (win/loss stings, dramatic
+	# reveals).
+	var src: String = _s(n, "src")
+	if src == "":
+		return
+	if bool(n.get("hard", false)):
+		AudioMgr.play_bgm(src)
+	else:
+		AudioMgr.enqueue_music(src)
 
 
 func _do_sfx(n: Dictionary) -> void:

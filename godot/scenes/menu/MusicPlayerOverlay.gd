@@ -9,9 +9,13 @@ const C_BG     := Color(0.024, 0.020, 0.014, 0.97)
 const C_BORDER := Color(0.70, 0.55, 0.24, 0.35)
 const C_TXT    := Color(0.83, 0.79, 0.69)
 
-# TESTING: every track in the catalog shows up + plays regardless of
-# SaveSystem unlock state. Flip to false to restore lock-gating.
-const UNLOCK_ALL_TRACKS := true
+# When TRUE, every catalog track is visible regardless of unlock
+# state — useful for studio testing. In ship mode this is FALSE:
+# the player only sees what they've actually unlocked. "key"-type
+# entries gate by SaveSystem.is_unlocked; "heard"-type gate by
+# AudioMgr.is_heard. Entries with no `unlock` field always show
+# (e.g. title_theme).
+const UNLOCK_ALL_TRACKS := false
 const C_DIM    := Color(0.45, 0.43, 0.36, 0.6)
 
 var _track_buttons: Dictionary = {}
@@ -134,12 +138,21 @@ func _build() -> void:
 	var cur_vol := -2
 	var _added := 0
 	for entry: Dictionary in _catalog:
-		# TESTING: every track unlocked. To restore key-gated locks, flip
-		# UNLOCK_ALL_TRACKS (declared at script scope above) to false.
+		# Lock-gate by the entry's own unlock policy. "key" entries
+		# require SaveSystem.is_unlocked(key); "heard" entries
+		# require AudioMgr.is_heard(src). Anything else (no unlock
+		# field, or any unrecognized type) is treated as always
+		# visible — title_theme is the canonical case.
 		var unlock: Dictionary = entry.get("unlock", {})
-		if not UNLOCK_ALL_TRACKS and unlock.get("type", "") == "key":
-			if not SaveSystem.is_unlocked(unlock.get("key", "")):
-				continue
+		var unlock_type: String = String(unlock.get("type", ""))
+		var src_for_gate: String = String(entry.get("src", ""))
+		if not UNLOCK_ALL_TRACKS:
+			if unlock_type == "key":
+				if not SaveSystem.is_unlocked(String(unlock.get("key", ""))):
+					continue
+			elif unlock_type == "heard":
+				if not AudioMgr.is_heard(src_for_gate):
+					continue
 
 		var vol: int = int(entry.get("vol", 0))
 		if vol != cur_vol:
