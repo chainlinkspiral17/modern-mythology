@@ -70,6 +70,7 @@ var _tableau_scroll: ScrollContainer = null
 var _log: RichTextLabel = null
 var _advance_btn: Button = null
 var _board_root: Control = null
+var _board_content: Control = null
 var _board_expand_btn: Button = null
 var _board_fullscreen: bool = false
 var _board_meeple: Control = null
@@ -357,25 +358,51 @@ func _build_ui() -> void:
 	_board_root.offset_left = 8
 	_board_root.offset_bottom = -214
 	_board_root.offset_right = -440
+	# Outer panel + stylebox so the board reads as its own window.
 	var board_panel := PanelContainer.new()
 	board_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	board_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	board_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_board_root.add_child(board_panel)
 	add_child(_board_root)
-	# Fullscreen toggle — small button pinned to the top-right of
-	# the board area. Click → board expands over the whole game.
+	# Header bar — title + fullscreen toggle. Pinned to the top of
+	# the board area so the board has its own visible "window" with
+	# a label, like every other panel in the layout.
+	var board_header := PanelContainer.new()
+	board_header.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	board_header.offset_top = 0
+	board_header.offset_left = 0
+	board_header.offset_right = 0
+	board_header.offset_bottom = 26
+	board_header.add_theme_stylebox_override("panel", _make_panel_style())
+	board_header.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_board_root.add_child(board_header)
+	var header_hb := HBoxContainer.new()
+	header_hb.add_theme_constant_override("separation", 6)
+	board_header.add_child(header_hb)
+	var board_title := Label.new()
+	board_title.text = "  MAP — " + String(_location.get("title", _location_id))
+	board_title.add_theme_color_override("font_color", C_ACCENT)
+	board_title.add_theme_font_size_override("font_size", 11)
+	board_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header_hb.add_child(board_title)
 	_board_expand_btn = Button.new()
 	_board_expand_btn.text = "⛶"
 	_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
-	_board_expand_btn.add_theme_font_size_override("font_size", 14)
-	_board_expand_btn.custom_minimum_size = Vector2(28, 22)
-	_board_expand_btn.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	_board_expand_btn.offset_left = -34
-	_board_expand_btn.offset_top = 4
-	_board_expand_btn.offset_right = -4
-	_board_expand_btn.offset_bottom = 26
+	_board_expand_btn.add_theme_font_size_override("font_size", 12)
+	_board_expand_btn.custom_minimum_size = Vector2(28, 20)
 	_board_expand_btn.pressed.connect(_toggle_board_fullscreen)
-	_board_root.add_child(_board_expand_btn)
+	header_hb.add_child(_board_expand_btn)
+	# Content area BELOW the header — board image, markers, labels,
+	# meeples all live here so they don't draw over the title bar.
+	_board_content = Control.new()
+	_board_content.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_board_content.offset_top = 28
+	_board_content.offset_left = 4
+	_board_content.offset_right = -4
+	_board_content.offset_bottom = -4
+	_board_content.clip_contents = true
+	_board_root.add_child(_board_content)
 	_render_board()
 
 	# ── Right column: codex card + gravity card + visitor states + log
@@ -578,10 +605,11 @@ func _make_track_label(text: String) -> Label:
 # ── Board rendering ──────────────────────────────────────────────────
 
 func _render_board() -> void:
-	# Clear
-	for c in _board_root.get_children():
-		if c.name.begins_with("space_") or c.name.begins_with("visitor_") or c.name == "player_meeple" or c.name == "board_bg":
-			c.queue_free()
+	if _board_content == null:
+		return
+	# Clear — content control owns bg, markers, labels, meeples.
+	for c in _board_content.get_children():
+		c.queue_free()
 	_board_space_nodes.clear()
 	_board_visitor_nodes.clear()
 	# Background image layer (rendered first so labels draw on top).
@@ -600,7 +628,7 @@ func _render_board() -> void:
 		bg.stretch_mode = TextureRect.STRETCH_SCALE
 		bg.modulate = Color(1, 1, 1, 0.5)
 		bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		_board_root.add_child(bg)
+		_board_content.add_child(bg)
 	# Draw spaces as labels positioned per the JSON's pos_xy.
 	# Coordinates are in the JSON's coordinate space; we scale to fit
 	# the board panel's actual size.
@@ -616,7 +644,7 @@ func _render_board() -> void:
 		bx_max = maxf(bx_max, float(xy[0]))
 		by_min = minf(by_min, float(xy[1]))
 		by_max = maxf(by_max, float(xy[1]))
-	var panel_size: Vector2 = _board_root.size
+	var panel_size: Vector2 = _board_content.size
 	if panel_size.x <= 0:
 		panel_size = Vector2(700, 480)
 	var sx: float = (panel_size.x - 80) / maxf(1.0, bx_max - bx_min)
@@ -649,11 +677,11 @@ func _render_board() -> void:
 		mst.set_border_width_all(1)
 		mst.set_corner_radius_all(6)
 		marker.add_theme_stylebox_override("panel", mst)
-		_board_root.add_child(marker)
+		_board_content.add_child(marker)
 		var node := _make_space_label(s)
 		node.position = Vector2(nx + 10.0, ny - 8.0)
 		node.name = "space_" + sid
-		_board_root.add_child(node)
+		_board_content.add_child(node)
 		_board_space_nodes[sid] = node
 	# Player meeple — image if present, otherwise styled label.
 	var player_art: Texture2D = _load_texture_silent(_art_path_meeple("john"))
@@ -674,7 +702,7 @@ func _render_board() -> void:
 		lbl_m.add_theme_font_size_override("font_size", 18)
 		lbl_m.name = "player_meeple"
 		_board_meeple = lbl_m
-	_board_root.add_child(_board_meeple)
+	_board_content.add_child(_board_meeple)
 	# Visitor meeples — image if present, otherwise small colored dot.
 	for vid in _visitors_state:
 		var v: Dictionary = _visitors_state[vid]
@@ -699,7 +727,7 @@ func _render_board() -> void:
 			dot.add_theme_font_size_override("font_size", 14)
 			vnode = dot
 		vnode.name = "visitor_" + vid
-		_board_root.add_child(vnode)
+		_board_content.add_child(vnode)
 		_board_visitor_nodes[vid] = vnode
 	_position_meeples()
 
