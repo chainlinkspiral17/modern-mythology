@@ -1566,16 +1566,28 @@ func _render_hand() -> void:
 		tile.add_theme_constant_override("separation", 2)
 		var btn := Button.new()
 		btn.custom_minimum_size = Vector2(108, 108)
-		btn.tooltip_text = "%s — costs %d Time\n\n%s\n\n%s\n\n(Click to preview + play.)" % [
+		var playable: bool = _can_play_card(card)
+		var is_disabled: bool = (not playable) or (_phase != Phase.ACTION) or _game_over
+		# Tooltip leads with a "why not" line when the card is
+		# disabled, so the player isn't left guessing.
+		var why_blocked: String = ""
+		if is_disabled:
+			if _phase != Phase.ACTION:
+				why_blocked = "(Action phase only — currently %s)" % Phase.keys()[_phase]
+			elif _time < time_cost:
+				why_blocked = "(needs %d Time; you have %d)" % [time_cost, _time]
+			elif not playable:
+				why_blocked = "(requirements not met — see effect summary)"
+		btn.tooltip_text = "%s — costs %d Time%s\n\n%s\n\n%s\n\n(Click to preview + play.)" % [
 			card.get("title", cid), time_cost,
+			("\n" + why_blocked) if why_blocked != "" else "",
 			String(card.get("flavor", "")),
 			_card_summary(card)]
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
-		var playable: bool = _can_play_card(card)
-		btn.disabled = (not playable) or (_phase != Phase.ACTION) or _game_over
+		btn.disabled = is_disabled
 		btn.pressed.connect(func() -> void:
 			_pulse_button(btn)
 			_open_card_view(cid, "play"))
@@ -1631,15 +1643,22 @@ func _render_tableau() -> void:
 		tile.add_theme_constant_override("separation", 2)
 		var btn := Button.new()
 		btn.custom_minimum_size = Vector2(108, 108)
-		btn.tooltip_text = "%s — buy %d Time, play %d Time\n\n%s\n\n%s\n\n(Click to preview + buy.)" % [
+		var can_buy: bool = (_phase == Phase.PLANNING) and (_time >= price) and not _game_over
+		var why_blocked: String = ""
+		if not can_buy:
+			if _phase != Phase.PLANNING:
+				why_blocked = "(Planning phase only — currently %s)" % Phase.keys()[_phase]
+			elif _time < price:
+				why_blocked = "(needs %d Time; you have %d)" % [price, _time]
+		btn.tooltip_text = "%s — buy %d Time, play %d Time%s\n\n%s\n\n%s\n\n(Click to preview + buy.)" % [
 			card.get("title", cid), price, time_cost,
+			("\n" + why_blocked) if why_blocked != "" else "",
 			String(card.get("flavor", "")),
 			_card_summary(card)]
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
-		var can_buy: bool = (_phase == Phase.PLANNING) and (_time >= price) and not _game_over
 		btn.disabled = not can_buy
 		if _phase != Phase.PLANNING:
 			btn.modulate = Color(0.7, 0.65, 0.55, 0.7)
@@ -3107,6 +3126,18 @@ func _prompt_choose(options: Array) -> void:
 
 func _prompt_discard_cards(amount: int) -> void:
 	if amount <= 0 or _hand_cards.is_empty():
+		return
+	# Auto-resolve if the hand is too small to choose from: discard
+	# everything that's available. No modal, just a log line — the
+	# player has no agency in that situation anyway.
+	if _hand_cards.size() <= amount:
+		var n_discarded: int = _hand_cards.size()
+		var titles: PackedStringArray = []
+		for cid: String in _hand_cards:
+			titles.append(String(_action_cards.get(cid, {}).get("title", cid)))
+		_log_line("[color=#ff8060]discarded all %d:[/color] %s" % [n_discarded, ", ".join(titles)])
+		_hand_cards.clear()
+		_render()
 		return
 	# Tear down any existing modal
 	var existing: Node = get_node_or_null("pane_modal_dim")
