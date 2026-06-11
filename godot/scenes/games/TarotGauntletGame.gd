@@ -70,7 +70,7 @@ var _game_over: bool = false
 
 # ── UI refs (built in _build_ui) ─────────────────────────────────────
 var _bg: ColorRect = null
-var _inv_box: VBoxContainer = null
+var _inv_summary_label: RichTextLabel = null
 var _phase_label: Label = null
 var _turn_label: Label = null
 var _time_label: Label = null
@@ -641,20 +641,16 @@ func _build_ui() -> void:
 	add_child(right)
 
 	# Codex card (the gallery image, pinned) — fixed size, NOT expand_fill
-	# Right column order (top → bottom):
+	# Right column (top → bottom):
 	#   1. VISITORS  — dominant pane, expand_fill, the game IS them
-	#   2. GRAVITY   — single thin line under it
-	#   3. INVENTORY/BINDLE — compact, no expand_fill
-	# Was inverted (inventory dominant); user feedback: "the strangers
-	# window pane should really be the dominant one over the inventory.
-	# the game is really built around their comings and goings."
+	#   2. GRAVITY   — slim summary bar, click ⛶ for full deck
+	#   3. INVENTORY — slim summary bar, click ⛶ for full inventory
+	# Slim bars keep the column legible; full detail lives in modals.
 
 	# VISITORS — dominant
 	var v_panel := PanelContainer.new()
 	v_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	v_panel.custom_minimum_size = Vector2(420, 280)
 	v_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	v_panel.size_flags_stretch_ratio = 3.0   # take the lion's share
 	var v_vb := VBoxContainer.new()
 	v_panel.add_child(v_vb)
 	v_vb.add_child(_make_pane_header("VISITORS", "visitors"))
@@ -668,36 +664,38 @@ func _build_ui() -> void:
 	v_scroll.add_child(_visitors_box)
 	right.add_child(v_panel)
 
-	# GRAVITY — single thin line
+	# GRAVITY — slim summary bar
 	var grav_panel := PanelContainer.new()
 	grav_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	grav_panel.custom_minimum_size = Vector2(420, 72)
+	grav_panel.custom_minimum_size = Vector2(420, 56)
 	var grav_vb := VBoxContainer.new()
+	grav_vb.add_theme_constant_override("separation", 2)
 	grav_panel.add_child(grav_vb)
 	grav_vb.add_child(_make_pane_header("GRAVITY", "gravity"))
 	_gravity_card_label = RichTextLabel.new()
 	_gravity_card_label.bbcode_enabled = true
 	_gravity_card_label.fit_content = true
 	_gravity_card_label.add_theme_color_override("default_color", C_TEXT)
-	_gravity_card_label.text = "[color=#c8a268]Deck[/color] — 12 cards remaining"
+	_gravity_card_label.add_theme_font_size_override("normal_font_size", 10)
+	_gravity_card_label.text = "[color=#7c8398]Deck — 12 remaining · click ⛶ for details[/color]"
 	grav_vb.add_child(_gravity_card_label)
 	right.add_child(grav_panel)
 
-	# INVENTORY / BINDLE — compact, not expand_fill
+	# INVENTORY / BINDLE — slim summary bar (full list in the ⛶ modal)
 	var inv_panel := PanelContainer.new()
 	inv_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	inv_panel.custom_minimum_size = Vector2(420, 140)
+	inv_panel.custom_minimum_size = Vector2(420, 56)
 	var inv_vb := VBoxContainer.new()
+	inv_vb.add_theme_constant_override("separation", 2)
 	inv_panel.add_child(inv_vb)
 	inv_vb.add_child(_make_pane_header("INVENTORY / BINDLE", "inventory"))
-	var inv_scroll := ScrollContainer.new()
-	inv_scroll.custom_minimum_size = Vector2(0, 100)
-	inv_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	inv_vb.add_child(inv_scroll)
-	_inv_box = VBoxContainer.new()
-	_inv_box.add_theme_constant_override("separation", 3)
-	_inv_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	inv_scroll.add_child(_inv_box)
+	_inv_summary_label = RichTextLabel.new()
+	_inv_summary_label.bbcode_enabled = true
+	_inv_summary_label.fit_content = true
+	_inv_summary_label.add_theme_color_override("default_color", C_TEXT)
+	_inv_summary_label.add_theme_font_size_override("normal_font_size", 10)
+	_inv_summary_label.text = "[color=#7c8398](nothing yet — search a pile)[/color]"
+	inv_vb.add_child(_inv_summary_label)
 	right.add_child(inv_panel)
 
 	# Log moved OUT of the right column — it now lives in the bottom
@@ -928,6 +926,184 @@ func _on_modal_dim_input(ev: InputEvent, dim: ColorRect) -> void:
 # big art on the left, title + cost + flavor + effect summary on the
 # right, with a prominent action button (▶ Play or ✦ Buy) and Cancel.
 # Closes via the button, ✕, Esc, or click outside.
+func _open_visitor_view(vid: String) -> void:
+	# Click-a-portrait card view for a single visitor — big art on
+	# the left, name + bio + status + per-step beats on the right.
+	var v: Dictionary = _visitors_def.get(vid, {})
+	if v.is_empty():
+		return
+	var st: Dictionary = _visitors_state.get(vid, {})
+	# Tear down any existing modal
+	var existing: Node = get_node_or_null("pane_modal_dim")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.82)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.z_index = 100
+	dim.name = "pane_modal_dim"
+	dim.modulate = Color(1, 1, 1, 0)
+	dim.gui_input.connect(_on_modal_dim_input.bind(dim))
+	add_child(dim)
+	var t_fade := create_tween()
+	t_fade.tween_property(dim, "modulate:a", 1.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	var view: Vector2 = get_viewport_rect().size
+	var pop := PanelContainer.new()
+	pop.add_theme_stylebox_override("panel", _make_panel_style())
+	pop.size = Vector2(min(view.x * 0.78, 940.0), min(view.y * 0.82, 640.0))
+	pop.position = (view - pop.size) * 0.5
+	pop.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.add_child(pop)
+	var root := HBoxContainer.new()
+	root.add_theme_constant_override("separation", 18)
+	pop.add_child(root)
+	# Left: big face portrait
+	var art_panel := PanelContainer.new()
+	art_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	art_panel.custom_minimum_size = Vector2(360, 480)
+	root.add_child(art_panel)
+	var arrived: bool = st.get("arrived", false)
+	var face_tex: Texture2D = _load_texture_silent(_art_path_visitor_face(vid)) if arrived else null
+	if face_tex:
+		var img := TextureRect.new()
+		img.texture = face_tex
+		img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		img.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		img.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		art_panel.add_child(img)
+	else:
+		var ph := Label.new()
+		if not arrived:
+			ph.text = "(not yet arrived)"
+		else:
+			ph.text = "(no portrait art yet)"
+		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.4))
+		ph.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		ph.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		art_panel.add_child(ph)
+	# Right: bio + status + per-step beats
+	var info := VBoxContainer.new()
+	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info.add_theme_constant_override("separation", 10)
+	root.add_child(info)
+	# Name + mood
+	var name_lbl := Label.new()
+	name_lbl.text = String(v.get("name", vid)) if arrived else String(v.get("placeholder_name", "someone"))
+	name_lbl.add_theme_color_override("font_color", Color(v.get("accent", "#c8a268")))
+	name_lbl.add_theme_font_size_override("font_size", 26)
+	info.add_child(name_lbl)
+	if v.has("mood") and arrived:
+		var mood_lbl := Label.new()
+		mood_lbl.text = "mood: " + String(v.get("mood", ""))
+		mood_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
+		mood_lbl.add_theme_font_size_override("font_size", 11)
+		info.add_child(mood_lbl)
+	# Status line
+	var status_rt := RichTextLabel.new()
+	status_rt.bbcode_enabled = true
+	status_rt.fit_content = true
+	status_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	status_rt.add_theme_color_override("default_color", C_TEXT)
+	status_rt.add_theme_font_size_override("normal_font_size", 12)
+	if st.get("connected", false):
+		status_rt.text = "[color=#7cffb0]✓ connected[/color]"
+	elif st.get("claimed_turn", -1) >= 0:
+		var remaining: int = int(_setup.get("claim_turns_to_consume", 2)) - (_turn - int(st["claimed_turn"]))
+		status_rt.text = "[color=#ff8060]✕ claimed — %d turn(s) until consumed[/color]" % max(0, remaining)
+	elif arrived:
+		var p_now: int = int(st.get("progress", 0))
+		var labels: PackedStringArray = ["GREET", "LISTEN", "DELIVER", "SIT WITH"]
+		var marks: PackedStringArray = []
+		for i in labels.size():
+			var prefix: String = "[color=#7cffb0]✓[/color] " if p_now > i else ("[color=#ffd07a]→[/color] " if p_now == i else "[color=#7c8398]·[/color] ")
+			marks.append(prefix + labels[i])
+		status_rt.text = "at [b]%s[/b]\n[color=#7c8398]Sequence:[/color] %s" % [String(st.get("pos", "?")).replace("_", " "), "  ".join(marks)]
+	elif st.has("scheduled_turn"):
+		var diff: int = int(st["scheduled_turn"]) - _turn
+		status_rt.text = "[color=#7c8398]arrives in ~%d turns[/color]" % max(0, diff)
+	info.add_child(status_rt)
+	# Lore text (the visitor's defining truth) — shown if connected,
+	# else the pre-arrival hint or a "?" line.
+	var lore_rt := RichTextLabel.new()
+	lore_rt.bbcode_enabled = true
+	lore_rt.fit_content = true
+	lore_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	lore_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	lore_rt.add_theme_color_override("default_color", Color(0.86, 0.82, 0.74))
+	lore_rt.add_theme_font_size_override("normal_font_size", 13)
+	if st.get("connected", false) and v.has("lore_text"):
+		lore_rt.text = "[i]" + String(v["lore_text"]) + "[/i]"
+	elif not arrived and v.has("pre_arrival_hints"):
+		var hints: Array = v.get("pre_arrival_hints", [])
+		if not hints.is_empty():
+			var diff: int = int(st.get("scheduled_turn", 99)) - _turn
+			var idx: int = clamp(hints.size() - 1 - max(0, diff), 0, hints.size() - 1)
+			lore_rt.text = "[i]" + String(hints[idx]) + "[/i]"
+	else:
+		lore_rt.text = ""
+	if lore_rt.text != "":
+		info.add_child(lore_rt)
+	info.add_child(HSeparator.new())
+	# Per-step beats
+	var beats_header := Label.new()
+	beats_header.text = "  THE SEQUENCE"
+	beats_header.add_theme_color_override("font_color", C_ACCENT)
+	beats_header.add_theme_font_size_override("font_size", 11)
+	info.add_child(beats_header)
+	var steps_dict: Dictionary = v.get("steps", {})
+	for step_name in ["greet", "listen", "deliver", "sit_with"]:
+		var step_line: String = String(steps_dict.get(step_name, ""))
+		if step_line == "":
+			var defaults: Dictionary = _step_defaults_by_mood.get(String(v.get("mood", "preoccupied")), {})
+			step_line = String(defaults.get(step_name, ""))
+		var step_idx: int = _step_index(step_name)
+		var step_done: bool = int(st.get("progress", 0)) >= step_idx
+		var bullet: String = "[color=#7cffb0]✓[/color]" if step_done else "[color=#7c8398]·[/color]"
+		var step_rt := RichTextLabel.new()
+		step_rt.bbcode_enabled = true
+		step_rt.fit_content = true
+		step_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		step_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		step_rt.add_theme_color_override("default_color", C_TEXT)
+		step_rt.add_theme_font_size_override("normal_font_size", 11)
+		# Hide step text until reached (no spoilers); show the label only
+		if step_done or step_idx <= int(st.get("progress", 0)) + 1:
+			step_rt.text = "  %s [b]%s[/b]  [color=#7c8398][i]%s[/i][/color]" % [bullet, step_name.to_upper(), step_line]
+		else:
+			step_rt.text = "  %s [color=#7c8398]%s[/color]" % [bullet, step_name.to_upper()]
+		info.add_child(step_rt)
+	# Order they want (visible once arrived)
+	if arrived and v.has("order_item"):
+		var ord_id: String = String(v["order_item"])
+		var ord_item: Dictionary = _items_def.get(ord_id, {})
+		if not ord_item.is_empty():
+			info.add_child(HSeparator.new())
+			var order_rt := RichTextLabel.new()
+			order_rt.bbcode_enabled = true
+			order_rt.fit_content = true
+			order_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			order_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			order_rt.add_theme_color_override("default_color", C_TEXT)
+			order_rt.add_theme_font_size_override("normal_font_size", 11)
+			order_rt.text = "[b]ORDER:[/b]  %s\n[color=#7c8398][i]%s[/i][/color]" % [ord_item.get("title", ord_id), ord_item.get("flavor", "")]
+			info.add_child(order_rt)
+	# Spacer + close button
+	var spacer := Control.new()
+	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info.add_child(spacer)
+	var close := Button.new()
+	close.text = "✕  Close  (Esc)"
+	close.add_theme_font_size_override("font_size", 13)
+	close.custom_minimum_size = Vector2(140, 32)
+	close.pressed.connect(_close_pane_modal.bind(dim))
+	info.add_child(close)
+
+
 func _open_card_view(cid: String, mode: String) -> void:
 	var card: Dictionary = _action_cards.get(cid, {})
 	if card.is_empty():
@@ -1990,70 +2166,29 @@ func _describe_connect_via_plain(cv: Dictionary) -> String:
 
 
 func _render_inventory() -> void:
-	if _inv_box == null:
+	# Slim summary into the right-column bar. Full detail lives in the
+	# ⛶ modal (see _build_inventory_modal_body).
+	if _inv_summary_label == null:
 		return
-	for c in _inv_box.get_children():
-		c.queue_free()
-	# Bindle assembly status line first
-	var status := RichTextLabel.new()
-	status.bbcode_enabled = true
-	status.fit_content = true
-	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	status.add_theme_color_override("default_color", C_TEXT)
-	status.add_theme_font_size_override("normal_font_size", 10)
 	if _bindle_assembled:
-		status.text = "[color=#ffd07a][b]BINDLE assembled[/b][/color] — play LEAP at a threshold."
-	else:
-		var have_stick: bool = _inventory.has("stick")
-		var have_cloth: bool = _inventory.has("cloth")
-		var have_contents: bool = _has_contents()
-		status.text = "BINDLE: %s · %s · %s" % [
-			"[color=#7cffb0]stick[/color]" if have_stick else "[color=#7c8398]stick[/color]",
-			"[color=#7cffb0]cloth[/color]" if have_cloth else "[color=#7c8398]cloth[/color]",
-			"[color=#7cffb0]contents[/color]" if have_contents else "[color=#7c8398]contents[/color]",
-		]
-	_inv_box.add_child(status)
-	# Empty-state hint
-	if _inventory.is_empty():
-		var empty := Label.new()
-		empty.text = "  (nothing yet — Search at a pile space)"
-		empty.add_theme_font_size_override("font_size", 9)
-		empty.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.5))
-		_inv_box.add_child(empty)
+		_inv_summary_label.text = "[color=#ffd07a][b]BINDLE assembled[/b][/color] · %d item(s) carried · click ⛶ for details" % _inventory.size()
 		return
-	# Item rows
-	for item_id: String in _inventory:
-		var item: Dictionary = _items_def.get(item_id, {})
-		var row := HBoxContainer.new()
-		row.add_theme_constant_override("separation", 4)
-		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var art: Texture2D = _load_texture_silent(_art_path_item(item_id))
-		if art:
-			var ico := TextureRect.new()
-			ico.texture = art
-			ico.custom_minimum_size = Vector2(24, 24)
-			ico.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-			ico.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-			row.add_child(ico)
-		var lbl := RichTextLabel.new()
-		lbl.bbcode_enabled = true
-		lbl.fit_content = true
-		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		lbl.add_theme_color_override("default_color", C_TEXT)
-		lbl.add_theme_font_size_override("normal_font_size", 10)
-		var cat: String = item.get("category", "")
-		var tag: String = ""
-		match cat:
-			"bindle_component": tag = "[color=#c8a268][b]B[/b][/color] "
-			"bindle_contents":  tag = "[color=#ffd07a][b]C[/b][/color] "
-			"consumable":       tag = "[color=#7cffb0][b]u[/b][/color] "
-			"passive":          tag = "[color=#9bc3ff][b]p[/b][/color] "
-			_:                  tag = ""
-		lbl.text = "%s%s" % [tag, item.get("title", item_id)]
-		row.add_child(lbl)
-		_inv_box.add_child(row)
+	var have_stick: bool = _inventory.has("stick")
+	var have_cloth: bool = _inventory.has("cloth")
+	var have_contents: bool = _has_contents()
+	var stick_chip: String = "[color=#7cffb0]✓ stick[/color]" if have_stick else "[color=#7c8398]· stick[/color]"
+	var cloth_chip: String = "[color=#7cffb0]✓ cloth[/color]" if have_cloth else "[color=#7c8398]· cloth[/color]"
+	var content_chip: String = "[color=#7cffb0]✓ contents[/color]" if have_contents else "[color=#7c8398]· contents[/color]"
+	# Count non-bindle items
+	var extra_count: int = 0
+	for it in _inventory:
+		var cat: String = String(_items_def.get(it, {}).get("category", ""))
+		if cat != "bindle_component" and cat != "bindle_contents":
+			extra_count += 1
+	var extras: String = ""
+	if extra_count > 0:
+		extras = "  ·  [color=#c8a268]%d carried[/color]" % extra_count
+	_inv_summary_label.text = "[b]BINDLE:[/b]  %s   %s   %s%s" % [stick_chip, cloth_chip, content_chip, extras]
 
 
 func _render_visitors() -> void:
@@ -2095,19 +2230,39 @@ func _render_visitors() -> void:
 			# rather than leak that they exist
 			continue
 
-		# Row: optional face image + text label
+		# Row: optional clickable portrait + text label. Wrap in a
+		# Button so the whole row can be clicked to open the
+		# single-visitor card view.
+		var row_btn := Button.new()
+		row_btn.flat = true
+		row_btn.focus_mode = Control.FOCUS_NONE
+		row_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row_btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		row_btn.tooltip_text = _tooltip_for_visitor(vid) + "\n\n(Click for full card view.)"
+		row_btn.pressed.connect(_open_visitor_view.bind(vid))
 		var row := HBoxContainer.new()
-		row.add_theme_constant_override("separation", 4)
+		row.add_theme_constant_override("separation", 6)
 		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.mouse_filter = Control.MOUSE_FILTER_IGNORE   # let the Button capture clicks
+		row_btn.add_child(row)
 		if arrived:
 			var face: Texture2D = _load_texture_silent(_art_path_visitor_face(vid))
 			if face:
 				var face_rect := TextureRect.new()
 				face_rect.texture = face
-				face_rect.custom_minimum_size = Vector2(28, 28)
+				face_rect.custom_minimum_size = Vector2(40, 40)
 				face_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 				face_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+				face_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 				row.add_child(face_rect)
+			else:
+				# Colored dot placeholder so the row reads as portrait-led
+				var dot := Label.new()
+				dot.text = "●"
+				dot.add_theme_color_override("font_color", Color(accent))
+				dot.add_theme_font_size_override("font_size", 22)
+				dot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+				row.add_child(dot)
 		var rt := RichTextLabel.new()
 		rt.bbcode_enabled = true
 		rt.fit_content = true
@@ -2115,12 +2270,13 @@ func _render_visitors() -> void:
 		rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		rt.add_theme_color_override("default_color", C_TEXT)
 		rt.add_theme_font_size_override("normal_font_size", 9)
+		rt.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		if hint_line != "" and not arrived:
 			rt.text = "[color=%s]●[/color] [i]%s[/i]%s\n[color=#7c8398][i]   %s[/i][/color]" % [accent, name_s, status, hint_line]
 		else:
 			rt.text = "[color=%s]●[/color] %s%s" % [accent, name_s, status]
 		row.add_child(rt)
-		_visitors_box.add_child(row)
+		_visitors_box.add_child(row_btn)
 
 
 # ── Pane modal body builders ────────────────────────────────────────
