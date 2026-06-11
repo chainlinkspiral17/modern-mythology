@@ -4598,11 +4598,10 @@ func _phase_planning() -> void:
 
 
 func _phase_shadow() -> void:
-	if _gravity_draw_pile.is_empty():
-		_log_line("[i]gravity deck empty[/i]")
+	var cid: String = _draw_gravity_card()
+	if cid == "":
+		_log_line("[i]gravity deck empty — the room has run out of new ways to press on you.[/i]")
 		return
-	var cid: String = _gravity_draw_pile.pop_back()
-	_gravity_discard_pile.append(cid)
 	_audio_sfx("gravity_draw")
 	var card: Dictionary = _find_gravity_card(cid)
 	_gravity_last_drawn = card
@@ -4621,12 +4620,107 @@ func _phase_shadow() -> void:
 	_show_drawn_card_popup(_art_path_gravity(cid), card.get("title", cid), card.get("flavor", ""), grav_body, "#ff8060")
 	_resolve_effects(card.get("effects", []))
 	# Inertia ≥ 7: extra draw per the inertia thresholds spec
-	if _inertia >= 7 and not _gravity_draw_pile.is_empty():
-		var cid2: String = _gravity_draw_pile.pop_back()
-		_gravity_discard_pile.append(cid2)
-		var card2: Dictionary = _find_gravity_card(cid2)
-		_log_line("[color=#ff8060][b]GRAVITY (bonus):[/b] %s[/color]" % card2.get("title", cid2))
-		_resolve_effects(card2.get("effects", []))
+	if _inertia >= 7:
+		var cid2: String = _draw_gravity_card()
+		if cid2 != "":
+			var card2: Dictionary = _find_gravity_card(cid2)
+			_log_line("[color=#ff8060][b]GRAVITY (bonus):[/b] %s[/color]" % card2.get("title", cid2))
+			_resolve_effects(card2.get("effects", []))
+
+
+# Pull one Gravity card. Cycles through draw → discard. When the
+# draw pile empties, anything in the discard whose effect is still
+# in play (active threat, set flag, revealed threshold, collected
+# lore token) is EXHAUSTED — held out of the reshuffle so the room
+# doesn't get to throw the same hook at you twice. The held cards
+# remain in the discard and re-evaluate every reshuffle, so once
+# you clear a threat the card returns to the rotation.
+func _draw_gravity_card() -> String:
+	if _gravity_draw_pile.is_empty():
+		_reshuffle_gravity_discard()
+	if _gravity_draw_pile.is_empty():
+		return ""
+	var cid: String = _gravity_draw_pile.pop_back()
+	_gravity_discard_pile.append(cid)
+	return cid
+
+
+func _reshuffle_gravity_discard() -> void:
+	if _gravity_discard_pile.is_empty():
+		return
+	var returning: Array = []
+	var staying_out: Array = []
+	for cid: String in _gravity_discard_pile:
+		if _gravity_card_effect_in_play(cid):
+			staying_out.append(cid)
+		else:
+			returning.append(cid)
+	_gravity_discard_pile = staying_out
+	if returning.is_empty():
+		return
+	# Endgame-flagged cards reshuffle to the BOTTOM (same rule as the
+	# initial deck build) so they keep their late-game role.
+	var endgame_ids: Array = []
+	var normal_ids: Array = []
+	for cid: String in returning:
+		var c: Dictionary = _find_gravity_card(cid)
+		if c.get("endgame", false):
+			endgame_ids.append(cid)
+		else:
+			normal_ids.append(cid)
+	normal_ids.shuffle()
+	endgame_ids.shuffle()
+	_gravity_draw_pile = []
+	for cid: String in endgame_ids:
+		_gravity_draw_pile.append(cid)
+	for cid: String in normal_ids:
+		_gravity_draw_pile.append(cid)
+	if staying_out.is_empty():
+		_log_line("[color=#c8a268][i]· the deck reshuffles. %d cards back into the room's hand.[/i][/color]" % returning.size())
+	else:
+		_log_line("[color=#c8a268][i]· the deck reshuffles. %d return; %d still in play and stay out.[/i][/color]" %
+			[returning.size(), staying_out.size()])
+
+
+# Does this Gravity card have an effect that's still active right
+# now? Used by the reshuffle to decide what stays exhausted.
+func _gravity_card_effect_in_play(cid: String) -> bool:
+	var card: Dictionary = _find_gravity_card(cid)
+	for e: Dictionary in card.get("effects", []):
+		if _gravity_effect_in_play(e):
+			return true
+	return false
+
+
+func _gravity_effect_in_play(e: Dictionary) -> bool:
+	match String(e.get("kind", "")):
+		"spawn_threat":
+			var tid: String = String(e.get("threat_id", ""))
+			for inst: Dictionary in _threats_active:
+				if String(inst.get("def_id", "")) == tid:
+					return true
+			return false
+		"set_flag":
+			# Truthy-evaluating flag value. Most set_flag effects flip a
+			# bool to true and never flip it back; this also treats any
+			# non-empty string as "still in play."
+			var k: String = String(e.get("key", ""))
+			var cur = _flags.get(k, null)
+			if cur == null: return false
+			if cur is bool: return cur
+			if cur is int: return cur != 0
+			if cur is String: return cur != ""
+			return true
+		"reveal_threshold":
+			# Once revealed it stays revealed — the door doesn't un-
+			# appear. Card is exhausted for the rest of the game.
+			return _flags.get(String(e.get("threshold", "")) + "_revealed", false) \
+				or _flags.get("precipice_revealed", false)
+		"reveal_lore_token":
+			var tok: String = String(e.get("token", ""))
+			return tok in _lore_tokens_collected
+		_:
+			return false
 
 
 func _find_gravity_card(cid: String) -> Dictionary:
