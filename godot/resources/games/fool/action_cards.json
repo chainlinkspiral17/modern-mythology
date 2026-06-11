@@ -52,13 +52,13 @@
     {
       "id": "sit_with",
       "title": "SIT WITH",
-      "time_cost": 0,
+      "time_cost": 1,
       "starter": false,
-      "flavor": "Stay put. Be witnessed.",
+      "flavor": "Stay put. Be witnessed. The action passes.",
       "requires": [],
       "effects": [
-        {"kind": "end_action_phase"},
-        {"kind": "connect_visitor_at_my_pos"}
+        {"kind": "connect_visitor_at_my_pos"},
+        {"kind": "end_action_phase"}
       ]
     },
     {

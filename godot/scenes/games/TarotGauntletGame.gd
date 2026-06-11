@@ -98,6 +98,10 @@ var _log_buffer: PackedStringArray = []
 # the modal since new lines arrived.
 var _log_unread_count: int = 0
 var _pane_title_labels: Dictionary = {}   # modal_key → Label
+# Per-turn cost bump from Gravity effects (e.g. THE FLUORESCENT TICK).
+# Reset at the start of each ACTION phase.
+var _this_turn_cost_bump_min: int = 99
+var _this_turn_cost_bump_amt: int = 0
 var _board_meeple: Control = null
 var _board_visitor_nodes: Dictionary = {}   # visitor_id → Control (Label or TextureRect)
 var _board_space_nodes: Dictionary = {}     # space_id → Label
@@ -1079,8 +1083,16 @@ func _render_board() -> void:
 	var panel_size: Vector2 = _board_content.size
 	if panel_size.x <= 0:
 		panel_size = Vector2(700, 480)
-	var sx: float = (panel_size.x - 80) / maxf(1.0, bx_max - bx_min)
-	var sy: float = (panel_size.y - 60) / maxf(1.0, by_max - by_min)
+	# Margins: ~50px left + ~160px right give the longest label
+	# (UNDER COUNTER, JUKEBOX, etc.) room to extend past its marker
+	# without clipping the right edge. Bottom margin extra for the
+	# meeple stack hanging under the last row.
+	var pad_left: float = 50.0
+	var pad_right: float = 160.0
+	var pad_top: float = 28.0
+	var pad_bottom: float = 80.0
+	var sx: float = (panel_size.x - pad_left - pad_right) / maxf(1.0, bx_max - bx_min)
+	var sy: float = (panel_size.y - pad_top - pad_bottom) / maxf(1.0, by_max - by_min)
 	# Compute every station's screen position upfront so we can draw
 	# adjacency lines below them.
 	var pos_by_id: Dictionary = {}
@@ -1092,8 +1104,8 @@ func _render_board() -> void:
 		if sid_p == "precipice_door" and not _flags.get("precipice_revealed", false):
 			continue
 		var xy_p: Array = s.get("pos_xy", [0, 0])
-		var px: float = (float(xy_p[0]) - bx_min) * sx + 40.0
-		var py: float = (float(xy_p[1]) - by_min) * sy + 30.0
+		var px: float = (float(xy_p[0]) - bx_min) * sx + pad_left
+		var py: float = (float(xy_p[1]) - by_min) * sy + pad_top
 		pos_by_id[sid_p] = Vector2(px, py)
 		visible_ids[sid_p] = true
 	# Adjacency lines layer — drawn FIRST so markers + labels sit on top.
@@ -2448,7 +2460,15 @@ func _on_play_card(cid: String) -> void:
 	if not _can_play_card(card):
 		_log_line("[i]can't play %s now[/i]" % card.get("title", cid))
 		return
-	var cost: int = int(card.get("time_cost", 1))
+	var base_cost: int = int(card.get("time_cost", 1))
+	var cost: int = base_cost
+	# Gravity-imposed cost bump (e.g. THE FLUORESCENT TICK)
+	if _this_turn_cost_bump_amt > 0 and base_cost >= _this_turn_cost_bump_min:
+		cost += _this_turn_cost_bump_amt
+		_log_line("[color=#ff8060][i]the tick: +%d to %s[/i][/color]" % [_this_turn_cost_bump_amt, card.get("title", cid)])
+	if _time < cost:
+		_log_line("[i]not enough Time to play %s (need %d, have %d)[/i]" % [card.get("title", cid), cost, _time])
+		return
 	_time -= cost
 	_played_this_turn.append(cid)
 	_audio_sfx("card_play")
@@ -2603,11 +2623,9 @@ func _resolve_effect(e: Dictionary) -> void:
 		"set_flag":
 			_flags[e.get("key", "")] = e.get("value", true)
 		"choose":
-			# Take first option for now (full UI later). Logs both.
-			var opts: Array = e.get("options", [])
-			if not opts.is_empty():
-				_log_line("[i]choose: %s[/i]" % opts[0].get("label", ""))
-				_resolve_effects(opts[0].get("effects", []))
+			# Real chooser modal — used by Gravity cards like
+			# THE COUNTER WANTS WIPING (discard 2 cards OR +2 Inertia).
+			_prompt_choose(e.get("options", []))
 		"play_jukebox_track":
 			var bgm_path: String = e.get("bgm", "")
 			var label: String = e.get("label", "track")
@@ -2619,6 +2637,13 @@ func _resolve_effect(e: Dictionary) -> void:
 			# fires from _check_composite_connections — this is just
 			# a (now-implemented) no-op so the warning stops firing.
 			pass
+		"this_turn_time_cost_modifier":
+			# THE FLUORESCENT TICK gravity: bump the cost of expensive
+			# cards by N for the rest of this turn. Recorded in
+			# _this_turn_cost_bump and consumed by _on_play_card.
+			_this_turn_cost_bump_min = int(e.get("min_cost_for_bump", 2))
+			_this_turn_cost_bump_amt = int(e.get("bump", 1))
+			_log_line("[color=#ff8060][i]Expensive cards cost +%d Time this turn (the tick keeps time wrong).[/i][/color]" % _this_turn_cost_bump_amt)
 		"connect_visitor_at_my_pos":
 			# Used by SIT WITH — connect any arrived, unconnected
 			# visitor at the player's current position.
@@ -2671,6 +2696,56 @@ func _check_connect_subcondition(sub: Dictionary) -> bool:
 # Used by the "discard_hand" effect (e.g. Gravity's "Choose: Discard
 # 2 Action cards"). Pops a modal letting the player CHOOSE which
 # cards to lose instead of silently popping from the back.
+func _prompt_choose(options: Array) -> void:
+	# Used by Gravity-card "choose" effects. Pops a modal with one
+	# button per option; click an option to resolve its effects.
+	if options.is_empty():
+		return
+	var existing: Node = get_node_or_null("pane_modal_dim")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.80)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.z_index = 100
+	dim.name = "pane_modal_dim"
+	add_child(dim)
+	var view: Vector2 = get_viewport_rect().size
+	var pop := PanelContainer.new()
+	pop.add_theme_stylebox_override("panel", _make_panel_style())
+	pop.size = Vector2(min(view.x * 0.55, 540.0), min(view.y * 0.55, 360.0))
+	pop.position = (view - pop.size) * 0.5
+	pop.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.add_child(pop)
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 12)
+	pop.add_child(vb)
+	var title := Label.new()
+	title.text = "  Choose one"
+	title.add_theme_color_override("font_color", C_ACCENT)
+	title.add_theme_font_size_override("font_size", 18)
+	vb.add_child(title)
+	var hint := Label.new()
+	hint.text = "  The room is asking. There's no opt-out."
+	hint.add_theme_color_override("font_color", Color(0.85, 0.83, 0.78, 0.7))
+	hint.add_theme_font_size_override("font_size", 11)
+	vb.add_child(hint)
+	vb.add_child(HSeparator.new())
+	for opt: Dictionary in options:
+		var btn := Button.new()
+		btn.text = String(opt.get("label", "(option)"))
+		btn.add_theme_font_size_override("font_size", 13)
+		btn.custom_minimum_size = Vector2(0, 40)
+		var opt_effects: Array = opt.get("effects", [])
+		btn.pressed.connect(func() -> void:
+			_log_line("[color=#c8a268]→ chose:[/color] %s" % opt.get("label", ""))
+			_close_pane_modal(dim)
+			_resolve_effects(opt_effects)
+			_render())
+		vb.add_child(btn)
+
+
 func _prompt_discard_cards(amount: int) -> void:
 	if amount <= 0 or _hand_cards.is_empty():
 		return
@@ -2776,10 +2851,47 @@ func _connect_visitor(vid: String) -> void:
 	_connections_made.append(vid)
 	_audio_sfx("visitor_connect")
 	var v: Dictionary = _visitors_def[vid]
-	_log_line("[color=#7cffb0]✓ connected with %s[/color]" % v.get("name", vid))
-	_show_toast("Connected with [b]%s[/b]" % v.get("name", vid), "#7cffb0")
+	var name_s: String = v.get("name", vid)
+	# Headline
+	_log_line("")
+	_log_line("[color=#7cffb0]✓  You connect with %s.[/color]" % name_s)
+	# Lore beat — the visitor's defining truth
+	if v.has("lore_text"):
+		_log_line("[color=#c8a268][i]%s[/i][/color]" % v["lore_text"])
+	# Per-visitor narrative follow-up — the small moment between you
+	# and them that the connection actually IS, not just its result.
+	var beat: String = _connection_beat(vid)
+	if beat != "":
+		_log_line("[color=#7c8398]%s[/color]" % beat)
+	# Progress note
+	var total: int = _connections_made.size()
+	var needed: int = int((_setup.get("win_conditions", {}) as Dictionary).get("require_visitors_connected_min", 3))
+	_log_line("[color=#7c8398][i]Connections: %d / %d toward the leap.[/i][/color]" % [total, needed])
+	_log_line("")
+	_show_toast("Connected with [b]%s[/b]" % name_s, "#7cffb0")
 	if v.has("lore_token"):
 		_collect_lore_token(v["lore_token"])
+
+
+# Per-visitor narrative beat that fires on connection. Each one is
+# the quiet seconds AFTER the connect — what the room does, what
+# they say, what John notices. Keep these to one or two sentences
+# so the log doesn't bog down.
+func _connection_beat(vid: String) -> String:
+	match vid:
+		"frasier":
+			return "Frasier sets his notebook on the counter and turns it toward you. The handwriting is yours, except where it isn't. He nods, like you've finally caught up to him."
+		"stranger":
+			return "The Booth-Six Stranger lowers the glowing page and holds it open with one finger. Whatever you're supposed to read is there, in your hand, in 1987, in their hand, now."
+		"faith":
+			return "Faith presses the length of her body against your shin and stays there. Whatever you do next, she's coming."
+		"dawn_cook":
+			return "The Dawn Cook ties on the apron you've been wearing for eleven years. They don't look at you. You don't have to look at them. The counter is taken care of."
+		"bbs_caller":
+			return "The terminal scrolls a clean line of green text:  WE SEE YOU. RETURN AT YOUR DISCRETION.  The cursor blinks twice and waits."
+		"anya_recording":
+			return "The cassette spins one full reel. A woman's voice you almost remember says your name, dated the year before you started here."
+	return ""
 
 
 func _collect_lore_token(token: String) -> void:
@@ -3051,6 +3163,9 @@ func _phase_action() -> void:
 	# Start of new turn — increment, reset played-this-turn
 	_turn += 1
 	_played_this_turn.clear()
+	# Reset per-turn Gravity modifiers
+	_this_turn_cost_bump_min = 99
+	_this_turn_cost_bump_amt = 0
 	# Default inertia tick (gravity of the room)
 	_inertia = min(12, _inertia + 1)
 	_log_line("\n[color=#c8a268][b]── turn %d ──[/b][/color]" % _turn)
