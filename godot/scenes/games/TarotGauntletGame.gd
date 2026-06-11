@@ -138,11 +138,15 @@ var _threats_def: Dictionary = {}           # def_id → def dict
 var _threats_active: Array = []             # array of {id, def_id, pos}
 var _threats_next_serial: int = 1
 var _board_threat_nodes: Dictionary = {}    # threat instance id → Control
+# Pending visitor-arrival popups. When a turn brings 2+ visitors at
+# once we show them sequentially — each modal's Acknowledge button
+# pops the next from the queue.
+var _visitor_arrival_queue: Array = []
 var _gravity_card_label: RichTextLabel = null
 var _end_overlay: Control = null
 
 const C_BG: Color    = Color(0.045, 0.040, 0.030)
-const C_PANEL: Color = Color(0.085, 0.070, 0.050, 0.92)
+const C_PANEL: Color = Color(0.085, 0.070, 0.050, 1.0)
 const C_BORDER: Color = Color(0.70, 0.55, 0.24, 0.45)
 const C_TEXT: Color  = Color(0.86, 0.80, 0.66)
 const C_DIM: Color   = Color(0.55, 0.50, 0.40)
@@ -1025,6 +1029,162 @@ func _on_modal_dim_input(ev: InputEvent, dim: ColorRect) -> void:
 # the left and title + flavor + body on the right. Click outside,
 # Esc, or the Acknowledge button to dismiss. Stacks above the
 # pane modal layer (z=110) so it doesn't trample any chooser.
+
+# Visitor arrival popup. Pulls the next vid from
+# `_visitor_arrival_queue` and shows a portrait + flavor modal so
+# the arrival is visible regardless of what panel the player was
+# looking at. Stacks above the gauntlet UI (z=110), dismissible via
+# Esc, click-outside, the Acknowledge button, or the Minimize "—"
+# button. Minimize closes without chaining; the player can re-click
+# the visitor row to view their card. Acknowledge advances to the
+# next queued arrival (if any).
+func _show_next_visitor_arrival() -> void:
+	if _visitor_arrival_queue.is_empty():
+		return
+	var vid: String = String(_visitor_arrival_queue.pop_front())
+	var v: Dictionary = _visitors_def.get(vid, {})
+	var st: Dictionary = _visitors_state.get(vid, {})
+	var name_s: String = String(v.get("name", vid))
+	var pos_s: String = String(st.get("pos", "")).replace("_", " ")
+	var hints: Array = v.get("pre_arrival_hints", [])
+	var flavor: String = String(hints[hints.size() - 1]) if not hints.is_empty() else "%s walks in." % name_s
+	var accent_hex: String = String(v.get("accent", "#c8a268"))
+	# Tear down any prior drawn-card popup so this one stacks cleanly.
+	var existing: Node = get_node_or_null("drawn_card_modal")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.78)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.z_index = 110
+	dim.name = "drawn_card_modal"
+	dim.modulate = Color(1, 1, 1, 0)
+	add_child(dim)
+	var fade := create_tween()
+	fade.tween_property(dim, "modulate:a", 1.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	var view: Vector2 = get_viewport_rect().size
+	var pop := PanelContainer.new()
+	pop.add_theme_stylebox_override("panel", _make_panel_style())
+	pop.size = Vector2(min(view.x * 0.66, 820.0), min(view.y * 0.74, 560.0))
+	pop.position = (view - pop.size) * 0.5
+	pop.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.add_child(pop)
+	var root := HBoxContainer.new()
+	root.add_theme_constant_override("separation", 16)
+	pop.add_child(root)
+	# Portrait
+	var art_panel := PanelContainer.new()
+	art_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	art_panel.custom_minimum_size = Vector2(320, 448)
+	root.add_child(art_panel)
+	var face_tex: Texture2D = _load_texture_silent(_art_path_visitor_face(vid))
+	if face_tex:
+		var img := TextureRect.new()
+		img.texture = face_tex
+		img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		img.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		img.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		art_panel.add_child(img)
+	else:
+		var ph := Label.new()
+		ph.text = "(no portrait art yet)"
+		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.40))
+		ph.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		ph.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		art_panel.add_child(ph)
+	# Info column
+	var info := VBoxContainer.new()
+	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info.add_theme_constant_override("separation", 10)
+	root.add_child(info)
+	var header_row := HBoxContainer.new()
+	info.add_child(header_row)
+	var arrived_lbl := Label.new()
+	arrived_lbl.text = "✦  arrived"
+	arrived_lbl.add_theme_color_override("font_color", Color(0.49, 1.0, 0.69))
+	arrived_lbl.add_theme_font_size_override("font_size", 11)
+	header_row.add_child(arrived_lbl)
+	var min_btn := Button.new()
+	min_btn.text = "—"
+	min_btn.tooltip_text = "Minimize (the visitor stays on the board; reopen by clicking their row)"
+	min_btn.add_theme_font_size_override("font_size", 14)
+	min_btn.custom_minimum_size = Vector2(28, 22)
+	min_btn.size_flags_horizontal = Control.SIZE_SHRINK_END
+	header_row.add_child(min_btn)
+	var title_lbl := Label.new()
+	title_lbl.text = name_s
+	title_lbl.add_theme_color_override("font_color", Color(accent_hex))
+	title_lbl.add_theme_font_size_override("font_size", 24)
+	title_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	info.add_child(title_lbl)
+	var pos_lbl := Label.new()
+	pos_lbl.text = "at " + pos_s.to_upper()
+	pos_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.6))
+	pos_lbl.add_theme_font_size_override("font_size", 11)
+	info.add_child(pos_lbl)
+	if flavor != "":
+		var flavor_rt := RichTextLabel.new()
+		flavor_rt.bbcode_enabled = true
+		flavor_rt.fit_content = true
+		flavor_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		flavor_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		flavor_rt.add_theme_color_override("default_color", Color(0.86, 0.82, 0.74))
+		flavor_rt.add_theme_font_size_override("normal_font_size", 13)
+		flavor_rt.text = "[i]" + flavor + "[/i]"
+		info.add_child(flavor_rt)
+	if v.has("mood"):
+		var mood_lbl := Label.new()
+		mood_lbl.text = "mood: " + String(v.get("mood", ""))
+		mood_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
+		mood_lbl.add_theme_font_size_override("font_size", 11)
+		info.add_child(mood_lbl)
+	if v.has("order_item"):
+		var hint_rt := RichTextLabel.new()
+		hint_rt.bbcode_enabled = true
+		hint_rt.fit_content = true
+		hint_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		hint_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		hint_rt.add_theme_color_override("default_color", C_TEXT)
+		hint_rt.add_theme_font_size_override("normal_font_size", 11)
+		hint_rt.text = "[color=#7c8398][i]they'll have something for you when you LISTEN.[/i][/color]"
+		info.add_child(hint_rt)
+	var spacer := Control.new()
+	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info.add_child(spacer)
+	var ack := Button.new()
+	if _visitor_arrival_queue.is_empty():
+		ack.text = "Acknowledge  (Esc / click outside)"
+	else:
+		ack.text = "Next →  (%d more arriving)" % _visitor_arrival_queue.size()
+	ack.add_theme_font_size_override("font_size", 12)
+	info.add_child(ack)
+	# Acknowledge → fade out, then chain to next arrival
+	var close_and_chain := func() -> void:
+		var t := create_tween()
+		t.tween_property(dim, "modulate:a", 0.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		t.tween_callback(dim.queue_free)
+		t.tween_callback(_show_next_visitor_arrival)
+	ack.pressed.connect(close_and_chain)
+	# Click on dim (outside the panel) also acknowledges and chains.
+	dim.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			close_and_chain.call())
+	# Minimize → close WITHOUT chaining; player can re-open via visitor row.
+	# Also requeues nothing — the popped vid is just gone; remaining
+	# queued arrivals carry on after the next user action that calls
+	# _show_next_visitor_arrival (currently only at arrival time).
+	min_btn.pressed.connect(func() -> void:
+		var t := create_tween()
+		t.tween_property(dim, "modulate:a", 0.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		t.tween_callback(dim.queue_free))
+
+
+
 func _show_drawn_card_popup(art_path: String, title: String, flavor: String, body: String, accent_hex: String) -> void:
 	# Tear down any prior drawn-card popup (rapid-fire draws stack
 	# cleanly).
@@ -4619,6 +4779,7 @@ func _phase_action() -> void:
 		_inertia = min(12, _inertia + tick)
 	_log_line("\n[color=#c8a268][b]── turn %d ──[/b][/color]" % _turn)
 	# Visitor arrivals scheduled for this turn
+	var arrivals_this_turn: Array = []
 	for vid in _visitors_state:
 		var st: Dictionary = _visitors_state[vid]
 		if not st.get("arrived", false) and st.has("scheduled_turn"):
@@ -4627,6 +4788,15 @@ func _phase_action() -> void:
 				st["pos"] = st.get("arrival_pos", "counter")
 				var name_s: String = _visitors_def.get(vid, {}).get("name", vid)
 				_log_line("[i]→ %s arrives at %s[/i]" % [name_s, st["pos"]])
+				arrivals_this_turn.append(vid)
+	# Pop a modal for each arrival so the player sees their face. The
+	# popup is z=110 (above the gauntlet UI), dismissible via the
+	# Acknowledge button, Esc, or clicking outside. If multiple
+	# visitors arrive in the same turn, queue them so each shows in
+	# turn — _show_visitor_arrival_popup tears down its predecessor.
+	for vid in arrivals_this_turn:
+		_visitor_arrival_queue.append(vid)
+	call_deferred("_show_next_visitor_arrival")
 
 
 # TO-GO auto-deliver — when the player walks to the order's
