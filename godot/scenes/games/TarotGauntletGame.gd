@@ -154,6 +154,10 @@ var _board_threat_nodes: Dictionary = {}    # threat instance id → Control
 var _visitor_arrival_queue: Array = []
 var _gravity_card_label: RichTextLabel = null
 var _end_overlay: Control = null
+# Scenario id picked from the gallery, e.g. "the_leap", "lunch_rush",
+# "evening_service". Names the setup_<id>.json file the engine
+# loads, and optionally a gravity_deck_<id>.json variant.
+var _scenario_id: String = "the_leap"
 
 const C_BG: Color    = Color(0.045, 0.040, 0.030)
 const C_PANEL: Color = Color(0.085, 0.070, 0.050, 1.0)
@@ -169,10 +173,12 @@ const C_BAD: Color   = Color(0.95, 0.45, 0.45)
 
 func start_scenario(arcana: String = "fool",
 					location: String = "dambrosios",
-					hand: String = "john_frank") -> void:
+					hand: String = "john_frank",
+					scenario_id: String = "the_leap") -> void:
 	_arcana_id = arcana
 	_location_id = location
 	_hand_id = hand
+	_scenario_id = scenario_id
 
 
 func _ready() -> void:
@@ -192,7 +198,7 @@ func _ready() -> void:
 	if _setup.is_empty() or _action_cards.is_empty() or _location.is_empty():
 		_log_line("[color=#ff6464][b]DATA LOAD FAILED[/b][/color]")
 		_log_line("Missing data files at: [code]%s[/code]" % DATA_ROOT)
-		_log_line("  setup_the_leap.json: %s" % ("OK" if not _setup.is_empty() else "[color=#ff6464]MISSING[/color]"))
+		_log_line("  setup_%s.json: %s" % [_scenario_id, ("OK" if not _setup.is_empty() else "[color=#ff6464]MISSING[/color]")])
 		_log_line("  action_cards.json: %s (%d cards merged)" % [
 			"OK" if not _action_cards.is_empty() else "[color=#ff6464]MISSING[/color]",
 			_action_cards.size()])
@@ -440,9 +446,17 @@ func _load_json(path: String) -> Dictionary:
 
 func _load_data() -> void:
 	var arc_root := DATA_ROOT + _arcana_id + "/"
-	print("[Gauntlet] loading data from %s" % arc_root)
-	_setup           = _load_json(arc_root + "setup_the_leap.json")
-	_gravity_deck_def = _load_json(arc_root + "gravity_deck.json")
+	print("[Gauntlet] loading data from %s (scenario %s)" % [arc_root, _scenario_id])
+	# Per-scenario setup file: setup_<scenario_id>.json
+	_setup           = _load_json(arc_root + "setup_" + _scenario_id + ".json")
+	# Per-scenario gravity deck if present, else the default deck.
+	# Scenario-specific decks carry their own atmospheric cards
+	# (lunch chaos, evening fullness) on top of the shared base.
+	var scenario_deck_path: String = arc_root + "gravity_deck_" + _scenario_id + ".json"
+	if ResourceLoader.exists(scenario_deck_path):
+		_gravity_deck_def = _load_json(scenario_deck_path)
+	else:
+		_gravity_deck_def = _load_json(arc_root + "gravity_deck.json")
 	_finale_def      = _load_json(arc_root + "finale.json")
 	_die             = _load_json(arc_root + "die.json")
 	# Merge core + arcana-unique action cards into a flat dict by id
@@ -5475,10 +5489,13 @@ func _bfs_next_hop(start: String, targets: PackedStringArray, adj_map: Dictionar
 
 
 func _place_claim_marker(skip_first: bool) -> void:
-	# Closest unconnected, unclaimed visitor on the board
+	# Closest unconnected, unclaimed visitor on the board. Helpers
+	# (bus kid, line cook) are exempt — they're staff, not patrons.
 	var candidates: Array = []
 	for vid in _visitors_state:
 		var st: Dictionary = _visitors_state[vid]
+		var vdef: Dictionary = _visitors_def.get(vid, {})
+		if vdef.get("helper", false): continue
 		if (st.get("arrived", false) and not st.get("connected", false)
 			and int(st.get("claimed_turn", -1)) < 0):
 			candidates.append(vid)
@@ -5494,18 +5511,50 @@ func _place_claim_marker(skip_first: bool) -> void:
 
 
 func _phase_upkeep() -> void:
-	# Auto-ring: the cook rings the bell once per UPKEEP if there's
-	# anything pending in the order_window. Removes ADDRESS THE BELL
-	# from the player's must-do list — orders ripen on their own.
-	# Player still has to GO to the order window to pick up.
+	# Order window: how many pending orders ripen per Upkeep depends
+	# on whether the LINE COOK helper is on the board. Without him,
+	# the cook is John's responsibility — one bell per Upkeep. With
+	# him, every pending order ripens (he's on the line cooking AND
+	# ringing). Lunch + Evening scenarios put him on the grill at
+	# start, so the bell keeps up with the room.
 	var pile_ow: Array = _pile_state.get("order_window", [])
+	var cook_st: Dictionary = _visitors_state.get("line_cook", {})
+	var cook_present: bool = cook_st.get("arrived", false)
+	var rang_one: bool = false
 	for iid: String in pile_ow:
-		if _order_pending.get(iid, false):
-			_order_pending[iid] = false
-			var ititle_ow: String = String(_items_def.get(iid, {}).get("title", iid))
-			_log_line("[color=#c8a268][i]   The bell — the cook's pass-the-window ring. %s ready.[/i][/color]" % ititle_ow)
-			_show_toast("Bell · [b]%s[/b] ready" % ititle_ow, "#c8a268")
+		if not _order_pending.get(iid, false):
+			continue
+		_order_pending[iid] = false
+		var ititle_ow: String = String(_items_def.get(iid, {}).get("title", iid))
+		if cook_present:
+			_log_line("[color=#c8a268][i]   Bell. The line cook calls back: %s up.[/i][/color]" % ititle_ow)
+		else:
+			_log_line("[color=#c8a268][i]   Bell. The cook's pass-the-window ring. %s ready.[/i][/color]" % ititle_ow)
+		_show_toast("Bell · [b]%s[/b] ready" % ititle_ow, "#c8a268")
+		rang_one = true
+		if not cook_present:
 			break
+	# Bus Kid helper: if on the board, decrement the countdown of
+	# threats at adjacent spaces by 1 extra tick (or clear them if
+	# already at 1). Caps at one threat cleared per Upkeep so it
+	# doesn't trivialize a busy room.
+	var kid_st: Dictionary = _visitors_state.get("bus_kid", {})
+	if kid_st.get("arrived", false) and not _threats_active.is_empty():
+		var kid_pos: String = String(kid_st.get("pos", ""))
+		var adj_kid: Array = _location.get("adjacency", {}).get(kid_pos, [])
+		adj_kid = adj_kid.duplicate()
+		adj_kid.append(kid_pos)
+		var helped: bool = false
+		for inst: Dictionary in _threats_active:
+			if helped: break
+			var tpos: String = String(inst.get("pos", ""))
+			if not (tpos in adj_kid): continue
+			var tr: int = int(inst.get("ticks_remaining", 0))
+			inst["ticks_remaining"] = max(0, tr - 1)
+			var tdef_h: Dictionary = _threats_def.get(inst.get("def_id", ""), {})
+			_log_line("[color=#7cffb0][i]   The bus kid catches the %s. (-1 tick)[/i][/color]" %
+				String(tdef_h.get("title", "threat")).to_lower())
+			helped = true
 	# Faith adjacent → −1 Inertia
 	var faith_st: Dictionary = _visitors_state.get("faith", {})
 	if faith_st.get("arrived", false) and faith_st.get("pos", "") == _player_pos:

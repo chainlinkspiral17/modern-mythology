@@ -1,0 +1,142 @@
+{
+  "scope": "fool",
+  "scenario": "evening_service",
+  "notes": "Evening-service gravity deck. The bar is open, the dining room is at capacity, the kitchen is screaming. These cards stack the room against you in ways daytime can't — drunken regulars, comp requests, the bar fight you might prevent, the table that won't sit down. 16 cards drawn one per Shadow.",
+  "cards": [
+    {
+      "id": "the_bar_roars",
+      "title": "THE BAR ROARS",
+      "flavor": "A laugh cuts the room. Then another. Then it's just the bar all the way to the river window, drowning the cooking line.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 2}
+      ]
+    },
+    {
+      "id": "two_of_everything",
+      "title": "TWO OF EVERYTHING",
+      "flavor": "Same order, twice, two tickets, neither fired yet. The cook is laughing about it. The cook is also angry about it.",
+      "effects": [
+        {"kind": "this_turn_time_cost_modifier", "min_cost_for_bump": 1, "bump": 1}
+      ]
+    },
+    {
+      "id": "the_walker",
+      "title": "THE WALKER",
+      "flavor": "A two-top at booth 6 stood up and left without their check. Nobody saw. The bus kid is wiping a different booth.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 2},
+        {"kind": "claim_closest_unconnected_visitor"}
+      ]
+    },
+    {
+      "id": "the_phone_won't_stop",
+      "title": "THE PHONE WON'T STOP RINGING",
+      "flavor": "Reservations. To-gos. A wrong number. A guy who wants to know if you're hiring. The phone is on its eleventh ring.",
+      "effects": [
+        {"kind": "lose_sanity", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_jukebox_skips",
+      "title": "THE JUKEBOX SKIPS",
+      "flavor": "Same six seconds of a song you've heard a thousand times. Then again. Then again. Somebody whacks the side of it.",
+      "effects": [
+        {"kind": "lose_sanity", "amount": 1},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_fight_we_didnt_have",
+      "title": "THE FIGHT WE DIDN'T HAVE",
+      "flavor": "Two regulars at the bar are leaning at each other in a way that hasn't become anything yet but could. The whole room is half-watching them.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "fluorescent_swarm", "pos": "bar"}
+      ]
+    },
+    {
+      "id": "the_grill_is_in_the_weeds",
+      "title": "THE GRILL IS IN THE WEEDS",
+      "flavor": "Five tickets up. The cook is calling for you. The line cook helper is keeping pace but only just.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "grill_grease_fire"},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "a_drink_spilled_on_a_check",
+      "title": "A DRINK ON A CHECK",
+      "flavor": "Bar stool 2 elbows their pint over the ticket. You're going to print it again.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "faith_mess", "pos": "bar_stools"}
+      ]
+    },
+    {
+      "id": "the_birthday_thirty",
+      "title": "THE BIRTHDAY (×30)",
+      "flavor": "Booth 4: a thirtieth, big party. They want pictures. They want the cake done special. They want everything at once.",
+      "effects": [
+        {"kind": "this_turn_time_cost_modifier", "min_cost_for_bump": 2, "bump": 1}
+      ]
+    },
+    {
+      "id": "the_bathroom",
+      "title": "THE BATHROOM",
+      "flavor": "Somebody's been in there for a while. Two somebodys are waiting for it. Nobody is going to be okay about this.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "bathroom_funk"}
+      ]
+    },
+    {
+      "id": "the_payphone_rings",
+      "title": "THE PAYPHONE RINGS",
+      "flavor": "Pay phone in the back. Long ring. Long. Long. Whoever picks up is going to wish they hadn't.",
+      "effects": [
+        {"kind": "advance_next_visitor_arrival", "by": 1}
+      ]
+    },
+    {
+      "id": "the_window_argues",
+      "title": "THE WINDOW ARGUES",
+      "flavor": "The river window: someone outside is hitting the glass. They want in. They are not a customer.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "river_miasma"}
+      ]
+    },
+    {
+      "id": "the_room_in_the_weeds",
+      "title": "IN THE WEEDS",
+      "flavor": "The kitchen is shouting. The bar is shouting. The dining room is shouting. The bus kid is laughing in the bus tub.",
+      "endgame": true,
+      "effects": [
+        {"kind": "gain_inertia", "amount": 3}
+      ]
+    },
+    {
+      "id": "the_eighty_six_special",
+      "title": "EIGHTY-SIX THE SPECIAL",
+      "flavor": "The kitchen is out of the thing the menu has been pushing all night. Half your tables ordered it.",
+      "endgame": true,
+      "effects": [
+        {"kind": "claim_closest_unconnected_visitor"}
+      ]
+    },
+    {
+      "id": "the_lights",
+      "title": "THE LIGHTS",
+      "flavor": "Half the bar's bulbs go out at once. The fluorescent over the grill steadies. The room narrows to the warm part.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "fluorescent_swarm"}
+      ]
+    },
+    {
+      "id": "closing_time",
+      "title": "CLOSING TIME",
+      "flavor": "The hostess flips the sign. Last call. Some tables don't notice. The room is half-empty in five minutes and you can hear the cooler hum again.",
+      "endgame": true,
+      "effects": [
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "recover_sanity", "amount": 1}
+      ]
+    }
+  ]
+}

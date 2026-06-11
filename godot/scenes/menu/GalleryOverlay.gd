@@ -450,7 +450,7 @@ func _add_play_button_overlay(parent_visualizer: Control,
 	if parent_visualizer == null:
 		return
 	var btn := Button.new()
-	btn.text = "▷ PLAY THE LEAP"
+	btn.text = "▷ ENTER THE GAUNTLET"
 	btn.add_theme_font_size_override("font_size", 14)
 	btn.add_theme_color_override("font_color", Color(0.05, 0.05, 0.08))
 	var st := StyleBoxFlat.new()
@@ -466,16 +466,140 @@ func _add_play_button_overlay(parent_visualizer: Control,
 	btn.add_theme_stylebox_override("hover", st)
 	btn.add_theme_stylebox_override("pressed", st)
 	btn.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	btn.offset_left = -220
+	btn.offset_left = -260
 	btn.offset_top = -64
 	btn.offset_right = -28
 	btn.offset_bottom = -28
 	btn.z_index = 20
 	parent_visualizer.add_child(btn)
-	btn.pressed.connect(func() -> void: _launch_gauntlet(parent_visualizer, arcana, location, hand))
+	btn.pressed.connect(func() -> void:
+		_show_scenario_picker(parent_visualizer, arcana, location, hand))
 
 
-func _launch_gauntlet(visualizer: Control, arcana: String, location: String, hand: String) -> void:
+# Scenario picker modal — three difficulty options for the Fool's
+# D'Ambrosio's location. Each option launches the same engine with
+# a different setup file + gravity deck.
+const FOOL_SCENARIOS := [
+	{
+		"id": "the_leap",
+		"title": "THE LEAP",
+		"subtitle": "Easy · 3:47 AM · Between Acts",
+		"flavor": "The off-shift. The diner is almost empty. The room presses on you because nothing else is. Assemble the bindle, gather three visitors, and walk to a threshold."
+	},
+	{
+		"id": "lunch_rush",
+		"title": "THE RUSH",
+		"subtitle": "Medium · 12:18 PM · Lunch Service",
+		"flavor": "Sunlit room, full booths, tickets ahead of you. Bus kid and line cook on the board to keep pace. Win by serving four orders, connecting three visitors, and reaching the parking lot."
+	},
+	{
+		"id": "evening_service",
+		"title": "FULL HOUSE",
+		"subtitle": "Hard · 8:42 PM · Evening Service",
+		"flavor": "Bar open. Every booth seated. The kitchen calling, the bar roaring, the jukebox skipping. Serve six orders and connect four visitors before the room takes you."
+	}
+]
+
+
+func _show_scenario_picker(visualizer: Control, arcana: String, location: String, hand: String) -> void:
+	if visualizer == null:
+		return
+	# Tear down any existing picker first
+	var existing: Node = visualizer.get_node_or_null("scenario_picker")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var dim := ColorRect.new()
+	dim.name = "scenario_picker"
+	dim.color = Color(0, 0, 0, 0.86)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.z_index = 30
+	visualizer.add_child(dim)
+	var panel := PanelContainer.new()
+	var ps := StyleBoxFlat.new()
+	ps.bg_color = Color(0.08, 0.07, 0.05, 1.0)
+	ps.border_color = C_GOLD
+	ps.set_border_width_all(1)
+	ps.set_corner_radius_all(3)
+	ps.content_margin_left = 24
+	ps.content_margin_right = 24
+	ps.content_margin_top = 20
+	ps.content_margin_bottom = 20
+	panel.add_theme_stylebox_override("panel", ps)
+	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.offset_left = -360
+	panel.offset_right = 360
+	panel.offset_top = -260
+	panel.offset_bottom = 260
+	dim.add_child(panel)
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 14)
+	panel.add_child(vb)
+	# Header
+	var title := Label.new()
+	title.text = "ENTER THE GAUNTLET · D'AMBROSIO'S"
+	title.add_theme_font_size_override("font_size", 14)
+	title.add_theme_color_override("font_color", C_GOLD)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	vb.add_child(title)
+	var sub := Label.new()
+	sub.text = "John Frank · Pick a shift"
+	sub.add_theme_font_size_override("font_size", 10)
+	sub.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	vb.add_child(sub)
+	# Scenario tiles
+	for scn: Dictionary in FOOL_SCENARIOS:
+		var tile_panel := PanelContainer.new()
+		var ts := StyleBoxFlat.new()
+		ts.bg_color = Color(0.05, 0.045, 0.03, 1.0)
+		ts.border_color = Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.35)
+		ts.set_border_width_all(1)
+		ts.set_corner_radius_all(3)
+		ts.content_margin_left = 14
+		ts.content_margin_right = 14
+		ts.content_margin_top = 10
+		ts.content_margin_bottom = 10
+		tile_panel.add_theme_stylebox_override("panel", ts)
+		tile_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+		tile_panel.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		vb.add_child(tile_panel)
+		var tile_vb := VBoxContainer.new()
+		tile_vb.add_theme_constant_override("separation", 4)
+		tile_panel.add_child(tile_vb)
+		var t_title := Label.new()
+		t_title.text = String(scn.get("title", ""))
+		t_title.add_theme_font_size_override("font_size", 15)
+		t_title.add_theme_color_override("font_color", C_GOLD)
+		tile_vb.add_child(t_title)
+		var t_sub := Label.new()
+		t_sub.text = String(scn.get("subtitle", ""))
+		t_sub.add_theme_font_size_override("font_size", 10)
+		t_sub.add_theme_color_override("font_color", Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.65))
+		tile_vb.add_child(t_sub)
+		var t_flavor := Label.new()
+		t_flavor.text = String(scn.get("flavor", ""))
+		t_flavor.add_theme_font_size_override("font_size", 11)
+		t_flavor.add_theme_color_override("font_color", C_TXT)
+		t_flavor.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		t_flavor.custom_minimum_size = Vector2(600, 0)
+		tile_vb.add_child(t_flavor)
+		var scenario_id: String = String(scn.get("id", "the_leap"))
+		tile_panel.gui_input.connect(func(ev: InputEvent) -> void:
+			if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed and (ev as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+				dim.queue_free()
+				_launch_gauntlet(visualizer, arcana, location, hand, scenario_id))
+	# Cancel
+	var cancel := Button.new()
+	cancel.text = "Cancel"
+	cancel.add_theme_font_size_override("font_size", 11)
+	cancel.custom_minimum_size = Vector2(120, 28)
+	cancel.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	cancel.pressed.connect(dim.queue_free)
+	vb.add_child(cancel)
+
+
+func _launch_gauntlet(visualizer: Control, arcana: String, location: String, hand: String, scenario_id: String = "the_leap") -> void:
 	# Capture the visualizer's spawn script so we can re-open it
 	# when the gauntlet ends. We fully queue_free the visualizer
 	# instead of relying on `visible = false`: the visualizer's
@@ -486,7 +610,7 @@ func _launch_gauntlet(visualizer: Control, arcana: String, location: String, han
 		visualizer_script = visualizer.get_script() as Script
 		visualizer.queue_free()
 	var game := TAROT_GAUNTLET_SCENE.instantiate()
-	game.start_scenario(arcana, location, hand)
+	game.start_scenario(arcana, location, hand, scenario_id)
 	game.z_index = 30
 	add_child(game)
 	game.connect("game_ended", func(_outcome: String, _summary: Dictionary) -> void:
