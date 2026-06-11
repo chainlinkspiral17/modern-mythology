@@ -126,22 +126,6 @@ func _ready() -> void:
 	# or interacts with something).
 	call_deferred("_render_board")
 	call_deferred("_render")
-
-
-func _unhandled_key_input(event: InputEvent) -> void:
-	# Esc closes any open modal first, then exits fullscreen board.
-	if event is InputEventKey and (event as InputEventKey).pressed:
-		var key: InputEventKey = event
-		if key.keycode == KEY_ESCAPE:
-			# Topmost modal first
-			var dim: Node = get_node_or_null("pane_modal_dim")
-			if dim != null and is_instance_valid(dim):
-				_close_pane_modal(dim as ColorRect)
-				get_viewport().set_input_as_handled()
-				return
-			if _board_fullscreen:
-				_toggle_board_fullscreen()
-				get_viewport().set_input_as_handled()
 	# Surface data-load failures in the in-game log so the user doesn't
 	# have to dig through Godot's Output panel to see why nothing's
 	# happening. If any of these are missing, the run is unplayable.
@@ -160,7 +144,23 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			  [_setup.get("title", "THE LEAP"), _setup.get("subtitle", "")])
 	_log_line("[i]%s[/i]" % _setup.get("epigraph_upright", ""))
 	_log_line("")
-	_log_line("[color=#7c8398]Hand: %s[/color]" % _hand_cards)
+	_log_line("[color=#7c8398]Hand: %s[/color]" % str(_hand_cards))
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	# Esc closes any open modal first, then exits fullscreen board.
+	if event is InputEventKey and (event as InputEventKey).pressed:
+		var key: InputEventKey = event
+		if key.keycode == KEY_ESCAPE:
+			# Topmost modal first
+			var dim: Node = get_node_or_null("pane_modal_dim")
+			if dim != null and is_instance_valid(dim):
+				_close_pane_modal(dim as ColorRect)
+				get_viewport().set_input_as_handled()
+				return
+			if _board_fullscreen:
+				_toggle_board_fullscreen()
+				get_viewport().set_input_as_handled()
 	_log_line("[color=#7c8398]Phase: %s — click cards to play, then Advance →[/color]" %
 		Phase.keys()[_phase])
 	_log_line("")
