@@ -5,6 +5,7 @@
     {
       "id": "frasier",
       "name": "Frasier Temple",
+      "as_hand_id": "frasier",
       "arrival": {"kind": "scheduled", "turn": 3, "from": "kitchen_alcove", "to": "counter"},
       "lore_token": "frasier_seen",
       "lore_text": "Still chasing shadows. Frasier sees you, you see Frasier.",
@@ -164,6 +165,200 @@
         "listen":  "A woman's voice you almost remember says your name.",
         "deliver": "She names the year. It was before you started here.",
         "sit_with": "The tape ends. The spool clicks. The recording was already finished."
+      }
+    },
+
+    {
+      "id": "nicola",
+      "name": "Nicola",
+      "arcana_cameo": "the_world",
+      "scenarios": ["lunch_rush"],
+      "arrival": {"kind": "scheduled", "turn": 1, "to": "hostess_stand"},
+      "lore_token": "nicola_at_lunch",
+      "lore_text": "Nicola comes for the grits, and stays for the bench seat near the window. She has been coming here since before you started.",
+      "accent": "#ffd07a",
+      "placeholder_name": "the woman at the door",
+      "pre_arrival_hints": [
+        "The door chimes. Someone takes the front bench like it's theirs.",
+        "She's setting her bag down at the hostess stand.",
+        "Nicola, smiling like she's already glad to see you."
+      ],
+      "mood": "jovial",
+      "order_item": "order_grits_eggs_gravy",
+      "steps": {
+        "greet":   "She lifts her sunglasses onto her hair. \"There he is. Hi, doll.\"",
+        "listen":  "\"Grits, eggs, gravy. Coffee no sugar. Same as it's been since the year I had a 280-Z.\"",
+        "deliver": "She closes her eyes when the plate lands. \"Better than yesterday. You know it's better than yesterday.\"",
+        "sit_with": "She tells you how her granddaughter's doing. The names of three teachers. The plate is empty when you stand up."
+      }
+    },
+
+    {
+      "id": "mackenzie",
+      "name": "Mackenzie",
+      "arcana_cameo": "the_lovers",
+      "scenarios": ["lunch_rush"],
+      "arrival": {"kind": "scheduled", "turn": 3, "to": "pay_phone"},
+      "lore_token": "mackenzie_call_from_diner",
+      "lore_text": "She made the call from your phone. You only ever heard her side of it. The voice on the other end was somebody who used to know you, too.",
+      "accent": "#b89ad6",
+      "placeholder_name": "someone who needs the phone",
+      "pre_arrival_hints": [
+        "The door. Someone walks straight past the booths to the back.",
+        "She's looking at the pay phone like it owes her.",
+        "Mackenzie, lifting the receiver, already dialing."
+      ],
+      "mood": "preoccupied",
+      "order_item": "order_coffee_toast",
+      "steps": {
+        "greet":   "She holds up one finger to you. The call comes first.",
+        "listen":  "Coffee and toast, mouthed at you over the receiver. Sugar gesture.",
+        "deliver": "She catches the plate-edge with two fingers while still on the call. \"You're a saint. No, not you.\"",
+        "sit_with": "She sets the receiver down very carefully. \"I just told him,\" she says, to nobody. Then to you: \"Thanks.\""
+      }
+    },
+
+    {
+      "id": "maya_kid",
+      "name": "Maya",
+      "arcana_cameo": "the_magician",
+      "scenarios": ["lunch_rush"],
+      "arrival": {"kind": "on_board_at_start", "pos": "booth_6"},
+      "lore_token": "maya_card_at_booth_six",
+      "lore_text": "She showed you a card trick. She showed you a card trick. You watched it three times. You did not see the card move.",
+      "accent": "#ff8060",
+      "placeholder_name": "the kid at booth 6",
+      "pre_arrival_hints": [],
+      "mood": "jovial",
+      "steps": {
+        "greet":   "She slides a deck across the booth toward you. \"Pick one. Don't say it.\"",
+        "listen":  "She tells you about the trick. Then about her uncle. Then about the trick again, and you realize she's been doing it the whole time.",
+        "deliver": "She hands the card back to you face-up. It was your card. You don't remember telling her.",
+        "sit_with": "She grins. Her parents look up from their plates. She winks at you. The deck goes back into her sleeve in one motion."
+      }
+    },
+
+    {
+      "id": "elicia",
+      "name": "Elicia",
+      "arcana_cameo": "the_high_priestess",
+      "scenarios": ["evening_service"],
+      "arrival": {"kind": "scheduled", "turn": 4, "to": "booth_4"},
+      "lore_token": "elicia_recording_evening",
+      "lore_text": "She comes in late. She sits in Frasier's old booth. She presses record. She never tells you when she starts.",
+      "accent": "#b89ad6",
+      "placeholder_name": "someone with a tape recorder",
+      "pre_arrival_hints": [
+        "A small figure at the door, watching the room without entering yet.",
+        "She's choosing a booth. The one in the back.",
+        "Elicia, easing into Booth 4 with a cassette recorder on the table."
+      ],
+      "mood": "preoccupied",
+      "order_item": "order_coffee_toast",
+      "steps": {
+        "greet":   "She nods up at you and clicks the record button without looking. She says: \"Whenever you're ready.\"",
+        "listen":  "She wants to know about the night Frasier last sat where she's sitting. She lets you take your time.",
+        "deliver": "She thanks the food the way you thank a witness. The reels keep turning.",
+        "sit_with": "She stops the tape. \"That's the one,\" she says. She doesn't say one of what. You know."
+      }
+    },
+
+    {
+      "id": "the_demon",
+      "name": "the man at the bar",
+      "arcana_cameo": "the_devil",
+      "scenarios": ["evening_service"],
+      "arrival": {"kind": "scheduled", "turn": 2, "to": "bar_stools"},
+      "lore_token": "demon_at_the_bar",
+      "lore_text": "He sat where the bar would be, if the bar were open. He was already drinking. He'd been waiting an hour. He left a tip on a check you never gave him.",
+      "accent": "#ff4060",
+      "placeholder_name": "the man at the bar",
+      "pre_arrival_hints": [
+        "The door doesn't ring when he comes in.",
+        "He's at the bar already. You don't remember serving him.",
+        "He raises two fingers at you without looking up."
+      ],
+      "mood": "gruff",
+      "order_item": "stale_coffee",
+      "notes": "The Devil cameo — his presence makes the room's claim ticks one space closer. Engine support for this aura coming later.",
+      "steps": {
+        "greet":   "He doesn't look up. \"You know me.\"",
+        "listen":  "\"Same as last time.\" You don't remember last time. You serve him.",
+        "deliver": "The cup is cold before you set it down. He doesn't drink it. He nods anyway.",
+        "sit_with": "He turns his head, finally, and the look is not unkind. \"I won't be here long,\" he tells you. The stool beside him cools."
+      }
+    },
+
+    {
+      "id": "alberto",
+      "name": "Alberto",
+      "arcana_cameo": "the_emperor",
+      "scenarios": ["evening_service"],
+      "arrival": {"kind": "scheduled", "turn": 5, "to": "booth_1"},
+      "lore_token": "alberto_evening",
+      "lore_text": "Dante's elder son. The man who would not sleep after the night his father died. He came back to the diner like the diner could explain.",
+      "accent": "#7c8398",
+      "placeholder_name": "the man at booth 1",
+      "pre_arrival_hints": [
+        "A car door in the lot. The bell. Slow steps.",
+        "He's at booth 1, still in his coat. He hasn't taken off his sunglasses.",
+        "Alberto, sliding the menu away without opening it."
+      ],
+      "mood": "left_alone",
+      "order_item": "order_coffee_toast",
+      "steps": {
+        "greet":   "He doesn't look up. Doesn't move. You set the menu down anyway.",
+        "listen":  "He orders without lifting his head. \"Coffee. Toast. Wheat. Black.\" The wheat is a lie — he eats white — but you don't correct him.",
+        "deliver": "The plate sits between you for a long moment before he touches it. \"Thanks,\" he says, to the formica.",
+        "sit_with": "You stay. He picks up the toast. He sets it down. \"He used to sit at the counter,\" he says, finally. \"I never sat with him.\" You nod."
+      }
+    },
+
+    {
+      "id": "john_as_regular",
+      "name": "John Frank (the regular)",
+      "scenarios": [],
+      "swap_target_for_hand": "john_frank",
+      "arrival": {"kind": "scheduled", "turn": 3, "to": "counter"},
+      "lore_token": "john_was_a_regular_too",
+      "lore_text": "Before you worked here, you came here. Twelve years of coming first, then twelve years of staying.",
+      "accent": "#c8a268",
+      "placeholder_name": "a regular at the counter",
+      "pre_arrival_hints": [
+        "The bell over the door. A familiar pace across the linoleum.",
+        "Same stool as always.",
+        "The face in the mirror behind the counter is your own, twelve years younger."
+      ],
+      "mood": "preoccupied",
+      "order_item": "order_coffee_toast",
+      "notes": "Stand-in visitor used when the player's HAND is John Frank's and a scenario would otherwise put John on the board as a visitor (a future configuration). Currently inert because only john_frank hand exists; documented for the future hand additions.",
+      "steps": {
+        "greet":   "He nods at you. You nod back. You used to sit in that seat too.",
+        "listen":  "He orders without speaking. You know what it is.",
+        "deliver": "The plate lands. He cups the mug and breathes the steam.",
+        "sit_with": "He sits with himself. You sit with him. The diner is between you."
+      }
+    },
+
+    {
+      "id": "frasier_as_regular",
+      "name": "Frasier Temple (the regular)",
+      "scenarios": [],
+      "swap_target_for_hand": "frasier",
+      "arrival": {"kind": "scheduled", "turn": 3, "to": "counter"},
+      "lore_token": "frasier_as_regular",
+      "lore_text": "A stand-in for when the player is Frasier and the engine would otherwise spawn Frasier as a visitor.",
+      "accent": "#c8a268",
+      "placeholder_name": "a regular at the counter",
+      "pre_arrival_hints": [],
+      "mood": "preoccupied",
+      "order_item": "order_coffee_toast",
+      "notes": "Stand-in used when the player's HAND is Frasier's.",
+      "steps": {
+        "greet":   "He looks up from a notebook the same way you do.",
+        "listen":  "He orders coffee. The toast is implied.",
+        "deliver": "The plate lands. He nods once.",
+        "sit_with": "He sits with himself. You let him be."
       }
     }
   ],

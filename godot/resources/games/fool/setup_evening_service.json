@@ -33,7 +33,10 @@
   "visitors_present_at_start": ["bus_kid", "line_cook", "frasier", "stranger", "dawn_cook"],
   "visitor_schedule": [
     {"visitor": "bbs_caller", "arrival_turn": 1, "arrival_space": "register"},
-    {"visitor": "faith",      "arrival_turn": 2, "arrival_space": "bar_stools"}
+    {"visitor": "the_demon",  "arrival_turn": 2, "arrival_space": "bar_stools"},
+    {"visitor": "faith",      "arrival_turn": 2, "arrival_space": "under_counter"},
+    {"visitor": "elicia",     "arrival_turn": 4, "arrival_space": "booth_4"},
+    {"visitor": "alberto",    "arrival_turn": 5, "arrival_space": "booth_1"}
   ],
 
   "win_conditions": {

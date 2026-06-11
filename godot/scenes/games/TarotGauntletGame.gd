@@ -495,6 +495,12 @@ func _load_data() -> void:
 	for v: Dictionary in v_def.get("visitors", []):
 		_visitors_def[v["id"]] = v
 	_step_defaults_by_mood = v_def.get("default_step_lines_by_mood", {})
+	# Player-as-visitor swap. If the scenario would put the player's
+	# arcana character on the board as a visitor (e.g. Frasier hand
+	# vs. Frasier walking in for lunch), replace the visitor entry
+	# with the matching `*_as_regular` stand-in so the player never
+	# meets themselves at the counter.
+	_apply_player_visitor_swap()
 	# Items + piles
 	var i_def := _load_json(arc_root + "items.json")
 	_piles_def = i_def.get("piles", {})
@@ -522,6 +528,45 @@ func _load_data() -> void:
 
 
 # ── Run initialization ──────────────────────────────────────────────
+
+# Build a (vid → swap_target_vid) map for the current hand, then
+# rewrite the scenario's visitor lists. A visitor with
+# `as_hand_id == _hand_id` is the player walking into their own
+# scene; we substitute the matching `swap_target_for_hand` entry.
+func _apply_player_visitor_swap() -> void:
+	if _setup.is_empty():
+		return
+	# Resolve the stand-in vid for the current hand, if any.
+	var swap_target_vid: String = ""
+	for vid in _visitors_def:
+		var v: Dictionary = _visitors_def[vid]
+		if String(v.get("swap_target_for_hand", "")) == _hand_id:
+			swap_target_vid = vid
+			break
+	if swap_target_vid == "":
+		return
+	# Build the swap map: any vid whose `as_hand_id` matches my hand.
+	var to_swap: Dictionary = {}
+	for vid in _visitors_def:
+		var v: Dictionary = _visitors_def[vid]
+		if String(v.get("as_hand_id", "")) == _hand_id:
+			to_swap[vid] = swap_target_vid
+	if to_swap.is_empty():
+		return
+	# Rewrite visitors_present_at_start
+	var start_arr: Array = _setup.get("visitors_present_at_start", []).duplicate()
+	for i in start_arr.size():
+		if to_swap.has(start_arr[i]):
+			start_arr[i] = to_swap[start_arr[i]]
+	_setup["visitors_present_at_start"] = start_arr
+	# Rewrite visitor_schedule entries
+	var sched: Array = _setup.get("visitor_schedule", []).duplicate()
+	for entry: Dictionary in sched:
+		if to_swap.has(entry.get("visitor", "")):
+			entry["visitor"] = to_swap[entry["visitor"]]
+	_setup["visitor_schedule"] = sched
+	print("[Gauntlet] player-as-visitor swap applied: %s" % str(to_swap))
+
 
 func _init_run() -> void:
 	var start: Dictionary = _setup.get("starting_state", {})

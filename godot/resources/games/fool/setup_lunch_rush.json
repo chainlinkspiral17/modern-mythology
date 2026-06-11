@@ -30,9 +30,11 @@
     "starting_hand": ["walk", "focus", "search", "short_rest", "clean", "greet", "listen", "deliver"]
   },
 
-  "visitors_present_at_start": ["bus_kid", "line_cook", "frasier", "stranger"],
+  "visitors_present_at_start": ["bus_kid", "line_cook", "frasier", "stranger", "maya_kid"],
   "visitor_schedule": [
+    {"visitor": "nicola",     "arrival_turn": 1, "arrival_space": "hostess_stand"},
     {"visitor": "dawn_cook",  "arrival_turn": 2, "arrival_space": "booth_4"},
+    {"visitor": "mackenzie",  "arrival_turn": 3, "arrival_space": "pay_phone"},
     {"visitor": "bbs_caller", "arrival_turn": 4, "arrival_space": "register"},
     {"visitor": "faith",      "arrival_turn": 6, "arrival_space": "under_counter"}
   ],
