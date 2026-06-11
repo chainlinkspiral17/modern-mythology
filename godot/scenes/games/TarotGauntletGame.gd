@@ -982,7 +982,9 @@ func _open_pane_modal(title: String, body_builder: Callable) -> void:
 		existing.queue_free()
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.75)
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.top_level = true
+	dim.position = Vector2.ZERO
+	dim.size = get_viewport_rect().size
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.z_index = 100
 	dim.name = "pane_modal_dim"
@@ -1064,13 +1066,20 @@ func _show_next_visitor_arrival() -> void:
 	var hints: Array = v.get("pre_arrival_hints", [])
 	var flavor: String = String(hints[hints.size() - 1]) if not hints.is_empty() else "%s walks in." % name_s
 	var accent_hex: String = String(v.get("accent", "#c8a268"))
+	_log_line("[color=#7c8398][i]» popping arrival modal for %s[/i][/color]" % name_s)
 	# Tear down any prior drawn-card popup so this one stacks cleanly.
 	var existing: Node = get_node_or_null("drawn_card_modal")
 	if existing != null and is_instance_valid(existing):
 		existing.queue_free()
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.78)
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	# Force the dim to fill the viewport explicitly. Anchors relative
+	# to the parent Control had been short-circuiting in some launch
+	# paths, leaving the dim sized 0,0 and the modal visible without
+	# its darkening backdrop. Top-level + explicit size = bulletproof.
+	dim.top_level = true
+	dim.position = Vector2.ZERO
+	dim.size = get_viewport_rect().size
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.z_index = 110
 	dim.name = "drawn_card_modal"
@@ -1208,7 +1217,12 @@ func _show_drawn_card_popup(art_path: String, title: String, flavor: String, bod
 		existing.queue_free()
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.75)
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	# Top-level + explicit viewport size — anchors-against-parent
+	# was sometimes leaving the dim sized 0,0 and the popup floating
+	# without its dark backdrop.
+	dim.top_level = true
+	dim.position = Vector2.ZERO
+	dim.size = get_viewport_rect().size
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.z_index = 110
 	dim.name = "drawn_card_modal"
@@ -1311,7 +1325,11 @@ func _open_visitor_view(vid: String) -> void:
 		existing.queue_free()
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.82)
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	# Top-level + explicit viewport size so the dim is guaranteed to
+	# cover the gauntlet UI regardless of parent rect.
+	dim.top_level = true
+	dim.position = Vector2.ZERO
+	dim.size = get_viewport_rect().size
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.z_index = 100
 	dim.name = "pane_modal_dim"
@@ -1496,7 +1514,9 @@ func _open_card_view(cid: String, mode: String) -> void:
 	# Dim background
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.82)
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.top_level = true
+	dim.position = Vector2.ZERO
+	dim.size = get_viewport_rect().size
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.z_index = 100
 	dim.name = "pane_modal_dim"
@@ -2114,9 +2134,9 @@ func _toggle_board_fullscreen() -> void:
 		_board_root.offset_left = 8
 		_board_root.offset_right = -8
 		_board_root.offset_bottom = -8
-		_board_expand_btn.text = "✕  Exit Fullscreen"
-		_board_expand_btn.tooltip_text = "Restore normal layout (Esc)"
-		_board_expand_btn.custom_minimum_size = Vector2(140, 22)
+		# Hide the in-header expand button while fullscreen — the
+		# viewport-level overlay exit button is the working one.
+		_board_expand_btn.visible = false
 		_board_root.z_index = 10
 	else:
 		# Restore uses PRESET_FULL_RECT (same as the initial setup) —
@@ -2128,11 +2148,12 @@ func _toggle_board_fullscreen() -> void:
 		_board_root.offset_left = 8
 		_board_root.offset_bottom = -346
 		_board_root.offset_right = -440
+		_board_expand_btn.visible = true
 		_board_expand_btn.text = "⛶"
 		_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
 		_board_expand_btn.custom_minimum_size = Vector2(28, 20)
 		_board_root.z_index = 0
-	# Show/hide the bulletproof viewport-level exit button
+	# Show/hide the viewport-level exit button (the working one)
 	if _board_fullscreen_exit_btn != null:
 		_board_fullscreen_exit_btn.visible = _board_fullscreen
 	_render_board()
@@ -3840,7 +3861,9 @@ func _prompt_contents_pick(pile_id: String) -> void:
 		existing.queue_free()
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.82)
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.top_level = true
+	dim.position = Vector2.ZERO
+	dim.size = get_viewport_rect().size
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.z_index = 100
 	dim.name = "pane_modal_dim"
@@ -3974,7 +3997,9 @@ func _prompt_search_choice(pile_id: String, peek: int) -> void:
 		existing.queue_free()
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.80)
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.top_level = true
+	dim.position = Vector2.ZERO
+	dim.size = get_viewport_rect().size
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.z_index = 100
 	dim.name = "pane_modal_dim"
@@ -4059,7 +4084,9 @@ func _prompt_choose(options: Array) -> void:
 		existing.queue_free()
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.80)
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.top_level = true
+	dim.position = Vector2.ZERO
+	dim.size = get_viewport_rect().size
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.z_index = 100
 	dim.name = "pane_modal_dim"
@@ -4120,7 +4147,9 @@ func _prompt_discard_cards(amount: int) -> void:
 		existing.queue_free()
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.80)
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.top_level = true
+	dim.position = Vector2.ZERO
+	dim.size = get_viewport_rect().size
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.z_index = 100
 	dim.name = "pane_modal_dim"
@@ -5336,7 +5365,9 @@ func _show_end_screen(won: bool, title: String, body: String, cg_path: String = 
 	# Heavy dim — cinematic.
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.92)
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.top_level = true
+	dim.position = Vector2.ZERO
+	dim.size = get_viewport_rect().size
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	_end_overlay.add_child(dim)
 	# Centered ~80% cinematic panel, large image + text below.
