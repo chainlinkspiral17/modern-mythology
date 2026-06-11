@@ -144,6 +144,21 @@ func _ready() -> void:
 			  [_setup.get("title", "THE LEAP"), _setup.get("subtitle", "")])
 	_log_line("[i]%s[/i]" % _setup.get("epigraph_upright", ""))
 	_log_line("")
+	# Scene-setting + opening narration straight into the log,
+	# right after the title — atmospheric prose first, then a few
+	# short lines, then the practical "Hand:" + phase prompt.
+	var scene_text: String = String(_setup.get("scene_description", ""))
+	if scene_text != "":
+		_log_line("[color=#c8a268]%s[/color]" % scene_text)
+		_log_line("")
+	for line: String in _setup.get("opening_log_lines", []):
+		_log_line("[color=#7c8398]" + line + "[/color]")
+	# Subtle direction hint — italicised, dimmer
+	var hint: String = String(_setup.get("direction_hint", ""))
+	if hint != "":
+		_log_line("")
+		_log_line("[color=#6e6258][i]%s[/i][/color]" % hint)
+	_log_line("")
 	_log_line("[color=#7c8398]Hand: %s[/color]" % str(_hand_cards))
 
 
