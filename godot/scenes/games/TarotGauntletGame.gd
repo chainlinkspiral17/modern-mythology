@@ -4132,7 +4132,10 @@ func _resolve_effect(e: Dictionary) -> void:
 						pile.append(togo_id)
 						_pile_state["order_window"] = pile
 						_order_pending[togo_id] = true
-						_log_line("[color=#c8a268][i]   A TO-GO ticket prints itself: chicken and waffles, for the parking lot.[/i][/color]")
+						var togo_def: Dictionary = _items_def.get(togo_id, {})
+						var togo_title: String = String(togo_def.get("title", togo_id))
+						var togo_pos: String = String(togo_def.get("deliver_to_pos", "?")).replace("_", " ").to_upper()
+						_log_line("[color=#c8a268][i]   A TO-GO ticket prints itself: %s, for %s.[/i][/color]" % [togo_title, togo_pos])
 				break
 		"consume_order_for_visitor_at_my_pos":
 			# DELIVER follow-on. The visitor's order_item is consumed

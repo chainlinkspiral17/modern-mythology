@@ -239,6 +239,118 @@
       "deliver_to_pos": "parking_lot",
       "deliver_reward": {"gain_time": 2, "lose_inertia": 2, "lore_token": "served_a_phantom"}
     },
+
+    "order_spaghetti_meatballs": {
+      "title": "Spaghetti and Meatballs (Lunch Special)",
+      "category": "order",
+      "scenarios": ["lunch_rush"],
+      "for_visitor": "nicola",
+      "flavor": "Twelve-inch white plate, sauce edge to edge, three veal meatballs the size of small lemons. Parmesan rains off the line cook's hand. The kind of order that closes the kitchen for two minutes."
+    },
+    "order_crawfish_etouffee": {
+      "title": "Crawfish Étouffée (bowl)",
+      "category": "order",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "bbs_caller_lunch",
+      "flavor": "Deep brown roux with the tails laid in a slow ring. A small mound of rice in the center, half-collapsed already. Smells like the cook's grandmother walked past with her hands on her hips."
+    },
+    "order_crabclaw_gumbo": {
+      "title": "Crabclaw Gumbo (bowl)",
+      "category": "order",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "mackenzie",
+      "flavor": "Crabclaws standing out of the bowl like the whole thing might walk away. Filé powder on the rim. The roux is the color of the booth seats."
+    },
+    "order_red_snapper_pico": {
+      "title": "Red Snapper · Pico de Gallo",
+      "category": "order",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "",
+      "flavor": "Whole filet, blackened edges, pico spooned across the top so the tomato bleeds pink into the white plate. A wedge of lime on the rim. The line cook is proud of this one."
+    },
+
+    "order_seafood_pappardelle": {
+      "title": "Seafood Pappardelle (Dinner Pasta)",
+      "category": "order",
+      "scenarios": ["evening_service"],
+      "for_visitor": "elicia",
+      "flavor": "Wide ribbons of pappardelle under shrimp, scallops, a fan of mussels. A swirl of garlic-cream sauce. The bowl is wider than her cassette recorder is long."
+    },
+    "order_cajun_ravioli": {
+      "title": "Cajun Ravioli",
+      "category": "order",
+      "scenarios": ["evening_service"],
+      "for_visitor": "",
+      "flavor": "Square ravioli stuffed with crawfish and andouille, lying in a cream sauce thick enough to chew. Heat builds two bites in. The line cook calls it his."
+    },
+    "order_surf_and_turf": {
+      "title": "Filet Mignon & Lobster Tail · Surf and Turf",
+      "category": "order",
+      "scenarios": ["evening_service"],
+      "for_visitor": "alberto",
+      "flavor": "Eight-ounce filet, lobster tail split and butterflied, lemon butter pooled across the plate. The cut is rare-plus, the way he ordered before they wrote down what the order was. The plate goes down heavy."
+    },
+    "order_fried_calamari": {
+      "title": "Fried Calamari (Appetizer)",
+      "category": "order",
+      "scenarios": ["evening_service"],
+      "for_visitor": "",
+      "flavor": "Light golden rings on a paper-lined plate, a ramekin of marinara off to the side. The lemon was cut at the start of service. The plate looks easy and is."
+    },
+    "order_crab_bisque": {
+      "title": "Crab Bisque (bowl)",
+      "category": "order",
+      "scenarios": ["evening_service"],
+      "for_visitor": "the_demon",
+      "flavor": "Peach-pink, almost translucent, a single piece of lump crab at the meridian, a thread of sherry across it. The bowl is dwarfed by the soup spoon next to it."
+    },
+
+    "order_togo_pasta_pomodoro": {
+      "title": "TO-GO · Pasta Pomodoro",
+      "category": "order_togo",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "phantom_hostess_pasta",
+      "flavor": "Quart container, lid taped. A pint of marinara on the side. A folded paper napkin and a plastic fork in the bag. The ticket says: HOSTESS STAND, ASK FOR JEN.",
+      "deliver_to_pos": "hostess_stand",
+      "deliver_reward": {"gain_time": 1, "lose_inertia": 1, "lore_token": "served_jen_at_the_door"}
+    },
+    "order_togo_crab_poboy": {
+      "title": "TO-GO · Soft-Shell Crab Po-Boy",
+      "category": "order_togo",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "phantom_hostess_poboy",
+      "flavor": "Long French roll, three soft-shell crabs the size of your palms, dressed. Wrapped tight in butcher paper, a side of remoulade in a deli cup. The ticket says: HOSTESS STAND, FOR THE GUY WAITING.",
+      "deliver_to_pos": "hostess_stand",
+      "deliver_reward": {"gain_time": 1, "lose_inertia": 1, "lore_token": "served_a_carryout"}
+    },
+    "order_togo_gumbo_cornbread": {
+      "title": "TO-GO · Gumbo & Cornbread",
+      "category": "order_togo",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "phantom_hostess_gumbo",
+      "flavor": "Two-quart soup container, ladled to within an inch of the rim. A bundle of cornbread in foil, four pats of butter taped to the side. Pickup ticket says: HOSTESS STAND.",
+      "deliver_to_pos": "hostess_stand",
+      "deliver_reward": {"gain_time": 2, "lose_inertia": 1, "lore_token": "the_gumbo_carryout"}
+    },
+    "order_togo_pork_chop": {
+      "title": "TO-GO · Bourbon-Glazed Pork Chop",
+      "category": "order_togo",
+      "scenarios": ["evening_service"],
+      "for_visitor": "phantom_hostess_chop",
+      "flavor": "A double-cut chop in a foil clamshell, the glaze still bubbling. Mashed potatoes in a paper boat, a fold of collards beside. The ticket: HOSTESS STAND, NAME WAS BURRELL.",
+      "deliver_to_pos": "hostess_stand",
+      "deliver_reward": {"gain_time": 1, "lose_inertia": 2, "lore_token": "burrell_came_back_for_it"}
+    },
+    "order_togo_catfish_plate": {
+      "title": "TO-GO · Fried Catfish Plate",
+      "category": "order_togo",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "phantom_hostess_catfish",
+      "flavor": "Three filets golden on a styrofoam plate, hush puppies tucked in the corners, a wedge of lemon, slaw in a deli cup. The ticket: HOSTESS STAND.",
+      "deliver_to_pos": "hostess_stand",
+      "deliver_reward": {"gain_time": 2, "lose_inertia": 1, "lore_token": "catfish_carryout"}
+    },
+
     "pinned_hermit_below": {
       "title": "The Hermit, Pinned Below the Fool",
       "category": "consumable",

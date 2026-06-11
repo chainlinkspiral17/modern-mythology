@@ -184,10 +184,11 @@
         "Nicola, smiling like she's already glad to see you."
       ],
       "mood": "jovial",
-      "order_item": "order_grits_eggs_gravy",
+      "order_item": "order_spaghetti_meatballs",
+      "spawns_togo_on_listen": "order_togo_pasta_pomodoro",
       "steps": {
         "greet":   "She lifts her sunglasses onto her hair. \"There he is. Hi, doll.\"",
-        "listen":  "\"Grits, eggs, gravy. Coffee no sugar. Same as it's been since the year I had a 280-Z.\"",
+        "listen":  "\"Spaghetti special. Meatballs. Extra parm. Don't tell my doctor. And the pomodoro to-go for my granddaughter — she's at the door already.\"",
         "deliver": "She closes her eyes when the plate lands. \"Better than yesterday. You know it's better than yesterday.\"",
         "sit_with": "She tells you how her granddaughter's doing. The names of three teachers. The plate is empty when you stand up."
       }
@@ -209,11 +210,12 @@
         "Mackenzie, lifting the receiver, already dialing."
       ],
       "mood": "preoccupied",
-      "order_item": "order_coffee_toast",
+      "order_item": "order_crabclaw_gumbo",
+      "spawns_togo_on_listen": "order_togo_gumbo_cornbread",
       "steps": {
         "greet":   "She holds up one finger to you. The call comes first.",
-        "listen":  "Coffee and toast, mouthed at you over the receiver. Sugar gesture.",
-        "deliver": "She catches the plate-edge with two fingers while still on the call. \"You're a saint. No, not you.\"",
+        "listen":  "Gumbo, mouthed at you over the receiver. Two fingers up: crabclaw. She points at the bowl on the menu, then mimes one to go for the hostess stand. \"My friend's outside.\"",
+        "deliver": "She catches the bowl-edge with two fingers while still on the call. \"You're a saint. No, not you.\"",
         "sit_with": "She sets the receiver down very carefully. \"I just told him,\" she says, to nobody. Then to you: \"Thanks.\""
       }
     },
@@ -254,10 +256,10 @@
         "Elicia, easing into Booth 4 with a cassette recorder on the table."
       ],
       "mood": "preoccupied",
-      "order_item": "order_coffee_toast",
+      "order_item": "order_seafood_pappardelle",
       "steps": {
         "greet":   "She nods up at you and clicks the record button without looking. She says: \"Whenever you're ready.\"",
-        "listen":  "She wants to know about the night Frasier last sat where she's sitting. She lets you take your time.",
+        "listen":  "Pappardelle, the seafood. Coffee, black. She wants to know about the night Frasier last sat where she's sitting. She lets you take your time.",
         "deliver": "She thanks the food the way you thank a witness. The reels keep turning.",
         "sit_with": "She stops the tape. \"That's the one,\" she says. She doesn't say one of what. You know."
       }
@@ -279,12 +281,12 @@
         "He raises two fingers at you without looking up."
       ],
       "mood": "gruff",
-      "order_item": "stale_coffee",
+      "order_item": "order_crab_bisque",
       "notes": "The Devil cameo — his presence makes the room's claim ticks one space closer. Engine support for this aura coming later.",
       "steps": {
         "greet":   "He doesn't look up. \"You know me.\"",
-        "listen":  "\"Same as last time.\" You don't remember last time. You serve him.",
-        "deliver": "The cup is cold before you set it down. He doesn't drink it. He nods anyway.",
+        "listen":  "\"Same as last time.\" You don't remember last time. The bisque. The bowl. \"And the spoon.\"",
+        "deliver": "The bowl is cold before you set it down. He doesn't eat it. He nods anyway.",
         "sit_with": "He turns his head, finally, and the look is not unkind. \"I won't be here long,\" he tells you. The stool beside him cools."
       }
     },
@@ -305,12 +307,13 @@
         "Alberto, sliding the menu away without opening it."
       ],
       "mood": "left_alone",
-      "order_item": "order_coffee_toast",
+      "order_item": "order_surf_and_turf",
+      "spawns_togo_on_listen": "order_togo_pork_chop",
       "steps": {
         "greet":   "He doesn't look up. Doesn't move. You set the menu down anyway.",
-        "listen":  "He orders without lifting his head. \"Coffee. Toast. Wheat. Black.\" The wheat is a lie — he eats white — but you don't correct him.",
+        "listen":  "He orders without lifting his head. \"Filet. Lobster. The way he liked it.\" Then, quieter: \"And the pork chop, to go. Burrell. My brother's on his way over.\" You write it down.",
         "deliver": "The plate sits between you for a long moment before he touches it. \"Thanks,\" he says, to the formica.",
-        "sit_with": "You stay. He picks up the toast. He sets it down. \"He used to sit at the counter,\" he says, finally. \"I never sat with him.\" You nod."
+        "sit_with": "You stay. He picks up the fork. He sets it down. \"He used to sit at the counter,\" he says, finally. \"I never sat with him.\" You nod."
       }
     },
 
