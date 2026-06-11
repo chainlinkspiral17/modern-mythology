@@ -569,6 +569,12 @@ func _apply_player_visitor_swap() -> void:
 
 
 func _init_run() -> void:
+	# Reseed the global RNG with a time-based value so the gravity
+	# deck (and every other shuffle this run uses) is genuinely
+	# random per session. Without this, Godot's default seed at
+	# engine start would deterministically reproduce the same draw
+	# order across runs from the same launch.
+	randomize()
 	var start: Dictionary = _setup.get("starting_state", {})
 	_player_pos = start.get("player_pos", "counter")
 	_places_visited[_player_pos] = true
