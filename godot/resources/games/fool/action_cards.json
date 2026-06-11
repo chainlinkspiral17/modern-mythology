@@ -25,10 +25,11 @@
       "title": "ADDRESS THE BELL",
       "time_cost": 1,
       "starter": true,
-      "flavor": "Tap the brass. Listen for the second tone.",
+      "flavor": "Tap the brass. Listen for the second tone. The oldest pending order goes READY.",
       "requires": [{"kind": "at_pos", "pos": "bell"}],
       "effects": [
         {"kind": "ring_bell_tone"},
+        {"kind": "ready_oldest_order"},
         {"kind": "if_both_tones_rung", "then": [
           {"kind": "advance_next_visitor_arrival", "by": 1}
         ]},
@@ -67,13 +68,14 @@
       "title": "LISTEN",
       "time_cost": 1,
       "starter": true,
-      "flavor": "Hear them out. Don't fill the silence.",
+      "flavor": "Hear them out. Don't fill the silence. Their order goes up on the wheel.",
       "requires": [
         {"kind": "visitor_at_my_pos"},
         {"kind": "visitor_at_my_pos_progress_at_least", "n": 1}
       ],
       "effects": [
-        {"kind": "advance_visitor_step", "step": "listen"}
+        {"kind": "advance_visitor_step", "step": "listen"},
+        {"kind": "place_pending_order_for_visitor"}
       ]
     },
     {
@@ -81,13 +83,15 @@
       "title": "DELIVER",
       "time_cost": 1,
       "starter": true,
-      "flavor": "Give them what they came for. Coffee. A tape. A door held.",
+      "flavor": "Give them what they came for. You have to be carrying their order — from the ORDER WINDOW once the bell's rung it READY.",
       "requires": [
         {"kind": "visitor_at_my_pos"},
-        {"kind": "visitor_at_my_pos_progress_at_least", "n": 2}
+        {"kind": "visitor_at_my_pos_progress_at_least", "n": 2},
+        {"kind": "inventory_has_order_for_visitor_at_my_pos"}
       ],
       "effects": [
-        {"kind": "advance_visitor_step", "step": "deliver"}
+        {"kind": "advance_visitor_step", "step": "deliver"},
+        {"kind": "consume_order_for_visitor_at_my_pos"}
       ]
     },
     {

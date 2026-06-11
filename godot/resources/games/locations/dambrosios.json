@@ -14,7 +14,7 @@
     {"id": "kitchen_alcove",  "label": "KITCHEN ALCOVE",  "kind": "search",    "pos_xy": [300,  250], "search_pile": "kitchen_alcove"},
     {"id": "grill",           "label": "GRILL",           "kind": "named",     "pos_xy": [200,  340]},
     {"id": "dish_station",    "label": "DISH STATION",    "kind": "named",     "pos_xy": [120,  430]},
-    {"id": "order_window",    "label": "ORDER WINDOW",    "kind": "named",     "pos_xy": [380,  340]},
+    {"id": "order_window",    "label": "ORDER WINDOW",    "kind": "search",    "pos_xy": [380,  340], "search_pile": "order_window"},
 
     {"id": "booth_4",         "label": "BOOTH 4",         "kind": "named",     "pos_xy": [880,  250]},
     {"id": "booth_6",         "label": "BOOTH 6",         "kind": "search",    "pos_xy": [820,  340], "search_pile": "booth_6"},

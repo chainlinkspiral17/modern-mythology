@@ -727,6 +727,67 @@ proven and the remaining arcana boxes are content work.
 
 ---
 
+## The setup screen (when content multiplies)
+
+Once there's more than one scenario per location, more than one
+hand, and unlocks gating content — the launch flow needs its own
+screen. Sketched:
+
+**Three-column picker**, left-to-right is the choice order:
+
+| LOCATION (pick) | HAND (pick) | SCENARIO (pick) |
+|---|---|---|
+| L0 D'Ambrosio's Diner | H0 John Frank | S1 THE LEAP |
+| L1 Frasier's Warehouse 🔒 | H1 Frasier Temple 🔒 | S2 THE SHIFT CHANGE 🔒 |
+| L2 Elicia's Archive 🔒 | H2 Elicia 🔒 | S3 THE BLACKOUT 🔒 |
+| ... | ... | ... |
+
+Each card shows ONLY what the player should know at the picker.
+
+**LOCATION card preview:**
+- Name + reversed-arcana subtitle ("D'Ambrosio's Diner · Fool reversed")
+- The location's tension stat NAME (Inertia / Disorder / Pressure-to-Speak)
+- Scene description (the opening prose)
+- **A list of the DESTINY DECK's card TITLES** — but NO effects
+  ("THE CLOCK HOLDS, WIPE THE SAME SPOT, STILL CHASING SHADOWS, ...")
+  The titles tell the mood; what each card does is for discovery.
+- Number of visitors, number of search piles, threshold count
+- Unlock status: locked / unlock condition
+
+**HAND card preview:**
+- Portrait + arcana name ("John Frank · Fool upright")
+- Character flavor (2-3 sentences)
+- **Action card list — only UNLOCKED cards visible**
+- Locked action cards show as 🔒 with the unlock condition
+  ("LONG REST — Beat THE LEAP without using Short Rest")
+- Ultimate card name + flavor (always visible — it's the
+  signature ability)
+- Carryover unlocks already earned (small chip-list)
+
+**SCENARIO card preview:**
+- Title + subtitle ("THE LEAP · Between Acts · 3:47 AM")
+- Setting prose
+- Starting state summary (Time / Inertia / Health)
+- Visitor schedule preview (anonymized — "3 on board at start,
+  3 scheduled, 1 conditional")
+- Win condition in plain English (no spoilers about HOW)
+- Unlock chain: which scenarios become available after this one
+
+**The reveal contract:**
+- Destiny-deck card TITLES visible, EFFECTS hidden — drives discovery
+- Player's own action-card EFFECTS fully visible — you should know
+  your tools
+- Visitor connect_via and order_item HIDDEN — in-game discovery
+- Per-location tension stat NAME visible — you should know what
+  you're playing against
+- Win/loss conditions visible in plain English
+
+Implementation note: each LOCATION + HAND + SCENARIO file gets a
+`preview` block summarizing what shows at the picker, so the data
+file owns its own presentation. Engine reads the previews and
+builds the picker columns.
+
+
 ## Open questions
 
 - **Where does the gallery picker live?** Suggestion: replace

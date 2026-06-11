@@ -40,6 +40,11 @@
       "label": "Jukebox (B-side selections)",
       "notes": "Three tracks have been programmed into the box. Selecting one swaps the diner's BGM until another is chosen. Tracks are reusable — playing them does NOT consume the slot.",
       "items": ["track_cicadas_dusk", "track_riverboat_drone", "track_warehouse_drone"]
+    },
+    "order_window": {
+      "label": "Order Window (the cook's queue)",
+      "notes": "LIVE QUEUE. LISTEN-ing to a visitor places their order here as PENDING. ADDRESS THE BELL marks the oldest pending order READY. PICK UP at this space only takes READY orders.",
+      "items": []
     }
   },
   "items": {
@@ -207,6 +212,32 @@
         {"kind": "discard_self"}
       ],
       "ending_lore_token": "the_card_signed_back"
+    },
+    "order_coffee_toast": {
+      "title": "Coffee and Toast",
+      "category": "order",
+      "for_visitor": "frasier",
+      "flavor": "Black, no sugar. Two slices wheat, scraped of butter where you scraped too much off."
+    },
+    "order_cajun_skillet": {
+      "title": "Cajun Sausage Skillet",
+      "category": "order",
+      "for_visitor": "dawn_cook",
+      "flavor": "Andouille rounds and bell pepper, hashbrowns crisped in their grease. The third burner has to be lit for this."
+    },
+    "order_grits_eggs_gravy": {
+      "title": "Grits, Eggs, Gravy",
+      "category": "order",
+      "for_visitor": "bbs_caller",
+      "flavor": "The flat-rate breakfast. Eggs over hard. Gravy from the morning's roux."
+    },
+    "order_togo_chicken_waffles": {
+      "title": "TO-GO · Chicken and Waffles",
+      "category": "order_togo",
+      "for_visitor": "phantom_parking_lot",
+      "flavor": "Wrapped in butcher paper. Two waffles syrup-sealed, a thigh and a wing wrapped in foil. The ticket says: PARKING LOT, ANY CAR.",
+      "deliver_to_pos": "parking_lot",
+      "deliver_reward": {"gain_time": 2, "lose_inertia": 2, "lore_token": "served_a_phantom"}
     },
     "pinned_hermit_below": {
       "title": "The Hermit, Pinned Below the Fool",

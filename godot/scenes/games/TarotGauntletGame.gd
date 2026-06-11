@@ -30,6 +30,11 @@ var _gravity_deck_def: Dictionary = {}
 var _finale_def: Dictionary = {}
 var _visitors_def: Dictionary = {}       # id → visitor def
 var _step_defaults_by_mood: Dictionary = {}  # mood → {step → fallback line}
+# Live-queue at ORDER WINDOW: order_item_id → bool (true = pending,
+# waiting for bell; false = ready to be picked up). LISTEN spawns
+# pending; ADDRESS THE BELL marks oldest pending → ready; PICK UP at
+# order_window only takes ready items.
+var _order_pending: Dictionary = {}
 var _items_def: Dictionary = {}          # id → item def
 var _piles_def: Dictionary = {}          # pile_id → {label, items[]}
 var _location: Dictionary = {}
@@ -1501,6 +1506,7 @@ func _prompt_pick_destination(max_hops: int, reason: String) -> void:
 			_log_line("→ %s to [b]%s[/b]" % [reason, _player_pos])
 			_faith_follow(prev_pos2)
 			_check_composite_connections()
+			_check_togo_deliveries()
 			_render()
 		popup.queue_free())
 	popup.close_requested.connect(func() -> void: popup.queue_free())
@@ -1544,6 +1550,7 @@ func _on_space_clicked(target_pos: String) -> void:
 	_audio_sfx("card_play")
 	_log_line("→ walked to [b]%s[/b]" % target_pos)
 	_check_composite_connections()
+	_check_togo_deliveries()
 	_render()
 
 
@@ -2599,6 +2606,18 @@ func _check_requirement(req: Dictionary) -> bool:
 						and int(st.get("progress", 0)) >= n):
 					return true
 			return false
+		"inventory_has_order_for_visitor_at_my_pos":
+			# True if any visitor at my pos has their order_item in
+			# my inventory.
+			for vid in _visitors_state:
+				var st: Dictionary = _visitors_state[vid]
+				if not st.get("arrived", false): continue
+				if st.get("connected", false): continue
+				if st.get("pos", "") != _player_pos: continue
+				var ord_id: String = String(_visitors_def.get(vid, {}).get("order_item", ""))
+				if ord_id != "" and _inventory.has(ord_id):
+					return true
+			return false
 	return true
 
 
@@ -2896,6 +2915,61 @@ func _resolve_effect(e: Dictionary) -> void:
 				if vst_p.get("arrived", false) and not vst_p.get("connected", false) and vst_p.get("pos", "") == _player_pos:
 					_connect_visitor(vid_p)
 					break
+		"place_pending_order_for_visitor":
+			# LISTEN follow-on. Find the visitor at the player's pos
+			# whose progress was just bumped, look up their
+			# order_item, spawn it as pending in the order_window
+			# pile. Skip if they already have a pending order.
+			for vid_o in _visitors_state:
+				var vst_o: Dictionary = _visitors_state[vid_o]
+				if not vst_o.get("arrived", false): continue
+				if vst_o.get("connected", false): continue
+				if vst_o.get("pos", "") != _player_pos: continue
+				var vdef_o: Dictionary = _visitors_def.get(vid_o, {})
+				var order_id: String = String(vdef_o.get("order_item", ""))
+				if order_id == "": continue
+				var pile: Array = _pile_state.get("order_window", [])
+				if order_id in pile:
+					# Already queued — don't double up
+					continue
+				pile.append(order_id)
+				_pile_state["order_window"] = pile
+				_order_pending[order_id] = true
+				_log_line("[color=#c8a268][i]   The order goes up on the wheel.[/i][/color]")
+				# Spawn an attached TO-GO order if this visitor declares one
+				var togo_id: String = String(vdef_o.get("spawns_togo_on_listen", ""))
+				if togo_id != "":
+					if not (togo_id in pile):
+						pile.append(togo_id)
+						_pile_state["order_window"] = pile
+						_order_pending[togo_id] = true
+						_log_line("[color=#c8a268][i]   A TO-GO ticket prints itself: chicken and waffles, for the parking lot.[/i][/color]")
+				break
+		"consume_order_for_visitor_at_my_pos":
+			# DELIVER follow-on. The visitor's order_item is consumed
+			# from inventory.
+			for vid_c in _visitors_state:
+				var vst_c: Dictionary = _visitors_state[vid_c]
+				if not vst_c.get("arrived", false): continue
+				if vst_c.get("connected", false): continue
+				if vst_c.get("pos", "") != _player_pos: continue
+				var ord_id2: String = String(_visitors_def.get(vid_c, {}).get("order_item", ""))
+				if ord_id2 != "" and _inventory.has(ord_id2):
+					_inventory.erase(ord_id2)
+					var ititle2: String = String(_items_def.get(ord_id2, {}).get("title", ord_id2))
+					_log_line("[color=#7c8398][i]   You set the %s down. They take it.[/i][/color]" % ititle2)
+					break
+		"ready_oldest_order":
+			# ADDRESS THE BELL follow-on. First pending order in the
+			# pile becomes ready.
+			var pile2: Array = _pile_state.get("order_window", [])
+			for iid: String in pile2:
+				if _order_pending.get(iid, false):
+					_order_pending[iid] = false
+					var ititle: String = String(_items_def.get(iid, {}).get("title", iid))
+					_log_line("[color=#c8a268][i]   The bell. \"%s\" — ready.[/i][/color]" % ititle)
+					_show_toast("Order ready: [b]%s[/b]" % ititle, "#c8a268")
+					break
 		"advance_visitor_step":
 			# GREET / LISTEN / DELIVER / SIT WITH all funnel through
 			# here. The card's effect names which step it is; we find
@@ -2924,6 +2998,11 @@ func _resolve_effect(e: Dictionary) -> void:
 				_visitors_state[target_vid]["progress"] = step_idx
 			# Log the per-visitor / per-mood flavor line for this step
 			_log_visitor_step_line(target_vid, step_name)
+			# Engagement is the Fool upright's antidote to the Fool
+			# reversed's Inertia. Each step you take with a person
+			# pulls the room's hold off you by 1.
+			if step_idx > 0:
+				_inertia = max(0, _inertia - 1)
 		_:
 			_log_line("[i](unhandled effect: %s)[/i]" % kind)
 
@@ -3431,7 +3510,21 @@ func _take_top_item_at_pos() -> void:
 	if p_def.get("draw_one_keep_or_putback", false):
 		_prompt_contents_pick(pile_id)
 		return
-	var item_id: String = _pile_state[pile_id].pop_front()
+	# Order window — only ready orders are pickable. Pending orders
+	# (just spawned, bell not yet rung) stay in the pile, dim.
+	var item_id: String = ""
+	if pile_id == "order_window":
+		for iid: String in _pile_state[pile_id]:
+			if not _order_pending.get(iid, false):
+				item_id = iid
+				break
+		if item_id == "":
+			_log_line("[i]the orders here are still pending — ring the BELL first.[/i]")
+			return
+		_pile_state[pile_id].erase(item_id)
+		_order_pending.erase(item_id)
+	else:
+		item_id = _pile_state[pile_id].pop_front()
 	var items_dict := _items_def
 	var item: Dictionary = items_dict.get(item_id, {})
 	# Reusable pile items (e.g. jukebox tracks): trigger their on-use
@@ -3790,8 +3883,11 @@ func _phase_action() -> void:
 	_next_roll_bonus_dice = 0
 	_next_roll_close_call = ""
 	_last_played_cid = ""
-	# Default inertia tick (gravity of the room)
-	_inertia = min(12, _inertia + 1)
+	# Per-scenario baseline inertia tick (per-turn). Default 1.
+	# Setup JSON's starting_state.inertia_per_turn overrides.
+	var tick: int = int((_setup.get("starting_state", {}) as Dictionary).get("inertia_per_turn", 1))
+	if tick > 0:
+		_inertia = min(12, _inertia + tick)
 	_log_line("\n[color=#c8a268][b]── turn %d ──[/b][/color]" % _turn)
 	# Visitor arrivals scheduled for this turn
 	for vid in _visitors_state:
@@ -3802,6 +3898,35 @@ func _phase_action() -> void:
 				st["pos"] = st.get("arrival_pos", "counter")
 				var name_s: String = _visitors_def.get(vid, {}).get("name", vid)
 				_log_line("[i]→ %s arrives at %s[/i]" % [name_s, st["pos"]])
+
+
+# TO-GO auto-deliver — when the player walks to the order's
+# deliver_to_pos with the order in inventory, the order fires its
+# reward and is consumed. Called from _on_space_clicked and
+# _prompt_pick_destination after the position updates.
+func _check_togo_deliveries() -> void:
+	if _inventory.is_empty():
+		return
+	for iid: String in _inventory.duplicate():
+		var idef: Dictionary = _items_def.get(iid, {})
+		var to_pos: String = String(idef.get("deliver_to_pos", ""))
+		if to_pos == "":
+			continue
+		if to_pos != _player_pos:
+			continue
+		var ititle: String = String(idef.get("title", iid))
+		_inventory.erase(iid)
+		_audio_sfx("item_pickup")
+		_log_line("[color=#7cffb0]✦ delivered:[/color] [b]%s[/b]" % ititle)
+		_log_line("[color=#7c8398][i]   A figure steps out of an idling truck and takes the paper bag. They tip their hat. The truck pulls away.[/i][/color]")
+		var reward: Dictionary = idef.get("deliver_reward", {})
+		if reward.has("gain_time"):
+			_time += int(reward["gain_time"])
+		if reward.has("lose_inertia"):
+			_inertia = max(0, _inertia - int(reward["lose_inertia"]))
+		if reward.has("lore_token"):
+			_collect_lore_token(String(reward["lore_token"]))
+		_show_toast("Delivered [b]%s[/b]" % ititle, "#7cffb0")
 
 
 func _phase_planning() -> void:

@@ -16,10 +16,11 @@
         "The kitchen door swings. Someone is about to step out."
       ],
       "mood": "preoccupied",
+      "order_item": "order_coffee_toast",
       "steps": {
         "greet":   "Frasier looks up from his notebook just long enough to register that you exist. He goes back to writing.",
-        "listen":  "He tells you about the model. The river isn't right. The whole thing won't hold unless the river is right. You nod.",
-        "deliver": "You pour him a coffee he didn't ask for. He takes it without looking, drinks half in one go.",
+        "listen":  "He tells you about the model. The river isn't right. The whole thing won't hold unless the river is right. \"And a coffee. And the toast.\" You nod.",
+        "deliver": "You set the coffee and toast in front of him. He pulls them close without looking up. Half the coffee gone in one swallow.",
         "sit_with": "Frasier sets his notebook on the counter and turns it toward you. The handwriting is yours, except where it isn't. He nods, like you've finally caught up to him."
       }
     },
@@ -82,10 +83,11 @@
         "Boots crunch the gravel. The back door rattles in its frame."
       ],
       "mood": "gruff",
+      "order_item": "order_cajun_skillet",
       "steps": {
         "greet":   "The cook grunts once, half-recognizes you, half doesn't. They're already tying the apron.",
-        "listen":  "They tell you the grill needs the third burner re-lit. They say it like they're listing weather.",
-        "deliver": "You light the third burner. The cook nods, satisfied, doesn't say thanks.",
+        "listen":  "\"Skillet. Cajun. Hash on the side. Eggs.\" They say it like they're listing weather.",
+        "deliver": "You set the skillet down. The cook nods at the andouille rounds, satisfied, doesn't say thanks.",
         "sit_with": "The cook leans against the counter beside you. Wordless. The apron is on. The counter is taken care of."
       }
     },
@@ -103,10 +105,12 @@
         "Text scrolls fast on the register screen. Someone is typing now."
       ],
       "mood": "preoccupied",
+      "order_item": "order_grits_eggs_gravy",
+      "spawns_togo_on_listen": "order_togo_chicken_waffles",
       "steps": {
         "greet":   "The cursor on the register screen pulses. A line types itself: HELLO, JOHN.",
-        "listen":  "The caller is paging through the diner's BBS archive. They want a specific message you posted in 1989.",
-        "deliver": "You scroll the archive to the right thread. They read it. Three new lines arrive.",
+        "listen":  "The caller wants grits, eggs over hard, gravy. They also drop a TO-GO ticket on the BBS — chicken and waffles for whoever's in the parking lot.",
+        "deliver": "You set down the grits, eggs, gravy. The terminal acknowledges with a single clean line of green.",
         "sit_with": "WE SEE YOU. RETURN AT YOUR DISCRETION. The cursor blinks twice and waits."
       }
     },
