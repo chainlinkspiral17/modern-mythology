@@ -660,6 +660,13 @@ func _build_ui() -> void:
 	_board_bg_btn.toggled.connect(func(p: bool) -> void:
 		_board_bg_visible = p
 		_board_bg_btn.text = "BG ON" if p else "BG OFF"
+		# Belt and suspenders: even if the next render misses it,
+		# free any lingering bg TextureRect right now.
+		if not p:
+			for c in _board_content.get_children():
+				if c.name == "board_bg":
+					c.queue_free()
+		_log_line("[color=#7c8398][i]map background %s[/i][/color]" % ("on" if p else "off"))
 		_render_board())
 	header_hb.add_child(_board_bg_btn)
 	# Fullscreen toggle — bulletproofed: z_index so nothing sneaks
