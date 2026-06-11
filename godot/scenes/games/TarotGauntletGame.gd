@@ -216,9 +216,11 @@ func _audio_sfx(key: String) -> void:
 func _pulse_label(lbl: Label, flash: Color, dur: float = 0.55) -> void:
 	if lbl == null:
 		return
-	var original: Color = Color(0.85, 0.83, 0.78)
-	if lbl.has_theme_color_override("font_color"):
-		original = lbl.get_theme_color_override("font_color")
+	# Sample the effective color BEFORE applying the flash override.
+	# get_theme_color returns the resolved color (override or theme),
+	# avoiding the get_theme_color_override API which doesn't exist in
+	# all Godot 4.x versions.
+	var original: Color = lbl.get_theme_color("font_color", "Label")
 	lbl.add_theme_color_override("font_color", flash)
 	var t := create_tween()
 	t.tween_property(lbl, "theme_override_colors/font_color", original, dur).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -468,8 +470,14 @@ func _build_ui() -> void:
 		top_hb.add_child(lbl)
 
 	# ── Left/center: location board ──────────────────────────────────
+	# PRESET_FULL_RECT anchors right edge to parent's right (anchor=1),
+	# so offset_right=-440 leaves a 440px gutter for the right column.
+	# (Was PRESET_LEFT_WIDE, which anchors BOTH edges to the parent's
+	# LEFT edge — offset_right=-440 then put the right edge at x=-440,
+	# giving a negative-width rect that rendered as nothing. That's
+	# why fullscreen worked (uses FULL_RECT) but normal mode was black.)
 	_board_root = Control.new()
-	_board_root.set_anchors_preset(Control.PRESET_LEFT_WIDE)
+	_board_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_board_root.offset_top = 52
 	_board_root.offset_left = 8
 	_board_root.offset_bottom = -214
