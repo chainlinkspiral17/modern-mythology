@@ -2563,7 +2563,13 @@ func _on_play_card(cid: String) -> void:
 	_time -= cost
 	_played_this_turn.append(cid)
 	_audio_sfx("card_play")
-	_log_line("→ played [b]%s[/b]" % card.get("title", cid))
+	# Log the play with the card's flavor underneath — gives every
+	# action its quiet sentence in the log instead of bare verbs.
+	_log_line("[color=#c8a268]→ played[/color] [b]%s[/b]  [color=#7c8398](-%d Time)[/color]" %
+		[card.get("title", cid), cost])
+	var card_flavor: String = String(card.get("flavor", ""))
+	if card_flavor != "":
+		_log_line("[color=#7c8398][i]   %s[/i][/color]" % card_flavor)
 	# Resolve effects
 	_resolve_effects(card.get("effects", []))
 	# Framework cards: either a dice-roll outcome (double_success
@@ -2787,6 +2793,102 @@ func _check_connect_subcondition(sub: Dictionary) -> bool:
 # Used by the "discard_hand" effect (e.g. Gravity's "Choose: Discard
 # 2 Action cards"). Pops a modal letting the player CHOOSE which
 # cards to lose instead of silently popping from the back.
+func _prompt_search_choice(pile_id: String, peek: int) -> void:
+	# SEARCH ★★ — peek the top `peek` items in the pile, let the
+	# player pick one. Un-chosen items stay in their original
+	# positions in the pile (so the next search finds them).
+	var pile: Array = _pile_state.get(pile_id, [])
+	if pile.is_empty():
+		_log_line("[i]nothing to look at[/i]")
+		return
+	# If fewer items than `peek`, just take the top.
+	if pile.size() < 2:
+		_take_top_item_at_pos()
+		return
+	var peek_n: int = min(peek, pile.size())
+	var top_ids: Array = []
+	for i in peek_n:
+		top_ids.append(pile[i])
+	var existing: Node = get_node_or_null("pane_modal_dim")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.80)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.z_index = 100
+	dim.name = "pane_modal_dim"
+	add_child(dim)
+	var view: Vector2 = get_viewport_rect().size
+	var pop := PanelContainer.new()
+	pop.add_theme_stylebox_override("panel", _make_panel_style())
+	pop.size = Vector2(min(view.x * 0.62, 640.0), min(view.y * 0.62, 460.0))
+	pop.position = (view - pop.size) * 0.5
+	pop.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.add_child(pop)
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 10)
+	pop.add_child(vb)
+	var title := Label.new()
+	title.text = "  ★★  Search — Look at top %d, take 1" % peek_n
+	title.add_theme_color_override("font_color", C_ACCENT)
+	title.add_theme_font_size_override("font_size", 16)
+	vb.add_child(title)
+	var hint := Label.new()
+	hint.text = "  Whichever you don't take stays in the pile for next time."
+	hint.add_theme_color_override("font_color", Color(0.85, 0.83, 0.78, 0.7))
+	hint.add_theme_font_size_override("font_size", 11)
+	vb.add_child(hint)
+	vb.add_child(HSeparator.new())
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 10)
+	vb.add_child(row)
+	for i in top_ids.size():
+		var iid: String = String(top_ids[i])
+		var item: Dictionary = _items_def.get(iid, {})
+		var tile := VBoxContainer.new()
+		tile.add_theme_constant_override("separation", 4)
+		var btn := Button.new()
+		btn.custom_minimum_size = Vector2(140, 140)
+		var art: Texture2D = _load_texture_silent(_art_path_item(iid))
+		if art:
+			btn.icon = art
+			btn.expand_icon = true
+		btn.tooltip_text = "%s\n\n%s" % [item.get("title", iid), String(item.get("flavor", ""))]
+		var idx: int = i
+		btn.pressed.connect(func() -> void:
+			# Remove the chosen index from the pile, add to inventory
+			pile.remove_at(idx)
+			_inventory.append(iid)
+			_audio_sfx("item_pickup")
+			_log_line("[color=#c8a268]✦ took:[/color] [b]%s[/b]" % item.get("title", iid))
+			var fl: String = String(item.get("flavor", ""))
+			if fl != "":
+				_log_line("[color=#7c8398][i]   %s[/i][/color]" % fl)
+			# on_pickup hooks + bindle toast + composite check
+			var cat: String = item.get("category", "")
+			if cat == "bindle_component" or cat == "bindle_contents":
+				_show_toast("Picked up [b]%s[/b]" % item.get("title", iid), "#c8a268")
+			if item.has("on_pickup"):
+				_resolve_effects(item["on_pickup"])
+			if cat == "bindle_component" or cat == "bindle_contents":
+				_inertia = max(0, _inertia - 1)
+			_check_composite_connections()
+			_close_pane_modal(dim)
+			_render())
+		tile.add_child(btn)
+		var lbl := Label.new()
+		lbl.text = String(item.get("title", iid))
+		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_color_override("font_color", C_TEXT)
+		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		lbl.custom_minimum_size = Vector2(140, 30)
+		tile.add_child(lbl)
+		row.add_child(tile)
+
+
 func _prompt_choose(options: Array) -> void:
 	# Used by Gravity-card "choose" effects. Pops a modal with one
 	# button per option; click an option to resolve its effects.
@@ -3014,7 +3116,10 @@ func _take_top_item_at_pos() -> void:
 		return
 	_inventory.append(item_id)
 	_audio_sfx("item_pickup")
-	_log_line("[color=#c8a268]picked up: %s[/color]" % item.get("title", item_id))
+	_log_line("[color=#c8a268]✦ picked up:[/color] [b]%s[/b]" % item.get("title", item_id))
+	var pf: String = String(item.get("flavor", ""))
+	if pf != "":
+		_log_line("[color=#7c8398][i]   %s[/i][/color]" % pf)
 	var cat: String = item.get("category", "")
 	if cat == "bindle_component" or cat == "bindle_contents":
 		_show_toast("Picked up [b]%s[/b]" % item.get("title", item_id), "#c8a268")
@@ -3136,9 +3241,15 @@ func _apply_framework_card_mechanic(cid: String, result: String) -> void:
 				_log_line("[i]no search pile at %s[/i]" % _player_pos)
 				return
 			match result:
-				"ss":   _take_top_item_at_pos(); _take_top_item_at_pos()  # peek+take
-				"s":    _take_top_item_at_pos()
-				"fail": pass
+				"ss":
+					# "Look at top 2, take 1." Peek both, player
+					# chooses; the un-chosen one stays on top of the
+					# pile for the next search.
+					_prompt_search_choice(pile_id, 2)
+				"s":
+					_take_top_item_at_pos()
+				"fail":
+					_log_line("[i]nothing useful in reach.[/i]")
 		"short_rest":
 			match result:
 				"ss":   _health = min(5, _health + 2)
