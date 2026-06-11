@@ -93,9 +93,10 @@
     {
       "id": "the_fellow_traveler",
       "title": "THE FELLOW TRAVELER",
-      "flavor": "Faith's nose finds your ankle.",
+      "flavor": "Faith's nose finds your ankle. She shakes off something wet.",
       "effects": [
-        {"kind": "move_visitor", "visitor": "faith", "to": "player_pos"}
+        {"kind": "move_visitor", "visitor": "faith", "to": "player_pos"},
+        {"kind": "spawn_threat", "threat_id": "faith_mess"}
       ]
     },
     {
@@ -122,11 +123,26 @@
     {
       "id": "the_grill_smells_like_a_funeral",
       "title": "THE GRILL SMELLS LIKE A FUNERAL",
-      "flavor": "Onions and old grease and, underneath, a flower-shop smell that has no business being in here.",
+      "flavor": "Onions and old grease and, underneath, a flower-shop smell that has no business being in here. The grill starts to smoke.",
       "effects": [
         {"kind": "lose_sanity", "amount": 1},
-        {"kind": "if_at", "pos": "kitchen_alcove",
-         "then": [{"kind": "lose_sanity", "amount": 1, "note": "standing in it"}]}
+        {"kind": "spawn_threat", "threat_id": "grill_grease_fire"}
+      ]
+    },
+    {
+      "id": "the_bathroom_door_swings",
+      "title": "THE BATHROOM DOOR SWINGS",
+      "flavor": "It wasn't closed all the way. Now it's open. Now it isn't. The smell rolls out either way.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "bathroom_funk"}
+      ]
+    },
+    {
+      "id": "the_swarm",
+      "title": "THE SWARM",
+      "flavor": "Something gathers under the buzzing light over BOOTH 6. They aren't moths.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "fluorescent_swarm"}
       ]
     },
     {
@@ -140,10 +156,10 @@
     {
       "id": "the_window_shows_the_wrong_river",
       "title": "THE WINDOW SHOWS THE WRONG RIVER",
-      "flavor": "It runs upstream tonight and you are the only one in here who can see it doing it.",
+      "flavor": "It runs upstream tonight and you are the only one in here who can see it doing it. The glass starts to fog from outside.",
       "effects": [
         {"kind": "lose_sanity", "amount": 1},
-        {"kind": "gain_inertia", "amount": 1}
+        {"kind": "spawn_threat", "threat_id": "river_miasma"}
       ]
     },
     {

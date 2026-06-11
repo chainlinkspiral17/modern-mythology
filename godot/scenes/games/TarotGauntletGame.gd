@@ -127,6 +127,13 @@ var _board_meeple: Control = null
 var _board_visitor_nodes: Dictionary = {}   # visitor_id → Control (Label or TextureRect)
 var _board_space_nodes: Dictionary = {}     # space_id → Label
 var _board_marker_pos: Dictionary = {}      # space_id → Vector2 (marker center)
+# Threats — spawned by Gravity cards, occupy a space, tick during UPKEEP
+# until cleaned. Each entry: {id, def_id, pos}. Rendered as small icons
+# right of the marker, same coordinate system as visitor meeples.
+var _threats_def: Dictionary = {}           # def_id → def dict
+var _threats_active: Array = []             # array of {id, def_id, pos}
+var _threats_next_serial: int = 1
+var _board_threat_nodes: Dictionary = {}    # threat instance id → Control
 var _gravity_card_label: RichTextLabel = null
 var _end_overlay: Control = null
 
@@ -444,6 +451,9 @@ func _load_data() -> void:
 	var i_def := _load_json(arc_root + "items.json")
 	_piles_def = i_def.get("piles", {})
 	_items_def = i_def.get("items", {})
+	# Threats (optional file)
+	var t_def := _load_json(arc_root + "threats.json")
+	_threats_def = t_def.get("threats", {})
 	# Location + hand
 	_location = _load_json(DATA_ROOT + "locations/" + _location_id + ".json")
 	_hand     = _load_json(DATA_ROOT + "hands/"     + _hand_id     + ".json")
@@ -1723,6 +1733,47 @@ func _render_board() -> void:
 			(vnode as Label).add_theme_constant_override("outline_size", int(max(2, 3.0 * ui_scale)))
 			(vnode as Label).add_theme_font_size_override("font_size", int(max(10, 14.0 * ui_scale)))
 		vnode.tooltip_text = _tooltip_for_visitor(vid)
+	# Threat meeples — persistent like visitors. Drop instances that
+	# are no longer active; add ones that are new.
+	var active_tids: Dictionary = {}
+	for inst: Dictionary in _threats_active:
+		active_tids[String(inst.get("id", ""))] = true
+	for tid in _board_threat_nodes.keys():
+		if not active_tids.has(tid):
+			var stale_t: Control = _board_threat_nodes[tid]
+			if is_instance_valid(stale_t):
+				stale_t.queue_free()
+			_board_threat_nodes.erase(tid)
+	var threat_meeple_size: float = 18.0 * ui_scale
+	for inst: Dictionary in _threats_active:
+		var tid: String = String(inst.get("id", ""))
+		var tdef: Dictionary = _threats_def.get(inst.get("def_id", ""), {})
+		var tnode: Control
+		if _board_threat_nodes.has(tid) and is_instance_valid(_board_threat_nodes[tid]):
+			tnode = _board_threat_nodes[tid]
+		else:
+			var glyph := Label.new()
+			glyph.text = String(tdef.get("glyph", "✕"))
+			glyph.add_theme_color_override("font_color", Color(tdef.get("tint", "#ff8060")))
+			glyph.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
+			tnode = glyph
+			tnode.name = "threat_" + tid
+			tnode.mouse_filter = Control.MOUSE_FILTER_STOP
+			var tp: String = String(inst.get("pos", ""))
+			if _board_marker_pos.has(tp):
+				var tms: Vector2 = Vector2(threat_meeple_size, threat_meeple_size)
+				tnode.position = _board_marker_pos[tp] - tms * 0.5
+			_board_content.add_child(tnode)
+			_board_threat_nodes[tid] = tnode
+		tnode.custom_minimum_size = Vector2(threat_meeple_size, threat_meeple_size)
+		tnode.size = Vector2(threat_meeple_size, threat_meeple_size)
+		if tnode is Label:
+			(tnode as Label).add_theme_constant_override("outline_size", int(max(2, 3.0 * ui_scale)))
+			(tnode as Label).add_theme_font_size_override("font_size", int(max(11, 16.0 * ui_scale)))
+		tnode.tooltip_text = "[%s]\n%s\n\n%s" % [
+			String(tdef.get("title", "threat")),
+			String(tdef.get("flavor", "")),
+			_threat_clear_hint(tdef)]
 	_position_meeples()
 
 
@@ -1999,6 +2050,24 @@ func _position_meeples() -> void:
 			var dy: float = -ns.y * 0.5
 			var vtarget: Vector2 = mc2 + Vector2(dx, dy)
 			_tween_node_to(node, vtarget, 0.36)
+	# Threats: stack to the LEFT of the marker so they read as the
+	# bad twin of the visitor cluster on the right.
+	var threat_pos_stack: Dictionary = {}
+	for inst: Dictionary in _threats_active:
+		var tid: String = String(inst.get("id", ""))
+		if not _board_threat_nodes.has(tid):
+			continue
+		var tpos: String = String(inst.get("pos", ""))
+		if not _board_marker_pos.has(tpos):
+			continue
+		var tnode: Control = _board_threat_nodes[tid]
+		var tns: Vector2 = tnode.size if tnode.size.x > 0 else Vector2(18, 18) * _board_ui_scale
+		var tidx: int = int(threat_pos_stack.get(tpos, 0))
+		threat_pos_stack[tpos] = tidx + 1
+		var tdx: float = -(8.0 * _board_ui_scale) - tns.x - tidx * (tns.x * 0.6)
+		var tdy: float = -tns.y * 0.5
+		var ttarget: Vector2 = _board_marker_pos[tpos] + Vector2(tdx, tdy)
+		_tween_node_to(tnode, ttarget, 0.36)
 
 
 # ── Hand + visitor rendering ─────────────────────────────────────────
@@ -2205,6 +2274,10 @@ func _describe_effect(e: Dictionary) -> String:
 		"lose_inertia":   return "-%d Inertia" % int(e.get("amount", 1))
 		"recover_sanity": return "+%d Sanity" % int(e.get("amount", 1))
 		"lose_sanity":    return "-%d Sanity" % int(e.get("amount", 1))
+		"spawn_threat":
+			var tdef_lbl: Dictionary = _threats_def.get(String(e.get("threat_id", "")), {})
+			return "Spawn threat: %s" % String(tdef_lbl.get("title", e.get("threat_id", "?")))
+		"clear_threats_here": return "Clear any threat at your space"
 		"log":            return String(e.get("text", ""))
 		"if_at":
 			var then_e: Array = e.get("then", [])
@@ -3150,6 +3223,11 @@ func _on_play_card(cid: String) -> void:
 		_log_line("[color=#7c8398][i]   %s[/i][/color]" % card_flavor)
 	# Resolve effects
 	_resolve_effects(card.get("effects", []))
+	# Threat-clearing: any card whose id is named in an active threat's
+	# `cleared_by.card` clears that threat when played at the threat's
+	# space. CLEAN at the bathroom mops the bathroom; CLEAN at the
+	# river window wipes the miasma off the glass.
+	_clear_threats_at(_player_pos, cid)
 	# Framework cards: either a dice-roll outcome (double_success
 	# present) or a passive (passive_effect present, e.g. SPEND IT).
 	if card.has("double_success"):
@@ -3212,6 +3290,10 @@ func _resolve_effect(e: Dictionary) -> void:
 			if _sanity == 0:
 				_log_line("[color=#ff5040][b]The fluorescent goes solid. The counter is colder than the cloth. You don't quite remember what you came in here for.[/b][/color]")
 				_trigger_loss("sanity_zero")
+		"spawn_threat":
+			_spawn_threat(String(e.get("threat_id", "")), String(e.get("pos", "")))
+		"clear_threats_here":
+			_clear_threats_at(_player_pos, String(e.get("card", "")))
 		"log":
 			_log_line("[i]%s[/i]" % e.get("text", ""))
 		"if_at":
@@ -3874,6 +3956,109 @@ func _prompt_discard_cards(amount: int) -> void:
 
 
 # ── Helpers used by effects ─────────────────────────────────────────
+
+func _threat_clear_hint(tdef: Dictionary) -> String:
+	var cb: Dictionary = tdef.get("cleared_by", {})
+	var card: String = String(cb.get("card", ""))
+	if card == "":
+		return "(no clear path)"
+	var card_def: Dictionary = _action_cards.get(card, {})
+	var ctitle: String = String(card_def.get("title", card.to_upper()))
+	return "Clear by playing %s here." % ctitle
+
+
+func _spawn_threat(def_id: String, pos_override: String = "") -> void:
+	if def_id == "" or not _threats_def.has(def_id):
+		return
+	var tdef: Dictionary = _threats_def[def_id]
+	# Resolve position: explicit override > spawn_at_visitor > default_pos
+	var pos: String = pos_override
+	if pos == "":
+		var src_vid: String = String(tdef.get("spawn_at_visitor", ""))
+		if src_vid != "" and _visitors_state.has(src_vid) and _visitors_state[src_vid].get("arrived", false):
+			pos = String(_visitors_state[src_vid].get("pos", ""))
+	if pos == "":
+		pos = String(tdef.get("default_pos", ""))
+	if pos == "":
+		return
+	# One-per-(def_id, pos): the room doesn't stack identical messes.
+	for existing: Dictionary in _threats_active:
+		if existing.get("def_id", "") == def_id and existing.get("pos", "") == pos:
+			return
+	var tid: String = "t%d" % _threats_next_serial
+	_threats_next_serial += 1
+	_threats_active.append({"id": tid, "def_id": def_id, "pos": pos})
+	var spawn_msg: String = String(tdef.get("spawn_message", ""))
+	if spawn_msg != "":
+		_log_line("[color=#ff8060]✕ %s[/color] [color=#7c8398][i]%s[/i][/color]" %
+			[String(tdef.get("title", def_id)), spawn_msg])
+	else:
+		_log_line("[color=#ff8060]✕ %s[/color]" % String(tdef.get("title", def_id)))
+	_show_toast("Threat · [b]%s[/b]" % String(tdef.get("title", def_id)), "#ff8060")
+
+
+func _clear_threats_at(pos: String, card_id: String) -> bool:
+	# Returns true if at least one threat was cleared. card_id is the
+	# card the player just played; the threat's `cleared_by.card` must
+	# match. Called from CLEAN's effects (and any future targeted card).
+	if pos == "":
+		return false
+	var cleared_any: bool = false
+	var remaining: Array = []
+	for inst: Dictionary in _threats_active:
+		if inst.get("pos", "") != pos:
+			remaining.append(inst)
+			continue
+		var tdef: Dictionary = _threats_def.get(inst.get("def_id", ""), {})
+		var cb: Dictionary = tdef.get("cleared_by", {})
+		var need_card: String = String(cb.get("card", ""))
+		if need_card != "" and need_card != card_id:
+			remaining.append(inst)
+			continue
+		# Cleared.
+		var msg: String = String(tdef.get("cleared_message", ""))
+		if msg != "":
+			_log_line("[color=#7cffb0]✓ cleared:[/color] [b]%s[/b]  [color=#7c8398][i]%s[/i][/color]" %
+				[String(tdef.get("title", "threat")), msg])
+		else:
+			_log_line("[color=#7cffb0]✓ cleared:[/color] [b]%s[/b]" % String(tdef.get("title", "threat")))
+		cleared_any = true
+	_threats_active = remaining
+	if cleared_any:
+		# Drop board nodes for the cleared instances on next render.
+		# _render_board reconciles _board_threat_nodes against
+		# _threats_active so we just trigger a render.
+		pass
+	return cleared_any
+
+
+# Ongoing per-Upkeep tick — every active threat applies its
+# `ongoing_per_upkeep` effects.
+func _tick_threats_upkeep() -> void:
+	if _threats_active.is_empty():
+		return
+	for inst: Dictionary in _threats_active.duplicate():
+		var tdef: Dictionary = _threats_def.get(inst.get("def_id", ""), {})
+		var fx: Array = tdef.get("ongoing_per_upkeep", [])
+		if fx.is_empty():
+			continue
+		_log_line("[color=#ff8060][i]· %s — %s[/i][/color]" %
+			[String(tdef.get("title", "threat")).to_lower(), String(tdef.get("flavor", ""))])
+		_resolve_effects(fx)
+
+
+# Faith's mess follows her — if she's moved, the wet patch went with
+# her. Called from _check_composite_connections and movement code.
+func _update_following_threats() -> void:
+	for inst: Dictionary in _threats_active:
+		var tdef: Dictionary = _threats_def.get(inst.get("def_id", ""), {})
+		var follow: String = String(tdef.get("follow_visitor", ""))
+		if follow == "" or not _visitors_state.has(follow):
+			continue
+		var new_pos: String = String(_visitors_state[follow].get("pos", ""))
+		if new_pos != "" and new_pos != inst.get("pos", ""):
+			inst["pos"] = new_pos
+
 
 func _connect_visitor(vid: String) -> void:
 	if vid == "" or not _visitors_state.has(vid):
@@ -4619,6 +4804,8 @@ func _phase_upkeep() -> void:
 	if faith_st.get("arrived", false) and faith_st.get("pos", "") == _player_pos:
 		_inertia = max(0, _inertia - 1)
 		_log_line("[color=#7cffb0]Faith steady · -1 Inertia[/color]")
+	# Threat pieces tick during UPKEEP.
+	_tick_threats_upkeep()
 	# Precipice door reveal check
 	var present := 0
 	for vid in _visitors_state:

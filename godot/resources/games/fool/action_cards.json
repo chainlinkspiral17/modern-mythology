@@ -7,7 +7,7 @@
       "title": "CLEAN",
       "time_cost": 0,
       "starter": true,
-      "flavor": "Wipe a counter. Tidy a shelf. Square a table. Every room has something John knows how to do without thinking. +1 Time, +1 Inertia — the loop tempts.",
+      "flavor": "Wipe a counter. Tidy a shelf. Square a table. Every room has something John knows how to do without thinking. Also: if the space you're standing on has a mess on it (Faith's wet patch, grease smoke, bathroom funk, river miasma), this clears it. +1 Time, +1 Inertia — the loop tempts.",
       "requires": [],
       "effects": [
         {"kind": "gain_time", "amount": 1},
