@@ -102,6 +102,14 @@ var _pane_title_labels: Dictionary = {}   # modal_key → Label
 # Reset at the start of each ACTION phase.
 var _this_turn_cost_bump_min: int = 99
 var _this_turn_cost_bump_amt: int = 0
+# Framework-card buffs that apply to the NEXT framework dice roll:
+# FOCUS grants bonus dice, CLOSE CALL grants reroll behavior, both
+# consumed by the next _resolve_framework_card call.
+var _next_roll_bonus_dice: int = 0
+var _next_roll_close_call: String = ""   # "" | "double_take_best" | "extra_die"
+# IMPROVISE replays the last-played card. Track its id so the
+# IMPROVISE card itself can find it.
+var _last_played_cid: String = ""
 var _board_meeple: Control = null
 var _board_visitor_nodes: Dictionary = {}   # visitor_id → Control (Label or TextureRect)
 var _board_space_nodes: Dictionary = {}     # space_id → Label
@@ -1502,11 +1510,17 @@ func _on_space_clicked(target_pos: String) -> void:
 	if target_pos == "precipice_door" and not _flags.get("precipice_revealed", false):
 		_log_line("[i]you don't see a way through there yet[/i]")
 		return
-	# Costs 1 Time, no card consumed (free walk to adjacent).
-	if _time < 1:
-		_log_line("[i]not enough Time to walk[/i]")
+	# Costs 1 Time, no card consumed. Inertia 10+ adds +1 to step
+	# onto threshold spaces (the door looks farther).
+	var walk_cost: int = 1
+	if _inertia >= 10 and _is_threshold(target_pos):
+		walk_cost = 2
+	if _time < walk_cost:
+		_log_line("[i]not enough Time to walk (need %d)[/i]" % walk_cost)
 		return
-	_time -= 1
+	_time -= walk_cost
+	if walk_cost > 1:
+		_log_line("[color=#ff8060][i]the door looks farther: walk to %s costs %d[/i][/color]" % [target_pos, walk_cost])
 	_player_pos = target_pos
 	_places_visited[_player_pos] = true
 	_audio_sfx("card_play")
@@ -2565,11 +2579,21 @@ func _on_play_card(cid: String) -> void:
 	if _this_turn_cost_bump_amt > 0 and base_cost >= _this_turn_cost_bump_min:
 		cost += _this_turn_cost_bump_amt
 		_log_line("[color=#ff8060][i]the tick: +%d to %s[/i][/color]" % [_this_turn_cost_bump_amt, card.get("title", cid)])
+	# Inertia 11+: every Action card costs +1 Time (the counter
+	# knows your name — even small gestures get sticky)
+	if _inertia >= 11:
+		cost += 1
+		_log_line("[color=#ff8060][i]the counter knows: +1 Time on %s[/i][/color]" % card.get("title", cid))
 	if _time < cost:
 		_log_line("[i]not enough Time to play %s (need %d, have %d)[/i]" % [card.get("title", cid), cost, _time])
 		return
 	_time -= cost
 	_played_this_turn.append(cid)
+	# Track for IMPROVISE replay — but don't overwrite when IMPROVISE
+	# itself is the card being played (it should reference the
+	# previous play, not itself).
+	if cid != "improvise":
+		_last_played_cid = cid
 	_audio_sfx("card_play")
 	# Log the play with the card's flavor underneath — gives every
 	# action its quiet sentence in the log instead of bare verbs.
@@ -3345,7 +3369,30 @@ func _resolve_framework_card(card: Dictionary) -> void:
 	var n_dice: int = 2
 	if _inertia >= 7:
 		n_dice = max(1, n_dice - 1)
-	var roll := _roll_arcana_dice(n_dice)
+	# FOCUS buff (consumed)
+	if _next_roll_bonus_dice > 0:
+		n_dice += _next_roll_bonus_dice
+		_log_line("[color=#7cffb0][i]focus: +%d dice[/i][/color]" % _next_roll_bonus_dice)
+		_next_roll_bonus_dice = 0
+	# CLOSE CALL buff (consumed)
+	var roll: Dictionary = {}
+	var cc_mode: String = _next_roll_close_call
+	_next_roll_close_call = ""
+	if cc_mode == "extra_die":
+		n_dice += 1
+		_log_line("[color=#7cffb0][i]close call: +1 die[/i][/color]")
+	if cc_mode == "double_take_best":
+		var r_a: Dictionary = _roll_arcana_dice(n_dice)
+		var r_b: Dictionary = _roll_arcana_dice(n_dice)
+		# Take whichever result is higher (ss > s > fail)
+		var rank := {"ss": 2, "s": 1, "fail": 0}
+		if int(rank.get(r_a["result"], 0)) >= int(rank.get(r_b["result"], 0)):
+			roll = r_a
+		else:
+			roll = r_b
+		_log_line("[color=#7cffb0][i]close call: rolled twice, took best[/i][/color]")
+	else:
+		roll = _roll_arcana_dice(n_dice)
 	var result: String = roll["result"]
 	var line: String = roll["line"]
 	_log_line("[i]threshold roll: %s → %s[/i]" % [line, result])
@@ -3414,12 +3461,19 @@ func _apply_framework_card_mechanic(cid: String, result: String) -> void:
 					_health = min(5, _health + 1)
 					_time = max(0, _time - 1)
 		"focus":
-			# Successful FOCUS lowers Inertia by 1 (sharpens you against
-			# the room). Failure no-ops.
-			if result == "ss":
-				_inertia = max(0, _inertia - 2)
-			elif result == "s":
-				_inertia = max(0, _inertia - 1)
+			# Bonus dice on the NEXT framework card's roll, plus a Time
+			# bump on ★★. Reduces Threshold roll cost = makes the next
+			# roll more reliable (more dice = better odds of success).
+			match result:
+				"ss":
+					_next_roll_bonus_dice = 2
+					_time += 1
+					_log_line("[color=#7cffb0]✦ FOCUS: +2 dice on next roll, +1 Time[/color]")
+				"s":
+					_next_roll_bonus_dice = 1
+					_log_line("[color=#7cffb0]✦ FOCUS: +1 die on next roll[/color]")
+				"fail":
+					pass
 		"distraction":
 			match result:
 				"ss":
@@ -3436,16 +3490,45 @@ func _apply_framework_card_mechanic(cid: String, result: String) -> void:
 				if result == "ss":
 					_prompt_pick_destination(1, "moved on guard")
 		"close_call":
-			# Reroll — for now, no-op past the dice roll itself. (A real
-			# reroll requires tracking the last-rolled card; future pass.)
-			pass
+			# CLOSE CALL ★★: next framework card rolls twice, takes
+			# the better result. ★: next framework card gets +1 die.
+			# ✕: no effect. (Buff state consumed in _resolve_framework_card.)
+			match result:
+				"ss":
+					_next_roll_close_call = "double_take_best"
+					_log_line("[color=#7cffb0]✦ CLOSE CALL: next roll will double + take best[/color]")
+				"s":
+					_next_roll_close_call = "extra_die"
+					_log_line("[color=#7cffb0]✦ CLOSE CALL: next roll gets +1 die[/color]")
+				"fail":
+					pass
 		"spend_it":
 			_time += 1
 			_log_line("[color=#7cffb0]✦ SPEND IT: +1 Time[/color]  (Time → %d)" % _time)
 		"improvise":
-			# Replays the last-played card's mechanic. Currently no-op
-			# until we track last-played card state.
-			pass
+			# IMPROVISE ★★: replay the last-played card's effects.
+			# ★: replay only its mechanical outcome at this roll.
+			# ✕: +1 Inertia (the room notices you're spinning).
+			if _last_played_cid == "":
+				_log_line("[i]nothing to improvise — no card played yet this turn[/i]")
+			else:
+				var last_card: Dictionary = _action_cards.get(_last_played_cid, {})
+				var lname: String = last_card.get("title", _last_played_cid)
+				match result:
+					"ss":
+						_log_line("[color=#7cffb0]✦ IMPROVISE: replaying [b]%s[/b][/color]" % lname)
+						_resolve_effects(last_card.get("effects", []))
+						# Framework re-resolve too (skips re-rolling
+						# infinitely by short-circuiting the improvise
+						# itself: only replay if last wasn't improvise)
+						if _last_played_cid != "improvise" and last_card.has("double_success"):
+							_apply_framework_card_mechanic(_last_played_cid, "s")
+					"s":
+						_log_line("[color=#7cffb0]✦ IMPROVISE: shadow of [b]%s[/b][/color]" % lname)
+						if last_card.has("double_success"):
+							_apply_framework_card_mechanic(_last_played_cid, "s")
+					"fail":
+						_inertia = min(12, _inertia + 1)
 
 
 func _pop_top_gravity_card() -> void:
@@ -3516,9 +3599,12 @@ func _phase_action() -> void:
 	# Start of new turn — increment, reset played-this-turn
 	_turn += 1
 	_played_this_turn.clear()
-	# Reset per-turn Gravity modifiers
+	# Reset per-turn Gravity modifiers + framework-card buffs
 	_this_turn_cost_bump_min = 99
 	_this_turn_cost_bump_amt = 0
+	_next_roll_bonus_dice = 0
+	_next_roll_close_call = ""
+	_last_played_cid = ""
 	# Default inertia tick (gravity of the room)
 	_inertia = min(12, _inertia + 1)
 	_log_line("\n[color=#c8a268][b]── turn %d ──[/b][/color]" % _turn)
@@ -3589,6 +3675,11 @@ func _find_gravity_card(cid: String) -> Dictionary:
 
 
 func _phase_drift() -> void:
+	# Visitors who aren't connected and aren't claimed drift one hop
+	# toward the location's drift_attractors. BFS finds the next hop
+	# along the shortest path; tie-breaks pick the FIRST attractor
+	# listed (primary > secondary > tertiary).
+	_run_drift()
 	# Inertia thresholds: place CLAIM markers
 	if _inertia >= 8:
 		_place_claim_marker(false)
@@ -3604,11 +3695,94 @@ func _phase_drift() -> void:
 				st["arrived"] = false
 				st["pos"] = ""
 				st["consumed"] = true
-				_log_line("[color=#ff6060]✕ %s consumed by the room.[/color]" % _visitors_def.get(vid, {}).get("name", vid))
+				var nm: String = _visitors_def.get(vid, {}).get("name", vid)
+				_log_line("")
+				_log_line("[color=#ff6060]✕ %s consumed by the room.[/color]" % nm)
+				_log_line("[color=#7c8398][i]   The booth empties. The chair settles. Like nobody was ever sitting in it.[/i][/color]")
+				_show_toast("[b]%s[/b] consumed by the room" % nm, "#ff6060")
 	# Counter-haunted flag: standing on COUNTER adds +1 Inertia
 	if _counter_haunted and _player_pos == "counter":
 		_inertia = min(12, _inertia + 1)
 		_log_line("[color=#ff8060]+1 Inertia (counter is calling)[/color]")
+
+
+# Drift mechanic — every unconnected, unclaimed visitor moves one
+# hop closer to a drift attractor space. Faith doesn't drift (she
+# stays with John once called). Once a visitor reaches an attractor,
+# they wait there until claimed or connected. Adds atmosphere AND
+# pressure: visitors you ignored start leaving the spaces where you
+# could connect with them.
+func _run_drift() -> void:
+	var attractors_def: Dictionary = _location.get("drift_attractors", {})
+	if attractors_def.is_empty():
+		return
+	var attractor_priorities: PackedStringArray = []
+	for key in ["primary", "secondary", "tertiary"]:
+		var aid: String = String(attractors_def.get(key, ""))
+		if aid != "":
+			attractor_priorities.append(aid)
+	if attractor_priorities.is_empty():
+		return
+	var adj_map: Dictionary = _location.get("adjacency", {})
+	var any_moved: bool = false
+	for vid in _visitors_state:
+		var st: Dictionary = _visitors_state[vid]
+		if vid == "faith":
+			continue   # Faith follows John, not the room
+		if not st.get("arrived", false):
+			continue
+		if st.get("connected", false):
+			continue
+		if int(st.get("claimed_turn", -1)) >= 0:
+			continue
+		var cur: String = String(st.get("pos", ""))
+		if cur == "":
+			continue
+		# Already at an attractor — they wait
+		if cur in attractor_priorities:
+			continue
+		# BFS toward the highest-priority attractor, take the first hop
+		var next_hop: String = _bfs_next_hop(cur, attractor_priorities, adj_map)
+		if next_hop == "" or next_hop == cur:
+			continue
+		st["pos"] = next_hop
+		var nm: String = _visitors_def.get(vid, {}).get("name", vid)
+		_log_line("[color=#7c8398][i]· %s drifts toward %s.[/i][/color]" % [nm, next_hop.replace("_", " ")])
+		any_moved = true
+	if any_moved:
+		_render()
+
+
+# BFS from `start`, return the first hop along the shortest path
+# toward ANY of the target ids. Empty string if no path or already
+# at a target.
+func _bfs_next_hop(start: String, targets: PackedStringArray, adj_map: Dictionary) -> String:
+	if start in targets:
+		return ""
+	var prev: Dictionary = {start: ""}
+	var queue: Array = [start]
+	var found: String = ""
+	while not queue.is_empty():
+		var cur: String = queue.pop_front()
+		if cur in targets:
+			found = cur
+			break
+		for nbr: String in adj_map.get(cur, []):
+			if prev.has(nbr):
+				continue
+			if nbr == "precipice_door" and not _flags.get("precipice_revealed", false):
+				continue
+			prev[nbr] = cur
+			queue.append(nbr)
+	if found == "":
+		return ""
+	# Walk back to find the first hop
+	var node: String = found
+	while String(prev.get(node, "")) != start:
+		node = prev[node]
+		if node == "":
+			return ""
+	return node
 
 
 func _place_claim_marker(skip_first: bool) -> void:
