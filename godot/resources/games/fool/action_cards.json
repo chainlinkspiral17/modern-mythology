@@ -58,8 +58,7 @@
       "requires": [],
       "effects": [
         {"kind": "end_action_phase"},
-        {"kind": "if_visitor_adjacent", "visitor": "frasier", "and_player_at": "counter",
-         "then": [{"kind": "mark_connection", "visitor": "frasier"}]}
+        {"kind": "connect_visitor_at_my_pos"}
       ]
     },
     {

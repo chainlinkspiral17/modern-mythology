@@ -86,6 +86,9 @@ var _board_fullscreen: bool = false
 var _last_rendered_time: int = -1
 var _last_rendered_inertia: int = -1
 var _last_rendered_health: int = -1
+# Every space the player has stood on at least once. Used by composite
+# connect_via conditions (e.g. stranger requires stood_on:card_wall).
+var _places_visited: Dictionary = {}
 var _board_meeple: Control = null
 var _board_visitor_nodes: Dictionary = {}   # visitor_id → Control (Label or TextureRect)
 var _board_space_nodes: Dictionary = {}     # space_id → Label
@@ -386,8 +389,9 @@ func _load_data() -> void:
 func _init_run() -> void:
 	var start: Dictionary = _setup.get("starting_state", {})
 	_player_pos = start.get("player_pos", "counter")
-	_time       = int(start.get("time", 6))
-	_next_time_reset = _time
+	_places_visited[_player_pos] = true
+	_time       = int(start.get("time", 4))
+	_next_time_reset = int(start.get("time_per_turn", _time))
 	_inertia    = int(start.get("inertia", 0))
 	_health     = int(start.get("health", 5))
 	_hand_cards = (start.get("starting_hand", []) as Array).duplicate()
@@ -1163,8 +1167,10 @@ func _prompt_pick_destination(max_hops: int, reason: String) -> void:
 	popup.id_pressed.connect(func(idx: int) -> void:
 		if idx >= 0 and idx < keys.size():
 			_player_pos = String(keys[idx])
+			_places_visited[_player_pos] = true
 			_audio_sfx("card_play")
 			_log_line("→ %s to [b]%s[/b]" % [reason, _player_pos])
+			_check_composite_connections()
 			_render()
 		popup.queue_free())
 	popup.close_requested.connect(func() -> void: popup.queue_free())
@@ -1196,8 +1202,10 @@ func _on_space_clicked(target_pos: String) -> void:
 		return
 	_time -= 1
 	_player_pos = target_pos
+	_places_visited[_player_pos] = true
 	_audio_sfx("card_play")
 	_log_line("→ walked to [b]%s[/b]" % target_pos)
+	_check_composite_connections()
 	_render()
 
 
@@ -1277,19 +1285,21 @@ func _render_tableau() -> void:
 	for cid: String in buyables:
 		var card: Dictionary = _action_cards[cid]
 		var time_cost: int = int(card.get("time_cost", 1))
+		var price: int = _buy_price(card)
 		var btn := Button.new()
-		btn.text = "%s\n[%d]" % [card.get("title", cid), time_cost]
+		btn.text = "%s\nbuy: %d t" % [card.get("title", cid), price]
 		btn.add_theme_font_size_override("font_size", 9)
 		btn.custom_minimum_size = Vector2(84, 50)
 		btn.clip_text = true
-		btn.tooltip_text = String(card.get("flavor", "")) + "\n\n" + _card_summary(card)
+		btn.tooltip_text = "%s\n\nBuy cost: %d Time\nPlay cost when in hand: %d Time\n\n%s" % [
+			card.get("flavor", ""), price, time_cost, _card_summary(card)]
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
 			btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
-		# Buyable during PLANNING + Time ≥ cost
-		var can_buy: bool = (_phase == Phase.PLANNING) and (_time >= time_cost) and not _game_over
+		# Buyable during PLANNING + Time ≥ price (markup-inclusive)
+		var can_buy: bool = (_phase == Phase.PLANNING) and (_time >= price) and not _game_over
 		btn.disabled = not can_buy
 		# Dim style outside planning so it reads as preview, not shop
 		if _phase != Phase.PLANNING:
@@ -1302,20 +1312,26 @@ func _render_tableau() -> void:
 		_tableau_box.add_child(btn)
 
 
+const BUY_PRICE_MARKUP: int = 2   # Tableau buy = card's time_cost + this
+
+func _buy_price(card: Dictionary) -> int:
+	return int(card.get("time_cost", 1)) + BUY_PRICE_MARKUP
+
+
 func _on_buy_card(cid: String) -> void:
 	if _phase != Phase.PLANNING or _game_over:
 		return
 	var card: Dictionary = _action_cards.get(cid, {})
-	var time_cost: int = int(card.get("time_cost", 1))
-	if _time < time_cost:
+	var price: int = _buy_price(card)
+	if _time < price:
 		_log_line("[i]not enough Time to buy %s (need %d, have %d)[/i]" %
-			[card.get("title", cid), time_cost, _time])
+			[card.get("title", cid), price, _time])
 		return
-	_time -= time_cost
+	_time -= price
 	_hand_cards.append(cid)
 	_audio_sfx("card_play")
-	_log_line("[color=#7cffb0]✦ bought [b]%s[/b][/color]  (Time %d → %d)" %
-		[card.get("title", cid), _time + time_cost, _time])
+	_log_line("[color=#7cffb0]✦ bought [b]%s[/b][/color]  (cost %d, Time %d → %d)" %
+		[card.get("title", cid), price, _time + price, _time])
 	_render()
 
 
@@ -1975,10 +1991,7 @@ func _resolve_effect(e: Dictionary) -> void:
 			else:
 				_resolve_effects(e.get("else", []))
 		"discard_hand":
-			var n: int = int(e.get("amount", 0))
-			while n > 0 and not _hand_cards.is_empty():
-				_hand_cards.pop_back()
-				n -= 1
+			_prompt_discard_cards(int(e.get("amount", 0)))
 		"reveal_lore_token":
 			_collect_lore_token(e.get("token", ""))
 		"if_visitor_not_connected":
@@ -2003,8 +2016,154 @@ func _resolve_effect(e: Dictionary) -> void:
 			if bgm_path != "":
 				AudioMgr.play_bgm(bgm_path)
 				_log_line("[color=#c8a268]♪ jukebox · now playing [b]%s[/b][/color]" % label)
+		"advance_stranger_connection":
+			# Hook for the cloth's on_pickup. The actual connection
+			# fires from _check_composite_connections — this is just
+			# a (now-implemented) no-op so the warning stops firing.
+			pass
+		"connect_visitor_at_my_pos":
+			# Used by SIT WITH — connect any arrived, unconnected
+			# visitor at the player's current position.
+			for vid_p in _visitors_state:
+				var vst_p: Dictionary = _visitors_state[vid_p]
+				if vst_p.get("arrived", false) and not vst_p.get("connected", false) and vst_p.get("pos", "") == _player_pos:
+					_connect_visitor(vid_p)
+					break
 		_:
 			_log_line("[i](unhandled effect: %s)[/i]" % kind)
+
+
+# Composite connect_via evaluation — runs after every move + item
+# pickup. For visitors with kind:"composite", checks every sub-cond
+# in all_of[] and auto-connects when all are met. The stranger's
+# rule is: took_item(cloth) AND stood_on(card_wall).
+func _check_composite_connections() -> void:
+	for vid in _visitors_def:
+		var v: Dictionary = _visitors_def[vid]
+		var st: Dictionary = _visitors_state.get(vid, {})
+		if st.get("connected", false):
+			continue
+		# Hidden-until-trigger visitors don't connect via composite
+		if v.get("hidden_until_arrived", false) and not st.get("arrived", false):
+			continue
+		var cv: Dictionary = v.get("connect_via", {})
+		if String(cv.get("kind", "")) != "composite":
+			continue
+		var all_met: bool = true
+		for sub: Dictionary in cv.get("all_of", []):
+			if not _check_connect_subcondition(sub):
+				all_met = false
+				break
+		if all_met:
+			_connect_visitor(vid)
+
+
+func _check_connect_subcondition(sub: Dictionary) -> bool:
+	match String(sub.get("kind", "")):
+		"took_item":
+			return _inventory.has(sub.get("item", ""))
+		"stood_on":
+			return _places_visited.has(String(sub.get("pos", "")))
+		"at_pos":
+			return _player_pos == String(sub.get("pos", ""))
+	return false
+
+
+# ── Discard chooser ─────────────────────────────────────────────────
+# Used by the "discard_hand" effect (e.g. Gravity's "Choose: Discard
+# 2 Action cards"). Pops a modal letting the player CHOOSE which
+# cards to lose instead of silently popping from the back.
+func _prompt_discard_cards(amount: int) -> void:
+	if amount <= 0 or _hand_cards.is_empty():
+		return
+	# Tear down any existing modal
+	var existing: Node = get_node_or_null("pane_modal_dim")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.80)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.z_index = 100
+	dim.name = "pane_modal_dim"
+	add_child(dim)
+	var view: Vector2 = get_viewport_rect().size
+	var pop := PanelContainer.new()
+	pop.add_theme_stylebox_override("panel", _make_panel_style())
+	pop.size = Vector2(min(view.x * 0.70, 720.0), min(view.y * 0.72, 540.0))
+	pop.position = (view - pop.size) * 0.5
+	pop.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.add_child(pop)
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 8)
+	pop.add_child(vb)
+	var title := Label.new()
+	title.text = "  Discard %d card%s from your hand" % [amount, "" if amount == 1 else "s"]
+	title.add_theme_color_override("font_color", C_ACCENT)
+	title.add_theme_font_size_override("font_size", 16)
+	vb.add_child(title)
+	var hint := RichTextLabel.new()
+	hint.bbcode_enabled = true
+	hint.fit_content = true
+	hint.add_theme_color_override("default_color", C_TEXT)
+	hint.add_theme_font_size_override("normal_font_size", 11)
+	hint.text = "[i]Click cards to select. Click [b]Discard[/b] when you've picked %d.[/i]" % amount
+	vb.add_child(hint)
+	vb.add_child(HSeparator.new())
+	var cards_box := HBoxContainer.new()
+	cards_box.add_theme_constant_override("separation", 6)
+	vb.add_child(cards_box)
+	var selected_indices: Array = []   # indices into _hand_cards
+	var confirm_btn := Button.new()
+	confirm_btn.text = "Discard (0 / %d)" % amount
+	confirm_btn.add_theme_font_size_override("font_size", 13)
+	confirm_btn.disabled = true
+	for i in _hand_cards.size():
+		var cid: String = _hand_cards[i]
+		var card: Dictionary = _action_cards.get(cid, {})
+		var btn := Button.new()
+		btn.text = card.get("title", cid)
+		btn.add_theme_font_size_override("font_size", 11)
+		btn.custom_minimum_size = Vector2(108, 80)
+		btn.tooltip_text = String(card.get("flavor", ""))
+		btn.toggle_mode = true
+		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
+		if art:
+			btn.icon = art
+			btn.expand_icon = true
+			btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
+		var idx: int = i
+		btn.toggled.connect(func(pressed: bool) -> void:
+			if pressed:
+				if selected_indices.size() >= amount:
+					btn.button_pressed = false
+					return
+				selected_indices.append(idx)
+			else:
+				selected_indices.erase(idx)
+			confirm_btn.text = "Discard (%d / %d)" % [selected_indices.size(), amount]
+			confirm_btn.disabled = selected_indices.size() != amount)
+		cards_box.add_child(btn)
+	vb.add_child(HSeparator.new())
+	var actions := HBoxContainer.new()
+	actions.add_theme_constant_override("separation", 8)
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	actions.add_child(spacer)
+	confirm_btn.pressed.connect(func() -> void:
+		# Remove the selected indices in descending order so earlier
+		# indices stay valid
+		var to_remove: Array = selected_indices.duplicate()
+		to_remove.sort()
+		to_remove.reverse()
+		for i_v: int in to_remove:
+			if i_v >= 0 and i_v < _hand_cards.size():
+				_log_line("[color=#ff8060]discarded:[/color] %s" % _action_cards.get(_hand_cards[i_v], {}).get("title", _hand_cards[i_v]))
+				_hand_cards.remove_at(i_v)
+		_close_pane_modal(dim)
+		_render())
+	actions.add_child(confirm_btn)
+	vb.add_child(actions)
 
 
 # ── Helpers used by effects ─────────────────────────────────────────
@@ -2055,14 +2214,14 @@ func _take_top_item_at_pos() -> void:
 	_inventory.append(item_id)
 	_audio_sfx("item_pickup")
 	_log_line("[color=#c8a268]picked up: %s[/color]" % item.get("title", item_id))
-	# Toast for bindle progress — components are the most important
-	# pickups in the run and deserve a visible callout
 	var cat: String = item.get("category", "")
 	if cat == "bindle_component" or cat == "bindle_contents":
 		_show_toast("Picked up [b]%s[/b]" % item.get("title", item_id), "#c8a268")
 	# on_pickup hooks
 	if item.has("on_pickup"):
 		_resolve_effects(item["on_pickup"])
+	# Composite connection conditions sometimes depend on items
+	_check_composite_connections()
 	# Lose inertia per Bindle component
 	if item.get("category", "") == "bindle_component" or item.get("category", "") == "bindle_contents":
 		_inertia = max(0, _inertia - 1)
@@ -2314,7 +2473,7 @@ func _phase_planning() -> void:
 		if card.get("starter", false) and not (cid in _hand_cards):
 			_hand_cards.append(cid)
 	_time = _next_time_reset
-	_next_time_reset = 6
+	_next_time_reset = int((_setup.get("starting_state", {}) as Dictionary).get("time_per_turn", 4))
 	# If the Bindle has been assembled but LEAP isn't in hand yet,
 	# add it now. (LEAP is awarded by BUNDLE, never purchased.)
 	if _bindle_assembled and not ("leap" in _hand_cards):
