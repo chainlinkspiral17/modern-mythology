@@ -2249,9 +2249,12 @@ func _on_play_card(cid: String) -> void:
 	_log_line("→ played [b]%s[/b]" % card.get("title", cid))
 	# Resolve effects
 	_resolve_effects(card.get("effects", []))
-	# Tableau cards (framework core): do a Threshold Roll
+	# Framework cards: either a dice-roll outcome (double_success
+	# present) or a passive (passive_effect present, e.g. SPEND IT).
 	if card.has("double_success"):
 		_resolve_framework_card(card)
+	elif card.has("passive_effect"):
+		_apply_framework_card_mechanic(card.get("id", ""), "passive")
 	# Remove from hand (except for starter Zero Cost — they refresh next planning)
 	_hand_cards.erase(cid)
 	if _is_starter(cid):
@@ -2767,6 +2770,7 @@ func _apply_framework_card_mechanic(cid: String, result: String) -> void:
 			pass
 		"spend_it":
 			_time += 1
+			_log_line("[color=#7cffb0]✦ SPEND IT: +1 Time[/color]  (Time → %d)" % _time)
 		"improvise":
 			# Replays the last-played card's mechanic. Currently no-op
 			# until we track last-played card state.
