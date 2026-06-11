@@ -1,14 +1,15 @@
 {
   "scope": "fool",
-  "notes": "12 cards drawn one-per-turn during the Shadow phase. Spec: lore/_TAROT_GAUNTLET.md §IV.7.",
+  "notes": "Drawn one-per-turn during the Shadow phase. The room presses on John mentally — sanity-drain effects model the 24-hour-diner-of-the-soul wear. Spec: lore/_TAROT_GAUNTLET.md §IV.7.",
   "cards": [
     {
       "id": "the_clock_holds",
       "title": "THE CLOCK HOLDS",
-      "flavor": "Three forty-seven AM. Three forty-seven AM. Three forty-seven AM.",
+      "flavor": "Three forty-seven AM. Three forty-seven AM. Three forty-seven AM. The hand doesn't move and you notice you weren't watching it move either.",
       "effects": [
         {"kind": "set_next_time_reset", "value": 5},
-        {"kind": "gain_inertia", "amount": 1}
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "lose_sanity", "amount": 1}
       ]
     },
     {
@@ -33,9 +34,10 @@
     {
       "id": "the_fluorescent_tick",
       "title": "THE FLUORESCENT TICK",
-      "flavor": "Every two seconds, a yellow tick.",
+      "flavor": "Every two seconds, a yellow tick. You start counting between ticks and then forget what you were counting.",
       "effects": [
-        {"kind": "this_turn_time_cost_modifier", "min_cost_for_bump": 2, "bump": 1}
+        {"kind": "this_turn_time_cost_modifier", "min_cost_for_bump": 2, "bump": 1},
+        {"kind": "lose_sanity", "amount": 1}
       ]
     },
     {
@@ -72,10 +74,10 @@
     {
       "id": "the_painted_pose",
       "title": "THE PAINTED POSE",
-      "flavor": "Somewhere across town, in a room you've never been to, you are already a painting.",
+      "flavor": "Somewhere across town, in a room you've never been to, you are already a painting. You can almost see the brushstrokes from inside your own face.",
       "effects": [
         {"kind": "if_visitor_not_connected", "visitor": "stranger",
-         "then": [{"kind": "gain_inertia", "amount": 1}]}
+         "then": [{"kind": "gain_inertia", "amount": 1}, {"kind": "lose_sanity", "amount": 1}]}
       ]
     },
     {
@@ -108,12 +110,60 @@
     {
       "id": "nine_locust_seventeen_door",
       "title": "NINE LOCUST SEVENTEEN DOOR",
-      "flavor": "The number-sequence whispering from under the formica.",
+      "flavor": "The number-sequence whispering from under the formica. You realize you've been mouthing it for who knows how long.",
       "endgame": true,
       "effects": [
         {"kind": "reveal_threshold", "threshold": "precipice_door"},
         {"kind": "set_flag", "key": "counter_haunted", "value": true,
-         "note": "every subsequent turn standing on COUNTER adds +1 Inertia"}
+         "note": "every subsequent turn standing on COUNTER adds +1 Inertia"},
+        {"kind": "lose_sanity", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_grill_smells_like_a_funeral",
+      "title": "THE GRILL SMELLS LIKE A FUNERAL",
+      "flavor": "Onions and old grease and, underneath, a flower-shop smell that has no business being in here.",
+      "effects": [
+        {"kind": "lose_sanity", "amount": 1},
+        {"kind": "if_at", "pos": "kitchen_alcove",
+         "then": [{"kind": "lose_sanity", "amount": 1, "note": "standing in it"}]}
+      ]
+    },
+    {
+      "id": "your_name_in_someone_elses_voice",
+      "title": "YOUR NAME, IN SOMEONE ELSE'S VOICE",
+      "flavor": "Soft, from the booth behind you. The exact wrong pronunciation — the one only your sister ever used.",
+      "effects": [
+        {"kind": "lose_sanity", "amount": 2}
+      ]
+    },
+    {
+      "id": "the_window_shows_the_wrong_river",
+      "title": "THE WINDOW SHOWS THE WRONG RIVER",
+      "flavor": "It runs upstream tonight and you are the only one in here who can see it doing it.",
+      "effects": [
+        {"kind": "lose_sanity", "amount": 1},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_song_youve_been_humming",
+      "title": "THE SONG YOU'VE BEEN HUMMING",
+      "flavor": "You can't place it. You've been humming it for hours. The jukebox is unplugged.",
+      "effects": [
+        {"kind": "lose_sanity", "amount": 1},
+        {"kind": "if_played_this_turn", "card": "short_rest",
+         "then": [{"kind": "recover_sanity", "amount": 1, "note": "you caught yourself doing it"}]}
+      ]
+    },
+    {
+      "id": "the_apron_pocket",
+      "title": "THE APRON POCKET",
+      "flavor": "Your hand goes in and finds a note in your own handwriting. You don't remember writing it. You don't read it.",
+      "endgame": true,
+      "effects": [
+        {"kind": "lose_sanity", "amount": 2},
+        {"kind": "gain_inertia", "amount": 1}
       ]
     }
   ]

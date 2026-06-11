@@ -23,7 +23,7 @@
     "time": 6,
     "time_per_turn": 6,
     "inertia": 0,
-    "health": 5,
+    "sanity": 5,
     "starting_hand": ["walk", "focus", "search", "short_rest", "clean", "greet", "listen", "deliver"]
   },
   "visitors_present_at_start": ["stranger", "faith"],

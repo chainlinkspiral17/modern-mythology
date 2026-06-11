@@ -4,7 +4,7 @@
   "subtitle": "twelve years at the counter",
   "portrait": "assets/gallery/johnfrank_face.png",
   "stats": {
-    "health": 5,
+    "sanity": 5,
     "starting_time": 6
   },
   "ultimate_ability": {

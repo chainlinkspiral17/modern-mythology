@@ -102,7 +102,7 @@
       "category": "consumable",
       "flavor": "Cold rim. Familiar bitterness.",
       "hands": 1,
-      "effects_on_use": [{"kind": "recover_health", "amount": 1}, {"kind": "discard_self"}]
+      "effects_on_use": [{"kind": "recover_sanity", "amount": 1}, {"kind": "discard_self"}]
     },
     "card_within_card": {
       "title": "The Card Within the Card",

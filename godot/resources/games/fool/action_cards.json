@@ -78,10 +78,9 @@
       "title": "SIT WITH",
       "time_cost": 1,
       "starter": false,
-      "flavor": "Stay put. Be witnessed. The connection closes. The action passes.",
+      "flavor": "Stay put. Be witnessed. Only closes if they're ready (GREET → LISTEN → DELIVER done) or if their path is open another way. Always ends the action phase.",
       "requires": [
-        {"kind": "visitor_at_my_pos"},
-        {"kind": "visitor_at_my_pos_progress_at_least", "n": 3}
+        {"kind": "visitor_at_my_pos"}
       ],
       "effects": [
         {"kind": "advance_visitor_step", "step": "sit_with"},
@@ -97,7 +96,7 @@
       "flavor": "Lean on the counter for two breaths.",
       "requires": [],
       "effects": [
-        {"kind": "recover_health", "amount": 1},
+        {"kind": "recover_sanity", "amount": 1},
         {"kind": "if_at_pos_and_visitor_arrived_this_turn",
          "pos": "kitchen_alcove", "visitor": "dawn_cook",
          "then": [{"kind": "mark_connection", "visitor": "dawn_cook"}]}

@@ -43,19 +43,19 @@
       "id": "short_rest",
       "title": "SHORT REST",
       "time_cost": 1,
-      "double_success": "Recover 2 Health.",
-      "single_success": "Recover 1 Health.",
-      "failure":        "No Health recovered.",
-      "tags": ["health"]
+      "double_success": "Recover 2 Sanity.",
+      "single_success": "Recover 1 Sanity.",
+      "failure":        "No Sanity recovered.",
+      "tags": ["sanity"]
     },
     {
       "id": "long_rest",
       "title": "LONG REST",
       "time_cost": 2,
-      "double_success": "Recover 3 Health.",
-      "single_success": "Recover 2 Health.",
-      "failure":        "Recover 1 Health, lose 1 Time.",
-      "tags": ["health"]
+      "double_success": "Recover 3 Sanity.",
+      "single_success": "Recover 2 Sanity.",
+      "failure":        "Recover 1 Sanity, lose 1 Time.",
+      "tags": ["sanity"]
     },
     {
       "id": "distraction",

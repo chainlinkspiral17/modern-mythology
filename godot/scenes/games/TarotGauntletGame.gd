@@ -48,7 +48,7 @@ var _turn: int = 1
 var _time: int = 6
 var _next_time_reset: int = 6   # set by Gravity/Event cards mid-turn
 var _inertia: int = 0
-var _health: int = 5
+var _sanity: int = 5
 var _player_pos: String = "counter"
 var _hand_cards: Array = []     # array of card ids currently in hand
 var _gravity_draw_pile: Array = []
@@ -75,7 +75,7 @@ var _phase_label: Label = null
 var _turn_label: Label = null
 var _time_label: Label = null
 var _inertia_label: Label = null
-var _health_label: Label = null
+var _sanity_label: Label = null
 var _player_pos_label: Label = null
 var _bindle_label: Label = null
 var _visitors_box: VBoxContainer = null
@@ -98,7 +98,7 @@ var _board_fullscreen: bool = false
 # Last-rendered stat values, used by _render to flash labels on change
 var _last_rendered_time: int = -1
 var _last_rendered_inertia: int = -1
-var _last_rendered_health: int = -1
+var _last_rendered_sanity: int = -1
 # Every space the player has stood on at least once. Used by composite
 # connect_via conditions (e.g. stranger requires stood_on:card_wall).
 var _places_visited: Dictionary = {}
@@ -272,7 +272,7 @@ func _audio_sfx(key: String) -> void:
 # audio + visual feedback. Cheap to call; safe if a target is null.
 
 # Pulse a label's color toward `flash` and back. Used on stat changes
-# (time / inertia / health) so the player SEES what a card did, not
+# (time / inertia / sanity) so the player SEES what a card did, not
 # just reads it in the log.
 func _pulse_label(lbl: Label, flash: Color, dur: float = 0.55) -> void:
 	if lbl == null:
@@ -418,8 +418,8 @@ func _load_data() -> void:
 	var arc_deck  := _load_json(arc_root + "action_cards.json")
 	# Player cards are UNIVERSAL by default. They travel with the
 	# HAND from location to location. Cards that need specific
-	# spaces (WIPE COUNTER needs "counter"; ADDRESS THE BBS BANNER
-	# needs "register") self-gate via their `requires` clause —
+	# spaces (CLEAN works anywhere; ADDRESS THE BBS needs the
+	# "register") self-gate via their `requires` clause —
 	# they're loaded everywhere but only playable where the named
 	# space exists.
 	#
@@ -472,7 +472,7 @@ func _init_run() -> void:
 	_time       = int(start.get("time", 4))
 	_next_time_reset = int(start.get("time_per_turn", _time))
 	_inertia    = int(start.get("inertia", 0))
-	_health     = int(start.get("health", 5))
+	_sanity     = int(start.get("sanity", start.get("health", 5)))
 	_hand_cards = (start.get("starting_hand", []) as Array).duplicate()
 
 	# Visitors: place those marked on_board_at_start; queue scheduled ones
@@ -571,7 +571,7 @@ func _build_ui() -> void:
 	_turn_label     = _make_track_label("Turn 1")
 	_time_label     = _make_track_label("Time 6 / 6")
 	_inertia_label  = _make_track_label("Inertia 0 / 12")
-	_health_label   = _make_track_label("Health 5")
+	_sanity_label   = _make_track_label("Sanity 5")
 	_phase_label    = _make_track_label("PHASE: ACTION")
 	# Click the phase label → open How to Play modal. Tooltip updated
 	# every render to describe what to do in the current phase.
@@ -583,7 +583,7 @@ func _build_ui() -> void:
 			_open_pane_modal("How to Play — Phases", _build_phase_help_modal_body))
 	_player_pos_label = _make_track_label("at: counter")
 	_bindle_label   = _make_track_label("Bindle: —")
-	for lbl in [_phase_label, _turn_label, _time_label, _inertia_label, _health_label, _player_pos_label, _bindle_label]:
+	for lbl in [_phase_label, _turn_label, _time_label, _inertia_label, _sanity_label, _player_pos_label, _bindle_label]:
 		top_hb.add_child(lbl)
 
 	# ── Left/center: location board ──────────────────────────────────
@@ -1222,13 +1222,14 @@ func _open_visitor_view(vid: String) -> void:
 	beats_header.add_theme_font_size_override("font_size", 11)
 	info.add_child(beats_header)
 	var steps_dict: Dictionary = v.get("steps", {})
+	var cur_progress: int = int(st.get("progress", 0))
 	for step_name in ["greet", "listen", "deliver", "sit_with"]:
 		var step_line: String = String(steps_dict.get(step_name, ""))
 		if step_line == "":
 			var defaults: Dictionary = _step_defaults_by_mood.get(String(v.get("mood", "preoccupied")), {})
 			step_line = String(defaults.get(step_name, ""))
 		var step_idx: int = _step_index(step_name)
-		var step_done: bool = int(st.get("progress", 0)) >= step_idx
+		var step_done: bool = cur_progress >= step_idx
 		var bullet: String = "[color=#7cffb0]✓[/color]" if step_done else "[color=#7c8398]·[/color]"
 		var step_rt := RichTextLabel.new()
 		step_rt.bbcode_enabled = true
@@ -1237,27 +1238,35 @@ func _open_visitor_view(vid: String) -> void:
 		step_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		step_rt.add_theme_color_override("default_color", C_TEXT)
 		step_rt.add_theme_font_size_override("normal_font_size", 11)
-		# Hide step text until reached (no spoilers); show the label only
-		if step_done or step_idx <= int(st.get("progress", 0)) + 1:
+		# Reveal only what's happened. Completed steps show flavor.
+		# Next-up step shows only its label (vague). Steps beyond that
+		# are even vaguer — no name, just a placeholder.
+		if step_done:
 			step_rt.text = "  %s [b]%s[/b]  [color=#7c8398][i]%s[/i][/color]" % [bullet, step_name.to_upper(), step_line]
+		elif step_idx == cur_progress + 1:
+			step_rt.text = "  %s [color=#c8a268]%s[/color]" % [bullet, step_name.to_upper()]
 		else:
-			step_rt.text = "  %s [color=#7c8398]%s[/color]" % [bullet, step_name.to_upper()]
+			step_rt.text = "  %s [color=#5e5650]· · ·[/color]" % bullet
 		info.add_child(step_rt)
-	# Order they want (visible once arrived)
+	# Order they want — kept hidden until they've actually ordered
+	# (LISTEN done, progress >= 2). Until then it reads as "?".
 	if arrived and v.has("order_item"):
-		var ord_id: String = String(v["order_item"])
-		var ord_item: Dictionary = _items_def.get(ord_id, {})
-		if not ord_item.is_empty():
-			info.add_child(HSeparator.new())
-			var order_rt := RichTextLabel.new()
-			order_rt.bbcode_enabled = true
-			order_rt.fit_content = true
-			order_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			order_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			order_rt.add_theme_color_override("default_color", C_TEXT)
-			order_rt.add_theme_font_size_override("normal_font_size", 11)
-			order_rt.text = "[b]ORDER:[/b]  %s\n[color=#7c8398][i]%s[/i][/color]" % [ord_item.get("title", ord_id), ord_item.get("flavor", "")]
-			info.add_child(order_rt)
+		info.add_child(HSeparator.new())
+		var order_rt := RichTextLabel.new()
+		order_rt.bbcode_enabled = true
+		order_rt.fit_content = true
+		order_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		order_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		order_rt.add_theme_color_override("default_color", C_TEXT)
+		order_rt.add_theme_font_size_override("normal_font_size", 11)
+		if cur_progress < 2:
+			order_rt.text = "[b]ORDER:[/b]  [color=#7c8398][i]they haven't said yet.[/i][/color]"
+		else:
+			var ord_id: String = String(v["order_item"])
+			var ord_item: Dictionary = _items_def.get(ord_id, {})
+			if not ord_item.is_empty():
+				order_rt.text = "[b]ORDER:[/b]  %s\n[color=#7c8398][i]%s[/i][/color]" % [ord_item.get("title", ord_id), ord_item.get("flavor", "")]
+		info.add_child(order_rt)
 	# Spacer + close button
 	var spacer := Control.new()
 	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -1470,9 +1479,9 @@ func _inertia_mood(level: int) -> String:
 	return "\n".join(out)
 
 
-# Health mood — invented tier descriptions since the setup JSON
+# Sanity mood — invented tier descriptions since the setup JSON
 # doesn't enumerate them. Max 5.
-func _health_mood(h: int) -> String:
+func _sanity_mood(h: int) -> String:
 	var line: String = ""
 	if h >= 5:
 		line = "Steady. Cloth in hand, feet on the floor."
@@ -1486,7 +1495,7 @@ func _health_mood(h: int) -> String:
 		line = "A breath from the loop closing. Find somewhere to settle."
 	else:
 		line = "Gone. Faith hasn't moved."
-	return "Health %d / 5\n\"%s\"\n\nShort Rest and Long Rest recover. Some Gravity cards bleed it." % [h, line]
+	return "Sanity %d / 5\n\"%s\"\n\nA Short Rest steadies you. The room — fluorescents, looping clocks, voices you almost recognize — wears it down." % [h, line]
 
 
 # ── Board rendering ──────────────────────────────────────────────────
@@ -1494,12 +1503,19 @@ func _health_mood(h: int) -> String:
 func _render_board() -> void:
 	if _board_content == null:
 		return
-	# Clear — content control owns bg, markers, labels, meeples.
-	for c in _board_content.get_children():
-		c.queue_free()
+	# Static layout (bg, adjacency lines, markers, labels) is torn
+	# down every render so highlight/chevron can follow the player.
+	# MEEPLES are persistent — recreating them each render produced
+	# a visible judder as freshly-spawned nodes snapped from (0,0)
+	# to their target. We keep player_meeple + visitor_* across
+	# renders and only re-add/remove on actual state changes.
 	_board_space_nodes.clear()
-	_board_visitor_nodes.clear()
 	_board_marker_pos.clear()
+	for c in _board_content.get_children():
+		var cnm: String = c.name
+		if cnm == "player_meeple" or cnm.begins_with("visitor_"):
+			continue
+		c.queue_free()
 	# Background image layer (rendered first so labels draw on top).
 	# If the location-specific board art is missing, fall back to the
 	# bare grid we used to render.
@@ -1632,57 +1648,81 @@ func _render_board() -> void:
 		node.name = "space_" + sid
 		_board_content.add_child(node)
 		_board_space_nodes[sid] = node
-	# Player meeple — image if present, otherwise styled label.
-	# Sizes scale with the board so the meeple stays proportional.
-	var player_art: Texture2D = _load_texture_silent(_art_path_meeple("john"))
-	if player_art:
-		var mp := TextureRect.new()
-		mp.texture = player_art
-		mp.custom_minimum_size = Vector2(player_meeple_size, player_meeple_size)
-		mp.size = Vector2(player_meeple_size, player_meeple_size)
-		mp.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		mp.name = "player_meeple"
-		_board_meeple = mp
-	else:
-		var lbl_m := Label.new()
-		lbl_m.text = "★"
-		lbl_m.add_theme_color_override("font_color", C_ACCENT)
-		lbl_m.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
-		lbl_m.add_theme_constant_override("outline_size", int(max(2, 4.0 * ui_scale)))
-		lbl_m.add_theme_font_size_override("font_size", int(max(11, 18.0 * ui_scale)))
-		lbl_m.name = "player_meeple"
-		_board_meeple = lbl_m
-	_board_meeple.tooltip_text = _tooltip_for_player()
-	_board_meeple.mouse_filter = Control.MOUSE_FILTER_STOP
-	_board_content.add_child(_board_meeple)
-	# Visitor meeples — image if present, otherwise small colored dot.
-	for vid in _visitors_state:
-		var v: Dictionary = _visitors_state[vid]
-		if not v.get("arrived", false):
-			continue
-		var vdef: Dictionary = _visitors_def[vid]
-		var vis_art: Texture2D = _load_texture_silent(_art_path_meeple(vid))
-		var vnode: Control
-		if vis_art:
-			var vm := TextureRect.new()
-			vm.texture = vis_art
-			vm.custom_minimum_size = Vector2(visitor_meeple_size, visitor_meeple_size)
-			vm.size = Vector2(visitor_meeple_size, visitor_meeple_size)
-			vm.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-			vnode = vm
+	# Player meeple — persistent across renders. Create on first
+	# render, resize to current ui_scale otherwise.
+	if _board_meeple == null or not is_instance_valid(_board_meeple):
+		var player_art: Texture2D = _load_texture_silent(_art_path_meeple("john"))
+		if player_art:
+			var mp := TextureRect.new()
+			mp.texture = player_art
+			mp.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			mp.name = "player_meeple"
+			_board_meeple = mp
 		else:
-			var dot := Label.new()
-			dot.text = "●"
-			dot.add_theme_color_override("font_color", Color(vdef.get("accent", "#c8a268")))
-			dot.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
-			dot.add_theme_constant_override("outline_size", int(max(2, 3.0 * ui_scale)))
-			dot.add_theme_font_size_override("font_size", int(max(10, 14.0 * ui_scale)))
-			vnode = dot
-		vnode.name = "visitor_" + vid
+			var lbl_m := Label.new()
+			lbl_m.text = "★"
+			lbl_m.add_theme_color_override("font_color", C_ACCENT)
+			lbl_m.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
+			lbl_m.name = "player_meeple"
+			_board_meeple = lbl_m
+		_board_meeple.mouse_filter = Control.MOUSE_FILTER_STOP
+		# Place it on the marker immediately so the very first frame
+		# doesn't show a (0,0) ghost.
+		if _board_marker_pos.has(_player_pos):
+			var pms: Vector2 = Vector2(player_meeple_size, player_meeple_size)
+			_board_meeple.position = _board_marker_pos[_player_pos] - pms * 0.5
+		_board_content.add_child(_board_meeple)
+	_board_meeple.custom_minimum_size = Vector2(player_meeple_size, player_meeple_size)
+	_board_meeple.size = Vector2(player_meeple_size, player_meeple_size)
+	if _board_meeple is Label:
+		(_board_meeple as Label).add_theme_constant_override("outline_size", int(max(2, 4.0 * ui_scale)))
+		(_board_meeple as Label).add_theme_font_size_override("font_size", int(max(11, 18.0 * ui_scale)))
+	_board_meeple.tooltip_text = _tooltip_for_player()
+	# Visitor meeples — persistent. Drop nodes for visitors who left
+	# or haven't arrived; add nodes for newly-arrived visitors.
+	var present_vids: Dictionary = {}
+	for vid in _visitors_state:
+		if _visitors_state[vid].get("arrived", false):
+			present_vids[vid] = true
+	for vid in _board_visitor_nodes.keys():
+		if not present_vids.has(vid):
+			var stale: Control = _board_visitor_nodes[vid]
+			if is_instance_valid(stale):
+				stale.queue_free()
+			_board_visitor_nodes.erase(vid)
+	for vid in present_vids.keys():
+		var vdef: Dictionary = _visitors_def[vid]
+		var vnode: Control
+		if _board_visitor_nodes.has(vid) and is_instance_valid(_board_visitor_nodes[vid]):
+			vnode = _board_visitor_nodes[vid]
+		else:
+			var vis_art: Texture2D = _load_texture_silent(_art_path_meeple(vid))
+			if vis_art:
+				var vm := TextureRect.new()
+				vm.texture = vis_art
+				vm.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+				vnode = vm
+			else:
+				var dot := Label.new()
+				dot.text = "●"
+				dot.add_theme_color_override("font_color", Color(vdef.get("accent", "#c8a268")))
+				dot.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
+				vnode = dot
+			vnode.name = "visitor_" + vid
+			vnode.mouse_filter = Control.MOUSE_FILTER_STOP
+			# Spawn at the marker so it doesn't slide from (0,0).
+			var vp: String = String(_visitors_state[vid].get("pos", ""))
+			if _board_marker_pos.has(vp):
+				var vms: Vector2 = Vector2(visitor_meeple_size, visitor_meeple_size)
+				vnode.position = _board_marker_pos[vp] - vms * 0.5
+			_board_content.add_child(vnode)
+			_board_visitor_nodes[vid] = vnode
+		vnode.custom_minimum_size = Vector2(visitor_meeple_size, visitor_meeple_size)
+		vnode.size = Vector2(visitor_meeple_size, visitor_meeple_size)
+		if vnode is Label:
+			(vnode as Label).add_theme_constant_override("outline_size", int(max(2, 3.0 * ui_scale)))
+			(vnode as Label).add_theme_font_size_override("font_size", int(max(10, 14.0 * ui_scale)))
 		vnode.tooltip_text = _tooltip_for_visitor(vid)
-		vnode.mouse_filter = Control.MOUSE_FILTER_STOP
-		_board_content.add_child(vnode)
-		_board_visitor_nodes[vid] = vnode
 	_position_meeples()
 
 
@@ -2163,7 +2203,8 @@ func _describe_effect(e: Dictionary) -> String:
 		"lose_time":      return "-%d Time" % int(e.get("amount", 1))
 		"gain_inertia":   return "+%d Inertia" % int(e.get("amount", 1))
 		"lose_inertia":   return "-%d Inertia" % int(e.get("amount", 1))
-		"recover_health": return "+%d Health" % int(e.get("amount", 1))
+		"recover_sanity": return "+%d Sanity" % int(e.get("amount", 1))
+		"lose_sanity":    return "-%d Sanity" % int(e.get("amount", 1))
 		"log":            return String(e.get("text", ""))
 		"if_at":
 			var then_e: Array = e.get("then", [])
@@ -2275,7 +2316,7 @@ func _tooltip_for_player() -> String:
 	var lines: PackedStringArray = []
 	lines.append("★ John Frank")
 	lines.append("At: " + _player_pos.replace("_", " "))
-	lines.append("Time %d  ·  Inertia %d  ·  Health %d" % [_time, _inertia, _health])
+	lines.append("Time %d  ·  Inertia %d  ·  Sanity %d" % [_time, _inertia, _sanity])
 	if _bindle_assembled:
 		lines.append("Bindle: assembled — LEAP at a threshold")
 	else:
@@ -2826,11 +2867,11 @@ func _render() -> void:
 	_turn_label.text  = "Turn %d" % _turn
 	_time_label.text  = "Time %d / %d" % [_time, _next_time_reset]
 	_inertia_label.text = "Inertia %d / 12" % _inertia
-	_health_label.text  = "Health %d" % _health
+	_sanity_label.text  = "Sanity %d" % _sanity
 	# Evocative tooltips driven by the current value — the player
 	# hovers and gets the room's mood at that pressure level.
 	_inertia_label.tooltip_text = _inertia_mood(_inertia)
-	_health_label.tooltip_text = _health_mood(_health)
+	_sanity_label.tooltip_text = _sanity_mood(_sanity)
 	_time_label.tooltip_text = "Time is your action budget for the turn. Unspent Time carries over into the next turn (Final Girl style)."
 	_turn_label.tooltip_text = "Each turn cycles ACTION → PLANNING → SHADOW → DRIFT → UPKEEP."
 	# Flash labels on change — green for gain, red for loss
@@ -2839,11 +2880,11 @@ func _render() -> void:
 		_pulse_label(_time_label, Color(0.49, 1.0, 0.69) if _time > _last_rendered_time else Color(1.0, 0.50, 0.39))
 	if _last_rendered_inertia != -1 and _inertia != _last_rendered_inertia:
 		_pulse_label(_inertia_label, Color(0.49, 1.0, 0.69) if _inertia < _last_rendered_inertia else Color(1.0, 0.50, 0.39))
-	if _last_rendered_health != -1 and _health != _last_rendered_health:
-		_pulse_label(_health_label, Color(0.49, 1.0, 0.69) if _health > _last_rendered_health else Color(1.0, 0.50, 0.39))
+	if _last_rendered_sanity != -1 and _sanity != _last_rendered_sanity:
+		_pulse_label(_sanity_label, Color(0.49, 1.0, 0.69) if _sanity > _last_rendered_sanity else Color(1.0, 0.50, 0.39))
 	_last_rendered_time = _time
 	_last_rendered_inertia = _inertia
-	_last_rendered_health = _health
+	_last_rendered_sanity = _sanity
 	_player_pos_label.text = "at: " + _player_pos
 	_bindle_label.text = "Bindle: " + _bindle_display()
 	# Rebuild the board so the » chevron + highlight color follow
@@ -3138,8 +3179,10 @@ func _resolve_effect(e: Dictionary) -> void:
 	var kind: String = e.get("kind", "")
 	match kind:
 		"gain_time":
+			# In-turn modifier only — Time refreshes next turn and
+			# leftover never carries, so gain_time doesn't push the
+			# next-turn baseline upward.
 			_time += int(e.get("amount", 0))
-			_next_time_reset += int(e.get("amount", 0))
 		"lose_time":
 			_time = max(0, _time - int(e.get("amount", 0)))
 		"gain_inertia":
@@ -3154,8 +3197,21 @@ func _resolve_effect(e: Dictionary) -> void:
 		"lose_inertia":
 			_inertia = max(0, _inertia - int(e.get("amount", 0)))
 			_log_line("[color=#7cffb0]-%d Inertia[/color] → %d" % [e.get("amount", 0), _inertia])
-		"recover_health":
-			_health = min(5, _health + int(e.get("amount", 0)))
+		"recover_sanity":
+			var rec_amt: int = int(e.get("amount", 0))
+			_sanity = min(5, _sanity + rec_amt)
+			if rec_amt > 0:
+				_log_line("[color=#7cffb0]+%d Sanity[/color] → %d" % [rec_amt, _sanity])
+		"lose_sanity":
+			# Mental-threat mechanic. The room thins you out — voices
+			# you almost remember, lights that tick when you breathe,
+			# clocks that won't move. At 0, the loop closes.
+			var amt: int = int(e.get("amount", 1))
+			_sanity = max(0, _sanity - amt)
+			_log_line("[color=#ff8060]-%d Sanity[/color] → %d" % [amt, _sanity])
+			if _sanity == 0:
+				_log_line("[color=#ff5040][b]The fluorescent goes solid. The counter is colder than the cloth. You don't quite remember what you came in here for.[/b][/color]")
+				_trigger_loss("sanity_zero")
 		"log":
 			_log_line("[i]%s[/i]" % e.get("text", ""))
 		"if_at":
@@ -3279,13 +3335,28 @@ func _resolve_effect(e: Dictionary) -> void:
 			_this_turn_cost_bump_amt = int(e.get("bump", 1))
 			_log_line("[color=#ff8060][i]Expensive cards cost +%d Time this turn (the tick keeps time wrong).[/i][/color]" % _this_turn_cost_bump_amt)
 		"connect_visitor_at_my_pos":
-			# Used by SIT WITH — connect any arrived, unconnected
-			# visitor at the player's current position.
+			# Used by SIT WITH. Visitors with a special connect_via
+			# (composite / card_played_n_times / auto_on_bundle_with_contents)
+			# have their own path — sitting with them logs the
+			# moment but doesn't artificially close the connection.
+			# Waiter visitors (no special connect_via) connect only
+			# after GREET → LISTEN → DELIVER (progress >= 3).
 			for vid_p in _visitors_state:
 				var vst_p: Dictionary = _visitors_state[vid_p]
-				if vst_p.get("arrived", false) and not vst_p.get("connected", false) and vst_p.get("pos", "") == _player_pos:
-					_connect_visitor(vid_p)
-					break
+				if not vst_p.get("arrived", false): continue
+				if vst_p.get("connected", false): continue
+				if vst_p.get("pos", "") != _player_pos: continue
+				var vdef_p: Dictionary = _visitors_def.get(vid_p, {})
+				var cv_p: Dictionary = vdef_p.get("connect_via", {})
+				if not cv_p.is_empty():
+					_log_line("[i]you sit. they don't lift their eyes.[/i]")
+					continue
+				var prog_p: int = int(vst_p.get("progress", 0))
+				if prog_p < 3:
+					_log_line("[i]they're not ready to be sat with yet.[/i]")
+					continue
+				_connect_visitor(vid_p)
+				break
 		"place_pending_order_for_visitor":
 			# LISTEN follow-on. Find the visitor at the player's pos
 			# whose progress was just bumped, look up their
@@ -3363,16 +3434,19 @@ func _resolve_effect(e: Dictionary) -> void:
 			if target_vid == "":
 				_log_line("[i]nobody here to %s[/i]" % step_name)
 				return
-			# Advance progress
+			# Only advance progress if this is the *next* step for
+			# them. SIT WITH on a visitor still at 0 (the stranger,
+			# composite path) logs the moment but doesn't bump them
+			# to step 4. Out-of-order or repeat plays log the flavor
+			# line but leave progress alone.
 			var step_idx: int = _step_index(step_name)
-			if step_idx > 0:
+			var cur_prog: int = int(_visitors_state[target_vid].get("progress", 0))
+			var advanced: bool = false
+			if step_idx > 0 and step_idx == cur_prog + 1:
 				_visitors_state[target_vid]["progress"] = step_idx
-			# Log the per-visitor / per-mood flavor line for this step
+				advanced = true
 			_log_visitor_step_line(target_vid, step_name)
-			# Engagement is the Fool upright's antidote to the Fool
-			# reversed's Inertia. Each step you take with a person
-			# pulls the room's hold off you by 1.
-			if step_idx > 0:
+			if advanced:
 				_inertia = max(0, _inertia - 1)
 		_:
 			_log_line("[i](unhandled effect: %s)[/i]" % kind)
@@ -3890,7 +3964,7 @@ func _take_top_item_at_pos() -> void:
 				item_id = iid
 				break
 		if item_id == "":
-			_log_line("[i]the orders here are still pending — ring the BELL first.[/i]")
+			_log_line("[i]the orders here are still pending — the cook hasn't rung the bell yet.[/i]")
 			return
 		_pile_state[pile_id].erase(item_id)
 		_order_pending.erase(item_id)
@@ -4086,15 +4160,15 @@ func _apply_framework_card_mechanic(cid: String, result: String) -> void:
 					_log_line("[i]nothing useful in reach.[/i]")
 		"short_rest":
 			match result:
-				"ss":   _health = min(5, _health + 2)
-				"s":    _health = min(5, _health + 1)
+				"ss":   _sanity = min(5, _sanity + 2)
+				"s":    _sanity = min(5, _sanity + 1)
 				"fail": pass
 		"long_rest":
 			match result:
-				"ss":   _health = min(5, _health + 3)
-				"s":    _health = min(5, _health + 2)
+				"ss":   _sanity = min(5, _sanity + 3)
+				"s":    _sanity = min(5, _sanity + 2)
 				"fail":
-					_health = min(5, _health + 1)
+					_sanity = min(5, _sanity + 1)
 					_time = max(0, _time - 1)
 		"focus":
 			# Bonus dice on the NEXT framework card's roll, plus a Time
@@ -4323,23 +4397,19 @@ func _phase_planning() -> void:
 		var card: Dictionary = _action_cards[cid]
 		if card.get("starter", false) and not (cid in _hand_cards):
 			_hand_cards.append(cid)
-	# Final Girl economy: leftover Time CARRIES OVER and adds on top
-	# of the per-turn base. So ending with 2 unspent → next turn starts
-	# with 6 + 2 = 8. Encourages efficient turns without punishing big
-	# saves for a planned splurge.
-	var carry: int = _time
-	_time = carry + _next_time_reset
+	# THE LEAP economy: time REFRESHES each turn — leftover Time
+	# does not carry. The tightness is the point; the 24-hour diner
+	# of the soul doesn't bank minutes for you. Modifiers and
+	# special effects can still set _next_time_reset for a specific
+	# turn (e.g. THE CLOCK HOLDS → 5).
+	_time = _next_time_reset
 	_next_time_reset = int((_setup.get("starting_state", {}) as Dictionary).get("time_per_turn", 6))
 	# If the Bindle has been assembled but LEAP isn't in hand yet,
 	# add it now. (LEAP is awarded by BUNDLE, never purchased.)
 	if _bindle_assembled and not ("leap" in _hand_cards):
 		_hand_cards.append("leap")
 		_log_line("[color=#ffd07a][b]LEAP added to your hand.[/b][/color]")
-	if carry > 0:
-		_log_line("[color=#c8a268][i]planning. Time = %d carried + %d base = %d.[/i][/color]" %
-			[carry, _next_time_reset, _time])
-	else:
-		_log_line("[color=#c8a268][i]planning. Time reset to %d. Click TABLEAU cards (above hand) to buy.[/i][/color]" % _time)
+	_log_line("[color=#c8a268][i]planning. Time refreshed to %d. Click TABLEAU cards (above hand) to buy.[/i][/color]" % _time)
 
 
 func _phase_shadow() -> void:
