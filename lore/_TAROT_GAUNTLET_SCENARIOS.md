@@ -47,21 +47,43 @@ you can't carry the Magician until you've understood his shadow.
 3. The **Inertia / tension stat** rename (each location's stat
    has a flavor name)
 4. The **win condition** the scenario card pins to
-5. **Visitor roster** that arrives during play (some on board at
-   start, some scheduled, some conditional)
+5. **Visitor roster + unique meeples** — the people and animals
+   who haunt this room. They're attached to the LOCATION, not to
+   any specific hand. Faith is D'Ambrosio's dog; she's there
+   whether John or Frasier or Elicia is playing. She does NOT
+   follow a hand across locations. Each room has its regulars.
 6. **Item piles** at search spaces — half the items are universal
    to that location, half unlock from completed runs
 7. **Scenario cards** — three variants per location
 
+If a HAND's character is ALSO a regular at that location (e.g.
+Frasier as hand playing at D'Ambrosio's, where Frasier is also
+a usual visitor), the location's visitor slot for that character
+gets replaced — typically by another diner regular pulled from
+the unlocked-visitor pool (Anya, an extra cook, etc.). You can't
+sit with yourself.
+
 ### A HAND provides:
 
-1. **Character meeple + portrait**
-2. **Action card set** (~10 cards) themed by the UPRIGHT arcana
+1. **Character meeple + portrait** (their player-piece travels
+   with them across locations)
+2. **Action card set** (~10 cards) themed by the UPRIGHT arcana —
+   UNIVERSAL by default, travels with the hand from location to
+   location. Cards that need a specific space (WIPE COUNTER needs
+   a "counter") self-gate via `requires`. Cards can opt-in to
+   location-locking via `available_in_locations: [...]` for the
+   rare verb that genuinely doesn't translate.
 3. An **Ultimate** — one-shot powerful card, name + flavor
-4. A **starting hand** that draws from the framework 11 plus
-   their unique cards
+4. A **starting hand** drawn from framework + their arcana-unique cards
 5. **Carryover unlocks** — cross-arcana items their previous
    completions made available
+
+A hand does NOT bring its own visitors. The visitor roster is
+location-scoped (see above). What John brings to the diner is
+HIMSELF + his action cards + Faith's name in his memory — but
+Faith herself lives at the diner. John playing the warehouse
+won't have Faith there; the warehouse has its own creatures
+(the warehouse demons).
 
 ### A SCENARIO CARD provides:
 
@@ -338,6 +360,9 @@ matching LOCATION at least once.
     becomes a search space in subsequent Diner runs
   - Cleared L1 (Warehouse) once → John can carry one already-
     placed element as a starting inventory item
+  - Note: Faith stays at the diner. She's the room's dog,
+    not John's. John plays the Warehouse without her —
+    that's part of the cost of leaving the room he knows.
 - **Mix-and-match notes**:
   - John @ L1 Warehouse: the Fool's slowness vs. the Magician's
     scattering. SIT WITH becomes a stabilizing action — when
