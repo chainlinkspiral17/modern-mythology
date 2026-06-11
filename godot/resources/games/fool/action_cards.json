@@ -3,21 +3,15 @@
   "notes": "Fool-unique action cards joined into the shared tableau when the Fool arcana is in play. Spec: lore/_TAROT_GAUNTLET.md §IV.10.",
   "cards": [
     {
-      "id": "wipe_counter",
-      "title": "WIPE COUNTER",
+      "id": "clean",
+      "title": "CLEAN",
       "time_cost": 0,
       "starter": true,
-      "flavor": "The cloth is warm. The formica is colder.",
+      "flavor": "Wipe a counter. Tidy a shelf. Square a table. Every room has something John knows how to do without thinking. +1 Time, +1 Inertia — the loop tempts.",
       "requires": [],
       "effects": [
-        {"kind": "if_at", "pos": "counter", "then": [
-          {"kind": "gain_time", "amount": 1},
-          {"kind": "gain_inertia", "amount": 1},
-          {"kind": "log", "text": "The tempting comfort. +1 Time, +1 Inertia."}
-        ]},
-        {"kind": "else", "then": [
-          {"kind": "log", "text": "No effect — you're not at the counter."}
-        ]}
+        {"kind": "gain_time", "amount": 1},
+        {"kind": "gain_inertia", "amount": 1}
       ]
     },
     {
@@ -110,11 +104,12 @@
       ]
     },
     {
-      "id": "address_the_bbs_banner",
-      "title": "ADDRESS THE BBS BANNER",
+      "id": "address_the_bbs",
+      "title": "ADDRESS THE BBS",
       "time_cost": 1,
       "starter": false,
-      "flavor": "RUST_CODE.BBS — type, listen.",
+      "available_in_locations": ["dambrosios"],
+      "flavor": "RUST_CODE.BBS at the register terminal — type, listen.",
       "requires": [{"kind": "at_pos", "pos": "register"}],
       "effects": [
         {"kind": "if_visitor_present", "visitor": "bbs_caller",

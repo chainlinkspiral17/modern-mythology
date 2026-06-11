@@ -16,7 +16,7 @@
       "title": "WIPE THE SAME SPOT",
       "flavor": "The routine wanted it.",
       "effects": [
-        {"kind": "if_played_this_turn", "card": "wipe_counter",
+        {"kind": "if_played_this_turn", "card": "clean",
          "then": [{"kind": "log", "text": "Counter wiped. No penalty."}],
          "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]

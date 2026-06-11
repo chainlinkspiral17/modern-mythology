@@ -139,7 +139,7 @@
     {"id": "who_taught",          "title": "WHO TAUGHT YOU TO BE A FOOL?",
      "effect": {"kind": "peek_gravity_top", "n": 3, "rearrange": true}},
     {"id": "second_counter_wipe", "title": "A SECOND COUNTER WIPE",
-     "effect": {"kind": "modify_card", "card": "wipe_counter", "field": "gain_time", "to": 2}},
+     "effect": {"kind": "modify_card", "card": "clean", "field": "gain_time", "to": 2}},
     {"id": "no_one_drove_by",     "title": "NO ONE'S DRIVEN BY IN AN HOUR",
      "effect": {"kind": "cancel_visitor_arrival", "visitor": "dawn_cook"}},
     {"id": "bell_third_tone",     "title": "THE BELL HAS A THIRD TONE",

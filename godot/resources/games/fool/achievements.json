@@ -11,7 +11,7 @@
     {"id": "leap_parking_lot",    "label": "Leap through Parking Lot",                "unlocks": "graustark_bound_items"},
     {"id": "leap_river_window",   "label": "Leap through River Window",               "unlocks": "substrate_bound_items"},
     {"id": "leap_precipice_door", "label": "Leap through Precipice Door",             "unlocks": "priestess_archive_items"},
-    {"id": "win_without_wipe",    "label": "Win without playing WIPE COUNTER",        "unlocks": "counter_is_sinkhole_card"},
+    {"id": "win_without_wipe",    "label": "Win without playing CLEAN",        "unlocks": "counter_is_sinkhole_card"},
     {"id": "win_all_visitors",    "label": "Win with all six Visitors connected",     "unlocks": "frasier_pen_permanent"},
     {"id": "win_inertia_zero",    "label": "Win with Inertia 0 at moment of LEAP",    "unlocks": "bare_feet_fool_hand"},
     {"id": "all_contents_picked", "label": "Win with every Contents option (5 games)","unlocks": "complete_bindle_codex_glyph"},

@@ -13,7 +13,7 @@
     "description": "Once per game, when you would draw a Gravity card, you may instead choose the top card of the Gravity discard pile and resolve that. You force the room to repeat itself — twelve years of doing this means you know its moves.",
     "uses_per_game": 1
   },
-  "starting_hand": ["walk", "focus", "search", "short_rest", "wipe_counter", "address_the_bell"],
+  "starting_hand": ["walk", "focus", "search", "short_rest", "clean", "address_the_bell"],
   "save_witness_rewards": null,
   "notes": "Spec: lore/_TAROT_GAUNTLET.md §IV.11."
 }

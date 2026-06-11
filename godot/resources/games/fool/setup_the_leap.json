@@ -24,7 +24,7 @@
     "time_per_turn": 6,
     "inertia": 0,
     "health": 5,
-    "starting_hand": ["walk", "focus", "search", "short_rest", "wipe_counter", "greet", "listen", "deliver"]
+    "starting_hand": ["walk", "focus", "search", "short_rest", "clean", "greet", "listen", "deliver"]
   },
   "visitors_present_at_start": ["stranger", "faith"],
   "visitor_schedule": [
