@@ -21,22 +21,6 @@
       ]
     },
     {
-      "id": "address_the_bell",
-      "title": "ADDRESS THE BELL",
-      "time_cost": 1,
-      "starter": true,
-      "flavor": "Tap the brass. Listen for the second tone. The oldest pending order goes READY.",
-      "requires": [{"kind": "at_pos", "pos": "bell"}],
-      "effects": [
-        {"kind": "ring_bell_tone"},
-        {"kind": "ready_oldest_order"},
-        {"kind": "if_both_tones_rung", "then": [
-          {"kind": "advance_next_visitor_arrival", "by": 1}
-        ]},
-        {"kind": "gain_inertia", "amount": 1}
-      ]
-    },
-    {
       "id": "call_faith",
       "title": "CALL FAITH",
       "time_cost": 1,

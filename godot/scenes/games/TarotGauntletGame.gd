@@ -398,9 +398,24 @@ func _load_data() -> void:
 	# Merge core + arcana-unique action cards into a flat dict by id
 	var core_deck := _load_json(FRAMEWORK_CORE)
 	var arc_deck  := _load_json(arc_root + "action_cards.json")
+	# Player cards are UNIVERSAL by default. They travel with the
+	# HAND from location to location. Cards that need specific
+	# spaces (WIPE COUNTER needs "counter"; ADDRESS THE BBS BANNER
+	# needs "register") self-gate via their `requires` clause —
+	# they're loaded everywhere but only playable where the named
+	# space exists.
+	#
+	# Exception: a card may declare `available_in_locations: [...]`
+	# to be loaded ONLY at those locations. Use sparingly — only
+	# for cards that genuinely don't translate to other rooms
+	# (e.g. a future Hierophant card whose verb is meaningless
+	# outside a church). Most cards shouldn't need this.
 	for c: Dictionary in core_deck.get("cards", []):
 		_action_cards[c["id"]] = c
 	for c: Dictionary in arc_deck.get("cards", []):
+		var locs: Array = c.get("available_in_locations", [])
+		if not locs.is_empty() and not (_location_id in locs):
+			continue
 		_action_cards[c["id"]] = c
 	# Visitors → id-keyed dict, plus the mood→step fallback table.
 	var v_def := _load_json(arc_root + "visitors.json")
@@ -4135,6 +4150,18 @@ func _place_claim_marker(skip_first: bool) -> void:
 
 
 func _phase_upkeep() -> void:
+	# Auto-ring: the cook rings the bell once per UPKEEP if there's
+	# anything pending in the order_window. Removes ADDRESS THE BELL
+	# from the player's must-do list — orders ripen on their own.
+	# Player still has to GO to the order window to pick up.
+	var pile_ow: Array = _pile_state.get("order_window", [])
+	for iid: String in pile_ow:
+		if _order_pending.get(iid, false):
+			_order_pending[iid] = false
+			var ititle_ow: String = String(_items_def.get(iid, {}).get("title", iid))
+			_log_line("[color=#c8a268][i]   The bell — the cook's pass-the-window ring. %s ready.[/i][/color]" % ititle_ow)
+			_show_toast("Bell · [b]%s[/b] ready" % ititle_ow, "#c8a268")
+			break
 	# Faith adjacent → −1 Inertia
 	var faith_st: Dictionary = _visitors_state.get("faith", {})
 	if faith_st.get("arrived", false) and faith_st.get("pos", "") == _player_pos:
