@@ -533,7 +533,7 @@ func _build_ui() -> void:
 	_board_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_board_root.offset_top = 52
 	_board_root.offset_left = 8
-	_board_root.offset_bottom = -266
+	_board_root.offset_bottom = -346
 	_board_root.offset_right = -440
 	# Outer panel + stylebox so the board reads as its own window.
 	var board_panel := PanelContainer.new()
@@ -590,7 +590,7 @@ func _build_ui() -> void:
 	right.offset_top = 52
 	right.offset_right = -8
 	right.offset_left = -432
-	right.offset_bottom = -266
+	right.offset_bottom = -346
 	right.add_theme_constant_override("separation", 6)
 	add_child(right)
 
@@ -664,7 +664,7 @@ func _build_ui() -> void:
 	# sits flush against its right edge.
 	var bottom := PanelContainer.new()
 	bottom.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	bottom.offset_top = -262
+	bottom.offset_top = -342
 	bottom.offset_left = 8
 	bottom.offset_right = -8
 	bottom.offset_bottom = -6
@@ -708,7 +708,7 @@ func _build_ui() -> void:
 	tableau_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tableau_title_hb.add_child(tableau_label)
 	_tableau_scroll = ScrollContainer.new()
-	_tableau_scroll.custom_minimum_size = Vector2(540, 104)
+	_tableau_scroll.custom_minimum_size = Vector2(540, 144)
 	_tableau_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	_tableau_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	cards_vb.add_child(_tableau_scroll)
@@ -742,7 +742,7 @@ func _build_ui() -> void:
 	close_btn.pressed.connect(_on_leave)
 	hand_title_hb.add_child(close_btn)
 	var hand_scroll := ScrollContainer.new()
-	hand_scroll.custom_minimum_size = Vector2(540, 104)
+	hand_scroll.custom_minimum_size = Vector2(540, 144)
 	hand_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	hand_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	cards_vb.add_child(hand_scroll)
@@ -1047,7 +1047,58 @@ func _make_track_label(text: String) -> Label:
 	l.text = text
 	l.add_theme_color_override("font_color", C_TEXT)
 	l.add_theme_font_size_override("font_size", 12)
+	l.mouse_filter = Control.MOUSE_FILTER_STOP
 	return l
+
+
+# Inertia mood — based on the setup JSON's inertia_thresholds, which
+# is the canonical "what does this level feel like" ladder. Falls
+# back to a generic line if no thresholds defined.
+func _inertia_mood(level: int) -> String:
+	var thresholds: Array = _setup.get("inertia_thresholds", [])
+	if thresholds.is_empty():
+		return "Inertia %d / 12 — the room's hold on you. 12 = the loop closes." % level
+	var matched: Dictionary = {}
+	for t: Dictionary in thresholds:
+		if int(t.get("level", 0)) <= level:
+			matched = t
+	var label: String = String(matched.get("label", "")) if not matched.is_empty() else ""
+	# Rich tooltip — current label + a sense of the next step
+	var out: PackedStringArray = []
+	out.append("Inertia %d / 12" % level)
+	if label != "":
+		out.append("\"" + label + "\"")
+	# What's coming
+	var next_t: Dictionary = {}
+	for t: Dictionary in thresholds:
+		if int(t.get("level", 0)) > level:
+			next_t = t
+			break
+	if not next_t.is_empty():
+		var diff: int = int(next_t.get("level", 12)) - level
+		out.append("In %d more tick%s: %s" % [diff, "" if diff == 1 else "s", String(next_t.get("label", ""))])
+	out.append("")
+	out.append("Inertia is the room's hold on you. At 12 the loop closes — the 24-hour diner of the soul.")
+	return "\n".join(out)
+
+
+# Health mood — invented tier descriptions since the setup JSON
+# doesn't enumerate them. Max 5.
+func _health_mood(h: int) -> String:
+	var line: String = ""
+	if h >= 5:
+		line = "Steady. Cloth in hand, feet on the floor."
+	elif h == 4:
+		line = "A little thin. The fluorescent above the booth flickers when you do."
+	elif h == 3:
+		line = "Tired enough you almost don't notice the time."
+	elif h == 2:
+		line = "Wrong already, like a missed step on a familiar stair."
+	elif h == 1:
+		line = "A breath from the loop closing. Find somewhere to settle."
+	else:
+		line = "Gone. Faith hasn't moved."
+	return "Health %d / 5\n\"%s\"\n\nShort Rest and Long Rest recover. Some Gravity cards bleed it." % [h, line]
 
 
 # ── Board rendering ──────────────────────────────────────────────────
@@ -1363,7 +1414,7 @@ func _toggle_board_fullscreen() -> void:
 		_board_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 		_board_root.offset_top = 52
 		_board_root.offset_left = 8
-		_board_root.offset_bottom = -266
+		_board_root.offset_bottom = -346
 		_board_root.offset_right = -440
 		_board_expand_btn.text = "⛶"
 		_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
@@ -1482,14 +1533,13 @@ func _render_hand() -> void:
 		c.queue_free()
 	for cid in _hand_cards:
 		var card: Dictionary = _action_cards.get(cid, {})
-		var btn := Button.new()
 		var time_cost: int = int(card.get("time_cost", 1))
-		# Compact label — title plus cost. Art fills the rest of the
-		# tile so the hand reads as cards, not a button row.
-		btn.text = "%s · %dt" % [card.get("title", cid), time_cost]
-		btn.add_theme_font_size_override("font_size", 10)
-		btn.custom_minimum_size = Vector2(96, 96)
-		btn.clip_text = true
+		# Card tile = VBox of icon-button on top + autowrap title
+		# label below. Title is fully readable; art still pops.
+		var tile := VBoxContainer.new()
+		tile.add_theme_constant_override("separation", 2)
+		var btn := Button.new()
+		btn.custom_minimum_size = Vector2(108, 108)
 		btn.tooltip_text = "%s — costs %d Time\n\n%s\n\n%s\n\n(Click to preview + play.)" % [
 			card.get("title", cid), time_cost,
 			String(card.get("flavor", "")),
@@ -1498,18 +1548,28 @@ func _render_hand() -> void:
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
-			btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 		var playable: bool = _can_play_card(card)
 		btn.disabled = (not playable) or (_phase != Phase.ACTION) or _game_over
-		# Click opens the card-view modal, NOT immediate play. Play
-		# happens from the modal's ▶ Play button after the user has
-		# read the full card.
 		btn.pressed.connect(func() -> void:
 			_pulse_button(btn)
 			_open_card_view(cid, "play"))
 		btn.mouse_entered.connect(_hover_scale.bind(btn, true))
 		btn.mouse_exited.connect(_hover_scale.bind(btn, false))
-		_hand_box.add_child(btn)
+		tile.add_child(btn)
+		var title_lbl := Label.new()
+		title_lbl.text = "%s · %dt" % [card.get("title", cid), time_cost]
+		title_lbl.add_theme_font_size_override("font_size", 9)
+		title_lbl.add_theme_color_override("font_color", C_TEXT)
+		title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		title_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		title_lbl.custom_minimum_size = Vector2(108, 28)
+		title_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		# Grey title out if card isn't playable
+		if not playable or _phase != Phase.ACTION or _game_over:
+			title_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.45))
+		tile.add_child(title_lbl)
+		_hand_box.add_child(tile)
 
 
 # Tableau: every non-starter card in the action tableau, available for
@@ -1541,11 +1601,10 @@ func _render_tableau() -> void:
 		var card: Dictionary = _action_cards[cid]
 		var time_cost: int = int(card.get("time_cost", 1))
 		var price: int = _buy_price(card)
+		var tile := VBoxContainer.new()
+		tile.add_theme_constant_override("separation", 2)
 		var btn := Button.new()
-		btn.text = "%s · buy %dt" % [card.get("title", cid), price]
-		btn.add_theme_font_size_override("font_size", 10)
-		btn.custom_minimum_size = Vector2(96, 96)
-		btn.clip_text = true
+		btn.custom_minimum_size = Vector2(108, 108)
 		btn.tooltip_text = "%s — buy %d Time, play %d Time\n\n%s\n\n%s\n\n(Click to preview + buy.)" % [
 			card.get("title", cid), price, time_cost,
 			String(card.get("flavor", "")),
@@ -1554,20 +1613,29 @@ func _render_tableau() -> void:
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
-			btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
-		# Buyable during PLANNING + Time ≥ price
 		var can_buy: bool = (_phase == Phase.PLANNING) and (_time >= price) and not _game_over
 		btn.disabled = not can_buy
-		# Dim style outside planning so it reads as preview, not shop
 		if _phase != Phase.PLANNING:
 			btn.modulate = Color(0.7, 0.65, 0.55, 0.7)
-		# Click opens the card-view modal with a ✦ Buy button.
 		btn.pressed.connect(func() -> void:
 			_pulse_button(btn)
 			_open_card_view(cid, "buy"))
 		btn.mouse_entered.connect(_hover_scale.bind(btn, true))
 		btn.mouse_exited.connect(_hover_scale.bind(btn, false))
-		_tableau_box.add_child(btn)
+		tile.add_child(btn)
+		var title_lbl := Label.new()
+		title_lbl.text = "%s · buy %dt" % [card.get("title", cid), price]
+		title_lbl.add_theme_font_size_override("font_size", 9)
+		title_lbl.add_theme_color_override("font_color", C_TEXT)
+		title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		title_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		title_lbl.custom_minimum_size = Vector2(108, 28)
+		title_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if not can_buy:
+			title_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.45))
+		tile.add_child(title_lbl)
+		_tableau_box.add_child(tile)
 
 
 const BUY_PRICE_MARKUP: int = 0   # Tableau buy = card's time_cost + this
@@ -2313,6 +2381,12 @@ func _render() -> void:
 	_time_label.text  = "Time %d / %d" % [_time, _next_time_reset]
 	_inertia_label.text = "Inertia %d / 12" % _inertia
 	_health_label.text  = "Health %d" % _health
+	# Evocative tooltips driven by the current value — the player
+	# hovers and gets the room's mood at that pressure level.
+	_inertia_label.tooltip_text = _inertia_mood(_inertia)
+	_health_label.tooltip_text = _health_mood(_health)
+	_time_label.tooltip_text = "Time is your action budget for the turn. Unspent Time carries over into the next turn (Final Girl style)."
+	_turn_label.tooltip_text = "Each turn cycles ACTION → PLANNING → SHADOW → DRIFT → UPKEEP."
 	# Flash labels on change — green for gain, red for loss
 	# (Inertia inverted: rising is bad, falling is good)
 	if _last_rendered_time != -1 and _time != _last_rendered_time:
