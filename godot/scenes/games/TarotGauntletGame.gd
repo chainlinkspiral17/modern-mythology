@@ -89,6 +89,15 @@ var _last_rendered_health: int = -1
 # Every space the player has stood on at least once. Used by composite
 # connect_via conditions (e.g. stranger requires stood_on:card_wall).
 var _places_visited: Dictionary = {}
+# Full log buffer — RichTextLabel.append_text doesn't update .text,
+# so .text on the live _log returns nothing useful. We keep our own
+# copy so the LOG modal can show the complete history.
+var _log_buffer: PackedStringArray = []
+# Unread count + per-pane title labels — feeds the "(N new)" badge
+# that appears next to the LOG title when the user hasn't opened
+# the modal since new lines arrived.
+var _log_unread_count: int = 0
+var _pane_title_labels: Dictionary = {}   # modal_key → Label
 var _board_meeple: Control = null
 var _board_visitor_nodes: Dictionary = {}   # visitor_id → Control (Label or TextureRect)
 var _board_space_nodes: Dictionary = {}     # space_id → Label
@@ -746,6 +755,9 @@ func _make_pane_header(title: String, modal_key: String) -> Control:
 	lbl.add_theme_font_size_override("font_size", 11)
 	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hb.add_child(lbl)
+	# Remember the title label so unread badges (e.g. log "(3 new)")
+	# can be set later.
+	_pane_title_labels[modal_key] = lbl
 	var btn := Button.new()
 	btn.text = "⛶"
 	btn.tooltip_text = "Expand " + title + " (Esc to close)"
@@ -1315,7 +1327,11 @@ func _toggle_board_fullscreen() -> void:
 		_board_expand_btn.custom_minimum_size = Vector2(140, 22)
 		_board_root.z_index = 10
 	else:
-		_board_root.set_anchors_preset(Control.PRESET_LEFT_WIDE)
+		# Restore uses PRESET_FULL_RECT (same as the initial setup) —
+		# PRESET_LEFT_WIDE anchors BOTH edges to the parent's LEFT
+		# edge and produces a negative-width rect when offset_right
+		# is negative, which is what was freezing the board.
+		_board_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 		_board_root.offset_top = 52
 		_board_root.offset_left = 8
 		_board_root.offset_bottom = -266
@@ -1675,17 +1691,15 @@ func _tooltip_for_space(s: Dictionary) -> String:
 		_:           pass
 	if s.has("flavor"):
 		lines.append(String(s.get("flavor", "")))
-	# Pile contents
+	# Pile count only — keep contents secret so search is a discovery
+	# beat, not a spoiler in a tooltip.
 	var pile_id: String = s.get("search_pile", "")
 	if pile_id != "":
 		var pile: Array = _pile_state.get(pile_id, [])
 		if pile.is_empty():
 			lines.append("Pile: (empty)")
 		else:
-			var titles: PackedStringArray = []
-			for iid: String in pile:
-				titles.append(String(_items_def.get(iid, {}).get("title", iid)))
-			lines.append("Pile (%d): %s" % [pile.size(), ", ".join(titles)])
+			lines.append("Pile: %d item(s) — search to reveal" % pile.size())
 	# What's here
 	var here_visitors: PackedStringArray = []
 	for vid in _visitors_state:
@@ -1989,7 +2003,7 @@ func _build_phase_help_modal_body() -> Control:
 			"goal": "Cleanup. Inertia tick. Visitor consumption.",
 			"do": [
 				"Inertia rises by 1 per turn baseline. Some Gravity effects make it rise faster.",
-				"Claimed visitors who weren't rescued tick toward consumption.",
+				"Claimed patrons who weren't helped in time tick toward consumption.",
 				"At Inertia 7+ the deck thickens. At Inertia 12 you've lost — the 24-hour diner of the soul.",
 				"Click Advance → and the next ACTION turn begins.",
 			],
@@ -2046,8 +2060,8 @@ func _build_phase_help_modal_body() -> Control:
 
 
 func _build_log_modal_body() -> Control:
-	# Full log — clone of the live log's BBCode text into a fresh,
-	# bigger RichTextLabel for comfortable reading.
+	# Full log — read from _log_buffer (RichTextLabel.append_text
+	# doesn't update its .text property, so we keep our own copy).
 	var rt := RichTextLabel.new()
 	rt.bbcode_enabled = true
 	rt.fit_content = true
@@ -2056,7 +2070,10 @@ func _build_log_modal_body() -> Control:
 	rt.add_theme_color_override("default_color", C_TEXT)
 	rt.add_theme_font_size_override("normal_font_size", 12)
 	rt.scroll_following = true
-	rt.text = _log.text if _log else ""
+	rt.text = "\n".join(_log_buffer)
+	# Opening the modal counts as catching up.
+	_log_unread_count = 0
+	_update_log_unread_badge()
 	return rt
 
 
@@ -2320,10 +2337,28 @@ func _update_advance_label() -> void:
 # ── Logging ──────────────────────────────────────────────────────────
 
 func _log_line(s: String) -> void:
+	_log_buffer.append(s)
 	if _log == null:
 		print("[Gauntlet] " + s)
 		return
 	_log.append_text(s + "\n")
+	# Don't count the initial banner/setup lines as unread — only
+	# count once the live UI is rendering.
+	if _last_rendered_time != -1:
+		_log_unread_count += 1
+		_update_log_unread_badge()
+
+
+func _update_log_unread_badge() -> void:
+	var lbl: Label = _pane_title_labels.get("log") as Label
+	if lbl == null:
+		return
+	if _log_unread_count > 0:
+		lbl.text = "  LOG  · %d new" % _log_unread_count
+		lbl.add_theme_color_override("font_color", Color(1.0, 0.82, 0.42))
+	else:
+		lbl.text = "  LOG"
+		lbl.add_theme_color_override("font_color", C_ACCENT)
 
 
 # ── Card playability + play ─────────────────────────────────────────

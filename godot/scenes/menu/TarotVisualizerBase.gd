@@ -530,9 +530,13 @@ func _handle_inventory_click(hs: Dictionary) -> void:
 # We hold the tween on a meta so mouse_exited can stop it cleanly.
 
 func _hotspot_pulse_start(btn: Button, sbox: StyleBoxFlat) -> void:
-    var prior = btn.get_meta("pulse_tw", null)
-    if prior != null and is_instance_valid(prior):
-        prior.kill()
+    # Guard with has_meta — get_meta(key, default) raises in some
+    # Godot 4 builds if the key isn't set even when a default is
+    # provided (the user hit this on the gallery overlay).
+    if btn.has_meta("pulse_tw"):
+        var prior = btn.get_meta("pulse_tw")
+        if prior != null and is_instance_valid(prior):
+            prior.kill()
     var sb := sbox.duplicate() as StyleBoxFlat
     btn.add_theme_stylebox_override("hover", sb)
     var apply_alpha := func(a: float) -> void:
@@ -544,9 +548,10 @@ func _hotspot_pulse_start(btn: Button, sbox: StyleBoxFlat) -> void:
     btn.set_meta("pulse_tw", tw)
 
 func _hotspot_pulse_stop(btn: Button, _sbox: StyleBoxFlat) -> void:
-    var prior = btn.get_meta("pulse_tw", null)
-    if prior != null and is_instance_valid(prior):
-        prior.kill()
+    if btn.has_meta("pulse_tw"):
+        var prior = btn.get_meta("pulse_tw")
+        if prior != null and is_instance_valid(prior):
+            prior.kill()
         btn.remove_meta("pulse_tw")
 
 
