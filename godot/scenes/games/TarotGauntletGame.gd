@@ -1539,6 +1539,18 @@ func _render_board() -> void:
 		if cnm == "player_meeple" or cnm.begins_with("visitor_") or cnm.begins_with("threat_"):
 			continue
 		c.queue_free()
+	# Opaque black floor under the board — kills any bleed-through
+	# from whatever rendered behind the gauntlet (codex card art,
+	# visualizer canvas, etc.). The optional painted bg image is
+	# drawn ON TOP of this; engine-drawn markers, labels, meeples,
+	# threats all stack above. The floor is named so the cleanup
+	# loop above doesn't double-free it across renders.
+	var floor_rect := ColorRect.new()
+	floor_rect.name = "board_floor"
+	floor_rect.color = Color(0, 0, 0, 1)
+	floor_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	floor_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_board_content.add_child(floor_rect)
 	# Background image layer (rendered first so labels draw on top).
 	# If the location-specific board art is missing, fall back to the
 	# bare grid we used to render.
