@@ -9,8 +9,8 @@
   "epigraph_reversed": "Recklessness, foolishness, paralysis disguised as openness, the 24-hour diner of the soul where you never actually leave.",
   "starting_state": {
     "player_pos": "counter",
-    "time": 4,
-    "time_per_turn": 4,
+    "time": 6,
+    "time_per_turn": 6,
     "inertia": 0,
     "health": 5,
     "starting_hand": ["walk", "focus", "search", "short_rest", "wipe_counter", "address_the_bell"]
