@@ -89,7 +89,10 @@ var _board_root: Control = null
 var _board_content: Control = null
 var _board_expand_btn: Button = null
 var _board_bg_btn: Button = null
-var _board_bg_visible: bool = true
+# Default OFF — the painted board art (when present) is loose-fit
+# atmospheric texture and tends to compete with the engine-drawn
+# markers + labels. Player can toggle it back on via the MAP header.
+var _board_bg_visible: bool = false
 var _board_fullscreen_exit_btn: Button = null   # viewport-level overlay
 # Computed each _render_board: scales markers/meeples/labels to fit
 # the actual board content size (normal vs fullscreen).
@@ -648,14 +651,15 @@ func _build_ui() -> void:
 	# so the engine-drawn markers + lines + labels read cleanly when
 	# the art is misaligned or competing for attention.
 	_board_bg_btn = Button.new()
-	_board_bg_btn.text = "BG"
-	_board_bg_btn.tooltip_text = "Toggle the painted board background on/off"
+	_board_bg_btn.text = "BG OFF" if not _board_bg_visible else "BG ON"
+	_board_bg_btn.tooltip_text = "Toggle the painted board background. Default OFF — turn on if you want the atmospheric texture behind the markers."
 	_board_bg_btn.toggle_mode = true
 	_board_bg_btn.button_pressed = _board_bg_visible
 	_board_bg_btn.add_theme_font_size_override("font_size", 10)
-	_board_bg_btn.custom_minimum_size = Vector2(36, 20)
+	_board_bg_btn.custom_minimum_size = Vector2(54, 20)
 	_board_bg_btn.toggled.connect(func(p: bool) -> void:
 		_board_bg_visible = p
+		_board_bg_btn.text = "BG ON" if p else "BG OFF"
 		_render_board())
 	header_hb.add_child(_board_bg_btn)
 	# Fullscreen toggle — bulletproofed: z_index so nothing sneaks
@@ -1525,7 +1529,7 @@ func _render_board() -> void:
 	_board_marker_pos.clear()
 	for c in _board_content.get_children():
 		var cnm: String = c.name
-		if cnm == "player_meeple" or cnm.begins_with("visitor_"):
+		if cnm == "player_meeple" or cnm.begins_with("visitor_") or cnm.begins_with("threat_"):
 			continue
 		c.queue_free()
 	# Background image layer (rendered first so labels draw on top).

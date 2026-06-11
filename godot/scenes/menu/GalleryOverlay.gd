@@ -476,17 +476,26 @@ func _add_play_button_overlay(parent_visualizer: Control,
 
 
 func _launch_gauntlet(visualizer: Control, arcana: String, location: String, hand: String) -> void:
+	# Capture the visualizer's spawn script so we can re-open it
+	# when the gauntlet ends. We fully queue_free the visualizer
+	# instead of relying on `visible = false`: the visualizer's
+	# painted canvas extends beyond the viewport and was bleeding
+	# through the gauntlet's panels in some configurations.
+	var visualizer_script: Script = null
+	if visualizer:
+		visualizer_script = visualizer.get_script() as Script
+		visualizer.queue_free()
 	var game := TAROT_GAUNTLET_SCENE.instantiate()
 	game.start_scenario(arcana, location, hand)
 	game.z_index = 30
 	add_child(game)
-	# Hide the visualizer while playing — restore via signal
-	if visualizer:
-		visualizer.visible = false
 	game.connect("game_ended", func(_outcome: String, _summary: Dictionary) -> void:
 		game.queue_free()
-		if visualizer and is_instance_valid(visualizer):
-			visualizer.visible = true)
+		# Re-open the same visualizer the player launched from so
+		# they're back where they were, not at the top-level picker.
+		if visualizer_script != null:
+			var v2 := _spawn_visualizer(visualizer_script)
+			_add_play_button_overlay(v2, arcana, location, hand))
 
 
 func _view_substrate_fullscreen(short_path: String, title: String, kind: String = "substrate") -> void:
