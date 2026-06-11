@@ -464,6 +464,14 @@ func _build_ui() -> void:
 	_inertia_label  = _make_track_label("Inertia 0 / 12")
 	_health_label   = _make_track_label("Health 5")
 	_phase_label    = _make_track_label("PHASE: ACTION")
+	# Click the phase label → open How to Play modal. Tooltip updated
+	# every render to describe what to do in the current phase.
+	_phase_label.mouse_filter = Control.MOUSE_FILTER_STOP
+	_phase_label.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	_phase_label.tooltip_text = _phase_what_now(_phase) + "\n\n(Click for full rules.)"
+	_phase_label.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed and (ev as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+			_open_pane_modal("How to Play — Phases", _build_phase_help_modal_body))
 	_player_pos_label = _make_track_label("at: counter")
 	_bindle_label   = _make_track_label("Bindle: —")
 	for lbl in [_phase_label, _turn_label, _time_label, _inertia_label, _health_label, _player_pos_label, _bindle_label]:
@@ -1717,6 +1725,140 @@ func _render_visitors() -> void:
 
 # ── Pane modal body builders ────────────────────────────────────────
 
+# Short one-line hint for the phase, used in the phase-label tooltip
+# so the player always knows what to do at the current beat without
+# opening the full rules modal.
+func _phase_what_now(p: int) -> String:
+	match p:
+		Phase.ACTION:
+			return "ACTION — click cards in your HAND to play them, or click MOVE ↪ / a space label to walk. Click Advance → when done."
+		Phase.PLANNING:
+			return "PLANNING — buy non-starter cards from the TABLEAU (cost = card's Time). Unspent Time will carry into next turn. Click Advance →."
+		Phase.SHADOW:
+			return "SHADOW — the room takes its turn. A Gravity card flips and resolves. You don't make decisions here, just click Advance →."
+		Phase.DRIFT:
+			return "DRIFT — unclaimed visitors drift toward attractor spots. Click Advance →."
+		Phase.UPKEEP:
+			return "UPKEEP — cleanup. Inertia ticks if the room's hold is rising. Click Advance → to start the next turn."
+	return ""
+
+
+# Full How-to-Play modal body — every phase explained, plus a quick
+# legend for connections, bindle, and the LEAP win.
+func _build_phase_help_modal_body() -> Control:
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 14)
+	var intro := RichTextLabel.new()
+	intro.bbcode_enabled = true
+	intro.fit_content = true
+	intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	intro.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	intro.add_theme_color_override("default_color", C_TEXT)
+	intro.add_theme_font_size_override("normal_font_size", 13)
+	intro.text = "[i]Each turn cycles through five phases. The phase label at the top of the screen tells you which one you're in. Click [b]Advance →[/b] to leave the current phase.[/i]"
+	vb.add_child(intro)
+
+	var phases: Array = [
+		{
+			"name": "ACTION",
+			"goal": "Play cards from your HAND, walk the diner, connect with visitors.",
+			"do": [
+				"Click a HAND card to play it (costs the card's Time).",
+				"Frame-cards (WALK / SPRINT / FOCUS / SEARCH / SHORT REST / LONG REST / DISTRACTION / GUARD / CLOSE CALL / SPEND IT / IMPROVISE) roll the Threshold dice; the outcome determines what they do.",
+				"Click the [b]MOVE ↪[/b] button (or any adjacent space marker on the board) to walk 1 hop for 1 Time, no card needed.",
+				"Pick up an item with PICK UP at a search-pile space.",
+				"Phase ends when you click [b]Advance →[/b] (some cards end it automatically — e.g. SIT WITH).",
+			],
+		},
+		{
+			"name": "PLANNING",
+			"goal": "Buy new cards. Reset Time.",
+			"do": [
+				"The TABLEAU row above the HAND shows non-starter cards available for purchase. Click a tableau card to buy it — costs the card's Time.",
+				"Time refreshes — unspent Time carries over and adds to the base (6 per turn). End with 2 unspent → next turn starts with 8.",
+				"Played starter cards (e.g. WIPE COUNTER, SHORT REST, ADDRESS THE BELL) return to your hand for free.",
+				"BUNDLE auto-enters your hand when you have stick + cloth + a contents item. LEAP auto-enters once BUNDLE is played.",
+			],
+		},
+		{
+			"name": "SHADOW",
+			"goal": "The room takes its turn.",
+			"do": [
+				"A Gravity card flips and resolves automatically. The card's effect happens to you — usually an Inertia tick, a claim on a visitor, or a forced choice.",
+				"GUARD cards played earlier in the turn absorb the next Inertia tick.",
+				"DISTRACTION cards played earlier can cancel the top Gravity card.",
+				"Just click Advance → when you've read the card.",
+			],
+		},
+		{
+			"name": "DRIFT",
+			"goal": "Visitors drift toward attractor spaces.",
+			"do": [
+				"Lingering, unconnected visitors drift toward the HOSTESS STAND, the BAR, or BOOTH 4 (the drift attractors).",
+				"This phase is currently mostly flavor — full drift logic is coming. Click Advance →.",
+			],
+		},
+		{
+			"name": "UPKEEP",
+			"goal": "Cleanup. Inertia tick. Visitor consumption.",
+			"do": [
+				"Inertia rises by 1 per turn baseline. Some Gravity effects make it rise faster.",
+				"Claimed visitors who weren't rescued tick toward consumption.",
+				"At Inertia 7+ the deck thickens. At Inertia 12 you've lost — the 24-hour diner of the soul.",
+				"Click Advance → and the next ACTION turn begins.",
+			],
+		},
+	]
+	for ph: Dictionary in phases:
+		var section := PanelContainer.new()
+		section.add_theme_stylebox_override("panel", _make_panel_style())
+		var inner := VBoxContainer.new()
+		inner.add_theme_constant_override("separation", 4)
+		section.add_child(inner)
+		var hdr := RichTextLabel.new()
+		hdr.bbcode_enabled = true
+		hdr.fit_content = true
+		hdr.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		hdr.add_theme_color_override("default_color", C_TEXT)
+		hdr.add_theme_font_size_override("normal_font_size", 14)
+		hdr.text = "[color=#c8a268][b]%s[/b][/color]  —  [i]%s[/i]" % [ph["name"], ph["goal"]]
+		inner.add_child(hdr)
+		for line: String in ph.get("do", []):
+			var item := RichTextLabel.new()
+			item.bbcode_enabled = true
+			item.fit_content = true
+			item.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			item.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			item.add_theme_color_override("default_color", C_TEXT)
+			item.add_theme_font_size_override("normal_font_size", 11)
+			item.text = "  · " + line
+			inner.add_child(item)
+		vb.add_child(section)
+
+	# Win / loss legend
+	var legend := PanelContainer.new()
+	legend.add_theme_stylebox_override("panel", _make_panel_style())
+	var lvb := VBoxContainer.new()
+	lvb.add_theme_constant_override("separation", 4)
+	legend.add_child(lvb)
+	var lhdr := Label.new()
+	lhdr.text = "  WIN / LOSS"
+	lhdr.add_theme_color_override("font_color", C_ACCENT)
+	lhdr.add_theme_font_size_override("font_size", 13)
+	lvb.add_child(lhdr)
+	var llr := RichTextLabel.new()
+	llr.bbcode_enabled = true
+	llr.fit_content = true
+	llr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	llr.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	llr.add_theme_color_override("default_color", C_TEXT)
+	llr.add_theme_font_size_override("normal_font_size", 11)
+	llr.text = "[b]WIN:[/b] assemble the BUNDLE (stick + cloth + a contents item), connect with at least 3 visitors, keep Faith adjacent, and play LEAP at an open threshold while Inertia is under 7.\n\n[b]LOSS:[/b] Inertia reaches 12 (the 24-hour diner of the soul) [i]or[/i] 3 visitors stay claimed and get consumed."
+	lvb.add_child(llr)
+	vb.add_child(legend)
+	return vb
+
+
 func _build_log_modal_body() -> Control:
 	# Full log — clone of the live log's BBCode text into a fresh,
 	# bigger RichTextLabel for comfortable reading.
@@ -1934,6 +2076,7 @@ func _render() -> void:
 		_log_line("[color=#ffd07a][b]LEAP in hand[/b] — bindle assembled.[/color]")
 		_show_toast("[b]LEAP[/b] unlocked — play it at any open threshold.", "#ffd07a")
 	_phase_label.text = "PHASE: " + Phase.keys()[_phase]
+	_phase_label.tooltip_text = _phase_what_now(_phase) + "\n\n(Click for full rules.)"
 	_turn_label.text  = "Turn %d" % _turn
 	_time_label.text  = "Time %d / %d" % [_time, _next_time_reset]
 	_inertia_label.text = "Inertia %d / 12" % _inertia
