@@ -503,7 +503,7 @@ func _build_ui() -> void:
 	_board_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_board_root.offset_top = 52
 	_board_root.offset_left = 8
-	_board_root.offset_bottom = -214
+	_board_root.offset_bottom = -266
 	_board_root.offset_right = -440
 	# Outer panel + stylebox so the board reads as its own window.
 	var board_panel := PanelContainer.new()
@@ -560,7 +560,7 @@ func _build_ui() -> void:
 	right.offset_top = 52
 	right.offset_right = -8
 	right.offset_left = -432
-	right.offset_bottom = -214
+	right.offset_bottom = -266
 	right.add_theme_constant_override("separation", 6)
 	add_child(right)
 
@@ -634,7 +634,7 @@ func _build_ui() -> void:
 	# sits flush against its right edge.
 	var bottom := PanelContainer.new()
 	bottom.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	bottom.offset_top = -210
+	bottom.offset_top = -262
 	bottom.offset_left = 8
 	bottom.offset_right = -8
 	bottom.offset_bottom = -6
@@ -678,7 +678,7 @@ func _build_ui() -> void:
 	tableau_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tableau_title_hb.add_child(tableau_label)
 	_tableau_scroll = ScrollContainer.new()
-	_tableau_scroll.custom_minimum_size = Vector2(540, 60)
+	_tableau_scroll.custom_minimum_size = Vector2(540, 104)
 	_tableau_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	_tableau_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	cards_vb.add_child(_tableau_scroll)
@@ -712,7 +712,7 @@ func _build_ui() -> void:
 	close_btn.pressed.connect(_on_leave)
 	hand_title_hb.add_child(close_btn)
 	var hand_scroll := ScrollContainer.new()
-	hand_scroll.custom_minimum_size = Vector2(540, 60)
+	hand_scroll.custom_minimum_size = Vector2(540, 104)
 	hand_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	hand_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	cards_vb.add_child(hand_scroll)
@@ -842,6 +842,171 @@ func _open_pane_modal(title: String, body_builder: Callable) -> void:
 func _on_modal_dim_input(ev: InputEvent, dim: ColorRect) -> void:
 	if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
 		_close_pane_modal(dim)
+
+
+# ── Card view modal ─────────────────────────────────────────────────
+# Clicking a hand or tableau card opens this fullscreen-ish view:
+# big art on the left, title + cost + flavor + effect summary on the
+# right, with a prominent action button (▶ Play or ✦ Buy) and Cancel.
+# Closes via the button, ✕, Esc, or click outside.
+func _open_card_view(cid: String, mode: String) -> void:
+	var card: Dictionary = _action_cards.get(cid, {})
+	if card.is_empty():
+		return
+	# Tear down any existing modal so stacked opens can't trap input
+	var existing: Node = get_node_or_null("pane_modal_dim")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	# Dim background
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.82)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.z_index = 100
+	dim.name = "pane_modal_dim"
+	dim.modulate = Color(1, 1, 1, 0)
+	dim.gui_input.connect(_on_modal_dim_input.bind(dim))
+	add_child(dim)
+	var fade_in := create_tween()
+	fade_in.tween_property(dim, "modulate:a", 1.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	# Centered horizontal panel
+	var view: Vector2 = get_viewport_rect().size
+	var pop := PanelContainer.new()
+	pop.add_theme_stylebox_override("panel", _make_panel_style())
+	pop.size = Vector2(min(view.x * 0.78, 940.0), min(view.y * 0.82, 640.0))
+	pop.position = (view - pop.size) * 0.5
+	pop.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.add_child(pop)
+
+	var root := HBoxContainer.new()
+	root.add_theme_constant_override("separation", 18)
+	pop.add_child(root)
+
+	# Left column: card art panel (5:7 framing)
+	var art_panel := PanelContainer.new()
+	art_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	art_panel.custom_minimum_size = Vector2(380, 532)
+	root.add_child(art_panel)
+	var art_tex: Texture2D = _load_texture_silent(_art_path_card(cid))
+	if art_tex:
+		var img := TextureRect.new()
+		img.texture = art_tex
+		img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		img.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		img.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		art_panel.add_child(img)
+	else:
+		var ph := Label.new()
+		ph.text = "(no art yet — use the studio to generate)"
+		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.4))
+		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		ph.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		art_panel.add_child(ph)
+
+	# Right column: info + action buttons
+	var info := VBoxContainer.new()
+	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info.add_theme_constant_override("separation", 10)
+	root.add_child(info)
+
+	var title := Label.new()
+	title.text = card.get("title", cid)
+	title.add_theme_color_override("font_color", C_ACCENT)
+	title.add_theme_font_size_override("font_size", 26)
+	info.add_child(title)
+
+	var cost: int = int(card.get("time_cost", 1))
+	var price: int = _buy_price(card) if mode == "buy" else cost
+	var cost_line := RichTextLabel.new()
+	cost_line.bbcode_enabled = true
+	cost_line.fit_content = true
+	cost_line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	cost_line.add_theme_color_override("default_color", C_TEXT)
+	cost_line.add_theme_font_size_override("normal_font_size", 13)
+	if mode == "buy":
+		cost_line.text = "[b]Buy:[/b] %d Time     [b]Plays for:[/b] %d Time" % [price, cost]
+	else:
+		cost_line.text = "[b]Cost:[/b] %d Time" % cost
+	info.add_child(cost_line)
+
+	var flavor_label: String = String(card.get("flavor", ""))
+	if flavor_label != "":
+		var flavor := RichTextLabel.new()
+		flavor.bbcode_enabled = true
+		flavor.fit_content = true
+		flavor.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		flavor.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		flavor.add_theme_color_override("default_color", Color(0.86, 0.82, 0.74))
+		flavor.add_theme_font_size_override("normal_font_size", 13)
+		flavor.text = "[i]" + flavor_label + "[/i]"
+		info.add_child(flavor)
+
+	info.add_child(HSeparator.new())
+
+	var eff_title := Label.new()
+	eff_title.text = "  EFFECT"
+	eff_title.add_theme_color_override("font_color", C_ACCENT)
+	eff_title.add_theme_font_size_override("font_size", 12)
+	info.add_child(eff_title)
+	var effects := RichTextLabel.new()
+	effects.bbcode_enabled = true
+	effects.fit_content = true
+	effects.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	effects.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	effects.add_theme_color_override("default_color", C_TEXT)
+	effects.add_theme_font_size_override("normal_font_size", 12)
+	var summary: String = _card_summary(card)
+	if summary == "":
+		summary = "(no mechanical effect — flavor-only)"
+	effects.text = summary
+	info.add_child(effects)
+
+	# Spacer pushes the action row to the bottom
+	var spacer := Control.new()
+	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info.add_child(spacer)
+
+	# Action row
+	var actions := HBoxContainer.new()
+	actions.add_theme_constant_override("separation", 10)
+	info.add_child(actions)
+	var cancel := Button.new()
+	cancel.text = "✕  Cancel  (Esc)"
+	cancel.add_theme_font_size_override("font_size", 13)
+	cancel.custom_minimum_size = Vector2(130, 36)
+	cancel.pressed.connect(_close_pane_modal.bind(dim))
+	actions.add_child(cancel)
+	var spacer2 := Control.new()
+	spacer2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	actions.add_child(spacer2)
+
+	var can_act: bool = false
+	var act_label: String = ""
+	if mode == "play":
+		can_act = _can_play_card(card) and (_phase == Phase.ACTION) and (_time >= cost) and not _game_over
+		act_label = "▶  Play  (%d Time)" % cost
+	else:
+		can_act = (_phase == Phase.PLANNING) and (_time >= price) and not _game_over
+		act_label = "✦  Buy  (%d Time)" % price
+	var act_btn := Button.new()
+	act_btn.text = act_label
+	act_btn.add_theme_font_size_override("font_size", 14)
+	act_btn.custom_minimum_size = Vector2(180, 36)
+	act_btn.disabled = not can_act
+	# Modal owns the play/buy — close modal first, then resolve the
+	# card so the player sees their stat pulses + meeple tween
+	# happen in the now-clean main view.
+	act_btn.pressed.connect(func() -> void:
+		_close_pane_modal(dim)
+		if mode == "play":
+			_on_play_card(cid)
+		else:
+			_on_buy_card(cid))
+	actions.add_child(act_btn)
 
 
 func _make_track_label(text: String) -> Label:
@@ -1153,7 +1318,7 @@ func _toggle_board_fullscreen() -> void:
 		_board_root.set_anchors_preset(Control.PRESET_LEFT_WIDE)
 		_board_root.offset_top = 52
 		_board_root.offset_left = 8
-		_board_root.offset_bottom = -214
+		_board_root.offset_bottom = -266
 		_board_root.offset_right = -440
 		_board_expand_btn.text = "⛶"
 		_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
@@ -1274,11 +1439,13 @@ func _render_hand() -> void:
 		var card: Dictionary = _action_cards.get(cid, {})
 		var btn := Button.new()
 		var time_cost: int = int(card.get("time_cost", 1))
-		btn.text = "%s\n[%d]" % [card.get("title", cid), time_cost]
-		btn.add_theme_font_size_override("font_size", 9)
-		btn.custom_minimum_size = Vector2(84, 50)
+		# Compact label — title plus cost. Art fills the rest of the
+		# tile so the hand reads as cards, not a button row.
+		btn.text = "%s · %dt" % [card.get("title", cid), time_cost]
+		btn.add_theme_font_size_override("font_size", 10)
+		btn.custom_minimum_size = Vector2(96, 96)
 		btn.clip_text = true
-		btn.tooltip_text = "%s — costs %d Time\n\n%s\n\n%s" % [
+		btn.tooltip_text = "%s — costs %d Time\n\n%s\n\n%s\n\n(Click to preview + play.)" % [
 			card.get("title", cid), time_cost,
 			String(card.get("flavor", "")),
 			_card_summary(card)]
@@ -1289,9 +1456,12 @@ func _render_hand() -> void:
 			btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 		var playable: bool = _can_play_card(card)
 		btn.disabled = (not playable) or (_phase != Phase.ACTION) or _game_over
+		# Click opens the card-view modal, NOT immediate play. Play
+		# happens from the modal's ▶ Play button after the user has
+		# read the full card.
 		btn.pressed.connect(func() -> void:
 			_pulse_button(btn)
-			_on_play_card(cid))
+			_open_card_view(cid, "play"))
 		btn.mouse_entered.connect(_hover_scale.bind(btn, true))
 		btn.mouse_exited.connect(_hover_scale.bind(btn, false))
 		_hand_box.add_child(btn)
@@ -1327,11 +1497,11 @@ func _render_tableau() -> void:
 		var time_cost: int = int(card.get("time_cost", 1))
 		var price: int = _buy_price(card)
 		var btn := Button.new()
-		btn.text = "%s\nbuy: %d t" % [card.get("title", cid), price]
-		btn.add_theme_font_size_override("font_size", 9)
-		btn.custom_minimum_size = Vector2(84, 50)
+		btn.text = "%s · buy %dt" % [card.get("title", cid), price]
+		btn.add_theme_font_size_override("font_size", 10)
+		btn.custom_minimum_size = Vector2(96, 96)
 		btn.clip_text = true
-		btn.tooltip_text = "%s — buy %d Time, play %d Time\n\n%s\n\n%s" % [
+		btn.tooltip_text = "%s — buy %d Time, play %d Time\n\n%s\n\n%s\n\n(Click to preview + buy.)" % [
 			card.get("title", cid), price, time_cost,
 			String(card.get("flavor", "")),
 			_card_summary(card)]
@@ -1340,15 +1510,16 @@ func _render_tableau() -> void:
 			btn.icon = art
 			btn.expand_icon = true
 			btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
-		# Buyable during PLANNING + Time ≥ price (markup-inclusive)
+		# Buyable during PLANNING + Time ≥ price
 		var can_buy: bool = (_phase == Phase.PLANNING) and (_time >= price) and not _game_over
 		btn.disabled = not can_buy
 		# Dim style outside planning so it reads as preview, not shop
 		if _phase != Phase.PLANNING:
 			btn.modulate = Color(0.7, 0.65, 0.55, 0.7)
+		# Click opens the card-view modal with a ✦ Buy button.
 		btn.pressed.connect(func() -> void:
 			_pulse_button(btn)
-			_on_buy_card(cid))
+			_open_card_view(cid, "buy"))
 		btn.mouse_entered.connect(_hover_scale.bind(btn, true))
 		btn.mouse_exited.connect(_hover_scale.bind(btn, false))
 		_tableau_box.add_child(btn)
