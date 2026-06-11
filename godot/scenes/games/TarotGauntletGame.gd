@@ -194,14 +194,25 @@ func _ready() -> void:
 		_log_line("[color=#6e6258][i]%s[/i][/color]" % hint)
 	_log_line("")
 	_log_line("[color=#7c8398]Hand: %s[/color]" % str(_hand_cards))
+	_log_line("[color=#7c8398]Phase: %s — click cards to play, then Advance →[/color]" %
+		Phase.keys()[_phase])
+	_log_line("")
+	_render()
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	# Esc closes any open modal first, then exits fullscreen board.
+	# Esc closes the topmost modal layer:
+	#   1) drawn-card popup (gravity / item / etc.)
+	#   2) pane modal (inventory / log / visitor card / etc.)
+	#   3) board fullscreen
 	if event is InputEventKey and (event as InputEventKey).pressed:
 		var key: InputEventKey = event
 		if key.keycode == KEY_ESCAPE:
-			# Topmost modal first
+			var drawn: Node = get_node_or_null("drawn_card_modal")
+			if drawn != null and is_instance_valid(drawn):
+				drawn.queue_free()
+				get_viewport().set_input_as_handled()
+				return
 			var dim: Node = get_node_or_null("pane_modal_dim")
 			if dim != null and is_instance_valid(dim):
 				_close_pane_modal(dim as ColorRect)
@@ -210,10 +221,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			if _board_fullscreen:
 				_toggle_board_fullscreen()
 				get_viewport().set_input_as_handled()
-	_log_line("[color=#7c8398]Phase: %s — click cards to play, then Advance →[/color]" %
-		Phase.keys()[_phase])
-	_log_line("")
-	_render()
 
 
 # ── Audio ───────────────────────────────────────────────────────────
@@ -957,6 +964,108 @@ func _on_modal_dim_input(ev: InputEvent, dim: ColorRect) -> void:
 # big art on the left, title + cost + flavor + effect summary on the
 # right, with a prominent action button (▶ Play or ✦ Buy) and Cancel.
 # Closes via the button, ✕, Esc, or click outside.
+# Generic "card drawn / item taken" popup. Centered, with art on
+# the left and title + flavor + body on the right. Click outside,
+# Esc, or the Acknowledge button to dismiss. Stacks above the
+# pane modal layer (z=110) so it doesn't trample any chooser.
+func _show_drawn_card_popup(art_path: String, title: String, flavor: String, body: String, accent_hex: String) -> void:
+	# Tear down any prior drawn-card popup (rapid-fire draws stack
+	# cleanly).
+	var existing: Node = get_node_or_null("drawn_card_modal")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.75)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.z_index = 110
+	dim.name = "drawn_card_modal"
+	dim.modulate = Color(1, 1, 1, 0)
+	add_child(dim)
+	var fade := create_tween()
+	fade.tween_property(dim, "modulate:a", 1.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	var view: Vector2 = get_viewport_rect().size
+	var pop := PanelContainer.new()
+	pop.add_theme_stylebox_override("panel", _make_panel_style())
+	pop.size = Vector2(min(view.x * 0.66, 820.0), min(view.y * 0.74, 560.0))
+	pop.position = (view - pop.size) * 0.5
+	pop.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.add_child(pop)
+	var root := HBoxContainer.new()
+	root.add_theme_constant_override("separation", 16)
+	pop.add_child(root)
+	# Card art
+	var art_panel := PanelContainer.new()
+	art_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	art_panel.custom_minimum_size = Vector2(320, 448)
+	root.add_child(art_panel)
+	var tex: Texture2D = _load_texture_silent(art_path)
+	if tex:
+		var img := TextureRect.new()
+		img.texture = tex
+		img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		img.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		img.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		art_panel.add_child(img)
+	else:
+		var ph := Label.new()
+		ph.text = "(no art yet)"
+		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.40))
+		ph.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		ph.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		art_panel.add_child(ph)
+	# Info column
+	var info := VBoxContainer.new()
+	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info.add_theme_constant_override("separation", 10)
+	root.add_child(info)
+	var title_lbl := Label.new()
+	title_lbl.text = title
+	title_lbl.add_theme_color_override("font_color", Color(accent_hex))
+	title_lbl.add_theme_font_size_override("font_size", 22)
+	title_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	info.add_child(title_lbl)
+	if flavor != "":
+		var flavor_rt := RichTextLabel.new()
+		flavor_rt.bbcode_enabled = true
+		flavor_rt.fit_content = true
+		flavor_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		flavor_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		flavor_rt.add_theme_color_override("default_color", Color(0.86, 0.82, 0.74))
+		flavor_rt.add_theme_font_size_override("normal_font_size", 13)
+		flavor_rt.text = "[i]" + flavor + "[/i]"
+		info.add_child(flavor_rt)
+	if body != "":
+		info.add_child(HSeparator.new())
+		var body_rt := RichTextLabel.new()
+		body_rt.bbcode_enabled = true
+		body_rt.fit_content = true
+		body_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		body_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		body_rt.add_theme_color_override("default_color", C_TEXT)
+		body_rt.add_theme_font_size_override("normal_font_size", 12)
+		body_rt.text = body
+		info.add_child(body_rt)
+	var spacer := Control.new()
+	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info.add_child(spacer)
+	var ack := Button.new()
+	ack.text = "Acknowledge  (Esc / click outside)"
+	ack.add_theme_font_size_override("font_size", 12)
+	ack.pressed.connect(func() -> void:
+		var t := create_tween()
+		t.tween_property(dim, "modulate:a", 0.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		t.tween_callback(dim.queue_free))
+	info.add_child(ack)
+	dim.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			ack.emit_signal("pressed"))
+
+
 func _open_visitor_view(vid: String) -> void:
 	# Click-a-portrait card view for a single visitor — big art on
 	# the left, name + bio + status + per-step beats on the right.
@@ -3762,6 +3871,23 @@ func _take_top_item_at_pos() -> void:
 	var cat: String = item.get("category", "")
 	if cat == "bindle_component" or cat == "bindle_contents":
 		_show_toast("Picked up [b]%s[/b]" % item.get("title", item_id), "#c8a268")
+	# Big art popup — feels like drawing a card in a board game. Shows
+	# the item's full title, flavor, and category. Click outside / Esc
+	# to dismiss.
+	var item_body: String = ""
+	if cat != "":
+		var cat_label: String = ""
+		match cat:
+			"bindle_component": cat_label = "Bindle component"
+			"bindle_contents":  cat_label = "Bindle contents"
+			"consumable":       cat_label = "Consumable"
+			"passive":          cat_label = "Passive"
+			"order":            cat_label = "Order ticket"
+			"order_togo":       cat_label = "TO-GO order"
+			"jukebox_track":    cat_label = "Jukebox B-side"
+			_:                  cat_label = cat
+		item_body = "[b]%s[/b]" % cat_label
+	_show_drawn_card_popup(_art_path_item(item_id), item.get("title", item_id), pf, item_body, "#c8a268")
 	# on_pickup hooks
 	if item.has("on_pickup"):
 		_resolve_effects(item["on_pickup"])
@@ -4182,7 +4308,16 @@ func _phase_shadow() -> void:
 	_log_line("[color=#ff8060][b]GRAVITY:[/b] %s[/color]" % card.get("title", cid))
 	_log_line("[i]%s[/i]" % card.get("flavor", ""))
 	_gravity_card_label.text = "[color=#c8a268]GRAVITY[/color]\n[b]%s[/b]\n[i]%s[/i]" % [card.get("title", cid), card.get("flavor","")]
-	_show_toast("Gravity: [b]%s[/b]" % card.get("title", cid), "#ff8060")
+	# Big art popup — gives the destiny card cinematic weight before
+	# its effects resolve onto the player.
+	var grav_body: String = ""
+	var g_effs: Array = card.get("effects", [])
+	if not g_effs.is_empty():
+		var lines: PackedStringArray = ["[b]The room does:[/b]"]
+		for e: Dictionary in g_effs:
+			lines.append("  · " + _describe_effect(e))
+		grav_body = "\n".join(lines)
+	_show_drawn_card_popup(_art_path_gravity(cid), card.get("title", cid), card.get("flavor", ""), grav_body, "#ff8060")
 	_resolve_effects(card.get("effects", []))
 	# Inertia ≥ 7: extra draw per the inertia thresholds spec
 	if _inertia >= 7 and not _gravity_draw_pile.is_empty():
