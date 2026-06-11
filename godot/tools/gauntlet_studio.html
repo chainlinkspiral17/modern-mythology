@@ -479,6 +479,66 @@ const SLOTS = [
     flavor: 'Same board layout as the main version, but the LOSING state: all thresholds gone (parking lot painted over, river window bricked, precipice door welded). Counter glows from within. Booths empty. Color palette desaturated except for the counter\'s red glow. Same station labels for engine compatibility.',
     target: 'assets/gallery/locations/dambrosios_reversed_state.png' },
 
+  // ── 1st-Person space views ─────────────────────────────────────────
+  // The default view in the gauntlet (the top-down map shows in
+  // fullscreen). One painted shot per space: 1st-person, what John
+  // sees standing there at 3:47 AM. NO figures (visitors render on
+  // top); NO text overlay; landscape ~1280×720 to fill the panel.
+  // The engine reads these from `assets/gallery/locations/dambrosios_fp_<id>.png`.
+  ...[
+    { id: 'parking_lot', flavor:
+      "Standing just outside the diner's front door, looking out across the cracked asphalt of the empty lot. Sodium-vapor lights overhead pool yellow on the lines of empty stalls. Beyond, a Texas/Louisiana two-lane road, a gas station sign far in the distance. Apron strings cold against your back. Dawn isn't here yet but it's coming. Mood: held breath, the edge of leaving." },
+    { id: 'hostess_stand', flavor:
+      "Standing at the empty hostess station inside the front entrance. A wooden lectern, a stack of unstapled menus tilted to one side, a dish of mints nobody refilled. Beyond it the booths recede into the warmer half of the diner. Nobody's posted here at this hour. The door behind you is the parking lot." },
+    { id: 'back_door', flavor:
+      "Standing at the heavy gray service door propped open by a brick. Cold air smelling of river and asphalt rolls in. To your right the dish station hums. To your left the kitchen alcove. The night beyond the door is a black rectangle." },
+    { id: 'bar', flavor:
+      "Standing at the closed half of the room — a polished mahogany bar with dust covers thrown over the stools. The mirror behind webbed with hairline cracks they never bothered to repair. A single soda gun dripped dry. Bottles arranged but unfilled. The bar is asleep, not dead." },
+    { id: 'booth_1', flavor:
+      "Standing beside Booth 1, the first booth on the parking-lot side. Looking down into red vinyl. The window beside catches the sodium light from outside. Someone left a single coffee ring on the formica, perfect circle, hours old." },
+    { id: 'kitchen_alcove', flavor:
+      "Standing in the pass-through behind the counter, at the threshold of the kitchen. A wall of tickets clipped to a steel wire above you. The kitchen extends into half-light beyond — the grill to one side, the dish station deeper in. The smell of cooled grease." },
+    { id: 'grill', flavor:
+      "Standing at the steel grill in the kitchen alcove. Residual heat still rising. Crusted grease along the edges. The hood vent hums slow. The walk-in cooler humming behind. A spatula leaned against the splashguard. Nobody's cooking at this hour." },
+    { id: 'dish_station', flavor:
+      "Standing at the stainless steel dish station, deep in the kitchen. Water still steaming from the last rack. A stack of plates draining. The meditative drip from the tap. Cool blue light from a single overhead. The quietest spot in the room." },
+    { id: 'order_window', flavor:
+      "Standing at the order window — the pass between kitchen and counter. A wheel of paper tickets, half rotated, the cook's hand long gone. Brass call bell to one side. The cook's side dim and empty but the wire above is still tense, waiting." },
+    { id: 'booth_4', flavor:
+      "Standing beside Booth 4, the middle booth. Red vinyl worn pale where one person sat too long. The booth lamp casts a warm pool. You can still see the indent where Frasier's elbow rested when he used to draft his pieces here. The notebook is gone now." },
+    { id: 'booth_6', flavor:
+      "Standing beside Booth 6, far end of the room. The fluorescent above flickers, every minute or so. The booth itself, occupied or not, holds a low green glow — somebody's screen, maybe. The vinyl is colder here than at the other booths." },
+    { id: 'counter', flavor:
+      "Standing behind the counter, the long expanse of formica before you. Your cloth on it. The grill at your back, the booths reflected in the polished steel of the espresso machine. Three bar stools to your left. This is the heart of the room." },
+    { id: 'bar_stools', flavor:
+      "Standing at the three vinyl-topped stools along the counter's right edge. From here you can see the door, the booths, and the kitchen all at once. The center seat is most worn — twelve years of the same regulars in the same spot." },
+    { id: 'under_counter', flavor:
+      "Crouched behind the counter, looking up at the underside of the formica. A panel of hooks, towels folded with deliberate care, a battered cash drawer half-open. A radio dim with the volume turned almost off. The cool of the floor through your knees." },
+    { id: 'jukebox', flavor:
+      "Standing at the glass-fronted Wurlitzer at the dark end of the bar. Three 7-inch tracks loaded behind the glass. A taped quarter to the side, somebody's permission. The jukebox is unplugged but the glass reflects the diner light warmly." },
+    { id: 'bell', flavor:
+      "Standing at the small brass call bell on its polished base. Below the rim, scratched initials nobody admits to. The bell catches the light like a small planet. The order window is just to the left." },
+    { id: 'pay_phone', flavor:
+      "Standing at the wall-mounted pay phone in a small alcove. Receiver heavy in your hand. A torn page from the phone book on the floor. The coil cord stretched too far over too many years." },
+    { id: 'cig_machine', flavor:
+      "Standing at the cigarette machine in the corner. The flap pulled open from years of use. Half-rotated brands. A wrapper or two on the floor below. The machine hums a slow tone, alone." },
+    { id: 'register', flavor:
+      "Standing at the brass-keyed register at the front of the counter. The cash drawer half-open. The CRT terminal above glows phosphor green: RUST_CODE.BBS at a blinking cursor. The terminal is the only light source on this side of the room." },
+    { id: 'bathroom', flavor:
+      "Standing at the threshold of the small bathroom corridor. The door slightly ajar. The buzz of a misfiring fluorescent inside, green-tinged. Floor tiles cool through your soles. The smell of something not quite cleaned." },
+    { id: 'card_wall', flavor:
+      "Standing before the pinboard at the back of the diner: decades of patron cards. Birthday cards, postcards, in-memoriam notes, a few singular tarot cards pinned at odd angles. They watch back. The wall is lit warm by a single shaded sconce." },
+    { id: 'river_window', flavor:
+      "Standing at the tall paned window onto the river side of the property. The water moving wrong tonight — running upstream in places. A small painted sill ledge wide enough to step onto, if you decided. The glass cool against your palm." },
+    { id: 'precipice_door', flavor:
+      "Standing before a narrow door that wasn't there a moment ago. Cold light leaking around its frame. It opens onto somewhere that isn't D'Ambrosio's. The door is the same brown as the bathroom door but no one will tell you what's on the other side." },
+  ].map(o => ({
+    tab: 'bg', cat: 'dambrosios_fp',
+    label: "1st-person — " + o.id.replace(/_/g, ' ').toUpperCase(),
+    flavor: o.flavor + "\n\nFRAMING: 1st-person POV, ~1280×720 landscape. NO figures (visitors render as meeples on top), NO text overlay, NO UI chrome. Painted in the same gouache + linen-grain technique as the rest of the deck.\n\nBOTTOM-CENTER 80px MUST stay visually quiet — the engine renders a navigation bar there listing adjacent spaces, so the lower edge of the painting should be flat shadow or simple floor.",
+    target: 'assets/gallery/locations/dambrosios_fp_' + o.id + '.png'
+  })),
+
   // ── CGs (finale + ending screens) ──────────────────────────────────
   // Pulled back to a full-scene mid-shot. Same painting technique as
   // the cards — these are the boxes-of-game finale illustrations.

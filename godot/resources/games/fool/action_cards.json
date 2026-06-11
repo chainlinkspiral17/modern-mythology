@@ -200,6 +200,18 @@
       ]
     },
     {
+      "id": "coming_through",
+      "title": "COMING THROUGH",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "flavor": "Tray up, voice low, elbows out. Whoever's clustered at your space drifts off in different directions without quite meaning to.",
+      "requires": [],
+      "effects": [
+        {"kind": "disperse_visitors_here"}
+      ]
+    },
+    {
       "id": "breathe",
       "title": "BREATHE",
       "time_cost": 2,

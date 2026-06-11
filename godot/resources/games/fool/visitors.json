@@ -115,6 +115,40 @@
       }
     },
     {
+      "id": "bus_kid",
+      "name": "The Bus Kid",
+      "helper": true,
+      "scenarios": ["lunch_rush", "evening_service"],
+      "arrival": {"kind": "on_board_at_start", "pos": "dish_station"},
+      "accent": "#9bc3ff",
+      "placeholder_name": "the bus kid",
+      "mood": "jovial",
+      "notes": "Helper visitor. Doesn't need to be connected — they're staff. While they're on the board, threats decay one tick faster per Upkeep in any space adjacent to them (engine support coming). Disperse / claim effects skip helpers.",
+      "steps": {
+        "greet":   "They wave a wet rag at you and grin.",
+        "listen":  "\"On it,\" they say, before you've even said what.",
+        "deliver": "They take the plate from your tray as it passes them.",
+        "sit_with": "They take a knee on a bus tub, stretch their back, breathe."
+      }
+    },
+    {
+      "id": "line_cook",
+      "name": "The Line Cook",
+      "helper": true,
+      "scenarios": ["lunch_rush", "evening_service"],
+      "arrival": {"kind": "on_board_at_start", "pos": "grill"},
+      "accent": "#c2ff9b",
+      "placeholder_name": "the line cook",
+      "mood": "gruff",
+      "notes": "Helper visitor. Auto-rings the order bell each Upkeep regardless of player position (engine support coming).",
+      "steps": {
+        "greet":   "They give you the look. The one that says go work.",
+        "listen":  "\"You want it the right way or the fast way.\"",
+        "deliver": "They slide the plate across the pass without looking up.",
+        "sit_with": "They lean on the cold side of the grill and roll a cigarette they won't light."
+      }
+    },
+    {
       "id": "anya_recording",
       "name": "Anya's Recording",
       "arrival": {"kind": "conditional", "if_contents": "cassette_spine"},

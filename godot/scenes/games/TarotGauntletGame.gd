@@ -105,6 +105,10 @@ var _board_fullscreen_exit_btn: Button = null   # viewport-level overlay
 var _board_ui_scale: float = 1.0
 var _board_visitor_stack_offset: float = 14.0
 var _board_fullscreen: bool = false
+# View mode: "fp" (1st-person at current space, default) or "map"
+# (top-down board with all markers + meeples). Fullscreen toggle
+# also flips into "map". Hit the same button to return to FP.
+var _view_mode: String = "fp"
 # Last-rendered stat values, used by _render to flash labels on change
 var _last_rendered_time: int = -1
 var _last_rendered_inertia: int = -1
@@ -407,6 +411,13 @@ func _art_path_visitor_face(vid: String) -> String:
 func _art_path_board() -> String:
 	return "res://assets/gallery/locations/" + _location_id + "_gauntlet_board.png"
 
+# 1st-person view art for a single space, e.g.
+# `assets/gallery/locations/dambrosios_fp_counter.png`. Used by
+# `_render_fp` when the player is at that space in normal (non-
+# fullscreen) mode. Fullscreen toggles to the top-down map.
+func _art_path_fp(space_id: String) -> String:
+	return "res://assets/gallery/locations/" + _location_id + "_fp_" + space_id + ".png"
+
 func _art_path_meeple(id: String) -> String:
 	return "res://assets/gallery/meeples/" + id + ".png"
 
@@ -705,7 +716,7 @@ func _build_ui() -> void:
 	# Esc / Enter activate it too.
 	_board_expand_btn = Button.new()
 	_board_expand_btn.text = "⛶"
-	_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
+	_board_expand_btn.tooltip_text = "Open the top-down MAP (fullscreen). 1st-person of the current space is the default normal view."
 	_board_expand_btn.add_theme_font_size_override("font_size", 12)
 	_board_expand_btn.custom_minimum_size = Vector2(28, 20)
 	_board_expand_btn.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -1727,8 +1738,38 @@ func _sanity_mood(h: int) -> String:
 # ── Board rendering ──────────────────────────────────────────────────
 
 func _render_board() -> void:
+	# Top of the rendering pipeline. Routes to FP or top-down map
+	# depending on _view_mode + fullscreen state. Fullscreen always
+	# goes to the top-down map; normal mode prefers FP if art exists,
+	# otherwise falls back to the top-down map.
 	if _board_content == null:
 		return
+	if _board_fullscreen or _view_mode == "map":
+		_render_topdown_map()
+		return
+	# FP mode — but if the per-space FP art isn't there yet, fall
+	# back to the top-down map so the player isn't staring at a
+	# blank panel.
+	if ResourceLoader.exists(_art_path_fp(_player_pos)):
+		_render_fp()
+	else:
+		_render_topdown_map()
+
+
+func _render_topdown_map() -> void:
+	if _board_content == null:
+		return
+	# Coming back from FP mode? Reveal the meeples we hid.
+	if _board_meeple != null and is_instance_valid(_board_meeple):
+		_board_meeple.visible = true
+	for vid in _board_visitor_nodes.keys():
+		var vn: Control = _board_visitor_nodes[vid]
+		if is_instance_valid(vn):
+			vn.visible = true
+	for tid in _board_threat_nodes.keys():
+		var tn: Control = _board_threat_nodes[tid]
+		if is_instance_valid(tn):
+			tn.visible = true
 	# Static layout (bg, adjacency lines, markers, labels) is torn
 	# down every render so highlight/chevron can follow the player.
 	# MEEPLES are persistent — recreating them each render produced
@@ -2009,6 +2050,217 @@ func _render_board() -> void:
 	_position_meeples()
 
 
+# 1st-person view of the current space. Painted bg fills the panel;
+# bottom strip shows a navigation bar listing the adjacent spaces
+# (click → walk there); right edge stacks any visitors/threats at
+# the player's current space. Player meeple is hidden in this mode
+# — the camera IS the player.
+func _render_fp() -> void:
+	if _board_content == null:
+		return
+	_board_space_nodes.clear()
+	_board_marker_pos.clear()
+	for c in _board_content.get_children():
+		var cnm: String = c.name
+		if cnm == "player_meeple" or cnm.begins_with("visitor_") or cnm.begins_with("threat_"):
+			continue
+		c.queue_free()
+	# Opaque black floor underneath everything else (same role as
+	# in _render_topdown_map — kills bleed-through from whatever's
+	# behind the gauntlet).
+	var floor_rect := ColorRect.new()
+	floor_rect.name = "board_floor"
+	floor_rect.color = Color(0, 0, 0, 1)
+	floor_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	floor_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_board_content.add_child(floor_rect)
+	# Background — the painted 1st-person view of this space. We
+	# already gated on existence at the caller, so this should load.
+	var fp_tex: Texture2D = _load_texture_silent(_art_path_fp(_player_pos))
+	if fp_tex:
+		var bg := TextureRect.new()
+		bg.name = "fp_bg"
+		bg.texture = fp_tex
+		bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_board_content.add_child(bg)
+	# Subtle vignette over the bg so the navigation strip + overlays
+	# read cleanly against any painting.
+	var vignette := ColorRect.new()
+	vignette.name = "fp_vignette"
+	vignette.color = Color(0, 0, 0, 0.25)
+	vignette.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	vignette.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_board_content.add_child(vignette)
+	# Top label — what space the player is at, plus its flavor.
+	var space_def: Dictionary = _space_def(_player_pos)
+	var label_panel := PanelContainer.new()
+	label_panel.name = "fp_title_panel"
+	label_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	label_panel.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	label_panel.offset_top = 6
+	label_panel.offset_left = 8
+	label_panel.offset_right = -8
+	label_panel.offset_bottom = 38
+	label_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_board_content.add_child(label_panel)
+	var label_hb := HBoxContainer.new()
+	label_hb.add_theme_constant_override("separation", 10)
+	label_hb.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label_panel.add_child(label_hb)
+	var at_lbl := Label.new()
+	at_lbl.text = "» AT  " + String(space_def.get("label", _player_pos.to_upper()))
+	at_lbl.add_theme_color_override("font_color", C_ACCENT)
+	at_lbl.add_theme_font_size_override("font_size", 12)
+	at_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label_hb.add_child(at_lbl)
+	var flavor_s: String = String(space_def.get("flavor", ""))
+	if flavor_s != "":
+		var flavor_lbl := Label.new()
+		flavor_lbl.text = "— " + flavor_s
+		flavor_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.7))
+		flavor_lbl.add_theme_font_size_override("font_size", 10)
+		flavor_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		flavor_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		label_hb.add_child(flavor_lbl)
+	# Right-edge visitors+threats overlay — show who's here with you.
+	var here_panel := VBoxContainer.new()
+	here_panel.name = "fp_here_panel"
+	here_panel.add_theme_constant_override("separation", 4)
+	here_panel.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	here_panel.offset_left = -180
+	here_panel.offset_right = -10
+	here_panel.offset_top = 46
+	here_panel.offset_bottom = -100
+	here_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_board_content.add_child(here_panel)
+	var here_header := Label.new()
+	here_header.text = "AT THIS SPACE"
+	here_header.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
+	here_header.add_theme_font_size_override("font_size", 9)
+	here_panel.add_child(here_header)
+	var any_here: bool = false
+	for vid in _visitors_state:
+		var v: Dictionary = _visitors_state[vid]
+		if not v.get("arrived", false): continue
+		if v.get("pos", "") != _player_pos: continue
+		any_here = true
+		var vdef: Dictionary = _visitors_def.get(vid, {})
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 4)
+		row.mouse_filter = Control.MOUSE_FILTER_STOP
+		row.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		row.gui_input.connect(func(ev: InputEvent) -> void:
+			if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+				_open_visitor_view(vid))
+		var dot := Label.new()
+		dot.text = "●"
+		dot.add_theme_color_override("font_color", Color(vdef.get("accent", "#c8a268")))
+		dot.add_theme_font_size_override("font_size", 14)
+		dot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		row.add_child(dot)
+		var vlbl := Label.new()
+		vlbl.text = String(vdef.get("name", vid))
+		vlbl.add_theme_color_override("font_color", C_TEXT)
+		vlbl.add_theme_font_size_override("font_size", 10)
+		vlbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		row.add_child(vlbl)
+		here_panel.add_child(row)
+	for inst: Dictionary in _threats_active:
+		if String(inst.get("pos", "")) != _player_pos: continue
+		any_here = true
+		var tdef: Dictionary = _threats_def.get(inst.get("def_id", ""), {})
+		var trow := HBoxContainer.new()
+		trow.add_theme_constant_override("separation", 4)
+		trow.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var tglyph := Label.new()
+		tglyph.text = String(tdef.get("glyph", "✕"))
+		tglyph.add_theme_color_override("font_color", Color(tdef.get("tint", "#ff8060")))
+		tglyph.add_theme_font_size_override("font_size", 14)
+		trow.add_child(tglyph)
+		var ticks: int = int(inst.get("ticks_remaining", 0))
+		var tlbl := Label.new()
+		tlbl.text = "%s (%d)" % [String(tdef.get("title", "threat")), ticks]
+		tlbl.add_theme_color_override("font_color", Color(1.0, 0.50, 0.39))
+		tlbl.add_theme_font_size_override("font_size", 10)
+		trow.add_child(tlbl)
+		here_panel.add_child(trow)
+	if not any_here:
+		var empty_lbl := Label.new()
+		empty_lbl.text = "— nobody here —"
+		empty_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.35))
+		empty_lbl.add_theme_font_size_override("font_size", 10)
+		here_panel.add_child(empty_lbl)
+	# Bottom navigation bar — adjacent spaces, click → walk.
+	var nav_panel := PanelContainer.new()
+	nav_panel.name = "fp_nav_panel"
+	nav_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	nav_panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	nav_panel.offset_top = -68
+	nav_panel.offset_left = 8
+	nav_panel.offset_right = -8
+	nav_panel.offset_bottom = -6
+	nav_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	_board_content.add_child(nav_panel)
+	var nav_vb := VBoxContainer.new()
+	nav_vb.add_theme_constant_override("separation", 2)
+	nav_panel.add_child(nav_vb)
+	var nav_header := Label.new()
+	nav_header.text = "WALK TO  (click an adjacent space)"
+	nav_header.add_theme_color_override("font_color", Color(C_ACCENT.r, C_ACCENT.g, C_ACCENT.b, 0.75))
+	nav_header.add_theme_font_size_override("font_size", 9)
+	nav_vb.add_child(nav_header)
+	var nav_hb := HBoxContainer.new()
+	nav_hb.add_theme_constant_override("separation", 6)
+	nav_vb.add_child(nav_hb)
+	var adj_map: Dictionary = _location.get("adjacency", {})
+	var adj_list: Array = adj_map.get(_player_pos, [])
+	for nbr_id: String in adj_list:
+		var nbr_def: Dictionary = _space_def(nbr_id)
+		if nbr_def.is_empty(): continue
+		# Skip hidden thresholds (precipice_door before reveal)
+		if not nbr_def.get("always_visible", true) and nbr_id != "precipice_door":
+			continue
+		if nbr_id == "precipice_door" and not _flags.get("precipice_revealed", false):
+			continue
+		var nbr_btn := Button.new()
+		nbr_btn.text = String(nbr_def.get("label", nbr_id.to_upper()))
+		nbr_btn.add_theme_font_size_override("font_size", 11)
+		nbr_btn.tooltip_text = "Walk to %s (1 Time)" % nbr_btn.text
+		nbr_btn.custom_minimum_size = Vector2(96, 28)
+		nbr_btn.mouse_filter = Control.MOUSE_FILTER_STOP
+		# Style threshold spaces in green so they read as "exits".
+		var kind_s: String = String(nbr_def.get("kind", "named"))
+		if kind_s == "threshold":
+			nbr_btn.add_theme_color_override("font_color", C_GOOD)
+		elif kind_s == "search":
+			nbr_btn.add_theme_color_override("font_color", C_ACCENT)
+		nbr_btn.pressed.connect(_on_space_clicked.bind(nbr_id))
+		nav_hb.add_child(nbr_btn)
+	# Hide the persistent player/visitor/threat meeples in FP mode —
+	# the player IS the camera, and the visitor+threat overlay above
+	# replaces meeple-at-marker display.
+	if _board_meeple != null and is_instance_valid(_board_meeple):
+		_board_meeple.visible = false
+	for vid in _board_visitor_nodes.keys():
+		var vn: Control = _board_visitor_nodes[vid]
+		if is_instance_valid(vn):
+			vn.visible = false
+	for tid in _board_threat_nodes.keys():
+		var tn: Control = _board_threat_nodes[tid]
+		if is_instance_valid(tn):
+			tn.visible = false
+
+
+# Helper — find a space's full def from the location JSON.
+func _space_def(sid: String) -> Dictionary:
+	for s: Dictionary in _location.get("spaces", []):
+		if String(s.get("id", "")) == sid:
+			return s
+	return {}
+
+
 func _make_space_label(s: Dictionary) -> Label:
 	# Clickable space label. Click → walk there if adjacent (costs 1 Time).
 	# Label visibility is tiered to reduce visual clutter:
@@ -2125,9 +2377,11 @@ func _show_move_popup() -> void:
 
 func _toggle_board_fullscreen() -> void:
 	# Expand the board to fill the whole game viewport (covering
-	# the right column + bottom strip). Click again or hit Esc to
-	# restore the normal three-column layout.
+	# the right column + bottom strip) AND switch to the top-down
+	# map view. Normal mode is 1st-person of the current space.
+	# Click again or hit Esc to restore the FP view in its panel.
 	_board_fullscreen = not _board_fullscreen
+	_view_mode = "map" if _board_fullscreen else "fp"
 	if _board_fullscreen:
 		_board_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		_board_root.offset_top = 52
@@ -2150,7 +2404,7 @@ func _toggle_board_fullscreen() -> void:
 		_board_root.offset_right = -440
 		_board_expand_btn.visible = true
 		_board_expand_btn.text = "⛶"
-		_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
+		_board_expand_btn.tooltip_text = "Open the top-down MAP (fullscreen). 1st-person of the current space is the default normal view."
 		_board_expand_btn.custom_minimum_size = Vector2(28, 20)
 		_board_root.z_index = 0
 	# Show/hide the viewport-level exit button (the working one)
@@ -2526,6 +2780,7 @@ func _describe_effect(e: Dictionary) -> String:
 		"clear_threats_here": return "Clear any threat at your space"
 		"clear_all_threats":  return "Clear EVERY threat on the board"
 		"force_connect_visitor_at_my_pos": return "Connect any visitor at your space (bypasses progress + composite paths)"
+		"disperse_visitors_here":          return "Push every visitor at your space to a random adjacent space"
 		"log":            return String(e.get("text", ""))
 		"if_at":
 			var then_e: Array = e.get("then", [])
@@ -3564,6 +3819,31 @@ func _resolve_effect(e: Dictionary) -> void:
 				break
 			if not any_connected:
 				_log_line("[i]nobody here to connect with.[/i]")
+		"disperse_visitors_here":
+			# Push every non-helper, non-Faith visitor at the player's
+			# pos to a random adjacent space. Useful at lunch/evening
+			# rush when the counter clogs and you need to clear a path
+			# (e.g. via the COMING THROUGH card).
+			var adj_d: Array = _location.get("adjacency", {}).get(_player_pos, [])
+			if adj_d.is_empty():
+				_log_line("[i]nowhere for them to drift to from here.[/i]")
+			else:
+				var any_moved: bool = false
+				for vid_d in _visitors_state:
+					var vst_d: Dictionary = _visitors_state[vid_d]
+					if not vst_d.get("arrived", false): continue
+					if vst_d.get("pos", "") != _player_pos: continue
+					if vid_d == "faith": continue
+					var vdef_d: Dictionary = _visitors_def.get(vid_d, {})
+					if vdef_d.get("helper", false): continue
+					if vst_d.get("connected", false): continue
+					var dest: String = String(adj_d[randi() % adj_d.size()])
+					vst_d["pos"] = dest
+					any_moved = true
+					_log_line("[color=#c8a268][i]» %s steps aside toward %s[/i][/color]" %
+						[vdef_d.get("name", vid_d), dest.replace("_", " ").to_upper()])
+				if not any_moved:
+					_log_line("[i]nobody here to disperse.[/i]")
 		"log":
 			_log_line("[i]%s[/i]" % e.get("text", ""))
 		"if_at":

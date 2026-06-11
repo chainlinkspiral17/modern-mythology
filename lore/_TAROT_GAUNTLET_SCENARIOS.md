@@ -839,3 +839,74 @@ builds the picker columns.
   hard? Or should we just trust the player to pick what
   interests them? Suggest: no difficulty rating. The mismatch
   IS the interest.
+
+
+## D'Ambrosio's scenario ladder (Fool location)
+
+The diner has three SCENARIO setup files now — same location, same
+hand (John Frank), different time of day + tuning. The room
+escalates around the same engine.
+
+### THE LEAP · easy · 3:47 AM (Between Acts)
+`setup_the_leap.json`
+
+The off-shift. Almost nobody. The room presses on you because
+nothing else is. Win = assemble the Bindle, gather three
+visitors, walk to a threshold. Inertia +1/turn.
+
+This is the canonical introduction — the rules of the engine
+revealed gently. The painted-bg / FP-view / threats / sanity
+all show up here but the cost of doing it slowly is low.
+
+### THE RUSH · medium · 12:18 PM (Lunch Service)
+`setup_lunch_rush.json`
+
+Lunch service. The room is loud, full, sunlit. Two helper
+meeples on the board: the Bus Kid (jovial) and the Line Cook
+(gruff). Inertia +2/turn. Win = serve 4 orders + connect 3
+visitors + reach a threshold under Inertia 9.
+
+The Bindle isn't the win. The orders are. The tension is
+keeping up, not unsticking yourself.
+
+### FULL HOUSE · hard · 8:42 PM (Evening Service)
+`setup_evening_service.json`
+
+Evening service. The bar is OPEN — visitor spawns include the
+bar half of the room (BAR, BAR STOOLS, JUKEBOX, BOOTH 1/4).
+Both helpers still on the board. Inertia +2 at the low end, +3
+once you cross 7. Starts at Inertia 1 / Sanity 4 instead of
+0/6 — the night is already underway when you clock on.
+
+Win = serve 6 orders + connect 4 visitors + reach a threshold
+under Inertia 10.
+
+### Helper visitors
+Two staff meeples added with the medium+hard setups:
+
+- **The Bus Kid** (`bus_kid`) — starts at the dish station.
+  Helper flag means: cannot be claimed; cannot be dispersed
+  by COMING THROUGH; doesn't count toward visitor totals.
+  (Engine support for "threats decay faster near a helper"
+  is pending.)
+- **The Line Cook** (`line_cook`) — starts at the grill.
+  Helper flag, same protections. (Engine support for "auto-
+  rings the bell each Upkeep" pending.)
+
+### New action card: COMING THROUGH
+1 Time, stock 2, non-starter. Disperses every non-helper,
+non-Faith visitor at the player's current space to a random
+adjacent space. Useful when the counter clogs at lunch or
+the bar swarms at evening.
+
+### 1st-person view mode
+The default view in the gauntlet panel is a 1st-person painted
+shot of the player's current space, with a navigation bar at
+the bottom listing adjacent spaces. The fullscreen toggle (⛶)
+opens the top-down map.
+
+Per-space FP art lives at:
+  `assets/gallery/locations/<location>_fp_<space_id>.png`
+Studio entries (gauntlet_studio.html) carry one prompt per
+space — defaults to the dambrosios spaces; reusable per
+location.

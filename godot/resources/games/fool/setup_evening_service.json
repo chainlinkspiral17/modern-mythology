@@ -1,0 +1,70 @@
+{
+  "id": "evening_service",
+  "arcana": "0_fool",
+  "location": "dambrosios",
+  "hand": "john_frank",
+  "title": "FULL HOUSE",
+  "subtitle": "Evening Service · 8:42 PM",
+  "difficulty": "hard",
+  "epigraph_upright": "Every chair is occupied. Every check is open. The dining room and the bar are both yours tonight because the manager called in. You are good at this and it is still going to be too much.",
+  "epigraph_reversed": "The bar swallows the floor. Tickets pile up unread. A regular leaves without paying because no one saw them stand. The room takes more than it gives back.",
+
+  "scene_description": "Eight PM service. The bar is open tonight — every stool occupied, the soda gun hissing, somebody at the jukebox feeding it quarters. Every booth seated, the kitchen behind you in full call-and-response, the bus kid moving three tubs at once. You haven't sat down in four hours. The room is at full tilt and the room is loving it and the room could turn on you any minute.",
+
+  "direction_hint": "Triage. The bar is open: visitors will spawn there too. Use COMING THROUGH liberally. Lean on both helpers. SPEND IT is your friend. Win by reaching closing time intact: serve six orders, connect four visitors, get to a threshold before inertia or sanity drops you.",
+
+  "opening_log_lines": [
+    "Evening service. Every seat taken. The bar is open.",
+    "The cook is on the grill, the kid is on the floor, you are everywhere.",
+    "Pace yourself. Click [b]PHASE: ACTION[/b] anytime for the rules."
+  ],
+
+  "starting_state": {
+    "player_pos": "counter",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 1,
+    "inertia_per_turn": 2,
+    "sanity": 4,
+    "sanity_max": 6,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "clean", "greet", "listen", "deliver"]
+  },
+
+  "visitors_present_at_start": ["bus_kid", "line_cook", "frasier", "stranger", "dawn_cook"],
+  "visitor_schedule": [
+    {"visitor": "bbs_caller", "arrival_turn": 1, "arrival_space": "register"},
+    {"visitor": "faith",      "arrival_turn": 2, "arrival_space": "bar_stools"}
+  ],
+
+  "win_conditions": {
+    "require_bindle_assembled": false,
+    "require_faith_adjacent": false,
+    "require_visitors_connected_min": 4,
+    "require_orders_delivered_min": 6,
+    "require_inertia_below": 10,
+    "require_threshold_space": true
+  },
+
+  "loss_conditions": {
+    "inertia_max": 12,
+    "visitors_claimed_max": 5
+  },
+
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the bar is on",                   "tick_per_turn": 2, "effects": []},
+    {"level": 4,  "label": "the second seating",              "tick_per_turn": 2, "effects": []},
+    {"level": 7,  "label": "the kitchen is calling",          "tick_per_turn": 3, "effects": ["gravity_deck_plus_1"]},
+    {"level": 9,  "label": "a regular just walked out",       "tick_per_turn": 3, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 11, "label": "the floor is on fire",            "tick_per_turn": 3, "effects": ["claim_next_closest_visitor", "action_card_cost_plus_1"]},
+    {"level": 12, "label": "in the weeds",                    "tick_per_turn": 3, "effects": ["reveal_inertia_finale"]}
+  ],
+
+  "claim_turns_to_consume": 2,
+
+  "thresholds": [
+    {"id": "parking_lot",  "label": "PARKING LOT",  "ending_lore_token": "leap_into_graustark_evening", "visible_from_start": true},
+    {"id": "river_window", "label": "RIVER WINDOW", "ending_lore_token": "leap_into_substrate_evening", "visible_from_start": true}
+  ],
+
+  "notes": "Hard-difficulty companion to THE LEAP. Bar is OPEN — the closed half of the diner from THE LEAP is in play, with its own visitor spawns and pull. Inertia ticks +2 at the bottom of the scale and +3 once it hits 7. Starts already at 1 inertia + 4 sanity. The room expects you to use every helper. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+}
