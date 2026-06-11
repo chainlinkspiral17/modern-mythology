@@ -929,7 +929,8 @@ func _render_board() -> void:
 		# the board reads as a board even without/with the bg image.
 		var marker := Panel.new()
 		marker.name = "marker_" + sid
-		marker.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		marker.mouse_filter = Control.MOUSE_FILTER_STOP
+		marker.tooltip_text = _tooltip_for_space(s)
 		marker.custom_minimum_size = Vector2(12, 12)
 		marker.size = Vector2(12, 12)
 		marker.position = Vector2(nx - 6, ny - 6)
@@ -968,6 +969,8 @@ func _render_board() -> void:
 		lbl_m.add_theme_font_size_override("font_size", 18)
 		lbl_m.name = "player_meeple"
 		_board_meeple = lbl_m
+	_board_meeple.tooltip_text = _tooltip_for_player()
+	_board_meeple.mouse_filter = Control.MOUSE_FILTER_STOP
 	_board_content.add_child(_board_meeple)
 	# Visitor meeples — image if present, otherwise small colored dot.
 	for vid in _visitors_state:
@@ -993,6 +996,8 @@ func _render_board() -> void:
 			dot.add_theme_font_size_override("font_size", 14)
 			vnode = dot
 		vnode.name = "visitor_" + vid
+		vnode.tooltip_text = _tooltip_for_visitor(vid)
+		vnode.mouse_filter = Control.MOUSE_FILTER_STOP
 		_board_content.add_child(vnode)
 		_board_visitor_nodes[vid] = vnode
 	_position_meeples()
@@ -1049,6 +1054,7 @@ func _make_space_label(s: Dictionary) -> Label:
 	l.add_theme_constant_override("shadow_offset_x", 1)
 	l.add_theme_constant_override("shadow_offset_y", 1)
 	l.mouse_filter = Control.MOUSE_FILTER_PASS
+	l.tooltip_text = _tooltip_for_space(s)
 	# Make it clickable. Adjacent free-move costs 1 Time, no card needed.
 	# Spaces farther away still need explicit movement cards (Walk /
 	# Sprint / Step Toward / Move Player Toward Threshold).
@@ -1249,7 +1255,10 @@ func _render_hand() -> void:
 		btn.add_theme_font_size_override("font_size", 9)
 		btn.custom_minimum_size = Vector2(84, 50)
 		btn.clip_text = true
-		btn.tooltip_text = String(card.get("flavor", "")) + "\n\n" + _card_summary(card)
+		btn.tooltip_text = "%s — costs %d Time\n\n%s\n\n%s" % [
+			card.get("title", cid), time_cost,
+			String(card.get("flavor", "")),
+			_card_summary(card)]
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
 		if art:
 			btn.icon = art
@@ -1299,8 +1308,10 @@ func _render_tableau() -> void:
 		btn.add_theme_font_size_override("font_size", 9)
 		btn.custom_minimum_size = Vector2(84, 50)
 		btn.clip_text = true
-		btn.tooltip_text = "%s\n\nBuy cost: %d Time\nPlay cost when in hand: %d Time\n\n%s" % [
-			card.get("flavor", ""), price, time_cost, _card_summary(card)]
+		btn.tooltip_text = "%s — buy %d Time, play %d Time\n\n%s\n\n%s" % [
+			card.get("title", cid), price, time_cost,
+			String(card.get("flavor", "")),
+			_card_summary(card)]
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
 		if art:
 			btn.icon = art
@@ -1320,7 +1331,7 @@ func _render_tableau() -> void:
 		_tableau_box.add_child(btn)
 
 
-const BUY_PRICE_MARKUP: int = 2   # Tableau buy = card's time_cost + this
+const BUY_PRICE_MARKUP: int = 0   # Tableau buy = card's time_cost + this
 
 func _buy_price(card: Dictionary) -> int:
 	return int(card.get("time_cost", 1)) + BUY_PRICE_MARKUP
@@ -1344,18 +1355,230 @@ func _on_buy_card(cid: String) -> void:
 
 
 func _card_summary(card: Dictionary) -> String:
-	# For framework cards (with ★★/★/✕ lines)
+	var out: PackedStringArray = []
+	# Framework cards: triple-outcome dice card
 	if card.has("double_success"):
-		return "★★ %s\n★ %s\n✕ %s" % [
-			card.get("double_success",""),
-			card.get("single_success",""),
-			card.get("failure",""),
-		]
-	# For arcana cards with effect lists, summarize key effects
+		out.append("Roll the Threshold dice:")
+		out.append("  ★★  " + str(card.get("double_success", "")))
+		out.append("  ★   " + str(card.get("single_success", "")))
+		out.append("  ✕   " + str(card.get("failure", "")))
+	# Passive (e.g. SPEND IT)
+	if card.has("passive_effect"):
+		out.append(str(card.get("passive_effect", "")))
+	# Requires
+	var reqs: Array = card.get("requires", [])
+	if not reqs.is_empty():
+		var req_lines: PackedStringArray = []
+		for r: Dictionary in reqs:
+			req_lines.append(_describe_requirement(r))
+		out.append("Requires: " + ", ".join(req_lines))
+	# Effects (arcana cards)
+	var effs: Array = card.get("effects", [])
+	if not effs.is_empty():
+		out.append("Effect:")
+		for e: Dictionary in effs:
+			out.append("  · " + _describe_effect(e))
+	return "\n".join(out)
+
+
+# Convert one requirement dict into a one-line English phrase.
+func _describe_requirement(r: Dictionary) -> String:
+	match String(r.get("kind", "")):
+		"at_pos":          return "you at %s" % String(r.get("pos", "?")).to_upper()
+		"at_threshold":    return "you at a THRESHOLD"
+		"inventory_has":   return "carry %s" % String(r.get("item", "?")).to_upper()
+		"inventory_has_contents": return "carry any CONTENTS"
+		"item_at_pos":     return "an item is here"
+		"win_conditions_met": return "win conditions met"
+	return String(r.get("kind", "?"))
+
+
+# Convert one effect dict into a one-line English phrase. Keeps card
+# tooltips legible instead of dumping raw {kind: foo, ...} syntax.
+func _describe_effect(e: Dictionary) -> String:
+	var kind: String = String(e.get("kind", ""))
+	match kind:
+		"gain_time":      return "+%d Time" % int(e.get("amount", 1))
+		"lose_time":      return "-%d Time" % int(e.get("amount", 1))
+		"gain_inertia":   return "+%d Inertia" % int(e.get("amount", 1))
+		"lose_inertia":   return "-%d Inertia" % int(e.get("amount", 1))
+		"recover_health": return "+%d Health" % int(e.get("amount", 1))
+		"log":            return String(e.get("text", ""))
+		"if_at":
+			var then_e: Array = e.get("then", [])
+			var sub: PackedStringArray = []
+			for se: Dictionary in then_e:
+				sub.append(_describe_effect(se))
+			return "if you're at %s: %s" % [String(e.get("pos", "?")).to_upper(), " · ".join(sub)]
+		"else":           return "otherwise no effect"
+		"move_visitor":   return "%s moves to %s" % [String(e.get("visitor", "?")), String(e.get("to", "?"))]
+		"ring_bell_tone": return "ring the BELL"
+		"if_both_tones_rung":
+			var then_e2: Array = e.get("then", [])
+			var sub2: PackedStringArray = []
+			for se: Dictionary in then_e2:
+				sub2.append(_describe_effect(se))
+			return "if both bell tones rung: %s" % " · ".join(sub2)
+		"advance_next_visitor_arrival": return "next visitor arrives %d turn(s) sooner" % int(e.get("by", 1))
+		"advance_visitor_arrival": return "%s arrives %d turn(s) sooner" % [String(e.get("visitor", "?")), int(e.get("by", 1))]
+		"increment_meta":   return "track meta:%s" % String(e.get("key", ""))
+		"if_meta_at_least":
+			var then_e3: Array = e.get("then", [])
+			var sub3: PackedStringArray = []
+			for se: Dictionary in then_e3:
+				sub3.append(_describe_effect(se))
+			return "after %d %s: %s" % [int(e.get("value", 0)), String(e.get("key", "")), " · ".join(sub3)]
+		"end_action_phase": return "ends your action phase"
+		"if_visitor_adjacent":
+			var then_e4: Array = e.get("then", [])
+			var sub4: PackedStringArray = []
+			for se: Dictionary in then_e4:
+				sub4.append(_describe_effect(se))
+			return "if %s is here: %s" % [String(e.get("visitor", "?")).to_upper(), " · ".join(sub4)]
+		"if_visitor_present":
+			var then_e5: Array = e.get("then", [])
+			var sub5: PackedStringArray = []
+			for se: Dictionary in then_e5:
+				sub5.append(_describe_effect(se))
+			return "if %s has arrived: %s" % [String(e.get("visitor", "?")).to_upper(), " · ".join(sub5)]
+		"if_at_pos_and_visitor_arrived_this_turn":
+			return "if you're at %s when %s arrives: connect" % [String(e.get("pos", "?")).to_upper(), String(e.get("visitor", "?")).to_upper()]
+		"mark_connection": return "connect with %s" % String(e.get("visitor", "?")).to_upper()
+		"connect_visitor_at_my_pos": return "connect with any visitor on your space"
+		"move_player_toward_threshold": return "pick a destination up to %d hop(s) away" % int(e.get("spaces", 1))
+		"take_item_at_pos": return "pick up the top item here"
+		"assemble_bindle": return "assemble the BUNDLE"
+		"if_contents_is":
+			var then_e6: Array = e.get("then", [])
+			var sub6: PackedStringArray = []
+			for se: Dictionary in then_e6:
+				sub6.append(_describe_effect(se))
+			return "if your contents is %s: %s" % [String(e.get("contents", "?")), " · ".join(sub6)]
+		"auto_connect_visitor": return "auto-connect %s" % String(e.get("visitor", "?")).to_upper()
+		"trigger_win":     return "trigger the LEAP win"
+		"set_next_time_reset": return "next Time reset = %d" % int(e.get("value", 6))
+		"if_played_this_turn":
+			return "if you played %s this turn..." % String(e.get("card", "?")).to_upper()
+		"discard_hand":    return "discard %d card(s)" % int(e.get("amount", 1))
+		"reveal_lore_token": return "lore token: %s" % String(e.get("token", "?"))
+		"play_jukebox_track": return "play %s" % String(e.get("label", "track"))
+		"advance_stranger_connection": return "advance Stranger connection"
+	# Default: humanise the kind (snake_case → space-case)
+	return kind.replace("_", " ")
+
+
+# ── Tooltip builders for board nodes ────────────────────────────────
+
+func _tooltip_for_space(s: Dictionary) -> String:
+	var sid: String = s.get("id", "")
+	var label: String = s.get("label", sid)
+	var kind: String = s.get("kind", "named")
 	var lines: PackedStringArray = []
-	for e: Dictionary in card.get("effects", []):
-		lines.append("· " + str(e))
+	lines.append(label + ("  (you are here)" if sid == _player_pos else ""))
+	match kind:
+		"threshold": lines.append("Threshold — LEAP candidate when conditions are met.")
+		"search":    lines.append("Search pile — play SEARCH or PICK UP here.")
+		_:           pass
+	if s.has("flavor"):
+		lines.append(String(s.get("flavor", "")))
+	# Pile contents
+	var pile_id: String = s.get("search_pile", "")
+	if pile_id != "":
+		var pile: Array = _pile_state.get(pile_id, [])
+		if pile.is_empty():
+			lines.append("Pile: (empty)")
+		else:
+			var titles: PackedStringArray = []
+			for iid: String in pile:
+				titles.append(String(_items_def.get(iid, {}).get("title", iid)))
+			lines.append("Pile (%d): %s" % [pile.size(), ", ".join(titles)])
+	# What's here
+	var here_visitors: PackedStringArray = []
+	for vid in _visitors_state:
+		var vst: Dictionary = _visitors_state[vid]
+		if vst.get("arrived", false) and vst.get("pos", "") == sid:
+			here_visitors.append(String(_visitors_def.get(vid, {}).get("name", vid)))
+	if not here_visitors.is_empty():
+		lines.append("Here: " + ", ".join(here_visitors))
+	# Adjacency
+	var adj: Array = (_location.get("adjacency", {}) as Dictionary).get(sid, [])
+	if not adj.is_empty():
+		var adj_names: PackedStringArray = []
+		for nbr: String in adj:
+			if nbr == "precipice_door" and not _flags.get("precipice_revealed", false):
+				continue
+			adj_names.append(nbr.replace("_", " "))
+		lines.append("Connects to: " + ", ".join(adj_names))
 	return "\n".join(lines)
+
+
+func _tooltip_for_player() -> String:
+	var lines: PackedStringArray = []
+	lines.append("★ John Frank")
+	lines.append("At: " + _player_pos.replace("_", " "))
+	lines.append("Time %d  ·  Inertia %d  ·  Health %d" % [_time, _inertia, _health])
+	if _bindle_assembled:
+		lines.append("Bindle: assembled — LEAP at a threshold")
+	else:
+		var s_part: String = "stick" if _inventory.has("stick") else "(stick)"
+		var c_part: String = "cloth" if _inventory.has("cloth") else "(cloth)"
+		var k_part: String = "contents" if _has_contents() else "(contents)"
+		lines.append("Bindle: " + s_part + " · " + c_part + " · " + k_part)
+	return "\n".join(lines)
+
+
+func _tooltip_for_visitor(vid: String) -> String:
+	var v: Dictionary = _visitors_def.get(vid, {})
+	var st: Dictionary = _visitors_state.get(vid, {})
+	var lines: PackedStringArray = []
+	lines.append("● " + String(v.get("name", vid)))
+	if st.get("connected", false):
+		lines.append("✓ connected")
+		if v.has("lore_text"):
+			lines.append(String(v.get("lore_text", "")))
+	elif st.get("claimed_turn", -1) >= 0:
+		var remaining: int = int(_setup.get("claim_turns_to_consume", 2)) - (_turn - int(st["claimed_turn"]))
+		lines.append("✕ claimed — %d turn(s) until consumed" % max(0, remaining))
+	elif st.get("arrived", false):
+		lines.append("at " + String(st.get("pos", "?")).replace("_", " "))
+	# Connect requirement
+	var cv: Dictionary = v.get("connect_via", {})
+	if not cv.is_empty() and not st.get("connected", false):
+		lines.append("Connect: " + _describe_connect_via_plain(cv))
+	return "\n".join(lines)
+
+
+# Tooltip-safe (no BBCode) version of _describe_connect_via.
+func _describe_connect_via_plain(cv: Dictionary) -> String:
+	match String(cv.get("kind", "")):
+		"card_at_pos_with_visitor_adjacent":
+			return "play %s at %s while they're at %s" % [
+				String(cv.get("card", "?")).to_upper(),
+				String(cv.get("player_pos", "?")).to_upper(),
+				String(cv.get("visitor_pos", "?")).to_upper()]
+		"card_at_pos":
+			return "play %s at %s" % [
+				String(cv.get("card", "?")).to_upper(),
+				String(cv.get("player_pos", "?")).to_upper()]
+		"card_at_pos_on_arrival_turn":
+			return "play %s at %s on the turn they arrive" % [
+				String(cv.get("card", "?")).to_upper(),
+				String(cv.get("player_pos", "?")).to_upper()]
+		"card_played_n_times":
+			return "play %s %d times" % [
+				String(cv.get("card", "?")).to_upper(), int(cv.get("times", 1))]
+		"composite":
+			var parts: PackedStringArray = []
+			for sub: Dictionary in cv.get("all_of", []):
+				parts.append(_describe_connect_via_plain(sub))
+			return "; ".join(parts)
+		"took_item":
+			return "pick up %s" % String(cv.get("item", "?")).to_upper()
+		"stood_on":
+			return "stand at %s" % String(cv.get("pos", "?")).to_upper()
+		"auto_on_bundle_with_contents":
+			return "auto when you BUNDLE with %s" % String(cv.get("contents", "?"))
+	return str(cv)
 
 
 func _render_inventory() -> void:
