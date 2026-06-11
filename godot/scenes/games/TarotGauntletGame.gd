@@ -82,6 +82,10 @@ var _board_root: Control = null
 var _board_content: Control = null
 var _board_expand_btn: Button = null
 var _board_fullscreen: bool = false
+# Last-rendered stat values, used by _render to flash labels on change
+var _last_rendered_time: int = -1
+var _last_rendered_inertia: int = -1
+var _last_rendered_health: int = -1
 var _board_meeple: Control = null
 var _board_visitor_nodes: Dictionary = {}   # visitor_id → Control (Label or TextureRect)
 var _board_space_nodes: Dictionary = {}     # space_id → Label
@@ -175,6 +179,83 @@ func _audio_sfx(key: String) -> void:
 	if path == "":
 		return
 	AudioMgr.play_sfx(path)
+
+
+# ── Animation + game-feel helpers ────────────────────────────────────
+# Small reusable polish primitives so every state change gets visible
+# audio + visual feedback. Cheap to call; safe if a target is null.
+
+# Pulse a label's color toward `flash` and back. Used on stat changes
+# (time / inertia / health) so the player SEES what a card did, not
+# just reads it in the log.
+func _pulse_label(lbl: Label, flash: Color, dur: float = 0.55) -> void:
+	if lbl == null:
+		return
+	var original: Color = Color(0.85, 0.83, 0.78)
+	if lbl.has_theme_color_override("font_color"):
+		original = lbl.get_theme_color_override("font_color")
+	lbl.add_theme_color_override("font_color", flash)
+	var t := create_tween()
+	t.tween_property(lbl, "theme_override_colors/font_color", original, dur).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+
+# Tween a Control's position. No-op if already at the target.
+func _tween_node_to(node: Control, target: Vector2, dur: float = 0.30) -> void:
+	if node == null:
+		return
+	if node.position.distance_to(target) < 0.5:
+		node.position = target
+		return
+	var t := create_tween()
+	t.tween_property(node, "position", target, dur).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+
+# Brief overlay toast near the top of the screen — fades in then out.
+# Used for milestone awards (BUNDLE in hand, LEAP unlocked, visitor
+# connected, lore token gained, item picked up).
+func _show_toast(text: String, accent_hex: String = "#c8a268") -> void:
+	var view: Vector2 = get_viewport_rect().size
+	var pop := PanelContainer.new()
+	pop.add_theme_stylebox_override("panel", _make_panel_style())
+	pop.z_index = 200
+	pop.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(pop)
+	var rt := RichTextLabel.new()
+	rt.bbcode_enabled = true
+	rt.fit_content = true
+	rt.add_theme_color_override("default_color", Color(0.92, 0.88, 0.78))
+	rt.add_theme_font_size_override("normal_font_size", 14)
+	rt.text = "[color=%s]✦[/color]  %s" % [accent_hex, text]
+	pop.add_child(rt)
+	await get_tree().process_frame
+	pop.position = Vector2((view.x - pop.size.x) * 0.5, 80.0)
+	pop.modulate = Color(1, 1, 1, 0)
+	var t := create_tween()
+	t.tween_property(pop, "modulate:a", 1.0, 0.18).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	t.tween_interval(2.0)
+	t.tween_property(pop, "modulate:a", 0.0, 0.45).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	t.tween_callback(pop.queue_free)
+
+
+# Brief scale pulse — pump a button up to 1.10x and back. Used on
+# card play so the click registers visually.
+func _pulse_button(btn: BaseButton) -> void:
+	if btn == null:
+		return
+	btn.pivot_offset = btn.size * 0.5
+	var t := create_tween()
+	t.tween_property(btn, "scale", Vector2(1.10, 1.10), 0.08).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	t.tween_property(btn, "scale", Vector2(1.0, 1.0), 0.16).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+
+
+# Hover scale — bound to a button's mouse_entered/exited signals so
+# hand and tableau cards lift slightly under the cursor.
+func _hover_scale(btn: BaseButton, up: bool) -> void:
+	if btn == null:
+		return
+	btn.pivot_offset = btn.size * 0.5
+	var t := create_tween()
+	t.tween_property(btn, "scale", Vector2(1.06, 1.06) if up else Vector2(1.0, 1.0), 0.10).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 
 # ── Art loading helpers ─────────────────────────────────────────────
@@ -625,6 +706,14 @@ func _make_pane_header(title: String, on_expand: Callable) -> Control:
 # Generic pane modal — dim background, centered panel with a header
 # (title + ✕ close) and a scrollable body built by the caller.
 # Click outside the panel or the ✕ button to dismiss.
+func _close_pane_modal(dim: ColorRect) -> void:
+	if dim == null or not is_instance_valid(dim):
+		return
+	var t := create_tween()
+	t.tween_property(dim, "modulate:a", 0.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	t.tween_callback(dim.queue_free)
+
+
 func _open_pane_modal(title: String, body_builder: Callable) -> void:
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.75)
@@ -632,16 +721,24 @@ func _open_pane_modal(title: String, body_builder: Callable) -> void:
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.z_index = 100
 	dim.name = "pane_modal_dim"
+	dim.modulate = Color(1, 1, 1, 0)   # fade in
 	dim.gui_input.connect(func(ev: InputEvent) -> void:
 		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
-			dim.queue_free())
+			_close_pane_modal(dim))
 	add_child(dim)
+	var fade_in := create_tween()
+	fade_in.tween_property(dim, "modulate:a", 1.0, 0.16).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	var view: Vector2 = get_viewport_rect().size
 	var pop := PanelContainer.new()
 	pop.add_theme_stylebox_override("panel", _make_panel_style())
 	pop.size = Vector2(view.x * 0.72, view.y * 0.72)
 	pop.position = (view - pop.size) * 0.5
 	pop.mouse_filter = Control.MOUSE_FILTER_STOP
+	# Subtle entrance — start a hair smaller and scale up
+	pop.pivot_offset = pop.size * 0.5
+	pop.scale = Vector2(0.96, 0.96)
+	var scale_t := create_tween()
+	scale_t.tween_property(pop, "scale", Vector2(1.0, 1.0), 0.20).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	dim.add_child(pop)
 	var pop_vb := VBoxContainer.new()
 	pop_vb.add_theme_constant_override("separation", 6)
@@ -656,7 +753,7 @@ func _open_pane_modal(title: String, body_builder: Callable) -> void:
 	var close := Button.new()
 	close.text = "✕  Close"
 	close.add_theme_font_size_override("font_size", 12)
-	close.pressed.connect(func() -> void: dim.queue_free())
+	close.pressed.connect(func() -> void: _close_pane_modal(dim))
 	header.add_child(close)
 	pop_vb.add_child(header)
 	pop_vb.add_child(HSeparator.new())
@@ -1061,11 +1158,12 @@ func _on_space_clicked(target_pos: String) -> void:
 
 
 func _position_meeples() -> void:
-	# Player at current pos
+	# Player at current pos — tween between rounds, don't teleport.
 	if _board_meeple and _board_space_nodes.has(_player_pos):
 		var anchor: Label = _board_space_nodes[_player_pos]
-		_board_meeple.position = anchor.position + Vector2(0, 18)
-	# Visitors at their positions
+		var target: Vector2 = anchor.position + Vector2(0, 18)
+		_tween_node_to(_board_meeple, target, 0.32)
+	# Visitors at their positions — tween too
 	var vid_pos_stack: Dictionary = {}   # pos → stack offset count
 	for vid in _board_visitor_nodes:
 		var v: Dictionary = _visitors_state[vid]
@@ -1074,7 +1172,8 @@ func _position_meeples() -> void:
 			var anchor2: Label = _board_space_nodes[p]
 			var idx: int = int(vid_pos_stack.get(p, 0))
 			vid_pos_stack[p] = idx + 1
-			_board_visitor_nodes[vid].position = anchor2.position + Vector2(0, 36 + idx * 14)
+			var vtarget: Vector2 = anchor2.position + Vector2(0, 36 + idx * 14)
+			_tween_node_to(_board_visitor_nodes[vid], vtarget, 0.36)
 
 
 # ── Hand + visitor rendering ─────────────────────────────────────────
@@ -1098,7 +1197,11 @@ func _render_hand() -> void:
 			btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 		var playable: bool = _can_play_card(card)
 		btn.disabled = (not playable) or (_phase != Phase.ACTION) or _game_over
-		btn.pressed.connect(_on_play_card.bind(cid))
+		btn.pressed.connect(func() -> void:
+			_pulse_button(btn)
+			_on_play_card(cid))
+		btn.mouse_entered.connect(_hover_scale.bind(btn, true))
+		btn.mouse_exited.connect(_hover_scale.bind(btn, false))
 		_hand_box.add_child(btn)
 
 
@@ -1147,7 +1250,11 @@ func _render_tableau() -> void:
 		# Dim style outside planning so it reads as preview, not shop
 		if _phase != Phase.PLANNING:
 			btn.modulate = Color(0.7, 0.65, 0.55, 0.7)
-		btn.pressed.connect(_on_buy_card.bind(cid))
+		btn.pressed.connect(func() -> void:
+			_pulse_button(btn)
+			_on_buy_card(cid))
+		btn.mouse_entered.connect(_hover_scale.bind(btn, true))
+		btn.mouse_exited.connect(_hover_scale.bind(btn, false))
 		_tableau_box.add_child(btn)
 
 
@@ -1530,14 +1637,27 @@ func _render() -> void:
 	if _has_all_bindle_components() and not _bindle_assembled and not ("bundle" in _hand_cards):
 		_hand_cards.append("bundle")
 		_log_line("[color=#ffd07a][b]BUNDLE in hand[/b] — all three components collected.[/color]")
+		_show_toast("[b]BUNDLE[/b] is in your hand — assemble it.", "#ffd07a")
 	if _bindle_assembled and not ("leap" in _hand_cards):
 		_hand_cards.append("leap")
 		_log_line("[color=#ffd07a][b]LEAP in hand[/b] — bindle assembled.[/color]")
+		_show_toast("[b]LEAP[/b] unlocked — play it at any open threshold.", "#ffd07a")
 	_phase_label.text = "PHASE: " + Phase.keys()[_phase]
 	_turn_label.text  = "Turn %d" % _turn
 	_time_label.text  = "Time %d / %d" % [_time, _next_time_reset]
 	_inertia_label.text = "Inertia %d / 12" % _inertia
 	_health_label.text  = "Health %d" % _health
+	# Flash labels on change — green for gain, red for loss
+	# (Inertia inverted: rising is bad, falling is good)
+	if _last_rendered_time != -1 and _time != _last_rendered_time:
+		_pulse_label(_time_label, Color(0.49, 1.0, 0.69) if _time > _last_rendered_time else Color(1.0, 0.50, 0.39))
+	if _last_rendered_inertia != -1 and _inertia != _last_rendered_inertia:
+		_pulse_label(_inertia_label, Color(0.49, 1.0, 0.69) if _inertia < _last_rendered_inertia else Color(1.0, 0.50, 0.39))
+	if _last_rendered_health != -1 and _health != _last_rendered_health:
+		_pulse_label(_health_label, Color(0.49, 1.0, 0.69) if _health > _last_rendered_health else Color(1.0, 0.50, 0.39))
+	_last_rendered_time = _time
+	_last_rendered_inertia = _inertia
+	_last_rendered_health = _health
 	_player_pos_label.text = "at: " + _player_pos
 	_bindle_label.text = "Bindle: " + _bindle_display()
 	# Rebuild the board so the » chevron + highlight color follow
@@ -1795,6 +1915,7 @@ func _resolve_effect(e: Dictionary) -> void:
 			_bindle_assembled = true
 			_audio_sfx("bundle")
 			_log_line("[color=#ffd07a][b]BUNDLE assembled.[/b][/color]")
+			_show_toast("[b]BUNDLE ASSEMBLED[/b] — find a threshold and LEAP.", "#ffd07a")
 		"if_contents_is":
 			if _inventory.has(e.get("contents", "")):
 				_resolve_effects(e.get("then", []))
@@ -1855,6 +1976,7 @@ func _connect_visitor(vid: String) -> void:
 	_audio_sfx("visitor_connect")
 	var v: Dictionary = _visitors_def[vid]
 	_log_line("[color=#7cffb0]✓ connected with %s[/color]" % v.get("name", vid))
+	_show_toast("Connected with [b]%s[/b]" % v.get("name", vid), "#7cffb0")
 	if v.has("lore_token"):
 		_collect_lore_token(v["lore_token"])
 
@@ -1864,6 +1986,8 @@ func _collect_lore_token(token: String) -> void:
 		return
 	_lore_tokens_collected.append(token)
 	_log_line("[color=#ffd07a]✦ lore token: %s[/color]" % token)
+	_audio_sfx("lore_token")
+	_show_toast("Lore token gained — [b]%s[/b]" % token.replace("_", " "), "#ffd07a")
 
 
 func _take_top_item_at_pos() -> void:
@@ -1887,6 +2011,11 @@ func _take_top_item_at_pos() -> void:
 	_inventory.append(item_id)
 	_audio_sfx("item_pickup")
 	_log_line("[color=#c8a268]picked up: %s[/color]" % item.get("title", item_id))
+	# Toast for bindle progress — components are the most important
+	# pickups in the run and deserve a visible callout
+	var cat: String = item.get("category", "")
+	if cat == "bindle_component" or cat == "bindle_contents":
+		_show_toast("Picked up [b]%s[/b]" % item.get("title", item_id), "#c8a268")
 	# on_pickup hooks
 	if item.has("on_pickup"):
 		_resolve_effects(item["on_pickup"])
@@ -2162,6 +2291,7 @@ func _phase_shadow() -> void:
 	_log_line("[color=#ff8060][b]GRAVITY:[/b] %s[/color]" % card.get("title", cid))
 	_log_line("[i]%s[/i]" % card.get("flavor", ""))
 	_gravity_card_label.text = "[color=#c8a268]GRAVITY[/color]\n[b]%s[/b]\n[i]%s[/i]" % [card.get("title", cid), card.get("flavor","")]
+	_show_toast("Gravity: [b]%s[/b]" % card.get("title", cid), "#ff8060")
 	_resolve_effects(card.get("effects", []))
 	# Inertia ≥ 7: extra draw per the inertia thresholds spec
 	if _inertia >= 7 and not _gravity_draw_pile.is_empty():
