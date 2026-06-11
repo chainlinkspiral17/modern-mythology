@@ -2402,7 +2402,8 @@ func _render_tableau() -> void:
 		tile.add_child(btn)
 		var title_lbl := Label.new()
 		var stock_n: int = int(_tableau_stock.get(cid, 0))
-		title_lbl.text = "%s · buy %dt · ×%d" % [card.get("title", cid), price, stock_n]
+		var exp_prefix: String = "[exp] " if card.get("experimental", false) else ""
+		title_lbl.text = "%s%s · buy %dt · ×%d" % [exp_prefix, card.get("title", cid), price, stock_n]
 		title_lbl.add_theme_font_size_override("font_size", 9)
 		title_lbl.add_theme_color_override("font_color", C_TEXT)
 		title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -2502,6 +2503,8 @@ func _describe_effect(e: Dictionary) -> String:
 			var tdef_lbl: Dictionary = _threats_def.get(String(e.get("threat_id", "")), {})
 			return "Spawn threat: %s" % String(tdef_lbl.get("title", e.get("threat_id", "?")))
 		"clear_threats_here": return "Clear any threat at your space"
+		"clear_all_threats":  return "Clear EVERY threat on the board"
+		"force_connect_visitor_at_my_pos": return "Connect any visitor at your space (bypasses progress + composite paths)"
 		"log":            return String(e.get("text", ""))
 		"if_at":
 			var then_e: Array = e.get("then", [])
@@ -3518,6 +3521,28 @@ func _resolve_effect(e: Dictionary) -> void:
 			_spawn_threat(String(e.get("threat_id", "")), String(e.get("pos", "")))
 		"clear_threats_here":
 			_clear_threats_at(_player_pos, String(e.get("card", "")))
+		"clear_all_threats":
+			if _threats_active.is_empty():
+				_log_line("[i]nothing to clear — the room is, for now, settled.[/i]")
+			else:
+				var n: int = _threats_active.size()
+				for inst: Dictionary in _threats_active:
+					var tdef: Dictionary = _threats_def.get(inst.get("def_id", ""), {})
+					_log_line("[color=#7cffb0]✓ cleared:[/color] [b]%s[/b]" % String(tdef.get("title", "threat")))
+				_threats_active = []
+				_show_toast("Cleared %d threats" % n, "#7cffb0")
+		"force_connect_visitor_at_my_pos":
+			var any_connected: bool = false
+			for vid_fp in _visitors_state:
+				var vst_fp: Dictionary = _visitors_state[vid_fp]
+				if not vst_fp.get("arrived", false): continue
+				if vst_fp.get("connected", false): continue
+				if vst_fp.get("pos", "") != _player_pos: continue
+				_connect_visitor(vid_fp)
+				any_connected = true
+				break
+			if not any_connected:
+				_log_line("[i]nobody here to connect with.[/i]")
 		"log":
 			_log_line("[i]%s[/i]" % e.get("text", ""))
 		"if_at":

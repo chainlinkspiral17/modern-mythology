@@ -107,6 +107,7 @@
       "title": "ADDRESS THE BBS",
       "time_cost": 1,
       "starter": false,
+      "stock": 1,
       "available_in_locations": ["dambrosios"],
       "flavor": "RUST_CODE.BBS at the register terminal — type, listen.",
       "requires": [{"kind": "at_pos", "pos": "register"}],
@@ -132,6 +133,7 @@
       "title": "PICK UP",
       "time_cost": 0,
       "starter": false,
+      "stock": 3,
       "flavor": "Wrap your fingers around it.",
       "requires": [{"kind": "item_at_pos", "any": true}],
       "effects": [
@@ -153,6 +155,62 @@
         {"kind": "assemble_bindle"},
         {"kind": "if_contents_is", "contents": "cassette_spine",
          "then": [{"kind": "auto_connect_visitor", "visitor": "anya_recording"}]}
+      ]
+    },
+    {
+      "id": "the_long_night",
+      "title": "THE LONG NIGHT",
+      "time_cost": 3,
+      "starter": false,
+      "stock": 1,
+      "experimental": true,
+      "flavor": "Slip into the back booth. Close your eyes. The diner hums on without you. When you stand up an hour later, the room is still here but it sits lower in your chest.",
+      "requires": [],
+      "effects": [
+        {"kind": "recover_sanity", "amount": 3},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "end_action_phase"}
+      ]
+    },
+    {
+      "id": "wipe_twelve_years",
+      "title": "WIPE TWELVE YEARS",
+      "time_cost": 4,
+      "starter": false,
+      "stock": 1,
+      "experimental": true,
+      "flavor": "One long pass of the cloth and twelve years of formica grease come up. The room remembers what it was for. Every mess in here is gone.",
+      "requires": [],
+      "effects": [
+        {"kind": "clear_all_threats"},
+        {"kind": "lose_inertia", "amount": 2}
+      ]
+    },
+    {
+      "id": "the_last_pour",
+      "title": "THE LAST POUR",
+      "time_cost": 3,
+      "starter": false,
+      "stock": 1,
+      "experimental": true,
+      "flavor": "You pour them one more coffee, whoever they are. They drink it slowly. It might be the first kind thing anyone's done for them tonight. They don't say goodbye but you have been seen by them and they have been seen by you.",
+      "requires": [{"kind": "visitor_at_my_pos"}],
+      "effects": [
+        {"kind": "force_connect_visitor_at_my_pos"}
+      ]
+    },
+    {
+      "id": "breathe",
+      "title": "BREATHE",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "experimental": true,
+      "flavor": "Set the cloth down. In, four. Out, four. Once more. The fluorescent tick falls back into the background where it belongs.",
+      "requires": [],
+      "effects": [
+        {"kind": "recover_sanity", "amount": 2},
+        {"kind": "lose_inertia", "amount": 1}
       ]
     },
     {
