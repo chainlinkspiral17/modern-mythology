@@ -456,9 +456,17 @@ func _init_run() -> void:
 					"condition": arr,
 				}
 
-	# Item piles: copy the items[] array so we can pop from it
+	# Item piles: copy the items[] array so we can pop from it.
+	# Contents pile (items_contents_pool + draw_one_keep_or_putback)
+	# initialises with the full pool shuffled — every search draws
+	# the front, player chooses KEEP or PUT BACK, putback shuffles.
 	for pid in _piles_def:
-		_pile_state[pid] = (_piles_def[pid].get("items", []) as Array).duplicate()
+		var p_def: Dictionary = _piles_def[pid]
+		if p_def.has("items_contents_pool"):
+			_pile_state[pid] = (p_def["items_contents_pool"] as Array).duplicate()
+			_pile_state[pid].shuffle()
+		else:
+			_pile_state[pid] = (p_def.get("items", []) as Array).duplicate()
 
 	# Shuffle Gravity deck — Final Girl style:
 	# Endgame cards (flagged with endgame:true in the deck JSON)
@@ -2793,6 +2801,136 @@ func _check_connect_subcondition(sub: Dictionary) -> bool:
 # Used by the "discard_hand" effect (e.g. Gravity's "Choose: Discard
 # 2 Action cards"). Pops a modal letting the player CHOOSE which
 # cards to lose instead of silently popping from the back.
+func _prompt_contents_pick(pile_id: String) -> void:
+	# REGISTER pile semantics: draw the top item (already shuffled),
+	# show the player what it is + its flavor, offer KEEP or PUT BACK.
+	# Put-back shuffles the pile so the next draw is uncertain.
+	# This is the meaningful per-run choice — which contents you carry
+	# defines the ending.
+	var pile: Array = _pile_state.get(pile_id, [])
+	if pile.is_empty():
+		_log_line("[i]the register drawer is empty.[/i]")
+		return
+	var iid: String = String(pile[0])
+	var item: Dictionary = _items_def.get(iid, {})
+	var existing: Node = get_node_or_null("pane_modal_dim")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.82)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.z_index = 100
+	dim.name = "pane_modal_dim"
+	add_child(dim)
+	var view: Vector2 = get_viewport_rect().size
+	var pop := PanelContainer.new()
+	pop.add_theme_stylebox_override("panel", _make_panel_style())
+	pop.size = Vector2(min(view.x * 0.72, 760.0), min(view.y * 0.72, 540.0))
+	pop.position = (view - pop.size) * 0.5
+	pop.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.add_child(pop)
+	var root := HBoxContainer.new()
+	root.add_theme_constant_override("separation", 16)
+	pop.add_child(root)
+	# Art on the left
+	var art_panel := PanelContainer.new()
+	art_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	art_panel.custom_minimum_size = Vector2(260, 360)
+	root.add_child(art_panel)
+	var art_tex: Texture2D = _load_texture_silent(_art_path_item(iid))
+	if art_tex:
+		var img := TextureRect.new()
+		img.texture = art_tex
+		img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		img.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		img.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		art_panel.add_child(img)
+	else:
+		var ph := Label.new()
+		ph.text = "(no art yet)"
+		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.4))
+		ph.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		ph.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		art_panel.add_child(ph)
+	# Text on the right
+	var info := VBoxContainer.new()
+	info.add_theme_constant_override("separation", 10)
+	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	root.add_child(info)
+	var head := Label.new()
+	head.text = "  The register drawer."
+	head.add_theme_color_override("font_color", C_ACCENT)
+	head.add_theme_font_size_override("font_size", 12)
+	info.add_child(head)
+	var title := Label.new()
+	title.text = item.get("title", iid)
+	title.add_theme_color_override("font_color", C_ACCENT)
+	title.add_theme_font_size_override("font_size", 20)
+	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	info.add_child(title)
+	var flavor := RichTextLabel.new()
+	flavor.bbcode_enabled = true
+	flavor.fit_content = true
+	flavor.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	flavor.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	flavor.add_theme_color_override("default_color", C_TEXT)
+	flavor.add_theme_font_size_override("normal_font_size", 12)
+	flavor.text = "[i]" + String(item.get("flavor", "")) + "[/i]"
+	info.add_child(flavor)
+	var hint := RichTextLabel.new()
+	hint.bbcode_enabled = true
+	hint.fit_content = true
+	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hint.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hint.add_theme_color_override("default_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.7))
+	hint.add_theme_font_size_override("normal_font_size", 11)
+	hint.text = "[i]This is the contents of your bindle. KEEP it and the LEAP carries it — your ending will be shaped by what you carried. PUT BACK shuffles the drawer; next search draws something else.[/i]"
+	info.add_child(hint)
+	var spacer := Control.new()
+	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info.add_child(spacer)
+	var actions := HBoxContainer.new()
+	actions.add_theme_constant_override("separation", 10)
+	info.add_child(actions)
+	var putback := Button.new()
+	putback.text = "Put it back"
+	putback.add_theme_font_size_override("font_size", 13)
+	putback.custom_minimum_size = Vector2(140, 36)
+	putback.pressed.connect(func() -> void:
+		pile.shuffle()
+		_log_line("[i]you slide it back, slide the drawer back in. The register isn't done with you.[/i]")
+		_close_pane_modal(dim))
+	actions.add_child(putback)
+	var spacer2 := Control.new()
+	spacer2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	actions.add_child(spacer2)
+	var keep := Button.new()
+	keep.text = "✦  Keep it  (+1 to bindle)"
+	keep.add_theme_font_size_override("font_size", 14)
+	keep.custom_minimum_size = Vector2(180, 36)
+	keep.pressed.connect(func() -> void:
+		pile.pop_front()
+		_inventory.append(iid)
+		_audio_sfx("item_pickup")
+		_log_line("[color=#c8a268]✦ kept:[/color] [b]%s[/b]" % item.get("title", iid))
+		var pf2: String = String(item.get("flavor", ""))
+		if pf2 != "":
+			_log_line("[color=#7c8398][i]   %s[/i][/color]" % pf2)
+		_show_toast("Bindle contents: [b]%s[/b]" % item.get("title", iid), "#c8a268")
+		_inertia = max(0, _inertia - 1)
+		# Side effects from the contents (e.g. cassette spawns Anya)
+		if item.has("side_effects"):
+			_resolve_effects(item["side_effects"])
+		_check_composite_connections()
+		_close_pane_modal(dim)
+		_render())
+	actions.add_child(keep)
+
+
 func _prompt_search_choice(pile_id: String, peek: int) -> void:
 	# SEARCH ★★ — peek the top `peek` items in the pile, let the
 	# player pick one. Un-chosen items stay in their original
@@ -3039,6 +3177,13 @@ func _connect_visitor(vid: String) -> void:
 		return
 	if _visitors_state[vid].get("connected", false):
 		return
+	# Conditional visitors (hidden_until_arrived = true) materialise
+	# at the player's current space when they connect — e.g. Anya
+	# appears next to John when BUNDLE assembles with cassette spine.
+	var v_def: Dictionary = _visitors_def.get(vid, {})
+	if v_def.get("hidden_until_arrived", false) and not _visitors_state[vid].get("arrived", false):
+		_visitors_state[vid]["arrived"] = true
+		_visitors_state[vid]["pos"] = _player_pos
 	_visitors_state[vid]["connected"] = true
 	_visitors_state[vid]["claimed_turn"] = -1
 	_connections_made.append(vid)
@@ -3100,6 +3245,12 @@ func _take_top_item_at_pos() -> void:
 	var pile_id := _pile_at_pos(_player_pos)
 	if pile_id == "" or _pile_state.get(pile_id, []).is_empty():
 		_log_line("[i]nothing to take here[/i]")
+		return
+	# Contents pile (REGISTER) — draw-one-keep-or-putback. Don't
+	# auto-take; show a chooser so the player commits or shuffles.
+	var p_def: Dictionary = _piles_def.get(pile_id, {})
+	if p_def.get("draw_one_keep_or_putback", false):
+		_prompt_contents_pick(pile_id)
 		return
 	var item_id: String = _pile_state[pile_id].pop_front()
 	var items_dict := _items_def
