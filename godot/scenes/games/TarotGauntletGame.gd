@@ -3,6 +3,15 @@ extends Control
 ## Walks the 5-phase loop: Action → Planning → Shadow → Drift → Upkeep.
 ## Loads data from godot/resources/games/.
 
+# Inner class — draws faint amber adjacency lines between board nodes.
+# Used by _render_board to give the map a visible path structure.
+class BoardLinesLayer extends Control:
+	var adj_pairs: Array = []  # Array of [Vector2, Vector2]
+	func _draw() -> void:
+		for p in adj_pairs:
+			draw_line(p[0], p[1], Color(0.78, 0.65, 0.42, 0.30), 2.0, true)
+
+
 signal game_ended(outcome: String, summary: Dictionary)
 
 # ── Data file paths ──────────────────────────────────────────────────
@@ -395,6 +404,8 @@ func _build_ui() -> void:
 	header_hb.add_child(_board_expand_btn)
 	# Content area BELOW the header — board image, markers, labels,
 	# meeples all live here so they don't draw over the title bar.
+	# Re-renders on resize so layout-time size is correct (initial
+	# _render_board() in _build_ui runs before layout, when size=0).
 	_board_content = Control.new()
 	_board_content.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_board_content.offset_top = 28
@@ -402,8 +413,8 @@ func _build_ui() -> void:
 	_board_content.offset_right = -4
 	_board_content.offset_bottom = -4
 	_board_content.clip_contents = true
+	_board_content.resized.connect(_render_board)
 	_board_root.add_child(_board_content)
-	_render_board()
 
 	# ── Right column: codex card + gravity card + visitor states + log
 	var right := VBoxContainer.new()
@@ -427,11 +438,8 @@ func _build_ui() -> void:
 	inv_panel.custom_minimum_size = Vector2(420, 170)
 	var inv_vb := VBoxContainer.new()
 	inv_panel.add_child(inv_vb)
-	var inv_title := Label.new()
-	inv_title.text = "  INVENTORY / BINDLE"
-	inv_title.add_theme_color_override("font_color", C_ACCENT)
-	inv_title.add_theme_font_size_override("font_size", 11)
-	inv_vb.add_child(inv_title)
+	inv_vb.add_child(_make_pane_header("INVENTORY / BINDLE",
+		func() -> void: _open_pane_modal("Inventory & Bindle", _build_inventory_modal_body)))
 	var inv_scroll := ScrollContainer.new()
 	inv_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	inv_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -447,13 +455,17 @@ func _build_ui() -> void:
 	# title + flavor.
 	var grav_panel := PanelContainer.new()
 	grav_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	grav_panel.custom_minimum_size = Vector2(420, 56)
+	grav_panel.custom_minimum_size = Vector2(420, 72)
+	var grav_vb := VBoxContainer.new()
+	grav_panel.add_child(grav_vb)
+	grav_vb.add_child(_make_pane_header("GRAVITY",
+		func() -> void: _open_pane_modal("Gravity Deck", _build_gravity_modal_body)))
 	_gravity_card_label = RichTextLabel.new()
 	_gravity_card_label.bbcode_enabled = true
 	_gravity_card_label.fit_content = true
 	_gravity_card_label.add_theme_color_override("default_color", C_TEXT)
-	_gravity_card_label.text = "[color=#c8a268]GRAVITY DECK[/color] — 12 cards remaining"
-	grav_panel.add_child(_gravity_card_label)
+	_gravity_card_label.text = "[color=#c8a268]Deck[/color] — 12 cards remaining"
+	grav_vb.add_child(_gravity_card_label)
 	right.add_child(grav_panel)
 
 	# Visitors — gets the freed vertical space from the relocated log
@@ -465,11 +477,8 @@ func _build_ui() -> void:
 	v_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	var v_vb := VBoxContainer.new()
 	v_panel.add_child(v_vb)
-	var v_title := Label.new()
-	v_title.text = "  VISITORS"
-	v_title.add_theme_color_override("font_color", C_ACCENT)
-	v_title.add_theme_font_size_override("font_size", 11)
-	v_vb.add_child(v_title)
+	v_vb.add_child(_make_pane_header("VISITORS",
+		func() -> void: _open_pane_modal("Visitors", _build_visitors_modal_body)))
 	var v_scroll := ScrollContainer.new()
 	v_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	v_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -505,11 +514,8 @@ func _build_ui() -> void:
 	log_vb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	log_vb.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	bottom_hb.add_child(log_vb)
-	var log_title := Label.new()
-	log_title.text = "  LOG"
-	log_title.add_theme_color_override("font_color", C_ACCENT)
-	log_title.add_theme_font_size_override("font_size", 10)
-	log_vb.add_child(log_title)
+	log_vb.add_child(_make_pane_header("LOG",
+		func() -> void: _open_pane_modal("Full Log", _build_log_modal_body)))
 	var log_panel := PanelContainer.new()
 	log_panel.add_theme_stylebox_override("panel", _make_panel_style())
 	log_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -594,6 +600,76 @@ func _make_panel_style() -> StyleBoxFlat:
 	return st
 
 
+# Header row with a title label + a small ⛶ expand button. Used at
+# the top of every right-column pane so clicking the button opens a
+# detailed modal of that pane's contents.
+func _make_pane_header(title: String, on_expand: Callable) -> Control:
+	var hb := HBoxContainer.new()
+	hb.add_theme_constant_override("separation", 4)
+	var lbl := Label.new()
+	lbl.text = "  " + title
+	lbl.add_theme_color_override("font_color", C_ACCENT)
+	lbl.add_theme_font_size_override("font_size", 11)
+	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hb.add_child(lbl)
+	var btn := Button.new()
+	btn.text = "⛶"
+	btn.tooltip_text = "Expand " + title
+	btn.add_theme_font_size_override("font_size", 10)
+	btn.custom_minimum_size = Vector2(26, 18)
+	btn.pressed.connect(on_expand)
+	hb.add_child(btn)
+	return hb
+
+
+# Generic pane modal — dim background, centered panel with a header
+# (title + ✕ close) and a scrollable body built by the caller.
+# Click outside the panel or the ✕ button to dismiss.
+func _open_pane_modal(title: String, body_builder: Callable) -> void:
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.75)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.z_index = 100
+	dim.name = "pane_modal_dim"
+	dim.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			dim.queue_free())
+	add_child(dim)
+	var view: Vector2 = get_viewport_rect().size
+	var pop := PanelContainer.new()
+	pop.add_theme_stylebox_override("panel", _make_panel_style())
+	pop.size = Vector2(view.x * 0.72, view.y * 0.72)
+	pop.position = (view - pop.size) * 0.5
+	pop.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.add_child(pop)
+	var pop_vb := VBoxContainer.new()
+	pop_vb.add_theme_constant_override("separation", 6)
+	pop.add_child(pop_vb)
+	var header := HBoxContainer.new()
+	var title_lbl := Label.new()
+	title_lbl.text = "  " + title
+	title_lbl.add_theme_color_override("font_color", C_ACCENT)
+	title_lbl.add_theme_font_size_override("font_size", 14)
+	title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.add_child(title_lbl)
+	var close := Button.new()
+	close.text = "✕  Close"
+	close.add_theme_font_size_override("font_size", 12)
+	close.pressed.connect(func() -> void: dim.queue_free())
+	header.add_child(close)
+	pop_vb.add_child(header)
+	pop_vb.add_child(HSeparator.new())
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	pop_vb.add_child(scroll)
+	var body: Control = body_builder.call() as Control
+	if body != null:
+		body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		scroll.add_child(body)
+
+
 func _make_track_label(text: String) -> Label:
 	var l := Label.new()
 	l.text = text
@@ -626,7 +702,12 @@ func _render_board() -> void:
 		# they only align with the painted stations when the image
 		# covers the same rect.
 		bg.stretch_mode = TextureRect.STRETCH_SCALE
-		bg.modulate = Color(1, 1, 1, 0.5)
+		# Low alpha — the AI-generated board image's painted stations
+		# rarely line up with the JSON's pos_xy coordinates. Treat the
+		# image as ATMOSPHERIC TEXTURE / mood, not a literal map. The
+		# engine-drawn markers + adjacency lines are the authoritative
+		# board.
+		bg.modulate = Color(1, 1, 1, 0.20)
 		bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_board_content.add_child(bg)
 	# Draw spaces as labels positioned per the JSON's pos_xy.
@@ -649,16 +730,50 @@ func _render_board() -> void:
 		panel_size = Vector2(700, 480)
 	var sx: float = (panel_size.x - 80) / maxf(1.0, bx_max - bx_min)
 	var sy: float = (panel_size.y - 60) / maxf(1.0, by_max - by_min)
+	# Compute every station's screen position upfront so we can draw
+	# adjacency lines below them.
+	var pos_by_id: Dictionary = {}
+	var visible_ids: Dictionary = {}
+	for s: Dictionary in spaces:
+		var sid_p: String = s.get("id", "")
+		if not s.get("always_visible", true) and sid_p != "precipice_door":
+			continue
+		if sid_p == "precipice_door" and not _flags.get("precipice_revealed", false):
+			continue
+		var xy_p: Array = s.get("pos_xy", [0, 0])
+		var px: float = (float(xy_p[0]) - bx_min) * sx + 40.0
+		var py: float = (float(xy_p[1]) - by_min) * sy + 30.0
+		pos_by_id[sid_p] = Vector2(px, py)
+		visible_ids[sid_p] = true
+	# Adjacency lines layer — drawn FIRST so markers + labels sit on top.
+	var lines := BoardLinesLayer.new()
+	lines.name = "adj_lines"
+	lines.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	lines.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var adj_map: Dictionary = _location.get("adjacency", {})
+	var seen_edges: Dictionary = {}
+	for from_id: String in adj_map.keys():
+		if not pos_by_id.has(from_id):
+			continue
+		for to_id: String in adj_map[from_id]:
+			if not pos_by_id.has(to_id):
+				continue
+			var a: String = from_id
+			var b: String = to_id
+			if b < a:
+				var t: String = a; a = b; b = t
+			var key: String = a + "|" + b
+			if seen_edges.has(key):
+				continue
+			seen_edges[key] = true
+			lines.adj_pairs.append([pos_by_id[from_id], pos_by_id[to_id]])
+	_board_content.add_child(lines)
 	for s: Dictionary in spaces:
 		var sid: String = s.get("id", "")
-		if not s.get("always_visible", true) and sid != "precipice_door":
+		if not visible_ids.has(sid):
 			continue
-		# Hide Precipice Door if not yet revealed
-		if sid == "precipice_door" and not _flags.get("precipice_revealed", false):
-			continue
-		var xy2: Array = s.get("pos_xy", [0, 0])
-		var nx: float = (float(xy2[0]) - bx_min) * sx + 40.0
-		var ny: float = (float(xy2[1]) - by_min) * sy + 30.0
+		var nx: float = pos_by_id[sid].x
+		var ny: float = pos_by_id[sid].y
 		# Node marker: small filled disc/diamond at each station so
 		# the board reads as a board even without/with the bg image.
 		var marker := Panel.new()
@@ -1200,6 +1315,207 @@ func _render_visitors() -> void:
 			rt.text = "[color=%s]●[/color] %s%s" % [accent, name_s, status]
 		row.add_child(rt)
 		_visitors_box.add_child(row)
+
+
+# ── Pane modal body builders ────────────────────────────────────────
+
+func _build_log_modal_body() -> Control:
+	# Full log — clone of the live log's BBCode text into a fresh,
+	# bigger RichTextLabel for comfortable reading.
+	var rt := RichTextLabel.new()
+	rt.bbcode_enabled = true
+	rt.fit_content = true
+	rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	rt.add_theme_color_override("default_color", C_TEXT)
+	rt.add_theme_font_size_override("normal_font_size", 12)
+	rt.scroll_following = true
+	rt.text = _log.text if _log else ""
+	return rt
+
+
+func _build_inventory_modal_body() -> Control:
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 8)
+	# Bindle status header
+	var status := RichTextLabel.new()
+	status.bbcode_enabled = true
+	status.fit_content = true
+	status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	status.add_theme_color_override("default_color", C_TEXT)
+	status.add_theme_font_size_override("normal_font_size", 14)
+	if _bindle_assembled:
+		status.text = "[color=#ffd07a][b]BINDLE assembled.[/b][/color] Play LEAP at any open threshold to win."
+	else:
+		var s_part: String = "[color=#7cffb0]stick[/color]" if _inventory.has("stick") else "[color=#7c8398]stick[/color]"
+		var c_part: String = "[color=#7cffb0]cloth[/color]" if _inventory.has("cloth") else "[color=#7c8398]cloth[/color]"
+		var k_part: String = "[color=#7cffb0]contents[/color]" if _has_contents() else "[color=#7c8398]contents[/color]"
+		status.text = "[b]Bindle:[/b]  %s  ·  %s  ·  %s" % [s_part, c_part, k_part]
+	vb.add_child(status)
+	vb.add_child(HSeparator.new())
+	if _inventory.is_empty():
+		var empty := Label.new()
+		empty.text = "  Nothing in inventory yet. Search at a pile space (REGISTER, BOOTH 6, JUKEBOX, CARD WALL, UNDER COUNTER, PAY PHONE, KITCHEN ALCOVE)."
+		empty.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.7))
+		empty.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		empty.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		vb.add_child(empty)
+		return vb
+	# Per-item rows
+	for item_id: String in _inventory:
+		var item: Dictionary = _items_def.get(item_id, {})
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 10)
+		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var art: Texture2D = _load_texture_silent(_art_path_item(item_id))
+		if art:
+			var ico := TextureRect.new()
+			ico.texture = art
+			ico.custom_minimum_size = Vector2(64, 64)
+			ico.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			ico.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			row.add_child(ico)
+		var text := RichTextLabel.new()
+		text.bbcode_enabled = true
+		text.fit_content = true
+		text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		text.add_theme_color_override("default_color", C_TEXT)
+		text.add_theme_font_size_override("normal_font_size", 12)
+		var cat: String = item.get("category", "")
+		var cat_label: String = ""
+		match cat:
+			"bindle_component": cat_label = "[color=#c8a268]bindle component[/color]"
+			"bindle_contents":  cat_label = "[color=#ffd07a]bindle contents[/color]"
+			"consumable":       cat_label = "[color=#7cffb0]consumable[/color]"
+			"passive":          cat_label = "[color=#9bc3ff]passive[/color]"
+			"jukebox_track":    cat_label = "[color=#c8a268]jukebox track[/color]"
+			_:                  cat_label = "[color=#7c8398]item[/color]"
+		text.text = "[b]%s[/b]   %s\n[i]%s[/i]" % [
+			item.get("title", item_id), cat_label, item.get("flavor", "")]
+		row.add_child(text)
+		vb.add_child(row)
+	return vb
+
+
+func _build_visitors_modal_body() -> Control:
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 12)
+	for vid in _visitors_def:
+		var v: Dictionary = _visitors_def[vid]
+		var st: Dictionary = _visitors_state.get(vid, {})
+		var arrived: bool = st.get("arrived", false)
+		# Hidden conditional visitors stay hidden in the modal too
+		if v.get("hidden_until_arrived", false) and not arrived:
+			continue
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 10)
+		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var face: Texture2D = _load_texture_silent(_art_path_visitor_face(vid)) if arrived else null
+		if face:
+			var ico := TextureRect.new()
+			ico.texture = face
+			ico.custom_minimum_size = Vector2(72, 72)
+			ico.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			ico.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			row.add_child(ico)
+		var text := RichTextLabel.new()
+		text.bbcode_enabled = true
+		text.fit_content = true
+		text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		text.add_theme_color_override("default_color", C_TEXT)
+		text.add_theme_font_size_override("normal_font_size", 12)
+		var name_s: String = v.get("name", vid) if arrived else String(v.get("placeholder_name", "someone"))
+		var accent: String = v.get("accent", "#c8a268") if arrived else "#6e6258"
+		var lines: PackedStringArray = []
+		lines.append("[color=%s][b]%s[/b][/color]" % [accent, name_s])
+		if st.get("connected", false):
+			lines.append("[color=#7cffb0]✓ connected[/color]  —  " + String(v.get("lore_text", "")))
+		elif st.get("claimed_turn", -1) >= 0:
+			var remaining: int = int(_setup.get("claim_turns_to_consume", 2)) - (_turn - int(st["claimed_turn"]))
+			lines.append("[color=#ff8060]✕ claimed — %d turns until they're consumed[/color]" % remaining)
+		elif arrived:
+			lines.append("at [b]%s[/b]" % st.get("pos", "?"))
+		elif st.has("scheduled_turn"):
+			var diff: int = int(st["scheduled_turn"]) - _turn
+			var hints: Array = v.get("pre_arrival_hints", [])
+			if not hints.is_empty():
+				var idx: int = clamp(hints.size() - 1 - max(0, diff), 0, hints.size() - 1)
+				lines.append("[i]%s[/i]" % String(hints[idx]))
+			lines.append("[color=#7c8398]· arriving in ~%d turns[/color]" % max(0, diff))
+		# Connect requirement
+		var cv: Dictionary = v.get("connect_via", {})
+		if not cv.is_empty() and not st.get("connected", false):
+			lines.append("[color=#c8a268]Connect:[/color] %s" % _describe_connect_via(cv))
+		text.text = "\n".join(lines)
+		row.add_child(text)
+		vb.add_child(row)
+	return vb
+
+
+func _describe_connect_via(cv: Dictionary) -> String:
+	match cv.get("kind", ""):
+		"card_at_pos_with_visitor_adjacent":
+			return "play [b]%s[/b] at [b]%s[/b] while they're at [b]%s[/b]" % [
+				String(cv.get("card", "?")).to_upper(),
+				String(cv.get("player_pos", "?")).to_upper(),
+				String(cv.get("visitor_pos", "?")).to_upper()]
+		"card_at_pos":
+			return "play [b]%s[/b] at [b]%s[/b]" % [
+				String(cv.get("card", "?")).to_upper(),
+				String(cv.get("player_pos", "?")).to_upper()]
+		"card_at_pos_on_arrival_turn":
+			return "play [b]%s[/b] at [b]%s[/b] on the turn they arrive" % [
+				String(cv.get("card", "?")).to_upper(),
+				String(cv.get("player_pos", "?")).to_upper()]
+		"card_played_n_times":
+			return "play [b]%s[/b] %d times" % [
+				String(cv.get("card", "?")).to_upper(), int(cv.get("times", 1))]
+		"composite":
+			var parts: PackedStringArray = []
+			for sub: Dictionary in cv.get("all_of", []):
+				parts.append("· " + _describe_connect_via(sub))
+			return "\n   " + "\n   ".join(parts)
+		"took_item":
+			return "pick up [b]%s[/b]" % String(cv.get("item", "?")).to_upper()
+		"stood_on":
+			return "stand at [b]%s[/b]" % String(cv.get("pos", "?")).to_upper()
+		"auto_on_bundle_with_contents":
+			return "auto-connect when you BUNDLE with [b]%s[/b]" % String(cv.get("contents", "?"))
+	return str(cv)
+
+
+func _build_gravity_modal_body() -> Control:
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 8)
+	var header := RichTextLabel.new()
+	header.bbcode_enabled = true
+	header.fit_content = true
+	header.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.add_theme_color_override("default_color", C_TEXT)
+	header.add_theme_font_size_override("normal_font_size", 14)
+	header.text = "[color=#c8a268][b]Gravity deck[/b][/color]  ·  %d cards remaining" % _gravity_draw_pile.size()
+	vb.add_child(header)
+	vb.add_child(HSeparator.new())
+	# Cards still in the deck — shown FACE DOWN (don't spoil), just by count
+	# per title? No — spec wants full content. We'll show titles + flavor
+	# since the player has the right to read every card in the deck.
+	var by_id: Dictionary = {}
+	for c: Dictionary in _gravity_deck_def.get("cards", []):
+		by_id[c.get("id", "")] = c
+	for cid: String in _gravity_draw_pile:
+		var c: Dictionary = by_id.get(cid, {})
+		var rt := RichTextLabel.new()
+		rt.bbcode_enabled = true
+		rt.fit_content = true
+		rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		rt.add_theme_color_override("default_color", C_TEXT)
+		rt.add_theme_font_size_override("normal_font_size", 11)
+		rt.text = "[b]%s[/b]\n[color=#7c8398][i]%s[/i][/color]" % [c.get("title", cid), c.get("flavor", "")]
+		vb.add_child(rt)
+	return vb
 
 
 # ── Render-all ───────────────────────────────────────────────────────
