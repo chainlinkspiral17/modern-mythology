@@ -49,6 +49,7 @@ var _time: int = 6
 var _next_time_reset: int = 6   # set by Gravity/Event cards mid-turn
 var _inertia: int = 0
 var _sanity: int = 5
+var _sanity_max: int = 5
 var _player_pos: String = "counter"
 var _hand_cards: Array = []     # array of card ids currently in hand
 var _gravity_draw_pile: Array = []
@@ -483,6 +484,7 @@ func _init_run() -> void:
 	_next_time_reset = int(start.get("time_per_turn", _time))
 	_inertia    = int(start.get("inertia", 0))
 	_sanity     = int(start.get("sanity", start.get("health", 5)))
+	_sanity_max = int(start.get("sanity_max", max(_sanity, 5)))
 	_hand_cards = (start.get("starting_hand", []) as Array).duplicate()
 
 	# Visitors: place those marked on_board_at_start; queue scheduled ones
@@ -1505,7 +1507,7 @@ func _sanity_mood(h: int) -> String:
 		line = "A breath from the loop closing. Find somewhere to settle."
 	else:
 		line = "Gone. Faith hasn't moved."
-	return "Sanity %d / 5\n\"%s\"\n\nA Short Rest steadies you. The room — fluorescents, looping clocks, voices you almost recognize — wears it down." % [h, line]
+	return "Sanity %d / %d\n\"%s\"\n\nA Short Rest steadies you. The room — fluorescents, looping clocks, voices you almost recognize — wears it down." % [h, _sanity_max, line]
 
 
 # ── Board rendering ──────────────────────────────────────────────────
@@ -3281,7 +3283,7 @@ func _resolve_effect(e: Dictionary) -> void:
 			_log_line("[color=#7cffb0]-%d Inertia[/color] → %d" % [e.get("amount", 0), _inertia])
 		"recover_sanity":
 			var rec_amt: int = int(e.get("amount", 0))
-			_sanity = min(5, _sanity + rec_amt)
+			_sanity = min(_sanity_max, _sanity + rec_amt)
 			if rec_amt > 0:
 				_log_line("[color=#7cffb0]+%d Sanity[/color] → %d" % [rec_amt, _sanity])
 		"lose_sanity":
@@ -4394,15 +4396,15 @@ func _apply_framework_card_mechanic(cid: String, result: String) -> void:
 					_log_line("[i]nothing useful in reach.[/i]")
 		"short_rest":
 			match result:
-				"ss":   _sanity = min(5, _sanity + 2)
-				"s":    _sanity = min(5, _sanity + 1)
+				"ss":   _sanity = min(_sanity_max, _sanity + 2)
+				"s":    _sanity = min(_sanity_max, _sanity + 1)
 				"fail": pass
 		"long_rest":
 			match result:
-				"ss":   _sanity = min(5, _sanity + 3)
-				"s":    _sanity = min(5, _sanity + 2)
+				"ss":   _sanity = min(_sanity_max, _sanity + 3)
+				"s":    _sanity = min(_sanity_max, _sanity + 2)
 				"fail":
-					_sanity = min(5, _sanity + 1)
+					_sanity = min(_sanity_max, _sanity + 1)
 					_time = max(0, _time - 1)
 		"focus":
 			# Bonus dice on the NEXT framework card's roll, plus a Time

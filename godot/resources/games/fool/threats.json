@@ -25,9 +25,9 @@
       "flavor": "The light in there is buzzing wrong, and somebody left the tap on.",
       "default_pos": "bathroom",
       "spawn_message": "Something in the bathroom turns on the smell.",
-      "max_ticks": 4,
+      "max_ticks": 2,
       "ongoing_per_upkeep": [
-        {"kind": "lose_sanity", "amount": 1, "note": "knowing it's there"}
+        {"kind": "gain_inertia", "amount": 1, "note": "knowing it's there"}
       ],
       "cleared_by": {"card": "clean", "at_pos_matches_threat": true, "clear_radius": 0},
       "cleared_message": "Bleach, paper, twenty seconds. The room remembers being a room.",
@@ -40,9 +40,9 @@
       "flavor": "A green-grey haze pressed against the window. Smells like turned earth.",
       "default_pos": "river_window",
       "spawn_message": "The river window fogs over from the outside.",
-      "max_ticks": 2,
+      "max_ticks": 1,
       "ongoing_per_upkeep": [
-        {"kind": "lose_sanity", "amount": 1, "note": "miasma seeping through the seal"}
+        {"kind": "gain_inertia", "amount": 1, "note": "miasma seeping through the seal"}
       ],
       "cleared_by": {"card": "clean", "at_pos_matches_threat": true, "clear_radius": 1},
       "cleared_message": "You wipe the inside. The fog stays outside where fog belongs.",
@@ -70,7 +70,7 @@
       "flavor": "Whatever they are, they aren't moths. They tick like the light does.",
       "default_pos": "booth_6",
       "spawn_message": "A swarm gathers under the buzzing light over BOOTH 6.",
-      "max_ticks": 3,
+      "max_ticks": 1,
       "ongoing_per_upkeep": [
         {"kind": "lose_sanity", "amount": 1, "note": "ticking, ticking"}
       ],

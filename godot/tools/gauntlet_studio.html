@@ -142,6 +142,7 @@
       <button class="tab" data-tab="items">Items <span class="count" id="cntItems">0</span></button>
       <button class="tab" data-tab="cards">Action cards <span class="count" id="cntCards">0</span></button>
       <button class="tab" data-tab="gravity">Gravity cards <span class="count" id="cntGravity">0</span></button>
+      <button class="tab" data-tab="threats">Threats <span class="count" id="cntThreats">0</span></button>
       <button class="tab" data-tab="bg">Backgrounds <span class="count" id="cntBg">0</span></button>
       <button class="tab" data-tab="cg">CGs <span class="count" id="cntCg">0</span></button>
       <button class="tab" data-tab="sfx">SFX <span class="count" id="cntSfx">0</span></button>
@@ -265,6 +266,23 @@ const SLOTS = [
     flavor: "A small Hermit tarot card — painted figure with a lantern, hooded — pinned at a slightly off-vertical angle. Below it a smaller Fool card is visible at the very bottom edge of frame. Brass thumbtack. Painted shadow grade.",
     target: 'assets/gallery/items/fool_pinned_hermit_below.png' },
 
+  // ── Live-order items (the cook's wheel: pending → ready) ─────────
+  // Each visitor's order lives in the ORDER WINDOW pile after the
+  // player plays LISTEN at their seat. The cook auto-rings the bell
+  // during UPKEEP, then John picks it up and DELIVERs.
+  { tab: 'items', cat: 'fool', label: 'Order · Coffee and Toast',
+    flavor: "A heavy white diner mug full of black coffee, slight steam curl, beside a small white plate with two slices of buttered white toast. The plate has a single butter-knife on its rim. Painted in chiaroscuro warm light. Floats on the dark ground.",
+    target: 'assets/gallery/items/fool_order_coffee_toast.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Cajun Sausage Skillet',
+    flavor: "A small cast-iron skillet on a folded napkin, sizzling with sliced andouille sausage, peppers, onions, and a single fried egg riding the top. Steam curls in warm light. Painted with weight, not photoreal. Dark warm ground.",
+    target: 'assets/gallery/items/fool_order_cajun_skillet.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Grits, Eggs, Gravy',
+    flavor: "A wide ceramic plate divided in three: a heap of buttered grits, two over-easy eggs, and a ladleful of country sausage gravy pooling across them. A sprig of parsley nobody asked for. Warm rim light. Floats on dark warm ground.",
+    target: 'assets/gallery/items/fool_order_grits_eggs_gravy.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · TO-GO Chicken and Waffles',
+    flavor: "A brown paper TO-GO bag, top folded twice, the diner's name painted on the side as a faint paint-stroke logo (not legible English — just gesture). Beside it, a single styrofoam cup with a coffee lid. Painted, dark warm ground. The bag's weight suggested by a slight bulge near the bottom.",
+    target: 'assets/gallery/items/fool_order_togo_chicken_waffles.png' },
+
   // Jukebox tracks: 7" 45rpm vinyl singles, labels visible.
   { tab: 'items', cat: 'fool', label: 'Jukebox B-side · CICADAS AT DUSK',
     flavor: "A 7-inch 45rpm vinyl single, dark wax, with a faded paper label. The label's text is painted as gestural strokes — no legible English; mood of a hand-typed home-burn from 1987. Slightly warped edge. Floats centered on the dark ground.",
@@ -317,18 +335,22 @@ const SLOTS = [
   // adds title strip + cost + outcome track on top, so the painting
   // is the entire face of the card.
   ...[
-    { id: 'wipe_counter', flavor:
-      "Close on John's hand in motion: a damp cloth orbits the same spot of formica counter, frozen mid-arc. The countertop sheens under a single fluorescent tube. His other hand braces the edge. Face mostly out of frame — just the jaw + cuff. The painted moment is the loop itself: nothing happens, but the hand keeps moving." },
-    { id: 'address_the_bell', flavor:
-      "John leans across the order window toward the brass call-bell, fingertip suspended a quarter-inch above the striker. The kitchen behind is dark; the bell catches the diner light like a small planet. Mood: somebody is about to be named." },
+    { id: 'clean', flavor:
+      "Close on John's hand in motion: a damp cloth orbits a stretch of formica counter, frozen mid-arc. The countertop sheens under a single fluorescent tube. His other hand braces the edge. Face mostly out of frame — just the jaw + cuff. The painted moment is the gesture: a man who knows how to fix a small wrong thing without thinking. (Universal cleaning card — also clears a Faith mess, a grease line, a bathroom funk, a window miasma, depending on where you stand.)" },
     { id: 'call_faith', flavor:
-      "Low angle, John's mouth open mid-syllable saying a name. A grey-and-white dog's ear lifts from below the counter into the frame's bottom-right. Booth-grey shadows. The light on his face is yellow." },
+      "Low angle, John's mouth open mid-syllable saying a name. A grey-and-white dog's ear lifts from below the counter into the frame's bottom-right. Booth-grey shadows. The light on his face is yellow. Faith's name is the only thing he's said out loud in an hour." },
+    { id: 'greet', flavor:
+      "John's eyes meeting a visitor's eyes across the room — the diner's first beat of any connection. Frame from over the visitor's shoulder so it's John we see acknowledging them: a small nod, the cloth paused in his hand, the apron just beginning to turn. The visitor is a back-of-head silhouette, deliberately unspecific. Same warm/cool palette." },
+    { id: 'listen', flavor:
+      "John leaning slightly forward across the counter or a booth tabletop, head tilted toward a person whose face is just out of frame. His hand is still — the cloth lowered. An order pad in the other hand is open but he isn't writing yet. He's hearing them out, not filling the silence. Soft warm light on the side of his ear." },
+    { id: 'deliver', flavor:
+      "John setting down a plate or a heavy ceramic mug in front of someone — the meal arriving. Frame at table-edge level: his hand letting go of the rim, steam rising thin, the visitor's hand just entering the bottom of frame. Apron strings visible at the side. The painted moment is the small ceremony of giving someone what they came for." },
     { id: 'sit_with', flavor:
-      "Across-the-booth POV: John just slid into the red vinyl bench opposite someone — visible only as a hand on a coffee cup, a sleeve, a notebook page edge. The diner light glances off the formica tabletop between them." },
+      "Across-the-booth POV: John just slid into the red vinyl bench opposite someone — visible only as a hand on a coffee cup, a sleeve, a notebook page edge. The diner light glances off the formica tabletop between them. He isn't going to fix anything. He's going to be there." },
     { id: 'short_rest', flavor:
-      "Bird's-eye-ish view of the counter: John's head is laid sideways on his folded forearms. A cold coffee cup, a folded napkin, the cassette deck of his radio at the far edge. The fluorescents above hum into a long exposure halo. Eyes closed. Tired weight." },
-    { id: 'address_the_bbs_banner', flavor:
-      "John leans toward a phosphor-green CRT terminal mounted under the counter. The screen reflects faintly in his glasses (if he has them) or his eyes (if he doesn't). The terminal is the only light source — green wash over his face. Off-screen ambient diner is barely there." },
+      "Bird's-eye-ish view of the counter: John's head is laid sideways on his folded forearms. A cold coffee cup, a folded napkin, the cassette deck of his radio at the far edge. The fluorescents above hum into a long exposure halo. Eyes closed. Tired weight. (Sanity recovery card — two breaths against the dread.)" },
+    { id: 'address_the_bbs', flavor:
+      "John leans toward a phosphor-green CRT terminal mounted under the register. The screen reflects faintly in his glasses (if he has them) or his eyes (if he doesn't). The terminal is the only light source — green wash over his face. Off-screen ambient diner is barely there. The BBS RUST_CODE banner pulses on the screen." },
     { id: 'step_toward', flavor:
       "Behind-John shot: he's walking toward a doorway/threshold (parking lot or river window — keep ambiguous), one foot lifted mid-step, apron strings trailing. The diner falls away into reflected dark. The threshold ahead is a rectangle of cold blue light." },
     { id: 'pick_up', flavor:
@@ -346,7 +368,9 @@ const SLOTS = [
   // ── Gravity card art ───────────────────────────────────────────────
   // Gravity cards = the ROOM acting on the player. No human focal
   // point. Environmental, slightly colder + greener than the action
-  // cards.
+  // cards. Three flavors: (1) atmospheric pressure cards that nudge
+  // Inertia or warp time, (2) mental-threat cards that drain Sanity
+  // and (3) threat-spawn cards that drop a meeple on the board.
   ...[
     { id: 'the_clock_holds', flavor:
       "Close-up of an aging diner wall clock, the second hand stuck at the 42-second mark, vibrating slightly as if it's trying to move forward. The clock face yellow with age. Faint reflection of a fluorescent tube in the glass. No figure. Painted." },
@@ -367,15 +391,54 @@ const SLOTS = [
     { id: 'the_steamboat_echo', flavor:
       "Through the river-window: a red-painted riverboat passing outside in the dark, the only color in the frame. Lit windows blurred by water and condensation. Inside the diner is barely visible at the edge — the river is the actor." },
     { id: 'the_fellow_traveler', flavor:
-      "A booth booth-window at night. In the reflection of the glass, two silhouettes side by side where the inside of the diner shows only one body. The 'other' silhouette is slightly fainter, slightly leaning. Pure reflection ambiguity." },
+      "A booth booth-window at night. In the reflection of the glass, two silhouettes side by side where the inside of the diner shows only one body. The 'other' silhouette is slightly fainter, slightly leaning. Pure reflection ambiguity. (Also: Faith shakes off a wet patch where she lay.)" },
     { id: 'twelve_years', flavor:
       "A close shot of the counter edge where it's been wiped so many times the laminate has worn through to the chipboard underneath in the exact size and shape of one cloth. Twelve growth rings of wear visible. No figure. The painting IS time." },
     { id: 'nine_locust_seventeen_door', flavor:
       "The under-counter lockbox. Brass dial, etched with the address 9 LOCUST / 17 DOOR. Painted plainly, dim warm light from the counter above, a key in the lock half-turned. The painting is the address — keep it legible (this is signage, not UI). Nothing else in frame." },
+
+    // ── Mental-threat cards (sanity-pressure, atmospheric) ─────────
+    { id: 'your_name_in_someone_elses_voice', flavor:
+      "Booth seat from behind, the red vinyl rising into the frame. Just past it, an empty booth — but the air above the table is faintly warped, as if someone has just spoken. A coffee cup at the far edge of the table is still steaming. No figure. The sound is implied; the painting is the moment your name lands wrong in your ear." },
+    { id: 'the_window_shows_the_wrong_river', flavor:
+      "The river window from inside the diner, the glass slightly fogged from the OUTSIDE. The river beyond is rendered with currents that subtly reverse direction halfway across the frame — a current going against itself. Cold blue-green. Inside the diner only barely warm at the edge. Painted." },
+    { id: 'the_song_youve_been_humming', flavor:
+      "The unplugged jukebox at the bar end, dark, its cord coiled on the floor. But around the jukebox's grille, faint warm light bleeds as if it's playing anyway. A faint shimmer of dust in the air, motion implied. No figure. Mood: a song you can't place, playing somewhere you can't see." },
+    { id: 'the_apron_pocket', flavor:
+      "Tight POV looking down at an open apron pocket: a folded note inside, the paper showing a single line of handwriting (the handwriting painted as gestural strokes — NO legible English). The hand that wrote it isn't visible. The apron strings cut across the bottom of the frame. Warm overhead light." },
+    { id: 'the_grill_smells_like_a_funeral', flavor:
+      "The grill in the dark kitchen alcove — a thin line of smoke rising straight up from the unattended hot surface, catching the warm parking-lot light bleed through the back door. The kitchen behind is cold and abandoned. The smoke is the only motion in the frame. (Spawns the GREASE ON THE GRILL threat.)" },
+    { id: 'the_bathroom_door_swings', flavor:
+      "The bathroom door at the back of the diner, slightly ajar, captured mid-swing — a thin slice of green-tinted bathroom light spills onto the linoleum floor. No figure. The motion is implied by the door's tilted angle. The buzz of a wrong fluorescent inside is implied by the green wash. (Spawns the BATHROOM NEEDS CLEANING threat.)" },
+    { id: 'the_swarm', flavor:
+      "Booth 6 from across the diner. Above the booth, the ceiling fluorescent's halo is darker than it should be — small dark specks ticking around the light in irregular orbits. The booth itself empty. The swarm is the focal point. (Spawns the SWARM AT THE FLUORESCENT threat.)" },
   ].map(o => ({
     tab: 'gravity', cat: 'fool', label: 'Gravity — ' + o.id.replace(/_/g, ' '),
     flavor: o.flavor,
     target: 'assets/gallery/cards/fool_gravity_' + o.id + '.png'
+  })),
+
+  // ── Threat tokens / glyphs ─────────────────────────────────────────
+  // Threats are small meeple-icons placed on the board next to their
+  // space's marker. The engine currently renders them as a Unicode
+  // glyph + a countdown number, but you can drop an authored token
+  // here per-threat so the board reads like a board game. Same square
+  // ~256×256 framing as visitor meeples; transparent or dark warm bg.
+  ...[
+    { id: 'faith_mess', flavor:
+      "Small painted token: a flattened wet patch on diner linoleum, shaped like a paw-print blur. Faintly reflective. Slight green-grey tint. The token's silhouette reads at thumb-size — keep it simple. Transparent / dark warm background. (Faith's wet patch — clearable with CLEAN at the same space; otherwise dries on its own.)" },
+    { id: 'bathroom_funk', flavor:
+      "Small painted token: the bathroom-door symbol (a stylised man-icon with a wave of green-tinted air rising from the door). Reads as 'something is wrong in there.' Brown-amber palette. 1:1, transparent / dark warm." },
+    { id: 'river_miasma', flavor:
+      "Small painted token: a horizontal wave-glyph (three squiggles stacked, the river running the wrong direction). Cold green-grey. Painted with weight, no outline noise. 1:1, transparent / dark warm." },
+    { id: 'grill_grease_fire', flavor:
+      "Small painted token: a triangular curl of smoke rising from a black grease-spot, the smoke tinted orange-red as if catching the underside of fire. Reads at thumb-size as 'don't ignore this'. 1:1, transparent / dark warm." },
+    { id: 'fluorescent_swarm', flavor:
+      "Small painted token: a six-armed star-blur of dark specks against a faint phosphor halo. Suggests buzzing without literal insects. Yellow-amber halo, charcoal specks. 1:1, transparent / dark warm." },
+  ].map(o => ({
+    tab: 'threats', cat: 'fool', label: 'Threat — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/threats/' + o.id + '.png'
   })),
 
   // ── Meeples / board tokens ─────────────────────────────────────────
@@ -428,6 +491,12 @@ const SLOTS = [
   { tab: 'cg', cat: 'fool', label: 'Finale — THE EMPTY ROOM',
     flavor: "The diner from a low angle, completely empty of people. Counter polished mirror-clean. One stool out of alignment. Faith the dog curled alone on the linoleum near the register. Lights humming. The painting's mood is what gets left when the person who used to be here is gone — not violence, just absence. No John in frame.",
     target: 'assets/cg/fool_finale_empty_room.png' },
+  { tab: 'cg', cat: 'fool', label: 'Finale — THE ROOM LISTENS BACK (sanity-zero)',
+    flavor: "John behind the counter, cloth still in hand. His eyes are open but unfocused — the focal pull is OUT of his face, like attention being drawn outward. Around him the diner has subtly tilted, the lines of every wall converging toward the back of his head: he is the room's listening point now. Same warm yellow palette, but the shadows are alive with a faint phosphor-green flicker. The clock above is 3:47.",
+    target: 'assets/cg/fool_finale_room_listens.png' },
+  { tab: 'cg', cat: 'fool', label: 'Finale — THE 3:47 MINUTE (sanity-zero)',
+    flavor: "The diner from outside the front window, looking in. John stands behind the counter, still wiping. A rag warm on the formica beside him. The clock on the back wall reads 3:47. The diner is identical to every other 3:47 painting in this series — only the cars in the parking lot are different, faintly suggesting another year, another year, another year, all overlapping. Cold sodium parking lot light in the foreground, warm diner yellow in the middle ground. Mood: he is fine. He will be fine like this forever.",
+    target: 'assets/cg/fool_finale_three_forty_seven.png' },
   { tab: 'cg', cat: 'fool', label: 'Win — LEAP via Parking Lot',
     flavor: "Exterior wide-shot from above the parking lot. John mid-stride walking away from the diner, the diner's lit yellow windows shrinking behind him. The parking lot empties into a small Texas/Louisiana road, mundane gas station signage glowing in the distance. Dawn pre-light blue at the horizon. Camera tilted slightly down toward him — small figure, big mundane world.",
     target: 'assets/cg/fool_leap_parking_lot.png' },
@@ -552,6 +621,7 @@ function render() {
   $('cntItems').textContent    = tabCount('items');
   $('cntCards').textContent    = tabCount('cards');
   $('cntGravity').textContent  = tabCount('gravity');
+  $('cntThreats').textContent  = tabCount('threats');
   $('cntBg').textContent       = tabCount('bg');
   $('cntCg').textContent       = tabCount('cg');
   $('cntSfx').textContent      = tabCount('sfx');
@@ -639,6 +709,12 @@ const TAB_HINTS = {
     "COMPOSITION: The ROOM doing something — environmental dread rather than character action. A fluorescent stuttering, a payphone ringing alone, the river outside the window pressing against the glass. No human focal point. If a person appears, they're a silhouette or partial — the room is the actor. " +
     "PALETTE SHIFT: lean slightly colder + greener than the action cards so Gravity feels different in hand. Same brushwork, same paper grain. " +
     "NO TEXT, NO FRAME — engine overlays the title.",
+
+  threats:
+    "FORMAT: Small board-game token, 1:1 (256×256), transparent or dark warm background. " +
+    "COMPOSITION: A single iconic glyph or object representing an in-play THREAT (a mess on the floor, fog on a window, smoke off a grill). Reads at thumb-size — the engine composites it next to the marker, sometimes with a countdown number overlaid. " +
+    "NO figure, NO scene around it, NO decorative border. Same gouache/painted technique as the visitor meeples; this is the bad twin of the visitor meeples. " +
+    "Palette per the threat's tint (specified in the brief).",
 
   bg:
     "FORMAT: Wide environmental piece. The Gauntlet-board version is 1600×1000 (16:10), painted as a board-game TILE: top-down or 3-quarter overhead view of the location, every named station rendered as a clearly delineated region with a small painted sign/label AND a small node marker (a circle, a card-back rectangle, or a footprint) that the player will click. " +
