@@ -600,6 +600,18 @@ func _build_ui() -> void:
 	_bindle_label   = _make_track_label("Bindle: —")
 	for lbl in [_phase_label, _turn_label, _time_label, _inertia_label, _sanity_label, _player_pos_label, _bindle_label]:
 		top_hb.add_child(lbl)
+	# Push the Leave button to the far right of the top bar so it
+	# isn't sitting next to MOVE / ADVANCE where it gets misclicked.
+	var top_spacer := Control.new()
+	top_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	top_hb.add_child(top_spacer)
+	var top_leave_btn := Button.new()
+	top_leave_btn.text = "✕ Leave"
+	top_leave_btn.tooltip_text = "Leave the diner and return to the codex (this ends the run)."
+	top_leave_btn.add_theme_font_size_override("font_size", 11)
+	top_leave_btn.custom_minimum_size = Vector2(72, 22)
+	top_leave_btn.pressed.connect(_on_leave)
+	top_hb.add_child(top_leave_btn)
 
 	# ── Left/center: location board ──────────────────────────────────
 	# PRESET_FULL_RECT anchors right edge to parent's right (anchor=1),
@@ -867,11 +879,7 @@ func _build_ui() -> void:
 	_advance_btn.add_theme_font_size_override("font_size", 11)
 	_advance_btn.pressed.connect(_on_advance)
 	hand_title_hb.add_child(_advance_btn)
-	var close_btn := Button.new()
-	close_btn.text = "Leave"
-	close_btn.add_theme_font_size_override("font_size", 11)
-	close_btn.pressed.connect(_on_leave)
-	hand_title_hb.add_child(close_btn)
+	# (Leave moved to the top bar so it isn't adjacent to ADVANCE.)
 	var hand_scroll := ScrollContainer.new()
 	hand_scroll.custom_minimum_size = Vector2(540, 144)
 	hand_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
