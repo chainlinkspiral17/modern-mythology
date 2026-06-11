@@ -1480,10 +1480,12 @@ func _prompt_pick_destination(max_hops: int, reason: String) -> void:
 	add_child(popup)
 	popup.id_pressed.connect(func(idx: int) -> void:
 		if idx >= 0 and idx < keys.size():
+			var prev_pos2: String = _player_pos
 			_player_pos = String(keys[idx])
 			_places_visited[_player_pos] = true
 			_audio_sfx("card_play")
 			_log_line("→ %s to [b]%s[/b]" % [reason, _player_pos])
+			_faith_follow(prev_pos2)
 			_check_composite_connections()
 			_render()
 		popup.queue_free())
@@ -1521,8 +1523,10 @@ func _on_space_clicked(target_pos: String) -> void:
 	_time -= walk_cost
 	if walk_cost > 1:
 		_log_line("[color=#ff8060][i]the door looks farther: walk to %s costs %d[/i][/color]" % [target_pos, walk_cost])
+	var prev_pos: String = _player_pos
 	_player_pos = target_pos
 	_places_visited[_player_pos] = true
+	_faith_follow(prev_pos)
 	_audio_sfx("card_play")
 	_log_line("→ walked to [b]%s[/b]" % target_pos)
 	_check_composite_connections()
@@ -3579,20 +3583,50 @@ func _on_advance() -> void:
 	match _phase:
 		Phase.ACTION:
 			_phase = Phase.PLANNING
+			_show_phase_banner("PLANNING — buy cards · Time refreshes")
 			_phase_planning()
 		Phase.PLANNING:
 			_phase = Phase.SHADOW
+			_show_phase_banner("SHADOW — the room takes its turn")
 			_phase_shadow()
 		Phase.SHADOW:
 			_phase = Phase.DRIFT
+			_show_phase_banner("DRIFT — visitors drift toward attractors")
 			_phase_drift()
 		Phase.DRIFT:
 			_phase = Phase.UPKEEP
+			_show_phase_banner("UPKEEP — cleanup")
 			_phase_upkeep()
 		Phase.UPKEEP:
 			_phase = Phase.ACTION
+			_show_phase_banner("──  TURN %d  ── ACTION" % (_turn + 1))
 			_phase_action()
 	_render()
+
+
+# Phase transition banner — slides in from the top center, fades out
+# after 1.4s. Gives the player a clear "we just moved phases" beat
+# without forcing them to read the small phase label.
+func _show_phase_banner(text: String) -> void:
+	var view: Vector2 = get_viewport_rect().size
+	var pop := PanelContainer.new()
+	pop.add_theme_stylebox_override("panel", _make_panel_style())
+	pop.z_index = 90   # below modals (100) but above everything else
+	pop.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(pop)
+	var lbl := Label.new()
+	lbl.text = "  " + text + "  "
+	lbl.add_theme_color_override("font_color", C_ACCENT)
+	lbl.add_theme_font_size_override("font_size", 16)
+	pop.add_child(lbl)
+	await get_tree().process_frame
+	pop.position = Vector2((view.x - pop.size.x) * 0.5, 50.0)
+	pop.modulate = Color(1, 1, 1, 0)
+	var t := create_tween()
+	t.tween_property(pop, "modulate:a", 1.0, 0.16).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	t.tween_interval(1.2)
+	t.tween_property(pop, "modulate:a", 0.0, 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	t.tween_callback(pop.queue_free)
 
 
 func _phase_action() -> void:
@@ -3704,6 +3738,22 @@ func _phase_drift() -> void:
 	if _counter_haunted and _player_pos == "counter":
 		_inertia = min(12, _inertia + 1)
 		_log_line("[color=#ff8060]+1 Inertia (counter is calling)[/color]")
+
+
+# Faith follow — if she was at the player's previous space (or has
+# been connected), she walks to the player's new space too. Keeps
+# the LEAP win condition (Faith adjacent) realistic without forcing
+# you to re-call her every turn.
+func _faith_follow(prev_pos: String) -> void:
+	var st: Dictionary = _visitors_state.get("faith", {})
+	if not st.get("arrived", false):
+		return
+	# Only follow if she was at the prev pos OR has been connected
+	# (after that, she's yours)
+	if String(st.get("pos", "")) != prev_pos and not st.get("connected", false):
+		return
+	st["pos"] = _player_pos
+	_log_line("[color=#7c8398][i]   Faith follows.[/i][/color]")
 
 
 # Drift mechanic — every unconnected, unclaimed visitor moves one
