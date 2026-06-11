@@ -87,6 +87,8 @@ var _advance_btn: Button = null
 var _board_root: Control = null
 var _board_content: Control = null
 var _board_expand_btn: Button = null
+var _board_bg_btn: Button = null
+var _board_bg_visible: bool = true
 var _board_fullscreen: bool = false
 # Last-rendered stat values, used by _render to flash labels on change
 var _last_rendered_time: int = -1
@@ -609,6 +611,21 @@ func _build_ui() -> void:
 	board_title.add_theme_font_size_override("font_size", 11)
 	board_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header_hb.add_child(board_title)
+	# Background-art toggle — flips the painted board image on/off
+	# so the engine-drawn markers + lines + labels read cleanly when
+	# the art is misaligned or competing for attention.
+	_board_bg_btn = Button.new()
+	_board_bg_btn.text = "BG"
+	_board_bg_btn.tooltip_text = "Toggle the painted board background on/off"
+	_board_bg_btn.toggle_mode = true
+	_board_bg_btn.button_pressed = _board_bg_visible
+	_board_bg_btn.add_theme_font_size_override("font_size", 10)
+	_board_bg_btn.custom_minimum_size = Vector2(36, 20)
+	_board_bg_btn.toggled.connect(func(p: bool) -> void:
+		_board_bg_visible = p
+		_render_board())
+	header_hb.add_child(_board_bg_btn)
+	# Fullscreen toggle
 	_board_expand_btn = Button.new()
 	_board_expand_btn.text = "⛶"
 	_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
@@ -1337,7 +1354,7 @@ func _render_board() -> void:
 	# Background image layer (rendered first so labels draw on top).
 	# If the location-specific board art is missing, fall back to the
 	# bare grid we used to render.
-	var bg_tex: Texture2D = _load_texture_silent(_art_path_board())
+	var bg_tex: Texture2D = _load_texture_silent(_art_path_board()) if _board_bg_visible else null
 	if bg_tex:
 		var bg := TextureRect.new()
 		bg.name = "board_bg"
