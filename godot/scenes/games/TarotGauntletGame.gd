@@ -89,6 +89,7 @@ var _board_content: Control = null
 var _board_expand_btn: Button = null
 var _board_bg_btn: Button = null
 var _board_bg_visible: bool = true
+var _board_fullscreen_exit_btn: Button = null   # viewport-level overlay
 # Computed each _render_board: scales markers/meeples/labels to fit
 # the actual board content size (normal vs fullscreen).
 var _board_ui_scale: float = 1.0
@@ -198,6 +199,10 @@ func _ready() -> void:
 		Phase.keys()[_phase])
 	_log_line("")
 	_render()
+	# Pop the FULL LOG modal at game start so the player reads the
+	# title + scene + direction hint full-screen before play begins.
+	# Deferred so layout completes first.
+	call_deferred("_open_pane_modal_by_key", "log")
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -667,6 +672,27 @@ func _build_ui() -> void:
 	_board_content.clip_contents = true
 	_board_content.resized.connect(_render_board)
 	_board_root.add_child(_board_content)
+
+	# Bulletproof fullscreen-exit overlay — lives at the top of the
+	# whole viewport (not inside _board_root), z=200 so nothing can
+	# eat its click. Only visible when fullscreen is on. The in-
+	# header ⛶ button still works too; this is a fallback for when
+	# layout shifts make that one unreachable.
+	_board_fullscreen_exit_btn = Button.new()
+	_board_fullscreen_exit_btn.text = "✕  Exit Fullscreen Map  (Esc)"
+	_board_fullscreen_exit_btn.add_theme_font_size_override("font_size", 14)
+	_board_fullscreen_exit_btn.custom_minimum_size = Vector2(220, 32)
+	_board_fullscreen_exit_btn.mouse_filter = Control.MOUSE_FILTER_STOP
+	_board_fullscreen_exit_btn.focus_mode = Control.FOCUS_ALL
+	_board_fullscreen_exit_btn.z_index = 200
+	_board_fullscreen_exit_btn.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	_board_fullscreen_exit_btn.offset_left = -240
+	_board_fullscreen_exit_btn.offset_right = -10
+	_board_fullscreen_exit_btn.offset_top = 10
+	_board_fullscreen_exit_btn.offset_bottom = 42
+	_board_fullscreen_exit_btn.visible = false
+	_board_fullscreen_exit_btn.pressed.connect(_toggle_board_fullscreen)
+	add_child(_board_fullscreen_exit_btn)
 
 	# ── Right column: codex card + gravity card + visitor states + log
 	var right := VBoxContainer.new()
@@ -1803,6 +1829,9 @@ func _toggle_board_fullscreen() -> void:
 		_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
 		_board_expand_btn.custom_minimum_size = Vector2(28, 20)
 		_board_root.z_index = 0
+	# Show/hide the bulletproof viewport-level exit button
+	if _board_fullscreen_exit_btn != null:
+		_board_fullscreen_exit_btn.visible = _board_fullscreen
 	_render_board()
 
 
@@ -1903,14 +1932,17 @@ func _on_space_clicked(target_pos: String) -> void:
 
 
 func _position_meeples() -> void:
-	# Anchor meeples to the MARKER CENTER (not the label position) so
-	# they line up with the colored station discs. Offsets scale with
-	# _board_ui_scale so meeples don't crowd at small board sizes.
+	# Meeples should SIT ON their stations, not drift down toward
+	# neighboring rows. Player centers on the marker (overlapping
+	# the disc); visitors stack TIGHTLY to the right of the marker.
 	if _board_meeple and _board_marker_pos.has(_player_pos):
 		var mc: Vector2 = _board_marker_pos[_player_pos]
 		var mp_size: Vector2 = _board_meeple.size if _board_meeple.size.x > 0 else Vector2(28, 28) * _board_ui_scale
-		var target: Vector2 = mc - mp_size * 0.5 + Vector2(0, 14.0 * _board_ui_scale)
+		# Center the player meeple on the marker.
+		var target: Vector2 = mc - mp_size * 0.5
 		_tween_node_to(_board_meeple, target, 0.32)
+	# Visitors: small right-of-marker stack so they cluster with
+	# their station instead of drifting down toward the next row.
 	var vid_pos_stack: Dictionary = {}
 	for vid in _board_visitor_nodes:
 		var v: Dictionary = _visitors_state[vid]
@@ -1921,10 +1953,11 @@ func _position_meeples() -> void:
 			var ns: Vector2 = node.size if node.size.x > 0 else Vector2(22, 22) * _board_ui_scale
 			var idx: int = int(vid_pos_stack.get(p, 0))
 			vid_pos_stack[p] = idx + 1
-			# Visitors stack below the player slot — scale offsets so
-			# they don't pile up at small board sizes.
-			var stack_y: float = 34.0 * _board_ui_scale + idx * (16.0 * _board_ui_scale)
-			var vtarget: Vector2 = mc2 - ns * 0.5 + Vector2(0, stack_y)
+			# Right of marker, slightly above center; small per-
+			# visitor offset to fan them out without going far.
+			var dx: float = (8.0 * _board_ui_scale) + idx * (ns.x * 0.6)
+			var dy: float = -ns.y * 0.5
+			var vtarget: Vector2 = mc2 + Vector2(dx, dy)
 			_tween_node_to(node, vtarget, 0.36)
 
 
@@ -2858,11 +2891,24 @@ func _log_line(s: String) -> void:
 		print("[Gauntlet] " + s)
 		return
 	_log.append_text(s + "\n")
+	# Defer the scroll-to-bottom one frame so RichTextLabel has
+	# laid out the new line and its scroll bar's max_value is up
+	# to date. scroll_following = true is meant to do this but
+	# doesn't always fire on append_text — force it.
+	call_deferred("_scroll_log_to_bottom")
 	# Don't count the initial banner/setup lines as unread — only
 	# count once the live UI is rendering.
 	if _last_rendered_time != -1:
 		_log_unread_count += 1
 		_update_log_unread_badge()
+
+
+func _scroll_log_to_bottom() -> void:
+	if _log == null:
+		return
+	var vbar: VScrollBar = _log.get_v_scroll_bar()
+	if vbar != null:
+		vbar.value = vbar.max_value
 
 
 func _update_log_unread_badge() -> void:
