@@ -199,6 +199,32 @@
     ]
   },
   {
+    "id": "vol5_noon_room_room",
+    "vol": 5,
+    "title": "Noon Room Room",
+    "src": "assets/audio/bgm/vol5_noon_room_room.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Lunch Service jukebox B-side. Lake Charles accordion, brass-mic'd dance-floor sound.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_where_the_bar_used_to_be",
+    "vol": 5,
+    "title": "Where the Bar Used to Be",
+    "src": "assets/audio/bgm/vol5_where_the_bar_used_to_be.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Evening Service jukebox B-side. Solo after-hours piano recorded in the diner in 1979.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [],
+    "chars": []
+  },
+  {
     "id": "vol6_ambient",
     "vol": 6,
     "title": "Harmony Creek Estates",

@@ -29,6 +29,13 @@ var _music_heard: Dictionary = {}
 # Spectrum analyzer on BGM bus, for visualizer windows.
 var _bgm_spectrum: AudioEffectSpectrumAnalyzerInstance = null
 
+# Oneshot-then-resume support. When a caller plays a BGM via
+# `play_oneshot_bgm`, the previous BGM src is captured here so the
+# `finished` handler can fall back to it instead of looping the
+# oneshot or picking the next queued track. Cleared as soon as the
+# resume kicks in.
+var _oneshot_resume_src: String = ""
+
 const HEARD_PATH := "user://progress/music_heard.cfg"
 
 
@@ -131,6 +138,19 @@ func play_bgm(src: String) -> void:
 		_fade_out()
 	else:
 		_start_bgm(src)
+
+
+# Play `src` once, then snap back to `resume_src` when it ends.
+# Used by the gauntlet jukebox: a B-side plays one full revolution,
+# then the diner ambient returns. If a resume isn't supplied, the
+# currently-playing BGM is captured automatically.
+func play_oneshot_bgm(src: String, resume_src: String = "") -> void:
+	if src == "":
+		return
+	if resume_src == "":
+		resume_src = _current_src
+	_oneshot_resume_src = resume_src
+	play_bgm(src)
 
 
 func stop_bgm() -> void:
@@ -365,6 +385,16 @@ func _fade_out() -> void:
 
 
 func _on_bgm_finished() -> void:
+	# Oneshot resume — a play_oneshot_bgm caller asked us to snap
+	# back to a specific src when this track ends. Clears as soon
+	# as it fires so subsequent finishes use the normal queue/
+	# chapter logic.
+	if _oneshot_resume_src != "":
+		var resume := _oneshot_resume_src
+		_oneshot_resume_src = ""
+		if resume != "":
+			_start_bgm(resume)
+			return
 	var next := _pick_next(_current_src)
 	_start_bgm(next if next != "" else _current_src)
 

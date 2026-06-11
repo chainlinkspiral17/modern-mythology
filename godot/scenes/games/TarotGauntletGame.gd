@@ -646,13 +646,26 @@ func _init_run() -> void:
 	# Contents pile (items_contents_pool + draw_one_keep_or_putback)
 	# initialises with the full pool shuffled — every search draws
 	# the front, player chooses KEEP or PUT BACK, putback shuffles.
+	# Items that declare a `scenarios` array on their def are filtered
+	# out when the current scenario isn't in the list (e.g. lunch-only
+	# jukebox tracks don't appear at 3:47 AM).
 	for pid in _piles_def:
 		var p_def: Dictionary = _piles_def[pid]
+		var raw_items: Array = []
 		if p_def.has("items_contents_pool"):
-			_pile_state[pid] = (p_def["items_contents_pool"] as Array).duplicate()
-			_pile_state[pid].shuffle()
+			raw_items = (p_def["items_contents_pool"] as Array).duplicate()
 		else:
-			_pile_state[pid] = (p_def.get("items", []) as Array).duplicate()
+			raw_items = (p_def.get("items", []) as Array).duplicate()
+		var filtered: Array = []
+		for iid in raw_items:
+			var idef: Dictionary = _items_def.get(String(iid), {})
+			var item_scenarios: Array = idef.get("scenarios", [])
+			if not item_scenarios.is_empty() and not (_scenario_id in item_scenarios):
+				continue
+			filtered.append(iid)
+		_pile_state[pid] = filtered
+		if p_def.has("items_contents_pool"):
+			_pile_state[pid].shuffle()
 
 	# Shuffle Gravity deck — Final Girl style:
 	# Endgame cards (flagged with endgame:true in the deck JSON)
@@ -4085,11 +4098,23 @@ func _resolve_effect(e: Dictionary) -> void:
 			# THE COUNTER WANTS WIPING (discard 2 cards OR +2 Inertia).
 			_prompt_choose(e.get("options", []))
 		"play_jukebox_track":
+			# Jukebox plays the track once at full BGM volume; when the
+			# track ends, AudioMgr snaps back to the diner ambient. The
+			# track also unlocks in the Music Player overlay (its
+			# catalog entry uses unlock.type:"heard" and play_bgm marks
+			# heard automatically; we also flag the explicit unlock key
+			# so MusicPlayerOverlay shows the new-unlock indicator).
 			var bgm_path: String = e.get("bgm", "")
 			var label: String = e.get("label", "track")
+			var catalog_id: String = e.get("catalog_id", "")
 			if bgm_path != "":
-				AudioMgr.play_bgm(bgm_path)
+				var resume_src: String = _BGM_BY_LOCATION.get(_location_id, "")
+				AudioMgr.play_oneshot_bgm(bgm_path, resume_src)
 				_log_line("[color=#c8a268]♪ jukebox · now playing [b]%s[/b][/color]" % label)
+				if catalog_id != "":
+					if SaveSystem.mark_unlocked("music:" + catalog_id):
+						AudioMgr.track_unlocked.emit(bgm_path, label)
+						_show_toast("Music unlocked: [b]%s[/b]" % label, "#c8a268")
 		"advance_stranger_connection":
 			# Hook for the cloth's on_pickup. The actual connection
 			# fires from _check_composite_connections — this is just

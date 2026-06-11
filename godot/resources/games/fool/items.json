@@ -39,7 +39,7 @@
     "jukebox": {
       "label": "Jukebox (B-side selections)",
       "notes": "Three tracks have been programmed into the box. Selecting one swaps the diner's BGM until another is chosen. Tracks are reusable — playing them does NOT consume the slot.",
-      "items": ["track_cicadas_dusk", "track_riverboat_drone", "track_warehouse_drone"]
+      "items": ["track_cicadas_dusk", "track_riverboat_drone", "track_warehouse_drone", "track_lunch_45", "track_evening_45"]
     },
     "order_window": {
       "label": "Order Window (the cook's queue)",
@@ -369,7 +369,7 @@
       "flavor": "The summer drone of insects, recorded outside this diner in 1987. Whoever cut the master is dead.",
       "hands": 0,
       "effects_on_use": [
-        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_cicadas_dusk.ogg", "label": "CICADAS AT DUSK"},
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_cicadas_dusk.ogg", "label": "CICADAS AT DUSK", "catalog_id": "vol5_cicadas_dusk"},
         {"kind": "lose_inertia", "amount": 1}
       ],
       "reusable": true
@@ -380,7 +380,7 @@
       "flavor": "Low engines and water. The boat that takes nobody from the river window.",
       "hands": 0,
       "effects_on_use": [
-        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_riverboat_drone.ogg", "label": "RIVERBOAT DRONE"},
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_riverboat_drone.ogg", "label": "RIVERBOAT DRONE", "catalog_id": "vol5_riverboat_drone"},
         {"kind": "gain_time", "amount": 1}
       ],
       "reusable": true
@@ -391,8 +391,33 @@
       "flavor": "Forty hertz of empty room. The track that sounds like the diner already does.",
       "hands": 0,
       "effects_on_use": [
-        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_warehouse_drone.ogg", "label": "WAREHOUSE DRONE"},
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_warehouse_drone.ogg", "label": "WAREHOUSE DRONE", "catalog_id": "vol5_warehouse_drone"},
         {"kind": "gain_inertia", "amount": 1}
+      ],
+      "reusable": true
+    },
+    "track_lunch_45": {
+      "title": "B-Side · NOON ROOM ROOM",
+      "category": "jukebox_track",
+      "scenarios": ["lunch_rush"],
+      "flavor": "An accordion B-side from a Lake Charles wedding band, 1991. Whoever set up the brass mic by the dance floor heard everything in the room.",
+      "hands": 0,
+      "effects_on_use": [
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_noon_room_room.ogg", "label": "NOON ROOM ROOM", "catalog_id": "vol5_noon_room_room"},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "recover_sanity", "amount": 1}
+      ],
+      "reusable": true
+    },
+    "track_evening_45": {
+      "title": "B-Side · WHERE THE BAR USED TO BE",
+      "category": "jukebox_track",
+      "scenarios": ["evening_service"],
+      "flavor": "Solo piano, after-hours. Recorded in this diner in 1979 when there was still a piano. The piano was sold the year you started.",
+      "hands": 0,
+      "effects_on_use": [
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_where_the_bar_used_to_be.ogg", "label": "WHERE THE BAR USED TO BE", "catalog_id": "vol5_where_the_bar_used_to_be"},
+        {"kind": "lose_inertia", "amount": 2}
       ],
       "reusable": true
     }

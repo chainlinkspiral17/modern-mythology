@@ -373,6 +373,12 @@ const SLOTS = [
   { tab: 'items', cat: 'fool', label: 'Jukebox B-side · WAREHOUSE DRONE',
     flavor: "Same 7-inch format, a label printed on yellowed cardstock with two thin parallel lines top and bottom (no readable text). The wax dustier, more played. Floats on the dark warm ground.",
     target: 'assets/gallery/items/fool_track_warehouse_drone.png' },
+  { tab: 'items', cat: 'fool', label: 'Jukebox B-side · NOON ROOM ROOM (lunch)',
+    flavor: "Same 7-inch format. A peach-pink label with a thin gold rim, the print so badly faded the paint-strokes that suggest text are almost gone. A small hand-pressed sticker in one corner — the kind a wedding band makes themselves. The wax warm and well-played.",
+    target: 'assets/gallery/items/fool_track_lunch_45.png' },
+  { tab: 'items', cat: 'fool', label: 'Jukebox B-side · WHERE THE BAR USED TO BE (dinner)',
+    flavor: "Same 7-inch format. A deep navy label with a single small ivory-key motif painted at the spindle hole. The wax old enough that the runout groove catches the light. A coffee ring stained into the upper edge of the label.",
+    target: 'assets/gallery/items/fool_track_evening_45.png' },
 
   // ── Framework action card art (shared across every arcana) ─────────
   // These are the universal verbs in the action tableau. Files live at
@@ -711,6 +717,26 @@ const SLOTS = [
   { tab: 'bgm', cat: 'dambrosios', label: "D'Ambrosio's reversed — Loss",
     flavor: '15-second outro played on reversal. Settling into stasis.',
     target: 'assets/audio/bgm/gauntlet_dambrosios_reversed.ogg' },
+
+  // ── Jukebox B-side tracks (full songs, 90-180 sec each) ────────────
+  // Plays once when the player picks the track at the jukebox, then
+  // BGM snaps back to the diner ambient. Also unlocks in the Music
+  // Player overlay on first play.
+  { tab: 'bgm', cat: 'dambrosios', label: 'Jukebox · CICADAS AT DUSK',
+    flavor: 'Field-recording-meets-drone, 90-120 sec. Real cicadas at a Texas-Louisiana dusk, layered under a low warm pad. A single tape-warble note holds the bottom. No drums. No vocals. Mood: the diner door propped open in summer.',
+    target: 'assets/audio/bgm/vol5_cicadas_dusk.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: 'Jukebox · RIVERBOAT DRONE',
+    flavor: 'Riverboat engine hum + water against hull, 90-120 sec. Deep low frequencies, occasional creak of timber. Optional distant accordion ghost in the upper register, mixed almost-inaudible. No drums.',
+    target: 'assets/audio/bgm/vol5_riverboat_drone.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: 'Jukebox · WAREHOUSE DRONE',
+    flavor: '40 Hz hum of an empty industrial room, 90-120 sec. Tube-light buzz at the edge. A single sustained note from somewhere far down the room. The track that sounds like the diner already does.',
+    target: 'assets/audio/bgm/vol5_warehouse_drone.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: 'Jukebox · NOON ROOM ROOM (lunch)',
+    flavor: 'Accordion-led, late-1980s Lake-Charles wedding-band B-side, 90-120 sec. A brass-mic recording, slightly hot in the upper-mids. Walking bass, a single soft snare brush. Warm major key but not cheerful — a band who has played this song too many times. NO modern production.',
+    target: 'assets/audio/bgm/vol5_noon_room_room.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: 'Jukebox · WHERE THE BAR USED TO BE (dinner)',
+    flavor: 'Solo after-hours piano, 1970s recording, 90-120 sec. The room of the recording IS the diner — distant clatter of dishes at the very edge. Minor key, slow. The piano slightly out of tune. Final track of a closed night.',
+    target: 'assets/audio/bgm/vol5_where_the_bar_used_to_be.ogg' },
 ];
 
 let assetIndex = {};
