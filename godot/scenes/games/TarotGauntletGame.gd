@@ -2135,15 +2135,29 @@ func _render_fp() -> void:
 	_board_content.add_child(floor_rect)
 	# Background — the painted 1st-person view of this space. We
 	# already gated on existence at the caller, so this should load.
+	# The bg is rendered slightly oversized (110%) and pinned at top-
+	# left so a subtle pan animation has room to "scan" the view
+	# without revealing the panel's empty edges.
 	var fp_tex: Texture2D = _load_texture_silent(_art_path_fp(_player_pos))
 	if fp_tex:
 		var bg := TextureRect.new()
 		bg.name = "fp_bg"
 		bg.texture = fp_tex
-		bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		var content_size: Vector2 = _board_content.size
+		if content_size.x <= 0:
+			content_size = Vector2(700, 480)
+		var bg_scale: float = 1.10
+		bg.custom_minimum_size = content_size * bg_scale
+		bg.size = content_size * bg_scale
+		# Start centered (5% slack on each side).
+		bg.position = -content_size * (bg_scale - 1.0) * 0.5
 		bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_board_content.add_child(bg)
+		# Kick off a slow random scan — the painted view drifts in
+		# different directions, returns near center, drifts again.
+		# Stops automatically when the bg node frees (next render).
+		_fp_scan_pulse(bg, content_size, bg_scale)
 	# Subtle vignette over the bg so the navigation strip + overlays
 	# read cleanly against any painting.
 	var vignette := ColorRect.new()
@@ -2313,6 +2327,42 @@ func _render_fp() -> void:
 
 
 # Helper — find a space's full def from the location JSON.
+func _fp_scan_pulse(bg: TextureRect, content_size: Vector2, bg_scale: float) -> void:
+	# Soft, slow scan-pan of the 1st-person painted view. Each pulse
+	# tweens the bg to a random direction (left/right/up/down/center),
+	# pauses for a beat, then queues the next pulse. The pan range
+	# is the 5% slack we baked into the bg's oversize, so the edges
+	# of the panel never reveal blank space.
+	if not is_instance_valid(bg):
+		return
+	# Slack we can move within without showing empty edges.
+	var slack: Vector2 = content_size * (bg_scale - 1.0)
+	# Random direction. Bias toward center returns so the camera
+	# "comes back" between drifts.
+	var dirs: Array = [
+		Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1),
+		Vector2(-1, -1), Vector2(1, 1), Vector2(-1, 1), Vector2(1, -1),
+		Vector2(0, 0), Vector2(0, 0),  # weight center returns higher
+	]
+	var dir: Vector2 = dirs[randi() % dirs.size()]
+	# Random magnitude within the slack range, 40-100% of available.
+	var mag: float = randf_range(0.40, 1.00)
+	var target_offset: Vector2 = Vector2(
+		-slack.x * 0.5 + dir.x * slack.x * 0.5 * mag,
+		-slack.y * 0.5 + dir.y * slack.y * 0.5 * mag)
+	var dur: float = randf_range(4.0, 7.0)
+	var hold: float = randf_range(1.5, 3.0)
+	var t := create_tween()
+	t.tween_property(bg, "position", target_offset, dur).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	t.tween_interval(hold)
+	t.tween_callback(func() -> void:
+		# Re-queue the next pulse only if the bg is still alive.
+		# A new render frees the old bg and starts its own pulse,
+		# so we don't double up.
+		if is_instance_valid(bg):
+			_fp_scan_pulse(bg, content_size, bg_scale))
+
+
 func _space_def(sid: String) -> Dictionary:
 	for s: Dictionary in _location.get("spaces", []):
 		if String(s.get("id", "")) == sid:
