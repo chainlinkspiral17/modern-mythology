@@ -2472,14 +2472,23 @@ func _phase_planning() -> void:
 		var card: Dictionary = _action_cards[cid]
 		if card.get("starter", false) and not (cid in _hand_cards):
 			_hand_cards.append(cid)
-	_time = _next_time_reset
-	_next_time_reset = int((_setup.get("starting_state", {}) as Dictionary).get("time_per_turn", 4))
+	# Final Girl economy: leftover Time CARRIES OVER and adds on top
+	# of the per-turn base. So ending with 2 unspent → next turn starts
+	# with 6 + 2 = 8. Encourages efficient turns without punishing big
+	# saves for a planned splurge.
+	var carry: int = _time
+	_time = carry + _next_time_reset
+	_next_time_reset = int((_setup.get("starting_state", {}) as Dictionary).get("time_per_turn", 6))
 	# If the Bindle has been assembled but LEAP isn't in hand yet,
 	# add it now. (LEAP is awarded by BUNDLE, never purchased.)
 	if _bindle_assembled and not ("leap" in _hand_cards):
 		_hand_cards.append("leap")
 		_log_line("[color=#ffd07a][b]LEAP added to your hand.[/b][/color]")
-	_log_line("[color=#c8a268][i]planning. Time reset to %d. Click TABLEAU cards (above hand) to buy.[/i][/color]" % _time)
+	if carry > 0:
+		_log_line("[color=#c8a268][i]planning. Time = %d carried + %d base = %d.[/i][/color]" %
+			[carry, _next_time_reset, _time])
+	else:
+		_log_line("[color=#c8a268][i]planning. Time reset to %d. Click TABLEAU cards (above hand) to buy.[/i][/color]" % _time)
 
 
 func _phase_shadow() -> void:
