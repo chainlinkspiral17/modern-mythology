@@ -42,6 +42,7 @@
       "id": "the_counter_wants_wiping",
       "title": "THE COUNTER WANTS WIPING",
       "flavor": "It's almost the same spot. It always is.",
+      "endgame": true,
       "effects": [
         {"kind": "choose", "options": [
           {"label": "Discard 2 Action cards", "effects": [{"kind": "discard_hand", "amount": 2}]},
@@ -99,6 +100,7 @@
       "id": "twelve_years",
       "title": "TWELVE YEARS",
       "flavor": "The apron knows the date even when you don't.",
+      "endgame": true,
       "effects": [
         {"kind": "gain_inertia", "amount": 2}
       ]
@@ -107,6 +109,7 @@
       "id": "nine_locust_seventeen_door",
       "title": "NINE LOCUST SEVENTEEN DOOR",
       "flavor": "The number-sequence whispering from under the formica.",
+      "endgame": true,
       "effects": [
         {"kind": "reveal_threshold", "threshold": "precipice_door"},
         {"kind": "set_flag", "key": "counter_haunted", "value": true,

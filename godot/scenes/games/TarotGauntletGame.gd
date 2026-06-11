@@ -460,11 +460,28 @@ func _init_run() -> void:
 	for pid in _piles_def:
 		_pile_state[pid] = (_piles_def[pid].get("items", []) as Array).duplicate()
 
-	# Shuffle Gravity deck
-	_gravity_draw_pile = []
+	# Shuffle Gravity deck — Final Girl style:
+	# Endgame cards (flagged with endgame:true in the deck JSON)
+	# get shuffled SEPARATELY and placed at the BOTTOM of the pile
+	# (front of the Array, since pop_back draws). The rest of the
+	# deck shuffles normally on top. Guarantees the heaviest
+	# threats come late in the run.
+	var normal_ids: Array = []
+	var endgame_ids: Array = []
 	for c: Dictionary in _gravity_deck_def.get("cards", []):
-		_gravity_draw_pile.append(c["id"])
-	_gravity_draw_pile.shuffle()
+		if c.get("endgame", false):
+			endgame_ids.append(c["id"])
+		else:
+			normal_ids.append(c["id"])
+	normal_ids.shuffle()
+	endgame_ids.shuffle()
+	_gravity_draw_pile = []
+	for cid: String in endgame_ids:
+		_gravity_draw_pile.append(cid)
+	for cid: String in normal_ids:
+		_gravity_draw_pile.append(cid)
+	print("[Gauntlet] gravity deck shuffled: %d normal + %d endgame (drawn last)" %
+		[normal_ids.size(), endgame_ids.size()])
 
 
 # ── UI build ─────────────────────────────────────────────────────────
