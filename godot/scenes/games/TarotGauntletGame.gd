@@ -52,6 +52,12 @@ var _sanity: int = 5
 var _sanity_max: int = 5
 var _player_pos: String = "counter"
 var _hand_cards: Array = []     # array of card ids currently in hand
+# Per-card stock counts for tableau buys. Each non-starter card
+# carries a finite stock that decrements on purchase. When stock
+# hits 0 the card disappears from the tableau. Default stock comes
+# from the card's `stock` field (JSON), or 2 if unspecified. The
+# tile renders the remaining stock so the player always knows.
+var _tableau_stock: Dictionary = {}  # cid → int
 var _gravity_draw_pile: Array = []
 var _gravity_discard_pile: Array = []
 var _gravity_last_drawn: Dictionary = {}
@@ -450,6 +456,15 @@ func _load_data() -> void:
 		if not locs.is_empty() and not (_location_id in locs):
 			continue
 		_action_cards[c["id"]] = c
+	# Seed the tableau stock counts. Non-starters, non-leap, non-
+	# bundle cards get a stock count (from the card's `stock` field
+	# or default 2 if unspecified). Each purchase decrements; at 0
+	# the card vanishes from the tableau.
+	for cid: String in _action_cards.keys():
+		var c: Dictionary = _action_cards[cid]
+		if c.get("starter", false): continue
+		if cid == "leap" or cid == "bundle": continue
+		_tableau_stock[cid] = int(c.get("stock", 2))
 	# Visitors → id-keyed dict, plus the mood→step fallback table.
 	var v_def := _load_json(arc_root + "visitors.json")
 	for v: Dictionary in v_def.get("visitors", []):
@@ -2346,6 +2361,8 @@ func _render_tableau() -> void:
 			continue
 		if cid == "leap" or cid == "bundle":
 			continue   # milestone awards, not purchases
+		if int(_tableau_stock.get(cid, 0)) <= 0:
+			continue   # out of stock — purchased out this run
 		buyables.append(cid)
 	buyables.sort_custom(func(a: String, b: String) -> bool:
 		return int(_action_cards[a].get("time_cost", 1)) < int(_action_cards[b].get("time_cost", 1)))
@@ -2384,7 +2401,8 @@ func _render_tableau() -> void:
 		btn.mouse_exited.connect(_hover_scale.bind(btn, false))
 		tile.add_child(btn)
 		var title_lbl := Label.new()
-		title_lbl.text = "%s · buy %dt" % [card.get("title", cid), price]
+		var stock_n: int = int(_tableau_stock.get(cid, 0))
+		title_lbl.text = "%s · buy %dt · ×%d" % [card.get("title", cid), price, stock_n]
 		title_lbl.add_theme_font_size_override("font_size", 9)
 		title_lbl.add_theme_color_override("font_color", C_TEXT)
 		title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -2413,11 +2431,20 @@ func _on_buy_card(cid: String) -> void:
 		_log_line("[i]not enough Time to buy %s (need %d, have %d)[/i]" %
 			[card.get("title", cid), price, _time])
 		return
+	if int(_tableau_stock.get(cid, 0)) <= 0:
+		_log_line("[i]no %s left in the tableau[/i]" % card.get("title", cid))
+		return
 	_time -= price
 	_hand_cards.append(cid)
+	_tableau_stock[cid] = int(_tableau_stock[cid]) - 1
 	_audio_sfx("card_play")
-	_log_line("[color=#7cffb0]✦ bought [b]%s[/b][/color]  (cost %d, Time %d → %d)" %
-		[card.get("title", cid), price, _time + price, _time])
+	var remaining: int = int(_tableau_stock[cid])
+	if remaining > 0:
+		_log_line("[color=#7cffb0]✦ bought [b]%s[/b][/color]  (cost %d, Time %d → %d, %d left in tableau)" %
+			[card.get("title", cid), price, _time + price, _time, remaining])
+	else:
+		_log_line("[color=#7cffb0]✦ bought [b]%s[/b][/color]  (cost %d, Time %d → %d, [i]last copy[/i])" %
+			[card.get("title", cid), price, _time + price, _time])
 	_render()
 
 

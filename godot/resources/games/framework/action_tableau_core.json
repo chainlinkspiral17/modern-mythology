@@ -88,7 +88,8 @@
       "id": "spend_it",
       "title": "SPEND IT",
       "time_cost": 0,
-      "passive_effect": "Discard this card for +1 Time. Always playable.",
+      "stock": 3,
+      "passive_effect": "Discard this card for +1 Time. Always playable. (Each copy is one-shot — once played, it's gone from your hand AND the tableau slot it came from doesn't restock.)",
       "tags": ["time"]
     },
     {
