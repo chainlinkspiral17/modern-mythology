@@ -89,6 +89,10 @@ var _board_content: Control = null
 var _board_expand_btn: Button = null
 var _board_bg_btn: Button = null
 var _board_bg_visible: bool = true
+# Computed each _render_board: scales markers/meeples/labels to fit
+# the actual board content size (normal vs fullscreen).
+var _board_ui_scale: float = 1.0
+var _board_visitor_stack_offset: float = 14.0
 var _board_fullscreen: bool = false
 # Last-rendered stat values, used by _render to flash labels on change
 var _last_rendered_time: int = -1
@@ -601,9 +605,14 @@ func _build_ui() -> void:
 	board_header.offset_bottom = 26
 	board_header.add_theme_stylebox_override("panel", _make_panel_style())
 	board_header.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# Lift the header above the content layer so its buttons always
+	# win the click test even if content drifts up via clip overflow
+	# or z_index changes in fullscreen mode.
+	board_header.z_index = 5
 	_board_root.add_child(board_header)
 	var header_hb := HBoxContainer.new()
 	header_hb.add_theme_constant_override("separation", 6)
+	header_hb.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	board_header.add_child(header_hb)
 	var board_title := Label.new()
 	board_title.text = "  MAP — " + String(_location.get("title", _location_id))
@@ -625,12 +634,17 @@ func _build_ui() -> void:
 		_board_bg_visible = p
 		_render_board())
 	header_hb.add_child(_board_bg_btn)
-	# Fullscreen toggle
+	# Fullscreen toggle — bulletproofed: z_index so nothing sneaks
+	# above it; explicit STOP mouse filter; focus mode that lets
+	# Esc / Enter activate it too.
 	_board_expand_btn = Button.new()
 	_board_expand_btn.text = "⛶"
 	_board_expand_btn.tooltip_text = "Expand board (fullscreen)"
 	_board_expand_btn.add_theme_font_size_override("font_size", 12)
 	_board_expand_btn.custom_minimum_size = Vector2(28, 20)
+	_board_expand_btn.mouse_filter = Control.MOUSE_FILTER_STOP
+	_board_expand_btn.focus_mode = Control.FOCUS_ALL
+	_board_expand_btn.z_index = 5
 	_board_expand_btn.pressed.connect(_toggle_board_fullscreen)
 	header_hb.add_child(_board_expand_btn)
 	# Content area BELOW the header — board image, markers, labels,
@@ -1401,6 +1415,18 @@ func _render_board() -> void:
 	var pad_bottom: float = 80.0
 	var sx: float = (panel_size.x - pad_left - pad_right) / maxf(1.0, bx_max - bx_min)
 	var sy: float = (panel_size.y - pad_top - pad_bottom) / maxf(1.0, by_max - by_min)
+	# Meeple / marker / line scale — sized so the board reads at any
+	# viewport. Reference size is the fullscreen board (~1200x600);
+	# normal-mode board is much smaller, so we scale markers/meeples
+	# down proportionally. Clamped so things never get unreadable.
+	var ui_scale: float = clamp(min(panel_size.x / 1100.0, panel_size.y / 560.0), 0.50, 1.20)
+	var marker_size: float = 12.0 * ui_scale
+	var player_meeple_size: float = 28.0 * ui_scale
+	var visitor_meeple_size: float = 22.0 * ui_scale
+	var meeple_stack_offset: float = 14.0 * ui_scale
+	var label_offset: float = 10.0 * ui_scale
+	_board_ui_scale = ui_scale
+	_board_visitor_stack_offset = meeple_stack_offset
 	# Compute every station's screen position upfront so we can draw
 	# adjacency lines below them.
 	var pos_by_id: Dictionary = {}
@@ -1451,9 +1477,9 @@ func _render_board() -> void:
 		marker.name = "marker_" + sid
 		marker.mouse_filter = Control.MOUSE_FILTER_STOP
 		marker.tooltip_text = _tooltip_for_space(s)
-		marker.custom_minimum_size = Vector2(12, 12)
-		marker.size = Vector2(12, 12)
-		marker.position = Vector2(nx - 6, ny - 6)
+		marker.custom_minimum_size = Vector2(marker_size, marker_size)
+		marker.size = Vector2(marker_size, marker_size)
+		marker.position = Vector2(nx - marker_size * 0.5, ny - marker_size * 0.5)
 		_board_marker_pos[sid] = Vector2(nx, ny)
 		var mst := StyleBoxFlat.new()
 		var kind: String = s.get("kind", "named")
@@ -1463,21 +1489,22 @@ func _render_board() -> void:
 			_:           mst.bg_color = Color(0.82, 0.78, 0.70, 0.8)
 		mst.border_color = Color(0, 0, 0, 0.8)
 		mst.set_border_width_all(1)
-		mst.set_corner_radius_all(6)
+		mst.set_corner_radius_all(marker_size * 0.5)
 		marker.add_theme_stylebox_override("panel", mst)
 		_board_content.add_child(marker)
 		var node := _make_space_label(s)
-		node.position = Vector2(nx + 10.0, ny - 8.0)
+		node.position = Vector2(nx + label_offset, ny - 8.0 * ui_scale)
 		node.name = "space_" + sid
 		_board_content.add_child(node)
 		_board_space_nodes[sid] = node
 	# Player meeple — image if present, otherwise styled label.
+	# Sizes scale with the board so the meeple stays proportional.
 	var player_art: Texture2D = _load_texture_silent(_art_path_meeple("john"))
 	if player_art:
 		var mp := TextureRect.new()
 		mp.texture = player_art
-		mp.custom_minimum_size = Vector2(28, 28)
-		mp.size = Vector2(28, 28)
+		mp.custom_minimum_size = Vector2(player_meeple_size, player_meeple_size)
+		mp.size = Vector2(player_meeple_size, player_meeple_size)
 		mp.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		mp.name = "player_meeple"
 		_board_meeple = mp
@@ -1486,8 +1513,8 @@ func _render_board() -> void:
 		lbl_m.text = "★"
 		lbl_m.add_theme_color_override("font_color", C_ACCENT)
 		lbl_m.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
-		lbl_m.add_theme_constant_override("outline_size", 4)
-		lbl_m.add_theme_font_size_override("font_size", 18)
+		lbl_m.add_theme_constant_override("outline_size", int(max(2, 4.0 * ui_scale)))
+		lbl_m.add_theme_font_size_override("font_size", int(max(11, 18.0 * ui_scale)))
 		lbl_m.name = "player_meeple"
 		_board_meeple = lbl_m
 	_board_meeple.tooltip_text = _tooltip_for_player()
@@ -1504,8 +1531,8 @@ func _render_board() -> void:
 		if vis_art:
 			var vm := TextureRect.new()
 			vm.texture = vis_art
-			vm.custom_minimum_size = Vector2(22, 22)
-			vm.size = Vector2(22, 22)
+			vm.custom_minimum_size = Vector2(visitor_meeple_size, visitor_meeple_size)
+			vm.size = Vector2(visitor_meeple_size, visitor_meeple_size)
 			vm.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 			vnode = vm
 		else:
@@ -1513,8 +1540,8 @@ func _render_board() -> void:
 			dot.text = "●"
 			dot.add_theme_color_override("font_color", Color(vdef.get("accent", "#c8a268")))
 			dot.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
-			dot.add_theme_constant_override("outline_size", 3)
-			dot.add_theme_font_size_override("font_size", 14)
+			dot.add_theme_constant_override("outline_size", int(max(2, 3.0 * ui_scale)))
+			dot.add_theme_font_size_override("font_size", int(max(10, 14.0 * ui_scale)))
 			vnode = dot
 		vnode.name = "visitor_" + vid
 		vnode.tooltip_text = _tooltip_for_visitor(vid)
@@ -1568,11 +1595,15 @@ func _make_space_label(s: Dictionary) -> Label:
 		l.text = label
 		col = Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55)
 		fs = 9
+	# Scale the chosen font size by the board's UI scale so labels
+	# stay readable at any panel size (small in normal view, larger
+	# in fullscreen).
+	fs = int(max(8, round(fs * _board_ui_scale)))
 	l.add_theme_color_override("font_color", col)
 	l.add_theme_font_size_override("font_size", fs)
 	# Outline + slight shadow so labels read over any painted background.
 	l.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
-	l.add_theme_constant_override("outline_size", 4)
+	l.add_theme_constant_override("outline_size", int(max(2, 4.0 * _board_ui_scale)))
 	l.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.6))
 	l.add_theme_constant_override("shadow_offset_x", 1)
 	l.add_theme_constant_override("shadow_offset_y", 1)
@@ -1764,30 +1795,27 @@ func _on_space_clicked(target_pos: String) -> void:
 
 func _position_meeples() -> void:
 	# Anchor meeples to the MARKER CENTER (not the label position) so
-	# they line up with the colored station discs. The marker centers
-	# are stored in _board_marker_pos during _render_board.
-	# Player meeple: just below + slightly right of the marker.
+	# they line up with the colored station discs. Offsets scale with
+	# _board_ui_scale so meeples don't crowd at small board sizes.
 	if _board_meeple and _board_marker_pos.has(_player_pos):
 		var mc: Vector2 = _board_marker_pos[_player_pos]
-		# offset by half the meeple size + a small gap so it doesn't
-		# cover the marker itself
-		var mp_size: Vector2 = _board_meeple.size if _board_meeple.size.x > 0 else Vector2(28, 28)
-		var target: Vector2 = mc - mp_size * 0.5 + Vector2(0, 14)
+		var mp_size: Vector2 = _board_meeple.size if _board_meeple.size.x > 0 else Vector2(28, 28) * _board_ui_scale
+		var target: Vector2 = mc - mp_size * 0.5 + Vector2(0, 14.0 * _board_ui_scale)
 		_tween_node_to(_board_meeple, target, 0.32)
-	# Visitor meeples — stack vertically below the marker, all
-	# centered on the marker's x axis.
-	var vid_pos_stack: Dictionary = {}   # pos → stack offset count
+	var vid_pos_stack: Dictionary = {}
 	for vid in _board_visitor_nodes:
 		var v: Dictionary = _visitors_state[vid]
 		var p: String = v.get("pos", "")
 		if _board_marker_pos.has(p):
 			var mc2: Vector2 = _board_marker_pos[p]
 			var node: Control = _board_visitor_nodes[vid]
-			var ns: Vector2 = node.size if node.size.x > 0 else Vector2(22, 22)
+			var ns: Vector2 = node.size if node.size.x > 0 else Vector2(22, 22) * _board_ui_scale
 			var idx: int = int(vid_pos_stack.get(p, 0))
 			vid_pos_stack[p] = idx + 1
-			# Visitors stack below the player slot
-			var vtarget: Vector2 = mc2 - ns * 0.5 + Vector2(0, 34 + idx * 16)
+			# Visitors stack below the player slot — scale offsets so
+			# they don't pile up at small board sizes.
+			var stack_y: float = 34.0 * _board_ui_scale + idx * (16.0 * _board_ui_scale)
+			var vtarget: Vector2 = mc2 - ns * 0.5 + Vector2(0, stack_y)
 			_tween_node_to(node, vtarget, 0.36)
 
 
@@ -2247,21 +2275,21 @@ func _render_visitors() -> void:
 			# rather than leak that they exist
 			continue
 
-		# Row: optional clickable portrait + text label. Wrap in a
-		# Button so the whole row can be clicked to open the
-		# single-visitor card view.
-		var row_btn := Button.new()
-		row_btn.flat = true
-		row_btn.focus_mode = Control.FOCUS_NONE
-		row_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row_btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-		row_btn.tooltip_text = _tooltip_for_visitor(vid) + "\n\n(Click for full card view.)"
-		row_btn.pressed.connect(_open_visitor_view.bind(vid))
+		# Row = the HBoxContainer itself, with mouse_filter STOP so it
+		# captures clicks. Children are mouse_filter IGNORE so they
+		# don't intercept. (Button-as-wrapper broke layout — Button
+		# isn't a Container and the HBox child got 0 size.)
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 6)
 		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row.mouse_filter = Control.MOUSE_FILTER_IGNORE   # let the Button capture clicks
-		row_btn.add_child(row)
+		row.mouse_filter = Control.MOUSE_FILTER_STOP
+		row.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		row.tooltip_text = _tooltip_for_visitor(vid) + "\n\n(Click for full card view.)"
+		row.gui_input.connect(func(ev: InputEvent) -> void:
+			if ev is InputEventMouseButton:
+				var mb := ev as InputEventMouseButton
+				if mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT:
+					_open_visitor_view(vid))
 		if arrived:
 			var face: Texture2D = _load_texture_silent(_art_path_visitor_face(vid))
 			if face:
@@ -2286,14 +2314,14 @@ func _render_visitors() -> void:
 		rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		rt.add_theme_color_override("default_color", C_TEXT)
-		rt.add_theme_font_size_override("normal_font_size", 9)
+		rt.add_theme_font_size_override("normal_font_size", 10)
 		rt.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		if hint_line != "" and not arrived:
 			rt.text = "[color=%s]●[/color] [i]%s[/i]%s\n[color=#7c8398][i]   %s[/i][/color]" % [accent, name_s, status, hint_line]
 		else:
 			rt.text = "[color=%s]●[/color] %s%s" % [accent, name_s, status]
 		row.add_child(rt)
-		_visitors_box.add_child(row_btn)
+		_visitors_box.add_child(row)
 
 
 # ── Pane modal body builders ────────────────────────────────────────
