@@ -479,6 +479,16 @@ func _add_play_button_overlay(parent_visualizer: Control,
 # Scenario picker modal — three difficulty options for the Fool's
 # D'Ambrosio's location. Each option launches the same engine with
 # a different setup file + gravity deck.
+const MAGICIAN_SCENARIOS := [
+	{
+		"id": "the_draft",
+		"title": "THE DRAFT",
+		"subtitle": "Easy · 7:14 PM · A Quiet Evening in the Warehouse",
+		"flavor": "The river is doing what rivers do. Three pieces are a beat from being something. Elicia is bringing a tape. John is walking over from the diner. Make three pieces, connect with three of your visitors, and don't finish the steamboat unless you mean to."
+	}
+]
+
+
 const FOOL_SCENARIOS := [
 	{
 		"id": "the_leap",
@@ -535,21 +545,28 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 	var vb := VBoxContainer.new()
 	vb.add_theme_constant_override("separation", 14)
 	panel.add_child(vb)
-	# Header
+	# Header — arcana-aware
+	var arcana_title: String = "ENTER THE GAUNTLET · D'AMBROSIO'S"
+	var arcana_sub:   String = "John Frank · Pick a shift"
+	var scenarios:    Array  = FOOL_SCENARIOS
+	if arcana == "magician":
+		arcana_title = "ENTER THE GAUNTLET · THE CATHEDRAL"
+		arcana_sub   = "Frasier Temple · Pick an evening"
+		scenarios    = MAGICIAN_SCENARIOS
 	var title := Label.new()
-	title.text = "ENTER THE GAUNTLET · D'AMBROSIO'S"
+	title.text = arcana_title
 	title.add_theme_font_size_override("font_size", 14)
 	title.add_theme_color_override("font_color", C_GOLD)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vb.add_child(title)
 	var sub := Label.new()
-	sub.text = "John Frank · Pick a shift"
+	sub.text = arcana_sub
 	sub.add_theme_font_size_override("font_size", 10)
 	sub.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
 	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vb.add_child(sub)
 	# Scenario tiles
-	for scn: Dictionary in FOOL_SCENARIOS:
+	for scn: Dictionary in scenarios:
 		var tile_panel := PanelContainer.new()
 		var ts := StyleBoxFlat.new()
 		ts.bg_color = Color(0.05, 0.045, 0.03, 1.0)
@@ -633,7 +650,9 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 	if short_path == "empress_arcana":
 		_spawn_visualizer(EMPRESS_VISUALIZER_SCRIPT); return
 	if short_path == "magician_arcana":
-		_spawn_visualizer(MAGICIAN_VISUALIZER_SCRIPT); return
+		var vm := _spawn_visualizer(MAGICIAN_VISUALIZER_SCRIPT)
+		_add_play_button_overlay(vm, "magician", "cathedral", "frasier")
+		return
 	if short_path == "high_priestess_arcana":
 		_spawn_visualizer(PRIESTESS_VISUALIZER_SCRIPT); return
 	if short_path == "emperor_arcana":

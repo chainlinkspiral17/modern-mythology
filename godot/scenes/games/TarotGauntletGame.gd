@@ -50,6 +50,35 @@ var _next_time_reset: int = 6   # set by Gravity/Event cards mid-turn
 var _inertia: int = 0
 var _sanity: int = 5
 var _sanity_max: int = 5
+# ── Magician-arcana state ─────────────────────────────────────────
+# These mirror the Fool's Inertia + Sanity pattern but with the
+# Magician's maker-loop semantics:
+#   · _stagnation : rises bad, max kills. The room insisting.
+#   · _doubt      : rises bad, max kills. The maker's internal fight.
+#   · _inspiration: positive currency. Spent by BURN / BUILD /
+#                   TRANSMIT / HUSK; gained from RECORD, NICOLA
+#                   WROTE AGAIN, etc.
+# Engine reads them defensively — if the scenario's setup doesn't
+# declare them, they stay at 0 and never trigger.
+var _stagnation: int = 0
+var _stagnation_per_turn: int = 1
+var _doubt: int = 0
+var _doubt_max: int = 7
+var _inspiration: int = 0
+# Magician-specific tracked state. piece progress per space (each
+# inner-cluster station has a hidden "piece" the player advances);
+# WIP-model progress for the outer-cluster sandbox arcanas; the
+# steamboat as its own track; sealed-arcana set.
+var _piece_progress: Dictionary = {}        # space_id → int
+var _piece_threshold: int = 3               # default beats per piece
+var _pieces_completed: int = 0
+var _wip_progress: Dictionary = {}          # wip_id → int (max from location.wip_models)
+var _wips_completed_this_run: Dictionary = {}
+var _steamboat_progress: int = 0
+var _steamboat_threshold: int = 6
+var _sealed_arcanas: Dictionary = {}        # space_id → true while sealed
+var _next_gravity_canceled: bool = false
+var _active_demons: Dictionary = {}         # demon_id → turns_left
 var _player_pos: String = "counter"
 var _hand_cards: Array = []     # array of card ids currently in hand
 # Per-card stock counts for tableau buys. Each non-starter card
@@ -83,6 +112,10 @@ var _turn_label: Label = null
 var _time_label: Label = null
 var _inertia_label: Label = null
 var _sanity_label: Label = null
+var _stagnation_label: Label = null
+var _doubt_label: Label = null
+var _inspiration_label: Label = null
+var _pieces_label: Label = null
 var _player_pos_label: Label = null
 var _bindle_label: Label = null
 var _visitors_box: VBoxContainer = null
@@ -602,6 +635,27 @@ func _init_run() -> void:
 	_inertia    = int(start.get("inertia", 0))
 	_sanity     = int(start.get("sanity", start.get("health", 5)))
 	_sanity_max = int(start.get("sanity_max", max(_sanity, 5)))
+	# Magician-arcana stats (default zero / inert if not declared)
+	_stagnation = int(start.get("stagnation", 0))
+	_stagnation_per_turn = int(start.get("stagnation_per_turn", 0))
+	_doubt = int(start.get("doubt", 0))
+	_doubt_max = int(start.get("doubt_max", 7))
+	_inspiration = int(start.get("inspiration", 0))
+	_piece_threshold = int(start.get("piece_threshold", 3))
+	# Seal the arcanas the scenario lists at start. BUILD at the
+	# Magician station spends Inspiration to unseal one.
+	_sealed_arcanas.clear()
+	for sid in _setup.get("sealed_arcanas_at_start", []):
+		_sealed_arcanas[String(sid)] = true
+	# Steamboat threshold + WIP thresholds come from the location def.
+	var sb_def: Dictionary = _location.get("steamboat", {})
+	_steamboat_threshold = int(sb_def.get("completion_threshold", 6))
+	_steamboat_progress = 0
+	_piece_progress.clear()
+	_wip_progress.clear()
+	_pieces_completed = 0
+	_next_gravity_canceled = false
+	_active_demons.clear()
 	_hand_cards = (start.get("starting_hand", []) as Array).duplicate()
 
 	# Visitors: place those marked on_board_at_start; queue scheduled ones
@@ -715,6 +769,10 @@ func _build_ui() -> void:
 	_time_label     = _make_track_label("Time 6 / 6")
 	_inertia_label  = _make_track_label("Inertia 0 / 12")
 	_sanity_label   = _make_track_label("Sanity 5")
+	_stagnation_label   = _make_track_label("Stagnation 0")
+	_doubt_label        = _make_track_label("Doubt 0")
+	_inspiration_label  = _make_track_label("Inspiration 0")
+	_pieces_label       = _make_track_label("Pieces 0")
 	_phase_label    = _make_track_label("PHASE: ACTION")
 	# Click the phase label → open How to Play modal. Tooltip updated
 	# every render to describe what to do in the current phase.
@@ -726,8 +784,14 @@ func _build_ui() -> void:
 			_open_pane_modal("How to Play — Phases", _build_phase_help_modal_body))
 	_player_pos_label = _make_track_label("at: counter")
 	_bindle_label   = _make_track_label("Bindle: —")
-	for lbl in [_phase_label, _turn_label, _time_label, _inertia_label, _sanity_label, _player_pos_label, _bindle_label]:
+	for lbl in [_phase_label, _turn_label, _time_label, _inertia_label, _sanity_label, _stagnation_label, _doubt_label, _inspiration_label, _pieces_label, _player_pos_label, _bindle_label]:
 		top_hb.add_child(lbl)
+	# Hide the Magician-only labels by default. _render_stats decides
+	# which to show based on the loaded scenario.
+	_stagnation_label.visible = false
+	_doubt_label.visible = false
+	_inspiration_label.visible = false
+	_pieces_label.visible = false
 	# Push the Leave button to the far right of the top bar so it
 	# isn't sitting next to MOVE / ADVANCE where it gets misclicked.
 	var top_spacer := Control.new()
@@ -2929,6 +2993,28 @@ func _describe_effect(e: Dictionary) -> String:
 		"clear_all_threats":  return "Clear EVERY threat on the board"
 		"force_connect_visitor_at_my_pos": return "Connect any visitor at your space (bypasses progress + composite paths)"
 		"disperse_visitors_here":          return "Push every visitor at your space to a random adjacent space"
+		"gain_stagnation": return "+%d Stagnation" % int(e.get("amount", 1))
+		"lose_stagnation": return "-%d Stagnation" % int(e.get("amount", 1))
+		"gain_doubt":      return "+%d Doubt" % int(e.get("amount", 1))
+		"lose_doubt":      return "-%d Doubt" % int(e.get("amount", 1))
+		"gain_inspiration":return "+%d Inspiration" % int(e.get("amount", 1))
+		"lose_inspiration":return "-%d Inspiration" % int(e.get("amount", 1))
+		"spend_inspiration":return "-%d Inspiration (spent)" % int(e.get("amount", 1))
+		"advance_piece_at_my_pos": return "Advance the piece at your space by %d" % int(e.get("amount", 1))
+		"unfinish_piece":  return "Unfinish a piece by %d" % int(e.get("amount", 1))
+		"unfinish_random_piece":          return "A random piece loses 1 progress"
+		"unfinish_random_finished_arcana":return "A finished arcana de-finishes"
+		"advance_steamboat":              return "Advance the steamboat by %d" % int(e.get("amount", 1))
+		"steamboat_threshold_minus":      return "Steamboat completion threshold -%d" % int(e.get("amount", 1))
+		"advance_wip":     return "Advance %s WIP by %d" % [String(e.get("wip", "?")), int(e.get("amount", 1))]
+		"unlock_one_sealed_arcana":       return "Unlock one sealed arcana"
+		"cancel_next_gravity":            return "Cancel the next Gravity card"
+		"peek_gravity_top":               return "Peek next %d gravity cards%s" % [int(e.get("n", 3)), (" + rearrange" if e.get("rearrange", false) else "")]
+		"set_cross_arcana_flag":          return "Set flag %s in %s" % [String(e.get("key", "?")), String(e.get("target", "?"))]
+		"summon_demon":                   return "Summon demon %s for %d turns" % [String(e.get("id", "?")), int(e.get("duration_turns", 3))]
+		"lock_threshold_open":            return "Lock %s open for %d turns" % [String(e.get("threshold", "?")), int(e.get("turns", 3))]
+		"mark_space":                     return "Mark %s = %s" % [String(e.get("pos", "player_pos")), String(e.get("key", "?"))]
+		"consume_inventory_for_contents":return "Consume %d items → contents" % int(e.get("amount", 3))
 		"log":            return String(e.get("text", ""))
 		"if_at":
 			var then_e: Array = e.get("then", [])
@@ -3593,6 +3679,30 @@ func _render() -> void:
 	_time_label.text  = "Time %d / %d" % [_time, _next_time_reset]
 	_inertia_label.text = "Inertia %d / 12" % _inertia
 	_sanity_label.text  = "Sanity %d" % _sanity
+	# Magician-arcana stats — only show when in use for the scenario.
+	var is_magician: bool = (_arcana_id == "magician")
+	if _stagnation_label != null:
+		_stagnation_label.visible = is_magician
+		if is_magician:
+			var s_max: int = int(_setup.get("loss_conditions", {}).get("stagnation_max", 12))
+			_stagnation_label.text = "Stagnation %d / %d" % [_stagnation, s_max]
+	if _doubt_label != null:
+		_doubt_label.visible = is_magician
+		if is_magician:
+			_doubt_label.text = "Doubt %d / %d" % [_doubt, _doubt_max]
+	if _inspiration_label != null:
+		_inspiration_label.visible = is_magician
+		if is_magician:
+			_inspiration_label.text = "Inspiration %d" % _inspiration
+	if _pieces_label != null:
+		_pieces_label.visible = is_magician
+		if is_magician:
+			_pieces_label.text = "Pieces %d" % _pieces_completed
+	# Inertia + Sanity are Fool-only — hide for Magician runs.
+	if _inertia_label != null and is_magician:
+		_inertia_label.visible = false
+	if _sanity_label != null and is_magician:
+		_sanity_label.visible = false
 	# Evocative tooltips driven by the current value — the player
 	# hovers and gets the room's mood at that pressure level.
 	_inertia_label.tooltip_text = _inertia_mood(_inertia)
@@ -4246,6 +4356,169 @@ func _resolve_effect(e: Dictionary) -> void:
 			_log_visitor_step_line(target_vid, step_name)
 			if advanced:
 				_inertia = max(0, _inertia - 1)
+
+		# ── Magician-arcana effects ──────────────────────────────
+		"gain_stagnation":
+			var sa: int = int(e.get("amount", 1))
+			_stagnation += sa
+			_log_line("[color=#ff8060]+%d Stagnation[/color] → %d" % [sa, _stagnation])
+		"lose_stagnation":
+			_stagnation = max(0, _stagnation - int(e.get("amount", 1)))
+			_log_line("[color=#7cffb0]-%d Stagnation[/color] → %d" % [int(e.get("amount", 1)), _stagnation])
+		"gain_doubt":
+			var da: int = int(e.get("amount", 1))
+			_doubt = min(_doubt_max, _doubt + da)
+			_log_line("[color=#ff8060]+%d Doubt[/color] → %d / %d" % [da, _doubt, _doubt_max])
+			if _doubt >= _doubt_max:
+				_log_line("[color=#ff5040][b]Doubt at max — the maker breaks.[/b][/color]")
+				_trigger_loss("doubt_max")
+		"lose_doubt":
+			_doubt = max(0, _doubt - int(e.get("amount", 1)))
+		"gain_inspiration":
+			_inspiration += int(e.get("amount", 1))
+			_log_line("[color=#7cffb0]+%d Inspiration[/color] → %d" % [int(e.get("amount", 1)), _inspiration])
+		"lose_inspiration":
+			_inspiration = max(0, _inspiration - int(e.get("amount", 1)))
+		"spend_inspiration":
+			_inspiration = max(0, _inspiration - int(e.get("amount", 1)))
+			_log_line("[color=#c8a268][i]-%d Inspiration spent → %d[/i][/color]" % [int(e.get("amount", 1)), _inspiration])
+
+		"advance_piece_at_my_pos":
+			var amt: int = int(e.get("amount", 1))
+			var cur: int = int(_piece_progress.get(_player_pos, 0))
+			cur += amt
+			_piece_progress[_player_pos] = cur
+			_log_line("[color=#c8a268]piece at %s · %d / %d[/color]" % [_player_pos.to_upper(), cur, _piece_threshold])
+			if cur >= _piece_threshold:
+				_piece_progress[_player_pos] = _piece_threshold
+				_pieces_completed += 1
+				_log_line("[color=#7cffb0]✦ piece completed at %s. (%d total)[/color]" % [_player_pos.to_upper(), _pieces_completed])
+				_show_toast("Piece completed at %s" % _player_pos.to_upper(), "#7cffb0")
+		"unfinish_piece":
+			var u_amt: int = int(e.get("amount", 1))
+			var target_pos: String = _player_pos
+			# If player_choice, just pick the highest-progress non-completed piece (simple default)
+			if e.get("player_choice", false):
+				var best_pos: String = ""
+				var best_n: int = -1
+				for pos in _piece_progress:
+					var n: int = int(_piece_progress[pos])
+					if n > best_n and n < _piece_threshold:
+						best_n = n
+						best_pos = pos
+				if best_pos != "":
+					target_pos = best_pos
+			if _piece_progress.has(target_pos):
+				_piece_progress[target_pos] = max(0, int(_piece_progress[target_pos]) - u_amt)
+				_log_line("[color=#ff8060]piece at %s lost %d progress.[/color]" % [target_pos.to_upper(), u_amt])
+		"unfinish_random_piece", "unfinish_random_finished_arcana":
+			# Find a random in-progress piece and dock it 1.
+			var candidates: Array = []
+			for pos in _piece_progress:
+				var n2: int = int(_piece_progress[pos])
+				if n2 > 0:
+					candidates.append(pos)
+			if not candidates.is_empty():
+				var pick: String = candidates[randi() % candidates.size()]
+				_piece_progress[pick] = max(0, int(_piece_progress[pick]) - 1)
+				_log_line("[color=#ff8060]something came undone at %s.[/color]" % pick.to_upper())
+
+		"advance_steamboat":
+			var sb_amt: int = int(e.get("amount", 1))
+			_steamboat_progress += sb_amt
+			_log_line("[color=#ff8060]steamboat · %d / %d[/color]" % [_steamboat_progress, _steamboat_threshold])
+			if _steamboat_progress >= _steamboat_threshold:
+				_log_line("[color=#ff5040][b]The steamboat is finished. The sinkhole opens.[/b][/color]")
+				_flags["steamboat_finished"] = true
+				if _setup.get("loss_conditions", {}).get("steamboat_finished_on_easy", true) == false:
+					# Easy scenario explicitly says steamboat-finished is a loss
+					_trigger_loss("steamboat_finished_on_easy")
+				else:
+					# Treat as the campaign win-trigger
+					_trigger_win("steamboat_finished")
+		"steamboat_threshold_minus":
+			_steamboat_threshold = max(1, _steamboat_threshold - int(e.get("amount", 1)))
+			_log_line("[color=#ff8060]steamboat threshold → %d[/color]" % _steamboat_threshold)
+
+		"advance_wip":
+			var wid: String = String(e.get("wip", ""))
+			var wamt: int = int(e.get("amount", 1))
+			var wp: int = int(_wip_progress.get(wid, 0))
+			wp += wamt
+			_wip_progress[wid] = wp
+			var wip_defs: Dictionary = _location.get("wip_models", {})
+			var threshold: int = int(wip_defs.get(wid, {}).get("completion_threshold", 4))
+			if wp >= threshold and not _wips_completed_this_run.get(wid, false):
+				_wips_completed_this_run[wid] = true
+				var codex_key: String = String(wip_defs.get(wid, {}).get("codex_key", ""))
+				if codex_key != "":
+					var was_new: bool = SaveSystem.mark_unlocked("codex:" + codex_key)
+					if was_new:
+						_log_line("[color=#7cffb0]✦ WIP completed: %s (codex annotation unlocked).[/color]" % wid)
+						_show_toast("Frasier built it: %s" % wid, "#7cffb0")
+				_log_line("[color=#c8a268]WIP %s reached completion.[/color]" % wid)
+
+		"unlock_one_sealed_arcana":
+			# Pick the highest-priority sealed (first in the dict order)
+			# and unseal it. The player will see the door open.
+			var keys: Array = _sealed_arcanas.keys()
+			if keys.is_empty():
+				_log_line("[i]every door in here is already open.[/i]")
+			else:
+				var pick_k: String = String(keys[0])
+				_sealed_arcanas.erase(pick_k)
+				_log_line("[color=#7cffb0]✦ unsealed: %s[/color]" % pick_k.to_upper())
+				_show_toast("Door opens: %s" % pick_k.to_upper(), "#7cffb0")
+
+		"cancel_next_gravity":
+			_next_gravity_canceled = true
+			_log_line("[color=#7cffb0]the next Gravity card is canceled.[/color]")
+
+		"peek_gravity_top":
+			var pn: int = int(e.get("n", 3))
+			var lines: PackedStringArray = ["[color=#c8a268][b]Peeking next %d Gravity:[/b][/color]" % pn]
+			for i in min(pn, _gravity_draw_pile.size()):
+				var cid_p: String = _gravity_draw_pile[_gravity_draw_pile.size() - 1 - i]
+				var card_p: Dictionary = _find_gravity_card(cid_p)
+				lines.append("  %d · %s" % [i + 1, card_p.get("title", cid_p)])
+			_log_line("\n".join(lines))
+
+		"set_cross_arcana_flag":
+			var target: String = String(e.get("target", ""))
+			var key_s: String = String(e.get("key", ""))
+			if target != "" and key_s != "":
+				SaveSystem.mark_unlocked("cross:%s:%s" % [target, key_s])
+				_log_line("[color=#c8a268][i]transmission sent to %s · flag %s[/i][/color]" % [target, key_s])
+
+		"summon_demon":
+			var did: String = String(e.get("id", ""))
+			var dur: int = int(e.get("duration_turns", 3))
+			if did != "":
+				_active_demons[did] = dur
+				_log_line("[color=#c8a268]✦ demon %s summoned for %d turns.[/color]" % [did.to_upper(), dur])
+
+		"lock_threshold_open":
+			# Stub — relies on threshold-state tracking that the engine
+			# doesn't yet have. For now, log the intent.
+			_log_line("[color=#7cffb0]threshold %s locked open for %d turns.[/color]" %
+				[String(e.get("threshold", "?")).to_upper(), int(e.get("turns", 3))])
+
+		"mark_space":
+			# Lightweight space-key marker for RECORD-style mechanics.
+			_flags["space_marker:%s" % _player_pos] = String(e.get("key", "marked"))
+
+		"consume_inventory_for_contents":
+			# COLLAGE — consume N items from inventory, produce one
+			# generic contents item that counts toward the Bindle.
+			var n_needed: int = int(e.get("amount", 3))
+			if _inventory.size() < n_needed:
+				_log_line("[i]not enough pieces to collage yet.[/i]")
+			else:
+				for i in n_needed:
+					_inventory.pop_back()
+				_inventory.append("contents_collage")
+				_log_line("[color=#7cffb0]✦ collage piece assembled.[/color]")
+
 		_:
 			_log_line("[i](unhandled effect: %s)[/i]" % kind)
 
@@ -5306,6 +5579,22 @@ func _phase_action() -> void:
 	tick += _room_attention
 	if tick > 0:
 		_inertia = min(12, _inertia + tick)
+	# Magician arcana: stagnation ticks per turn the same way
+	# inertia does. Triggers loss at stagnation_max (default 12).
+	if _stagnation_per_turn > 0:
+		_stagnation += _stagnation_per_turn
+		var s_max: int = int(_setup.get("loss_conditions", {}).get("stagnation_max", 12))
+		if _stagnation >= s_max:
+			_log_line("[color=#ff5040][b]Stagnation at max. The maker forgets the make.[/b][/color]")
+			_trigger_loss("stagnation_max")
+			return
+	# Active demons tick down their durations.
+	for did in _active_demons.keys():
+		var left: int = int(_active_demons[did]) - 1
+		if left <= 0:
+			_active_demons.erase(did)
+		else:
+			_active_demons[did] = left
 	# Time-of-day deadline. Each scenario's setup may declare
 	# `max_turns`; on turn N+1 the shift ends and the engine forces
 	# a win-check. THE LEAP: 14 turns by default. RUSH: 10. EVENING: 12.
@@ -5394,6 +5683,13 @@ func _phase_shadow() -> void:
 	var cid: String = _draw_gravity_card()
 	if cid == "":
 		_log_line("[i]gravity deck empty — the room has run out of new ways to press on you.[/i]")
+		return
+	# Magician's BURN card sets _next_gravity_canceled; consume it
+	# here so the card is drawn (discarded) but resolves no effects.
+	if _next_gravity_canceled:
+		_next_gravity_canceled = false
+		var card_c: Dictionary = _find_gravity_card(cid)
+		_log_line("[color=#7cffb0]✓ canceled by BURN:[/color] [b]%s[/b]" % card_c.get("title", cid))
 		return
 	_audio_sfx("gravity_draw")
 	var card: Dictionary = _find_gravity_card(cid)
