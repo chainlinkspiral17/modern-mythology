@@ -1,0 +1,53 @@
+{
+  "scope": "emperor",
+  "notes": "Emperor finale cards. The office fails in distinctive ways — a ruling that doesn't hold, a petitioner who leaves without their stamp, the day's docket left unfinished.",
+  "finales": [
+    {
+      "id": "the_ruling_doesnt_hold",
+      "title": "THE RULING DOESN'T HOLD",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "Dante is at the desk. The ruling is on the page. The stamp is in his hand. The room is the room it should be for this moment. He cannot put the stamp down. The office is colder than it should be for the hour. The clock ticks. The clock has been ticking for ninety years and does not care which way this goes.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
+    },
+    {
+      "id": "the_office_closed_short",
+      "title": "THE OFFICE CLOSED SHORT",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "It is past closing time. The anteroom has people in it who did not get heard. Dante locks the front door. The bell hasn't rung in twenty minutes. He sits at the desk in the dark. The stamp is on the blotter. Tomorrow is tomorrow.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
+    },
+    {
+      "id": "the_petitioner_walked",
+      "title": "THE PETITIONER WALKED",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "Three petitioners left without being heard. The widow with the estate. The appellant with the six-month case. The old friend who really just wanted a stamp. Dante sits at his desk and stares at the ledger. The ledger has the ones he heard. It does not have the ones he didn't.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
+    },
+    {
+      "id": "the_ledger_overfilled",
+      "title": "THE LEDGER OVERFILLED",
+      "triggered_by": "ledger_full",
+      "weight": 1.0,
+      "flavor": "The day's docket is complete. There are people still in the anteroom. There are people still on the bench outside. The ledger is closed. The stamp is back on the blotter. Dante looks at the cabinet and decides this is what tomorrow is for.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
+    },
+    {
+      "id": "the_clerks_day_was_long",
+      "title": "THE CLERK'S DAY WAS LONG",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "It is past five. The clerk has put on her coat. The cabinet is in better order than it was this morning. The ledger has eight rulings in it and three more that needed to be in it. The office closes the way it closes most days — almost on time.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_authority_start": 1,
+    "note": "Dante's losses carry a little residual Authority forward. The office remembers how to run itself."
+  }
+}

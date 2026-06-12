@@ -1,0 +1,114 @@
+{
+  "scope": "emperor",
+  "notes": "Dante's judge-loop. HEAR / RULE / STAMP / WITNESS as starters. Buyable pool is FILINGS — pre-existing precedents and signed papers. Authority is the spendable currency. Ledger is the positive doom-clock.",
+  "cards": [
+    {
+      "id": "hear",
+      "title": "HEAR",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Listen to the petitioner state the matter. The room becomes the matter for a moment.",
+      "requires": [ { "kind": "visitor_at_my_pos_progress_at_least", "n": 1 } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "listen" },
+        { "kind": "gain_authority", "amount": 1 }
+      ]
+    },
+    {
+      "id": "rule",
+      "title": "RULE",
+      "time_cost": 2,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Write the ruling. Costs authority.",
+      "requires": [
+        { "kind": "at_pos", "pos": "desk" },
+        { "kind": "has_authority_at_least", "n": 1 }
+      ],
+      "effects": [
+        { "kind": "spend_authority", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "deliver" }
+      ]
+    },
+    {
+      "id": "stamp",
+      "title": "STAMP",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Set the stamp. The ledger ticks. The room remembers the ruling went out.",
+      "requires": [ { "kind": "at_pos", "pos": "stamp_table" } ],
+      "effects": [
+        { "kind": "tick_ledger", "amount": 1 }
+      ]
+    },
+    {
+      "id": "witness",
+      "title": "WITNESS",
+      "time_cost": 2,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Sign + countersign. The visitor's sit-with happens because you saw the paper land.",
+      "requires": [
+        { "kind": "visitor_at_my_pos_progress_at_least", "n": 3 }
+      ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "sit_with" },
+        { "kind": "tick_ledger", "amount": 1 }
+      ]
+    },
+    {
+      "id": "precedent",
+      "title": "PRECEDENT",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "law_shelf",
+      "flavor": "Pull a precedent volume from the shelf. The ruling is faster when you can cite.",
+      "requires": [ { "kind": "at_pos", "pos": "law_shelf" } ],
+      "effects": [
+        { "kind": "gain_authority", "amount": 2 }
+      ]
+    },
+    {
+      "id": "consult_clerk",
+      "title": "CONSULT CLERK",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "filing_cabinet",
+      "flavor": "Ask the clerk. She knows where everything is.",
+      "requires": [ { "kind": "at_pos", "pos": "filing_cabinet" } ],
+      "effects": [
+        { "kind": "advance_visitor_schedule", "amount": 1 },
+        { "kind": "gain_authority", "amount": 1 }
+      ]
+    },
+    {
+      "id": "the_decree",
+      "title": "THE DECREE",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 1,
+      "flavor": "Set down a ruling that the room itself remembers. The visitors here yield their patience one turn longer.",
+      "effects": [
+        { "kind": "freeze_patience", "turns": 1 }
+      ]
+    },
+    {
+      "id": "appeal_form",
+      "title": "APPEAL FORM",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "filing_cabinet",
+      "flavor": "Pull an appellate form from the cabinet. For when you're the second office to hear the case.",
+      "requires": [ { "kind": "at_pos", "pos": "filing_cabinet" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "gain_authority", "amount": 1 }
+      ]
+    }
+  ]
+}

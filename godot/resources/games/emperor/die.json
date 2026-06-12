@@ -1,0 +1,16 @@
+{
+  "scope": "emperor",
+  "notes": "Dante's six-face die. WILD face gates on Authority banked.",
+  "die": {
+    "id": "emperor_die",
+    "title": "Emperor Die",
+    "faces": [
+      {"face": 1, "symbol": "STAMP", "result": "ss",      "description": "Success ★★. The stamp went down crisp."},
+      {"face": 2, "symbol": "SIGN",  "result": "s",       "description": "Success ★. The signature lines up with the line."},
+      {"face": 3, "symbol": "FILE",  "result": "partial", "description": "Partial. Spend 1 Authority to convert to ★."},
+      {"face": 4, "symbol": "CITE",  "result": "partial", "description": "Partial. Spend 1 Authority to convert to ★."},
+      {"face": 5, "symbol": "VOID",  "result": "fail",    "description": "Failure. The page is voided. +1 Authority."},
+      {"face": 6, "symbol": "GAVEL", "result": "wild",    "description": "Wild. Counts as ★ if you have at least 1 Authority banked; counts as failure otherwise."}
+    ]
+  }
+}

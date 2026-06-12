@@ -1,0 +1,121 @@
+{
+  "id": "dantes_office",
+  "title": "DANTE'S OFFICE",
+  "subtitle": "Static Bloom · Vol 5 · Ch IV · The Emperor",
+  "notes": "Dante's office on the bank, three doors down from where Nicola's boat is moored. A small, formal room with a heavy desk, two chairs facing it, a filing cabinet that goes from floor to ceiling, and a window onto the river. People come here when they need something put in writing. Nine spaces; tight, deliberate, every room has a purpose.",
+  "ambient_pool": [
+    "the brass desk clock ticks. it has been ticking since dante's father had this office.",
+    "the radiator is on too high. dante hasn't touched the dial all winter.",
+    "the river is visible through the office window. nicola's boat is barely in the frame.",
+    "the filing cabinet smells faintly of carbon paper and dust.",
+    "outside, somebody on the bank is talking to themselves.",
+    "the stamp on the desk leaves a perfect circle, every time, for forty years."
+  ],
+  "ambient_every_n": 3,
+  "spaces": [
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "kind": "threshold",
+      "flavor": "the office's street-facing door — clients walk through here.",
+      "arrival_lines": [
+        "the bell above the door hasn't been replaced. it still rings the way it did in 1962.",
+        "the doorway is taller than it needs to be. it's been that tall on purpose."
+      ]
+    },
+    {
+      "id": "alley_door",
+      "label": "ALLEY DOOR",
+      "kind": "threshold",
+      "flavor": "the back door, onto the alley behind the bank-side buildings.",
+      "arrival_lines": [
+        "the alley smells like rain even when there's no rain.",
+        "the door's hinges complain. they have complained for as long as the bell has rung."
+      ]
+    },
+    {
+      "id": "window_ledge",
+      "label": "WINDOW LEDGE",
+      "kind": "threshold",
+      "flavor": "the office window — the third leap path, onto the lower roof of the building next door.",
+      "arrival_lines": [
+        "the ledge is wide enough for a person who decides quickly.",
+        "the roof next door is two feet down. you could be on the bank in twenty steps."
+      ]
+    },
+    {
+      "id": "desk",
+      "label": "DESK",
+      "kind": "station",
+      "flavor": "the desk · dante's chair · stamp, blotter, the working ledger.",
+      "arrival_lines": [
+        "the desk is heavier than it needs to be. it has been moved exactly once, in 1979.",
+        "the stamp is to your right. the ledger is open."
+      ]
+    },
+    {
+      "id": "client_chairs",
+      "label": "CLIENT CHAIRS",
+      "kind": "station",
+      "flavor": "the two chairs that face the desk · where the petitioners sit.",
+      "arrival_lines": [
+        "two chairs. they have been the same two chairs for the entire office's existence.",
+        "the seat has the shape of every person who has sat in it."
+      ]
+    },
+    {
+      "id": "filing_cabinet",
+      "label": "FILING CABINET",
+      "kind": "station",
+      "flavor": "wall-to-ceiling files · dante's father's hand, dante's hand, alphabetised.",
+      "arrival_lines": [
+        "the cabinet smells like carbon paper. the smell is on you now too.",
+        "you find a folder you don't remember filing. the date is yesterday."
+      ]
+    },
+    {
+      "id": "law_shelf",
+      "label": "LAW SHELF",
+      "kind": "station",
+      "flavor": "the bookcase · statute, precedent, the small private collection.",
+      "arrival_lines": [
+        "the law books are not all law books. one of them is a poetry collection his mother loved.",
+        "the third shelf has volumes 7, 8, and 11 of the river-code · 9 and 10 are missing."
+      ]
+    },
+    {
+      "id": "anteroom",
+      "label": "ANTEROOM",
+      "kind": "station",
+      "flavor": "the small room where clients wait when dante is with somebody else.",
+      "arrival_lines": [
+        "the anteroom has two chairs and a small table with a yesterday's newspaper.",
+        "the wall here is thin. you can hear a low voice in the next room."
+      ]
+    },
+    {
+      "id": "stamp_table",
+      "label": "STAMP TABLE",
+      "kind": "station",
+      "flavor": "a smaller workbench by the window · where the heavy stamps live.",
+      "arrival_lines": [
+        "the heavy stamps are bronze. they outweigh their cases.",
+        "each stamp has a date-wheel. one of them is set to a date that hasn't happened yet."
+      ]
+    }
+  ],
+  "ledger_track": {
+    "completion_threshold": 6,
+    "label": "LEDGER",
+    "notes": "Dante's positive doom-clock. Each WITNESS / STAMP action enters a ruling into the working ledger and ticks it. At threshold, the day's docket is complete. Some scenarios use the ledger as a soft win counter, some as a hard limit (the ledger filling means the office closes for the day).",
+    "ladder": [
+      { "level": 0, "label": "the ledger is open to today's date.",        "intensity": 0.0 },
+      { "level": 1, "label": "one ruling in the book.",                   "intensity": 0.15 },
+      { "level": 2, "label": "two rulings. the day is starting.",         "intensity": 0.30 },
+      { "level": 3, "label": "halfway · the heavy stamps come out.",     "intensity": 0.50 },
+      { "level": 4, "label": "the docket is the docket.",                 "intensity": 0.70 },
+      { "level": 5, "label": "one ruling left to enter.",                 "intensity": 0.85 },
+      { "level": 6, "label": "the docket is complete. the office closes.","intensity": 1.0 }
+    ]
+  }
+}

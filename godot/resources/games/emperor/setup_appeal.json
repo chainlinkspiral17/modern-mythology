@@ -1,0 +1,79 @@
+{
+  "id": "appeal",
+  "arcana": "iv_emperor",
+  "location": "dantes_office",
+  "hand": "dante",
+  "title": "APPEAL",
+  "subtitle": "Dante's Office · 4:32 PM · The Late Afternoon",
+  "difficulty": "hard",
+  "epigraph_upright": "An appellate hearing on a case from six months ago. The appellant is already at the client chairs. The original ruling was bad. Volumes 9 and 10 of the river-code are missing. The clerk has been here since seven and is tired. Dante has the heavier stamp ready.",
+  "epigraph_reversed": "He cannot make the case work the way the appellant deserves. The widow leaves before her estate is filed. The clerk goes home. The ruling does not hold, the appeal is denied, the case becomes the kind of thing that runs in a town for forty years.",
+  "scene_description": "Late Tuesday afternoon. The appellant is already in the office. The widow is in the anteroom. Authority at 2, doubt at 2, stagnation at 2 — Dante has been here all day. THE DECREE is in his starting hand. Volumes 9 and 10 of the river-code are missing — finding them via a precedent card matters.",
+  "direction_hint": "Hear five matters including the appellant + widow. Ledger to 5. Stamp the appeal heard.",
+  "opening_log_lines": [
+    "the appellant is at the client chairs. they have been there for an hour, quietly.",
+    "the widow is in the anteroom. she has the husband's folder.",
+    "volumes 9 and 10 of the river-code are missing from the shelf."
+  ],
+  "starting_state": {
+    "player_pos": "desk",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 2,
+    "stagnation_per_turn": 2,
+    "doubt": 2,
+    "doubt_max": 7,
+    "authority": 2,
+    "starting_hand": ["walk","focus","search","short_rest","hear","rule","stamp","witness","the_decree"]
+  },
+  "visitors_present_at_start": ["the_appellant"],
+  "visitor_schedule": [
+    { "visitor": "the_grieving_widow","arrival_turn": 1, "arrival_space": "front_door" },
+    { "visitor": "the_clerk",         "arrival_turn": 2, "arrival_space": "alley_door" },
+    { "visitor": "the_petitioner",    "arrival_turn": 3, "arrival_space": "front_door" },
+    { "visitor": "nicola_as_visitor", "arrival_turn": 5, "arrival_space": "front_door" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 5,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_ledger_at_least": 5,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 12,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "late afternoon. the office holds, narrowly.", "tick_per_turn": 2, "effects": [] },
+    { "level": 6,  "label": "the radiator is too hot now.",                "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "the bell hasn't rung in thirty minutes.",     "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "the office closed short.",                    "tick_per_turn": 3, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "dante late in the day, jacket off.",          "effects": [] },
+    { "level": 5, "label": "he reads the precedent twice.",                "effects": [] },
+    { "level": 7, "label": "the ruling doesn't hold.",                      "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door",   "label": "FRONT DOOR",   "ending_lore_token": "leap_into_the_evening_street","visible_from_start": true },
+    { "id": "alley_door",   "label": "ALLEY DOOR",   "ending_lore_token": "leap_into_the_dusk_alley",   "visible_from_start": true },
+    { "id": "window_ledge", "label": "WINDOW LEDGE", "ending_lore_token": "leap_onto_the_dim_roof",     "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Hard-mode Emperor. Late-Tuesday appellate hearing. The appellant is intense. The widow is lonely. The petitioner is preoccupied. Five heard matters + 2 hard moods + ledger 5 + leap.",
+  "ambient_pool": [
+    "the office is warm now. too warm.",
+    "the appellant has not moved from the chair.",
+    "the desk clock ticks. the brass is warm to the touch."
+  ],
+  "ambient_every_n": 3
+}

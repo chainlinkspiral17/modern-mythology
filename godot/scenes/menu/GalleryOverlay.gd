@@ -501,6 +501,27 @@ const MAGICIAN_SCENARIOS := [
 ]
 
 
+const EMPEROR_SCENARIOS := [
+	{
+		"id": "docket",
+		"title": "DOCKET",
+		"subtitle": "Easy · 9:14 AM · Tuesday",
+		"flavor": "Tuesday morning docket. The clerk has the cabinet open. The petitioner is in the anteroom. The bell has rung twice. Hear four matters, stamp three rulings, send people away with what they came for."
+	},
+	{
+		"id": "first_session",
+		"title": "FIRST SESSION",
+		"subtitle": "Medium · 7:48 AM · Monday Open",
+		"flavor": "Pre-clerk Monday. Someone slept in their car waiting for you to open. The radiator is cold. The first ruling of the week is the heaviest."
+	},
+	{
+		"id": "appeal",
+		"title": "APPEAL",
+		"subtitle": "Hard · 4:32 PM · The Late Afternoon",
+		"flavor": "An appellate hearing on a case from six months ago. The appellant has been here for an hour already. The widow is in the anteroom. Volumes 9 and 10 of the river-code are missing. The clerk is tired."
+	}
+]
+
 const EMPRESS_SCENARIOS := [
 	{
 		"id": "static_bloom",
@@ -615,6 +636,10 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		arcana_title = "ENTER THE GAUNTLET · THE RIVERBOAT"
 		arcana_sub   = "Nicola · Pick a meal"
 		scenarios    = EMPRESS_SCENARIOS
+	elif arcana == "emperor" or arcana == "iv_emperor":
+		arcana_title = "ENTER THE GAUNTLET · DANTE'S OFFICE"
+		arcana_sub   = "Dante · Pick a session"
+		scenarios    = EMPEROR_SCENARIOS
 	var title := Label.new()
 	title.text = arcana_title
 	title.add_theme_font_size_override("font_size", 14)
@@ -723,7 +748,9 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		_add_play_button_overlay(vp, "priestess", "recording_booth", "elicia")
 		return
 	if short_path == "emperor_arcana":
-		_spawn_visualizer(EMPEROR_VISUALIZER_SCRIPT); return
+		var vem := _spawn_visualizer(EMPEROR_VISUALIZER_SCRIPT)
+		_add_play_button_overlay(vem, "emperor", "dantes_office", "dante")
+		return
 	if short_path == "hierophant_arcana":
 		_spawn_visualizer(HIEROPHANT_VISUALIZER_SCRIPT); return
 	if short_path == "lovers_arcana":

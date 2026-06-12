@@ -1,0 +1,79 @@
+{
+  "id": "first_session",
+  "arcana": "iv_emperor",
+  "location": "dantes_office",
+  "hand": "dante",
+  "title": "FIRST SESSION",
+  "subtitle": "Dante's Office · 7:48 AM · Monday Open",
+  "difficulty": "medium",
+  "epigraph_upright": "Monday open. The anteroom already has someone in it who slept in their car. The clerk hasn't arrived yet. The radiator is cold. Dante has been at the desk for fourteen minutes. The first ruling of the week is the heaviest. Always.",
+  "epigraph_reversed": "He cannot rule. The petitioner has gone back to their car. The clerk arrives to a quiet office. The brass clock keeps ticking. Monday becomes Tuesday without the first session ever happening.",
+  "scene_description": "Pre-clerk Monday. Doubt at 1 (the heavy first ruling). Stagnation at 1 (the office is cold). Authority at 0. The petitioner has been waiting since Dante unlocked the door.",
+  "direction_hint": "Land four heard matters, including the appellant if they show. Ledger to 4.",
+  "opening_log_lines": [
+    "the petitioner has been here for fourteen minutes. they look like they slept in their car.",
+    "the clerk hasn't arrived. she does at 8:15.",
+    "the radiator is cold. the office is cold."
+  ],
+  "starting_state": {
+    "player_pos": "desk",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "authority": 0,
+    "starting_hand": ["walk","focus","search","short_rest","hear","rule","stamp","witness"]
+  },
+  "visitors_present_at_start": ["the_petitioner"],
+  "visitor_schedule": [
+    { "visitor": "the_clerk",        "arrival_turn": 2, "arrival_space": "alley_door" },
+    { "visitor": "the_old_friend",   "arrival_turn": 3, "arrival_space": "front_door" },
+    { "visitor": "the_appellant",    "arrival_turn": 4, "arrival_space": "front_door" },
+    { "visitor": "nicola_as_visitor","arrival_turn": 5, "arrival_space": "front_door" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 4,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_ledger_at_least": 4,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 12,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "monday open. the office is cold.",            "tick_per_turn": 1, "effects": [] },
+    { "level": 5,  "label": "the radiator hasn't caught up.",               "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "the bell hasn't rung in twenty minutes.",      "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "the office closed short.",                     "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "dante alone at the desk.",                       "effects": [] },
+    { "level": 4, "label": "the first ruling sits unstamped.",               "effects": [] },
+    { "level": 7, "label": "the ruling doesn't hold.",                        "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door",   "label": "FRONT DOOR",   "ending_lore_token": "leap_into_the_bank_street","visible_from_start": true },
+    { "id": "alley_door",   "label": "ALLEY DOOR",   "ending_lore_token": "leap_into_the_alley",       "visible_from_start": true },
+    { "id": "window_ledge", "label": "WINDOW LEDGE", "ending_lore_token": "leap_onto_the_lower_roof",  "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 9,
+  "notes": "Medium-mode Emperor. Pre-clerk Monday. The appellant is intense (hard mood); the petitioner is preoccupied. Four heard matters, ledger to 4.",
+  "ambient_pool": [
+    "the radiator clicks but doesn't warm.",
+    "the petitioner shifts in their chair.",
+    "the brass clock ticks, louder in the cold."
+  ],
+  "ambient_every_n": 3
+}

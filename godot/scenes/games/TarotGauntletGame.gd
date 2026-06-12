@@ -90,6 +90,13 @@ var _insight: int = 0
 var _bloom: int = 0
 var _bloom_threshold: int = 6
 var _harvest: int = 0
+# Emperor (IV) state — Authority is the spendable currency (parallel
+# to Inspiration/Insight/Harvest). Ledger is the positive doom-clock,
+# rises good — each STAMP/WITNESS enters a ruling. Default zero/inert
+# for non-emperor runs.
+var _authority: int = 0
+var _ledger: int = 0
+var _ledger_threshold: int = 6
 # Patience-freeze counter (THE LONG QUIET ability + freeze_patience
 # effect): while > 0, _tick_visitor_patience does nothing on Upkeep.
 # Decrements once per turn at Upkeep.
@@ -720,6 +727,11 @@ func _init_run() -> void:
 	_bloom_threshold = int(bt_def.get("completion_threshold", 6))
 	_bloom = int(start.get("bloom", 0))
 	_harvest = int(start.get("harvest", 0))
+	# Emperor ledger track — same shape as Bloom but for Dante's office.
+	var lt_def: Dictionary = _location.get("ledger_track", {})
+	_ledger_threshold = int(lt_def.get("completion_threshold", 6))
+	_ledger = int(start.get("ledger", 0))
+	_authority = int(start.get("authority", 0))
 	_piece_progress.clear()
 	_wip_progress.clear()
 	_pieces_completed = 0
@@ -914,6 +926,7 @@ func _build_ui() -> void:
 	if _arcana_id == "magician":  leave_room = "cathedral"
 	if _arcana_id == "priestess": leave_room = "booth"
 	if _arcana_id == "empress":   leave_room = "riverboat"
+	if _arcana_id == "emperor":   leave_room = "office"
 	top_leave_btn.tooltip_text = "Leave the %s and return to the gallery (this ends the run)." % leave_room
 	top_leave_btn.add_theme_font_size_override("font_size", 11)
 	top_leave_btn.custom_minimum_size = Vector2(132, 24)
@@ -3920,7 +3933,8 @@ func _render() -> void:
 	var is_magician: bool = (_arcana_id == "magician")
 	var is_priestess: bool = (_arcana_id == "priestess")
 	var is_empress: bool = (_arcana_id == "empress")
-	var is_major_arcana: bool = is_magician or is_priestess or is_empress
+	var is_emperor: bool = (_arcana_id == "emperor")
+	var is_major_arcana: bool = is_magician or is_priestess or is_empress or is_emperor
 	if _stagnation_label != null:
 		_stagnation_label.visible = is_major_arcana
 		if is_major_arcana:
@@ -3938,6 +3952,8 @@ func _render() -> void:
 			_inspiration_label.text = "Insight %d  ·  Reel %d / %d" % [_insight, _master_reel, _master_reel_threshold]
 		elif is_empress:
 			_inspiration_label.text = "Harvest %d  ·  Bloom %d / %d" % [_harvest, _bloom, _bloom_threshold]
+		elif is_emperor:
+			_inspiration_label.text = "Authority %d  ·  Ledger %d / %d" % [_authority, _ledger, _ledger_threshold]
 	if _pieces_label != null:
 		_pieces_label.visible = is_magician
 		if is_magician:
@@ -4137,6 +4153,10 @@ func _check_requirement(req: Dictionary) -> bool:
 			return _bloom >= int(req.get("n", 1))
 		"has_harvest_at_least":
 			return _harvest >= int(req.get("n", 1))
+		"has_authority_at_least":
+			return _authority >= int(req.get("n", 1))
+		"has_ledger_at_least":
+			return _ledger >= int(req.get("n", 1))
 		"visitor_in_bright_space":
 			# MOTH-style. True if any arrived, unconnected visitor is
 			# at one of the cathedral's "lit" stations. Bright = the
@@ -4279,6 +4299,30 @@ func _win_conditions_met() -> bool:
 		if bool(wc.get("require_cake_lit", false)):
 			if not _flags.get("cake_lit", false):
 				return false
+		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
+			return false
+		return true
+	# ── Emperor schema ──────────────────────────────────────────
+	if _arcana_id == "emperor":
+		var em_need_connect: int = int(wc.get("require_visitors_connected_min", 3))
+		if _connections_made.size() < em_need_connect:
+			return false
+		var em_need_hard: int = int(wc.get("require_hard_mood_connections_min", 0))
+		if em_need_hard > 0:
+			var em_hard_count: int = 0
+			for emcvid in _connections_made:
+				var emcv_def: Dictionary = _visitors_def.get(String(emcvid), {})
+				var emmood: String = String(emcv_def.get("mood", ""))
+				if emmood == "intense" or emmood == "lonely" or emmood == "preoccupied":
+					em_hard_count += 1
+			if em_hard_count < em_need_hard:
+				return false
+		if _doubt >= int(wc.get("require_doubt_below", 99)):
+			return false
+		if _stagnation >= int(wc.get("require_stagnation_below", 99)):
+			return false
+		if _ledger < int(wc.get("require_ledger_at_least", 0)):
+			return false
 		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
 			return false
 		return true
@@ -5007,6 +5051,25 @@ func _resolve_effect(e: Dictionary) -> void:
 			var hs: int = int(e.get("amount", 1))
 			_harvest = max(0, _harvest - hs)
 			_log_line("[color=#a99070]-%d Harvest[/color] → %d" % [hs, _harvest])
+
+		"gain_authority":
+			var ag: int = int(e.get("amount", 1))
+			_authority += ag
+			_log_line("[color=#d8a060]+%d Authority[/color] → %d" % [ag, _authority])
+
+		"spend_authority":
+			var as_amt: int = int(e.get("amount", 1))
+			_authority = max(0, _authority - as_amt)
+			_log_line("[color=#a99070]-%d Authority[/color] → %d" % [as_amt, _authority])
+
+		"tick_ledger":
+			var lg: int = int(e.get("amount", 1))
+			_ledger = min(_ledger_threshold, _ledger + lg)
+			_log_line("[color=#d8a060]·[/color] ledger ticks · %d / %d" %
+				[_ledger, _ledger_threshold])
+			if _ledger >= _ledger_threshold:
+				if bool(_setup.get("loss_conditions", {}).get("ledger_full_before_end", false)):
+					_trigger_loss("ledger_full")
 
 		"freeze_patience":
 			# THE LONG QUIET — patience does not tick for N turns. The

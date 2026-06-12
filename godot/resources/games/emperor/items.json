@@ -1,0 +1,100 @@
+{
+  "scope": "emperor",
+  "notes": "Items in the office — papers, stamps, the petitioner's folders, the small comforts of the desk. No bindle analogue.",
+  "piles": {
+    "filing_drawer_a": {
+      "label": "FILING DRAWER A-D",
+      "at_pos": "filing_cabinet",
+      "items": ["folder_estate", "folder_appeal_template", "folder_blank"]
+    },
+    "law_shelf_volumes": {
+      "label": "LAW SHELF · STATUTE",
+      "at_pos": "law_shelf",
+      "items": ["statute_book_a", "statute_book_b", "precedent_volume"]
+    },
+    "stamp_drawer": {
+      "label": "STAMP DRAWER",
+      "at_pos": "stamp_table",
+      "items": ["stamp_certified", "stamp_filed", "stamp_appeal"]
+    },
+    "desk_top": {
+      "label": "DESK TOP",
+      "at_pos": "desk",
+      "items": ["pen_father", "candy_dish", "blotter_paper"]
+    }
+  },
+  "items": {
+    "folder_estate": {
+      "title": "Folder · Estate",
+      "category": "delivery",
+      "flavor": "A grey folder, blank label. For the widow.",
+      "delivered_to_satisfies_order": true
+    },
+    "folder_appeal_template": {
+      "title": "Folder · Appeal Template",
+      "category": "delivery",
+      "flavor": "Pre-filled with the office's heading. For the appellant.",
+      "delivered_to_satisfies_order": true
+    },
+    "folder_blank": {
+      "title": "Folder · Blank",
+      "category": "delivery",
+      "flavor": "An empty grey folder. Ready for a name.",
+      "delivered_to_satisfies_order": true
+    },
+    "statute_book_a": {
+      "title": "Statute · Volume A",
+      "category": "found",
+      "flavor": "Estate, probate, the small inheritance cases.",
+      "use_effect": { "kind": "gain_authority", "amount": 1 }
+    },
+    "statute_book_b": {
+      "title": "Statute · Volume B",
+      "category": "found",
+      "flavor": "Civil disputes, rivers, easements.",
+      "use_effect": { "kind": "gain_authority", "amount": 1 }
+    },
+    "precedent_volume": {
+      "title": "Precedent · Volume 7",
+      "category": "found",
+      "flavor": "Volumes 9 and 10 are missing. This one has the case the appellant needs.",
+      "use_effect": { "kind": "gain_authority", "amount": 2 }
+    },
+    "stamp_certified": {
+      "title": "Stamp · Certified",
+      "category": "delivery",
+      "flavor": "Bronze. Leaves a perfect circle.",
+      "delivered_to_satisfies_order": true
+    },
+    "stamp_filed": {
+      "title": "Stamp · Filed",
+      "category": "delivery",
+      "flavor": "Smaller. For the things that just need to be on the books.",
+      "delivered_to_satisfies_order": true
+    },
+    "stamp_appeal": {
+      "title": "Stamp · Appeal Heard",
+      "category": "delivery",
+      "flavor": "The heaviest of the three. Only used when the appellate finding goes the appellant's way.",
+      "delivered_to_satisfies_order": true
+    },
+    "pen_father": {
+      "title": "Father's Pen",
+      "category": "found",
+      "flavor": "Dante's father's fountain pen. The nib is older than Dante.",
+      "use_effect": { "kind": "gain_authority", "amount": 1 }
+    },
+    "candy_dish": {
+      "title": "Candy Dish",
+      "category": "delivery",
+      "flavor": "Hard candies from 1971. Most still edible.",
+      "delivered_to_satisfies_order": true
+    },
+    "blotter_paper": {
+      "title": "Blotter Paper",
+      "category": "found",
+      "flavor": "A fresh sheet from the desk blotter. The previous sheet had three signatures on it.",
+      "use_effect": { "kind": "lose_doubt", "amount": 1 }
+    }
+  }
+}

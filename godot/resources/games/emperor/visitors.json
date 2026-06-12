@@ -1,0 +1,130 @@
+{
+  "scope": "emperor",
+  "notes": "Petitioners + clients in Dante's office. The Emperor's visitors usually want something put in writing — a ruling, a witness, a stamped paper. They are not patient; they have business elsewhere.",
+  "visitors": [
+    {
+      "id": "the_petitioner",
+      "name": "The Petitioner",
+      "scenarios": ["docket", "first_session", "appeal"],
+      "arrival": { "kind": "on_board_at_start", "pos": "anteroom" },
+      "lore_token": "petitioner_got_their_ruling",
+      "lore_text": "Came in at opening time. Has a folder. Has a specific question. Wants a specific answer.",
+      "accent": "#d8a060",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "They nod. They have the folder in their lap.",
+        "listen":  "They state the matter. It is short. It is clear.",
+        "deliver": "You bring the relevant statute book from the shelf.",
+        "sit_with": "You write the ruling. You stamp it. You hand it back. They thank you and leave."
+      }
+    },
+    {
+      "id": "the_old_friend",
+      "name": "The Old Friend",
+      "scenarios": ["docket", "first_session"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "client_chairs" },
+      "lore_token": "old_friend_got_what_they_needed",
+      "lore_text": "Someone Dante has known since they were both children in the same school. Comes to the office because the office is where he is now. Doesn't ever really need a ruling; needs a friend with a stamp.",
+      "accent": "#88b87a",
+      "mood": "talkative",
+      "patience": 8,
+      "steps": {
+        "greet":   "They sit before you offer the chair.",
+        "listen":  "They catch you up on a person from forty years ago.",
+        "deliver": "You bring out the brandy. They take half a glass.",
+        "sit_with": "You sit with them at the client chairs. They have not been to your office in ten years. They will not stay long today."
+      }
+    },
+    {
+      "id": "the_grieving_widow",
+      "name": "The Grieving Widow",
+      "scenarios": ["docket", "appeal"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "front_door", "to": "anteroom" },
+      "lore_token": "widow_got_the_estate_filed",
+      "lore_text": "Three days after the funeral. Here to get the estate filed. Patient with the office, less patient with herself.",
+      "accent": "#9b5fd3",
+      "mood": "lonely",
+      "patience": 6,
+      "steps": {
+        "greet":   "She has a folder. The folder is in her husband's hand.",
+        "listen":  "She tells you what he meant by each page.",
+        "deliver": "You bring out the estate-filing form. You fill in the parts she can't fill in.",
+        "sit_with": "You stamp the final page. She does not stand up immediately. You sit with her until she does."
+      }
+    },
+    {
+      "id": "the_appellant",
+      "name": "The Appellant",
+      "scenarios": ["appeal"],
+      "arrival": { "kind": "on_board_at_start", "pos": "client_chairs" },
+      "lore_token": "appellant_was_heard",
+      "lore_text": "Lost a case six months ago in another office, in another town. Came here because Dante's office takes appeals on Tuesdays. They have spent six months being angry. They are no longer angry; now they are determined.",
+      "accent": "#7a1e26",
+      "mood": "intense",
+      "patience": 4,
+      "steps": {
+        "greet":   "They will not sit. You let them stand.",
+        "listen":  "They present the case. The case is good. The original ruling was bad.",
+        "deliver": "You pull the precedent off the shelf. The page is there. The page has been there.",
+        "sit_with": "You write the appellate finding. You stamp it. The appellant cries briefly, then thanks you, then leaves."
+      }
+    },
+    {
+      "id": "the_clerk",
+      "name": "The Clerk",
+      "scenarios": ["docket", "first_session", "appeal"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "alley_door", "to": "filing_cabinet" },
+      "lore_token": "clerk_filed_the_day",
+      "lore_text": "Dante's clerk, who comes in through the alley door because that's how she's done it since she started.",
+      "accent": "#a99070",
+      "mood": "talkative",
+      "patience": 9,
+      "helper": true,
+      "steps": {
+        "greet":   "She is at the cabinet before she says good morning.",
+        "listen":  "She tells you what's filed and what isn't.",
+        "deliver": "You bring her coffee. Black, two spoons of sugar she'd never admit to.",
+        "sit_with": "You sit at the desk while she files. The office is the office it should be."
+      }
+    },
+    {
+      "id": "nicola_as_visitor",
+      "name": "Nicola (visiting)",
+      "as_hand_id": "nicola",
+      "swap_target_for_hand": "nicola_as_visitor",
+      "scenarios": ["docket", "first_session", "appeal"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "front_door", "to": "client_chairs" },
+      "lore_token": "nicola_came_to_the_office",
+      "lore_text": "Comes over from the boat. Mostly to say hi. Sometimes to get a paper signed.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 7,
+      "steps": {
+        "greet":   "She knocks once and lets herself in.",
+        "listen":  "She tells you about the rosebush.",
+        "deliver": "You bring her one of the office's hard candies, from the dish on the desk that's been there since 1971.",
+        "sit_with": "You sit at the desk with her at the client chair. The clock ticks. The radiator clicks."
+      }
+    },
+    {
+      "id": "dante_as_visitor",
+      "name": "Dante (off-duty)",
+      "as_hand_id": "dante",
+      "swap_target_for_hand": "dante_as_visitor",
+      "scenarios": ["docket"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "alley_door", "to": "anteroom" },
+      "lore_token": "dante_came_off_duty",
+      "lore_text": "When the player is NOT Dante, he comes in off-duty for a moment. When the player IS Dante, this entry swaps out.",
+      "accent": "#7a1e26",
+      "mood": "preoccupied",
+      "patience": 7,
+      "steps": {
+        "greet":   "He hangs his jacket on the same hook he always uses.",
+        "listen":  "He talks about a case from last week that doesn't have a folder yet.",
+        "deliver": "You hand him a pen. He thanks you.",
+        "sit_with": "You sit at the client chair while he sits at the desk. He stamps something. The office is the office."
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "dante",
+  "name": "Dante",
+  "subtitle": "the keeper of the ledger",
+  "portrait": "assets/gallery/portrait_dante_face.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "the_decree",
+    "label": "The Decree",
+    "description": "Once per game, set down a ruling. Whatever room you're in remembers you said it; the visitors there yield their patience one turn longer.",
+    "uses_per_game": 1
+  },
+  "starting_hand": ["walk", "focus", "search", "short_rest", "hear", "rule", "stamp", "witness"],
+  "save_witness_rewards": null,
+  "notes": "Dante's hand is the judge's loop — HEAR / RULE / STAMP / WITNESS as starters. Buyable pool is FILINGS (rulings + precedents + signed papers). Second stat is DOUBT (rises bad). Authority replaces Inspiration / Insight / Harvest — the spendable currency that buys rulings. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+}
