@@ -1,0 +1,169 @@
+{
+  "scope": "magician",
+  "scenario": "blow_out_the_candles",
+  "notes": "Cathedral gravity deck · hard-mode (BLOW OUT THE CANDLES). Full moon, demons going wild, entropy in overdrive. The deck pushes both stats hard and accelerates the steamboat — the win is to LIGHT THE CANDLES before the river takes the bank. 18 cards. Half are endgame-flagged so the late game gets brutal.",
+  "cards": [
+    {
+      "id": "the_moon_rises_higher",
+      "title": "THE MOON RISES HIGHER",
+      "flavor": "The river-window pane lights up cold. Every demon on the board gets one more turn of duration. Frasier's cup of coffee is now luminescent.",
+      "effects": [
+        {"kind": "all_active_demons_gain_duration", "amount": 1},
+        {"kind": "gain_doubt", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_demon_brings_a_friend",
+      "title": "THE DEMON BRINGS A FRIEND",
+      "flavor": "He doesn't introduce them. They sit on a folding chair two feet from his stool. They are wearing the same clothes he is.",
+      "effects": [
+        {"kind": "summon_random_demon"},
+        {"kind": "gain_stagnation", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_river_takes_a_foot",
+      "title": "THE RIVER TAKES A FOOT",
+      "flavor": "Outside, a foot of the river bank slips into the water. The river-window glass shudders.",
+      "effects": [
+        {"kind": "advance_steamboat", "amount": 1},
+        {"kind": "gain_stagnation", "amount": 2}
+      ]
+    },
+    {
+      "id": "drunk_uncle_finds_the_workbench",
+      "title": "DRUNK UNCLE FINDS THE WORKBENCH",
+      "flavor": "He's leaning on the steamboat model with his elbow. He doesn't notice. He's telling Mackenzie about the war.",
+      "effects": [
+        {"kind": "advance_steamboat", "amount": 1, "note": "he leans wrong"},
+        {"kind": "this_turn_card_cost_plus", "card": "draft", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_twins_synchronize",
+      "title": "THE TWINS SYNCHRONIZE",
+      "flavor": "Quinn and Quill are mid-conversation at the river window. The river outside has started to mirror the cadence of their speech.",
+      "effects": [
+        {"kind": "gain_doubt", "amount": 2},
+        {"kind": "advance_wip", "wip": "judgement", "amount": 1, "note": "their voices fit the empty platform"}
+      ]
+    },
+    {
+      "id": "the_cake_is_singing",
+      "title": "THE CAKE IS SINGING",
+      "flavor": "In the dish-station fridge, the cake has begun to hum. Three of the unlit candles are vibrating.",
+      "effects": [
+        {"kind": "gain_inspiration", "amount": 1},
+        {"kind": "log", "text": "the cake knows."}
+      ]
+    },
+    {
+      "id": "elicia_at_the_door",
+      "title": "ELICIA AT THE DOOR",
+      "flavor": "She's at the river window, looking out. Not the inside. She's looking at the river. She doesn't turn when you say her name.",
+      "effects": [
+        {"kind": "gain_doubt", "amount": 1},
+        {"kind": "lose_stagnation", "amount": 1, "note": "her presence steadies you even like this"}
+      ]
+    },
+    {
+      "id": "the_superfan_speaks_in_unison",
+      "title": "THE SUPERFAN SPEAKS IN UNISON",
+      "flavor": "She's mouthing what Elicia is about to say. Then Elicia says it. The superfan is one beat ahead. Then two. Then three.",
+      "effects": [
+        {"kind": "gain_doubt", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_critic_writes_the_eulogy",
+      "title": "THE CRITIC WRITES THE EULOGY",
+      "flavor": "He's at the JUDGEMENT platform, taking notes. The notes are already past-tense.",
+      "effects": [
+        {"kind": "gain_doubt", "amount": 2},
+        {"kind": "advance_wip", "wip": "judgement", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_diner_model_is_full",
+      "title": "THE DINER MODEL IS FULL",
+      "flavor": "Every booth in the 1:48 D'Ambrosio's has a figurine now. None of them are Frasier's. The lights are all on inside the model.",
+      "effects": [
+        {"kind": "set_cross_arcana_flag", "target": "fool", "key": "fool_starting_inertia_plus_one"},
+        {"kind": "set_cross_arcana_flag", "target": "fool", "key": "fool_starting_visitors_plus_two"}
+      ]
+    },
+    {
+      "id": "the_lights_strobe_once",
+      "title": "THE LIGHTS STROBE ONCE",
+      "flavor": "Every light in the cathedral pulses, hard, once. Then they all come back on at the wrong color.",
+      "effects": [
+        {"kind": "unfinish_random_finished_arcana", "amount": 1},
+        {"kind": "gain_stagnation", "amount": 1}
+      ]
+    },
+    {
+      "id": "someone_dropped_a_candle",
+      "title": "SOMEONE DROPPED A CANDLE",
+      "flavor": "One of the candles from the cake is on the floor. It is not lit. It is rolling. It rolls toward the steamboat.",
+      "effects": [
+        {"kind": "advance_steamboat", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_steamboat_is_listening_full_moon",
+      "title": "THE STEAMBOAT IS LISTENING",
+      "endgame": true,
+      "flavor": "It needs one fewer beat than you thought. It will accept anything you give it tonight.",
+      "effects": [
+        {"kind": "steamboat_threshold_minus", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_sinkhole_opens",
+      "title": "THE SINKHOLE OPENS",
+      "endgame": true,
+      "flavor": "Outside, the river bank gives the way river banks give when no one is looking. The river-window threshold closes. The cathedral tilts a half-degree.",
+      "effects": [
+        {"kind": "close_threshold", "threshold": "river_window", "turns": 99},
+        {"kind": "gain_stagnation", "amount": 3}
+      ]
+    },
+    {
+      "id": "the_demons_find_each_other",
+      "title": "THE DEMONS FIND EACH OTHER",
+      "endgame": true,
+      "flavor": "Every demon active on the board is now in the same square foot of floor. They are introducing themselves.",
+      "effects": [
+        {"kind": "all_active_demons_gain_duration", "amount": 3},
+        {"kind": "gain_doubt", "amount": 2}
+      ]
+    },
+    {
+      "id": "midnight",
+      "title": "MIDNIGHT",
+      "endgame": true,
+      "flavor": "The clock on Frasier's wall — the only one in the cathedral — clicks to 12:00. The cake is still in the fridge. The candles are still in the cake. The matches are in his apron.",
+      "effects": [
+        {"kind": "gain_stagnation", "amount": 2},
+        {"kind": "log", "text": "if the candles aren't lit by next turn, the room ends."}
+      ]
+    },
+    {
+      "id": "the_wires_unhooked",
+      "title": "THE WIRES UNHOOKED",
+      "flavor": "A finished arcana installation gone dark. Still finished. Just not alive.",
+      "effects": [
+        {"kind": "unfinish_random_finished_arcana", "amount": 1}
+      ]
+    },
+    {
+      "id": "a_draft_burned_itself",
+      "title": "A DRAFT BURNED ITSELF",
+      "flavor": "Two of them. Inside the workbench drawer. He hadn't opened it tonight.",
+      "effects": [
+        {"kind": "lose_inspiration", "amount": 1},
+        {"kind": "gain_doubt", "amount": 1}
+      ]
+    }
+  ]
+}

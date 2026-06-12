@@ -1,17 +1,17 @@
 {
-  "id": "the_draft",
+  "id": "sinking_feeling",
   "arcana": "i_magician",
   "location": "cathedral",
   "hand": "frasier",
-  "title": "THE DRAFT",
-  "subtitle": "A Quiet Evening in the Warehouse · 7:14 PM",
+  "title": "SINKING FEELING",
+  "subtitle": "A Quiet Evening · 7:14 PM",
   "difficulty": "easy",
   "epigraph_upright": "The Magician makes. He chooses the day. He has tools that obey him. The pieces are at the edge of being something.",
-  "epigraph_reversed": "Stagnation. Sealed doors. Drafts that won't finish. A workbench that lies to him about what it's for.",
+  "epigraph_reversed": "Stagnation. Sealed doors. Drafts that won't finish. A workbench that lies to him about what it's for. The steamboat half-built, the river outside slowly making a hole in the bank.",
 
-  "scene_description": "The river is doing what rivers do. The bay door is shut. Three pieces in the inner cluster are within a beat of being something. The bird-watcher is already at the river window — she gestured up at the osprey nest before you started writing. Elicia is bringing a tape. John will walk over from the diner with a bag. The steamboat is on the workbench, a bare hull. You don't have to finish it tonight.",
+  "scene_description": "The river is doing what rivers do. The bay door is shut. Three pieces in the inner cluster are within a beat of being something. The bird-watcher is already at the river window — she gestured up at the osprey nest before you started writing. Elicia is bringing a tape. John will walk over from the diner with a bag. The steamboat is on the workbench, a bare hull. You don't have to finish it tonight. The sinking feeling is that you might.",
 
-  "direction_hint": "Make three pieces. Connect three of the people who show up. Don't finish the steamboat unless you mean to.",
+  "direction_hint": "Make three pieces. Connect three of the people who show up. Don't finish the steamboat unless you mean to. If you mean to, you mean what comes after.",
 
   "opening_log_lines": [
     "The cathedral hums. The river side is quiet enough you can hear the still drip.",
@@ -90,5 +90,6 @@
     "star", "moon", "sun"
   ],
 
-  "notes": "Easy-mode scaffold for the Magician. Friendly roster (Elicia / John / Nicola / Mackenzie-remote / the bird-watcher) plus one weirdo (the drifter at the bay door). The Demon does NOT appear in THE DRAFT — he's reserved for the medium + hard scenarios. Steamboat lives on the workbench but the win condition explicitly does NOT require completing it; the medium and hard scenarios re-tune around finishing-vs-not. Spec source: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+  "max_turns": 12,
+  "notes": "Easy-mode for the Magician. Friendly roster (Elicia / John / Nicola / Mackenzie-remote / the bird-watcher) plus one weirdo (the drifter at the bay door). The Demon does NOT appear in SINKING FEELING — he's reserved for the medium + hard scenarios. Steamboat lives on the workbench but the win condition explicitly does NOT require completing it; the medium and hard scenarios re-tune around finishing-vs-not. Spec source: lore/_TAROT_GAUNTLET_SCENARIOS.md."
 }

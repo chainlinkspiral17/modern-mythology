@@ -134,6 +134,168 @@
         "deliver": "He brings her a folding chair from the corner. She gasps a thank-you. Sits with her back to the wall, binoculars up.",
         "sit_with": "She doesn't move for forty minutes. When the male bird returns to the nest she lets out a long quiet breath. Then she packs up and goes."
       }
+    },
+
+    {
+      "id": "mackenzie_in_person",
+      "name": "Mackenzie",
+      "scenarios": ["watch_party", "blow_out_the_candles"],
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "warehouse_bay", "to": "hermit"},
+      "lore_token": "mackenzie_drove_in",
+      "lore_text": "She doesn't drive in often. The drive is three hours. The fact that she's here in person means she heard something in his voice the last time.",
+      "accent": "#b89ad6",
+      "placeholder_name": "her car in the lot",
+      "pre_arrival_hints": [
+        "Headlights crossing the gravel.",
+        "A car door shutting too softly.",
+        "Mackenzie at the bay, jacket damp, glasses fogging."
+      ],
+      "mood": "preoccupied",
+      "steps": {
+        "greet":   "She hugs him without saying hello. He hugs back.",
+        "listen":  "She doesn't say why she drove. He doesn't ask.",
+        "deliver": "He hands her a beer from the fridge near the workbench. She takes it.",
+        "sit_with": "She finds the folding chair beside the workbench. She sits. She watches him work without saying a word for twenty minutes."
+      }
+    },
+    {
+      "id": "the_critic",
+      "name": "The Critic",
+      "scenarios": ["watch_party", "blow_out_the_candles"],
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "warehouse_bay", "to": "warehouse_bay"},
+      "lore_token": "critic_at_the_party",
+      "lore_text": "He wrote one bad-faith piece about Elicia's show in '94 and got himself a small career out of it. He has been invited tonight on purpose, and he doesn't know why.",
+      "accent": "#7c8398",
+      "placeholder_name": "RSVP'd · maybe will come",
+      "pre_arrival_hints": [
+        "A black town car at the bay door. The driver waits.",
+        "He's at the threshold. Black coat. Won't step over until you do.",
+        "The critic, holding a thin notebook, smiling the wrong amount."
+      ],
+      "mood": "gruff",
+      "patience": 4,
+      "steps": {
+        "greet":   "\"Frasier.\" Said like he's correcting a misspelling.",
+        "listen":  "He has Opinions. He gets them out efficiently. He wants you to know he has them.",
+        "deliver": "He accepts the drink. Does not say thank you.",
+        "sit_with": "You stand near him for two minutes. He's at the JUDGEMENT platform, looking at the blank stage. Eventually, without turning, he says: \"Don't put anything on this one.\" Then he leaves."
+      }
+    },
+    {
+      "id": "the_college_friend",
+      "name": "The College Acquaintance",
+      "scenarios": ["watch_party", "blow_out_the_candles"],
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "warehouse_bay", "to": "warehouse_bay"},
+      "lore_token": "the_college_acquaintance",
+      "lore_text": "He knew Elicia at college, twenty years ago. He has been trying to be in a circle adjacent to her career ever since. He is not unwelcome. He is also not quite welcome.",
+      "accent": "#c8a268",
+      "placeholder_name": "Marc — you don't remember Marc",
+      "pre_arrival_hints": [
+        "His car door slams a little too hard.",
+        "He's at the bay, hands in pockets, looking very carefully at the door.",
+        "He's already inside. He was inside thirty seconds ago. You didn't see him cross the threshold."
+      ],
+      "mood": "preoccupied",
+      "patience": 5,
+      "steps": {
+        "greet":   "\"Hi! Frasier, hi. Wow. The space.\" He looks at everything except the inner cluster.",
+        "listen":  "He tells you a story about Elicia from twenty years ago. The story does not flatter her. The story does not flatter him. The story keeps going.",
+        "deliver": "Beer in hand. He drinks it the way someone drinks at a wedding they weren't invited to.",
+        "sit_with": "He sits with you. He stops trying to be funny. He asks if Elicia is doing OK. You tell him yes. He nods."
+      }
+    },
+    {
+      "id": "the_superfan",
+      "name": "The Superfan",
+      "scenarios": ["watch_party", "blow_out_the_candles"],
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "warehouse_bay", "to": "warehouse_bay"},
+      "lore_token": "the_superfan",
+      "lore_text": "She has every Pomegranate Hour episode memorized. She knows the cassette catalog numbers. She has been on the BBS for nine years. Tonight is the first time she's in a room with Elicia. She has prepared.",
+      "accent": "#ff8060",
+      "placeholder_name": "she came alone",
+      "pre_arrival_hints": [
+        "A bicycle bell from outside. Closer.",
+        "She locks the bike to the iron strut. Carefully.",
+        "She's at the bay, holding a small box-set she made for Elicia, hands trembling slightly."
+      ],
+      "mood": "jovial",
+      "patience": 7,
+      "steps": {
+        "greet":   "\"Hi, Frasier — hi. I — hi.\" She does not blink.",
+        "listen":  "She tells you which episode is her favorite. She tells you the timestamp. She is correct.",
+        "deliver": "She gives you the box-set to give to Elicia. She insists you give it. You will give it.",
+        "sit_with": "She sits very still beside you. She is not looking at Elicia. She is looking at the floor. Her hands are steady now. She breathes out."
+      }
+    },
+    {
+      "id": "the_twins",
+      "name": "The Twins (Quinn & Quill)",
+      "scenarios": ["blow_out_the_candles"],
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "river_window", "to": "river_window"},
+      "lore_token": "the_twins_at_the_window",
+      "lore_text": "They are friends-of-a-friend of Elicia, sort of. They are also wearing the same outfit. They are also finishing each other's sentences. They are also at the river window without having walked through the bay door first.",
+      "accent": "#b89ad6",
+      "placeholder_name": "two figures at the river window",
+      "pre_arrival_hints": [
+        "Two shapes at the river-window glass.",
+        "They tap together. Two slow knocks, one each, at the same time.",
+        "Quinn and Quill, smiling apologetically."
+      ],
+      "mood": "preoccupied",
+      "patience": 5,
+      "shared_patience": true,
+      "steps": {
+        "greet":   "They nod at the same time. Quinn says hi first. Quill says hi second.",
+        "listen":  "They tell you a piece of news about a mutual friend. They tell it together. The story has two voices but is one story.",
+        "deliver": "You hand them each a glass of water. They drink in sync, set the glasses down in sync.",
+        "sit_with": "You sit between them. They speak across you, not to you. You feel a little like you're inside a sentence somebody else is saying."
+      }
+    },
+    {
+      "id": "drunk_uncle",
+      "name": "Drunk Uncle",
+      "scenarios": ["blow_out_the_candles"],
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "warehouse_bay", "to": "warehouse_bay"},
+      "lore_token": "drunk_uncle_arrives",
+      "lore_text": "Not actually Elicia's uncle. The kind of person who has been somebody's uncle long enough that everyone refers to him that way. He came over to wish Elicia a happy birthday a week early because that's the kind of thing he does.",
+      "accent": "#ff4060",
+      "placeholder_name": "loud at the door",
+      "pre_arrival_hints": [
+        "A laugh you can hear through the bay door.",
+        "He's banging the door, doesn't realize it slides.",
+        "Drunk uncle, three beers in already, beaming."
+      ],
+      "mood": "gruff",
+      "patience": 3,
+      "steps": {
+        "greet":   "\"FRAY-sier! Where's the kid? Where's the birthday?\"",
+        "listen":  "He's telling you about a job he had thirty years ago. The story is not exactly an answer to what you said.",
+        "deliver": "He accepts the beer he is already holding. He toasts you with it. You toast back.",
+        "sit_with": "You sit with him. He goes quiet. He says, very softly: \"She's a good kid. You tell her I said.\" You will tell her."
+      }
+    },
+    {
+      "id": "the_demon",
+      "name": "the man at the stool",
+      "scenarios": ["watch_party", "blow_out_the_candles"],
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "(unseen)", "to": "devil"},
+      "lore_token": "the_demon_in_the_cathedral",
+      "lore_text": "He doesn't come in. He's already in. The empty stool isn't empty.",
+      "accent": "#ff4060",
+      "placeholder_name": "the stool was empty an hour ago",
+      "pre_arrival_hints": [
+        "The empty bar stool at DEVIL station is no longer empty.",
+        "A glass of amber liquid is on the floor beside the stool that wasn't there before.",
+        "He nods at you without turning his head."
+      ],
+      "mood": "gruff",
+      "patience": 6,
+      "steps": {
+        "greet":   "He doesn't look up. \"You knew I was here.\"",
+        "listen":  "\"Same as last time,\" he says, even though there hasn't been a last time. You serve him.",
+        "deliver": "The glass goes cold the moment it leaves your hand. He doesn't drink it.",
+        "sit_with": "He looks at you. \"You don't have to finish it tonight. You will, though.\" The stool beside him is colder than the rest of the room."
+      }
     }
   ],
   "default_step_lines_by_mood": {

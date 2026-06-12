@@ -481,10 +481,22 @@ func _add_play_button_overlay(parent_visualizer: Control,
 # a different setup file + gravity deck.
 const MAGICIAN_SCENARIOS := [
 	{
-		"id": "the_draft",
-		"title": "THE DRAFT",
-		"subtitle": "Easy · 7:14 PM · A Quiet Evening in the Warehouse",
-		"flavor": "The river is doing what rivers do. Three pieces are a beat from being something. Elicia is bringing a tape. John is walking over from the diner. Make three pieces, connect with three of your visitors, and don't finish the steamboat unless you mean to."
+		"id": "sinking_feeling",
+		"title": "SINKING FEELING",
+		"subtitle": "Easy · 7:14 PM · A Quiet Evening",
+		"flavor": "The river is doing what rivers do. Elicia is bringing a tape. John is walking over from the diner. The steamboat on the workbench is a bare hull. Make three pieces, connect with three of the people who show up, and don't finish the steamboat unless you mean to."
+	},
+	{
+		"id": "watch_party",
+		"title": "WATCH PARTY",
+		"subtitle": "Medium · 9:30 PM · Pomegranate Hour Live, Episode 47",
+		"flavor": "Folding chairs out, the show streaming from the cassette deck. A few friends, a few crashers — the critic, the college acquaintance, the superfan. Art-farty, nerdy references, escalating social tension. The Demon arrives at his stool around 10:30. Make five pieces, land three connections with the harder visitors, don't broadcast the steamboat's completion live."
+	},
+	{
+		"id": "blow_out_the_candles",
+		"title": "BLOW OUT THE CANDLES",
+		"subtitle": "Hard · 11:47 PM · Birthday at the End of the World · Full Moon",
+		"flavor": "Maximum capacity. Every chair you own. Elicia's birthday is technically next week but tonight is the night. The demons are wide awake on a full moon. The steamboat is at 4/6 already. The cake is in the dish-station fridge. Get it to the workbench. Light the candles. Don't let the river take the bank before you do."
 	}
 ]
 

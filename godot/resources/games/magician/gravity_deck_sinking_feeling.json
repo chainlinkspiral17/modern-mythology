@@ -1,7 +1,7 @@
 {
   "scope": "magician",
-  "scenario": "the_draft",
-  "notes": "Cathedral gravity deck · easy-mode (THE DRAFT). The deck divides into atmospheric pressure (the room insisting), demon-reach (low-volume in easy mode), cross-arcana bleed (the cast talking to each other), and self-sabotage (the maker's enemies). DOUBT and STAGNATION are the two stats the deck pressures. 14 cards drawn one-per-turn during the Shadow phase. Engine support for stagnation / doubt / inspiration / wip-progress / cross-arcana flags is pending the next engine pass; effect names match what the engine will need.",
+  "scenario": "sinking_feeling",
+  "notes": "Cathedral gravity deck · easy-mode (SINKING FEELING). The deck divides into atmospheric pressure (the room insisting), demon-reach (low-volume in easy mode), cross-arcana bleed (the cast talking to each other), and self-sabotage (the maker's enemies). DOUBT and STAGNATION are the two stats the deck pressures. 15 cards drawn one-per-turn during the Shadow phase.",
   "cards": [
     {
       "id": "the_still_is_dripping",
