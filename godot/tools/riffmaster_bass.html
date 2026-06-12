@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RIFFMASTER BASS · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald-hi: #a8e89c; --burgundy: #7a1e26;
+    --rust: #c87633;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100vh; overflow: hidden;
+    background: var(--bg-0); color: var(--text);
+    font-family: "Courier New", monospace;
+  }
+  body { display: grid; grid-template-rows: auto auto 1fr auto auto; }
+  header { padding: 12px 20px; border-bottom: 1px solid var(--rule); }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header .sub { color: var(--text-dim); font-size: 11px; font-style: italic; margin-top: 2px; }
+  header .audio-state { margin-left: 12px; font-size: 11px; color: #c64a3a; }
+  header .audio-state.running { color: var(--emerald-hi); }
+
+  .presets {
+    padding: 8px 20px; border-bottom: 1px solid var(--rule);
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .preset-btn {
+    background: transparent; color: var(--text-dim);
+    border: 1px solid var(--rule);
+    padding: 4px 12px; font-family: inherit; font-size: 11px;
+    letter-spacing: 0.10em; cursor: pointer;
+  }
+  .preset-btn:hover { color: var(--gold-hi); border-color: var(--gold); }
+  .preset-btn.active { background: var(--ink); color: var(--gold-hi); border-color: var(--rust); }
+
+  .display {
+    padding: 16px 22px;
+    display: grid; grid-template-rows: auto 1fr auto;
+    gap: 14px;
+  }
+  .pitch-row { display: flex; align-items: center; gap: 24px; }
+  .pitch-row .now-pitch {
+    color: var(--gold-hi); font-size: 38px; letter-spacing: 0.10em;
+    min-width: 220px; text-shadow: 0 0 18px rgba(216, 118, 51, 0.45);
+  }
+  .pitch-row .meta { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  .pitch-row .voice-state {
+    margin-left: auto;
+    color: var(--emerald-hi); font-size: 10px; letter-spacing: 0.12em;
+  }
+  .pitch-row .voice-state.silent { color: var(--text-dim); }
+
+  .frets {
+    display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px;
+    height: 100px;
+  }
+  .fret {
+    border: 1px solid var(--rule);
+    background: linear-gradient(180deg, var(--bg-1) 0%, var(--ink) 100%);
+    position: relative; padding: 6px; user-select: none;
+    cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  }
+  .fret .fret-num {
+    position: absolute; top: 4px; left: 6px;
+    color: var(--text-dim); font-size: 10px;
+  }
+  .fret .fret-note { color: var(--gold); font-size: 12px; letter-spacing: 0.06em; }
+  .fret .fret-semi { color: var(--text-dim); font-size: 9px; margin-top: 2px; }
+  .fret.held {
+    border-color: var(--rust);
+    background: linear-gradient(180deg, #3a2614 0%, var(--ink) 100%);
+  }
+  .fret.highest-held {
+    border-color: var(--gold-hi);
+    box-shadow: inset 0 0 24px rgba(216, 118, 51, 0.5);
+  }
+  .fret.highest-held .fret-note { color: var(--gold-hi); font-weight: bold; }
+
+  .scope { width: 100%; height: 100%; border: 1px solid var(--rule); background: var(--bg-1); }
+
+  .transport {
+    padding: 10px 20px; border-top: 1px solid var(--rule);
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    font-size: 11px; color: var(--text-dim);
+  }
+  .transport label { letter-spacing: 0.08em; }
+  .transport input[type="range"] { width: 100px; }
+  .transport select, .transport input[type="number"] {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule);
+    padding: 2px 6px; font-family: inherit; font-size: 11px;
+  }
+  .transport .help {
+    margin-left: auto; color: var(--text-dim); font-size: 10px; font-style: italic;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>RIFFMASTER BASS · LOW-END MONOPHONIC</h1>
+    <div class="sub">Tuned for sub-low frequencies and dynamic plucks. Strum velocity = pluck strength. Whammy mutes/dampens via filter sweep. <span class="audio-state" id="audio-state">AUDIO: OFF · click anywhere</span></div>
+  </header>
+
+  <div class="presets" id="presets"></div>
+
+  <div class="display">
+    <div class="pitch-row">
+      <div class="now-pitch" id="now-pitch">—</div>
+      <div>
+        <div class="meta" id="now-meta">click a preset · hold a fret · strum</div>
+        <div class="meta" style="margin-top:4px;color:var(--rust);" id="root-label">ROOT: E1</div>
+      </div>
+      <div class="voice-state silent" id="voice-state">SILENT</div>
+    </div>
+    <div class="frets" id="frets"></div>
+    <canvas class="scope" id="scope"></canvas>
+  </div>
+
+  <div class="transport">
+    <label>SCALE</label>
+    <select id="scale">
+      <option value="phrygian" selected>phrygian</option>
+      <option value="dorian">dorian</option>
+      <option value="aeolian">aeolian (minor)</option>
+      <option value="pentatonic_minor">pentatonic minor</option>
+      <option value="harmonic">harmonic minor</option>
+    </select>
+    <label>ROOT</label>
+    <select id="root">
+      <option value="16">E1 (low bass)</option>
+      <option value="21">A1</option>
+      <option value="26" selected>D2</option>
+      <option value="28">E2</option>
+      <option value="33">A2</option>
+    </select>
+    <label>GLIDE</label>
+    <input type="range" id="glide" min="0" max="200" value="40">
+    <span id="glide-val" style="color:var(--gold-hi);">40ms</span>
+    <label>VOL</label>
+    <input type="range" id="vol" min="0" max="100" value="65">
+    <button id="test-tone" style="background:var(--burgundy);color:var(--gold-hi);border:1px solid var(--gold);padding:5px 14px;font-family:inherit;font-size:11px;cursor:pointer;letter-spacing:0.12em;">▶ TEST</button>
+    <div class="help">strum = pluck · whammy = mute · hammer-on/pull-off via fret state</div>
+  </div>
+
+<script src="gamepad_input.js"></script>
+<script>
+"use strict";
+
+const SCALES = {
+  phrygian:         [0, 1, 3, 5, 7, 8, 10],
+  dorian:           [0, 2, 3, 5, 7, 9, 10],
+  aeolian:          [0, 2, 3, 5, 7, 8, 10],
+  pentatonic_minor: [0, 3, 5, 7, 10],
+  harmonic:         [0, 2, 3, 5, 7, 8, 11],
+};
+function fretToSemitone(fretIdx) {
+  const s = SCALES[document.getElementById('scale').value] || SCALES.phrygian;
+  return s[fretIdx % s.length] + Math.floor(fretIdx / s.length) * 12;
+}
+function midiToFreq(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+function midiNoteName(midi) {
+  const N = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  return N[((midi % 12) + 12) % 12] + (Math.floor(midi / 12) - 1);
+}
+
+// ── Bass-specific presets ─────────────────────────────────────────
+// Each carries a strong sub layer + aggressive lowpass for thump.
+const PRESETS = [
+  { id: "finger",  name: "Finger",
+    desc: "P-bass style · classic warm pluck",
+    wave: "sawtooth", filt: 900, q: 3.5, drive: 0.0, subGain: 0.55, subDetune: 0,
+    attack: 0.005, decay: 0.20, sus: 0.6, rel: 0.30 },
+  { id: "pick",    name: "Pick",
+    desc: "J-bass / pick attack · brighter",
+    wave: "square",   filt: 1500, q: 2.0, drive: 0.10, subGain: 0.35, subDetune: 0,
+    attack: 0.002, decay: 0.12, sus: 0.55, rel: 0.20 },
+  { id: "slap",    name: "Slap",
+    desc: "Funk slap · transient + sub thump",
+    wave: "sawtooth", filt: 2200, q: 4.5, drive: 0.20, subGain: 0.45, subDetune: 0,
+    attack: 0.0015, decay: 0.08, sus: 0.35, rel: 0.18 },
+  { id: "synth",   name: "Synth",
+    desc: "Reese / supersaw sub-stack",
+    wave: "sawtooth", filt: 1200, q: 6.5, drive: 0.30, subGain: 0.60, subDetune: 18,
+    attack: 0.003, decay: 0.10, sus: 0.70, rel: 0.30 },
+  { id: "sub",     name: "Sub",
+    desc: "Pure sub sine · DUB low end",
+    wave: "sine",     filt: 600,  q: 1.0, drive: 0.0, subGain: 0.30, subDetune: 0,
+    attack: 0.008, decay: 0.05, sus: 0.85, rel: 0.40 },
+  { id: "growl",   name: "Growl",
+    desc: "Heavy drive · metal / sludge",
+    wave: "sawtooth", filt: 1100, q: 4.0, drive: 0.55, subGain: 0.45, subDetune: 0,
+    attack: 0.004, decay: 0.15, sus: 0.70, rel: 0.25 },
+];
+let activePresetIdx = 0;
+
+// ── Audio engine — monophonic legato bass voice ───────────────────
+let ac = null, master = null, analyser = null;
+let voice = null;
+function ensureAudio() {
+  if (ac) {
+    if (ac.state === 'suspended') ac.resume().catch(() => {});
+    return;
+  }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === 'suspended') ac.resume().catch(() => {});
+  master = ac.createGain();
+  master.gain.value = parseInt(document.getElementById('vol').value) / 100;
+  analyser = ac.createAnalyser();
+  analyser.fftSize = 1024;
+  master.connect(analyser);
+  analyser.connect(ac.destination);
+  ac.addEventListener('statechange', refreshAudioState);
+  buildVoice();
+  refreshAudioState();
+}
+function refreshAudioState() {
+  const el = document.getElementById('audio-state');
+  if (!ac) { el.textContent = 'AUDIO: OFF · click anywhere'; el.className = 'audio-state'; return; }
+  if (ac.state === 'running') { el.textContent = 'AUDIO: RUNNING'; el.className = 'audio-state running'; return; }
+  if (ac.state === 'suspended') { el.textContent = 'AUDIO: SUSPENDED · click'; el.className = 'audio-state'; return; }
+  el.textContent = 'AUDIO: ' + ac.state.toUpperCase();
+}
+
+function buildVoice() {
+  const p = PRESETS[activePresetIdx];
+  const wasActive = voice ? voice.active : false;
+  const oldMidi = voice ? voice.midi : (parseInt(document.getElementById('root').value) || 26);
+  if (voice) {
+    try { voice.osc.stop(0); } catch (e) {}
+    try { voice.sub.stop(0); } catch (e) {}
+  }
+  const osc = ac.createOscillator();
+  osc.type = p.wave;
+  const sub = ac.createOscillator();
+  sub.type = 'sine';
+  const subGain = ac.createGain();
+  subGain.gain.value = p.subGain;
+  const filt = ac.createBiquadFilter();
+  filt.type = 'lowpass';
+  filt.frequency.value = p.filt;
+  filt.Q.value = p.q;
+  let last = filt;
+  if (p.drive > 0) {
+    const sh = ac.createWaveShaper();
+    const c = new Float32Array(1024);
+    const k = p.drive * 6;
+    for (let i = 0; i < 1024; i++) {
+      const x = (i / 1024) * 2 - 1;
+      c[i] = (1 + k) * x / (1 + k * Math.abs(x));
+    }
+    sh.curve = c;
+    filt.connect(sh); last = sh;
+  }
+  const env = ac.createGain();
+  env.gain.value = 0;
+  osc.connect(filt);
+  sub.connect(subGain); subGain.connect(filt);
+  last.connect(env);
+  env.connect(master);
+  osc.start(); sub.start();
+  if (p.subDetune) sub.detune.value = p.subDetune;
+  voice = { osc, sub, subGain, filt, env, active: false, midi: oldMidi };
+  setPitch(oldMidi, 0);
+  if (wasActive) {
+    const now = ac.currentTime;
+    env.gain.setValueAtTime(0, now);
+    env.gain.linearRampToValueAtTime((parseInt(document.getElementById('vol').value) / 100) * 0.7, now + 0.04);
+    voice.active = true;
+  }
+}
+function setPitch(midi, glideMs) {
+  if (!voice) return;
+  voice.midi = midi;
+  const t = glideMs === undefined
+    ? parseInt(document.getElementById('glide').value) / 1000.0
+    : glideMs / 1000.0;
+  const f = midiToFreq(midi);
+  if (t <= 0.001) {
+    voice.osc.frequency.setValueAtTime(f, ac.currentTime);
+    voice.sub.frequency.setValueAtTime(f / 2, ac.currentTime);
+  } else {
+    voice.osc.frequency.setTargetAtTime(f, ac.currentTime, t);
+    voice.sub.frequency.setTargetAtTime(f / 2, ac.currentTime, t);
+  }
+  refreshDisplay();
+}
+function attackNote(vel) {
+  if (!voice) return;
+  const p = PRESETS[activePresetIdx];
+  vel = Math.max(0.05, Math.min(1.0, vel));
+  const now = ac.currentTime;
+  voice.env.gain.cancelScheduledValues(now);
+  voice.env.gain.setValueAtTime(voice.env.gain.value, now);
+  voice.env.gain.linearRampToValueAtTime(vel,         now + p.attack);
+  voice.env.gain.linearRampToValueAtTime(vel * p.sus, now + p.attack + p.decay);
+  voice.active = true;
+  refreshDisplay();
+}
+function releaseNote() {
+  if (!voice) return;
+  const p = PRESETS[activePresetIdx];
+  const now = ac.currentTime;
+  voice.env.gain.cancelScheduledValues(now);
+  voice.env.gain.setValueAtTime(voice.env.gain.value, now);
+  voice.env.gain.linearRampToValueAtTime(0, now + p.rel);
+  voice.active = false;
+  refreshDisplay();
+}
+
+// Whammy on bass = mute / damp via filter sweep down. Rest = full
+// open filter, pulled = cutoff drops toward the sub.
+let whammyRest = null;
+function applyWhammy(rawValue) {
+  if (!voice) return;
+  if (whammyRest === null) whammyRest = rawValue;
+  const delta = Math.abs(rawValue - whammyRest);
+  const baseFilt = PRESETS[activePresetIdx].filt;
+  const cutoff = Math.max(120, baseFilt * (1 - delta * 0.92));
+  voice.filt.frequency.setTargetAtTime(cutoff, ac.currentTime, 0.03);
+}
+
+// ── Held frets ────────────────────────────────────────────────────
+const heldFrets = new Set();
+const _fretValues = new Array(10).fill(0);
+
+function currentTargetMidi() {
+  const root = parseInt(document.getElementById('root').value);
+  if (heldFrets.size === 0) return root;
+  const highest = Math.max(...heldFrets);
+  return root + fretToSemitone(highest);
+}
+function onHeldChanged() {
+  if (voice && voice.active) setPitch(currentTargetMidi());
+  refreshFretLEDs();
+  refreshDisplay();
+}
+function onPluck() {
+  ensureAudio();
+  setPitch(currentTargetMidi(), 0);
+  let vel = 1.0;
+  if (heldFrets.size > 0) {
+    const highest = Math.max(...heldFrets);
+    if (_fretValues[highest] > 0.05) vel = _fretValues[highest];
+  }
+  attackNote(vel * (parseInt(document.getElementById('vol').value) / 100) * 0.85);
+}
+
+// ── UI ────────────────────────────────────────────────────────────
+const presetsEl = document.getElementById('presets');
+PRESETS.forEach((p, i) => {
+  const b = document.createElement('button');
+  b.className = 'preset-btn' + (i === 0 ? ' active' : '');
+  b.innerHTML = '<b>' + p.name + '</b>';
+  b.title = p.desc;
+  b.addEventListener('click', () => {
+    activePresetIdx = i;
+    document.querySelectorAll('.preset-btn').forEach((x, j) => x.classList.toggle('active', j === i));
+    ensureAudio();
+    buildVoice();
+  });
+  presetsEl.appendChild(b);
+});
+
+const fretsEl = document.getElementById('frets');
+function buildFrets() {
+  fretsEl.innerHTML = '';
+  for (let i = 0; i < 10; i++) {
+    const d = document.createElement('div');
+    d.className = 'fret';
+    d.innerHTML = `<span class="fret-num">F${i + 1}${i >= 5 ? '·s' : ''}</span><span class="fret-note" id="bf-note-${i}">—</span><span class="fret-semi" id="bf-semi-${i}">+0</span>`;
+    d.addEventListener('mousedown', () => {
+      ensureAudio();
+      heldFrets.add(i);
+      setPitch(currentTargetMidi(), 0);
+      attackNote(0.8);
+      refreshFretLEDs();
+    });
+    d.addEventListener('mouseup', () => {
+      heldFrets.delete(i);
+      onHeldChanged();
+    });
+    d.addEventListener('mouseleave', () => {
+      if (heldFrets.has(i)) {
+        heldFrets.delete(i);
+        onHeldChanged();
+      }
+    });
+    fretsEl.appendChild(d);
+  }
+}
+function refreshFretLEDs() {
+  const root = parseInt(document.getElementById('root').value);
+  const highest = heldFrets.size > 0 ? Math.max(...heldFrets) : -1;
+  for (let i = 0; i < 10; i++) {
+    const semi = fretToSemitone(i);
+    const midi = root + semi;
+    document.getElementById('bf-note-' + i).textContent = midiNoteName(midi);
+    document.getElementById('bf-semi-' + i).textContent = '+' + semi;
+    const el = fretsEl.children[i];
+    el.classList.toggle('held', heldFrets.has(i));
+    el.classList.toggle('highest-held', i === highest);
+  }
+  document.getElementById('root-label').textContent = 'ROOT: ' + midiNoteName(root);
+}
+buildFrets();
+refreshFretLEDs();
+
+function refreshDisplay() {
+  if (!voice) { document.getElementById('now-pitch').textContent = '—'; return; }
+  document.getElementById('now-pitch').textContent = midiNoteName(voice.midi);
+  document.getElementById('now-meta').textContent =
+    (heldFrets.size === 0 ? 'open root' : 'F' + (Math.max(...heldFrets) + 1)) +
+    ' · ' + PRESETS[activePresetIdx].name;
+  const vs = document.getElementById('voice-state');
+  vs.textContent = voice.active ? 'RINGING' : 'SILENT';
+  vs.classList.toggle('silent', !voice.active);
+}
+
+// Scope
+const scope = document.getElementById('scope');
+const sctx = scope.getContext('2d');
+function resizeScope() {
+  scope.width  = scope.clientWidth  * (window.devicePixelRatio || 1);
+  scope.height = scope.clientHeight * (window.devicePixelRatio || 1);
+}
+window.addEventListener('resize', resizeScope);
+setTimeout(resizeScope, 50);
+function drawScope() {
+  requestAnimationFrame(drawScope);
+  if (!analyser) return;
+  const w = scope.width, h = scope.height;
+  sctx.fillStyle = '#0e0908'; sctx.fillRect(0, 0, w, h);
+  const buf = new Float32Array(analyser.fftSize);
+  analyser.getFloatTimeDomainData(buf);
+  sctx.strokeStyle = '#c87633'; sctx.lineWidth = 1.5 * (window.devicePixelRatio || 1);
+  sctx.beginPath();
+  const step = w / buf.length;
+  for (let i = 0; i < buf.length; i++) {
+    const x = i * step, y = h * (0.5 - buf[i] * 0.4);
+    if (i === 0) sctx.moveTo(x, y); else sctx.lineTo(x, y);
+  }
+  sctx.stroke();
+}
+drawScope();
+
+// Wiring
+document.getElementById('glide').addEventListener('input', e => {
+  document.getElementById('glide-val').textContent = e.target.value + 'ms';
+});
+['scale','root'].forEach(id => document.getElementById(id).addEventListener('change', () => {
+  refreshFretLEDs();
+  if (voice && voice.active) setPitch(currentTargetMidi());
+}));
+document.getElementById('vol').addEventListener('input', e => {
+  if (master) master.gain.setTargetAtTime(parseInt(e.target.value) / 100, ac.currentTime, 0.02);
+});
+document.getElementById('test-tone').addEventListener('click', () => {
+  ensureAudio();
+  setPitch(currentTargetMidi(), 0);
+  attackNote(0.85);
+  setTimeout(releaseNote, 800);
+});
+
+// ── Riffmaster routing ───────────────────────────────────────────
+const gp = new GamepadInput();
+gp.start();
+mountGamepadOverlay(gp);
+[0, 1, 2, 4, 5, 6, 7].forEach(axIdx => {
+  if (axIdx !== gp.mapping.whammy) bindStrumAxis(gp, axIdx);
+});
+window.addEventListener('gamepadinput-connected', ensureAudio);
+window.addEventListener('gamepadinput-button', e => {
+  ensureAudio();
+  const m = gp.mapping;
+  const fretIdx = m.frets.indexOf(e.detail.idx);
+  const soloIdx = m.soloFrets.indexOf(e.detail.idx);
+  const anyFret = (fretIdx >= 0) ? fretIdx : (soloIdx >= 0 ? soloIdx + 5 : -1);
+  const isStrum = (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown);
+  if (anyFret >= 0) {
+    if (e.detail.pressed) {
+      heldFrets.add(anyFret);
+      _fretValues[anyFret] = e.detail.value !== undefined ? e.detail.value : 1.0;
+    } else {
+      heldFrets.delete(anyFret);
+      _fretValues[anyFret] = 0;
+    }
+    onHeldChanged();
+    return;
+  }
+  if (isStrum && e.detail.pressed) onPluck();
+});
+window.addEventListener('gamepadinput-axis', e => {
+  if (e.detail.idx === gp.mapping.whammy) applyWhammy(e.detail.value);
+});
+['pointerdown','keydown','touchstart','click'].forEach(ev =>
+  document.addEventListener(ev, ensureAudio, { capture: true })
+);
+</script>
+</body>
+</html>
