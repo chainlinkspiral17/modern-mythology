@@ -1,28 +1,133 @@
 extends Control
 ## Music player overlay — full catalog list, heard/unheard, play controls.
 ## Works from main menu and in-game HUD menu.
+##
+## Skinnable: SKINS holds N palette+font definitions. Each skin has an
+## `unlock` clause (key/heard/none). The active skin is read from
+## Settings.music_skin at open(); a `[SKIN ▾]` dropdown in the header
+## lets the user switch among unlocked skins. Visualizer plug-in slot
+## is reserved next to the transport row but not yet populated.
 
 signal closed
 
-const C_GOLD   := Color(0.78, 0.66, 0.29)
-const C_BG     := Color(0.024, 0.020, 0.014, 0.97)
-const C_BORDER := Color(0.70, 0.55, 0.24, 0.35)
-const C_TXT    := Color(0.83, 0.79, 0.69)
-
-# When TRUE, every catalog track is visible regardless of unlock
-# state — useful for studio testing. In ship mode this is FALSE:
-# the player only sees what they've actually unlocked. "key"-type
-# entries gate by SaveSystem.is_unlocked; "heard"-type gate by
-# AudioMgr.is_heard. Entries with no `unlock` field always show
-# (e.g. title_theme).
+# When TRUE, every catalog track + every skin is visible regardless of
+# unlock state — useful for studio testing. In ship mode this is FALSE.
 const UNLOCK_ALL_TRACKS := false
-const C_DIM    := Color(0.45, 0.43, 0.36, 0.6)
+const UNLOCK_ALL_SKINS  := false
 
+# ── Skin definitions ─────────────────────────────────────────────────
+# Each skin is a palette + font swap for the music overlay. The first
+# entry is the default and is always unlocked. `unlock` is one of:
+#   {}                                — always unlocked
+#   {type: "key",   key: "..."}        — SaveSystem.is_unlocked(key)
+#   {type: "heard", src: "..."}        — AudioMgr.is_heard(src)
+const SKINS := [
+	{
+		"id": "diner_booth",
+		"name": "Diner Booth",
+		"unlock": {},
+		"bg":     Color(0.024, 0.020, 0.014, 0.97),
+		"border": Color(0.70, 0.55, 0.24, 0.35),
+		"accent": Color(0.78, 0.66, 0.29),
+		"txt":    Color(0.83, 0.79, 0.69),
+		"dim":    Color(0.45, 0.43, 0.36, 0.6),
+		"title_font": "res://resources/fonts/Cinzel-Regular.ttf",
+		"title_size": 13,
+		"label_font": "res://resources/fonts/Cinzel-Regular.ttf",
+		"label_size": 9,
+		"track_font": "res://resources/fonts/IMFellEnglish-Regular.ttf",
+		"track_size": 13,
+	},
+	{
+		"id": "cathedral",
+		"name": "Cathedral of Rust",
+		"unlock": {"type": "key", "key": "milestone:gauntlet_win"},
+		"bg":     Color(0.043, 0.027, 0.020, 0.97),
+		"border": Color(0.62, 0.38, 0.22, 0.40),
+		"accent": Color(0.85, 0.45, 0.22),
+		"txt":    Color(0.82, 0.72, 0.60),
+		"dim":    Color(0.45, 0.36, 0.27, 0.6),
+		"title_font": "res://resources/fonts/Cinzel-Regular.ttf",
+		"title_size": 13,
+		"label_font": "res://resources/fonts/SpaceMono-Regular.ttf",
+		"label_size": 9,
+		"track_font": "res://resources/fonts/IMFellEnglish-Regular.ttf",
+		"track_size": 13,
+	},
+	{
+		"id": "tape_reel",
+		"name": "Tape Reel",
+		"unlock": {"type": "heard", "src": "assets/audio/bgm/vol5_elicia_theme_solo.ogg"},
+		"bg":     Color(0.087, 0.067, 0.043, 0.97),
+		"border": Color(0.65, 0.52, 0.31, 0.40),
+		"accent": Color(0.92, 0.83, 0.55),
+		"txt":    Color(0.92, 0.87, 0.74),
+		"dim":    Color(0.62, 0.55, 0.38, 0.6),
+		"title_font": "res://resources/fonts/SpecialElite-Regular.ttf",
+		"title_size": 13,
+		"label_font": "res://resources/fonts/SpecialElite-Regular.ttf",
+		"label_size": 9,
+		"track_font": "res://resources/fonts/SpecialElite-Regular.ttf",
+		"track_size": 13,
+	},
+	{
+		"id": "riverboat",
+		"name": "Riverboat",
+		"unlock": {"type": "heard", "src": "assets/audio/bgm/vol5_riverboat_drone.ogg"},
+		"bg":     Color(0.012, 0.043, 0.027, 0.97),
+		"border": Color(0.40, 0.62, 0.30, 0.40),
+		"accent": Color(0.85, 0.71, 0.27),
+		"txt":    Color(0.78, 0.85, 0.71),
+		"dim":    Color(0.40, 0.45, 0.36, 0.6),
+		"title_font": "res://resources/fonts/Cinzel-Regular.ttf",
+		"title_size": 13,
+		"label_font": "res://resources/fonts/Cinzel-Regular.ttf",
+		"label_size": 9,
+		"track_font": "res://resources/fonts/IMFellEnglish-Regular.ttf",
+		"track_size": 13,
+	},
+	{
+		"id": "twenty_four_hour_diner",
+		"name": "24-Hour Diner",
+		"unlock": {"type": "key", "key": "milestone:gauntlet_loss"},
+		"bg":     Color(0.020, 0.020, 0.024, 0.97),
+		"border": Color(0.92, 0.38, 0.55, 0.45),
+		"accent": Color(0.20, 0.95, 0.85),
+		"txt":    Color(0.85, 0.88, 0.92),
+		"dim":    Color(0.45, 0.48, 0.52, 0.6),
+		"title_font": "res://resources/fonts/BebasNeue-Regular.ttf",
+		"title_size": 14,
+		"label_font": "res://resources/fonts/BebasNeue-Regular.ttf",
+		"label_size": 10,
+		"track_font": "res://resources/fonts/CourierPrime-Regular.ttf",
+		"track_size": 13,
+	},
+	{
+		"id": "full_moon",
+		"name": "Full Moon",
+		"unlock": {"type": "key", "key": "milestone:candles_lit"},
+		"bg":     Color(0.027, 0.024, 0.043, 0.97),
+		"border": Color(0.62, 0.55, 0.85, 0.40),
+		"accent": Color(0.85, 0.82, 0.92),
+		"txt":    Color(0.85, 0.82, 0.92),
+		"dim":    Color(0.50, 0.48, 0.60, 0.6),
+		"title_font": "res://resources/fonts/Cinzel-Regular.ttf",
+		"title_size": 13,
+		"label_font": "res://resources/fonts/Cinzel-Regular.ttf",
+		"label_size": 9,
+		"track_font": "res://resources/fonts/IMFellEnglish-Regular.ttf",
+		"track_size": 13,
+	},
+]
+
+var _skin:          Dictionary = {}
 var _track_buttons: Dictionary = {}
-var _now_lbl:   Label = null
-var _play_btn:  Button = null
-var _catalog:   Array  = []
-var _built:     bool   = false
+var _now_lbl:       Label  = null
+var _play_btn:      Button = null
+var _skin_menu_btn: MenuButton = null
+var _viz_host:      Control = null
+var _catalog:       Array  = []
+var _built:         bool   = false
 
 
 func open() -> void:
@@ -32,10 +137,37 @@ func open() -> void:
 		ch.queue_free()
 	_track_buttons.clear()
 	_built = false
+	_skin = _resolve_active_skin()
 	_build()
 	_built = true
 	_refresh()
 	visible = true
+
+
+# ── Skin resolution ──────────────────────────────────────────────────
+# Pick the skin the user selected via Settings.music_skin, if it's
+# unlocked. Otherwise fall back to the first unlocked skin (default
+# diner_booth is always unlocked).
+func _resolve_active_skin() -> Dictionary:
+	var want: String = Settings.music_skin
+	for s: Dictionary in SKINS:
+		if s["id"] == want and _skin_unlocked(s):
+			return s
+	return SKINS[0]
+
+
+func _skin_unlocked(s: Dictionary) -> bool:
+	if UNLOCK_ALL_SKINS:
+		return true
+	var u: Dictionary = s.get("unlock", {})
+	var t: String = String(u.get("type", ""))
+	if t == "":
+		return true
+	if t == "key":
+		return SaveSystem.is_unlocked(String(u.get("key", "")))
+	if t == "heard":
+		return AudioMgr.is_heard(String(u.get("src", "")))
+	return false
 
 
 func _build() -> void:
@@ -51,8 +183,8 @@ func _build() -> void:
 	card.offset_top    = -300
 	card.offset_bottom = 300
 	var st := StyleBoxFlat.new()
-	st.bg_color     = C_BG
-	st.border_color = C_BORDER
+	st.bg_color     = _skin["bg"]
+	st.border_color = _skin["border"]
 	st.set_border_width_all(1)
 	card.add_theme_stylebox_override("panel", st)
 	add_child(card)
@@ -70,10 +202,19 @@ func _build() -> void:
 	var header_row := HBoxContainer.new()
 	outer.add_child(header_row)
 	var title_lbl := Label.new()
-	title_lbl.text = "MUSIC PLAYER · UNLOCKED TEST · v4"
-	_apply_font(title_lbl, SkinDB.F_CINZEL, 13, C_GOLD)
+	title_lbl.text = "MUSIC PLAYER · " + String(_skin["name"]).to_upper()
+	_apply_font(title_lbl, _skin["title_font"], _skin["title_size"], _skin["accent"])
 	title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header_row.add_child(title_lbl)
+
+	# Skin dropdown — lists unlocked skins, lets the user switch live.
+	_skin_menu_btn = MenuButton.new()
+	_skin_menu_btn.text = "SKIN ▾"
+	_skin_menu_btn.custom_minimum_size = Vector2(80, 32)
+	_apply_font_btn(_skin_menu_btn, _skin["label_font"], _skin["label_size"], _skin["accent"])
+	_populate_skin_menu()
+	header_row.add_child(_skin_menu_btn)
+
 	var close_btn := Button.new()
 	close_btn.text = "✕"
 	close_btn.custom_minimum_size = Vector2(32, 32)
@@ -82,17 +223,25 @@ func _build() -> void:
 
 	outer.add_child(_rule())
 
+	# Visualizer host (above NOW PLAYING) — empty for now, populated
+	# by a follow-up pass. Sized to 64px tall so the layout already
+	# reserves the space.
+	_viz_host = Control.new()
+	_viz_host.custom_minimum_size = Vector2(0, 64)
+	_viz_host.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	outer.add_child(_viz_host)
+
 	# Now Playing row
 	var np_row := HBoxContainer.new()
 	np_row.add_theme_constant_override("separation", 6)
 	outer.add_child(np_row)
 	var np_lbl := Label.new()
 	np_lbl.text = "NOW PLAYING"
-	_apply_font(np_lbl, SkinDB.F_CINZEL, 9, C_DIM)
+	_apply_font(np_lbl, _skin["label_font"], _skin["label_size"], _skin["dim"])
 	np_row.add_child(np_lbl)
 	_now_lbl = Label.new()
 	_now_lbl.text = "—"
-	_apply_font(_now_lbl, SkinDB.F_IMFELL_R, 14, C_TXT)
+	_apply_font(_now_lbl, _skin["track_font"], 14, _skin["txt"])
 	_now_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_now_lbl.clip_text = true
 	np_row.add_child(_now_lbl)
@@ -134,15 +283,11 @@ func _build() -> void:
 
 	_catalog = SceneDataDB.get_music_catalog()
 	print("[MusicPlayer] catalog size: ", _catalog.size(),
-	      " · UNLOCK_ALL_TRACKS=", UNLOCK_ALL_TRACKS)
+		  " · UNLOCK_ALL_TRACKS=", UNLOCK_ALL_TRACKS,
+		  " · skin=", _skin["id"])
 	var cur_vol := -2
 	var _added := 0
 	for entry: Dictionary in _catalog:
-		# Lock-gate by the entry's own unlock policy. "key" entries
-		# require SaveSystem.is_unlocked(key); "heard" entries
-		# require AudioMgr.is_heard(src). Anything else (no unlock
-		# field, or any unrecognized type) is treated as always
-		# visible — title_theme is the canonical case.
 		var unlock: Dictionary = entry.get("unlock", {})
 		var unlock_type: String = String(unlock.get("type", ""))
 		var src_for_gate: String = String(entry.get("src", ""))
@@ -159,7 +304,8 @@ func _build() -> void:
 			cur_vol = vol
 			var vol_lbl := Label.new()
 			vol_lbl.text = "  MENU" if vol == 0 else "  VOL. %d" % vol
-			_apply_font(vol_lbl, SkinDB.F_CINZEL, 9, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
+			var dimmed_accent: Color = Color(_skin["accent"].r, _skin["accent"].g, _skin["accent"].b, 0.55)
+			_apply_font(vol_lbl, _skin["label_font"], _skin["label_size"], dimmed_accent)
 			vol_lbl.custom_minimum_size.y = 22
 			track_vbox.add_child(vol_lbl)
 
@@ -169,7 +315,7 @@ func _build() -> void:
 		var t_btn := Button.new()
 		t_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		t_btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		_style_track_btn(t_btn, false, false)
+		_style_track_btn(t_btn, false)
 		t_btn.custom_minimum_size.y = 36
 
 		var s: String = src
@@ -187,13 +333,13 @@ func _build() -> void:
 		dot_lbl.text = "●" if AudioMgr.is_heard(src) else "○"
 		dot_lbl.add_theme_font_size_override("font_size", 10)
 		dot_lbl.add_theme_color_override("font_color",
-			Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.8) if AudioMgr.is_heard(src) else C_DIM)
+			Color(_skin["accent"].r, _skin["accent"].g, _skin["accent"].b, 0.8) if AudioMgr.is_heard(src) else _skin["dim"])
 		dot_lbl.custom_minimum_size.x = 16
 		t_hbox.add_child(dot_lbl)
 
 		var name_lbl := Label.new()
 		name_lbl.text = track_title
-		_apply_font(name_lbl, SkinDB.F_IMFELL_R, 13, C_TXT)
+		_apply_font(name_lbl, _skin["track_font"], _skin["track_size"], _skin["txt"])
 		name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		name_lbl.clip_text = true
 		t_hbox.add_child(name_lbl)
@@ -204,8 +350,40 @@ func _build() -> void:
 		_added += 1
 	print("[MusicPlayer] added ", _added, " track buttons")
 
-	# Connect track change signal
 	AudioMgr.track_changed.connect(_on_track_changed)
+
+
+# ── Skin dropdown ────────────────────────────────────────────────────
+func _populate_skin_menu() -> void:
+	var pop: PopupMenu = _skin_menu_btn.get_popup()
+	pop.clear()
+	# Filter to unlocked skins, with a count of locked ones rendered
+	# as a disabled trailing entry so the player sees there's more.
+	var locked: int = 0
+	for i in SKINS.size():
+		var s: Dictionary = SKINS[i]
+		if _skin_unlocked(s):
+			var marker: String = "• " if s["id"] == _skin["id"] else "  "
+			pop.add_item(marker + String(s["name"]), i)
+		else:
+			locked += 1
+	if locked > 0:
+		pop.add_separator()
+		var locked_idx: int = pop.item_count
+		pop.add_item("(%d locked)" % locked, 9999)
+		pop.set_item_disabled(locked_idx, true)
+	if not pop.id_pressed.is_connected(_on_skin_picked):
+		pop.id_pressed.connect(_on_skin_picked)
+
+
+func _on_skin_picked(id: int) -> void:
+	if id < 0 or id >= SKINS.size():
+		return
+	var picked: Dictionary = SKINS[id]
+	if not _skin_unlocked(picked):
+		return
+	Settings.music_skin = String(picked["id"])
+	open()  # rebuild with the new skin
 
 
 func _refresh() -> void:
@@ -216,12 +394,12 @@ func _refresh() -> void:
 	for src in _track_buttons:
 		var d: Dictionary = _track_buttons[src]
 		var is_current: bool = (src == cur)
-		_style_track_btn(d["btn"] as Button, is_current, AudioMgr.is_heard(src))
+		_style_track_btn(d["btn"] as Button, is_current)
 		(d["dot"] as Label).text = "●" if AudioMgr.is_heard(src) else "○"
 		(d["dot"] as Label).add_theme_color_override("font_color",
-			C_GOLD if is_current else (Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.6) if AudioMgr.is_heard(src) else C_DIM))
+			_skin["accent"] if is_current else (Color(_skin["accent"].r, _skin["accent"].g, _skin["accent"].b, 0.6) if AudioMgr.is_heard(src) else _skin["dim"]))
 		(d["name"] as Label).add_theme_color_override("font_color",
-			C_GOLD if is_current else C_TXT)
+			_skin["accent"] if is_current else _skin["txt"])
 
 
 func _on_play_pause() -> void:
@@ -239,10 +417,11 @@ func _on_track_changed(_src: String) -> void:
 		_refresh()
 
 
-func _style_track_btn(btn: Button, active: bool, _heard: bool) -> void:
+func _style_track_btn(btn: Button, active: bool) -> void:
+	var accent: Color = _skin["accent"]
 	var st := StyleBoxFlat.new()
-	st.bg_color     = Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.08) if active else Color(0, 0, 0, 0)
-	st.border_color = Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.4)  if active else Color(0, 0, 0, 0)
+	st.bg_color     = Color(accent.r, accent.g, accent.b, 0.08) if active else Color(0, 0, 0, 0)
+	st.border_color = Color(accent.r, accent.g, accent.b, 0.4)  if active else Color(0, 0, 0, 0)
 	st.set_border_width_all(1 if active else 0)
 	st.content_margin_left   = 8.0
 	st.content_margin_right  = 8.0
@@ -250,8 +429,8 @@ func _style_track_btn(btn: Button, active: bool, _heard: bool) -> void:
 	st.content_margin_bottom = 4.0
 	btn.add_theme_stylebox_override("normal",  st)
 	var hover_st := st.duplicate() as StyleBoxFlat
-	hover_st.bg_color     = Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.12)
-	hover_st.border_color = Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.5)
+	hover_st.bg_color     = Color(accent.r, accent.g, accent.b, 0.12)
+	hover_st.border_color = Color(accent.r, accent.g, accent.b, 0.5)
 	hover_st.set_border_width_all(1)
 	btn.add_theme_stylebox_override("hover",  hover_st)
 	btn.add_theme_stylebox_override("focus",  hover_st)
@@ -267,12 +446,19 @@ func _ctrl_btn(text: String) -> Button:
 
 func _rule() -> ColorRect:
 	var r := ColorRect.new()
-	r.color = C_BORDER
+	r.color = _skin["border"]
 	r.custom_minimum_size.y = 1
 	return r
 
 
 func _apply_font(node: Label, path: String, size: int, col: Color) -> void:
+	if ResourceLoader.exists(path):
+		node.add_theme_font_override("font", load(path) as Font)
+	node.add_theme_font_size_override("font_size", size)
+	node.add_theme_color_override("font_color", col)
+
+
+func _apply_font_btn(node: Button, path: String, size: int, col: Color) -> void:
 	if ResourceLoader.exists(path):
 		node.add_theme_font_override("font", load(path) as Font)
 	node.add_theme_font_size_override("font_size", size)
