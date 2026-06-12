@@ -4061,6 +4061,28 @@ func _check_requirement(req: Dictionary) -> bool:
 				if ord_id != "" and _inventory.has(ord_id):
 					return true
 			return false
+		"has_inspiration_at_least":
+			# Magician — BUILD-style gate. The card is only playable
+			# when the player has banked at least N inspiration. The
+			# card's effect list typically spends_inspiration N on
+			# resolve, so the predicate prevents partial spends.
+			return _inspiration >= int(req.get("n", 1))
+		"has_stagnation_below":
+			return _stagnation < int(req.get("n", 12))
+		"has_doubt_below":
+			return _doubt < int(req.get("n", 7))
+		"visitor_in_bright_space":
+			# MOTH-style. True if any arrived, unconnected visitor is
+			# at one of the cathedral's "lit" stations. Bright = the
+			# inner cluster (warm-lit pieces around the workbench) plus
+			# the explicitly-illuminated outer-cluster stations.
+			for vid in _visitors_state:
+				var st: Dictionary = _visitors_state[vid]
+				if not st.get("arrived", false): continue
+				if st.get("connected", false): continue
+				if _is_bright_space(String(st.get("pos", ""))):
+					return true
+			return false
 	return true
 
 
@@ -4124,6 +4146,39 @@ func _is_threshold(pos: String) -> bool:
 		if s.get("id", "") == pos and s.get("kind", "") == "threshold":
 			return true
 	return false
+
+
+# Magician / cathedral — the "bright" zone. Inner cluster (warm-lit
+# finished pieces around the workbench) plus the explicitly-illuminated
+# outer-cluster stations (TOWER neon, STAR lights, SUN, JUDGEMENT
+# platform). MOTH demon's mechanics route on this set.
+const _CATHEDRAL_BRIGHT_SPACES := [
+	"magician",      # workbench lamp
+	"fool",
+	"priestess",
+	"empress",
+	"emperor",
+	"hierophant",    # inner cluster, warm-lit
+	"tower",         # neon
+	"star",          # cluster of cold-blue LEDs
+	"sun",           # lit pool
+	"judgement",     # platform
+]
+func _is_bright_space(pos: String) -> bool:
+	if _arcana_id != "magician":
+		return false
+	return pos in _CATHEDRAL_BRIGHT_SPACES
+
+
+# Threshold-locked flag check: lock_threshold_open writes
+# `threshold_locked:<id>` = <expiry-turn>. A threshold is "locked open"
+# while the current turn <= expiry. Used by both the win-path
+# threshold check and the threshold-claim path.
+func _is_threshold_locked_open(pos: String) -> bool:
+	var key := "threshold_locked:" + pos
+	if not _flags.has(key):
+		return false
+	return _turn <= int(_flags[key])
 
 
 func _win_conditions_met() -> bool:
@@ -4741,11 +4796,89 @@ func _resolve_effect(e: Dictionary) -> void:
 				_active_demons[did] = dur
 				_log_line("[color=#c8a268]✦ demon %s summoned for %d turns.[/color]" % [did.to_upper(), dur])
 
+		"summon_random_demon":
+			# Pull a random demon from the eight-demon Magician roster
+			# that ISN'T already active. Falls back to extending a
+			# random active one if all eight are already summoned.
+			var roster: Array = ["vagrant","cicada","moth","steamboat","weir","filly","starling","husk"]
+			var dur2: int = int(e.get("duration_turns", 4))
+			var available: Array = []
+			for d_id in roster:
+				if not _active_demons.has(d_id): available.append(d_id)
+			if available.is_empty():
+				# Pick any active one and add to its duration
+				if not _active_demons.is_empty():
+					var picked: String = _active_demons.keys()[randi() % _active_demons.size()]
+					_active_demons[picked] = int(_active_demons[picked]) + dur2
+					_log_line("[color=#c8a268]✦ all demons already here · %s gains %d turns.[/color]" % [picked.to_upper(), dur2])
+			else:
+				var did_pick: String = available[randi() % available.size()]
+				_active_demons[did_pick] = dur2
+				_log_line("[color=#c8a268]✦ a new demon wakes · %s for %d turns.[/color]" % [did_pick.to_upper(), dur2])
+
+		"all_active_demons_gain_duration":
+			# Moon-rises card / similar — every currently-active demon
+			# gets N more turns of stay. Empty-set falls through silently.
+			var add: int = int(e.get("amount", 2))
+			if _active_demons.is_empty():
+				_log_line("[i]the moon rises · no demons are listening yet.[/i]")
+			else:
+				for did_k in _active_demons.keys():
+					_active_demons[did_k] = int(_active_demons[did_k]) + add
+				_log_line("[color=#c8a268]✦ the moon rises · %d demons gain %d turns each.[/color]" % [_active_demons.size(), add])
+
 		"lock_threshold_open":
-			# Stub — relies on threshold-state tracking that the engine
-			# doesn't yet have. For now, log the intent.
-			_log_line("[color=#7cffb0]threshold %s locked open for %d turns.[/color]" %
-				[String(e.get("threshold", "?")).to_upper(), int(e.get("turns", 3))])
+			# Locks a named threshold open for N turns. Tracked in
+			# _flags as "threshold_locked:<id>" with the turn-count
+			# expiry; the threshold-render code checks this flag and
+			# treats the threshold as open + non-claimable while set.
+			var tid: String = String(e.get("threshold", ""))
+			var turns: int = int(e.get("turns", 3))
+			if tid != "":
+				_flags["threshold_locked:" + tid] = _turn + turns
+				_log_line("[color=#7cffb0]threshold %s locked open for %d turns.[/color]" %
+					[tid.to_upper(), turns])
+
+		"force_connect_visitor_in_bright_space":
+			# MOTH demon — picks the first arrived/unconnected visitor
+			# at a bright space and force-connects them. Skips the
+			# greet/listen/deliver/sit_with sequence; useful when
+			# you're out of time but need the visitor counted.
+			var picked_vid: String = ""
+			for vid_m in _visitors_state:
+				var st_m: Dictionary = _visitors_state[vid_m]
+				if not st_m.get("arrived", false): continue
+				if st_m.get("connected", false): continue
+				if _is_bright_space(String(st_m.get("pos", ""))):
+					picked_vid = vid_m
+					break
+			if picked_vid == "":
+				_log_line("[i]moth circles a darker piece. no bright-space visitor to claim.[/i]")
+			else:
+				var vst_m: Dictionary = _visitors_state[picked_vid]
+				vst_m["connected"] = true
+				vst_m["progress"] = 4
+				vst_m["forced_by"] = "moth"
+				var v_name: String = String(_visitors_def.get(picked_vid, {}).get("name", picked_vid))
+				_log_line("[color=#c8a268]✦ moth claims %s for you. they leave with the light.[/color]" % v_name)
+				_show_toast("Moth-claimed: %s" % v_name, "#c8a268")
+
+		"buy_random_tableau":
+			# "Someone bought the file" — a gravity-driven shopper
+			# decrements one random tableau card's stock by 1. If a
+			# card was already at 0 it's skipped; if none have stock
+			# remaining the log notes the empty shelves.
+			var with_stock: Array = []
+			for cid_t in _tableau_stock.keys():
+				if int(_tableau_stock[cid_t]) > 0:
+					with_stock.append(cid_t)
+			if with_stock.is_empty():
+				_log_line("[i]somebody came in to buy. the shelves are bare.[/i]")
+			else:
+				var bought: String = String(with_stock[randi() % with_stock.size()])
+				_tableau_stock[bought] = int(_tableau_stock[bought]) - 1
+				var c_title: String = String(_action_cards.get(bought, {}).get("title", bought))
+				_log_line("[color=#7c8398][i]somebody bought %s before you could.[/i][/color]" % c_title.to_upper())
 
 		"mark_space":
 			# Lightweight space-key marker for RECORD-style mechanics.
@@ -6350,6 +6483,13 @@ func _tick_visitor_patience() -> void:
 		if not cv.is_empty(): continue
 		var patience: int = int(vdef.get("patience",
 			PATIENCE_BY_MOOD.get(String(vdef.get("mood", "preoccupied")), 6)))
+		# The Twins (and any future paired visitors with
+		# `shared_patience: true`) effectively double their patience —
+		# they're two figures with one timer, so they wait longer
+		# before "standing up" together. Matches the design intent
+		# of the visitors.json entry.
+		if bool(vdef.get("shared_patience", false)):
+			patience = patience * 2
 		var arrived_turn: int = int(st.get("arrived_turn", 1))
 		var elapsed: int = _turn - arrived_turn
 		var remaining: int = patience - elapsed
