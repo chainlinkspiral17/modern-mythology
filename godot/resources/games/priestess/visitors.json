@@ -1,162 +1,280 @@
 {
   "scope": "priestess",
-  "notes": "Elicia's recording-booth roster. These are the people who walked into the booth tonight because the booth was the only place they could say it. The booth is one room in the Cathedral of Rust and Code's south wing — Frasier's converted warehouse — but when the door is shut the cathedral isn't here anymore, only the wires and the reels and the small chairs. Elicia has been the engineer here for nine years. She has 1,247 cassettes on the wall and she has labeled each one in her own hand.",
+  "notes": "The Pomegranate Hour roster — cast & crew (past and present) + the subjects of the art. The arcana is hermetic: nobody from outside the show walks in. The places of other arcana appear because the show shot at them; the people of other arcana do not. Cast & crew use the standard four-step connection (greet → listen → deliver → sit_with). Subjects of the art use a parallel verb set (see → voice → cut → lock) — the same engine progression labeled differently. The four close collaborators (Hen, Marisol, Davey, Young Elicia) are the spine; the further ones (Reggie, Prof. Kang, the New Collaborator) come and go; the six subjects each correspond to one episode-space and are bound to it.",
   "visitors": [
     {
-      "id": "the_returner",
-      "name": "The Returner",
-      "scenarios": ["cicada_session", "long_quiet", "tape_witness"],
-      "arrival": { "kind": "on_board_at_start", "pos": "lounge" },
-      "lore_token": "the_returner_came_back",
-      "lore_text": "Someone who recorded here once before — eight months ago, on a tape labeled BOOTH 47 · 11:18 PM in Elicia's own hand. They came back tonight not because they had something new to say, but because they wanted to know who they were the first time. They remember the chair, the mic-stand height, the precise temperature of the booth. They remember that Elicia held still when they told her the story they hadn't told anyone else. They came back to find out if the booth would hold still again.",
-      "accent": "#a99070",
-      "mood": "preoccupied",
-      "patience": 7,
-      "steps": {
-        "greet":   "They nod from the lounge bench. The bench remembers them. The bench remembers everyone, but for them it remembers more.",
-        "listen":  "They unfold the story they recorded eight months ago. The story is shorter this time. The parts that mattered then matter less now; the parts that didn't matter then are the whole story tonight. Their voice is steadier. The shape is the same shape.",
-        "deliver": "You bring the old tape out from the second drawer down. They hold it without playing it. They turn it twice. They ask you to play it. They ask you to stop halfway. They thank you for stopping.",
-        "sit_with": "You sit at the console while they sit in the booth, and neither of you records. The reel turns and the reel does not catch on anything tonight. That counts as the session. Elicia would say it counts as a session most nights."
-      }
-    },
-    {
-      "id": "the_stranger_in_the_booth",
-      "name": "The Stranger in the Booth",
-      "scenarios": ["cicada_session", "long_quiet"],
-      "arrival": { "kind": "scheduled", "turn": 1, "from": "entry_hall", "to": "booth" },
-      "lore_token": "stranger_came_to_speak",
-      "lore_text": "They didn't make an appointment. They were already sitting in the booth when Elicia came in from the kitchenette. The door was unlocked, the way she always leaves it for the late hour. They walked in off the bank and they walked into the booth, the way some people walk into a chapel they'd never planned to step inside. They have a face she half-recognizes from somewhere — a vol 1 diner photograph, maybe, the kind of face that gets caught in the background of strangers' lives.",
-      "accent": "#d8a060",
-      "mood": "lonely",
-      "patience": 5,
-      "steps": {
-        "greet":   "They look up. The look is heavier than the room is. They do not apologize for being there before her.",
-        "listen":  "They start in the middle of a sentence that began before you were born. They are not going to start it over. You learn the start of the sentence by listening to where the middle goes.",
-        "deliver": "They ask for water. You bring water in a glass from the kitchenette — the heavy-bottomed one, the one Elicia keeps for the visitors who'll need to set something down. They drink half. They cap the bottle for you. They place it on the floor next to the booth-chair, exactly the way she'd have placed it.",
-        "sit_with": "You sit across the glass. They lean toward the mic. You lean toward the speaker. Five minutes pass on the master reel's counter. They never say their name. They never have to. You will mark the tape STRANGER · BOOTH · LATE in your own hand, and it will sit on the wall with the other 1,247 cassettes that hold what people couldn't carry."
-      }
-    },
-    {
-      "id": "the_kid_with_the_letter",
-      "name": "The Kid with the Letter",
-      "scenarios": ["cicada_session"],
-      "arrival": { "kind": "scheduled", "turn": 2, "from": "entry_hall", "to": "lounge" },
-      "lore_token": "kid_read_the_letter_aloud",
-      "lore_text": "A teenager carrying a four-page letter they wrote to someone they will not send it to. They want the letter on tape because the booth, they think, is closer than the mailbox. The letter is to a parent who is alive. The kid is sixteen and trying very hard to look thirty, and the trying is the most sixteen thing about them. They got the booth's address from a sticker on a payphone in the bus depot. Cora drove them in.",
-      "accent": "#7cffb0",
-      "mood": "preoccupied",
-      "patience": 6,
-      "steps": {
-        "greet":   "They are sixteen and trying very hard to look thirty. They tell you they're nineteen. You don't correct them. The lounge is the room for that.",
-        "listen":  "They read the letter to you instead of into the mic first. You tell them that's fine. They read it twice. The second time is the read they'll record. The first time is the read they needed to give to a person who wasn't the person.",
-        "deliver": "You hand them the foam pop-filter. They look at it like a sacred object. You set the mic at their height. You set their height by where their shoulders are, not by where they're holding their chin.",
-        "sit_with": "You record the letter. They listen back to themselves through the headphones with their eyes closed. They cry quietly. They thank you. They write the date on the cassette label in their own hand: a careful uneven date. They take the tape with them. They leave the letter on the lounge couch. You will not bring this up. The couch knows."
-      }
-    },
-    {
-      "id": "the_pre_funeral_son",
-      "name": "Son · Pre-Funeral",
-      "scenarios": ["long_quiet", "tape_witness"],
-      "arrival": { "kind": "scheduled", "turn": 2, "from": "entry_hall", "to": "vestibule" },
-      "lore_token": "son_recorded_the_eulogy_early",
-      "lore_text": "His father is in hospice across the river. The doctors have said weeks; the son has heard it as days. He wants to record the eulogy now, because he is afraid he won't have the words when the time comes, and afraid in a different way that he will. His father owned a small marine-supply shop on the bank in the 1980s. The son ran cassettes for him as a kid. He is now older than his father was when he opened the shop.",
-      "accent": "#c87633",
-      "mood": "intense",
-      "patience": 4,
-      "steps": {
-        "greet":   "He won't sit down. You let him stand. The vestibule's red carpet has held adults his height for forty years.",
-        "listen":  "He talks about the diner. He talks about a fishing trip. He talks about a thing his father did that was bad and a thing his father did that was good. He talks about both as if they belong to the same man, which is the hardest part of a eulogy and the part nobody mentions.",
-        "deliver": "You bring him a mug of water and the long-mic, the one for standing close. He doesn't want the booth. He wants the kitchenette. You set the long-mic up in the kitchenette. The kitchenette has held two of his father's friends already, years ago, on a tape labeled BOOTH 22.",
-        "sit_with": "You sit while he records the second take, which is shorter than the first take but better. He thanks you. He takes the tape with him. He does not leave a copy on the wall. You do not ask him to. You write the label in your own hand on the master-reel's index card so you'll remember the date, even though the tape isn't here. The cathedral on the other side of the wall is doing whatever it does."
-      }
-    },
-    {
-      "id": "the_writer",
-      "name": "The Writer",
-      "scenarios": ["cicada_session"],
-      "arrival": { "kind": "scheduled", "turn": 3, "from": "entry_hall", "to": "lounge" },
-      "lore_token": "writer_read_the_unfinished_chapter",
-      "lore_text": "Local writer working on a novel they've been working on for nine years. Vol 5 lives in their drafts. They come to the booth to read a chapter aloud to see if it works in a voice that isn't theirs — to see if a story breathes when somebody else is holding it. Elicia has heard six of their drafts now. The book has been getting smaller every draft, which the writer thinks is failure and Elicia thinks is the work.",
-      "accent": "#9b5fd3",
-      "mood": "talkative",
-      "patience": 7,
-      "steps": {
-        "greet":   "They have a manuscript folder. The corners are rounded from carrying. The label on the folder is the chapter title in their own hand: CHAPTER 17 — what the steamboat saw.",
-        "listen":  "They read the chapter. Twice. The second reading is slower. It works the second time. The first reading is for the writer. The second reading is for the room.",
-        "deliver": "You bring them coffee. Black. They drink half before they finish reading. They put the mug on the lounge end-table and it leaves a ring on a stack of magazines that was never going to be read.",
-        "sit_with": "You sit and listen to the playback together. They mark the parts that landed in pencil. They take the tape AND a copy. They will not return for at least a month. They are between drafts now. They will be between drafts forever, the way some writers are. Elicia would not say this aloud. She thinks it kindly."
-      }
-    },
-    {
-      "id": "the_truth_teller",
-      "name": "The Truth-Teller",
-      "scenarios": ["tape_witness"],
-      "arrival": { "kind": "scheduled", "turn": 1, "from": "entry_hall", "to": "booth" },
-      "lore_token": "truth_was_recorded",
-      "lore_text": "Someone here at 2 AM to say a true thing they have not said anywhere else. They have known the true thing for nine years. They have rehearsed it three hundred times in the car on the way somewhere else. The booth is the only place small enough to hold it without the rest of their life knowing they said it. They will not say their name. They will not say the year. They will not say the names of the people the truth concerns. The shape of the truth will be enough.",
-      "accent": "#ff5040",
-      "mood": "intense",
-      "patience": 3,
-      "steps": {
-        "greet":   "They will not look at you. They look at the mic. They have looked at the mic for forty minutes before you came in from the kitchenette. The mic has held still.",
-        "listen":  "They speak in a voice that has not been used at this volume in a long time. Their voice does the thing voices do when they have been kept under a coat for a decade. The cicadas outside have paused for the duration. You don't know if they paused for the truth or by coincidence.",
-        "deliver": "You hand them the headphones. They wave them off. They don't want to hear themselves. They never will. That is the deal they made with the booth before they came in. The booth honors it.",
-        "sit_with": "You sit at the console. You do not turn the playback on. You let the recording exist without being heard. That is what they came for. The tape will go on the wall in the locked drawer. Elicia keeps the key. Frasier has the only other copy of the key, and he does not know which drawer the locked drawer is."
-      }
-    },
-    {
-      "id": "the_apologist",
-      "name": "The Apologist",
+      "id": "hen",
+      "name": "Hen (the director)",
+      "kind": "cast_crew",
       "scenarios": ["tape_witness", "long_quiet"],
-      "arrival": { "kind": "scheduled", "turn": 4, "from": "entry_hall", "to": "vestibule" },
-      "lore_token": "apology_committed_to_tape",
-      "lore_text": "Coming to record an apology for someone they wronged in 1994. The person they wronged will not hear it directly — they are not in contact, and the apologist has decided the contact would be a second wrong on top of the first. The tape is for the apologist to be able to say it out loud, fully, once. They will mark the tape DO NOT PLAY UNTIL I AM GONE and they will leave it on the wall. Elicia has nineteen tapes labeled the same way.",
-      "accent": "#ff8060",
-      "mood": "lonely",
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "phone_call", "to": "lounge" },
+      "lore_token": "hen_called",
+      "lore_text": "Hen has been the director-by-name since 1995. He pitched the six. He drew the hallway in Ep. 3 on the back of a placemat at a diner she can't remember the name of. He moved to LA in '99 for a job that became another job and then a career, and the show became the thing he meant to come back for. He calls twice a year. The card is always from the same Hallmark in Echo Park. The voicemails are longer than the calls he actually completes.",
+      "accent": "#9a6b5c",
+      "mood": "absent",
+      "patience": 6,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "The phone rings. The 323 area code. You pick up on the fourth ring, the way you always do — late enough to make him wait, early enough that he doesn't hang up.",
+        "listen":  "He talks about LA. He talks about a thing he's developing. He talks around the show. When he asks how the edit's coming, he asks it the way you ask about a pet you used to share custody of.",
+        "deliver": "You tell him about Davey's cue 14. The line is quiet for nine seconds. He says he didn't know Davey had finished anything. You say he didn't, exactly. He says, oh. The oh is the longest word in the call.",
+        "sit_with": "Neither of you hangs up. You both listen to the other line breathe for two minutes. He says, hey, I'll call you Sunday. He won't. But the call tonight counted."
+      }
+    },
+    {
+      "id": "marisol",
+      "name": "Marisol (the DP, the lead)",
+      "kind": "cast_crew",
+      "scenarios": ["tape_witness", "long_quiet", "cicada_session"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "entry_hall", "to": "lounge" },
+      "lore_token": "marisol_came_up",
+      "lore_text": "Marisol shot every frame of every location episode. She also played the woman behind door 2, the lighthouse keeper, the diner waitress, and (in the unfilmed scripts) at least one of the two-chairs women. She is a working actress now — not famous, working — and she drives up twice a year and sleeps on the lounge couch and never asks Elicia when the show is finishing. She has been ready to do ADR for nineteen years. Elicia has not asked.",
+      "accent": "#c8825e",
+      "mood": "patient",
+      "patience": 9,
+      "arrives_as": "in_person",
+      "steps": {
+        "greet":   "She lets herself in. She has had a key since '96. She kicks her boots off at the welcome mat with the pomegranate on it.",
+        "listen":  "She tells you about a soap she just wrapped, the bad showrunner, the good craft service, the day she had to cry on cue between two takes of laughing. She tells you the camera was a Sony she'd never used. She tells the story to the lamp, not to you.",
+        "deliver": "You bring out the Ep. 7 lighthouse reels. She watches reel 2 with the sound off. She mouths along to her own performance. She says — the second time — that she'll do the ADR whenever you're ready. She says it without weight.",
+        "sit_with": "You both fall asleep in the lounge. She is on the couch. You are in the chair. The DAT on the console keeps spinning Davey's cue 14 at -18 db. Neither of you wakes up to stop it."
+      }
+    },
+    {
+      "id": "davey",
+      "name": "Davey (the composer)",
+      "kind": "cast_crew",
+      "scenarios": ["cicada_session"],
+      "arrival": { "kind": "found_in_library", "to": "tape_library" },
+      "lore_token": "davey_speaks",
+      "lore_text": "Davey wrote the title theme. Everyone agrees the title theme is the best part. He died in '07 of an aneurysm at 32. He was working on Cue 14 (Ep. 9, the cicada episode) that morning. The DAT in the library is marked CUE 14 · DRAFT 3 (please don't use this one), in his hand. Elicia uses it. The 'please don't use this one' is the only argument she still has with him. He arrives only by tape. He has been arriving by tape since 2007.",
+      "accent": "#6a8a9a",
+      "mood": "remembering",
+      "patience": 4,
+      "arrives_as": "tape_only",
+      "steps": {
+        "greet":   "You find the DAT in the library, in the slot you keep meaning to label and never do. The slot has been empty for fourteen years.",
+        "listen":  "You play Draft 3. The opening is the cicadas. The cicadas overlap his guide vocals — him humming through the scratch take, the way he hummed at the workbench. The hum is what you have left of his voice.",
+        "deliver": "You bring Cue 14 to the timeline. You drop it in at the entomologist's entrance. The cue is too long. He always wrote long. You leave it long tonight.",
+        "sit_with": "You sit at the console with the cue playing through. You do not edit it. You let the room hear him for the length he wrote. Eighty-seven seconds. The 'please don't use this one' becomes a thing he said to you, not a thing he wrote on a tape."
+      }
+    },
+    {
+      "id": "young_elicia",
+      "name": "Young Elicia",
+      "kind": "cast_crew",
+      "scenarios": ["long_quiet", "cicada_session"],
+      "arrival": { "kind": "found_in_library", "to": "tape_library" },
+      "lore_token": "young_self_speaks",
+      "lore_text": "A Hi8 tape labeled E.T. → E.T. · '96. You shot it as a joke during a long night in the cutting room. You looked into the lens and you told your future self what the show was going to be. You were twenty-one. You meant most of it. You meant the part about the six episodes being honest about how long six episodes take. You did not mean the part about being done by '98.",
+      "accent": "#a87aa0",
+      "mood": "earnest",
       "patience": 5,
+      "arrives_as": "tape_only",
       "steps": {
-        "greet":   "They thank you for being open this late. The thank-you is the longest sentence they will say to you that isn't on the tape.",
-        "listen":  "They go through it: the name (which they will record), the wrong (which they will record), the consequence (which they have only just learned and will record carefully), the year (1994), the silence (1994 to now), the regret (now). The list moves like the kind of list someone has held in a drawer.",
-        "deliver": "You bring tissues. They use one and then pocket the rest. The pocketing is the gesture you will remember.",
-        "sit_with": "You sit through the playback. They wince at three specific moments. You do not react at those moments. You react at a fourth moment that they did not anticipate would land — and the not-anticipating is what tells you the apology is real. They mark the tape DO NOT PLAY UNTIL I AM GONE. They leave it. They thank you again. You file it in the locked drawer with the other nineteen."
+        "greet":   "You find the Hi8 on a shelf you don't remember leaving it on. The label is in your hand, but it is the hand of somebody who hadn't started signing checks yet.",
+        "listen":  "She looks into the camera. She says: hi. She says: I want to tell you what we're making. She says: don't let it become a thing. She does not yet know what 'a thing' is.",
+        "deliver": "You record over the last thirty seconds. You speak back. You tell her the show is in its twentieth year. You tell her it is okay. You tell her the suite is still here.",
+        "sit_with": "You leave the Hi8 in the deck and watch it on loop with the sound off. She is making faces at the camera. She is going to be all right."
       }
     },
     {
-      "id": "elicia_as_visitor",
-      "name": "Elicia (off-shift)",
-      "as_hand_id": "elicia",
-      "swap_target_for_hand": "elicia_as_visitor",
-      "scenarios": ["cicada_session", "long_quiet", "tape_witness"],
-      "arrival": { "kind": "scheduled", "turn": 5, "from": "back_door", "to": "console" },
-      "lore_token": "elicia_came_in_off_shift",
-      "lore_text": "When the player is NOT Elicia, she comes in off-shift to listen at the console. She comes in through the back door because the cathedral is on the other side and the back door is closer to where she lives. She has not stopped working tonight, just stopped engineering. When the player IS Elicia, this entry swaps out and Frasier comes in instead, balsa-wood in his hand.",
-      "accent": "#d8a060",
-      "mood": "preoccupied",
-      "patience": 8,
+      "id": "reggie",
+      "name": "Reggie (sound, Ep. 7 & Ep. 11)",
+      "kind": "cast_crew",
+      "scenarios": ["tape_witness"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "phone_call", "to": "console" },
+      "lore_token": "reggie_offered_again",
+      "lore_text": "Reggie was an undergrad in '96 who ran a Nagra for forty dollars and a pizza. He is a real sound mixer in Chicago now. He has been offering to do a free noise-floor pass on the Ep. 11 dailies since '03. Elicia has not sent him the dailies. The reason she has not sent the dailies is not anything she can name.",
+      "accent": "#8a9b6a",
+      "mood": "generous",
+      "patience": 5,
+      "arrives_as": "phone_voice",
       "steps": {
-        "greet":   "She nods from the doorway. Says she'll be at the console. She's already taken off her shoes.",
-        "listen":  "She tells you which tape from the library to put on, second drawer down, third from the back. She does not say what's on it. You will know within the first six seconds whether to keep playing.",
-        "deliver": "You bring her coffee. She remembers how you take yours and asks if you remembered hers, the way she always does to be polite.",
-        "sit_with": "She listens beside you while the next visitor records. She doesn't speak. The room is steadier with her in it. The reel turns. The reel does not catch on anything when she's in the room."
+        "greet":   "The phone rings. The 312 area code. He says: hey. The hey is the same hey it was in '96.",
+        "listen":  "He talks about a project he just wrapped — a documentary about an organist. He talks about the room tone of the cathedral. He does not bring up Ep. 11 himself. He never does.",
+        "deliver": "You ask him if the offer is still good. He says: of course. You tell him you'll FedEx the DAT bag in the morning. You mean it this time, possibly.",
+        "sit_with": "You both stay on the line for the kind of pause that is not awkward between people who once worked four to ten am together. He says he'll wait for the package. He has been waiting for the package for thirteen years."
       }
     },
     {
-      "id": "frasier_as_visitor",
-      "name": "Frasier (visiting)",
-      "as_hand_id": "frasier",
-      "swap_target_for_hand": "frasier_as_visitor",
-      "scenarios": ["long_quiet"],
-      "arrival": { "kind": "scheduled", "turn": 4, "from": "back_door", "to": "lounge" },
-      "lore_token": "frasier_visited_the_booth",
-      "lore_text": "When the player is NOT Frasier, he comes over from the cathedral with a small balsa-wood object he didn't finish. The cathedral on the other side of the booth wall is dark tonight, the way it usually is when he comes over. He doesn't say what he's making. He sits with the half-thing in his hands the whole time. When the player IS Frasier, this entry swaps out and a stranger walks in.",
-      "accent": "#c87633",
-      "mood": "preoccupied",
+      "id": "prof_kang",
+      "name": "Prof. Kang (advisor)",
+      "kind": "cast_crew",
+      "scenarios": ["tape_witness"],
+      "arrival": { "kind": "postcard", "to": "console" },
+      "lore_token": "kang_sent_a_card",
+      "lore_text": "Prof. Kang was the advisor on the show in '95-'97. He said anthologies were a post-cinema form. He retired upstate in '08. He sends a postcard at Christmas. The most recent one was '11.",
+      "accent": "#6a6a8a",
+      "mood": "gentle",
+      "patience": 3,
+      "arrives_as": "postcard",
+      "steps": {
+        "greet":   "The postcard is on the desk. It has a picture of a covered bridge upstate.",
+        "listen":  "The note on the back is two sentences. The first one is about the bridge. The second one is: I think about the show. The 'I think about the show' is the entire sentence.",
+        "deliver": "You write back. You write back longer than the postcard. You tell him about Ep. 9 and the brood emerging again. You ask him if he remembers calling anthologies a post-cinema form.",
+        "sit_with": "You set the postcard on the console. It will live there for the rest of the year, under the lamp, next to the half-eaten pomegranate that has been there since '99."
+      }
+    },
+    {
+      "id": "the_new_collaborator",
+      "name": "The New Collaborator",
+      "kind": "cast_crew",
+      "scenarios": ["tape_witness"],
+      "arrival": { "kind": "hovers", "to": "entry_hall" },
+      "lore_token": "new_collaborator_arrived",
+      "lore_text": "A young video editor she met at the public-access station her day job is at. They have been offering, low-key, to help with whichever episode needs a fresh pass. They have not been let into the suite yet. Letting them in is, in some way, the show becoming a thing other people are allowed to touch again for the first time in twenty years.",
+      "accent": "#80a070",
+      "mood": "tentative",
+      "patience": 4,
+      "arrives_as": "hovers",
+      "steps": {
+        "greet":   "They are at the ENTRY HALL door. They knock. They have knocked before. You have, twice, not answered.",
+        "listen":  "They tell you, briefly, what they think a fresh assistant editor could do — not finish anything, not decide anything, just clean some edges. They are careful. They are not trying to direct.",
+        "deliver": "You hand them a single DAT from the library. Not a master. A scratch. You ask them to bounce a clean version of one cue. They take the DAT like a person taking a key.",
+        "sit_with": "You let them sit at the console. Not at your seat — at the second seat, the one nobody has sat in regularly since '99. They do not ask to scrub the timeline. They sit. They watch the monitor wall. The suite, very slightly, opens."
+      }
+    },
+
+    {
+      "id": "subj_door2_woman",
+      "name": "The Woman Behind the Second Door",
+      "kind": "subject",
+      "scenarios": ["tape_witness"],
+      "arrival": { "kind": "in_episode", "pos": "hotel_hallway" },
+      "lore_token": "door2_visited",
+      "lore_text": "She is the only fully filmed and locked subject. She has been finished since '97. She does not need anything from Elicia. She arrives because she likes the suite. She likes that the other subjects, who are not finished, are around. She comes to check on them. She comes to check on Elicia. She is the only subject for whom the visit is a kindness rather than a petition.",
+      "accent": "#b89060",
+      "mood": "settled",
+      "patience": 6,
+      "verb_labels": { "greet": "see", "listen": "voice", "deliver": "cut", "sit_with": "lock" },
+      "bound_to_episode": "hotel_hallway",
+      "steps": {
+        "greet":   "You see her sitting on the bed in room 2, the way she has sat for twenty years. She lifts her head and nods.",
+        "voice":   "She says her one line. The line you wrote and Hen rewrote and you put back to the original. She has been saying that line every time anybody walks past her door.",
+        "cut":     "You cut the door 2 reveal one frame tighter. The episode is locked but a master cut can always have one more frame come off. The woman approves with a quarter-tilt of her chin.",
+        "lock":    "You sit at the foot of the bed with her for a long minute. She does not ask after the others. She knows you know. You both look out the door at the rest of the hallway, dark."
+      }
+    },
+    {
+      "id": "subj_lighthouse_keeper",
+      "name": "The Keeper",
+      "kind": "subject",
+      "scenarios": ["tape_witness", "long_quiet"],
+      "arrival": { "kind": "in_episode", "pos": "lighthouse" },
+      "lore_token": "keeper_voiced",
+      "lore_text": "Marisol's lighthouse character. Picture locked. No voice. She has been mouthing reel 2's monologue for twenty years on the dailies. She does not, exactly, ask for her voice. She mouths louder.",
+      "accent": "#a0a8c8",
+      "mood": "waiting",
       "patience": 7,
+      "verb_labels": { "greet": "see", "listen": "voice", "deliver": "cut", "sit_with": "lock" },
+      "bound_to_episode": "lighthouse",
       "steps": {
-        "greet":   "He's holding a small balsa-wood object he didn't finish. He sets it on the lounge end-table next to the writer's coffee ring.",
-        "listen":  "He talks about what he's making, not at length, not for long. He always describes the unfinished piece as if it's already finished — the present tense of a thing that has the shape of being done.",
-        "deliver": "You bring him water. He drinks it slowly. He does not pick up the balsa-wood piece while drinking. He puts the mug down precisely on the same coffee ring.",
-        "sit_with": "You sit with him in the lounge. The mic isn't running. He says it helps to be somewhere that's listening even when nothing's being said. He says it the way somebody says a thing they have not figured out how to mean yet. He will figure it out by next year. You will both still be here next year. The booth is patient. The cathedral is patient. The two buildings have agreed on this without consulting either of you."
+        "greet":   "You see her at the top of the tower. The beam sweeps. Her shoulders are set against the october draft from '96.",
+        "voice":   "You play reel 2 at the console. You hear the silence where her voice goes. You write down what she's mouthing. You have written it down before. Each time the wording is slightly different.",
+        "cut":     "You make a temp track in your own voice. A scratch ADR. Just for tonight. The keeper, on the monitor wall, does not object. She has accepted scratches before.",
+        "lock":    "You call Marisol. She is asleep in the lounge. You don't call her. You write a note to call her in the morning. The note is the call, almost."
+      }
+    },
+    {
+      "id": "subj_entomologist",
+      "name": "The Entomologist",
+      "kind": "subject",
+      "scenarios": ["cicada_session"],
+      "arrival": { "kind": "in_episode", "pos": "woods" },
+      "lore_token": "entomologist_scored",
+      "lore_text": "Ep. 9. She is on a stump in the woods. The cicadas are emerging. The brood is on its seventeen-year cycle and tonight is in the window of a real emergence. She wants Davey's cue. She wants Elicia to drive upstate. She wants both. She is patient about both.",
+      "accent": "#7a8a5a",
+      "mood": "listening",
+      "patience": 6,
+      "verb_labels": { "greet": "see", "listen": "voice", "deliver": "cut", "sit_with": "lock" },
+      "bound_to_episode": "woods",
+      "steps": {
+        "greet":   "You see her on the stump. She does not look up. The cicadas are loud enough that not-looking-up is courtesy.",
+        "voice":   "You drop Davey's CUE 14 · DRAFT 3 into the timeline. The hum of his guide vocal sits under the cicadas. You leave it long.",
+        "cut":     "You cut the entomologist's entrance to land on the downbeat Davey almost wrote. Almost. The almost is what he was working on the morning he died.",
+        "lock":    "You sit at the console with the cue running. You do not lock the episode. You leave the episode in ASSEMBLY. You write down the date upstate when the brood will be loudest. You put the date on the wall."
+      }
+    },
+    {
+      "id": "subj_waitress",
+      "name": "The Waitress (Ep. 11)",
+      "kind": "subject",
+      "scenarios": ["tape_witness"],
+      "arrival": { "kind": "in_episode", "pos": "diner_booth" },
+      "lore_token": "waitress_audio_recovered",
+      "lore_text": "Marisol's character in the diner footage. The grease trap ran the whole take. She has been mouthing along to a script Elicia wrote for twenty years. The audio is, in fact, recoverable — Reggie has offered. Elicia has not sent the dailies. The waitress, refilling cups that have been full since '97, has not asked again. She has asked once.",
+      "accent": "#c89060",
+      "mood": "tired",
+      "patience": 6,
+      "verb_labels": { "greet": "see", "listen": "voice", "deliver": "cut", "sit_with": "lock" },
+      "bound_to_episode": "diner_booth",
+      "steps": {
+        "greet":   "You see her at the booth. She lifts the coffee pot in your direction. The booth is the same booth as the booth in vol 1's diner. It is the same diner.",
+        "voice":   "You pull out the Ep. 11 dailies. Reel 3. You listen to the grease trap. You listen under the grease trap. There are her words. You always knew there were her words.",
+        "cut":     "You make a cut of the scene with no dialogue at all. Body language only. It works. It might work better than the dialogue track would have.",
+        "lock":    "You FedEx the dailies to Reggie in the morning. You do not, tonight, lock the episode. You leave it in FOOTAGE_ONLY but with a label on the box that says: SENT TO REGGIE · ETA: SOON."
+      }
+    },
+    {
+      "id": "subj_late_shift_passenger",
+      "name": "The Late-Shift Passenger",
+      "kind": "subject",
+      "scenarios": ["long_quiet", "cicada_session"],
+      "arrival": { "kind": "in_episode", "pos": "late_bus" },
+      "lore_token": "passenger_rode",
+      "lore_text": "Ep. 14. Has never been filmed. Exists only on Hen's pages. They are in seat 14 of the bus that has not been driven by them. They want to ride. They are patient. They have been patient for twenty years. The patient is what makes them, actually, possible to call.",
+      "accent": "#7a7090",
+      "mood": "hopeful",
+      "patience": 8,
+      "verb_labels": { "greet": "see", "listen": "voice", "deliver": "cut", "sit_with": "lock" },
+      "bound_to_episode": "late_bus",
+      "steps": {
+        "greet":   "You see them in seat 14. They have the bag they would have brought. The bag is also imagined.",
+        "voice":   "You read Hen's script aloud. The passenger's lines. They speak along. They have memorized lines that nobody has ever performed.",
+        "cut":     "You make a temp animatic of the scene using stills from a bus interior you photographed in '99 for reference. It plays. It is, just barely, the episode in a form that exists.",
+        "lock":    "You don't call Cora tonight. You write Cora's number on a post-it. You put the post-it on the monitor. Tomorrow is a phone call day. You can decide tomorrow."
+      }
+    },
+    {
+      "id": "subj_two_chairs_a",
+      "name": "Two-Chairs Woman A",
+      "kind": "subject",
+      "scenarios": ["long_quiet"],
+      "arrival": { "kind": "in_episode", "pos": "two_chairs" },
+      "lore_token": "conversation_began",
+      "lore_text": "She is in chair A. She has been in chair A for twenty years. She does not know what she was going to say. She does not need to. She has waited so long that the not-knowing has become the script.",
+      "accent": "#a09080",
+      "mood": "ready",
+      "patience": 5,
+      "verb_labels": { "greet": "see", "listen": "voice", "deliver": "cut", "sit_with": "lock" },
+      "bound_to_episode": "two_chairs",
+      "steps": {
+        "greet":   "You see her in chair A. The lamp is between her and chair B. She is not lit dramatically. She is just lit.",
+        "voice":   "You start the rented eighty-six-minute clock. The clock has been waiting since '97. It clicks.",
+        "cut":     "She begins to speak. Not from a script. From the not-script. She says: I think I've been waiting to start this. The other one says: yes.",
+        "lock":    "You let them speak. You do not edit. You record. You let the lock be the act of recording without cutting. The episode goes from TITLE_CARD_ONLY to FOOTAGE_ONLY in one beat. That is the whole win."
+      }
+    },
+    {
+      "id": "subj_two_chairs_b",
+      "name": "Two-Chairs Woman B",
+      "kind": "subject",
+      "scenarios": ["long_quiet"],
+      "arrival": { "kind": "in_episode", "pos": "two_chairs" },
+      "lore_token": "conversation_answered",
+      "lore_text": "She is in chair B. She has been in chair B for twenty years. She also does not know what she was going to say. The two women have never spoken in twenty years and the not-speaking is no longer awkward. They are the conversation. They are also two people in two chairs.",
+      "accent": "#908ca8",
+      "mood": "ready",
+      "patience": 5,
+      "verb_labels": { "greet": "see", "listen": "voice", "deliver": "cut", "sit_with": "lock" },
+      "bound_to_episode": "two_chairs",
+      "linked_to": "subj_two_chairs_a",
+      "steps": {
+        "greet":   "You see her in chair B. The other woman is across the lamp. The lamp has been on since '97.",
+        "voice":   "You leave the eighty-six-minute clock running. You step back from the patch bay. You let the room have it.",
+        "cut":     "She answers. Not from a script. From the not-script. The two voices, in the room, are the conversation. The conversation is not what either of them planned. It is, also, exactly what either of them planned.",
+        "lock":    "They keep talking. The clock keeps running. You sit at the console with the faders down and you let them. This is the lock. The episode is not finished — but for the first time it is, actually, being made."
       }
     }
   ]

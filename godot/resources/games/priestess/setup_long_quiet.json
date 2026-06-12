@@ -3,17 +3,17 @@
   "arcana": "ii_priestess",
   "location": "recording_booth",
   "hand": "elicia",
-  "title": "THE LONG QUIET",
-  "subtitle": "The Booth · 11:02 PM · Confessional Hour",
-  "difficulty": "medium",
-  "epigraph_upright": "The kind of visitor who walks in because they had nowhere else to say it. Elicia's ability is exactly the right shape for this hour. The pre-funeral son. The apologist. The returner. The reel is already at 2 because she's been recording herself between sessions.",
-  "epigraph_reversed": "The son leaves before he gets to the part about his father. The apologist records the wrong thing. The returner doesn't say what he came to say. The booth is the loudest empty room in the cathedral.",
-  "scene_description": "Three confessional visitors plus a quiet drop-in from Frasier. The master reel is at 2/6 already — Elicia has been recording herself between sessions tonight. Doubt starts at 1; she's nervous about the apologist. The cicadas are gone now — too late for them. The booth has its own noise floor instead.",
-  "direction_hint": "Get the son through his eulogy. Get the apologist through their apology. Land the returner's second session. Reel must not fill.",
+  "title": "THE CONVERSATION",
+  "subtitle": "The Suite · 11:14 PM · The 86-Minute Block",
+  "difficulty": "hard",
+  "epigraph_upright": "Ep. 17. The conversation that has been waiting since March '97. The two chairs are lit. Marisol is awake tonight; she drove up specifically. Hen will be on the phone at some point or he won't. There is no script. There has never been a script. The win, tonight, is letting it not have one.",
+  "epigraph_reversed": "The phone does not ring. Marisol falls asleep before the chairs are warm. The lamp burns out and you don't replace the bulb. The episode goes from title card only to title card only with a longer regret.",
+  "scene_description": "The 86-minute block is paid for again — Marisol covered it this morning out of her last residual check. The two-chairs women are in the soundstage. The lamp is on between them. Hen has been called twice; the third call is the one that has to go through. The master reel is at 2/6 because Elicia has been recording herself in the lounge between Marisol's naps. Doubt at 1 — the night is heavy.",
+  "direction_hint": "Attempt Ep. 17. Get the Two-Chairs Women to begin. Land sit_with with at least one of the core four (Marisol, Hen, Davey, or young Elicia). Leap before the master reel fills.",
   "opening_log_lines": [
-    "the cicadas are gone now. just the booth's own noise floor.",
-    "the master reel is at two, because elicia was recording herself between sessions.",
-    "the son is in the vestibule, deciding whether to come in."
+    "11:14 PM. The two-chairs stage lamp is on between the chairs.",
+    "Marisol is awake. She is in the booth lining up the room mic.",
+    "Hen has been called twice. The third call decides whether tonight is a conversation."
   ],
   "starting_state": {
     "player_pos": "console",
@@ -21,7 +21,7 @@
     "time_per_turn": 5,
     "inertia": 0,
     "inertia_per_turn": 0,
-    "sanity": 5,
+    "sanity": 4,
     "sanity_max": 6,
     "stagnation": 1,
     "stagnation_per_turn": 1,
@@ -29,14 +29,13 @@
     "doubt_max": 7,
     "insight": 2,
     "starting_master_reel": 2,
-    "starting_hand": ["walk","focus","search","short_rest","record","transcribe","rewind","play_back"]
+    "starting_hand": ["walk","focus","search","short_rest","record","transcribe","rewind","play_back","the_long_quiet"]
   },
-  "visitors_present_at_start": ["the_returner"],
+  "visitors_present_at_start": ["marisol", "subj_two_chairs_a", "subj_two_chairs_b", "subj_lighthouse_keeper", "subj_late_shift_passenger"],
   "visitor_schedule": [
-    { "visitor": "the_pre_funeral_son", "arrival_turn": 2, "arrival_space": "entry_hall" },
-    { "visitor": "the_apologist",       "arrival_turn": 4, "arrival_space": "entry_hall" },
-    { "visitor": "the_stranger_in_the_booth", "arrival_turn": 5, "arrival_space": "entry_hall" },
-    { "visitor": "frasier_as_visitor",  "arrival_turn": 4, "arrival_space": "back_door" }
+    { "visitor": "hen",          "arrival_turn": 2, "arrival_space": "console" },
+    { "visitor": "young_elicia", "arrival_turn": 4, "arrival_space": "tape_library" },
+    { "visitor": "davey",        "arrival_turn": 5, "arrival_space": "tape_library" }
   ],
   "win_conditions": {
     "require_visitors_connected_min": 4,
@@ -44,7 +43,10 @@
     "require_doubt_below": 7,
     "require_stagnation_below": 12,
     "require_master_reel_below": 6,
-    "require_threshold_space": true
+    "require_threshold_space": true,
+    "require_episodes_advanced_min": 1,
+    "require_episode_locked": "two_chairs",
+    "require_cast_crew_sit_with_min": 1
   },
   "loss_conditions": {
     "stagnation_max": 12,
@@ -53,31 +55,32 @@
     "master_reel_full_before_end": true
   },
   "stagnation_thresholds": [
-    { "level": 0,  "label": "the booth holds.",                     "tick_per_turn": 1, "effects": [] },
-    { "level": 4,  "label": "the room is heavier than it was.",     "tick_per_turn": 1, "effects": [] },
-    { "level": 7,  "label": "the reel is leaning.",                 "tick_per_turn": 2, "effects": [ "tick_master_reel" ] },
-    { "level": 10, "label": "the booth wants its own listener.",    "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
-    { "level": 12, "label": "the session is over and nothing got recorded.", "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+    { "level": 0,  "label": "the suite holds, narrowly.",                          "tick_per_turn": 1, "effects": [] },
+    { "level": 4,  "label": "the two-chairs lamp flickers.",                       "tick_per_turn": 1, "effects": [] },
+    { "level": 7,  "label": "the eighty-six-minute clock is leaning.",             "tick_per_turn": 2, "effects": [ "tick_master_reel" ] },
+    { "level": 10, "label": "the soundstage rent is running out.",                 "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "the conversation does not happen. it does not, again.","tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
   ],
   "doubt_thresholds": [
-    { "level": 0, "label": "elicia at the console, second pot of coffee.",     "effects": [] },
-    { "level": 3, "label": "she doesn't believe what she just heard.",         "effects": [] },
-    { "level": 5, "label": "she questions every level she set tonight.",       "effects": [ "transcribe_cost_plus_1" ] },
-    { "level": 7, "label": "the listener breaks at her own console.",          "effects": [ "reveal_doubt_finale" ] }
+    { "level": 0, "label": "elicia at the console, hen's number on a post-it.",     "effects": [] },
+    { "level": 3, "label": "she is not sure hen will pick up.",                     "effects": [] },
+    { "level": 5, "label": "she questions whether she has the right to record this.","effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the editor breaks at her own console.",                 "effects": [ "reveal_doubt_finale" ] }
   ],
   "claim_turns_to_consume": 2,
   "thresholds": [
-    { "id": "entry_hall",  "label": "ENTRY HALL",  "ending_lore_token": "leap_into_the_front_porch",  "visible_from_start": true },
-    { "id": "back_door",   "label": "BACK DOOR",   "ending_lore_token": "leap_into_the_cathedral_dark","visible_from_start": true },
-    { "id": "roof_access", "label": "ROOF ACCESS", "ending_lore_token": "leap_into_the_cicada_night",  "visible_from_start": true }
+    { "id": "entry_hall",  "label": "ENTRY HALL",  "ending_lore_token": "leap_into_the_apartment_hall", "visible_from_start": true },
+    { "id": "back_door",   "label": "BACK DOOR",   "ending_lore_token": "leap_into_the_diner_stair",    "visible_from_start": true },
+    { "id": "roof_access", "label": "ROOF ACCESS", "ending_lore_token": "leap_into_the_roof_dusk",      "visible_from_start": true }
   ],
   "sealed_arcanas_at_start": [],
   "max_turns": 9,
-  "notes": "Medium-mode Priestess. Confessional hour. Reel starts at 2, doubt starts at 1, harder mood mix (the son is intense, the apologist is lonely). Frasier shows up off-shift via the back door — sit with him for the bonus connection. Requires 4 connections + 2 hard moods + leap.",
+  "notes": "Hard-mode Priestess. The Conversation — Ep. 17. THE LONG QUIET ability card in starting hand. Two-Chairs Women A and B are linked subjects; getting them through their full beat advances Ep. 17 from TITLE_CARD_ONLY to FOOTAGE_ONLY (the entire win for this scenario). Marisol present at start; Hen calls turn 2 (the third call); Young Elicia and Davey arrive via library at turn 4 and 5. Requires 4 connections + 2 hard moods + Ep. 17 locked-as-footage + sit_with one of the core four + leap. 9-turn limit.",
   "ambient_pool": [
-    "the booth's own noise floor. familiar now.",
-    "the reel is making the sound the reel makes when it has a long take to remember.",
-    "outside, a car door closes. nobody comes in."
+    "11:14 PM. The lamp between the chairs.",
+    "The eighty-six-minute clock ticks.",
+    "marisol's footsteps in the booth, lining up the room mic.",
+    "the 323 area code phone ringing twice and stopping."
   ],
   "ambient_every_n": 2
 }

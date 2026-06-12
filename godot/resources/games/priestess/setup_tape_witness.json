@@ -3,17 +3,17 @@
   "arcana": "ii_priestess",
   "location": "recording_booth",
   "hand": "elicia",
-  "title": "TAPE WITNESS",
-  "subtitle": "The Booth · 2:14 AM · The Truth-Teller's Hour",
-  "difficulty": "hard",
-  "epigraph_upright": "Off-the-books. The truth-teller is already in the booth when Elicia comes back from the kitchenette. She didn't book this session. The reel is half-full of the take she made before this all started.",
-  "epigraph_reversed": "The truth-teller leaves mid-sentence. The apologist's tape gets stepped on. The reel runs out before any of it is on tape. Tomorrow morning Elicia listens back and there is nothing there that was true.",
-  "scene_description": "2:14 AM. The booth's red record-light is already on. The truth-teller is in the booth, sitting, not talking yet. The reel is at 3/6 from earlier tonight. Doubt at 2 — the booth feels off-axis, like the room is recording itself. Two more visitors coming in by appointment. Elicia is going to need her ability tonight.",
-  "direction_hint": "Get the truth-teller through their take. Don't let the apologist leave. Land the returner's third visit. Reel cannot fill.",
+  "title": "A PRODUCTIVE NIGHT",
+  "subtitle": "The Suite · 10:47 PM · Marisol is Up",
+  "difficulty": "standard",
+  "epigraph_upright": "Marisol drove up this afternoon. The DAT bag is on the lounge couch where she dropped it. Reggie is going to call at some point — he said he would, last month, and Reggie keeps his word. Davey's CUE 14 has been on the timeline for nine days. The young editor is at the door again. Tonight is the kind of night the suite has been almost having since '99.",
+  "epigraph_reversed": "Marisol falls asleep before you ask. Reggie's call goes to the answering machine. Davey's cue is too long and you can't decide where to trim it. The young editor knocks. You do not answer.",
+  "scene_description": "The suite is awake. Two episodes are within reach of advancing a state tonight. Marisol is asleep in the lounge — but sleep counts; she came up. The master reel has 0/6 ticks; this is a fresh night. The pomegranate on the desk has been there since '99. The kettle has been on for forty minutes.",
+  "direction_hint": "Advance two episodes one state each. Sit with one cast/crew member (greet → listen → deliver → sit_with). Don't let the night close before you leap through a threshold.",
   "opening_log_lines": [
-    "the booth's red record-light is on. the truth-teller is in there.",
-    "the reel is at three out of six. you have been recording without knowing.",
-    "2:14 AM. the cathedral is dark on the other side."
+    "10:47 PM. Marisol is asleep in the lounge. The DAT bag is on the couch.",
+    "The console is on. The lamp is on. Davey's cue 14 is at -18 db.",
+    "The phone has not rung yet tonight. It will."
   ],
   "starting_state": {
     "player_pos": "console",
@@ -21,29 +21,31 @@
     "time_per_turn": 5,
     "inertia": 0,
     "inertia_per_turn": 0,
-    "sanity": 4,
+    "sanity": 5,
     "sanity_max": 6,
-    "stagnation": 2,
-    "stagnation_per_turn": 2,
-    "doubt": 2,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
     "doubt_max": 7,
     "insight": 2,
-    "starting_master_reel": 3,
-    "starting_hand": ["walk","focus","search","short_rest","record","transcribe","rewind","play_back","the_long_quiet"]
+    "starting_master_reel": 0,
+    "starting_hand": ["walk","focus","search","short_rest","record","transcribe","rewind","play_back"]
   },
-  "visitors_present_at_start": ["the_truth_teller","the_returner"],
+  "visitors_present_at_start": ["marisol", "subj_door2_woman", "subj_waitress", "subj_lighthouse_keeper"],
   "visitor_schedule": [
-    { "visitor": "the_apologist",            "arrival_turn": 1, "arrival_space": "entry_hall" },
-    { "visitor": "the_pre_funeral_son",      "arrival_turn": 3, "arrival_space": "entry_hall" },
-    { "visitor": "elicia_as_visitor",        "arrival_turn": 5, "arrival_space": "back_door" }
+    { "visitor": "reggie",               "arrival_turn": 2, "arrival_space": "console" },
+    { "visitor": "the_new_collaborator", "arrival_turn": 3, "arrival_space": "entry_hall" },
+    { "visitor": "prof_kang",            "arrival_turn": 5, "arrival_space": "console" }
   ],
   "win_conditions": {
-    "require_visitors_connected_min": 5,
-    "require_hard_mood_connections_min": 3,
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 0,
     "require_doubt_below": 7,
     "require_stagnation_below": 12,
     "require_master_reel_below": 6,
-    "require_threshold_space": true
+    "require_threshold_space": true,
+    "require_episodes_advanced_min": 2,
+    "require_cast_crew_sit_with_min": 1
   },
   "loss_conditions": {
     "stagnation_max": 12,
@@ -52,32 +54,32 @@
     "master_reel_full_before_end": true
   },
   "stagnation_thresholds": [
-    { "level": 0,  "label": "the booth holds, narrowly.",            "tick_per_turn": 2, "effects": [] },
-    { "level": 4,  "label": "the booth is unsettled.",               "tick_per_turn": 2, "effects": [] },
-    { "level": 7,  "label": "the reel is leaning hard.",             "tick_per_turn": 2, "effects": [ "tick_master_reel" ] },
-    { "level": 10, "label": "the booth is recording itself.",        "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
-    { "level": 12, "label": "the truth left the room without being recorded.", "tick_per_turn": 3, "effects": [ "reveal_stagnation_finale" ] }
+    { "level": 0,  "label": "the suite is the suite.",                              "tick_per_turn": 1, "effects": [] },
+    { "level": 4,  "label": "the pomegranate seeds rattle in their dish.",          "tick_per_turn": 1, "effects": [] },
+    { "level": 7,  "label": "the cue is sitting at -18 db without anyone scrubbing.", "tick_per_turn": 1, "effects": [ "tick_master_reel" ] },
+    { "level": 10, "label": "the room is asking when tonight ends.",                 "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "marisol wakes, sees the timeline hasn't moved, says nothing.", "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
   ],
   "doubt_thresholds": [
-    { "level": 0, "label": "elicia at the console, half-asleep.",                     "effects": [] },
-    { "level": 3, "label": "she is not sure she's the one in the engineer's chair.",  "effects": [] },
-    { "level": 5, "label": "she stops trusting the levels.",                          "effects": [ "transcribe_cost_plus_1" ] },
-    { "level": 7, "label": "the listener breaks. the booth wins.",                    "effects": [ "reveal_doubt_finale" ] }
+    { "level": 0, "label": "elicia at the console, second pot of coffee.",     "effects": [] },
+    { "level": 3, "label": "she questions where to put the cue's downbeat.",   "effects": [] },
+    { "level": 5, "label": "she doesn't trust her own ear tonight.",           "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the editor breaks at her own console.",            "effects": [ "reveal_doubt_finale" ] }
   ],
   "claim_turns_to_consume": 2,
   "thresholds": [
-    { "id": "entry_hall",  "label": "ENTRY HALL",  "ending_lore_token": "leap_into_the_front_porch",   "visible_from_start": true },
-    { "id": "back_door",   "label": "BACK DOOR",   "ending_lore_token": "leap_into_the_cathedral_dark","visible_from_start": true },
-    { "id": "roof_access", "label": "ROOF ACCESS", "ending_lore_token": "leap_into_the_cicada_night",  "visible_from_start": true }
+    { "id": "entry_hall",  "label": "ENTRY HALL",  "ending_lore_token": "leap_into_the_apartment_hall", "visible_from_start": true },
+    { "id": "back_door",   "label": "BACK DOOR",   "ending_lore_token": "leap_into_the_diner_stair",    "visible_from_start": true },
+    { "id": "roof_access", "label": "ROOF ACCESS", "ending_lore_token": "leap_into_the_roof_dusk",      "visible_from_start": true }
   ],
   "sealed_arcanas_at_start": [],
-  "max_turns": 8,
-  "notes": "Hard-mode Priestess. 2:14 AM, off-the-books. Truth-teller already in the booth at session start. Reel starts at 3, doubt at 2, stagnation at 2. THE LONG QUIET ability card is in hand from start. Requires 5 connections + 3 hard moods + leap; 8-turn limit. Brutal.",
+  "max_turns": 10,
+  "notes": "Standard-mode Priestess. Marisol is asleep in the lounge from start — she counts as present. Three episode-subjects are bound to their spaces (Door 2 Woman, Waitress, Keeper). Reggie calls turn 2; the New Collaborator knocks turn 3; Prof. Kang's postcard arrives turn 5. Win is 3 cast/crew connections + 2 episodes advanced + 1 full sit_with + leap.",
   "ambient_pool": [
-    "2:14 AM. the cicadas are gone. the booth has only its own quiet.",
-    "the truth-teller is still in the booth, still sitting, still about to say it.",
-    "the reel turns. you can hear it.",
-    "the cathedral on the other side is dark. it doesn't know you're awake."
+    "the pomegranate seeds have gone hard. the dish hums.",
+    "marisol breathes on the lounge couch in 4/4.",
+    "the cue 14 draft loops at -18 db. it has looped for an hour.",
+    "the answering machine blinks. seventeen messages. fourteen are hen's."
   ],
   "ambient_every_n": 2
 }
