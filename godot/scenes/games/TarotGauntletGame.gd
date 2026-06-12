@@ -118,6 +118,13 @@ var _inspiration_label: Label = null
 var _pieces_label: Label = null
 var _player_pos_label: Label = null
 var _bindle_label: Label = null
+
+# Live BGM mood manipulator — attaches LowPass + Distortion to the
+# BGM bus and is fed by _stagnation / _doubt every _render(). Magician
+# only; for the Fool the manipulator is created (so the bus is in a
+# known state) but stays at neutral (no muffle, no distortion).
+const TarotAudioManipulatorScene := preload("res://scenes/games/TarotAudioManipulator.gd")
+var _audio_manipulator: Node = null
 var _visitors_box: VBoxContainer = null
 var _hand_box: HBoxContainer = null
 var _tableau_box: HBoxContainer = null
@@ -256,6 +263,11 @@ func _ready() -> void:
 	_build_ui()
 	_init_run()
 	_audio_play_bgm()
+	# Attach the BGM mood manipulator. _render() will push live
+	# stagnation/doubt values into it on every refresh.
+	_audio_manipulator = TarotAudioManipulatorScene.new()
+	_audio_manipulator.name = "TarotAudioManipulator"
+	add_child(_audio_manipulator)
 	# Force an extra board render after layout settles so the map is
 	# visible on the very first frame (not just after the user expands
 	# or interacts with something).
@@ -3853,6 +3865,14 @@ func _render() -> void:
 		_inertia_label.visible = false
 	if _sanity_label != null and is_magician:
 		_sanity_label.visible = false
+	# Push current pressure to the BGM audio manipulator — Stagnation
+	# muffles the room, Doubt distorts it. Only applies to Magician
+	# runs; the Fool's stats don't drive this surface.
+	if is_magician and _audio_manipulator != null:
+		var s_max_for_audio: float = float(_setup.get("loss_conditions", {}).get("stagnation_max", 12))
+		var d_max_for_audio: float = float(_doubt_max)
+		_audio_manipulator.update_stagnation(float(_stagnation) / max(1.0, s_max_for_audio))
+		_audio_manipulator.update_doubt(float(_doubt) / max(1.0, d_max_for_audio))
 	# Evocative tooltips driven by the current value — the player
 	# hovers and gets the room's mood at that pressure level.
 	_inertia_label.tooltip_text = _inertia_mood(_inertia)
@@ -6581,5 +6601,9 @@ func _show_end_screen(won: bool, title: String, body: String, cg_path: String = 
 
 
 func _on_leave() -> void:
+	# Snap the BGM bus back to neutral so the menu / next scene
+	# doesn't inherit a muffled / distorted room.
+	if _audio_manipulator != null and is_instance_valid(_audio_manipulator):
+		_audio_manipulator.reset()
 	game_ended.emit("leave", {})
 	queue_free()

@@ -132,7 +132,19 @@ var _catalog:       Array  = []
 var _built:         bool   = false
 
 
-const _VizScene := preload("res://scenes/menu/MusicVisualizer.gd")
+const _VizScene  := preload("res://scenes/menu/MusicVisualizer.gd")
+const _SynthScene := preload("res://scenes/menu/DinerPulseSynth.gd")
+
+# Visualizer-host modes — most are passive viz routed through
+# MusicVisualizer, but "diner_pulse_synth" is interactive and gets
+# its own Control class. It's listed alongside the others so the
+# [VIZ ▾] dropdown shows it; the resolver routes it specially.
+const _SYNTH_ID := "diner_pulse_synth"
+const _SYNTH_ENTRY := {
+	"id": _SYNTH_ID,
+	"name": "Diner Pulse Synth",
+	"unlock": {"type": "heard_count", "min": 3},
+}
 
 
 func open() -> void:
@@ -247,11 +259,7 @@ func _build() -> void:
 	_viz_host.custom_minimum_size = Vector2(0, 64)
 	_viz_host.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	outer.add_child(_viz_host)
-	_viz = _VizScene.new()
-	_viz.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_viz.set_colors(_skin["accent"], _skin["dim"], _skin["txt"])
-	_viz.set_mode(_resolve_active_viz_id())
-	_viz_host.add_child(_viz)
+	_mount_viz(_resolve_active_viz_id())
 
 	# Now Playing row
 	var np_row := HBoxContainer.new()
@@ -447,6 +455,9 @@ func _on_skin_picked(id: int) -> void:
 # whatever modes the visualizer knows how to draw.
 func _resolve_active_viz_id() -> String:
 	var want: String = Settings.music_viz
+	# Synth lives outside MusicVisualizer.VIZ — handle it explicitly.
+	if want == _SYNTH_ID and _viz_entry_unlocked(_SYNTH_ENTRY):
+		return _SYNTH_ID
 	for v: Dictionary in _VizScene.VIZ:
 		if v["id"] == want and _VizScene.viz_unlocked(v):
 			return String(v["id"])
@@ -456,13 +467,19 @@ func _resolve_active_viz_id() -> String:
 func _populate_viz_menu() -> void:
 	var pop: PopupMenu = _viz_menu_btn.get_popup()
 	pop.clear()
-	var active: String = String(_viz.mode) if _viz != null else _resolve_active_viz_id()
+	var active: String = _current_viz_id()
 	for i in _VizScene.VIZ.size():
 		var v: Dictionary = _VizScene.VIZ[i]
 		if not _VizScene.viz_unlocked(v):
 			continue
 		var marker: String = "• " if v["id"] == active else "  "
 		pop.add_item(marker + String(v["name"]), i)
+	# Append the Diner Pulse Synth as an interactive entry below the
+	# passive viz options if it's unlocked.
+	if _viz_entry_unlocked(_SYNTH_ENTRY):
+		var smark: String = "• " if active == _SYNTH_ID else "  "
+		pop.add_item(smark + String(_SYNTH_ENTRY["name"]) + "  (toy)", _SYNTH_MENU_ID)
+	# Locked section.
 	var any_locked: bool = false
 	for j in _VizScene.VIZ.size():
 		var v2: Dictionary = _VizScene.VIZ[j]
@@ -476,20 +493,92 @@ func _populate_viz_menu() -> void:
 		var locked_idx: int = pop.item_count - 1
 		pop.set_item_disabled(locked_idx, true)
 		pop.set_item_tooltip(locked_idx, _unlock_hint(v2.get("unlock", {})))
+	if not _viz_entry_unlocked(_SYNTH_ENTRY):
+		if not any_locked:
+			pop.add_separator()
+			any_locked = true
+		var label: String = "  " + String(_SYNTH_ENTRY["name"]) + "  (locked)"
+		pop.add_item(label, _SYNTH_MENU_ID)
+		var locked_idx: int = pop.item_count - 1
+		pop.set_item_disabled(locked_idx, true)
+		pop.set_item_tooltip(locked_idx, _unlock_hint(_SYNTH_ENTRY.get("unlock", {})))
 	if not pop.id_pressed.is_connected(_on_viz_picked):
 		pop.id_pressed.connect(_on_viz_picked)
 
 
+# Read the currently-mounted Control's mode/id. Synth has no `mode`
+# property; we detect it by its instance type.
+func _current_viz_id() -> String:
+	if _viz == null:
+		return _resolve_active_viz_id()
+	if _viz.has_method("_make_tone_stream"):
+		return _SYNTH_ID
+	return String(_viz.mode)
+
+
 func _on_viz_picked(id: int) -> void:
-	if id < 0 or id >= _VizScene.VIZ.size():
-		return
-	var picked: Dictionary = _VizScene.VIZ[id]
-	if not _VizScene.viz_unlocked(picked):
-		return
-	Settings.music_viz = String(picked["id"])
-	if _viz != null:
-		_viz.set_mode(String(picked["id"]))
+	# id can index into MusicVisualizer.VIZ OR be _SYNTH_MENU_ID for
+	# the DinerPulseSynth entry — the populate fn assigns the synth
+	# entry a sentinel id past the regular range.
+	var picked_id: String = ""
+	if id == _SYNTH_MENU_ID:
+		if not _viz_entry_unlocked(_SYNTH_ENTRY):
+			return
+		picked_id = _SYNTH_ID
+	else:
+		if id < 0 or id >= _VizScene.VIZ.size():
+			return
+		var picked: Dictionary = _VizScene.VIZ[id]
+		if not _VizScene.viz_unlocked(picked):
+			return
+		picked_id = String(picked["id"])
+	Settings.music_viz = picked_id
+	_mount_viz(picked_id)
 	_populate_viz_menu()  # refresh the • marker
+
+
+# Mount the appropriate Control in _viz_host based on the chosen id.
+# Swaps between the passive MusicVisualizer and the interactive
+# DinerPulseSynth toy. Reuses the existing _viz child if it's already
+# the right type; otherwise tears down and replaces.
+const _SYNTH_MENU_ID := 9000
+
+func _mount_viz(id: String) -> void:
+	if _viz_host == null:
+		return
+	var want_synth: bool = (id == _SYNTH_ID)
+	# Distinguish synth from passive viz by a method only the synth
+	# has, so we can swap when the wrong type is mounted.
+	if _viz != null and is_instance_valid(_viz):
+		var is_currently_synth: bool = _viz.has_method("_make_tone_stream")
+		if is_currently_synth != want_synth:
+			_viz.queue_free()
+			_viz = null
+	if _viz == null:
+		_viz = (_SynthScene.new() if want_synth else _VizScene.new())
+		_viz.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		_viz_host.add_child(_viz)
+	if want_synth:
+		_viz.set_colors(_skin["accent"], _skin["dim"], _skin["bg"])
+	else:
+		_viz.set_colors(_skin["accent"], _skin["dim"], _skin["txt"])
+		_viz.set_mode(id)
+
+
+# Unified unlock check that handles both MusicVisualizer.VIZ entries
+# and the local _SYNTH_ENTRY.
+func _viz_entry_unlocked(v: Dictionary) -> bool:
+	var u: Dictionary = v.get("unlock", {})
+	var t: String = String(u.get("type", ""))
+	if t == "":
+		return true
+	if t == "key":
+		return SaveSystem.is_unlocked(String(u.get("key", "")))
+	if t == "heard":
+		return AudioMgr.is_heard(String(u.get("src", "")))
+	if t == "heard_count":
+		return AudioMgr.get_heard_set().size() >= int(u.get("min", 0))
+	return false
 
 
 func _refresh() -> void:
