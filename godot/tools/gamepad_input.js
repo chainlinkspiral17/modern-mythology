@@ -27,10 +27,13 @@
 "use strict";
 
 const RIFFMASTER_DEFAULT_MAPPING = {
-  // Button indices. The exact mapping varies by browser + driver but
-  // this is the typical layout for the PS5 Riffmaster (HID).
-  frets:        [0, 1, 2, 3, 4],   // green/red/yellow/blue/orange (low→high)
-  soloFrets:    [5, 6, 7, 8, 9],   // upper-neck "solo" frets
+  // Button indices. On Windows, the Riffmaster HID reports the green-
+  // to-orange frets in REVERSE button order: physical fret 1 (green,
+  // closest to body) lands on button index 4 rather than 0. Defaults
+  // reflect that order. Per-tool calibration / DETECT FRETS overrides
+  // if your driver differs.
+  frets:        [4, 3, 2, 1, 0],   // physical fret 1 → button 4 … fret 5 → button 0
+  soloFrets:    [9, 8, 7, 6, 5],   // same reverse order on the solo neck
   strumUp:      12,                // d-pad up
   strumDown:    13,                // d-pad down
   faceCross:    10,
