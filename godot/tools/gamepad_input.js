@@ -215,12 +215,104 @@ function mountGamepadOverlay(gp, opts = {}) {
     <div id="gpio-held" style="color:#d8a060;font-size:10px;margin-top:4px;">held: —</div>
     <div id="gpio-last" style="color:#7a5828;font-size:10px;margin-top:2px;font-style:italic;">last event: —</div>
     <div id="gpio-axes" style="color:#7a5828;font-size:10px;margin-top:2px;"></div>
+    <div style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap;">
+      <button id="gpio-detect" style="background:#3a2614;color:#ffd896;border:1px solid #d8a060;padding:2px 8px;font-family:inherit;font-size:10px;cursor:pointer;">DETECT STRUM</button>
+      <button id="gpio-clear-binds" style="background:transparent;color:#7a5828;border:1px solid #553318;padding:2px 8px;font-family:inherit;font-size:10px;cursor:pointer;">RESET</button>
+    </div>
+    <div id="gpio-bind-msg" style="color:#88b87a;font-size:10px;margin-top:4px;"></div>
   `;
   document.body.appendChild(panel);
-  const status = panel.querySelector('#gpio-status');
-  const heldEl = panel.querySelector('#gpio-held');
-  const last   = panel.querySelector('#gpio-last');
-  const axesEl = panel.querySelector('#gpio-axes');
+  const status   = panel.querySelector('#gpio-status');
+  const heldEl   = panel.querySelector('#gpio-held');
+  const last     = panel.querySelector('#gpio-last');
+  const axesEl   = panel.querySelector('#gpio-axes');
+  const detectBtn = panel.querySelector('#gpio-detect');
+  const clearBtn  = panel.querySelector('#gpio-clear-binds');
+  const bindMsg   = panel.querySelector('#gpio-bind-msg');
+
+  // ── Strum calibration ────────────────────────────────────────────
+  // When the user clicks DETECT STRUM, watch for the next significant
+  // input (button press OR axis swing past ±0.5) and bind THAT as the
+  // strum source. Cancels itself if nothing happens within 6 seconds.
+  let detecting = false;
+  let detectTimer = null;
+  let detectAxisSeen = {};   // axis idx → max abs value seen during detect
+  let _strumAxisBinder = null;
+
+  function _setBindMsg(text, color) {
+    bindMsg.textContent = text;
+    bindMsg.style.color = color || '#88b87a';
+  }
+
+  function _bindStrumToButton(btnIdx) {
+    gp.setMapping({ strumUp: btnIdx, strumDown: btnIdx });
+    _setBindMsg('strum bound → button ' + btnIdx, '#ffd896');
+  }
+  function _bindStrumToAxis(axIdx) {
+    gp.setMapping({ strumAxis: axIdx });
+    if (_strumAxisBinder) {
+      // Already bound to some axis; we can't easily unbind a previous
+      // bindStrumAxis listener, but the new mapping makes the old
+      // axis emit nothing (it checks e.detail.idx === mapping.strumAxis
+      // at the time of event), so functionally we're fine.
+    }
+    if (typeof bindStrumAxis === 'function') {
+      bindStrumAxis(gp, axIdx);
+      _strumAxisBinder = axIdx;
+    }
+    _setBindMsg('strum bound → axis ' + axIdx, '#ffd896');
+  }
+
+  detectBtn.addEventListener('click', () => {
+    if (detecting) return;
+    detecting = true;
+    detectAxisSeen = {};
+    _setBindMsg('strum the bar now…', '#ffd896');
+    detectBtn.textContent = 'WAITING…';
+    detectTimer = setTimeout(() => {
+      detecting = false;
+      detectBtn.textContent = 'DETECT STRUM';
+      // If we saw any axis swing > 0.5 during the window, bind the
+      // one with the largest absolute swing.
+      let bestAx = -1, bestVal = 0;
+      for (const k in detectAxisSeen) {
+        if (detectAxisSeen[k] > bestVal) { bestVal = detectAxisSeen[k]; bestAx = parseInt(k); }
+      }
+      if (bestAx >= 0 && bestVal > 0.5) {
+        _bindStrumToAxis(bestAx);
+      } else {
+        _setBindMsg('nothing detected (timed out).', '#7a5828');
+      }
+    }, 6000);
+  });
+
+  clearBtn.addEventListener('click', () => {
+    gp.mapping = { ...RIFFMASTER_DEFAULT_MAPPING };
+    _setBindMsg('mapping reset to default.', '#7a5828');
+  });
+
+  // While detecting, intercept button presses + axis swings.
+  window.addEventListener('gamepadinput-button', e => {
+    if (!detecting || !e.detail.pressed || e.detail.synthetic) return;
+    detecting = false;
+    if (detectTimer) clearTimeout(detectTimer);
+    detectBtn.textContent = 'DETECT STRUM';
+    _bindStrumToButton(e.detail.idx);
+  });
+  window.addEventListener('gamepadinput-axis', e => {
+    if (!detecting) return;
+    const v = Math.abs(e.detail.value);
+    if (v > (detectAxisSeen[e.detail.idx] || 0)) {
+      detectAxisSeen[e.detail.idx] = v;
+    }
+    // If a swing is sharp enough, bind immediately and stop.
+    if (v > 0.7) {
+      detecting = false;
+      if (detectTimer) clearTimeout(detectTimer);
+      detectBtn.textContent = 'DETECT STRUM';
+      _bindStrumToAxis(e.detail.idx);
+    }
+  });
   window.addEventListener('gamepadinput-connected', e => {
     status.textContent = 'connected: ' + (e.detail.id || '(unknown)').slice(0, 38);
   });
