@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AMBIENT SYNTH · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0:        #050304;
+    --bg-1:        #0e0908;
+    --ink:         #1a1410;
+    --sepia-lo:    #3a2614;
+    --sepia-mid:   #8a5a26;
+    --sepia-hi:    #d8a060;
+    --gold:        #d8a060;
+    --gold-hi:     #ffd896;
+    --rule:        #553318;
+    --text:        #c8a878;
+    --text-dim:    #7a5828;
+    --green:       #88b87a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: "Courier New", "DejaVu Sans Mono", monospace;
+    height: 100vh;
+    overflow: hidden;
+  }
+  body {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+  }
+  header {
+    padding: 14px 20px 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    color: var(--gold-hi);
+  }
+  .sub {
+    color: var(--text-dim);
+    font-size: 11px;
+    font-style: italic;
+    margin-top: 2px;
+  }
+  .preset-row {
+    display: flex;
+    gap: 4px;
+    padding: 8px 20px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--rule);
+  }
+  .preset-btn {
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--rule);
+    padding: 3px 10px;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    cursor: pointer;
+  }
+  .preset-btn:hover { color: var(--gold-hi); border-color: var(--gold); }
+  .preset-btn.active {
+    background: var(--sepia-lo);
+    color: var(--gold-hi);
+    border-color: var(--gold);
+  }
+  .voices {
+    overflow-y: auto;
+    padding: 12px 20px;
+  }
+  .voice {
+    border: 1px solid var(--rule);
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    background: var(--bg-1);
+  }
+  .voice.noise { border-color: var(--green); }
+  .voice-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .voice-head .label {
+    color: var(--gold);
+    font-weight: bold;
+    letter-spacing: 0.10em;
+    font-size: 11px;
+    min-width: 80px;
+  }
+  .voice-head .role {
+    color: var(--text-dim);
+    font-size: 10px;
+    font-style: italic;
+    flex: 1;
+  }
+  .voice-head select, .voice-head .enable {
+    background: var(--ink);
+    color: var(--text);
+    border: 1px solid var(--rule);
+    padding: 2px 6px;
+    font-family: inherit;
+    font-size: 11px;
+  }
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px 14px;
+    align-items: center;
+  }
+  .knob {
+    display: flex;
+    flex-direction: column;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+  .knob label { margin-bottom: 2px; }
+  .knob input {
+    width: 100%;
+    background: var(--ink);
+    color: var(--gold-hi);
+    border: 1px solid var(--rule);
+    padding: 2px 4px;
+    font-family: inherit;
+    font-size: 11px;
+  }
+  .knob .num { color: var(--gold-hi); font-size: 10px; margin-top: 2px; }
+  footer {
+    padding: 10px 20px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  footer button {
+    background: var(--sepia-lo);
+    color: var(--gold-hi);
+    border: 1px solid var(--gold);
+    padding: 5px 14px;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+  }
+  footer button:hover { background: var(--sepia-mid); }
+  footer button.active { background: var(--gold); color: var(--ink); }
+  footer .group { display: flex; align-items: center; gap: 6px; color: var(--text-dim); font-size: 10px; }
+  footer .group input[type="range"] { width: 100px; }
+  footer .status {
+    margin-left: auto;
+    color: var(--text-dim);
+    font-size: 10px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>AMBIENT SYNTH · CHAPTER DRONES</h1>
+    <div class="sub" id="preset-sub">Pick a preset · adjust voices · live-play or render to OGG / WAV</div>
+  </header>
+
+  <div class="preset-row" id="preset-row">
+    <button class="preset-btn active" data-preset="warehouse_drone">Cathedral of Rust and Code</button>
+    <button class="preset-btn"        data-preset="cicadas_dusk">Cicadas at Dusk</button>
+    <button class="preset-btn"        data-preset="riverboat_drone">Static Bloom (Riverboat)</button>
+    <button class="preset-btn"        data-preset="sinking_feeling">Sinking Feeling</button>
+    <button class="preset-btn"        data-preset="watch_party">Watch Party</button>
+    <button class="preset-btn"        data-preset="blow_out_the_candles">Blow Out the Candles</button>
+    <button class="preset-btn"        data-preset="full_moon">Full Moon Drone</button>
+    <button class="preset-btn"        data-preset="diner_dawn">D'Ambrosio's at Dawn</button>
+  </div>
+
+  <div class="voices" id="voices"></div>
+
+  <footer>
+    <button id="play">▶ PLAY</button>
+    <button id="stop">■ STOP</button>
+    <div class="group">
+      <label>DURATION (s)</label>
+      <input type="number" id="duration" min="20" max="300" value="120" style="width: 60px;">
+    </div>
+    <div class="group">
+      <label>MASTER</label>
+      <input type="range" id="master" min="0" max="100" value="55">
+      <span id="master-val">55</span>
+    </div>
+    <button id="render-wav">⬇ RENDER WAV</button>
+    <span class="status" id="status">idle.</span>
+  </footer>
+
+<script>
+"use strict";
+
+// ── Voice schema ──────────────────────────────────────────────────
+// Each ambient is 4 tonal voices + 1 noise-floor layer. A voice has:
+//   wave, freq (Hz), gain (0-1), lfoRate (Hz), lfoDepth (0-1 of freq),
+//   filt (Hz lowpass cutoff), pan (-1..1), detune (cents)
+// The noise layer is special: instead of a freq it has a filter
+// cutoff + a gain. Both layers can be enabled/disabled per preset.
+
+const PRESETS = {
+  warehouse_drone: {
+    name: "Cathedral of Rust and Code",
+    sub:  "Chapter I — The Magician. Held tone, faint paddle-wheel motion underneath.",
+    voices: [
+      { name: "DEEP",     enabled: true,  wave: "sine",     freq: 55,    gain: 0.55, lfoRate: 0.07, lfoDepth: 0.02, filt: 1400, pan: 0.0, detune: 7  },
+      { name: "MID",      enabled: true,  wave: "triangle", freq: 110,   gain: 0.30, lfoRate: 0.13, lfoDepth: 0.015,filt: 1200, pan: -0.4, detune: 12 },
+      { name: "HIGH",     enabled: true,  wave: "sine",     freq: 220,   gain: 0.18, lfoRate: 0.21, lfoDepth: 0.01, filt: 2400, pan: 0.4,  detune: 5  },
+      { name: "PHANTOM",  enabled: false, wave: "sine",     freq: 165,   gain: 0.15, lfoRate: 0.30, lfoDepth: 0.02, filt: 1800, pan: 0.0,  detune: 0  },
+    ],
+    noise: { enabled: true, gain: 0.07, filt: 1100 },
+  },
+  cicadas_dusk: {
+    name: "Cicadas at Dusk",
+    sub:  "Chapter II — The High Priestess. Insect carpet, faint air conditioning, no melody.",
+    voices: [
+      { name: "DEEP",     enabled: true,  wave: "triangle", freq: 82,    gain: 0.30, lfoRate: 0.10, lfoDepth: 0.02, filt: 1000, pan: 0.0,  detune: 8 },
+      { name: "MID",      enabled: true,  wave: "sine",     freq: 220,   gain: 0.18, lfoRate: 0.40, lfoDepth: 0.05, filt: 1800, pan: -0.3, detune: 6 },
+      { name: "HIGH",     enabled: false, wave: "sine",     freq: 440,   gain: 0.10, lfoRate: 0.50, lfoDepth: 0.06, filt: 3000, pan: 0.4,  detune: 4 },
+      { name: "PHANTOM",  enabled: false, wave: "sine",     freq: 110,   gain: 0.12, lfoRate: 0.18, lfoDepth: 0.02, filt: 1400, pan: 0.0,  detune: 0 },
+    ],
+    noise: { enabled: true, gain: 0.18, filt: 2800 },
+  },
+  riverboat_drone: {
+    name: "Static Bloom (Riverboat)",
+    sub:  "Chapter III — The Empress. Tape hiss + a slow brass-adjacent pad.",
+    voices: [
+      { name: "DEEP",     enabled: true,  wave: "sawtooth", freq: 73,    gain: 0.32, lfoRate: 0.08, lfoDepth: 0.018,filt: 900,  pan: -0.2, detune: 11 },
+      { name: "MID",      enabled: true,  wave: "triangle", freq: 146,   gain: 0.22, lfoRate: 0.15, lfoDepth: 0.02, filt: 1200, pan: 0.3,  detune: 8  },
+      { name: "HIGH",     enabled: false, wave: "sine",     freq: 293,   gain: 0.12, lfoRate: 0.25, lfoDepth: 0.02, filt: 2200, pan: 0.0,  detune: 5  },
+      { name: "PHANTOM",  enabled: false, wave: "sine",     freq: 220,   gain: 0.10, lfoRate: 0.20, lfoDepth: 0.02, filt: 1600, pan: 0.0,  detune: 0  },
+    ],
+    noise: { enabled: true, gain: 0.10, filt: 1500 },
+  },
+  sinking_feeling: {
+    name: "Sinking Feeling",
+    sub:  "Magician · easy-mode B-side. Afternoon riverside, distant freight horn.",
+    voices: [
+      { name: "DEEP",     enabled: true,  wave: "sine",     freq: 49,    gain: 0.40, lfoRate: 0.05, lfoDepth: 0.015,filt: 800,  pan: 0.0,  detune: 6  },
+      { name: "MID",      enabled: true,  wave: "triangle", freq: 110,   gain: 0.22, lfoRate: 0.11, lfoDepth: 0.02, filt: 1300, pan: -0.4, detune: 9  },
+      { name: "HIGH",     enabled: false, wave: "sine",     freq: 220,   gain: 0.12, lfoRate: 0.18, lfoDepth: 0.01, filt: 2000, pan: 0.4,  detune: 4  },
+      { name: "PHANTOM",  enabled: true,  wave: "sine",     freq: 65,    gain: 0.18, lfoRate: 0.04, lfoDepth: 0.04, filt: 1100, pan: 0.0,  detune: 0  },
+    ],
+    noise: { enabled: true, gain: 0.06, filt: 900 },
+  },
+  watch_party: {
+    name: "Watch Party",
+    sub:  "Magician · medium. TV-room hum, faint Pomegranate Hour bleed.",
+    voices: [
+      { name: "DEEP",     enabled: true,  wave: "triangle", freq: 65,    gain: 0.28, lfoRate: 0.09, lfoDepth: 0.015,filt: 1000, pan: 0.0,  detune: 7  },
+      { name: "MID",      enabled: true,  wave: "sine",     freq: 196,   gain: 0.20, lfoRate: 0.16, lfoDepth: 0.02, filt: 1600, pan: -0.3, detune: 11 },
+      { name: "HIGH",     enabled: true,  wave: "triangle", freq: 392,   gain: 0.10, lfoRate: 0.22, lfoDepth: 0.015,filt: 2400, pan: 0.3,  detune: 6  },
+      { name: "PHANTOM",  enabled: false, wave: "sine",     freq: 165,   gain: 0.10, lfoRate: 0.18, lfoDepth: 0.02, filt: 1400, pan: 0.0,  detune: 0  },
+    ],
+    noise: { enabled: true, gain: 0.09, filt: 1800 },
+  },
+  blow_out_the_candles: {
+    name: "Blow Out the Candles",
+    sub:  "Magician · hard. Full moon, candle hiss, distant party low end.",
+    voices: [
+      { name: "DEEP",     enabled: true,  wave: "sawtooth", freq: 49,    gain: 0.42, lfoRate: 0.06, lfoDepth: 0.018,filt: 800,  pan: 0.0,  detune: 13 },
+      { name: "MID",      enabled: true,  wave: "triangle", freq: 98,    gain: 0.26, lfoRate: 0.10, lfoDepth: 0.02, filt: 1100, pan: -0.4, detune: 10 },
+      { name: "HIGH",     enabled: true,  wave: "sine",     freq: 196,   gain: 0.16, lfoRate: 0.20, lfoDepth: 0.02, filt: 2000, pan: 0.4,  detune: 6  },
+      { name: "PHANTOM",  enabled: true,  wave: "sine",     freq: 73,    gain: 0.20, lfoRate: 0.04, lfoDepth: 0.05, filt: 1000, pan: 0.0,  detune: 0  },
+    ],
+    noise: { enabled: true, gain: 0.14, filt: 1300 },
+  },
+  full_moon: {
+    name: "Full Moon Drone",
+    sub:  "Silver-on-indigo. Slow LFO pad.",
+    voices: [
+      { name: "DEEP",     enabled: true,  wave: "sine",     freq: 55,    gain: 0.50, lfoRate: 0.04, lfoDepth: 0.02, filt: 1200, pan: 0.0,  detune: 9  },
+      { name: "MID",      enabled: true,  wave: "sine",     freq: 165,   gain: 0.28, lfoRate: 0.07, lfoDepth: 0.02, filt: 1600, pan: -0.3, detune: 14 },
+      { name: "HIGH",     enabled: true,  wave: "triangle", freq: 330,   gain: 0.15, lfoRate: 0.11, lfoDepth: 0.015,filt: 2400, pan: 0.3,  detune: 9  },
+      { name: "PHANTOM",  enabled: true,  wave: "sine",     freq: 110,   gain: 0.18, lfoRate: 0.03, lfoDepth: 0.03, filt: 1400, pan: 0.0,  detune: 0  },
+    ],
+    noise: { enabled: true, gain: 0.05, filt: 2000 },
+  },
+  diner_dawn: {
+    name: "D'Ambrosio's at Dawn",
+    sub:  "vol 5 ch 0 — diner ambient. Fluorescent buzz, clock tick.",
+    voices: [
+      { name: "DEEP",     enabled: true,  wave: "triangle", freq: 65,    gain: 0.26, lfoRate: 0.08, lfoDepth: 0.012,filt: 1000, pan: 0.0,  detune: 6 },
+      { name: "MID",      enabled: true,  wave: "sine",     freq: 196,   gain: 0.16, lfoRate: 0.20, lfoDepth: 0.015,filt: 2200, pan: -0.3, detune: 9 },
+      { name: "HIGH",     enabled: false, wave: "sine",     freq: 440,   gain: 0.08, lfoRate: 0.32, lfoDepth: 0.02, filt: 3200, pan: 0.4,  detune: 4 },
+      { name: "PHANTOM",  enabled: false, wave: "sine",     freq: 110,   gain: 0.08, lfoRate: 0.18, lfoDepth: 0.02, filt: 1400, pan: 0.0,  detune: 0 },
+    ],
+    noise: { enabled: true, gain: 0.08, filt: 2400 },
+  },
+};
+
+// ── State ────────────────────────────────────────────────────────
+let activePreset = "warehouse_drone";
+let current      = structuredClone(PRESETS[activePreset]);
+
+// ── UI build ─────────────────────────────────────────────────────
+const voicesEl = document.getElementById('voices');
+function rebuildUI() {
+  voicesEl.innerHTML = '';
+  current.voices.forEach((v, idx) => voicesEl.appendChild(voiceCard(v, idx, false)));
+  voicesEl.appendChild(voiceCard(current.noise, 0, true));
+  document.getElementById('preset-sub').textContent = current.sub;
+}
+
+function voiceCard(v, idx, isNoise) {
+  const div = document.createElement('div');
+  div.className = 'voice' + (isNoise ? ' noise' : '');
+  const head = document.createElement('div');
+  head.className = 'voice-head';
+  const label = document.createElement('div');
+  label.className = 'label';
+  label.textContent = isNoise ? 'NOISE' : v.name;
+  head.appendChild(label);
+  const role = document.createElement('div');
+  role.className = 'role';
+  role.textContent = isNoise ? 'field-recording floor' : '';
+  head.appendChild(role);
+  const enable = document.createElement('label');
+  enable.className = 'enable';
+  enable.innerHTML = `<input type="checkbox" ${v.enabled ? 'checked' : ''}> on`;
+  enable.querySelector('input').addEventListener('change', e => v.enabled = e.target.checked);
+  head.appendChild(enable);
+  if (!isNoise) {
+    const waveSel = document.createElement('select');
+    ['sine','triangle','square','sawtooth'].forEach(w => {
+      const o = document.createElement('option');
+      o.value = w; o.textContent = w;
+      if (v.wave === w) o.selected = true;
+      waveSel.appendChild(o);
+    });
+    waveSel.addEventListener('change', e => v.wave = e.target.value);
+    head.appendChild(waveSel);
+  }
+  div.appendChild(head);
+  const grid = document.createElement('div');
+  grid.className = 'voice-grid';
+  if (isNoise) {
+    grid.appendChild(knob('gain',   0, 0.5, 0.01, v.gain, val => v.gain = val));
+    grid.appendChild(knob('cutoff', 200, 6000, 50, v.filt, val => v.filt = val));
+  } else {
+    grid.appendChild(knob('freq',     20, 800,   1,   v.freq,     val => v.freq = val));
+    grid.appendChild(knob('gain',     0,  1,    0.01, v.gain,     val => v.gain = val));
+    grid.appendChild(knob('lfo rate', 0.01,1,   0.01, v.lfoRate,  val => v.lfoRate = val));
+    grid.appendChild(knob('lfo depth',0,  0.1,  0.001,v.lfoDepth, val => v.lfoDepth = val));
+    grid.appendChild(knob('cutoff',  200,8000, 100,  v.filt,     val => v.filt = val));
+    grid.appendChild(knob('detune',  0,  30,   1,    v.detune,   val => v.detune = val));
+  }
+  div.appendChild(grid);
+  return div;
+}
+
+function knob(label, min, max, step, val, onChange) {
+  const k = document.createElement('div');
+  k.className = 'knob';
+  const lab = document.createElement('label');
+  lab.textContent = label;
+  k.appendChild(lab);
+  const inp = document.createElement('input');
+  inp.type = 'number';
+  inp.min = min; inp.max = max; inp.step = step; inp.value = val;
+  inp.addEventListener('input', e => {
+    const n = parseFloat(e.target.value);
+    if (!isNaN(n)) onChange(n);
+  });
+  k.appendChild(inp);
+  return k;
+}
+
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.toggle('active', b === btn));
+    activePreset = btn.dataset.preset;
+    current = structuredClone(PRESETS[activePreset]);
+    rebuildUI();
+    if (live) { stopLive(); }
+  });
+});
+
+rebuildUI();
+
+// ── Audio engine ─────────────────────────────────────────────────
+// Voice graph: osc → lfo-modulated-detune → lowpass → panner → gain → master
+// Noise: bufferSource (filtered white) → lowpass → gain → master
+function buildVoiceGraph(ac, master, v) {
+  if (!v.enabled) return null;
+  const osc = ac.createOscillator();
+  osc.type = v.wave;
+  osc.frequency.value = v.freq;
+  if (v.detune) osc.detune.value = v.detune;
+  // LFO on frequency (vibrato/breath)
+  if (v.lfoDepth > 0 && v.lfoRate > 0) {
+    const lfo = ac.createOscillator();
+    lfo.frequency.value = v.lfoRate;
+    const lfoG = ac.createGain();
+    lfoG.gain.value = v.freq * v.lfoDepth;
+    lfo.connect(lfoG); lfoG.connect(osc.frequency);
+    lfo.start();
+  }
+  const filt = ac.createBiquadFilter();
+  filt.type = 'lowpass';
+  filt.frequency.value = v.filt;
+  filt.Q.value = 0.7;
+  const pan = ac.createStereoPanner();
+  pan.pan.value = v.pan || 0;
+  const g = ac.createGain();
+  g.gain.value = v.gain;
+  osc.connect(filt); filt.connect(pan); pan.connect(g); g.connect(master);
+  osc.start();
+  return { osc, g, filt };
+}
+
+function buildNoiseGraph(ac, master, n) {
+  if (!n.enabled) return null;
+  // 1-second buffer of white noise, looped
+  const len = Math.floor(ac.sampleRate * 1.0);
+  const buf = ac.createBuffer(1, len, ac.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+  const src = ac.createBufferSource();
+  src.buffer = buf;
+  src.loop = true;
+  const filt = ac.createBiquadFilter();
+  filt.type = 'lowpass';
+  filt.frequency.value = n.filt;
+  filt.Q.value = 0.7;
+  const g = ac.createGain();
+  g.gain.value = n.gain;
+  src.connect(filt); filt.connect(g); g.connect(master);
+  src.start();
+  return { src, g, filt };
+}
+
+// ── Live play ────────────────────────────────────────────────────
+let liveAc = null;
+let live   = false;
+const playBtn  = document.getElementById('play');
+const stopBtn  = document.getElementById('stop');
+const statusEl = document.getElementById('status');
+const masterEl = document.getElementById('master');
+const masterVal = document.getElementById('master-val');
+masterEl.addEventListener('input', () => {
+  masterVal.textContent = masterEl.value;
+  if (liveAc) liveAc._master.gain.value = parseInt(masterEl.value) / 100;
+});
+
+function startLive() {
+  if (live) return;
+  liveAc = new (window.AudioContext || window.webkitAudioContext)();
+  const master = liveAc.createGain();
+  master.gain.value = parseInt(masterEl.value) / 100;
+  master.connect(liveAc.destination);
+  liveAc._master = master;
+  current.voices.forEach(v => buildVoiceGraph(liveAc, master, v));
+  buildNoiseGraph(liveAc, master, current.noise);
+  live = true;
+  playBtn.classList.add('active');
+  statusEl.textContent = 'playing live (' + current.name + ')';
+}
+function stopLive() {
+  if (!live || !liveAc) return;
+  liveAc.close();
+  liveAc = null;
+  live = false;
+  playBtn.classList.remove('active');
+  statusEl.textContent = 'idle.';
+}
+playBtn.addEventListener('click', () => live ? stopLive() : startLive());
+stopBtn.addEventListener('click', stopLive);
+
+// ── Offline render → WAV download ────────────────────────────────
+const renderBtn = document.getElementById('render-wav');
+renderBtn.addEventListener('click', async () => {
+  const dur = Math.max(20, Math.min(300, parseInt(document.getElementById('duration').value) || 120));
+  const sr = 44100;
+  const oc = new OfflineAudioContext(2, sr * dur, sr);
+  const master = oc.createGain();
+  master.gain.value = parseInt(masterEl.value) / 100;
+  // Fade in/out 2s so the loop edges meet quietly.
+  const fade = Math.min(2, dur / 6);
+  master.gain.setValueAtTime(0, 0);
+  master.gain.linearRampToValueAtTime(parseInt(masterEl.value) / 100, fade);
+  master.gain.setValueAtTime(parseInt(masterEl.value) / 100, dur - fade);
+  master.gain.linearRampToValueAtTime(0, dur);
+  master.connect(oc.destination);
+  current.voices.forEach(v => buildVoiceGraph(oc, master, v));
+  buildNoiseGraph(oc, master, current.noise);
+  renderBtn.disabled = true;
+  statusEl.textContent = 'rendering ' + dur + 's offline…';
+  const rendered = await oc.startRendering();
+  const wav = audioBufferToWav(rendered);
+  const blob = new Blob([wav], { type: 'audio/wav' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = activePreset + '.wav';
+  a.click();
+  URL.revokeObjectURL(url);
+  renderBtn.disabled = false;
+  statusEl.textContent = 'rendered ' + activePreset + '.wav (' + dur + 's @ 44.1 kHz stereo).';
+});
+
+// ── WAV encoder (16-bit PCM, stereo) ─────────────────────────────
+function audioBufferToWav(buf) {
+  const numCh = buf.numberOfChannels;
+  const sr = buf.sampleRate;
+  const len = buf.length;
+  const bytesPerSample = 2;
+  const blockAlign = numCh * bytesPerSample;
+  const byteRate = sr * blockAlign;
+  const dataSize = len * blockAlign;
+  const total = 44 + dataSize;
+  const ab = new ArrayBuffer(total);
+  const dv = new DataView(ab);
+  let p = 0;
+  function w(s) { for (let i = 0; i < s.length; i++) dv.setUint8(p++, s.charCodeAt(i)); }
+  function u16(n) { dv.setUint16(p, n, true); p += 2; }
+  function u32(n) { dv.setUint32(p, n, true); p += 4; }
+  w('RIFF'); u32(total - 8); w('WAVE');
+  w('fmt '); u32(16); u16(1); u16(numCh); u32(sr); u32(byteRate); u16(blockAlign); u16(bytesPerSample * 8);
+  w('data'); u32(dataSize);
+  const chans = [];
+  for (let c = 0; c < numCh; c++) chans.push(buf.getChannelData(c));
+  for (let i = 0; i < len; i++) {
+    for (let c = 0; c < numCh; c++) {
+      const s = Math.max(-1, Math.min(1, chans[c][i]));
+      dv.setInt16(p, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+      p += 2;
+    }
+  }
+  return ab;
+}
+</script>
+</body>
+</html>
