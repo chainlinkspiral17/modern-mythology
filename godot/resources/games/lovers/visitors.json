@@ -1,6 +1,6 @@
 {
-  "scope": "lovers",
-  "notes": "Lovers visitors. The center figure is Reed — the partner who moves with you through the apartment. Everyone else is a peripheral check-in (the bus kid bringing coffee from John's diner two floors below, the upstairs neighbor whose stove is out, the old friend with a book to return, the landlord with the lease handover). Reed is is_lovers_partner true — they orbit the apartment and SYNC ticks only when you and Reed are at the same space. The painting on the easel has been two-thirds done for nine months.",
+  "scope": "_flavor_pool",
+  "notes": "DEPRECATED — preserved as visitor / flavor pool only. Sasha + Reed in the apartment above the diner were Claude-invented; canon has the Lovers as Mackenzie + Philip Roberts on cursed (sinkhole-edge) ground (vol5 ch6, with the returned Polaroid of Mackenzie's brother). These visitor entries remain as a writing reservoir for re-use as ambient cast in canonical scenarios — the bus kid bringing coffee can surface in a D'Ambrosio's scenario, the upstairs neighbor can be in any second-floor scene, Reed/Sasha can be re-purposed as a couple in a different chapter's background. NOT loaded as an active arcana visitor roster.",
   "visitors": [
     {
       "id": "reed",

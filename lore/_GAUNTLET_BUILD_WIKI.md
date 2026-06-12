@@ -605,9 +605,46 @@ Dream logic earned in the Priestess: the recursive footage, the fractal mirror s
 
 ---
 
+## Surgery (completed)
+
+Catastrophically miscast files have been retired. State:
+
+**Deleted (Claude-invented, no canonical basis):**
+- `chariot/` — setup_*.json (3), action_cards.json, gravity_deck.json, finale.json, items.json, die.json, threats.json
+- `lovers/` — same set
+- `hierophant/` — same set
+- `priestess/` — same set (the invented Pomegranate Hour suite)
+- `emperor/setup_johns_review.json` — invented guest-lens scenario
+- `locations/the_midnight_bus.json` — Cora's bus
+- `locations/apartment_above_diner.json` — Sasha/Reed apartment
+- `locations/bbs_room.json` — invented BBS room
+- `locations/recording_booth.json` — invented PH suite (Whispers rebuild pending)
+- `hands/cora.json`, `hands/sasha.json`, `hands/sysop.json` — invented hands
+
+**Preserved as flavor pool** (scope renamed to `_flavor_pool`, marked DEPRECATED in notes):
+- `chariot/visitors.json` — Cora and passengers (writing reservoir)
+- `lovers/visitors.json` — Sasha/Reed/bus kid/etc. (writing reservoir)
+- `hierophant/visitors.json` — TOWER/Lurker/Anya recording/etc. (writing reservoir)
+
+**Cleaned cross-references:**
+- `achievements.json` — removed `lovers_complete`, `chariot_complete`, `priestess_complete`, `conversation_began`, `davey_speaks`, `young_self_speaks`, `johns_review_passed`, `an_episode_was_made`, `hierophant_complete`, `empress_complete`, `first_pair`, `the_tideline`, `long_quiet_used`. Kept the deck-wide ones (first_win/loss, clean_run, low_doubt, no_stagnation), the Fool/Magician complete entries, the sinkhole_opens trigger, the_decree, demon_survivor, first_septenary, candles_lit. Emperor_complete kept with a note pending reframe.
+- `world_state.json` — removed `conversation_began`, `brood_emergence`, `the_apartment_held`, `the_route_runs`. Kept `sinkhole_open` (with strengthened note that it is the canonical Nexus event and is underweighted), `first_septenary_won`, `candles_lit`.
+- `scenes/menu/GalleryOverlay.gd` — Priestess/Lovers/Hierophant/Chariot PLAY button overlays removed; visualizers still render the arcana cards. PLAY returns when canonical scenarios land.
+
+**Still intact and canon-aligned:**
+- `fool/*` + `locations/dambrosios.json` (canonical Fool at D'Ambrosio's, three scenarios)
+- `magician/*` + `locations/cathedral.json` (canonical Magician at Frasier's warehouse, three scenarios)
+- `hands/john_frank.json`, `hands/frasier.json`, `hands/elicia.json`, `hands/nicola.json`, `hands/dante.json`
+- Engine code (TarotGauntletGame.gd) — all infrastructure (hand_overrides, episode-state machinery, verb_labels, achievement evaluator) intact
+- `world_state.json` sinkhole_open injector
+
+**Still in repo but pending canon reframe:**
+- `emperor/*` + `locations/dantes_office.json` — Dante is canonically at the riverboat helm (not a civic office), but the existing scenarios are runnable and prose is partly salvageable. Reframe queued.
+- `empress/*` + `locations/riverboat_interior.json` — Nicola is canonically the hostess at D'Ambrosio's riverboat, not a separate boat owner. The riverboat location is the right setting; the framing needs to align with vol5 ch3 (Nicola hosting Aria, pregnant with the Third). Reframe queued.
+
 ## What to build next, in priority
 
-1. **Surgery: retire the catastrophically miscast files.** Cora-Chariot, Sasha/Reed-Lovers, Sysop-Hierophant, Elicia-half-finished-show. Move salvageable prose to visitor flavor.
+1. ~~Surgery~~ (done)
 2. **Rebuild the Chariot** around Antonio at Ember & Ash. Hand: Antonio. Location: hot office above warehouse, the corner across the street, the warehouse below. Visitors: Jimmy Daigle, Q. Paul (off-board, phone-only — 27-second voicemails), the older man in the charcoal suit (silent menace), Lila Bao (phone), Antonio's father DANTE (phone, but ch7 is *before* Dante's death — the call he doesn't make is the call to a father about to die in ~6 weeks), Alberto (the surviving brother).
 3. **Rebuild the Lovers** around the Roberts. Location: their bungalow on cursed ground (kitchen, porch, the spare bedroom they keep made up). Visitors: Elicia (in crisis), the boy with the envelope, Mackenzie's brother (in the Polaroid). Doom-clock candidate: the faucet drip Philip can't fix.
 4. **Rebuild the Hierophant** around Q. Paul. Location: where he holds court — Table 17 at D'Ambrosio's brunch + St. Jude's church exterior + a New Orleans phone line. Visitors: Maya (7), Gloria the waitress, Antonio (phone), John (in the park).

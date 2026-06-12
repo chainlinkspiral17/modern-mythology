@@ -1,6 +1,6 @@
 {
-  "scope": "chariot",
-  "notes": "Passengers on Cora's midnight bus, route 9 between Graustark and the next town up. Most board at the front door at a scheduled mile-marker, ride for a while, and disembark at the next stop or the shoulder. Some are regulars. Cora has been driving this route for nineteen years and the seat has her shape. The CB on channel 17 stays at the edge of audible under all of them. The dashboard candy dish has been on the dash for seven years; the candies are the kind nobody bought for any one passenger and everybody has taken at least one.",
+  "scope": "_flavor_pool",
+  "notes": "DEPRECATED — preserved as visitor / flavor pool only. Cora the midnight-bus driver and her passengers were Claude-invented; canon has the Chariot as Antonio D'Ambrosio at Ember & Ash in New Orleans (vol5 ch7). These visitor entries remain as a writing reservoir for re-use as ambient cast in canonical scenarios — Cora can surface as a Houston/Graustark bus driver Antonio remembers, the late-shift worker can be a Daigle's-bar regular, etc. NOT loaded as an active arcana visitor roster; the engine should not point at this file as `chariot/visitors.json` for any canonical scenario. See `lore/_GAUNTLET_BUILD_WIKI.md` for the canon-aligned plan.",
   "visitors": [
     {
       "id": "the_late_shift",

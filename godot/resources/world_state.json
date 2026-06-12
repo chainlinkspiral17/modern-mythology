@@ -1,11 +1,11 @@
 {
-  "notes": "Cross-arcana world-state ambient injectors. Read by TarotGauntletGame at run start; when the relevant SaveSystem key is unlocked, the listed ambient_lines are appended to the run's ambient pool, and the listed gravity_extras are shuffled into the gravity deck. Lets one arcana's events haunt every future arcana's runs without rewriting per-arcana data.",
+  "notes": "Cross-arcana world-state ambient injectors. Read by TarotGauntletGame at run start; when the relevant SaveSystem key is unlocked, the listed ambient_lines are appended to the run's ambient pool, and the listed gravity_extras are shuffled into the gravity deck. Lets one arcana's events haunt every future arcana's runs without rewriting per-arcana data. State injectors keyed to Claude-invented scenarios (conversation_began, brood_emergence, the_apartment_held, the_route_runs) were removed in the canon-alignment surgery. Will be re-added once canonical scenarios land. The sinkhole world state is the canonical Nexus event and is the deck's most pervasive ambient; it is currently underweighted (only 7 ambient lines, 2 gravity extras) and should be amplified in future passes — every arcana touches it.",
   "states": [
     {
       "id": "sinkhole_open",
       "save_key": "world:sinkhole_open",
       "label": "THE SINKHOLE IS OPEN",
-      "description": "Triggered by losing BLOW OUT THE CANDLES with the_steamboat_sails finale. The river has taken the bank and the sinkhole has formed. The town has not been the same since.",
+      "description": "Triggered by losing BLOW OUT THE CANDLES with the_steamboat_sails finale. The sinkhole has opened. The town has not been the same since. Canonically this is the central Nexus event of vol 5 — the original sinkhole happened circa June 2009 (per the Polaroid in vol5 ch6 Lovers); the deck's reopening at vol close (ch20 Judgement, 10:47 AM Central) is when Dante's riverboat sinks. Every arcana carries the echo.",
       "ambient_lines": [
         "somebody's talking on the bank about the sinkhole. they don't agree.",
         "the river is finding ways into rooms that used to be dry.",
@@ -31,8 +31,7 @@
       "description": "Triggered by winning a scenario in each of the first seven arcanas. The town has been touched by every keeper.",
       "ambient_lines": [
         "the room has a steadier shape tonight. you can feel the other rooms holding it up.",
-        "somebody on the radio mentions cora's bus and elicia's booth in the same sentence.",
-        "the bus kid waves up at the apartment window. somebody waves back.",
+        "somebody on the radio mentions the riverboat and the warehouse in the same sentence.",
         "frasier's lamp is on in the cathedral. you can see it through the window."
       ],
       "gravity_extras": []
@@ -45,71 +44,6 @@
       "ambient_lines": [
         "the candles got lit. that was a different night.",
         "frasier still looks at the workbench differently."
-      ],
-      "gravity_extras": []
-    },
-    {
-      "id": "conversation_began",
-      "save_key": "achievement:conversation_began",
-      "label": "THE CONVERSATION HAPPENED",
-      "description": "Triggered by locking Ep. 17 of Pomegranate Hour. The Two-Chairs Women began speaking. The show is being made.",
-      "ambient_lines": [
-        "somebody on the bank says they heard elicia is finishing the show. they may be wrong. they may also not be wrong.",
-        "the eighty-six-minute soundstage block, finally used. the receipt is no longer in the desk.",
-        "marisol calls her agent and says she has a thing she wants to clear three weekends for.",
-        "hen, in LA, opens a document for the first time in nine years.",
-        "the suite hums one notch louder. somebody is awake in it."
-      ],
-      "gravity_extras": [
-        { "id": "world_a_phone_call_about_the_show", "title": "a phone call about the show",
-          "flavor": "your phone rings. an area code you don't recognize. someone heard about the conversation episode.",
-          "effects": [ { "kind": "advance_visitor_schedule", "amount": 1 } ] }
-      ]
-    },
-    {
-      "id": "brood_emergence",
-      "save_key": "lore_token:entomologist_scored",
-      "label": "THE BROOD IS BACK",
-      "description": "Triggered by sitting with the Entomologist in THE LONG EDIT. The seventeen-year cicada brood is emerging this season. The woods upstate are loud the way they were in '96.",
-      "ambient_lines": [
-        "the cicadas are loud tonight in a way they have been loud only once before.",
-        "somebody on the radio is asking if anyone has driven upstate this week.",
-        "the brood emerges in patches. tonight is one of the patches.",
-        "davey would have been forty-eight this year. you do the math without meaning to.",
-        "the suite's modem rack is humming at a slightly different pitch. it has noticed."
-      ],
-      "gravity_extras": [
-        { "id": "world_a_cicada_lands", "title": "a cicada lands on the window",
-          "flavor": "one lands on the outside of the window and clings. it is brown and translucent and twenty centimeters away from your face.",
-          "effects": [ { "kind": "lose_doubt", "amount": 1 } ] },
-        { "id": "world_the_brood_hums", "title": "the brood hums underneath",
-          "flavor": "the cicadas outside the room rise in pitch together, then settle. they are doing a thing they only do tonight.",
-          "effects": [ { "kind": "lose_stagnation", "amount": 1 } ] }
-      ]
-    },
-    {
-      "id": "the_apartment_held",
-      "save_key": "achievement:lovers_complete",
-      "label": "THE APARTMENT HELD",
-      "description": "Triggered by completing all three Lovers scenarios. The apartment above the diner is in the right shape — Reed's painting finished, the boxes resolved, the conversation that was supposed to happen finally having happened.",
-      "ambient_lines": [
-        "the apartment above john's diner has its window cracked tonight. january air through february.",
-        "somebody walking past on the street looks up. the light is on.",
-        "the diner sends up coffee for two on a tray every afternoon at 4 pm.",
-        "reed's painting hangs over the bed corner now. the quarter-inch of red landed."
-      ],
-      "gravity_extras": []
-    },
-    {
-      "id": "the_route_runs",
-      "save_key": "achievement:chariot_complete",
-      "label": "THE ROUTE RUNS",
-      "description": "Triggered by completing all three Chariot scenarios. Cora's route runs reliably even on the nights she's not driving. The bus knows the road.",
-      "ambient_lines": [
-        "the midnight bus passes on the road north. you can hear it if you listen.",
-        "channel 17 has a voice on it that sounds like cora's but isn't.",
-        "the sunoco at mile 14 stays open later than it used to.",
-        "somebody on the radio mentions a passenger who left a paperback on seat b-3 once."
       ],
       "gravity_extras": []
     }

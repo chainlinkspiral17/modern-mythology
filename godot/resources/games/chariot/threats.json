@@ -1,5 +1,0 @@
-{
-  "scope": "chariot",
-  "notes": "Chariot does not use mess-meeple threats. Pressure comes from fuel + doubt + the miles ticking past stops without passengers having had their moment. This file exists so the engine's threat loader doesn't crash.",
-  "threats": {}
-}

@@ -1,6 +1,6 @@
 {
-  "scope": "hierophant",
-  "notes": "Callers and walk-ins at ember.ash.rest.bbs — Sysop's basement BBS, running on four modems and the music store upstairs's tolerance. Some visitors are dialed in (they live in the terminal); some came in through the alley door (they live in the couch corner). The BBS holds a community across both channels. The modem rack hums under all of them; the cicadas in the alley sometimes drown the fan; the ham radio finds a callsign once a season.",
+  "scope": "_flavor_pool",
+  "notes": "DEPRECATED — preserved as visitor / flavor pool only. The 'Sysop's BBS room' setting and 'Sysop' as a Hierophant character were Claude-invented; canon has the Hierophant as Quentin Paul ('Q. Paul') — a power-broker/patriarch who holds court at D'Ambrosio's Sunday brunch (vol5 ch5), with multi-POV from Maya Daigle (age 7), Gloria Reyes (waitress), Antonio on the phone, and John Frank in a park. Antonio is the actual sysop of ember.ash.rest.bbs as a character handle, but the BBS room is not the Hierophant's board. These visitor entries (TOWER as 9:04 PM regular, the Lurker, the Kid with Questions, the Ham Voice, Anya as a recording, Sysop off-shift) remain as a writing reservoir — TOWER could be a BBS character in Antonio's Chariot board, the Lurker's posting paralysis fits anywhere, etc. NOT loaded as an active arcana visitor roster.",
   "visitors": [
     {
       "id": "the_regular_caller",

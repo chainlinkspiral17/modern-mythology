@@ -839,23 +839,26 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		return
 	if short_path == "high_priestess_arcana":
 		var vp := _spawn_visualizer(PRIESTESS_VISUALIZER_SCRIPT)
-		_add_play_button_overlay(vp, "priestess", "recording_booth", "elicia")
+		# Priestess scenario play button removed in canon-alignment surgery
+		# — Whispers from the Liminal rebuild pending. Visualizer still renders.
 		return
 	if short_path == "emperor_arcana":
 		var vem := _spawn_visualizer(EMPEROR_VISUALIZER_SCRIPT)
 		_add_play_button_overlay(vem, "emperor", "dantes_office", "dante")
 		return
+	# Hierophant / Lovers / Chariot play buttons removed in canon-alignment
+	# surgery — the scenarios these pointed at (sysop's BBS, sasha's
+	# apartment, cora's bus) were Claude-invented and have been retired.
+	# Visualizers still render the arcana cards; PLAY buttons return when
+	# canonical rebuilds land (Q. Paul / the Roberts / Antonio at Ember & Ash).
 	if short_path == "hierophant_arcana":
-		var vh := _spawn_visualizer(HIEROPHANT_VISUALIZER_SCRIPT)
-		_add_play_button_overlay(vh, "hierophant", "bbs_room", "sysop")
+		_spawn_visualizer(HIEROPHANT_VISUALIZER_SCRIPT)
 		return
 	if short_path == "lovers_arcana":
-		var vlv := _spawn_visualizer(LOVERS_VISUALIZER_SCRIPT)
-		_add_play_button_overlay(vlv, "lovers", "apartment_above_diner", "sasha")
+		_spawn_visualizer(LOVERS_VISUALIZER_SCRIPT)
 		return
 	if short_path == "chariot_arcana":
-		var vch := _spawn_visualizer(CHARIOT_VISUALIZER_SCRIPT)
-		_add_play_button_overlay(vch, "chariot", "the_midnight_bus", "cora")
+		_spawn_visualizer(CHARIOT_VISUALIZER_SCRIPT)
 		return
 	# Tarot Synth — type:"overlay" entry in the gallery index, opens
 	# the playable instrument as a fullscreen overlay

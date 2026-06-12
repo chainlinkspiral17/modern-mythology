@@ -1,6 +1,6 @@
 {
   "scope": "global",
-  "notes": "Achievement + unlock catalogue. Each entry declares an id, title, description, trigger condition, and an optional reward. Conditions are evaluated by TarotGauntletGame on _trigger_win and _trigger_loss; un-cleared achievements that newly satisfy fire SaveSystem.mark_unlocked(unlock_key) and any reward. The AchievementsPanel reads this list + SaveSystem to render the codex of what's been earned.",
+  "notes": "Achievement + unlock catalogue. Each entry declares an id, title, description, trigger condition, and an optional reward. Conditions are evaluated by TarotGauntletGame on _trigger_win and _trigger_loss; un-cleared achievements that newly satisfy fire SaveSystem.mark_unlocked(unlock_key) and any reward. The AchievementsPanel reads this list + SaveSystem to render the codex of what's been earned. Per-arcana complete entries (priestess/empress/emperor/hierophant/lovers/chariot) have been removed pending canon-aligned rebuild — they referenced scenarios that were Claude-invented and have been retired. Will be re-added as canonical scenarios land.",
   "achievements": [
     {
       "id": "first_win",
@@ -33,36 +33,12 @@
       "reward": { "kind": "unlock", "key": "unlocked:reversed:magician" }
     },
     {
-      "id": "priestess_complete",
-      "title": "ELICIA'S WHOLE NIGHT",
-      "desc": "Win all three Pomegranate Hour scenarios (A PRODUCTIVE NIGHT, THE CONVERSATION, THE LONG EDIT). The show is still not finished. That was never the win.",
-      "trigger": { "kind": "all_scenarios", "arcana": "priestess", "scenarios": ["cicada_session","long_quiet","tape_witness"] },
-      "unlock_key": "achievement:priestess_complete",
-      "reward": { "kind": "unlock", "key": "unlocked:reversed:priestess" }
-    },
-    {
-      "id": "empress_complete",
-      "title": "NICOLA'S WHOLE TABLE",
-      "desc": "Win all three Empress scenarios (STATIC BLOOM, HARVEST DINNER, ICE IN THE RIVER).",
-      "trigger": { "kind": "all_scenarios", "arcana": "empress", "scenarios": ["static_bloom","harvest_dinner","ice_in_the_river"] },
-      "unlock_key": "achievement:empress_complete",
-      "reward": { "kind": "unlock", "key": "unlocked:reversed:empress" }
-    },
-    {
       "id": "emperor_complete",
       "title": "DANTE'S WHOLE DAY",
-      "desc": "Win all three Emperor scenarios (DOCKET, FIRST SESSION, APPEAL).",
+      "desc": "Win all three Emperor scenarios (DOCKET, FIRST SESSION, APPEAL). Pending canon reframe — current scenarios were authored before the riverboat-helm canon settled.",
       "trigger": { "kind": "all_scenarios", "arcana": "emperor", "scenarios": ["docket","first_session","appeal"] },
       "unlock_key": "achievement:emperor_complete",
       "reward": { "kind": "unlock", "key": "unlocked:reversed:emperor" }
-    },
-    {
-      "id": "hierophant_complete",
-      "title": "SYSOP'S WHOLE BOARD",
-      "desc": "Win all three Hierophant scenarios (GREEN PHOSPHOR, THE LONG SIGNAL, BROADCAST NIGHT).",
-      "trigger": { "kind": "all_scenarios", "arcana": "hierophant", "scenarios": ["green_phosphor","the_long_signal","broadcast_night"] },
-      "unlock_key": "achievement:hierophant_complete",
-      "reward": { "kind": "unlock", "key": "unlocked:reversed:hierophant" }
     },
     {
       "id": "first_septenary",
@@ -101,20 +77,6 @@
       "unlock_key": "achievement:candles_lit"
     },
     {
-      "id": "long_quiet_used",
-      "title": "THE LONG QUIET HELD",
-      "desc": "Use THE LONG QUIET ability in a Priestess session.",
-      "trigger": { "kind": "card_played_during_run", "card": "the_long_quiet" },
-      "unlock_key": "milestone:long_quiet_used"
-    },
-    {
-      "id": "the_tideline",
-      "title": "MARKED THEIR PLACE",
-      "desc": "Use THE TIDELINE ability in an Empress session.",
-      "trigger": { "kind": "card_played_during_run", "card": "the_tideline" },
-      "unlock_key": "achievement:the_tideline"
-    },
-    {
       "id": "the_decree",
       "title": "THE OFFICE RULED",
       "desc": "Use THE DECREE ability in an Emperor session.",
@@ -135,64 +97,6 @@
       "trigger": { "kind": "loss_with_finale_id", "finale_id": "the_steamboat_sails" },
       "unlock_key": "world:sinkhole_open",
       "reward": { "kind": "unlock", "key": "achievement:sinkhole_opens" }
-    },
-    {
-      "id": "first_pair",
-      "title": "A PAIR",
-      "desc": "Win the LOVERS scenario with both characters at the same threshold.",
-      "trigger": { "kind": "lovers_synced_leap" },
-      "unlock_key": "achievement:first_pair"
-    },
-    {
-      "id": "lovers_complete",
-      "title": "THE APARTMENT HELD",
-      "desc": "Win all three Lovers scenarios (THE LAST BOXES, AN AFTERNOON, THE LETTER IN THE DRAWER).",
-      "trigger": { "kind": "all_scenarios", "arcana": "lovers", "scenarios": ["the_last_boxes","an_afternoon","the_letter_in_the_drawer"] },
-      "unlock_key": "achievement:lovers_complete",
-      "reward": { "kind": "unlock", "key": "unlocked:reversed:lovers" }
-    },
-    {
-      "id": "chariot_complete",
-      "title": "CORA'S WHOLE ROUTE",
-      "desc": "Win all three Chariot scenarios (DEPOT TO DEPOT, LATE RUN, THE LONG QUIET ROAD).",
-      "trigger": { "kind": "all_scenarios", "arcana": "chariot", "scenarios": ["depot_to_depot","late_run","the_long_quiet_road"] },
-      "unlock_key": "achievement:chariot_complete",
-      "reward": { "kind": "unlock", "key": "unlocked:reversed:chariot" }
-    },
-    {
-      "id": "conversation_began",
-      "title": "THE CONVERSATION HAPPENED",
-      "desc": "Lock Ep. 17 in THE CONVERSATION — the Two-Chairs Women begin speaking after twenty years.",
-      "trigger": { "kind": "flag_during_run", "flag": "lore_token:conversation_began" },
-      "unlock_key": "achievement:conversation_began"
-    },
-    {
-      "id": "davey_speaks",
-      "title": "DAVEY SPEAKS",
-      "desc": "Sit with Davey through his full beat in THE LONG EDIT — play the cue 14 draft he marked 'please don't use this one.'",
-      "trigger": { "kind": "flag_during_run", "flag": "lore_token:davey_speaks" },
-      "unlock_key": "achievement:davey_speaks"
-    },
-    {
-      "id": "young_self_speaks",
-      "title": "ELICIA AT 21",
-      "desc": "Sit with Young Elicia through the Hi8 tape. Record over the last thirty seconds.",
-      "trigger": { "kind": "flag_during_run", "flag": "lore_token:young_self_speaks" },
-      "unlock_key": "achievement:young_self_speaks"
-    },
-    {
-      "id": "johns_review_passed",
-      "title": "THE OFFICE UNDER GLASS",
-      "desc": "Win JOHN'S REVIEW — survive the back-office meeting and get back on the line for the lunch rush. The first guest-lens scenario: John on the Emperor's board.",
-      "trigger": { "kind": "flag_during_run", "flag": "lore_token:sal_heard_him_out" },
-      "unlock_key": "achievement:johns_review_passed"
-    },
-    {
-      "id": "an_episode_was_made",
-      "title": "AN EPISODE WAS MADE",
-      "desc": "Advance any Pomegranate Hour episode by two states in a single Priestess scenario.",
-      "trigger": { "kind": "win_with_metric", "metric": "episodes_advanced", "op": ">=", "value": 2 },
-      "unlock_key": "achievement:an_episode_was_made"
     }
   ]
 }
