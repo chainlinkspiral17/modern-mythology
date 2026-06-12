@@ -686,4 +686,65 @@ Per `_TAROT_GAUNTLET_SCENARIOS.md`:
    `world:sinkhole_open` injector should be the deck's most
    pervasive ambient.
 
+## Tonal rule · dream logic stays in the Priestess
+
+Per user direction:
+
+> *I don't mind dream logic with the high priestess, but most of
+> the other levels have a root in reality with only small
+> indulgences into the make believe or madness.*
+
+**The Priestess is the dream-logic chapter.** Recursive tapes, the
+room reading back, the static resolving into her handwriting, the
+woman watching herself watch — these belong to her and only to her.
+Pomegranate Hour episodes are Elicia's filmed interpretations of the
+other chapters; they are Lynch-tonal because she is. But the
+*chapters themselves* — and the gauntlet scenarios that mirror them —
+are grounded.
+
+**The other arcanas earn weight through specificity, not animism.**
+
+- ✅ The cypress beam needs to be straight, not straight enough.
+- ✅ The brass clock has been ticking since '62.
+- ✅ The carpet has a path worn from six thousand paces.
+- ✅ The window AC unit Jimmy installed runs "in the particular way
+  that things installed by Jimmy run — at half capacity, with a
+  faint smell of melting plastic, and with a personality."
+- ✅ Quent pauses for the 9:09 PM cable interference and resumes.
+- ✅ Frasier's "warehouse demons" — they're his electrical mood, a
+  named mechanic he carries, not the room haunting him.
+
+- ❌ "The bus has been remembering since 1991."
+- ❌ "The kettle finds itself."
+- ❌ "The painting glances at you."
+- ❌ "The room remembers."
+- ❌ "The clock corrects itself on its own."
+- ❌ "The floppy wall serves up the right floppy."
+
+The line: specificity yes, animism no — except in Elicia's room.
+
+**What needs walked back in the existing repo (surgery list):**
+
+- `empress/gravity_deck.json` — "the rosebush has put out a new bud
+  overnight that it shouldn't have"
+- `emperor/gravity_deck.json` — "the clock corrects itself,"
+  "the stamp wears thin" (with agency)
+- `hierophant/gravity_deck.json` — "the floppy wall serves up the
+  right floppy," "the BBS is doing the thing it does when the night
+  settles into it"
+- `lovers/gravity_deck.json` — "the kettle finds itself," "the
+  painting glances at you," the record changing side without
+  agency
+- `chariot/gravity_deck.json` — "the wipers move once without
+  being asked," "the door's pneumatics hiss without being asked"
+  (also: this whole arcana is being rebuilt around Antonio, so the
+  walkback is moot for Chariot specifically)
+- Various visitor lore_text and step text across the same arcanas
+
+The Priestess gets a *deliberate boost*: since dream logic is hers
+alone, it should land harder in her arcana than my prose currently
+has it. The recursive logic of Pomegranate Hour II's "tape 11"
+(the woman watching herself watch herself; the note she finds in
+her own handwriting she does not remember writing) is the tier.
+
 This wiki updates as the canon surfaces.
