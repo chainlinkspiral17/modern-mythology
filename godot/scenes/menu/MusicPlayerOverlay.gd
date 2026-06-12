@@ -217,6 +217,8 @@ func _build() -> void:
 	_skin_menu_btn.text = "SKIN ▾"
 	_skin_menu_btn.custom_minimum_size = Vector2(80, 32)
 	_apply_font_btn(_skin_menu_btn, _skin["label_font"], _skin["label_size"], _skin["accent"])
+	_style_menu_btn(_skin_menu_btn)
+	_style_popup_menu(_skin_menu_btn.get_popup())
 	_populate_skin_menu()
 	header_row.add_child(_skin_menu_btn)
 
@@ -225,6 +227,8 @@ func _build() -> void:
 	_viz_menu_btn.text = "VIZ ▾"
 	_viz_menu_btn.custom_minimum_size = Vector2(72, 32)
 	_apply_font_btn(_viz_menu_btn, _skin["label_font"], _skin["label_size"], _skin["accent"])
+	_style_menu_btn(_viz_menu_btn)
+	_style_popup_menu(_viz_menu_btn.get_popup())
 	_populate_viz_menu()
 	header_row.add_child(_viz_menu_btn)
 
@@ -526,3 +530,66 @@ func _apply_font_btn(node: Button, path: String, size: int, col: Color) -> void:
 		node.add_theme_font_override("font", load(path) as Font)
 	node.add_theme_font_size_override("font_size", size)
 	node.add_theme_color_override("font_color", col)
+
+
+# Match the SKIN / VIZ MenuButton chrome to the player card so the
+# dropdowns don't render as bare OS-grey buttons.
+func _style_menu_btn(btn: MenuButton) -> void:
+	var accent: Color = _skin["accent"]
+	var bg: Color = _skin["bg"]
+	var st := StyleBoxFlat.new()
+	st.bg_color     = Color(bg.r, bg.g, bg.b, 0.4)
+	st.border_color = Color(accent.r, accent.g, accent.b, 0.35)
+	st.set_border_width_all(1)
+	st.set_corner_radius_all(2)
+	st.content_margin_left   = 8
+	st.content_margin_right  = 8
+	st.content_margin_top    = 4
+	st.content_margin_bottom = 4
+	btn.add_theme_stylebox_override("normal", st)
+	var hover_st := st.duplicate() as StyleBoxFlat
+	hover_st.bg_color     = Color(accent.r, accent.g, accent.b, 0.12)
+	hover_st.border_color = Color(accent.r, accent.g, accent.b, 0.55)
+	btn.add_theme_stylebox_override("hover",   hover_st)
+	btn.add_theme_stylebox_override("focus",   hover_st)
+	btn.add_theme_stylebox_override("pressed", hover_st)
+	btn.add_theme_color_override("font_hover_color",  _skin["txt"])
+	btn.add_theme_color_override("font_pressed_color", _skin["txt"])
+
+
+# Style the underlying PopupMenu so opened dropdowns match too.
+func _style_popup_menu(pop: PopupMenu) -> void:
+	if pop == null:
+		return
+	var accent: Color = _skin["accent"]
+	var bg: Color = _skin["bg"]
+	var panel := StyleBoxFlat.new()
+	panel.bg_color     = Color(bg.r, bg.g, bg.b, 0.97)
+	panel.border_color = Color(accent.r, accent.g, accent.b, 0.45)
+	panel.set_border_width_all(1)
+	panel.content_margin_left   = 6
+	panel.content_margin_right  = 6
+	panel.content_margin_top    = 4
+	panel.content_margin_bottom = 4
+	pop.add_theme_stylebox_override("panel", panel)
+	var hover := StyleBoxFlat.new()
+	hover.bg_color = Color(accent.r, accent.g, accent.b, 0.18)
+	hover.content_margin_left   = 6
+	hover.content_margin_right  = 6
+	hover.content_margin_top    = 2
+	hover.content_margin_bottom = 2
+	pop.add_theme_stylebox_override("hover", hover)
+	var sep := StyleBoxFlat.new()
+	sep.bg_color = Color(accent.r, accent.g, accent.b, 0.25)
+	sep.content_margin_top = 1
+	sep.content_margin_bottom = 1
+	pop.add_theme_stylebox_override("separator", sep)
+	pop.add_theme_color_override("font_color",            _skin["txt"])
+	pop.add_theme_color_override("font_hover_color",      _skin["accent"])
+	pop.add_theme_color_override("font_disabled_color",   _skin["dim"])
+	pop.add_theme_color_override("font_separator_color",  _skin["dim"])
+	# Match the body font so the dropdown reads consistent with the
+	# track list rather than the OS default.
+	if ResourceLoader.exists(String(_skin["track_font"])):
+		pop.add_theme_font_override("font", load(String(_skin["track_font"])) as Font)
+	pop.add_theme_font_size_override("font_size", int(_skin["track_size"]))
