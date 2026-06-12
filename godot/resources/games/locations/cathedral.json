@@ -1,0 +1,129 @@
+{
+  "id": "cathedral",
+  "title": "The Cathedral of Rust and Code, Graustark TX/LA",
+  "subtitle": "Frasier Temple's warehouse · the whole tarot built into the floor",
+  "bg_codex_card": "assets/gallery/magician.png",
+  "notes": "Frasier's converted river-side warehouse. Twenty-two arcana stations laid into the floor as miniatures + installations: an INNER cluster of Graustark-adjacent finished pieces around the kitchen-workbench, and an OUTER cluster of under-construction TEST AREA models for the places he's never been. The steamboat sits on the workbench at MAGICIAN — the central object of the location, and the thing whose completion fires the cross-arcana sinkhole. Stations are walkable nodes; the player navigates between Frasier's living space, the tarot deck, and Graustark itself simultaneously.",
+  "spaces": [
+    {"id": "warehouse_bay",   "label": "WAREHOUSE BAY",    "kind": "threshold", "pos_xy": [600,   40], "always_visible": true, "flavor": "the sliding bay door; his front door"},
+    {"id": "river_window",    "label": "RIVER WINDOW",     "kind": "threshold", "pos_xy": [40,   480], "always_visible": true, "flavor": "the cathedral's tall side window; the river beyond"},
+    {"id": "roof_hatch",      "label": "ROOF HATCH",       "kind": "threshold", "pos_xy": [1160, 480], "always_visible": false, "flavor": "ladder up; opens later"},
+
+    {"id": "magician",        "label": "MAGICIAN · WORKBENCH",  "kind": "named", "pos_xy": [600, 460], "is_start": true, "flavor": "the kitchen-workbench. The steamboat is here.", "drift_attractor": true},
+    {"id": "fool",            "label": "FOOL · DINER MODEL",    "kind": "named", "pos_xy": [720, 460], "flavor": "1:48 scale of D'Ambrosio's, lit warm"},
+    {"id": "priestess",       "label": "PRIESTESS · TAPES",     "kind": "search", "pos_xy": [480, 460], "search_pile": "priestess_tapes", "flavor": "Elicia's archive — cassettes labeled in her hand"},
+    {"id": "empress",         "label": "EMPRESS · LETTERS",     "kind": "search", "pos_xy": [820, 380], "search_pile": "empress_letters", "flavor": "Nicola's letter wall — twenty years of correspondence"},
+    {"id": "emperor",         "label": "EMPEROR · DANTE'S CHAIR","kind": "named", "pos_xy": [820, 540], "flavor": "Dante's office chair, reconstructed from photos"},
+    {"id": "hierophant",      "label": "HIEROPHANT · ALTAR",    "kind": "named", "pos_xy": [380, 540], "flavor": "river-window altar — incense + an open river-stone"},
+    {"id": "lovers",          "label": "LOVERS · BRIAR FALLS WIP","kind": "wip", "pos_xy": [240, 380], "search_pile": "wip_briar_falls", "flavor": "trees wired, not painted. The wedding pavilion is foam-core. A tracing-paper Smolvud overlay drapes from the rafter."},
+    {"id": "chariot",         "label": "CHARIOT · TRUCK CAB",   "kind": "named", "pos_xy": [960, 460], "flavor": "the front cab of a stripped delivery truck, still smelling of motor oil"},
+    {"id": "strength",        "label": "STRENGTH · PRESS",      "kind": "named", "pos_xy": [240, 460], "flavor": "a hand-press for prints — twenty pounds of cast iron"},
+    {"id": "hermit",          "label": "HERMIT · BBS TERMINAL", "kind": "search", "pos_xy": [120, 380], "search_pile": "hermit_bbs", "flavor": "phosphor-green CRT. RUST_CODE.BBS hums here too."},
+    {"id": "wheel",           "label": "WHEEL · HARMONY CREEK WIP","kind":"wip", "pos_xy": [1080, 380], "search_pile": "wip_harmony_creek", "flavor": "1:48 cul-de-sac. Lawn paint drying. All identical houses except one."},
+    {"id": "justice",         "label": "JUSTICE · LEDGER",      "kind": "named", "pos_xy": [600, 380], "flavor": "a ledger book open mid-page. Two columns, mostly the right one filled."},
+    {"id": "hanged_man",      "label": "HANGED MAN · MONTREAL WIP","kind":"wip","pos_xy": [1080, 300], "search_pile": "wip_montreal", "flavor": "post-sinkhole refuge city. Cabane-à-sucre tin roofs. A small pewter Saint-Laurent. Half-built — Frasier's never been."},
+    {"id": "death",           "label": "DEATH · MASK SHELF",    "kind": "named", "pos_xy": [600, 300], "flavor": "plaster casts of faces, none labeled, all watched"},
+    {"id": "temperance",      "label": "TEMPERANCE · STILL",    "kind": "named", "pos_xy": [380, 300], "flavor": "a working copper still, slow drip"},
+    {"id": "devil",           "label": "DEVIL · EMPTY STOOL",   "kind": "named", "pos_xy": [820, 300], "flavor": "a single bar stool, no bar. The man at the bar sits here."},
+    {"id": "tower",           "label": "TOWER · SHARP'S CLUB WIP","kind":"wip", "pos_xy": [240, 240], "search_pile": "wip_tower", "flavor": "Sharp's basement club, built from memory. The most-finished of the unfinished."},
+    {"id": "star",            "label": "STAR · LIGHT RIG",      "kind": "named", "pos_xy": [380, 180], "flavor": "a cluster of cold-blue LEDs in a ring on a stand"},
+    {"id": "moon",            "label": "MOON · POOL",           "kind": "named", "pos_xy": [600, 180], "flavor": "a flat reflecting pool, knee-deep, lit from below"},
+    {"id": "sun",             "label": "SUN · SOLAR LAMP",      "kind": "named", "pos_xy": [820, 180], "flavor": "a salvaged sodium-vapor lamp warm on a single chair"},
+    {"id": "judgement",       "label": "JUDGEMENT · BLANK STAGE","kind": "wip", "pos_xy": [1080, 180], "search_pile": "wip_judgement", "flavor": "an empty platform. Frasier knows this one is coming. He doesn't yet know what it's of."},
+    {"id": "world",           "label": "WORLD · GLOBE FRAME",   "kind": "named", "pos_xy": [600, 120], "flavor": "a wireframe globe armature, no continents yet"}
+  ],
+
+  "adjacency": {
+    "warehouse_bay":  ["world", "judgement"],
+    "world":          ["warehouse_bay", "judgement", "sun", "moon", "star"],
+    "judgement":      ["warehouse_bay", "world", "hanged_man", "sun"],
+    "sun":            ["world", "judgement", "moon", "devil"],
+    "moon":            ["world", "sun", "star", "death"],
+    "star":            ["world", "moon", "temperance", "tower"],
+    "tower":          ["star", "temperance", "strength", "hermit"],
+    "temperance":     ["star", "moon", "death", "hierophant"],
+    "death":          ["moon", "sun", "temperance", "devil", "justice"],
+    "devil":          ["sun", "death", "hanged_man", "emperor"],
+    "hanged_man":     ["judgement", "devil", "wheel"],
+    "wheel":          ["hanged_man", "devil", "empress", "chariot"],
+    "justice":        ["death", "temperance", "magician", "lovers"],
+    "lovers":         ["justice", "strength", "priestess", "hermit"],
+    "hermit":         ["tower", "lovers", "strength", "priestess"],
+    "strength":       ["tower", "hermit", "priestess", "river_window"],
+    "priestess":      ["lovers", "hermit", "strength", "magician"],
+    "magician":       ["priestess", "fool", "justice", "hierophant"],
+    "fool":           ["magician", "empress", "emperor"],
+    "empress":        ["fool", "wheel", "emperor"],
+    "emperor":        ["fool", "empress", "chariot", "hierophant"],
+    "chariot":        ["wheel", "emperor", "roof_hatch"],
+    "hierophant":     ["magician", "emperor", "river_window"],
+    "river_window":   ["strength", "hierophant"],
+    "roof_hatch":     ["chariot"]
+  },
+
+  "drift_attractors": {
+    "notes": "Visitors that linger without a connection drift toward these spaces. The Devil's stool is the cold attractor; the kitchen/workbench is the warm one. Frasier's visitors are RUST_CODE callers, his sister Elicia (different beat than her vol5 visit), and the Demon.",
+    "primary":  "magician",
+    "secondary": "devil",
+    "tertiary":  "hermit"
+  },
+
+  "space_effects": {
+    "magician": {
+      "on_end_action_phase": [{"kind": "gain_inspiration", "amount": 1, "note": "the workbench gives back what you give it"}]
+    },
+    "devil": {
+      "on_end_action_phase": [{"kind": "gain_stagnation", "amount": 1, "note": "loitering by the empty stool"}]
+    },
+    "hermit": {
+      "on_end_action_phase": [{"kind": "peek_next_gravity", "note": "the BBS gives you a beat"}]
+    },
+    "river_window": {
+      "on_end_action_phase": [{"kind": "lose_stagnation", "amount": 1, "note": "actual water steadies you"}]
+    },
+    "priestess": {
+      "on_end_action_phase": [{"kind": "draw_extra_item", "from_pile": "priestess_tapes", "amount": 1, "facedown": true, "note": "a cassette in your pocket"}]
+    },
+    "lovers": {
+      "on_end_action_phase": [{"kind": "advance_wip", "wip": "briar_falls", "amount": 1, "note": "the tracing-paper Smolvud goes one step more legible"}]
+    },
+    "wheel": {
+      "on_end_action_phase": [{"kind": "advance_wip", "wip": "harmony_creek", "amount": 1}]
+    },
+    "hanged_man": {
+      "on_end_action_phase": [{"kind": "advance_wip", "wip": "montreal", "amount": 1}]
+    },
+    "tower": {
+      "on_end_action_phase": [{"kind": "advance_wip", "wip": "tower", "amount": 1}]
+    },
+    "judgement": {
+      "on_end_action_phase": [{"kind": "advance_wip", "wip": "judgement", "amount": 1, "note": "the platform takes whatever you bring"}]
+    }
+  },
+
+  "wip_models": {
+    "notes": "Every WIP model starts as a fresh hull at game start. Each run the player picks which models to push. First-ever completion of a model fires a persistent codex annotation; the model itself still resets to WIP next launch.",
+    "briar_falls":   {"label": "Briar Falls / Smolvud", "completion_threshold": 4, "codex_key": "frasier_built_briar_falls"},
+    "harmony_creek": {"label": "Harmony Creek Estates", "completion_threshold": 4, "codex_key": "frasier_built_harmony_creek"},
+    "montreal":      {"label": "Montreal, CA",          "completion_threshold": 5, "codex_key": "frasier_built_montreal"},
+    "tower":         {"label": "Sharp's Basement Club", "completion_threshold": 3, "codex_key": "frasier_built_tower"},
+    "judgement":     {"label": "The Blank Stage",       "completion_threshold": 6, "codex_key": "frasier_built_judgement"}
+  },
+
+  "steamboat": {
+    "notes": "The kitchen-workbench's central model. Lives at MAGICIAN. Not a WIP_model entry because its completion is the SCENARIO win-trigger, not a codex annotation. Each run starts as a bare hull; finishing fires `milestone:steamboat_finished` cross-arcana flag, which the next Fool launch reads to mutate its board.",
+    "completion_threshold": 6,
+    "milestone_key": "milestone:steamboat_finished",
+    "spawn_at": "magician"
+  },
+
+  "events": [
+    {
+      "id": "the_bay_door_open",
+      "title": "THE BAY DOOR IS OPEN",
+      "auto_at_turn": 1,
+      "effect": {"kind": "global_threshold_dice_bonus", "amount": 1},
+      "flavor": "the river breathes in"
+    }
+  ]
+}
