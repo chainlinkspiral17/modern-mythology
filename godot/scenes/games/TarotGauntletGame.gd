@@ -1864,9 +1864,20 @@ func _open_visitor_view(vid: String) -> void:
 	beats_header.add_theme_font_size_override("font_size", 11)
 	info.add_child(beats_header)
 	var steps_dict: Dictionary = v.get("steps", {})
+	var verb_labels: Dictionary = v.get("verb_labels", {}) as Dictionary
 	var cur_progress: int = int(st.get("progress", 0))
 	for step_name in ["greet", "listen", "deliver", "sit_with"]:
+		# Pomegranate Hour subjects override the step label
+		# (greet → see, listen → voice, deliver → cut, sit_with → lock).
+		# The internal step_name stays the same so engine accounting is
+		# unaffected; only the displayed label changes.
+		var display_label: String = String(verb_labels.get(step_name, step_name))
+		# verb_labels may also be keyed by the new verb (e.g. lookup the
+		# step's flavor under "lock" instead of "sit_with"). Try that as
+		# a fallback when steps_dict doesn't have the standard key.
 		var step_line: String = String(steps_dict.get(step_name, ""))
+		if step_line == "" and display_label != step_name:
+			step_line = String(steps_dict.get(display_label, ""))
 		if step_line == "":
 			var defaults: Dictionary = _step_defaults_by_mood.get(String(v.get("mood", "preoccupied")), {})
 			step_line = String(defaults.get(step_name, ""))
@@ -1884,9 +1895,9 @@ func _open_visitor_view(vid: String) -> void:
 		# Next-up step shows only its label (vague). Steps beyond that
 		# are even vaguer — no name, just a placeholder.
 		if step_done:
-			step_rt.text = "  %s [b]%s[/b]  [color=#7c8398][i]%s[/i][/color]" % [bullet, step_name.to_upper(), step_line]
+			step_rt.text = "  %s [b]%s[/b]  [color=#7c8398][i]%s[/i][/color]" % [bullet, display_label.to_upper(), step_line]
 		elif step_idx == cur_progress + 1:
-			step_rt.text = "  %s [color=#c8a268]%s[/color]" % [bullet, step_name.to_upper()]
+			step_rt.text = "  %s [color=#c8a268]%s[/color]" % [bullet, display_label.to_upper()]
 		else:
 			step_rt.text = "  %s [color=#5e5650]· · ·[/color]" % bullet
 		info.add_child(step_rt)
@@ -4339,11 +4350,17 @@ func _step_index(step: String) -> int:
 func _log_visitor_step_line(vid: String, step: String) -> void:
 	var v: Dictionary = _visitors_def.get(vid, {})
 	var name_s: String = String(v.get("name", vid))
+	# Pomegranate Hour subjects override the step verb in the UI.
+	var verb_labels: Dictionary = v.get("verb_labels", {}) as Dictionary
+	var display_step: String = String(verb_labels.get(step, step))
 	var line: String = ""
-	# Per-visitor line takes priority
+	# Per-visitor line takes priority. Try internal step key first,
+	# then the display verb (some JSONs key steps as see/voice/cut/lock).
 	var steps_dict: Dictionary = v.get("steps", {})
 	if steps_dict.has(step):
 		line = String(steps_dict.get(step, ""))
+	elif display_step != step and steps_dict.has(display_step):
+		line = String(steps_dict.get(display_step, ""))
 	if line == "":
 		# Fall back to mood-default. _visitors_def is the
 		# per-visitor dict; mood defaults are stored as a separate
@@ -4353,7 +4370,7 @@ func _log_visitor_step_line(vid: String, step: String) -> void:
 		var defaults: Dictionary = _step_defaults_by_mood.get(mood, {})
 		line = String(defaults.get(step, ""))
 	# Log a verbed-line header + the flavor underneath
-	var verb_label: String = step.replace("_", " ").to_upper()
+	var verb_label: String = display_step.replace("_", " ").to_upper()
 	_log_line("[color=#7cffb0]→ %s[/color] [b]%s[/b]" % [verb_label, name_s])
 	if line != "":
 		_log_line("[color=#7c8398][i]   %s[/i][/color]" % line)
