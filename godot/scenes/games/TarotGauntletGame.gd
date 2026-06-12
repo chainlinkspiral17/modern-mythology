@@ -886,8 +886,12 @@ func _init_run() -> void:
 			push_warning("Gauntlet: scenario lists unknown visitor in visitors_present_at_start: %s" % vid)
 			continue
 		var arr: Dictionary = v.get("arrival", {})
+		# Resolve starting pos: prefer arrival.pos, fall back to
+		# arrival.to (some visitor schemas use "to" rather than "pos"
+		# for the starting position).
+		var start_pos: String = String(arr.get("pos", arr.get("to", "counter")))
 		_visitors_state[vid] = {
-			"pos": arr.get("pos", "counter"),
+			"pos": start_pos,
 			"arrived": true,
 			"arrived_turn": 1,
 			"connected": false,
