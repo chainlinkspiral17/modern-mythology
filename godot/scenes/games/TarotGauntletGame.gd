@@ -336,6 +336,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 const _BGM_BY_LOCATION := {
 	"dambrosios": "res://assets/audio/bgm/vol5_ambient.ogg",
+	"cathedral":  "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
 }
 const _SFX := {
 	"card_play":    "res://assets/audio/sfx/gauntlet_card_play.ogg",
