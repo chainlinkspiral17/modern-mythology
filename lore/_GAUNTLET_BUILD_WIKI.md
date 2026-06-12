@@ -113,66 +113,70 @@ funny on purpose, wise without affecting it, and aesthetically
 confident — pretty because she finally trusts her own eye. The
 mature self.
 
-### The lineage: Whispers came from Pomegranate Hour
+### The lineage: PH is the lingering failure that haunts Whispers
 
-Per user: *"it can be whispers of the liminal with lots of references
-to pomegranate hour. as one came from the other."*
+Per user: *"think of pomegranate hour as the lingering failure that
+haunts the back of the mind."*
 
-Same maker, evolved voice. PH is the apprenticeship; Whispers is the
-mature work that grew out of it. They're not two parallel projects —
-they're a *lineage*. Elicia made PH, learned, kept what worked,
-discarded the homage tics that no longer served, and the result is
-Whispers.
+PH is not an apprenticeship Elicia is proud of. It's the wound the
+mature work emerged in spite of. The show that didn't quite land,
+that her cult audience still asks about, that she suspects she'll
+never fully escape. Whispers came from PH the way a steadier hand
+comes from a tremor — not gratefully.
 
-What that means for how PH appears inside the Priestess scenarios
-(which run on Whispers):
+What that means tonally:
 
-- **Re-cut footage.** A shot from a PH episode lands in a Whispers
-  episode in a new context — the same beat used twice, the second
-  time more honestly.
+- **The PH archive is a stack she has, more than once, considered
+  destroying.** She hasn't. She also hasn't catalogued it cleanly.
+  The tapes are in a corner of the suite without labels, in the
+  order she shoved them there.
+- **A PH still on her wall is a discipline, not nostalgia.** A
+  reminder of what she's *not* making anymore. The frame is cheap.
+  She has never replaced it.
+- **The cult audience asks about PH** — twice a year on a Q&A panel,
+  more in comments. She has a polite answer she's given two hundred
+  times. The answer is *"I learned a lot. I don't watch them."* The
+  second sentence is true.
 - **Retired devices.** The 60 Hz hum, the 9:09 PM interference, the
   silent halftone host — devices PH used as load-bearing structure
-  that Whispers either skips entirely or uses once, with awareness,
-  as a wink. Half-uses, half-ironizes.
-- **Shelved episodes.** PH episodes live in her archive, occasionally
-  referenced in the current edit. The cult audience knows the PH
-  back catalog and reads the new work against it.
-- **The early self in the cutting room.** When Elicia is editing
-  Whispers, the question she's often answering is: *what did young
-  me try to do here that I want to keep, and what was just me
-  copying Lynch?* The PH archive is a mirror she can look into
-  during the current work.
-- **Specific recurring references** the gauntlet's Priestess
-  scenarios can carry:
-  - the old halftone cold-open is in the PH episodes; Whispers's cold
-    open is different (the canon doesn't specify yet)
-  - certain locations were PH locations first (the riverbank, the
-    bungalow window, the abandoned diner booth)
-  - certain actors were PH actors who came back for Whispers (Anya
-    is a strong candidate)
-  - certain music cues, certain title-card fonts, certain edit
-    rhythms get inherited
+  that Whispers skips entirely. When ambient hum hits 60 Hz at 9:09
+  PM in the wild, she still notices, and she still can't unhear it.
+- **Re-cut footage is salvage, not reuse.** When a PH take lands in
+  a Whispers episode, it's because the take was honest and the
+  surrounding episode wasn't. The salvage is sometimes ironic.
+  Sometimes it's the only way to use a shot that almost worked.
+- **The PH archive is the dark mirror of the current cutting room.**
+  When she's editing Whispers, the half-question always in the back
+  of her head is: *did I learn anything, or am I just running the
+  same trick at a different camera height.*
+- **PH locations are now charged.** The riverbank, the bungalow
+  window, the abandoned diner booth — places PH shot first. Returning
+  to them for Whispers is partly courage, partly inability to leave.
+- **Returning actors are PH actors.** Anya is the strongest candidate.
+  Working with them is a conversation about a thing nobody fully
+  acknowledges and everyone remembers.
 
 ### What this means for the gauntlet
 
-- **The Priestess board's "show production" framing** is Whispers,
-  with PH as lineage permeating it. The cult audience parses every
-  Whispers frame *against* the PH back catalog.
-- **Active scenarios live in Whispers.** The cartographer episode,
-  the Choose Your Own Adventure, the editing suite, the mirror shard,
-  the dying basil plant — current.
-- **PH artifacts seed the suite as visitable objects** — a shelf of
-  PH tapes, a PH still on the wall, a binder of cold-open thumbnails
-  from the homage era, the wireframe of a never-finished PH episode
-  she's now considering re-cutting.
-- **The lore-doc 22-episode mapping** can be re-purposed as the
-  *PH back catalog* — homage-era episodes Elicia made or planned —
-  rather than as the canonical structure of the current show.
-  Treat as Claude-extended decoration for now.
+- **Priestess board is Whispers, haunted by PH.** Whispers is the
+  active work — the cartographer episode, the Choose Your Own
+  Adventure, the editing suite, the mirror shard, the dying basil
+  plant. PH is the dark presence at the back of the suite — the
+  unlabeled tape pile, the cheap-framed still, the polite Q&A
+  answer, the rule against using the 60 Hz hum.
+- **PH artifacts as visitable objects with weight, not warmth** —
+  pulling a PH tape off the shelf costs sanity or stagnation. Re-cutting
+  a PH take into a Whispers episode gives a real edit bonus AND a
+  doubt tick. The salvage is its own grief.
+- **The lore-doc 22-episode mapping** can be re-purposed as PH's
+  back catalog — episodes she planned, episodes she shot and didn't
+  finish, episodes she finished and is not proud of. Treat as
+  Claude-extended decoration for now; canon may not lock 22 PH
+  episodes specifically.
 - **My gauntlet build's "Pomegranate Hour suite"** conflated the two
-  works AND made up a half-finished college version that doesn't
-  exist. Retire and rebuild around Whispers, with PH as the lineage
-  it grew out of.
+  works AND invented a half-finished college version that doesn't
+  exist. Retire and rebuild around Whispers, with PH as the lingering
+  failure at the back of the room.
 
 ---
 
