@@ -17,6 +17,7 @@
       "id": "front_door",
       "label": "FRONT DOOR",
       "kind": "threshold",
+      "pos_xy": [600, 660],
       "flavor": "the office's street-facing door — clients walk through here.",
       "arrival_lines": [
         "the bell above the door hasn't been replaced. it still rings the way it did in 1962.",
@@ -27,6 +28,7 @@
       "id": "alley_door",
       "label": "ALLEY DOOR",
       "kind": "threshold",
+      "pos_xy": [300, 100],
       "flavor": "the back door, onto the alley behind the bank-side buildings.",
       "arrival_lines": [
         "the alley smells like rain even when there's no rain.",
@@ -37,6 +39,7 @@
       "id": "window_ledge",
       "label": "WINDOW LEDGE",
       "kind": "threshold",
+      "pos_xy": [900, 100],
       "flavor": "the office window — the third leap path, onto the lower roof of the building next door.",
       "arrival_lines": [
         "the ledge is wide enough for a person who decides quickly.",
@@ -47,6 +50,7 @@
       "id": "desk",
       "label": "DESK",
       "kind": "station",
+      "pos_xy": [600, 270],
       "flavor": "the desk · dante's chair · stamp, blotter, the working ledger.",
       "arrival_lines": [
         "the desk is heavier than it needs to be. it has been moved exactly once, in 1979.",
@@ -57,6 +61,7 @@
       "id": "client_chairs",
       "label": "CLIENT CHAIRS",
       "kind": "station",
+      "pos_xy": [600, 410],
       "flavor": "the two chairs that face the desk · where the petitioners sit.",
       "arrival_lines": [
         "two chairs. they have been the same two chairs for the entire office's existence.",
@@ -67,6 +72,7 @@
       "id": "filing_cabinet",
       "label": "FILING CABINET",
       "kind": "station",
+      "pos_xy": [300, 270],
       "flavor": "wall-to-ceiling files · dante's father's hand, dante's hand, alphabetised.",
       "arrival_lines": [
         "the cabinet smells like carbon paper. the smell is on you now too.",
@@ -77,6 +83,7 @@
       "id": "law_shelf",
       "label": "LAW SHELF",
       "kind": "station",
+      "pos_xy": [900, 270],
       "flavor": "the bookcase · statute, precedent, the small private collection.",
       "arrival_lines": [
         "the law books are not all law books. one of them is a poetry collection his mother loved.",
@@ -87,6 +94,7 @@
       "id": "anteroom",
       "label": "ANTEROOM",
       "kind": "station",
+      "pos_xy": [600, 540],
       "flavor": "the small room where clients wait when dante is with somebody else.",
       "arrival_lines": [
         "the anteroom has two chairs and a small table with a yesterday's newspaper.",
@@ -97,6 +105,7 @@
       "id": "stamp_table",
       "label": "STAMP TABLE",
       "kind": "station",
+      "pos_xy": [600, 100],
       "flavor": "a smaller workbench by the window · where the heavy stamps live.",
       "arrival_lines": [
         "the heavy stamps are bronze. they outweigh their cases.",
@@ -104,6 +113,17 @@
       ]
     }
   ],
+  "adjacency": {
+    "front_door":     ["anteroom"],
+    "alley_door":     ["filing_cabinet", "stamp_table"],
+    "window_ledge":   ["law_shelf", "stamp_table"],
+    "stamp_table":    ["alley_door", "window_ledge", "desk"],
+    "filing_cabinet": ["alley_door", "desk"],
+    "desk":           ["stamp_table", "filing_cabinet", "law_shelf", "client_chairs"],
+    "law_shelf":      ["window_ledge", "desk"],
+    "client_chairs":  ["desk", "anteroom"],
+    "anteroom":       ["client_chairs", "front_door"]
+  },
   "ledger_track": {
     "completion_threshold": 6,
     "label": "LEDGER",

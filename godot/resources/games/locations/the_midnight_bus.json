@@ -17,6 +17,7 @@
       "id": "next_stop",
       "label": "NEXT STOP",
       "kind": "threshold",
+      "pos_xy": [550, 150],
       "flavor": "the scheduled stop ahead — wherever the route's next disembarkation is.",
       "arrival_lines": [
         "the next stop is in sight through the windshield.",
@@ -27,6 +28,7 @@
       "id": "shoulder",
       "label": "SHOULDER",
       "kind": "threshold",
+      "pos_xy": [400, 670],
       "flavor": "the highway shoulder · pull over here for unscheduled stops or to leap.",
       "arrival_lines": [
         "the shoulder is wide enough for the bus and not much else.",
@@ -37,6 +39,7 @@
       "id": "destination",
       "label": "DESTINATION",
       "kind": "threshold",
+      "pos_xy": [550, 60],
       "flavor": "the end of the route · the bus depot in the next town.",
       "arrival_lines": [
         "the destination depot is lit even at this hour.",
@@ -47,6 +50,7 @@
       "id": "driver_seat",
       "label": "DRIVER SEAT",
       "kind": "station",
+      "pos_xy": [550, 270],
       "flavor": "cora's seat · steering wheel, gear shift, the small fan, the mirror.",
       "arrival_lines": [
         "the seat has the shape of cora. it has had it since 1991.",
@@ -57,6 +61,7 @@
       "id": "front_door",
       "label": "FRONT DOOR",
       "kind": "station",
+      "pos_xy": [250, 270],
       "flavor": "the bus door · pneumatics, fare box, the step-down.",
       "arrival_lines": [
         "the door's pneumatics hiss when you stand next to them.",
@@ -67,6 +72,7 @@
       "id": "aisle_front",
       "label": "AISLE · FRONT",
       "kind": "station",
+      "pos_xy": [400, 380],
       "flavor": "the front rows · the standees, the people who don't sit.",
       "arrival_lines": [
         "the front rows have someone in every other seat.",
@@ -77,6 +83,7 @@
       "id": "aisle_middle",
       "label": "AISLE · MIDDLE",
       "kind": "station",
+      "pos_xy": [550, 470],
       "flavor": "the middle rows · the sit-down passengers · the longest stretch.",
       "arrival_lines": [
         "the middle of the bus has a sound the front and back don't.",
@@ -87,6 +94,7 @@
       "id": "back_row",
       "label": "BACK ROW",
       "kind": "station",
+      "pos_xy": [400, 570],
       "flavor": "the back of the bus · the wide row · the kids and the late-shift workers.",
       "arrival_lines": [
         "the back row is darker. the dome light is out.",
@@ -97,6 +105,7 @@
       "id": "overhead",
       "label": "OVERHEAD",
       "kind": "station",
+      "pos_xy": [800, 470],
       "flavor": "the overhead racks · luggage, dropped scarves, things that fell forward.",
       "arrival_lines": [
         "the overhead has a single duffel bag in it.",
@@ -107,6 +116,7 @@
       "id": "dashboard",
       "label": "DASHBOARD",
       "kind": "station",
+      "pos_xy": [850, 270],
       "flavor": "the dashboard · the radio, the route-book, the small notes cora keeps.",
       "arrival_lines": [
         "the radio is between two stations.",
@@ -117,6 +127,7 @@
       "id": "passenger_radio",
       "label": "PASSENGER RADIO",
       "kind": "station",
+      "pos_xy": [850, 380],
       "flavor": "the small CB radio cora keeps for talking to other drivers.",
       "arrival_lines": [
         "the CB is on. channel 17.",
@@ -127,6 +138,7 @@
       "id": "underseat",
       "label": "UNDER SEAT",
       "kind": "station",
+      "pos_xy": [700, 570],
       "flavor": "the space under the seats · where dropped things end up.",
       "arrival_lines": [
         "a glove. a small notebook. a coin from a country you don't know.",
@@ -134,6 +146,20 @@
       ]
     }
   ],
+  "adjacency": {
+    "destination":      ["next_stop"],
+    "next_stop":        ["destination", "driver_seat"],
+    "shoulder":         ["back_row"],
+    "driver_seat":      ["next_stop", "front_door", "dashboard", "aisle_front"],
+    "front_door":       ["driver_seat", "aisle_front"],
+    "dashboard":        ["driver_seat", "passenger_radio"],
+    "aisle_front":      ["driver_seat", "front_door", "aisle_middle", "passenger_radio"],
+    "passenger_radio":  ["dashboard", "aisle_front", "overhead"],
+    "aisle_middle":     ["aisle_front", "overhead", "back_row"],
+    "overhead":         ["aisle_middle", "passenger_radio", "underseat"],
+    "back_row":         ["aisle_middle", "underseat", "shoulder"],
+    "underseat":        ["back_row", "overhead"]
+  },
   "miles_track": {
     "completion_threshold": 6,
     "label": "MILES",

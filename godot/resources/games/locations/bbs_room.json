@@ -17,6 +17,7 @@
       "id": "alley_door",
       "label": "ALLEY DOOR",
       "kind": "threshold",
+      "pos_xy": [200, 540],
       "flavor": "the basement's outside door — opens into the alley behind the music store.",
       "arrival_lines": [
         "the alley door is open a crack. you didn't open it.",
@@ -27,6 +28,7 @@
       "id": "stairs_up",
       "label": "STAIRS UP",
       "kind": "threshold",
+      "pos_xy": [200, 80],
       "flavor": "the stairs up to the music store · the second leap path.",
       "arrival_lines": [
         "the stairs creak. they always have.",
@@ -37,6 +39,7 @@
       "id": "modem_window",
       "label": "MODEM WINDOW",
       "kind": "threshold",
+      "pos_xy": [900, 80],
       "flavor": "the small basement window high on the wall · the third leap path.",
       "arrival_lines": [
         "the window looks out at street level. feet go by.",
@@ -47,6 +50,7 @@
       "id": "crt_terminal",
       "label": "CRT TERMINAL",
       "kind": "station",
+      "pos_xy": [550, 380],
       "flavor": "sysop's seat · green-phosphor screen · the modem on standby.",
       "arrival_lines": [
         "the CRT is on. the terminal prompt is ready.",
@@ -57,6 +61,7 @@
       "id": "modem_rack",
       "label": "MODEM RACK",
       "kind": "station",
+      "pos_xy": [900, 380],
       "flavor": "the rack of four modems · the BBS's lungs.",
       "arrival_lines": [
         "four modems, four phone lines. all four are lit.",
@@ -67,6 +72,7 @@
       "id": "floppy_wall",
       "label": "FLOPPY WALL",
       "kind": "station",
+      "pos_xy": [900, 540],
       "flavor": "two thousand 3.5\" floppies · the BBS's archive · alphabetised, indexed.",
       "arrival_lines": [
         "the wall is taller than you are. the index card next to it has your handwriting on it.",
@@ -77,6 +83,7 @@
       "id": "printer_table",
       "label": "PRINTER TABLE",
       "kind": "station",
+      "pos_xy": [550, 540],
       "flavor": "the dot-matrix printer + the box of fan-fold banner paper.",
       "arrival_lines": [
         "the printer has stopped mid-page. somebody's post got cut.",
@@ -87,6 +94,7 @@
       "id": "back_kitchen",
       "label": "BACK KITCHEN",
       "kind": "station",
+      "pos_xy": [200, 220],
       "flavor": "a small alcove with a kettle, two mugs, instant coffee, hot sauce.",
       "arrival_lines": [
         "the kettle is on. it might've been on all evening.",
@@ -97,6 +105,7 @@
       "id": "couch_corner",
       "label": "COUCH CORNER",
       "kind": "station",
+      "pos_xy": [200, 380],
       "flavor": "an L-shaped couch by the alley door · where visitors who showed up in person sit.",
       "arrival_lines": [
         "the couch has a blanket on it. it has been used recently.",
@@ -107,6 +116,7 @@
       "id": "ham_radio",
       "label": "HAM RADIO",
       "kind": "station",
+      "pos_xy": [900, 220],
       "flavor": "the ham radio set sysop got from his uncle · still works · still legal.",
       "arrival_lines": [
         "the ham radio is on standby. the green dial is at 14.301 MHz.",
@@ -114,6 +124,18 @@
       ]
     }
   ],
+  "adjacency": {
+    "stairs_up":     ["back_kitchen"],
+    "modem_window":  ["ham_radio"],
+    "alley_door":    ["couch_corner"],
+    "back_kitchen":  ["stairs_up", "couch_corner"],
+    "ham_radio":     ["modem_window", "modem_rack"],
+    "couch_corner":  ["back_kitchen", "alley_door", "crt_terminal"],
+    "crt_terminal":  ["couch_corner", "modem_rack", "printer_table"],
+    "modem_rack":    ["ham_radio", "crt_terminal", "floppy_wall"],
+    "printer_table": ["crt_terminal", "floppy_wall"],
+    "floppy_wall":   ["modem_rack", "printer_table"]
+  },
   "signal_track": {
     "completion_threshold": 6,
     "label": "SIGNAL",

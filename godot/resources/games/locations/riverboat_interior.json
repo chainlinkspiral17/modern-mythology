@@ -17,6 +17,7 @@
       "id": "gangway",
       "label": "GANGWAY",
       "kind": "threshold",
+      "pos_xy": [120, 380],
       "flavor": "the plank from boat to dock — guests step on, guests step off.",
       "arrival_lines": [
         "the gangway flexes when the river does. you have stopped noticing.",
@@ -27,6 +28,7 @@
       "id": "river_door",
       "label": "RIVER DOOR",
       "kind": "threshold",
+      "pos_xy": [1080, 380],
       "flavor": "the small porthole-door that opens directly to the water — for the brave guest, or the river itself.",
       "arrival_lines": [
         "the river door is normally bolted. it isn't tonight.",
@@ -37,6 +39,7 @@
       "id": "upper_deck_hatch",
       "label": "UPPER DECK HATCH",
       "kind": "threshold",
+      "pos_xy": [800, 80],
       "flavor": "the ladder up to the garden deck — the third way off the boat.",
       "arrival_lines": [
         "the hatch is half-open. you didn't open it.",
@@ -47,6 +50,7 @@
       "id": "galley",
       "label": "GALLEY",
       "kind": "station",
+      "pos_xy": [800, 380],
       "flavor": "nicola's kitchen · burner, kettle, knife block, the deep window onto the river.",
       "arrival_lines": [
         "the kettle is on. nicola has put it on without noticing she has.",
@@ -57,6 +61,7 @@
       "id": "long_table",
       "label": "LONG TABLE",
       "kind": "station",
+      "pos_xy": [500, 380],
       "flavor": "where the meal happens · twelve chairs, never all of them taken at once.",
       "arrival_lines": [
         "the table is set. you can see how it would look full.",
@@ -67,6 +72,7 @@
       "id": "lounge",
       "label": "LOUNGE",
       "kind": "station",
+      "pos_xy": [300, 380],
       "flavor": "the cushioned bench under the bank-side window · where guests wait before, talk after.",
       "arrival_lines": [
         "the bank is right there through the window. you can see who's walking by.",
@@ -77,6 +83,7 @@
       "id": "pantry",
       "label": "PANTRY",
       "kind": "station",
+      "pos_xy": [300, 520],
       "flavor": "shelves, jars, the cold corner · everything you grew, dried, canned, kept.",
       "arrival_lines": [
         "the pantry smells like every season of the year compressed into a closet.",
@@ -87,6 +94,7 @@
       "id": "wheelhouse",
       "label": "WHEELHOUSE",
       "kind": "station",
+      "pos_xy": [600, 220],
       "flavor": "the captain's seat the boat hasn't needed in years · charts, the radio, a window in every direction.",
       "arrival_lines": [
         "the wheel is bolted in place. it does not turn.",
@@ -97,6 +105,7 @@
       "id": "garden_deck",
       "label": "GARDEN DECK",
       "kind": "station",
+      "pos_xy": [600, 80],
       "flavor": "clay pots on the upper deck · herbs, a tomato vine, two strawberry plants, a small rosebush.",
       "arrival_lines": [
         "the herbs have grown another quarter-inch since you last checked.",
@@ -107,6 +116,7 @@
       "id": "bow_window",
       "label": "BOW WINDOW",
       "kind": "station",
+      "pos_xy": [950, 520],
       "flavor": "the wraparound window at the front of the boat · the river splits around the hull here.",
       "arrival_lines": [
         "the river splits around the bow. one half goes left, one half goes right. you can't tell which.",
@@ -117,6 +127,7 @@
       "id": "engine_room",
       "label": "ENGINE ROOM",
       "kind": "station",
+      "pos_xy": [800, 660],
       "flavor": "the hold · the small engine that hasn't turned in a decade · the river-side hull at its closest.",
       "arrival_lines": [
         "the engine is silent in the way a sleeping animal is silent.",
@@ -127,6 +138,7 @@
       "id": "guest_cabin",
       "label": "GUEST CABIN",
       "kind": "station",
+      "pos_xy": [500, 520],
       "flavor": "the one bunk · for the guest who has nowhere else to go tonight.",
       "arrival_lines": [
         "the bunk is made. it has been made for as long as anyone can remember.",
@@ -134,6 +146,20 @@
       ]
     }
   ],
+  "adjacency": {
+    "gangway":          ["lounge"],
+    "river_door":       ["galley", "bow_window"],
+    "upper_deck_hatch": ["garden_deck"],
+    "garden_deck":      ["upper_deck_hatch", "wheelhouse"],
+    "wheelhouse":       ["garden_deck", "long_table"],
+    "lounge":           ["gangway", "long_table", "pantry"],
+    "long_table":       ["lounge", "galley", "wheelhouse", "guest_cabin"],
+    "galley":           ["long_table", "river_door", "bow_window"],
+    "pantry":           ["lounge", "guest_cabin"],
+    "guest_cabin":      ["pantry", "long_table", "bow_window"],
+    "bow_window":       ["galley", "river_door", "guest_cabin", "engine_room"],
+    "engine_room":      ["bow_window"]
+  },
   "bloom_track": {
     "completion_threshold": 6,
     "label": "BLOOM",

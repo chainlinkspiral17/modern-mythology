@@ -16,6 +16,7 @@
       "id": "front_door",
       "label": "FRONT DOOR",
       "kind": "threshold",
+      "pos_xy": [350, 660],
       "flavor": "the apartment door, top of the stairs from the diner.",
       "arrival_lines": [
         "the front door is propped open. you left the latch off when reed got here.",
@@ -26,6 +27,7 @@
       "id": "fire_escape",
       "label": "FIRE ESCAPE",
       "kind": "threshold",
+      "pos_xy": [700, 530],
       "flavor": "the window that's a fire-escape door · the apartment's second exit.",
       "arrival_lines": [
         "the fire escape ladder rattles when somebody on the street walks past.",
@@ -36,6 +38,7 @@
       "id": "roof_access",
       "label": "ROOF ACCESS",
       "kind": "threshold",
+      "pos_xy": [500, 80],
       "flavor": "the small interior staircase to the roof — for the brave or the smoking.",
       "arrival_lines": [
         "the roof-access door creaks the way it always has.",
@@ -46,6 +49,7 @@
       "id": "kitchen_corner",
       "label": "KITCHEN CORNER",
       "kind": "station",
+      "pos_xy": [350, 220],
       "flavor": "two-burner stove, a kettle, the small fridge · where you make coffee for both of you.",
       "arrival_lines": [
         "the kettle is on. you didn't put it on. reed must have.",
@@ -56,6 +60,7 @@
       "id": "bed_corner",
       "label": "BED CORNER",
       "kind": "station",
+      "pos_xy": [700, 220],
       "flavor": "the bed pushed into the corner under the window · made carefully this morning.",
       "arrival_lines": [
         "the bed is made the way it's made when you're trying to pretend the bed isn't the thing it is.",
@@ -66,6 +71,7 @@
       "id": "boxes_pile",
       "label": "BOXES PILE",
       "kind": "station",
+      "pos_xy": [350, 530],
       "flavor": "the stack of boxes reed is here for · sealed, labeled in your hand.",
       "arrival_lines": [
         "the boxes are labeled in your hand. reed never asked you to label them.",
@@ -76,6 +82,7 @@
       "id": "turntable",
       "label": "TURNTABLE",
       "kind": "station",
+      "pos_xy": [350, 380],
       "flavor": "the turntable + a stack of records that didn't get divided · still playing.",
       "arrival_lines": [
         "the record is the one you used to listen to together.",
@@ -86,6 +93,7 @@
       "id": "easel_corner",
       "label": "EASEL CORNER",
       "kind": "station",
+      "pos_xy": [700, 380],
       "flavor": "reed's easel · still here · with a half-finished painting on it.",
       "arrival_lines": [
         "the easel is angled toward the window so reed can see what they're painting.",
@@ -93,6 +101,16 @@
       ]
     }
   ],
+  "adjacency": {
+    "front_door":     ["boxes_pile"],
+    "fire_escape":    ["easel_corner", "boxes_pile"],
+    "roof_access":    ["kitchen_corner", "bed_corner"],
+    "kitchen_corner": ["roof_access", "bed_corner", "turntable"],
+    "bed_corner":     ["roof_access", "kitchen_corner", "easel_corner"],
+    "turntable":      ["kitchen_corner", "easel_corner", "boxes_pile"],
+    "easel_corner":   ["bed_corner", "turntable", "fire_escape"],
+    "boxes_pile":     ["turntable", "fire_escape", "front_door"]
+  },
   "sync_track": {
     "completion_threshold": 6,
     "label": "SYNC",
