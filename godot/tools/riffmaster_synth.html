@@ -201,6 +201,7 @@
       <div class="pitch" id="now-pitch">—</div>
       <div class="meta" id="now-meta">no frets held · strum to play open root</div>
       <div class="voice-state silent" id="voice-state">SILENT</div>
+      <div id="audio-badge" style="margin-left:14px;font-size:11px;letter-spacing:0.10em;color:#c64a3a;">AUDIO: OFF · click anywhere</div>
     </div>
     <div class="frets" id="frets"></div>
     <canvas class="scope" id="scope"></canvas>
@@ -241,6 +242,9 @@
     <div class="group">
       <label>BEND</label>
       <div class="meter"><div id="bend-meter"></div></div>
+    </div>
+    <div class="group">
+      <button class="help-btn" id="test-tone" style="background:var(--burgundy);color:var(--gold-hi);border-color:var(--gold);">▶ TEST TONE</button>
     </div>
     <div class="group" style="margin-left:auto;">
       <button class="help-btn" id="help-btn">?</button>
@@ -323,12 +327,34 @@ let master = null;
 let voice = null;   // { osc, sub, filt, shaper, env, detuneNode, vibLfo, vibGain, analyser }
 
 function ensureAudio() {
-  if (ac) return;
+  if (ac) {
+    // Chrome / Edge keep the context suspended until a user gesture
+    // explicitly resumes it. Re-poke every entry — cheap and safe.
+    if (ac.state === 'suspended' || ac.state === 'interrupted') {
+      ac.resume().catch(() => {});
+    }
+    refreshAudioStateBadge();
+    return;
+  }
   ac = new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === 'suspended') ac.resume().catch(() => {});
   master = ac.createGain();
   master.gain.value = parseInt(document.getElementById('vol').value) / 100;
   master.connect(ac.destination);
   buildVoice();
+  refreshAudioStateBadge();
+  // Watch state transitions so the UI badge updates when the browser
+  // suspends/resumes (eg tab focus changes).
+  ac.addEventListener('statechange', refreshAudioStateBadge);
+}
+
+function refreshAudioStateBadge() {
+  const el = document.getElementById('audio-badge');
+  if (!el) return;
+  if (!ac)                             { el.textContent = 'AUDIO: OFF · click anywhere'; el.style.color = '#c64a3a'; return; }
+  if (ac.state === 'running')          { el.textContent = 'AUDIO: RUNNING';              el.style.color = '#88b87a'; return; }
+  if (ac.state === 'suspended')        { el.textContent = 'AUDIO: SUSPENDED · click';    el.style.color = '#f0b94a'; return; }
+                                       { el.textContent = 'AUDIO: ' + ac.state.toUpperCase(); el.style.color = '#c64a3a'; }
 }
 
 // Build (or rebuild) the voice graph for the active preset. Preserves
@@ -648,7 +674,12 @@ gp.setMapping({
 });
 gp.start();
 mountGamepadOverlay(gp);
-bindStrumAxis(gp, gp.mapping.strumAxis);
+// Listen on ALL plausible axes except the whammy — whichever axis
+// the driver puts strum on (varies between 1, 3, 5, 7…), it'll catch
+// the swing without needing manual calibration.
+[0, 1, 2, 4, 5, 6, 7].forEach(axIdx => {
+  if (axIdx !== gp.mapping.whammy) bindStrumAxis(gp, axIdx);
+});
 
 // Compact UI panel for live fret-remap. Each row of cells is the
 // current mapping; click a cell, press a fret on the guitar, the
@@ -750,8 +781,55 @@ window.addEventListener('gamepadinput-axis', e => {
   }
 });
 
-// First-user-gesture audio init.
-document.body.addEventListener('click', ensureAudio, { once: true });
+// First-user-gesture audio init. Listen for any pointer or key event
+// on the document — clicks alone aren't enough on some setups, and
+// pressing F5 to refresh after a click counts as a gesture too.
+['pointerdown','keydown','touchstart','click'].forEach(ev =>
+  document.addEventListener(ev, ensureAudio, { capture: true })
+);
+
+// ── Diagnostic affordances ─────────────────────────────────────────
+// TEST TONE bypasses gamepad entirely so the user can verify the
+// audio chain works independent of input routing.
+document.getElementById('test-tone').addEventListener('click', () => {
+  ensureAudio();
+  setPitch(currentTargetMidi(), 0);
+  attackNote(0.85);
+  // Auto-release after a beat so the test note doesn't ring forever.
+  setTimeout(releaseNote, 700);
+});
+
+// Click a fret cell to play it as a single shot — lets the user
+// audition each fret without needing the controller's strum to work.
+for (let i = 0; i < 10; i++) {
+  const el = fretsEl.children[i];
+  if (!el) continue;
+  el.style.cursor = 'pointer';
+  el.addEventListener('mousedown', () => {
+    ensureAudio();
+    heldFrets.add(i);
+    setPitch(currentTargetMidi(), 0);
+    attackNote(0.8);
+    refreshFretLEDs();
+    refreshDisplay();
+  });
+  el.addEventListener('mouseup', () => {
+    heldFrets.delete(i);
+    if (heldFrets.size === 0 && voice && voice.active) releaseNote();
+    onHeldChanged();
+  });
+  el.addEventListener('mouseleave', () => {
+    if (heldFrets.has(i)) {
+      heldFrets.delete(i);
+      if (heldFrets.size === 0 && voice && voice.active) releaseNote();
+      onHeldChanged();
+    }
+  });
+}
+
+// Periodically refresh the audio-state badge in case the context
+// transitions without firing statechange (rare but observed).
+setInterval(refreshAudioStateBadge, 500);
 </script>
 </body>
 </html>
