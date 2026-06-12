@@ -1,6 +1,6 @@
 {
   "scope": "chariot",
-  "notes": "Passengers on Cora's midnight bus. Most board at the front door at a scheduled mile-marker, ride for a while, and disembark at the next stop or the shoulder. Some are regulars.",
+  "notes": "Passengers on Cora's midnight bus, route 9 between Graustark and the next town up. Most board at the front door at a scheduled mile-marker, ride for a while, and disembark at the next stop or the shoulder. Some are regulars. Cora has been driving this route for nineteen years and the seat has her shape. The CB on channel 17 stays at the edge of audible under all of them. The dashboard candy dish has been on the dash for seven years; the candies are the kind nobody bought for any one passenger and everybody has taken at least one.",
   "visitors": [
     {
       "id": "the_late_shift",
@@ -8,15 +8,15 @@
       "scenarios": ["depot_to_depot", "late_run", "the_long_quiet_road"],
       "arrival": { "kind": "on_board_at_start", "pos": "aisle_middle" },
       "lore_token": "late_shift_got_home",
-      "lore_text": "Works the late shift at the warehouse on the bank. Boards every night at this stop. Gets off at the same stop. Cora has known their face for two years.",
+      "lore_text": "Works the late shift at the warehouse on the river bank — fourteen-hour days, four days a week. Boards every night at the same stop, falls asleep against the cold window between mile 12 and mile 21, wakes up at mile 22 because Cora taps the brakes lightly at the curve. Gets off at the same stop. Cora has known their face for two years; their name appears on the route-book only as 'B-7,' the seat they take.",
       "accent": "#a99070",
       "mood": "preoccupied",
       "patience": 8,
       "steps": {
-        "greet":   "Nod when they board. They nod back.",
-        "listen":  "They tell you about a shift-supervisor change.",
-        "deliver": "You hand them their transfer ticket.",
-        "sit_with": "You stop briefly at their stop. They thank you. They get off."
+        "greet":   "You nod when they board. They nod back. The exchange is the same exchange you've made eight hundred times.",
+        "listen":  "They tell you about a shift-supervisor change at the warehouse — the new one is younger and is making the older workers carry extra. They tell you with the flat tone of a person who is too tired to be more than mildly angry.",
+        "deliver": "You hand them their transfer ticket — a paper rectangle with tonight's date in your hand. You always pre-tear theirs at the start of the route.",
+        "sit_with": "You stop briefly at their stop. They thank you. They get off. The streetlight at their stop is out tonight; you wait, headlights on, until they reach their front porch, the way you have done for two years."
       }
     },
     {
@@ -25,15 +25,15 @@
       "scenarios": ["depot_to_depot", "late_run"],
       "arrival": { "kind": "scheduled", "turn": 1, "from": "front_door", "to": "aisle_front" },
       "lore_token": "first_passenger_made_the_run",
-      "lore_text": "Boards at the first stop after the depot. Always pays exact change. Always sits up front so they can watch the road through the windshield.",
+      "lore_text": "Boards at the first stop after the depot. Always pays exact change — $2.75 in three coins, the same three coins, you suspect, every night. Always sits up front, third row, aisle, so they can watch the road through the windshield. They are in their late forties; they have not been wearing a wedding ring for fourteen months.",
       "accent": "#d8a060",
       "mood": "talkative",
       "patience": 7,
       "steps": {
-        "greet":   "They board. They drop the exact fare.",
-        "listen":  "They ask you about the weather where you're going.",
-        "deliver": "You hand them a candy from the dish.",
-        "sit_with": "They stay near the front. You both look at the road for a while."
+        "greet":   "They board. They drop the exact fare. The fare-box clicks the way it always does for them — three coin-drops, evenly spaced.",
+        "listen":  "They ask you about the weather where you're going. Where you're going is the next town, twenty-one miles up the road. The weather there is the same as the weather here. The question is the cover for the conversation.",
+        "deliver": "You hand them a candy from the dashboard dish — a peppermint, because they always take the peppermints first. The dish has been on the dash for seven years; the peppermints are the most-restocked.",
+        "sit_with": "They stay near the front. You both look at the road for a while. The CB chatter on channel 17 is at the edge of audible. The lane markers blur. They mention, casually, that they have started running again in the mornings. You say that's good."
       }
     },
     {
@@ -42,15 +42,15 @@
       "scenarios": ["depot_to_depot", "the_long_quiet_road"],
       "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "aisle_middle" },
       "lore_token": "lost_traveler_found_the_route",
-      "lore_text": "Someone who got on the wrong bus four stops ago and is trying to figure out where they should have gotten off. They have a paper schedule that's three years old.",
+      "lore_text": "Someone who got on the wrong bus four stops ago and has been trying to figure out where they should have gotten off. They have a paper schedule that is three years old — they pulled it from a drawer at their parents' house. They are trying to get to their parents' house. The address is the address that used to be their parents' house, until '21.",
       "accent": "#9b5fd3",
       "mood": "preoccupied",
       "patience": 5,
       "steps": {
-        "greet":   "They look at the route map taped to the dash.",
-        "listen":  "They tell you where they were trying to go.",
-        "deliver": "You hand them the current paper schedule and circle the right stop.",
-        "sit_with": "You sit in the aisle with them for a minute. They thank you. They get off at the right stop."
+        "greet":   "They look at the route map taped to the dashboard. They have looked at it for thirty seconds without moving.",
+        "listen":  "They tell you where they were trying to go. The address sounds right and is also wrong. You know the road. You know the house. You know who lives there now.",
+        "deliver": "You hand them the current paper schedule — the white folded card from the depot — and you circle the right stop. You don't say anything about who lives in the house. They can find out from somebody who isn't a bus driver.",
+        "sit_with": "You sit in the aisle with them for a minute, idling at the shoulder. The CB has gone quiet. You give them the address of the diner two stops past where they need to get off, in case they need to wait somewhere warm. They thank you. They get off at the right stop. You watch the headlights catch their coat in the mirror until they're past the streetlight."
       }
     },
     {
@@ -59,15 +59,15 @@
       "scenarios": ["the_long_quiet_road"],
       "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "back_row" },
       "lore_token": "kid_went_home_anyway",
-      "lore_text": "Sixteen. Pays cash. Goes to the back row. Won't make eye contact. Has a backpack.",
+      "lore_text": "Sixteen. Pays cash, a five-dollar bill that was folded into a wallet that was folded into a backpack pocket. Goes straight to the back row. Will not make eye contact with you in the mirror. Has a backpack that is too small for an overnight bag. Cora has driven kids like this for nineteen years. The kids almost always go home. She has only ever driven one who didn't, and that one she still thinks about, in March.",
       "accent": "#ff5040",
       "mood": "intense",
       "patience": 4,
       "steps": {
-        "greet":   "You watch them in the mirror. They don't look back.",
-        "listen":  "You don't ask. They tell you anyway, halfway through the trip.",
-        "deliver": "You hand them a granola bar from the dashboard stash.",
-        "sit_with": "You sit at the back row with them for a stop. They get off at the next stop, not the one they paid for. They are going home."
+        "greet":   "You watch them in the mirror. They don't look back. They are in seat B-12, against the window, with their face turned away.",
+        "listen":  "You don't ask. They tell you anyway, halfway through the trip — not all of it, just the part about the fight tonight. Their voice is small. Their voice is doing the thing voices do when they have practiced the sentence and the sentence comes out in the wrong order.",
+        "deliver": "You hand them a granola bar from the dashboard stash. They take it. They don't open it for a stop and a half. When they do, they eat it in three bites and they look out the window so you don't see them eat it.",
+        "sit_with": "You sit at the back row with them for a stop. The bus is idling at the next-town bus shelter, which is empty. They tell you they are going to call their dad. You hand them the change for the payphone at the shelter. They get off at the next stop, not the one they paid for. They are going home. The streetlight catches them on the phone, hunched, head down. You drive on after the light changes."
       }
     },
     {
@@ -76,15 +76,15 @@
       "scenarios": ["depot_to_depot", "late_run", "the_long_quiet_road"],
       "arrival": { "kind": "scheduled", "turn": 3, "from": "front_door", "to": "back_row" },
       "lore_token": "old_regular_made_it_home",
-      "lore_text": "An older man who's been on this bus for thirty years. Knows Cora's name. Knows the bus.",
+      "lore_text": "Frank. Seventy-two. Has been on this bus for thirty years — first as a commuter, then as a man who didn't drive anymore, then as a man who still came down to the stop because the bus was where he saw people. He knows Cora's name. He has known Cora's mother. He gets off at the same stop he has gotten off at for three decades, which is two blocks past where he actually lives, because that stop has a bakery and the bakery opens at 6 AM.",
       "accent": "#c87633",
       "mood": "lonely",
       "patience": 7,
       "steps": {
-        "greet":   "He waves when he boards.",
-        "listen":  "He tells you about a thing his wife said this morning.",
-        "deliver": "You hand him the warm spot near the heater vent in row 8.",
-        "sit_with": "You park briefly at his stop. He squeezes your shoulder. He gets off."
+        "greet":   "He waves when he boards. He says: 'evening, Cora,' the way he has said it for nineteen years. Before that he said it to her mother for eleven.",
+        "listen":  "He tells you about a thing his wife said this morning. His wife has been gone for six years. He still says 'this morning' when he means a morning in '17.",
+        "deliver": "You direct him to the warm spot in row 8 — near the heater vent that runs hottest. He has had that spot for fifteen years and he still likes it when you offer it. He thanks you. He takes the spot.",
+        "sit_with": "You park briefly at his stop. The streetlight is on. He squeezes your shoulder on the way past — a quick squeeze, the way men of his generation say a thing they don't have words for. He gets off. He walks the two blocks home past the bakery. The bakery isn't open yet."
       }
     },
     {
@@ -93,16 +93,16 @@
       "scenarios": ["late_run"],
       "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "aisle_middle" },
       "lore_token": "late_couple_made_the_last_run",
-      "lore_text": "Two people who almost missed the last bus. They are quiet and grateful and tired.",
+      "lore_text": "Two people who almost missed the last bus — ran the last block, the husband faster than the wife, the wife laughing at him for running. They are in their thirties. They are quiet on the bus, the kind of quiet you go into after the laugh runs out. They board together, sit together, ride together, get off together. They have shared_patience: one timer for both, the way a long-married couple has one shared reservoir for being patient with the world.",
       "accent": "#88b87a",
       "mood": "talkative",
       "patience": 7,
       "shared_patience": true,
       "steps": {
-        "greet":   "They board. They both say thank you.",
-        "listen":  "They tell you about the meeting they came from.",
-        "deliver": "You hand them two transfers.",
-        "sit_with": "You hold the bus at their stop a beat longer. They both thank you again."
+        "greet":   "They board. They both say thank you — overlapping, like they have rehearsed the thank you over twelve years of small kindnesses they have received together.",
+        "listen":  "They tell you about the meeting they came from. The meeting was a planning meeting for a thing they are starting together — the kind of thing that is too early to talk about with strangers, which is exactly when you tell a bus driver about it.",
+        "deliver": "You hand them two transfers. They each take one. They will both use them at the same connection.",
+        "sit_with": "You hold the bus at their stop a beat longer because the wife is looking for something in her bag. The husband does not rush her. He waits with his hand on the standee bar. They both thank you again. They get off. They walk away holding hands in a way that suggests they have remembered, in the last five minutes, that they like holding hands."
       }
     },
     {
@@ -111,17 +111,17 @@
       "as_hand_id": "cora",
       "swap_target_for_hand": "cora_as_visitor",
       "scenarios": ["depot_to_depot", "late_run", "the_long_quiet_road"],
-      "arrival": { "kind": "scheduled", "turn": 5, "from": "front_door", "to": "aisle_back" },
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "front_door", "to": "back_row" },
       "lore_token": "cora_came_aboard_off_shift",
-      "lore_text": "When the player is NOT Cora, she gets on at the late-shift change and rides to the depot. When the player IS Cora, this entry swaps out.",
+      "lore_text": "When the player is not Cora, she gets on at the depot driver-change and rides to the next-town depot in the back row, off-duty, as a passenger. When the player IS Cora, this entry swaps out for whoever else is the night-shift driver this scenario.",
       "accent": "#d8a060",
       "mood": "preoccupied",
       "patience": 8,
       "steps": {
-        "greet":   "She gets on at the depot driver-change. She knows you.",
-        "listen":  "She tells you about a passenger from last week.",
-        "deliver": "You hand her a coffee from the dashboard thermos.",
-        "sit_with": "You sit in the aisle middle together. She is steady."
+        "greet":   "She gets on at the depot driver-change. She has her own jacket on, not the company one. She knows you. She drops exact fare even though she doesn't have to.",
+        "listen":  "She tells you about a passenger from last week — a woman who left a paperback on seat B-3 and called the depot the next morning asking for it. The paperback was a battered copy of something old.",
+        "deliver": "You hand her a coffee from the dashboard thermos. The thermos is hers from '04; she left it for whoever was driving next. The coffee tonight is yours, which is also fine.",
+        "sit_with": "You sit in the back row together — both of you off-aisle, on the bench. The bus is doing the thing it does on the long quiet stretch. She is steady. You are steady. The CB on channel 17 is quiet. She does not fall asleep but you can tell from her breathing that she could."
       }
     }
   ]

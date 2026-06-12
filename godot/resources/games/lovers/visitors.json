@@ -1,6 +1,6 @@
 {
   "scope": "lovers",
-  "notes": "Lovers visitors. The center figure is Reed — the partner who moves with you through the apartment. Everyone else is a peripheral check-in (the bus kid bringing coffee from downstairs; a neighbor; an old friend). The whole arcana is built around Reed; the other visitors are texture.",
+  "notes": "Lovers visitors. The center figure is Reed — the partner who moves with you through the apartment. Everyone else is a peripheral check-in (the bus kid bringing coffee from John's diner two floors below, the upstairs neighbor whose stove is out, the old friend with a book to return, the landlord with the lease handover). Reed is is_lovers_partner true — they orbit the apartment and SYNC ticks only when you and Reed are at the same space. The painting on the easel has been two-thirds done for nine months.",
   "visitors": [
     {
       "id": "reed",
@@ -8,16 +8,16 @@
       "scenarios": ["the_last_boxes", "an_afternoon", "the_letter_in_the_drawer"],
       "arrival": { "kind": "on_board_at_start", "pos": "boxes_pile" },
       "lore_token": "reed_was_here_today",
-      "lore_text": "The one who used to live here. Here today for the last of the boxes. They have been here for an hour already when the scenario starts. The painting on the easel is theirs and they keep glancing at it.",
+      "lore_text": "The one who used to live here. Here today for the last of the boxes — six of them, the tape on three of them re-applied because the tape they brought didn't stick in the cold of the unheated stairwell. They have been here for an hour and forty minutes when the scenario starts. The painting on the easel is theirs and they keep glancing at it on the way to and from the bed corner. They have not committed, yet, to either finishing it or leaving it.",
       "accent": "#d8a060",
       "mood": "preoccupied",
       "patience": 12,
       "is_lovers_partner": true,
       "steps": {
-        "greet":   "You make eye contact across the boxes. They acknowledge you.",
-        "listen":  "They tell you what they were thinking about on the walk over.",
-        "deliver": "You bring them a coffee from the kitchen corner. They take it.",
-        "sit_with": "You sit with them on the bed corner. The radiator clicks. The afternoon is the afternoon."
+        "greet":   "You make eye contact across the boxes. They acknowledge you. The acknowledgment is a half-nod. The half-nod is the kind that has been the half-nod for the last eight months.",
+        "listen":  "They tell you what they were thinking about on the walk over — that the diner had the lights on at 2 PM in a way that meant John was the one running it tonight, not Frank; that the alley smelled like rosemary which was wrong for January.",
+        "deliver": "You bring them a coffee from the kitchen corner. The mug is the one they used to take in the morning, with the small chip near the rim where Reed always put their thumb. They take it. They put their thumb on the chip.",
+        "sit_with": "You sit with them on the bed corner. The radiator clicks. The window above the bed has been open a crack all morning. The afternoon is the afternoon. Neither of you says anything for two minutes. Two minutes counts."
       }
     },
     {
@@ -26,16 +26,16 @@
       "scenarios": ["the_last_boxes", "an_afternoon"],
       "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "kitchen_corner" },
       "lore_token": "bus_kid_brought_coffee",
-      "lore_text": "The diner's bus kid comes up the stairs with two coffees John sent up.",
+      "lore_text": "The diner's bus kid — they are sixteen and they have been working at D'Ambrosio's for three months — comes up the back stairs with two coffees in a brown paper tray. John sent them up. John does this whenever he hears Reed is over.",
       "accent": "#7cffb0",
       "mood": "talkative",
       "patience": 8,
       "helper": true,
       "steps": {
-        "greet":   "They knock once and let themselves in.",
-        "listen":  "They tell you john said hi.",
-        "deliver": "You take the coffees. They run back down before you can tip them.",
-        "sit_with": "They lean on the kitchen counter for a minute. They leave."
+        "greet":   "They knock once and let themselves in. They are out of breath because the stairs are steeper than they look.",
+        "listen":  "They tell you john said hi. They tell you john also said the coffee was on the house and that the bus kid wasn't supposed to mention that part.",
+        "deliver": "You take the coffees. They are still hot — the brown paper tray is warm in your hands. The bus kid runs back down before you can tip them; they have a counter full of plates downstairs waiting for them.",
+        "sit_with": "They lean on the kitchen counter for a minute. They look at Reed. They look at you. They don't comment on either. They leave the way they came in. The stairwell door clicks behind them."
       }
     },
     {
@@ -44,32 +44,32 @@
       "scenarios": ["the_last_boxes"],
       "arrival": { "kind": "scheduled", "turn": 3, "from": "roof_access", "to": "roof_access" },
       "lore_token": "neighbor_came_down_the_roof",
-      "lore_text": "Comes down the roof staircase because her stove is out and she needs to borrow a burner. Sees Reed. Sees the boxes. Doesn't comment.",
+      "lore_text": "Comes down the roof-access staircase because her stove is out — pilot light, third time this winter — and she needs to borrow a burner. She is sixty-two and she has lived in the apartment upstairs since '88. She has known both of you the entire time. She sees Reed. She sees the boxes. She does not comment. She knows when not to comment; the not-commenting is also a kindness.",
       "accent": "#9b5fd3",
       "mood": "preoccupied",
       "patience": 6,
       "steps": {
-        "greet":   "She knocks at the roof-access door.",
-        "listen":  "She asks for the burner. She does not look at Reed.",
-        "deliver": "You set up the burner for her. She nods.",
-        "sit_with": "You sit with her in the kitchen corner while her kettle goes. She does not look at Reed."
+        "greet":   "She knocks at the roof-access door. The knock is the same knock she has used since '88 — three taps, paused, one tap.",
+        "listen":  "She asks for the burner. She does not look at Reed. She has the small saucepan in her left hand and the can of soup in her right.",
+        "deliver": "You set up the burner for her. She nods. She empties the can. She stirs.",
+        "sit_with": "You sit with her in the kitchen corner while her soup heats. She does not look at Reed. She mentions, to the wall, that the radiator in her bedroom has been clicking louder than usual. She is doing the thing of saying weather to fill the space, and the weather is the kindness."
       }
     },
     {
       "id": "the_old_friend_visiting",
       "name": "Old Friend (visiting)",
       "scenarios": ["an_afternoon", "the_letter_in_the_drawer"],
-      "arrival": { "kind": "scheduled", "turn": 3, "from": "front_door", "to": "bed_corner" },
       "lore_token": "friend_dropped_by",
-      "lore_text": "A friend from before — knew you both as a couple, knows you both still. Comes up the stairs to drop off a book.",
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "front_door", "to": "bed_corner" },
+      "lore_text": "A friend from before — knew you both as a couple, knows you both still as separate people, knows neither version perfectly. Comes up the stairs to drop off a book she borrowed in '17 and is finally returning, which is the cover for the visit. The book is a copy of a novel she did not finish.",
       "accent": "#c87633",
       "mood": "talkative",
       "patience": 7,
       "steps": {
-        "greet":   "They wave from the door. They look at reed and at you.",
-        "listen":  "They tell a story about the year you both lived here.",
-        "deliver": "You hand them the book back that they came for.",
-        "sit_with": "You all three sit on the bed corner. The friend leaves first."
+        "greet":   "They wave from the door. They look at Reed first and at you second. Then they correct that and they look at you first and at Reed second. The correction is visible.",
+        "listen":  "They tell a story about the year you both lived here — the night the radiator hissed for forty minutes and you ordered a pizza at midnight. They get the toppings wrong. Reed corrects them with a laugh. The laugh is the first laugh in the apartment today.",
+        "deliver": "You hand them back the book they came for. They hand you a different book, which is the one they actually wanted to give you, which is the one they could not write a card for.",
+        "sit_with": "You all three sit on the bed corner. The bed corner is now three people. The friend leaves first; they always do, by design, because they understand the room. They hug both of you on the way out. They hug you both for the same length of time."
       }
     },
     {
@@ -78,15 +78,15 @@
       "scenarios": ["the_letter_in_the_drawer"],
       "arrival": { "kind": "scheduled", "turn": 4, "from": "front_door", "to": "kitchen_corner" },
       "lore_token": "landlord_signed_the_paper",
-      "lore_text": "Stops by because she heard reed was here. Has a paper she needs both of you to sign — final lease handover.",
+      "lore_text": "Stops by because she heard Reed was here from John in the diner. She has a paper she needs both of you to sign — the final lease-handover form, the one that takes Reed off the lease. She has owned this building since '79; she is one of the last small landlords left on the block.",
       "accent": "#a99070",
       "mood": "preoccupied",
       "patience": 5,
       "steps": {
-        "greet":   "She has the paper. She has a pen.",
-        "listen":  "She explains it. You both already know.",
-        "deliver": "You hand her the signed paper.",
-        "sit_with": "You sit at the kitchen counter with her while she finishes her coffee. She leaves the paper for you to file."
+        "greet":   "She has the paper in a folder. She has a pen — a Bic, the kind she always uses, the kind John keeps in a cup at the diner register.",
+        "listen":  "She explains the form. You both already know. She explains it anyway because that is how she does this; she has explained final lease handovers to fourteen tenants in thirty-six years.",
+        "deliver": "You hand her the signed paper. Both your signatures are on it. Reed's is in pencil first and then ink on top, because Reed always signs in pencil first.",
+        "sit_with": "You sit at the kitchen counter with her while she finishes her coffee. She leaves the paper on the counter for you to file. She squeezes your shoulder once on the way out. She does not squeeze Reed's. Both omissions are intentional."
       }
     },
     {
@@ -97,15 +97,15 @@
       "scenarios": ["an_afternoon"],
       "arrival": { "kind": "scheduled", "turn": 4, "from": "front_door", "to": "easel_corner" },
       "lore_token": "frasier_looked_at_the_painting",
-      "lore_text": "Frasier comes up the stairs from the diner because he heard reed was here. He looks at the painting on the easel.",
+      "lore_text": "Frasier comes up the stairs from the diner because he heard Reed was here. He has a small piece of balsa wood in his coat pocket — he was walking past on the bank when he turned in. He stands at the easel for a long time looking at the painting and he says one thing about it that lands.",
       "accent": "#c87633",
       "mood": "preoccupied",
       "patience": 7,
       "steps": {
-        "greet":   "He waves from the easel.",
-        "listen":  "He says he's been making a model of this room.",
-        "deliver": "You hand him a coffee. He drinks it standing.",
-        "sit_with": "You sit at the easel with him. He looks at the painting. He doesn't speak for a long while."
+        "greet":   "He waves from the easel. He is in his diner clothes — apron under the coat. His hands are clean; he has been on the front of house tonight, not the grill.",
+        "listen":  "He says he's been making a model of this room. He has been making models of every room he has loved for nineteen years. The model is balsa, 1:24 scale, and it sits on a shelf in his workshop. He has not put figures in it yet.",
+        "deliver": "You hand him a coffee. He drinks it standing. He looks at the painting. He says the painting needs a quarter-inch of red in the upper-left and that the quarter-inch will finish it.",
+        "sit_with": "You sit at the easel with him. He looks at the painting. He doesn't speak for a long while. Reed comes over from the boxes pile and stands behind him. The three of you look at the painting together. Reed picks up a brush. They put the brush down again. The room holds the picking-up."
       }
     },
     {
@@ -116,15 +116,15 @@
       "scenarios": ["the_last_boxes", "an_afternoon", "the_letter_in_the_drawer"],
       "arrival": { "kind": "scheduled", "turn": 5, "from": "front_door", "to": "front_door" },
       "lore_token": "sasha_came_to_the_door",
-      "lore_text": "When the player is NOT Sasha, Sasha arrives at the door after stepping out. When the player IS Sasha, this entry swaps out.",
+      "lore_text": "When the player is not Sasha, Sasha comes back up the stairs from a brief errand — they stepped out to give Reed and the room some space, the kind of stepping out you do on a day like this. They come back with two bagels from the bakery down the block. When the player IS Sasha, this entry swaps out for whoever is in the doorway.",
       "accent": "#d8a060",
       "mood": "preoccupied",
       "patience": 8,
       "steps": {
-        "greet":   "Sasha is in the doorway. They came back up the stairs.",
-        "listen":  "Sasha tells you what was downstairs.",
-        "deliver": "You hand them their key.",
-        "sit_with": "Sasha sits on the bed corner. The room is the room."
+        "greet":   "Sasha is in the doorway. They came back up the stairs. They have the bagel bag in their left hand. They are deciding whether to step in or wait at the threshold.",
+        "listen":  "Sasha tells you what was downstairs. John in the diner. The bus kid running plates. The smell of the dish station which is the smell of every winter afternoon on this block.",
+        "deliver": "You hand them their key. They take it. They have not used the key in seven weeks. They put it in the pocket of their coat.",
+        "sit_with": "Sasha sits on the bed corner. The room is the room. Reed is at the easel. The three of you are at three corners of the apartment and the apartment, for the first time today, is set up the way it is set up when three people are about to be honest with each other."
       }
     }
   ]
