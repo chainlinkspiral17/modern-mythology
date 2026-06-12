@@ -379,23 +379,56 @@ func _build() -> void:
 func _populate_skin_menu() -> void:
 	var pop: PopupMenu = _skin_menu_btn.get_popup()
 	pop.clear()
-	# Filter to unlocked skins, with a count of locked ones rendered
-	# as a disabled trailing entry so the player sees there's more.
-	var locked: int = 0
+	# Two passes — unlocked skins first, then a separator, then each
+	# locked skin as a disabled item with an unlock-hint tooltip so
+	# the player can see what they're chasing without leaving the
+	# overlay.
 	for i in SKINS.size():
 		var s: Dictionary = SKINS[i]
-		if _skin_unlocked(s):
-			var marker: String = "• " if s["id"] == _skin["id"] else "  "
-			pop.add_item(marker + String(s["name"]), i)
-		else:
-			locked += 1
-	if locked > 0:
-		pop.add_separator()
-		var locked_idx: int = pop.item_count
-		pop.add_item("(%d locked)" % locked, 9999)
+		if not _skin_unlocked(s):
+			continue
+		var marker: String = "• " if s["id"] == _skin["id"] else "  "
+		pop.add_item(marker + String(s["name"]), i)
+	var any_locked: bool = false
+	for j in SKINS.size():
+		var s2: Dictionary = SKINS[j]
+		if _skin_unlocked(s2):
+			continue
+		if not any_locked:
+			pop.add_separator()
+			any_locked = true
+		var label: String = "  " + String(s2["name"]) + "  (locked)"
+		pop.add_item(label, j)
+		var locked_idx: int = pop.item_count - 1
 		pop.set_item_disabled(locked_idx, true)
+		pop.set_item_tooltip(locked_idx, _unlock_hint(s2.get("unlock", {})))
 	if not pop.id_pressed.is_connected(_on_skin_picked):
 		pop.id_pressed.connect(_on_skin_picked)
+
+
+# Human-readable hint for an unlock clause. Used for the locked-item
+# tooltips in both skin and visualizer dropdowns.
+func _unlock_hint(u: Dictionary) -> String:
+	var t: String = String(u.get("type", ""))
+	if t == "":
+		return ""
+	if t == "key":
+		var k: String = String(u.get("key", ""))
+		match k:
+			"milestone:gauntlet_win":  return "Win any Tarot Gauntlet scenario."
+			"milestone:gauntlet_loss": return "Lose any Tarot Gauntlet scenario."
+			"milestone:candles_lit":   return "Light the candles in BLOW OUT THE CANDLES."
+			"milestone:bindle_assembled": return "Assemble the BUNDLE in THE LEAP."
+			_:
+				var pretty: String = k.replace("milestone:", "").replace("_", " ")
+				return "Reach the %s milestone." % pretty
+	if t == "heard":
+		var src: String = String(u.get("src", ""))
+		var nice: String = src.get_file().get_basename().replace("vol5_", "").replace("_", " ")
+		return "Hear: %s" % nice
+	if t == "heard_count":
+		return "Hear %d tracks in the music player." % int(u.get("min", 0))
+	return "Locked."
 
 
 func _on_skin_picked(id: int) -> void:
@@ -424,19 +457,25 @@ func _populate_viz_menu() -> void:
 	var pop: PopupMenu = _viz_menu_btn.get_popup()
 	pop.clear()
 	var active: String = String(_viz.mode) if _viz != null else _resolve_active_viz_id()
-	var locked: int = 0
 	for i in _VizScene.VIZ.size():
 		var v: Dictionary = _VizScene.VIZ[i]
-		if _VizScene.viz_unlocked(v):
-			var marker: String = "• " if v["id"] == active else "  "
-			pop.add_item(marker + String(v["name"]), i)
-		else:
-			locked += 1
-	if locked > 0:
-		pop.add_separator()
-		var locked_idx: int = pop.item_count
-		pop.add_item("(%d locked)" % locked, 9999)
+		if not _VizScene.viz_unlocked(v):
+			continue
+		var marker: String = "• " if v["id"] == active else "  "
+		pop.add_item(marker + String(v["name"]), i)
+	var any_locked: bool = false
+	for j in _VizScene.VIZ.size():
+		var v2: Dictionary = _VizScene.VIZ[j]
+		if _VizScene.viz_unlocked(v2):
+			continue
+		if not any_locked:
+			pop.add_separator()
+			any_locked = true
+		var label: String = "  " + String(v2["name"]) + "  (locked)"
+		pop.add_item(label, j)
+		var locked_idx: int = pop.item_count - 1
 		pop.set_item_disabled(locked_idx, true)
+		pop.set_item_tooltip(locked_idx, _unlock_hint(v2.get("unlock", {})))
 	if not pop.id_pressed.is_connected(_on_viz_picked):
 		pop.id_pressed.connect(_on_viz_picked)
 
