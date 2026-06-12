@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RIFFMASTER DEMONS · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --rust: #c87633; --burgundy: #7a1e26;
+    --emerald-hi: #a8e89c;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100vh; overflow: hidden;
+    background: var(--bg-0); color: var(--text);
+    font-family: "Courier New", monospace;
+  }
+  body { display: grid; grid-template-rows: auto 1fr auto; }
+  header { padding: 12px 20px; border-bottom: 1px solid var(--rule); }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header .sub { color: var(--text-dim); font-size: 11px; font-style: italic; margin-top: 2px; }
+  header .audio-state { margin-left: 12px; font-size: 11px; color: #c64a3a; }
+  header .audio-state.running { color: var(--emerald-hi); }
+
+  .demons {
+    padding: 14px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    overflow-y: auto;
+  }
+  .demon {
+    border: 1px solid var(--rule);
+    background: var(--bg-1);
+    padding: 12px 14px;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 100ms ease-out, background 100ms ease-out;
+    user-select: none;
+  }
+  .demon:hover { border-color: var(--gold); }
+  .demon.held { border-color: var(--rust); background: var(--ink); box-shadow: inset 0 0 16px rgba(200, 118, 51, 0.3); }
+  .demon.firing {
+    border-color: var(--gold-hi);
+    box-shadow: 0 0 24px rgba(255, 216, 150, 0.5), inset 0 0 20px rgba(255, 216, 150, 0.3);
+  }
+  .demon .num {
+    color: var(--text-dim);
+    font-size: 11px; letter-spacing: 0.12em;
+    margin-bottom: 4px;
+  }
+  .demon .name {
+    color: var(--gold-hi);
+    font-size: 15px; letter-spacing: 0.14em;
+    margin-bottom: 6px;
+  }
+  .demon .signature {
+    color: var(--text); font-size: 10px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .demon .color-strip {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .transport {
+    padding: 10px 20px; border-top: 1px solid var(--rule);
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    font-size: 11px; color: var(--text-dim);
+  }
+  .transport label { letter-spacing: 0.08em; }
+  .transport input[type="range"] { width: 100px; }
+  .transport button {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule);
+    padding: 5px 14px; font-family: inherit; font-size: 11px;
+    letter-spacing: 0.12em; cursor: pointer;
+  }
+  .transport button:hover { border-color: var(--gold); }
+  .transport button.active { background: var(--burgundy); border-color: var(--gold); }
+  .transport .now {
+    margin-left: auto;
+    color: var(--gold-hi); font-size: 12px; letter-spacing: 0.10em;
+    min-width: 260px; text-align: right;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>RIFFMASTER DEMONS · MAGICIAN ROSTER</h1>
+    <div class="sub">Eight demon micro-motifs from the Cathedral of Rust and Code. Frets 1-8 trigger each demon; strum re-fires the last one. Frets 9-10 trigger the steamboat & full-moon cinematic textures. <span class="audio-state" id="audio-state">AUDIO: OFF · click anywhere</span></div>
+  </header>
+
+  <div class="demons" id="demons"></div>
+
+  <div class="transport">
+    <button id="loop-mode">LOOP: OFF</button>
+    <label>RATE</label>
+    <input type="range" id="loop-rate" min="200" max="2000" value="700" step="20">
+    <span id="loop-rate-val" style="color:var(--gold-hi);">700ms</span>
+    <label>MASTER</label>
+    <input type="range" id="vol" min="0" max="100" value="55">
+    <div class="now" id="now-firing">—</div>
+  </div>
+
+<script src="gamepad_input.js"></script>
+<script>
+"use strict";
+
+// ── Demon roster — Magician arcana ───────────────────────────────
+// Each demon has a one-shot textural motif synthesised inline. The
+// flavor text mirrors the music_catalog.json descriptions for the
+// vol5_demon_* slots so the synth + catalog stay in sync.
+const DEMONS = [
+  { id: "vagrant",   num: "I",   name: "VAGRANT",
+    sig: "low rumble + shuffle of bags + distant radio static.",
+    color: "#7a1e26", fire: fireVagrant },
+  { id: "cicada",    num: "II",  name: "CICADA",
+    sig: "filtered noise carpet + slow tremolo. dusk pulse.",
+    color: "#c64a3a", fire: fireCicada },
+  { id: "moth",      num: "III", name: "MOTH",
+    sig: "paper-against-bulb flutter + glass tap + unresolved overtone.",
+    color: "#f0b94a", fire: fireMoth },
+  { id: "steamboat", num: "IV",  name: "STEAMBOAT (demon)",
+    sig: "workbench paddle-wheel micro-loop. wrong-shaped.",
+    color: "#c87633", fire: fireSteamboat },
+  { id: "weir",      num: "V",   name: "WEIR",
+    sig: "water under boards. pressure behind a thing about to spill.",
+    color: "#4ea060", fire: fireWeir },
+  { id: "filly",     num: "VI",  name: "FILLY",
+    sig: "young horse's exhale + hoof on wood once + waiting.",
+    color: "#9b5fd3", fire: fireFilly },
+  { id: "starling",  num: "VII", name: "STARLING",
+    sig: "many small wings. flock turning the same instant.",
+    color: "#3b7fc4", fire: fireStarling },
+  { id: "husk",      num: "VIII",name: "HUSK",
+    sig: "hollow corn rasp + dry rustle. nothing left inside the case.",
+    color: "#d8a060", fire: fireHusk },
+  { id: "steamboat_finale", num: "IX", name: "STEAMBOAT SAILS",
+    sig: "paddle wheel turning once. river bank slumps far away. resigned.",
+    color: "#7a5828", fire: fireSteamboatFinale },
+  { id: "full_moon", num: "X",  name: "FULL MOON DRONE",
+    sig: "silver pad. slow LFO. cathedral exhales.",
+    color: "#c8a4f0", fire: fireFullMoon },
+];
+
+// ── Audio engine ─────────────────────────────────────────────────
+let ac = null, master = null;
+function ensureAudio() {
+  if (ac) {
+    if (ac.state === 'suspended') ac.resume().catch(() => {});
+    return;
+  }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === 'suspended') ac.resume().catch(() => {});
+  master = ac.createGain();
+  master.gain.value = parseInt(document.getElementById('vol').value) / 100;
+  master.connect(ac.destination);
+  ac.addEventListener('statechange', refreshAudioState);
+  refreshAudioState();
+}
+function refreshAudioState() {
+  const el = document.getElementById('audio-state');
+  if (!ac) { el.textContent = 'AUDIO: OFF · click anywhere'; el.className = 'audio-state'; return; }
+  if (ac.state === 'running') { el.textContent = 'AUDIO: RUNNING'; el.className = 'audio-state running'; return; }
+  if (ac.state === 'suspended') { el.textContent = 'AUDIO: SUSPENDED · click'; el.className = 'audio-state'; return; }
+  el.textContent = 'AUDIO: ' + ac.state.toUpperCase();
+}
+
+function noiseBuffer(durSec) {
+  const len = Math.floor(ac.sampleRate * durSec);
+  const buf = ac.createBuffer(1, len, ac.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+  return buf;
+}
+
+function envNode(env, peak, atk, hold, rel, startAt) {
+  startAt = startAt || ac.currentTime;
+  env.gain.setValueAtTime(0, startAt);
+  env.gain.linearRampToValueAtTime(peak,         startAt + atk);
+  env.gain.linearRampToValueAtTime(peak * 0.7,   startAt + atk + hold);
+  env.gain.exponentialRampToValueAtTime(0.001,   startAt + atk + hold + rel);
+}
+
+// ── Demon motif synths ────────────────────────────────────────────
+function fireVagrant() {
+  ensureAudio(); if (!ac) return;
+  const now = ac.currentTime;
+  // Low rumble (sub osc with slow LFO drift)
+  const o = ac.createOscillator(); o.type = 'triangle';
+  o.frequency.value = 52;
+  const lfo = ac.createOscillator(); lfo.frequency.value = 0.4;
+  const lfoG = ac.createGain(); lfoG.gain.value = 8;
+  lfo.connect(lfoG); lfoG.connect(o.frequency);
+  const filt = ac.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = 600;
+  const env = ac.createGain();
+  o.connect(filt); filt.connect(env); env.connect(master);
+  envNode(env, 0.38, 0.30, 0.80, 1.2);
+  o.start(now); lfo.start(now); o.stop(now + 2.5); lfo.stop(now + 2.5);
+  // Shuffle: noise burst at irregular intervals
+  for (let i = 0; i < 4; i++) {
+    const t0 = now + 0.3 + i * 0.45 + Math.random() * 0.15;
+    const n = ac.createBufferSource(); n.buffer = noiseBuffer(0.12);
+    const nf = ac.createBiquadFilter(); nf.type = 'bandpass'; nf.frequency.value = 1100; nf.Q.value = 0.6;
+    const ng = ac.createGain();
+    envNode(ng, 0.10, 0.005, 0.04, 0.10, t0);
+    n.connect(nf); nf.connect(ng); ng.connect(master);
+    n.start(t0);
+  }
+}
+function fireCicada() {
+  ensureAudio(); if (!ac) return;
+  const now = ac.currentTime;
+  const n = ac.createBufferSource(); n.buffer = noiseBuffer(1.6); n.loop = true;
+  const bp = ac.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 4200; bp.Q.value = 8;
+  // Tremolo via gain LFO
+  const trem = ac.createOscillator(); trem.type = 'sine'; trem.frequency.value = 8;
+  const tremG = ac.createGain(); tremG.gain.value = 0.18;
+  trem.connect(tremG);
+  const env = ac.createGain();
+  tremG.connect(env.gain);
+  env.gain.value = 0.22;
+  n.connect(bp); bp.connect(env); env.connect(master);
+  n.start(now); trem.start(now); n.stop(now + 1.6); trem.stop(now + 1.6);
+  envNode(env, 0.22, 0.10, 1.0, 0.5);
+}
+function fireMoth() {
+  ensureAudio(); if (!ac) return;
+  const now = ac.currentTime;
+  // Glass tap
+  const o = ac.createOscillator(); o.type = 'sine';
+  o.frequency.value = 4600;
+  const og = ac.createGain();
+  envNode(og, 0.18, 0.002, 0.04, 0.10);
+  o.connect(og); og.connect(master);
+  o.start(now); o.stop(now + 0.20);
+  // Paper flutter (filtered noise burst)
+  const n = ac.createBufferSource(); n.buffer = noiseBuffer(0.4);
+  const hp = ac.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 3200;
+  const ng = ac.createGain();
+  envNode(ng, 0.12, 0.04, 0.10, 0.25, now + 0.05);
+  n.connect(hp); hp.connect(ng); ng.connect(master);
+  n.start(now + 0.05);
+  // Unresolved overtone
+  const o2 = ac.createOscillator(); o2.type = 'triangle';
+  o2.frequency.value = 2800; o2.detune.value = 25;
+  const og2 = ac.createGain();
+  envNode(og2, 0.06, 0.30, 0.30, 0.8, now + 0.1);
+  o2.connect(og2); og2.connect(master);
+  o2.start(now + 0.1); o2.stop(now + 1.5);
+}
+function fireSteamboat() {
+  ensureAudio(); if (!ac) return;
+  const now = ac.currentTime;
+  // Paddle wheel: rhythmic pulse loop
+  for (let i = 0; i < 8; i++) {
+    const t0 = now + i * 0.13;
+    const o = ac.createOscillator(); o.type = 'square';
+    o.frequency.value = 96 + (i % 2) * 8;
+    const filt = ac.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = 1400;
+    const env = ac.createGain();
+    envNode(env, 0.22, 0.003, 0.04, 0.10, t0);
+    o.connect(filt); filt.connect(env); env.connect(master);
+    o.start(t0); o.stop(t0 + 0.18);
+  }
+}
+function fireWeir() {
+  ensureAudio(); if (!ac) return;
+  const now = ac.currentTime;
+  const n = ac.createBufferSource(); n.buffer = noiseBuffer(1.8);
+  const lp = ac.createBiquadFilter(); lp.type = 'lowpass';
+  lp.frequency.setValueAtTime(800, now);
+  lp.frequency.exponentialRampToValueAtTime(2800, now + 1.4);   // pressure rising
+  lp.Q.value = 4;
+  const env = ac.createGain();
+  envNode(env, 0.42, 0.15, 1.0, 0.6);
+  n.connect(lp); lp.connect(env); env.connect(master);
+  n.start(now);
+}
+function fireFilly() {
+  ensureAudio(); if (!ac) return;
+  const now = ac.currentTime;
+  // Exhale
+  const n = ac.createBufferSource(); n.buffer = noiseBuffer(0.6);
+  const bp = ac.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 800; bp.Q.value = 1.0;
+  const env = ac.createGain();
+  envNode(env, 0.20, 0.08, 0.15, 0.30);
+  n.connect(bp); bp.connect(env); env.connect(master);
+  n.start(now);
+  // Hoof on wood (low click)
+  const o = ac.createOscillator(); o.type = 'sine';
+  o.frequency.setValueAtTime(180, now + 0.55);
+  o.frequency.exponentialRampToValueAtTime(75, now + 0.62);
+  const og = ac.createGain();
+  envNode(og, 0.55, 0.002, 0.02, 0.10, now + 0.55);
+  o.connect(og); og.connect(master);
+  o.start(now + 0.55); o.stop(now + 0.78);
+}
+function fireStarling() {
+  ensureAudio(); if (!ac) return;
+  const now = ac.currentTime;
+  // Many small wings — short noise bursts panned across stereo
+  for (let i = 0; i < 24; i++) {
+    const t0 = now + Math.random() * 0.9;
+    const dur = 0.04 + Math.random() * 0.04;
+    const n = ac.createBufferSource(); n.buffer = noiseBuffer(dur);
+    const bp = ac.createBiquadFilter(); bp.type = 'bandpass';
+    bp.frequency.value = 3400 + Math.random() * 1800;
+    bp.Q.value = 6;
+    const pan = ac.createStereoPanner ? ac.createStereoPanner() : null;
+    if (pan) pan.pan.value = (Math.random() * 2 - 1) * 0.8;
+    const env = ac.createGain();
+    envNode(env, 0.10 + Math.random() * 0.06, 0.002, 0.01, 0.04, t0);
+    n.connect(bp); bp.connect(env);
+    if (pan) { env.connect(pan); pan.connect(master); } else env.connect(master);
+    n.start(t0);
+  }
+}
+function fireHusk() {
+  ensureAudio(); if (!ac) return;
+  const now = ac.currentTime;
+  const n = ac.createBufferSource(); n.buffer = noiseBuffer(0.8);
+  const hp = ac.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 2400;
+  const lp = ac.createBiquadFilter(); lp.type = 'lowpass';  lp.frequency.value = 5600;
+  const env = ac.createGain();
+  envNode(env, 0.30, 0.06, 0.30, 0.40);
+  n.connect(hp); hp.connect(lp); lp.connect(env); env.connect(master);
+  n.start(now);
+  // Add a dry-tone tick mid-rasp
+  const o = ac.createOscillator(); o.type = 'square';
+  o.frequency.value = 1100;
+  const og = ac.createGain();
+  envNode(og, 0.10, 0.001, 0.01, 0.04, now + 0.18);
+  o.connect(og); og.connect(master);
+  o.start(now + 0.18); o.stop(now + 0.24);
+}
+function fireSteamboatFinale() {
+  ensureAudio(); if (!ac) return;
+  const now = ac.currentTime;
+  // Paddle wheel turns once
+  for (let i = 0; i < 4; i++) {
+    const t0 = now + i * 0.22;
+    const o = ac.createOscillator(); o.type = 'square';
+    o.frequency.value = 110;
+    const filt = ac.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = 900;
+    const env = ac.createGain();
+    envNode(env, 0.25, 0.005, 0.06, 0.14, t0);
+    o.connect(filt); filt.connect(env); env.connect(master);
+    o.start(t0); o.stop(t0 + 0.25);
+  }
+  // Bank slumps (low collapse)
+  const n = ac.createBufferSource(); n.buffer = noiseBuffer(1.4);
+  const lp = ac.createBiquadFilter(); lp.type = 'lowpass';
+  lp.frequency.setValueAtTime(600, now + 0.9);
+  lp.frequency.exponentialRampToValueAtTime(180, now + 2.4);
+  const ng = ac.createGain();
+  envNode(ng, 0.45, 0.10, 0.80, 0.8, now + 0.9);
+  n.connect(lp); lp.connect(ng); ng.connect(master);
+  n.start(now + 0.9);
+  // Resigned held tone at the end
+  const o = ac.createOscillator(); o.type = 'sine';
+  o.frequency.value = 130;
+  const og = ac.createGain();
+  envNode(og, 0.30, 0.30, 1.0, 1.2, now + 1.5);
+  o.connect(og); og.connect(master);
+  o.start(now + 1.5); o.stop(now + 4.0);
+}
+function fireFullMoon() {
+  ensureAudio(); if (!ac) return;
+  const now = ac.currentTime;
+  // Silver pad — 3 oscillators slightly detuned + slow LFO
+  const baseFreq = 220;
+  const oscs = [];
+  for (let i = 0; i < 3; i++) {
+    const o = ac.createOscillator(); o.type = 'triangle';
+    o.frequency.value = baseFreq * Math.pow(2, [0, 7/12, 12/12][i]);
+    o.detune.value = (i - 1) * 9;
+    oscs.push(o);
+  }
+  const env = ac.createGain();
+  envNode(env, 0.25, 0.45, 1.5, 1.2);
+  const filt = ac.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = 2200;
+  oscs.forEach(o => o.connect(filt));
+  filt.connect(env); env.connect(master);
+  oscs.forEach(o => { o.start(now); o.stop(now + 3.5); });
+}
+
+// ── UI ────────────────────────────────────────────────────────────
+const demonsEl = document.getElementById('demons');
+function fireDemon(i, visualOnly) {
+  if (!visualOnly) DEMONS[i].fire();
+  const el = demonsEl.children[i];
+  if (el) {
+    el.classList.add('firing');
+    setTimeout(() => el.classList.remove('firing'), 260);
+  }
+  document.getElementById('now-firing').textContent = '▶ ' + DEMONS[i].name;
+}
+DEMONS.forEach((d, i) => {
+  const el = document.createElement('div');
+  el.className = 'demon';
+  el.innerHTML = `
+    <div class="color-strip" style="background:${d.color};"></div>
+    <div class="num">${d.num}</div>
+    <div class="name">${d.name}</div>
+    <div class="signature">${d.sig}</div>
+  `;
+  el.addEventListener('mousedown', () => fireDemon(i));
+  demonsEl.appendChild(el);
+});
+
+// ── Loop mode — round-robin held demons every N ms ────────────────
+let loopMode = false;
+let loopInterval = null;
+const heldDemons = new Set();
+let loopStep = 0;
+document.getElementById('loop-mode').addEventListener('click', () => {
+  loopMode = !loopMode;
+  document.getElementById('loop-mode').textContent = 'LOOP: ' + (loopMode ? 'ON' : 'OFF');
+  document.getElementById('loop-mode').classList.toggle('active', loopMode);
+  if (loopMode) startLoop(); else stopLoop();
+});
+function startLoop() {
+  loopStep = 0;
+  tickLoop();
+}
+function stopLoop() {
+  if (loopInterval) clearTimeout(loopInterval);
+  loopInterval = null;
+}
+function tickLoop() {
+  if (!loopMode) return;
+  if (heldDemons.size > 0) {
+    const list = [...heldDemons].sort((a, b) => a - b);
+    const idx = list[loopStep % list.length];
+    fireDemon(idx);
+    loopStep++;
+  }
+  const rate = parseInt(document.getElementById('loop-rate').value);
+  loopInterval = setTimeout(tickLoop, rate);
+}
+document.getElementById('loop-rate').addEventListener('input', e => {
+  document.getElementById('loop-rate-val').textContent = e.target.value + 'ms';
+});
+document.getElementById('vol').addEventListener('input', e => {
+  if (master) master.gain.setTargetAtTime(parseInt(e.target.value) / 100, ac.currentTime, 0.02);
+});
+
+// ── Riffmaster routing ───────────────────────────────────────────
+const gp = new GamepadInput();
+gp.start();
+mountGamepadOverlay(gp);
+[0, 1, 2, 4, 5, 6, 7].forEach(axIdx => {
+  if (axIdx !== gp.mapping.whammy) bindStrumAxis(gp, axIdx);
+});
+let lastFired = -1;
+window.addEventListener('gamepadinput-connected', ensureAudio);
+window.addEventListener('gamepadinput-button', e => {
+  ensureAudio();
+  const m = gp.mapping;
+  const fretIdx = m.frets.indexOf(e.detail.idx);
+  const soloIdx = m.soloFrets.indexOf(e.detail.idx);
+  const anyFret = (fretIdx >= 0) ? fretIdx : (soloIdx >= 0 ? soloIdx + 5 : -1);
+  const isStrum = (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown);
+  if (anyFret >= 0) {
+    if (e.detail.pressed) {
+      heldDemons.add(anyFret);
+      if (!loopMode) {
+        fireDemon(anyFret);
+        lastFired = anyFret;
+      }
+    } else {
+      heldDemons.delete(anyFret);
+    }
+    refreshHeld();
+    return;
+  }
+  if (isStrum && e.detail.pressed && lastFired >= 0) fireDemon(lastFired);
+});
+function refreshHeld() {
+  for (let i = 0; i < DEMONS.length; i++) {
+    demonsEl.children[i].classList.toggle('held', heldDemons.has(i));
+  }
+}
+
+['pointerdown','keydown','touchstart','click'].forEach(ev =>
+  document.addEventListener(ev, ensureAudio, { capture: true })
+);
+</script>
+</body>
+</html>
