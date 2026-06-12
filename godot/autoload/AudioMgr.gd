@@ -26,6 +26,11 @@ var _is_ducked:  bool     = false
 
 var _music_heard: Dictionary = {}
 
+# Sources that have failed to load (file missing, corrupt, undecodable).
+# Each src only logs once per session — subsequent attempts short-circuit
+# silently so the queue can advance to the next track without spam.
+var _failed_srcs: Dictionary = {}
+
 # Spectrum analyzer on BGM bus, for visualizer windows.
 var _bgm_spectrum: AudioEffectSpectrumAnalyzerInstance = null
 
@@ -387,7 +392,15 @@ func _tween_bgm_bus(target_linear: float, duration: float) -> void:
 func _start_bgm(src: String) -> void:
 	var stream := _load_audio(src)
 	if not stream:
-		push_warning("AudioMgr: BGM not found: " + src)
+		# Don't double-log when _load_audio already warned about a
+		# fresh failure. Either way, mark the src failed (idempotent)
+		# and try to advance the queue past the bad entry — but only
+		# if we have somewhere else to go, to avoid runaway recursion
+		# if the whole catalog is broken.
+		_failed_srcs[src] = true
+		var next := _pick_next(src)
+		if next != "" and next != src and not (next in _failed_srcs):
+			_start_bgm(next)
 		return
 	_current_src = src
 	_bgm.stream = stream
@@ -499,9 +512,18 @@ func _save_heard() -> void:
 
 
 func _load_audio(src: String) -> AudioStream:
+	# Short-circuit known-bad sources so a corrupt entry in the
+	# catalog (or a missing .ogg that still has an .import sidecar)
+	# doesn't re-emit decode errors every time the queue lands on it.
+	if src in _failed_srcs:
+		return null
 	var path := "res://" + src
 	if ResourceLoader.exists(path):
-		return ResourceLoader.load(path) as AudioStream
+		var s := ResourceLoader.load(path) as AudioStream
+		if s == null:
+			_failed_srcs[src] = true
+			push_warning("AudioMgr: failed to load BGM (marking as skip): " + src)
+		return s
 	# Fallback when the .import sidecar isn't generated yet (e.g.
 	# audio dropped in but the editor hasn't reimported). Without
 	# this, freshly-dropped voicelines silently fail to play.
