@@ -1,6 +1,6 @@
 {
   "scope": "priestess",
-  "notes": "Elicia's recording-booth roster. These are the people who walked into the booth tonight because the booth was the only place they could say it. Most are 'preoccupied' mood by default — they're not here for small talk. The mood ladder follows the Fool's pattern (preoccupied < talkative < lonely < intense).",
+  "notes": "Elicia's recording-booth roster. These are the people who walked into the booth tonight because the booth was the only place they could say it. The booth is one room in the Cathedral of Rust and Code's south wing — Frasier's converted warehouse — but when the door is shut the cathedral isn't here anymore, only the wires and the reels and the small chairs. Elicia has been the engineer here for nine years. She has 1,247 cassettes on the wall and she has labeled each one in her own hand.",
   "visitors": [
     {
       "id": "the_returner",
@@ -8,15 +8,15 @@
       "scenarios": ["cicada_session", "long_quiet", "tape_witness"],
       "arrival": { "kind": "on_board_at_start", "pos": "lounge" },
       "lore_token": "the_returner_came_back",
-      "lore_text": "Someone who recorded here once before. They remember the chair, the mic-stand height. They came back to listen to what they said the first time, before they say what they came to say tonight.",
+      "lore_text": "Someone who recorded here once before — eight months ago, on a tape labeled BOOTH 47 · 11:18 PM in Elicia's own hand. They came back tonight not because they had something new to say, but because they wanted to know who they were the first time. They remember the chair, the mic-stand height, the precise temperature of the booth. They remember that Elicia held still when they told her the story they hadn't told anyone else. They came back to find out if the booth would hold still again.",
       "accent": "#a99070",
       "mood": "preoccupied",
       "patience": 7,
       "steps": {
-        "greet":   "Nod. The returner nods back. The booth-chair fits them already.",
-        "listen":  "They unfold the same story they recorded eight months ago. It is shorter this time. Smaller in a way that feels honest.",
-        "deliver": "You bring out the old tape. They hold it without playing it. Then they ask you to play it. Then they ask you to stop, halfway.",
-        "sit_with": "You sit at the console while they sit in the booth, and neither of you records. That counts as the session."
+        "greet":   "They nod from the lounge bench. The bench remembers them. The bench remembers everyone, but for them it remembers more.",
+        "listen":  "They unfold the story they recorded eight months ago. The story is shorter this time. The parts that mattered then matter less now; the parts that didn't matter then are the whole story tonight. Their voice is steadier. The shape is the same shape.",
+        "deliver": "You bring the old tape out from the second drawer down. They hold it without playing it. They turn it twice. They ask you to play it. They ask you to stop halfway. They thank you for stopping.",
+        "sit_with": "You sit at the console while they sit in the booth, and neither of you records. The reel turns and the reel does not catch on anything tonight. That counts as the session. Elicia would say it counts as a session most nights."
       }
     },
     {
@@ -25,15 +25,15 @@
       "scenarios": ["cicada_session", "long_quiet"],
       "arrival": { "kind": "scheduled", "turn": 1, "from": "entry_hall", "to": "booth" },
       "lore_token": "stranger_came_to_speak",
-      "lore_text": "They didn't make an appointment. They were already sitting in the booth when you came in.",
+      "lore_text": "They didn't make an appointment. They were already sitting in the booth when Elicia came in from the kitchenette. The door was unlocked, the way she always leaves it for the late hour. They walked in off the bank and they walked into the booth, the way some people walk into a chapel they'd never planned to step inside. They have a face she half-recognizes from somewhere — a vol 1 diner photograph, maybe, the kind of face that gets caught in the background of strangers' lives.",
       "accent": "#d8a060",
       "mood": "lonely",
       "patience": 5,
       "steps": {
-        "greet":   "They look up. The look is heavier than the room is.",
-        "listen":  "They start in the middle of a sentence that began before you were born.",
-        "deliver": "They ask for water. You bring water. They drink half. They cap the bottle for you.",
-        "sit_with": "You sit across the glass. They lean toward the mic. You lean toward the speaker. Five minutes pass. It's the right five minutes."
+        "greet":   "They look up. The look is heavier than the room is. They do not apologize for being there before her.",
+        "listen":  "They start in the middle of a sentence that began before you were born. They are not going to start it over. You learn the start of the sentence by listening to where the middle goes.",
+        "deliver": "They ask for water. You bring water in a glass from the kitchenette — the heavy-bottomed one, the one Elicia keeps for the visitors who'll need to set something down. They drink half. They cap the bottle for you. They place it on the floor next to the booth-chair, exactly the way she'd have placed it.",
+        "sit_with": "You sit across the glass. They lean toward the mic. You lean toward the speaker. Five minutes pass on the master reel's counter. They never say their name. They never have to. You will mark the tape STRANGER · BOOTH · LATE in your own hand, and it will sit on the wall with the other 1,247 cassettes that hold what people couldn't carry."
       }
     },
     {
@@ -42,15 +42,15 @@
       "scenarios": ["cicada_session"],
       "arrival": { "kind": "scheduled", "turn": 2, "from": "entry_hall", "to": "lounge" },
       "lore_token": "kid_read_the_letter_aloud",
-      "lore_text": "A teenager carrying a letter they wrote to someone they will not send it to. They want the letter on tape instead. The booth, they think, is closer than the mailbox.",
+      "lore_text": "A teenager carrying a four-page letter they wrote to someone they will not send it to. They want the letter on tape because the booth, they think, is closer than the mailbox. The letter is to a parent who is alive. The kid is sixteen and trying very hard to look thirty, and the trying is the most sixteen thing about them. They got the booth's address from a sticker on a payphone in the bus depot. Cora drove them in.",
       "accent": "#7cffb0",
       "mood": "preoccupied",
       "patience": 6,
       "steps": {
-        "greet":   "They are sixteen and trying very hard to look thirty.",
-        "listen":  "They read the letter to you instead of into the mic first. You tell them that's fine.",
-        "deliver": "You hand them the foam pop-filter. They look at it like a sacred object.",
-        "sit_with": "You record the letter. They listen back to themselves through the headphones. They cry quietly. They thank you and leave. The tape is labelled in their handwriting before they go."
+        "greet":   "They are sixteen and trying very hard to look thirty. They tell you they're nineteen. You don't correct them. The lounge is the room for that.",
+        "listen":  "They read the letter to you instead of into the mic first. You tell them that's fine. They read it twice. The second time is the read they'll record. The first time is the read they needed to give to a person who wasn't the person.",
+        "deliver": "You hand them the foam pop-filter. They look at it like a sacred object. You set the mic at their height. You set their height by where their shoulders are, not by where they're holding their chin.",
+        "sit_with": "You record the letter. They listen back to themselves through the headphones with their eyes closed. They cry quietly. They thank you. They write the date on the cassette label in their own hand: a careful uneven date. They take the tape with them. They leave the letter on the lounge couch. You will not bring this up. The couch knows."
       }
     },
     {
@@ -59,15 +59,15 @@
       "scenarios": ["long_quiet", "tape_witness"],
       "arrival": { "kind": "scheduled", "turn": 2, "from": "entry_hall", "to": "vestibule" },
       "lore_token": "son_recorded_the_eulogy_early",
-      "lore_text": "His father isn't dead yet. He wants to record the eulogy now, because he's worried he won't have the words when the time comes.",
+      "lore_text": "His father is in hospice across the river. The doctors have said weeks; the son has heard it as days. He wants to record the eulogy now, because he is afraid he won't have the words when the time comes, and afraid in a different way that he will. His father owned a small marine-supply shop on the bank in the 1980s. The son ran cassettes for him as a kid. He is now older than his father was when he opened the shop.",
       "accent": "#c87633",
       "mood": "intense",
       "patience": 4,
       "steps": {
-        "greet":   "He won't sit down. You let him stand.",
-        "listen":  "He talks about the diner. He talks about a fishing trip. He talks about a thing his father did that was bad and a thing his father did that was good.",
-        "deliver": "You bring him a mug of water and the long-mic, the one for standing close.",
-        "sit_with": "You sit while he records the second take, which is shorter than the first take but better. He thanks you. He takes the tape with him."
+        "greet":   "He won't sit down. You let him stand. The vestibule's red carpet has held adults his height for forty years.",
+        "listen":  "He talks about the diner. He talks about a fishing trip. He talks about a thing his father did that was bad and a thing his father did that was good. He talks about both as if they belong to the same man, which is the hardest part of a eulogy and the part nobody mentions.",
+        "deliver": "You bring him a mug of water and the long-mic, the one for standing close. He doesn't want the booth. He wants the kitchenette. You set the long-mic up in the kitchenette. The kitchenette has held two of his father's friends already, years ago, on a tape labeled BOOTH 22.",
+        "sit_with": "You sit while he records the second take, which is shorter than the first take but better. He thanks you. He takes the tape with him. He does not leave a copy on the wall. You do not ask him to. You write the label in your own hand on the master-reel's index card so you'll remember the date, even though the tape isn't here. The cathedral on the other side of the wall is doing whatever it does."
       }
     },
     {
@@ -76,15 +76,15 @@
       "scenarios": ["cicada_session"],
       "arrival": { "kind": "scheduled", "turn": 3, "from": "entry_hall", "to": "lounge" },
       "lore_token": "writer_read_the_unfinished_chapter",
-      "lore_text": "Local writer working on a novel they've been working on for nine years. They come to the booth to read a chapter aloud to see if it works in a voice that isn't theirs.",
+      "lore_text": "Local writer working on a novel they've been working on for nine years. Vol 5 lives in their drafts. They come to the booth to read a chapter aloud to see if it works in a voice that isn't theirs — to see if a story breathes when somebody else is holding it. Elicia has heard six of their drafts now. The book has been getting smaller every draft, which the writer thinks is failure and Elicia thinks is the work.",
       "accent": "#9b5fd3",
       "mood": "talkative",
       "patience": 7,
       "steps": {
-        "greet":   "They have a manuscript folder. The corners are rounded from carrying.",
-        "listen":  "They read the chapter. Twice. The second reading is slower. It works the second time.",
-        "deliver": "You bring them coffee. Black. They drink half before they finish reading.",
-        "sit_with": "You sit and listen to the playback together. They mark the parts that landed. They take the tape AND a copy. They will not return for at least a month."
+        "greet":   "They have a manuscript folder. The corners are rounded from carrying. The label on the folder is the chapter title in their own hand: CHAPTER 17 — what the steamboat saw.",
+        "listen":  "They read the chapter. Twice. The second reading is slower. It works the second time. The first reading is for the writer. The second reading is for the room.",
+        "deliver": "You bring them coffee. Black. They drink half before they finish reading. They put the mug on the lounge end-table and it leaves a ring on a stack of magazines that was never going to be read.",
+        "sit_with": "You sit and listen to the playback together. They mark the parts that landed in pencil. They take the tape AND a copy. They will not return for at least a month. They are between drafts now. They will be between drafts forever, the way some writers are. Elicia would not say this aloud. She thinks it kindly."
       }
     },
     {
@@ -93,15 +93,15 @@
       "scenarios": ["tape_witness"],
       "arrival": { "kind": "scheduled", "turn": 1, "from": "entry_hall", "to": "booth" },
       "lore_token": "truth_was_recorded",
-      "lore_text": "Someone here to say a true thing they have not said anywhere else. The booth is the only place small enough to hold it.",
+      "lore_text": "Someone here at 2 AM to say a true thing they have not said anywhere else. They have known the true thing for nine years. They have rehearsed it three hundred times in the car on the way somewhere else. The booth is the only place small enough to hold it without the rest of their life knowing they said it. They will not say their name. They will not say the year. They will not say the names of the people the truth concerns. The shape of the truth will be enough.",
       "accent": "#ff5040",
       "mood": "intense",
       "patience": 3,
       "steps": {
-        "greet":   "They will not look at you. They look at the mic.",
-        "listen":  "They speak in a voice that has not been used at this volume in a long time.",
-        "deliver": "You hand them the headphones. They wave them off.",
-        "sit_with": "You sit at the console. You do not turn the playback on. You let the recording exist without being heard. That is what they came for."
+        "greet":   "They will not look at you. They look at the mic. They have looked at the mic for forty minutes before you came in from the kitchenette. The mic has held still.",
+        "listen":  "They speak in a voice that has not been used at this volume in a long time. Their voice does the thing voices do when they have been kept under a coat for a decade. The cicadas outside have paused for the duration. You don't know if they paused for the truth or by coincidence.",
+        "deliver": "You hand them the headphones. They wave them off. They don't want to hear themselves. They never will. That is the deal they made with the booth before they came in. The booth honors it.",
+        "sit_with": "You sit at the console. You do not turn the playback on. You let the recording exist without being heard. That is what they came for. The tape will go on the wall in the locked drawer. Elicia keeps the key. Frasier has the only other copy of the key, and he does not know which drawer the locked drawer is."
       }
     },
     {
@@ -110,15 +110,15 @@
       "scenarios": ["tape_witness", "long_quiet"],
       "arrival": { "kind": "scheduled", "turn": 4, "from": "entry_hall", "to": "vestibule" },
       "lore_token": "apology_committed_to_tape",
-      "lore_text": "Coming to record an apology for someone they wronged who will not hear it directly. The tape is for themselves to be able to say it out loud, fully, once.",
+      "lore_text": "Coming to record an apology for someone they wronged in 1994. The person they wronged will not hear it directly — they are not in contact, and the apologist has decided the contact would be a second wrong on top of the first. The tape is for the apologist to be able to say it out loud, fully, once. They will mark the tape DO NOT PLAY UNTIL I AM GONE and they will leave it on the wall. Elicia has nineteen tapes labeled the same way.",
       "accent": "#ff8060",
       "mood": "lonely",
       "patience": 5,
       "steps": {
-        "greet":   "They thank you for being open this late.",
-        "listen":  "They go through it: the name, the wrong, the consequence, the year, the silence, the regret.",
-        "deliver": "You bring tissues. They use one and then pocket the rest.",
-        "sit_with": "You sit through the playback. They wince. You don't react. They mark the tape DO NOT PLAY UNTIL I AM GONE. They leave it."
+        "greet":   "They thank you for being open this late. The thank-you is the longest sentence they will say to you that isn't on the tape.",
+        "listen":  "They go through it: the name (which they will record), the wrong (which they will record), the consequence (which they have only just learned and will record carefully), the year (1994), the silence (1994 to now), the regret (now). The list moves like the kind of list someone has held in a drawer.",
+        "deliver": "You bring tissues. They use one and then pocket the rest. The pocketing is the gesture you will remember.",
+        "sit_with": "You sit through the playback. They wince at three specific moments. You do not react at those moments. You react at a fourth moment that they did not anticipate would land — and the not-anticipating is what tells you the apology is real. They mark the tape DO NOT PLAY UNTIL I AM GONE. They leave it. They thank you again. You file it in the locked drawer with the other nineteen."
       }
     },
     {
@@ -129,15 +129,15 @@
       "scenarios": ["cicada_session", "long_quiet", "tape_witness"],
       "arrival": { "kind": "scheduled", "turn": 5, "from": "back_door", "to": "console" },
       "lore_token": "elicia_came_in_off_shift",
-      "lore_text": "When the player is NOT Elicia, she comes in off-shift to listen at the console. When the player IS Elicia, this entry swaps out.",
+      "lore_text": "When the player is NOT Elicia, she comes in off-shift to listen at the console. She comes in through the back door because the cathedral is on the other side and the back door is closer to where she lives. She has not stopped working tonight, just stopped engineering. When the player IS Elicia, this entry swaps out and Frasier comes in instead, balsa-wood in his hand.",
       "accent": "#d8a060",
       "mood": "preoccupied",
       "patience": 8,
       "steps": {
-        "greet":   "She nods from the doorway. Says she'll be at the console.",
-        "listen":  "She tells you which tape from the library to put on, second drawer down.",
-        "deliver": "You bring her coffee. She remembers how you take yours.",
-        "sit_with": "She listens beside you while the next visitor records. She doesn't speak. The room is steadier with her in it."
+        "greet":   "She nods from the doorway. Says she'll be at the console. She's already taken off her shoes.",
+        "listen":  "She tells you which tape from the library to put on, second drawer down, third from the back. She does not say what's on it. You will know within the first six seconds whether to keep playing.",
+        "deliver": "You bring her coffee. She remembers how you take yours and asks if you remembered hers, the way she always does to be polite.",
+        "sit_with": "She listens beside you while the next visitor records. She doesn't speak. The room is steadier with her in it. The reel turns. The reel does not catch on anything when she's in the room."
       }
     },
     {
@@ -148,15 +148,15 @@
       "scenarios": ["long_quiet"],
       "arrival": { "kind": "scheduled", "turn": 4, "from": "back_door", "to": "lounge" },
       "lore_token": "frasier_visited_the_booth",
-      "lore_text": "When the player is NOT Frasier, he comes over from the cathedral to sit in the lounge for a while. When the player IS Frasier, this entry swaps out.",
+      "lore_text": "When the player is NOT Frasier, he comes over from the cathedral with a small balsa-wood object he didn't finish. The cathedral on the other side of the booth wall is dark tonight, the way it usually is when he comes over. He doesn't say what he's making. He sits with the half-thing in his hands the whole time. When the player IS Frasier, this entry swaps out and a stranger walks in.",
       "accent": "#c87633",
       "mood": "preoccupied",
       "patience": 7,
       "steps": {
-        "greet":   "He's holding a small balsa-wood object he didn't finish.",
-        "listen":  "He talks about what he's making, not at length, not for long.",
-        "deliver": "You bring him water. He drinks it slowly.",
-        "sit_with": "You sit with him in the lounge. The mic isn't running. He says it helps to be somewhere that's listening even when nothing's being said."
+        "greet":   "He's holding a small balsa-wood object he didn't finish. He sets it on the lounge end-table next to the writer's coffee ring.",
+        "listen":  "He talks about what he's making, not at length, not for long. He always describes the unfinished piece as if it's already finished — the present tense of a thing that has the shape of being done.",
+        "deliver": "You bring him water. He drinks it slowly. He does not pick up the balsa-wood piece while drinking. He puts the mug down precisely on the same coffee ring.",
+        "sit_with": "You sit with him in the lounge. The mic isn't running. He says it helps to be somewhere that's listening even when nothing's being said. He says it the way somebody says a thing they have not figured out how to mean yet. He will figure it out by next year. You will both still be here next year. The booth is patient. The cathedral is patient. The two buildings have agreed on this without consulting either of you."
       }
     }
   ]

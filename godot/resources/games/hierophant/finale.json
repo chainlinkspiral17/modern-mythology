@@ -1,13 +1,13 @@
 {
   "scope": "hierophant",
-  "notes": "Hierophant finale cards. The BBS fails in distinctive ways — the signal drops, the lurker stays a lurker, the kid leaves without their answer.",
+  "notes": "Hierophant finale cards. The BBS fails in distinctive ways — the signal drops, the lurker stays a lurker, the kid leaves without their answer. The modem rack hums through all of them. The hum is the room's pulse, audible only to Sysop after this many years.",
   "finales": [
     {
       "id": "signal_dropped",
       "title": "THE SIGNAL DROPPED",
       "triggered_by": "doubt_max",
       "weight": 1.0,
-      "flavor": "Sysop is at the CRT. The terminal prompt is blinking. The four modem lights are all green. The room is humming. He is not typing. He has not typed in twelve minutes. The cicadas outside the alley door have not paused. The hum he has been listening to for thirty years has, for tonight, become something he has nothing to add to.",
+      "flavor": "Sysop is at the CRT. The terminal prompt is blinking, slow, the way the prompt blinks when nothing's coming in. The four modem lights are all green. The room is humming. He is not typing. He has not typed in twelve minutes. He has been a sysop for nine years and the post he is supposed to be writing is the post he writes most weeks, and tonight the post is not coming. The cicadas outside the alley door have not paused. The hum he has been listening to for thirty years has, for tonight, become something he has nothing to add to. He gets up. He does not close the terminal session. He goes to the back kitchen and pours himself a coffee he will not drink. The BBS is on. The BBS is always on.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
     },
     {
@@ -15,7 +15,7 @@
       "title": "THE BBS CLOSED QUIET",
       "triggered_by": "stagnation_max",
       "weight": 1.0,
-      "flavor": "The four modem lights have gone amber. The last caller hung up an hour ago. The printer is silent. The wall of floppies is the wall it has always been. Sysop turns off the CRT. The basement is dark.",
+      "flavor": "The four modem lights have gone amber. The last caller hung up an hour ago, mid-thread, leaving a post unfinished that Sysop will read tomorrow morning and post the back half of on their behalf because they always do. The printer is silent. The wall of floppies is the wall it has always been — twelve hundred small dark rectangles, each one a thread or a meeting or a long quiet someone needed somewhere to keep. Sysop turns off the CRT. The basement is dark. He goes up the stairs to the music store. The music store closed two hours ago. The street is the street.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
     },
     {
@@ -23,7 +23,7 @@
       "title": "THE LURKER STAYED A LURKER",
       "triggered_by": "visitors_claimed_3",
       "weight": 1.0,
-      "flavor": "Three handles logged off without posting. The lurker among them. Sysop scrolls the day's activity log. He sees them connect, sit, wait, leave. The pattern is one he has watched a thousand times.",
+      "flavor": "Three handles logged off without posting. The lurker among them. Sysop scrolls the day's activity log — connect-time, sit-time, the small protocols his BBS records that other BBSs don't. He sees them connect, sit, wait, leave. The pattern is one he has watched a thousand times. He marks the night in his sysop's notebook, the brown leather one he keeps in the drawer next to the ham radio. He notes the lurker's session time: forty-seven minutes. Long enough to write something. Not long enough to leave it. Tomorrow he will think about whether to message them. He has never sent a private message to a lurker. He never will.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
     },
     {
@@ -31,7 +31,7 @@
       "title": "PEAK SIGNAL · UNATTENDED",
       "triggered_by": "signal_full",
       "weight": 1.0,
-      "flavor": "Six modems all lit. Three threads running. The printer is buried in banner paper. Sysop is at the kitchen alcove looking for a clean mug. By the time he gets back to the CRT, the moment has passed.",
+      "flavor": "Six modems all lit. Three threads running. The printer is buried in banner paper — a thread split in two on its way through and the second half is still arriving. Sysop is at the kitchen alcove looking for a clean mug. He left the CRT for thirty seconds. The moment ran past him in that thirty seconds. The thread Anya posted finished without his reply. The kid with questions logged off thinking nobody was reading. The ham voice signed off because the BBS was busy. He comes back to the CRT with the coffee. The CRT shows the room as it was thirty seconds ago. He sits down. He reads what he missed. He answers what he can.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
     },
     {
@@ -39,7 +39,7 @@
       "title": "SHIFT ENDED OFFLINE",
       "triggered_by": "shift_over",
       "weight": 1.0,
-      "flavor": "It is past the hour Sysop normally closes for the night. The modems are still up. He has not heard from them for forty-five minutes. He goes upstairs. He leaves the BBS running. There is nobody to leave the BBS on for tonight.",
+      "flavor": "It is past the hour Sysop normally closes for the night. The modems are still up. He has not heard from them for forty-five minutes — not a connect, not a disconnect, not a single byte across channel 17 on the ham band. He goes upstairs to the music store door. He locks the door from his side, because he has a key. He leaves the BBS running. There is nobody to leave the BBS on for tonight. He leaves it on anyway. The BBS will keep itself on until somebody dials in. Somebody will, before morning. Somebody always does.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
     }
   ],
@@ -48,6 +48,6 @@
     "carry_over_achievements": true,
     "carry_over_codex_hotspots": true,
     "next_run_doctrine_start": 1,
-    "note": "Sysop's losses carry a small residual Doctrine forward — the next session knows what to do."
+    "note": "Sysop's losses carry a small residual Doctrine forward — the next session knows what to do. The BBS is patient. The BBS has been patient since before patient was a virtue people named."
   }
 }

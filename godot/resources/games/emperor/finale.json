@@ -1,13 +1,13 @@
 {
   "scope": "emperor",
-  "notes": "Emperor finale cards. The office fails in distinctive ways — a ruling that doesn't hold, a petitioner who leaves without their stamp, the day's docket left unfinished.",
+  "notes": "Emperor finale cards. The office fails in distinctive ways — a ruling that doesn't hold, a petitioner who leaves without their stamp, the day's docket left unfinished. The brass clock ticks through all of them. The clock has been ticking since Dante's father had the office. The clock is the only thing in the room that doesn't grade.",
   "finales": [
     {
       "id": "the_ruling_doesnt_hold",
       "title": "THE RULING DOESN'T HOLD",
       "triggered_by": "doubt_max",
       "weight": 1.0,
-      "flavor": "Dante is at the desk. The ruling is on the page. The stamp is in his hand. The room is the room it should be for this moment. He cannot put the stamp down. The office is colder than it should be for the hour. The clock ticks. The clock has been ticking for ninety years and does not care which way this goes.",
+      "flavor": "Dante is at the desk. The ruling is on the page. The stamp is in his hand. The room is the room it should be for this moment — the radiator clicking through to the corner, the candy dish at his right hand half-emptied, the late afternoon catching the brass of the clock face. He cannot put the stamp down. He has held the stamp before over harder pages. He has signed harder rulings than this one. Tonight the stamp does not weigh anything in particular and his hand does not move. The office is colder than it should be for the hour. The clock ticks. The clock has been ticking for ninety years and does not care which way this goes. He sets the stamp back on the blotter without committing the ink. The petitioner, in the chair across from him, watches him do it. They do not look at his face. They look at his hand.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
     },
     {
@@ -15,7 +15,7 @@
       "title": "THE OFFICE CLOSED SHORT",
       "triggered_by": "stagnation_max",
       "weight": 1.0,
-      "flavor": "It is past closing time. The anteroom has people in it who did not get heard. Dante locks the front door. The bell hasn't rung in twenty minutes. He sits at the desk in the dark. The stamp is on the blotter. Tomorrow is tomorrow.",
+      "flavor": "It is past closing time. The anteroom has people in it who did not get heard — the widow with the estate, the appellant with the six-month case, the old friend who really only came to sit. Dante locks the front door. The bell hasn't rung in twenty minutes. He turns off the desk lamp, then turns it back on because the room is darker than he wants it to be when he leaves. He sits at the desk in the half-light. The stamp is on the blotter. The blotter is the same blotter his father bought in 1962. Tomorrow is tomorrow.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
     },
     {
@@ -23,7 +23,7 @@
       "title": "THE PETITIONER WALKED",
       "triggered_by": "visitors_claimed_3",
       "weight": 1.0,
-      "flavor": "Three petitioners left without being heard. The widow with the estate. The appellant with the six-month case. The old friend who really just wanted a stamp. Dante sits at his desk and stares at the ledger. The ledger has the ones he heard. It does not have the ones he didn't.",
+      "flavor": "Three petitioners left without being heard. The widow with the estate. The appellant with the six-month case. The old friend who really just wanted a stamp on a piece of paper that he was never going to take anywhere. Dante sits at his desk and stares at the ledger. The ledger has the ones he heard. It does not have the ones he didn't. The clerk comes by with her coat on and squeezes his shoulder before she goes home. He nods. He does not move. The bell over the door rings once when she leaves, and the office is quiet again, and quiet is the wrong sound for this office at this hour.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
     },
     {
@@ -31,7 +31,7 @@
       "title": "THE LEDGER OVERFILLED",
       "triggered_by": "ledger_full",
       "weight": 1.0,
-      "flavor": "The day's docket is complete. There are people still in the anteroom. There are people still on the bench outside. The ledger is closed. The stamp is back on the blotter. Dante looks at the cabinet and decides this is what tomorrow is for.",
+      "flavor": "The day's docket is complete. The ledger has every ruling written into it in Dante's careful longhand, dated, stamped, witnessed. There are people still in the anteroom. There are people still on the bench outside in the bank-side street. The bell has rung four times in the last hour and he has stopped counting. The ledger is closed. The stamp is back on the blotter. He looks at the cabinet — the floor-to-ceiling cabinet his father started in '62 and he has been adding to since '79 — and decides this is what tomorrow is for. He turns the desk lamp off. He sits a while in the green dark of the radiator's pilot light.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
     },
     {
@@ -39,7 +39,7 @@
       "title": "THE CLERK'S DAY WAS LONG",
       "triggered_by": "shift_over",
       "weight": 1.0,
-      "flavor": "It is past five. The clerk has put on her coat. The cabinet is in better order than it was this morning. The ledger has eight rulings in it and three more that needed to be in it. The office closes the way it closes most days — almost on time.",
+      "flavor": "It is past five. The clerk has put on her coat. The cabinet is in better order than it was this morning — she rearranged the H drawer while waiting for the appellate folder to be ready. The ledger has eight rulings in it and three more that needed to be in it. She kisses Dante on the top of his head, like she has done at the end of every long day for nineteen years. She does not say anything. He nods. The office closes the way it closes most days — almost on time, with the heavy bronze stamps lined up on the stamp table in their cases, and the brass clock ticking, indifferent, into the empty room.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
     }
   ],
@@ -48,6 +48,6 @@
     "carry_over_achievements": true,
     "carry_over_codex_hotspots": true,
     "next_run_authority_start": 1,
-    "note": "Dante's losses carry a little residual Authority forward. The office remembers how to run itself."
+    "note": "Dante's losses carry a little residual Authority forward. The office remembers how to run itself; the office has been running itself since before Dante was Dante."
   }
 }

@@ -1,13 +1,13 @@
 {
   "scope": "empress",
-  "notes": "Empress finale cards. The boat is built for hospitality; its failures are domestic — a meal that didn't land, a chair that stayed empty, the river finally finding its way in.",
+  "notes": "Empress finale cards. The boat is built for hospitality; its failures are domestic — a meal that didn't land, a chair that stayed empty, the river finally finding its way in. Each ending sounds like Nicola: small specific gestures, no high pitch, the boat doing what the boat does.",
   "finales": [
     {
       "id": "the_meal_didn't_land",
       "title": "THE MEAL DIDN'T LAND",
       "triggered_by": "stagnation_max",
       "weight": 1.0,
-      "flavor": "The long table is full. Everyone is eating. Nicola is eating. The room is quiet in the wrong way. Nobody is sitting up. Nobody is asking for seconds. The first arrivals leave first. The cousin from upriver leaves second. By the time the last plate is cleared the boat is empty. Nicola sits at the head of the table for a long while afterwards.",
+      "flavor": "The long table is full. Everyone is eating. Nicola is eating. The room is quiet in the wrong way — the quiet you sometimes get when the meal you planned came out exactly as you planned and didn't ask anybody to do anything they couldn't already do. Nobody is sitting up. Nobody is asking for seconds. The first arrivals leave first; they always leave first. The cousin from upriver leaves second, with a sort of bewildered politeness, as if the room had asked something of them they hadn't realized they were being asked. By the time the last plate is cleared the boat is empty. Nicola sits at the head of the table for a long while afterwards. The bow window is the only light still on. The river, which has not moved the boat, has moved past everyone else.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
     },
     {
@@ -15,7 +15,7 @@
       "title": "THE KEEPER LOSES HER GARDEN",
       "triggered_by": "doubt_max",
       "weight": 1.0,
-      "flavor": "She is on the upper deck, with the herbs and the rose. She is looking at them and they are not looking back. The boat is at the same dock it has always been at. The garden is hers; the garden was always hers. She is not sure she's still the keeper of it, the way she was at noon today, before the dinner started.",
+      "flavor": "She is on the upper deck, with the herbs and the rose. She is looking at them and they are not looking back. The boat is at the same dock it has always been at. The garden is hers; the garden was always hers — she planted the rosebush from a cutting she got from her mother on a different boat. She is not sure she's still the keeper of it, the way she was at noon today, before the dinner started. The kettle in the galley clicks off three times in the next half-hour. She does not go down to it. The herbs do their slow night-thing in the planter, indifferent to her decision.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
     },
     {
@@ -23,7 +23,7 @@
       "title": "THE CHAIR STAYED EMPTY",
       "triggered_by": "visitors_claimed_3",
       "weight": 1.0,
-      "flavor": "Three guests didn't make it aboard. Three chairs at the long table are empty. Nicola sets a plate at each one anyway, the way her grandmother taught her, the way she has been doing for forty years. She eats slowly. The boat is full of empty places.",
+      "flavor": "Three guests didn't make it aboard. Three chairs at the long table are empty. Nicola sets a plate at each one anyway, the way her grandmother taught her — the way her grandmother set a plate for a brother who never came home from the river, every dinner for forty-six years, until she couldn't lift the plates anymore and Nicola took the ritual over without anybody saying so. The empty plates do not feel performative tonight. They feel like the meal. She eats slowly. The boat is full of empty places. The empty places are the company.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
     },
     {
@@ -31,7 +31,7 @@
       "title": "THE RIVER FINDS A WAY IN",
       "triggered_by": "river_takes_the_bank",
       "weight": 1.0,
-      "flavor": "Something gives under the hull. A small thing. Water seeps in at the engine-room plate where Nicola has been telling herself the patch will hold one more season. The boat is not going to sink tonight. It is going to be wet in places it has never been wet before. Nicola stands in the doorway looking at the dark water on her floor.",
+      "flavor": "Something gives under the hull. A small thing. Water seeps in at the engine-room plate, the one Nicola has been telling herself the patch will hold one more season — six seasons in a row, now. The boat is not going to sink tonight. It is going to be wet in places it has never been wet before, and the wet will dry slow and leave dark wood-stains for a year. Nicola stands in the doorway looking at the dark water on her floor. She closes the engine-room door. She goes to the long table where the meal is still half on the plates. She picks up her own fork. The river had to come in eventually. Tonight is the night it picked.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
     },
     {
@@ -39,7 +39,7 @@
       "title": "THE EVENING RAN OUT",
       "triggered_by": "shift_over",
       "weight": 1.0,
-      "flavor": "Midnight. The last guest is on the gangway saying goodbye. Three of the dishes you planned to serve never got served. The bloom on the upper deck is the same as it was at sundown. Nicola closes the gangway gate behind the last guest. The river is at the dock as it always is. Tomorrow is tomorrow.",
+      "flavor": "Midnight. The last guest is on the gangway saying goodbye. Three of the dishes you planned to serve never got served — the slow-cooked thing is still in the oven on warm, the cobbler is sitting on the galley counter under a clean towel, the second wine bottle was not opened. The bloom on the upper deck is the same as it was at sundown; nothing in this room grew tonight that wasn't already growing. Nicola closes the gangway gate behind the last guest. The river is at the dock as it always is. Tomorrow is tomorrow. The boat doesn't grade.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
     }
   ],
@@ -48,6 +48,6 @@
     "carry_over_achievements": true,
     "carry_over_codex_hotspots": true,
     "next_run_bloom_start": 1,
-    "note": "Nicola's losses carry a little Bloom forward — what grew tonight grows again, partly."
+    "note": "Nicola's losses carry a little Bloom forward — what grew tonight grows again, partly. The boat keeps the work it knows how to keep."
   }
 }
