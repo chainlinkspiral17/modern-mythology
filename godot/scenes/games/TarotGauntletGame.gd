@@ -4731,6 +4731,11 @@ func _resolve_effect(e: Dictionary) -> void:
 				_log_line("[color=#ffd07a][b]✦ the candles are lit.[/b][/color]")
 				_log_line("[color=#7c8398][i]everyone in the room turns. someone starts the song. someone takes a photo. for thirty seconds you are inside the moment instead of beside it.[/i][/color]")
 				_show_toast("Candles lit · +3 Inspiration", "#ffd07a")
+				# Milestone — unlocks the candles_lit BGM stinger,
+				# the Full Moon music-player skin, and the Steamboat
+				# Wheel visualizer. Fires once per save.
+				if SaveSystem.mark_unlocked("milestone:candles_lit"):
+					_log_line("[color=#a99060][i]a new track is in the music player.[/i][/color]")
 
 		_:
 			_log_line("[i](unhandled effect: %s)[/i]" % kind)
@@ -6372,6 +6377,13 @@ func _trigger_win(threshold: String) -> void:
 			ending_token = t.get("ending_lore_token", "")
 	if ending_token != "":
 		_collect_lore_token(ending_token)
+	# Milestones — gauntlet_win unlocks the Cathedral of Rust skin
+	# + Cathedral Drift visualizer + "The Leap (won)" BGM. Per-arcana
+	# variant lets later content gate on a specific arcana win.
+	SaveSystem.mark_unlocked("milestone:gauntlet_win")
+	SaveSystem.mark_unlocked("milestone:gauntlet_win:" + _arcana_id)
+	if _bindle_assembled:
+		SaveSystem.mark_unlocked("milestone:bindle_assembled")
 	# Persist
 	var contents := ""
 	for it in _inventory:
@@ -6437,6 +6449,27 @@ func _trigger_loss(reason: String) -> void:
 		finale_id = f.get("id", "")
 		finale_title = f.get("title", "")
 		finale_flavor = f.get("flavor", "")
+	# Milestones — gauntlet_loss unlocks the 24-Hour Diner skin + the
+	# Reversed BGM track. Per-arcana variant tracks which arcana you
+	# lost on. Magician finales each have their own stinger key the
+	# music catalog references, so unlock that too.
+	SaveSystem.mark_unlocked("milestone:gauntlet_loss")
+	SaveSystem.mark_unlocked("milestone:gauntlet_loss:" + _arcana_id)
+	if _arcana_id == "magician" and finale_id != "":
+		# Map finale-id → the catalog's stinger key. Finale ids come
+		# from magician/finale.json; keys here mirror the catalog
+		# entries added in the music-slot-definitions pass.
+		var stinger_key: String = ""
+		match finale_id:
+			"the_maker_forgets_the_make": stinger_key = "milestone:magician_finale:maker_forgets"
+			"the_maker_breaks":            stinger_key = "milestone:magician_finale:maker_breaks"
+			"the_steamboat_sails":         stinger_key = "milestone:magician_finale:steamboat_sails"
+			"the_river_takes_the_bank":    stinger_key = "milestone:magician_finale:river_takes_bank"
+			"the_room_walked_out":         stinger_key = "milestone:magician_finale:room_walked_out"
+			"shift_ends_behind":           stinger_key = "milestone:magician_finale:shift_ends"
+			"inertia_max":                 stinger_key = "milestone:magician_finale:inertia_fallback"
+		if stinger_key != "":
+			SaveSystem.mark_unlocked(stinger_key)
 	GauntletState.record_loss(_arcana_id, _location_id, finale_id, _lore_tokens_collected)
 	var cg_path: String = _loss_cg_path(finale_id)
 	_show_end_screen(false, "REVERSED · " + finale_title, finale_flavor, cg_path)
