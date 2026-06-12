@@ -929,6 +929,58 @@ const SLOTS = [
     label: 'Finale — THE DRAFT, won (a quiet evening kept)',
     flavor: "Frasier at the river window, sitting on a folding chair beside the bird-watcher's empty one. The window is open a crack. The cathedral behind him is dim — pieces finished, lights down low, evening settled. The steamboat on the workbench is exactly where he left it, unfinished, and that is correct.",
     target: 'assets/cg/magician_finale_draft_won.png' },
+
+  // ── Cathedral item art (museum-plate aesthetic, like Fool items) ──
+  // Single object centered on a dark warm gradient, soft rim light.
+  // Engine loads from `assets/gallery/items/magician_<item_id>.png`.
+  ...[
+    { id: 'tape_unfinished', label: "Elicia's Unfinished Tape",
+      flavor: "A TDK cassette mid-rotation as if just stopped, the take-up reel half full of magnetic tape. Hand-printed label (paint-strokes, no legible English). Slightly translucent body, tape-mechanism inside catching the warm light." },
+    { id: 'togo_diner_bag', label: "TO-GO · D'Ambrosio's",
+      flavor: "A brown paper bag, top folded twice, the diner's name on the side as a faint painted gesture (no legible text). A styrofoam cup with a coffee lid beside it. The bag's weight implied by a slight bulge near the bottom." },
+    { id: 'nicola_letter', label: "Nicola's Letter",
+      flavor: "A cream envelope, hand-addressed (paint-strokes, no legible letters). A small wax-pencil street number in the corner. Slightly older paper than commercial stationery. Floats on the dark ground." },
+    { id: 'cup_of_water', label: "Chipped Enamel Cup of Water",
+      flavor: "A chipped white enamel mug, black rim, the chip on the right side. Half-full of clear water that catches a single highlight at the meniscus. The mug rests at a slight tilt." },
+
+    { id: 'tape_unannotated', label: "An Unlabeled Cassette",
+      flavor: "A cassette tape, label-side up, label completely blank. The shell is dust-gray. The reel windows show uneven wear — one side played a lot more than the other." },
+    { id: 'in_memoriam_card', label: "In Memoriam Card",
+      flavor: "A beige folded card with a single line of paint-stroke text across the front (no legible words). Embossed border. The card stands slightly bent from being carried in a pocket." },
+    { id: 'bbs_printout_help', label: "BBS Printout · /help",
+      flavor: "A length of dot-matrix printer paper with perforated edges still attached. The top three lines covered in faint dot-matrix command syntax (paint-strokes). The paper curls slightly at the bottom." },
+    { id: 'balsa_strip', label: "Balsa Strip (1/8\")",
+      flavor: "A single straight strip of light-tan balsa wood, 1/8\" cross-section, six inches long. Slight grain visible. Floats diagonally across the frame, casting a soft cast shadow." },
+    { id: 'foam_core_offcut', label: "Foam-Core Offcut",
+      flavor: "An irregular pentagonal scrap of white foam-core, paper-laminate edge slightly fuzzed from the X-acto cut. The cut edges show the white-foam-between-paper sandwich." },
+    { id: 'pewter_saint_laurent', label: "Pewter Saint-Laurent Strip",
+      flavor: "A thin ribbon of cast pewter, curved in the shape of the Saint-Laurent's bend through Montreal. The metal catches a single cold-blue highlight. The cast surface is matte." },
+    { id: 'neon_wire', label: "Neon Wire (cobalt)",
+      flavor: "A coil of glass tubing in a tight spiral, the gas inside glowing faintly cobalt-blue even unconnected. The wire ends in two small brass electrodes." },
+    { id: 'empty_platform_block', label: "Empty Platform Block",
+      flavor: "A square of unfinished poplar, six inches per side, smooth-sanded, no figure on top. Frasier knows it goes at JUDGEMENT. He doesn't yet know what it's of." },
+
+    { id: 'contents_collage', label: "Collage Piece",
+      flavor: "A small mixed-media assemblage on a 4×6 foam-core backing — three found objects (a torn page, a brass washer, a pressed leaf, painted as gestures not literal) overlapping at center. The whole thing reads as ONE piece, three voices." },
+    { id: 'contents_letter_panel', label: "Letter-Panel Collage",
+      flavor: "A foam-core panel with four envelopes and a postcard pinned in a slight arc. The envelopes are different paper shades but the same hand. The composition reads, almost, as a single voice in five envelopes." },
+    { id: 'contents_tape_collage', label: "Tape-Loop Collage",
+      flavor: "A short loop of magnetic tape spliced into a closed ring, mounted on a small wooden block with the splice visible. The tape catches light at the splice. Spliced from three different cassettes." },
+    { id: 'contents_brass_assembly', label: "Brass Assembly",
+      flavor: "Three small brass mechanism parts joined into a single small machine — a gear, a lever, a pin. Polished. The assembly stands on its own, balanced. The way the parts fit is correct in a way you can feel." },
+    { id: 'contents_paper_construction', label: "Paper Construction",
+      flavor: "A small paper sculpture in three layered planes, lit from above so the front layer casts a shadow on the back. You can see through the front into the back. Different weights of cream and grey paper." },
+
+    { id: 'workbench_screwdriver', label: "The Workbench Screwdriver",
+      flavor: "A Phillips-head screwdriver with a balsa-wood handle worn smooth from thirteen years of grip. The shaft is steel, the tip slightly burnished from use. Lies horizontally across the frame." },
+    { id: 'spare_inspiration_token', label: "A Half-Idea (napkin with two lines)",
+      flavor: "A folded paper napkin with two short lines of paint-stroke handwriting across one fold (no legible English). The napkin is slightly translucent in places. Floats centered." },
+  ].map(o => ({
+    tab: 'items', cat: 'magician', arcana: 'magician',
+    label: o.label,
+    flavor: o.flavor,
+    target: 'assets/gallery/items/magician_' + o.id + '.png'
+  })),
 ];
 
 let assetIndex = {};
