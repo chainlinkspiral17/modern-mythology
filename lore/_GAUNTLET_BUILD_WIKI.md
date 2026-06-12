@@ -113,20 +113,66 @@ funny on purpose, wise without affecting it, and aesthetically
 confident — pretty because she finally trusts her own eye. The
 mature self.
 
+### The lineage: Whispers came from Pomegranate Hour
+
+Per user: *"it can be whispers of the liminal with lots of references
+to pomegranate hour. as one came from the other."*
+
+Same maker, evolved voice. PH is the apprenticeship; Whispers is the
+mature work that grew out of it. They're not two parallel projects —
+they're a *lineage*. Elicia made PH, learned, kept what worked,
+discarded the homage tics that no longer served, and the result is
+Whispers.
+
+What that means for how PH appears inside the Priestess scenarios
+(which run on Whispers):
+
+- **Re-cut footage.** A shot from a PH episode lands in a Whispers
+  episode in a new context — the same beat used twice, the second
+  time more honestly.
+- **Retired devices.** The 60 Hz hum, the 9:09 PM interference, the
+  silent halftone host — devices PH used as load-bearing structure
+  that Whispers either skips entirely or uses once, with awareness,
+  as a wink. Half-uses, half-ironizes.
+- **Shelved episodes.** PH episodes live in her archive, occasionally
+  referenced in the current edit. The cult audience knows the PH
+  back catalog and reads the new work against it.
+- **The early self in the cutting room.** When Elicia is editing
+  Whispers, the question she's often answering is: *what did young
+  me try to do here that I want to keep, and what was just me
+  copying Lynch?* The PH archive is a mirror she can look into
+  during the current work.
+- **Specific recurring references** the gauntlet's Priestess
+  scenarios can carry:
+  - the old halftone cold-open is in the PH episodes; Whispers's cold
+    open is different (the canon doesn't specify yet)
+  - certain locations were PH locations first (the riverbank, the
+    bungalow window, the abandoned diner booth)
+  - certain actors were PH actors who came back for Whispers (Anya
+    is a strong candidate)
+  - certain music cues, certain title-card fonts, certain edit
+    rhythms get inherited
+
 ### What this means for the gauntlet
 
-- **The Priestess board's "show production" framing** belongs to
-  Whispers, not Pomegranate Hour. The cult audience, the cartographer
-  episode, the dying basil plant, the editing suite, the mirror shard
-  — current Elicia.
-- **Pomegranate Hour can surface as a finished older artifact** —
-  prints stored, episodes on a shelf, occasionally referenced as
-  *"back when"* work. Not the active scenario.
-- **The lore-doc 22-episode arcana mapping** is decoration only until
-  canon confirms.
+- **The Priestess board's "show production" framing** is Whispers,
+  with PH as lineage permeating it. The cult audience parses every
+  Whispers frame *against* the PH back catalog.
+- **Active scenarios live in Whispers.** The cartographer episode,
+  the Choose Your Own Adventure, the editing suite, the mirror shard,
+  the dying basil plant — current.
+- **PH artifacts seed the suite as visitable objects** — a shelf of
+  PH tapes, a PH still on the wall, a binder of cold-open thumbnails
+  from the homage era, the wireframe of a never-finished PH episode
+  she's now considering re-cutting.
+- **The lore-doc 22-episode mapping** can be re-purposed as the
+  *PH back catalog* — homage-era episodes Elicia made or planned —
+  rather than as the canonical structure of the current show.
+  Treat as Claude-extended decoration for now.
 - **My gauntlet build's "Pomegranate Hour suite"** conflated the two
   works AND made up a half-finished college version that doesn't
-  exist. Retire and rebuild around Whispers.
+  exist. Retire and rebuild around Whispers, with PH as the lineage
+  it grew out of.
 
 ---
 
