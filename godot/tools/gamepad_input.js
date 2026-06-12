@@ -219,6 +219,10 @@ function mountGamepadOverlay(gp, opts = {}) {
       <button id="gpio-detect" style="background:#3a2614;color:#ffd896;border:1px solid #d8a060;padding:2px 8px;font-family:inherit;font-size:10px;cursor:pointer;">DETECT STRUM</button>
       <button id="gpio-clear-binds" style="background:transparent;color:#7a5828;border:1px solid #553318;padding:2px 8px;font-family:inherit;font-size:10px;cursor:pointer;">RESET</button>
     </div>
+    <label style="display:flex;align-items:center;gap:4px;color:#7a5828;font-size:10px;margin-top:6px;cursor:pointer;">
+      <input type="checkbox" id="gpio-arrows-as-strum" style="margin:0;">
+      arrows = strum (off → D-pad navigates)
+    </label>
     <div id="gpio-bind-msg" style="color:#88b87a;font-size:10px;margin-top:4px;"></div>
   `;
   document.body.appendChild(panel);
@@ -313,6 +317,41 @@ function mountGamepadOverlay(gp, opts = {}) {
       _bindStrumToAxis(e.detail.idx);
     }
   });
+
+  // ── Optional: arrow-key strum fallback ───────────────────────────
+  // Some setups (Steam Input, vendor remap tools) translate the strum
+  // bar into ArrowUp / ArrowDown keyboard events at the OS level —
+  // the page treats those as focus-navigation and the strum "moves
+  // the menu" instead of triggering chord mode. Toggle this on if
+  // strumming moves the focus ring around. Off by default so the
+  // Riffmaster's D-pad can navigate normally.
+  const arrowsBox = panel.querySelector('#gpio-arrows-as-strum');
+  let arrowsAsStrum = false;
+  arrowsBox.addEventListener('change', () => {
+    arrowsAsStrum = arrowsBox.checked;
+    _setBindMsg(arrowsAsStrum
+      ? 'arrows now treated as strum.'
+      : 'arrows pass through (D-pad navigates).', '#7a5828');
+  });
+  window.addEventListener('keydown', e => {
+    if (!arrowsAsStrum) return;
+    if (gp._padIdx < 0) return;
+    const tag = e.target.tagName;
+    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+    let strumDir = null;
+    if (e.key === 'ArrowUp'   || e.key === 'ArrowLeft')  strumDir = 'up';
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') strumDir = 'down';
+    if (strumDir !== null) {
+      e.preventDefault();
+      const btn = strumDir === 'down' ? gp.mapping.strumDown : gp.mapping.strumUp;
+      window.dispatchEvent(new CustomEvent('gamepadinput-button', {
+        detail: { idx: btn, pressed: true, value: 1, synthetic: true, fromKeyboard: true }
+      }));
+      if (document.activeElement && document.activeElement !== document.body) {
+        document.activeElement.blur();
+      }
+    }
+  }, true);
   window.addEventListener('gamepadinput-connected', e => {
     status.textContent = 'connected: ' + (e.detail.id || '(unknown)').slice(0, 38);
   });
