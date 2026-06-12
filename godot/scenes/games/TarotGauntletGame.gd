@@ -181,6 +181,23 @@ var _threats_def: Dictionary = {}           # def_id → def dict
 var _threats_active: Array = []             # array of {id, def_id, pos}
 var _threats_next_serial: int = 1
 var _board_threat_nodes: Dictionary = {}    # threat instance id → Control
+# FP-view scan-pan state. Held as members (not lambda captures) so
+# we can null/replace cleanly on every render and never invoke a
+# tween_callback against a freed bg node.
+var _fp_bg: TextureRect = null
+var _fp_scan_tween: Tween = null
+# ── Lore / atmosphere tracking ────────────────────────────────────
+# `_last_logged_pos` tracks the space we last surfaced an arrival
+# beat for, so we don't spam the log on rapid renders. `_ambient_
+# turn_offset` is randomised at run start so the ambient-pool
+# cycle doesn't always fall on the same turns. `_last_steamboat_
+# beat` keeps the steamboat ladder lines from re-firing on
+# already-logged states.
+var _last_logged_pos: String = ""
+var _ambient_turn_offset: int = 0
+var _last_steamboat_beat: int = -1
+var _last_stagnation_tier: int = -1
+var _last_doubt_tier: int = -1
 # Pending visitor-arrival popups. When a turn brings 2+ visitors at
 # once we show them sequentially — each modal's Acknowledge button
 # pops the next from the queue.
@@ -656,6 +673,22 @@ func _init_run() -> void:
 	_pieces_completed = 0
 	_next_gravity_canceled = false
 	_active_demons.clear()
+	# Atmosphere bookkeeping
+	_last_logged_pos = ""
+	_last_steamboat_beat = -1
+	_last_stagnation_tier = -1
+	_last_doubt_tier = -1
+	_ambient_turn_offset = randi() % 3
+	# Apply starting_demons_active if the setup declares any (BLOW
+	# OUT THE CANDLES leans on this to start in chaos mode).
+	for d_decl in _setup.get("starting_demons_active", []):
+		var dd: Dictionary = d_decl
+		var did: String = String(dd.get("id", ""))
+		var dur: int = int(dd.get("duration_turns", 3))
+		if did != "":
+			_active_demons[did] = dur
+	# Honor starting_steamboat_progress for the hard scenario.
+	_steamboat_progress = int(_setup.get("starting_steamboat_progress", _steamboat_progress))
 	_hand_cards = (start.get("starting_hand", []) as Array).duplicate()
 
 	# Visitors: place those marked on_board_at_start; queue scheduled ones
@@ -1906,6 +1939,9 @@ func _render_board() -> void:
 	# otherwise falls back to the top-down map.
 	if _board_content == null:
 		return
+	# Atmosphere hooks — fire once per actual movement / stat shift.
+	_log_arrival_beat_if_changed()
+	_log_pressure_tier_crossings()
 	if _board_fullscreen or _view_mode == "map":
 		_render_topdown_map()
 		return
@@ -1921,6 +1957,12 @@ func _render_board() -> void:
 func _render_topdown_map() -> void:
 	if _board_content == null:
 		return
+	# Coming out of FP mode — kill the scan tween so it doesn't
+	# tick against a node we're about to free.
+	if _fp_scan_tween != null and _fp_scan_tween.is_valid():
+		_fp_scan_tween.kill()
+	_fp_scan_tween = null
+	_fp_bg = null
 	# Coming back from FP mode? Reveal the meeples we hid.
 	if _board_meeple != null and is_instance_valid(_board_meeple):
 		_board_meeple.visible = true
@@ -2220,6 +2262,13 @@ func _render_topdown_map() -> void:
 func _render_fp() -> void:
 	if _board_content == null:
 		return
+	# Kill the previous FP scan tween + drop our reference to the
+	# old bg BEFORE freeing it. Prevents the recursive tween
+	# callback from firing against a freed TextureRect.
+	if _fp_scan_tween != null and _fp_scan_tween.is_valid():
+		_fp_scan_tween.kill()
+	_fp_scan_tween = null
+	_fp_bg = null
 	_board_space_nodes.clear()
 	_board_marker_pos.clear()
 	for c in _board_content.get_children():
@@ -2259,8 +2308,10 @@ func _render_fp() -> void:
 		_board_content.add_child(bg)
 		# Kick off a slow random scan — the painted view drifts in
 		# different directions, returns near center, drifts again.
-		# Stops automatically when the bg node frees (next render).
-		_fp_scan_pulse(bg, content_size, bg_scale)
+		# _fp_bg is the class member the scan reads (no lambda
+		# capture, no freed-reference risk).
+		_fp_bg = bg
+		_fp_scan_pulse(content_size, bg_scale)
 	# Subtle vignette over the bg so the navigation strip + overlays
 	# read cleanly against any painting.
 	var vignette := ColorRect.new()
@@ -2429,41 +2480,138 @@ func _render_fp() -> void:
 			tn.visible = false
 
 
-# Helper — find a space's full def from the location JSON.
-func _fp_scan_pulse(bg: TextureRect, content_size: Vector2, bg_scale: float) -> void:
-	# Soft, slow scan-pan of the 1st-person painted view. Each pulse
-	# tweens the bg to a random direction (left/right/up/down/center),
-	# pauses for a beat, then queues the next pulse. The pan range
-	# is the 5% slack we baked into the bg's oversize, so the edges
-	# of the panel never reveal blank space.
-	if not is_instance_valid(bg):
+# Soft, slow scan-pan of the 1st-person painted view. Reads
+# `_fp_bg` (set by _render_fp) instead of capturing a TextureRect
+# in a lambda — the previous implementation captured the bg in a
+# recursive tween_callback lambda, and when the bg got freed
+# (render_fp rebuild, view-mode flip, player movement) Godot
+# logged "Lambda capture at index 0 was freed" once per pulse.
+# `.bind()` carries only Vector2 + float by value; no node refs.
+func _fp_scan_pulse(content_size: Vector2, bg_scale: float) -> void:
+	# Kill any in-flight scan tween before starting a new one. A
+	# previous render's tween may still be ticking even though we
+	# nulled _fp_bg; killing here prevents it from writing into a
+	# freed node next frame.
+	if _fp_scan_tween != null and _fp_scan_tween.is_valid():
+		_fp_scan_tween.kill()
+	_fp_scan_tween = null
+	if _fp_bg == null or not is_instance_valid(_fp_bg):
 		return
 	# Slack we can move within without showing empty edges.
 	var slack: Vector2 = content_size * (bg_scale - 1.0)
-	# Random direction. Bias toward center returns so the camera
-	# "comes back" between drifts.
+	# Random direction with weighted center returns.
 	var dirs: Array = [
 		Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1),
 		Vector2(-1, -1), Vector2(1, 1), Vector2(-1, 1), Vector2(1, -1),
-		Vector2(0, 0), Vector2(0, 0),  # weight center returns higher
+		Vector2(0, 0), Vector2(0, 0),
 	]
 	var dir: Vector2 = dirs[randi() % dirs.size()]
-	# Random magnitude within the slack range, 40-100% of available.
 	var mag: float = randf_range(0.40, 1.00)
 	var target_offset: Vector2 = Vector2(
 		-slack.x * 0.5 + dir.x * slack.x * 0.5 * mag,
 		-slack.y * 0.5 + dir.y * slack.y * 0.5 * mag)
 	var dur: float = randf_range(4.0, 7.0)
 	var hold: float = randf_range(1.5, 3.0)
-	var t := create_tween()
-	t.tween_property(bg, "position", target_offset, dur).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	t.tween_interval(hold)
-	t.tween_callback(func() -> void:
-		# Re-queue the next pulse only if the bg is still alive.
-		# A new render frees the old bg and starts its own pulse,
-		# so we don't double up.
-		if is_instance_valid(bg):
-			_fp_scan_pulse(bg, content_size, bg_scale))
+	_fp_scan_tween = create_tween()
+	_fp_scan_tween.tween_property(_fp_bg, "position", target_offset, dur).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_fp_scan_tween.tween_interval(hold)
+	# .bind() — Callable carries content_size + bg_scale by value,
+	# no lambda capture. _fp_scan_pulse re-reads _fp_bg from the
+	# class member each pulse, so a render swap is observed cleanly.
+	_fp_scan_tween.tween_callback(_fp_scan_pulse.bind(content_size, bg_scale))
+
+
+# Log a small atmospheric beat when the player arrives at a new
+# space. The space's def can carry an `arrival_lines` array; we
+# pick one at random. Cheap, high-impact for texture — every
+# move now reads as a moment in the room.
+func _log_arrival_beat_if_changed() -> void:
+	if _player_pos == _last_logged_pos:
+		return
+	_last_logged_pos = _player_pos
+	var sd: Dictionary = _space_def(_player_pos)
+	var arrivals: Array = sd.get("arrival_lines", [])
+	if arrivals.is_empty():
+		return
+	var line: String = String(arrivals[randi() % arrivals.size()])
+	_log_line("[color=#7c8398][i]%s[/i][/color]" % line)
+
+
+# Steamboat ladder: a unique beat at each completion-progress
+# level, fired only once per state crossing. Pulled from the
+# location's `steamboat.ladder` array (index 0 = bare hull, last
+# = finished). Falls through silently if the location doesn't
+# declare a ladder.
+func _log_steamboat_beat_if_changed() -> void:
+	if _steamboat_progress == _last_steamboat_beat:
+		return
+	_last_steamboat_beat = _steamboat_progress
+	var sb_def: Dictionary = _location.get("steamboat", {})
+	var ladder: Array = sb_def.get("ladder", [])
+	if _steamboat_progress < 0 or _steamboat_progress >= ladder.size():
+		return
+	_log_line("[color=#ff8060][i]%s[/i][/color]" % String(ladder[_steamboat_progress]))
+
+
+# Once-per-N-turns ambient line drawn from the scenario's
+# `ambient_pool`. The first run-time offset is randomised so the
+# cycle doesn't always land on the same turn numbers.
+func _log_ambient_beat_if_due() -> void:
+	var pool: Array = _setup.get("ambient_pool", [])
+	if pool.is_empty():
+		return
+	# Default every 3 turns; setup can override via ambient_every_n.
+	var n: int = int(_setup.get("ambient_every_n", 3))
+	if n < 1: n = 1
+	if ((_turn + _ambient_turn_offset) % n) != 0:
+		return
+	var line: String = String(pool[randi() % pool.size()])
+	_log_line("[color=#7c8398][i]%s[/i][/color]" % line)
+
+
+# Per-active-demon ambient line, fired once per Upkeep. Reads the
+# demon's `ambient_lines` from its action-card def. Lets the
+# demons feel like they're actually doing things between plays.
+func _log_demon_ambient_beats() -> void:
+	if _active_demons.is_empty():
+		return
+	for did in _active_demons.keys():
+		var card_id: String = "demon_" + String(did)
+		var cdef: Dictionary = _action_cards.get(card_id, {})
+		var lines: Array = cdef.get("ambient_lines", [])
+		if lines.is_empty():
+			continue
+		var line: String = String(lines[randi() % lines.size()])
+		_log_line("[color=#c8a268][i]%s[/i][/color]" % line)
+
+
+# Stagnation / doubt tier crossings — surface the new label as a
+# log line when the player's stagnation/doubt enters a new tier.
+# Tier definitions live in the setup JSON. Quiet when stats don't
+# move; loud when they do.
+func _log_pressure_tier_crossings() -> void:
+	var st_tiers: Array = _setup.get("stagnation_thresholds", [])
+	if not st_tiers.is_empty():
+		var cur_tier: int = -1
+		for i in st_tiers.size():
+			if _stagnation >= int((st_tiers[i] as Dictionary).get("level", 0)):
+				cur_tier = i
+		if cur_tier != _last_stagnation_tier and cur_tier >= 0:
+			_last_stagnation_tier = cur_tier
+			var label: String = String((st_tiers[cur_tier] as Dictionary).get("label", ""))
+			if label != "":
+				_log_line("[color=#ff8060][b]» %s[/b][/color]" % label)
+	var d_tiers: Array = _setup.get("doubt_thresholds", [])
+	if not d_tiers.is_empty():
+		var cur_d: int = -1
+		for i in d_tiers.size():
+			if _doubt >= int((d_tiers[i] as Dictionary).get("level", 0)):
+				cur_d = i
+		if cur_d != _last_doubt_tier and cur_d >= 0:
+			_last_doubt_tier = cur_d
+			var label_d: String = String((d_tiers[cur_d] as Dictionary).get("label", ""))
+			if label_d != "":
+				_log_line("[color=#ff8060][b]» %s[/b][/color]" % label_d)
 
 
 func _space_def(sid: String) -> Dictionary:
@@ -3931,11 +4079,46 @@ func _is_threshold(pos: String) -> bool:
 
 
 func _win_conditions_met() -> bool:
+	var wc: Dictionary = _setup.get("win_conditions", {})
+	# ── Magician schema ─────────────────────────────────────────
+	# Detect Magician runs by arcana id; the predicate set is
+	# different from the Fool's (no bindle, no Faith-adjacent).
+	if _arcana_id == "magician":
+		var need_pieces: int = int(wc.get("require_pieces_completed_min", 0))
+		if _pieces_completed < need_pieces:
+			return false
+		var need_connect: int = int(wc.get("require_visitors_connected_min", 0))
+		if _connections_made.size() < need_connect:
+			return false
+		var need_hard: int = int(wc.get("require_hard_mood_connections_min", 0))
+		if need_hard > 0:
+			var hard_count: int = 0
+			for cvid in _connections_made:
+				var cv_def: Dictionary = _visitors_def.get(String(cvid), {})
+				var mood: String = String(cv_def.get("mood", ""))
+				if mood == "gruff" or mood == "preoccupied" or mood == "left_alone":
+					hard_count += 1
+			if hard_count < need_hard:
+				return false
+		if _doubt >= int(wc.get("require_doubt_below", 99)):
+			return false
+		if _stagnation >= int(wc.get("require_stagnation_below", 99)):
+			return false
+		if bool(wc.get("require_steamboat_unfinished", false)):
+			if _steamboat_progress >= _steamboat_threshold:
+				return false
+		if bool(wc.get("require_cake_lit", false)):
+			if not _flags.get("cake_lit", false):
+				return false
+		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
+			return false
+		return true
+	# ── Fool schema (default) ───────────────────────────────────
 	if not _bindle_assembled:
 		return false
-	if _connections_made.size() < int(_setup.get("win_conditions", {}).get("require_visitors_connected_min", 3)):
+	if _connections_made.size() < int(wc.get("require_visitors_connected_min", 3)):
 		return false
-	if _inertia >= int(_setup.get("win_conditions", {}).get("require_inertia_below", 7)):
+	if _inertia >= int(wc.get("require_inertia_below", 7)):
 		return false
 	# Faith adjacent
 	var faith_state: Dictionary = _visitors_state.get("faith", {})
@@ -4427,14 +4610,27 @@ func _resolve_effect(e: Dictionary) -> void:
 			var sb_amt: int = int(e.get("amount", 1))
 			_steamboat_progress += sb_amt
 			_log_line("[color=#ff8060]steamboat · %d / %d[/color]" % [_steamboat_progress, _steamboat_threshold])
+			_log_steamboat_beat_if_changed()
 			if _steamboat_progress >= _steamboat_threshold:
 				_log_line("[color=#ff5040][b]The steamboat is finished. The sinkhole opens.[/b][/color]")
 				_flags["steamboat_finished"] = true
-				if _setup.get("loss_conditions", {}).get("steamboat_finished_on_easy", true) == false:
-					# Easy scenario explicitly says steamboat-finished is a loss
-					_trigger_loss("steamboat_finished_on_easy")
+				var lc: Dictionary = _setup.get("loss_conditions", {})
+				# Three loss-flavors a scenario can declare:
+				#   · steamboat_finished_on_easy:false  — SINKING FEELING
+				#   · steamboat_finished_before_end:true — WATCH PARTY
+				#   · steamboat_finished_before_cake:true — BLOW OUT
+				#     (further conditional on the cake being lit)
+				var sb_loss: bool = false
+				if lc.get("steamboat_finished_on_easy", true) == false: sb_loss = true
+				if lc.get("steamboat_finished_before_end", false): sb_loss = true
+				if lc.get("steamboat_finished_before_cake", false) and not _flags.get("cake_lit", false): sb_loss = true
+				if sb_loss:
+					_trigger_loss("steamboat_finished")
 				else:
-					# Treat as the campaign win-trigger
+					# The campaign win-trigger when the scenario allows
+					# finishing — only happens for cases that don't
+					# punish completion (currently none in the trio,
+					# but reserved for future arcs).
 					_trigger_win("steamboat_finished")
 		"steamboat_threshold_minus":
 			_steamboat_threshold = max(1, _steamboat_threshold - int(e.get("amount", 1)))
@@ -4518,6 +4714,22 @@ func _resolve_effect(e: Dictionary) -> void:
 					_inventory.pop_back()
 				_inventory.append("contents_collage")
 				_log_line("[color=#7cffb0]✦ collage piece assembled.[/color]")
+		"light_the_candles":
+			# BLOW OUT THE CANDLES win path. Sets the cake_lit flag,
+			# bumps Inspiration, drops Stagnation + Doubt. Should be
+			# played at the MAGICIAN workbench.
+			if _player_pos != "magician":
+				_log_line("[i]the cake is at the workbench. light them there.[/i]")
+			elif _flags.get("cake_lit", false):
+				_log_line("[i]the candles are already lit. let them burn down.[/i]")
+			else:
+				_flags["cake_lit"] = true
+				_inspiration += 3
+				_stagnation = max(0, _stagnation - 2)
+				_doubt = max(0, _doubt - 1)
+				_log_line("[color=#ffd07a][b]✦ the candles are lit.[/b][/color]")
+				_log_line("[color=#7c8398][i]everyone in the room turns. someone starts the song. someone takes a photo. for thirty seconds you are inside the moment instead of beside it.[/i][/color]")
+				_show_toast("Candles lit · +3 Inspiration", "#ffd07a")
 
 		_:
 			_log_line("[i](unhandled effect: %s)[/i]" % kind)
@@ -5595,6 +5807,16 @@ func _phase_action() -> void:
 			_active_demons.erase(did)
 		else:
 			_active_demons[did] = left
+	# BLOW OUT — the river-takes-the-bank loss trigger. Scenario
+	# declares `river_takes_the_bank_after_turn: N`. From turn N+1
+	# onward, if the cake hasn't been lit, the river caves the
+	# bank and the run ends.
+	var river_trigger: int = int(_setup.get("loss_conditions", {}).get("river_takes_the_bank_after_turn", 0))
+	if river_trigger > 0 and _turn > river_trigger and not _flags.get("cake_lit", false):
+		_log_line("\n[color=#ff5040][b]The river takes the bank.[/b][/color]")
+		_log_line("[color=#7c8398][i]a sound like a building giving up. you don't get the candles lit. the room ends with the water in it.[/i][/color]")
+		_trigger_loss("river_takes_the_bank")
+		return
 	# Time-of-day deadline. Each scenario's setup may declare
 	# `max_turns`; on turn N+1 the shift ends and the engine forces
 	# a win-check. THE LEAP: 14 turns by default. RUSH: 10. EVENING: 12.
@@ -6031,6 +6253,11 @@ func _phase_upkeep() -> void:
 		_log_line("[color=#7cffb0]Faith steady · -1 Inertia[/color]")
 	# Threat pieces tick during UPKEEP.
 	_tick_threats_upkeep()
+	# Atmosphere — one ambient pool beat (every N turns), one log
+	# per active demon. Quiet on turns with no demons + nothing
+	# due in the pool.
+	_log_ambient_beat_if_due()
+	_log_demon_ambient_beats()
 	# Mood-gated visitor patience. A visitor still at progress 0
 	# (never greeted) for `patience` turns since arrival stands up
 	# and leaves — counts as a self-claim. Helpers, Faith, and the

@@ -8,17 +8,13 @@
   "difficulty": "medium",
   "epigraph_upright": "Elicia is broadcasting tonight. A few people are coming over to watch with him. He is the host, mostly by virtue of having the room.",
   "epigraph_reversed": "A small social tension that gets sharper as the hour goes on. The wrong person says the wrong thing about the wrong piece. The Demon is at the bar stool already and nobody but Frasier is acting like he's there.",
-
   "scene_description": "Folding chairs out, BBS terminal patched into the cassette deck, the show is starting in forty minutes. Elicia is in the kitchen pacing. John walked over with a six of something. Mackenzie drove in for once. The critic RSVP'd. The college-acquaintance you don't quite remember texted yes. The Demon's stool got a little warmer about an hour ago. The steamboat is half-built. The cake (her birthday is technically next week but you're doing it tonight) is in the dish-station fridge.",
-
   "direction_hint": "Five pieces. Five connections, three of which have to be the harder visitors (gruff / preoccupied / left-alone). Don't finish the steamboat. The show ends at midnight; the room ends with it.",
-
   "opening_log_lines": [
     "The cathedral is busier than it has been in two weeks.",
     "Voices already, from the bay door — the show hasn't even started.",
     "Try not to let the critic find the half-built JUDGEMENT platform alone."
   ],
-
   "starting_state": {
     "player_pos": "magician",
     "time": 6,
@@ -32,21 +28,63 @@
     "doubt": 1,
     "doubt_max": 7,
     "inspiration": 0,
-    "starting_hand": ["walk", "focus", "search", "short_rest", "draft", "burn", "record", "tune"]
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "draft",
+      "burn",
+      "record",
+      "tune"
+    ]
   },
-
-  "visitors_present_at_start": ["the_birdwatcher", "the_drifter"],
-  "visitor_schedule": [
-    {"visitor": "elicia",              "arrival_turn": 1, "arrival_space": "priestess"},
-    {"visitor": "john_frank",          "arrival_turn": 2, "arrival_space": "fool"},
-    {"visitor": "mackenzie_in_person", "arrival_turn": 3, "arrival_space": "hermit"},
-    {"visitor": "the_critic",          "arrival_turn": 4, "arrival_space": "warehouse_bay"},
-    {"visitor": "the_college_friend",  "arrival_turn": 4, "arrival_space": "warehouse_bay"},
-    {"visitor": "the_superfan",        "arrival_turn": 5, "arrival_space": "warehouse_bay"},
-    {"visitor": "nicola",              "arrival_turn": 6, "arrival_space": "empress"},
-    {"visitor": "the_demon",           "arrival_turn": 7, "arrival_space": "devil"}
+  "visitors_present_at_start": [
+    "the_birdwatcher",
+    "the_drifter"
   ],
-
+  "visitor_schedule": [
+    {
+      "visitor": "elicia",
+      "arrival_turn": 1,
+      "arrival_space": "priestess"
+    },
+    {
+      "visitor": "john_frank",
+      "arrival_turn": 2,
+      "arrival_space": "fool"
+    },
+    {
+      "visitor": "mackenzie_in_person",
+      "arrival_turn": 3,
+      "arrival_space": "hermit"
+    },
+    {
+      "visitor": "the_critic",
+      "arrival_turn": 4,
+      "arrival_space": "warehouse_bay"
+    },
+    {
+      "visitor": "the_college_friend",
+      "arrival_turn": 4,
+      "arrival_space": "warehouse_bay"
+    },
+    {
+      "visitor": "the_superfan",
+      "arrival_turn": 5,
+      "arrival_space": "warehouse_bay"
+    },
+    {
+      "visitor": "nicola",
+      "arrival_turn": 6,
+      "arrival_space": "empress"
+    },
+    {
+      "visitor": "the_demon",
+      "arrival_turn": 7,
+      "arrival_space": "devil"
+    }
+  ],
   "win_conditions": {
     "require_pieces_completed_min": 5,
     "require_visitors_connected_min": 5,
@@ -56,44 +94,121 @@
     "require_threshold_space": true,
     "require_steamboat_unfinished": true
   },
-
   "loss_conditions": {
     "stagnation_max": 12,
     "doubt_max": 7,
     "visitors_claimed_max": 5,
     "steamboat_finished_before_end": true
   },
-
   "stagnation_thresholds": [
-    {"level": 0,  "label": "the room is louder than usual",       "tick_per_turn": 1, "effects": []},
-    {"level": 3,  "label": "someone is monologuing again",        "tick_per_turn": 1, "effects": []},
-    {"level": 6,  "label": "the critic has Opinions",             "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
-    {"level": 8,  "label": "two conversations have crossed",      "tick_per_turn": 1, "effects": ["unfinish_random_piece"]},
-    {"level": 10, "label": "someone is crying in the bathroom",   "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
-    {"level": 12, "label": "the party turned",                    "tick_per_turn": 1, "effects": ["reveal_stagnation_finale"]}
+    {
+      "level": 0,
+      "label": "the room is louder than usual",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 3,
+      "label": "someone is monologuing again",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 6,
+      "label": "the critic has Opinions",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 8,
+      "label": "two conversations have crossed",
+      "tick_per_turn": 1,
+      "effects": [
+        "unfinish_random_piece"
+      ]
+    },
+    {
+      "level": 10,
+      "label": "someone is crying in the bathroom",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 12,
+      "label": "the party turned",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_stagnation_finale"
+      ]
+    }
   ],
-
   "doubt_thresholds": [
-    {"level": 0, "label": "host face on",                    "effects": []},
-    {"level": 3, "label": "is the work too small for them",  "effects": []},
-    {"level": 5, "label": "they're not getting it",          "effects": ["draft_cost_plus_1"]},
-    {"level": 7, "label": "the host breaks",                 "effects": ["reveal_doubt_finale"]}
+    {
+      "level": 0,
+      "label": "host face on",
+      "effects": []
+    },
+    {
+      "level": 3,
+      "label": "is the work too small for them",
+      "effects": []
+    },
+    {
+      "level": 5,
+      "label": "they're not getting it",
+      "effects": [
+        "draft_cost_plus_1"
+      ]
+    },
+    {
+      "level": 7,
+      "label": "the host breaks",
+      "effects": [
+        "reveal_doubt_finale"
+      ]
+    }
   ],
-
   "claim_turns_to_consume": 3,
-
   "thresholds": [
-    {"id": "warehouse_bay", "label": "WAREHOUSE BAY", "ending_lore_token": "leap_into_after_the_show",   "visible_from_start": true},
-    {"id": "river_window",  "label": "RIVER WINDOW",  "ending_lore_token": "leap_into_the_river",         "visible_from_start": true},
-    {"id": "roof_hatch",    "label": "ROOF HATCH",    "ending_lore_token": "leap_into_the_open_sky",      "visible_from_start": false,
-     "appears_when": "pieces_completed_min:4"}
+    {
+      "id": "warehouse_bay",
+      "label": "WAREHOUSE BAY",
+      "ending_lore_token": "leap_into_after_the_show",
+      "visible_from_start": true
+    },
+    {
+      "id": "river_window",
+      "label": "RIVER WINDOW",
+      "ending_lore_token": "leap_into_the_river",
+      "visible_from_start": true
+    },
+    {
+      "id": "roof_hatch",
+      "label": "ROOF HATCH",
+      "ending_lore_token": "leap_into_the_open_sky",
+      "visible_from_start": false,
+      "appears_when": "pieces_completed_min:4"
+    }
   ],
-
   "sealed_arcanas_at_start": [
-    "wheel", "hanged_man", "judgement", "world"
+    "wheel",
+    "hanged_man",
+    "judgement",
+    "world"
   ],
-
   "max_turns": 10,
-
-  "notes": "Medium-mode. Pomegranate-Hour-watch-party setup — arty-farty themed, nerdy refs, three friendly visitors + three crashers (the critic, the college-friend, the superfan) + the Demon arriving mid-event. Connect-min raised to 5 with a sub-requirement that 3 of them be the hard moods (gruff / preoccupied / left_alone). Only four arcanas sealed at start (the test-area outer cluster's hardest ones); inner cluster all walkable from turn 1 because the party uses them. Steamboat-finishing is now an outright loss-trigger — broadcasting the boat's completion mid-show summons the sinkhole live."
+  "notes": "Medium-mode. Pomegranate-Hour-watch-party setup — arty-farty themed, nerdy refs, three friendly visitors + three crashers (the critic, the college-friend, the superfan) + the Demon arriving mid-event. Connect-min raised to 5 with a sub-requirement that 3 of them be the hard moods (gruff / preoccupied / left_alone). Only four arcanas sealed at start (the test-area outer cluster's hardest ones); inner cluster all walkable from turn 1 because the party uses them. Steamboat-finishing is now an outright loss-trigger — broadcasting the boat's completion mid-show summons the sinkhole live.",
+  "ambient_pool": [
+    "the show streams from the cassette deck. Elicia's voice, recorded, with you.",
+    "two conversations have crossed at the wheel-station.",
+    "someone is laughing too hard at something nobody else heard.",
+    "the critic is over by JUDGEMENT. don't look.",
+    "the superfan is whispering along to a passage.",
+    "outside, the river goes by at the rate it has gone by for fifty years."
+  ],
+  "ambient_every_n": 3
 }
