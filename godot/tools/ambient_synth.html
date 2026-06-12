@@ -532,14 +532,46 @@ window.addEventListener('gamepadinput-button', e => {
     if (live) { stopLive(); startLive(); }
     return;
   }
-  // Strum toggles live playback — makes the strum bar feel like the
-  // tool's start/stop, the way you'd use it on a real instrument.
-  // Preset cycling moved to the preset row above (or arrow keys when
-  // the page has focus).
+  // Strum fires a one-shot accent — a brief chord-pad note over the
+  // ambient bed. Pitch is the deep voice's freq for the current
+  // preset (whatever's playing). Behaves like plucking on top of the
+  // drone, not like a play/stop switch.
   if (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown) {
-    if (live) stopLive(); else startLive();
+    strumAccent();
   }
 });
+
+// Play a short tonal accent over the ambient bed. Uses the current
+// preset's deep-voice frequency (so the accent sits in the bed's
+// register) with a quick attack + medium decay envelope. If the
+// ambient bed isn't live, this still fires — single shot, dry.
+function strumAccent() {
+  const ac = liveAc || new (window.AudioContext || window.webkitAudioContext)();
+  const master = liveAc ? liveAc._master : (() => {
+    const g = ac.createGain();
+    g.gain.value = parseInt(masterEl.value) / 100;
+    g.connect(ac.destination);
+    return g;
+  })();
+  const deep = current.voices[0] || { freq: 110, wave: 'sine', filt: 1200 };
+  const osc = ac.createOscillator();
+  osc.type = deep.wave === 'noise' ? 'sine' : deep.wave;
+  // Bump up an octave so the accent reads as a note, not part of the bed
+  osc.frequency.value = deep.freq * 2;
+  const filt = ac.createBiquadFilter();
+  filt.type = 'lowpass';
+  filt.frequency.value = Math.min(8000, deep.filt * 2);
+  filt.Q.value = 0.8;
+  const env = ac.createGain();
+  env.gain.value = 0;
+  osc.connect(filt); filt.connect(env); env.connect(master);
+  const now = ac.currentTime;
+  env.gain.setValueAtTime(0, now);
+  env.gain.linearRampToValueAtTime(0.35, now + 0.02);
+  env.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
+  osc.start(now);
+  osc.stop(now + 1.1);
+}
 window.addEventListener('gamepadinput-axis', e => {
   if (e.detail.idx === gp.mapping.whammy) {
     const v = Math.abs(e.detail.value);

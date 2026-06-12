@@ -318,6 +318,8 @@
     <button id="stop">■ STOP</button>
     <button id="clear">⌫ CLEAR</button>
     <button id="chord-mode" title="When on: gamepad frets accumulate into a held chord, strum plays it.">♪ CHORD: OFF</button>
+    <button id="play-mode" title="CARD: each fret = a card direct trigger. SCALE: frets play scale degrees on the active card's timbre.">▤ MODE: CARD</button>
+    <button id="help-btn" title="Show / hide the controls cheatsheet">?</button>
     <div class="group">
       <label>BPM</label>
       <input type="range" id="bpm" min="40" max="200" value="92">
@@ -353,6 +355,33 @@
   </div>
 
   <div class="drop-hint" id="drop-hint">DROP PNG ON A CARD TO SWAP</div>
+
+  <div id="help-panel" style="
+    display:none;
+    position:fixed; top: 80px; left: 50%; transform: translateX(-50%);
+    background:#0e0908; color:#c8a878;
+    border:1px solid #d8a060;
+    padding:16px 22px; max-width:600px;
+    font-family:inherit; font-size:12px; line-height: 1.55;
+    z-index: 200;">
+    <div style="color:#ffd896;font-weight:bold;letter-spacing:0.12em;margin-bottom:8px;">CONTROLS · CHEATSHEET</div>
+    <div style="color:#d8a060;letter-spacing:0.08em;margin-top:6px;">MOUSE / KEYBOARD</div>
+    <div>· Click a card or press its key (1-6, 7-8, q-r, t-y, u-i, o-p, a-s, d-f) to trigger it.</div>
+    <div>· Click a sequencer step to place the last-played card there. Space = play/stop the sequencer.</div>
+    <div>· Click the four bank tabs to switch palette (DINER · CATHEDRAL · RIVERBOAT · PASTORAL).</div>
+    <div style="color:#d8a060;letter-spacing:0.08em;margin-top:10px;">RIFFMASTER (PS5 GUITAR)</div>
+    <div>· <b>MODE: CARD</b> — main frets 1-5 trigger the active bank's first 5 cards; solo frets 6-10 trigger cards 5-9.</div>
+    <div>· <b>MODE: SCALE</b> — main frets 1-5 play scale degrees 1, 2, 3, 4, 5 of the current scale; solo frets shift +1 octave. Active-card's timbre is used.</div>
+    <div>· <b>CHORD: ON</b> (either mode) — frets accumulate while held; strum plays them all at once.</div>
+    <div>· <b>Strum</b> (any mode, no held frets) — re-triggers whatever was last played.</div>
+    <div>· <b>Whammy</b> — scales master volume up from 30% (rest) to 100% (held back).</div>
+    <div style="color:#d8a060;letter-spacing:0.08em;margin-top:10px;">BANK CHORD DEGREES (used in CHORD mode)</div>
+    <div>· Diner     — [0, 4, 7, 10, 14] maj7+9 (warm/blues)</div>
+    <div>· Cathedral — [0, 3, 7, 10, 13] min7+♭9 (rust-noir)</div>
+    <div>· Riverboat — [0, 4, 7, 9, 14]  maj6+9 (brass-open)</div>
+    <div>· Pastoral  — [0, 2, 7, 9, 14]  sus2+6+9 (pastoral)</div>
+    <div style="margin-top:12px;color:#7a5828;font-style:italic;">Press <b>?</b> or click the [?] button again to close.</div>
+  </div>
 
 <script src="gamepad_input.js"></script>
 <script>
@@ -984,6 +1013,50 @@ function setChordMode(on) {
 }
 chordBtn.addEventListener('click', () => setChordMode(!chordMode));
 
+// ── Play mode: CARD vs SCALE ────────────────────────────────────
+// CARD  — each fret triggers a card directly (a glockenspiel layout).
+// SCALE — frets play scale degrees on the active card's timbre, so
+//         the same card is repitched across the neck. The "active
+//         card" is whatever was last clicked or played.
+let playMode = 'CARD';
+const playModeBtn = document.getElementById('play-mode');
+function setPlayMode(m) {
+  playMode = m;
+  playModeBtn.textContent = '▤ MODE: ' + m;
+  playModeBtn.classList.toggle('active', m === 'SCALE');
+}
+playModeBtn.addEventListener('click', () => setPlayMode(playMode === 'CARD' ? 'SCALE' : 'CARD'));
+
+// Scale-mode trigger: take the active card's timbre and play it at
+// `root + scale[degree]` semitones. Used by frets 0-9 in SCALE mode
+// (frets 0-4 = degrees 0-4, frets 5-9 = same degrees +12 semis).
+function playScaleDegree(degree) {
+  const scaleName = document.getElementById('scale').value;
+  const scaleArr = SCALES[scaleName] || SCALES.phrygian;
+  const baseIdx  = degree % 5;
+  const octShift = (degree >= 5) ? 12 : 0;
+  const semi     = (scaleArr[baseIdx] !== undefined) ? scaleArr[baseIdx] : 0;
+  const card = activeArcana()[selectedCard] || activeArcana()[0];
+  const timbre = card[4];
+  const root = parseInt(document.getElementById('root').value);
+  const midi = scaleSnap(root + semi + octShift);
+  const vel  = parseInt(document.getElementById('vol').value) / 100;
+  trigger(timbre, midi, vel);
+  document.getElementById('now-playing').textContent =
+    '▶ deg ' + (baseIdx + 1) + (octShift ? '↑' : '') + ' · ' + card[1] + ' · ' + timbre;
+}
+
+// ── Help panel ────────────────────────────────────────────────────
+const helpBtn = document.getElementById('help-btn');
+const helpPanel = document.getElementById('help-panel');
+function toggleHelp() {
+  helpPanel.style.display = (helpPanel.style.display === 'none' || !helpPanel.style.display) ? 'block' : 'none';
+}
+helpBtn.addEventListener('click', toggleHelp);
+window.addEventListener('keydown', e => {
+  if (e.key === '?') { e.preventDefault(); toggleHelp(); }
+});
+
 function refreshChordStatus() {
   if (!chordMode) {
     document.getElementById('status').textContent =
@@ -1045,8 +1118,20 @@ window.addEventListener('gamepadinput-button', e => {
     return;
   }
 
-  // Single-fret mode (original behavior). Only act on press edges.
+  // Single-fret mode (chord mode is OFF). Only act on press edges.
   if (!e.detail.pressed) return;
+  // SCALE play-mode: every fret is a scale degree on the active
+  // card's timbre. Active card stays whatever was last clicked /
+  // keyboard-triggered, so click a card first to pick a timbre.
+  if (playMode === 'SCALE') {
+    if (fretIdx >= 0)            { playScaleDegree(fretIdx); return; }
+    if (soloIdx >= 0)            { playScaleDegree(soloIdx + 5); return; }
+    // Strum in SCALE mode re-triggers the last scale degree at the
+    // current root — useful for repeated picking.
+    if (isStrum)                 { playScaleDegree(0); return; }
+    return;
+  }
+  // CARD play-mode (default): fret = direct card trigger.
   if (fretIdx >= 0 && fretIdx < activeArcana().length) {
     playCard(fretIdx);
     return;
@@ -1055,10 +1140,8 @@ window.addEventListener('gamepadinput-button', e => {
     playCard(soloIdx + 5);
     return;
   }
-  // Strum in single-fret mode re-triggers the last card so you can
-  // strum-strum-strum on whatever fret you just pressed. Bank cycling
-  // used to live here but it made strum look like menu navigation;
-  // banks are switched via the tabs above (or Tab on the keyboard).
+  // Strum re-triggers the last card so strum-strum-strum on a single
+  // fret = a repeating note.
   if (isStrum && selectedCard !== null && selectedCard !== undefined) {
     playCard(selectedCard);
   }
