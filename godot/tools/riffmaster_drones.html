@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RIFFMASTER DRONES · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald-hi: #a8e89c; --burgundy: #7a1e26;
+    --rust: #c87633;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100vh; overflow: hidden;
+    background: var(--bg-0); color: var(--text);
+    font-family: "Courier New", monospace;
+  }
+  body { display: grid; grid-template-rows: auto auto 1fr auto; }
+  header { padding: 12px 20px; border-bottom: 1px solid var(--rule); }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header .sub { color: var(--text-dim); font-size: 11px; font-style: italic; margin-top: 2px; }
+  header .audio-state { margin-left: 12px; font-size: 11px; color: #c64a3a; }
+  header .audio-state.running { color: var(--emerald-hi); }
+
+  .presets {
+    padding: 8px 20px; border-bottom: 1px solid var(--rule);
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .preset {
+    background: transparent; color: var(--text-dim);
+    border: 1px solid var(--rule);
+    padding: 4px 12px; font-family: inherit; font-size: 11px;
+    cursor: pointer; letter-spacing: 0.10em;
+  }
+  .preset:hover { color: var(--gold-hi); border-color: var(--gold); }
+  .preset.active { background: var(--ink); color: var(--gold-hi); border-color: var(--gold); }
+
+  .voices {
+    padding: 14px 20px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    overflow: hidden;
+  }
+  .voice {
+    border: 1px solid var(--rule);
+    background: linear-gradient(180deg, var(--bg-1) 0%, var(--ink) 100%);
+    padding: 10px 8px;
+    cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; user-select: none;
+    transition: border-color 100ms ease-out, background 100ms ease-out;
+    position: relative;
+  }
+  .voice .interval { color: var(--gold-hi); font-size: 16px; letter-spacing: 0.10em; }
+  .voice .nname { color: var(--gold); font-size: 11px; margin-top: 4px; }
+  .voice .freq { color: var(--text-dim); font-size: 9px; margin-top: 2px; }
+  .voice.on {
+    background: linear-gradient(180deg, var(--ink) 0%, #2a1a08 100%);
+    border-color: var(--rust);
+    box-shadow: inset 0 0 18px rgba(216, 160, 96, 0.35);
+  }
+  .voice.on .interval { color: var(--gold-hi); }
+  .voice.on::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold-hi);
+  }
+
+  .transport {
+    padding: 10px 20px; border-top: 1px solid var(--rule);
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    font-size: 11px; color: var(--text-dim);
+  }
+  .transport label { letter-spacing: 0.08em; }
+  .transport input[type="range"] { width: 100px; padding: 0; }
+  .transport select {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule);
+    padding: 2px 6px; font-family: inherit; font-size: 11px;
+  }
+  .transport button {
+    background: var(--ink); color: var(--gold); border: 1px solid var(--rule);
+    padding: 5px 14px; font-family: inherit; font-size: 11px;
+    letter-spacing: 0.12em; cursor: pointer;
+  }
+  .transport button:hover { color: var(--gold-hi); border-color: var(--gold-hi); }
+  .transport .info {
+    margin-left: auto;
+    color: var(--gold-hi); font-size: 11px;
+    min-width: 200px; text-align: right;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>RIFFMASTER DRONES · POLYPHONIC HARMONIC LAYERER</h1>
+    <div class="sub">Each fret toggles a harmonic voice on/off. Build up the cathedral by adding voices; strum clears them all. Whammy = master filter sweep. Voices sustain as long as they're on. <span class="audio-state" id="audio-state">AUDIO: OFF · click anywhere</span></div>
+  </header>
+
+  <div class="presets" id="presets"></div>
+
+  <div class="voices" id="voices"></div>
+
+  <div class="transport">
+    <label>ROOT</label>
+    <select id="root">
+      <option value="21">A1 (low)</option>
+      <option value="26" selected>D2</option>
+      <option value="28">E2</option>
+      <option value="33">A2</option>
+      <option value="38">D3</option>
+    </select>
+    <label>FILTER</label>
+    <input type="range" id="filter" min="200" max="6000" value="2400">
+    <label>SHIMMER</label>
+    <input type="range" id="shimmer" min="0" max="30" value="8">
+    <span id="shimmer-val" style="color:var(--gold-hi);">8¢</span>
+    <label>VOL</label>
+    <input type="range" id="vol" min="0" max="100" value="50">
+    <button id="clear-all">⌫ SILENCE</button>
+    <div class="info" id="info">— · 0 voices ringing</div>
+  </div>
+
+<script src="gamepad_input.js"></script>
+<script>
+"use strict";
+
+// ── 10 harmonic intervals (semitones from root) ──────────────────
+// Built so the 5 main frets give a usable consonant stack, and the
+// 5 solo frets add chromatic and extended-color voices.
+const INTERVALS = [
+  { semi: 0,   label: "1",   role: "root" },
+  { semi: 7,   label: "5",   role: "fifth" },
+  { semi: 12,  label: "8",   role: "octave" },
+  { semi: 16,  label: "3↑",  role: "major 3rd up" },
+  { semi: 19,  label: "5↑",  role: "fifth up" },
+  { semi: 3,   label: "♭3",  role: "minor 3rd" },
+  { semi: 10,  label: "♭7",  role: "minor 7th" },
+  { semi: 14,  label: "9",   role: "ninth" },
+  { semi: 17,  label: "11",  role: "eleventh" },
+  { semi: 24,  label: "8↑",  role: "octave up" },
+];
+
+const PRESETS = [
+  { id: "sine_pad",    name: "Sine Pad",     wave: "sine",      filt: 2400, voices: 1 },
+  { id: "triangle",    name: "Triangle",     wave: "triangle",  filt: 2200, voices: 1 },
+  { id: "saw_pad",     name: "Saw Pad",      wave: "sawtooth",  filt: 1500, voices: 2 },
+  { id: "organ",       name: "Organ",        wave: "sine",      filt: 3200, voices: 1, harmonics: [1, 2] },
+  { id: "cathedral",   name: "Cathedral",    wave: "triangle",  filt: 1800, voices: 2, harmonics: [1, 1.5] },
+  { id: "shimmer",     name: "Shimmer",      wave: "sine",      filt: 4400, voices: 3 },
+];
+let activePresetIdx = 0;
+
+function midiToFreq(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+function midiNoteName(midi) {
+  const N = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  return N[((midi % 12) + 12) % 12] + (Math.floor(midi / 12) - 1);
+}
+
+// ── Audio engine — persistent per-fret voice nodes ───────────────
+let ac = null, master = null, masterFilt = null, analyser = null;
+const activeVoices = new Map();   // fret idx → { oscs[], env }
+
+function ensureAudio() {
+  if (ac) {
+    if (ac.state === 'suspended') ac.resume().catch(() => {});
+    return;
+  }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === 'suspended') ac.resume().catch(() => {});
+  master = ac.createGain();
+  master.gain.value = parseInt(document.getElementById('vol').value) / 100;
+  masterFilt = ac.createBiquadFilter();
+  masterFilt.type = 'lowpass';
+  masterFilt.frequency.value = parseInt(document.getElementById('filter').value);
+  masterFilt.Q.value = 0.7;
+  analyser = ac.createAnalyser();
+  analyser.fftSize = 1024;
+  master.connect(masterFilt); masterFilt.connect(analyser); analyser.connect(ac.destination);
+  ac.addEventListener('statechange', refreshAudioState);
+  refreshAudioState();
+}
+function refreshAudioState() {
+  const el = document.getElementById('audio-state');
+  if (!ac) { el.textContent = 'AUDIO: OFF · click anywhere'; el.className = 'audio-state'; return; }
+  if (ac.state === 'running') { el.textContent = 'AUDIO: RUNNING'; el.className = 'audio-state running'; return; }
+  if (ac.state === 'suspended') { el.textContent = 'AUDIO: SUSPENDED · click'; el.className = 'audio-state'; return; }
+  el.textContent = 'AUDIO: ' + ac.state.toUpperCase();
+}
+
+function startVoice(fretIdx) {
+  ensureAudio();
+  if (!ac) return;
+  if (activeVoices.has(fretIdx)) return;   // already on
+  const p = PRESETS[activePresetIdx];
+  const root = parseInt(document.getElementById('root').value);
+  const midi = root + INTERVALS[fretIdx].semi;
+  const baseFreq = midiToFreq(midi);
+  const env = ac.createGain();
+  env.gain.value = 0;
+  env.connect(master);
+  const oscs = [];
+  const harmonics = p.harmonics || [1];
+  const detuneSpread = parseInt(document.getElementById('shimmer').value);
+  for (let v = 0; v < p.voices; v++) {
+    for (const h of harmonics) {
+      const o = ac.createOscillator();
+      o.type = p.wave;
+      o.frequency.value = baseFreq * h;
+      o.detune.value = (v - (p.voices - 1) / 2) * detuneSpread;
+      o.connect(env);
+      o.start();
+      oscs.push(o);
+    }
+  }
+  // Smooth attack — drone style
+  const now = ac.currentTime;
+  const targetGain = 0.10;
+  env.gain.setValueAtTime(0, now);
+  env.gain.linearRampToValueAtTime(targetGain, now + 0.40);
+  activeVoices.set(fretIdx, { oscs, env, midi });
+  refreshVoiceUI();
+  refreshInfo();
+}
+
+function stopVoice(fretIdx) {
+  const v = activeVoices.get(fretIdx);
+  if (!v) return;
+  const now = ac.currentTime;
+  v.env.gain.cancelScheduledValues(now);
+  v.env.gain.setValueAtTime(v.env.gain.value, now);
+  v.env.gain.linearRampToValueAtTime(0, now + 0.45);
+  // Stop oscillators after release tail
+  setTimeout(() => v.oscs.forEach(o => { try { o.stop(); } catch (e) {} }), 600);
+  activeVoices.delete(fretIdx);
+  refreshVoiceUI();
+  refreshInfo();
+}
+
+function toggleVoice(fretIdx) {
+  if (activeVoices.has(fretIdx)) stopVoice(fretIdx);
+  else startVoice(fretIdx);
+}
+
+function silenceAll() {
+  for (const idx of [...activeVoices.keys()]) stopVoice(idx);
+}
+
+// ── UI ────────────────────────────────────────────────────────────
+const presetsEl = document.getElementById('presets');
+PRESETS.forEach((p, i) => {
+  const b = document.createElement('button');
+  b.className = 'preset' + (i === 0 ? ' active' : '');
+  b.textContent = p.name;
+  b.addEventListener('click', () => {
+    // Switching preset rebuilds any active voices with the new patch.
+    const wasActive = new Set(activeVoices.keys());
+    silenceAll();
+    activePresetIdx = i;
+    document.querySelectorAll('.preset').forEach((x, j) => x.classList.toggle('active', j === i));
+    setTimeout(() => wasActive.forEach(idx => startVoice(idx)), 50);
+  });
+  presetsEl.appendChild(b);
+});
+
+const voicesEl = document.getElementById('voices');
+function buildVoiceUI() {
+  voicesEl.innerHTML = '';
+  const root = parseInt(document.getElementById('root').value);
+  INTERVALS.forEach((iv, i) => {
+    const el = document.createElement('div');
+    el.className = 'voice';
+    const midi = root + iv.semi;
+    const freq = midiToFreq(midi);
+    el.innerHTML = `
+      <div class="interval">${iv.label}</div>
+      <div class="nname">${midiNoteName(midi)}</div>
+      <div class="freq">${freq.toFixed(1)} Hz</div>
+    `;
+    el.title = iv.role + ' · +' + iv.semi + ' semis from root';
+    el.addEventListener('mousedown', () => toggleVoice(i));
+    voicesEl.appendChild(el);
+  });
+}
+buildVoiceUI();
+function refreshVoiceUI() {
+  for (let i = 0; i < voicesEl.children.length; i++) {
+    voicesEl.children[i].classList.toggle('on', activeVoices.has(i));
+  }
+}
+function refreshInfo() {
+  const root = parseInt(document.getElementById('root').value);
+  const root_name = midiNoteName(root);
+  document.getElementById('info').textContent =
+    root_name + ' · ' + activeVoices.size + ' voice' + (activeVoices.size === 1 ? '' : 's') + ' ringing';
+}
+refreshInfo();
+
+document.getElementById('vol').addEventListener('input', e => {
+  if (master) master.gain.setTargetAtTime(parseInt(e.target.value) / 100, ac.currentTime, 0.02);
+});
+document.getElementById('filter').addEventListener('input', e => {
+  if (masterFilt) masterFilt.frequency.setTargetAtTime(parseInt(e.target.value), ac.currentTime, 0.02);
+});
+document.getElementById('shimmer').addEventListener('input', e => {
+  document.getElementById('shimmer-val').textContent = e.target.value + '¢';
+});
+document.getElementById('root').addEventListener('change', () => {
+  // Re-pitch any active voices to the new root.
+  const wasActive = new Set(activeVoices.keys());
+  silenceAll();
+  buildVoiceUI();
+  setTimeout(() => wasActive.forEach(idx => startVoice(idx)), 50);
+  refreshInfo();
+});
+document.getElementById('clear-all').addEventListener('click', silenceAll);
+
+// ── Riffmaster routing ───────────────────────────────────────────
+const gp = new GamepadInput();
+gp.start();
+mountGamepadOverlay(gp);
+[0, 1, 2, 4, 5, 6, 7].forEach(axIdx => {
+  if (axIdx !== gp.mapping.whammy) bindStrumAxis(gp, axIdx);
+});
+window.addEventListener('gamepadinput-connected', ensureAudio);
+window.addEventListener('gamepadinput-button', e => {
+  ensureAudio();
+  const m = gp.mapping;
+  const fretIdx = m.frets.indexOf(e.detail.idx);
+  const soloIdx = m.soloFrets.indexOf(e.detail.idx);
+  const anyFret = (fretIdx >= 0) ? fretIdx : (soloIdx >= 0 ? soloIdx + 5 : -1);
+  const isStrum = (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown);
+  if (anyFret >= 0 && e.detail.pressed) {
+    toggleVoice(anyFret);
+    return;
+  }
+  if (isStrum && e.detail.pressed) silenceAll();
+});
+
+// Whammy → master filter cutoff
+let whammyRest = null;
+window.addEventListener('gamepadinput-axis', e => {
+  if (e.detail.idx === gp.mapping.whammy) {
+    if (whammyRest === null) whammyRest = e.detail.value;
+    const delta = Math.abs(e.detail.value - whammyRest);
+    const cutoff = Math.max(200, 6000 - delta * 5400);   // pull = darker
+    if (masterFilt) masterFilt.frequency.setTargetAtTime(cutoff, ac.currentTime, 0.03);
+    document.getElementById('filter').value = Math.round(cutoff);
+  }
+});
+
+['pointerdown','keydown','touchstart','click'].forEach(ev =>
+  document.addEventListener(ev, ensureAudio, { capture: true })
+);
+</script>
+</body>
+</html>
