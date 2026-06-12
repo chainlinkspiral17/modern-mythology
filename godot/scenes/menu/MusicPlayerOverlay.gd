@@ -125,9 +125,14 @@ var _track_buttons: Dictionary = {}
 var _now_lbl:       Label  = null
 var _play_btn:      Button = null
 var _skin_menu_btn: MenuButton = null
+var _viz_menu_btn:  MenuButton = null
 var _viz_host:      Control = null
+var _viz:           Control = null
 var _catalog:       Array  = []
 var _built:         bool   = false
+
+
+const _VizScene := preload("res://scenes/menu/MusicVisualizer.gd")
 
 
 func open() -> void:
@@ -215,6 +220,14 @@ func _build() -> void:
 	_populate_skin_menu()
 	header_row.add_child(_skin_menu_btn)
 
+	# Visualizer dropdown — same shape as skin, scoped to viz modes.
+	_viz_menu_btn = MenuButton.new()
+	_viz_menu_btn.text = "VIZ ▾"
+	_viz_menu_btn.custom_minimum_size = Vector2(72, 32)
+	_apply_font_btn(_viz_menu_btn, _skin["label_font"], _skin["label_size"], _skin["accent"])
+	_populate_viz_menu()
+	header_row.add_child(_viz_menu_btn)
+
 	var close_btn := Button.new()
 	close_btn.text = "✕"
 	close_btn.custom_minimum_size = Vector2(32, 32)
@@ -223,13 +236,18 @@ func _build() -> void:
 
 	outer.add_child(_rule())
 
-	# Visualizer host (above NOW PLAYING) — empty for now, populated
-	# by a follow-up pass. Sized to 64px tall so the layout already
-	# reserves the space.
+	# Visualizer host (above NOW PLAYING) — instantiate the visualizer
+	# Control inline, drive its mode via Settings.music_viz (filtered
+	# to unlocked viz modes).
 	_viz_host = Control.new()
 	_viz_host.custom_minimum_size = Vector2(0, 64)
 	_viz_host.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	outer.add_child(_viz_host)
+	_viz = _VizScene.new()
+	_viz.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_viz.set_colors(_skin["accent"], _skin["dim"], _skin["txt"])
+	_viz.set_mode(_resolve_active_viz_id())
+	_viz_host.add_child(_viz)
 
 	# Now Playing row
 	var np_row := HBoxContainer.new()
@@ -384,6 +402,51 @@ func _on_skin_picked(id: int) -> void:
 		return
 	Settings.music_skin = String(picked["id"])
 	open()  # rebuild with the new skin
+
+
+# ── Visualizer dropdown + resolution ─────────────────────────────────
+# The available visualizers and their unlock criteria live on the
+# MusicVisualizer class itself, so the dropdown stays in sync with
+# whatever modes the visualizer knows how to draw.
+func _resolve_active_viz_id() -> String:
+	var want: String = Settings.music_viz
+	for v: Dictionary in _VizScene.VIZ:
+		if v["id"] == want and _VizScene.viz_unlocked(v):
+			return String(v["id"])
+	return String((_VizScene.VIZ[0] as Dictionary)["id"])
+
+
+func _populate_viz_menu() -> void:
+	var pop: PopupMenu = _viz_menu_btn.get_popup()
+	pop.clear()
+	var active: String = String(_viz.mode) if _viz != null else _resolve_active_viz_id()
+	var locked: int = 0
+	for i in _VizScene.VIZ.size():
+		var v: Dictionary = _VizScene.VIZ[i]
+		if _VizScene.viz_unlocked(v):
+			var marker: String = "• " if v["id"] == active else "  "
+			pop.add_item(marker + String(v["name"]), i)
+		else:
+			locked += 1
+	if locked > 0:
+		pop.add_separator()
+		var locked_idx: int = pop.item_count
+		pop.add_item("(%d locked)" % locked, 9999)
+		pop.set_item_disabled(locked_idx, true)
+	if not pop.id_pressed.is_connected(_on_viz_picked):
+		pop.id_pressed.connect(_on_viz_picked)
+
+
+func _on_viz_picked(id: int) -> void:
+	if id < 0 or id >= _VizScene.VIZ.size():
+		return
+	var picked: Dictionary = _VizScene.VIZ[id]
+	if not _VizScene.viz_unlocked(picked):
+		return
+	Settings.music_viz = String(picked["id"])
+	if _viz != null:
+		_viz.set_mode(String(picked["id"]))
+	_populate_viz_menu()  # refresh the • marker
 
 
 func _refresh() -> void:
