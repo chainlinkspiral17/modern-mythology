@@ -317,6 +317,7 @@
     <button id="play">▶ PLAY</button>
     <button id="stop">■ STOP</button>
     <button id="clear">⌫ CLEAR</button>
+    <button id="chord-mode" title="When on: gamepad frets accumulate into a held chord, strum plays it.">♪ CHORD: OFF</button>
     <div class="group">
       <label>BPM</label>
       <input type="range" id="bpm" min="40" max="200" value="92">
@@ -911,6 +912,9 @@ function switchBank(id) {
       stepEl.appendChild(mini);
     }
   }
+  // Chord status (if chord mode is on) reads its degree labels from
+  // the new bank's set.
+  if (typeof refreshChordStatus === 'function') refreshChordStatus();
 }
 document.querySelectorAll('.bank-tab').forEach(btn => {
   btn.addEventListener('click', () => switchBank(btn.dataset.bank));
@@ -933,37 +937,121 @@ window.addEventListener('drop', e => {
 document.body.addEventListener('click', () => { initAudio(); if (ac && ac.state==='suspended') ac.resume(); }, {once:true});
 
 // ── Riffmaster / gamepad input ────────────────────────────────────
-// Frets (buttons 0-4) trigger the first 5 cards of the active bank.
-// Solo frets (5-9) trigger cards 5-9. Strum up/down cycle banks.
-// Whammy (axis 3) modulates the master volume so the player can
-// "lean into" louder dynamics by holding the bar back.
+// Two modes:
+//   single-fret (default) — each fret press triggers the active-bank
+//                           card 0-4 (and solo frets 5-9); strum
+//                           cycles banks.
+//   chord            — frets accumulate into heldFrets while pressed;
+//                      strum plays each held fret's scale degree at
+//                      the bank's chord-pad timbre, forming a real
+//                      voicing. Each bank has its own degree set so
+//                      Diner reads as maj7+9, Cathedral as min7+♭9,
+//                      Riverboat as maj6+9, Pastoral as sus2+6+9.
 const gp = new GamepadInput();
 gp.start();
 mountGamepadOverlay(gp);
 const BANK_ORDER = ['diner', 'cathedral', 'riverboat', 'pastoral'];
+
+// Scale degrees (semitones from root) assigned to frets 1-5 per bank.
+// Solo frets (6-10) layer the same degrees one octave up.
+const BANK_CHORD_DEGREES = {
+  diner:     [0, 4, 7, 10, 14],    // maj7 + 9, warm/blues
+  cathedral: [0, 3, 7, 10, 13],    // min7 + ♭9, rust-noir
+  riverboat: [0, 4, 7, 9,  14],    // maj6 + 9, brass-open
+  pastoral:  [0, 2, 7, 9,  14],    // sus2 + 6 + 9, pastoral
+};
+const BANK_CHORD_TIMBRES = {
+  diner:     'rich_pad',
+  cathedral: 'full_moon_drone',
+  riverboat: 'green_pad',
+  pastoral:  'pastoral_drone',
+};
+
+let chordMode = false;
+const heldFrets = new Set();   // values 0..9 (0-4 main, 5-9 solo octave up)
+
+const chordBtn = document.getElementById('chord-mode');
+function setChordMode(on) {
+  chordMode = on;
+  chordBtn.textContent = '♪ CHORD: ' + (on ? 'ON' : 'OFF');
+  chordBtn.classList.toggle('active', on);
+  heldFrets.clear();
+  refreshChordStatus();
+}
+chordBtn.addEventListener('click', () => setChordMode(!chordMode));
+
+function refreshChordStatus() {
+  if (!chordMode) {
+    document.getElementById('status').textContent =
+      '[ click a card · type 1-y · drop PNG onto card · switch banks above ]';
+    return;
+  }
+  const degrees = BANK_CHORD_DEGREES[activeBank] || BANK_CHORD_DEGREES.diner;
+  if (heldFrets.size === 0) {
+    document.getElementById('status').textContent = '[ chord mode · hold frets · strum to play ]';
+    return;
+  }
+  const semitones = [...heldFrets].sort((a,b)=>a-b).map(i => {
+    const base = degrees[i % 5];
+    return (i >= 5) ? base + 12 : base;
+  });
+  document.getElementById('status').textContent = '[ chord: ' + semitones.join(' / ') + ' semis above root ]';
+}
+
+function strumChord() {
+  if (heldFrets.size === 0) return;
+  const root = parseInt(document.getElementById('root').value);
+  const degrees = BANK_CHORD_DEGREES[activeBank] || BANK_CHORD_DEGREES.diner;
+  const timbre  = BANK_CHORD_TIMBRES[activeBank] || 'rich_pad';
+  const vol = parseInt(document.getElementById('vol').value) / 100;
+  // Per-voice velocity scaled so big stacked chords don't clip.
+  const voiceVel = vol / Math.max(1.0, Math.sqrt(heldFrets.size));
+  for (const fretIdx of heldFrets) {
+    let deg = degrees[fretIdx % 5];
+    if (fretIdx >= 5) deg += 12;
+    const midi = scaleSnap(root + deg);
+    trigger(timbre, midi, voiceVel);
+  }
+}
+
 window.addEventListener('gamepadinput-connected', () => {
   initAudio();
   if (ac && ac.state === 'suspended') ac.resume();
 });
 window.addEventListener('gamepadinput-button', e => {
-  if (!e.detail.pressed) return;
   initAudio();
   if (ac && ac.state === 'suspended') ac.resume();
   const m = gp.mapping;
-  // Frets → cards 0-4
-  const fretIdx = m.frets.indexOf(e.detail.idx);
+  const fretIdx  = m.frets.indexOf(e.detail.idx);
+  const soloIdx  = m.soloFrets.indexOf(e.detail.idx);
+  const anyFret  = (fretIdx >= 0) ? fretIdx : (soloIdx >= 0 ? soloIdx + 5 : -1);
+  const isStrum  = (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown);
+
+  if (chordMode) {
+    // Frets accumulate/release; strum plays the held chord.
+    if (anyFret >= 0) {
+      if (e.detail.pressed) heldFrets.add(anyFret);
+      else heldFrets.delete(anyFret);
+      refreshChordStatus();
+      return;
+    }
+    if (isStrum && e.detail.pressed) {
+      strumChord();
+    }
+    return;
+  }
+
+  // Single-fret mode (original behavior). Only act on press edges.
+  if (!e.detail.pressed) return;
   if (fretIdx >= 0 && fretIdx < activeArcana().length) {
     playCard(fretIdx);
     return;
   }
-  // Solo frets → cards 5-9
-  const soloIdx = m.soloFrets.indexOf(e.detail.idx);
   if (soloIdx >= 0 && (soloIdx + 5) < activeArcana().length) {
     playCard(soloIdx + 5);
     return;
   }
-  // Strum → cycle banks
-  if (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown) {
+  if (isStrum) {
     const cur = BANK_ORDER.indexOf(activeBank);
     const next = e.detail.idx === m.strumDown
       ? (cur + 1) % BANK_ORDER.length
@@ -973,8 +1061,6 @@ window.addEventListener('gamepadinput-button', e => {
 });
 window.addEventListener('gamepadinput-axis', e => {
   if (e.detail.idx === gp.mapping.whammy) {
-    // Whammy → master volume. Maps -1..+1 (rest near 0) to 30..100
-    // so the gain is always audible but leans hot when bar held.
     const v = Math.abs(e.detail.value);
     const pct = Math.min(100, Math.max(30, 30 + Math.floor(v * 70)));
     document.getElementById('vol').value = pct;
