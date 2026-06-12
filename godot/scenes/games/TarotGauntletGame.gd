@@ -704,43 +704,69 @@ func _init_run() -> void:
 	_steamboat_progress = int(_setup.get("starting_steamboat_progress", _steamboat_progress))
 	_hand_cards = (start.get("starting_hand", []) as Array).duplicate()
 
-	# Visitors: place those marked on_board_at_start; queue scheduled ones
-	for vid in _visitors_def:
-		var v: Dictionary = _visitors_def[vid]
+	# Visitors: the scenario's `visitors_present_at_start` and
+	# `visitor_schedule` lists are the source of truth — they let the
+	# easy / medium / hard scenarios stagger different visitor counts
+	# from a shared visitors.json. Each visitor's intrinsic
+	# arrival.kind is treated as a default only; the scenario lists
+	# take precedence. Conditional visitors (anya_recording) remain
+	# opt-in via their own predicate regardless of scenario.
+	var scenario_starters: Array = _setup.get("visitors_present_at_start", [])
+	var scenario_schedule: Array = _setup.get("visitor_schedule", [])
+	# Place starters
+	for vid_v in scenario_starters:
+		var vid: String = String(vid_v)
+		var v: Dictionary = _visitors_def.get(vid, {})
+		if v.is_empty():
+			push_warning("Gauntlet: scenario lists unknown visitor in visitors_present_at_start: %s" % vid)
+			continue
 		var arr: Dictionary = v.get("arrival", {})
-		# `progress` tracks the visitor's connection step: 0 = arrived
-		# but unmet, 1 = greeted, 2 = listened-to, 3 = delivered-to,
-		# 4 = connected. SIT WITH requires progress=3 (the waiter
-		# sequence: GREET → LISTEN → DELIVER → SIT WITH).
-		match arr.get("kind", ""):
-			"on_board_at_start":
-				_visitors_state[vid] = {
-					"pos": arr.get("pos", "counter"),
-					"arrived": true,
-					"arrived_turn": 1,
-					"connected": false,
-					"claimed_turn": -1,
-					"progress": 0,
-				}
-			"scheduled":
-				_visitors_state[vid] = {
-					"pos": "",
-					"arrived": false,
-					"scheduled_turn": int(arr.get("turn", 99)),
-					"arrival_pos": arr.get("to", "counter"),
-					"connected": false,
-					"claimed_turn": -1,
-					"progress": 0,
-				}
-			"conditional":
-				_visitors_state[vid] = {
-					"pos": "",
-					"arrived": false,
-					"connected": false,
-					"claimed_turn": -1,
-					"condition": arr,
-					"progress": 0,
-				}
+		_visitors_state[vid] = {
+			"pos": arr.get("pos", "counter"),
+			"arrived": true,
+			"arrived_turn": 1,
+			"connected": false,
+			"claimed_turn": -1,
+			"progress": 0,
+		}
+	# Queue scheduled visitors. arrival_turn + arrival_space are the
+	# canonical scenario field names; fall back to turn + to (the
+	# visitor-def shape) so older formats still work.
+	for entry_v in scenario_schedule:
+		var entry: Dictionary = entry_v
+		var vid2: String = String(entry.get("visitor", ""))
+		if vid2 == "" or _visitors_state.has(vid2):
+			continue
+		var v2: Dictionary = _visitors_def.get(vid2, {})
+		if v2.is_empty():
+			push_warning("Gauntlet: scenario lists unknown visitor in visitor_schedule: %s" % vid2)
+			continue
+		_visitors_state[vid2] = {
+			"pos": "",
+			"arrived": false,
+			"scheduled_turn": int(entry.get("arrival_turn", entry.get("turn", 99))),
+			"arrival_pos": String(entry.get("arrival_space", entry.get("to", "counter"))),
+			"connected": false,
+			"claimed_turn": -1,
+			"progress": 0,
+		}
+	# Conditional visitors — their arrival is triggered by an in-game
+	# event, not by scenario placement. Register them so the trigger
+	# can flip them to arrived later, but don't surface them yet.
+	for vid in _visitors_def:
+		if _visitors_state.has(vid):
+			continue
+		var vd: Dictionary = _visitors_def[vid]
+		var ard: Dictionary = vd.get("arrival", {})
+		if ard.get("kind", "") == "conditional":
+			_visitors_state[vid] = {
+				"pos": "",
+				"arrived": false,
+				"connected": false,
+				"claimed_turn": -1,
+				"condition": ard,
+				"progress": 0,
+			}
 
 	# Item piles: copy the items[] array so we can pop from it.
 	# Contents pile (items_contents_pool + draw_one_keep_or_putback)
