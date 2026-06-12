@@ -8,7 +8,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Put a seed in soil. The boat keeps the soil warm. Bloom rises.",
+      "flavor": "Put a seed in the clay pot — basil from the jar that has been the basil jar since '08. The boat keeps the soil warm even in February. Bloom rises.",
       "requires": [ { "kind": "at_pos", "pos": "garden_deck" } ],
       "effects": [
         { "kind": "tick_bloom", "amount": 1 }
@@ -20,7 +20,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Water, prune, talk to the rosebush. Bloom rises; doubt softens.",
+      "flavor": "Water, prune, talk to the rosebush — the one Nicola's mother gave her in '99. The rosebush listens. Bloom rises; doubt softens by the amount it softens when something growing is told it's growing well.",
       "requires": [ { "kind": "at_pos", "pos": "garden_deck" } ],
       "effects": [
         { "kind": "tick_bloom", "amount": 1 },
@@ -33,7 +33,7 @@
       "time_cost": 2,
       "starter": true,
       "stock": 99,
-      "flavor": "Pick what's ready. The harvest goes into the pantry.",
+      "flavor": "Pick what's ready — by feel, the way Nicola does it without looking. Carry it down through the hatch. The pantry shelf takes another jar in its own handwriting.",
       "requires": [
         { "kind": "at_pos", "pos": "garden_deck" },
         { "kind": "has_bloom_at_least", "n": 2 }
@@ -49,7 +49,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Lay places. The guests come to where the plates are.",
+      "flavor": "Lay places — twelve plates on the long table, the dishes Nicola's mother gave her, the ones with the small chip in the rim of plate seven. The guests come to where the plates are. They always have.",
       "requires": [ { "kind": "at_pos", "pos": "long_table" } ],
       "effects": [
         { "kind": "advance_visitor_step", "step": "greet" }
@@ -115,7 +115,7 @@
       "starter": false,
       "stock": 2,
       "buy_only_at": "pantry",
-      "flavor": "Open a jar dated three seasons ago. The room is briefly that season.",
+      "flavor": "Open a jar dated three seasons ago — the September tomato preserve, in Nicola's hand on a hand-cut label. The room is briefly that season. The whole boat smells like late summer for two minutes.",
       "requires": [ { "kind": "at_pos", "pos": "pantry" } ],
       "effects": [
         { "kind": "gain_harvest", "amount": 2 },
@@ -129,7 +129,7 @@
       "starter": false,
       "stock": 1,
       "buy_only_at": "wheelhouse",
-      "flavor": "Turn the wheelhouse radio on. The static is friendly. A nearby boat answers.",
+      "flavor": "Turn the wheelhouse radio on. The static is friendly — the kind that has been friendly to her since the boat was Bill's. A nearby boat answers; the rosebush hears it through the porthole.",
       "requires": [ { "kind": "at_pos", "pos": "wheelhouse" } ],
       "effects": [
         { "kind": "advance_visitor_schedule", "amount": 1 }

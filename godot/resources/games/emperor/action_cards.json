@@ -8,7 +8,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Listen to the petitioner state the matter. The room becomes the matter for a moment.",
+      "flavor": "Listen to the petitioner state the matter. The brass clock pauses, in the way the brass clock pauses when somebody is being heard. Authority gathers in the room around the desk.",
       "requires": [ { "kind": "visitor_at_my_pos_progress_at_least", "n": 1 } ],
       "effects": [
         { "kind": "advance_visitor_step", "step": "listen" },
@@ -21,7 +21,7 @@
       "time_cost": 2,
       "starter": true,
       "stock": 99,
-      "flavor": "Write the ruling. Costs authority.",
+      "flavor": "Write the ruling on the cream stock. Two paragraphs in the language the river-code uses. Costs authority — every ruling spends some of the reservoir.",
       "requires": [
         { "kind": "at_pos", "pos": "desk" },
         { "kind": "has_authority_at_least", "n": 1 }
@@ -37,7 +37,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Set the stamp. The ledger ticks. The room remembers the ruling went out.",
+      "flavor": "Set the bronze stamp. The date-wheel clicks into today. The stamp leaves a perfect circle, the way it has for forty years. The ledger ticks. The office remembers.",
       "requires": [ { "kind": "at_pos", "pos": "stamp_table" } ],
       "effects": [
         { "kind": "tick_ledger", "amount": 1 }
@@ -49,7 +49,7 @@
       "time_cost": 2,
       "starter": true,
       "stock": 99,
-      "flavor": "Sign + countersign. The visitor's sit-with happens because you saw the paper land.",
+      "flavor": "Sign in the witness line. The clerk countersigns. The visitor sees their paper enter the office's permanent record. Their sit-with happens because you saw the paper land in front of you.",
       "requires": [
         { "kind": "visitor_at_my_pos_progress_at_least", "n": 3 }
       ],
@@ -65,7 +65,7 @@
       "starter": false,
       "stock": 3,
       "buy_only_at": "law_shelf",
-      "flavor": "Pull a precedent volume from the shelf. The ruling is faster when you can cite.",
+      "flavor": "Pull a volume of the river-code from the shelf. Volumes 9 and 10 are still missing but the others are loyal. The ruling is faster when you can cite.",
       "requires": [ { "kind": "at_pos", "pos": "law_shelf" } ],
       "effects": [
         { "kind": "gain_authority", "amount": 2 }
@@ -78,7 +78,7 @@
       "starter": false,
       "stock": 2,
       "buy_only_at": "filing_cabinet",
-      "flavor": "Ask the clerk. She knows where everything is.",
+      "flavor": "Ask the clerk. She clears her throat once on the way to the third shelf. She has been clearing her throat for nineteen years and you have not yet failed to look up.",
       "requires": [ { "kind": "at_pos", "pos": "filing_cabinet" } ],
       "effects": [
         { "kind": "advance_visitor_schedule", "amount": 1 },
@@ -91,7 +91,7 @@
       "time_cost": 0,
       "starter": false,
       "stock": 1,
-      "flavor": "Set down a ruling that the room itself remembers. The visitors here yield their patience one turn longer.",
+      "flavor": "A ruling the office itself remembers. The brass clock holds. The visitors here yield their patience one turn longer. Dante's father issued one of these in '74 and people still cite it.",
       "effects": [
         { "kind": "freeze_patience", "turns": 1 }
       ]
@@ -103,7 +103,7 @@
       "starter": false,
       "stock": 1,
       "buy_only_at": "filing_cabinet",
-      "flavor": "Pull an appellate form from the cabinet. For when you're the second office to hear the case.",
+      "flavor": "Pull the appellate form from the cabinet. The heavy stock, the one with the watermark. For when you're the second office to hear the case and the first office got it wrong.",
       "requires": [ { "kind": "at_pos", "pos": "filing_cabinet" } ],
       "effects": [
         { "kind": "advance_visitor_step", "step": "deliver" },

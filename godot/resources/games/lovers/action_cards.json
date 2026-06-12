@@ -8,7 +8,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Tape another box. The afternoon moves forward. SYNC ticks if Reed is here.",
+      "flavor": "Tape another box closed. The afternoon moves forward in the small way an afternoon moves forward when you have decided to keep moving. SYNC ticks if Reed is at the boxes with you.",
       "requires": [ { "kind": "at_pos", "pos": "boxes_pile" } ],
       "effects": [
         { "kind": "tick_sync_if_partner_here", "amount": 1 },
@@ -21,7 +21,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Listen to what Reed is saying. SYNC ticks; doubt softens.",
+      "flavor": "Listen to what Reed is saying without arranging your reply while they say it. The room knows the difference. SYNC ticks; doubt softens by the amount it softens when somebody actually hears you.",
       "requires": [ { "kind": "partner_at_my_pos" } ],
       "effects": [
         { "kind": "tick_sync_if_partner_here", "amount": 1 },
@@ -35,7 +35,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Set something aside that's yours to keep. The room remembers it.",
+      "flavor": "Set something aside that's yours to keep — a paperback, the small ceramic dish, the half-finished argument from October. The room remembers it.",
       "effects": [
         { "kind": "gain_verb", "amount": 1 },
         { "kind": "lose_doubt", "amount": 1 }
@@ -47,7 +47,7 @@
       "time_cost": 2,
       "starter": true,
       "stock": 99,
-      "flavor": "Hand something back that belongs to Reed. Costs verb; the box closes; SYNC ticks.",
+      "flavor": "Hand something back that belongs to Reed. The mug with the chip. The sweater. The paperback they bought you that turned out to be theirs first. Costs verb; the box closes; SYNC ticks.",
       "requires": [
         { "kind": "partner_at_my_pos" },
         { "kind": "has_verb_at_least", "n": 1 }
@@ -65,7 +65,7 @@
       "starter": false,
       "stock": 2,
       "buy_only_at": "turntable",
-      "flavor": "Sit at the turntable together. The record finishes. SYNC ticks twice.",
+      "flavor": "Sit at the turntable together while the b-side plays. The b-side is the one you used to skip. Tonight you're letting it play. SYNC ticks twice.",
       "requires": [
         { "kind": "at_pos", "pos": "turntable" },
         { "kind": "partner_at_my_pos" }
@@ -81,7 +81,7 @@
       "starter": false,
       "stock": 1,
       "buy_only_at": "easel_corner",
-      "flavor": "Help Reed finish the painting. They've been stuck on it for nine months. SYNC ticks and the painting is done.",
+      "flavor": "Help Reed finish the painting that has been two-thirds done for nine months. The quarter-inch of red Frasier mentioned. SYNC ticks twice and the canvas finally has the part of itself that was missing.",
       "requires": [
         { "kind": "at_pos", "pos": "easel_corner" },
         { "kind": "partner_at_my_pos" }
@@ -97,7 +97,7 @@
       "time_cost": 0,
       "starter": false,
       "stock": 1,
-      "flavor": "Sit down at the same space as Reed and play. SYNC ticks twice; Doubt halves for the rest of this turn.",
+      "flavor": "Sit down at the same corner as Reed and stop trying to do anything else for the length of this turn. SYNC ticks twice; doubt halves; the radiator clicks; the diner two floors below sends up its 4 PM sound. The room is, briefly, the room you wanted.",
       "requires": [ { "kind": "partner_at_my_pos" } ],
       "effects": [
         { "kind": "tick_sync_if_partner_here", "amount": 2 },
@@ -111,7 +111,7 @@
       "starter": false,
       "stock": 2,
       "buy_only_at": "kitchen_corner",
-      "flavor": "Reach down through the floor for a coffee from John. Bus kid runs it up.",
+      "flavor": "John sees the boxes from the diner window. He sends coffee. The bus kid runs it up the back stairs in a brown paper tray. The kettle in the apartment is on but the coffee from downstairs is the one that lands.",
       "requires": [ { "kind": "at_pos", "pos": "kitchen_corner" } ],
       "effects": [
         { "kind": "advance_visitor_schedule", "amount": 1 },

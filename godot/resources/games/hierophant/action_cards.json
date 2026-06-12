@@ -8,7 +8,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Wake the terminal. Bring the modem up. Doctrine rises.",
+      "flavor": "Wake the terminal. The green phosphor warms. The modem chirps its boot sequence — the one sysop has heard every night for nine years. Doctrine accumulates in the small way it accumulates when you sit down at the BBS with intention.",
       "requires": [ { "kind": "at_pos", "pos": "crt_terminal" } ],
       "effects": [
         { "kind": "gain_doctrine", "amount": 1 }
@@ -20,7 +20,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Acknowledge a caller. Their step advances; the room remembers they came.",
+      "flavor": "Acknowledge a caller — either on the wire or on the couch. Their step advances; the BBS logs the visit; the room remembers they came.",
       "requires": [ { "kind": "visitor_at_my_pos_progress_at_least", "n": 1 } ],
       "effects": [
         { "kind": "advance_visitor_step", "step": "listen" }
@@ -32,7 +32,7 @@
       "time_cost": 2,
       "starter": true,
       "stock": 99,
-      "flavor": "Post a thread. The signal rises; the room reads it.",
+      "flavor": "Post a thread to the board. The dot-matrix prints out a banner copy. The signal rises by one notch. Costs doctrine — every post draws from what you know.",
       "requires": [
         { "kind": "at_pos", "pos": "crt_terminal" },
         { "kind": "has_doctrine_at_least", "n": 1 }
@@ -48,7 +48,7 @@
       "time_cost": 2,
       "starter": true,
       "stock": 99,
-      "flavor": "Read what came in. Bring a visitor through their delivery step.",
+      "flavor": "Read what came in on modem 2 or modem 3 or modem 4 — whichever is lit. The visitor's reply lands. You let the message be the message it wanted to be.",
       "requires": [
         { "kind": "visitor_at_my_pos_progress_at_least", "n": 2 }
       ],
@@ -63,7 +63,7 @@
       "starter": false,
       "stock": 3,
       "buy_only_at": "floppy_wall",
-      "flavor": "Pull a floppy from the wall. Print the contents.",
+      "flavor": "Pull a floppy from the wall — the right floppy, the way the wall sometimes serves up the right one. Print the contents on the dot-matrix. Two thousand floppies are alphabetised and this is one of them.",
       "requires": [ { "kind": "at_pos", "pos": "floppy_wall" } ],
       "effects": [
         { "kind": "gain_doctrine", "amount": 2 }
@@ -75,7 +75,7 @@
       "time_cost": 0,
       "starter": false,
       "stock": 1,
-      "flavor": "Transmit a message that everyone in the room reads. The next visitor in any space arrives on the next turn.",
+      "flavor": "A message everyone reads — across all four modems and on the couch corner. Sysop only sends one of these a season. The next visitor in any space arrives the next turn.",
       "effects": [
         { "kind": "advance_visitor_schedule", "amount": 2 }
       ]
@@ -87,7 +87,7 @@
       "starter": false,
       "stock": 2,
       "buy_only_at": "back_kitchen",
-      "flavor": "Put the kettle on. The room steadies. Anyone in the couch corner gets a step.",
+      "flavor": "Put the kettle on. The smell of the hot sauce next to it drifts. The couch corner gets folded into the back kitchen for two turns — the kettle is the bridge.",
       "requires": [ { "kind": "at_pos", "pos": "back_kitchen" } ],
       "effects": [
         { "kind": "lose_doubt", "amount": 1 },
@@ -101,7 +101,7 @@
       "starter": false,
       "stock": 1,
       "buy_only_at": "ham_radio",
-      "flavor": "Dial up the ham band. The voice from 14.301 answers.",
+      "flavor": "Dial up the ham band. The voice on 14.301 answers — possibly the one using your retired callsign. Doctrine accumulates from the connection itself.",
       "requires": [ { "kind": "at_pos", "pos": "ham_radio" } ],
       "effects": [
         { "kind": "advance_visitor_schedule", "amount": 1 },

@@ -8,7 +8,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Keep going. The road keeps going. Miles tick up; fuel ticks down.",
+      "flavor": "Keep going. The road keeps going. The lane markers pass under the bumper the way they have for nineteen years. Miles tick up; fuel ticks down by the same notch.",
       "requires": [
         { "kind": "at_pos", "pos": "driver_seat" },
         { "kind": "has_fuel_at_least", "n": 1 }
@@ -24,7 +24,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Check the aisle without turning your head. See who needs you.",
+      "flavor": "Check the aisle in the mirror without turning your head. The mirror is angled the way Cora angled it in '04 and has not been moved since. See who needs you; let them see you seeing.",
       "requires": [ { "kind": "at_pos", "pos": "driver_seat" } ],
       "effects": [
         { "kind": "advance_visitor_step", "step": "listen" },
@@ -37,7 +37,7 @@
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Call the next stop. Passengers who need to get off get ready.",
+      "flavor": "Call the next stop over the speaker — the small one Cora's voice has worn into the right shape. Passengers who need to get off start gathering their bags one stop early, the way late-shift passengers do.",
       "effects": [
         { "kind": "advance_visitor_step", "step": "deliver" }
       ]
@@ -48,7 +48,7 @@
       "time_cost": 2,
       "starter": true,
       "stock": 99,
-      "flavor": "Pull onto the shoulder. Miles don't tick. Fuel doesn't spend. You can sit with a passenger.",
+      "flavor": "Brake gently. Pull onto the shoulder. The gravel sounds different than the pavement; you have always loved the difference. The bus idles. The CB on channel 17 stays clear. You can sit with a passenger for as long as the shoulder allows it.",
       "effects": [
         { "kind": "advance_visitor_step", "step": "sit_with" }
       ]
@@ -60,7 +60,7 @@
       "starter": false,
       "stock": 2,
       "buy_only_at": "shoulder",
-      "flavor": "Pull into a station on the shoulder. Top off. Cora knows the attendant.",
+      "flavor": "Pull into the Sunoco at mile 14. Top off. The attendant has known Cora since '04 and waves before he sees who's driving. The pump clicks at three gallons.",
       "requires": [ { "kind": "at_pos", "pos": "shoulder" } ],
       "effects": [
         { "kind": "gain_fuel", "amount": 3 }
@@ -72,7 +72,7 @@
       "time_cost": 0,
       "starter": false,
       "stock": 1,
-      "flavor": "Fix your eyes on the road. The bus advances two miles without spending fuel and Doubt drops by 2.",
+      "flavor": "The long-quiet stretch — twelve miles of two-lane road with no oncoming. The bus advances two miles without burning fuel. Doubt drops by two because the road keeps going and you keep going with it.",
       "requires": [ { "kind": "at_pos", "pos": "driver_seat" } ],
       "effects": [
         { "kind": "tick_miles", "amount": 2 },
@@ -86,7 +86,7 @@
       "starter": false,
       "stock": 2,
       "buy_only_at": "passenger_radio",
-      "flavor": "Talk to another driver on channel 17. They tell you what's ahead.",
+      "flavor": "Talk to another driver on channel 17. A long-haul who knows the road north of mile 27. They tell you the deer are bad tonight up near the lake. You thank them. They roger out.",
       "requires": [ { "kind": "at_pos", "pos": "passenger_radio" } ],
       "effects": [
         { "kind": "gain_fuel", "amount": 1 },
@@ -100,7 +100,7 @@
       "starter": false,
       "stock": 2,
       "buy_only_at": "underseat",
-      "flavor": "Pull something dropped from under the seats. Give it to whoever owns it.",
+      "flavor": "Pull something dropped from under the seats. A glove. A small notebook with two phone numbers written in the front. The coin from a country you don't recognize. Give it to whoever owns it. If no one claims it, the under-seat keeps it.",
       "requires": [ { "kind": "at_pos", "pos": "underseat" } ],
       "effects": [
         { "kind": "advance_visitor_step", "step": "deliver" },
