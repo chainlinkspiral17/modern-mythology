@@ -47,6 +47,71 @@
         "frasier still looks at the workbench differently."
       ],
       "gravity_extras": []
+    },
+    {
+      "id": "conversation_began",
+      "save_key": "achievement:conversation_began",
+      "label": "THE CONVERSATION HAPPENED",
+      "description": "Triggered by locking Ep. 17 of Pomegranate Hour. The Two-Chairs Women began speaking. The show is being made.",
+      "ambient_lines": [
+        "somebody on the bank says they heard elicia is finishing the show. they may be wrong. they may also not be wrong.",
+        "the eighty-six-minute soundstage block, finally used. the receipt is no longer in the desk.",
+        "marisol calls her agent and says she has a thing she wants to clear three weekends for.",
+        "hen, in LA, opens a document for the first time in nine years.",
+        "the suite hums one notch louder. somebody is awake in it."
+      ],
+      "gravity_extras": [
+        { "id": "world_a_phone_call_about_the_show", "title": "a phone call about the show",
+          "flavor": "your phone rings. an area code you don't recognize. someone heard about the conversation episode.",
+          "effects": [ { "kind": "advance_visitor_schedule", "amount": 1 } ] }
+      ]
+    },
+    {
+      "id": "brood_emergence",
+      "save_key": "lore_token:entomologist_scored",
+      "label": "THE BROOD IS BACK",
+      "description": "Triggered by sitting with the Entomologist in THE LONG EDIT. The seventeen-year cicada brood is emerging this season. The woods upstate are loud the way they were in '96.",
+      "ambient_lines": [
+        "the cicadas are loud tonight in a way they have been loud only once before.",
+        "somebody on the radio is asking if anyone has driven upstate this week.",
+        "the brood emerges in patches. tonight is one of the patches.",
+        "davey would have been forty-eight this year. you do the math without meaning to.",
+        "the suite's modem rack is humming at a slightly different pitch. it has noticed."
+      ],
+      "gravity_extras": [
+        { "id": "world_a_cicada_lands", "title": "a cicada lands on the window",
+          "flavor": "one lands on the outside of the window and clings. it is brown and translucent and twenty centimeters away from your face.",
+          "effects": [ { "kind": "lose_doubt", "amount": 1 } ] },
+        { "id": "world_the_brood_hums", "title": "the brood hums underneath",
+          "flavor": "the cicadas outside the room rise in pitch together, then settle. they are doing a thing they only do tonight.",
+          "effects": [ { "kind": "lose_stagnation", "amount": 1 } ] }
+      ]
+    },
+    {
+      "id": "the_apartment_held",
+      "save_key": "achievement:lovers_complete",
+      "label": "THE APARTMENT HELD",
+      "description": "Triggered by completing all three Lovers scenarios. The apartment above the diner is in the right shape — Reed's painting finished, the boxes resolved, the conversation that was supposed to happen finally having happened.",
+      "ambient_lines": [
+        "the apartment above john's diner has its window cracked tonight. january air through february.",
+        "somebody walking past on the street looks up. the light is on.",
+        "the diner sends up coffee for two on a tray every afternoon at 4 pm.",
+        "reed's painting hangs over the bed corner now. the quarter-inch of red landed."
+      ],
+      "gravity_extras": []
+    },
+    {
+      "id": "the_route_runs",
+      "save_key": "achievement:chariot_complete",
+      "label": "THE ROUTE RUNS",
+      "description": "Triggered by completing all three Chariot scenarios. Cora's route runs reliably even on the nights she's not driving. The bus knows the road.",
+      "ambient_lines": [
+        "the midnight bus passes on the road north. you can hear it if you listen.",
+        "channel 17 has a voice on it that sounds like cora's but isn't.",
+        "the sunoco at mile 14 stays open later than it used to.",
+        "somebody on the radio mentions a passenger who left a paperback on seat b-3 once."
+      ],
+      "gravity_extras": []
     }
   ]
 }
