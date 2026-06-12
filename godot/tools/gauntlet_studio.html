@@ -1105,43 +1105,20 @@ function render() {
 // end indie horror board game with hand-painted card faces over
 // photographic underlayers. If you regenerate one slot, it has to
 // sit next to the others on the table.
-const STYLE_GUIDE = [
-  "PROJECT: Modern Mythology — Tarot Gauntlet. A solo card-and-dice horror board game set inside D'Ambrosio's, a riverboat-style diner complex on the Texas/Louisiana border.",
+// ── Project-wide canon ───────────────────────────────────────────
+// Applies to every generation in the studio — visual language,
+// palette, hard rules. Arcana/volume-specific facts move into
+// ARCANA_CANON below.
+const PROJECT_GLOBAL_CANON = [
+  "PROJECT: Modern Mythology — a literary visual novel across seven volumes, each volume its own time, place, and mood. The Tarot Gauntlet is a solo card-and-dice board game inside this project's vol 5 (Major Arcana), built so each arcana is its own playable scenario. Every generation here is a board-game asset that has to sit next to the other components on the same table.",
   "",
-  "════════ PROJECT CANON ════════",
-  "These facts are CONSISTENT across EVERY asset — never invent variations:",
-  "",
-  "LOCATION CANON · D'AMBROSIO'S",
-  "  · A weathered diner complex moored on the river bank — half-restaurant, half-riverboat-architecture. White clapboard exterior, brass rails, a wraparound porch over the water. Inside: counter at center, vinyl booths along the windows, kitchen alcove on the river side, a closed cocktail bar to the parking-lot side, a back hallway with payphone + bathroom + the card-pinned wall.",
-  "  · River always visible through the back-side windows. Slow brown current, late-1990s industrial banks beyond.",
-  "  · Two thresholds always painted as if you could step through them: the PARKING LOT (sodium light, asphalt) and the RIVER WINDOW (cold blue, moving water). A third (PRECIPICE DOOR) appears mid-run; render as a too-tall narrow door that doesn't match the trim.",
-  "  · Era: late 1990s. Formica counters, CRT terminals, payphone, cigarette machine, jukebox, brass call bell. NO cell phones, NO laptops, NO modern signage.",
-  "",
-  "CHARACTER CANON · JOHN FRANK (the player character)",
-  "  · Young man, late 20s to early 30s. Lean build. Sandy-brown hair, slightly grown-out, a little hangs over his forehead. Tired green-grey eyes. Clean-shaven or one-day stubble.",
-  "  · UNIFORM — always the same: crisp white button-up dress shirt, sleeves rolled to mid-forearm. Black or dark-charcoal slim tie, slightly loosened. Long white waist apron tied around the front, just below the rib. Black slacks, plain dark dress shoes.",
-  "  · Posture: steady. Hands he trusts. Twelve years of doing this. He moves like he knows the room.",
-  "  · When his face appears (rare — most cards see his hands or back), the look is held-attention, never smiling, never angry — present.",
-  "",
-  "RECURRING CHARACTER CANON (visitors)",
-  "  · FAITH the dog — medium mongrel, white with grey patches, one ear up one half-down, the build of a smaller lion. Same dog in every asset.",
-  "  · FRASIER TEMPLE — late 30s, faded olive bomber jacket, Western pearl-snap shirt, dark hair like a hurricane that doesn't know it stopped. Always a small notebook + pen.",
-  "  · THE BOOTH-SIX STRANGER — hood up over a grey beanie, oversized goggles pushed onto forehead. Face lit green by a handheld glow.",
-  "  · THE DAWN COOK — mid-40s, plaid flannel under white apron, hairnet over grey-streaked hair, paperback in one hand, a cigarette behind one ear.",
-  "  · BBS CALLER — never a human face; only the green CRT screen with scanlines.",
-  "  · NICOLA — late 60s, white hair pulled up, sunglasses on the head, soft floral cardigan, the kind of regular the diner had before the staff did.",
-  "  · MACKENZIE — mid-30s, denim jacket, band tee, glasses caught in teeth, phone receiver against ear.",
-  "  · MAYA — 9 years old, dark side-ponytail, mid-card-trick, wide serious eyes.",
-  "  · ELICIA — late 30s, dark hair loose, headphones at neck, handheld cassette recorder.",
-  "  · THE MAN AT THE BAR (the Devil) — lean, expensively underdressed, hair too neat for the hour, never quite makes eye contact.",
-  "  · ALBERTO — mid-40s, sunglasses indoors, heavy wool coat. Dante's elder son, in mourning.",
-  "",
-  "════════ VISUAL LANGUAGE ════════",
+  "════════ VISUAL LANGUAGE (applies to every asset) ════════",
   "  · Medium: hand-painted gouache + oil over a photographic underlay. Visible brushwork. Coarse linen-paper grain. A faint ASCII/dither overlay barely readable in the shadows.",
   "  · Palette: muted ambers + dark teals + dried-blood reds + cigarette-smoke greys. Highlights are warm sodium-vapor yellow; shadows are cold fluorescent green. Never saturated. Never neon.",
-  "  · Light: a single dominant warm source (diner fluorescents, jukebox glow, headlamps, payphone alcove blue) cutting through a humid blue dark. High contrast, deep shadows, soft rim light on faces.",
+  "  · Light: a single dominant warm source (diner fluorescents, jukebox glow, headlamps, workbench desk lamp, payphone alcove blue) cutting through a humid blue dark. High contrast, deep shadows, soft rim light on faces.",
   "  · Mood: literary noir. Held-breath cinema. NOT cartoon. NOT photoreal. NOT anime. NOT 3D-render. NOT digital-painterly slick.",
   "  · Reference quality bar: Disco Elysium character portraits, Kentucky Route Zero compositions, Mansions of Madness 2e components, Final Girl card backs, Beksiński texture density. Aim for printed-board-game-component quality.",
+  "  · Era throughout the project: late 1990s. Formica counters, CRT terminals, payphone, cigarette machine, jukebox, brass call bell, dot-matrix printers, BBS phosphor-green. NO cell phones, NO laptops, NO modern signage.",
   "",
   "════════ HARD RULES ════════",
   "  · ABSOLUTELY NO BORDER, FRAME, MAT, MARGIN, ROUNDED-RECTANGLE EDGE, OR WHITE STRIP around the image. Full bleed to the edge of the canvas, every time. The engine clips and frames the asset itself; any border in the generation is a defect.",
@@ -1149,6 +1126,124 @@ const STYLE_GUIDE = [
   "  · NO COLLAGE of multiple panels. One image, one composition, painted edge to edge.",
   "  · Keep the focal subject centered or rule-of-thirds; leave breathing room at the top edge (engine overlays a title bar there).",
 ].join("\n");
+
+// ── Per-arcana canon (vol 5, Major Arcana) ───────────────────────
+// Each arcana of vol 5 carries its own LOCATION + CHARACTER +
+// RECURRING CAST anchor. The studio composes
+// `PROJECT_GLOBAL_CANON + ARCANA_CANON[slot.arcana]` before every
+// prompt, so a Magician slot reads as the Cathedral + Frasier,
+// not the diner + John. Add new arcanas here as their scenarios
+// land. `framework` is the catch-all for shared/universal slots
+// (the framework action cards, the global SFX bus, project-wide
+// CGs) — minimal anchoring, just the project palette.
+const ARCANA_CANON = {
+
+  // 0 · The Fool — vol 5, ch 0 (Frasier + John + the diner)
+  fool: [
+    "════════ ARCANA CANON · 0 · THE FOOL ════════",
+    "Vol 5 / Chapter 0. Setting: D'Ambrosio's diner, Graustark TX/LA, late-1990s, 3:47 AM to evening service.",
+    "",
+    "LOCATION · D'AMBROSIO'S",
+    "  · A weathered diner complex moored on the river bank — half-restaurant, half-riverboat-architecture. White clapboard exterior, brass rails, a wraparound porch over the water. Inside: counter at center, vinyl booths along the windows, kitchen alcove on the river side, a closed cocktail bar to the parking-lot side, a back hallway with payphone + bathroom + the card-pinned wall.",
+    "  · River always visible through the back-side windows. Slow brown current, late-1990s industrial banks beyond.",
+    "  · Two thresholds always painted as if you could step through them: the PARKING LOT (sodium light, asphalt) and the RIVER WINDOW (cold blue, moving water). A third (PRECIPICE DOOR) appears mid-run; render as a too-tall narrow door that doesn't match the trim.",
+    "",
+    "CHARACTER · JOHN FRANK (the Fool player)",
+    "  · Young man, late 20s to early 30s. Lean build. Sandy-brown hair, slightly grown-out, a little hangs over his forehead. Tired green-grey eyes. Clean-shaven or one-day stubble.",
+    "  · UNIFORM, ALWAYS THE SAME: crisp white button-up dress shirt, sleeves rolled to mid-forearm. Black or dark-charcoal slim tie, slightly loosened. Long white waist apron tied around the front, just below the rib. Black slacks, plain dark dress shoes.",
+    "  · Posture: steady. Hands he trusts. Twelve years of doing this. He moves like he knows the room.",
+    "",
+    "RECURRING CAST · the Fool's visitors",
+    "  · FAITH the dog — medium mongrel, white with grey patches, one ear up one half-down, the build of a smaller lion.",
+    "  · FRASIER TEMPLE (appears here as visitor) — late 30s, faded olive bomber jacket, Western pearl-snap shirt, dark hair like a hurricane that doesn't know it stopped. Always a small notebook + pen.",
+    "  · THE BOOTH-SIX STRANGER — hood up over a grey beanie, oversized goggles pushed onto forehead. Face lit green by a handheld glow.",
+    "  · THE DAWN COOK — mid-40s, plaid flannel under white apron, hairnet over grey-streaked hair, paperback in one hand, a cigarette behind one ear.",
+    "  · BBS CALLER — never a human face; only the green CRT screen with scanlines.",
+    "  · NICOLA — late 60s, white hair pulled up, sunglasses on the head, soft floral cardigan.",
+    "  · MACKENZIE — mid-30s, denim jacket, band tee, glasses caught in teeth, phone receiver against ear.",
+    "  · MAYA — 9 years old, dark side-ponytail, mid-card-trick, wide serious eyes.",
+    "  · ELICIA (the Priestess; appears here as visitor) — late 30s, dark hair loose, headphones at neck, handheld cassette recorder.",
+    "  · THE MAN AT THE BAR (the Devil) — lean, expensively underdressed, hair too neat for the hour, never quite makes eye contact.",
+    "  · ALBERTO — mid-40s, sunglasses indoors, heavy wool coat. Dante's elder son, in mourning.",
+  ].join("\n"),
+
+  // I · The Magician — vol 5, ch 1 (Frasier's Cathedral)
+  magician: [
+    "════════ ARCANA CANON · I · THE MAGICIAN ════════",
+    "Vol 5 / Chapter 1. Setting: Frasier Temple's converted river-side warehouse — the Cathedral of Rust and Code — across town from the diner. Late 1990s. Evening into night.",
+    "",
+    "LOCATION · THE CATHEDRAL OF RUST AND CODE",
+    "  · A repurposed 1920s warehouse on the river bank, two blocks downriver from D'Ambrosio's. Brick exterior, painted-over factory signage, freight bay doors that roll up; tall paned river-side window with iron-strut bracing outside. Single ground-floor open space inside — no rooms, no walls beyond the bathroom partition.",
+    "  · The floor IS THE TAROT DECK. Frasier has built 22 major-arcana stations into the warehouse floor as miniatures and installations:",
+    "      INNER CLUSTER (Graustark-adjacent, finished pieces, lit warm):",
+    "        · FOOL — a 1:48 scale model of D'Ambrosio's diner with figurines.",
+    "        · MAGICIAN — the kitchen-workbench. The HALF-BUILT STEAMBOAT MODEL lives here. Red-painted hull, brass paddle-wheel armature, smokestack-in-progress. This is the center of the cathedral.",
+    "        · PRIESTESS — Elicia's cassette archive (shelves of tapes).",
+    "        · EMPRESS — Nicola's letter wall (corkboard of envelopes).",
+    "        · EMPEROR — Dante's reconstructed office chair + desk fragment.",
+    "        · HIEROPHANT — a river-window altar with incense.",
+    "        · HERMIT — the BBS terminal corner. Phosphor-green CRT mounted on a wooden post. The keyboard sits at chest height.",
+    "        · DEVIL — a single bar stool, no bar around it. Empty.",
+    "        Plus working installations: CHARIOT (a stripped delivery-truck cab), STRENGTH (a 20-lb cast-iron hand press), JUSTICE (an open ledger book), DEATH (plaster face masks on a shelf), TEMPERANCE (a working copper still, slow drip), STAR (cold-blue LED ring on a stand), MOON (a knee-deep reflecting pool), SUN (a salvaged sodium-vapor lamp + chair), WORLD (a wireframe globe armature).",
+    "      OUTER CLUSTER · THE TEST AREA (under-construction models on sawhorses, raw-wood and foam-core neutrals):",
+    "        · LOVERS — a half-built Briar Falls / pre-Smolvud scale model, tracing-paper Smolvud overlay draped over.",
+    "        · WHEEL — a 1:48 Harmony Creek Estates cul-de-sac, lawn paint drying.",
+    "        · HANGED MAN — a half-built MONTREAL miniature: cabane-à-sucre tin shingles, pewter Saint-Laurent, triplex brick stair handrails. Frasier has never been; he's working from postcards.",
+    "        · TOWER — Sharp's basement-club model (the most-finished of the unfinished), painted neon on the marquee.",
+    "        · JUDGEMENT — an empty platform block, no figure on top. He doesn't yet know what it's of.",
+    "",
+    "  · Three thresholds: WAREHOUSE BAY (steel rolling door, gravel road outside, his front door), RIVER WINDOW (tall paned glass onto the river — the bird-watcher's view of the osprey nest), ROOF HATCH (revealed late, ladder up to a flat roof).",
+    "",
+    "CHARACTER · FRASIER TEMPLE (the Magician player)",
+    "  · Late 30s, weathered. Faded olive bomber jacket OR a paint-spattered grey shop apron worn over a Western pearl-snap shirt — the apron is what he wears at the workbench. Dark hair like a hurricane that doesn't know it stopped. Tired dark eyes, often looking just past whoever's in frame.",
+    "  · Always carries a small reporter's notebook + a fountain pen clipped to one breast pocket. Hands always slightly ink-stained or paint-smudged.",
+    "  · Posture: leans forward at the workbench, head tilted. Standing, he's narrow-shouldered. When his face appears, the look is attention-elsewhere — never smiling, never angry, often half-mid-thought.",
+    "",
+    "RECURRING CAST · the Magician's visitors (easy roster · THE DRAFT)",
+    "  · ELICIA TEMPLE (his sister, the Priestess) — late 30s, dark hair loose, headphones at neck, handheld cassette recorder. Arrives with a tape.",
+    "  · JOHN FRANK (the Fool, his friend) — same uniform as in the Fool's canon (white shirt, dark tie, white apron). Walks four blocks from the diner with a brown paper TO-GO bag.",
+    "  · NICOLA — late 60s, sunglasses on the hair, soft floral cardigan, hand-delivering a letter she found in storage.",
+    "  · MACKENZIE — never appears in person; only as a chat window on the BBS terminal (her name + a blinking cursor).",
+    "  · THE DRIFTER AT THE BAY — indeterminate-age man, wet army-surplus jacket, river mud on the boots. Stands in the threshold of the open bay door, asks for water.",
+    "  · THE BIRD-WATCHER — late 50s woman, faded blue windbreaker, binoculars around her neck, two thin grey-blonde braids. Visible through the river window from outside, watching the osprey nest in the iron struts.",
+    "  · THE DEMON (medium + hard scenarios) — lean man, expensively underdressed, hair too neat for the hour. Sits at the DEVIL station's empty bar stool. He doesn't look at you directly. He helps when you don't ask.",
+    "",
+    "ICONOGRAPHY · the Magician's signature objects",
+    "  · THE STEAMBOAT MODEL — red-painted hull, brass paddle-wheel, smokestack. Lives on the workbench at MAGICIAN station. Half-built throughout most paintings. Finishing it = the cross-arcana sinkhole.",
+    "  · THE BBS TERMINAL — phosphor-green CRT, dot-matrix output, the only screen in the room. RUST_CODE.BBS is its identity.",
+    "  · DEMON ICONS — Frasier's bound 'programs' are rendered as half-mechanical, half-creature figures (a CRT-faced dog, a tape-bodied cicada, a vacuum-tube moth, a riverboat-figure, etc.) — small icons set against their domain space's wall/object.",
+  ].join("\n"),
+
+  // Future arcanas stub their volume so prompts at least don't
+  // anchor on the wrong scenario by accident. Expand these as
+  // each chapter's data lands.
+  empress: "════════ ARCANA CANON · III · THE EMPRESS ════════\nVol 5 / Chapter 3. Nicola's house, Graustark TX/LA. Letters, succession, the matriarch's throne. (Canon will be expanded when this scenario's data lands.)",
+  emperor: "════════ ARCANA CANON · IV · THE EMPEROR ════════\nVol 5 / Chapter 4. Dante D'Ambrosio's office, post-mortem reconstruction. (Expanded when this scenario lands.)",
+  priestess: "════════ ARCANA CANON · II · THE HIGH PRIESTESS ════════\nVol 5 / Chapter 2. Elicia recording the Pomegranate Hour. (Expanded when this scenario lands.)",
+  hierophant: "════════ ARCANA CANON · V · THE HIEROPHANT ════════\nVol 5 / Chapter 5. (Expanded when this scenario lands.)",
+  lovers: "════════ ARCANA CANON · VI · THE LOVERS ════════\nVol 2 / Briar Falls / pre-Smolvud. (Expanded when this scenario lands.)",
+  chariot: "════════ ARCANA CANON · VII · THE CHARIOT ════════\nVol 5 / Chapter 7. (Expanded when this scenario lands.)",
+
+  // The shared/universal slot canon. Used for framework action
+  // cards, the global SFX bus, project-wide CGs. Minimal — just
+  // the project palette + hard rules from the global block above.
+  framework: [
+    "════════ SHARED / FRAMEWORK SLOT ════════",
+    "This asset is shared across arcanas — it should NOT carry a single arcana's character or location signature. Treat the painting as the underlying engine's UI, not any one scenario's story.",
+  ].join("\n"),
+};
+
+// Combined style guide builder — composes the project-wide canon
+// plus the arcana-specific block for a given slot.
+function styleGuideForSlot(slot) {
+  const arc = arcanaOf(slot);
+  const arcanaBlock = ARCANA_CANON[arc] || ARCANA_CANON.framework;
+  return PROJECT_GLOBAL_CANON + "\n\n" + arcanaBlock;
+}
+
+// Legacy alias — older code paths may still reference STYLE_GUIDE.
+// Falls back to project-wide + Fool canon (the original default).
+const STYLE_GUIDE = PROJECT_GLOBAL_CANON + "\n\n" + ARCANA_CANON.fool;
 
 // Hard negative prompt block — appended to every generation.
 const NEGATIVE = [
@@ -1228,8 +1323,13 @@ function suggestedPromptFor(slot) {
   const isAudio = slot.tab === 'sfx' || slot.tab === 'bgm';
   const isFp = slot.tab === 'bg' && String(slot.cat || '').endsWith('_fp');
   const tabHint = isFp ? TAB_HINTS.fp : (TAB_HINTS[slot.tab] || "");
+  // Compose project-wide canon + the slot's arcana canon. This is
+  // what keeps Magician slots from drifting onto John+diner anchors
+  // and vice-versa. Each generation now reads as the specific
+  // arcana's location + character set.
+  const composedCanon = styleGuideForSlot(slot);
   const parts = [
-    STYLE_GUIDE,
+    composedCanon,
     "",
     "ASSET: " + slot.label,
     "BRIEF: " + slot.flavor,
