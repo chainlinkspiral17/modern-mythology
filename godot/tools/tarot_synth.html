@@ -251,6 +251,14 @@
   }
   .drop-hint.show { display: flex; }
 
+  /* armed cards — used by GUITAR mode (and chord mode) to show
+     which frets are currently held but not yet played. */
+  .card.armed {
+    outline: 2px solid var(--gold-hi);
+    outline-offset: -2px;
+    box-shadow: 0 0 12px rgba(255, 216, 150, 0.45);
+  }
+
   /* bank tabs */
   .bank-row {
     display: flex;
@@ -318,7 +326,7 @@
     <button id="stop">■ STOP</button>
     <button id="clear">⌫ CLEAR</button>
     <button id="chord-mode" title="When on: gamepad frets accumulate into a held chord, strum plays it.">♪ CHORD: OFF</button>
-    <button id="play-mode" title="CARD: each fret = a card direct trigger. SCALE: frets play scale degrees on the active card's timbre.">▤ MODE: CARD</button>
+    <button id="play-mode" title="GUITAR: faux-guitar (fret to arm, strum to play). CARD: each fret = a card direct trigger. SCALE: frets play scale degrees on press.">▤ MODE: GUITAR</button>
     <button id="help-btn" title="Show / hide the controls cheatsheet">?</button>
     <div class="group">
       <label>BPM</label>
@@ -370,11 +378,12 @@
     <div>· Click a sequencer step to place the last-played card there. Space = play/stop the sequencer.</div>
     <div>· Click the four bank tabs to switch palette (DINER · CATHEDRAL · RIVERBOAT · PASTORAL).</div>
     <div style="color:#d8a060;letter-spacing:0.08em;margin-top:10px;">RIFFMASTER (PS5 GUITAR)</div>
-    <div>· <b>MODE: CARD</b> — main frets 1-5 trigger the active bank's first 5 cards; solo frets 6-10 trigger cards 5-9.</div>
-    <div>· <b>MODE: SCALE</b> — main frets 1-5 play scale degrees 1, 2, 3, 4, 5 of the current scale; solo frets shift +1 octave. Active-card's timbre is used.</div>
-    <div>· <b>CHORD: ON</b> (either mode) — frets accumulate while held; strum plays them all at once.</div>
-    <div>· <b>Strum</b> (any mode, no held frets) — re-triggers whatever was last played.</div>
+    <div>· <b>MODE: GUITAR</b> (default, faux-guitar) — hold a fret (arms silently, card glows), strum to play the highest held fret as a scale degree at the active card's timbre. No held frets + strum = open root.</div>
+    <div>· <b>MODE: CARD</b> — main frets 1-5 trigger the active bank's first 5 cards directly; solo frets 6-10 trigger cards 5-9.</div>
+    <div>· <b>MODE: SCALE</b> — frets play scale degrees immediately on press (no strum required).</div>
+    <div>· <b>CHORD: ON</b> (any mode) — frets accumulate while held; strum plays them all at once in the bank's chord-pad timbre.</div>
     <div>· <b>Whammy</b> — scales master volume up from 30% (rest) to 100% (held back).</div>
+    <div>· To pick the active timbre, <b>click a card</b> (or press its key).</div>
     <div style="color:#d8a060;letter-spacing:0.08em;margin-top:10px;">BANK CHORD DEGREES (used in CHORD mode)</div>
     <div>· Diner     — [0, 4, 7, 10, 14] maj7+9 (warm/blues)</div>
     <div>· Cathedral — [0, 3, 7, 10, 13] min7+♭9 (rust-noir)</div>
@@ -1013,19 +1022,65 @@ function setChordMode(on) {
 }
 chordBtn.addEventListener('click', () => setChordMode(!chordMode));
 
-// ── Play mode: CARD vs SCALE ────────────────────────────────────
-// CARD  — each fret triggers a card directly (a glockenspiel layout).
-// SCALE — frets play scale degrees on the active card's timbre, so
-//         the same card is repitched across the neck. The "active
-//         card" is whatever was last clicked or played.
-let playMode = 'CARD';
+// ── Play mode: GUITAR / CARD / SCALE ─────────────────────────────
+// GUITAR — faux-guitar feel. Frets ARM silently; strum plays the
+//          highest held fret as a scale degree on the active card's
+//          timbre. No held frets + strum = open root. This is the
+//          default; click a card to pick a timbre, then play.
+// CARD   — each fret triggers a card directly (a glockenspiel layout).
+// SCALE  — frets play scale degrees on the active card's timbre
+//          immediately on press (no strum required).
+let playMode = 'GUITAR';
 const playModeBtn = document.getElementById('play-mode');
+const PLAY_MODES = ['GUITAR', 'CARD', 'SCALE'];
 function setPlayMode(m) {
   playMode = m;
   playModeBtn.textContent = '▤ MODE: ' + m;
-  playModeBtn.classList.toggle('active', m === 'SCALE');
+  playModeBtn.classList.toggle('active', m !== 'CARD');
+  // Clear armed/held visual state so a stale fret doesn't sound
+  // surprising when the mode changes.
+  heldFrets.clear();
+  refreshArmedVisual();
 }
-playModeBtn.addEventListener('click', () => setPlayMode(playMode === 'CARD' ? 'SCALE' : 'CARD'));
+playModeBtn.addEventListener('click', () => {
+  const i = PLAY_MODES.indexOf(playMode);
+  setPlayMode(PLAY_MODES[(i + 1) % PLAY_MODES.length]);
+});
+
+// Light the card(s) corresponding to currently-held frets so the
+// player can see what's armed. Mirrors how a fret-LED on a guitar
+// would glow when held.
+function refreshArmedVisual() {
+  for (let i = 0; i < grid.children.length; i++) {
+    grid.children[i].classList.toggle('armed', heldFrets.has(i));
+  }
+}
+
+// GUITAR-mode strum: play the highest-pitched held fret only. The
+// fret index is the scale degree (frets 5-9 = octave up). Active
+// card = timbre. If nothing's armed, play the open root.
+function strumGuitar() {
+  const scaleName = document.getElementById('scale').value;
+  const scaleArr = SCALES[scaleName] || SCALES.phrygian;
+  const card = activeArcana()[selectedCard] || activeArcana()[0];
+  const timbre = card[4];
+  const root = parseInt(document.getElementById('root').value);
+  const vol = parseInt(document.getElementById('vol').value) / 100;
+  let semi = 0;          // open root
+  let label = 'open';
+  if (heldFrets.size > 0) {
+    // Highest held fret = the "stopping" fret in real-guitar terms.
+    const highest = Math.max(...heldFrets);
+    const degreeIdx = highest % 5;
+    const oct       = (highest >= 5) ? 12 : 0;
+    semi = (scaleArr[degreeIdx] !== undefined ? scaleArr[degreeIdx] : 0) + oct;
+    label = 'deg ' + (degreeIdx + 1) + (oct ? '↑' : '');
+  }
+  const midi = scaleSnap(root + semi);
+  trigger(timbre, midi, vol);
+  document.getElementById('now-playing').textContent =
+    '▶ ' + label + ' · ' + card[1] + ' · ' + timbre;
+}
 
 // Scale-mode trigger: take the active card's timbre and play it at
 // `root + scale[degree]` semitones. Used by frets 0-9 in SCALE mode
@@ -1110,6 +1165,7 @@ window.addEventListener('gamepadinput-button', e => {
       if (e.detail.pressed) heldFrets.add(anyFret);
       else heldFrets.delete(anyFret);
       refreshChordStatus();
+      refreshArmedVisual();
       return;
     }
     if (isStrum && e.detail.pressed) {
@@ -1118,7 +1174,23 @@ window.addEventListener('gamepadinput-button', e => {
     return;
   }
 
-  // Single-fret mode (chord mode is OFF). Only act on press edges.
+  // GUITAR mode — frets arm silently, strum plays the highest held
+  // fret on the active card's timbre. No held frets + strum = open
+  // root. Active card is selected by clicking a card or via keyboard.
+  if (playMode === 'GUITAR') {
+    if (anyFret >= 0) {
+      if (e.detail.pressed) heldFrets.add(anyFret);
+      else heldFrets.delete(anyFret);
+      refreshArmedVisual();
+      return;
+    }
+    if (isStrum && e.detail.pressed) {
+      strumGuitar();
+    }
+    return;
+  }
+
+  // Single-fret modes (CARD / SCALE) — act on press edges only.
   if (!e.detail.pressed) return;
   // SCALE play-mode: every fret is a scale degree on the active
   // card's timbre. Active card stays whatever was last clicked /
@@ -1126,12 +1198,10 @@ window.addEventListener('gamepadinput-button', e => {
   if (playMode === 'SCALE') {
     if (fretIdx >= 0)            { playScaleDegree(fretIdx); return; }
     if (soloIdx >= 0)            { playScaleDegree(soloIdx + 5); return; }
-    // Strum in SCALE mode re-triggers the last scale degree at the
-    // current root — useful for repeated picking.
     if (isStrum)                 { playScaleDegree(0); return; }
     return;
   }
-  // CARD play-mode (default): fret = direct card trigger.
+  // CARD play-mode: fret = direct card trigger.
   if (fretIdx >= 0 && fretIdx < activeArcana().length) {
     playCard(fretIdx);
     return;
@@ -1140,8 +1210,7 @@ window.addEventListener('gamepadinput-button', e => {
     playCard(soloIdx + 5);
     return;
   }
-  // Strum re-triggers the last card so strum-strum-strum on a single
-  // fret = a repeating note.
+  // Strum in CARD mode re-triggers the last card.
   if (isStrum && selectedCard !== null && selectedCard !== undefined) {
     playCard(selectedCard);
   }
