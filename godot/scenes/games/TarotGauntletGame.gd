@@ -84,6 +84,22 @@ var _steamboat_threshold: int = 6
 var _master_reel: int = 0
 var _master_reel_threshold: int = 6
 var _insight: int = 0
+# Pomegranate Hour episode states (Priestess only). The six episode
+# spaces each carry a state on the ladder TITLE_CARD_ONLY → PAPER_ONLY
+# → FOOTAGE_ONLY → ASSEMBLY → PICTURE_LOCK_NO_SOUND → LOCKED. Episodes
+# can be advanced one state at a time during a run. The count of
+# advances is the win-condition counter for require_episodes_advanced_min.
+var _episode_states: Dictionary = {}        # space_id → state_id (String)
+var _episode_state_ladder: Array = [
+	"TITLE_CARD_ONLY", "PAPER_ONLY", "FOOTAGE_ONLY",
+	"ASSEMBLY", "PICTURE_LOCK_NO_SOUND", "LOCKED"
+]
+var _episodes_advanced_this_run: int = 0
+# Count of completed sit_with steps with cast/crew (kind == "cast_crew")
+# visitors during this run. Required by Pomegranate win conditions to
+# distinguish a sit_with with a friend from a lock with a subject of
+# the art.
+var _cast_crew_sit_with_count: int = 0
 # Empress (III) state — Bloom is the POSITIVE doom-clock: rises good,
 # opposite of Stagnation. Harvest is the spendable currency (countable
 # crops in the pantry). Both default zero/inert for non-empress runs.
@@ -780,6 +796,20 @@ func _init_run() -> void:
 	_master_reel_threshold = int(mr_def.get("completion_threshold", 6))
 	_master_reel = int(start.get("starting_master_reel", 0))
 	_insight = int(start.get("insight", 0))
+	# Pomegranate Hour episode states. Default per-space from the location
+	# JSON (each episode-space carries `episode_state`). The scenario can
+	# override with `starting_episode_states: { space_id: STATE_ID }`.
+	_episode_states.clear()
+	_episodes_advanced_this_run = 0
+	_cast_crew_sit_with_count = 0
+	for sdef in (_location.get("spaces", []) as Array):
+		var sd: Dictionary = sdef as Dictionary
+		var st: String = String(sd.get("episode_state", ""))
+		if st != "":
+			_episode_states[String(sd.get("id", ""))] = st
+	var ep_override: Dictionary = start.get("starting_episode_states", {}) as Dictionary
+	for k_eo in ep_override.keys():
+		_episode_states[String(k_eo)] = String(ep_override[k_eo])
 	_patience_frozen_turns = 0
 	_patched_pairs.clear()
 	# Empress bloom track — pulled from location.bloom_track. Bloom
@@ -4354,6 +4384,29 @@ func _is_threshold(pos: String) -> bool:
 	return false
 
 
+# Pomegranate Hour: the index of an episode state on the six-step
+# ladder. Returns -1 for unknown states.
+func _episode_state_index(state_id: String) -> int:
+	return _episode_state_ladder.find(state_id)
+
+
+# Pomegranate Hour: advance the named episode-space one state up the
+# ladder. Increments the run's episodes_advanced counter for the win
+# condition. Returns the new state id (or "" if the space wasn't an
+# episode-space, or was already at LOCKED).
+func advance_episode(space_id: String) -> String:
+	var cur: String = String(_episode_states.get(space_id, ""))
+	if cur == "":
+		return ""
+	var idx: int = _episode_state_index(cur)
+	if idx < 0 or idx >= _episode_state_ladder.size() - 1:
+		return ""
+	var nxt: String = String(_episode_state_ladder[idx + 1])
+	_episode_states[space_id] = nxt
+	_episodes_advanced_this_run += 1
+	return nxt
+
+
 # Magician / cathedral — the "bright" zone. Inner cluster (warm-lit
 # finished pieces around the workbench) plus the explicitly-illuminated
 # outer-cluster stations (TOWER neon, STAR lights, SUN, JUDGEMENT
@@ -4572,6 +4625,34 @@ func _win_conditions_met() -> bool:
 		if _stagnation >= int(wc.get("require_stagnation_below", 99)):
 			return false
 		if _master_reel >= int(wc.get("require_master_reel_below", _master_reel_threshold + 1)):
+			return false
+		# Pomegranate Hour: episodes advanced this run.
+		var need_advances: int = int(wc.get("require_episodes_advanced_min", 0))
+		if need_advances > 0 and _episodes_advanced_this_run < need_advances:
+			return false
+		# Pomegranate Hour: a specific episode must have advanced past
+		# its starting state. "require_episode_locked" is a slight
+		# misnomer — it means "this episode-space must have been
+		# advanced at least once tonight," which is the win for The
+		# Conversation (Ep. 17 moves from TITLE_CARD_ONLY to
+		# FOOTAGE_ONLY).
+		var locked_space: String = String(wc.get("require_episode_locked", ""))
+		if locked_space != "":
+			var cur_state: String = String(_episode_states.get(locked_space, ""))
+			var start_state: String = ""
+			for sdef_chk in (_location.get("spaces", []) as Array):
+				if String((sdef_chk as Dictionary).get("id", "")) == locked_space:
+					start_state = String((sdef_chk as Dictionary).get("episode_state", ""))
+					break
+			# overlay scenario starting override if present
+			var ep_ov: Dictionary = (_setup.get("starting_state", {}) as Dictionary).get("starting_episode_states", {}) as Dictionary
+			if ep_ov.has(locked_space):
+				start_state = String(ep_ov[locked_space])
+			if _episode_state_index(cur_state) <= _episode_state_index(start_state):
+				return false
+		# Pomegranate Hour: cast/crew sit_with completions.
+		var need_cc_sit: int = int(wc.get("require_cast_crew_sit_with_min", 0))
+		if need_cc_sit > 0 and _cast_crew_sit_with_count < need_cc_sit:
 			return false
 		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
 			return false
@@ -6077,6 +6158,22 @@ func _connect_visitor(vid: String) -> void:
 	_visitors_state[vid]["connected"] = true
 	_visitors_state[vid]["claimed_turn"] = -1
 	_connections_made.append(vid)
+	# Pomegranate Hour: a connection at the sit_with step with a cast/
+	# crew visitor counts toward the cast_crew_sit_with win counter.
+	# Subjects-of-the-art (kind: "subject") do NOT count — they
+	# fulfill a different win condition (episodes advanced).
+	var v_kind: String = String(v_def.get("kind", ""))
+	if v_kind == "cast_crew":
+		_cast_crew_sit_with_count += 1
+	elif v_kind == "subject":
+		# Subjects' final lock step advances their bound episode-space
+		# up one state on the ladder. The episode advances because the
+		# subject was witnessed all the way through.
+		var bound: String = String(v_def.get("bound_to_episode", ""))
+		if bound != "":
+			var new_state: String = advance_episode(bound)
+			if new_state != "":
+				_log_line("[color=#c8a268][i]Episode advances — %s is now %s.[/i][/color]" % [bound, new_state])
 	_audio_sfx("visitor_connect")
 	var v: Dictionary = _visitors_def[vid]
 	var name_s: String = v.get("name", vid)
