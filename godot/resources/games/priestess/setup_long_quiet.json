@@ -1,0 +1,83 @@
+{
+  "id": "long_quiet",
+  "arcana": "ii_priestess",
+  "location": "recording_booth",
+  "hand": "elicia",
+  "title": "THE LONG QUIET",
+  "subtitle": "The Booth · 11:02 PM · Confessional Hour",
+  "difficulty": "medium",
+  "epigraph_upright": "The kind of visitor who walks in because they had nowhere else to say it. Elicia's ability is exactly the right shape for this hour. The pre-funeral son. The apologist. The returner. The reel is already at 2 because she's been recording herself between sessions.",
+  "epigraph_reversed": "The son leaves before he gets to the part about his father. The apologist records the wrong thing. The returner doesn't say what he came to say. The booth is the loudest empty room in the cathedral.",
+  "scene_description": "Three confessional visitors plus a quiet drop-in from Frasier. The master reel is at 2/6 already — Elicia has been recording herself between sessions tonight. Doubt starts at 1; she's nervous about the apologist. The cicadas are gone now — too late for them. The booth has its own noise floor instead.",
+  "direction_hint": "Get the son through his eulogy. Get the apologist through their apology. Land the returner's second session. Reel must not fill.",
+  "opening_log_lines": [
+    "the cicadas are gone now. just the booth's own noise floor.",
+    "the master reel is at two, because elicia was recording herself between sessions.",
+    "the son is in the vestibule, deciding whether to come in."
+  ],
+  "starting_state": {
+    "player_pos": "console",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "insight": 2,
+    "starting_master_reel": 2,
+    "starting_hand": ["walk","focus","search","short_rest","record","transcribe","rewind","play_back"]
+  },
+  "visitors_present_at_start": ["the_returner"],
+  "visitor_schedule": [
+    { "visitor": "the_pre_funeral_son", "arrival_turn": 2, "arrival_space": "entry_hall" },
+    { "visitor": "the_apologist",       "arrival_turn": 4, "arrival_space": "entry_hall" },
+    { "visitor": "the_stranger_in_the_booth", "arrival_turn": 5, "arrival_space": "entry_hall" },
+    { "visitor": "frasier_as_visitor",  "arrival_turn": 4, "arrival_space": "back_door" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 4,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_master_reel_below": 6,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 12,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3,
+    "master_reel_full_before_end": true
+  },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "the booth holds.",                     "tick_per_turn": 1, "effects": [] },
+    { "level": 4,  "label": "the room is heavier than it was.",     "tick_per_turn": 1, "effects": [] },
+    { "level": 7,  "label": "the reel is leaning.",                 "tick_per_turn": 2, "effects": [ "tick_master_reel" ] },
+    { "level": 10, "label": "the booth wants its own listener.",    "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "the session is over and nothing got recorded.", "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "elicia at the console, second pot of coffee.",     "effects": [] },
+    { "level": 3, "label": "she doesn't believe what she just heard.",         "effects": [] },
+    { "level": 5, "label": "she questions every level she set tonight.",       "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the listener breaks at her own console.",          "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "entry_hall",  "label": "ENTRY HALL",  "ending_lore_token": "leap_into_the_front_porch",  "visible_from_start": true },
+    { "id": "back_door",   "label": "BACK DOOR",   "ending_lore_token": "leap_into_the_cathedral_dark","visible_from_start": true },
+    { "id": "roof_access", "label": "ROOF ACCESS", "ending_lore_token": "leap_into_the_cicada_night",  "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 9,
+  "notes": "Medium-mode Priestess. Confessional hour. Reel starts at 2, doubt starts at 1, harder mood mix (the son is intense, the apologist is lonely). Frasier shows up off-shift via the back door — sit with him for the bonus connection. Requires 4 connections + 2 hard moods + leap.",
+  "ambient_pool": [
+    "the booth's own noise floor. familiar now.",
+    "the reel is making the sound the reel makes when it has a long take to remember.",
+    "outside, a car door closes. nobody comes in."
+  ],
+  "ambient_every_n": 2
+}

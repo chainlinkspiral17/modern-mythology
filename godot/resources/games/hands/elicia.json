@@ -1,0 +1,19 @@
+{
+  "id": "elicia",
+  "name": "Elicia Temple",
+  "subtitle": "the listener in the booth",
+  "portrait": "assets/gallery/elicia_face.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "the_long_quiet",
+    "label": "The Long Quiet",
+    "description": "Once per game, stop the room. The next visitor speaks for as long as it takes — patience does not tick for one full turn. Elicia waits the way only she can wait.",
+    "uses_per_game": 1
+  },
+  "starting_hand": ["walk", "focus", "search", "short_rest", "record", "transcribe", "rewind", "play_back"],
+  "save_witness_rewards": null,
+  "notes": "Elicia's hand is the listener loop — RECORD / TRANSCRIBE / REWIND / PLAY BACK as starters instead of the Fool's waiter-loop or the Magician's maker-loop. Buyable pool is TAPES (recorded fragments that can be replayed for delayed effects). Second stat is DOUBT (same shape as Frasier's, different lore: she doubts the truth of what she's hearing rather than her own making). Insight replaces Inspiration — currency for transcribing the long sentences. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+}

@@ -1,0 +1,5 @@
+{
+  "scope": "priestess",
+  "notes": "Priestess does not use the Fool's threat-meeple system. Pressure comes from the master-reel filling + the visitors' patience running out (which is shorter for intense moods). This file exists so the engine's threat loader doesn't crash.",
+  "threats": {}
+}

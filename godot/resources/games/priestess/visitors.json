@@ -1,0 +1,163 @@
+{
+  "scope": "priestess",
+  "notes": "Elicia's recording-booth roster. These are the people who walked into the booth tonight because the booth was the only place they could say it. Most are 'preoccupied' mood by default — they're not here for small talk. The mood ladder follows the Fool's pattern (preoccupied < talkative < lonely < intense).",
+  "visitors": [
+    {
+      "id": "the_returner",
+      "name": "The Returner",
+      "scenarios": ["cicada_session", "long_quiet", "tape_witness"],
+      "arrival": { "kind": "on_board_at_start", "pos": "lounge" },
+      "lore_token": "the_returner_came_back",
+      "lore_text": "Someone who recorded here once before. They remember the chair, the mic-stand height. They came back to listen to what they said the first time, before they say what they came to say tonight.",
+      "accent": "#a99070",
+      "mood": "preoccupied",
+      "patience": 7,
+      "steps": {
+        "greet":   "Nod. The returner nods back. The booth-chair fits them already.",
+        "listen":  "They unfold the same story they recorded eight months ago. It is shorter this time. Smaller in a way that feels honest.",
+        "deliver": "You bring out the old tape. They hold it without playing it. Then they ask you to play it. Then they ask you to stop, halfway.",
+        "sit_with": "You sit at the console while they sit in the booth, and neither of you records. That counts as the session."
+      }
+    },
+    {
+      "id": "the_stranger_in_the_booth",
+      "name": "The Stranger in the Booth",
+      "scenarios": ["cicada_session", "long_quiet"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "entry_hall", "to": "booth" },
+      "lore_token": "stranger_came_to_speak",
+      "lore_text": "They didn't make an appointment. They were already sitting in the booth when you came in.",
+      "accent": "#d8a060",
+      "mood": "lonely",
+      "patience": 5,
+      "steps": {
+        "greet":   "They look up. The look is heavier than the room is.",
+        "listen":  "They start in the middle of a sentence that began before you were born.",
+        "deliver": "They ask for water. You bring water. They drink half. They cap the bottle for you.",
+        "sit_with": "You sit across the glass. They lean toward the mic. You lean toward the speaker. Five minutes pass. It's the right five minutes."
+      }
+    },
+    {
+      "id": "the_kid_with_the_letter",
+      "name": "The Kid with the Letter",
+      "scenarios": ["cicada_session"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "entry_hall", "to": "lounge" },
+      "lore_token": "kid_read_the_letter_aloud",
+      "lore_text": "A teenager carrying a letter they wrote to someone they will not send it to. They want the letter on tape instead. The booth, they think, is closer than the mailbox.",
+      "accent": "#7cffb0",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "They are sixteen and trying very hard to look thirty.",
+        "listen":  "They read the letter to you instead of into the mic first. You tell them that's fine.",
+        "deliver": "You hand them the foam pop-filter. They look at it like a sacred object.",
+        "sit_with": "You record the letter. They listen back to themselves through the headphones. They cry quietly. They thank you and leave. The tape is labelled in their handwriting before they go."
+      }
+    },
+    {
+      "id": "the_pre_funeral_son",
+      "name": "Son · Pre-Funeral",
+      "scenarios": ["long_quiet", "tape_witness"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "entry_hall", "to": "vestibule" },
+      "lore_token": "son_recorded_the_eulogy_early",
+      "lore_text": "His father isn't dead yet. He wants to record the eulogy now, because he's worried he won't have the words when the time comes.",
+      "accent": "#c87633",
+      "mood": "intense",
+      "patience": 4,
+      "steps": {
+        "greet":   "He won't sit down. You let him stand.",
+        "listen":  "He talks about the diner. He talks about a fishing trip. He talks about a thing his father did that was bad and a thing his father did that was good.",
+        "deliver": "You bring him a mug of water and the long-mic, the one for standing close.",
+        "sit_with": "You sit while he records the second take, which is shorter than the first take but better. He thanks you. He takes the tape with him."
+      }
+    },
+    {
+      "id": "the_writer",
+      "name": "The Writer",
+      "scenarios": ["cicada_session"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "entry_hall", "to": "lounge" },
+      "lore_token": "writer_read_the_unfinished_chapter",
+      "lore_text": "Local writer working on a novel they've been working on for nine years. They come to the booth to read a chapter aloud to see if it works in a voice that isn't theirs.",
+      "accent": "#9b5fd3",
+      "mood": "talkative",
+      "patience": 7,
+      "steps": {
+        "greet":   "They have a manuscript folder. The corners are rounded from carrying.",
+        "listen":  "They read the chapter. Twice. The second reading is slower. It works the second time.",
+        "deliver": "You bring them coffee. Black. They drink half before they finish reading.",
+        "sit_with": "You sit and listen to the playback together. They mark the parts that landed. They take the tape AND a copy. They will not return for at least a month."
+      }
+    },
+    {
+      "id": "the_truth_teller",
+      "name": "The Truth-Teller",
+      "scenarios": ["tape_witness"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "entry_hall", "to": "booth" },
+      "lore_token": "truth_was_recorded",
+      "lore_text": "Someone here to say a true thing they have not said anywhere else. The booth is the only place small enough to hold it.",
+      "accent": "#ff5040",
+      "mood": "intense",
+      "patience": 3,
+      "steps": {
+        "greet":   "They will not look at you. They look at the mic.",
+        "listen":  "They speak in a voice that has not been used at this volume in a long time.",
+        "deliver": "You hand them the headphones. They wave them off.",
+        "sit_with": "You sit at the console. You do not turn the playback on. You let the recording exist without being heard. That is what they came for."
+      }
+    },
+    {
+      "id": "the_apologist",
+      "name": "The Apologist",
+      "scenarios": ["tape_witness", "long_quiet"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "entry_hall", "to": "vestibule" },
+      "lore_token": "apology_committed_to_tape",
+      "lore_text": "Coming to record an apology for someone they wronged who will not hear it directly. The tape is for themselves to be able to say it out loud, fully, once.",
+      "accent": "#ff8060",
+      "mood": "lonely",
+      "patience": 5,
+      "steps": {
+        "greet":   "They thank you for being open this late.",
+        "listen":  "They go through it: the name, the wrong, the consequence, the year, the silence, the regret.",
+        "deliver": "You bring tissues. They use one and then pocket the rest.",
+        "sit_with": "You sit through the playback. They wince. You don't react. They mark the tape DO NOT PLAY UNTIL I AM GONE. They leave it."
+      }
+    },
+    {
+      "id": "elicia_as_visitor",
+      "name": "Elicia (off-shift)",
+      "as_hand_id": "elicia",
+      "swap_target_for_hand": "elicia_as_visitor",
+      "scenarios": ["cicada_session", "long_quiet", "tape_witness"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "back_door", "to": "console" },
+      "lore_token": "elicia_came_in_off_shift",
+      "lore_text": "When the player is NOT Elicia, she comes in off-shift to listen at the console. When the player IS Elicia, this entry swaps out.",
+      "accent": "#d8a060",
+      "mood": "preoccupied",
+      "patience": 8,
+      "steps": {
+        "greet":   "She nods from the doorway. Says she'll be at the console.",
+        "listen":  "She tells you which tape from the library to put on, second drawer down.",
+        "deliver": "You bring her coffee. She remembers how you take yours.",
+        "sit_with": "She listens beside you while the next visitor records. She doesn't speak. The room is steadier with her in it."
+      }
+    },
+    {
+      "id": "frasier_as_visitor",
+      "name": "Frasier (visiting)",
+      "as_hand_id": "frasier",
+      "swap_target_for_hand": "frasier_as_visitor",
+      "scenarios": ["long_quiet"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "back_door", "to": "lounge" },
+      "lore_token": "frasier_visited_the_booth",
+      "lore_text": "When the player is NOT Frasier, he comes over from the cathedral to sit in the lounge for a while. When the player IS Frasier, this entry swaps out.",
+      "accent": "#c87633",
+      "mood": "preoccupied",
+      "patience": 7,
+      "steps": {
+        "greet":   "He's holding a small balsa-wood object he didn't finish.",
+        "listen":  "He talks about what he's making, not at length, not for long.",
+        "deliver": "You bring him water. He drinks it slowly.",
+        "sit_with": "You sit with him in the lounge. The mic isn't running. He says it helps to be somewhere that's listening even when nothing's being said."
+      }
+    }
+  ]
+}

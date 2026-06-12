@@ -1,0 +1,151 @@
+{
+  "id": "recording_booth",
+  "title": "ELICIA'S BOOTH",
+  "subtitle": "Cicadas at Dusk · Vol 5 · Ch II · The High Priestess",
+  "notes": "Elicia Temple's recording room. A small isolation booth + console room tucked into the south side of the cathedral, though when the door is shut the cathedral isn't here anymore — only the wires, the reels, the visitors who walked in because they had something they couldn't say anywhere else. Twelve spaces; tight, claustrophobic-by-design, every move counts. Three thresholds for the leap.",
+  "ambient_pool": [
+    "the cicadas outside are louder than they should be for the hour.",
+    "the reel-to-reel turns. it doesn't catch on anything.",
+    "the booth's red record-light is on. you don't remember turning it on.",
+    "the cassette wall hums — twelve hundred conversations all at once, none of them audible.",
+    "the cathedral pretends, for a minute, that the booth isn't part of it.",
+    "elicia leaves her seat. her chair holds the shape."
+  ],
+  "ambient_every_n": 3,
+  "spaces": [
+    {
+      "id": "entry_hall",
+      "label": "ENTRY HALL",
+      "kind": "threshold",
+      "flavor": "the front door of the booth annex — visitors walk in here.",
+      "arrival_lines": [
+        "the porch light is on. the cicadas pause when you stand here.",
+        "the welcome mat says LISTEN in stitched red. you put it down yourself."
+      ]
+    },
+    {
+      "id": "back_door",
+      "label": "BACK DOOR",
+      "kind": "threshold",
+      "flavor": "the service exit — opens onto the cathedral's outer cluster.",
+      "arrival_lines": [
+        "the back door is mostly for taking out tapes that won't be played again.",
+        "the cathedral is on the other side. it is doing whatever it does without you."
+      ]
+    },
+    {
+      "id": "roof_access",
+      "label": "ROOF ACCESS",
+      "kind": "threshold",
+      "flavor": "a ladder up to the roof — the cicadas are loudest from up there.",
+      "arrival_lines": [
+        "the ladder rungs ring like a struck chime under your hands.",
+        "the cicadas are clearest from here. they sound like one organism rather than thousands."
+      ]
+    },
+    {
+      "id": "console",
+      "label": "CONSOLE",
+      "kind": "station",
+      "flavor": "elicia's chair · the engineer's seat · faders and the master reel.",
+      "arrival_lines": [
+        "the faders are warm. you can feel each visitor's voice in your palm.",
+        "the master reel is half-full of tonight's tape, half-empty of tonight's truth."
+      ]
+    },
+    {
+      "id": "booth",
+      "label": "BOOTH",
+      "kind": "station",
+      "flavor": "the live room · soundproofed · one chair, one mic, one direction.",
+      "arrival_lines": [
+        "the booth has its own air. older than the cathedral's.",
+        "the mic is at mouth height. somebody else's mouth height."
+      ]
+    },
+    {
+      "id": "control_glass",
+      "label": "CONTROL GLASS",
+      "kind": "station",
+      "flavor": "the window between booth and console · you watch them, they don't watch you back.",
+      "arrival_lines": [
+        "the glass has a fingerprint on it from the inside. yours.",
+        "the visitor sees their own reflection here before they see you."
+      ]
+    },
+    {
+      "id": "tape_library",
+      "label": "TAPE LIBRARY",
+      "kind": "station",
+      "flavor": "twelve hundred cassettes, alphabetised, each one a sentence from someone else's mouth.",
+      "arrival_lines": [
+        "the library smells like old coffee and electrical tape.",
+        "you find a cassette labeled BOOTH 47 · 11:18 PM and don't remember recording it."
+      ]
+    },
+    {
+      "id": "phone",
+      "label": "PHONE",
+      "kind": "station",
+      "flavor": "the landline · calls go out, calls come in, neither one is ever a wrong number.",
+      "arrival_lines": [
+        "the phone is unplugged. the line is still warm.",
+        "the receiver smells faintly of the person who held it last."
+      ]
+    },
+    {
+      "id": "lounge",
+      "label": "LOUNGE",
+      "kind": "station",
+      "flavor": "couch, lamp, magazine that's six months old · the room where visitors wait.",
+      "arrival_lines": [
+        "the cushion still has someone else's weight in it.",
+        "the lamp's pull-chain has frayed to a single thread."
+      ]
+    },
+    {
+      "id": "kitchenette",
+      "label": "KITCHENETTE",
+      "kind": "station",
+      "flavor": "coffee, water, a small kettle that's always almost-boiling.",
+      "arrival_lines": [
+        "the kettle hums in third gear. it's been doing that all night.",
+        "two clean mugs on the rack. neither one is yours."
+      ]
+    },
+    {
+      "id": "patch_bay",
+      "label": "PATCH BAY",
+      "kind": "station",
+      "flavor": "the routing wall · forty cables, each labeled in elicia's handwriting.",
+      "arrival_lines": [
+        "you trace a cable from the booth to a destination labeled simply 'self.'",
+        "two cables are crossed in a way that means the room can hear itself."
+      ]
+    },
+    {
+      "id": "vestibule",
+      "label": "VESTIBULE",
+      "kind": "station",
+      "flavor": "between the lounge and the booth · the moment a visitor decides whether to go in.",
+      "arrival_lines": [
+        "the vestibule is one square of red carpet. some visitors stop here forever.",
+        "you stand on the red square. nothing in particular speaks."
+      ]
+    }
+  ],
+  "master_reel": {
+    "completion_threshold": 6,
+    "label": "MASTER REEL",
+    "notes": "Elicia's equivalent of the Magician's steamboat. Each RECORD action ticks the reel by 1. At threshold the reel is full — no more recording, only transcribing what's already there. Some scenarios start with progress baked in; some have a loss condition tied to the reel filling before the work is done.",
+    "ladder": [
+      { "level": 0, "label": "the reel is empty. all of tonight is still ahead.", "intensity": 0.0 },
+      { "level": 1, "label": "the first turn of the reel. it is a small turn.",     "intensity": 0.15 },
+      { "level": 2, "label": "the reel has caught its second wind.",                "intensity": 0.30 },
+      { "level": 3, "label": "halfway. you can still hear the first conversation under everything that came after.", "intensity": 0.50 },
+      { "level": 4, "label": "the reel is making the sound a thing about to run out makes.", "intensity": 0.70 },
+      { "level": 5, "label": "one more conversation. maybe.",                       "intensity": 0.85 },
+      { "level": 6, "label": "the reel has reached the leader-tape. there is no more tonight to record.", "intensity": 1.0 }
+    ]
+  }
+}

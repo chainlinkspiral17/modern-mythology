@@ -501,6 +501,27 @@ const MAGICIAN_SCENARIOS := [
 ]
 
 
+const PRIESTESS_SCENARIOS := [
+	{
+		"id": "cicada_session",
+		"title": "CICADA SESSION",
+		"subtitle": "Easy · 9:18 PM · Late Summer",
+		"flavor": "Three appointments tonight, all small. The returner is in the lounge already. The cicadas are doing the part of the work the room can't do. Elicia gets to be the listener instead of the engineer for a change. The reel is fresh."
+	},
+	{
+		"id": "long_quiet",
+		"title": "THE LONG QUIET",
+		"subtitle": "Medium · 11:02 PM · Confessional Hour",
+		"flavor": "Late session. The kind of visitor who walks in because they had nowhere else to say it. The pre-funeral son. The apologist. Elicia's ability is exactly the right shape for this hour. Don't let the reel fill before the apology lands."
+	},
+	{
+		"id": "tape_witness",
+		"title": "TAPE WITNESS",
+		"subtitle": "Hard · 2:14 AM · The Truth-Teller's Hour",
+		"flavor": "Off-the-books. The truth-teller is in the booth already. The cathedral is dark on the other side. Two more visitors coming. The reel is half-full of the take Elicia made before you got there. Get the truth on tape without breaking the listener."
+	}
+]
+
 const FOOL_SCENARIOS := [
 	{
 		"id": "the_leap",
@@ -565,6 +586,10 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		arcana_title = "ENTER THE GAUNTLET · THE CATHEDRAL"
 		arcana_sub   = "Frasier Temple · Pick an evening"
 		scenarios    = MAGICIAN_SCENARIOS
+	elif arcana == "priestess" or arcana == "ii_priestess":
+		arcana_title = "ENTER THE GAUNTLET · ELICIA'S BOOTH"
+		arcana_sub   = "Elicia Temple · Pick a session"
+		scenarios    = PRIESTESS_SCENARIOS
 	var title := Label.new()
 	title.text = arcana_title
 	title.add_theme_font_size_override("font_size", 14)
@@ -667,7 +692,9 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		_add_play_button_overlay(vm, "magician", "cathedral", "frasier")
 		return
 	if short_path == "high_priestess_arcana":
-		_spawn_visualizer(PRIESTESS_VISUALIZER_SCRIPT); return
+		var vp := _spawn_visualizer(PRIESTESS_VISUALIZER_SCRIPT)
+		_add_play_button_overlay(vp, "priestess", "recording_booth", "elicia")
+		return
 	if short_path == "emperor_arcana":
 		_spawn_visualizer(EMPEROR_VISUALIZER_SCRIPT); return
 	if short_path == "hierophant_arcana":

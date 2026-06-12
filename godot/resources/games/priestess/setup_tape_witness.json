@@ -1,0 +1,83 @@
+{
+  "id": "tape_witness",
+  "arcana": "ii_priestess",
+  "location": "recording_booth",
+  "hand": "elicia",
+  "title": "TAPE WITNESS",
+  "subtitle": "The Booth · 2:14 AM · The Truth-Teller's Hour",
+  "difficulty": "hard",
+  "epigraph_upright": "Off-the-books. The truth-teller is already in the booth when Elicia comes back from the kitchenette. She didn't book this session. The reel is half-full of the take she made before this all started.",
+  "epigraph_reversed": "The truth-teller leaves mid-sentence. The apologist's tape gets stepped on. The reel runs out before any of it is on tape. Tomorrow morning Elicia listens back and there is nothing there that was true.",
+  "scene_description": "2:14 AM. The booth's red record-light is already on. The truth-teller is in the booth, sitting, not talking yet. The reel is at 3/6 from earlier tonight. Doubt at 2 — the booth feels off-axis, like the room is recording itself. Two more visitors coming in by appointment. Elicia is going to need her ability tonight.",
+  "direction_hint": "Get the truth-teller through their take. Don't let the apologist leave. Land the returner's third visit. Reel cannot fill.",
+  "opening_log_lines": [
+    "the booth's red record-light is on. the truth-teller is in there.",
+    "the reel is at three out of six. you have been recording without knowing.",
+    "2:14 AM. the cathedral is dark on the other side."
+  ],
+  "starting_state": {
+    "player_pos": "console",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 2,
+    "stagnation_per_turn": 2,
+    "doubt": 2,
+    "doubt_max": 7,
+    "insight": 2,
+    "starting_master_reel": 3,
+    "starting_hand": ["walk","focus","search","short_rest","record","transcribe","rewind","play_back","the_long_quiet"]
+  },
+  "visitors_present_at_start": ["the_truth_teller","the_returner"],
+  "visitor_schedule": [
+    { "visitor": "the_apologist",            "arrival_turn": 1, "arrival_space": "entry_hall" },
+    { "visitor": "the_pre_funeral_son",      "arrival_turn": 3, "arrival_space": "entry_hall" },
+    { "visitor": "elicia_as_visitor",        "arrival_turn": 5, "arrival_space": "back_door" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 5,
+    "require_hard_mood_connections_min": 3,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_master_reel_below": 6,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 12,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3,
+    "master_reel_full_before_end": true
+  },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "the booth holds, narrowly.",            "tick_per_turn": 2, "effects": [] },
+    { "level": 4,  "label": "the booth is unsettled.",               "tick_per_turn": 2, "effects": [] },
+    { "level": 7,  "label": "the reel is leaning hard.",             "tick_per_turn": 2, "effects": [ "tick_master_reel" ] },
+    { "level": 10, "label": "the booth is recording itself.",        "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "the truth left the room without being recorded.", "tick_per_turn": 3, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "elicia at the console, half-asleep.",                     "effects": [] },
+    { "level": 3, "label": "she is not sure she's the one in the engineer's chair.",  "effects": [] },
+    { "level": 5, "label": "she stops trusting the levels.",                          "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the listener breaks. the booth wins.",                    "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "entry_hall",  "label": "ENTRY HALL",  "ending_lore_token": "leap_into_the_front_porch",   "visible_from_start": true },
+    { "id": "back_door",   "label": "BACK DOOR",   "ending_lore_token": "leap_into_the_cathedral_dark","visible_from_start": true },
+    { "id": "roof_access", "label": "ROOF ACCESS", "ending_lore_token": "leap_into_the_cicada_night",  "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Hard-mode Priestess. 2:14 AM, off-the-books. Truth-teller already in the booth at session start. Reel starts at 3, doubt at 2, stagnation at 2. THE LONG QUIET ability card is in hand from start. Requires 5 connections + 3 hard moods + leap; 8-turn limit. Brutal.",
+  "ambient_pool": [
+    "2:14 AM. the cicadas are gone. the booth has only its own quiet.",
+    "the truth-teller is still in the booth, still sitting, still about to say it.",
+    "the reel turns. you can hear it.",
+    "the cathedral on the other side is dark. it doesn't know you're awake."
+  ],
+  "ambient_every_n": 2
+}

@@ -1,0 +1,73 @@
+{
+  "scope": "priestess",
+  "notes": "Priestess finale cards. Each entry is keyed to the loss-reason strings the engine fires. The booth fails in distinctive ways — silence where there should be sound, sound where there should be silence, the reel running empty, the visitor leaving mid-sentence.",
+  "finales": [
+    {
+      "id": "the_reel_ran_out",
+      "title": "THE REEL RAN OUT",
+      "triggered_by": "master_reel_full",
+      "weight": 1.0,
+      "flavor": "The master reel has reached the leader-tape. There is no more tonight to record. The current visitor is mid-sentence. Elicia raises a hand. The visitor stops. They say it again, off-mic, into the booth. Elicia hears it. The tape will never have it. She nods, like she always does at the end of nights like this. The cicadas are louder than they should be.",
+      "effects": [
+        { "kind": "end_game", "outcome": "reversed_priestess" }
+      ]
+    },
+    {
+      "id": "the_listener_breaks",
+      "title": "THE LISTENER BREAKS",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "Elicia is in the booth chair instead of the engineer's chair. She has been there for an hour. The mic is on. She is not speaking. The reel turns. She is letting the room record her at last, and discovering she has nothing she's willing to put on tape. The lounge is empty. The cathedral is on the other side of the wall doing whatever it does without her.",
+      "effects": [
+        { "kind": "end_game", "outcome": "reversed_priestess" }
+      ]
+    },
+    {
+      "id": "the_session_ends_empty",
+      "title": "THE SESSION ENDS EMPTY",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "It is the end of the booked time. The lounge has no one in it. The booth has no one in it. The reel has nothing tonight worth keeping on it. Elicia spools it back. She labels it BLANK · don't reuse. She files it on the shelf with the other tapes labelled the same way. There are more than there used to be.",
+      "effects": [
+        { "kind": "end_game", "outcome": "reversed_priestess" }
+      ]
+    },
+    {
+      "id": "they_walked_out_mid_sentence",
+      "title": "THEY WALKED OUT MID-SENTENCE",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "Three visitors left before they finished. Two of them were in the middle of the thing that mattered. One of them was almost at it. Elicia sits at the console with the headphones on. She listens to the silences they left behind. The silences are not nothing. They are the wrong thing.",
+      "effects": [
+        { "kind": "end_game", "outcome": "reversed_priestess" }
+      ]
+    },
+    {
+      "id": "the_cicadas_stopped",
+      "title": "THE CICADAS STOPPED",
+      "triggered_by": "river_takes_the_bank",
+      "weight": 1.0,
+      "flavor": "The cicadas have stopped, all at once, the way they sometimes do when the riverbank gives. Elicia goes to the back door. The cathedral is darker than it was when she came in. Frasier is on the other side, holding the steamboat. They look at each other. The booth's red record-light is still on.",
+      "effects": [
+        { "kind": "end_game", "outcome": "reversed_priestess" }
+      ]
+    },
+    {
+      "id": "session_over_unfinished",
+      "title": "THE SESSION IS OVER",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "It is past the end of the booked time. The booth lamp shuts itself off on a timer Elicia set last summer. There are visitors still in the lounge who didn't get their turn. There are sentences on the reel that aren't yet sentences. The night is finite. The booth was always finite. She files what's done.",
+      "effects": [
+        { "kind": "end_game", "outcome": "reversed_priestess" }
+      ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_doubt_start": 1,
+    "note": "Elicia's losses persist as residual Doubt carrying into the next run. What she didn't hear stays with her."
+  }
+}

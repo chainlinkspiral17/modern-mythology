@@ -1,0 +1,92 @@
+{
+  "scope": "priestess",
+  "notes": "Items in the booth — mostly tapes (recorded fragments) and small physical objects visitors bring or leave. The booth's piles are smaller and more intimate than the diner's. No bindle-construction analogue; the priestess wins by COMPLETING SESSIONS, not by assembling an object.",
+  "piles": {
+    "tape_library_shelf": {
+      "label": "TAPE LIBRARY",
+      "at_pos": "tape_library",
+      "items": ["tape_old_booth_47", "tape_returner_first_visit", "tape_practice_eulogy"]
+    },
+    "kitchenette_drawer": {
+      "label": "KITCHENETTE DRAWER",
+      "at_pos": "kitchenette",
+      "items": ["water_bottle", "tissues", "coffee_mug_extra"]
+    },
+    "lounge_couch": {
+      "label": "LOUNGE COUCH",
+      "at_pos": "lounge",
+      "items": ["dropped_letter", "old_magazine"]
+    },
+    "patch_bay_drawer": {
+      "label": "PATCH BAY DRAWER",
+      "at_pos": "patch_bay",
+      "items": ["xlr_cable_short", "headphones_spare"]
+    }
+  },
+  "items": {
+    "tape_old_booth_47": {
+      "title": "Tape · BOOTH 47, 11:18 PM",
+      "category": "tape",
+      "flavor": "A cassette labeled in Elicia's handwriting. The returner's first session.",
+      "use_at_pos": "console",
+      "use_effect": { "kind": "advance_visitor_step", "step": "deliver" }
+    },
+    "tape_returner_first_visit": {
+      "title": "Tape · The Returner's First",
+      "category": "tape",
+      "flavor": "The first time the returner came in. Eight months ago.",
+      "use_at_pos": "console",
+      "use_effect": { "kind": "gain_insight", "amount": 2 }
+    },
+    "tape_practice_eulogy": {
+      "title": "Tape · Practice Eulogy",
+      "category": "tape",
+      "flavor": "A draft someone recorded for someone who hadn't died yet.",
+      "use_at_pos": "console",
+      "use_effect": { "kind": "advance_visitor_step", "step": "deliver" }
+    },
+    "water_bottle": {
+      "title": "Water Bottle",
+      "category": "delivery",
+      "flavor": "Glass. Heavy. The label is from the cathedral's kitchenette.",
+      "delivered_to_satisfies_order": true
+    },
+    "tissues": {
+      "title": "Tissues",
+      "category": "delivery",
+      "flavor": "A small travel-pack. Most visitors take one and pocket the rest.",
+      "delivered_to_satisfies_order": true
+    },
+    "coffee_mug_extra": {
+      "title": "Spare Coffee Mug",
+      "category": "delivery",
+      "flavor": "There are exactly four. Three are clean. One is yours.",
+      "delivered_to_satisfies_order": true
+    },
+    "dropped_letter": {
+      "title": "Dropped Letter",
+      "category": "found",
+      "flavor": "Folded twice. Not addressed.",
+      "use_effect": { "kind": "gain_insight", "amount": 1 }
+    },
+    "old_magazine": {
+      "title": "Old Magazine",
+      "category": "found",
+      "flavor": "Six months out of date. A page is dog-eared in the back.",
+      "use_effect": { "kind": "lose_doubt", "amount": 1 }
+    },
+    "xlr_cable_short": {
+      "title": "XLR · Short",
+      "category": "found",
+      "flavor": "A two-foot cable. Always exactly the right length when you actually need it.",
+      "use_at_pos": "patch_bay",
+      "use_effect": { "kind": "gain_insight", "amount": 1 }
+    },
+    "headphones_spare": {
+      "title": "Spare Headphones",
+      "category": "found",
+      "flavor": "Closed-back. The good ones.",
+      "delivered_to_satisfies_order": true
+    }
+  }
+}

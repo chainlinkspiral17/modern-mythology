@@ -1,0 +1,152 @@
+{
+  "scope": "priestess",
+  "notes": "Elicia's listener-loop verbs. Replaces the Fool's waiter-loop (greet/listen/deliver/sit_with) and the Magician's maker-loop (draft/burn/record/tune). Listener-loop is RECORD / TRANSCRIBE / REWIND / PLAY BACK. Buyable pool is TAPES — short fragments captured tonight that can be replayed for delayed effects. Second stat is DOUBT (rises bad); Insight replaces Inspiration as the spendable currency.",
+  "cards": [
+    {
+      "id": "record",
+      "title": "RECORD",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Roll tape on what's being said right now. The reel ticks once.",
+      "requires": [
+        { "kind": "visitor_at_my_pos_progress_at_least", "n": 1 }
+      ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "listen" },
+        { "kind": "tick_master_reel", "amount": 1 },
+        { "kind": "gain_insight", "amount": 1 }
+      ]
+    },
+    {
+      "id": "transcribe",
+      "title": "TRANSCRIBE",
+      "time_cost": 2,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Listen back to a fragment and put it into words. Costs insight; the sentence comes loose.",
+      "requires": [
+        { "kind": "has_insight_at_least", "n": 1 }
+      ],
+      "effects": [
+        { "kind": "spend_insight", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "deliver" }
+      ]
+    },
+    {
+      "id": "rewind",
+      "title": "REWIND",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Spool back to a moment you almost missed.",
+      "effects": [
+        { "kind": "lose_doubt", "amount": 1 },
+        { "kind": "lose_stagnation", "amount": 1 }
+      ]
+    },
+    {
+      "id": "play_back",
+      "title": "PLAY BACK",
+      "time_cost": 2,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Play back what they said to themselves. Some visitors only finish their thought after they hear it once.",
+      "requires": [
+        { "kind": "visitor_at_my_pos_progress_at_least", "n": 2 }
+      ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "sit_with" }
+      ]
+    },
+    {
+      "id": "call_in",
+      "title": "CALL IN",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "phone",
+      "flavor": "Phone a scheduled visitor and bring them in early. The booth is open.",
+      "requires": [
+        { "kind": "at_pos", "pos": "phone" }
+      ],
+      "effects": [
+        { "kind": "advance_visitor_schedule", "amount": 1 }
+      ]
+    },
+    {
+      "id": "patch",
+      "title": "PATCH",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "patch_bay",
+      "flavor": "Re-route a cable. The booth hears the lounge, the lounge hears the booth. Two spaces become one for a turn.",
+      "requires": [
+        { "kind": "at_pos", "pos": "patch_bay" }
+      ],
+      "effects": [
+        { "kind": "patch_two_spaces", "a": "booth", "b": "lounge", "turns": 1 }
+      ]
+    },
+    {
+      "id": "shelve",
+      "title": "SHELVE",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "tape_library",
+      "flavor": "Move a finished tape onto the wall. The booth is one tape lighter; tonight has one more conversation worth of room.",
+      "requires": [
+        { "kind": "at_pos", "pos": "tape_library" }
+      ],
+      "effects": [
+        { "kind": "untick_master_reel", "amount": 1 },
+        { "kind": "gain_insight", "amount": 1 }
+      ]
+    },
+    {
+      "id": "the_long_quiet",
+      "title": "THE LONG QUIET",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 1,
+      "flavor": "Stop the room. The next visitor speaks for as long as it takes — patience does not tick for one full turn. Elicia waits the way only she can wait.",
+      "effects": [
+        { "kind": "freeze_patience", "turns": 1 }
+      ]
+    },
+    {
+      "id": "veil",
+      "title": "VEIL",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "control_glass",
+      "flavor": "Close the curtain on the booth window. The visitor inside hears nothing but themselves. Their next step happens twice as fast.",
+      "requires": [
+        { "kind": "at_pos", "pos": "control_glass" }
+      ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "listen" },
+        { "kind": "advance_visitor_step", "step": "deliver" }
+      ]
+    },
+    {
+      "id": "scroll",
+      "title": "SCROLL",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "tape_library",
+      "flavor": "Pull a tape from the wall and play one sentence from someone else's session. The room remembers.",
+      "requires": [
+        { "kind": "at_pos", "pos": "tape_library" }
+      ],
+      "effects": [
+        { "kind": "gain_insight", "amount": 2 },
+        { "kind": "gain_doubt", "amount": 1 }
+      ]
+    }
+  ]
+}
