@@ -1,0 +1,127 @@
+{
+  "scope": "hierophant",
+  "notes": "Callers + walk-ins at ember.ash.rest.bbs. Some are dialed in (they live in the terminal); some came in through the alley door (they live in the couch corner). The BBS makes its own community across both.",
+  "visitors": [
+    {
+      "id": "the_regular_caller",
+      "name": "The Regular Caller",
+      "scenarios": ["green_phosphor", "the_long_signal", "broadcast_night"],
+      "arrival": { "kind": "on_board_at_start", "pos": "crt_terminal" },
+      "lore_token": "regular_caller_logged_in",
+      "lore_text": "Dials in every night at 9. Sysop knows their handle, doesn't know their name. They tend to write the longer posts.",
+      "accent": "#a8e89c",
+      "mood": "talkative",
+      "patience": 8,
+      "steps": {
+        "greet":   "Their handle shows green on the terminal. They are typing.",
+        "listen":  "They post a long thread. You read it as it comes in.",
+        "deliver": "You reply. You stamp the post into the keep-archive.",
+        "sit_with": "You sit at the CRT and answer them in the long form they came for."
+      }
+    },
+    {
+      "id": "the_walk_in",
+      "name": "The Walk-In",
+      "scenarios": ["green_phosphor"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "alley_door", "to": "couch_corner" },
+      "lore_token": "walk_in_came_through_the_alley_door",
+      "lore_text": "Came through the alley door because they didn't want to type it. They wanted to say it.",
+      "accent": "#d8a060",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "They knock once. Then they let themselves in.",
+        "listen":  "They sit on the couch and tell you what they would've posted.",
+        "deliver": "You bring them coffee with hot sauce because that is what is in the kitchen.",
+        "sit_with": "You sit on the couch with them. The modem rack hums."
+      }
+    },
+    {
+      "id": "the_lurker",
+      "name": "The Lurker",
+      "scenarios": ["green_phosphor", "broadcast_night"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "modem_window", "to": "crt_terminal" },
+      "lore_token": "lurker_finally_posted",
+      "lore_text": "Has read every thread on the BBS for two years. Has never posted. Tonight they are going to.",
+      "accent": "#9b5fd3",
+      "mood": "intense",
+      "patience": 5,
+      "steps": {
+        "greet":   "Their handle shows up. It is a handle you have never seen post.",
+        "listen":  "They post a single sentence. The sentence has weight.",
+        "deliver": "You reply gently. You do not reply at length. The lurker doesn't want length right now.",
+        "sit_with": "You sit at the CRT. They post a second sentence. It lands."
+      }
+    },
+    {
+      "id": "the_kid_with_questions",
+      "name": "The Kid with Questions",
+      "scenarios": ["green_phosphor"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "alley_door", "to": "couch_corner" },
+      "lore_token": "kid_got_their_questions_answered",
+      "lore_text": "Sixteen. Has had a number of questions for sysop. Showed up to ask them in person because the BBS started feeling impersonal.",
+      "accent": "#7cffb0",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "They are visibly trying not to seem nervous.",
+        "listen":  "They ask. You answer. You answer in small pieces.",
+        "deliver": "You hand them a printed-out page from the archive. The page is from a thread two years ago that answered a similar question.",
+        "sit_with": "You sit with them at the printer table. They read the page. They thank you. They go home."
+      }
+    },
+    {
+      "id": "the_ham_voice",
+      "name": "The Ham Radio Voice",
+      "scenarios": ["broadcast_night", "the_long_signal"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "ham_radio", "to": "ham_radio" },
+      "lore_token": "ham_voice_came_through",
+      "lore_text": "Came in on 14.301 MHz. A voice you only hear once a season. They want to talk for a while.",
+      "accent": "#c87633",
+      "mood": "lonely",
+      "patience": 7,
+      "steps": {
+        "greet":   "Their callsign clears. You acknowledge.",
+        "listen":  "They tell you the weather where they are. The weather is the cover for the call.",
+        "deliver": "You give them the small archived signal-report they asked for last time.",
+        "sit_with": "You sit at the ham radio with them. They sign off slowly."
+      }
+    },
+    {
+      "id": "anya_recording",
+      "name": "Anya · The Recording",
+      "scenarios": ["the_long_signal"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "stairs_up", "to": "floppy_wall" },
+      "lore_token": "anya_came_for_the_archive",
+      "lore_text": "Anya — the recording — has come down for a floppy from the wall. She knows which one. She has known for a long time.",
+      "accent": "#9b5fd3",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "She doesn't speak. She gestures at the wall.",
+        "listen":  "She points to a floppy. The floppy is labeled in your hand.",
+        "deliver": "You hand it to her. She holds it without inserting it.",
+        "sit_with": "You sit with her at the floppy wall. She still holds it. She doesn't put it down."
+      }
+    },
+    {
+      "id": "sysop_as_visitor",
+      "name": "Sysop (off-shift)",
+      "as_hand_id": "sysop",
+      "swap_target_for_hand": "sysop_as_visitor",
+      "scenarios": ["green_phosphor", "the_long_signal", "broadcast_night"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "stairs_up", "to": "back_kitchen" },
+      "lore_token": "sysop_came_down_off_shift",
+      "lore_text": "When the player is NOT Sysop, he comes down off-shift to make coffee. When the player IS Sysop, this swaps out.",
+      "accent": "#a8e89c",
+      "mood": "preoccupied",
+      "patience": 8,
+      "steps": {
+        "greet":   "He waves at you from the kitchen alcove.",
+        "listen":  "He tells you what's been on the board today.",
+        "deliver": "You bring him a coffee. He thanks you.",
+        "sit_with": "You sit on the couch corner together. The room is itself."
+      }
+    }
+  ]
+}

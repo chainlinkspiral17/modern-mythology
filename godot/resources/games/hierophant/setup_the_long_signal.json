@@ -1,0 +1,74 @@
+{
+  "id": "the_long_signal",
+  "arcana": "v_hierophant",
+  "location": "bbs_room",
+  "hand": "sysop",
+  "title": "THE LONG SIGNAL",
+  "subtitle": "ember.ash.rest.bbs · 11:14 PM · Late Wednesday",
+  "difficulty": "medium",
+  "epigraph_upright": "Late Wednesday. Anya is in the floppy wall already. The ham band is open. The regular caller dialed in at nine and hasn't logged off. Sysop has been here since five. THE LONG SIGNAL ability card is in his starting hand because tonight is the night to use it.",
+  "epigraph_reversed": "The signal can't carry. Anya leaves with the floppy still in her hand. The ham voice signs off without saying what they came for. The night closes quiet.",
+  "scene_description": "Late Wednesday. Doctrine starts at 2 (sysop has been here a while). Stagnation at 1, doubt at 1. THE LONG SIGNAL is in hand. Anya is at the wall, the ham voice is on the radio, the regular caller is at the terminal.",
+  "direction_hint": "Connect with 5 visitors including Anya + the ham voice. Signal to 4.",
+  "opening_log_lines": [
+    "anya is at the floppy wall. she has been there for ten minutes.",
+    "the ham band is open. 14.301 is live tonight.",
+    "the regular caller's status has been 'idle' for two minutes."
+  ],
+  "starting_state": {
+    "player_pos": "crt_terminal",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "doctrine": 2,
+    "starting_hand": ["walk","focus","search","short_rest","boot","welcome","transmit","receive","the_long_signal"]
+  },
+  "visitors_present_at_start": ["the_regular_caller","anya_recording"],
+  "visitor_schedule": [
+    { "visitor": "the_ham_voice",   "arrival_turn": 1, "arrival_space": "ham_radio" },
+    { "visitor": "the_lurker",      "arrival_turn": 3, "arrival_space": "modem_window" },
+    { "visitor": "sysop_as_visitor","arrival_turn": 5, "arrival_space": "stairs_up" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 5,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_signal_at_least": 4,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 12, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "wednesday late night, BBS active.",            "tick_per_turn": 1, "effects": [] },
+    { "level": 6,  "label": "the modems are leaning on standby.",            "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "the printer is quiet for too long.",            "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "the BBS closed quiet.",                         "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "sysop alert, second pot of coffee.",             "effects": [] },
+    { "level": 4, "label": "he's not sure the right reply exists.",          "effects": [] },
+    { "level": 7, "label": "the signal dropped.",                            "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "alley_door",   "label": "ALLEY DOOR",   "ending_lore_token": "leap_into_the_alley_dark", "visible_from_start": true },
+    { "id": "stairs_up",    "label": "STAIRS UP",    "ending_lore_token": "leap_into_the_music_store","visible_from_start": true },
+    { "id": "modem_window", "label": "MODEM WINDOW", "ending_lore_token": "leap_onto_the_street",     "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Medium-mode Hierophant. Anya is in the room. The ham voice is on the band. 5 connections + 2 hard moods (lurker is intense, ham voice is lonely, anya is preoccupied) + signal 4.",
+  "ambient_pool": [
+    "the modem rack hums lower than usual.",
+    "anya turns the floppy over in her hand.",
+    "the ham band hisses, then clears."
+  ],
+  "ambient_every_n": 3
+}

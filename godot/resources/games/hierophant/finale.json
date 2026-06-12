@@ -1,0 +1,53 @@
+{
+  "scope": "hierophant",
+  "notes": "Hierophant finale cards. The BBS fails in distinctive ways — the signal drops, the lurker stays a lurker, the kid leaves without their answer.",
+  "finales": [
+    {
+      "id": "signal_dropped",
+      "title": "THE SIGNAL DROPPED",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "Sysop is at the CRT. The terminal prompt is blinking. The four modem lights are all green. The room is humming. He is not typing. He has not typed in twelve minutes. The cicadas outside the alley door have not paused. The hum he has been listening to for thirty years has, for tonight, become something he has nothing to add to.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
+    },
+    {
+      "id": "the_BBS_closed_quiet",
+      "title": "THE BBS CLOSED QUIET",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "The four modem lights have gone amber. The last caller hung up an hour ago. The printer is silent. The wall of floppies is the wall it has always been. Sysop turns off the CRT. The basement is dark.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
+    },
+    {
+      "id": "the_lurker_stayed_a_lurker",
+      "title": "THE LURKER STAYED A LURKER",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "Three handles logged off without posting. The lurker among them. Sysop scrolls the day's activity log. He sees them connect, sit, wait, leave. The pattern is one he has watched a thousand times.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
+    },
+    {
+      "id": "peak_signal_unattended",
+      "title": "PEAK SIGNAL · UNATTENDED",
+      "triggered_by": "signal_full",
+      "weight": 1.0,
+      "flavor": "Six modems all lit. Three threads running. The printer is buried in banner paper. Sysop is at the kitchen alcove looking for a clean mug. By the time he gets back to the CRT, the moment has passed.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
+    },
+    {
+      "id": "shift_ended_offline",
+      "title": "SHIFT ENDED OFFLINE",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "It is past the hour Sysop normally closes for the night. The modems are still up. He has not heard from them for forty-five minutes. He goes upstairs. He leaves the BBS running. There is nobody to leave the BBS on for tonight.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_doctrine_start": 1,
+    "note": "Sysop's losses carry a small residual Doctrine forward — the next session knows what to do."
+  }
+}

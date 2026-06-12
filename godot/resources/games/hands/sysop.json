@@ -1,0 +1,19 @@
+{
+  "id": "sysop",
+  "name": "The Sysop",
+  "subtitle": "the keeper at ember.ash.rest.bbs",
+  "portrait": "assets/gallery/portrait_dante_face.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "the_long_signal",
+    "label": "The Long Signal",
+    "description": "Once per game, transmit a message that everyone in the room reads. The next visitor in any space arrives on the next turn, no matter where they were scheduled.",
+    "uses_per_game": 1
+  },
+  "starting_hand": ["walk", "focus", "search", "short_rest", "boot", "welcome", "transmit", "receive"],
+  "save_witness_rewards": null,
+  "notes": "Sysop's hand is the keeper-of-the-room loop — BOOT / WELCOME / TRANSMIT / RECEIVE as starters. Buyable pool is THREADS (recurring board posts that bear over multiple turns). Second stat is DOUBT (rises bad). Signal is the positive doom-clock; Doctrine is the spendable currency. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+}

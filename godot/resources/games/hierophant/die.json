@@ -1,0 +1,16 @@
+{
+  "scope": "hierophant",
+  "notes": "Sysop's six-face die. WILD face gates on Doctrine banked.",
+  "die": {
+    "id": "hierophant_die",
+    "title": "Hierophant Die",
+    "faces": [
+      {"face": 1, "symbol": "BOOT",  "result": "ss",      "description": "Success ★★. The terminal wakes; the modem chirps; the room is ready."},
+      {"face": 2, "symbol": "PING",  "result": "s",       "description": "Success ★. The handshake clears."},
+      {"face": 3, "symbol": "ECHO",  "result": "partial", "description": "Partial. Spend 1 Doctrine to convert to ★."},
+      {"face": 4, "symbol": "DROP",  "result": "partial", "description": "Partial. Spend 1 Doctrine to convert to ★."},
+      {"face": 5, "symbol": "NULL",  "result": "fail",    "description": "Failure. The packet was dropped. +1 Doctrine."},
+      {"face": 6, "symbol": "ASH",   "result": "wild",    "description": "Wild. Counts as ★ if you have at least 1 Doctrine banked; counts as failure otherwise."}
+    ]
+  }
+}

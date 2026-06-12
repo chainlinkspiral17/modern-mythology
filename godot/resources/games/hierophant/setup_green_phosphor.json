@@ -1,0 +1,81 @@
+{
+  "id": "green_phosphor",
+  "arcana": "v_hierophant",
+  "location": "bbs_room",
+  "hand": "sysop",
+  "title": "GREEN PHOSPHOR",
+  "subtitle": "ember.ash.rest.bbs · 8:42 PM · Tuesday Night",
+  "difficulty": "easy",
+  "epigraph_upright": "Tuesday night. The regular caller is dialed in already. The kid with the questions is walking up the alley right now. The modems are at standby; the kettle is starting to think about boiling. The room is what the room should be tonight.",
+  "epigraph_reversed": "The lurker stays a lurker. The kid leaves with their questions unanswered. The regular caller logs off after ten minutes because the room doesn't have it tonight.",
+  "scene_description": "Tuesday night, BBS active. Regular caller already at the terminal. Doctrine at 1 (sysop made a coffee), signal at 0 (the BBS is quiet). The walk-in and the lurker are scheduled. The room is open.",
+  "direction_hint": "Connect with four callers/walk-ins. Get the signal to 3. Leap from any threshold.",
+  "opening_log_lines": [
+    "the regular caller is dialed in. their handle is in green at the top of the screen.",
+    "the kettle clicks. it has thoughts about boiling.",
+    "the kid is in the alley. you can hear them on the stairs."
+  ],
+  "starting_state": {
+    "player_pos": "crt_terminal",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
+    "doubt_max": 7,
+    "doctrine": 1,
+    "starting_hand": ["walk","focus","search","short_rest","boot","welcome","transmit","receive"]
+  },
+  "visitors_present_at_start": ["the_regular_caller"],
+  "visitor_schedule": [
+    { "visitor": "the_walk_in",      "arrival_turn": 1, "arrival_space": "alley_door" },
+    { "visitor": "the_lurker",       "arrival_turn": 2, "arrival_space": "modem_window" },
+    { "visitor": "the_kid_with_questions","arrival_turn": 3, "arrival_space": "alley_door" },
+    { "visitor": "sysop_as_visitor", "arrival_turn": 5, "arrival_space": "stairs_up" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 4,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_signal_at_least": 3,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 12,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "tuesday night, BBS active.",                  "tick_per_turn": 1, "effects": [] },
+    { "level": 4,  "label": "a handle has been idle for ten minutes.",      "tick_per_turn": 1, "effects": [] },
+    { "level": 7,  "label": "two modems on standby. nobody's posting.",     "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "the printer hasn't run in twenty minutes.",    "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "the BBS closed quiet.",                        "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "sysop at the CRT, fresh coffee.",               "effects": [] },
+    { "level": 3, "label": "he doesn't have the right thing to post.",      "effects": [] },
+    { "level": 5, "label": "he second-guesses every reply.",                "effects": [ "transmit_cost_plus_1" ] },
+    { "level": 7, "label": "the signal dropped.",                           "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "alley_door",   "label": "ALLEY DOOR",   "ending_lore_token": "leap_into_the_alley_dark", "visible_from_start": true },
+    { "id": "stairs_up",    "label": "STAIRS UP",    "ending_lore_token": "leap_into_the_music_store","visible_from_start": true },
+    { "id": "modem_window", "label": "MODEM WINDOW", "ending_lore_token": "leap_onto_the_street",     "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 9,
+  "notes": "Easy-mode Hierophant. Tuesday night BBS, 4 callers/walk-ins + sysop cameo. Signal to 3, leap from a threshold.",
+  "ambient_pool": [
+    "the modem rack hums.",
+    "the printer's banner paper rolls in a small stack on the floor.",
+    "outside in the alley, somebody's bike chain clicks."
+  ],
+  "ambient_every_n": 3
+}

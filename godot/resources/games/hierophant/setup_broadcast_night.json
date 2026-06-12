@@ -1,0 +1,73 @@
+{
+  "id": "broadcast_night",
+  "arcana": "v_hierophant",
+  "location": "bbs_room",
+  "hand": "sysop",
+  "title": "BROADCAST NIGHT",
+  "subtitle": "ember.ash.rest.bbs · 3:14 AM · Off-the-Books",
+  "difficulty": "hard",
+  "epigraph_upright": "3:14 AM. Sysop has not slept. The ham voice is on the radio because the BBS is between conversations and the ham band is the only thing live tonight. The lurker has logged in at this hour for the third night in a row.",
+  "epigraph_reversed": "He hits the wall at 3:42 and the room is empty. The signal goes flat. Everybody who came tonight came to him; he had nothing for them.",
+  "scene_description": "3 AM. Stagnation at 2, doubt at 2, doctrine at 1. The ham voice is in the room. The lurker is at the modem window. Signal at 0 — sysop hasn't transmitted yet tonight.",
+  "direction_hint": "Connect with 4 visitors. 2 of them must be hard moods. Signal to 4.",
+  "opening_log_lines": [
+    "3:14 AM. the BBS is between conversations.",
+    "the ham band is the only thing live tonight.",
+    "the lurker logged in twelve minutes ago. they haven't moved."
+  ],
+  "starting_state": {
+    "player_pos": "ham_radio",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 2,
+    "stagnation_per_turn": 2,
+    "doubt": 2,
+    "doubt_max": 7,
+    "doctrine": 1,
+    "starting_hand": ["walk","focus","search","short_rest","boot","welcome","transmit","receive"]
+  },
+  "visitors_present_at_start": ["the_ham_voice","the_lurker"],
+  "visitor_schedule": [
+    { "visitor": "the_regular_caller","arrival_turn": 2, "arrival_space": "crt_terminal" },
+    { "visitor": "sysop_as_visitor",  "arrival_turn": 5, "arrival_space": "stairs_up" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 4,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_signal_at_least": 4,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 12, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "3 AM. the room holds, narrowly.",              "tick_per_turn": 2, "effects": [] },
+    { "level": 6,  "label": "the modem rack is overheating slightly.",      "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "the kettle has been hot for too long.",        "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "the BBS closed quiet.",                        "tick_per_turn": 3, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "sysop at 3 AM, fourth coffee.",                  "effects": [] },
+    { "level": 5, "label": "he stops trusting his own posts.",                "effects": [] },
+    { "level": 7, "label": "the signal dropped.",                             "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "alley_door",   "label": "ALLEY DOOR",   "ending_lore_token": "leap_into_the_alley_dark","visible_from_start": true },
+    { "id": "stairs_up",    "label": "STAIRS UP",    "ending_lore_token": "leap_into_the_music_store","visible_from_start": true },
+    { "id": "modem_window", "label": "MODEM WINDOW", "ending_lore_token": "leap_onto_the_street",    "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Hard-mode Hierophant. 3 AM. The ham voice and the lurker are in the room. The regular caller dials in at turn 2. 4 connections + 2 hard moods + signal 4.",
+  "ambient_pool": [
+    "3 AM hum.",
+    "the lurker's cursor blinks.",
+    "the ham band has been quiet for two minutes."
+  ],
+  "ambient_every_n": 3
+}

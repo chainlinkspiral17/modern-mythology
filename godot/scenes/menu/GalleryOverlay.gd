@@ -501,6 +501,27 @@ const MAGICIAN_SCENARIOS := [
 ]
 
 
+const HIEROPHANT_SCENARIOS := [
+	{
+		"id": "green_phosphor",
+		"title": "GREEN PHOSPHOR",
+		"subtitle": "Easy · 8:42 PM · Tuesday Night",
+		"flavor": "The regular caller is dialed in. The kid with questions is walking up the alley. The modems are at standby. The kettle is thinking about boiling."
+	},
+	{
+		"id": "the_long_signal",
+		"title": "THE LONG SIGNAL",
+		"subtitle": "Medium · 11:14 PM · Late Wednesday",
+		"flavor": "Anya is at the floppy wall. The ham band is open. The regular caller has been idle for two minutes. Sysop has THE LONG SIGNAL in his hand because tonight is the night to use it."
+	},
+	{
+		"id": "broadcast_night",
+		"title": "BROADCAST NIGHT",
+		"subtitle": "Hard · 3:14 AM · Off-the-Books",
+		"flavor": "3:14 AM. The BBS is between conversations. The ham voice is on the band. The lurker has logged in at this hour for the third night in a row."
+	}
+]
+
 const EMPEROR_SCENARIOS := [
 	{
 		"id": "docket",
@@ -640,6 +661,10 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		arcana_title = "ENTER THE GAUNTLET · DANTE'S OFFICE"
 		arcana_sub   = "Dante · Pick a session"
 		scenarios    = EMPEROR_SCENARIOS
+	elif arcana == "hierophant" or arcana == "v_hierophant":
+		arcana_title = "ENTER THE GAUNTLET · EMBER.ASH.REST.BBS"
+		arcana_sub   = "Sysop · Pick a session"
+		scenarios    = HIEROPHANT_SCENARIOS
 	var title := Label.new()
 	title.text = arcana_title
 	title.add_theme_font_size_override("font_size", 14)
@@ -752,7 +777,9 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		_add_play_button_overlay(vem, "emperor", "dantes_office", "dante")
 		return
 	if short_path == "hierophant_arcana":
-		_spawn_visualizer(HIEROPHANT_VISUALIZER_SCRIPT); return
+		var vh := _spawn_visualizer(HIEROPHANT_VISUALIZER_SCRIPT)
+		_add_play_button_overlay(vh, "hierophant", "bbs_room", "sysop")
+		return
 	if short_path == "lovers_arcana":
 		_spawn_visualizer(LOVERS_VISUALIZER_SCRIPT); return
 	if short_path == "chariot_arcana":

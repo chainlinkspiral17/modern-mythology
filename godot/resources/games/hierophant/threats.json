@@ -1,0 +1,5 @@
+{
+  "scope": "hierophant",
+  "notes": "Hierophant does not use mess-meeple threats. Pressure comes from Doubt + caller patience. This file exists so the engine's threat loader doesn't crash.",
+  "threats": {}
+}

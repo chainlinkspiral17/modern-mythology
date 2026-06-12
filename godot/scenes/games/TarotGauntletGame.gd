@@ -97,6 +97,12 @@ var _harvest: int = 0
 var _authority: int = 0
 var _ledger: int = 0
 var _ledger_threshold: int = 6
+# Hierophant (V) state — Doctrine is the currency, Signal is the
+# positive doom-clock. Same shape as previous arcanas (rises good,
+# capped at threshold, optional loss when full).
+var _doctrine: int = 0
+var _signal: int = 0
+var _signal_threshold: int = 6
 # Patience-freeze counter (THE LONG QUIET ability + freeze_patience
 # effect): while > 0, _tick_visitor_patience does nothing on Upkeep.
 # Decrements once per turn at Upkeep.
@@ -732,6 +738,11 @@ func _init_run() -> void:
 	_ledger_threshold = int(lt_def.get("completion_threshold", 6))
 	_ledger = int(start.get("ledger", 0))
 	_authority = int(start.get("authority", 0))
+	# Hierophant signal track — same shape, for the BBS room.
+	var sg_def: Dictionary = _location.get("signal_track", {})
+	_signal_threshold = int(sg_def.get("completion_threshold", 6))
+	_signal = int(start.get("signal", 0))
+	_doctrine = int(start.get("doctrine", 0))
 	_piece_progress.clear()
 	_wip_progress.clear()
 	_pieces_completed = 0
@@ -927,6 +938,7 @@ func _build_ui() -> void:
 	if _arcana_id == "priestess": leave_room = "booth"
 	if _arcana_id == "empress":   leave_room = "riverboat"
 	if _arcana_id == "emperor":   leave_room = "office"
+	if _arcana_id == "hierophant": leave_room = "BBS basement"
 	top_leave_btn.tooltip_text = "Leave the %s and return to the gallery (this ends the run)." % leave_room
 	top_leave_btn.add_theme_font_size_override("font_size", 11)
 	top_leave_btn.custom_minimum_size = Vector2(132, 24)
@@ -3934,7 +3946,8 @@ func _render() -> void:
 	var is_priestess: bool = (_arcana_id == "priestess")
 	var is_empress: bool = (_arcana_id == "empress")
 	var is_emperor: bool = (_arcana_id == "emperor")
-	var is_major_arcana: bool = is_magician or is_priestess or is_empress or is_emperor
+	var is_hierophant: bool = (_arcana_id == "hierophant")
+	var is_major_arcana: bool = is_magician or is_priestess or is_empress or is_emperor or is_hierophant
 	if _stagnation_label != null:
 		_stagnation_label.visible = is_major_arcana
 		if is_major_arcana:
@@ -3954,6 +3967,8 @@ func _render() -> void:
 			_inspiration_label.text = "Harvest %d  ·  Bloom %d / %d" % [_harvest, _bloom, _bloom_threshold]
 		elif is_emperor:
 			_inspiration_label.text = "Authority %d  ·  Ledger %d / %d" % [_authority, _ledger, _ledger_threshold]
+		elif is_hierophant:
+			_inspiration_label.text = "Doctrine %d  ·  Signal %d / %d" % [_doctrine, _signal, _signal_threshold]
 	if _pieces_label != null:
 		_pieces_label.visible = is_magician
 		if is_magician:
@@ -4157,6 +4172,10 @@ func _check_requirement(req: Dictionary) -> bool:
 			return _authority >= int(req.get("n", 1))
 		"has_ledger_at_least":
 			return _ledger >= int(req.get("n", 1))
+		"has_doctrine_at_least":
+			return _doctrine >= int(req.get("n", 1))
+		"has_signal_at_least":
+			return _signal >= int(req.get("n", 1))
 		"visitor_in_bright_space":
 			# MOTH-style. True if any arrived, unconnected visitor is
 			# at one of the cathedral's "lit" stations. Bright = the
@@ -4299,6 +4318,30 @@ func _win_conditions_met() -> bool:
 		if bool(wc.get("require_cake_lit", false)):
 			if not _flags.get("cake_lit", false):
 				return false
+		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
+			return false
+		return true
+	# ── Hierophant schema ───────────────────────────────────────
+	if _arcana_id == "hierophant":
+		var h_need_connect: int = int(wc.get("require_visitors_connected_min", 3))
+		if _connections_made.size() < h_need_connect:
+			return false
+		var h_need_hard: int = int(wc.get("require_hard_mood_connections_min", 0))
+		if h_need_hard > 0:
+			var h_hard_count: int = 0
+			for hcvid in _connections_made:
+				var hcv_def: Dictionary = _visitors_def.get(String(hcvid), {})
+				var hmood: String = String(hcv_def.get("mood", ""))
+				if hmood == "intense" or hmood == "lonely" or hmood == "preoccupied":
+					h_hard_count += 1
+			if h_hard_count < h_need_hard:
+				return false
+		if _doubt >= int(wc.get("require_doubt_below", 99)):
+			return false
+		if _stagnation >= int(wc.get("require_stagnation_below", 99)):
+			return false
+		if _signal < int(wc.get("require_signal_at_least", 0)):
+			return false
 		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
 			return false
 		return true
@@ -5070,6 +5113,25 @@ func _resolve_effect(e: Dictionary) -> void:
 			if _ledger >= _ledger_threshold:
 				if bool(_setup.get("loss_conditions", {}).get("ledger_full_before_end", false)):
 					_trigger_loss("ledger_full")
+
+		"gain_doctrine":
+			var dg: int = int(e.get("amount", 1))
+			_doctrine += dg
+			_log_line("[color=#a8e89c]+%d Doctrine[/color] → %d" % [dg, _doctrine])
+
+		"spend_doctrine":
+			var ds: int = int(e.get("amount", 1))
+			_doctrine = max(0, _doctrine - ds)
+			_log_line("[color=#a99070]-%d Doctrine[/color] → %d" % [ds, _doctrine])
+
+		"tick_signal":
+			var sg: int = int(e.get("amount", 1))
+			_signal = min(_signal_threshold, _signal + sg)
+			_log_line("[color=#a8e89c]·[/color] signal ticks · %d / %d" %
+				[_signal, _signal_threshold])
+			if _signal >= _signal_threshold:
+				if bool(_setup.get("loss_conditions", {}).get("signal_full_before_end", false)):
+					_trigger_loss("signal_full")
 
 		"freeze_patience":
 			# THE LONG QUIET — patience does not tick for N turns. The
