@@ -6,14 +6,15 @@
   "title": "THE LONG SIGNAL",
   "subtitle": "ember.ash.rest.bbs · 11:14 PM · Late Wednesday",
   "difficulty": "medium",
-  "epigraph_upright": "Late Wednesday. Anya is in the floppy wall already. The ham band is open. The regular caller dialed in at nine and hasn't logged off. Sysop has been here since five. THE LONG SIGNAL ability card is in his starting hand because tonight is the night to use it.",
-  "epigraph_reversed": "The signal can't carry. Anya leaves with the floppy still in her hand. The ham voice signs off without saying what they came for. The night closes quiet.",
-  "scene_description": "Late Wednesday. Doctrine starts at 2 (sysop has been here a while). Stagnation at 1, doubt at 1. THE LONG SIGNAL is in hand. Anya is at the wall, the ham voice is on the radio, the regular caller is at the terminal.",
+  "epigraph_upright": "Late Wednesday. Anya is at the floppy wall already; she came in through the alley at 10:48 PM and went straight to slot 1187 the way she has the last six times. The ham band is open and 14.301 is live tonight. TOWER dialed in at 9:04 PM, the way TOWER dials in at 9:04 PM, and has not logged off. Sysop has been here since five, sock-footed, with the second pot of coffee on. THE LONG SIGNAL ability is in the starting hand because tonight is the night.",
+  "epigraph_reversed": "The signal can't carry. Anya leaves with the floppy still in her hand and the floppy is still in her hand on the alley stairs when she sits down on them and Sysop does not know about the sitting down. The ham voice signs off using the slow phonetic. TOWER posts a single sentence and logs out. The night closes quiet, the way nine years of quiet have closed.",
+  "scene_description": "Late Wednesday. Doctrine starts at 2 — Sysop has been at the terminal long enough that two beats of work are already on the wire. Stagnation at 1, doubt at 1. THE LONG SIGNAL ability is in hand. Anya at the wall. The ham voice on the radio. TOWER at the terminal. The Lurker is twenty minutes from posting their first sentence. The modem rack hums at the nine-year pitch.",
   "direction_hint": "Connect with 5 visitors including Anya + the ham voice. Signal to 4.",
   "opening_log_lines": [
-    "anya is at the floppy wall. she has been there for ten minutes.",
-    "the ham band is open. 14.301 is live tonight.",
-    "the regular caller's status has been 'idle' for two minutes."
+    "11:14 PM. Anya at the floppy wall, slot 1187, the floppy in her hand.",
+    "14.301 MHz live tonight. A callsign you used to use is asking around the band.",
+    "TOWER's status has been 'idle' for two minutes — they are typing, then deleting, then typing.",
+    "The modem rack hums. The hum has been the hum since 1996."
   ],
   "starting_state": {
     "player_pos": "crt_terminal",
@@ -66,9 +67,12 @@
   "max_turns": 8,
   "notes": "Medium-mode Hierophant. Anya is in the room. The ham voice is on the band. 5 connections + 2 hard moods (lurker is intense, ham voice is lonely, anya is preoccupied) + signal 4.",
   "ambient_pool": [
-    "the modem rack hums lower than usual.",
-    "anya turns the floppy over in her hand.",
-    "the ham band hisses, then clears."
+    "the modem rack hums lower than usual. it knows when it's being listened to.",
+    "anya turns the floppy over in her hand. she has not put it back in nine years.",
+    "the ham band hisses, then clears. somebody is asking for the old callsign.",
+    "the printer pulls a quarter inch of banner paper through itself without printing anything.",
+    "the kettle in the back kitchen does its third boil of the night.",
+    "the cicadas outside the alley door are louder than the modem fan."
   ],
   "ambient_every_n": 3
 }

@@ -6,14 +6,15 @@
   "title": "AN AFTERNOON",
   "subtitle": "The Apartment · 1:14 PM · Two Months Later",
   "difficulty": "medium",
-  "epigraph_upright": "Two months later. Reed is back for an afternoon — no boxes this time. Just an afternoon. Frasier is coming over from the diner. The old friend is downstairs in the diner already.",
-  "epigraph_reversed": "Two months wasn't enough. The conversation is the same conversation. The afternoon ends the same way the last one did.",
-  "scene_description": "Two months on. Reed at the bed corner (not the boxes — there are no more boxes). SYNC at 1 (the friendship has held), doubt at 1. Frasier is coming over. The friend is in the diner about to come up.",
+  "epigraph_upright": "Two months later. Reed is back for an afternoon — no boxes this time. Just an afternoon. They brought a coffee up from John's diner in the brown paper cup with the chip near the rim, because they remembered. Frasier is in the diner now finishing a model of a building three blocks over. The old friend is at the counter eating eggs.",
+  "epigraph_reversed": "Two months wasn't enough. Reed put the coffee down on the kitchen counter and you've both been near it and not picking it up. The conversation is the same conversation it was two months ago — the same word in the wrong place. The afternoon ends the way the last one did, with Reed leaving the painting again.",
+  "scene_description": "Two months on. Reed at the BED CORNER (not the boxes — there are no more boxes, the boxes are at Reed's new place in chronological order). SYNC at 1 — you've passed each other in the building twice in the eight weeks and once you both stopped at the same step. Doubt at 1. The radiator is louder than it was two months ago in the way radiators get when winter has been honest. The painting on the easel is still two-thirds done; Reed has not moved it home and you have not framed it. Frasier sends word he's coming up.",
   "direction_hint": "SYNC to 5. 4 connections. Leap with Reed at the same threshold.",
   "opening_log_lines": [
-    "reed is at the bed corner. they brought a coffee from the diner.",
-    "the painting on the easel is still two-thirds done.",
-    "frasier is in the diner. he sent word he's coming up."
+    "1:14 PM. Reed at the bed corner, holding a brown paper cup from John's diner.",
+    "The painting on the easel is two-thirds done, the way it has been for eleven months.",
+    "Frasier sent word from the diner. He's three minutes out, with a model of a building you don't recognize.",
+    "The radiator clicks. It has been the loudest thing in the room for forty seconds."
   ],
   "starting_state": {
     "player_pos": "kitchen_corner",
@@ -69,9 +70,12 @@
   "max_turns": 9,
   "notes": "Medium-mode Lovers. Two months later. SYNC starts at 1; harder visitor mix (Frasier preoccupied, the friend talkative but awkward). 4 connections + 2 hard moods + sync 5 + paired leap.",
   "ambient_pool": [
-    "the diner is busier on a saturday afternoon.",
-    "the painting watches.",
-    "the radiator is louder than two months ago."
+    "the diner is busier on a saturday afternoon. john has both grills going.",
+    "the painting watches. the painting is what watching looks like.",
+    "the radiator is louder than two months ago. winter has settled.",
+    "reed picks up the brown paper cup, holds it a beat, sets it down again.",
+    "the upstairs neighbor moves a chair. you can tell which chair from the sound.",
+    "outside, two voices on the sidewalk laughing at something you can't hear."
   ],
   "ambient_every_n": 3
 }

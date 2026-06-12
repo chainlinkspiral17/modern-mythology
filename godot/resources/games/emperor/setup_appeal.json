@@ -6,14 +6,15 @@
   "title": "APPEAL",
   "subtitle": "Dante's Office · 4:32 PM · The Late Afternoon",
   "difficulty": "hard",
-  "epigraph_upright": "An appellate hearing on a case from six months ago. The appellant is already at the client chairs. The original ruling was bad. Volumes 9 and 10 of the river-code are missing. The clerk has been here since seven and is tired. Dante has the heavier stamp ready.",
-  "epigraph_reversed": "He cannot make the case work the way the appellant deserves. The widow leaves before her estate is filed. The clerk goes home. The ruling does not hold, the appeal is denied, the case becomes the kind of thing that runs in a town for forty years.",
-  "scene_description": "Late Tuesday afternoon. The appellant is already in the office. The widow is in the anteroom. Authority at 2, doubt at 2, stagnation at 2 — Dante has been here all day. THE DECREE is in his starting hand. Volumes 9 and 10 of the river-code are missing — finding them via a precedent card matters.",
+  "epigraph_upright": "An appellate hearing on a case from six months ago that the office two towns downriver got wrong. The appellant is already in the left client chair (left chair, never right — the right chair has the better cushion). They have spent six months getting determined. The original ruling was bad. Volumes 9 and 10 of the river-code have been missing from the shelf since '07. The clerk has been here since 7:48 AM and her throat-clearing has gotten sharper hour by hour. Dante has the heavier bronze stamp out of its case. The brass clock from '62 is reading 4:32.",
+  "epigraph_reversed": "He cannot make the case work the way the appellant deserves. The widow leaves before her estate is filed. The clerk goes home at 5:00 sharp for the first time in nineteen years. The ruling does not hold, the appeal is denied, the case becomes the kind of thing that runs in a town for forty years — written about in the river-code's next edition under a different docket number.",
+  "scene_description": "Late Tuesday afternoon. The appellant is already in the left client chair. The widow is in the anteroom with her husband's folder, dividers in his hand. Authority at 2 (Dante's reservoir from the morning's work), doubt at 2 (the appeal carries weight), stagnation at 2 — he has been here all day. THE DECREE is in his starting hand. Volumes 9 and 10 of the river-code are missing — finding the relevant precedent via a folder-pull at the cabinet matters; volume 8 was misfiled in estate in 1971 and may be the breakthrough.",
   "direction_hint": "Hear five matters including the appellant + widow. Ledger to 5. Stamp the appeal heard.",
   "opening_log_lines": [
-    "the appellant is at the client chairs. they have been there for an hour, quietly.",
-    "the widow is in the anteroom. she has the husband's folder.",
-    "volumes 9 and 10 of the river-code are missing from the shelf."
+    "4:32 PM. The appellant in the left client chair for fifty-three minutes, very quiet.",
+    "The widow in the anteroom with her husband's folder. She has been here since 4:18.",
+    "Volumes 9 and 10 of the river-code, missing from the shelf since '07.",
+    "The clerk clears her throat once at the third shelf. The brass clock reads 4:32."
   ],
   "starting_state": {
     "player_pos": "desk",
@@ -71,9 +72,12 @@
   "max_turns": 8,
   "notes": "Hard-mode Emperor. Late-Tuesday appellate hearing. The appellant is intense. The widow is lonely. The petitioner is preoccupied. Five heard matters + 2 hard moods + ledger 5 + leap.",
   "ambient_pool": [
-    "the office is warm now. too warm.",
-    "the appellant has not moved from the chair.",
-    "the desk clock ticks. the brass is warm to the touch."
+    "the office is warm now. too warm. the radiator has not been turned down all winter.",
+    "the appellant has not moved from the chair. fifty-three minutes and counting.",
+    "the desk clock ticks. the brass is warm to the touch.",
+    "the widow rereads page two of her husband's folder.",
+    "outside on the bank, two voices arguing — one of them works at the office two doors up.",
+    "the clerk hums something under her breath. she does not realize she is humming."
   ],
   "ambient_every_n": 3
 }

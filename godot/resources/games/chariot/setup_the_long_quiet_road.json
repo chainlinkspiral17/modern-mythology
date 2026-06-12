@@ -6,14 +6,15 @@
   "title": "THE LONG QUIET ROAD",
   "subtitle": "The Midnight Bus · 3:14 AM · The Empty Hour",
   "difficulty": "hard",
-  "epigraph_upright": "3:14 AM. Cora's running an unscheduled deadhead because the relief driver didn't show up at the depot. The kid who's running away got on at the back row. The lost traveler is up front. The old regular is somewhere in the middle. The road is empty.",
-  "epigraph_reversed": "The kid stays a runaway. The lost traveler never finds the right stop. The bus arrives at the depot quiet and cold.",
-  "scene_description": "3:14 AM, deadhead run. Miles 2, fuel 3, doubt 2, stagnation 2. THE LONG HAUL ability card is in hand. The kid is in the back. The lost traveler is up front. The old regular is in the middle.",
+  "epigraph_upright": "3:14 AM. The relief driver didn't show — phone said his daughter spiked a fever at 2:48 AM and he wouldn't leave her. Cora signed in for the deadhead. The kid running away got on at the back row two stops ago and hasn't moved. The lost traveler has the same three-year-old paper schedule open across their knees. The old regular sat down in row 8, the warm spot near the heater. Channel 17 is clear. The road is the road.",
+  "epigraph_reversed": "The kid stays a runaway. The lost traveler never finds the right stop. The bus arrives at the depot quiet and cold and the only person in the lot is the next-shift driver asleep on a bench.",
+  "scene_description": "3:14 AM, unscheduled deadhead. Miles at 2 of 6, fuel at 3 (you topped off at the Sunoco at mile 14 on the way out), doubt at 2, stagnation at 2 — the heater takes a while to catch the back of the bus. THE LONG HAUL ability card is in hand: twelve miles of two-lane road with no oncoming. The kid is in the back, the lost traveler up front. The old regular has the warm spot. The CB is quiet in the way it is sometimes on the long stretches.",
   "direction_hint": "Drive to 6 miles. 4 passengers connected, 3 hard moods. Leap at DESTINATION.",
   "opening_log_lines": [
-    "3:14 AM. the relief driver didn't show. the route runs anyway.",
-    "the kid is in the back row, not looking at anyone.",
-    "the lost traveler is studying the route map taped to the dashboard."
+    "3:14 AM. The relief driver's kid spiked a fever. The route runs anyway.",
+    "The kid running away is in seat B-12, not looking at anyone.",
+    "The lost traveler has the '21 schedule open. They are trying to get to a house that hasn't been their parents' since '21.",
+    "The old regular is in row 8 by the heater. He waves once. He waved at your mother before he waved at you."
   ],
   "starting_state": {
     "player_pos": "driver_seat",
@@ -66,9 +67,12 @@
   "max_turns": 8,
   "notes": "Hard-mode Chariot. 3 AM. The kid (intense), the lost traveler (preoccupied), the old regular (lonely), the late-shift worker (preoccupied). 4 connections + 3 hard moods.",
   "ambient_pool": [
-    "3 AM hum from the bus engine.",
-    "the kid in the back row hasn't moved.",
-    "the headlights catch nothing but lane markers."
+    "3 AM hum from the bus engine. you have heard this hum at this hour eight hundred times.",
+    "the kid in the back row hasn't moved. you can see them in the mirror by the spot you angled it to in '04.",
+    "the headlights catch nothing but lane markers and the occasional reflective marker the highway department put up in '17.",
+    "the lost traveler turns the schedule over and reads the same page again.",
+    "channel 17 stays clear. on a normal night there'd be a long-haul on it by now.",
+    "the radio on the dashboard finds a station and loses it again."
   ],
   "ambient_every_n": 3
 }
