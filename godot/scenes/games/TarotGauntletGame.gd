@@ -276,6 +276,12 @@ var _end_overlay: Control = null
 # "evening_service". Names the setup_<id>.json file the engine
 # loads, and optionally a gravity_deck_<id>.json variant.
 var _scenario_id: String = "the_leap"
+# Reversed mode — set by GalleryOverlay when the player picks the
+# REVERSED tile for an arcana (only available after winning all 3
+# of that arcana's difficulties). Applied as a stacking modifier on
+# top of the underlying hard setup: +2 starting doubt, +2 stagnation,
+# -1 starting time, -1 max_turns, tighter visitors_claimed_max.
+var _reversed_mode: bool = false
 # Escalation: every time the gravity deck recycles, the room
 # "learns you." This bumps the per-turn Inertia tick by 1 and is
 # announced in the log. THE LEAP rarely sees a reshuffle; longer
@@ -311,11 +317,13 @@ const PATIENCE_BY_MOOD := {
 func start_scenario(arcana: String = "fool",
 					location: String = "dambrosios",
 					hand: String = "john_frank",
-					scenario_id: String = "the_leap") -> void:
+					scenario_id: String = "the_leap",
+					reversed: bool = false) -> void:
 	_arcana_id = arcana
 	_location_id = location
 	_hand_id = hand
 	_scenario_id = scenario_id
+	_reversed_mode = reversed
 
 
 func _ready() -> void:
@@ -718,7 +726,22 @@ func _init_run() -> void:
 	# engine start would deterministically reproduce the same draw
 	# order across runs from the same launch.
 	randomize()
-	var start: Dictionary = _setup.get("starting_state", {})
+	# Apply the reversed-mode modifier on top of the scenario's
+	# starting_state. _reversed_mode is set by start_scenario when
+	# the player picked the REVERSED tile for this arcana.
+	var start: Dictionary = (_setup.get("starting_state", {}) as Dictionary).duplicate()
+	if _reversed_mode:
+		start["doubt"]      = int(start.get("doubt", 0)) + 2
+		start["stagnation"] = int(start.get("stagnation", 0)) + 2
+		start["time"]       = max(2, int(start.get("time", 4)) - 1)
+		start["sanity"]     = max(2, int(start.get("sanity", 5)) - 1)
+		# Tighter loss-conditions
+		var lc: Dictionary = (_setup.get("loss_conditions", {}) as Dictionary).duplicate()
+		lc["visitors_claimed_max"] = max(1, int(lc.get("visitors_claimed_max", 3)) - 1)
+		_setup["loss_conditions"] = lc
+		# Tighter max_turns
+		_setup["max_turns"] = max(4, int(_setup.get("max_turns", 8)) - 1)
+		_log_line("[color=#c8333c][b]REVERSED.[/b] the room is harder to hold.[/color]")
 	_player_pos = start.get("player_pos", "counter")
 	_places_visited[_player_pos] = true
 	_time       = int(start.get("time", 4))

@@ -727,8 +727,26 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 	sub.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
 	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vb.add_child(sub)
+	# Build the scenarios list — base + an optional REVERSED tile
+	# (unlocked once the player has won all 3 of this arcana's
+	# difficulties via the *_complete achievement).
+	var tiles_to_show: Array = scenarios.duplicate()
+	if SaveSystem.is_unlocked("unlocked:reversed:" + arcana):
+		# The REVERSED tile uses the hard scenario as its base
+		# (typically index 2) and the engine applies the reversed
+		# modifier on top.
+		var hard_id: String = "the_leap"
+		if scenarios.size() >= 3:
+			hard_id = String((scenarios[scenarios.size() - 1] as Dictionary).get("id", hard_id))
+		tiles_to_show.append({
+			"id": hard_id,
+			"reversed": true,
+			"title": "REVERSED · " + arcana.to_upper(),
+			"subtitle": "Unlocked · The room turned around.",
+			"flavor": "The arcana reversed. Doubt starts +2. Stagnation starts +2. One less Time, one less Sanity, one less turn, one fewer claim before you lose. The room is harder to hold. Everything that was inevitable is still inevitable, just sooner."
+		})
 	# Scenario tiles
-	for scn: Dictionary in scenarios:
+	for scn: Dictionary in tiles_to_show:
 		var tile_panel := PanelContainer.new()
 		var ts := StyleBoxFlat.new()
 		ts.bg_color = Color(0.05, 0.045, 0.03, 1.0)
@@ -764,10 +782,11 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		t_flavor.custom_minimum_size = Vector2(600, 0)
 		tile_vb.add_child(t_flavor)
 		var scenario_id: String = String(scn.get("id", "the_leap"))
+		var is_reversed: bool = bool(scn.get("reversed", false))
 		tile_panel.gui_input.connect(func(ev: InputEvent) -> void:
 			if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed and (ev as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
 				dim.queue_free()
-				_launch_gauntlet(visualizer, arcana, location, hand, scenario_id))
+				_launch_gauntlet(visualizer, arcana, location, hand, scenario_id, is_reversed))
 	# Back to gallery — dismiss the picker and return to the
 	# arcana's visualizer behind it.
 	var cancel := Button.new()
@@ -779,7 +798,7 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 	vb.add_child(cancel)
 
 
-func _launch_gauntlet(visualizer: Control, arcana: String, location: String, hand: String, scenario_id: String = "the_leap") -> void:
+func _launch_gauntlet(visualizer: Control, arcana: String, location: String, hand: String, scenario_id: String = "the_leap", reversed: bool = false) -> void:
 	# Capture the visualizer's spawn script so we can re-open it
 	# when the gauntlet ends. We fully queue_free the visualizer
 	# instead of relying on `visible = false`: the visualizer's
@@ -790,7 +809,7 @@ func _launch_gauntlet(visualizer: Control, arcana: String, location: String, han
 		visualizer_script = visualizer.get_script() as Script
 		visualizer.queue_free()
 	var game := TAROT_GAUNTLET_SCENE.instantiate()
-	game.start_scenario(arcana, location, hand, scenario_id)
+	game.start_scenario(arcana, location, hand, scenario_id, reversed)
 	game.z_index = 30
 	add_child(game)
 	game.connect("game_ended", func(_outcome: String, _summary: Dictionary) -> void:
