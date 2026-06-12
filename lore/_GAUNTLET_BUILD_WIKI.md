@@ -69,13 +69,64 @@ Cora (the midnight-bus driver), Sasha and Reed (the Lovers apartment couple), Fa
 
 ---
 
-## The web series (canon)
+## Elicia's two bodies of work
 
-**Name:** *Whispers from the Liminal.* Elicia Duchane directs it. Cult audience parses every frame. *"The Cartographer's Compass"* is one episode; the actress is **Anya**. Tagline: *"The map was never about finding a destination. It was about what you became along the way."*
+She has made (at least) two distinct shows. They are different works
+with different energy and from different periods of her life.
 
-The lore-doc `_POMEGRANATE_HOUR.md` (with its 22 episodes mapped one-per-arcana, the VEIL.tv hosting, the 60 Hz hum and 9:09 PM interference, the FT/RES_SOL_VERIFY/lostchild/—commenters) is **Claude-invented scaffolding.** None of those elements appear in the 22 chapter scenes. The web series in canon is *Whispers from the Liminal,* and the canon doesn't (visibly in vol 5) lay out an episode list.
+### Pomegranate Hour — the earlier work
 
-The aesthetic *direction* the lore doc reaches for — Lynch-tonal, halftone B&W cold open, Elicia silent host, Harmony Creek Estates / Halsey Farms / NexCorp foreshadowing — could be a true description of the show's planned shape. But it's not canon yet. Treat as design inspiration only.
+**Tone:** homage, young auteur energy. The Lynch-tonal one. The work
+she made while still finding her voice through other people's voices.
+
+The lore-doc `_POMEGRANATE_HOUR.md` is Claude-generated scaffolding,
+but it *may* be reaching at the actual tonal shape of PH:
+halftone B&W cold opens, 60 Hz hum, 9:09 PM cable interference,
+sustained long takes, silent host, the recurring visual elements
+(Kwik Stop, HARMONY CREEK ESTATES, Halsey Farms, black pickup with
+Louisiana plates). The lore-doc's specific 22-episodes-one-per-arcana
+structure is unverified — could be a real PH conceit, could be
+Claude over-extending the homage vibe into too-tidy architecture.
+**Treat the tone as plausibly aligned. Treat the specific episode list
+as unverified.**
+
+PH is the show where she was *referencing* — Lynch, Twin Peaks, Lost
+Highway, Inland Empire — and learning which ones she'd keep using and
+which she'd outgrow. The young-auteur self.
+
+### Whispers from the Liminal — the current work
+
+**Tone:** mature, funny, wise, pretty. The show she makes now.
+
+**Canonically referenced** in ch2 (Priestess). Cult audience parses
+every frame. The actress in known footage is **Anya**. One episode is
+*"The Cartographer's Compass,"* tagline:
+*"The map was never about finding a destination. It was about what you
+became along the way."*
+
+Other ch2 evidence: a *"Choose Your Own Adventure"* episode in
+progress with three branches (slaughterhouse / interdimensional tea
+party / embrace the void).
+
+Whispers is the show where Elicia has shed the homage tic and is
+funny on purpose, wise without affecting it, and aesthetically
+confident — pretty because she finally trusts her own eye. The
+mature self.
+
+### What this means for the gauntlet
+
+- **The Priestess board's "show production" framing** belongs to
+  Whispers, not Pomegranate Hour. The cult audience, the cartographer
+  episode, the dying basil plant, the editing suite, the mirror shard
+  — current Elicia.
+- **Pomegranate Hour can surface as a finished older artifact** —
+  prints stored, episodes on a shelf, occasionally referenced as
+  *"back when"* work. Not the active scenario.
+- **The lore-doc 22-episode arcana mapping** is decoration only until
+  canon confirms.
+- **My gauntlet build's "Pomegranate Hour suite"** conflated the two
+  works AND made up a half-finished college version that doesn't
+  exist. Retire and rebuild around Whispers.
 
 ---
 
