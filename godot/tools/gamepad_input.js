@@ -82,10 +82,17 @@ class GamepadInput {
   snapshot() {
     const pad = this._padIdx >= 0 ? navigator.getGamepads()[this._padIdx] : null;
     if (!pad) return { connected: false };
+    // Use hysteresis-resolved state from _prevButtons rather than
+    // raw b.pressed so the held-set readout matches what's actually
+    // emitted as events.
+    const stableButtons = [];
+    for (let i = 0; i < pad.buttons.length; i++) {
+      stableButtons.push(this._prevButtons[i] === true);
+    }
     return {
       connected: true,
       id: pad.id,
-      buttons: pad.buttons.map(b => b.pressed),
+      buttons: stableButtons,
       axes: pad.axes.slice(),
     };
   }
@@ -113,14 +120,25 @@ class GamepadInput {
     if (this._padIdx >= 0) {
       const pad = navigator.getGamepads()[this._padIdx];
       if (pad) {
-        // Buttons — emit on edge changes (press / release).
+        // Buttons — use hysteresis on b.value rather than relying on
+        // b.pressed. Touch-sensitive guitar frets (Riffmaster, Rock
+        // Band Pro guitars) oscillate around the engine's threshold
+        // while held, firing many press/release events per second.
+        // We require the value to clearly cross PRESS_HI to flip on
+        // and clearly fall under PRESS_LO to flip off — a stable
+        // state changes only once per actual press.
+        const PRESS_HI = 0.55;
+        const PRESS_LO = 0.30;
         for (let i = 0; i < pad.buttons.length; i++) {
           const b = pad.buttons[i];
+          const v = (b.value !== undefined) ? b.value : (b.pressed ? 1.0 : 0.0);
           const wasPressed = this._prevButtons[i] === true;
-          const isPressed  = b.pressed;
+          let isPressed = wasPressed;
+          if (!wasPressed && v > PRESS_HI) isPressed = true;
+          if ( wasPressed && v < PRESS_LO) isPressed = false;
           if (wasPressed !== isPressed) {
             window.dispatchEvent(new CustomEvent('gamepadinput-button', {
-              detail: { idx: i, pressed: isPressed, value: b.value }
+              detail: { idx: i, pressed: isPressed, value: v }
             }));
             this._prevButtons[i] = isPressed;
           }
@@ -143,6 +161,36 @@ class GamepadInput {
   }
 }
 
+// ── Strum-axis → synthetic button events ─────────────────────────
+// Many guitar HID drivers report the strum bar as a momentary axis
+// (e.g. axes[1] briefly swings to ±1 on each strum) instead of two
+// d-pad buttons. This bridge listens for that axis and emits
+// synthetic gamepadinput-button events with the strumUp / strumDown
+// indices so chord-mode strum triggers fire regardless of whether
+// the device reports strum-as-button or strum-as-axis.
+function bindStrumAxis(gp, axisIdx, opts = {}) {
+  const HI = opts.hi ?? 0.6;
+  const LO = opts.lo ?? 0.3;
+  let state = 0;   // -1 = strum-up armed, 0 = rest, +1 = strum-down armed
+  window.addEventListener('gamepadinput-axis', e => {
+    if (e.detail.idx !== axisIdx) return;
+    const v = e.detail.value;
+    if (Math.abs(v) < LO) { state = 0; return; }
+    if (v >  HI && state !==  1) {
+      state = 1;
+      window.dispatchEvent(new CustomEvent('gamepadinput-button', {
+        detail: { idx: gp.mapping.strumDown, pressed: true, value: 1, synthetic: true }
+      }));
+    } else if (v < -HI && state !== -1) {
+      state = -1;
+      window.dispatchEvent(new CustomEvent('gamepadinput-button', {
+        detail: { idx: gp.mapping.strumUp, pressed: true, value: 1, synthetic: true }
+      }));
+    }
+  });
+}
+
+
 // ── Connection status overlay ─────────────────────────────────────
 // Small mounted bottom-right panel showing live gamepad activity so
 // the user can identify which Riffmaster button maps to which index.
@@ -164,11 +212,13 @@ function mountGamepadOverlay(gp, opts = {}) {
   panel.innerHTML = `
     <div style="color:#ffd896;letter-spacing:0.12em;font-weight:bold;margin-bottom:4px;">RIFFMASTER</div>
     <div id="gpio-status">not connected.</div>
-    <div id="gpio-last" style="color:#7a5828;font-size:10px;margin-top:4px;font-style:italic;">last event: —</div>
+    <div id="gpio-held" style="color:#d8a060;font-size:10px;margin-top:4px;">held: —</div>
+    <div id="gpio-last" style="color:#7a5828;font-size:10px;margin-top:2px;font-style:italic;">last event: —</div>
     <div id="gpio-axes" style="color:#7a5828;font-size:10px;margin-top:2px;"></div>
   `;
   document.body.appendChild(panel);
   const status = panel.querySelector('#gpio-status');
+  const heldEl = panel.querySelector('#gpio-held');
   const last   = panel.querySelector('#gpio-last');
   const axesEl = panel.querySelector('#gpio-axes');
   window.addEventListener('gamepadinput-connected', e => {
@@ -186,14 +236,20 @@ function mountGamepadOverlay(gp, opts = {}) {
   setInterval(() => {
     const snap = gp.snapshot();
     if (snap.connected) {
+      const heldList = [];
+      snap.buttons.forEach((p, i) => { if (p) heldList.push(i); });
+      heldEl.textContent = heldList.length
+        ? 'held: btn ' + heldList.join(', ')
+        : 'held: —';
       const lines = [];
       snap.axes.forEach((v, i) => {
         if (Math.abs(v) > 0.04) lines.push('ax' + i + ' ' + v.toFixed(2));
       });
       axesEl.textContent = lines.join('  ') || ' ';
     } else {
+      heldEl.textContent = 'held: —';
       axesEl.textContent = '';
     }
-  }, 250);
+  }, 100);
   return panel;
 }

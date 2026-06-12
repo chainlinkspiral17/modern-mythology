@@ -517,6 +517,7 @@ const PRESET_ORDER = Object.keys(PRESETS);
 const gp = new GamepadInput();
 gp.start();
 mountGamepadOverlay(gp);
+bindStrumAxis(gp, gp.mapping.strumAxis);
 window.addEventListener('gamepadinput-button', e => {
   if (!e.detail.pressed) return;
   const m = gp.mapping;

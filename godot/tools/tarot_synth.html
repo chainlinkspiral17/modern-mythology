@@ -950,6 +950,10 @@ document.body.addEventListener('click', () => { initAudio(); if (ac && ac.state=
 const gp = new GamepadInput();
 gp.start();
 mountGamepadOverlay(gp);
+// Riffmaster strum is reported as a momentary axis swing on most
+// Windows drivers; this bridges it to synthetic strumUp/strumDown
+// button events so chord-mode strum + bank-cycling-strum both work.
+bindStrumAxis(gp, gp.mapping.strumAxis);
 const BANK_ORDER = ['diner', 'cathedral', 'riverboat', 'pastoral'];
 
 // Scale degrees (semitones from root) assigned to frets 1-5 per bank.
