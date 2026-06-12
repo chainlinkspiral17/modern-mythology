@@ -618,11 +618,12 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 			if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed and (ev as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
 				dim.queue_free()
 				_launch_gauntlet(visualizer, arcana, location, hand, scenario_id))
-	# Cancel
+	# Back to gallery — dismiss the picker and return to the
+	# arcana's visualizer behind it.
 	var cancel := Button.new()
-	cancel.text = "Cancel"
+	cancel.text = "← Back to Gallery"
 	cancel.add_theme_font_size_override("font_size", 11)
-	cancel.custom_minimum_size = Vector2(120, 28)
+	cancel.custom_minimum_size = Vector2(160, 28)
 	cancel.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	cancel.pressed.connect(dim.queue_free)
 	vb.add_child(cancel)

@@ -832,10 +832,11 @@ func _build_ui() -> void:
 	top_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top_hb.add_child(top_spacer)
 	var top_leave_btn := Button.new()
-	top_leave_btn.text = "✕ Leave"
-	top_leave_btn.tooltip_text = "Leave the diner and return to the codex (this ends the run)."
+	top_leave_btn.text = "← Back to Gallery"
+	var leave_room: String = "cathedral" if _arcana_id == "magician" else "diner"
+	top_leave_btn.tooltip_text = "Leave the %s and return to the gallery (this ends the run)." % leave_room
 	top_leave_btn.add_theme_font_size_override("font_size", 11)
-	top_leave_btn.custom_minimum_size = Vector2(72, 22)
+	top_leave_btn.custom_minimum_size = Vector2(132, 24)
 	top_leave_btn.pressed.connect(_on_leave)
 	top_hb.add_child(top_leave_btn)
 
