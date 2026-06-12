@@ -782,6 +782,327 @@
     "chars": []
   },
   {
+    "id": "vol5_birdwatcher_theme",
+    "vol": 5,
+    "title": "The Bird-Watcher",
+    "src": "assets/audio/bgm/vol5_birdwatcher_theme.ogg",
+    "composer": "—",
+    "desc": "Chair creak + binocular-strap rustle + a slow patient exhale. The watcher's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "the_birdwatcher"
+    ]
+  },
+  {
+    "id": "vol5_blow_out_the_candles",
+    "vol": 5,
+    "title": "Blow Out the Candles",
+    "src": "assets/audio/bgm/vol5_blow_out_the_candles.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Magician · hard-mode B-side. Full moon over the river, the bank making a noise the bank should not be making, candle hiss, distant rager house-party low end. 11:47 PM.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_college_friend_theme",
+    "vol": 5,
+    "title": "The College Friend",
+    "src": "assets/audio/bgm/vol5_college_friend_theme.ogg",
+    "composer": "—",
+    "desc": "An old laugh, far in the back of the cathedral. The kind that remembers the year you stopped speaking.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "the_college_friend"
+    ]
+  },
+  {
+    "id": "vol5_critic_theme",
+    "vol": 5,
+    "title": "The Critic",
+    "src": "assets/audio/bgm/vol5_critic_theme.ogg",
+    "composer": "—",
+    "desc": "Pen-on-notebook scratch + a single sharp inhale through the nose. No music underneath.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "the_critic"
+    ]
+  },
+  {
+    "id": "vol5_demon_filly",
+    "vol": 5,
+    "title": "Filly (demon)",
+    "src": "assets/audio/bgm/vol5_demon_filly.ogg",
+    "composer": "—",
+    "desc": "A young horse's exhale. A hoof on wood, once. Then waiting. The Filly demon's room-tone.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_demon_husk",
+    "vol": 5,
+    "title": "Husk (demon)",
+    "src": "assets/audio/bgm/vol5_demon_husk.ogg",
+    "composer": "—",
+    "desc": "Hollow corn rasp. Dry rustle. The sound of nothing left inside the case.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_demon_moth",
+    "vol": 5,
+    "title": "Moth (demon)",
+    "src": "assets/audio/bgm/vol5_demon_moth.ogg",
+    "composer": "—",
+    "desc": "Paper-against-bulb flutter. A glass tap. One high whistling overtone that doesn't resolve.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_demon_starling",
+    "vol": 5,
+    "title": "Starling (demon)",
+    "src": "assets/audio/bgm/vol5_demon_starling.ogg",
+    "composer": "—",
+    "desc": "Many small wings. No melody. The whole flock turning the same instant.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_demon_steamboat",
+    "vol": 5,
+    "title": "Steamboat (demon)",
+    "src": "assets/audio/bgm/vol5_demon_steamboat.ogg",
+    "composer": "—",
+    "desc": "A small paddle-wheel micro-loop in the room — not the river version. This is the one Frasier is building on the workbench, and the texture is wrong.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_demon_vagrant",
+    "vol": 5,
+    "title": "Vagrant (demon)",
+    "src": "assets/audio/bgm/vol5_demon_vagrant.ogg",
+    "composer": "—",
+    "desc": "Low rumble + slow shuffle of bags + distant radio static. The Vagrant demon's drift through the room.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_demon_weir",
+    "vol": 5,
+    "title": "Weir (demon)",
+    "src": "assets/audio/bgm/vol5_demon_weir.ogg",
+    "composer": "—",
+    "desc": "Water under boards. Pressure building behind a thing about to spill.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_drifter_theme",
+    "vol": 5,
+    "title": "The Drifter",
+    "src": "assets/audio/bgm/vol5_drifter_theme.ogg",
+    "composer": "—",
+    "desc": "Gravel under boot. A far-away match-strike. The drifter doesn't stay long enough to leave a melody.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "the_drifter"
+    ]
+  },
+  {
+    "id": "vol5_drunk_uncle_theme",
+    "vol": 5,
+    "title": "Drunk Uncle",
+    "src": "assets/audio/bgm/vol5_drunk_uncle_theme.ogg",
+    "composer": "—",
+    "desc": "A baseline-room thump that refuses to sync to anything else playing. A glass on wood. The uncle who arrived and will not be greeted.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "drunk_uncle"
+    ]
+  },
+  {
+    "id": "vol5_finale_inertia_fallback",
+    "vol": 5,
+    "title": "The Room Sat on Him",
+    "src": "assets/audio/bgm/vol5_finale_inertia_fallback.ogg",
+    "composer": "—",
+    "desc": "Magician finale stinger — generic stagnation fallback. The room is exhausted and all motion has stopped.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:magician_finale:inertia_fallback"
+    }
+  },
+  {
+    "id": "vol5_finale_maker_breaks",
+    "vol": 5,
+    "title": "The Maker Breaks",
+    "src": "assets/audio/bgm/vol5_finale_maker_breaks.ogg",
+    "composer": "—",
+    "desc": "Magician finale stinger — Doubt at max. Silence under one pad falling a half-step. The last breath before the host closes his eyes for the last time.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:magician_finale:maker_breaks"
+    }
+  },
+  {
+    "id": "vol5_finale_maker_forgets",
+    "vol": 5,
+    "title": "The Maker Forgets the Make",
+    "src": "assets/audio/bgm/vol5_finale_maker_forgets.ogg",
+    "composer": "—",
+    "desc": "Magician finale stinger — Stagnation at max. Cassette-deck end-of-tape spool. Lights at full. The cathedral exhales without him.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:magician_finale:maker_forgets"
+    }
+  },
+  {
+    "id": "vol5_finale_river_takes_bank",
+    "vol": 5,
+    "title": "The River Takes the Bank",
+    "src": "assets/audio/bgm/vol5_finale_river_takes_bank.ogg",
+    "composer": "—",
+    "desc": "Magician finale stinger — the bank goes. A building giving up. Slow wood-and-metal collapse rendered as a half-degree sustained slide.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:magician_finale:river_takes_bank"
+    }
+  },
+  {
+    "id": "vol5_finale_room_walked_out",
+    "vol": 5,
+    "title": "The Room Walked Out",
+    "src": "assets/audio/bgm/vol5_finale_room_walked_out.ogg",
+    "composer": "—",
+    "desc": "Magician finale stinger — three visitors claimed. Everything has dropped out except the Demon's pad, held alone.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:magician_finale:room_walked_out"
+    }
+  },
+  {
+    "id": "vol5_finale_shift_ends",
+    "vol": 5,
+    "title": "Midnight, and Behind",
+    "src": "assets/audio/bgm/vol5_finale_shift_ends.ogg",
+    "composer": "—",
+    "desc": "Magician finale stinger — midnight overrun, the work undone. The workbench-lamp click off. Then nothing.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:magician_finale:shift_ends"
+    }
+  },
+  {
+    "id": "vol5_finale_steamboat_sails",
+    "vol": 5,
+    "title": "The Steamboat Sails",
+    "src": "assets/audio/bgm/vol5_finale_steamboat_sails.ogg",
+    "composer": "—",
+    "desc": "Magician finale stinger — the steamboat finished. Paddle wheel turning once though no one is touching it. Then the river bank slumps, far away. Then a held tone, resigned.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:magician_finale:steamboat_sails"
+    }
+  },
+  {
+    "id": "vol5_milestone_candles_lit",
+    "vol": 5,
+    "title": "The Candles Are Lit",
+    "src": "assets/audio/bgm/vol5_milestone_candles_lit.ogg",
+    "composer": "—",
+    "desc": "Released the first time you light the candles at the workbench in BLOW OUT THE CANDLES. A single sustained match-strike + held flame-hiss + a low pad. The cake is on the workbench.",
+    "unlock": {
+      "type": "key",
+      "key": "milestone:candles_lit"
+    }
+  },
+  {
+    "id": "vol5_sinking_feeling",
+    "vol": 5,
+    "title": "Sinking Feeling",
+    "src": "assets/audio/bgm/vol5_sinking_feeling.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Magician · easy-mode B-side. Afternoon sun on the cathedral skylights, low river lap outside, a distant freight horn. The riverside knowing what's coming and not saying.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_steamboat_motif",
+    "vol": 5,
+    "title": "The Paddle Wheel Builds Itself",
+    "src": "assets/audio/bgm/vol5_steamboat_motif.ogg",
+    "composer": "—",
+    "desc": "Magician's doom-clock. A slow paddle-wheel and far steam-whistle that thickens layer by layer across the run, one new element at each steamboat-ladder tier (0 → 6). Frasier hears it building whether he's working on it or not.",
+    "unlock": {
+      "type": "heard"
+    }
+  },
+  {
+    "id": "vol5_superfan_theme",
+    "vol": 5,
+    "title": "The Superfan",
+    "src": "assets/audio/bgm/vol5_superfan_theme.ogg",
+    "composer": "—",
+    "desc": "Too-fast breath. Paper bag. Plastic-cup tap. A loyalty that hasn't read the room.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "the_superfan"
+    ]
+  },
+  {
+    "id": "vol5_twins_theme",
+    "vol": 5,
+    "title": "The Twins",
+    "src": "assets/audio/bgm/vol5_twins_theme.ogg",
+    "composer": "—",
+    "desc": "Two of the same tone, played milliseconds apart, panned hard left and hard right. Stereo phase. They share patience, they share a theme.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "the_twins"
+    ]
+  },
+  {
+    "id": "vol5_watch_party",
+    "vol": 5,
+    "title": "Watch Party",
+    "src": "assets/audio/bgm/vol5_watch_party.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Magician · medium-mode B-side. TV-room hum, the Pomegranate Hour theme bleeding through one wall, a far laugh from someone who isn't supposed to be in the room. 9:30 PM.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [],
+    "chars": []
+  },
+  {
     "id": "vol6_alma_theme",
     "vol": 6,
     "title": "Alma · Pleasant Beige",
