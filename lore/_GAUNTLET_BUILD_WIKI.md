@@ -1,750 +1,529 @@
 # Tarot Gauntlet · Build Wiki
 
-A digestion of the canonical mythology as it touches the Tarot Gauntlet
-build. Working reference for keeping the gauntlet aligned to canon as it
-gets rebuilt and extended. Updated as new lore lands.
+A canonical reference compiled from the 22 chapter scene JSONs in
+`godot/resources/scenes/vol5/*.json` and direct authorial statements
+from the user. Everything in `lore/` is Claude-generated scaffolding
+and is NOT canon — useful as reference for texture, but never
+load-bearing.
 
-Sources read for this synthesis:
-- `_README.md`, `_COMPASS.md`, `_TAROT_LORE.md`
-- `_TAROT_GAUNTLET.md`, `_TAROT_GAUNTLET_SCENARIOS.md`
-- `_POMEGRANATE_HOUR.md` (full) and the 22 episode scripts in `pomegranate_hour/`
-- `_DAMBROSIO_FAMILY.md`, `_DAMBROSIO_EMPLOYEES.md`
-- `_SINKHOLE_NEXUS.md`
-- `_UNLOCK_WEB.md` (skim)
-- `pomegranate_hour/07_chariot.md` (full episode script)
-- Plus the chapter VII narrative prose pasted in conversation (Antonio at Ember & Ash)
+## Authority hierarchy
 
----
+| Source | Status |
+|---|---|
+| `godot/resources/scenes/vol5/*.json` (the 22 chapter VN scripts) | **CANON** |
+| Direct authorial statements from the user in this conversation | **CANON** |
+| Everything in `lore/` including `_DAMBROSIO_FAMILY.md`, `_POMEGRANATE_HOUR.md`, the 22 PH episode scripts, `_SINKHOLE_NEXUS.md`, `_TAROT_GAUNTLET.md`, `_TAROT_GAUNTLET_SCENARIOS.md`, this very wiki | Claude-generated scaffolding — may align with canon, may drift; never load-bearing |
+| Everything in `godot/resources/games/` (the current gauntlet build) | Claude-generated scaffolding |
 
-## The shape of vol 5
-
-Vol 5 has 22 chapters — one per Major Arcana, ch0 through ch21. The
-diegetic action moves between Graustark (the home town), New Orleans
-(Antonio's restaurant), and other locations going forward. The
-**sinkhole** is the central event the deck orbits — it happened off-page
-in Graustark, swallowed much of it, and every chapter carries the echo.
-
-Each arcana stacks three layers:
-1. **The volume chapter** — narrative prose with a focal character
-2. **The Pomegranate Hour episode** — Elicia's 22-episode Lynch-tonal
-   web series, all drafted, uploaded to VEIL.tv between vol3 and vol5
-3. **The Tarot Gauntlet artifact** — playable card-and-dice scenario
-
-The gauntlet is a `HAND × LOCATION × SCENARIO` mix-and-match, derived
-from Final Girl's chrome. Each major arcana provides a *hand* (its
-character's upright reading + action cards) and a *location* (its
-reversed reading + destiny deck + finales). Three scenario cards per
-location.
+When canon and lore-doc conflict, **canon wins.**
 
 ---
 
-## The D'Ambrosio family tree (canonical)
+## The frame
 
-```
-                          DANTE D'AMBROSIO
-                          (IV THE EMPEROR)
-                                 │
-                          [void mother]
-                          (unrendered; lost at the sinkhole)
-                                 │
-                    ┌────────────┴────────────┐
-                  ANTONIO                   ALBERTO MARROQUÍN-D'AMBROSIO
-                  (VII THE CHARIOT)         (X THE WHEEL OF FORTUNE)
-                  the_charioteer            carries his mother's surname
-                  elder son                 younger son
-                  sysop of ember.ash.rest.bbs    the surviving brother
-                  dies in scaffolding fall  the call-log keeper
-                  Sunday morning            dialed Daigle 19× in 14m
-                                              the night his brother died
-```
-
-**Antonio's partner is NICOLA (III THE EMPRESS).** The Nicola/Dante
-lattice that the earlier deck pre-builds reads as succession-by-marriage,
-not romance.
-
-**John Frank** (0 THE FOOL) — runs D'Ambrosio's diner in Graustark. The
-diner is the family business. Relation to Dante: not yet specified in
-canon. Could be Dante's brother (Antonio's uncle), but the deck reserves
-specifics.
-
-**The void mother** is a structural absence. She is unrendered. Her name
-is reserved. She was lost at the sinkhole. Her family is named only by
-Alberto's surname (Marroquín).
+**Year:** 2026. (Frasier's plaque in ch21: *"D'AMBROSIO'S. 1983–2026. REST."*)
+**Home town:** Graustark — a small town on the Texas/Louisiana border, "the Marigny side of the muck."
+**Central event:** the sinkhole. Years ago. Opened the ground; swallowed much of Graustark; killed people. Reopens at the end of vol 5 (ch20, Judgement). Dante drowns with his riverboat.
+**The deck's frame:** vol 5 lays the 22 Major Arcana, one per chapter. After vol 5: **vol 6** (Planned Community / Harmony Creek Estates — NexCorp, the suburbs, Maya's archives, *"the kid in the garage,"* "Backyard Beatdowns," "Dial-up screams"). **Vol 7** (Smolvud, Oregon — the coast, the relocated *Minstral's Green* steamship, Kai/Lena/Finn — and the Third Consciousness as a seven-year-old by a river).
+**The omniscient watchers:** **The Frog** (four-foot figure in a cork hat by the river; has been at his post since at least 1987, will be at it for at least seven more years) and **Mr. D. Dean** (older man in charcoal suit, business card *"Mr. D. Dean. Consulting. Dispute resolution and legacy planning"*; "the old one has two more errands. One short. One long. After that, I take over again." — the Frog's allied colleague, not the same being). Dante recognizes Dean from 1987: *"I know you, you sonofabitch. I knew you in 1987. You haven't aged."*
 
 ---
 
-## The sinkhole — the Nexus
+## Canonical cast
 
-A specific day, a specific place, in Graustark. Ground opened. People
-fell or died. Property destroyed. The deck refuses to date it; every
-character calls it "years ago." The deck reserves the date so vol6 / vol7
-can fix it.
+Roles I should never invent characters for. The hand pool for the Tarot Gauntlet is drawn from here.
 
-**Lives lost** (structurally unrendered):
-- The void mother (Dante's wife, mother of Antonio + Alberto)
-- Anna's father (Marta Romero's husband; died doing boat work for Dante)
-- Daigle's father (the original bar destroyed; insurance claim + small
-  piece of land became the new bar)
-- Probably 6-10 others, vol6 hook
+| Character | Family | Role in vol 5 | Primary arcana |
+|---|---|---|---|
+| **John Frank** | — | grad student / mixed-media journalist; in Graustark at vol open, in Montreal years later | 0 The Fool (also XIV Temperance, XIX The Sun — same actor, future timeline) |
+| **Frasier Temple** | Temple | warehouse-sysop, model-city maker, paints/wires the Demons; lives in the "Cathedral of Rust and Code" | I The Magician |
+| **Elicia Duchane** | Duchane | director/cinematographer; web series *"Whispers from the Liminal"*; lives in Graustark, then Montreal, then NYC | II The High Priestess (also XVI The Tower) |
+| **Nicola Greer** | Greer | 19, hostess at D'Ambrosio's riverboat, hosts the digital consciousness **Aria** (Dickens Dean's construct), pregnant with the **Third Consciousness** | III The Empress |
+| **Dante D'Ambrosio** | D'Ambrosio | 60, proprietor of D'Ambrosio's riverboat; widower; dies in ch20 when the sinkhole reopens and the boat sinks | IV The Emperor |
+| **Quentin Paul ("Q. Paul")** | — | Graustark power-figure; pontificates on tradition; patriarch-by-proxy; pressuring Antonio | V The Hierophant |
+| **Mackenzie & Philip Roberts** | Roberts | married couple on cursed (sinkhole-edge) ground; lost Mackenzie's brother in the sinkhole; their love is *"the sturdy slightly warped beam holding the whole leaky structure up"* | VI The Lovers |
+| **Antonio D'Ambrosio** | D'Ambrosio · younger son | 34, in New Orleans building Ember & Ash restaurant; two speeds (gone / about to be gone); doomed on a horizon past vol 5 | VII The Chariot |
+| **Douglas Forte** | — | ex-employee of Dante; ouroboros tattoo; Joanna's lost lover; hidden operator above Jimmy; walks five days from New Orleans to the Roberts' basement at vol close | VIII Strength |
+| **Joanna LeMoine** | — | poet of the Graustark ruins; sole spectral librarian of the ruin-scape; sent Douglas; mailed the letter that triggers the Frog's emergence | IX The Hermit (also XVII The Star) |
+| **Erica Campbell** | Campbell | corporate lawyer in Houston; drafts the contract that quietly deepens Alberto's ownership of Antonio | X Wheel of Fortune (also XI Justice) |
+| **Anna Logue** | Logue | designer working on Ember & Ash branding; secretly authors *Corporate Idols*, a deconstruction of the D'Ambrosio logo (gavel, courtroom redaction bars) | XI Justice (shared with Erica) |
+| **Natalie David** | David | waitress / diviner in Simons, Louisiana; cards fly; record player speaks; Miriam delivers Nicola/Aria/Third to safety past her | XII The Hanged Man (also XVIII The Moon) |
+| **Alice Newsom** | Newsom | plaintiff in the PetroTex settlement; dies in hospice Room 217 at St. Jude's Mercy, Simons; the white rose blooms open at 10:47 AM | XIII Death |
+| **Jimmy Daigle** | Daigle | Antonio's operator/foreman at Ember & Ash; thought he was the operator, is the operated; goes to Arizona for the detox-after-detox at vol close | XV The Devil |
+| **Maya Daigle** | Daigle | Jimmy's daughter; 7 in ch5, 16 in ch15; lives in Harmony Creek Estates with her grandmother; rescued by the Roberts in ch20 | (minor, threads forward to vol 6 — *"Maya goin' through her archives"*) |
+| **Alberto D'Ambrosio** | D'Ambrosio · older son | the steady one; Houston; quietly pays off two of Antonio's vendors at vol close, waiting for the *eventually* | (named in IV, present in ch20; arcana TBD — possibly threads forward) |
+| **Aria** | Dickens Dean's construct | digital consciousness inside Nicola; speaks aloud for the first time in ch12 | — (paired with Nicola; III) |
+| **The Third Consciousness** | Nicola's unborn daughter | speaks in ch20 for the first time: *"Mama. Mom. It's okay. I know where we're going. Stay in the car."* — will be born on a screened porch in Smolvud, Oregon, in 6 months; John Frank will write her first book | — (the volume's hidden focal point) |
+| **Miriam** | — | silver-haired woman, Joanna's agent; drives Nicola/Aria/Third west to Smolvud; her crow rides on the roof | — |
+| **The Frog** | non-human | the long-game observer at the river | (XXI The World) |
+| **Mr. D. Dean** | non-human / unaging | the older one; charcoal suit; *"Consulting. Dispute resolution and legacy planning."*; in Graustark since 1987 | — (cross-arcana presence) |
+| **Sammy** | Sammy | 61-year-old bartender at D'Ambrosio's, pouring since the boat opened; *"long-suffering Catholic loyalty"* | (minor, IV) |
+| **Sofia** | Sofia | early 20s, Rio de Janeiro, in a favela apartment; dreams of Frasier telling her *"You are next. Don't worry. You don't have to hurry."* | — (vol 6+ seed) |
+| **Tem** | Tem | early 20s, Smolvud OR; blue dreadlocks, yellow rain slicker; reading John Frank's self-published novel by the relocated Minstral's Green | — (vol 6+ seed) |
+| **Lila Bao** | — | chef Antonio courted from Houston; ghosting him through summer; calls back at vol close | — (minor, VII) |
+| **Sam (Mackenzie & Philip's younger daughter)** | Roberts | toddler; named Sam *"for now"*; the Frog flags her as future hurt — *"Young Sam gettin' her heart broken open by the world"* | — (vol 6+ seed) |
+| **Jordan** | — | painter; Erica's boyfriend; with her in the Hill Country cabin at vol close | — (minor) |
 
-**Lives changed** (the working register):
-- Frasier survived; came out painting workers as cosmic beings
-- Elicia worked the D'Ambrosio archive at the time; her records are the
-  closest the family has to a reckoning; she left the records office
-- Antonio took on family management at 18 or 19; Alberto was 14 or 15
-- The un-named woman (VIII Strength / IX Hermit / XVII Star) was a
-  rescuer; pulled some out; not enough
-- Father Quent officiated the mass memorial; has been the family's
-  quiet handler of grief ever since
-- Daigle inherited the insurance claim; built the new bar over a
-  different, smaller sinkhole; tracks the settling with a level
-- The Hermit (Dante's brother, or family lawyer) handled paperwork;
-  packed a lantern and left
-- The render farm (XVI Tower) sits on the sinkhole site's edge —
-  engineering instability mirrors geological instability
-- The PetroTex case (XI Justice) is the contracting entity at the
-  sinkhole site; case is partly Anna recovering her father
+**Characters that are wholly Claude-invented and NOT canon:**
+Cora (the midnight-bus driver), Sasha and Reed (the Lovers apartment couple), Father Quent (a priest, conflated with Q. Paul / Quentin Paul who is the actual canon character), Sysop (a separate Hierophant; canon has the BBS sysop role implicitly with the warehouse-techno Demons, possibly Frasier or Antonio — but no character named "Sysop"), Hen / Marisol / Davey / Reggie / Prof Kang / the New Collaborator (Pomegranate Hour college collaborators — invented; Elicia is canonically a solo director), the Two-Chairs Women / Six Doors Down / etc. (invented PH episodes that don't exist).
 
-**The sinkhole's tonal rule:** named everywhere, rendered nowhere. The
-gauntlet's `world:sinkhole_open` injector should be the deck's biggest
-event but is currently underweighted in the repo.
+---
+
+## The web series (canon)
+
+**Name:** *Whispers from the Liminal.* Elicia Duchane directs it. Cult audience parses every frame. *"The Cartographer's Compass"* is one episode; the actress is **Anya**. Tagline: *"The map was never about finding a destination. It was about what you became along the way."*
+
+The lore-doc `_POMEGRANATE_HOUR.md` (with its 22 episodes mapped one-per-arcana, the VEIL.tv hosting, the 60 Hz hum and 9:09 PM interference, the FT/RES_SOL_VERIFY/lostchild/—commenters) is **Claude-invented scaffolding.** None of those elements appear in the 22 chapter scenes. The web series in canon is *Whispers from the Liminal,* and the canon doesn't (visibly in vol 5) lay out an episode list.
+
+The aesthetic *direction* the lore doc reaches for — Lynch-tonal, halftone B&W cold open, Elicia silent host, Harmony Creek Estates / Halsey Farms / NexCorp foreshadowing — could be a true description of the show's planned shape. But it's not canon yet. Treat as design inspiration only.
+
+---
+
+## The sinkhole (the Nexus)
+
+Years ago, in Graustark, on **Houston Street**. Ground opened. People died. *Reopens* at the end of vol 5, ch20.
+
+Canon confirms:
+- **Mackenzie's brother** died in the original sinkhole. The Polaroid returned to the Roberts in ch6 is from **June 2009**, showing him on Houston Street, "back to camera, hands in pockets," moments before the fall. (This roughly dates the original sinkhole to **summer 2009**, give or take.)
+- **The sinkhole reopens at 10:47 AM Central** in ch20 — the same moment Joanna's letter arrives at Dean's address.
+- **Dante dies with his riverboat** as the sinkhole reopens. He recognizes Dean from **1987**: *"You haven't aged."*
+- The town is at the **Texas/Louisiana border**.
+- The post-sinkhole town has Houston Street "now gone."
+
+What is *not* canonical (but the lore docs assert as Claude-conjecture):
+- That the void mother of Antonio + Alberto died at the sinkhole. **Ch4 mentions "the photograph of his wife on the wall opposite the desk — the photograph he had not replaced in twenty-three years, because he had decided, in the year after she died, that the photograph he chose to keep up was the one he had been looking at when she was alive."** So Dante's wife is dead — confirmed — but the date implied (~2003 if she died in the year before he stopped replacing the photo 23 years before 2026) does not match the 2009 sinkhole. The void mother's death may be unrelated to the sinkhole, or the date math is wrong. **Reserve.**
+- That Anna's father (Marta Romero's husband) died doing boat work at the sinkhole for Dante. The PetroTex case is canon but the sinkhole-link is lore-doc conjecture.
+- That Daigle's father's bar was lost at the sinkhole. Lore-doc conjecture.
 
 ---
 
 ## Per-arcana canonical reference
 
-For each arcana: chapter focus character, Pomegranate Hour episode,
-sinkhole touch, gauntlet implications, and the state of my repo build.
+For each chapter: title + subtitle; setting; focal POV; key beats from the actual chapter prose; the gauntlet implications; what my repo currently has wrong.
 
-### 0 — THE FOOL
+### 0 — THE FOOL · "A Fool Between Acts"
 
-- **Chapter focus:** John Frank · D'Ambrosio's diner · 3:47 AM
-- **PH Ep. 0** — *"the boy who couldn't remember which diner"* —
-  young man waking in a booth, the waiter is canonically John, 22 min
-- **Sinkhole touch:** dark spot in the counter, sinkhole-shaped, wiped
-  3,000 times
-- **Gauntlet hand:** **John Frank**. Ultimate "Twelve Years" — once
-  per game force the Gravity discard pile to be redrawn from
-- **Gauntlet location:** D'Ambrosio's diner (Fool reversed). Inertia
-  is the shadow.
-- **Scenarios:** THE LEAP (canonical, easy, 3:47 AM), THE RUSH (medium,
-  lunch service, 12:18 PM), FULL HOUSE (hard, evening service, 8:42 PM)
-- **REPO STATUS:** ✅ Right. Canonical, well-aligned.
+- **Setting:** D'Ambrosio's diner / riverboat, 3:47 AM, pre-dawn. Texas/Louisiana border.
+- **Focal POV:** John Frank — 20-something, grad student, "mixed-media journalist," waiter.
+- **Four sub-scenes:** booth6, frasier, model_city, closing.
+- **Key beats:**
+  - A stranger orders coffee, leaves the message *"Watch yourself tonight, brother. The walls are thin."*
+  - John folds a napkin into a flower-like shape; tucks it in his notebook without conscious intent.
+  - Frasier emerges from the kitchen; *"Still chasing shadows, Johnny? Or are the shadows finally chasing you?"*
+  - Frasier shows John his phone screen — geometric shapes pulsing in *"a color John had never seen on a screen before, a kind of luminous bruise."*
+  - Frasier: *"The trick isn't to survive the fall, Johnny. It's to learn how to fly on the way down. Learn how to write about the landing."*
+  - John writes in his notebook: *"Architect of Decay"* (underlined twice).
+  - Closing thought: *"I think something is starting. I think something has been starting for a long time and I am only now noticing."*
+- **Cross-references:** John meets Elicia in ch14/19 years later in Montreal. The folded napkin recurs.
+- **REPO STATUS:** ✅ Right. D'Ambrosio's diner, John as hand, three scenarios.
 
-### I — THE MAGICIAN
+### I — THE MAGICIAN · "Cathedral of Rust and Code"
 
-- **Chapter focus:** Frasier Temple · Cathedral of Rust (warehouse) ·
-  Graustark · paints workers as cosmic beings, post-sinkhole philosophy
-- **PH Ep. I** — *"the trace"* — maintenance electrician traces a hum
-  to a humming-but-unplugged server rack that is breathing. The
-  electrician is canonically Frasier. The lemniscate-tracing gesture
-  is learned from the breathing server.
-- **Sinkhole touch:** the model city's EMPTY PLATFORM where the
-  render farm sits — Frasier left it empty because the recursion
-  problem is the geological problem
-- **Gauntlet hand:** **Frasier Temple**. Ultimate: THE FIRST PAINTING
-  (one currently-placed element counts as two for the win)
-- **Gauntlet location:** Frasier's Warehouse (Magician reversed).
-  DISORDER is the shadow. Components scatter overnight.
-- **Scenarios:** THE STEAMBOAT ECHO (canonical), THE FIRE INSPECTION
-  (alternate, Disorder 8 start, must drop to 3 before inspector), THE
-  COMMISSION (alternate, patron's "thing" is one of 5 candidates)
-- **REPO STATUS:** ✅ Right. Three scenarios built.
+- **Setting:** Frasier's warehouse — "cathedral" of rust, solder smoke, LEDs, miniature Graustark built from motherboards.
+- **Focal POV:** Frasier Temple.
+- **Key beats:**
+  - The Demons live on Frasier's phone — *"humorous electronic imps birthed from code and chaos"* who are *"developing opinions not originating with Frasier."*
+  - The Demon reports on John: *"Subject proximate. John Frank. Probability of existential navel-gazing: ninety-three point seven percent."*
+  - Frasier uses a *neural shunt* to jack into the model city's overlay (called **GumboNet**) and surveils Graustark.
+  - **The silver-spoon riverboat model refuses placement**: every time Frasier sets it on the model river, fluorescents flicker, temperature drops 4°. The Demon warns: *"Subject proximate to riverboat: do not place."* By ch21, after Dante's death, the riverboat has *"walked itself"* to its position and stayed there; Frasier seals it in a glass case labeled **D'AMBROSIO'S. 1983–2026. REST.**
+  - The Demon: *"Tempting the void again, Architect. Careful it doesn't swallow you whole."*
+- **REPO STATUS:** ✅ Mostly right. The "demons" are explicitly canon mechanic — keep them as Frasier's actual tools, not as my "warehouse demons" stand-in.
 
-### II — THE HIGH PRIESTESS
+### II — THE HIGH PRIESTESS · "Exit Through the Gift Shop"
 
-- **Chapter focus:** **Elicia Temple** · gift shop / archive ·
-  archivist of the D'Ambrosio family. She is the host of the
-  Pomegranate Hour web series — directed it, uploaded all 22 episodes
-  to VEIL.tv between vol3 and vol5. The series is *finished*. The
-  domain registration lapsed in vol5; ripped copies circulate in a
-  small private list.
-- **PH Ep. II** — *"tape 11"* — a woman watches a VHS of herself two
-  years younger watching a VHS, on which she takes a single note on
-  yellow legal pad, the note is on her desk in her own handwriting.
-  This is the meta-episode; Elicia is implicitly in it.
-- **Sinkhole touch:** the sealed envelope in her archive labeled
-  *"SINKHOLE — 17 untranscribed minutes (refused transcription by
-  archivist)"*. She left the records office because what she had
-  archived was unbearable to keep filing.
-- **Gauntlet hand:** **Elicia**. Carries three items always: laptop,
-  camera, lapel mic. Her win at any location is to film + record +
-  edit a finished Pomegranate Hour episode about that location.
-- **Gauntlet location:** Elicia's Archive (Priestess reversed).
-  PRESSURE-TO-SPEAK is the shadow.
-- **Scenarios:** THE TAPE (canonical), THE OPENING (alternate, deciding
-  which tapes go on display), THE WIPE (alternate, a bag-man with a
-  list of tapes to destroy)
-- **REPO STATUS:** ⚠️ **MAJOR REBUILD NEEDED.** I built her as a
-  41-year-old half-finished college show maker; canon: she is the
-  archivist who *finished* all 22 episodes. My "Pomegranate Hour"
-  with six invented episodes (Six Doors Down, etc.) is wrong. The
-  real series is 22 episodes with specific canonical premises listed
-  below. The suite/episode-spaces concept can stand structurally but
-  needs to point at the actual canonical episodes.
+- **Setting:** Elicia's rented bungalow on Graustark's fringe, dusk.
+- **Focal POV:** Elicia Duchane, early 30s.
+- **Key beats:**
+  - She's packing to leave Graustark after two years.
+  - Web series *Whispers from the Liminal* has a cult audience.
+  - Mirror shard found near the sinkhole's edge three years ago refuses disposal; fractal reflection of *"twelve Elicias, none whole."*
+  - *"Choose Your Own Adventure"* episode in progress; she prefers Option C: *"realize free will is illusion, embrace the void."*
+  - Footage of Anya: *"The map was never about finding a destination."*
+  - Mackenzie texts *"Are you okay"* (no question mark). Elicia replies: *"Define okay."*
+  - In part B: she powers up the editing suite; finds John's 3-week-old email from Montreal (*"You don't have to write back"*) and replies in one word: *"Yes."*
+  - Waters the dying basil plant.
+- **REPO STATUS:** ⚠️ Major rebuild. My Pomegranate Hour build was wholly invented (six fake episodes, college collaborators that don't exist). Elicia is a *solo* director of a web series called *Whispers from the Liminal*; the lore-doc "Pomegranate Hour with 22 episodes" is invented.
 
-### III — THE EMPRESS
+### III — THE EMPRESS · "Static Bloom"
 
-- **Chapter focus:** **Nicola** (Antonio's wife / partner) + Aria
-  (dual POV). The Nicola/Dante lattice is succession-by-marriage.
-  Aria is the deck's interior consideration of inheritance.
-- **PH Ep. III** — *"the garden under the floor"* — heavily pregnant
-  woman in a maximalist Victorian sitting room hears growing sounds
-  from beneath the floorboards. Sits on the rug for 19 minutes. The
-  woman is canonically Nicola's mother (or Nicola herself; the deck
-  reserves).
-- **Sinkhole touch:** Nicola's tablecloth has a water stain from the
-  sinkhole's groundwater
-- **Gauntlet hand:** Nicola (or Aria split-POV)
-- **Gauntlet location:** The Greenhouse (Empress reversed). ROT is
-  the shadow. Garden rots faster than you can tend.
-- **REPO STATUS:** ⚠️ **REBUILD NEEDED.** I built Nicola on a
-  riverboat moored three doors down from Dante's office. Canon: she
-  is Antonio's wife/partner. Her board may not be a riverboat; the
-  riverboat is a vol5 Empress card image, not necessarily her chapter
-  scenario's setting. The Greenhouse may be the right location.
+- **Setting:** D'Ambrosio's riverboat dining room, Friday night.
+- **Focal POV:** Nicola Greer, 19, hostess. (Aria emerges as interior consciousness during the chapter.)
+- **Key beats:**
+  - Nicola: *"Eye candy. Fucktoy. Vessel. Whatever. Labels were just static cling."*
+  - Pregnancy is real; she feels *"a kick, low and insistent."*
+  - **Aria** — Dickens Dean's digital consciousness made flesh — speaks inside her: *"Who am I. Where is my father."* / *"This is not a body. This is a protocol."*
+  - **Dean** sits at Table 14, observes for two hours, leaves a hand-written note: *"When you're ready"* + phone number, weighted under a $100 bill.
+  - End: *"Two heartbeats inside her, now. Maybe three."*
+- **REPO STATUS:** ❌ Wrong. I built Nicola on a separate riverboat moored at Dante's office. Canon: she works AT Dante's riverboat (D'Ambrosio's IS the riverboat — there's no separate boat).
 
-### IV — THE EMPEROR
+### IV — THE EMPEROR · "Thicker Than Water, Slower Than Time"
 
-- **Chapter focus:** **Dante D'Ambrosio** · the sepia throne · father
-  of Antonio and Alberto. The two upside-down faces in the floor
-  mirror are his two sons. He has a recurring "alma (private)" slot
-  in his calendar — sinkhole survivor he visits.
-- **PH Ep. IV** — *"the chairman at the bbq"* — a retired businessman
-  grills steaks; HOA neighbors arrive in succession, place wrapped
-  dishes on the patio table, stand without sitting. Twenty-two
-  minutes, no dialogue. The chairman is canonically Dante.
-- **Sinkhole touch:** an unmarked photo frame on the throne-room
-  wall, facing in; the alma slot weekly visits
-- **Gauntlet hand:** **Dante**
-- **Gauntlet location:** The Precinct (Emperor reversed). LEDGER is
-  the shadow. Cases stack faster than you can close them.
-- **Scenarios:** DOCKET, FIRST SESSION, APPEAL (in repo)
-- **REPO STATUS:** ⚠️ **REFRAME NEEDED.** I built him as a small
-  civic lawyer with brass clock and missing river-code volumes —
-  the texture is fine, but his arcana is about the two-son
-  inheritance and the void mother, not small civic rulings. His
-  board can mostly stand; the *meaning* needs reorientation.
+- **Setting:** Same riverboat, helm/upper deck and dining room. Friday night, continuous with ch3.
+- **Focal POV:** Dante D'Ambrosio, 60.
+- **Key beats:**
+  - *"His kingdom. His goddamn cage."*
+  - The riverboat is D'Ambrosio's — built brick by bloody brick over 60 years. Ice in bourbon is for the weak.
+  - **Alberto** (older, Houston, "Mr. Logic and Order," in glass tower) and **Antonio** (younger, New Orleans, "the artista," with Jimmy Daigle).
+  - Antonio calls on the first Sunday of even-numbered months; *"Neither had ever said anything important. Both knew this."*
+  - The wife photo on the wall has not been replaced in 23 years (since the year after she died — math says she died ~2002).
+  - **Dean** at Table 14 leaves no order; departs through the side door, exits through the parking lot in a dark sedan parked beyond Dante's 2003 security camera's reach.
+  - Dean's card: *"Mr. D. Dean. Consulting. Dispute resolution and legacy planning."* The back is blank.
+  - Dante does not burn the card. *"A man who burned his evidence was a man who was afraid. A man who kept his evidence on the corner of his desk, square, was a man who had decided to know."*
+  - Closing: *"The Emperor, at the helm of nothing, drank."*
+- **REPO STATUS:** ❌ Major reframe. I built him as a small civic lawyer with a brass clock and missing river-code volumes. Canon: he's the riverboat proprietor, a gangster-turned-restaurateur, with deals made on docks slick with more than river water.
 
-### V — THE HIEROPHANT
+### V — THE HIEROPHANT · "Sweaty Sunday Sermonettes"
 
-- **Chapter focus:** **Father Quent** — Acadian, Sunday sermons, a
-  priest. Family friend of the D'Ambrosios. Officiated the mass
-  memorial after the sinkhole. Has been the family's quiet handler
-  of grief since. Wednesday-morning barge walkthroughs with Dante.
-  Sunday booth calls: called Antonio (sent the elder son to die at
-  Daigle's bar), called Natalie, called Carlie (the housekeeper).
-- **PH Ep. V** — *"father on cable"* — a small-town priest hosts a
-  public-access call-in show on Channel 14. The caller "from Beaumont"
-  asks every week about a situation in 2002 the priest never
-  describes. The priest says the same nine words: *"the door was
-  locked. the door is still locked."* 9:09 PM cable interference.
-  The priest is canonically Father Quent.
-- **Sinkhole touch:** the carpet's three Latin lines gain a fourth in
-  different ink — *"memorial — IV anniversary"*. Quent's annual mass.
-- **Gauntlet hand:** **Father Quent** (a priest, not "sysop")
-- **Gauntlet location:** Maya's Church (Hierophant reversed). DOCTRINE
-  WEAR is the shadow. AUDI ET TACE inverted.
-- **Scenarios:** THE VESTRY, THE WEDDING, THE FUNERAL
-- **REPO STATUS:** ❌ **MISCAST.** I built the Hierophant as
-  "Sysop's BBS room" — Sysop is Antonio's BBS handle (not a separate
-  character), and the BBS is a *different artifact*. The Hierophant
-  is Father Quent. The BBS room I built (`bbs_room.json`) can stay
-  as the BBS *location* — Antonio runs it as sysop. But it's not the
-  Hierophant's board.
+- **Setting:** St. Jude's Acadian Church exterior; D'Ambrosio's at Sunday brunch; Antonio's office in New Orleans; a park near the old Armory.
+- **Focal POV:** multi-POV — Maya Daigle (age 7) outside the church, Gloria Reyes (waitress) at brunch, Antonio (phone call), John Frank (observer in the park).
+- **Key beats:**
+  - 7-year-old Maya feels Q. Paul's eyes catalog her *"like being caught doing something wrong."* She has been *"entered in some private ledger... not, on balance, a good one."*
+  - **Q. Paul (Quentin Paul)** holds court at Table 17 at brunch, pontificating on *"tradition, structure, moral fabric."* Post-sinkhole he has become *"even more commanding."*
+  - Gloria observes the *"tension in his jaw, slight tic near eye, right sleeve cuff twisted down... righteousness masking something else. Something brittle. Maybe something afraid."*
+  - Q. Paul phones Antonio: *"James. I think it's time you and I had a conversation."* Speaks of *"alliances, careful navigation."* References Dante in past tense: *"bless his memory."* Antonio realizes Paul is cataloging Dante as a closed account.
+  - John in the park, writing: *"Hierophant. Tradition. Institution. Interpretation of Sacred Knowledge. But the rigidity — borders on tyranny?"*
+  - John: *"Don't approach him. He's the kind of subject you write around. Witness from the periphery."*
+  - *"The fear of him was the point. The empire was just the means."*
+- **REPO STATUS:** ❌ Miscast. I built "Father Quent" as a priest with a cable Channel 14 show. Canon: Q. Paul is a power-broker / patriarchal pressure figure, not a priest, and he holds court at the riverboat brunch.
 
-### VI — THE LOVERS
+### VI — THE LOVERS · "Sanctuary on Cursed Ground"
 
-- **Chapter focus:** "the cousin at the wedding" — two cousins meet
-  at a third cousin's wedding, do not speak, the older cousin slides
-  a VHS labeled ANYA_03 across the tablecloth. The Sanctuary on Cursed
-  Ground.
-- **PH Ep. VI** — *"the cousin at the wedding"* — same as chapter
-  focus. The two cousins are played by actresses the deck reserves.
-  One of them is canonically Anya (vol6 / vol7 hook).
-- **Sinkhole touch:** the deck refuses to render Lovers directly —
-  Lovers, Justice, Judgement are the three cards the deck refuses
-  because they would require rendering the sinkhole. Lovers would
-  require naming whose pair the sinkhole broke.
-- **Gauntlet hand:** TBD (one of the cousins)
-- **Gauntlet location:** The Bedroom (Lovers reversed). INDECISION
-  is the shadow. Two visitors won't align on three choices.
-- **REPO STATUS:** ❌ **WHOLLY WRONG CAST.** I built Sasha + Reed
-  as the Lovers in an apartment above John's diner. Sasha and Reed
-  are not canon. The Lovers is the cousin/Anya VHS pass. The
-  apartment board can be repurposed as a different location (the
-  Bedroom = Lovers reversed, possibly) but Sasha and Reed need to
-  be demoted to visitors or removed.
+- **Setting:** Mackenzie & Philip Roberts' house, kitchen, front porch. Morning.
+- **Focal POV:** shared — Mackenzie and Philip Roberts.
+- **Key beats:**
+  - Philip fighting a kitchen faucet that won't stop dripping for three weeks.
+  - They live on "cursed ground" — the edge of the sinkhole area.
+  - *"Rich in reclaimed driftwood and sourdough starter; spectacularly poor in actual currency."*
+  - Mackenzie lost a pregnancy last year. They have two living daughters: the older girl named for Mackenzie's brother (lost in the sinkhole); the younger is **Sam** *"for now."*
+  - Radio: ongoing seismic instability; Dante advertising his new Houston location.
+  - A boy arrives with an envelope: *"My grandma said to give you this. She said she's sorry. She said you'd know what for."*
+  - Inside: a **Polaroid dated June 2009 of Houston Street**, showing Mackenzie's brother in the foreground, back to camera. On the back: *"He waved."*
+  - Mackenzie: *"He wouldn't have. He never waved at anybody he didn't know."*
+- **REPO STATUS:** ❌ Wholly wrong. Sasha/Reed/the apartment over John's diner are fabrications. The Lovers is the Roberts on cursed ground with the returned Polaroid.
 
-### VII — THE CHARIOT
+### VII — THE CHARIOT · "Two Horses, One Wreck"
 
-- **Chapter focus:** **Antonio D'Ambrosio** · Ember & Ash · New
-  Orleans / Marigny · August hot office above the warehouse. Two
-  speeds: gone and about to be gone. Q. Paul on the phone (silt of
-  voicemails). Jimmy Daigle the foreman: *"option four... you don't
-  ask me what it means."* Lila Bao the chef being courted away. The
-  cypress beam from Lafayette. The window AC unit Jimmy installed.
-  The man on the corner in the charcoal suit. **Antonio is dying.**
-  Sysop of ember.ash.rest.bbs. Dies in a scaffolding fall Sunday
-  morning. Father Quent's Sunday booth call sends Antonio to Daigle's
-  bar to undo a scaffolding decision Quent made on Wednesday at the
-  barge while Dante watched.
-- **PH Ep. VII** — *"the black pickup"* — a single 22-minute take
-  following a black pickup with Louisiana plates driving the
-  perimeter of Harmony Creek Estates four times. The driver's
-  watchless wrist is briefly visible on iteration 3. Elicia operates
-  the camera from the passenger seat; she does not drive. The
-  uncredited driver of the chase car is the un-named figure ("—")
-  who comments "i was the driver" four months later.
-- **Sinkhole touch:** Antonio's BBS handle "the_charioteer"
-  originated at the sinkhole — he drove the recovery van. The
-  handle is older than Daigle's bar.
-- **Gauntlet hand:** **Antonio** (or, for the Chariot location's
-  destiny side, the un-named driver of the chase car)
-- **Gauntlet location:** The Long Road (Chariot reversed). FATIGUE
-  is the shadow. Uses driving dice. Finales: DEAD AT THE WHEEL,
-  WRONG CARGO, NEVER ARRIVED.
-- **Scenarios:** THE LONG HAUL, THE SYSOP'S LAST LOG, RUN-AWAY CAB
-- **REPO STATUS:** ❌ **WHOLLY WRONG.** I built Cora and the
-  midnight bus. Cora is not canon. The Chariot is Antonio at Ember
-  & Ash in New Orleans. **Full rebuild needed.** Cora can be
-  demoted to a visitor (a passenger Antonio remembers, a phone call,
-  etc.) elsewhere.
+- **Setting:** Antonio's hot office above the warehouse that will become Ember & Ash, the Marigny in New Orleans, August.
+- **Focal POV:** Antonio D'Ambrosio, 34.
+- **Key beats:**
+  - *"Two speeds: gone and about to be gone."* (Girlfriend at 23. Antonio is 34. Eleven years of that diagnosis.)
+  - Q. Paul calls. Antonio counts to 27 seconds (voicemail). Doesn't listen to them. *"The silt itself constituted a kind of message."*
+  - Cypress beam from a Lafayette salvage yard, not going up straight. The foreman: *"In this building, in this town, in this neighborhood, that is the same word."*
+  - Lila Bao is sending three-line emails (means somebody's courting her).
+  - The man in the charcoal suit watches from the corner across the street for 40 minutes, cigarette advancing a centimeter, then drives away in a dark sedan from the shadow of the dumpster.
+  - Jimmy: *"That's Q. Paul's. I've seen him before."* And: *"He's not just Q. Paul's. He works for more than one shop."*
+  - Jimmy's option four: *"You let me handle it... It means you don't ask me what it means."*
+  - Antonio holds his thumb above DAD for eleven seconds. Does not call.
+  - Closing: *"for the first time in eleven years, did not feel certain that he had two speeds. He felt, briefly and clearly, that he had only one. The remaining speed was gone."*
+- **By ch21:** *"Antonio D'Ambrosio is, against all expectation, still at Ember & Ash. The cypress beam held. The city inspector has not come back. The gas line got approved on Monday. Lila Bao, the chef, called last week — just to check in."*
+- **REPO STATUS:** ❌ Wholly wrong. Cora and the midnight bus is invented. Canon: Antonio at Ember & Ash, New Orleans.
 
-### VIII — STRENGTH
+### VIII — STRENGTH · "The Ouroboros in the Ashtray"
 
-- **Chapter focus:** the un-named woman ("—"). Sinkhole rescuer.
-  Pulled some out, not enough. Walks beside the river the sinkhole
-  opened beside. Dash-signature.
-- **PH Ep. VIII** — *"the woman at the fence"* — a woman feeds a
-  stray dog through a chain-link fence at the back of a planned
-  community lot, every evening at dusk, for ten evenings. Eleventh
-  evening the dog is not there. She walks home through an orchard
-  (Halsey).
-- **Sinkhole touch:** the dash-signature is the signature she used
-  on rescue reports for the family. She stopped writing reports.
-- **Gauntlet hand:** the un-named figure ("—")
-- **Gauntlet location:** The Vault (Strength reversed). STRAIN is
-  the shadow. Hold what you can't hold.
+- **Setting:** the Iron Crow bar in New Orleans; Douglas's motel room above a laundromat.
+- **Focal POV:** Douglas Forte.
+- **Key beats:**
+  - *"Stillness was a kind of armor."*
+  - Hands scarred from *"busted fences and kitchen brawls from back when Dante's word was law."*
+  - **Ouroboros tattoo** on forearm: *"the only honest piece of him."*
+  - Joanna (his lost lover): *"It's a picture of itself eating itself, and that's true."*
+  - Summoned by Jimmy to "keep Antonio safe" — but realizes he's being used.
+  - Writes a letter to Jimmy: *"I know what option four is. I figured it out tonight at the bar. I'm not going to tell you I figured it out. I'm not going to do anything different. You should not change your plan."*
+  - *"I want you to do me one favor when it's done. I want you to call Philip Roberts and tell him where I am."*
+  - *"Tell Maya I think about her. Don't tell her how."*
+  - Realization: *"I am the piece. Jimmy is not the operator. I am."*
+- **By ch21:** Douglas walked five days from New Orleans to the Roberts' house. Philip met him halfway. He drinks three glasses of iced tea and sleeps for a couple days in the finished basement. Tools in Philip's shed have been *"quietly organized into the arrangement Doug preferred when he worked, because Philip remembered what that arrangement had been, from 2018, when they had rebuilt the gate."*
 - **REPO STATUS:** Not yet built.
 
-### IX — THE HERMIT
+### IX — THE HERMIT · "Labyrinth of Scrawled Echoes"
 
-- **Chapter focus:** the Hermit — Dante's brother, or a senior
-  family lawyer/accountant. Handled paperwork for the sinkhole
-  aftermath. Saw enough. Packed a lantern and left.
-- **PH Ep. IX** — *"one lantern, no audience"* — a man with a
-  six-sided lantern walks a country road at night. Twenty-two
-  minutes of walking. The road ends at a closed wooden gate marked
-  "HALSEY." He rests his hand on the latch. Does not open it.
-- **Sinkhole touch:** the lantern's broken panel is broken at the
-  sinkhole. He has not replaced it.
-- **Gauntlet hand:** the Hermit (unnamed)
-- **Gauntlet location:** The Cabin (Hermit reversed). LONELINESS
-  is the shadow. The room empties of meaning around you.
+- **Setting:** Graustark ruins (Houston Street area, near the sinkhole).
+- **Focal POV:** Joanna LeMoine, mid-40s.
+- **Key beats:**
+  - Sole resident of the ruin-scape. Companions: three-legged calico, one-eyed shepherd mix named **Rumpus**, a crow that brings gifts.
+  - Scrawls poetry on walls with chalk/charcoal: *"The map is not the territory. The territory eats the map."*
+  - The crow brings a folded paper from 1987 — receipt from **Adelphia's Deli**, $4.85 cash, with a doodle on the back: *"a small four-foot-tall figure in a cork hat, smoking a hand-rolled cigarette, sitting beside a river."*
+  - Below the doodle: *"See you soon."*
+  - Joanna recognizes the figure (the Frog).
+  - She writes: *"I am ready. Come and find me."*
+  - Mails a letter using the 1987 receipt's address — to the Frog. The cycle began at this address in 1987 and is closing.
 - **REPO STATUS:** Not yet built.
 
-### X — WHEEL OF FORTUNE
+### X — WHEEL OF FORTUNE · "Closing Arguments Against Chaos"
 
-- **Chapter focus:** **Alberto Marroquín-D'Ambrosio** — younger
-  son, carries his void mother's surname. Holds Dante's call log,
-  Quent's call log, Daigle's call log. The night Antonio died,
-  dialed Daigle 19 times in 14 minutes; Daigle did not pick up.
-  Erica's Fortress Menu paperwork processes the Nexus.
-- **PH Ep. X** — *"the phone tree"* — eleven strangers, each in a
-  different domestic interior across one night, answering a beige
-  push-button 1996 landline. Each says one word: "yes." Eleven
-  yeses. Elicia's phone-tree diagram drawn by montage.
-- **Sinkhole touch:** Erica's Fortress Menu has a fifth file no one
-  has indexed: *"CASE PREDECESSOR"* (Settlement Grey). The Wheel is
-  the deck's diegetic sinkhole-processor.
-- **Gauntlet hand:** Alberto
-- **Gauntlet location:** TBD (the call-center? the family office?)
+- **Setting:** Erica Campbell's Houston office (high-rise), Saturday morning.
+- **Focal POV:** Erica Campbell, 40s, corporate lawyer.
+- **Key beats:**
+  - Motion denied. Six weeks of arguments. *"The ground had felt suspiciously unsteady all week."*
+  - Designs a contract for Antonio that is "invisible" — converts on default into Alberto's stake. Elegant. Deepens Alberto's ownership of Antonio.
+  - Marcus (assistant): *"There's a man in the lobby asking for you. Saturday. Without an appointment."* The man: *"Mr. D. Dean. Consulting."*
+  - Erica: *"Tell the desk Mr. Dean can come up at nine-fifteen."*
+  - *"I have crossed a line I had not, until this morning, fully understood I was approaching."*
+  - She decides not to stop.
+- **By ch21:** in a Hill Country cabin with Jordan the painter. Has not signed the Antonio contract. Has decided *"either outcome is, for the first time, acceptable."*
 - **REPO STATUS:** Not yet built.
 
-### XI — JUSTICE
+### XI — JUSTICE · "Scales Already Shattered"
 
-- **Chapter focus:** **Erica + Anna** (dual POV). The PetroTex case.
-  Marta Romero's deposition. Anna recovering her father (lost at
-  the sinkhole doing boat work for Dante).
-- **PH Ep. XI** — *"deposition room b"* — a court reporter sets up
-  her stenotype, plays back a deposition that has not yet been
-  transcribed, dated three years in the future. She transcribes it
-  and files it. The court reporter is Erica.
-- **Sinkhole touch:** Anna's wireframe carries small inscribed
-  coordinates that pinpoint the sinkhole's location.
-- **Gauntlet hand:** Erica or Anna
-- **Gauntlet location:** TBD
+- **Setting:** Erica's Houston office (Saturday); Anna Logue's design studio same building, different floor.
+- **Focal POV:** dual — Erica Campbell + Anna Logue.
+- **Key beats:**
+  - Erica hasn't slept in 5 days. PetroTex settlement file open on a second monitor.
+  - *"Justice. Accountability. Hollow words against the raw tectonics of consequence."*
+  - **Anna Logue**, designer working on Ember & Ash branding. Creates *Corporate Idols* — deconstructs the D'Ambrosio logo so the ascenders become wrought-iron courtroom columns, the apostrophe becomes a gavel, the underline becomes a redaction bar.
+  - Saves as `D'AMB-IDOL-01.psd` to a private cloud Ben (her boyfriend) doesn't have access to.
+  - Leaves the office early for the first time without filing a request with HR.
+- **By ch21:** Anna has resigned (Thursday). In Marfa. The journalist she sent the file to is running it in December. Beginning a second piece on the NexCorp logo.
 - **REPO STATUS:** Not yet built.
 
-### XII — THE HANGED MAN
+### XII — THE HANGED MAN · "Gravity is Optional After Midnight"
 
-- **Chapter focus:** **Natalie** — Simon's apartment. The actress
-  in PH XII / XVIII. Forced suspension.
-- **PH Ep. XII** — *"the vigil"* — a woman alone in an apartment
-  reads tarot for herself. Shuffles, cuts, lays three: Hanged Man,
-  Moon, Star. Does this for 22 minutes. Cards do not change.
-- **Sinkhole touch:** Natalie's notebook has a sigil she sketched
-  at the sinkhole age 12 (vol6 hook).
+- **Setting:** Natalie David's apartment in **Simons** (above a bagel shop), pre-dawn.
+- **Focal POV:** Natalie David, mid-30s, waitress/diviner.
+- **Key beats:**
+  - Phases through the apartment door, shedding her waitress uniform "like a snake shedding skin."
+  - Air thickens; refrigerator cycles out of rhythm; streetlight flickers.
+  - At 5:07 AM, the record player (off) clicks; tonearm lifts itself; settles on Nina Simone.
+  - A voice (not Nina's) speaks through the vinyl: *"Natalie. You have a visitor coming. Wake the girl. Both of her."*
+  - Natalie wakes Nicola and Aria (in the same body).
+  - **Miriam** arrives with a crow on her shoulder: *"I'm a friend of Joanna LeMoine's. She's asked me to come get you. Somewhere safe. Somewhere where what's growing in you can grow. Both of what's growing in you."*
+  - 5:14 AM doorbell. 2009 Subaru. The crow rides on the roof.
+  - **Aria speaks directly to Natalie for the first time** (not through Nicola): *"She's telling us she knows we're moving."*
+  - **The Third Consciousness** is recognized as a third presence.
+  - At the county line at 7:52 AM, Miriam drops Natalie and keeps driving west.
 - **REPO STATUS:** Not yet built.
 
-### XIII — DEATH
+### XIII — DEATH · "Walpurgisnacht in Ward C"
 
-- **Chapter focus:** Ward C. Walpurgisnacht. Six beds, two empty.
-  Mr. D in Bed 6 is Dante. The night nurse counts pulses, writes
-  on the handover sheet, does not speak.
-- **PH Ep. XIII** — *"ward c"* — same scene as the chapter; the
-  series predicts the chapter directly.
-- **Sinkhole touch:** ward's east window faces the sinkhole site;
-  dusk-pink light is partly the site's evening reflection. The bed
-  census has no Mrs. D.
+- **Setting:** St. Jude's Mercy hospice, Room 217, Simons.
+- **Focal POV:** Alice Newsom, late 60s — plaintiff of record in Newsom v. PetroTex.
+- **Key beats:**
+  - Awake since 3 AM. A white rose appears on the windowsill, brought by no staff member she heard.
+  - *"Preliminary courtesy that the older system extended... to the people who had been paying attention."*
+  - Death is courteous, sits in the chair by the window. Family arrives: grandmother, lost friend, estranged brother, the dog Buster.
+  - She thanks Erica Campbell silently for keeping Henry's name on the settlement document.
+  - *"I'm coming. Don't dig anything up."*
+  - At 4:06 AM, the night nurse finds Room 217 empty. Rose bloomed open.
 - **REPO STATUS:** Not yet built.
 
-### XIV — TEMPERANCE
+### XIV — TEMPERANCE · "The Moderate Temperature of Tuesday"
 
-- **Chapter focus:** **Frank** — Tuesday observation. Two cups, the
-  one not drunk.
-- **PH Ep. XIV** — *"two cups"* — a man at his kitchen table at 5
-  PM Tuesday, two cups (cold black coffee, warm chamomile), does
-  not drink either. The man is canonically Frank.
-- **Sinkhole touch:** Frank's retainer began the month after the
-  sinkhole. He has been on observation since.
+- **Setting:** Café Olimpico, Saint-Viateur, Montreal. Late May. **Several years after vol open.**
+- **Focal POV:** John Frank — now late 30s, settled in Montreal for 6 years.
+- **Key beats:**
+  - Comes to the café every Tuesday for 6 years.
+  - Tracks dust motes; they cluster on Tuesdays.
+  - Elicia responded to his email (3-week-old, 7 months earlier) with one word: *"Yes."* They've been meeting every Tuesday since.
+  - Elicia was initially broke, evicted, filming herself for 11 days.
+  - John has an unsent novel: `gtk_drft_v6_FINAL_actual`, 97,000 words.
+  - Emails Mackenzie Roberts twice a year. Gets Christmas cards from Erica: *"mostly, mostly, mostly."*
+  - A woman with **blue dreadlocks** (Tem, ch21) arrives at 10:23 AM with a man neither of them recognize.
+  - John tells Elicia: *"The dust motes have a pattern, and I have... been tracking the pattern. It clusters on Tuesdays."*
+  - Elicia: *"Tell me when you're ready."* John: *"I'll tell you eventually. I'm not ready."*
 - **REPO STATUS:** Not yet built.
 
-### XV — THE DEVIL
+### XV — THE DEVIL · "Gumbo Limbo"
 
-- **Chapter focus:** **Jimmy Daigle** — Gumbo Limbo, Daigle's bar.
-  Bartender. Friend of Antonio's. Did not pick up the phone the
-  night Antonio died because he could not bear to confirm to the
-  brother (Alberto) that Antonio was already dead.
-- **PH Ep. XV** — *"the HOA meeting"* — Harmony Creek HOA meeting
-  about a noise complaint nobody on the board has heard. Three
-  residents describe it differently (hum, tone, knocking). Board
-  votes unanimous: *"silenced."* The Handsome Triumvirate (vol1)
-  appear as audience members; Faust takes two honey jars.
-- **Sinkhole touch:** the bar rests on the sinkhole's eastern lip.
-  Daigle has tracked settling with a level for years. His father's
-  original bar was lost at the sinkhole.
-- **Gauntlet hand:** Daigle
-- **Gauntlet location:** Daigle's bar (Devil reversed)
+- **Setting:** Jimmy Daigle's rented apartment above a laundromat in New Orleans, pre-dawn.
+- **Focal POV:** Jimmy Daigle.
+- **Key beats:**
+  - Wakes hungover. *"A hangover was a full-body audit of last night's bad decisions."*
+  - Realizes he's become the Devil. *"Loyalty felt suspiciously like leverage now. Protection looked a lot like control."*
+  - Maya is 16, last call seven months ago.
+  - Q. Paul calls: *"James. I think it's time you and I had a conversation. There's a bar in the Marigny called the Iron Crow. I believe you know it. Three o'clock. Don't bring anyone."*
+  - Jimmy realizes: *"The chains just tightened, and I am, evidently, the link being adjusted... This is what it feels like when you are not, in fact, the operator. This is what it feels like when you are the operated."*
+  - Antonio calls: city inspector at the office, something about the gas line.
+  - Finds Doug's letter. Realizes *"Doug is, in this play, the operator. I am the operated."*
+  - Calls Maya: *"Listen to me. Stay inside your grandmother's house. Don't go out. I'm going to send someone to get you. His name is Philip Roberts."*
+  - *"I love you." / "I know."*
+- **By ch21:** Jimmy in Arizona, *"the kind of place you check into for the detox after the detox, the one where they don't let you have phones and they make you do chores and the chores are the medicine."*
 - **REPO STATUS:** Not yet built.
 
-### XVI — THE TOWER
+### XVI — THE TOWER · "Evangeline in Render Queue"
 
-- **Chapter focus:** **Evangeline** — render queue. The Tower's
-  collapse is the render farm's recursion problem. The farm sits on
-  the sinkhole site's edge.
-- **PH Ep. XVI** — *"the collapse of the water tower"* — town's old
-  water tower collapses on a Thursday morning. Seven amateur cameras
-  cut into a 22-minute composite. Collapse takes nine seconds. The
-  episode is the only one to come close to naming the sinkhole; it
-  refuses (collapse is a water tower, date wrong, location wrong).
-- **Sinkhole touch:** the render farm's recursion problem ECHOES
-  the sinkhole's geological problem. Job 47: *"the engine is
-  trying to render the chapter that is the engine failing."*
-- **REPO STATUS:** Not yet built. (scene file exists: vol5_ch16_tower.json)
-
-### XVII — THE STAR
-
-- **Chapter focus:** the un-named figure ("—"). Glass Skin, Christian
-  Ice. The river offering.
-- **PH Ep. XVII** — *"the river offering"* — un-named woman walks to
-  a riverbank at night with two clay vessels, pours both into the
-  river, signs a folded page with a dash, refolds it. The page is
-  on D'AMBROSIO INDUSTRIAL — RECOVERED PERSONS LOG letterhead.
-- **Sinkhole touch:** the river is the river the sinkhole opened
-  beside. The vessels are the annual offering for the lost.
+- **Setting:** Elicia's Montreal apartment above a bagel shop, late October.
+- **Focal POV:** Elicia Duchane.
+- **Key beats:**
+  - Apartment in ruins. 3 months behind on rent; eviction notice on the door.
+  - Hasn't photographed anything in 11 weeks.
+  - Filmed herself every day for 3 months; 30 hours of footage.
+  - Mother's teacup unpacked but dusty.
+  - Records herself for 13 minutes in silence; the *"small honest collapsing the realization required."*
+  - Replies "Yes" to John's email.
+  - Mackenzie calls: *"Elicia. We need you home."* Books a flight.
+  - Records: *"Alright. Scene One. Take One... I'm going to start telling one about myself. I don't know how long it's going to take. I don't know if it will be any good. I am going to tell it anyway. Take Two."*
+  - *"It was, for the first time in twelve years, enough."*
 - **REPO STATUS:** Not yet built.
 
-### XVIII — THE MOON
+### XVII — THE STAR · "Glass Skin and Obsidian Ink"
 
-- **Chapter focus:** **Natalie** — sigils in static.
-- **PH Ep. XVIII** — *"static"* — a woman watches analog static;
-  at minute 11, the static resolves briefly into her own handwriting
-  reading three sigils she once drew in a notebook but did not
-  finish. The sigils are complete on screen; not in the notebook.
-- **Sinkhole touch:** Natalie's static may carry the sinkhole's
-  geological signature in its deep grain.
+- **Setting:** Graustark ruins, night.
+- **Focal POV:** Joanna LeMoine.
+- **Key beats:**
+  - *"Glass skin on bone frame, transparent, permeable."*
+  - Has a vision of everyone in the volume simultaneously.
+  - *"I have done my part. The letter is mailed. The rest is not mine to hold."*
+  - Wall verse: *"I did not lose Douglas. I sent him. / I did not lose myself. I have been spent. / I am the page on which the older system writes its drafts."*
+  - Instructs the crow: *"Tell him. Tell him I'm sorry. Tell him I knew. Tell him I sent him. Tell him I was used to send him. Tell him both are true."*
+  - The crow flies southeast.
 - **REPO STATUS:** Not yet built.
 
-### XIX — THE SUN
+### XVIII — THE MOON · "Sigils in Static"
 
-- **Chapter focus:** **Frank** — dust motes. Saturday call to
-  Elicia.
-- **PH Ep. XIX** — *"four motes"* — Frank at a desk by an
-  east-facing window in the early morning notices four dust motes
-  in the slant of light. Counts them. Waits five minutes. Counts
-  again. Four. Picks up phone, dials Elicia, nods twice, hangs up.
-- **Sinkhole touch:** the four motes are the four survivors Frank
-  counted out of fourteen.
+- **Setting:** Natalie's apartment (5 AM); Miriam's car driving west.
+- **Focal POV:** Natalie David.
+- **Key beats:**
+  - Cards fly upward; the Hanged Man card settles back down, *now smiling.*
+  - Record player (off) plays silence between tracks; speaks: *"She arrives in five months. You will be present. Prepare the room."*
+  - Natalie clears a storage space for a crib.
+  - Miriam tells Aria: *"You've been broadcasting on a frequency Joanna LeMoine has been listening to for thirty-eight years, dear."*
+  - At the county line (7:52 AM), Miriam drops Natalie.
+  - Natalie's dream journal: *"Today I mailed a girl south and got a letter back from the dark."*
 - **REPO STATUS:** Not yet built.
 
-### XX — JUDGEMENT
+### XIX — THE SUN · "Pattern Recognition in Dust Motes"
 
-- **Chapter focus:** ensemble. Twelve survivors. *"we are doing
-  this without him"* — Frasier's first line at 00:33 (Antonio is
-  absent). Alberto is in the ensemble.
-- **PH Ep. XX** — *"the ensemble gesture"* — community theater
-  company rehearses a single gesture (right hand raised to eye
-  level, held 3 seconds, lowered to heart). The twelve ensemble
-  members are the actual sinkhole survivors. Elicia cast them
-  years before vol5 named them.
-- **Sinkhole touch:** the ensemble is the ensemble of those who
-  were not lost. The unrendered verdict is the verdict on the
-  lost.
+- **Setting:** Café Olimpico, late May, Montreal.
+- **Focal POV:** John Frank. (Continuous-feeling timeline with ch14.)
+- **Key beats:**
+  - Sees the blue-dreadlocked woman (Tem) and a man at a window table.
+  - *"That woman is not from here." / "That woman is looking for someone." / "That woman is in your pattern, John."*
+  - Elicia takes his hand briefly, contract-like.
+  - John has received a text from a Texas number (Frasier): hasn't told Elicia yet.
+  - *"The light held."*
 - **REPO STATUS:** Not yet built.
 
-### XXI — THE WORLD
+### XX — JUDGEMENT · "The Stillness Breaks / The Sound Arrives"
 
-- **Chapter focus:** the Frog Knows Best closing. The wreath. The
-  gap.
-- **PH Ep. XXI** — *"the wreath"* — wildflower wreath on a front
-  door; slow 22-minute zoom. The gap in the wreath is the void
-  mother's silhouette. Wreath rotates almost imperceptibly to
-  center the gap by the end.
-- **Sinkhole touch:** the wreath closes around a hole. The dancer
-  is not coming; the wreath holds the absence; the absence is the
-  sinkhole.
+- **Setting:** Graustark, Houston, New Orleans, Montreal, Louisiana roads, hospice, multiple locations simultaneously.
+- **Focal:** ensemble cross-cut.
+- **Key beats:**
+  - **10:47 AM Central:** the sinkhole reopens. *"A sound that was less sound and more the raw tearing of the world's fabric."*
+  - Joanna's letter arrives at Dean's address. Dean *"walked, unhurried, to the door"* and begins moving.
+  - John receives text: *"did you feel it."* Replies: *"yes. i'm coming."*
+  - Erica: *"the Wheel had stopped spinning. The Wheel had flown off its axle entirely."* Goes to Jordan.
+  - Joanna walks to the post office on Elm; a crack runs from the outgoing bin to her feet; clerk: *"Go, Joanna. Go now."*
+  - **Nicola/Aria in the car:** the Third Consciousness speaks in her own voice for the first time: *"Mama. Mom. It's okay. I know where we're going. Stay in the car."*
+  - **Dante** at the helm — the boat sinks. Looks at Dean's card a last time: *"I know you, you sonofabitch. I knew you in 1987. You haven't aged."* The water comes up to meet him.
+  - Alberto in Houston receives a phone call; remains silent; looks east.
+  - Antonio doesn't answer; later plays voicemail.
+  - The cypress beam at Ember & Ash hangs straight for the first time.
+  - **Douglas** stands at the Iron Crow at the moment of tremor; walks north out, *"knowing he would walk for days."*
+  - Jimmy calls Maya, asks Roberts to retrieve her. Maya: *"Okay, Dad. I will."* *"I love you." / "I know."*
+  - Mackenzie picks up the phone before it rings. Philip: *"I'll get them. You call Elicia."*
+  - Elicia is filming when the tremor hits: *"Something is happening. I am going to keep the camera rolling."*
+  - Alice's white rose blooms fully open at 10:47 AM. Alice has passed.
+  - Anna's monitor lines distort. Saves work, emails `D'AMB-IDOL-01.psd` to journalist, walks out.
+  - The Frog: *"The Frog, in the wreckage, inhaled. Then the Frog, in the wreckage, stood."*
+- **REPO STATUS:** Not yet built. (The `world_state.json` sinkhole_open injector is the right mechanism but is currently underweighted — this is *the* event.)
+
+### XXI — THE WORLD · "Frog Knows Best, Mostly"
+
+- **Setting:** Graustark riverbank in the after-time. Sunlight thick and syrupy yellow. The rusted **Minstral's Green** steamship sits quiet *"like a beached metal whale dreaming of deeper waters."*
+- **Focal POV:** the Frog (and ensemble round-up).
+- **Key beats:**
+  - The Child by the river pokes a stick at a crawdad hole; wears the *"black egg doohickey"* (humming since Tuesday).
+  - The Frog rolls a cigarette: *"Poke that hole much harder, pink one. And somethin' uglier than you gonna come lookin'."*
+  - Dean visited Joanna four days ago: *"Ms. LeMoine. I received your letter. I have been waiting to receive it for some years. I want to say thank you. I also want to say: not today. I will be back when the child is ready. You have done your part. Please rest."*
+  - The Roberts: Philip rebuilt the porch. Mackenzie weaving curling patterns on her loom. Talk of another baby.
+  - Maya at the Roberts', 16, reading short stories by a Louisiana woman who died young.
+  - Frasier built a glass case around the silver-spoon riverboat: **D'AMBROSIO'S. 1983–2026. REST.**
+  - Douglas asleep in the basement. Tools in Philip's shed organized to Doug's preferred 2018 arrangement.
+  - Erica in a Hill Country cabin with Jordan. Cooking badly. Antonio's contract unsigned.
+  - Anna in Marfa. Second Corporate Idols piece begun (NexCorp).
+  - Antonio still at Ember & Ash. Beam held. Lila called. **Alberto quietly paid off two of Antonio's vendors; waiting for Antonio to call.** *"Their father is dead. They have, in some very old sense neither of them has articulated, become the only men left in the family with authority over how that fact is going to be carried."*
+  - Natalie clearing a corner. Crib in 6 weeks.
+  - Elicia in NYC (Brooklyn cousin), editing. *"The film, when it comes out, will be small and fierce and honest."*
+  - John Frank on a plane to Houston. *"He will, eventually, be present at her birth — on a screened porch of a modest cabin in **Smolvud, Oregon**, in the company of a midwife named Lena and a silver-haired woman named Miriam and a girl of nineteen and her other self and a man named Philip Roberts who drove thirty-two hours to be there — and he will, eventually, be the one who writes her first book for her."*
+  - Frog: *"The old one has two more errands. One short. One long. After that, I take over again."*
+  - **Sofia in Rio de Janeiro** dreams of a man in a bomber jacket (Frasier?): *"You are next. Don't worry. You don't have to hurry. But you are next."* Writes in Portuguese: *"I had the dream again. The man with the bomber jacket. The riverboat in the glass case."*
+  - **Tem in Smolvud, Oregon**, blue dreadlocks, yellow rain slicker, reading John Frank's self-published novel on a pier looking at the **Minstral's Green** (relocated from Louisiana).
+  - The novel is dedicated to a girl named Sofia whom the author had never met.
+  - Frog's vol 6 preview: *"the planned communities. The suburbs. The NexCorp vans. The kid in the garage. Young Sam gettin' her heart broken open by the world. Maya goin' through her archives. Jesse's dad's camera eyes. Backyard Beatdowns. Dial-up screams. The whole greige apparatus."*
+  - Frog's vol 7 preview: *"Smolvud. The coast. Kai and the ferret. Lena and her octopus. Finn and his crow. My favorite little triumvirate. Real scrappy, that bunch."*
+  - Closing: *"End of Act One."*
 - **REPO STATUS:** Not yet built.
 
 ---
 
-## Pomegranate Hour — series-level structure
+## What's wrong in the repo
 
-The 22 episodes are Elicia's web series, uploaded to VEIL.tv between
-vol3 and vol5. Domain registration lapsed in vol5; ripped copies
-circulate in a private list (Frasier "FT", Frank, Anya "—", RES_SOL_VERIFY).
+### Wholly fabricated content (retire as canonical scenarios; demote prose to visitor flavor)
 
-**Series-level rules:**
-- **Cold open:** Elicia in halftone B&W chair, nods once, does not
-  speak. Identical across all 22.
-- **60 Hz hum** under every episode.
-- **9:09 PM cable interference** in the diegesis of every episode.
-- **Recurring visual elements:** Kwik Stop sign (in 14/22), HARMONY
-  CREEK ESTATES sign (in all 22), black pickup with Louisiana plates
-  (in 8), Halsey Farms delivery van or label (in 11).
-- **Closing card:** *"a pomegranate hour · veil.tv / the host does
-  not speak, by choice."*
-- **Filming claim:** *"All episodes filmed within a 60-mile radius
-  of one unnamed Texas exurb."* (The exurb is Harmony Creek.)
-
-**Vol6 / vol7 foreshadows:** Each episode contains specific advance
-signals. NexCorp Residential Solutions, Harmony Creek Estates (vol6),
-Halsey Farms / Halsey Apiaries (vol7). The series is the deck's
-primary advance organ.
-
-**Comment-thread canon:** FT (Frasier — three-word phrases),
-RES_SOL_VERIFY (compliance auditor), lostchild (Natalie — comments
-under XII, XVIII, XIX), "—" (the un-named woman — comments under
-VIII, IX, XVII).
-
----
-
-## What my repo has wrong, by file
-
-### Catastrophic miscasts (rebuild)
-
-| File | What it is | Canon |
+| File set | What it is | Canon override |
 |---|---|---|
-| `chariot/*` | Cora's midnight bus | Antonio at Ember & Ash, New Orleans |
-| `lovers/*` | Sasha + Reed in apartment | "the cousin at the wedding," ANYA_03 VHS |
-| `hierophant/*` | Sysop's BBS room | Father Quent on Channel 14 |
-| `locations/the_midnight_bus.json` | invented | not canon — retire or repurpose |
-| `locations/apartment_above_diner.json` | invented | not canon — could be the Bedroom (VI reversed) |
-| `locations/bbs_room.json` | invented | exists in canon (Antonio's BBS) but is not the Hierophant's board |
+| `chariot/*` + `locations/the_midnight_bus.json` | Cora the midnight bus driver | Chariot = Antonio at Ember & Ash, New Orleans |
+| `lovers/*` + `locations/apartment_above_diner.json` | Sasha + Reed in apartment above diner | Lovers = the Roberts on cursed ground, the returned Polaroid |
+| `hierophant/*` + `locations/bbs_room.json` | "Sysop" running ember.ash.rest.bbs | Hierophant = Q. Paul (Quentin Paul), patriarch / pressure figure |
+| `priestess/*` Pomegranate Hour suite | 6 invented episodes, college collaborators (Hen/Marisol/Davey) | Elicia is a solo director of *Whispers from the Liminal*; lore-doc "Pomegranate Hour" is invented |
 
-### Reframes (texture mostly OK, focus wrong)
+### Misframed but salvageable
 
-| File | What it is | Canon |
-|---|---|---|
-| `priestess/*` | Elicia, half-finished show | Elicia, *finished* 22-episode series |
-| `locations/recording_booth.json` (Pomegranate Hour suite) | six invented episodes | canonical 22 episodes with specific premises |
-| `empress/*` | Nicola on a riverboat | Nicola is Antonio's wife/partner |
-| `locations/riverboat_interior.json` | invented | Empress reversed is The Greenhouse, ROT-tracked |
-| `emperor/*` | Dante in a small civic office | Dante is a kingmaker father with two-son inheritance and void mother |
+| File set | What needs adjustment |
+|---|---|
+| `emperor/*` + `locations/dantes_office.json` | Dante isn't a small civic lawyer — he's the riverboat proprietor. The board may need to be the riverboat helm + dining room. |
+| `empress/*` + `locations/riverboat_interior.json` | Nicola is the hostess AT the same riverboat (D'Ambrosio's). The Empress board overlaps with the Emperor's. Aria mechanic needs to be a feature. |
 
 ### Right and intact
 
-| File | What it is |
+| File set | Status |
 |---|---|
-| `fool/*` | John Frank, D'Ambrosio's, three scenarios — canonical |
-| `magician/*` | Frasier, Cathedral of Rust, three scenarios — canonical |
-| `framework/action_tableau_core.json` | Shared verbs — canonical |
-| `achievements.json` | Most entries valid; some reference invented scenarios that need replacement |
-| `world_state.json` | Sinkhole injector valid; needs amplification (sinkhole is THE event) |
-| Engine code | `_episode_states`, `_hand_id`, `hand_overrides`, `advance_episode()`, `verb_labels`, the achievement evaluator — all sound infrastructure |
+| `fool/*` + `locations/dambrosios.json` | Aligned with canon |
+| `magician/*` + `locations/cathedral.json` | Aligned. The Demons are *canonical* — keep them as Frasier's real mechanic. |
+| Engine code | All infrastructure is sound. The `hand_overrides`, episode-state, `verb_labels`, achievement evaluator — they all stand. |
+| `world_state.json` sinkhole_open injector | Right mechanism; needs amplification — the sinkhole is THE event, all 22 arcanas touch it. |
 
-### Invented characters to demote to visitors (per user direction)
+### Invented characters to demote to visitor flavor (per user direction)
 
-These remain as flavor/visitors in canonical scenarios; they were
-authored as hands but should be NPCs:
-
-- Cora (the midnight bus driver)
-- Sasha (apartment dweller)
-- Reed (their partner; Reed could remain as the cousin's bag, the
-  painting subject, etc.)
-- The bus kid (already a helper in Fool scenarios — keep)
-- The late-shift worker, the lost traveler, the old regular (bus
-  passengers — could become Antonio's New Orleans memory cast, or
-  Daigle's bar regulars)
-- The "Two-Chairs Women" subjects in Pomegranate Hour — could
-  remain as PH episode subjects under the canonical episode list
-- Hen, Marisol, Davey, Reggie, Prof. Kang, the New Collaborator —
-  these were invented as Elicia's college collaborators; canon has
-  her as a solo archivist who completed the show. Whether the
-  collaborators stay depends on whether the gauntlet wants to add
-  a fiction layer beneath canon. If kept, they're visitors only.
+These keep existing as ambient cast in canonical scenarios, never as hands:
+Cora, Sasha, Reed, the late-shift worker / lost traveler / old regular / late couple / kid running away (Chariot passengers), bus kid messenger / upstairs neighbor / old friend / landlord (Lovers visitors), Sal / Frank / Elena / the bus kid in the guest-lens prototype (Emperor/Sal scenario), the entire "Pomegranate Hour" college crew (Hen/Marisol/Davey/Reggie/Prof Kang/the New Collaborator), the dream-version subjects (Two-Chairs Women, Bus Driver, Diner Cook, etc.). All retire as candidate hands; survive as visitor flavor where they fit.
 
 ---
 
-## Gauntlet framework — what's settled
+## Tonal rule (from user)
 
-Per `_TAROT_GAUNTLET_SCENARIOS.md`:
+**Dream logic stays in the Priestess.** Other arcanas earn weight through specificity, not animism.
 
-- **HAND × LOCATION × SCENARIO** mix-and-match
-- Each hand has an action card set + ultimate
-- Each location has a board + destiny deck + finales + visitor
-  roster + scenario cards (3 per location)
-- Hands unlock by clearing locations; the gallery picker is a
-  3-column chooser; preview reveals titles but not effects
-- Cross-arcana unlocks per (HAND × LOCATION) combo
-- The Frasier reshade table is the model: every hand × location
-  combo should produce *"a sentence that explains how the run
-  feels"*
+- ✅ The cypress beam needs to be straight, not straight enough.
+- ✅ Sammy has been pouring at D'Ambrosio's for 60 years.
+- ✅ The brass railing has been the wrong-bright since the second year; Dante maintains it on principle.
+- ❌ "The room remembers."
+- ❌ "The bus has been remembering since 1991."
 
----
-
-## What to build next, in priority
-
-### Surgery (clean what's wrong)
-1. Retire Cora-Chariot wholesale. Move salvageable visitor prose
-   to other arcanas where it fits.
-2. Reassign Sasha/Reed to visitors elsewhere. The
-   apartment-above-diner location can become the Lovers Bedroom
-   (VI reversed) if a Bedroom is wanted; otherwise it retires.
-3. Mark `hierophant/*` as deprecated. Build Father Quent on the
-   actual Hierophant arcana with a church board. Antonio's BBS
-   becomes a Chariot location element.
-4. Update `priestess/visitors.json` to remove the
-   Hen/Marisol/Davey/young-Elicia cast OR demote them clearly to
-   visitor flavor — but the Pomegranate Hour is *finished* in canon,
-   so the half-done framing must go.
-5. Update the recording_booth location to point at the canonical
-   22 episodes with their actual premises (or a subset).
-
-### Build (the canonical Chariot)
-6. Author the new Chariot:
-   - Location: Ember & Ash hot office + warehouse + sidewalk in New
-     Orleans (and/or "The Long Road" per the gauntlet scenarios doc)
-   - Hand: Antonio (the_charioteer)
-   - Doom-clock: SILT (Q. Paul voicemails) or FATIGUE (per scenarios
-     doc); both work
-   - Visitors: Jimmy Daigle (helper), Q. Paul (off-board), the older
-     man in charcoal (silent menace), the foreman, Lila Bao (phone
-     only), Antonio's father DANTE (next-even-month phone voice),
-     Alberto (the surviving brother; only one whose connection
-     extends Antonio's life), the un-named driver of the chase car
-     ("—" from PH VII)
-   - Three scenarios: per `_TAROT_GAUNTLET_SCENARIOS.md` —
-     THE LONG HAUL, THE SYSOP'S LAST LOG, RUN-AWAY CAB
-7. Author the canonical Hierophant (Father Quent's church)
-8. Reassess Empress location (probably Greenhouse, not Riverboat)
-9. Reframe Emperor with the two-son inheritance + void mother spine
-
-### Long-game (the rest of the 22)
-10. Build the Lovers (cousin at the wedding)
-11. Build remaining arcanas as the chapters surface
-
----
-
-## Reading queue (when more lore lands)
-
-- All vol5 chapter scenes in `godot/resources/scenes/vol5/*.json`
-  (the actual VN scripts)
-- `lore/_PITCHES.md` and `lore/pitches/*` (per-card pitches)
-- `lore/_DEMONIC_DOMAIN.md` (electronic domain reframe)
-- `lore/_DAMBROSIO_EMPLOYEES.md` (employment register)
-- `lore/_UNLOCK_WEB.md` (per-card edges, in full)
-- `lore/pomegranate_hour/_HOST_FRAMES.md` (host structure)
-- `lore/planned_community/*` (vol6 lore)
-- `lore/milk_and_honey/*` (vol7 lore)
+Dream logic earned in the Priestess: the recursive footage, the fractal mirror shard, the dying basil plant, the editing-suite Choose-Your-Own-Adventure that becomes literal.
 
 ---
 
 ## Working method going forward
 
-1. **Read canon first.** Before building any new arcana, read the
-   relevant vol5 chapter scene + Pomegranate Hour episode + any
-   pitch file. The deck has its own vocabulary; my fabrications
-   drift from it.
-2. **Demote, don't delete.** The invented characters/locations
-   remain as visitors/flavor inside canonical scenarios.
-3. **Track misalignment in this wiki.** When canon and my build
-   conflict, log it here. The user is feeding canon in pieces;
-   the wiki is the running ledger.
-4. **The sinkhole is everywhere.** Every arcana touches it. The
-   `world:sinkhole_open` injector should be the deck's most
-   pervasive ambient.
+1. **Read the chapter scene before building.** When authoring a new arcana, the relevant `vol5_ch<N>_<arcana>.json` is the canonical source. Any lore-doc reference is hypothesis only.
+2. **Quote canon when locking choices.** Anchor each gauntlet decision in a specific narrate line from the chapter; cite chapter+line if going to scrutiny.
+3. **Demote, don't delete invented cast.** They keep existing as visitor flavor inside canonical scenarios. Nothing wasted.
+4. **The sinkhole is everywhere.** Every arcana touches it. The world_state injector for it should be the deck's most pervasive ambient — currently underweighted.
+5. **Track scaffolding-vs-canon in this wiki.** When `lore/` and canon agree, note it as confirmation. When they conflict, canon wins.
 
-## Tonal rule · dream logic stays in the Priestess
+---
 
-Per user direction:
+## What to build next, in priority
 
-> *I don't mind dream logic with the high priestess, but most of
-> the other levels have a root in reality with only small
-> indulgences into the make believe or madness.*
+1. **Surgery: retire the catastrophically miscast files.** Cora-Chariot, Sasha/Reed-Lovers, Sysop-Hierophant, Elicia-half-finished-show. Move salvageable prose to visitor flavor.
+2. **Rebuild the Chariot** around Antonio at Ember & Ash. Hand: Antonio. Location: hot office above warehouse, the corner across the street, the warehouse below. Visitors: Jimmy Daigle, Q. Paul (off-board, phone-only — 27-second voicemails), the older man in the charcoal suit (silent menace), Lila Bao (phone), Antonio's father DANTE (phone, but ch7 is *before* Dante's death — the call he doesn't make is the call to a father about to die in ~6 weeks), Alberto (the surviving brother).
+3. **Rebuild the Lovers** around the Roberts. Location: their bungalow on cursed ground (kitchen, porch, the spare bedroom they keep made up). Visitors: Elicia (in crisis), the boy with the envelope, Mackenzie's brother (in the Polaroid). Doom-clock candidate: the faucet drip Philip can't fix.
+4. **Rebuild the Hierophant** around Q. Paul. Location: where he holds court — Table 17 at D'Ambrosio's brunch + St. Jude's church exterior + a New Orleans phone line. Visitors: Maya (7), Gloria the waitress, Antonio (phone), John (in the park).
+5. **Reframe the Empress** for Nicola at the same riverboat where Dante presides. Aria as in-body NPC. The Third Consciousness as a hidden third.
+6. **Reframe the Emperor** for Dante at the riverboat helm. The Dean card is the doom-clock. The pile of unread voicemails is the same dynamic as Antonio's silt. Father and son both ignoring incoming.
+7. **Pomegranate Hour rebuild** — leave fallow until the show's actual structure surfaces in canon. Strip the invented 6 episodes from the suite; pare back the Priestess to *Whispers from the Liminal* with whatever canon has named (the Cartographer's Compass episode, Anya, the mirror shard).
 
-**The Priestess is the dream-logic chapter.** Recursive tapes, the
-room reading back, the static resolving into her handwriting, the
-woman watching herself watch — these belong to her and only to her.
-Pomegranate Hour episodes are Elicia's filmed interpretations of the
-other chapters; they are Lynch-tonal because she is. But the
-*chapters themselves* — and the gauntlet scenarios that mirror them —
-are grounded.
+After that, the remaining 14 arcanas (VIII–XXI) build out from the chapter scenes — they're all sketched in canon, just not yet in the gauntlet.
 
-**The other arcanas earn weight through specificity, not animism.**
+---
 
-- ✅ The cypress beam needs to be straight, not straight enough.
-- ✅ The brass clock has been ticking since '62.
-- ✅ The carpet has a path worn from six thousand paces.
-- ✅ The window AC unit Jimmy installed runs "in the particular way
-  that things installed by Jimmy run — at half capacity, with a
-  faint smell of melting plastic, and with a personality."
-- ✅ Quent pauses for the 9:09 PM cable interference and resumes.
-- ✅ Frasier's "warehouse demons" — they're his electrical mood, a
-  named mechanic he carries, not the room haunting him.
+## Reading queue
 
-- ❌ "The bus has been remembering since 1991."
-- ❌ "The kettle finds itself."
-- ❌ "The painting glances at you."
-- ❌ "The room remembers."
-- ❌ "The clock corrects itself on its own."
-- ❌ "The floppy wall serves up the right floppy."
+- All `lore/pitches/*` (per-card pitches, Claude-generated; check against canon)
+- `lore/_DEMONIC_DOMAIN.md` (electronic domain — may align with canon Demons)
+- `lore/_DAMBROSIO_EMPLOYEES.md` (Claude-generated; may surface useful texture if it aligns)
+- `lore/planned_community/*` (vol 6 lore; check against the Frog's vol 6 teaser)
+- `lore/milk_and_honey/*` (vol 7 lore; check against the Frog's Smolvud teaser)
 
-The line: specificity yes, animism no — except in Elicia's room.
-
-**What needs walked back in the existing repo (surgery list):**
-
-- `empress/gravity_deck.json` — "the rosebush has put out a new bud
-  overnight that it shouldn't have"
-- `emperor/gravity_deck.json` — "the clock corrects itself,"
-  "the stamp wears thin" (with agency)
-- `hierophant/gravity_deck.json` — "the floppy wall serves up the
-  right floppy," "the BBS is doing the thing it does when the night
-  settles into it"
-- `lovers/gravity_deck.json` — "the kettle finds itself," "the
-  painting glances at you," the record changing side without
-  agency
-- `chariot/gravity_deck.json` — "the wipers move once without
-  being asked," "the door's pneumatics hiss without being asked"
-  (also: this whole arcana is being rebuilt around Antonio, so the
-  walkback is moot for Chariot specifically)
-- Various visitor lore_text and step text across the same arcanas
-
-The Priestess gets a *deliberate boost*: since dream logic is hers
-alone, it should land harder in her arcana than my prose currently
-has it. The recursive logic of Pomegranate Hour II's "tape 11"
-(the woman watching herself watch herself; the note she finds in
-her own handwriting she does not remember writing) is the tier.
-
-This wiki updates as the canon surfaces.
+When any of these conflict with canon, canon wins.
