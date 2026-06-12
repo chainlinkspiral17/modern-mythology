@@ -84,6 +84,12 @@ var _steamboat_threshold: int = 6
 var _master_reel: int = 0
 var _master_reel_threshold: int = 6
 var _insight: int = 0
+# Empress (III) state — Bloom is the POSITIVE doom-clock: rises good,
+# opposite of Stagnation. Harvest is the spendable currency (countable
+# crops in the pantry). Both default zero/inert for non-empress runs.
+var _bloom: int = 0
+var _bloom_threshold: int = 6
+var _harvest: int = 0
 # Patience-freeze counter (THE LONG QUIET ability + freeze_patience
 # effect): while > 0, _tick_visitor_patience does nothing on Upkeep.
 # Decrements once per turn at Upkeep.
@@ -707,6 +713,13 @@ func _init_run() -> void:
 	_insight = int(start.get("insight", 0))
 	_patience_frozen_turns = 0
 	_patched_pairs.clear()
+	# Empress bloom track — pulled from location.bloom_track. Bloom
+	# rises GOOD (opposite of stagnation); harvest is the spendable
+	# crop currency.
+	var bt_def: Dictionary = _location.get("bloom_track", {})
+	_bloom_threshold = int(bt_def.get("completion_threshold", 6))
+	_bloom = int(start.get("bloom", 0))
+	_harvest = int(start.get("harvest", 0))
 	_piece_progress.clear()
 	_wip_progress.clear()
 	_pieces_completed = 0
@@ -900,6 +913,7 @@ func _build_ui() -> void:
 	var leave_room: String = "diner"
 	if _arcana_id == "magician":  leave_room = "cathedral"
 	if _arcana_id == "priestess": leave_room = "booth"
+	if _arcana_id == "empress":   leave_room = "riverboat"
 	top_leave_btn.tooltip_text = "Leave the %s and return to the gallery (this ends the run)." % leave_room
 	top_leave_btn.add_theme_font_size_override("font_size", 11)
 	top_leave_btn.custom_minimum_size = Vector2(132, 24)
@@ -3895,37 +3909,43 @@ func _render() -> void:
 	_time_label.text  = "Time %d / %d" % [_time, _next_time_reset]
 	_inertia_label.text = "Inertia %d / 12" % _inertia
 	_sanity_label.text  = "Sanity %d" % _sanity
-	# Magician-arcana stats — only show when in use for the scenario.
+	# Major-arcana per-hand stats. Stagnation + Doubt are shared across
+	# Magician / Priestess / Empress (all three feel the room sour and
+	# the keeper / listener / maker doubt). The third slot is per-arcana:
+	#   · Magician — Inspiration
+	#   · Priestess — Insight + master Reel readout
+	#   · Empress — Harvest + Bloom readout (Bloom is the POSITIVE
+	#     doom-clock; Harvest is the spendable currency)
+	# Pieces is Magician-only.
 	var is_magician: bool = (_arcana_id == "magician")
 	var is_priestess: bool = (_arcana_id == "priestess")
-	# Stagnation + Doubt are SHARED between Magician and Priestess
-	# (both feel the room curdle and the listener doubt). Inspiration
-	# is Magician-only; Priestess uses Insight rendered in the same
-	# slot. Pieces is Magician-only.
+	var is_empress: bool = (_arcana_id == "empress")
+	var is_major_arcana: bool = is_magician or is_priestess or is_empress
 	if _stagnation_label != null:
-		_stagnation_label.visible = is_magician or is_priestess
-		if is_magician or is_priestess:
+		_stagnation_label.visible = is_major_arcana
+		if is_major_arcana:
 			var s_max: int = int(_setup.get("loss_conditions", {}).get("stagnation_max", 12))
 			_stagnation_label.text = "Stagnation %d / %d" % [_stagnation, s_max]
 	if _doubt_label != null:
-		_doubt_label.visible = is_magician or is_priestess
-		if is_magician or is_priestess:
+		_doubt_label.visible = is_major_arcana
+		if is_major_arcana:
 			_doubt_label.text = "Doubt %d / %d" % [_doubt, _doubt_max]
 	if _inspiration_label != null:
-		# Re-purposed for Priestess as the Insight readout.
-		_inspiration_label.visible = is_magician or is_priestess
+		_inspiration_label.visible = is_major_arcana
 		if is_magician:
 			_inspiration_label.text = "Inspiration %d" % _inspiration
 		elif is_priestess:
 			_inspiration_label.text = "Insight %d  ·  Reel %d / %d" % [_insight, _master_reel, _master_reel_threshold]
+		elif is_empress:
+			_inspiration_label.text = "Harvest %d  ·  Bloom %d / %d" % [_harvest, _bloom, _bloom_threshold]
 	if _pieces_label != null:
 		_pieces_label.visible = is_magician
 		if is_magician:
 			_pieces_label.text = "Pieces %d" % _pieces_completed
-	# Inertia + Sanity are Fool-only — hide for the Magician + Priestess.
-	if _inertia_label != null and (is_magician or is_priestess):
+	# Inertia + Sanity are Fool-only — hide for the other arcanas.
+	if _inertia_label != null and is_major_arcana:
 		_inertia_label.visible = false
-	if _sanity_label != null and (is_magician or is_priestess):
+	if _sanity_label != null and is_major_arcana:
 		_sanity_label.visible = false
 	# Push current pressure to the BGM audio manipulator — Stagnation
 	# muffles the room, Doubt distorts it. Only applies to Magician
@@ -4113,6 +4133,10 @@ func _check_requirement(req: Dictionary) -> bool:
 			return _doubt < int(req.get("n", 7))
 		"has_master_reel_below":
 			return _master_reel < int(req.get("n", 6))
+		"has_bloom_at_least":
+			return _bloom >= int(req.get("n", 1))
+		"has_harvest_at_least":
+			return _harvest >= int(req.get("n", 1))
 		"visitor_in_bright_space":
 			# MOTH-style. True if any arrived, unconnected visitor is
 			# at one of the cathedral's "lit" stations. Bright = the
@@ -4255,6 +4279,30 @@ func _win_conditions_met() -> bool:
 		if bool(wc.get("require_cake_lit", false)):
 			if not _flags.get("cake_lit", false):
 				return false
+		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
+			return false
+		return true
+	# ── Empress schema ──────────────────────────────────────────
+	if _arcana_id == "empress":
+		var e_need_connect: int = int(wc.get("require_visitors_connected_min", 3))
+		if _connections_made.size() < e_need_connect:
+			return false
+		var e_need_hard: int = int(wc.get("require_hard_mood_connections_min", 0))
+		if e_need_hard > 0:
+			var e_hard_count: int = 0
+			for ecvid in _connections_made:
+				var ecv_def: Dictionary = _visitors_def.get(String(ecvid), {})
+				var emood: String = String(ecv_def.get("mood", ""))
+				if emood == "preoccupied" or emood == "lonely" or emood == "left_alone":
+					e_hard_count += 1
+			if e_hard_count < e_need_hard:
+				return false
+		if _doubt >= int(wc.get("require_doubt_below", 99)):
+			return false
+		if _stagnation >= int(wc.get("require_stagnation_below", 99)):
+			return false
+		if _bloom < int(wc.get("require_bloom_at_least", 0)):
+			return false
 		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
 			return false
 		return true
@@ -4936,6 +4984,29 @@ func _resolve_effect(e: Dictionary) -> void:
 			var is_amt: int = int(e.get("amount", 1))
 			_insight = max(0, _insight - is_amt)
 			_log_line("[color=#a99070]-%d Insight[/color] → %d" % [is_amt, _insight])
+
+		"tick_bloom":
+			# Empress — Bloom rises (good). Caps at threshold.
+			var b_amt: int = int(e.get("amount", 1))
+			_bloom = min(_bloom_threshold, _bloom + b_amt)
+			_log_line("[color=#7cffb0]+%d Bloom[/color] → %d / %d" %
+				[b_amt, _bloom, _bloom_threshold])
+
+		"spend_bloom":
+			var bs: int = int(e.get("amount", 1))
+			_bloom = max(0, _bloom - bs)
+			_log_line("[color=#a99070]-%d Bloom[/color] → %d / %d" %
+				[bs, _bloom, _bloom_threshold])
+
+		"gain_harvest":
+			var hg: int = int(e.get("amount", 1))
+			_harvest += hg
+			_log_line("[color=#88b87a]+%d Harvest[/color] → %d" % [hg, _harvest])
+
+		"spend_harvest":
+			var hs: int = int(e.get("amount", 1))
+			_harvest = max(0, _harvest - hs)
+			_log_line("[color=#a99070]-%d Harvest[/color] → %d" % [hs, _harvest])
 
 		"freeze_patience":
 			# THE LONG QUIET — patience does not tick for N turns. The

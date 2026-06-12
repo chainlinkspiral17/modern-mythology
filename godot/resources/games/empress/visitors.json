@@ -1,0 +1,164 @@
+{
+  "scope": "empress",
+  "notes": "Riverboat guests. Empress visitors are typically warmer than the Magician's or Priestess's — they came for dinner. The hard moods that count for win conditions are gruff (which lands less often on the boat) and intense (which lands when somebody is here because they had nowhere else to go).",
+  "visitors": [
+    {
+      "id": "the_neighbor",
+      "name": "The Neighbor",
+      "scenarios": ["static_bloom", "harvest_dinner", "ice_in_the_river"],
+      "arrival": { "kind": "on_board_at_start", "pos": "lounge" },
+      "lore_token": "the_neighbor_eats_with_you",
+      "lore_text": "Lives on the next boat over. Comes for tea whenever the kettle's on. Has been doing this for as long as either of them can remember.",
+      "accent": "#88b87a",
+      "mood": "talkative",
+      "patience": 8,
+      "steps": {
+        "greet":   "Wave from the gangway. They wave back. The wave is the greeting.",
+        "listen":  "They tell you about the morning's birds. The story is short and well-shaped.",
+        "deliver": "You bring tea. They take it without saying thank you, because they don't need to.",
+        "sit_with": "You sit on the lounge bench together. The bank goes by even though the boat doesn't move."
+      }
+    },
+    {
+      "id": "the_first_arrivals",
+      "name": "The First Arrivals",
+      "scenarios": ["static_bloom", "harvest_dinner"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "gangway", "to": "long_table" },
+      "lore_token": "first_arrivals_helped_set_the_table",
+      "lore_text": "The couple who always shows up half an hour early because they want to help. They have helped enough now that they know where everything is.",
+      "accent": "#d8a060",
+      "mood": "talkative",
+      "patience": 8,
+      "shared_patience": true,
+      "steps": {
+        "greet":   "They are already setting the table by the time you turn around.",
+        "listen":  "One of them tells the story. The other tells the corrections.",
+        "deliver": "You bring the wine. They taste, nod, refill yours first.",
+        "sit_with": "You sit down. They have set your place at the head."
+      }
+    },
+    {
+      "id": "the_son_in_town",
+      "name": "The Son Visiting",
+      "scenarios": ["static_bloom", "harvest_dinner"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "gangway", "to": "lounge" },
+      "lore_token": "the_son_came_back_to_the_boat",
+      "lore_text": "A son in his thirties, back to see his mother on the boat. He has not been here in two years. He is uncomfortable. He doesn't know if it's the boat or the visit.",
+      "accent": "#c87633",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "He thanks you for having him. The thanks is too formal for the room.",
+        "listen":  "He talks about his work. He's careful with it. He's careful with everything tonight.",
+        "deliver": "You bring him a small plate of the first crop. He eats slowly. He says it tastes like he remembers.",
+        "sit_with": "You sit with him at the long table. He puts his elbow on the table and then takes it off and then puts it back. He stays."
+      }
+    },
+    {
+      "id": "the_river_widow",
+      "name": "The River Widow",
+      "scenarios": ["static_bloom", "ice_in_the_river"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "gangway", "to": "lounge" },
+      "lore_token": "the_river_widow_came_back",
+      "lore_text": "Lost her husband to the river twenty-six years ago, on a boat much smaller than this one. Now lives in a small house on the bank. Comes to the boat once a season because the boat is the closest she has to him.",
+      "accent": "#9b5fd3",
+      "mood": "lonely",
+      "patience": 6,
+      "steps": {
+        "greet":   "She nods. She does not say his name. She does not need to.",
+        "listen":  "She tells you about a meal she made for him once. The meal was thirty years ago. She still remembers the seasoning.",
+        "deliver": "You bring her the dish you made tonight in the shape she described. She closes her eyes.",
+        "sit_with": "You sit with her at the bow window. The river splits around the hull. She is calm with it."
+      }
+    },
+    {
+      "id": "the_cousin_from_upriver",
+      "name": "Cousin from Upriver",
+      "scenarios": ["static_bloom"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "gangway", "to": "lounge" },
+      "lore_token": "cousin_brought_the_news",
+      "lore_text": "Family from the next town up the river. Brings news that the family in this town doesn't have yet. The news is mostly fine.",
+      "accent": "#7cffb0",
+      "mood": "talkative",
+      "patience": 7,
+      "steps": {
+        "greet":   "Big hug at the gangway. They smell faintly of fish.",
+        "listen":  "They tell you everything. The third cousin is engaged. The aunt is selling the house. The river up there is at the same level as it has been all summer.",
+        "deliver": "You bring them coffee. They take it black and forget about it after one sip.",
+        "sit_with": "You sit at the long table. They have everyone caught up with everyone by the end."
+      }
+    },
+    {
+      "id": "the_drift",
+      "name": "The Drift",
+      "scenarios": ["ice_in_the_river"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "gangway", "to": "lounge" },
+      "lore_token": "drift_came_aboard_late",
+      "lore_text": "Late arrival, off the river. No name they want you to use. They drifted up to the gangway and asked if it would be ok if they came aboard for a meal. You said yes. You always say yes.",
+      "accent": "#a99070",
+      "mood": "left_alone",
+      "patience": 5,
+      "steps": {
+        "greet":   "They nod. They will not look at you long.",
+        "listen":  "They say very little. What they do say lands.",
+        "deliver": "You bring them whatever you have. They eat it.",
+        "sit_with": "You sit at the guest cabin's narrow seat. They are quiet. You are quiet. The boat is quiet. The river isn't."
+      }
+    },
+    {
+      "id": "dante_as_visitor",
+      "name": "Dante (visiting)",
+      "scenarios": ["static_bloom", "ice_in_the_river"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "gangway", "to": "wheelhouse" },
+      "lore_token": "dante_came_to_the_boat",
+      "lore_text": "Comes by to sit in the wheelhouse and look at the river. He is the Emperor's hand in vol5 ch4. Tonight he is a guest on the boat.",
+      "accent": "#c87633",
+      "mood": "preoccupied",
+      "patience": 7,
+      "steps": {
+        "greet":   "He thanks you for the invitation, which you didn't extend. He invites himself when he needs to.",
+        "listen":  "He talks about the bank. Specifically the way it has changed since the magician's steamboat got going.",
+        "deliver": "You bring him bread, butter, a glass of the wine. He notices each one.",
+        "sit_with": "You sit in the wheelhouse together. He doesn't touch the wheel. He looks at the river the way a person looks at a thing that is going to keep being there."
+      }
+    },
+    {
+      "id": "nicola_as_visitor",
+      "name": "Nicola (visiting)",
+      "as_hand_id": "nicola",
+      "swap_target_for_hand": "nicola_as_visitor",
+      "scenarios": ["static_bloom", "harvest_dinner", "ice_in_the_river"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "gangway", "to": "long_table" },
+      "lore_token": "nicola_came_off_shift",
+      "lore_text": "When the player is NOT Nicola, she comes back to the boat off-shift. When the player IS Nicola, this entry swaps out.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 8,
+      "steps": {
+        "greet":   "She steps onto her own gangway and pretends she doesn't know everything in the room.",
+        "listen":  "She tells you about the second-cousin who is in town for a week.",
+        "deliver": "You bring her bread + butter + the herbs you cut from the upper deck.",
+        "sit_with": "You sit with her at the long table. She breathes out for the first time in a long time. The boat steadies."
+      }
+    },
+    {
+      "id": "frasier_as_visitor",
+      "name": "Frasier (visiting)",
+      "as_hand_id": "frasier",
+      "swap_target_for_hand": "frasier_as_visitor",
+      "scenarios": ["harvest_dinner"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "gangway", "to": "lounge" },
+      "lore_token": "frasier_came_to_eat",
+      "lore_text": "Frasier from the cathedral comes over to the boat for dinner.",
+      "accent": "#c87633",
+      "mood": "preoccupied",
+      "patience": 7,
+      "steps": {
+        "greet":   "He hands you a small balsa-wood object as a gift. It is a model of the boat.",
+        "listen":  "He says: 'I keep making the boat. I don't know why.'",
+        "deliver": "You bring him the herbs and the bread.",
+        "sit_with": "You sit with him at the long table. He eats slowly. He is full before the third course. He stays anyway."
+      }
+    }
+  ]
+}

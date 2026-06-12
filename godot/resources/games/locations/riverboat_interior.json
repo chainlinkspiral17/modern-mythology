@@ -1,0 +1,151 @@
+{
+  "id": "riverboat_interior",
+  "title": "THE RIVERBOAT",
+  "subtitle": "Static Bloom · Vol 5 · Ch III · The Empress",
+  "notes": "Nicola's riverboat — the long-room interior with the galley on the river side, the lounge facing the bank, a small garden in clay pots on the upper deck. The boat is rarely actually underway; it has been moored to the same piling for nine years. Twelve spaces. The river is always next to you. You can hear it through the hull. Guests come aboard via the gangway.",
+  "ambient_pool": [
+    "the boat shifts in its mooring by half an inch and corrects.",
+    "the river does the river-thing on the hull.",
+    "the herbs on the upper deck have grown another quarter-inch since lunchtime.",
+    "somebody on the bank is whistling something you almost know.",
+    "the kettle in the galley is on. you don't remember lighting the burner.",
+    "the lights of d'ambrosio's are visible through the porthole if you angle just right."
+  ],
+  "ambient_every_n": 3,
+  "spaces": [
+    {
+      "id": "gangway",
+      "label": "GANGWAY",
+      "kind": "threshold",
+      "flavor": "the plank from boat to dock — guests step on, guests step off.",
+      "arrival_lines": [
+        "the gangway flexes when the river does. you have stopped noticing.",
+        "you can feel each step before the guest takes it, through your feet."
+      ]
+    },
+    {
+      "id": "river_door",
+      "label": "RIVER DOOR",
+      "kind": "threshold",
+      "flavor": "the small porthole-door that opens directly to the water — for the brave guest, or the river itself.",
+      "arrival_lines": [
+        "the river door is normally bolted. it isn't tonight.",
+        "the water is the closest a thing has ever been to a door."
+      ]
+    },
+    {
+      "id": "upper_deck_hatch",
+      "label": "UPPER DECK HATCH",
+      "kind": "threshold",
+      "flavor": "the ladder up to the garden deck — the third way off the boat.",
+      "arrival_lines": [
+        "the hatch is half-open. you didn't open it.",
+        "the herbs are right there. you can smell them from inside."
+      ]
+    },
+    {
+      "id": "galley",
+      "label": "GALLEY",
+      "kind": "station",
+      "flavor": "nicola's kitchen · burner, kettle, knife block, the deep window onto the river.",
+      "arrival_lines": [
+        "the kettle is on. nicola has put it on without noticing she has.",
+        "the river is at galley-window height. it watches you cook."
+      ]
+    },
+    {
+      "id": "long_table",
+      "label": "LONG TABLE",
+      "kind": "station",
+      "flavor": "where the meal happens · twelve chairs, never all of them taken at once.",
+      "arrival_lines": [
+        "the table is set. you can see how it would look full.",
+        "the long table has the warmth of a thing that has hosted enough nights to remember them."
+      ]
+    },
+    {
+      "id": "lounge",
+      "label": "LOUNGE",
+      "kind": "station",
+      "flavor": "the cushioned bench under the bank-side window · where guests wait before, talk after.",
+      "arrival_lines": [
+        "the bank is right there through the window. you can see who's walking by.",
+        "the lounge cushion remembers everyone who's been there."
+      ]
+    },
+    {
+      "id": "pantry",
+      "label": "PANTRY",
+      "kind": "station",
+      "flavor": "shelves, jars, the cold corner · everything you grew, dried, canned, kept.",
+      "arrival_lines": [
+        "the pantry smells like every season of the year compressed into a closet.",
+        "the labels on the jars are in nicola's hand. dates as old as the boat."
+      ]
+    },
+    {
+      "id": "wheelhouse",
+      "label": "WHEELHOUSE",
+      "kind": "station",
+      "flavor": "the captain's seat the boat hasn't needed in years · charts, the radio, a window in every direction.",
+      "arrival_lines": [
+        "the wheel is bolted in place. it does not turn.",
+        "the radio hums on standby. the boat hasn't moved in nine years. the radio works."
+      ]
+    },
+    {
+      "id": "garden_deck",
+      "label": "GARDEN DECK",
+      "kind": "station",
+      "flavor": "clay pots on the upper deck · herbs, a tomato vine, two strawberry plants, a small rosebush.",
+      "arrival_lines": [
+        "the herbs have grown another quarter-inch since you last checked.",
+        "the rosebush has put out a new bud overnight. you didn't ask it to."
+      ]
+    },
+    {
+      "id": "bow_window",
+      "label": "BOW WINDOW",
+      "kind": "station",
+      "flavor": "the wraparound window at the front of the boat · the river splits around the hull here.",
+      "arrival_lines": [
+        "the river splits around the bow. one half goes left, one half goes right. you can't tell which.",
+        "the bow window has a fingerprint that isn't yours."
+      ]
+    },
+    {
+      "id": "engine_room",
+      "label": "ENGINE ROOM",
+      "kind": "station",
+      "flavor": "the hold · the small engine that hasn't turned in a decade · the river-side hull at its closest.",
+      "arrival_lines": [
+        "the engine is silent in the way a sleeping animal is silent.",
+        "the hull plates here are the thinnest in the boat. you can feel the river through them."
+      ]
+    },
+    {
+      "id": "guest_cabin",
+      "label": "GUEST CABIN",
+      "kind": "station",
+      "flavor": "the one bunk · for the guest who has nowhere else to go tonight.",
+      "arrival_lines": [
+        "the bunk is made. it has been made for as long as anyone can remember.",
+        "the cabin holds the warmth of an offer that has been standing for a long time."
+      ]
+    }
+  ],
+  "bloom_track": {
+    "completion_threshold": 6,
+    "label": "BLOOM",
+    "notes": "Nicola's positive doom-clock — opposite of the Magician's steamboat. PLANT / TEND / HARVEST actions tick Bloom up. At threshold, the boat is in full season and Nicola's hand cards get a passive bonus. Some scenarios use Bloom as a soft win counter rather than a loss counter.",
+    "ladder": [
+      { "level": 0, "label": "the boat is between seasons.",                  "intensity": 0.0 },
+      { "level": 1, "label": "the first crop is showing.",                    "intensity": 0.15 },
+      { "level": 2, "label": "the second crop is in.",                        "intensity": 0.30 },
+      { "level": 3, "label": "halfway · the table can be set with everything the boat has.", "intensity": 0.50 },
+      { "level": 4, "label": "the upper deck smells like a market.",          "intensity": 0.70 },
+      { "level": 5, "label": "the boat is overgrown · the river knows.",      "intensity": 0.85 },
+      { "level": 6, "label": "full bloom · everything the boat makes, makes.","intensity": 1.0 }
+    ]
+  }
+}

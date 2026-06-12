@@ -1,0 +1,94 @@
+{
+  "scope": "empress",
+  "notes": "Riverboat piles + items. Most items are food + drink — the boat traffics in hospitality. No bindle analogue; the Empress wins by FEEDING THE TABLE, not by assembling an object.",
+  "piles": {
+    "galley_counter": {
+      "label": "GALLEY COUNTER",
+      "at_pos": "galley",
+      "items": ["fresh_bread", "river_fish", "wine_bottle"]
+    },
+    "pantry_shelf": {
+      "label": "PANTRY SHELF",
+      "at_pos": "pantry",
+      "items": ["jar_pickled_summer", "jar_strawberry_jam", "tin_of_tea"]
+    },
+    "garden_deck_crop": {
+      "label": "GARDEN CROP",
+      "at_pos": "garden_deck",
+      "items": ["herbs_basket", "tomato_handful", "rose_cutting"]
+    },
+    "wheelhouse_shelf": {
+      "label": "WHEELHOUSE SHELF",
+      "at_pos": "wheelhouse",
+      "items": ["old_radio_log", "spare_chart"]
+    }
+  },
+  "items": {
+    "fresh_bread": {
+      "title": "Fresh Bread",
+      "category": "delivery",
+      "flavor": "Pulled from the galley oven an hour ago. The crust is still warm.",
+      "delivered_to_satisfies_order": true
+    },
+    "river_fish": {
+      "title": "River Fish",
+      "category": "delivery",
+      "flavor": "Caught off the upper deck this afternoon. Clean. Whole.",
+      "delivered_to_satisfies_order": true
+    },
+    "wine_bottle": {
+      "title": "Wine",
+      "category": "delivery",
+      "flavor": "A bottle the boat has been holding for a year and a season.",
+      "delivered_to_satisfies_order": true
+    },
+    "jar_pickled_summer": {
+      "title": "Jar · Pickled Summer",
+      "category": "delivery",
+      "flavor": "Labeled in Nicola's hand. Last summer's tomato + cucumber + dill.",
+      "delivered_to_satisfies_order": true
+    },
+    "jar_strawberry_jam": {
+      "title": "Jar · Strawberry Jam",
+      "category": "delivery",
+      "flavor": "The strawberries from the upper deck, two seasons ago.",
+      "delivered_to_satisfies_order": true
+    },
+    "tin_of_tea": {
+      "title": "Tin of Tea",
+      "category": "delivery",
+      "flavor": "The good stuff. Loose-leaf. The lid has a hand-stamped river on it.",
+      "delivered_to_satisfies_order": true
+    },
+    "herbs_basket": {
+      "title": "Herbs · Basket",
+      "category": "delivery",
+      "flavor": "Basil, thyme, mint — fresh-cut from the upper deck.",
+      "delivered_to_satisfies_order": true
+    },
+    "tomato_handful": {
+      "title": "Tomatoes",
+      "category": "delivery",
+      "flavor": "Still warm from the upper deck.",
+      "delivered_to_satisfies_order": true
+    },
+    "rose_cutting": {
+      "title": "Rose · Cutting",
+      "category": "found",
+      "flavor": "A small cutting from the upper-deck rosebush. Roots within the week.",
+      "use_effect": { "kind": "tick_bloom", "amount": 2 }
+    },
+    "old_radio_log": {
+      "title": "Old Radio Log",
+      "category": "found",
+      "flavor": "Pages of dates + frequencies in Nicola's grandmother's hand.",
+      "use_effect": { "kind": "gain_harvest", "amount": 1 }
+    },
+    "spare_chart": {
+      "title": "Spare River Chart",
+      "category": "found",
+      "flavor": "A chart of the river from 1979. The bank is in different places.",
+      "use_effect": { "kind": "lose_doubt", "amount": 1 }
+    }
+  }
+}

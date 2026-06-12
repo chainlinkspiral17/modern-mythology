@@ -1,0 +1,16 @@
+{
+  "scope": "empress",
+  "notes": "Nicola's six-face arcana die. The WILD face resolves on whether she has Harvest banked.",
+  "die": {
+    "id": "empress_die",
+    "title": "Empress Die",
+    "faces": [
+      {"face": 1, "symbol": "BLOOM", "result": "ss",      "description": "Success ★★. The plant did the work; you just witnessed it."},
+      {"face": 2, "symbol": "ROOT",  "result": "s",       "description": "Success ★. The roots hold."},
+      {"face": 3, "symbol": "STEM",  "result": "partial", "description": "Partial. Spend 1 Harvest to convert to ★."},
+      {"face": 4, "symbol": "RAIN",  "result": "partial", "description": "Partial. Spend 1 Harvest to convert to ★."},
+      {"face": 5, "symbol": "FROST", "result": "fail",    "description": "Failure. The frost came in early. +1 Harvest from the pantry."},
+      {"face": 6, "symbol": "RIVER", "result": "wild",    "description": "Wild. Counts as ★ if you have at least 1 Harvest banked; counts as failure otherwise."}
+    ]
+  }
+}

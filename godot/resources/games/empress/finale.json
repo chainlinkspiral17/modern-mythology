@@ -1,0 +1,53 @@
+{
+  "scope": "empress",
+  "notes": "Empress finale cards. The boat is built for hospitality; its failures are domestic — a meal that didn't land, a chair that stayed empty, the river finally finding its way in.",
+  "finales": [
+    {
+      "id": "the_meal_didn't_land",
+      "title": "THE MEAL DIDN'T LAND",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "The long table is full. Everyone is eating. Nicola is eating. The room is quiet in the wrong way. Nobody is sitting up. Nobody is asking for seconds. The first arrivals leave first. The cousin from upriver leaves second. By the time the last plate is cleared the boat is empty. Nicola sits at the head of the table for a long while afterwards.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
+    },
+    {
+      "id": "the_keeper_loses_her_garden",
+      "title": "THE KEEPER LOSES HER GARDEN",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "She is on the upper deck, with the herbs and the rose. She is looking at them and they are not looking back. The boat is at the same dock it has always been at. The garden is hers; the garden was always hers. She is not sure she's still the keeper of it, the way she was at noon today, before the dinner started.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
+    },
+    {
+      "id": "the_chair_stayed_empty",
+      "title": "THE CHAIR STAYED EMPTY",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "Three guests didn't make it aboard. Three chairs at the long table are empty. Nicola sets a plate at each one anyway, the way her grandmother taught her, the way she has been doing for forty years. She eats slowly. The boat is full of empty places.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
+    },
+    {
+      "id": "the_river_finds_a_way_in",
+      "title": "THE RIVER FINDS A WAY IN",
+      "triggered_by": "river_takes_the_bank",
+      "weight": 1.0,
+      "flavor": "Something gives under the hull. A small thing. Water seeps in at the engine-room plate where Nicola has been telling herself the patch will hold one more season. The boat is not going to sink tonight. It is going to be wet in places it has never been wet before. Nicola stands in the doorway looking at the dark water on her floor.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
+    },
+    {
+      "id": "the_evening_ran_out",
+      "title": "THE EVENING RAN OUT",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "Midnight. The last guest is on the gangway saying goodbye. Three of the dishes you planned to serve never got served. The bloom on the upper deck is the same as it was at sundown. Nicola closes the gangway gate behind the last guest. The river is at the dock as it always is. Tomorrow is tomorrow.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_bloom_start": 1,
+    "note": "Nicola's losses carry a little Bloom forward — what grew tonight grows again, partly."
+  }
+}

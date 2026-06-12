@@ -1,0 +1,80 @@
+{
+  "id": "harvest_dinner",
+  "arcana": "iii_empress",
+  "location": "riverboat_interior",
+  "hand": "nicola",
+  "title": "HARVEST DINNER",
+  "subtitle": "The Riverboat · 6:18 PM · Late Autumn",
+  "difficulty": "medium",
+  "epigraph_upright": "The last full dinner of the season. Frasier is coming over. The first arrivals are bringing the bread. The upper deck has one last yield in it — picked this afternoon, sitting in the pantry waiting for the table.",
+  "epigraph_reversed": "The last dinner is the last dinner because nobody comes. Frasier turns back at the bank. The bread arrives without anyone behind it. The garden goes to sleep before the boat has eaten from it.",
+  "scene_description": "Late autumn. The garden deck has cooled. Bloom starts at 3 (the season's accumulated work). Harvest at 3 (the pantry is well-stocked). One stagnation already because the air is heavy. The first arrivals are at the long table; the neighbor is on the lounge bench. Frasier is coming over from the cathedral.",
+  "direction_hint": "Land five connections, two hard moods, keep bloom above 4 at leap.",
+  "opening_log_lines": [
+    "the garden deck has cooled. the herbs are quieter than they were a week ago.",
+    "the first arrivals are at the long table, doing their setting.",
+    "frasier said he'd come over by six. it's six-eighteen."
+  ],
+  "starting_state": {
+    "player_pos": "galley",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "bloom": 3,
+    "harvest": 3,
+    "starting_hand": ["walk","focus","search","short_rest","plant","tend","harvest","set_the_table"]
+  },
+  "visitors_present_at_start": ["the_neighbor","the_first_arrivals"],
+  "visitor_schedule": [
+    { "visitor": "the_son_in_town",        "arrival_turn": 1, "arrival_space": "gangway" },
+    { "visitor": "the_river_widow",        "arrival_turn": 3, "arrival_space": "gangway" },
+    { "visitor": "frasier_as_visitor",     "arrival_turn": 4, "arrival_space": "gangway" },
+    { "visitor": "nicola_as_visitor",      "arrival_turn": 5, "arrival_space": "gangway" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 5,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_bloom_at_least": 4,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 12,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "late-autumn dinner. the boat steadies.",        "tick_per_turn": 1, "effects": [] },
+    { "level": 5,  "label": "somebody's coat is on the back of a chair.",    "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "guests are saying their early goodbyes.",        "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "the last dinner did not land.",                 "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "nicola at the burner, autumn light on the river.","effects": [] },
+    { "level": 4, "label": "she wonders if she planned too much for tonight.","effects": [] },
+    { "level": 7, "label": "the keeper loses her garden.",                    "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",          "label": "GANGWAY",          "ending_lore_token": "leap_onto_the_dock",       "visible_from_start": true },
+    { "id": "river_door",       "label": "RIVER DOOR",       "ending_lore_token": "leap_into_the_river",      "visible_from_start": true },
+    { "id": "upper_deck_hatch", "label": "UPPER DECK HATCH", "ending_lore_token": "leap_onto_the_garden_deck","visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 9,
+  "notes": "Medium-mode Empress. Bloom starts at 3, harvest at 3. Five connections + 2 hard moods (the son preoccupied; the widow lonely; Frasier preoccupied) + bloom>=4 at leap.",
+  "ambient_pool": [
+    "the river is colder against the hull than it was a week ago.",
+    "frasier on the bank, walking slow.",
+    "the long table is set. it has been for an hour."
+  ],
+  "ambient_every_n": 3
+}

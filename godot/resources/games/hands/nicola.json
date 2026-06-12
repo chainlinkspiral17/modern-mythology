@@ -1,0 +1,19 @@
+{
+  "id": "nicola",
+  "name": "Nicola",
+  "subtitle": "the keeper on the riverboat",
+  "portrait": "assets/gallery/nicola_face.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "the_tideline",
+    "label": "The Tideline",
+    "description": "Once per game, mark a guest's place at the table. The next time you bring them anything, both of you are also bringing each other a memory neither of you knew you still had.",
+    "uses_per_game": 1
+  },
+  "starting_hand": ["walk", "focus", "search", "short_rest", "plant", "tend", "harvest", "set_the_table"],
+  "save_witness_rewards": null,
+  "notes": "Nicola's hand is the keeper's loop — PLANT / TEND / HARVEST / SET THE TABLE as starters instead of the Fool's waiter-loop, the Magician's maker-loop, the Priestess's listener-loop. Buyable pool is the GARDEN (recurring crops + cuttings that bear over multiple turns). Second stat is BLOOM (rises good — the boat is in season, the guests are full, the river is generous). Doubt's opposite. Insight is replaced by HARVEST (countable crops in the pantry). Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+}
