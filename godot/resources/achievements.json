@@ -181,6 +181,13 @@
       "unlock_key": "achievement:young_self_speaks"
     },
     {
+      "id": "johns_review_passed",
+      "title": "THE OFFICE UNDER GLASS",
+      "desc": "Win JOHN'S REVIEW — survive the back-office meeting and get back on the line for the lunch rush. The first guest-lens scenario: John on the Emperor's board.",
+      "trigger": { "kind": "flag_during_run", "flag": "lore_token:sal_heard_him_out" },
+      "unlock_key": "achievement:johns_review_passed"
+    },
+    {
       "id": "an_episode_was_made",
       "title": "AN EPISODE WAS MADE",
       "desc": "Advance any Pomegranate Hour episode by two states in a single Priestess scenario.",

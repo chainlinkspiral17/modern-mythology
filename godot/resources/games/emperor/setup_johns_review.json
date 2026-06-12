@@ -1,0 +1,89 @@
+{
+  "id": "johns_review",
+  "arcana": "iv_emperor",
+  "location": "dantes_office",
+  "hand": "john_frank",
+  "title": "JOHN'S REVIEW",
+  "subtitle": "Back Office · D'Ambrosio's · 11:45 AM · Pre-Lunch",
+  "difficulty": "medium",
+  "guest_lens": {
+    "lens_of": "fool",
+    "host": "emperor",
+    "notes": "The first guest-lens scenario — John on the Emperor's board. Same Emperor mechanic, same ledger-track, same brass clock. But the location's hand_overrides reflavor every space for John: DESK becomes SAL'S DESK, CLIENT CHAIRS become COWORKER CHAIRS, LAW SHELF becomes EMPLOYEE HANDBOOK. The card verbs (HEAR/RULE/STAMP/WITNESS) read as workplace verbs in John's context. Win is getting through the meeting and back on the line in time for the lunch rush."
+  },
+  "epigraph_upright": "11:45 AM. Sal called John into the back office during lunch prep — twelve minutes before the rush hits the counter. Frank is already in the left coworker chair without being asked, because Frank does that. Elena swapped Wednesday with John and is in the break room making sure Sal has the right version. The bus kid is bringing water. The schedule book is open on Sal's desk to next week.",
+  "epigraph_reversed": "John gets written up. The schedule book gets updated wrong. The lunch rush hits at noon and he's still in the back office. Frank walks back to the line angry. Elena's shift swap gets reversed. He clocks out an hour early through the alley door and doesn't say anything to anyone.",
+  "scene_description": "11:45 AM. John in the break room, twelve minutes to lunch rush. Frank in the left coworker chair waiting for Sal. Elena coming up from the floor with the time-clock book. The bus kid is going to bring water at some point. The schedule magnets on the punch clock wall are color-coded by station; john's magnet is dish-blue this week and dish-blue is the wrong color for the conversation about to happen.",
+  "direction_hint": "Hear Sal out. Let Frank back you up. Sit with Elena. Get the ledger (schedule book) entries right. Clock back in via the FRONT DOOR before the rush.",
+  "opening_log_lines": [
+    "11:45 AM. The break room coffeemaker has been on since '91.",
+    "Frank is in the left chair, twenty-two years of him.",
+    "Elena is at the punch clock fixing the swap entry before Sal sees it.",
+    "Sal is on the phone in the dining room. He will be off in three minutes."
+  ],
+  "starting_state": {
+    "player_pos": "anteroom",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 2,
+    "doubt_max": 6,
+    "authority": 1,
+    "starting_hand": ["walk","focus","search","short_rest","hear","rule","stamp","witness"]
+  },
+  "visitors_present_at_start": ["frank_the_line_cook"],
+  "visitor_schedule": [
+    { "visitor": "the_bus_kid",      "arrival_turn": 2, "arrival_space": "anteroom" },
+    { "visitor": "sal_the_owner",    "arrival_turn": 2, "arrival_space": "desk" },
+    { "visitor": "elena_who_swapped","arrival_turn": 3, "arrival_space": "stamp_table" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 6,
+    "require_stagnation_below": 10,
+    "require_ledger_at_least": 3,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 6,
+    "visitors_claimed_max": 2
+  },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "the back office is the back office.",          "tick_per_turn": 1, "effects": [] },
+    { "level": 4,  "label": "the dining room hum is louder than it was.",   "tick_per_turn": 1, "effects": [] },
+    { "level": 6,  "label": "you can hear the counter regulars seating themselves.", "tick_per_turn": 2, "effects": [ "tick_ledger" ] },
+    { "level": 8,  "label": "the lunch rush is starting without you.",       "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "you missed the front of the rush.",              "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "john in the break room, leaning against the fridge.","effects": [] },
+    { "level": 3, "label": "he doesn't know yet what sal is going to say.",     "effects": [] },
+    { "level": 5, "label": "he is rehearsing a thing he won't actually say.",    "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 6, "label": "he is about to take it the wrong way.",              "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door",   "label": "FRONT DOOR",   "ending_lore_token": "leap_back_to_the_line",      "visible_from_start": true },
+    { "id": "alley_door",   "label": "BACK ALLEY",   "ending_lore_token": "leap_into_the_smoke_break",  "visible_from_start": true },
+    { "id": "window_ledge", "label": "WINDOW LEDGE", "ending_lore_token": "leap_off_the_lower_roof",    "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 7,
+  "notes": "Medium-mode GUEST LENS scenario · John on the Emperor's board. Demonstrates the hand_overrides mechanic — same Emperor geometry, John-flavored vocabulary throughout. The Emperor mechanic still applies (ledger-track, hard moods, threshold leap) — but reframed as John navigating a workplace meeting. Win in 7 turns or the lunch rush starts without him. Sal is the hard mood (preoccupied). Three visitors needed + ledger 3 + leap. The right ending is FRONT DOOR (back to the line); ALLEY DOOR is a smoke-break ending; WINDOW LEDGE is the walk-out, available but not the win.",
+  "ambient_pool": [
+    "the break room coffeemaker hisses. it has been hissing since '91.",
+    "the dining room is filling up. you can hear the door bell.",
+    "the schedule magnets on the wall are color-coded. dish-blue is the wrong color today.",
+    "frank shifts in the left chair. the cushion creaks the way it always does.",
+    "sal's voice through the wall — the phone call. you can't make out the words. the tone is fine.",
+    "the brass clock from '62 ticks. it has been ticking since the building was the bank's."
+  ],
+  "ambient_every_n": 2
+}

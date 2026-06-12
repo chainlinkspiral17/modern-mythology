@@ -108,6 +108,75 @@
       }
     },
     {
+      "id": "sal_the_owner",
+      "name": "Sal (the owner)",
+      "scenarios": ["johns_review"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "desk" },
+      "lore_token": "sal_heard_him_out",
+      "lore_text": "Sal D'Ambrosio. Inherited the diner from his father in '88. Has owned this back office for thirty-six years. Has called John in three times in twelve years — once to congratulate him on twelve years, once to talk about a customer complaint that turned out to be wrong, and today. Sal does not like having to call people in. He has been working up to this since 9:14 AM.",
+      "accent": "#7a1e26",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "Sal comes in from the floor. He has his apron on. He sits in his chair the way he sits in his chair. He says: hey john. The 'hey john' is the same 'hey john' it has been for twelve years and is, also, different today.",
+        "listen":  "He explains the situation. There's been a complaint. The complaint is from the wednesday-night counter regular who Sal trusts but doesn't always agree with. Sal is not asking for an apology. He is asking for John's side.",
+        "deliver": "You give John's side. Slowly. The way somebody talks who has rehearsed this in the alley before clocking in. Sal listens. Sal nods at the parts that are true and does not nod at the parts that are exaggerated. He can tell which is which.",
+        "sit_with": "Sal closes the schedule book. He says: you're fine. You're more than fine. He says: I shouldn't have made you come in for this. He says: get back on the line. The lunch rush starts in twelve minutes. You get back on the line."
+      }
+    },
+    {
+      "id": "frank_the_line_cook",
+      "name": "Frank (line cook · 22 years)",
+      "scenarios": ["johns_review"],
+      "arrival": { "kind": "on_board_at_start", "pos": "client_chairs" },
+      "lore_token": "frank_backed_him_up",
+      "lore_text": "Frank Donadio. Twenty-two years on the line. Worked with John's father in the '90s before he left the diner to drive a truck and then came back to the diner in '03. Frank does not, technically, need to be in this meeting. Frank has put himself in this meeting because Frank knows what these meetings can become, and because he likes John.",
+      "accent": "#88b87a",
+      "mood": "talkative",
+      "patience": 8,
+      "steps": {
+        "greet":   "Frank is in the left chair. The cushion he wore flat is under him. He is in his cook's whites, still warm from the line. He nods at you.",
+        "listen":  "Frank tells you what happened with the wednesday-night complaint from his angle — he was on the grill, he saw the whole thing, he can tell Sal exactly what the customer ordered and exactly what the customer got and exactly what the customer claimed they got.",
+        "deliver": "You hand frank a fresh coffee from the break room. He drinks it standing because he is going back to the line in three minutes. He says: I'll tell sal. You don't say thank you. Frank prefers no thank-yous; he says they make a thing of nothing.",
+        "sit_with": "You sit with Frank at the coworker chairs while Sal is on the phone. He tells you the story about your father in '96 that you have heard four times. You let him tell it. Twenty-two years of stories deserves to be told a fifth time."
+      }
+    },
+    {
+      "id": "elena_who_swapped",
+      "name": "Elena (waitress, swapped Wed)",
+      "scenarios": ["johns_review"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "front_door", "to": "anteroom" },
+      "lore_token": "elena_covered_for_him",
+      "lore_text": "Elena Rivera. Six years at the counter, four years working the dinner shift. She swapped Wednesday with John because she had a thing — she didn't say what the thing was and John didn't ask. The swap is in the time-clock book. She is in the break room because she came in early to make sure Sal has the right version of the swap before the meeting.",
+      "accent": "#c87633",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "Elena is in the break room with a coffee. She has come in an hour before her shift. She does not say good morning; she says: I told sal it was my idea.",
+        "listen":  "She tells you what she told Sal. The swap was clean. The time-clock entry is in her handwriting because she made the entry. Nothing about the wednesday-night customer was John's fault.",
+        "deliver": "You hand her her own pen back — she left it in the schedule book three days ago and you have been carrying it. She takes it. She says: thanks. She means it.",
+        "sit_with": "You sit with her on the break-room couch for two minutes. She tells you, briefly, what the thing was — the thing she had to swap for. It is not your business. She tells you anyway. You do not repeat it."
+      }
+    },
+    {
+      "id": "the_bus_kid",
+      "name": "The Bus Kid (with water)",
+      "scenarios": ["johns_review"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "break_room" },
+      "lore_token": "bus_kid_kept_him_steady",
+      "lore_text": "The diner's bus kid — sixteen, three months on the job, has figured out that bringing John a glass of water on the bad days makes John's day better. They have brought water to John in the back office once before in their three months, and that day John remembered their name. They are bringing water again today.",
+      "accent": "#7cffb0",
+      "mood": "talkative",
+      "patience": 5,
+      "helper": true,
+      "steps": {
+        "greet":   "They knock once. They have a glass of water in their hand. They are out of breath because the dining room is in pre-rush mode.",
+        "listen":  "They say: sal said you were back here. They don't ask what's happening. They have figured out that not asking is its own kindness.",
+        "deliver": "You take the water. You drink half. You put the glass on the desk. The bus kid runs back to the counter.",
+        "sit_with": "They lean against the door frame for ten seconds. They look at you. They say: you're good, right? You say: yeah. They go back to the floor."
+      }
+    },
+    {
       "id": "dante_as_visitor",
       "name": "Dante (off-duty)",
       "as_hand_id": "dante",

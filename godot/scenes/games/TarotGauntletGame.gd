@@ -2847,9 +2847,23 @@ func _log_pressure_tier_crossings() -> void:
 
 
 func _space_def(sid: String) -> Dictionary:
+	# Returns the space definition with hand_overrides applied if the
+	# location specifies any for the current _hand_id. This is how
+	# guest-lens scenarios work: the same board geometry, different
+	# space labels / flavor / arrival_lines depending on who's playing.
+	# Example: dantes_office space "desk" labeled "DESK" by default,
+	# but "BOSS'S DESK" when _hand_id == "john_frank".
 	for s: Dictionary in _location.get("spaces", []):
 		if String(s.get("id", "")) == sid:
-			return s
+			var overrides: Dictionary = _location.get("hand_overrides", {}) as Dictionary
+			var per_hand: Dictionary = overrides.get(_hand_id, {}) as Dictionary
+			var per_space: Dictionary = per_hand.get(sid, {}) as Dictionary
+			if per_space.is_empty():
+				return s
+			var merged: Dictionary = s.duplicate(true)
+			for k in per_space.keys():
+				merged[k] = per_space[k]
+			return merged
 	return {}
 
 
