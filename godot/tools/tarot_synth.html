@@ -744,7 +744,12 @@ function buildGrid() {
     if (art) {
       card.style.backgroundImage = `url("../assets/gallery/${art}")`;
     } else {
+      // Test-pad cards (no custom art) — generate a tinted gradient
+      // based on the card's tarot number so each pad is visually
+      // distinct + readable, instead of identical "locked" blocks.
       card.classList.add('locked');
+      const hue = (num * 17) % 360;
+      card.style.background = `linear-gradient(140deg, hsl(${hue},25%,12%) 0%, hsl(${hue},35%,22%) 60%, hsl(${(hue + 30) % 360},25%,15%) 100%)`;
     }
     card.innerHTML = `
       <span class="num">${num.toString().padStart(2,'0')}</span>
@@ -769,10 +774,10 @@ function buildGrid() {
     });
     grid.appendChild(card);
   });
-  // 2 blank padding cells to fill the 4x6=24 grid
+  // 2 blank padding cells to fill the 4x6=24 grid — non-interactive.
   for (let i = 0; i < 2; i++) {
     const blank = document.createElement('div');
-    blank.className = 'card locked';
+    blank.className = 'card locked pad-blank';
     blank.style.background = 'var(--bg-0)';
     blank.innerHTML = '<span class="name" style="background:transparent;color:var(--text-dim)">—</span>';
     grid.appendChild(blank);
@@ -824,7 +829,11 @@ function toggleStep(L, s) {
 // ── Play / trigger ────────────────────────────────────────────────
 function playCard(idx) {
   const card = grid.children[idx];
-  if (!card || card.classList.contains('locked')) return;
+  if (!card) return;
+  // `.locked` is now purely visual (no custom art) — all 22 cards
+  // are playable as timbre selectors / test pads. The 2 trailing
+  // blank padding cells DO stay non-interactive via .pad-blank.
+  if (card.classList.contains('pad-blank')) return;
   const [num, name, art, key, timbre, semi] = activeArcana()[idx];
   const root = parseInt(document.getElementById('root').value);
   const midi = scaleSnap(root + semi);
@@ -1056,25 +1065,33 @@ function refreshArmedVisual() {
   }
 }
 
+// Continuous 10-step scale climb across frets 0-9. Wraps within a
+// scale and shifts +12 semis once past the last degree, so adjacent
+// frets are always exactly one scale degree apart. No jumps over
+// missing degrees.
+function fretToSemitone(fretIdx) {
+  const scaleName = document.getElementById('scale').value;
+  const scaleArr = SCALES[scaleName] || SCALES.phrygian;
+  const n = scaleArr.length;
+  const deg = scaleArr[fretIdx % n];
+  const octaves = Math.floor(fretIdx / n);
+  return deg + octaves * 12;
+}
+
 // GUITAR-mode strum: play the highest-pitched held fret only. The
 // fret index is the scale degree (frets 5-9 = octave up). Active
 // card = timbre. If nothing's armed, play the open root.
 function strumGuitar() {
-  const scaleName = document.getElementById('scale').value;
-  const scaleArr = SCALES[scaleName] || SCALES.phrygian;
   const card = activeArcana()[selectedCard] || activeArcana()[0];
   const timbre = card[4];
   const root = parseInt(document.getElementById('root').value);
   const vol = parseInt(document.getElementById('vol').value) / 100;
-  let semi = 0;          // open root
+  let semi = 0;
   let label = 'open';
   if (heldFrets.size > 0) {
-    // Highest held fret = the "stopping" fret in real-guitar terms.
     const highest = Math.max(...heldFrets);
-    const degreeIdx = highest % 5;
-    const oct       = (highest >= 5) ? 12 : 0;
-    semi = (scaleArr[degreeIdx] !== undefined ? scaleArr[degreeIdx] : 0) + oct;
-    label = 'deg ' + (degreeIdx + 1) + (oct ? '↑' : '');
+    semi = fretToSemitone(highest);
+    label = 'fret ' + (highest + 1) + ' (+' + semi + ')';
   }
   const midi = scaleSnap(root + semi);
   trigger(timbre, midi, vol);
@@ -1083,22 +1100,18 @@ function strumGuitar() {
 }
 
 // Scale-mode trigger: take the active card's timbre and play it at
-// `root + scale[degree]` semitones. Used by frets 0-9 in SCALE mode
-// (frets 0-4 = degrees 0-4, frets 5-9 = same degrees +12 semis).
+// `root + fretToSemitone(degree)`. Uses the same continuous climb as
+// GUITAR mode so frets 0-9 walk the scale uninterrupted.
 function playScaleDegree(degree) {
-  const scaleName = document.getElementById('scale').value;
-  const scaleArr = SCALES[scaleName] || SCALES.phrygian;
-  const baseIdx  = degree % 5;
-  const octShift = (degree >= 5) ? 12 : 0;
-  const semi     = (scaleArr[baseIdx] !== undefined) ? scaleArr[baseIdx] : 0;
   const card = activeArcana()[selectedCard] || activeArcana()[0];
   const timbre = card[4];
   const root = parseInt(document.getElementById('root').value);
-  const midi = scaleSnap(root + semi + octShift);
+  const semi = fretToSemitone(degree);
+  const midi = scaleSnap(root + semi);
   const vel  = parseInt(document.getElementById('vol').value) / 100;
   trigger(timbre, midi, vel);
   document.getElementById('now-playing').textContent =
-    '▶ deg ' + (baseIdx + 1) + (octShift ? '↑' : '') + ' · ' + card[1] + ' · ' + timbre;
+    '▶ fret ' + (degree + 1) + ' (+' + semi + ') · ' + card[1] + ' · ' + timbre;
 }
 
 // ── Help panel ────────────────────────────────────────────────────
