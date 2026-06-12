@@ -1,0 +1,6 @@
+{
+  "scope": "magician",
+  "notes": "The Cathedral doesn't use the Fool's threat-meeple system the same way — the Magician's pressure comes from active demons + the steamboat's slow build, not from mess-tokens spawned by gravity. This file exists so the engine's threat loader doesn't crash; the threats table is intentionally empty for the Magician's three scenarios. Future arcanas can populate per their own design.",
+  "threats": {
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "magician",
+  "notes": "The Magician's six-face arcana die. Same structure as the Fool's; the WILD face resolves on whether the Magician has Inspiration banked instead of Faith adjacent.",
+  "die": {
+    "id": "magician_die",
+    "title": "Magician Die",
+    "faces": [
+      {"face": 1, "symbol": "BUILD",  "result": "ss",      "description": "Success ★★. The thing you reached for is the thing your hand built."},
+      {"face": 2, "symbol": "DRAFT",  "result": "s",       "description": "Success ★. Three lines down, then the room exhales."},
+      {"face": 3, "symbol": "HALF",   "result": "partial", "description": "Partial. Spend 1 Inspiration to convert to ★."},
+      {"face": 4, "symbol": "DUST",   "result": "partial", "description": "Partial. Spend 1 Inspiration to convert to ★."},
+      {"face": 5, "symbol": "BURN",   "result": "fail",    "description": "Failure. A draft burned itself before you decided. +1 Inspiration."},
+      {"face": 6, "symbol": "DEMON",  "result": "wild",    "description": "Wild. Counts as ★ if you have at least 1 Inspiration banked; counts as failure otherwise."}
+    ]
+  }
+}
