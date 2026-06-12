@@ -1096,11 +1096,105 @@
     "src": "assets/audio/bgm/vol5_watch_party.ogg",
     "composer": "—",
     "desc": "Tarot Gauntlet · Magician · medium-mode B-side. TV-room hum, the Pomegranate Hour theme bleeding through one wall, a far laugh from someone who isn't supposed to be in the room. 9:30 PM.",
-    "unlock": {
-      "type": "heard"
-    },
+    "unlock": { "type": "heard" },
     "chapters": [],
     "chars": []
+  },
+  {
+    "id": "vol5_cicada_session",
+    "vol": 5,
+    "title": "Cicada Session",
+    "src": "assets/audio/bgm/vol5_cicada_session.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Priestess · easy-mode B-side. The cicadas outside louder than they should be. The booth's red record-light. Reel turning, fresh. 9:18 PM.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_long_quiet",
+    "vol": 5,
+    "title": "The Long Quiet",
+    "src": "assets/audio/bgm/vol5_long_quiet.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Priestess · medium-mode B-side. Confessional hour. The booth's own noise floor instead of the cicadas now. 11:02 PM.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_tape_witness",
+    "vol": 5,
+    "title": "Tape Witness",
+    "src": "assets/audio/bgm/vol5_tape_witness.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Priestess · hard-mode B-side. 2:14 AM. Off-the-books. The truth-teller is already in the booth. The cathedral is dark on the other side.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_priestess_finale_reel_ran_out",
+    "vol": 5,
+    "title": "The Reel Ran Out",
+    "src": "assets/audio/bgm/vol5_priestess_finale_reel_ran_out.ogg",
+    "composer": "—",
+    "desc": "Priestess finale stinger — master_reel_full. Cassette-end-of-tape spool. The visitor mid-sentence. Elicia's hand goes up. The truth lives in the room but not on the tape.",
+    "unlock": { "type": "key", "key": "milestone:priestess_finale:reel_ran_out" }
+  },
+  {
+    "id": "vol5_priestess_finale_listener_breaks",
+    "vol": 5,
+    "title": "The Listener Breaks",
+    "src": "assets/audio/bgm/vol5_priestess_finale_listener_breaks.ogg",
+    "composer": "—",
+    "desc": "Priestess finale stinger — Doubt at max. Elicia in the booth chair instead of the engineer's. The mic on, she silent. The reel turns. She is letting the room record her at last.",
+    "unlock": { "type": "key", "key": "milestone:priestess_finale:listener_breaks" }
+  },
+  {
+    "id": "vol5_priestess_finale_session_empty",
+    "vol": 5,
+    "title": "The Session Ends Empty",
+    "src": "assets/audio/bgm/vol5_priestess_finale_session_empty.ogg",
+    "composer": "—",
+    "desc": "Priestess finale stinger — Stagnation at max. The end of the booked time. Lounge empty, booth empty, reel with nothing worth keeping. The BLANK · don't reuse label, again.",
+    "unlock": { "type": "key", "key": "milestone:priestess_finale:session_empty" }
+  },
+  {
+    "id": "vol5_priestess_finale_walked_out",
+    "vol": 5,
+    "title": "Walked Out Mid-Sentence",
+    "src": "assets/audio/bgm/vol5_priestess_finale_walked_out.ogg",
+    "composer": "—",
+    "desc": "Priestess finale stinger — three visitors claimed. The silences they left behind, played back through the console headphones. Not nothing. The wrong thing.",
+    "unlock": { "type": "key", "key": "milestone:priestess_finale:walked_out" }
+  },
+  {
+    "id": "vol5_priestess_finale_cicadas_stopped",
+    "vol": 5,
+    "title": "The Cicadas Stopped",
+    "src": "assets/audio/bgm/vol5_priestess_finale_cicadas_stopped.ogg",
+    "composer": "—",
+    "desc": "Priestess finale stinger — cross-arcana collapse. The cicadas have stopped all at once. The back door open onto the dark cathedral. Frasier on the other side, holding the steamboat. The red record-light still on.",
+    "unlock": { "type": "key", "key": "milestone:priestess_finale:cicadas_stopped" }
+  },
+  {
+    "id": "vol5_priestess_finale_shift_ends",
+    "vol": 5,
+    "title": "The Session Is Over · Priestess",
+    "src": "assets/audio/bgm/vol5_priestess_finale_shift_ends.ogg",
+    "composer": "—",
+    "desc": "Priestess finale stinger — shift-over (priestess variant). The booth lamp shuts itself off on Elicia's timer. Visitors still in the lounge who didn't get their turn. She files what's done.",
+    "unlock": { "type": "key", "key": "milestone:priestess_finale:shift_ends" }
+  },
+  {
+    "id": "vol5_milestone_long_quiet",
+    "vol": 5,
+    "title": "The Long Quiet (Elicia's Ability)",
+    "src": "assets/audio/bgm/vol5_milestone_long_quiet.ogg",
+    "composer": "—",
+    "desc": "Released the first time Elicia uses THE LONG QUIET in a session. A single sustained note holding a silence that wasn't supposed to be there.",
+    "unlock": { "type": "key", "key": "milestone:long_quiet_used" }
   },
   {
     "id": "vol6_alma_theme",
