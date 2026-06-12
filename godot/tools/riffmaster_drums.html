@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RIFFMASTER DRUMS · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0:  #050304;
+    --bg-1:  #0e0908;
+    --ink:   #1a1410;
+    --rule:  #553318;
+    --gold:  #d8a060;
+    --gold-hi: #ffd896;
+    --text:  #c8a878;
+    --text-dim: #7a5828;
+    --emerald-hi: #a8e89c;
+    --burgundy: #7a1e26;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: "Courier New", "DejaVu Sans Mono", monospace;
+    height: 100vh; overflow: hidden;
+  }
+  body { display: grid; grid-template-rows: auto 1fr auto auto; }
+  header {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header .sub { color: var(--text-dim); font-size: 11px; font-style: italic; margin-top: 2px; }
+  header .audio-state {
+    margin-left: 12px; font-size: 11px; letter-spacing: 0.10em;
+    color: #c64a3a; display: inline-block;
+  }
+  header .audio-state.running { color: var(--emerald-hi); }
+
+  .pads {
+    padding: 12px 20px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    align-content: start;
+  }
+  .pad {
+    aspect-ratio: 1 / 1.2;
+    border: 1px solid var(--rule);
+    background: linear-gradient(180deg, var(--bg-1) 0%, var(--ink) 100%);
+    color: var(--text);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 6px;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    user-select: none;
+  }
+  .pad .pad-num {
+    position: absolute; top: 4px; left: 6px;
+    color: var(--text-dim);
+    font-size: 10px; letter-spacing: 0.08em;
+  }
+  .pad .pad-name {
+    font-size: 11px; letter-spacing: 0.12em;
+    color: var(--gold);
+  }
+  .pad .pad-desc {
+    font-size: 9px; color: var(--text-dim);
+    margin-top: 4px;
+  }
+  .pad.held { border-color: var(--gold); box-shadow: inset 0 0 20px rgba(216, 160, 96, 0.35); }
+  .pad.firing {
+    border-color: var(--gold-hi);
+    box-shadow: 0 0 24px rgba(255, 216, 150, 0.55), inset 0 0 32px rgba(255, 216, 150, 0.4);
+    transition: box-shadow 100ms ease-out;
+  }
+  .pad .color-strip {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .seq {
+    padding: 8px 20px 4px;
+    border-top: 1px solid var(--rule);
+    background: var(--bg-1);
+  }
+  .seq-row {
+    display: grid;
+    grid-template-columns: 110px repeat(16, 1fr);
+    gap: 3px;
+    margin-bottom: 3px;
+    align-items: center;
+  }
+  .seq-row .lbl {
+    color: var(--text-dim);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-align: right;
+    padding-right: 6px;
+  }
+  .step {
+    height: 18px;
+    border: 1px solid var(--rule);
+    background: var(--ink);
+    cursor: pointer;
+    transition: background 60ms ease-out;
+  }
+  .step.beat { border-color: var(--text-dim); }
+  .step.on { background: var(--gold); }
+  .step.cursor { background: rgba(255, 216, 150, 0.45); border-color: var(--gold-hi); }
+  .step.on.cursor { background: var(--gold-hi); }
+
+  .transport {
+    padding: 8px 20px;
+    border-top: 1px solid var(--rule);
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    font-size: 11px; color: var(--text-dim);
+  }
+  .transport button {
+    background: var(--ink); color: var(--gold);
+    border: 1px solid var(--rule);
+    padding: 5px 14px;
+    font-family: inherit; font-size: 12px;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+  }
+  .transport button:hover { border-color: var(--gold-hi); color: var(--gold-hi); }
+  .transport button.active { background: var(--burgundy); color: var(--gold-hi); border-color: var(--gold); }
+  .transport label { letter-spacing: 0.08em; }
+  .transport input[type="range"] { width: 100px; }
+  .transport input[type="number"] { width: 60px; background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); padding: 2px 6px; font-family: inherit; font-size: 11px; }
+  .transport .last-hit {
+    margin-left: auto; color: var(--gold-hi);
+    font-size: 12px; letter-spacing: 0.10em;
+    min-width: 200px; text-align: right;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>RIFFMASTER DRUMS · 10 PADS + 16-STEP</h1>
+    <div class="sub">10 synthesised drum voices on the frets. Strum to hit the highest-held pad (with pressure → velocity). 16-step sequencer below for laying patterns. <span class="audio-state" id="audio-state">AUDIO: OFF · click anywhere</span></div>
+  </header>
+
+  <div class="pads" id="pads"></div>
+
+  <div class="seq" id="seq"></div>
+
+  <div class="transport">
+    <button id="play">▶ PLAY</button>
+    <button id="clear">⌫ CLEAR</button>
+    <label>BPM</label>
+    <input type="number" id="bpm" min="40" max="220" value="100">
+    <label>SWING</label>
+    <input type="range" id="swing" min="0" max="40" value="0">
+    <span id="swing-val" style="color:var(--gold-hi);">0%</span>
+    <label>MASTER</label>
+    <input type="range" id="vol" min="0" max="100" value="70">
+    <div class="last-hit" id="last-hit">— · —</div>
+  </div>
+
+<script src="gamepad_input.js"></script>
+<script>
+"use strict";
+
+// ── Drum kit — 10 synthesised voices ─────────────────────────────
+const KIT = [
+  { id: "kick",    name: "KICK",    desc: "low thump",     color: "#c64a3a" },
+  { id: "snare",   name: "SNARE",   desc: "crack",         color: "#f0b94a" },
+  { id: "hh_c",    name: "HH·C",    desc: "closed hat",    color: "#3b7fc4" },
+  { id: "hh_o",    name: "HH·O",    desc: "open hat",      color: "#3b7fc4" },
+  { id: "clap",    name: "CLAP",    desc: "hand clap",     color: "#4ea060" },
+  { id: "rim",     name: "RIM",     desc: "rimshot click", color: "#9b5fd3" },
+  { id: "crash",   name: "CRASH",   desc: "long crash",    color: "#d8a060" },
+  { id: "ride",    name: "RIDE",    desc: "tip ride",      color: "#d8a060" },
+  { id: "tom_lo",  name: "TOM·LO",  desc: "low tom",       color: "#7a1e26" },
+  { id: "tom_hi",  name: "TOM·HI",  desc: "high tom",      color: "#7a1e26" },
+];
+
+let ac = null, master = null;
+
+function ensureAudio() {
+  if (ac) {
+    if (ac.state === 'suspended') ac.resume().catch(() => {});
+    return;
+  }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === 'suspended') ac.resume().catch(() => {});
+  master = ac.createGain();
+  master.gain.value = parseInt(document.getElementById('vol').value) / 100;
+  master.connect(ac.destination);
+  ac.addEventListener('statechange', refreshAudioState);
+  refreshAudioState();
+}
+
+function refreshAudioState() {
+  const el = document.getElementById('audio-state');
+  if (!ac)                     { el.textContent = 'AUDIO: OFF · click anywhere'; el.className = 'audio-state'; return; }
+  if (ac.state === 'running')  { el.textContent = 'AUDIO: RUNNING';              el.className = 'audio-state running'; return; }
+  if (ac.state === 'suspended'){ el.textContent = 'AUDIO: SUSPENDED · click';    el.className = 'audio-state'; return; }
+  el.textContent = 'AUDIO: ' + ac.state.toUpperCase();
+}
+
+// ── Voices ────────────────────────────────────────────────────────
+function noiseBuffer(durSec) {
+  const len = Math.floor(ac.sampleRate * durSec);
+  const buf = ac.createBuffer(1, len, ac.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+  return buf;
+}
+
+function envGain(attack, hold, release, peak) {
+  const g = ac.createGain();
+  const now = ac.currentTime;
+  g.gain.setValueAtTime(0, now);
+  g.gain.linearRampToValueAtTime(peak, now + attack);
+  g.gain.linearRampToValueAtTime(peak * 0.6, now + attack + hold);
+  g.gain.exponentialRampToValueAtTime(0.001, now + attack + hold + release);
+  return g;
+}
+
+function hitKick(vel) {
+  const osc = ac.createOscillator();
+  osc.type = 'sine';
+  const now = ac.currentTime;
+  osc.frequency.setValueAtTime(140, now);
+  osc.frequency.exponentialRampToValueAtTime(42, now + 0.10);
+  const g = envGain(0.002, 0.04, 0.35, vel);
+  osc.connect(g); g.connect(master);
+  osc.start(now); osc.stop(now + 0.50);
+  // Click transient
+  const noise = ac.createBufferSource();
+  noise.buffer = noiseBuffer(0.03);
+  const nf = ac.createBiquadFilter();
+  nf.type = 'lowpass'; nf.frequency.value = 1800;
+  const ng = ac.createGain();
+  ng.gain.setValueAtTime(vel * 0.35, now);
+  ng.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+  noise.connect(nf); nf.connect(ng); ng.connect(master);
+  noise.start(now);
+}
+function hitSnare(vel) {
+  const now = ac.currentTime;
+  // Noise body
+  const n = ac.createBufferSource(); n.buffer = noiseBuffer(0.25);
+  const nf = ac.createBiquadFilter(); nf.type = 'highpass'; nf.frequency.value = 900; nf.Q.value = 0.7;
+  const ng = ac.createGain();
+  ng.gain.setValueAtTime(0, now);
+  ng.gain.linearRampToValueAtTime(vel * 0.85, now + 0.002);
+  ng.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+  n.connect(nf); nf.connect(ng); ng.connect(master); n.start(now);
+  // Tonal hit (snare body)
+  const o = ac.createOscillator(); o.type = 'triangle';
+  o.frequency.setValueAtTime(190, now);
+  o.frequency.exponentialRampToValueAtTime(110, now + 0.06);
+  const og = ac.createGain();
+  og.gain.setValueAtTime(vel * 0.6, now);
+  og.gain.exponentialRampToValueAtTime(0.001, now + 0.10);
+  o.connect(og); og.connect(master); o.start(now); o.stop(now + 0.15);
+}
+function hitHat(vel, open) {
+  const now = ac.currentTime;
+  const n = ac.createBufferSource(); n.buffer = noiseBuffer(open ? 0.45 : 0.08);
+  const hp = ac.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = open ? 7200 : 8200;
+  const lp = ac.createBiquadFilter(); lp.type = 'lowpass';  lp.frequency.value = 13000;
+  const g  = ac.createGain();
+  g.gain.setValueAtTime(0, now);
+  g.gain.linearRampToValueAtTime(vel * (open ? 0.55 : 0.50), now + 0.002);
+  g.gain.exponentialRampToValueAtTime(0.001, now + (open ? 0.40 : 0.07));
+  n.connect(hp); hp.connect(lp); lp.connect(g); g.connect(master);
+  n.start(now);
+}
+function hitClap(vel) {
+  const now = ac.currentTime;
+  // 4 staggered noise bursts for the human-clap feel
+  for (let i = 0; i < 4; i++) {
+    const t0 = now + i * 0.012;
+    const n = ac.createBufferSource(); n.buffer = noiseBuffer(0.10);
+    const bp = ac.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 1200; bp.Q.value = 0.8;
+    const g  = ac.createGain();
+    g.gain.setValueAtTime(0, t0);
+    g.gain.linearRampToValueAtTime(vel * (i === 3 ? 0.55 : 0.38), t0 + 0.002);
+    g.gain.exponentialRampToValueAtTime(0.001, t0 + (i === 3 ? 0.18 : 0.06));
+    n.connect(bp); bp.connect(g); g.connect(master);
+    n.start(t0);
+  }
+}
+function hitRim(vel) {
+  const now = ac.currentTime;
+  const o = ac.createOscillator(); o.type = 'square';
+  o.frequency.value = 1500;
+  const g = ac.createGain();
+  g.gain.setValueAtTime(vel * 0.5, now);
+  g.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
+  o.connect(g); g.connect(master);
+  o.start(now); o.stop(now + 0.04);
+}
+function hitCrash(vel) {
+  const now = ac.currentTime;
+  const n = ac.createBufferSource(); n.buffer = noiseBuffer(1.4);
+  const hp = ac.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 4500;
+  const g  = ac.createGain();
+  g.gain.setValueAtTime(0, now);
+  g.gain.linearRampToValueAtTime(vel * 0.6, now + 0.008);
+  g.gain.exponentialRampToValueAtTime(0.001, now + 1.3);
+  n.connect(hp); hp.connect(g); g.connect(master);
+  n.start(now);
+}
+function hitRide(vel) {
+  const now = ac.currentTime;
+  // Ping = short tonal hit
+  const o = ac.createOscillator(); o.type = 'sine';
+  o.frequency.value = 4200;
+  const og = ac.createGain();
+  og.gain.setValueAtTime(vel * 0.4, now);
+  og.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+  o.connect(og); og.connect(master); o.start(now); o.stop(now + 0.22);
+  // Wash
+  const n = ac.createBufferSource(); n.buffer = noiseBuffer(0.6);
+  const bp = ac.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 6800; bp.Q.value = 1.2;
+  const ng = ac.createGain();
+  ng.gain.setValueAtTime(vel * 0.18, now);
+  ng.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+  n.connect(bp); bp.connect(ng); ng.connect(master);
+  n.start(now);
+}
+function hitTom(vel, hi) {
+  const now = ac.currentTime;
+  const o = ac.createOscillator(); o.type = 'sine';
+  const f0 = hi ? 280 : 120;
+  const f1 = hi ? 160 : 70;
+  o.frequency.setValueAtTime(f0, now);
+  o.frequency.exponentialRampToValueAtTime(f1, now + 0.12);
+  const g = ac.createGain();
+  g.gain.setValueAtTime(0, now);
+  g.gain.linearRampToValueAtTime(vel * 0.7, now + 0.002);
+  g.gain.exponentialRampToValueAtTime(0.001, now + 0.30);
+  o.connect(g); g.connect(master);
+  o.start(now); o.stop(now + 0.40);
+}
+
+function triggerPad(idx, vel) {
+  ensureAudio();
+  if (!ac) return;
+  vel = Math.max(0.05, Math.min(1.0, vel));
+  vel *= (parseInt(document.getElementById('vol').value) / 100);
+  switch (KIT[idx].id) {
+    case 'kick':   hitKick(vel);    break;
+    case 'snare':  hitSnare(vel);   break;
+    case 'hh_c':   hitHat(vel, false); break;
+    case 'hh_o':   hitHat(vel, true);  break;
+    case 'clap':   hitClap(vel);    break;
+    case 'rim':    hitRim(vel);     break;
+    case 'crash':  hitCrash(vel);   break;
+    case 'ride':   hitRide(vel);    break;
+    case 'tom_lo': hitTom(vel, false); break;
+    case 'tom_hi': hitTom(vel, true);  break;
+  }
+  flashPad(idx);
+  document.getElementById('last-hit').textContent = KIT[idx].name + ' · vel ' + vel.toFixed(2);
+}
+
+function flashPad(idx) {
+  const el = padsEl.children[idx];
+  if (!el) return;
+  el.classList.add('firing');
+  setTimeout(() => el.classList.remove('firing'), 110);
+}
+
+// ── Pads UI ──────────────────────────────────────────────────────
+const padsEl = document.getElementById('pads');
+KIT.forEach((k, i) => {
+  const p = document.createElement('div');
+  p.className = 'pad';
+  p.innerHTML = `
+    <div class="color-strip" style="background:${k.color};"></div>
+    <div class="pad-num">${i + 1}</div>
+    <div class="pad-name">${k.name}</div>
+    <div class="pad-desc">${k.desc}</div>
+  `;
+  p.addEventListener('mousedown', () => triggerPad(i, 0.85));
+  padsEl.appendChild(p);
+});
+
+// ── 16-step sequencer ────────────────────────────────────────────
+const STEPS = 16;
+const pattern = KIT.map(() => Array(STEPS).fill(false));
+const seqEl = document.getElementById('seq');
+function buildSeq() {
+  seqEl.innerHTML = '';
+  KIT.forEach((k, ki) => {
+    const row = document.createElement('div');
+    row.className = 'seq-row';
+    const lbl = document.createElement('div');
+    lbl.className = 'lbl';
+    lbl.style.color = k.color;
+    lbl.textContent = k.name;
+    row.appendChild(lbl);
+    for (let s = 0; s < STEPS; s++) {
+      const st = document.createElement('div');
+      st.className = 'step' + (s % 4 === 0 ? ' beat' : '');
+      st.dataset.row = ki; st.dataset.step = s;
+      st.addEventListener('click', () => {
+        pattern[ki][s] = !pattern[ki][s];
+        st.classList.toggle('on', pattern[ki][s]);
+      });
+      row.appendChild(st);
+    }
+    seqEl.appendChild(row);
+  });
+}
+buildSeq();
+
+let playing = false;
+let curStep = 0;
+let lastTickAt = 0;
+function tick() {
+  if (!playing) return;
+  // Clear previous cursor
+  document.querySelectorAll('.step.cursor').forEach(s => s.classList.remove('cursor'));
+  // Fire current
+  for (let ki = 0; ki < KIT.length; ki++) {
+    if (pattern[ki][curStep]) triggerPad(ki, 0.8);
+    const cell = seqEl.children[ki].children[curStep + 1];
+    if (cell) cell.classList.add('cursor');
+  }
+  // Schedule next
+  const bpm = parseInt(document.getElementById('bpm').value);
+  const swing = parseInt(document.getElementById('swing').value) / 100;
+  const step16 = 60000 / bpm / 4;
+  const next = (curStep % 2 === 0) ? step16 * (1 + swing) : step16 * (1 - swing);
+  curStep = (curStep + 1) % STEPS;
+  setTimeout(tick, next);
+}
+document.getElementById('play').addEventListener('click', () => {
+  ensureAudio();
+  if (playing) {
+    playing = false;
+    document.getElementById('play').classList.remove('active');
+    document.querySelectorAll('.step.cursor').forEach(s => s.classList.remove('cursor'));
+  } else {
+    playing = true;
+    curStep = 0;
+    document.getElementById('play').classList.add('active');
+    tick();
+  }
+});
+document.getElementById('clear').addEventListener('click', () => {
+  for (let ki = 0; ki < KIT.length; ki++) {
+    for (let s = 0; s < STEPS; s++) {
+      pattern[ki][s] = false;
+      const cell = seqEl.children[ki].children[s + 1];
+      if (cell) cell.classList.remove('on');
+    }
+  }
+});
+document.getElementById('vol').addEventListener('input', e => {
+  if (master) master.gain.setTargetAtTime(parseInt(e.target.value) / 100, ac.currentTime, 0.02);
+});
+document.getElementById('swing').addEventListener('input', e => {
+  document.getElementById('swing-val').textContent = e.target.value + '%';
+});
+
+// ── Riffmaster routing ───────────────────────────────────────────
+const heldPads = new Set();   // raw fret indices (0..9) currently held
+const _padValues = new Array(10).fill(0);
+const gp = new GamepadInput();
+gp.start();
+mountGamepadOverlay(gp);
+[0, 1, 2, 4, 5, 6, 7].forEach(axIdx => {
+  if (axIdx !== gp.mapping.whammy) bindStrumAxis(gp, axIdx);
+});
+
+window.addEventListener('gamepadinput-connected', () => ensureAudio());
+
+window.addEventListener('gamepadinput-button', e => {
+  ensureAudio();
+  const m = gp.mapping;
+  const fretIdx = m.frets.indexOf(e.detail.idx);
+  const soloIdx = m.soloFrets.indexOf(e.detail.idx);
+  const anyFret = (fretIdx >= 0) ? fretIdx : (soloIdx >= 0 ? soloIdx + 5 : -1);
+  const isStrum = (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown);
+
+  if (anyFret >= 0) {
+    if (e.detail.pressed) {
+      heldPads.add(anyFret);
+      _padValues[anyFret] = e.detail.value !== undefined ? e.detail.value : 1.0;
+      // Immediate hit on press — drums are percussive so press = hit.
+      // Strum re-hits whatever's held.
+      triggerPad(anyFret, _padValues[anyFret] > 0.05 ? _padValues[anyFret] : 0.85);
+    } else {
+      heldPads.delete(anyFret);
+      _padValues[anyFret] = 0;
+    }
+    refreshHeld();
+    return;
+  }
+  if (isStrum && e.detail.pressed) {
+    if (heldPads.size === 0) {
+      // Open strum = kick by default (the "always-on" drum).
+      triggerPad(0, 0.7);
+    } else {
+      // Strum hits the highest held pad. Velocity = its pressure.
+      const highest = Math.max(...heldPads);
+      const v = _padValues[highest];
+      triggerPad(highest, v > 0.05 ? v : 0.85);
+    }
+  }
+});
+
+function refreshHeld() {
+  for (let i = 0; i < 10; i++) {
+    padsEl.children[i].classList.toggle('held', heldPads.has(i));
+  }
+}
+
+// First-gesture audio init
+['pointerdown','keydown','touchstart','click'].forEach(ev =>
+  document.addEventListener(ev, ensureAudio, { capture: true })
+);
+</script>
+</body>
+</html>

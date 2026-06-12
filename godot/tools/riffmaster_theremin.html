@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RIFFMASTER THEREMIN · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald-hi: #a8e89c; --burgundy: #7a1e26;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100vh; overflow: hidden;
+    background: var(--bg-0); color: var(--text);
+    font-family: "Courier New", monospace;
+  }
+  body { display: grid; grid-template-rows: auto auto 1fr auto; }
+  header { padding: 12px 20px; border-bottom: 1px solid var(--rule); }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header .sub { color: var(--text-dim); font-size: 11px; font-style: italic; margin-top: 2px; }
+  header .audio-state { margin-left: 12px; font-size: 11px; color: #c64a3a; }
+  header .audio-state.running { color: var(--emerald-hi); }
+
+  .octaves {
+    padding: 8px 20px; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+  }
+  .oct {
+    background: var(--bg-1); color: var(--text-dim);
+    border: 1px solid var(--rule);
+    padding: 8px 10px; font-size: 11px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    user-select: none;
+  }
+  .oct .lbl { color: var(--gold); letter-spacing: 0.10em; font-size: 12px; }
+  .oct .range { color: var(--text-dim); font-size: 9px; }
+  .oct.held {
+    border-color: var(--gold-hi);
+    background: var(--ink);
+    color: var(--gold-hi);
+    box-shadow: inset 0 0 18px rgba(255, 216, 150, 0.35);
+  }
+
+  .canvas-wrap {
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--rule);
+  }
+  canvas { display: block; width: 100%; height: 100%; }
+  .canvas-overlay {
+    position: absolute; top: 12px; left: 14px;
+    color: var(--gold-hi); pointer-events: none;
+  }
+  .canvas-overlay .pitch {
+    font-size: 32px; letter-spacing: 0.10em;
+    text-shadow: 0 0 16px rgba(255, 216, 150, 0.45);
+  }
+  .canvas-overlay .meta { color: var(--text-dim); font-size: 11px; font-style: italic; margin-top: 4px; }
+  .canvas-overlay .voice {
+    margin-top: 4px; font-size: 10px; letter-spacing: 0.10em; color: var(--emerald-hi);
+  }
+  .canvas-overlay .voice.silent { color: var(--text-dim); }
+
+  .transport {
+    padding: 10px 20px;
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    font-size: 11px; color: var(--text-dim);
+  }
+  .transport label { letter-spacing: 0.08em; }
+  .transport select, .transport input[type="range"] {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule);
+    padding: 2px 6px; font-family: inherit; font-size: 11px;
+  }
+  .transport input[type="range"] { width: 110px; padding: 0; }
+  .transport .help-hint {
+    margin-left: auto; color: var(--text-dim); font-size: 10px; font-style: italic;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>RIFFMASTER THEREMIN · CONTINUOUS PITCH</h1>
+    <div class="sub">Strum to attack the voice. Whammy bends through ±1 octave smoothly. Mouse-drag the canvas for X = pitch / Y = filter when no whammy. Hold an octave fret to set the base pitch. <span class="audio-state" id="audio-state">AUDIO: OFF · click anywhere</span></div>
+  </header>
+
+  <div class="octaves" id="octaves"></div>
+
+  <div class="canvas-wrap">
+    <canvas id="canvas"></canvas>
+    <div class="canvas-overlay">
+      <div class="pitch" id="now-pitch">—</div>
+      <div class="meta" id="now-meta">strum to start</div>
+      <div class="voice silent" id="voice-state">SILENT</div>
+    </div>
+  </div>
+
+  <div class="transport">
+    <label>VOICE</label>
+    <select id="preset">
+      <option value="sine"     selected>sine (classic theremin)</option>
+      <option value="triangle">triangle (mellow)</option>
+      <option value="saw_soft">saw soft (string-like)</option>
+      <option value="square">square (chiff)</option>
+      <option value="organ">organ (sine+5th+oct)</option>
+    </select>
+    <label>VIB</label>
+    <input type="range" id="vibrate" min="0" max="10" value="4">
+    <span id="vibrate-val" style="color:var(--gold-hi);">4Hz</span>
+    <label>VIB DEPTH</label>
+    <input type="range" id="vibdepth" min="0" max="40" value="14">
+    <span id="vibdepth-val" style="color:var(--gold-hi);">14¢</span>
+    <label>FILTER</label>
+    <input type="range" id="filter" min="200" max="8000" value="2800">
+    <label>VOL</label>
+    <input type="range" id="vol" min="0" max="100" value="55">
+    <div class="help-hint">drag canvas: X=pitch  Y=filter  · strum: attack/release</div>
+  </div>
+
+<script src="gamepad_input.js"></script>
+<script>
+"use strict";
+
+const OCTAVES = [
+  { lbl: "VERY LOW",  midi: 28, range: "E1 ±octave" },
+  { lbl: "LOW",       midi: 40, range: "E2 ±octave" },
+  { lbl: "MID",       midi: 52, range: "E3 ±octave" },
+  { lbl: "HIGH",      midi: 64, range: "E4 ±octave" },
+  { lbl: "VERY HIGH", midi: 76, range: "E5 ±octave" },
+];
+const PRESETS = {
+  sine:     { wave: 'sine',     extras: [] },
+  triangle: { wave: 'triangle', extras: [] },
+  saw_soft: { wave: 'sawtooth', extras: [{ mult: 1, gain: 1 }] },
+  square:   { wave: 'square',   extras: [] },
+  organ:    { wave: 'sine',     extras: [{ mult: 1.5, gain: 0.35 }, { mult: 2, gain: 0.25 }] },
+};
+
+let baseOct = 2;        // index into OCTAVES, default MID
+let bendCents = 0;      // ±1200 cents range (1 octave)
+let filterHz = 2800;
+let voiceActive = false;
+
+function midiToFreq(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+function midiNoteName(midi) {
+  const N = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  return N[((midi % 12) + 12) % 12] + (Math.floor(midi / 12) - 1);
+}
+
+// ── Audio engine — single sustained voice with continuous pitch ──
+let ac = null, master = null, analyser = null;
+let voice = null;   // { oscs[], gains[], env, filt, vib, vibGain }
+
+function ensureAudio() {
+  if (ac) {
+    if (ac.state === 'suspended') ac.resume().catch(() => {});
+    return;
+  }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === 'suspended') ac.resume().catch(() => {});
+  master = ac.createGain();
+  master.gain.value = parseInt(document.getElementById('vol').value) / 100;
+  analyser = ac.createAnalyser();
+  analyser.fftSize = 1024;
+  master.connect(analyser);
+  analyser.connect(ac.destination);
+  ac.addEventListener('statechange', refreshAudioState);
+  refreshAudioState();
+  buildVoice();
+}
+function refreshAudioState() {
+  const el = document.getElementById('audio-state');
+  if (!ac) { el.textContent = 'AUDIO: OFF · click anywhere'; el.className = 'audio-state'; return; }
+  if (ac.state === 'running') { el.textContent = 'AUDIO: RUNNING'; el.className = 'audio-state running'; return; }
+  if (ac.state === 'suspended') { el.textContent = 'AUDIO: SUSPENDED · click'; el.className = 'audio-state'; return; }
+  el.textContent = 'AUDIO: ' + ac.state.toUpperCase();
+}
+
+function buildVoice() {
+  const wasActive = voice ? voiceActive : false;
+  if (voice) {
+    voice.oscs.forEach(o => { try { o.stop(0); } catch (e) {} });
+    if (voice.vib) try { voice.vib.stop(0); } catch (e) {}
+  }
+  const preset = PRESETS[document.getElementById('preset').value] || PRESETS.sine;
+  const filt = ac.createBiquadFilter();
+  filt.type = 'lowpass';
+  filt.frequency.value = filterHz;
+  filt.Q.value = 1.0;
+  const env = ac.createGain();
+  env.gain.value = 0;
+  filt.connect(env);
+  env.connect(master);
+  const baseFreq = midiToFreq(OCTAVES[baseOct].midi);
+  // Main oscillator
+  const osc = ac.createOscillator();
+  osc.type = preset.wave;
+  osc.frequency.value = baseFreq;
+  osc.connect(filt);
+  osc.start();
+  const oscs = [osc];
+  const gains = [];
+  // Extras (organ stack etc.)
+  for (const e of preset.extras) {
+    const o = ac.createOscillator();
+    o.type = 'sine';
+    o.frequency.value = baseFreq * e.mult;
+    const g = ac.createGain();
+    g.gain.value = e.gain;
+    o.connect(g); g.connect(filt);
+    o.start();
+    oscs.push(o); gains.push(g);
+  }
+  // Vibrato LFO → osc.frequency on the main osc
+  const vib = ac.createOscillator();
+  vib.type = 'sine';
+  vib.frequency.value = parseInt(document.getElementById('vibrate').value);
+  const vibGain = ac.createGain();
+  vibGain.gain.value = baseFreq * (parseInt(document.getElementById('vibdepth').value) / 1200);
+  vib.connect(vibGain);
+  vibGain.connect(osc.frequency);
+  vib.start();
+  voice = { oscs, gains, env, filt, vib, vibGain, mainOsc: osc };
+  applyBend();
+  if (wasActive) {
+    const now = ac.currentTime;
+    env.gain.setValueAtTime(0, now);
+    env.gain.linearRampToValueAtTime(parseInt(document.getElementById('vol').value) / 100, now + 0.04);
+    voiceActive = true;
+  }
+}
+
+function applyBend() {
+  if (!voice) return;
+  const cents = bendCents;
+  voice.oscs.forEach(o => o.detune.setTargetAtTime(cents, ac.currentTime, 0.015));
+  // Vibrato depth follows base frequency so the cents value stays
+  // perceptually constant across octaves.
+  const baseFreq = midiToFreq(OCTAVES[baseOct].midi);
+  if (voice.vibGain) {
+    voice.vibGain.gain.setTargetAtTime(
+      baseFreq * (parseInt(document.getElementById('vibdepth').value) / 1200),
+      ac.currentTime, 0.05);
+  }
+  refreshDisplay();
+}
+
+function setOctave(i) {
+  baseOct = i;
+  if (voice) {
+    const f = midiToFreq(OCTAVES[i].midi);
+    voice.oscs.forEach((o, idx) => {
+      const mult = idx === 0 ? 1 : (PRESETS[document.getElementById('preset').value].extras[idx - 1].mult || 1);
+      o.frequency.setTargetAtTime(f * mult, ac.currentTime, 0.04);
+    });
+  }
+  refreshOctaveUI();
+  applyBend();
+}
+
+function attackVoice() {
+  if (!voice) return;
+  const now = ac.currentTime;
+  const vel = parseInt(document.getElementById('vol').value) / 100;
+  voice.env.gain.cancelScheduledValues(now);
+  voice.env.gain.setValueAtTime(voice.env.gain.value, now);
+  voice.env.gain.linearRampToValueAtTime(vel, now + 0.06);
+  voiceActive = true;
+  refreshDisplay();
+}
+function releaseVoice() {
+  if (!voice) return;
+  const now = ac.currentTime;
+  voice.env.gain.cancelScheduledValues(now);
+  voice.env.gain.setValueAtTime(voice.env.gain.value, now);
+  voice.env.gain.linearRampToValueAtTime(0, now + 0.18);
+  voiceActive = false;
+  refreshDisplay();
+}
+
+function setFilterHz(hz) {
+  filterHz = Math.max(200, Math.min(8000, hz));
+  if (voice) voice.filt.frequency.setTargetAtTime(filterHz, ac.currentTime, 0.02);
+}
+
+// ── UI ────────────────────────────────────────────────────────────
+const octavesEl = document.getElementById('octaves');
+function buildOctaves() {
+  octavesEl.innerHTML = '';
+  OCTAVES.forEach((o, i) => {
+    const el = document.createElement('div');
+    el.className = 'oct' + (i === baseOct ? ' held' : '');
+    el.innerHTML = `<div class="lbl">${o.lbl}</div><div class="range">${o.range}</div>`;
+    el.addEventListener('mousedown', () => setOctave(i));
+    octavesEl.appendChild(el);
+  });
+}
+function refreshOctaveUI() {
+  for (let i = 0; i < OCTAVES.length; i++) {
+    octavesEl.children[i].classList.toggle('held', i === baseOct);
+  }
+}
+buildOctaves();
+
+function refreshDisplay() {
+  const baseMidi = OCTAVES[baseOct].midi;
+  const semis = bendCents / 100;
+  const effMidi = baseMidi + semis;
+  document.getElementById('now-pitch').textContent =
+    midiNoteName(Math.round(effMidi)) +
+    (Math.abs(semis - Math.round(semis)) > 0.05
+      ? ' ' + (semis >= 0 ? '+' : '') + (semis * 100).toFixed(0) + '¢'
+      : '');
+  document.getElementById('now-meta').textContent =
+    OCTAVES[baseOct].lbl + ' octave · ' + document.getElementById('preset').value;
+  const vs = document.getElementById('voice-state');
+  vs.textContent = voiceActive ? 'RINGING' : 'SILENT';
+  vs.classList.toggle('silent', !voiceActive);
+}
+refreshDisplay();
+
+// Canvas — visualises pitch (x) + scope (y) + drag interaction
+const cv = document.getElementById('canvas');
+const cx = cv.getContext('2d');
+function resizeCanvas() {
+  cv.width  = cv.clientWidth  * (window.devicePixelRatio || 1);
+  cv.height = cv.clientHeight * (window.devicePixelRatio || 1);
+}
+window.addEventListener('resize', resizeCanvas);
+setTimeout(resizeCanvas, 50);
+function drawCanvas() {
+  requestAnimationFrame(drawCanvas);
+  const w = cv.width, h = cv.height;
+  cx.fillStyle = '#0e0908'; cx.fillRect(0, 0, w, h);
+  // Vertical pitch line (where the current bend is)
+  const pitchX = w * (bendCents / 2400 + 0.5);  // -1200..+1200 → 0..1
+  cx.strokeStyle = '#ffd896';
+  cx.lineWidth = 1.5 * (window.devicePixelRatio || 1);
+  cx.beginPath();
+  cx.moveTo(pitchX, 0); cx.lineTo(pitchX, h);
+  cx.stroke();
+  // Horizontal filter line
+  const filtY = h * (1 - (filterHz - 200) / (8000 - 200));
+  cx.strokeStyle = '#7a5828';
+  cx.lineWidth = 1 * (window.devicePixelRatio || 1);
+  cx.beginPath();
+  cx.moveTo(0, filtY); cx.lineTo(w, filtY);
+  cx.stroke();
+  // Scope waveform behind
+  if (analyser) {
+    const buf = new Float32Array(analyser.fftSize);
+    analyser.getFloatTimeDomainData(buf);
+    cx.strokeStyle = voiceActive ? 'rgba(216, 160, 96, 0.45)' : 'rgba(122, 88, 40, 0.35)';
+    cx.lineWidth = 1 * (window.devicePixelRatio || 1);
+    cx.beginPath();
+    const step = w / buf.length;
+    for (let i = 0; i < buf.length; i++) {
+      const x = i * step;
+      const y = h * (0.5 - buf[i] * 0.40);
+      if (i === 0) cx.moveTo(x, y); else cx.lineTo(x, y);
+    }
+    cx.stroke();
+  }
+}
+drawCanvas();
+
+// Canvas drag — X=pitch  Y=filter (mouse fallback for no-whammy)
+let dragging = false;
+cv.addEventListener('mousedown', e => {
+  ensureAudio();
+  dragging = true;
+  const r = cv.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width;
+  const y = (e.clientY - r.top)  / r.height;
+  bendCents = (x - 0.5) * 2400;
+  setFilterHz(200 + (1 - y) * (8000 - 200));
+  document.getElementById('filter').value = Math.round(filterHz);
+  applyBend();
+  attackVoice();
+});
+window.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  const r = cv.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width;
+  const y = (e.clientY - r.top)  / r.height;
+  bendCents = Math.max(-1200, Math.min(1200, (x - 0.5) * 2400));
+  setFilterHz(200 + (1 - Math.max(0, Math.min(1, y))) * (8000 - 200));
+  document.getElementById('filter').value = Math.round(filterHz);
+  applyBend();
+});
+window.addEventListener('mouseup', () => {
+  if (dragging) { dragging = false; releaseVoice(); }
+});
+
+// Settings wiring
+document.getElementById('preset').addEventListener('change', () => {
+  if (!ac) return;
+  buildVoice();
+});
+document.getElementById('filter').addEventListener('input', e => setFilterHz(parseInt(e.target.value)));
+document.getElementById('vol').addEventListener('input', e => {
+  if (master) master.gain.setTargetAtTime(parseInt(e.target.value) / 100, ac.currentTime, 0.02);
+});
+document.getElementById('vibrate').addEventListener('input', e => {
+  document.getElementById('vibrate-val').textContent = e.target.value + 'Hz';
+  if (voice) voice.vib.frequency.setTargetAtTime(parseInt(e.target.value), ac.currentTime, 0.05);
+});
+document.getElementById('vibdepth').addEventListener('input', e => {
+  document.getElementById('vibdepth-val').textContent = e.target.value + '¢';
+  if (voice) applyBend();
+});
+
+// ── Riffmaster routing ───────────────────────────────────────────
+const gp = new GamepadInput();
+gp.start();
+mountGamepadOverlay(gp);
+[0, 1, 2, 4, 5, 6, 7].forEach(axIdx => {
+  if (axIdx !== gp.mapping.whammy) bindStrumAxis(gp, axIdx);
+});
+window.addEventListener('gamepadinput-connected', ensureAudio);
+window.addEventListener('gamepadinput-button', e => {
+  ensureAudio();
+  const m = gp.mapping;
+  const fretIdx = m.frets.indexOf(e.detail.idx);
+  const isStrum = (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown);
+  if (fretIdx >= 0) {
+    // Main frets 1-5 pick the octave slot (the only 5 we use here).
+    if (e.detail.pressed) setOctave(fretIdx);
+    return;
+  }
+  if (isStrum && e.detail.pressed) {
+    // Toggle the voice on/off — strum-once-on, strum-again-off so
+    // you can lay down a sustained drone and play it like a real
+    // theremin (the hands modulate pitch + filter independently).
+    if (voiceActive) releaseVoice(); else attackVoice();
+  }
+});
+
+// Whammy → continuous pitch bend ±1 octave (1200¢). Rest-relative so
+// a non-zero resting whammy doesn't bend the note permanently.
+let whammyRest = null;
+window.addEventListener('gamepadinput-axis', e => {
+  if (e.detail.idx === gp.mapping.whammy) {
+    if (whammyRest === null) whammyRest = e.detail.value;
+    const delta = e.detail.value - whammyRest;
+    bendCents = Math.max(-1200, Math.min(1200, delta * 1200));
+    applyBend();
+  }
+});
+
+['pointerdown','keydown','touchstart','click'].forEach(ev =>
+  document.addEventListener(ev, ensureAudio, { capture: true })
+);
+</script>
+</body>
+</html>
