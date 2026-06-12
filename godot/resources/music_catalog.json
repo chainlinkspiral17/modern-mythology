@@ -1197,6 +1197,105 @@
     "unlock": { "type": "key", "key": "milestone:long_quiet_used" }
   },
   {
+    "id": "vol5_static_bloom",
+    "vol": 5,
+    "title": "Static Bloom",
+    "src": "assets/audio/bgm/vol5_static_bloom.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Empress · easy-mode B-side. Friday dinner on Nicola's riverboat. First arrivals setting the long table; the garden deck still in season.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_harvest_dinner",
+    "vol": 5,
+    "title": "Harvest Dinner",
+    "src": "assets/audio/bgm/vol5_harvest_dinner.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Empress · medium-mode B-side. Late autumn. Frasier on the bank walking slow. The garden deck has cooled.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_ice_in_the_river",
+    "vol": 5,
+    "title": "Ice in the River",
+    "src": "assets/audio/bgm/vol5_ice_in_the_river.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Empress · hard-mode B-side. 11:14 PM, late February. The river has ice in it for the first time in a decade.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_docket",
+    "vol": 5,
+    "title": "Docket",
+    "src": "assets/audio/bgm/vol5_docket.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Emperor · easy-mode B-side. Tuesday morning. Brass clock. Radiator on too high. Stamp on the blotter.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_first_session",
+    "vol": 5,
+    "title": "First Session",
+    "src": "assets/audio/bgm/vol5_first_session.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Emperor · medium-mode B-side. Pre-clerk Monday. The petitioner slept in their car. The radiator is cold.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_appeal",
+    "vol": 5,
+    "title": "Appeal",
+    "src": "assets/audio/bgm/vol5_appeal.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Emperor · hard-mode B-side. Late Tuesday afternoon. Six-month appellate hearing. Volumes 9 and 10 of the river-code missing.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_green_phosphor",
+    "vol": 5,
+    "title": "Green Phosphor",
+    "src": "assets/audio/bgm/vol5_green_phosphor.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Hierophant · easy-mode B-side. Tuesday night BBS. Modem rack humming. Printer's banner paper rolling slowly.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_long_signal",
+    "vol": 5,
+    "title": "The Long Signal",
+    "src": "assets/audio/bgm/vol5_long_signal.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Hierophant · medium-mode B-side. Late Wednesday. Anya at the floppy wall. The ham band open. 14.301 MHz live.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
+    "id": "vol5_broadcast_night",
+    "vol": 5,
+    "title": "Broadcast Night",
+    "src": "assets/audio/bgm/vol5_broadcast_night.ogg",
+    "composer": "—",
+    "desc": "Tarot Gauntlet · Hierophant · hard-mode B-side. 3:14 AM. The lurker logged in. The ham band hisses then clears.",
+    "unlock": { "type": "heard" },
+    "chapters": [],
+    "chars": []
+  },
+  {
     "id": "vol6_alma_theme",
     "vol": 6,
     "title": "Alma · Pleasant Beige",
