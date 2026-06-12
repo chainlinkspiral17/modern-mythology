@@ -1,0 +1,165 @@
+{
+  "scope": "magician",
+  "notes": "Frasier-Magician visitor pool. Easy-mode (THE DRAFT) keeps the roster mostly friendly — three people who know him stopping by, one remote BBS check-in, plus two strangers who could plausibly find a riverside warehouse at dusk. The Demon is reserved for the medium + hard scenarios. The default connection path matches the Fool's waiter sequence (GREET → LISTEN → DELIVER → SIT WITH) reframed as the maker's visit sequence: each step is a beat of Frasier hosting someone in his space.",
+  "visitors": [
+    {
+      "id": "elicia",
+      "name": "Elicia Temple",
+      "arrival": {"kind": "scheduled", "turn": 2, "from": "warehouse_bay", "to": "priestess"},
+      "lore_token": "elicia_drops_a_tape",
+      "lore_text": "She drove over with one tape. She'll listen while he listens. They don't talk about the year they don't talk about.",
+      "accent": "#b89ad6",
+      "placeholder_name": "his sister, calling ahead",
+      "pre_arrival_hints": [
+        "The bay door rattles softly. Familiar pattern.",
+        "A car pulls up outside. The engine cuts and stays cut.",
+        "Elicia, lifting the bay door with one hand, holding a cassette in the other."
+      ],
+      "mood": "preoccupied",
+      "order_item": "tape_unfinished",
+      "steps": {
+        "greet":   "She lifts the bay door, ducks under, doesn't say hi. Sets the tape on the workbench.",
+        "listen":  "\"You're going to want to hear this one. Don't talk through it.\" The reels start.",
+        "deliver": "He hands it back. She nods at where to set the reel down. The silence is fine.",
+        "sit_with": "She sits on a sawhorse beside him. The recording finishes. Neither of them stands up for a long beat."
+      }
+    },
+    {
+      "id": "john_frank",
+      "name": "John Frank",
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "warehouse_bay", "to": "fool"},
+      "lore_token": "john_brought_food",
+      "lore_text": "John walks the four blocks from D'Ambrosio's once a week with a paper bag. Frasier eats over the workbench. The bag goes into a drawer with the others.",
+      "accent": "#c8a268",
+      "placeholder_name": "footsteps from the diner",
+      "pre_arrival_hints": [
+        "A bag rustling outside the bay door.",
+        "Apron strings catching on the door's edge.",
+        "John, holding up a brown bag like a peace offering."
+      ],
+      "mood": "jovial",
+      "order_item": "togo_diner_bag",
+      "steps": {
+        "greet":   "John raises the bag. \"Chicken and waffles. The kid threw away the receipt again.\"",
+        "listen":  "He talks about the lunch shift. The press at booth 4. The bus kid laughed at his own joke. He's at peace.",
+        "deliver": "Frasier sets the bag on the workbench beside the steamboat. John doesn't comment on the boat.",
+        "sit_with": "John picks up a small figurine from the diner-model — the John figurine — and looks at it without saying anything. He sets it back down on the same spot."
+      }
+    },
+    {
+      "id": "nicola",
+      "name": "Nicola",
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "warehouse_bay", "to": "empress"},
+      "lore_token": "nicola_found_a_letter",
+      "lore_text": "She found the letter in a box she swore she'd unpacked already. She drove it over herself because she knew he'd want to see it.",
+      "accent": "#ffd07a",
+      "placeholder_name": "a knock at the bay door",
+      "pre_arrival_hints": [
+        "Heels on gravel, the same pattern as a song he can't place.",
+        "The bay door opens halfway and stays there.",
+        "Nicola, smiling at the floor before she smiles at him."
+      ],
+      "mood": "jovial",
+      "order_item": "nicola_letter",
+      "steps": {
+        "greet":   "\"There he is.\" Sunglasses up onto the hair. The letter already in her hand.",
+        "listen":  "She tells him where she found it. The handwriting. The year. He listens. She doesn't apologize for taking this long.",
+        "deliver": "He pins it to the EMPRESS wall next to the others. She approves the placement.",
+        "sit_with": "She walks the inner cluster once, slowly. Names the pieces that already exist. Touches none of them."
+      }
+    },
+    {
+      "id": "mackenzie_remote",
+      "name": "Mackenzie (over the BBS)",
+      "arrival": {"kind": "scheduled", "turn": 6, "from": "(signal)", "to": "hermit"},
+      "lore_token": "mackenzie_called_via_bbs",
+      "lore_text": "She's the kind of friend who reaches you the way you reach people. The terminal is the only thing that rang.",
+      "accent": "#b89ad6",
+      "placeholder_name": "the BBS is paging",
+      "pre_arrival_hints": [
+        "RUST_CODE chimes. A user opens the chat window.",
+        "Cursor blink. A name he knows but hasn't seen in years.",
+        "[mackenzie@graustark] hey are you there"
+      ],
+      "mood": "preoccupied",
+      "notes": "Remote visitor — never has a physical meeple, never has an order item. Connection only via the BBS at HERMIT. Counts as a visitor for the connection-min win condition.",
+      "remote_only": true,
+      "connect_via": {"kind": "card_at_pos", "card": "tune", "player_pos": "hermit"},
+      "steps": {
+        "greet":   "He types: yeah. She types: still in the warehouse. He types: yeah.",
+        "listen":  "She tells him about a number she dialed by accident and the person who picked up.",
+        "deliver": "He sends her three lines of the draft he's been writing all week. She reads them and types: ok.",
+        "sit_with": "The cursor blinks for ninety seconds. Then she types: thank you. Then she logs off."
+      }
+    },
+    {
+      "id": "the_drifter",
+      "name": "the drifter at the door",
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "river_window", "to": "warehouse_bay"},
+      "lore_token": "drifter_at_the_bay",
+      "lore_text": "He came up the river bank, not the road. He won't be back. He wasn't dangerous, but he wasn't comfortable either.",
+      "accent": "#7c8398",
+      "placeholder_name": "shape moving along the river bank",
+      "pre_arrival_hints": [
+        "Footsteps on the gravel outside that don't match Elicia's, John's, or Nicola's.",
+        "A shadow in the bay door's gap.",
+        "A man in a wet jacket, asking with his eyes before he asks with his mouth."
+      ],
+      "mood": "gruff",
+      "order_item": "cup_of_water",
+      "steps": {
+        "greet":   "He nods once. Doesn't step inside the threshold.",
+        "listen":  "\"Just water. If you can.\" Frasier finds the chipped enamel cup.",
+        "deliver": "He drinks it standing in the open bay door. Hands the cup back wordless.",
+        "sit_with": "He looks at the inner cluster — sees what it is, you can tell — and turns to leave. \"Thanks.\" The door rolls down. He's gone."
+      }
+    },
+    {
+      "id": "the_birdwatcher",
+      "name": "the bird-watcher",
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "river_window", "to": "river_window"},
+      "lore_token": "birdwatcher_for_osprey",
+      "lore_text": "She'd been watching the osprey nest in the iron struts above the river bank for three weeks. The warehouse was the only good angle. She apologized for the binoculars.",
+      "accent": "#c2ff9b",
+      "placeholder_name": "binocular glint at the river window",
+      "pre_arrival_hints": [
+        "A glint against the river-window from the outside walk.",
+        "Two slow taps on the glass — apologetic.",
+        "A woman in a windbreaker, binoculars around her neck, mouthing sorry through the pane."
+      ],
+      "mood": "jovial",
+      "steps": {
+        "greet":   "He cracks the river-window. \"Hi. Hi. Osprey.\" She holds up the binoculars.",
+        "listen":  "She tells him about the nest. Three weeks. Two fledglings. The angle from the river-side iron struts.",
+        "deliver": "He brings her a folding chair from the corner. She gasps a thank-you. Sits with her back to the wall, binoculars up.",
+        "sit_with": "She doesn't move for forty minutes. When the male bird returns to the nest she lets out a long quiet breath. Then she packs up and goes."
+      }
+    }
+  ],
+  "default_step_lines_by_mood": {
+    "jovial": {
+      "greet":   "They smile when they see him.",
+      "listen":  "They explain themselves easily.",
+      "deliver": "He gives them what they came for. They thank him with both hands.",
+      "sit_with": "They share the silence with him."
+    },
+    "gruff": {
+      "greet":   "They nod once. They don't step inside.",
+      "listen":  "They say what they need in fewer words than expected.",
+      "deliver": "They take what he gives them and don't comment.",
+      "sit_with": "They look at his work, decide something, and go."
+    },
+    "preoccupied": {
+      "greet":   "They look up briefly and then keep looking past him.",
+      "listen":  "They tell him part of what's wrong. The rest he has to guess.",
+      "deliver": "They accept it without making a fuss. The room settles a half-step.",
+      "sit_with": "He sits with them. They sit with themselves. The room finally exhales."
+    },
+    "left_alone": {
+      "greet":   "They acknowledge him with their shoulders only.",
+      "listen":  "They don't answer at first. He waits.",
+      "deliver": "They take it. They don't look up.",
+      "sit_with": "He sits where they can feel him being there. They breathe out for the first time in a while."
+    }
+  }
+}

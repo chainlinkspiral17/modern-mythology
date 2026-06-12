@@ -1,0 +1,141 @@
+{
+  "scope": "magician",
+  "scenario": "the_draft",
+  "notes": "Cathedral gravity deck · easy-mode (THE DRAFT). The deck divides into atmospheric pressure (the room insisting), demon-reach (low-volume in easy mode), cross-arcana bleed (the cast talking to each other), and self-sabotage (the maker's enemies). DOUBT and STAGNATION are the two stats the deck pressures. 14 cards drawn one-per-turn during the Shadow phase. Engine support for stagnation / doubt / inspiration / wip-progress / cross-arcana flags is pending the next engine pass; effect names match what the engine will need.",
+  "cards": [
+    {
+      "id": "the_still_is_dripping",
+      "title": "THE STILL IS DRIPPING",
+      "flavor": "A copper bead falls from the still and lands on a draft. The ink runs. You'll have to start that section over.",
+      "effects": [
+        {"kind": "lose_inspiration", "amount": 1},
+        {"kind": "gain_doubt", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_bbs_hums_louder",
+      "title": "THE BBS HUMS LOUDER",
+      "flavor": "Phosphor green a half-shade brighter. Someone is paging. You don't answer right away.",
+      "effects": [
+        {"kind": "gain_stagnation", "amount": 1},
+        {"kind": "if_at", "pos": "hermit",
+         "then": [{"kind": "gain_inspiration", "amount": 1, "note": "you answered"}, {"kind": "lose_stagnation", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "dust_in_the_workbench",
+      "title": "DUST IN THE WORKBENCH",
+      "flavor": "A film over the joint of the model. You'll pause longer than usual on the next note.",
+      "effects": [
+        {"kind": "this_turn_card_cost_plus", "card": "draft", "amount": 1}
+      ]
+    },
+    {
+      "id": "power_flicker",
+      "title": "POWER FLICKER",
+      "flavor": "The lights tick. The reels slow for half a beat. Whatever you had running runs less hot.",
+      "effects": [
+        {"kind": "all_active_demons_lose_duration", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_demon_at_the_stool",
+      "title": "THE DEMON AT THE STOOL",
+      "flavor": "The empty bar stool at DEVIL stops being empty. He didn't come in. He was already here.",
+      "effects": [
+        {"kind": "spawn_visitor_if_not_present", "visitor": "the_demon", "at": "devil"}
+      ]
+    },
+    {
+      "id": "someone_bought_the_file",
+      "title": "SOMEONE BOUGHT THE FILE",
+      "flavor": "A demon you were going to summon already has a buyer. The stock notch slides down a peg.",
+      "effects": [
+        {"kind": "decrement_random_demon_stock"}
+      ]
+    },
+    {
+      "id": "the_diner_model_flickers",
+      "title": "THE DINER MODEL FLICKERS",
+      "flavor": "At FOOL station, a tiny waiter-figurine moves on its own. Not yours. Not John's. Someone else.",
+      "effects": [
+        {"kind": "set_cross_arcana_flag", "target": "fool", "key": "fool_starting_inertia_plus_one"},
+        {"kind": "gain_doubt", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_steamboat_reflects_wrong",
+      "title": "THE STEAMBOAT REFLECTS WRONG",
+      "flavor": "At MAGICIAN, the boat half-shows on the diner-model's pewter water. It is finishing itself in the wrong room. You can stop it. You can not stop it.",
+      "effects": [
+        {"kind": "advance_steamboat", "amount": 1},
+        {"kind": "gain_stagnation", "amount": 1}
+      ]
+    },
+    {
+      "id": "elicia_left_a_tape",
+      "title": "ELICIA LEFT A TAPE",
+      "flavor": "A cassette on top of the PRIESTESS pile that wasn't there an hour ago. No note.",
+      "effects": [
+        {"kind": "add_to_pile_top", "pile": "priestess_tapes", "item": "tape_unannotated"}
+      ]
+    },
+    {
+      "id": "nicola_wrote_again",
+      "title": "NICOLA WROTE AGAIN",
+      "flavor": "A new envelope at the top of the EMPRESS pile. The handwriting is exactly the same as the last forty.",
+      "effects": [
+        {"kind": "add_to_pile_top", "pile": "empress_letters", "item": "nicola_letter"},
+        {"kind": "if_at", "pos": "empress",
+         "then": [{"kind": "gain_inspiration", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "sharps_club_glows",
+      "title": "SHARP'S CLUB GLOWS",
+      "flavor": "The TOWER WIP shifts a half-step warmer. The little neon you painted on the model glows like it knows you're looking.",
+      "effects": [
+        {"kind": "advance_wip", "wip": "tower", "amount": 1},
+        {"kind": "gain_doubt", "amount": 1, "note": "you're getting closer to a place you didn't want to revisit"}
+      ]
+    },
+    {
+      "id": "a_draft_burned_itself",
+      "title": "A DRAFT BURNED ITSELF",
+      "flavor": "You hadn't lit any match. The corner is curled and gone. The piece is one beat further from finished.",
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Lose 1 Inspiration",                   "effects": [{"kind": "lose_inspiration", "amount": 1}]},
+          {"label": "Unfinish a piece by 1 (you choose)",   "effects": [{"kind": "unfinish_piece", "amount": 1, "player_choice": true}]}
+        ]}
+      ]
+    },
+    {
+      "id": "the_wires_unhooked",
+      "title": "THE WIRES UNHOOKED",
+      "flavor": "An installation that was lit went dark. The piece is technically still finished. Visually, it is not.",
+      "effects": [
+        {"kind": "unfinish_random_finished_arcana", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_steamboat_is_listening",
+      "title": "THE STEAMBOAT IS LISTENING",
+      "flavor": "It needs one fewer beat than you thought. It will accept anything you give it.",
+      "endgame": true,
+      "effects": [
+        {"kind": "steamboat_threshold_minus", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_sinkhole",
+      "title": "THE SINKHOLE",
+      "flavor": "Outside, the river bank slumps. The river window stops being a window for a while.",
+      "endgame": true,
+      "effects": [
+        {"kind": "close_threshold", "threshold": "river_window", "turns": 3},
+        {"kind": "gain_stagnation", "amount": 2}
+      ]
+    }
+  ]
+}
