@@ -35,7 +35,7 @@
     {
       "id": "priestess_complete",
       "title": "ELICIA'S WHOLE NIGHT",
-      "desc": "Win all three Priestess scenarios (CICADA SESSION, THE LONG QUIET, TAPE WITNESS).",
+      "desc": "Win all three Pomegranate Hour scenarios (A PRODUCTIVE NIGHT, THE CONVERSATION, THE LONG EDIT). The show is still not finished. That was never the win.",
       "trigger": { "kind": "all_scenarios", "arcana": "priestess", "scenarios": ["cicada_session","long_quiet","tape_witness"] },
       "unlock_key": "achievement:priestess_complete",
       "reward": { "kind": "unlock", "key": "unlocked:reversed:priestess" }
@@ -142,6 +142,50 @@
       "desc": "Win the LOVERS scenario with both characters at the same threshold.",
       "trigger": { "kind": "lovers_synced_leap" },
       "unlock_key": "achievement:first_pair"
+    },
+    {
+      "id": "lovers_complete",
+      "title": "THE APARTMENT HELD",
+      "desc": "Win all three Lovers scenarios (THE LAST BOXES, AN AFTERNOON, THE LETTER IN THE DRAWER).",
+      "trigger": { "kind": "all_scenarios", "arcana": "lovers", "scenarios": ["the_last_boxes","an_afternoon","the_letter_in_the_drawer"] },
+      "unlock_key": "achievement:lovers_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:lovers" }
+    },
+    {
+      "id": "chariot_complete",
+      "title": "CORA'S WHOLE ROUTE",
+      "desc": "Win all three Chariot scenarios (DEPOT TO DEPOT, LATE RUN, THE LONG QUIET ROAD).",
+      "trigger": { "kind": "all_scenarios", "arcana": "chariot", "scenarios": ["depot_to_depot","late_run","the_long_quiet_road"] },
+      "unlock_key": "achievement:chariot_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:chariot" }
+    },
+    {
+      "id": "conversation_began",
+      "title": "THE CONVERSATION HAPPENED",
+      "desc": "Lock Ep. 17 in THE CONVERSATION — the Two-Chairs Women begin speaking after twenty years.",
+      "trigger": { "kind": "flag_during_run", "flag": "lore_token:conversation_began" },
+      "unlock_key": "achievement:conversation_began"
+    },
+    {
+      "id": "davey_speaks",
+      "title": "DAVEY SPEAKS",
+      "desc": "Sit with Davey through his full beat in THE LONG EDIT — play the cue 14 draft he marked 'please don't use this one.'",
+      "trigger": { "kind": "flag_during_run", "flag": "lore_token:davey_speaks" },
+      "unlock_key": "achievement:davey_speaks"
+    },
+    {
+      "id": "young_self_speaks",
+      "title": "ELICIA AT 21",
+      "desc": "Sit with Young Elicia through the Hi8 tape. Record over the last thirty seconds.",
+      "trigger": { "kind": "flag_during_run", "flag": "lore_token:young_self_speaks" },
+      "unlock_key": "achievement:young_self_speaks"
+    },
+    {
+      "id": "an_episode_was_made",
+      "title": "AN EPISODE WAS MADE",
+      "desc": "Advance any Pomegranate Hour episode by two states in a single Priestess scenario.",
+      "trigger": { "kind": "win_with_metric", "metric": "episodes_advanced", "op": ">=", "value": 2 },
+      "unlock_key": "achievement:an_episode_was_made"
     }
   ]
 }

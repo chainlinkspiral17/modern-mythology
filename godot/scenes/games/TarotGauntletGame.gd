@@ -7385,7 +7385,13 @@ func _achievement_trigger_fires(trigger: Dictionary, outcome: String, finale_id:
 		"loss_with_finale_id":
 			return outcome == "loss" and finale_id == String(trigger.get("finale_id", ""))
 		"flag_during_run":
-			return bool(_flags.get(String(trigger.get("flag", "")), false))
+			var flag_key: String = String(trigger.get("flag", ""))
+			# Support "lore_token:foo" — fires when token foo was
+			# collected during this run.
+			if flag_key.begins_with("lore_token:"):
+				var tok: String = flag_key.substr("lore_token:".length())
+				return tok in _lore_tokens_collected
+			return bool(_flags.get(flag_key, false))
 		"card_played_during_run":
 			return int(_cards_played_this_run.get(String(trigger.get("card", "")), 0)) > 0
 		"lovers_synced_leap":
@@ -7399,6 +7405,20 @@ func _achievement_metric(metric: String) -> int:
 		"visitors_claimed": return _claimed_visitors_count
 		"active_demons": return _active_demons.size()
 		"connections": return _connections_made.size()
+		"episodes_advanced": return _episodes_advanced_this_run
+		"cast_crew_sit_with": return _cast_crew_sit_with_count
+		"master_reel": return _master_reel
+		"sync": return _sync
+		"miles": return _miles
+		"bloom": return _bloom
+		"ledger": return _ledger
+		"signal": return _signal
+		"insight": return _insight
+		"harvest": return _harvest
+		"authority": return _authority
+		"doctrine": return _doctrine
+		"verb": return _verb
+		"fuel": return _fuel
 	return 0
 
 func _achievement_compare(a: int, op: String, b: int) -> bool:
