@@ -289,7 +289,7 @@ func _draw_cathedral_drift(s: Vector2) -> void:
 func _init_particles(s: Vector2) -> void:
 	_particles.clear()
 	var rng := RandomNumberGenerator.new()
-	rng.seed = 0xCA7HEDRAL
+	rng.seed = 0xCA7EDA1   # nominally "cathedra1" — a stable seed
 	for _i in PARTICLE_COUNT:
 		_particles.append({
 			"x":  rng.randf_range(0, s.x),
