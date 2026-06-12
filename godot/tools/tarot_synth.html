@@ -1055,12 +1055,12 @@ window.addEventListener('gamepadinput-button', e => {
     playCard(soloIdx + 5);
     return;
   }
-  if (isStrum) {
-    const cur = BANK_ORDER.indexOf(activeBank);
-    const next = e.detail.idx === m.strumDown
-      ? (cur + 1) % BANK_ORDER.length
-      : (cur - 1 + BANK_ORDER.length) % BANK_ORDER.length;
-    switchBank(BANK_ORDER[next]);
+  // Strum in single-fret mode re-triggers the last card so you can
+  // strum-strum-strum on whatever fret you just pressed. Bank cycling
+  // used to live here but it made strum look like menu navigation;
+  // banks are switched via the tabs above (or Tab on the keyboard).
+  if (isStrum && selectedCard !== null && selectedCard !== undefined) {
+    playCard(selectedCard);
   }
 });
 window.addEventListener('gamepadinput-axis', e => {

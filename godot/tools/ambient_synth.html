@@ -532,18 +532,12 @@ window.addEventListener('gamepadinput-button', e => {
     if (live) { stopLive(); startLive(); }
     return;
   }
+  // Strum toggles live playback — makes the strum bar feel like the
+  // tool's start/stop, the way you'd use it on a real instrument.
+  // Preset cycling moved to the preset row above (or arrow keys when
+  // the page has focus).
   if (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown) {
-    const cur = PRESET_ORDER.indexOf(activePreset);
-    const next = e.detail.idx === m.strumDown
-      ? (cur + 1) % PRESET_ORDER.length
-      : (cur - 1 + PRESET_ORDER.length) % PRESET_ORDER.length;
-    document.querySelectorAll('.preset-btn').forEach(b => {
-      b.classList.toggle('active', b.dataset.preset === PRESET_ORDER[next]);
-    });
-    activePreset = PRESET_ORDER[next];
-    current = structuredClone(PRESETS[activePreset]);
-    rebuildUI();
-    if (live) { stopLive(); startLive(); }
+    if (live) stopLive(); else startLive();
   }
 });
 window.addEventListener('gamepadinput-axis', e => {
