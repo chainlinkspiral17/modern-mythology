@@ -76,6 +76,23 @@ var _wip_progress: Dictionary = {}          # wip_id → int (max from location.
 var _wips_completed_this_run: Dictionary = {}
 var _steamboat_progress: int = 0
 var _steamboat_threshold: int = 6
+# Priestess (II) state — the master reel is Elicia's equivalent of
+# the steamboat doom-clock. Each RECORD action ticks the reel by 1;
+# at threshold the reel is full (loss in some scenarios, lockout in
+# others). Insight is the spendable currency parallel to Frasier's
+# Inspiration. Default zero / inert for non-Priestess runs.
+var _master_reel: int = 0
+var _master_reel_threshold: int = 6
+var _insight: int = 0
+# Patience-freeze counter (THE LONG QUIET ability + freeze_patience
+# effect): while > 0, _tick_visitor_patience does nothing on Upkeep.
+# Decrements once per turn at Upkeep.
+var _patience_frozen_turns: int = 0
+# Patched-space pairs — while present, the two named spaces are
+# treated as one for visitor proximity / connection (lets a visitor
+# in the booth be "addressable" from the lounge). Decay turns at
+# Upkeep; entries with turns<=0 are cleaned up.
+var _patched_pairs: Array = []   # [{a, b, turns}, ...]
 var _sealed_arcanas: Dictionary = {}        # space_id → true while sealed
 var _next_gravity_canceled: bool = false
 var _active_demons: Dictionary = {}         # demon_id → turns_left
@@ -681,6 +698,15 @@ func _init_run() -> void:
 	var sb_def: Dictionary = _location.get("steamboat", {})
 	_steamboat_threshold = int(sb_def.get("completion_threshold", 6))
 	_steamboat_progress = 0
+	# Priestess master reel — pulled from location.master_reel.
+	# Default 6 if not declared. Starting progress lets a scenario
+	# pre-load the reel (e.g. tape_witness starts at 3/6).
+	var mr_def: Dictionary = _location.get("master_reel", {})
+	_master_reel_threshold = int(mr_def.get("completion_threshold", 6))
+	_master_reel = int(start.get("starting_master_reel", 0))
+	_insight = int(start.get("insight", 0))
+	_patience_frozen_turns = 0
+	_patched_pairs.clear()
 	_piece_progress.clear()
 	_wip_progress.clear()
 	_pieces_completed = 0
@@ -871,7 +897,9 @@ func _build_ui() -> void:
 	top_hb.add_child(top_spacer)
 	var top_leave_btn := Button.new()
 	top_leave_btn.text = "← Back to Gallery"
-	var leave_room: String = "cathedral" if _arcana_id == "magician" else "diner"
+	var leave_room: String = "diner"
+	if _arcana_id == "magician":  leave_room = "cathedral"
+	if _arcana_id == "priestess": leave_room = "booth"
 	top_leave_btn.tooltip_text = "Leave the %s and return to the gallery (this ends the run)." % leave_room
 	top_leave_btn.add_theme_font_size_override("font_size", 11)
 	top_leave_btn.custom_minimum_size = Vector2(132, 24)
@@ -3869,27 +3897,35 @@ func _render() -> void:
 	_sanity_label.text  = "Sanity %d" % _sanity
 	# Magician-arcana stats — only show when in use for the scenario.
 	var is_magician: bool = (_arcana_id == "magician")
+	var is_priestess: bool = (_arcana_id == "priestess")
+	# Stagnation + Doubt are SHARED between Magician and Priestess
+	# (both feel the room curdle and the listener doubt). Inspiration
+	# is Magician-only; Priestess uses Insight rendered in the same
+	# slot. Pieces is Magician-only.
 	if _stagnation_label != null:
-		_stagnation_label.visible = is_magician
-		if is_magician:
+		_stagnation_label.visible = is_magician or is_priestess
+		if is_magician or is_priestess:
 			var s_max: int = int(_setup.get("loss_conditions", {}).get("stagnation_max", 12))
 			_stagnation_label.text = "Stagnation %d / %d" % [_stagnation, s_max]
 	if _doubt_label != null:
-		_doubt_label.visible = is_magician
-		if is_magician:
+		_doubt_label.visible = is_magician or is_priestess
+		if is_magician or is_priestess:
 			_doubt_label.text = "Doubt %d / %d" % [_doubt, _doubt_max]
 	if _inspiration_label != null:
-		_inspiration_label.visible = is_magician
+		# Re-purposed for Priestess as the Insight readout.
+		_inspiration_label.visible = is_magician or is_priestess
 		if is_magician:
 			_inspiration_label.text = "Inspiration %d" % _inspiration
+		elif is_priestess:
+			_inspiration_label.text = "Insight %d  ·  Reel %d / %d" % [_insight, _master_reel, _master_reel_threshold]
 	if _pieces_label != null:
 		_pieces_label.visible = is_magician
 		if is_magician:
 			_pieces_label.text = "Pieces %d" % _pieces_completed
-	# Inertia + Sanity are Fool-only — hide for Magician runs.
-	if _inertia_label != null and is_magician:
+	# Inertia + Sanity are Fool-only — hide for the Magician + Priestess.
+	if _inertia_label != null and (is_magician or is_priestess):
 		_inertia_label.visible = false
-	if _sanity_label != null and is_magician:
+	if _sanity_label != null and (is_magician or is_priestess):
 		_sanity_label.visible = false
 	# Push current pressure to the BGM audio manipulator — Stagnation
 	# muffles the room, Doubt distorts it. Only applies to Magician
@@ -4067,10 +4103,16 @@ func _check_requirement(req: Dictionary) -> bool:
 			# card's effect list typically spends_inspiration N on
 			# resolve, so the predicate prevents partial spends.
 			return _inspiration >= int(req.get("n", 1))
+		"has_insight_at_least":
+			# Priestess — TRANSCRIBE-style gate. Mirror of the Magician
+			# predicate; uses _insight instead of _inspiration.
+			return _insight >= int(req.get("n", 1))
 		"has_stagnation_below":
 			return _stagnation < int(req.get("n", 12))
 		"has_doubt_below":
 			return _doubt < int(req.get("n", 7))
+		"has_master_reel_below":
+			return _master_reel < int(req.get("n", 6))
 		"visitor_in_bright_space":
 			# MOTH-style. True if any arrived, unconnected visitor is
 			# at one of the cathedral's "lit" stations. Bright = the
@@ -4213,6 +4255,30 @@ func _win_conditions_met() -> bool:
 		if bool(wc.get("require_cake_lit", false)):
 			if not _flags.get("cake_lit", false):
 				return false
+		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
+			return false
+		return true
+	# ── Priestess schema ────────────────────────────────────────
+	if _arcana_id == "priestess":
+		var p_need_connect: int = int(wc.get("require_visitors_connected_min", 3))
+		if _connections_made.size() < p_need_connect:
+			return false
+		var p_need_hard: int = int(wc.get("require_hard_mood_connections_min", 0))
+		if p_need_hard > 0:
+			var p_hard_count: int = 0
+			for pcvid in _connections_made:
+				var pcv_def: Dictionary = _visitors_def.get(String(pcvid), {})
+				var pmood: String = String(pcv_def.get("mood", ""))
+				if pmood == "intense" or pmood == "lonely" or pmood == "preoccupied":
+					p_hard_count += 1
+			if p_hard_count < p_need_hard:
+				return false
+		if _doubt >= int(wc.get("require_doubt_below", 99)):
+			return false
+		if _stagnation >= int(wc.get("require_stagnation_below", 99)):
+			return false
+		if _master_reel >= int(wc.get("require_master_reel_below", _master_reel_threshold + 1)):
+			return false
 		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
 			return false
 		return true
@@ -4838,6 +4904,84 @@ func _resolve_effect(e: Dictionary) -> void:
 				_flags["threshold_locked:" + tid] = _turn + turns
 				_log_line("[color=#7cffb0]threshold %s locked open for %d turns.[/color]" %
 					[tid.to_upper(), turns])
+
+		"tick_master_reel":
+			# Priestess — advance the master reel by N. At threshold
+			# the reel is full and tape-based actions become inert.
+			var amt_mr: int = int(e.get("amount", 1))
+			_master_reel = min(_master_reel_threshold, _master_reel + amt_mr)
+			_log_line("[color=#a99070]·[/color] master reel ticks · %d / %d" %
+				[_master_reel, _master_reel_threshold])
+			if _master_reel >= _master_reel_threshold:
+				# Loss check delegated to the scenario's loss_conditions
+				# (master_reel_full_before_end). The render layer will
+				# also pick up the threshold state via _master_reel.
+				if bool(_setup.get("loss_conditions", {}).get("master_reel_full_before_end", false)):
+					_trigger_loss("master_reel_full")
+
+		"untick_master_reel":
+			# SHELVE — move a finished tape onto the wall, freeing
+			# reel space. Doesn't go below 0.
+			var amt_um: int = int(e.get("amount", 1))
+			_master_reel = max(0, _master_reel - amt_um)
+			_log_line("[color=#7cffb0]·[/color] tape filed · master reel %d / %d" %
+				[_master_reel, _master_reel_threshold])
+
+		"gain_insight":
+			var ig: int = int(e.get("amount", 1))
+			_insight += ig
+			_log_line("[color=#a8e89c]+%d Insight[/color] → %d" % [ig, _insight])
+
+		"spend_insight":
+			var is_amt: int = int(e.get("amount", 1))
+			_insight = max(0, _insight - is_amt)
+			_log_line("[color=#a99070]-%d Insight[/color] → %d" % [is_amt, _insight])
+
+		"freeze_patience":
+			# THE LONG QUIET — patience does not tick for N turns. The
+			# upkeep ticker checks _patience_frozen_turns and skips
+			# the tick when set; the counter decrements at upkeep.
+			var ft: int = int(e.get("turns", 1))
+			_patience_frozen_turns = max(_patience_frozen_turns, ft)
+			_log_line("[color=#a8e89c]✦ the long quiet · patience holds for %d turn%s.[/color]" %
+				[ft, "" if ft == 1 else "s"])
+
+		"advance_visitor_schedule":
+			# CALL IN — pull the next scheduled visitor in early. Picks
+			# the unarrived visitor with the lowest scheduled_turn and
+			# brings them in this turn.
+			var picked_v: String = ""
+			var best_turn: int = 99
+			for vid_sc in _visitors_state:
+				var st_sc: Dictionary = _visitors_state[vid_sc]
+				if st_sc.get("arrived", false): continue
+				if not st_sc.has("scheduled_turn"): continue
+				var sched: int = int(st_sc.get("scheduled_turn", 99))
+				if sched < best_turn:
+					best_turn = sched
+					picked_v = vid_sc
+			if picked_v != "":
+				var st_p: Dictionary = _visitors_state[picked_v]
+				st_p["arrived"] = true
+				st_p["arrived_turn"] = _turn
+				st_p["pos"] = String(st_p.get("arrival_pos", "lounge"))
+				var vn: String = String(_visitors_def.get(picked_v, {}).get("name", picked_v))
+				_log_line("[color=#a99070]✦ %s arrives early.[/color]" % vn)
+			else:
+				_log_line("[i]nobody else booked tonight.[/i]")
+
+		"patch_two_spaces":
+			# PATCH — two named spaces are treated as one for visitor
+			# proximity for N turns. While a patch is active, a
+			# visitor in space A can be addressed from space B (and
+			# vice versa). Per-card "a" and "b" name the pair.
+			var pa: String = String(e.get("a", ""))
+			var pb: String = String(e.get("b", ""))
+			var pt: int = int(e.get("turns", 1))
+			if pa != "" and pb != "":
+				_patched_pairs.append({"a": pa, "b": pb, "turns": pt})
+				_log_line("[color=#a8e89c]✦ patched %s ↔ %s for %d turn%s.[/color]" %
+					[pa.to_upper(), pb.to_upper(), pt, "" if pt == 1 else "s"])
 
 		"force_connect_visitor_in_bright_space":
 			# MOTH demon — picks the first arrived/unconnected visitor
@@ -5993,6 +6137,21 @@ func _phase_action() -> void:
 			_active_demons.erase(did)
 		else:
 			_active_demons[did] = left
+	# Patience freeze counter ticks down by 1 each upkeep.
+	if _patience_frozen_turns > 0:
+		_patience_frozen_turns -= 1
+	# Patched-space pairs tick down + expire.
+	var still_patched: Array = []
+	for p in _patched_pairs:
+		var pd: Dictionary = p
+		var left_t: int = int(pd.get("turns", 0)) - 1
+		if left_t > 0:
+			pd["turns"] = left_t
+			still_patched.append(pd)
+		else:
+			_log_line("[i]· patch %s ↔ %s released.[/i]" %
+				[String(pd.get("a","?")).to_upper(), String(pd.get("b","?")).to_upper()])
+	_patched_pairs = still_patched
 	# BLOW OUT — the river-takes-the-bank loss trigger. Scenario
 	# declares `river_takes_the_bank_after_turn: N`. From turn N+1
 	# onward, if the cake hasn't been lit, the river caves the
@@ -6463,6 +6622,12 @@ func _phase_upkeep() -> void:
 # ── End conditions ──────────────────────────────────────────────────
 
 func _tick_visitor_patience() -> void:
+	# THE LONG QUIET / freeze_patience — skip the whole tick while
+	# the freeze counter is positive. Counter is decremented in the
+	# upkeep step that calls us.
+	if _patience_frozen_turns > 0:
+		_log_line("[color=#a8e89c][i]the long quiet holds. nobody is checking the time.[/i][/color]")
+		return
 	# Each Upkeep: for any visitor who's arrived, unconnected, not
 	# already claimed, has helper:false, has no special connect_via,
 	# and is still at progress 0 — count turns since arrival. If we
@@ -6657,6 +6822,20 @@ func _trigger_loss(reason: String) -> void:
 			"inertia_max":                 stinger_key = "milestone:magician_finale:inertia_fallback"
 		if stinger_key != "":
 			SaveSystem.mark_unlocked(stinger_key)
+	if _arcana_id == "priestess" and finale_id != "":
+		# Priestess finale-id → milestone:priestess_finale:<key>. The
+		# music catalog slots can adopt these keys when the priestess
+		# finale stingers are added in a future music-slot pass.
+		var p_key: String = ""
+		match finale_id:
+			"the_reel_ran_out":              p_key = "milestone:priestess_finale:reel_ran_out"
+			"the_listener_breaks":           p_key = "milestone:priestess_finale:listener_breaks"
+			"the_session_ends_empty":        p_key = "milestone:priestess_finale:session_empty"
+			"they_walked_out_mid_sentence":  p_key = "milestone:priestess_finale:walked_out"
+			"the_cicadas_stopped":           p_key = "milestone:priestess_finale:cicadas_stopped"
+			"session_over_unfinished":       p_key = "milestone:priestess_finale:shift_ends"
+		if p_key != "":
+			SaveSystem.mark_unlocked(p_key)
 	GauntletState.record_loss(_arcana_id, _location_id, finale_id, _lore_tokens_collected)
 	var cg_path: String = _loss_cg_path(finale_id)
 	_show_end_screen(false, "REVERSED · " + finale_title, finale_flavor, cg_path)
