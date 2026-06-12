@@ -198,6 +198,7 @@
     <span class="status" id="status">idle.</span>
   </footer>
 
+<script src="gamepad_input.js"></script>
 <script>
 "use strict";
 
@@ -507,6 +508,51 @@ renderBtn.addEventListener('click', async () => {
   URL.revokeObjectURL(url);
   renderBtn.disabled = false;
   statusEl.textContent = 'rendered ' + activePreset + '.wav (' + dur + 's @ 44.1 kHz stereo).';
+});
+
+// ── Riffmaster / gamepad input ───────────────────────────────────
+// Frets toggle the 5 layers (4 tonal voices + noise floor).
+// Strum up/down cycles presets. Whammy bar drives master volume.
+const PRESET_ORDER = Object.keys(PRESETS);
+const gp = new GamepadInput();
+gp.start();
+mountGamepadOverlay(gp);
+window.addEventListener('gamepadinput-button', e => {
+  if (!e.detail.pressed) return;
+  const m = gp.mapping;
+  const fretIdx = m.frets.indexOf(e.detail.idx);
+  if (fretIdx >= 0) {
+    if (fretIdx < 4) {
+      current.voices[fretIdx].enabled = !current.voices[fretIdx].enabled;
+    } else {
+      current.noise.enabled = !current.noise.enabled;
+    }
+    rebuildUI();
+    if (live) { stopLive(); startLive(); }
+    return;
+  }
+  if (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown) {
+    const cur = PRESET_ORDER.indexOf(activePreset);
+    const next = e.detail.idx === m.strumDown
+      ? (cur + 1) % PRESET_ORDER.length
+      : (cur - 1 + PRESET_ORDER.length) % PRESET_ORDER.length;
+    document.querySelectorAll('.preset-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.preset === PRESET_ORDER[next]);
+    });
+    activePreset = PRESET_ORDER[next];
+    current = structuredClone(PRESETS[activePreset]);
+    rebuildUI();
+    if (live) { stopLive(); startLive(); }
+  }
+});
+window.addEventListener('gamepadinput-axis', e => {
+  if (e.detail.idx === gp.mapping.whammy) {
+    const v = Math.abs(e.detail.value);
+    const pct = Math.min(100, Math.max(20, 20 + Math.floor(v * 80)));
+    masterEl.value = pct;
+    masterVal.textContent = pct;
+    if (liveAc) liveAc._master.gain.value = pct / 100;
+  }
 });
 
 // ── WAV encoder (16-bit PCM, stereo) ─────────────────────────────

@@ -353,6 +353,7 @@
 
   <div class="drop-hint" id="drop-hint">DROP PNG ON A CARD TO SWAP</div>
 
+<script src="gamepad_input.js"></script>
 <script>
 "use strict";
 
@@ -930,6 +931,56 @@ window.addEventListener('drop', e => {
 
 // suspend AudioContext until first user gesture
 document.body.addEventListener('click', () => { initAudio(); if (ac && ac.state==='suspended') ac.resume(); }, {once:true});
+
+// ── Riffmaster / gamepad input ────────────────────────────────────
+// Frets (buttons 0-4) trigger the first 5 cards of the active bank.
+// Solo frets (5-9) trigger cards 5-9. Strum up/down cycle banks.
+// Whammy (axis 3) modulates the master volume so the player can
+// "lean into" louder dynamics by holding the bar back.
+const gp = new GamepadInput();
+gp.start();
+mountGamepadOverlay(gp);
+const BANK_ORDER = ['diner', 'cathedral', 'riverboat', 'pastoral'];
+window.addEventListener('gamepadinput-connected', () => {
+  initAudio();
+  if (ac && ac.state === 'suspended') ac.resume();
+});
+window.addEventListener('gamepadinput-button', e => {
+  if (!e.detail.pressed) return;
+  initAudio();
+  if (ac && ac.state === 'suspended') ac.resume();
+  const m = gp.mapping;
+  // Frets → cards 0-4
+  const fretIdx = m.frets.indexOf(e.detail.idx);
+  if (fretIdx >= 0 && fretIdx < activeArcana().length) {
+    playCard(fretIdx);
+    return;
+  }
+  // Solo frets → cards 5-9
+  const soloIdx = m.soloFrets.indexOf(e.detail.idx);
+  if (soloIdx >= 0 && (soloIdx + 5) < activeArcana().length) {
+    playCard(soloIdx + 5);
+    return;
+  }
+  // Strum → cycle banks
+  if (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown) {
+    const cur = BANK_ORDER.indexOf(activeBank);
+    const next = e.detail.idx === m.strumDown
+      ? (cur + 1) % BANK_ORDER.length
+      : (cur - 1 + BANK_ORDER.length) % BANK_ORDER.length;
+    switchBank(BANK_ORDER[next]);
+  }
+});
+window.addEventListener('gamepadinput-axis', e => {
+  if (e.detail.idx === gp.mapping.whammy) {
+    // Whammy → master volume. Maps -1..+1 (rest near 0) to 30..100
+    // so the gain is always audible but leans hot when bar held.
+    const v = Math.abs(e.detail.value);
+    const pct = Math.min(100, Math.max(30, 30 + Math.floor(v * 70)));
+    document.getElementById('vol').value = pct;
+    if (masterGain) masterGain.gain.value = pct / 100;
+  }
+});
 </script>
 </body>
 </html>
