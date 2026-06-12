@@ -57,6 +57,11 @@
   .tab .count { font-size: 11px; color: var(--text-dim); margin-left: 4px; }
   .tab.active .count { color: var(--accent); }
   .tab-content { flex: 1; padding: 14px 16px; overflow-y: auto; background: var(--bg); }
+  .arcana-pill { background: var(--bg); border: 1px solid var(--border); color: var(--text-dim);
+    border-radius: 14px; padding: 4px 12px; font-size: 11px; cursor: pointer; }
+  .arcana-pill:hover { color: var(--text); }
+  .arcana-pill.active { background: var(--accent); color: var(--bg); border-color: var(--accent);
+    font-weight: 600; }
 
   .help-banner { background: var(--panel); border: 1px solid var(--border); border-radius: 5px;
     padding: 12px 14px; margin-bottom: 12px; font-size: 12px; color: var(--text); }
@@ -136,6 +141,13 @@
   </aside>
 
   <section class="content">
+    <div id="arcanaStrip" style="display:flex;gap:6px;padding:10px 16px 0;background:var(--panel);border-bottom:1px solid var(--border);flex-wrap:wrap;align-items:center;">
+      <span style="font-size:10px;color:var(--text-dim);letter-spacing:0.06em;text-transform:uppercase;margin-right:6px;">Arcana</span>
+      <button class="arcana-pill active" data-arcana="">All</button>
+      <button class="arcana-pill" data-arcana="fool">0 · Fool</button>
+      <button class="arcana-pill" data-arcana="magician">I · Magician</button>
+      <button class="arcana-pill" data-arcana="framework">Shared (framework / project)</button>
+    </div>
     <div class="tabs">
       <button class="tab active" data-tab="arcana">Arcana cards <span class="count" id="cntArcana">0</span></button>
       <button class="tab" data-tab="visitors">Visitors <span class="count" id="cntVisitors">0</span></button>
@@ -735,14 +747,216 @@ const SLOTS = [
     flavor: 'Accordion-led, late-1980s Lake-Charles wedding-band B-side, 90-120 sec. A brass-mic recording, slightly hot in the upper-mids. Walking bass, a single soft snare brush. Warm major key but not cheerful — a band who has played this song too many times. NO modern production.',
     target: 'assets/audio/bgm/vol5_noon_room_room.ogg' },
   { tab: 'bgm', cat: 'dambrosios', label: 'Jukebox · WHERE THE BAR USED TO BE (dinner)',
+    arcana: 'fool',
     flavor: 'Solo after-hours piano, 1970s recording, 90-120 sec. The room of the recording IS the diner — distant clatter of dishes at the very edge. Minor key, slow. The piano slightly out of tune. Final track of a closed night.',
     target: 'assets/audio/bgm/vol5_where_the_bar_used_to_be.ogg' },
+
+  // ═══════════════════════════════════════════════════════════════
+  // I · THE MAGICIAN — Frasier Temple's Cathedral of Rust and Code
+  // ═══════════════════════════════════════════════════════════════
+
+  // ── Magician arcana card (the codex face) ─────────────────────────
+  { tab: 'arcana', cat: 'magician', arcana: 'magician',
+    label: 'Magician (canonical card)',
+    flavor: "Frasier Temple at the kitchen-workbench in his converted river-side warehouse. The cathedral is laid out behind him as miniatures of every major arcana built into the floor — pieces lit warm in the inner cluster, half-built models on sawhorses in the outer test area. The steamboat is in mid-construction on the bench in front of him, painted red, the size of a forearm. He is reaching for it but hasn't picked it up yet. Above his head, RUST_CODE.BBS glows phosphor green on a CRT mounted to a beam. The composition has the structure of a tarot card face — central figure, iconographic background — but NO printed card border, NO title bar, NO numeral.",
+    target: 'assets/gallery/magician.png' },
+  { tab: 'arcana', cat: 'magician', arcana: 'magician',
+    label: 'Magician — reversed (alt skin)',
+    flavor: "The same composition as the canonical Magician, but reversed: every model in the inner cluster has unfinished itself overnight. Wires unhooked. Drafts burned at the edges. The steamboat is fully assembled and painted but sitting on a different table from the workbench — finished alone, in the wrong room. Frasier is not in frame. The Demon's empty bar stool is now occupied; the figure on it has Frasier's silhouette.",
+    target: 'assets/gallery/magician_reversed.png' },
+
+  // ── Magician visitor portraits ─────────────────────────────────────
+  // Elicia / John / Nicola / Mackenzie / the_demon are shared with the
+  // Fool's portraits — they reuse existing face files. Two NEW visitor
+  // faces for the Magician's easy roster:
+  { tab: 'visitors', cat: 'magician', arcana: 'magician',
+    label: 'The Drifter at the Bay',
+    flavor: "Indeterminate-age man in a wet army-surplus jacket, river mud on the boots. Stands in the threshold of the open bay door but doesn't step inside. The light hits his face from inside the warehouse (warm) while the river-night is behind him (cold blue). His eyes ask for water before his mouth does. Not threatening. Not comfortable.",
+    target: 'assets/gallery/the_drifter_face.png' },
+  { tab: 'visitors', cat: 'magician', arcana: 'magician',
+    label: 'The Bird-Watcher',
+    flavor: "Late-fifties woman in a faded blue windbreaker, binoculars around her neck, two thin braids of grey-blonde hair. Caught through the river window from the inside — her hand on the glass, mouthing sorry-i'm-sorry, gesturing UP toward the iron struts above the river bank where the osprey nest is. Apologetic, jovial. Painted with the river light behind her.",
+    target: 'assets/gallery/the_birdwatcher_face.png' },
+
+  // ── Magician base action card art (the maker verbs) ───────────────
+  ...[
+    { id: 'draft', flavor:
+      "Frasier's hand at the workbench, fountain-pen-on-index-card mid-stroke. Three lines down, halfway through the fourth. The card is propped against a small painted model of a person nobody else has met. Warm desk lamp from one side." },
+    { id: 'burn', flavor:
+      "A single index card held between thumb and forefinger, corner catching match-flame, the writing on it already darkening. His other hand cupping the air around it. The next gravity card in the world dissolves with it." },
+    { id: 'record', flavor:
+      "A handheld cassette recorder on the workbench, red record-light on. Microphone propped against a coffee can. The reels are turning. Frasier's hand at the edge of frame just setting the recorder down." },
+    { id: 'tune', flavor:
+      "Phosphor-green CRT close-up. RUST_CODE.BBS in faint header text. The screen is showing a peek of what the room is going to say next — three rows of text materializing through the scanlines. Frasier's eyes reflected dimly in the glass." },
+    { id: 'build', flavor:
+      "Two hands on the workbench, one holding a piece of brass mechanism, the other a screwdriver. He's installing the latch on a small door cut into the floor that wasn't there yesterday. One of the sealed arcanas is about to open." },
+    { id: 'show', flavor:
+      "Frasier lifting a black drop-cloth off a finished piece. A visitor's silhouette to the right of frame, just stepping closer. The piece beneath the cloth is dimly visible — a model that looks like the visitor's own face caught at a moment they wouldn't have chosen." },
+    { id: 'collage', flavor:
+      "Three small finds on the workbench — a torn page, a brass washer, a pressed leaf — converging toward the center under Frasier's hands. They're becoming the same piece. The center of the composition is the moment they join." },
+    { id: 'transmit', flavor:
+      "Frasier at the BBS keyboard, typing into a small chat window. The text he's sending is half-visible (paint-strokes, not legible English). The CRT's reflection bounces twice in the room behind him, like the message is going further than the network's official next hop." },
+  ].map(o => ({
+    tab: 'cards', cat: 'magician', arcana: 'magician',
+    label: 'Magician — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/magician_' + o.id + '.png'
+  })),
+
+  // ── Demon card art ─────────────────────────────────────────────────
+  // Each demon = a small program with a NAME + a DOMAIN. The art is
+  // the demon's "icon" — half-program-window, half-creature, painted
+  // in the same gouache style. Set the icon against the demon's
+  // domain space's wall / counter / object. Not literal demons —
+  // these are programs Frasier has bound to do work.
+  ...[
+    { id: 'vagrant', flavor:
+      "A small dog-like figure rendered as the open mouth of a CRT terminal — wireframe muzzle, glass-eyes, antenna ears. Domain backdrop: the warehouse bay's rolled-up steel door, gravel road outside. He shows you what's coming up the road." },
+    { id: 'cicada', flavor:
+      "A cicada-shape made of magnetic tape and a small open-reel mechanism, wings unfolded as cassette spools. Domain backdrop: the PRIESTESS station's tape archive shelf. She records what you do while you do other things." },
+    { id: 'moth', flavor:
+      "A moth-figure that is mostly the silhouette of a vacuum tube glowing dimly amber. Wings dusted with phosphor. Domain backdrop: Sharp's basement-club model (TOWER), tiny neon glowing. She is pulled to the brightest piece." },
+    { id: 'steamboat', flavor:
+      "A small mechanical figure made of brass paddle-wheels and a riverboat smokestack, smoke unfurling into the studio air. Domain backdrop: the kitchen-workbench at MAGICIAN, the half-built steamboat behind him. He will finish the model for you. He will not stop at one beat." },
+    { id: 'weir', flavor:
+      "A figure made of woven water — river-shape held in the form of a small woman holding a sluice-gate handle. Domain backdrop: the river window, the river outside. She locks the river behind you so the door doesn't close." },
+    { id: 'filly', flavor:
+      "A small horse-figure rendered as the chassis of a child's pull-toy, brass-spoked wheels, suburban-cul-de-sac terrain under her hooves. Domain backdrop: the HARMONY CREEK WIP model's cul-de-sac. She runs the loop." },
+    { id: 'starling', flavor:
+      "A figure of three black-paper birds in a triangle around a small telephone receiver, the cord coiled into a circle on the workbench. Domain backdrop: the MONTREAL WIP, pewter Saint-Laurent visible. She places the call to the city you've never been to." },
+    { id: 'husk', flavor:
+      "A figure with no face — an oval void shape inside a frame of paper, with five small candles around it. Domain backdrop: the HERMIT BBS terminal corner. He eats a draft. He shows you five of the room's next moves." },
+  ].map(o => ({
+    tab: 'cards', cat: 'magician_demon', arcana: 'magician',
+    label: 'Demon · ' + o.id.replace(/_/g, ' ').toUpperCase(),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/magician_demon_' + o.id + '.png'
+  })),
+
+  // ── Cathedral gravity-card art ─────────────────────────────────────
+  ...[
+    { id: 'the_still_is_dripping', flavor:
+      "Tight on the copper still at TEMPERANCE, a single bead of distilled liquid catching warm light as it falls. Below it, an index card on the workbench is already starting to bleed ink in a circle. No figure. Painted." },
+    { id: 'the_bbs_hums_louder', flavor:
+      "Tight on the phosphor-green CRT at HERMIT. The screen is brighter than the rest of the room. A blinking cursor in the chat window. No human face — but a feeling that someone is sitting on the other side of the line, waiting." },
+    { id: 'dust_in_the_workbench', flavor:
+      "Macro shot of the workbench joint at MAGICIAN. A film of fine dust over the brass armature of the steamboat's paddle housing. Warm rim light catches the dust. No motion. The dust IS the painting." },
+    { id: 'power_flicker', flavor:
+      "Cathedral interior wide shot mid-flicker — the warm lights have stuttered down a half-step, the LEDs at STAR rig dimmed. A single soft spot of brightness held over the workbench. No figure. The room caught between brightness states." },
+    { id: 'the_demon_at_the_stool', flavor:
+      "The empty bar stool at DEVIL station, but the indent on the seat is wrong — pressed down as if just-occupied. The air above the stool is faintly warped. A glass of amber liquid sits on the floor beside it that wasn't there a minute ago. No visible figure." },
+    { id: 'someone_bought_the_file', flavor:
+      "Close on the BBS terminal screen: a small file-listing window where one entry has the [SOLD] tag next to its filename (rendered as paint-strokes, not legible text). The cursor is moved on, indifferent. The demon you wanted isn't yours anymore." },
+    { id: 'the_diner_model_flickers', flavor:
+      "The 1:48 D'Ambrosio's model at FOOL station. A tiny waiter-figurine is in a position you don't remember placing — one booth over, between two booths. The other figurines haven't moved. Warm bench light from above. Painted." },
+    { id: 'the_steamboat_reflects_wrong', flavor:
+      "The kitchen-workbench at MAGICIAN, the half-built steamboat on it. But on the pewter-water of the diner model NEXT to it, the steamboat appears finished, fully painted, reflected in the wrong room. The two states are in the same painting." },
+    { id: 'elicia_left_a_tape', flavor:
+      "Top of the cassette pile at PRIESTESS. A new tape sits on top, label-side up, no writing on the label. The cassette beside it is older, well-handled. The light is dimmer here than the workbench." },
+    { id: 'nicola_wrote_again', flavor:
+      "Top of the EMPRESS letter wall. A new cream envelope pinned at the upper-left corner, the same handwriting as forty other letters already pinned. The new one is barely yellowed yet." },
+    { id: 'sharps_club_glows', flavor:
+      "The TOWER WIP model — Sharp's basement-club miniature on sawhorses. A small neon sign painted on the model is now glowing for real, lit from inside the model. The light spills out onto the cathedral floor. Painted with the WIP's half-finished-ness visible." },
+    { id: 'a_draft_burned_itself', flavor:
+      "Close on the workbench, an index card with its corner curled and ash-blackened, never touched by a match. The pen Frasier left on the desk is still warm. The ink on the page is half-illegible. No figure." },
+    { id: 'the_wires_unhooked', flavor:
+      "A finished arcana installation gone dark — the lights inside it off, a small wire dangling from the back. The piece is still there, still finished. It is no longer alive. Wide shot, the inner cluster, one piece dark." },
+    { id: 'the_steamboat_is_listening', flavor:
+      "Close-up of the half-built steamboat on the workbench. The smokestack is tilted slightly toward the painter, as if leaning to hear. The brass joinery catches warm light. A coffee can full of brushes beside it for scale." },
+    { id: 'the_sinkhole', flavor:
+      "Looking out the river window at RIVER WINDOW threshold. The river bank outside has caved in — a rough circle of mud-and-water where dirt used to be. The river itself is still there, just deeper. Whatever was on the bank is no longer." },
+  ].map(o => ({
+    tab: 'gravity', cat: 'magician_gravity', arcana: 'magician',
+    label: 'Gravity — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/magician_gravity_' + o.id + '.png'
+  })),
+
+  // ── Cathedral location · top-down board + reversed state ───────────
+  { tab: 'bg', cat: 'cathedral', arcana: 'magician',
+    label: "Cathedral Gauntlet board (movement map)",
+    flavor: [
+      "Top-down/3-quarter view of Frasier's warehouse-cathedral, painted as a stylized BOARD-GAME MAP. Twenty-two major-arcana stations laid into the floor as miniatures and installations + three thresholds. Treat the INNER CLUSTER as warm-lit, finished pieces (FOOL diner model / MAGICIAN workbench with the half-built steamboat / PRIESTESS cassette archive / EMPRESS letter wall / EMPEROR's chair / HIEROPHANT altar / HERMIT BBS terminal / DEVIL empty bar stool / plus CHARIOT, STRENGTH, JUSTICE, DEATH, TEMPERANCE, STAR, MOON, SUN, WORLD). Treat the OUTER CLUSTER as the TEST AREA — half-built models on sawhorses: LOVERS (Briar Falls / pre-Smolvud), WHEEL (Harmony Creek Estates), HANGED MAN (Montreal), TOWER (Sharp's basement club), JUDGEMENT (empty platform).",
+      "Three thresholds: WAREHOUSE BAY (top, sliding steel door), RIVER WINDOW (left, tall paned window onto the river), ROOF HATCH (right, hidden until late — render as a thin door silhouette).",
+      "Color: warm sodium-vapor amber for the inner cluster, colder phosphor green for HERMIT, cool blue for the river-window side. The TEST AREA models in raw-wood-and-foam-core neutrals.",
+      "Small painted station labels are allowed and required (match the engine: MAGICIAN, FOOL, PRIESTESS, etc.). NO meeples, NO figures — engine renders those on top. 1600×1000."
+    ].join("\n\n"),
+    target: 'assets/gallery/locations/cathedral_gauntlet_board.png' },
+  { tab: 'bg', cat: 'cathedral', arcana: 'magician',
+    label: "Cathedral — reversed / collapsed state",
+    flavor: "Same board layout as the canonical version, but every inner-cluster piece has gone dark, every outer WIP has collapsed in on itself, the steamboat is finished and sailing through a sinkhole that has opened where the river bank used to be. The cathedral's lights are all on the floor, no longer in their mounts. Same station labels (engine compatibility). NO figures.",
+    target: 'assets/gallery/locations/cathedral_reversed_state.png' },
+
+  // ── Cathedral 1st-person views (inner cluster + thresholds first) ──
+  ...[
+    { id: 'magician', flavor:
+      "1st-person at the kitchen-workbench. Foreground: workbench surface, half-built steamboat at center, an open notebook beside it, a coffee can full of brushes. Mid-ground: the DINER MODEL on the next bench to the right, lit warm. Background: phosphor green of the HERMIT BBS terminal across the room. Apron at bottom edge of frame (his apron tied for the work) implied not centered." },
+    { id: 'fool', flavor:
+      "1st-person standing over the 1:48 D'Ambrosio's model. Foreground: the diner's tiny formica counter, three figurines (John / a customer / Faith the dog) placed precisely. Mid-ground: the booth seats painted red, miniature pickup window. The model glows warm from beneath." },
+    { id: 'priestess', flavor:
+      "1st-person at Elicia's tape archive. Foreground: a shelf-edge full of TDK and Maxell cassettes. Mid-ground: a reel-to-reel deck on the next shelf down. Cool desk-lamp light from the upper right. A pencil is tucked between two cases." },
+    { id: 'empress', flavor:
+      "1st-person at Nicola's letter wall. Foreground: a corkboard with dozens of cream envelopes pinned in irregular rows, handwriting visible (as paint-strokes, not legible) on a few. One thumbtack with brass. Warm overhead light." },
+    { id: 'hermit', flavor:
+      "1st-person at the BBS terminal corner. Foreground: keyboard at counter-edge, your forearm implied at the bottom (sleeve-cuff). Mid-ground: phosphor-green CRT screen showing the RUST_CODE.BBS chat window with a blinking cursor. Background: the warehouse darker beyond, the inner cluster's warmth in the rim." },
+    { id: 'devil', flavor:
+      "1st-person at the empty bar stool. Foreground: the stool itself, brass-rail base, no glass on the floor next to it (yet). Mid-ground: a fragment of cracked mirror leaning against the wall behind. The light here is colder than the inner cluster — phosphor-green seeping in from HERMIT." },
+    { id: 'river_window', flavor:
+      "1st-person at the river-window threshold. Foreground: the wide window sill, a coffee mug on it. Mid-ground: the tall paned window framing the river-night outside. Background: the river itself, slow brown current, the iron struts above where the osprey nest is. Cold blue. The bird-watcher's chair is empty in the lower-right corner of frame." },
+    { id: 'warehouse_bay', flavor:
+      "1st-person at the sliding bay door, looking out into the gravel approach. The door is half-open. Foreground: the steel track of the bay door at chest height. Mid-ground: gravel road, the river bank beyond. Background: the river-side iron struts visible in the distance, the cool-blue evening." },
+  ].map(o => ({
+    tab: 'bg', cat: 'cathedral_fp', arcana: 'magician',
+    label: "1st-person — " + o.id.replace(/_/g, ' ').toUpperCase(),
+    flavor: o.flavor + "\n\nFRAMING: 1st-person POV, ~1280×720 landscape. NO figures (visitors render as meeples on top), NO text overlay, NO UI chrome. Bottom 80px must stay visually quiet — engine renders the navigation bar there.",
+    target: 'assets/gallery/locations/cathedral_fp_' + o.id + '.png'
+  })),
+
+  // ── Magician finale CGs ────────────────────────────────────────────
+  { tab: 'cg', cat: 'magician', arcana: 'magician',
+    label: 'Finale — THE STEAMBOAT FINISHED (cross-arcana sinkhole)',
+    flavor: "Wide shot of the cathedral. The steamboat is fully finished on the workbench, painted red, the paddle wheel turning once though no one is touching it. Behind Frasier, through the river window, the river bank has caved into a rough circle of mud-and-water — the SINKHOLE. The cathedral's lights have all dimmed. A figure that may or may not be the Devil stands at the cathedral's far wall, smiling. Frasier doesn't notice. He's looking at the steamboat with a kind of awful pride.",
+    target: 'assets/cg/magician_finale_steamboat_finished.png' },
+  { tab: 'cg', cat: 'magician', arcana: 'magician',
+    label: 'Finale — STAGNATION MAXED (the maker forgets)',
+    flavor: "Frasier asleep on the workbench, head on his folded forearm, the workbench around him littered with half-drafts and unbuilt models. The lights have all gone to dim. The reels of a cassette deck have run out and the leader-tape spools quietly. The steamboat sits unfinished beside him. The cathedral has stopped expecting him.",
+    target: 'assets/cg/magician_finale_stagnation.png' },
+  { tab: 'cg', cat: 'magician', arcana: 'magician',
+    label: 'Finale — DOUBT MAXED (the maker breaks)',
+    flavor: "Frasier at the workbench, his hands flat on either side of the steamboat, knuckles white. The composition is unsettlingly symmetric. The drafts around him have been re-arranged into a pattern he didn't make. The lights are at full. He is not crying. He is making sure the steamboat is exactly the way he left it before he goes to sleep, which is forever.",
+    target: 'assets/cg/magician_finale_doubt.png' },
+  { tab: 'cg', cat: 'magician', arcana: 'magician',
+    label: 'Finale — THE DRAFT, won (a quiet evening kept)',
+    flavor: "Frasier at the river window, sitting on a folding chair beside the bird-watcher's empty one. The window is open a crack. The cathedral behind him is dim — pieces finished, lights down low, evening settled. The steamboat on the workbench is exactly where he left it, unfinished, and that is correct.",
+    target: 'assets/cg/magician_finale_draft_won.png' },
 ];
 
 let assetIndex = {};
 let queue = {};
 let activeTab = 'arcana';
 let activeScope = '';
+let activeArcana = '';
+
+// Derive the arcana grouping of a slot from its `arcana` field if
+// declared, else from its `cat` value. Used by the top-bar arcana
+// pill filter so the studio reads as arcana-first.
+function arcanaOf(slot) {
+  if (slot.arcana) return slot.arcana;
+  const c = String(slot.cat || '').toLowerCase();
+  if (c.startsWith('fool') || c.startsWith('dambrosios')) return 'fool';
+  if (c.startsWith('magician') || c.startsWith('cathedral')) return 'magician';
+  if (c === 'framework' || c === 'meeple' || c === 'gauntlet' || c === 'project') return 'framework';
+  return 'framework';
+}
+
+function slotMatchesArcana(slot) {
+  if (activeArcana === '') return true;
+  if (activeArcana === 'framework') return arcanaOf(slot) === 'framework';
+  const a = arcanaOf(slot);
+  // Showing fool/magician arcana also shows shared framework slots so the
+  // player sees universal verbs alongside arcana-specific ones.
+  return a === activeArcana || a === 'framework';
+}
 const $ = (id) => document.getElementById(id);
 const baseName = (p) => p.split('/').pop();
 
@@ -790,7 +1004,9 @@ function escapeHtml(s) {
 }
 
 function tabCount(tab) {
-  return SLOTS.filter(s => s.tab === tab && (activeScope === '' || s.cat === activeScope)).length;
+  return SLOTS.filter(s => s.tab === tab
+    && (activeScope === '' || s.cat === activeScope)
+    && slotMatchesArcana(s)).length;
 }
 
 function render() {
@@ -817,7 +1033,9 @@ function render() {
   help.innerHTML = `<b>How to use:</b> Each row is a target asset slot for the Tarot Gauntlet. Click the right-hand "REPLACE" cell (or drop a file onto it) to queue a replacement. When done, hit <b>Export drop-in zip</b>. Unzip into your <code>godot/</code> folder; Godot reimports on next launch. SFX accept .ogg / .wav; images accept .png / .jpg.`;
   wrap.appendChild(help);
 
-  const list = SLOTS.filter(s => s.tab === activeTab && (activeScope === '' || s.cat === activeScope));
+  const list = SLOTS.filter(s => s.tab === activeTab
+    && (activeScope === '' || s.cat === activeScope)
+    && slotMatchesArcana(s));
   if (list.length === 0) {
     const e = document.createElement('div');
     e.className = 'empty';
@@ -1188,6 +1406,18 @@ document.getElementById('geminiClear').addEventListener('click', () => {
   updateGeminiStatus();
 });
 updateGeminiStatus();
+
+// Wire the arcana pill row at the top of the content area.
+for (const pill of document.querySelectorAll('.arcana-pill')) {
+  pill.onclick = () => {
+    activeArcana = pill.dataset.arcana || '';
+    for (const p of document.querySelectorAll('.arcana-pill')) {
+      p.classList.toggle('active', p === pill);
+    }
+    rebuildScopeFilters();
+    render();
+  };
+}
 
 rebuildScopeFilters();
 render();
