@@ -1,6 +1,6 @@
 {
   "scope": "priestess",
-  "notes": "The Pomegranate Hour roster — cast & crew (past and present) + the subjects of the art. The arcana is hermetic: nobody from outside the show walks in. The places of other arcana appear because the show shot at them; the people of other arcana do not. Cast & crew use the standard four-step connection (greet → listen → deliver → sit_with). Subjects of the art use a parallel verb set (see → voice → cut → lock) — the same engine progression labeled differently. The four close collaborators (Hen, Marisol, Davey, Young Elicia) are the spine; the further ones (Reggie, Prof. Kang, the New Collaborator) come and go; the six subjects each correspond to one episode-space and are bound to it.",
+  "notes": "The Pomegranate Hour roster — cast & crew (past and present) + the subjects of the art. The arcana is LIMINAL, not hermetic: the rest of vol 5 doesn't walk in as themselves, but the show's dream-versions of them do. The places of other arcana appear because the show shot at them; the *in-show characters* of other arcana — the parts Elicia wrote of them, or the parts they actually played on camera — exist in the episode-spaces as dream-subjects. Cora drove the bus in Ep. 14's scheduled shoot. John gave them the keys to D'Ambrosio's for Ep. 11. The dream-versions are bound to their episode-spaces the same way the other subjects are. Cast & crew use the standard four-step connection (greet → listen → deliver → sit_with). Subjects of the art use the parallel verb set (see → voice → cut → lock). The four close collaborators are the spine; the further ones come and go; the eight subjects each correspond to an episode-space and are bound to it.",
   "visitors": [
     {
       "id": "hen",
@@ -240,10 +240,11 @@
       "id": "subj_two_chairs_a",
       "name": "Two-Chairs Woman A",
       "kind": "subject",
+      "dream_version_of": "sasha",
       "scenarios": ["long_quiet"],
       "arrival": { "kind": "in_episode", "pos": "two_chairs" },
       "lore_token": "conversation_began",
-      "lore_text": "She is in chair A. She has been in chair A for twenty years. She does not know what she was going to say. She does not need to. She has waited so long that the not-knowing has become the script.",
+      "lore_text": "She is in chair A. She has been in chair A for twenty years. She does not know what she was going to say. She does not need to. She has waited so long that the not-knowing has become the script. Hen wrote her originally from a story Marisol had told them about two women she knew briefly in '96 — a couple on the brink of either staying together or not. They didn't know which then; they don't know which now. Twenty years on, in vol 5, those two women are Sasha and Reed, and the chairs in the suite are a dream-version of an apartment two floors above John's diner. The Woman in Chair A is, in some way that doesn't quite resolve, Sasha.",
       "accent": "#a09080",
       "mood": "ready",
       "patience": 5,
@@ -257,13 +258,56 @@
       }
     },
     {
+      "id": "subj_bus_driver",
+      "name": "The Bus Driver (Ep. 14)",
+      "kind": "subject",
+      "dream_version_of": "cora",
+      "scenarios": ["long_quiet", "cicada_session"],
+      "arrival": { "kind": "in_episode", "pos": "late_bus" },
+      "lore_token": "bus_driver_dreamed",
+      "lore_text": "The bus driver in Ep. 14's script. Hen wrote her as a fictional character. Cora — the real Cora — was credited as 'transportation' on the call sheet that never got used, because she'd offered to drive the actual bus during the actual shoot. Tonight, in the dream-space, the driver and Cora are the same person and not the same person. She is the show's version of the woman who would have played the show's version of her. She is patient. She is in the seat. The seat already has her shape.",
+      "accent": "#9a8060",
+      "mood": "patient",
+      "patience": 8,
+      "verb_labels": { "greet": "see", "listen": "voice", "deliver": "cut", "sit_with": "lock" },
+      "bound_to_episode": "late_bus",
+      "steps": {
+        "greet":   "You see her in the driver's seat. The seat has the shape of a person who has been in it for a long time. She nods at you in the mirror.",
+        "voice":   "You read Hen's script aloud. The driver's lines. She mouths along. The lines are good. The lines are what Cora would say if Cora said more than Cora says, which is exactly the calibration the script was reaching for.",
+        "cut":     "You make a temp animatic of the scene using the photographs from the '98 scout — the night you and Hen drove the route at 2 AM and decided which mile-markers were the ones. The animatic is rough but the bus is in it.",
+        "lock":    "You sit at the console with the scene running. You do not call Cora tonight. You write the call sheet for the reshoot. The call sheet says: CORA · TRANSPORTATION · WED. You put it on the wall."
+      }
+    },
+    {
+      "id": "subj_diner_cook",
+      "name": "The Diner Cook (Ep. 11)",
+      "kind": "subject",
+      "dream_version_of": "john_frank",
+      "scenarios": ["tape_witness", "cicada_session"],
+      "arrival": { "kind": "in_episode", "pos": "diner_booth" },
+      "lore_token": "cook_dreamed",
+      "lore_text": "The cook in Ep. 11's diner scene. Briefly visible behind the pass in the dailies — backlit, working a grill, never in focus. The cook was played by the actual D'Ambrosio's cook who was working the four-to-ten AM shift the night they shot, which is to say: the cook was John, twelve years younger, before he became John-the-fool of vol 1. In the dream-space he is and is not the same person. He is the dream-version of the man who was the man who would become the man.",
+      "accent": "#c87633",
+      "mood": "preoccupied",
+      "patience": 7,
+      "verb_labels": { "greet": "see", "listen": "voice", "deliver": "cut", "sit_with": "lock" },
+      "bound_to_episode": "diner_booth",
+      "steps": {
+        "greet":   "You see him behind the pass, backlit, hands on a spatula and a ticket. He is the cook. He has the precise posture of a cook who has been on for five hours.",
+        "voice":   "You isolate his three lines in the dailies — the only lines he has, mostly background. You can hear them, just, under the grease trap. They are the kind of lines a cook says when he is not really the subject of the scene.",
+        "cut":     "You cut to a tighter shot of his hands. The hands work the grill the way hands work a grill that has been worked for twenty years. The cut makes the diner the diner.",
+        "lock":    "You don't lock the episode. You add a label to the dailies bin: COOK = JOHN, '97. You send the dailies to Reggie in the morning with a note that says: don't filter the cook's lines, keep them under everything. Reggie will keep them under everything."
+      }
+    },
+    {
       "id": "subj_two_chairs_b",
       "name": "Two-Chairs Woman B",
       "kind": "subject",
+      "dream_version_of": "reed",
       "scenarios": ["long_quiet"],
       "arrival": { "kind": "in_episode", "pos": "two_chairs" },
       "lore_token": "conversation_answered",
-      "lore_text": "She is in chair B. She has been in chair B for twenty years. She also does not know what she was going to say. The two women have never spoken in twenty years and the not-speaking is no longer awkward. They are the conversation. They are also two people in two chairs.",
+      "lore_text": "She is in chair B. She has been in chair B for twenty years. She also does not know what she was going to say. The two women have never spoken in twenty years and the not-speaking is no longer awkward. They are the conversation. They are also two people in two chairs. In vol 5's resolving form, she is the dream-version of Reed — the part of Reed that has been waiting to say the thing that Reed has been waiting to say. The painting on the easel in Sasha's apartment two floors above John's diner is the dream-version of the painting on the easel in this episode's set, which has been two-thirds done for nineteen years.",
       "accent": "#908ca8",
       "mood": "ready",
       "patience": 5,
