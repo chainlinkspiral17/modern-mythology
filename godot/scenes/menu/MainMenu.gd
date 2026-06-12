@@ -155,6 +155,7 @@ func _build_ui() -> void:
 	for btn_data: Array in [
 		["GALLERY",      _on_gallery],
 		["MUSIC PLAYER", _on_music],
+		["ACHIEVEMENTS", _on_achievements],
 		["SETTINGS",     _on_settings],
 		["SCENE EDITOR", _on_editor],
 	]:
@@ -447,6 +448,124 @@ func _on_gallery() -> void:
 
 func _on_music() -> void:
 	_music_overlay.call("open")
+
+
+func _on_achievements() -> void:
+	# Build a fresh achievements panel each open — cheap and avoids
+	# stale-cache bugs after a run that just unlocked something.
+	var existing: Node = get_node_or_null("AchievementsPanel")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var panel := _build_achievements_panel()
+	panel.name = "AchievementsPanel"
+	add_child(panel)
+
+
+func _build_achievements_panel() -> Control:
+	const PATH := "res://resources/achievements.json"
+	var achievements: Array = []
+	if FileAccess.file_exists(PATH):
+		var f := FileAccess.open(PATH, FileAccess.READ)
+		if f != null:
+			var parsed = JSON.parse_string(f.get_as_text())
+			if parsed is Dictionary:
+				achievements = (parsed as Dictionary).get("achievements", [])
+
+	var root := Control.new()
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	root.mouse_filter = Control.MOUSE_FILTER_STOP
+
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.78)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	root.add_child(dim)
+
+	var card := Panel.new()
+	card.set_anchors_preset(Control.PRESET_CENTER)
+	card.offset_left = -360
+	card.offset_right = 360
+	card.offset_top = -300
+	card.offset_bottom = 300
+	var st := StyleBoxFlat.new()
+	st.bg_color = Color(0.024, 0.020, 0.014, 0.97)
+	st.border_color = Color(0.70, 0.55, 0.24, 0.45)
+	st.set_border_width_all(1)
+	card.add_theme_stylebox_override("panel", st)
+	root.add_child(card)
+
+	var vb := VBoxContainer.new()
+	vb.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	vb.offset_left = 24
+	vb.offset_right = -24
+	vb.offset_top = 18
+	vb.offset_bottom = -18
+	vb.add_theme_constant_override("separation", 8)
+	card.add_child(vb)
+
+	# Header
+	var hdr := HBoxContainer.new()
+	vb.add_child(hdr)
+	var ttl := Label.new()
+	var earned: int = 0
+	for a in achievements:
+		if SaveSystem.is_unlocked(String((a as Dictionary).get("unlock_key", ""))):
+			earned += 1
+	ttl.text = "ACHIEVEMENTS · %d / %d" % [earned, achievements.size()]
+	ttl.add_theme_font_size_override("font_size", 13)
+	ttl.add_theme_color_override("font_color", Color(0.92, 0.78, 0.40))
+	ttl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hdr.add_child(ttl)
+	var close_btn := Button.new()
+	close_btn.text = "✕"
+	close_btn.custom_minimum_size = Vector2(28, 28)
+	close_btn.pressed.connect(func() -> void: root.queue_free())
+	hdr.add_child(close_btn)
+
+	var rule := ColorRect.new()
+	rule.color = Color(0.70, 0.55, 0.24, 0.25)
+	rule.custom_minimum_size.y = 1
+	vb.add_child(rule)
+
+	# Scroll list
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	vb.add_child(scroll)
+	var list := VBoxContainer.new()
+	list.add_theme_constant_override("separation", 4)
+	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(list)
+
+	for a_v in achievements:
+		var a: Dictionary = a_v
+		var unlocked: bool = SaveSystem.is_unlocked(String(a.get("unlock_key", "")))
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 8)
+		list.add_child(row)
+		var dot := Label.new()
+		dot.text = "●" if unlocked else "○"
+		dot.add_theme_font_size_override("font_size", 14)
+		dot.add_theme_color_override("font_color",
+			Color(0.92, 0.78, 0.40) if unlocked else Color(0.45, 0.43, 0.36, 0.6))
+		dot.custom_minimum_size.x = 18
+		row.add_child(dot)
+		var meta := VBoxContainer.new()
+		meta.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(meta)
+		var name_lbl := Label.new()
+		name_lbl.text = String(a.get("title", a.get("id", "?")))
+		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.add_theme_color_override("font_color",
+			Color(0.83, 0.79, 0.69) if unlocked else Color(0.45, 0.43, 0.36, 0.85))
+		meta.add_child(name_lbl)
+		var desc_lbl := Label.new()
+		desc_lbl.text = String(a.get("desc", ""))
+		desc_lbl.add_theme_font_size_override("font_size", 10)
+		desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		desc_lbl.custom_minimum_size = Vector2(620, 0)
+		desc_lbl.add_theme_color_override("font_color",
+			Color(0.65, 0.62, 0.55) if unlocked else Color(0.40, 0.38, 0.33, 0.75))
+		meta.add_child(desc_lbl)
+	return root
 
 
 func _on_editor() -> void:

@@ -154,6 +154,12 @@ var _connections_made: Array = []
 var _cards_played_this_run: Dictionary = {}   # card_id → count
 var _claimed_visitors_count: int = 0
 var _last_finale_id: String = ""              # populated by _trigger_loss
+# Cross-arcana world state — populated at run start from
+# resources/world_state.json, filtered to states whose save_key is
+# unlocked. Active ambient_lines are merged into the run's pool;
+# active gravity_extras are appended to the deck before shuffle.
+var _world_state_ambient_lines: Array = []
+var _world_state_active_ids: Array = []        # for log + diagnostics
 var _lore_tokens_collected: Array = []
 var _twelve_years_used: bool = false
 var _call_faith_count: int = 0
@@ -736,6 +742,10 @@ func _init_run() -> void:
 	_cards_played_this_run.clear()
 	_claimed_visitors_count = 0
 	_last_finale_id = ""
+	# Load cross-arcana world state — sinkhole open, first_septenary
+	# completed, candles_lit, etc. Active states append ambient lines
+	# to the pool and gravity-extras to the deck.
+	_load_world_state()
 	# Steamboat threshold + WIP thresholds come from the location def.
 	var sb_def: Dictionary = _location.get("steamboat", {})
 	_steamboat_threshold = int(sb_def.get("completion_threshold", 6))
@@ -2706,15 +2716,20 @@ func _log_steamboat_beat_if_changed() -> void:
 # `ambient_pool`. The first run-time offset is randomised so the
 # cycle doesn't always land on the same turn numbers.
 func _log_ambient_beat_if_due() -> void:
-	var pool: Array = _setup.get("ambient_pool", [])
-	if pool.is_empty():
+	# Combined pool: base scenario ambient + cross-arcana world-state
+	# ambient (sinkhole etc.). Empty merged-pool short-circuits.
+	var base_pool: Array = _setup.get("ambient_pool", [])
+	var combined_pool: Array = base_pool.duplicate()
+	for w in _world_state_ambient_lines:
+		combined_pool.append(w)
+	if combined_pool.is_empty():
 		return
 	# Default every 3 turns; setup can override via ambient_every_n.
 	var n: int = int(_setup.get("ambient_every_n", 3))
 	if n < 1: n = 1
 	if ((_turn + _ambient_turn_offset) % n) != 0:
 		return
-	var line: String = String(pool[randi() % pool.size()])
+	var line: String = String(combined_pool[randi() % combined_pool.size()])
 	_log_line("[color=#7c8398][i]%s[/i][/color]" % line)
 
 
@@ -7098,6 +7113,51 @@ func _check_game_end() -> void:
 	if consumed >= 3:
 		_trigger_loss("visitors_claimed_3")
 		return
+
+
+# ── World-state loader ───────────────────────────────────────────
+# Reads res://resources/world_state.json on _init_run and filters to
+# states whose save_key is unlocked. Active states append ambient
+# lines into _world_state_ambient_lines (read by the ambient beat)
+# and append gravity_extras to _gravity_deck_def["cards"] BEFORE
+# the deck is shuffled.
+const _WORLD_STATE_PATH := "res://resources/world_state.json"
+func _load_world_state() -> void:
+	_world_state_ambient_lines.clear()
+	_world_state_active_ids.clear()
+	if not FileAccess.file_exists(_WORLD_STATE_PATH):
+		return
+	var f := FileAccess.open(_WORLD_STATE_PATH, FileAccess.READ)
+	if f == null:
+		return
+	var parsed = JSON.parse_string(f.get_as_text())
+	if not (parsed is Dictionary):
+		return
+	var states: Array = (parsed as Dictionary).get("states", [])
+	var extras_appended: int = 0
+	for s_v in states:
+		var s: Dictionary = s_v
+		var key: String = String(s.get("save_key", ""))
+		if key == "" or not SaveSystem.is_unlocked(key):
+			continue
+		_world_state_active_ids.append(String(s.get("id", "")))
+		# Ambient lines
+		for ln_v in s.get("ambient_lines", []):
+			_world_state_ambient_lines.append(String(ln_v))
+		# Gravity extras — append to the active deck's cards array.
+		# Each entry needs an id, title, flavor, effects — same shape
+		# as a normal gravity card. The card is treated as non-
+		# endgame (no `endgame` flag).
+		var gex: Array = s.get("gravity_extras", [])
+		if not gex.is_empty():
+			var current_cards: Array = _gravity_deck_def.get("cards", [])
+			for ge_v in gex:
+				current_cards.append(ge_v)
+				extras_appended += 1
+			_gravity_deck_def["cards"] = current_cards
+	if not _world_state_active_ids.is_empty():
+		print("[Gauntlet] world state active: %s (+%d gravity extras)" %
+			[", ".join(_world_state_active_ids), extras_appended])
 
 
 # ── Achievement evaluator ────────────────────────────────────────
