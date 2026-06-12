@@ -1,0 +1,128 @@
+{
+  "scope": "chariot",
+  "notes": "Passengers on Cora's midnight bus. Most board at the front door at a scheduled mile-marker, ride for a while, and disembark at the next stop or the shoulder. Some are regulars.",
+  "visitors": [
+    {
+      "id": "the_late_shift",
+      "name": "The Late-Shift Worker",
+      "scenarios": ["depot_to_depot", "late_run", "the_long_quiet_road"],
+      "arrival": { "kind": "on_board_at_start", "pos": "aisle_middle" },
+      "lore_token": "late_shift_got_home",
+      "lore_text": "Works the late shift at the warehouse on the bank. Boards every night at this stop. Gets off at the same stop. Cora has known their face for two years.",
+      "accent": "#a99070",
+      "mood": "preoccupied",
+      "patience": 8,
+      "steps": {
+        "greet":   "Nod when they board. They nod back.",
+        "listen":  "They tell you about a shift-supervisor change.",
+        "deliver": "You hand them their transfer ticket.",
+        "sit_with": "You stop briefly at their stop. They thank you. They get off."
+      }
+    },
+    {
+      "id": "the_first_passenger",
+      "name": "The First Passenger",
+      "scenarios": ["depot_to_depot", "late_run"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "front_door", "to": "aisle_front" },
+      "lore_token": "first_passenger_made_the_run",
+      "lore_text": "Boards at the first stop after the depot. Always pays exact change. Always sits up front so they can watch the road through the windshield.",
+      "accent": "#d8a060",
+      "mood": "talkative",
+      "patience": 7,
+      "steps": {
+        "greet":   "They board. They drop the exact fare.",
+        "listen":  "They ask you about the weather where you're going.",
+        "deliver": "You hand them a candy from the dish.",
+        "sit_with": "They stay near the front. You both look at the road for a while."
+      }
+    },
+    {
+      "id": "the_lost_traveler",
+      "name": "The Lost Traveler",
+      "scenarios": ["depot_to_depot", "the_long_quiet_road"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "aisle_middle" },
+      "lore_token": "lost_traveler_found_the_route",
+      "lore_text": "Someone who got on the wrong bus four stops ago and is trying to figure out where they should have gotten off. They have a paper schedule that's three years old.",
+      "accent": "#9b5fd3",
+      "mood": "preoccupied",
+      "patience": 5,
+      "steps": {
+        "greet":   "They look at the route map taped to the dash.",
+        "listen":  "They tell you where they were trying to go.",
+        "deliver": "You hand them the current paper schedule and circle the right stop.",
+        "sit_with": "You sit in the aisle with them for a minute. They thank you. They get off at the right stop."
+      }
+    },
+    {
+      "id": "the_kid_running_away",
+      "name": "The Kid Running Away",
+      "scenarios": ["the_long_quiet_road"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "back_row" },
+      "lore_token": "kid_went_home_anyway",
+      "lore_text": "Sixteen. Pays cash. Goes to the back row. Won't make eye contact. Has a backpack.",
+      "accent": "#ff5040",
+      "mood": "intense",
+      "patience": 4,
+      "steps": {
+        "greet":   "You watch them in the mirror. They don't look back.",
+        "listen":  "You don't ask. They tell you anyway, halfway through the trip.",
+        "deliver": "You hand them a granola bar from the dashboard stash.",
+        "sit_with": "You sit at the back row with them for a stop. They get off at the next stop, not the one they paid for. They are going home."
+      }
+    },
+    {
+      "id": "the_old_regular",
+      "name": "The Old Regular",
+      "scenarios": ["depot_to_depot", "late_run", "the_long_quiet_road"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "front_door", "to": "back_row" },
+      "lore_token": "old_regular_made_it_home",
+      "lore_text": "An older man who's been on this bus for thirty years. Knows Cora's name. Knows the bus.",
+      "accent": "#c87633",
+      "mood": "lonely",
+      "patience": 7,
+      "steps": {
+        "greet":   "He waves when he boards.",
+        "listen":  "He tells you about a thing his wife said this morning.",
+        "deliver": "You hand him the warm spot near the heater vent in row 8.",
+        "sit_with": "You park briefly at his stop. He squeezes your shoulder. He gets off."
+      }
+    },
+    {
+      "id": "the_late_couple",
+      "name": "The Late Couple",
+      "scenarios": ["late_run"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "aisle_middle" },
+      "lore_token": "late_couple_made_the_last_run",
+      "lore_text": "Two people who almost missed the last bus. They are quiet and grateful and tired.",
+      "accent": "#88b87a",
+      "mood": "talkative",
+      "patience": 7,
+      "shared_patience": true,
+      "steps": {
+        "greet":   "They board. They both say thank you.",
+        "listen":  "They tell you about the meeting they came from.",
+        "deliver": "You hand them two transfers.",
+        "sit_with": "You hold the bus at their stop a beat longer. They both thank you again."
+      }
+    },
+    {
+      "id": "cora_as_visitor",
+      "name": "Cora (off-shift)",
+      "as_hand_id": "cora",
+      "swap_target_for_hand": "cora_as_visitor",
+      "scenarios": ["depot_to_depot", "late_run", "the_long_quiet_road"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "front_door", "to": "aisle_back" },
+      "lore_token": "cora_came_aboard_off_shift",
+      "lore_text": "When the player is NOT Cora, she gets on at the late-shift change and rides to the depot. When the player IS Cora, this entry swaps out.",
+      "accent": "#d8a060",
+      "mood": "preoccupied",
+      "patience": 8,
+      "steps": {
+        "greet":   "She gets on at the depot driver-change. She knows you.",
+        "listen":  "She tells you about a passenger from last week.",
+        "deliver": "You hand her a coffee from the dashboard thermos.",
+        "sit_with": "You sit in the aisle middle together. She is steady."
+      }
+    }
+  ]
+}

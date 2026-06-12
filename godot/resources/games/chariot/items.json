@@ -1,0 +1,88 @@
+{
+  "scope": "chariot",
+  "notes": "Items on the bus — dropped objects, the dashboard stash, things from the underseat pile.",
+  "piles": {
+    "underseat_floor": {
+      "label": "UNDERSEAT FLOOR",
+      "at_pos": "underseat",
+      "items": ["dropped_glove", "small_notebook", "foreign_coin"]
+    },
+    "dashboard_stash": {
+      "label": "DASHBOARD STASH",
+      "at_pos": "dashboard",
+      "items": ["candy_dish_road", "granola_bar", "paper_schedule"]
+    },
+    "overhead_compartment": {
+      "label": "OVERHEAD COMPARTMENT",
+      "at_pos": "overhead",
+      "items": ["passenger_duffel", "dropped_scarf"]
+    },
+    "front_door_box": {
+      "label": "FARE BOX",
+      "at_pos": "front_door",
+      "items": ["transfer_ticket", "fare_change"]
+    }
+  },
+  "items": {
+    "dropped_glove": {
+      "title": "Dropped Glove",
+      "category": "delivery",
+      "flavor": "A single glove. Brown leather. Has been here for a week.",
+      "delivered_to_satisfies_order": true
+    },
+    "small_notebook": {
+      "title": "Small Notebook",
+      "category": "delivery",
+      "flavor": "A small spiral notebook with three pages of grocery lists.",
+      "delivered_to_satisfies_order": true
+    },
+    "foreign_coin": {
+      "title": "Foreign Coin",
+      "category": "found",
+      "flavor": "A coin from a country whose name you don't immediately recognize.",
+      "use_effect": { "kind": "gain_fuel", "amount": 1 }
+    },
+    "candy_dish_road": {
+      "title": "Road Candy",
+      "category": "delivery",
+      "flavor": "Hard candies in a dish on the dashboard. The good kind.",
+      "delivered_to_satisfies_order": true
+    },
+    "granola_bar": {
+      "title": "Granola Bar",
+      "category": "delivery",
+      "flavor": "A bar Cora keeps for the passengers who need one.",
+      "delivered_to_satisfies_order": true
+    },
+    "paper_schedule": {
+      "title": "Paper Schedule",
+      "category": "delivery",
+      "flavor": "The current paper schedule. For the lost passengers.",
+      "delivered_to_satisfies_order": true
+    },
+    "passenger_duffel": {
+      "title": "Passenger Duffel",
+      "category": "delivery",
+      "flavor": "A small duffel left in the overhead. Tag has a name.",
+      "delivered_to_satisfies_order": true
+    },
+    "dropped_scarf": {
+      "title": "Dropped Scarf",
+      "category": "delivery",
+      "flavor": "A wool scarf the color of evening.",
+      "delivered_to_satisfies_order": true
+    },
+    "transfer_ticket": {
+      "title": "Transfer Ticket",
+      "category": "delivery",
+      "flavor": "A pink transfer that lets a passenger ride the next bus.",
+      "delivered_to_satisfies_order": true
+    },
+    "fare_change": {
+      "title": "Fare Change",
+      "category": "delivery",
+      "flavor": "A handful of quarters from the fare box.",
+      "delivered_to_satisfies_order": true
+    }
+  }
+}

@@ -501,6 +501,27 @@ const MAGICIAN_SCENARIOS := [
 ]
 
 
+const CHARIOT_SCENARIOS := [
+	{
+		"id": "depot_to_depot",
+		"title": "DEPOT TO DEPOT",
+		"subtitle": "Easy · 11:14 PM · Tuesday Run",
+		"flavor": "Tuesday's run. The depot. Headlights on. Parking brake off. The late-shift worker is already boarded. The road is the road."
+	},
+	{
+		"id": "late_run",
+		"title": "LATE RUN",
+		"subtitle": "Medium · 1:18 AM · The Last Bus",
+		"flavor": "The last bus of the night. Cora has been on shift for nine hours. The late couple almost missed the bus. The first passenger is already aboard."
+	},
+	{
+		"id": "the_long_quiet_road",
+		"title": "THE LONG QUIET ROAD",
+		"subtitle": "Hard · 3:14 AM · The Empty Hour",
+		"flavor": "3:14 AM. The relief driver didn't show. The kid running away got on at the back row. The lost traveler is up front. The road is empty."
+	}
+]
+
 const LOVERS_SCENARIOS := [
 	{
 		"id": "the_last_boxes",
@@ -690,6 +711,10 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		arcana_title = "ENTER THE GAUNTLET · THE APARTMENT"
 		arcana_sub   = "Sasha & Reed · Pick a time"
 		scenarios    = LOVERS_SCENARIOS
+	elif arcana == "chariot" or arcana == "vii_chariot":
+		arcana_title = "ENTER THE GAUNTLET · THE MIDNIGHT BUS"
+		arcana_sub   = "Cora · Pick a run"
+		scenarios    = CHARIOT_SCENARIOS
 	var title := Label.new()
 	title.text = arcana_title
 	title.add_theme_font_size_override("font_size", 14)
@@ -810,7 +835,9 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		_add_play_button_overlay(vlv, "lovers", "apartment_above_diner", "sasha")
 		return
 	if short_path == "chariot_arcana":
-		_spawn_visualizer(CHARIOT_VISUALIZER_SCRIPT); return
+		var vch := _spawn_visualizer(CHARIOT_VISUALIZER_SCRIPT)
+		_add_play_button_overlay(vch, "chariot", "the_midnight_bus", "cora")
+		return
 	# Tarot Synth — type:"overlay" entry in the gallery index, opens
 	# the playable instrument as a fullscreen overlay
 	if kind == "overlay" or short_path == "TarotSynthOverlay":

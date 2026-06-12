@@ -1,0 +1,74 @@
+{
+  "id": "the_long_quiet_road",
+  "arcana": "vii_chariot",
+  "location": "the_midnight_bus",
+  "hand": "cora",
+  "title": "THE LONG QUIET ROAD",
+  "subtitle": "The Midnight Bus · 3:14 AM · The Empty Hour",
+  "difficulty": "hard",
+  "epigraph_upright": "3:14 AM. Cora's running an unscheduled deadhead because the relief driver didn't show up at the depot. The kid who's running away got on at the back row. The lost traveler is up front. The old regular is somewhere in the middle. The road is empty.",
+  "epigraph_reversed": "The kid stays a runaway. The lost traveler never finds the right stop. The bus arrives at the depot quiet and cold.",
+  "scene_description": "3:14 AM, deadhead run. Miles 2, fuel 3, doubt 2, stagnation 2. THE LONG HAUL ability card is in hand. The kid is in the back. The lost traveler is up front. The old regular is in the middle.",
+  "direction_hint": "Drive to 6 miles. 4 passengers connected, 3 hard moods. Leap at DESTINATION.",
+  "opening_log_lines": [
+    "3:14 AM. the relief driver didn't show. the route runs anyway.",
+    "the kid is in the back row, not looking at anyone.",
+    "the lost traveler is studying the route map taped to the dashboard."
+  ],
+  "starting_state": {
+    "player_pos": "driver_seat",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 2,
+    "stagnation_per_turn": 2,
+    "doubt": 2,
+    "doubt_max": 7,
+    "fuel": 3,
+    "starting_miles": 2,
+    "starting_hand": ["walk","focus","search","short_rest","drive","watch_mirror","announce","pull_over","the_long_haul"]
+  },
+  "visitors_present_at_start": ["the_kid_running_away","the_lost_traveler","the_old_regular"],
+  "visitor_schedule": [
+    { "visitor": "the_late_shift",  "arrival_turn": 2, "arrival_space": "front_door" },
+    { "visitor": "cora_as_visitor", "arrival_turn": 5, "arrival_space": "front_door" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 4,
+    "require_hard_mood_connections_min": 3,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_miles_at_least": 6,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 12, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "3 AM. the road holds, narrowly.",                  "tick_per_turn": 2, "effects": [] },
+    { "level": 6,  "label": "the heater can't keep up with the cold.",           "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "the fuel gauge is below the line.",                 "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "out of fuel.",                                      "tick_per_turn": 3, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "cora at the wheel, 3 AM, the kid in the mirror.",    "effects": [] },
+    { "level": 5, "label": "she questions the route.",                            "effects": [] },
+    { "level": 7, "label": "the driver drifted.",                                 "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "next_stop",   "label": "NEXT STOP",   "ending_lore_token": "leap_at_an_empty_bus_stop", "visible_from_start": true },
+    { "id": "shoulder",    "label": "SHOULDER",    "ending_lore_token": "leap_to_the_3am_shoulder",  "visible_from_start": true },
+    { "id": "destination", "label": "DESTINATION", "ending_lore_token": "leap_at_the_quiet_depot",   "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Hard-mode Chariot. 3 AM. The kid (intense), the lost traveler (preoccupied), the old regular (lonely), the late-shift worker (preoccupied). 4 connections + 3 hard moods.",
+  "ambient_pool": [
+    "3 AM hum from the bus engine.",
+    "the kid in the back row hasn't moved.",
+    "the headlights catch nothing but lane markers."
+  ],
+  "ambient_every_n": 3
+}

@@ -1,0 +1,111 @@
+{
+  "scope": "chariot",
+  "notes": "Cora's driver loop. DRIVE / WATCH MIRROR / ANNOUNCE / PULL OVER as starters. Miles is the positive doom-clock; Fuel is the spendable currency. The bus is always somewhere on the route; DRIVE moves it forward, PULL OVER stops it.",
+  "cards": [
+    {
+      "id": "drive",
+      "title": "DRIVE",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Keep going. The road keeps going. Miles tick up; fuel ticks down.",
+      "requires": [
+        { "kind": "at_pos", "pos": "driver_seat" },
+        { "kind": "has_fuel_at_least", "n": 1 }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 },
+        { "kind": "spend_fuel", "amount": 1 }
+      ]
+    },
+    {
+      "id": "watch_mirror",
+      "title": "WATCH MIRROR",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Check the aisle without turning your head. See who needs you.",
+      "requires": [ { "kind": "at_pos", "pos": "driver_seat" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "listen" },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "announce",
+      "title": "ANNOUNCE",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Call the next stop. Passengers who need to get off get ready.",
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" }
+      ]
+    },
+    {
+      "id": "pull_over",
+      "title": "PULL OVER",
+      "time_cost": 2,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Pull onto the shoulder. Miles don't tick. Fuel doesn't spend. You can sit with a passenger.",
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "sit_with" }
+      ]
+    },
+    {
+      "id": "refuel",
+      "title": "REFUEL",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "shoulder",
+      "flavor": "Pull into a station on the shoulder. Top off. Cora knows the attendant.",
+      "requires": [ { "kind": "at_pos", "pos": "shoulder" } ],
+      "effects": [
+        { "kind": "gain_fuel", "amount": 3 }
+      ]
+    },
+    {
+      "id": "the_long_haul",
+      "title": "THE LONG HAUL",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 1,
+      "flavor": "Fix your eyes on the road. The bus advances two miles without spending fuel and Doubt drops by 2.",
+      "requires": [ { "kind": "at_pos", "pos": "driver_seat" } ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 2 },
+        { "kind": "lose_doubt", "amount": 2 }
+      ]
+    },
+    {
+      "id": "cb_chatter",
+      "title": "CB CHATTER",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "passenger_radio",
+      "flavor": "Talk to another driver on channel 17. They tell you what's ahead.",
+      "requires": [ { "kind": "at_pos", "pos": "passenger_radio" } ],
+      "effects": [
+        { "kind": "gain_fuel", "amount": 1 },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "underseat_pickup",
+      "title": "UNDERSEAT PICKUP",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "underseat",
+      "flavor": "Pull something dropped from under the seats. Give it to whoever owns it.",
+      "requires": [ { "kind": "at_pos", "pos": "underseat" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "gain_fuel", "amount": 1 }
+      ]
+    }
+  ]
+}

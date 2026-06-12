@@ -111,6 +111,11 @@ var _sync: int = 0
 var _sync_threshold: int = 6
 var _verb: int = 0
 var _lovers_partner_id: String = ""
+# Chariot (VII) state — MILES is the positive doom-clock (must reach
+# threshold to leap at destination); FUEL is the spendable currency.
+var _miles: int = 0
+var _miles_threshold: int = 6
+var _fuel: int = 0
 # Patience-freeze counter (THE LONG QUIET ability + freeze_patience
 # effect): while > 0, _tick_visitor_patience does nothing on Upkeep.
 # Decrements once per turn at Upkeep.
@@ -766,6 +771,11 @@ func _init_run() -> void:
 	_sync_threshold = int(sy_def.get("completion_threshold", 6))
 	_sync = int(start.get("starting_sync", start.get("sync", 0)))
 	_verb = int(start.get("verb", 0))
+	# Chariot miles track — pulled from location.miles_track.
+	var ml_def: Dictionary = _location.get("miles_track", {})
+	_miles_threshold = int(ml_def.get("completion_threshold", 6))
+	_miles = int(start.get("starting_miles", start.get("miles", 0)))
+	_fuel = int(start.get("fuel", 0))
 	# Resolve the partner visitor id once (scanned from _visitors_def
 	# at run start — the visitor flagged is_lovers_partner: true).
 	_lovers_partner_id = ""
@@ -970,6 +980,7 @@ func _build_ui() -> void:
 	if _arcana_id == "emperor":   leave_room = "office"
 	if _arcana_id == "hierophant": leave_room = "BBS basement"
 	if _arcana_id == "lovers":     leave_room = "apartment"
+	if _arcana_id == "chariot":    leave_room = "bus"
 	top_leave_btn.tooltip_text = "Leave the %s and return to the gallery (this ends the run)." % leave_room
 	top_leave_btn.add_theme_font_size_override("font_size", 11)
 	top_leave_btn.custom_minimum_size = Vector2(132, 24)
@@ -3979,7 +3990,8 @@ func _render() -> void:
 	var is_emperor: bool = (_arcana_id == "emperor")
 	var is_hierophant: bool = (_arcana_id == "hierophant")
 	var is_lovers: bool = (_arcana_id == "lovers")
-	var is_major_arcana: bool = is_magician or is_priestess or is_empress or is_emperor or is_hierophant or is_lovers
+	var is_chariot: bool = (_arcana_id == "chariot")
+	var is_major_arcana: bool = is_magician or is_priestess or is_empress or is_emperor or is_hierophant or is_lovers or is_chariot
 	if _stagnation_label != null:
 		_stagnation_label.visible = is_major_arcana
 		if is_major_arcana:
@@ -4003,6 +4015,8 @@ func _render() -> void:
 			_inspiration_label.text = "Doctrine %d  ·  Signal %d / %d" % [_doctrine, _signal, _signal_threshold]
 		elif is_lovers:
 			_inspiration_label.text = "Verb %d  ·  Sync %d / %d" % [_verb, _sync, _sync_threshold]
+		elif is_chariot:
+			_inspiration_label.text = "Fuel %d  ·  Miles %d / %d" % [_fuel, _miles, _miles_threshold]
 	if _pieces_label != null:
 		_pieces_label.visible = is_magician
 		if is_magician:
@@ -4214,6 +4228,10 @@ func _check_requirement(req: Dictionary) -> bool:
 			return _verb >= int(req.get("n", 1))
 		"has_sync_at_least":
 			return _sync >= int(req.get("n", 1))
+		"has_fuel_at_least":
+			return _fuel >= int(req.get("n", 1))
+		"has_miles_at_least":
+			return _miles >= int(req.get("n", 1))
 		"partner_at_my_pos":
 			# Lovers — true if the lovers_partner visitor is at the
 			# player's current space. Used by all the duet-style cards.
@@ -4363,6 +4381,30 @@ func _win_conditions_met() -> bool:
 		if bool(wc.get("require_cake_lit", false)):
 			if not _flags.get("cake_lit", false):
 				return false
+		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
+			return false
+		return true
+	# ── Chariot schema ──────────────────────────────────────────
+	if _arcana_id == "chariot":
+		var ch_need_connect: int = int(wc.get("require_visitors_connected_min", 3))
+		if _connections_made.size() < ch_need_connect:
+			return false
+		var ch_need_hard: int = int(wc.get("require_hard_mood_connections_min", 0))
+		if ch_need_hard > 0:
+			var ch_hard_count: int = 0
+			for chcvid in _connections_made:
+				var chcv_def: Dictionary = _visitors_def.get(String(chcvid), {})
+				var chmood: String = String(chcv_def.get("mood", ""))
+				if chmood == "intense" or chmood == "lonely" or chmood == "preoccupied":
+					ch_hard_count += 1
+			if ch_hard_count < ch_need_hard:
+				return false
+		if _doubt >= int(wc.get("require_doubt_below", 99)):
+			return false
+		if _stagnation >= int(wc.get("require_stagnation_below", 99)):
+			return false
+		if _miles < int(wc.get("require_miles_at_least", 0)):
+			return false
 		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
 			return false
 		return true
@@ -5237,6 +5279,24 @@ func _resolve_effect(e: Dictionary) -> void:
 						[_sync, _sync_threshold])
 				else:
 					_log_line("[i]reed is in the other corner. sync holds.[/i]")
+
+		"tick_miles":
+			# Chariot — drive forward (or backward, if amount < 0).
+			# Capped at threshold and never goes below 0.
+			var mi: int = int(e.get("amount", 1))
+			_miles = clamp(_miles + mi, 0, _miles_threshold)
+			_log_line("[color=#a8e89c]·[/color] miles %s · %d / %d" %
+				["forward" if mi >= 0 else "back", _miles, _miles_threshold])
+
+		"gain_fuel":
+			var fg: int = int(e.get("amount", 1))
+			_fuel += fg
+			_log_line("[color=#88b87a]+%d Fuel[/color] → %d" % [fg, _fuel])
+
+		"spend_fuel":
+			var fs: int = int(e.get("amount", 1))
+			_fuel = max(0, _fuel - fs)
+			_log_line("[color=#a99070]-%d Fuel[/color] → %d" % [fs, _fuel])
 
 		"move_partner_random":
 			# Move the lovers partner to a random non-threshold space,

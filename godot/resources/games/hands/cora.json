@@ -1,0 +1,19 @@
+{
+  "id": "cora",
+  "name": "Cora",
+  "subtitle": "the bus driver on the midnight route",
+  "portrait": "assets/gallery/portrait_dante_face.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "the_long_haul",
+    "label": "The Long Haul",
+    "description": "Once per game, fix your eyes on the road. The bus advances two miles without spending fuel and Doubt drops by 2. Cora knows this road.",
+    "uses_per_game": 1
+  },
+  "starting_hand": ["walk", "focus", "search", "short_rest", "drive", "watch_mirror", "announce", "pull_over"],
+  "save_witness_rewards": null,
+  "notes": "Cora's hand is the driver loop — DRIVE / WATCH MIRROR / ANNOUNCE / PULL OVER as starters. The location is a bus that physically advances along a route — MILES is the positive doom-clock; FUEL is the spendable currency. Visitors are passengers who board at scheduled stops and disembark at thresholds. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+}
