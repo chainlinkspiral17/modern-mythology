@@ -1,0 +1,147 @@
+{
+  "scope": "global",
+  "notes": "Achievement + unlock catalogue. Each entry declares an id, title, description, trigger condition, and an optional reward. Conditions are evaluated by TarotGauntletGame on _trigger_win and _trigger_loss; un-cleared achievements that newly satisfy fire SaveSystem.mark_unlocked(unlock_key) and any reward. The AchievementsPanel reads this list + SaveSystem to render the codex of what's been earned.",
+  "achievements": [
+    {
+      "id": "first_win",
+      "title": "FIRST LEAP",
+      "desc": "Win any Tarot Gauntlet scenario for the first time.",
+      "trigger": { "kind": "any_win" },
+      "unlock_key": "achievement:first_win"
+    },
+    {
+      "id": "first_loss",
+      "title": "REVERSED, FIRST TIME",
+      "desc": "Lose any Tarot Gauntlet scenario for the first time. There is always another night.",
+      "trigger": { "kind": "any_loss" },
+      "unlock_key": "achievement:first_loss"
+    },
+    {
+      "id": "fool_complete",
+      "title": "JOHN'S WHOLE SHIFT",
+      "desc": "Win all three Fool scenarios (THE LEAP, THE RUSH, FULL HOUSE).",
+      "trigger": { "kind": "all_scenarios", "arcana": "fool", "scenarios": ["the_leap","lunch_rush","evening_service"] },
+      "unlock_key": "achievement:fool_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:fool" }
+    },
+    {
+      "id": "magician_complete",
+      "title": "FRASIER'S WHOLE EVENING",
+      "desc": "Win all three Magician scenarios (SINKING FEELING, WATCH PARTY, BLOW OUT THE CANDLES).",
+      "trigger": { "kind": "all_scenarios", "arcana": "magician", "scenarios": ["sinking_feeling","watch_party","blow_out_the_candles"] },
+      "unlock_key": "achievement:magician_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:magician" }
+    },
+    {
+      "id": "priestess_complete",
+      "title": "ELICIA'S WHOLE NIGHT",
+      "desc": "Win all three Priestess scenarios (CICADA SESSION, THE LONG QUIET, TAPE WITNESS).",
+      "trigger": { "kind": "all_scenarios", "arcana": "priestess", "scenarios": ["cicada_session","long_quiet","tape_witness"] },
+      "unlock_key": "achievement:priestess_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:priestess" }
+    },
+    {
+      "id": "empress_complete",
+      "title": "NICOLA'S WHOLE TABLE",
+      "desc": "Win all three Empress scenarios (STATIC BLOOM, HARVEST DINNER, ICE IN THE RIVER).",
+      "trigger": { "kind": "all_scenarios", "arcana": "empress", "scenarios": ["static_bloom","harvest_dinner","ice_in_the_river"] },
+      "unlock_key": "achievement:empress_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:empress" }
+    },
+    {
+      "id": "emperor_complete",
+      "title": "DANTE'S WHOLE DAY",
+      "desc": "Win all three Emperor scenarios (DOCKET, FIRST SESSION, APPEAL).",
+      "trigger": { "kind": "all_scenarios", "arcana": "emperor", "scenarios": ["docket","first_session","appeal"] },
+      "unlock_key": "achievement:emperor_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:emperor" }
+    },
+    {
+      "id": "hierophant_complete",
+      "title": "SYSOP'S WHOLE BOARD",
+      "desc": "Win all three Hierophant scenarios (GREEN PHOSPHOR, THE LONG SIGNAL, BROADCAST NIGHT).",
+      "trigger": { "kind": "all_scenarios", "arcana": "hierophant", "scenarios": ["green_phosphor","the_long_signal","broadcast_night"] },
+      "unlock_key": "achievement:hierophant_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:hierophant" }
+    },
+    {
+      "id": "first_septenary",
+      "title": "THE FIRST SEPTENARY",
+      "desc": "Win at least one scenario in each of the first 7 arcanas (Fool through Chariot).",
+      "trigger": { "kind": "any_win_per_arcana", "arcanas": ["fool","magician","priestess","empress","emperor","hierophant","lovers","chariot"], "min": 7 },
+      "unlock_key": "achievement:first_septenary",
+      "reward": { "kind": "unlock", "key": "unlocked:second_septenary_door" }
+    },
+    {
+      "id": "clean_run",
+      "title": "WITHOUT A WALK-OUT",
+      "desc": "Win any scenario without a single visitor walking out.",
+      "trigger": { "kind": "win_with_metric", "metric": "visitors_claimed", "op": "==", "value": 0 },
+      "unlock_key": "achievement:clean_run"
+    },
+    {
+      "id": "low_doubt",
+      "title": "KEPT THE FAITH",
+      "desc": "Win any scenario with Doubt at 0 at the moment of LEAP.",
+      "trigger": { "kind": "win_with_metric", "metric": "doubt", "op": "==", "value": 0 },
+      "unlock_key": "achievement:low_doubt"
+    },
+    {
+      "id": "no_stagnation",
+      "title": "THE ROOM HELD",
+      "desc": "Win any scenario with Stagnation under 4 at the moment of LEAP.",
+      "trigger": { "kind": "win_with_metric", "metric": "stagnation", "op": "<", "value": 4 },
+      "unlock_key": "achievement:no_stagnation"
+    },
+    {
+      "id": "candles_lit",
+      "title": "THE CANDLES ARE LIT",
+      "desc": "Light the candles in BLOW OUT THE CANDLES.",
+      "trigger": { "kind": "flag_during_run", "flag": "cake_lit" },
+      "unlock_key": "achievement:candles_lit"
+    },
+    {
+      "id": "long_quiet_used",
+      "title": "THE LONG QUIET HELD",
+      "desc": "Use THE LONG QUIET ability in a Priestess session.",
+      "trigger": { "kind": "card_played_during_run", "card": "the_long_quiet" },
+      "unlock_key": "milestone:long_quiet_used"
+    },
+    {
+      "id": "the_tideline",
+      "title": "MARKED THEIR PLACE",
+      "desc": "Use THE TIDELINE ability in an Empress session.",
+      "trigger": { "kind": "card_played_during_run", "card": "the_tideline" },
+      "unlock_key": "achievement:the_tideline"
+    },
+    {
+      "id": "the_decree",
+      "title": "THE OFFICE RULED",
+      "desc": "Use THE DECREE ability in an Emperor session.",
+      "trigger": { "kind": "card_played_during_run", "card": "the_decree" },
+      "unlock_key": "achievement:the_decree"
+    },
+    {
+      "id": "demon_survivor",
+      "title": "SURVIVOR · MAGICIAN",
+      "desc": "Win a Magician scenario with at least one demon active at the moment of LEAP — the room was working against you and you made it anyway.",
+      "trigger": { "kind": "win_with_metric", "metric": "active_demons", "op": ">=", "value": 1 },
+      "unlock_key": "achievement:demon_survivor"
+    },
+    {
+      "id": "sinkhole_opens",
+      "title": "THE SINKHOLE OPENS",
+      "desc": "Lose BLOW OUT THE CANDLES with the steamboat finished. The river found the bank.",
+      "trigger": { "kind": "loss_with_finale_id", "finale_id": "the_steamboat_sails" },
+      "unlock_key": "world:sinkhole_open",
+      "reward": { "kind": "unlock", "key": "achievement:sinkhole_opens" }
+    },
+    {
+      "id": "first_pair",
+      "title": "A PAIR",
+      "desc": "Win the LOVERS scenario with both characters at the same threshold.",
+      "trigger": { "kind": "lovers_synced_leap" },
+      "unlock_key": "achievement:first_pair"
+    }
+  ]
+}

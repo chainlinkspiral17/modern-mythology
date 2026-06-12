@@ -1,0 +1,77 @@
+{
+  "id": "the_last_boxes",
+  "arcana": "vi_lovers",
+  "location": "apartment_above_diner",
+  "hand": "sasha",
+  "title": "THE LAST BOXES",
+  "subtitle": "The Apartment · 2:14 PM · Saturday",
+  "difficulty": "easy",
+  "epigraph_upright": "A small afternoon. Reed has been here for an hour. The boxes are mostly packed. The painting on the easel is two-thirds done. The diner is busy downstairs but the apartment is quiet. The afternoon is finite, but generously so.",
+  "epigraph_reversed": "The afternoon happens around you. Reed packs alone. The painting stays two-thirds done. Sasha is in the apartment but not in the room.",
+  "scene_description": "Saturday afternoon. Reed at the boxes. The bus kid downstairs has two coffees that John sent up. The neighbor upstairs might come down to borrow a burner. The painting is on the easel.",
+  "direction_hint": "Get SYNC to 5. Connect with 3 visitors (Reed counts). Leap with Reed at the same threshold.",
+  "opening_log_lines": [
+    "reed is at the boxes pile. they look up when you come in.",
+    "the kettle is on. you don't remember putting it on.",
+    "the diner's call bell is muffled through the floor."
+  ],
+  "starting_state": {
+    "player_pos": "kitchen_corner",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
+    "doubt_max": 7,
+    "verb": 1,
+    "starting_hand": ["walk","focus","search","short_rest","pack","listen_lovers","keep","release"]
+  },
+  "visitors_present_at_start": ["reed"],
+  "visitor_schedule": [
+    { "visitor": "bus_kid_messenger",   "arrival_turn": 2, "arrival_space": "front_door" },
+    { "visitor": "the_neighbor_upstairs","arrival_turn": 3, "arrival_space": "roof_access" },
+    { "visitor": "sasha_as_visitor",    "arrival_turn": 5, "arrival_space": "front_door" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_sync_at_least": 5,
+    "require_partner_at_my_pos_at_leap": true,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 12, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "saturday afternoon. the apartment holds.",     "tick_per_turn": 1, "effects": [] },
+    { "level": 4,  "label": "the silence in the room is the wrong silence.","tick_per_turn": 1, "effects": [] },
+    { "level": 7,  "label": "reed has been quiet for too long.",            "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "the boxes are stacking faster than the room can hold.", "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "the rift.",                                    "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "sasha at the kitchen counter, fresh coffee.",   "effects": [] },
+    { "level": 3, "label": "the things they want to say are jumbled.",      "effects": [] },
+    { "level": 5, "label": "they second-guess every word.",                 "effects": [ "release_cost_plus_1" ] },
+    { "level": 7, "label": "the silent apartment.",                         "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door",   "label": "FRONT DOOR",   "ending_lore_token": "leap_down_to_the_diner",   "visible_from_start": true },
+    { "id": "fire_escape",  "label": "FIRE ESCAPE",  "ending_lore_token": "leap_down_the_fire_escape","visible_from_start": true },
+    { "id": "roof_access",  "label": "ROOF ACCESS",  "ending_lore_token": "leap_to_the_roof",         "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 10,
+  "notes": "Easy-mode Lovers. Reed at the boxes from start. Bus kid drops by; neighbor might come down. SYNC requirement is 5. Reed must be at your threshold when you leap (sets lovers_synced_leap flag — the achievement fires).",
+  "ambient_pool": [
+    "the radiator clicks.",
+    "the diner's call bell rings, distinct, two floors down.",
+    "the record on the turntable is the one you used to listen to together."
+  ],
+  "ambient_every_n": 3
+}

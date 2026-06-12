@@ -1,0 +1,19 @@
+{
+  "id": "sasha",
+  "name": "Sasha",
+  "subtitle": "the one who stayed in the apartment",
+  "portrait": "assets/gallery/portrait_dante_face.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "the_duet",
+    "label": "The Duet",
+    "description": "Once per game, sit down at the same space as Reed and play. SYNC ticks twice; Doubt halves for the rest of this turn.",
+    "uses_per_game": 1
+  },
+  "starting_hand": ["walk", "focus", "search", "short_rest", "pack", "listen_lovers", "keep", "release"],
+  "save_witness_rewards": null,
+  "notes": "Sasha's hand is the lovers loop — PACK / LISTEN / KEEP / RELEASE as starters. Reed is in the room with you the whole time, as a scripted partner-visitor whose patience tracks SYNC. The win condition pairs you at a threshold together. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+}

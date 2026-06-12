@@ -103,6 +103,14 @@ var _ledger_threshold: int = 6
 var _doctrine: int = 0
 var _signal: int = 0
 var _signal_threshold: int = 6
+# Lovers (VI) state — SYNC is the positive doom-clock; VERB is the
+# spendable currency. Default zero/inert for non-lovers runs. The
+# "partner" is the visitor flagged is_lovers_partner; their position
+# (from _visitors_state) drives the partner_at_my_pos predicate.
+var _sync: int = 0
+var _sync_threshold: int = 6
+var _verb: int = 0
+var _lovers_partner_id: String = ""
 # Patience-freeze counter (THE LONG QUIET ability + freeze_patience
 # effect): while > 0, _tick_visitor_patience does nothing on Upkeep.
 # Decrements once per turn at Upkeep.
@@ -135,6 +143,12 @@ var _counter_haunted: bool = false
 var _flags: Dictionary = {}
 var _played_this_turn: Array = []
 var _connections_made: Array = []
+# Per-run achievement tracking — populated as the run progresses,
+# read by _evaluate_achievements at win/loss to decide which entries
+# in resources/achievements.json have newly fired.
+var _cards_played_this_run: Dictionary = {}   # card_id → count
+var _claimed_visitors_count: int = 0
+var _last_finale_id: String = ""              # populated by _trigger_loss
 var _lore_tokens_collected: Array = []
 var _twelve_years_used: bool = false
 var _call_faith_count: int = 0
@@ -713,6 +727,10 @@ func _init_run() -> void:
 	_sealed_arcanas.clear()
 	for sid in _setup.get("sealed_arcanas_at_start", []):
 		_sealed_arcanas[String(sid)] = true
+	# Per-run achievement trackers — reset on every fresh run.
+	_cards_played_this_run.clear()
+	_claimed_visitors_count = 0
+	_last_finale_id = ""
 	# Steamboat threshold + WIP thresholds come from the location def.
 	var sb_def: Dictionary = _location.get("steamboat", {})
 	_steamboat_threshold = int(sb_def.get("completion_threshold", 6))
@@ -743,6 +761,18 @@ func _init_run() -> void:
 	_signal_threshold = int(sg_def.get("completion_threshold", 6))
 	_signal = int(start.get("signal", 0))
 	_doctrine = int(start.get("doctrine", 0))
+	# Lovers sync track — same shape, for the apartment-above-the-diner.
+	var sy_def: Dictionary = _location.get("sync_track", {})
+	_sync_threshold = int(sy_def.get("completion_threshold", 6))
+	_sync = int(start.get("starting_sync", start.get("sync", 0)))
+	_verb = int(start.get("verb", 0))
+	# Resolve the partner visitor id once (scanned from _visitors_def
+	# at run start — the visitor flagged is_lovers_partner: true).
+	_lovers_partner_id = ""
+	for vid_lp in _visitors_def:
+		if bool((_visitors_def[vid_lp] as Dictionary).get("is_lovers_partner", false)):
+			_lovers_partner_id = vid_lp
+			break
 	_piece_progress.clear()
 	_wip_progress.clear()
 	_pieces_completed = 0
@@ -939,6 +969,7 @@ func _build_ui() -> void:
 	if _arcana_id == "empress":   leave_room = "riverboat"
 	if _arcana_id == "emperor":   leave_room = "office"
 	if _arcana_id == "hierophant": leave_room = "BBS basement"
+	if _arcana_id == "lovers":     leave_room = "apartment"
 	top_leave_btn.tooltip_text = "Leave the %s and return to the gallery (this ends the run)." % leave_room
 	top_leave_btn.add_theme_font_size_override("font_size", 11)
 	top_leave_btn.custom_minimum_size = Vector2(132, 24)
@@ -3947,7 +3978,8 @@ func _render() -> void:
 	var is_empress: bool = (_arcana_id == "empress")
 	var is_emperor: bool = (_arcana_id == "emperor")
 	var is_hierophant: bool = (_arcana_id == "hierophant")
-	var is_major_arcana: bool = is_magician or is_priestess or is_empress or is_emperor or is_hierophant
+	var is_lovers: bool = (_arcana_id == "lovers")
+	var is_major_arcana: bool = is_magician or is_priestess or is_empress or is_emperor or is_hierophant or is_lovers
 	if _stagnation_label != null:
 		_stagnation_label.visible = is_major_arcana
 		if is_major_arcana:
@@ -3969,6 +4001,8 @@ func _render() -> void:
 			_inspiration_label.text = "Authority %d  ·  Ledger %d / %d" % [_authority, _ledger, _ledger_threshold]
 		elif is_hierophant:
 			_inspiration_label.text = "Doctrine %d  ·  Signal %d / %d" % [_doctrine, _signal, _signal_threshold]
+		elif is_lovers:
+			_inspiration_label.text = "Verb %d  ·  Sync %d / %d" % [_verb, _sync, _sync_threshold]
 	if _pieces_label != null:
 		_pieces_label.visible = is_magician
 		if is_magician:
@@ -4176,6 +4210,17 @@ func _check_requirement(req: Dictionary) -> bool:
 			return _doctrine >= int(req.get("n", 1))
 		"has_signal_at_least":
 			return _signal >= int(req.get("n", 1))
+		"has_verb_at_least":
+			return _verb >= int(req.get("n", 1))
+		"has_sync_at_least":
+			return _sync >= int(req.get("n", 1))
+		"partner_at_my_pos":
+			# Lovers — true if the lovers_partner visitor is at the
+			# player's current space. Used by all the duet-style cards.
+			if _lovers_partner_id == "":
+				return false
+			var ps: Dictionary = _visitors_state.get(_lovers_partner_id, {})
+			return String(ps.get("pos", "")) == _player_pos
 		"visitor_in_bright_space":
 			# MOTH-style. True if any arrived, unconnected visitor is
 			# at one of the cathedral's "lit" stations. Bright = the
@@ -4321,6 +4366,40 @@ func _win_conditions_met() -> bool:
 		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
 			return false
 		return true
+	# ── Lovers schema ───────────────────────────────────────────
+	if _arcana_id == "lovers":
+		var lv_need_connect: int = int(wc.get("require_visitors_connected_min", 3))
+		if _connections_made.size() < lv_need_connect:
+			return false
+		var lv_need_hard: int = int(wc.get("require_hard_mood_connections_min", 0))
+		if lv_need_hard > 0:
+			var lv_hard_count: int = 0
+			for lvcvid in _connections_made:
+				var lvcv_def: Dictionary = _visitors_def.get(String(lvcvid), {})
+				var lvmood: String = String(lvcv_def.get("mood", ""))
+				if lvmood == "intense" or lvmood == "lonely" or lvmood == "preoccupied":
+					lv_hard_count += 1
+			if lv_hard_count < lv_need_hard:
+				return false
+		if _doubt >= int(wc.get("require_doubt_below", 99)):
+			return false
+		if _stagnation >= int(wc.get("require_stagnation_below", 99)):
+			return false
+		if _sync < int(wc.get("require_sync_at_least", 0)):
+			return false
+		# Lovers' signature: the partner must be at the player's space
+		# at the moment of LEAP. If they are, set the lovers_synced_leap
+		# flag for the achievement evaluator.
+		if bool(wc.get("require_partner_at_my_pos_at_leap", false)):
+			if _lovers_partner_id == "":
+				return false
+			var lp_pst: Dictionary = _visitors_state.get(_lovers_partner_id, {})
+			if String(lp_pst.get("pos", "")) != _player_pos:
+				return false
+			_flags["lovers_synced_leap"] = true
+		if bool(wc.get("require_threshold_space", true)) and not _is_threshold(_player_pos):
+			return false
+		return true
 	# ── Hierophant schema ───────────────────────────────────────
 	if _arcana_id == "hierophant":
 		var h_need_connect: int = int(wc.get("require_visitors_connected_min", 3))
@@ -4441,6 +4520,8 @@ func _on_play_card(cid: String) -> void:
 	if not _can_play_card(card):
 		_log_line("[i]can't play %s now[/i]" % card.get("title", cid))
 		return
+	# Achievement bookkeeping — count cards played per run.
+	_cards_played_this_run[cid] = int(_cards_played_this_run.get(cid, 0)) + 1
 	var base_cost: int = int(card.get("time_cost", 1))
 	var cost: int = base_cost
 	# Gravity-imposed cost bump (e.g. THE FLUORESCENT TICK)
@@ -5132,6 +5213,49 @@ func _resolve_effect(e: Dictionary) -> void:
 			if _signal >= _signal_threshold:
 				if bool(_setup.get("loss_conditions", {}).get("signal_full_before_end", false)):
 					_trigger_loss("signal_full")
+
+		"gain_verb":
+			var vg: int = int(e.get("amount", 1))
+			_verb += vg
+			_log_line("[color=#d8a060]+%d Verb[/color] → %d" % [vg, _verb])
+
+		"spend_verb":
+			var vs: int = int(e.get("amount", 1))
+			_verb = max(0, _verb - vs)
+			_log_line("[color=#a99070]-%d Verb[/color] → %d" % [vs, _verb])
+
+		"tick_sync_if_partner_here":
+			# Lovers — SYNC ticks only when the partner is at the
+			# player's space. If they're not, the card's flavor still
+			# log-lines but SYNC doesn't move.
+			var sy_amt: int = int(e.get("amount", 1))
+			if _lovers_partner_id != "":
+				var pst: Dictionary = _visitors_state.get(_lovers_partner_id, {})
+				if String(pst.get("pos", "")) == _player_pos:
+					_sync = min(_sync_threshold, _sync + sy_amt)
+					_log_line("[color=#a8e89c]·[/color] sync ticks · %d / %d" %
+						[_sync, _sync_threshold])
+				else:
+					_log_line("[i]reed is in the other corner. sync holds.[/i]")
+
+		"move_partner_random":
+			# Move the lovers partner to a random non-threshold space,
+			# different from their current. Gravity-driven.
+			if _lovers_partner_id == "":
+				return
+			var pst2: Dictionary = _visitors_state.get(_lovers_partner_id, {})
+			var here: String = String(pst2.get("pos", ""))
+			var candidates: Array = []
+			for s: Dictionary in _location.get("spaces", []):
+				if s.get("kind", "") == "threshold": continue
+				var sid_c: String = String(s.get("id", ""))
+				if sid_c != "" and sid_c != here:
+					candidates.append(sid_c)
+			if candidates.is_empty():
+				return
+			var next_pos: String = String(candidates[randi() % candidates.size()])
+			pst2["pos"] = next_pos
+			_log_line("[i]reed crosses to %s.[/i]" % next_pos.replace("_", " "))
 
 		"freeze_patience":
 			# THE LONG QUIET — patience does not tick for N turns. The
@@ -6865,6 +6989,7 @@ func _tick_visitor_patience() -> void:
 		elif remaining <= 0:
 			st["claimed_turn"] = _turn
 			st["walked_off"] = true
+			_claimed_visitors_count += 1
 			_log_line("[color=#ff5040][b]✕ %s walks out without being greeted.[/b][/color]" %
 				_visitors_def.get(vid, {}).get("name", vid))
 			_show_toast("%s walked out" % _visitors_def.get(vid, {}).get("name", vid), "#ff5040")
@@ -6915,6 +7040,121 @@ func _check_game_end() -> void:
 		return
 
 
+# ── Achievement evaluator ────────────────────────────────────────
+# Reads res://resources/achievements.json on every win/loss and
+# evaluates each entry's trigger against the current run state.
+# Newly-satisfied achievements fire SaveSystem.mark_unlocked() and any
+# declared reward (also a mark_unlocked). Idempotent — already-unlocked
+# entries skip silently.
+const _ACHIEVEMENTS_PATH := "res://resources/achievements.json"
+var _achievements_cache: Array = []
+func _load_achievements_if_needed() -> void:
+	if not _achievements_cache.is_empty():
+		return
+	if not FileAccess.file_exists(_ACHIEVEMENTS_PATH):
+		return
+	var f := FileAccess.open(_ACHIEVEMENTS_PATH, FileAccess.READ)
+	if f == null:
+		return
+	var parsed = JSON.parse_string(f.get_as_text())
+	if parsed is Dictionary:
+		_achievements_cache = (parsed as Dictionary).get("achievements", [])
+
+func _evaluate_achievements(outcome: String, finale_id: String) -> void:
+	_load_achievements_if_needed()
+	if _achievements_cache.is_empty():
+		return
+	for entry_v in _achievements_cache:
+		var entry: Dictionary = entry_v
+		var unlock_key: String = String(entry.get("unlock_key", ""))
+		if unlock_key == "":
+			continue
+		if SaveSystem.is_unlocked(unlock_key):
+			continue
+		var trigger: Dictionary = entry.get("trigger", {})
+		if not _achievement_trigger_fires(trigger, outcome, finale_id):
+			continue
+		# Newly satisfied — mark + reward + log.
+		SaveSystem.mark_unlocked(unlock_key)
+		var reward: Dictionary = entry.get("reward", {})
+		if reward.get("kind", "") == "unlock":
+			SaveSystem.mark_unlocked(String(reward.get("key", "")))
+		var t_title: String = String(entry.get("title", entry.get("id", "?")))
+		_log_line("[color=#ffd896][b]✦ achievement: %s[/b][/color]" % t_title)
+		_show_toast("✦ %s" % t_title, "#ffd896")
+
+func _achievement_trigger_fires(trigger: Dictionary, outcome: String, finale_id: String) -> bool:
+	var kind: String = String(trigger.get("kind", ""))
+	match kind:
+		"any_win":
+			return outcome == "win"
+		"any_loss":
+			return outcome == "loss"
+		"all_scenarios":
+			# Every scenario in the list must be marked
+			# unlocked:scenario:<arcana>:<id>.
+			var arc: String = String(trigger.get("arcana", ""))
+			var scs: Array = trigger.get("scenarios", [])
+			# The CURRENT win counts even before SaveSystem fully
+			# flushes — so we check arcana+scenario_id against the
+			# run we just finished too.
+			for sid_v in scs:
+				var sid: String = String(sid_v)
+				var key: String = "unlocked:scenario:%s:%s" % [arc, sid]
+				if outcome == "win" and arc == _arcana_id and sid == _scenario_id:
+					continue
+				if not SaveSystem.is_unlocked(key):
+					return false
+			return true
+		"any_win_per_arcana":
+			var arcs: Array = trigger.get("arcanas", [])
+			var min_count: int = int(trigger.get("min", arcs.size()))
+			var hit: int = 0
+			for arc_v in arcs:
+				var ak: String = "milestone:gauntlet_win:" + String(arc_v)
+				if SaveSystem.is_unlocked(ak):
+					hit += 1
+				elif outcome == "win" and String(arc_v) == _arcana_id:
+					hit += 1
+			return hit >= min_count
+		"win_with_metric":
+			if outcome != "win":
+				return false
+			var metric: String = String(trigger.get("metric", ""))
+			var op: String = String(trigger.get("op", "=="))
+			var target: int = int(trigger.get("value", 0))
+			var measured: int = _achievement_metric(metric)
+			return _achievement_compare(measured, op, target)
+		"loss_with_finale_id":
+			return outcome == "loss" and finale_id == String(trigger.get("finale_id", ""))
+		"flag_during_run":
+			return bool(_flags.get(String(trigger.get("flag", "")), false))
+		"card_played_during_run":
+			return int(_cards_played_this_run.get(String(trigger.get("card", "")), 0)) > 0
+		"lovers_synced_leap":
+			return outcome == "win" and _arcana_id == "lovers" and bool(_flags.get("lovers_synced_leap", false))
+	return false
+
+func _achievement_metric(metric: String) -> int:
+	match metric:
+		"doubt": return _doubt
+		"stagnation": return _stagnation
+		"visitors_claimed": return _claimed_visitors_count
+		"active_demons": return _active_demons.size()
+		"connections": return _connections_made.size()
+	return 0
+
+func _achievement_compare(a: int, op: String, b: int) -> bool:
+	match op:
+		"==": return a == b
+		"!=": return a != b
+		"<":  return a <  b
+		"<=": return a <= b
+		">":  return a >  b
+		">=": return a >= b
+	return false
+
+
 func _trigger_win(threshold: String) -> void:
 	_game_over = true
 	_audio_sfx("win")
@@ -6930,8 +7170,12 @@ func _trigger_win(threshold: String) -> void:
 	# variant lets later content gate on a specific arcana win.
 	SaveSystem.mark_unlocked("milestone:gauntlet_win")
 	SaveSystem.mark_unlocked("milestone:gauntlet_win:" + _arcana_id)
+	SaveSystem.mark_unlocked("unlocked:scenario:%s:%s" % [_arcana_id, _scenario_id])
 	if _bindle_assembled:
 		SaveSystem.mark_unlocked("milestone:bindle_assembled")
+	# Evaluate achievements before the end-screen so newly-fired ones
+	# can surface in the run summary.
+	_evaluate_achievements("win", "")
 	# Persist
 	var contents := ""
 	for it in _inventory:
@@ -6997,6 +7241,9 @@ func _trigger_loss(reason: String) -> void:
 		finale_id = f.get("id", "")
 		finale_title = f.get("title", "")
 		finale_flavor = f.get("flavor", "")
+	_last_finale_id = finale_id
+	# Evaluate achievements that fire on loss (sinkhole opens etc.).
+	_evaluate_achievements("loss", finale_id)
 	# Milestones — gauntlet_loss unlocks the 24-Hour Diner skin + the
 	# Reversed BGM track. Per-arcana variant tracks which arcana you
 	# lost on. Magician finales each have their own stinger key the

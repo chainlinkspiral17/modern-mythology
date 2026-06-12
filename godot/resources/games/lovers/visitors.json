@@ -1,0 +1,131 @@
+{
+  "scope": "lovers",
+  "notes": "Lovers visitors. The center figure is Reed — the partner who moves with you through the apartment. Everyone else is a peripheral check-in (the bus kid bringing coffee from downstairs; a neighbor; an old friend). The whole arcana is built around Reed; the other visitors are texture.",
+  "visitors": [
+    {
+      "id": "reed",
+      "name": "Reed",
+      "scenarios": ["the_last_boxes", "an_afternoon", "the_letter_in_the_drawer"],
+      "arrival": { "kind": "on_board_at_start", "pos": "boxes_pile" },
+      "lore_token": "reed_was_here_today",
+      "lore_text": "The one who used to live here. Here today for the last of the boxes. They have been here for an hour already when the scenario starts. The painting on the easel is theirs and they keep glancing at it.",
+      "accent": "#d8a060",
+      "mood": "preoccupied",
+      "patience": 12,
+      "is_lovers_partner": true,
+      "steps": {
+        "greet":   "You make eye contact across the boxes. They acknowledge you.",
+        "listen":  "They tell you what they were thinking about on the walk over.",
+        "deliver": "You bring them a coffee from the kitchen corner. They take it.",
+        "sit_with": "You sit with them on the bed corner. The radiator clicks. The afternoon is the afternoon."
+      }
+    },
+    {
+      "id": "bus_kid_messenger",
+      "name": "Bus Kid (from downstairs)",
+      "scenarios": ["the_last_boxes", "an_afternoon"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "kitchen_corner" },
+      "lore_token": "bus_kid_brought_coffee",
+      "lore_text": "The diner's bus kid comes up the stairs with two coffees John sent up.",
+      "accent": "#7cffb0",
+      "mood": "talkative",
+      "patience": 8,
+      "helper": true,
+      "steps": {
+        "greet":   "They knock once and let themselves in.",
+        "listen":  "They tell you john said hi.",
+        "deliver": "You take the coffees. They run back down before you can tip them.",
+        "sit_with": "They lean on the kitchen counter for a minute. They leave."
+      }
+    },
+    {
+      "id": "the_neighbor_upstairs",
+      "name": "The Upstairs Neighbor",
+      "scenarios": ["the_last_boxes"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "roof_access", "to": "roof_access" },
+      "lore_token": "neighbor_came_down_the_roof",
+      "lore_text": "Comes down the roof staircase because her stove is out and she needs to borrow a burner. Sees Reed. Sees the boxes. Doesn't comment.",
+      "accent": "#9b5fd3",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "She knocks at the roof-access door.",
+        "listen":  "She asks for the burner. She does not look at Reed.",
+        "deliver": "You set up the burner for her. She nods.",
+        "sit_with": "You sit with her in the kitchen corner while her kettle goes. She does not look at Reed."
+      }
+    },
+    {
+      "id": "the_old_friend_visiting",
+      "name": "Old Friend (visiting)",
+      "scenarios": ["an_afternoon", "the_letter_in_the_drawer"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "front_door", "to": "bed_corner" },
+      "lore_token": "friend_dropped_by",
+      "lore_text": "A friend from before — knew you both as a couple, knows you both still. Comes up the stairs to drop off a book.",
+      "accent": "#c87633",
+      "mood": "talkative",
+      "patience": 7,
+      "steps": {
+        "greet":   "They wave from the door. They look at reed and at you.",
+        "listen":  "They tell a story about the year you both lived here.",
+        "deliver": "You hand them the book back that they came for.",
+        "sit_with": "You all three sit on the bed corner. The friend leaves first."
+      }
+    },
+    {
+      "id": "the_landlord_check_in",
+      "name": "The Landlord (check-in)",
+      "scenarios": ["the_letter_in_the_drawer"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "front_door", "to": "kitchen_corner" },
+      "lore_token": "landlord_signed_the_paper",
+      "lore_text": "Stops by because she heard reed was here. Has a paper she needs both of you to sign — final lease handover.",
+      "accent": "#a99070",
+      "mood": "preoccupied",
+      "patience": 5,
+      "steps": {
+        "greet":   "She has the paper. She has a pen.",
+        "listen":  "She explains it. You both already know.",
+        "deliver": "You hand her the signed paper.",
+        "sit_with": "You sit at the kitchen counter with her while she finishes her coffee. She leaves the paper for you to file."
+      }
+    },
+    {
+      "id": "frasier_visiting",
+      "name": "Frasier (visiting)",
+      "as_hand_id": "frasier",
+      "swap_target_for_hand": "frasier_visiting",
+      "scenarios": ["an_afternoon"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "front_door", "to": "easel_corner" },
+      "lore_token": "frasier_looked_at_the_painting",
+      "lore_text": "Frasier comes up the stairs from the diner because he heard reed was here. He looks at the painting on the easel.",
+      "accent": "#c87633",
+      "mood": "preoccupied",
+      "patience": 7,
+      "steps": {
+        "greet":   "He waves from the easel.",
+        "listen":  "He says he's been making a model of this room.",
+        "deliver": "You hand him a coffee. He drinks it standing.",
+        "sit_with": "You sit at the easel with him. He looks at the painting. He doesn't speak for a long while."
+      }
+    },
+    {
+      "id": "sasha_as_visitor",
+      "name": "Sasha (in the doorway)",
+      "as_hand_id": "sasha",
+      "swap_target_for_hand": "sasha_as_visitor",
+      "scenarios": ["the_last_boxes", "an_afternoon", "the_letter_in_the_drawer"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "front_door", "to": "front_door" },
+      "lore_token": "sasha_came_to_the_door",
+      "lore_text": "When the player is NOT Sasha, Sasha arrives at the door after stepping out. When the player IS Sasha, this entry swaps out.",
+      "accent": "#d8a060",
+      "mood": "preoccupied",
+      "patience": 8,
+      "steps": {
+        "greet":   "Sasha is in the doorway. They came back up the stairs.",
+        "listen":  "Sasha tells you what was downstairs.",
+        "deliver": "You hand them their key.",
+        "sit_with": "Sasha sits on the bed corner. The room is the room."
+      }
+    }
+  ]
+}

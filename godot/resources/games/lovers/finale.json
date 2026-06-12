@@ -1,0 +1,45 @@
+{
+  "scope": "lovers",
+  "notes": "Lovers finale cards. Each is a way the afternoon didn't land. The arcana's distinctive failure is RIFT — Reed leaves with the boxes but you didn't manage to be in the room together.",
+  "finales": [
+    {
+      "id": "the_rift",
+      "title": "THE RIFT",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "Reed picks up the last box. They were here for two hours. SYNC never came up. Sasha is at the front door. Reed is at the fire escape. They go down opposite directions of the building. The painting on the easel is still two-thirds done.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_lovers" } ]
+    },
+    {
+      "id": "the_silent_apartment",
+      "title": "THE SILENT APARTMENT",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "Sasha can't talk to them. Sasha sits on the bed corner. Reed sits at the easel. The record skips into silence. Neither of them changes it. The afternoon goes quiet and stays quiet.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_lovers" } ]
+    },
+    {
+      "id": "left_with_the_boxes",
+      "title": "LEFT WITH THE BOXES",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "The neighbor left without saying anything. The bus kid never came up. The old friend stayed in the doorway. Reed stacked the last boxes alone. Sasha was somewhere else in the apartment for most of it. Reed leaves quietly.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_lovers" } ]
+    },
+    {
+      "id": "afternoon_ran_out",
+      "title": "THE AFTERNOON RAN OUT",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "It's six. The diner downstairs is busy. Reed has the boxes by the door. They didn't get to the conversation that was supposed to be the conversation. They will get to it. The afternoon was just the afternoon.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_lovers" } ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_sync_start": 1,
+    "note": "Lovers losses leave a little residual SYNC carrying forward. The next afternoon starts with you having already crossed the room once."
+  }
+}

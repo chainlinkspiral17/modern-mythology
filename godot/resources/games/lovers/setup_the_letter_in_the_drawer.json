@@ -1,0 +1,77 @@
+{
+  "id": "the_letter_in_the_drawer",
+  "arcana": "vi_lovers",
+  "location": "apartment_above_diner",
+  "hand": "sasha",
+  "title": "THE LETTER IN THE DRAWER",
+  "subtitle": "The Apartment · 10:14 PM · A Year Later",
+  "difficulty": "hard",
+  "epigraph_upright": "A year later. Reed is back because Sasha is moving out and the apartment is finally going. The landlord has the lease paper. The friend wants to help carry boxes. The letter you never sent is in the drawer. The painting is still on the easel.",
+  "epigraph_reversed": "Reed leaves before you get to the letter. The painting goes out in a box unfinished. The landlord signs a paper without both of you. The apartment becomes the next person's apartment.",
+  "scene_description": "A year on. The apartment is being given up. SYNC at 2 (the year has not undone what was there). Doubt at 2. Stagnation at 2. THE DUET is in starting hand. The letter is under the bed.",
+  "direction_hint": "SYNC to 6 (full). 5 connections + 3 hard moods. Leap together. Read the letter on the way.",
+  "opening_log_lines": [
+    "reed is at the easel. they are looking at the painting.",
+    "the landlord is in the diner downstairs. she will come up.",
+    "the letter is under the bed. you put it there nine months ago."
+  ],
+  "starting_state": {
+    "player_pos": "bed_corner",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 2,
+    "stagnation_per_turn": 2,
+    "doubt": 2,
+    "doubt_max": 7,
+    "verb": 2,
+    "starting_sync": 2,
+    "starting_hand": ["walk","focus","search","short_rest","pack","listen_lovers","keep","release","the_duet"]
+  },
+  "visitors_present_at_start": ["reed"],
+  "visitor_schedule": [
+    { "visitor": "the_old_friend_visiting",   "arrival_turn": 1, "arrival_space": "front_door" },
+    { "visitor": "the_landlord_check_in",     "arrival_turn": 3, "arrival_space": "front_door" },
+    { "visitor": "bus_kid_messenger",         "arrival_turn": 4, "arrival_space": "front_door" },
+    { "visitor": "sasha_as_visitor",          "arrival_turn": 5, "arrival_space": "front_door" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 5,
+    "require_hard_mood_connections_min": 3,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_sync_at_least": 6,
+    "require_partner_at_my_pos_at_leap": true,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 12, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "a year. the apartment holds, narrowly.",       "tick_per_turn": 2, "effects": [] },
+    { "level": 6,  "label": "the diner is the loudest thing in your head.",  "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "the painting is staring you down.",             "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 12, "label": "the rift.",                                     "tick_per_turn": 3, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "sasha at the bed corner, letter under the mattress.","effects": [] },
+    { "level": 5, "label": "they question every word they wrote.",                "effects": [] },
+    { "level": 7, "label": "the silent apartment.",                              "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door",  "label": "FRONT DOOR",  "ending_lore_token": "leap_into_the_night_diner",        "visible_from_start": true },
+    { "id": "fire_escape", "label": "FIRE ESCAPE", "ending_lore_token": "leap_into_the_alley_below",        "visible_from_start": true },
+    { "id": "roof_access", "label": "ROOF ACCESS", "ending_lore_token": "leap_onto_the_roof_under_the_moon","visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Hard-mode Lovers. A year later. SYNC needs to reach the full 6. Paired leap. The letter under the bed (item) can spend 2 doubt if found and used. The painting can tick SYNC by 2 if both at the easel.",
+  "ambient_pool": [
+    "the diner downstairs is at its evening peak.",
+    "the painting watches both of you.",
+    "the bed corner holds the shape of two people sitting on it."
+  ],
+  "ambient_every_n": 3
+}

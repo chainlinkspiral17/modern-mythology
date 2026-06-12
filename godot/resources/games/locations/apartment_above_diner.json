@@ -1,0 +1,110 @@
+{
+  "id": "apartment_above_diner",
+  "title": "THE APARTMENT ABOVE THE DINER",
+  "subtitle": "Vol 5 · Ch VI · The Lovers",
+  "notes": "Small studio above D'Ambrosio's. Sasha lives here. Reed used to. Today Reed is here to collect the last of their boxes. The diner sounds come up through the floor. Eight spaces — the apartment is one room with named corners.",
+  "ambient_pool": [
+    "the diner's call bell rings, two floors below. distinct.",
+    "the radiator clicks. the apartment has been over-warm since october.",
+    "reed is across the room. you can hear them breathing.",
+    "the record on the turntable is the one you used to listen to together. you forgot it was on.",
+    "the window is open a crack. january air in a february apartment."
+  ],
+  "ambient_every_n": 3,
+  "spaces": [
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "kind": "threshold",
+      "flavor": "the apartment door, top of the stairs from the diner.",
+      "arrival_lines": [
+        "the front door is propped open. you left the latch off when reed got here.",
+        "the stairs down to the diner smell like the diner."
+      ]
+    },
+    {
+      "id": "fire_escape",
+      "label": "FIRE ESCAPE",
+      "kind": "threshold",
+      "flavor": "the window that's a fire-escape door · the apartment's second exit.",
+      "arrival_lines": [
+        "the fire escape ladder rattles when somebody on the street walks past.",
+        "the railing is cold. you can see the alley from here."
+      ]
+    },
+    {
+      "id": "roof_access",
+      "label": "ROOF ACCESS",
+      "kind": "threshold",
+      "flavor": "the small interior staircase to the roof — for the brave or the smoking.",
+      "arrival_lines": [
+        "the roof-access door creaks the way it always has.",
+        "you can hear the diner's ventilation hood from up there."
+      ]
+    },
+    {
+      "id": "kitchen_corner",
+      "label": "KITCHEN CORNER",
+      "kind": "station",
+      "flavor": "two-burner stove, a kettle, the small fridge · where you make coffee for both of you.",
+      "arrival_lines": [
+        "the kettle is on. you didn't put it on. reed must have.",
+        "the fridge has two cans of cold seltzer and a half-jar of mustard."
+      ]
+    },
+    {
+      "id": "bed_corner",
+      "label": "BED CORNER",
+      "kind": "station",
+      "flavor": "the bed pushed into the corner under the window · made carefully this morning.",
+      "arrival_lines": [
+        "the bed is made the way it's made when you're trying to pretend the bed isn't the thing it is.",
+        "the window above the bed has been open a crack all morning."
+      ]
+    },
+    {
+      "id": "boxes_pile",
+      "label": "BOXES PILE",
+      "kind": "station",
+      "flavor": "the stack of boxes reed is here for · sealed, labeled in your hand.",
+      "arrival_lines": [
+        "the boxes are labeled in your hand. reed never asked you to label them.",
+        "the tape on the top box is the cheap tape. it's curling."
+      ]
+    },
+    {
+      "id": "turntable",
+      "label": "TURNTABLE",
+      "kind": "station",
+      "flavor": "the turntable + a stack of records that didn't get divided · still playing.",
+      "arrival_lines": [
+        "the record is the one you used to listen to together.",
+        "the needle has skipped twice and self-corrected."
+      ]
+    },
+    {
+      "id": "easel_corner",
+      "label": "EASEL CORNER",
+      "kind": "station",
+      "flavor": "reed's easel · still here · with a half-finished painting on it.",
+      "arrival_lines": [
+        "the easel is angled toward the window so reed can see what they're painting.",
+        "the painting is two-thirds done. it has been two-thirds done for nine months."
+      ]
+    }
+  ],
+  "sync_track": {
+    "completion_threshold": 6,
+    "label": "SYNC",
+    "notes": "Sasha and Reed's positive doom-clock. Spending time at the same space as Reed ticks SYNC. SYNC is positive — at threshold, the win condition becomes available.",
+    "ladder": [
+      { "level": 0, "label": "you are in the same apartment. that is all.",        "intensity": 0.0 },
+      { "level": 1, "label": "you have passed each other.",                          "intensity": 0.15 },
+      { "level": 2, "label": "you are sitting in the same room.",                    "intensity": 0.30 },
+      { "level": 3, "label": "halfway · the conversation has started.",              "intensity": 0.50 },
+      { "level": 4, "label": "you remember being in the room together.",             "intensity": 0.70 },
+      { "level": 5, "label": "one more beat and you'll be in sync.",                 "intensity": 0.85 },
+      { "level": 6, "label": "sync · you are in the room together.",                 "intensity": 1.0 }
+    ]
+  }
+}

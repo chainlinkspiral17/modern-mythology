@@ -1,0 +1,88 @@
+{
+  "scope": "lovers",
+  "notes": "Items in the apartment — small physical objects that mean specific things to the two of them. Most are 'keep'-able or 'release'-able. The painting is a special object.",
+  "piles": {
+    "boxes_pile_open": {
+      "label": "BOXES · OPEN",
+      "at_pos": "boxes_pile",
+      "items": ["reed_sketchbook", "reed_jacket", "reed_record"]
+    },
+    "kitchen_corner_shelf": {
+      "label": "KITCHEN SHELF",
+      "at_pos": "kitchen_corner",
+      "items": ["two_mugs", "kettle", "seltzer_cold"]
+    },
+    "easel_corner_drawer": {
+      "label": "EASEL DRAWER",
+      "at_pos": "easel_corner",
+      "items": ["the_brush", "the_unfinished_painting"]
+    },
+    "bed_corner_under": {
+      "label": "UNDER THE BED",
+      "at_pos": "bed_corner",
+      "items": ["letter_in_drawer", "the_polaroid"]
+    }
+  },
+  "items": {
+    "reed_sketchbook": {
+      "title": "Reed's Sketchbook",
+      "category": "delivery",
+      "flavor": "A small sketchbook that Reed forgot to pack two months ago.",
+      "delivered_to_satisfies_order": true
+    },
+    "reed_jacket": {
+      "title": "Reed's Jacket",
+      "category": "delivery",
+      "flavor": "The dark green jacket. Still smells faintly of Reed.",
+      "delivered_to_satisfies_order": true
+    },
+    "reed_record": {
+      "title": "Reed's Record",
+      "category": "delivery",
+      "flavor": "Reed's copy of the record on the turntable. The other one is yours.",
+      "delivered_to_satisfies_order": true
+    },
+    "two_mugs": {
+      "title": "Two Mugs",
+      "category": "delivery",
+      "flavor": "Both mugs. Made by the same potter; bought together.",
+      "delivered_to_satisfies_order": true
+    },
+    "kettle": {
+      "title": "Kettle",
+      "category": "delivery",
+      "flavor": "The kettle you both bought. It's been on the stove all afternoon.",
+      "delivered_to_satisfies_order": true
+    },
+    "seltzer_cold": {
+      "title": "Cold Seltzer",
+      "category": "delivery",
+      "flavor": "Two cans. Bought yesterday because you knew Reed was coming.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_brush": {
+      "title": "Reed's Brush",
+      "category": "delivery",
+      "flavor": "Reed's favorite brush. They will need it for the painting.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_unfinished_painting": {
+      "title": "The Unfinished Painting",
+      "category": "found",
+      "flavor": "Reed's painting of this apartment. Two-thirds done. Has been for nine months.",
+      "use_effect": { "kind": "tick_sync_if_partner_here", "amount": 2 }
+    },
+    "letter_in_drawer": {
+      "title": "Letter (Drawer)",
+      "category": "found",
+      "flavor": "A letter you wrote and never sent. From last spring.",
+      "use_effect": { "kind": "lose_doubt", "amount": 2 }
+    },
+    "the_polaroid": {
+      "title": "The Polaroid",
+      "category": "found",
+      "flavor": "A polaroid of the two of you on the roof, from before. The corner is folded.",
+      "use_effect": { "kind": "tick_sync_if_partner_here", "amount": 1 }
+    }
+  }
+}

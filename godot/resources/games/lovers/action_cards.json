@@ -1,0 +1,122 @@
+{
+  "scope": "lovers",
+  "notes": "Sasha's lovers loop — PACK / LISTEN / KEEP / RELEASE. The arcana's distinguishing mechanic is the SYNC track: spending time at the same space as Reed (the partner) ticks SYNC; cards that require co-location with Reed gate on it. Verb is the spendable currency.",
+  "cards": [
+    {
+      "id": "pack",
+      "title": "PACK",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Tape another box. The afternoon moves forward. SYNC ticks if Reed is here.",
+      "requires": [ { "kind": "at_pos", "pos": "boxes_pile" } ],
+      "effects": [
+        { "kind": "tick_sync_if_partner_here", "amount": 1 },
+        { "kind": "gain_verb", "amount": 1 }
+      ]
+    },
+    {
+      "id": "listen_lovers",
+      "title": "LISTEN",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Listen to what Reed is saying. SYNC ticks; doubt softens.",
+      "requires": [ { "kind": "partner_at_my_pos" } ],
+      "effects": [
+        { "kind": "tick_sync_if_partner_here", "amount": 1 },
+        { "kind": "lose_doubt", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "listen" }
+      ]
+    },
+    {
+      "id": "keep",
+      "title": "KEEP",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Set something aside that's yours to keep. The room remembers it.",
+      "effects": [
+        { "kind": "gain_verb", "amount": 1 },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "release",
+      "title": "RELEASE",
+      "time_cost": 2,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Hand something back that belongs to Reed. Costs verb; the box closes; SYNC ticks.",
+      "requires": [
+        { "kind": "partner_at_my_pos" },
+        { "kind": "has_verb_at_least", "n": 1 }
+      ],
+      "effects": [
+        { "kind": "spend_verb", "amount": 1 },
+        { "kind": "tick_sync_if_partner_here", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "deliver" }
+      ]
+    },
+    {
+      "id": "duet",
+      "title": "DUET",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "turntable",
+      "flavor": "Sit at the turntable together. The record finishes. SYNC ticks twice.",
+      "requires": [
+        { "kind": "at_pos", "pos": "turntable" },
+        { "kind": "partner_at_my_pos" }
+      ],
+      "effects": [
+        { "kind": "tick_sync_if_partner_here", "amount": 2 }
+      ]
+    },
+    {
+      "id": "paint_with",
+      "title": "PAINT WITH",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "easel_corner",
+      "flavor": "Help Reed finish the painting. They've been stuck on it for nine months. SYNC ticks and the painting is done.",
+      "requires": [
+        { "kind": "at_pos", "pos": "easel_corner" },
+        { "kind": "partner_at_my_pos" }
+      ],
+      "effects": [
+        { "kind": "tick_sync_if_partner_here", "amount": 2 },
+        { "kind": "advance_visitor_step", "step": "sit_with" }
+      ]
+    },
+    {
+      "id": "the_duet",
+      "title": "THE DUET",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 1,
+      "flavor": "Sit down at the same space as Reed and play. SYNC ticks twice; Doubt halves for the rest of this turn.",
+      "requires": [ { "kind": "partner_at_my_pos" } ],
+      "effects": [
+        { "kind": "tick_sync_if_partner_here", "amount": 2 },
+        { "kind": "lose_doubt", "amount": 2 }
+      ]
+    },
+    {
+      "id": "coffee_from_downstairs",
+      "title": "COFFEE FROM DOWNSTAIRS",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "kitchen_corner",
+      "flavor": "Reach down through the floor for a coffee from John. Bus kid runs it up.",
+      "requires": [ { "kind": "at_pos", "pos": "kitchen_corner" } ],
+      "effects": [
+        { "kind": "advance_visitor_schedule", "amount": 1 },
+        { "kind": "gain_verb", "amount": 1 }
+      ]
+    }
+  ]
+}

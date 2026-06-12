@@ -501,6 +501,27 @@ const MAGICIAN_SCENARIOS := [
 ]
 
 
+const LOVERS_SCENARIOS := [
+	{
+		"id": "the_last_boxes",
+		"title": "THE LAST BOXES",
+		"subtitle": "Easy · 2:14 PM · Saturday",
+		"flavor": "A small afternoon. Reed has been here for an hour. The boxes are mostly packed. The painting on the easel is two-thirds done. The diner is busy downstairs but the apartment is quiet."
+	},
+	{
+		"id": "an_afternoon",
+		"title": "AN AFTERNOON",
+		"subtitle": "Medium · 1:14 PM · Two Months Later",
+		"flavor": "Two months later. Reed is back for an afternoon — no boxes this time. Just an afternoon. Frasier is coming over from the diner."
+	},
+	{
+		"id": "the_letter_in_the_drawer",
+		"title": "THE LETTER IN THE DRAWER",
+		"subtitle": "Hard · 10:14 PM · A Year Later",
+		"flavor": "A year later. Reed is back because Sasha is moving out and the apartment is finally going. The landlord has the lease paper. The letter you never sent is under the bed."
+	}
+]
+
 const HIEROPHANT_SCENARIOS := [
 	{
 		"id": "green_phosphor",
@@ -665,6 +686,10 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		arcana_title = "ENTER THE GAUNTLET · EMBER.ASH.REST.BBS"
 		arcana_sub   = "Sysop · Pick a session"
 		scenarios    = HIEROPHANT_SCENARIOS
+	elif arcana == "lovers" or arcana == "vi_lovers":
+		arcana_title = "ENTER THE GAUNTLET · THE APARTMENT"
+		arcana_sub   = "Sasha & Reed · Pick a time"
+		scenarios    = LOVERS_SCENARIOS
 	var title := Label.new()
 	title.text = arcana_title
 	title.add_theme_font_size_override("font_size", 14)
@@ -781,7 +806,9 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		_add_play_button_overlay(vh, "hierophant", "bbs_room", "sysop")
 		return
 	if short_path == "lovers_arcana":
-		_spawn_visualizer(LOVERS_VISUALIZER_SCRIPT); return
+		var vlv := _spawn_visualizer(LOVERS_VISUALIZER_SCRIPT)
+		_add_play_button_overlay(vlv, "lovers", "apartment_above_diner", "sasha")
+		return
 	if short_path == "chariot_arcana":
 		_spawn_visualizer(CHARIOT_VISUALIZER_SCRIPT); return
 	# Tarot Synth — type:"overlay" entry in the gallery index, opens
