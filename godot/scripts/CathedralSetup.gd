@@ -86,9 +86,9 @@ func _collect_mesh_instances(node: Node, acc: Array = []) -> Array:
     return acc
 
 
-func _should_have_collider(name: String) -> bool:
+func _should_have_collider(mesh_name: String) -> bool:
     for hint in COLLIDER_NAME_HINTS:
-        if hint in name:
+        if hint in mesh_name:
             return true
     return false
 
