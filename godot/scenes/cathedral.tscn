@@ -1,70 +1,81 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmpln_cathedral"]
+[gd_scene load_steps=6 format=3 uid="uid://cathedral_clean"]
 
-[ext_resource type="PackedScene" path="res://assets/3d/cathedral/cathedral_interior.glb" id="1_interior"]
-[ext_resource type="PackedScene" path="res://assets/3d/props/workbench_props.glb" id="2_workbench"]
-[ext_resource type="PackedScene" path="res://assets/3d/agents/demon_figurines.glb" id="3_agents"]
-[ext_resource type="PackedScene" path="res://assets/3d/dioramas/regions.glb" id="4_dioramas"]
-[ext_resource type="PackedScene" path="res://assets/3d/atmosphere/atmosphere.glb" id="5_atmosphere"]
-[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="6_fpc"]
-[ext_resource type="Shader" path="res://assets/shaders/gouraud_lambert.gdshader" id="7_shader"]
-[ext_resource type="Script" path="res://scripts/CathedralSetup.gd" id="8_setup"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
-shader = ExtResource("7_shader")
-shader_parameter/brightness = 2.0
-shader_parameter/ambient_floor = 0.05
-shader_parameter/saturation = 1.0
+[ext_resource type="PackedScene" path="res://assets/3d/cathedral/cathedral_interior.glb" id="1_interior_glb"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
 radius = 0.30
 height = 1.70
 
-[sub_resource type="Environment" id="Environment_1"]
+[sub_resource type="BoxShape3D" id="BoxShape_Floor"]
+size = Vector3(28, 0.5, 22)
+
+[sub_resource type="BoxShape3D" id="BoxShape_Wall_EW"]
+size = Vector3(0.5, 8, 22)
+
+[sub_resource type="BoxShape3D" id="BoxShape_Wall_NS"]
+size = Vector3(28, 8, 0.5)
+
+[sub_resource type="Environment" id="Env_Cathedral"]
 background_mode = 1
 background_color = Color(0.04, 0.03, 0.02, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.32, 0.28, 0.22, 1)
-ambient_light_energy = 0.80
-fog_enabled = false
+ambient_light_color = Color(0.35, 0.30, 0.24, 1)
+ambient_light_energy = 0.8
 
 [node name="Cathedral" type="Node3D"]
-script = ExtResource("8_setup")
-add_colliders = true
-use_standard_material = true
-albedo_brightness = 2.2
-brightness = 2.0
-ambient_floor = 0.05
-saturation = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1")
+environment = SubResource("Env_Cathedral")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 8, 0)
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 10, 0)
 light_color = Color(1, 0.95, 0.85, 1)
 light_energy = 1.5
 shadow_enabled = false
 
-[node name="WarehouseFill" type="OmniLight3D" parent="."]
+[node name="RoomFill" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-light_color = Color(0.98, 0.82, 0.55, 1)
-light_energy = 6.0
-omni_range = 20.0
+light_color = Color(1, 0.85, 0.6, 1)
+light_energy = 10.0
+omni_range = 30.0
 shadow_enabled = false
 
-[node name="Interior" parent="." instance=ExtResource("1_interior")]
+[node name="Interior" parent="." instance=ExtResource("1_interior_glb")]
 
-[node name="WorkbenchProps" parent="." instance=ExtResource("2_workbench")]
+[node name="FloorBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
-[node name="DemonFigurines" parent="." instance=ExtResource("3_agents")]
+[node name="FloorShape" type="CollisionShape3D" parent="FloorBody"]
+shape = SubResource("BoxShape_Floor")
 
-[node name="Dioramas" parent="." instance=ExtResource("4_dioramas")]
+[node name="WallEast" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 4, 0)
 
-[node name="Atmosphere" parent="." instance=ExtResource("5_atmosphere")]
+[node name="WallEastShape" type="CollisionShape3D" parent="WallEast"]
+shape = SubResource("BoxShape_Wall_EW")
+
+[node name="WallWest" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 4, 0)
+
+[node name="WallWestShape" type="CollisionShape3D" parent="WallWest"]
+shape = SubResource("BoxShape_Wall_EW")
+
+[node name="WallNorth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -9.25)
+
+[node name="WallNorthShape" type="CollisionShape3D" parent="WallNorth"]
+shape = SubResource("BoxShape_Wall_NS")
+
+[node name="WallSouth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 9.25)
+
+[node name="WallSouthShape" type="CollisionShape3D" parent="WallSouth"]
+shape = SubResource("BoxShape_Wall_NS")
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 7.0)
-script = ExtResource("6_fpc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2_fpc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape_Player")
