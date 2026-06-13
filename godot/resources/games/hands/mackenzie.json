@@ -1,0 +1,19 @@
+{
+  "id": "mackenzie",
+  "name": "Mackenzie Roberts",
+  "subtitle": "world's okayest weaver",
+  "portrait": "assets/gallery/mackenzie_face.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "picking_up_the_threads",
+    "label": "Picking Up the Threads",
+    "description": "Once per game. Mackenzie sits at the loom and picks up the threads where she left them. The most recent visitor's connection progress advances by 1 step, and stagnation does not tick this turn. She did not weave for fourteen months. Then she did.",
+    "uses_per_game": 1
+  },
+  "starting_hand": ["walk", "focus", "search", "short_rest", "pour_coffee", "set_the_wrench_down", "hold_him", "look_at_the_garden"],
+  "save_witness_rewards": null,
+  "notes": "Mackenzie Roberts. Library-slash-daycare volunteer. Weaver. Older brother lost in the sinkhole three years ago. Pregnancy lost last year. Lives with Philip on the edge of what's left of Graustark in a small house cobbled together from salvaged lumber, secondhand furniture, and the kind of stubbornness Philip's mother called the family curse. Their love is the sturdy slightly warped beam holding the whole leaky structure up. Source: vol5 ch6 Lovers."
+}

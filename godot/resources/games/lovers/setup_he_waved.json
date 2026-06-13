@@ -1,0 +1,82 @@
+{
+  "id": "he_waved",
+  "arcana": "vi_lovers",
+  "location": "roberts_house",
+  "hand": "mackenzie",
+  "title": "HE WAVED",
+  "subtitle": "The Roberts House · 8:45 AM · A Saturday Morning · The Polaroid",
+  "difficulty": "medium",
+  "epigraph_upright": "The boy at the door at 8:47 AM. The station wagon at the curb. The envelope crumpled in the way envelopes are crumpled when a person has held them too tightly while deciding whether to deliver them. A Polaroid dated June 2009. Houston Street. Your brother walking with his back to the camera. On the back, in handwriting you do not recognize: He waved.",
+  "epigraph_reversed": "Philip does not, today, find the words. The envelope sits unopened in the bowl with the pinecones. Mrs. Theriot drives away at nine-eleven without sending the boy back to ask the question she was clearly considering.",
+  "scene_description": "8:45 AM. SYNC at 1. The drip is the drip. Mrs. Theriot's station wagon will be at the curb at turn 2; the boy will deliver the envelope. The Polaroid is the central beat — opening it advances doubt sharply, loses stagnation, advances Mrs. Theriot toward connection. Elicia is reachable by phone (turn 4). The win is receiving the Polaroid, making the call you need to make, and holding the morning together.",
+  "direction_hint": "Receive the envelope. Open the Polaroid. Connect with Mrs. Theriot, Elicia, and Philip. SYNC to 5. Leap with Philip at the same threshold.",
+  "opening_log_lines": [
+    "8:45 AM. The drip is the drip. Philip is at the faucet.",
+    "You walk back from the garden, the smell of damp earth and library paste on your sleeves.",
+    "The radio finishes the seismic report and goes to commercial. Alberto's place."
+  ],
+  "starting_state": {
+    "player_pos": "kitchen_table",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 2,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "verb": 1,
+    "starting_sync": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "pour_coffee", "set_the_wrench_down", "hold_him", "look_at_the_garden", "today_the_drip_can_win"]
+  },
+  "visitors_present_at_start": ["philip_roberts"],
+  "visitor_schedule": [
+    { "visitor": "the_boy_with_the_envelope", "arrival_turn": 2, "arrival_space": "front_door" },
+    { "visitor": "mrs_theriot",               "arrival_turn": 2, "arrival_space": "driveway" },
+    { "visitor": "elicia_phone",              "arrival_turn": 4, "arrival_space": "kitchen_table" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_sync_at_least": 5,
+    "require_partner_at_my_pos_at_leap": true,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the morning holds, narrowly.",                        "tick_per_turn": 1, "effects": [] },
+    { "level": 4, "label": "the envelope is not, yet, open.",                     "tick_per_turn": 1, "effects": [] },
+    { "level": 7, "label": "mrs. theriot is still at the wheel. the boy is back in the car.","tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "today the drip won.",                                "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "mackenzie back from the garden. the coffee is hot.",                "effects": [] },
+    { "level": 3, "label": "the boy on the porch with the envelope. you have not yet read it.","effects": [] },
+    { "level": 5, "label": "the brother waved. he never waved at anybody he didn't know.",     "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the tapestry has loose threads.",                                   "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door", "label": "FRONT DOOR", "ending_lore_token": "leap_onto_the_porch_after",  "visible_from_start": true },
+    { "id": "back_door",  "label": "BACK DOOR",  "ending_lore_token": "leap_into_the_garden_after", "visible_from_start": true },
+    { "id": "driveway",   "label": "DRIVEWAY",   "ending_lore_token": "leap_to_the_curb_after",     "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 9,
+  "notes": "Medium-mode Lovers. The canonical ch6 morning. The Boy and Mrs. Theriot arrive at turn 2. The Boy is preoccupied (hard mood candidate); Mrs. Theriot is lonely (hard mood candidate). Elicia is reachable on the phone turn 4 (intense, hard mood). Win is 3 connections + 1 hard mood + SYNC to 5 + paired leap. The OPEN THE ENVELOPE card is buyable from the FRONT HALLWAY — opening the Polaroid is the moment the morning becomes a different morning.",
+  "ambient_pool": [
+    "the drip has gotten louder. you have stopped noticing for stretches.",
+    "from the kitchen window: the bird is no longer on the fence wire. the seedlings are still there.",
+    "the radio jingle for d'ambrosio's houston location plays for the second time this morning.",
+    "the bowl of pinecones on the front hallway table has four octobers of dust on it. the dust is also part of the bowl now."
+  ],
+  "ambient_every_n": 2
+}

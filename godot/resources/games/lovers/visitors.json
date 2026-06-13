@@ -1,130 +1,111 @@
 {
-  "scope": "_flavor_pool",
-  "notes": "DEPRECATED — preserved as visitor / flavor pool only. Sasha + Reed in the apartment above the diner were Claude-invented; canon has the Lovers as Mackenzie + Philip Roberts on cursed (sinkhole-edge) ground (vol5 ch6, with the returned Polaroid of Mackenzie's brother). These visitor entries remain as a writing reservoir for re-use as ambient cast in canonical scenarios — the bus kid bringing coffee can surface in a D'Ambrosio's scenario, the upstairs neighbor can be in any second-floor scene, Reed/Sasha can be re-purposed as a couple in a different chapter's background. NOT loaded as an active arcana visitor roster.",
+  "scope": "lovers",
+  "notes": "Mackenzie's cast at the Roberts house, drawn from vol5 ch6 Lovers canon. Philip is the partner (is_lovers_partner: true) — he is in every scenario, orbiting the kitchen and the loom and the fence-and-faucet axis. The Boy, Mrs. Theriot, Mackenzie's sister, Elicia (phone-only), and Sammy (phone-only) are scheduled or conditional. The brother's absence is rendered via the Polaroid, which is an item, not a visitor. The previous lovers/visitors.json content (Sasha/Reed/the bus kid/etc.) has been moved to the flavor pool; see git history.",
   "visitors": [
     {
-      "id": "reed",
-      "name": "Reed",
-      "scenarios": ["the_last_boxes", "an_afternoon", "the_letter_in_the_drawer"],
-      "arrival": { "kind": "on_board_at_start", "pos": "boxes_pile" },
-      "lore_token": "reed_was_here_today",
-      "lore_text": "The one who used to live here. Here today for the last of the boxes — six of them, the tape on three of them re-applied because the tape they brought didn't stick in the cold of the unheated stairwell. They have been here for an hour and forty minutes when the scenario starts. The painting on the easel is theirs and they keep glancing at it on the way to and from the bed corner. They have not committed, yet, to either finishing it or leaving it.",
-      "accent": "#d8a060",
+      "id": "philip_roberts",
+      "name": "Philip Roberts",
+      "scenarios": ["the_faucet_wins", "he_waved", "today_the_drip_can_win"],
+      "arrival": { "kind": "on_board_at_start", "pos": "kitchen_faucet" },
+      "lore_token": "philip_held_her",
+      "lore_text": "Philip Roberts. Fence-mender. Faucet-fixer. Solace in physical labor. The kind of man whose mother described his stubbornness, in her last lucid letter, as the family curse. Married to Mackenzie. Cried briefly in the sink the night she started weaving again so that she would not hear. Walks through the kitchen, the back hallway, the spare room with the loom, the porch, the back yard — orbiting her quietly. The partner who is is_lovers_partner; the SYNC ticks when you and Philip are at the same space at the end of a turn.",
+      "accent": "#88b87a",
       "mood": "preoccupied",
       "patience": 12,
       "is_lovers_partner": true,
       "steps": {
-        "greet":   "You make eye contact across the boxes. They acknowledge you. The acknowledgment is a half-nod. The half-nod is the kind that has been the half-nod for the last eight months.",
-        "listen":  "They tell you what they were thinking about on the walk over — that the diner had the lights on at 2 PM in a way that meant John was the one running it tonight, not Frank; that the alley smelled like rosemary which was wrong for January.",
-        "deliver": "You bring them a coffee from the kitchen corner. The mug is the one they used to take in the morning, with the small chip near the rim where Reed always put their thumb. They take it. They put their thumb on the chip.",
-        "sit_with": "You sit with them on the bed corner. The radiator clicks. The window above the bed has been open a crack all morning. The afternoon is the afternoon. Neither of you says anything for two minutes. Two minutes counts."
+        "greet":   "He is at the faucet. He looks up. The wrench is in his hand. He sets it down.",
+        "listen":  "He listens. He listens the way he listens, which is by not interrupting. The thing you are saying gets to the end before he says anything.",
+        "deliver": "He hands you the dishtowel. It has been clean an hour and is no longer. You use it anyway. He uses everything for everything.",
+        "sit_with": "He crosses the kitchen and puts his arms around you from behind. You let him. The radio finishes its weather report and moves on to the obituaries. You stand like that for a long time."
       }
     },
     {
-      "id": "bus_kid_messenger",
-      "name": "Bus Kid (from downstairs)",
-      "scenarios": ["the_last_boxes", "an_afternoon"],
-      "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "kitchen_corner" },
-      "lore_token": "bus_kid_brought_coffee",
-      "lore_text": "The diner's bus kid — they are sixteen and they have been working at D'Ambrosio's for three months — comes up the back stairs with two coffees in a brown paper tray. John sent them up. John does this whenever he hears Reed is over.",
-      "accent": "#7cffb0",
-      "mood": "talkative",
-      "patience": 8,
-      "helper": true,
-      "steps": {
-        "greet":   "They knock once and let themselves in. They are out of breath because the stairs are steeper than they look.",
-        "listen":  "They tell you john said hi. They tell you john also said the coffee was on the house and that the bus kid wasn't supposed to mention that part.",
-        "deliver": "You take the coffees. They are still hot — the brown paper tray is warm in your hands. The bus kid runs back down before you can tip them; they have a counter full of plates downstairs waiting for them.",
-        "sit_with": "They lean on the kitchen counter for a minute. They look at Reed. They look at you. They don't comment on either. They leave the way they came in. The stairwell door clicks behind them."
-      }
-    },
-    {
-      "id": "the_neighbor_upstairs",
-      "name": "The Upstairs Neighbor",
-      "scenarios": ["the_last_boxes"],
-      "arrival": { "kind": "scheduled", "turn": 3, "from": "roof_access", "to": "roof_access" },
-      "lore_token": "neighbor_came_down_the_roof",
-      "lore_text": "Comes down the roof-access staircase because her stove is out — pilot light, third time this winter — and she needs to borrow a burner. She is sixty-two and she has lived in the apartment upstairs since '88. She has known both of you the entire time. She sees Reed. She sees the boxes. She does not comment. She knows when not to comment; the not-commenting is also a kindness.",
-      "accent": "#9b5fd3",
+      "id": "the_boy_with_the_envelope",
+      "name": "The Boy with the Envelope",
+      "scenarios": ["he_waved", "today_the_drip_can_win"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "driveway", "to": "front_door" },
+      "lore_token": "the_envelope_arrived",
+      "lore_text": "A boy of maybe eight or nine. Holds the envelope in both hands the way a child holds a small dead bird he has been instructed to deliver but has not been told what for. His grandmother sent him. She said she was sorry. She said the Robertses would know what for. He walks back to the station wagon at the curb when his errand is complete; he does not, today, look back.",
+      "accent": "#a8e89c",
       "mood": "preoccupied",
-      "patience": 6,
+      "patience": 3,
       "steps": {
-        "greet":   "She knocks at the roof-access door. The knock is the same knock she has used since '88 — three taps, paused, one tap.",
-        "listen":  "She asks for the burner. She does not look at Reed. She has the small saucepan in her left hand and the can of soup in her right.",
-        "deliver": "You set up the burner for her. She nods. She empties the can. She stirs.",
-        "sit_with": "You sit with her in the kitchen corner while her soup heats. She does not look at Reed. She mentions, to the wall, that the radiator in her bedroom has been clicking louder than usual. She is doing the thing of saying weather to fill the space, and the weather is the kindness."
+        "greet":   "He stands on the porch. Mr. Roberts? Philip answers. The boy says: yeah.",
+        "listen":  "He delivers the sentence verbatim. My grandma said to give you this. She said she's sorry. She said you'd know what for. He has rehearsed it once in the car.",
+        "deliver": "He thrusts out the envelope. Philip takes it. The boy turns. He walks back down the steps, across the gravel drive, to the station wagon at the curb.",
+        "sit_with": "He does not sit with you. He has the errand and only the errand. Mrs. Theriot gives him a tight little wave from the wheel as he reaches the car. He gets in. They pull away."
       }
     },
     {
-      "id": "the_old_friend_visiting",
-      "name": "Old Friend (visiting)",
-      "scenarios": ["an_afternoon", "the_letter_in_the_drawer"],
-      "lore_token": "friend_dropped_by",
-      "arrival": { "kind": "scheduled", "turn": 3, "from": "front_door", "to": "bed_corner" },
-      "lore_text": "A friend from before — knew you both as a couple, knows you both still as separate people, knows neither version perfectly. Comes up the stairs to drop off a book she borrowed in '17 and is finally returning, which is the cover for the visit. The book is a copy of a novel she did not finish.",
+      "id": "mrs_theriot",
+      "name": "Mrs. Theriot (in the station wagon)",
+      "scenarios": ["he_waved", "today_the_drip_can_win"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "driveway", "to": "driveway" },
+      "lore_token": "mrs_theriot_did_not_come_to_the_porch",
+      "lore_text": "An older woman in a station wagon at the curb. Philip half-recognizes her — from the volunteer crew that cleared the storm drains last spring, maybe. She has been holding onto the photograph since June 2009 — sixteen years and three months. She does not get out of the car. She waits. She gives the boy a tight little wave when he is finished. If somebody approaches the station wagon, she may, depending on the morning, lower the window.",
       "accent": "#c87633",
+      "mood": "lonely",
+      "patience": 5,
+      "steps": {
+        "greet":   "You walk down the gravel drive to the station wagon. The window is up. She is sitting at the wheel with both hands on it, in the ten-and-two she was taught in driver's ed.",
+        "listen":  "She lowers the window. She says: I found it last week, in a box of my husband's. I should have given it to you years ago. I am sorry it has been this long. The boy is my grandson. He's a good boy. He delivers things for me.",
+        "deliver": "You ask the question. Who took it. She says: my husband. He took a lot of pictures. He never told me which ones, after, he was sorry he had taken. She says: I think he was sorry he had taken this one.",
+        "sit_with": "She closes her eyes for a moment. She opens them. She says: do you want to tell me anything to tell him. He has been gone seven years. She is asking, not seriously. You shake your head. She nods. She rolls the window back up. She drives away."
+      }
+    },
+    {
+      "id": "mackenzies_sister",
+      "name": "Mackenzie's Sister (with a casserole, with a list)",
+      "scenarios": ["the_faucet_wins", "today_the_drip_can_win"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "driveway", "to": "front_hallway" },
+      "lore_token": "the_sister_came_through_the_front_door_without_knocking",
+      "lore_text": "Mackenzie's surviving sister. Comes once a month with a casserole of her own and a list of complaints about the husband. Lets herself in through the front door because that is what she has done since she was nine. The casserole today is enchiladas. The husband, today, is a longer-than-usual paragraph.",
+      "accent": "#9b5fd3",
       "mood": "talkative",
       "patience": 7,
       "steps": {
-        "greet":   "They wave from the door. They look at Reed first and at you second. Then they correct that and they look at you first and at Reed second. The correction is visible.",
-        "listen":  "They tell a story about the year you both lived here — the night the radiator hissed for forty minutes and you ordered a pizza at midnight. They get the toppings wrong. Reed corrects them with a laugh. The laugh is the first laugh in the apartment today.",
-        "deliver": "You hand them back the book they came for. They hand you a different book, which is the one they actually wanted to give you, which is the one they could not write a card for.",
-        "sit_with": "You all three sit on the bed corner. The bed corner is now three people. The friend leaves first; they always do, by design, because they understand the room. They hug both of you on the way out. They hug you both for the same length of time."
+        "greet":   "She lets herself in. She says, before she sees you: it's me. She is carrying a foil-wrapped 9x13 with both hands. She sets it on the kitchen table without asking.",
+        "listen":  "She gets to the part about the husband. She has, by now, written him out of the will twice and rewritten him back in three times. You listen. You have heard this paragraph in three previous versions; this version has a new line about the lawn mower.",
+        "deliver": "You take the casserole out of her hands. You put it in the fridge. You ask if she wants coffee. She does. She drinks it standing because she does not, today, plan to stay long.",
+        "sit_with": "You sit with her at the kitchen table for ten minutes. She asks, eventually, about the Polaroid on the front hallway table. You tell her. She does not say anything for a long count of nine. Then she says: I'll bring extra dinner Friday. She means it. She'll do it."
       }
     },
     {
-      "id": "the_landlord_check_in",
-      "name": "The Landlord (check-in)",
-      "scenarios": ["the_letter_in_the_drawer"],
-      "arrival": { "kind": "scheduled", "turn": 4, "from": "front_door", "to": "kitchen_corner" },
-      "lore_token": "landlord_signed_the_paper",
-      "lore_text": "Stops by because she heard Reed was here from John in the diner. She has a paper she needs both of you to sign — the final lease-handover form, the one that takes Reed off the lease. She has owned this building since '79; she is one of the last small landlords left on the block.",
+      "id": "elicia_phone",
+      "name": "Elicia Duchane (phone)",
+      "as_hand_id": "elicia",
+      "scenarios": ["he_waved", "today_the_drip_can_win"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "phone_call", "to": "kitchen_table" },
+      "lore_token": "elicia_called_back",
+      "lore_text": "Elicia Duchane. Their brilliant, chaotic, perpetually self-destructing friend. The last breakup voicemail sounded less like heartbreak and more like the prelude to an interdimensional incident. Philip texted Mackenzie 'casserole?' that night; Mackenzie texted back 'casserole.' The casserole has been in the freezer since Friday. If Mackenzie calls her, Elicia will pick up on the seventh ring. The seventh ring is the ring at which she has decided to be findable today.",
+      "accent": "#a87aa0",
+      "mood": "intense",
+      "patience": 4,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "You call. Seven rings. She picks up. Her voice is the voice you have known for nine years. It is, today, an older version of that voice than it was on Friday.",
+        "listen":  "She talks for four minutes without you saying anything. She talks past the breakup. She talks about something she filmed last night. Something honest, she says. She does not say what.",
+        "deliver": "You tell her about the Polaroid. She is quiet on the other end of the line for a long count. She says: I have an idea. She does not, today, say what the idea is. She says she will tell you Tuesday.",
+        "sit_with": "You both stay on the line for a minute past the sentence that should have ended the call. Neither of you says goodbye. She says: thank you for not having pretended not to be home. She means the casserole, which she returned, which neither of you has discussed. You say: I know. You both hang up."
+      }
+    },
+    {
+      "id": "sammy_phone",
+      "name": "Sammy (bartender, phone)",
+      "scenarios": ["today_the_drip_can_win"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "phone_call", "to": "kitchen_table" },
+      "lore_token": "sammy_called_back",
+      "lore_text": "Sammy. Sixty-one years old. Bartender at D'Ambrosio's since the boat opened. The kind of long-suffering Catholic loyalty that the family has, over the decades, both relied on and quietly mocked. Philip ran into him at the hardware store last week. Sammy told him about the man at D'Ambrosio's asking weird questions about the old days. The man left a card. If Philip calls, Sammy will pick up. He always does.",
       "accent": "#a99070",
       "mood": "preoccupied",
       "patience": 5,
+      "arrives_as": "phone_voice",
       "steps": {
-        "greet":   "She has the paper in a folder. She has a pen — a Bic, the kind she always uses, the kind John keeps in a cup at the diner register.",
-        "listen":  "She explains the form. You both already know. She explains it anyway because that is how she does this; she has explained final lease handovers to fourteen tenants in thirty-six years.",
-        "deliver": "You hand her the signed paper. Both your signatures are on it. Reed's is in pencil first and then ink on top, because Reed always signs in pencil first.",
-        "sit_with": "You sit at the kitchen counter with her while she finishes her coffee. She leaves the paper on the counter for you to file. She squeezes your shoulder once on the way out. She does not squeeze Reed's. Both omissions are intentional."
-      }
-    },
-    {
-      "id": "frasier_visiting",
-      "name": "Frasier (visiting)",
-      "as_hand_id": "frasier",
-      "swap_target_for_hand": "frasier_visiting",
-      "scenarios": ["an_afternoon"],
-      "arrival": { "kind": "scheduled", "turn": 4, "from": "front_door", "to": "easel_corner" },
-      "lore_token": "frasier_looked_at_the_painting",
-      "lore_text": "Frasier comes up the stairs from the diner because he heard Reed was here. He has a small piece of balsa wood in his coat pocket — he was walking past on the bank when he turned in. He stands at the easel for a long time looking at the painting and he says one thing about it that lands.",
-      "accent": "#c87633",
-      "mood": "preoccupied",
-      "patience": 7,
-      "steps": {
-        "greet":   "He waves from the easel. He is in his diner clothes — apron under the coat. His hands are clean; he has been on the front of house tonight, not the grill.",
-        "listen":  "He says he's been making a model of this room. He has been making models of every room he has loved for nineteen years. The model is balsa, 1:24 scale, and it sits on a shelf in his workshop. He has not put figures in it yet.",
-        "deliver": "You hand him a coffee. He drinks it standing. He looks at the painting. He says the painting needs a quarter-inch of red in the upper-left and that the quarter-inch will finish it.",
-        "sit_with": "You sit at the easel with him. He looks at the painting. He doesn't speak for a long while. Reed comes over from the boxes pile and stands behind him. The three of you look at the painting together. Reed picks up a brush. They put the brush down again. The room holds the picking-up."
-      }
-    },
-    {
-      "id": "sasha_as_visitor",
-      "name": "Sasha (in the doorway)",
-      "as_hand_id": "sasha",
-      "swap_target_for_hand": "sasha_as_visitor",
-      "scenarios": ["the_last_boxes", "an_afternoon", "the_letter_in_the_drawer"],
-      "arrival": { "kind": "scheduled", "turn": 5, "from": "front_door", "to": "front_door" },
-      "lore_token": "sasha_came_to_the_door",
-      "lore_text": "When the player is not Sasha, Sasha comes back up the stairs from a brief errand — they stepped out to give Reed and the room some space, the kind of stepping out you do on a day like this. They come back with two bagels from the bakery down the block. When the player IS Sasha, this entry swaps out for whoever is in the doorway.",
-      "accent": "#d8a060",
-      "mood": "preoccupied",
-      "patience": 8,
-      "steps": {
-        "greet":   "Sasha is in the doorway. They came back up the stairs. They have the bagel bag in their left hand. They are deciding whether to step in or wait at the threshold.",
-        "listen":  "Sasha tells you what was downstairs. John in the diner. The bus kid running plates. The smell of the dish station which is the smell of every winter afternoon on this block.",
-        "deliver": "You hand them their key. They take it. They have not used the key in seven weeks. They put it in the pocket of their coat.",
-        "sit_with": "Sasha sits on the bed corner. The room is the room. Reed is at the easel. The three of you are at three corners of the apartment and the apartment, for the first time today, is set up the way it is set up when three people are about to be honest with each other."
+        "greet":   "Sammy picks up on the second ring. Phil. He says it the way he said it at the hardware store. There is no question in it; he was expecting the call.",
+        "listen":  "Philip tells him about the Polaroid. Sammy listens. He does not interrupt. He says, when Philip is done: that's the year. He doesn't say which year. They both know.",
+        "deliver": "Sammy tells him about the card. The card said Mr. D. Dean. Consulting. Dispute resolution and legacy planning. The man left a hundred-dollar bill on the table for nothing. The man left through the side door, not the front.",
+        "sit_with": "They stay on the line for a beat. Sammy says: Phil, if it's the same thing — if any of it is the same thing — you call me. I don't know what I can do but you call me. Philip says: I will. Sammy says: I mean it. Philip says: I know."
       }
     }
   ]

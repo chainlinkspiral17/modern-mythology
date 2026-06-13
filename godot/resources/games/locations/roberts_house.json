@@ -1,0 +1,177 @@
+{
+  "id": "roberts_house",
+  "title": "THE ROBERTS HOUSE",
+  "subtitle": "sanctuary on cursed ground · Vol 5 · Ch VI · The Lovers",
+  "notes": "Mackenzie and Philip Roberts' small house on the edge of what's left of Graustark. Cobbled together from salvaged lumber, secondhand furniture, and the kind of stubbornness Philip's mother called the family curse. Spectacularly poor in actual currency; rich in driftwood sculptures and thriving sourdough starter. The kitchen faucet has dripped since 1973, give or take. The back hallway holds the wordless tapestry Mackenzie wove after her brother's death. The front hallway table holds the keys, the unopened mail, the bowl of pinecones from a hike four Octobers ago, and — as of this morning — a Polaroid dated June 2009. Twelve spaces. Three thresholds (FRONT DOOR, BACK DOOR, DRIVEWAY).",
+  "ambient_pool": [
+    "the kitchen faucet drips. it has been dripping since 1973, give or take.",
+    "the unidentifiable bird is outside the window, probably plotting the demise of mackenzie's tomato seedlings.",
+    "the radio on the windowsill crackles between local news and a jingle for d'ambrosio's new houston location.",
+    "the casserole returned uneaten on friday is still in the freezer.",
+    "philip's wrench is on the counter. it has been on the counter for an hour.",
+    "the morning light through the screen door makes a soft grid on the worn pine floor."
+  ],
+  "ambient_every_n": 3,
+  "spaces": [
+    {
+      "id": "kitchen_faucet",
+      "label": "KITCHEN FAUCET",
+      "kind": "station",
+      "pos_xy": [300, 380],
+      "flavor": "the sink · philip's metronome · pipe dope, plumber's tape, prayer · the drip is the drip.",
+      "arrival_lines": [
+        "the faucet drips. you don't know what beat you're on; you've never counted.",
+        "the wrench is on the counter. philip set it down with the small careful gesture of a man who just lost an argument he was not, technically, having out loud."
+      ]
+    },
+    {
+      "id": "kitchen_window",
+      "label": "KITCHEN WINDOW",
+      "kind": "station",
+      "pos_xy": [450, 280],
+      "flavor": "the window over the sink · looking out at the garden · the unidentifiable bird, the tomato seedlings.",
+      "arrival_lines": [
+        "the bird is back. you can see it on the fence wire, deliberating.",
+        "the tomato seedlings have grown a quarter-inch since yesterday."
+      ]
+    },
+    {
+      "id": "kitchen_table",
+      "label": "KITCHEN TABLE",
+      "kind": "station",
+      "pos_xy": [550, 420],
+      "flavor": "the kitchen table · your world's okayest weaver mug · philip's clean-an-hour-ago dishtowel.",
+      "arrival_lines": [
+        "the mug is half-empty. you decide whether to top it off or to start over.",
+        "the dishtowel on the chair has been clean an hour and is no longer. philip uses it for everything."
+      ]
+    },
+    {
+      "id": "front_hallway",
+      "label": "FRONT HALLWAY",
+      "kind": "station",
+      "pos_xy": [700, 480],
+      "flavor": "the front hallway · the small table by the door · keys, unopened mail, the bowl of pinecones from four octobers ago, and the polaroid.",
+      "arrival_lines": [
+        "the morning light through the screen door makes a soft grid on the worn pine floor.",
+        "the polaroid is on the table. face up. you have changed your mind about that twice."
+      ]
+    },
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "kind": "threshold",
+      "pos_xy": [900, 540],
+      "flavor": "the front door · screen and storm · the porch · where the boy stood.",
+      "arrival_lines": [
+        "the screen door's hinge needs oil. you have not, in seven years, oiled it.",
+        "the porch is empty now. a station wagon was at the curb fourteen minutes ago."
+      ]
+    },
+    {
+      "id": "driveway",
+      "label": "DRIVEWAY",
+      "kind": "threshold",
+      "pos_xy": [1050, 620],
+      "flavor": "the gravel drive · the road back into what's left of graustark.",
+      "arrival_lines": [
+        "the gravel crunches in the way gravel crunches when you are deciding whether to drive somewhere.",
+        "from here you can see the road that goes past the sinkhole site. you do not look at it long."
+      ]
+    },
+    {
+      "id": "living_room",
+      "label": "LIVING ROOM",
+      "kind": "station",
+      "pos_xy": [550, 580],
+      "flavor": "the living room · the couch with the throw mackenzie wove · philip's books in stacks · the window onto the back yard.",
+      "arrival_lines": [
+        "the couch is the couch. the throw is the one mackenzie made three winters ago and uses every night.",
+        "philip's books are in stacks. one of them is open face-down on the arm of the couch."
+      ]
+    },
+    {
+      "id": "the_loom",
+      "label": "THE LOOM",
+      "kind": "station",
+      "pos_xy": [400, 580],
+      "flavor": "the spare room · the loom · the work in progress · the threads picked back up.",
+      "arrival_lines": [
+        "the loom is in the corner. the work in progress is at three inches. nobody has seen the finished piece yet because there is no finished piece yet.",
+        "you sit at the bench. you do not, today, weave. you sit."
+      ]
+    },
+    {
+      "id": "back_hallway",
+      "label": "BACK HALLWAY",
+      "kind": "station",
+      "pos_xy": [400, 200],
+      "flavor": "the back hallway · the tapestry on the wall · the way to the back door.",
+      "arrival_lines": [
+        "the back hallway smells, faintly, of the cedar closet at the far end.",
+        "the wordless tapestry is on the wall. you walk past it every day and you do not always look at it."
+      ]
+    },
+    {
+      "id": "the_tapestry",
+      "label": "THE TAPESTRY",
+      "kind": "station",
+      "pos_xy": [200, 200],
+      "flavor": "the wordless tapestry · woven in the months after the sinkhole · depicting nothing recognizable · the imperfection that distinguishes a piece made by a person.",
+      "arrival_lines": [
+        "the tapestry hangs at eye level. you wove it in the months after the sinkhole. you did not weave for fourteen months after.",
+        "from the right angle the wordless shape almost looks like a person walking with their back to the camera."
+      ]
+    },
+    {
+      "id": "back_door",
+      "label": "BACK DOOR",
+      "kind": "threshold",
+      "pos_xy": [550, 100],
+      "flavor": "the back door · stubbornly latched · the back yard, the garden, the salvaged driftwood stacked under the eaves.",
+      "arrival_lines": [
+        "the latch sticks. it has stuck since the renovation in '21.",
+        "from the door you can hear the bird and the faucet at once."
+      ]
+    },
+    {
+      "id": "garden",
+      "label": "GARDEN",
+      "kind": "station",
+      "pos_xy": [780, 130],
+      "flavor": "the garden · tomato seedlings, basil, a rosemary bush philip's mother gave you · the salvaged driftwood pieces stacked under the eaves.",
+      "arrival_lines": [
+        "the soil smells like damp earth and the library paste that clings to your volunteer clothes.",
+        "the driftwood pieces are stacked under the eaves. philip has been working on a sculpture you have not, you suspect, been allowed to see yet."
+      ]
+    }
+  ],
+  "adjacency": {
+    "kitchen_faucet":   ["kitchen_window", "kitchen_table"],
+    "kitchen_window":   ["kitchen_faucet", "kitchen_table"],
+    "kitchen_table":    ["kitchen_faucet", "kitchen_window", "front_hallway"],
+    "front_hallway":    ["kitchen_table", "front_door", "living_room", "back_hallway"],
+    "front_door":       ["front_hallway", "driveway"],
+    "driveway":         ["front_door"],
+    "living_room":      ["front_hallway", "the_loom"],
+    "the_loom":         ["living_room", "back_hallway"],
+    "back_hallway":     ["front_hallway", "the_loom", "the_tapestry", "back_door"],
+    "the_tapestry":     ["back_hallway"],
+    "back_door":        ["back_hallway", "garden"],
+    "garden":           ["back_door"]
+  },
+  "sync_track": {
+    "completion_threshold": 6,
+    "label": "THE MOMENT HELD",
+    "notes": "Mackenzie and Philip's positive doom-clock. Engine variable: _sync. Ticks UP when Mackenzie and Philip are at the same space at the end of a turn (the partner_at_my_pos predicate). Threshold means they have held the moment together long enough to absorb whatever the morning brings. They are not coming together from estrangement (the canonical chapter is intimate, not fractured); they are holding through what the world is sending at them. The flavor 'sync' here is steadier than synchrony — it's the moment of being in the same room when the news comes through.",
+    "ladder": [
+      { "level": 0, "label": "philip is at the faucet. mackenzie is in the garden. the morning is still loose.","intensity": 0.0 },
+      { "level": 1, "label": "you have been in the same room briefly.",                                          "intensity": 0.15 },
+      { "level": 2, "label": "two beats together.",                                                              "intensity": 0.30 },
+      { "level": 3, "label": "halfway · the coffee is on the table for both of you.",                            "intensity": 0.50 },
+      { "level": 4, "label": "you have not moved from the kitchen in a while.",                                  "intensity": 0.70 },
+      { "level": 5, "label": "one more beat and the morning will hold.",                                         "intensity": 0.85 },
+      { "level": 6, "label": "philip's arms are around you from behind. the morning holds.",                     "intensity": 1.0 }
+    ]
+  }
+}

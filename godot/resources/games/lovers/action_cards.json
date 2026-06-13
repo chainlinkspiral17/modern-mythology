@@ -1,0 +1,148 @@
+{
+  "scope": "lovers",
+  "notes": "Mackenzie's loop. The verbs are the small domestic mendings the chapter renders: pour coffee, set the wrench down, hold him, look at the garden, sit at the loom. Engine: VERB is the spendable currency (Mackenzie's quiet attention); SYNC (engine var _sync) is the positive doom-clock. The partner_at_my_pos predicate fires when Philip is at the same space. Stagnation and doubt are the negative tracks; the drip is the stagnation pulse.",
+  "cards": [
+    {
+      "id": "pour_coffee",
+      "title": "POUR COFFEE",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Pour from the carafe into the World's Okayest Weaver mug. Top off if half-full. Pour it down the sink and start over if the previous coffee belongs to a previous version of the morning that is now over.",
+      "requires": [ { "kind": "at_pos", "pos": "kitchen_table" } ],
+      "effects": [
+        { "kind": "gain_verb", "amount": 1 },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "set_the_wrench_down",
+      "title": "SET THE WRENCH DOWN",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Look at the fitting. Decide not to tighten it today. Set the wrench on the counter. The drip can win.",
+      "requires": [ { "kind": "at_pos", "pos": "kitchen_faucet" } ],
+      "effects": [
+        { "kind": "lose_stagnation", "amount": 1 },
+        { "kind": "tick_sync_if_partner_here", "amount": 1 }
+      ]
+    },
+    {
+      "id": "hold_him",
+      "title": "HOLD HIM",
+      "time_cost": 2,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Cross the kitchen. Put your arms around him from behind. Let him be held for as long as he can be held. The world keeps turning around the holding.",
+      "requires": [ { "kind": "partner_at_my_pos" } ],
+      "effects": [
+        { "kind": "tick_sync_if_partner_here", "amount": 2 },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "look_at_the_garden",
+      "title": "LOOK AT THE GARDEN",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Look out through the window. The tomato seedlings have grown a quarter-inch since yesterday. The bird is on the fence wire deliberating.",
+      "requires": [ { "kind": "at_pos", "pos": "kitchen_window" } ],
+      "effects": [
+        { "kind": "lose_stagnation", "amount": 1 },
+        { "kind": "gain_verb", "amount": 1 }
+      ]
+    },
+    {
+      "id": "sit_at_the_loom",
+      "title": "SIT AT THE LOOM",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "the_loom",
+      "flavor": "Sit at the bench. Pick up the threads where you left them. You did not weave for fourteen months. Then you did.",
+      "requires": [ { "kind": "at_pos", "pos": "the_loom" } ],
+      "effects": [
+        { "kind": "gain_verb", "amount": 2 },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "open_the_envelope",
+      "title": "OPEN THE ENVELOPE",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "front_hallway",
+      "flavor": "The boy gave it to Philip. Philip handed it to you. You turn it over. The handwriting on the front is not one you recognize.",
+      "requires": [
+        { "kind": "at_pos", "pos": "front_hallway" }
+      ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "gain_doubt", "amount": 2 },
+        { "kind": "lose_stagnation", "amount": 2 }
+      ]
+    },
+    {
+      "id": "name_the_brother",
+      "title": "NAME THE BROTHER",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "the_tapestry",
+      "flavor": "Stand in front of the wordless tapestry. Say his name out loud. You have not done this in front of the tapestry; you have done it in front of the loom, in the garden, on the couch with Philip. You have not, until today, said it where the tapestry could hear.",
+      "requires": [
+        { "kind": "at_pos", "pos": "the_tapestry" }
+      ],
+      "effects": [
+        { "kind": "gain_doubt", "amount": 1 },
+        { "kind": "lose_stagnation", "amount": 2 },
+        { "kind": "tick_sync_if_partner_here", "amount": 1 }
+      ]
+    },
+    {
+      "id": "send_a_text",
+      "title": "SEND A TEXT",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "kitchen_table",
+      "flavor": "Type a single word and send it. Casserole. He'll know what it means. He always has.",
+      "requires": [
+        { "kind": "at_pos", "pos": "kitchen_table" }
+      ],
+      "effects": [
+        { "kind": "advance_visitor_schedule", "amount": 1 },
+        { "kind": "tick_sync_if_partner_here", "amount": 1 }
+      ]
+    },
+    {
+      "id": "step_out_to_the_garden",
+      "title": "STEP OUT TO THE GARDEN",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "back_door",
+      "flavor": "Through the latch that has stuck since the '21 renovation. Out into the damp earth. The salvaged driftwood pieces are under the eaves. Philip's sculpture is one of them.",
+      "requires": [ { "kind": "at_pos", "pos": "back_door" } ],
+      "effects": [
+        { "kind": "gain_verb", "amount": 1 },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "today_the_drip_can_win",
+      "title": "TODAY THE DRIP CAN WIN",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 1,
+      "flavor": "Look at the faucet. Decide it gets a day off. Tomorrow you'll fight it again. Today, no. Patience does not tick on visitors at your space for one full turn. Once per morning.",
+      "effects": [
+        { "kind": "freeze_patience", "turns": 1 },
+        { "kind": "lose_stagnation", "amount": 1 }
+      ]
+    }
+  ]
+}

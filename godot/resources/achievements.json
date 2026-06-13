@@ -41,6 +41,28 @@
       "reward": { "kind": "unlock", "key": "unlocked:reversed:emperor" }
     },
     {
+      "id": "lovers_complete",
+      "title": "THE HOUSE HELD",
+      "desc": "Win all three Lovers scenarios (THE FAUCET WINS, HE WAVED, TODAY THE DRIP CAN WIN). The Roberts kept patching the holes. It was what they did.",
+      "trigger": { "kind": "all_scenarios", "arcana": "lovers", "scenarios": ["the_faucet_wins","he_waved","today_the_drip_can_win"] },
+      "unlock_key": "achievement:lovers_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:lovers" }
+    },
+    {
+      "id": "the_morning_held",
+      "title": "THE MORNING HELD",
+      "desc": "Reach SYNC 6 in a Lovers scenario with Philip at the same threshold. Philip's arms around you from behind. The radio finishes its weather report and moves on to the obituaries.",
+      "trigger": { "kind": "lovers_synced_leap" },
+      "unlock_key": "achievement:the_morning_held"
+    },
+    {
+      "id": "the_brother_named",
+      "title": "HE NEVER WAVED",
+      "desc": "Open the Polaroid in HE WAVED and complete the scenario.",
+      "trigger": { "kind": "flag_during_run", "flag": "lore_token:the_envelope_arrived" },
+      "unlock_key": "achievement:the_brother_named"
+    },
+    {
       "id": "chariot_complete",
       "title": "EMBER & ASH HELD",
       "desc": "Win all three Chariot scenarios (THE HOT OFFICE, TWO HORSES ONE WRECK, OPTION FOUR). Antonio survived the day. The doom is on a longer horizon.",

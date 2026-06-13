@@ -1,0 +1,79 @@
+{
+  "id": "the_faucet_wins",
+  "arcana": "vi_lovers",
+  "location": "roberts_house",
+  "hand": "mackenzie",
+  "title": "THE FAUCET WINS",
+  "subtitle": "The Roberts House · 8:18 AM · A Saturday Before the Knock",
+  "difficulty": "easy",
+  "epigraph_upright": "Saturday morning. The drip has been going since six. Philip has the wrench. You're back from the garden. The bird is at the window. The seedlings are a quarter-inch taller than yesterday. The sister is on her way over — she will let herself in. The casserole from Friday is in the freezer; you don't, today, open the freezer.",
+  "epigraph_reversed": "The sister sees the casserole in the freezer and asks about it. The drip gets louder. Philip stops fixing things by lunch.",
+  "scene_description": "8:18 AM. SYNC at 1 (you and Philip have already been at the faucet together this morning). The kitchen smells like coffee and damp earth. The bird is on the fence wire deliberating. The sister is on her way. Nothing has been delivered to the porch.",
+  "direction_hint": "Hold the morning. Connect with Philip and your sister. SYNC to 4. Leap through any threshold.",
+  "opening_log_lines": [
+    "8:18 AM. The drip has been the drip since six.",
+    "Philip at the faucet with the wrench. You at the kitchen table with the coffee.",
+    "The sister's car is, by your guess, twenty minutes out."
+  ],
+  "starting_state": {
+    "player_pos": "kitchen_table",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
+    "doubt_max": 7,
+    "verb": 1,
+    "starting_sync": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "pour_coffee", "set_the_wrench_down", "hold_him", "look_at_the_garden"]
+  },
+  "visitors_present_at_start": ["philip_roberts"],
+  "visitor_schedule": [
+    { "visitor": "mackenzies_sister", "arrival_turn": 3, "arrival_space": "front_hallway" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 2,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_sync_at_least": 4,
+    "require_partner_at_my_pos_at_leap": true,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the morning is the morning.",                       "tick_per_turn": 1, "effects": [] },
+    { "level": 4, "label": "the drip has gotten louder.",                       "tick_per_turn": 1, "effects": [] },
+    { "level": 7, "label": "philip is fixing the wrong thing.",                 "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "today the drip won.",                              "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "mackenzie at the table, world's okayest weaver mug.","effects": [] },
+    { "level": 3, "label": "the casserole comes to mind. you do not, today, open the freezer.","effects": [] },
+    { "level": 5, "label": "the hand finds the flat stomach.",                   "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the tapestry has loose threads.",                    "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door", "label": "FRONT DOOR", "ending_lore_token": "leap_onto_the_porch_morning",   "visible_from_start": true },
+    { "id": "back_door",  "label": "BACK DOOR",  "ending_lore_token": "leap_into_the_garden_morning",  "visible_from_start": true },
+    { "id": "driveway",   "label": "DRIVEWAY",   "ending_lore_token": "leap_down_the_gravel_drive",    "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 9,
+  "notes": "Easy-mode Lovers. A Saturday before the knock. Just Philip in the kitchen and Mackenzie's sister on her way over. Win is 2 connections + SYNC to 4 + paired leap (Philip at the same threshold). The boy with the envelope is NOT on this scenario's schedule — this is the morning before he arrives, where holding the moment is enough.",
+  "ambient_pool": [
+    "the drip · the bird · the radio between stations.",
+    "the kitchen has the smell of coffee and damp earth on your sleeves.",
+    "philip sets the wrench down and picks it up again. seven times an hour, on days like this."
+  ],
+  "ambient_every_n": 3
+}

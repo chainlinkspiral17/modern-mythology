@@ -524,22 +524,22 @@ const CHARIOT_SCENARIOS := [
 
 const LOVERS_SCENARIOS := [
 	{
-		"id": "the_last_boxes",
-		"title": "THE LAST BOXES",
-		"subtitle": "Easy · 2:14 PM · Saturday",
-		"flavor": "A small afternoon. Reed has been here for an hour. The boxes are mostly packed. The painting on the easel is two-thirds done. The diner is busy downstairs but the apartment is quiet."
+		"id": "the_faucet_wins",
+		"title": "THE FAUCET WINS",
+		"subtitle": "Easy · 8:18 AM · A Saturday Before the Knock",
+		"flavor": "Saturday morning. The drip has been going since six. Philip has the wrench. You're back from the garden. The sister is on her way over. Nothing has been delivered to the porch."
 	},
 	{
-		"id": "an_afternoon",
-		"title": "AN AFTERNOON",
-		"subtitle": "Medium · 1:14 PM · Two Months Later",
-		"flavor": "Two months later. Reed is back for an afternoon — no boxes this time. Just an afternoon. Frasier is coming over from the diner."
+		"id": "he_waved",
+		"title": "HE WAVED",
+		"subtitle": "Medium · 8:45 AM · The Polaroid",
+		"flavor": "The boy at the door at 8:47 AM. The station wagon at the curb. An envelope crumpled in the way envelopes are crumpled when a person has held them too tightly. A Polaroid dated June 2009. Houston Street. Your brother walking with his back to the camera."
 	},
 	{
-		"id": "the_letter_in_the_drawer",
-		"title": "THE LETTER IN THE DRAWER",
-		"subtitle": "Hard · 10:14 PM · A Year Later",
-		"flavor": "A year later. Reed is back because Sasha is moving out and the apartment is finally going. The landlord has the lease paper. The letter you never sent is under the bed."
+		"id": "today_the_drip_can_win",
+		"title": "TODAY THE DRIP CAN WIN",
+		"subtitle": "Hard · 2:14 PM · The Long Hours",
+		"flavor": "Afternoon. The Polaroid has been on the table since 8:47 AM. Mrs. Theriot drove away at nine-eleven. Philip is in the back yard with the phone. Today is the day you decide whether you will weave through this."
 	}
 ]
 
@@ -846,16 +846,15 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		var vem := _spawn_visualizer(EMPEROR_VISUALIZER_SCRIPT)
 		_add_play_button_overlay(vem, "emperor", "dantes_office", "dante")
 		return
-	# Hierophant / Lovers play buttons removed in canon-alignment surgery —
-	# the scenarios these pointed at (sysop's BBS, sasha's apartment) were
-	# Claude-invented and have been retired. Visualizers still render the
-	# arcana cards; PLAY buttons return when canonical rebuilds land
-	# (Q. Paul / the Roberts).
+	# Hierophant play button removed in canon-alignment surgery — Q. Paul
+	# rebuild pending. Visualizer still renders the arcana card.
 	if short_path == "hierophant_arcana":
 		_spawn_visualizer(HIEROPHANT_VISUALIZER_SCRIPT)
 		return
+	# Lovers rebuilt around the Roberts on cursed ground (vol5 ch6 Lovers canon).
 	if short_path == "lovers_arcana":
-		_spawn_visualizer(LOVERS_VISUALIZER_SCRIPT)
+		var vlv := _spawn_visualizer(LOVERS_VISUALIZER_SCRIPT)
+		_add_play_button_overlay(vlv, "lovers", "roberts_house", "mackenzie")
 		return
 	# Chariot rebuilt around Antonio at Ember & Ash (vol5 ch7 Chariot canon).
 	if short_path == "chariot_arcana":

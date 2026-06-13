@@ -1,0 +1,12 @@
+{
+  "scope": "lovers",
+  "notes": "Mackenzie's six-face die. Domestic, intimate. HOLD = the steady face. WEAVE = forward motion in the loom-room sense. POUR = the small ritual that resets the morning. PATCH = make the day work with what you have. UNRAVEL = the failed face. WILD = anything.",
+  "faces": [
+    { "id": "hold",    "label": "HOLD",    "weight": 2, "kind": "success" },
+    { "id": "weave",   "label": "WEAVE",   "weight": 1, "kind": "success" },
+    { "id": "pour",    "label": "POUR",    "weight": 1, "kind": "partial" },
+    { "id": "patch",   "label": "PATCH",   "weight": 1, "kind": "partial" },
+    { "id": "unravel", "label": "UNRAVEL", "weight": 1, "kind": "fail" },
+    { "id": "wild",    "label": "WILD",    "weight": 0, "kind": "wild" }
+  ]
+}
