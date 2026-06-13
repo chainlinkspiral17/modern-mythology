@@ -585,11 +585,26 @@ const EMPEROR_SCENARIOS := [
 	}
 ]
 
-# EMPRESS_SCENARIOS pending canon rebuild after the riverboat rework
-# (vol5 ch3 Empress · Nicola the hostess hosting Aria and pregnant with
-# the Third Consciousness; setting is D'Ambrosio's main dining room
-# on the new comprehensive board).
-const EMPRESS_SCENARIOS := []
+const EMPRESS_SCENARIOS := [
+	{
+		"id": "static_bloom",
+		"title": "STATIC BLOOM",
+		"subtitle": "Easy · 7:42 PM · Friday Dinner",
+		"flavor": "Friday dinner. The 7 PM seatings are settling. Table 12 has the imperious wave already rehearsed. Sammy at the well. Hector at the line. You feel the third kick low and insistent during the second water round."
+	},
+	{
+		"id": "when_youre_ready",
+		"title": "WHEN YOU'RE READY",
+		"subtitle": "Medium · 8:14 PM · The Friday Dean Arrived",
+		"flavor": "An out-of-town suit at Table 14. Plain face. Lapels-smoothing gesture. Drinking water. Aria has spoken twice already, both times in the form of a question."
+	},
+	{
+		"id": "the_back_room_calls",
+		"title": "THE BACK ROOM CALLS",
+		"subtitle": "Hard · 10:42 PM · Dante Sent You Down",
+		"flavor": "Dante on the intercom from the helm: Nicola, take this envelope to the catering office. He has not, in three years, sent you to the catering office. The card room is further in. The back room is past the card room."
+	}
+]
 
 const PRIESTESS_SCENARIOS := [
 	{
@@ -814,12 +829,10 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		var v := _spawn_visualizer(FOOL_VISUALIZER_SCRIPT)
 		_add_play_button_overlay(v, "fool", "dambrosios", "john_frank")
 		return
-	# Empress play button removed in the riverboat rework — scenarios
-	# need rebuilding against the new D'Ambrosio's board (with the
-	# canonical Nicola/Aria/Third framing from vol5 ch3). Visualizer
-	# still renders the arcana card.
+	# Empress rebuilt around Nicola at D'Ambrosio's (vol5 ch3 canon).
 	if short_path == "empress_arcana":
-		_spawn_visualizer(EMPRESS_VISUALIZER_SCRIPT)
+		var ve := _spawn_visualizer(EMPRESS_VISUALIZER_SCRIPT)
+		_add_play_button_overlay(ve, "empress", "riverboat_interior", "nicola")
 		return
 	if short_path == "magician_arcana":
 		var vm := _spawn_visualizer(MAGICIAN_VISUALIZER_SCRIPT)

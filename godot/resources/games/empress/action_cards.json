@@ -1,0 +1,145 @@
+{
+  "scope": "empress",
+  "notes": "Nicola's loop on the floor. The verbs are hostess work: greet at the door, seat the party, pour water, smooth the apron. Plus interior verbs that emerge when Aria activates (LISTEN INSIDE, ANSWER, NAME ARIA). Engine: HARVEST is the spendable currency (her quiet attention); BLOOM (engine var _bloom) is the positive doom-clock — the night holding. Doubt and stagnation are negative tracks.",
+  "cards": [
+    {
+      "id": "greet_the_party",
+      "title": "GREET THE PARTY",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "At the maître d' stand. Welcome them with the smile that is not, strictly, what the smile means. Take the coats. Ask after the wife / husband / child who they referenced last visit and you remembered.",
+      "requires": [ { "kind": "at_pos", "pos": "maitre_d_stand" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "greet" },
+        { "kind": "gain_harvest", "amount": 1 }
+      ]
+    },
+    {
+      "id": "seat_at_the_table",
+      "title": "SEAT AT THE TABLE",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Walk a party to their table. Three steps ahead, the menu tucked under your arm. The infuriating oblivious grace is the gait. You are very good at this. You have stopped, this year, being able to tell whether that is a compliment.",
+      "requires": [
+        { "kind": "visitor_at_my_pos_progress_at_least", "n": 1 }
+      ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "listen" },
+        { "kind": "tick_bloom", "amount": 1 }
+      ]
+    },
+    {
+      "id": "smooth_the_apron",
+      "title": "SMOOTH THE APRON",
+      "time_cost": 0,
+      "starter": true,
+      "stock": 99,
+      "flavor": "The small unconscious gesture that has, since Tuesday, also been a hand on the flat-becoming-not-flat stomach. The room does not, today, notice. Dante noticed last week. He did not, today, mention it.",
+      "effects": [
+        { "kind": "lose_doubt", "amount": 1 },
+        { "kind": "tick_bloom", "amount": 1 }
+      ]
+    },
+    {
+      "id": "pour_water_for_the_table",
+      "title": "POUR WATER FOR THE TABLE",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "The pitcher from the bar. Walk back to the table. Pour without splashing. Refill without being asked. The small ritual the floor runs on.",
+      "requires": [
+        { "kind": "visitor_at_my_pos_progress_at_least", "n": 1 }
+      ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "gain_harvest", "amount": 1 }
+      ]
+    },
+    {
+      "id": "listen_inside",
+      "title": "LISTEN INSIDE",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "flavor": "Stop on the floor for a beat. Listen for the second voice that has, in the past week, started talking. It says: who am I. It says: where is my father. It says, today, this is not a body, this is a protocol. You do not, today, answer it. You listen.",
+      "requires": [
+        { "kind": "has_harvest_at_least", "n": 1 }
+      ],
+      "effects": [
+        { "kind": "spend_harvest", "amount": 1 },
+        { "kind": "lose_doubt", "amount": 2 },
+        { "kind": "lose_stagnation", "amount": 1 }
+      ]
+    },
+    {
+      "id": "name_aria",
+      "title": "NAME ARIA",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "maitre_d_stand",
+      "flavor": "Stand at the maître d' stand. Take the breath. Say the name in your head: Aria. The second voice, hearing the name, becomes the named thing — quieter, more articulate, a little less afraid. The flag aria_named_by_nicola goes on. Once.",
+      "effects": [
+        { "kind": "gain_harvest", "amount": 2 },
+        { "kind": "lose_stagnation", "amount": 2 },
+        { "kind": "lose_doubt", "amount": 2 }
+      ]
+    },
+    {
+      "id": "walk_to_table_14",
+      "title": "WALK TO TABLE 14",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 1,
+      "flavor": "Cross the dining room. The booth in the far corner where the out-of-town suit has been sitting for two hours without ordering. Take the order. Or, more likely, take the small folded note he is going to leave weighted under a hundred-dollar bill.",
+      "requires": [ { "kind": "at_pos", "pos": "main_dining_room" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "gain_doubt", "amount": 1 },
+        { "kind": "gain_harvest", "amount": 1 }
+      ]
+    },
+    {
+      "id": "intercom_dante",
+      "title": "INTERCOM TO THE HELM",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "sammys_bar",
+      "flavor": "Sammy lets you press the intercom button behind the bar. The line connects to the helm. You say: Mr. D, the gentleman at fourteen. He says: I see him. You say: thank you. You hang up. The brass speaker clicks.",
+      "requires": [ { "kind": "at_pos", "pos": "sammys_bar" } ],
+      "effects": [
+        { "kind": "advance_visitor_schedule", "amount": 1 },
+        { "kind": "gain_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "take_the_back_stair",
+      "title": "TAKE THE BACK STAIR",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "back_corridor",
+      "flavor": "Down to the lower deck. The catering office is on your left; the card room is further in. You have, until tonight, taken this stair twice. Dante is sending you down with something. You do not, this time, ask what.",
+      "requires": [ { "kind": "at_pos", "pos": "back_corridor" } ],
+      "effects": [
+        { "kind": "tick_bloom", "amount": 1 },
+        { "kind": "gain_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "the_infuriating_grace",
+      "title": "THE INFURIATING GRACE",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 1,
+      "flavor": "The small smile that means something other than the words. The gait that does not seem to register the weight you are, in fact, carrying. The room reads you as effortless because you have, by year three, taught the room to. Once per night.",
+      "effects": [
+        { "kind": "freeze_patience", "turns": 1 },
+        { "kind": "tick_bloom", "amount": 1 }
+      ]
+    }
+  ]
+}

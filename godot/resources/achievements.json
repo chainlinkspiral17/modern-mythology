@@ -41,6 +41,28 @@
       "reward": { "kind": "unlock", "key": "unlocked:reversed:emperor" }
     },
     {
+      "id": "empress_complete",
+      "title": "THE FLOOR HELD",
+      "desc": "Win all three Empress scenarios (STATIC BLOOM, WHEN YOU'RE READY, THE BACK ROOM CALLS). The night held. The floor was done by her. Aria has a name.",
+      "trigger": { "kind": "all_scenarios", "arcana": "empress", "scenarios": ["static_bloom","when_youre_ready","the_back_room_calls"] },
+      "unlock_key": "achievement:empress_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:empress" }
+    },
+    {
+      "id": "aria_named",
+      "title": "ARIA NAMED",
+      "desc": "Connect with Aria's interior visit fully — Name her at the maître d' stand. The flag aria_named_by_nicola is the Empress board's deepest unlock.",
+      "trigger": { "kind": "flag_during_run", "flag": "lore_token:aria_named_by_nicola" },
+      "unlock_key": "achievement:aria_named"
+    },
+    {
+      "id": "dean_visited",
+      "title": "THE NOTE LEFT",
+      "desc": "Connect with Dean at Table 14. Read the note that says 'When you're ready.'",
+      "trigger": { "kind": "flag_during_run", "flag": "lore_token:dean_left_the_note" },
+      "unlock_key": "achievement:dean_visited"
+    },
+    {
       "id": "hierophant_complete",
       "title": "THE OFFICE HELD",
       "desc": "Win all three Hierophant scenarios (ST JUDE'S MORNING, SUNDAY BRUNCH, THE BANDSTAND CALLS). The office held. The fear of him did its work. The empire was the means.",

@@ -1,0 +1,80 @@
+{
+  "id": "when_youre_ready",
+  "arcana": "iii_empress",
+  "location": "riverboat_interior",
+  "hand": "nicola",
+  "title": "WHEN YOU'RE READY",
+  "subtitle": "D'Ambrosio's · 8:14 PM · The Friday Dean Arrived",
+  "difficulty": "medium",
+  "epigraph_upright": "The canonical Friday from ch3. Service is at 80% capacity. The out-of-town suit you have not seated before has been at Table 14 for the last fourteen minutes drinking water. Aria has spoken twice already, both times in the form of a question. The third has not stopped kicking.",
+  "epigraph_reversed": "Dean leaves the note. You read it on your way back to the kitchen. The static behind your eyes bloomed.",
+  "scene_description": "8:14 PM. The dining room is at 80% capacity. Bloom at 2; Doubt at 2; Harvest at 1. Aria has been on the board interior since service began. Dean is arriving at Table 14 turn 2. The intercom to Dante's helm is available at Sammy's bar. The flag aria_active will go on partway through; aria_named_by_nicola is the deeper unlock the scenario can achieve.",
+  "direction_hint": "Greet, seat, pour. Visit Table 14. Read the note. Hear Aria. Answer her. Name Aria. Reach Bloom 5. Leap.",
+  "opening_log_lines": [
+    "8:14 PM. The dining room is at 80%.",
+    "An out-of-town suit at Table 14. Plain face. Lapels-smoothing gesture. Drinking water.",
+    "Aria asked the second question on the second water round. You did not answer.",
+    "Dante at the helm window. Sammy at the well. Hector at the line."
+  ],
+  "starting_state": {
+    "player_pos": "maitre_d_stand",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 2,
+    "stagnation_per_turn": 1,
+    "doubt": 2,
+    "doubt_max": 7,
+    "harvest": 1,
+    "bloom": 2,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "greet_the_party", "seat_at_the_table", "smooth_the_apron", "pour_water_for_the_table", "the_infuriating_grace"]
+  },
+  "visitors_present_at_start": ["dante_at_the_helm", "sammy_at_the_bar", "hector_at_the_pass", "the_imperious_table_12", "aria_interior"],
+  "visitor_schedule": [
+    { "visitor": "dean_at_table_14",  "arrival_turn": 2, "arrival_space": "table_17" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 4,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_bloom_at_least": 5,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "service holds. the apron is straight.",                "tick_per_turn": 1, "effects": [] },
+    { "level": 4, "label": "table 14 has been waiting forty minutes for nothing.","tick_per_turn": 1, "effects": [] },
+    { "level": 7, "label": "the bus kid is on his second dropped tray.",          "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the night rotted in the middle of service.",         "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "nicola on the floor.",                                                        "effects": [] },
+    { "level": 3, "label": "the suit at fourteen has not, in forty minutes, ordered.",                    "effects": [] },
+    { "level": 5, "label": "aria has asked the question for the third time. you have not, today, answered.","effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the static behind your eyes bloomed.",                                        "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",    "label": "GANGWAY",    "ending_lore_token": "leap_down_the_gangway_friday",  "visible_from_start": true },
+    { "id": "side_door",  "label": "SIDE DOOR",  "ending_lore_token": "leap_through_the_door_dean_used","visible_from_start": true },
+    { "id": "staff_exit", "label": "STAFF EXIT", "ending_lore_token": "leap_off_the_back_walkway",     "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Medium-mode Empress. The canonical Friday from ch3. Dean arrives at Table 14 turn 2 — his connection sequence is the canonical note-leaving beat. Aria is interior; her connection completes when Nicola Names her at the maître d' stand. The SIDE DOOR threshold is visible because Dean has used it; leaping through the door Dean used is the canonical leap. Win is 4 connections + 2 hard moods (Dean is lonely; Aria is intense; Table 12 is preoccupied) + Bloom 5 + leap.",
+  "ambient_pool": [
+    "the third kicked. low. insistent.",
+    "aria asked: where is my father. you have not, today, answered.",
+    "table 14 has been waiting forty minutes for nothing.",
+    "hector at the pass with the next two plates. he sees you. he does not, today, cross himself."
+  ],
+  "ambient_every_n": 2
+}

@@ -1,0 +1,81 @@
+{
+  "id": "the_back_room_calls",
+  "arcana": "iii_empress",
+  "location": "riverboat_interior",
+  "hand": "nicola",
+  "title": "THE BACK ROOM CALLS",
+  "subtitle": "D'Ambrosio's · 10:42 PM · Dante Sent You Down",
+  "difficulty": "hard",
+  "epigraph_upright": "10:42 PM. The dining room is past its peak. Dante on the intercom from the helm: Nicola, take this envelope to the catering office. He has not, in three years, sent you to the catering office. You take the envelope. You take the back stair. The catering office is the catering office. The card room is further in. The back room is past the card room.",
+  "epigraph_reversed": "You take the envelope to the catering office. You see what is in the catering office. You go further than you were asked to go. You are, after tonight, somebody who has been to the back room.",
+  "scene_description": "10:42 PM. The brunch crowd is gone; the late dinner has thinned. Bloom at 3. Doubt at 3. Stagnation at 3 — service is winding down. Aria is interior; she has been asking questions all night. The Third has been kicking. Dante has handed you the envelope at the maître d' stand. The card room is hosting Saturday's regulars on what should have been a Friday-quiet night. The back room is in session.",
+  "direction_hint": "Take the envelope. Walk it down. See what you see. Decide what to do with what you have seen. Aria is louder down here. Connect with Aria fully (Name her). Reach Bloom 6. Leap, ideally through the staff exit.",
+  "opening_log_lines": [
+    "10:42 PM. Dante on the intercom. He has not, in three years, asked you to take anything down.",
+    "The envelope is in your apron pocket. The seal is wax.",
+    "Aria, interior, has been quieter for the last hour. She is, you suspect, waiting for what you are about to see.",
+    "The third kicked twice in the last ten minutes. Twice in a row is, you have noticed, a different kick."
+  ],
+  "starting_state": {
+    "player_pos": "maitre_d_stand",
+    "time": 4,
+    "time_per_turn": 4,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 3,
+    "stagnation_per_turn": 2,
+    "doubt": 3,
+    "doubt_max": 7,
+    "harvest": 2,
+    "bloom": 3,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "greet_the_party", "seat_at_the_table", "smooth_the_apron", "pour_water_for_the_table", "listen_inside", "the_infuriating_grace"]
+  },
+  "visitors_present_at_start": ["dante_at_the_helm", "sammy_at_the_bar", "hector_at_the_pass", "aria_interior"],
+  "visitor_schedule": [
+    { "visitor": "the_private_dining_six_top", "arrival_turn": 1, "arrival_space": "private_dining" },
+    { "visitor": "quentin_paul_phone",         "arrival_turn": 3, "arrival_space": "maitre_d_stand" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_bloom_at_least": 6,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 2
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "10:42 PM. service is on its second wave.",                       "tick_per_turn": 2, "effects": [] },
+    { "level": 4, "label": "the catering office phone has been ringing for too long.",        "tick_per_turn": 2, "effects": [] },
+    { "level": 7, "label": "the back room is in session. you can hear it through the door.",  "tick_per_turn": 3, "effects": [ "tick_bloom" ] },
+    { "level": 10, "label": "service ended without you ever getting back to the floor.",      "tick_per_turn": 3, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "nicola at the stand. the envelope in the apron.",                 "effects": [] },
+    { "level": 3, "label": "the back stair is the back stair. you have taken it twice in three years.","effects": [] },
+    { "level": 5, "label": "aria is louder down here.",                                       "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the static behind your eyes bloomed.",                            "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",    "label": "GANGWAY",    "ending_lore_token": "leap_off_the_friday_late_gangway","visible_from_start": true },
+    { "id": "side_door",  "label": "SIDE DOOR",  "ending_lore_token": "leap_river_side_late_friday",     "visible_from_start": true },
+    { "id": "staff_exit", "label": "STAFF EXIT", "ending_lore_token": "leap_off_the_back_walkway_friday","visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 7,
+  "notes": "Hard-mode Empress. Late evening. Dante has sent Nicola to the catering office; this scenario gates the lower-deck spaces. Aria is intense (hard mood). Quentin Paul calls at turn 3 (intense). Win is 3 connections + 2 hard moods + Bloom 6 + leap, with reduced turn budget (7), reduced sanity_max (5), and elevated stagnation pulse. The canonical leap is the STAFF EXIT (the back walkway out of the lower deck — Nicola becomes, after tonight, somebody who has seen the back room and chose her exit from it).",
+  "ambient_pool": [
+    "the intercom from the helm clicks once and is silent.",
+    "the third kicked twice in a row. you smoothed the apron without thinking.",
+    "the back room door is closed. the door has not, all night, had a sign.",
+    "aria is louder down here. she is, in some way you do not yet have words for, listening to the same room you are."
+  ],
+  "ambient_every_n": 2
+}

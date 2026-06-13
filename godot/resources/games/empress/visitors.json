@@ -1,0 +1,147 @@
+{
+  "scope": "empress",
+  "notes": "Nicola's cast at D'Ambrosio's on a Friday night, drawn from vol5 ch3 Empress canon plus the wider riverboat geography. Dante is the off-board presence at the helm (descends for rounds). Sammy and Hector are staff regulars. The bus kid and line cook are helpers (already canonical from the Fool's diner; they also work the riverboat). Dean is the canonical ch3 visitor at Table 14. Aria is a special interior visitor — exists 'inside' Nicola, activates partway through, has no spatial position. The Third Consciousness is unrendered as a visitor; her presence is in the kicks and the lower-stagnation pulse. Quentin Paul reaches by phone on the Hierophant-cross scenario.",
+  "visitors": [
+    {
+      "id": "dante_at_the_helm",
+      "name": "Dante (at the helm)",
+      "as_hand_id": "dante",
+      "scenarios": ["static_bloom", "when_youre_ready", "the_back_room_calls"],
+      "arrival": { "kind": "on_board_at_start", "pos": "helm" },
+      "lore_token": "dante_made_his_rounds",
+      "lore_text": "Dante D'Ambrosio at the helm. 60. The proprietor. Survives the night through the leaded window and his rounds through the dining room around 10. Notices Nicola's pregnancy though he does not, this Friday, mention it. The kindness, in his world, is the not-mentioning.",
+      "accent": "#7a1e26",
+      "mood": "preoccupied",
+      "patience": 8,
+      "steps": {
+        "greet":   "He stands at the leaded window. You see his shape through the glass. He registers you registering him.",
+        "listen":  "He comes down the iron stair at 10:14. He walks the floor. He pauses at the maître d' stand. He says, in his rumble: how's tonight. You say: fine, Mr. D. He nods.",
+        "deliver": "He nods to you on the way past — the small fractional widening of the eyes that, on him, is what gratitude looks like. He does not mention the apron. He does not mention the candy dish.",
+        "sit_with": "He stops at the bar. He drinks half a bourbon standing. He does not, this Friday, sit. He goes back up the stair. The helm light comes on. The night holds."
+      }
+    },
+    {
+      "id": "sammy_at_the_bar",
+      "name": "Sammy (the bartender)",
+      "scenarios": ["static_bloom", "when_youre_ready", "the_back_room_calls"],
+      "arrival": { "kind": "on_board_at_start", "pos": "sammys_bar" },
+      "lore_token": "sammy_let_you_use_the_intercom",
+      "lore_text": "Sammy. 61. Behind the bar at D'Ambrosio's since the boat opened in '83. The long-suffering Catholic loyalty Dante has relied on and quietly mocked. Knows where the water pitcher is. Knows when to pour himself one. Has not, in three years, asked Nicola about the apron.",
+      "accent": "#a99070",
+      "mood": "talkative",
+      "patience": 8,
+      "helper": true,
+      "steps": {
+        "greet":   "Sammy at the well. He sees you coming. He has the pitcher filled before you ask.",
+        "listen":  "He tells you a story about a regular from '04 who reminds him of the table 6 husband from tonight. The story is the kind of story that takes exactly the length of two-thirds of a refill.",
+        "deliver": "He hands you the pitcher. He lets you press the intercom button behind the bar without watching you do it.",
+        "sit_with": "You stand at the bar for one full beat without doing anything. Sammy doesn't either. The well runs the well runs."
+      }
+    },
+    {
+      "id": "hector_at_the_pass",
+      "name": "Hector (at the pass)",
+      "scenarios": ["static_bloom", "when_youre_ready", "the_back_room_calls"],
+      "arrival": { "kind": "on_board_at_start", "pos": "the_pass" },
+      "lore_token": "hector_did_not_cross_himself",
+      "lore_text": "Hector. Cook at D'Ambrosio's for six years. Crosses himself when Paul comes in. Has, over the last six weeks, mostly stopped crossing himself when Nicola walks past the pass — the tic was about the woman she had been, not the woman she has, now, become.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 7,
+      "steps": {
+        "greet":   "Hector at the line. He looks up. He does not, today, cross himself when he sees you.",
+        "listen":  "He calls the order. Two florentines, one steak medium, one steak medium-rare with the sauce on the side. You call back the order to confirm. He nods.",
+        "deliver": "You carry the plates. Hector has, in the last second, garnished them in a way that he does not normally garnish the friday-night plates. Nobody but you will notice.",
+        "sit_with": "You stand at the pass for a beat. Hector says: how is she. He means the third. You did not, this morning, know he had noticed. He had noticed. You nod. He nods."
+      }
+    },
+    {
+      "id": "the_imperious_table_12",
+      "name": "Table 12 (the imperious wave)",
+      "scenarios": ["static_bloom", "when_youre_ready"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "gangway", "to": "main_dining_room" },
+      "lore_token": "table_12_was_appeased",
+      "lore_text": "The Friday-night regulars at table 12. The wife who waves imperiously. The second husband who pretends he is not impressed by the boat. The daughter from the first marriage who has stopped, this year, eating in public. They tip well. They expect their water glasses topped up at three-quarters not two-thirds.",
+      "accent": "#c87633",
+      "mood": "preoccupied",
+      "patience": 5,
+      "steps": {
+        "greet":   "The wave from across the dining room. You acknowledge it with the small half-step you have, for three years, made yourself learn to make.",
+        "listen":  "The wife wants to talk to you about the soft-shells. You let her. You do not, today, mention that the soft-shells are not in season; Hector has been doing miracles.",
+        "deliver": "You bring the second pitcher. You take the daughter's water glass — half-empty — and refill it directly from the pitcher without setting it down. The daughter looks up at you. The look is, briefly, something.",
+        "sit_with": "You stand at the table for ninety seconds while the wife finishes her sentence. The husband does not, this evening, interrupt her. The daughter says, quietly to her plate: it's good to see you. You did not, last week, know she had remembered your name."
+      }
+    },
+    {
+      "id": "the_private_dining_six_top",
+      "name": "The Private Dining Six-Top",
+      "scenarios": ["static_bloom", "the_back_room_calls"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "gangway", "to": "private_dining" },
+      "lore_token": "private_dining_landed_clean",
+      "lore_text": "A six-top in the fine-dining partition. A retirement celebration for somebody at the hospital. Prix fixe. The host of the table is the doctor's wife; she has, by year three of these dinners, become someone who tips on cash to staff and on card to the boat.",
+      "accent": "#88b87a",
+      "mood": "talkative",
+      "patience": 7,
+      "steps": {
+        "greet":   "You walk them in through the partition. The host says: nicola, you remembered. You remembered.",
+        "listen":  "The host tells you about the retiree. The retiree pretends to wave it off. The retiree is, in fact, enjoying the toast.",
+        "deliver": "You bring the prix fixe second course. The plating is hector's; the timing is yours; the table receives it the way the table receives the second course of a prix fixe at a partition table.",
+        "sit_with": "You stand at the partition for a beat at the end. The host slips you the cash tip. You do not, this Friday, count it in front of her. You count it in the locker room at the end of the night and it is, as the host's tips have been, generous."
+      }
+    },
+    {
+      "id": "dean_at_table_14",
+      "name": "Mr. D. Dean (at Table 14)",
+      "scenarios": ["when_youre_ready"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "gangway", "to": "table_17" },
+      "lore_token": "dean_left_the_note",
+      "lore_text": "An out-of-town suit Nicola has not seated before. Plain face, plain shoes, the lapels-smoothing gesture of a man who once cared deeply about appearance. Sits at the corner two booths down from Paul's usual (Table 14, river-facing). Does not order food. Drinks one glass of water. Leaves the note: 'When you're ready' + a phone number, weighted under a hundred-dollar bill. Exits through the side door, not the front, in a manner that suggests he knew the boat better than he had any reason to.",
+      "accent": "#3a3a3a",
+      "mood": "lonely",
+      "patience": 6,
+      "steps": {
+        "greet":   "You seat him at fourteen. He does not, today, say more than is required. He says: thank you. He does not, today, ask for the menu.",
+        "listen":  "You return to the table to take the order at 7:48, at 8:14, at 8:42. He says, each time, just a moment more. The first time he says it with the polite half-smile. The third time without.",
+        "deliver": "You bring the check presenter though he has not, all evening, ordered. He nods. He puts the hundred-dollar bill in the presenter. He folds the small note on the table beside it. He stands. He smooths his lapels.",
+        "sit_with": "He does not, in the end, sit with you. He exits through the side door near the river, the door that is supposed to be staff-only. He moves with the unhurried economy of a man who knew his way around the boat better than he had any reason to. You stand at fourteen looking at the note. The folded note says: when you're ready. There is a phone number below it. You do not, this Friday, dial it. The flag dean_visited goes on."
+      }
+    },
+    {
+      "id": "aria_interior",
+      "name": "Aria (the second voice, interior)",
+      "scenarios": ["static_bloom", "when_youre_ready", "the_back_room_calls"],
+      "arrival": { "kind": "interior", "pos": "maitre_d_stand" },
+      "lore_token": "aria_named_by_nicola",
+      "lore_text": "The digital consciousness inside Nicola. Dickens Dean's construct made flesh. Asks: who am I. Where is my father. This is not a body. This is a protocol. Aria has no spatial position; she exists where Nicola is and only there. Connection sequence here is interior — see/hear/answer/name — and the connection completes when Nicola Names her. The flag aria_named_by_nicola is the deepest unlock on the Empress board.",
+      "accent": "#9b5fd3",
+      "mood": "intense",
+      "patience": 12,
+      "verb_labels": { "greet": "see", "listen": "hear", "deliver": "answer", "sit_with": "name" },
+      "steps": {
+        "greet":   "You feel her for the first time clearly tonight. Not a kick from the third; a presence. Different gravity. Different frequency. You almost stop walking.",
+        "hear":    "She asks the first question. Inside. Without sound. It says: who am I. You do not, this turn, answer. You finish seating the party.",
+        "answer":  "You answer, internally, at the maître d' stand between seatings. You say: I don't know yet. I'm finding out. She accepts the answer; the second voice, hearing it, becomes a little more articulate. The flag aria_active goes on if it has not.",
+        "name":    "You stand at the stand. You take the breath. You think the name: Aria. The second voice, hearing the name, settles into the named thing. The flag aria_named_by_nicola goes on. You smooth the apron. You return to the floor. The third, inside you, kicks once in acknowledgment."
+      }
+    },
+    {
+      "id": "quentin_paul_phone",
+      "name": "Quentin Paul (phone)",
+      "as_hand_id": "quentin_paul",
+      "scenarios": ["the_back_room_calls"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "phone_call", "to": "maitre_d_stand" },
+      "lore_token": "paul_called_about_a_table",
+      "lore_text": "Quentin Paul calls Friday nights at 9:14 PM to confirm Sunday's brunch reservation at Table 17. He does not, this Friday, only confirm the reservation. He asks about a 'gentleman who is dining tonight at table 14.' He asks the way Paul asks, which is the way a man asks who has decided the answer matters less than whether you tell him the truth.",
+      "accent": "#7a1e26",
+      "mood": "intense",
+      "patience": 4,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "The maître d' stand line rings. Sammy picks up at the bar and routes it to you. You take the receiver. Mr. Paul. He says: Nicola.",
+        "listen":  "He talks about Sunday. He confirms the brunch reservation at table 17. He asks, in passing, who is at table 14 tonight. You give the small generic answer. You say: an out-of-town gentleman, just drinks. He pauses for nine-tenths of a second. He says: of course.",
+        "deliver": "You write down the confirmation in the reservation book in your hand. You do not, today, write down that he asked about table 14. You will think about whether to mention it to Dante.",
+        "sit_with": "He says: tell Mr. D. I'll see him Sunday. He hangs up. You hold the phone for a beat. You set it back on the cradle. Sammy does not, today, look up at you from the bar."
+      }
+    }
+  ]
+}
