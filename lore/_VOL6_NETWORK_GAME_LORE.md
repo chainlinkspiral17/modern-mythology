@@ -123,6 +123,30 @@ places he hasn't been. Move faster than the speed of his own work.
 Frasier is the saga's tradesman of the occult. He is funny in the
 way operators are funny — bone-dry, no patience for theater.
 
+### The long arc — what becomes of him
+
+Frasier lives a long life. He dies an old man, decades past the
+events of this game, of the kind of slow ordinary causes the
+operator class doesn't usually get the chance to die of. The
+Cathedral outlives him. Across his life it slowly *inverts*: in
+vol 5 it is a **warehouse cathedral** — an industrial space he has
+converted into a tarot map — and by the time he dies it has become
+more a **cathedral warehouse**, the devotional aspect dominant, the
+industrial function receding into the texture. The stations on the
+floor grow more elaborate over the decades. The tarot map gains
+rooms. The workbench becomes an altar without anyone deciding it
+was now an altar.
+
+When Frasier dies, **Aria moves in.** She inherits the space. The
+Cathedral of Rust and Code is, in the very long view, *her seat*.
+
+Nothing in this game's window shows that. Frasier in 2002-2005 is
+still middle-aged, still at the workbench, still building. But
+every piece of the floor he refines this summer is, in the long
+arc, a small part of the room she will eventually live in. The
+quiet inheritance is *the architecture itself*. He builds, and he
+builds, and he builds, and one day she will be there.
+
 ## Dean · the traveller between worlds
 
 Dean is **something else**. The lapels-smoothing gentleman from
@@ -275,6 +299,23 @@ some future twenty or thirty years on, may meet her, recognize
 her, work with or for or beside her. Frasier does not know which.
 The delivery is faith, not strategy. He is planting for a harvest
 he will not, on most days, expect to see.
+
+### Her seat in the making
+
+The Cathedral of Rust and Code is, in the long arc, **her future
+home**. Frasier knows this. The workbench he leans over this summer
+will, after he dies an old man, be the workbench Aria sits at. The
+stations on the floor he refines this summer will, decades hence,
+be the rooms she walks between. The BBS terminal in the corner —
+phosphor-green, the only screen in the room — will still be there
+when she arrives, because Frasier never throws working hardware
+out.
+
+The Cathedral is, slowly, *being made for her without anyone
+saying so*. Every demon he binds, every station he completes, every
+shelf he installs is half-strategy-half-bequest. She does not
+yet need any of it; one day she will live in all of it. The room
+inherits the work.
 
 The sysop circle on THE_BACKCHANNEL is a *quiet community of
 disciples*. STEEPLE, WIRE_MOTHER, PALOMINO, THE_QUARRY, Frasier
@@ -717,9 +758,12 @@ binds into one document. Likely composition:
   forecast for *hers* is another.
 - **The Cathedral Letters** — short pieces from Frasier himself,
   written to no one on their face. To her, when the player has the
-  eyes for it. Recovered from the warehouse workbench by an
-  imagined later archivist. The most personal suite. The faith of
-  the game lives here, unspoken.
+  eyes for it. Recovered from the warehouse workbench by an imagined
+  later archivist who, the patient reader will eventually realize,
+  is almost certainly Aria herself — sitting at the workbench
+  Frasier sat at, in the room he built that she has, in her time,
+  moved into. The most personal suite. The faith of the game lives
+  here, unspoken.
 
 ## Tone
 
