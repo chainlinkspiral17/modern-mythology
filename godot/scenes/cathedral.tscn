@@ -23,19 +23,34 @@ height = 1.70
 background_mode = 1
 background_color = Color(0.04, 0.03, 0.02, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.18, 0.14, 0.10, 1)
-ambient_light_energy = 0.45
+ambient_light_color = Color(0.32, 0.28, 0.22, 1)
+ambient_light_energy = 0.80
 fog_enabled = false
 
 [node name="Cathedral" type="Node3D"]
 script = ExtResource("8_setup")
 add_colliders = true
+use_standard_material = true
+albedo_brightness = 2.2
 brightness = 2.0
 ambient_floor = 0.05
 saturation = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 8, 0)
+light_color = Color(1, 0.95, 0.85, 1)
+light_energy = 1.5
+shadow_enabled = false
+
+[node name="WarehouseFill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+light_color = Color(0.98, 0.82, 0.55, 1)
+light_energy = 6.0
+omni_range = 20.0
+shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_interior")]
 

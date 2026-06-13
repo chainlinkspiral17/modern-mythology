@@ -22,6 +22,11 @@ extends Node3D
 @export var brightness: float = 2.0
 @export var ambient_floor: float = 0.05
 @export var saturation: float = 1.0
+# Fall back to StandardMaterial3D + vertex-color-as-albedo if the
+# custom shader path isn't working. This sidesteps Godot 4's
+# occasional COLOR-passthrough oddities with unshaded shaders.
+@export var use_standard_material: bool = true
+@export var albedo_brightness: float = 2.2
 
 # Mesh-name substrings that get static-body colliders. Walls + floor
 # + ceiling + diorama platforms + workbench + BBS desk. Skip the
@@ -34,33 +39,43 @@ const COLLIDER_NAME_HINTS: Array[String] = [
 
 
 func _ready() -> void:
-    var mat: ShaderMaterial = _make_shader_material()
+    var mat: Material = _make_material()
 
     var meshes := _collect_mesh_instances(self)
     var applied := 0
     var collided := 0
     for mi in meshes:
-        # Apply the Gouraud shader as material override
         mi.material_override = mat
         applied += 1
-        # Add static-body collider if the mesh name matches one of our hints
         if add_colliders and _should_have_collider(mi.name):
             _ensure_static_collider(mi)
             collided += 1
 
-    # Ensure the player has a real capsule collision shape
     _ensure_player_capsule()
 
-    print("[CathedralSetup] applied gouraud shader to %d meshes · added %d colliders" % [applied, collided])
+    var path: String = "standard" if use_standard_material else "gouraud_shader"
+    print("[CathedralSetup] applied %s material to %d meshes · added %d colliders" % [path, applied, collided])
 
 
-func _make_shader_material() -> ShaderMaterial:
-    var mat := ShaderMaterial.new()
-    mat.shader = gouraud_shader
-    mat.set_shader_parameter("brightness", brightness)
-    mat.set_shader_parameter("ambient_floor", ambient_floor)
-    mat.set_shader_parameter("saturation", saturation)
-    return mat
+func _make_material() -> Material:
+    if use_standard_material:
+        # StandardMaterial3D with vertex_color_use_as_albedo — proven
+        # path through Godot's standard renderer. Works with runtime
+        # lighting (so the scene needs a directional/sun light).
+        var m := StandardMaterial3D.new()
+        m.vertex_color_use_as_albedo = true
+        m.albedo_color = Color(albedo_brightness, albedo_brightness, albedo_brightness, 1.0)
+        m.roughness = 1.0
+        m.metallic = 0.0
+        m.cull_mode = BaseMaterial3D.CULL_DISABLED   # see inside the warehouse box
+        return m
+    # Custom Gouraud shader path (unshaded; vertex bake IS the light)
+    var sm := ShaderMaterial.new()
+    sm.shader = gouraud_shader
+    sm.set_shader_parameter("brightness", brightness)
+    sm.set_shader_parameter("ambient_floor", ambient_floor)
+    sm.set_shader_parameter("saturation", saturation)
+    return sm
 
 
 func _collect_mesh_instances(node: Node, acc: Array = []) -> Array:
