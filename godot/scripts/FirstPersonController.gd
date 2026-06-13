@@ -3,11 +3,14 @@
 # COMMUNITY PLANNED · Frasier's eye-height walking controller.
 #
 # Default controls:
-#   WASD / arrows  · move
-#   mouse          · look
+#   WASD           · move forward / back / strafe
+#   Q / E          · turn left / right (works in embedded play window)
+#   R / F          · pitch up / down (works in embedded play window)
+#   mouse          · look (when not embedded; may not work in embed)
+#   space / ctrl   · up / down (noclip only)
 #   shift          · slower (careful) walk
 #   esc            · release mouse capture
-#   F1             · TOGGLE NOCLIP (fly through walls — for debugging)
+#   F1             · TOGGLE NOCLIP (fly through walls — debug)
 #   F2             · TELEPORT to (0, 3, 0) — debug recovery if stuck
 # ════════════════════════════════════════════════════════════════
 
@@ -17,6 +20,8 @@ extends CharacterBody3D
 @export var careful_speed: float = 1.0
 @export var fly_speed: float = 6.0
 @export var mouse_sensitivity: float = 0.0025
+@export var keyboard_turn_speed: float = 2.2     # radians/sec for Q/E turn
+@export var keyboard_pitch_speed: float = 1.6    # radians/sec for R/F pitch
 @export var eye_height: float = 1.65
 
 const GRAVITY: float = 9.8
@@ -35,7 +40,7 @@ func _ready() -> void:
         camera.position.y = eye_height
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     print("[FPC] _ready · mouse mode: %s · spawn at %s" % [Input.mouse_mode, global_position])
-    print("[FPC] noclip default: %s · WASD to fly · Space=up · Ctrl=down · F1 toggles collision · F2 teleport" % noclip)
+    print("[FPC] noclip=%s · WASD move · Q/E turn · R/F pitch · Space/Ctrl up/down · F1 collide · F2 teleport" % noclip)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -64,6 +69,26 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+    # Keyboard turning · works even if mouse-look doesn't (embedded
+    # play window quirks). Q/E for yaw, R/F for pitch.
+    var yaw_input: float = 0.0
+    if Input.is_key_pressed(KEY_Q):
+        yaw_input += 1.0
+    if Input.is_key_pressed(KEY_E):
+        yaw_input -= 1.0
+    if abs(yaw_input) > 0.01:
+        rotate_y(yaw_input * keyboard_turn_speed * delta)
+
+    var pitch_input: float = 0.0
+    if Input.is_key_pressed(KEY_R):
+        pitch_input += 1.0
+    if Input.is_key_pressed(KEY_F):
+        pitch_input -= 1.0
+    if abs(pitch_input) > 0.01 and camera:
+        pitch += pitch_input * keyboard_pitch_speed * delta
+        pitch = clamp(pitch, -PI / 2.2, PI / 2.2)
+        camera.rotation.x = pitch
+
     var input_vec := Vector3.ZERO
     if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
         input_vec.z -= 1.0
