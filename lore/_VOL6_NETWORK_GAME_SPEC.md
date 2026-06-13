@@ -39,21 +39,58 @@ layers, run in sequence:
 The whole game is paced for chill. No timer. Long turns are fine.
 The BBS is meant to be a place to sit, not a puzzle to solve.
 
-## The three regions
+## The map · control nodes and resource flow
 
-### Graustark · home soil · low resistance
+The map isn't free-form territory. Each region is a small constellation
+of **control nodes** — discrete locations Frasier has to maintain to
+keep the network functional in that region. A node held generates
+resources for the network (insight, cover, courier capacity, demon
+rest, safe-house space). A node lost dries up its output and becomes
+a *problem in itself* — a hostile node generates threats outward into
+neighbors until reclaimed.
+
+Nodes are not territory in the wargame sense. They are *people's
+homes, businesses, and infrastructure that already exist in the canon*.
+The boat is a node. The diner is a node. The Roberts house is a node.
+Elicia's bungalow is a node. The Harmony Creek model home is a node.
+A specific dirt road outside Small Wood is a node.
+
+### The resource trade-off
+
+The strategic spine: **pushing Small Wood costs resources from the
+other two regions**. Frasier's network has finite output. To plant
+in Small Wood — to even reach Small Wood, given the distance — he
+has to *withdraw* a demon-month or a human-week from Graustark or
+Harmony Creek. That withdrawal weakens the source node. Weakened
+source nodes spawn problems faster. The game's central question
+every week is: *how much can I afford to bleed the home soil to
+keep trying in Small Wood?*
+
+Push too hard and Graustark starts failing in the slow grief-and-
+infrastructure way. Push too little and Small Wood swats every plant
+before it sprouts and the seed count for *Milk and Honey* stays at
+zero. The chill comes from the timescale, not the absence of choice.
+
+### Graustark · home soil · established network
 
 The TX/LA river country that vol 5 lived in. Nicola's house. The
-boat (Dante's, now winding down). The diner. Frasier's network here
-is dense, the locals are loyal, the problems are the *slow* kind —
-old grief surfacing, succession arguments, infrastructure failing.
+boat. The diner. The bungalow. The cathedral. Frasier's network
+here is *mature* — six to eight control nodes, most of them
+self-maintaining as long as the canon roster is in place. Frasier
+can run Graustark on autopilot for weeks if he has to. He pays for
+that by having drawn down its slack to push elsewhere.
 
-- **Native agents:** the canon hands aged forward — Nicola, Dante,
-  the diner network (John Frank), Elicia from the bungalow.
+- **Control nodes (sample):** Dante's boat, the diner, Nicola's
+  house, Elicia's bungalow, the cathedral, the riverfront. Most
+  start the summer held and stable.
+- **Native agents:** the canon roster aged forward — Nicola, Dante,
+  John Frank, Elicia. They run their nodes by *being there*.
 - **Problem palette:** memorial-grief, family-succession, the boat
-  closing, the cathedral, the diner's lease.
-- **Strategic role:** supply. Graustark generates the
-  *insight* and *cover* Frasier spends elsewhere.
+  closing, the cathedral, the diner's lease, infrastructure failing.
+- **Strategic role:** supply. Graustark generates the *insight* and
+  *cover* and *courier capacity* Frasier spends elsewhere. Every
+  unit pulled to Small Wood is a unit Graustark doesn't have when
+  it needs it.
 
 ### Harmony Creek Estate · engineered community · medium resistance
 
@@ -62,6 +99,10 @@ build on the edge of nothing, all surveillance-soft and HOA-hard.
 Frasier has a thin foothold here — two or three plants — and the
 community's leadership is hostile in the polite way.
 
+- **Control nodes (sample):** the model home, the HOA office, a
+  specific cul-de-sac that gets a lot of new mail, the community
+  pool, a half-finished phase-three lot. Three to four nodes total,
+  most contested at game start.
 - **Native agents:** Mackenzie at the loom (relocated? visiting?
   the writer can decide). A demon or two embedded as residents (the
   *cicada*, the *starling* — long-watch types).
@@ -80,16 +121,22 @@ side. The terrain is bad for demons (cold, watched, networked
 weirdly). This is the *planting* region — where success is measured
 in seeds banked for the next book, not in territory held.
 
+- **Control nodes (sample):** one rented room above the timber-yard
+  office, one dirt road, one diner that doesn't know it's a node yet,
+  one tower site (see below). One or two start the summer held;
+  most start as targets to *try for*, not nodes Frasier already has.
 - **Native agents:** thin. One or two contacts Frasier has cultivated
   over years; both expensive to dispatch.
-- **Problem palette:** local-press exposure, demon burn-out, a
-  contact going dark, a seed dying before sprouting.
+- **Problem palette:** local-press exposure, contact going dark, a
+  seed dying before sprouting, demon corruption (see below), the
+  ground itself refusing the plant.
 - **Strategic role:** investment. Every successful plant in Small
   Wood becomes a seed that *Milk and Honey* harvests in its opening
   chapters. Every failed plant is a setback Frasier carries forward.
 - **The asymmetry:** Small Wood's escalation clock is twice as fast
-  as the other two regions, and Frasier loses agents here at a much
-  higher rate. The point is not to win Small Wood. The point is to
+  as the other two regions, Frasier loses agents here at a much
+  higher rate, and **demons sent to Small Wood risk corruption**
+  (see below). The point is not to win Small Wood. The point is to
   *keep trying* in Small Wood while holding the rest.
 
 ## Agents
@@ -126,24 +173,148 @@ for 14 days. At 10, gone for the saga. Burn doesn't recover on its
 own — Frasier has to *spend a BBS night on it* (a specific board
 where demons rest).
 
+**Corruption in Small Wood.** A demon dispatched to Small Wood
+accrues *corruption* alongside burn, at a much faster rate. At a
+threshold (5 corruption for most demons, lower for the lighter
+classes like cicada and moth), the demon **turns** — it doesn't go
+dark, it doesn't come home, it stays in Small Wood as an *enemy
+agent on the resistance's side*. The turned demon appears on the
+map as a problem source under its original name. Future operations
+in Small Wood now also have to plan around a demon Frasier
+*trained*.
+
+Corruption is the single largest reason demons aren't the answer to
+Small Wood. Every demon-week spent in Small Wood is a coin flip
+toward making the region harder for next week. The player learns
+this the hard way the first time it happens. After that, demons in
+Small Wood become a deliberate trade-off — sometimes the only
+option, always the dangerous one.
+
 ### Humans · slow, quiet, indebted
 
-The canon roster, doing what they would actually do in vol 6's
-timeline. Aged forward, sometimes tired, sometimes elsewhere.
+The canon roster, aged forward into vol 6's timeline. **Each one is
+a person with a home and a life.** They are not units that live on
+the map waiting to be moved. Sending Mackenzie to Harmony Creek
+means she leaves her loom, leaves Philip, drives or flies, sleeps in
+a strange bed, and comes back tired with the work at home backed up.
+Sending Dante to Small Wood means the boat doesn't have its captain
+for the four days he's gone, and the boat's other problems escalate
+unsupervised.
 
-- They accrue **obligation** rather than burn. Sending Mackenzie to
-  Harmony Creek to look in on the model home is something she does
-  because Frasier asked. The third time he asks, she asks something
-  back. The fifth time, she stops answering.
-- Each human agent has a private DM thread on the BBS. Their
-  willingness to be dispatched is what's in the thread.
-- Humans never "go dark" the way demons do. They just stop picking
-  up.
+The dispatch cost for a human agent is therefore at least three
+overlapping things:
 
-The two economies (burn / obligation) are the strategic spine. A
-run where Frasier leans on demons looks different from a run where
-he leans on the canon roster, and the BBS layer reads each
-differently.
+- **Obligation** — they did Frasier a favor; the favor is on the
+  books. The third favor is harder than the second. The fifth, they
+  stop answering.
+- **Time at home** — the node they normally maintain runs without
+  them while they're away. Long dispatches mean their home node
+  takes on a small-problem of its own (Philip alone with the basil
+  pot dying; the boat's Friday dinner crew without Dante on the
+  iron stair).
+- **Life cost** — some dispatches cost things the BBS layer
+  surfaces afterward. Mackenzie sent to Harmony Creek too often
+  starts posting about leaving Philip. Dante sent to Small Wood
+  starts posting about closing the boat.
+
+The DMs on the BBS are not strategic communications. They are
+*people's lives* in response to the strategic communications. Read
+them and you'll know who's about to stop picking up.
+
+Humans never "go dark" the way demons do. They just stop picking
+up. And the things they stopped picking up about are still in their
+homes and lives, getting worse.
+
+The three economies (demon burn / demon corruption / human
+obligation-plus-life) are the strategic spine. A run that leans on
+demons risks Small Wood eating them. A run that leans on humans
+risks the canon roster falling apart in their own homes by Labor
+Day. Most summers will be a mix, and the BBS will tell Frasier
+which mix is breaking.
+
+## Dean's network · the third faction
+
+Frasier is not the only operator on this map.
+
+Mr. D. Dean — the long-game watcher from vol 5, the lapels-smoothing
+gentleman at Table 14, the man who leaves notes under hundred-dollar
+bills — has his own network. By vol 6 his operation is larger than
+Frasier's, older than Frasier's, and **the big silent unknown of the
+strategic layer**. Dean is not Frasier's ally. He is not Frasier's
+enemy. He is using his network for *his own reasons*, which Frasier
+does not fully understand and the player learns only obliquely.
+
+### What Dean controls
+
+- **The substrate.** A reality-manipulation infrastructure layered
+  underneath the map. The substrate is not a place; it is a *medium*
+  Dean's network operates through. When the substrate is active in
+  a region, the rules of that region soften — escalation clocks
+  drift, problems mis-classify, agents arrive late or arrive
+  somewhere they weren't dispatched to. Frasier sees the *effects*
+  of the substrate as anomalies; he does not see the substrate
+  itself.
+- **The tower.** A single physical structure in Small Wood, near
+  but not on Frasier's seed-planting nodes. The tower is Dean's
+  primary focusing point for substrate manipulation. It is on
+  Frasier's map but he cannot reach it; agents dispatched to the
+  tower do not return. Some weeks the tower is *bright* (active);
+  some weeks it is *dim*. The brightness state is the player's only
+  legible reading of what Dean is doing.
+
+### How Dean shows up in play
+
+Dean has no boards on the BBS that Frasier can read. He has no DMs.
+He is never a dispatchable agent on Frasier's side. He shows up
+*only* as:
+
+- **Anomalies on the map.** A Small Wood plant that should have
+  been swatted is somehow still there. A Harmony Creek problem
+  resolves itself overnight. A demon Frasier sent to corrupt-and-
+  die in Small Wood comes home untouched and slightly *different*.
+- **Fingerprints in other people's threads.** A canon human posts
+  about meeting a "plain-faced man" at a diner. A BBS handle
+  Frasier doesn't recognize appears in MAINSTREET once and never
+  again. A photograph attached to a thread on THE_LIBRARY shows,
+  in the background, lapels being smoothed.
+- **Tower-brightness events.** When the tower is bright, the
+  strategic layer's rules shift for one in-game week. The shifts
+  are *not random*; they are Dean's interventions. Sometimes they
+  help Frasier (a Small Wood plant lands cleanly). Sometimes they
+  hurt (a Graustark node Frasier was certain was held shows up
+  contested on Monday morning). The player learns to read
+  brightness as a forecast.
+
+### The Dean ledger
+
+A second hidden ledger runs parallel to Frasier's. The player
+cannot read it directly. They can infer its contents from
+anomalies, fingerprints, and tower events. *Milk and Honey* opens
+with both ledgers as inherited state — Frasier's seeds **and**
+Dean's. The protagonist of the next book may discover, late, that
+half of what they thought was their own work was Dean's all along.
+Or none of it was. The game does not tell the player which.
+
+### Why Dean is the right design choice
+
+Three reasons the third faction earns its place:
+
+1. **It models the universe Frasier actually lives in.** Frasier
+   has never been the only one operating. Vol 5 already established
+   that. The strategic layer would feel naive without it.
+2. **It deepens every decision the player makes.** A Small Wood
+   plant that lands clean might be Frasier's work or might be
+   Dean's substrate. A demon that should have corrupted but didn't
+   might be lucky or might be borrowed. The player can never be
+   certain which, and that uncertainty is a *feature*.
+3. **It is the engine for the next book.** *Milk and Honey* has to
+   open with something the protagonist doesn't know. Dean's parallel
+   ledger is that something.
+
+Dean is a design constraint as much as a faction: the writer
+authoring anomalies and fingerprints has to decide, scenario by
+scenario, what Dean is *doing* — but never has to explain it to
+the player. The silence is the point.
 
 ## Problems
 
@@ -243,14 +414,25 @@ The output of the game. What *Milk and Honey* inherits.
 
 - **Seeds planted** · per Small Wood success. Each seed is a named
   thing (a contact's name, a plot of land, a phrase posted on the
-  right board). *Milk and Honey* opens with that many seeds available
-  to its protagonist.
+  right board). *Milk and Honey* opens with that many seeds
+  available to its protagonist.
 - **Agents intact** · which demons are still on Frasier's roster at
   Labor Day. Which humans are still picking up the phone.
+- **Demons turned** · the negative inheritance. Demons that
+  corrupted in Small Wood and stayed there. *Milk and Honey* opens
+  with each turned demon listed as an active enemy agent — Frasier's
+  former tools, working for the resistance, knowing his methods.
 - **Cover remaining** · the network's deniability score. Low cover
   means *Milk and Honey* opens with Frasier already under watch.
 - **BBS friendships** · per-canon-human relationship state at saga
-  end. Frasier's call list going into vol 7.
+  end. Frasier's call list going into vol 7. Includes whose home
+  lives broke under the dispatch load.
+- **Tower-state** · the tower's final brightness reading at Labor
+  Day. *Milk and Honey* opens with the tower bright, dim, or dark
+  depending on what Dean was doing in the last week of the summer.
+- **Dean's ledger (hidden)** · the parallel ledger the player never
+  sees. *Milk and Honey* may read off this to make the protagonist's
+  opening world feel like it has been written without them.
 - **Unlocks claimed** · the player's collection state. Carries to
   the saga shelf, not the in-game ledger.
 
@@ -273,8 +455,17 @@ There is no game-over screen.
   hits zero) → he's still there in *Milk and Honey*, but quieter,
   smaller, no longer the operator. The protagonist has to coordinate
   without him.
+- A summer where three or more demons turn in Small Wood → *Milk
+  and Honey* opens with a *hostile former Magician roster* working
+  against the protagonist. The villains know Frasier's signatures
+  because they used to *be* Frasier's signatures.
+- A summer where the tower stays bright at Labor Day → Dean has
+  finished whatever he was doing. *Milk and Honey* opens with the
+  substrate active across all three regions, the rules already
+  bending before the protagonist takes their first action.
 
-Every ending is a starting state. None is a loss.
+Every ending is a starting state. None is a loss. Some starting
+states are harder than others; none are inaccessible.
 
 ## Tone · the chill unwind
 
