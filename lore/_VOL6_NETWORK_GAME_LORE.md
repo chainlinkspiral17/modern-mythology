@@ -83,18 +83,77 @@ explanation:
 The summer is a wave. The wave passes. The novels keep going. The
 player's shelf carries the specific texture of THIS wave.
 
-## Timeline placement
+## Setting · present day, a world not quite our own
 
-Roughly 2000-2005. Between vol 5 (Major Arcana, late 90s) and vol
-6 (Planned Community, mid-2000s). A generation back from vol 7
-(Land of Milk and Honey, 2025-2034).
+The game takes place **present day**, in a world adjacent to but
+not identical with ours. The texts of Modern Mythology — vols 1
+through 5 and the in-progress 6 and 7 — have cumulatively built
+that world. Playing the game is stepping into it. The substrate,
+the demons, the transworld traveller, the conversion as an
+ordinary social process — these are not historical-fantasy notes,
+they are the *present-day reality* of the world the player is in.
+
+This is the meta-fictional move the saga has been earning. Each
+text in Modern Mythology adds another layer of detail, another set
+of names, another inversion of normalcy. By the time the player
+opens the FT network game, the world *already exists*. The game
+doesn't have to introduce its rules; the rules are the cumulative
+weight of everything written before it. The player either knows
+them from having read the texts, or learns them by playing, or
+plays not-knowing and finds the strangeness landing exactly as
+the project intends — *as if the rules are already here, and you
+just hadn't noticed*.
+
+A world not quite our own. The roads are the roads. The diners
+look like diners. The HOA agendas read like HOA agendas. The BBS
+era has somehow not entirely ended in this version of the present
+— phosphor-green CRTs still hum in certain rooms; certain operators
+still dial in nightly; certain things are still done by modem.
+Other technologies are stranger than they should be, or older than
+they should be, or quieter. The architecture is recognizable. The
+weather is recognizable. The *texture* is the giveaway.
+
+### When the game's "now" sits in the saga's chronology
+
+Vol 5 (Major Arcana, the Cathedral chapters) is the saga's past —
+the late-90s-feeling era when Frasier built the floor and the
+demons were first bound. Vol 6 (Planned Community) is the saga's
+recent past — the HCE buildout, the young vol 6 cast in their
+late teens and twenties. Vol 7 (Land of Milk and Honey) is the
+saga's present, set roughly *now*.
+
+**The FT network game runs concurrent with vol 7.** Same calendar
+year. Same weather. The substrate that vol 7's text describes as
+having gone *unstable* recently — the long-stable phenomenon Dean
+ran cleanly for decades, now misbehaving — is unstable across this
+game's window too. The summer the player holds is the summer
+*after* the substrate cracked.
+
+Which means:
+- Dean is recalibrating. His network shows hairline cracks in
+  ways it didn't in the cleaner years.
+- The migration from Graustark is more urgent than it has been in
+  any prior decade. People are *aware* they need to be elsewhere,
+  in a way they were not aware in the substrate's stable years.
+- Frasier has a *window*. Brief. Real.
+- Aria's coming, anticipated for years, feels closer than it has
+  ever felt. The substrate's instability may not be unrelated to
+  her impending arrival.
 
 The young vol 6 cast — Sam Miller, Diego Ramos, Maya Daigle, Skip
-Donnelly — are children, teenagers, or young adults in this game's
-window. The elder vol 7 cast — Mrs. Gable, Per, Petra, the Glitch
-Report '88 collective survivors — are middle-aged. *Future Smolvud
-has a lot of old people* because Frasier was successfully delivering
-some of those people to the Oregon coast in 2002.
+Donnelly — are present-day adults in their late 20s through 40s,
+exactly as the vol 6 canon files describe them. The vol 7
+characters — Lena Vargas, Wren, Tem, Mrs. Gable, Per, Petra — are
+present-day, exactly as the vol 7 reference files describe them.
+The Glitch Report '88 collective members are present-day elderly
+or deceased. The 1988 origin of the substrate is the same canonical
+1988. The arithmetic works.
+
+*Future Smolvud has a lot of old people* because the Smolvud the
+game is set in is, structurally, the same Smolvud Lena Vargas
+lives in — and most of the elder cast Frasier deals with in this
+summer are the same elder cast vol 7 will show as Lena's neighbors,
+shopkeepers, and quiet allies.
 
 ## Frasier Temple in this season
 
@@ -140,11 +199,11 @@ was now an altar.
 When Frasier dies, **Aria moves in.** She inherits the space. The
 Cathedral of Rust and Code is, in the very long view, *her seat*.
 
-Nothing in this game's window shows that. Frasier in 2002-2005 is
-still middle-aged, still at the workbench, still building. But
-every piece of the floor he refines this summer is, in the long
-arc, a small part of the room she will eventually live in. The
-quiet inheritance is *the architecture itself*. He builds, and he
+Nothing in this game's window shows that. Frasier here is still
+middle-aged, still at the workbench, still building. But every
+piece of the floor he refines this summer is, in the long arc, a
+small part of the room she will eventually live in. The quiet
+inheritance is *the architecture itself*. He builds, and he
 builds, and he builds, and one day she will be there.
 
 ## Dean · the traveller between worlds
@@ -175,7 +234,8 @@ His operation on the ground: **shell companies and shady folk who
 appear normal.** A surveyor with a clipboard. A contractor with a
 work truck. A pleasant retiree on the HOA welcome committee. A
 freight-hauler who runs route along I-10. A man at a Wagner's
-Hardware register in Small Wood who has been there since 1996. The
+Hardware register in Small Wood who has been there as long as
+anyone can remember. The
 *ordinariness* is the disguise. Most of them do not know they are
 working for him; some know and have made peace with it; a small
 inner circle knows and is the operational core.
@@ -307,9 +367,9 @@ project's timeline. The eventual move-in to the Cathedral of Rust
 and Code is one of them. There are others, none of which the game
 needs to name.
 
-In this game, in 2002-2005, she is — for the player and for
-Frasier alike — overwhelmingly the *sighting*. Frasier has seen
-her, by his count, eleven times in eighteen years. He has spoken
+In this game, she is — for the player and for Frasier alike —
+overwhelmingly the *sighting*. Frasier has seen her, by his count,
+eleven times across the years he has been counting. He has spoken
 with her, in flesh, once. He does not write the date of that
 encounter down anywhere. He does, in the Cathedral Letters, refer
 to it.
@@ -341,8 +401,8 @@ played and the war remains.
 
 The seeds in Small Wood are partly *her future congregation*. The
 named migrants Frasier delivers — Bea Mercer, Mae Halsey-Knight,
-the Vargas-Quintana family with infant Lena — are people who, in
-some future twenty or thirty years on, may meet her, recognize
+the Vargas-Quintana family with their young daughter Lena — are
+people who, in some near or middle future, may meet her, recognize
 her, work with or for or beside her. Frasier does not know which.
 The delivery is faith, not strategy. He is planting for a harvest
 he will not, on most days, expect to see.
@@ -402,15 +462,18 @@ Why people are leaving:
 - The Cathedral chapter's reconstruction work has, side-effect-
   wise, alerted Dean's surveying network that Graustark is full of
   people whose lives are unsettled enough to be *moveable*.
-- NexCorp Residential Solutions has begun mailing brochures to
-  every Graustark address since 1998. By 2002 the brochures are
-  professionally typeset and feature Lot 47 in soft-focus dusk
-  light.
+- NexCorp Residential Solutions has been mailing brochures to
+  every Graustark address for many years now. The brochures are,
+  by this summer, professionally typeset and feature Lot 47 in
+  soft-focus dusk light. They arrive monthly.
 - Some Graustark residents have, since the wreck day, been
   receiving from anonymous senders small specific incentives to
   *consider* the planned community: a free utility audit, an
   insurance quote, a long-lost-cousin pamphlet. Frasier's network
   has determined the senders are Dean's.
+- The substrate's recent destabilization has made the pressure
+  legible in ways it wasn't before. Residents who never gave the
+  brochures a second look are, this summer, picking them up.
 
 The native opposition in Graustark is not a single force. It is
 *the pressure* itself, plus Paul's residual stakes, plus the small
@@ -421,7 +484,7 @@ so by the right route.
 
 ### Harmony Creek Estate · the stopover
 
-What HCE is, in 2002-2005:
+What HCE is, in the game's window:
 
 - A planned community in its construction-and-early-occupancy
   phase. Phase I is built and mostly sold; Phase II is in framing;
@@ -467,10 +530,10 @@ when it occasionally aligns with Dean's interests by accident.
 
 Why people are going:
 
-- The Oregon coast has not (yet, in this period) been folded into
-  Dean's network on the same scale as the Gulf Coast. The Glitch
-  Report '88 collective made him visible there fifteen years ago,
-  in a way the Gulf Coast never made him visible. The PNW has its
+- The Oregon coast has not been folded into Dean's network on the
+  same scale as the Gulf Coast. The Glitch Report '88 collective
+  made him visible there decades ago, in a way the Gulf Coast
+  never made him visible. The PNW has its
   own observers.
 - A small group of Graustark and HCE migrants — and a handful from
   other Gulf Coast subdivisions — are *being delivered*. Specific
@@ -487,13 +550,19 @@ Why people are going:
 
 What Small Wood is, in this window:
 
-- A timber town in slow industrial decline. The mills are closing
-  in slow succession. The cannery is operational but barely.
-- Mrs. Gable is in her 40s, the active librarian, the anomalous-
-  frequency archive her project.
-- Wagner's Hardware on the corner where Board Lords will be in
-  2034. Petra's mother's bookstore (the Salty Tome's predecessor)
-  three blocks down.
+- A timber town long past its industrial decline. The mills closed
+  in slow succession over the last several decades. The cannery is
+  still operational but barely — a skeleton crew, the basement
+  servers running outdated payroll software for fewer workers
+  every year.
+- Mrs. Gable is in her late 60s, the retired librarian, still
+  doing the anomalous-frequency archive work in the back room
+  because nobody told her to stop.
+- Wagner's Hardware on the corner where Board Lords now is in
+  another universe, but in this one is still Wagner's — the
+  building's last hardware tenant, hanging on. Petra runs the
+  Salty Tome bookstore three blocks down, where her mother ran
+  it before her.
 - Frasier has one rented room above Wagner's Hardware, one strong
   relationship with a Glitch Report veteran, one careful working
   relationship with Mrs. Gable, and a handful of dead-drop sites
@@ -670,11 +739,11 @@ The player may or may not figure out which is which.
   been quietly refusing certain instructions. The most surprising
   named character of the summer.
 - **Vance Holcombe** — 60. Cover: owner of Wagner's Hardware in
-  Small Wood, in residence since 1996. Role: Dean's outer-edge
+  Small Wood, in residence for decades. Role: Dean's outer-edge
   Small Wood handler. He rents Frasier the upstairs room and
   charges fair rent and is, at the same time, the reason certain
-  migrants who tried to settle in Small Wood in 1998 left within
-  six months.
+  migrants who tried to settle in Small Wood in earlier summers
+  left within six months.
 
 ### Small Wood locals — Frasier's foothold
 
@@ -685,30 +754,33 @@ Invented names for the people the player works with on the front:
   Second sobriety, six years in. Has a workshop in a garage off
   Highway 101 that the timber economy left alone. Knows everyone
   on the coast who matters and several who don't.
-- **Mrs. Marian Gable** — 47 in 2002. Active librarian (retires
-  2014). Anomalous-frequency archive in the library's back room.
-  Knows what Frasier is. Will not, in conversation, acknowledge
-  this. Donates the work back to itself.
+- **Mrs. Marian Gable** — late 60s. The retired town librarian
+  (still doing back-room archive work without pay because nobody
+  stopped her). Anomalous-frequency archive in the library's back
+  room. Knows what Frasier is. Will not, in conversation,
+  acknowledge this. Donates the work back to itself.
 - **Avis Holcombe-Tate** — 38. Vance Holcombe's estranged
   daughter. Lives in Lincoln City. Runs a small bookkeeping
   business. Hates her father with a precision that makes her
   useful: she will deliver a letter Frasier writes if he can be
   certain she will not be made to know what it contains.
-- **The Glitch Report veterans** (six surviving in 2002, three
-  active):
-  - **Otis Vandermeer** (above).
-  - **Sister Kell** — 51. Lay sister at the Catholic mission in
-    Newport. The collective's archivist. Has, in her cell, a
-    fireproof box of cassette transfers of 1988-1991 broadcasts.
-  - **Doc Reyes** (Damian Reyes) — 58. Retired veterinarian. Lives
-    in a cabin on the north fork of the Alsea. Owns the only
+- **The Glitch Report veterans** (the original 1988 collective,
+  now elderly — three still active in some form, two recently
+  silent, one freshly deceased):
+  - **Otis Vandermeer** (above) — late 60s now.
+  - **Sister Kell** — early 70s. Lay sister at the Catholic
+    mission in Newport. The collective's archivist. Has, in her
+    cell, a fireproof box of cassette transfers of the original
+    1988-1991 broadcasts.
+  - **Doc Reyes** (Damian Reyes) — late 70s. Retired veterinarian.
+    Lives in a cabin on the north fork of the Alsea. Owns the only
     spectrum analyzer in three counties that still works.
-  - **Park Manus** — 62. Deceased, March 2003. The player will
+  - **Park Manus** — 80. Deceased this spring. The player will
     receive the news mid-summer if they have been paying attention.
-  - **Helen Soong** — 55. Goes silent in April 2003. The player
+  - **Helen Soong** — mid 70s. Goes silent in April. The player
     will not know why for several weeks. The reason is conversion.
-  - **Ann-Marie Frame** — 49. Was active in '88, hasn't been in
-    fifteen years. May reactivate this summer if Frasier asks
+  - **Ann-Marie Frame** — late 60s. Was active in '88, hasn't
+    been in decades. May reactivate this summer if Frasier asks
     correctly.
 
 ### Frasier's sysop circle — the BBS's deep layer
@@ -718,14 +790,14 @@ their own network, their own quiet operation. They are not Frasier's
 agents; they are his peers. He calls them by handle.
 
 - **STEEPLE** — Operates out of Mobile, AL. Real name unknown.
-  Has known Frasier since 1996. The most reliably reachable of
+  Has known Frasier for decades. The most reliably reachable of
   the sysop circle.
-- **WIRE_MOTHER** — Operates out of Lubbock, TX. Aged late 60s.
-  The matriarch of the network. Wrote the original code Frasier
-  uses to bind demons to BBS handles.
-- **PALOMINO** — Operates out of Santa Fe, NM. Late 30s. Newer.
-  Has, in 2002, been on the network for about four years. Brilliant,
-  unreliable, occasionally compromised.
+- **WIRE_MOTHER** — Operates out of Lubbock, TX. Aged into her
+  80s. The matriarch of the network. Wrote the original code
+  Frasier uses to bind demons to BBS handles.
+- **PALOMINO** — Operates out of Santa Fe, NM. Late 40s. Has been
+  on the network for about a decade. Brilliant, unreliable,
+  occasionally compromised.
 - **THE_QUARRY** — Operates out of somewhere in Pennsylvania.
   Real name unknown. Speaks in queries only — never declarative
   statements. The most paranoid of the circle. Useful in a
@@ -749,23 +821,27 @@ Named example seeds the player can plant:
 - **Mae Halsey-Knight**, 19, arriving alone in late July with a
   brown manila envelope from her uncle Jasper containing master
   tapes from Halsey Studios.
-- **The Vargas-Quintana family** with infant Lena, arriving at
-  the Oregon coast no later than Labor Day. The summer's most
-  important delivery.
+- **The Vargas-Quintana family** with their young daughter Lena,
+  arriving at the Oregon coast no later than Labor Day. The
+  summer's most important delivery — Lena is, on the player's
+  side of the screen, the future-protagonist of *Land of Milk
+  and Honey*; Frasier knows only that the family must reach the
+  coast intact.
 - **Three boxes of donations** to Mrs. Gable's library, anonymous,
-  arriving in 2001, 2002, and 2003. The 2002 box contains John
-  Frank's first column-collection.
+  arriving across three successive summers. One of them contains
+  John Frank's first column-collection.
 - **A name in Vance Holcombe's ledger** — placed by Avis Holcombe-
   Tate at her father's hardware store while he was at lunch. The
-  name is "F. Temple" with a 1992 date. It will be found in 2034
-  by the Board Lords tenant clearing a closet, and recognized.
+  name is "F. Temple" with a date that predates Vance's tenancy
+  by decades. It will be found, in due time, by whoever clears the
+  building's back closet next, and recognized by someone.
 - **A spectrum analyzer schematic** in Sister Kell's fireproof box.
   Doc Reyes' design, copied longhand by Otis Vandermeer at
-  Frasier's request. Survives Sister Kell's death; reaches Mrs.
-  Gable in 2017.
-- **A working dead-drop site** at God's Thumb that lasts until the
-  2031 winter storm. The player establishes this site in the
-  game's window.
+  Frasier's request. Survives Sister Kell. Reaches Mrs. Gable in
+  her late years.
+- **A working dead-drop site** at God's Thumb that lasts until
+  the winter storm that takes it. The player establishes this
+  site in the game's window.
 - **Otis Vandermeer's continued sobriety** — fragile, but if the
   player visits him often enough on BBS nights, holding.
 
