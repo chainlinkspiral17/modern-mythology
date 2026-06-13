@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://locale_diner"]
+[gd_scene load_steps=9 format=3 uid="uid://locale_diner"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/diner.glb" id="1_diner_geo"]
 [ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
 [ext_resource type="Script" path="res://scenes/locales/LightController.gd" id="3_lights"]
 [ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
+[ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="5_setup"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMat_Post"]
 shader = ExtResource("4_post")
@@ -41,6 +42,9 @@ initial_mood = "lunch"
 environment = SubResource("Env_Diner")
 
 [node name="Geometry" parent="." instance=ExtResource("1_diner_geo")]
+script = ExtResource("5_setup")
+add_colliders = true
+albedo_brightness = 1.0
 
 [node name="LightSetups" type="Node3D" parent="."]
 
