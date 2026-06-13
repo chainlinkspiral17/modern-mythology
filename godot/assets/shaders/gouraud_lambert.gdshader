@@ -1,40 +1,51 @@
 // gouraud_lambert.gdshader
 // ════════════════════════════════════════════════════════════════
-// COMMUNITY PLANNED · the Gouraud shader
+// COMMUNITY PLANNED · the Gouraud shader (vertex-baked lighting)
 //
 // Reads per-vertex baked lighting from the COLOR_0 attribute (set
-// by the Blender build scripts) and outputs it as ALBEDO with the
-// unshaded render mode. Real-time lights are ignored by this pass
-// — the look IS the bake.
+// by the Blender build scripts) and outputs it as unshaded ALBEDO.
+// Real-time lights are ignored — the look IS the bake.
 //
-// For props that want a runtime light contribution (the workbench
-// lamp, the BBS phosphor screen, the river-window directional),
-// use the standard Godot StandardMaterial3D on those specific
-// faces instead of this shader.
+// Apply via:
+//   1. select the mesh (or use CathedralSetup.gd to auto-apply)
+//   2. Material Override → New ShaderMaterial → load this shader
 //
-// Apply by:
-//   1. select the mesh in the scene
-//   2. Material Override → New ShaderMaterial → Shader → gouraud_lambert.gdshader
+// Tuning uniforms:
+//   brightness     · scale the baked color (1.0 = raw bake, 2.0
+//                    is the recommended default · the Blender bake
+//                    produces values in 0.05-0.25 range, brightness
+//                    pushes them to a normal visible range)
+//   ambient_floor  · additive small lift so unlit faces still show
+//                    some color (NOT a per-channel max — that would
+//                    flatten everything to gray)
+//   saturation     · optional saturation push (default 1.0)
+//
+// IMPORTANT: render_mode is cull_disabled because Blender's
+// make_box() builds outward-facing normals on closed boxes; from
+// inside a closed box, every interior face is back-facing. With
+// cull_back the player inside the warehouse sees nothing.
 // ════════════════════════════════════════════════════════════════
 
 shader_type spatial;
-// cull_disabled so the warehouse INTERIOR walls render — Blender's
-// make_box() builds outward-facing normals, so from inside the box
-// every wall face is back-facing. Without cull_disabled the player
-// inside the Cathedral sees nothing (a black screen).
 render_mode unshaded, cull_disabled, depth_draw_opaque;
 
-uniform float ambient_floor : hint_range(0.0, 0.5) = 0.20;
+uniform float brightness : hint_range(0.5, 4.0) = 2.0;
+uniform float ambient_floor : hint_range(0.0, 0.3) = 0.05;
 uniform float saturation : hint_range(0.5, 1.5) = 1.0;
 
 void fragment() {
     vec3 baked = COLOR.rgb;
 
-    // Add a small ambient floor so vertices facing away from all
-    // baked lights don't go fully black.
-    baked = max(baked, vec3(ambient_floor));
+    // Brightness scale — the Blender bake produces low-intensity
+    // values; this lifts them into a visible range while preserving
+    // the warm/cool contrast from the bake's per-vertex shading.
+    baked *= brightness;
 
-    // Optional saturation push — defaults to 1.0 (no change).
+    // Additive ambient floor (NOT max). Preserves color variation
+    // while lifting fully-unlit faces off black.
+    baked += vec3(ambient_floor);
+
+    // Optional saturation tweak
     if (saturation != 1.0) {
         float luma = dot(baked, vec3(0.299, 0.587, 0.114));
         baked = mix(vec3(luma), baked, saturation);

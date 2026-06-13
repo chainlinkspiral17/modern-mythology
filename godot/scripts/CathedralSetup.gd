@@ -19,6 +19,7 @@ extends Node3D
 
 @export var gouraud_shader: Shader = preload("res://assets/shaders/gouraud_lambert.gdshader")
 @export var add_colliders: bool = true
+@export var brightness: float = 2.0
 @export var ambient_floor: float = 0.05
 @export var saturation: float = 1.0
 
@@ -56,6 +57,7 @@ func _ready() -> void:
 func _make_shader_material() -> ShaderMaterial:
     var mat := ShaderMaterial.new()
     mat.shader = gouraud_shader
+    mat.set_shader_parameter("brightness", brightness)
     mat.set_shader_parameter("ambient_floor", ambient_floor)
     mat.set_shader_parameter("saturation", saturation)
     return mat
