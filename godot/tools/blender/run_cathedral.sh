@@ -55,26 +55,9 @@ if [ -z "$BLENDER" ]; then
       BLENDER="flatpak run org.blender.Blender"
       IS_FLATPAK=1
       echo "→ found Blender via Flatpak: org.blender.Blender"
-
-      # check that Flatpak Blender has the filesystem grant it needs to
-      # read this repo and write the output GLB.
-      OVERRIDES_OUT="$(flatpak override --user --show org.blender.Blender 2>/dev/null || true)"
-      if ! echo "$OVERRIDES_OUT" | grep -q "filesystems="; then
-        # The Flatpak Blender's manifest grants --filesystem=host by
-        # default in most builds, but if it's been overridden away or
-        # if this is a stricter build, we need to grant access.
-        # Try a non-destructive check: list /home/deck from inside it.
-        if ! flatpak run --command=ls org.blender.Blender "$HOME" >/dev/null 2>&1; then
-          echo ""
-          echo "⚠  Flatpak Blender can't see your home directory."
-          echo "   grant access with:"
-          echo ""
-          echo "     flatpak override --user --filesystem=home org.blender.Blender"
-          echo ""
-          echo "   then re-run this script."
-          exit 3
-        fi
-      fi
+      echo "  (note: sandbox cold-start can take 10-30s on a Deck)"
+      echo "  (if export fails with a write error, run:)"
+      echo "    flatpak override --user --filesystem=home org.blender.Blender"
     fi
   fi
 fi
