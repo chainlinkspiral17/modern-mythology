@@ -1,10 +1,21 @@
-# Vol 6 · Network Game Spec · "The Summer Before Milk and Honey"
+# COMMUNITY PLANNED · Game Spec
 
-A grand-strategy gallery game for vol 6, set across a single summer
-of a middle-aged Frasier Temple's life. Frasier sits over a board
-of three regions and routes a network of demons and human agents
-to suppress multiplying problems while planting a fragile foothold
-in Small Wood, Oregon — the front that keeps getting swatted down.
+A grand-strategy gallery game inset into vol 6's summer. Its title
+is the inversion of its host novel's title — **COMMUNITY PLANNED**
+sits beside *Planned Community* the way a *cathedral warehouse*
+sits beside a *warehouse cathedral*. The inversion is the saga's
+signature move.
+
+The game is set across the middle of the summer *Planned
+Community* depicts. The book's part one — *Summer's Start* —
+closes with the long pause. Then the gallery offers the
+COMMUNITY PLANNED unlock. Then the book's part two — *End of
+Summer Begins* — opens. The game IS that middle.
+
+Frasier sits over a board of three regions and routes a network
+of demons and human agents to suppress multiplying problems while
+planting a fragile foothold in Small Wood, Oregon — the front that
+keeps getting swatted down.
 
 The game **adds flavor to the saga but does not author it.** The
 novels — *Planned Community*, *Land of Milk and Honey*, and
@@ -13,6 +24,26 @@ regardless of what the player does in this game. What the gallery
 game produces instead is **unlockable interludes**: extra narrative
 flavor — character vignettes, BBS transcripts, dossier excerpts —
 that the player earns by playing and can read alongside the canon.
+
+## Unlock condition
+
+COMMUNITY PLANNED becomes playable in the gallery only after the
+reader finishes *Summer's Start* — the first part of *Planned
+Community* — and the opening page of *End of Summer Begins* is
+available to turn to. The game's appearance in the gallery
+coincides with the book's structural seam.
+
+The reader can play immediately, defer indefinitely, or skip the
+game entirely. The book's part two remains available in all three
+cases. A reader who plays the game enters part two carrying the
+texture of the middle. A reader who skips it enters part two with
+a held-breath ellipsis where the middle was.
+
+Implementation surface (engine-side, post-MVP):
+- Save flag `community_planned:reader_finished_summers_start`
+- Gallery surfaces a phosphor-green CRT tile labeled COMMUNITY
+  PLANNED with a 14.4k connect-tone preview on hover.
+- Tile remains permanently available once the flag fires.
 The interludes deepen the world for the player who put hours into
 the network; they never rewrite the world for the reader.
 

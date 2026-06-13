@@ -1,7 +1,46 @@
-# Vol 6 · Network Game · Narrative Scope and Lore
+# COMMUNITY PLANNED · Narrative Scope and Lore
 
-Sibling doc to `_VOL6_NETWORK_GAME_SPEC.md`. The spec covers
+The gallery game whose title is the inversion of its host
+novel's title — *Community Planned* sits beside *Planned
+Community* the way the *cathedral warehouse* will, eventually, sit
+beside the *warehouse cathedral*. The inversion is the saga's
+signature move.
+
+Sibling doc to `_COMMUNITY_PLANNED_SPEC.md`. The spec covers
 mechanics; this covers the story.
+
+## Title, unlock, and where the game sits inside the book
+
+The game is called **COMMUNITY PLANNED**. The title is unlocked
+only after the reader finishes the first part of *Planned
+Community* — the section the manuscript calls *Summer's Start* —
+and the second part (*End of Summer Begins*) opens its first
+page. The game **fills the middle of that summer**.
+
+Mechanically:
+- The reader finishes *Summer's Start*. Last page of part one
+  closes.
+- The gallery surfaces a new unlock: a phosphor-green CRT button
+  labeled COMMUNITY PLANNED, with the BBS-era connect tone.
+- The reader can play the game now or skip it; either way, the
+  next chapter of *Planned Community* (the opening of *End of
+  Summer Begins*) is available to read whenever they want.
+- A reader who plays the game enters part two with the texture
+  of the missing middle in their head — the people they
+  glimpsed in part one, they have now seen on the BBS or routed
+  through HCE or lost in Small Wood. Part two reads slightly
+  differently for them.
+- A reader who skips the game enters part two with a structural
+  ellipsis where the middle used to be. The book still works.
+  The summer just has a held breath in the middle that the
+  reader did not exhale.
+
+This is the saga's way of putting the gallery experience in its
+proper place. The game is not bolted onto the side of the novel.
+It is *in the seam*. The novel reads cleanly without it; the
+novel reads more deeply with it; the player who finishes the
+game has, by closing the BBS at Labor Day, opened the next part
+of the book.
 
 ## What the game is about
 
@@ -116,44 +155,60 @@ weather is recognizable. The *texture* is the giveaway.
 ### When the game's "now" sits in the saga's chronology
 
 Vol 5 (Major Arcana, the Cathedral chapters) is the saga's past —
-the late-90s-feeling era when Frasier built the floor and the
-demons were first bound. Vol 6 (Planned Community) is the saga's
-recent past — the HCE buildout, the young vol 6 cast in their
-late teens and twenties. Vol 7 (Land of Milk and Honey) is the
-saga's present, set roughly *now*.
+the era when Frasier built the floor and the demons were first
+bound. Vol 7 (Land of Milk and Honey) is the saga's near future —
+the years when the substrate's recent destabilization has
+propagated all the way to the Oregon coast and Lena Vargas, by
+then a young adult, lives with what came of it.
 
-**The FT network game runs concurrent with vol 7.** Same calendar
-year. Same weather. The substrate that vol 7's text describes as
-having gone *unstable* recently — the long-stable phenomenon Dean
-ran cleanly for decades, now misbehaving — is unstable across this
-game's window too. The summer the player holds is the summer
-*after* the substrate cracked.
+**The COMMUNITY PLANNED game runs concurrent with vol 6 —
+*Planned Community* itself, set in the alt-world's present day.**
+The book's first part (*Summer's Start*) and the book's second
+part (*End of Summer Begins*) bracket the game. The game IS the
+middle of that same summer, told from a perspective the book does
+not have: Frasier's, from the warehouse, holding the line.
 
-Which means:
+The substrate's recent destabilization is contemporary to this
+summer. The long-stable phenomenon Dean ran cleanly for decades
+is, this season, misbehaving. The summer the player holds is the
+summer of the *first crack* and the *first response*. Which
+means:
+
 - Dean is recalibrating. His network shows hairline cracks in
   ways it didn't in the cleaner years.
-- The migration from Graustark is more urgent than it has been in
-  any prior decade. People are *aware* they need to be elsewhere,
-  in a way they were not aware in the substrate's stable years.
+- The migration from Graustark is more urgent than it has been
+  in any prior decade. People are *aware* they need to be
+  elsewhere, in a way they were not aware in the substrate's
+  stable years.
 - Frasier has a *window*. Brief. Real.
 - Aria's coming, anticipated for years, feels closer than it has
-  ever felt. The substrate's instability may not be unrelated to
-  her impending arrival.
+  ever felt. The substrate's instability may not be unrelated
+  to her impending arrival.
 
-The young vol 6 cast — Sam Miller, Diego Ramos, Maya Daigle, Skip
-Donnelly — are present-day adults in their late 20s through 40s,
-exactly as the vol 6 canon files describe them. The vol 7
-characters — Lena Vargas, Wren, Tem, Mrs. Gable, Per, Petra — are
-present-day, exactly as the vol 7 reference files describe them.
-The Glitch Report '88 collective members are present-day elderly
-or deceased. The 1988 origin of the substrate is the same canonical
-1988. The arithmetic works.
+The *Planned Community* cast lives this summer alongside Frasier
+in the same world. Sam Miller works the Kwik Stop register through
+the summer at her canonical age, just as the book describes her.
+Diego Ramos is missing for the parts of the summer the book makes
+him missing. Maya Daigle is at Cosmic Comics with Rick exactly as
+canon places her. Skip Donnelly drives the NexCorp route exactly
+as canon places him. Carla Vega is at Lot 47 with her zines and
+the 47 Hz hum. Mrs. Pimentel is on the welcome committee. The
+*Planned Community* cast is, for the player of COMMUNITY PLANNED,
+not background — they are *peripheral named figures* the strategic
+layer and the BBS layer surface from Frasier's POV. Maya is
+already corresponding with F.T. via Cosmic Comics' back-counter
+mail drop. Frasier reads her letters during BBS nights.
 
-*Future Smolvud has a lot of old people* because the Smolvud the
-game is set in is, structurally, the same Smolvud Lena Vargas
-lives in — and most of the elder cast Frasier deals with in this
-summer are the same elder cast vol 7 will show as Lena's neighbors,
-shopkeepers, and quiet allies.
+The vol 7 figures who appear in this summer (Mrs. Gable, the
+surviving Glitch Report '88 collective members, Petra, the
+Vargas-Quintana family with their young daughter Lena) are at
+their pre-vol-7 ages — kids or middle-aged or elderly, depending.
+They are the seeds whose harvest *Land of Milk and Honey* will,
+in time, depict.
+
+*Future Smolvud has a lot of old people* because Frasier is, this
+summer, dealing with those people at the ages they were before
+they became Lena Vargas's elder neighbors.
 
 ## Frasier Temple in this season
 
