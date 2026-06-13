@@ -1,45 +1,37 @@
 {
   "scope": "emperor",
-  "notes": "Emperor finale cards. The office fails in distinctive ways — a ruling that doesn't hold, a petitioner who leaves without their stamp, the day's docket left unfinished. The brass clock ticks through all of them. The clock has been ticking since Dante's father had the office. The clock is the only thing in the room that doesn't grade.",
+  "notes": "Emperor finale cards. Per the canonical Tarot Gauntlet doc, Emperor reversed is the patriarch who outlives his own usefulness; the throne that becomes a coffin. For Dante in ch4 (the Friday before ch20's sinkhole reopens) the losses are the variations of the day the empire stops responding to him. The throne does not collapse; it ceases to feel like his. The Friday is, in retrospect, the last clean Friday.",
   "finales": [
     {
-      "id": "the_ruling_doesnt_hold",
-      "title": "THE RULING DOESN'T HOLD",
-      "triggered_by": "doubt_max",
-      "weight": 1.0,
-      "flavor": "Dante is at the desk. The ruling is on the page. The stamp is in his hand. The room is the room it should be for this moment — the radiator clicking through to the corner, the candy dish at his right hand half-emptied, the late afternoon catching the brass of the clock face. He cannot put the stamp down. He has held the stamp before over harder pages. He has signed harder rulings than this one. Tonight the stamp does not weigh anything in particular and his hand does not move. The office is colder than it should be for the hour. The clock ticks. The clock has been ticking for ninety years and does not care which way this goes. He sets the stamp back on the blotter without committing the ink. The petitioner, in the chair across from him, watches him do it. They do not look at his face. They look at his hand.",
-      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
-    },
-    {
-      "id": "the_office_closed_short",
-      "title": "THE OFFICE CLOSED SHORT",
+      "id": "the_throne_became_a_coffin",
+      "title": "THE THRONE BECAME A COFFIN",
       "triggered_by": "stagnation_max",
       "weight": 1.0,
-      "flavor": "It is past closing time. The anteroom has people in it who did not get heard — the widow with the estate, the appellant with the six-month case, the old friend who really only came to sit. Dante locks the front door. The bell hasn't rung in twenty minutes. He turns off the desk lamp, then turns it back on because the room is darker than he wants it to be when he leaves. He sits at the desk in the half-light. The stamp is on the blotter. The blotter is the same blotter his father bought in 1962. Tomorrow is tomorrow.",
+      "flavor": "By 10:14 PM the floor had developed the kind of slow stiffness it develops when the proprietor has not, for two hours, made the rounds. Nicola at the maître d' stand was a slightly worse hostess; Sammy at the bar was a slightly slower bartender; Hector at the pass was working in the rhythm of a man covering for something he had not been told he was covering for. Dante remained at the helm. He poured a third bourbon. He stood at the leaded window. The dining room registered through the glass as a room he was outside of. He had not, until this evening, been outside of it. He did not, this evening, go back down.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
     },
     {
-      "id": "the_petitioner_walked",
-      "title": "THE PETITIONER WALKED",
+      "id": "the_card_was_burned",
+      "title": "THE CARD WAS BURNED",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "He held the card over the small brass ashtray on the corner of the desk — the ashtray his father had given him, the one with the bent edge he had never had repaired because the bent edge was the part his father had bent. He held the lighter steady. He brought the flame to the corner of the card. The card began to take. He did not, this time, lower it onto the ashtray. He held the half-burnt card in the air until the flame reached his fingers. He set the unfinished card on the corner of the desk; the small black-edged proof of having flinched. A man who burned his evidence was a man who was afraid. Dante D'Ambrosio, on the Friday before he died, learned for the first time in sixty years what it was to be the kind of man who was afraid.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
+    },
+    {
+      "id": "the_floor_walked_out",
+      "title": "THE FLOOR WALKED OUT",
       "triggered_by": "visitors_claimed_3",
       "weight": 1.0,
-      "flavor": "Three petitioners left without being heard. The widow with the estate. The appellant with the six-month case. The old friend who really just wanted a stamp on a piece of paper that he was never going to take anywhere. Dante sits at his desk and stares at the ledger. The ledger has the ones he heard. It does not have the ones he didn't. The clerk comes by with her coat on and squeezes his shoulder before she goes home. He nods. He does not move. The bell over the door rings once when she leaves, and the office is quiet again, and quiet is the wrong sound for this office at this hour.",
+      "flavor": "Mrs. Karras paid early and left without saying goodbye. The Friday-night regulars at table 12 made noises about the soft-shells in a way that meant they were not, next week, coming back. The private dining six-top stiffed Hector on the kitchen tip — first time in three years from that hostess. Sammy locked the bar at 10:48 instead of 11:30 because Sammy had not, that Friday, been spoken to. The intercom did not click for Dante for the rest of the night. He sat at the helm. He listened to the floor not be the floor. He understood, with the same clarity that did not require articulation he had used for the card, that this was the version of the empire where the empire had decided.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
     },
     {
-      "id": "the_ledger_overfilled",
-      "title": "THE LEDGER OVERFILLED",
-      "triggered_by": "ledger_full",
-      "weight": 1.0,
-      "flavor": "The day's docket is complete. The ledger has every ruling written into it in Dante's careful longhand, dated, stamped, witnessed. There are people still in the anteroom. There are people still on the bench outside in the bank-side street. The bell has rung four times in the last hour and he has stopped counting. The ledger is closed. The stamp is back on the blotter. He looks at the cabinet — the floor-to-ceiling cabinet his father started in '62 and he has been adding to since '79 — and decides this is what tomorrow is for. He turns the desk lamp off. He sits a while in the green dark of the radiator's pilot light.",
-      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
-    },
-    {
-      "id": "the_clerks_day_was_long",
-      "title": "THE CLERK'S DAY WAS LONG",
+      "id": "the_friday_ran_out",
+      "title": "THE FRIDAY RAN OUT",
       "triggered_by": "shift_over",
       "weight": 1.0,
-      "flavor": "It is past five. The clerk has put on her coat. The cabinet is in better order than it was this morning — she rearranged the H drawer while waiting for the appellate folder to be ready. The ledger has eight rulings in it and three more that needed to be in it. She kisses Dante on the top of his head, like she has done at the end of every long day for nineteen years. She does not say anything. He nods. The office closes the way it closes most days — almost on time, with the heavy bronze stamps lined up on the stamp table in their cases, and the brass clock ticking, indifferent, into the empty room.",
+      "flavor": "11:33 PM. The floor is empty. The kitchen is breaking down. Hector is on his second cigarette in the alley. Sammy has wiped down the bar. The catering office desk lamp is off. The card room downstairs has not, yet, broken — they will be there for another hour. Dante is at the desk. The Dean card is square to the corner. The wife photograph is on the wall. He has not, this Friday, made it past the second bourbon. He pours a third. He does not finish it. He turns off the helm light. He walks down the iron stair the way he has walked it for sixty years. He does not yet know that this was the last clean Friday. He suspects.",
       "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
     }
   ],
@@ -48,6 +40,6 @@
     "carry_over_achievements": true,
     "carry_over_codex_hotspots": true,
     "next_run_authority_start": 1,
-    "note": "Dante's losses carry a little residual Authority forward. The office remembers how to run itself; the office has been running itself since before Dante was Dante."
+    "note": "Dante's losses leave a little residual AUTHORITY forward. The boat remembers him. The brass railing brightens by the kind of degree only he notices. The card stays square to the corner."
   }
 }

@@ -34,11 +34,18 @@
     },
     {
       "id": "emperor_complete",
-      "title": "DANTE'S WHOLE DAY",
-      "desc": "Win all three Emperor scenarios (DOCKET, FIRST SESSION, APPEAL). Pending canon reframe — current scenarios were authored before the riverboat-helm canon settled.",
-      "trigger": { "kind": "all_scenarios", "arcana": "emperor", "scenarios": ["docket","first_session","appeal"] },
+      "title": "THE LEDGER CLOSED",
+      "desc": "Win all three Emperor scenarios (THE FRIDAY HELM, TIME'S CALLING CARD, SIX WEEKS APART). The kingdom is your goddamn cage. The brass railing is the wrong brass. You maintain it.",
+      "trigger": { "kind": "all_scenarios", "arcana": "emperor", "scenarios": ["the_friday_helm","times_calling_card","six_weeks_apart"] },
       "unlock_key": "achievement:emperor_complete",
       "reward": { "kind": "unlock", "key": "unlocked:reversed:emperor" }
+    },
+    {
+      "id": "choose_to_know",
+      "title": "SQUARE TO THE CORNER",
+      "desc": "Invoke CHOOSE TO KNOW. A man who burns his evidence is a man who is afraid. A man who keeps it square to the corner is a man who has decided to know.",
+      "trigger": { "kind": "card_played_during_run", "card": "choose_to_know" },
+      "unlock_key": "achievement:choose_to_know"
     },
     {
       "id": "empress_complete",

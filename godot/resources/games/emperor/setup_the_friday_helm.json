@@ -1,0 +1,79 @@
+{
+  "id": "the_friday_helm",
+  "arcana": "iv_emperor",
+  "location": "riverboat_interior",
+  "hand": "dante",
+  "title": "THE FRIDAY HELM",
+  "subtitle": "D'Ambrosio's · 8:14 PM · A Normal Friday",
+  "difficulty": "easy",
+  "epigraph_upright": "A normal Friday. Service at 80% capacity. The cypress beam on the upper deck above the bar holds the brass railing you maintain on principle. Sammy at the well. Hector at the line. Nicola at the stand. Mrs. Karras at her usual table. The bottle in the file cabinet is half-full.",
+  "epigraph_reversed": "You stop making the rounds. The floor stops being floor-shaped. Sammy pours for himself at the bar for the first time since 1996.",
+  "scene_description": "8:14 PM. Friday dinner. Dante at the helm. Authority at 1. Ledger at 1. The brass railing is the wrong brass. The leaded window shows the dining room. The intercom to Sammy is the intercom to Sammy. The night is a normal night.",
+  "direction_hint": "Watch from the helm. Make the rounds. Murmur to Mrs. Karras. Maintain the brass. Close the ledger to 4. Leap.",
+  "opening_log_lines": [
+    "8:14 PM. The dining room is at 80%.",
+    "Sammy at the well. Hector at the line. Nicola at the stand.",
+    "The brass clock from your father's office chimes the quarter."
+  ],
+  "starting_state": {
+    "player_pos": "helm",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "authority": 1,
+    "ledger": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "watch_from_the_helm", "pour_neat", "make_the_rounds", "press_the_intercom"]
+  },
+  "visitors_present_at_start": ["sammy_for_dante", "hector_for_dante", "nicola_for_dante"],
+  "visitor_schedule": [
+    { "visitor": "mrs_karras", "arrival_turn": 1, "arrival_space": "main_dining_room" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_ledger_at_least": 4,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the boat is the boat. the brass is the wrong-bright brass.","tick_per_turn": 1, "effects": [] },
+    { "level": 4, "label": "table 12 is at the imperious-wave stage of its evening.",   "tick_per_turn": 1, "effects": [] },
+    { "level": 7, "label": "sammy poured for himself at the well.",                     "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the floor stopped being floor-shaped.",                    "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "dante at the helm. the bottle is in the cabinet.",              "effects": [] },
+    { "level": 3, "label": "the wife photograph is on the wall opposite the desk.",         "effects": [] },
+    { "level": 5, "label": "the bourbon is on the second pour. the chill in the marrow is the chill.","effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the throne becomes a coffin.",                                  "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",    "label": "GANGWAY",    "ending_lore_token": "leap_off_the_friday_gangway", "visible_from_start": true },
+    { "id": "side_door",  "label": "SIDE DOOR",  "ending_lore_token": "leap_river_side_friday_dante","visible_from_start": false },
+    { "id": "staff_exit", "label": "STAFF EXIT", "ending_lore_token": "leap_off_the_friday_back",     "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 9,
+  "notes": "Easy-mode Emperor. A normal Friday at the helm. Mrs. Karras is present (talkative); Sammy is helper. Win is 3 connections + Ledger 4 + leap. The SIDE DOOR threshold is hidden — only revealed if Dean arrives, which is the medium scenario.",
+  "ambient_pool": [
+    "the leaded window shows the dining room as a slightly-waved aquarium.",
+    "the brass clock chimes from across the office.",
+    "the cabinet bottle is in the second drawer from the top.",
+    "sammy at the bar. the well runs the well runs."
+  ],
+  "ambient_every_n": 3
+}

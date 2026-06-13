@@ -566,22 +566,22 @@ const HIEROPHANT_SCENARIOS := [
 
 const EMPEROR_SCENARIOS := [
 	{
-		"id": "docket",
-		"title": "DOCKET",
-		"subtitle": "Easy · 9:14 AM · Tuesday",
-		"flavor": "Tuesday morning docket. The clerk has the cabinet open. The petitioner is in the anteroom. The bell has rung twice. Hear four matters, stamp three rulings, send people away with what they came for."
+		"id": "the_friday_helm",
+		"title": "THE FRIDAY HELM",
+		"subtitle": "Easy · 8:14 PM · A Normal Friday",
+		"flavor": "Friday dinner. Sammy at the well. Hector at the line. Nicola at the stand. Mrs. Karras at her usual table. The bottle in the file cabinet is half-full. The brass clock from your father's office chimes the quarter."
 	},
 	{
-		"id": "first_session",
-		"title": "FIRST SESSION",
-		"subtitle": "Medium · 7:48 AM · Monday Open",
-		"flavor": "Pre-clerk Monday. Someone slept in their car waiting for you to open. The radiator is cold. The first ruling of the week is the heaviest."
+		"id": "times_calling_card",
+		"title": "TIME'S CALLING CARD",
+		"subtitle": "Medium · 8:48 PM · The Friday Dean Came",
+		"flavor": "The canonical ch4 Friday. The night Dean sat at Table 14 for two hours without ordering. The night Sammy came up the office stair three short raps. The night you decided to know."
 	},
 	{
-		"id": "appeal",
-		"title": "APPEAL",
-		"subtitle": "Hard · 4:32 PM · The Late Afternoon",
-		"flavor": "An appellate hearing on a case from six months ago. The appellant has been here for an hour already. The widow is in the anteroom. Volumes 9 and 10 of the river-code are missing. The clerk is tired."
+		"id": "six_weeks_apart",
+		"title": "SIX WEEKS APART",
+		"subtitle": "Hard · Sunday Brunch · 1st Sunday of an Even Month",
+		"flavor": "First Sunday of an even-numbered month. The day you call Antonio. The day Paul holds court at Table 17. The day Alberto, in Houston, decides to be the one who calls first."
 	}
 ]
 
@@ -843,9 +843,10 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		# Priestess scenario play button removed in canon-alignment surgery
 		# — Whispers from the Liminal rebuild pending. Visualizer still renders.
 		return
+	# Emperor rebuilt around Dante at the riverboat helm (vol5 ch4 canon).
 	if short_path == "emperor_arcana":
 		var vem := _spawn_visualizer(EMPEROR_VISUALIZER_SCRIPT)
-		_add_play_button_overlay(vem, "emperor", "dantes_office", "dante")
+		_add_play_button_overlay(vem, "emperor", "riverboat_interior", "dante")
 		return
 	# Hierophant rebuilt around Quentin Paul's Sunday circuit (vol5 ch5 canon).
 	if short_path == "hierophant_arcana":

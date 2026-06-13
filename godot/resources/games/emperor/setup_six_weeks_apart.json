@@ -1,0 +1,83 @@
+{
+  "id": "six_weeks_apart",
+  "arcana": "iv_emperor",
+  "location": "riverboat_interior",
+  "hand": "dante",
+  "title": "SIX WEEKS APART",
+  "subtitle": "D'Ambrosio's · Sunday Brunch · 1st Sunday of an Even Month",
+  "difficulty": "hard",
+  "epigraph_upright": "Sunday brunch. First Sunday of an even-numbered month. The day you call Antonio. The day Paul holds court at Table 17. The day the catering office has eleven unread voicemails about a wedding in Port Arthur. The day Alberto, in Houston, decides to be the one who calls first.",
+  "epigraph_reversed": "You make the call to Antonio and do not, today, find the words. Paul asks the question you do not, today, want to answer. The card on the corner of your desk has a black-edged ash mark from the morning you almost burned it.",
+  "scene_description": "Sunday brunch, 11:42 AM. Authority at 2, Ledger at 2, Doubt at 2, Stagnation at 3. Sammy / Hector / Nicola at start. Mrs. Karras is at brunch too. Paul will arrive at Table 17 turn 3 (the canonical Sunday at 11:53). Antonio reachable by phone turn 2. Alberto reachable by phone turn 4. The card is on the desk from last Friday, square to the corner.",
+  "direction_hint": "Make the call to Antonio. Make the rounds. Land Paul's brunch visit. Take Alberto's call when it comes. Close the ledger to 6. Leap.",
+  "opening_log_lines": [
+    "11:42 AM. Sunday brunch is at capacity.",
+    "First Sunday of an even-numbered month. The call to Antonio is on the morning's docket.",
+    "From the leaded window: the brunch floor. The card on the desk is square to the corner from Friday.",
+    "Paul's long black car arrived at 11:48. He will be at Table 17 by 11:53."
+  ],
+  "starting_state": {
+    "player_pos": "helm",
+    "time": 4,
+    "time_per_turn": 4,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 3,
+    "stagnation_per_turn": 2,
+    "doubt": 2,
+    "doubt_max": 7,
+    "authority": 2,
+    "ledger": 2,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "watch_from_the_helm", "pour_neat", "make_the_rounds", "press_the_intercom", "the_decree"]
+  },
+  "visitors_present_at_start": ["sammy_for_dante", "hector_for_dante", "nicola_for_dante", "mrs_karras"],
+  "visitor_schedule": [
+    { "visitor": "antonio_first_sunday",       "arrival_turn": 2, "arrival_space": "helm" },
+    { "visitor": "paul_at_table_17_for_dante", "arrival_turn": 3, "arrival_space": "table_17" },
+    { "visitor": "alberto_for_dante",          "arrival_turn": 4, "arrival_space": "helm" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 4,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_ledger_at_least": 6,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 2
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "sunday brunch. table 17 is occupied.",                  "tick_per_turn": 2, "effects": [] },
+    { "level": 4, "label": "the catering office phone is on its eleventh unread.",   "tick_per_turn": 2, "effects": [] },
+    { "level": 7, "label": "the card-room weekend take is still in the back-room satchel.","tick_per_turn": 3, "effects": [ "tick_ledger" ] },
+    { "level": 10, "label": "the sunday ran out.",                                   "tick_per_turn": 3, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "dante at the helm. the brass clock has chimed three times today.","effects": [] },
+    { "level": 3, "label": "antonio said the things he said.",                                 "effects": [] },
+    { "level": 5, "label": "paul asked the question you did not want him to ask.",             "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the throne becomes a coffin.",                                     "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",    "label": "GANGWAY",    "ending_lore_token": "leap_off_the_sunday_gangway", "visible_from_start": true },
+    { "id": "side_door",  "label": "SIDE DOOR",  "ending_lore_token": "leap_river_side_sunday",      "visible_from_start": true },
+    { "id": "staff_exit", "label": "STAFF EXIT", "ending_lore_token": "leap_off_the_sunday_back",    "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 7,
+  "notes": "Hard-mode Emperor. The first-Sunday-of-an-even-month brunch. The bi-monthly call to Antonio is at turn 2; Paul arrives at Table 17 at turn 3 (the canonical 11:53); Alberto's call comes at turn 4 (the first time he has called Dante first in three months). Win is 4 connections + 2 hard moods (Paul intense, Antonio preoccupied, Alberto preoccupied) + Ledger 6 + leap. Reduced turn budget (7), reduced sanity_max (5), elevated stagnation pulse.",
+  "ambient_pool": [
+    "11:42 AM. the brunch crowd is the brunch crowd.",
+    "from the leaded window, paul at table 17 in profile.",
+    "the brass clock from your father's office.",
+    "the catering office phone has, this morning, rung eleven times. you have, this morning, answered none.",
+    "the card on the desk is square to the corner. you have not, this morning, looked at it."
+  ],
+  "ambient_every_n": 2
+}

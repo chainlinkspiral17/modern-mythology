@@ -1,88 +1,142 @@
 {
   "scope": "emperor",
-  "notes": "Dante's judge-loop. HEAR / RULE / STAMP / WITNESS as starters. Buyable pool is FILINGS — pre-existing precedents and signed papers. Authority is the spendable currency. Ledger is the positive doom-clock.",
+  "notes": "Dante's loop on the riverboat. The verbs are how he runs the empire: watch from the helm window, pour bourbon neat (ice is for the weak), make the rounds among the tables, press the intercom to summon Sammy, maintain the brass railing on principle, set the card on the desk square to the corner. AUTHORITY (engine var _authority) is the spendable currency — the office's reservoir. LEDGER (engine var _ledger) is the positive doom-clock — THE LEDGER CLOSED. Doubt and stagnation are negative tracks.",
   "cards": [
     {
-      "id": "hear",
-      "title": "HEAR",
+      "id": "watch_from_the_helm",
+      "title": "WATCH FROM THE HELM",
       "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Listen to the petitioner state the matter. The brass clock pauses, in the way the brass clock pauses when somebody is being heard. Authority gathers in the room around the desk.",
-      "requires": [ { "kind": "visitor_at_my_pos_progress_at_least", "n": 1 } ],
+      "flavor": "Stand at the leaded window the architect insisted on. The dining room sounds like a dining room from this angle. You can tell within a guest or two how the floor is doing without going down.",
+      "requires": [ { "kind": "at_pos", "pos": "helm" } ],
       "effects": [
-        { "kind": "advance_visitor_step", "step": "listen" },
-        { "kind": "gain_authority", "amount": 1 }
+        { "kind": "gain_authority", "amount": 1 },
+        { "kind": "lose_doubt", "amount": 1 }
       ]
     },
     {
-      "id": "rule",
-      "title": "RULE",
+      "id": "pour_neat",
+      "title": "POUR NEAT",
+      "time_cost": 0,
+      "starter": true,
+      "stock": 99,
+      "flavor": "From the bottle in the file cabinet's second drawer. Neat, no ice. Ice is for the weak. Ice dilutes the truth of the thing. The amber liquid burns. The burn does little to warm the chill that has settled in your marrow years ago.",
+      "requires": [ { "kind": "at_pos", "pos": "helm" } ],
+      "effects": [
+        { "kind": "gain_authority", "amount": 1 },
+        { "kind": "gain_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "make_the_rounds",
+      "title": "MAKE THE ROUNDS",
       "time_cost": 2,
       "starter": true,
       "stock": 99,
-      "flavor": "Write the ruling on the cream stock. Two paragraphs in the language the river-code uses. Costs authority — every ruling spends some of the reservoir.",
-      "requires": [
-        { "kind": "at_pos", "pos": "desk" },
-        { "kind": "has_authority_at_least", "n": 1 }
-      ],
+      "flavor": "Down the iron stair. Among the tables. Shake a hand. Bend to murmur something into Mrs. Karras's ear that makes her laugh, which has been the goal. Clap Sammy on the shoulder with affection that is not, for once, performative. Nod to Nicola.",
+      "requires": [ { "kind": "at_pos", "pos": "main_dining_room" } ],
       "effects": [
-        { "kind": "spend_authority", "amount": 1 },
-        { "kind": "advance_visitor_step", "step": "deliver" }
-      ]
-    },
-    {
-      "id": "stamp",
-      "title": "STAMP",
-      "time_cost": 1,
-      "starter": true,
-      "stock": 99,
-      "flavor": "Set the bronze stamp. The date-wheel clicks into today. The stamp leaves a perfect circle, the way it has for forty years. The ledger ticks. The office remembers.",
-      "requires": [ { "kind": "at_pos", "pos": "stamp_table" } ],
-      "effects": [
+        { "kind": "advance_visitor_step", "step": "greet" },
         { "kind": "tick_ledger", "amount": 1 }
       ]
     },
     {
-      "id": "witness",
-      "title": "WITNESS",
-      "time_cost": 2,
+      "id": "press_the_intercom",
+      "title": "PRESS THE INTERCOM",
+      "time_cost": 1,
       "starter": true,
       "stock": 99,
-      "flavor": "Sign in the witness line. The clerk countersigns. The visitor sees their paper enter the office's permanent record. Their sit-with happens because you saw the paper land in front of you.",
-      "requires": [
-        { "kind": "visitor_at_my_pos_progress_at_least", "n": 3 }
-      ],
-      "effects": [
-        { "kind": "advance_visitor_step", "step": "sit_with" },
-        { "kind": "tick_ledger", "amount": 1 }
-      ]
-    },
-    {
-      "id": "precedent",
-      "title": "PRECEDENT",
-      "time_cost": 1,
-      "starter": false,
-      "stock": 3,
-      "buy_only_at": "law_shelf",
-      "flavor": "Pull a volume of the river-code from the shelf. Volumes 9 and 10 are still missing but the others are loyal. The ruling is faster when you can cite.",
-      "requires": [ { "kind": "at_pos", "pos": "law_shelf" } ],
-      "effects": [
-        { "kind": "gain_authority", "amount": 2 }
-      ]
-    },
-    {
-      "id": "consult_clerk",
-      "title": "CONSULT CLERK",
-      "time_cost": 1,
-      "starter": false,
-      "stock": 2,
-      "buy_only_at": "filing_cabinet",
-      "flavor": "Ask the clerk. She clears her throat once on the way to the third shelf. She has been clearing her throat for nineteen years and you have not yet failed to look up.",
-      "requires": [ { "kind": "at_pos", "pos": "filing_cabinet" } ],
+      "flavor": "Press the brass button. The line connects to Sammy at the bar. Sammy. Yeah, Mr. D. Bring it up. Yes sir. Release the button. The intercom clicks. The room is the room.",
+      "requires": [ { "kind": "at_pos", "pos": "helm" } ],
       "effects": [
         { "kind": "advance_visitor_schedule", "amount": 1 },
         { "kind": "gain_authority", "amount": 1 }
+      ]
+    },
+    {
+      "id": "set_it_square_to_the_corner",
+      "title": "SET IT SQUARE TO THE CORNER",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "helm",
+      "flavor": "Take the evidence in your hand. The card, the note, the page. Set it on the corner of the desk square. A man who burned his evidence was a man who was afraid. A man who kept his evidence square was a man who had decided to know.",
+      "requires": [ { "kind": "at_pos", "pos": "helm" } ],
+      "effects": [
+        { "kind": "tick_ledger", "amount": 2 },
+        { "kind": "gain_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "maintain_the_brass",
+      "title": "MAINTAIN THE BRASS",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "main_dining_room",
+      "flavor": "Run a hand over the brass railing you installed in the second year. The bright brass is the wrong brass; you have known this since the first time you ran a hand over it; you have maintained it anyway on the principle that a man who maintains the wrong thing maintains something.",
+      "requires": [ { "kind": "at_pos", "pos": "main_dining_room" } ],
+      "effects": [
+        { "kind": "lose_stagnation", "amount": 1 },
+        { "kind": "gain_authority", "amount": 1 }
+      ]
+    },
+    {
+      "id": "murmur_to_mrs_karras",
+      "title": "MURMUR TO MRS. KARRAS",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "main_dining_room",
+      "flavor": "Bend to her ear. Say the thing you have, over the years, learned to say to her — the small in-joke about her late husband's wedding ring and the time he had it re-sized in '83. She laughs. The laugh is, by year four, also a regular's loyalty.",
+      "requires": [ { "kind": "at_pos", "pos": "main_dining_room" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "tick_ledger", "amount": 1 }
+      ]
+    },
+    {
+      "id": "call_first_sunday_of_an_even_month",
+      "title": "CALL · 1st SUNDAY · EVEN MONTH",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "helm",
+      "flavor": "First Sunday of an even-numbered month. Dial Antonio. He picks up on the third ring. He always does. You both say the things you say. Neither of you says anything important. Both know this.",
+      "requires": [ { "kind": "at_pos", "pos": "helm" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "listen" },
+        { "kind": "gain_doubt", "amount": 1 },
+        { "kind": "tick_ledger", "amount": 1 }
+      ]
+    },
+    {
+      "id": "open_the_catering_office",
+      "title": "OPEN THE CATERING OFFICE",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "catering_office",
+      "flavor": "The lower-deck office. The desk lamp on. The phone with eleven messages. The October wedding in Port Arthur. The bride's father is somebody you did business with in '88. You sign the contract on the second page where the second page asks you to.",
+      "requires": [ { "kind": "at_pos", "pos": "catering_office" } ],
+      "effects": [
+        { "kind": "tick_ledger", "amount": 1 },
+        { "kind": "gain_authority", "amount": 1 }
+      ]
+    },
+    {
+      "id": "the_back_room_take",
+      "title": "THE BACK ROOM TAKE",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "the_card_room",
+      "flavor": "Step into the card room. The regulars do not, this hour, look up. You do not, this hour, want them to. The Saturday take is in the small leather satchel by the felt's edge. You take it. You leave. The room does not register your having been in it.",
+      "requires": [ { "kind": "at_pos", "pos": "the_card_room" } ],
+      "effects": [
+        { "kind": "tick_ledger", "amount": 2 },
+        { "kind": "gain_doubt", "amount": 1 }
       ]
     },
     {
@@ -91,23 +145,10 @@
       "time_cost": 0,
       "starter": false,
       "stock": 1,
-      "flavor": "A ruling the office itself remembers. The brass clock holds. The visitors here yield their patience one turn longer. Dante's father issued one of these in '74 and people still cite it.",
+      "flavor": "Set down the ruling that the room remembers. Whoever is at your space yields their patience one turn longer. The brass railing brightens slightly. Once per night.",
       "effects": [
-        { "kind": "freeze_patience", "turns": 1 }
-      ]
-    },
-    {
-      "id": "appeal_form",
-      "title": "APPEAL FORM",
-      "time_cost": 2,
-      "starter": false,
-      "stock": 1,
-      "buy_only_at": "filing_cabinet",
-      "flavor": "Pull the appellate form from the cabinet. The heavy stock, the one with the watermark. For when you're the second office to hear the case and the first office got it wrong.",
-      "requires": [ { "kind": "at_pos", "pos": "filing_cabinet" } ],
-      "effects": [
-        { "kind": "advance_visitor_step", "step": "deliver" },
-        { "kind": "gain_authority", "amount": 1 }
+        { "kind": "freeze_patience", "turns": 1 },
+        { "kind": "tick_ledger", "amount": 1 }
       ]
     }
   ]

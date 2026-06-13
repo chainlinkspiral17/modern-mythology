@@ -1,5 +1,0 @@
-{
-  "scope": "emperor",
-  "notes": "Emperor does not use the Fool's mess-meeple system. Pressure comes from Doubt + the day's docket filling. This file exists so the engine's threat loader doesn't crash.",
-  "threats": {}
-}

@@ -1,0 +1,79 @@
+{
+  "id": "times_calling_card",
+  "arcana": "iv_emperor",
+  "location": "riverboat_interior",
+  "hand": "dante",
+  "title": "TIME'S CALLING CARD",
+  "subtitle": "D'Ambrosio's · 8:48 PM · The Friday Dean Came",
+  "difficulty": "medium",
+  "epigraph_upright": "The canonical ch4 Friday. The night Dean sat at Table 14 for two hours without ordering. The night Sammy came up the office stair three short raps. The night you read the card three times and the line below it twice and turned it over and the back was blank. The night you decided to know.",
+  "epigraph_reversed": "You burn the card. A man who burns his evidence is a man who is afraid.",
+  "scene_description": "8:48 PM. Friday dinner. Dante at the helm. Authority at 1. Ledger at 1. Doubt at 1. Dean will arrive at Table 14 turn 2. The leaded window shows the dining room. The intercom will, at some point, click. The SIDE DOOR threshold opens — Dean uses it on the way out, and Dante can leap through it after.",
+  "direction_hint": "Watch through the leaded window. Make the rounds. Get the card from Sammy. Set it square to the corner. Close the ledger to 5. Leap.",
+  "opening_log_lines": [
+    "8:48 PM. The dining room is at 80% — the kind of full that means Friday is, this week, doing what Fridays should.",
+    "Sammy at the well. Hector at the line. Nicola at the stand.",
+    "An out-of-town suit just sat down at Table 14. He has not, in two minutes, asked for the menu."
+  ],
+  "starting_state": {
+    "player_pos": "helm",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "authority": 1,
+    "ledger": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "watch_from_the_helm", "pour_neat", "make_the_rounds", "press_the_intercom", "the_decree"]
+  },
+  "visitors_present_at_start": ["sammy_for_dante", "hector_for_dante", "nicola_for_dante", "mrs_karras"],
+  "visitor_schedule": [
+    { "visitor": "dean_at_table_14_for_dante", "arrival_turn": 2, "arrival_space": "table_17" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 4,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_ledger_at_least": 5,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "service is service.",                                     "tick_per_turn": 1, "effects": [] },
+    { "level": 4, "label": "the man at fourteen has not, in twenty minutes, ordered.","tick_per_turn": 1, "effects": [] },
+    { "level": 7, "label": "the man's coffee is, at the second refill, still untouched.","tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the floor walked out.",                                  "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "dante at the helm. the bottle, still capped, on the desk.","effects": [] },
+    { "level": 3, "label": "the suit at fourteen is forgettable in the practiced way.","effects": [] },
+    { "level": 5, "label": "sammy at the office door, three short raps.",              "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the card was burned.",                                    "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",    "label": "GANGWAY",    "ending_lore_token": "leap_off_the_friday_gangway",   "visible_from_start": true },
+    { "id": "side_door",  "label": "SIDE DOOR",  "ending_lore_token": "leap_through_the_door_dean_used","visible_from_start": true },
+    { "id": "staff_exit", "label": "STAFF EXIT", "ending_lore_token": "leap_off_the_friday_back",       "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Medium-mode Emperor. The canonical ch4 Friday. Dean arrives at Table 14 turn 2; his connection sequence is the card-on-the-desk beat. THE DECREE ability in starting hand. Win is 4 connections + 1 hard mood (Dean is lonely) + Ledger 5 + leap. SIDE DOOR is visible — leaping through the door Dean used is the canonical close. SET IT SQUARE TO THE CORNER is buyable at the helm.",
+  "ambient_pool": [
+    "the man at fourteen has the lapels-smoothing gesture of a man who once cared deeply about his appearance.",
+    "the leaded window shows the dining room. sammy at the well. nicola at the stand. mrs. karras at her usual.",
+    "sammy will, in some minutes, knock three short raps at the office door.",
+    "the brass clock chimes the half hour."
+  ],
+  "ambient_every_n": 2
+}
