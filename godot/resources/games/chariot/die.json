@@ -1,0 +1,12 @@
+{
+  "scope": "chariot",
+  "notes": "Antonio's six-face die. Outcomes track his canonical two-speeds-one-wreck condition. STAY = the moment passes without committing. GO = forward motion at any cost. WAIT = the slowest face; useful but rare. WRECK = the failed face (small loss). HOLD STILL = the steady-hand face. WILD = anything goes.",
+  "faces": [
+    { "id": "stay",       "label": "STAY",       "weight": 2, "kind": "partial" },
+    { "id": "go",         "label": "GO",         "weight": 1, "kind": "success" },
+    { "id": "wait",       "label": "WAIT",       "weight": 1, "kind": "partial" },
+    { "id": "wreck",      "label": "WRECK",      "weight": 1, "kind": "fail" },
+    { "id": "hold_still", "label": "HOLD STILL", "weight": 1, "kind": "success" },
+    { "id": "wild",       "label": "WILD",       "weight": 0, "kind": "wild" }
+  ]
+}

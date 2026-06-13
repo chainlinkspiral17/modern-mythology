@@ -503,22 +503,22 @@ const MAGICIAN_SCENARIOS := [
 
 const CHARIOT_SCENARIOS := [
 	{
-		"id": "depot_to_depot",
-		"title": "DEPOT TO DEPOT",
-		"subtitle": "Easy · 11:14 PM · Tuesday Run",
-		"flavor": "Tuesday's run. The depot. Headlights on. Parking brake off. The late-shift worker is already boarded. The road is the road."
+		"id": "hot_office",
+		"title": "THE HOT OFFICE",
+		"subtitle": "Easy · 11:14 AM · A Difficult Tuesday",
+		"flavor": "A Tuesday at Ember & Ash before things get bad. The crew is on the warehouse floor. The cypress beam is up but not, in your professional opinion, straight. Jimmy is on the back stair with two coffees."
 	},
 	{
-		"id": "late_run",
-		"title": "LATE RUN",
-		"subtitle": "Medium · 1:18 AM · The Last Bus",
-		"flavor": "The last bus of the night. Cora has been on shift for nine hours. The late couple almost missed the bus. The first passenger is already aboard."
+		"id": "two_horses_one_wreck",
+		"title": "TWO HORSES, ONE WRECK",
+		"subtitle": "Medium · 1:47 PM · The Day the Older Man Stood on the Corner",
+		"flavor": "1:47 PM. Crew on lunch. The phone has rung four times today. From the leaded window: an older man in a charcoal suit on the corner across the street. Smoking. Watching the warehouse door."
 	},
 	{
-		"id": "the_long_quiet_road",
-		"title": "THE LONG QUIET ROAD",
-		"subtitle": "Hard · 3:14 AM · The Empty Hour",
-		"flavor": "3:14 AM. The relief driver didn't show. The kid running away got on at the back row. The lost traveler is up front. The road is empty."
+		"id": "option_four",
+		"title": "OPTION FOUR",
+		"subtitle": "Hard · 4:18 PM · The Day the Wreck Became Visible from the Road",
+		"flavor": "4:18 PM. The crew has gone home early. Jimmy is on the back stair with the option-four face. Eleven voicemails today. The sedan is back at the corner. Your thumb has been hovering above DAD."
 	}
 ]
 
@@ -846,19 +846,21 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		var vem := _spawn_visualizer(EMPEROR_VISUALIZER_SCRIPT)
 		_add_play_button_overlay(vem, "emperor", "dantes_office", "dante")
 		return
-	# Hierophant / Lovers / Chariot play buttons removed in canon-alignment
-	# surgery — the scenarios these pointed at (sysop's BBS, sasha's
-	# apartment, cora's bus) were Claude-invented and have been retired.
-	# Visualizers still render the arcana cards; PLAY buttons return when
-	# canonical rebuilds land (Q. Paul / the Roberts / Antonio at Ember & Ash).
+	# Hierophant / Lovers play buttons removed in canon-alignment surgery —
+	# the scenarios these pointed at (sysop's BBS, sasha's apartment) were
+	# Claude-invented and have been retired. Visualizers still render the
+	# arcana cards; PLAY buttons return when canonical rebuilds land
+	# (Q. Paul / the Roberts).
 	if short_path == "hierophant_arcana":
 		_spawn_visualizer(HIEROPHANT_VISUALIZER_SCRIPT)
 		return
 	if short_path == "lovers_arcana":
 		_spawn_visualizer(LOVERS_VISUALIZER_SCRIPT)
 		return
+	# Chariot rebuilt around Antonio at Ember & Ash (vol5 ch7 Chariot canon).
 	if short_path == "chariot_arcana":
-		_spawn_visualizer(CHARIOT_VISUALIZER_SCRIPT)
+		var vch := _spawn_visualizer(CHARIOT_VISUALIZER_SCRIPT)
+		_add_play_button_overlay(vch, "chariot", "ember_ash_office", "antonio")
 		return
 	# Tarot Synth — type:"overlay" entry in the gallery index, opens
 	# the playable instrument as a fullscreen overlay

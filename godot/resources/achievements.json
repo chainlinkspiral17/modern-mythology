@@ -41,6 +41,28 @@
       "reward": { "kind": "unlock", "key": "unlocked:reversed:emperor" }
     },
     {
+      "id": "chariot_complete",
+      "title": "EMBER & ASH HELD",
+      "desc": "Win all three Chariot scenarios (THE HOT OFFICE, TWO HORSES ONE WRECK, OPTION FOUR). Antonio survived the day. The doom is on a longer horizon.",
+      "trigger": { "kind": "all_scenarios", "arcana": "chariot", "scenarios": ["hot_office","two_horses_one_wreck","option_four"] },
+      "unlock_key": "achievement:chariot_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:chariot" }
+    },
+    {
+      "id": "the_beam_held",
+      "title": "THE BEAM HELD",
+      "desc": "Reach 6 progress in a Chariot scenario without taking Option Four. Antonio made the day on his own.",
+      "trigger": { "kind": "win_with_metric", "metric": "miles", "op": ">=", "value": 6 },
+      "unlock_key": "achievement:the_beam_held"
+    },
+    {
+      "id": "option_four_invoked",
+      "title": "YOU DON'T ASK ME WHAT IT MEANS",
+      "desc": "Invoke Antonio's Option Four ultimate. Jimmy handled it. You did not ask.",
+      "trigger": { "kind": "card_played_during_run", "card": "option_four" },
+      "unlock_key": "achievement:option_four_invoked"
+    },
+    {
       "id": "first_septenary",
       "title": "THE FIRST SEPTENARY",
       "desc": "Win at least one scenario in each of the first 7 arcanas (Fool through Chariot).",

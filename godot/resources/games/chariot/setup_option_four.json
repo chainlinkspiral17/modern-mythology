@@ -1,0 +1,86 @@
+{
+  "id": "option_four",
+  "arcana": "vii_chariot",
+  "location": "ember_ash_office",
+  "hand": "antonio",
+  "title": "OPTION FOUR",
+  "subtitle": "Ember & Ash · 4:18 PM · The Day the Wreck Became Visible from the Road",
+  "difficulty": "hard",
+  "epigraph_upright": "The crew has gone home early. Jimmy is on the back stair with the option-four face. The cypress beam is at 3/6 of straight. The phone has rung eleven times today. The voicemails are now silt. Lila Bao has not returned the call from yesterday. The man in the charcoal suit was on the corner at noon and at three. The sedan is back. Antonio's father is two weeks from the next call. Antonio's brother has not called in three months.",
+  "epigraph_reversed": "Antonio agrees to option four without asking. The handling happens. The wreck arrives anyway, on a different road, at a different speed.",
+  "scene_description": "4:18 PM. The day is late. Silt at 5 (eleven voicemails today, fourteen yesterday, two months of accumulation). Doubt at 3. Fuel at 2. Jimmy is on the back stair. Q. Paul has called eleven times. The older man in the charcoal suit has been on the corner twice already. The Long Haul ability is in hand. The thumb above DAD is buyable. So is calling Alberto. The win is postponement — the day ends with Antonio still standing. The loss is the wreck.",
+  "direction_hint": "Survive. Accept option four. Or call your father. Or call your brother. Or confront the man. Hold the cypress beam. Reach 6 progress and leap before stagnation maxes. The win is keeping the doom on a longer horizon.",
+  "opening_log_lines": [
+    "4:18 PM. The crew has gone home early. Jimmy said something to them at noon.",
+    "Eleven voicemails today. Q. PAUL on every one.",
+    "Jimmy is on the back stair with two coffees and the option-four face.",
+    "The sedan is back at the corner. Engine off. Windows up.",
+    "Your thumb is hovering above DAD in the contacts. You count to eleven. You set the phone back down."
+  ],
+  "starting_state": {
+    "player_pos": "desk",
+    "time": 4,
+    "time_per_turn": 4,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 5,
+    "stagnation_per_turn": 2,
+    "doubt": 3,
+    "doubt_max": 7,
+    "fuel": 2,
+    "starting_miles": 2,
+    "starting_hand": ["walk","focus","search","short_rest","check_the_beam","let_it_ring","pick_up","uncap_the_bourbon","the_long_haul"]
+  },
+  "visitors_present_at_start": ["jimmy_daigle", "the_foreman", "the_older_man_in_charcoal"],
+  "visitor_schedule": [
+    { "visitor": "q_paul",        "arrival_turn": 1, "arrival_space": "desk" },
+    { "visitor": "dante_phone",   "arrival_turn": 4, "arrival_space": "desk" },
+    { "visitor": "alberto_phone", "arrival_turn": 5, "arrival_space": "desk" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_miles_at_least": 6,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 2
+  },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "4:18 PM. the office is the office.",                 "tick_per_turn": 2, "effects": [] },
+    { "level": 4,  "label": "the silt has become a delta-bar across the channel.","tick_per_turn": 2, "effects": [] },
+    { "level": 7,  "label": "the sedan is on the corner for the third time today.","tick_per_turn": 3, "effects": [ "tick_master_reel" ] },
+    { "level": 9,  "label": "the chariot is leaning toward gone.",                "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the remaining speed was gone.",                      "tick_per_turn": 3, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "antonio at the desk · the bourbon is half-empty since wednesday.","effects": [] },
+    { "level": 3, "label": "the verdict from 23 has become the verdict.",         "effects": [] },
+    { "level": 5, "label": "antonio is not certain he has two speeds.",           "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the remaining speed was gone.",                       "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "back_alley",     "label": "BACK ALLEY",     "ending_lore_token": "leap_into_the_marigny_dusk", "visible_from_start": true },
+    { "id": "front_stair",    "label": "FRONT STAIR",    "ending_lore_token": "leap_into_the_8pm_sidewalk", "visible_from_start": true },
+    { "id": "corner_across",  "label": "CORNER ACROSS",  "ending_lore_token": "leap_onto_the_corner_at_dusk","visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 7,
+  "notes": "Hard-mode Chariot. Late afternoon. The Long Haul ability in hand from start. Antonio's father (DANTE) and brother (ALBERTO) become accessible as phone visitors on turns 4 and 5 — the chapter's deferred calls become available, with weight. Both have intense/preoccupied moods. The CORNER ACROSS threshold is visible — confronting the man is one of three exits. Win requires 3 connections + 2 hard moods + 6 progress + leap, with reduced turn budget and elevated doom-clock pressure.",
+  "ambient_pool": [
+    "4:18 PM. the heat is the kind that makes the wood floor creak when you walk on it.",
+    "the AC unit gave up half an hour ago.",
+    "from the window: the sedan is parked beyond the camera's reach. it has been parked beyond the camera's reach for thirty minutes.",
+    "jimmy is on the back stair. he has not, in twelve minutes, said anything.",
+    "the bourbon is on the desk. you have not, today, poured.",
+    "your phone is face-up. there are eleven new voicemails. there are forty-six total."
+  ],
+  "ambient_every_n": 2
+}

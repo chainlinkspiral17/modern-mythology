@@ -1,0 +1,79 @@
+{
+  "id": "hot_office",
+  "arcana": "vii_chariot",
+  "location": "ember_ash_office",
+  "hand": "antonio",
+  "title": "THE HOT OFFICE",
+  "subtitle": "Ember & Ash · 11:14 AM · A Difficult Tuesday",
+  "difficulty": "easy",
+  "epigraph_upright": "A difficult Tuesday. The crew is on the warehouse floor. The cypress beam is up but not, in your professional opinion, straight. The phone has rung three times this morning. Jimmy is on the back stair with two coffees.",
+  "epigraph_reversed": "The beam comes down. The foreman walks. Lila Bao sends an email that has the word unfortunately in the first line.",
+  "scene_description": "11:14 AM. The window AC unit is doing the half-capacity thing. The bottle of bourbon is on the desk. Jimmy came up the back stair five minutes ago with two coffees. The crew has the radio on a milk crate downstairs. The cypress beam is the cypress beam. Progress 0; fuel 1; doubt 0; stagnation 0. A Tuesday.",
+  "direction_hint": "Connect with Jimmy and the foreman. Get a call with Lila to land. Move the beam toward straight. Reach 4 progress and leap through a threshold.",
+  "opening_log_lines": [
+    "11:14 AM. The crew radio downstairs is on spanish.",
+    "Jimmy on the back stair with two coffees.",
+    "The cypress beam is not, in your professional opinion, going up straight."
+  ],
+  "starting_state": {
+    "player_pos": "desk",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
+    "doubt_max": 7,
+    "fuel": 1,
+    "starting_miles": 0,
+    "starting_hand": ["walk","focus","search","short_rest","check_the_beam","let_it_ring","pick_up","uncap_the_bourbon"]
+  },
+  "visitors_present_at_start": ["jimmy_daigle"],
+  "visitor_schedule": [
+    { "visitor": "the_foreman", "arrival_turn": 2, "arrival_space": "cypress_beam" },
+    { "visitor": "lila_bao",    "arrival_turn": 3, "arrival_space": "desk" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 2,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_miles_at_least": 4,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "the office is the office.",                       "tick_per_turn": 1, "effects": [] },
+    { "level": 4,  "label": "the silt is rising in the inbox.",                "tick_per_turn": 1, "effects": [] },
+    { "level": 7,  "label": "the beam looks worse from this angle.",           "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the day got away from you.",                       "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "antonio at the desk. coffee, no bourbon yet.",      "effects": [] },
+    { "level": 3, "label": "the verdict from 23 starts to feel less like a compliment.", "effects": [] },
+    { "level": 5, "label": "one of two speeds. you can't tell which.",          "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the remaining speed was gone.",                     "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "back_alley",     "label": "BACK ALLEY",     "ending_lore_token": "leap_into_the_smoke_break",   "visible_from_start": true },
+    { "id": "front_stair",    "label": "FRONT STAIR",    "ending_lore_token": "leap_out_to_the_sidewalk",    "visible_from_start": true },
+    { "id": "corner_across",  "label": "CORNER ACROSS",  "ending_lore_token": "leap_to_the_corner_empty",    "visible_from_start": false }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 9,
+  "notes": "Easy-mode Chariot. A Tuesday at Ember & Ash before things get bad. Q. Paul is calling but it has been a normal call rate. The older man in the charcoal suit is not on the board yet. Win is two connections + 4 progress + leap. The Corner Across threshold is not visible by default — only reveals if the older man arrives (he won't, this scenario).",
+  "ambient_pool": [
+    "the AC unit's faint smell of melting plastic.",
+    "the radio downstairs · the slow bored hammer.",
+    "the carpet path under your shoes."
+  ],
+  "ambient_every_n": 3
+}

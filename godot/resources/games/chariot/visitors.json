@@ -1,127 +1,130 @@
 {
-  "scope": "_flavor_pool",
-  "notes": "DEPRECATED — preserved as visitor / flavor pool only. Cora the midnight-bus driver and her passengers were Claude-invented; canon has the Chariot as Antonio D'Ambrosio at Ember & Ash in New Orleans (vol5 ch7). These visitor entries remain as a writing reservoir for re-use as ambient cast in canonical scenarios — Cora can surface as a Houston/Graustark bus driver Antonio remembers, the late-shift worker can be a Daigle's-bar regular, etc. NOT loaded as an active arcana visitor roster; the engine should not point at this file as `chariot/visitors.json` for any canonical scenario. See `lore/_GAUNTLET_BUILD_WIKI.md` for the canon-aligned plan.",
+  "scope": "chariot",
+  "notes": "Antonio's cast at Ember & Ash, drawn from vol5 ch7 / ch15 / ch20 / ch21 canon. Jimmy Daigle on the back stair as helper. Q. Paul as off-board phone-only menace. The older man in the charcoal suit as silent menace on the corner. Lila Bao on the phone from Houston. The foreman on the warehouse floor with opinions about the cypress beam. Antonio's father DANTE on the phone (the call he holds his thumb above) — note: in ch7's timeline Dante is still alive but dies in ch20 when the sinkhole reopens, so the call he doesn't make is the call to a father about to die. Alberto in Houston, the older brother who could call. The crew on lunch as ambient. The previous chariot/visitors.json content (Cora & passengers) has been moved to the flavor pool — see notes in earlier git history.",
   "visitors": [
     {
-      "id": "the_late_shift",
-      "name": "The Late-Shift Worker",
-      "scenarios": ["depot_to_depot", "late_run", "the_long_quiet_road"],
-      "arrival": { "kind": "on_board_at_start", "pos": "aisle_middle" },
-      "lore_token": "late_shift_got_home",
-      "lore_text": "Works the late shift at the warehouse on the river bank — fourteen-hour days, four days a week. Boards every night at the same stop, falls asleep against the cold window between mile 12 and mile 21, wakes up at mile 22 because Cora taps the brakes lightly at the curve. Gets off at the same stop. Cora has known their face for two years; their name appears on the route-book only as 'B-7,' the seat they take.",
+      "id": "jimmy_daigle",
+      "name": "Jimmy Daigle",
+      "scenarios": ["hot_office", "two_horses_one_wreck", "option_four"],
+      "arrival": { "kind": "on_board_at_start", "pos": "back_stair" },
+      "lore_token": "jimmy_offered_option_four",
+      "lore_text": "Jimmy Daigle. Antonio's foreman, fixer, friend, operator-or-operated. Came up two minutes after Antonio called. Answers on the second ring; he always does, one of his few unambiguous virtues. Brings three options ranked by cost-in-money versus cost-in-dignity. Always has a fourth.",
       "accent": "#a99070",
       "mood": "preoccupied",
-      "patience": 8,
+      "patience": 9,
+      "helper": true,
       "steps": {
-        "greet":   "You nod when they board. They nod back. The exchange is the same exchange you've made eight hundred times.",
-        "listen":  "They tell you about a shift-supervisor change at the warehouse — the new one is younger and is making the older workers carry extra. They tell you with the flat tone of a person who is too tired to be more than mildly angry.",
-        "deliver": "You hand them their transfer ticket — a paper rectangle with tonight's date in your hand. You always pre-tear theirs at the start of the route.",
-        "sit_with": "You stop briefly at their stop. They thank you. They get off. The streetlight at their stop is out tonight; you wait, headlights on, until they reach their front porch, the way you have done for two years."
+        "greet":   "Jimmy comes up the back stair without knocking. Sets two coffees on the desk. Glances at the bourbon bottle. Glances at the empty glass. Chooses, for once, not to comment.",
+        "listen":  "He sits on the corner of the desk. He listens. He has a face he uses when he is about to deliver bad news he has already decided how to manage.",
+        "deliver": "He counts on his fingers. One: wait it out. Two: go say hello. Three: call your dad. He pauses. He does not say four. He waits for Antonio to ask.",
+        "sit_with": "He says: it means you don't ask me what it means. You nod once. He nods once. He drinks his coffee in three swallows. He goes back down the stair. The play is the play he has been running. You are not, today, the operator."
       }
     },
     {
-      "id": "the_first_passenger",
-      "name": "The First Passenger",
-      "scenarios": ["depot_to_depot", "late_run"],
-      "arrival": { "kind": "scheduled", "turn": 1, "from": "front_door", "to": "aisle_front" },
-      "lore_token": "first_passenger_made_the_run",
-      "lore_text": "Boards at the first stop after the depot. Always pays exact change — $2.75 in three coins, the same three coins, you suspect, every night. Always sits up front, third row, aisle, so they can watch the road through the windshield. They are in their late forties; they have not been wearing a wedding ring for fourteen months.",
-      "accent": "#d8a060",
-      "mood": "talkative",
+      "id": "the_foreman",
+      "name": "The Foreman",
+      "scenarios": ["hot_office", "two_horses_one_wreck", "option_four"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "warehouse_floor", "to": "cypress_beam" },
+      "lore_token": "foreman_said_straight_enough",
+      "lore_text": "The foreman has been on this job since April. He has hung cypress in seventeen restaurants. He has an opinion about the beam, an opinion about the gas line, and an opinion about the architect's plans. He shares one opinion per visit. He will share, in his opinion, the most useful one.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
       "patience": 7,
       "steps": {
-        "greet":   "They board. They drop the exact fare. The fare-box clicks the way it always does for them — three coin-drops, evenly spaced.",
-        "listen":  "They ask you about the weather where you're going. Where you're going is the next town, twenty-one miles up the road. The weather there is the same as the weather here. The question is the cover for the conversation.",
-        "deliver": "You hand them a candy from the dashboard dish — a peppermint, because they always take the peppermints first. The dish has been on the dash for seven years; the peppermints are the most-restocked.",
-        "sit_with": "They stay near the front. You both look at the road for a while. The CB chatter on channel 17 is at the edge of audible. The lane markers blur. They mention, casually, that they have started running again in the mornings. You say that's good."
+        "greet":   "He is at the beam when you come down. He has the clipboard. He nods. He does not stop working.",
+        "listen":  "He says the thing about the building, the town, the neighborhood. He says it without weight. He has said it before. He will say it again if you make him.",
+        "deliver": "You decide. He writes the decision on the clipboard. He carries it back to the beam with him.",
+        "sit_with": "You sit on a five-gallon bucket with him for the length of his cigarette. He talks about a job his father had in '78. The story takes the length of the cigarette. He stubs the cigarette on the brick. He goes back to the beam."
       }
     },
     {
-      "id": "the_lost_traveler",
-      "name": "The Lost Traveler",
-      "scenarios": ["depot_to_depot", "the_long_quiet_road"],
-      "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "aisle_middle" },
-      "lore_token": "lost_traveler_found_the_route",
-      "lore_text": "Someone who got on the wrong bus four stops ago and has been trying to figure out where they should have gotten off. They have a paper schedule that is three years old — they pulled it from a drawer at their parents' house. They are trying to get to their parents' house. The address is the address that used to be their parents' house, until '21.",
-      "accent": "#9b5fd3",
+      "id": "lila_bao",
+      "name": "Lila Bao (chef, Houston)",
+      "scenarios": ["hot_office", "two_horses_one_wreck"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "phone_call", "to": "desk" },
+      "lore_token": "lila_laughed_briefly",
+      "lore_text": "Lila Bao. Pop-up that made the Chronicle's best-of list two years running. Said yes in writing in May. Began, in July, to send the kind of three-line emails that meant she was being courted by somebody with a better offer. You call her about a menu item. She picks up on the fourth ring; that means she has not, yet, said yes to the other offer.",
+      "accent": "#c87633",
       "mood": "preoccupied",
-      "patience": 5,
+      "patience": 6,
+      "arrives_as": "phone_voice",
       "steps": {
-        "greet":   "They look at the route map taped to the dashboard. They have looked at it for thirty seconds without moving.",
-        "listen":  "They tell you where they were trying to go. The address sounds right and is also wrong. You know the road. You know the house. You know who lives there now.",
-        "deliver": "You hand them the current paper schedule — the white folded card from the depot — and you circle the right stop. You don't say anything about who lives in the house. They can find out from somebody who isn't a bus driver.",
-        "sit_with": "You sit in the aisle with them for a minute, idling at the shoulder. The CB has gone quiet. You give them the address of the diner two stops past where they need to get off, in case they need to wait somewhere warm. They thank you. They get off at the right stop. You watch the headlights catch their coat in the mirror until they're past the streetlight."
+        "greet":   "Four rings. She picks up. Hey, you. The hey is the same hey from May. The you is a different you.",
+        "listen":  "She talks about something she cooked last weekend. A duck that came out right. You let her. The duck is the topic she has been able to talk to you about without committing to anything.",
+        "deliver": "You tell her about the cypress beam. She laughs, briefly. The laugh is honest. You hold onto the laugh. The laugh is the win.",
+        "sit_with": "You both stay on the line. She says: I haven't said yes to them yet. You say: I know. She says: don't ask me what they offered. You say: I won't. She says: I'll call you Tuesday. She will. She has not, in three months, missed a Tuesday she said she would call."
       }
     },
     {
-      "id": "the_kid_running_away",
-      "name": "The Kid Running Away",
-      "scenarios": ["the_long_quiet_road"],
-      "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "back_row" },
-      "lore_token": "kid_went_home_anyway",
-      "lore_text": "Sixteen. Pays cash, a five-dollar bill that was folded into a wallet that was folded into a backpack pocket. Goes straight to the back row. Will not make eye contact with you in the mirror. Has a backpack that is too small for an overnight bag. Cora has driven kids like this for nineteen years. The kids almost always go home. She has only ever driven one who didn't, and that one she still thinks about, in March.",
-      "accent": "#ff5040",
+      "id": "q_paul",
+      "name": "Q. Paul (phone)",
+      "scenarios": ["two_horses_one_wreck", "option_four"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "phone_call", "to": "desk" },
+      "lore_token": "q_paul_said_we_will_see",
+      "lore_text": "Quentin Paul. The patriarch's pressure figure. Calls every day in the early afternoon. Says the same sentence, structurally, in different words: I'm just calling to check in. He is not just calling to check in. He has been calling, with increasing frequency, since the conversation in early July in which Antonio told him, politely, that he did not need any external guidance on the project, and Paul had purred 'of course' in the voice that meant we will see about that.",
+      "accent": "#7a1e26",
       "mood": "intense",
       "patience": 4,
+      "arrives_as": "phone_voice",
       "steps": {
-        "greet":   "You watch them in the mirror. They don't look back. They are in seat B-12, against the window, with their face turned away.",
-        "listen":  "You don't ask. They tell you anyway, halfway through the trip — not all of it, just the part about the fight tonight. Their voice is small. Their voice is doing the thing voices do when they have practiced the sentence and the sentence comes out in the wrong order.",
-        "deliver": "You hand them a granola bar from the dashboard stash. They take it. They don't open it for a stop and a half. When they do, they eat it in three bites and they look out the window so you don't see them eat it.",
-        "sit_with": "You sit at the back row with them for a stop. The bus is idling at the next-town bus shelter, which is empty. They tell you they are going to call their dad. You hand them the change for the payphone at the shelter. They get off at the next stop, not the one they paid for. They are going home. The streetlight catches them on the phone, hunched, head down. You drive on after the light changes."
+        "greet":   "The phone rings. Q. PAUL on the screen. Twenty-seven seconds. You let it ring. The voicemail joins the silt.",
+        "listen":  "On the second call, you pick up. He says the sentence. You let him. He says the version where he refers to your father in past tense. The phrase 'bless his memory' goes by quickly, as if he had not meant to use it. You both pretend.",
+        "deliver": "You say the polite thing. You hang up before the conversation lands. He calls back in nine minutes. You do not, this time, pick up.",
+        "sit_with": "You do not, in the end, sit with him. Nobody sits with Quentin Paul on a phone. The call ends because one of you gets off the line. He gets off the line. You are still holding the phone."
       }
     },
     {
-      "id": "the_old_regular",
-      "name": "The Old Regular",
-      "scenarios": ["depot_to_depot", "late_run", "the_long_quiet_road"],
-      "arrival": { "kind": "scheduled", "turn": 3, "from": "front_door", "to": "back_row" },
-      "lore_token": "old_regular_made_it_home",
-      "lore_text": "Frank. Seventy-two. Has been on this bus for thirty years — first as a commuter, then as a man who didn't drive anymore, then as a man who still came down to the stop because the bus was where he saw people. He knows Cora's name. He has known Cora's mother. He gets off at the same stop he has gotten off at for three decades, which is two blocks past where he actually lives, because that stop has a bakery and the bakery opens at 6 AM.",
-      "accent": "#c87633",
+      "id": "the_older_man_in_charcoal",
+      "name": "The Older Man in the Charcoal Suit",
+      "scenarios": ["two_horses_one_wreck", "option_four"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "sidewalk", "to": "corner_across" },
+      "lore_token": "the_message_was_delivered",
+      "lore_text": "An older man in a charcoal suit. Lawyer-shoes. Lapels-smoothing. He works for Q. Paul. He also works for more than one shop. He stands on the corner across the street with a cigarette that advances a centimeter every minute. He does not do anything. He does not have to. The message is that he was sent. The message has been delivered by the time he gets here.",
+      "accent": "#3a3a3a",
       "mood": "lonely",
-      "patience": 7,
-      "steps": {
-        "greet":   "He waves when he boards. He says: 'evening, Cora,' the way he has said it for nineteen years. Before that he said it to her mother for eleven.",
-        "listen":  "He tells you about a thing his wife said this morning. His wife has been gone for six years. He still says 'this morning' when he means a morning in '17.",
-        "deliver": "You direct him to the warm spot in row 8 — near the heater vent that runs hottest. He has had that spot for fifteen years and he still likes it when you offer it. He thanks you. He takes the spot.",
-        "sit_with": "You park briefly at his stop. The streetlight is on. He squeezes your shoulder on the way past — a quick squeeze, the way men of his generation say a thing they don't have words for. He gets off. He walks the two blocks home past the bakery. The bakery isn't open yet."
-      }
-    },
-    {
-      "id": "the_late_couple",
-      "name": "The Late Couple",
-      "scenarios": ["late_run"],
-      "arrival": { "kind": "scheduled", "turn": 2, "from": "front_door", "to": "aisle_middle" },
-      "lore_token": "late_couple_made_the_last_run",
-      "lore_text": "Two people who almost missed the last bus — ran the last block, the husband faster than the wife, the wife laughing at him for running. They are in their thirties. They are quiet on the bus, the kind of quiet you go into after the laugh runs out. They board together, sit together, ride together, get off together. They have shared_patience: one timer for both, the way a long-married couple has one shared reservoir for being patient with the world.",
-      "accent": "#88b87a",
-      "mood": "talkative",
-      "patience": 7,
-      "shared_patience": true,
-      "steps": {
-        "greet":   "They board. They both say thank you — overlapping, like they have rehearsed the thank you over twelve years of small kindnesses they have received together.",
-        "listen":  "They tell you about the meeting they came from. The meeting was a planning meeting for a thing they are starting together — the kind of thing that is too early to talk about with strangers, which is exactly when you tell a bus driver about it.",
-        "deliver": "You hand them two transfers. They each take one. They will both use them at the same connection.",
-        "sit_with": "You hold the bus at their stop a beat longer because the wife is looking for something in her bag. The husband does not rush her. He waits with his hand on the standee bar. They both thank you again. They get off. They walk away holding hands in a way that suggests they have remembered, in the last five minutes, that they like holding hands."
-      }
-    },
-    {
-      "id": "cora_as_visitor",
-      "name": "Cora (off-shift)",
-      "as_hand_id": "cora",
-      "swap_target_for_hand": "cora_as_visitor",
-      "scenarios": ["depot_to_depot", "late_run", "the_long_quiet_road"],
-      "arrival": { "kind": "scheduled", "turn": 5, "from": "front_door", "to": "back_row" },
-      "lore_token": "cora_came_aboard_off_shift",
-      "lore_text": "When the player is not Cora, she gets on at the depot driver-change and rides to the next-town depot in the back row, off-duty, as a passenger. When the player IS Cora, this entry swaps out for whoever else is the night-shift driver this scenario.",
-      "accent": "#d8a060",
-      "mood": "preoccupied",
       "patience": 8,
       "steps": {
-        "greet":   "She gets on at the depot driver-change. She has her own jacket on, not the company one. She knows you. She drops exact fare even though she doesn't have to.",
-        "listen":  "She tells you about a passenger from last week — a woman who left a paperback on seat B-3 and called the depot the next morning asking for it. The paperback was a battered copy of something old.",
-        "deliver": "You hand her a coffee from the dashboard thermos. The thermos is hers from '04; she left it for whoever was driving next. The coffee tonight is yours, which is also fine.",
-        "sit_with": "You sit in the back row together — both of you off-aisle, on the bench. The bus is doing the thing it does on the long quiet stretch. She is steady. You are steady. The CB on channel 17 is quiet. She does not fall asleep but you can tell from her breathing that she could."
+        "greet":   "You see him from the leaded window. He sees you back. Or he doesn't. Or he chooses, today, to permit being seen.",
+        "listen":  "He stands. He smokes. He does not move. Over forty minutes the cigarette advances a centimeter. You watch through the window. You write down what time he arrived. You write down what kind of shoes.",
+        "deliver": "You walk down the iron stair, across the warehouse, out the front, across the street. You stand on the corner with him. He does not look at you. He does not speak. He nods, once. You nod, once. He turns and walks to the sedan in the dumpster shadow. He gets in. He drives away.",
+        "sit_with": "You stand on the corner for a minute after the sedan is gone. The sidewalk is hot. The marigny is the marigny. He will be back. You know that. He knows you know."
+      }
+    },
+    {
+      "id": "dante_phone",
+      "name": "Antonio's Father (phone)",
+      "as_hand_id": "dante",
+      "scenarios": ["option_four"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "phone_call", "to": "desk" },
+      "lore_token": "antonio_did_not_call",
+      "lore_text": "Dante D'Ambrosio. Antonio's father. Sixty years old. At the helm of his riverboat in Graustark. They speak on the first Sunday of even-numbered months. August is not an even-numbered month. The next call is, in ch7's timeline, six weeks away. Antonio holds his thumb above DAD in his contacts for eleven seconds and does not call. In canon, Dante dies in ch20 when the sinkhole reopens, before the next scheduled call. Whichever Antonio chooses tonight — to call or not — he is choosing about a clean conversation that does not happen the way either of them expected.",
+      "accent": "#7a1e26",
+      "mood": "preoccupied",
+      "patience": 3,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "You find his number. You hold your thumb above it. One. Two. Three.",
+        "listen":  "You count to eleven. You do not press. You set the phone back down.",
+        "deliver": "You set the phone back down and you do not pick it up again for the rest of the afternoon. You will, you suspect, regret this. You will, you suspect, be unable to remember which version of regret you signed up for tonight.",
+        "sit_with": "You sit at the desk for a long minute with the phone face-down. The carpet path is the carpet path. The bourbon is still in the bottle. The day is still the day. Outside, somewhere, your father is making a Friday-night call to a man named Sammy he has known for sixty years. You will not, in this life, be on that call."
+      }
+    },
+    {
+      "id": "alberto_phone",
+      "name": "Alberto (older brother, Houston)",
+      "scenarios": ["option_four"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "phone_call", "to": "desk" },
+      "lore_token": "alberto_paid_off_two_vendors",
+      "lore_text": "Alberto Marroquín-D'Ambrosio. Antonio's older brother. Houston. Steady. Logic and order. The kind of man who looks like he is improving on the original. He has not called Antonio in three months. He has, quietly, paid off two of Antonio's vendors who had been threatening liens. He is waiting at a horizon for the eventually when Antonio learns of the payment and calls. Antonio could call him tonight. He hasn't yet.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 5,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "You find his number. You hesitate. The phone rings on his end. He picks up on the second ring. He always does. It is one of the very few things he and Jimmy have in common.",
+        "listen":  "He listens. He does not interrupt. He does the thing he has been doing since you were children, which is wait until you are entirely finished talking before he says anything.",
+        "deliver": "He says: I paid off two of them last week. He says: don't thank me. He says: it isn't a gift, it's an investment. The investment is the kind of statement Alberto uses when he is making a gift.",
+        "sit_with": "You both stay on the line. He talks about the office. He talks about a glass-tower thing nobody on Antonio's end of the family understands. You let him. At the end of the call, he says: call dad. You say: I will. He says: he isn't going to be around forever, antonio. The line goes quiet for a beat. You both know what neither of you is saying."
       }
     }
   ]
