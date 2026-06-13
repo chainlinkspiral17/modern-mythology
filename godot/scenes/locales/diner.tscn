@@ -1,162 +1,104 @@
-[gd_scene load_steps=9 format=3 uid="uid://locale_diner"]
+[gd_scene load_steps=10 format=3 uid="uid://locale_diner_v2"]
 
-[ext_resource type="PackedScene" path="res://assets/3d/locales/diner.glb" id="1_diner_geo"]
+[ext_resource type="PackedScene" path="res://assets/3d/locales/diner.glb" id="1_diner_glb"]
 [ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
-[ext_resource type="Script" path="res://scenes/locales/LightController.gd" id="3_lights"]
+[ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
 [ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
-[ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="5_setup"]
+[ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMat_Post"]
+[sub_resource type="CapsuleShape3D" id="Caps_Player"]
+radius = 0.30
+height = 1.70
+
+[sub_resource type="BoxShape3D" id="Box_Floor"]
+size = Vector3(20, 0.5, 16)
+
+[sub_resource type="BoxShape3D" id="Box_Wall_NS"]
+size = Vector3(20, 5, 0.5)
+
+[sub_resource type="BoxShape3D" id="Box_Wall_EW"]
+size = Vector3(0.5, 5, 16)
+
+[sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
-shader_parameter/palette_size = 16.0
-shader_parameter/dither_strength = 0.0
-shader_parameter/scanline_strength = 0.05
-shader_parameter/chromatic_aberration = 0.0008
+shader_parameter/palette_size = 14.0
+shader_parameter/dither_strength = 0.15
+shader_parameter/scanline_strength = 0.30
+shader_parameter/chromatic_aberration = 0.0014
 shader_parameter/ascii_strength = 0.0
 shader_parameter/ascii_color = Color(0.85, 0.78, 0.62, 1)
 shader_parameter/ascii_bg = Color(0.06, 0.04, 0.02, 1)
 
 [sub_resource type="Environment" id="Env_Diner"]
 background_mode = 1
-background_color = Color(0.04, 0.03, 0.02, 1)
+background_color = Color(0.05, 0.04, 0.03, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.18, 0.14, 0.10, 1)
-ambient_light_energy = 0.35
-glow_enabled = true
-glow_intensity = 0.6
-glow_strength = 0.9
-glow_bloom = 0.15
-adjustment_enabled = true
-adjustment_saturation = 0.95
-adjustment_contrast = 1.05
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
-radius = 0.30
-height = 1.70
+ambient_light_color = Color(0.45, 0.36, 0.26, 1)
+ambient_light_energy = 1.0
 
 [node name="Diner" type="Node3D"]
-script = ExtResource("3_lights")
-initial_mood = "lunch"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Diner")
 
-[node name="Geometry" parent="." instance=ExtResource("1_diner_geo")]
-script = ExtResource("5_setup")
-add_colliders = true
-albedo_brightness = 1.0
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 8, 0)
+light_color = Color(1, 0.92, 0.78, 1)
+light_energy = 1.4
+shadow_enabled = false
 
-[node name="LightSetups" type="Node3D" parent="."]
-
-[node name="lunch" type="Node3D" parent="LightSetups"]
-
-[node name="Sun" type="DirectionalLight3D" parent="LightSetups/lunch"]
-transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 5, 8, -5)
-light_color = Color(0.98, 0.92, 0.78, 1)
-light_energy = 1.2
-shadow_enabled = true
-
-[node name="Fluorescent_North" type="OmniLight3D" parent="LightSetups/lunch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 3.1)
+[node name="CounterFluorescent_N" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0, -2)
 light_color = Color(0.95, 0.92, 0.80, 1)
-light_energy = 6.0
-omni_range = 8.0
-
-[node name="Fluorescent_South" type="OmniLight3D" parent="LightSetups/lunch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 3.1)
-light_color = Color(0.95, 0.92, 0.80, 1)
-light_energy = 6.0
-omni_range = 8.0
-
-[node name="dusk" type="Node3D" parent="LightSetups"]
-visible = false
-
-[node name="Sun_Dusk" type="DirectionalLight3D" parent="LightSetups/dusk"]
-transform = Transform3D(0.966, -0.183, 0.183, 0, 0.707, 0.707, -0.259, -0.683, 0.683, 8, 4, 0)
-light_color = Color(0.98, 0.70, 0.40, 1)
-light_energy = 0.8
-shadow_enabled = true
-
-[node name="WarmInterior" type="OmniLight3D" parent="LightSetups/dusk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.9)
-light_color = Color(0.98, 0.72, 0.42, 1)
-light_energy = 8.0
-omni_range = 12.0
-
-[node name="night" type="Node3D" parent="LightSetups"]
-visible = false
-
-[node name="Counter_Lamp" type="OmniLight3D" parent="LightSetups/night"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.5)
-light_color = Color(0.98, 0.78, 0.50, 1)
-light_energy = 4.0
-omni_range = 6.0
-
-[node name="Booth_6_Lamp" type="OmniLight3D" parent="LightSetups/night"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2.5, 2.5)
-light_color = Color(0.95, 0.72, 0.42, 1)
-light_energy = 2.5
-omni_range = 3.0
-
-[node name="ParkingLot_Sodium" type="OmniLight3D" parent="LightSetups/night"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -7, 5.5)
-light_color = Color(0.95, 0.65, 0.30, 1)
 light_energy = 8.0
 omni_range = 12.0
 shadow_enabled = false
 
-[node name="3_47_am" type="Node3D" parent="LightSetups"]
-visible = false
-
-[node name="Counter_Lamp_dim" type="OmniLight3D" parent="LightSetups/3_47_am"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.5)
-light_color = Color(0.96, 0.74, 0.45, 1)
-light_energy = 2.5
-omni_range = 5.0
-
-[node name="River_Cool" type="DirectionalLight3D" parent="LightSetups/3_47_am"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -12, 0, 2)
-light_color = Color(0.55, 0.65, 0.85, 1)
-light_energy = 0.6
-
-[node name="ParkingLot_Sodium_Dim" type="OmniLight3D" parent="LightSetups/3_47_am"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -7, 5.5)
-light_color = Color(0.95, 0.62, 0.25, 1)
-light_energy = 4.0
-omni_range = 10.0
-
-[node name="precipice" type="Node3D" parent="LightSetups"]
-visible = false
-
-[node name="Precipice_Spot" type="SpotLight3D" parent="LightSetups/precipice"]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 1.2, 8.5, 4)
-light_color = Color(0.55, 0.75, 0.95, 1)
+[node name="CounterFluorescent_S" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0, 2)
+light_color = Color(0.95, 0.92, 0.80, 1)
 light_energy = 8.0
-spot_range = 6.0
-spot_angle = 28.0
-
-[node name="Floor_Ambient" type="OmniLight3D" parent="LightSetups/precipice"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
-light_color = Color(0.30, 0.20, 0.10, 1)
-light_energy = 2.0
 omni_range = 12.0
+shadow_enabled = false
 
-[node name="PostProcess" type="CanvasLayer" parent="."]
-layer = 10
+[node name="Geometry" parent="." instance=ExtResource("1_diner_glb")]
 
-[node name="Quad" type="ColorRect" parent="PostProcess"]
-material = SubResource("ShaderMat_Post")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
+[node name="FloorBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8, 0.85, -2)
+[node name="FloorShape" type="CollisionShape3D" parent="FloorBody"]
+shape = SubResource("Box_Floor")
+
+[node name="WallNorth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -6.25)
+
+[node name="WallNorthShape" type="CollisionShape3D" parent="WallNorth"]
+shape = SubResource("Box_Wall_NS")
+
+[node name="WallSouth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 6.25)
+
+[node name="WallSouthShape" type="CollisionShape3D" parent="WallSouth"]
+shape = SubResource("Box_Wall_NS")
+
+[node name="WallEast" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25, 2.5, 0)
+
+[node name="WallEastShape" type="CollisionShape3D" parent="WallEast"]
+shape = SubResource("Box_Wall_EW")
+
+[node name="WallWest" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, 2.5, 0)
+
+[node name="WallWestShape" type="CollisionShape3D" parent="WallWest"]
+shape = SubResource("Box_Wall_EW")
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4)
 script = ExtResource("2_fpc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape_Player")
+shape = SubResource("Caps_Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
@@ -164,3 +106,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
 fov = 65.0
 near = 0.05
 far = 100.0
+
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 50
+script = ExtResource("5_mood")
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 200.0
+script = ExtResource("3_hud")
+target = NodePath("../../Player")
+
+[node name="ControlsLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 240.0
+offset_right = 700.0
+offset_bottom = 320.0
+text = "WASD move · QE turn · RF pitch · Space/Ctrl up/down · F1 collide · F2 teleport · F3 mood"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.78, 0.62, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
