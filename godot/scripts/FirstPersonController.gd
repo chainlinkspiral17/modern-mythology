@@ -23,7 +23,9 @@ const GRAVITY: float = 9.8
 
 var camera: Camera3D
 var pitch: float = 0.0
-var noclip: bool = false
+# DEFAULT TO NOCLIP for testing. Once we confirm movement works
+# in fly mode, we'll add collision back. Toggle with F1.
+var noclip: bool = true
 var _logged_input := false
 
 
@@ -33,7 +35,7 @@ func _ready() -> void:
         camera.position.y = eye_height
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     print("[FPC] _ready · mouse mode: %s · spawn at %s" % [Input.mouse_mode, global_position])
-    print("[FPC] keys: WASD walk · mouse look · shift careful · esc release · F1 noclip · F2 teleport")
+    print("[FPC] noclip default: %s · WASD to fly · Space=up · Ctrl=down · F1 toggles collision · F2 teleport" % noclip)
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -18,10 +18,10 @@ func _ready() -> void:
         _target_node = get_tree().get_first_node_in_group("player") as Node3D
     else:
         _target_node = get_node_or_null(target) as Node3D
-    add_theme_font_size_override("font_size", 16)
-    add_theme_color_override("font_color", Color(0.95, 0.85, 0.55))
-    add_theme_color_override("font_outline_color", Color(0.05, 0.04, 0.02))
-    add_theme_constant_override("outline_size", 2)
+    add_theme_font_size_override("font_size", 24)
+    add_theme_color_override("font_color", Color(1.0, 0.92, 0.65))
+    add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0))
+    add_theme_constant_override("outline_size", 4)
 
 
 func _process(_delta: float) -> void:
@@ -32,9 +32,13 @@ func _process(_delta: float) -> void:
     var vel: Vector3 = Vector3.ZERO
     if _target_node is CharacterBody3D:
         vel = (_target_node as CharacterBody3D).velocity
-    text = "pos: %5.2f, %5.2f, %5.2f\nvel: %5.2f, %5.2f, %5.2f\nspeed: %5.2f m/s\nmouse: %s" % [
+    var noclip_str: String = "OFF"
+    if _target_node.has_method("get") and "noclip" in _target_node:
+        noclip_str = "ON · flying" if _target_node.get("noclip") else "OFF · walking"
+    text = "POS  x=%6.2f  y=%6.2f  z=%6.2f\nVEL  x=%6.2f  y=%6.2f  z=%6.2f\nSPEED %6.2f m/s\nMOUSE %s\nMODE  %s" % [
         pos.x, pos.y, pos.z,
         vel.x, vel.y, vel.z,
         vel.length(),
-        ["VISIBLE", "HIDDEN", "CAPTURED", "CONFINED"][Input.mouse_mode]
+        ["VISIBLE", "HIDDEN", "CAPTURED", "CONFINED"][Input.mouse_mode],
+        noclip_str
     ]
