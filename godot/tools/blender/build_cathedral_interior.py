@@ -467,7 +467,7 @@ def export_glb():
         'use_selection': False,
         'export_apply': True,
         'export_lights': True,
-        'export_cameras': True,
+        'export_cameras': False,   # was True; cameras hijack Godot's active camera
     }
 
     # Probe the operator's available properties so we add legacy flags
@@ -509,7 +509,13 @@ def main():
     build_bbs_terminal()
     build_diorama_bases()
     add_lights()
-    setup_camera_hint()
+    # Camera intentionally NOT exported. Earlier the embedded
+    # FrasierEye camera was hijacking Godot's active camera and
+    # the player's view never updated. The FPC's make_current()
+    # call defends against this anyway, but stripping the camera
+    # at the source is cleaner. We can re-add named camera
+    # markers later when we wire up cinematic framing.
+    # setup_camera_hint()  # DISABLED
     export_glb()
 
 

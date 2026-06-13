@@ -429,7 +429,7 @@ def export_glb():
     base = {
         'filepath': out_path, 'export_format': 'GLB',
         'use_selection': False, 'export_apply': True,
-        'export_lights': True, 'export_cameras': True,
+        'export_lights': True, 'export_cameras': False,   # was True; hijacks Godot's active camera
     }
     rna = bpy.ops.export_scene.gltf.get_rna_type()
     legacy = {}
@@ -460,7 +460,12 @@ def main():
     build_cocktail_bar()
     build_back_hallway()
     build_exterior_hints()
-    add_camera_markers()
+    # Camera markers intentionally NOT added — same issue as the
+    # Cathedral build had with FrasierEye hijacking the active
+    # camera. Will re-introduce as named cinematic markers once
+    # the framing system is wired up properly via Godot Node3D
+    # markers instead of camera nodes.
+    # add_camera_markers()  # DISABLED
     export_glb()
 
 
