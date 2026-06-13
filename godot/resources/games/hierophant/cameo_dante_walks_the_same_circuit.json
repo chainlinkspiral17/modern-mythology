@@ -1,0 +1,122 @@
+{
+  "id": "cameo_dante_walks_the_same_circuit",
+  "arcana": "v_hierophant",
+  "location": "the_hierophant_circuit",
+  "hand": "dante",
+  "title": "DANTE WALKS THE SAME CIRCUIT",
+  "subtitle": "CAMEO · V·Hierophant · 2:47 PM · A Tuesday alone",
+  "difficulty": "easy",
+  "guest_lens": { "host": "hierophant", "guest": "emperor" },
+  "epigraph_upright": "Dante drives Paul's Sunday route on a Tuesday afternoon. The church is empty. The bandstand is empty. The boat is the boat. He wants, today, to see what Paul sees.",
+  "epigraph_reversed": "Dante drives Paul's Sunday route. The church door is, on a Tuesday, locked. The bandstand is, this Tuesday, occupied by a high-school marching band's rehearsal. The circuit refuses to give Dante what it gives Paul. He drives back to the boat.",
+  "scene_description": "Easy cameo. The Emperor on the Hierophant's circuit. Dante walks Paul's route alone, looking at his rival's rooms from inside them.",
+  "direction_hint": "Stand in the back pew. Pay for the aide's lunch in absentia. Connect with Father Amato. Leap back to the helm.",
+  "opening_log_lines": [
+    "2:47 PM. Dante's car at the St Jude's curb.",
+    "The church is empty. The parking lot is empty. The asphalt is, on Tuesday, hot.",
+    "The bandstand across town is, this Tuesday, idle."
+  ],
+  "starting_state": {
+    "player_pos": "church_steps",
+    "time": 5,
+    "time_per_turn": 5,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "authority": 2,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "stand_in_the_back_pew", "pay_for_the_aide_lunch"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "stand_in_the_back_pew",
+      "title": "STAND IN THE BACK PEW",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "You enter the church. You do not, this Tuesday, sit. You stand in the back pew with your hands on the wood. You look at the altar from where Paul looks at the altar.",
+      "requires": [
+        { "kind": "at_space", "space": "the_pew_in_the_back" }
+      ],
+      "effects": [
+        { "kind": "gain_insight", "amount": 1 }
+      ]
+    },
+    {
+      "id": "pay_for_the_aide_lunch",
+      "title": "PAY FOR THE AIDE'S LUNCH",
+      "time_cost": 2,
+      "starter": false,
+      "flavor": "You leave a hundred-dollar bill with Hector at the pass to cover the aide's lunch the next Sunday. You do not, this Tuesday, mention it to anyone. Paul will, by Wednesday, hear about it.",
+      "requires": [
+        { "kind": "at_space", "space": "dambrosios_table_17" }
+      ],
+      "effects": [
+        { "kind": "record_lore_token", "token": "dante_pre-empted_paul" },
+        { "kind": "ledger_cross_arcana_penalty", "target_arcana": "v_hierophant", "amount": 1, "note": "Paul's doctrine -1 on next Hierophant run" }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "father_amato",
+      "name": "Father Amato",
+      "arrival": { "kind": "on_board_at_start", "pos": "church_interior" },
+      "lore_token": "dante_met_father_amato",
+      "lore_text": "The parish priest. On a Tuesday afternoon he is in the side chapel polishing the candleholders. He has known Paul for thirty years and Dante for thirty-five. He is the only Catholic on the circuit who has read both men accurately.",
+      "accent": "#7a1e26",
+      "mood": "talkative",
+      "patience": 8,
+      "verb_labels": { "greet": "who_is_this", "listen": "you_are_dante", "deliver": "i_remember", "sit_with": "sit_in_the_pew" },
+      "steps": {
+        "who_is_this":   "Father Amato looks up from the candleholder. He does not, at first, recognize you with the Tuesday light.",
+        "you_are_dante": "He recognizes you. He says: D'Ambrosio. You did not come on a Sunday.",
+        "i_remember":    "He tells you the small story of the first time you came to St Jude's, in '79, before Paul had the rectory's number memorized. You had forgotten the story. He has not.",
+        "sit_in_the_pew":"He says: sit a moment. You sit. He sits beside you. He does not, this afternoon, speak. The two of you in the back pew for ninety seconds. The flag dante_met_father_amato goes on."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "the_pew_in_the_back", "label": "THE BACK PEW", "kind": "named", "pos_xy": [4, 3] }
+  ],
+  "scenario_adjacency_additions": [
+    ["church_interior", "the_pew_in_the_back"]
+  ],
+  "visitors_present_at_start": ["father_amato"],
+  "visitor_schedule": [],
+  "win_conditions": {
+    "require_visitors_connected_min": 1,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the church on a Tuesday is the church on a Tuesday.", "tick_per_turn": 1, "effects": [] },
+    { "level": 5, "label": "the asphalt outside is, by 3:14, eighty-four degrees.", "tick_per_turn": 1, "effects": [] },
+    { "level": 8, "label": "the bandstand across town is, this Tuesday, the wrong sound.", "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "you drove back to the boat without finishing the circuit.", "tick_per_turn": 2, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "dante at the church door.", "effects": [] },
+    { "level": 3, "label": "the door is, on Tuesdays, locked. you go around.", "effects": [] },
+    { "level": 5, "label": "father amato has not, in thirty years, lied to either of you.", "effects": [] },
+    { "level": 7, "label": "you saw what paul sees.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "the_black_car",       "label": "THE BLACK CAR",  "ending_lore_token": "leap_back_to_the_helm_with_what_you_saw", "visible_from_start": true },
+    { "id": "dambrosios_curb",     "label": "DAMBROSIO'S CURB","ending_lore_token": "leap_back_to_the_boat_having_pre_empted","visible_from_start": true },
+    { "id": "riverfront",          "label": "RIVERFRONT",     "ending_lore_token": "leap_riverfront_alone_tuesday",            "visible_from_start": false }
+  ],
+  "max_turns": 8,
+  "notes": "Easy cameo · Dante on Paul's circuit. Novel mechanic: OUT-OF-CHARACTER TRAVERSAL — Father Amato's first verb is who_is_this rather than greet, because Dante on the circuit on a Tuesday is unexpected. The cross-arcana ledger penalty also runs the OTHER WAY (Dante undermining Paul).",
+  "ambient_pool": [
+    "the parking lot's asphalt is, in summer, a thing you can taste.",
+    "the bandstand across town hums even when it's empty.",
+    "the rectory window is, on a Tuesday, open."
+  ],
+  "ambient_every_n": 3
+}

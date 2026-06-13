@@ -1,0 +1,139 @@
+{
+  "id": "cameo_antonio_confronts_paul",
+  "arcana": "v_hierophant",
+  "location": "the_hierophant_circuit",
+  "hand": "antonio",
+  "title": "ANTONIO CONFRONTS PAUL",
+  "subtitle": "CAMEO · V·Hierophant · 12:42 PM · One month before the wreck",
+  "difficulty": "hard",
+  "guest_lens": { "host": "hierophant", "guest": "chariot" },
+  "epigraph_upright": "Antonio flew in from New Orleans this morning. The lunch was, technically, set up by the aide as a courtesy. Antonio knows exactly what he came to say. The recording app on his phone is, in his pocket, on.",
+  "epigraph_reversed": "Antonio flew in from New Orleans. The lunch starts. He realizes, by the second course, that saying it will not change the answer. He doesn't say it. He flies home with the wreck still arriving on schedule.",
+  "scene_description": "Hard cameo. The Chariot in the Hierophant's most-protected room: the corner of Table 17 partitioned for private business. Antonio came to say no on the record.",
+  "direction_hint": "Sit at the corner booth of Table 17. Tell Paul no. Keep the phone recording. Walk out mid-sentence.",
+  "opening_log_lines": [
+    "12:42 PM. Antonio at the corner of Table 17.",
+    "Paul across the table with the small smile.",
+    "The recording phone on the bench beside you, face-down, app open."
+  ],
+  "starting_state": {
+    "player_pos": "the_corner_booth_of_table_17",
+    "time": 4,
+    "time_per_turn": 4,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 3,
+    "stagnation_per_turn": 2,
+    "doubt": 3,
+    "doubt_max": 7,
+    "fuel": 2,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "tell_paul_no", "walk_out_mid_sentence"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "tell_paul_no",
+      "title": "TELL PAUL NO",
+      "time_cost": 3,
+      "starter": false,
+      "flavor": "You say the word out loud, on the record, across a candle in the corner of Table 17. Paul does not, this Wednesday, hide the small flinch. The recording catches it.",
+      "requires": [
+        { "kind": "at_space", "space": "the_corner_booth_of_table_17" }
+      ],
+      "effects": [
+        { "kind": "gain_insight", "amount": 2 },
+        { "kind": "gain_doubt", "amount": 2 },
+        { "kind": "lock_visitor_patience", "visitor": "paul_at_the_table", "at": 0, "note": "Paul's patience is, after this, frozen" },
+        { "kind": "record_lore_token", "token": "antonio_said_no_on_the_record" }
+      ]
+    },
+    {
+      "id": "walk_out_mid_sentence",
+      "title": "WALK OUT MID-SENTENCE",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "You stand. Paul is, this Wednesday, mid-sentence. You leave the corner booth. You take the recording phone with you. The aide does not, this Wednesday, follow.",
+      "requires": [],
+      "effects": [
+        { "kind": "free_leap_to_any_visible_threshold" },
+        { "kind": "lose_sanity", "amount": 1 }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "paul_at_the_table",
+      "name": "Paul (across the candle)",
+      "arrival": { "kind": "on_board_at_start", "pos": "the_corner_booth_of_table_17" },
+      "lore_token": "antonio_met_paul_on_paper",
+      "lore_text": "Paul. The man who runs the circuit and, this Wednesday, came to Table 17 expecting Antonio to take the deal. Patience 5 at start, falls to 0 the instant antonio_said_no_on_the_record fires.",
+      "accent": "#7a1e26",
+      "mood": "intense",
+      "patience": 5,
+      "steps": {
+        "greet":   "Paul nods. The small smile. The candle between you is, this Wednesday, the tallest object on the table.",
+        "listen":  "He recites the offer. He has, by the third paragraph, started to believe his own framing.",
+        "deliver": "You give him your answer. He waits. He says: think about it overnight.",
+        "sit_with":"You stay for the third course. You eat half. You leave the rest. Paul does not, this Wednesday, ask why."
+      }
+    },
+    {
+      "id": "the_recording_phone",
+      "name": "The Recording Phone",
+      "arrival": { "kind": "interior", "pos": "the_corner_booth_of_table_17" },
+      "lore_token": "antonio_captured_pauls_flinch",
+      "lore_text": "Antonio's phone. The voice memo app is on. Battery is at 87%. Sit-with completes by being present during ANOTHER visitor's deliver step (parasitic connection).",
+      "accent": "#3a3a3a",
+      "mood": "preoccupied",
+      "patience": 14,
+      "verb_labels": { "greet": "check_battery", "listen": "let_it_record", "deliver": "review_the_clip", "sit_with": "keep_it_on" },
+      "steps": {
+        "check_battery":  "You tilt the phone an inch. 87%. The app is recording.",
+        "let_it_record":  "You leave it. The conversation is, by minute three, on the file.",
+        "review_the_clip":"You step away to the bathroom for thirty seconds. You replay the last twenty. Paul's flinch is on it.",
+        "keep_it_on":     "You return to the table. The phone keeps recording for the rest of the lunch. The flag antonio_captured_pauls_flinch goes on automatically when any other visitor's deliver step fires at this space."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "the_corner_booth_of_table_17", "label": "TABLE 17 (CORNER)", "kind": "named", "pos_xy": [6, 4] }
+  ],
+  "scenario_adjacency_additions": [
+    ["dambrosios_table_17", "the_corner_booth_of_table_17"]
+  ],
+  "visitors_present_at_start": ["paul_at_the_table", "the_recording_phone"],
+  "visitor_schedule": [],
+  "win_conditions": {
+    "require_visitors_connected_min": 2,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 1 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the corner booth. paul across the candle.", "tick_per_turn": 2, "effects": [] },
+    { "level": 5, "label": "the second course is, by the candle, three minutes overdue.", "tick_per_turn": 2, "effects": [] },
+    { "level": 8, "label": "paul is, by the third paragraph, believing his own framing.", "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the lunch ended with paul still expecting a yes.", "tick_per_turn": 3, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "antonio across the candle.", "effects": [] },
+    { "level": 3, "label": "the recording is, by minute two, on the file.", "effects": [] },
+    { "level": 5, "label": "the aide at the bar has, twice, looked your way.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the wreck arrives on schedule with or without your no.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "dambrosios_curb",  "label": "THE CURB",    "ending_lore_token": "leap_with_the_recording_out_the_side_door", "visible_from_start": true },
+    { "id": "back_corridor",    "label": "BACK CORRIDOR","ending_lore_token": "leap_back_corridor_with_the_recording",     "visible_from_start": true },
+    { "id": "riverfront",       "label": "RIVERFRONT",  "ending_lore_token": "leap_riverfront_pre_wreck",                  "visible_from_start": false }
+  ],
+  "max_turns": 6,
+  "notes": "Hard cameo · Antonio's no on the record. Novel mechanic: PARASITIC CONNECTION. the_recording_phone completes its sit_with by being present during another visitor's deliver step at the same space — first cameo where a visitor's connection depends on another's.",
+  "ambient_pool": [
+    "the candle on the corner booth is, by year four with paul, the tallest object on the table.",
+    "the recording app on your phone is, on a 64GB phone, taking up 0.2% of the storage so far.",
+    "the aide at the bar has not, this Wednesday, ordered."
+  ],
+  "ambient_every_n": 2
+}

@@ -1,0 +1,19 @@
+{
+  "id": "dean",
+  "name": "Mr. D. Dean",
+  "subtitle": "the out-of-town gentleman",
+  "portrait": "assets/gallery/dean_face.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "the_note_under_the_bill",
+    "label": "The Note Under the Bill",
+    "description": "Once per game. Dean writes the small note (a phone number, three words) and tucks it under a hundred-dollar bill. The next staff visitor who sits with him receives the note; the run's primary lore_token is doubled in priority on the ledger.",
+    "uses_per_game": 1
+  },
+  "starting_hand": ["walk", "focus", "search", "short_rest"],
+  "save_witness_rewards": null,
+  "notes": "Mr. D. Dean. The long-game watcher. Plain face, plain shoes, the lapels-smoothing tic of a man who once cared deeply about appearance. Moves through the canon like a chess piece: dropping a card here, refusing a menu there. His hand is unfinished by design — the bespoke cards arrive scenario-by-scenario, declared inline. Source: vol5 ch3 Empress (Table 14), recurrence in vol5 ch10 Wheel + ch11 Justice."
+}

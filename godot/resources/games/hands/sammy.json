@@ -1,0 +1,19 @@
+{
+  "id": "sammy",
+  "name": "Sammy",
+  "subtitle": "behind the well since '83",
+  "portrait": "assets/gallery/sammy_face.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "pour_one_for_yourself",
+    "label": "Pour One for Yourself",
+    "description": "Once per game. Sammy pours himself the short one Dante has, in forty years, never asked him not to pour. Restores 2 sanity, advances every active visitor's connection by 1 step. The well runs the well runs.",
+    "uses_per_game": 1
+  },
+  "starting_hand": ["walk", "focus", "search", "short_rest"],
+  "save_witness_rewards": null,
+  "notes": "Sammy. 61. The bartender at D'Ambrosio's since the boat opened in '83. The long-suffering Catholic loyalty Dante has relied on and quietly mocked. Knows where the water pitcher is. Knows when to pour himself one. Source: vol5 ch4 Emperor + ch3 Empress (recurring well-side regular)."
+}

@@ -1,0 +1,123 @@
+{
+  "id": "cameo_john_at_ember_and_ash",
+  "arcana": "vii_chariot",
+  "location": "ember_ash_office",
+  "hand": "john_frank",
+  "title": "JOHN AT EMBER & ASH",
+  "subtitle": "CAMEO · VII·Chariot · 4:42 PM · The afternoon of",
+  "difficulty": "hard",
+  "guest_lens": { "host": "chariot", "guest": "fool" },
+  "epigraph_upright": "Antonio called John at noon. Three rings and Antonio hung up. The fourth call connected; Antonio said: come by. John, who does not, normally, leave the diner mid-shift, is, this afternoon, in the truck on the way to the warehouse.",
+  "epigraph_reversed": "Antonio called John at noon. John let it ring. Antonio called twice more in the afternoon. John let those ring too. The wreck happens at 7:48 and John, by 7:58, is sitting on his back stoop wishing he had picked up at three.",
+  "scene_description": "Hard cameo. The Fool walking into the Chariot's afternoon. John at Antonio's warehouse the day Antonio asked him to come. Antonio is the visitor here, not the host.",
+  "direction_hint": "Pick up the phone. Or let it ring three times. Sit with Antonio. Leap.",
+  "opening_log_lines": [
+    "4:42 PM. John at the warehouse front stair.",
+    "Antonio nowhere visible. Jimmy on the back stair.",
+    "Your phone in your back pocket is, this afternoon, ringing."
+  ],
+  "starting_state": {
+    "player_pos": "front_stair",
+    "time": 4,
+    "time_per_turn": 4,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 3,
+    "stagnation_per_turn": 2,
+    "doubt": 3,
+    "doubt_max": 7,
+    "insight": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "let_it_ring_three_times", "pick_up_the_phone"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "let_it_ring_three_times",
+      "title": "LET IT RING THREE TIMES",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "You feel the buzz in your back pocket. You count three rings. You do not, this time, pick up. The phone stops. Antonio is, on the other end of that line, alone in the office.",
+      "requires": [],
+      "effects": [
+        { "kind": "gain_doubt", "amount": 1, "note": "antonio's doubt rises through the room" },
+        { "kind": "increment_counter", "key": "let_it_ring", "amount": 1 },
+        { "kind": "if_counter_at_least", "key": "let_it_ring", "n": 3, "then": { "kind": "lock_visitor_patience", "visitor": "antonio_on_the_phone", "at": 0 } }
+      ]
+    },
+    {
+      "id": "pick_up_the_phone",
+      "title": "PICK UP THE PHONE",
+      "time_cost": 2,
+      "starter": false,
+      "flavor": "You answer. Antonio's voice on the other end is the voice of a man at the office window with the leaded glass. You stand wherever you stand and Antonio is, for the duration of this call, beside you.",
+      "requires": [],
+      "effects": [
+        { "kind": "advance_visitor", "visitor": "antonio_on_the_phone", "steps": 2 },
+        { "kind": "gain_doubt", "amount": 1, "note": "you hear what he was going to say" }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "antonio_on_the_phone",
+      "name": "Antonio (on the phone, the room)",
+      "as_hand_id": "antonio",
+      "arrival": { "kind": "phone_call_at_my_pos" },
+      "lore_token": "john_was_with_antonio_on_the_call",
+      "lore_text": "Antonio is the visitor in his own warehouse. The phone-call visitor follows John from node to node; wherever you are, Antonio is, for the duration of any call you take, beside you. The host's room is empty except for the structures Antonio built; the connection target is Antonio himself.",
+      "accent": "#7a1e26",
+      "mood": "intense",
+      "patience": 5,
+      "arrives_as": "phone_voice",
+      "verb_labels": { "greet": "answer", "listen": "let_him_talk", "deliver": "ask_the_thing", "sit_with": "stay_on_the_line" },
+      "steps": {
+        "answer":            "You answer. The line is good. The room around him is the leaded-window office.",
+        "let_him_talk":      "He tells you a small thing about Frasier's read on the beam from last week. He does not, this afternoon, tell you what he is afraid of.",
+        "ask_the_thing":     "You ask him the thing he called you to be asked. He gives you the answer. You write it down on the back of a diner receipt.",
+        "stay_on_the_line":  "You stay on the line through the next minute without either of you speaking. The cicadas at the warehouse end are, on the phone, audible. He says: thanks for picking up. You say: yeah. The flag john_picked_up_at_the_warehouse goes on."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "the_back_stair_at_ember_and_ash", "label": "BACK STAIR (WEST WALL)", "kind": "threshold", "pos_xy": [2, 8] }
+  ],
+  "scenario_adjacency_additions": [
+    ["back_alley", "the_back_stair_at_ember_and_ash"],
+    ["the_back_stair_at_ember_and_ash", "warehouse_floor"]
+  ],
+  "visitors_present_at_start": ["antonio_on_the_phone"],
+  "visitor_schedule": [],
+  "win_conditions": {
+    "require_visitors_connected_min": 1,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 1 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the warehouse afternoon.", "tick_per_turn": 2, "effects": [] },
+    { "level": 5, "label": "the crew has, by 4:18, gone home early.", "tick_per_turn": 2, "effects": [] },
+    { "level": 8, "label": "the building is, by 5:00, quieter than it should be.", "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "you drove home without going in.", "tick_per_turn": 3, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "john at the front stair.", "effects": [] },
+    { "level": 3, "label": "the phone in your pocket is, this afternoon, the heaviest object on you.", "effects": [] },
+    { "level": 5, "label": "antonio is, on the other end of every unanswered call, alone in the office.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the wreck is, by 7:48, on its way regardless.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "the_back_stair_at_ember_and_ash", "label": "BACK STAIR",  "ending_lore_token": "leap_into_the_wreck_aftermath",    "visible_from_start": true },
+    { "id": "front_stair",                    "label": "FRONT STAIR", "ending_lore_token": "leap_off_the_front_stair_too_late","visible_from_start": true },
+    { "id": "sidewalk",                       "label": "SIDEWALK",    "ending_lore_token": "leap_back_to_the_diner_too_late",  "visible_from_start": false }
+  ],
+  "max_turns": 6,
+  "notes": "Hard cameo · John on the afternoon of the wreck. Novel mechanic: THE HOST AS VISITOR. Antonio is the connection target, not the host-NPC; the warehouse is empty except for the structures he built. The phone-visitor follows John from node to node. First cameo where the room's owner is the connection target.",
+  "ambient_pool": [
+    "the cicadas on the phone are, from the warehouse, at afternoon-frequency.",
+    "the diner receipt in your pocket has, by now, a number on the back.",
+    "the warehouse is, by 5:00, quieter than it should be."
+  ],
+  "ambient_every_n": 2
+}

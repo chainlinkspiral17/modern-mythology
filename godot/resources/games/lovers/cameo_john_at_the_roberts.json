@@ -1,0 +1,139 @@
+{
+  "id": "cameo_john_at_the_roberts",
+  "arcana": "vi_lovers",
+  "location": "roberts_house",
+  "hand": "john_frank",
+  "title": "JOHN AT THE ROBERTS",
+  "subtitle": "CAMEO · VI·Lovers · 6:42 PM · The night before the Polaroid",
+  "difficulty": "medium",
+  "guest_lens": { "host": "lovers", "guest": "fool" },
+  "epigraph_upright": "John drives over from the diner with a half-eaten slice of pie wrapped in foil and a sentence he's been turning around all afternoon. The Polaroid is, unbeknownst to anyone in this house, in a wagon at the Theriot's two streets over.",
+  "epigraph_reversed": "John drives over with the pie. He sits in the car at the curb for eleven minutes. He drives home. The half-eaten slice goes back in the diner's fridge by 7:30.",
+  "scene_description": "Medium cameo. The Fool at the Lovers' threshold the night before the canonical boy-with-the-Polaroid. John doesn't know what's coming. The room doesn't either. Something he says or doesn't say will, by tomorrow, matter.",
+  "direction_hint": "Sit on the back porch with Philip. Leave the napkin on the kitchen counter. Wait for the Polaroid to reveal at doubt 5. Leap.",
+  "opening_log_lines": [
+    "6:42 PM. John at the Roberts' front walk with the foil-wrapped pie.",
+    "Mackenzie at the kitchen window. Philip in the back yard.",
+    "The sentence you have been turning all afternoon is, this evening, still not the right one."
+  ],
+  "starting_state": {
+    "player_pos": "front_door",
+    "time": 5,
+    "time_per_turn": 5,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "insight": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "sit_on_the_back_porch_with_philip", "leave_the_napkin_on_the_kitchen_counter"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "sit_on_the_back_porch_with_philip",
+      "title": "SIT ON THE BACK PORCH WITH PHILIP",
+      "time_cost": 2,
+      "starter": false,
+      "flavor": "You bring two beers. Philip in the lawn chair. You sit. You do not, this evening, mention the sentence you have been turning. You let Philip do the talking.",
+      "requires": [
+        { "kind": "at_space", "space": "back_porch" }
+      ],
+      "effects": [
+        { "kind": "gain_insight", "amount": 2 },
+        { "kind": "record_lore_token", "token": "john_was_warned_first" }
+      ]
+    },
+    {
+      "id": "leave_the_napkin_on_the_kitchen_counter",
+      "title": "LEAVE THE NAPKIN ON THE COUNTER",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "You write the half-sentence on a napkin. You leave it on the kitchen counter between the salt and the basil pot. Mackenzie will, by morning, find it.",
+      "requires": [
+        { "kind": "at_space", "space": "kitchen_table" }
+      ],
+      "effects": [
+        { "kind": "record_lore_token", "token": "john_left_the_napkin" }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "the_polaroid_about_to_arrive",
+      "name": "The Polaroid (not yet)",
+      "arrival": { "kind": "deferred_doubt_reveal", "doubt_level": 5, "spawn_space": "front_door" },
+      "lore_token": "john_sensed_the_polaroid_coming",
+      "lore_text": "A forthcoming visitor. Not on the board at start. Reveals at doubt 5 — at which point John registers, without being able to name, the Theriot's wagon two streets over.",
+      "accent": "#3a3a3a",
+      "mood": "preoccupied",
+      "patience": 4,
+      "verb_labels": { "greet": "sense", "listen": "wait", "deliver": "name_it", "sit_with": "leave_room_for_it" },
+      "steps": {
+        "sense":          "You feel, at the front door, that something is about to be on this porch tomorrow.",
+        "wait":           "You stand on the front walk for a full minute. The street is the street.",
+        "name_it":        "You almost name it. You don't. You go back inside.",
+        "leave_room_for_it":"You leave the house the way you came. You do not, this evening, tell Mackenzie. You leave room for tomorrow's news to arrive on its own."
+      }
+    },
+    {
+      "id": "philip_at_the_back",
+      "name": "Philip (in the lawn chair)",
+      "arrival": { "kind": "on_board_at_start", "pos": "back_porch" },
+      "lore_token": "philip_drank_with_john",
+      "lore_text": "Philip Roberts. Two beers in. The lawn chair. The basil from Mackenzie's garden is, this June, doing well.",
+      "accent": "#88b87a",
+      "mood": "talkative",
+      "patience": 8,
+      "steps": {
+        "greet":   "Philip raises the beer. He nods to the empty chair. You sit.",
+        "listen":  "He tells you the small story of Mackenzie's brother that he tells exactly four times a year, always between the second and third beer.",
+        "deliver": "You give him the small piece of news you came with — the editor at the paper liked the column. He says: I knew he would.",
+        "sit_with":"You sit through twenty minutes of him not saying anything. The cicadas are at dusk-frequency. The third beer does not, this evening, get opened."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "back_porch", "label": "THE BACK PORCH", "kind": "named", "pos_xy": [9, 7] }
+  ],
+  "scenario_adjacency_additions": [
+    ["back_door", "back_porch"],
+    ["garden", "back_porch"]
+  ],
+  "visitors_present_at_start": ["philip_at_the_back"],
+  "visitor_schedule": [],
+  "win_conditions": {
+    "require_visitors_connected_min": 2,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the front walk. the foil-wrapped pie.", "tick_per_turn": 1, "effects": [] },
+    { "level": 5, "label": "the sentence is still not the right sentence.", "tick_per_turn": 1, "effects": [] },
+    { "level": 8, "label": "philip has, by year three, learned to wait you out.", "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "you drove back to the diner without going in.", "tick_per_turn": 2, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "john at the roberts' front door.", "effects": [] },
+    { "level": 3, "label": "the Theriot's wagon, two streets over, is the Theriot's wagon.", "effects": [] },
+    { "level": 5, "label": "you almost named what is coming.", "effects": [ "deferred_visitor_arrives" ] },
+    { "level": 7, "label": "the polaroid arrives in the morning regardless.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door",   "label": "FRONT DOOR",  "ending_lore_token": "leap_back_to_the_diner",                 "visible_from_start": true },
+    { "id": "back_door",    "label": "BACK DOOR",   "ending_lore_token": "leap_with_philip_into_the_yard",         "visible_from_start": true },
+    { "id": "driveway",     "label": "DRIVEWAY",    "ending_lore_token": "leap_to_the_car_with_the_pie_uneaten",   "visible_from_start": true }
+  ],
+  "max_turns": 7,
+  "notes": "Medium cameo · The night before. Novel mechanic: DEFERRED-REVEAL VISITOR. the_polaroid_about_to_arrive is not on the board at start; doubt level 5 triggers its arrival next turn (engine TODO: honor effect.kind 'deferred_visitor_arrives' on doubt thresholds).",
+  "ambient_pool": [
+    "the cicadas at dusk-frequency.",
+    "the basil pot on the kitchen counter is healthy this june.",
+    "philip's third beer is, by year three, almost never opened."
+  ],
+  "ambient_every_n": 3
+}

@@ -1,0 +1,124 @@
+{
+  "id": "cameo_dean_arrives",
+  "arcana": "iii_empress",
+  "location": "riverboat_interior",
+  "hand": "dean",
+  "title": "DEAN ARRIVES",
+  "subtitle": "CAMEO · III·Empress · 6:14 PM · The out-of-town gentleman",
+  "difficulty": "easy",
+  "guest_lens": { "host": "empress", "guest": "wheel" },
+  "epigraph_upright": "Dean comes up the gangway at 6:14. He has not been on the boat before, though the boat has, all summer, been on his list. He carries no business card. He carries no menu request. He carries, in his breast pocket, the small note he will leave under the hundred-dollar bill.",
+  "epigraph_reversed": "Dean comes up the gangway. He stays for nine minutes. He decides the note is, this Friday, premature. He leaves the boat without speaking to anyone, and the chess piece does not, this week, move.",
+  "scene_description": "Easy cameo. The long-game watcher walks aboard the Empress's riverboat. He is here to scout, and to leave one small piece of paper if the room makes the case for it.",
+  "direction_hint": "Walk through the dining room. Sit at Table 17. Connect with two visitors. Decide whether to leave the note. Leap.",
+  "opening_log_lines": [
+    "6:14 PM. Dean at the gangway. Lapels smoothed.",
+    "Nicola at the maître d' stand. She does not, this evening, recognize him.",
+    "The brass railing is the wrong brass. He registers it."
+  ],
+  "starting_state": {
+    "player_pos": "gangway",
+    "time": 5,
+    "time_per_turn": 5,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
+    "doubt_max": 7,
+    "insight": 2,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "smooth_the_lapels", "leave_the_note_under_the_bill"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "smooth_the_lapels",
+      "title": "SMOOTH THE LAPELS",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "Dean's tell. A man's hands at his own lapels, the long memory of a uniform. The bar's brass railing catches your eye and you remember what it costs to install brass wrong.",
+      "requires": [],
+      "effects": [
+        { "kind": "gain_insight", "amount": 1, "note": "the room admits one fact at a time" },
+        { "kind": "set_flag", "key": "dean_smoothed", "value": true }
+      ]
+    },
+    {
+      "id": "leave_the_note_under_the_bill",
+      "title": "LEAVE THE NOTE UNDER THE BILL",
+      "time_cost": 3,
+      "starter": false,
+      "flavor": "The small note: when you're ready. A phone number below it. The hundred-dollar bill on top, weighting it to the table. You stand. You smooth the lapels. You exit through the side door.",
+      "requires": [
+        { "kind": "at_space", "space": "table_17" },
+        { "kind": "flag_true", "key": "dean_smoothed" }
+      ],
+      "effects": [
+        { "kind": "record_lore_token", "token": "dean_left_the_note_himself" },
+        { "kind": "lose_stagnation", "amount": 2 }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "the_water_glass",
+      "name": "The Water Glass at Table 17",
+      "arrival": { "kind": "interior", "pos": "table_17" },
+      "lore_token": "dean_left_the_glass_full",
+      "lore_text": "The water glass Dean does not drink from. The single sip he registers but does not take. An object-visitor: connecting completes when the glass is left full at the run's end.",
+      "accent": "#9bb4c8",
+      "mood": "lonely",
+      "patience": 12,
+      "verb_labels": { "greet": "lift", "listen": "sip", "deliver": "set_down", "sit_with": "leave_full" },
+      "steps": {
+        "lift":      "You lift the glass. The condensation has, in the last minute, beaded along the rim.",
+        "sip":       "You do not, this evening, sip. You set it back without drinking.",
+        "set_down":  "You set the glass back. The water level is, by the candle's measure, exactly where it was at 6:14.",
+        "leave_full":"You stand. You leave the glass full. The next staff member who clears the table will find the small note and the hundred-dollar bill and the full glass and will, by morning, be telling the story to Sammy at the bar."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "dean_side_door", "label": "SIDE DOOR (STAFF)", "kind": "threshold", "pos_xy": [12, 7] }
+  ],
+  "scenario_adjacency_additions": [
+    ["table_17", "dean_side_door"]
+  ],
+  "visitors_present_at_start": ["sammy_at_the_bar", "hector_at_the_pass", "the_water_glass"],
+  "visitor_schedule": [
+    { "visitor": "dante_at_the_helm", "arrival_turn": 3, "arrival_space": "main_dining_room" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 2,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "dean at the gangway. the boat is the boat.", "tick_per_turn": 1, "effects": [] },
+    { "level": 5, "label": "the brass railing has been the wrong brass since '83.", "tick_per_turn": 1, "effects": [] },
+    { "level": 8, "label": "the maître d' stand has noticed you noticing.", "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "you left without leaving the note.", "tick_per_turn": 2, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "dean smoothing the lapels.", "effects": [] },
+    { "level": 3, "label": "sammy at the bar has registered your face. he will, by morning, remember it.", "effects": [] },
+    { "level": 5, "label": "the brass and the apron and the maître d' stand all line up wrong tonight.", "effects": [] },
+    { "level": 7, "label": "the chess piece will not, this Friday, move.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",        "label": "GANGWAY",         "ending_lore_token": "leap_back_to_the_car",                "visible_from_start": true },
+    { "id": "dean_side_door", "label": "SIDE DOOR (STAFF)","ending_lore_token": "leap_off_the_side_door_into_the_dark","visible_from_start": false },
+    { "id": "main_dining_room","label": "DINING ROOM EXIT","ending_lore_token": "leap_through_the_dining_room",       "visible_from_start": true }
+  ],
+  "max_turns": 7,
+  "notes": "Easy cameo · The first time Dean walks aboard. Novel mechanic: the WATER GLASS object-visitor completes only by being left full. The SIDE DOOR threshold is staff-only and Dean alone can use it (per his canonical exit).",
+  "ambient_pool": [
+    "the wave from table 12 has been queued for ninety seconds.",
+    "sammy at the well looks up. registers your face.",
+    "the brass railing is the wrong brass."
+  ],
+  "ambient_every_n": 3
+}

@@ -1,0 +1,124 @@
+{
+  "id": "cameo_sammy_at_the_well",
+  "arcana": "iv_emperor",
+  "location": "riverboat_interior",
+  "hand": "sammy",
+  "title": "SAMMY AT THE WELL",
+  "subtitle": "CAMEO · IV·Emperor · 8:14 PM · Friday dinner from behind the bar",
+  "difficulty": "easy",
+  "guest_lens": { "host": "emperor", "guest": "hermit" },
+  "epigraph_upright": "Sammy works the bar through Friday dinner. Dante is at the helm. The well runs. The pitcher refills. Nobody asks him for anything he hasn't already prepared for.",
+  "epigraph_reversed": "Sammy works the bar through Friday dinner. He pours one for himself on the third call instead of the second; Dante notices on the iron stair on his way down. The night holds anyway, but the look between them is a look.",
+  "scene_description": "Easy cameo. The Hermit's stay-in-place patience inside the Emperor's room. Sammy doesn't leave the bar. The bar is the connection point for the whole floor.",
+  "direction_hint": "Stay at the well. Refill. Reroute. Let the floor come to you. Three connections.",
+  "opening_log_lines": [
+    "8:14 PM. The bar. The pitcher full.",
+    "Dante's helm light is on overhead. The iron stair is, this Friday, quiet.",
+    "Hector at the pass. Nicola at the stand."
+  ],
+  "starting_state": {
+    "player_pos": "sammys_bar",
+    "time": 5,
+    "time_per_turn": 5,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
+    "doubt_max": 7,
+    "insight": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "pour_a_short_one_for_yourself", "route_the_phone_call"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "pour_a_short_one_for_yourself",
+      "title": "POUR A SHORT ONE FOR YOURSELF",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "The short pour Dante has never, in forty years, asked you not to pour. You drink it standing. The well runs the well runs.",
+      "requires": [
+        { "kind": "at_space", "space": "sammys_bar" }
+      ],
+      "effects": [
+        { "kind": "gain_sanity", "amount": 1 },
+        { "kind": "increment_counter", "key": "shorts_poured", "amount": 1, "note": "Dante notices on the third" }
+      ]
+    },
+    {
+      "id": "route_the_phone_call",
+      "title": "ROUTE THE PHONE CALL",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "The maître d' stand line rings. You answer behind the bar. You route it where it needs to go without making the caller wait. Whoever it was, you have, for a moment, been the one who heard them.",
+      "requires": [],
+      "effects": [
+        { "kind": "connect_with_phone_visitor_at_my_space", "amount": 1, "note": "any phone-call visitor active this turn advances 1 step at the bar" }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "the_well_itself",
+      "name": "The Well (passive)",
+      "arrival": { "kind": "interior", "pos": "sammys_bar" },
+      "lore_token": "sammy_kept_the_well_full",
+      "lore_text": "The bar's well. The pitcher, the lemons, the ice scoop. Connecting completes by Sammy doing his job — three turns at the bar without leaving counts as the four-verb sequence.",
+      "accent": "#a99070",
+      "mood": "talkative",
+      "patience": 12,
+      "verb_labels": { "greet": "refill", "listen": "reach", "deliver": "place", "sit_with": "hold" },
+      "steps": {
+        "refill": "You top off the pitcher. The pour is the pour the well has always made.",
+        "reach":  "You reach for the lemon halves. The cutting is the cutting your hands learned in '83.",
+        "place":  "You set the pitcher on the bar. Sammy at the well is, for one second, the only thing in the room not moving.",
+        "hold":   "You stand at the well for a beat without doing anything. The well doesn't either. The room around you is the room."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "the_back_bar_passthrough", "label": "BACK BAR PASSTHROUGH", "kind": "threshold", "pos_xy": [3, 6] }
+  ],
+  "scenario_adjacency_additions": [
+    ["sammys_bar", "the_back_bar_passthrough"],
+    ["the_back_bar_passthrough", "the_pass"]
+  ],
+  "visitors_present_at_start": ["hector_at_the_pass", "the_well_itself"],
+  "visitor_schedule": [
+    { "visitor": "dante_at_the_helm", "arrival_turn": 3, "arrival_space": "main_dining_room" },
+    { "visitor": "the_imperious_table_12", "arrival_turn": 2, "arrival_space": "main_dining_room" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the well is the well.", "tick_per_turn": 1, "effects": [] },
+    { "level": 5, "label": "the pitcher has been refilled three times.", "tick_per_turn": 1, "effects": [] },
+    { "level": 8, "label": "you have not, in twelve minutes, left the bar.", "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "you left the well and the well went, in your absence, dry.", "tick_per_turn": 2, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "sammy behind the bar.", "effects": [] },
+    { "level": 3, "label": "you poured a second short one for yourself.", "effects": [] },
+    { "level": 5, "label": "dante on the iron stair has, twice, looked your way.", "effects": [] },
+    { "level": 7, "label": "the look between you and dante is a look.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",                   "label": "GANGWAY",          "ending_lore_token": "leap_off_the_boat_with_sammy",        "visible_from_start": true },
+    { "id": "the_back_bar_passthrough",  "label": "BACK BAR PASS",    "ending_lore_token": "leap_off_the_back_bar_at_close",      "visible_from_start": true },
+    { "id": "staff_exit",                "label": "STAFF EXIT",       "ending_lore_token": "leap_off_the_walkway_with_a_clean_apron", "visible_from_start": false }
+  ],
+  "max_turns": 8,
+  "notes": "Easy cameo · Sammy at the well. Novel mechanic: the WELL ITSELF is a passive-completion visitor — three turns at the bar = full connection. Stay-in-place verbs honored. New space: BACK BAR PASSTHROUGH connects the bar directly to the pass.",
+  "ambient_pool": [
+    "the well runs the well runs.",
+    "the lemons are cut the way the lemons are cut.",
+    "the maître d' stand line rings; the bar's extension is, by the third ring, picking up."
+  ],
+  "ambient_every_n": 3
+}

@@ -687,18 +687,134 @@ const PRIESTESS_CAMEOS := [
 ]
 const EMPRESS_CAMEOS := [
 	{
+		"id": "cameo_dean_arrives",
+		"hand_override": "dean",
+		"difficulty": "easy",
+		"title": "DEAN ARRIVES",
+		"subtitle": "Cameo · III·Empress · 6:14 PM",
+		"flavor": "The out-of-town gentleman walks aboard. He carries no business card, no menu request, and a small note he may, this Friday, leave under a hundred-dollar bill. New hand. Side door. Water glass left full."
+	},
+	{
 		"id": "cameo_frasier_returns_to_the_kitchen",
 		"hand_override": "frasier",
 		"difficulty": "medium",
 		"title": "FRASIER RETURNS TO THE KITCHEN",
 		"subtitle": "Cameo · III·Empress · 6:14 PM",
 		"flavor": "Frasier walks up the gangway for the first time in five years. He has, tonight, come to eat. Hector has the knife at the pass. Use Frasier's deck on the deck he left."
+	},
+	{
+		"id": "cameo_quentin_at_table_17",
+		"hand_override": "quentin_paul",
+		"difficulty": "hard",
+		"title": "QUENTIN AT TABLE SEVENTEEN",
+		"subtitle": "Cameo · III·Empress · 7:48 PM",
+		"flavor": "Paul holds court at Table 17 on a Friday Nicola is also working. The aide on his left. The envelope folded in the inside coat pocket. The bandstand payphone is, by 9:14, ringing back."
 	}
 ]
-const EMPEROR_CAMEOS := []
-const HIEROPHANT_CAMEOS := []
-const LOVERS_CAMEOS := []
-const CHARIOT_CAMEOS := []
+const EMPEROR_CAMEOS := [
+	{
+		"id": "cameo_sammy_at_the_well",
+		"hand_override": "sammy",
+		"difficulty": "easy",
+		"title": "SAMMY AT THE WELL",
+		"subtitle": "Cameo · IV·Emperor · 8:14 PM",
+		"flavor": "Sammy works the bar through Friday dinner. The well runs. The pitcher refills. The Hermit's stay-in-place patience inside the Emperor's room. New hand."
+	},
+	{
+		"id": "cameo_antonios_friday_visit",
+		"hand_override": "antonio",
+		"difficulty": "medium",
+		"title": "ANTONIO'S FRIDAY VISIT",
+		"subtitle": "Cameo · IV·Emperor · 7:14 PM",
+		"flavor": "Antonio's flight from New Orleans landed at four. He came straight to the boat. Sit with Dad at the helm. Take Mom's call from Houston. Leap from the iron stair landing."
+	},
+	{
+		"id": "cameo_paul_at_table_17_sunday",
+		"hand_override": "quentin_paul",
+		"difficulty": "hard",
+		"title": "PAUL AT TABLE SEVENTEEN · SUNDAY",
+		"subtitle": "Cameo · IV·Emperor · 12:02 PM",
+		"flavor": "The canonical Sunday brunch from Paul's POV. Mimosas too sweet. The council seated. Every doctrine point banked here costs Nicola on her next run."
+	}
+]
+const HIEROPHANT_CAMEOS := [
+	{
+		"id": "cameo_dante_walks_the_same_circuit",
+		"hand_override": "dante",
+		"difficulty": "easy",
+		"title": "DANTE WALKS THE SAME CIRCUIT",
+		"subtitle": "Cameo · V·Hierophant · 2:47 PM",
+		"flavor": "Dante drives Paul's Sunday route on a Tuesday. The church empty. The bandstand empty. Father Amato in the side chapel polishing the candleholders. He has known Paul for thirty years and you for thirty-five."
+	},
+	{
+		"id": "cameo_john_at_the_bandstand",
+		"hand_override": "john_frank",
+		"difficulty": "medium",
+		"title": "JOHN AT THE BANDSTAND",
+		"subtitle": "Cameo · V·Hierophant · 3:18 PM",
+		"flavor": "John walks over from the diner with his notebook. Paul at the microphone. The aide at the riser. Bypass the host. Ask the aide the question Paul's prepared answer doesn't cover."
+	},
+	{
+		"id": "cameo_antonio_confronts_paul",
+		"hand_override": "antonio",
+		"difficulty": "hard",
+		"title": "ANTONIO CONFRONTS PAUL",
+		"subtitle": "Cameo · V·Hierophant · 12:42 PM",
+		"flavor": "Antonio flew in this morning. The recording app on his phone is on. He came to say no on the record. Walk out mid-sentence with the file."
+	}
+]
+const LOVERS_CAMEOS := [
+	{
+		"id": "cameo_elicia_at_the_roberts",
+		"hand_override": "elicia",
+		"difficulty": "easy",
+		"title": "ELICIA AT THE ROBERTS",
+		"subtitle": "Cameo · VI·Lovers · 4:14 PM",
+		"flavor": "Elicia drives over with the Anya footage on a small tape. The Roberts' VCR died in '19. Cue the tape on the couch. Anya on Mackenzie's TV — visible only to Elicia."
+	},
+	{
+		"id": "cameo_john_at_the_roberts",
+		"hand_override": "john_frank",
+		"difficulty": "medium",
+		"title": "JOHN AT THE ROBERTS",
+		"subtitle": "Cameo · VI·Lovers · 6:42 PM",
+		"flavor": "The night before the Polaroid. John on the back porch with Philip. Leave the napkin on the kitchen counter. The Polaroid reveals at doubt five."
+	},
+	{
+		"id": "cameo_frasier_at_the_roberts",
+		"hand_override": "frasier",
+		"difficulty": "hard",
+		"title": "FRASIER AT THE ROBERTS",
+		"subtitle": "Cameo · VI·Lovers · 10:14 AM",
+		"flavor": "The day after the Polaroid. Frasier installs the mailbox post. Set / fill / level / step back. The basil in the kitchen window is dying."
+	}
+]
+const CHARIOT_CAMEOS := [
+	{
+		"id": "cameo_dante_at_ember_and_ash",
+		"hand_override": "dante",
+		"difficulty": "easy",
+		"title": "DANTE AT EMBER & ASH",
+		"subtitle": "Cameo · VII·Chariot · 11:14 AM",
+		"flavor": "Two months before the wreck. Dante visits Antonio's warehouse for the first time since the expansion. Look at the books. Don't say what you're thinking."
+	},
+	{
+		"id": "cameo_frasier_at_ember_and_ash",
+		"hand_override": "frasier",
+		"difficulty": "medium",
+		"title": "FRASIER AT EMBER & ASH",
+		"subtitle": "Cameo · VII·Chariot · 2:18 PM",
+		"flavor": "Frasier inspects the cypress beam Antonio asked about last week. Tell him it's fine or tell him it's not. Whichever sentence you choose writes the flag vol5 ch20 reads on the wreck day."
+	},
+	{
+		"id": "cameo_john_at_ember_and_ash",
+		"hand_override": "john_frank",
+		"difficulty": "hard",
+		"title": "JOHN AT EMBER & ASH",
+		"subtitle": "Cameo · VII·Chariot · 4:42 PM",
+		"flavor": "Antonio called at noon. John in the truck on the way to the warehouse. The host is the visitor here. Pick up the phone three times or let it ring three times. The wreck is at 7:48 regardless."
+	}
+]
 
 
 const FOOL_SCENARIOS := [
