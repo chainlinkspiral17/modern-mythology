@@ -219,38 +219,56 @@ def build_counter():
 
 
 def build_booths():
-    """Vinyl booths along the windows. Six booths total: four against the +X wall, two against the -X wall."""
+    """Vinyl booths along the windows. Six booths total: four against the +X wall, two against the -X wall.
+
+    Realistic diner proportions:
+        seat        · 0.55m deep · 0.42m tall (seat top at 0.42m above floor)
+        backrest    · 0.10m deep · 0.55m tall (top at 0.97m — about chest height seated)
+        table top   · 0.04m thick at z=0.74m (slightly below standing belt height)
+        2 booth     · 1.4m wide (room for two diners shoulder-to-shoulder)
+    """
+    def _booth(prefix: str, bx: float, by: float) -> None:
+        # ── seats (two parallel benches facing each other) ──
+        seat_top_z = 0.42
+        seat_z = seat_top_z / 2.0   # center of the seat slab
+        # south-side seat (facing north — diner sits facing the wall)
+        make_box(f"{prefix}_seat_S", (bx, by - 0.50, seat_z), (1.4, 0.55, 0.42), COL_VINYL_RED)
+        # north-side seat (facing south — diner sits facing the counter / aisle)
+        make_box(f"{prefix}_seat_N", (bx, by + 0.50, seat_z), (1.4, 0.55, 0.42), COL_VINYL_RED)
+
+        # ── backrests (thin tall slabs behind each seat) ──
+        back_h = 0.55
+        back_center_z = seat_top_z + back_h / 2.0   # backrest stacks on top of seat
+        make_box(f"{prefix}_back_S", (bx, by - 0.77, back_center_z), (1.4, 0.06, back_h), COL_VINYL_RED_DK)
+        make_box(f"{prefix}_back_N", (bx, by + 0.77, back_center_z), (1.4, 0.06, back_h), COL_VINYL_RED_DK)
+
+        # ── table ──
+        table_top_z = 0.74
+        make_box(f"{prefix}_table", (bx, by, table_top_z), (1.10, 0.70, 0.04), COL_FORMICA)
+        # narrow center post supporting the table
+        make_box(f"{prefix}_post", (bx, by, table_top_z / 2.0), (0.06, 0.06, table_top_z), COL_BRASS)
+
+        # ── hanging lamp above the table ──
+        # lamp shade hangs ~50cm above the table top
+        lamp_z = table_top_z + 0.50
+        make_box(f"{prefix}_lamp", (bx, by, lamp_z), (0.18, 0.18, 0.10), (0.90, 0.75, 0.50, 1.0))
+        # wire goes up from the lamp toward the ceiling
+        wire_top_z = D_H - 0.05
+        wire_center_z = (lamp_z + wire_top_z) / 2.0
+        wire_len = wire_top_z - lamp_z
+        make_box(f"{prefix}_lamp_wire", (bx, by, wire_center_z), (0.010, 0.010, wire_len), COL_PAYPHONE_DARK)
+
     # booths along east wall (parking-lot side) — booths 1, 2, 3, 4
-    booth_y_positions = [-4.5, -2.5, 1.5, 3.5]
-    for i, by in enumerate(booth_y_positions, start=1):
-        bx = D_W/2 - 1.2   # interior side of the wall
-        # booth bench facing the counter (south side of the booth-block)
-        make_box(f"Booth_{i}_bench_S", (bx, by - 0.45, 0.40), (1.6, 0.40, 0.80), COL_VINYL_RED)
-        # booth bench facing the wall (north side)
-        make_box(f"Booth_{i}_bench_N", (bx, by + 0.45, 0.40), (1.6, 0.40, 0.80), COL_VINYL_RED)
-        # booth back rests
-        make_box(f"Booth_{i}_back_S", (bx, by - 0.65, 1.10), (1.6, 0.10, 0.70), COL_VINYL_RED_DK)
-        make_box(f"Booth_{i}_back_N", (bx, by + 0.65, 1.10), (1.6, 0.10, 0.70), COL_VINYL_RED_DK)
-        # booth table
-        make_box(f"Booth_{i}_table", (bx, by, 0.78), (1.4, 0.7, 0.04), COL_FORMICA)
-        # booth table support (centered post)
-        make_box(f"Booth_{i}_post", (bx, by, 0.40), (0.08, 0.08, 0.78), COL_BRASS)
-        # booth lamp (small hanging warm lamp above the table)
-        make_box(f"Booth_{i}_lamp", (bx, by, 2.50), (0.20, 0.20, 0.15), (0.90, 0.75, 0.50, 1.0))
-        make_box(f"Booth_{i}_lamp_wire", (bx, by, 2.85), (0.012, 0.012, 0.50), COL_PAYPHONE_DARK)
+    booth_east_y = [-4.0, -1.5, 1.5, 4.0]
+    for i, by in enumerate(booth_east_y, start=1):
+        bx = D_W/2 - 1.4   # interior side of the east wall
+        _booth(f"Booth_{i}", bx, by)
 
     # booths along west wall (river side) — booth 5, 6
     booth_west_y = [-3.0, 2.5]
     for i, by in enumerate(booth_west_y, start=5):
-        bx = -D_W/2 + 1.2
-        make_box(f"Booth_{i}_bench_S", (bx, by - 0.45, 0.40), (1.6, 0.40, 0.80), COL_VINYL_RED)
-        make_box(f"Booth_{i}_bench_N", (bx, by + 0.45, 0.40), (1.6, 0.40, 0.80), COL_VINYL_RED)
-        make_box(f"Booth_{i}_back_S", (bx, by - 0.65, 1.10), (1.6, 0.10, 0.70), COL_VINYL_RED_DK)
-        make_box(f"Booth_{i}_back_N", (bx, by + 0.65, 1.10), (1.6, 0.10, 0.70), COL_VINYL_RED_DK)
-        make_box(f"Booth_{i}_table", (bx, by, 0.78), (1.4, 0.7, 0.04), COL_FORMICA)
-        make_box(f"Booth_{i}_post", (bx, by, 0.40), (0.08, 0.08, 0.78), COL_BRASS)
-        make_box(f"Booth_{i}_lamp", (bx, by, 2.50), (0.20, 0.20, 0.15), (0.90, 0.75, 0.50, 1.0))
-        make_box(f"Booth_{i}_lamp_wire", (bx, by, 2.85), (0.012, 0.012, 0.50), COL_PAYPHONE_DARK)
+        bx = -D_W/2 + 1.4
+        _booth(f"Booth_{i}", bx, by)
 
 
 def build_kitchen_alcove():
