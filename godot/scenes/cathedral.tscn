@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmpln_cathedral"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/cathedral/cathedral_interior.glb" id="1_interior"]
+[ext_resource type="PackedScene" path="res://assets/3d/props/workbench_props.glb" id="2_workbench"]
+[ext_resource type="PackedScene" path="res://assets/3d/agents/demon_figurines.glb" id="3_agents"]
+[ext_resource type="PackedScene" path="res://assets/3d/dioramas/regions.glb" id="4_dioramas"]
+[ext_resource type="PackedScene" path="res://assets/3d/atmosphere/atmosphere.glb" id="5_atmosphere"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="6_fpc"]
+[ext_resource type="Shader" path="res://assets/shaders/gouraud_lambert.gdshader" id="7_shader"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
+shader = ExtResource("7_shader")
+shader_parameter/ambient_floor = 0.05
+shader_parameter/saturation = 1.0
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 1
+background_color = Color(0.04, 0.03, 0.02, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.18, 0.14, 0.10, 1)
+ambient_light_energy = 0.4
+fog_enabled = false
+
+[node name="Cathedral" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="Interior" parent="." instance=ExtResource("1_interior")]
+
+[node name="WorkbenchProps" parent="." instance=ExtResource("2_workbench")]
+
+[node name="DemonFigurines" parent="." instance=ExtResource("3_agents")]
+
+[node name="Dioramas" parent="." instance=ExtResource("4_dioramas")]
+
+[node name="Atmosphere" parent="." instance=ExtResource("5_atmosphere")]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 9.5, 0.5, -7.0)
+script = ExtResource("6_fpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 65.0
+near = 0.05
+far = 100.0
