@@ -1,0 +1,12 @@
+{
+  "scope": "hierophant",
+  "notes": "Paul's six-face die. The faces are how the office reads the room. PRONOUNCE = the carefully crafted sentence lands. PAUSE = the seven-tenths-of-a-second pause that does the work. COUNT = the entry in the private ledger. NOD = the audience gives the thing back. TWIST = the cuff has, today, gotten short. WILD = anything.",
+  "faces": [
+    { "id": "pronounce", "label": "PRONOUNCE", "weight": 2, "kind": "success" },
+    { "id": "pause",     "label": "PAUSE",     "weight": 1, "kind": "partial" },
+    { "id": "count",     "label": "COUNT",     "weight": 1, "kind": "partial" },
+    { "id": "nod",       "label": "NOD",       "weight": 1, "kind": "success" },
+    { "id": "twist",     "label": "TWIST",     "weight": 1, "kind": "fail" },
+    { "id": "wild",      "label": "WILD",      "weight": 0, "kind": "wild" }
+  ]
+}

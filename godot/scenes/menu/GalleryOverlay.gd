@@ -545,22 +545,22 @@ const LOVERS_SCENARIOS := [
 
 const HIEROPHANT_SCENARIOS := [
 	{
-		"id": "green_phosphor",
-		"title": "GREEN PHOSPHOR",
-		"subtitle": "Easy · 8:42 PM · Tuesday Night",
-		"flavor": "The regular caller is dialed in. The kid with questions is walking up the alley. The modems are at standby. The kettle is thinking about boiling."
+		"id": "st_judes_morning",
+		"title": "ST JUDE'S MORNING",
+		"subtitle": "Easy · 10:42 AM · The Service Has Ended",
+		"flavor": "After the service. The heat shimmering off the asphalt like angry ghosts. The Daigle child, seven, in a stiff Sunday dress, the hand of her father in her hand when she takes it. The long black car at the curb. Today's circuit begins."
 	},
 	{
-		"id": "the_long_signal",
-		"title": "THE LONG SIGNAL",
-		"subtitle": "Medium · 11:14 PM · Late Wednesday",
-		"flavor": "Anya is at the floppy wall. The ham band is open. The regular caller has been idle for two minutes. Sysop has THE LONG SIGNAL in his hand because tonight is the night to use it."
+		"id": "sunday_brunch",
+		"title": "SUNDAY BRUNCH",
+		"subtitle": "Medium · 11:47 AM · D'Ambrosio's Table 17",
+		"flavor": "Gloria refills water two booths down without looking at yours. Hector at the line. The mimosas too sweet. The council men have been at the booth since 11:47. You arrive at 12:02. You like to be the last one to the table."
 	},
 	{
-		"id": "broadcast_night",
-		"title": "BROADCAST NIGHT",
-		"subtitle": "Hard · 3:14 AM · Off-the-Books",
-		"flavor": "3:14 AM. The BBS is between conversations. The ham voice is on the band. The lurker has logged in at this hour for the third night in a row."
+		"id": "the_bandstand_calls",
+		"title": "THE BANDSTAND CALLS",
+		"subtitle": "Hard · 3:18 PM · The Second Phone Call of the Hour",
+		"flavor": "Three PM. The brunch is over. You are in the back of the long black car. The second phone call of the hour is the call to Antonio in New Orleans. The bandstand is across town. The crow has been watching."
 	}
 ]
 
@@ -846,10 +846,10 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		var vem := _spawn_visualizer(EMPEROR_VISUALIZER_SCRIPT)
 		_add_play_button_overlay(vem, "emperor", "dantes_office", "dante")
 		return
-	# Hierophant play button removed in canon-alignment surgery — Q. Paul
-	# rebuild pending. Visualizer still renders the arcana card.
+	# Hierophant rebuilt around Quentin Paul's Sunday circuit (vol5 ch5 canon).
 	if short_path == "hierophant_arcana":
-		_spawn_visualizer(HIEROPHANT_VISUALIZER_SCRIPT)
+		var vh := _spawn_visualizer(HIEROPHANT_VISUALIZER_SCRIPT)
+		_add_play_button_overlay(vh, "hierophant", "the_hierophant_circuit", "quentin_paul")
 		return
 	# Lovers rebuilt around the Roberts on cursed ground (vol5 ch6 Lovers canon).
 	if short_path == "lovers_arcana":

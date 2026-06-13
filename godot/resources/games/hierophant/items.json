@@ -1,0 +1,94 @@
+{
+  "scope": "hierophant",
+  "notes": "Items on Paul's Sunday. Most are objects on his person or in the car or on the booth's table — the ledger of cataloged sins, the phone with the calls, the watch he uses to time his pauses, the carefully crafted sentence written on the back of a steakhouse receipt. The DAMBROSIO_DEAN_CARD is at the curb (where Sammy gave it to him through Sammy's friend at the hardware store — wait, the card is Dean's, not Paul's; Paul doesn't carry it in canon. Pull this back.)",
+  "piles": {
+    "booth_table_17": {
+      "label": "BOOTH · TABLE 17",
+      "at_pos": "table_17",
+      "items": ["the_steakhouse_receipt", "the_pause_watch", "the_black_coffee"]
+    },
+    "the_car_pocket": {
+      "label": "THE CAR · DOOR POCKET",
+      "at_pos": "the_black_car",
+      "items": ["the_ledger", "pauls_phone", "the_envelope_from_saturday"]
+    },
+    "church_step_left": {
+      "label": "CHURCH STEPS",
+      "at_pos": "church_steps",
+      "items": ["the_morning_program", "the_handshake_in_progress"]
+    },
+    "bandstand_corner": {
+      "label": "BANDSTAND CORNER",
+      "at_pos": "park_bandstand",
+      "items": ["the_park_pebbles", "the_view"]
+    }
+  },
+  "items": {
+    "the_steakhouse_receipt": {
+      "title": "Receipt · Steakhouse · Tuesday",
+      "category": "found",
+      "flavor": "On the back, in your own handwriting, the carefully crafted sentence for the Brunch Court today. Three drafts. The final one is circled.",
+      "use_at_pos": "table_17",
+      "use_effect": { "kind": "gain_doctrine", "amount": 2 }
+    },
+    "the_pause_watch": {
+      "title": "Wristwatch · 1962 mechanical",
+      "category": "found",
+      "flavor": "The watch your father gave you when you turned twenty. You use it to time the pause before the verb. The pause is seven-tenths of a second when you are at your best; one and one-half when you are not.",
+      "use_effect": { "kind": "lose_doubt", "amount": 1 }
+    },
+    "the_black_coffee": {
+      "title": "Black Coffee · refilled",
+      "category": "delivery",
+      "flavor": "Gloria refills it. She has refilled it for you on Sunday mornings for eleven years. It is, by some private accounting of hers, the act that buys her the right to never look at Table 17 when you are speaking from it.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_ledger": {
+      "title": "The Private Ledger",
+      "category": "found",
+      "flavor": "Black moleskine. Small entries in cramped script. Names with single-letter codes beside them. The Daigle child has been a single letter since this morning. The letter is not, on balance, a kind one.",
+      "use_at_pos": "the_black_car",
+      "use_effect": { "kind": "gain_doctrine", "amount": 1 }
+    },
+    "pauls_phone": {
+      "title": "Phone · the second call of the hour",
+      "category": "found",
+      "flavor": "Your phone. The recent calls list is the recent calls list. Antonio is on it twice this week. The phrase 'bless his memory' is in your draft messages folder.",
+      "use_at_pos": "the_black_car",
+      "use_effect": { "kind": "advance_visitor_schedule", "amount": 1 }
+    },
+    "the_envelope_from_saturday": {
+      "title": "Envelope · from Saturday",
+      "category": "found",
+      "flavor": "The driver picked it up. Plain stock. Nothing on the front. Three thousand dollars. You do not, this Sunday, ask what for.",
+      "use_at_pos": "the_black_car",
+      "use_effect": { "kind": "spend_doctrine", "amount": 1 }
+    },
+    "the_morning_program": {
+      "title": "Program · St Jude's · 10:30 AM service",
+      "category": "found",
+      "flavor": "The bulletin. The hymn numbers. The names in the prayers of the people. You read them. You make small entries.",
+      "use_at_pos": "church_steps",
+      "use_effect": { "kind": "tick_signal", "amount": 1 }
+    },
+    "the_handshake_in_progress": {
+      "title": "Handshake In Progress",
+      "category": "delivery",
+      "flavor": "The clap on the right shoulder. A useful gesture. The other man does not flinch; he knew it was coming.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_park_pebbles": {
+      "title": "Pebbles · from the bandstand walk",
+      "category": "found",
+      "flavor": "Three pebbles you put in your pocket when you were nine outside this same bandstand. You have not, in fifty years, thrown them out. You do not, today, look at them.",
+      "use_effect": { "kind": "lose_doubt", "amount": 1 }
+    },
+    "the_view": {
+      "title": "The View From the Bandstand",
+      "category": "found",
+      "flavor": "Across the park. The empty park surveyed like barren lands. The crow on the railing. The old armory at the far edge.",
+      "use_at_pos": "park_bandstand",
+      "use_effect": { "kind": "tick_signal", "amount": 1 }
+    }
+  }
+}

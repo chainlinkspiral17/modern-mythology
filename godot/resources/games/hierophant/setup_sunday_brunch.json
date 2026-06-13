@@ -1,0 +1,78 @@
+{
+  "id": "sunday_brunch",
+  "arcana": "v_hierophant",
+  "location": "the_hierophant_circuit",
+  "hand": "quentin_paul",
+  "title": "SUNDAY BRUNCH",
+  "subtitle": "The Circuit · 11:47 AM · D'Ambrosio's · Table 17",
+  "difficulty": "medium",
+  "epigraph_upright": "The brunch hour at D'Ambrosio's. Gloria refills water two booths down without looking at yours. Hector at the line. The mimosas too sweet. The council men have been at the booth since 11:47. You arrive at 12:02. You like to be the last one to the table.",
+  "epigraph_reversed": "The carefully crafted sentence does not land. The business type across from you does not nod. Gloria looks up from the next booth and holds your eye three seconds longer than she has, in eleven years, ever held it.",
+  "scene_description": "11:47 AM. The brunch crowd has settled. The Brunch Court is at Table 17 from turn 1. Gloria is on the floor. Hector is in the kitchen. SIGNAL at 1. Doctrine at 1. The carefully crafted sentence is buyable from Table 17 via BLESS HIS MEMORY. The driver is in the car at the curb. The riverfront and back corridor are visible thresholds — both are escape routes if the booth goes bad.",
+  "direction_hint": "Hold court. Deliver the sentence. Get the council man to nod before you finish. Connect with the court, with Gloria, with Hector. SIGNAL to 5. Leap.",
+  "opening_log_lines": [
+    "11:47 AM. The Brunch Court is at Table 17 already.",
+    "Gloria at the water pitcher with her back to you.",
+    "Hector at the line through the swinging door.",
+    "The long black car at the curb. The driver does not, today, look back."
+  ],
+  "starting_state": {
+    "player_pos": "table_17",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "doctrine": 1,
+    "starting_signal": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "hold_court", "pronounce", "count_sins", "smooth_the_cuff", "the_office_holds"]
+  },
+  "visitors_present_at_start": ["the_brunch_court", "gloria_reyes", "hector_the_cook", "the_driver"],
+  "visitor_schedule": [],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_signal_at_least": 5,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the booth is the booth.",                                      "tick_per_turn": 1, "effects": [] },
+    { "level": 4, "label": "the mimosa at table 9 got refilled.",                           "tick_per_turn": 1, "effects": [] },
+    { "level": 7, "label": "the laughter at table 12 did not reset.",                       "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the room stopped listening.",                                  "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "paul at the booth. black coffee. the cuff is straight.",        "effects": [] },
+    { "level": 3, "label": "gloria did not, on the second pass, give the half-step.",       "effects": [] },
+    { "level": 5, "label": "the tic near the eye returned.",                                 "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the brittle thing showed.",                                     "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "church_interior",  "label": "CHURCH INTERIOR",  "ending_lore_token": "leap_back_into_the_office", "visible_from_start": false },
+    { "id": "back_corridor",    "label": "BACK CORRIDOR",    "ending_lore_token": "leap_through_the_kitchen",  "visible_from_start": true },
+    { "id": "riverfront",       "label": "RIVERFRONT",       "ending_lore_token": "leap_to_the_muddy_divide",  "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Medium-mode Hierophant. The brunch hour. The Brunch Court is the hard-mood connection candidate (preoccupied). Gloria's mood is also preoccupied; Hector is lonely. THE OFFICE HOLDS ability in hand from start. Win is 3 connections + 1 hard mood + SIGNAL to 5 + leap. Two thresholds visible (BACK CORRIDOR through the kitchen disgrace; RIVERFRONT out to the muddy divide); CHURCH INTERIOR not revealed unless you retreat.",
+  "ambient_pool": [
+    "the mimosas are too sweet · the eggs florentine break if you look at them wrong.",
+    "from the booth's window, the muddy divide between texas and louisiana.",
+    "hector through the swinging door. he does not, this time, cross himself.",
+    "gloria past the booth without slowing."
+  ],
+  "ambient_every_n": 2
+}

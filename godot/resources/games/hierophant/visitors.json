@@ -1,126 +1,126 @@
 {
-  "scope": "_flavor_pool",
-  "notes": "DEPRECATED — preserved as visitor / flavor pool only. The 'Sysop's BBS room' setting and 'Sysop' as a Hierophant character were Claude-invented; canon has the Hierophant as Quentin Paul ('Q. Paul') — a power-broker/patriarch who holds court at D'Ambrosio's Sunday brunch (vol5 ch5), with multi-POV from Maya Daigle (age 7), Gloria Reyes (waitress), Antonio on the phone, and John Frank in a park. Antonio is the actual sysop of ember.ash.rest.bbs as a character handle, but the BBS room is not the Hierophant's board. These visitor entries (TOWER as 9:04 PM regular, the Lurker, the Kid with Questions, the Ham Voice, Anya as a recording, Sysop off-shift) remain as a writing reservoir — TOWER could be a BBS character in Antonio's Chariot board, the Lurker's posting paralysis fits anywhere, etc. NOT loaded as an active arcana visitor roster.",
+  "scope": "hierophant",
+  "notes": "Paul's cast on a Sunday, drawn from vol5 ch5 Hierophant canon. Gloria Reyes (waitress at D'Ambrosio's Sunday brunch) and Hector (cook) are present at D'Ambrosio's. The council hopefuls and business types are aggregated as 'the_brunch_court'. Jimmy Daigle and his daughter Maya (age 7) are present at the church steps in the morning. Antonio reaches by phone. John Frank is a watcher in the park — present but never connected with (he is, in canon, deliberately writing AROUND Paul). The bandstand crow is the watching-presence; minor. The previous hierophant/visitors.json (TOWER, the Lurker, Anya recording, etc.) has been moved to the flavor pool; see git history.",
   "visitors": [
     {
-      "id": "the_regular_caller",
-      "name": "The Regular Caller",
-      "scenarios": ["green_phosphor", "the_long_signal", "broadcast_night"],
-      "arrival": { "kind": "on_board_at_start", "pos": "crt_terminal" },
-      "lore_token": "regular_caller_logged_in",
-      "lore_text": "Dials in every night at 9:04 PM. Sysop knows their handle — TOWER — doesn't know their name. They tend to write the longer posts; their average reply is eight hundred words and they put the joke at the end. They have been on the board for six years. They have only missed three nights and on one of those nights they called the alley payphone to say so.",
-      "accent": "#a8e89c",
-      "mood": "talkative",
+      "id": "gloria_reyes",
+      "name": "Gloria Reyes (waitress)",
+      "scenarios": ["sunday_brunch", "the_bandstand_calls"],
+      "arrival": { "kind": "on_board_at_start", "pos": "dambrosios_dining_room" },
+      "lore_token": "gloria_did_not_look_at_table_17",
+      "lore_text": "Gloria Reyes. Working Sunday brunch at D'Ambrosio's since 1996. Refills water. Slaps down lukewarm bread. Has not, in eleven years, looked at Table 17 when Paul is speaking from it. Remembers him from before the sinkhole, when he was just another ambitious climber with sweat stains under his arms and hands that lingered a second too long when he handed back the check presenter.",
+      "accent": "#c87633",
+      "mood": "preoccupied",
       "patience": 8,
       "steps": {
-        "greet":   "Their handle shows green on the terminal at 9:04 PM, the way it has for six years. The cursor blinks. They are already typing.",
-        "listen":  "They post a long thread — eight hundred words on something somebody said in the thread yesterday. You read it as it comes in, line by line, on a 2400-baud connection. The pacing is good. They have rewritten the second paragraph at least twice.",
-        "deliver": "You reply. You stamp the post into the keep-archive — floppy KEEP-1996-Q4, slot 47, in your hand. The label has TOWER · OCT 14 · KEEP on it before you've finished typing the reply.",
-        "sit_with": "You sit at the CRT and answer them in the long form they came for. Twenty minutes of typing. The reply is six hundred words and one of the lines makes them, you can tell, lean back in their chair, wherever they are. They post a single word reply: yes."
+        "greet":   "She walks past your booth with the water pitcher. She does not, today, slow down. You acknowledge her with the small half-tilt of the head you use. She does not return it.",
+        "listen":  "You catch her eye on the way back from the kitchen. She holds the eye for exactly the length of time it takes to walk three tables. She does not, today, look down first. You do.",
+        "deliver": "You order black coffee, no food. You order it from her, not from the back of the room. She nods. She refills the cup before it is half-empty, which she has done for you for years.",
+        "sit_with": "She brings the check. She sets it down with the small careful gesture of a person who has, this morning, decided not to pretend to defer to you anymore. You do not, this Sunday, leave the tip you would normally leave."
       }
     },
     {
-      "id": "the_walk_in",
-      "name": "The Walk-In",
-      "scenarios": ["green_phosphor"],
-      "arrival": { "kind": "scheduled", "turn": 1, "from": "alley_door", "to": "couch_corner" },
-      "lore_token": "walk_in_came_through_the_alley_door",
-      "lore_text": "Came through the alley door because they didn't want to type it. They wanted to say it. They have been a handle on the BBS for two years. They have never logged on tonight; they walked down to the alley after work and they came in. They have a face Sysop has been imagining for two years; the face is different than he imagined and the difference is the right kind.",
-      "accent": "#d8a060",
-      "mood": "preoccupied",
-      "patience": 6,
-      "steps": {
-        "greet":   "They knock once on the alley door. Then they let themselves in. They stand at the threshold and they look at the modem rack the way a person looks at a sleeping dog they have heard about.",
-        "listen":  "They sit on the couch corner and tell you what they would have posted. The thing they would have posted is too long to post and not really meant for the board. It is meant for one person. You are that person tonight by virtue of being here.",
-        "deliver": "You bring them coffee with hot sauce because that is what is in the kitchen. They drink half. They put the mug down on the floor. They thank you with the kind of small thank you that is at the front of a longer sentence they are about to say.",
-        "sit_with": "You sit on the couch with them. The modem rack hums. The printer at the other end of the room rolls out a page from someone else's post. Neither of you reads it. They tell you the long sentence."
-      }
-    },
-    {
-      "id": "the_lurker",
-      "name": "The Lurker",
-      "scenarios": ["green_phosphor", "broadcast_night"],
-      "arrival": { "kind": "scheduled", "turn": 2, "from": "modem_window", "to": "crt_terminal" },
-      "lore_token": "lurker_finally_posted",
-      "lore_text": "Has read every thread on the BBS for two years and four months. Has never posted. Their handle is in the logs from their first login: ECHO_GREENROOM. They have been about to post on a hundred and seven nights and have hit backspace and closed the window each time. Tonight is night one hundred and eight.",
+      "id": "hector_the_cook",
+      "name": "Hector (cook)",
+      "scenarios": ["sunday_brunch"],
+      "arrival": { "kind": "on_board_at_start", "pos": "dambrosios_kitchen" },
+      "lore_token": "hector_did_not_cross_himself",
+      "lore_text": "Hector. Cook at D'Ambrosio's for six years. Crosses himself when Paul comes up at the pass. The only tic he has. Gloria stopped finding it funny in year two and started finding it useful in year four.",
       "accent": "#9b5fd3",
-      "mood": "intense",
-      "patience": 5,
-      "steps": {
-        "greet":   "Their handle shows up in the active-user list — ECHO_GREENROOM. The handle has logged in two thousand and four times. They have posted zero times.",
-        "listen":  "They post a single sentence. The sentence has weight — twelve words long, written and rewritten between 8:47 PM and 9:51 PM. You can see in the timestamps how long the sentence took.",
-        "deliver": "You reply gently. You do not reply at length. The lurker does not want length right now. You write three sentences. The third sentence is: I see you.",
-        "sit_with": "You sit at the CRT. They post a second sentence. It lands. They log off two minutes later without a goodbye. They have logged off without a goodbye every other night too; tonight the silence after means something different."
-      }
-    },
-    {
-      "id": "the_kid_with_questions",
-      "name": "The Kid with Questions",
-      "scenarios": ["green_phosphor"],
-      "arrival": { "kind": "scheduled", "turn": 3, "from": "alley_door", "to": "couch_corner" },
-      "lore_token": "kid_got_their_questions_answered",
-      "lore_text": "Sixteen. Has had a list of questions for Sysop in a notebook in their bag, written out in the order they want to ask them. Has been on the board for nine months under the handle small_signal. Showed up to ask the questions in person because the BBS started feeling impersonal and the kid is the kind of kid who notices that. Their mother does not know they are at a basement BBS in the alley behind a music store.",
-      "accent": "#7cffb0",
-      "mood": "preoccupied",
-      "patience": 6,
-      "steps": {
-        "greet":   "They are visibly trying not to seem nervous. The notebook is in their lap. The cover has a sticker on it from a band they listened to last summer and don't listen to anymore.",
-        "listen":  "They ask. You answer. You answer in small pieces. They write down the answers, not verbatim — they write down the part of each answer that helped. You watch them choose what helped.",
-        "deliver": "You hand them a printed-out page from the archive. The page is from a thread two years ago that answered a similar question, posted by TOWER, in eight hundred words with the joke at the end. The kid laughs at the joke. It is a good sign.",
-        "sit_with": "You sit with them at the printer table. They read the page. They thank you. They ask if it is OK to come back. You say yes. They walk back up the stairs and out the music store's front door, past the records, and the cashier knows their face now."
-      }
-    },
-    {
-      "id": "the_ham_voice",
-      "name": "The Ham Radio Voice",
-      "scenarios": ["broadcast_night", "the_long_signal"],
-      "arrival": { "kind": "scheduled", "turn": 1, "from": "ham_radio", "to": "ham_radio" },
-      "lore_token": "ham_voice_came_through",
-      "lore_text": "Came in on 14.301 MHz. A voice you only hear once a season. Their callsign is the one Sysop used in '96-'97 before he retired it. Sysop has not used that callsign in seven years and has never asked who is using it now. The voice does not know that the previous holder of the callsign is the one they're talking to.",
-      "accent": "#c87633",
       "mood": "lonely",
+      "patience": 4,
+      "steps": {
+        "greet":   "Through the swinging door from the back corridor. He is at the line. He sees you. He does not, today, cross himself. That is, in his vocabulary, the more serious of the two responses.",
+        "listen":  "He gives you the look he gives you when he is registering that the chef has gone home and the line cook has been holding it together for ninety minutes. The look is between you and him.",
+        "deliver": "You take a glass of water from the pass. You drink half. You put the glass down. You did not, today, ask for the water. He provided it without speaking.",
+        "sit_with": "You stand at the kitchen line for half a minute. The heat is the heat. He does not stop working. He does not, this time, cross himself when you leave the kitchen. The not-crossing is its own kind of message."
+      }
+    },
+    {
+      "id": "the_brunch_court",
+      "name": "The Brunch Court (council, business)",
+      "scenarios": ["sunday_brunch", "the_bandstand_calls"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "dambrosios_curb", "to": "table_17" },
+      "lore_token": "the_court_held",
+      "lore_text": "Three city council hopefuls and two nervous-looking business types. Arranged the way they arrange themselves: the council men on the bench side, the business types on the chair side, the empty chair on the chair side directly across from Paul. Captive audience. None of them eats much.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
       "patience": 7,
       "steps": {
-        "greet":   "Their callsign clears the band. You acknowledge with your own. There is a half-second pause on their end where they hear the callsign and recognize it from the registry and wonder if you're the original.",
-        "listen":  "They tell you the weather where they are. Pacific Northwest. The weather is the cover for the call. The call is for company.",
-        "deliver": "You give them the small archived signal-report they asked for last season — 14.230 at 02:14 UTC, the propagation you were tracking. You read it off paper. They thank you in the way ham operators thank each other, which is by reading back the callsigns.",
-        "sit_with": "You sit at the ham radio with them. They sign off slowly. They use a phonetic version of their callsign on the sign-off — the slow phonetic, the one you use when you don't want the contact to end. You don't either."
+        "greet":   "They are at the booth. They have been at the booth since 11:47. You arrive at 12:02. You like to be the last one to the table. Eight seconds of standing is plenty.",
+        "listen":  "The council man on the left has been working up to his question. You let him get to it. You let the question take its full thirty-one seconds. You do not, this time, interrupt.",
+        "deliver": "You deliver the answer. The carefully crafted sentence. The pause before the verb. The council man on the left nods before you finish. The business type across from him does not nod. The business type across from him is, you have noticed, the one to keep an eye on.",
+        "sit_with": "You sit for twenty minutes without speaking. They eat. They drink. They wait. They cannot, by the rules of the room, leave the booth before you do. You stand at quarter to two. They stand simultaneously. The bench scrapes. You leave first."
       }
     },
     {
-      "id": "anya_recording",
-      "name": "Anya · The Recording",
-      "scenarios": ["the_long_signal"],
-      "arrival": { "kind": "scheduled", "turn": 4, "from": "stairs_up", "to": "floppy_wall" },
-      "lore_token": "anya_came_for_the_archive",
-      "lore_text": "Anya — the recording — has come down for a floppy from the wall. She knows which one. She has known for a long time. The floppy is in slot 1187 (PRIVATE / ANYA / 1997). Sysop labeled it. He does not remember the night he labeled it but he knows the floppy is there. Anya is not the woman from '97; she is the recording the woman left, given a name and a body by the BBS's accumulated attention. She is patient and she is the kind of patient that can wait nine years for the right night.",
-      "accent": "#9b5fd3",
+      "id": "maya_age_7",
+      "name": "Maya Daigle (age 7)",
+      "scenarios": ["st_judes_morning"],
+      "arrival": { "kind": "on_board_at_start", "pos": "church_steps" },
+      "lore_token": "maya_cataloged",
+      "lore_text": "Maya Daigle. Age seven. In a new, stiff Sunday dress with a tag that bites her between the shoulder blades. The daughter of Jimmy Daigle. The girl whose father was talking to the other men in his strings-cut tired voice. She does not know, at seven, the word cataloged. She will learn it later. The look Paul gives her, on the way to the long black car, is the look she will recognize later.",
+      "accent": "#a8e89c",
+      "mood": "lonely",
+      "patience": 3,
+      "steps": {
+        "greet":   "Your gaze sweeps the crowd leaving the service. It pauses on the people worth pausing on. It pauses on the child of seven who is looking back.",
+        "listen":  "She does not, at seven, look away when you look at her. She holds the look the way a child holds a look when they are choosing not to break it. The hold is, in your private accounting, an entry.",
+        "deliver": "You make the small entry in the private ledger. You do not say anything to her. You walk past. The cataloging is its own message; the message is, for now, only for you.",
+        "sit_with": "She finishes her lemonade-flavored water. She drops the cup in the trash. She takes her father's hand when he comes down the steps. She does not, at seven, mention any of it. She will, in ten years and three weeks, recognize the morning."
+      }
+    },
+    {
+      "id": "jimmy_at_the_steps",
+      "name": "Jimmy Daigle (at the steps)",
+      "scenarios": ["st_judes_morning"],
+      "arrival": { "kind": "on_board_at_start", "pos": "church_steps" },
+      "lore_token": "jimmy_was_at_the_steps",
+      "lore_text": "Jimmy Daigle at the church steps with the other men. Strings-cut tired. Talking in the low rumble he uses with grown-ups, not the bright voice he uses with Maya. Paul has known Jimmy since '08. Jimmy has known Paul since '08. They both know the other knows.",
+      "accent": "#a99070",
       "mood": "preoccupied",
       "patience": 6,
       "steps": {
-        "greet":   "She doesn't speak. She gestures at the wall. She points to row eleven, slot eighty-seven.",
-        "listen":  "She points to a floppy. The floppy is labeled in your hand — PRIVATE / ANYA / 1997. The handwriting is yours. The label has a small star drawn next to ANYA.",
-        "deliver": "You hand it to her. She holds it without inserting it. She turns it once. She holds it the way someone holds a thing they have been about to hold for a long time and have decided to keep holding instead of using.",
-        "sit_with": "You sit with her at the floppy wall. She still holds it. She doesn't put it down. She doesn't put it back. She doesn't take it home. She stands holding it for as long as you sit. The BBS's modem rack hums. The floppy wall is one floppy down from itself."
+        "greet":   "You walk past the cluster of men. Jimmy is one of them. You clap one of the other men on the shoulder. You do not, this Sunday, clap Jimmy. He registers the not-clap.",
+        "listen":  "Jimmy says the thing he says when you walk past: morning, Quentin. The morning is the morning. You return it. Morning, Daigle. Neither of you uses the first name the other one uses with family.",
+        "deliver": "You stop. You turn back. You say: how's the girl. Jimmy says: she's fine. You say: good. The exchange has, in three sentences, accomplished what it accomplished. Jimmy will not, today, sleep well.",
+        "sit_with": "You stand with him for a count of nine in silence. Jimmy does not, in those nine counts, look at his daughter. He knows you would see him looking. He has not, in nine years, looked at her in front of you."
       }
     },
     {
-      "id": "sysop_as_visitor",
-      "name": "Sysop (off-shift)",
-      "as_hand_id": "sysop",
-      "swap_target_for_hand": "sysop_as_visitor",
-      "scenarios": ["green_phosphor", "the_long_signal", "broadcast_night"],
-      "arrival": { "kind": "scheduled", "turn": 5, "from": "stairs_up", "to": "back_kitchen" },
-      "lore_token": "sysop_came_down_off_shift",
-      "lore_text": "When the player is not Sysop, he comes down off-shift to make coffee — the instant kind, with two shakes of the hot sauce that's been in the cupboard since '11. When the player IS Sysop, this entry swaps out for whoever else is keeping the room company tonight.",
-      "accent": "#a8e89c",
-      "mood": "preoccupied",
-      "patience": 8,
+      "id": "antonio_phone_for_paul",
+      "name": "Antonio D'Ambrosio (phone)",
+      "scenarios": ["the_bandstand_calls"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "phone_call", "to": "the_black_car" },
+      "lore_token": "paul_called_antonio",
+      "lore_text": "Antonio D'Ambrosio. The younger son. In New Orleans, in the cramped office above Ember & Ash. The wildcard. The artistic temperament. The potential weak link Paul needs either to control or to neutralize, and Paul has not, until this call, been entirely sure which. You call from the back of the long black car. He picks up on the third ring.",
+      "accent": "#7a1e26",
+      "mood": "intense",
+      "patience": 5,
+      "arrives_as": "phone_voice",
       "steps": {
-        "greet":   "He waves at you from the kitchen alcove. He is in socks. He has been in socks down here for nine years.",
-        "listen":  "He tells you what's been on the board today. Three new handles. Two threads worth keeping. One that he will quietly delete in the morning because it was somebody venting at somebody else who isn't on the board to defend themselves. He is gentle about the deletion.",
-        "deliver": "You bring him a coffee. He thanks you. He drinks it with the hot sauce. He has done this since '04 and he says it tastes like the BBS.",
-        "sit_with": "You sit on the couch corner together. The room is itself. The modem rack hums. The cicadas in the alley shift gear and you can hear them through the door. He is not going back to his own apartment tonight; he sleeps on the couch sometimes. That is OK with the BBS."
+        "greet":   "Antonio picks up on the third ring. You say: Antonio. He says: Quentin. The greeting is the greeting.",
+        "listen":  "You speak. He interrupts. He says: no, Quentin, listen to me for one goddamn second. You let him. The letting is its own small move; the letting indicates that you have, today, the time.",
+        "deliver": "You deliver the sentence you wrote in the back of the car this morning. You reference his father in the past tense. You mention his brother in the present. The phrase 'bless his memory' goes by quickly, as if you had not meant to use it. You did mean to use it.",
+        "sit_with": "You stay on the line for the small extra beat after the substance of the call. He says: I gotta go. You say: of course. Just remember who your friends are. He hangs up before he hears the last word. He would not, today, have wanted to hear the last word."
+      }
+    },
+    {
+      "id": "the_driver",
+      "name": "The Driver (of the long black car)",
+      "scenarios": ["st_judes_morning", "sunday_brunch", "the_bandstand_calls"],
+      "arrival": { "kind": "on_board_at_start", "pos": "the_black_car" },
+      "lore_token": "the_driver_did_not_look_back",
+      "lore_text": "The driver of the long black car. He has been the driver for nineteen years. He does not look back. The not-looking-back is the position. You do not know his first name. You know his service. The arrangement has not, in nineteen years, required first names.",
+      "accent": "#3a3a3a",
+      "mood": "preoccupied",
+      "patience": 9,
+      "helper": true,
+      "steps": {
+        "greet":   "He is at the wheel. The door is closed. The engine is, this Sunday, off. You approach. He looks up briefly in the rearview. He does not, this time, get out.",
+        "listen":  "You give the destination. He acknowledges with a one-syllable answer. He does not, today, ask for clarification. He never has.",
+        "deliver": "He hands you, through the partition, the small envelope you asked him to pick up on Saturday. He does not, today, mention the trouble he had picking it up.",
+        "sit_with": "You sit in the back for a long stretch of moving. He drives. The radio is off. He has, in nineteen years, never turned the radio on for you. He drives the way the long black car drives when it is making the day a day in which the office held."
       }
     }
   ]

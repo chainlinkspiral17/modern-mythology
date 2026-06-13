@@ -1,0 +1,45 @@
+{
+  "scope": "hierophant",
+  "notes": "Hierophant finale cards. Per the canonical Tarot Gauntlet doc, Hierophant reversed is doctrine breaking under the celebrant — rigidity becoming tyranny becoming visible. Paul's losses are the days the office shows through to the man inside it. The fear of him stops working because the brittle thing has, today, become visible. The empire continues; the office continues; but the man holding it has lost one of the small invisible moves that kept him invisible to himself.",
+  "finales": [
+    {
+      "id": "the_brittle_thing_showed",
+      "title": "THE BRITTLE THING SHOWED",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "It happened at Table 17 at 1:42 PM. The council man you had been working on for three weeks said the thing he had not, until that moment, been brave enough to say. You did not have the carefully crafted sentence ready. You had a sentence; it was not crafted. The room registered the difference. Gloria registered it as she passed with the next basket of lukewarm bread. Hector registered it from the kitchen. The crow on the bandstand was not in the room but the crow on the bandstand, somehow, also registered it. The council man did not, today, fold. Paul stood up, smoothed his cuff, said the polite-thing closing sentence, and walked to the long black car. The empire continued. The fear, today, would have to be rebuilt. He had been afraid this day was coming for thirty years.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
+    },
+    {
+      "id": "the_room_stopped_listening",
+      "title": "THE ROOM STOPPED LISTENING",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "Sometime around two PM the dining room shifted. Three tables ahead of you started a separate conversation, loud enough to register, that did not include you. The mimosas at table 9 got refilled; the laughter at table 12 didn't reset. The waitress walked past Table 17 with a basket of bread and did not, this time, slow down. Paul finished the sentence he was on. The man across from him nodded politely. The man across from him would not be at this booth next Sunday. Paul did not, in the back of the long black car twenty minutes later, identify the moment as the moment. He would identify it later. He would identify it weeks later.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
+    },
+    {
+      "id": "the_count_of_sins_was_wrong",
+      "title": "THE COUNT OF SINS WAS WRONG",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "The council man you had counted as in is, you discover at 2:18 PM through a phone call from a number you have, until today, not been called by, no longer in. The business type you had counted as nervous-and-therefore-controllable was, it turns out, nervous-because-he-had-already-decided. The waitress you had counted as background was, it turns out, a witness with a longer memory than you had budgeted for. Three corrections in ninety minutes. The fear of you is, after today, a renegotiable currency. You did not know this morning. You know now.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
+    },
+    {
+      "id": "the_sunday_ended",
+      "title": "THE SUNDAY ENDED",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "Five PM. The brunch crowd long gone. The long black car has, by now, been the long black car for nine hours. The council men have gone home with their wives. The business types have gone home with their concerns. The bandstand crow has, at some point you did not catch, flown southeast. You sit at Table 17 with the cold black coffee that, today, you did not drink. Gloria comes by and asks if you want anything else. You say no. She turns. She walks away without the small deferent half-step she has done at this booth since '15. You do not know whether she noticed she did not do it. You did.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_hierophant" } ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_doctrine_start": 1,
+    "note": "Paul's losses leave a little residual DOCTRINE forward. The empire continues. The office continues. The man holding the office, after a loss, holds it with one more small ledger-line he did not have before. The bandstand crow has been watching for a while."
+  }
+}

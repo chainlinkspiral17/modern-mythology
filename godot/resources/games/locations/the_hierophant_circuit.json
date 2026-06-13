@@ -1,0 +1,165 @@
+{
+  "id": "the_hierophant_circuit",
+  "title": "QUENTIN PAUL'S SUNDAY",
+  "subtitle": "the day's circuit · Vol 5 · Ch V · The Hierophant",
+  "notes": "Paul's territory on a Sunday — the church where he counts sins after the service, the long black car that ferries him between zones, D'Ambrosio's riverboat where he holds court at Table 17 over Sunday brunch, the bandstand and the old armory in the park where he conducts the empire from the back of the car on his second phone call of the hour. The board's geometry is the day's circuit. Eleven spaces; three thresholds (CHURCH INTERIOR back inside the office that owns him; BACK CORRIDOR through the kitchen and out to disgrace; RIVERFRONT out onto the muddy divide between Texas and Louisiana).",
+  "ambient_pool": [
+    "the heat shimmered off the asphalt like angry ghosts.",
+    "the cicadas hush for a second when he steps out of the church.",
+    "from table 17 he can see the muddy divide between texas and louisiana through the boat's windows.",
+    "the cuff of his right sleeve is a millimeter shorter than the left.",
+    "the crow on the bandstand has been watching for a while.",
+    "the long black car idles wherever it idles. its engine is off when it idles for him. its engine is running when it idles for everybody else."
+  ],
+  "ambient_every_n": 3,
+  "spaces": [
+    {
+      "id": "church_interior",
+      "label": "CHURCH INTERIOR",
+      "kind": "threshold",
+      "pos_xy": [180, 90],
+      "flavor": "st jude's acadian · old incense, wet wood, something older than either · the office that owns him.",
+      "arrival_lines": [
+        "the smell hits you first. you have been smelling it since you were nineteen and you have not, in any of those years, agreed with it.",
+        "the pews are empty. the room is humming at its own frequency."
+      ]
+    },
+    {
+      "id": "church_steps",
+      "label": "CHURCH STEPS",
+      "kind": "station",
+      "pos_xy": [380, 130],
+      "flavor": "the steps out front · the small crowd leaving the service · the ladies with too much hairspray, the men in suits, the daigle child in a stiff sunday dress with her father.",
+      "arrival_lines": [
+        "the heat is the kind that makes the asphalt look animated.",
+        "your eye scans the crowd. you pause on the people worth pausing on. one of them is a child of seven who is looking back."
+      ]
+    },
+    {
+      "id": "the_black_car",
+      "label": "THE BLACK CAR",
+      "kind": "station",
+      "pos_xy": [550, 280],
+      "flavor": "the long sedan · idling by the curb · the bridge between zones · the place where you take the second phone call of the hour.",
+      "arrival_lines": [
+        "the door closes the way the door of a long black car closes when somebody has paid attention to the door's weight.",
+        "the driver does not, today, look back. he does not need to."
+      ]
+    },
+    {
+      "id": "dambrosios_curb",
+      "label": "D'AMBROSIO'S CURB",
+      "kind": "station",
+      "pos_xy": [720, 380],
+      "flavor": "the curb outside d'ambrosio's riverboat · where the long black car parks · where dante d'ambrosio's bell-above-the-front-door has been ringing since the boat opened in '83.",
+      "arrival_lines": [
+        "the bell above the front door rings for you the way it rings for everyone.",
+        "the mooring lines hold the boat against the muddy divide. the boat has not moved in nine years."
+      ]
+    },
+    {
+      "id": "dambrosios_dining_room",
+      "label": "DINING ROOM",
+      "kind": "station",
+      "pos_xy": [880, 380],
+      "flavor": "the brunch floor · twelve tables · forced laughter, clatter of silverware, mimosas that are too sweet, eggs florentine with a hollandaise that breaks if you look at it wrong.",
+      "arrival_lines": [
+        "the room registers your entry. the laughter at table 12 does not stop; it changes pitch.",
+        "gloria reyes is at the water pitcher with her back to you. she will not, today, look at table 17 when you are speaking from it."
+      ]
+    },
+    {
+      "id": "table_17",
+      "label": "TABLE 17",
+      "kind": "station",
+      "pos_xy": [1040, 280],
+      "flavor": "your corner booth · overlooking the muddy divide between texas and louisiana · the captive audience of city council hopefuls and nervous business types · the black coffee, never the food.",
+      "arrival_lines": [
+        "the booth is the booth. it has been the booth since you started holding court here in '15.",
+        "the city council hopefuls are arranged the way they arrange themselves. the nervous business types are arranged the way they arrange themselves."
+      ]
+    },
+    {
+      "id": "dambrosios_kitchen",
+      "label": "KITCHEN",
+      "kind": "station",
+      "pos_xy": [880, 540],
+      "flavor": "the kitchen behind the swinging door · hector at the line, crossing himself · gloria coming back through with plates · the heat behind the heat.",
+      "arrival_lines": [
+        "you have not been in the kitchen of d'ambrosio's. not, in eleven years, once.",
+        "hector sees you. he does not, this time, cross himself. that is its own kind of message."
+      ]
+    },
+    {
+      "id": "back_corridor",
+      "label": "BACK CORRIDOR",
+      "kind": "threshold",
+      "pos_xy": [720, 540],
+      "flavor": "between kitchen and dining room · the corridor with the time clock and the coat rack · the way out for staff and, today, the way out for you if you have to.",
+      "arrival_lines": [
+        "the corridor smells like the kitchen wants it to.",
+        "from here you can hear the dining room as a different room than the room you have been in. it is a useful angle."
+      ]
+    },
+    {
+      "id": "park_bandstand",
+      "label": "PARK BANDSTAND",
+      "kind": "station",
+      "pos_xy": [380, 540],
+      "flavor": "the abandoned bandstand near the old armory · the empty park surveyed like barren lands · the crow has been watching for a while.",
+      "arrival_lines": [
+        "the bandstand is the bandstand. nobody plays here anymore. it has been waiting.",
+        "the crow on the railing tilts its head. you do not, today, acknowledge it. it will, today, remember."
+      ]
+    },
+    {
+      "id": "old_armory",
+      "label": "OLD ARMORY",
+      "kind": "station",
+      "pos_xy": [180, 540],
+      "flavor": "the civic ruin at the park's edge · brick and tin and the kind of plaque nobody cleans · the building you stood across from as a boy when you imagined what authority would smell like.",
+      "arrival_lines": [
+        "the armory has been empty for thirteen years. you have, in those thirteen years, not been inside.",
+        "the plaque by the door is unreadable from the kind of weathering that takes thirteen years."
+      ]
+    },
+    {
+      "id": "riverfront",
+      "label": "RIVERFRONT",
+      "kind": "threshold",
+      "pos_xy": [60, 380],
+      "flavor": "down to the muddy divide · the place where texas becomes louisiana under your shoes · the leap into the bigger world you have, until today, declined to take.",
+      "arrival_lines": [
+        "the river smells like the river. you have not stood on the bank in eight years.",
+        "the boat is somewhere upstream. it cannot, from here, see you."
+      ]
+    }
+  ],
+  "adjacency": {
+    "church_interior":        ["church_steps"],
+    "church_steps":           ["church_interior", "the_black_car"],
+    "the_black_car":          ["church_steps", "dambrosios_curb", "park_bandstand"],
+    "dambrosios_curb":        ["the_black_car", "dambrosios_dining_room"],
+    "dambrosios_dining_room": ["dambrosios_curb", "table_17", "back_corridor"],
+    "table_17":               ["dambrosios_dining_room"],
+    "dambrosios_kitchen":     ["back_corridor"],
+    "back_corridor":          ["dambrosios_dining_room", "dambrosios_kitchen"],
+    "park_bandstand":         ["the_black_car", "old_armory"],
+    "old_armory":             ["park_bandstand", "riverfront"],
+    "riverfront":             ["old_armory"]
+  },
+  "signal_track": {
+    "completion_threshold": 6,
+    "label": "THE OFFICE HOLDS",
+    "notes": "Paul's positive doom-clock. Engine variable: _signal. Each HOLD COURT / PRONOUNCE / COUNT SINS action ticks the office's hold on the room up. At threshold, Paul has made the day a day in which the office held. The flavor 'signal' here is the radiating authority — what Maya called the hot-and-cold radiation; what Gloria called the sharpened knife; what John called the dominant primate gait. Threshold is not victory so much as the day the office did not slip.",
+    "ladder": [
+      { "level": 0, "label": "sunday morning. the church is doing its work.",                                    "intensity": 0.0 },
+      { "level": 1, "label": "the first count happens at the steps.",                                            "intensity": 0.15 },
+      { "level": 2, "label": "the car door closes the way you like it to close.",                                "intensity": 0.30 },
+      { "level": 3, "label": "halfway · the corner booth has been yours all morning.",                           "intensity": 0.50 },
+      { "level": 4, "label": "the council men are nodding before you have finished the sentence.",               "intensity": 0.70 },
+      { "level": 5, "label": "one more carefully crafted sentence and the day is the day you wanted it to be.",  "intensity": 0.85 },
+      { "level": 6, "label": "the office holds. the fear of you did its work. the empire is the means.",         "intensity": 1.0 }
+    ]
+  }
+}

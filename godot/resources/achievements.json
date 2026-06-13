@@ -41,6 +41,21 @@
       "reward": { "kind": "unlock", "key": "unlocked:reversed:emperor" }
     },
     {
+      "id": "hierophant_complete",
+      "title": "THE OFFICE HELD",
+      "desc": "Win all three Hierophant scenarios (ST JUDE'S MORNING, SUNDAY BRUNCH, THE BANDSTAND CALLS). The office held. The fear of him did its work. The empire was the means.",
+      "trigger": { "kind": "all_scenarios", "arcana": "hierophant", "scenarios": ["st_judes_morning","sunday_brunch","the_bandstand_calls"] },
+      "unlock_key": "achievement:hierophant_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:hierophant" }
+    },
+    {
+      "id": "the_carefully_crafted_sentence_landed",
+      "title": "THE SENTENCE LANDED",
+      "desc": "Invoke THE CAREFULLY CRAFTED SENTENCE ultimate. The pause before the verb did the work.",
+      "trigger": { "kind": "card_played_during_run", "card": "the_carefully_crafted_sentence" },
+      "unlock_key": "achievement:the_sentence_landed"
+    },
+    {
       "id": "lovers_complete",
       "title": "THE HOUSE HELD",
       "desc": "Win all three Lovers scenarios (THE FAUCET WINS, HE WAVED, TODAY THE DRIP CAN WIN). The Roberts kept patching the holes. It was what they did.",
