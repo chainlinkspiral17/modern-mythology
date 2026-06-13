@@ -1,557 +1,594 @@
 # Vol 6 · Network Game · Narrative Scope and Lore
 
-Sibling doc to `_VOL6_NETWORK_GAME_SPEC.md`. The spec covers mechanics
-— control nodes, agent economies, BBS layer, soft fail, the interlude
-shelf. This file covers the *story* the strategic layer is dramatizing:
-who Frasier is at this point in his life, who his network is, what
-Graustark and Harmony Creek and Small Wood actually contain, what
-Dean is doing, and what seeds the game is asked to plant for the
-canon that comes after.
+Sibling doc to `_VOL6_NETWORK_GAME_SPEC.md`. The spec covers
+mechanics; this covers the story.
+
+## What the game is about
+
+A middle-aged Frasier Temple — practical occultist with a soldering
+iron, magickal-technologist who has spent twenty-plus years breaking
+the known rules of reality by *craft* — fights, over a single
+summer, the slow conversion of ordinary people, ordinary contractors,
+ordinary HOA board members, ordinary neighbors into something else.
+
+That is the horror of this game: **normalcy becoming something else.**
+The unsettling thing about Dean's network isn't that it's hidden in
+shadow; it's that it's hidden in *plain sight*. Dean uses shell
+companies, perfectly normal-seeming employees, ordinary residents
+with ordinary lawns, ordinary contractors with ordinary work trucks.
+You meet them. You shake their hands. You buy them coffee. And then
+one of them is, by the third Tuesday of August, not who they were
+in May.
+
+Frasier's job is **to hold the line against the conversion** — and
+to make sure the people who need to leave Graustark and reach the
+Oregon coast get through Harmony Creek Estate unharvested. Some
+will. Most won't. The game is the summer that decides which.
+
+## The summer episode · self-contained
+
+This is one specific summer in a specific year of Frasier's middle
+life. It is **not** a load-bearing arc the novels need to read. It
+is a *self-contained* season — a single wave of the long migration,
+a single tide of the long conversion, a single span of weather in a
+long climate. The novels happen on their own clock.
+
+What the game shows is one summer's pattern of the larger
+phenomenon. What the player learns is HOW the pattern works. What
+the interlude shelf binds at Labor Day is one summer's worth of
+small specific moments that, taken together, are also a kind of
+explanation:
+
+- **Why Harmony Creek Estate is so quiet in vol 6.** Because
+  Frasier held it quiet — at a cost the novels don't see. The peace
+  Sam Miller works the Kwik Stop in, the peace Maya Daigle's
+  grandmother vacuums in 4/4 to, the peace Skip Donnelly drives
+  past every morning — that peace was bought by a season of
+  containment work the player did.
+- **Why people are leaving Graustark.** Because something has been
+  pushing them out for years and the push is, in this game's
+  window, at one of its loud peaks. The sinkhole, the wreck day,
+  the closing institutions, and below all of it a slow pressure
+  the residents can't name but can feel.
+- **Why HCE is the stopover.** Because Dean's network *advertises*
+  it as one. NexCorp Residential Solutions' marketing reaches into
+  Graustark living rooms. Brochures. Buy-down rates. The model
+  home at Lot 47. HCE is positioned as the next safe place. Some
+  who arrive there stay (and are eventually converted). Some pass
+  through to Oregon.
+- **Why people end up in Smolvud.** Because Frasier and his
+  network give certain people the route through HCE that doesn't
+  end at HCE. The seeds in Small Wood are partly *physical
+  artifacts* and partly *people delivered uncollected to the coast*.
+
+The summer is a wave. The wave passes. The novels keep going. The
+player's shelf carries the specific texture of THIS wave.
 
 ## Timeline placement
 
-The game sits **between vol 5 (Major Arcana, the Tarot Gauntlet's
-chapters) and vol 6 (Planned Community)**. Roughly 2000-2005 — the
-shoulder seasons of the Cathedral-era Frasier and the suburban-Gulf-
-Coast Frasier his correspondence reaches in Maya Daigle's chat logs,
-in Rick at Cosmic Comics' phone ledger, in the note in Skip
-Donnelly's wallet.
+Roughly 2000-2005. Between vol 5 (Major Arcana, late 90s) and vol
+6 (Planned Community, mid-2000s). A generation back from vol 7
+(Land of Milk and Honey, 2025-2034).
 
-A generation back from vol 7 (*Land of Milk and Honey*, 2025-2034).
-The young Smolvud cast of vol 7 — Lena Vargas, Wren, Tem, Kai, Per,
-Petra — are children in this game's present, or not born yet. The
-elderly Smolvud Frasier is making careful, slow contact with in
-2025 — Mrs. Gable the retired librarian, the surviving members of
-the 1988 Glitch Report collective, the long-time bookkeepers and
-cannery-shift veterans, the people who knew the substrate when it
-was first humming — are middle-aged in 2002. They are the people
-this game is dealing with.
+The young vol 6 cast — Sam Miller, Diego Ramos, Maya Daigle, Skip
+Donnelly — are children, teenagers, or young adults in this game's
+window. The elder vol 7 cast — Mrs. Gable, Per, Petra, the Glitch
+Report '88 collective survivors — are middle-aged. *Future Smolvud
+has a lot of old people* because Frasier was successfully delivering
+some of those people to the Oregon coast in 2002.
 
-**Future Smolvud has a lot of old people** because Frasier was
-trying to plant something in Small Wood when those people were
-forty-five. The game is the planting season for that.
+## Frasier Temple in this season
 
-## Frasier Temple at this point in his life
+Middle-aged, getting old, creaky and cranky, on his worse days
+maybe a little insane. The operator who survived long enough to
+become the thing he used to dispatch agents at. Boots broken in
+the wrong places.
 
-The Magician chapter ended somewhere around 1999. By the year the
-network game opens, Frasier has had:
+His craft: **magickal-technology**. He breaks the rules of reality
+by *making things*. The Cathedral floor in Graustark is full of
+working tarot stations. The BBS terminal in the corner is bound to
+the demons. The cassette decks at Elicia's bungalow are calibrated
+to register voices that the room hadn't yet released. The
+steamboat model on the workbench is the city's foreshadowing
+made small enough to be picked up. He is a *craftsman of the
+impossible*, working with what's around — solder, wire, paint,
+tape, paper, brass.
 
-- **Five-to-seven years on the Cathedral floor**, since he started
-  building the 22-station tarot map across the warehouse.
-- **The wreck day** (Antonio's, vol 5 ch 20, Chariot canon) at
-  least a year behind him. The cypress beam choice he made or
-  didn't make in the 2-months-before scenario has resolved one
-  way or another. Whichever way it resolved, it is in his ledger.
-- **The Sinkhole Nexus** (cross-arcana, the steamboat model
-  finishing, Graustark itself sinking) is in his rear-view. The
-  city he grew up in has changed shape under his feet.
-- **The first ten years of running demons.** The vagrant of 1996
-  is not the vagrant the player meets. The cicada has been on the
-  network long enough to have a recognizable cadence, an opinion
-  about Harmony Creek, a small private grudge.
+What he can do: bind demons, make objects that work in ways objects
+don't normally work, run a network that knows things it shouldn't,
+read the room a little better than the room knows.
 
-He is middle-aged, creaky, cranky, maybe insane on the worse days.
-He has buried at least one person. He has fallen out with at least
-one ally. He has gotten quieter than he used to be.
+What he cannot do: leave his own plane. Bring back materials from
+places he hasn't been. Move faster than the speed of his own work.
 
-His look in this period: the same olive bomber jacket from the
-Cathedral days but the lining is shot, the same paint-spattered
-grey shop apron but the strap is repaired with electrical tape, the
-same reporter's notebook but it's the eleventh one this decade.
-Hair greying at the temples. The hurricane-that-doesn't-know-it-
-stopped hair is now visibly slowed down.
+Frasier is the saga's tradesman of the occult. He is funny in the
+way operators are funny — bone-dry, no patience for theater.
 
-He is, importantly, still funny. Bone-dry funny. Old-operator funny.
-The BBS layer is where this lives most.
+## Dean · the traveller between worlds
 
-## The network · Frasier's loyal friends and foot soldiers
+Dean is **something else**. The lapels-smoothing gentleman from
+vol 5's Empress cameo is the *surface* of him. The full Dean is a
+traveller between worlds — between planes, between branches, between
+the realities that touch and the realities that don't — bringing
+back from each crossing whatever can be carried.
 
-The canon roster, aged forward from vol 5. The game's human-agent
-pool. Each one is a person with a home and a life; sending them
-out costs them and the node they normally hold.
+What he carries: artifacts. Technologies. Names. Languages.
+Materials Frasier has never seen. Pages from books that, on this
+plane, were never written. Photographs of cities that, on this
+plane, were never built. The substrate itself is one of the things
+he brought back. The tower in Small Wood is a *receiver* for his
+own infrastructure, calibrated to instruments he uses on the other
+side.
 
-### Elicia Temple · the Priestess
-Frasier's younger sister. Still in the Graustark bungalow, still at
-the cassette archive, still recording. The Pomegranate Hour's mid-
-2000s revival happens around now; the bungalow is busier than it
-has been since the 80s. Elicia's dispatch specialty is **archive
-work and field recording** — she can be sent to a location to
-*capture* something for the record. She comes home with the tape;
-the tape's contents become an unlock on the player's shelf.
+**Dean's resources are, for practical strategic purposes, infinite.**
+He can replace burned agents from elsewhere. He can fund any shell.
+He can produce paper records that look correct because the
+producers were imported. What Dean cannot do, what limits him, is
+his own *attention* — he is not always present, his crossings cost,
+and the network he runs in this world is delegated to people who do
+not know what he is.
 
-Her obligation accrues slowly — she is family — but her time-at-
-home cost is real, since the bungalow's recording schedule is the
-only thing keeping the Pomegranate Hour alive.
+His operation on the ground: **shell companies and shady folk who
+appear normal.** A surveyor with a clipboard. A contractor with a
+work truck. A pleasant retiree on the HOA welcome committee. A
+freight-hauler who runs route along I-10. A man at a Wagner's
+Hardware register in Small Wood who has been there since 1996. The
+*ordinariness* is the disguise. Most of them do not know they are
+working for Dean; some know and have made peace with it; a small
+inner circle knows and is the operational core.
 
-### Dante D'Ambrosio · the Emperor
-Late 60s in vol 5, early 70s here. The boat is winding down. Dante
-has been talking about closing it for three years and has not. He
-maintains a node on the boat itself; sending Dante anywhere off the
-boat costs the boat — Sammy at the well covers, Hector at the pass
-covers, but the room knows.
+The *conversion* is the process by which an ordinary person on this
+plane becomes one of Dean's. It is not possession in a horror-movie
+sense. It is closer to *recruitment that the recruit forgets is
+recruitment*. The person continues to look like themselves, talk
+like themselves, do the small everyday things they did. But what
+they *prefer* — what they choose, what they notice, what they make
+decisions about — has tilted half a degree toward Dean's interest.
 
-Dispatch specialty: **authority work**. Dante on the ground in a
-region is an institutional thumb on the scale. The Hierophant
-circuit gives way before Dante's presence; HOA boards lose their
-nerve; municipal aides return calls they had been letting ring.
+Frasier is fighting against this. Not in the open. By holding nodes,
+by routing migrants, by keeping certain people uncollected, by
+detecting the half-degree tilt in someone's voice on the BBS and
+deciding whether the tilt is recent enough to undo. He cannot
+*win* against Dean — Dean's resources are infinite and his patience
+is geological — but he can hold a particular summer of a particular
+wave, and a particular summer's worth of people, against the slow
+conversion.
 
-### Nicola · the Empress
-70s now. Still working the boat's floor when she chooses to.
-Holding her own house in Graustark — the canonical Empress
-location, the matriarch's throne. Her node is the house plus the
-family she still corresponds with.
+That is what the game is.
 
-Dispatch specialty: **letters**. Nicola can mail a letter — written
-in her hand, on her stationery — to anywhere in the network. The
-letter arrives. The letter is opened. The recipient does what the
-letter asks more often than they should. The Empress canon's
-authority-by-correspondence is a real strategic verb here.
+## The three regions · the migration spine
 
-### John Frank · the Fool
-Aged out of the diner shift. The diner is still there but he's
-running a small independent newspaper column out of a corner of
-it. The Fool's notebook is now a published one. He is the network's
-**press contact** — sending John to a problem is sending the press,
-and the optics on that are double-edged.
+### Graustark · the origin
 
-Dispatch specialty: **column work**. A successfully completed John
-dispatch can publish — a paragraph in his column, in the print
-edition, that the resistance has to respond to in the open.
+Why people are leaving:
 
-### Mackenzie Roberts · the Lovers
-Has picked up the threads since the chapter's resolution. The loom
-is, by this point, running again — three months per piece, four
-pieces a year. Philip alongside.
+- The sinkhole canon and the wreck-day canon have both completed.
+  The city has lost institutions and people.
+- The river-economy slow-collapse decade is at its loud peak.
+- The Cathedral chapter's reconstruction work has, side-effect-
+  wise, alerted Dean's surveying network that Graustark is full of
+  people whose lives are unsettled enough to be *moveable*.
+- NexCorp Residential Solutions has begun mailing brochures to
+  every Graustark address since 1998. By 2002 the brochures are
+  professionally typeset and feature Lot 47 in soft-focus dusk
+  light.
+- Some Graustark residents have, since the wreck day, been
+  receiving from anonymous senders small specific incentives to
+  *consider* the planned community: a free utility audit, an
+  insurance quote, a long-lost-cousin pamphlet. Frasier's network
+  has determined the senders are Dean's.
 
-Dispatch specialty: **the slow witness**. Mackenzie sent to a
-region for a week does not solve a problem; she *registers* it.
-What she sees on the loom afterward — woven into the next piece, or
-absent from it — becomes a tarot-card-strong unlock for the player.
-She is the slowest agent and the one whose dispatches yield the
-most archive-quality interludes.
+The native opposition in Graustark is not a single force. It is
+*the pressure* itself, plus Paul's residual stakes, plus the small
+private corruptions that are aging into institutional ones.
+Holding Graustark means convincing the people Frasier loves not
+to leave too soon, and convincing the few who *should* leave to do
+so by the right route.
 
-### Antonio D'Ambrosio · the Chariot (timeline-dependent)
-Depending on the player's vol 5 Chariot canon (which the spec keeps
-the player free to choose), Antonio is either:
+### Harmony Creek Estate · the stopover
 
-- **Alive and present** — running Ember & Ash in some form, more
-  carefully than before. Specialty: **construction and infrastructure**.
-  Sending Antonio means sending a crew, a truck, materials, and a
-  face the locals recognize as their own.
-- **Gone post-wreck** — appears in this game only as an obligation
-  Frasier is still paying off. Marta in Houston still calls. Alberto
-  is in town more often than he used to be. The wreck day reads
-  through the present tense.
+What HCE is, in 2002-2005:
 
-The flag the cypress-beam cameo wrote in vol 5 decides which Antonio
-the player meets. The game honors both branches.
+- A planned community in its construction-and-early-occupancy
+  phase. Phase I is built and mostly sold; Phase II is in framing;
+  Phase III is dirt and surveying flags.
+- Marketed to Graustark families as a *fresh start* — air-
+  conditioned year-round, low crime, sixty-eight-degree HVAC, the
+  HOA welcome basket, the model home open Sunday.
+- A waystation. Dean's network funnels Graustark migrants here
+  first. Some buy in Phase I and stay. Some are buying intending
+  to flip to a coastal property in five years. A small percentage
+  pass through within months toward Oregon — either by their own
+  decision or because Frasier's network has given them the route.
+- The *peace* the player is asked to hold. Vol 6's clipped
+  paranoia register reads, on the surface, as the suburban quiet of
+  a community that works. That quiet was held by someone. The game
+  is that someone.
 
-### Quentin / Paul · the Hierophant (mostly opposition)
-Older now. Higher up. The Sunday brunches at Table 17 became
-something else when Dante stopped coming down the iron stair on
-Sundays. Paul has, since vol 5, **moved his operation off the boat**
-— now runs out of a refurbished old armory back room, the bandstand
-on weekends, a half-stake in the Harmony Creek HOA leadership.
+Why HCE is quiet:
 
-Paul is on the Hierophant DM thread in the BBS, but he is not
-dispatchable. He is, more often than not, the *opposition* the
-player is routing demons and humans against. Frasier's network is
-old enough to remember Paul before he was Paul; that history is
-its own card in the deck.
+- Frasier's demons (cicada, starling, the long-watch flock) are
+  embedded. They register conversions in progress and Frasier can
+  intervene early.
+- The HOA leadership-in-formation is contested. Paul has stakes;
+  Dean's network has its own candidates; Frasier has *neither*
+  except as a quiet preference for the candidates who are least
+  effective at policy work. (The most peaceful HCE summer is one
+  with a stalled HOA.)
+- The model-home scheme — the wrong-address mail apparatus that
+  vol 6 documents — is in its installation phase. Frasier cannot
+  prevent it being installed. He can detect which specific houses
+  are being routed through it and warn the residents.
+- The migrants passing through are kept quiet. They do not draw
+  the converters' attention if they are not loudly Graustark and
+  loudly transient. Frasier's job, in HCE, is to make their stay
+  unremarkable.
 
-### The smaller circle
-Beyond the canon eight, Frasier has the people who have, across
-twenty years, just kept picking up:
+The native opposition in HCE is Dean's normal-seeming employees,
+the slow conversion of HCE-permanent residents, the model-home
+infrastructure under installation, and Paul's residual influence
+when it occasionally aligns with Dean's interests by accident.
 
-- **Sammy at the bar** (Emperor cameo canon, the long-suffering
-  Catholic loyalty Dante has relied on and quietly mocked). Sammy
-  is 65+ now. Still behind the well on Friday nights when he
-  chooses. Will run an errand for Frasier without asking why.
-- **Hector at the pass** (Empress canon). Still on the line. Knows
-  things. Slower to share them.
-- **Jimmy with two coffees** (Chariot canon). Antonio's crew chief.
-  If Antonio is gone, Jimmy is now running Ember & Ash's residual
-  business; if Antonio is alive, Jimmy is the one Frasier actually
-  calls when he needs a crew.
-- **Father Amato** (Hierophant cameo). Still at St Jude's, smaller
-  congregation, the side chapel polished candleholders. Will hear
-  a confession Frasier never quite makes.
+### Small Wood, OR · the destination
 
-These five are not "dispatchable agents" in the strategic sense.
-They're the people the strategic system reads as **background
-support** — their presence in Graustark is part of what makes the
-region's resistance low.
+Why people are going:
+
+- The Oregon coast has not (yet, in this period) been folded into
+  Dean's network on the same scale as the Gulf Coast. The Glitch
+  Report '88 collective made him visible there fifteen years ago,
+  in a way the Gulf Coast never made him visible. The PNW has its
+  own observers.
+- A small group of Graustark and HCE migrants — and a handful from
+  other Gulf Coast subdivisions — are *being delivered*. Specific
+  people, by name, who Frasier's network has determined either:
+  (a) cannot survive being converted, (b) need to be available to
+  the Oregon coast for reasons not yet known, or (c) want, on
+  their own, to disappear and start over in a town that does not
+  know them.
+- A handful are seeking the substrate without knowing what the
+  substrate is. The 1988 Glitch Report has been quietly circulating
+  via Cosmic Comics' Henderson Donation boxes. People who read it
+  and recognize something they have been feeling sometimes drive
+  west.
+
+What Small Wood is, in this window:
+
+- A timber town in slow industrial decline. The mills are closing
+  in slow succession. The cannery is operational but barely.
+- Mrs. Gable is in her 40s, the active librarian, the anomalous-
+  frequency archive her project.
+- Wagner's Hardware on the corner where Board Lords will be in
+  2034. Petra's mother's bookstore (the Salty Tome's predecessor)
+  three blocks down.
+- Frasier has one rented room above Wagner's Hardware, one strong
+  relationship with a Glitch Report veteran, one careful working
+  relationship with Mrs. Gable, and a handful of dead-drop sites
+  established the year before.
+- The tower is in the woods east of town. Dean's instrument.
+  Bright most weeks in this period — Dean's operation at its peak.
+
+The native opposition in Small Wood: the substrate's local
+behavior (which corrupts demons fast), the small inner circle of
+Dean's operatives embedded in the timber economy, the local
+ecosystem of *not-wanting-outsiders* that registers Frasier's Gulf
+Coast accent the moment he opens his mouth.
+
+## The network · Frasier's loyal friends
+
+The canon roster, aged forward from vol 5. Dispatch specialties
+as drafted earlier in this doc:
+
+- **Elicia Temple** (Priestess) — archive work, field recording.
+- **Dante D'Ambrosio** (Emperor) — authority work.
+- **Nicola** (Empress) — letters in her own hand.
+- **John Frank** (Fool) — column work that publishes.
+- **Mackenzie Roberts** (Lovers) — the slow witness.
+- **Antonio D'Ambrosio** (Chariot, timeline-dependent on the
+  cypress-beam flag) — construction and infrastructure.
+- **Quentin / Paul** (Hierophant) — mostly opposition in this
+  period.
+
+Smaller background-support circle: Sammy at the bar, Hector at the
+pass, Jimmy at the warehouse, Father Amato at St Jude's.
 
 ## The demons · twenty years of evolution
 
-The Magician chapter's eight bound programs, now ~20 years old.
-Each one has accumulated a specialty, a set of opinions, a BBS
-handle, and (in some cases) the kind of complexity that means
-Frasier no longer fully runs them — he *consults* them.
+Magician canon, aged forward — vagrant, cicada, moth, steamboat,
+weir, filly, starling, husk. Specialties, opinions, BBS handles,
+the small private grudges. (Full detail in the previous version of
+this section.) The key fact relevant to *this game's premise:*
 
-### VAGRANT
-The reconnaissance class. By this period, has spent so long in
-Graustark slow-walking the river bank that it has developed an
-affection for the place. Vagrant's BBS posts are about the river
-levels, the new lock construction, the egret nest at the old armory.
-Resists being sent to Small Wood. When it does go, comes home tired.
+Demons sent to Small Wood don't just *corrupt* — they sometimes
+**convert**. A converted demon, like a converted human, does not
+go dark. It walks around looking like itself. It still answers to
+its old name on the BBS. But its preferences have tilted. Frasier
+cannot, from Graustark, always tell which.
 
-### CICADA
-Long-watch surveillance. Has been embedded in suburban-Gulf-Coast
-neighborhoods (the canonical ones — including, by the time the game
-opens, several of Harmony Creek's predecessor subdivisions) since
-the late 90s. The cicada knows HOA agendas before the HOA boards do.
-Has policy intuition. Posts on the BBS under the handle THE_HEAT.
+## The conversion · the central mechanic and the horror
 
-### MOTH
-Light demolitions, distraction. Has burned out once already and
-been re-bound; the re-bound version is quieter, more careful.
-Specializes in the *small fire that gets the meeting cancelled*
-rather than anything larger. The moth has cold-terrain resistance
-now, after surviving an early Small Wood deployment.
+How conversion works in the world:
 
-### STEAMBOAT
-The heavy infrastructure class. Wears the weight of the vol 5 ch 20
-sinkhole the way a person wears a back injury. Operates in Graustark
-mostly, because that's where the rivers it knows are. Dispatched to
-Small Wood, it leaves a wake that the Oregon-coast hydrology does
-not forgive.
+- A person (or a demon, or sometimes an institution) accumulates
+  exposure to Dean's infrastructure. The exposure is small at
+  first. A surveyor visits their cul-de-sac. A pleasant retiree
+  invites them to the HOA welcome breakfast. A free utility audit
+  is performed by a contractor with a clipboard.
+- After enough exposure, the person's *preferences* tilt half a
+  degree. They notice this themselves, maybe. They explain it to
+  themselves as a small change in taste or attention.
+- After enough additional exposure, the tilt deepens. The person
+  starts making decisions consistent with Dean's interest without
+  knowing they are doing so. The decisions are individually
+  defensible. Collectively they form a pattern.
+- The conversion is *complete* when the person, asked directly
+  why they did something, gives an answer that is true to them
+  but is also Dean's. They do not know. They are not lying. The
+  conversion has rewritten the part of them that would have known.
 
-### WEIR
-Water work, river-bound, regional to Graustark. Has aged into a
-kind of regional spirit Frasier sometimes thinks of as more local
-than himself. The weir does not like to leave the river.
+How conversion works in the game:
 
-### FILLY
-Fast courier. The most personality-shifted demon in the roster —
-the young-horse exhale that was once just texture is now a *voice*.
-Filly has, on the BBS, an active opinion about who deserves the
-messages it's asked to carry. Has refused a dispatch twice; Frasier
-overrode both times; the second override cost.
+- Every person, demon, and institution on the strategic map has a
+  hidden **tilt rating** between 0 and 10. Most begin at 0 or 1.
+- Exposure to converters and Dean infrastructure raises the tilt.
+  Counter-exposure to Frasier's network can lower it but only
+  partially and only with effort.
+- At tilt 5, the entity begins making small decisions consistent
+  with Dean's interest. Frasier may notice; the entity won't.
+- At tilt 8, the entity is functionally Dean's. They still appear
+  normal. They will, if asked to do something benign by Frasier,
+  do it — and report what they did to Dean's network without
+  knowing they reported.
+- At tilt 10, the entity is **converted**. They cannot be
+  recovered by this game's mechanics.
 
-### STARLING
-Flock surveillance. Has, over twenty years, become **plural** — the
-starling that started as one demon is, by this period, a small
-flock. Frasier didn't make this happen; the starling did it itself.
-Each member has a slightly different specialty. The flock as a
-whole is the most legible-to-the-resistance demon in the roster;
-also the most reliably *correct*.
+The horror is that the player **does not see the tilt rating**.
+The player infers it from behavior. From the BBS post that's
+slightly off. From the demon who refused the dispatch and did it
+anyway and came back exactly on time but with a story that doesn't
+quite hold. From the human agent who used to ask after Philip and
+this time didn't.
 
-### HUSK
-Last-resort blunt instrument. Has been used twice in twenty years.
-Both times left a body or equivalent. Frasier does not, in this
-period, want to use the husk a third time, but the husk is on the
-roster and the game lets the player make the call.
+The player's only real tool against the conversion is *attention*.
+The BBS layer is where attention lives. A long careful read of a
+DM thread can sometimes catch a tilt at 3 or 4, when it can still
+be reversed. A short careless read will miss tilt 7. And tilt 10
+is permanent.
 
-## Graustark · the home soil
+## The migration · the named cast
 
-The home region is the saga's old heart. By 2002-2005 it has been
-*losing*: people, infrastructure, water levels, the slow attrition
-of a Gulf-Coast town that the wider world has decided to stop
-remembering. Frasier's network is dense here partly because the
-locals are loyal and partly because everyone he loved is here.
+What follows is invented for this self-contained summer. None of
+it is canon to the novels; all of it is canon to the game.
 
-**Problem palette:**
-- Memorial-grief problems. The wreck day's anniversary; the
-  sinkhole's anniversary. Family members of the lost surfacing
-  with letters and requests.
-- Family-succession problems. Dante deciding when to close the
-  boat. Nicola deciding which of her sister's grandchildren to
-  back. Antonio's resolution at the warehouse.
-- Infrastructure problems. The diner's lease. The cathedral's
-  roof. The riverboat's licensing. The cathedral's electricity
-  bill (Frasier's own node).
-- The slow Hierophant-pressure of Paul having moved his operation
-  but still having stakes in the region. The boat's Sunday brunch
-  is gone. The armory back-room is now the brunch.
+### Graustark migrants — people leaving
 
-**Native opposition:**
-The opposition in Graustark is not a single force. It is *time*
-itself, plus Paul's residual influence, plus the small private
-corruptions that age into institutional ones. Solving Graustark
-problems often means sitting with someone, listening, or making a
-small repair. The verbs are inherited from the cameos.
+A small handful of named families and individuals the player meets
+in the first two weeks of the summer and tracks across the
+strategic and BBS layers. Each one is either *delivering through
+HCE to Smolvud* (Frasier's preferred outcome) or *settling in HCE
+and converting slowly* (Dean's preferred outcome).
 
-## Harmony Creek Estate · the engineered front
+- **The Mercer family** — Hal Mercer (52), his wife Lillian (50),
+  their daughter Bea (14). Hal's auto-parts shop on the Graustark
+  riverfront has been losing money since the sinkhole reshaped the
+  east bank. NexCorp brochure on the kitchen counter for six
+  months. Lillian wants to go; Hal wants to stay; Bea has a
+  scholarship in mind that doesn't require either. Frasier's
+  network has decided Bea, specifically, needs to reach the
+  Oregon coast intact.
+- **Mrs. Theresa Boudreaux** — 71. Widow. Three grandchildren in
+  HCE Phase I already. The brochures have been arriving since
+  her husband died. She wants to be near the grandchildren. She
+  does not, by Frasier's network's read, need to *also* be near
+  Dean's brochure-author. Frasier's question with Mrs. Boudreaux
+  is whether she can be allowed to settle in HCE under his
+  network's quiet watch, or whether she should be routed onward.
+- **The Halsey-Knight household** — Dre Halsey (38), a recording
+  engineer at Halsey Studios; his partner Jasper Knight (40), a
+  freelance graphic designer; and Jasper's college-aged niece Mae
+  (19), home for the summer. Dre's family owns Halsey Studios.
+  The Gallatin Band records there. Frasier needs the studio
+  itself to stay in Dre's hands and Mae needs to reach Smolvud
+  by August.
+- **Hector's cousin Reynaldo** — the player's surprise. Hector
+  at the pass has a cousin Frasier has never met until week three.
+  Reynaldo (33) is a registered surveyor working a NexCorp
+  subcontract. He has, by week three, asked Hector if there is
+  anyone in Graustark who would like to know what the subcontract
+  is. There is. The player has to decide whether Reynaldo can be
+  trusted — whether his question is sincere, or whether his tilt
+  is already at 6 and Dean's network is fishing.
+- **The Vargas-Quintana family** — Carmen Vargas (29), her
+  husband Esteban Quintana (31), their infant daughter Lena. Lena
+  Vargas grows up to become the protagonist of vol 7. The Vargas-
+  Quintana family is, in this summer, in Beaumont. They are
+  considering a move to either HCE or the Oregon coast. The
+  player's most important named delivery in the summer is making
+  sure the Vargas-Quintana family reaches the Oregon coast.
 
-The Planned Community subdivision in its early phase. **In the
-game's timeframe (2000-2005), Harmony Creek is being built.** The
-canonical vol 6 scenes (Sam Miller at the Kwik Stop, Maya at
-Cosmic Comics, Diego at the Gallatin Band, Skip at the NexCorp Gas
-& Go) are 3-5 years in the future. The model home at Lot 47 is
-under construction. Carla Vega does not yet live on Lot 47. The
-NexCorp Residential Solutions corporate apparatus is in its second
-year of operation in the region.
+### Dean's normal-seeming network — converters
 
-Frasier's job here is **early intervention** — installing watchers,
-running demons through the not-yet-finished cul-de-sacs, mapping
-the wrong-address mail scheme before it becomes the wrong-address
-mail scheme.
+People the player meets on the strategic and BBS layers who appear
+ordinary and are not. Each one has a *cover identity* (what
+everyone thinks they do) and a *role* (what Dean uses them for).
+The player may or may not figure out which is which.
 
-**Problem palette:**
-- HOA-formation problems. The first HOA leadership election is in
-  this game's timeframe. Paul has half-stakes in two candidates.
-- Surveillance problems. NexCorp's earliest contractors begin
-  installing the wiring that will, by vol 6, be the substrate
-  the cicadas of Phase III feed off of.
-- The model-home scheme in its infant form. Frasier can detect it
-  forming; the moth can disrupt it; the cicada can document it.
-- Missing-kid problems before they become missing-kid problems.
-  Diego Ramos is 14-19 in this game's timeframe; he is not yet
-  the missing one. The kids Diego will know, Sam will date, Maya
-  will correspond with — they are all here in their early teens
-  in 2000-2005.
+- **Carl Reno** — 56. Cover: an HOA welcome-committee retiree in
+  HCE Phase I, runs the welcome breakfast, knows everyone's name.
+  Role: Dean's primary HCE recruiter. The handshake is the
+  exposure.
+- **The "Beaumont Gentleman"** — name unknown for most of the game.
+  Cover: a retired insurance adjuster who calls Rick at Cosmic
+  Comics for back-issue inquiries (canon · `cosmic_comics.md`).
+  Role: a Dean field officer running the Beaumont-Houston-HCE
+  corridor.
+- **Diane Pell** — 41. Cover: a real-estate agent specializing in
+  HCE Phase II buyouts and Graustark sellouts. Role: the migrant
+  router — most Graustark families who arrive in HCE have signed
+  paperwork with Pell.
+- **Norman Lott** — 48. Cover: a NexCorp Residential Solutions
+  surveyor; office in HCE Phase III's modular trailer. Role: the
+  conversion-quotient field tester. The clipboard he carries is
+  not, ultimately, about easements.
+- **Mrs. Pimentel** — already on disk in `planned_community/`
+  canon as the HOA welcome-table greeter. The player learns this
+  summer that her tilt rating is *not* 10 — it's around 4, holding
+  there — because she has, on her own and without telling anyone,
+  been quietly refusing certain instructions. The most surprising
+  named character of the summer.
+- **Vance Holcombe** — 60. Cover: owner of Wagner's Hardware in
+  Small Wood, in residence since 1996. Role: Dean's outer-edge
+  Small Wood handler. He rents Frasier the upstairs room and
+  charges fair rent and is, at the same time, the reason certain
+  migrants who tried to settle in Small Wood in 1998 left within
+  six months.
 
-**Native opposition:**
-- NexCorp Residential Solutions, in its second-year corporate form.
-- The HOA leadership-in-formation. Mrs. Pimentel is on the
-  welcome-committee that will, by vol 6, be the HOA's social face.
-- Paul's two HOA-board contestant proxies.
-- The substrate's enabling infrastructure — the wiring contractors,
-  the easements, the routing diagrams. The substrate ITSELF is
-  Dean's, not Harmony Creek's; but Harmony Creek's physical
-  infrastructure is what Dean's substrate will, by 2025, be
-  riding on.
+### Small Wood locals — Frasier's foothold
 
-**The youth who will be the vol 6 cast:**
-The game's player meets these characters as kids:
+Invented names for the people the player works with on the front:
 
-- **Sam Miller** · 13 in 2000. Walks past the Kwik Stop daily; not
-  yet working there. Her father is one of the early Harmony Creek
-  buyers. She is, by 2005, 18 and at the register.
-- **Diego Ramos** · 14 in 2000. Drum lessons in the back of Cosmic
-  Comics. Rick has known him since he was eight. The Gallatin Band
-  does not exist yet.
-- **Maya Daigle** · 11 in 2000. Lives with her grandmother
-  Connie. Already obsessed with the comix back-stock at Cosmic
-  Comics. Already corresponding (in slow, pen-and-paper letters)
-  with someone signing F.T.
-- **Skip Donnelly** · 34 in 2000. Working at the (still-just-a-
-  gas-station, not yet NexCorp-branded) Gas & Go. Has a wife. Has,
-  in 2002, a daughter who will, by 2005, become the kind of
-  daughter he is trying not to fail.
+- **Otis Vandermeer** — 49. Frasier's primary Small Wood contact.
+  Radio-engineering veteran of the Glitch Report '88 collective.
+  Second sobriety, six years in. Has a workshop in a garage off
+  Highway 101 that the timber economy left alone. Knows everyone
+  on the coast who matters and several who don't.
+- **Mrs. Marian Gable** — 47 in 2002. Active librarian (retires
+  2014). Anomalous-frequency archive in the library's back room.
+  Knows what Frasier is. Will not, in conversation, acknowledge
+  this. Donates the work back to itself.
+- **Avis Holcombe-Tate** — 38. Vance Holcombe's estranged
+  daughter. Lives in Lincoln City. Runs a small bookkeeping
+  business. Hates her father with a precision that makes her
+  useful: she will deliver a letter Frasier writes if he can be
+  certain she will not be made to know what it contains.
+- **The Glitch Report veterans** (six surviving in 2002, three
+  active):
+  - **Otis Vandermeer** (above).
+  - **Sister Kell** — 51. Lay sister at the Catholic mission in
+    Newport. The collective's archivist. Has, in her cell, a
+    fireproof box of cassette transfers of 1988-1991 broadcasts.
+  - **Doc Reyes** (Damian Reyes) — 58. Retired veterinarian. Lives
+    in a cabin on the north fork of the Alsea. Owns the only
+    spectrum analyzer in three counties that still works.
+  - **Park Manus** — 62. Deceased, March 2003. The player will
+    receive the news mid-summer if they have been paying attention.
+  - **Helen Soong** — 55. Goes silent in April 2003. The player
+    will not know why for several weeks. The reason is conversion.
+  - **Ann-Marie Frame** — 49. Was active in '88, hasn't been in
+    fifteen years. May reactivate this summer if Frasier asks
+    correctly.
 
-These four are not dispatch targets and not problem-spawners. They
-are *interlude characters* the BBS layer surfaces glimpses of.
-Frasier corresponds with Maya already; that correspondence is on
-the BBS. The other three appear in Carla Vega's protest-zine
-archives, in the background of Diego's grandfather's funeral, in
-the bend of a road Sam's father drives.
+### Frasier's sysop circle — the BBS's deep layer
 
-The game does not change them. They are who they are. The game
-shows the player what they were like before vol 6 made them
-something else.
+Other operators at Frasier's level. Each runs their own board,
+their own network, their own quiet operation. They are not Frasier's
+agents; they are his peers. He calls them by handle.
 
-## Small Wood, OR · the front · the seed-planting region
+- **STEEPLE** — Operates out of Mobile, AL. Real name unknown.
+  Has known Frasier since 1996. The most reliably reachable of
+  the sysop circle.
+- **WIRE_MOTHER** — Operates out of Lubbock, TX. Aged late 60s.
+  The matriarch of the network. Wrote the original code Frasier
+  uses to bind demons to BBS handles.
+- **PALOMINO** — Operates out of Santa Fe, NM. Late 30s. Newer.
+  Has, in 2002, been on the network for about four years. Brilliant,
+  unreliable, occasionally compromised.
+- **THE_QUARRY** — Operates out of somewhere in Pennsylvania.
+  Real name unknown. Speaks in queries only — never declarative
+  statements. The most paranoid of the circle. Useful in a
+  specific kind of crisis.
 
-The Oregon coastal timber town that, by vol 7, is Smolvud's
-northern industrial neighbor. (In some canon drafts, "Small Wood"
-and "Smolvud" are the same place rendered with different surface
-attention — the working name vs. the canonical name. The game
-should default to *Small Wood* on the strategic map and let
-*Smolvud* surface only when Frasier is reading from someone else's
-correspondence about the place.)
+The sysop circle does not appear on the strategic map. They appear
+on THE_BACKCHANNEL board. Frasier reads their posts every BBS night
+and contributes one or two. The circle is, among other things, the
+reason Frasier knows what he knows about Dean.
 
-Small Wood in 2000-2005 is:
+## The seeds · what reaches Oregon
 
-- The timber industry's slow-collapse era. The last big mill
-  closure is recent. The work is contract-by-contract.
-- The Glitch Report's 1988 collective has aged into local oddballs
-  and a couple of retired professionals. They are 35-55 now. Some
-  still meet on Tuesday evenings. The substrate that they recorded
-  in 1988 has been audible on certain frequencies since.
-- The Alsea Bay Cannery is operational but barely. Its basement
-  servers, which in vol 7 will hold the substrate's only known
-  physical instance, are running outdated payroll software for the
-  cannery's last twenty workers. Dean has known about the basement
-  for at least a decade.
-- The Daily Grind cafe is run by Mrs. Gable's late husband. Mrs.
-  Gable, the retired librarian of vol 7, is at this point still the
-  *active* librarian — she will retire in 2014. Her library has the
-  archive Frasier's network needs.
-- The Salty Tome bookstore is run by Petra's mother. Petra is 8
-  in 2000. The bookstore already carries John Frank's first column-
-  collection — the one Frasier slipped Petra's mother in 1998.
-- Board Lords is, in this period, **a hardware store** — Wagner's
-  Hardware, family-owned, in its final years (closes 2011). The
-  building's century-long retail life is, by 2000, well into its
-  hardware phase.
-- Netarts Bay Lumber Mill is operational but losing money.
-- God's Thumb is just a coastal bluff. Locals walk dogs there.
+The interlude shelf's Seed Suite catalogs what Frasier's summer
+delivered to the Oregon coast. Some seeds are objects. Some are
+people. Some are arrangements.
 
-**Frasier's foothold:**
-Thin. A rented room above the Wagner's Hardware office. One
-relationship with a Glitch Report veteran (the radio-engineering
-member, Frasier's age, slightly hostile, on his second sobriety).
-A second relationship with Mrs. Gable, who knows what Frasier is
-and who keeps the library's anomalous-frequency newspaper archive
-the way she keeps everything: precisely, slowly, and with no
-intention of explaining herself.
+Named example seeds the player can plant:
 
-**Problem palette:**
-- Local-press exposure. The Small Wood weekly will run a piece
-  about the warehouse rumor if Frasier moves too loud.
-- Demon corruption. The substrate is the soil. Demons sent here
-  weather it badly.
-- The Glitch Report veterans dying or going quiet. By Labor Day
-  2005, two of the 1988 collective are no longer answering the
-  phone.
-- The tower. (See below.)
-- A seed in any season has 1-in-3 odds of being swatted. Frasier
-  knows this. The game gives the player no easy seeds.
+- **Bea Mercer**, age 14, arriving in Smolvud in late August with
+  her mother and a relocated father who decided at the last minute.
+- **Mae Halsey-Knight**, 19, arriving alone in late July with a
+  brown manila envelope from her uncle Jasper containing master
+  tapes from Halsey Studios.
+- **The Vargas-Quintana family** with infant Lena, arriving at
+  the Oregon coast no later than Labor Day. The summer's most
+  important delivery.
+- **Three boxes of donations** to Mrs. Gable's library, anonymous,
+  arriving in 2001, 2002, and 2003. The 2002 box contains John
+  Frank's first column-collection.
+- **A name in Vance Holcombe's ledger** — placed by Avis Holcombe-
+  Tate at her father's hardware store while he was at lunch. The
+  name is "F. Temple" with a 1992 date. It will be found in 2034
+  by the Board Lords tenant clearing a closet, and recognized.
+- **A spectrum analyzer schematic** in Sister Kell's fireproof box.
+  Doc Reyes' design, copied longhand by Otis Vandermeer at
+  Frasier's request. Survives Sister Kell's death; reaches Mrs.
+  Gable in 2017.
+- **A working dead-drop site** at God's Thumb that lasts until the
+  2031 winter storm. The player establishes this site in the
+  game's window.
+- **Otis Vandermeer's continued sobriety** — fragile, but if the
+  player visits him often enough on BBS nights, holding.
 
-**Native opposition:**
-The opposition in Small Wood is the substrate itself, the local
-ecosystem of Dean-adjacent and non-Dean watchers, the timber-
-industry old guard who do not want outsiders making maps, and the
-ambient *unwelcome* of a small Pacific Northwest town watching a
-Gulf-Coast operator try to plant something it can't read.
+The Seed Suite interludes are vignettes of placement. Each one is
+the small specific moment of the seed being put down where it
+needed to be.
 
-**The seedlings — who Frasier is planting for:**
+## What the interludes look like at Labor Day
 
-The vol 7 cast as children or unborn:
+The interlude shelf at the end of a summer the player has played
+binds into one document. Likely composition:
 
-- **Mrs. Gable** is in her 40s here. The library's anomalous-
-  frequency archive is her project. By 2025 she is the elder Lena
-  meets at the Daily Grind every morning. She remembers Frasier.
-- **Petra** is 8-13 in this game's window. Already shelving the
-  bookstore on Sunday afternoons. By 2025 she runs the Salty Tome
-  alone.
-- **Per** is in his late 30s here. A Daily Grind regular even now,
-  before it was Mrs. Gable's place. He has not yet had the SCUMM
-  machine conversation; that's twenty-five years away. Per's chapter
-  is reserved for vol 7 ch 14, but the seeds for it are planted
-  in this game's window.
-- **Carla Vega** is in her 30s. Living in Beaumont still, not yet
-  on Lot 47, not yet recording 47 Hz. The first time she'll meet
-  Frasier is via Maya Daigle's introduction in 2010 — a couple of
-  years past this game's window.
-- **The Gallatin Band's bassist** is 19 in 2000. Lives in
-  Beaumont, not in Smolvud, but the band's recording history will
-  by vol 7 connect Halsey Studios in Graustark to the cannery's
-  basement servers in Small Wood. The bassist is one of the quiet
-  Small Wood seeds.
-
-**The seeds the player banks for vol 7:**
-- A copy of John Frank's column-collection in Petra's mother's
-  hands, surviving on the Salty Tome's shelf for twenty-five years.
-- Mrs. Gable's library archive expanded by three boxes Frasier's
-  network donates anonymously between 2001 and 2003.
-- A name in the Wagner's Hardware ledger that the Board Lords
-  building's later tenant will, in 2034, find in a closet and
-  recognize.
-- A Daily Grind regular's daughter who, in 2025, is Lena Vargas.
-  (The daughter is not in this game; her *mother* is. Frasier knows
-  the mother.)
-- A note in a brown manila envelope the Halsey Studios bassist
-  mails to a friend in Smolvud who keeps it in a shoebox for
-  thirty years.
-
-The seeds are *not* dramatic. They are small specific objects and
-relationships placed deliberately. The interlude shelf's Seed
-Suite shows each seed as a quiet vignette of the moment Frasier or
-his agent placed it.
-
-## Dean and the substrate · the tower
-
-The vol 6 game and the vol 7 canon both reference the substrate.
-The game shows it at an earlier stage.
-
-**In 2000-2005, the substrate is:**
-- Twelve to seventeen years old (first surfaced 1988, per the
-  Glitch Report).
-- Stable. Dean's instrument, run cleanly. The 1988 collective
-  recorded it; nobody since has documented it because nobody since
-  has known where to look.
-- Audible on specific frequencies on the Oregon coast and (less
-  reliably) along the Gulf Coast where Dean has installed
-  secondary infrastructure.
-- A "request" of some kind — but the request is, in 2000-2005,
-  *patient*. The substrate will not become *unstable* until 2025
-  (vol 7 canon). In this game's window, it is still doing whatever
-  Dean wants it to do, and Frasier's network has only intermittent
-  evidence that anything is wrong.
-
-**The tower in Small Wood:**
-A single physical structure Dean operates in Small Wood. The
-tower is on Frasier's strategic map; he can see it; he cannot
-reach it. Dispatched agents do not return from it. In game-
-mechanical terms it is Dean's focusing point; in canon terms it
-is the physical instrument by which Dean shapes the substrate's
-local behavior.
-
-The tower in 2002 is **bright most weeks** — Dean's operation is at
-its peak in this period. The substrate's eventual destabilization
-in 2025 is foreshadowed in this game only as the *occasional dim
-week*, which the player will, retrospectively, recognize as the
-moments Dean himself was unsure.
-
-**Dean as a presence:**
-Same Dean as the vol 5 Empress cameo. The lapels-smoothing
-gentleman. By 2002 he is significantly older, gray, the long-game
-watcher continuing his long game. Maya Daigle's grandmother Connie
-Daigle has, by vol 6's window, received envelopes from Dean's
-network (catalogued in `planned_community/_README.md` as the
-NexCorp Residential Solutions envelopes — which, the game can
-imply, are NOT NexCorp's, they are Dean's, routed THROUGH a
-NexCorp shell). The Beaumont gentleman who calls Rick at Cosmic
-Comics: also Dean. The note in Skip Donnelly's wallet: Dean's.
-
-Dean is, in this game, **a presence Frasier reads as a peer of
-sorts** — not an ally, not an enemy, the other operator on the
-board. The player infers Dean's moves from the anomalies on the
-map and the fingerprints in the BBS threads, exactly as the spec
-describes.
-
-## What the game shows · the narrative scope
-
-The game is, in narrative shape, **a summer in the life of a
-middle-aged operator in his network's busiest season**.
-
-The interlude shelf at Labor Day 2005 is the *book* the game
-produces. Its contents:
-
-- A handful of Graustark vignettes about closing doors — the
-  diner's lease, the boat's slow wind-down, Nicola's letter-writing
-  reaching its end.
-- A handful of Harmony Creek vignettes about the future you can
-  almost see — the kids who will be the vol 6 cast, the
-  infrastructure being installed, the mail starting to find its way
-  to the wrong addresses for the first time.
-- A handful of Small Wood vignettes about the seeds — the room
-  above the hardware store, the library's archive, the cannery's
-  basement Frasier can hear but not see, Mrs. Gable nodding at the
-  donation, the bassist's brown manila envelope leaving the
-  Beaumont post office for Smolvud.
-- The voices of demons who, by Labor Day, have evolved past the
-  point of Frasier fully running them.
-- The voices of demons who, by Labor Day, *turned* in Small Wood
-  and are now Dean's or the substrate's.
-- The Dean fragments — partial, unreliable, possibly contradictory.
-- The Operator-Out suite, if Frasier himself burned out.
-
-The novels stay the novels. The interludes are the player's
-shoulder-season Modern Mythology. Each one is a postcard from a
-summer Frasier survived and a season he planted.
+- **The Migration Suite** — vignettes from each named migrant
+  family's summer. Where they ended up. Who delivered the news.
+  Who didn't make it.
+- **The Conversion Suite** — vignettes from the named entities
+  who tilted. Each one written in the voice of the person *after*
+  the conversion, who does not know they were converted. This is
+  the suite that haunts.
+- **The Seed Suite** — placement vignettes for each seed
+  successfully planted. Quiet, careful, small.
+- **The Refusal Suite** — vignettes from the demons and agents
+  who refused dispatches this summer. Including Mrs. Pimentel.
+- **The Backchannel Suite** — transcripts from the sysop circle's
+  conversations. STEEPLE on Frasier's blind spots. WIRE_MOTHER on
+  the demon-evolution that's accelerating. PALOMINO going quiet
+  for three weeks in July and posting once on August 4 with a
+  message Frasier still doesn't fully parse.
+- **The Tower Watch** — Frasier's own observations of the tower's
+  brightness, week by week, with the dim weeks circled and
+  annotated. The most enigmatic suite.
+- **The Cathedral Letters** — short pieces from Frasier himself,
+  written to no one, recovered from the warehouse workbench by an
+  imagined later archivist. The most personal suite.
 
 ## Tone
 
-The vol 5 voice is **operator-noir warm**: D'Ambrosio's diner late at
-night, the cathedral hum, the Cathedral chapter's making-and-
-breaking. The vol 6 voice (per Planned Community canon) is **clipped
-paranoia in suburban Gulf-Coast register** — sincere, slightly
-funny, slightly unsettling, always specific. The vol 7 voice is
-**slow / saturated / PNW grunge** — slower, damper, the fog has a
-frequency.
-
-The vol 6 network game's voice should sit *between* vol 5 and vol 6 —
-warmer than the suburban-paranoia register, sharper than the
-Cathedral's hum, the bone-dry funny of an older operator at a
+Between vol 5's operator-noir warm and vol 6's clipped suburban
+paranoia. Warmer than the Planned Community register, sharper than
+the Cathedral hum. The bone-dry funny of an older operator at a
 phosphor-green CRT at 1:14 in the morning. The BBS layer is where
-the voice lives. The strategic layer is mostly visual. The interlude
-shelf is where the voice ages forward through the summer.
+the voice lives.
 
-The substrate is patient. Dean is patient. Frasier is, this summer,
-exactly as patient as he can stand to be.
+The horror is *quiet*. The conversion is *quiet*. The peace in
+HCE is *quiet*. The whole summer is quiet. The loud things — the
+sinkhole, the wreck, the tower bright at midnight — are far away
+or in the past or behind a glass.
+
+What the player feels by Labor Day: the satisfaction of having
+held something against a force they could never fully see; the
+ache of the entities they could not save; the warmth of the seeds
+they put down; the small dread of the tower's brightness chart;
+the quiet of an HCE that the novels will, in time, read as
+ordinary.
+
+The novels do not know. The novels never know. The summer was
+something Frasier did. The interlude shelf is the player's record
+of it.
 
 The chapter is held.
