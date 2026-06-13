@@ -585,26 +585,11 @@ const EMPEROR_SCENARIOS := [
 	}
 ]
 
-const EMPRESS_SCENARIOS := [
-	{
-		"id": "static_bloom",
-		"title": "STATIC BLOOM",
-		"subtitle": "Easy · 7:42 PM · Friday Dinner",
-		"flavor": "Friday dinner. The first arrivals are already at the long table. The neighbor has been here since two. The upper deck is in mid-season. Feed the table; let the boat be the boat."
-	},
-	{
-		"id": "harvest_dinner",
-		"title": "HARVEST DINNER",
-		"subtitle": "Medium · 6:18 PM · Late Autumn",
-		"flavor": "The last full dinner of the season. Frasier comes over from the cathedral. The upper deck has one last yield in it. Make a full table with what the garden has left."
-	},
-	{
-		"id": "ice_in_the_river",
-		"title": "ICE IN THE RIVER",
-		"subtitle": "Hard · 11:14 PM · Late February",
-		"flavor": "The river has ice in it for the first time in a decade. A drifter is at the gangway who wasn't on the list. The river widow is in the lounge already. The radio is on in the wheelhouse without Nicola turning it on."
-	}
-]
+# EMPRESS_SCENARIOS pending canon rebuild after the riverboat rework
+# (vol5 ch3 Empress · Nicola the hostess hosting Aria and pregnant with
+# the Third Consciousness; setting is D'Ambrosio's main dining room
+# on the new comprehensive board).
+const EMPRESS_SCENARIOS := []
 
 const PRIESTESS_SCENARIOS := [
 	{
@@ -829,9 +814,12 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		var v := _spawn_visualizer(FOOL_VISUALIZER_SCRIPT)
 		_add_play_button_overlay(v, "fool", "dambrosios", "john_frank")
 		return
+	# Empress play button removed in the riverboat rework — scenarios
+	# need rebuilding against the new D'Ambrosio's board (with the
+	# canonical Nicola/Aria/Third framing from vol5 ch3). Visualizer
+	# still renders the arcana card.
 	if short_path == "empress_arcana":
-		var ve := _spawn_visualizer(EMPRESS_VISUALIZER_SCRIPT)
-		_add_play_button_overlay(ve, "empress", "riverboat_interior", "nicola")
+		_spawn_visualizer(EMPRESS_VISUALIZER_SCRIPT)
 		return
 	if short_path == "magician_arcana":
 		var vm := _spawn_visualizer(MAGICIAN_VISUALIZER_SCRIPT)

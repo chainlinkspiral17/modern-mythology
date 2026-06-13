@@ -1,177 +1,252 @@
 {
   "id": "riverboat_interior",
-  "title": "THE RIVERBOAT",
-  "subtitle": "Static Bloom · Vol 5 · Ch III · The Empress",
-  "notes": "Nicola's riverboat — the long-room interior with the galley on the river side, the lounge facing the bank, a small garden in clay pots on the upper deck. The boat is rarely actually underway; it has been moored to the same piling for nine years. Twelve spaces. The river is always next to you. You can hear it through the hull. Guests come aboard via the gangway.",
+  "title": "D'AMBROSIO'S",
+  "subtitle": "the floating palace of fusion confusion · Vol 5 · The Empire",
+  "notes": "Dante D'Ambrosio's riverboat restaurant. Moored to the same piling for nine years on the muddy divide between Texas and Louisiana. Sixty years of sweat and deals done in shadows thick as gumbo gravy, all to build this — this floating palace of fusion confusion. The name plastered on the side in gaudy, vaguely Italianate script that is, Dante is almost certain, peeling. He has not gone outside to look in eight months; signage is a job for younger men. The boat has two faces. The upper deck and main deck are the public face: the brass railing Dante installed in the second year, the leaded window the architect insisted on (overlooking the dining room from the helm), the brunch crowd in their Sunday clothes, the corner booth where Quentin Paul holds court. The lower deck is the empire under the empire: the catering office that books wedding gigs across three parishes; the card room where a tightly-curated set of regulars plays Saturday nights; the back room where the high-stakes table runs by invitation; the staff locker room where coats and personal effects live and the back stair lets people leave by the route they came in. Seventeen spaces across three decks. Three thresholds (GANGWAY out the public way, SIDE DOOR river-facing for the discreet exit, STAFF EXIT off the back for the people who came in through the back). This board is shared canonically by the Empress (Nicola the hostess), the Emperor (Dante at the helm), and one Hierophant scenario (Paul at Table 17). Each arcana's scenarios reframe it.",
   "ambient_pool": [
-    "the boat shifts in its mooring by half an inch and corrects.",
-    "the river does the river-thing on the hull.",
-    "the herbs on the upper deck have grown another quarter-inch since lunchtime.",
-    "somebody on the bank is whistling something you almost know.",
-    "the kettle in the galley is on. you don't remember lighting the burner.",
-    "the lights of d'ambrosio's are visible through the porthole if you angle just right."
+    "the boat groans. it does not, technically, list. dante checks the levels with his father's spirit level once a month.",
+    "the brass railing dante installed in the second year is bright in a way the boat does not, otherwise, manage.",
+    "from the helm, through the leaded window, the dining room sounds like a dining room.",
+    "the muddy divide between texas and louisiana is outside every river-side window.",
+    "the bell above the front door rings the way it rang in 1962. dante's father did not replace it. dante has not replaced it.",
+    "downstairs, the catering office phone rings. somebody in beaumont needs three hundred plates for a saturday in october.",
+    "in the back room the door is closed. it has been closed for forty minutes. somebody is winning."
   ],
   "ambient_every_n": 3,
   "spaces": [
     {
+      "id": "helm",
+      "label": "HELM",
+      "kind": "station",
+      "pos_xy": [600, 80],
+      "flavor": "dante's office at the helm · the desk, the file cabinet with the bottle, the leaded window overlooking the dining room, the photograph of his wife not replaced in twenty-three years, the brass clock from his father's office.",
+      "arrival_lines": [
+        "the office is the office. the carpet under the route between desk and window has the path worn into it.",
+        "the leaded window shows the dining room as a slightly-waved aquarium. the helm has its own air."
+      ]
+    },
+    {
+      "id": "office_staircase",
+      "label": "OFFICE STAIRCASE",
+      "kind": "station",
+      "pos_xy": [600, 180],
+      "flavor": "the iron stair down from the helm to the dining room · narrow, rusted in the way iron stairs in louisiana are rusted · the architect's pride · the only route between dante's office and the rest of the boat.",
+      "arrival_lines": [
+        "the stair is the stair. each step creaks at a slightly different pitch.",
+        "from halfway down you can see the dining room and the bar at once. dante uses this angle on busy nights."
+      ]
+    },
+    {
+      "id": "maitre_d_stand",
+      "label": "MAÎTRE D' STAND",
+      "kind": "station",
+      "pos_xy": [220, 330],
+      "flavor": "the hostess stand at the entrance · the reservation book, the pencil with the eraser worn down, the candy dish from 1971 nobody has ever fully emptied · nicola's post on a friday night.",
+      "arrival_lines": [
+        "the bell above the front door is at head height. it rings when it has to ring.",
+        "the candy dish has the same hard candies that have been in it since dante's father. they are, somehow, still good."
+      ]
+    },
+    {
+      "id": "main_dining_room",
+      "label": "MAIN DINING ROOM",
+      "kind": "station",
+      "pos_xy": [500, 330],
+      "flavor": "the brunch floor · twelve tables · the chairs in a particular not-quite-uniform that nicola straightens between seatings · the lights at a level dante set in '98 and has not adjusted.",
+      "arrival_lines": [
+        "the room registers entries. the laughter at table 12 changes pitch when a regular walks in.",
+        "from this angle the leaded window in the helm is visible above the bar. dante is, sometimes, behind it."
+      ]
+    },
+    {
+      "id": "private_dining",
+      "label": "PRIVATE DINING",
+      "kind": "station",
+      "pos_xy": [380, 240],
+      "flavor": "the fine dining partition · twelve covers maximum · prix fixe by reservation only · the room dante added in '04 because alberto told him the future of the boat was higher margin per cover.",
+      "arrival_lines": [
+        "the partition is mahogany. it was salvaged from a hotel in mobile that closed in '01.",
+        "the table in the center seats six. it has been set for six since the last booking, three weeks ago."
+      ]
+    },
+    {
+      "id": "table_17",
+      "label": "TABLE 17",
+      "kind": "station",
+      "pos_xy": [700, 280],
+      "flavor": "the corner booth · overlooking the muddy divide between texas and louisiana through the boat's deepest window · where quentin paul holds court on sundays · gloria has not, in eleven years, looked at it when paul is speaking from it.",
+      "arrival_lines": [
+        "the booth is the booth. the leather is creased in the shape of the people who use it most.",
+        "the window beside the booth shows the river. the river does not, this hour, look back."
+      ]
+    },
+    {
+      "id": "sammys_bar",
+      "label": "SAMMY'S BAR",
+      "kind": "station",
+      "pos_xy": [840, 330],
+      "flavor": "the bar at the far end of the dining room · sixteen stools · sammy behind it since the boat opened in '83 · sixty-one years old · the kind of long-suffering catholic loyalty dante has both relied on and quietly mocked.",
+      "arrival_lines": [
+        "sammy is pouring. he does not look up. he registers who has arrived without looking up.",
+        "the brass rail along the bar is the bright brass dante is maintaining; the warm-brass railing in the helm is the wrong brass."
+      ]
+    },
+    {
+      "id": "the_pass",
+      "label": "THE PASS",
+      "kind": "station",
+      "pos_xy": [970, 330],
+      "flavor": "the pass between bar and kitchen · hector hands plates through · the heat lamp · the ticket spike with the dinner orders in the order they came in.",
+      "arrival_lines": [
+        "the heat lamp warms the air above the pass to a noticeable degree.",
+        "hector at the line through the gap. he sees you. depending on the day, he crosses himself or does not."
+      ]
+    },
+    {
+      "id": "kitchen",
+      "label": "KITCHEN",
+      "kind": "station",
+      "pos_xy": [1100, 330],
+      "flavor": "hector's line · two stations · the hollandaise that breaks if you look at it wrong · the walk-in to the left, the dish pit to the right · the radio on a milk crate (spanish, sometimes salsa).",
+      "arrival_lines": [
+        "the kitchen is the kitchen. the heat is the second heat behind the heat in the dining room.",
+        "hector is at saute. the prep cook is at the salad station. the radio is on the kind of station the radio is on."
+      ]
+    },
+    {
+      "id": "back_corridor",
+      "label": "BACK CORRIDOR",
+      "kind": "station",
+      "pos_xy": [1100, 460],
+      "flavor": "the corridor behind the kitchen · the time clock, the coat rack, the bulletin board with the schedule · the door at the end opens to the side door.",
+      "arrival_lines": [
+        "the corridor smells like the kitchen wants it to smell.",
+        "the schedule on the bulletin board has nicola's name on it for friday, saturday, sunday brunch."
+      ]
+    },
+    {
+      "id": "side_door",
+      "label": "SIDE DOOR",
+      "kind": "threshold",
+      "pos_xy": [1150, 580],
+      "flavor": "the river-facing door · the discreet exit · the door dean used in '24 when he left after sitting at table 14 for two hours without ordering.",
+      "arrival_lines": [
+        "the side door opens onto the small lower-deck walkway directly above the water.",
+        "the door has a sign nobody reads: STAFF ONLY. it is also the door dean used. the sign is, in some way, a joke."
+      ]
+    },
+    {
+      "id": "catering_office",
+      "label": "CATERING OFFICE",
+      "kind": "station",
+      "pos_xy": [500, 460],
+      "flavor": "the catering office on the lower deck · the desk dante manages the events business from · the phone ringing every fifteen minutes about a saturday wedding in october · the filing cabinet with eight years of contracts.",
+      "arrival_lines": [
+        "the office is windowless. the only light is the desk lamp dante turned on at three.",
+        "the contracts on the desk are for a three-hundred-plate wedding in port arthur. the bride's father is somebody dante did business with in '88."
+      ]
+    },
+    {
+      "id": "the_card_room",
+      "label": "THE CARD ROOM",
+      "kind": "station",
+      "pos_xy": [340, 580],
+      "flavor": "the card room · saturday-night five-card stud · a tightly curated set of regulars dante's father vetted in the seventies and dante has not, in thirty years, replaced more than half of · the green felt is original.",
+      "arrival_lines": [
+        "the green felt is, in the wear pattern, a map of the elbows of men who have not been to this room in twenty years.",
+        "the chips are in their racks. the deck is in the box. the room is between sessions."
+      ]
+    },
+    {
+      "id": "the_back_room",
+      "label": "THE BACK ROOM",
+      "kind": "station",
+      "pos_xy": [200, 580],
+      "flavor": "the high-stakes table · by invitation only · the door does not, ever, have a sign · paul has been once. dante's father played here. dante does not, on principle, play.",
+      "arrival_lines": [
+        "the door is closed. it has been closed for forty minutes. somebody is winning, on the other side of it.",
+        "the room behind the door is the room behind the door. you do not enter without an introduction."
+      ]
+    },
+    {
+      "id": "staff_locker_room",
+      "label": "STAFF LOCKER ROOM",
+      "kind": "station",
+      "pos_xy": [680, 580],
+      "flavor": "the lockers · gloria's, hector's, the prep cook's, the dishwasher's, the bus kid's, sammy's at the end with his name plate from '83 · the bench where staff change shoes.",
+      "arrival_lines": [
+        "the lockers smell like the lockers. gloria's has a small framed photo of her grandmother taped inside.",
+        "the bench is worn smooth in the places where shifts have changed for forty years."
+      ]
+    },
+    {
+      "id": "staff_exit",
+      "label": "STAFF EXIT",
+      "kind": "threshold",
+      "pos_xy": [800, 660],
+      "flavor": "the back of the lower deck · onto the small back walkway · how staff disembark · how the card-room regulars sometimes leave when they have decided not to use the gangway.",
+      "arrival_lines": [
+        "the staff exit opens onto a narrow walkway that runs to the back of the lot. the lot ends in chain link.",
+        "from here you can see the parking lot but not the gangway. that is the point of it being back here."
+      ]
+    },
+    {
       "id": "gangway",
       "label": "GANGWAY",
       "kind": "threshold",
-      "pos_xy": [120, 380],
-      "flavor": "the plank from boat to dock — guests step on, guests step off.",
+      "pos_xy": [60, 330],
+      "flavor": "the plank from boat to dock · the public way on, the public way off · the route most guests take · the route nobody who has been to the card room takes after.",
       "arrival_lines": [
-        "the gangway flexes when the river does. you have stopped noticing.",
-        "you can feel each step before the guest takes it, through your feet."
-      ]
-    },
-    {
-      "id": "river_door",
-      "label": "RIVER DOOR",
-      "kind": "threshold",
-      "pos_xy": [1080, 380],
-      "flavor": "the small porthole-door that opens directly to the water — for the brave guest, or the river itself.",
-      "arrival_lines": [
-        "the river door is normally bolted. it isn't tonight.",
-        "the water is the closest a thing has ever been to a door."
-      ]
-    },
-    {
-      "id": "upper_deck_hatch",
-      "label": "UPPER DECK HATCH",
-      "kind": "threshold",
-      "pos_xy": [800, 80],
-      "flavor": "the ladder up to the garden deck — the third way off the boat.",
-      "arrival_lines": [
-        "the hatch is half-open. you didn't open it.",
-        "the herbs are right there. you can smell them from inside."
-      ]
-    },
-    {
-      "id": "galley",
-      "label": "GALLEY",
-      "kind": "station",
-      "pos_xy": [800, 380],
-      "flavor": "nicola's kitchen · burner, kettle, knife block, the deep window onto the river.",
-      "arrival_lines": [
-        "the kettle is on. nicola has put it on without noticing she has.",
-        "the river is at galley-window height. it watches you cook."
-      ]
-    },
-    {
-      "id": "long_table",
-      "label": "LONG TABLE",
-      "kind": "station",
-      "pos_xy": [500, 380],
-      "flavor": "where the meal happens · twelve chairs, never all of them taken at once.",
-      "arrival_lines": [
-        "the table is set. you can see how it would look full.",
-        "the long table has the warmth of a thing that has hosted enough nights to remember them."
-      ]
-    },
-    {
-      "id": "lounge",
-      "label": "LOUNGE",
-      "kind": "station",
-      "pos_xy": [300, 380],
-      "flavor": "the cushioned bench under the bank-side window · where guests wait before, talk after.",
-      "arrival_lines": [
-        "the bank is right there through the window. you can see who's walking by.",
-        "the lounge cushion remembers everyone who's been there."
-      ]
-    },
-    {
-      "id": "pantry",
-      "label": "PANTRY",
-      "kind": "station",
-      "pos_xy": [300, 520],
-      "flavor": "shelves, jars, the cold corner · everything you grew, dried, canned, kept.",
-      "arrival_lines": [
-        "the pantry smells like every season of the year compressed into a closet.",
-        "the labels on the jars are in nicola's hand. dates as old as the boat."
-      ]
-    },
-    {
-      "id": "wheelhouse",
-      "label": "WHEELHOUSE",
-      "kind": "station",
-      "pos_xy": [600, 220],
-      "flavor": "the captain's seat the boat hasn't needed in years · charts, the radio, a window in every direction.",
-      "arrival_lines": [
-        "the wheel is bolted in place. it does not turn.",
-        "the radio hums on standby. the boat hasn't moved in nine years. the radio works."
-      ]
-    },
-    {
-      "id": "garden_deck",
-      "label": "GARDEN DECK",
-      "kind": "station",
-      "pos_xy": [600, 80],
-      "flavor": "clay pots on the upper deck · herbs, a tomato vine, two strawberry plants, a small rosebush.",
-      "arrival_lines": [
-        "the herbs have grown another quarter-inch since you last checked.",
-        "the rosebush has put out a new bud overnight. you didn't ask it to."
-      ]
-    },
-    {
-      "id": "bow_window",
-      "label": "BOW WINDOW",
-      "kind": "station",
-      "pos_xy": [950, 520],
-      "flavor": "the wraparound window at the front of the boat · the river splits around the hull here.",
-      "arrival_lines": [
-        "the river splits around the bow. one half goes left, one half goes right. you can't tell which.",
-        "the bow window has a fingerprint that isn't yours."
-      ]
-    },
-    {
-      "id": "engine_room",
-      "label": "ENGINE ROOM",
-      "kind": "station",
-      "pos_xy": [800, 660],
-      "flavor": "the hold · the small engine that hasn't turned in a decade · the river-side hull at its closest.",
-      "arrival_lines": [
-        "the engine is silent in the way a sleeping animal is silent.",
-        "the hull plates here are the thinnest in the boat. you can feel the river through them."
-      ]
-    },
-    {
-      "id": "guest_cabin",
-      "label": "GUEST CABIN",
-      "kind": "station",
-      "pos_xy": [500, 520],
-      "flavor": "the one bunk · for the guest who has nowhere else to go tonight.",
-      "arrival_lines": [
-        "the bunk is made. it has been made for as long as anyone can remember.",
-        "the cabin holds the warmth of an offer that has been standing for a long time."
+        "the gangway flexes when the river does. you stopped noticing in 2009.",
+        "the parking lot is on the other side. dante's security camera from '03 covers the gangway and the first ten feet of the lot. there is a known shadow at the dumpster the camera does not cover."
       ]
     }
   ],
   "adjacency": {
-    "gangway":          ["lounge"],
-    "river_door":       ["galley", "bow_window"],
-    "upper_deck_hatch": ["garden_deck"],
-    "garden_deck":      ["upper_deck_hatch", "wheelhouse"],
-    "wheelhouse":       ["garden_deck", "long_table"],
-    "lounge":           ["gangway", "long_table", "pantry"],
-    "long_table":       ["lounge", "galley", "wheelhouse", "guest_cabin"],
-    "galley":           ["long_table", "river_door", "bow_window"],
-    "pantry":           ["lounge", "guest_cabin"],
-    "guest_cabin":      ["pantry", "long_table", "bow_window"],
-    "bow_window":       ["galley", "river_door", "guest_cabin", "engine_room"],
-    "engine_room":      ["bow_window"]
+    "helm":              ["office_staircase"],
+    "office_staircase":  ["helm", "maitre_d_stand", "main_dining_room"],
+    "maitre_d_stand":    ["office_staircase", "gangway", "main_dining_room"],
+    "main_dining_room":  ["maitre_d_stand", "office_staircase", "private_dining", "table_17", "sammys_bar"],
+    "private_dining":    ["main_dining_room"],
+    "table_17":          ["main_dining_room"],
+    "sammys_bar":        ["main_dining_room", "the_pass", "catering_office"],
+    "the_pass":          ["sammys_bar", "kitchen"],
+    "kitchen":           ["the_pass", "back_corridor"],
+    "back_corridor":     ["kitchen", "side_door", "catering_office"],
+    "side_door":         ["back_corridor"],
+    "catering_office":   ["sammys_bar", "back_corridor", "the_card_room", "staff_locker_room"],
+    "the_card_room":     ["catering_office", "the_back_room"],
+    "the_back_room":     ["the_card_room"],
+    "staff_locker_room": ["catering_office", "staff_exit"],
+    "staff_exit":        ["staff_locker_room"],
+    "gangway":           ["maitre_d_stand"]
   },
   "bloom_track": {
     "completion_threshold": 6,
-    "label": "BLOOM",
-    "notes": "Nicola's positive doom-clock — opposite of the Magician's steamboat. PLANT / TEND / HARVEST actions tick Bloom up. At threshold, the boat is in full season and Nicola's hand cards get a passive bonus. Some scenarios use Bloom as a soft win counter rather than a loss counter.",
+    "label": "THE FLOOR HOLDS",
+    "notes": "Generic positive doom-clock for the boat. Engine variable: _bloom (used by Empress scenarios) or _ledger (used by Emperor scenarios) — depending on which arcana's scenario is running. The semantic is the same: the boat held its weight tonight. The brunch hit its peak and came back down without anybody walking out. The card room ran clean. The catering shipment for the saturday wedding got prepped without a vendor calling about a lien. Threshold means the night made the night it was supposed to be.",
     "ladder": [
-      { "level": 0, "label": "the boat is between seasons.",                  "intensity": 0.0 },
-      { "level": 1, "label": "the first crop is showing.",                    "intensity": 0.15 },
-      { "level": 2, "label": "the second crop is in.",                        "intensity": 0.30 },
-      { "level": 3, "label": "halfway · the table can be set with everything the boat has.", "intensity": 0.50 },
-      { "level": 4, "label": "the upper deck smells like a market.",          "intensity": 0.70 },
-      { "level": 5, "label": "the boat is overgrown · the river knows.",      "intensity": 0.85 },
-      { "level": 6, "label": "full bloom · everything the boat makes, makes.","intensity": 1.0 }
+      { "level": 0, "label": "the boat is the boat. the brass railing is the wrong-bright brass.","intensity": 0.0 },
+      { "level": 1, "label": "the first table is seated. the first card hand is dealt.",         "intensity": 0.15 },
+      { "level": 2, "label": "the second wave of brunchers is at the gangway.",                  "intensity": 0.30 },
+      { "level": 3, "label": "halfway · sammy's bar is at its sunday volume.",                    "intensity": 0.50 },
+      { "level": 4, "label": "the catering office has confirmed the saturday wedding.",          "intensity": 0.70 },
+      { "level": 5, "label": "one more thing and the night is the night.",                       "intensity": 0.85 },
+      { "level": 6, "label": "the floor held. the boat held. dante closes the helm light.",      "intensity": 1.0 }
+    ]
+  },
+  "ledger_track": {
+    "completion_threshold": 6,
+    "label": "THE LEDGER CLOSED",
+    "notes": "Aliased positive doom-clock for Emperor scenarios. Same engine slot as the bloom_track semantically (the engine reads _ledger for emperor arcana_id, _bloom for empress). The ladder above is shared in flavor.",
+    "ladder": [
+      { "level": 0, "label": "the ledger is open to today's date.",                    "intensity": 0.0 },
+      { "level": 1, "label": "one entry.",                                              "intensity": 0.15 },
+      { "level": 2, "label": "two entries. the day is starting to look like a day.",   "intensity": 0.30 },
+      { "level": 3, "label": "halfway · the catering side is balanced.",                "intensity": 0.50 },
+      { "level": 4, "label": "the card-room weekend take is logged.",                   "intensity": 0.70 },
+      { "level": 5, "label": "one more entry and the ledger is the ledger.",            "intensity": 0.85 },
+      { "level": 6, "label": "the ledger closed. dante sets the pen down.",             "intensity": 1.0 }
     ]
   }
 }

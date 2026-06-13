@@ -1,5 +1,0 @@
-{
-  "scope": "empress",
-  "notes": "Empress does not use the Fool's mess-meeple system. The boat is tidy in a way the diner isn't. Pressure comes from Doubt + Bloom dropping when meals don't land. This file exists so the engine's threat loader doesn't crash.",
-  "threats": {}
-}
