@@ -1,0 +1,153 @@
+[gd_scene load_steps=11 format=3 uid="uid://warehouse_v1"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/cathedral/cathedral_interior.glb" id="1_interior"]
+[ext_resource type="PackedScene" path="res://assets/3d/props/workbench_props.glb" id="2_workbench"]
+[ext_resource type="PackedScene" path="res://assets/3d/agents/demon_figurines.glb" id="3_agents"]
+[ext_resource type="PackedScene" path="res://assets/3d/dioramas/regions.glb" id="4_dioramas"]
+[ext_resource type="PackedScene" path="res://assets/3d/atmosphere/atmosphere.glb" id="5_atmosphere"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="6_fpc"]
+[ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="7_hud"]
+
+[sub_resource type="CapsuleShape3D" id="Caps_Player"]
+radius = 0.30
+height = 1.70
+
+[sub_resource type="BoxShape3D" id="Box_Floor"]
+size = Vector3(30, 0.5, 24)
+
+[sub_resource type="BoxShape3D" id="Box_Wall_NS"]
+size = Vector3(30, 9, 0.5)
+
+[sub_resource type="BoxShape3D" id="Box_Wall_EW"]
+size = Vector3(0.5, 9, 24)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Marker"]
+albedo_color = Color(0.92, 0.32, 0.15, 1)
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.8, 0.2, 0.05, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="BoxMesh" id="Box_Marker"]
+size = Vector3(0.8, 4.0, 0.8)
+
+[sub_resource type="Environment" id="Env_Warehouse"]
+background_mode = 1
+background_color = Color(0.05, 0.04, 0.03, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.4, 0.34, 0.26, 1)
+ambient_light_energy = 1.0
+
+[node name="Warehouse" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_Warehouse")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 10, 0)
+light_color = Color(1, 0.94, 0.82, 1)
+light_energy = 1.8
+shadow_enabled = false
+
+[node name="Fill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+light_color = Color(1, 0.85, 0.6, 1)
+light_energy = 12.0
+omni_range = 35.0
+shadow_enabled = false
+
+[node name="Interior" parent="." instance=ExtResource("1_interior")]
+
+[node name="WorkbenchProps" parent="." instance=ExtResource("2_workbench")]
+
+[node name="DemonFigurines" parent="." instance=ExtResource("3_agents")]
+
+[node name="Dioramas" parent="." instance=ExtResource("4_dioramas")]
+
+[node name="Atmosphere" parent="." instance=ExtResource("5_atmosphere")]
+
+[node name="Marker_North" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
+mesh = SubResource("Box_Marker")
+material_override = SubResource("Mat_Marker")
+
+[node name="Marker_South" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
+mesh = SubResource("Box_Marker")
+material_override = SubResource("Mat_Marker")
+
+[node name="Marker_East" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 0)
+mesh = SubResource("Box_Marker")
+material_override = SubResource("Mat_Marker")
+
+[node name="Marker_West" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 0)
+mesh = SubResource("Box_Marker")
+material_override = SubResource("Mat_Marker")
+
+[node name="FloorBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="FloorShape" type="CollisionShape3D" parent="FloorBody"]
+shape = SubResource("Box_Floor")
+
+[node name="WallNorth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -9.25)
+
+[node name="WallNorthShape" type="CollisionShape3D" parent="WallNorth"]
+shape = SubResource("Box_Wall_NS")
+
+[node name="WallSouth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 9.25)
+
+[node name="WallSouthShape" type="CollisionShape3D" parent="WallSouth"]
+shape = SubResource("Box_Wall_NS")
+
+[node name="WallEast" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 4.5, 0)
+
+[node name="WallEastShape" type="CollisionShape3D" parent="WallEast"]
+shape = SubResource("Box_Wall_EW")
+
+[node name="WallWest" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 4.5, 0)
+
+[node name="WallWestShape" type="CollisionShape3D" parent="WallWest"]
+shape = SubResource("Box_Wall_EW")
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("6_fpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("Caps_Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 65.0
+near = 0.05
+far = 100.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 200.0
+script = ExtResource("7_hud")
+target = NodePath("../../Player")
+
+[node name="ControlsLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 240.0
+offset_right = 600.0
+offset_bottom = 360.0
+text = "WASD move · QE turn · RF pitch · Space/Ctrl up/down · F1 collide · F2 teleport"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.78, 0.62, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
