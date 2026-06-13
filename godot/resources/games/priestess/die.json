@@ -1,0 +1,12 @@
+{
+  "scope": "priestess",
+  "notes": "Elicia's six-face die. FRAME = the director's tic landing. CUT = forward edit progress. PAUSE = the breath face. WATCH = receiving (partial). FRACTURE = the failed face (the shard's reflection). WILD = anything.",
+  "faces": [
+    { "id": "frame",    "label": "FRAME",    "weight": 2, "kind": "success" },
+    { "id": "cut",      "label": "CUT",      "weight": 1, "kind": "success" },
+    { "id": "pause",    "label": "PAUSE",    "weight": 1, "kind": "partial" },
+    { "id": "watch",    "label": "WATCH",    "weight": 1, "kind": "partial" },
+    { "id": "fracture", "label": "FRACTURE", "weight": 1, "kind": "fail" },
+    { "id": "wild",     "label": "WILD",     "weight": 0, "kind": "wild" }
+  ]
+}

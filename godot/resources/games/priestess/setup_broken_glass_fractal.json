@@ -1,0 +1,79 @@
+{
+  "id": "broken_glass_fractal",
+  "arcana": "ii_priestess",
+  "location": "elicia_bungalow",
+  "hand": "elicia",
+  "title": "BROKEN GLASS FRACTAL",
+  "subtitle": "The Bungalow · 8:14 PM · The Mirror Shard, the Choice",
+  "difficulty": "medium",
+  "epigraph_upright": "Dusk into night. You hold the mirror shard between thumb and forefinger. Your reflection fractures into a dozen Elicias, none whole. The Choose-Your-Own-Adventure episode is on the script page on the side table. Three options: the slaughterhouse, the mannequins, the comforting void. The cult audience has been patient. The audience will not be patient much longer.",
+  "epigraph_reversed": "You do not, today, choose. The shard goes back on the third shelf. The script page goes back on the side table. The cult audience writes the third forum essay of the month.",
+  "scene_description": "8:14 PM. The canonical ch2 evening. Insight at 1. Master Reel at 2. Doubt at 1. Stagnation at 1. The shard is on the third shelf. Anya is on the editing screen. Mackenzie has been on text for an hour. John's email window is open. The basil has, today, two yellow leaves.",
+  "direction_hint": "Look at the shard. Frame the choice. Render at least one branch of the Choose-Your-Own-Adventure. Connect with Anya, Mackenzie, John. Master Reel to 5. Leap.",
+  "opening_log_lines": [
+    "8:14 PM. The bungalow is humming at its dusk-frequency.",
+    "The shard caught the light from the doorway. You crossed the room to pick it up.",
+    "The Choose-Your-Own-Adventure script page on the side table: A, B, C."
+  ],
+  "starting_state": {
+    "player_pos": "the_bookshelf",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "insight": 1,
+    "starting_master_reel": 2,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "frame_the_shot", "pick_up_the_teacup", "open_the_laptop", "smoke_on_the_porch", "exit_through_the_gift_shop"]
+  },
+  "visitors_present_at_start": ["anya_on_screen", "mrmyst_memory", "mackenzie_texts_priestess"],
+  "visitor_schedule": [
+    { "visitor": "john_email", "arrival_turn": 3, "arrival_space": "the_editing_desk" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_master_reel_below": 7,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the dusk-frequency hum.",                                 "tick_per_turn": 1, "effects": [] },
+    { "level": 4, "label": "the script page has been on the side table for nine days.","tick_per_turn": 1, "effects": [] },
+    { "level": 7, "label": "the cult audience has, just now, started typing.",         "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the audience stopped waiting.",                          "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "elicia at the bookshelf. the shard between thumb and forefinger.","effects": [] },
+    { "level": 3, "label": "the reflection is twelve elicias. none whole.",                    "effects": [] },
+    { "level": 5, "label": "the storage closet door is, this evening, slightly ajar.",         "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the brittle thing showed.",                                       "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door", "label": "FRONT DOOR", "ending_lore_token": "leap_through_the_front_door_night", "visible_from_start": true },
+    { "id": "back_gate",  "label": "BACK GATE",  "ending_lore_token": "leap_through_the_back_gate_night",  "visible_from_start": true },
+    { "id": "roof",       "label": "ROOF",       "ending_lore_token": "leap_off_the_roof_at_night",        "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Medium-mode Priestess. The canonical ch2 dusk. Player starts at the bookshelf with the shard. EXIT THROUGH THE GIFT SHOP ability in starting hand. John's email arrives turn 3 (the canonical 'Yes.' reply opportunity). Win is 3 connections + 1 hard mood (MrMyst's memory is intense; John is lonely; Anya is preoccupied) + Master Reel below 7 + leap. Dream-logic permitted: the shard catches light differently, the storage closet door is slightly ajar — atmospheric only.",
+  "ambient_pool": [
+    "the cicadas at dusk · the shard between thumb and forefinger · twelve elicias.",
+    "the basil has, today, two yellow leaves.",
+    "the storage closet door is slightly ajar. you have not, today, opened it.",
+    "anya on screen, mid-sentence, paused on the breath."
+  ],
+  "ambient_every_n": 2
+}

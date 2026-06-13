@@ -608,22 +608,22 @@ const EMPRESS_SCENARIOS := [
 
 const PRIESTESS_SCENARIOS := [
 	{
-		"id": "cicada_session",
-		"title": "CICADA SESSION",
-		"subtitle": "Easy · 9:18 PM · Late Summer",
-		"flavor": "Three appointments tonight, all small. The returner is in the lounge already. The cicadas are doing the part of the work the room can't do. Elicia gets to be the listener instead of the engineer for a change. The reel is fresh."
+		"id": "packing",
+		"title": "PACKING",
+		"subtitle": "Easy · 6:42 PM · Cardboard Boxes, Half-Filled",
+		"flavor": "Late afternoon. Cardboard boxes gape along the warped hardwood floor. The mother's teacup is on the kitchen counter. The Anya footage is paused on the laptop. The cult audience has been patient. Mackenzie texts."
 	},
 	{
-		"id": "long_quiet",
-		"title": "THE LONG QUIET",
-		"subtitle": "Medium · 11:02 PM · Confessional Hour",
-		"flavor": "Late session. The kind of visitor who walks in because they had nowhere else to say it. The pre-funeral son. The apologist. Elicia's ability is exactly the right shape for this hour. Don't let the reel fill before the apology lands."
+		"id": "broken_glass_fractal",
+		"title": "BROKEN GLASS FRACTAL",
+		"subtitle": "Medium · 8:14 PM · The Mirror Shard, the Choice",
+		"flavor": "Dusk into night. You hold the mirror shard between thumb and forefinger. Your reflection fractures into a dozen Elicias, none whole. The Choose-Your-Own-Adventure episode is on the script page on the side table. Three options. The cult audience will not be patient much longer."
 	},
 	{
-		"id": "tape_witness",
-		"title": "TAPE WITNESS",
-		"subtitle": "Hard · 2:14 AM · The Truth-Teller's Hour",
-		"flavor": "Off-the-books. The truth-teller is in the booth already. The cathedral is dark on the other side. Two more visitors coming. The reel is half-full of the take Elicia made before you got there. Get the truth on tape without breaking the listener."
+		"id": "the_comforting_void",
+		"title": "THE COMFORTING VOID",
+		"subtitle": "Hard · 11:42 PM · The Storage Closet Door",
+		"flavor": "Late. The storage closet door is, this evening, slightly ajar. You did not, this evening, open it. You will, this evening, open it. Pomegranate Hour is in the boxes labeled in your hand from '21."
 	}
 ]
 
@@ -838,10 +838,10 @@ func _view_substrate_fullscreen(short_path: String, title: String, kind: String 
 		var vm := _spawn_visualizer(MAGICIAN_VISUALIZER_SCRIPT)
 		_add_play_button_overlay(vm, "magician", "cathedral", "frasier")
 		return
+	# Priestess rebuilt around Elicia's bungalow (vol5 ch2 canon).
 	if short_path == "high_priestess_arcana":
 		var vp := _spawn_visualizer(PRIESTESS_VISUALIZER_SCRIPT)
-		# Priestess scenario play button removed in canon-alignment surgery
-		# — Whispers from the Liminal rebuild pending. Visualizer still renders.
+		_add_play_button_overlay(vp, "priestess", "elicia_bungalow", "elicia")
 		return
 	# Emperor rebuilt around Dante at the riverboat helm (vol5 ch4 canon).
 	if short_path == "emperor_arcana":

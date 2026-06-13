@@ -1,0 +1,80 @@
+{
+  "id": "the_comforting_void",
+  "arcana": "ii_priestess",
+  "location": "elicia_bungalow",
+  "hand": "elicia",
+  "title": "THE COMFORTING VOID",
+  "subtitle": "The Bungalow · 11:42 PM · The Storage Closet Door",
+  "difficulty": "hard",
+  "epigraph_upright": "Late. The storage closet door is, this evening, slightly ajar. You did not, this evening, open it. You will, this evening, open it. Pomegranate Hour is in the boxes labeled in your hand from '21. The choose-your-own-adventure cut is half-rendered. The cult audience has, by now, started writing the post that says the void should be its own audience. John has replied to your reply with one word: when. Mackenzie has texted twice. Philip is, somewhere in Graustark, deciding to call.",
+  "epigraph_reversed": "You open the storage closet and you do not close it again. The Whispers timeline does not, tonight, render. The bungalow becomes the bungalow before the bungalow.",
+  "scene_description": "11:42 PM. Insight at 2. Master Reel at 3. Doubt at 3. Stagnation at 3. The storage closet door is slightly ajar (the dream-logic touch is canonically permitted in the Priestess). The PH tapes are pullable from this scenario. Pulling them costs doubt + ticks Master Reel — the salvage IS the night's progress, AND it is the night's wound. Philip will call turn 4 (the canonical chapter 6 'kenz says she's worried' beat).",
+  "direction_hint": "Open the closet. Pull a tape. Cut it into the Whispers timeline. Reply Yes (or, this time, the longer reply John has earned). Take Philip's call. Master Reel to 6. Leap.",
+  "opening_log_lines": [
+    "11:42 PM. The cicadas have moved into the late-night register.",
+    "The storage closet door is slightly ajar. You did not, this evening, open it.",
+    "John's email reads, in the reply box you sent at 8:47: Yes. He has, just now, replied: when.",
+    "Mackenzie has texted twice. Philip is, you suspect, about to call."
+  ],
+  "starting_state": {
+    "player_pos": "the_editing_desk",
+    "time": 4,
+    "time_per_turn": 4,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 3,
+    "stagnation_per_turn": 2,
+    "doubt": 3,
+    "doubt_max": 7,
+    "insight": 2,
+    "starting_master_reel": 3,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "frame_the_shot", "pick_up_the_teacup", "open_the_laptop", "smoke_on_the_porch", "exit_through_the_gift_shop"]
+  },
+  "visitors_present_at_start": ["anya_on_screen", "mrmyst_memory", "mackenzie_texts_priestess", "john_email"],
+  "visitor_schedule": [
+    { "visitor": "philip_phone_priestess", "arrival_turn": 4, "arrival_space": "living_room" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_master_reel_below": 7,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 2
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "11:42 PM. the bungalow is doing the late-night thing.",                "tick_per_turn": 2, "effects": [] },
+    { "level": 4, "label": "the storage closet door has, this hour, opened another inch.",         "tick_per_turn": 2, "effects": [] },
+    { "level": 7, "label": "the cult audience is typing the void-is-its-own-audience post.",       "tick_per_turn": 3, "effects": [ "tick_master_reel" ] },
+    { "level": 10, "label": "the night ran out.",                                                   "tick_per_turn": 3, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "elicia at the editing desk. john's one-word reply on the screen.",     "effects": [] },
+    { "level": 3, "label": "the storage closet door is, this hour, more ajar than it was.",          "effects": [] },
+    { "level": 5, "label": "the ph tapes are in your peripheral vision from the editing desk.",     "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "pomegranate hour returned.",                                           "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door", "label": "FRONT DOOR", "ending_lore_token": "leap_through_the_door_late",  "visible_from_start": true },
+    { "id": "back_gate",  "label": "BACK GATE",  "ending_lore_token": "leap_through_the_gate_late",  "visible_from_start": true },
+    { "id": "roof",       "label": "ROOF",       "ending_lore_token": "leap_off_the_roof_late",      "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 7,
+  "notes": "Hard-mode Priestess. The late-night scenario where PH becomes loud. The storage closet is on the board with a dream-logic ajar door. PULL A PH TAPE is the central interesting move — gives 2 master_reel + 2 doubt; the salvage is the wound. John's email arc continues (he has replied 'when' to her 'yes'). Philip's call arrives turn 4 with the canonical Polaroid news. Win is 3 connections + 2 hard moods + Master Reel below 7 + leap. Reduced turn budget (7), reduced sanity_max (5), elevated stagnation pulse. ROOF threshold is the canonical close — the wide shot of the dusk-into-night Graustark from above her bungalow.",
+  "ambient_pool": [
+    "11:42 PM. the cicadas in the late-night register.",
+    "the storage closet door is slightly ajar. then more ajar.",
+    "anya on screen on the seventh frame of the breath. you have, this hour, watched it forty-three times.",
+    "philip's number on the phone screen, not yet ringing."
+  ],
+  "ambient_every_n": 2
+}

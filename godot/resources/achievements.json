@@ -48,6 +48,28 @@
       "unlock_key": "achievement:choose_to_know"
     },
     {
+      "id": "priestess_complete",
+      "title": "THE EPISODE HAS SHAPE",
+      "desc": "Win all three Priestess scenarios (PACKING, BROKEN GLASS FRACTAL, THE COMFORTING VOID). The Choose-Your-Own-Adventure has shape. The shard caught the light just so. The breath was the take.",
+      "trigger": { "kind": "all_scenarios", "arcana": "priestess", "scenarios": ["packing","broken_glass_fractal","the_comforting_void"] },
+      "unlock_key": "achievement:priestess_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:priestess" }
+    },
+    {
+      "id": "wide_shot_landed",
+      "title": "WIDE SHOT, ESTABLISHING",
+      "desc": "Invoke WIDE SHOT, ESTABLISHING. The director's tic — incurable.",
+      "trigger": { "kind": "card_played_during_run", "card": "wide_shot_establishing" },
+      "unlock_key": "achievement:wide_shot_landed"
+    },
+    {
+      "id": "ph_tape_pulled",
+      "title": "THE TAPE CAME OUT",
+      "desc": "Pull a Pomegranate Hour tape from the storage closet. The salvage is the wound. The wound is the salvage.",
+      "trigger": { "kind": "card_played_during_run", "card": "pull_a_ph_tape" },
+      "unlock_key": "achievement:ph_tape_pulled"
+    },
+    {
       "id": "empress_complete",
       "title": "THE FLOOR HELD",
       "desc": "Win all three Empress scenarios (STATIC BLOOM, WHEN YOU'RE READY, THE BACK ROOM CALLS). The night held. The floor was done by her. Aria has a name.",
