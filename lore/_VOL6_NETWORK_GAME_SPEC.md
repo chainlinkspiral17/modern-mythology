@@ -1,15 +1,52 @@
 # Vol 6 · Network Game Spec · "The Summer Before Milk and Honey"
 
 A grand-strategy gallery game for vol 6, set across a single summer
-of an older Frasier Temple's life. Frasier sits over a board of
-three regions and routes a network of demons and human agents to
-suppress multiplying problems while planting a fragile foothold in
-Small Wood, Oregon — the front that keeps getting swatted down.
+of a middle-aged Frasier Temple's life. Frasier sits over a board
+of three regions and routes a network of demons and human agents
+to suppress multiplying problems while planting a fragile foothold
+in Small Wood, Oregon — the front that keeps getting swatted down.
 
-The game fills the story *Planned Community* doesn't cover. Its
-output is the starting state of *Land of Milk and Honey*. Soft-fail
-throughout — there is no game-over screen, only worse openings for
-the next book.
+The game **adds flavor to the saga but does not author it.** The
+novels — *Planned Community*, *Land of Milk and Honey*, and
+whatever follows — are sovereign. They proceed exactly as written
+regardless of what the player does in this game. What the gallery
+game produces instead is **unlockable interludes**: extra narrative
+flavor — character vignettes, BBS transcripts, dossier excerpts —
+that the player earns by playing and can read alongside the canon.
+The interludes deepen the world for the player who put hours into
+the network; they never rewrite the world for the reader.
+
+Soft-fail throughout. There is no game-over screen, only different
+interludes earned.
+
+## The protagonist · Frasier Temple, middle-aged
+
+Frasier in vol 6 is **not** the kid from the Magician chapter
+anymore. He is middle-aged, getting old, creaky and cranky, and on
+his worse days maybe a little insane. He is the operator who has
+survived long enough to become the thing he used to dispatch
+agents at. He still wears the boots. The boots are now broken in
+the wrong places.
+
+What sustains him is the network. His **loyal friends and foot
+soldiers** — the canon roster who never stopped picking up, the
+sysops on his level who still trade favors over the BBS, the
+contacts in towns he hasn't visited in fifteen years who would
+still drive to the airport for him. And his **demon creations**,
+which by vol 6 are *evolving and getting more complex* — the
+vagrant of 1996 is not the vagrant of vol 6; the cicada has spent
+twenty years on Frasier's network and has, in that time, become
+something the Magician-era Frasier would not recognize. Some of
+them think for themselves now. A couple of them have opinions
+Frasier disagrees with. This is the cost of having made them in
+the first place.
+
+He is funny in the way old operators are funny — bone-dry, no
+patience for theatre, fond of the people he is fond of without
+saying so. He is paranoid in the way old operators are paranoid —
+not without reason. When the player meets him at the start of the
+summer, Frasier is already tired. The summer ahead is going to be
+worse.
 
 ## Core loop
 
@@ -68,8 +105,8 @@ keep trying in Small Wood?*
 
 Push too hard and Graustark starts failing in the slow grief-and-
 infrastructure way. Push too little and Small Wood swats every plant
-before it sprouts and the seed count for *Milk and Honey* stays at
-zero. The chill comes from the timescale, not the absence of choice.
+before it sprouts and the interlude shelf stays thin. The chill
+comes from the timescale, not the absence of choice.
 
 ### Graustark · home soil · established network
 
@@ -119,7 +156,7 @@ A small Oregon timber town where Frasier is trying to plant
 something. Every plant gets swatted. The locals are not on his
 side. The terrain is bad for demons (cold, watched, networked
 weirdly). This is the *planting* region — where success is measured
-in seeds banked for the next book, not in territory held.
+in seeds banked for the interlude shelf, not in territory held.
 
 - **Control nodes (sample):** one rented room above the timber-yard
   office, one dirt road, one diner that doesn't know it's a node yet,
@@ -131,8 +168,9 @@ in seeds banked for the next book, not in territory held.
   seed dying before sprouting, demon corruption (see below), the
   ground itself refusing the plant.
 - **Strategic role:** investment. Every successful plant in Small
-  Wood becomes a seed that *Milk and Honey* harvests in its opening
-  chapters. Every failed plant is a setback Frasier carries forward.
+  Wood unlocks an interlude in the player's shelf — a small piece
+  of vol 6's shoulder-season that the novels don't have room for.
+  Every failed plant is a sadder vignette on the shelf.
 - **The asymmetry:** Small Wood's escalation clock is twice as fast
   as the other two regions, Frasier loses agents here at a much
   higher rate, and **demons sent to Small Wood risk corruption**
@@ -172,6 +210,33 @@ Demons accrue **burn** with each use. At 5 burn, a demon goes dark
 for 14 days. At 10, gone for the saga. Burn doesn't recover on its
 own — Frasier has to *spend a BBS night on it* (a specific board
 where demons rest).
+
+**Demon evolution.** Frasier's demons are not the demons of the
+Magician chapter. Twenty years on the network have *changed* them.
+Each demon carries a small, growing complexity rating that the
+player can read on the agent's dossier. As a demon completes
+operations — and especially as it weathers near-corruptions and
+returns from Small Wood — its complexity rises. Higher complexity
+demons:
+
+- Develop **specialties beyond their class** (a cicada that has
+  worked Harmony Creek for years gains *policy intuition*; a moth
+  that has survived three Small Wood trips gains *cold-terrain
+  resistance*).
+- Develop **opinions**, surfaced as BBS posts from the demon under
+  its handle, sometimes disagreeing with Frasier's dispatch
+  decisions. Frasier can override; the demon will go, but
+  obligation now runs both ways.
+- Develop **vulnerabilities**. A complex demon is also a *legible*
+  demon — the resistance has had more time to study it. Some
+  high-complexity demons accrue corruption at half the normal rate
+  but, if they do turn, turn into substantially more dangerous
+  enemy agents.
+
+Evolution is the long arc of the demon economy. By Labor Day,
+Frasier's roster looks less like *eight tools* and more like
+*eight collaborators with their own ideas about the work*. That
+shift is one of the quiet rewards of a long summer.
 
 **Corruption in Small Wood.** A demon dispatched to Small Wood
 accrues *corruption* alongside burn, at a much faster rate. At a
@@ -289,11 +354,11 @@ He is never a dispatchable agent on Frasier's side. He shows up
 
 A second hidden ledger runs parallel to Frasier's. The player
 cannot read it directly. They can infer its contents from
-anomalies, fingerprints, and tower events. *Milk and Honey* opens
-with both ledgers as inherited state — Frasier's seeds **and**
-Dean's. The protagonist of the next book may discover, late, that
-half of what they thought was their own work was Dean's all along.
-Or none of it was. The game does not tell the player which.
+anomalies, fingerprints, and tower events. At Labor Day a few
+*trace fragments* from Dean's ledger surface as the Dean interludes
+on the player's shelf — partial, unreliable, possibly contradictory
+to what the player thought they saw. The interludes never *resolve*
+Dean. The silence is the point.
 
 ### Why Dean is the right design choice
 
@@ -307,9 +372,10 @@ Three reasons the third faction earns its place:
    Dean's substrate. A demon that should have corrupted but didn't
    might be lucky or might be borrowed. The player can never be
    certain which, and that uncertainty is a *feature*.
-3. **It is the engine for the next book.** *Milk and Honey* has to
-   open with something the protagonist doesn't know. Dean's parallel
-   ledger is that something.
+3. **It earns the strangest interludes.** The Dean shelf is the
+   weirdest, sparest section of the unlock browser. A player who
+   leans into reading anomalies all summer earns a small, deeply
+   strange set of fragments that no other path produces.
 
 Dean is a design constraint as much as a faction: the writer
 authoring anomalies and fingerprints has to decide, scenario by
@@ -333,8 +399,8 @@ currently is. Problems have:
 
 Successful resolution returns the agent (with cost) and writes a
 small ledger entry. Some resolutions in Small Wood specifically
-**bank a seed** — a token *Milk and Honey* reads off Frasier's
-ledger at the start of its run.
+**bank a seed** — a token that, at Labor Day, unlocks the seed's
+interlude in the player's shelf.
 
 ## The BBS layer
 
@@ -408,64 +474,85 @@ player can browse outside of the BBS night. They're the slow-burn
 reward layer. None of them are required. All of them deepen the
 saga.
 
-## The seed economy
+## The interlude economy
 
-The output of the game. What *Milk and Honey* inherits.
+The output of the game is **flavor, not canon**. The novels are
+sovereign. *Land of Milk and Honey* opens exactly the way the
+writer wrote it. What the game produces is a set of **unlockable
+interludes** — extra narrative content the player earns and can
+read alongside the canon.
 
-- **Seeds planted** · per Small Wood success. Each seed is a named
-  thing (a contact's name, a plot of land, a phrase posted on the
-  right board). *Milk and Honey* opens with that many seeds
-  available to its protagonist.
-- **Agents intact** · which demons are still on Frasier's roster at
-  Labor Day. Which humans are still picking up the phone.
-- **Demons turned** · the negative inheritance. Demons that
-  corrupted in Small Wood and stayed there. *Milk and Honey* opens
-  with each turned demon listed as an active enemy agent — Frasier's
-  former tools, working for the resistance, knowing his methods.
-- **Cover remaining** · the network's deniability score. Low cover
-  means *Milk and Honey* opens with Frasier already under watch.
-- **BBS friendships** · per-canon-human relationship state at saga
-  end. Frasier's call list going into vol 7. Includes whose home
-  lives broke under the dispatch load.
-- **Tower-state** · the tower's final brightness reading at Labor
-  Day. *Milk and Honey* opens with the tower bright, dim, or dark
-  depending on what Dean was doing in the last week of the summer.
-- **Dean's ledger (hidden)** · the parallel ledger the player never
-  sees. *Milk and Honey* may read off this to make the protagonist's
-  opening world feel like it has been written without them.
-- **Unlocks claimed** · the player's collection state. Carries to
-  the saga shelf, not the in-game ledger.
+Interludes are typed by what unlocked them:
 
-The save file handed to the next book is short — maybe a dozen
-fields — but the strategic decisions that wrote it are the whole
-summer.
+- **Seed interludes** · per Small Wood success. Each seed unlocks
+  a short vignette set in the place the seed was planted — the
+  rented room above the timber-yard, the dirt road at dusk, the
+  diner that doesn't know it's a node yet. Vignettes are written in
+  the voice of whoever was on the ground. The interlude does not
+  appear in the next book; it appears in the player's gallery shelf
+  next to the game.
+- **Agent-intact interludes** · for each canon human still picking
+  up the phone at Labor Day, an interlude in their voice about how
+  the summer went *for them*. Mackenzie's loom in September. Dante
+  on the boat. Elicia's bungalow. These are character POVs the
+  novels don't have room for.
+- **Turned-demon interludes** · for each demon that corrupted and
+  stayed in Small Wood, a short piece written *in the demon's
+  voice* about why it didn't come home. The most haunting interlude
+  type. Frasier never reads these; the player does.
+- **Demon evolution interludes** · for each demon that hits a
+  complexity threshold, a piece showing the moment the demon
+  became something Frasier didn't make. Half memoir, half
+  manifesto.
+- **BBS-friendship interludes** · per canon human relationship
+  state at saga end. Includes the breakup interludes: whose home
+  life broke under the dispatch load, written from the spouse's
+  POV or the empty-house POV.
+- **Tower interludes** · keyed off the tower's brightness state at
+  Labor Day. Bright, dim, and dark each unlock different vignettes
+  — the bright tower's interlude is the most unsettling.
+- **Dean interludes (rare)** · trace fragments from Dean's hidden
+  ledger that surface only at the end, regardless of whether the
+  player figured anything out about him. The unreliability is the
+  point.
+- **Unlocks claimed** · the BBS-archive collectibles. These already
+  live on the shelf during play. After Labor Day, the shelf binds
+  into a single browsable collection.
+
+The interludes are the *gift the game gives back* for a summer of
+play. The reader of *Milk and Honey* who didn't play the game is
+not missing canon. The player who did play, with a particular
+shape of summer, is reading a small extra book about the
+shoulder-season Frasier the novels keep their hands off.
 
 ## Soft fail
 
-There is no game-over screen.
+There is no game-over screen. The canon doesn't bend to the
+player's summer; only the *interlude shelf* does.
 
-- A summer where Small Wood collapses entirely → *Milk and Honey*
-  opens with zero seeds, hostile terrain, and the protagonist
-  having to start the work from scratch. Different game, not a
-  failed game.
-- A summer where Graustark crumbles → the canon roster opens vol 7
-  reduced. Some characters Frasier knew are gone. The protagonist
-  inherits a smaller home.
+- A summer where Small Wood collapses entirely → unlocks the
+  *Empty Forest* interlude suite. Quiet, sad pieces about plants
+  that never grew, contacts who never returned the call, a room
+  above a timber-yard that the player rented for nothing.
+- A summer where Graustark crumbles → unlocks the *Home Front*
+  suite. Late-summer pieces from the canon roster about who left,
+  who broke, and who stayed at a node Frasier wasn't there to
+  defend.
 - A summer where Frasier himself burns out (his own sanity track
-  hits zero) → he's still there in *Milk and Honey*, but quieter,
-  smaller, no longer the operator. The protagonist has to coordinate
-  without him.
-- A summer where three or more demons turn in Small Wood → *Milk
-  and Honey* opens with a *hostile former Magician roster* working
-  against the protagonist. The villains know Frasier's signatures
-  because they used to *be* Frasier's signatures.
-- A summer where the tower stays bright at Labor Day → Dean has
-  finished whatever he was doing. *Milk and Honey* opens with the
-  substrate active across all three regions, the rules already
-  bending before the protagonist takes their first action.
+  hits zero) → unlocks the *Operator Out* suite. Frasier writing
+  to himself in the BBS personal-files. The funniest and saddest
+  interludes in the game.
+- A summer where three or more demons turn in Small Wood → unlocks
+  the *Voices in the Wood* suite. The turned demons' own POV
+  pieces about why they stayed. Frasier never reads these. The
+  player does.
+- A summer where the tower stays bright at Labor Day → unlocks the
+  *Substrate Hum* suite. Short, deeply strange pieces written in a
+  voice that may or may not be Dean's. Reality-bending prose, the
+  format itself slightly off.
 
-Every ending is a starting state. None is a loss. Some starting
-states are harder than others; none are inaccessible.
+Every ending is a different *interlude shelf*. None is a loss.
+Some shelves are heavier than others; all are worth reading.
 
 ## Tone · the chill unwind
 
@@ -512,8 +599,8 @@ the office shelf for collected unlocks.
 - Multiplayer / online. The BBS is faked; no other players are real.
 - Procedural problem / dialogue generation. Every problem and every
   BBS post is authored.
-- Branching endings beyond the inherited save state. The endings
-  are *Milk and Honey*'s problem.
+- Branching the saga's canon. The novels' plots don't move because
+  of the player. Only the interlude shelf moves.
 - A combat layer. Agents resolve problems by being-dispatched-and-
   returning, not by playable combat.
 
@@ -530,7 +617,9 @@ the office shelf for collected unlocks.
   Temple — not like they played a strategy game with a chat
   interface bolted on.
 
-If those land, the gallery game has earned its place between
-*Planned Community* and *Land of Milk and Honey*. And the next
-book opens from a starting state the player can point at and say:
-*I made that.*
+If those land, the gallery game has earned its place alongside
+*Planned Community* and *Land of Milk and Honey*. The novels stay
+the novels. The player closes the summer with an interlude shelf
+that is *theirs* — a small extra book about the shoulder-season,
+written into existence by a hundred quiet turns. The canon never
+asked them to, and never noticed. That's the gift.
