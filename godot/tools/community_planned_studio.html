@@ -158,6 +158,17 @@
 
   <div class="actions" id="actions"></div>
 
+  <div class="grid" style="grid-template-columns: 2fr 1fr;">
+    <div class="panel">
+      <h3>THE WORLD · OVERNIGHT TICKER</h3>
+      <div id="ticker-list" style="font-size:11px; color:var(--paper-fade); line-height:1.55;"></div>
+    </div>
+    <div class="panel">
+      <h3>WHAT'S COMING</h3>
+      <div id="deadlines" style="font-size:11px; line-height:1.55;"></div>
+    </div>
+  </div>
+
   <div class="log">
     <h3>THE DAY · IN LOG</h3>
     <div id="log-entries"></div>
@@ -270,12 +281,17 @@
       "weekday": "SUN · Memorial Day",
       "hour": "7:14 AM",
       "tower": "bright",
-      "morning_narration": "the brass railing is the wrong brass again. sunday. the surviving son's restaurant closes early today — sammy is at his sister's funeral. graustark feels the small absence.",
+      "morning_narration": "the brass railing is the wrong brass again. sunday. the surviving son's restaurant closes early today — sammy is at his sister's funeral. graustark feels the small absence. the workbench radio was left on overnight; you do not, this morning, remember leaving it on.",
       "ambient": "cicadas at warm-morning frequency · faint river-bank lap · the workbench radio left on overnight",
       "events": [
-        { "type": "log", "text": "the new restaurant closes early. hector covers the line alone." }
+        { "type": "log", "text": "the new restaurant closes early. hector covers the line alone." },
+        { "type": "ticker", "text": "WUFR's morning broadcast skipped one minute thirty seconds at 6:14 AM. nobody on the BBS has noted it yet." },
+        { "type": "ticker", "text": "the egret returned to the second iron strut at first light. the bird-watcher saw it. she did not, this morning, write it down." },
+        { "type": "problem_spawn", "region": "graustark", "name": "Mrs. Boudreaux's grandchildren visit", "id": "p_boudreaux_visit", "escalation_days": 18 }
       ],
-      "dms": [],
+      "dms": [
+        { "from": "nicola", "subject": "memorial day", "body": "frasier — i'm at the house all day today. my sister's flowers are on the porch. come by if you need to. — n." }
+      ],
       "phone_calls": [],
       "problems_spawn": []
     },
@@ -284,10 +300,13 @@
       "weekday": "MON",
       "hour": "7:42 AM",
       "tower": "bright",
-      "morning_narration": "monday opens. the diner's coffee delivery is, by frasier's careful watch from the river window, the same driver. that is a good sign.",
-      "ambient": "warehouse fluorescents at proper frequency · faith asleep on the rug",
+      "morning_narration": "monday opens. the diner's coffee delivery is, by frasier's careful watch from the river window, the same driver. that is a good sign. the moth's lamp on the workbench has, overnight, dropped one filament-temperature notch. the binding will hold this week. it will not hold next week.",
+      "ambient": "warehouse fluorescents at proper frequency · faith asleep on the rug · the modem warming on standby",
       "events": [
-        { "type": "dm_arrive", "from": "elicia", "subject": "a tape", "body": "frasier — i have a tape i'd like you to listen to when you're next here. it's eight minutes. nothing urgent. it can wait until you have an evening. — e." }
+        { "type": "dm_arrive", "from": "elicia", "subject": "a tape", "body": "frasier — i have a tape i'd like you to listen to when you're next here. it's eight minutes. nothing urgent. it can wait until you have an evening. — e." },
+        { "type": "ticker", "text": "the second NexCorp brochure arrived at the Halsey-Knight household. Jasper opened it. Dre did not." },
+        { "type": "ticker", "text": "Hector worked the line alone Sunday and is, by Monday morning, half a day behind on prep." },
+        { "type": "problem_spawn", "region": "hce", "name": "model home Sunday tour traffic", "id": "p_model_home_traffic", "escalation_days": 11 }
       ],
       "dms": [],
       "phone_calls": [],
@@ -298,14 +317,19 @@
       "weekday": "TUE",
       "hour": "7:14 AM",
       "tower": "bright",
-      "morning_narration": "the brass railing is the wrong brass again. tuesday. the nexcorp brochure has, this morning, arrived at three more graustark addresses — including mrs. theresa boudreaux's.",
-      "ambient": "cicadas · the workbench notebook open to a blank page",
+      "morning_narration": "the brass railing is the wrong brass again. tuesday. the nexcorp brochure has, this morning, arrived at three more graustark addresses — including mrs. theresa boudreaux's. the brochures are heavier this month. the typeface changed.",
+      "ambient": "cicadas · the workbench notebook open to a blank page · WUFR's mid-morning carrier audible faintly through the back wall",
       "events": [
         { "type": "log", "text": "nexcorp brochure pulse · three new graustark addresses · one is Mrs. Boudreaux's" },
-        { "type": "problem_spawn", "region": "graustark", "name": "Boudreaux brochure-watch", "id": "p_boudreaux", "escalation_days": 14 }
+        { "type": "ticker", "text": "Maya Daigle mailed a letter to F.T. via the Cosmic Comics back-counter drop. arrives Thursday." },
+        { "type": "ticker", "text": "Diego Ramos did not come home Monday night. Graciela has not, by 7AM, called anyone. she is making coffee." },
+        { "type": "ticker", "text": "Carl Reno scheduled an extra welcome breakfast for Wednesday. Lillian Mercer is on the list. Hal is not." },
+        { "type": "problem_spawn", "region": "graustark", "name": "Boudreaux brochure-watch", "id": "p_boudreaux", "escalation_days": 14 },
+        { "type": "problem_spawn", "region": "hce", "name": "Carl Reno's extra breakfast", "id": "p_carl_extra", "escalation_days": 8 }
       ],
       "dms": [
-        { "from": "son", "subject": "sammy", "body": "frasier — sammy's been quieter since the funeral. quieter than he was the last two times. could you come by friday for dinner? he reads better when you're across the bar from him. — d." }
+        { "from": "son", "subject": "sammy", "body": "frasier — sammy's been quieter since the funeral. quieter than he was the last two times. could you come by friday for dinner? he reads better when you're across the bar from him. — d." },
+        { "from": "john", "subject": "the column", "body": "frasier — the editor wants 800 words on the HCE planning-board candidate by friday. i'm thinking of leading with the bandstand re-paint. is that too tight a thread to pull? — j." }
       ],
       "phone_calls": [],
       "problems_spawn": []
@@ -315,13 +339,21 @@
       "weekday": "WED",
       "hour": "9:18 AM",
       "tower": "bright",
-      "morning_narration": "wednesday. the HCE phase II welcome breakfast was, by the cicada's overnight report, attended by lillian mercer for the first time. hal stayed home with bea.",
-      "ambient": "warehouse colder than yesterday — the river-air shifted in the night",
+      "morning_narration": "wednesday. the HCE phase II welcome breakfast was, by the cicada's overnight report, attended by lillian mercer for the first time. hal stayed home with bea. carl reno made the cinnamon rolls himself. the cinnamon rolls were, by everyone's account, good.",
+      "ambient": "warehouse colder than yesterday — the river-air shifted in the night · faith in the back room agitated about nothing identifiable",
       "events": [
         { "type": "log", "text": "Lillian Mercer attended the HCE welcome breakfast. Hal stayed home." },
-        { "type": "phone_queue", "caller": "STEEPLE (Mobile AL)", "voicemail": "frasier. quick one. saw a handle on overpass last night that looked like dean's old shell. handle was sailmaker_47. probably nothing. probably worth a look. call back if you want the thread number. — s." }
+        { "type": "ticker", "text": "Sam Miller's shift at the Kwik Stop began at 6AM. her license-plate notebook gained two entries before 9." },
+        { "type": "ticker", "text": "Carla Vega's 47Hz recording session at Lot 47 started at 4:18AM and ran until dawn. she archived 6 hours of tape." },
+        { "type": "ticker", "text": "the bandstand was re-painted overnight. nobody on the BBS has admitted to it yet." },
+        { "type": "ticker", "text": "Diego Ramos has not been seen since Monday night. Graciela has, this Wednesday morning, started looking." },
+        { "type": "phone_queue", "caller": "STEEPLE (Mobile AL)", "voicemail": "frasier. quick one. saw a handle on overpass last night that looked like dean's old shell. handle was sailmaker_47. probably nothing. probably worth a look. call back if you want the thread number. — s." },
+        { "type": "problem_spawn", "region": "smallwood", "name": "Otis Vandermeer's signal goes thin", "id": "p_otis_thin", "escalation_days": 9 },
+        { "type": "problem_spawn", "region": "graustark", "name": "the bandstand paint job", "id": "p_bandstand_paint", "escalation_days": 12 }
       ],
-      "dms": [],
+      "dms": [
+        { "from": "mackenzie", "subject": "the philip beer count", "body": "frasier — philip opened his third beer last night for the first time this summer. i don't know what to do with that. — m." }
+      ],
       "phone_calls": [
         { "caller": "STEEPLE (Mobile AL)", "voicemail": "see the morning event log — STEEPLE's voicemail." }
       ],
@@ -332,13 +364,21 @@
       "weekday": "THU",
       "hour": "8:02 AM",
       "tower": "bright",
-      "morning_narration": "thursday opens warm and slow. the diner crew did the friday-prep early because tomorrow is dante's anniversary and the son will be at the cemetery before noon.",
-      "ambient": "river lap · the calendar on the wall says THU with a red mark on FRI",
+      "morning_narration": "thursday opens warm and slow. the diner crew did the friday-prep early because tomorrow is dante's anniversary and the son will be at the cemetery before noon. WUFR's sub-carrier is, by your morning read, slightly off the structure WAXED_DOWN reported last week. you do not, this morning, post about it.",
+      "ambient": "river lap · the calendar on the wall says THU with a red mark on FRI · the cassette deck on the workbench cued to side B of a tape you do not recall putting in",
       "events": [
         { "type": "log", "text": "the surviving son will be at the cemetery before noon Friday. the restaurant runs on Hector's shoulders." },
-        { "type": "problem_spawn", "region": "smallwood", "name": "Wagner's lease whisper", "id": "p_wagner", "escalation_days": 10 }
+        { "type": "ticker", "text": "Maya Daigle's letter to F.T. arrived at the diner mail-drop overnight. John has it behind the counter." },
+        { "type": "ticker", "text": "the egret has, by 7AM Thursday, been on the iron struts for 73 consecutive hours. WIRE_MOTHER's spreadsheet on egret behavior has been updated." },
+        { "type": "ticker", "text": "Diego Ramos's grandmother Graciela called the parish. Father Amato will, this Friday, drive by the high school." },
+        { "type": "ticker", "text": "the Halsey Studios bassist mailed a brown manila envelope to a Smolvud post-office box. the postmark will say Thursday." },
+        { "type": "problem_spawn", "region": "smallwood", "name": "Wagner's lease whisper", "id": "p_wagner", "escalation_days": 10 },
+        { "type": "problem_spawn", "region": "hce", "name": "Phase III surveyor at the wrong address", "id": "p_p3_wrong_address", "escalation_days": 7 }
       ],
-      "dms": [],
+      "dms": [
+        { "from": "john", "subject": "Maya's letter", "body": "frasier — Maya's letter came in. it has, by the weight, more than just words in it. probably a drawing. i'll hold it until friday lunch. come by. — j." },
+        { "from": "nicola", "subject": "the Boudreaux letter", "body": "frasier — i wrote the letter to theresa boudreaux. it's on my kitchen table. i have not, by 8AM, decided whether to mail it. tell me thursday night and i will. — n." }
+      ],
       "phone_calls": [],
       "problems_spawn": []
     },
@@ -347,14 +387,21 @@
       "weekday": "FRI",
       "hour": "6:14 AM",
       "tower": "bright",
-      "morning_narration": "friday. the cemetery is at the edge of town. the surviving son will go alone. the diner will open at five. sammy will be quiet today, frasier knows. he plans, by the second cup of coffee, to be on the stool across the bar from him at six PM.",
-      "ambient": "the workbench radio plays a low warm WUFR sub-carrier the player will not, this morning, recognize",
+      "morning_narration": "friday. the cemetery is at the edge of town. the surviving son will go alone. the diner will open at five. sammy will be quiet today, frasier knows. he plans, by the second cup of coffee, to be on the stool across the bar from him at six PM. the moth's lamp dropped another filament-temperature notch overnight. it will not hold past Tuesday.",
+      "ambient": "the workbench radio plays a low warm WUFR sub-carrier the player will not, this morning, recognize · the apron at the back room hook is the apron you wore in '99",
       "events": [
         { "type": "log", "text": "the cemetery. the restaurant. the bar at six." },
-        { "type": "dm_arrive", "from": "mackenzie", "subject": "the loom", "body": "frasier — the loom picked up a thread color this morning i wasn't using. it's a yellow i don't own. i don't know how to read this yet. — m." }
+        { "type": "ticker", "text": "Diego Ramos was seen, briefly, at the Halsey Studios parking lot at 4:14AM. nobody at the studio recognized him." },
+        { "type": "ticker", "text": "PALOMINO's tower-watch entry posted overnight. it is, by careful read, slightly off her usual register. you note it but do not respond." },
+        { "type": "ticker", "text": "Mrs. Pimentel did not, this morning, deliver a welcome basket she was scheduled to deliver. she gave no reason." },
+        { "type": "ticker", "text": "the Kwik Stop back cooler has, for the third week running, an unaccounted-for case of beer in the morning inventory." },
+        { "type": "dm_arrive", "from": "mackenzie", "subject": "the loom", "body": "frasier — the loom picked up a thread color this morning i wasn't using. it's a yellow i don't own. i don't know how to read this yet. — m." },
+        { "type": "phone_queue", "caller": "father_amato (rectory)", "voicemail": "frasier — i did the drive-by at the high school. diego was not there. his locker is intact. his drum kit is intact. graciela is at the church. tell d. if he wants to know. — fr. a." },
+        { "type": "problem_spawn", "region": "graustark", "name": "Diego Ramos's whereabouts", "id": "p_diego", "escalation_days": 6 }
       ],
       "dms": [
-        { "from": "mackenzie", "subject": "the loom", "body": "frasier — the loom picked up a thread color this morning i wasn't using. it's a yellow i don't own. i don't know how to read this yet. — m." }
+        { "from": "mackenzie", "subject": "the loom", "body": "frasier — the loom picked up a thread color this morning i wasn't using. it's a yellow i don't own. i don't know how to read this yet. — m." },
+        { "from": "son", "subject": "after the cemetery", "body": "frasier — i'll be at the bar at six. sammy will be on the bar. the cypress beam pasta is on the menu starting tomorrow. come if you can. don't if you can't. — d." }
       ],
       "phone_calls": [],
       "problems_spawn": []
@@ -364,12 +411,18 @@
       "weekday": "SUN · the BBS night",
       "hour": "9:47 PM",
       "tower": "bright",
-      "morning_narration": "the warehouse at dusk. the workbench is the workbench. the BBS terminal is in the corner. it is sunday night. frasier sits down.",
-      "ambient": "the modem warming up · the dial-tone hum · cicadas in the distance",
+      "morning_narration": "the warehouse at dusk. the workbench is the workbench. the BBS terminal is in the corner. it is sunday night. frasier sits down. the unread badge has, by your last count, climbed past anything a careful evening would clear. you choose what to read.",
+      "ambient": "the modem warming up · the dial-tone hum · cicadas in the distance · faith asleep across your boot",
       "events": [
-        { "type": "log", "text": "the week's seventh day. the BBS night." }
+        { "type": "log", "text": "the week's seventh day. the BBS night." },
+        { "type": "ticker", "text": "WIRE_MOTHER's DM with the rotated SNACKS dial-up number is pending tonight." },
+        { "type": "ticker", "text": "the egret is no longer on the iron struts. she left, the bird-watcher reports, at 4:47PM Saturday. nobody saw her go." },
+        { "type": "ticker", "text": "Diego Ramos has been missing for six days. the BBS does not, this Sunday, mention his name on MAINSTREET. nobody has made that call yet." },
+        { "type": "ticker", "text": "the surviving son's friday dinner went well. sammy poured. the cypress beam pasta sold out by 8PM." }
       ],
-      "dms": [],
+      "dms": [
+        { "from": "WIRE_MOTHER", "subject": "the new number", "body": "frasier — the new SNACKS dial-up. don't lose it. cool off some more if you have to. or not. i drew you a moth on the inside of the card the kid in lubbock had the right face for delivering. it's on its way. — wm" }
+      ],
       "phone_calls": [],
       "problems_spawn": []
     }
@@ -672,8 +725,17 @@ function bootDay() {
   if (!S.tower_log.includes(day.day_id)) {
     S.tower_log.push(day.day_id);
   }
-  for (const ev of (day.events || [])) {
-    fireEvent(ev);
+  // Reset per-day morning-DM-fired guard
+  if (!S._dms_fired_for_day) S._dms_fired_for_day = {};
+  if (!S._dms_fired_for_day[day.day_id]) {
+    for (const ev of (day.events || [])) fireEvent(ev);
+    // also fire the morning DMs from the data block (separate from events)
+    for (const dm of (day.dms || [])) {
+      S.dms_unread.push({ from: dm.from, subject: dm.subject, body: dm.body, day: S.day_id });
+      S.dms_all.push({ from: dm.from, subject: dm.subject, body: dm.body, day: S.day_id });
+      logEntry(`new DM from <b>${dm.from}</b>: "${dm.subject}"`, 'event');
+    }
+    S._dms_fired_for_day[day.day_id] = true;
   }
 
   renderAll();
@@ -687,6 +749,11 @@ function fireEvent(ev) {
   switch (ev.type) {
     case 'log':
       logEntry(ev.text, 'event');
+      break;
+    case 'ticker':
+      if (!S.ticker) S.ticker = [];
+      S.ticker.unshift({ day: S.day_id, text: ev.text });
+      if (S.ticker.length > 40) S.ticker = S.ticker.slice(0, 40);
       break;
     case 'dm_arrive':
       S.dms_unread.push({ from: ev.from, subject: ev.subject, body: ev.body, day: S.day_id });
@@ -738,7 +805,64 @@ function renderAll() {
   renderDock();
   renderTower();
   renderActions();
+  renderTicker();
+  renderDeadlines();
   renderLog();
+}
+
+function renderTicker() {
+  const el = document.getElementById('ticker-list');
+  if (!el) return;
+  const items = (S.ticker || []).slice(0, 12);
+  if (items.length === 0) {
+    el.innerHTML = '<div style="color:var(--paper-fade);">— the world is, this morning, quiet. —</div>';
+    return;
+  }
+  el.innerHTML = items.map(t => {
+    const day = WEEK.days.find(d => d.day_id === t.day);
+    const wd = day ? day.weekday.split(' ')[0] : `D${t.day}`;
+    return `<div style="margin-bottom:5px;"><span style="color:var(--rust);">${wd}</span> · ${t.text}</div>`;
+  }).join('');
+}
+
+function renderDeadlines() {
+  const el = document.getElementById('deadlines');
+  if (!el) return;
+  const items = [];
+
+  // active problems with their countdowns
+  for (const p of S.problems_active) {
+    const klass = p.days_remaining <= 3 ? 'lost' : (p.days_remaining <= 7 ? 'contested' : 'held');
+    const dispatched = p.dispatch ? ` <em style="color:var(--paper);font-style:normal;">[${p.dispatch.agent} en route ${p.dispatch.days_remaining}d]</em>` : '';
+    items.push({
+      priority: p.days_remaining,
+      html: `<div><span class="node ${klass}" style="cursor:default;">${p.days_remaining}d</span> ${p.name}${dispatched}</div>`
+    });
+  }
+
+  // narrative deadlines pinned to specific days
+  const narrative_deadlines = [
+    { day: 5, text: "Maya's letter lands at the diner" },
+    { day: 5, text: "Nicola needs decision · Boudreaux letter" },
+    { day: 6, text: "the cemetery · the bar at six · dante's anniversary" },
+    { day: 7, text: "BBS night · the federated read · SNACKS readmission" },
+  ];
+  for (const nd of narrative_deadlines) {
+    const dr = nd.day - S.day_id;
+    if (dr < 0) continue;
+    const klass = dr <= 1 ? 'lost' : (dr <= 3 ? 'contested' : 'held');
+    items.push({
+      priority: dr + 100,
+      html: `<div><span class="node ${klass}" style="cursor:default;">${dr === 0 ? 'TODAY' : dr + 'd'}</span> ${nd.text}</div>`
+    });
+  }
+
+  items.sort((a,b) => a.priority - b.priority);
+  if (items.length === 0) {
+    el.innerHTML = '<div style="color:var(--paper-fade);">— nothing on the horizon. —</div>';
+    return;
+  }
+  el.innerHTML = items.map(i => i.html).join('');
 }
 
 function renderMap() {
