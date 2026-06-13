@@ -35,15 +35,39 @@ coincides with the book's structural seam.
 
 The reader can play immediately, defer indefinitely, or skip the
 game entirely. The book's part two remains available in all three
-cases. A reader who plays the game enters part two carrying the
-texture of the middle. A reader who skips it enters part two with
-a held-breath ellipsis where the middle was.
+cases.
+
+**There is no "right way" to read and play.** All of the following
+are valid and explicitly supported by the gallery:
+
+- **Read the whole book first, then play.** The reader who wants
+  the prose uninterrupted finishes *Planned Community* end to end,
+  then comes back to the gallery and plays COMMUNITY PLANNED at
+  their leisure. The summer is then a re-experience of the book's
+  middle from inside it.
+- **Play immediately after Summer's Start.** The reader stops at
+  the structural seam, plays the summer Frasier holds, and opens
+  *End of Summer Begins* afterward with the texture of the
+  middle in hand.
+- **Play concurrently — go back and forth.** A week of the game,
+  a chapter of the book, another week of the game, another
+  chapter. The two pacings interleave. Both reward attention.
+- **Skip the game entirely.** *Planned Community* remains a
+  novel. The summer in the middle is held in ellipsis. The book
+  reads cleanly. The shelf stays unlocked anyway in case the
+  reader changes their mind years later.
+
+The gallery doesn't track which path the reader takes and doesn't
+prefer one. The COMMUNITY PLANNED tile lights up at the structural
+seam and stays lit. That's the whole contract.
 
 Implementation surface (engine-side, post-MVP):
 - Save flag `community_planned:reader_finished_summers_start`
 - Gallery surfaces a phosphor-green CRT tile labeled COMMUNITY
   PLANNED with a 14.4k connect-tone preview on hover.
 - Tile remains permanently available once the flag fires.
+- No tracking of read-vs-play ordering. No nag prompts. No
+  "you should read first" messaging.
 The interludes deepen the world for the player who put hours into
 the network; they never rewrite the world for the reader.
 
