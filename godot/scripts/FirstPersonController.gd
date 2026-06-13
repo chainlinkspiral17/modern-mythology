@@ -2,37 +2,38 @@
 # ════════════════════════════════════════════════════════════════
 # COMMUNITY PLANNED · Frasier's eye-height walking controller.
 #
-# Attach to a CharacterBody3D node with a Camera3D child. The
-# pacing is intentionally slow — Frasier is middle-aged and his
-# warehouse is the warehouse, not a parkour course.
-#
 # Default controls:
-#   WASD / arrow keys · move
-#   mouse             · look
-#   shift             · slower (careful) walk
-#   space             · (reserved · for sitting at the workbench)
-#   esc               · release mouse capture
+#   WASD / arrows  · move
+#   mouse          · look
+#   shift          · slower (careful) walk
+#   esc            · release mouse capture
+#   F1             · TOGGLE NOCLIP (fly through walls — for debugging)
+#   F2             · TELEPORT to (0, 3, 0) — debug recovery if stuck
 # ════════════════════════════════════════════════════════════════
 
 extends CharacterBody3D
 
-@export var walk_speed: float = 2.2      # meters per second (slow)
-@export var careful_speed: float = 1.0   # held-shift speed
+@export var walk_speed: float = 2.2
+@export var careful_speed: float = 1.0
+@export var fly_speed: float = 6.0
 @export var mouse_sensitivity: float = 0.0025
-@export var eye_height: float = 1.65     # Frasier's eye-height above the floor
+@export var eye_height: float = 1.65
 
 const GRAVITY: float = 9.8
 
 var camera: Camera3D
 var pitch: float = 0.0
+var noclip: bool = false
+var _logged_input := false
 
 
 func _ready() -> void:
-    # Position the camera at eye height if not already set
     camera = get_node_or_null("Camera3D")
     if camera and camera.position.y < 0.01:
         camera.position.y = eye_height
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    print("[FPC] _ready · mouse mode: %s · spawn at %s" % [Input.mouse_mode, global_position])
+    print("[FPC] keys: WASD walk · mouse look · shift careful · esc release · F1 noclip · F2 teleport")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -42,15 +43,25 @@ func _unhandled_input(event: InputEvent) -> void:
             pitch -= event.relative.y * mouse_sensitivity
             pitch = clamp(pitch, -PI / 2.2, PI / 2.2)
             camera.rotation.x = pitch
-    elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
-        if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-            Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-        else:
-            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    elif event is InputEventKey and event.pressed:
+        match event.keycode:
+            KEY_ESCAPE:
+                if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+                    Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+                    print("[FPC] mouse released")
+                else:
+                    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+                    print("[FPC] mouse captured")
+            KEY_F1:
+                noclip = not noclip
+                print("[FPC] noclip = %s" % noclip)
+            KEY_F2:
+                global_position = Vector3(0, 3, 0)
+                velocity = Vector3.ZERO
+                print("[FPC] teleport to (0, 3, 0) · current global_position now %s" % global_position)
 
 
 func _physics_process(delta: float) -> void:
-    # Movement input
     var input_vec := Vector3.ZERO
     if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
         input_vec.z -= 1.0
@@ -61,6 +72,24 @@ func _physics_process(delta: float) -> void:
     if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
         input_vec.x += 1.0
 
+    # Log the first input event so we can verify the script is running
+    if input_vec.length() > 0.01 and not _logged_input:
+        _logged_input = true
+        print("[FPC] first WASD input detected · script is running")
+
+    if noclip:
+        # Fly mode: ignore gravity and collisions
+        var fly_input := input_vec
+        if Input.is_key_pressed(KEY_SPACE):
+            fly_input.y += 1.0
+        if Input.is_key_pressed(KEY_CTRL):
+            fly_input.y -= 1.0
+        var direction: Vector3 = (transform.basis * fly_input).normalized() * fly_speed
+        global_position += direction * delta
+        velocity = Vector3.ZERO
+        return
+
+    # Normal walk mode
     var speed: float = careful_speed if Input.is_key_pressed(KEY_SHIFT) else walk_speed
     var direction: Vector3 = (transform.basis * input_vec).normalized() * speed
 
