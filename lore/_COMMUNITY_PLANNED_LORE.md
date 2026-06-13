@@ -637,17 +637,30 @@ The canon roster, aged forward from vol 5. Dispatch specialties
 as drafted earlier in this doc:
 
 - **Elicia Temple** (Priestess) — archive work, field recording.
-- **Dante D'Ambrosio** (Emperor) — authority work.
+- **Dante D'Ambrosio** (Emperor) † — *deceased pre-game*. The
+  Sinkhole took him in the middle of vol 5; the riverboat lost
+  with him. His absence is a cold node on the Graustark map —
+  the empty helm chair, the phone line nobody answers anymore.
+- **The Surviving D'Ambrosio Son** (the new Emperor of a smaller
+  throne) — runs a Graustark storefront restaurant, the D'Ambrosio
+  family's post-Sinkhole operation. Dispatch specialty: continuity
+  work, listening-before-answering, the quieter authority of a
+  son who carries an empire shaped differently than his father's.
 - **Nicola** (Empress) — letters in her own hand.
 - **John Frank** (Fool) — column work that publishes.
 - **Mackenzie Roberts** (Lovers) — the slow witness.
 - **Antonio D'Ambrosio** (Chariot, timeline-dependent on the
-  cypress-beam flag) — construction and infrastructure.
+  cypress-beam flag and his fate relative to the Sinkhole) —
+  construction and infrastructure, if alive.
 - **Quentin / Paul** (Hierophant) — mostly opposition in this
   period.
 
-Smaller background-support circle: Sammy at the bar, Hector at the
-pass, Jimmy at the warehouse, Father Amato at St Jude's.
+Smaller background-support circle: **Sammy** (now bartending at
+the surviving son's Graustark restaurant; made the slow move from
+the boat's well to the storefront's smaller bar after the Sinkhole
+took the boat), **Hector** at the pass (also moved with the
+operation), **Jimmy** at the warehouse, **Father Amato** at St
+Jude's.
 
 ## The demons · twenty years of evolution
 

@@ -248,6 +248,50 @@ The tower in Small Wood is one of Dean's interfaces to it.
   Hermit, the quiet Star. The deck's meta-system surfaces from
   inside the prose.
 
+## The far horizon · the frog and the feral child
+
+Beyond vol 7 — the saga's eventual most-future setting, the
+authorial endpoint Modern Mythology is, most probably, walking
+toward.
+
+What is canon for the far-future:
+
+- **The ceramic frog** returns. The same medium-distributed frog
+  motif from vol 6 (forty years of distribution by *the medium*,
+  per `planned_community/_README.md`) is present in the far-future
+  setting. The frog is one of the very few objects the saga
+  carries across its entire timeline.
+- **The feral child** lives in that future. **They** are a single
+  child — singular *they* pronoun. The deck does not gender them.
+  The deck does not name them with certainty.
+- **The D'Ambrosio site reappears.** What was the riverboat in vol
+  5 (lost in the Sinkhole), and then the surviving son's Graustark
+  storefront in vol 6, returns in the far-future in some new
+  shape — a ruin, a ground, an unbuilt lot, the deck reserves the
+  exact form. The location's persistence across the whole timeline
+  is what matters.
+- **This is, most probably, as far as Modern Mythology goes.**
+  The frog and the child are the saga's eventual endpoint. Vol 7
+  is the *last regularly-numbered volume the player will reach
+  from the present*; the far-future of the frog and the child is
+  the *horizon beyond it*, and most probably the final terrain.
+
+What is reserved:
+
+- The exact volume number / publication slot for the far-future
+  material.
+- Whether the frog and the child are the protagonists of a final
+  volume or are the closing diorama of an earlier volume's
+  resolution.
+- Whether the child is a single being or multiple beings whose
+  plural identity the *they* preserves.
+- The chain of custody by which the frog reaches the child.
+
+The saga's farthest-future is held as a held image, not a plotted
+chapter: **a feral child, a ceramic frog, and the ground where the
+riverboat used to be.** What happens there is the saga's final
+question.
+
 ## Reserved (mid-to-late acts)
 
 Per `milk_and_honey/_README.md`'s "reserved" list, the following

@@ -92,8 +92,14 @@ see vol 6's COMMUNITY PLANNED canon). Named figures:
   has begun its slow inversion from warehouse-cathedral to
   cathedral-warehouse. Maya has been writing to him for nine months
   as "F.T."
-- **Dante D'Ambrosio** — the boat is winding down. Has been
-  talking about closing it for three years and hasn't.
+- **Dante D'Ambrosio** † — deceased. The Sinkhole took him in the
+  middle of vol 5. The riverboat is lost with him. **The surviving
+  D'Ambrosio son** has opened a new restaurant in Graustark and is
+  carrying the family's small empire forward in storefront form
+  rather than riverboat form. The new restaurant — Graustark's
+  ground-floor D'Ambrosio operation — is a node Frasier's network
+  uses regularly. Sammy (formerly behind the well on the boat) is
+  the bartender there now.
 - **Nicola** — still working the boat's floor when she chooses.
   The matriarch's house and the letter-writing.
 - **Elicia Temple** — bungalow, cassette archive, Pomegranate

@@ -67,10 +67,12 @@ single-use special events.
 
 **Strategic events:**
 
-- Sunday (Memorial Day): the boat's Friday dinner is cancelled
-  because Sammy is at his sister's funeral. Graustark feels the
-  small absence. The player has nothing to do with this event;
-  it sets the tonal floor.
+- Sunday (Memorial Day): the surviving son's Graustark restaurant
+  closes early because Sammy is at his sister's funeral. Hector
+  covers the line alone. Graustark feels the small absence. The
+  player has nothing to do with this event; it sets the tonal
+  floor. (The boat itself has been gone for years, lost in the
+  Sinkhole with Dante.)
 - Tuesday: NexCorp brochures arrive at three Graustark addresses
   Frasier is watching, including Mrs. Theresa Boudreaux's.
 - Thursday: Carl Reno hosts the HCE Phase I welcome breakfast.
@@ -99,9 +101,11 @@ introduced; Carl Reno introduced.
 
 - Monday: Elicia DMs Frasier on the BBS for the first time this
   summer. She has a tape she'd like him to listen to.
-- Wednesday: Dante DMs. He's been talking about closing the boat
-  again. He's not yet ready, but the conversation is now on the
-  thread.
+- Wednesday: the surviving D'Ambrosio son DMs Frasier from the
+  storefront's back office for the first time this summer. He
+  wants to talk about Sammy — Sammy's been quieter since the
+  funeral and the son is worried. Not a strategic dispatch
+  request; a personal one. Frasier reads it carefully.
 - Thursday: A Graustark problem escalates — the cathedral's
   electrical bill is overdue. Frasier's own node; he has to
   dispatch the moth to handle it cleanly (or pay it himself, in
@@ -118,9 +122,11 @@ in Santa Fe; the patient reader catches the second layer.
 **Mechanic:** DM threads + reply choices. Demon burn accrual
 becomes legible.
 
-**Cast moves:** Elicia speaks. Dante speaks. The Boudreaux thread
-continues on MAINSTREET (she's posting about the brochures now,
-in a register the player can register but not yet read).
+**Cast moves:** Elicia speaks. The surviving son speaks (his first
+DM of the summer; the player now has a Graustark restaurant DM
+thread alongside the others). The Boudreaux thread continues on
+MAINSTREET (she's posting about the brochures now, in a register
+the player can register but not yet read).
 
 ### Week 3 · The Hidden Door
 

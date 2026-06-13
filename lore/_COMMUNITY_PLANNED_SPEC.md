@@ -172,13 +172,21 @@ self-maintaining as long as the canon roster is in place. Frasier
 can run Graustark on autopilot for weeks if he has to. He pays for
 that by having drawn down its slack to push elsewhere.
 
-- **Control nodes (sample):** Dante's boat, the diner, Nicola's
-  house, Elicia's bungalow, the cathedral, the riverfront. Most
-  start the summer held and stable.
-- **Native agents:** the canon roster aged forward — Nicola, Dante,
-  John Frank, Elicia. They run their nodes by *being there*.
-- **Problem palette:** memorial-grief, family-succession, the boat
-  closing, the cathedral, the diner's lease, infrastructure failing.
+- **Control nodes (sample):** the surviving son's D'Ambrosio
+  storefront restaurant (the family's post-Sinkhole operation,
+  Sammy behind the smaller bar, Hector at the line), the diner,
+  Nicola's house, Elicia's bungalow, the cathedral, the riverfront.
+  Plus one cold node where the riverboat used to be — present on
+  the map as memory, ungrid-able as a dispatch target. Most
+  active nodes start the summer held and stable.
+- **Native agents:** the canon roster aged forward — Nicola, the
+  surviving D'Ambrosio son, John Frank, Elicia. They run their
+  nodes by *being there*. Dante's absence is a fact the network
+  works around.
+- **Problem palette:** memorial-grief (especially around the
+  Sinkhole and Dante's death), family-succession, the new
+  restaurant's lease and licensing, the cathedral, the diner's
+  lease, infrastructure failing.
 - **Strategic role:** supply. Graustark generates the *insight* and
   *cover* and *courier capacity* Frasier spends elsewhere. Every
   unit pulled to Small Wood is a unit Graustark doesn't have when
@@ -317,9 +325,11 @@ a person with a home and a life.** They are not units that live on
 the map waiting to be moved. Sending Mackenzie to Harmony Creek
 means she leaves her loom, leaves Philip, drives or flies, sleeps in
 a strange bed, and comes back tired with the work at home backed up.
-Sending Dante to Small Wood means the boat doesn't have its captain
-for the four days he's gone, and the boat's other problems escalate
-unsupervised.
+Sending the surviving D'Ambrosio son to Small Wood means the new
+Graustark restaurant doesn't have its floor manager for the four
+days he's gone, and the restaurant's small daily problems escalate
+unsupervised — Sammy can hold the bar but not the floor; Hector
+can hold the line but not the floor.
 
 The dispatch cost for a human agent is therefore at least three
 overlapping things:
@@ -330,12 +340,14 @@ overlapping things:
 - **Time at home** — the node they normally maintain runs without
   them while they're away. Long dispatches mean their home node
   takes on a small-problem of its own (Philip alone with the basil
-  pot dying; the boat's Friday dinner crew without Dante on the
-  iron stair).
+  pot dying; the surviving son's Friday dinner crew without him
+  on the floor; the storefront's small dignity slipping a notch).
 - **Life cost** — some dispatches cost things the BBS layer
   surfaces afterward. Mackenzie sent to Harmony Creek too often
-  starts posting about leaving Philip. Dante sent to Small Wood
-  starts posting about closing the boat.
+  starts posting about leaving Philip. The surviving son sent to
+  Small Wood starts posting about closing the restaurant — the
+  one thing of his father's he kept going. He does not want to
+  close it. The thread reads that he might anyway.
 
 The DMs on the BBS are not strategic communications. They are
 *people's lives* in response to the strategic communications. Read
@@ -470,8 +482,12 @@ Six visible boards from the start, more discoverable through play:
 
 - **MAINSTREET** · the public square. Frasier reads, sometimes
   posts. Choices here are *visible*; the enemy reads MAINSTREET too.
-- **THE_BAR** · Graustark regulars. Dante posts. Sammy posts.
-  Reading enough threads here unlocks character POV documents.
+- **THE_BAR** · Graustark regulars. The surviving D'Ambrosio son
+  posts. Sammy posts (more rarely now than he did in the boat
+  years; his Sundays are at the cemetery). Hector posts when he
+  has news. Reading enough threads here unlocks character POV
+  documents, including memorial fragments about Dante that the
+  son writes and re-reads and does not always send.
 - **THE_LIBRARY** · archive board. Where Elicia posts. Files to
   download — audio recordings, photos, scans of vol 5 era documents.
 - **THE_WORKSHOP** · Frasier's own board. Tech threads. Hidden
@@ -502,7 +518,8 @@ Hidden boards, discovered through clues in posts:
 Each canon human agent has a private DM thread that updates weekly
 based on what Frasier dispatched them to do. The DM thread is the
 *character POV* layer — Mackenzie's grief-as-a-thread, Elicia's
-archive frustrations, Dante's slow goodbye to the boat, John
+archive frustrations, the surviving son's daily restaurant log and
+the things he writes about his father that he doesn't send, John
 Frank's column drafts, Nicola's letters to her sister.
 
 DMs are mostly read. Occasionally Frasier replies; the reply is a
@@ -548,9 +565,10 @@ Interludes are typed by what unlocked them:
   next to the game.
 - **Agent-intact interludes** · for each canon human still picking
   up the phone at Labor Day, an interlude in their voice about how
-  the summer went *for them*. Mackenzie's loom in September. Dante
-  on the boat. Elicia's bungalow. These are character POVs the
-  novels don't have room for.
+  the summer went *for them*. Mackenzie's loom in September. The
+  surviving son closing up at the new place at 11:14 PM. Elicia's
+  bungalow. These are character POVs the novels don't have room
+  for.
 - **Turned-demon interludes** · for each demon that corrupted and
   stayed in Small Wood, a short piece written *in the demon's
   voice* about why it didn't come home. The most haunting interlude

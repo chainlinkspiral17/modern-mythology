@@ -37,7 +37,7 @@ game. NEW PLAYER HANDS ARE NEVER INVENTED beyond these eight.)
 | **Frasier Temple** | I · Magician | The Cathedral of Rust and Code |
 | **Elicia Temple** | II · High Priestess | The bungalow + cassette archive |
 | **Nicola** | III · Empress | The riverboat dining room (host) |
-| **Dante D'Ambrosio** | IV · Emperor | The helm above the boat's dining room |
+| **Dante D'Ambrosio** † | IV · Emperor | The helm above the boat's dining room. *(Dies in the Sinkhole event mid-arc; the boat is lost with him. His Emperor chapter and the Empress chapter are both set pre-Sinkhole.)* |
 | **Quentin / Paul** | V · Hierophant | The Sunday circuit (church / car / Table 17 / bandstand / armory / riverfront) |
 | **Mackenzie Roberts** | VI · Lovers | The Roberts house · the loom · the basil pot |
 | **Antonio D'Ambrosio** | VII · Chariot | Ember & Ash warehouse (the cypress beam) |
@@ -121,12 +121,53 @@ volumes inherit:
 ## The central trauma · the Sinkhole
 
 The deck's organizing wound. The calamity that reshaped the east
-bank of the Graustark river. Multiple chapters (Magician, Chariot,
-several others) cross-reference it. Frasier's steamboat-on-the-
-workbench is the in-fiction model of the calamity. Finishing the
-steamboat in the Magician scenario *is* the calamity.
+bank of the Graustark river.
 
-See `_SINKHOLE_NEXUS.md` for the full reframing.
+The Sinkhole's events are **never fully explained**. The deck does
+not resolve them. Multiple chapters (Magician, Chariot, several
+others) cross-reference it. The reader assembles what they can
+from the references; the cards reserve the rest.
+
+What is canon:
+
+- **The Sinkhole happens narratively in the middle of the major
+  arcana arc.** The vol 5 chapter sequence passes through it. The
+  cards before the Sinkhole and the cards after the Sinkhole are,
+  in their tone and their roster, differently colored. Some
+  characters who appear in the early cards do not appear in the
+  later cards. Some characters who are present in the later cards
+  were not present in the earlier ones.
+- **Dante D'Ambrosio dies in the Sinkhole.** The Emperor's helm
+  chair empties. The riverboat is lost with him. The two are not
+  separable: the Sinkhole takes Dante and the boat in the same
+  event, in a way the deck does not clarify.
+- **The surviving son carries on the D'Ambrosio name.** Of Dante's
+  two sons, one survives the Sinkhole event. (Which one is
+  canonical, and how that interacts with the Chariot's wreck-day
+  events in vol 5 ch 20, is the deck's call to make as the
+  manuscript settles.) The surviving son opens a new restaurant in
+  Graustark and carries the family's small empire forward —
+  smaller, more careful, less of a riverboat and more of a
+  storefront. By vol 6's window the new restaurant is the family's
+  active operation.
+- **Frasier's steamboat model** on the workbench is the in-fiction
+  miniature of the Sinkhole. Finishing the steamboat in the
+  Magician scenario *is* the calamity at miniature scale; the
+  cross-arcana cipher that ties them is one of the deck's central
+  surfaces.
+
+What is reserved:
+
+- **What the Sinkhole actually is.** Geological event. Reality-
+  level event. Something Dean's substrate did or did not stop. The
+  deck does not say. The deck reserves whether anyone in the
+  saga's later volumes ever fully understands it.
+- **Why the Sinkhole takes Dante and the boat specifically.**
+  Reserved. The boat being lost with him is the only narrative
+  fact that lands; the *why* is not authored.
+
+See `_SINKHOLE_NEXUS.md` for the deeper reframing of the calamity
+as the deck's organizing trauma.
 
 ## Key artifacts and motifs
 
@@ -215,16 +256,22 @@ See `pitches/_INDEX.md` for the index.
 
 What the later volumes inherit from vol 5:
 
-- **The cast.** The eight canon player-hands and their NPC circles.
-  Aged forward into vol 6 and vol 7.
+- **The cast, what's left of it.** The eight canon player-hands and
+  their NPC circles, aged forward into vol 6 and vol 7. **Dante is
+  not among them** — the Sinkhole takes him before vol 5 ends.
+  The surviving D'Ambrosio son carries the empire forward via a
+  new Graustark restaurant; the riverboat itself is gone.
 - **Frasier's network.** The Cathedral floor, the BBS terminal, the
   demon roster. By vol 6 the network is older; by vol 7 the
   network has, in places, transferred.
 - **The Sinkhole's aftermath.** The east bank's reshaping is a fact
-  of the world the later volumes are set in.
+  of the world the later volumes are set in. Dante's absence and
+  the boat's absence are facts that vol 6 takes as already-done.
 - **The wreck day.** Antonio's Chariot-canon resolution (the
   cypress beam choice + the wreck day at vol 5 ch20) becomes a
-  doctrinal flag the later volumes read.
+  doctrinal flag the later volumes read. Whether the wreck day is
+  the same event as the Sinkhole, or a separate event, is the
+  deck's reserved call.
 - **Dean.** The lapels-smoothing gentleman at Table 14. The vol 5
   surface of the saga's transworld traveller.
 - **Aria's anticipation.** Not yet named in vol 5 prose; present in
