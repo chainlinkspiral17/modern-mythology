@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://warehouse_v1"]
+[gd_scene load_steps=14 format=3 uid="uid://warehouse_v1"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/cathedral/cathedral_interior.glb" id="1_interior"]
 [ext_resource type="PackedScene" path="res://assets/3d/props/workbench_props.glb" id="2_workbench"]
@@ -7,6 +7,18 @@
 [ext_resource type="PackedScene" path="res://assets/3d/atmosphere/atmosphere.glb" id="5_atmosphere"]
 [ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="6_fpc"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="7_hud"]
+[ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="8_post"]
+[ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="9_mood"]
+
+[sub_resource type="ShaderMaterial" id="Mat_Post"]
+shader = ExtResource("8_post")
+shader_parameter/palette_size = 16.0
+shader_parameter/dither_strength = 0.10
+shader_parameter/scanline_strength = 0.25
+shader_parameter/chromatic_aberration = 0.0012
+shader_parameter/ascii_strength = 0.0
+shader_parameter/ascii_color = Color(0.85, 0.78, 0.62, 1)
+shader_parameter/ascii_bg = Color(0.06, 0.04, 0.02, 1)
 
 [sub_resource type="CapsuleShape3D" id="Caps_Player"]
 radius = 0.30
@@ -130,6 +142,17 @@ fov = 65.0
 near = 0.05
 far = 100.0
 
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 50
+script = ExtResource("9_mood")
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 100
 
@@ -146,7 +169,7 @@ offset_left = 16.0
 offset_top = 240.0
 offset_right = 600.0
 offset_bottom = 360.0
-text = "WASD move · QE turn · RF pitch · Space/Ctrl up/down · F1 collide · F2 teleport"
+text = "WASD move · QE turn · RF pitch · Space/Ctrl up/down · F1 collide · F2 teleport · F3 cycle mood"
 theme_override_font_sizes/font_size = 18
 theme_override_colors/font_color = Color(0.85, 0.78, 0.62, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
