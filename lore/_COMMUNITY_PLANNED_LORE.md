@@ -316,9 +316,12 @@ person is never there. The absence is the texture.
 
 The few times anyone in the game's authored text comes close to
 *naming* him, they name him sideways — "the gentleman," "the man
-from Beaumont," "him," "our friend in the back." The BBS sysop
-circle has a private vocabulary for Dean that the player can learn
-to read across THE_BACKCHANNEL threads. Frasier himself, in his
+from Beaumont," "him," "our friend in the back." The sysop circle
+has a private vocabulary for Dean that the player can learn to
+read across the federated sysop threads — STEEPLE on OVERPASS,
+WIRE_MOTHER on CALICHE, PALOMINO on DRY_BLOOM, THE_QUARRY on
+BEDROCK, and Frasier on RUST_CODE all using it in their own
+register. Frasier himself, in his
 Cathedral Letters to no one, refers to him only as "the father" —
 which the player will, by the end of the summer, understand to mean
 two different things at once.
@@ -853,28 +856,61 @@ Invented names for the people the player works with on the front:
 
 ### Frasier's sysop circle — the BBS's deep layer
 
-Other operators at Frasier's level. Each runs their own board,
-their own network, their own quiet operation. They are not Frasier's
-agents; they are his peers. He calls them by handle.
+Other operators at Frasier's level. Each runs **their own BBS** —
+not a board, a whole separate dial-up system. They are not
+Frasier's agents; they are his peers. He calls them by handle.
 
-- **STEEPLE** — Operates out of Mobile, AL. Real name unknown.
-  Has known Frasier for decades. The most reliably reachable of
-  the sysop circle.
-- **WIRE_MOTHER** — Operates out of Lubbock, TX. Aged into her
-  80s. The matriarch of the network. Wrote the original code
-  Frasier uses to bind demons to BBS handles.
-- **PALOMINO** — Operates out of Santa Fe, NM. Late 40s. Has been
-  on the network for about a decade. Brilliant, unreliable,
-  occasionally compromised.
-- **THE_QUARRY** — Operates out of somewhere in Pennsylvania.
-  Real name unknown. Speaks in queries only — never declarative
-  statements. The most paranoid of the circle. Useful in a
-  specific kind of crisis.
+- **STEEPLE** — sysop of **OVERPASS.BBS**, out of Mobile, AL.
+  Real name unknown. Has known Frasier for decades. The most
+  reliably reachable of the circle. OVERPASS.BBS's masthead ANSI
+  is a bellbuoy at the I-10 overpass.
+- **WIRE_MOTHER** — sysop of **CALICHE.BBS**, out of Lubbock, TX.
+  Aged into her 80s. The matriarch of the network. Wrote the
+  original code Frasier uses to bind demons to BBS handles; that
+  code lives in a sticky thread on CALICHE pinned for fifteen
+  years.
+- **PALOMINO** — sysop of **DRY_BLOOM.BBS**, out of Santa Fe, NM.
+  Late 40s. Has been on the network for about a decade. Brilliant,
+  unreliable, occasionally compromised. DRY_BLOOM's ANSI art is,
+  by other sysops' quiet consensus, the best work the network has.
+- **THE_QUARRY** — sysop of **BEDROCK.BBS**, out of somewhere in
+  Pennsylvania. Real name unknown. Posts in queries only — never
+  declarative statements. The most paranoid sysop. BEDROCK's
+  masthead is a single fossil in a slab of shale.
 
-The sysop circle does not appear on the strategic map. They appear
-on THE_BACKCHANNEL board. Frasier reads their posts every BBS night
-and contributes one or two. The circle is, among other things, the
-reason Frasier knows what he knows about Dean.
+The five BBSes (Frasier's **RUST_CODE.BBS** plus the four sysop
+peer boards) form **the network** — a federated dial-up community
+the player walks through over the course of each Sunday's BBS
+night. Frasier's main is the densest and busiest, by design;
+prehistory accumulates on RUST_CODE the way grease accumulates on
+a working stove. The peer BBSes are smaller, slower, older,
+tonally distinct from one another.
+
+The sysop circle has, in addition to the five public boards,
+**SNACKS** — a small private refuge BBS the circle does not list
+in any directory. SNACKS exists to be quiet. No ANSI art, no MIDI
+tunes, no public connection log. Personal threads only. The
+Aria-coded vocabulary lives on SNACKS in its purest form, because
+on SNACKS the circle does not have to encode as carefully.
+
+The player can dial SNACKS once Frasier has admitted them
+(typically W5 or W6 if they have demonstrated careful reading on
+RUST_CODE). Some playthroughs the player will never be admitted.
+
+Beyond the sysops themselves, a handful of named **regulars**
+appear across multiple BBSes. Three known to the circle:
+
+- **chainlinkspiral** — most active on RUST_CODE; visible on
+  OVERPASS and DRY_BLOOM. Long careful threads. Real-life
+  identity unknown.
+- **hasslein** — the time-loop register; same thread on CALICHE
+  since 1996, updated monthly. WIRE_MOTHER calls him *the
+  heretic*.
+- **uzhekwurm** — posts in transliterated cadence, mostly on
+  BEDROCK. THE_QUARRY's only consistent correspondent.
+
+The circle is, among other things, the reason Frasier knows what
+he knows about Dean.
 
 ## The seeds · what reaches Oregon
 

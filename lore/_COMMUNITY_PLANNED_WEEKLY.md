@@ -82,10 +82,13 @@ single-use special events.
   has a customer pay in cash whose origin Frasier (via the
   cicada) traces to an HCE buyer's deposit. Hal does not know.
 
-**BBS night:** mostly MAINSTREET and THE_BAR. STEEPLE posts one
-short check-in. WIRE_MOTHER posts a crawfish-boil recipe that is
-also, by careful read, an inventory of which boards are safe this
-summer. No DM replies yet.
+**BBS night:** mostly MAINSTREET and THE_BAR on RUST_CODE.BBS.
+STEEPLE posts one short check-in on OVERPASS.BBS (the player
+dials in to read it). WIRE_MOTHER posts a crawfish-boil recipe
+on CALICHE.BBS that is also, by careful read, an inventory of
+which boards are safe this summer. The player learns the dial-up
+directory in this week's session — five public BBSes, six numbers
+to remember. No DM replies yet.
 
 **Mechanic:** the player learns the strategic loop — survey,
 dispatch, end-day. The BBS is read-only this week.
@@ -256,9 +259,13 @@ the work.
   registers on the HCE map. Carl Reno cancels his Saturday
   breakfast for no stated reason.
 
-**BBS night:** THE_BACKCHANNEL. WIRE_MOTHER posts a long thread
-about her own filly equivalent from a decade ago. PALOMINO posts
-cryptically: *"the colt has its own field now."*
+**BBS night:** the federated sysop view (THE_BACKCHANNEL),
+aggregated across the five BBSes. WIRE_MOTHER posts a long thread
+on CALICHE.BBS about her own filly equivalent from a decade ago.
+PALOMINO posts cryptically on DRY_BLOOM.BBS: *"the colt has its
+own field now."* (Also this week: if the player has been
+reading carefully, Frasier extends them the SNACKS dial-up
+number. First admission to the inner-circle refuge.)
 
 **Mechanic:** AGENT REFUSAL. Demons (and humans, on certain
 dispatch types) can refuse. The choice has lasting ledger
@@ -288,10 +295,13 @@ dispatch challenged; Carl Reno cancels (the *why* is held).
   the local NexCorp surveying flags has, this week, *moved on
   its own*.
 
-**BBS night:** PALOMINO has gone silent. Three weeks of silence
-begin. WIRE_MOTHER and STEEPLE both post about it on
-THE_BACKCHANNEL without naming her directly. THE_QUARRY posts a
-single question: *"did anyone hear it last night?"*
+**BBS night:** DRY_BLOOM.BBS goes dark — PALOMINO has gone
+silent. Three weeks of silence begin. WIRE_MOTHER posts about it
+on CALICHE.BBS without naming her directly; STEEPLE echoes on
+OVERPASS.BBS. THE_QUARRY posts a single question on BEDROCK.BBS:
+*"did anyone hear it last night?"* (On SNACKS this week, if the
+player was admitted, the thread is short: nobody is willing to
+say more there either.)
 
 **Mechanic:** SUBSTRATE FLICKER. Tower-state events alter strategic
 rules for one week at a time. The player learns to read brightness
@@ -436,8 +446,9 @@ surfaces.
 - Monday: PALOMINO posts for the first time in three weeks. The
   post is short, in vocabulary Frasier has been parsing for years.
   The player will not understand it on first read. It is on
-  THE_BACKCHANNEL, dated August 4. Read carefully, it is about
-  Aria.
+  DRY_BLOOM.BBS (back online for the first time since W7),
+  dated August 4. Cross-posted to the federated view. Read
+  carefully, it is about Aria.
 - Tuesday: Mrs. Pimentel, on the HCE welcome committee, refuses
   to deliver a specific welcome basket to a specific new resident.
   Carl Reno notices. Mrs. Pimentel does not explain.

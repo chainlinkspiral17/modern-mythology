@@ -472,16 +472,57 @@ interlude in the player's shelf.
 ## The BBS layer
 
 Weekly, on the seventh day of every game-week. The interface is
-period-correct: 14.4k connect tone, ANSI color, board navigation by
-single-letter commands, a list of boards on the left, a thread
-view on the right.
+period-correct: 14.4k connect tone, ANSI color, board navigation
+by single-letter commands, the soft mechanical click of a Hayes
+modem locking onto carrier.
 
-### Boards
+A weird quirk of this story: **the circle uses and maintains
+multiple BBSes**, not one. Each sysop runs their own; Frasier's is
+the busiest; the inner circle has a small private refuge that the
+sysop-circle-at-large does not get to dial into. The BBS night UI
+is a dial-up directory — pick a number, dial, connect — and the
+player visits more than one over the course of a typical Sunday
+night.
 
-Six visible boards from the start, more discoverable through play:
+### The BBSes
+
+| BBS | Sysop | Where | Texture |
+|---|---|---|---|
+| **RUST_CODE.BBS** | Frasier Temple | Graustark, TX/LA | The busiest. Dense with prehistory. Boards listed below. |
+| **OVERPASS.BBS** | STEEPLE | Mobile, AL | Gulf-coast nautical. Slower posts, deeper threads. Bellbuoy in the masthead ANSI. |
+| **CALICHE.BBS** | WIRE_MOTHER | Lubbock, TX | West Texas dust register. The matriarch's board. The original demon-binding code lives in a sticky thread here that has been pinned for fifteen years. |
+| **DRY_BLOOM.BBS** | PALOMINO | Santa Fe, NM | Brief, beautiful, intermittent. Goes dark for weeks. Posts in seasons rather than days. Some ANSI art on this board is, by other sysops' quiet consensus, the best work the network has. |
+| **BEDROCK.BBS** | THE_QUARRY | Pennsylvania | Queries only. Every post is a question. The masthead ASCII is a single fossil in a slab of shale. The most paranoid board in the circle. |
+| **SNACKS** | (rotating, the circle) | nowhere on the public directory | The inner circle's refuge. See below. |
+
+### RUST_CODE.BBS · Frasier's main
+
+The busiest of the six. By the time the player dials in, the board
+has been running for years and is **dense with prehistory** —
+people who came and posted and left and came back and didn't come
+back. Old threads with the post-counts still ticking, sticky
+banners that haven't been updated since two operators ago, art
+contributions from handles that no longer connect. The texture is
+*archeology by accident.* You don't read RUST_CODE.BBS once; you
+*walk through it*.
+
+The usual BBS detritus is here:
+- **Discussion threads** across the boards listed below.
+- **Shared ASCII art**, posted in dedicated art threads. Some of
+  it is signed; most of it isn't. The handle SIGS at the bottom
+  of certain pieces map to handles that haven't posted in five
+  years.
+- **MIDI tunes** uploaded as `.MID` attachments. A handful of
+  these are originals; most are period covers of period songs the
+  uploaders made on their own keyboards. A subset of the MIDIs
+  are encoded — the patient player will find one or two that, run
+  through the right tool, decode to something else.
+
+Visible boards on RUST_CODE.BBS from the start:
 
 - **MAINSTREET** · the public square. Frasier reads, sometimes
-  posts. Choices here are *visible*; the enemy reads MAINSTREET too.
+  posts. Choices here are *visible*; the enemy reads MAINSTREET
+  too.
 - **THE_BAR** · Graustark regulars. The surviving D'Ambrosio son
   posts. Sammy posts (more rarely now than he did in the boat
   years; his Sundays are at the cemetery). Hector posts when he
@@ -489,15 +530,18 @@ Six visible boards from the start, more discoverable through play:
   documents, including memorial fragments about Dante that the
   son writes and re-reads and does not always send.
 - **THE_LIBRARY** · archive board. Where Elicia posts. Files to
-  download — audio recordings, photos, scans of vol 5 era documents.
-- **THE_WORKSHOP** · Frasier's own board. Tech threads. Hidden
-  technical unlocks for the player.
+  download — audio recordings, photos, scans of vol 5 era
+  documents.
+- **THE_WORKSHOP** · Frasier's own technical board. Tech threads.
+  Hidden technical unlocks for the player.
 - **THE_RECTORY** · religious / municipal cross-talk. Paul's aide
   lurks here under a handle.
-- **THE_BACKCHANNEL** · sysop-only. Other operators of Frasier's
-  level. The board where strategic policy actually gets discussed.
+- **THE_ART_WALL** · the public gallery. ASCII art submissions,
+  MIDI uploads, signed and unsigned. The board's prehistory is
+  thickest here — the oldest pieces are six years stale, the
+  newest are from last Tuesday.
 
-Hidden boards, discovered through clues in posts:
+Hidden boards on RUST_CODE.BBS, discovered through clues in posts:
 
 - **THE_ATTIC** · old grief, the dead. A memorial board, mostly
   read-only. Reading here unlocks character POV documents about
@@ -510,8 +554,90 @@ Hidden boards, discovered through clues in posts:
   plans for next week.
 - **THE_BASEMENT** · the demon roster's resting board. Spending a
   BBS night here reduces all active demon burn by 1.
-- (others hidden — let the writer decide how many. 12-15 boards
-  total feels right.)
+- (others hidden — let the writer decide. 12-15 boards total on
+  RUST_CODE.BBS feels right by Labor Day.)
+
+### The sysop circle's boards · OVERPASS / CALICHE / DRY_BLOOM / BEDROCK
+
+Each sysop's board is its own small world. The player dials in
+during BBS nights when there's a reason — a post Frasier wants to
+follow up on, a thread someone has cross-referenced. The sysop
+boards are tonally distinct from RUST_CODE.BBS: smaller, slower,
+older. Their masthead ANSI is each board's signature.
+
+The sysop circle's coded vocabulary for Aria (revealed legibly
+through the W11 glossary unlock) is **cross-board** — STEEPLE on
+OVERPASS, WIRE_MOTHER on CALICHE, PALOMINO on DRY_BLOOM, and
+THE_QUARRY on BEDROCK each use the vocabulary in their own register.
+Re-reading their boards with the glossary changes what the player
+thought they were reading.
+
+THE_BACKCHANNEL — formerly a board on RUST_CODE.BBS — is now
+correctly understood as the **federated sysop conversation**: each
+sysop posts on their own board, and the sysops read each other's.
+The player navigates THE_BACKCHANNEL as a virtual board that
+aggregates posts from all five sysop boards (RUST_CODE included)
+filtered to sysop-tagged threads only.
+
+### SNACKS · the inner-circle refuge
+
+A small private BBS the circle does not list in any public
+directory. The handle running it is rotating — sometimes Frasier
+hosts, sometimes another sysop hosts when his line is overloaded.
+SNACKS exists to be *a refuge away from the noise* of RUST_CODE
+and the formal sysop boards.
+
+Texture: small. Slow. No ANSI art on the masthead — just plain
+text. No MIDI tunes (the inner circle agreed, at SNACKS's
+founding, that the refuge would be quiet). Threads are sparse.
+Posts are short. The board does not log connections — there is
+no who's-online list — and nobody on SNACKS gets to read who
+else has connected this week unless that person posts.
+
+What lives on SNACKS:
+
+- Personal threads. Family news. Health. The small private
+  registers the operator class doesn't post on RUST_CODE.
+- The Aria-coded vocabulary in its purest form — on SNACKS the
+  circle doesn't have to encode as carefully, because the
+  audience is small.
+- One sticky thread called *THE BLEACHED COUNTER* in which the
+  circle posts, every Sunday for years, **one short line each**
+  about the past week. The thread is the closest thing the
+  circle has to a private newspaper.
+
+The player can dial SNACKS once they have been admitted by
+Frasier — typically W5 or W6, after the player has demonstrated
+enough careful reading on RUST_CODE to be trusted with the dial-
+up number. Some playthroughs the player will never be admitted.
+Soft-fail honored: that's a different shelf at Labor Day.
+
+### Regulars across the network
+
+A handful of named handles appear across multiple BBSes, not
+running boards of their own but recognizable across the circle.
+Three known to Frasier and the sysops:
+
+- **chainlinkspiral** · posts on RUST_CODE most often; visible
+  on OVERPASS and DRY_BLOOM; rarely on BEDROCK. Long, careful
+  threads. ASCII signatures with a precise spiral. Real-life
+  identity unknown to the player; the sysop circle has its
+  guesses.
+- **hasslein** · the time-loop physicist register — posts about
+  recursions, predictions, the same thread he made in 1996 that
+  he is updating monthly with new entries. Most active on
+  CALICHE; visits RUST_CODE on Wednesdays. WIRE_MOTHER calls him
+  *the heretic*.
+- **uzhekwurm** · posts in transliterated cadence, mostly on
+  BEDROCK. THE_QUARRY's only consistent correspondent — they
+  trade queries that are also, in the patient reader's eyes,
+  prayers. The "wurm" is the worm; the "uzhek" is from a place
+  none of the sysops have located on a map.
+
+Other regulars cycle in and out by week. The player encounters
+~15-20 named regulars across the summer; each one has a small
+texture and a known board preference and a small handful of
+threads worth reading.
 
 ### DMs
 

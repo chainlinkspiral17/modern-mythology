@@ -192,7 +192,11 @@ The volume names its own structure in-fiction across multiple cards:
 
 - **RUST_CODE.BBS** — the BBS network metaphor. Frasier's
   terminal is the anchor; later volumes connect via the same
-  underlying network.
+  underlying network. By vol 6 the network is explicitly **a
+  federation of multiple BBSes** the circle uses and maintains —
+  Frasier's RUST_CODE plus the sysop peers' boards (OVERPASS,
+  CALICHE, DRY_BLOOM, BEDROCK) plus the inner-circle refuge
+  (SNACKS). RUST_CODE.BBS is the busiest of the federation.
 - **NARRATIVE STRUCTURE COMPASS** — the radial graph view, the
   navigation metaphor for the same system. The Priestess card's
   badge graphic.
