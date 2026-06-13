@@ -11,7 +11,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
 shader = ExtResource("7_shader")
-shader_parameter/ambient_floor = 0.05
+shader_parameter/ambient_floor = 0.20
 shader_parameter/saturation = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
@@ -29,7 +29,7 @@ fog_enabled = false
 [node name="Cathedral" type="Node3D"]
 script = ExtResource("8_setup")
 add_colliders = true
-ambient_floor = 0.05
+ambient_floor = 0.20
 saturation = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

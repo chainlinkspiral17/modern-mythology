@@ -18,9 +18,13 @@
 // ════════════════════════════════════════════════════════════════
 
 shader_type spatial;
-render_mode unshaded, cull_back, depth_draw_opaque;
+// cull_disabled so the warehouse INTERIOR walls render — Blender's
+// make_box() builds outward-facing normals, so from inside the box
+// every wall face is back-facing. Without cull_disabled the player
+// inside the Cathedral sees nothing (a black screen).
+render_mode unshaded, cull_disabled, depth_draw_opaque;
 
-uniform float ambient_floor : hint_range(0.0, 0.3) = 0.05;
+uniform float ambient_floor : hint_range(0.0, 0.5) = 0.20;
 uniform float saturation : hint_range(0.5, 1.5) = 1.0;
 
 void fragment() {
