@@ -887,15 +887,22 @@ a working stove. The peer BBSes are smaller, slower, older,
 tonally distinct from one another.
 
 The sysop circle has, in addition to the five public boards,
-**SNACKS** — a small private refuge BBS the circle does not list
-in any directory. SNACKS exists to be quiet. No ANSI art, no MIDI
-tunes, no public connection log. Personal threads only. The
-Aria-coded vocabulary lives on SNACKS in its purest form, because
-on SNACKS the circle does not have to encode as carefully.
+**SNACKS** — the friendly long-running BBS that is the circle's
+living room. Not solemn, not secret — just unlisted because the
+directory listings were a hassle. Years of inside jokes, recipes,
+the *did anyone catch the game last night* threads, and one
+sticky called THE BLEACHED COUNTER in which the circle posts one
+short line each every Sunday.
 
-The player can dial SNACKS once Frasier has admitted them
-(typically W5 or W6 if they have demonstrated careful reading on
-RUST_CODE). Some playthroughs the player will never be admitted.
+Canonical running gag: **Frasier was playfully banned from SNACKS
+for a week before the game opens.** WIRE_MOTHER kicked him to
+cool off after he got grumpy on RUST_CODE. There was an ASCII
+tombstone. The circle thought it was funny. He gets let back in
+early in the summer — typically W2's BBS night, when WIRE_MOTHER
+DMs him the new dial-up number (SNACKS rotates numbers when
+someone's been on the ban list, on principle). The tombstone
+post stays pinned forever. The ribbing in the replies underneath
+deepens across the summer.
 
 Beyond the sysops themselves, a handful of named **regulars**
 appear across multiple BBSes. Three known to the circle:

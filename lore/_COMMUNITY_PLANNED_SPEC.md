@@ -579,38 +579,65 @@ The player navigates THE_BACKCHANNEL as a virtual board that
 aggregates posts from all five sysop boards (RUST_CODE included)
 filtered to sysop-tagged threads only.
 
-### SNACKS · the inner-circle refuge
+### SNACKS · the friendly long-running BBS
 
-A small private BBS the circle does not list in any public
-directory. The handle running it is rotating — sometimes Frasier
-hosts, sometimes another sysop hosts when his line is overloaded.
-SNACKS exists to be *a refuge away from the noise* of RUST_CODE
-and the formal sysop boards.
+The circle's small *friendly* BBS, running for years. Not solemn,
+not formal — the warm one, the one with the inside jokes and the
+running gags and the recipe threads and the *did anyone catch the
+game last night* threads. The circle's living room, basically.
 
-Texture: small. Slow. No ANSI art on the masthead — just plain
-text. No MIDI tunes (the inner circle agreed, at SNACKS's
-founding, that the refuge would be quiet). Threads are sparse.
-Posts are short. The board does not log connections — there is
-no who's-online list — and nobody on SNACKS gets to read who
-else has connected this week unless that person posts.
+Not listed in any public directory, but only because the directory
+listings are a hassle, not because SNACKS is secret. The handle
+running it rotates — sometimes Frasier hosts, sometimes another
+sysop hosts when his line is overloaded. Everyone in the circle
+has the dial-up number.
+
+Texture: small. Slow. Warm. The masthead is plain text — no ANSI
+art, no MIDI tunes (the circle agreed at SNACKS's founding the
+refuge would be quiet, and that lock has held). Threads are
+sparse and personal. The Aria-coded vocabulary lives on SNACKS in
+its purest form because on SNACKS the circle doesn't have to
+encode as carefully.
+
+#### Frasier's ban
+
+A canonical running gag: **Frasier was playfully banned from
+SNACKS for a week before the game opens** — the circle's friendly
+intervention. He was being a grump on RUST_CODE about a thread
+that didn't need the heat he gave it; WIRE_MOTHER kicked him from
+SNACKS for seven days *to cool off*. There was a banner. There
+was an ASCII tombstone. The circle thought it was funny. Frasier
+thought it was funny too, eventually.
+
+He gets let back in early in the summer — typically W2's BBS
+night, when WIRE_MOTHER quietly DMs him the new dial-up number
+(SNACKS rotates dial-ups when someone's been on the ban list, on
+principle). The player learns about the ban only by reading the
+backread on SNACKS after Frasier's been readmitted — the
+tombstone post is still pinned in the SNACKS history thread, the
+circle's ribbing in the replies underneath.
 
 What lives on SNACKS:
 
-- Personal threads. Family news. Health. The small private
+- Personal threads. Family news. Health. Recipes. The small
   registers the operator class doesn't post on RUST_CODE.
-- The Aria-coded vocabulary in its purest form — on SNACKS the
-  circle doesn't have to encode as carefully, because the
-  audience is small.
-- One sticky thread called *THE BLEACHED COUNTER* in which the
-  circle posts, every Sunday for years, **one short line each**
+- The Aria-coded vocabulary, undisguised. The sysop circle talks
+  about her here the way they don't anywhere else.
+- One sticky thread called **THE BLEACHED COUNTER** in which the
+  circle posts, every Sunday for years, one short line each
   about the past week. The thread is the closest thing the
   circle has to a private newspaper.
+- Frasier's tombstone post (pinned, never removed) and the
+  WIRE_MOTHER ban-banner ASCII piece (also pinned). Ribbing in
+  the replies.
 
-The player can dial SNACKS once they have been admitted by
-Frasier — typically W5 or W6, after the player has demonstrated
-enough careful reading on RUST_CODE to be trusted with the dial-
-up number. Some playthroughs the player will never be admitted.
-Soft-fail honored: that's a different shelf at Labor Day.
+The player can dial SNACKS once Frasier has been readmitted — the
+W2 BBS night, in typical play. (Note: this is **Frasier's**
+readmission, separate from the *player's* admission to inspect
+the SNACKS texture in depth. The player is just looking over
+Frasier's shoulder; if Frasier's back in, the player can read.)
+Some playthroughs the player will never deeply explore SNACKS;
+the texture rewards the patient reader either way.
 
 ### Regulars across the network
 

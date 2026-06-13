@@ -120,16 +120,22 @@ introduced; Carl Reno introduced.
 
 **BBS night:** first substantial DM exchange. Frasier replies to
 Elicia (one-sentence choice). PALOMINO posts about a thunderstorm
-in Santa Fe; the patient reader catches the second layer.
+in Santa Fe on DRY_BLOOM.BBS; the patient reader catches the
+second layer. **And: WIRE_MOTHER DMs Frasier the new SNACKS
+dial-up number** — the readmission. Frasier's week-long ban for
+being grumpy on RUST_CODE is, this Sunday, over. He dials in.
+The tombstone post is still pinned. The ribbing in the replies
+under it has already started.
 
 **Mechanic:** DM threads + reply choices. Demon burn accrual
 becomes legible.
 
 **Cast moves:** Elicia speaks. The surviving son speaks (his first
 DM of the summer; the player now has a Graustark restaurant DM
-thread alongside the others). The Boudreaux thread continues on
-MAINSTREET (she's posting about the brochures now, in a register
-the player can register but not yet read).
+thread alongside the others). WIRE_MOTHER readmits Frasier to
+SNACKS. The Boudreaux thread continues on MAINSTREET (she's
+posting about the brochures now, in a register the player can
+register but not yet read).
 
 ### Week 3 · The Hidden Door
 

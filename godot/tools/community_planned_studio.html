@@ -515,17 +515,20 @@
     {
       "id": "snacks",
       "name": "SNACKS",
-      "sysop": "rotating · inner circle",
-      "where": "unlisted",
-      "ansi_head": "SNACKS\n(plain text. no MIDI. no ANSI head.)",
+      "sysop": "rotating · the circle",
+      "where": "unlisted (just because the directory is a hassle)",
+      "ansi_head": "SNACKS\n(plain text. no MIDI. no ANSI head. the circle agreed.)",
       "boards": [
-        { "id": "main", "name": "MAIN", "desc": "personal threads only" },
-        { "id": "counter", "name": "THE_BLEACHED_COUNTER", "desc": "one short line each, every sunday" }
+        { "id": "main", "name": "MAIN", "desc": "personal threads · recipes · the friendly stuff" },
+        { "id": "counter", "name": "THE_BLEACHED_COUNTER", "desc": "one short line each, every sunday" },
+        { "id": "tombstone", "name": "THE_TOMBSTONE", "desc": "pinned forever · the ribbing thread under it never stops" }
       ],
       "threads": {
         "main": [
-          { "id": "sn1", "from": "WIRE_MOTHER", "subject": "the kid from lubbock", "body": "he had the right face for it. i gave him a glass of water. the address. i did not say what the address is. he did not ask. — wm" },
-          { "id": "sn2", "from": "STEEPLE", "subject": "the sailmaker", "body": "if it's him again, it's our friend in the back. patience this round. — s." }
+          { "id": "sn1", "from": "WIRE_MOTHER", "subject": "crawfish boil · sunday · 6PM CST", "body": "y'all the boil at my place sunday. 6PM central. the usual. bring beer, bring sad gossip, bring uzhekwurm's recipe for the dipping sauce if anyone still has it from '04. — wm" },
+          { "id": "sn2", "from": "STEEPLE", "subject": "RE: crawfish boil · sunday · 6PM CST", "body": "i'll dial in. the boil is the boil. the dipping sauce is the dipping sauce. — s." },
+          { "id": "sn3", "from": "PALOMINO", "subject": "RE: crawfish boil · sunday · 6PM CST", "body": "santa fe sends regrets but a small painted card via the post. — p." },
+          { "id": "sn4", "from": "the_surviving_son", "subject": "dad's anniversary", "body": "friday is the day. the cemetery before noon. the bar at six. nobody needs to say anything if anyone comes. just be there if you can. thank you for the dipping sauce thread, wm. — d." }
         ],
         "counter": [
           { "id": "bc1", "from": "frasier", "subject": "this week", "body": "sammy is quieter than the last two times. friday at six. — f." },
@@ -533,10 +536,18 @@
           { "id": "bc3", "from": "STEEPLE", "subject": "this week", "body": "the sailmaker handle returned. patience. — s." },
           { "id": "bc4", "from": "PALOMINO", "subject": "this week", "body": "saw her, in the corner of a window. yellow. — p." },
           { "id": "bc5", "from": "THE_QUARRY", "subject": "this week", "body": "the dogs were awake. — tq." }
+        ],
+        "tombstone": [
+          { "id": "tb1", "from": "WIRE_MOTHER", "subject": "F. TEMPLE · BANNED 7 DAYS · COOL OFF SON", "body": "          ┌─────────────────────────┐\n          │   ░░░ HERE LIES ░░░     │\n          │                         │\n          │     F. TEMPLE'S         │\n          │      ACCESS TO          │\n          │       SNACKS            │\n          │                         │\n          │   GRUMP ABOUT NOTHING   │\n          │     · 7 days ·          │\n          │                         │\n          │    COOL OFF, SON.       │\n          │      — wm               │\n          └─────────────────────────┘\n\nthread closed for the duration of the ban. open for ribbing when he's back. — wm" },
+          { "id": "tb2", "from": "STEEPLE", "subject": "RE: F. TEMPLE · BANNED 7 DAYS", "body": "he had it coming. — s." },
+          { "id": "tb3", "from": "PALOMINO", "subject": "RE: F. TEMPLE · BANNED 7 DAYS", "body": "i made a card for the occasion. it's in the mail. it is also somehow already on his workbench. — p." },
+          { "id": "tb4", "from": "THE_QUARRY", "subject": "RE: F. TEMPLE · BANNED 7 DAYS", "body": "was the bench the bench? — tq" },
+          { "id": "tb5", "from": "uzhekwurm", "subject": "RE: F. TEMPLE · BANNED 7 DAYS", "body": "the bench was the bench. wurm carried the card. it was a good card. it had a small painted moth on it. — uw" },
+          { "id": "tb6", "from": "frasier", "subject": "RE: F. TEMPLE · BANNED 7 DAYS", "body": "i am, this sunday, back. the moth card is on the workbench. the moth on the card is, by p.'s usual standard, very good. i was grumpy. i am, this sunday, less grumpy. — f." }
         ]
       },
-      "gated": true,
-      "gate_text": "SNACKS is not in the directory. you have not been admitted yet. (in canon: admission typically W5 or W6.)"
+      "gated_until_day": 8,
+      "gate_text": "SNACKS · unlisted. Frasier was playfully banned for the week — WIRE_MOTHER ribbed him about a grumpy RUST_CODE thread. He'll be readmitted next sunday's BBS night (W2). The tombstone post and the ribbing thread under it are waiting."
     }
   ]
 }
@@ -935,8 +946,9 @@ function renderBBS() {
       <div class="dial-table">
         <div class="h">BBS</div><div class="h">SYSOP</div><div class="h">NOTE</div>
         ${BBS.bbses.map(b => {
-          if (b.gated && !S.snacks_admitted) {
-            return `<div class="row" style="color:#3a5a25;" onclick="alert('${b.gate_text.replace(/'/g,'\\\'')}')">${b.name} ··</div><div class="row" style="color:#3a5a25;">(unlisted)</div><div class="row" style="color:#3a5a25;">${b.gate_text}</div>`;
+          const isGated = b.gated_until_day && S.day_id < b.gated_until_day && !S.snacks_admitted;
+          if (isGated) {
+            return `<div class="row" style="color:#3a5a25;" onclick="alert(${JSON.stringify(b.gate_text)})">${b.name} ··</div><div class="row" style="color:#3a5a25;">(unlisted)</div><div class="row" style="color:#3a5a25;">currently banned · ribbing intensifying</div>`;
           }
           return `<div class="row" onclick="enterBBS('${b.id}')">${b.name}</div><div class="row" onclick="enterBBS('${b.id}')">${b.sysop}</div><div class="row" onclick="enterBBS('${b.id}')">${b.where}</div>`;
         }).join('')}
