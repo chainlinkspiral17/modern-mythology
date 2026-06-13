@@ -453,18 +453,48 @@ def export_glb():
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, OUTPUT_NAME)
 
+    print(f"\n[build_cathedral_interior] exporting to {out_path}")
+    print(f"[build_cathedral_interior] scene objects: {len(bpy.context.scene.objects)}")
+
     bpy.ops.object.select_all(action='SELECT')
-    bpy.ops.export_scene.gltf(
-        filepath=out_path,
-        export_format='GLB',
-        use_selection=False,
-        export_apply=True,
-        export_colors=True,
-        export_normals=True,
-        export_lights=True,
-        export_cameras=True,
-    )
-    print(f"\n[build_cathedral_interior] wrote {out_path}")
+
+    # Build kwargs that work across Blender 3.6 and Blender 4.x.
+    # Blender 4.0 removed `export_colors` and `export_normals`; both are
+    # now defaults. Vertex colors export automatically when present.
+    base_kwargs = {
+        'filepath': out_path,
+        'export_format': 'GLB',
+        'use_selection': False,
+        'export_apply': True,
+        'export_lights': True,
+        'export_cameras': True,
+    }
+
+    # Probe the operator's available properties so we add legacy flags
+    # only on Blender 3.x.
+    rna = bpy.ops.export_scene.gltf.get_rna_type()
+    legacy_kwargs = {}
+    if 'export_colors' in rna.properties:
+        legacy_kwargs['export_colors'] = True
+    if 'export_normals' in rna.properties:
+        legacy_kwargs['export_normals'] = True
+
+    try:
+        result = bpy.ops.export_scene.gltf(**base_kwargs, **legacy_kwargs)
+        print(f"[build_cathedral_interior] export result: {result}")
+    except Exception as e:
+        print(f"[build_cathedral_interior] ✗ EXPORT FAILED: {e}")
+        import traceback
+        traceback.print_exc()
+        raise
+
+    # Verify the file was actually written
+    if os.path.exists(out_path):
+        size = os.path.getsize(out_path)
+        print(f"[build_cathedral_interior] ✓ wrote {out_path} ({size} bytes)")
+    else:
+        print(f"[build_cathedral_interior] ✗ {out_path} was NOT created — check the export logs above")
+        raise RuntimeError("GLB not written")
 
 
 # ════════════════════════════════════════════════════════════════
