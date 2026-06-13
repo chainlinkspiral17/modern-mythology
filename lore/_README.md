@@ -13,6 +13,14 @@ parse.
 
 ## directory map
 
+### per-volume wikis (start-here for each volume)
+
+| file | what |
+|---|---|
+| `_VOL5_WIKI.md` | vol 5 · Major Arcana · the synthesizing orientation, with reading order |
+| `_VOL6_WIKI.md` | vol 6 · Planned Community · cast, locations, motifs, the COMMUNITY PLANNED game tie-in |
+| `_VOL7_WIKI.md` | vol 7 · Land of Milk and Honey · the substrate, Lena Vargas, the Smolvud roster |
+
 ### top-level reference docs
 
 | file | what |
@@ -26,6 +34,24 @@ parse.
 | `_SINKHOLE_NEXUS.md` | the Calamity — the deck's central trauma reframing |
 | `_TAROT_LORE.md` | classical Major Arcana mapping onto Graustark / the deck |
 | `_UNLOCK_WEB.md` | per-card outbound edges across the 22-card network |
+
+### vol 5 gallery game (Tarot Gauntlet)
+
+| file | what |
+|---|---|
+| `_TAROT_GAUNTLET.md` | the gauntlet game overview |
+| `_TAROT_GAUNTLET_SCENARIOS.md` | every authored scenario |
+| `_GAUNTLET_BUILD_WIKI.md` | the gauntlet's build wiki / mechanics reference |
+| `_CAMEO_BUILD_SPEC.md` | the cameo system (cross-arcana guest scenarios) |
+| `_WAVE_2_OUTLINE.md`, `_WAVE_3_OUTLINE.md`, `_WAVE_4_OUTLINE.md` | mechanic evolution roadmap |
+
+### vol 6 gallery game (COMMUNITY PLANNED)
+
+| file | what |
+|---|---|
+| `_COMMUNITY_PLANNED_LORE.md` | narrative scope, cast, Frasier characterization, Dean offscreen, Aria's anticipated coming |
+| `_COMMUNITY_PLANNED_SPEC.md` | mechanics — control nodes, agent economies, BBS layer, conversion mechanic, interlude shelf, unlock condition |
+| `_COMMUNITY_PLANNED_WEEKLY.md` | the 14-week scenario scaffold (Memorial Day to Labor Day) |
 
 ### subdirectories
 
