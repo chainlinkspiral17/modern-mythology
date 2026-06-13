@@ -38,9 +38,32 @@ func _ready() -> void:
     camera = get_node_or_null("Camera3D")
     if camera and camera.position.y < 0.01:
         camera.position.y = eye_height
+    # CRITICAL: force the player's Camera3D to be the active one.
+    # The cathedral_interior.glb (and others) ship with an embedded
+    # camera from the Blender export (FrasierEye / cam_player_entry /
+    # etc.) — Godot can pick that as the active camera, which means
+    # the player moves but the view never updates because the
+    # rendered camera is fixed elsewhere in the scene.
+    if camera:
+        camera.make_current()
+    # Also defensively de-activate any other cameras in the scene
+    var scene_root := get_tree().current_scene
+    if scene_root:
+        _deactivate_other_cameras(scene_root, camera)
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     print("[FPC] _ready · mouse mode: %s · spawn at %s" % [Input.mouse_mode, global_position])
     print("[FPC] noclip=%s · WASD move · Q/E turn · R/F pitch · Space/Ctrl up/down · F1 collide · F2 teleport" % noclip)
+    print("[FPC] active camera: %s" % camera)
+
+
+func _deactivate_other_cameras(node: Node, keep: Camera3D) -> void:
+    if node is Camera3D and node != keep:
+        var other := node as Camera3D
+        if other.current:
+            other.current = false
+            print("[FPC] de-activated stray camera: %s" % other.get_path())
+    for child in node.get_children():
+        _deactivate_other_cameras(child, keep)
 
 
 func _unhandled_input(event: InputEvent) -> void:
