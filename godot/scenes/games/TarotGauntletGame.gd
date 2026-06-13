@@ -1041,13 +1041,13 @@ func _build_ui() -> void:
 	var top_leave_btn := Button.new()
 	top_leave_btn.text = "← Back to Gallery"
 	var leave_room: String = "diner"
-	if _arcana_id == "magician":  leave_room = "cathedral"
-	if _arcana_id == "priestess": leave_room = "booth"
-	if _arcana_id == "empress":   leave_room = "riverboat"
-	if _arcana_id == "emperor":   leave_room = "office"
-	if _arcana_id == "hierophant": leave_room = "BBS basement"
-	if _arcana_id == "lovers":     leave_room = "apartment"
-	if _arcana_id == "chariot":    leave_room = "bus"
+	if _arcana_id == "magician":   leave_room = "cathedral"
+	if _arcana_id == "priestess":  leave_room = "bungalow"
+	if _arcana_id == "empress":    leave_room = "riverboat"
+	if _arcana_id == "emperor":    leave_room = "helm"
+	if _arcana_id == "hierophant": leave_room = "sunday circuit"
+	if _arcana_id == "lovers":     leave_room = "Roberts' house"
+	if _arcana_id == "chariot":    leave_room = "hot office"
 	top_leave_btn.tooltip_text = "Leave the %s and return to the gallery (this ends the run)." % leave_room
 	top_leave_btn.add_theme_font_size_override("font_size", 11)
 	top_leave_btn.custom_minimum_size = Vector2(132, 24)

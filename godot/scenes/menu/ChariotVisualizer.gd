@@ -1,7 +1,7 @@
 extends "res://scenes/menu/TarotVisualizerBase.gd"
 ## ChariotVisualizer — Ember & Ash Restaurant · Two Horses, One Wreck.
 ##
-## VII · POV: Antonio D'Ambrosio. Dante's nephew. The Hierophant's
+## VII · POV: Antonio D'Ambrosio. Dante's younger son. The Hierophant's
 ## phone call was for him — that's why he's reading this from the
 ## BBS instead of from inside the steel.
 ##
@@ -939,7 +939,7 @@ func _on_command(text: String) -> void:
             _log("[color=#c84030]  Kitchen · staff only · Jimmy plates · also sabotage adjacent.[/color]")
         # Hidden — cross-character
         "antonio":
-            _log("[color=#e85040]  Antonio D'Ambrosio · 43 · Dante's nephew · sysop · D.O.A.[/color]")
+            _log("[color=#e85040]  Antonio D'Ambrosio · 34 · Dante's younger son · sysop · D.O.A.[/color]")
             _log("[color=#7a3030]  the chapter's POV character. also the chapter's target.[/color]")
         "dante", "emperor":
             _log("[color=#c89060]  Dante · silent partner of Ember & Ash · Antonio's uncle.[/color]")

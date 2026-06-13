@@ -6,6 +6,77 @@ from the user. Everything in `lore/` is Claude-generated scaffolding
 and is NOT canon — useful as reference for texture, but never
 load-bearing.
 
+## END OF WAVE 1 · STATUS
+
+**Wave 1 = the white-box pass.** All eight vol-5-relevant major
+arcana now have canon-aligned hand, location, action cards, gravity
+deck, finale, visitors, items, die, and three scenarios each.
+Cross-arcana threading is wired (Sammy / Quentin Paul / Antonio /
+Dante / Mackenzie / Philip / Anya appear across multiple boards).
+Dream-logic is gated to the Priestess only. The Tarot Gauntlet is
+near-playable end-to-end for arcanas 0–VII.
+
+### Built arcanas (24 scenarios across 8 boards)
+
+| # | Arcana | Hand | Location | Doom-clock | Scenarios |
+|---|---|---|---|---|---|
+| 0 | Fool | John Frank | D'Ambrosio's diner | INERTIA | THE LEAP · THE RUSH · FULL HOUSE |
+| I | Magician | Frasier | Cathedral warehouse | DISORDER | SINKING FEELING · WATCH PARTY · BLOW OUT THE CANDLES |
+| II | Priestess | Elicia Duchane | Elicia's bungalow | MASTER REEL (episode has shape) | PACKING · BROKEN GLASS FRACTAL · THE COMFORTING VOID |
+| III | Empress | Nicola Greer | D'Ambrosio's riverboat | BLOOM (floor held) | STATIC BLOOM · WHEN YOU'RE READY · THE BACK ROOM CALLS |
+| IV | Emperor | Dante D'Ambrosio | D'Ambrosio's riverboat | LEDGER (closed) | THE FRIDAY HELM · TIME'S CALLING CARD · SIX WEEKS APART |
+| V | Hierophant | Quentin Paul | Paul's Sunday circuit | SIGNAL (office holds) | ST JUDE'S MORNING · SUNDAY BRUNCH · THE BANDSTAND CALLS |
+| VI | Lovers | Mackenzie (Philip partner) | Roberts house | SYNC (moment held) | THE FAUCET WINS · HE WAVED · TODAY THE DRIP CAN WIN |
+| VII | Chariot | Antonio D'Ambrosio | Ember & Ash hot office | PROGRESS (silt of voicemails) | THE HOT OFFICE · TWO HORSES ONE WRECK · OPTION FOUR |
+
+### Shared boards
+- **D'Ambrosio's riverboat** (17 spaces): Empress (Nicola at the maître d') + Emperor (Dante at the helm). Same physical location, different POV, leaded window between them. The lower deck (catering office / card room / back room / staff locker / staff exit) is canon-implicit Empire territory.
+
+### Cross-arcana visitor cameos already threaded
+- Antonio appears in: Chariot (focal) · Hierophant (phone) · Emperor (phone)
+- Dante appears in: Emperor (focal) · Empress (helm presence) · Chariot (the call Antonio doesn't make)
+- Quentin Paul appears in: Hierophant (focal) · Empress (phone) · Emperor (Table 17)
+- John Frank appears in: Fool (focal) · Priestess (email)
+- Mackenzie/Philip appear in: Lovers (focal) · Priestess (text/phone)
+- Sammy appears in: Empress (bar) · Emperor (bartender/messenger) · Lovers (phone via Philip)
+- Hector appears in: Empress · Emperor · Hierophant
+- Anya appears in: Priestess (on-screen visitor) — Whispers from the Liminal actress
+
+### Engine + infrastructure
+- Per-arcana win-condition schemas live in TarotGauntletGame.gd for all eight arcanas
+- `hand_overrides` mechanic added (unused after surgery; available for future guest-lens scenarios)
+- `verb_labels` override renders for interior visitors (Aria see/hear/answer/name; Anya see/watch/cut/lock; MrMyst register/remember/set-down/let-go)
+- `episode_states` machinery added (currently unused after the PH suite retired; available for future scenarios)
+- Achievement evaluator extended (any arcana metric readable; lore_token: flag pattern supported)
+- world_state.json sinkhole injector strengthened
+- Gallery PLAY buttons restored for all 8 arcanas pointing at the canonical board+hand
+
+### Files retired in surgery (and the rebuilds that replaced them)
+| Retired | Replaced by |
+|---|---|
+| chariot/* (Cora midnight bus) + locations/the_midnight_bus.json + hands/cora.json | chariot/* (Antonio at Ember & Ash) + locations/ember_ash_office.json + hands/antonio.json |
+| lovers/* (Sasha/Reed apartment) + locations/apartment_above_diner.json + hands/sasha.json | lovers/* (the Roberts) + locations/roberts_house.json + hands/mackenzie.json |
+| hierophant/* (Sysop BBS) + locations/bbs_room.json + hands/sysop.json | hierophant/* (Q. Paul Sunday) + locations/the_hierophant_circuit.json + hands/quentin_paul.json |
+| priestess/* (invented Pomegranate Hour suite) + locations/recording_booth.json (replaced) | priestess/* (Whispers + PH-haunting) + locations/elicia_bungalow.json |
+| empress/* (Nicola separate boat) | empress/* (Nicola at D'Ambrosio's) on reworked riverboat_interior.json |
+| emperor/* (Dante civic office) + locations/dantes_office.json | emperor/* (Dante at the helm) on the reworked riverboat |
+| emperor/setup_johns_review.json (invented guest-lens prototype) | Reserved for cameo wave |
+
+### Files retired as flavor pools (preserved, not active)
+- `chariot/visitors.json` (Cora & passengers — writing reservoir)
+- `lovers/visitors.json` (Sasha/Reed/bus kid — writing reservoir)
+- `hierophant/visitors.json` (TOWER/Lurker/Anya recording — writing reservoir)
+
+These were demoted per user direction ("they can remain as visitors, flavor"); not loaded as active rosters.
+
+### Final wiring verification
+All 24 scenarios validated: every location loads, every hand loads, every player_pos resolves, every threshold resolves, every visitor reference resolves, every arrival_space resolves. GDScript balanced. JSON parses clean.
+
+### Tonal rule (locked)
+**Dream logic stays in the Priestess.** Other arcanas earn weight through specificity, not animism. The Priestess gets a deliberate boost where the mirror shard returns, the storage closet door opens slightly on its own, and the kettle clicks. Everywhere else: the boat groans because boats groan; the bus does not remember; the room is the room.
+
+---
+
 ## Authority hierarchy
 
 | Source | Status |
