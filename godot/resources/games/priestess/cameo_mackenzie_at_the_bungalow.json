@@ -1,0 +1,70 @@
+{
+  "id": "cameo_mackenzie_at_the_bungalow",
+  "arcana": "ii_priestess",
+  "location": "elicia_bungalow",
+  "hand": "mackenzie",
+  "title": "MACKENZIE AT THE BUNGALOW",
+  "subtitle": "CAMEO · II·Priestess · 7:14 PM · The casserole arrives",
+  "difficulty": "easy",
+  "guest_lens": { "host": "priestess", "guest": "lovers" },
+  "epigraph_upright": "Mackenzie drove over with the casserole. She has been here twice in two years. She brought the 9x13 from the bottom shelf of the freezer. The bungalow smells like Elicia's bungalow smells. The director's tic is in the air; Mackenzie has, by year forty, learned to ignore it.",
+  "epigraph_reversed": "Elicia takes the casserole and sets it on the counter beside the teacup and the casserole goes, by Friday, back into the freezer foil-dimpled. The visit becomes the visit Mackenzie writes about in her journal as the visit she should not have made.",
+  "scene_description": "Easy cameo. The Lovers' grounded sanity at the Priestess's haunted bungalow. Mackenzie brings the casserole, sits at the kitchen table, gives Elicia the news from the Roberts house, leaves.",
+  "direction_hint": "Get to the kitchen. Sit with Elicia (off-stage, she lets you). Connect with the visitors Elicia hosts. Leap.",
+  "opening_log_lines": [
+    "7:14 PM. The casserole in your hands is still warm.",
+    "The bungalow's front door is open a crack. The cicadas at the dusk-frequency.",
+    "Elicia is in the studio, you can hear her. She knows you're here."
+  ],
+  "starting_state": {
+    "player_pos": "living_room",
+    "time": 5,
+    "time_per_turn": 5,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
+    "doubt_max": 7,
+    "verb": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "pour_coffee", "hold_him", "look_at_the_garden", "today_the_drip_can_win"]
+  },
+  "visitors_present_at_start": ["anya_on_screen", "mrmyst_memory"],
+  "visitor_schedule": [
+    { "visitor": "philip_phone_priestess", "arrival_turn": 3, "arrival_space": "living_room" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 2,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the bungalow is the bungalow.", "tick_per_turn": 1, "effects": [] },
+    { "level": 5, "label": "elicia has not, in eight minutes, come out of the studio.", "tick_per_turn": 1, "effects": [] },
+    { "level": 8, "label": "you have, on this visit, started reading the labels on the boxes.", "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "you left without giving her the casserole properly.", "tick_per_turn": 2, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "mackenzie at the door with the casserole.", "effects": [] },
+    { "level": 3, "label": "the shard on the bookshelf catches the light.", "effects": [] },
+    { "level": 5, "label": "anya on screen is mid-sentence. you noticed.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the bungalow does the dream thing to you, too, today.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door", "label": "FRONT DOOR", "ending_lore_token": "leap_back_to_the_roberts_house", "visible_from_start": true },
+    { "id": "back_gate",  "label": "BACK GATE",  "ending_lore_token": "leap_through_the_alley",        "visible_from_start": true },
+    { "id": "roof",       "label": "ROOF",       "ending_lore_token": "leap_up_for_the_wide_shot_mackenzie","visible_from_start": false }
+  ],
+  "max_turns": 8,
+  "notes": "Easy cameo · Mackenzie at Elicia's. The Lovers' grounded warmth meets the Priestess's haunted archive. Use Mackenzie's hostess-and-handler verbs.",
+  "ambient_pool": [
+    "the casserole in your hands stays warm under the foil.",
+    "elicia's footsteps in the studio. she will come out.",
+    "the dying basil on the kitchen window is still alive, barely."
+  ],
+  "ambient_every_n": 3
+}

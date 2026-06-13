@@ -1,0 +1,70 @@
+{
+  "id": "cameo_frasier_fixes_the_kettle",
+  "arcana": "ii_priestess",
+  "location": "elicia_bungalow",
+  "hand": "frasier",
+  "title": "FRASIER FIXES THE KETTLE",
+  "subtitle": "CAMEO · II·Priestess · 11:14 PM · The wrong-burner kettle",
+  "difficulty": "hard",
+  "guest_lens": { "host": "priestess", "guest": "magician" },
+  "epigraph_upright": "Elicia texted at six. Frasier drove over at ten. He brought the small toolbox. The burner has been listing since '24. He has, by 11:14, the back panel off the stove. The kettle is on the counter beside the teacup. The Demon is, this evening, on the phone in the inside pocket of his jacket.",
+  "epigraph_reversed": "The Demon tells him the kettle is haunted. He tells the Demon to shut up. The kettle clicks at midnight without being on the burner. Frasier, with the back panel still off, decides he will be back tomorrow.",
+  "scene_description": "Hard cameo. The Magician's making at the Priestess's haunted bungalow. Frasier has the tools but the room has dream-logic and the Demon does not, this evening, like the room.",
+  "direction_hint": "Fix the kettle. Sit with Elicia (off-stage). Connect with three of her visitors. Don't let the Demon's noise on your phone ruin the room's quiet.",
+  "opening_log_lines": [
+    "11:14 PM. The back panel off the stove. The toolbox open.",
+    "Elicia in the studio editing. The cult audience's forum post is on her laptop.",
+    "The Demon on your phone has not, in twenty minutes, shut up."
+  ],
+  "starting_state": {
+    "player_pos": "the_kitchen",
+    "time": 4,
+    "time_per_turn": 4,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 3,
+    "stagnation_per_turn": 2,
+    "doubt": 3,
+    "doubt_max": 7,
+    "insight": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "draft", "burn", "tune", "the_first_painting", "record"]
+  },
+  "visitors_present_at_start": ["anya_on_screen", "mrmyst_memory", "mackenzie_texts_priestess"],
+  "visitor_schedule": [
+    { "visitor": "john_email", "arrival_turn": 3, "arrival_space": "the_editing_desk" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 2 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the kitchen is the kitchen.", "tick_per_turn": 2, "effects": [] },
+    { "level": 5, "label": "the kettle has clicked twice tonight without you touching it.", "tick_per_turn": 2, "effects": [] },
+    { "level": 8, "label": "the back panel is leaning on the wall. the screws are on the counter.", "tick_per_turn": 3, "effects": [ "tick_master_reel" ] },
+    { "level": 10, "label": "the kettle is haunted. you'll have to come back tomorrow.", "tick_per_turn": 3, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "frasier at the stove with the toolbox.", "effects": [] },
+    { "level": 3, "label": "the Demon has, by your count, said three things you did not want said.", "effects": [] },
+    { "level": 5, "label": "the kettle clicks on its own. you do not, today, look up.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the room is doing the room thing.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door", "label": "FRONT DOOR", "ending_lore_token": "leap_back_toward_the_warehouse_late", "visible_from_start": true },
+    { "id": "back_gate",  "label": "BACK GATE",  "ending_lore_token": "leap_through_the_alley_with_toolbox", "visible_from_start": true },
+    { "id": "roof",       "label": "ROOF",       "ending_lore_token": "leap_up_to_the_roof_with_the_demon", "visible_from_start": true }
+  ],
+  "max_turns": 7,
+  "notes": "Hard cameo · Frasier at the bungalow. The Magician's tools meet the Priestess's room. Use Frasier's deck. The Demon is, in this room, going to push back.",
+  "ambient_pool": [
+    "the screws on the counter are in the order you took them out.",
+    "the demon on the phone says: you can't fix this one, architect. you say: shut up.",
+    "the kettle is on the counter. it is not, technically, on the burner. you suspect it knows."
+  ],
+  "ambient_every_n": 2
+}

@@ -648,6 +648,13 @@ func _load_data() -> void:
 		if not locs.is_empty() and not (_location_id in locs):
 			continue
 		_action_cards[c["id"]] = c
+	# Scenario-local action cards: a cameo (or any scenario) can
+	# declare unique cards in its setup JSON under `scenario_action_cards`.
+	# These ride the same shape as cards in action_cards.json. They are
+	# merged AFTER the arcana deck so a scenario card can override a
+	# universal card of the same id for this run only.
+	for c: Dictionary in _setup.get("scenario_action_cards", []):
+		_action_cards[c["id"]] = c
 	# Seed the tableau stock counts. Non-starters, non-leap, non-
 	# bundle cards get a stock count (from the card's `stock` field
 	# or default 2 if unspecified). Each purchase decrements; at 0
@@ -662,6 +669,12 @@ func _load_data() -> void:
 	for v: Dictionary in v_def.get("visitors", []):
 		_visitors_def[v["id"]] = v
 	_step_defaults_by_mood = v_def.get("default_step_lines_by_mood", {})
+	# Scenario-local visitors: a cameo can introduce a visitor that
+	# only exists when this specific scenario is being played (e.g. a
+	# courier who only shows up on the night Antonio comes home).
+	# Same schema as the entries in visitors.json.
+	for v: Dictionary in _setup.get("scenario_visitors", []):
+		_visitors_def[v["id"]] = v
 	# Player-as-visitor swap. If the scenario would put the player's
 	# arcana character on the board as a visitor (e.g. Frasier hand
 	# vs. Frasier walking in for lunch), replace the visitor entry
@@ -678,6 +691,25 @@ func _load_data() -> void:
 	# Location + hand
 	_location = _load_json(DATA_ROOT + "locations/" + _location_id + ".json")
 	_hand     = _load_json(DATA_ROOT + "hands/"     + _hand_id     + ".json")
+	# Scenario-local map additions: a cameo can unlock spaces/edges
+	# that aren't on the host's baseline floor plan (a back stair the
+	# guest knows, a courier's side path). Spaces in
+	# `scenario_spaces_additions` are appended to _location.spaces;
+	# pairs in `scenario_adjacency_additions` are appended to
+	# _location.adjacency. Same schema as the entries in the location
+	# file.
+	var extra_spaces: Array = _setup.get("scenario_spaces_additions", [])
+	if not extra_spaces.is_empty():
+		var loc_spaces: Array = (_location.get("spaces", []) as Array).duplicate()
+		for sp: Dictionary in extra_spaces:
+			loc_spaces.append(sp)
+		_location["spaces"] = loc_spaces
+	var extra_adj: Array = _setup.get("scenario_adjacency_additions", [])
+	if not extra_adj.is_empty():
+		var loc_adj: Array = (_location.get("adjacency", []) as Array).duplicate()
+		for pair: Array in extra_adj:
+			loc_adj.append(pair)
+		_location["adjacency"] = loc_adj
 	# Diagnostic summary — surfaces in Godot's Output console.
 	print("[Gauntlet] loaded:")
 	print("    setup: %s starting_hand=%s" % [

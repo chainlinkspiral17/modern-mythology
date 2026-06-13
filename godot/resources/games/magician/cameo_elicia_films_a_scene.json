@@ -1,0 +1,70 @@
+{
+  "id": "cameo_elicia_films_a_scene",
+  "arcana": "i_magician",
+  "location": "cathedral",
+  "hand": "elicia",
+  "title": "ELICIA FILMS A SCENE",
+  "subtitle": "CAMEO · I·Magician · 4:42 PM · Whispers, location shoot",
+  "difficulty": "medium",
+  "guest_lens": { "host": "magician", "guest": "priestess" },
+  "epigraph_upright": "Elicia comes to the warehouse with the camera and the lavalier. Frasier said yes a week ago. He has, this afternoon, three minutes for her between the iron and the next bit of soldering. She frames the workbench. The model city does not, today, mind being framed.",
+  "epigraph_reversed": "The Demon jams the audio. Frasier won't sit. The model city moves the silver-spoon riverboat one block while she has her back turned. She catches it on tape but does not, on review, see it.",
+  "scene_description": "Medium cameo. The director's tic meets the maker. Elicia tries to capture Frasier in his element without breaking what makes him in his element.",
+  "direction_hint": "Frame two shots; record audio; sit with Frasier; reach the camera-rolling threshold (a leap with at least 3 connections).",
+  "opening_log_lines": [
+    "4:42 PM. The camera is on the tripod. The lavalier is clipped to Frasier's collar.",
+    "Frasier at the workbench. The Demon on the phone, today, is quieter.",
+    "The model city is in the wide shot. The silver-spoon riverboat is in frame."
+  ],
+  "starting_state": {
+    "player_pos": "magician",
+    "time": 5,
+    "time_per_turn": 5,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "insight": 2,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "frame_the_shot", "open_the_laptop", "smoke_on_the_porch", "exit_through_the_gift_shop"]
+  },
+  "visitors_present_at_start": ["the_demon", "john_frank"],
+  "visitor_schedule": [
+    { "visitor": "nicola",          "arrival_turn": 3, "arrival_space": "warehouse_bay" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the warehouse is rolling.", "tick_per_turn": 1, "effects": [] },
+    { "level": 5, "label": "frasier has not, in twenty minutes, sat.", "tick_per_turn": 1, "effects": [] },
+    { "level": 8, "label": "the audio has a static under it.", "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the take was the take you can't use.", "tick_per_turn": 2, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "elicia behind the camera. wide shot, establishing.", "effects": [] },
+    { "level": 3, "label": "the model city's silver-spoon riverboat is the wrong angle for this shot.", "effects": [] },
+    { "level": 5, "label": "the demon has, by now, decided you are filming for the wrong reason.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the framing fell apart.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "warehouse_bay", "label": "WAREHOUSE BAY", "ending_lore_token": "leap_back_to_the_bungalow_with_card", "visible_from_start": true },
+    { "id": "river_window",  "label": "RIVER WINDOW",  "ending_lore_token": "leap_through_river_window_dusk",   "visible_from_start": true },
+    { "id": "roof_hatch",    "label": "ROOF HATCH",    "ending_lore_token": "leap_up_for_the_wide_shot",        "visible_from_start": true }
+  ],
+  "max_turns": 8,
+  "notes": "Medium cameo · Elicia at Frasier's. The Priestess loop (frame/record) inside the Magician's room. Use Elicia's verbs. The model city tolerates being filmed. The Demon does not, by canon, tolerate audio.",
+  "ambient_pool": [
+    "the lavalier mic on Frasier's collar.",
+    "the iron's small click of warming back up.",
+    "the model city humming at -18 db under the room tone."
+  ],
+  "ambient_every_n": 3
+}

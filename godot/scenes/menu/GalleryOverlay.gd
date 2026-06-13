@@ -627,6 +627,80 @@ const PRIESTESS_SCENARIOS := [
 	}
 ]
 
+# Cameo tiles per arcana. Each cameo loads the host arcana + host
+# location, but overrides the hand to the guest's deck via
+# hand_override. Cameos sit below the three core scenarios on the
+# picker, separated by a divider label. Empty arrays are fine — the
+# divider only renders when there's at least one cameo.
+const FOOL_CAMEOS := []
+const MAGICIAN_CAMEOS := [
+	{
+		"id": "cameo_john_at_the_warehouse",
+		"hand_override": "fool",
+		"difficulty": "easy",
+		"title": "JOHN AT THE WAREHOUSE",
+		"subtitle": "Cameo · I·Magician · 9:47 PM",
+		"flavor": "John walks the river path over from the diner with a folded napkin in his pocket. The Demon is at the workbench. Elicia is filming on the loading dock. Use John's deck inside Frasier's warehouse."
+	},
+	{
+		"id": "cameo_elicia_films_a_scene",
+		"hand_override": "elicia",
+		"difficulty": "medium",
+		"title": "ELICIA FILMS A SCENE",
+		"subtitle": "Cameo · I·Magician · 8:14 PM",
+		"flavor": "Elicia rigs lights in the south bay. The Demon refuses to be on camera. Frasier won't stop welding. The warehouse becomes a location shoot for Whispers. Use Elicia's deck on Frasier's floor."
+	},
+	{
+		"id": "cameo_antonio_comes_home",
+		"hand_override": "antonio",
+		"difficulty": "hard",
+		"title": "ANTONIO COMES HOME",
+		"subtitle": "Cameo · I·Magician · 7:48 PM",
+		"flavor": "Antonio at the warehouse door two months before the wreck. The smell is the smell. The model city has an empty platform on the west edge. Use Antonio's silt-of-voicemails deck in the room that taught him ambition."
+	}
+]
+const PRIESTESS_CAMEOS := [
+	{
+		"id": "cameo_mackenzie_at_the_bungalow",
+		"hand_override": "mackenzie",
+		"difficulty": "easy",
+		"title": "MACKENZIE AT THE BUNGALOW",
+		"subtitle": "Cameo · II·Priestess · 7:14 PM",
+		"flavor": "Mackenzie brings a 9x13 casserole. The dying basil holds. Elicia is in the studio with the door cracked. Use the Lovers' grounded-warmth deck inside the Priestess's haunted bungalow."
+	},
+	{
+		"id": "cameo_john_before_montreal",
+		"hand_override": "john_frank",
+		"difficulty": "medium",
+		"title": "JOHN BEFORE MONTREAL",
+		"subtitle": "Cameo · II·Priestess · 9:14 PM",
+		"flavor": "John on the porch with the printed email he's been carrying for seven days. Flight to Montreal at 6:14 AM. Use the Fool's leap deck at the Priestess's threshold."
+	},
+	{
+		"id": "cameo_frasier_fixes_the_kettle",
+		"hand_override": "frasier",
+		"difficulty": "hard",
+		"title": "FRASIER FIXES THE KETTLE",
+		"subtitle": "Cameo · II·Priestess · 11:14 PM",
+		"flavor": "The back panel off the stove. The toolbox open. The kettle clicks at midnight without being on the burner. The Demon is on the phone. Use the Magician's making deck in the room that does the room thing."
+	}
+]
+const EMPRESS_CAMEOS := [
+	{
+		"id": "cameo_frasier_returns_to_the_kitchen",
+		"hand_override": "frasier",
+		"difficulty": "medium",
+		"title": "FRASIER RETURNS TO THE KITCHEN",
+		"subtitle": "Cameo · III·Empress · 6:14 PM",
+		"flavor": "Frasier walks up the gangway for the first time in five years. He has, tonight, come to eat. Hector has the knife at the pass. Use Frasier's deck on the deck he left."
+	}
+]
+const EMPEROR_CAMEOS := []
+const HIEROPHANT_CAMEOS := []
+const LOVERS_CAMEOS := []
+const CHARIOT_CAMEOS := []
+
+
 const FOOL_SCENARIOS := [
 	{
 		"id": "the_leap",
@@ -687,34 +761,42 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 	var arcana_title: String = "ENTER THE GAUNTLET · D'AMBROSIO'S"
 	var arcana_sub:   String = "John Frank · Pick a shift"
 	var scenarios:    Array  = FOOL_SCENARIOS
+	var cameos:       Array  = FOOL_CAMEOS
 	if arcana == "magician":
 		arcana_title = "ENTER THE GAUNTLET · THE CATHEDRAL"
 		arcana_sub   = "Frasier Temple · Pick an evening"
 		scenarios    = MAGICIAN_SCENARIOS
+		cameos       = MAGICIAN_CAMEOS
 	elif arcana == "priestess" or arcana == "ii_priestess":
 		arcana_title = "ENTER THE GAUNTLET · ELICIA'S BOOTH"
 		arcana_sub   = "Elicia Temple · Pick a session"
 		scenarios    = PRIESTESS_SCENARIOS
+		cameos       = PRIESTESS_CAMEOS
 	elif arcana == "empress" or arcana == "iii_empress":
 		arcana_title = "ENTER THE GAUNTLET · THE RIVERBOAT"
 		arcana_sub   = "Nicola · Pick a meal"
 		scenarios    = EMPRESS_SCENARIOS
+		cameos       = EMPRESS_CAMEOS
 	elif arcana == "emperor" or arcana == "iv_emperor":
 		arcana_title = "ENTER THE GAUNTLET · DANTE'S OFFICE"
 		arcana_sub   = "Dante · Pick a session"
 		scenarios    = EMPEROR_SCENARIOS
+		cameos       = EMPEROR_CAMEOS
 	elif arcana == "hierophant" or arcana == "v_hierophant":
 		arcana_title = "ENTER THE GAUNTLET · EMBER.ASH.REST.BBS"
 		arcana_sub   = "Sysop · Pick a session"
 		scenarios    = HIEROPHANT_SCENARIOS
+		cameos       = HIEROPHANT_CAMEOS
 	elif arcana == "lovers" or arcana == "vi_lovers":
 		arcana_title = "ENTER THE GAUNTLET · THE APARTMENT"
 		arcana_sub   = "Sasha & Reed · Pick a time"
 		scenarios    = LOVERS_SCENARIOS
+		cameos       = LOVERS_CAMEOS
 	elif arcana == "chariot" or arcana == "vii_chariot":
 		arcana_title = "ENTER THE GAUNTLET · THE MIDNIGHT BUS"
 		arcana_sub   = "Cora · Pick a run"
 		scenarios    = CHARIOT_SCENARIOS
+		cameos       = CHARIOT_CAMEOS
 	var title := Label.new()
 	title.text = arcana_title
 	title.add_theme_font_size_override("font_size", 14)
@@ -745,8 +827,23 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 			"subtitle": "Unlocked · The room turned around.",
 			"flavor": "The arcana reversed. Doubt starts +2. Stagnation starts +2. One less Time, one less Sanity, one less turn, one fewer claim before you lose. The room is harder to hold. Everything that was inevitable is still inevitable, just sooner."
 		})
+	# Cameos: tag a divider sentinel and append. The render loop
+	# checks for "divider" and emits a section label instead of a
+	# tile.
+	if not cameos.is_empty():
+		tiles_to_show.append({ "divider": "CAMEOS · OTHER PLAYERS IN THIS ROOM" })
+		for c: Dictionary in cameos:
+			tiles_to_show.append(c)
 	# Scenario tiles
 	for scn: Dictionary in tiles_to_show:
+		if scn.has("divider"):
+			var div := Label.new()
+			div.text = String(scn["divider"])
+			div.add_theme_font_size_override("font_size", 10)
+			div.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.40))
+			div.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			vb.add_child(div)
+			continue
 		var tile_panel := PanelContainer.new()
 		var ts := StyleBoxFlat.new()
 		ts.bg_color = Color(0.05, 0.045, 0.03, 1.0)
@@ -764,11 +861,35 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		var tile_vb := VBoxContainer.new()
 		tile_vb.add_theme_constant_override("separation", 4)
 		tile_panel.add_child(tile_vb)
+		# Title row: difficulty chip + scenario title, side by side.
+		# The chip reads the scenario's "difficulty" key, falling
+		# back to parsing the leading token of the subtitle so older
+		# tile definitions still light up.
+		var title_row := HBoxContainer.new()
+		title_row.add_theme_constant_override("separation", 8)
+		tile_vb.add_child(title_row)
+		var diff_str: String = _scenario_difficulty(scn)
+		if diff_str != "":
+			var chip := Label.new()
+			chip.text = diff_str.to_upper()
+			chip.add_theme_font_size_override("font_size", 9)
+			chip.add_theme_color_override("font_color", Color(0.05, 0.045, 0.03, 1.0))
+			var cs := StyleBoxFlat.new()
+			cs.bg_color = _difficulty_color(diff_str)
+			cs.set_corner_radius_all(3)
+			cs.content_margin_left = 6
+			cs.content_margin_right = 6
+			cs.content_margin_top = 2
+			cs.content_margin_bottom = 2
+			chip.add_theme_stylebox_override("normal", cs)
+			chip.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			title_row.add_child(chip)
 		var t_title := Label.new()
 		t_title.text = String(scn.get("title", ""))
 		t_title.add_theme_font_size_override("font_size", 15)
 		t_title.add_theme_color_override("font_color", C_GOLD)
-		tile_vb.add_child(t_title)
+		t_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		title_row.add_child(t_title)
 		var t_sub := Label.new()
 		t_sub.text = String(scn.get("subtitle", ""))
 		t_sub.add_theme_font_size_override("font_size", 10)
@@ -783,10 +904,13 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		tile_vb.add_child(t_flavor)
 		var scenario_id: String = String(scn.get("id", "the_leap"))
 		var is_reversed: bool = bool(scn.get("reversed", false))
+		# Cameo tiles override the hand to the guest's deck while
+		# keeping the host's arcana and location.
+		var hand_to_use: String = String(scn.get("hand_override", hand))
 		tile_panel.gui_input.connect(func(ev: InputEvent) -> void:
 			if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed and (ev as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
 				dim.queue_free()
-				_launch_gauntlet(visualizer, arcana, location, hand, scenario_id, is_reversed))
+				_launch_gauntlet(visualizer, arcana, location, hand_to_use, scenario_id, is_reversed))
 	# Back to gallery — dismiss the picker and return to the
 	# arcana's visualizer behind it.
 	var cancel := Button.new()
@@ -796,6 +920,35 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 	cancel.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	cancel.pressed.connect(dim.queue_free)
 	vb.add_child(cancel)
+
+
+# Read a scenario tile's difficulty as a normalized string
+# ("easy", "medium", "hard", or "reversed"). Honors an explicit
+# "difficulty" key on the dict; otherwise sniffs the leading token of
+# "subtitle" so legacy tiles whose subtitle is "Easy · ..." still
+# light up. Returns "" if nothing matches.
+func _scenario_difficulty(scn: Dictionary) -> String:
+	if bool(scn.get("reversed", false)):
+		return "reversed"
+	var explicit: String = String(scn.get("difficulty", "")).to_lower().strip_edges()
+	if explicit in ["easy", "medium", "hard"]:
+		return explicit
+	var sub: String = String(scn.get("subtitle", "")).to_lower()
+	if sub.begins_with("easy"):   return "easy"
+	if sub.begins_with("medium"): return "medium"
+	if sub.begins_with("hard"):   return "hard"
+	# Cameos prefix with "CAMEO · ..."; parse the difficulty out of
+	# the dict explicitly only — cameos should set "difficulty".
+	return ""
+
+
+func _difficulty_color(diff: String) -> Color:
+	match diff:
+		"easy":     return Color(0.55, 0.78, 0.45, 1.0)  # green
+		"medium":   return Color(0.85, 0.70, 0.30, 1.0)  # amber
+		"hard":     return Color(0.85, 0.35, 0.30, 1.0)  # red
+		"reversed": return Color(0.65, 0.40, 0.85, 1.0)  # violet
+		_:          return Color(0.6, 0.6, 0.6, 1.0)
 
 
 func _launch_gauntlet(visualizer: Control, arcana: String, location: String, hand: String, scenario_id: String = "the_leap", reversed: bool = false) -> void:

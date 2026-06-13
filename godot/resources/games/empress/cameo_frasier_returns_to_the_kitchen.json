@@ -1,0 +1,70 @@
+{
+  "id": "cameo_frasier_returns_to_the_kitchen",
+  "arcana": "iii_empress",
+  "location": "riverboat_interior",
+  "hand": "frasier",
+  "title": "FRASIER RETURNS TO THE KITCHEN",
+  "subtitle": "CAMEO · III·Empress · 6:14 PM · The spectacular exit, reversed",
+  "difficulty": "medium",
+  "guest_lens": { "host": "empress", "guest": "magician" },
+  "epigraph_upright": "Frasier walks up the gangway for the first time in five years. The boat has not, since his exit, changed. Hector is at the line. Sammy is at the bar. Dante is at the helm. Nicola is at the maître d' stand. Frasier has come, tonight, to eat. He has not come to cook.",
+  "epigraph_reversed": "Hector hands him a knife. He takes it without thinking. By eight he is at the saute station. The exit was, after all, not the exit.",
+  "scene_description": "Medium cameo. The Magician on the deck he left. Use Frasier's deck. He is, tonight, a customer.",
+  "direction_hint": "Walk to the dining room. Sit with Nicola at the stand. Visit Sammy at the bar. Avoid the kitchen. Leap.",
+  "opening_log_lines": [
+    "6:14 PM. Frasier on the gangway.",
+    "Nicola at the stand, holding the reservation book in her hand the way she holds it.",
+    "Hector through the pass — he has seen you. He has not, yet, crossed himself."
+  ],
+  "starting_state": {
+    "player_pos": "gangway",
+    "time": 5,
+    "time_per_turn": 5,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 2,
+    "doubt_max": 7,
+    "insight": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "draft", "burn", "tune", "record"]
+  },
+  "visitors_present_at_start": ["sammy_at_the_bar", "hector_at_the_pass", "dante_at_the_helm"],
+  "visitor_schedule": [
+    { "visitor": "the_imperious_table_12", "arrival_turn": 2, "arrival_space": "main_dining_room" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the boat is the boat you left.", "tick_per_turn": 1, "effects": [] },
+    { "level": 5, "label": "hector at the pass has the knife in his hand again.", "tick_per_turn": 1, "effects": [] },
+    { "level": 8, "label": "the kitchen door is propped open the way you used to prop it.", "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "you ended up back at the line.", "tick_per_turn": 2, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "frasier at the gangway. you have not been on the boat in five years.", "effects": [] },
+    { "level": 3, "label": "the bar's brass railing is the wrong brass. you registered it on the way past.", "effects": [] },
+    { "level": 5, "label": "hector remembers your saute timing.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the spectacular exit, reversed.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",   "label": "GANGWAY",   "ending_lore_token": "leap_back_to_the_warehouse_after_dinner", "visible_from_start": true },
+    { "id": "side_door", "label": "SIDE DOOR", "ending_lore_token": "leap_river_side_frasier",                "visible_from_start": false },
+    { "id": "staff_exit","label": "STAFF EXIT","ending_lore_token": "leap_off_the_back_walkway_frasier",      "visible_from_start": false }
+  ],
+  "max_turns": 8,
+  "notes": "Medium cameo · Frasier returns to the kitchen he left. Use his deck. Don't go in the kitchen.",
+  "ambient_pool": [
+    "the bell above the front door rings the way it rang in '92 when you ran the kitchen.",
+    "hector at the pass with the timing you taught him.",
+    "the brass railing is the wrong brass. it has been the wrong brass since you installed it."
+  ],
+  "ambient_every_n": 3
+}
