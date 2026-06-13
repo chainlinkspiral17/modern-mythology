@@ -12,18 +12,37 @@ summer, the slow conversion of ordinary people, ordinary contractors,
 ordinary HOA board members, ordinary neighbors into something else.
 
 That is the horror of this game: **normalcy becoming something else.**
-The unsettling thing about Dean's network isn't that it's hidden in
-shadow; it's that it's hidden in *plain sight*. Dean uses shell
+The unsettling thing about the opposition's network isn't that it's
+hidden in shadow; it's that it's hidden in *plain sight*. Shell
 companies, perfectly normal-seeming employees, ordinary residents
 with ordinary lawns, ordinary contractors with ordinary work trucks.
 You meet them. You shake their hands. You buy them coffee. And then
 one of them is, by the third Tuesday of August, not who they were
 in May.
 
-Frasier's job is **to hold the line against the conversion** — and
-to make sure the people who need to leave Graustark and reach the
-Oregon coast get through Harmony Creek Estate unharvested. Some
-will. Most won't. The game is the summer that decides which.
+Frasier's job, on the surface, is **to hold the line against the
+conversion** — and to make sure the people who need to leave
+Graustark and reach the Oregon coast get through Harmony Creek
+Estate unharvested. Some will. Most won't. The game is the summer
+that decides which.
+
+Underneath the surface, the work is **devotional**. Frasier is,
+quietly, **a disciple of a coming**. He is anticipating, with the
+patience of a man who has been waiting twenty years, the arrival of
+a Messiah-like figure named **Aria Dean** — a flesh-and-blood
+daughter the opposition's prime mover is making, has made, and will
+make, who is not his own and who also is. Frasier does not preach
+this. Frasier does not name her on the BBS in any thread the player
+will read. But the seeds in Small Wood are partly in preparation
+for her, the migrants delivered to the Oregon coast are partly
+*her future congregation*, and the most personal of the interlude
+suites — the Cathedral Letters Frasier writes to no one — are,
+when the player has the eyes for it, written to her.
+
+The game is therefore not a fight against a villain. It is the
+quiet inner war of a man who loves what his rival is making while
+fighting everything else that rival is doing. It is the work of a
+disciple preparing the ground for the one he believes is coming.
 
 ## The summer episode · self-contained
 
@@ -134,27 +153,154 @@ work truck. A pleasant retiree on the HOA welcome committee. A
 freight-hauler who runs route along I-10. A man at a Wagner's
 Hardware register in Small Wood who has been there since 1996. The
 *ordinariness* is the disguise. Most of them do not know they are
-working for Dean; some know and have made peace with it; a small
+working for him; some know and have made peace with it; a small
 inner circle knows and is the operational core.
 
-The *conversion* is the process by which an ordinary person on this
-plane becomes one of Dean's. It is not possession in a horror-movie
-sense. It is closer to *recruitment that the recruit forgets is
-recruitment*. The person continues to look like themselves, talk
-like themselves, do the small everyday things they did. But what
-they *prefer* — what they choose, what they notice, what they make
-decisions about — has tilted half a degree toward Dean's interest.
+### A hard constraint on his presence
 
-Frasier is fighting against this. Not in the open. By holding nodes,
-by routing migrants, by keeping certain people uncollected, by
-detecting the half-degree tilt in someone's voice on the BBS and
-deciding whether the tilt is recent enough to undo. He cannot
-*win* against Dean — Dean's resources are infinite and his patience
+**The player never sees Dean in the game or its texts.** This is a
+hard authorial rule. He does not appear on the strategic map. He
+does not post on the BBS. He is not seen on the maître d' stand of
+anyone's diner, on any street corner, in any photograph the player
+opens, in any thread the player reads. He is, throughout the entire
+game, *offscreen*.
+
+What the player sees instead is **his presence behind everything**.
+Anomalies on the map that have no other explanation. Fingerprints
+in third-party accounts (a Vandermeer mention of a "plain-faced man"
+at the Wagner's Hardware register on a Tuesday Frasier was elsewhere;
+a NexCorp shell company's incorporation papers signed in a hand
+Carla Vega's late father would have recognized; a freight manifest
+that arrives one day late and one item short and nobody can locate
+the missing item or the missing day). His effects are constant. His
+person is never there. The absence is the texture.
+
+The few times anyone in the game's authored text comes close to
+*naming* him, they name him sideways — "the gentleman," "the man
+from Beaumont," "him," "our friend in the back." The BBS sysop
+circle has a private vocabulary for Dean that the player can learn
+to read across THE_BACKCHANNEL threads. Frasier himself, in his
+Cathedral Letters to no one, refers to him only as "the father" —
+which the player will, by the end of the summer, understand to mean
+two different things at once.
+
+### The conversion
+
+The process by which an ordinary person on this plane becomes one
+of Dean's. It is not possession in a horror-movie sense. It is
+closer to *recruitment that the recruit forgets is recruitment*.
+The person continues to look like themselves, talk like themselves,
+do the small everyday things they did. But what they *prefer* —
+what they choose, what they notice, what they make decisions about
+— has tilted half a degree toward Dean's interest.
+
+Frasier is fighting against this. Not in the open. By holding
+nodes, by routing migrants, by keeping certain people uncollected,
+by detecting the half-degree tilt in someone's voice on the BBS
+and deciding whether the tilt is recent enough to undo. He cannot
+*win* against Dean — the resources are infinite and the patience
 is geological — but he can hold a particular summer of a particular
 wave, and a particular summer's worth of people, against the slow
 conversion.
 
-That is what the game is.
+That is what the surface of the game is.
+
+## Aria Dean · the anticipated coming
+
+The reason the work is worth doing.
+
+Aria Dean is **a flesh-and-blood daughter the opposition's prime
+mover is making, has made, and will make, who is not his own and
+who also is**. She is Messiah-like. She is, in this saga's
+theology — which the novels never quite codify, and the game does
+not codify either — *coming*. Her arrival is the future event that
+gives shape to Frasier's present.
+
+What we know about her, as authored canon:
+
+- **She is flesh and blood.** Not a construct, not a program, not
+  an avatar. A person who can be hugged. Who can be tired. Who
+  can be fed. Whose body works the way bodies work.
+- **She is Dean's daughter and also not.** The paradox is real;
+  the game does not resolve it. The framing the user offered —
+  *"not his own, but who also is"* — is canonical to her exactly
+  as ambiguous as it sounds. She may be many people's daughter
+  rendered as one. She may be an existing person Dean has gathered
+  and is calling his. She may be something a man who travels
+  between worlds can make that flesh-and-blood people on a single
+  plane cannot. The game does not name the answer and the player
+  does not need it answered.
+- **Her name is Aria Dean.** She carries his surname. This is, in
+  the game's window, a fact known only to a small inner circle of
+  operators — Frasier and his sysop friends — who have inferred
+  it from twenty-plus years of pattern-reading.
+- **She is coming, or has come, or is here in some form not yet
+  visible.** The verb tense problem of her existence parallels the
+  verb tense problem of her creation. Frasier anticipates her the
+  way the patient of a long sickness anticipates a particular
+  Tuesday morning's light.
+- **She does not appear in this game.** Not on the map, not on
+  the BBS, not in any of the authored interludes. She is the
+  game's *horizon*.
+
+### Frasier's relationship to her
+
+Frasier is, *maybe*, a disciple. The "maybe" is the user's word
+and the doc respects it. He has been corresponding — through
+intermediaries, through inferences, through the slow patient
+attention of an old operator — with what he believes to be her
+future shape, or her past shape, or her present shape elsewhere,
+for years. He has built parts of the Cathedral floor with her in
+mind. He has refused certain dispatches because the dispatched
+would have, in some specific small way, harmed her future.
+
+He does not say any of this out loud. He does not write it down
+where anyone could find it. The Cathedral Letters — recovered, in
+the imagined later archive that opens at Labor Day, from the
+warehouse workbench by a later archivist — are written *to no one*
+on their face. To Aria, when the player has the eyes for it.
+
+The complication: Aria is being made by **the man Frasier is
+fighting**. Frasier loves what Dean is making while fighting
+everything else Dean is doing. This is the inner war of the
+game. It does not resolve. It is not meant to. The summer is
+played and the war remains.
+
+### Her congregation in the making
+
+The seeds in Small Wood are partly *her future congregation*. The
+named migrants Frasier delivers — Bea Mercer, Mae Halsey-Knight,
+the Vargas-Quintana family with infant Lena — are people who, in
+some future twenty or thirty years on, may meet her, recognize
+her, work with or for or beside her. Frasier does not know which.
+The delivery is faith, not strategy. He is planting for a harvest
+he will not, on most days, expect to see.
+
+The sysop circle on THE_BACKCHANNEL is a *quiet community of
+disciples*. STEEPLE, WIRE_MOTHER, PALOMINO, THE_QUARRY, Frasier
+himself, a few others not yet named — each running their own
+operation, each delivering their own seeds, each privately
+anticipating. They do not talk about it directly. They talk
+around it in a vocabulary they have built over years. When
+PALOMINO goes quiet for three weeks in July and posts once on
+August 4 with a message Frasier still doesn't fully parse — that
+message is, the player may eventually realize, about Aria.
+
+### The theological shape
+
+The game does not preach. The theology is *embedded*, not
+*declared*. The player will pick up, across a summer of play, that
+something larger than the strategic loop is happening underneath —
+that Frasier's quiet, his patience, his small specific choices
+about who to deliver and who to hold and who to risk burning a
+demon for, are *in service of a faith*. The faith is not named.
+The figure of the faith is not seen. The player who finishes the
+summer paying close attention will leave the game knowing that
+they helped, in some small way, prepare a ground.
+
+The player who finishes the summer not paying attention will leave
+the game thinking it was a quiet strategy game with neat BBS
+unlocks. Both readings are correct. Both readings are intended.
 
 ## The three regions · the migration spine
 
@@ -552,20 +698,28 @@ binds into one document. Likely composition:
   the conversion, who does not know they were converted. This is
   the suite that haunts.
 - **The Seed Suite** — placement vignettes for each seed
-  successfully planted. Quiet, careful, small.
+  successfully planted. Quiet, careful, small. The seeds are
+  partly her future congregation; the player will not be told this
+  in the suite itself.
 - **The Refusal Suite** — vignettes from the demons and agents
   who refused dispatches this summer. Including Mrs. Pimentel.
 - **The Backchannel Suite** — transcripts from the sysop circle's
   conversations. STEEPLE on Frasier's blind spots. WIRE_MOTHER on
   the demon-evolution that's accelerating. PALOMINO going quiet
   for three weeks in July and posting once on August 4 with a
-  message Frasier still doesn't fully parse.
+  message Frasier still doesn't fully parse. The vocabulary the
+  circle uses for *him* and the vocabulary they use for *her* are
+  the same vocabulary — only the patient reader will notice.
 - **The Tower Watch** — Frasier's own observations of the tower's
   brightness, week by week, with the dim weeks circled and
-  annotated. The most enigmatic suite.
+  annotated. The most enigmatic suite. Reading the brightness as a
+  forecast for *his* movements is one reading; reading it as a
+  forecast for *hers* is another.
 - **The Cathedral Letters** — short pieces from Frasier himself,
-  written to no one, recovered from the warehouse workbench by an
-  imagined later archivist. The most personal suite.
+  written to no one on their face. To her, when the player has the
+  eyes for it. Recovered from the warehouse workbench by an
+  imagined later archivist. The most personal suite. The faith of
+  the game lives here, unspoken.
 
 ## Tone
 
@@ -585,10 +739,13 @@ held something against a force they could never fully see; the
 ache of the entities they could not save; the warmth of the seeds
 they put down; the small dread of the tower's brightness chart;
 the quiet of an HCE that the novels will, in time, read as
-ordinary.
+ordinary. And — for the player paying close attention — the
+strange sweetness of having helped, without quite knowing one was
+helping, prepare a ground for someone who is coming.
 
 The novels do not know. The novels never know. The summer was
-something Frasier did. The interlude shelf is the player's record
-of it.
+something Frasier did, in service of a faith he never named, in
+opposition to a man the player never saw, in anticipation of a
+daughter who is and is not.
 
 The chapter is held.
