@@ -1,0 +1,162 @@
+[gd_scene load_steps=8 format=3 uid="uid://locale_diner"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/locales/diner.glb" id="1_diner_geo"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
+[ext_resource type="Script" path="res://scenes/locales/LightController.gd" id="3_lights"]
+[ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMat_Post"]
+shader = ExtResource("4_post")
+shader_parameter/palette_size = 16.0
+shader_parameter/dither_strength = 0.0
+shader_parameter/scanline_strength = 0.05
+shader_parameter/chromatic_aberration = 0.0008
+shader_parameter/ascii_strength = 0.0
+shader_parameter/ascii_color = Color(0.85, 0.78, 0.62, 1)
+shader_parameter/ascii_bg = Color(0.06, 0.04, 0.02, 1)
+
+[sub_resource type="Environment" id="Env_Diner"]
+background_mode = 1
+background_color = Color(0.04, 0.03, 0.02, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.18, 0.14, 0.10, 1)
+ambient_light_energy = 0.35
+glow_enabled = true
+glow_intensity = 0.6
+glow_strength = 0.9
+glow_bloom = 0.15
+adjustment_enabled = true
+adjustment_saturation = 0.95
+adjustment_contrast = 1.05
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
+radius = 0.30
+height = 1.70
+
+[node name="Diner" type="Node3D"]
+script = ExtResource("3_lights")
+initial_mood = "lunch"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_Diner")
+
+[node name="Geometry" parent="." instance=ExtResource("1_diner_geo")]
+
+[node name="LightSetups" type="Node3D" parent="."]
+
+[node name="lunch" type="Node3D" parent="LightSetups"]
+
+[node name="Sun" type="DirectionalLight3D" parent="LightSetups/lunch"]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 5, 8, -5)
+light_color = Color(0.98, 0.92, 0.78, 1)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="Fluorescent_North" type="OmniLight3D" parent="LightSetups/lunch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 3.1)
+light_color = Color(0.95, 0.92, 0.80, 1)
+light_energy = 6.0
+omni_range = 8.0
+
+[node name="Fluorescent_South" type="OmniLight3D" parent="LightSetups/lunch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 3.1)
+light_color = Color(0.95, 0.92, 0.80, 1)
+light_energy = 6.0
+omni_range = 8.0
+
+[node name="dusk" type="Node3D" parent="LightSetups"]
+visible = false
+
+[node name="Sun_Dusk" type="DirectionalLight3D" parent="LightSetups/dusk"]
+transform = Transform3D(0.966, -0.183, 0.183, 0, 0.707, 0.707, -0.259, -0.683, 0.683, 8, 4, 0)
+light_color = Color(0.98, 0.70, 0.40, 1)
+light_energy = 0.8
+shadow_enabled = true
+
+[node name="WarmInterior" type="OmniLight3D" parent="LightSetups/dusk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.9)
+light_color = Color(0.98, 0.72, 0.42, 1)
+light_energy = 8.0
+omni_range = 12.0
+
+[node name="night" type="Node3D" parent="LightSetups"]
+visible = false
+
+[node name="Counter_Lamp" type="OmniLight3D" parent="LightSetups/night"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.5)
+light_color = Color(0.98, 0.78, 0.50, 1)
+light_energy = 4.0
+omni_range = 6.0
+
+[node name="Booth_6_Lamp" type="OmniLight3D" parent="LightSetups/night"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2.5, 2.5)
+light_color = Color(0.95, 0.72, 0.42, 1)
+light_energy = 2.5
+omni_range = 3.0
+
+[node name="ParkingLot_Sodium" type="OmniLight3D" parent="LightSetups/night"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -7, 5.5)
+light_color = Color(0.95, 0.65, 0.30, 1)
+light_energy = 8.0
+omni_range = 12.0
+shadow_enabled = false
+
+[node name="3_47_am" type="Node3D" parent="LightSetups"]
+visible = false
+
+[node name="Counter_Lamp_dim" type="OmniLight3D" parent="LightSetups/3_47_am"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.5)
+light_color = Color(0.96, 0.74, 0.45, 1)
+light_energy = 2.5
+omni_range = 5.0
+
+[node name="River_Cool" type="DirectionalLight3D" parent="LightSetups/3_47_am"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -12, 0, 2)
+light_color = Color(0.55, 0.65, 0.85, 1)
+light_energy = 0.6
+
+[node name="ParkingLot_Sodium_Dim" type="OmniLight3D" parent="LightSetups/3_47_am"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -7, 5.5)
+light_color = Color(0.95, 0.62, 0.25, 1)
+light_energy = 4.0
+omni_range = 10.0
+
+[node name="precipice" type="Node3D" parent="LightSetups"]
+visible = false
+
+[node name="Precipice_Spot" type="SpotLight3D" parent="LightSetups/precipice"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 1.2, 8.5, 4)
+light_color = Color(0.55, 0.75, 0.95, 1)
+light_energy = 8.0
+spot_range = 6.0
+spot_angle = 28.0
+
+[node name="Floor_Ambient" type="OmniLight3D" parent="LightSetups/precipice"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
+light_color = Color(0.30, 0.20, 0.10, 1)
+light_energy = 2.0
+omni_range = 12.0
+
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("ShaderMat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8, 0.85, -2)
+script = ExtResource("2_fpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape_Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 65.0
+near = 0.05
+far = 100.0
