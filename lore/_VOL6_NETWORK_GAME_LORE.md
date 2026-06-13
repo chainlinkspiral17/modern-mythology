@@ -267,6 +267,53 @@ What we know about her, as authored canon:
   the BBS, not in any of the authored interludes. She is the
   game's *horizon*.
 
+### Appearance · the visual canon
+
+The authorial brief for any rendering of her, anywhere in the
+larger project:
+
+- **A young woman.** Always young. Her age in any appearance is
+  the same fixed young.
+- **Curly blue hair.**
+- **Purple-rimmed glasses.**
+- **A yellow rainslicker or yellow hoodie.** Yellow against the
+  grey of any room she's seen in.
+- **Looks biracial, but could be any race.** Deliberate. The
+  Messiah figure resists being claimed as any one community's own.
+  Renderings vary; the visual canon does not pin a single
+  ethnicity.
+
+### The nature of her appearances
+
+**99.9 percent of the time, an Aria appearance is a sighting — a
+haunting.** She is seen, briefly, mid-movement between worlds. A
+glimpse in the corner of a window. A figure in yellow at the end
+of a wet street that, by the time anyone walks over to check, is
+empty. A photograph that has her in the frame's edge and that, on
+re-examination, doesn't. The blue curls visible at a bus stop
+across an intersection for the duration of the light cycle and not
+afterward.
+
+This is what people who have seen her *describe* having seen. They
+don't agree on which corner. They don't agree on the season.
+They sometimes don't agree on the year. They agree, often without
+having spoken to each other, on the yellow and the blue and the
+purple.
+
+The remaining 0.1 percent of the time she is not a sighting — she
+is *present*. Hugged. Fed. Tired. Flesh-and-blood, the way the
+canonical line said. These moments are vanishingly rare in the
+project's timeline. The eventual move-in to the Cathedral of Rust
+and Code is one of them. There are others, none of which the game
+needs to name.
+
+In this game, in 2002-2005, she is — for the player and for
+Frasier alike — overwhelmingly the *sighting*. Frasier has seen
+her, by his count, eleven times in eighteen years. He has spoken
+with her, in flesh, once. He does not write the date of that
+encounter down anywhere. He does, in the Cathedral Letters, refer
+to it.
+
 ### Frasier's relationship to her
 
 Frasier is, *maybe*, a disciple. The "maybe" is the user's word
