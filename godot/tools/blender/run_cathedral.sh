@@ -19,16 +19,24 @@ cd "$SCRIPT_DIR"
 # pick whichever script the user asked for, default to cathedral_interior
 TARGET="${1:-build_cathedral_interior.py}"
 
-if [ ! -f "$TARGET" ]; then
-  echo "✗ couldn't find $TARGET in $SCRIPT_DIR"
-  echo "  available scripts:"
-  ls -1 build_*.py 2>/dev/null || echo "    (none yet)"
-  exit 1
+# resolve TARGET: try as given (relative to SCRIPT_DIR), then search
+# one level down (locales/, etc.). build_* scripts moved to subdirs
+# as the locale set grew.
+if [ -f "$TARGET" ]; then
+  TARGET_ABS="$SCRIPT_DIR/$TARGET"
+elif [ -f "locales/$TARGET" ]; then
+  TARGET_ABS="$SCRIPT_DIR/locales/$TARGET"
+else
+  HIT="$(find . -maxdepth 2 -name "$TARGET" -type f 2>/dev/null | head -n1)"
+  if [ -n "$HIT" ]; then
+    TARGET_ABS="$SCRIPT_DIR/${HIT#./}"
+  else
+    echo "✗ couldn't find $TARGET in $SCRIPT_DIR (or one level down)"
+    echo "  available scripts:"
+    find . -maxdepth 2 -name "build_*.py" -type f 2>/dev/null | sed 's|^\./|    · |' || echo "    (none yet)"
+    exit 1
+  fi
 fi
-
-# always resolve to an absolute path — Flatpak sandboxed Blender
-# can't see relative paths inside the sandbox.
-TARGET_ABS="$SCRIPT_DIR/$TARGET"
 
 # ── try to find Blender in common Steam Deck locations ──────────
 BLENDER=""
