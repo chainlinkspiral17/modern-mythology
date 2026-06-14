@@ -19,7 +19,10 @@
 # ════════════════════════════════════════════════════════════════
 extends Node
 
-const MUSIC_DIR: String = "user://music/"
+const USER_MUSIC_DIR: String = "user://music/"
+const PROJECT_MUSIC_DIRS: Array[String] = [
+    "res://assets/audio/bgm/",
+]
 
 var _tracks: Array = []      # [{name: String, stream: AudioStream}, ...]
 var _index: int = 0
@@ -29,15 +32,20 @@ var _hud_layer: CanvasLayer
 
 
 func _ready() -> void:
-    _ensure_music_dir()
-    _scan_tracks()
+    _ensure_user_music_dir()
+    # Scan PROJECT bundled music first (res://) then user-added
+    # tracks (user://) — bundled drones / BGM autoplay out of the
+    # box, user files get appended after.
+    for src_dir in PROJECT_MUSIC_DIRS:
+        _scan_directory(src_dir)
+    _scan_directory(USER_MUSIC_DIR)
     _spawn_player()
     _spawn_hud()
     if not _tracks.is_empty():
         _play(_index)
     else:
-        _hud_label.text = "TRACK · drop .ogg/.mp3 into %s (no tracks found)" % MUSIC_DIR
-        print("[InGameMusic] no tracks in %s" % MUSIC_DIR)
+        _hud_label.text = "TRACK · no tracks found · drop .ogg/.mp3 into %s" % USER_MUSIC_DIR
+        print("[InGameMusic] no tracks found in any scan dir")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -49,46 +57,61 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 # ── Setup helpers ────────────────────────────────────────────────
-func _ensure_music_dir() -> void:
+func _ensure_user_music_dir() -> void:
     # DirAccess for user:// paths — Godot resolves to app data dir.
-    if not DirAccess.dir_exists_absolute(MUSIC_DIR):
-        DirAccess.make_dir_recursive_absolute(MUSIC_DIR)
-        # Leave a stub README so the user discovers what goes here.
-        var readme: FileAccess = FileAccess.open(MUSIC_DIR + "README.txt", FileAccess.WRITE)
+    if not DirAccess.dir_exists_absolute(USER_MUSIC_DIR):
+        DirAccess.make_dir_recursive_absolute(USER_MUSIC_DIR)
+        var readme: FileAccess = FileAccess.open(USER_MUSIC_DIR + "README.txt", FileAccess.WRITE)
         if readme:
             readme.store_string(
                 "Drop .ogg or .mp3 files in this directory.\n" +
                 "They will autoplay at startup.\n" +
+                "Project's own BGM (res://assets/audio/bgm/) loads first.\n" +
                 "F7 / F8 prev / next track.\n"
             )
             readme.close()
 
 
-func _scan_tracks() -> void:
-    var dir: DirAccess = DirAccess.open(MUSIC_DIR)
+func _scan_directory(scan_dir: String) -> void:
+    var dir: DirAccess = DirAccess.open(scan_dir)
     if dir == null:
+        print("[InGameMusic] skipped %s (not accessible)" % scan_dir)
         return
+    var initial: int = _tracks.size()
     dir.list_dir_begin()
     var file_name: String = dir.get_next()
     while file_name != "":
         if not dir.current_is_dir():
             var lower: String = file_name.to_lower()
-            var path: String = MUSIC_DIR + file_name
-            var stream: AudioStream = null
-            if lower.ends_with(".ogg") or lower.ends_with(".oga"):
-                stream = AudioStreamOggVorbis.load_from_file(path)
-            elif lower.ends_with(".mp3"):
-                var bytes: PackedByteArray = FileAccess.get_file_as_bytes(path)
-                if bytes.size() > 0:
-                    var mp3: AudioStreamMP3 = AudioStreamMP3.new()
-                    mp3.data = bytes
-                    stream = mp3
+            var path: String = scan_dir + file_name
+            var stream: AudioStream = _load_audio_stream(path, lower)
             if stream != null:
-                _tracks.append({"name": file_name, "stream": stream})
+                _tracks.append({"name": file_name, "stream": stream, "src": scan_dir})
         file_name = dir.get_next()
     dir.list_dir_end()
-    _tracks.sort_custom(func(a, b): return a["name"] < b["name"])
-    print("[InGameMusic] found %d track(s) in %s" % [_tracks.size(), MUSIC_DIR])
+    var added: int = _tracks.size() - initial
+    print("[InGameMusic] +%d track(s) from %s" % [added, scan_dir])
+
+
+func _load_audio_stream(path: String, lower_name: String) -> AudioStream:
+    # For res:// bundled audio, ResourceLoader.load() respects the
+    # importer (handles .import metadata). For user:// runtime files,
+    # we have to load bytes manually since they aren't imported.
+    if path.begins_with("res://"):
+        var res: Resource = ResourceLoader.load(path)
+        if res is AudioStream:
+            return res
+        return null
+    # user:// path — load bytes, instantiate stream type by extension.
+    if lower_name.ends_with(".ogg") or lower_name.ends_with(".oga"):
+        return AudioStreamOggVorbis.load_from_file(path)
+    if lower_name.ends_with(".mp3"):
+        var bytes: PackedByteArray = FileAccess.get_file_as_bytes(path)
+        if bytes.size() > 0:
+            var mp3: AudioStreamMP3 = AudioStreamMP3.new()
+            mp3.data = bytes
+            return mp3
+    return null
 
 
 func _spawn_player() -> void:
