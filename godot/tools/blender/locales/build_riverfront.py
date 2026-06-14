@@ -2599,6 +2599,206 @@ def export_glb():
         raise RuntimeError("GLB not written")
 
 
+def _make_residential_house(label, cx, cy, body_color, roof_color,
+                              facing_east=True, has_chimney=True):
+    """A small clapboard house on a 8m × 6m lot. Used for the Westbrook
+    residential strip on the west side of River Road. Also reusable
+    for HCE later — same builder, different placements.
+
+    facing_east: porch + front door + mailbox face the road (+X side)
+                 instead of away.
+    """
+    foundation_col = (0.55, 0.52, 0.46, 1.0)
+    porch_col = (0.42, 0.30, 0.20, 1.0)
+    column_col = (0.78, 0.74, 0.66, 1.0)
+    sill_col = (0.30, 0.26, 0.20, 1.0)
+    glass_lit = (0.92, 0.78, 0.42, 1.0)
+    glass_dark = (0.18, 0.20, 0.24, 1.0)
+    fence_col = (0.78, 0.76, 0.68, 1.0)
+    lawn_col = (0.32, 0.42, 0.22, 1.0)
+    door_col = (0.36, 0.22, 0.14, 1.0)
+
+    # ── LAWN — wider than the house, gives the lot edges
+    lot_w = 9.0
+    lot_l = 8.5
+    make_box(f"House_{label}_Lawn", (cx, cy, -0.02),
+             (lot_w, lot_l, 0.04), lawn_col)
+
+    # ── FOUNDATION — concrete pad extending below grade
+    body_w = 6.0
+    body_l = 5.0
+    body_h = 3.4
+    make_box(f"House_{label}_Foundation",
+             (cx, cy, 0.20),
+             (body_w + 0.30, body_l + 0.30, 0.70),
+             foundation_col)
+
+    # ── BODY — clapboard walls
+    body_z = 0.55 + body_h / 2.0
+    make_box(f"House_{label}_Body", (cx, cy, body_z),
+             (body_w, body_l, body_h), body_color)
+
+    # ── ROOF — sloped prism, ridge runs east-west
+    roof_base_z = body_z + body_h / 2.0
+    make_prism(f"House_{label}_Roof",
+               (cx, cy, roof_base_z),
+               (body_w + 0.6, body_l + 0.6, 1.8),
+               roof_color, pitch_axis='X')
+
+    # ── CHIMNEY (optional)
+    if has_chimney:
+        make_box(f"House_{label}_Chimney",
+                 (cx + body_w * 0.30, cy + body_l * 0.05, roof_base_z + 1.7),
+                 (0.50, 0.50, 2.0), foundation_col)
+
+    # ── WINDOW SIDE — facing the road. Two windows + a door.
+    front_x = cx + body_w / 2.0 if facing_east else cx - body_w / 2.0
+    win_x_offset = 0.04 if facing_east else -0.04
+    sign_x = 1 if facing_east else -1
+
+    # Two windows. Glass slightly RECESSED behind a frame + sill so they
+    # read as embedded, not stuck-on-the-wall hovering rectangles.
+    for wi, wy_off in enumerate([-1.4, 1.4]):
+        # Glass pane — recessed 5cm BEHIND the wall surface
+        glass_col = glass_lit if (wi + hash(label) & 1) == 0 else glass_dark
+        make_box(f"House_{label}_GlassPane_{wi}",
+                 (front_x - sign_x * 0.05, cy + wy_off, body_z + 0.10),
+                 (0.04, 0.95, 1.05), glass_col)
+        # Frame — 4 thin trim pieces at the WALL surface, in dark wood
+        make_box(f"House_{label}_WinFrame_{wi}_T",
+                 (front_x + win_x_offset, cy + wy_off, body_z + 0.65),
+                 (0.05, 1.05, 0.08), sill_col)
+        make_box(f"House_{label}_WinFrame_{wi}_B",
+                 (front_x + win_x_offset, cy + wy_off, body_z - 0.45),
+                 (0.05, 1.05, 0.08), sill_col)
+        make_box(f"House_{label}_WinFrame_{wi}_L",
+                 (front_x + win_x_offset, cy + wy_off - 0.51, body_z + 0.10),
+                 (0.05, 0.08, 1.15), sill_col)
+        make_box(f"House_{label}_WinFrame_{wi}_R",
+                 (front_x + win_x_offset, cy + wy_off + 0.51, body_z + 0.10),
+                 (0.05, 0.08, 1.15), sill_col)
+        # Sill (a small ledge below the window)
+        make_box(f"House_{label}_Sill_{wi}",
+                 (front_x + win_x_offset * 1.5, cy + wy_off, body_z - 0.55),
+                 (0.16, 1.20, 0.06), sill_col)
+        # Mullion cross dividing the glass
+        make_box(f"House_{label}_WinMull_{wi}_v",
+                 (front_x + win_x_offset - 0.005, cy + wy_off, body_z + 0.10),
+                 (0.03, 0.04, 1.0), sill_col)
+        make_box(f"House_{label}_WinMull_{wi}_h",
+                 (front_x + win_x_offset - 0.005, cy + wy_off, body_z + 0.10),
+                 (0.03, 0.95, 0.04), sill_col)
+
+    # ── FRONT DOOR — between the two windows
+    make_box(f"House_{label}_Door",
+             (front_x + win_x_offset, cy, body_z - 0.5),
+             (0.05, 0.95, 2.0), door_col)
+    # Door frame trim
+    make_box(f"House_{label}_DoorFrame_T",
+             (front_x + win_x_offset, cy, body_z + 0.55),
+             (0.06, 1.10, 0.06), sill_col)
+    make_box(f"House_{label}_DoorFrame_L",
+             (front_x + win_x_offset, cy - 0.51, body_z - 0.5),
+             (0.06, 0.06, 2.1), sill_col)
+    make_box(f"House_{label}_DoorFrame_R",
+             (front_x + win_x_offset, cy + 0.51, body_z - 0.5),
+             (0.06, 0.06, 2.1), sill_col)
+    # Doorknob
+    make_sphere(f"House_{label}_Knob",
+                (front_x + sign_x * 0.05, cy + 0.35, body_z - 0.5),
+                0.06, COL_BRASS)
+
+    # ── FRONT PORCH — slab + columns + overhanging roof
+    porch_depth = 1.6
+    porch_x = front_x + sign_x * (porch_depth / 2.0 + 0.03)
+    porch_floor_z = 0.58
+    make_box(f"House_{label}_PorchFloor",
+             (porch_x, cy, porch_floor_z),
+             (porch_depth, body_l + 0.6, 0.10), porch_col)
+    # Steps down to the lawn
+    for si in range(2):
+        step_x = front_x + sign_x * (porch_depth + 0.20 + si * 0.30)
+        step_z = porch_floor_z - 0.15 - si * 0.15
+        make_box(f"House_{label}_Step_{si}",
+                 (step_x, cy, step_z),
+                 (0.30, body_l + 0.4, 0.10), porch_col)
+    # 2 columns supporting the overhang
+    for ci, col_y_off in enumerate([-body_l/2 + 0.3, body_l/2 - 0.3]):
+        col_h = body_h * 0.75
+        make_cyl(f"House_{label}_PorchCol_{ci}",
+                 (front_x + sign_x * (porch_depth - 0.10), cy + col_y_off,
+                  porch_floor_z + col_h / 2.0),
+                 0.10, col_h, column_col, segments=6)
+    # Overhang — a flat roof piece extending from the wall over the porch
+    overhang_z = porch_floor_z + body_h * 0.75 + 0.05
+    make_box(f"House_{label}_PorchOverhang",
+             (porch_x, cy, overhang_z),
+             (porch_depth + 0.1, body_l + 0.4, 0.12), roof_color)
+
+    # ── PICKET FENCE around the lot, partial — front and one side
+    fence_h = 0.85
+    # Front fence (along the road side)
+    fence_front_x = cx + sign_x * (lot_w / 2.0 - 0.10)
+    # gap in the middle for the walkway
+    for fi, fy_o in enumerate([-3.5, -2.6, -1.6, 1.6, 2.6, 3.5]):
+        if fi == 2 or fi == 3:
+            continue  # gap for walkway
+        make_box(f"House_{label}_FencePicket_F_{fi}",
+                 (fence_front_x, cy + fy_o, fence_h / 2.0),
+                 (0.05, 0.10, fence_h), fence_col)
+    # Fence rails (horizontal)
+    make_box(f"House_{label}_FenceRail_F_top",
+             (fence_front_x, cy + 0.0, fence_h - 0.10),
+             (0.03, lot_l - 0.4, 0.04), fence_col)
+    make_box(f"House_{label}_FenceRail_F_bot",
+             (fence_front_x, cy + 0.0, 0.20),
+             (0.03, lot_l - 0.4, 0.04), fence_col)
+
+    # ── WALKWAY from porch through fence gap
+    walk_x = front_x + sign_x * (porch_depth + 0.50)
+    walk_dist = abs(fence_front_x - walk_x)
+    make_box(f"House_{label}_Walkway",
+             (walk_x + sign_x * walk_dist / 2.0, cy, 0.005),
+             (walk_dist, 1.20, 0.04), foundation_col)
+
+    # ── MAILBOX at the street edge
+    mb_x = cx + sign_x * (lot_w / 2.0 + 0.20)
+    make_cyl(f"House_{label}_Mailbox_Post",
+             (mb_x, cy, 0.75),
+             0.04, 1.50, porch_col, segments=4)
+    make_box(f"House_{label}_Mailbox_Body",
+             (mb_x, cy, 1.45),
+             (0.20, 0.40, 0.20), foundation_col)
+    make_box(f"House_{label}_Mailbox_Flag",
+             (mb_x - sign_x * 0.12, cy + 0.18, 1.55),
+             (0.04, 0.04, 0.18), (0.85, 0.20, 0.18, 1.0))
+
+
+def build_westbrook_residential():
+    """A row of small clapboard houses on the WEST side of River Road,
+    filling the gaps in the 100m radius from the parking lot. These
+    are Westbrook neighbourhood houses spilling over to the riverfront
+    edge — per _GRAUSTARK_MAP.md.
+
+    Houses placed where they don't overlap other features:
+    - Y=+72 (between strip mall and northern edge)
+    - Y=+88 (further north)
+    - Y=-52 (between park and gas station)
+    - Y=-95 (south, beyond the park)
+    """
+    HOUSE_X = -60.0   # west of River Road
+    house_specs = [
+        ("01", HOUSE_X, +72.0, (0.78, 0.72, 0.62, 1.0), (0.40, 0.22, 0.18, 1.0)),
+        ("02", HOUSE_X, +88.0, (0.62, 0.55, 0.45, 1.0), (0.36, 0.30, 0.22, 1.0)),
+        ("03", HOUSE_X, -52.0, (0.78, 0.74, 0.66, 1.0), (0.30, 0.28, 0.22, 1.0)),
+        ("04", HOUSE_X, -95.0, (0.72, 0.66, 0.56, 1.0), (0.42, 0.32, 0.22, 1.0)),
+    ]
+    for (lbl, hx, hy, body_c, roof_c) in house_specs:
+        _make_residential_house(lbl, hx, hy, body_c, roof_c,
+                                facing_east=True,
+                                has_chimney=(int(lbl) % 2 == 1))
+
+
 def build_near_shore():
     """The PORT-side (-X) near shore behind the parking lot. Provides
     set decoration so when the player looks west / north / south from
@@ -2663,20 +2863,53 @@ def build_near_shore():
                  0.04, 0.50, (0.10, 0.10, 0.10, 1.0), segments=4)
     # Small attached convenience store building (north of the canopy)
     store_y = gs_y + 8.0
-    make_box("GasStation_Store_Body", (gs_x, store_y, 2.1), (8.0, 6.0, 4.2), (0.85, 0.82, 0.74, 1.0))
-    make_box("GasStation_Store_Roof", (gs_x, store_y, 4.3), (8.4, 6.4, 0.20), (0.32, 0.30, 0.26, 1.0))
-    # store windows (lit warm yellow)
-    make_box("GasStation_Store_Window_W", (gs_x - 4.05, store_y, 1.8),
-             (0.05, 4.0, 1.8), (0.95, 0.78, 0.40, 1.0))
-    make_box("GasStation_Store_Window_E", (gs_x + 4.05, store_y, 1.8),
-             (0.05, 4.0, 1.8), (0.95, 0.78, 0.40, 1.0))
-    # internal mullions
-    for mi in range(3):
-        my_o = -1.2 + mi * 1.2
-        make_box(f"GasStation_Store_Mullion_W_{mi}", (gs_x - 4.06, store_y + my_o, 1.8),
-                 (0.05, 0.06, 1.8), (0.30, 0.26, 0.20, 1.0))
-        make_box(f"GasStation_Store_Mullion_E_{mi}", (gs_x + 4.06, store_y + my_o, 1.8),
-                 (0.05, 0.06, 1.8), (0.30, 0.26, 0.20, 1.0))
+    # Foundation slab — concrete, slightly wider than the building, extends
+    # below grade. The "from below water level up" approach: buildings have
+    # visible bases, not just floor-up walls.
+    make_box("GasStation_Store_Foundation", (gs_x, store_y, 0.20),
+             (8.4, 6.4, 0.70), (0.55, 0.52, 0.46, 1.0))
+    # Body — sitting on top of the foundation
+    make_box("GasStation_Store_Body", (gs_x, store_y, 0.55 + 4.2 / 2.0),
+             (8.0, 6.0, 4.2), (0.85, 0.82, 0.74, 1.0))
+    make_box("GasStation_Store_Roof", (gs_x, store_y, 0.55 + 4.2 + 0.10),
+             (8.4, 6.4, 0.20), (0.32, 0.30, 0.26, 1.0))
+    # Windows — RECESSED INTO the wall (not sticking out 5cm in front of
+    # it like the previous version). Glass pane is INSIDE the wall plane;
+    # a dark frame sits at the wall surface around the recessed pane.
+    # This is the actual fix for "windows hovering in air."
+    win_z = 0.55 + 2.0     # window centred ~2m above the foundation top
+    for side, sx_off in (("W", -4.0), ("E", 4.0)):
+        # Glass — INSET 5cm behind the wall surface
+        sign = -1 if side == "W" else 1
+        glass_x = gs_x + sx_off - sign * 0.05    # inset behind the wall plane
+        make_box(f"GasStation_Store_Glass_{side}",
+                 (glass_x, store_y, win_z),
+                 (0.04, 4.0, 1.8), (0.95, 0.78, 0.40, 1.0))
+        # Dark frame at the wall surface
+        frame_x = gs_x + sx_off + sign * 0.005
+        make_box(f"GasStation_Store_Frame_{side}_T",
+                 (frame_x, store_y, win_z + 0.95),
+                 (0.04, 4.20, 0.12), (0.30, 0.26, 0.20, 1.0))
+        make_box(f"GasStation_Store_Frame_{side}_B",
+                 (frame_x, store_y, win_z - 0.95),
+                 (0.04, 4.20, 0.12), (0.30, 0.26, 0.20, 1.0))
+        make_box(f"GasStation_Store_Frame_{side}_S",
+                 (frame_x, store_y - 2.06, win_z),
+                 (0.04, 0.12, 1.95), (0.30, 0.26, 0.20, 1.0))
+        make_box(f"GasStation_Store_Frame_{side}_N",
+                 (frame_x, store_y + 2.06, win_z),
+                 (0.04, 0.12, 1.95), (0.30, 0.26, 0.20, 1.0))
+        # Internal mullions (dividing the glass into panes)
+        for mi in range(3):
+            my_o = -1.2 + mi * 1.2
+            make_box(f"GasStation_Store_Mullion_{side}_{mi}",
+                     (frame_x, store_y + my_o, win_z),
+                     (0.04, 0.05, 1.8), (0.30, 0.26, 0.20, 1.0))
+        # Sill below the window — extends slightly outboard like a real sill
+        sill_x = gs_x + sx_off + sign * 0.08
+        make_box(f"GasStation_Store_Sill_{side}",
+                 (sill_x, store_y, win_z - 1.05),
+                 (0.16, 4.20, 0.10), (0.55, 0.52, 0.46, 1.0))
     # Tall illuminated price sign on a pole at the road
     sign_pole_x = gs_x + 6.5
     sign_pole_y = gs_y - 2.0
@@ -2695,43 +2928,79 @@ def build_near_shore():
     sm_w = 8.0
     sm_l = 36.0
     sm_h = 4.6
-    make_box("StripMall_Body", (sm_x, sm_y, sm_h / 2), (sm_w, sm_l, sm_h),
-             (0.78, 0.74, 0.66, 1.0))
+    # Foundation — concrete pad extending below grade. Visible base.
+    make_box("StripMall_Foundation", (sm_x, sm_y, 0.20),
+             (sm_w + 0.40, sm_l + 0.40, 0.70), (0.55, 0.52, 0.46, 1.0))
+    # Body sits ON the foundation
+    make_box("StripMall_Body", (sm_x, sm_y, 0.55 + sm_h / 2),
+             (sm_w, sm_l, sm_h), (0.78, 0.74, 0.66, 1.0))
     # Flat roof + parapet
-    make_box("StripMall_Roof", (sm_x, sm_y, sm_h + 0.10), (sm_w + 0.4, sm_l + 0.4, 0.20),
-             (0.32, 0.30, 0.26, 1.0))
-    make_box("StripMall_Parapet_E", (sm_x + sm_w/2 + 0.05, sm_y, sm_h + 0.40),
+    make_box("StripMall_Roof", (sm_x, sm_y, 0.55 + sm_h + 0.10),
+             (sm_w + 0.4, sm_l + 0.4, 0.20), (0.32, 0.30, 0.26, 1.0))
+    make_box("StripMall_Parapet_E", (sm_x + sm_w/2 + 0.05, sm_y, 0.55 + sm_h + 0.40),
              (0.10, sm_l + 0.4, 0.40), (0.65, 0.58, 0.48, 1.0))
-    # Storefront awning running the full length (red stripe like the gas station band)
-    awning_z = 2.8
-    make_box("StripMall_Awning", (sm_x + sm_w/2 + 0.20, sm_y, awning_z),
-             (0.30, sm_l - 1.0, 0.30), (0.78, 0.20, 0.18, 1.0))
-    # 6 storefront windows running along the east face (toward the road/parking)
+    # Storefront awning running the full length (red stripe like the gas station band).
+    # Awning is a SLOPED PRISM extending outward from the wall, giving each
+    # storefront character. Sits at the top of the windows.
+    awning_z = 0.55 + 3.0
+    make_prism("StripMall_Awning",
+               (sm_x + sm_w/2 + 0.50, sm_y, awning_z),
+               (1.0, sm_l - 1.0, 0.30),
+               (0.78, 0.20, 0.18, 1.0),
+               pitch_axis='Y')
+    # 6 storefront windows along the east face. Windows now RECESSED 5cm
+    # INTO the wall (was 2cm OUTSIDE the wall, which made them hover).
+    # Frames sit at the wall surface; sills overhang slightly.
+    east_wall_x = sm_x + sm_w / 2.0
     for si in range(6):
-        fy = -sm_l/2 + 3.0 + si * (sm_l - 6.0) / 5.0
-        # lit interior visible through plate glass
-        make_box(f"StripMall_Win_{si}", (sm_x + sm_w/2 + 0.02, fy, 1.8),
-                 (0.04, 4.4, 2.8), (0.95, 0.85, 0.50, 1.0))
-        # window mullion separators
-        make_box(f"StripMall_Mullion_{si}_T", (sm_x + sm_w/2 + 0.04, fy, 3.2),
-                 (0.05, 4.5, 0.08), (0.30, 0.26, 0.20, 1.0))
-        make_box(f"StripMall_Mullion_{si}_B", (sm_x + sm_w/2 + 0.04, fy, 0.40),
-                 (0.05, 4.5, 0.08), (0.30, 0.26, 0.20, 1.0))
-        # vertical divider between shops
+        fy = sm_y - sm_l/2 + 3.0 + si * (sm_l - 6.0) / 5.0
+        # Glass pane — RECESSED 5cm behind the wall plane
+        make_box(f"StripMall_Glass_{si}", (east_wall_x - 0.05, fy, 0.55 + 1.55),
+                 (0.04, 4.0, 2.5), (0.85, 0.72, 0.42, 1.0))
+        # Dark frame at the wall surface — surrounds the recessed glass
+        frame_x = east_wall_x + 0.01
+        # Top / bottom / left / right of frame
+        make_box(f"StripMall_Frame_{si}_T", (frame_x, fy, 0.55 + 2.85),
+                 (0.05, 4.20, 0.12), (0.28, 0.24, 0.20, 1.0))
+        make_box(f"StripMall_Frame_{si}_B", (frame_x, fy, 0.55 + 0.25),
+                 (0.05, 4.20, 0.12), (0.28, 0.24, 0.20, 1.0))
+        make_box(f"StripMall_Frame_{si}_S", (frame_x, fy - 2.06, 0.55 + 1.55),
+                 (0.05, 0.12, 2.65), (0.28, 0.24, 0.20, 1.0))
+        make_box(f"StripMall_Frame_{si}_N", (frame_x, fy + 2.06, 0.55 + 1.55),
+                 (0.05, 0.12, 2.65), (0.28, 0.24, 0.20, 1.0))
+        # Sill — protruding ledge below the window
+        make_box(f"StripMall_Sill_{si}", (east_wall_x + 0.10, fy, 0.55 + 0.18),
+                 (0.20, 4.20, 0.10), (0.55, 0.52, 0.46, 1.0))
+        # Internal vertical mullions dividing the window into 3 panes
+        for mi in range(2):
+            mull_y = fy - 1.0 + mi * 2.0
+            make_box(f"StripMall_Mullion_{si}_{mi}", (frame_x - 0.01, mull_y, 0.55 + 1.55),
+                     (0.05, 0.06, 2.5), (0.28, 0.24, 0.20, 1.0))
+        # Vertical divider between adjacent shops — runs from sill to top
         if si < 5:
-            div_y = -sm_l/2 + 3.0 + (si + 0.5) * (sm_l - 6.0) / 5.0
-            make_box(f"StripMall_Divider_{si}", (sm_x + sm_w/2 + 0.04, div_y + 2.2, 1.8),
-                     (0.06, 0.12, 2.8), (0.30, 0.26, 0.20, 1.0))
+            div_y = sm_y - sm_l/2 + 3.0 + (si + 0.5) * (sm_l - 6.0) / 5.0
+            # Use foundation color (slightly lighter than wall) to read as masonry pier
+            make_box(f"StripMall_Pier_{si}", (east_wall_x + 0.04, div_y + 2.2, 0.55 + sm_h / 2),
+                     (0.10, 0.40, sm_h),
+                     (0.65, 0.60, 0.50, 1.0))
+        # Sandwich-board sidewalk sign in front of each shop
+        sb_x = east_wall_x + 1.5
+        sb_y = fy
+        make_prism(f"StripMall_SandwichBoard_{si}",
+                   (sb_x, sb_y, 0.05),
+                   (0.50, 0.30, 1.10),
+                   (0.42, 0.30, 0.20, 1.0), pitch_axis='Y')
     # Storefront signs above each window — a colourful band
     sign_colors = [
         (0.85, 0.32, 0.20, 1.0), (0.20, 0.55, 0.80, 1.0),
         (0.62, 0.30, 0.78, 1.0), (0.85, 0.62, 0.22, 1.0),
         (0.30, 0.78, 0.55, 1.0), (0.78, 0.55, 0.30, 1.0),
     ]
+    # Storefront sign band ABOVE the awning, below the parapet
     for si in range(6):
-        fy = -sm_l/2 + 3.0 + si * (sm_l - 6.0) / 5.0
-        make_box(f"StripMall_Sign_{si}", (sm_x + sm_w/2 + 0.10, fy, 3.75),
-                 (0.05, 4.0, 0.60), sign_colors[si % len(sign_colors)])
+        fy = sm_y - sm_l/2 + 3.0 + si * (sm_l - 6.0) / 5.0
+        make_box(f"StripMall_Sign_{si}", (east_wall_x + 0.07, fy, 0.55 + 3.85),
+                 (0.05, 4.0, 0.55), sign_colors[si % len(sign_colors)])
     # Strip-mall parking lot in front
     make_box("StripMall_Lot", (sm_x + sm_w/2 + 4.0, sm_y, -0.02),
              (6.0, sm_l, 0.04), asphalt)
@@ -3128,10 +3397,10 @@ def build_distant_atmosphere():
 
 def main():
     clear_scene()
-    # Ground first so all other geometry sits ON it, not floating in
-    # Godot-void. Roads next so subsequent feature builds (parking lot,
-    # dock, gas station, etc.) sit ON the road surface where they
-    # overlap.
+    # Build order matters: ground & roads first so features sit ON
+    # them. Westbrook residential after the near-shore commercial
+    # strip so houses fill the gaps the gas station and strip mall
+    # don't occupy.
     build_ground()
     build_road_network()
     build_riverboat()
@@ -3139,6 +3408,7 @@ def main():
     build_dock()
     build_river()
     build_near_shore()
+    build_westbrook_residential()
     build_opposite_shore()
     build_other_boats()
     build_bayou()
