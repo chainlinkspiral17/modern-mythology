@@ -2140,6 +2140,266 @@ def export_glb():
         raise RuntimeError("GLB not written")
 
 
+def build_near_shore():
+    """The PORT-side (-X) near shore behind the parking lot. Provides
+    set decoration so when the player looks west / north / south from
+    the parking lot they see civilisation, not empty plane.
+
+    Layout:
+      · A frontage road parallel to the parking lot, with a gas
+        station and a strip mall as the foreground commercial strip.
+      · A second tier of bayou trees + industrial silhouettes further
+        west to fill the deep distance.
+      · A highway overpass crossing in the far distance (N-S) for
+        depth — visible behind the strip-mall roofline."""
+
+    NEAR_FRONTAGE_X = -52.0    # commercial strip just west of the parking lot
+    NEAR_DEEP_X = -85.0        # second tier of distance
+    NEAR_HIGHWAY_X = -115.0    # far-distance highway overpass
+    shore_z = -0.05
+    asphalt = (0.18, 0.18, 0.18, 1.0)
+    curb = (0.55, 0.52, 0.48, 1.0)
+
+    # ── Frontage road running N-S parallel to the parking lot ──
+    make_box("NearShore_Road", (NEAR_FRONTAGE_X + 12.0, 0, shore_z),
+             (8.0, 220.0, 0.04), asphalt)
+    # painted yellow center line, dashed
+    for i in range(36):
+        ly = -108 + i * 6.0
+        make_box(f"NearShore_RoadLine_{i}", (NEAR_FRONTAGE_X + 12.0, ly, shore_z + 0.02),
+                 (0.10, 2.5, 0.005), (0.70, 0.62, 0.30, 1.0))
+
+    # ════════════════════════════════════════════════════════════
+    # GAS STATION — south end of the frontage road
+    # ════════════════════════════════════════════════════════════
+    gs_x = NEAR_FRONTAGE_X
+    gs_y = -38.0
+    # Canopy roof — large flat slab over the pumps
+    canopy_z = 4.6
+    make_box("GasStation_Canopy", (gs_x, gs_y, canopy_z),
+             (10.0, 8.0, 0.40), (0.85, 0.82, 0.74, 1.0))
+    # Canopy underside trim (where the bright fluorescent lights would be)
+    make_box("GasStation_CanopyUnder", (gs_x, gs_y, canopy_z - 0.22),
+             (9.6, 7.6, 0.06), (0.95, 0.92, 0.85, 1.0))
+    # Brand colour band along the canopy edge (red stripe)
+    make_box("GasStation_Band_W", (gs_x - 5.05, gs_y, canopy_z),
+             (0.10, 8.0, 0.30), (0.78, 0.20, 0.18, 1.0))
+    make_box("GasStation_Band_S", (gs_x, gs_y - 4.05, canopy_z),
+             (10.0, 0.10, 0.30), (0.78, 0.20, 0.18, 1.0))
+    # 4 canopy support pillars
+    for pi, (px_o, py_o) in enumerate([(-3.5, -3.0), (3.5, -3.0), (-3.5, 3.0), (3.5, 3.0)]):
+        make_cyl(f"GasStation_Pillar_{pi}", (gs_x + px_o, gs_y + py_o, canopy_z / 2),
+                 0.22, canopy_z, (0.85, 0.82, 0.74, 1.0), segments=6)
+    # Fuel pump islands — 2 pumps under the canopy
+    for pi, py_o in enumerate([-1.5, 1.5]):
+        # concrete island
+        make_box(f"GasStation_Island_{pi}", (gs_x, gs_y + py_o, 0.10),
+                 (3.5, 1.2, 0.20), curb)
+        # the pump unit
+        make_box(f"GasStation_Pump_{pi}_body", (gs_x, gs_y + py_o, 0.80),
+                 (1.1, 0.55, 1.10), (0.40, 0.42, 0.42, 1.0))
+        make_box(f"GasStation_Pump_{pi}_screen", (gs_x, gs_y + py_o - 0.30, 1.10),
+                 (0.70, 0.04, 0.30), (0.30, 0.85, 0.55, 1.0))   # green digit display
+        make_cyl(f"GasStation_Pump_{pi}_hose", (gs_x + 0.40, gs_y + py_o, 1.20),
+                 0.04, 0.50, (0.10, 0.10, 0.10, 1.0), segments=4)
+    # Small attached convenience store building (north of the canopy)
+    store_y = gs_y + 8.0
+    make_box("GasStation_Store_Body", (gs_x, store_y, 2.1), (8.0, 6.0, 4.2), (0.85, 0.82, 0.74, 1.0))
+    make_box("GasStation_Store_Roof", (gs_x, store_y, 4.3), (8.4, 6.4, 0.20), (0.32, 0.30, 0.26, 1.0))
+    # store windows (lit warm yellow)
+    make_box("GasStation_Store_Window_W", (gs_x - 4.05, store_y, 1.8),
+             (0.05, 4.0, 1.8), (0.95, 0.78, 0.40, 1.0))
+    make_box("GasStation_Store_Window_E", (gs_x + 4.05, store_y, 1.8),
+             (0.05, 4.0, 1.8), (0.95, 0.78, 0.40, 1.0))
+    # internal mullions
+    for mi in range(3):
+        my_o = -1.2 + mi * 1.2
+        make_box(f"GasStation_Store_Mullion_W_{mi}", (gs_x - 4.06, store_y + my_o, 1.8),
+                 (0.05, 0.06, 1.8), (0.30, 0.26, 0.20, 1.0))
+        make_box(f"GasStation_Store_Mullion_E_{mi}", (gs_x + 4.06, store_y + my_o, 1.8),
+                 (0.05, 0.06, 1.8), (0.30, 0.26, 0.20, 1.0))
+    # Tall illuminated price sign on a pole at the road
+    sign_pole_x = gs_x + 6.5
+    sign_pole_y = gs_y - 2.0
+    make_cyl("GasStation_Sign_Pole", (sign_pole_x, sign_pole_y, 5.5), 0.16, 11.0,
+             (0.30, 0.28, 0.24, 1.0), segments=6)
+    make_box("GasStation_Sign_Panel", (sign_pole_x, sign_pole_y, 8.5),
+             (3.0, 0.12, 2.4), (0.78, 0.20, 0.18, 1.0))   # red brand panel
+    make_box("GasStation_Sign_Price", (sign_pole_x, sign_pole_y + 0.10, 8.5),
+             (2.4, 0.04, 1.6), (0.95, 0.92, 0.65, 1.0))   # yellow price strip
+
+    # ════════════════════════════════════════════════════════════
+    # STRIP MALL — north end of the frontage road
+    # ════════════════════════════════════════════════════════════
+    sm_x = NEAR_FRONTAGE_X
+    sm_y = 30.0
+    sm_w = 8.0
+    sm_l = 36.0
+    sm_h = 4.6
+    make_box("StripMall_Body", (sm_x, sm_y, sm_h / 2), (sm_w, sm_l, sm_h),
+             (0.78, 0.74, 0.66, 1.0))
+    # Flat roof + parapet
+    make_box("StripMall_Roof", (sm_x, sm_y, sm_h + 0.10), (sm_w + 0.4, sm_l + 0.4, 0.20),
+             (0.32, 0.30, 0.26, 1.0))
+    make_box("StripMall_Parapet_E", (sm_x + sm_w/2 + 0.05, sm_y, sm_h + 0.40),
+             (0.10, sm_l + 0.4, 0.40), (0.65, 0.58, 0.48, 1.0))
+    # Storefront awning running the full length (red stripe like the gas station band)
+    awning_z = 2.8
+    make_box("StripMall_Awning", (sm_x + sm_w/2 + 0.20, sm_y, awning_z),
+             (0.30, sm_l - 1.0, 0.30), (0.78, 0.20, 0.18, 1.0))
+    # 6 storefront windows running along the east face (toward the road/parking)
+    for si in range(6):
+        fy = -sm_l/2 + 3.0 + si * (sm_l - 6.0) / 5.0
+        # lit interior visible through plate glass
+        make_box(f"StripMall_Win_{si}", (sm_x + sm_w/2 + 0.02, fy, 1.8),
+                 (0.04, 4.4, 2.8), (0.95, 0.85, 0.50, 1.0))
+        # window mullion separators
+        make_box(f"StripMall_Mullion_{si}_T", (sm_x + sm_w/2 + 0.04, fy, 3.2),
+                 (0.05, 4.5, 0.08), (0.30, 0.26, 0.20, 1.0))
+        make_box(f"StripMall_Mullion_{si}_B", (sm_x + sm_w/2 + 0.04, fy, 0.40),
+                 (0.05, 4.5, 0.08), (0.30, 0.26, 0.20, 1.0))
+        # vertical divider between shops
+        if si < 5:
+            div_y = -sm_l/2 + 3.0 + (si + 0.5) * (sm_l - 6.0) / 5.0
+            make_box(f"StripMall_Divider_{si}", (sm_x + sm_w/2 + 0.04, div_y + 2.2, 1.8),
+                     (0.06, 0.12, 2.8), (0.30, 0.26, 0.20, 1.0))
+    # Storefront signs above each window — a colourful band
+    sign_colors = [
+        (0.85, 0.32, 0.20, 1.0), (0.20, 0.55, 0.80, 1.0),
+        (0.62, 0.30, 0.78, 1.0), (0.85, 0.62, 0.22, 1.0),
+        (0.30, 0.78, 0.55, 1.0), (0.78, 0.55, 0.30, 1.0),
+    ]
+    for si in range(6):
+        fy = -sm_l/2 + 3.0 + si * (sm_l - 6.0) / 5.0
+        make_box(f"StripMall_Sign_{si}", (sm_x + sm_w/2 + 0.10, fy, 3.75),
+                 (0.05, 4.0, 0.60), sign_colors[si % len(sign_colors)])
+    # Strip-mall parking lot in front
+    make_box("StripMall_Lot", (sm_x + sm_w/2 + 4.0, sm_y, -0.02),
+             (6.0, sm_l, 0.04), asphalt)
+    for li in range(7):
+        ly = -sm_l/2 + 3.0 + li * (sm_l - 6.0) / 6.0
+        make_box(f"StripMall_LotLine_{li}", (sm_x + sm_w/2 + 4.0, ly, 0.005),
+                 (4.5, 0.08, 0.005), (0.70, 0.62, 0.30, 1.0))
+    # A few parked cars in the strip-mall lot — small / silhouette-only
+    for ci, (cx_o, cy_o, col) in enumerate([
+        (3.0, -10.0, (0.40, 0.20, 0.18, 1.0)),
+        (3.0,  -2.0, (0.30, 0.35, 0.50, 1.0)),
+        (3.0,   8.0, (0.55, 0.50, 0.45, 1.0)),
+        (5.5,  14.0, (0.35, 0.35, 0.38, 1.0)),
+    ]):
+        cx_p = sm_x + sm_w/2 + cx_o
+        cy_p = sm_y + cy_o
+        make_box(f"StripMall_Car_{ci}_body", (cx_p, cy_p, 0.45), (1.7, 4.0, 0.55), col)
+        make_box(f"StripMall_Car_{ci}_cabin", (cx_p, cy_p, 1.00), (1.5, 2.4, 0.50), col)
+
+    # ════════════════════════════════════════════════════════════
+    # DEEP DISTANCE — second tier of bayou trees + industrial
+    # silhouettes further west to give the view depth
+    # ════════════════════════════════════════════════════════════
+    # Mixed tree line
+    deep_tree_positions = [
+        -105, -92, -78, -62, -48, -32, -18, -4, 10, 22, 36, 50, 64, 78, 92, 106,
+    ]
+    for ti, ty in enumerate(deep_tree_positions):
+        kind = ti % 3
+        zig = ((ti * 7) % 5 - 2) * 0.6
+        tx = NEAR_DEEP_X - 2.0 + zig
+        canopy_col = (0.22, 0.30, 0.18, 1.0) if kind == 0 else (
+                     (0.28, 0.34, 0.22, 1.0) if kind == 1 else (0.34, 0.30, 0.20, 1.0))
+        trunk_h = 6.5 if kind == 1 else 5.5
+        make_cyl(f"NearDeep_Trunk_{ti}", (tx, ty, trunk_h / 2),
+                 0.18, trunk_h, COL_TREE_TRUNK, segments=6)
+        # Sphere canopy
+        for ci, (ox, oz_off, r_mul) in enumerate([(0.0, 0.0, 1.0), (-0.4, 0.7, 0.7), (0.3, 1.2, 0.6)]):
+            make_sphere(f"NearDeep_Canopy_{ti}_{ci}",
+                        (tx + ox, ty, trunk_h + oz_off),
+                        1.1 * r_mul, canopy_col)
+
+    # Industrial silhouettes between the tree line and the distant highway
+    for ii, (iy, iw, il, ih, has_stack) in enumerate([
+        (-70.0, 8.0, 12.0, 11.0, True),
+        (-42.0, 6.0,  9.0,  7.0, False),
+        ( -8.0, 10.0, 14.0, 16.0, True),    # a tall refinery
+        ( 30.0, 7.0, 10.0,  9.0, False),
+        ( 60.0, 9.0, 12.0, 13.0, True),
+        ( 88.0, 6.0,  8.0,  6.5, False),
+    ]):
+        ix = NEAR_DEEP_X - 10.0
+        make_box(f"NearDeep_Bldg_{ii}", (ix, iy, ih / 2), (iw, il, ih),
+                 (0.30, 0.28, 0.26, 1.0))
+        if has_stack:
+            make_cyl(f"NearDeep_Stack_{ii}", (ix - 1.0, iy - 1.0, ih + 4.0),
+                     0.40, 8.0, (0.20, 0.18, 0.16, 1.0), segments=8)
+            # smoke plume
+            for pi in range(4):
+                make_sphere(f"NearDeep_Smoke_{ii}_{pi}",
+                            (ix - 1.0 + pi * 1.0, iy - 1.0 - pi * 0.3, ih + 8.5 + pi * 0.7),
+                            1.3 + pi * 0.25, (0.55, 0.52, 0.48, 1.0))
+        # parapet roof cap
+        make_box(f"NearDeep_BldgCap_{ii}", (ix, iy, ih + 0.15),
+                 (iw + 0.2, il + 0.2, 0.25), (0.36, 0.32, 0.28, 1.0))
+        # row of small lit windows on the river-facing (+X) wall
+        rows = max(2, int(ih / 3.0))
+        cols = max(2, int(il / 3.0))
+        for ri in range(rows):
+            for cj in range(cols):
+                wy = iy - il/2 + (cj + 0.5) * (il / cols)
+                wz = 1.0 + (ri + 0.5) * ((ih - 1.0) / rows)
+                seed = (ii * 31 + ri * 11 + cj * 7) & 0xFF
+                col = (0.95, 0.78, 0.42, 1.0) if (seed % 100) < 28 else (0.18, 0.16, 0.14, 1.0)
+                make_box(f"NearDeep_Win_{ii}_{ri}_{cj}", (ix + iw/2 + 0.03, wy, wz),
+                         (0.04, il / cols * 0.5, (ih - 1.0) / rows * 0.5), col)
+
+    # Tall water tower (silhouette landmark, far back)
+    wt_x = NEAR_DEEP_X - 22.0
+    wt_y = 10.0
+    for li, (lx_off, ly_off) in enumerate([(-1.5, -1.5), (1.5, -1.5), (-1.5, 1.5), (1.5, 1.5)]):
+        make_cyl(f"NearDeep_WaterTower_Leg_{li}", (wt_x + lx_off, wt_y + ly_off, 8.0),
+                 0.14, 16.0, (0.30, 0.26, 0.22, 1.0), segments=4)
+    make_cyl("NearDeep_WaterTower_Tank", (wt_x, wt_y, 17.5), 2.4, 4.0,
+             (0.52, 0.48, 0.42, 1.0), segments=10)
+    make_prism("NearDeep_WaterTower_Roof", (wt_x, wt_y, 19.5),
+               (5.2, 5.2, 1.4), (0.32, 0.30, 0.26, 1.0), pitch_axis='X')
+
+    # ════════════════════════════════════════════════════════════
+    # FAR-DISTANCE HIGHWAY OVERPASS running N-S behind the strip mall
+    # ════════════════════════════════════════════════════════════
+    hwy_x = NEAR_HIGHWAY_X
+    hwy_z = 9.0
+    hwy_w = 5.0
+    hwy_length = 200.0
+    # The deck — a continuous box along Y
+    make_box("Hwy_Deck", (hwy_x, 0, hwy_z), (hwy_w, hwy_length, 0.60),
+             (0.40, 0.38, 0.34, 1.0))
+    # Concrete piers every 20m
+    for pi in range(11):
+        py = -100 + pi * 20.0
+        make_box(f"Hwy_Pier_{pi}", (hwy_x, py, hwy_z / 2),
+                 (1.6, 1.4, hwy_z), (0.55, 0.52, 0.46, 1.0))
+        # foot
+        make_box(f"Hwy_Pier_{pi}_foot", (hwy_x, py, 0.25),
+                 (2.4, 2.2, 0.50), (0.50, 0.47, 0.42, 1.0))
+    # Guard-rail along both edges of the deck (low silhouette boxes)
+    make_box("Hwy_Rail_W", (hwy_x - hwy_w/2 - 0.10, 0, hwy_z + 0.55),
+             (0.10, hwy_length, 0.40), (0.46, 0.42, 0.38, 1.0))
+    make_box("Hwy_Rail_E", (hwy_x + hwy_w/2 + 0.10, 0, hwy_z + 0.55),
+             (0.10, hwy_length, 0.40), (0.46, 0.42, 0.38, 1.0))
+    # Sparse vehicles on the highway (small silhouettes)
+    for vi, vy in enumerate([-72, -28, 6, 38, 78]):
+        col = (0.55, 0.20, 0.18, 1.0) if vi % 2 == 0 else (0.30, 0.32, 0.36, 1.0)
+        make_box(f"Hwy_Veh_{vi}", (hwy_x, vy, hwy_z + 0.95), (2.6, 5.0, 0.7), col)
+    # Highway sign overhead — gantry-style, faces port
+    sign_y = -10.0
+    make_cyl("Hwy_Gantry_W", (hwy_x - hwy_w/2 - 0.40, sign_y, hwy_z + 3.0),
+             0.18, 5.0, (0.46, 0.42, 0.38, 1.0), segments=6)
+    make_cyl("Hwy_Gantry_E", (hwy_x + hwy_w/2 + 0.40, sign_y, hwy_z + 3.0),
+             0.18, 5.0, (0.46, 0.42, 0.38, 1.0), segments=6)
+    make_box("Hwy_Gantry_Top", (hwy_x, sign_y, hwy_z + 5.5),
+             (hwy_w + 1.0, 0.30, 0.20), (0.46, 0.42, 0.38, 1.0))
+    make_box("Hwy_Sign", (hwy_x, sign_y - 0.25, hwy_z + 4.6),
+             (4.5, 0.10, 1.6), (0.18, 0.36, 0.28, 1.0))   # green interstate-style sign
+
+
 def build_distant_atmosphere():
     """Big-scale far-distance landmarks visible behind everything else.
     A distant bridge upriver, far hills on the horizon, a few low cloud
@@ -2228,6 +2488,7 @@ def main():
     build_parking_lot()
     build_dock()
     build_river()
+    build_near_shore()
     build_opposite_shore()
     build_other_boats()
     build_bayou()
