@@ -132,6 +132,11 @@ const MOODS: Array = [
         "neon_sat_bleed": false,
         "neon_red_only": true,
         "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
+        # Animated ASCII starscape layer over the dark sky pixels —
+        # slow spiral galaxy + twinkling stars + fungal-microchip drift.
+        "star": 1.0, "star_cell": 10.0, "star_time": 0.40,
+        "star_sky_thresh": 0.10,
+        "star_galaxy": 0.6, "star_stars": 0.85, "star_chip": 0.45,
         # ASCII density at LIGHTER strength — adds halftone where the
         # picture is bright, doesn't flood pure-black surfaces.
         "dir_ascii": 0.40, "dir_cell": 9.0, "dir_thresh": 0.06,
@@ -173,6 +178,11 @@ const MOODS: Array = [
         "neon_sat_bleed": false,
         "neon_red_only": true,
         "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
+        # Animated ASCII starscape layer over the dark sky pixels —
+        # slow spiral galaxy + twinkling stars + fungal-microchip drift.
+        "star": 1.0, "star_cell": 10.0, "star_time": 0.40,
+        "star_sky_thresh": 0.10,
+        "star_galaxy": 0.6, "star_stars": 0.85, "star_chip": 0.45,
     },
     {
         "name": "ice",
@@ -290,6 +300,15 @@ func _apply(preset: Dictionary) -> void:
         "mono_white":     preset.get("dir_mono_white_col", Color(0.95, 0.92, 0.86, 1)),
         "mono_red":       preset.get("dir_mono_red_col",   Color(0.98, 0.16, 0.18, 1)),
         "red_threshold":  preset.get("dir_red_thresh", 0.20),
+    })
+    _set_params("StarscapeQuad", {
+        "strength":        preset.get("star", 0.0),
+        "cell_size":       preset.get("star_cell", 10.0),
+        "time_scale":      preset.get("star_time", 0.40),
+        "sky_thresh":      preset.get("star_sky_thresh", 0.10),
+        "galaxy_strength": preset.get("star_galaxy", 0.6),
+        "star_strength":   preset.get("star_stars", 0.85),
+        "chip_strength":   preset.get("star_chip", 0.45),
     })
     _set_params("AsciiQuad", {
         "strength":        preset["ascii"],

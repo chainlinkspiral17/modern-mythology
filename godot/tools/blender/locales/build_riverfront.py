@@ -1557,10 +1557,15 @@ def build_parking_lot():
         make_box(f"BusBench_Leg_{li}", (bb_x, bb_y + ly_off, 0.22), (0.40, 0.10, 0.45), (0.18, 0.18, 0.18, 1.0))
 
     # ── "D'Ambrosio's" SIGN — pole + dark panel + cursive RED NEON ──
-    # Sign sits at the south-east entry corner of the lot, panel face
-    # parallel to the lot edge (faces +Y / -Y so road traffic sees it).
-    sign_x = lot_cx + lot_x_w/2 + 0.5
-    sign_y = lot_cy - lot_y_l/2 + 2.0
+    # Sign sits FAR DOWN THE ROAD FRONTAGE to the south, NOT at the
+    # lot's edge. From the road approach (driving north up Y), drivers
+    # see the sign first, then the buildings / vegetation between sign
+    # and parking lot OBSTRUCT a direct line of sight to the boat —
+    # they have to commit to the turn before they see the riverboat
+    # marquee. Panel face still parallel to the lot edge (+Y / -Y) so
+    # road traffic reads it head-on.
+    sign_x = FRONTAGE_X + 4.0           # tucked against the road frontage
+    sign_y = lot_cy - lot_y_l/2 - 18.0  # 18m south of the lot's south edge
     make_cyl("Sign_Pole", (sign_x, sign_y, 3.6), 0.14, 7.2, (0.26, 0.24, 0.22, 1.0), segments=8)
     # The dark mounting panel — sized so the cursive script has real
     # breathing room. Letters are positioned with 1.5x previous spacing
@@ -1580,6 +1585,27 @@ def build_parking_lot():
                  (0.12, 0.06, sign_h + 0.20), (0.32, 0.26, 0.20, 1.0))
         make_box(f"Sign_Frame_{label}_R",   (sign_x + sign_w/2 + 0.06, sign_y + face_y, sign_z),
                  (0.12, 0.06, sign_h + 0.20), (0.32, 0.26, 0.20, 1.0))
+
+    # ── OBSTRUCTION GROVE — small cluster of trees between the
+    # relocated road-frontage sign and the boat. From a driver
+    # approaching the sign from the south, the boat sign on the
+    # upper deck should NOT be visible until they crest past these
+    # trees — sells the "discover the boat" reveal the user asked
+    # for. 4 trees with slight randomness, scaled around 3.5m tall.
+    grove_canopy_col = (0.24, 0.34, 0.20, 1.0)
+    grove_positions = [
+        (sign_x + 7.0,  sign_y + 7.0,  4.2),    # NE of sign — first tree the eye hits
+        (sign_x + 14.0, sign_y + 12.0, 3.8),
+        (sign_x + 8.0,  sign_y + 18.0, 4.5),    # taller mid-grove
+        (sign_x + 18.0, sign_y + 4.0,  3.5),
+    ]
+    for gi, (gx, gy, trunk_h) in enumerate(grove_positions):
+        make_cyl(f"GroveTree_{gi}_Trunk", (gx, gy, trunk_h / 2 + 0.05),
+                 0.20, trunk_h, COL_TREE_TRUNK, segments=6)
+        make_sphere(f"GroveTree_{gi}_Canopy", (gx, gy, trunk_h + 0.9),
+                    1.6, grove_canopy_col)
+        make_sphere(f"GroveTree_{gi}_CanopyTop", (gx - 0.25, gy + 0.15, trunk_h + 2.1),
+                    1.1, grove_canopy_col)
 
     # ── D'AMBROSIO'S text on the pole sign — handled by Godot's
     # Label3D at scene load (LocaleSetup.gd finds Sign_Panel_N/S

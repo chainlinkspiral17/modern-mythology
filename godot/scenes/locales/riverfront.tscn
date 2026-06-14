@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://locale_riverfront_v1"]
+[gd_scene load_steps=17 format=3 uid="uid://locale_riverfront_v1"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/riverfront.glb" id="1_river_glb"]
 [ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="6_ascii"]
 [ext_resource type="Shader" path="res://assets/shaders/neon_edge.gdshader" id="7_neon"]
 [ext_resource type="Shader" path="res://assets/shaders/ascii_directional.gdshader" id="9_dir"]
+[ext_resource type="Shader" path="res://assets/shaders/starscape.gdshader" id="10_star"]
 [ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="8_setup"]
 
 [sub_resource type="CapsuleShape3D" id="Caps_Player"]
@@ -56,6 +57,19 @@ shader_parameter/sat_bleed = false
 shader_parameter/sat_lo = 0.40
 shader_parameter/sat_hi = 0.60
 shader_parameter/red_only = false
+
+[sub_resource type="ShaderMaterial" id="Mat_Starscape"]
+shader = ExtResource("10_star")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/time_scale = 0.40
+shader_parameter/sky_thresh = 0.10
+shader_parameter/star_white = Color(0.95, 0.92, 0.88, 1)
+shader_parameter/galaxy_col = Color(0.78, 0.85, 1.0, 1)
+shader_parameter/chip_col = Color(0.55, 0.88, 0.95, 1)
+shader_parameter/galaxy_strength = 0.6
+shader_parameter/star_strength = 0.85
+shader_parameter/chip_strength = 0.45
 
 [sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
 shader = ExtResource("9_dir")
@@ -267,6 +281,13 @@ mouse_filter = 2
 
 [node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Ascii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="StarscapeQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Starscape")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
