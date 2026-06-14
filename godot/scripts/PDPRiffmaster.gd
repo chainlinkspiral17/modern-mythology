@@ -60,6 +60,7 @@ func _ready() -> void:
 func _spawn_hud() -> void:
     _hud_layer = CanvasLayer.new()
     _hud_layer.layer = 109
+    _hud_layer.add_to_group("ui")
     add_child(_hud_layer)
     _hud_label = Label.new()
     _hud_label.offset_left = 16.0

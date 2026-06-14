@@ -109,12 +109,22 @@ func action_teleport_origin() -> void:
 
 
 func action_toggle_hud() -> void:
-    # Toggle the debug HUD CanvasLayer. The riverfront scene's HUD
-    # lives at "../HUD" by convention (sibling of Player).
-    var hud := get_node_or_null(NodePath("../HUD"))
-    if hud is CanvasLayer:
-        hud.visible = not hud.visible
-        print("[FPC] HUD visible = %s" % hud.visible)
+    # Clean HUD = ALL floating UI canvases off. Every script that
+    # owns a HUD layer (scene HUD, PDPRiffmaster button-registration,
+    # InGameMusic track label, DebugMenu, etc.) adds its CanvasLayer
+    # to the "ui" group; we walk the group and snap them all to the
+    # same visibility state.
+    var ui_nodes: Array = get_tree().get_nodes_in_group("ui")
+    if ui_nodes.is_empty():
+        return
+    # Find current state from the FIRST UI node; flip everything to
+    # the opposite. (Beats relying on AND/OR across nodes that
+    # might be out of sync.)
+    var target_visible: bool = not (ui_nodes[0] as CanvasItem).visible
+    for n in ui_nodes:
+        if n is CanvasItem:
+            (n as CanvasItem).visible = target_visible
+    print("[FPC] HUD visible = %s (%d ui nodes)" % [target_visible, ui_nodes.size()])
 
 
 func action_mouse_release() -> void:
