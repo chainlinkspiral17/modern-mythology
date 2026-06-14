@@ -690,13 +690,202 @@ def build_district_fences():
     _fence_along("Phase2_NorthWall", (50, -110), (230, -110), 'brick')
 
 
+def build_oliver_tree_memorial():
+    """A public-works memorial statue of Oliver Tree, placed in
+    Founders Memorial Grove (~(-260, 120)). Abstract, colorful,
+    recognizable — the signature huge wide-leg jeans + pink/purple
+    puffy jacket + bowl-cut hair + red sunglasses + yellow scarf.
+    Cream-stone plinth with a brass plaque.
+
+    Per user (2026-06-14): "this lovely weirdo who passed away
+    today." HCE is a planned community that erects statues of its
+    cultural figures; this one belongs in the Memorial Grove
+    alongside whatever else the HOA has memorialized."""
+    sx, sy = -260.0, 120.0
+    ground_z = hce_elevation(sx, sy)
+
+    # Statue colours
+    COL_PLINTH      = (0.78, 0.74, 0.66, 1.0)
+    COL_PLAQUE      = (0.65, 0.48, 0.20, 1.0)
+    COL_PANTS_DENIM = (0.55, 0.68, 0.82, 1.0)
+    COL_PANT_FOLDS  = (0.40, 0.50, 0.66, 1.0)
+    COL_JACKET_PINK = (0.95, 0.42, 0.62, 1.0)
+    COL_JACKET_PURP = (0.62, 0.42, 0.78, 1.0)
+    COL_JACKET_STAR = (0.95, 0.42, 0.62, 1.0)
+    COL_HAIR        = (0.32, 0.22, 0.16, 1.0)
+    COL_SKIN        = (0.92, 0.75, 0.62, 1.0)
+    COL_GLASSES     = (0.95, 0.30, 0.45, 1.0)
+    COL_SCARF       = (0.95, 0.85, 0.35, 1.0)
+    COL_SHOES       = (0.92, 0.90, 0.84, 1.0)
+
+    # ── Plinth ──────────────────────────────────────────────────
+    plinth_w = 2.6
+    plinth_d = 2.2
+    plinth_h = 1.5
+    plinth_z = ground_z + plinth_h / 2
+    _make_box_local("OT_Plinth",
+                    (sx, sy, plinth_z),
+                    (plinth_w, plinth_d, plinth_h),
+                    COL_PLINTH)
+    # Brass plaque on the front (south face)
+    _make_box_local("OT_Plaque",
+                    (sx, sy - plinth_d / 2 - 0.04,
+                     plinth_z + 0.10),
+                    (1.6, 0.08, 0.60),
+                    COL_PLAQUE)
+
+    # Statue sits on top of the plinth, ~4 m tall total
+    base_z = ground_z + plinth_h
+
+    # ── HUGE wide-leg jeans (the signature beat) ────────────────
+    # Width is exaggerated; flares out at the bottom for the JNCO
+    # silhouette. Built as a single trapezoidal volume — we
+    # approximate with a wider box for the lower half + a slimmer
+    # waist box stacked on top.
+    pants_lower_w = 2.4
+    pants_lower_d = 1.4
+    pants_lower_h = 1.2
+    _make_box_local("OT_Pants_Flare",
+                    (sx, sy, base_z + pants_lower_h / 2),
+                    (pants_lower_w, pants_lower_d, pants_lower_h),
+                    COL_PANTS_DENIM)
+    # Slight darker accent at the cuff bottom
+    _make_box_local("OT_Pants_Cuff",
+                    (sx, sy, base_z + 0.10),
+                    (pants_lower_w + 0.06, pants_lower_d + 0.06, 0.15),
+                    COL_PANT_FOLDS)
+    # Upper-pants / waist — narrower
+    pants_waist_w = 1.4
+    pants_waist_d = 1.0
+    pants_waist_h = 0.7
+    _make_box_local("OT_Pants_Waist",
+                    (sx, sy, base_z + pants_lower_h + pants_waist_h / 2),
+                    (pants_waist_w, pants_waist_d, pants_waist_h),
+                    COL_PANTS_DENIM)
+    # Tiny white shoes peeking out from under the pants
+    for ox in (-0.45, 0.45):
+        _make_box_local(f"OT_Shoe_{'L' if ox<0 else 'R'}",
+                        (sx + ox, sy - 0.30, base_z + 0.18),
+                        (0.40, 0.55, 0.20),
+                        COL_SHOES)
+
+    # ── Pink puffy jacket ───────────────────────────────────────
+    jacket_w = 1.6
+    jacket_d = 1.1
+    jacket_h = 1.4
+    jacket_z = base_z + pants_lower_h + pants_waist_h + jacket_h / 2
+    _make_box_local("OT_Jacket_Body",
+                    (sx, sy, jacket_z),
+                    (jacket_w, jacket_d, jacket_h),
+                    COL_JACKET_PINK)
+    # Purple shoulder yokes (the colorblock pattern from the ref)
+    yoke_h = 0.55
+    yoke_z = jacket_z + jacket_h / 2 - yoke_h / 2 + 0.02
+    _make_box_local("OT_Jacket_YokeTop",
+                    (sx, sy, yoke_z),
+                    (jacket_w + 0.02, jacket_d + 0.02, yoke_h),
+                    COL_JACKET_PURP)
+    # Big pink star/triangle accent on the front (south face)
+    _make_box_local("OT_Jacket_Star",
+                    (sx, sy - jacket_d / 2 - 0.04, jacket_z),
+                    (0.80, 0.04, 0.80),
+                    COL_JACKET_STAR)
+    # Side pockets — small dark pink rectangles
+    pocket_z = jacket_z - 0.25
+    for ox in (-jacket_w / 2 + 0.20, jacket_w / 2 - 0.20):
+        _make_box_local(f"OT_Jacket_Pocket_{ox:+.1f}",
+                        (sx + ox, sy - jacket_d / 2 - 0.05, pocket_z),
+                        (0.40, 0.05, 0.20),
+                        (0.78, 0.30, 0.50, 1.0))
+
+    # ── Yellow scarf / collar ───────────────────────────────────
+    scarf_z = jacket_z + jacket_h / 2 + 0.20
+    _make_box_local("OT_Scarf",
+                    (sx, sy, scarf_z),
+                    (0.80, 0.65, 0.35),
+                    COL_SCARF)
+
+    # ── Head — mushroom bowl-cut + face ─────────────────────────
+    head_w = 1.10
+    head_d = 0.95
+    head_h = 0.70
+    head_z = scarf_z + 0.35 + head_h / 2
+    # The dark-brown hair bowl-cap covers the top + front
+    _make_box_local("OT_Hair",
+                    (sx, sy, head_z + 0.10),
+                    (head_w, head_d, head_h),
+                    COL_HAIR)
+    # Skin face panel — slightly inset on the south face
+    _make_box_local("OT_Face",
+                    (sx, sy - head_d / 2 - 0.04, head_z - 0.05),
+                    (head_w * 0.75, 0.08, head_h * 0.60),
+                    COL_SKIN)
+    # Red/pink sunglasses — horizontal band across the eye line
+    _make_box_local("OT_Glasses",
+                    (sx, sy - head_d / 2 - 0.06, head_z + 0.05),
+                    (head_w * 0.90, 0.04, 0.16),
+                    COL_GLASSES)
+
+    # ── Beacon at the statue so the user can find it ────────────
+    BEACON_H = 50.0
+    _make_cyl_local("OT_Beacon_Pole",
+                    (sx, sy, ground_z + BEACON_H / 2),
+                    0.30, BEACON_H,
+                    (0.10, 0.10, 0.10, 1.0), segments=6)
+    _make_box_local("OT_Beacon_Top",
+                    (sx, sy, ground_z + BEACON_H + 1.5),
+                    (3.0, 3.0, 3.0),
+                    COL_JACKET_PINK)
+
+
+def _make_box_local(name, center, size, color):
+    """Local box helper — same signature as the module-level make
+    helpers but distinct name so we don't import-shadow."""
+    cx, cy, cz = center
+    sx, sy, sz = size
+    hx, hy, hz = sx/2, sy/2, sz/2
+    verts = [
+        (cx-hx, cy-hy, cz-hz), (cx+hx, cy-hy, cz-hz),
+        (cx+hx, cy+hy, cz-hz), (cx-hx, cy+hy, cz-hz),
+        (cx-hx, cy-hy, cz+hz), (cx+hx, cy-hy, cz+hz),
+        (cx+hx, cy+hy, cz+hz), (cx-hx, cy+hy, cz+hz),
+    ]
+    faces = [
+        [4, 5, 6, 7], [0, 3, 2, 1],
+        [0, 1, 5, 4], [2, 3, 7, 6],
+        [3, 0, 4, 7], [1, 2, 6, 5],
+    ]
+    return _finalize_mesh(name, verts, faces, color)
+
+
+def _make_cyl_local(name, center, radius, height, color, segments=6):
+    cx, cy, cz = center
+    h2 = height / 2.0
+    verts = []
+    for ring in (0, 1):
+        z_off = -h2 if ring == 0 else h2
+        for i in range(segments):
+            ang = 2.0 * math.pi * i / segments
+            verts.append((cx + math.cos(ang) * radius,
+                          cy + math.sin(ang) * radius,
+                          cz + z_off))
+    faces = []
+    for i in range(segments):
+        ni = (i + 1) % segments
+        faces.append([i, ni, ni + segments, i + segments])
+    faces.append(list(reversed(range(segments))))
+    faces.append(list(range(segments, segments * 2)))
+    return _finalize_mesh(name, verts, faces, color)
+
+
 def main():
     clear_scene()
     build_ground()
     build_creek()
-    build_pond_water()        # NEW · ponds need visible water surfaces
+    build_pond_water()
     build_district_fences()
     build_feature_beacons()
+    build_oliver_tree_memorial()
     export_glb()
 
 
