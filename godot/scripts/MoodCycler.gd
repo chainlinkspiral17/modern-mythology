@@ -164,6 +164,40 @@ const MOODS: Array = [
         # solid nothing. No ASCII layer; no density fill; no halftone.
         # The picture reads as an ink drawing of whatever the camera
         # actually sees.
+        "name": "linework_overlay",
+        # INK PRESS · OVERLAY blend — the linework stylization
+        # MULTIPLIES into the scene instead of replacing it. The boat
+        # geometry / lighting stays visible underneath the ink lines.
+        # Use when you want to read the detail of the world while
+        # keeping the stylized aesthetic on top.
+        "palette": 32.0, "dither": 0.02, "scanline": 0.06, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 1.0, "neon_thresh": 0.020,
+        "neon_edge": Color(1.0, 1.0, 1.0, 1),
+        "neon_low":  Color(0.0, 0.0, 0.0, 1),
+        "neon_high": Color(0.0, 0.0, 0.0, 1),
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.10,
+        "neon_bleed_lo": 0.78, "neon_bleed_hi": 0.96,
+        "neon_blend_mode": 2,         # OVERLAY — scene detail visible
+    },
+    {
+        "name": "linework_multiply",
+        # INK PRESS · MULTIPLY blend — stylization darkens the scene
+        # by multiplying. Edges visible as bright streaks; everywhere
+        # else the boat shows through tinted.
+        "palette": 32.0, "dither": 0.02, "scanline": 0.06, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 1.0, "neon_thresh": 0.020,
+        "neon_edge": Color(1.0, 1.0, 1.0, 1),
+        "neon_low":  Color(0.0, 0.0, 0.0, 1),
+        "neon_high": Color(0.0, 0.0, 0.0, 1),
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.10,
+        "neon_bleed_lo": 0.78, "neon_bleed_hi": 0.96,
+        "neon_blend_mode": 1,         # MULTIPLY
+    },
+    {
         "name": "linework",
         # INK PRESS · RED PASS — pure BLACK + BLEACH WHITE + RED.
         # The reference rule made explicit: no colour anywhere except
@@ -963,6 +997,7 @@ func _apply(preset: Dictionary) -> void:
         "accent_r":       preset.get("neon_accent", Vector3(1.0, 0.0, 0.0)).x,
         "accent_g":       preset.get("neon_accent", Vector3(1.0, 0.0, 0.0)).y,
         "accent_b":       preset.get("neon_accent", Vector3(1.0, 0.0, 0.0)).z,
+        "blend_mode":     preset.get("neon_blend_mode", 0),
     })
     _set_params("DirAsciiQuad", {
         "strength":       preset.get("dir_ascii", 0.0),

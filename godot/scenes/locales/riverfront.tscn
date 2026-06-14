@@ -65,6 +65,7 @@ shader_parameter/red_only = false
 shader_parameter/accent_r = 1.0
 shader_parameter/accent_g = 0.0
 shader_parameter/accent_b = 0.0
+shader_parameter/blend_mode = 0
 
 [sub_resource type="ShaderMaterial" id="Mat_Motion"]
 shader = ExtResource("11_motion")
@@ -307,7 +308,7 @@ far = 300.0
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String](["debug_purple", "linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "day_bright", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12"])
+mood_strata = Array[String](["debug_purple", "linework_overlay", "linework_multiply", "linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "day_bright", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12"])
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Neon")

@@ -55,6 +55,20 @@ uniform bool red_only = false;
 uniform float accent_r : hint_range(0.0, 1.0) = 1.0;
 uniform float accent_g : hint_range(0.0, 1.0) = 0.0;
 uniform float accent_b : hint_range(0.0, 1.0) = 0.0;
+uniform int blend_mode : hint_range(0, 4) = 0;
+// blend_mode controls how the stylized output is combined with the
+// underlying scene:
+//   0 = REPLACE  — full mix(scene, stylized, strength). Default —
+//                  classic post-process. Hides scene detail.
+//   1 = MULTIPLY — result = scene · stylized. Stylization darkens
+//                  the scene; bright areas of the stylized image
+//                  preserve the scene. Detail visible underneath.
+//   2 = OVERLAY  — photoshop-style overlay; preserves contrast in
+//                  the scene, lets the stylization tint.
+//   3 = SCREEN   — bright stylization brightens the scene; dark
+//                  stylization is invisible.
+//   4 = ADD      — additive blend; preserves scene fully and adds
+//                  the stylized layer brightness on top.
 // red_only = true → use ONE-CHANNEL dominance instead of saturation.
 // accent_r/g/b picks the channel: (1,0,0) = red dominance (the
 // reference's sign accent), (0,1,0) = green, (0,0,1) = blue. Split
@@ -143,6 +157,27 @@ void fragment() {
     stylized = mix(stylized, edge_color.rgb, edge_mask);
 
     vec3 scene = texture(SCREEN_TEXTURE, uv).rgb;
-    vec3 result = mix(scene, stylized, strength);
+
+    // ── Blend mode: how to combine the stylized output with the
+    // underlying scene. REPLACE replaces the scene with the
+    // stylization; MULTIPLY preserves scene detail under the
+    // stylized darkening; OVERLAY/SCREEN/ADD are alternative blends.
+    vec3 blended;
+    if (blend_mode == 1) {
+        blended = scene * stylized * 1.6;            // multiply (×1.6 compensates the dimming)
+    } else if (blend_mode == 2) {
+        // Overlay: per-channel, scene < 0.5 → 2·a·b, else 1 − 2·(1−a)·(1−b)
+        vec3 lo = 2.0 * scene * stylized;
+        vec3 hi = 1.0 - 2.0 * (1.0 - scene) * (1.0 - stylized);
+        blended = mix(lo, hi, step(0.5, scene));
+    } else if (blend_mode == 3) {
+        blended = 1.0 - (1.0 - scene) * (1.0 - stylized);   // screen
+    } else if (blend_mode == 4) {
+        blended = clamp(scene + stylized, 0.0, 1.0);        // add
+    } else {
+        blended = stylized;                                  // replace (default)
+    }
+
+    vec3 result = mix(scene, blended, strength);
     COLOR = vec4(result, 1.0);
 }
