@@ -1157,16 +1157,46 @@ def build_parking_lot():
         # facing = -1 → nose at -X, facing = +1 → nose at +X
         front_off_x = -2.0 * facing
         back_off_x  =  2.0 * facing
-        # Lower / mid body — long axis along X (since car points along X)
+        # Lower / mid body — long axis along X (since car points along X).
+        # The body is now tapered at the corners using small spheres so
+        # the car silhouette reads less boxy from a distance.
         make_box(f"Car_{i}_body_low", (cx, cy, lot_z + 0.30), (4.0, 1.75, 0.30), col)
         make_box(f"Car_{i}_body_mid", (cx, cy, lot_z + 0.60), (4.1, 1.70, 0.30), col)
-        # Hood (front end), trunk (back end)
-        make_box(f"Car_{i}_hood",  (cx + front_off_x * 0.65, cy, lot_z + 0.78), (1.4, 1.65, 0.10), col)
-        make_box(f"Car_{i}_trunk", (cx + back_off_x * 0.65,  cy, lot_z + 0.78), (1.4, 1.65, 0.10), col)
-        # Cabin centered
+        # Corner spheres at each body corner to round the silhouette
+        for ssi, (sox, soy) in enumerate([(-1.95, -0.78), (1.95, -0.78), (-1.95, 0.78), (1.95, 0.78)]):
+            make_sphere(f"Car_{i}_corner_{ssi}", (cx + sox, cy + soy, lot_z + 0.45),
+                        0.30, col)
+        # Hood — PRISM sloping DOWN toward the front (not a flat slab).
+        # pitch_axis='Y' would peak along Y; we want peak along X (toward
+        # the cabin), bottom along -X (front of car). Use 'X' to put the
+        # ridge along the X axis; size=(width, length_along_x, peak_height).
+        # But the prism builder peaks UP — to get a hood sloping FROM
+        # the cabin DOWN to the front, we use a prism in two parts:
+        #   - a low flat slab covering the front
+        #   - a small wedge rising as it approaches the cabin
+        # Simpler: use make_prism with pitch_axis='X' so the ridge
+        # crosses the car perpendicular to the hood, then offset so the
+        # ridge sits at the cabin edge.
+        hood_x_center = cx + front_off_x * 0.55
+        make_prism(f"Car_{i}_hood",
+                   (hood_x_center, cy, lot_z + 0.78),
+                   (1.6, 1.60, 0.20), col, pitch_axis='Y')
+        trunk_x_center = cx + back_off_x * 0.55
+        make_prism(f"Car_{i}_trunk",
+                   (trunk_x_center, cy, lot_z + 0.78),
+                   (1.4, 1.60, 0.16), col, pitch_axis='Y')
+        # Cabin — base box, with rounded corner spheres on top and a
+        # gently sloped (low-prism) roof so the greenhouse doesn't sit
+        # under a flat board.
         make_box(f"Car_{i}_cabin", (cx, cy, lot_z + 1.00), (1.6, 1.55, 0.50), col)
         roof_col = (col[0] * 0.65, col[1] * 0.65, col[2] * 0.65, 1.0)
-        make_box(f"Car_{i}_roof",  (cx, cy, lot_z + 1.27), (1.55, 1.45, 0.04), roof_col)
+        make_prism(f"Car_{i}_roof",
+                   (cx, cy, lot_z + 1.25),
+                   (1.55, 1.45, 0.12), roof_col, pitch_axis='Y')
+        # Cabin top corner spheres for round greenhouse profile
+        for rci, (rox, roy) in enumerate([(-0.78, -0.75), (0.78, -0.75), (-0.78, 0.75), (0.78, 0.75)]):
+            make_sphere(f"Car_{i}_cabinCorner_{rci}", (cx + rox, cy + roy, lot_z + 1.20),
+                        0.20, col)
         # Windshield (front of cabin), rear window
         make_box(f"Car_{i}_windshield", (cx + front_off_x * 0.425, cy, lot_z + 1.05), (0.06, 1.45, 0.45), COL_CAR_GLASS)
         make_box(f"Car_{i}_rearwin",    (cx + back_off_x * 0.425,  cy, lot_z + 1.05), (0.06, 1.45, 0.42), COL_CAR_GLASS)
@@ -1286,6 +1316,42 @@ def build_parking_lot():
 # THE RIVER
 # ════════════════════════════════════════════════════════════════
 
+def build_ground():
+    """A single continuous ground plane covering the entire bayou-city
+    area at z = -0.05. Without this, the world is a collection of
+    floating asphalt patches (parking lot, frontage road, strip-mall
+    lot, opposite shore) with unfilled gray Godot-void between them.
+
+    Real bayou-city ground is a mix of:
+      · low dirt/scrub between developed lots
+      · grass patches around houses
+      · concrete sidewalks along roads
+    We approximate that with one base layer (warm dirt/grass tone)
+    plus smaller patches of sidewalk and lawn dropped on top."""
+    # Base ground — covers from west of the highway overpass to east
+    # of the opposite shore, full N-S length of the world.
+    make_box("Ground_Base", (10.0, 0.0, -0.10), (340.0, 340.0, 0.10),
+             (0.34, 0.32, 0.24, 1.0))   # warm dirt with a hint of green
+    # Grass / scrub patches scattered to break up the uniform dirt
+    grass_col = (0.30, 0.36, 0.22, 1.0)
+    grass_patches = [
+        # (cx, cy, w, l)
+        (-90, -75, 22, 14),
+        (-70, -55, 16, 12),
+        (-95, -20, 20, 18),
+        (-78,  20, 14, 16),
+        (-92,  55, 20, 14),
+        (-70,  85, 18, 12),
+        ( 70, -75, 18, 14),
+        ( 80, -25, 22, 16),
+        ( 78,  20, 18, 14),
+        ( 80,  60, 22, 16),
+        ( 70,  95, 18, 14),
+    ]
+    for gi, (gx, gy, gw, gl) in enumerate(grass_patches):
+        make_box(f"Ground_Grass_{gi}", (gx, gy, -0.04), (gw, gl, 0.02), grass_col)
+
+
 def build_river():
     """The water plane the boat sits on. Extends east to the opposite
     (starboard) shore. The port side is the parking-lot land, not water."""
@@ -1297,6 +1363,67 @@ def build_river():
              (river_extent_x, river_extent_y, 0.02),
              COL_RIVER,
              open_faces={'-Z'})
+
+
+def build_road_network():
+    """Driveways and sidewalks connecting the developed patches so the
+    layout reads as a functional bayou-city block instead of floating
+    asphalt islands.
+
+    Connects:
+      · frontage road ↔ parking-lot entrance (south curb cut)
+      · frontage road ↔ gas-station forecourt
+      · frontage road ↔ strip-mall lot
+      · frontage road ↔ highway overpass (an access ramp to the west)
+      · parking lot ↔ dock (a strip of asphalt continuing east)
+    Plus concrete sidewalks along each major edge."""
+
+    asphalt = (0.18, 0.18, 0.18, 1.0)
+    concrete = (0.62, 0.60, 0.55, 1.0)
+    line = (0.70, 0.62, 0.30, 1.0)
+
+    # ── Sidewalk along the parking lot's west side (between lot and frontage)
+    make_box("Sidewalk_LotW", (-43.0, 0.0, -0.02), (3.0, 36.0, 0.06), concrete)
+    # ── Sidewalk along the strip mall's east side (between mall lot and frontage)
+    make_box("Sidewalk_MallE", (-44.0, 30.0, -0.02), (1.4, 36.0, 0.06), concrete)
+    # ── Sidewalk along the gas station's east side
+    make_box("Sidewalk_GasE", (-44.0, -38.0, -0.02), (1.4, 20.0, 0.06), concrete)
+
+    # ── Driveway from frontage road → parking lot (south curb cut)
+    make_box("Drive_LotToFront_S", (-39.0, -16.5, -0.02), (8.0, 5.0, 0.04), asphalt)
+    # painted lines
+    make_box("Drive_LotToFront_S_line", (-39.0, -16.5, 0.005),
+             (0.08, 4.5, 0.005), line)
+
+    # ── Driveway from frontage road → parking lot (north curb cut)
+    make_box("Drive_LotToFront_N", (-39.0, 16.5, -0.02), (8.0, 5.0, 0.04), asphalt)
+    make_box("Drive_LotToFront_N_line", (-39.0, 16.5, 0.005),
+             (0.08, 4.5, 0.005), line)
+
+    # ── Gas-station forecourt apron + curb cut from frontage road
+    make_box("Drive_GasApron", (-46.0, -38.0, -0.02), (14.0, 18.0, 0.04), asphalt)
+    # entry/exit markings
+    make_box("Drive_Gas_line_W", (-50.0, -38.0, 0.005), (0.08, 14.0, 0.005), line)
+    make_box("Drive_Gas_line_E", (-42.0, -38.0, 0.005), (0.08, 14.0, 0.005), line)
+
+    # ── Driveway from frontage to highway overpass (west, runs into the
+    # distance — implies the highway has an on-ramp out west)
+    make_box("Drive_HwyRamp", (-82.0, 60.0, -0.02), (60.0, 6.0, 0.04), asphalt)
+    make_box("Drive_HwyRamp_line", (-82.0, 60.0, 0.005), (50.0, 0.08, 0.005), line)
+
+    # ── Asphalt continuation from parking lot east curb to the dock
+    # (so there's no gap between lot and dock — currently floats)
+    make_box("Drive_LotToDock", (-15.0, 0.0, -0.02), (10.0, 16.0, 0.04), asphalt)
+    make_box("Drive_LotToDock_line", (-15.0, 0.0, 0.005), (8.0, 0.08, 0.005), line)
+
+    # ── Crosswalk paint where the parking-lot driveways meet the frontage
+    crosswalk_col = (0.85, 0.82, 0.74, 1.0)
+    for ci in range(6):
+        cx_o = -42.0 + ci * 0.6
+        make_box(f"Crosswalk_S_{ci}", (cx_o, -16.5, 0.008),
+                 (0.30, 3.5, 0.005), crosswalk_col)
+        make_box(f"Crosswalk_N_{ci}", (cx_o, 16.5, 0.008),
+                 (0.30, 3.5, 0.005), crosswalk_col)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -2669,6 +2796,12 @@ def build_distant_atmosphere():
 
 def main():
     clear_scene()
+    # Ground first so all other geometry sits ON it, not floating in
+    # Godot-void. Roads next so subsequent feature builds (parking lot,
+    # dock, gas station, etc.) sit ON the road surface where they
+    # overlap.
+    build_ground()
+    build_road_network()
     build_riverboat()
     build_parking_lot()
     build_dock()

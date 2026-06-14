@@ -149,6 +149,59 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-06-14 · world needs ground + roads BEFORE features
+
+- **A locale is not a set of isolated detail patches.** Every locale
+  build should start with TWO foundational functions before any
+  buildings, vehicles, or props go in:
+    1. `build_ground()` — a single continuous ground plane covering
+       the entire world area (~340m × 340m for the riverfront), tinted
+       a warm dirt/grass tone, with small grass-patch overlays
+       breaking up the uniform colour.
+    2. `build_road_network()` — driveways, sidewalks, crosswalks,
+       access ramps connecting every developed patch to every other
+       developed patch. If a building has a parking lot, the parking
+       lot must connect to a road, and that road must connect to
+       another road.
+- **Without these two**, the world reads as floating asphalt islands
+  in a gray Godot-void no matter how much detail you pack into each
+  individual feature. The user explicitly called this out: "roads
+  don't look functional, look at all this null space."
+- **Order in main()**: ground first, road network second, THEN every
+  feature build (parking lot, dock, buildings, etc.) overlays on top.
+- **The same pattern carries to other locales:**
+    · Graustark needs ground + intersecting streets + sidewalks
+      before any house geometry.
+    · Harmony Creek Estates needs lawn ground + a cul-de-sac road
+      network before any houses.
+    · Smolvud needs dirt-road ground + connecting tracks before
+      any structures.
+
+### 2026-06-14 · the mood-cycler shader system is reusable
+
+- The screen-space mood library (lunch / dusk / chillwave / sunset /
+  lithograph / noir / ice / night / 3:47 am / precipice / substrate /
+  raw) is locale-agnostic. Any new scene just adds the same three
+  ColorRects (NeonQuad → AsciiQuad → Quad) with the same shaders;
+  MoodCycler.gd drives them identically. Don't re-invent per locale.
+- The HUD MoodLabel pattern (Label node at NodePath("../HUD/MoodLabel"))
+  is also reusable — MoodCycler picks it up automatically if it exists.
+
+### 2026-06-14 · cursive_type.py is the type tool for any signage
+
+- The Bezier-based cursive type tool (`godot/tools/blender/locales/
+  cursive_type.py`) defines D ' A m b r o s i in cubic Beziers
+  with proper kerning and an explicit text_width() helper.
+- For future signage (HCE realtor signs, Smolvud roadside markers,
+  Graustark storefront names, the diner's interior "WELCOME"), extend
+  the GLYPHS dict with the additional letters and call
+  `make_neon_dambrosios`-style wrappers for each font face axis.
+- A two-face sign (readable from both sides) requires:
+    · 'Y' face: lx(x) = -x * face_sign
+    · 'X' face: lx(x) =  x * face_sign
+  The formulas differ — using one for both produces a correctly
+  mirrored panel and an inverted panel. Don't unify them.
+
 ### 2026-06-14 · screenshots are how I see the work
 
 - **Always ask the user for a screenshot when debugging visuals.** I
