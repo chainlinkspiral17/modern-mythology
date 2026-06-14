@@ -126,8 +126,12 @@ const MOODS: Array = [
         "neon_high": Color(0.0, 0.0, 0.0, 1),
         "neon_grad": 0.0, "neon_blend": 0.65, "neon_glow": 0.06,
         "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
-        "neon_sat_bleed": true,
-        "neon_sat_lo": 0.55, "neon_sat_hi": 0.78,
+        # red_only: bleed gate becomes R - max(G,B). Sodium-lit cars
+        # (red_dom 0.34) rejected; sign letters (0.78) pass; red-glow
+        # lit windows (0.50 if practical is red) pass with subtle weight.
+        "neon_sat_bleed": false,
+        "neon_red_only": true,
+        "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
         # ASCII density at LIGHTER strength — adds halftone where the
         # picture is bright, doesn't flood pure-black surfaces.
         "dir_ascii": 0.40, "dir_cell": 9.0, "dir_thresh": 0.06,
@@ -163,8 +167,12 @@ const MOODS: Array = [
         "neon_high": Color(0.0,  0.0,  0.0,  1),
         "neon_grad": 0.0, "neon_blend": 0.65, "neon_glow": 0.06,
         "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
-        "neon_sat_bleed": true,
-        "neon_sat_lo": 0.55, "neon_sat_hi": 0.78,
+        # red_only: bleed gate becomes R - max(G,B). Sodium-lit cars
+        # (red_dom 0.34) rejected; sign letters (0.78) pass; red-glow
+        # lit windows (0.50 if practical is red) pass with subtle weight.
+        "neon_sat_bleed": false,
+        "neon_red_only": true,
+        "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
     },
     {
         "name": "ice",
@@ -268,6 +276,7 @@ func _apply(preset: Dictionary) -> void:
         "sat_bleed":      preset.get("neon_sat_bleed", false),
         "sat_lo":         preset.get("neon_sat_lo", 0.40),
         "sat_hi":         preset.get("neon_sat_hi", 0.60),
+        "red_only":       preset.get("neon_red_only", false),
     })
     _set_params("DirAsciiQuad", {
         "strength":       preset.get("dir_ascii", 0.0),

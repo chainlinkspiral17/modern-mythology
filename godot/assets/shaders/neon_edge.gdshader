@@ -51,13 +51,16 @@ uniform float bleed_hi : hint_range(0.0, 1.0) = 0.96;
 uniform bool sat_bleed = false;
 uniform float sat_lo : hint_range(0.0, 1.0) = 0.40;
 uniform float sat_hi : hint_range(0.0, 1.0) = 0.60;
+uniform bool red_only = false;
 // sat_bleed = true → AND a saturation gate on top of the brightness
-// gate. Discriminates "saturated accent" (red sign letters at sat
-// ≈ 0.82, warm bulbs ≈ 0.64) from "lit-but-grey/cream wall" (sat
-// ≈ 0.20). Cream-coloured walls stay pure black even when lit
-// past the brightness threshold; only true accent colours bleed.
-// This is the lithograph match — the reference shows ONLY the
-// sign and lit windows in colour, walls are black with white edges.
+// gate. Useful as a generic discriminator.
+//
+// red_only = true → REPLACES the saturation gate with a strict
+// red-dominance test: red_dom = R - max(G, B). Sign red gives
+// 0.78; sodium-lit warm cars give 0.34; warm walls give ~0.05.
+// Only "true red emission" passes — perfect for the lithograph
+// look where the reference shows ONLY the sign letters (and the
+// red-tinted lit windows) in colour, never warm-lit surfaces.
 
 float luma(vec3 c) {
     return dot(c, vec3(0.299, 0.587, 0.114));
@@ -96,14 +99,17 @@ void fragment() {
     float scene_max = max(scene_now.r, max(scene_now.g, scene_now.b));
     float brightness_mask = smoothstep(bleed_lo, bleed_hi, scene_max);
     float bleed_mask = brightness_mask;
-    if (sat_bleed) {
-        // Saturation gate: only saturated accent colours pass.
-        // Cream walls (sat ≈ 0.20) get masked even when lit bright;
-        // sign red (sat ≈ 0.82) and warm bulbs (sat ≈ 0.64) clear.
+    if (red_only) {
+        // Strict red-dominance discriminator. Sodium-lit warm cars
+        // (red_dom ~0.34) get rejected even though they're saturated
+        // and bright; only the sign letters and red-glow windows pass.
+        float red_dom = scene_now.r - max(scene_now.g, scene_now.b);
+        bleed_mask *= smoothstep(sat_lo, sat_hi, red_dom);
+    } else if (sat_bleed) {
+        // Generic saturation gate (less strict than red_only).
         float scene_min = min(scene_now.r, min(scene_now.g, scene_now.b));
         float saturation = scene_max > 0.001 ? (scene_max - scene_min) / scene_max : 0.0;
-        float sat_mask = smoothstep(sat_lo, sat_hi, saturation);
-        bleed_mask *= sat_mask;
+        bleed_mask *= smoothstep(sat_lo, sat_hi, saturation);
     }
     fill = mix(fill, scene_now * 1.8, scene_blend * bleed_mask);
 

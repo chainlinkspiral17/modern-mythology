@@ -55,6 +55,7 @@ shader_parameter/bleed_hi = 0.96
 shader_parameter/sat_bleed = false
 shader_parameter/sat_lo = 0.40
 shader_parameter/sat_hi = 0.60
+shader_parameter/red_only = false
 
 [sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
 shader = ExtResource("9_dir")
@@ -195,8 +196,8 @@ shadow_enabled = false
 
 [node name="DiningRoomGlow" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
-light_color = Color(0.98, 0.66, 0.36, 1)
-light_energy = 0.55
+light_color = Color(1.0, 0.18, 0.16, 1)
+light_energy = 0.65
 omni_range = 3.5
 shadow_enabled = false
 
