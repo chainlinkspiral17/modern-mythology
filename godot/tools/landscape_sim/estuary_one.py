@@ -148,22 +148,23 @@ class LandscapeParams:
 
 # ── HCE example parameters (the topography doc made flesh) ────────
 def hce_elevation(x: float, y: float) -> float:
-    """Harmony Creek Estates elevation. NW high (country club / golf),
-    creek runs diagonal NW→SE through the middle as a flood plain
-    dip, SE low (skate park / woods). Slight noise on top so the
-    map doesn't look ruler-drawn."""
-    # Baseline tilt: high in NW corner, low in SE
-    tilt = 4.0 * ((-(x) + y) / 600.0)
-    # Country-club rise — gentle bump in the north
+    """Harmony Creek Estates elevation. ~30 m vertical range per
+    user direction — terrain is built first and loud enough to
+    define the locale (see lore/_LOCALE_DESIGN_MANUAL.md). NW high
+    country-club rise (~14 m peak), secondary east-side ridge,
+    creek flood-plain ravine cut ~3 m below the banks, SE low
+    ground. Soft suburban rolling, not Oregon cliffs."""
+    tilt = 7.0 * ((-(x) + y) / 600.0)
     cc_dx = x - 0
     cc_dy = y - 200
-    cc_rise = 4.0 * math.exp(-(cc_dx * cc_dx + cc_dy * cc_dy) / (140.0 * 140.0))
-    # Subtle texture noise — 30cm peaks for that "manicured but real" feel
-    noise = (fbm(x * 0.008, y * 0.008, octaves=3) - 0.5) * 0.6
-    # Creek subtracts a flood-plain dip
+    cc_rise = 14.0 * math.exp(-(cc_dx * cc_dx + cc_dy * cc_dy) / (140.0 * 140.0))
+    east_dx = x - 240
+    east_dy = y - 40
+    east_rise = 6.0 * math.exp(-(east_dx * east_dx + east_dy * east_dy) / (110.0 * 110.0))
+    noise = (fbm(x * 0.008, y * 0.008, octaves=3) - 0.5) * 3.0
     creek_dist = HCE_CREEK.distance(x, y)
-    dip = -1.2 * math.exp(-creek_dist * creek_dist / (HCE_CREEK.flood_width ** 2))
-    return tilt + cc_rise + noise + dip
+    dip = -3.0 * math.exp(-creek_dist * creek_dist / (HCE_CREEK.flood_width ** 2))
+    return tilt + cc_rise + east_rise + noise + dip
 
 HCE_CREEK = CreekPath(
     points=[

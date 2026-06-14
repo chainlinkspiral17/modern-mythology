@@ -257,14 +257,31 @@ def creek_distance(x, y):
 
 
 def hce_elevation(x, y):
-    tilt = 4.0 * ((-(x) + y) / 600.0)
+    """HCE topography. Targets ~30 m vertical range so hills, the
+    country-club rise, and the creek flood-plain read as REAL
+    terrain rather than a 1 % grade. Per the locale design manual
+    (lore/_LOCALE_DESIGN_MANUAL.md): topography is built first and
+    is loud enough to define the locale's identity. Soft suburban
+    rolling, not Oregon cliffs."""
+    # NW high → SE low tilt (±~7 m across the district)
+    tilt = 7.0 * ((-(x) + y) / 600.0)
+    # Country-club rise — a real hill in the north, ~14 m above
+    # the surrounding lawn at its peak
     cc_dx = x - 0
     cc_dy = y - 200
-    cc_rise = 4.0 * math.exp(-(cc_dx * cc_dx + cc_dy * cc_dy) / (140.0 * 140.0))
-    noise = (fbm(x * 0.008, y * 0.008, octaves=3) - 0.5) * 0.6
+    cc_rise = 14.0 * math.exp(-(cc_dx * cc_dx + cc_dy * cc_dy) / (140.0 * 140.0))
+    # Secondary high ground on the east edge — gives the cul-de-sac
+    # blocks a gentle ridge to nestle into
+    east_dx = x - 240
+    east_dy = y - 40
+    east_rise = 6.0 * math.exp(-(east_dx * east_dx + east_dy * east_dy) / (110.0 * 110.0))
+    # Subtle texture — ~1.5 m noise peaks for "manicured but real"
+    noise = (fbm(x * 0.008, y * 0.008, octaves=3) - 0.5) * 3.0
+    # Creek subtracts a flood-plain dip — ~3 m below the bank tops
+    # so the creek reads as a real ravine, not a painted-on stripe.
     creek_d = creek_distance(x, y)
-    dip = -1.2 * math.exp(-creek_d * creek_d / (CREEK_FLOOD_WIDTH ** 2))
-    return tilt + cc_rise + noise + dip
+    dip = -3.0 * math.exp(-creek_d * creek_d / (CREEK_FLOOD_WIDTH ** 2))
+    return tilt + cc_rise + east_rise + noise + dip
 
 
 def landuse_at(x, y):
