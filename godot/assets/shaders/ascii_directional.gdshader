@@ -60,9 +60,13 @@ float luma(vec3 c) {
 }
 
 // Sample the screen at a cell-center coordinate (cell index → UV).
-float sample_cell_luma(vec2 cell_idx) {
+// SCREEN_PIXEL_SIZE is passed in because some GL drivers (AMD Mesa /
+// Vangogh on Steam Deck) don't expose the built-in to helper
+// functions called from fragment() — only NVIDIA accepts it. Pass
+// it explicitly to compile portably.
+float sample_cell_luma(vec2 cell_idx, vec2 screen_px) {
     vec2 cell_centre_pix = (cell_idx + 0.5) * cell_size;
-    vec2 uv = cell_centre_pix * SCREEN_PIXEL_SIZE;
+    vec2 uv = cell_centre_pix * screen_px;
     return luma(texture(SCREEN_TEXTURE, uv).rgb * input_scale);
 }
 
@@ -159,6 +163,7 @@ void fragment() {
     vec2 frag = FRAGCOORD.xy;
     vec2 cell_idx = floor(frag / cell_size);
     vec2 local = fract(frag / cell_size);
+    vec2 screen_px = SCREEN_PIXEL_SIZE;
 
     // ── MULTI-SCALE FRAME SAMPLING ─────────────────────────────────
     // Each cell looks at THREE concentric rings of neighbors:
@@ -171,23 +176,23 @@ void fragment() {
     // 13 texture taps per cell, all in screen-space. The "multi-pass"
     // effect the user asked for (edges-then-density-then-far) is
     // achieved by combining all three signals into one glyph choice.
-    float l_here = sample_cell_luma(cell_idx);
-    float l_W    = sample_cell_luma(cell_idx + vec2(-1.0,  0.0));
-    float l_E    = sample_cell_luma(cell_idx + vec2(+1.0,  0.0));
-    float l_N    = sample_cell_luma(cell_idx + vec2( 0.0, -1.0));
-    float l_S    = sample_cell_luma(cell_idx + vec2( 0.0, +1.0));
-    float l_NW   = sample_cell_luma(cell_idx + vec2(-1.0, -1.0));
-    float l_NE   = sample_cell_luma(cell_idx + vec2(+1.0, -1.0));
-    float l_SW   = sample_cell_luma(cell_idx + vec2(-1.0, +1.0));
-    float l_SE   = sample_cell_luma(cell_idx + vec2(+1.0, +1.0));
+    float l_here = sample_cell_luma(cell_idx,                       screen_px);
+    float l_W    = sample_cell_luma(cell_idx + vec2(-1.0,  0.0),    screen_px);
+    float l_E    = sample_cell_luma(cell_idx + vec2(+1.0,  0.0),    screen_px);
+    float l_N    = sample_cell_luma(cell_idx + vec2( 0.0, -1.0),    screen_px);
+    float l_S    = sample_cell_luma(cell_idx + vec2( 0.0, +1.0),    screen_px);
+    float l_NW   = sample_cell_luma(cell_idx + vec2(-1.0, -1.0),    screen_px);
+    float l_NE   = sample_cell_luma(cell_idx + vec2(+1.0, -1.0),    screen_px);
+    float l_SW   = sample_cell_luma(cell_idx + vec2(-1.0, +1.0),    screen_px);
+    float l_SE   = sample_cell_luma(cell_idx + vec2(+1.0, +1.0),    screen_px);
     // Far ring — 2 cells away. Used to detect long-baseline edges
     // (the silhouette of a whole boat hull, the edge of a roofline)
     // that small-baseline edge detection might miss because adjacent
     // cells share a similar shaded value.
-    float l_W2 = sample_cell_luma(cell_idx + vec2(-2.0,  0.0));
-    float l_E2 = sample_cell_luma(cell_idx + vec2(+2.0,  0.0));
-    float l_N2 = sample_cell_luma(cell_idx + vec2( 0.0, -2.0));
-    float l_S2 = sample_cell_luma(cell_idx + vec2( 0.0, +2.0));
+    float l_W2 = sample_cell_luma(cell_idx + vec2(-2.0,  0.0),      screen_px);
+    float l_E2 = sample_cell_luma(cell_idx + vec2(+2.0,  0.0),      screen_px);
+    float l_N2 = sample_cell_luma(cell_idx + vec2( 0.0, -2.0),      screen_px);
+    float l_S2 = sample_cell_luma(cell_idx + vec2( 0.0, +2.0),      screen_px);
 
     // Brightness gradients at fine + coarse scales
     float dH  = max(abs(l_here - l_W),  abs(l_here - l_E));
