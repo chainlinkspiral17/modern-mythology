@@ -653,6 +653,39 @@ const MOODS: Array = [
         "neon_sat_lo": 0.5, "neon_sat_hi": 0.7,
     },
     {
+        # HCE · TEXAS BLEACH DAY — grungy pastel, blown-out summer
+        # noon. Wide palette so pastels stay smooth; faint dither and
+        # sub-pixel aberration for the "summer haze through the screen
+        # door" feel; warm cream background bleed via scene_blend at
+        # full strength so the whole picture takes on the bleach-and-
+        # honey cast. No edge stylization — the lighting + the warm
+        # cast do the work.
+        "name": "texas_bleach_day",
+        "palette": 28.0, "dither": 0.04, "scanline": 0.05, "aberration": 0.0008,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.95, 0.86, 0.62, 1), "ascii_bg": Color(0.95, 0.86, 0.62, 1),
+        "neon": 1.0, "neon_thresh": 0.20,            # high thresh — almost no edges
+        "neon_edge": Color(0.98, 0.88, 0.72, 1),     # warm cream if any do paint
+        "neon_low":  Color(0.96, 0.88, 0.74, 1),     # cream fill
+        "neon_high": Color(1.0, 0.94, 0.80, 1),
+        "neon_grad": 0.4, "neon_blend": 0.85, "neon_glow": 0.10,
+        "neon_bleed_lo": 0.20, "neon_bleed_hi": 0.55,  # wide bleed — most of scene
+    },
+    {
+        # HCE · LIMINAL INTERIOR — soft, samey, shadowy night interior.
+        # Mild Gaussian blur sands surfaces; warm low-key palette; no
+        # edge stylization. Reads like the memory of a room, not the
+        # room itself. Pairs with the liminal_night lighting preset.
+        "name": "liminal_interior",
+        "palette": 18.0, "dither": 0.06, "scanline": 0.10, "aberration": 0.0010,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.95, 0.86, 0.62, 1), "ascii_bg": Color(0.10, 0.08, 0.06, 1),
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 1, 1, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+        "blur": 0.35, "blur_mode": 0, "blur_radius": 3.0,
+    },
+    {
         "name": "raw",
         "palette": 32.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 1.0, "ascii_tint": true,
@@ -739,8 +772,55 @@ const LIGHTING_PRESETS: Array = [
      "dir_tint": Color(0.50, 0.60, 0.95, 1), "tint_mix": 0.65,
      "sun_pitch_deg": -28.0, "sun_yaw_deg": 12.0,
      "ambient_color": Color(0.18, 0.22, 0.32, 1), "ambient_energy": 0.32},
+    # HCE-flavoured lighting
+    {"name": "texas_noon",    "dir_mult": 18.0, "practical_mult": 0.0,
+     "dir_tint": Color(1.0, 0.92, 0.76, 1), "tint_mix": 0.85,
+     "sun_pitch_deg": -82.0, "sun_yaw_deg": 10.0,
+     "ambient_color": Color(1.0, 0.88, 0.70, 1), "ambient_energy": 2.4},
+    {"name": "liminal_night", "dir_mult": 0.3, "practical_mult": 1.4,
+     "dir_tint": Color(0.62, 0.66, 0.85, 1), "tint_mix": 0.50,
+     "sun_pitch_deg": -25.0, "sun_yaw_deg": 0.0,
+     "ambient_color": Color(0.32, 0.28, 0.25, 1), "ambient_energy": 0.40},
 ]
 var lighting_index: int = 0   # 0 = scene_default
+
+# ── STYLE PACKS (F12) ─────────────────────────────────────────────
+# A pack snaps mood + lighting + blend overrides in one tap. Each
+# location has a handful of named looks that nail its identity;
+# F12 cycles the full list so the user can also jump between
+# locations' styles freely. F3 / F9 / F10 / F11 keep working
+# independently for mix-and-match after the pack is applied.
+# blend_mode / blend_amt of -1 mean "use mood preset's own value".
+const STYLE_PACKS: Array = [
+    # ── RIVERFRONT (vol5) — ink press, night, river haze ──
+    {"name": "rf_substrate",       "mood": "substrate_press",   "lighting": "scene_default",
+     "blend_mode": -1, "blend_amt": -1},
+    {"name": "rf_linework_night",  "mood": "linework",          "lighting": "scene_default",
+     "blend_mode": -1, "blend_amt": -1},
+    {"name": "rf_linework_subtle", "mood": "linework_multiply", "lighting": "scene_default",
+     "blend_mode": -1, "blend_amt": 1},   # 60% — raw shows through
+    {"name": "rf_blue_hour",       "mood": "linework",          "lighting": "blue_hour",
+     "blend_mode": -1, "blend_amt": -1},
+    # ── HARMONY CREEK ESTATES — bleach Texas day, liminal night ──
+    {"name": "hce_texas_day",      "mood": "texas_bleach_day",  "lighting": "texas_noon",
+     "blend_mode": -1, "blend_amt": -1},
+    {"name": "hce_golden_porch",   "mood": "studio",            "lighting": "golden_hour",
+     "blend_mode": -1, "blend_amt": -1},
+    {"name": "hce_overcast",       "mood": "day_bright",        "lighting": "overcast_day",
+     "blend_mode": -1, "blend_amt": -1},
+    {"name": "hce_liminal_night",  "mood": "liminal_interior",  "lighting": "liminal_night",
+     "blend_mode": -1, "blend_amt": -1},
+    # ── SMALL WOOD (placeholder slot — vol5 future area) ──
+    {"name": "smallwood_dawn",     "mood": "macro_haze",        "lighting": "dawn",
+     "blend_mode": -1, "blend_amt": -1},
+    {"name": "smallwood_storm",    "mood": "dream_blur",        "lighting": "storm_front",
+     "blend_mode": -1, "blend_amt": -1},
+    # ── UTILITY ──
+    {"name": "raw_observation",    "mood": "raw",               "lighting": "scene_default",
+     "blend_mode": 0, "blend_amt": 0},   # forces neon off completely
+]
+var style_pack_index: int = -1   # -1 = none applied (manual mode)
+
 var _world_env: WorldEnvironment = null
 var _world_env_base_energy: float = 0.50
 var _world_env_base_color: Color = Color.WHITE
@@ -848,7 +928,7 @@ var _strobe_frames_active: int = 2
 
 func _ready() -> void:
     _apply(MOODS[current_index])
-    print("[Mood] %s · F3 cycle · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · RMB+look strata wheel" % MOODS[current_index]["name"])
+    print("[Mood] %s · F3 mood · F5/F6 strobe · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata" % MOODS[current_index]["name"])
     var by_name: Dictionary = {}
     for i in range(MOODS.size()):
         by_name[MOODS[i]["name"]] = i
@@ -913,6 +993,48 @@ func action_cycle_lighting() -> void:
     _apply_lighting(LIGHTING_PRESETS[lighting_index])
     _apply(MOODS[current_index])  # refresh HUD label with new lighting tag
     print("[Mood] lighting → %s" % LIGHTING_PRESETS[lighting_index]["name"])
+
+
+func action_cycle_style_pack() -> void:
+    # Cycles -1 (manual) → 0 → 1 → ... → N-1 → back to -1.
+    style_pack_index = style_pack_index + 1
+    if style_pack_index >= STYLE_PACKS.size():
+        style_pack_index = -1
+        _apply(MOODS[current_index])  # just refresh label
+        print("[Mood] style pack → manual")
+        return
+    var pack: Dictionary = STYLE_PACKS[style_pack_index]
+    _apply_style_pack(pack)
+    print("[Mood] style pack → %s (mood=%s, lighting=%s)" % [
+        pack["name"], pack["mood"], pack["lighting"]
+    ])
+
+
+func _apply_style_pack(pack: Dictionary) -> void:
+    var mood_idx: int = _mood_index_by_name(pack["mood"])
+    var light_idx: int = _lighting_index_by_name(pack["lighting"])
+    if mood_idx >= 0:
+        current_index = mood_idx
+    if light_idx >= 0:
+        lighting_index = light_idx
+        _apply_lighting(LIGHTING_PRESETS[lighting_index])
+    blend_mode_override = pack.get("blend_mode", -1)
+    blend_amount_override = pack.get("blend_amt", -1)
+    _apply(MOODS[current_index])
+
+
+func _mood_index_by_name(name: String) -> int:
+    for i in range(MOODS.size()):
+        if MOODS[i]["name"] == name:
+            return i
+    return -1
+
+
+func _lighting_index_by_name(name: String) -> int:
+    for i in range(LIGHTING_PRESETS.size()):
+        if LIGHTING_PRESETS[i]["name"] == name:
+            return i
+    return -1
 
 
 func _apply_lighting(preset: Dictionary) -> void:
@@ -981,6 +1103,8 @@ func _unhandled_input(event: InputEvent) -> void:
             action_cycle_blend_amount()
         elif event.keycode == KEY_F11:
             action_cycle_lighting()
+        elif event.keycode == KEY_F12:
+            action_cycle_style_pack()
     elif event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_RIGHT:
             _right_mouse_held = event.pressed
@@ -1268,6 +1392,9 @@ func _apply(preset: Dictionary) -> void:
     })
     var label: Node = get_node_or_null(mood_label_path)
     if label is Label:
+        var prefix: String = ""
+        if style_pack_index >= 0:
+            prefix = "STYLE · %s (F12)\n" % STYLE_PACKS[style_pack_index]["name"]
         var suffix: String = ""
         if blend_mode_override >= 0:
             suffix += "  · blend=%s (F9)" % BLEND_MODE_NAMES[blend_mode_override + 1]
@@ -1275,7 +1402,7 @@ func _apply(preset: Dictionary) -> void:
             suffix += "  · amt=%s (F10)" % BLEND_AMOUNT_LABELS[blend_amount_override + 1]
         if lighting_index > 0:
             suffix += "  · light=%s (F11)" % LIGHTING_PRESETS[lighting_index]["name"]
-        (label as Label).text = "MOOD · %s   (F3)%s" % [preset["name"], suffix]
+        (label as Label).text = "%sMOOD · %s   (F3)%s" % [prefix, preset["name"], suffix]
 
 
 func _resolved_blend_mode(preset: Dictionary) -> int:

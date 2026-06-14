@@ -36,6 +36,7 @@ func _ready() -> void:
     _add_btn("F9 · Cycle Blend Mode",        Callable(self, "_btn_blend_mode"))
     _add_btn("F10 · Cycle Blend Amount",     Callable(self, "_btn_blend_amount"))
     _add_btn("F11 · Cycle Lighting",         Callable(self, "_btn_lighting"))
+    _add_btn("F12 · Cycle Style Pack",       Callable(self, "_btn_style_pack"))
     _add_btn("Capture Mouse (in-game)",      Callable(self, "_btn_capture"))
 
 
@@ -108,3 +109,7 @@ func _btn_blend_amount() -> void:
 func _btn_lighting() -> void:
     if _mood and _mood.has_method("action_cycle_lighting"):
         _mood.action_cycle_lighting()
+
+func _btn_style_pack() -> void:
+    if _mood and _mood.has_method("action_cycle_style_pack"):
+        _mood.action_cycle_style_pack()
