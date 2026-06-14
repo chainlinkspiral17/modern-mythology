@@ -82,7 +82,14 @@ RIVER_LEVEL_Z = -0.3
 OPPOSITE_X = 120.0    # far starboard shore (east, across the wide river)
 BAYOU_X = 55.0        # bayou pushed back so the river has a real lane
 BRIDGE_Y = -95.0      # distant bridge downriver to the south
-DOCK_Z = 0.35         # dock deck sits 35cm above the water surface
+# ── Elevation profile — the river runs BELOW the land. Without this,
+# the boat looks like it's standing ON the shore instead of floating
+# in a sunken channel. The land tier is the reference (≈0); water sits
+# 2.5m (~8 ft) below; the dock deck is roughly midway so boarders step
+# DOWN from the lot, then ACROSS the dock, then UP the gangway.
+LAND_Z = 0.0          # land surface (parking lot, road, all buildings)
+RIVER_LEVEL_Z = -2.5  # water surface (was -0.3 — flat with land)
+DOCK_Z = -1.20        # dock deck — midway between land and water
 FRONTAGE_X = -55.0    # River Road centerline — shared by build_road_network
                       # AND build_near_shore so the road, sidewalks, drives,
                       # and the commercial strip all line up. Pushed west of
@@ -725,7 +732,12 @@ def build_riverboat():
     # ════════════════════════════════════════════════════════════
     BD_W = BOAT_W + 2.0    # 14m wide — extends 1m past hull both sides
     BD_L = BOAT_L + 1.0    # 25m long
-    BD_Z = 1.95
+    # Boiler deck sits a fixed height above the waterline so when the
+    # river is sunken, the boat sinks with it (the boat FLOATS IN the
+    # river, not stands on shore). Was hardcoded 1.95 when the river
+    # was at -0.3 (i.e., 2.25m above the old waterline). Same offset
+    # now keeps the boat's relationship to the water correct.
+    BD_Z = RIVER_LEVEL_Z + 2.25
     make_box("Boiler_Deck", (0, 0, BD_Z), (BD_W, BD_L, 0.20), COL_DECK_WOOD)
     # Plank stripes
     for i in range(10):
@@ -1262,10 +1274,19 @@ def build_parking_lot():
         # the car silhouette reads less boxy from a distance.
         make_box(f"Car_{i}_body_low", (cx, cy, lot_z + 0.30), (4.0, 1.75, 0.30), col)
         make_box(f"Car_{i}_body_mid", (cx, cy, lot_z + 0.60), (4.1, 1.70, 0.30), col)
-        # Corner spheres at each body corner to round the silhouette
-        for ssi, (sox, soy) in enumerate([(-1.95, -0.78), (1.95, -0.78), (-1.95, 0.78), (1.95, 0.78)]):
+        # Corner spheres at each body corner. Sized BIG enough (radius
+        # 0.55) to actually dominate the silhouette at viewing distance —
+        # the previous 0.30 radius barely registered and the cars still
+        # read as boxes. Plus a 5th sphere on top of the body slab to
+        # round the upper edges.
+        for ssi, (sox, soy) in enumerate([(-1.85, -0.75), (1.85, -0.75),
+                                            (-1.85, 0.75), (1.85, 0.75)]):
             make_sphere(f"Car_{i}_corner_{ssi}", (cx + sox, cy + soy, lot_z + 0.45),
-                        0.30, col)
+                        0.55, col)
+        # Long lateral sphere at the body midpoint — really pushes the
+        # silhouette away from a rectangle by adding a rounded waist
+        make_sphere(f"Car_{i}_waist_S", (cx, cy - 0.78, lot_z + 0.45), 0.50, col)
+        make_sphere(f"Car_{i}_waist_N", (cx, cy + 0.78, lot_z + 0.45), 0.50, col)
         # Hood — PRISM sloping DOWN toward the front (not a flat slab).
         # pitch_axis='Y' would peak along Y; we want peak along X (toward
         # the cabin), bottom along -X (front of car). Use 'X' to put the
@@ -1296,7 +1317,10 @@ def build_parking_lot():
         # Cabin top corner spheres for round greenhouse profile
         for rci, (rox, roy) in enumerate([(-0.78, -0.75), (0.78, -0.75), (-0.78, 0.75), (0.78, 0.75)]):
             make_sphere(f"Car_{i}_cabinCorner_{rci}", (cx + rox, cy + roy, lot_z + 1.20),
-                        0.20, col)
+                        0.35, col)
+        # Big sphere capping the cabin top — visible "roof bubble" that
+        # rounds the upper silhouette into a proper greenhouse shape
+        make_sphere(f"Car_{i}_cabinTop", (cx, cy, lot_z + 1.30), 0.60, roof_col)
         # Windshield (front of cabin), rear window
         make_box(f"Car_{i}_windshield", (cx + front_off_x * 0.425, cy, lot_z + 1.05), (0.06, 1.45, 0.45), COL_CAR_GLASS)
         make_box(f"Car_{i}_rearwin",    (cx + back_off_x * 0.425,  cy, lot_z + 1.05), (0.06, 1.45, 0.42), COL_CAR_GLASS)
@@ -1453,16 +1477,158 @@ def build_ground():
 
 
 def build_river():
-    """The water plane the boat sits on. Extends east to the opposite
-    (starboard) shore. The port side is the parking-lot land, not water."""
+    """The water surface + the river BASIN walls. Water sits 2.5m below
+    the land. We model the basin as a wide muddy floor at the river
+    bed depth, plus sloping BANKS connecting land to water on both
+    the port (where the dock is) and starboard (the open river) sides.
+    This is the fix for "the boat looks like it's standing on shore" —
+    the boat now sits IN a visibly sunken river channel."""
     river_extent_x = 80.0
-    river_extent_y = 160.0
-    # Center the river east of the boat (positive X bias)
+    river_extent_y = 200.0
+    river_cx = 15.0
+    # Water surface
     make_box("River_Water",
-             (15.0, 0, RIVER_LEVEL_Z - 0.01),
+             (river_cx, 0, RIVER_LEVEL_Z - 0.01),
              (river_extent_x, river_extent_y, 0.02),
-             COL_RIVER,
-             open_faces={'-Z'})
+             COL_RIVER, open_faces={'-Z'})
+    # River BED — muddy floor visible at the river's edges
+    bed_col = (0.30, 0.26, 0.18, 1.0)
+    make_box("River_Bed",
+             (river_cx, 0, RIVER_LEVEL_Z - 0.40),
+             (river_extent_x, river_extent_y, 0.40),
+             bed_col)
+    # ── PORT BANK — slope from the land (at LAND_Z, X = parking-lot
+    # east edge ≈ -19) down to the water (at RIVER_LEVEL_Z, X ≈ -8).
+    # The dock structure crosses this bank at midway elevation.
+    port_bank_top_x = -19.0          # parking-lot east edge / land edge
+    port_bank_bot_x = -8.0           # water's edge on the port side
+    port_bank_top_z = LAND_Z - 0.02
+    port_bank_bot_z = RIVER_LEVEL_Z
+    # The bank is a sloped prism running the full Y extent of the river
+    port_bank_w = port_bank_top_x - port_bank_bot_x
+    port_bank_cx = (port_bank_top_x + port_bank_bot_x) / 2.0
+    bank_col = (0.34, 0.28, 0.18, 1.0)
+    # Use make_ramp — top at land, bottom at the water's edge
+    make_ramp("River_Bank_Port",
+              (port_bank_top_x, 0, port_bank_top_z),
+              (port_bank_bot_x, 0, port_bank_bot_z),
+              river_extent_y, 0.40, bank_col, width_axis='Y')
+    # ── STARBOARD BANK — slope from opposite shore (LAND_Z) down to
+    # river. Opposite shore land sits at LAND_Z, the bank slopes down
+    # to the water at X = OPPOSITE_X - 14 or so.
+    starboard_bank_top_x = OPPOSITE_X - 0.5
+    starboard_bank_bot_x = OPPOSITE_X - 14.0
+    make_ramp("River_Bank_Starboard",
+              (starboard_bank_top_x, 0, port_bank_top_z),
+              (starboard_bank_bot_x, 0, port_bank_bot_z),
+              river_extent_y, 0.40, bank_col, width_axis='Y')
+    # ── PORT BANK FEATURES — riprap, reeds, cattails, lily pads, logs,
+    # driftwood, a beached skiff. The port (boat-side) bank used to be
+    # FEATURELESS, just a sloped dirt plane. This is the bayou-edge
+    # vegetation that fills it.
+    rip_col = (0.42, 0.38, 0.32, 1.0)
+    reed_col = (0.42, 0.46, 0.22, 1.0)
+    cattail_col = (0.42, 0.30, 0.18, 1.0)
+    log_col = (0.28, 0.22, 0.16, 1.0)
+    lily_col = (0.30, 0.42, 0.22, 1.0)
+    grass_tuft_col = (0.32, 0.38, 0.20, 1.0)
+
+    # Riprap rocks along the waterline (irregular spacing, varied size)
+    for i in range(28):
+        ry = -river_extent_y/2 + 6.0 + i * (river_extent_y - 12.0) / 27.0
+        size = 0.45 + ((i * 13) % 5) * 0.10
+        rx = port_bank_bot_x + 0.5 + ((i * 17) % 5 - 2) * 0.10
+        make_box(f"River_RiprapPort_{i}", (rx, ry, RIVER_LEVEL_Z + 0.20),
+                 (size, size, size * 0.7), rip_col)
+
+    # Reed clumps growing in the shallows along the bank
+    for ri in range(22):
+        rx_clump = port_bank_bot_x + 0.3 + ((ri * 11) % 5 - 2) * 0.30
+        ry_clump = -river_extent_y/2 + 8.0 + ri * (river_extent_y - 16.0) / 21.0
+        # Skip the zone right by the dock (player's main approach)
+        if -8 < ry_clump < 8:
+            continue
+        for sk in range(5):
+            offx = ((ri * 13 + sk * 7) % 7 - 3) * 0.06
+            offy = ((ri * 19 + sk * 11) % 7 - 3) * 0.06
+            rh = 0.7 + ((ri * 17 + sk) % 3) * 0.20
+            make_box(f"River_Reed_{ri}_{sk}",
+                     (rx_clump + offx, ry_clump + offy, RIVER_LEVEL_Z + rh / 2.0 + 0.05),
+                     (0.04, 0.04, rh), reed_col)
+
+    # Cattails (taller, with a brown seed-head at the top)
+    for ci in range(14):
+        cx_ct = port_bank_bot_x - 0.4 + ((ci * 7) % 4) * 0.18
+        cy_ct = -river_extent_y/2 + 14.0 + ci * (river_extent_y - 28.0) / 13.0
+        if -10 < cy_ct < 10:
+            continue
+        ch = 1.10 + ((ci * 11) % 3) * 0.15
+        make_box(f"River_Cattail_{ci}_stem",
+                 (cx_ct, cy_ct, RIVER_LEVEL_Z + ch / 2.0 + 0.05),
+                 (0.025, 0.025, ch), reed_col)
+        # Brown seed-head at the top
+        make_cyl(f"River_Cattail_{ci}_head",
+                 (cx_ct, cy_ct, RIVER_LEVEL_Z + ch + 0.10),
+                 0.04, 0.18, cattail_col, segments=4)
+
+    # Grass tufts on the slope of the bank itself
+    for gi in range(40):
+        gt_t = ((gi * 31) % 100) / 100.0  # 0..1 position along the bank
+        gx_t = port_bank_bot_x + gt_t * port_bank_w
+        gz_t = port_bank_bot_z + gt_t * (port_bank_top_z - port_bank_bot_z) + 0.05
+        gy_t = -river_extent_y/2 + 4.0 + gi * (river_extent_y - 8.0) / 39.0
+        size = 0.18 + ((gi * 13) % 3) * 0.06
+        make_box(f"River_GrassTuft_{gi}",
+                 (gx_t + ((gi * 7) % 5 - 2) * 0.20,
+                  gy_t + ((gi * 11) % 5 - 2) * 0.30,
+                  gz_t),
+                 (size, size, size * 1.5), grass_tuft_col)
+
+    # Fallen logs half in the water (alligator-suggesting)
+    log_specs = [
+        (port_bank_bot_x + 0.6, -56, 3.6, 0.0),
+        (port_bank_bot_x + 1.2, -22, 2.8, 0.3),
+        (port_bank_bot_x + 0.8,  32, 3.4, -0.2),
+        (port_bank_bot_x + 1.4,  68, 3.0, 0.1),
+    ]
+    for li, (lx_, ly_, ll_, ldz_) in enumerate(log_specs):
+        make_box(f"River_FallenLog_{li}", (lx_, ly_, RIVER_LEVEL_Z + 0.15 + ldz_),
+                 (0.55, ll_, 0.30), log_col)
+        # Exposed root knob on one end
+        make_sphere(f"River_FallenLog_{li}_root",
+                    (lx_, ly_ - ll_/2 - 0.2, RIVER_LEVEL_Z + 0.25 + ldz_),
+                    0.30, log_col)
+
+    # Lily pads scattered in the shallows
+    for pi in range(18):
+        px_lp = port_bank_bot_x + 1.5 + ((pi * 13) % 4) * 0.45
+        py_lp = -river_extent_y/2 + 10.0 + pi * (river_extent_y - 20.0) / 17.0
+        make_cyl(f"River_LilyPad_{pi}",
+                 (px_lp, py_lp, RIVER_LEVEL_Z + 0.04),
+                 0.35 + ((pi * 7) % 3) * 0.08, 0.04, lily_col, segments=6)
+
+    # Beached skiff — small wooden flat-bottom boat pulled up on the
+    # bank, fishing it suggests the diner is a launch point too
+    sk_x = port_bank_bot_x + 1.5
+    sk_y = -84.0
+    sk_z = RIVER_LEVEL_Z + 0.30
+    make_box("River_BeachedSkiff_Hull",
+             (sk_x, sk_y, sk_z), (1.4, 3.2, 0.30), log_col)
+    make_box("River_BeachedSkiff_Bench",
+             (sk_x, sk_y, sk_z + 0.18), (1.2, 0.18, 0.05),
+             (0.40, 0.28, 0.18, 1.0))
+    make_box("River_BeachedSkiff_Oar",
+             (sk_x + 0.4, sk_y + 0.5, sk_z + 0.30),
+             (0.05, 1.8, 0.05), (0.55, 0.40, 0.25, 1.0))
+
+    # Driftwood debris scattered along the high-water line
+    for di in range(10):
+        dx_dw = port_bank_bot_x + 0.5 + ((di * 11) % 4) * 0.20
+        dy_dw = -river_extent_y/2 + 18.0 + di * (river_extent_y - 36.0) / 9.0
+        dw_l = 0.8 + ((di * 13) % 3) * 0.30
+        make_box(f"River_Driftwood_{di}",
+                 (dx_dw, dy_dw, RIVER_LEVEL_Z + 0.18),
+                 (0.16, dw_l, 0.12), log_col)
 
 
 def build_road_network():
@@ -2008,7 +2174,10 @@ def build_opposite_shore():
     shore_x = OPPOSITE_X
     shore_w = 18.0
     shore_l = 220.0       # extended from 110 so the shore runs the full river length, no cutoff
-    shore_z = RIVER_LEVEL_Z + 0.20
+    # Opposite shore LAND sits at the same elevation as the parking-lot
+    # land (LAND_Z), not relative to the (now-sunken) river. Otherwise
+    # the opposite shore would drop with the river and end up submerged.
+    shore_z = LAND_Z - 0.02
     # Shore land mass — extends FURTHER east (+X) from shore_x
     make_box("OppositeShore_Land",
              (shore_x + shore_w / 2, 0, shore_z),
