@@ -846,7 +846,7 @@ def build_oliver_tree_memorial():
     human_figure(
         name="OT",
         base_x=sx, base_y=sy, base_z=base_z,
-        scale=2.0,                    # 3.6 m statue
+        scale=2.5,                    # 4.5 m statue · taller than the plinth
         facing='-Y',                  # plaque/face point south
         skin_color=(0.92, 0.75, 0.62, 1.0),
         hair_style='bowl',
@@ -854,16 +854,17 @@ def build_oliver_tree_memorial():
         jacket_color=(0.95, 0.42, 0.62, 1.0),     # hot pink
         yoke_color=(0.62, 0.42, 0.78, 1.0),       # purple shoulder yoke
         accent='star',
-        accent_color=(0.95, 0.42, 0.62, 1.0),     # pink star on chest
+        accent_color=(0.95, 0.42, 0.62, 1.0),
         scarf_color=(0.95, 0.85, 0.35, 1.0),      # yellow scarf
         pants_color=(0.55, 0.68, 0.82, 1.0),      # denim blue
-        pants_flare=2.6,                          # JNCO wide-leg
+        pants_flare=3.4,                          # MORE JNCO drama
         shoe_color=(0.92, 0.90, 0.84, 1.0),       # white shoes
         has_sunglasses=True,
         sunglasses_color=(0.95, 0.30, 0.45, 1.0), # pink-red lenses
         with_ears=True,
         with_mouth=True,
         mouth_color=(0.55, 0.22, 0.28, 1.0),
+        jacket_puffy=True,                        # PUFFER silhouette
     )
 
     # ── PROPS: the signature green Razor scooter beside him ────
@@ -1093,17 +1094,28 @@ def build_oliver_tree_memorial_park():
                   park_z + 1.50,
                   radius=3.6, height=3.2)
 
-    # ── Pink flower planters at NSEW of the inner ring ──────
-    for tag, fx_off, fy_off in (('N', 0, 11), ('S', 0, -11),
-                                  ('E', 11, 0), ('W', -11, 0)):
-        # Wooden bed
+    # ── Pink flower planters at the FOUR DIAGONAL positions of
+    # the inner ring — NE / NW / SE / SW, so they don't overlap
+    # with the radial paths AND don't clash with the south
+    # reflecting pool axis. Each planter is angled inward.
+    for tag, ang_deg in (('NE', 45), ('NW', 135),
+                          ('SW', 225), ('SE', 315)):
+        ang = math.radians(ang_deg)
+        fx = sx + math.cos(ang) * 10.0
+        fy = sy + math.sin(ang) * 10.0
+        # Approximate box rotation by orienting the bed via its
+        # larger axis along the tangent
+        if abs(math.cos(ang)) > abs(math.sin(ang)):
+            sx_bed, sy_bed = 1.0, 2.0
+        else:
+            sx_bed, sy_bed = 2.0, 1.0
         _make_box_local(f"OTPark_FlowerBed_{tag}",
-                        (sx + fx_off, sy + fy_off, park_z + 0.20),
-                        (2.0, 1.0, 0.30), COL_FLOWER_BED)
-        # Pink flowers on top — Oliver Tree's signature jacket pink
+                        (fx, fy, park_z + 0.20),
+                        (sx_bed, sy_bed, 0.30), COL_FLOWER_BED)
         _make_box_local(f"OTPark_Flowers_{tag}",
-                        (sx + fx_off, sy + fy_off, park_z + 0.50),
-                        (1.9, 0.9, 0.18), COL_FLOWER_PINK)
+                        (fx, fy, park_z + 0.50),
+                        (sx_bed - 0.10, sy_bed - 0.10, 0.18),
+                        COL_FLOWER_PINK)
 
     # ── Park sign at the SOUTH entry ─────────────────────────
     sign_x = sx

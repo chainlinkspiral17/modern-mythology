@@ -225,9 +225,11 @@ def _build_feet(name, base_x, base_y, base_z, s, facing, shoe_color):
 def _build_torso(name, base_x, base_y, pelvis_top_z, s,
                  jacket_color, yoke_color=None,
                  accent='none', accent_color=None,
-                 facing='-Y'):
+                 facing='-Y', puffy=False):
     """Torso as a tapered cylinder. yoke = darker shoulder cap.
-    accent draws a contrast shape on the facing direction (chest)."""
+    accent draws a contrast shape on the facing direction (chest).
+    puffy=True replaces the tapered cylinder with a wider squashed
+    sphere — the marshmallow silhouette of a puffer jacket."""
     torso_h = PROP["torso_h"] * s
     torso_r_top = PROP["torso_r_top"] * s
     torso_r_bot = PROP["torso_r_bot"] * s
@@ -238,11 +240,26 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
          (base_x, base_y, pelvis_top_z + pelvis_h / 2),
          (PROP["pelvis_w"] * s, PROP["pelvis_w"] * s * 0.6, pelvis_h),
          jacket_color)
-    # Torso main body
-    _cyl_taper(f"{name}_Torso",
-               (base_x, base_y, torso_cz),
-               torso_r_bot, torso_r_top, torso_h, jacket_color,
-               segments=10)
+    # Torso main body — puffer uses a wider squashed sphere
+    if puffy:
+        puff_r = torso_r_top * 1.55
+        # Lower puffer band — bigger ball at the chest line
+        _sphere_low(f"{name}_Puff_Lower",
+                    (base_x, base_y, torso_cz - torso_h * 0.10),
+                    puff_r, jacket_color,
+                    rings=4, segments=10,
+                    squash_z=(torso_h * 0.55) / puff_r)
+        # Upper puffer band — slightly smaller, at the shoulder
+        _sphere_low(f"{name}_Puff_Upper",
+                    (base_x, base_y, torso_cz + torso_h * 0.20),
+                    puff_r * 0.95, jacket_color,
+                    rings=4, segments=10,
+                    squash_z=(torso_h * 0.50) / (puff_r * 0.95))
+    else:
+        _cyl_taper(f"{name}_Torso",
+                   (base_x, base_y, torso_cz),
+                   torso_r_bot, torso_r_top, torso_h, jacket_color,
+                   segments=10)
     # Yoke — wider band at the shoulders
     if yoke_color is not None:
         yoke_h = torso_h * 0.42
@@ -435,7 +452,8 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
                  sunglasses_color=(0.15, 0.15, 0.15, 1.0),
                  with_ears=False,
                  with_mouth=False,
-                 mouth_color=(0.62, 0.30, 0.32, 1.0)):
+                 mouth_color=(0.62, 0.30, 0.32, 1.0),
+                 jacket_puffy=False):
     """Build a parametric standing human figure at (base_x, base_y,
     base_z) with feet on the ground at base_z. See module docstring
     for full parameter notes."""
@@ -453,7 +471,8 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
                               yoke_color=yoke_color,
                               accent=accent,
                               accent_color=accent_color,
-                              facing=facing)
+                              facing=facing,
+                              puffy=jacket_puffy)
     # Arms hang from shoulders
     _build_arms(name, base_x, base_y, shoulder_z, s,
                 jacket_color, skin_color)
