@@ -1147,6 +1147,75 @@ def build_oliver_tree_memorial_park():
         rfaces.append([i, ni, ni + pool_segs, i + pool_segs])
     _finalize_mesh("OTPark_Pool_Rim", rverts, rfaces, COL_POOL_RIM)
 
+    # ── FOUNTAIN JET in the reflecting pool · vertical water column
+    # plus a small spray ring. Reads as a real water feature, not
+    # just a still puddle.
+    fountain_cx = pool_cx
+    fountain_cy = pool_cy
+    # Stone plinth in the pool centre
+    _make_cyl_local("OTPark_FountainBase",
+                    (fountain_cx, fountain_cy, park_z - 0.15),
+                    0.45, 0.5, COL_POOL_RIM, segments=8)
+    # Vertical water column (a thin tall cylinder representing the jet)
+    _make_cyl_local("OTPark_FountainJet",
+                    (fountain_cx, fountain_cy, park_z + 1.20),
+                    0.10, 2.4, (0.55, 0.78, 0.85, 1.0), segments=6)
+    # Spray crown — small sphere at the top representing breaking water
+    _make_sphere_low_local("OTPark_FountainCrown",
+                            (fountain_cx, fountain_cy, park_z + 2.50),
+                            0.50, (0.78, 0.92, 0.95, 1.0),
+                            rings=3, segments=8)
+    # Lower spray ring — 6 small spheres around the base
+    for k in range(6):
+        ang_k = 2.0 * math.pi * k / 6
+        sx_off = math.cos(ang_k) * 0.5
+        sy_off = math.sin(ang_k) * 0.5
+        _make_sphere_low_local(f"OTPark_FountainSpray_{k}",
+                                (fountain_cx + sx_off,
+                                 fountain_cy + sy_off,
+                                 park_z + 0.35),
+                                0.18, (0.62, 0.82, 0.88, 1.0),
+                                rings=3, segments=6)
+
+    # ── FLAG POLE at half-mast · the "one detail wrong" beat per
+    # the modeling playbook. US flag in honour of the deceased.
+    fp_x = sx + outer_r + 14
+    fp_y = sy + 8
+    FLAGPOLE_H = 8.0
+    _make_cyl_local("OTPark_FlagPole",
+                    (fp_x, fp_y, park_z + FLAGPOLE_H / 2),
+                    0.10, FLAGPOLE_H, (0.82, 0.80, 0.76, 1.0),
+                    segments=8)
+    # Concrete base
+    _make_box_local("OTPark_FlagPole_Base",
+                    (fp_x, fp_y, park_z + 0.15),
+                    (0.80, 0.80, 0.30), COL_POOL_RIM)
+    # Flag at HALF mast — alternating red/white stripes + canton
+    flag_z = park_z + FLAGPOLE_H * 0.50
+    flag_w = 1.6
+    flag_h = 0.95
+    n_stripes = 7
+    stripe_h = flag_h / n_stripes
+    for s_idx in range(n_stripes):
+        col = (0.78, 0.18, 0.18, 1.0) if s_idx % 2 == 0 else (0.92, 0.90, 0.84, 1.0)
+        sz_pos = flag_z - flag_h / 2 + stripe_h * (s_idx + 0.5)
+        _make_box_local(f"OTPark_Flag_Stripe_{s_idx}",
+                        (fp_x + flag_w / 2 + 0.10, fp_y, sz_pos),
+                        (flag_w, 0.02, stripe_h * 0.95), col)
+    # Canton (upper-left, blue)
+    canton_w = flag_w * 0.40
+    canton_h = stripe_h * 4
+    canton_z = flag_z + flag_h / 2 - canton_h / 2
+    _make_box_local("OTPark_Flag_Canton",
+                    (fp_x + 0.10 + canton_w / 2, fp_y, canton_z),
+                    (canton_w, 0.025, canton_h),
+                    (0.18, 0.22, 0.45, 1.0))
+    # Gold finial
+    _make_sphere_low_local("OTPark_FlagPole_Finial",
+                            (fp_x, fp_y, park_z + FLAGPOLE_H + 0.10),
+                            0.10, (0.78, 0.62, 0.28, 1.0),
+                            rings=3, segments=6)
+
     # ── 8 mature OAKS — natural height variation per pass-5 ───
     # Each oak picks a height + canopy + tilt offset deterministically
     # from its position hash so successive rebuilds stay identical.

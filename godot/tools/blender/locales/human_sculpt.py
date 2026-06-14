@@ -437,12 +437,14 @@ def _build_head(name, base_x, base_y, head_base_z, s,
     # Hair — varies by style
     if hair_style == 'bowl':
         # Mushroom bowl-cut: flattened dome covering top + forward
-        # bang fringe over the forehead.
+        # bang fringe + ASYMMETRIC side-sweep so the silhouette
+        # isn't a perfect bowl.
         _sphere_low(f"{name}_Hair_Bowl",
                     (base_x, base_y, head_cz + head_r * 0.05),
                     head_r * 1.08, hair_color,
                     rings=3, segments=10, squash_z=0.65)
         fwd_x, fwd_y = _face_axis(facing)
+        # Forward bang
         _box(f"{name}_Hair_Bang",
              (base_x + fwd_x * head_r * 0.45,
               base_y + fwd_y * head_r * 0.45,
@@ -450,6 +452,18 @@ def _build_head(name, base_x, base_y, head_base_z, s,
              (head_d * 0.85 if abs(fwd_y) > abs(fwd_x) else 0.04,
               head_d * 0.85 if abs(fwd_x) > abs(fwd_y) else 0.04,
               head_d * 0.55),
+             hair_color)
+        # Asymmetric side-sweep — extra clump hanging off the LEFT
+        # side (perpendicular to facing axis) so the bowl reads
+        # less symmetric. Side axis = facing rotated 90° around z.
+        side_x = -fwd_y; side_y = fwd_x
+        _box(f"{name}_Hair_SideSweep",
+             (base_x + side_x * head_r * 0.55 + fwd_x * head_r * 0.20,
+              base_y + side_y * head_r * 0.55 + fwd_y * head_r * 0.20,
+              head_cz - head_r * 0.05),
+             (head_d * 0.30 if abs(side_x) > abs(side_y) else head_d * 0.45,
+              head_d * 0.45 if abs(side_x) > abs(side_y) else head_d * 0.30,
+              head_d * 0.50),
              hair_color)
     elif hair_style == 'short':
         _sphere_low(f"{name}_Hair_Cap",
