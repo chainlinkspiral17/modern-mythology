@@ -474,6 +474,60 @@ const MOODS: Array = [
         "star_cloud": 0.7, "star_cloud_scale": 0.014, "star_cloud_floor": 0.45,
     },
     {
+        "name": "silent_film_24",
+        # 24 fps silent-era cinema with shuddery camera judder. The
+        # underlying scene still renders at 60 Hz; old_film quantizes
+        # TIME at 24 Hz so brightness / grain / scratches / camera
+        # offset all step together at 24 ticks/sec. Picture LOOKS
+        # cranked even though gameplay is smooth.
+        "palette": 32.0, "dither": 0.0, "scanline": 0.06, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": false,
+        "ascii_fg": Color(1, 1, 1, 1), "ascii_bg": Color.BLACK,
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 1, 1, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+        "oldfilm": 1.0, "oldfilm_fps": 24.0,
+        "oldfilm_tint": Color(0.94, 0.88, 0.72, 1),
+        "oldfilm_tint_amt": 0.50,
+        "oldfilm_grain": 0.22, "oldfilm_flicker": 0.16,
+        "oldfilm_vignette": 0.55, "oldfilm_scratch": 0.14,
+        "oldfilm_judder": 0.0035,   # ~4.5 px wobble per simulated frame
+    },
+    {
+        "name": "silent_film_18",
+        # Slower 18 fps — slightly more dreamlike, stronger flicker.
+        # Same shader, lower sim_fps. Heavier scratches.
+        "palette": 32.0, "dither": 0.0, "scanline": 0.06, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": false,
+        "ascii_fg": Color(1, 1, 1, 1), "ascii_bg": Color.BLACK,
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 1, 1, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+        "oldfilm": 1.0, "oldfilm_fps": 18.0,
+        "oldfilm_tint": Color(0.96, 0.90, 0.74, 1),
+        "oldfilm_tint_amt": 0.60,
+        "oldfilm_grain": 0.20, "oldfilm_flicker": 0.24,
+        "oldfilm_vignette": 0.60, "oldfilm_scratch": 0.18,
+        "oldfilm_judder": 0.0030,
+    },
+    {
+        "name": "silent_film_12",
+        # 12 fps — the absolute minimum the user allowed. Strongest
+        # flicker + heavy judder. Picture LOOKS stop-motion.
+        "palette": 32.0, "dither": 0.0, "scanline": 0.06, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": false,
+        "ascii_fg": Color(1, 1, 1, 1), "ascii_bg": Color.BLACK,
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 1, 1, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+        "oldfilm": 1.0, "oldfilm_fps": 12.0,
+        "oldfilm_tint": Color(0.98, 0.92, 0.76, 1),
+        "oldfilm_tint_amt": 0.65,
+        "oldfilm_grain": 0.26, "oldfilm_flicker": 0.32,
+        "oldfilm_vignette": 0.65, "oldfilm_scratch": 0.22,
+        "oldfilm_judder": 0.0045,
+    },
+    {
         "name": "ice",
         "palette": 7.0, "dither": 0.22, "scanline": 0.40, "aberration": 0.0020,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
@@ -930,6 +984,17 @@ func _apply(preset: Dictionary) -> void:
         "strength":  preset.get("blur", 0.0),
         "blur_mode": preset.get("blur_mode", 0),
         "radius":    preset.get("blur_radius", 4.0),
+    })
+    _set_params("OldFilmQuad", {
+        "strength":          preset.get("oldfilm", 0.0),
+        "sim_fps":           preset.get("oldfilm_fps", 18.0),
+        "tint_color":        preset.get("oldfilm_tint", Color(0.96, 0.90, 0.74, 1)),
+        "tint_amount":       preset.get("oldfilm_tint_amt", 0.55),
+        "grain_strength":    preset.get("oldfilm_grain", 0.18),
+        "flicker_strength":  preset.get("oldfilm_flicker", 0.20),
+        "vignette_strength": preset.get("oldfilm_vignette", 0.55),
+        "scratch_strength":  preset.get("oldfilm_scratch", 0.10),
+        "judder_strength":   preset.get("oldfilm_judder", 0.0),
     })
     _set_params("StarscapeQuad", {
         "strength":        preset.get("star", 0.0),
