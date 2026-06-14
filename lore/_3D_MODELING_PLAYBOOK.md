@@ -149,6 +149,29 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-06-14 · screenshots are how I see the work
+
+- **Always ask the user for a screenshot when debugging visuals.** I
+  cannot run the editor or the game. The user's screenshot is the
+  only window I have into what the work actually looks like. Concept-
+  art references they share are equally valuable — they tell me what
+  the target IS, not just what the current state isn't.
+- **Specific complaints from a screenshot beat vague complaints by
+  10x.** "The D'A is cramped" + screenshot showing exactly that = I
+  find and fix the spacing in one round. "Sign looks bad" alone = I
+  guess at five possible issues and ship four wrong fixes.
+- **Verify cursive / fine detail BY THE SCREENSHOT, not by reading
+  the code.** A bug like the missing 's' arc (`theta_start ==
+  theta_end` ⇒ no geometry) was invisible in code review but obvious
+  the moment the screenshot landed.
+- **When the user says "it's not working," ask for a screenshot
+  before iterating.** Diagnose visually first, code-edit second.
+- **If a build won't show changes, the GLB cache is probably the
+  culprit.** Godot caches imported GLBs while the editor is open —
+  close the editor, rebuild, reopen. The user's report of "I'm not
+  seeing improvements" can mean "the GLB never updated," not "your
+  code change was wrong."
+
 ### 2026-06-14 · the riverfront pass
 
 - **Boxes everywhere reads as Atari 2600.** The user said "feels
