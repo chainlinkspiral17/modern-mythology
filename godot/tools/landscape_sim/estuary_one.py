@@ -164,12 +164,13 @@ HCE_SETTLEMENTS = [
     ("HarmonyPark", -120, 180, -40, 200, +1.0, 0.55),
 ]
 HCE_PONDS = [
-    ("FoundersPond",   -300,  160,  25,  5.0),
-    ("HarmonyPond",      30,   80,  18,  3.0),
-    ("WildLotPond",    -320, -240,  20,  4.0),
-    ("SECreekPond",     280, -200,  22,  4.0),
-    ("NWHeadwatersPond",-440,  280,  18,  3.0),
-    ("EastWoodsPond",   320,  300,  16,  2.5),
+    ("FoundersPond",   -300,  140,  45, 10.0),
+    ("HarmonyPond",      30,   60,  32,  6.0),
+    ("WildLotPond",    -340, -240,  38,  8.0),
+    ("SECreekPond",     360, -120,  40,  9.0),
+    ("NWHeadwatersPond",-440,  280,  30,  6.0),
+    ("EastWoodsPond",   320,  310,  28,  5.0),
+    ("MidValleyPond",     0, -180,  35,  7.0),
 ]
 HCE_BERMS = [
     ("CC_Buffer",        [(-460, 340), (440, 340)],          14.0, 2.5),

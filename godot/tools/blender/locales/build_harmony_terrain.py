@@ -174,12 +174,16 @@ SETTLEMENT_FALLOFF = 35.0   # m of smooth transition outside each rect
 # ────────────────────────────────────────────────────────────────
 # Format: (name, cx, cy, radius, depth)  depth is positive metres
 PONDS = [
-    ("FoundersPond",   -300,  160,  25,  5.0),    # Founders Grove pond
-    ("HarmonyPond",      30,   80,  18,  3.0),    # park pond (also pool location)
-    ("WildLotPond",    -320, -240,  20,  4.0),    # in the gone-to-seed lot
-    ("SECreekPond",     280, -200,  22,  4.0),    # near south end of creek
-    ("NWHeadwatersPond",-440,  280,  18,  3.0),   # tiny tarn at creek origin
-    ("EastWoodsPond",   320,  300,  16,  2.5),    # in the creek-trail park
+    # Wider + deeper than the v1 ponds. Format: (name, cx, cy, radius, depth)
+    # WATER_SURFACE_Z is how far below GROUND_Z the water plane sits;
+    # depth is the terrain depression amount.
+    ("FoundersPond",   -300,  140,  45, 10.0),    # big anchor pond in Founders Grove
+    ("HarmonyPond",      30,   60,  32,  6.0),    # community pool placement
+    ("WildLotPond",    -340, -240,  38,  8.0),    # gone-to-seed wild pond
+    ("SECreekPond",     360, -120,  40,  9.0),    # moved AWAY from the creek so it reads
+    ("NWHeadwatersPond",-440,  280,  30,  6.0),
+    ("EastWoodsPond",   320,  310,  28,  5.0),
+    ("MidValleyPond",     0, -180,  35,  7.0),    # NEW · in the SE-basin wild zone
 ]
 
 
@@ -510,6 +514,20 @@ def build_feature_beacons():
         ("Beacon_Phase3",      -360, -260, (0.45, 0.35, 0.28, 1.0)),
         ("Beacon_TruckStop",      0, -370, (0.40, 0.32, 0.26, 1.0)),
     ]
+
+    # Fence corner beacons — red so the user can see where each
+    # fence run starts/ends and walk to inspect them.
+    fence_beacons = [
+        ("Beacon_Fence_CC_S_W",      -440, 345, (0.85, 0.18, 0.16, 1.0)),
+        ("Beacon_Fence_CC_S_E",       420, 345, (0.85, 0.18, 0.16, 1.0)),
+        ("Beacon_Fence_NRanch_NW",   -440, 250, (0.85, 0.18, 0.16, 1.0)),
+        ("Beacon_Fence_NRanch_PondS",-220,  80, (0.85, 0.18, 0.16, 1.0)),
+        ("Beacon_Fence_ECDS_Park",    190, 130, (0.85, 0.18, 0.16, 1.0)),
+        ("Beacon_Fence_ECDS_E",       430, 250, (0.85, 0.18, 0.16, 1.0)),
+        ("Beacon_Fence_WEst_N",      -290, -60, (0.85, 0.18, 0.16, 1.0)),
+        ("Beacon_Fence_Phase2_N",     140,-110, (0.85, 0.18, 0.16, 1.0)),
+    ]
+    settlement_beacons += fence_beacons
     for (name, x, y, col) in settlement_beacons:
         z = hce_elevation(x, y)
         _cyl(name + "_Pole", (x, y, z + BEACON_H / 2),
@@ -577,6 +595,47 @@ def _cyl(name, center, radius, height, color, segments=8):
     return _finalize_mesh(name, verts, faces, color)
 
 
+def build_pond_water():
+    """Blue water disc + sandy beach ring at each pond. Without
+    these the ponds are just terrain depressions — the user can't
+    tell a pond from any other dip. Water plane sits 1.5 m above
+    the pond bottom; beach ring 0.2 m above water so the dry-edge
+    band reads as bank."""
+    segments = 20
+    for (name, cx, cy, radius, _depth) in PONDS:
+        bottom_z = hce_elevation(cx, cy)
+        water_z = bottom_z + 1.5
+        wr = radius * 0.80
+        # Water disc
+        verts = [(cx, cy, water_z)]
+        for i in range(segments):
+            ang = 2.0 * math.pi * i / segments
+            verts.append((cx + math.cos(ang) * wr,
+                          cy + math.sin(ang) * wr, water_z))
+        faces = []
+        for i in range(segments):
+            ni = (i + 1) % segments
+            faces.append([0, 1 + i, 1 + ni])
+        _finalize_mesh(f"PondWater_{name}", verts, faces, COL_CREEK_WATER)
+        # Sandy beach ring outside the water
+        outer = radius * 0.95
+        beach_z = water_z + 0.15
+        bverts = []
+        for ring in (0, 1):
+            r = wr if ring == 0 else outer
+            for i in range(segments):
+                ang = 2.0 * math.pi * i / segments
+                bverts.append((cx + math.cos(ang) * r,
+                               cy + math.sin(ang) * r,
+                               beach_z))
+        bfaces = []
+        for i in range(segments):
+            ni = (i + 1) % segments
+            bfaces.append([i, ni, ni + segments, i + segments])
+        _finalize_mesh(f"PondBeach_{name}", bverts, bfaces,
+                       (0.78, 0.72, 0.52, 1.0))
+
+
 def _fence_along(name, p0, p1, fence_type, sub_len=10.0):
     """Subdivide (p0, p1) into ~sub_len pieces and place a fence
     segment at each, sampling elevation at the midpoint of each
@@ -642,6 +701,7 @@ def main():
     clear_scene()
     build_ground()
     build_creek()
+    build_pond_water()        # NEW · ponds need visible water surfaces
     build_district_fences()
     build_feature_beacons()
     export_glb()
