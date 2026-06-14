@@ -22,10 +22,12 @@
 
 extends Node3D
 
-@export var use_palette_shader: bool = false
-@export var palette_shader: Shader = null
+@export var use_palette_shader: bool = true
+@export var palette_shader: Shader = preload("res://assets/shaders/ps2_lit.gdshader")
 @export var add_colliders: bool = true
 @export var albedo_brightness: float = 1.0
+@export var ps2_grid: float = 320.0
+@export var wobble_amount: float = 1.0
 
 # Mesh names that should get collision. Locale-broad — covers
 # walls, floors, counters, large furniture. Skip small props.
@@ -54,8 +56,11 @@ func _make_material() -> Material:
     if use_palette_shader and palette_shader != null:
         var sm := ShaderMaterial.new()
         sm.shader = palette_shader
+        sm.set_shader_parameter("ps2_grid", ps2_grid)
+        sm.set_shader_parameter("wobble_amount", wobble_amount)
+        sm.set_shader_parameter("albedo_boost", albedo_brightness)
         return sm
-    # Default: standard material that uses vertex color as albedo
+    # Fallback: standard material that uses vertex color as albedo
     var m := StandardMaterial3D.new()
     m.vertex_color_use_as_albedo = true
     m.albedo_color = Color(albedo_brightness, albedo_brightness, albedo_brightness, 1.0)

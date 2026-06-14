@@ -1,9 +1,17 @@
 // ascii_edges.gdshader
 // ════════════════════════════════════════════════════════════════
-// Edge detection + ASCII characters along detected edges. Reads
-// the rendered scene's depth buffer to find geometric edges, then
-// outputs procedural ASCII-glyph patterns IN those edge regions
-// while passing the scene through unmodified elsewhere.
+// Edge detection + ASCII characters along detected edges. Runs a
+// luminance Sobel on the screen colour to find visible silhouettes
+// and contrast boundaries, then paints procedural ASCII-glyph
+// patterns IN those edge regions while passing the scene through
+// unmodified elsewhere.
+//
+// Originally used DEPTH_TEXTURE, but Godot 4's canvas_item shaders
+// can't reliably bind the 3D depth buffer when stacked behind
+// other CanvasLayer post-processes — the depth read came back
+// uniform and the edges looked like a flat overlay. Luma Sobel on
+// SCREEN_TEXTURE works regardless of layer order and actually
+// tracks the geometry the player sees.
 //
 // Effect: low-poly geometry gets a thick painted outline that
 // LOOKS like it's made of code. The substrate's "the chassis
@@ -15,35 +23,29 @@
 shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
-uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_nearest;
 
 uniform float edge_strength : hint_range(0.0, 1.0) = 0.8;
-uniform float edge_threshold : hint_range(0.0001, 0.01) = 0.0015;
+uniform float edge_threshold : hint_range(0.001, 0.5) = 0.08;
+uniform float edge_softness : hint_range(1.0, 8.0) = 3.0;
 uniform vec4 edge_color : source_color = vec4(0.92, 0.78, 0.45, 1.0);
 uniform vec4 edge_bg_color : source_color = vec4(0.05, 0.04, 0.02, 1.0);
 uniform float glyph_cell_size : hint_range(4.0, 32.0) = 10.0;
 uniform float scroll_speed : hint_range(0.0, 4.0) = 1.2;
+uniform float edge_thickness : hint_range(0.5, 3.0) = 1.5;
 
-// Sample depth, linearize. In Godot 4 the depth buffer is non-
-// linear (closer to 1.0 = near camera, 0.0 = far). We sample
-// neighbors and use the contrast as an edge signal.
-float sample_depth(vec2 uv) {
-    return texture(DEPTH_TEXTURE, uv).r;
+float luma(vec3 c) {
+    return dot(c, vec3(0.299, 0.587, 0.114));
 }
 
 // Procedural ASCII-like glyph density per cell, scrolling over time.
 // Returns 0..1 fill intensity.
 float scroll_glyph(vec2 frag_coord, float t) {
-    // Shift the cells horizontally over time so the glyphs "flow"
     vec2 scrolled = frag_coord + vec2(t * 80.0, 0.0);
     vec2 cell = floor(scrolled / glyph_cell_size);
     vec2 local = fract(scrolled / glyph_cell_size);
 
-    // Hash the cell index for pseudo-random glyph choice
     float h = fract(sin(dot(cell, vec2(127.1, 311.7))) * 43758.5);
 
-    // Build a procedural pattern per cell — different cells render
-    // different "glyphs" via different pixel-pattern formulas.
     float pattern;
     if (h < 0.10) {
         // sparse dot
@@ -77,34 +79,33 @@ float scroll_glyph(vec2 frag_coord, float t) {
         // dense block
         pattern = 1.0;
     }
-
     return pattern;
 }
 
 void fragment() {
     vec2 uv = SCREEN_UV;
-    vec2 px = SCREEN_PIXEL_SIZE;
+    vec2 px = SCREEN_PIXEL_SIZE * edge_thickness;
 
-    // Edge detection: sample center + four neighbors, sum the
-    // absolute differences. High contrast = edge.
-    float d0 = sample_depth(uv);
-    float d1 = sample_depth(uv + vec2(px.x * 1.5, 0.0));
-    float d2 = sample_depth(uv + vec2(0.0, px.y * 1.5));
-    float d3 = sample_depth(uv + vec2(-px.x * 1.5, 0.0));
-    float d4 = sample_depth(uv + vec2(0.0, -px.y * 1.5));
+    // 3x3 luminance Sobel on the screen colour
+    float l00 = luma(texture(SCREEN_TEXTURE, uv + vec2(-px.x, -px.y)).rgb);
+    float l10 = luma(texture(SCREEN_TEXTURE, uv + vec2( 0.0,  -px.y)).rgb);
+    float l20 = luma(texture(SCREEN_TEXTURE, uv + vec2( px.x, -px.y)).rgb);
+    float l01 = luma(texture(SCREEN_TEXTURE, uv + vec2(-px.x,  0.0 )).rgb);
+    float l21 = luma(texture(SCREEN_TEXTURE, uv + vec2( px.x,  0.0 )).rgb);
+    float l02 = luma(texture(SCREEN_TEXTURE, uv + vec2(-px.x,  px.y)).rgb);
+    float l12 = luma(texture(SCREEN_TEXTURE, uv + vec2( 0.0,   px.y)).rgb);
+    float l22 = luma(texture(SCREEN_TEXTURE, uv + vec2( px.x,  px.y)).rgb);
 
-    // Robert's cross + Laplacian-ish — sensitive to both edges
-    // and small-detail changes.
-    float edge = abs(d1 - d3) + abs(d2 - d4) + 2.0 * abs(d0 - (d1 + d2 + d3 + d4) * 0.25);
-    float edge_mask = smoothstep(edge_threshold, edge_threshold * 4.0, edge);
+    float gx = -l00 - 2.0 * l01 - l02 + l20 + 2.0 * l21 + l22;
+    float gy = -l00 - 2.0 * l10 - l20 + l02 + 2.0 * l12 + l22;
+    float edge = sqrt(gx * gx + gy * gy);
 
-    // The scrolling ASCII pattern, only painted into edge regions
+    float edge_mask = smoothstep(edge_threshold, edge_threshold * edge_softness, edge);
+
+    // Scrolling ASCII pattern, painted IN edge regions only
     float glyph = scroll_glyph(FRAGCOORD.xy, TIME * scroll_speed);
 
-    // Pass-through scene color where there's no edge
     vec3 scene = texture(SCREEN_TEXTURE, uv).rgb;
-
-    // In edge regions, blend toward the glyph-textured edge color
     vec3 edge_painted = mix(edge_bg_color.rgb, edge_color.rgb, glyph);
     vec3 result = mix(scene, edge_painted, edge_mask * edge_strength);
 

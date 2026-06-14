@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
 [ext_resource type="Shader" path="res://assets/shaders/ascii_edges.gdshader" id="6_edges"]
 [ext_resource type="Shader" path="res://assets/shaders/glyph_field.gdshader" id="7_glyph"]
+[ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="8_setup"]
 
 [sub_resource type="CapsuleShape3D" id="Caps_Player"]
 radius = 0.30
@@ -82,6 +83,11 @@ omni_range = 12.0
 shadow_enabled = false
 
 [node name="Geometry" parent="." instance=ExtResource("1_diner_glb")]
+script = ExtResource("8_setup")
+add_colliders = false
+albedo_brightness = 1.20
+ps2_grid = 320.0
+wobble_amount = 1.0
 
 [node name="FloorBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
