@@ -1488,39 +1488,50 @@ def build_parking_lot():
 # ════════════════════════════════════════════════════════════════
 
 def build_ground():
-    """A single continuous ground plane covering the entire bayou-city
-    area at z = -0.05. Without this, the world is a collection of
-    floating asphalt patches (parking lot, frontage road, strip-mall
-    lot, opposite shore) with unfilled gray Godot-void between them.
+    """Continuous ground covering the LAND portions of the world ONLY —
+    NOT the river. Previously this was a single 340m × 340m flat box
+    that covered everything including the river area, which HID the
+    sunken water surface and made the river read as level with the
+    land. The user flagged this 6+ times.
 
-    Real bayou-city ground is a mix of:
-      · low dirt/scrub between developed lots
-      · grass patches around houses
-      · concrete sidewalks along roads
-    We approximate that with one base layer (warm dirt/grass tone)
-    plus smaller patches of sidewalk and lawn dropped on top."""
-    # Base ground — covers from west of the highway overpass to east
-    # of the opposite shore, full N-S length of the world.
-    make_box("Ground_Base", (10.0, 0.0, -0.10), (340.0, 340.0, 0.10),
-             (0.34, 0.32, 0.24, 1.0))   # warm dirt with a hint of green
-    # Grass / scrub patches scattered to break up the uniform dirt
+    Now the ground is two separate patches:
+      · PORT LAND  — west of the quay wall (X < -18), full Y range.
+        Covers the parking lot, frontage road, gas station, strip
+        mall, Westbrook houses, near-shore deep distance.
+      · STARBOARD LAND — east of the opposite-shore inner edge
+        (X > +105), full Y range. Covers the opposite-shore strip
+        + far hills.
+
+    The river area between them (X = -18 to +105) has NO ground —
+    the water surface at z=-2.5 is visible from any angle now."""
+    # Base PORT LAND — everything west of the quay wall
+    make_box("Ground_PortLand", (-100.0, 0.0, -0.10),
+             (165.0, 340.0, 0.10), (0.34, 0.32, 0.24, 1.0))
+    # Base STARBOARD LAND — everything east of where the opposite-shore
+    # bank meets the water (roughly X = +106)
+    make_box("Ground_StarboardLand", (+160.0, 0.0, -0.10),
+             (110.0, 340.0, 0.10), (0.34, 0.32, 0.24, 1.0))
+    # Far NORTH and SOUTH horizon ground (beyond the river extent in Y)
+    # so the visible horizon doesn't end at the river.
+    make_box("Ground_North", (10.0, +175.0, -0.10),
+             (340.0, 50.0, 0.10), (0.34, 0.32, 0.24, 1.0))
+    make_box("Ground_South", (10.0, -175.0, -0.10),
+             (340.0, 50.0, 0.10), (0.34, 0.32, 0.24, 1.0))
+    # Grass / scrub patches break up the uniform dirt on the PORT side
     grass_col = (0.30, 0.36, 0.22, 1.0)
-    grass_patches = [
-        # (cx, cy, w, l)
-        (-90, -75, 22, 14),
-        (-70, -55, 16, 12),
-        (-95, -20, 20, 18),
-        (-78,  20, 14, 16),
-        (-92,  55, 20, 14),
-        (-70,  85, 18, 12),
-        ( 70, -75, 18, 14),
-        ( 80, -25, 22, 16),
-        ( 78,  20, 18, 14),
-        ( 80,  60, 22, 16),
-        ( 70,  95, 18, 14),
+    port_grass = [
+        (-90, -75, 22, 14), (-70, -55, 16, 12), (-95, -20, 20, 18),
+        (-78,  20, 14, 16), (-92,  55, 20, 14), (-70,  85, 18, 12),
     ]
-    for gi, (gx, gy, gw, gl) in enumerate(grass_patches):
-        make_box(f"Ground_Grass_{gi}", (gx, gy, -0.04), (gw, gl, 0.02), grass_col)
+    for gi, (gx, gy, gw, gl) in enumerate(port_grass):
+        make_box(f"Ground_Grass_Port_{gi}", (gx, gy, -0.04), (gw, gl, 0.02), grass_col)
+    # Starboard-side grass / scrub (between opposite shore and far horizon)
+    starboard_grass = [
+        ( 150, -75, 18, 14), ( 165, -25, 22, 16), ( 158,  20, 18, 14),
+        ( 170,  60, 22, 16), ( 155,  95, 18, 14),
+    ]
+    for gi, (gx, gy, gw, gl) in enumerate(starboard_grass):
+        make_box(f"Ground_Grass_Star_{gi}", (gx, gy, -0.04), (gw, gl, 0.02), grass_col)
 
 
 def build_river():
