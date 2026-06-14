@@ -667,8 +667,6 @@ def build_pond_water():
                       segments=8)
 
         # ── Reed / cattail clumps at the bank ──
-        # Tall thin green-brown stalks ringing the outer edge of
-        # the beach.
         n_clumps = max(4, int(radius / 6))
         for k in range(n_clumps):
             ang = 6.2831 * k / n_clumps + 0.13
@@ -676,6 +674,48 @@ def build_pond_water():
             ry = cy + math.sin(ang) * outer * 1.04
             _reed_clump(f"PondReeds_{name}_{k}", rx, ry,
                         ground_z=beach_z, count=5)
+
+        # ── Ducks ── two per pond, drifting in deterministic spots
+        for d_idx, (dr, da, dfacing) in enumerate([
+            (wr * 0.45, 0.7, '+X'),
+            (wr * 0.55, 3.6, '-Y'),
+        ]):
+            dx = cx + math.cos(da) * dr
+            dy = cy + math.sin(da) * dr
+            _build_duck(f"PondDuck_{name}_{d_idx}",
+                        dx, dy, water_z, facing=dfacing)
+
+        # ── Wooden dock ── FoundersPond (the biggest) gets a small
+        # public dock extending in from the south bank.
+        if name == "FoundersPond":
+            dock_w = 2.0
+            dock_l = 8.0
+            dock_z = water_z + 0.40
+            _make_box_local(f"PondDock_{name}_Deck",
+                            (cx, cy - outer + dock_l / 2 - 1.0,
+                             dock_z),
+                            (dock_w, dock_l, 0.12),
+                            (0.55, 0.40, 0.26, 1.0))
+            # Two posts at the water end
+            for dx_off in (-dock_w / 2 + 0.10, dock_w / 2 - 0.10):
+                _make_box_local(f"PondDock_{name}_Post_{dx_off:+.1f}",
+                                (cx + dx_off,
+                                 cy - outer + dock_l - 1.5,
+                                 dock_z - 0.30),
+                                (0.18, 0.18, 1.0),
+                                (0.42, 0.30, 0.20, 1.0))
+
+        # ── Small green bushes ringing the outer beach ─────
+        n_bushes = max(3, int(radius / 12))
+        for k in range(n_bushes):
+            ang = 6.2831 * k / n_bushes + 0.55
+            bx = cx + math.cos(ang) * outer * 1.12
+            by = cy + math.sin(ang) * outer * 1.12
+            _make_sphere_low_local(f"PondBush_{name}_{k}",
+                                   (bx, by, beach_z + 0.45),
+                                   0.6 + 0.15 * (k % 2),
+                                   (0.32, 0.55, 0.28, 1.0),
+                                   rings=3, segments=6)
 
 
 def _disc_low(name, center, radius, color, segments=8):
@@ -821,7 +861,28 @@ def build_oliver_tree_memorial():
         shoe_color=(0.92, 0.90, 0.84, 1.0),       # white shoes
         has_sunglasses=True,
         sunglasses_color=(0.95, 0.30, 0.45, 1.0), # pink-red lenses
+        with_ears=True,
+        with_mouth=True,
+        mouth_color=(0.55, 0.22, 0.28, 1.0),
     )
+
+    # ── PROPS: the signature green Razor scooter beside him ────
+    _build_scooter("OT_Scooter", sx + 1.6, sy, base_z,
+                   color_deck=(0.30, 0.55, 0.25, 1.0),     # green
+                   color_metal=(0.78, 0.78, 0.80, 1.0))    # silver
+
+    # ── PROP: microphone in his right hand ────────────────────
+    # Right hand sits at sx + 0.46*2 = sx + 0.92, base_z + ~3.4 m
+    mic_x = sx + 0.92
+    mic_y = sy - 0.20
+    mic_z = base_z + 3.40
+    _make_cyl_local("OT_MicHandle",
+                    (mic_x, mic_y, mic_z - 0.25),
+                    0.045, 0.5, (0.12, 0.12, 0.12, 1.0), segments=6)
+    _make_sphere_low_local("OT_MicHead",
+                           (mic_x, mic_y, mic_z + 0.05),
+                           0.10, (0.18, 0.18, 0.18, 1.0),
+                           rings=3, segments=8)
 
     # Beacon moved to the park's south entry so it doesn't obscure
     # the figure. See build_oliver_tree_memorial_park().
@@ -1025,14 +1086,12 @@ def build_oliver_tree_memorial_park():
                         (bx + back_off_x, by + back_off_y,
                          park_z + 0.85),
                         back_sz, COL_BENCH)
-    # Terrace bench at the top step
-    _make_box_local("OTPark_TerraceBench_Seat",
-                    (sx, sy + outer_r + 30 + 6, park_z + 1.50 + 0.43),
-                    (2.4, 0.42, 0.06), COL_BENCH)
-    _make_box_local("OTPark_TerraceBench_Back",
-                    (sx, sy + outer_r + 30 + 6.20,
-                     park_z + 1.50 + 0.85),
-                    (2.4, 0.06, 0.45), COL_BENCH)
+    # Gazebo on the top terrace step replaces the bare bench — the
+    # contemplation pavilion. Hexagonal wooden posts + peaked roof.
+    _build_gazebo("OTPark_Gazebo",
+                  sx, sy + outer_r + 30 + 6,
+                  park_z + 1.50,
+                  radius=3.6, height=3.2)
 
     # ── Pink flower planters at NSEW of the inner ring ──────
     for tag, fx_off, fy_off in (('N', 0, 11), ('S', 0, -11),
@@ -1064,6 +1123,37 @@ def build_oliver_tree_memorial_park():
                     (sign_x, sign_y - 0.08, park_z + 2.2),
                     (3.0, 0.06, 0.90), COL_SIGN_FACE)
 
+    # ── 6 LAMPPOSTS along the radial paths ──────────────────
+    # Two per main path (mid + far end of the longer paths) so the
+    # walkways read as cared-for at night.
+    for tag, dx, dy, length in radials:
+        # one at the ring exit, one half-way along, one at the end
+        for t in (0.45, 0.95):
+            lx = sx + dx * (outer_r + length * t)
+            ly = sy + dy * (outer_r + length * t)
+            _build_lamppost(f"OTPark_Lamp_{tag}_{int(t*100)}",
+                            lx, ly, park_z)
+
+    # ── 2 TRASHCANS at the south entry, 1 DRINKING FOUNTAIN ─
+    _build_trashcan("OTPark_Trash_W",
+                    sx - 2.5, sy - outer_r - 40, park_z)
+    _build_trashcan("OTPark_Trash_E",
+                    sx + 2.5, sy - outer_r - 40, park_z)
+    _build_drinking_fountain("OTPark_Fountain",
+                              sx - 20, sy - 5, park_z)
+
+    # ── Path-edging stones along the ring (decorative) ──────
+    # Small cream stones every 8 m around the outer ring perimeter
+    edge_count = 12
+    for i in range(edge_count):
+        ang = 2.0 * math.pi * i / edge_count
+        ex = sx + math.cos(ang) * (outer_r + 0.4)
+        ey = sy + math.sin(ang) * (outer_r + 0.4)
+        _make_box_local(f"OTPark_EdgeStone_{i}",
+                        (ex, ey, park_z + 0.18),
+                        (0.50, 0.50, 0.30),
+                        (0.82, 0.78, 0.66, 1.0))
+
     # ── Beacon relocated to the park south entry ────────────
     beacon_x = sx
     beacon_y = sy - outer_r - 50
@@ -1075,6 +1165,159 @@ def build_oliver_tree_memorial_park():
     _make_box_local("OT_Beacon_Top",
                     (beacon_x, beacon_y, park_z + BEACON_H + 1.2),
                     (2.2, 2.2, 2.2), COL_FLOWER_PINK)
+
+
+def _build_scooter(name, x, y, z, color_deck, color_metal):
+    """Low-poly Razor-style scooter. Deck + stem + handlebars +
+    two wheels. Stands upright on its kickstand at (x, y, z)."""
+    # Deck (footboard)
+    _make_box_local(f"{name}_Deck",
+                    (x, y, z + 0.10),
+                    (0.95, 0.20, 0.05), color_deck)
+    # Stem (vertical post at front)
+    stem_x = x - 0.45
+    _make_cyl_local(f"{name}_Stem",
+                    (stem_x, y, z + 0.55),
+                    0.025, 1.0, color_metal, segments=6)
+    # T-bar handlebars
+    _make_box_local(f"{name}_Handlebar",
+                    (stem_x, y, z + 1.05),
+                    (0.05, 0.55, 0.04), color_metal)
+    # Two grip caps
+    for sgn in (-1, 1):
+        _make_cyl_local(f"{name}_Grip_{sgn:+d}",
+                        (stem_x, y + sgn * 0.25, z + 1.05),
+                        0.04, 0.10, (0.12, 0.12, 0.12, 1.0),
+                        segments=6)
+    # Wheels
+    for sgn, wx in ((1, x - 0.45), (-1, x + 0.45)):
+        _make_cyl_local(f"{name}_Wheel_{sgn:+d}",
+                        (wx, y, z + 0.04),
+                        0.10, 0.06,
+                        (0.10, 0.10, 0.10, 1.0), segments=8)
+
+
+def _build_lamppost(name, x, y, z_ground, pole_h=3.5,
+                    pole_color=(0.18, 0.18, 0.18, 1.0),
+                    globe_color=(0.94, 0.92, 0.78, 1.0)):
+    """Decorative park lamppost — black wrought-iron pole with a
+    cream globe lantern at the top."""
+    _make_cyl_local(f"{name}_Pole",
+                    (x, y, z_ground + pole_h / 2),
+                    0.06, pole_h, pole_color, segments=6)
+    # Base flare
+    _make_box_local(f"{name}_Base",
+                    (x, y, z_ground + 0.15),
+                    (0.25, 0.25, 0.30), pole_color)
+    # Globe lantern
+    _make_sphere_low_local(f"{name}_Globe",
+                           (x, y, z_ground + pole_h + 0.20),
+                           0.22, globe_color, rings=3, segments=8)
+
+
+def _build_gazebo(name, cx, cy, z_floor, radius=4.0, height=3.5,
+                  post_color=(0.42, 0.30, 0.20, 1.0),
+                  roof_color=(0.62, 0.18, 0.16, 1.0),
+                  floor_color=(0.55, 0.40, 0.26, 1.0)):
+    """Hexagonal gazebo — 6 wooden posts holding up a peaked roof.
+    Used on the terrace top of the memorial park."""
+    n_posts = 6
+    # Floor (hexagonal disc)
+    verts = [(cx, cy, z_floor + 0.05)]
+    for i in range(n_posts):
+        ang = 2.0 * math.pi * i / n_posts
+        verts.append((cx + math.cos(ang) * radius,
+                      cy + math.sin(ang) * radius,
+                      z_floor + 0.05))
+    faces = []
+    for i in range(n_posts):
+        ni = (i + 1) % n_posts
+        faces.append([0, 1 + i, 1 + ni])
+    _finalize_mesh(f"{name}_Floor", verts, faces, floor_color)
+    # Posts
+    for i in range(n_posts):
+        ang = 2.0 * math.pi * i / n_posts
+        px = cx + math.cos(ang) * radius * 0.95
+        py = cy + math.sin(ang) * radius * 0.95
+        _make_box_local(f"{name}_Post_{i}",
+                        (px, py, z_floor + height / 2),
+                        (0.20, 0.20, height), post_color)
+    # Roof — a low pyramid (hexagonal pyramid)
+    apex = (cx, cy, z_floor + height + 1.6)
+    rverts = [apex]
+    for i in range(n_posts):
+        ang = 2.0 * math.pi * i / n_posts
+        rverts.append((cx + math.cos(ang) * (radius + 0.3),
+                       cy + math.sin(ang) * (radius + 0.3),
+                       z_floor + height))
+    rfaces = []
+    for i in range(n_posts):
+        ni = (i + 1) % n_posts
+        rfaces.append([0, 1 + i, 1 + ni])
+    _finalize_mesh(f"{name}_Roof", rverts, rfaces, roof_color)
+
+
+def _build_drinking_fountain(name, x, y, z_ground):
+    """Small white pillar drinking fountain — the kind in every
+    public park."""
+    _make_box_local(f"{name}_Pillar",
+                    (x, y, z_ground + 0.50),
+                    (0.35, 0.30, 1.00), (0.88, 0.86, 0.82, 1.0))
+    # Basin on top (slight overhang)
+    _make_box_local(f"{name}_Basin",
+                    (x, y, z_ground + 1.05),
+                    (0.45, 0.40, 0.10), (0.88, 0.86, 0.82, 1.0))
+    # Spout
+    _make_box_local(f"{name}_Spout",
+                    (x, y - 0.10, z_ground + 1.15),
+                    (0.08, 0.10, 0.10), (0.55, 0.55, 0.58, 1.0))
+
+
+def _build_trashcan(name, x, y, z_ground):
+    _make_cyl_local(f"{name}_Body",
+                    (x, y, z_ground + 0.55),
+                    0.28, 1.05, (0.32, 0.30, 0.28, 1.0),
+                    segments=8)
+    _make_cyl_local(f"{name}_Lid",
+                    (x, y, z_ground + 1.12),
+                    0.30, 0.08, (0.25, 0.23, 0.22, 1.0),
+                    segments=8)
+
+
+def _build_duck(name, x, y, z_water, facing='+X'):
+    """Small lowpoly duck — white body + orange beak + black eye dot.
+    Sits on the water surface."""
+    # Body (squashed sphere)
+    _make_sphere_low_local(f"{name}_Body",
+                           (x, y, z_water + 0.10),
+                           0.18, (0.92, 0.90, 0.84, 1.0),
+                           rings=3, segments=8)
+    # Head (smaller sphere offset forward)
+    if facing == '+X':
+        hx, hy = x + 0.18, y
+    elif facing == '-X':
+        hx, hy = x - 0.18, y
+    elif facing == '+Y':
+        hx, hy = x, y + 0.18
+    else:
+        hx, hy = x, y - 0.18
+    _make_sphere_low_local(f"{name}_Head",
+                           (hx, hy, z_water + 0.25),
+                           0.10, (0.92, 0.90, 0.84, 1.0),
+                           rings=3, segments=6)
+    # Beak
+    if facing == '+X':
+        bx, by = hx + 0.08, hy
+    elif facing == '-X':
+        bx, by = hx - 0.08, hy
+    elif facing == '+Y':
+        bx, by = hx, hy + 0.08
+    else:
+        bx, by = hx, hy - 0.08
+    _make_box_local(f"{name}_Beak",
+                    (bx, by, z_water + 0.22),
+                    (0.06, 0.06, 0.05),
+                    (0.92, 0.55, 0.20, 1.0))
 
 
 def _make_sphere_low_local(name, center, radius, color,

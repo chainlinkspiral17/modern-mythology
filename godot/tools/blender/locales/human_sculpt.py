@@ -312,7 +312,9 @@ def _build_neck(name, base_x, base_y, shoulder_z, s, skin_color):
 
 def _build_head(name, base_x, base_y, head_base_z, s,
                 skin_color, hair_color, hair_style, facing='-Y',
-                has_sunglasses=False, sunglasses_color=None):
+                has_sunglasses=False, sunglasses_color=None,
+                with_ears=False, with_mouth=False,
+                mouth_color=(0.62, 0.30, 0.32, 1.0)):
     head_d = PROP["head_d"] * s
     head_squash = PROP["head_squash"]
     head_r = head_d / 2
@@ -322,15 +324,30 @@ def _build_head(name, base_x, base_y, head_base_z, s,
                 (base_x, base_y, head_cz),
                 head_r, skin_color,
                 rings=4, segments=8, squash_z=head_squash)
+    # Ears — small skin boxes on the head's left + right sides,
+    # perpendicular to the facing axis.
+    if with_ears:
+        fwd_x, fwd_y = _face_axis(facing)
+        # Side axis = facing perpendicular (rotated 90° around z)
+        side_x = -fwd_y
+        side_y =  fwd_x
+        for side, sign in (('L', -1), ('R', +1)):
+            ex = base_x + sign * side_x * (head_r * 0.95)
+            ey = base_y + sign * side_y * (head_r * 0.95)
+            _box(f"{name}_Ear_{side}",
+                 (ex, ey, head_cz),
+                 (0.06 * s if abs(side_x) < 0.5 else 0.04 * s,
+                  0.04 * s if abs(side_x) < 0.5 else 0.06 * s,
+                  head_d * 0.30),
+                 skin_color)
     # Hair — varies by style
     if hair_style == 'bowl':
-        # Mushroom bowl-cut: a flattened dome covering the top + a
-        # forward-hanging bang fringe. Iconic Oliver-Tree look.
+        # Mushroom bowl-cut: flattened dome covering top + forward
+        # bang fringe over the forehead.
         _sphere_low(f"{name}_Hair_Bowl",
                     (base_x, base_y, head_cz + head_r * 0.05),
                     head_r * 1.08, hair_color,
                     rings=3, segments=10, squash_z=0.65)
-        # Forward bang — a small box hanging over the forehead
         fwd_x, fwd_y = _face_axis(facing)
         _box(f"{name}_Hair_Bang",
              (base_x + fwd_x * head_r * 0.45,
@@ -346,7 +363,7 @@ def _build_head(name, base_x, base_y, head_base_z, s,
                     head_r * 1.03, hair_color,
                     rings=3, segments=8, squash_z=0.55)
     elif hair_style == 'bald':
-        pass    # skull already drawn in skin colour
+        pass    # skull already in skin colour
     # Sunglasses — horizontal band across the eye line
     if has_sunglasses and sunglasses_color is not None:
         fwd_x, fwd_y = _face_axis(facing)
@@ -363,6 +380,22 @@ def _build_head(name, base_x, base_y, head_base_z, s,
                  (gx, gy, gz),
                  (0.03, head_d * 0.85, head_d * 0.22),
                  sunglasses_color)
+    # Mouth — small horizontal mouth line below the glasses
+    if with_mouth:
+        fwd_x, fwd_y = _face_axis(facing)
+        mx = base_x + fwd_x * (head_r * 0.95 + 0.005)
+        my = base_y + fwd_y * (head_r * 0.95 + 0.005)
+        mz = head_cz - head_r * 0.30
+        if abs(fwd_y) > abs(fwd_x):
+            _box(f"{name}_Mouth",
+                 (mx, my, mz),
+                 (head_d * 0.35, 0.02, head_d * 0.10),
+                 mouth_color)
+        else:
+            _box(f"{name}_Mouth",
+                 (mx, my, mz),
+                 (0.02, head_d * 0.35, head_d * 0.10),
+                 mouth_color)
 
 
 def _build_scarf(name, base_x, base_y, shoulder_z, s, scarf_color):
@@ -399,7 +432,10 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
                  shoe_color=(0.18, 0.18, 0.20, 1.0),
                  # Face
                  has_sunglasses=False,
-                 sunglasses_color=(0.15, 0.15, 0.15, 1.0)):
+                 sunglasses_color=(0.15, 0.15, 0.15, 1.0),
+                 with_ears=False,
+                 with_mouth=False,
+                 mouth_color=(0.62, 0.30, 0.32, 1.0)):
     """Build a parametric standing human figure at (base_x, base_y,
     base_z) with feet on the ground at base_z. See module docstring
     for full parameter notes."""
@@ -425,11 +461,14 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
     _build_scarf(name, base_x, base_y, shoulder_z, s, scarf_color)
     # Neck on top of scarf area
     head_base_z = _build_neck(name, base_x, base_y, shoulder_z, s, skin_color)
-    # Head with hair + optional sunglasses
+    # Head with hair + optional sunglasses + ears + mouth
     _build_head(name, base_x, base_y, head_base_z, s,
                 skin_color, hair_color, hair_style, facing,
                 has_sunglasses=has_sunglasses,
-                sunglasses_color=sunglasses_color)
+                sunglasses_color=sunglasses_color,
+                with_ears=with_ears,
+                with_mouth=with_mouth,
+                mouth_color=mouth_color)
 
 
 __all__ = ["human_figure", "PROP"]
