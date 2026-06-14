@@ -120,14 +120,14 @@ const MOODS: Array = [
         # brightest pixels (red sign letters, white bulb meshes) bleed
         # through the black fill as their actual scene colour — same
         # trick as the linework mood, applied as the foundation here.
-        "neon": 1.0, "neon_thresh": 0.010,
+        "neon": 1.0, "neon_thresh": 0.006,
         "neon_edge": Color(0.96, 0.94, 0.88, 1),
         "neon_low":  Color(0.0, 0.0, 0.0, 1),
         "neon_high": Color(0.0, 0.0, 0.0, 1),
-        "neon_grad": 0.0, "neon_blend": 0.55, "neon_glow": 0.10,
+        "neon_grad": 0.0, "neon_blend": 0.65, "neon_glow": 0.06,
         "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
         "neon_sat_bleed": true,
-        "neon_sat_lo": 0.50, "neon_sat_hi": 0.68,
+        "neon_sat_lo": 0.55, "neon_sat_hi": 0.78,
         # ASCII density at LIGHTER strength — adds halftone where the
         # picture is bright, doesn't flood pure-black surfaces.
         "dir_ascii": 0.40, "dir_cell": 9.0, "dir_thresh": 0.06,
@@ -157,14 +157,14 @@ const MOODS: Array = [
         "palette": 16.0, "dither": 0.01, "scanline": 0.06, "aberration": 0.0,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
-        "neon": 1.0, "neon_thresh": 0.010,           # finer than before — catches railings, plank seams
+        "neon": 1.0, "neon_thresh": 0.006,           # finer than before — catches railings, plank seams
         "neon_edge": Color(0.96, 0.94, 0.88, 1),
         "neon_low":  Color(0.0,  0.0,  0.0,  1),
         "neon_high": Color(0.0,  0.0,  0.0,  1),
-        "neon_grad": 0.0, "neon_blend": 0.55, "neon_glow": 0.10,
+        "neon_grad": 0.0, "neon_blend": 0.65, "neon_glow": 0.06,
         "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
         "neon_sat_bleed": true,
-        "neon_sat_lo": 0.50, "neon_sat_hi": 0.68,
+        "neon_sat_lo": 0.55, "neon_sat_hi": 0.78,
     },
     {
         "name": "ice",
