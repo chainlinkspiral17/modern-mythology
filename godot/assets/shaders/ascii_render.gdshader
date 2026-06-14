@@ -148,12 +148,15 @@ void fragment() {
     vec2 cell_idx = floor(frag / cell_size);
     vec2 local = fract(frag / cell_size);
 
-    // Sample the scene at the centre of THIS cell, not at the fragment
-    // — so every fragment inside a cell sees the same source pixel.
+    // Per-fragment sample for the passthrough scene — at strength = 0
+    // this shader must be a perfect identity, otherwise it stamps a
+    // cell grid onto every mood that has it in the chain.
+    vec3 scene = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
+    // Cell-center sample drives the ASCII glyph density only.
     vec2 cell_center_pix = (cell_idx + 0.5) * cell_size;
     vec2 cell_center_uv = cell_center_pix * SCREEN_PIXEL_SIZE;
-    vec3 scene = texture(SCREEN_TEXTURE, cell_center_uv).rgb;
-    float luma = dot(scene, vec3(0.299, 0.587, 0.114));
+    vec3 cell_scene = texture(SCREEN_TEXTURE, cell_center_uv).rgb;
+    float luma = dot(cell_scene, vec3(0.299, 0.587, 0.114));
 
     // Luma → character index (0 = space, 9 = solid block). A slight
     // gamma curve biases the ramp so the picture has plenty of mid-
@@ -173,7 +176,7 @@ void fragment() {
 
     // Foreground: either the configured ink colour, or the scene's
     // own colour brightened so the character shape reads.
-    vec3 fg = tint_from_scene ? scene * 1.6 + 0.05 : fg_color.rgb;
+    vec3 fg = tint_from_scene ? cell_scene * 1.6 + 0.05 : fg_color.rgb;
     vec3 ascii_pixel = mix(bg_color.rgb, fg, mask);
 
     // Hue rotation — paints the picture through the spectrum.
