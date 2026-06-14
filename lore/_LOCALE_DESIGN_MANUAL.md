@@ -216,6 +216,115 @@ Before exporting the GLB:
    in Godot the road follows the grade. A flat road on a slope
    reads as obviously broken.
 
+## Settlement flattening + prosperity tiers
+
+Per the 2026-06-14 session: **humans build on relatively flat
+land; wild zones between them keep the topographic drama.** The
+elevation function must respect this:
+
+1. Compute the raw base terrain (hills, ravines, noise) normally.
+2. Detect whether the point falls inside (or near) a settlement
+   zone — typically a rectangular polygon with a smooth falloff.
+3. If so, blend the base elevation toward a per-zone `target_z`
+   platform. Flatness 0.70–0.85 inside the zone is the sweet
+   spot; 1.0 reads as artificially perfect, 0.5 reads as
+   not-flat-enough.
+4. Smoothstep the blend over ~35 m so the transition between
+   "platform" and "wild" reads natural.
+
+**Tier the target_z by prosperity.** Higher altitude = higher
+status in HCE:
+
+| Zone                         | target_z |
+|------------------------------|----------|
+| Country Club + Golf          | +22 m    |
+| North Commercial Belt        | +14 m    |
+| North Ranch Homes            | +12 m    |
+| East Cul-de-sac Estates      | +8 m     |
+| East Commercial              | +5 m     |
+| Harmony Park                 | +1 m     |
+| Phase II construction        | +1 m     |
+| West Commercial Strip        | -2 m     |
+| West Estates                 | -3 m     |
+| Phase III construction       | -8 m     |
+| South Commercial / Truck Stop| -9 m     |
+
+The hierarchy reads visually: walk from the truck stop up the
+length of the district and you climb 30 m to the country club.
+
+## Wild-zone features — ponds, pools, mini-valleys
+
+The IN-BETWEEN spaces (creek corridor, Founders Grove, Wild Lot,
+the east woods, the SE basin) should NOT be uniform lawn. Punch
+in pond depressions, mini-valleys, drainage swales — features
+that make the unbuilt zones feel like a real landscape.
+
+Each pond is a circular Gaussian dip:
+
+```python
+PONDS = [
+    ("FoundersPond",   -300,  160,  25,  5.0),
+    ("HarmonyPond",      30,   80,  18,  3.0),
+    ...
+]
+
+# In hce_elevation():
+for (_n, cx, cy, r, depth) in PONDS:
+    d = math.hypot(x - cx, y - cy)
+    base += -depth * math.exp(-d * d / (r * r))
+```
+
+Ponds inside settlement zones get FLATTENED out by the
+settlement_blend pass (which is fine — the Harmony Park "pond"
+is really the community pool, a constructed water feature, and
+should sit at platform z anyway). Ponds in wild zones survive
+into the final terrain.
+
+## Berms — the suburban view-blockers
+
+Per user direction (2026-06-14): "suburbs have lots of artificial
+slopes and hills to obstruct views of homes, brick fences and the
+like." Real planned communities use:
+
+- **Earth berms** along property lines + arterial frontages,
+  typically 1.5–2.5 m tall, to screen homes from cars.
+- **Brick privacy walls** at the same locations on commercial
+  frontage and gated subdivision entrances.
+- **Black iron lattice fencing** along amenity edges (golf course
+  perimeter, pond/lake-facing backyards, the wrought-iron pattern
+  the HOA spec mandates).
+
+Berms are PART OF the elevation function — they're terrain.
+Place them as polylines with a width (Gaussian falloff distance)
+and a peak height. Apply AFTER settlement-flatten so the berm
+sits on the flat platform's edge, not inside it.
+
+```python
+BERMS = [
+    ("CC_Buffer",       [(-460, 340), (440, 340)],  14.0, 2.5),
+    ("NorthRanch_Front",[(-460, 270), (-200, 270)], 10.0, 1.8),
+    ...
+]
+
+# In hce_elevation, after settlement_flatten:
+for (_n, polyline, width, height) in BERMS:
+    d = polyline_dist(x, y, polyline)
+    base += height * math.exp(-d * d / (width * width))
+```
+
+Brick walls and iron lattice fences are GEOMETRY — they sit on
+the terrain. Use `infra_library.brick_wall(p0, p1, ...)` and
+`iron_lattice_fence(p0, p1, ...)`. The library's iron-fence
+primitive includes vertical bars + horizontal rails + thicker
+posts at regular intervals + ball finials — the canonical HCE
+wrought-iron pattern.
+
+**The wall vs fence rule:**
+- Backyard faces an arterial / commercial → BRICK WALL (privacy)
+- Backyard faces a pond / golf course / park → IRON LATTICE
+  FENCE (so the amenity view remains)
+- Front yard → no fence; berms + landscaping do the job.
+
 ## When to break the rule
 
 The rule "topography first" applies to OUTDOOR locales. Indoor

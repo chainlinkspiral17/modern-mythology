@@ -961,6 +961,146 @@ def picnic_table(name, position, z=0.0):
              (1.8, 0.35, 0.05), COL_BENCH)
 
 
+# ════════════════════════════════════════════════════════════════
+# FENCES — suburban privacy walls + decorative iron lattice
+# ════════════════════════════════════════════════════════════════
+
+COL_BRICK_WALL    = (0.55, 0.32, 0.26, 1.0)   # red brick privacy
+COL_BRICK_CAP     = (0.78, 0.74, 0.66, 1.0)   # cream stone cap
+COL_IRON_FENCE    = (0.10, 0.10, 0.10, 1.0)   # black wrought iron
+
+
+def brick_wall(name, p0, p1, height=1.8, thickness=0.30, z=0.0,
+               with_cap=True, color=COL_BRICK_WALL,
+               cap_color=COL_BRICK_CAP):
+    """Suburban privacy brick wall. Solid mass between p0 and p1
+    with an optional cream-stone cap. Per user direction: HCE
+    backyards facing arterials get brick walls; backyards facing
+    ponds get iron_lattice_fence instead so the water reads.
+
+    height: wall top above z (m). 1.8 m = standard privacy.
+    thickness: 0.30 m = single-wythe brick + cap. Bump to 0.40
+       for double-wythe / commercial property line walls."""
+    x0, y0 = p0; x1, y1 = p1
+    dx = x1 - x0; dy = y1 - y0
+    length = math.hypot(dx, dy)
+    if length < 0.001:
+        return None
+    ang = math.atan2(dy, dx)
+    perp_x = -math.sin(ang); perp_y = math.cos(ang)
+    half_t = thickness / 2
+    verts = [
+        (x0 - perp_x * half_t, y0 - perp_y * half_t, z),
+        (x1 - perp_x * half_t, y1 - perp_y * half_t, z),
+        (x1 + perp_x * half_t, y1 + perp_y * half_t, z),
+        (x0 + perp_x * half_t, y0 + perp_y * half_t, z),
+        (x0 - perp_x * half_t, y0 - perp_y * half_t, z + height),
+        (x1 - perp_x * half_t, y1 - perp_y * half_t, z + height),
+        (x1 + perp_x * half_t, y1 + perp_y * half_t, z + height),
+        (x0 + perp_x * half_t, y0 + perp_y * half_t, z + height),
+    ]
+    faces = [
+        [4, 5, 6, 7],     # top
+        [0, 3, 2, 1],     # bottom
+        [0, 1, 5, 4],     # west face
+        [2, 3, 7, 6],     # east face
+        [0, 4, 7, 3],     # south end
+        [1, 2, 6, 5],     # north end
+    ]
+    _finalize_mesh(name + "_Brick", verts, faces, color)
+    if with_cap:
+        # Cream-stone cap — slightly wider than the wall
+        cap_t = thickness + 0.10
+        cap_h = 0.12
+        half_c = cap_t / 2
+        cverts = [
+            (x0 - perp_x * half_c, y0 - perp_y * half_c, z + height),
+            (x1 - perp_x * half_c, y1 - perp_y * half_c, z + height),
+            (x1 + perp_x * half_c, y1 + perp_y * half_c, z + height),
+            (x0 + perp_x * half_c, y0 + perp_y * half_c, z + height),
+            (x0 - perp_x * half_c, y0 - perp_y * half_c, z + height + cap_h),
+            (x1 - perp_x * half_c, y1 - perp_y * half_c, z + height + cap_h),
+            (x1 + perp_x * half_c, y1 + perp_y * half_c, z + height + cap_h),
+            (x0 + perp_x * half_c, y0 + perp_y * half_c, z + height + cap_h),
+        ]
+        cfaces = [
+            [4, 5, 6, 7], [0, 3, 2, 1],
+            [0, 1, 5, 4], [2, 3, 7, 6],
+            [0, 4, 7, 3], [1, 2, 6, 5],
+        ]
+        _finalize_mesh(name + "_Cap", cverts, cfaces, cap_color)
+
+
+def iron_lattice_fence(name, p0, p1, height=1.4, post_spacing=2.5,
+                       bar_spacing=0.13, z=0.0,
+                       color=COL_IRON_FENCE):
+    """Black wrought-iron bar fence — the HCE planned-community
+    look. Vertical bars between top and bottom rails, with thicker
+    posts at regular intervals. Used along pond-facing backyards
+    so the water stays visible from inside the community.
+
+    height: top of fence above z. 1.4 m = standard residential.
+    post_spacing: distance between thicker posts.
+    bar_spacing: distance between vertical bars."""
+    x0, y0 = p0; x1, y1 = p1
+    dx = x1 - x0; dy = y1 - y0
+    length = math.hypot(dx, dy)
+    if length < 0.001:
+        return None
+    ang = math.atan2(dy, dx)
+    perp_x = -math.sin(ang); perp_y = math.cos(ang)
+
+    # Bottom rail (kicker rail just above ground)
+    rail_t = 0.04
+    rail_h_low = 0.20
+    rail_h_high = height - 0.10
+    # Top and bottom rails — thin horizontal boxes along the segment
+    for rh in (rail_h_low, rail_h_high):
+        mx = (x0 + x1) / 2; my = (y0 + y1) / 2
+        if abs(dx) > abs(dy):
+            _box(f"{name}_Rail_z{rh:.2f}",
+                 (mx, my, z + rh),
+                 (length, rail_t, rail_t * 1.4), color)
+        else:
+            _box(f"{name}_Rail_z{rh:.2f}",
+                 (mx, my, z + rh),
+                 (rail_t, length, rail_t * 1.4), color)
+
+    # Vertical bars
+    n_bars = max(2, int(length / bar_spacing))
+    for i in range(n_bars + 1):
+        t = i / n_bars
+        bx = x0 + dx * t; by = y0 + dy * t
+        _box(f"{name}_Bar_{i}",
+             (bx, by, z + height / 2),
+             (rail_t * 0.7, rail_t * 0.7, height),
+             color)
+
+    # Decorative spear tips on each bar (suggested with a tiny taper
+    # we approximate by a smaller box above each bar)
+    for i in range(n_bars + 1):
+        t = i / n_bars
+        bx = x0 + dx * t; by = y0 + dy * t
+        _box(f"{name}_Spear_{i}",
+             (bx, by, z + height + 0.04),
+             (rail_t * 0.5, rail_t * 0.5, 0.08),
+             color)
+
+    # Thicker posts at regular intervals
+    n_posts = max(2, int(length / post_spacing))
+    for i in range(n_posts + 1):
+        t = i / max(1, n_posts)
+        px = x0 + dx * t; py = y0 + dy * t
+        _box(f"{name}_Post_{i}",
+             (px, py, z + (height + 0.20) / 2),
+             (0.10, 0.10, height + 0.20),
+             color)
+        # Ball finial on each post
+        _disc(f"{name}_PostBall_{i}",
+              (px, py, z + height + 0.30), 0.06,
+              z + height + 0.30, color, segments=8)
+
+
 def double_yellow(name, p0, p1, z=0.0):
     """Standalone double-yellow centre line — for when a build
     script needs to drop the lines independent of a road call."""
@@ -982,6 +1122,9 @@ __all__ = [
     # Civic / parks
     "school_zone_sign", "library_sign", "park_sign",
     "public_walkway", "bench", "picnic_table",
+    # Fences / walls
+    "brick_wall", "iron_lattice_fence",
+    "COL_BRICK_WALL", "COL_BRICK_CAP", "COL_IRON_FENCE",
     # Colours (re-export so build scripts don't redefine)
     "COL_ASPHALT", "COL_ASPHALT_FRESH", "COL_ASPHALT_AGED",
     "COL_PAINT_YELLOW", "COL_PAINT_WHITE", "COL_CURB",

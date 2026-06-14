@@ -147,36 +147,106 @@ class LandscapeParams:
     seed: int = 1337
 
 # ── HCE example parameters (the topography doc made flesh) ────────
+# Settlements / ponds / berms — must stay in lockstep with
+# build_harmony_terrain.py. See lore/_LOCALE_DESIGN_MANUAL.md
+# for the design rules.
+HCE_SETTLEMENTS = [
+    ("CountryClub", -460, 440, 340, 420, +22.0, 0.85),
+    ("NorthRanch",  -460, -200, 20, 260, +12.0, 0.80),
+    ("EastCDS",     180, 440, 20, 260, +8.0, 0.80),
+    ("Phase2",      40, 240, -260, -100, +1.0, 0.75),
+    ("WestEstates", -460, -120, -340, -40, -3.0, 0.78),
+    ("Phase3",      -460, -260, -340, -180, -8.0, 0.70),
+    ("NorthComm",   -460, 440, 260, 340, +14.0, 0.75),
+    ("EastComm",    440, 540, -340, 260, +5.0, 0.80),
+    ("WestComm",    -560, -460, -340, 260, -2.0, 0.85),
+    ("SouthComm",   -460, 440, -400, -340, -9.0, 0.85),
+    ("HarmonyPark", -120, 180, -40, 200, +1.0, 0.55),
+]
+HCE_PONDS = [
+    ("FoundersPond",   -300,  160,  25,  5.0),
+    ("HarmonyPond",      30,   80,  18,  3.0),
+    ("WildLotPond",    -320, -240,  20,  4.0),
+    ("SECreekPond",     280, -200,  22,  4.0),
+    ("NWHeadwatersPond",-440,  280,  18,  3.0),
+    ("EastWoodsPond",   320,  300,  16,  2.5),
+]
+HCE_BERMS = [
+    ("CC_Buffer",        [(-460, 340), (440, 340)],          14.0, 2.5),
+    ("NorthRanch_Front", [(-460, 270), (-200, 270)],         10.0, 1.8),
+    ("NorthRanch_South", [(-460, 25), (-200, 25)],           10.0, 1.5),
+    ("EastCDS_Front",    [(180, 270), (440, 270)],           10.0, 1.8),
+    ("EastCDS_South",    [(180, 25), (440, 25)],             10.0, 1.5),
+    ("WestEstates_E",    [(-120, -340), (-120, -40)],        9.0, 1.4),
+    ("WestEstates_N",    [(-460, -30), (-120, -30)],         9.0, 1.4),
+    ("Phase2_N",         [(40, -100), (240, -100)],          8.0, 1.5),
+    ("WildLot_Edge",     [(-400, -180), (-260, -180)],       6.0, 1.5),
+]
+SETTLEMENT_FALLOFF = 35.0
+
+def _smoothstep(e0, e1, x):
+    if x <= e0: return 0.0
+    if x >= e1: return 1.0
+    t = (x - e0) / (e1 - e0)
+    return t * t * (3 - 2 * t)
+
+def _polyline_dist(x, y, polyline):
+    best = float("inf")
+    for i in range(len(polyline) - 1):
+        x0, y0 = polyline[i]
+        x1, y1 = polyline[i + 1]
+        dx = x1 - x0; dy = y1 - y0
+        l2 = dx * dx + dy * dy
+        if l2 < 0.001:
+            continue
+        t = max(0.0, min(1.0, ((x - x0) * dx + (y - y0) * dy) / l2))
+        px = x0 + dx * t; py = y0 + dy * t
+        d = math.hypot(x - px, y - py)
+        if d < best:
+            best = d
+    return best
+
+
 def hce_elevation(x: float, y: float) -> float:
-    """Real terrain — ~40 m peak-to-trough across the 1200 × 840 m
-    district. Tuned after the 30 m spread still read flat. Now:
-      · NW country-club hill  +22 m
-      · East-side ridge       +10 m
-      · NW headwaters knoll    +8 m
-      · SE basin              -8 m
-      · NW→SE tilt           ±10 m
-      · Creek ravine           -7 m
-      · Multi-scale noise     ±5.5 m
-    Must stay in sync with build_harmony_terrain.py hce_elevation()."""
+    """Per the design manual: humans on flat platforms; wild zones
+    keep the topographic drama; berms separate the two. Settlements
+    are tiered by prosperity (Country Club +22 m at the top, Phase
+    III construction -8 m at the bottom)."""
     tilt = 10.0 * ((-(x) + y) / 1200.0)
-    cc_dx = x - 0
-    cc_dy = y - 380
-    cc_rise = 22.0 * math.exp(-(cc_dx * cc_dx + cc_dy * cc_dy) / (180.0 * 180.0))
-    east_dx = x - 480
-    east_dy = y - 80
-    east_rise = 10.0 * math.exp(-(east_dx * east_dx + east_dy * east_dy) / (150.0 * 150.0))
-    nw_dx = x + 400
-    nw_dy = y - 280
-    nw_rise = 8.0 * math.exp(-(nw_dx * nw_dx + nw_dy * nw_dy) / (140.0 * 140.0))
-    south_dx = x - 80
-    south_dy = y + 280
-    south_dip = -8.0 * math.exp(-(south_dx * south_dx + south_dy * south_dy) / (180.0 * 180.0))
+    cc_rise = 22.0 * math.exp(-(x*x + (y-380)*(y-380)) / (180.0*180.0))
+    east_rise = 10.0 * math.exp(-((x-480)*(x-480) + (y-80)*(y-80)) / (150.0*150.0))
+    nw_rise = 8.0 * math.exp(-((x+400)*(x+400) + (y-280)*(y-280)) / (140.0*140.0))
+    south_dip = -8.0 * math.exp(-((x-80)*(x-80) + (y+280)*(y+280)) / (180.0*180.0))
     noise_low = (fbm(x * 0.003, y * 0.003, octaves=3) - 0.5) * 4.0
     noise_high = (fbm(x * 0.012, y * 0.012, octaves=2) - 0.5) * 1.5
     creek_dist = HCE_CREEK.distance(x, y)
-    dip = -7.0 * math.exp(-creek_dist * creek_dist / (50.0 ** 2))
-    return (tilt + cc_rise + east_rise + nw_rise + south_dip
-            + noise_low + noise_high + dip)
+    creek_dip = -7.0 * math.exp(-creek_dist * creek_dist / (50.0 ** 2))
+    base = (tilt + cc_rise + east_rise + nw_rise + south_dip
+            + noise_low + noise_high + creek_dip)
+
+    # Pond depressions (wild zones)
+    for (_n, cx, cy, r, depth) in HCE_PONDS:
+        d = math.hypot(x - cx, y - cy)
+        base += -depth * math.exp(-d * d / (r * r))
+
+    # Settlement flatten
+    best_b = 0.0; best_t = 0.0
+    for (_n, x0, x1, y0, y1, target_z, flatness) in HCE_SETTLEMENTS:
+        dx = max(x0 - x, 0.0, x - x1)
+        dy = max(y0 - y, 0.0, y - y1)
+        d = math.hypot(dx, dy)
+        b = (1.0 - _smoothstep(0, SETTLEMENT_FALLOFF, d)) * flatness
+        if b > best_b:
+            best_b = b; best_t = target_z
+    if best_b > 0.001:
+        base = base * (1 - best_b) + best_t * best_b
+
+    # Berms (artificial slopes between settlements and the wild)
+    for (_n, polyline, width, height) in HCE_BERMS:
+        d = _polyline_dist(x, y, polyline)
+        base += height * math.exp(-d * d / (width * width))
+
+    return base
 
 HCE_CREEK = CreekPath(
     points=[

@@ -127,44 +127,195 @@ def _hash2d(x, y, seed=1337):
     return n - math.floor(n)
 
 
+# ────────────────────────────────────────────────────────────────
+# SETTLEMENTS — human-built zones get FLATTENED to a per-zone
+# platform elevation. Higher target_z = more prosperous (country
+# club > north ranch > east CDS > west estates > Phase III).
+# Per the design manual: humans build on relatively flat land;
+# the wild zones BETWEEN them keep all the topographic drama.
+# ────────────────────────────────────────────────────────────────
+# Format: (name, x_min, x_max, y_min, y_max, target_z, flatness)
+SETTLEMENTS = [
+    # Country club + golf — peak prosperity, top of the hill
+    ("CountryClub", -460, 440, 340, 420, +22.0, 0.85),
+    # North Ranch Homes — second-highest tier
+    ("NorthRanch",  -460, -200, 20, 260, +12.0, 0.80),
+    # East CDS Estates — sits on the east ridge
+    ("EastCDS",     180, 440, 20, 260, +8.0, 0.80),
+    # Phase II construction (under occupancy) — middle tier
+    ("Phase2",      40, 240, -260, -100, +1.0, 0.75),
+    # West Estates (single-family) — modest lowland
+    ("WestEstates", -460, -120, -340, -40, -3.0, 0.78),
+    # Phase III construction (Norman Lott) — gone-to-seed low
+    ("Phase3",      -460, -260, -340, -180, -8.0, 0.70),
+    # North Commercial Belt — between CC and Ranch, sloped
+    ("NorthComm",   -460, 440, 260, 340, +14.0, 0.75),
+    # East Commercial
+    ("EastComm",    440, 540, -340, 260, +5.0, 0.80),
+    # West Commercial Strip (Highway 9 lowland)
+    ("WestComm",    -560, -460, -340, 260, -2.0, 0.85),
+    # South Commercial / Truck Stop (low — truck route)
+    ("SouthComm",   -460, 440, -400, -340, -9.0, 0.85),
+    # Harmony Park (manicured — flatter than wild, less than housing)
+    ("HarmonyPark", -120, 180, -40, 200, +1.0, 0.55),
+]
+SETTLEMENT_FALLOFF = 35.0   # m of smooth transition outside each rect
+
+# ────────────────────────────────────────────────────────────────
+# PONDS, POOLS, MINI-VALLEYS — features in the WILD zones between
+# settlements. Add character to the in-between spaces.
+# ────────────────────────────────────────────────────────────────
+# Format: (name, cx, cy, radius, depth)  depth is positive metres
+PONDS = [
+    ("FoundersPond",   -300,  160,  25,  5.0),    # Founders Grove pond
+    ("HarmonyPond",      30,   80,  18,  3.0),    # park pond (also pool location)
+    ("WildLotPond",    -320, -240,  20,  4.0),    # in the gone-to-seed lot
+    ("SECreekPond",     280, -200,  22,  4.0),    # near south end of creek
+    ("NWHeadwatersPond",-440,  280,  18,  3.0),   # tiny tarn at creek origin
+    ("EastWoodsPond",   320,  300,  16,  2.5),    # in the creek-trail park
+]
+
+
+def smoothstep(edge0, edge1, x):
+    if x <= edge0: return 0.0
+    if x >= edge1: return 1.0
+    t = (x - edge0) / (edge1 - edge0)
+    return t * t * (3 - 2 * t)
+
+
+def settlement_blend(x, y, x_min, x_max, y_min, y_max, falloff=SETTLEMENT_FALLOFF):
+    """Returns 1.0 fully inside the rectangle, smoothstepping to 0
+    over `falloff` meters outside. Used to flatten human-built zones
+    toward their platform elevation."""
+    dx = max(x_min - x, 0.0, x - x_max)
+    dy = max(y_min - y, 0.0, y - y_max)
+    d = math.hypot(dx, dy)
+    return 1.0 - smoothstep(0, falloff, d)
+
+
+def pond_depression(x, y, cx, cy, radius, depth):
+    """Negative bump at (cx, cy) with smooth circular falloff."""
+    d = math.hypot(x - cx, y - cy)
+    return -depth * math.exp(-d * d / (radius * radius))
+
+
 def hce_elevation(x, y):
-    """Real terrain features — ~40 m peak-to-trough across the
-    1200 × 840 m district. Tuned after user feedback that 30 m
-    spread looked too gentle. Now:
-      · NW country-club hill        +22 m peak
-      · East-side ridge             +10 m
-      · NW headwaters knoll         +8  m (creek origin)
-      · SE basin depression          -8  m
-      · NW→SE tilt                  ±10 m
-      · Creek ravine                -7  m below bank
-      · Multi-scale noise           ±4  m (low freq) + ±1.5 m (detail)
-    Combined visible range typically -22 m → +28 m. Reads as a
-    real hilly suburb, not a 1 % grade lawn."""
+    """Per the design manual: humans build on relatively flat land;
+    wild zones in between keep ALL the topographic drama. Higher
+    altitude = more prosperous community.
+
+    Base terrain (~40 m peak-to-trough):
+      · NW country-club hill   +22 m   (the most prosperous)
+      · East ridge             +10 m   (east CDS estates)
+      · NW headwaters knoll     +8 m
+      · SE basin               -8 m
+      · NW→SE tilt            ±10 m
+      · Creek ravine          -7 m
+      · Multi-scale fbm noise ±5.5 m
+
+    Then six PONDS / mini-pools punch wild-zone depressions in
+    between settlements, and ELEVEN settlement zones flatten the
+    base toward their per-zone platform elevation — country club
+    +22 m at the top, Phase III construction -8 m at the bottom.
+    """
+    # ── Base terrain ─────────────────────────────────────────────
     tilt = 10.0 * ((-(x) + y) / 1200.0)
-    # Country club hilltop — taller, tighter
     cc_dx = x - 0
     cc_dy = y - 380
     cc_rise = 22.0 * math.exp(-(cc_dx * cc_dx + cc_dy * cc_dy) / (180.0 * 180.0))
-    # Secondary east-side ridge
     east_dx = x - 480
     east_dy = y - 80
     east_rise = 10.0 * math.exp(-(east_dx * east_dx + east_dy * east_dy) / (150.0 * 150.0))
-    # NW headwaters knoll (creek originates here)
     nw_dx = x + 400
     nw_dy = y - 280
     nw_rise = 8.0 * math.exp(-(nw_dx * nw_dx + nw_dy * nw_dy) / (140.0 * 140.0))
-    # SE basin (south sports fields sit in a slight bowl)
     south_dx = x - 80
     south_dy = y + 280
     south_dip = -8.0 * math.exp(-(south_dx * south_dx + south_dy * south_dy) / (180.0 * 180.0))
-    # Multi-scale noise — low-freq for big rolls, high-freq for grain
     noise_low = (fbm(x * 0.003, y * 0.003, octaves=3) - 0.5) * 4.0
     noise_high = (fbm(x * 0.012, y * 0.012, octaves=2) - 0.5) * 1.5
-    # Deeper creek ravine
     creek_d = creek_distance(x, y)
-    dip = -7.0 * math.exp(-creek_d * creek_d / (CREEK_FLOOD_WIDTH ** 2))
-    return (tilt + cc_rise + east_rise + nw_rise + south_dip
-            + noise_low + noise_high + dip)
+    creek_dip = -7.0 * math.exp(-creek_d * creek_d / (CREEK_FLOOD_WIDTH ** 2))
+    base = (tilt + cc_rise + east_rise + nw_rise + south_dip
+            + noise_low + noise_high + creek_dip)
+
+    # ── Pond depressions (carve into wild zones) ─────────────────
+    for (_name, cx, cy, r, d) in PONDS:
+        base += pond_depression(x, y, cx, cy, r, d)
+
+    # ── Settlement flattening ────────────────────────────────────
+    # Each rectangle pulls the elevation toward its platform z by
+    # `flatness`. Multiple overlapping zones blend by max-weight.
+    best_blend = 0.0
+    best_target = 0.0
+    for (_n, x_min, x_max, y_min, y_max, target_z, flatness) in SETTLEMENTS:
+        b = settlement_blend(x, y, x_min, x_max, y_min, y_max) * flatness
+        if b > best_blend:
+            best_blend = b
+            best_target = target_z
+
+    if best_blend > 0.001:
+        flattened = base * (1 - best_blend) + best_target * best_blend
+    else:
+        flattened = base
+
+    # ── Suburban BERMS — artificial linear hillocks between
+    # settlements and the surrounding world. Per user direction:
+    # "suburbs have lots of artificial slopes and hills to obstruct
+    # views of homes." Each berm is a Gaussian ridge along a
+    # polyline. Stacked on TOP of the flattened residential
+    # platforms so the platform stays buildable but the property
+    # edge gets a view-blocking rise.
+    for (_n, polyline, width, height) in BERMS:
+        flattened += berm_ridge(x, y, polyline, width, height)
+    return flattened
+
+
+# ────────────────────────────────────────────────────────────────
+# BERMS — artificial linear slopes between settlements and the
+# outside world. Each is a polyline + width + height; the elevation
+# adds a Gaussian ridge along the line.
+# ────────────────────────────────────────────────────────────────
+BERMS = [
+    # Country club perimeter berm — separates golf from commercial
+    ("CC_Buffer",        [(-460, 340), (440, 340)],          14.0, 2.5),
+    # North Ranch street-facing berm (blocks views from arterials)
+    ("NorthRanch_Front", [(-460, 270), (-200, 270)],         10.0, 1.8),
+    ("NorthRanch_South", [(-460, 25), (-200, 25)],           10.0, 1.5),
+    # East CDS Estates frontage berm
+    ("EastCDS_Front",    [(180, 270), (440, 270)],           10.0, 1.8),
+    ("EastCDS_South",    [(180, 25), (440, 25)],             10.0, 1.5),
+    # West Estates road berm
+    ("WestEstates_E",    [(-120, -340), (-120, -40)],        9.0, 1.4),
+    ("WestEstates_N",    [(-460, -30), (-120, -30)],         9.0, 1.4),
+    # Phase II buffer berm (visually separates the new construction)
+    ("Phase2_N",         [(40, -100), (240, -100)],          8.0, 1.5),
+    # Wild Lot perimeter — keeps the gone-to-seed look in
+    ("WildLot_Edge",     [(-400, -180), (-260, -180)],       6.0, 1.5),
+]
+
+
+def berm_segment_dist(x, y, polyline):
+    """Closest distance from (x, y) to the polyline."""
+    best = float("inf")
+    for i in range(len(polyline) - 1):
+        x0, y0 = polyline[i]
+        x1, y1 = polyline[i + 1]
+        dx = x1 - x0; dy = y1 - y0
+        l2 = dx * dx + dy * dy
+        if l2 < 0.001:
+            continue
+        t = max(0.0, min(1.0, ((x - x0) * dx + (y - y0) * dy) / l2))
+        px = x0 + dx * t; py = y0 + dy * t
+        d = math.hypot(x - px, y - py)
+        if d < best:
+            best = d
+    return best
+
+
+def berm_ridge(x, y, polyline, width, height):
+    d = berm_segment_dist(x, y, polyline)
+    return height * math.exp(-d * d / (width * width))
 
 
 def landuse_at(x, y):
