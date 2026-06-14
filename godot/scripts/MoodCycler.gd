@@ -156,6 +156,38 @@ const MOODS: Array = [
         "dir_red_thresh": 0.32,
     },
     {
+        # SUBSTRATE_PRESS — the reference-close substrate look. Pure
+        # black field, white ink lines from neon_edge with red-only
+        # bleed, dense monotone-white glyph stipple from
+        # ascii_directional. Pushes blueprint_red further: smaller
+        # cells (6 px vs 7), higher dir_ascii strength (0.70 vs 0.45),
+        # lower input_scale cutoff (0.55 vs 0.40) so more model
+        # surfaces qualify and get monotone stipple. Red bleed stays
+        # tight so only sign letters and life rings show colour.
+        "name": "substrate_press",
+        "palette": 16.0, "dither": 0.01, "scanline": 0.08, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": false,
+        "ascii_fg": Color(0.95, 0.92, 0.88, 1), "ascii_bg": Color(0, 0, 0, 1),
+        "neon": 1.0, "neon_thresh": 0.005,
+        "neon_edge": Color(0.96, 0.94, 0.88, 1),
+        "neon_low":  Color(0.0, 0.0, 0.0, 1),
+        "neon_high": Color(0.0, 0.0, 0.0, 1),
+        "neon_grad": 0.0, "neon_blend": 0.55, "neon_glow": 0.06,
+        "neon_bleed_lo": 0.80, "neon_bleed_hi": 0.96,
+        "neon_red_only": true,
+        "neon_accent": Vector3(1.0, 0.0, 0.0),
+        "neon_sat_lo": 0.35, "neon_sat_hi": 0.60,
+        "dir_ascii": 0.70, "dir_cell": 6.0, "dir_thresh": 0.05,
+        "dir_line": Color(0.95, 0.92, 0.88, 1),
+        "dir_fill": Color(0.0, 0.0, 0.0, 1),
+        "dir_tint": false,
+        "dir_input_scale": 0.55,
+        "dir_mono_red": true,
+        "dir_mono_white_col": Color(0.95, 0.92, 0.88, 1),
+        "dir_mono_red_col":   Color(0.98, 0.18, 0.20, 1),
+        "dir_red_thresh": 0.30,
+    },
+    {
         # Pure linework — answer to "render the scene so only visible
         # edges of geometry are pronounced and visible." Uses
         # neon_edge's Sobel silhouette outliner at strength 1 with a
@@ -655,6 +687,32 @@ var blend_mode_override: int = -1
 const BLEND_AMOUNTS: Array[float] = [1.0, 0.6, 0.3, 0.15]
 const BLEND_AMOUNT_LABELS: Array[String] = ["preset", "full", "60%", "30%", "15%"]
 var blend_amount_override: int = -1
+
+# ── TIME-OF-DAY LIGHTING TOGGLE (F11) ─────────────────────────────
+# Multiplies each cached Light3D's base energy and lerps its colour
+# toward the preset's tint. Independent of mood — lets the user
+# stage shots without picking a new visual filter. -1 = scene's
+# original lighting (cached values restored verbatim). Defers to
+# lightshow_extreme which already drives lights from audio.
+const LIGHTING_PRESETS: Array = [
+    {"name": "scene_default", "energy_mult": 1.0, "tint_mix": 0.0,
+     "tint": Color.WHITE, "ambient_mult": 1.0},
+    {"name": "golden_hour",   "energy_mult": 1.3, "tint_mix": 0.55,
+     "tint": Color(1.0, 0.62, 0.32, 1), "ambient_mult": 1.1},
+    {"name": "blue_hour",     "energy_mult": 0.85, "tint_mix": 0.50,
+     "tint": Color(0.42, 0.58, 1.0, 1),  "ambient_mult": 0.9},
+    {"name": "midday",        "energy_mult": 1.8, "tint_mix": 0.30,
+     "tint": Color(1.0, 0.98, 0.92, 1), "ambient_mult": 1.6},
+    {"name": "midnight",      "energy_mult": 0.45, "tint_mix": 0.60,
+     "tint": Color(0.55, 0.62, 0.95, 1), "ambient_mult": 0.4},
+    {"name": "storm_front",   "energy_mult": 0.70, "tint_mix": 0.40,
+     "tint": Color(0.78, 0.82, 0.92, 1), "ambient_mult": 0.7},
+    {"name": "dawn_fog",      "energy_mult": 1.0, "tint_mix": 0.45,
+     "tint": Color(0.95, 0.85, 0.78, 1), "ambient_mult": 1.2},
+]
+var lighting_index: int = 0   # 0 = scene_default
+var _world_env: WorldEnvironment = null
+var _world_env_base_energy: float = 1.0
 # Optional in-game label that displays the current mood name. If the
 # scene's HUD doesn't provide one we just skip updating it.
 @export var mood_label_path: NodePath = NodePath("../HUD/MoodLabel")
@@ -750,7 +808,7 @@ var _strobe_frames_active: int = 2
 
 func _ready() -> void:
     _apply(MOODS[current_index])
-    print("[Mood] %s · F3 cycle · F5 shimmer · F6 rift · F9 blend · RMB+look strata wheel" % MOODS[current_index]["name"])
+    print("[Mood] %s · F3 cycle · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · RMB+look strata wheel" % MOODS[current_index]["name"])
     var by_name: Dictionary = {}
     for i in range(MOODS.size()):
         by_name[MOODS[i]["name"]] = i
@@ -789,8 +847,37 @@ func _collect_lights(node: Node) -> void:
         _scene_lights.append(node)
         _scene_light_base_energy.append((node as Light3D).light_energy)
         _scene_light_base_color.append((node as Light3D).light_color)
+    elif node is WorldEnvironment:
+        _world_env = node as WorldEnvironment
+        if _world_env.environment:
+            _world_env_base_energy = _world_env.environment.ambient_light_energy
     for child in node.get_children():
         _collect_lights(child)
+
+
+func action_cycle_lighting() -> void:
+    lighting_index = (lighting_index + 1) % LIGHTING_PRESETS.size()
+    _apply_lighting(LIGHTING_PRESETS[lighting_index])
+    print("[Mood] lighting → %s" % LIGHTING_PRESETS[lighting_index]["name"])
+
+
+func _apply_lighting(preset: Dictionary) -> void:
+    # lightshow_extreme already owns the lights — don't fight it.
+    if MOODS[current_index]["name"] == "lightshow_extreme":
+        return
+    var em: float = preset["energy_mult"]
+    var tm: float = preset["tint_mix"]
+    var tint: Color = preset["tint"]
+    for i in range(_scene_lights.size()):
+        var light: Light3D = _scene_lights[i]
+        if light == null:
+            continue
+        light.light_energy = _scene_light_base_energy[i] * em
+        light.light_color = _scene_light_base_color[i].lerp(tint, tm)
+    if _world_env and _world_env.environment:
+        _world_env.environment.ambient_light_energy = (
+            _world_env_base_energy * preset["ambient_mult"]
+        )
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -805,6 +892,8 @@ func _unhandled_input(event: InputEvent) -> void:
             action_cycle_blend_mode()
         elif event.keycode == KEY_F10:
             action_cycle_blend_amount()
+        elif event.keycode == KEY_F11:
+            action_cycle_lighting()
     elif event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_RIGHT:
             _right_mouse_held = event.pressed
@@ -864,13 +953,10 @@ func _process(delta: float) -> void:
             var h: float = fposmod(t * 0.15 + phase * 0.08, 1.0)
             light.light_color = Color.from_hsv(h, 0.65, 1.0, 1.0)
     elif _last_lightshow_active:
-        # Just LEFT lightshow_extreme — restore every cached light to
-        # its base values so other moods don't inherit strobed state.
-        for i in range(_scene_lights.size()):
-            var light: Light3D = _scene_lights[i]
-            if light != null:
-                light.light_energy = _scene_light_base_energy[i]
-                light.light_color = _scene_light_base_color[i]
+        # Just LEFT lightshow_extreme — restore every cached light
+        # then re-apply the active lighting preset so the user's F11
+        # selection isn't lost when stepping out of the visualizer.
+        _apply_lighting(LIGHTING_PRESETS[lighting_index])
     _last_lightshow_active = (mood_name == "lightshow_extreme")
 
     # ── psychedelic_substrate · continuous-play visualizer.
@@ -1100,6 +1186,8 @@ func _apply(preset: Dictionary) -> void:
             suffix += "  · blend=%s (F9)" % BLEND_MODE_NAMES[blend_mode_override + 1]
         if blend_amount_override >= 0:
             suffix += "  · amt=%s (F10)" % BLEND_AMOUNT_LABELS[blend_amount_override + 1]
+        if lighting_index > 0:
+            suffix += "  · light=%s (F11)" % LIGHTING_PRESETS[lighting_index]["name"]
         (label as Label).text = "MOOD · %s   (F3)%s" % [preset["name"], suffix]
 
 

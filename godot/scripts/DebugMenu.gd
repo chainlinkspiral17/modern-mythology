@@ -33,6 +33,9 @@ func _ready() -> void:
     _add_btn("F6 · Rift Strobe",             Callable(self, "_btn_rift"))
     _add_btn("F7 · ← Prev Track",            Callable(self, "_btn_prev_track"))
     _add_btn("F8 · Next Track →",            Callable(self, "_btn_next_track"))
+    _add_btn("F9 · Cycle Blend Mode",        Callable(self, "_btn_blend_mode"))
+    _add_btn("F10 · Cycle Blend Amount",     Callable(self, "_btn_blend_amount"))
+    _add_btn("F11 · Cycle Lighting",         Callable(self, "_btn_lighting"))
     _add_btn("Capture Mouse (in-game)",      Callable(self, "_btn_capture"))
 
 
@@ -93,3 +96,15 @@ func _btn_next_track() -> void:
     var m: Node = get_node_or_null("/root/InGameMusic")
     if m and m.has_method("next_track"):
         m.next_track()
+
+func _btn_blend_mode() -> void:
+    if _mood and _mood.has_method("action_cycle_blend_mode"):
+        _mood.action_cycle_blend_mode()
+
+func _btn_blend_amount() -> void:
+    if _mood and _mood.has_method("action_cycle_blend_amount"):
+        _mood.action_cycle_blend_amount()
+
+func _btn_lighting() -> void:
+    if _mood and _mood.has_method("action_cycle_lighting"):
+        _mood.action_cycle_lighting()
