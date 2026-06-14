@@ -162,6 +162,7 @@ HCE_SETTLEMENTS = [
     ("WestComm",    -560, -460, -340, 260, -2.0, 0.85),
     ("SouthComm",   -460, 440, -400, -340, -9.0, 0.85),
     ("HarmonyPark", -120, 180, -40, 200, +1.0, 0.55),
+    ("OliverTreeMemPark", -300, -220, 60, 180, +2.0, 0.80),
 ]
 HCE_PONDS = [
     ("FoundersPond",   -300,  140,  45, 10.0),

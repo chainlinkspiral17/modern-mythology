@@ -166,6 +166,9 @@ SETTLEMENTS = [
     ("SouthComm",   -460, 440, -400, -340, -9.0, 0.85),
     # Harmony Park (manicured — flatter than wild, less than housing)
     ("HarmonyPark", -120, 180, -40, 200, +1.0, 0.55),
+    # Dedicated platform around the Oliver Tree statue so the
+    # walkways + benches + reflecting pool all sit flat
+    ("OliverTreeMemPark", -300, -220, 60, 180, +2.0, 0.80),
 ]
 SETTLEMENT_FALLOFF = 35.0   # m of smooth transition outside each rect
 
@@ -595,17 +598,16 @@ def _cyl(name, center, radius, height, color, segments=8):
 
 
 def build_pond_water():
-    """Blue water disc + sandy beach ring at each pond. Without
-    these the ponds are just terrain depressions — the user can't
-    tell a pond from any other dip. Water plane sits 1.5 m above
-    the pond bottom; beach ring 0.2 m above water so the dry-edge
-    band reads as bank."""
+    """Blue water disc + sandy beach ring at each pond. Pass 2
+    adds: a second darker-blue inner disc for depth read,
+    cattail/reed clumps at the perimeter, and lily-pad discs
+    floating on the surface."""
     segments = 20
     for (name, cx, cy, radius, _depth) in PONDS:
         bottom_z = hce_elevation(cx, cy)
         water_z = bottom_z + 1.5
         wr = radius * 0.80
-        # Water disc
+        # Outer water disc (lighter — shallow rim)
         verts = [(cx, cy, water_z)]
         for i in range(segments):
             ang = 2.0 * math.pi * i / segments
@@ -615,7 +617,22 @@ def build_pond_water():
         for i in range(segments):
             ni = (i + 1) % segments
             faces.append([0, 1 + i, 1 + ni])
-        _finalize_mesh(f"PondWater_{name}", verts, faces, COL_CREEK_WATER)
+        _finalize_mesh(f"PondWater_{name}", verts, faces,
+                       (0.40, 0.62, 0.68, 1.0))    # lighter teal
+        # Inner darker disc — reads as depth
+        ir = wr * 0.55
+        verts2 = [(cx, cy, water_z + 0.005)]
+        for i in range(segments):
+            ang = 2.0 * math.pi * i / segments
+            verts2.append((cx + math.cos(ang) * ir,
+                           cy + math.sin(ang) * ir,
+                           water_z + 0.005))
+        faces2 = []
+        for i in range(segments):
+            ni = (i + 1) % segments
+            faces2.append([0, 1 + i, 1 + ni])
+        _finalize_mesh(f"PondDeep_{name}", verts2, faces2,
+                       (0.18, 0.32, 0.42, 1.0))    # deep navy
         # Sandy beach ring outside the water
         outer = radius * 0.95
         beach_z = water_z + 0.15
@@ -633,6 +650,67 @@ def build_pond_water():
             bfaces.append([i, ni, ni + segments, i + segments])
         _finalize_mesh(f"PondBeach_{name}", bverts, bfaces,
                        (0.78, 0.72, 0.52, 1.0))
+
+        # ── Lily pads — small green discs scattered on the surface
+        # Deterministic placement so each pond gets the same set
+        # across rebuilds.
+        n_pads = max(3, int(radius / 8))
+        for k in range(n_pads):
+            t = k / n_pads
+            ang = 6.2831 * (t * 1.7 + 0.31)        # spiraled placement
+            pr = wr * 0.30 + wr * 0.40 * (t * 0.83 % 1.0)
+            lx = cx + math.cos(ang) * pr
+            ly = cy + math.sin(ang) * pr
+            _disc_low(f"PondLily_{name}_{k}",
+                      (lx, ly, water_z + 0.04),
+                      0.4 + 0.15 * (k % 3), (0.22, 0.55, 0.28, 1.0),
+                      segments=8)
+
+        # ── Reed / cattail clumps at the bank ──
+        # Tall thin green-brown stalks ringing the outer edge of
+        # the beach.
+        n_clumps = max(4, int(radius / 6))
+        for k in range(n_clumps):
+            ang = 6.2831 * k / n_clumps + 0.13
+            rx = cx + math.cos(ang) * outer * 1.04
+            ry = cy + math.sin(ang) * outer * 1.04
+            _reed_clump(f"PondReeds_{name}_{k}", rx, ry,
+                        ground_z=beach_z, count=5)
+
+
+def _disc_low(name, center, radius, color, segments=8):
+    cx, cy, cz = center
+    verts = [(cx, cy, cz)]
+    for i in range(segments):
+        ang = 2.0 * math.pi * i / segments
+        verts.append((cx + math.cos(ang) * radius,
+                      cy + math.sin(ang) * radius, cz))
+    faces = []
+    for i in range(segments):
+        ni = (i + 1) % segments
+        faces.append([0, 1 + i, 1 + ni])
+    _finalize_mesh(name, verts, faces, color)
+
+
+def _reed_clump(name, cx, cy, ground_z, count=5):
+    """A small clump of thin tall reeds with brown cattail tops.
+    count = number of stalks. Each stalk is a thin vertical box
+    with a darker brown cap. Deterministic placement around (cx, cy)."""
+    for i in range(count):
+        ang = 6.2831 * i / count + 0.21 * (i % 3)
+        ox = math.cos(ang) * 0.20
+        oy = math.sin(ang) * 0.20
+        stalk_h = 0.95 + 0.15 * (i % 3)
+        # Green stalk
+        _make_box_local(f"{name}_Stalk_{i}",
+                        (cx + ox, cy + oy, ground_z + stalk_h / 2),
+                        (0.04, 0.04, stalk_h),
+                        (0.32, 0.55, 0.22, 1.0))
+        # Brown cattail head at the top
+        _make_box_local(f"{name}_Head_{i}",
+                        (cx + ox, cy + oy, ground_z + stalk_h - 0.10),
+                        (0.07, 0.07, 0.20),
+                        (0.45, 0.30, 0.18, 1.0))
 
 
 def _fence_along(name, p0, p1, fence_type, sub_len=40.0):
@@ -745,16 +823,289 @@ def build_oliver_tree_memorial():
         sunglasses_color=(0.95, 0.30, 0.45, 1.0), # pink-red lenses
     )
 
-    # ── Beacon overhead so the statue can be found from anywhere ─
-    BEACON_H = 50.0
+    # Beacon moved to the park's south entry so it doesn't obscure
+    # the figure. See build_oliver_tree_memorial_park().
+
+
+def build_oliver_tree_memorial_park():
+    """The Oliver Tree Memorial Park — 80 × 120 m platform around
+    the statue inside Founders Memorial Grove. Per user direction
+    (2026-06-14): "design a pleasant suburban park, The Oliver
+    Tree Memorial Park. With pathways, and terraced hills and nice
+    spots to have a picnic or relax under some older growth trees."
+
+    Build:
+      · Central walkway ring (12 m inner / 15 m outer concrete)
+      · Four radial paths (N/S/E/W) connecting to the perimeter
+      · A two-step TERRACED RISE at the north end — the elevated
+        view-point overlooking the statue + reflecting pool
+      · Reflecting pool 22 m south of statue (the contemplation
+        focal point)
+      · 8 mature OAKS forming a loose ring outside the walkways
+      · 3 picnic tables in shaded spots under the oaks
+      · 5 benches around the central ring + on the terrace
+      · Brown park sign at the south entry
+      · Pink flower planters at each cardinal point of the inner
+        ring (pink for Oliver Tree's signature jacket colour)
+      · Beacon relocated to the south entry so it doesn't tower
+        over the statue
+    """
+    sx, sy = -260.0, 120.0      # statue centre (sub-platform)
+    park_z = hce_elevation(sx, sy)   # platform z after settlement flatten
+
+    COL_PATH        = (0.78, 0.74, 0.66, 1.0)
+    COL_TERRACE     = (0.82, 0.78, 0.68, 1.0)
+    COL_OAK_TRUNK   = (0.30, 0.22, 0.16, 1.0)
+    COL_OAK_CANOPY  = (0.22, 0.42, 0.20, 1.0)
+    COL_OAK_CANOPY2 = (0.30, 0.48, 0.22, 1.0)
+    COL_POOL_WATER  = (0.30, 0.52, 0.62, 1.0)
+    COL_POOL_RIM    = (0.78, 0.74, 0.66, 1.0)
+    COL_FLOWER_PINK = (0.95, 0.42, 0.62, 1.0)
+    COL_FLOWER_BED  = (0.42, 0.30, 0.20, 1.0)
+    COL_BENCH       = (0.42, 0.30, 0.20, 1.0)
+    COL_PICNIC      = (0.48, 0.36, 0.24, 1.0)
+    COL_SIGN_BROWN  = (0.40, 0.30, 0.20, 1.0)
+    COL_SIGN_FACE   = (0.86, 0.82, 0.70, 1.0)
+
+    # ── Central walkway ring (inner 12, outer 15) ─────────────
+    segs = 18
+    inner_r = 12.0; outer_r = 15.0
+    ring_verts = []
+    for ring_idx, r in ((0, inner_r), (1, outer_r)):
+        for i in range(segs):
+            ang = 2.0 * math.pi * i / segs
+            ring_verts.append((sx + math.cos(ang) * r,
+                                sy + math.sin(ang) * r,
+                                park_z + 0.02))
+    ring_faces = []
+    for i in range(segs):
+        ni = (i + 1) % segs
+        ring_faces.append([i, ni, ni + segs, i + segs])
+    _finalize_mesh("OTPark_RingWalk", ring_verts, ring_faces, COL_PATH)
+
+    # ── 4 radial paths (N/S/E/W from ring to perimeter) ───────
+    path_w = 2.4
+    radials = [
+        ('N', 0,  1, 30),
+        ('S', 0, -1, 50),     # south path longest — main entry
+        ('E', 1,  0, 25),
+        ('W', -1, 0, 25),
+    ]
+    for tag, dx, dy, length in radials:
+        start_x = sx + dx * outer_r
+        start_y = sy + dy * outer_r
+        end_x = sx + dx * (outer_r + length)
+        end_y = sy + dy * (outer_r + length)
+        if abs(dx) > abs(dy):
+            _make_box_local(f"OTPark_Path_{tag}",
+                            ((start_x + end_x) / 2,
+                             (start_y + end_y) / 2,
+                             park_z + 0.02),
+                            (length, path_w, 0.04), COL_PATH)
+        else:
+            _make_box_local(f"OTPark_Path_{tag}",
+                            ((start_x + end_x) / 2,
+                             (start_y + end_y) / 2,
+                             park_z + 0.02),
+                            (path_w, length, 0.04), COL_PATH)
+
+    # ── Terraced rise at the NORTH end — two short steps up ──
+    # Step 1: 22 × 8 m at +0.6 m
+    _make_box_local("OTPark_Terrace_1",
+                    (sx, sy + outer_r + 30 + 6, park_z + 0.30),
+                    (22, 12, 0.60), COL_TERRACE)
+    # Step 2: 14 × 6 m at +1.2 m on top of step 1
+    _make_box_local("OTPark_Terrace_2",
+                    (sx, sy + outer_r + 30 + 8, park_z + 0.90),
+                    (14, 8, 0.60), COL_TERRACE)
+    # Terrace railings — short walls along the front edge of step 2
+    _make_box_local("OTPark_Terrace_Rail_L",
+                    (sx - 6.5, sy + outer_r + 30 + 4.2, park_z + 1.50),
+                    (1.5, 0.20, 0.60), COL_TERRACE)
+    _make_box_local("OTPark_Terrace_Rail_R",
+                    (sx + 6.5, sy + outer_r + 30 + 4.2, park_z + 1.50),
+                    (1.5, 0.20, 0.60), COL_TERRACE)
+    # Two stair stubs leading up to step 1
+    for ox in (-5, 5):
+        _make_box_local(f"OTPark_Stairs_{ox:+d}",
+                        (sx + ox, sy + outer_r + 30 - 1.5,
+                         park_z + 0.15),
+                        (2.0, 1.5, 0.30), COL_TERRACE)
+
+    # ── Reflecting pool 22 m SOUTH of statue ──────────────────
+    pool_cx = sx
+    pool_cy = sy - 22
+    pool_r = 6.0
+    # Recessed water disc
+    pool_segs = 16
+    pverts = [(pool_cx, pool_cy, park_z - 0.30)]
+    for i in range(pool_segs):
+        ang = 2.0 * math.pi * i / pool_segs
+        pverts.append((pool_cx + math.cos(ang) * pool_r,
+                       pool_cy + math.sin(ang) * pool_r,
+                       park_z - 0.30))
+    pfaces = []
+    for i in range(pool_segs):
+        ni = (i + 1) % pool_segs
+        pfaces.append([0, 1 + i, 1 + ni])
+    _finalize_mesh("OTPark_Pool", pverts, pfaces, COL_POOL_WATER)
+    # Concrete rim
+    rverts = []
+    for ring_idx, r in ((0, pool_r), (1, pool_r + 0.6)):
+        for i in range(pool_segs):
+            ang = 2.0 * math.pi * i / pool_segs
+            rverts.append((pool_cx + math.cos(ang) * r,
+                           pool_cy + math.sin(ang) * r,
+                           park_z + 0.05))
+    rfaces = []
+    for i in range(pool_segs):
+        ni = (i + 1) % pool_segs
+        rfaces.append([i, ni, ni + pool_segs, i + pool_segs])
+    _finalize_mesh("OTPark_Pool_Rim", rverts, rfaces, COL_POOL_RIM)
+
+    # ── 8 mature OAKS — older growth, big canopies ────────────
+    oak_positions = [
+        (sx - 28, sy - 10), (sx - 28, sy + 12),
+        (sx + 28, sy - 10), (sx + 28, sy + 12),
+        (sx - 18, sy + 26), (sx + 18, sy + 26),
+        (sx - 18, sy - 26), (sx + 18, sy - 26),
+    ]
+    for i, (ox, oy) in enumerate(oak_positions):
+        trunk_h = 5.5     # taller than the wild-zone oaks
+        canopy_r = 5.5    # wider canopy = old-growth
+        _make_cyl_local(f"OTPark_Oak_{i}_Trunk",
+                        (ox, oy, park_z + trunk_h / 2),
+                        0.50, trunk_h, COL_OAK_TRUNK, segments=6)
+        col = COL_OAK_CANOPY if i % 2 == 0 else COL_OAK_CANOPY2
+        _make_sphere_low_local(
+            f"OTPark_Oak_{i}_Canopy",
+            (ox, oy, park_z + trunk_h + canopy_r * 0.55),
+            canopy_r, col, rings=3, segments=8)
+
+    # ── 3 picnic tables under shade trees ─────────────────────
+    picnic_spots = [
+        (sx - 24, sy + 18),     # NW shade
+        (sx + 24, sy + 18),     # NE shade
+        (sx - 24, sy - 18),     # SW shade
+    ]
+    for i, (px, py) in enumerate(picnic_spots):
+        _make_box_local(f"OTPark_Picnic_{i}_Top",
+                        (px, py, park_z + 0.75),
+                        (2.0, 0.90, 0.06), COL_PICNIC)
+        for sign in (-1, 1):
+            _make_box_local(f"OTPark_Picnic_{i}_Bench_{sign:+d}",
+                            (px, py + sign * 0.70, park_z + 0.42),
+                            (2.0, 0.36, 0.05), COL_PICNIC)
+            # Bench legs (suggested)
+            for tx in (-0.85, 0.85):
+                _make_box_local(f"OTPark_Picnic_{i}_BLeg_{sign:+d}_{tx:+.1f}",
+                                (px + tx, py + sign * 0.70,
+                                 park_z + 0.21),
+                                (0.06, 0.06, 0.42), COL_PICNIC)
+
+    # ── 5 benches: 4 around the ring + 1 on the terrace ──────
+    bench_angles = [45, 135, 225, 315]    # diagonals so they face statue
+    for i, ang_deg in enumerate(bench_angles):
+        ang = math.radians(ang_deg)
+        bx = sx + math.cos(ang) * 13.2
+        by = sy + math.sin(ang) * 13.2
+        # Seat
+        _make_box_local(f"OTPark_Bench_{i}_Seat",
+                        (bx, by, park_z + 0.43),
+                        (1.6, 0.42, 0.06), COL_BENCH)
+        # Back — perpendicular to the radial direction so it faces
+        # inward toward the statue.
+        back_off_x = math.cos(ang) * 0.18
+        back_off_y = math.sin(ang) * 0.18
+        if abs(math.cos(ang)) > abs(math.sin(ang)):
+            back_sz = (0.06, 1.5, 0.45)
+        else:
+            back_sz = (1.5, 0.06, 0.45)
+        _make_box_local(f"OTPark_Bench_{i}_Back",
+                        (bx + back_off_x, by + back_off_y,
+                         park_z + 0.85),
+                        back_sz, COL_BENCH)
+    # Terrace bench at the top step
+    _make_box_local("OTPark_TerraceBench_Seat",
+                    (sx, sy + outer_r + 30 + 6, park_z + 1.50 + 0.43),
+                    (2.4, 0.42, 0.06), COL_BENCH)
+    _make_box_local("OTPark_TerraceBench_Back",
+                    (sx, sy + outer_r + 30 + 6.20,
+                     park_z + 1.50 + 0.85),
+                    (2.4, 0.06, 0.45), COL_BENCH)
+
+    # ── Pink flower planters at NSEW of the inner ring ──────
+    for tag, fx_off, fy_off in (('N', 0, 11), ('S', 0, -11),
+                                  ('E', 11, 0), ('W', -11, 0)):
+        # Wooden bed
+        _make_box_local(f"OTPark_FlowerBed_{tag}",
+                        (sx + fx_off, sy + fy_off, park_z + 0.20),
+                        (2.0, 1.0, 0.30), COL_FLOWER_BED)
+        # Pink flowers on top — Oliver Tree's signature jacket pink
+        _make_box_local(f"OTPark_Flowers_{tag}",
+                        (sx + fx_off, sy + fy_off, park_z + 0.50),
+                        (1.9, 0.9, 0.18), COL_FLOWER_PINK)
+
+    # ── Park sign at the SOUTH entry ─────────────────────────
+    sign_x = sx
+    sign_y = sy - outer_r - 48     # near the end of the south path
+    # Two posts
+    for sign_post_x in (-1.4, 1.4):
+        _make_cyl_local(f"OTPark_SignPost_{sign_post_x:+.1f}",
+                        (sign_x + sign_post_x, sign_y,
+                         park_z + 1.4),
+                        0.08, 2.8, COL_SIGN_BROWN, segments=4)
+    # Brown panel
+    _make_box_local("OTPark_SignPanel",
+                    (sign_x, sign_y, park_z + 2.2),
+                    (3.4, 0.15, 1.20), COL_SIGN_BROWN)
+    # Cream lettering area inset (Label3D will overlay text later)
+    _make_box_local("OTPark_SignLetters",
+                    (sign_x, sign_y - 0.08, park_z + 2.2),
+                    (3.0, 0.06, 0.90), COL_SIGN_FACE)
+
+    # ── Beacon relocated to the park south entry ────────────
+    beacon_x = sx
+    beacon_y = sy - outer_r - 50
+    BEACON_H = 35.0
     _make_cyl_local("OT_Beacon_Pole",
-                    (sx, sy, ground_z + BEACON_H / 2),
-                    0.30, BEACON_H,
-                    (0.10, 0.10, 0.10, 1.0), segments=6)
+                    (beacon_x, beacon_y, park_z + BEACON_H / 2),
+                    0.20, BEACON_H, (0.10, 0.10, 0.10, 1.0),
+                    segments=4)
     _make_box_local("OT_Beacon_Top",
-                    (sx, sy, ground_z + BEACON_H + 1.5),
-                    (3.0, 3.0, 3.0),
-                    (0.95, 0.42, 0.62, 1.0))
+                    (beacon_x, beacon_y, park_z + BEACON_H + 1.2),
+                    (2.2, 2.2, 2.2), COL_FLOWER_PINK)
+
+
+def _make_sphere_low_local(name, center, radius, color,
+                           rings=3, segments=8):
+    cx, cy, cz = center
+    verts = [(cx, cy, cz + radius)]
+    for r in range(1, rings):
+        phi = math.pi * r / rings
+        rr = radius * math.sin(phi)
+        zh = radius * math.cos(phi)
+        for s in range(segments):
+            ang = 2.0 * math.pi * s / segments
+            verts.append((cx + rr * math.cos(ang),
+                          cy + rr * math.sin(ang),
+                          cz + zh))
+    verts.append((cx, cy, cz - radius))
+    faces = []
+    for s in range(segments):
+        faces.append([0, 1 + s, 1 + (s + 1) % segments])
+    for r in range(rings - 2):
+        base = 1 + r * segments
+        nxt = 1 + (r + 1) * segments
+        for s in range(segments):
+            faces.append([base + s, nxt + s,
+                          nxt + (s + 1) % segments,
+                          base + (s + 1) % segments])
+    last = len(verts) - 1
+    base = 1 + (rings - 2) * segments
+    for s in range(segments):
+        faces.append([last, base + (s + 1) % segments, base + s])
+    return _finalize_mesh(name, verts, faces, color)
 
 
 def _make_box_local(name, center, size, color):
@@ -805,6 +1156,7 @@ def main():
     build_district_fences()
     build_feature_beacons()
     build_oliver_tree_memorial()
+    build_oliver_tree_memorial_park()
     export_glb()
 
 
