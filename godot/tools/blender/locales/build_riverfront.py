@@ -1052,12 +1052,12 @@ def build_riverboat():
              (0.06, 0.14, boat_sign_h + 0.22), (0.32, 0.26, 0.20, 1.0))
     make_box("BoatSign_FrameAft", (fy, boat_sign_cy - boat_sign_w/2 - 0.10, boat_sign_cz),
              (0.06, 0.14, boat_sign_h + 0.22), (0.32, 0.26, 0.20, 1.0))
-    # Cursive neon on the panel face. Larger scale (1.2x pole-sign size)
-    # since the sign panel is bigger and the cursive_type renderer
-    # auto-centres the text to the panel midpoint.
+    # Cursive neon on the panel face. Big scale (2.0x) so the neon
+    # fills ~85% of the 7.6m panel — no more "lots of black space"
+    # around tiny letters. cursive_type auto-centres the text.
     make_neon_dambrosios("Boat_Port",
                           (boat_sign_cx - 0.08, boat_sign_cy, boat_sign_cz),
-                          face_axis='X', face_sign=-1, scale=1.20)
+                          face_axis='X', face_sign=-1, scale=2.0)
 
     # Hawser bollards (mooring posts) on the boiler deck along the PORT rail
     for i, by_p in enumerate([-5.0, 5.0]):
@@ -1274,12 +1274,12 @@ def build_parking_lot():
                  (0.12, 0.06, sign_h + 0.20), (0.32, 0.26, 0.20, 1.0))
 
     # ── CURSIVE RED NEON: D'Ambrosio's — both faces of the pole sign,
-    # via the shared module-level helper so the same script can also
-    # be mounted on the boat. ─────────────────────────────────────
+    # via the shared module-level helper. Scaled up to fill the panel
+    # (was 1.0 → too much black margin on the 6.4m wide sign).
     make_neon_dambrosios("Pole_N", (sign_x, sign_y + 0.10, sign_z),
-                          face_axis='Y', face_sign=+1, scale=1.0)
+                          face_axis='Y', face_sign=+1, scale=1.4)
     make_neon_dambrosios("Pole_S", (sign_x, sign_y - 0.10, sign_z),
-                          face_axis='Y', face_sign=-1, scale=1.0)
+                          face_axis='Y', face_sign=-1, scale=1.4)
 
 
 # ════════════════════════════════════════════════════════════════

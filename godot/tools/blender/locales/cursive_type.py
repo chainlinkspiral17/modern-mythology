@@ -138,16 +138,22 @@ GLYPHS = {
     },
 
     # ── LOWERCASE s — cursive S shape ──────────────────────────
+    # A proper 's' is two opposing half-loops + a bridge:
+    #   top half opens DOWN  (an inverted U)
+    #   middle bridge diagonals from right of top to left of bottom
+    #   bottom half opens UP  (a U)
+    # The previous definition had the top loop opening UP, which read
+    # as a backwards / inverted S — user feedback caught this.
     "s": {
         "advance": 0.32,
         "strokes": [
             [
-                # Top loop curve
-                ((0.04, 0.45), (0.04, 0.62), (0.18, 0.62), (0.24, 0.52)),
-                # Diagonal across middle
-                ((0.24, 0.52), (0.20, 0.42), (0.06, 0.34), (0.10, 0.20)),
-                # Bottom curl
-                ((0.10, 0.20), (0.14, 0.06), (0.26, 0.00), (0.30, 0.10)),
+                # Top arch — over the top, ends descending on the right
+                ((0.04, 0.40), (0.04, 0.62), (0.24, 0.62), (0.24, 0.40)),
+                # Diagonal bridge from right-of-top to left-of-bottom
+                ((0.24, 0.40), (0.24, 0.30), (0.06, 0.30), (0.06, 0.20)),
+                # Bottom dip — under the bottom, ends rising on the right
+                ((0.06, 0.20), (0.06, 0.0), (0.28, 0.0), (0.28, 0.20)),
             ],
         ],
     },
