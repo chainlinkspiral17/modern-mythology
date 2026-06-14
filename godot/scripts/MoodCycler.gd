@@ -327,6 +327,87 @@ const MOODS: Array = [
         "star_cloud": 0.4,
     },
     {
+        # ANIME MOTION — speed lines + cartoon trails react to player
+        # velocity. Standing still = neutral lithograph. Sprinting =
+        # parallel ASCII strokes at the frame edges + directional
+        # max-blend smear. MoodCycler updates motion_speed every frame.
+        "name": "anime_motion",
+        "palette": 12.0, "dither": 0.02, "scanline": 0.10, "aberration": 0.0006,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 1.0, "neon_thresh": 0.010,
+        "neon_edge": Color(1.0, 1.0, 1.0, 1),
+        "neon_low":  Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.55, "neon_glow": 0.10,
+        "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
+        "neon_red_only": true,
+        "neon_accent": Vector3(1.0, 0.0, 0.0),
+        "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
+        "motion": 1.0, "motion_cell": 9.0, "motion_density": 0.90,
+        "motion_color": Color(1.0, 0.98, 0.92, 1),
+        "motion_trail": 0.8,
+    },
+    {
+        # MOTION BLUR — directional smear via gauss_blur. Pairs with
+        # anime_motion when speed is high; reads MotionDir from the
+        # MoodCycler. Mild scene_blend keeps the boat readable.
+        "name": "motion_blur",
+        "palette": 14.0, "dither": 0.04, "scanline": 0.10, "aberration": 0.0006,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 1, 1, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+        "blur": 0.65, "blur_mode": 1, "blur_radius": 7.0,
+    },
+    {
+        # DREAM BLUR — Gaussian, omnidirectional. Soft fall-off. Use
+        # for memory / dream-state scenes.
+        "name": "dream_blur",
+        "palette": 20.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0008,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 1, 1, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+        "blur": 0.50, "blur_mode": 0, "blur_radius": 5.0,
+    },
+    {
+        # MACRO HAZE — radial DOF-mimic. Centre stays crisp; edges
+        # bleed outward. Cinematic "subject in focus" preset.
+        "name": "macro_haze",
+        "palette": 16.0, "dither": 0.02, "scanline": 0.05, "aberration": 0.0004,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 1, 1, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+        "blur": 0.55, "blur_mode": 2, "blur_radius": 4.0,
+    },
+    {
+        # STUDIO SOFTBOX — even, low-contrast, no edge stylization.
+        # Wide palette, no dither, no scanline. Reads as a controlled
+        # studio shot — useful for portrait-ish camera positions.
+        "name": "studio",
+        "palette": 32.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 1, 1, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+    },
+    {
+        # DAY BRIGHT — high-key, faint scanline, no stylized edges.
+        # The "this is morning, nothing weird here" baseline.
+        "name": "day_bright",
+        "palette": 24.0, "dither": 0.02, "scanline": 0.04, "aberration": 0.0002,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 1, 1, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+    },
+    {
         "name": "ice",
         "palette": 7.0, "dither": 0.22, "scanline": 0.40, "aberration": 0.0020,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
@@ -425,35 +506,72 @@ var _warble_t: float = 999.0              # seconds since last strata swap
 var _audio_level: float = 0.0             # 0..1, smoothed master bus peak
 const AUDIO_DECAY: float = 0.92           # exponential smoothing on the level
 
-# ── F5 STROBE FLICKER ─────────────────────────────────────────────
-# Press F5 to rapid-cycle through a curated sequence of dramatic
-# moods over ~1.5 s, then return to the mood that was active when
-# the strobe started. "A solid in-between flicker in the substrate"
-# — glimpses of alternate realities glitching through the current
-# one. Names are resolved to MOODS indices at startup so a future
-# reorder of MOODS doesn't break the strobe.
-const STROBE_NAMES: Array = [
+# ── Motion-reactive state (driven by player velocity → MotionQuad)
+var _motion_speed: float = 0.0
+var _motion_dir: Vector2 = Vector2(1.0, 0.0)
+var _motion_dir_target: Vector2 = Vector2(1.0, 0.0)
+
+
+func _get_material(node_name: String) -> Material:
+    var node: Node = get_node_or_null(node_name)
+    if node == null or not (node is CanvasItem):
+        return null
+    return (node as CanvasItem).material
+
+# ── STROBE FLICKERS ───────────────────────────────────────────────
+# TWO strobe modes:
+#
+#   F5 SHIMMER · eye-friendly · DEFAULT
+#     Every entry shares the same baseline brightness (pure-black
+#     background, near-white or saturated-accent foreground). The
+#     strobe alternates ACCENT COLOUR, never overall luminance.
+#     `linework` is the interstitial that resets every other beat
+#     so the eye locks to a steady white-on-black baseline and reads
+#     the variations as colour shifts rather than brightness flashes.
+#     2 frames per step (≈30 Hz at 60 fps) — vibration, not strobe.
+#
+#   F6 RIFT · dramatic · saved for hero moments
+#     The original sequence: substrate / linework / demoscene_ascii
+#     / high_contrast_bw / blueprint_red / cel_shaded / etc. Heavy
+#     brightness contrast between adjacent frames — eye-straining
+#     ON PURPOSE. Use for narrative breaks ("reality tears open").
+#     5 frames per step (12 Hz) so individual frames register.
+const STROBE_NAMES_SHIMMER: Array = [
+    "linework", "ink_blue", "linework", "ink_green",
+    "linework", "blueprint_red", "linework", "noir",
+    "linework", "ink_blue", "linework", "high_contrast_bw",
+    "linework", "ink_green", "linework", "blueprint_red",
+    "linework",
+]
+const STROBE_NAMES_RIFT: Array = [
     "substrate", "linework", "demoscene_ascii", "high_contrast_bw",
     "ink_blue", "blueprint_red", "cel_shaded", "ink_green",
     "noir", "precipice", "linework", "substrate",
 ]
-const STROBE_FRAMES_PER_STEP: int = 5     # one mood swap every ~5 frames @ 60fps
+const STROBE_FRAMES_SHIMMER: int = 2     # ≈30 Hz — vibration
+const STROBE_FRAMES_RIFT: int = 5        # ≈12 Hz — perceptible strobe
 var strobe_active: bool = false
 var strobe_step: int = 0
 var strobe_frame: int = 0
 var strobe_return_index: int = 0
-var _strobe_indices: Array[int] = []
+var _strobe_indices_shimmer: Array[int] = []
+var _strobe_indices_rift: Array[int] = []
+var _strobe_indices_active: Array[int] = []
+var _strobe_frames_active: int = 2
 
 
 func _ready() -> void:
     _apply(MOODS[current_index])
-    print("[Mood] %s · F3 cycle · F5 strobe · RMB+look strata wheel" % MOODS[current_index]["name"])
+    print("[Mood] %s · F3 cycle · F5 shimmer · F6 rift · RMB+look strata wheel" % MOODS[current_index]["name"])
     var by_name: Dictionary = {}
     for i in range(MOODS.size()):
         by_name[MOODS[i]["name"]] = i
-    for name in STROBE_NAMES:
+    for name in STROBE_NAMES_SHIMMER:
         if by_name.has(name):
-            _strobe_indices.append(by_name[name])
+            _strobe_indices_shimmer.append(by_name[name])
+    for name in STROBE_NAMES_RIFT:
+        if by_name.has(name):
+            _strobe_indices_rift.append(by_name[name])
     # Resolve the scene-configured mood_strata to indices. Empty
     # strata falls back to the full mood list so F3 / RMB still work.
     for name in mood_strata:
@@ -477,12 +595,11 @@ func _unhandled_input(event: InputEvent) -> void:
             # F3 now steps WITHIN the strata so each area's cycle stays curated.
             _strata_step(1)
         elif event.keycode == KEY_F5:
-            strobe_active = true
-            strobe_step = 0
-            strobe_frame = 0
-            strobe_return_index = current_index
-            print("[Mood] STROBE · return to %s in %d steps" %
-                  [MOODS[strobe_return_index]["name"], _strobe_indices.size()])
+            # F5 = SHIMMER (eye-friendly, ~30 Hz, brightness-locked)
+            _start_strobe(_strobe_indices_shimmer, STROBE_FRAMES_SHIMMER, "shimmer")
+        elif event.keycode == KEY_F6:
+            # F6 = RIFT (dramatic, ~12 Hz, heavy luminance contrast)
+            _start_strobe(_strobe_indices_rift, STROBE_FRAMES_RIFT, "rift")
     elif event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_RIGHT:
             _right_mouse_held = event.pressed
@@ -520,6 +637,29 @@ func _process(delta: float) -> void:
     var bus_peak_lin: float = db_to_linear(bus_peak_db)
     _audio_level = _audio_level * AUDIO_DECAY + bus_peak_lin * (1.0 - AUDIO_DECAY)
 
+    # ── motion-reactive sampling: read the player's velocity from the
+    # "player" group, project the forward 2D component, smooth, push
+    # to the motion_ascii shader. motion_speed is 0..1, motion_dir is
+    # a screen-space 2D unit vector.
+    var player := get_tree().get_first_node_in_group("player")
+    if player and "velocity" in player:
+        var vel: Vector3 = player.velocity
+        var horiz: Vector2 = Vector2(vel.x, vel.z)
+        var raw_speed: float = horiz.length()
+        # Normalise — 12 m/s sprint ≈ 1.0
+        var target_speed: float = clamp(raw_speed / 12.0, 0.0, 1.0)
+        _motion_speed = _motion_speed * 0.85 + target_speed * 0.15
+        if raw_speed > 0.1:
+            _motion_dir_target = horiz.normalized()
+        _motion_dir = _motion_dir.lerp(_motion_dir_target, 0.18)
+        var motion_mat: Material = _get_material("MotionQuad")
+        if motion_mat is ShaderMaterial:
+            (motion_mat as ShaderMaterial).set_shader_parameter("motion_speed", _motion_speed)
+            (motion_mat as ShaderMaterial).set_shader_parameter("motion_dir", _motion_dir)
+        var blur_mat: Material = _get_material("BlurQuad")
+        if blur_mat is ShaderMaterial:
+            (blur_mat as ShaderMaterial).set_shader_parameter("motion_dir", _motion_dir)
+
     # ── elastic warble after a strata swap: decays to 0 over WARBLE_DURATION
     if _warble_t < WARBLE_DURATION:
         _warble_t += delta
@@ -537,18 +677,31 @@ func _process(delta: float) -> void:
     if not strobe_active:
         return
     strobe_frame += 1
-    if strobe_frame < STROBE_FRAMES_PER_STEP:
+    if strobe_frame < _strobe_frames_active:
         return
     strobe_frame = 0
-    if strobe_step >= _strobe_indices.size():
+    if strobe_step >= _strobe_indices_active.size():
         strobe_active = false
         current_index = strobe_return_index
         _apply(MOODS[current_index])
         print("[Mood] strobe end → %s" % MOODS[current_index]["name"])
         return
-    var idx: int = _strobe_indices[strobe_step]
+    var idx: int = _strobe_indices_active[strobe_step]
     _apply(MOODS[idx])
     strobe_step += 1
+
+
+func _start_strobe(indices: Array[int], frames_per_step: int, label: String) -> void:
+    if indices.is_empty():
+        return
+    _strobe_indices_active = indices
+    _strobe_frames_active = frames_per_step
+    strobe_active = true
+    strobe_step = 0
+    strobe_frame = 0
+    strobe_return_index = current_index
+    print("[Mood] %s · return to %s in %d steps" %
+          [label, MOODS[strobe_return_index]["name"], indices.size()])
 
 
 func db_to_linear(db: float) -> float:
@@ -605,6 +758,18 @@ func _apply(preset: Dictionary) -> void:
         "mono_white":     preset.get("dir_mono_white_col", Color(0.95, 0.92, 0.86, 1)),
         "mono_red":       preset.get("dir_mono_red_col",   Color(0.98, 0.16, 0.18, 1)),
         "red_threshold":  preset.get("dir_red_thresh", 0.20),
+    })
+    _set_params("MotionQuad", {
+        "strength":      preset.get("motion", 0.0),
+        "cell_size":     preset.get("motion_cell", 9.0),
+        "line_color":    preset.get("motion_color", Color(1.0, 0.98, 0.92, 1)),
+        "trail_strength":preset.get("motion_trail", 0.6),
+        "line_density":  preset.get("motion_density", 0.85),
+    })
+    _set_params("BlurQuad", {
+        "strength":  preset.get("blur", 0.0),
+        "blur_mode": preset.get("blur_mode", 0),
+        "radius":    preset.get("blur_radius", 4.0),
     })
     _set_params("StarscapeQuad", {
         "strength":        preset.get("star", 0.0),
