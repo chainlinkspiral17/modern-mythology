@@ -26,7 +26,12 @@
 
 shader_type canvas_item;
 
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_nearest;
+// filter_linear so the post-process samples smoothly when the
+// 1280×720 canvas is stretched to a larger window. filter_nearest
+// here makes the entire scene look pixelated/blocky on any window
+// scaled above the project's viewport size — every other shader in
+// the chain uses filter_linear; this one matches now.
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
 uniform float palette_size : hint_range(2.0, 32.0) = 12.0;
 uniform float dither_strength : hint_range(0.0, 1.0) = 0.15;
