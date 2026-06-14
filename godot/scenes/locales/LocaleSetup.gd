@@ -60,24 +60,28 @@ func _ready() -> void:
         elif "BoatSign_Panel" in mi.name:
             boat_panels.append(mi)
     print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
-    # Attach real Label3D text to the sign panels. Procedural tube-letters
-    # can't be legible at the screen post-process resolution — Label3D
-    # renders proper font glyphs that stay sharp through the shader stack.
+    # Attach real Label3D text to the sign panels. Panel meshes in the
+    # GLB have their vertices at WORLD coordinates and the MeshInstance3D
+    # transform is identity, so we use the mesh AABB center to find the
+    # panel's actual world position, then offset the label in the
+    # panel's face-normal direction.
     for panel in sign_panels_n:
-        _attach_sign_label(panel, Vector3(0, 0, 0.07), Vector3.ZERO)
+        # Sign_Panel_N face normal points +Y (sign reads from north)
+        _attach_sign_label(panel, Vector3(0, 0.08, 0), Vector3.ZERO)
     for panel in sign_panels_s:
-        _attach_sign_label(panel, Vector3(0, 0, -0.07), Vector3(0, PI, 0))
+        # Sign_Panel_S face normal points -Y (sign reads from south)
+        _attach_sign_label(panel, Vector3(0, -0.08, 0), Vector3(0, PI, 0))
     for panel in boat_panels:
-        # Boat sign faces -X (toward parking lot). Offset is in local
-        # X (panel face direction). Rotate 90° around Y so the text
-        # faces -X.
-        _attach_sign_label(panel, Vector3(-0.07, 0, 0), Vector3(0, PI / 2.0, 0))
+        # BoatSign_Panel face normal points -X (sign reads from parking
+        # lot to the west)
+        _attach_sign_label(panel, Vector3(-0.08, 0, 0), Vector3(0, PI / 2.0, 0))
 
 
-func _attach_sign_label(panel: MeshInstance3D, local_offset: Vector3, rotation: Vector3) -> void:
+func _attach_sign_label(panel: MeshInstance3D, world_face_offset: Vector3, rotation: Vector3) -> void:
     """Create a Label3D child of the given panel showing 'D'Ambrosio's'
-    in big red text with emission. Renders at native font resolution so
-    it survives the screen post-process cleanly."""
+    at the panel's WORLD center + face offset. The panel mesh has its
+    vertices baked in world coords (from the Blender build), so we
+    use the AABB center to find where the panel actually sits."""
     var label := Label3D.new()
     label.text = "D'Ambrosio's"
     label.font_size = 96
@@ -85,13 +89,16 @@ func _attach_sign_label(panel: MeshInstance3D, local_offset: Vector3, rotation: 
     label.modulate = Color(0.98, 0.18, 0.20, 1.0)
     label.outline_modulate = Color(0.10, 0.0, 0.0, 1.0)
     label.no_depth_test = false
-    label.shaded = false   # ignore scene lighting; the sign is "lit" neon
+    label.shaded = false
     label.double_sided = true
     label.alpha_cut = Label3D.ALPHA_CUT_OPAQUE_PREPASS
-    label.pixel_size = 0.008   # 96px * 0.008 = ~0.77m tall letters
-    label.transform.origin = local_offset
-    label.rotation = rotation
+    label.pixel_size = 0.008
     panel.add_child(label)
+    # Place the label at the panel's world centre + face offset
+    var panel_centre := panel.global_transform.origin + panel.get_aabb().get_center()
+    label.global_position = panel_centre + world_face_offset
+    label.rotation = rotation
+    print("[LocaleSetup] sign label attached to %s at %s" % [panel.name, str(label.global_position)])
 
 
 func _make_material() -> Material:

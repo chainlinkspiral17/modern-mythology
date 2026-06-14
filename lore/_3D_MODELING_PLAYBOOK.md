@@ -276,6 +276,43 @@ scene reads as empty.
   The formulas differ — using one for both produces a correctly
   mirrored panel and an inverted panel. Don't unify them.
 
+### 2026-06-14 · every feature needs a TRANSITION to its neighbours
+
+Recurring failure mode I keep making: I build a feature (parking
+lot, dock, gas station, strip mall, riverbank, quay wall, river
+basin) as an isolated unit, and forget that **the player needs to
+ARRIVE at this feature from another one**. The transitions are
+where the world reads as functional vs. dropped-in-from-the-sky:
+
+| Feature pair | Transition needed |
+|--------------|-------------------|
+| road → parking lot | driveway apron + curb cut, painted lines guiding the turn-in |
+| parking lot → dock | stairs (if elevation drop) or ramp; the curb edge isn't a transition |
+| highway → frontage road | proper off-ramp with deceleration lane + signage |
+| land → river | quay wall OR sloped bank with vegetation, not a hard right-angle drop |
+| dock → boat | gangway sloped to span the deck-to-dock height difference |
+| sidewalk → building | a step or entrance landing, doesn't just abut the wall |
+| commercial strip → residential | something between (a vacant lot, a small park, a fence line); they don't share a property line |
+
+Durable rule:
+
+- **After building any feature, draw an arrow on a mental map FROM
+  every other feature TO this one.** If any of those arrows
+  doesn't have a transition feature, build the transition before
+  calling the feature done.
+- **The transition is part of the feature, not optional polish.**
+  A parking lot without a road entry is not a parking lot, it's
+  a slab of asphalt floating in the world.
+- **For the bayou-city locales specifically**, transitions that
+  must exist:
+    · Every developed lot needs a curb cut + apron to the road
+      it sits on (NOT just a sidewalk edge).
+    · Every building needs an entry path from the road (walkway,
+      stairs, ramp).
+    · Every elevation change needs a stair or ramp (the user can
+      flag the same "the river is level / there's no transition"
+      complaint for any feature, not just the river).
+
 ### 2026-06-14 · when a fix doesn't appear, the bug is somewhere ELSE
 
 The "river-sink invisible 6+ times" disaster. User kept asking why
