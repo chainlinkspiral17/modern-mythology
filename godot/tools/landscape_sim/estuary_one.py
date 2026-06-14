@@ -161,46 +161,95 @@ HCE_CREEK = CreekPath(
 )
 
 HCE_ROADS = RoadGrid(
+    # Sparser, more rural road grid — gone back to seed. Commercial
+    # belts ride the PERIMETER (N + W + S + E arterials); the interior
+    # has a few residential collectors and short stubs but otherwise
+    # large unbroken lots and wild patches between roads. Hwy access
+    # is on the west side; the east side fades into woods.
     segments=[
-        # Frontage road N-S along west side
+        # ── Perimeter commercial arterials (the "bordering roads") ──
+        # West frontage (Highway 9 — main commercial drag)
         ((-280, -200), (-280, 200)),
-        # Hilltop road E-W across the north (country club access)
-        ((-280, 160), (290, 160)),
-        # Central E-W (main residential collector)
-        ((-280,   0), (290,   0)),
-        # South arterial (skate park / woods edge)
-        ((-280, -160), (290, -160)),
-        # N-S secondary on the east side
-        (( 200, -200), ( 200, 200)),
-        # Two cul-de-sac stubs east
-        (( 200,  80), (260,  80)),
-        (( 200, -80), (260, -80)),
-        # Park-loop on the west
-        ((-220, -80), (-120, -80)),
-        ((-120, -80), (-120,  80)),
-        ((-120,  80), (-220,  80)),
+        # North arterial (county route — strip-mall belt to the south of golf)
+        ((-280, 130), (290, 130)),
+        # East arterial (back-of-town two-lane)
+        (( 270, -200), ( 270, 200)),
+        # South arterial (truck route past the woods)
+        ((-280, -170), (290, -170)),
+
+        # ── Sparse residential collectors (interior, low density) ──
+        # Central E-W (one main road across the middle)
+        ((-280,   10), (270,  10)),
+        # One single N-S secondary (the only interior north-south)
+        ((  20, -170), (  20, 130)),
+
+        # ── A handful of short residential stubs / cul-de-sacs ──
+        ((-180,  10), (-180, 100)),   # north stub off central
+        (( 100, -170), (100,  -60)),  # south stub
+        ((-200, -100), (-110, -100)), # short east-west residential
+        (( 120,  60), ( 220,  60)),   # quiet eastern cul-de-sac
+
+        # ── Country club access spur ──
+        ((  60, 130), (  60, 180)),
     ]
 )
 
 HCE_NEIGHBOURHOODS = [
+    # ── Commercial belts along the PERIMETER ROADS ──
+    # West-side commercial strip (hwy 9 — gas stations, strip mall,
+    # drive-thrus — this is the user's "starting point")
+    Neighbourhood("West Commercial Strip", [
+        (-280, -170), (-230, -170), (-230, 130), (-280, 130)
+    ], landuse="commercial"),
+    # North commercial belt (between arterial and golf course)
+    Neighbourhood("North Commercial Belt", [
+        (-230, 130), (220, 130), (220, 170), (-230, 170)
+    ], landuse="commercial"),
+    # South commercial / truck-stop (along south arterial)
+    Neighbourhood("South Commercial / Truck Stop", [
+        (-230, -200), (220, -200), (220, -170), (-230, -170)
+    ], landuse="commercial"),
+    # East commercial (smaller — quieter rural drag)
+    Neighbourhood("East Commercial", [
+        (220, -170), (270, -170), (270, 130), (220, 130)
+    ], landuse="commercial"),
+
+    # ── Country club on the north high ground ──
     Neighbourhood("Country Club + Golf", [
-        (-280, 100), (290, 100), (290, 200), (-280, 200)
+        (-230, 170), (220, 170), (220, 210), (-230, 210)
     ], landuse="golf"),
-    Neighbourhood("Town Park + Pool", [
-        (-120, -60), (60, -60), (60, 60), (-120, 60)
+
+    # ── MULTIPLE distinct PARKS per grid quadrant ──
+    Neighbourhood("Harmony Park (community / pool)", [
+        (-60, -20), (90, -20), (90, 100), (-60, 100)
     ], landuse="park"),
-    Neighbourhood("West Residential", [
-        (-280, -160), (-120, -160), (-120, 60), (-280, 60)
+    Neighbourhood("Founders Memorial Grove", [
+        (-200, 50), (-100, 50), (-100, 110), (-200, 110)
+    ], landuse="park_natural"),
+    Neighbourhood("South Sports Fields", [
+        (130, -160), (220, -160), (220, -50), (130, -50)
+    ], landuse="park_sports"),
+    Neighbourhood("Creek Trail Park (natural)", [
+        # Wraps the creek corridor in the SE
+        (90, -160), (130, -160), (130, -20), (90, -20)
+    ], landuse="park_natural"),
+    Neighbourhood("Wild Lot (gone to seed)", [
+        (-200, -150), (-130, -150), (-130, -90), (-200, -90)
+    ], landuse="overgrown"),
+
+    # ── Spread-out residential — single-family, low density ──
+    Neighbourhood("West Estates (single-family)", [
+        (-230, -170), (-60, -170), (-60, -20), (-230, -20)
     ], landuse="single_family"),
-    Neighbourhood("East Cul-de-sac", [
-        (60, -160), (290, -160), (290, 60), (60, 60)
+    Neighbourhood("North Ranch Homes", [
+        (-230, 10), (-100, 10), (-100, 130), (-230, 130)
+    ], landuse="single_family"),
+    Neighbourhood("East Cul-de-sac Estates", [
+        (90, 10), (220, 10), (220, 130), (90, 130)
     ], landuse="cul_de_sac"),
-    Neighbourhood("Skate Park + Woods", [
-        (-280, -200), (290, -200), (290, -160), (-280, -160)
-    ], landuse="natural_park"),
+
     Neighbourhood("Creek Corridor", [
-        # Approximate the creek's flood plain
-        (-280, 200), (-260, 200), (290, -180), (290, -200),
+        (-280, 210), (-220, 210), (290, -180), (290, -200),
     ], landuse="creek_corridor"),
 ]
 
@@ -221,30 +270,48 @@ def lerp(a, b, t):
     return a + (b - a) * t
 
 def colour_for_elevation(z: float, z_min: float, z_max: float, landuse: str = "") -> tuple[int, int, int]:
-    """Map elevation + landuse → RGB. Greens for parkland, browns for
-    high ground, blues for creek, sandy yellow for very low."""
+    """Map elevation + landuse → RGB per the HCE colour grammar:
+      DARK GREEN  → natural vegetation AND public/community space
+      WHITE / DRY → single-family residential AND people (parched)
+      BLUE        → creek + water
+      GREY-TAN    → commercial belts (asphalt + buildings)
+      SAGE        → overgrown / gone-to-seed lots
+    """
     t = (z - z_min) / max(0.001, z_max - z_min)
-    # Land-use overrides
+    # ── Water / creek ──
     if landuse == "creek_corridor":
         return (60, 90, 130)
+    # ── DARK GREEN family: natural + community public space ──
     if landuse == "golf":
-        return (int(lerp(30, 80, t)), int(lerp(120, 170, t)), int(lerp(40, 60, t)))
+        return (int(lerp(30, 70, t)), int(lerp(110, 150, t)), int(lerp(35, 55, t)))
     if landuse == "park":
-        return (int(lerp(40, 100, t)), int(lerp(140, 180, t)), int(lerp(40, 80, t)))
+        return (int(lerp(40, 90, t)), int(lerp(130, 170, t)), int(lerp(40, 75, t)))
+    if landuse == "park_natural":
+        return (int(lerp(30, 75, t)), int(lerp(105, 145, t)), int(lerp(35, 65, t)))
+    if landuse == "park_sports":
+        return (int(lerp(60, 110, t)), int(lerp(140, 180, t)), int(lerp(50, 80, t)))
     if landuse == "natural_park":
-        return (int(lerp(60, 100, t)), int(lerp(100, 140, t)), int(lerp(40, 80, t)))
+        return (int(lerp(50, 95, t)), int(lerp(120, 160, t)), int(lerp(45, 75, t)))
+    # ── WHITE / DRY family: single-family homes + parched people ──
     if landuse == "single_family":
-        return (int(lerp(120, 160, t)), int(lerp(150, 180, t)), int(lerp(100, 140, t)))
+        return (int(lerp(195, 225, t)), int(lerp(195, 220, t)), int(lerp(170, 195, t)))
     if landuse == "cul_de_sac":
-        return (int(lerp(150, 180, t)), int(lerp(160, 190, t)), int(lerp(130, 160, t)))
-    # default elevation ramp
+        return (int(lerp(205, 235, t)), int(lerp(200, 225, t)), int(lerp(180, 205, t)))
+    # ── Commercial belts: asphalt-grey with warm hint ──
+    if landuse == "commercial":
+        return (int(lerp(110, 140, t)), int(lerp(105, 130, t)), int(lerp(95, 115, t)))
+    # ── Overgrown / gone-to-seed: dull sage with brown undertone ──
+    if landuse == "overgrown":
+        return (int(lerp(120, 150, t)), int(lerp(130, 155, t)), int(lerp(85, 110, t)))
+    # default elevation ramp — same dry palette so unzoned land
+    # blends with the residential field
     if t < 0.25:
-        return (130, 145, 170)
+        return (170, 175, 165)
     if t < 0.55:
-        return (110, 145, 100)
+        return (190, 190, 170)
     if t < 0.85:
-        return (140, 150, 110)
-    return (150, 140, 110)
+        return (210, 200, 170)
+    return (220, 205, 165)
 
 def point_in_polygon(x: float, y: float, polygon: list[tuple[float, float]]) -> bool:
     """Even-odd-rule polygon-point test."""
