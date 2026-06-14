@@ -80,39 +80,49 @@ SIDEWALK_W = 2.4
 CURB_H = 0.15
 BUFFER_W = 0.8           # planted strip between sidewalk and lot
 
+# Building heights bumped up after first playthrough — user feedback
+# "tops of buildings below waist high" was partly distance + partly
+# the buildings being scaled for old commercial-strip realism.
+# Real Kwik Stop is ~4 m tall but the in-game silhouette reads better
+# with 7-8 m anchors plus tall signage pylons. Per modeling playbook:
+# silhouette over real-world dimension when they conflict.
+
 # Kwik Stop (NW corner)
-KWIK_W = 14.0     # building width
-KWIK_L = 9.0      # building depth (along Y)
-KWIK_H = 4.6
-KWIK_CX = -25.0   # building center east-west — 25 m west of intersection
-KWIK_CY =  9.0    # set back 9 m north of intersection center
+KWIK_W = 16.0     # building width
+KWIK_L = 11.0     # building depth (along Y)
+KWIK_H = 7.0
+KWIK_CX = -22.0   # building center east-west — pulled in toward intersection
+KWIK_CY =  11.0   # set back 11 m north of intersection center
 
 # NexCorp Gas & Go (NE corner)
-GAS_KIOSK_W = 8.0    # the kiosk behind the pumps
-GAS_KIOSK_L = 6.0
-GAS_KIOSK_H = 3.6
-GAS_KIOSK_CX = 42.0
-GAS_KIOSK_CY = 14.0
-GAS_CANOPY_W = 16.0  # the gas-pump canopy
-GAS_CANOPY_L = 10.0
-GAS_CANOPY_H = 4.5
-GAS_CANOPY_CX = 25.0
-GAS_CANOPY_CY = 12.0
-GAS_PUMP_SPACING = 4.0     # spacing between pumps
+GAS_KIOSK_W = 10.0   # the kiosk behind the pumps
+GAS_KIOSK_L = 7.0
+GAS_KIOSK_H = 5.5
+GAS_KIOSK_CX = 40.0
+GAS_KIOSK_CY = 16.0
+GAS_CANOPY_W = 18.0  # the gas-pump canopy
+GAS_CANOPY_L = 12.0
+GAS_CANOPY_H = 6.5
+GAS_CANOPY_CX = 23.0
+GAS_CANOPY_CY = 14.0
+GAS_PUMP_SPACING = 4.5     # spacing between pumps
 
 # Cosmic Comics (SW)
-COSMIC_W = 11.0
-COSMIC_L = 7.5
-COSMIC_H = 3.8
-COSMIC_CX = -25.0
-COSMIC_CY = -42.0
+COSMIC_W = 13.0
+COSMIC_L = 9.0
+COSMIC_H = 5.5
+COSMIC_CX = -22.0
+COSMIC_CY = -40.0
 
 # D'Ambrosio's holdover (SE)
-DAMB_W = 14.0
-DAMB_L = 10.0
-DAMB_H = 4.2
-DAMB_CX = 30.0
-DAMB_CY = -52.0
+DAMB_W = 16.0
+DAMB_L = 11.5
+DAMB_H = 6.0
+DAMB_CX = 28.0
+DAMB_CY = -48.0
+
+# Tall signage pylon heights (added after scale feedback)
+PYLON_H = 12.0     # the freestanding pole + sign cabinet at each corner
 
 
 # ── PALETTE ───────────────────────────────────────────────────────
@@ -991,6 +1001,43 @@ def export_glb():
         raise RuntimeError("GLB not written")
 
 
+def build_signage_pylons():
+    """Tall freestanding signage poles at each commercial corner —
+    the silhouette anchors that read at a distance. Each has a pole
+    and a rectangular sign cabinet at the top, brand-coloured."""
+    # Kwik Stop pylon — RED sign cabinet at top (the lithograph
+    # red bleed gate fires on this from across the intersection)
+    px, py = KWIK_CX + KWIK_W / 2 + 3.0, KWIK_CY - KWIK_L / 2 - 4.5
+    make_cyl("KwikPylon_Pole", (px, py, GROUND_Z + PYLON_H / 2),
+             0.18, PYLON_H, COL_UTIL_POLE, segments=8)
+    make_box("KwikPylon_Cabinet",
+             (px, py, GROUND_Z + PYLON_H - 1.5),
+             (3.5, 0.40, 2.8), COL_KWIK_SIGN_RED)
+    make_box("KwikPylon_CabinetBorder",
+             (px, py, GROUND_Z + PYLON_H - 1.5),
+             (3.7, 0.30, 0.20), COL_TRIM_WHITE)
+
+    # NexCorp pylon — BLUE sign cabinet (corporate)
+    px, py = GAS_KIOSK_CX + GAS_KIOSK_W / 2 + 3.0, GAS_KIOSK_CY - GAS_KIOSK_L / 2 - 6.0
+    make_cyl("NexPylon_Pole", (px, py, GROUND_Z + PYLON_H / 2),
+             0.18, PYLON_H, COL_UTIL_POLE, segments=8)
+    make_box("NexPylon_Cabinet",
+             (px, py, GROUND_Z + PYLON_H - 1.5),
+             (3.5, 0.40, 3.0), COL_NEX_BRAND_BLUE)
+    # Red NexCorp accent stripe across the bottom of the cabinet
+    make_box("NexPylon_AccentStripe",
+             (px, py, GROUND_Z + PYLON_H - 2.6),
+             (3.6, 0.42, 0.25), COL_NEX_BRAND_RED)
+
+    # Cosmic Comics smaller pylon — purple
+    px, py = COSMIC_CX - COSMIC_W / 2 - 3.0, COSMIC_CY + COSMIC_L / 2 + 4.0
+    make_cyl("CosmicPylon_Pole", (px, py, GROUND_Z + (PYLON_H - 3) / 2),
+             0.15, PYLON_H - 3, COL_UTIL_POLE, segments=6)
+    make_box("CosmicPylon_Cabinet",
+             (px, py, GROUND_Z + PYLON_H - 4.0),
+             (2.8, 0.30, 2.2), COL_COSMIC_AWNING)
+
+
 def main():
     clear_scene()
     build_far_ground()
@@ -1001,6 +1048,7 @@ def main():
     build_gas_and_go()
     build_cosmic_comics()
     build_dambrosios_holdover()
+    build_signage_pylons()
     build_site_furniture()
     build_watch_detail()
     build_parked_cars()
