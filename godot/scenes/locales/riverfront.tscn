@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
 [ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="6_ascii"]
 [ext_resource type="Shader" path="res://assets/shaders/neon_edge.gdshader" id="7_neon"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_directional.gdshader" id="9_dir"]
 [ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="8_setup"]
 
 [sub_resource type="CapsuleShape3D" id="Caps_Player"]
@@ -48,6 +49,15 @@ shader_parameter/fill_low = Color(0.42, 0.12, 0.50, 1)
 shader_parameter/fill_high = Color(0.10, 0.05, 0.25, 1)
 shader_parameter/fill_gradient = 1.0
 shader_parameter/edge_glow = 0.4
+
+[sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
+shader = ExtResource("9_dir")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/line_color = Color(0.92, 0.20, 0.20, 1)
+shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
+shader_parameter/tint_from_scene = false
 
 [sub_resource type="Environment" id="Env_Riverfront"]
 background_mode = 1
@@ -136,6 +146,13 @@ script = ExtResource("5_mood")
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Neon")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="DirAsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_DirAscii")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
