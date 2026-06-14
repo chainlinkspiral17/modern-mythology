@@ -95,6 +95,8 @@ func _unhandled_input(event: InputEvent) -> void:
                 action_teleport_origin()
             KEY_F4:
                 action_toggle_hud()
+            KEY_H:    # Backup binding in case F4 is intercepted
+                action_toggle_hud()
 
 
 func action_toggle_collide() -> void:

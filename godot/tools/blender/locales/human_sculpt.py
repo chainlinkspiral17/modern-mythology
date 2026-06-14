@@ -86,6 +86,53 @@ def _box(name, center, size, color):
     return _finalize_mesh(name, verts, faces, color)
 
 
+def _oriented_cyl(name, p0, p1, r0, r1, color, segments=8):
+    """Tapered cylinder from p0 (radius r0) to p1 (radius r1).
+    Computes a perpendicular frame so the cylinder can point in any
+    3D direction — used for articulated arms that aren't axis-aligned."""
+    px = p1[0] - p0[0]
+    py = p1[1] - p0[1]
+    pz = p1[2] - p0[2]
+    length = math.sqrt(px * px + py * py + pz * pz)
+    if length < 0.001:
+        return None
+    dx, dy, dz = px / length, py / length, pz / length
+    # Find a reference up vector that isn't parallel to direction
+    if abs(dz) < 0.9:
+        ux, uy, uz = 0.0, 0.0, 1.0
+    else:
+        ux, uy, uz = 1.0, 0.0, 0.0
+    # Perp1 = direction × up
+    p1x = dy * uz - dz * uy
+    p1y = dz * ux - dx * uz
+    p1z = dx * uy - dy * ux
+    l1 = math.sqrt(p1x * p1x + p1y * p1y + p1z * p1z)
+    p1x, p1y, p1z = p1x / l1, p1y / l1, p1z / l1
+    # Perp2 = direction × perp1
+    p2x = dy * p1z - dz * p1y
+    p2y = dz * p1x - dx * p1z
+    p2z = dx * p1y - dy * p1x
+    verts = []
+    for ring in (0, 1):
+        c = p0 if ring == 0 else p1
+        r = r0 if ring == 0 else r1
+        for i in range(segments):
+            ang = 2.0 * math.pi * i / segments
+            ca, sa = math.cos(ang), math.sin(ang)
+            verts.append((
+                c[0] + ca * r * p1x + sa * r * p2x,
+                c[1] + ca * r * p1y + sa * r * p2y,
+                c[2] + ca * r * p1z + sa * r * p2z,
+            ))
+    faces = []
+    for i in range(segments):
+        ni = (i + 1) % segments
+        faces.append([i, ni, ni + segments, i + segments])
+    faces.append(list(reversed(range(segments))))
+    faces.append(list(range(segments, segments * 2)))
+    return _finalize_mesh(name, verts, faces, color)
+
+
 def _cyl_taper(name, center, r_bottom, r_top, height, color, segments=8):
     """Tapered cylinder — different radius at bottom vs top. Used for
     legs (wider at the cuff = JNCO flare), torsos (narrower at waist),
@@ -298,24 +345,54 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
 
 
 def _build_arms(name, base_x, base_y, shoulder_z, s,
-                jacket_color, skin_color):
+                jacket_color, skin_color, pose='standing',
+                facing='-Y'):
+    """Build arms in the requested pose. Returns dict of hand-tip
+    positions {'L': (x, y, z), 'R': (x, y, z)} so callers can
+    attach props (mic, scooter, drink, etc.) to a specific hand.
+
+    pose options:
+      'standing'   — both arms hang straight down (default)
+      'right_mic'  — right arm raised forward holding a mic at
+                     mouth height; left arm hangs
+      'arms_out'   — both arms slightly splayed (welcoming)
+    """
     arm_h = PROP["arm_h"] * s
     arm_r_top = PROP["arm_r_top"] * s
     arm_r_bot = PROP["arm_r_bot"] * s
     shoulder_w = PROP["shoulder_w"] * s
     hand_size = PROP["hand_size"] * s
-    arm_cz = shoulder_z - arm_h / 2 - 0.02 * s
+    fwd_x, fwd_y = _face_axis(facing)
+    hand_positions = {}
+
     for side, sign in (('L', -1), ('R', +1)):
-        cx = base_x + sign * (shoulder_w / 2 - arm_r_top)
-        _cyl_taper(f"{name}_Arm_{side}",
-                   (cx, base_y, arm_cz),
-                   arm_r_bot, arm_r_top, arm_h, jacket_color,
-                   segments=8)
-        # Hand — small skin-colored box at wrist
+        shoulder_x = base_x + sign * (shoulder_w / 2 - arm_r_top)
+        shoulder_y = base_y
+        shoulder_pz = shoulder_z - 0.02 * s
+        # Default — hanging straight down
+        hand_x = shoulder_x
+        hand_y = shoulder_y
+        hand_z = shoulder_pz - arm_h
+        if pose == 'right_mic' and side == 'R':
+            # Right arm raised forward at ~45° — hand near the mouth
+            hand_x = shoulder_x + 0.06 * s
+            hand_y = shoulder_y + fwd_y * (arm_h * 0.78)
+            hand_z = shoulder_pz + arm_h * 0.55
+        elif pose == 'arms_out':
+            # Both arms angled outward ~20°
+            hand_x = shoulder_x + sign * (arm_h * 0.35)
+            hand_y = shoulder_y
+            hand_z = shoulder_pz - arm_h * 0.92
+
+        _oriented_cyl(f"{name}_Arm_{side}",
+                       (shoulder_x, shoulder_y, shoulder_pz),
+                       (hand_x, hand_y, hand_z),
+                       arm_r_top, arm_r_bot, jacket_color, segments=8)
         _box(f"{name}_Hand_{side}",
-             (cx, base_y, shoulder_z - arm_h - hand_size / 2),
-             (hand_size, hand_size, hand_size),
-             skin_color)
+             (hand_x, hand_y, hand_z - hand_size / 2),
+             (hand_size, hand_size, hand_size), skin_color)
+        hand_positions[side] = (hand_x, hand_y, hand_z)
+    return hand_positions
 
 
 def _build_neck(name, base_x, base_y, shoulder_z, s, skin_color):
@@ -453,7 +530,8 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
                  with_ears=False,
                  with_mouth=False,
                  mouth_color=(0.62, 0.30, 0.32, 1.0),
-                 jacket_puffy=False):
+                 jacket_puffy=False,
+                 pose='standing'):
     """Build a parametric standing human figure at (base_x, base_y,
     base_z) with feet on the ground at base_z. See module docstring
     for full parameter notes."""
@@ -473,9 +551,12 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
                               accent_color=accent_color,
                               facing=facing,
                               puffy=jacket_puffy)
-    # Arms hang from shoulders
-    _build_arms(name, base_x, base_y, shoulder_z, s,
-                jacket_color, skin_color)
+    # Arms — pose-aware. Returns the hand-tip positions so the
+    # caller can attach props (mic, scooter handle, etc.) to a
+    # specific hand.
+    hand_positions = _build_arms(name, base_x, base_y, shoulder_z, s,
+                                  jacket_color, skin_color,
+                                  pose=pose, facing=facing)
     # Scarf wraps the neck base
     _build_scarf(name, base_x, base_y, shoulder_z, s, scarf_color)
     # Neck on top of scarf area
@@ -488,6 +569,9 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
                 with_ears=with_ears,
                 with_mouth=with_mouth,
                 mouth_color=mouth_color)
+    return {"hands": hand_positions,
+            "head_base_z": head_base_z,
+            "shoulder_z": shoulder_z}
 
 
 __all__ = ["human_figure", "PROP"]

@@ -843,10 +843,10 @@ def build_oliver_tree_memorial():
 
     # ── The figure itself, via the human_sculpt pipeline ────────
     base_z = ground_z + plinth_h   # feet sit on top of the plinth
-    human_figure(
+    figure_meta = human_figure(
         name="OT",
         base_x=sx, base_y=sy, base_z=base_z,
-        scale=2.5,                    # 4.5 m statue · taller than the plinth
+        scale=2.5,                    # 4.5 m statue
         facing='-Y',                  # plaque/face point south
         skin_color=(0.92, 0.75, 0.62, 1.0),
         hair_style='bowl',
@@ -857,7 +857,7 @@ def build_oliver_tree_memorial():
         accent_color=(0.95, 0.42, 0.62, 1.0),
         scarf_color=(0.95, 0.85, 0.35, 1.0),      # yellow scarf
         pants_color=(0.55, 0.68, 0.82, 1.0),      # denim blue
-        pants_flare=3.4,                          # MORE JNCO drama
+        pants_flare=3.4,                          # JNCO drama
         shoe_color=(0.92, 0.90, 0.84, 1.0),       # white shoes
         has_sunglasses=True,
         sunglasses_color=(0.95, 0.30, 0.45, 1.0), # pink-red lenses
@@ -865,25 +865,69 @@ def build_oliver_tree_memorial():
         with_mouth=True,
         mouth_color=(0.55, 0.22, 0.28, 1.0),
         jacket_puffy=True,                        # PUFFER silhouette
+        pose='right_mic',                         # right arm raised
     )
 
-    # ── PROPS: the signature green Razor scooter beside him ────
-    _build_scooter("OT_Scooter", sx + 1.6, sy, base_z,
-                   color_deck=(0.30, 0.55, 0.25, 1.0),     # green
-                   color_metal=(0.78, 0.78, 0.80, 1.0))    # silver
-
-    # ── PROP: microphone in his right hand ────────────────────
-    # Right hand sits at sx + 0.46*2 = sx + 0.92, base_z + ~3.4 m
-    mic_x = sx + 0.92
-    mic_y = sy - 0.20
-    mic_z = base_z + 3.40
-    _make_cyl_local("OT_MicHandle",
-                    (mic_x, mic_y, mic_z - 0.25),
-                    0.045, 0.5, (0.12, 0.12, 0.12, 1.0), segments=6)
+    # ── PROP: microphone attached to the RIGHT HAND ───────────
+    # human_figure returns the actual hand-tip world position for
+    # whichever pose it built, so the mic anchors to the wrist.
+    hx, hy, hz = figure_meta["hands"]["R"]
+    # Handle from hand → mouth height
+    _build_oriented_handle(
+        "OT_MicHandle", (hx, hy, hz), (hx + 0.0, hy - 0.18, hz + 0.55),
+        radius=0.05, color=(0.12, 0.12, 0.12, 1.0))
+    # Foam-ball head at the top of the handle
     _make_sphere_low_local("OT_MicHead",
-                           (mic_x, mic_y, mic_z + 0.05),
-                           0.10, (0.18, 0.18, 0.18, 1.0),
+                           (hx + 0.0, hy - 0.20, hz + 0.65),
+                           0.13, (0.18, 0.18, 0.18, 1.0),
                            rings=3, segments=8)
+
+    # ── PROP: green Razor scooter leaning against the plinth ───
+    _build_scooter("OT_Scooter", sx + 1.8, sy + 0.4, base_z,
+                   color_deck=(0.30, 0.55, 0.25, 1.0),
+                   color_metal=(0.78, 0.78, 0.80, 1.0))
+
+
+def _build_oriented_handle(name, p0, p1, radius, color, segments=6):
+    """Tapered-cylinder helper used by props that need to point at
+    arbitrary angles (mic handle from hand → mouth, etc.). Wraps
+    the human_sculpt._oriented_cyl logic so the build script
+    doesn't need to import it."""
+    px = p1[0] - p0[0]; py = p1[1] - p0[1]; pz = p1[2] - p0[2]
+    length = math.sqrt(px * px + py * py + pz * pz)
+    if length < 0.001:
+        return
+    dx, dy, dz = px / length, py / length, pz / length
+    if abs(dz) < 0.9:
+        ux, uy, uz = 0.0, 0.0, 1.0
+    else:
+        ux, uy, uz = 1.0, 0.0, 0.0
+    p1x = dy * uz - dz * uy
+    p1y = dz * ux - dx * uz
+    p1z = dx * uy - dy * ux
+    l1 = math.sqrt(p1x * p1x + p1y * p1y + p1z * p1z)
+    p1x, p1y, p1z = p1x / l1, p1y / l1, p1z / l1
+    p2x = dy * p1z - dz * p1y
+    p2y = dz * p1x - dx * p1z
+    p2z = dx * p1y - dy * p1x
+    verts = []
+    for ring in (0, 1):
+        c = p0 if ring == 0 else p1
+        for i in range(segments):
+            ang = 2.0 * math.pi * i / segments
+            ca, sa = math.cos(ang), math.sin(ang)
+            verts.append((
+                c[0] + ca * radius * p1x + sa * radius * p2x,
+                c[1] + ca * radius * p1y + sa * radius * p2y,
+                c[2] + ca * radius * p1z + sa * radius * p2z,
+            ))
+    faces = []
+    for i in range(segments):
+        ni = (i + 1) % segments
+        faces.append([i, ni, ni + segments, i + segments])
+    faces.append(list(reversed(range(segments))))
+    faces.append(list(range(segments, segments * 2)))
+    _finalize_mesh(name, verts, faces, color)
 
     # Beacon moved to the park's south entry so it doesn't obscure
     # the figure. See build_oliver_tree_memorial_park().
@@ -1025,7 +1069,9 @@ def build_oliver_tree_memorial_park():
         rfaces.append([i, ni, ni + pool_segs, i + pool_segs])
     _finalize_mesh("OTPark_Pool_Rim", rverts, rfaces, COL_POOL_RIM)
 
-    # ── 8 mature OAKS — older growth, big canopies ────────────
+    # ── 8 mature OAKS — natural height variation per pass-5 ───
+    # Each oak picks a height + canopy + tilt offset deterministically
+    # from its position hash so successive rebuilds stay identical.
     oak_positions = [
         (sx - 28, sy - 10), (sx - 28, sy + 12),
         (sx + 28, sy - 10), (sx + 28, sy + 12),
@@ -1033,15 +1079,30 @@ def build_oliver_tree_memorial_park():
         (sx - 18, sy - 26), (sx + 18, sy - 26),
     ]
     for i, (ox, oy) in enumerate(oak_positions):
-        trunk_h = 5.5     # taller than the wild-zone oaks
-        canopy_r = 5.5    # wider canopy = old-growth
+        # Deterministic variation
+        seed = (i * 17 + int(ox) * 7 + int(oy) * 13) % 100
+        trunk_h = 4.5 + (seed % 5) * 0.7        # 4.5 → 7.3 m
+        canopy_r = 4.0 + ((seed // 7) % 4) * 0.6   # 4.0 → 5.8 m
+        # Lean offset — slight tilt of the canopy on top of the trunk
+        lean_x = (((seed * 31) % 7) - 3) * 0.12      # ±0.36 m
+        lean_y = (((seed * 53) % 7) - 3) * 0.12
+        # Trunk colour variation
+        trunk_col = COL_OAK_TRUNK if (seed % 3) else (0.36, 0.26, 0.18, 1.0)
         _make_cyl_local(f"OTPark_Oak_{i}_Trunk",
                         (ox, oy, park_z + trunk_h / 2),
-                        0.50, trunk_h, COL_OAK_TRUNK, segments=6)
+                        0.40 + (seed % 3) * 0.10, trunk_h,
+                        trunk_col, segments=6)
         col = COL_OAK_CANOPY if i % 2 == 0 else COL_OAK_CANOPY2
+        # Inner darker canopy core (suggests volume)
+        _make_sphere_low_local(
+            f"OTPark_Oak_{i}_CanopyCore",
+            (ox + lean_x, oy + lean_y,
+             park_z + trunk_h + canopy_r * 0.45),
+            canopy_r * 0.7, COL_OAK_TRUNK, rings=3, segments=6)
         _make_sphere_low_local(
             f"OTPark_Oak_{i}_Canopy",
-            (ox, oy, park_z + trunk_h + canopy_r * 0.55),
+            (ox + lean_x, oy + lean_y,
+             park_z + trunk_h + canopy_r * 0.55),
             canopy_r, col, rings=3, segments=8)
 
     # ── 3 picnic tables under shade trees ─────────────────────
@@ -1165,6 +1226,59 @@ def build_oliver_tree_memorial_park():
                         (ex, ey, park_z + 0.18),
                         (0.50, 0.50, 0.30),
                         (0.82, 0.78, 0.66, 1.0))
+
+    # ── BOULDERS · natural-feature accents scattered in the lawn ─
+    # Six low boulders in deterministic positions outside the
+    # walkway ring. Reads as "the park has rocks the landscapers
+    # left in place" instead of perfectly mowed lawn everywhere.
+    boulder_positions = [
+        (sx - 32,  sy + 2,  1.6, (0.55, 0.52, 0.48, 1.0)),
+        (sx + 32,  sy + 3,  1.4, (0.50, 0.46, 0.42, 1.0)),
+        (sx - 12,  sy + 40, 1.2, (0.58, 0.54, 0.50, 1.0)),
+        (sx + 13,  sy + 38, 1.8, (0.52, 0.48, 0.44, 1.0)),
+        (sx - 10,  sy - 38, 1.0, (0.55, 0.52, 0.48, 1.0)),
+        (sx + 14,  sy - 36, 1.3, (0.50, 0.46, 0.42, 1.0)),
+    ]
+    for i, (bx, by, br, bcol) in enumerate(boulder_positions):
+        _make_sphere_low_local(f"OTPark_Boulder_{i}",
+                               (bx, by, park_z + br * 0.45),
+                               br, bcol, rings=3, segments=6)
+
+    # ── GRASS TUFTS · small darker-green clumps scattered ──────
+    # Reads as longer ornamental grass — breaks the manicured lawn.
+    tuft_count = 28
+    for k in range(tuft_count):
+        # Spiral placement around the park
+        ang = 6.2831 * k * 0.413
+        radial = 18 + (k * 1.7) % 18
+        tx = sx + math.cos(ang) * radial
+        ty = sy + math.sin(ang) * radial
+        # Skip if too close to a walkway (within 2 m of ring)
+        d_to_ring = abs(math.hypot(tx - sx, ty - sy) - (inner_r + outer_r) / 2)
+        if d_to_ring < 2.5:
+            continue
+        # Small green tuft
+        _make_box_local(f"OTPark_Tuft_{k}",
+                        (tx, ty, park_z + 0.18),
+                        (0.30, 0.30, 0.35),
+                        (0.28, 0.46, 0.20, 1.0))
+
+    # ── EXTRA FLOWER COLOURS in mid-distance plantings ─────────
+    # White + yellow + purple beds spotted around the lawn — adds
+    # the "actually maintained" feel to a memorial park.
+    extra_flower_specs = [
+        (sx - 36, sy + 8,  (0.95, 0.92, 0.84, 1.0)),  # white
+        (sx + 36, sy + 8,  (0.95, 0.88, 0.30, 1.0)),  # yellow
+        (sx - 36, sy - 8,  (0.68, 0.42, 0.85, 1.0)),  # purple
+        (sx + 36, sy - 8,  (0.95, 0.45, 0.25, 1.0)),  # orange
+    ]
+    for fx, fy, fcol in extra_flower_specs:
+        _make_box_local(f"OTPark_ExtraBed_{int(fx)}_{int(fy)}",
+                        (fx, fy, park_z + 0.16),
+                        (1.4, 0.7, 0.22), COL_FLOWER_BED)
+        _make_box_local(f"OTPark_ExtraFlowers_{int(fx)}_{int(fy)}",
+                        (fx, fy, park_z + 0.36),
+                        (1.30, 0.65, 0.14), fcol)
 
     # ── Beacon relocated to the park south entry ────────────
     beacon_x = sx
