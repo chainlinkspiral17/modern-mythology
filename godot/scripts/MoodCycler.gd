@@ -437,6 +437,10 @@ const MOODS: Array = [
         "star_sky_thresh": 0.20,
         "star_galaxy": 0.90, "star_stars": 1.0, "star_chip": 0.80,
         "star_cloud": 0.6, "star_cloud_scale": 0.012, "star_cloud_floor": 0.55,
+        # Skaterpunk fisheye + chroma. MoodCycler oscillates fov and
+        # dutch-angle on top of these per-frame.
+        "lens": 0.85, "lens_barrel": 0.32, "lens_chroma": 0.018,
+        "lens_edge": 0.50, "lens_zoom": 1.05,
     },
     {
         # ── LIGHTSHOW EXTREME · MAXIMUM PSYCHEDELIC ─────────────────
@@ -472,6 +476,10 @@ const MOODS: Array = [
         "star_sky_thresh": 0.30,
         "star_galaxy": 1.0, "star_stars": 1.0, "star_chip": 1.0,
         "star_cloud": 0.7, "star_cloud_scale": 0.014, "star_cloud_floor": 0.45,
+        # Skater-punk lens — strong fisheye + chroma; MoodCycler
+        # oscillates fov and dutch tilt over this on top.
+        "lens": 1.0, "lens_barrel": 0.45, "lens_chroma": 0.024,
+        "lens_edge": 0.55, "lens_zoom": 1.08,
     },
     {
         "name": "silent_film_24",
@@ -639,6 +647,15 @@ var _scene_light_base_energy: Array[float] = []
 var _scene_light_phase: Array[float] = []
 var _scene_light_base_color: Array[Color] = []
 var _last_lightshow_active: bool = false
+
+# ── Skaterpunk camera FOV / dutch-angle oscillation
+# psychedelic_substrate and lightshow_extreme moods get a per-frame
+# FOV wobble + slow dutch-roll. Stored base values let us snap back
+# to the canonical 70°/0° when we leave those moods.
+var _camera_node: Camera3D = null
+var _camera_base_fov: float = 70.0
+var _camera_base_roll: float = 0.0
+var _last_camera_warp_active: bool = false
 
 # ── System-music audio capture (MusicIn bus + AudioStreamMicrophone)
 # The OS audio (whatever the device's music player is doing) gets
@@ -888,6 +905,31 @@ func _process(delta: float) -> void:
             1.0
         )
 
+    # ── Skaterpunk camera warp · wobble FOV and roll the camera while
+    # psychedelic_substrate / lightshow_extreme are active. Find the
+    # active Camera3D lazily on first use; cache base fov + rotation.x.
+    var mood_now: String = MOODS[current_index]["name"]
+    var camera_warp_active: bool = (mood_now == "psychedelic_substrate" or mood_now == "lightshow_extreme")
+    if camera_warp_active:
+        if _camera_node == null:
+            _camera_node = get_viewport().get_camera_3d()
+            if _camera_node:
+                _camera_base_fov = _camera_node.fov
+                _camera_base_roll = _camera_node.rotation.z
+        if _camera_node:
+            var t_cam: float = float(Time.get_ticks_msec()) / 1000.0
+            var fov_wobble: float = 12.0 * sin(t_cam * 0.65) + 6.0 * sin(t_cam * 1.83)
+            var audio_kick: float = _audio_level * 14.0
+            _camera_node.fov = clamp(_camera_base_fov + fov_wobble + audio_kick, 35.0, 110.0)
+            # Dutch roll — slower oscillation, in radians on camera local z
+            var dutch: float = 0.10 * sin(t_cam * 0.42) + _audio_level * 0.06 * sin(t_cam * 2.1)
+            _camera_node.rotation.z = _camera_base_roll + dutch
+    elif _last_camera_warp_active and _camera_node:
+        # Restore baseline when leaving the warp moods
+        _camera_node.fov = _camera_base_fov
+        _camera_node.rotation.z = _camera_base_roll
+    _last_camera_warp_active = camera_warp_active
+
     # ── lightshow_extreme · drive every scene Light3D from the audio
     # and a per-light sine phase. The actual physical lights pulse
     # with the music, giving the post-process visualizer a real-light
@@ -1104,6 +1146,13 @@ func _apply(preset: Dictionary) -> void:
         "vignette_strength": preset.get("oldfilm_vignette", 0.55),
         "scratch_strength":  preset.get("oldfilm_scratch", 0.10),
         "judder_strength":   preset.get("oldfilm_judder", 0.0),
+    })
+    _set_params("LensQuad", {
+        "strength":    preset.get("lens", 0.0),
+        "barrel":      preset.get("lens_barrel", 0.30),
+        "chroma":      preset.get("lens_chroma", 0.012),
+        "edge_darken": preset.get("lens_edge", 0.40),
+        "zoom":        preset.get("lens_zoom", 1.0),
     })
     _set_params("StarscapeQuad", {
         "strength":        preset.get("star", 0.0),
