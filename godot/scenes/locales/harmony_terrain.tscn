@@ -206,14 +206,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200.0, 0)
 [node name="GroundShape" type="CollisionShape3D" parent="GroundBody"]
 shape = SubResource("Box_Ground")
 
-; Player spawns in the SE basin (HCE world (+80, -280) → Godot
-; (+80, ?, +280)), elevation ~-11 m at the basin bottom. Spawn
-; them 3 m above that so they settle onto the trimesh terrain on
-; the first physics tick. Facing NORTH so the country-club
-; hilltop (Godot Z = -380, Y ≈ +24) is dramatically above-and-
-; ahead — finally something IS above the camera.
+; Player spawns on the COUNTRY-CLUB HILLTOP facing SOUTH so the
+; whole district drops away in front of them. HCE world (0, +380)
+; sits at the cc_rise peak (~22 m platform after settlement
+; flatten). Godot transform with basis = 180° around Y (cols are
+; -X, +Y, -Z) so the camera's default -Z forward now points
+; toward world +Z = HCE south.
+;
+; The TALL COLOURED BEACONS (gold = country club, cyan = ponds,
+; cream/tan = residential tiers, brown = truck stop) are visible
+; from this vantage. Press F1 to noclip and fly between them at
+; 30 m/s — district-scale fly speed bumped from 6 m/s.
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, -8, 280)
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 28, -380)
 script = ExtResource("2_fpc")
 groups = ["player"]
 

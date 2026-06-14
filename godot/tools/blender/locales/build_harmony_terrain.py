@@ -483,10 +483,98 @@ def export_glb():
         raise RuntimeError("GLB not written")
 
 
+def build_feature_beacons():
+    """Tall thin colour-coded survey poles at every named terrain
+    feature. The user can fly across the district and SEE where
+    each pond / settlement / hill peak lives. NOT buildings — these
+    are deliberately stick-thin survey markers, removable later
+    when full geometry replaces them."""
+    BEACON_H = 60.0    # tall enough to clear any berm / hill
+    BEACON_R = 0.40
+    BEACON_TOP_BOX = 3.0
+
+    # Settlement beacons — colour-coded by prosperity tier
+    settlement_beacons = [
+        ("Beacon_CountryClub",   0,    380, (0.95, 0.85, 0.30, 1.0)),  # gold
+        ("Beacon_NorthRanch",   -330,  140, (0.85, 0.78, 0.62, 1.0)),
+        ("Beacon_EastCDS",       310,  140, (0.85, 0.78, 0.62, 1.0)),
+        ("Beacon_Phase2",        140, -180, (0.62, 0.55, 0.45, 1.0)),
+        ("Beacon_WestEstates", -290, -190, (0.55, 0.50, 0.42, 1.0)),
+        ("Beacon_Phase3",      -360, -260, (0.45, 0.35, 0.28, 1.0)),
+        ("Beacon_TruckStop",      0, -370, (0.40, 0.32, 0.26, 1.0)),
+    ]
+    for (name, x, y, col) in settlement_beacons:
+        z = hce_elevation(x, y)
+        _cyl(name + "_Pole", (x, y, z + BEACON_H / 2),
+             BEACON_R, BEACON_H, (0.10, 0.10, 0.10, 1.0),
+             segments=6)
+        # Coloured top
+        _finalize_mesh(
+            name + "_Top",
+            [
+                (x - BEACON_TOP_BOX, y - BEACON_TOP_BOX, z + BEACON_H - 1),
+                (x + BEACON_TOP_BOX, y - BEACON_TOP_BOX, z + BEACON_H - 1),
+                (x + BEACON_TOP_BOX, y + BEACON_TOP_BOX, z + BEACON_H - 1),
+                (x - BEACON_TOP_BOX, y + BEACON_TOP_BOX, z + BEACON_H - 1),
+                (x - BEACON_TOP_BOX, y - BEACON_TOP_BOX, z + BEACON_H + 2),
+                (x + BEACON_TOP_BOX, y - BEACON_TOP_BOX, z + BEACON_H + 2),
+                (x + BEACON_TOP_BOX, y + BEACON_TOP_BOX, z + BEACON_H + 2),
+                (x - BEACON_TOP_BOX, y + BEACON_TOP_BOX, z + BEACON_H + 2),
+            ],
+            [[4,5,6,7],[0,3,2,1],[0,1,5,4],[2,3,7,6],[0,4,7,3],[1,2,6,5]],
+            col,
+        )
+
+    # Pond beacons — cyan
+    cyan = (0.18, 0.78, 0.92, 1.0)
+    for (name, cx, cy, _r, _d) in PONDS:
+        z = hce_elevation(cx, cy)
+        _cyl(f"PondBeacon_{name}_Pole",
+             (cx, cy, z + BEACON_H / 2),
+             BEACON_R, BEACON_H, (0.10, 0.10, 0.10, 1.0),
+             segments=6)
+        _finalize_mesh(
+            f"PondBeacon_{name}_Top",
+            [
+                (cx - 2, cy - 2, z + BEACON_H - 1),
+                (cx + 2, cy - 2, z + BEACON_H - 1),
+                (cx + 2, cy + 2, z + BEACON_H - 1),
+                (cx - 2, cy + 2, z + BEACON_H - 1),
+                (cx - 2, cy - 2, z + BEACON_H + 1.5),
+                (cx + 2, cy - 2, z + BEACON_H + 1.5),
+                (cx + 2, cy + 2, z + BEACON_H + 1.5),
+                (cx - 2, cy + 2, z + BEACON_H + 1.5),
+            ],
+            [[4,5,6,7],[0,3,2,1],[0,1,5,4],[2,3,7,6],[0,4,7,3],[1,2,6,5]],
+            cyan,
+        )
+
+
+def _cyl(name, center, radius, height, color, segments=8):
+    cx, cy, cz = center
+    h2 = height / 2.0
+    verts = []
+    for ring in (0, 1):
+        z_off = -h2 if ring == 0 else h2
+        for i in range(segments):
+            ang = 2.0 * math.pi * i / segments
+            verts.append((cx + math.cos(ang) * radius,
+                          cy + math.sin(ang) * radius,
+                          cz + z_off))
+    faces = []
+    for i in range(segments):
+        ni = (i + 1) % segments
+        faces.append([i, ni, ni + segments, i + segments])
+    faces.append(list(reversed(range(segments))))
+    faces.append(list(range(segments, segments * 2)))
+    return _finalize_mesh(name, verts, faces, color)
+
+
 def main():
     clear_scene()
     build_ground()
     build_creek()
+    build_feature_beacons()
     export_glb()
 
 

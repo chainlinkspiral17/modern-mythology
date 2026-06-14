@@ -18,7 +18,7 @@ extends CharacterBody3D
 
 @export var walk_speed: float = 2.2
 @export var careful_speed: float = 1.0
-@export var fly_speed: float = 6.0
+@export var fly_speed: float = 30.0    # district-scale; was 6 for room-scale
 @export var mouse_sensitivity: float = 0.0025
 @export var keyboard_turn_speed: float = 2.2     # radians/sec for Q/E turn
 @export var keyboard_pitch_speed: float = 1.6    # radians/sec for R/F pitch
