@@ -141,6 +141,10 @@ const MOODS: Array = [
         "star": 1.0, "star_cell": 9.0, "star_time": 0.40,
         "star_sky_thresh": 0.18,
         "star_galaxy": 0.95, "star_stars": 1.0, "star_chip": 0.70,
+        # Large diffuse fBM clouds — sparse-dot penetration at edges,
+        # cross-hatch & solid glyphs in the dense cores. Drifts slowly
+        # horizontally; floor controls how much of sky is "clear".
+        "star_cloud": 0.85, "star_cloud_scale": 0.011, "star_cloud_floor": 0.50,
         # ASCII halftone tuned for reference-restraint: input_scale
         # 0.6 → 0.40 drops dim cells below the empty cutoff so most
         # surface stays pure black. Density chars now only appear on
@@ -195,6 +199,10 @@ const MOODS: Array = [
         "star": 1.0, "star_cell": 9.0, "star_time": 0.40,
         "star_sky_thresh": 0.18,
         "star_galaxy": 0.95, "star_stars": 1.0, "star_chip": 0.70,
+        # Large diffuse fBM clouds — sparse-dot penetration at edges,
+        # cross-hatch & solid glyphs in the dense cores. Drifts slowly
+        # horizontally; floor controls how much of sky is "clear".
+        "star_cloud": 0.85, "star_cloud_scale": 0.011, "star_cloud_floor": 0.50,
     },
     {
         "name": "ice",
@@ -321,6 +329,9 @@ func _apply(preset: Dictionary) -> void:
         "galaxy_strength": preset.get("star_galaxy", 0.6),
         "star_strength":   preset.get("star_stars", 0.85),
         "chip_strength":   preset.get("star_chip", 0.45),
+        "cloud_strength":  preset.get("star_cloud", 0.0),
+        "cloud_scale":     preset.get("star_cloud_scale", 0.012),
+        "cloud_floor":     preset.get("star_cloud_floor", 0.55),
     })
     _set_params("AsciiQuad", {
         "strength":        preset["ascii"],

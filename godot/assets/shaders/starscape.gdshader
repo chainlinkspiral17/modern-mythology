@@ -32,11 +32,16 @@ uniform float sky_thresh : hint_range(0.0, 1.0) = 0.10;
 uniform vec4 star_white : source_color = vec4(0.95, 0.92, 0.88, 1.0);
 uniform vec4 galaxy_col : source_color = vec4(0.78, 0.85, 1.0, 1.0);
 uniform vec4 chip_col   : source_color = vec4(0.55, 0.88, 0.95, 1.0);
+uniform vec4 cloud_edge_col  : source_color = vec4(0.55, 0.62, 0.78, 1.0);
+uniform vec4 cloud_core_col  : source_color = vec4(0.88, 0.92, 0.98, 1.0);
 
 // Density knobs per layer
 uniform float galaxy_strength : hint_range(0.0, 1.0) = 0.6;
 uniform float star_strength   : hint_range(0.0, 1.0) = 0.85;
 uniform float chip_strength   : hint_range(0.0, 1.0) = 0.45;
+uniform float cloud_strength  : hint_range(0.0, 1.0) = 0.0;
+uniform float cloud_scale     : hint_range(0.001, 0.05) = 0.012;
+uniform float cloud_floor     : hint_range(0.0, 1.0) = 0.55;
 
 float hash11(float p) {
     p = fract(p * 0.1031);
@@ -73,6 +78,47 @@ float g_asterisk(vec2 p) {
     float dne = abs((p.x - 0.5) + (p.y - 0.5)) < 0.08 ? 1.0 : 0.0;
     float d_mask = (distance(p, vec2(0.5)) < 0.35) ? 1.0 : 0.0;
     return max(plus, max(dnw, dne) * d_mask);
+}
+
+// ── Cloud-density glyphs (mimic ░ ▒ ▓) ───────────────────────────
+// Light hatch — sparse diagonal lines
+float g_light_hatch(vec2 p) {
+    float d1 = abs((p.x + p.y) - 0.5);
+    float d2 = abs((p.x + p.y) - 1.0);
+    return ((d1 < 0.06) || (d2 < 0.06)) ? 1.0 : 0.0;
+}
+// Medium hatch — denser cross-hatch
+float g_medium_hatch(vec2 p) {
+    float d1 = abs((p.x + p.y) - 0.5);
+    float d2 = abs((p.x + p.y) - 1.0);
+    float d3 = abs((p.x - p.y) - 0.0);
+    float d4 = abs((p.x - p.y) + 0.5);
+    return ((d1 < 0.06) || (d2 < 0.06) || (d3 < 0.06) || (d4 < 0.06)) ? 1.0 : 0.0;
+}
+// Solid glyph — nearly-filled cell minus 1-pixel margin
+float g_solid(vec2 p) {
+    return (p.x > 0.10 && p.x < 0.90 && p.y > 0.10 && p.y < 0.90) ? 1.0 : 0.0;
+}
+
+// Value-noise primitive — 2D bilinear hash interpolation
+float noise2d(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+    f = f * f * (3.0 - 2.0 * f);   // smooth
+    float a = hash21(i);
+    float b = hash21(i + vec2(1.0, 0.0));
+    float c = hash21(i + vec2(0.0, 1.0));
+    float d = hash21(i + vec2(1.0, 1.0));
+    return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
+}
+
+// 3-octave fBM — large complex cloud shapes
+float fbm3(vec2 p) {
+    float v = 0.0;
+    v += 0.500 * noise2d(p);
+    v += 0.250 * noise2d(p * 2.07);
+    v += 0.125 * noise2d(p * 4.13);
+    return v / 0.875;
 }
 
 void fragment() {
@@ -128,6 +174,38 @@ void fragment() {
         float glyph = (glyph_pick > 0.65) ? g_star4(local) : g_dot(local, 0.12);
         float layer = val * glyph;
         paint = max(paint, star_white.rgb * layer);
+        total_mask = max(total_mask, layer);
+    }
+
+    // ── LAYER 4: ASCII clouds — large diffuse penetration ───────
+    // 3-octave fBM produces large complex cloud shapes. The
+    // (density - floor) subtraction means most sky is CLEAR — only
+    // the peaks of the noise field are clouds. Density is mapped to
+    // 4 glyph levels so cloud EDGES read as sparse dots (light
+    // penetration through diffuse edges) and CORES go dense. Drifts
+    // slowly horizontally — long, lazy weather.
+    {
+        vec2 cell_pix = cell_idx * cell_size;
+        vec2 cloud_uv = cell_pix * cloud_scale + vec2(t * 0.025, t * 0.008);
+        float n = fbm3(cloud_uv);
+        float density = clamp((n - cloud_floor) * 2.4, 0.0, 1.0);
+        float density_val = density * cloud_strength;
+        // Multi-density glyph pick — diffuse edges to dense cores
+        float glyph = 0.0;
+        if (density < 0.18) {
+            glyph = 0.0;
+        } else if (density < 0.38) {
+            glyph = g_dot(local, 0.10);          // edge dust
+        } else if (density < 0.60) {
+            glyph = g_light_hatch(local);
+        } else if (density < 0.80) {
+            glyph = g_medium_hatch(local);
+        } else {
+            glyph = g_solid(local);
+        }
+        vec3 cloud_color = mix(cloud_edge_col.rgb, cloud_core_col.rgb, density);
+        float layer = density_val * glyph;
+        paint = max(paint, cloud_color * layer);
         total_mask = max(total_mask, layer);
     }
 
