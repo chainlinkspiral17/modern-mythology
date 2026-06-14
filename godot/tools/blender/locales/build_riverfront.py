@@ -544,6 +544,65 @@ def make_neon_dambrosios(label, panel_center, face_axis, face_sign, scale=1.0):
         make_sphere(f"Neon_{label}_halo_{hi}", pos, 0.18 * scale, NEON_GLOW)
 
 
+def make_block_dambrosios(label, panel_center, face_axis, face_sign, scale=1.0):
+    """Block-letter D'AMBROSIO'S for sign panels viewed at distance.
+    Cursive doesn't read through the screen post-process from 30m+
+    away; chunky straight strokes do. Uses cursive_type.render_block_text
+    with thick tube radius."""
+    NEON_RED = (1.0, 0.18, 0.20, 1.0)
+    NEON_GLOW = (1.0, 0.35, 0.40, 1.0)
+    TUBE_R = 0.080 * scale
+    H = 0.85 * scale
+    cx, cy, cz = panel_center
+
+    def lx(local_x):
+        if face_axis == 'Y':
+            return -local_x * face_sign
+        else:
+            return local_x * face_sign
+
+    def _place(panel_x, panel_z, normal_off=0.0):
+        if face_axis == 'Y':
+            return (cx + lx(panel_x), cy + face_sign * normal_off, cz + panel_z)
+        else:
+            return (cx + face_sign * normal_off, cy + lx(panel_x), cz + panel_z)
+
+    def draw_tube(name, a, b):
+        p1 = _place(a[0], a[1], 0.0)
+        p2 = _place(b[0], b[1], 0.0)
+        make_tube_segment(f"BlockNeon_{label}_{name}", p1, p2,
+                          TUBE_R, NEON_RED, segments=5)
+
+    text = "D'AMBROSIO'S"
+    text_w = cursive_type.block_text_width(text, cap_height=H, kerning=0.10)
+    text_start_x = -text_w / 2.0
+    baseline_z = -H / 2.0
+    pen_end_x = cursive_type.render_block_text(
+        text, text_start_x, baseline_z, H, draw_tube,
+        kerning=0.10, name_prefix=label,
+    )
+
+    # Halo glow spheres BEHIND each letter loop, inset toward the panel
+    # face (between letter plane and panel surface) — fakes neon bloom.
+    halo_radius = 0.22 * scale
+    pen_x = text_start_x
+    halo_idx = 0
+    for ch in text:
+        if ch == " ":
+            pen_x += 0.30 * H
+            continue
+        glyph = cursive_type.BLOCK_GLYPHS.get(ch.upper())
+        if glyph is None:
+            pen_x += 0.40 * H
+            continue
+        if ch.upper() in ("D", "A", "M", "B", "O", "S", "R"):
+            halo_pos = _place(pen_x + glyph["advance"] * H * 0.5, baseline_z + H * 0.55, -0.030)
+            make_sphere(f"BlockNeon_{label}_halo_{halo_idx}",
+                        halo_pos, halo_radius, NEON_GLOW)
+            halo_idx += 1
+        pen_x += glyph["advance"] * H + 0.10 * H
+
+
 def _finalize_mesh(name, verts, faces, base_color):
     """Build a mesh from verts/faces (already in world coords) with
     flat per-loop vertex colour = base_color."""
@@ -600,11 +659,46 @@ def build_riverboat():
     make_box("Hull_Mid",   (0, 0, h1_z), (BOAT_W,        BOAT_L,        0.50), COL_HULL)
     h2_z = RIVER_LEVEL_Z + 1.45
     make_box("Hull_Upper", (0, 0, h2_z), (BOAT_W - 0.40, BOAT_L - 0.30, 0.50), COL_HULL)
+
+    # ── HULL ROUNDING — long horizontal cylinders along each chine
+    # turn the stacked rectangular tiers into a hull that reads as
+    # curved-side. Cylinders sit at the tier transitions, port and
+    # starboard, running the full hull length minus the bow taper.
+    chine_radius = 0.25
+    chine_length = BOAT_L - 1.2
+    for tier, (cz, c_w_off) in enumerate([
+        (h0_z - 0.35, BOAT_W / 2 + 0.20),     # waterline chine
+        (h0_z + 0.35, BOAT_W / 2 + 0.20),     # top of lower hull
+        (h1_z + 0.25, BOAT_W / 2 + 0.00),     # top of mid hull
+        (h2_z + 0.25, BOAT_W / 2 - 0.20),     # top of upper hull
+    ]):
+        for side, c_x in (("P", -c_w_off), ("S", +c_w_off)):
+            make_cyl(f"Hull_Chine_{tier}_{side}",
+                     (c_x, 0, cz),
+                     chine_radius, chine_length,
+                     COL_HULL, segments=8, axis='Y')
+    # Corner spheres at the bow & stern of each tier to round the hard
+    # 90° corners into something that reads as a tapering hull
+    for tier_idx, (tz, t_w_off, t_l_off) in enumerate([
+        (h0_z, BOAT_W/2 + 0.20, BOAT_L/2 + 0.15),
+        (h1_z, BOAT_W/2,         BOAT_L/2),
+        (h2_z, BOAT_W/2 - 0.20,  BOAT_L/2 - 0.15),
+    ]):
+        for ci, (cx_o, cy_o) in enumerate([
+            (-t_w_off, -t_l_off), (+t_w_off, -t_l_off),
+            (-t_w_off, +t_l_off), (+t_w_off, +t_l_off),
+        ]):
+            make_sphere(f"Hull_Corner_{tier_idx}_{ci}",
+                        (cx_o, cy_o, tz), 0.35, COL_HULL)
+
     # Prow taper — three stepped narrower boxes extending past +Y end
     bow_y = BOAT_L / 2
     for i, (frac, off_y) in enumerate([(0.85, 0.6), (0.60, 1.3), (0.30, 1.9)]):
         make_box(f"Hull_Bow_{i}", (0, bow_y + off_y, h1_z),
                  (BOAT_W * frac, 0.7, 0.85), COL_HULL)
+    # Rounded bow cap — a sphere at the very prow gives a clipper-style
+    # rounded leading edge instead of a flat front face
+    make_sphere("Hull_BowCap", (0, bow_y + 2.4, h1_z), 0.55, COL_HULL)
     # Sternpost (back end taper, less pronounced)
     make_box("Hull_Stern", (0, -bow_y - 0.6, h1_z), (BOAT_W * 0.7, 0.7, 0.85), COL_HULL)
 
@@ -1052,12 +1146,12 @@ def build_riverboat():
              (0.06, 0.14, boat_sign_h + 0.22), (0.32, 0.26, 0.20, 1.0))
     make_box("BoatSign_FrameAft", (fy, boat_sign_cy - boat_sign_w/2 - 0.10, boat_sign_cz),
              (0.06, 0.14, boat_sign_h + 0.22), (0.32, 0.26, 0.20, 1.0))
-    # Cursive neon on the panel face. Big scale (2.0x) so the neon
-    # fills ~85% of the 7.6m panel — no more "lots of black space"
-    # around tiny letters. cursive_type auto-centres the text.
-    make_neon_dambrosios("Boat_Port",
-                          (boat_sign_cx - 0.08, boat_sign_cy, boat_sign_cz),
-                          face_axis='X', face_sign=-1, scale=2.0)
+    # BLOCK letters on the boat sign — cursive smears at this resolution
+    # when viewed from the parking lot 30m+ away. Block letters read
+    # clearly at distance. Pole sign keeps the cursive for close-up read.
+    make_block_dambrosios("Boat_Port",
+                           (boat_sign_cx - 0.08, boat_sign_cy, boat_sign_cz),
+                           face_axis='X', face_sign=-1, scale=1.6)
 
     # Hawser bollards (mooring posts) on the boiler deck along the PORT rail
     for i, by_p in enumerate([-5.0, 5.0]):
@@ -3328,35 +3422,69 @@ def build_distant_atmosphere():
         make_box(f"FarHill_{hi}", (hx, hy, RIVER_LEVEL_Z + hh / 2),
                  (hw, hl, hh), (0.32, 0.36, 0.36, 1.0))
 
-    # ── Distant bridge downriver (truss bridge crossing river to south) ──
+    # ── Distant bridge downriver — TRUSS BRIDGE crossing the full river,
+    # landing on solid ground at BOTH shores instead of stopping in
+    # the middle of the water. Spans from the near-shore industrial
+    # silhouette out past the opposite shore.
     br_y = BRIDGE_Y
-    br_x_span = abs(OPPOSITE_X) + 4.0
-    br_cx = OPPOSITE_X / 2.0
+    bridge_x_start = -85.0       # lands on the near-shore (port) bank
+    bridge_x_end = 145.0         # lands past the opposite shore (starboard)
+    br_x_span = bridge_x_end - bridge_x_start
+    br_cx = (bridge_x_start + bridge_x_end) / 2.0
     br_z = RIVER_LEVEL_Z + 10.0
-    # bridge deck
-    make_box("Bridge_Deck", (br_cx, br_y, br_z), (br_x_span, 2.0, 0.6), (0.38, 0.34, 0.30, 1.0))
-    # truss panels along both sides
-    for side, sy_o in (("S", -1.10), ("N", 1.10)):
-        make_box(f"Bridge_TopChord_{side}", (br_cx, br_y + sy_o, br_z + 3.5),
-                 (br_x_span, 0.20, 0.30), (0.38, 0.34, 0.30, 1.0))
-        # vertical members
-        for vi in range(12):
-            vx_o = -br_x_span/2 + 1.0 + vi * (br_x_span - 2.0) / 11.0
-            make_box(f"Bridge_Vert_{side}_{vi}", (br_cx + vx_o, br_y + sy_o, br_z + 1.8),
-                     (0.18, 0.18, 3.6), (0.38, 0.34, 0.30, 1.0))
-        # diagonal X-brace suggestion (just two crossing horizontals)
-        make_box(f"Bridge_Diag_{side}_a", (br_cx, br_y + sy_o, br_z + 2.2),
-                 (br_x_span, 0.16, 0.16), (0.38, 0.34, 0.30, 1.0))
+    # Bridge deck — full span
+    make_box("Bridge_Deck", (br_cx, br_y, br_z), (br_x_span, 2.4, 0.6),
+             (0.38, 0.34, 0.30, 1.0))
+    # Truss panels on both sides — vertical members every ~10m
+    n_truss_members = int(br_x_span / 10.0)
+    for side, sy_o in (("S", -1.30), ("N", 1.30)):
+        # Top chord — full span
+        make_box(f"Bridge_TopChord_{side}", (br_cx, br_y + sy_o, br_z + 3.6),
+                 (br_x_span, 0.22, 0.32), (0.38, 0.34, 0.30, 1.0))
+        # Vertical members at intervals
+        for vi in range(n_truss_members + 1):
+            vx_o = -br_x_span/2 + vi * br_x_span / n_truss_members
+            make_box(f"Bridge_Vert_{side}_{vi}",
+                     (br_cx + vx_o, br_y + sy_o, br_z + 1.9),
+                     (0.20, 0.20, 3.6), (0.38, 0.34, 0.30, 1.0))
+        # Two diagonal X-braces running the full length
+        make_box(f"Bridge_Diag_{side}_a", (br_cx, br_y + sy_o, br_z + 2.4),
+                 (br_x_span, 0.18, 0.18), (0.38, 0.34, 0.30, 1.0))
         make_box(f"Bridge_Diag_{side}_b", (br_cx, br_y + sy_o, br_z + 1.4),
-                 (br_x_span, 0.16, 0.16), (0.38, 0.34, 0.30, 1.0))
-    # bridge piers going down into the water (3 piers across)
-    for pi in range(3):
-        px_p = br_cx + (-1 + pi) * br_x_span * 0.35
-        make_box(f"Bridge_Pier_{pi}", (px_p, br_y, RIVER_LEVEL_Z + 5.0),
-                 (1.4, 2.6, 10.0), (0.42, 0.40, 0.36, 1.0))
-        # pier footing
-        make_box(f"Bridge_Pier_{pi}_foot", (px_p, br_y, RIVER_LEVEL_Z + 0.20),
-                 (2.0, 3.4, 0.40), (0.42, 0.40, 0.36, 1.0))
+                 (br_x_span, 0.18, 0.18), (0.38, 0.34, 0.30, 1.0))
+    # Top lateral cross-bracing connecting the two truss panels
+    for ti in range(n_truss_members + 1):
+        tx_o = -br_x_span/2 + ti * br_x_span / n_truss_members
+        make_box(f"Bridge_TopBrace_{ti}",
+                 (br_cx + tx_o, br_y, br_z + 3.7),
+                 (0.20, 2.7, 0.20), (0.38, 0.34, 0.30, 1.0))
+    # Bridge piers — 5 piers spaced across the river (skip the abutments)
+    n_piers = 5
+    for pi in range(n_piers):
+        t = (pi + 1) / (n_piers + 1)
+        px_p = bridge_x_start + t * br_x_span
+        make_box(f"Bridge_Pier_{pi}",
+                 (px_p, br_y, RIVER_LEVEL_Z + 5.0),
+                 (1.6, 3.0, 10.0), (0.42, 0.40, 0.36, 1.0))
+        make_box(f"Bridge_Pier_{pi}_foot",
+                 (px_p, br_y, RIVER_LEVEL_Z + 0.20),
+                 (2.2, 3.6, 0.40), (0.42, 0.40, 0.36, 1.0))
+    # Abutments — solid masonry on each shore where the bridge lands
+    for ai, ax in enumerate([bridge_x_start - 1.0, bridge_x_end + 1.0]):
+        make_box(f"Bridge_Abutment_{ai}",
+                 (ax, br_y, br_z / 2.0),
+                 (4.0, 4.0, br_z + 0.6), (0.45, 0.42, 0.36, 1.0))
+    # Approach ramps — sloped roadway descending from the bridge deck
+    # down to ground level on each shore. Uses make_ramp for proper
+    # angled prisms.
+    make_ramp("Bridge_Approach_W",
+              (bridge_x_start - 3.0, br_y, br_z),       # top, at deck height
+              (bridge_x_start - 22.0, br_y, 1.0),       # bottom, at ground level
+              2.4, 0.6, (0.38, 0.34, 0.30, 1.0), width_axis='Y')
+    make_ramp("Bridge_Approach_E",
+              (bridge_x_end + 3.0, br_y, br_z),
+              (bridge_x_end + 22.0, br_y, 1.0),
+              2.4, 0.6, (0.38, 0.34, 0.30, 1.0), width_axis='Y')
 
     # ── Cloud shelves — clusters of overlapping spheres (NOT boxes).
     # Each cloud is 6-8 lowpoly spheres of varying radius offset around

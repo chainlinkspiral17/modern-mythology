@@ -176,6 +176,197 @@ GLYPHS = {
 }
 
 
+# ════════════════════════════════════════════════════════════════
+# BLOCK GLYPHS — big chunky letters for signage that needs to read
+# at distance through the screen post-process. Cursive at this
+# resolution smears to illegibility; block letters made of straight
+# strokes survive the ASCII/dither/scanline cascade much better.
+# ════════════════════════════════════════════════════════════════
+
+BLOCK_GLYPHS = {
+    "D": {
+        "advance": 0.60,
+        "strokes": [
+            [(0.00, 0.00), (0.00, 1.00), (0.45, 1.00),
+             (0.55, 0.85), (0.55, 0.15), (0.45, 0.00),
+             (0.00, 0.00)],
+        ],
+    },
+    "'": {
+        "advance": 0.14,
+        "strokes": [
+            [(0.04, 0.85), (0.10, 1.10), (0.12, 1.05)],
+        ],
+    },
+    "A": {
+        "advance": 0.62,
+        "strokes": [
+            [(0.00, 0.00), (0.30, 1.00), (0.60, 0.00)],
+            [(0.12, 0.40), (0.48, 0.40)],
+        ],
+    },
+    "M": {
+        "advance": 0.72,
+        "strokes": [
+            [(0.00, 0.00), (0.00, 1.00), (0.34, 0.30),
+             (0.68, 1.00), (0.68, 0.00)],
+        ],
+    },
+    "B": {
+        "advance": 0.55,
+        "strokes": [
+            [(0.00, 0.00), (0.00, 1.00), (0.40, 1.00),
+             (0.52, 0.88), (0.52, 0.62), (0.40, 0.50),
+             (0.00, 0.50)],
+            [(0.40, 0.50), (0.52, 0.40), (0.52, 0.12),
+             (0.40, 0.00), (0.00, 0.00)],
+        ],
+    },
+    "R": {
+        "advance": 0.55,
+        "strokes": [
+            [(0.00, 0.00), (0.00, 1.00), (0.42, 1.00),
+             (0.52, 0.88), (0.52, 0.62), (0.42, 0.50),
+             (0.00, 0.50)],
+            [(0.25, 0.50), (0.55, 0.00)],
+        ],
+    },
+    "O": {
+        "advance": 0.60,
+        "strokes": [
+            [(0.10, 1.00), (0.40, 1.00), (0.55, 0.85),
+             (0.55, 0.15), (0.40, 0.00), (0.10, 0.00),
+             (-0.05, 0.15), (-0.05, 0.85), (0.10, 1.00)],
+        ],
+    },
+    "S": {
+        "advance": 0.55,
+        "strokes": [
+            [(0.52, 0.92), (0.38, 1.00), (0.10, 1.00),
+             (0.00, 0.88), (0.00, 0.68), (0.10, 0.56),
+             (0.42, 0.50), (0.52, 0.42), (0.52, 0.10),
+             (0.42, 0.00), (0.10, 0.00), (0.00, 0.10)],
+        ],
+    },
+    "I": {
+        "advance": 0.10,
+        "strokes": [
+            [(0.05, 0.00), (0.05, 1.00)],
+        ],
+    },
+    "N": {
+        "advance": 0.62,
+        "strokes": [
+            [(0.00, 0.00), (0.00, 1.00), (0.58, 0.00), (0.58, 1.00)],
+        ],
+    },
+    "E": {
+        "advance": 0.50,
+        "strokes": [
+            [(0.50, 1.00), (0.00, 1.00), (0.00, 0.00), (0.50, 0.00)],
+            [(0.00, 0.50), (0.40, 0.50)],
+        ],
+    },
+    "T": {
+        "advance": 0.50,
+        "strokes": [
+            [(0.00, 1.00), (0.50, 1.00)],
+            [(0.25, 1.00), (0.25, 0.00)],
+        ],
+    },
+    "W": {
+        "advance": 0.78,
+        "strokes": [
+            [(0.00, 1.00), (0.18, 0.00), (0.38, 0.60),
+             (0.58, 0.00), (0.76, 1.00)],
+        ],
+    },
+    "L": {
+        "advance": 0.46,
+        "strokes": [
+            [(0.00, 1.00), (0.00, 0.00), (0.46, 0.00)],
+        ],
+    },
+    "C": {
+        "advance": 0.55,
+        "strokes": [
+            [(0.52, 0.92), (0.40, 1.00), (0.10, 1.00),
+             (-0.05, 0.85), (-0.05, 0.15), (0.10, 0.00),
+             (0.40, 0.00), (0.52, 0.08)],
+        ],
+    },
+    "H": {
+        "advance": 0.58,
+        "strokes": [
+            [(0.00, 0.00), (0.00, 1.00)],
+            [(0.58, 0.00), (0.58, 1.00)],
+            [(0.00, 0.50), (0.58, 0.50)],
+        ],
+    },
+    "Q": {
+        "advance": 0.62,
+        "strokes": [
+            [(0.10, 1.00), (0.40, 1.00), (0.55, 0.85),
+             (0.55, 0.15), (0.40, 0.00), (0.10, 0.00),
+             (-0.05, 0.15), (-0.05, 0.85), (0.10, 1.00)],
+            [(0.35, 0.20), (0.60, -0.10)],
+        ],
+    },
+    "U": {
+        "advance": 0.58,
+        "strokes": [
+            [(0.00, 1.00), (0.00, 0.20), (0.10, 0.00),
+             (0.48, 0.00), (0.58, 0.20), (0.58, 1.00)],
+        ],
+    },
+}
+
+
+def render_block_text(text, x_start, y_baseline, cap_height, draw_tube,
+                       kerning=0.10, name_prefix="blk"):
+    """Render `text` in block letters using BLOCK_GLYPHS. Each stroke
+    is a polyline of straight segments — connected via the caller's
+    draw_tube callback. Returns the final pen x position."""
+    pen_x = x_start
+    for ci, char in enumerate(text):
+        if char == " ":
+            pen_x += 0.30 * cap_height
+            continue
+        glyph = BLOCK_GLYPHS.get(char.upper())
+        if glyph is None:
+            pen_x += 0.40 * cap_height
+            continue
+        for si, stroke in enumerate(glyph["strokes"]):
+            for sli in range(len(stroke) - 1):
+                a = stroke[sli]
+                b = stroke[sli + 1]
+                ax = pen_x + a[0] * cap_height
+                az = y_baseline + a[1] * cap_height
+                bx = pen_x + b[0] * cap_height
+                bz = y_baseline + b[1] * cap_height
+                draw_tube(f"{name_prefix}_{ci:02d}_{char}_{si}_{sli:02d}",
+                          (ax, az), (bx, bz))
+        pen_x += glyph["advance"] * cap_height + kerning * cap_height
+    return pen_x
+
+
+def block_text_width(text, cap_height, kerning=0.10):
+    """Width of a string when rendered with BLOCK_GLYPHS."""
+    w = 0.0
+    for char in text:
+        if char == " ":
+            w += 0.30 * cap_height
+            continue
+        glyph = BLOCK_GLYPHS.get(char.upper())
+        if glyph is None:
+            w += 0.40 * cap_height
+            continue
+        w += glyph["advance"] * cap_height + kerning * cap_height
+    if text:
+        w -= kerning * cap_height
+    return w
+
+
 def sample_bezier(p0, c1, c2, p3, n_samples):
     """Sample a cubic Bezier at n_samples+1 points (including endpoints).
     Returns [(x, y), ...]."""
