@@ -684,6 +684,16 @@ const STORM_BREAK_THRESHOLD: float = 0.85
 const DAY_CYCLE_PERIOD: float = 720.0   # seconds per full day (12 min real-time)
 var _day_phase: float = 0.05            # start in deep night so the starscape sells
 
+# Moods that need daylight brightness to read. The day/night cycle
+# pins to noon (0.5) while one of these is active so the post-process
+# layer has actual luminance to work with.
+const DAYLIGHT_MOODS: Array[String] = [
+	"silent_film_12", "silent_film_18", "silent_film_24",
+	"substrate", "psychedelic_substrate",
+	"day_bright", "studio", "cel_shaded",
+	"demoscene_ascii", "macro_haze",
+]
+
 
 func _get_material(node_name: String) -> Material:
 	var node: Node = get_node_or_null(node_name)
@@ -856,8 +866,17 @@ func _process(delta: float) -> void:
 		print("[Mood] storm break · scroll pulse")
 	_storm_release = max(0.0, _storm_release - delta * 0.30)
 
-	# ── Day/night cycle advances always — even in menus.
-	_day_phase = fposmod(_day_phase + delta / DAY_CYCLE_PERIOD, 1.0)
+	# ── Day/night cycle. Some moods REQUIRE a bright source to read
+	# (old_film grain needs something to grain over; ascii_render
+	# only fires on lit pixels; cel_shaded wants colour to band).
+	# When one of those is active we PIN the phase to noon so the
+	# picture stays daylight-bright. Otherwise advance normally.
+	var current_mood_name: String = MOODS[current_index]["name"]
+	var needs_daylight: bool = current_mood_name in DAYLIGHT_MOODS
+	if needs_daylight:
+		_day_phase = 0.5    # locked at noon
+	else:
+		_day_phase = fposmod(_day_phase + delta / DAY_CYCLE_PERIOD, 1.0)
 
 	# ── Drive starscape cloud scroll & floor.
 	var star_mat: Material = _get_material("StarscapeQuad")
