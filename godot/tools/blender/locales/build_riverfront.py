@@ -60,13 +60,20 @@ HELM_W = 5.0
 HELM_L = 4.5
 HELM_H = 2.6
 
-PARKING_Y = -BOAT_L / 2 - 12.0   # parking lot 12m south of the boat
-RIVER_LEVEL_Z = -0.3              # water plane sits 0.3m below origin
+# LAYOUT — the boat sits PARALLEL to the shoreline, moored alongside.
+# Bow at +Y (north / upriver), stern at -Y (south / downriver).
+# Paddle wheel hangs off the stern. The boat's PORT (left, -X) side
+# faces the shore where the parking lot and dock are. The boat's
+# STARBOARD (right, +X) side faces the open river toward the opposite
+# shore. The bayou is up-river on the starboard side.
 
-# Opposite shore (west)
-OPPOSITE_X = -45.0   # far western shore
-# Bayou (east)
-BAYOU_X = 28.0
+PARKING_X = -BOAT_W / 2 - 18.0    # parking lot 18m west of boat (port)
+PARKING_Y_CENTER = 0.0            # parking lot lined up with boat center
+RIVER_LEVEL_Z = -0.3
+
+OPPOSITE_X = 45.0     # far starboard shore (east, across the river)
+BAYOU_X = 26.0        # bayou between boat and opposite shore
+BRIDGE_Y = -75.0      # distant bridge downriver to the south
 
 # ── palette ──
 COL_HULL          = (0.82, 0.78, 0.66, 1.0)    # white clapboard, aged
@@ -665,35 +672,36 @@ def build_riverboat():
             make_box(f"Lifebuoy_{i}_seg_{j}", (rx, ry, rz), (0.10, 0.12, 0.12), col)
 
     # ════════════════════════════════════════════════════════════
-    # GANGWAY — connects boiler deck to parking-lot ground
+    # GANGWAY — extends from the boat's PORT (-X) side to the dock.
+    # Runs along X, perpendicular to the boat's long axis.
     # ════════════════════════════════════════════════════════════
-    gw_y = -BD_L/2 - 1.5
+    gw_x = -BD_W/2 - 1.5
     gw_z = BD_Z - 0.05
-    make_box("Gangway_Deck", (0, gw_y, gw_z), (2.4, 3.4, 0.14), COL_DECK_WOOD)
+    make_box("Gangway_Deck", (gw_x, 0, gw_z), (3.4, 2.4, 0.14), COL_DECK_WOOD)
     for i in range(5):
-        gpx = -0.95 + i * 0.475
-        make_box(f"Gangway_Plank_{i}", (gpx, gw_y, gw_z + 0.08),
-                 (0.04, 3.4, 0.01), (0.30, 0.20, 0.12, 1.0))
-    # Railings + posts
-    make_box("Gangway_Rail_W_top", (-1.15, gw_y, gw_z + 0.85), (0.05, 3.4, 0.05), COL_BRASS)
-    make_box("Gangway_Rail_E_top", ( 1.15, gw_y, gw_z + 0.85), (0.05, 3.4, 0.05), COL_BRASS)
-    make_box("Gangway_Rail_W_mid", (-1.15, gw_y, gw_z + 0.45), (0.04, 3.4, 0.04), COL_BRASS)
-    make_box("Gangway_Rail_E_mid", ( 1.15, gw_y, gw_z + 0.45), (0.04, 3.4, 0.04), COL_BRASS)
+        gpy = -0.95 + i * 0.475
+        make_box(f"Gangway_Plank_{i}", (gw_x, gpy, gw_z + 0.08),
+                 (3.4, 0.04, 0.01), (0.30, 0.20, 0.12, 1.0))
+    # Railings + posts (railings run along X, on the N and S sides of the gangway)
+    make_box("Gangway_Rail_N_top", (gw_x, 1.15, gw_z + 0.85), (3.4, 0.05, 0.05), COL_BRASS)
+    make_box("Gangway_Rail_S_top", (gw_x, -1.15, gw_z + 0.85), (3.4, 0.05, 0.05), COL_BRASS)
+    make_box("Gangway_Rail_N_mid", (gw_x, 1.15, gw_z + 0.45), (3.4, 0.04, 0.04), COL_BRASS)
+    make_box("Gangway_Rail_S_mid", (gw_x, -1.15, gw_z + 0.45), (3.4, 0.04, 0.04), COL_BRASS)
     for i in range(4):
-        gpy = gw_y - 1.4 + i * 0.95
-        make_box(f"Gangway_Post_W_{i}", (-1.15, gpy, gw_z + 0.45), (0.05, 0.05, 0.85), COL_BRASS)
-        make_box(f"Gangway_Post_E_{i}", ( 1.15, gpy, gw_z + 0.45), (0.05, 0.05, 0.85), COL_BRASS)
+        gpx = gw_x - 1.4 + i * 0.95
+        make_box(f"Gangway_Post_N_{i}", (gpx, 1.15, gw_z + 0.45), (0.05, 0.05, 0.85), COL_BRASS)
+        make_box(f"Gangway_Post_S_{i}", (gpx, -1.15, gw_z + 0.45), (0.05, 0.05, 0.85), COL_BRASS)
 
-    # Gangway entry arch on the boat — frames the entry from gangway onto boiler deck
-    arch_y = -DR_L/2 - 0.5
-    make_box("Entry_Arch_L", (-1.2, arch_y, BD_Z + 1.3), (0.15, 0.15, 2.5), COL_HULL)
-    make_box("Entry_Arch_R", ( 1.2, arch_y, BD_Z + 1.3), (0.15, 0.15, 2.5), COL_HULL)
-    make_prism("Entry_Arch_Top", (0, arch_y, BD_Z + 2.55), (2.6, 0.20, 0.50), col_gingerbread, pitch_axis='X')
+    # Gangway entry arch on the boat's PORT wall of the dining cabin
+    arch_x = -DR_W/2 - 0.5
+    make_box("Entry_Arch_F", (arch_x, -1.2, BD_Z + 1.3), (0.15, 0.15, 2.5), COL_HULL)
+    make_box("Entry_Arch_A", (arch_x,  1.2, BD_Z + 1.3), (0.15, 0.15, 2.5), COL_HULL)
+    make_prism("Entry_Arch_Top", (arch_x, 0, BD_Z + 2.55), (0.20, 2.6, 0.50), col_gingerbread, pitch_axis='Y')
 
-    # Hawser bollards (mooring posts) on the boiler deck near the gangway
-    for i, bx in enumerate([-1.8, 1.8]):
-        make_cyl(f"Bollard_{i}", (bx, -BD_L/2 + 0.5, BD_Z + 0.40), 0.18, 0.70, (0.32, 0.30, 0.28, 1.0), segments=8)
-        make_cyl(f"Bollard_Cap_{i}", (bx, -BD_L/2 + 0.5, BD_Z + 0.78), 0.22, 0.10, (0.32, 0.30, 0.28, 1.0), segments=8)
+    # Hawser bollards (mooring posts) on the boiler deck along the PORT rail
+    for i, by_p in enumerate([-5.0, 5.0]):
+        make_cyl(f"Bollard_{i}", (-BD_W/2 + 0.5, by_p, BD_Z + 0.40), 0.18, 0.70, (0.32, 0.30, 0.28, 1.0), segments=8)
+        make_cyl(f"Bollard_Cap_{i}", (-BD_W/2 + 0.5, by_p, BD_Z + 0.78), 0.22, 0.10, (0.32, 0.30, 0.28, 1.0), segments=8)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -701,247 +709,198 @@ def build_riverboat():
 # ════════════════════════════════════════════════════════════════
 
 def build_parking_lot():
-    """Asphalt strip south of the boat. Painted lines, sodium lights,
-    8 parked cars, dumpster, phone pole, newspaper boxes, ash can,
-    speed bumps, curb stones, bus shelter, signage."""
-    lot_w = 36.0
-    lot_l = 22.0
-    lot_y = PARKING_Y - 8.0   # shifted south to make room for a real dock
+    """Parking lot on the PORT (-X) side of the boat, parallel to the
+    shoreline. Long axis along Y (along the boat), short axis along X.
+    East edge of the lot meets the west end of the dock."""
+    lot_cx = PARKING_X - 6.0       # lot center X
+    lot_cy = PARKING_Y_CENTER
+    lot_x_w = 22.0                  # short (perpendicular to shore)
+    lot_y_l = 36.0                  # long  (along the shore)
     lot_z = -0.02
-    make_box("Parking_Asphalt", (0, lot_y, lot_z), (lot_w, lot_l, 0.04), COL_ASPHALT)
+    make_box("Parking_Asphalt", (lot_cx, lot_cy, lot_z), (lot_x_w, lot_y_l, 0.04), COL_ASPHALT)
 
-    # Curb stones around perimeter (a low concrete edging)
+    # Curb stones around perimeter (concrete edging)
     curb_col = (0.55, 0.52, 0.48, 1.0)
-    make_box("Curb_S", (0, lot_y - lot_l/2, 0.10), (lot_w, 0.20, 0.18), curb_col)
-    make_box("Curb_N", (0, lot_y + lot_l/2, 0.10), (lot_w, 0.20, 0.18), curb_col)
-    make_box("Curb_W", (-lot_w/2, lot_y, 0.10), (0.20, lot_l, 0.18), curb_col)
-    make_box("Curb_E", ( lot_w/2, lot_y, 0.10), (0.20, lot_l, 0.18), curb_col)
+    make_box("Curb_S", (lot_cx, lot_cy - lot_y_l/2, 0.10), (lot_x_w, 0.20, 0.18), curb_col)
+    make_box("Curb_N", (lot_cx, lot_cy + lot_y_l/2, 0.10), (lot_x_w, 0.20, 0.18), curb_col)
+    make_box("Curb_W", (lot_cx - lot_x_w/2, lot_cy, 0.10), (0.20, lot_y_l, 0.18), curb_col)
+    make_box("Curb_E", (lot_cx + lot_x_w/2, lot_cy, 0.10), (0.20, lot_y_l, 0.18), curb_col)
 
-    # Two rows of painted parking lines (10 spaces total)
-    for row_idx, row_y_off in enumerate([-4.5, 4.5]):
+    # Painted parking lines — two rows of bays running along the X axis
+    # (cars perpendicular to the shoreline, parked nose-to-east-or-west)
+    for row_idx, row_x_off in enumerate([-4.5, 4.5]):
         for i in range(11):
-            lx = -lot_w/2 + 3.0 + i * 3.0
+            ly_p = -lot_y_l/2 + 3.0 + i * 3.0
             make_box(f"ParkingLine_{row_idx}_{i}",
-                     (lx, lot_y + row_y_off, lot_z + 0.025),
-                     (0.10, 3.5, 0.005),
+                     (lot_cx + row_x_off, lot_cy + ly_p, lot_z + 0.025),
+                     (3.5, 0.10, 0.005),
                      COL_PAINT_LINE)
-        # row label stripes (parking lot dividers)
+        # row divider stripe
         make_box(f"ParkingDivider_{row_idx}",
-                 (0, lot_y + row_y_off - 1.8, lot_z + 0.025),
-                 (lot_w - 1.0, 0.10, 0.005),
+                 (lot_cx + row_x_off - 1.8, lot_cy, lot_z + 0.025),
+                 (0.10, lot_y_l - 1.0, 0.005),
                  COL_PAINT_LINE)
 
-    # Yellow speed bumps across the entry
+    # Yellow speed bumps across the lot's west (entrance) side
     bump_col = (0.72, 0.55, 0.20, 1.0)
     for i in range(2):
-        bx = -8.0 + i * 16.0
-        make_prism(f"SpeedBump_{i}", (bx, lot_y - lot_l/2 + 4.0, lot_z),
-                   (2.4, 0.50, 0.10), bump_col, pitch_axis='Y')
+        by = -8.0 + i * 16.0
+        make_prism(f"SpeedBump_{i}", (lot_cx - lot_x_w/2 + 4.0, lot_cy + by, lot_z),
+                   (0.50, 2.4, 0.10), bump_col, pitch_axis='X')
 
-    # Storm drain grate (a darker recessed rectangle)
-    make_box("StormDrain", (-12.0, lot_y - lot_l/2 + 1.0, lot_z + 0.02),
-             (1.0, 0.5, 0.02), (0.10, 0.10, 0.10, 1.0))
-    # Grate slats
+    # Storm drain along the boat-side curb
+    make_box("StormDrain", (lot_cx + lot_x_w/2 - 1.0, lot_cy - 12.0, lot_z + 0.02),
+             (0.5, 1.0, 0.02), (0.10, 0.10, 0.10, 1.0))
     for i in range(5):
-        make_box(f"StormDrain_Slat_{i}", (-12.4 + i * 0.20, lot_y - lot_l/2 + 1.0, lot_z + 0.03),
-                 (0.04, 0.45, 0.01), (0.20, 0.18, 0.16, 1.0))
+        make_box(f"StormDrain_Slat_{i}", (lot_cx + lot_x_w/2 - 1.0, lot_cy - 12.4 + i * 0.20, lot_z + 0.03),
+                 (0.45, 0.04, 0.01), (0.20, 0.18, 0.16, 1.0))
 
-    # Sodium streetlights — three poles around the lot perimeter
+    # Sodium streetlights — 3 poles around the lot perimeter
     sodium_poles = [
-        ( lot_w/2 - 1.0,   lot_y + lot_l/2 - 1.0, -1),  # NE corner
-        (-lot_w/2 + 1.0,   lot_y + lot_l/2 - 1.0,  1),  # NW corner
-        ( 0,               lot_y - lot_l/2 + 1.0,  0),  # center south
+        (lot_cx, lot_cy - lot_y_l/2 + 1.0, ( 0,  1)),   # south side (sweeps north into lot)
+        (lot_cx, lot_cy + lot_y_l/2 - 1.0, ( 0, -1)),   # north side (sweeps south)
+        (lot_cx - lot_x_w/2 + 1.0, lot_cy, ( 1,  0)),   # west side (sweeps east)
     ]
-    for si, (px, py, sweep_dir) in enumerate(sodium_poles):
+    for si, (px, py, (sweep_x, sweep_y)) in enumerate(sodium_poles):
         make_cyl(f"Sodium_Pole_{si}", (px, py, 3.0), 0.10, 6.0, COL_SODIUM_POLE, segments=8)
-        # base flange
         make_cyl(f"Sodium_Base_{si}", (px, py, 0.15), 0.18, 0.30, COL_SODIUM_POLE, segments=8)
-        # arm + head — sweep toward the lot
-        if sweep_dir != 0:
-            arm_off = -0.5 * sweep_dir
-            head_off = -0.8 * sweep_dir
+        arm_off_x = 0.5 * sweep_x
+        arm_off_y = 0.5 * sweep_y
+        head_off_x = 0.8 * sweep_x
+        head_off_y = 0.8 * sweep_y
+        if sweep_x != 0:
+            make_box(f"Sodium_Arm_{si}", (px + arm_off_x, py, 5.95), (0.7, 0.08, 0.08), COL_SODIUM_POLE)
+            make_prism(f"Sodium_Head_{si}", (px + head_off_x, py, 5.78), (0.5, 0.8, 0.22), COL_SODIUM_HEAD, pitch_axis='X')
+            make_box(f"Sodium_Lens_{si}", (px + head_off_x, py, 5.72), (0.42, 0.62, 0.04), (1.0, 0.72, 0.30, 1.0))
         else:
-            arm_off = 0.0
-            head_off = 0.0
-        make_box(f"Sodium_Arm_{si}", (px + arm_off, py, 5.95), (0.7, 0.08, 0.08), COL_SODIUM_POLE)
-        make_prism(f"Sodium_Head_{si}", (px + head_off, py, 5.78), (0.8, 0.5, 0.22), COL_SODIUM_HEAD, pitch_axis='Y')
-        make_box(f"Sodium_Lens_{si}", (px + head_off, py, 5.72), (0.62, 0.42, 0.04), (1.0, 0.72, 0.30, 1.0))
+            make_box(f"Sodium_Arm_{si}", (px, py + arm_off_y, 5.95), (0.08, 0.7, 0.08), COL_SODIUM_POLE)
+            make_prism(f"Sodium_Head_{si}", (px, py + head_off_y, 5.78), (0.8, 0.5, 0.22), COL_SODIUM_HEAD, pitch_axis='Y')
+            make_box(f"Sodium_Lens_{si}", (px, py + head_off_y, 5.72), (0.62, 0.42, 0.04), (1.0, 0.72, 0.30, 1.0))
 
-    # ── 8 PARKED CARS (was 3 — now a full lot) ──────────────────────
+    # ── 8 PARKED CARS — bodies oriented along X (head/trunk face east/west) ──
+    # Two rows: row 0 cars at row_x = -4.5 facing west, row 1 at row_x = +4.5 facing east
+    # (so each row's cars nose into their parking line)
     cars = [
-        (-13.0, lot_y - 4.5,  COL_CAR_BODY_A, 0),
-        ( -9.0, lot_y - 4.5,  COL_CAR_BODY_B, 0),
-        ( -5.0, lot_y - 4.5,  COL_CAR_BODY_C, 0),
-        ( -1.0, lot_y - 4.5,  (0.30, 0.35, 0.50, 1.0), 0),   # blue
-        (  6.0, lot_y - 4.5,  (0.65, 0.60, 0.55, 1.0), 0),   # off-white
-        ( 11.0, lot_y - 4.5,  COL_CAR_BODY_A, 0),
-        (-10.0, lot_y + 4.5,  COL_CAR_BODY_C, 1),            # 180-deg flipped
-        (  4.0, lot_y + 4.5,  COL_CAR_BODY_B, 1),
+        (-4.5, -13.0, COL_CAR_BODY_A, -1),
+        (-4.5,  -9.0, COL_CAR_BODY_B, -1),
+        (-4.5,  -5.0, COL_CAR_BODY_C, -1),
+        (-4.5,   1.0, (0.30, 0.35, 0.50, 1.0), -1),
+        (-4.5,   8.0, (0.65, 0.60, 0.55, 1.0), -1),
+        (-4.5,  13.0, COL_CAR_BODY_A, -1),
+        ( 4.5,  -8.0, COL_CAR_BODY_C,  1),
+        ( 4.5,   6.0, COL_CAR_BODY_B,  1),
     ]
-    for i, (cx, cy, col, flipped) in enumerate(cars):
-        front_off = -2.0 if flipped == 0 else 2.0
-        back_off  =  2.0 if flipped == 0 else -2.0
-        # Lower / mid body / hood / trunk / cabin / roof
-        make_box(f"Car_{i}_body_low", (cx, cy, lot_z + 0.30), (1.75, 4.0, 0.30), col)
-        make_box(f"Car_{i}_body_mid", (cx, cy, lot_z + 0.60), (1.70, 4.1, 0.30), col)
-        hood_dim_y = 1.4
-        make_box(f"Car_{i}_hood",     (cx, cy + front_off * 0.65, lot_z + 0.78), (1.65, hood_dim_y, 0.10), col)
-        make_box(f"Car_{i}_trunk",    (cx, cy + back_off * 0.65, lot_z + 0.78),  (1.65, hood_dim_y, 0.10), col)
-        make_box(f"Car_{i}_cabin",    (cx, cy, lot_z + 1.00), (1.55, 1.6, 0.50), col)
+    for i, (row_x_off, ly, col, facing) in enumerate(cars):
+        cx = lot_cx + row_x_off
+        cy = lot_cy + ly
+        # facing = -1 → nose at -X, facing = +1 → nose at +X
+        front_off_x = -2.0 * facing
+        back_off_x  =  2.0 * facing
+        # Lower / mid body — long axis along X (since car points along X)
+        make_box(f"Car_{i}_body_low", (cx, cy, lot_z + 0.30), (4.0, 1.75, 0.30), col)
+        make_box(f"Car_{i}_body_mid", (cx, cy, lot_z + 0.60), (4.1, 1.70, 0.30), col)
+        # Hood (front end), trunk (back end)
+        make_box(f"Car_{i}_hood",  (cx + front_off_x * 0.65, cy, lot_z + 0.78), (1.4, 1.65, 0.10), col)
+        make_box(f"Car_{i}_trunk", (cx + back_off_x * 0.65,  cy, lot_z + 0.78), (1.4, 1.65, 0.10), col)
+        # Cabin centered
+        make_box(f"Car_{i}_cabin", (cx, cy, lot_z + 1.00), (1.6, 1.55, 0.50), col)
         roof_col = (col[0] * 0.65, col[1] * 0.65, col[2] * 0.65, 1.0)
-        make_box(f"Car_{i}_roof",     (cx, cy, lot_z + 1.27), (1.45, 1.55, 0.04), roof_col)
-        make_box(f"Car_{i}_windshield", (cx, cy + front_off * 0.425, lot_z + 1.05), (1.45, 0.06, 0.45), COL_CAR_GLASS)
-        make_box(f"Car_{i}_rearwin",    (cx, cy + back_off * 0.425, lot_z + 1.05),  (1.45, 0.06, 0.42), COL_CAR_GLASS)
-        make_box(f"Car_{i}_winL", (cx - 0.78, cy, lot_z + 1.05), (0.02, 1.5, 0.40), COL_CAR_GLASS)
-        make_box(f"Car_{i}_winR", (cx + 0.78, cy, lot_z + 1.05), (0.02, 1.5, 0.40), COL_CAR_GLASS)
-        # Headlights / taillights
+        make_box(f"Car_{i}_roof",  (cx, cy, lot_z + 1.27), (1.55, 1.45, 0.04), roof_col)
+        # Windshield (front of cabin), rear window
+        make_box(f"Car_{i}_windshield", (cx + front_off_x * 0.425, cy, lot_z + 1.05), (0.06, 1.45, 0.45), COL_CAR_GLASS)
+        make_box(f"Car_{i}_rearwin",    (cx + back_off_x * 0.425,  cy, lot_z + 1.05), (0.06, 1.45, 0.42), COL_CAR_GLASS)
+        # Side windows
+        make_box(f"Car_{i}_winN", (cx, cy + 0.78, lot_z + 1.05), (1.5, 0.02, 0.40), COL_CAR_GLASS)
+        make_box(f"Car_{i}_winS", (cx, cy - 0.78, lot_z + 1.05), (1.5, 0.02, 0.40), COL_CAR_GLASS)
+        # Headlights (front) — two side-by-side at the +/-Y from car center along the X-facing front
         head_col = (0.95, 0.92, 0.65, 1.0)
         tail_col = (0.85, 0.18, 0.16, 1.0)
-        fy = cy + front_off
-        ry = cy + back_off
-        make_box(f"Car_{i}_headL", (cx - 0.55, fy, lot_z + 0.45), (0.30, 0.04, 0.18), head_col)
-        make_box(f"Car_{i}_headR", (cx + 0.55, fy, lot_z + 0.45), (0.30, 0.04, 0.18), head_col)
-        make_box(f"Car_{i}_tailL", (cx - 0.55, ry, lot_z + 0.45), (0.30, 0.04, 0.18), tail_col)
-        make_box(f"Car_{i}_tailR", (cx + 0.55, ry, lot_z + 0.45), (0.30, 0.04, 0.18), tail_col)
+        fx = cx + front_off_x
+        rx = cx + back_off_x
+        make_box(f"Car_{i}_headL", (fx, cy - 0.55, lot_z + 0.45), (0.04, 0.30, 0.18), head_col)
+        make_box(f"Car_{i}_headR", (fx, cy + 0.55, lot_z + 0.45), (0.04, 0.30, 0.18), head_col)
+        make_box(f"Car_{i}_tailL", (rx, cy - 0.55, lot_z + 0.45), (0.04, 0.30, 0.18), tail_col)
+        make_box(f"Car_{i}_tailR", (rx, cy + 0.55, lot_z + 0.45), (0.04, 0.30, 0.18), tail_col)
         # Bumpers
         bump_col = (0.18, 0.18, 0.18, 1.0)
-        make_box(f"Car_{i}_bumpF", (cx, fy + (0.01 * (1 if flipped == 0 else -1)), lot_z + 0.25), (1.75, 0.06, 0.18), bump_col)
-        make_box(f"Car_{i}_bumpR", (cx, ry + (0.01 * (1 if flipped == 0 else -1)), lot_z + 0.25), (1.75, 0.06, 0.18), bump_col)
+        make_box(f"Car_{i}_bumpF", (fx + 0.01 * facing, cy, lot_z + 0.25), (0.06, 1.75, 0.18), bump_col)
+        make_box(f"Car_{i}_bumpR", (rx - 0.01 * facing, cy, lot_z + 0.25), (0.06, 1.75, 0.18), bump_col)
         # Side mirrors
         mir_col = (col[0] * 0.8, col[1] * 0.8, col[2] * 0.8, 1.0)
-        make_box(f"Car_{i}_mirL", (cx - 0.85, cy + front_off * 0.35, lot_z + 1.10), (0.08, 0.18, 0.10), mir_col)
-        make_box(f"Car_{i}_mirR", (cx + 0.85, cy + front_off * 0.35, lot_z + 1.10), (0.08, 0.18, 0.10), mir_col)
-        # Grille (front)
+        make_box(f"Car_{i}_mirN", (cx + front_off_x * 0.35, cy + 0.85, lot_z + 1.10), (0.18, 0.08, 0.10), mir_col)
+        make_box(f"Car_{i}_mirS", (cx + front_off_x * 0.35, cy - 0.85, lot_z + 1.10), (0.18, 0.08, 0.10), mir_col)
+        # Grille (front, facing X direction)
         grille_col = (0.20, 0.18, 0.16, 1.0)
-        make_box(f"Car_{i}_grille", (cx, fy - 0.02 * (1 if flipped == 0 else -1), lot_z + 0.40), (1.30, 0.04, 0.20), grille_col)
-        # Wheels + hubcaps
+        make_box(f"Car_{i}_grille", (fx - 0.02 * facing, cy, lot_z + 0.40), (0.04, 1.30, 0.20), grille_col)
+        # Wheels (axles along Y now, since car points along X)
         tire_col = (0.08, 0.08, 0.08, 1.0)
-        for wi, (wx, wy) in enumerate([(-0.78, -1.4), (0.78, -1.4), (-0.78, 1.4), (0.78, 1.4)]):
-            make_cyl(f"Car_{i}_wheel_{wi}", (cx + wx, cy + wy, lot_z + 0.16),
-                     0.28, 0.20, tire_col, segments=8, axis='X')
-            make_cyl(f"Car_{i}_hub_{wi}",   (cx + wx + (0.11 if wx > 0 else -0.11), cy + wy, lot_z + 0.16),
-                     0.10, 0.04, COL_BRASS, segments=6, axis='X')
+        for wi, (wx_off, wy_off) in enumerate([(-1.4, -0.78), (-1.4, 0.78), (1.4, -0.78), (1.4, 0.78)]):
+            make_cyl(f"Car_{i}_wheel_{wi}", (cx + wx_off, cy + wy_off, lot_z + 0.16),
+                     0.28, 0.20, tire_col, segments=8, axis='Y')
+            make_cyl(f"Car_{i}_hub_{wi}", (cx + wx_off, cy + wy_off + (0.11 if wy_off > 0 else -0.11), lot_z + 0.16),
+                     0.10, 0.04, COL_BRASS, segments=6, axis='Y')
 
-    # ── DUMPSTER (back of the lot, near a building hint) ────────────
-    dx, dy = lot_w/2 - 3.0, lot_y + lot_l/2 - 2.0
-    dump_col = (0.18, 0.28, 0.30, 1.0)   # municipal dark teal
-    make_box("Dumpster_Body", (dx, dy, 0.55), (2.4, 1.6, 1.10), dump_col)
-    # angled lid
-    make_prism("Dumpster_Lid", (dx, dy, 1.10), (2.4, 1.6, 0.20), (0.14, 0.20, 0.22, 1.0), pitch_axis='X')
-    # rusty hinge band
-    make_box("Dumpster_HingeBand", (dx, dy + 0.81, 1.10), (2.4, 0.06, 0.04), COL_BRASS)
-    # graffiti tag (a bright stripe)
-    make_box("Dumpster_Tag", (dx - 0.6, dy - 0.81, 0.55), (1.0, 0.04, 0.30), (0.85, 0.55, 0.20, 1.0))
-    # wheels (4 small cylinders)
-    for wi, (wx, wy) in enumerate([(-1.0, -0.7), (1.0, -0.7), (-1.0, 0.7), (1.0, 0.7)]):
-        make_cyl(f"Dumpster_Wheel_{wi}", (dx + wx, dy + wy, 0.10), 0.10, 0.10, (0.10, 0.10, 0.10, 1.0), segments=6, axis='X')
+    # ── DUMPSTER in the NW corner ──
+    dx_d = lot_cx - lot_x_w/2 + 2.0
+    dy_d = lot_cy + lot_y_l/2 - 2.0
+    dump_col = (0.18, 0.28, 0.30, 1.0)
+    make_box("Dumpster_Body", (dx_d, dy_d, 0.55), (1.6, 2.4, 1.10), dump_col)
+    make_prism("Dumpster_Lid", (dx_d, dy_d, 1.10), (1.6, 2.4, 0.20), (0.14, 0.20, 0.22, 1.0), pitch_axis='Y')
+    make_box("Dumpster_HingeBand", (dx_d + 0.81, dy_d, 1.10), (0.06, 2.4, 0.04), COL_BRASS)
+    make_box("Dumpster_Tag", (dx_d - 0.81, dy_d - 0.6, 0.55), (0.04, 1.0, 0.30), (0.85, 0.55, 0.20, 1.0))
+    for wi, (wox, woy) in enumerate([(-0.7, -1.0), (0.7, -1.0), (-0.7, 1.0), (0.7, 1.0)]):
+        make_cyl(f"Dumpster_Wheel_{wi}", (dx_d + wox, dy_d + woy, 0.10), 0.10, 0.10,
+                 (0.10, 0.10, 0.10, 1.0), segments=6, axis='Y')
 
-    # ── PHONE POLE with crossbar, transformer, lines hint ──────────
-    pp_x = -lot_w/2 + 1.5
-    pp_y = lot_y - lot_l/2 - 1.0
+    # ── PHONE POLE at the SW corner ──
+    pp_x = lot_cx - lot_x_w/2 - 1.0
+    pp_y = lot_cy - lot_y_l/2 + 1.5
     make_cyl("PhonePole_Shaft", (pp_x, pp_y, 5.5), 0.18, 11.0, (0.42, 0.30, 0.20, 1.0), segments=8)
-    # crossbar
-    make_box("PhonePole_Crossbar_top", (pp_x, pp_y, 9.8), (2.4, 0.10, 0.10), (0.42, 0.30, 0.20, 1.0))
-    make_box("PhonePole_Crossbar_low", (pp_x, pp_y, 8.6), (2.0, 0.10, 0.10), (0.42, 0.30, 0.20, 1.0))
-    # transformer canister
-    make_cyl("PhonePole_Transformer", (pp_x + 0.35, pp_y, 8.2), 0.22, 0.55, (0.40, 0.38, 0.34, 1.0), segments=8)
-    # insulators (small ceramics atop the crossbar)
-    for ii, ix in enumerate([-1.0, -0.4, 0.4, 1.0]):
-        make_cyl(f"PhonePole_Insulator_{ii}", (pp_x + ix, pp_y, 9.95), 0.06, 0.18, (0.85, 0.80, 0.72, 1.0), segments=6)
+    make_box("PhonePole_Crossbar_top", (pp_x, pp_y, 9.8), (0.10, 2.4, 0.10), (0.42, 0.30, 0.20, 1.0))
+    make_box("PhonePole_Crossbar_low", (pp_x, pp_y, 8.6), (0.10, 2.0, 0.10), (0.42, 0.30, 0.20, 1.0))
+    make_cyl("PhonePole_Transformer", (pp_x, pp_y + 0.35, 8.2), 0.22, 0.55, (0.40, 0.38, 0.34, 1.0), segments=8)
+    for ii, iy in enumerate([-1.0, -0.4, 0.4, 1.0]):
+        make_cyl(f"PhonePole_Insulator_{ii}", (pp_x, pp_y + iy, 9.95), 0.06, 0.18, (0.85, 0.80, 0.72, 1.0), segments=6)
 
-    # ── NEWSPAPER BOX rank (3 boxes side by side) ───────────────────
-    np_y = lot_y - lot_l/2 + 0.6
-    for ni, (nx, col) in enumerate([(-3.0, (0.72, 0.20, 0.16, 1.0)),
-                                     (-2.0, (0.20, 0.40, 0.62, 1.0)),
-                                     (-1.0, (0.30, 0.30, 0.30, 1.0))]):
-        make_box(f"NewsBox_{ni}_body", (nx, np_y, 0.50), (0.45, 0.45, 0.95), col)
-        make_box(f"NewsBox_{ni}_top",  (nx, np_y, 1.03), (0.50, 0.50, 0.10), (col[0]*0.6, col[1]*0.6, col[2]*0.6, 1.0))
-        # window slot showing the cover
-        make_box(f"NewsBox_{ni}_window", (nx, np_y - 0.23, 0.65), (0.30, 0.04, 0.30), (0.85, 0.82, 0.72, 1.0))
-        # coin slot
-        make_box(f"NewsBox_{ni}_slot", (nx, np_y - 0.23, 0.30), (0.10, 0.02, 0.04), (0.10, 0.10, 0.10, 1.0))
+    # ── NEWSPAPER BOX rank along the dock-side curb ──
+    np_x = lot_cx + lot_x_w/2 - 0.6
+    for ni, (ny_off, col) in enumerate([(-3.0, (0.72, 0.20, 0.16, 1.0)),
+                                          (-2.0, (0.20, 0.40, 0.62, 1.0)),
+                                          (-1.0, (0.30, 0.30, 0.30, 1.0))]):
+        make_box(f"NewsBox_{ni}_body", (np_x, lot_cy + ny_off, 0.50), (0.45, 0.45, 0.95), col)
+        make_box(f"NewsBox_{ni}_top",  (np_x, lot_cy + ny_off, 1.03), (0.50, 0.50, 0.10), (col[0]*0.6, col[1]*0.6, col[2]*0.6, 1.0))
+        make_box(f"NewsBox_{ni}_window", (np_x + 0.23, lot_cy + ny_off, 0.65), (0.04, 0.30, 0.30), (0.85, 0.82, 0.72, 1.0))
+        make_box(f"NewsBox_{ni}_slot",   (np_x + 0.23, lot_cy + ny_off, 0.30), (0.02, 0.10, 0.04), (0.10, 0.10, 0.10, 1.0))
 
-    # ── CIGARETTE / ASH CAN near the gangway entry ──────────────────
-    ac_x = 1.6
-    ac_y = lot_y - lot_l/2 + 0.5
+    # ── ASH CAN near the gangway entry (north end of dock side) ──
+    ac_x = lot_cx + lot_x_w/2 - 0.5
+    ac_y = lot_cy + 1.6
     make_cyl("AshCan_Body", (ac_x, ac_y, 0.55), 0.28, 1.10, (0.22, 0.20, 0.18, 1.0), segments=8)
     make_cyl("AshCan_Top",  (ac_x, ac_y, 1.10), 0.32, 0.10, (0.45, 0.42, 0.36, 1.0), segments=8)
-    # the sand-filled receptacle on top
     make_cyl("AshCan_Sand", (ac_x, ac_y, 1.18), 0.20, 0.04, (0.65, 0.60, 0.50, 1.0), segments=8)
 
-    # ── BUS-STOP BENCH near the entry curb ─────────────────────────
-    bb_x = -3.5
-    bb_y = lot_y - lot_l/2 + 0.6
-    make_box("BusBench_Seat", (bb_x, bb_y, 0.45), (1.8, 0.40, 0.10), (0.30, 0.22, 0.16, 1.0))
-    make_box("BusBench_Back", (bb_x, bb_y + 0.16, 0.85), (1.8, 0.06, 0.70), (0.30, 0.22, 0.16, 1.0))
-    for li, lx_off in enumerate([-0.80, 0.80]):
-        make_box(f"BusBench_Leg_{li}", (bb_x + lx_off, bb_y, 0.22), (0.10, 0.40, 0.45), (0.18, 0.18, 0.18, 1.0))
+    # ── BUS BENCH near the curb ──
+    bb_x = lot_cx + lot_x_w/2 - 0.6
+    bb_y = lot_cy - 4.5
+    make_box("BusBench_Seat", (bb_x, bb_y, 0.45), (0.40, 1.8, 0.10), (0.30, 0.22, 0.16, 1.0))
+    make_box("BusBench_Back", (bb_x + 0.16, bb_y, 0.85), (0.06, 1.8, 0.70), (0.30, 0.22, 0.16, 1.0))
+    for li, ly_off in enumerate([-0.80, 0.80]):
+        make_box(f"BusBench_Leg_{li}", (bb_x, bb_y + ly_off, 0.22), (0.40, 0.10, 0.45), (0.18, 0.18, 0.18, 1.0))
 
-    # ── "D'AMBROSIO'S" SIGN POLE at lot entry ──────────────────────
-    sign_x = lot_w/2 - 2.0
-    sign_y = lot_y - lot_l/2 - 0.5
+    # ── "D'AMBROSIO'S" SIGN POLE at the lot's south-east entry corner ──
+    sign_x = lot_cx + lot_x_w/2 + 0.5
+    sign_y = lot_cy - lot_y_l/2 + 2.0
     make_cyl("Sign_Pole", (sign_x, sign_y, 3.5), 0.12, 7.0, (0.30, 0.28, 0.24, 1.0), segments=8)
-    # double sign panels (two-sided)
-    make_box("Sign_Panel_W", (sign_x - 0.06, sign_y, 5.5), (0.04, 2.4, 1.6), (0.55, 0.20, 0.16, 1.0))
-    make_box("Sign_Panel_E", (sign_x + 0.06, sign_y, 5.5), (0.04, 2.4, 1.6), (0.55, 0.20, 0.16, 1.0))
-    # gold letter strip (just a bright bar — readable as "lettering" at PS2 distance)
-    make_box("Sign_Text_W", (sign_x - 0.09, sign_y, 5.5), (0.02, 1.8, 0.4), (0.95, 0.78, 0.42, 1.0))
-    make_box("Sign_Text_E", (sign_x + 0.09, sign_y, 5.5), (0.02, 1.8, 0.4), (0.95, 0.78, 0.42, 1.0))
-    # sign frame (top and bottom trim)
-    make_box("Sign_Frame_W_top", (sign_x - 0.06, sign_y, 6.32), (0.05, 2.5, 0.10), (0.30, 0.28, 0.24, 1.0))
-    make_box("Sign_Frame_W_low", (sign_x - 0.06, sign_y, 4.68), (0.05, 2.5, 0.10), (0.30, 0.28, 0.24, 1.0))
-    make_box("Sign_Frame_E_top", (sign_x + 0.06, sign_y, 6.32), (0.05, 2.5, 0.10), (0.30, 0.28, 0.24, 1.0))
-    make_box("Sign_Frame_E_low", (sign_x + 0.06, sign_y, 4.68), (0.05, 2.5, 0.10), (0.30, 0.28, 0.24, 1.0))
-
-    # 3 parked cars — PS2-era detail: stepped body for profile, 4 wheels,
-    # headlights and taillights, separate windshield
-    cars = [
-        (-10.0, lot_y - 0.5, COL_CAR_BODY_A),
-        (-4.0,  lot_y - 0.5, COL_CAR_BODY_B),
-        (3.0,   lot_y + 0.5, COL_CAR_BODY_C),
-    ]
-    for i, (cx, cy, col) in enumerate(cars):
-        # Lower body (wider at the bottom, narrower at the wheel arches)
-        make_box(f"Car_{i}_body_low", (cx, cy, lot_z + 0.30), (1.75, 4.0, 0.30), col)
-        # Mid body
-        make_box(f"Car_{i}_body_mid", (cx, cy, lot_z + 0.60), (1.70, 4.1, 0.30), col)
-        # Hood (front section, shorter)
-        hood_dim_y = 1.4
-        make_box(f"Car_{i}_hood",     (cx, cy - 1.30, lot_z + 0.78), (1.65, hood_dim_y, 0.10), col)
-        # Trunk (rear section)
-        make_box(f"Car_{i}_trunk",    (cx, cy + 1.30, lot_z + 0.78), (1.65, hood_dim_y, 0.10), col)
-        # Cabin / greenhouse (between hood and trunk, taller)
-        make_box(f"Car_{i}_cabin",    (cx, cy, lot_z + 1.00), (1.55, 1.6, 0.50), col)
-        # Cabin roof (slightly inset darker — fakes a vinyl top)
-        roof_col = (col[0] * 0.65, col[1] * 0.65, col[2] * 0.65, 1.0)
-        make_box(f"Car_{i}_roof",     (cx, cy, lot_z + 1.27), (1.45, 1.55, 0.04), roof_col)
-        # Windshield (front slope, fake an angled glass strip)
-        make_box(f"Car_{i}_windshield", (cx, cy - 0.85, lot_z + 1.05), (1.45, 0.06, 0.45), COL_CAR_GLASS)
-        # Rear window
-        make_box(f"Car_{i}_rearwin", (cx, cy + 0.85, lot_z + 1.05), (1.45, 0.06, 0.42), COL_CAR_GLASS)
-        # Side windows
-        make_box(f"Car_{i}_winL", (cx - 0.78, cy, lot_z + 1.05), (0.02, 1.5, 0.40), COL_CAR_GLASS)
-        make_box(f"Car_{i}_winR", (cx + 0.78, cy, lot_z + 1.05), (0.02, 1.5, 0.40), COL_CAR_GLASS)
-        # Headlights (two glowing rectangles on the front)
-        head_col = (0.95, 0.92, 0.65, 1.0)
-        make_box(f"Car_{i}_headL", (cx - 0.55, cy - 2.0, lot_z + 0.45), (0.30, 0.04, 0.18), head_col)
-        make_box(f"Car_{i}_headR", (cx + 0.55, cy - 2.0, lot_z + 0.45), (0.30, 0.04, 0.18), head_col)
-        # Taillights (red rectangles on rear)
-        tail_col = (0.85, 0.18, 0.16, 1.0)
-        make_box(f"Car_{i}_tailL", (cx - 0.55, cy + 2.0, lot_z + 0.45), (0.30, 0.04, 0.18), tail_col)
-        make_box(f"Car_{i}_tailR", (cx + 0.55, cy + 2.0, lot_z + 0.45), (0.30, 0.04, 0.18), tail_col)
-        # Bumpers
-        bump_col = (0.18, 0.18, 0.18, 1.0)
-        make_box(f"Car_{i}_bumpF", (cx, cy - 2.01, lot_z + 0.25), (1.75, 0.06, 0.18), bump_col)
-        make_box(f"Car_{i}_bumpR", (cx, cy + 2.01, lot_z + 0.25), (1.75, 0.06, 0.18), bump_col)
-        # 4 wheels (8-segment cylinders, axis along X)
-        tire_col = (0.08, 0.08, 0.08, 1.0)
-        for wi, (wx, wy) in enumerate([(-0.78, -1.4), (0.78, -1.4), (-0.78, 1.4), (0.78, 1.4)]):
-            make_cyl(f"Car_{i}_wheel_{wi}", (cx + wx, cy + wy, lot_z + 0.16),
-                     0.28, 0.20, tire_col, segments=8, axis='X')
-            # hubcap (small cylinder offset along the wheel axis)
-            make_cyl(f"Car_{i}_hub_{wi}",   (cx + wx + (0.11 if wx > 0 else -0.11), cy + wy, lot_z + 0.16),
-                     0.10, 0.04, COL_BRASS, segments=6, axis='X')
+    # double sign panels (the broad faces look north and south)
+    make_box("Sign_Panel_N", (sign_x, sign_y + 0.06, 5.5), (2.4, 0.04, 1.6), (0.55, 0.20, 0.16, 1.0))
+    make_box("Sign_Panel_S", (sign_x, sign_y - 0.06, 5.5), (2.4, 0.04, 1.6), (0.55, 0.20, 0.16, 1.0))
+    # gold lettering strip
+    make_box("Sign_Text_N", (sign_x, sign_y + 0.09, 5.5), (1.8, 0.02, 0.4), (0.95, 0.78, 0.42, 1.0))
+    make_box("Sign_Text_S", (sign_x, sign_y - 0.09, 5.5), (1.8, 0.02, 0.4), (0.95, 0.78, 0.42, 1.0))
+    # frame trims
+    for face_y, label in ((0.06, "N"), (-0.06, "S")):
+        make_box(f"Sign_Frame_{label}_top", (sign_x, sign_y + face_y, 6.32), (2.5, 0.05, 0.10), (0.30, 0.28, 0.24, 1.0))
+        make_box(f"Sign_Frame_{label}_low", (sign_x, sign_y + face_y, 4.68), (2.5, 0.05, 0.10), (0.30, 0.28, 0.24, 1.0))
 
 
 # ════════════════════════════════════════════════════════════════
@@ -949,12 +908,13 @@ def build_parking_lot():
 # ════════════════════════════════════════════════════════════════
 
 def build_river():
-    """The water plane the boat sits on. Extends west to the opposite shore, east toward bayou."""
-    # Main river expanse — large flat plane at water level
+    """The water plane the boat sits on. Extends east to the opposite
+    (starboard) shore. The port side is the parking-lot land, not water."""
     river_extent_x = 80.0
-    river_extent_y = 100.0
+    river_extent_y = 160.0
+    # Center the river east of the boat (positive X bias)
     make_box("River_Water",
-             (-15, 0, RIVER_LEVEL_Z - 0.01),
+             (15.0, 0, RIVER_LEVEL_Z - 0.01),
              (river_extent_x, river_extent_y, 0.02),
              COL_RIVER,
              open_faces={'-Z'})
@@ -965,106 +925,109 @@ def build_river():
 # ════════════════════════════════════════════════════════════════
 
 def build_dock():
-    """Wooden dock extending from the parking-lot edge to the boat hull.
-    Carries the gangway, mooring bollards, cargo, lanterns, ropes."""
-    DK_W = 8.0
-    # dock spans the gap between parking lot (PARKING_Y - 8 + 11 ≈ -21) and boat hull (Y ≈ -12)
-    dock_y_start = PARKING_Y - 8.0 + 11.0   # north edge of parking lot
-    dock_y_end   = -BOAT_L / 2 - 0.3         # south edge of boat hull
-    dock_cy = (dock_y_start + dock_y_end) / 2.0
-    dock_l = dock_y_end - dock_y_start
-    dock_z = -0.40   # top of dock just above water
-    make_box("Dock_Deck", (0, dock_cy, dock_z), (DK_W, dock_l, 0.20), COL_DECK_WOOD)
-    # plank lines along the dock
-    for i in range(int(dock_l / 0.30)):
-        py = dock_y_start + 0.20 + i * 0.30
-        make_box(f"Dock_Plank_{i}", (0, py, dock_z + 0.105),
-                 (DK_W - 0.2, 0.04, 0.01), (0.30, 0.20, 0.12, 1.0))
+    """Wooden dock running PARALLEL to the boat between the parking lot
+    and the boat's port side. Long axis along Y (along the boat),
+    short axis along X. Carries cargo, mooring bollards, lanterns,
+    coiled rope, lobster traps."""
+    DK_L = 14.0   # along the boat (Y)
+    # X span: from parking east edge to boat port edge
+    parking_east_x = (PARKING_X - 6.0) + 22.0/2.0   # lot_cx + lot_x_w/2 = -19
+    boat_port_x = -BOAT_W / 2 - 0.5                  # boat hull port edge ≈ -6.5
+    dock_x_start = parking_east_x + 0.4              # ≈ -18.6
+    dock_x_end   = boat_port_x - 0.2                 # ≈ -6.7
+    dock_cx = (dock_x_start + dock_x_end) / 2.0
+    dock_w  = dock_x_end - dock_x_start              # ≈ 11.9
+    dock_cy = 0.0                                    # centered on boat
+    dock_z = -0.40
+    make_box("Dock_Deck", (dock_cx, dock_cy, dock_z), (dock_w, DK_L, 0.20), COL_DECK_WOOD)
+    # plank lines along the long axis (Y) — visible deck stripes
+    for i in range(int(DK_L / 0.30)):
+        py_p = -DK_L/2 + 0.20 + i * 0.30
+        make_box(f"Dock_Plank_{i}", (dock_cx, dock_cy + py_p, dock_z + 0.105),
+                 (dock_w - 0.2, 0.04, 0.01), (0.30, 0.20, 0.12, 1.0))
 
-    # Pilings driven into the river under the dock (8 along each side + cross-rows)
+    # Pilings driven into the river under the dock
     piling_zc = -1.8
     piling_h = 3.0
-    for row_idx, py in enumerate([dock_y_start + 0.5, dock_cy - 1.5, dock_cy + 1.5, dock_y_end - 0.5]):
-        for ci, cx in enumerate([-DK_W/2 + 0.2, -DK_W/4, DK_W/4, DK_W/2 - 0.2]):
-            make_cyl(f"Dock_Piling_{row_idx}_{ci}", (cx, py, piling_zc), 0.16, piling_h,
+    for row_idx, px_p in enumerate([dock_x_start + 0.5, dock_cx - 2.0, dock_cx + 2.0, dock_x_end - 0.5]):
+        for ci, cy_p in enumerate([-DK_L/2 + 0.4, -DK_L/4, DK_L/4, DK_L/2 - 0.4]):
+            make_cyl(f"Dock_Piling_{row_idx}_{ci}", (px_p, cy_p, piling_zc), 0.16, piling_h,
                      COL_PIER_WOOD, segments=6)
 
-    # Heavy mooring bollards along the dock edges (boat side)
-    for i, bx in enumerate([-DK_W/2 + 0.6, DK_W/2 - 0.6]):
-        by = dock_y_end - 0.6
-        make_cyl(f"Dock_Bollard_{i}", (bx, by, dock_z + 0.50), 0.22, 0.80, (0.32, 0.30, 0.26, 1.0), segments=8)
-        make_cyl(f"Dock_Bollard_Cap_{i}", (bx, by, dock_z + 0.92), 0.28, 0.12, (0.32, 0.30, 0.26, 1.0), segments=8)
-        # mooring rope — a thick segmented line from the bollard up to the boat trim
+    # Mooring bollards on the BOAT side (east edge of dock) — these are
+    # where the boat's lines tie off
+    for i, by in enumerate([-DK_L/2 + 1.4, 0.0, DK_L/2 - 1.4]):
+        bx_b = dock_x_end - 0.6
+        make_cyl(f"Dock_Bollard_{i}", (bx_b, by, dock_z + 0.50), 0.22, 0.80, (0.32, 0.30, 0.26, 1.0), segments=8)
+        make_cyl(f"Dock_Bollard_Cap_{i}", (bx_b, by, dock_z + 0.92), 0.28, 0.12, (0.32, 0.30, 0.26, 1.0), segments=8)
+        # mooring rope arcing up to the boat's hull (X direction from bollard to boat)
         for ri in range(6):
             rt = ri / 5.0
-            rx = bx
-            ry = by + rt * (dock_y_end + 0.3 - by)
-            rz = dock_z + 0.92 + rt * (1.40)   # arcing up to the boat hull
-            sag = math.sin(rt * math.pi) * 0.20   # rope sags in the middle
-            make_box(f"Dock_Rope_{i}_seg_{ri}", (rx, ry, rz - sag),
-                     (0.08, 0.20, 0.08), (0.55, 0.40, 0.25, 1.0))
+            rx_r = bx_b + rt * (boat_port_x + 0.2 - bx_b)
+            ry_r = by
+            rz_r = dock_z + 0.92 + rt * 1.40
+            sag = math.sin(rt * math.pi) * 0.20
+            make_box(f"Dock_Rope_{i}_seg_{ri}", (rx_r, ry_r, rz_r - sag),
+                     (0.20, 0.08, 0.08), (0.55, 0.40, 0.25, 1.0))
 
-    # Cargo: stacked wooden crates, a couple of metal drums, fishing nets
-    # Crate stack on the east side of the dock
+    # Cargo: crate stack on the north end of the dock
     crate_col = (0.55, 0.35, 0.20, 1.0)
     crate_band = (0.32, 0.22, 0.14, 1.0)
-    crate_origin = (DK_W/2 - 1.0, dock_y_start + 2.0)
+    crate_origin_x = dock_cx + 1.0
+    crate_origin_y = DK_L/2 - 2.5
     for ci, (ox, oy, oz, sw, sl, sh) in enumerate([
         (0,    0,   0,    1.0, 1.0, 0.8),
-        (0,    1.1, 0,    1.0, 1.0, 0.8),
+        (1.1,  0,   0,    1.0, 1.0, 0.8),
         (0,    0,   0.85, 1.0, 1.0, 0.8),
-        (0,    1.1, 0.85, 1.0, 1.0, 0.8),
-        (-1.1, 0.55, 0,   1.2, 1.2, 1.0),
-        (-1.1, 0.55, 1.05, 1.0, 1.0, 0.8),
+        (1.1,  0,   0.85, 1.0, 1.0, 0.8),
+        (0.55, -1.1, 0,   1.2, 1.2, 1.0),
+        (0.55, -1.1, 1.05, 1.0, 1.0, 0.8),
     ]):
-        cx = crate_origin[0] + ox
-        cy = crate_origin[1] + oy
+        cx_c = crate_origin_x + ox
+        cy_c = crate_origin_y + oy
         cz_c = dock_z + 0.10 + oz + sh / 2.0
-        make_box(f"Crate_{ci}", (cx, cy, cz_c), (sw, sl, sh), crate_col)
-        # banding for crate-ness
-        make_box(f"Crate_{ci}_band1", (cx, cy + sl/2 + 0.01, cz_c), (sw, 0.03, sh * 0.7), crate_band)
-        make_box(f"Crate_{ci}_band2", (cx, cy - sl/2 - 0.01, cz_c), (sw, 0.03, sh * 0.7), crate_band)
-    # Three rusty drums on the west side
-    for di, (dx_off, dy_off) in enumerate([(0, 0), (0.85, 0.0), (0.42, 0.85)]):
-        dx_d = -DK_W/2 + 1.0 + dx_off
-        dy_d = dock_y_start + 3.0 + dy_off
+        make_box(f"Crate_{ci}", (cx_c, cy_c, cz_c), (sw, sl, sh), crate_col)
+        make_box(f"Crate_{ci}_band1", (cx_c + sw/2 + 0.01, cy_c, cz_c), (0.03, sl, sh * 0.7), crate_band)
+        make_box(f"Crate_{ci}_band2", (cx_c - sw/2 - 0.01, cy_c, cz_c), (0.03, sl, sh * 0.7), crate_band)
+
+    # 3 rusty drums south end
+    for di, (dx_off, dy_off) in enumerate([(0, 0), (0.85, 0.0), (0.42, -0.85)]):
+        dx_d = dock_cx - 0.5 + dx_off
+        dy_d = -DK_L/2 + 3.0 + dy_off
         make_cyl(f"Drum_{di}", (dx_d, dy_d, dock_z + 0.10 + 0.45), 0.40, 0.90, (0.55, 0.30, 0.20, 1.0), segments=8)
         make_cyl(f"Drum_{di}_top", (dx_d, dy_d, dock_z + 0.10 + 0.92), 0.42, 0.04, (0.42, 0.22, 0.14, 1.0), segments=8)
-        # rust band
         make_cyl(f"Drum_{di}_band", (dx_d, dy_d, dock_z + 0.10 + 0.45), 0.42, 0.08, (0.32, 0.18, 0.12, 1.0), segments=8)
 
-    # Coiled rope pile
+    # Coiled rope pile (center of dock, parking side)
     for ri in range(3):
-        make_cyl(f"RopeCoil_{ri}", (-2.0, dock_y_start + 5.0, dock_z + 0.12 + ri * 0.08),
+        make_cyl(f"RopeCoil_{ri}", (dock_cx - 2.0, dock_cy + 1.0, dock_z + 0.12 + ri * 0.08),
                  0.45 - ri * 0.05, 0.07, (0.55, 0.40, 0.25, 1.0), segments=10)
 
     # Lobster trap stack
     trap_col = (0.40, 0.30, 0.18, 1.0)
-    for ti, oy in enumerate([0, 0.85, 1.7]):
-        ty_p = dock_y_start + 7.5
-        make_box(f"LobsterTrap_{ti}", (-3.0, ty_p + oy, dock_z + 0.10 + 0.20), (0.90, 0.70, 0.40), trap_col)
-        # slat detail
+    for ti, ox in enumerate([0, 0.85, 1.7]):
+        tx_p = dock_cx - 2.5
+        ty_p = dock_cy - 3.5
+        make_box(f"LobsterTrap_{ti}", (tx_p + ox, ty_p, dock_z + 0.10 + 0.20), (0.70, 0.90, 0.40), trap_col)
         for si in range(4):
-            make_box(f"LobsterTrap_{ti}_slat_{si}", (-3.0 + (-0.3 + si * 0.20), ty_p + oy + 0.37, dock_z + 0.10 + 0.20),
+            make_box(f"LobsterTrap_{ti}_slat_{si}", (tx_p + ox + 0.37, ty_p + (-0.3 + si * 0.20), dock_z + 0.10 + 0.20),
                      (0.04, 0.04, 0.40), (0.55, 0.45, 0.30, 1.0))
 
-    # ── Dock lanterns (two wooden lamp posts) ──
-    for li, (lx, ly) in enumerate([(-DK_W/2 - 0.4, dock_cy - 2.0), (DK_W/2 + 0.4, dock_cy + 2.0)]):
-        make_cyl(f"DockLamp_Pole_{li}", (lx, ly, dock_z + 1.5), 0.08, 3.0, (0.30, 0.22, 0.14, 1.0), segments=6)
-        # lantern housing
-        make_box(f"DockLamp_Housing_{li}", (lx, ly, dock_z + 3.1), (0.30, 0.30, 0.40), (0.20, 0.18, 0.14, 1.0))
-        # glowing pane
-        make_box(f"DockLamp_Glow_{li}",    (lx, ly, dock_z + 3.0), (0.22, 0.22, 0.26), (1.0, 0.78, 0.36, 1.0))
-        # peaked cap
-        make_prism(f"DockLamp_Cap_{li}", (lx, ly, dock_z + 3.32), (0.34, 0.34, 0.16), (0.20, 0.18, 0.14, 1.0), pitch_axis='X')
+    # Dock lanterns at the north and south corners
+    for li, (lx_l, ly_l) in enumerate([(dock_x_start + 0.3, -DK_L/2 - 0.4),
+                                         (dock_x_end - 0.3,   DK_L/2 + 0.4)]):
+        make_cyl(f"DockLamp_Pole_{li}", (lx_l, ly_l, dock_z + 1.5), 0.08, 3.0, (0.30, 0.22, 0.14, 1.0), segments=6)
+        make_box(f"DockLamp_Housing_{li}", (lx_l, ly_l, dock_z + 3.1), (0.30, 0.30, 0.40), (0.20, 0.18, 0.14, 1.0))
+        make_box(f"DockLamp_Glow_{li}",    (lx_l, ly_l, dock_z + 3.0), (0.22, 0.22, 0.26), (1.0, 0.78, 0.36, 1.0))
+        make_prism(f"DockLamp_Cap_{li}", (lx_l, ly_l, dock_z + 3.32), (0.34, 0.34, 0.16), (0.20, 0.18, 0.14, 1.0), pitch_axis='Y')
 
-    # ── Dock railings on the east/west edges ──
-    for side, sx in (("W", -DK_W/2 - 0.05), ("E", DK_W/2 + 0.05)):
-        make_box(f"Dock_Rail_{side}_top", (sx, dock_cy, dock_z + 1.0), (0.05, dock_l - 0.4, 0.05), COL_BRASS)
-        make_box(f"Dock_Rail_{side}_mid", (sx, dock_cy, dock_z + 0.6), (0.04, dock_l - 0.4, 0.04), COL_BRASS)
-        for ii in range(int((dock_l - 0.4) / 0.6)):
-            sy = dock_y_start + 0.3 + ii * 0.6
-            make_box(f"Dock_Spindle_{side}_{ii}", (sx, sy, dock_z + 0.55), (0.04, 0.04, 0.95), (0.32, 0.30, 0.26, 1.0))
+    # Dock railings on N/S edges (open on the boat side and parking side)
+    for side, sy_e in (("S", -DK_L/2 - 0.05), ("N", DK_L/2 + 0.05)):
+        make_box(f"Dock_Rail_{side}_top", (dock_cx, sy_e, dock_z + 1.0), (dock_w - 0.4, 0.05, 0.05), COL_BRASS)
+        make_box(f"Dock_Rail_{side}_mid", (dock_cx, sy_e, dock_z + 0.6), (dock_w - 0.4, 0.04, 0.04), COL_BRASS)
+        for ii in range(int((dock_w - 0.4) / 0.6)):
+            sx_e = dock_x_start + 0.3 + ii * 0.6
+            make_box(f"Dock_Spindle_{side}_{ii}", (sx_e, sy_e, dock_z + 0.55), (0.04, 0.04, 0.95), (0.32, 0.30, 0.26, 1.0))
 
 
 # ════════════════════════════════════════════════════════════════
@@ -1072,37 +1035,41 @@ def build_dock():
 # ════════════════════════════════════════════════════════════════
 
 def build_opposite_shore():
-    """Far shore: industrial sprawl with refinery, water tower, smokestack
-    plumes, billboards, power lines, plus a tree line."""
+    """Far STARBOARD shore (east side, across the river): industrial
+    sprawl with refinery, water tower, smokestack plumes, billboards,
+    power lines, plus a tree line."""
     shore_x = OPPOSITE_X
     shore_w = 18.0
     shore_l = 110.0
     shore_z = RIVER_LEVEL_Z + 0.20
+    # Shore land mass — extends FURTHER east (+X) from shore_x
     make_box("OppositeShore_Land",
-             (shore_x - shore_w / 2, 0, shore_z),
+             (shore_x + shore_w / 2, 0, shore_z),
              (shore_w, shore_l, 0.40),
              COL_SHORELINE)
-    # Riprap / boulder line at the shoreline (a row of irregular blocks)
+    # Riprap line at the river-facing edge (west edge of the shore strip)
     rip_col = (0.42, 0.38, 0.32, 1.0)
     for i in range(22):
         ry = -shore_l/2 + 2.0 + i * (shore_l - 4.0) / 21.0
         offset = ((i * 17) % 7 - 3) * 0.08
         size = 0.50 + ((i * 13) % 5) * 0.12
-        make_box(f"Shore_Rock_{i}", (shore_x + 6.5 + offset, ry, RIVER_LEVEL_Z + 0.22),
+        make_box(f"Shore_Rock_{i}", (shore_x - 0.5 + offset, ry, RIVER_LEVEL_Z + 0.22),
                  (size, size, size * 0.7), rip_col)
 
     # Wider variety of buildings — refinery cluster + warehouses + small structures
+    # dx is offset INLAND from the shoreline. With the shore now on the
+    # starboard (+X) side, inland is the +X direction, so dx values are
+    # positive.
     buildings = [
-        # (dx_from_shore_x, y, w, l, h, color_override or None, kind)
-        (-1.0,  -42.0,  4.0,  6.0,  4.0,  None, 'shed'),
-        (-2.5,  -32.0,  6.0,  7.0,  6.5,  None, 'warehouse'),
-        (-4.0,  -22.0,  6.5,  8.5,  8.0,  None, 'warehouse'),
-        (-5.5,  -10.0,  8.0, 10.0, 12.0,  None, 'refinery'),
-        (-6.0,   2.0,   8.5, 12.0, 14.0,  None, 'refinery'),
-        (-3.0,  12.0,   5.0,  6.0,  7.0,  None, 'warehouse'),
-        (-1.5,  20.0,   4.0,  5.0,  5.5,  None, 'shed'),
-        (-4.0,  30.0,   7.0,  9.0, 10.0,  None, 'warehouse'),
-        (-2.0,  40.0,   5.0,  6.5,  6.5,  None, 'warehouse'),
+        (1.0,  -42.0,  4.0,  6.0,  4.0,  None, 'shed'),
+        (2.5,  -32.0,  6.0,  7.0,  6.5,  None, 'warehouse'),
+        (4.0,  -22.0,  6.5,  8.5,  8.0,  None, 'warehouse'),
+        (5.5,  -10.0,  8.0, 10.0, 12.0,  None, 'refinery'),
+        (6.0,   2.0,   8.5, 12.0, 14.0,  None, 'refinery'),
+        (3.0,  12.0,   5.0,  6.0,  7.0,  None, 'warehouse'),
+        (1.5,  20.0,   4.0,  5.0,  5.5,  None, 'shed'),
+        (4.0,  30.0,   7.0,  9.0, 10.0,  None, 'warehouse'),
+        (2.0,  40.0,   5.0,  6.5,  6.5,  None, 'warehouse'),
     ]
     lit = (0.95, 0.78, 0.40, 1.0)
     dark = (0.18, 0.16, 0.14, 1.0)
@@ -1114,12 +1081,13 @@ def build_opposite_shore():
         elif kind == 'shed':
             body_col = (0.46, 0.40, 0.32, 1.0)
         make_box(f"OppositeBldg_{i}", (bx, y, shore_z + h / 2), (w, l, h), body_col)
-        # window grid on the river-facing (+X) side
+        # window grid on the river-facing (-X) side — the side facing
+        # toward the boat
         rows = max(2, int(h / 2.2))
         cols = max(2, int(l / 2.0))
         for ri in range(rows):
             for ci in range(cols):
-                wx = bx + w/2 + 0.02
+                wx = bx - w/2 - 0.02
                 wy = y - l/2 + (ci + 0.5) * (l / cols)
                 wz = shore_z + 1.0 + (ri + 0.5) * ((h - 1.0) / rows)
                 seed = (i * 23 + ri * 7 + ci * 11) & 0xFF
@@ -1129,38 +1097,36 @@ def build_opposite_shore():
         # parapet / roof cap
         make_box(f"OppositeBldg_{i}_cap", (bx, y, shore_z + h + 0.15),
                  (w + 0.2, l + 0.2, 0.30), (0.32, 0.30, 0.26, 1.0))
-        # refinery extras: tall narrow smokestack rising from the roof
+        # refinery extras: smokestack rising from the roof
         if kind == 'refinery':
-            make_cyl(f"OppositeBldg_{i}_Stack", (bx - 1.0, y - 1.0, shore_z + h + 4.5),
+            make_cyl(f"OppositeBldg_{i}_Stack", (bx + 1.0, y - 1.0, shore_z + h + 4.5),
                      0.50, 9.0, (0.24, 0.20, 0.16, 1.0), segments=8)
-            make_cyl(f"OppositeBldg_{i}_StackCap", (bx - 1.0, y - 1.0, shore_z + h + 9.1),
+            make_cyl(f"OppositeBldg_{i}_StackCap", (bx + 1.0, y - 1.0, shore_z + h + 9.1),
                      0.65, 0.20, COL_BRASS, segments=8)
-            # smoke plume (a series of tinted boxes drifting eastward)
+            # smoke plume drifting downwind
             for pi in range(5):
                 make_box(f"OppositeBldg_{i}_Smoke_{pi}",
-                         (bx - 1.0 + pi * 1.2, y - 1.0 - pi * 0.4, shore_z + h + 9.5 + pi * 0.6),
+                         (bx + 1.0 + pi * 1.2, y - 1.0 - pi * 0.4, shore_z + h + 9.5 + pi * 0.6),
                          (1.4 + pi * 0.3, 1.4 + pi * 0.3, 0.7 + pi * 0.15),
                          (0.55, 0.50, 0.46, 1.0))
-            # exterior pipework — a couple of horizontal pipes along the side
+            # exterior pipework on the RIVER-facing wall (-X side of the building)
             for pi in range(3):
                 pz = shore_z + 1.5 + pi * 1.4
-                make_cyl(f"OppositeBldg_{i}_Pipe_{pi}", (bx + w/2 + 0.30, y, pz),
+                make_cyl(f"OppositeBldg_{i}_Pipe_{pi}", (bx - w/2 - 0.30, y, pz),
                          0.18, l - 0.4, (0.32, 0.30, 0.28, 1.0), segments=6, axis='Y')
-                # pipe support brackets
-                make_box(f"OppositeBldg_{i}_PipeSup_{pi}", (bx + w/2 + 0.16, y, pz - 0.25),
+                make_box(f"OppositeBldg_{i}_PipeSup_{pi}", (bx - w/2 - 0.16, y, pz - 0.25),
                          (0.18, 0.10, 0.50), (0.32, 0.30, 0.28, 1.0))
-        # warehouse: large rolling-door rectangle on the river side
+        # warehouse: rolling door on the river-facing (-X) side
         if kind == 'warehouse':
             door_col = (0.32, 0.30, 0.26, 1.0)
-            make_box(f"OppositeBldg_{i}_Door", (bx + w/2 + 0.02, y, shore_z + 1.6),
+            make_box(f"OppositeBldg_{i}_Door", (bx - w/2 - 0.02, y, shore_z + 1.6),
                      (0.05, l * 0.4, 3.0), door_col)
-            # door panel lines
             for di in range(4):
-                make_box(f"OppositeBldg_{i}_DoorLine_{di}", (bx + w/2 + 0.06, y, shore_z + 0.4 + di * 0.7),
+                make_box(f"OppositeBldg_{i}_DoorLine_{di}", (bx - w/2 - 0.06, y, shore_z + 0.4 + di * 0.7),
                          (0.02, l * 0.4 - 0.1, 0.03), (0.18, 0.16, 0.14, 1.0))
 
-    # ── WATER TOWER (silhouette landmark, far back) ──
-    wt_x = shore_x - 11.0
+    # ── WATER TOWER (silhouette landmark, far back / inland) ──
+    wt_x = shore_x + 11.0
     wt_y = -2.0
     # 4 legs (cylinders)
     for li, (lx_off, ly_off) in enumerate([(-1.5, -1.5), (1.5, -1.5), (-1.5, 1.5), (1.5, 1.5)]):
@@ -1179,8 +1145,8 @@ def build_opposite_shore():
     # finial
     make_cyl("WaterTower_Finial", (wt_x, wt_y, shore_z + 20.8), 0.06, 0.80, (0.24, 0.20, 0.16, 1.0), segments=6)
 
-    # ── BILLBOARD on the shoreline ──
-    bb_x = shore_x + 5.5
+    # ── BILLBOARD facing the river (sits right at the water's edge) ──
+    bb_x = shore_x - 0.5
     bb_y = -12.0
     make_cyl("Billboard_Pole_L", (bb_x - 1.6, bb_y, shore_z + 3.5), 0.15, 7.0, (0.30, 0.28, 0.24, 1.0), segments=6)
     make_cyl("Billboard_Pole_R", (bb_x + 1.6, bb_y, shore_z + 3.5), 0.15, 7.0, (0.30, 0.28, 0.24, 1.0), segments=6)
@@ -1190,9 +1156,9 @@ def build_opposite_shore():
     # decorative band suggesting big lettering
     make_box("Billboard_Text", (bb_x, bb_y - 0.07, shore_z + 6.5), (3.6, 0.04, 0.80), (0.40, 0.16, 0.14, 1.0))
 
-    # ── POWER-LINE PYLON row crossing along the shore ──
+    # ── POWER-LINE PYLON row along the shore (between river and buildings) ──
     for pi, py in enumerate([-44.0, -16.0, 14.0, 42.0]):
-        pylon_x = shore_x + 4.0
+        pylon_x = shore_x - 4.0
         # tapered lattice tower (3 stacked boxes narrowing)
         for ti, (ts, tz_off, th) in enumerate([(2.2, 4.0, 8.0), (1.6, 11.5, 6.0), (1.0, 16.0, 3.0)]):
             make_box(f"Pylon_{pi}_seg_{ti}", (pylon_x, py, shore_z + tz_off), (ts, ts, th), (0.30, 0.28, 0.24, 1.0))
@@ -1217,8 +1183,7 @@ def build_opposite_shore():
         ymid = (ya + yb) / 2.0
         length = abs(yb - ya)
         for li, lx_off in enumerate([-2.4, -1.0, 1.0, 2.4]):
-            # cable sags slightly in the middle — fake by lowering Z a bit
-            make_box(f"PowerLine_{ai}_cable_{li}", (shore_x + 4.0 + lx_off, ymid, shore_z + 18.6),
+            make_box(f"PowerLine_{ai}_cable_{li}", (shore_x - 4.0 + lx_off, ymid, shore_z + 18.6),
                      (0.05, length, 0.05), (0.18, 0.18, 0.18, 1.0))
 
     # ── BIG TREE LINE — denser, more variety (16 trees) ──
@@ -1229,7 +1194,8 @@ def build_opposite_shore():
     for i, y in enumerate(tree_positions):
         kind = i % 3  # 0 = cypress, 1 = pine, 2 = oak
         zig = ((i % 5) - 2) * 0.7
-        tree_x = shore_x + 7.5 + zig
+        # trees grow on the shore land mass, +X from shore_x (inland)
+        tree_x = shore_x + 8.0 + zig
         canopy_color = COL_TREE_CANOPY_B if kind == 0 else (COL_TREE_CANOPY_A if kind == 1 else (0.36, 0.40, 0.26, 1.0))
         trunk_h = 7.0 if kind == 0 else (5.5 if kind == 1 else 5.0)
         trunk_low_h = trunk_h * 0.55
@@ -1256,10 +1222,10 @@ def build_opposite_shore():
                          (cs, cs, cs * 1.1),
                          canopy_color)
 
-    # ── FOREGROUND scrub bushes at the shoreline ──
+    # ── FOREGROUND scrub bushes at the river-facing shoreline ──
     bush_col = (0.30, 0.36, 0.22, 1.0)
     for bi, by in enumerate([-46, -36, -25, -14, -3, 7, 19, 28, 38, 47]):
-        bx_b = shore_x + 6.3 + ((bi % 3) - 1) * 0.4
+        bx_b = shore_x - 0.8 + ((bi % 3) - 1) * 0.4
         for ci, (ox, oy, sz_v) in enumerate([(0.0, 0.0, 0.8), (-0.4, 0.2, 0.6), (0.4, -0.1, 0.65)]):
             make_box(f"Shore_Bush_{bi}_{ci}", (bx_b + ox, by + oy, shore_z + 0.40),
                      (sz_v, sz_v, sz_v * 0.7), bush_col)
@@ -1272,8 +1238,8 @@ def build_opposite_shore():
 def build_other_boats():
     """Multiple other vessels scattered across the river — tugboats,
     fishing skiffs, barge, small motor cruiser, rowboat, channel buoys."""
-    # ── Tugboat (upriver, northeast) ──
-    tx, ty = -22.0, 28.0
+    # ── Tugboat (upriver, starboard / north-east of boat) ──
+    tx, ty = 22.0, 28.0
     tz = RIVER_LEVEL_Z + 0.8
     make_box("Tugboat_Hull_low", (tx, ty, tz - 0.6), (4.2, 8.0, 0.6), COL_OTHER_BOAT_A)
     make_box("Tugboat_Hull_up",  (tx, ty, tz - 0.1), (4.0, 7.6, 0.5), COL_OTHER_BOAT_A)
@@ -1307,8 +1273,8 @@ def build_other_boats():
         make_cyl(f"Tugboat_Fender_{fi}", (tx - 2.15, ty + fy, tz - 0.4), 0.20, 0.20,
                  (0.10, 0.10, 0.10, 1.0), segments=8, axis='X')
 
-    # ── Fishing skiff (downriver, west) ──
-    sx, sy = -28.0, -18.0
+    # ── Fishing skiff (downriver, starboard) ──
+    sx, sy = 18.0, -22.0
     sz = RIVER_LEVEL_Z + 0.4
     make_box("Skiff_Hull_low", (sx, sy, sz - 0.30), (1.8, 4.5, 0.30), COL_OTHER_BOAT_B)
     make_box("Skiff_Hull_up",  (sx, sy, sz),       (1.6, 4.3, 0.30), COL_OTHER_BOAT_B)
@@ -1320,8 +1286,8 @@ def build_other_boats():
     make_box("Skiff_Tackle", (sx - 0.4, sy + 0.3, sz + 0.30), (0.35, 0.20, 0.18), (0.20, 0.35, 0.45, 1.0))
     make_box("Skiff_Rod",    (sx + 0.4, sy - 0.5, sz + 0.30), (0.04, 2.5, 0.04), (0.15, 0.15, 0.15, 1.0))
 
-    # ── Anchored barge with containers ──
-    bx, by = -8.0, -42.0
+    # ── Anchored barge with containers (far downriver, starboard) ──
+    bx, by = 12.0, -42.0
     bz = RIVER_LEVEL_Z + 0.5
     make_box("Barge_Hull", (bx, by, bz - 0.25), (5.5, 14.0, 0.6), COL_OTHER_BOAT_A)
     make_box("Barge_Deck", (bx, by, bz + 0.10), (5.4, 13.8, 0.10), COL_DECK_WOOD)
@@ -1343,8 +1309,8 @@ def build_other_boats():
                 make_box(f"Barge_Container_{i}_{j}_{k}_doorline_b", (cx + 0.40, cy + 1.61, cz_c),
                          (0.05, 0.04, 1.4), (col[0] * 0.6, col[1] * 0.6, col[2] * 0.6, 1.0))
 
-    # ── Motor cruiser (small pleasure boat) ──
-    mx, my = -16.0, -30.0
+    # ── Motor cruiser (small pleasure boat, starboard) ──
+    mx, my = 28.0, -30.0
     mz_b = RIVER_LEVEL_Z + 0.6
     make_box("Cruiser_Hull_low", (mx, my, mz_b - 0.4), (2.6, 6.0, 0.6), (0.85, 0.82, 0.74, 1.0))
     make_box("Cruiser_Hull_up",  (mx, my, mz_b + 0.1), (2.4, 5.8, 0.5), (0.85, 0.82, 0.74, 1.0))
@@ -1374,9 +1340,9 @@ def build_other_boats():
     make_box("Rowboat_OarL_blade", (rbx - 0.4, rby + 0.3, rbz + 0.15), (0.15, 0.50, 0.04), (0.55, 0.40, 0.25, 1.0))
     make_box("Rowboat_OarR_blade", (rbx + 0.4, rby + 0.3, rbz + 0.15), (0.15, 0.50, 0.04), (0.55, 0.40, 0.25, 1.0))
 
-    # ── Channel marker buoys (3 floating in the river) ──
-    for bi, (buoyx, buoy_y, b_red) in enumerate([(-2.0, -28.0, True), (4.0, 8.0, False),
-                                                  (-6.0, 16.0, True)]):
+    # ── Channel marker buoys (3 floating in the starboard river) ──
+    for bi, (buoyx, buoy_y, b_red) in enumerate([(8.0, -28.0, True), (14.0, 8.0, False),
+                                                  (6.0, 16.0, True)]):
         b_col = (0.85, 0.20, 0.18, 1.0) if b_red else (0.30, 0.85, 0.30, 1.0)
         make_cyl(f"Buoy_{bi}_body", (buoyx, buoy_y, RIVER_LEVEL_Z + 0.3), 0.45, 0.70, b_col, segments=8)
         make_cyl(f"Buoy_{bi}_cap",  (buoyx, buoy_y, RIVER_LEVEL_Z + 0.70), 0.48, 0.10, (0.20, 0.18, 0.16, 1.0), segments=8)
@@ -1610,18 +1576,18 @@ def build_distant_atmosphere():
     A distant bridge upriver, far hills on the horizon, a few low cloud
     shelves."""
 
-    # ── Far hills on the horizon behind the opposite shore ──
+    # ── Far hills on the horizon behind the opposite (starboard) shore ──
     for hi, (hx, hy, hw, hl, hh) in enumerate([
-        (OPPOSITE_X - 22, -45, 18, 32, 8),
-        (OPPOSITE_X - 28, -10, 25, 35, 12),
-        (OPPOSITE_X - 24,  20, 20, 30, 10),
-        (OPPOSITE_X - 30,  45, 22, 28, 14),
+        (OPPOSITE_X + 22, -45, 18, 32, 8),
+        (OPPOSITE_X + 28, -10, 25, 35, 12),
+        (OPPOSITE_X + 24,  20, 20, 30, 10),
+        (OPPOSITE_X + 30,  45, 22, 28, 14),
     ]):
         make_box(f"FarHill_{hi}", (hx, hy, RIVER_LEVEL_Z + hh / 2),
                  (hw, hl, hh), (0.32, 0.36, 0.36, 1.0))
 
-    # ── Distant bridge upriver (a far-off truss bridge crossing the river) ──
-    br_y = 70.0
+    # ── Distant bridge downriver (truss bridge crossing river to south) ──
+    br_y = BRIDGE_Y
     br_x_span = abs(OPPOSITE_X) + 4.0
     br_cx = OPPOSITE_X / 2.0
     br_z = RIVER_LEVEL_Z + 10.0
@@ -1668,13 +1634,12 @@ def build_distant_atmosphere():
         make_box(f"Cloud_{ci_c}_d", (cx + cw * 0.10, cy - cl * 0.10, cz_c + 0.5),
                  (cw * 0.50, cl * 0.50, 1.3), (0.74, 0.70, 0.64, 1.0))
 
-    # ── A sandy beach strip between the dock and the boat hull ──
+    # ── A sandy beach strip on the boat's stern (downriver of paddle wheel) ──
     sand_col = (0.62, 0.55, 0.40, 1.0)
-    sand_y = -BOAT_L / 2 - 4.0
-    make_box("Sand_Strip", (0, sand_y, -0.45), (14.0, 1.6, 0.10), sand_col)
-    # a few rocks scattered
+    sand_y = -BOAT_L / 2 - 8.0
+    make_box("Sand_Strip", (0, sand_y, -0.45), (16.0, 1.8, 0.10), sand_col)
     for ri_s in range(5):
-        rx_s = -5.0 + ri_s * 2.5
+        rx_s = -6.0 + ri_s * 3.0
         make_box(f"Sand_Rock_{ri_s}", (rx_s, sand_y + ((ri_s % 2) * 0.4 - 0.2), -0.35),
                  (0.4, 0.4, 0.2), (0.42, 0.38, 0.32, 1.0))
 
