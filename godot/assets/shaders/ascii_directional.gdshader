@@ -206,9 +206,10 @@ void fragment() {
 
     bool is_fine_edge   = fine_edge   > edge_threshold;
     bool is_diag_edge   = diag_edge   > edge_threshold * 1.4;
-    // Coarse threshold is tighter — long baselines accumulate more
-    // shading drift, so we need stronger contrast to call it an edge.
-    bool is_coarse_edge = coarse_edge > edge_threshold * 1.8 && !is_fine_edge;
+    // Coarse threshold tightened (was 1.8×) so faint long-baseline
+    // shading drift doesn't sprinkle dots across surfaces that should
+    // read as solid black.
+    bool is_coarse_edge = coarse_edge > edge_threshold * 2.5 && !is_fine_edge;
 
     float mask = 0.0;
 
@@ -242,24 +243,22 @@ void fragment() {
         mask = g_dot(local);
     } else {
         // ── BRIGHTNESS DENSITY FILL ─────────────────────────────────
-        // No edge detected. Pick a glyph density from THIS cell's
-        // luminance via a logarithmic ramp so deep shadows still
-        // register as a faint dot (the user's "as much shadow detail
-        // as possible" goal). Pure black (l < 0.02) is still empty
-        // so the brightest stars/lights still pop against true black.
-        if (l_here < 0.02) {
+        // Reference target is mostly PURE BLACK with halftone density
+        // only on the brightest surfaces. Earlier ramp started at
+        // l=0.02 which flooded the scene; raised the empty cutoff to
+        // 0.15 so dim ambient-lit areas read as solid black through
+        // the lithograph shader.
+        if (l_here < 0.15) {
             mask = 0.0;
-        } else if (l_here < 0.10) {
-            // Sparse texture in deep shadow — single dot per cell
+        } else if (l_here < 0.30) {
             mask = g_dot(local);
-        } else if (l_here < 0.25) {
+        } else if (l_here < 0.50) {
             mask = g_light(local);
-        } else if (l_here < 0.45) {
-            mask = g_medium(local);
         } else if (l_here < 0.70) {
+            mask = g_medium(local);
+        } else if (l_here < 0.85) {
             mask = g_dark(local);
         } else {
-            // Near-saturation: combine medium + dark for solid feel
             mask = max(g_medium(local), g_dark(local));
         }
     }

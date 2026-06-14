@@ -108,25 +108,33 @@ const MOODS: Array = [
         # pure black — matching the lithograph palette. The ASCII
         # character set draws the geometry edges as line work.
         "name": "blueprint_red",
-        "palette": 4.0, "dither": 0.04, "scanline": 0.20, "aberration": 0.0004,
+        "palette": 4.0, "dither": 0.02, "scanline": 0.10, "aberration": 0.0002,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
-        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
-        "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1),
-        "neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
-        # Lithograph ASCII: solid black, white glyphs everywhere except
-        # red-tagged items (sign text, booths) which render in red.
-        # Density characters in the brightness ramp give a halftone gray
-        # look to shadows. mono_with_red is the key switch.
-        "dir_ascii": 1.0, "dir_cell": 9.0, "dir_thresh": 0.04,
+        # NEW: layer the linework neon_edge UNDERNEATH the ASCII so
+        # crisp architectural lines survive even where the ASCII
+        # density floods the surface. scene_blend > 0 lets the
+        # brightest pixels (red sign letters, white bulb meshes) bleed
+        # through the black fill as their actual scene colour — same
+        # trick as the linework mood, applied as the foundation here.
+        "neon": 1.0, "neon_thresh": 0.020,
+        "neon_edge": Color(0.96, 0.94, 0.88, 1),
+        "neon_low":  Color(0.0, 0.0, 0.0, 1),
+        "neon_high": Color(0.0, 0.0, 0.0, 1),
+        "neon_grad": 0.0, "neon_blend": 0.50, "neon_glow": 0.18,
+        # ASCII density at REDUCED strength — adds halftone on top of
+        # the linework foundation without burying it. red_threshold
+        # raised to 0.32 so warm tungsten bulbs render as WHITE glyphs;
+        # only saturated sign-red clears the threshold for the red.
+        "dir_ascii": 0.55, "dir_cell": 9.0, "dir_thresh": 0.06,
         "dir_line": Color(0.95, 0.92, 0.86, 1),
         "dir_fill": Color(0.0, 0.0, 0.0, 1),
         "dir_tint": false,
-        "dir_input_scale": 0.7,
+        "dir_input_scale": 0.6,
         "dir_mono_red": true,
         "dir_mono_white_col": Color(0.96, 0.94, 0.88, 1),
         "dir_mono_red_col":   Color(0.98, 0.16, 0.18, 1),
-        "dir_red_thresh": 0.18,
+        "dir_red_thresh": 0.32,
     },
     {
         # Pure linework — answer to "render the scene so only visible
