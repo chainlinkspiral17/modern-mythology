@@ -622,6 +622,47 @@ between-equally-OK-options choice, pick the printable one.
   that was never built. For HCE: if a comment promises a mesh,
   add the mesh in the same commit or strike the comment.
 
+### 2026-06-14 · figure-sculpt pipeline (human_sculpt.py)
+
+- **What we learned.** First-pass Oliver Tree memorial was a stack
+  of axis-aligned boxes (pants box, jacket box, head box). User
+  feedback: "definitely abstract. I want something a bit more
+  recognizable." Box-stacks read as Minecraft figures, not as
+  people. Even a low-poly figure needs SHAPED parts: a spherical
+  head, tapered legs, a torso that narrows at the waist.
+- **The pipeline.** `human_sculpt.py` ships a single public entry
+  point `human_figure(...)` that places a parametric standing
+  figure at (base_x, base_y, base_z) with feet on the ground.
+  Proportions baked into a `PROP` dict (real human dimensions at
+  scale 1.0); the caller passes `scale = 2.0` for statues, `scale =
+  1.0` for NPCs.
+- **Parts.** Each call emits these as named MeshInstance3Ds:
+  - Foot boxes (with forward offset based on facing axis)
+  - Tapered-cylinder legs (`pants_flare` widens the cuff for the
+    JNCO look; default 1.0 = normal trousers)
+  - Pelvis bridge block
+  - Tapered-cylinder torso (yoke = darker shoulder band)
+  - Hanging arms with hand boxes at the wrist
+  - Optional scarf/cravat collar wrap
+  - Neck cylinder
+  - Spheroid head (squashed slightly for egg-shape)
+  - Hair style: `bowl` (mushroom dome + forward bang), `short`
+    (flat cap), `bald`
+  - Optional sunglasses band across the eye line
+  - Optional chest accent: `star`, `stripe`
+- **Facing-axis helper.** `_face_axis(facing)` returns the
+  (forward_x, forward_y) unit vector for `+X`, `-X`, `+Y`, `-Y`.
+  Every facing-dependent part (foot offset, face inset, chest
+  accent, sunglasses) uses this so a single `facing='-Y'` parameter
+  rotates the whole figure consistently.
+- **Rule.** Any figure (NPC, statue, gauntlet portrait, memorial)
+  goes through `human_figure(...)`. Don't stack boxes by hand. Add
+  new hair styles + accent types + outfit options to the library
+  rather than reinventing the geometry per call site.
+- **Caller's responsibility.** Place the figure correctly on the
+  terrain (`base_z = hce_elevation(...)` or the plinth top). The
+  figure doesn't sample terrain itself — that's the caller's job.
+
 ### TEMPLATE for next session
 
 ```markdown

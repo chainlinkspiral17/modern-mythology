@@ -971,16 +971,18 @@ COL_IRON_FENCE    = (0.10, 0.10, 0.10, 1.0)   # black wrought iron
 
 
 def brick_wall(name, p0, p1, height=1.8, thickness=0.30, z=0.0,
+               z1=None,
                with_cap=True, color=COL_BRICK_WALL,
                cap_color=COL_BRICK_CAP):
-    """Suburban privacy brick wall. Solid mass between p0 and p1
-    with an optional cream-stone cap. Per user direction: HCE
-    backyards facing arterials get brick walls; backyards facing
-    ponds get iron_lattice_fence instead so the water reads.
+    """Suburban privacy brick wall.
 
-    height: wall top above z (m). 1.8 m = standard privacy.
-    thickness: 0.30 m = single-wythe brick + cap. Bump to 0.40
-       for double-wythe / commercial property line walls."""
+    z + z1 enable terrain-following: the wall slants from z at p0
+    to z1 at p1, so consecutive segments emitted by _fence_along
+    meet at the same elevation and the wall reads as smoothly
+    following the grade. If z1 is None, the wall is horizontal."""
+    if z1 is None:
+        z1 = z
+    z0 = z
     x0, y0 = p0; x1, y1 = p1
     dx = x1 - x0; dy = y1 - y0
     length = math.hypot(dx, dy)
@@ -990,14 +992,14 @@ def brick_wall(name, p0, p1, height=1.8, thickness=0.30, z=0.0,
     perp_x = -math.sin(ang); perp_y = math.cos(ang)
     half_t = thickness / 2
     verts = [
-        (x0 - perp_x * half_t, y0 - perp_y * half_t, z),
-        (x1 - perp_x * half_t, y1 - perp_y * half_t, z),
-        (x1 + perp_x * half_t, y1 + perp_y * half_t, z),
-        (x0 + perp_x * half_t, y0 + perp_y * half_t, z),
-        (x0 - perp_x * half_t, y0 - perp_y * half_t, z + height),
-        (x1 - perp_x * half_t, y1 - perp_y * half_t, z + height),
-        (x1 + perp_x * half_t, y1 + perp_y * half_t, z + height),
-        (x0 + perp_x * half_t, y0 + perp_y * half_t, z + height),
+        (x0 - perp_x * half_t, y0 - perp_y * half_t, z0),
+        (x1 - perp_x * half_t, y1 - perp_y * half_t, z1),
+        (x1 + perp_x * half_t, y1 + perp_y * half_t, z1),
+        (x0 + perp_x * half_t, y0 + perp_y * half_t, z0),
+        (x0 - perp_x * half_t, y0 - perp_y * half_t, z0 + height),
+        (x1 - perp_x * half_t, y1 - perp_y * half_t, z1 + height),
+        (x1 + perp_x * half_t, y1 + perp_y * half_t, z1 + height),
+        (x0 + perp_x * half_t, y0 + perp_y * half_t, z0 + height),
     ]
     faces = [
         [4, 5, 6, 7],     # top
@@ -1009,19 +1011,19 @@ def brick_wall(name, p0, p1, height=1.8, thickness=0.30, z=0.0,
     ]
     _finalize_mesh(name + "_Brick", verts, faces, color)
     if with_cap:
-        # Cream-stone cap — slightly wider than the wall
+        # Cream-stone cap — slightly wider, also slants z0..z1
         cap_t = thickness + 0.10
         cap_h = 0.12
         half_c = cap_t / 2
         cverts = [
-            (x0 - perp_x * half_c, y0 - perp_y * half_c, z + height),
-            (x1 - perp_x * half_c, y1 - perp_y * half_c, z + height),
-            (x1 + perp_x * half_c, y1 + perp_y * half_c, z + height),
-            (x0 + perp_x * half_c, y0 + perp_y * half_c, z + height),
-            (x0 - perp_x * half_c, y0 - perp_y * half_c, z + height + cap_h),
-            (x1 - perp_x * half_c, y1 - perp_y * half_c, z + height + cap_h),
-            (x1 + perp_x * half_c, y1 + perp_y * half_c, z + height + cap_h),
-            (x0 + perp_x * half_c, y0 + perp_y * half_c, z + height + cap_h),
+            (x0 - perp_x * half_c, y0 - perp_y * half_c, z0 + height),
+            (x1 - perp_x * half_c, y1 - perp_y * half_c, z1 + height),
+            (x1 + perp_x * half_c, y1 + perp_y * half_c, z1 + height),
+            (x0 + perp_x * half_c, y0 + perp_y * half_c, z0 + height),
+            (x0 - perp_x * half_c, y0 - perp_y * half_c, z0 + height + cap_h),
+            (x1 - perp_x * half_c, y1 - perp_y * half_c, z1 + height + cap_h),
+            (x1 + perp_x * half_c, y1 + perp_y * half_c, z1 + height + cap_h),
+            (x0 + perp_x * half_c, y0 + perp_y * half_c, z0 + height + cap_h),
         ]
         cfaces = [
             [4, 5, 6, 7], [0, 3, 2, 1],
@@ -1033,12 +1035,12 @@ def brick_wall(name, p0, p1, height=1.8, thickness=0.30, z=0.0,
 
 def iron_lattice_fence(name, p0, p1, height=1.4, post_spacing=2.5,
                        bar_spacing=0.40, z=0.0,
-                       color=COL_IRON_FENCE):
-    """Black wrought-iron bar fence. SPARSE version — bar spacing
-    bumped from 0.13 m to 0.40 m, no spear tips, no ball finials,
-    fewer posts. Trade detail for polycount so a 300 m fence run
-    doesn't emit 5000+ MeshInstance3D nodes that hang Godot's import.
-    For close-ups inside a sub-sector, write a denser local variant."""
+                       color=COL_IRON_FENCE,
+                       with_end_posts=True):
+    """Black wrought-iron bar fence. SPARSE district-scale version.
+    with_end_posts=False is used by _fence_along subdividers so
+    internal segment joints don't double up on posts; the caller
+    drops one pair of end-posts at the full run's start + end."""
     x0, y0 = p0; x1, y1 = p1
     dx = x1 - x0; dy = y1 - y0
     length = math.hypot(dx, dy)
@@ -1069,14 +1071,14 @@ def iron_lattice_fence(name, p0, p1, height=1.4, post_spacing=2.5,
              (rail_t * 0.7, rail_t * 0.7, height),
              color)
 
-    # Thicker posts only at the two ENDS (not at every interval).
-    # End posts make the fence read as fence-with-structure without
-    # blowing up the mesh count.
-    for end_idx, (bx, by) in enumerate([(x0, y0), (x1, y1)]):
-        _box(f"{name}_Post_{end_idx}",
-             (bx, by, z + (height + 0.20) / 2),
-             (0.12, 0.12, height + 0.20),
-             color)
+    # End posts only when this segment IS a full run, not a
+    # subdivision of a longer run.
+    if with_end_posts:
+        for end_idx, (bx, by) in enumerate([(x0, y0), (x1, y1)]):
+            _box(f"{name}_Post_{end_idx}",
+                 (bx, by, z + (height + 0.20) / 2),
+                 (0.12, 0.12, height + 0.20),
+                 color)
 
 
 def double_yellow(name, p0, p1, z=0.0):

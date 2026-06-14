@@ -37,6 +37,7 @@ from infra_library import (
     brick_wall, iron_lattice_fence,
     COL_BRICK_WALL, COL_BRICK_CAP, COL_IRON_FENCE,
 )
+from human_sculpt import human_figure
 
 OUTPUT_DIR = "../../../assets/3d/locales"
 OUTPUT_NAME = "harmony_terrain.glb"
@@ -691,34 +692,23 @@ def build_district_fences():
 
 
 def build_oliver_tree_memorial():
-    """A public-works memorial statue of Oliver Tree, placed in
-    Founders Memorial Grove (~(-260, 120)). Abstract, colorful,
-    recognizable — the signature huge wide-leg jeans + pink/purple
-    puffy jacket + bowl-cut hair + red sunglasses + yellow scarf.
-    Cream-stone plinth with a brass plaque.
+    """Public-works statue of Oliver Tree in Founders Memorial Grove
+    (-260, +120). Rebuilt on top of human_sculpt.human_figure so
+    the silhouette reads as a recognizable person, not abstract
+    box-stack. 2× scale (3.6 m tall figure) on a 1.5 m plinth.
 
-    Per user (2026-06-14): "this lovely weirdo who passed away
-    today." HCE is a planned community that erects statues of its
-    cultural figures; this one belongs in the Memorial Grove
-    alongside whatever else the HOA has memorialized."""
+    Signature elements wired through human_figure parameters:
+      · hair_style='bowl'  — the mushroom bowl-cut + forward bang
+      · pants_flare=2.6    — the JNCO wide-leg flare
+      · jacket pink body + purple yoke + pink star accent
+      · yellow scarf at the collar
+      · pink-red sunglasses band across the eye line"""
     sx, sy = -260.0, 120.0
     ground_z = hce_elevation(sx, sy)
 
-    # Statue colours
-    COL_PLINTH      = (0.78, 0.74, 0.66, 1.0)
-    COL_PLAQUE      = (0.65, 0.48, 0.20, 1.0)
-    COL_PANTS_DENIM = (0.55, 0.68, 0.82, 1.0)
-    COL_PANT_FOLDS  = (0.40, 0.50, 0.66, 1.0)
-    COL_JACKET_PINK = (0.95, 0.42, 0.62, 1.0)
-    COL_JACKET_PURP = (0.62, 0.42, 0.78, 1.0)
-    COL_JACKET_STAR = (0.95, 0.42, 0.62, 1.0)
-    COL_HAIR        = (0.32, 0.22, 0.16, 1.0)
-    COL_SKIN        = (0.92, 0.75, 0.62, 1.0)
-    COL_GLASSES     = (0.95, 0.30, 0.45, 1.0)
-    COL_SCARF       = (0.95, 0.85, 0.35, 1.0)
-    COL_SHOES       = (0.92, 0.90, 0.84, 1.0)
-
     # ── Plinth ──────────────────────────────────────────────────
+    COL_PLINTH = (0.78, 0.74, 0.66, 1.0)
+    COL_PLAQUE = (0.65, 0.48, 0.20, 1.0)
     plinth_w = 2.6
     plinth_d = 2.2
     plinth_h = 1.5
@@ -729,104 +719,33 @@ def build_oliver_tree_memorial():
                     COL_PLINTH)
     # Brass plaque on the front (south face)
     _make_box_local("OT_Plaque",
-                    (sx, sy - plinth_d / 2 - 0.04,
-                     plinth_z + 0.10),
+                    (sx, sy - plinth_d / 2 - 0.04, plinth_z + 0.10),
                     (1.6, 0.08, 0.60),
                     COL_PLAQUE)
 
-    # Statue sits on top of the plinth, ~4 m tall total
-    base_z = ground_z + plinth_h
+    # ── The figure itself, via the human_sculpt pipeline ────────
+    base_z = ground_z + plinth_h   # feet sit on top of the plinth
+    human_figure(
+        name="OT",
+        base_x=sx, base_y=sy, base_z=base_z,
+        scale=2.0,                    # 3.6 m statue
+        facing='-Y',                  # plaque/face point south
+        skin_color=(0.92, 0.75, 0.62, 1.0),
+        hair_style='bowl',
+        hair_color=(0.32, 0.22, 0.16, 1.0),
+        jacket_color=(0.95, 0.42, 0.62, 1.0),     # hot pink
+        yoke_color=(0.62, 0.42, 0.78, 1.0),       # purple shoulder yoke
+        accent='star',
+        accent_color=(0.95, 0.42, 0.62, 1.0),     # pink star on chest
+        scarf_color=(0.95, 0.85, 0.35, 1.0),      # yellow scarf
+        pants_color=(0.55, 0.68, 0.82, 1.0),      # denim blue
+        pants_flare=2.6,                          # JNCO wide-leg
+        shoe_color=(0.92, 0.90, 0.84, 1.0),       # white shoes
+        has_sunglasses=True,
+        sunglasses_color=(0.95, 0.30, 0.45, 1.0), # pink-red lenses
+    )
 
-    # ── HUGE wide-leg jeans (the signature beat) ────────────────
-    # Width is exaggerated; flares out at the bottom for the JNCO
-    # silhouette. Built as a single trapezoidal volume — we
-    # approximate with a wider box for the lower half + a slimmer
-    # waist box stacked on top.
-    pants_lower_w = 2.4
-    pants_lower_d = 1.4
-    pants_lower_h = 1.2
-    _make_box_local("OT_Pants_Flare",
-                    (sx, sy, base_z + pants_lower_h / 2),
-                    (pants_lower_w, pants_lower_d, pants_lower_h),
-                    COL_PANTS_DENIM)
-    # Slight darker accent at the cuff bottom
-    _make_box_local("OT_Pants_Cuff",
-                    (sx, sy, base_z + 0.10),
-                    (pants_lower_w + 0.06, pants_lower_d + 0.06, 0.15),
-                    COL_PANT_FOLDS)
-    # Upper-pants / waist — narrower
-    pants_waist_w = 1.4
-    pants_waist_d = 1.0
-    pants_waist_h = 0.7
-    _make_box_local("OT_Pants_Waist",
-                    (sx, sy, base_z + pants_lower_h + pants_waist_h / 2),
-                    (pants_waist_w, pants_waist_d, pants_waist_h),
-                    COL_PANTS_DENIM)
-    # Tiny white shoes peeking out from under the pants
-    for ox in (-0.45, 0.45):
-        _make_box_local(f"OT_Shoe_{'L' if ox<0 else 'R'}",
-                        (sx + ox, sy - 0.30, base_z + 0.18),
-                        (0.40, 0.55, 0.20),
-                        COL_SHOES)
-
-    # ── Pink puffy jacket ───────────────────────────────────────
-    jacket_w = 1.6
-    jacket_d = 1.1
-    jacket_h = 1.4
-    jacket_z = base_z + pants_lower_h + pants_waist_h + jacket_h / 2
-    _make_box_local("OT_Jacket_Body",
-                    (sx, sy, jacket_z),
-                    (jacket_w, jacket_d, jacket_h),
-                    COL_JACKET_PINK)
-    # Purple shoulder yokes (the colorblock pattern from the ref)
-    yoke_h = 0.55
-    yoke_z = jacket_z + jacket_h / 2 - yoke_h / 2 + 0.02
-    _make_box_local("OT_Jacket_YokeTop",
-                    (sx, sy, yoke_z),
-                    (jacket_w + 0.02, jacket_d + 0.02, yoke_h),
-                    COL_JACKET_PURP)
-    # Big pink star/triangle accent on the front (south face)
-    _make_box_local("OT_Jacket_Star",
-                    (sx, sy - jacket_d / 2 - 0.04, jacket_z),
-                    (0.80, 0.04, 0.80),
-                    COL_JACKET_STAR)
-    # Side pockets — small dark pink rectangles
-    pocket_z = jacket_z - 0.25
-    for ox in (-jacket_w / 2 + 0.20, jacket_w / 2 - 0.20):
-        _make_box_local(f"OT_Jacket_Pocket_{ox:+.1f}",
-                        (sx + ox, sy - jacket_d / 2 - 0.05, pocket_z),
-                        (0.40, 0.05, 0.20),
-                        (0.78, 0.30, 0.50, 1.0))
-
-    # ── Yellow scarf / collar ───────────────────────────────────
-    scarf_z = jacket_z + jacket_h / 2 + 0.20
-    _make_box_local("OT_Scarf",
-                    (sx, sy, scarf_z),
-                    (0.80, 0.65, 0.35),
-                    COL_SCARF)
-
-    # ── Head — mushroom bowl-cut + face ─────────────────────────
-    head_w = 1.10
-    head_d = 0.95
-    head_h = 0.70
-    head_z = scarf_z + 0.35 + head_h / 2
-    # The dark-brown hair bowl-cap covers the top + front
-    _make_box_local("OT_Hair",
-                    (sx, sy, head_z + 0.10),
-                    (head_w, head_d, head_h),
-                    COL_HAIR)
-    # Skin face panel — slightly inset on the south face
-    _make_box_local("OT_Face",
-                    (sx, sy - head_d / 2 - 0.04, head_z - 0.05),
-                    (head_w * 0.75, 0.08, head_h * 0.60),
-                    COL_SKIN)
-    # Red/pink sunglasses — horizontal band across the eye line
-    _make_box_local("OT_Glasses",
-                    (sx, sy - head_d / 2 - 0.06, head_z + 0.05),
-                    (head_w * 0.90, 0.04, 0.16),
-                    COL_GLASSES)
-
-    # ── Beacon at the statue so the user can find it ────────────
+    # ── Beacon overhead so the statue can be found from anywhere ─
     BEACON_H = 50.0
     _make_cyl_local("OT_Beacon_Pole",
                     (sx, sy, ground_z + BEACON_H / 2),
@@ -835,7 +754,7 @@ def build_oliver_tree_memorial():
     _make_box_local("OT_Beacon_Top",
                     (sx, sy, ground_z + BEACON_H + 1.5),
                     (3.0, 3.0, 3.0),
-                    COL_JACKET_PINK)
+                    (0.95, 0.42, 0.62, 1.0))
 
 
 def _make_box_local(name, center, size, color):
