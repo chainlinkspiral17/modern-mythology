@@ -374,10 +374,11 @@ def _build_arms(name, base_x, base_y, shoulder_z, s,
         hand_y = shoulder_y
         hand_z = shoulder_pz - arm_h
         if pose == 'right_mic' and side == 'R':
-            # Right arm raised forward at ~45° — hand near the mouth
-            hand_x = shoulder_x + 0.06 * s
-            hand_y = shoulder_y + fwd_y * (arm_h * 0.78)
-            hand_z = shoulder_pz + arm_h * 0.55
+            # Right arm bent at elbow · hand at MOUTH HEIGHT (not
+            # above the head). Hand at shoulder + 0.20*s = chin plane.
+            hand_x = shoulder_x + 0.04 * s
+            hand_y = shoulder_y + fwd_y * (arm_h * 0.55)
+            hand_z = shoulder_pz + 0.20 * s
         elif pose == 'arms_out':
             # Both arms angled outward ~20°
             hand_x = shoulder_x + sign * (arm_h * 0.35)
@@ -504,6 +505,54 @@ def _build_head(name, base_x, base_y, head_base_z, s,
                  (mx, my, mz),
                  (0.02, head_d * 0.35, head_d * 0.10),
                  mouth_color)
+        # NOSE · small skin nub between glasses and mouth
+        nz = head_cz - head_r * 0.08
+        nx = base_x + fwd_x * (head_r * 0.98 + 0.008)
+        ny = base_y + fwd_y * (head_r * 0.98 + 0.008)
+        if abs(fwd_y) > abs(fwd_x):
+            _box(f"{name}_Nose",
+                 (nx, ny, nz),
+                 (head_d * 0.14, 0.05, head_d * 0.18),
+                 skin_color)
+        else:
+            _box(f"{name}_Nose",
+                 (nx, ny, nz),
+                 (0.05, head_d * 0.14, head_d * 0.18),
+                 skin_color)
+        # EYEBROWS · two short dark accents just above the glasses
+        fwd_x_, fwd_y_ = fwd_x, fwd_y
+        eb_z = head_cz + head_r * 0.28
+        ebx = base_x + fwd_x_ * (head_r * 0.95 + 0.005)
+        eby = base_y + fwd_y_ * (head_r * 0.95 + 0.005)
+        for side, sign in (('L', -1), ('R', +1)):
+            # Perpendicular axis (in horizontal plane)
+            perp_x = -fwd_y_; perp_y = fwd_x_
+            ox = perp_x * head_d * 0.20 * sign
+            oy = perp_y * head_d * 0.20 * sign
+            if abs(fwd_y_) > abs(fwd_x_):
+                _box(f"{name}_Eyebrow_{side}",
+                     (ebx + ox, eby + oy, eb_z),
+                     (head_d * 0.22, 0.025, head_d * 0.05),
+                     hair_color)
+            else:
+                _box(f"{name}_Eyebrow_{side}",
+                     (ebx + ox, eby + oy, eb_z),
+                     (0.025, head_d * 0.22, head_d * 0.05),
+                     hair_color)
+        # CHIN · small skin extension below the mouth
+        cz = head_cz - head_r * 0.55
+        cx = base_x + fwd_x * (head_r * 0.92 + 0.005)
+        cy = base_y + fwd_y * (head_r * 0.92 + 0.005)
+        if abs(fwd_y) > abs(fwd_x):
+            _box(f"{name}_Chin",
+                 (cx, cy, cz),
+                 (head_d * 0.42, 0.06, head_d * 0.15),
+                 skin_color)
+        else:
+            _box(f"{name}_Chin",
+                 (cx, cy, cz),
+                 (0.06, head_d * 0.42, head_d * 0.15),
+                 skin_color)
 
 
 def _build_scarf(name, base_x, base_y, shoulder_z, s, scarf_color):

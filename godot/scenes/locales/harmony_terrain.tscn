@@ -138,7 +138,7 @@ shader_parameter/judder_strength = 0.0035
 sky_top_color = Color(0.42, 0.62, 0.88, 1)
 sky_horizon_color = Color(0.95, 0.92, 0.82, 1)
 sky_curve = 0.10
-sky_energy_multiplier = 1.9
+sky_energy_multiplier = 1.0
 ground_bottom_color = Color(0.62, 0.55, 0.42, 1)
 ground_horizon_color = Color(0.85, 0.80, 0.68, 1)
 ground_curve = 0.04
@@ -155,7 +155,7 @@ background_mode = 2
 sky = SubResource("Sky_HCE")
 ambient_light_source = 2
 ambient_light_color = Color(1.0, 0.88, 0.70, 1)
-ambient_light_energy = 2.4
+ambient_light_energy = 1.2
 fog_enabled = true
 fog_light_color = Color(0.92, 0.88, 0.78, 1)
 fog_density = 0.002
@@ -171,21 +171,26 @@ glow_hdr_scale = 2.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_HCE_Terrain")
 
+; Base lighting toned DOWN per user feedback (2026-06-14): with the
+; previous Sun_Key=4.5 + Fill=0.9 + Back=1.6 + ambient=2.4 + sky=1.9,
+; the F11 lighting presets (which multiply dir_mult up to 14×)
+; produced massively overlit golden scenes. New base is half-strength
+; so F11 has room to scale without blowing out.
 [node name="Sun_Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.121869, 0.992548, 0, -0.992548, 0.121869, 0, 60, 0)
 light_color = Color(1.0, 0.97, 0.92, 1)
-light_energy = 4.5
+light_energy = 2.0
 shadow_enabled = true
 
 [node name="Fill_Bounce" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, 0, 30, 0)
 light_color = Color(0.95, 0.86, 0.72, 1)
-light_energy = 0.9
+light_energy = 0.4
 
 [node name="Back_Rim" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 0, 32, 0)
 light_color = Color(0.78, 0.84, 0.95, 1)
-light_energy = 1.6
+light_energy = 0.7
 
 ; add_colliders = true · LocaleSetup walks the GLB meshes and adds
 ; trimesh colliders to any whose name matches a hint (now includes

@@ -296,6 +296,24 @@ def hce_elevation(x, y):
 # adds a Gaussian ridge along the line.
 # ────────────────────────────────────────────────────────────────
 BERMS = [
+    # ── OT MEMORIAL PARK · interior terrain features ──
+    # Per user direction (2026-06-14): "Texas suburb parks are
+    # almost never flat and boring. There are terraced embankments
+    # and hills." These narrow ridges sit at the park's edges so
+    # they add visual variation WITHOUT intruding on the central
+    # walkway ring (which would break alignment of paths, benches,
+    # the reflecting pool, etc).
+    # West-edge embankment ridge — width 5 → bump dies off ~15 m
+    # away from the centerline; walkway ring at x=-275 is clear.
+    ("OTPark_WestEmb",     [(-298, 75),  (-298, 165)],   5.0, 1.6),
+    ("OTPark_EastEmb",     [(-222, 75),  (-222, 165)],   5.0, 1.6),
+    # North-edge embankment ridge (behind the terrace overlook)
+    ("OTPark_NorthEmb",    [(-296, 175), (-224, 175)],   4.0, 1.2),
+    # Viewing knoll in the NE corner — taller bump with a wider
+    # falloff so it reads as a small hill
+    ("OTPark_NEKnoll",     [(-232, 168), (-220, 168)],  10.0, 2.2),
+    # Viewing knoll in the SW corner — secluded reading spot
+    ("OTPark_SWKnoll",     [(-294, 76),  (-282, 76)],   10.0, 1.8),
     # Country club perimeter berm — separates golf from commercial
     ("CC_Buffer",        [(-460, 340), (440, 340)],          14.0, 2.5),
     # North Ranch street-facing berm (blocks views from arterials)
@@ -637,27 +655,35 @@ def build_pond_water():
             faces2.append([0, 1 + i, 1 + ni])
         _finalize_mesh(f"PondDeep_{name}", verts2, faces2,
                        (0.18, 0.32, 0.42, 1.0))    # deep navy
-        # Sandy beach ring outside the water — IRREGULAR outer
-        # edge per vertex so the bank reads natural, not stamped.
-        # Inner edge stays clean against the water; outer wobbles.
+        # Sandy beach ring · ALIGNED TO TERRAIN per the golden rule.
+        # Inner edge sits just above water; outer edge samples the
+        # actual ground elevation at each vertex so the beach slopes
+        # naturally up the surrounding hill. No more floating ring.
         outer = radius * 0.95
-        beach_z = water_z + 0.15
+        inner_z = water_z + 0.10   # 10 cm above water at inner edge
         bverts = []
         for ring in (0, 1):
             r_base = wr if ring == 0 else outer
             for i in range(segments):
                 ang = 2.0 * math.pi * i / segments
-                # Deterministic perturbation only on the outer ring
+                # Outer ring wobble for natural edge
                 if ring == 1:
-                    # Per-vertex wobble seeded by pond name + i
                     seed_h = hash((name, i)) & 0xFFFF
                     wobble = (seed_h % 100 - 50) / 50.0   # -1..+1
-                    r = r_base + wobble * radius * 0.10   # ±10%
+                    r = r_base + wobble * radius * 0.10
                 else:
                     r = r_base
-                bverts.append((cx + math.cos(ang) * r,
-                               cy + math.sin(ang) * r,
-                               beach_z))
+                vx = cx + math.cos(ang) * r
+                vy = cy + math.sin(ang) * r
+                if ring == 0:
+                    # Inner ring sits at the water-edge bank height
+                    vz = inner_z
+                else:
+                    # Outer ring follows the actual terrain elevation
+                    # at that vertex's world position. The bank rises
+                    # with the slope of the depression.
+                    vz = max(hce_elevation(vx, vy), inner_z + 0.05)
+                bverts.append((vx, vy, vz))
         bfaces = []
         for i in range(segments):
             ni = (i + 1) % segments

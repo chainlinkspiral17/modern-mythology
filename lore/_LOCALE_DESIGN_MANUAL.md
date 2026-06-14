@@ -10,6 +10,32 @@ of doing it any other way obvious.
 > buildings, and details follow. Build in this order or pay for it
 > in re-work.
 
+> **THE GOLDEN RULE OF ALIGNMENT.** (per user 2026-06-14: "a basic
+> refrain of alignment. put the pieces together right. make this a
+> golden rule.")
+>
+> Every piece of geometry SITS ON something real. Nothing floats.
+>
+>   · Buildings stand on the terrain at `elevation(cx, cy)`.
+>   · Trees, benches, statues, beacons, fences, mailboxes,
+>     fixtures — same. Sample the terrain (or the platform after
+>     settlement flatten) at the object's centre.
+>   · Pond beaches follow the slope of the surrounding ground per
+>     vertex, not a flat ring at water level.
+>   · Pond water sits BELOW the surrounding rim — ponds don't
+>     overflow. Aim for water surface ≈ rim − 0.5 to 1.5 m.
+>   · Plaque text + signage sits FLUSH with the panel face,
+>     offset only a few millimetres for z-fighting. Never floats
+>     in front of the face.
+>   · Props in a figure's hand anchor to the actual hand-tip
+>     position returned by `human_figure(...)`, never estimated.
+>   · Arms in non-default poses must keep the hand BELOW the head
+>     top — if the hand is above the head, the math is wrong.
+>
+> When in doubt: drop a 1 m test cube at `elevation(x, y) + 0.5` —
+> if it floats, the elevation is wrong; if it sinks, the elevation
+> is wrong. Same for anything else you place.
+
 This manual is required reading before starting any new locale.
 Both the riverfront and the HCE district learned the same lesson
 the same way: lay roads against an imaginary flat plane, then
