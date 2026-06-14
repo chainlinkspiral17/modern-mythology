@@ -1232,21 +1232,20 @@ def build_oliver_tree_memorial_park():
                                 0.18, (0.62, 0.82, 0.88, 1.0),
                                 rings=3, segments=6)
 
-    # ── FLAG POLE at half-mast · the "one detail wrong" beat per
-    # the modeling playbook. US flag in honour of the deceased.
+    # ── FLAG POLE at half-mast · samples its OWN ground per the
+    # alignment golden rule.
     fp_x = sx + outer_r + 14
     fp_y = sy + 8
+    fp_z = hce_elevation(fp_x, fp_y)
     FLAGPOLE_H = 8.0
     _make_cyl_local("OTPark_FlagPole",
-                    (fp_x, fp_y, park_z + FLAGPOLE_H / 2),
+                    (fp_x, fp_y, fp_z + FLAGPOLE_H / 2),
                     0.10, FLAGPOLE_H, (0.82, 0.80, 0.76, 1.0),
                     segments=8)
-    # Concrete base
     _make_box_local("OTPark_FlagPole_Base",
-                    (fp_x, fp_y, park_z + 0.15),
+                    (fp_x, fp_y, fp_z + 0.15),
                     (0.80, 0.80, 0.30), COL_POOL_RIM)
-    # Flag at HALF mast — alternating red/white stripes + canton
-    flag_z = park_z + FLAGPOLE_H * 0.50
+    flag_z = fp_z + FLAGPOLE_H * 0.50
     flag_w = 1.6
     flag_h = 0.95
     n_stripes = 7
@@ -1265,9 +1264,9 @@ def build_oliver_tree_memorial_park():
                     (fp_x + 0.10 + canton_w / 2, fp_y, canton_z),
                     (canton_w, 0.025, canton_h),
                     (0.18, 0.22, 0.45, 1.0))
-    # Gold finial
+    # Gold finial · uses fp_z (matches the rest of the pole)
     _make_sphere_low_local("OTPark_FlagPole_Finial",
-                            (fp_x, fp_y, park_z + FLAGPOLE_H + 0.10),
+                            (fp_x, fp_y, fp_z + FLAGPOLE_H + 0.10),
                             0.10, (0.78, 0.62, 0.28, 1.0),
                             rings=3, segments=6)
 
@@ -1281,30 +1280,28 @@ def build_oliver_tree_memorial_park():
         (sx - 18, sy - 26), (sx + 18, sy - 26),
     ]
     for i, (ox, oy) in enumerate(oak_positions):
-        # Deterministic variation
         seed = (i * 17 + int(ox) * 7 + int(oy) * 13) % 100
-        trunk_h = 4.5 + (seed % 5) * 0.7        # 4.5 → 7.3 m
-        canopy_r = 4.0 + ((seed // 7) % 4) * 0.6   # 4.0 → 5.8 m
-        # Lean offset — slight tilt of the canopy on top of the trunk
-        lean_x = (((seed * 31) % 7) - 3) * 0.12      # ±0.36 m
+        trunk_h = 4.5 + (seed % 5) * 0.7
+        canopy_r = 4.0 + ((seed // 7) % 4) * 0.6
+        lean_x = (((seed * 31) % 7) - 3) * 0.12
         lean_y = (((seed * 53) % 7) - 3) * 0.12
-        # Trunk colour variation
         trunk_col = COL_OAK_TRUNK if (seed % 3) else (0.36, 0.26, 0.18, 1.0)
+        # Per-tree elevation · golden rule
+        oz = hce_elevation(ox, oy)
         _make_cyl_local(f"OTPark_Oak_{i}_Trunk",
-                        (ox, oy, park_z + trunk_h / 2),
+                        (ox, oy, oz + trunk_h / 2),
                         0.40 + (seed % 3) * 0.10, trunk_h,
                         trunk_col, segments=6)
         col = COL_OAK_CANOPY if i % 2 == 0 else COL_OAK_CANOPY2
-        # Inner darker canopy core (suggests volume)
         _make_sphere_low_local(
             f"OTPark_Oak_{i}_CanopyCore",
             (ox + lean_x, oy + lean_y,
-             park_z + trunk_h + canopy_r * 0.45),
+             oz + trunk_h + canopy_r * 0.45),
             canopy_r * 0.7, COL_OAK_TRUNK, rings=3, segments=6)
         _make_sphere_low_local(
             f"OTPark_Oak_{i}_Canopy",
             (ox + lean_x, oy + lean_y,
-             park_z + trunk_h + canopy_r * 0.55),
+             oz + trunk_h + canopy_r * 0.55),
             canopy_r, col, rings=3, segments=8)
 
     # ── 3 picnic tables under shade trees ─────────────────────
@@ -1314,18 +1311,18 @@ def build_oliver_tree_memorial_park():
         (sx - 24, sy - 18),     # SW shade
     ]
     for i, (px, py) in enumerate(picnic_spots):
+        pz_local = hce_elevation(px, py)
         _make_box_local(f"OTPark_Picnic_{i}_Top",
-                        (px, py, park_z + 0.75),
+                        (px, py, pz_local + 0.75),
                         (2.0, 0.90, 0.06), COL_PICNIC)
         for sign in (-1, 1):
             _make_box_local(f"OTPark_Picnic_{i}_Bench_{sign:+d}",
-                            (px, py + sign * 0.70, park_z + 0.42),
+                            (px, py + sign * 0.70, pz_local + 0.42),
                             (2.0, 0.36, 0.05), COL_PICNIC)
-            # Bench legs (suggested)
             for tx in (-0.85, 0.85):
                 _make_box_local(f"OTPark_Picnic_{i}_BLeg_{sign:+d}_{tx:+.1f}",
                                 (px + tx, py + sign * 0.70,
-                                 park_z + 0.21),
+                                 pz_local + 0.21),
                                 (0.06, 0.06, 0.42), COL_PICNIC)
 
     # ── 5 benches: 4 around the ring + 1 on the terrace ──────
@@ -1334,12 +1331,10 @@ def build_oliver_tree_memorial_park():
         ang = math.radians(ang_deg)
         bx = sx + math.cos(ang) * 13.2
         by = sy + math.sin(ang) * 13.2
-        # Seat
+        bz = hce_elevation(bx, by)
         _make_box_local(f"OTPark_Bench_{i}_Seat",
-                        (bx, by, park_z + 0.43),
+                        (bx, by, bz + 0.43),
                         (1.6, 0.42, 0.06), COL_BENCH)
-        # Back — perpendicular to the radial direction so it faces
-        # inward toward the statue.
         back_off_x = math.cos(ang) * 0.18
         back_off_y = math.sin(ang) * 0.18
         if abs(math.cos(ang)) > abs(math.sin(ang)):
@@ -1348,7 +1343,7 @@ def build_oliver_tree_memorial_park():
             back_sz = (1.5, 0.06, 0.45)
         _make_box_local(f"OTPark_Bench_{i}_Back",
                         (bx + back_off_x, by + back_off_y,
-                         park_z + 0.85),
+                         bz + 0.85),
                         back_sz, COL_BENCH)
     # Gazebo on the top terrace step replaces the bare bench — the
     # contemplation pavilion. Hexagonal wooden posts + peaked roof.
@@ -1357,26 +1352,22 @@ def build_oliver_tree_memorial_park():
                   park_z + 1.50,
                   radius=3.6, height=3.2)
 
-    # ── Pink flower planters at the FOUR DIAGONAL positions of
-    # the inner ring — NE / NW / SE / SW, so they don't overlap
-    # with the radial paths AND don't clash with the south
-    # reflecting pool axis. Each planter is angled inward.
+    # ── Pink flower planters at four diagonals · per-bed z ────
     for tag, ang_deg in (('NE', 45), ('NW', 135),
                           ('SW', 225), ('SE', 315)):
         ang = math.radians(ang_deg)
         fx = sx + math.cos(ang) * 10.0
         fy = sy + math.sin(ang) * 10.0
-        # Approximate box rotation by orienting the bed via its
-        # larger axis along the tangent
+        fz = hce_elevation(fx, fy)
         if abs(math.cos(ang)) > abs(math.sin(ang)):
             sx_bed, sy_bed = 1.0, 2.0
         else:
             sx_bed, sy_bed = 2.0, 1.0
         _make_box_local(f"OTPark_FlowerBed_{tag}",
-                        (fx, fy, park_z + 0.20),
+                        (fx, fy, fz + 0.20),
                         (sx_bed, sy_bed, 0.30), COL_FLOWER_BED)
         _make_box_local(f"OTPark_Flowers_{tag}",
-                        (fx, fy, park_z + 0.50),
+                        (fx, fy, fz + 0.50),
                         (sx_bed - 0.10, sy_bed - 0.10, 0.18),
                         COL_FLOWER_PINK)
 
@@ -1430,24 +1421,22 @@ def build_oliver_tree_memorial_park():
                     (sign_x, sign_y - 0.08, park_z + 2.2),
                     (3.0, 0.06, 0.90), COL_SIGN_FACE)
 
-    # ── 6 LAMPPOSTS along the radial paths ──────────────────
-    # Two per main path (mid + far end of the longer paths) so the
-    # walkways read as cared-for at night.
+    # ── 6 LAMPPOSTS along the radial paths · per-position z ──
     for tag, dx, dy, length in radials:
-        # one at the ring exit, one half-way along, one at the end
         for t in (0.45, 0.95):
             lx = sx + dx * (outer_r + length * t)
             ly = sy + dy * (outer_r + length * t)
             _build_lamppost(f"OTPark_Lamp_{tag}_{int(t*100)}",
-                            lx, ly, park_z)
+                            lx, ly, hce_elevation(lx, ly))
 
-    # ── 2 TRASHCANS at the south entry, 1 DRINKING FOUNTAIN ─
-    _build_trashcan("OTPark_Trash_W",
-                    sx - 2.5, sy - outer_r - 40, park_z)
-    _build_trashcan("OTPark_Trash_E",
-                    sx + 2.5, sy - outer_r - 40, park_z)
+    # ── 2 TRASHCANS + 1 DRINKING FOUNTAIN · per-position z ──
+    for tx, ty, tag in [(sx - 2.5, sy - outer_r - 40, 'W'),
+                          (sx + 2.5, sy - outer_r - 40, 'E')]:
+        _build_trashcan(f"OTPark_Trash_{tag}",
+                         tx, ty, hce_elevation(tx, ty))
+    fnt_x, fnt_y = sx - 20, sy - 5
     _build_drinking_fountain("OTPark_Fountain",
-                              sx - 20, sy - 5, park_z)
+                              fnt_x, fnt_y, hce_elevation(fnt_x, fnt_y))
 
     # ── Path-edging stones along the ring (decorative) ──────
     # 16 stones around the outer ring. Each gets a slight size +
@@ -1465,13 +1454,14 @@ def build_oliver_tree_memorial_park():
         ang = 2.0 * math.pi * i / edge_count
         ex = sx + math.cos(ang) * (outer_r + 0.4)
         ey = sy + math.sin(ang) * (outer_r + 0.4)
-        # Deterministic variation
         seed = (i * 23) % 100
-        sw = 0.40 + (seed % 4) * 0.06    # 0.40 – 0.58 m
-        sh = 0.22 + (seed % 3) * 0.05    # 0.22 – 0.32 m
+        sw = 0.40 + (seed % 4) * 0.06
+        sh = 0.22 + (seed % 3) * 0.05
         col = stone_palette[seed % len(stone_palette)]
+        # Per-stone elevation sample · golden rule
+        ez = hce_elevation(ex, ey)
         _make_box_local(f"OTPark_EdgeStone_{i}",
-                        (ex, ey, park_z + sh / 2 + 0.02),
+                        (ex, ey, ez + sh / 2 + 0.02),
                         (sw, sw, sh), col)
 
     # ── BOULDERS · natural-feature accents scattered in the lawn ─
@@ -1487,8 +1477,9 @@ def build_oliver_tree_memorial_park():
         (sx + 14,  sy - 36, 1.3, (0.50, 0.46, 0.42, 1.0)),
     ]
     for i, (bx, by, br, bcol) in enumerate(boulder_positions):
+        bz = hce_elevation(bx, by)
         _make_sphere_low_local(f"OTPark_Boulder_{i}",
-                               (bx, by, park_z + br * 0.45),
+                               (bx, by, bz + br * 0.45),
                                br, bcol, rings=3, segments=6)
 
     # ── GRASS TUFTS · small darker-green clumps scattered ──────
@@ -1504,9 +1495,10 @@ def build_oliver_tree_memorial_park():
         d_to_ring = abs(math.hypot(tx - sx, ty - sy) - (inner_r + outer_r) / 2)
         if d_to_ring < 2.5:
             continue
-        # Small green tuft
+        # Small green tuft · per-tuft elevation
+        tz = hce_elevation(tx, ty)
         _make_box_local(f"OTPark_Tuft_{k}",
-                        (tx, ty, park_z + 0.18),
+                        (tx, ty, tz + 0.18),
                         (0.30, 0.30, 0.35),
                         (0.28, 0.46, 0.20, 1.0))
 
@@ -1520,64 +1512,67 @@ def build_oliver_tree_memorial_park():
         (sx + 36, sy - 8,  (0.95, 0.45, 0.25, 1.0)),  # orange
     ]
     for fx, fy, fcol in extra_flower_specs:
+        fz = hce_elevation(fx, fy)
         _make_box_local(f"OTPark_ExtraBed_{int(fx)}_{int(fy)}",
-                        (fx, fy, park_z + 0.16),
+                        (fx, fy, fz + 0.16),
                         (1.4, 0.7, 0.22), COL_FLOWER_BED)
         _make_box_local(f"OTPark_ExtraFlowers_{int(fx)}_{int(fy)}",
-                        (fx, fy, park_z + 0.36),
+                        (fx, fy, fz + 0.36),
                         (1.30, 0.65, 0.14), fcol)
 
-    # ── NPCs · a few human figures populate the park so it reads
-    # as a lived-in place. All use human_sculpt.human_figure at
-    # real scale (1.0). Outfits are deliberately varied so the
-    # park doesn't feel like a uniformed group.
-    # Visitor walking along the south path (toward the statue)
+    # ── NPCs · each samples ITS OWN terrain elevation per the
+    # golden rule, so they stand on the actual ground (which now
+    # varies across the park due to interior berms).
+    npc_walker = (sx + 1.5, sy - outer_r - 14)
     human_figure(
         name="OTPark_NPC_Walker",
-        base_x=sx + 1.5, base_y=sy - outer_r - 14, base_z=park_z,
+        base_x=npc_walker[0], base_y=npc_walker[1],
+        base_z=hce_elevation(*npc_walker),
         scale=1.0, facing='+Y',
         hair_style='short', hair_color=(0.42, 0.28, 0.20, 1.0),
-        jacket_color=(0.38, 0.55, 0.68, 1.0),         # blue windbreaker
+        jacket_color=(0.38, 0.55, 0.68, 1.0),
         pants_color=(0.32, 0.32, 0.36, 1.0),
         shoe_color=(0.18, 0.18, 0.22, 1.0),
         with_ears=True, pose='arms_out',
     )
-    # Sitting-near-bench visitor (just standing next to a bench
-    # facing the statue — sitting pose isn't in the pipeline yet)
+    npc_visitor1 = (sx - 11, sy + 9)
     human_figure(
         name="OTPark_NPC_Visitor1",
-        base_x=sx - 11, base_y=sy + 9, base_z=park_z,
+        base_x=npc_visitor1[0], base_y=npc_visitor1[1],
+        base_z=hce_elevation(*npc_visitor1),
         scale=1.0, facing='+X',
         hair_style='bowl', hair_color=(0.62, 0.42, 0.18, 1.0),
-        jacket_color=(0.78, 0.32, 0.42, 1.0),         # red coat
+        jacket_color=(0.78, 0.32, 0.42, 1.0),
         pants_color=(0.30, 0.28, 0.32, 1.0),
         scarf_color=(0.86, 0.78, 0.55, 1.0),
         with_ears=True,
     )
-    # Photographer / fan on the terrace overlook
+    # Photographer on the TERRACE TOP — stays at park_z + 1.50
+    # because the terrace is built geometry, not heightmap.
     human_figure(
         name="OTPark_NPC_OnTerrace",
         base_x=sx - 2, base_y=sy + outer_r + 30 + 9,
         base_z=park_z + 1.50,
         scale=1.0, facing='-Y',
         hair_style='short', hair_color=(0.18, 0.18, 0.22, 1.0),
-        jacket_color=(0.32, 0.42, 0.32, 1.0),         # green field jacket
-        pants_color=(0.50, 0.45, 0.32, 1.0),          # khaki
+        jacket_color=(0.32, 0.42, 0.32, 1.0),
+        pants_color=(0.50, 0.45, 0.32, 1.0),
         shoe_color=(0.42, 0.30, 0.22, 1.0),
         has_sunglasses=True,
         sunglasses_color=(0.12, 0.12, 0.12, 1.0),
         with_ears=True,
     )
-    # Kid by the reflecting pool
+    npc_kid = (sx + 5, sy - 18)
     human_figure(
         name="OTPark_NPC_Kid",
-        base_x=sx + 5, base_y=sy - 18, base_z=park_z,
-        scale=0.65,                                    # child-sized
+        base_x=npc_kid[0], base_y=npc_kid[1],
+        base_z=hce_elevation(*npc_kid),
+        scale=0.65,
         facing='+X',
         hair_style='short', hair_color=(0.72, 0.55, 0.22, 1.0),
-        jacket_color=(0.95, 0.68, 0.30, 1.0),         # yellow raincoat
+        jacket_color=(0.95, 0.68, 0.30, 1.0),
         pants_color=(0.32, 0.42, 0.62, 1.0),
-        shoe_color=(0.85, 0.20, 0.18, 1.0),            # red shoes
+        shoe_color=(0.85, 0.20, 0.18, 1.0),
         with_ears=True,
     )
 
