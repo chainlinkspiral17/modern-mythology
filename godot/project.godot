@@ -33,6 +33,7 @@ SaveSystem="*res://autoload/SaveSystem.gd"
 SkinDB="*res://autoload/SkinDB.gd"
 Inventory="*res://autoload/Inventory.gd"
 GauntletState="*res://autoload/GauntletState.gd"
+InGameMusic="*res://scripts/InGameMusicPlayer.gd"
 
 [display]
 
