@@ -171,24 +171,26 @@ const MOODS: Array = [
         # The picture reads as an ink drawing of whatever the camera
         # actually sees.
         "name": "linework",
-        # Lithograph look — kill CRT artifacts. Aberration 0 → no
-        # R/B fringing around white edges. Dither low → clean ink.
-        # Palette wide (16) → no banding artifacts in the bleed-
-        # through colours.
+        # INK PRESS · RED PASS — pure BLACK + BLEACH WHITE + RED.
+        # The reference rule made explicit: no colour anywhere except
+        # the one chosen accent. neon_edge is pure (1,1,1) bleach
+        # white (no warm cast). accent_channel = (1,0,0) makes the
+        # bleed gate fire only on red-dominant pixels. Sibling moods
+        # ink_blue / ink_green swap accent_channel for the same look
+        # at a different accent — the "different colours for different
+        # passes" the user described.
         "palette": 16.0, "dither": 0.01, "scanline": 0.06, "aberration": 0.0,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
-        "neon": 1.0, "neon_thresh": 0.006,           # finer than before — catches railings, plank seams
-        "neon_edge": Color(0.96, 0.94, 0.88, 1),
-        "neon_low":  Color(0.0,  0.0,  0.0,  1),
-        "neon_high": Color(0.0,  0.0,  0.0,  1),
+        "neon": 1.0, "neon_thresh": 0.006,
+        "neon_edge": Color(1.0, 1.0, 1.0, 1),          # PURE BLEACH WHITE
+        "neon_low":  Color(0.0, 0.0, 0.0, 1),
+        "neon_high": Color(0.0, 0.0, 0.0, 1),
         "neon_grad": 0.0, "neon_blend": 0.65, "neon_glow": 0.06,
         "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
-        # red_only: bleed gate becomes R - max(G,B). Sodium-lit cars
-        # (red_dom 0.34) rejected; sign letters (0.78) pass; red-glow
-        # lit windows (0.50 if practical is red) pass with subtle weight.
         "neon_sat_bleed": false,
         "neon_red_only": true,
+        "neon_accent": Vector3(1.0, 0.0, 0.0),         # RED PASS
         "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
         # Animated ASCII starscape layer over the dark sky pixels —
         # slow spiral galaxy + twinkling stars + fungal-microchip drift.
@@ -230,6 +232,46 @@ const MOODS: Array = [
     # leaning hard into a single visual idiom. Use for hero shots
     # and stylistic variety; not the everyday gameplay mood.
     # ────────────────────────────────────────────────────────────────
+    {
+        # INK PRESS · BLUE PASS — same architecture as linework but
+        # accent_channel = (0, 0, 1) so the dominance test fires on
+        # blue-saturated emission instead of red. Future scenes with
+        # cool tube lights / blue neon / blueprint blue stamp the
+        # accent here without other warm-lit surfaces leaking.
+        "name": "ink_blue",
+        "palette": 16.0, "dither": 0.01, "scanline": 0.06, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 1.0, "neon_thresh": 0.006,
+        "neon_edge": Color(1.0, 1.0, 1.0, 1),
+        "neon_low":  Color(0.0, 0.0, 0.0, 1),
+        "neon_high": Color(0.0, 0.0, 0.0, 1),
+        "neon_grad": 0.0, "neon_blend": 0.65, "neon_glow": 0.06,
+        "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
+        "neon_sat_bleed": false,
+        "neon_red_only": true,
+        "neon_accent": Vector3(0.0, 0.0, 1.0),          # BLUE PASS
+        "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
+    },
+    {
+        # INK PRESS · GREEN PASS — same architecture, accent_channel
+        # (0, 1, 0). Lit foliage, phosphor screens, neon green signage
+        # take the accent.
+        "name": "ink_green",
+        "palette": 16.0, "dither": 0.01, "scanline": 0.06, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 1.0, "neon_thresh": 0.006,
+        "neon_edge": Color(1.0, 1.0, 1.0, 1),
+        "neon_low":  Color(0.0, 0.0, 0.0, 1),
+        "neon_high": Color(0.0, 0.0, 0.0, 1),
+        "neon_grad": 0.0, "neon_blend": 0.65, "neon_glow": 0.06,
+        "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
+        "neon_sat_bleed": false,
+        "neon_red_only": true,
+        "neon_accent": Vector3(0.0, 1.0, 0.0),          # GREEN PASS
+        "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
+    },
     {
         # HIGH-CONTRAST B&W INK — Sin City / chiaroscuro. Pure white
         # ink lines over pure black fill. No bleed, no gradient, no
@@ -357,10 +399,36 @@ var current_index: int = 8   # start on linework — pure visible-edges-only ren
 # scene's HUD doesn't provide one we just skip updating it.
 @export var mood_label_path: NodePath = NodePath("../HUD/MoodLabel")
 
+# ── F5 STROBE FLICKER ─────────────────────────────────────────────
+# Press F5 to rapid-cycle through a curated sequence of dramatic
+# moods over ~1.5 s, then return to the mood that was active when
+# the strobe started. "A solid in-between flicker in the substrate"
+# — glimpses of alternate realities glitching through the current
+# one. Names are resolved to MOODS indices at startup so a future
+# reorder of MOODS doesn't break the strobe.
+const STROBE_NAMES: Array = [
+    "substrate", "linework", "demoscene_ascii", "high_contrast_bw",
+    "ink_blue", "blueprint_red", "cel_shaded", "ink_green",
+    "noir", "precipice", "linework", "substrate",
+]
+const STROBE_FRAMES_PER_STEP: int = 5     # one mood swap every ~5 frames @ 60fps
+var strobe_active: bool = false
+var strobe_step: int = 0
+var strobe_frame: int = 0
+var strobe_return_index: int = 0
+var _strobe_indices: Array[int] = []
+
 
 func _ready() -> void:
     _apply(MOODS[current_index])
-    print("[Mood] %s · F3 to cycle" % MOODS[current_index]["name"])
+    print("[Mood] %s · F3 cycle · F5 strobe" % MOODS[current_index]["name"])
+    # Resolve STROBE_NAMES → MOODS indices once, by name lookup.
+    var by_name: Dictionary = {}
+    for i in range(MOODS.size()):
+        by_name[MOODS[i]["name"]] = i
+    for name in STROBE_NAMES:
+        if by_name.has(name):
+            _strobe_indices.append(by_name[name])
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -369,6 +437,33 @@ func _unhandled_input(event: InputEvent) -> void:
             current_index = (current_index + 1) % MOODS.size()
             _apply(MOODS[current_index])
             print("[Mood] → %s" % MOODS[current_index]["name"])
+        elif event.keycode == KEY_F5:
+            # Trigger strobe — capture current mood as the return state.
+            strobe_active = true
+            strobe_step = 0
+            strobe_frame = 0
+            strobe_return_index = current_index
+            print("[Mood] STROBE · return to %s in %d steps" %
+                  [MOODS[strobe_return_index]["name"], _strobe_indices.size()])
+
+
+func _process(_delta: float) -> void:
+    if not strobe_active:
+        return
+    strobe_frame += 1
+    if strobe_frame < STROBE_FRAMES_PER_STEP:
+        return
+    strobe_frame = 0
+    if strobe_step >= _strobe_indices.size():
+        # End strobe — snap back to the captured return mood.
+        strobe_active = false
+        current_index = strobe_return_index
+        _apply(MOODS[current_index])
+        print("[Mood] strobe end → %s" % MOODS[current_index]["name"])
+        return
+    var idx: int = _strobe_indices[strobe_step]
+    _apply(MOODS[idx])
+    strobe_step += 1
 
 
 func _apply(preset: Dictionary) -> void:
@@ -387,6 +482,7 @@ func _apply(preset: Dictionary) -> void:
         "sat_lo":         preset.get("neon_sat_lo", 0.40),
         "sat_hi":         preset.get("neon_sat_hi", 0.60),
         "red_only":       preset.get("neon_red_only", false),
+        "accent_channel": preset.get("neon_accent", Vector3(1.0, 0.0, 0.0)),
     })
     _set_params("DirAsciiQuad", {
         "strength":       preset.get("dir_ascii", 0.0),

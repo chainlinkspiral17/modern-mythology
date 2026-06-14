@@ -52,15 +52,15 @@ uniform bool sat_bleed = false;
 uniform float sat_lo : hint_range(0.0, 1.0) = 0.40;
 uniform float sat_hi : hint_range(0.0, 1.0) = 0.60;
 uniform bool red_only = false;
-// sat_bleed = true → AND a saturation gate on top of the brightness
-// gate. Useful as a generic discriminator.
-//
-// red_only = true → REPLACES the saturation gate with a strict
-// red-dominance test: red_dom = R - max(G, B). Sign red gives
-// 0.78; sodium-lit warm cars give 0.34; warm walls give ~0.05.
-// Only "true red emission" passes — perfect for the lithograph
-// look where the reference shows ONLY the sign letters (and the
-// red-tinted lit windows) in colour, never warm-lit surfaces.
+uniform vec3 accent_channel = vec3(1.0, 0.0, 0.0);
+// red_only = true → use ONE-CHANNEL dominance instead of saturation.
+// accent_channel picks the channel: (1,0,0) = red dominance (the
+// reference's sign accent), (0,1,0) = green, (0,0,1) = blue. Lets
+// the lithograph family run as ink-press "passes" — same pure
+// black + bleach white architecture, one swappable accent colour
+// per pass. Sodium-lit cars and other warm-lit surfaces never pass
+// any of these channel-dominance tests; only saturated emission
+// in the chosen channel breaks through.
 
 float luma(vec3 c) {
     return dot(c, vec3(0.299, 0.587, 0.114));
@@ -100,11 +100,18 @@ void fragment() {
     float brightness_mask = smoothstep(bleed_lo, bleed_hi, scene_max);
     float bleed_mask = brightness_mask;
     if (red_only) {
-        // Strict red-dominance discriminator. Sodium-lit warm cars
-        // (red_dom ~0.34) get rejected even though they're saturated
-        // and bright; only the sign letters and red-glow windows pass.
-        float red_dom = scene_now.r - max(scene_now.g, scene_now.b);
-        bleed_mask *= smoothstep(sat_lo, sat_hi, red_dom);
+        // One-channel dominance gate, channel selected by
+        // accent_channel. For (1,0,0): target = scene.r, others =
+        // (g, b); dom = r - max(g, b). For (0,0,1): dom = b -
+        // max(r, g). And so on for any primary selector. Warm-lit
+        // surfaces have all channels roughly equal so dom stays low;
+        // only true accent emission clears.
+        float target = dot(scene_now, accent_channel);
+        vec3 inv_mask = vec3(1.0) - accent_channel;
+        vec3 others = scene_now * inv_mask;
+        float other_max = max(others.r, max(others.g, others.b));
+        float dom = target - other_max;
+        bleed_mask *= smoothstep(sat_lo, sat_hi, dom);
     } else if (sat_bleed) {
         // Generic saturation gate (less strict than red_only).
         float scene_min = min(scene_now.r, min(scene_now.g, scene_now.b));
