@@ -87,7 +87,7 @@ func _attach_sign_label(panel: MeshInstance3D, local_offset: Vector3, rotation: 
     label.no_depth_test = false
     label.shaded = false   # ignore scene lighting; the sign is "lit" neon
     label.double_sided = true
-    label.alpha_cut = BaseMaterial3D.ALPHA_CUT_OPAQUE_PREPASS
+    label.alpha_cut = Label3D.ALPHA_CUT_OPAQUE_PREPASS
     label.pixel_size = 0.008   # 96px * 0.008 = ~0.77m tall letters
     label.transform.origin = local_offset
     label.rotation = rotation

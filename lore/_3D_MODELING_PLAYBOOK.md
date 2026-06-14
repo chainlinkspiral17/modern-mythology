@@ -276,6 +276,77 @@ scene reads as empty.
   The formulas differ — using one for both produces a correctly
   mirrored panel and an inverted panel. Don't unify them.
 
+### 2026-06-14 · when a fix doesn't appear, the bug is somewhere ELSE
+
+The "river-sink invisible 6+ times" disaster. User kept asking why
+the river still looked level with the land. I kept iterating on
+RIVER_LEVEL_Z, bank slopes, dock height — none of which addressed
+the actual cause. The actual cause: `build_ground()` was a single
+340m × 340m flat box at z=-0.10 covering the ENTIRE world including
+the river area. The water surface WAS at z=-2.5 the whole time. It
+was just hidden under an opaque ground plane.
+
+Durable rules:
+
+- **When a code change you believe is correct produces no visible
+  result, the BUG IS NOT IN THE CHANGE.** Stop iterating on that
+  layer. Investigate what's CONTAINING / OBSCURING / OVERRIDING
+  the change. Common culprits:
+    · An older layer is still rendered on top (this one — ground
+      box hiding water below it)
+    · The GLB cache hasn't refreshed in the editor (close + reopen
+      Godot, or right-click → Reimport)
+    · A `material_override` somewhere downstream is replacing the
+      material I just set
+    · Z-fighting between two coplanar surfaces
+- **When you add a new lower / smaller / hole-in-the-world feature,
+  REMOVE THE PIECE OF THE OLDER FEATURE THAT'S NOW IN THE WAY.**
+  Adding a river basin = split the old ground plane around it.
+  Adding a sinkhole = cut the affected ground geometry. Don't
+  just stack new geometry on top of conflicting old geometry.
+- **If the user has asked for the same fix 3+ times, STOP CODING
+  ON THE OBVIOUS LAYER.** Take a step back and look for what
+  could be HIDING the change you've already made.
+
+### 2026-06-14 · use Godot Label3D for sign text, not procedural geometry
+
+Procedural tube-letter approaches (cursive bezier sampling, block-
+letter strokes, axis-aligned box approximations) ALL smear into
+unreadable shapes at the screen post-process resolution at typical
+viewing distance. I burned several commits iterating cursive vs
+block vs Bezier-resolution vs stroke-thickness on the diner signs.
+None worked.
+
+**The right tool**: `Label3D` in Godot. It renders proper font
+glyphs at native font resolution, then those pixels go through the
+screen post-process at the screen's native resolution — strokes
+stay crisp.
+
+Pattern (see `LocaleSetup.gd` for the riverfront implementation):
+
+1. In the GLB, build the sign as a dark BACKING PANEL mesh with
+   a recognizable name (e.g. `Sign_Panel_N`, `BoatSign_Panel`).
+2. In `LocaleSetup.gd` (or any scene-load script), walk
+   MeshInstance3Ds, find the panel meshes by name, attach a
+   `Label3D` child with:
+   - `text = "D'Ambrosio's"`
+   - `font_size = 96`, `pixel_size = 0.008` for ~77cm-tall letters
+   - `modulate = Color(0.98, 0.18, 0.20)` (saturated booth red)
+   - `outline_size = 6`, `outline_modulate` dark
+   - `shaded = false` so it reads as self-lit neon
+   - `double_sided = true`
+   - Orient via `rotation` for the right face direction
+3. Leave the procedural tube-letter library (`cursive_type.py`)
+   alone — it's still useful for STYLIZED signage where exact
+   legibility isn't the goal (a fragmented "D'A" mark, a glow
+   pattern). Just don't use it where the user needs to actually
+   read the text.
+
+**Why I missed this for so long**: I treated text as a modeling
+problem because the rest of the locale is modeling. It's actually
+a font-rendering problem, and Godot has a font system. Use the
+right tool instead of bending the wrong one.
+
 ### 2026-06-14 · screenshots are how I see the work
 
 - **Always ask the user for a screenshot when debugging visuals.** I
