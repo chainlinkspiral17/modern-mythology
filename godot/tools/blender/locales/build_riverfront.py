@@ -2087,8 +2087,13 @@ def build_road_network():
 
     # ── UTILITY ISLAND / planted buffer strip between the raised
     # sidewalk and the parking lot's west edge. 5.8m wide.
-    strip_inner = lot_cx - lot_x_w/2                    # parking lot west edge
-    strip_outer = sidewalk_cx + side_w/2                # sidewalk inner edge
+    # NB: lot_cx / lot_x_w are local to build_parking_lot — recompute
+    # from the module-level constants so this code stays in
+    # build_road_network without a cross-function reach.
+    _lot_cx_road = PARKING_X - 6.0
+    _lot_x_w_road = 22.0
+    strip_inner = _lot_cx_road - _lot_x_w_road/2     # parking lot west edge
+    strip_outer = sidewalk_cx + side_w/2             # sidewalk inner edge
     strip_cx = (strip_inner + strip_outer) / 2
     strip_w = strip_inner - strip_outer
     for si, (y_lo, y_hi) in enumerate(raised_spans):
