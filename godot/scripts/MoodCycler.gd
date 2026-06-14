@@ -132,19 +132,13 @@ const MOODS: Array = [
         "neon_sat_bleed": false,
         "neon_red_only": true,
         "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
-        # Animated ASCII starscape layer over the dark sky pixels —
         # slow spiral galaxy + twinkling stars + fungal-microchip drift.
-        # Starscape DIALED UP so it's actually visible on the dark
         # sky pixels — galaxy spiral, twinkling stars, fungal chip
         # all near their max. sky_thresh widened (0.10 → 0.18) so
         # more "almost-dark" pixels qualify as sky and accept paint.
-        "star": 1.0, "star_cell": 9.0, "star_time": 0.40,
-        "star_sky_thresh": 0.18,
-        "star_galaxy": 0.95, "star_stars": 1.0, "star_chip": 0.70,
         # Large diffuse fBM clouds — sparse-dot penetration at edges,
         # cross-hatch & solid glyphs in the dense cores. Drifts slowly
         # horizontally; floor controls how much of sky is "clear".
-        "star_cloud": 0.85, "star_cloud_scale": 0.011, "star_cloud_floor": 0.50,
         # ASCII halftone tuned for reference-restraint: input_scale
         # 0.6 → 0.40 drops dim cells below the empty cutoff so most
         # surface stays pure black. Density chars now only appear on
@@ -192,19 +186,13 @@ const MOODS: Array = [
         "neon_red_only": true,
         "neon_accent": Vector3(1.0, 0.0, 0.0),         # RED PASS
         "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
-        # Animated ASCII starscape layer over the dark sky pixels —
         # slow spiral galaxy + twinkling stars + fungal-microchip drift.
-        # Starscape DIALED UP so it's actually visible on the dark
         # sky pixels — galaxy spiral, twinkling stars, fungal chip
         # all near their max. sky_thresh widened (0.10 → 0.18) so
         # more "almost-dark" pixels qualify as sky and accept paint.
-        "star": 1.0, "star_cell": 9.0, "star_time": 0.40,
-        "star_sky_thresh": 0.18,
-        "star_galaxy": 0.95, "star_stars": 1.0, "star_chip": 0.70,
         # Large diffuse fBM clouds — sparse-dot penetration at edges,
         # cross-hatch & solid glyphs in the dense cores. Drifts slowly
         # horizontally; floor controls how much of sky is "clear".
-        "star_cloud": 0.85, "star_cloud_scale": 0.011, "star_cloud_floor": 0.50,
     },
     {
         # SKYBOX FILTER — pure preview of the starscape animation
@@ -316,7 +304,6 @@ const MOODS: Array = [
     {
         # DEMOSCENE ASCII — Amiga / Diskmag intro. Full ASCII coverage
         # like substrate, but cyan/magenta vapor palette + heavy
-        # scanlines + chromatic aberration. Starscape on TOP at low
         # strength gives the parallax-scroll feel demoscenes love.
         "name": "demoscene_ascii",
         "palette": 5.0, "dither": 0.50, "scanline": 0.80, "aberration": 0.0048,
@@ -326,10 +313,6 @@ const MOODS: Array = [
         "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
         "neon_low": Color.BLACK, "neon_high": Color.BLACK,
         "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
-        "star": 0.6, "star_cell": 8.0, "star_time": 0.85,
-        "star_sky_thresh": 0.22,
-        "star_galaxy": 0.7, "star_stars": 0.9, "star_chip": 1.0,
-        "star_cloud": 0.4,
     },
     {
         # ANIME MOTION — speed lines + cartoon trails react to player
