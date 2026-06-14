@@ -866,17 +866,15 @@ func _process(delta: float) -> void:
 		print("[Mood] storm break · scroll pulse")
 	_storm_release = max(0.0, _storm_release - delta * 0.30)
 
-	# ── Day/night cycle. Some moods REQUIRE a bright source to read
-	# (old_film grain needs something to grain over; ascii_render
-	# only fires on lit pixels; cel_shaded wants colour to band).
-	# When one of those is active we PIN the phase to noon so the
-	# picture stays daylight-bright. Otherwise advance normally.
-	var current_mood_name: String = MOODS[current_index]["name"]
-	var needs_daylight: bool = current_mood_name in DAYLIGHT_MOODS
-	if needs_daylight:
-		_day_phase = 0.5    # locked at noon
-	else:
-		_day_phase = fposmod(_day_phase + delta / DAY_CYCLE_PERIOD, 1.0)
+	# ── Day/night cycle · DISABLED 2026-06-14. The auto-cycle was
+	# overwriting WorldEnvironment ambient + key/fill DirectionalLight
+	# energies every frame, which crushed the source luminance most
+	# moods rely on (lithograph / silent_film / substrate / cel_shaded
+	# all assume the scene actually has light to react to). Re-enable
+	# later behind an explicit toggle. Leaving the storm/cloud loop
+	# below active because those are visible audio-reactive features
+	# without scene-light side effects.
+	# OLD: _day_phase = fposmod(_day_phase + delta / DAY_CYCLE_PERIOD, 1.0)
 
 	# ── Drive starscape cloud scroll & floor.
 	var star_mat: Material = _get_material("StarscapeQuad")
@@ -894,35 +892,12 @@ func _process(delta: float) -> void:
 		var floor_val: float = 0.55 - _storm_pressure * 0.20
 		sm.set_shader_parameter("cloud_floor", clamp(floor_val, 0.30, 0.70))
 
-	# ── Day/night cycle → ambient + key light energy + background.
-	# day_phase mapping: 0 midnight, 0.25 sunrise, 0.5 noon,
-	# 0.75 sunset. Use a smoothstep to bias the dawn/dusk windows.
-	var sun_factor: float = 0.5 - 0.5 * cos(_day_phase * TAU)   # 0 night, 1 noon
-	var moon_key: DirectionalLight3D = get_node_or_null(NodePath("../Moon_Key"))
-	if moon_key:
-		# Moon is dim at noon, bright at midnight.
-		moon_key.light_energy = lerp(0.42, 0.06, sun_factor)
-		# Warm-shift colour through the day (cool at night → warm dawn → daylight neutral → warm dusk → cool again)
-		var warm: float = sun_factor
-		moon_key.light_color = Color(
-			lerp(0.62, 0.98, warm),
-			lerp(0.72, 0.92, warm),
-			lerp(0.95, 0.80, warm),
-			1.0
-		)
-	var fill_bounce: DirectionalLight3D = get_node_or_null(NodePath("../Fill_Bounce"))
-	if fill_bounce:
-		fill_bounce.light_energy = lerp(0.05, 0.30, sun_factor)
-	var env: WorldEnvironment = get_node_or_null(NodePath("../WorldEnvironment"))
-	if env and env.environment:
-		var e: Environment = env.environment
-		e.ambient_light_energy = lerp(0.18, 0.85, sun_factor)
-		e.background_color = Color(
-			lerp(0.03, 0.42, sun_factor),
-			lerp(0.04, 0.58, sun_factor),
-			lerp(0.06, 0.78, sun_factor),
-			1.0
-		)
+	# ── Day/night cycle env modulation DISABLED.
+	# Was overwriting Moon_Key / Fill_Bounce energies + ambient +
+	# background colour every frame, which crushed luminance for all
+	# the moods that need it. WorldEnvironment + DirectionalLights now
+	# keep whatever the scene .tscn declared, which is the lighting
+	# that was tested and worked.
 
 	# ── Skaterpunk camera warp · wobble FOV and roll the camera while
 	# psychedelic_substrate / lightshow_extreme are active. Find the
