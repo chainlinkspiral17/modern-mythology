@@ -632,6 +632,18 @@ const MOODS: Array = [
 ]
 
 var current_index: int = 8   # start on linework — pure visible-edges-only render
+
+# ── BLEND MODE OVERRIDE (F9) ──────────────────────────────────────
+# A sub-toggle that overrides the active mood's neon_edge blend mode
+# without touching any other parameter. -1 = "use the preset's own
+# blend mode" (the default). 0..4 = force the corresponding blend:
+# 0 REPLACE, 1 MULTIPLY, 2 OVERLAY, 3 SCREEN, 4 ADD. Persists across
+# F3 / RMB cycling so the user can pick a base mood, then layer a
+# blend mode that reveals the scene underneath.
+const BLEND_MODE_NAMES: Array[String] = [
+    "preset", "replace", "multiply", "overlay", "screen", "add",
+]
+var blend_mode_override: int = -1
 # Optional in-game label that displays the current mood name. If the
 # scene's HUD doesn't provide one we just skip updating it.
 @export var mood_label_path: NodePath = NodePath("../HUD/MoodLabel")
@@ -727,7 +739,7 @@ var _strobe_frames_active: int = 2
 
 func _ready() -> void:
     _apply(MOODS[current_index])
-    print("[Mood] %s · F3 cycle · F5 shimmer · F6 rift · RMB+look strata wheel" % MOODS[current_index]["name"])
+    print("[Mood] %s · F3 cycle · F5 shimmer · F6 rift · F9 blend · RMB+look strata wheel" % MOODS[current_index]["name"])
     var by_name: Dictionary = {}
     for i in range(MOODS.size()):
         by_name[MOODS[i]["name"]] = i
@@ -778,6 +790,8 @@ func _unhandled_input(event: InputEvent) -> void:
             action_strobe_shimmer()
         elif event.keycode == KEY_F6:
             action_strobe_rift()
+        elif event.keycode == KEY_F9:
+            action_cycle_blend_mode()
     elif event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_RIGHT:
             _right_mouse_held = event.pressed
@@ -997,7 +1011,7 @@ func _apply(preset: Dictionary) -> void:
         "accent_r":       preset.get("neon_accent", Vector3(1.0, 0.0, 0.0)).x,
         "accent_g":       preset.get("neon_accent", Vector3(1.0, 0.0, 0.0)).y,
         "accent_b":       preset.get("neon_accent", Vector3(1.0, 0.0, 0.0)).z,
-        "blend_mode":     preset.get("neon_blend_mode", 0),
+        "blend_mode":     _resolved_blend_mode(preset),
     })
     _set_params("DirAsciiQuad", {
         "strength":       preset.get("dir_ascii", 0.0),
@@ -1068,7 +1082,27 @@ func _apply(preset: Dictionary) -> void:
     })
     var label: Node = get_node_or_null(mood_label_path)
     if label is Label:
-        (label as Label).text = "MOOD · %s   (F3)" % preset["name"]
+        var suffix: String = ""
+        if blend_mode_override >= 0:
+            suffix = "  · blend=%s (F9)" % BLEND_MODE_NAMES[blend_mode_override + 1]
+        (label as Label).text = "MOOD · %s   (F3)%s" % [preset["name"], suffix]
+
+
+func _resolved_blend_mode(preset: Dictionary) -> int:
+    # F9 override wins when set, otherwise the preset's own value.
+    if blend_mode_override >= 0:
+        return blend_mode_override
+    return preset.get("neon_blend_mode", 0)
+
+
+func action_cycle_blend_mode() -> void:
+    # -1 (preset) → 0 REPLACE → 1 MULTIPLY → 2 OVERLAY → 3 SCREEN → 4 ADD → back to -1
+    blend_mode_override = blend_mode_override + 1
+    if blend_mode_override > 4:
+        blend_mode_override = -1
+    _apply(MOODS[current_index])
+    var label_name: String = BLEND_MODE_NAMES[blend_mode_override + 1]
+    print("[Mood] blend → %s" % label_name)
 
 
 func _set_params(node_name: String, params: Dictionary) -> void:

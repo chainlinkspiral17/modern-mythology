@@ -406,7 +406,7 @@ offset_left = 16.0
 offset_top = 240.0
 offset_right = 700.0
 offset_bottom = 320.0
-text = "WASD move · QE turn · RF pitch · Space/Ctrl up/down · F1 collide · F2 teleport · F3 mood · F4 hud · F5 shimmer · F6 rift · F7/F8 prev/next track · RMB+look strata wheel · 1-8 Riffmaster (Shift=oct)"
+text = "WASD move · QE turn · RF pitch · Space/Ctrl up/down · F1 collide · F2 teleport · F3 mood · F4 hud · F5 shimmer · F6 rift · F7/F8 prev/next track · F9 blend · RMB+look strata wheel · 1-8 Riffmaster (Shift=oct)"
 theme_override_font_sizes/font_size = 18
 theme_override_colors/font_color = Color(0.85, 0.78, 0.62, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

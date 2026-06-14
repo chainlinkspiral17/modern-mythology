@@ -427,6 +427,61 @@ sign: Pinyon Script (1880s copperplate elegant — fits steamboat
 era), Parisienne (French brush, lighter), Allura (elegant
 copperplate), Sacramento (modern handwritten).
 
+### 2026-06-14 · cell shaders MUST be a true identity at strength = 0
+
+- **The big invisible bug.** Every mood except a handful (substrate,
+  psychedelic_substrate, lightshow_extreme) looked uniformly chunky —
+  ~10 px cells stamped over the whole frame, including pure sky and
+  even the `raw` mood. Spent a long detour chasing window stretch and
+  filter_nearest before realising the cells were perfectly uniform
+  and not following geometry → it had to be a cell-based shader,
+  not edge detection.
+- **The culprit.** `ascii_render.gdshader` was sampling SCREEN_TEXTURE
+  at the *cell centre* and binding that single sample to both the
+  glyph-density input AND the scene that `mix(scene, ascii, strength)`
+  blends against. At `strength = 0` the shader is supposed to be a
+  no-op, but it was instead emitting the cell-centre colour for every
+  fragment inside the cell — a uniform 10 px quantization grid baked
+  into the entire chain.
+- **The fix.** Split the two samples cleanly. Per-fragment `SCREEN_UV`
+  sample for the passthrough scene (true identity at strength 0).
+  Cell-centre sample stays for glyph density and tint-from-scene
+  foreground only. Every cell-based shader in the chain now has to
+  be audited the same way: `motion_ascii`, `starscape`, and
+  `ascii_directional` were already per-fragment for passthrough;
+  `ascii_render` was the lone offender.
+- **Rule.** When a post-process shader sits permanently in the chain
+  and is gated by a `strength` uniform, the `strength = 0` path MUST
+  read SCREEN_TEXTURE at SCREEN_UV per fragment — never at a
+  quantized cell centre. Cell-aligned samples are fine for the
+  STYLIZED branch (`ascii`, `line`, etc.) but the passthrough has to
+  pass through pixel-perfect or it pollutes every mood that "isn't
+  using" the shader.
+
+### 2026-06-14 · neon_edge blend modes for "see the world underneath"
+
+- **Why.** The lithograph family (`linework`, `blueprint_red`,
+  `noir`, etc.) replaces the scene entirely with bleach-white edges
+  on pure black — beautiful for the press-art look but it crushes
+  the world detail the user wants to read.
+- **What we added.** `blend_mode` uniform on `neon_edge.gdshader`:
+  `0 = REPLACE` (classic, current behaviour), `1 = MULTIPLY`
+  (stylization darkens scene, world detail visible through tint),
+  `2 = OVERLAY` (Photoshop overlay; high contrast + tint),
+  `3 = SCREEN` (additive-light blend), `4 = ADD` (preserves scene,
+  adds stylization brightness on top).
+- **Sibling mood pattern.** Rather than parameterise every mood
+  with a blend-mode key, ship `linework_overlay` and
+  `linework_multiply` as their own presets at the front of the
+  strata. F3 / RMB-look cycles surface them naturally. Future
+  passes (red/blue/green) can spawn the same `_overlay`/`_multiply`
+  siblings cheaply by copying the base preset and changing
+  `neon_blend_mode`.
+- **Rule.** Adding a new blend mode is preset-cheap, not shader-
+  cheap. Bake new modes into `neon_edge.gdshader`, expose via a
+  single `blend_mode` int uniform, then spawn variant moods. Don't
+  rebuild the chain.
+
 ### TEMPLATE for next session
 
 ```markdown
