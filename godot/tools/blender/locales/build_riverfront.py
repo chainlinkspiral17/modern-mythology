@@ -472,8 +472,17 @@ def make_neon_dambrosios(label, panel_center, face_axis, face_sign, scale=1.0):
     cx, cy, cz = panel_center
 
     def lx(local_x):
-        # Mirror so the text reads correctly: negation + face_sign
-        return -local_x * face_sign
+        # Mirror so the text reads correctly from the viewer of THIS face.
+        # The sign flip depends on which axis the face normal points along
+        # because of the right-hand rule: for a Y-facing panel, the
+        # viewer's right is on the opposite X-side of the face_sign; for
+        # an X-facing panel, the viewer's right is on the SAME Y-side as
+        # face_sign. Using one formula for both faces (like before)
+        # produces a correctly-mirrored Y panel and an inverted X panel.
+        if face_axis == 'Y':
+            return -local_x * face_sign
+        else:  # 'X'
+            return local_x * face_sign
 
     def _place(panel_x, panel_z, normal_off):
         # Convert (panel_x, panel_z) on the local panel face plus the
