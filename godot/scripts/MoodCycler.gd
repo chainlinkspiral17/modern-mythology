@@ -2,17 +2,18 @@
 # ════════════════════════════════════════════════════════════════
 # Cycles the post-process moods. F3 advances to the next preset.
 #
-# Drives the screen post-process stack:
-#   AsciiQuad · ascii_render — full-screen ASCII renderer. The whole
-#               scene gets sampled per-cell and each cell becomes a
-#               glyph chosen by luminance. strength=0 passes the
-#               scene through, strength=1 renders entirely as code.
-#   Quad      · demoscene_post — palette quantize, Bayer dither,
-#               scanlines, chromatic aberration. Stylization on top
-#               of whatever the ASCII pass produced.
+# Drives the screen post-process stack (in render order):
+#   NeonQuad   · neon_edge — Sobel silhouette outliner. Edges painted
+#                in a hot accent color, fills painted with a vertical
+#                gradient (synthwave / chillwave / noir styling).
+#   AsciiQuad  · ascii_render — sample-per-cell ASCII renderer. The
+#                scene becomes printed code.
+#   Quad       · demoscene_post — palette quantize, dither, scanlines,
+#                chromatic aberration.
 #
-# Each mood is a state of how loud the substrate is. Lunch is the
-# raw world. Substrate is the world rendered ENTIRELY as code.
+# Moods range from raw scene through naturalistic time-of-day variants
+# to fully stylized substrate states. Each mood can use any subset of
+# the three layers.
 # ════════════════════════════════════════════════════════════════
 
 extends CanvasLayer
@@ -20,45 +21,88 @@ extends CanvasLayer
 const MOODS: Array = [
     {
         "name": "lunch",
-        "palette": 16.0, "dither": 0.08, "scanline": 0.20,
-        "aberration": 0.0008, "ascii_post": 0.0,
+        "palette": 16.0, "dither": 0.08, "scanline": 0.20, "aberration": 0.0008,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+        "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1), "neon_grad": 1.0,
     },
     {
         "name": "dusk",
-        "palette": 12.0, "dither": 0.16, "scanline": 0.32,
-        "aberration": 0.0014, "ascii_post": 0.0,
-        "ascii": 0.12, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+        "palette": 12.0, "dither": 0.16, "scanline": 0.32, "aberration": 0.0014,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+        "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1), "neon_grad": 1.0,
+    },
+    {
+        "name": "chillwave",
+        "palette": 8.0, "dither": 0.20, "scanline": 0.40, "aberration": 0.0024,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+        "neon": 1.0, "neon_thresh": 0.08, "neon_edge": Color(1.0, 0.22, 0.78, 1),    # hot pink
+        "neon_low": Color(0.50, 0.10, 0.55, 1),     # dusk magenta
+        "neon_high": Color(0.08, 0.03, 0.22, 1),    # deep purple
+        "neon_grad": 1.0,
+    },
+    {
+        "name": "sunset",
+        "palette": 10.0, "dither": 0.18, "scanline": 0.30, "aberration": 0.0020,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+        "neon": 1.0, "neon_thresh": 0.09, "neon_edge": Color(1.0, 0.80, 0.30, 1),    # gold edges
+        "neon_low": Color(0.85, 0.32, 0.22, 1),     # warm orange
+        "neon_high": Color(0.22, 0.08, 0.30, 1),    # twilight purple
+        "neon_grad": 1.0,
+    },
+    {
+        "name": "noir",
+        "palette": 4.0, "dither": 0.30, "scanline": 0.55, "aberration": 0.0010,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+        "neon": 1.0, "neon_thresh": 0.10, "neon_edge": Color(1.0, 0.98, 0.92, 1),    # bone-white edges
+        "neon_low": Color(0.04, 0.04, 0.04, 1),
+        "neon_high": Color(0.0, 0.0, 0.0, 1),
+        "neon_grad": 0.4,
+    },
+    {
+        "name": "ice",
+        "palette": 8.0, "dither": 0.22, "scanline": 0.35, "aberration": 0.0018,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+        "neon": 1.0, "neon_thresh": 0.09, "neon_edge": Color(0.62, 0.92, 1.0, 1),    # pale cyan
+        "neon_low": Color(0.10, 0.18, 0.32, 1),
+        "neon_high": Color(0.02, 0.04, 0.10, 1),
+        "neon_grad": 1.0,
     },
     {
         "name": "night",
-        "palette": 10.0, "dither": 0.22, "scanline": 0.45,
-        "aberration": 0.0020, "ascii_post": 0.0,
-        "ascii": 0.25, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+        "palette": 10.0, "dither": 0.22, "scanline": 0.45, "aberration": 0.0020,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+        "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1), "neon_grad": 1.0,
     },
     {
         "name": "3_47_am",
-        "palette":  9.0, "dither": 0.28, "scanline": 0.55,
-        "aberration": 0.0024, "ascii_post": 0.0,
-        "ascii": 0.50, "ascii_cell": 9.0, "ascii_gamma": 0.85,
+        "palette":  9.0, "dither": 0.28, "scanline": 0.55, "aberration": 0.0024,
+        "ascii": 0.45, "ascii_cell": 9.0, "ascii_gamma": 0.85,
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+        "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1), "neon_grad": 1.0,
     },
     {
         "name": "precipice",
-        "palette":  6.0, "dither": 0.42, "scanline": 0.68,
-        "aberration": 0.0030, "ascii_post": 0.0,
+        "palette":  6.0, "dither": 0.42, "scanline": 0.68, "aberration": 0.0030,
         "ascii": 0.80, "ascii_cell": 8.0, "ascii_gamma": 0.80,
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+        "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1), "neon_grad": 1.0,
     },
     {
         "name": "substrate",
-        "palette":  4.0, "dither": 0.55, "scanline": 0.80,
-        "aberration": 0.0035, "ascii_post": 0.0,
+        "palette":  4.0, "dither": 0.55, "scanline": 0.80, "aberration": 0.0035,
         "ascii": 1.00, "ascii_cell": 8.0, "ascii_gamma": 0.75,
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+        "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1), "neon_grad": 1.0,
     },
     {
         "name": "raw",
-        "palette": 32.0, "dither": 0.00, "scanline": 0.00,
-        "aberration": 0.0000, "ascii_post": 0.0,
+        "palette": 32.0, "dither": 0.00, "scanline": 0.00, "aberration": 0.0000,
         "ascii": 0.00, "ascii_cell": 10.0, "ascii_gamma": 1.0,
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+        "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1), "neon_grad": 1.0,
     },
 ]
 
@@ -79,6 +123,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _apply(preset: Dictionary) -> void:
+    _set_params("NeonQuad", {
+        "strength":       preset["neon"],
+        "edge_threshold": preset["neon_thresh"],
+        "edge_color":     preset["neon_edge"],
+        "fill_low":       preset["neon_low"],
+        "fill_high":      preset["neon_high"],
+        "fill_gradient":  preset["neon_grad"],
+    })
     _set_params("AsciiQuad", {
         "strength":  preset["ascii"],
         "cell_size": preset["ascii_cell"],
@@ -89,7 +141,6 @@ func _apply(preset: Dictionary) -> void:
         "dither_strength":      preset["dither"],
         "scanline_strength":    preset["scanline"],
         "chromatic_aberration": preset["aberration"],
-        "ascii_strength":       preset["ascii_post"],
     })
 
 

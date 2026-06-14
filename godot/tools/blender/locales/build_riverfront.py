@@ -802,45 +802,41 @@ def build_riverboat():
     make_cyl("PW_HubL", (-BOAT_W * 0.35, pw_y, pw_z), 0.55, 0.30, COL_BRASS, segments=10, axis='X')
     make_cyl("PW_HubR", ( BOAT_W * 0.35, pw_y, pw_z), 0.55, 0.30, COL_BRASS, segments=10, axis='X')
 
-    # Spokes + outer rim + blades
+    # Outer rims — proper toruses around the hub on each side of the
+    # wheel (left + right end-caps of the paddle assembly).
+    rim_y_L = pw_y - BOAT_W * 0.30
+    rim_y_R = pw_y + BOAT_W * 0.30
+    make_torus("PW_Rim_L", (0, rim_y_L, pw_z),
+               major_r=pw_radius, minor_r=0.08, base_color=COL_PADDLE_BLADES,
+               major_seg=pw_blade_n, minor_seg=6, axis='Y')
+    make_torus("PW_Rim_R", (0, rim_y_R, pw_z),
+               major_r=pw_radius, minor_r=0.08, base_color=COL_PADDLE_BLADES,
+               major_seg=pw_blade_n, minor_seg=6, axis='Y')
+    # Spokes (real angled cylinders from hub to rim, not axis-aligned
+    # box hacks) + blades at the rim
     blade_len = BOAT_W * 0.75
     for i in range(pw_blade_n):
         ang = 2.0 * math.pi * i / pw_blade_n
-        cos_a = math.cos(ang)
-        sin_a = math.sin(ang)
-        # SPOKE from hub to rim — use whichever axis is dominant for a clean axis-aligned box
-        if abs(cos_a) > abs(sin_a):
-            sp_w = abs(cos_a) * pw_radius
-            sp_h = 0.06
-            cx = cos_a * pw_radius / 2.0
-            cz = sin_a * pw_radius / 2.0
-            make_box(f"PWSpoke_L_{i}", (cx, pw_y - BOAT_W * 0.30, pw_z + cz), (sp_w, 0.06, sp_h), COL_PADDLE_BLADES)
-            make_box(f"PWSpoke_R_{i}", (cx, pw_y + BOAT_W * 0.30, pw_z + cz), (sp_w, 0.06, sp_h), COL_PADDLE_BLADES)
-        else:
-            sp_h = abs(sin_a) * pw_radius
-            sp_w = 0.06
-            cx = cos_a * pw_radius / 2.0
-            cz = sin_a * pw_radius / 2.0
-            make_box(f"PWSpoke_L_{i}", (cx, pw_y - BOAT_W * 0.30, pw_z + cz), (sp_w, 0.06, sp_h), COL_PADDLE_BLADES)
-            make_box(f"PWSpoke_R_{i}", (cx, pw_y + BOAT_W * 0.30, pw_z + cz), (sp_w, 0.06, sp_h), COL_PADDLE_BLADES)
-        # BLADE plank at the rim, running along the axle
-        bx = cos_a * pw_radius
-        bz = sin_a * pw_radius + pw_z
-        make_box(f"PWBlade_{i}", (bx, pw_y, bz), (0.08, blade_len, 0.50), COL_PADDLE_BLADES)
-        # RIM segment connecting this blade to the next (a chord piece)
-        ang_next = 2.0 * math.pi * (i + 1) / pw_blade_n
-        bx_n = math.cos(ang_next) * pw_radius
-        bz_n = math.sin(ang_next) * pw_radius + pw_z
-        rim_cx = (bx + bx_n) / 2.0
-        rim_cz = (bz + bz_n) / 2.0
-        rim_dx = bx_n - bx
-        rim_dz = bz_n - bz
-        rim_len = math.sqrt(rim_dx * rim_dx + rim_dz * rim_dz)
-        # always use an X-aligned thin rim segment to keep the geometry axis-aligned
-        make_box(f"PWRim_L_{i}", (rim_cx, pw_y - BOAT_W * 0.30, rim_cz),
-                 (abs(rim_dx) + 0.08, 0.06, max(abs(rim_dz), 0.08)), COL_PADDLE_BLADES)
-        make_box(f"PWRim_R_{i}", (rim_cx, pw_y + BOAT_W * 0.30, rim_cz),
-                 (abs(rim_dx) + 0.08, 0.06, max(abs(rim_dz), 0.08)), COL_PADDLE_BLADES)
+        bx = math.cos(ang) * pw_radius
+        bz = math.sin(ang) * pw_radius + pw_z
+        # Spoke L (left end of axle to rim L)
+        make_tube_segment(f"PW_Spoke_L_{i}",
+                          (0, rim_y_L, pw_z),
+                          (bx, rim_y_L, bz),
+                          0.05, COL_PADDLE_BLADES, segments=5)
+        # Spoke R
+        make_tube_segment(f"PW_Spoke_R_{i}",
+                          (0, rim_y_R, pw_z),
+                          (bx, rim_y_R, bz),
+                          0.05, COL_PADDLE_BLADES, segments=5)
+        # Blade plank at the rim, running along the axle
+        make_box(f"PW_Blade_{i}", (bx, pw_y, bz),
+                 (0.10, blade_len, 0.55), COL_PADDLE_BLADES)
+        # Cross-brace between the two rims at this blade position
+        make_tube_segment(f"PW_Brace_{i}",
+                          (bx, rim_y_L, bz),
+                          (bx, rim_y_R, bz),
+                          0.04, COL_BRASS, segments=4)
 
     # ════════════════════════════════════════════════════════════
     # BELL on the hurricane deck (just aft of pilothouse)
@@ -1118,11 +1114,12 @@ def build_parking_lot():
     sign_x = lot_cx + lot_x_w/2 + 0.5
     sign_y = lot_cy - lot_y_l/2 + 2.0
     make_cyl("Sign_Pole", (sign_x, sign_y, 3.6), 0.14, 7.2, (0.26, 0.24, 0.22, 1.0), segments=8)
-    # The dark mounting panel — wider/taller than before so the cursive
-    # script has room to read.
-    sign_w = 4.2
-    sign_h = 1.8
-    sign_z = 5.6
+    # The dark mounting panel — sized so the cursive script has real
+    # breathing room. Letters are positioned with 1.5x previous spacing
+    # so the D'A cluster reads instead of smearing.
+    sign_w = 6.4
+    sign_h = 2.0
+    sign_z = 5.7
     make_box("Sign_Panel_N", (sign_x, sign_y + 0.08, sign_z), (sign_w, 0.05, sign_h), (0.12, 0.10, 0.10, 1.0))
     make_box("Sign_Panel_S", (sign_x, sign_y - 0.08, sign_z), (sign_w, 0.05, sign_h), (0.12, 0.10, 0.10, 1.0))
     # frame trims
@@ -1188,24 +1185,30 @@ def build_parking_lot():
                         (sign_x + lx(x), sign_y + inset, sign_z + z),
                         radius, NEON_GLOW)
 
+        # Each letter has an explicit START_X. Spacing between letters
+        # uses ≥ 0.20 m gaps so no two adjacent strokes share an edge.
+
         # ── 'D' capital — vertical spine + right semicircle ─────────
-        d0 = -1.90
+        d0 = -2.80
         stroke("D_spine", [(d0, 0.0), (d0 + 0.04, H * 0.5), (d0 + 0.06, H)])
         arc("D_loop", d0 + 0.18, H * 0.5, H * 0.52,
             math.pi / 2.0, -math.pi / 2.0, steps=10)
+        d_end = d0 + 0.40   # right edge of D
 
-        # ── apostrophe ' ──
-        ap1 = d0 + 0.78
+        # ── apostrophe ' (set 0.25m clear of D) ──
+        ap1 = d_end + 0.25
         stroke("apos1", [(ap1, H * 0.78), (ap1 + 0.05, H * 1.05), (ap1 + 0.10, H * 0.95)])
+        ap1_end = ap1 + 0.12
 
-        # ── 'A' capital — two diagonals + crossbar ──
-        a0 = d0 + 0.98
+        # ── 'A' capital — two diagonals + crossbar (0.30m clear after apos) ──
+        a0 = ap1_end + 0.30
         stroke("A_left",  [(a0, 0.0), (a0 + 0.10, H * 0.5), (a0 + 0.20, H)])
         stroke("A_right", [(a0 + 0.20, H), (a0 + 0.30, H * 0.5), (a0 + 0.40, 0.0)])
         stroke("A_bar",   [(a0 + 0.10, H * 0.45), (a0 + 0.30, H * 0.45)])
+        a_end = a0 + 0.40
 
-        # ── 'm' — three humps (use arcs for smooth tops) ──
-        m0 = a0 + 0.52
+        # ── 'm' — three humps ──
+        m0 = a_end + 0.20
         stroke("m_stem1", [(m0, 0.0), (m0, H_x * 0.85)])
         arc("m_arc1", m0 + 0.09, H_x * 0.85, 0.09, math.pi, 0.0, steps=6)
         stroke("m_stem2", [(m0 + 0.18, 0.0), (m0 + 0.18, H_x * 0.85)])
@@ -1213,55 +1216,63 @@ def build_parking_lot():
         stroke("m_stem3", [(m0 + 0.36, 0.0), (m0 + 0.36, H_x * 0.85)])
         arc("m_arc3", m0 + 0.45, H_x * 0.85, 0.09, math.pi, 0.0, steps=6)
         stroke("m_stem4", [(m0 + 0.54, 0.0), (m0 + 0.54, H_x * 0.85)])
+        m_end = m0 + 0.54
 
         # ── 'b' — tall ascender + round bottom loop ──
-        b0 = m0 + 0.68
+        b0 = m_end + 0.25
         stroke("b_stem", [(b0, 0.0), (b0, H)])
         arc("b_loop", b0 + 0.12, H_x * 0.45, H_x * 0.45,
             math.pi, math.pi - 2 * math.pi, steps=14)
+        b_end = b0 + 0.24
 
         # ── 'r' — short stem + small hook on top ──
-        r0 = b0 + 0.32
+        r0 = b_end + 0.22
         stroke("r_stem", [(r0, 0.0), (r0, H_x)])
         arc("r_hook", r0 + 0.06, H_x - 0.04, 0.06,
             math.pi, math.pi * 0.30, steps=5)
+        r_end = r0 + 0.12
 
         # ── 'o' — full circle ──
-        o0 = r0 + 0.22
+        o0 = r_end + 0.20
         arc("o1", o0 + 0.10, H_x * 0.50, 0.11, 0.0, 2 * math.pi, steps=14)
+        o0_end = o0 + 0.20
 
         # ── 's' — cursive S curve ──
-        s0 = o0 + 0.26
+        s0 = o0_end + 0.22
         arc("s1_top", s0 + 0.06, H_x * 0.75, 0.07,
             math.pi * 0.30, math.pi * 1.40, steps=8)
         arc("s1_bot", s0 + 0.08, H_x * 0.25, 0.07,
             math.pi * 1.30, math.pi * 0.30 + math.pi, steps=8)
+        s0_end = s0 + 0.16
 
         # ── 'i' — short stem + dot ──
-        i0 = s0 + 0.20
+        i0 = s0_end + 0.22
         stroke("i_stem", [(i0, 0.0), (i0, H_x)])
         halo("i_dot_glow", i0, H * 0.90, 0.05)
+        i_end = i0 + 0.04
 
         # ── 'o' (second) ──
-        o2 = i0 + 0.12
+        o2 = i_end + 0.22
         arc("o2", o2 + 0.10, H_x * 0.50, 0.11, 0.0, 2 * math.pi, steps=14)
+        o2_end = o2 + 0.20
 
         # ── apostrophe ──
-        ap2 = o2 + 0.26
+        ap2 = o2_end + 0.25
         stroke("apos2", [(ap2, H * 0.78), (ap2 + 0.05, H * 1.05), (ap2 + 0.10, H * 0.95)])
+        ap2_end = ap2 + 0.12
 
         # ── 's' (final) ──
-        s2 = ap2 + 0.18
+        s2 = ap2_end + 0.25
         arc("s2_top", s2 + 0.06, H_x * 0.75, 0.07,
             math.pi * 0.30, math.pi * 1.40, steps=8)
         arc("s2_bot", s2 + 0.08, H_x * 0.25, 0.07,
             math.pi * 1.30, math.pi * 0.30 + math.pi, steps=8)
 
         # ── Underline swoosh — proper DOWNWARD arc below baseline ──
-        N_underline = 24
-        u_left = -1.85
-        u_right = 1.85
-        u_dip = 0.22
+        N_underline = 30
+        u_left = d0 - 0.10
+        u_right = s2 + 0.25
+        u_dip = 0.25
         for i in range(N_underline):
             t0 = i / N_underline
             t1 = (i + 1) / N_underline
@@ -1450,7 +1461,7 @@ def build_opposite_shore():
     power lines, plus a tree line."""
     shore_x = OPPOSITE_X
     shore_w = 18.0
-    shore_l = 110.0
+    shore_l = 220.0       # extended from 110 so the shore runs the full river length, no cutoff
     shore_z = RIVER_LEVEL_Z + 0.20
     # Shore land mass — extends FURTHER east (+X) from shore_x
     make_box("OppositeShore_Land",
@@ -1459,8 +1470,8 @@ def build_opposite_shore():
              COL_SHORELINE)
     # Riprap line at the river-facing edge (west edge of the shore strip)
     rip_col = (0.42, 0.38, 0.32, 1.0)
-    for i in range(22):
-        ry = -shore_l/2 + 2.0 + i * (shore_l - 4.0) / 21.0
+    for i in range(40):
+        ry = -shore_l/2 + 2.0 + i * (shore_l - 4.0) / 39.0
         offset = ((i * 17) % 7 - 3) * 0.08
         size = 0.50 + ((i * 13) % 5) * 0.12
         make_box(f"Shore_Rock_{i}", (shore_x - 0.5 + offset, ry, RIVER_LEVEL_Z + 0.22),
@@ -1469,8 +1480,14 @@ def build_opposite_shore():
     # Wider variety of buildings — refinery cluster + warehouses + small structures
     # dx is offset INLAND from the shoreline. With the shore now on the
     # starboard (+X) side, inland is the +X direction, so dx values are
-    # positive.
+    # positive. Buildings spread along the full 220m shoreline so the
+    # highway / industrial sprawl doesn't cut off in wide shots.
     buildings = [
+        (1.5,  -98.0,  4.0,  5.0,  5.0,  None, 'shed'),
+        (3.0,  -86.0,  6.0,  8.0,  7.5,  None, 'warehouse'),
+        (2.0,  -74.0,  5.0,  6.0,  6.0,  None, 'shed'),
+        (5.0,  -60.0,  7.5, 10.0, 11.0,  None, 'refinery'),
+        (3.5,  -48.0,  6.0,  7.0,  7.5,  None, 'warehouse'),
         (1.0,  -42.0,  4.0,  6.0,  4.0,  None, 'shed'),
         (2.5,  -32.0,  6.0,  7.0,  6.5,  None, 'warehouse'),
         (4.0,  -22.0,  6.5,  8.5,  8.0,  None, 'warehouse'),
@@ -1480,6 +1497,10 @@ def build_opposite_shore():
         (1.5,  20.0,   4.0,  5.0,  5.5,  None, 'shed'),
         (4.0,  30.0,   7.0,  9.0, 10.0,  None, 'warehouse'),
         (2.0,  40.0,   5.0,  6.5,  6.5,  None, 'warehouse'),
+        (3.5,  54.0,   6.5,  8.0,  8.5,  None, 'warehouse'),
+        (5.5,  68.0,   8.0,  9.0, 12.0,  None, 'refinery'),
+        (2.0,  82.0,   5.0,  6.5,  6.0,  None, 'warehouse'),
+        (1.5,  94.0,   4.0,  5.0,  5.0,  None, 'shed'),
     ]
     lit = (0.95, 0.78, 0.40, 1.0)
     dark = (0.18, 0.16, 0.14, 1.0)
@@ -1567,7 +1588,7 @@ def build_opposite_shore():
     make_box("Billboard_Text", (bb_x, bb_y - 0.07, shore_z + 6.5), (3.6, 0.04, 0.80), (0.40, 0.16, 0.14, 1.0))
 
     # ── POWER-LINE PYLON row along the shore (between river and buildings) ──
-    for pi, py in enumerate([-44.0, -16.0, 14.0, 42.0]):
+    for pi, py in enumerate([-88.0, -60.0, -30.0, 0.0, 30.0, 60.0, 90.0]):
         pylon_x = shore_x - 4.0
         # tapered lattice tower (3 stacked boxes narrowing)
         for ti, (ts, tz_off, th) in enumerate([(2.2, 4.0, 8.0), (1.6, 11.5, 6.0), (1.0, 16.0, 3.0)]):
@@ -1586,7 +1607,7 @@ def build_opposite_shore():
         make_cyl(f"Pylon_{pi}_finial", (pylon_x, py, shore_z + 19.5), 0.10, 0.80, (0.85, 0.20, 0.18, 1.0), segments=6)
 
     # Power-line cables between pylons (just thin horizontal boxes between adjacent pylons)
-    pylon_ys = [-44.0, -16.0, 14.0, 42.0]
+    pylon_ys = [-88.0, -60.0, -30.0, 0.0, 30.0, 60.0, 90.0]
     for ai in range(len(pylon_ys) - 1):
         ya = pylon_ys[ai]
         yb = pylon_ys[ai + 1]
@@ -1596,10 +1617,11 @@ def build_opposite_shore():
             make_box(f"PowerLine_{ai}_cable_{li}", (shore_x - 4.0 + lx_off, ymid, shore_z + 18.6),
                      (0.05, length, 0.05), (0.18, 0.18, 0.18, 1.0))
 
-    # ── BIG TREE LINE — denser, more variety (16 trees) ──
+    # ── BIG TREE LINE — extended along the full 220m shoreline ──
     tree_positions = [
-        -50, -45, -38, -34, -28, -22, -17, -11, -6, -1,
-         4,  10,  16,  22,  29,  36,  44,  50,
+        -105, -98, -90, -82, -75, -68, -60, -53, -45, -38,
+         -32, -25, -18, -11,  -5,  2,   8,   14,  21,  28,
+          35,  42,  49,  56,  63,  70,  77,  84,  91,  98, 105,
     ]
     for i, y in enumerate(tree_positions):
         kind = i % 3  # 0 = cypress, 1 = pine, 2 = oak
@@ -1638,7 +1660,8 @@ def build_opposite_shore():
 
     # ── FOREGROUND scrub bushes at the river-facing shoreline ──
     bush_col = (0.30, 0.36, 0.22, 1.0)
-    for bi, by in enumerate([-46, -36, -25, -14, -3, 7, 19, 28, 38, 47]):
+    for bi, by in enumerate([-100, -88, -75, -62, -50, -36, -25, -14, -3,
+                              7, 19, 28, 38, 47, 60, 72, 84, 96]):
         bx_b = shore_x - 0.8 + ((bi % 3) - 1) * 0.4
         for ci, (ox, oy, sz_v) in enumerate([(0.0, 0.0, 0.8), (-0.4, 0.2, 0.6), (0.4, -0.1, 0.65)]):
             make_box(f"Shore_Bush_{bi}_{ci}", (bx_b + ox, by + oy, shore_z + 0.40),
