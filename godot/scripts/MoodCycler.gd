@@ -958,7 +958,9 @@ func _apply(preset: Dictionary) -> void:
         "sat_lo":         preset.get("neon_sat_lo", 0.40),
         "sat_hi":         preset.get("neon_sat_hi", 0.60),
         "red_only":       preset.get("neon_red_only", false),
-        "accent_channel": preset.get("neon_accent", Vector3(1.0, 0.0, 0.0)),
+        "accent_r":       preset.get("neon_accent", Vector3(1.0, 0.0, 0.0)).x,
+        "accent_g":       preset.get("neon_accent", Vector3(1.0, 0.0, 0.0)).y,
+        "accent_b":       preset.get("neon_accent", Vector3(1.0, 0.0, 0.0)).z,
     })
     _set_params("DirAsciiQuad", {
         "strength":       preset.get("dir_ascii", 0.0),

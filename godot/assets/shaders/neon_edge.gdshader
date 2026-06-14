@@ -52,15 +52,17 @@ uniform bool sat_bleed = false;
 uniform float sat_lo : hint_range(0.0, 1.0) = 0.40;
 uniform float sat_hi : hint_range(0.0, 1.0) = 0.60;
 uniform bool red_only = false;
-uniform vec3 accent_channel = vec3(1.0, 0.0, 0.0);
+uniform float accent_r : hint_range(0.0, 1.0) = 1.0;
+uniform float accent_g : hint_range(0.0, 1.0) = 0.0;
+uniform float accent_b : hint_range(0.0, 1.0) = 0.0;
 // red_only = true → use ONE-CHANNEL dominance instead of saturation.
-// accent_channel picks the channel: (1,0,0) = red dominance (the
-// reference's sign accent), (0,1,0) = green, (0,0,1) = blue. Lets
-// the lithograph family run as ink-press "passes" — same pure
-// black + bleach white architecture, one swappable accent colour
-// per pass. Sodium-lit cars and other warm-lit surfaces never pass
-// any of these channel-dominance tests; only saturated emission
-// in the chosen channel breaks through.
+// accent_r/g/b picks the channel: (1,0,0) = red dominance (the
+// reference's sign accent), (0,1,0) = green, (0,0,1) = blue. Split
+// into three scalars because the AMD Mesa shader compiler on the
+// Steam Deck silently rejected `uniform vec3 accent_channel =
+// vec3(1.0, 0.0, 0.0)` — the constructor-default-init pattern
+// crashes some drivers. Three floats with literal init compile
+// portably on every backend tested.
 
 float luma(vec3 c) {
     return dot(c, vec3(0.299, 0.587, 0.114));
@@ -100,14 +102,14 @@ void fragment() {
     float brightness_mask = smoothstep(bleed_lo, bleed_hi, scene_max);
     float bleed_mask = brightness_mask;
     if (red_only) {
-        // One-channel dominance gate, channel selected by
-        // accent_channel. For (1,0,0): target = scene.r, others =
-        // (g, b); dom = r - max(g, b). For (0,0,1): dom = b -
-        // max(r, g). And so on for any primary selector. Warm-lit
-        // surfaces have all channels roughly equal so dom stays low;
-        // only true accent emission clears.
-        float target = dot(scene_now, accent_channel);
-        vec3 inv_mask = vec3(1.0) - accent_channel;
+        // One-channel dominance gate, channel selected by accent_r/g/b
+        // scalars. For (1,0,0): target = scene.r, others = (g, b),
+        // dom = r - max(g, b). For (0,0,1): dom = b - max(r, g).
+        // Warm-lit surfaces have all channels roughly equal so dom
+        // stays low; only true accent emission clears.
+        vec3 acc = vec3(accent_r, accent_g, accent_b);
+        float target = dot(scene_now, acc);
+        vec3 inv_mask = vec3(1.0) - acc;
         vec3 others = scene_now * inv_mask;
         float other_max = max(others.r, max(others.g, others.b));
         float dom = target - other_max;

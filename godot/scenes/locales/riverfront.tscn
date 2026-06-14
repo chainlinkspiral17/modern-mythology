@@ -62,6 +62,9 @@ shader_parameter/sat_bleed = false
 shader_parameter/sat_lo = 0.40
 shader_parameter/sat_hi = 0.60
 shader_parameter/red_only = false
+shader_parameter/accent_r = 1.0
+shader_parameter/accent_g = 0.0
+shader_parameter/accent_b = 0.0
 
 [sub_resource type="ShaderMaterial" id="Mat_Motion"]
 shader = ExtResource("11_motion")
