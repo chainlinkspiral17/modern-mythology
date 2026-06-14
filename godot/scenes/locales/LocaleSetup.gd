@@ -65,16 +65,18 @@ func _ready() -> void:
     # transform is identity, so we use the mesh AABB center to find the
     # panel's actual world position, then offset the label in the
     # panel's face-normal direction.
+    # Label3D's default forward is +Z. To face a panel correctly we
+    # rotate +Z → the panel's outward normal:
+    #   +Y face → rotate -90° around X
+    #   -Y face → rotate +90° around X
+    #   -X face → rotate -90° around Y
+    #   +X face → rotate +90° around Y
     for panel in sign_panels_n:
-        # Sign_Panel_N face normal points +Y (sign reads from north)
-        _attach_sign_label(panel, Vector3(0, 0.08, 0), Vector3.ZERO)
+        _attach_sign_label(panel, Vector3(0, 0.08, 0), Vector3(-PI/2, 0, 0))
     for panel in sign_panels_s:
-        # Sign_Panel_S face normal points -Y (sign reads from south)
-        _attach_sign_label(panel, Vector3(0, -0.08, 0), Vector3(0, PI, 0))
+        _attach_sign_label(panel, Vector3(0, -0.08, 0), Vector3(PI/2, 0, 0))
     for panel in boat_panels:
-        # BoatSign_Panel face normal points -X (sign reads from parking
-        # lot to the west)
-        _attach_sign_label(panel, Vector3(-0.08, 0, 0), Vector3(0, PI / 2.0, 0))
+        _attach_sign_label(panel, Vector3(-0.08, 0, 0), Vector3(0, -PI/2, 0))
 
 
 func _attach_sign_label(panel: MeshInstance3D, world_face_offset: Vector3, rotation: Vector3) -> void:

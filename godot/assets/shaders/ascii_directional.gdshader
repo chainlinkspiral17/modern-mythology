@@ -1,30 +1,31 @@
-// ascii_directional.gdshader
+// ascii_directional.gdshader  (v2 — frame-sampling rewrite)
 // ════════════════════════════════════════════════════════════════
-// DIRECTIONAL ASCII renderer. Unlike ascii_render.gdshader which
-// picks glyph density purely from luminance (every cell picks a
-// glyph independent of its neighbours), this shader uses the LOCAL
-// EDGE DIRECTION at each cell to choose which line-drawing
-// character to render:
+// A TRUE per-cell ASCII renderer that "interprets the frame":
 //
-//   · horizontal edge   → ─    (mid-cell horizontal stroke)
-//   · vertical edge     → │    (mid-cell vertical stroke)
-//   · diagonal /        → ╱
-//   · diagonal \        → ╲
-//   · strong cross      → ┼    (both gradients high)
-//   · weak / fill       → · or empty
+// 1. The screen is divided into NxN-pixel cells.
+// 2. For each cell, we sample the SCREEN_TEXTURE at the cell's CENTER
+//    and at the 4 neighbor cells' centers (one screen-texture lookup
+//    per cell, not per pixel).
+// 3. We compare this cell's luminance to each neighbor's luminance:
+//      · |here - W| , |here - E|  → horizontal brightness change
+//      · |here - N| , |here - S|  → vertical brightness change
+//    A horizontal brightness gradient means a VERTICAL edge runs
+//    through this cell (we'd draw │). A vertical gradient means a
+//    HORIZONTAL edge (we'd draw ─). Both gradients means a CORNER
+//    or CROSSING (we'd draw ┼). Strong diagonal change means a
+//    diagonal stroke (╱ or ╲).
+// 4. If no edge is detected, we use the cell's own brightness to
+//    pick a FILL CHARACTER from a 4-level density ramp (·  ░  ▒  ▓).
+// 5. The character is drawn at the fragment's local position within
+//    the cell, with strokes extending to the cell edges so adjacent
+//    edge-cells visually connect into continuous lines.
 //
-// The visual result: lines in the rendered image trace the geometry's
-// silhouettes. Looking at the concept-art reference, this is the
-// technique an illustrator was using by hand — horizontal cabin trim
-// drawn with horizontal strokes, vertical hull seams with vertical
-// strokes, roof slopes with diagonals.
-//
-// Apply BEFORE ascii_render / demoscene_post so it sees the clean
-// scene. strength = 0 passes through, strength = 1 fully directional.
-//
-// Suggested mood: a new "blueprint" mood (cyan-on-black with this
-// directional ASCII) or roll it into substrate for a "world IS
-// architecture drawn in code" feel.
+// User feedback that drove this rewrite: "I really want the ascii
+// look nailed down. I think it's possible." / "Is there a way to
+// sample the frame and interpret the edges as ascii?" — yes; the
+// previous version did per-pixel Sobel arithmetic INSIDE each cell
+// which mixed up scales and lost cell-to-cell coherence. This
+// version samples PER CELL.
 // ════════════════════════════════════════════════════════════════
 
 shader_type canvas_item;
@@ -34,65 +35,112 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 uniform float strength : hint_range(0.0, 1.0) = 0.0;
 uniform float cell_size : hint_range(4.0, 32.0) = 10.0;
 uniform float edge_threshold : hint_range(0.01, 0.5) = 0.10;
-uniform vec4 line_color : source_color = vec4(0.92, 0.20, 0.20, 1.0);   // line stroke color
-uniform vec4 fill_color : source_color = vec4(0.02, 0.02, 0.03, 1.0);   // cell background
-uniform bool tint_from_scene = false;   // if true, line takes scene colour
+uniform vec4 line_color : source_color = vec4(0.92, 0.20, 0.20, 1.0);
+uniform vec4 fill_color : source_color = vec4(0.02, 0.02, 0.03, 1.0);
+uniform bool tint_from_scene = false;
+uniform float input_scale : hint_range(0.1, 2.0) = 1.0;
+// input_scale dims the screen before processing — lithograph-style
+// moods set this < 1 so a sunlit scene doesn't read as "everything
+// is bright" to the brightness fill ramp.
 
 float luma(vec3 c) {
     return dot(c, vec3(0.299, 0.587, 0.114));
 }
 
-// Each draw_X function returns 1.0 if (p) is within the character's
-// drawn region in cell-local coords (0..1) × (0..1).
-
-// THICKER strokes — the previous values (0.10 width) were too thin to
-// read once the post-process scanlines + dither got applied on top.
-// Strokes are now 0.14 thick and span 95% of the cell so adjacent
-// edge-cells visually connect into continuous lines.
-
-// ─  horizontal bar centred
-float draw_horizontal(vec2 p) {
-    return (p.y > 0.43 && p.y < 0.57 && p.x > 0.02 && p.x < 0.98) ? 1.0 : 0.0;
+// Sample the screen at a cell-center coordinate (cell index → UV).
+float sample_cell_luma(vec2 cell_idx) {
+    vec2 cell_centre_pix = (cell_idx + 0.5) * cell_size;
+    vec2 uv = cell_centre_pix * SCREEN_PIXEL_SIZE;
+    return luma(texture(SCREEN_TEXTURE, uv).rgb * input_scale);
 }
 
-float draw_horizontal_thick(vec2 p) {
-    return (p.y > 0.38 && p.y < 0.62 && p.x > 0.00 && p.x < 1.00) ? 1.0 : 0.0;
+// ── Glyph drawing functions ───────────────────────────────────────
+// All glyphs draw their strokes spanning the full cell so adjacent
+// edge-cells with the same glyph form continuous lines.
+
+// ─  horizontal full-width
+float g_horizontal(vec2 p) {
+    return (p.y > 0.42 && p.y < 0.58) ? 1.0 : 0.0;
 }
 
-// │  vertical bar centred
-float draw_vertical(vec2 p) {
-    return (p.x > 0.43 && p.x < 0.57 && p.y > 0.02 && p.y < 0.98) ? 1.0 : 0.0;
+// │  vertical full-height
+float g_vertical(vec2 p) {
+    return (p.x > 0.42 && p.x < 0.58) ? 1.0 : 0.0;
 }
 
-float draw_vertical_thick(vec2 p) {
-    return (p.x > 0.38 && p.x < 0.62 && p.y > 0.00 && p.y < 1.00) ? 1.0 : 0.0;
+// ┼  cross (both)
+float g_cross(vec2 p) {
+    return max(g_horizontal(p), g_vertical(p));
 }
 
-// ╱  diagonal up-right (bottom-left to top-right)
-float draw_diag_ne(vec2 p) {
+// ╱  diagonal up-right
+float g_diag_ne(vec2 p) {
     float d = abs((1.0 - p.y) - p.x);
-    return (d < 0.14 && p.x > 0.00 && p.x < 1.00) ? 1.0 : 0.0;
+    return (d < 0.10) ? 1.0 : 0.0;
 }
 
-// ╲  diagonal down-right (top-left to bottom-right)
-float draw_diag_se(vec2 p) {
+// ╲  diagonal down-right
+float g_diag_se(vec2 p) {
     float d = abs(p.x - p.y);
-    return (d < 0.14 && p.x > 0.00 && p.x < 1.00) ? 1.0 : 0.0;
+    return (d < 0.10) ? 1.0 : 0.0;
 }
 
-// ┼  cross — horizontal + vertical
-float draw_cross(vec2 p) {
-    return max(draw_horizontal(p), draw_vertical(p));
+// ╳  X (both diagonals)
+float g_x(vec2 p) {
+    return max(g_diag_ne(p), g_diag_se(p));
 }
 
-// ╳  x-cross — both diagonals
-float draw_x(vec2 p) {
-    return max(draw_diag_ne(p), draw_diag_se(p));
+// ┌ ┐ └ ┘ — corner glyphs for cells where the edge bends
+// ┌ top-left corner: vertical from middle down + horizontal from middle right
+float g_corner_tl(vec2 p) {
+    float v = (p.x > 0.42 && p.x < 0.58 && p.y > 0.42) ? 1.0 : 0.0;
+    float h = (p.y > 0.42 && p.y < 0.58 && p.x > 0.42) ? 1.0 : 0.0;
+    return max(v, h);
 }
 
-// ·  centre dot
-float draw_dot(vec2 p) {
+// ┐ top-right
+float g_corner_tr(vec2 p) {
+    float v = (p.x > 0.42 && p.x < 0.58 && p.y > 0.42) ? 1.0 : 0.0;
+    float h = (p.y > 0.42 && p.y < 0.58 && p.x < 0.58) ? 1.0 : 0.0;
+    return max(v, h);
+}
+
+// └ bottom-left
+float g_corner_bl(vec2 p) {
+    float v = (p.x > 0.42 && p.x < 0.58 && p.y < 0.58) ? 1.0 : 0.0;
+    float h = (p.y > 0.42 && p.y < 0.58 && p.x > 0.42) ? 1.0 : 0.0;
+    return max(v, h);
+}
+
+// ┘ bottom-right
+float g_corner_br(vec2 p) {
+    float v = (p.x > 0.42 && p.x < 0.58 && p.y < 0.58) ? 1.0 : 0.0;
+    float h = (p.y > 0.42 && p.y < 0.58 && p.x < 0.58) ? 1.0 : 0.0;
+    return max(v, h);
+}
+
+// Density fill characters for non-edge cells
+// ·  single dot
+float g_dot(vec2 p) {
     return (length(p - vec2(0.5)) < 0.10) ? 1.0 : 0.0;
+}
+
+// ░  light shade — sparse dot grid
+float g_light(vec2 p) {
+    vec2 q = fract(p * 3.0);
+    return (length(q - vec2(0.5)) < 0.18) ? 1.0 : 0.0;
+}
+
+// ▒  medium shade — denser dot grid
+float g_medium(vec2 p) {
+    vec2 q = fract(p * 4.0);
+    return (length(q - vec2(0.5)) < 0.28) ? 1.0 : 0.0;
+}
+
+// ▓  dark shade — almost full
+float g_dark(vec2 p) {
+    vec2 q = fract(p * 5.0);
+    return (length(q - vec2(0.5)) < 0.38) ? 1.0 : 0.0;
 }
 
 void fragment() {
@@ -100,72 +148,77 @@ void fragment() {
     vec2 cell_idx = floor(frag / cell_size);
     vec2 local = fract(frag / cell_size);
 
-    // Sample the centre of THIS cell
-    vec2 cell_centre_pix = (cell_idx + 0.5) * cell_size;
-    vec2 cell_centre_uv = cell_centre_pix * SCREEN_PIXEL_SIZE;
-    vec3 scene = texture(SCREEN_TEXTURE, cell_centre_uv).rgb;
-    float l_centre = luma(scene);
+    // Sample THIS cell + 4 neighbors (single texture lookup per cell)
+    float l_here = sample_cell_luma(cell_idx);
+    float l_W    = sample_cell_luma(cell_idx + vec2(-1.0, 0.0));
+    float l_E    = sample_cell_luma(cell_idx + vec2(+1.0, 0.0));
+    float l_N    = sample_cell_luma(cell_idx + vec2(0.0, -1.0));  // up in screen = -Y
+    float l_S    = sample_cell_luma(cell_idx + vec2(0.0, +1.0));
 
-    // Sobel using LUMA samples at +/- cell_size in each direction so
-    // the edge detection is at the same coarse resolution as the cell
-    // grid. This finds GEOMETRY edges, not pixel noise.
-    vec2 step = vec2(cell_size, cell_size) * SCREEN_PIXEL_SIZE;
-    float l_W = luma(texture(SCREEN_TEXTURE, cell_centre_uv - vec2(step.x, 0)).rgb);
-    float l_E = luma(texture(SCREEN_TEXTURE, cell_centre_uv + vec2(step.x, 0)).rgb);
-    float l_N = luma(texture(SCREEN_TEXTURE, cell_centre_uv + vec2(0, step.y)).rgb);
-    float l_S = luma(texture(SCREEN_TEXTURE, cell_centre_uv - vec2(0, step.y)).rgb);
-    float l_NW = luma(texture(SCREEN_TEXTURE, cell_centre_uv + vec2(-step.x, step.y)).rgb);
-    float l_NE = luma(texture(SCREEN_TEXTURE, cell_centre_uv + vec2(step.x, step.y)).rgb);
-    float l_SW = luma(texture(SCREEN_TEXTURE, cell_centre_uv + vec2(-step.x, -step.y)).rgb);
-    float l_SE = luma(texture(SCREEN_TEXTURE, cell_centre_uv + vec2(step.x, -step.y)).rgb);
-
-    // Standard 3x3 Sobel
-    float gx = -l_NW - 2.0 * l_W - l_SW + l_NE + 2.0 * l_E + l_SE;
-    float gy = -l_NW - 2.0 * l_N - l_NE + l_SW + 2.0 * l_S + l_SE;
-    float edge_mag = sqrt(gx * gx + gy * gy);
+    // Brightness differences in each direction
+    float dH = max(abs(l_here - l_W), abs(l_here - l_E));   // horizontal change
+    float dV = max(abs(l_here - l_N), abs(l_here - l_S));   // vertical change
 
     // Is this cell on an edge?
-    bool is_edge = edge_mag > edge_threshold;
+    float edge_signal = max(dH, dV);
+    bool is_edge = edge_signal > edge_threshold;
 
     float mask = 0.0;
-    if (is_edge) {
-        // Compute angle, quantize into one of 4 cardinal directions
-        // (or detect a corner / cross).
-        float angle = atan(gy, gx);
-        if (angle < 0.0) angle += 3.14159265;       // wrap to [0, π)
-        float deg = degrees(angle);
-        // Detect a corner: when BOTH |gx| and |gy| are similar magnitudes
-        // (both strong), it's not a clean diagonal — it's a corner.
-        float ratio = abs(gx) / max(abs(gy), 0.001);
-        bool corner_like = (edge_mag > edge_threshold * 2.5) &&
-                            (ratio > 0.5 && ratio < 2.0);
 
-        if (corner_like) {
-            mask = draw_cross(local);
-        } else if (deg < 22.5 || deg > 157.5) {
-            // Near horizontal (gradient mostly along X → horizontal edge)
-            mask = (edge_mag > edge_threshold * 2.0) ?
-                   draw_horizontal_thick(local) : draw_horizontal(local);
-        } else if (deg < 67.5) {
-            // Diagonal SE → ╱
-            mask = draw_diag_ne(local);
-        } else if (deg < 112.5) {
-            // Near vertical
-            mask = (edge_mag > edge_threshold * 2.0) ?
-                   draw_vertical_thick(local) : draw_vertical(local);
+    if (is_edge) {
+        // The edge runs PERPENDICULAR to the direction of brightness
+        // change. Horizontal brightness change (W/E differ) = vertical
+        // edge runs through here = draw │.
+        bool strong_h = dH > edge_threshold;
+        bool strong_v = dV > edge_threshold;
+
+        if (strong_h && strong_v) {
+            // Corner / crossing — figure out which corner direction
+            // by comparing which neighbors are brighter than us.
+            // If E and S are brighter (and W and N darker): ┌
+            // If W and S are brighter: ┐
+            // If E and N are brighter: └
+            // If W and N are brighter: ┘
+            float h_dir = l_E - l_W;     // positive → bright to the east
+            float v_dir = l_S - l_N;     // positive → bright below
+            if (h_dir > 0.0 && v_dir > 0.0) {
+                mask = g_corner_tl(local);
+            } else if (h_dir < 0.0 && v_dir > 0.0) {
+                mask = g_corner_tr(local);
+            } else if (h_dir > 0.0 && v_dir < 0.0) {
+                mask = g_corner_bl(local);
+            } else {
+                mask = g_corner_br(local);
+            }
+        } else if (strong_h) {
+            // Vertical edge (brightness changes left-right)
+            mask = g_vertical(local);
         } else {
-            // Diagonal NE → ╲
-            mask = draw_diag_se(local);
+            // Horizontal edge (brightness changes top-bottom)
+            mask = g_horizontal(local);
+        }
+    } else {
+        // Not an edge — pick a density fill from this cell's brightness.
+        // 5 levels: empty / · / ░ / ▒ / ▓
+        if (l_here < 0.15) {
+            mask = 0.0;
+        } else if (l_here < 0.35) {
+            mask = g_dot(local);
+        } else if (l_here < 0.55) {
+            mask = g_light(local);
+        } else if (l_here < 0.75) {
+            mask = g_medium(local);
+        } else {
+            mask = g_dark(local);
         }
     }
-    // Non-edge cells stay EMPTY (just fill colour). The previous version
-    // drew a dot in every bright cell, which buried the line work in
-    // static noise — user feedback caught that the blueprint look
-    // didn't read.
 
-    vec3 line = tint_from_scene ? scene * 1.6 : line_color.rgb;
+    vec3 line = tint_from_scene ?
+        (texture(SCREEN_TEXTURE, (cell_idx + 0.5) * cell_size * SCREEN_PIXEL_SIZE).rgb * 1.6) :
+        line_color.rgb;
     vec3 ascii_result = mix(fill_color.rgb, line, mask);
 
+    vec3 scene = texture(SCREEN_TEXTURE, frag * SCREEN_PIXEL_SIZE).rgb;
     vec3 result = mix(scene, ascii_result, strength);
     COLOR = vec4(result, 1.0);
 }

@@ -104,8 +104,8 @@ shadow_enabled = false
 [node name="DiningRoomGlow" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 light_color = Color(0.92, 0.78, 0.45, 1)
-light_energy = 2.5
-omni_range = 14.0
+light_energy = 0.8
+omni_range = 8.0
 shadow_enabled = false
 
 [node name="Geometry" parent="." instance=ExtResource("1_river_glb")]

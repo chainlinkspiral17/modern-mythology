@@ -85,42 +85,40 @@ const MOODS: Array = [
         "neon_grad": 0.0, "neon_blend": 0.10, "neon_glow": 0.5,
     },
     {
-        # Architectural / drafting look. The directional ASCII shader
-        # draws horizontal / vertical / diagonal line characters along
-        # the silhouettes — geometry rendered as line drawing.
+        # Architectural / drafting look. The v2 directional ASCII
+        # shader samples per cell + 4 neighbors, picks ─ │ ┼ ┌ ┐ └ ┘
+        # ╱ ╲ from the local brightness gradient direction. Strokes
+        # span full cells so adjacent edge cells form continuous
+        # lines. Geometry rendered as architectural line drawing.
         "name": "blueprint",
-        "palette": 6.0, "dither": 0.10, "scanline": 0.30, "aberration": 0.0008,
+        "palette": 6.0, "dither": 0.06, "scanline": 0.20, "aberration": 0.0004,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
         "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
         "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1),
         "neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
-        "dir_ascii": 1.0, "dir_cell": 12.0, "dir_thresh": 0.25,
-        "dir_line": Color(0.65, 0.85, 1.0, 1),     # cyan blueprint line
-        "dir_fill": Color(0.06, 0.10, 0.18, 1),    # blueprint-paper blue-black
+        "dir_ascii": 1.0, "dir_cell": 10.0, "dir_thresh": 0.06,
+        "dir_line": Color(0.78, 0.92, 1.0, 1),
+        "dir_fill": Color(0.06, 0.10, 0.18, 1),
         "dir_tint": false,
+        "dir_input_scale": 0.7,
     },
     {
-        # Tuned hard at the concept-art look — continuous booth-red
-        # edge lines on PURE black, with only the brightest lit
-        # elements bleeding through warm. Drops the directional ASCII
-        # in favor of the neon_edge shader because per-cell strokes
-        # don't visually connect into the continuous architectural
-        # lines the reference uses.
+        # Same v2 directional ASCII but in saturated booth-red on
+        # pure black — matching the lithograph palette. The ASCII
+        # character set draws the geometry edges as line work.
         "name": "blueprint_red",
-        "palette": 5.0, "dither": 0.05, "scanline": 0.25, "aberration": 0.0004,
+        "palette": 4.0, "dither": 0.04, "scanline": 0.20, "aberration": 0.0004,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
-        "neon": 1.0, "neon_thresh": 0.04,
-        "neon_edge": Color(0.95, 0.14, 0.12, 1),   # saturated booth red
-        "neon_low":  Color(0.0, 0.0, 0.0, 1),      # pure black
-        "neon_high": Color(0.0, 0.0, 0.0, 1),
-        "neon_grad": 0.0, "neon_blend": 0.18,
-        "neon_glow": 0.30,                         # tight crisp lines, minimal bloom
-        "dir_ascii": 0.0, "dir_cell": 12.0, "dir_thresh": 0.22,
-        "dir_line": Color(0.95, 0.18, 0.16, 1),
-        "dir_fill": Color(0.02, 0.02, 0.02, 1),
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+        "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1),
+        "neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
+        "dir_ascii": 1.0, "dir_cell": 10.0, "dir_thresh": 0.06,
+        "dir_line": Color(0.95, 0.16, 0.14, 1),
+        "dir_fill": Color(0.0, 0.0, 0.0, 1),
         "dir_tint": false,
+        "dir_input_scale": 0.6,
     },
     {
         "name": "ice",
@@ -227,6 +225,7 @@ func _apply(preset: Dictionary) -> void:
         "line_color":     preset.get("dir_line", Color(0.92, 0.20, 0.20, 1)),
         "fill_color":     preset.get("dir_fill", Color(0.02, 0.02, 0.03, 1)),
         "tint_from_scene": preset.get("dir_tint", false),
+        "input_scale":    preset.get("dir_input_scale", 1.0),
     })
     _set_params("AsciiQuad", {
         "strength":        preset["ascii"],
