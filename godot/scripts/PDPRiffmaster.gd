@@ -103,9 +103,11 @@ func _input(event: InputEvent) -> void:
 				"release_t":  0.0,
 				"release_amp":0.0,
 			}
-			print("[PDPRiffmaster] ▶ %s (key %d → %.1f Hz)" %
-				  [_note_name(KEY_TO_SEMITONES[keycode] + (12 if event.shift_pressed else 0)),
-				   keycode, freq])
+			print("[PDPRiffmaster] ▶ %s (key %d → %.1f Hz)" % [
+				_note_name(KEY_TO_SEMITONES[keycode] + (12 if event.shift_pressed else 0)),
+				keycode,
+				freq,
+			])
 		elif not event.pressed:
 			if _voices.has(keycode):
 				var v: Dictionary = _voices[keycode]

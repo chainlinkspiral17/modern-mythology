@@ -1060,7 +1060,7 @@ func _start_strobe(indices: Array[int], frames_per_step: int, label: String) -> 
 	strobe_frame = 0
 	strobe_return_index = current_index
 	print("[Mood] %s · return to %s in %d steps" %
-		  [label, MOODS[strobe_return_index]["name"], indices.size()])
+			[label, MOODS[strobe_return_index]["name"], indices.size()])
 
 
 func db_to_linear(db: float) -> float:
