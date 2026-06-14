@@ -585,6 +585,25 @@ const MOODS: Array = [
         "neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
     },
     {
+        # DEBUG_PURPLE · forces neon_edge strength = 1.0 with SOLID
+        # bright purple fill (low + high both saturated). If this
+        # mood doesn't paint the screen purple, the post-process
+        # stack ITSELF isn't running and the bug isn't in subtle
+        # mood differences — it's environmental.
+        "name": "debug_purple",
+        "palette": 32.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": false,
+        "ascii_fg": Color(1, 1, 1, 1), "ascii_bg": Color.BLACK,
+        "neon": 1.0, "neon_thresh": 0.50,                          # high thresh → no edges
+        "neon_edge": Color(1.0, 0.0, 1.0, 1),
+        "neon_low":  Color(0.60, 0.0, 0.95, 1),                    # SOLID PURPLE
+        "neon_high": Color(0.85, 0.0, 0.70, 1),
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+        "neon_bleed_lo": 1.0, "neon_bleed_hi": 1.0,                # bleed never triggers
+        "neon_sat_bleed": false, "neon_red_only": false,
+        "neon_sat_lo": 0.5, "neon_sat_hi": 0.7,
+    },
+    {
         "name": "raw",
         "palette": 32.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 1.0, "ascii_tint": true,
