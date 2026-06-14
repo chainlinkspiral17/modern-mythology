@@ -2400,6 +2400,191 @@ def build_near_shore():
              (4.5, 0.10, 1.6), (0.18, 0.36, 0.28, 1.0))   # green interstate-style sign
 
 
+def build_far_horizons():
+    """Fill the deep distance to the NORTH (upriver, beyond the boat's
+    bow) and SOUTH (downriver, beyond the bridge) so a 360° pan from
+    the parking lot always lands on something. Without this the
+    cinematic shots have visible cardboard-cutout horizons.
+
+    NORTH: a small river town at far +Y — church spire, water tower,
+    cluster of small houses, distant tree-line behind.
+    SOUTH: a port-industrial complex beyond the bridge — container
+    cranes, refinery silhouettes, tall smokestacks, ship cranes."""
+
+    # ════════════════════════════════════════════════════════════
+    # NORTH HORIZON — small river town
+    # ════════════════════════════════════════════════════════════
+    NORTH_Y = 150.0
+    town_z = RIVER_LEVEL_Z + 0.30
+
+    # ground strip the town sits on (port-side + main-channel side)
+    make_box("North_TownGround", (10.0, NORTH_Y, town_z - 0.20),
+             (140.0, 30.0, 0.40), COL_SHORELINE)
+
+    # ── Church spire — focal landmark
+    spire_x, spire_y = -30.0, NORTH_Y - 4.0
+    # Main body
+    make_box("North_Church_Body", (spire_x, spire_y, town_z + 4.0),
+             (5.0, 6.0, 8.0), (0.78, 0.74, 0.66, 1.0))
+    # Sloped roof
+    make_prism("North_Church_Roof", (spire_x, spire_y, town_z + 8.0),
+               (5.4, 6.4, 2.2), (0.48, 0.20, 0.16, 1.0), pitch_axis='X')
+    # Bell tower base
+    make_box("North_Church_Tower", (spire_x - 1.5, spire_y - 1.5, town_z + 7.0),
+             (2.6, 2.6, 14.0), (0.78, 0.74, 0.66, 1.0))
+    # Tower roof — short prism
+    make_prism("North_Church_TowerRoof", (spire_x - 1.5, spire_y - 1.5, town_z + 14.0),
+               (3.0, 3.0, 2.0), (0.48, 0.20, 0.16, 1.0), pitch_axis='X')
+    # Spire — tall thin prism on top of the bell tower
+    for si, (sz_off, sr) in enumerate([(0.0, 1.4), (2.0, 1.0), (4.0, 0.6)]):
+        make_cyl(f"North_Spire_{si}", (spire_x - 1.5, spire_y - 1.5, town_z + 16.0 + sz_off),
+                 sr, 2.0, (0.48, 0.20, 0.16, 1.0), segments=6)
+    # Cross at the very top
+    make_box("North_Spire_Cross_V", (spire_x - 1.5, spire_y - 1.5, town_z + 22.5),
+             (0.10, 0.10, 0.70), COL_BRASS)
+    make_box("North_Spire_Cross_H", (spire_x - 1.5, spire_y - 1.5, town_z + 22.3),
+             (0.40, 0.10, 0.10), COL_BRASS)
+
+    # ── Water tower — second landmark
+    wt_x = 20.0
+    wt_y = NORTH_Y + 6.0
+    for li, (lx_off, ly_off) in enumerate([(-1.5, -1.5), (1.5, -1.5), (-1.5, 1.5), (1.5, 1.5)]):
+        make_cyl(f"North_WT_Leg_{li}", (wt_x + lx_off, wt_y + ly_off, 8.0),
+                 0.14, 16.0, (0.30, 0.28, 0.24, 1.0), segments=6)
+    make_cyl("North_WT_Tank", (wt_x, wt_y, 17.5), 2.2, 4.0, (0.55, 0.52, 0.46, 1.0), segments=10)
+    make_prism("North_WT_Roof", (wt_x, wt_y, 19.5), (5.0, 5.0, 1.4),
+               (0.32, 0.30, 0.26, 1.0), pitch_axis='X')
+
+    # ── Cluster of small houses scattered along the town strip
+    house_specs = [
+        # (x, y_off, w, l, h, roof_color, body_color)
+        (-50.0, 1.5, 4.0, 5.0, 3.2, (0.36, 0.22, 0.18, 1.0), (0.78, 0.72, 0.62, 1.0)),
+        (-42.0, -2.0, 4.5, 5.5, 3.4, (0.42, 0.32, 0.22, 1.0), (0.62, 0.55, 0.45, 1.0)),
+        (-15.0, 1.0, 5.0, 6.0, 3.6, (0.30, 0.28, 0.22, 1.0), (0.85, 0.80, 0.70, 1.0)),
+        ( -5.0, -1.5, 4.0, 5.0, 3.2, (0.40, 0.22, 0.20, 1.0), (0.72, 0.66, 0.56, 1.0)),
+        ( 35.0, 2.0, 4.5, 5.5, 3.4, (0.36, 0.32, 0.24, 1.0), (0.78, 0.72, 0.62, 1.0)),
+        ( 48.0, -1.0, 4.0, 5.0, 3.2, (0.42, 0.22, 0.18, 1.0), (0.68, 0.62, 0.52, 1.0)),
+        ( 60.0, 1.5, 5.0, 6.0, 3.6, (0.30, 0.30, 0.26, 1.0), (0.85, 0.80, 0.72, 1.0)),
+    ]
+    for hi, (hx, hy_o, hw, hl, hh, roof_c, body_c) in enumerate(house_specs):
+        hy = NORTH_Y + hy_o
+        make_box(f"North_House_{hi}_Body", (hx, hy, town_z + hh / 2),
+                 (hw, hl, hh), body_c)
+        make_prism(f"North_House_{hi}_Roof", (hx, hy, town_z + hh),
+                   (hw + 0.4, hl + 0.4, 2.0), roof_c, pitch_axis='Y')
+        # A lit window on the side facing the river
+        seed = (hi * 13) & 0xFF
+        if seed % 100 < 60:
+            make_box(f"North_House_{hi}_Window", (hx, hy - hl/2 - 0.04, town_z + hh * 0.55),
+                     (hw * 0.4, 0.04, hh * 0.35), (0.95, 0.80, 0.42, 1.0))
+        # Chimney
+        if hi % 2 == 0:
+            make_box(f"North_House_{hi}_Chimney", (hx + hw * 0.25, hy + hl * 0.10, town_z + hh + 1.5),
+                     (0.40, 0.40, 1.6), (0.42, 0.30, 0.24, 1.0))
+
+    # ── Tree line behind the town
+    for ti in range(20):
+        tx = -55.0 + ti * 6.0
+        ty = NORTH_Y + 10.0 + ((ti * 7) % 5 - 2) * 0.6
+        trunk_h = 5.5 + ((ti * 11) % 4) * 0.7
+        make_cyl(f"North_Tree_{ti}_Trunk", (tx, ty, town_z + trunk_h / 2),
+                 0.20, trunk_h, COL_TREE_TRUNK, segments=6)
+        canopy_col = (0.22, 0.32, 0.18, 1.0) if ti % 2 == 0 else (0.30, 0.36, 0.22, 1.0)
+        make_sphere(f"North_Tree_{ti}_Canopy", (tx, ty, town_z + trunk_h + 0.6),
+                    1.30, canopy_col)
+        if ti % 3 == 1:
+            make_sphere(f"North_Tree_{ti}_Canopy2", (tx - 0.5, ty + 0.4, town_z + trunk_h + 1.3),
+                        0.95, canopy_col)
+
+    # ════════════════════════════════════════════════════════════
+    # SOUTH HORIZON — port-industrial complex past the bridge
+    # ════════════════════════════════════════════════════════════
+    SOUTH_Y = -150.0
+    port_z = RIVER_LEVEL_Z + 0.30
+
+    # ground strip for the port
+    make_box("South_PortGround", (10.0, SOUTH_Y, port_z - 0.20),
+             (160.0, 28.0, 0.40), (0.24, 0.24, 0.24, 1.0))
+
+    # ── Container yard with stacked containers ──
+    container_colors = [
+        (0.55, 0.20, 0.16, 1.0), (0.30, 0.40, 0.50, 1.0),
+        (0.40, 0.42, 0.32, 1.0), (0.62, 0.50, 0.28, 1.0),
+        (0.20, 0.30, 0.40, 1.0), (0.50, 0.30, 0.20, 1.0),
+    ]
+    for ci in range(24):
+        cx = -65.0 + (ci % 8) * 3.5
+        cy = SOUTH_Y - 2.0 + (ci // 8) * 4.2
+        cz_off = ((ci * 7) % 3) * 1.5         # varied stack heights
+        col = container_colors[ci % len(container_colors)]
+        make_box(f"South_Container_{ci}", (cx, cy, port_z + 0.7 + cz_off),
+                 (1.6, 3.2, 1.4), col)
+
+    # ── Container cranes — large gantry shapes
+    for cni, cn_x in enumerate([-25.0, 5.0, 35.0]):
+        cn_y = SOUTH_Y + 4.0
+        # gantry legs
+        for li, (lx_o, ly_o) in enumerate([(-4.0, -3.0), (4.0, -3.0), (-4.0, 3.0), (4.0, 3.0)]):
+            make_box(f"South_Crane_{cni}_Leg_{li}",
+                     (cn_x + lx_o, cn_y + ly_o, port_z + 6.0),
+                     (0.5, 0.5, 12.0), (0.46, 0.42, 0.38, 1.0))
+        # cross-girder at the top
+        make_box(f"South_Crane_{cni}_GirderS", (cn_x, cn_y - 3.0, port_z + 12.5),
+                 (9.0, 0.6, 0.6), (0.46, 0.42, 0.38, 1.0))
+        make_box(f"South_Crane_{cni}_GirderN", (cn_x, cn_y + 3.0, port_z + 12.5),
+                 (9.0, 0.6, 0.6), (0.46, 0.42, 0.38, 1.0))
+        # boom — long horizontal arm reaching out toward the river
+        make_box(f"South_Crane_{cni}_Boom", (cn_x, cn_y, port_z + 13.5),
+                 (0.6, 18.0, 0.8), (0.46, 0.42, 0.38, 1.0))
+        # operator cab partway up
+        make_box(f"South_Crane_{cni}_Cab", (cn_x, cn_y, port_z + 11.0),
+                 (1.2, 1.4, 1.4), (0.78, 0.20, 0.18, 1.0))
+        # warning light on top
+        make_cyl(f"South_Crane_{cni}_Warn", (cn_x, cn_y, port_z + 13.0),
+                 0.20, 0.30, (1.0, 0.45, 0.20, 1.0), segments=6)
+
+    # ── Refinery cluster — tall stacks + tanks
+    # Storage tanks (large cylinders)
+    for ti, (tx_o, ty_o, tr) in enumerate([
+        (45.0, -1.0, 3.2), (54.0, 2.0, 2.8), (62.0, -2.0, 3.5),
+        (70.0, 1.0, 2.4),
+    ]):
+        make_cyl(f"South_Tank_{ti}", (tx_o, SOUTH_Y + ty_o, port_z + 3.0),
+                 tr, 6.0, (0.50, 0.46, 0.40, 1.0), segments=10)
+        # band ring
+        make_cyl(f"South_Tank_{ti}_Band", (tx_o, SOUTH_Y + ty_o, port_z + 5.5),
+                 tr + 0.05, 0.15, (0.32, 0.30, 0.26, 1.0), segments=10)
+    # Refinery stacks — very tall narrow cylinders
+    for si, (sx_o, sy_o, sh) in enumerate([
+        (80.0, 0.0, 18.0), (84.0, 3.0, 15.0), (88.0, -1.0, 22.0),
+    ]):
+        make_cyl(f"South_RefStack_{si}", (sx_o, SOUTH_Y + sy_o, port_z + sh / 2),
+                 0.50, sh, (0.22, 0.20, 0.18, 1.0), segments=8)
+        make_cyl(f"South_RefStack_{si}_Cap", (sx_o, SOUTH_Y + sy_o, port_z + sh - 0.10),
+                 0.65, 0.20, COL_BRASS, segments=8)
+        # smoke plume
+        for pi in range(4):
+            make_sphere(f"South_RefSmoke_{si}_{pi}",
+                        (sx_o + pi * 1.2, SOUTH_Y + sy_o - pi * 0.4, port_z + sh + 1.5 + pi * 0.7),
+                        1.2 + pi * 0.25, (0.42, 0.40, 0.38, 1.0))
+    # Flare stack — orange tip suggesting active gas flare
+    make_cyl("South_Flare", (74.0, SOUTH_Y + 2.0, port_z + 7.0),
+             0.35, 14.0, (0.22, 0.20, 0.18, 1.0), segments=6)
+    make_sphere("South_FlareFlame", (74.0, SOUTH_Y + 2.0, port_z + 14.5),
+                0.80, (1.0, 0.62, 0.20, 1.0))
+
+    # ── A second tier of warehouses lining the port front
+    for wi, (wx, ww, wl, wh) in enumerate([
+        (-50.0, 8.0, 6.0, 5.5), (-32.0, 7.0, 6.0, 4.8),
+        ( -8.0, 9.0, 7.0, 7.0), ( 12.0, 6.0, 5.5, 5.0),
+        ( 28.0, 8.0, 6.0, 6.0),
+    ]):
+        make_box(f"South_Warehouse_{wi}", (wx, SOUTH_Y - 10.0, port_z + wh / 2),
+                 (ww, wl, wh), (0.36, 0.34, 0.30, 1.0))
+        make_box(f"South_Warehouse_{wi}_Cap", (wx, SOUTH_Y - 10.0, port_z + wh + 0.15),
+                 (ww + 0.2, wl + 0.2, 0.20), (0.46, 0.42, 0.38, 1.0))
+
+
 def build_distant_atmosphere():
     """Big-scale far-distance landmarks visible behind everything else.
     A distant bridge upriver, far hills on the horizon, a few low cloud
@@ -2492,6 +2677,7 @@ def main():
     build_opposite_shore()
     build_other_boats()
     build_bayou()
+    build_far_horizons()
     build_distant_atmosphere()
     export_glb()
 
