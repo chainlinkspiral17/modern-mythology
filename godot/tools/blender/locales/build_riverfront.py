@@ -1181,6 +1181,144 @@ def build_riverboat():
 # THE PARKING LOT
 # ════════════════════════════════════════════════════════════════
 
+def _make_vehicle(label, cx, cy, col, facing, vtype, lot_z):
+    """Build one parked vehicle. vtype ∈ {"sedan", "pickup", "van"}.
+    facing = -1 → nose pointing -X, +1 → nose pointing +X.
+    Shared wheels + headlights + bumpers; body shape varies by type."""
+    tire_col = (0.08, 0.08, 0.08, 1.0)
+    head_col = (0.95, 0.92, 0.65, 1.0)
+    tail_col = (0.85, 0.18, 0.16, 1.0)
+    bump_col = (0.18, 0.18, 0.18, 1.0)
+    glass_col = COL_CAR_GLASS
+    roof_col = (col[0] * 0.65, col[1] * 0.65, col[2] * 0.65, 1.0)
+    front_off_x = -2.0 * facing
+    back_off_x  =  2.0 * facing
+    fx = cx + front_off_x
+    rx = cx + back_off_x
+
+    if vtype == "sedan":
+        # Lower / mid body
+        make_box(f"{label}_body_low", (cx, cy, lot_z + 0.30), (4.0, 1.75, 0.30), col)
+        make_box(f"{label}_body_mid", (cx, cy, lot_z + 0.60), (4.1, 1.70, 0.30), col)
+        # Subtle corner rounding
+        for ssi, (sox, soy) in enumerate([(-1.95, -0.78), (1.95, -0.78),
+                                            (-1.95, 0.78), (1.95, 0.78)]):
+            make_sphere(f"{label}_corner_{ssi}", (cx + sox, cy + soy, lot_z + 0.45),
+                        0.18, col)
+        # Hood / trunk — prisms sloping toward the ends
+        make_prism(f"{label}_hood", (cx + front_off_x * 0.55, cy, lot_z + 0.78),
+                   (1.6, 1.60, 0.20), col, pitch_axis='Y')
+        make_prism(f"{label}_trunk", (cx + back_off_x * 0.55, cy, lot_z + 0.78),
+                   (1.4, 1.60, 0.16), col, pitch_axis='Y')
+        # Cabin
+        make_box(f"{label}_cabin", (cx, cy, lot_z + 1.00), (1.6, 1.55, 0.50), col)
+        make_prism(f"{label}_roof", (cx, cy, lot_z + 1.25),
+                   (1.55, 1.45, 0.12), roof_col, pitch_axis='Y')
+        # Windshield / rear / sides
+        make_box(f"{label}_winshld", (cx + front_off_x * 0.425, cy, lot_z + 1.05),
+                 (0.06, 1.45, 0.45), glass_col)
+        make_box(f"{label}_rearwin", (cx + back_off_x * 0.425, cy, lot_z + 1.05),
+                 (0.06, 1.45, 0.42), glass_col)
+        make_box(f"{label}_winN", (cx, cy + 0.78, lot_z + 1.05), (1.5, 0.02, 0.40), glass_col)
+        make_box(f"{label}_winS", (cx, cy - 0.78, lot_z + 1.05), (1.5, 0.02, 0.40), glass_col)
+        # Wheel positions for sedan
+        wheel_positions = [(-1.4, -0.78), (-1.4, 0.78), (1.4, -0.78), (1.4, 0.78)]
+
+    elif vtype == "pickup":
+        # Pickup truck: cab (smaller, front section) + open bed (rear)
+        # Lower frame
+        make_box(f"{label}_frame", (cx, cy, lot_z + 0.40), (4.4, 1.85, 0.40), col)
+        # CAB — front section, taller and forward
+        cab_x_offset = front_off_x * 0.45
+        make_box(f"{label}_cab_body", (cx + cab_x_offset, cy, lot_z + 0.85), (1.8, 1.70, 0.40), col)
+        make_box(f"{label}_cab_top", (cx + cab_x_offset, cy, lot_z + 1.30), (1.8, 1.65, 0.50), col)
+        make_prism(f"{label}_cab_roof", (cx + cab_x_offset, cy, lot_z + 1.55),
+                   (1.8, 1.55, 0.10), roof_col, pitch_axis='Y')
+        # Cab windshield (front-leaning)
+        ws_x = cx + cab_x_offset + front_off_x * 0.42
+        make_box(f"{label}_cab_winshld", (ws_x, cy, lot_z + 1.40),
+                 (0.06, 1.55, 0.50), glass_col)
+        # Cab rear window
+        make_box(f"{label}_cab_rear", (cx + cab_x_offset + back_off_x * 0.40, cy, lot_z + 1.40),
+                 (0.06, 1.55, 0.46), glass_col)
+        # Cab side windows
+        make_box(f"{label}_cab_winN", (cx + cab_x_offset, cy + 0.83, lot_z + 1.40),
+                 (1.55, 0.02, 0.40), glass_col)
+        make_box(f"{label}_cab_winS", (cx + cab_x_offset, cy - 0.83, lot_z + 1.40),
+                 (1.55, 0.02, 0.40), glass_col)
+        # BED — open box behind cab. Walls suggest the bed sides
+        bed_x_offset = back_off_x * 0.55
+        bed_x_center = cx + bed_x_offset
+        make_box(f"{label}_bed_floor", (bed_x_center, cy, lot_z + 0.82),
+                 (1.9, 1.75, 0.06), (col[0] * 0.7, col[1] * 0.7, col[2] * 0.7, 1.0))
+        # Bed walls (4 sides — front/rear/N/S)
+        make_box(f"{label}_bed_wallN", (bed_x_center, cy + 0.85, lot_z + 1.00),
+                 (1.9, 0.06, 0.40), col)
+        make_box(f"{label}_bed_wallS", (bed_x_center, cy - 0.85, lot_z + 1.00),
+                 (1.9, 0.06, 0.40), col)
+        make_box(f"{label}_bed_wallF", (bed_x_center + front_off_x * 0.97, cy, lot_z + 1.00),
+                 (0.06, 1.65, 0.40), col)
+        make_box(f"{label}_bed_wallR", (bed_x_center + back_off_x * 0.97, cy, lot_z + 1.00),
+                 (0.06, 1.65, 0.40), col)
+        wheel_positions = [(-1.5, -0.83), (-1.5, 0.83), (1.5, -0.83), (1.5, 0.83)]
+
+    else:  # van
+        # Van: tall boxy body, sliding-door suggestion on the side
+        make_box(f"{label}_body_low", (cx, cy, lot_z + 0.30), (4.2, 1.85, 0.40), col)
+        # Main tall cabin/cargo area — one continuous box
+        make_box(f"{label}_cabin", (cx + front_off_x * -0.15, cy, lot_z + 1.20),
+                 (3.8, 1.80, 1.20), col)
+        # Slightly recessed front section (hood is short on vans)
+        make_box(f"{label}_hood", (cx + front_off_x * 0.85, cy, lot_z + 0.80),
+                 (0.8, 1.75, 0.40), col)
+        # Roof
+        make_box(f"{label}_roof", (cx + front_off_x * -0.15, cy, lot_z + 1.85),
+                 (3.85, 1.85, 0.06), roof_col)
+        # Big front windshield (mostly vertical, vans have steep glass)
+        ws_x = cx + front_off_x * 1.20
+        make_box(f"{label}_winshld", (ws_x, cy, lot_z + 1.30),
+                 (0.06, 1.65, 0.70), glass_col)
+        # Side windows — long horizontal strip on each side
+        make_box(f"{label}_winN", (cx + front_off_x * -0.5, cy + 0.92, lot_z + 1.40),
+                 (2.0, 0.02, 0.50), glass_col)
+        make_box(f"{label}_winS", (cx + front_off_x * -0.5, cy - 0.92, lot_z + 1.40),
+                 (2.0, 0.02, 0.50), glass_col)
+        # Sliding-door suggestion — slightly darker rectangle on N side
+        make_box(f"{label}_sliding_door", (cx + 0.0, cy + 0.93, lot_z + 1.00),
+                 (1.4, 0.02, 0.80),
+                 (col[0] * 0.85, col[1] * 0.85, col[2] * 0.85, 1.0))
+        # Rear windows / doors — suggested as a panel
+        make_box(f"{label}_rear_doors", (cx + back_off_x * 1.0, cy, lot_z + 1.20),
+                 (0.06, 1.65, 1.15), (col[0] * 0.88, col[1] * 0.88, col[2] * 0.88, 1.0))
+        # Small rear window
+        make_box(f"{label}_rearwin", (cx + back_off_x * 1.04, cy, lot_z + 1.55),
+                 (0.04, 1.20, 0.40), glass_col)
+        wheel_positions = [(-1.5, -0.88), (-1.5, 0.88), (1.5, -0.88), (1.5, 0.88)]
+
+    # ── COMMON DETAILS — headlights, taillights, bumpers, wheels ──
+    make_box(f"{label}_headL", (fx, cy - 0.55, lot_z + 0.45),
+             (0.04, 0.30, 0.18), head_col)
+    make_box(f"{label}_headR", (fx, cy + 0.55, lot_z + 0.45),
+             (0.04, 0.30, 0.18), head_col)
+    make_box(f"{label}_tailL", (rx, cy - 0.55, lot_z + 0.45),
+             (0.04, 0.30, 0.18), tail_col)
+    make_box(f"{label}_tailR", (rx, cy + 0.55, lot_z + 0.45),
+             (0.04, 0.30, 0.18), tail_col)
+    make_box(f"{label}_bumpF", (fx + 0.01 * facing, cy, lot_z + 0.25),
+             (0.06, 1.80, 0.18), bump_col)
+    make_box(f"{label}_bumpR", (rx - 0.01 * facing, cy, lot_z + 0.25),
+             (0.06, 1.80, 0.18), bump_col)
+    # Wheels
+    wheel_radius = 0.28 if vtype == "sedan" else 0.32
+    for wi, (wx_off, wy_off) in enumerate(wheel_positions):
+        make_cyl(f"{label}_wheel_{wi}", (cx + wx_off, cy + wy_off, lot_z + wheel_radius - 0.12),
+                 wheel_radius, 0.20, tire_col, segments=8, axis='Y')
+        make_cyl(f"{label}_hub_{wi}",
+                 (cx + wx_off, cy + wy_off + (0.11 if wy_off > 0 else -0.11),
+                  lot_z + wheel_radius - 0.12),
+                 0.10, 0.04, COL_BRASS, segments=6, axis='Y')
+
+
 def build_parking_lot():
     """Parking lot on the PORT (-X) side of the boat, parallel to the
     shoreline. Long axis along Y (along the boat), short axis along X.
@@ -1250,103 +1388,23 @@ def build_parking_lot():
             make_prism(f"Sodium_Head_{si}", (px, py + head_off_y, 5.78), (0.8, 0.5, 0.22), COL_SODIUM_HEAD, pitch_axis='Y')
             make_box(f"Sodium_Lens_{si}", (px, py + head_off_y, 5.72), (0.62, 0.42, 0.04), (1.0, 0.72, 0.30, 1.0))
 
-    # ── 8 PARKED CARS — bodies oriented along X (head/trunk face east/west) ──
-    # Two rows: row 0 cars at row_x = -4.5 facing west, row 1 at row_x = +4.5 facing east
-    # (so each row's cars nose into their parking line)
-    cars = [
-        (-4.5, -13.0, COL_CAR_BODY_A, -1),
-        (-4.5,  -9.0, COL_CAR_BODY_B, -1),
-        (-4.5,  -5.0, COL_CAR_BODY_C, -1),
-        (-4.5,   1.0, (0.30, 0.35, 0.50, 1.0), -1),
-        (-4.5,   8.0, (0.65, 0.60, 0.55, 1.0), -1),
-        (-4.5,  13.0, COL_CAR_BODY_A, -1),
-        ( 4.5,  -8.0, COL_CAR_BODY_C,  1),
-        ( 4.5,   6.0, COL_CAR_BODY_B,  1),
+    # ── PARKED VEHICLES — mix of sedans, pickup trucks, and a van.
+    # Each spec: (row_x_off, ly, color, facing, vehicle_type)
+    # facing = -1 → nose at -X, facing = +1 → nose at +X
+    vehicles = [
+        (-4.5, -13.0, COL_CAR_BODY_A, -1, "sedan"),
+        (-4.5,  -9.0, COL_CAR_BODY_B, -1, "pickup"),
+        (-4.5,  -5.0, COL_CAR_BODY_C, -1, "sedan"),
+        (-4.5,   1.0, (0.30, 0.35, 0.50, 1.0), -1, "van"),
+        (-4.5,   8.0, (0.65, 0.60, 0.55, 1.0), -1, "sedan"),
+        (-4.5,  13.0, (0.55, 0.45, 0.30, 1.0), -1, "pickup"),
+        ( 4.5,  -8.0, COL_CAR_BODY_C,  1, "sedan"),
+        ( 4.5,   6.0, COL_CAR_BODY_B,  1, "van"),
     ]
-    for i, (row_x_off, ly, col, facing) in enumerate(cars):
+    for i, (row_x_off, ly, col, facing, vtype) in enumerate(vehicles):
         cx = lot_cx + row_x_off
         cy = lot_cy + ly
-        # facing = -1 → nose at -X, facing = +1 → nose at +X
-        front_off_x = -2.0 * facing
-        back_off_x  =  2.0 * facing
-        # Lower / mid body — long axis along X (since car points along X).
-        # The body is now tapered at the corners using small spheres so
-        # the car silhouette reads less boxy from a distance.
-        make_box(f"Car_{i}_body_low", (cx, cy, lot_z + 0.30), (4.0, 1.75, 0.30), col)
-        make_box(f"Car_{i}_body_mid", (cx, cy, lot_z + 0.60), (4.1, 1.70, 0.30), col)
-        # Subtle corner rounding only — small spheres at body corners,
-        # NOT the giant 0.55-radius marshmallow blobs of the previous
-        # pass. Keep the car silhouette boxy but soften the hard 90°
-        # corners. User feedback: previous spheres made cars look
-        # alien / poofy.
-        for ssi, (sox, soy) in enumerate([(-1.95, -0.78), (1.95, -0.78),
-                                            (-1.95, 0.78), (1.95, 0.78)]):
-            make_sphere(f"Car_{i}_corner_{ssi}", (cx + sox, cy + soy, lot_z + 0.45),
-                        0.18, col)
-        # Hood — PRISM sloping DOWN toward the front (not a flat slab).
-        # pitch_axis='Y' would peak along Y; we want peak along X (toward
-        # the cabin), bottom along -X (front of car). Use 'X' to put the
-        # ridge along the X axis; size=(width, length_along_x, peak_height).
-        # But the prism builder peaks UP — to get a hood sloping FROM
-        # the cabin DOWN to the front, we use a prism in two parts:
-        #   - a low flat slab covering the front
-        #   - a small wedge rising as it approaches the cabin
-        # Simpler: use make_prism with pitch_axis='X' so the ridge
-        # crosses the car perpendicular to the hood, then offset so the
-        # ridge sits at the cabin edge.
-        hood_x_center = cx + front_off_x * 0.55
-        make_prism(f"Car_{i}_hood",
-                   (hood_x_center, cy, lot_z + 0.78),
-                   (1.6, 1.60, 0.20), col, pitch_axis='Y')
-        trunk_x_center = cx + back_off_x * 0.55
-        make_prism(f"Car_{i}_trunk",
-                   (trunk_x_center, cy, lot_z + 0.78),
-                   (1.4, 1.60, 0.16), col, pitch_axis='Y')
-        # Cabin — base box, with rounded corner spheres on top and a
-        # gently sloped (low-prism) roof so the greenhouse doesn't sit
-        # under a flat board.
-        make_box(f"Car_{i}_cabin", (cx, cy, lot_z + 1.00), (1.6, 1.55, 0.50), col)
-        roof_col = (col[0] * 0.65, col[1] * 0.65, col[2] * 0.65, 1.0)
-        make_prism(f"Car_{i}_roof",
-                   (cx, cy, lot_z + 1.25),
-                   (1.55, 1.45, 0.12), roof_col, pitch_axis='Y')
-        # Cabin top corner spheres for round greenhouse profile
-        for rci, (rox, roy) in enumerate([(-0.78, -0.75), (0.78, -0.75), (-0.78, 0.75), (0.78, 0.75)]):
-            make_sphere(f"Car_{i}_cabinCorner_{rci}", (cx + rox, cy + roy, lot_z + 1.20),
-                        0.12, col)
-        # Windshield (front of cabin), rear window
-        make_box(f"Car_{i}_windshield", (cx + front_off_x * 0.425, cy, lot_z + 1.05), (0.06, 1.45, 0.45), COL_CAR_GLASS)
-        make_box(f"Car_{i}_rearwin",    (cx + back_off_x * 0.425,  cy, lot_z + 1.05), (0.06, 1.45, 0.42), COL_CAR_GLASS)
-        # Side windows
-        make_box(f"Car_{i}_winN", (cx, cy + 0.78, lot_z + 1.05), (1.5, 0.02, 0.40), COL_CAR_GLASS)
-        make_box(f"Car_{i}_winS", (cx, cy - 0.78, lot_z + 1.05), (1.5, 0.02, 0.40), COL_CAR_GLASS)
-        # Headlights (front) — two side-by-side at the +/-Y from car center along the X-facing front
-        head_col = (0.95, 0.92, 0.65, 1.0)
-        tail_col = (0.85, 0.18, 0.16, 1.0)
-        fx = cx + front_off_x
-        rx = cx + back_off_x
-        make_box(f"Car_{i}_headL", (fx, cy - 0.55, lot_z + 0.45), (0.04, 0.30, 0.18), head_col)
-        make_box(f"Car_{i}_headR", (fx, cy + 0.55, lot_z + 0.45), (0.04, 0.30, 0.18), head_col)
-        make_box(f"Car_{i}_tailL", (rx, cy - 0.55, lot_z + 0.45), (0.04, 0.30, 0.18), tail_col)
-        make_box(f"Car_{i}_tailR", (rx, cy + 0.55, lot_z + 0.45), (0.04, 0.30, 0.18), tail_col)
-        # Bumpers
-        bump_col = (0.18, 0.18, 0.18, 1.0)
-        make_box(f"Car_{i}_bumpF", (fx + 0.01 * facing, cy, lot_z + 0.25), (0.06, 1.75, 0.18), bump_col)
-        make_box(f"Car_{i}_bumpR", (rx - 0.01 * facing, cy, lot_z + 0.25), (0.06, 1.75, 0.18), bump_col)
-        # Side mirrors
-        mir_col = (col[0] * 0.8, col[1] * 0.8, col[2] * 0.8, 1.0)
-        make_box(f"Car_{i}_mirN", (cx + front_off_x * 0.35, cy + 0.85, lot_z + 1.10), (0.18, 0.08, 0.10), mir_col)
-        make_box(f"Car_{i}_mirS", (cx + front_off_x * 0.35, cy - 0.85, lot_z + 1.10), (0.18, 0.08, 0.10), mir_col)
-        # Grille (front, facing X direction)
-        grille_col = (0.20, 0.18, 0.16, 1.0)
-        make_box(f"Car_{i}_grille", (fx - 0.02 * facing, cy, lot_z + 0.40), (0.04, 1.30, 0.20), grille_col)
-        # Wheels (axles along Y now, since car points along X)
-        tire_col = (0.08, 0.08, 0.08, 1.0)
-        for wi, (wx_off, wy_off) in enumerate([(-1.4, -0.78), (-1.4, 0.78), (1.4, -0.78), (1.4, 0.78)]):
-            make_cyl(f"Car_{i}_wheel_{wi}", (cx + wx_off, cy + wy_off, lot_z + 0.16),
-                     0.28, 0.20, tire_col, segments=8, axis='Y')
-            make_cyl(f"Car_{i}_hub_{wi}", (cx + wx_off, cy + wy_off + (0.11 if wy_off > 0 else -0.11), lot_z + 0.16),
-                     0.10, 0.04, COL_BRASS, segments=6, axis='Y')
+        _make_vehicle(f"Veh_{i}", cx, cy, col, facing, vtype, lot_z)
 
     # ── DUMPSTER in the NW corner ──
     dx_d = lot_cx - lot_x_w/2 + 2.0
