@@ -175,6 +175,54 @@ a programmer. Three lessons came out of the redesign:
   thirty random omnis sprinkled around. Each light has a job; if
   you can delete one and not notice, it shouldn't have been there.
 
+### 2026-06-14 · runtime time-of-day cycle requires directional/practical split
+
+- **Lesson.** A scene's Light3Ds aren't all the same kind. The
+  three-light foundation (key + fill + back) are
+  `DirectionalLight3D` representing the sun/moon — they need to
+  scale up *massively* for daytime (8-18× their night base).
+  Practicals (sodium lamps, dock bollards, interior bulbs) are
+  `OmniLight3D` / `SpotLight3D` representing visible fixtures —
+  they need to scale to *zero* for noon and bump UP at night.
+  Treating all lights with a single `energy_mult` produces
+  "barely-less-dark midday" with daytime lamps still blazing.
+- **Pattern.** Sort cached lights into two parallel arrays at
+  collect time:
+  ```
+  if node is DirectionalLight3D: _directional_lights.append(node)
+  elif node is Light3D:           _practical_lights.append(node)
+  ```
+  Then per-preset:
+  - `dir_mult` ∈ [0.3 .. 18] · directional energy multiplier
+  - `practical_mult` ∈ [0 .. 1.4] · practical energy multiplier
+- **Sun rotation belongs on the KEY directional only.** Fill and
+  back keep their cinematography rotation so the three-light
+  geometry isn't disrupted. Match the key by `_Key` name suffix
+  (vol5's is `Moon_Key`; HCE will likely use `Sun_Key`). Pitch
+  reference points:
+    high noon       -82°
+    overcast        -55° / -65°
+    golden hour     -12° to -8°  (yaw ±75° east/west)
+    blue hour       -3°  (just below horizon)
+    midnight moon   -28°
+- **Ambient: absolute, never multiplied.** Don't scale ambient by
+  the same factor you scale directionals — a night base of 0.50
+  caps daytime ambient at ~1.0 even with a 2.0× multiplier. Per
+  preset: `ambient_color` (Color) and `ambient_energy` (float,
+  absolute; sentinel `< 0` means "keep the scene's cached base").
+  Sky-blue daytime ambient hits 2.4 unencumbered.
+- **Smooth cross-fade.** Lerp source → target preset over ~1.2 s
+  with `smoothstep` ease. Lerp every animatable field (dir_mult,
+  practical_mult, dir_tint, tint_mix, sun pitch/yaw, ambient
+  color/energy, fog color, sky_top, sky_horizon, sky_energy).
+  Never snap on a frame — the eye reads snaps as "broken."
+- **Defer to mood-owned lights.** If a mood already drives lights
+  (`lightshow_extreme` audio-pulses every Light3D), the lighting
+  cycle must early-return when that mood is active. When the user
+  exits that mood, re-apply the lighting selection so the
+  visualizer doesn't strand the lights at their pumped-strobe
+  state.
+
 ### TEMPLATE for next session
 
 ```markdown

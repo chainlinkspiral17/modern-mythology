@@ -482,6 +482,106 @@ copperplate), Sacramento (modern handwritten).
   single `blend_mode` int uniform, then spawn variant moods. Don't
   rebuild the chain.
 
+### 2026-06-14 · F9/F10/F11/F12 sub-toggles · style packs · sky lerp
+
+- **The "make it more subtle" debate.** User wanted overlay/multiply
+  blend modes to let the raw scene show through. Their first
+  instinct was a "swap source/target" toggle. Math: multiply,
+  screen, and add are commutative — swap doesn't change the
+  picture. Only overlay is asymmetric (becomes hard light). The
+  user's actual want was "raw dominates, effect subtle on top." The
+  right lever is a strength dial, not a math flip. Shipped F10 as a
+  `BLEND_AMOUNTS = [1.0, 0.6, 0.3, 0.15]` cycle multiplier on the
+  neon_edge layer's `strength` uniform. The picture now reads as
+  raw scene plus a hint of ink.
+- **Rule.** Before adding a blend-math toggle, identify whether the
+  user wants asymmetric behaviour or whether they want LESS of an
+  effect. Commutative blends never benefit from source/target swap.
+- **Sub-toggles compose.** F9 (blend mode), F10 (blend amount), F11
+  (lighting), F12 (style pack) all persist across F3 / RMB strata
+  cycling. The HUD label appends each active override
+  (`MOOD · linework (F3)  · blend=overlay (F9)  · amt=30% (F10)
+  · light=blue_hour (F11)`) so the user can read the full visual
+  state at a glance. Style packs (F12) are a curated bundle of
+  mood + lighting + blend overrides for snapping to a per-location
+  identity in one tap; manual sub-toggles still work on top.
+- **Smooth time-of-day transitions.** Snapping between lighting
+  presets feels broken; lerping over ~1.2 s with `smoothstep` ease
+  reads as natural cross-fade. Pattern:
+  1. Store `_light_lerp_source` (snapshot of current preset) and
+     `_light_lerp_target` (new preset). On chained cycles,
+     `source = previous target` so continuity holds.
+  2. Each frame advance `_light_lerp_t = min(1.0, t + dt / DUR)`.
+  3. `_apply_lighting_blended(src, dst, smoothstep(t))` lerps
+     every animatable field (dir_mult, practical_mult, tint colour,
+     tint_mix, sun pitch/yaw, ambient colour/energy, fog colour,
+     sky_top, sky_horizon, sky_energy).
+  Rule: any "transition between two named visual states" wants this
+  same shape — NEVER snap on a frame, ALWAYS interpolate over time.
+
+### 2026-06-14 · ProceduralSkyMaterial works in gl_compatibility
+
+- **What we did.** Replaced the WorldEnvironment's flat
+  `background_color` with `background_mode = 2` (Sky) and a
+  `ProceduralSkyMaterial` sub-resource carrying `sky_top_color`,
+  `sky_horizon_color`, `sky_energy_multiplier`, `ground_*`. Per
+  lighting preset we lerp those colours/energies live, so day
+  cycles from indigo-top + faint-horizon midnight → cyan-top +
+  white-horizon midday with the sun directional pitching from -28°
+  (under horizon) up to -82° (overhead).
+- **Renderer constraint.** `ProceduralSkyMaterial` works under
+  `renderer/rendering_method="gl_compatibility"`. `PhysicalSkyMaterial`
+  does NOT. Stick with procedural unless we flip to Forward+.
+- **glow_enabled is a no-op in gl_compatibility.** The Environment
+  exposes the property but the Compatibility renderer ignores it.
+  Setting it costs nothing — it'll just kick in if we ever switch.
+  Don't promise bloom-driven visible-lamp glow without the
+  renderer swap (Forward+ on Steam Deck handles this fine).
+- **Rule.** Whenever adding sky / glow / SSAO / SSR, FIRST check
+  whether the project's renderer supports the feature. List of
+  Compatibility-mode unsupported features: SSAO, SSR, SDFGI,
+  PhysicalSky, glow/bloom, screen-space refraction. Volumetric
+  fog is restricted too. Procedural sky, basic fog, omni/spot
+  lights, directional with shadow, MSAA — all fine.
+
+### 2026-06-14 · time-of-day requires light category split
+
+- **What broke.** First-pass time-of-day toggle just multiplied
+  every cached `Light3D.light_energy` by an `energy_mult`. On the
+  riverfront night scene that gave "less dark midday" instead of
+  daylight — directional keys at 0.32 × 1.8 = 0.58 is still night.
+  Worse, the sodium street lamps at 1.6 × 1.8 = 2.88 stayed
+  blazing-on at midday.
+- **The fix.** At light-collect time, sort nodes into TWO arrays:
+  `_directional_lights` (sun/moon/key/fill/back) and
+  `_practical_lights` (omni/spot — fixtures, lamps, bulbs). Each
+  lighting preset then carries TWO scalars: `dir_mult` (8-18 for
+  daytime, 0.3-0.6 for night) and `practical_mult` (0 for midday,
+  1.4 for night when lamps are pumped up). Picture instantly
+  flipped from "barely-less-dark" to "actually daylight" /
+  "actually night."
+- **Sun rotation.** Per preset, `sun_pitch_deg` and `sun_yaw_deg`
+  override the KEY directional's rotation. Match the key by
+  `_Key`-suffix naming (`Moon_Key` in vol5); fall back to the
+  first DirectionalLight3D. Fill/back keep their cached rotations
+  so the three-light cinematography geometry isn't disturbed.
+  Pitch ranges: -82° (high noon), -55° (storm overhead), -12°
+  (golden hour low west), -3° (blue hour just below horizon),
+  -28° (deep night). Shadows actually arc with the sun.
+- **Ambient becomes absolute, not multiplied.** A night-scaled
+  base ambient of 0.50 capped daytime even with an `ambient_mult`
+  of 1.6. New preset structure: `ambient_color` (Color) and
+  `ambient_energy` (float, absolute; -1.0 = "keep cached base").
+  Daytime ambient hits 2.4 sky-blue without fighting the night
+  baseline.
+- **Lights-owned-by-other-system rule.** `lightshow_extreme` mood
+  already drives every Light3D from audio. The time-of-day apply
+  function early-returns when the active mood is
+  `lightshow_extreme`. When the user cycles OUT of that mood, the
+  `_last_lightshow_active` latch fires `_apply_lighting()` again
+  with the current F11 selection so the visualizer doesn't strand
+  the lights.
+
 ### TEMPLATE for next session
 
 ```markdown

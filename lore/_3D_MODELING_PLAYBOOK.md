@@ -592,6 +592,36 @@ This is a long-term constraint — don't optimize for miniaturization
 prematurely (the game look comes first), but when faced with a
 between-equally-OK-options choice, pick the printable one.
 
+### 2026-06-14 · vol5 Graustark riverfront wrap — what stuck
+
+- **Vertex-colour material zones held up.** No textures, every
+  surface coloured at build time, lighting from real Light3Ds.
+  The lithograph / ink-press filter family READS the scene
+  perfectly when the geometry has clean material zones — vertex
+  red on the sign letters and life rings is what lets the
+  shader's `red_only` bleed gate fire. If the sign letters had
+  been textured, the lithograph effect would have been mush.
+  Rule: keep vertex-colour zoning as the primary material
+  language for HCE.
+- **Three-light + practicals scales gracefully to time-of-day.**
+  The night-rated keys (Moon_Key 0.32 energy) and the practicals
+  (sodium 1.6, bollards 0.55) sit at sensible *night base* values
+  that the runtime can multiply UP for day or DOWN for moon. If
+  base energies are tuned for night, the dir_mult / practical_mult
+  framework lets a single scene cover every hour. Rule for HCE:
+  tune base lighting for the scene's *primary* hour (HCE will be
+  midday Texas), then let the runtime cycle pull other hours.
+- **Naming conventions matter for runtime introspection.** The
+  `_Key` suffix on `Moon_Key` is what lets MoodCycler identify
+  which directional gets the sun rotation. In HCE name the key
+  directional `Sun_Key`. Fill / Back stay generic.
+- **Comments referencing geometry that doesn't exist accumulate.**
+  Riverfront's scene file has a `; DockLamp_Pole + DockLamp_Glow
+  mesh pair` comment, but there's no actual `_Glow` mesh in the
+  tree — the lamp emission was meant to be a visible bulb mesh
+  that was never built. For HCE: if a comment promises a mesh,
+  add the mesh in the same commit or strike the comment.
+
 ### TEMPLATE for next session
 
 ```markdown
