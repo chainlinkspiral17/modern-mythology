@@ -148,32 +148,44 @@ class LandscapeParams:
 
 # ── HCE example parameters (the topography doc made flesh) ────────
 def hce_elevation(x: float, y: float) -> float:
-    """Harmony Creek Estates elevation. ~30 m vertical range per
-    user direction — terrain is built first and loud enough to
-    define the locale (see lore/_LOCALE_DESIGN_MANUAL.md). NW high
-    country-club rise (~14 m peak), secondary east-side ridge,
-    creek flood-plain ravine cut ~3 m below the banks, SE low
-    ground. Soft suburban rolling, not Oregon cliffs."""
-    tilt = 7.0 * ((-(x) + y) / 600.0)
+    """Real terrain — ~40 m peak-to-trough across the 1200 × 840 m
+    district. Tuned after the 30 m spread still read flat. Now:
+      · NW country-club hill  +22 m
+      · East-side ridge       +10 m
+      · NW headwaters knoll    +8 m
+      · SE basin              -8 m
+      · NW→SE tilt           ±10 m
+      · Creek ravine           -7 m
+      · Multi-scale noise     ±5.5 m
+    Must stay in sync with build_harmony_terrain.py hce_elevation()."""
+    tilt = 10.0 * ((-(x) + y) / 1200.0)
     cc_dx = x - 0
-    cc_dy = y - 200
-    cc_rise = 14.0 * math.exp(-(cc_dx * cc_dx + cc_dy * cc_dy) / (140.0 * 140.0))
-    east_dx = x - 240
-    east_dy = y - 40
-    east_rise = 6.0 * math.exp(-(east_dx * east_dx + east_dy * east_dy) / (110.0 * 110.0))
-    noise = (fbm(x * 0.008, y * 0.008, octaves=3) - 0.5) * 3.0
+    cc_dy = y - 380
+    cc_rise = 22.0 * math.exp(-(cc_dx * cc_dx + cc_dy * cc_dy) / (180.0 * 180.0))
+    east_dx = x - 480
+    east_dy = y - 80
+    east_rise = 10.0 * math.exp(-(east_dx * east_dx + east_dy * east_dy) / (150.0 * 150.0))
+    nw_dx = x + 400
+    nw_dy = y - 280
+    nw_rise = 8.0 * math.exp(-(nw_dx * nw_dx + nw_dy * nw_dy) / (140.0 * 140.0))
+    south_dx = x - 80
+    south_dy = y + 280
+    south_dip = -8.0 * math.exp(-(south_dx * south_dx + south_dy * south_dy) / (180.0 * 180.0))
+    noise_low = (fbm(x * 0.003, y * 0.003, octaves=3) - 0.5) * 4.0
+    noise_high = (fbm(x * 0.012, y * 0.012, octaves=2) - 0.5) * 1.5
     creek_dist = HCE_CREEK.distance(x, y)
-    dip = -3.0 * math.exp(-creek_dist * creek_dist / (HCE_CREEK.flood_width ** 2))
-    return tilt + cc_rise + east_rise + noise + dip
+    dip = -7.0 * math.exp(-creek_dist * creek_dist / (50.0 ** 2))
+    return (tilt + cc_rise + east_rise + nw_rise + south_dip
+            + noise_low + noise_high + dip)
 
 HCE_CREEK = CreekPath(
     points=[
-        (-280,  180),
-        (-150,   80),
-        ( -40,    0),
-        (  80,  -70),
-        ( 200, -120),
-        ( 290, -180),
+        (-560,  360),
+        (-300,  160),
+        ( -80,    0),
+        ( 160, -140),
+        ( 400, -240),
+        ( 580, -360),
     ],
     width=6.0,
     flood_width=22.0,
@@ -183,92 +195,81 @@ HCE_ROADS = RoadGrid(
     # Sparser, more rural road grid — gone back to seed. Commercial
     # belts ride the PERIMETER (N + W + S + E arterials); the interior
     # has a few residential collectors and short stubs but otherwise
-    # large unbroken lots and wild patches between roads. Hwy access
-    # is on the west side; the east side fades into woods.
+    # large unbroken lots and wild patches between roads.
+    # District is now 1200 × 840 m so the suburban features have
+    # room to breathe — coords below are 2× the original sketch.
     segments=[
         # ── Perimeter commercial arterials (the "bordering roads") ──
-        # West frontage (Highway 9 — main commercial drag)
-        ((-280, -200), (-280, 200)),
-        # North arterial (county route — strip-mall belt to the south of golf)
-        ((-280, 130), (290, 130)),
-        # East arterial (back-of-town two-lane)
-        (( 270, -200), ( 270, 200)),
-        # South arterial (truck route past the woods)
-        ((-280, -170), (290, -170)),
+        ((-560, -400), (-560, 400)),    # West frontage (Highway 9)
+        ((-560, 260),  (580, 260)),     # North arterial (south of golf)
+        ((540,  -400), (540, 400)),     # East arterial
+        ((-560, -340), (580, -340)),    # South arterial (truck route)
 
-        # ── Sparse residential collectors (interior, low density) ──
-        # Central E-W (one main road across the middle)
-        ((-280,   10), (270,  10)),
-        # One single N-S secondary (the only interior north-south)
-        ((  20, -170), (  20, 130)),
+        # ── Sparse residential collectors (interior) ──
+        ((-560,  20),  (540, 20)),      # Central E-W
+        ((40, -340),   (40, 260)),      # Lone N-S interior
 
-        # ── A handful of short residential stubs / cul-de-sacs ──
-        ((-180,  10), (-180, 100)),   # north stub off central
-        (( 100, -170), (100,  -60)),  # south stub
-        ((-200, -100), (-110, -100)), # short east-west residential
-        (( 120,  60), ( 220,  60)),   # quiet eastern cul-de-sac
+        # ── Short residential stubs ──
+        ((-360,  20),  (-360, 200)),    # north stub off central
+        ((200, -340),  (200, -120)),    # south stub
+        ((-400, -200), (-220, -200)),   # east-west residential
+        ((240,  120),  (440,  120)),    # eastern cul-de-sac feeder
 
         # ── Country club access spur ──
-        ((  60, 130), (  60, 180)),
+        ((120, 260),   (120, 360)),
     ]
 )
 
 HCE_NEIGHBOURHOODS = [
     # ── Commercial belts along the PERIMETER ROADS ──
-    # West-side commercial strip (hwy 9 — gas stations, strip mall,
-    # drive-thrus — this is the user's "starting point")
     Neighbourhood("West Commercial Strip", [
-        (-280, -170), (-230, -170), (-230, 130), (-280, 130)
+        (-560, -340), (-460, -340), (-460, 260), (-560, 260)
     ], landuse="commercial"),
-    # North commercial belt (between arterial and golf course)
     Neighbourhood("North Commercial Belt", [
-        (-230, 130), (220, 130), (220, 170), (-230, 170)
+        (-460, 260), (440, 260), (440, 340), (-460, 340)
     ], landuse="commercial"),
-    # South commercial / truck-stop (along south arterial)
     Neighbourhood("South Commercial / Truck Stop", [
-        (-230, -200), (220, -200), (220, -170), (-230, -170)
+        (-460, -400), (440, -400), (440, -340), (-460, -340)
     ], landuse="commercial"),
-    # East commercial (smaller — quieter rural drag)
     Neighbourhood("East Commercial", [
-        (220, -170), (270, -170), (270, 130), (220, 130)
+        (440, -340), (540, -340), (540, 260), (440, 260)
     ], landuse="commercial"),
 
     # ── Country club on the north high ground ──
     Neighbourhood("Country Club + Golf", [
-        (-230, 170), (220, 170), (220, 210), (-230, 210)
+        (-460, 340), (440, 340), (440, 420), (-460, 420)
     ], landuse="golf"),
 
     # ── MULTIPLE distinct PARKS per grid quadrant ──
     Neighbourhood("Harmony Park (community / pool)", [
-        (-60, -20), (90, -20), (90, 100), (-60, 100)
+        (-120, -40), (180, -40), (180, 200), (-120, 200)
     ], landuse="park"),
     Neighbourhood("Founders Memorial Grove", [
-        (-200, 50), (-100, 50), (-100, 110), (-200, 110)
+        (-400, 100), (-200, 100), (-200, 220), (-400, 220)
     ], landuse="park_natural"),
     Neighbourhood("South Sports Fields", [
-        (130, -160), (220, -160), (220, -50), (130, -50)
+        (260, -320), (440, -320), (440, -100), (260, -100)
     ], landuse="park_sports"),
     Neighbourhood("Creek Trail Park (natural)", [
-        # Wraps the creek corridor in the SE
-        (90, -160), (130, -160), (130, -20), (90, -20)
+        (180, -320), (260, -320), (260, -40), (180, -40)
     ], landuse="park_natural"),
     Neighbourhood("Wild Lot (gone to seed)", [
-        (-200, -150), (-130, -150), (-130, -90), (-200, -90)
+        (-400, -300), (-260, -300), (-260, -180), (-400, -180)
     ], landuse="overgrown"),
 
     # ── Spread-out residential — single-family, low density ──
     Neighbourhood("West Estates (single-family)", [
-        (-230, -170), (-60, -170), (-60, -20), (-230, -20)
+        (-460, -340), (-120, -340), (-120, -40), (-460, -40)
     ], landuse="single_family"),
     Neighbourhood("North Ranch Homes", [
-        (-230, 10), (-100, 10), (-100, 130), (-230, 130)
+        (-460, 20), (-200, 20), (-200, 260), (-460, 260)
     ], landuse="single_family"),
     Neighbourhood("East Cul-de-sac Estates", [
-        (90, 10), (220, 10), (220, 130), (90, 130)
+        (180, 20), (440, 20), (440, 260), (180, 260)
     ], landuse="cul_de_sac"),
 
     Neighbourhood("Creek Corridor", [
-        (-280, 210), (-220, 210), (290, -180), (290, -200),
+        (-560, 420), (-440, 420), (580, -360), (580, -400),
     ], landuse="creek_corridor"),
 ]
 
@@ -283,49 +284,49 @@ HCE_LANDMARKS = [
     # Kwik Stop and NexCorp Gas & Go ACROSS THE INTERSECTION per
     # _VOL6_WIKI.md. NW corner of the West Commercial Strip ×
     # North Commercial Belt junction.
-    Landmark("Kwik Stop", -250, 145, "commercial",
+    Landmark("Kwik Stop", -500, 290, "commercial",
              "Sam's register · wire basket · back-cooler recursion"),
-    Landmark("NexCorp Gas & Go", -210, 145, "commercial",
+    Landmark("NexCorp Gas & Go", -420, 290, "commercial",
              "Skip's shift · locker #4"),
-    Landmark("Cosmic Comics", -250, 100, "media",
+    Landmark("Cosmic Comics", -500, 200, "media",
              "Rick · the photocopier · DO NOT SORT YET pile"),
 
     # ── OTHER COMMERCIAL HOT SPOTS ──────────────────────────────
-    Landmark("D'Ambrosio's (vol5 holdover)", -195, 90, "narrative",
+    Landmark("D'Ambrosio's (vol5 holdover)", -390, 180, "narrative",
              "John's column corner · Maya's mail-drop to F.T."),
-    Landmark("Halsey Studios", 250, 100, "media",
+    Landmark("Halsey Studios", 500, 200, "media",
              "Gallatin Band · the unreleased fourth-record track"),
-    Landmark("Truck Stop Diner", 0, -185, "commercial",
+    Landmark("Truck Stop Diner", 0, -370, "commercial",
              "south arterial · long-haul corner"),
 
     # ── CIVIC ──────────────────────────────────────────────────
-    Landmark("HOA Welcome / Office", -10, 60, "civic",
+    Landmark("HOA Welcome / Office", -20, 120, "civic",
              "Carl Reno's breakfasts · the welcome table"),
-    Landmark("Community Pool + Bandshell", 15, 40, "civic",
+    Landmark("Community Pool + Bandshell", 30, 80, "civic",
              "the watch-tower lifeguard chair"),
-    Landmark("Country Club Clubhouse", -20, 190, "civic",
+    Landmark("Country Club Clubhouse", -40, 380, "civic",
              "high ground · sightlines into both subdivisions"),
 
     # ── SPECIFIC NARRATIVE ADDRESSES ────────────────────────────
-    Landmark("Lot 7 · Connie Daigle", -170, -60, "narrative",
+    Landmark("Lot 7 · Connie Daigle", -340, -120, "narrative",
              "Phase I · the most settled"),
-    Landmark("Lot 14 · Mrs. Pimentel", -150, -90, "narrative",
+    Landmark("Lot 14 · Mrs. Pimentel", -300, -180, "narrative",
              "Phase I · the wrong-address scheme"),
-    Landmark("Lot 47 · model home", 130, 50, "narrative",
+    Landmark("Lot 47 · model home", 260, 100, "narrative",
              "the fake basil pot · Carla Vega three doors down"),
-    Landmark("892 Ashberry Drive", 165, 75, "narrative",
+    Landmark("892 Ashberry Drive", 330, 150, "narrative",
              "Maya's empty house · zine #19"),
 
     # ── PHASE BOUNDARIES (rough indicators) ────────────────────
-    Landmark("Phase II construction office", 50, -130, "civic",
+    Landmark("Phase II construction office", 100, -260, "civic",
              "new buyers from Graustark and Beaumont"),
-    Landmark("Phase III · Norman Lott's trailer", -160, -135, "narrative",
+    Landmark("Phase III · Norman Lott's trailer", -320, -270, "narrative",
              "dirt and surveying flags · NexCorp's substrate language"),
 ]
 
 HCE_PARAMS = LandscapeParams(
     name="Harmony Creek Estates",
-    bounds=(-300, 300, -210, 210),
+    bounds=(-600, 600, -420, 420),
     elevation=hce_elevation,
     creek=HCE_CREEK,
     roads=HCE_ROADS,
@@ -607,7 +608,7 @@ def zoom(params: LandscapeParams, bounds: tuple[float, float, float, float],
 # plus surrounding road frontage + a buffer on each side.
 HCE_CHAPTER_ONE = zoom(
     HCE_PARAMS,
-    bounds=(-295, -150, 50, 180),
+    bounds=(-590, -300, 100, 360),
     resolution=1400,
     name_suffix="chapter one quadrant",
 )

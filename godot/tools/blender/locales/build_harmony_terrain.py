@@ -40,16 +40,18 @@ def lerp_palette(t, lo, hi):
     return tuple(lo[i] + (hi[i] - lo[i]) * t for i in range(4))
 
 # ── DISTRICT BOUNDS (matches estuary_one HCE_PARAMS) ─────────────
-DIST_MIN_X = -300.0
-DIST_MAX_X =  300.0
-DIST_MIN_Y = -210.0
-DIST_MAX_Y =  210.0
+# 1200 × 840 m — sized to fit golf + 3 residential phases + creek
+# corridor + commercial belts + parks + sports + Halsey Studios
+# without crowding. See lore/_LOCALE_DESIGN_MANUAL.md.
+DIST_MIN_X = -600.0
+DIST_MAX_X =  600.0
+DIST_MIN_Y = -420.0
+DIST_MAX_Y =  420.0
 
-# Tighter tessellation than the district build (40×28 = ~15 m cells)
-# so the terrain reads clean without buildings on top to hide
-# undersampling artefacts.
-GROUND_NX = 40
-GROUND_NY = 28
+# Cell size ~15 m so terrain features (the 14 m country-club rise,
+# the creek ravine, the secondary east ridge) read clean.
+GROUND_NX = 80
+GROUND_NY = 56
 
 # ── PALETTE (seasonal lawn + landuse zones) ──────────────────────
 COL_LAWN          = lerp_palette(SEASON, (0.22, 0.55, 0.18, 1.0),
@@ -69,14 +71,14 @@ COL_COMMERCIAL_DIRT = (0.42, 0.40, 0.36, 1.0)
 # HARMONY CREEK polyline (matches estuary_one HCE_CREEK)
 # ────────────────────────────────────────────────────────────────
 CREEK_POINTS = [
-    (-280,  180),
-    (-150,   80),
-    ( -40,    0),
-    (  80,  -70),
-    ( 200, -120),
-    ( 290, -180),
+    (-560,  360),
+    (-300,  160),
+    ( -80,    0),
+    ( 160, -140),
+    ( 400, -240),
+    ( 580, -360),
 ]
-CREEK_FLOOD_WIDTH = 28.0
+CREEK_FLOOD_WIDTH = 50.0
 
 def creek_distance(x, y):
     best = float("inf")
@@ -126,53 +128,73 @@ def _hash2d(x, y, seed=1337):
 
 
 def hce_elevation(x, y):
-    """~30 m vertical range. NW country-club rise, east ridge,
-    creek ravine, NW→SE tilt, noise."""
-    tilt = 7.0 * ((-(x) + y) / 600.0)
+    """Real terrain features — ~40 m peak-to-trough across the
+    1200 × 840 m district. Tuned after user feedback that 30 m
+    spread looked too gentle. Now:
+      · NW country-club hill        +22 m peak
+      · East-side ridge             +10 m
+      · NW headwaters knoll         +8  m (creek origin)
+      · SE basin depression          -8  m
+      · NW→SE tilt                  ±10 m
+      · Creek ravine                -7  m below bank
+      · Multi-scale noise           ±4  m (low freq) + ±1.5 m (detail)
+    Combined visible range typically -22 m → +28 m. Reads as a
+    real hilly suburb, not a 1 % grade lawn."""
+    tilt = 10.0 * ((-(x) + y) / 1200.0)
+    # Country club hilltop — taller, tighter
     cc_dx = x - 0
-    cc_dy = y - 200
-    cc_rise = 14.0 * math.exp(-(cc_dx * cc_dx + cc_dy * cc_dy) / (140.0 * 140.0))
-    east_dx = x - 240
-    east_dy = y - 40
-    east_rise = 6.0 * math.exp(-(east_dx * east_dx + east_dy * east_dy) / (110.0 * 110.0))
-    noise = (fbm(x * 0.008, y * 0.008, octaves=3) - 0.5) * 3.0
+    cc_dy = y - 380
+    cc_rise = 22.0 * math.exp(-(cc_dx * cc_dx + cc_dy * cc_dy) / (180.0 * 180.0))
+    # Secondary east-side ridge
+    east_dx = x - 480
+    east_dy = y - 80
+    east_rise = 10.0 * math.exp(-(east_dx * east_dx + east_dy * east_dy) / (150.0 * 150.0))
+    # NW headwaters knoll (creek originates here)
+    nw_dx = x + 400
+    nw_dy = y - 280
+    nw_rise = 8.0 * math.exp(-(nw_dx * nw_dx + nw_dy * nw_dy) / (140.0 * 140.0))
+    # SE basin (south sports fields sit in a slight bowl)
+    south_dx = x - 80
+    south_dy = y + 280
+    south_dip = -8.0 * math.exp(-(south_dx * south_dx + south_dy * south_dy) / (180.0 * 180.0))
+    # Multi-scale noise — low-freq for big rolls, high-freq for grain
+    noise_low = (fbm(x * 0.003, y * 0.003, octaves=3) - 0.5) * 4.0
+    noise_high = (fbm(x * 0.012, y * 0.012, octaves=2) - 0.5) * 1.5
+    # Deeper creek ravine
     creek_d = creek_distance(x, y)
-    dip = -3.0 * math.exp(-creek_d * creek_d / (CREEK_FLOOD_WIDTH ** 2))
-    return tilt + cc_rise + east_rise + noise + dip
+    dip = -7.0 * math.exp(-creek_d * creek_d / (CREEK_FLOOD_WIDTH ** 2))
+    return (tilt + cc_rise + east_rise + nw_rise + south_dip
+            + noise_low + noise_high + dip)
 
 
 def landuse_at(x, y):
-    """Coarse landuse classifier — drives the per-polygon ground
-    colour. No buildings or roads exist yet, but the seasonal
-    palette per zone helps verify the design intent reads visually:
-    natural green for the wild + forested zones, manicured green
-    for the country club + parks, sage for the overgrown lot,
-    dirt for the commercial belts (where roads will go later)."""
-    # Country club golf course (irrigated — stays green even in August)
-    if -230 < x < 220 and 170 < y < 210:
+    """Coarse landuse classifier on the 1200 × 840 m district.
+    All polygons 2× the original sketch. No buildings or roads
+    yet — the per-zone colour helps verify the design intent."""
+    # Country club golf course (irrigated — stays green)
+    if -460 < x < 440 and 340 < y < 420:
         return 'golf'
-    # Creek bank (where the water cuts through)
-    if creek_distance(x, y) < 8.0:
+    # Creek bank
+    if creek_distance(x, y) < 14.0:
         return 'creek_bank'
-    # Commercial belts — DIRT for now (roads laid against terrain later)
-    if -280 <= x <= -230 and -170 <= y <= 130:
+    # Commercial belts — DIRT for now (roads come next)
+    if -560 <= x <= -460 and -340 <= y <= 260:
         return 'commercial_dirt'
-    if x >= 220 and -170 <= y <= 130:
+    if x >= 440 and -340 <= y <= 260:
         return 'commercial_dirt'
-    if -230 <= x <= 220 and 130 <= y <= 170:
+    if -460 <= x <= 440 and 260 <= y <= 340:
         return 'commercial_dirt'
-    if -230 <= x <= 220 and -200 <= y <= -170:
+    if -460 <= x <= 440 and -400 <= y <= -340:
         return 'commercial_dirt'
     # Harmony Park
-    if -60 <= x <= 90 and -20 <= y <= 100:
+    if -120 <= x <= 180 and -40 <= y <= 200:
         return 'park'
-    # Founders Memorial Grove (natural forest)
-    if -200 <= x <= -100 and 50 <= y <= 110:
+    # Founders Memorial Grove
+    if -400 <= x <= -200 and 100 <= y <= 220:
         return 'natural'
-    # Wild lot — gone to seed
-    if -200 <= x <= -130 and -150 <= y <= -90:
+    # Wild lot
+    if -400 <= x <= -260 and -300 <= y <= -180:
         return 'overgrown'
-    # Default: residential / open lawn
     return 'lawn'
 
 

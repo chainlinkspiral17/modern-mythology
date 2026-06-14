@@ -199,12 +199,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.0, 0)
 [node name="GroundShape" type="CollisionShape3D" parent="GroundBody"]
 shape = SubResource("Box_Ground")
 
-; Player spawns on the country-club hilltop so the first view
-; reveals the whole district sloping down to the creek and SE.
-; Country club rise is at HCE (0, +200) world coords with elevation
-; ~14 m at peak. In Godot world (x_b, z_b, -y_b) → (0, 14+2, -200).
+; Player spawns on the country-club hilltop. HCE world (0, +380)
+; sits at the cc_rise peak (~22 m + tilt + noise ≈ 27 m elevation).
+; gltf swap (x_b, y_b, z_b) → (x_b, z_b, -y_b) → Godot (0, 30, -380).
+; The 30 m camera height clears any noise wobble; player falls
+; onto the hilltop on first frame and sees the whole district
+; sloping down to the south. Far plane 1500 m so the SE basin
+; stays visible.
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, -200)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, -380)
 script = ExtResource("2_fpc")
 groups = ["player"]
 
@@ -216,7 +219,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
 fov = 70.0
 near = 0.1
-far = 1200.0
+far = 1500.0
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
