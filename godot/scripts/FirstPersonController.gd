@@ -110,21 +110,28 @@ func action_teleport_origin() -> void:
 
 func action_toggle_hud() -> void:
     # Clean HUD = ALL floating UI canvases off. Every script that
-    # owns a HUD layer (scene HUD, PDPRiffmaster button-registration,
-    # InGameMusic track label, DebugMenu, etc.) adds its CanvasLayer
-    # to the "ui" group; we walk the group and snap them all to the
+    # owns a HUD layer (scene HUD, PDPRiffmaster, InGameMusic track
+    # label, DebugMenu, etc.) adds its CanvasLayer / Control to
+    # the "ui" group. We walk the group and snap them all to the
     # same visibility state.
+    #
+    # NOTE — duck-typed access on .visible because CanvasLayer
+    # does NOT extend CanvasItem in Godot 4 (separate base classes,
+    # both have their own .visible property). Casting to CanvasItem
+    # returns null for CanvasLayer → crash. Use `in` to check.
     var ui_nodes: Array = get_tree().get_nodes_in_group("ui")
     if ui_nodes.is_empty():
         return
-    # Find current state from the FIRST UI node; flip everything to
-    # the opposite. (Beats relying on AND/OR across nodes that
-    # might be out of sync.)
-    var target_visible: bool = not (ui_nodes[0] as CanvasItem).visible
+    var first: Node = ui_nodes[0] as Node
+    if first == null or not ("visible" in first):
+        return
+    var target_visible: bool = not first.visible
+    var count: int = 0
     for n in ui_nodes:
-        if n is CanvasItem:
-            (n as CanvasItem).visible = target_visible
-    print("[FPC] HUD visible = %s (%d ui nodes)" % [target_visible, ui_nodes.size()])
+        if "visible" in n:
+            n.visible = target_visible
+            count += 1
+    print("[FPC] HUD visible = %s (%d ui nodes)" % [target_visible, count])
 
 
 func action_mouse_release() -> void:
