@@ -689,30 +689,70 @@ const BLEND_AMOUNT_LABELS: Array[String] = ["preset", "full", "60%", "30%", "15%
 var blend_amount_override: int = -1
 
 # ── TIME-OF-DAY LIGHTING TOGGLE (F11) ─────────────────────────────
-# Multiplies each cached Light3D's base energy and lerps its colour
-# toward the preset's tint. Independent of mood — lets the user
-# stage shots without picking a new visual filter. -1 = scene's
-# original lighting (cached values restored verbatim). Defers to
-# lightshow_extreme which already drives lights from audio.
+# A proper time-of-day cycle, not just a brightness scalar. Per
+# preset:
+#   dir_mult       · multiplier on each DirectionalLight3D's base
+#                    energy. Use BIG numbers (8-15) to push the
+#                    night-scale 0.3 keys into real daylight.
+#   practical_mult · scales OmniLight3D / SpotLight3D. 0.0 turns the
+#                    sodium lamps off for midday; 1.0 leaves them at
+#                    their night base.
+#   dir_tint       · colour the directionals lerp toward.
+#   tint_mix       · how strongly to apply dir_tint (0 = keep base
+#                    colour, 1 = fully replace).
+#   sun_pitch_deg  · X rotation of the key directional (0 = horizon,
+#                    -90 = straight down). Drives shadow angle.
+#   sun_yaw_deg    · Y rotation (east / west).
+#   ambient_color  · absolute WorldEnvironment ambient colour.
+#   ambient_energy · absolute ambient energy (not a multiplier).
+# Defers to lightshow_extreme which already drives lights from audio.
 const LIGHTING_PRESETS: Array = [
-    {"name": "scene_default", "energy_mult": 1.0, "tint_mix": 0.0,
-     "tint": Color.WHITE, "ambient_mult": 1.0},
-    {"name": "golden_hour",   "energy_mult": 1.3, "tint_mix": 0.55,
-     "tint": Color(1.0, 0.62, 0.32, 1), "ambient_mult": 1.1},
-    {"name": "blue_hour",     "energy_mult": 0.85, "tint_mix": 0.50,
-     "tint": Color(0.42, 0.58, 1.0, 1),  "ambient_mult": 0.9},
-    {"name": "midday",        "energy_mult": 1.8, "tint_mix": 0.30,
-     "tint": Color(1.0, 0.98, 0.92, 1), "ambient_mult": 1.6},
-    {"name": "midnight",      "energy_mult": 0.45, "tint_mix": 0.60,
-     "tint": Color(0.55, 0.62, 0.95, 1), "ambient_mult": 0.4},
-    {"name": "storm_front",   "energy_mult": 0.70, "tint_mix": 0.40,
-     "tint": Color(0.78, 0.82, 0.92, 1), "ambient_mult": 0.7},
-    {"name": "dawn_fog",      "energy_mult": 1.0, "tint_mix": 0.45,
-     "tint": Color(0.95, 0.85, 0.78, 1), "ambient_mult": 1.2},
+    {"name": "scene_default", "dir_mult": 1.0, "practical_mult": 1.0,
+     "dir_tint": Color.WHITE, "tint_mix": 0.0,
+     "sun_pitch_deg": NAN, "sun_yaw_deg": NAN,
+     "ambient_color": Color.WHITE, "ambient_energy": -1.0},
+    {"name": "midday",        "dir_mult": 14.0, "practical_mult": 0.0,
+     "dir_tint": Color(1.0, 0.97, 0.92, 1), "tint_mix": 0.95,
+     "sun_pitch_deg": -78.0, "sun_yaw_deg": 18.0,
+     "ambient_color": Color(0.62, 0.70, 0.82, 1), "ambient_energy": 1.8},
+    {"name": "golden_hour",   "dir_mult": 8.0, "practical_mult": 0.25,
+     "dir_tint": Color(1.0, 0.60, 0.28, 1), "tint_mix": 0.85,
+     "sun_pitch_deg": -12.0, "sun_yaw_deg": -75.0,
+     "ambient_color": Color(0.95, 0.55, 0.35, 1), "ambient_energy": 1.2},
+    {"name": "blue_hour",     "dir_mult": 3.0, "practical_mult": 0.75,
+     "dir_tint": Color(0.45, 0.62, 1.0, 1), "tint_mix": 0.80,
+     "sun_pitch_deg": -3.0, "sun_yaw_deg": -92.0,
+     "ambient_color": Color(0.32, 0.42, 0.68, 1), "ambient_energy": 0.85},
+    {"name": "dawn",          "dir_mult": 5.0, "practical_mult": 0.45,
+     "dir_tint": Color(1.0, 0.78, 0.62, 1), "tint_mix": 0.75,
+     "sun_pitch_deg": -8.0, "sun_yaw_deg": 85.0,
+     "ambient_color": Color(0.78, 0.62, 0.55, 1), "ambient_energy": 1.0},
+    {"name": "storm_front",   "dir_mult": 4.0, "practical_mult": 0.85,
+     "dir_tint": Color(0.72, 0.78, 0.88, 1), "tint_mix": 0.65,
+     "sun_pitch_deg": -55.0, "sun_yaw_deg": 0.0,
+     "ambient_color": Color(0.48, 0.52, 0.60, 1), "ambient_energy": 0.9},
+    {"name": "overcast_day",  "dir_mult": 9.0, "practical_mult": 0.10,
+     "dir_tint": Color(0.92, 0.95, 1.0, 1), "tint_mix": 0.70,
+     "sun_pitch_deg": -65.0, "sun_yaw_deg": 0.0,
+     "ambient_color": Color(0.72, 0.76, 0.82, 1), "ambient_energy": 1.5},
+    {"name": "midnight",      "dir_mult": 0.6, "practical_mult": 1.0,
+     "dir_tint": Color(0.50, 0.60, 0.95, 1), "tint_mix": 0.65,
+     "sun_pitch_deg": -28.0, "sun_yaw_deg": 12.0,
+     "ambient_color": Color(0.18, 0.22, 0.32, 1), "ambient_energy": 0.32},
 ]
 var lighting_index: int = 0   # 0 = scene_default
 var _world_env: WorldEnvironment = null
-var _world_env_base_energy: float = 1.0
+var _world_env_base_energy: float = 0.50
+var _world_env_base_color: Color = Color.WHITE
+# Two parallel arrays so we can scale directional vs practical
+# differently — sodium lamps off at midday, key sun pumped up.
+var _directional_lights: Array = []     # Array[DirectionalLight3D]
+var _directional_base_energy: Array[float] = []
+var _directional_base_color: Array[Color] = []
+var _directional_base_rotation: Array[Vector3] = []  # euler degrees, original
+var _practical_lights: Array = []       # Array[Light3D] (omni/spot)
+var _practical_base_energy: Array[float] = []
+var _practical_base_color: Array[Color] = []
 # Optional in-game label that displays the current mood name. If the
 # scene's HUD doesn't provide one we just skip updating it.
 @export var mood_label_path: NodePath = NodePath("../HUD/MoodLabel")
@@ -843,7 +883,19 @@ func _ready() -> void:
 
 
 func _collect_lights(node: Node) -> void:
-    if node is Light3D:
+    if node is DirectionalLight3D:
+        _directional_lights.append(node)
+        _directional_base_energy.append((node as Light3D).light_energy)
+        _directional_base_color.append((node as Light3D).light_color)
+        _directional_base_rotation.append((node as Node3D).rotation_degrees)
+        # Keep legacy combined array for lightshow_extreme's per-light pulse.
+        _scene_lights.append(node)
+        _scene_light_base_energy.append((node as Light3D).light_energy)
+        _scene_light_base_color.append((node as Light3D).light_color)
+    elif node is Light3D:
+        _practical_lights.append(node)
+        _practical_base_energy.append((node as Light3D).light_energy)
+        _practical_base_color.append((node as Light3D).light_color)
         _scene_lights.append(node)
         _scene_light_base_energy.append((node as Light3D).light_energy)
         _scene_light_base_color.append((node as Light3D).light_color)
@@ -851,6 +903,7 @@ func _collect_lights(node: Node) -> void:
         _world_env = node as WorldEnvironment
         if _world_env.environment:
             _world_env_base_energy = _world_env.environment.ambient_light_energy
+            _world_env_base_color = _world_env.environment.ambient_light_color
     for child in node.get_children():
         _collect_lights(child)
 
@@ -858,6 +911,7 @@ func _collect_lights(node: Node) -> void:
 func action_cycle_lighting() -> void:
     lighting_index = (lighting_index + 1) % LIGHTING_PRESETS.size()
     _apply_lighting(LIGHTING_PRESETS[lighting_index])
+    _apply(MOODS[current_index])  # refresh HUD label with new lighting tag
     print("[Mood] lighting → %s" % LIGHTING_PRESETS[lighting_index]["name"])
 
 
@@ -865,19 +919,52 @@ func _apply_lighting(preset: Dictionary) -> void:
     # lightshow_extreme already owns the lights — don't fight it.
     if MOODS[current_index]["name"] == "lightshow_extreme":
         return
-    var em: float = preset["energy_mult"]
+    var dm: float = preset["dir_mult"]
+    var pm: float = preset["practical_mult"]
     var tm: float = preset["tint_mix"]
-    var tint: Color = preset["tint"]
-    for i in range(_scene_lights.size()):
-        var light: Light3D = _scene_lights[i]
+    var dir_tint: Color = preset["dir_tint"]
+    # KEY directional gets the sun rotation; fill/back are left at base
+    # rotation so they keep their three-light geometry. The user's
+    # scene names the key "Moon_Key" — match by suffix "_Key" when
+    # present, else fall back to first directional.
+    var key_idx: int = -1
+    for i in range(_directional_lights.size()):
+        var n: String = String((_directional_lights[i] as Node).name)
+        if n.ends_with("_Key") or n.ends_with("Key"):
+            key_idx = i
+            break
+    if key_idx < 0 and _directional_lights.size() > 0:
+        key_idx = 0
+    for i in range(_directional_lights.size()):
+        var light: DirectionalLight3D = _directional_lights[i]
         if light == null:
             continue
-        light.light_energy = _scene_light_base_energy[i] * em
-        light.light_color = _scene_light_base_color[i].lerp(tint, tm)
+        light.light_energy = _directional_base_energy[i] * dm
+        light.light_color = _directional_base_color[i].lerp(dir_tint, tm)
+        if i == key_idx and not is_nan(preset["sun_pitch_deg"]):
+            var r: Vector3 = _directional_base_rotation[i]
+            r.x = preset["sun_pitch_deg"]
+            r.y = preset["sun_yaw_deg"]
+            light.rotation_degrees = r
+        elif not is_nan(preset["sun_pitch_deg"]):
+            # Reset non-key directionals to their original rotation
+            # so fill/back don't drift on repeat cycling.
+            light.rotation_degrees = _directional_base_rotation[i]
+        else:
+            light.rotation_degrees = _directional_base_rotation[i]
+    for i in range(_practical_lights.size()):
+        var p: Light3D = _practical_lights[i]
+        if p == null:
+            continue
+        p.light_energy = _practical_base_energy[i] * pm
+        p.light_color = _practical_base_color[i]
     if _world_env and _world_env.environment:
-        _world_env.environment.ambient_light_energy = (
-            _world_env_base_energy * preset["ambient_mult"]
-        )
+        if preset["ambient_energy"] >= 0.0:
+            _world_env.environment.ambient_light_energy = preset["ambient_energy"]
+            _world_env.environment.ambient_light_color = preset["ambient_color"]
+        else:
+            _world_env.environment.ambient_light_energy = _world_env_base_energy
+            _world_env.environment.ambient_light_color = _world_env_base_color
 
 
 func _unhandled_input(event: InputEvent) -> void:
