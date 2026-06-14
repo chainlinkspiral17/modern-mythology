@@ -117,14 +117,14 @@ const MOODS: Array = [
         # brightest pixels (red sign letters, white bulb meshes) bleed
         # through the black fill as their actual scene colour — same
         # trick as the linework mood, applied as the foundation here.
-        "neon": 1.0, "neon_thresh": 0.020,
+        "neon": 1.0, "neon_thresh": 0.014,
         "neon_edge": Color(0.96, 0.94, 0.88, 1),
         "neon_low":  Color(0.0, 0.0, 0.0, 1),
         "neon_high": Color(0.0, 0.0, 0.0, 1),
-        "neon_grad": 0.0, "neon_blend": 0.65, "neon_glow": 0.18,
-        "neon_bleed_lo": 0.65, "neon_bleed_hi": 0.90,
+        "neon_grad": 0.0, "neon_blend": 0.55, "neon_glow": 0.10,
+        "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
         "neon_sat_bleed": true,
-        "neon_sat_lo": 0.40, "neon_sat_hi": 0.60,
+        "neon_sat_lo": 0.50, "neon_sat_hi": 0.68,
         # ASCII density at REDUCED strength — adds halftone on top of
         # the linework foundation without burying it. red_threshold
         # raised to 0.32 so warm tungsten bulbs render as WHITE glyphs;
@@ -152,18 +152,17 @@ const MOODS: Array = [
         "palette": 6.0, "dither": 0.02, "scanline": 0.10, "aberration": 0.0002,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
-        "neon": 1.0, "neon_thresh": 0.018,
+        "neon": 1.0, "neon_thresh": 0.014,           # catches finer architectural creases
         "neon_edge": Color(0.96, 0.94, 0.88, 1),
         "neon_low":  Color(0.0,  0.0,  0.0,  1),
         "neon_high": Color(0.0,  0.0,  0.0,  1),
-        # Brightness gate × saturation gate = ONLY truly emissive
-        # accent colours bleed through the black fill. Walls lit to
-        # the same brightness as the sign letters still stay black
-        # because their saturation is ~0.20 vs the sign's ~0.82.
-        "neon_grad": 0.0, "neon_blend": 0.65, "neon_glow": 0.15,
-        "neon_bleed_lo": 0.65, "neon_bleed_hi": 0.90,
+        # Brightness × saturation gates tightened so warm spill on
+        # interior walls (pilothouse, dining room) no longer bleeds —
+        # only the lit windows themselves and the sign letters clear.
+        "neon_grad": 0.0, "neon_blend": 0.55, "neon_glow": 0.10,
+        "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
         "neon_sat_bleed": true,
-        "neon_sat_lo": 0.40, "neon_sat_hi": 0.60,
+        "neon_sat_lo": 0.50, "neon_sat_hi": 0.68,
     },
     {
         "name": "ice",
