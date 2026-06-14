@@ -627,7 +627,18 @@ def build_pond_water():
     segments = 20
     for (name, cx, cy, radius, _depth) in PONDS:
         bottom_z = hce_elevation(cx, cy)
-        water_z = bottom_z + 1.5
+        # Water sits ~0.7 m below the SURROUNDING RIM elevation per
+        # the golden rule ("ponds are seldom overflowing"). Sample
+        # the terrain at the outer edge of the depression and place
+        # water just below that.
+        rim_samples = []
+        for sample_i in range(8):
+            ang = 2.0 * math.pi * sample_i / 8
+            sx_pt = cx + math.cos(ang) * radius * 1.05
+            sy_pt = cy + math.sin(ang) * radius * 1.05
+            rim_samples.append(hce_elevation(sx_pt, sy_pt))
+        rim_z = sum(rim_samples) / len(rim_samples)
+        water_z = min(bottom_z + 1.5, rim_z - 0.7)
         wr = radius * 0.80
         # Outer water disc (lighter — shallow rim)
         verts = [(cx, cy, water_z)]
@@ -706,14 +717,17 @@ def build_pond_water():
                       0.4 + 0.15 * (k % 3), (0.22, 0.55, 0.28, 1.0),
                       segments=8)
 
-        # ── Reed / cattail clumps at the bank ──
+        # ── Reed / cattail clumps at the bank ── golden rule:
+        # each clump samples ITS OWN ground elevation, capped at
+        # water + 0.05 m so reeds can't sink below the surface.
         n_clumps = max(4, int(radius / 6))
         for k in range(n_clumps):
             ang = 6.2831 * k / n_clumps + 0.13
             rx = cx + math.cos(ang) * outer * 1.04
             ry = cy + math.sin(ang) * outer * 1.04
+            rz = max(hce_elevation(rx, ry), water_z + 0.05)
             _reed_clump(f"PondReeds_{name}_{k}", rx, ry,
-                        ground_z=beach_z, count=5)
+                        ground_z=rz, count=5)
 
         # ── Ducks ── two per pond, drifting in deterministic spots
         for d_idx, (dr, da, dfacing) in enumerate([
@@ -745,14 +759,16 @@ def build_pond_water():
                                 (0.18, 0.18, 1.0),
                                 (0.42, 0.30, 0.20, 1.0))
 
-        # ── Small green bushes ringing the outer beach ─────
+        # ── Small green bushes ringing the outer beach ─ each
+        # bush samples ITS OWN ground (golden rule).
         n_bushes = max(3, int(radius / 12))
         for k in range(n_bushes):
             ang = 6.2831 * k / n_bushes + 0.55
             bx = cx + math.cos(ang) * outer * 1.12
             by = cy + math.sin(ang) * outer * 1.12
+            bz = hce_elevation(bx, by)
             _make_sphere_low_local(f"PondBush_{name}_{k}",
-                                   (bx, by, beach_z + 0.45),
+                                   (bx, by, bz + 0.45),
                                    0.6 + 0.15 * (k % 2),
                                    (0.32, 0.55, 0.28, 1.0),
                                    rings=3, segments=6)
@@ -949,16 +965,19 @@ def build_oliver_tree_memorial():
                            rings=3, segments=8)
 
     # ── PROP: green Razor scooter at ground level beside plinth ─
-    _build_scooter("OT_Scooter", sx + 2.6, sy - 0.4, ground_z,
+    # Per the alignment golden rule: sample terrain AT THE PROP'S
+    # OWN position, not at the statue center. The new park berms
+    # mean the ground varies across the plaza.
+    sc_x, sc_y = sx + 2.6, sy - 0.4
+    sc_ground = hce_elevation(sc_x, sc_y)
+    _build_scooter("OT_Scooter", sc_x, sc_y, sc_ground,
                    color_deck=(0.30, 0.55, 0.25, 1.0),
                    color_metal=(0.78, 0.78, 0.80, 1.0))
 
     # ── MEMORIAL TRIBUTES at the south face of the plinth ─────
-    # The "fans left flowers and photos at the base" beat — small
-    # coloured boxes suggesting bouquets, photos in frames, lit
-    # candles, scattered scooter wheels (the fan-tribute classics).
-    tribute_y = sy - shaft_d / 2 - 0.5    # just outside the plaque
-    # Bouquets — pink + yellow + white + red
+    # Each tribute samples its own ground elevation per the golden
+    # rule, so no piece floats above or buries into the terrain.
+    tribute_y = sy - shaft_d / 2 - 0.5
     tribute_specs = [
         (sx - 0.9, tribute_y + 0.05, (0.95, 0.42, 0.62, 1.0)),  # pink
         (sx - 0.4, tribute_y + 0.0,  (0.95, 0.88, 0.30, 1.0)),  # yellow
@@ -967,32 +986,38 @@ def build_oliver_tree_memorial():
         (sx + 1.0, tribute_y + 0.0,  (0.68, 0.42, 0.85, 1.0)),  # purple
     ]
     for i, (tx, ty, tcol) in enumerate(tribute_specs):
-        # Wrapped-paper cone (stem block + flower cluster on top)
+        tz = hce_elevation(tx, ty)
         _make_box_local(f"OT_Tribute_Stem_{i}",
-                        (tx, ty, ground_z + 0.10),
+                        (tx, ty, tz + 0.10),
                         (0.18, 0.18, 0.20),
-                        (0.72, 0.62, 0.45, 1.0))    # craft paper
+                        (0.72, 0.62, 0.45, 1.0))
         _make_sphere_low_local(f"OT_Tribute_Bouquet_{i}",
-                               (tx, ty, ground_z + 0.32),
+                               (tx, ty, tz + 0.32),
                                0.18, tcol, rings=3, segments=6)
-    # Two lit-candle tributes (yellow flame on a white candle stub)
+    # Two lit-candle tributes
     for cdx in (-1.4, 1.4):
+        cd_x, cd_y = sx + cdx, tribute_y
+        cd_z = hce_elevation(cd_x, cd_y)
         _make_cyl_local(f"OT_Tribute_Candle_{cdx:+.1f}",
-                        (sx + cdx, tribute_y, ground_z + 0.12),
+                        (cd_x, cd_y, cd_z + 0.12),
                         0.06, 0.22, (0.92, 0.90, 0.84, 1.0),
                         segments=6)
         _make_sphere_low_local(f"OT_Tribute_Flame_{cdx:+.1f}",
-                               (sx + cdx, tribute_y, ground_z + 0.30),
+                               (cd_x, cd_y, cd_z + 0.30),
                                0.06, (0.98, 0.78, 0.20, 1.0),
                                rings=3, segments=6)
-    # Photo in a frame (small upright cream rectangle on a stand)
+    # Photo in a frame
+    ph_x, ph_y = sx - 1.5, tribute_y - 0.10
+    ph_z = hce_elevation(ph_x, ph_y)
     _make_box_local("OT_Tribute_Photo",
-                    (sx - 1.5, tribute_y - 0.10, ground_z + 0.30),
+                    (ph_x, ph_y, ph_z + 0.30),
                     (0.30, 0.04, 0.40),
                     (0.95, 0.92, 0.84, 1.0))
-    # A single scooter wheel laid on the ground (the iconic prop)
+    # Scooter wheel
+    wh_x, wh_y = sx + 1.6, tribute_y - 0.20
+    wh_z = hce_elevation(wh_x, wh_y)
     _make_cyl_local("OT_Tribute_Wheel",
-                    (sx + 1.6, tribute_y - 0.20, ground_z + 0.08),
+                    (wh_x, wh_y, wh_z + 0.08),
                     0.10, 0.06, (0.12, 0.12, 0.12, 1.0), segments=8)
 
 
