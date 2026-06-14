@@ -95,23 +95,25 @@ const MOODS: Array = [
         "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
         "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1),
         "neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
-        "dir_ascii": 1.0, "dir_cell": 9.0, "dir_thresh": 0.08,
+        "dir_ascii": 1.0, "dir_cell": 12.0, "dir_thresh": 0.25,
         "dir_line": Color(0.65, 0.85, 1.0, 1),     # cyan blueprint line
         "dir_fill": Color(0.06, 0.10, 0.18, 1),    # blueprint-paper blue-black
         "dir_tint": false,
     },
     {
-        # Same directional ASCII but with the booth-red palette from
-        # the lithograph reference. Lines following geometry direction
-        # in saturated red on near-black.
+        # Architectural line-drawing in saturated red on near-black.
+        # The strokes follow geometry directions (vertical hull seams
+        # get │, horizontal trim gets ─, sloped roofs get ╲ or ╱).
+        # Cell size + threshold tuned to catch ONLY the strong
+        # silhouette edges — no dot noise on bright cells.
         "name": "blueprint_red",
-        "palette": 5.0, "dither": 0.12, "scanline": 0.40, "aberration": 0.0010,
+        "palette": 5.0, "dither": 0.08, "scanline": 0.30, "aberration": 0.0006,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
         "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
         "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1),
         "neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
-        "dir_ascii": 1.0, "dir_cell": 8.0, "dir_thresh": 0.06,
+        "dir_ascii": 1.0, "dir_cell": 12.0, "dir_thresh": 0.22,
         "dir_line": Color(0.95, 0.18, 0.16, 1),
         "dir_fill": Color(0.02, 0.02, 0.02, 1),
         "dir_tint": false,

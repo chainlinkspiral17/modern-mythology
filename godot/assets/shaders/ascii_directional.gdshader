@@ -45,36 +45,39 @@ float luma(vec3 c) {
 // Each draw_X function returns 1.0 if (p) is within the character's
 // drawn region in cell-local coords (0..1) × (0..1).
 
+// THICKER strokes — the previous values (0.10 width) were too thin to
+// read once the post-process scanlines + dither got applied on top.
+// Strokes are now 0.14 thick and span 95% of the cell so adjacent
+// edge-cells visually connect into continuous lines.
+
 // ─  horizontal bar centred
 float draw_horizontal(vec2 p) {
-    return (p.y > 0.45 && p.y < 0.55 && p.x > 0.10 && p.x < 0.90) ? 1.0 : 0.0;
+    return (p.y > 0.43 && p.y < 0.57 && p.x > 0.02 && p.x < 0.98) ? 1.0 : 0.0;
 }
 
-// ─═  double-thick horizontal (for strong edges)
 float draw_horizontal_thick(vec2 p) {
-    return (p.y > 0.40 && p.y < 0.60 && p.x > 0.08 && p.x < 0.92) ? 1.0 : 0.0;
+    return (p.y > 0.38 && p.y < 0.62 && p.x > 0.00 && p.x < 1.00) ? 1.0 : 0.0;
 }
 
 // │  vertical bar centred
 float draw_vertical(vec2 p) {
-    return (p.x > 0.45 && p.x < 0.55 && p.y > 0.10 && p.y < 0.90) ? 1.0 : 0.0;
+    return (p.x > 0.43 && p.x < 0.57 && p.y > 0.02 && p.y < 0.98) ? 1.0 : 0.0;
 }
 
-// │║  thick vertical
 float draw_vertical_thick(vec2 p) {
-    return (p.x > 0.40 && p.x < 0.60 && p.y > 0.08 && p.y < 0.92) ? 1.0 : 0.0;
+    return (p.x > 0.38 && p.x < 0.62 && p.y > 0.00 && p.y < 1.00) ? 1.0 : 0.0;
 }
 
 // ╱  diagonal up-right (bottom-left to top-right)
 float draw_diag_ne(vec2 p) {
     float d = abs((1.0 - p.y) - p.x);
-    return (d < 0.10 && p.x > 0.08 && p.x < 0.92) ? 1.0 : 0.0;
+    return (d < 0.14 && p.x > 0.00 && p.x < 1.00) ? 1.0 : 0.0;
 }
 
 // ╲  diagonal down-right (top-left to bottom-right)
 float draw_diag_se(vec2 p) {
     float d = abs(p.x - p.y);
-    return (d < 0.10 && p.x > 0.08 && p.x < 0.92) ? 1.0 : 0.0;
+    return (d < 0.14 && p.x > 0.00 && p.x < 1.00) ? 1.0 : 0.0;
 }
 
 // ┼  cross — horizontal + vertical
@@ -154,13 +157,11 @@ void fragment() {
             // Diagonal NE → ╲
             mask = draw_diag_se(local);
         }
-    } else {
-        // No edge — sparse fill based on luminance
-        if (l_centre > 0.55) {
-            mask = draw_dot(local);     // bright fill cell gets a dot
-        }
-        // dark cells stay empty
     }
+    // Non-edge cells stay EMPTY (just fill colour). The previous version
+    // drew a dot in every bright cell, which buried the line work in
+    // static noise — user feedback caught that the blueprint look
+    // didn't read.
 
     vec3 line = tint_from_scene ? scene * 1.6 : line_color.rgb;
     vec3 ascii_result = mix(fill_color.rgb, line, mask);

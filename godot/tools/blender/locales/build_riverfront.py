@@ -1548,22 +1548,60 @@ def build_river():
              (river_cx, 0, RIVER_LEVEL_Z - 0.40),
              (river_extent_x, river_extent_y, 0.40),
              bed_col)
-    # ── PORT BANK — slope from the land (at LAND_Z, X = parking-lot
-    # east edge ≈ -19) down to the water (at RIVER_LEVEL_Z, X ≈ -8).
-    # The dock structure crosses this bank at midway elevation.
-    port_bank_top_x = -19.0          # parking-lot east edge / land edge
-    port_bank_bot_x = -8.0           # water's edge on the port side
-    port_bank_top_z = LAND_Z - 0.02
+    # ── PORT QUAY WALL — vertical concrete bulkhead dropping from the
+    # land (LAND_Z) STRAIGHT DOWN to the river (RIVER_LEVEL_Z). This
+    # is the obvious "the river is sunken below the land" feature. A
+    # soft slope hides the elevation change from typical camera angles;
+    # a vertical wall puts the 2.5m drop in your face.
+    quay_x = -18.0                   # at the parking-lot east edge
+    quay_top_z = LAND_Z
+    quay_bot_z = RIVER_LEVEL_Z
+    quay_h = quay_top_z - quay_bot_z   # 2.5m
+    quay_cz = (quay_top_z + quay_bot_z) / 2.0
+    quay_col = (0.58, 0.55, 0.50, 1.0)
+    # The wall itself — a long vertical concrete face along the river edge
+    make_box("River_QuayWall",
+             (quay_x, 0, quay_cz),
+             (0.40, river_extent_y, quay_h), quay_col)
+    # Cap at the top (visible from the parking lot side as a curb)
+    make_box("River_QuayWall_Cap",
+             (quay_x, 0, quay_top_z),
+             (0.80, river_extent_y, 0.20),
+             (0.65, 0.62, 0.55, 1.0))
+    # Heavy wooden fender pilings at intervals along the quay face
+    # (where boats would rub against the wall when docking)
+    for fi in range(11):
+        fy = -river_extent_y/2 + 8.0 + fi * (river_extent_y - 16.0) / 10.0
+        make_cyl(f"River_QuayFender_{fi}",
+                 (quay_x - 0.30, fy, RIVER_LEVEL_Z + 1.3),
+                 0.22, 2.6, (0.32, 0.20, 0.14, 1.0), segments=6)
+    # Slim shore strip between the quay wall and the actual water —
+    # this is the muddy bottom visible at the water line
+    shore_strip_col = (0.30, 0.26, 0.18, 1.0)
+    make_box("River_QuayShoreStrip",
+             (quay_x - 0.45 - 0.50, 0, RIVER_LEVEL_Z + 0.05),
+             (1.0, river_extent_y, 0.10), shore_strip_col)
+    # Vertical safety railing along the top of the quay (where players
+    # would walk along the edge and not fall into the river)
+    rail_col = COL_BRASS
+    make_box("River_QuayRail_top",
+             (quay_x + 0.30, 0, LAND_Z + 0.95),
+             (0.05, river_extent_y, 0.05), rail_col)
+    make_box("River_QuayRail_mid",
+             (quay_x + 0.30, 0, LAND_Z + 0.55),
+             (0.04, river_extent_y, 0.04), rail_col)
+    for pi in range(int(river_extent_y / 2.5)):
+        py = -river_extent_y/2 + 1.0 + pi * 2.5
+        make_box(f"River_QuayPost_{pi}",
+                 (quay_x + 0.30, py, LAND_Z + 0.50),
+                 (0.05, 0.05, 1.0), rail_col)
+
+    # Compatibility — keep these names defined for downstream features
+    port_bank_top_x = quay_x
+    port_bank_bot_x = quay_x - 0.50
+    port_bank_top_z = LAND_Z
     port_bank_bot_z = RIVER_LEVEL_Z
-    # The bank is a sloped prism running the full Y extent of the river
-    port_bank_w = port_bank_top_x - port_bank_bot_x
-    port_bank_cx = (port_bank_top_x + port_bank_bot_x) / 2.0
-    bank_col = (0.34, 0.28, 0.18, 1.0)
-    # Use make_ramp — top at land, bottom at the water's edge
-    make_ramp("River_Bank_Port",
-              (port_bank_top_x, 0, port_bank_top_z),
-              (port_bank_bot_x, 0, port_bank_bot_z),
-              river_extent_y, 0.40, bank_col, width_axis='Y')
+    port_bank_w = 0.50
     # ── STARBOARD BANK — slope from opposite shore (LAND_Z) down to
     # river. Opposite shore land sits at LAND_Z, the bank slopes down
     # to the water at X = OPPOSITE_X - 14 or so.
