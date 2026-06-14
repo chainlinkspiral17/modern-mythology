@@ -154,28 +154,60 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 - **A locale is not a set of isolated detail patches.** Every locale
   build should start with TWO foundational functions before any
   buildings, vehicles, or props go in:
-    1. `build_ground()` — a single continuous ground plane covering
-       the entire world area (~340m × 340m for the riverfront), tinted
-       a warm dirt/grass tone, with small grass-patch overlays
-       breaking up the uniform colour.
+    1. `build_ground()` — a continuous ground covering the entire
+       world area (~340m × 340m for the riverfront).
     2. `build_road_network()` — driveways, sidewalks, crosswalks,
        access ramps connecting every developed patch to every other
-       developed patch. If a building has a parking lot, the parking
-       lot must connect to a road, and that road must connect to
-       another road.
+       developed patch.
 - **Without these two**, the world reads as floating asphalt islands
   in a gray Godot-void no matter how much detail you pack into each
   individual feature. The user explicitly called this out: "roads
   don't look functional, look at all this null space."
 - **Order in main()**: ground first, road network second, THEN every
-  feature build (parking lot, dock, buildings, etc.) overlays on top.
-- **The same pattern carries to other locales:**
-    · Graustark needs ground + intersecting streets + sidewalks
-      before any house geometry.
-    · Harmony Creek Estates needs lawn ground + a cul-de-sac road
-      network before any houses.
-    · Smolvud needs dirt-road ground + connecting tracks before
-      any structures.
+  feature build overlays on top.
+
+#### Topography per locale (vol5–7 canon)
+
+The `build_ground()` implementation MUST differ per locale because
+the canonical topography differs:
+
+- **D'Ambrosio's riverfront** (vol5) — **flat** bayou-bottomland.
+  Single Z-constant ground plane + dirt/grass overlay patches works.
+- **Harmony Creek Estates** (vol5/6) — **flat** suburban lawns.
+  Same approach as riverfront: a continuous lawn-tone ground plane.
+  Roads = curving cul-de-sac network.
+- **Graustark, TX/LA** (vol5) — **flat** small-town main-street grid.
+  Same approach: single ground plane + grid of intersecting roads.
+- **Smolvud, central OR coast** (vol5/6) — **NOT FLAT**. Cold rain
+  forest with dramatic cliffs and structures built on wildly varied
+  geology and topography. `build_ground()` for Smolvud needs:
+    · Heightmap-style terrain (varied Z), NOT a flat plane.
+    · Cliff faces as stacked angled prism walls.
+    · Coastal rocky outcrops (sphere clusters + angled boxes).
+    · Switchback roads zigzagging up/down elevation.
+    · Houses on stilts / perched on cliff edges (the dramatic
+      vertical builds the canon calls for).
+    · Dense evergreen forest with multi-sphere conifer canopies.
+    · A coastline (water at the lowest elevation tier).
+  Don't reuse the flat `build_ground` straight from riverfront — it
+  will produce the wrong character entirely. Plan a Smolvud-specific
+  ground module: `build_terrain_heightmap()` or similar, that
+  samples a hand-defined Z(x, y) function and tessellates it.
+
+#### Tools likely needed for Smolvud
+
+- A height-sampling helper: `terrain_z_at(x, y)` returning the
+  ground Z at any world coordinate, so every prop (tree, house,
+  road segment) snaps to the right elevation.
+- A make_cliff() helper: stacked angled prism walls that fake a
+  vertical rock face.
+- A make_stilt_foundation() helper: 4 cylinders descending from
+  a house's footprint down to wherever terrain_z lands.
+- A make_switchback_road() helper: zigzag asphalt with painted
+  guardrails on the outside edge.
+
+These don't exist yet — call them out when Smolvud begins, and
+add to the helper library at the top of the build script.
 
 ### 2026-06-14 · the mood-cycler shader system is reusable
 
