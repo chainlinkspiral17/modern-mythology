@@ -82,8 +82,8 @@ const _MODEL_ELEMENTS := [
 
 const ASCII_MODEL := """\
 
-				   FRASIER'S MODEL CITY — top view
-				   (3.6 m × 3.0 m at the cathedral workshop)
+				FRASIER'S MODEL CITY — top view
+				(3.6 m × 3.0 m at the cathedral workshop)
 
    ╭─────────────────────────────────────────────────────────╮
    │                                                         │
@@ -105,8 +105,8 @@ const ASCII_MODEL := """\
    │ (the scaffolding)                      (the amber bulb) │
    │                                                         │
    ╰─────────────────────────────────────────────────────────╯
-										  [st. jude's]
-										  (forward east)
+										[st. jude's]
+										(forward east)
 """
 
 

@@ -137,7 +137,7 @@ func _emit_next_job() -> void:
 
 
 func _emit_log_line(text: String, col: Color, clickable: bool,
-					 job: Dictionary = {}) -> void:
+					job: Dictionary = {}) -> void:
 	if not clickable:
 		var lbl := Label.new()
 		lbl.text = text

@@ -485,7 +485,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 		var path: String   = resolved["path"]
 		if tex != null:
 			print("[CharLayer] %s (key=%s): TEXTURE      %s  [%dx%d]" %
-				  [char_name, key, path, int(tex.get_size().x), int(tex.get_size().y)])
+				[char_name, key, path, int(tex.get_size().x), int(tex.get_size().y)])
 			var tr := TextureRect.new()
 			tr.texture       = tex
 			tr.mouse_filter  = Control.MOUSE_FILTER_IGNORE
@@ -676,8 +676,8 @@ func _find_in_gallery_index(key: String) -> Dictionary:
 	var k := key.to_lower()
 	# Prefer canonical suffixes if any stem matches them exactly.
 	var preferred := [k + "_face", k + "_portrait", k + "_clean",
-					  k, "portrait_" + k + "_face", "portrait_" + k + "_0",
-					  "portrait_" + k, k + "_neutral"]
+					k, "portrait_" + k + "_face", "portrait_" + k + "_0",
+					"portrait_" + k, k + "_neutral"]
 	for stem: String in preferred:
 		if stem in _gallery_index:
 			var path: String = _gallery_index[stem]
@@ -825,9 +825,9 @@ class _AsciiBorder extends Control:
 		if cols < 4 or rows < 4: return
 		# Corners + edges
 		var c_bright := Color(accent.r * 1.0, accent.g * 1.0,
-							 accent.b * 1.0, 0.85)
+							accent.b * 1.0, 0.85)
 		var c_dim := Color(accent.r * 0.55, accent.g * 0.55,
-						  accent.b * 0.55, 0.65)
+						accent.b * 0.55, 0.65)
 		# Pulse — corners brighten in a wave
 		var pulse: float = (sin(t * 1.4) + 1.0) * 0.5
 		var c_pulse := c_bright.lerp(c_dim, pulse)
@@ -836,7 +836,7 @@ class _AsciiBorder extends Control:
 			Vector2((cols - 1) * cell_x, 0),     # top-right
 			Vector2(0, (rows - 1) * cell_y),     # bot-left
 			Vector2((cols - 1) * cell_x,
-				   (rows - 1) * cell_y),          # bot-right
+				(rows - 1) * cell_y),          # bot-right
 		]
 		var corner_glyphs := ["╔", "╗", "╚", "╝"]
 		for i in 4:

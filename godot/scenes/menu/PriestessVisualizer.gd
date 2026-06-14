@@ -247,9 +247,9 @@ func _build_thematic_widget() -> void:
 		"font_size": 13, "requires": null,
 		"ascii":
 """
-	   ╔═══════════════════════════════════════════════════╗
-	   ║   II  ░░  THE HIGH PRIESTESS  ░░  ARCHIVE NODE   ║
-	   ╚═══════════════════════════════════════════════════╝
+	╔═══════════════════════════════════════════════════╗
+	║   II  ░░  THE HIGH PRIESTESS  ░░  ARCHIVE NODE   ║
+	╚═══════════════════════════════════════════════════╝
 		─── between two pillars: silver and stone ─── she sits ───
 """
 	})
@@ -258,14 +258,14 @@ func _build_thematic_widget() -> void:
 		"requires": null,
 		"ascii":
 """
-			  ┌─────────────────────────────────────┐
-			  │  the SHELF                          │
-			  │  ▓ MYSTERY CULT TEXTS (19th C.)    │
-			  │  ▓ OCCULT SYMBOLOGY of the          │
-			  │    ASCENDANT                        │
-			  │  ▓ FIELD NOTES vol. 1-7             │
-			  │  ▓ a stack of VHS tapes →           │
-			  └─────────────────────────────────────┘
+			┌─────────────────────────────────────┐
+			│  the SHELF                          │
+			│  ▓ MYSTERY CULT TEXTS (19th C.)    │
+			│  ▓ OCCULT SYMBOLOGY of the          │
+			│    ASCENDANT                        │
+			│  ▓ FIELD NOTES vol. 1-7             │
+			│  ▓ a stack of VHS tapes →           │
+			└─────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 2, "tint": c_paper,
@@ -273,13 +273,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return tapes_revealed >= 1,
 		"ascii":
 """
-			  ╔═══════════════════════════════════════╗
-			  ║  ▓ ANYA · TAPE 1 — first interview    ║
-			  ║       date: 1990.04                   ║
-			  ║       label in her own handwriting    ║
-			  ║       a name on a shelf is a person   ║
-			  ║       you have not met yet.           ║
-			  ╚═══════════════════════════════════════╝
+			╔═══════════════════════════════════════╗
+			║  ▓ ANYA · TAPE 1 — first interview    ║
+			║       date: 1990.04                   ║
+			║       label in her own handwriting    ║
+			║       a name on a shelf is a person   ║
+			║       you have not met yet.           ║
+			╚═══════════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 3, "tint": c_paper,
@@ -287,13 +287,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return tapes_revealed >= 2,
 		"ascii":
 """
-			  ╔═══════════════════════════════════════╗
-			  ║  ▓ ANYA · TAPE 2 — the river footage  ║
-			  ║       date: 1991.11                   ║
-			  ║       she filmed at the cypress dock  ║
-			  ║       Graustark, before the empire    ║
-			  ║       was built around her.           ║
-			  ╚═══════════════════════════════════════╝
+			╔═══════════════════════════════════════╗
+			║  ▓ ANYA · TAPE 2 — the river footage  ║
+			║       date: 1991.11                   ║
+			║       she filmed at the cypress dock  ║
+			║       Graustark, before the empire    ║
+			║       was built around her.           ║
+			╚═══════════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 4, "tint": c_grey_dim,
@@ -301,14 +301,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return tapes_revealed >= 3,
 		"ascii":
 """
-			  ╔═══════════════════════════════════════╗
-			  ║  ▓ ANYA · TAPE 3 — SILENT             ║
-			  ║       date: 1993.06                   ║
-			  ║       audio damaged — visual intact   ║
-			  ║       her mouth moves                 ║
-			  ║       a transcript may not be possible║
-			  ║       (we have only her face.)        ║
-			  ╚═══════════════════════════════════════╝
+			╔═══════════════════════════════════════╗
+			║  ▓ ANYA · TAPE 3 — SILENT             ║
+			║       date: 1993.06                   ║
+			║       audio damaged — visual intact   ║
+			║       her mouth moves                 ║
+			║       a transcript may not be possible║
+			║       (we have only her face.)        ║
+			╚═══════════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 5, "tint": c_ink,
@@ -316,14 +316,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return tapes_revealed >= 4,
 		"ascii":
 """
-			  ╔═══════════════════════════════════════╗
-			  ║  ▓ ANYA · TAPE 4 — the last           ║
-			  ║       date: 1997.??                   ║
-			  ║       arrived by mail, no return.     ║
-			  ║       I have not played it.           ║
-			  ║       I do not know that I will.      ║
-			  ║       ─ Elicia ─                      ║
-			  ╚═══════════════════════════════════════╝
+			╔═══════════════════════════════════════╗
+			║  ▓ ANYA · TAPE 4 — the last           ║
+			║       date: 1997.??                   ║
+			║       arrived by mail, no return.     ║
+			║       I have not played it.           ║
+			║       I do not know that I will.      ║
+			║       ─ Elicia ─                      ║
+			╚═══════════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 6, "tint": c_grey,
@@ -331,12 +331,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("moon", 0) >= 1,
 		"ascii":
 """
-			  ╲                                     ╱
-			   ╲     ◐  ◑   the pillars frame    ╱
+			╲                                     ╱
+			╲     ◐  ◑   the pillars frame    ╱
 				╲    the space between them     ╱
-				 ╲   ─── B ─── J ───           ╱
-				  ╲  silver pillar · stone    ╱
-				   ╲ pillar · she's the gap ╱
+				╲   ─── B ─── J ───           ╱
+				╲  silver pillar · stone    ╱
+				╲ pillar · she's the gap ╱
 					───  between them.  ───
 """
 	})
@@ -348,10 +348,10 @@ func _build_thematic_widget() -> void:
 		"font_size": 12, "requires": null,
 		"ascii":
 """
-	   ════════════════ THE DESK ═════════════════════════════
-		 ░ a journal · a wine bottle · a stack of polaroids ░
-		 ░ a fountain pen · a closed lacquer box · a key ░░
-		 ░ the COMPASS badge embossed in the lower-right ░░
+	════════════════ THE DESK ═════════════════════════════
+		░ a journal · a wine bottle · a stack of polaroids ░
+		░ a fountain pen · a closed lacquer box · a key ░░
+		░ the COMPASS badge embossed in the lower-right ░░
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 1, "tint": c_pom,
@@ -359,13 +359,13 @@ func _build_thematic_widget() -> void:
 		"requires": null,
 		"ascii":
 """
-					   ▒▒▓▓▓▓▒▒
-					 ▒▓▓██████▓▓▒
+					▒▒▓▓▓▓▒▒
+					▒▓▓██████▓▓▒
 					▓██▓▓▓██▓▓▓▓██▓
 					██▓▓████████▓▓██   POMEGRANATE
 					▓██▓▓▓██▓▓▓▓██▓     sigil — closed
-					 ▒▓▓██████▓▓▒       leather journal
-					   ▒▒▓▓▓▓▒▒          beside the notes
+					▒▓▓██████▓▓▒       leather journal
+					▒▒▓▓▓▓▒▒          beside the notes
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 2, "tint": c_paper,
@@ -373,15 +373,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return journal_page >= 1,
 		"ascii":
 """
-			  ┌────────────────────────────────────────┐
-			  │  PERSONAL TAROT SYMBOLOGY NOTES        │
-			  │  ─── volume i ───                      │
-			  │                                        │
-			  │  0  THE FOOL — John. Counter-bound.    │
-			  │      The leap he won't take.           │
-			  │                                        │
-			  │  the others are below the fold.        │
-			  └────────────────────────────────────────┘
+			┌────────────────────────────────────────┐
+			│  PERSONAL TAROT SYMBOLOGY NOTES        │
+			│  ─── volume i ───                      │
+			│                                        │
+			│  0  THE FOOL — John. Counter-bound.    │
+			│      The leap he won't take.           │
+			│                                        │
+			│  the others are below the fold.        │
+			└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 3, "tint": c_paper,
@@ -389,15 +389,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return journal_page >= 8,
 		"ascii":
 """
-			  ┌────────────────────────────────────────┐
-			  │  ─── continued ───                     │
-			  │  I-VIII annotated. her handwriting is  │
-			  │  small and ruthless.  she has crossed  │
-			  │  out 'STRENGTH' three times before     │
-			  │  settling on the dog's name: FAITH.    │
-			  │  the dog is the symbol. the symbol is  │
-			  │  the dog. a tautology she likes.       │
-			  └────────────────────────────────────────┘
+			┌────────────────────────────────────────┐
+			│  ─── continued ───                     │
+			│  I-VIII annotated. her handwriting is  │
+			│  small and ruthless.  she has crossed  │
+			│  out 'STRENGTH' three times before     │
+			│  settling on the dog's name: FAITH.    │
+			│  the dog is the symbol. the symbol is  │
+			│  the dog. a tautology she likes.       │
+			└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 4, "tint": c_ink,
@@ -405,16 +405,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return journal_page >= 22,
 		"ascii":
 """
-			  ┌─────────────────────────────────────────┐
-			  │  ─── final entries ───                  │
-			  │  XXI THE WORLD — the COMPASS badge in   │
-			  │       my lower-right corner.            │
-			  │       I drew it there.                  │
-			  │       The drawing drew itself.          │
-			  │                                         │
-			  │  she stops writing on the page after.   │
-			  │  the rest is blank or torn.             │
-			  └─────────────────────────────────────────┘
+			┌─────────────────────────────────────────┐
+			│  ─── final entries ───                  │
+			│  XXI THE WORLD — the COMPASS badge in   │
+			│       my lower-right corner.            │
+			│       I drew it there.                  │
+			│       The drawing drew itself.          │
+			│                                         │
+			│  she stops writing on the page after.   │
+			│  the rest is blank or torn.             │
+			└─────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 5, "tint": c_pom,
@@ -422,14 +422,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return wine_examined,
 		"ascii":
 """
-			  ╔═════════════════════════════════════╗
-			  ║   the wine bottle                   ║
-			  ║   ▒░  GAS STATION RED  ░▒           ║
-			  ║   ▒░  Acadian Vineyard '94   ░▒     ║
-			  ║   ▒░  uncorked. half-poured.  ░▒    ║
-			  ║   ▒░  she drinks it like coffee. ░▒ ║
-			  ║   ▒░  it is holy enough.    ░▒      ║
-			  ╚═════════════════════════════════════╝
+			╔═════════════════════════════════════╗
+			║   the wine bottle                   ║
+			║   ▒░  GAS STATION RED  ░▒           ║
+			║   ▒░  Acadian Vineyard '94   ░▒     ║
+			║   ▒░  uncorked. half-poured.  ░▒    ║
+			║   ▒░  she drinks it like coffee. ░▒ ║
+			║   ▒░  it is holy enough.    ░▒      ║
+			╚═════════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 6, "tint": c_grey,
@@ -437,13 +437,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return camera_shots >= 3,
 		"ascii":
 """
-			  ┌────────────────────────────────────┐
-			  │  POLAROIDS · three new ones        │
-			  │  [▦] the shelf · with tapes        │
-			  │  [▦] the window · cypress visible  │
-			  │  [▦] her own hand · on the journal │
-			  │  she archives herself archiving.   │
-			  └────────────────────────────────────┘
+			┌────────────────────────────────────┐
+			│  POLAROIDS · three new ones        │
+			│  [▦] the shelf · with tapes        │
+			│  [▦] the window · cypress visible  │
+			│  [▦] her own hand · on the journal │
+			│  she archives herself archiving.   │
+			└────────────────────────────────────┘
 """
 	})
 
@@ -454,14 +454,14 @@ func _build_thematic_widget() -> void:
 		"font_size": 11, "requires": null,
 		"ascii":
 """
-			  ┌─── window ────────────────┐
-			  │ ░░▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░    │
-			  │ ▒▓▓ cypress · cypress ▓▓▒ │
-			  │ ▒▓▓ swamp · spanish   ▓▓▒ │
-			  │ ▒▓▓ moss · ░ moss    ▓▓▒ │
-			  │ ▓▓▓▓ rotting boards  ▓▓▓▓ │
-			  │ ─── GRAUSTARK ──────────  │
-			  └─────────────────────────── ┘
+			┌─── window ────────────────┐
+			│ ░░▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░    │
+			│ ▒▓▓ cypress · cypress ▓▓▒ │
+			│ ▒▓▓ swamp · spanish   ▓▓▒ │
+			│ ▒▓▓ moss · ░ moss    ▓▓▒ │
+			│ ▓▓▓▓ rotting boards  ▓▓▓▓ │
+			│ ─── GRAUSTARK ──────────  │
+			└─────────────────────────── ┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 1, "tint": c_meta,
@@ -470,22 +470,22 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ╔════════════════════════════════════════╗
-		 ║   ░▒▓ NARRATIVE STRUCTURE COMPASS ▓▒░  ║
-		 ║          (HIGH PRIESTESS Node)         ║
-		 ╠════════════════════════════════════════╣
-		 ║      N · upcoming                      ║
-		 ║      ┐                                 ║
-		 ║   W ─┼─ E    you are here:             ║
-		 ║      ┘       II · PRIESTESS · ch.2     ║
-		 ║      S · past                          ║
-		 ║                                        ║
-		 ║   ░ neighboring nodes ░                ║
-		 ║      N: III EMPRESS (Nicola, ch.3)     ║
-		 ║      W: I  MAGICIAN (Frasier, ch.1)    ║
-		 ║      E: V  HIEROPHANT (Acadian, ch.5)  ║
-		 ║      S: 0  FOOL      (John, ch.0)      ║
-		 ╚════════════════════════════════════════╝
+		╔════════════════════════════════════════╗
+		║   ░▒▓ NARRATIVE STRUCTURE COMPASS ▓▒░  ║
+		║          (HIGH PRIESTESS Node)         ║
+		╠════════════════════════════════════════╣
+		║      N · upcoming                      ║
+		║      ┐                                 ║
+		║   W ─┼─ E    you are here:             ║
+		║      ┘       II · PRIESTESS · ch.2     ║
+		║      S · past                          ║
+		║                                        ║
+		║   ░ neighboring nodes ░                ║
+		║      N: III EMPRESS (Nicola, ch.3)     ║
+		║      W: I  MAGICIAN (Frasier, ch.1)    ║
+		║      E: V  HIEROPHANT (Acadian, ch.5)  ║
+		║      S: 0  FOOL      (John, ch.0)      ║
+		╚════════════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 2, "tint": c_ink,
@@ -494,13 +494,13 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── COMPASS metadata ────────────────────┐
-		 │  this badge is a fourth-wall element.  │
-		 │  Elicia drew it on her own card.       │
-		 │  the card knows it is a card.          │
-		 │  the player who reads this knows too.  │
-		 │  ─ the deck reads itself ─             │
-		 └────────────────────────────────────────┘
+		┌── COMPASS metadata ────────────────────┐
+		│  this badge is a fourth-wall element.  │
+		│  Elicia drew it on her own card.       │
+		│  the card knows it is a card.          │
+		│  the player who reads this knows too.  │
+		│  ─ the deck reads itself ─             │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 3, "tint": c_paper,
@@ -509,12 +509,12 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── EDITING TIMELINE ────────────────────┐
-		 │ ▓▓░▒░▒▓▓▓▓▒░▒░▒▓▓▒░▒░▒▓▓▒░▒░▒▓▓▓▒░░  │
-		 │ ░░░ waveform scrubbing                │
-		 │ ░░░ click MONITOR again to advance    │
-		 │ ░░░ each clip is real project audio    │
-		 └────────────────────────────────────────┘
+		┌── EDITING TIMELINE ────────────────────┐
+		│ ▓▓░▒░▒▓▓▓▓▒░▒░▒▓▓▒░▒░▒▓▓▒░▒░▒▓▓▓▒░░  │
+		│ ░░░ waveform scrubbing                │
+		│ ░░░ click MONITOR again to advance    │
+		│ ░░░ each clip is real project audio    │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 4, "tint": c_grey,
@@ -523,14 +523,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── CLIPS REVIEWED ──────────────────────┐
-		 │  she has scrubbed through at least     │
-		 │  four. the editing software is open    │
-		 │  to a session named:                   │
-		 │  ▓ vol5_ch2_archive.aup3               │
-		 │  ▓ last saved: 04:11                   │
-		 │  ▓ unsaved changes: yes.               │
-		 └────────────────────────────────────────┘
+		┌── CLIPS REVIEWED ──────────────────────┐
+		│  she has scrubbed through at least     │
+		│  four. the editing software is open    │
+		│  to a session named:                   │
+		│  ▓ vol5_ch2_archive.aup3               │
+		│  ▓ last saved: 04:11                   │
+		│  ▓ unsaved changes: yes.               │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 5, "tint": c_pom,
@@ -539,18 +539,18 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ╔══════════════════════════════════╗
-			  ║   ░ ANYA · forward seeding ░     ║
-			  ║                                  ║
-			  ║   she does not appear in prose   ║
-			  ║   yet. her name appears here.    ║
-			  ║                                  ║
-			  ║   the tapes are a promise.       ║
-			  ║   the tapes are a warning.       ║
-			  ║   the player who clicks them     ║
-			  ║   has been told. the player who  ║
-			  ║   meets her later will recognize.║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║   ░ ANYA · forward seeding ░     ║
+			║                                  ║
+			║   she does not appear in prose   ║
+			║   yet. her name appears here.    ║
+			║                                  ║
+			║   the tapes are a promise.       ║
+			║   the tapes are a warning.       ║
+			║   the player who clicks them     ║
+			║   has been told. the player who  ║
+			║   meets her later will recognize.║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 6, "tint": c_meta,
@@ -559,14 +559,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌─────────────────────────────────┐
-			  │  ░░ you have touched everything ░│
-			  │  ░░ on her desk except the      ░│
-			  │  ░░ lacquer box, which is       ░│
-			  │  ░░ outside the painted frame.  ░│
-			  │  ░░ the lacquer box is in vol6. ░│
-			  │  ░░ Elicia notes this.          ░│
-			  └─────────────────────────────────┘
+			┌─────────────────────────────────┐
+			│  ░░ you have touched everything ░│
+			│  ░░ on her desk except the      ░│
+			│  ░░ lacquer box, which is       ░│
+			│  ░░ outside the painted frame.  ░│
+			│  ░░ the lacquer box is in vol6. ░│
+			│  ░░ Elicia notes this.          ░│
+			└─────────────────────────────────┘
 """
 	})
 
@@ -577,16 +577,16 @@ func _build_thematic_widget() -> void:
 		"font_size": 11, "requires": null,
 		"ascii":
 """
-			  ┌──────────────────────────────┐
-			  │  ARCHIVE LOG                 │
-			  │  ─── est. 1989 ─── ongoing  │
-			  │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
-			  │ ▓ 1989 first cassette        │
-			  │ ▓ 1991 first interview saved │
-			  │ ▓ 1993 first silent tape     │
-			  │ ▓ 1995 archive moves house   │
-			  │ ▓ 1997 — now —               │
-			  └──────────────────────────────┘
+			┌──────────────────────────────┐
+			│  ARCHIVE LOG                 │
+			│  ─── est. 1989 ─── ongoing  │
+			│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+			│ ▓ 1989 first cassette        │
+			│ ▓ 1991 first interview saved │
+			│ ▓ 1993 first silent tape     │
+			│ ▓ 1995 archive moves house   │
+			│ ▓ 1997 — now —               │
+			└──────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 1, "tint": c_paper_dim,
@@ -594,15 +594,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return monitor_pulls >= 1,
 		"ascii":
 """
-			  ┌────────────────────────────────┐
-			  │  [CLIP_001] Frasier · 2.1s     │
-			  │  ─── transcript ───            │
-			  │  "wakey wakey, eggs and bakey. │
-			  │   reality subroutine glitching"│
-			  │  ─── flagged ───               │
-			  │  for cross-ref with magician   │
-			  │  card. matches his ambient.    │
-			  └────────────────────────────────┘
+			┌────────────────────────────────┐
+			│  [CLIP_001] Frasier · 2.1s     │
+			│  ─── transcript ───            │
+			│  "wakey wakey, eggs and bakey. │
+			│   reality subroutine glitching"│
+			│  ─── flagged ───               │
+			│  for cross-ref with magician   │
+			│  card. matches his ambient.    │
+			└────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 2, "tint": c_paper_dim,
@@ -610,16 +610,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return monitor_pulls >= 3,
 		"ascii":
 """
-			  ┌────────────────────────────────┐
-			  │  [CLIP_003] Anya · 14.2s       │
-			  │  ─── transcript ───            │
-			  │  (silence)                     │
-			  │  (breath)                      │
-			  │  (silence)                     │
-			  │  (breath)                      │
-			  │  (a name half-said, cut)       │
-			  │  ─── unfileable ───            │
-			  └────────────────────────────────┘
+			┌────────────────────────────────┐
+			│  [CLIP_003] Anya · 14.2s       │
+			│  ─── transcript ───            │
+			│  (silence)                     │
+			│  (breath)                      │
+			│  (silence)                     │
+			│  (breath)                      │
+			│  (a name half-said, cut)       │
+			│  ─── unfileable ───            │
+			└────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 3, "tint": c_grey_dim,
@@ -627,15 +627,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("transcript", 0) >= 1,
 		"ascii":
 """
-			  ╔═══════════════════════════════════╗
-			  ║  TRANSCRIPTION ETHIC              ║
-			  ║  ░ I write what was said.         ║
-			  ║  ░ I write what was not said.     ║
-			  ║  ░ I do not write what should     ║
-			  ║    have been said.                ║
-			  ║  ░ that is a different ethic.     ║
-			  ║  ░ that is not my ethic.          ║
-			  ╚═══════════════════════════════════╝
+			╔═══════════════════════════════════╗
+			║  TRANSCRIPTION ETHIC              ║
+			║  ░ I write what was said.         ║
+			║  ░ I write what was not said.     ║
+			║  ░ I do not write what should     ║
+			║    have been said.                ║
+			║  ░ that is a different ethic.     ║
+			║  ░ that is not my ethic.          ║
+			╚═══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 4, "tint": c_grey,
@@ -643,17 +643,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("ascendant", 0) >= 1,
 		"ascii":
 """
-			  ┌─────────────────────────────────┐
-			  │  ░ OCCULT SYMBOLOGY of the      │
-			  │    ASCENDANT — opened to p.247  │
-			  │                                 │
-			  │  "the ascendant is not a person │
-			  │   it is the axis where the      │
-			  │   horizon meets the sign rising │
-			  │   at the moment of asking."     │
-			  │                                 │
-			  │  she has underlined ASKING.     │
-			  └─────────────────────────────────┘
+			┌─────────────────────────────────┐
+			│  ░ OCCULT SYMBOLOGY of the      │
+			│    ASCENDANT — opened to p.247  │
+			│                                 │
+			│  "the ascendant is not a person │
+			│   it is the axis where the      │
+			│   horizon meets the sign rising │
+			│   at the moment of asking."     │
+			│                                 │
+			│  she has underlined ASKING.     │
+			└─────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 5, "tint": c_pom,
@@ -661,16 +661,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("veil", 0) >= 1,
 		"ascii":
 """
-			  ┌─────────────────────────────────┐
-			  │  ░ THE VEIL BEHIND HER ░        │
-			  │  is patterned with pomegranates │
-			  │  it hides:                      │
-			  │    ▓ a river                    │
-			  │    ▓ a door                     │
-			  │    ▓ a name                     │
-			  │  she has not lifted it.         │
-			  │  she does not need to.          │
-			  └─────────────────────────────────┘
+			┌─────────────────────────────────┐
+			│  ░ THE VEIL BEHIND HER ░        │
+			│  is patterned with pomegranates │
+			│  it hides:                      │
+			│    ▓ a river                    │
+			│    ▓ a door                     │
+			│    ▓ a name                     │
+			│  she has not lifted it.         │
+			│  she does not need to.          │
+			└─────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 6, "tint": c_meta,
@@ -678,14 +678,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return lantern_lit == false,
 		"ascii":
 """
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-			  ░░  the lantern is out.            ░░
-			  ░░  the page is darker.            ░░
-			  ░░  she works by the monitor's     ░░
-			  ░░  glow now. the waveform lights  ░░
-			  ░░  her face cold blue.            ░░
-			  ░░  (light it again to read on.)   ░░
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░  the lantern is out.            ░░
+			░░  the page is darker.            ░░
+			░░  she works by the monitor's     ░░
+			░░  glow now. the waveform lights  ░░
+			░░  her face cold blue.            ░░
+			░░  (light it again to read on.)   ░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 
@@ -756,7 +756,7 @@ func _do_camera() -> void:
 	var s: String = subjects[(camera_shots - 1) % subjects.size()]
 	status_label.text = "polaroid #%d : %s" % [camera_shots, s]
 	_log("[color=#f0eddc]· [▦] polaroid #%d — %s[/color]" %
-		 [camera_shots, s])
+		[camera_shots, s])
 	SaveSystem.mark_unlocked("vol5_priestess_camera")
 
 
@@ -944,7 +944,7 @@ func _cmd_anya() -> void:
 		_log("  [color=#e8e2cc]▓ %s[/color]" % ANYA_TAPES[i])
 	if tapes_revealed < ANYA_TAPES.size():
 		_log("[color=#7a7468]  (%d more on the shelf — keep clicking)[/color]"
-			 % (ANYA_TAPES.size() - tapes_revealed))
+			% (ANYA_TAPES.size() - tapes_revealed))
 
 
 func _cmd_memory() -> void:
@@ -953,7 +953,7 @@ func _cmd_memory() -> void:
 	for entry in memory:
 		if shown >= 20:
 			_log("[color=#7a7468]  ... (%d more)[/color]" %
-				 (memory.size() - shown))
+				(memory.size() - shown))
 			break
 		_log("  [color=#c0baa6]· %s[/color]" % entry)
 		shown += 1
@@ -962,18 +962,18 @@ func _cmd_memory() -> void:
 func _cmd_count() -> void:
 	_log("[color=#f0eddc]── tallies ────────────────[/color]")
 	_log("  Anya tapes:   [color=#ffffff]%d / %d[/color]" % [
-		 tapes_revealed, ANYA_TAPES.size()])
+		tapes_revealed, ANYA_TAPES.size()])
 	_log("  journal:      [color=#ffffff]%d / %d entries[/color]" % [
-		 journal_page, TAROT_NOTES.size()])
+		journal_page, TAROT_NOTES.size()])
 	_log("  clips scrubbed:[color=#ffffff] %d (current %d)[/color]" % [
-		 monitor_pulls, monitor_clip])
+		monitor_pulls, monitor_clip])
 	_log("  polaroids:    [color=#ffffff]%d[/color]" % camera_shots)
 	_log("  compass:      [color=#ffffff]%s[/color]" %
-		 ("touched" if compass_touched else "untouched"))
+		("touched" if compass_touched else "untouched"))
 	_log("  lantern:      [color=#ffffff]%s[/color]" %
-		 ("lit" if lantern_lit else "out"))
+		("lit" if lantern_lit else "out"))
 	_log("  wine:         [color=#ffffff]%s[/color]" %
-		 ("examined" if wine_examined else "sealed"))
+		("examined" if wine_examined else "sealed"))
 	_log("  hotspots:     [color=#ffffff]%d[/color]" % hotspots_seen.size())
 	_log("  commands run: [color=#ffffff]%d[/color]" % commands_run.size())
 
@@ -1031,7 +1031,7 @@ func _process(delta: float) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("get_bgm_magnitude"):
 		amp = clamp(float(am.call("get_bgm_magnitude", 80.0, 3200.0)) * 10.0,
-					 0.0, 1.0)
+					0.0, 1.0)
 	# Quieter pulse than Magician/Fool — she's contemplative
 	var base_amp = 0.06 + amp * 0.25
 	var idx := 0

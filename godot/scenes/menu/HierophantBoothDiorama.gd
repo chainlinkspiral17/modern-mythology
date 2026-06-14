@@ -82,7 +82,7 @@ const _CALLS := [
 
 const ASCII_VESTIBULE := """\
 
-					   ST. JUDE'S VESTIBULE  ·  06:35 SUNDAY
+					ST. JUDE'S VESTIBULE  ·  06:35 SUNDAY
 
    ╭─────────────────────────────────────────────────────────────────╮
    │                                                                 │
@@ -110,8 +110,8 @@ const ASCII_VESTIBULE := """\
    │                                                                 │
    ╰─────────────────────────────────────────────────────────────────╯
 
-					   daemon_observer.05 // st_judes.bbs // 3 calls
-							  integrity 0.94 (call 2 audio absent)
+					daemon_observer.05 // st_judes.bbs // 3 calls
+							integrity 0.94 (call 2 audio absent)
 """
 
 # Playback for the active call (the one the player picked up)

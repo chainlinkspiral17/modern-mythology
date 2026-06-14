@@ -260,7 +260,7 @@ func _build_overlay() -> void:
 		var bs := StyleBoxFlat.new()
 		bs.bg_color = C_HOTSPOT
 		bs.border_color = Color(C_HOTSPOT_RULE.r, C_HOTSPOT_RULE.g,
-								 C_HOTSPOT_RULE.b, 0.0)
+								C_HOTSPOT_RULE.b, 0.0)
 		bs.set_border_width_all(1)
 		btn.add_theme_stylebox_override("normal", bs)
 		var bsh := bs.duplicate() as StyleBoxFlat

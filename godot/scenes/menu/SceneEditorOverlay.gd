@@ -15,7 +15,7 @@ const C_DIM    := Color(0.45, 0.43, 0.36, 0.6)
 const C_SEL    := Color(0.78, 0.66, 0.29, 0.12)
 
 const NODE_TYPES := ["narrate", "say", "think", "choice", "show", "hide",
-					 "bg", "bgm", "sfx", "flag", "jump", "interlude", "cg", "end"]
+					"bg", "bgm", "sfx", "flag", "jump", "interlude", "cg", "end"]
 
 var _sel_vol:      int        = -1
 var _sel_scene_id: String     = ""

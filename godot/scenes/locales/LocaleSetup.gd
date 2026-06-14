@@ -106,28 +106,28 @@ func _ready() -> void:
 	# Text: "OLIVER TREE · 1993-2026" in cream serif on brass.
 	for panel in ot_plaque_panels:
 		_attach_text_label(panel,
-						   Vector3(0, 0, 0.08),
-						   Vector3(0, 0, 1),
-						   "OLIVER TREE\n1993 – 2026",
-						   0.008,
-						   Color(0.94, 0.88, 0.72, 1.0),
-						   Color(0.12, 0.08, 0.04, 1.0))
+						Vector3(0, 0, 0.08),
+						Vector3(0, 0, 1),
+						"OLIVER TREE\n1993 – 2026",
+						0.008,
+						Color(0.94, 0.88, 0.72, 1.0),
+						Color(0.12, 0.08, 0.04, 1.0))
 	# Park entry sign — south-facing, brown panel with cream face
 	for panel in ot_park_sign_panels:
 		_attach_text_label(panel,
-						   Vector3(0, 0, 0.08),
-						   Vector3(0, 0, 1),
-						   "The Oliver Tree\nMemorial Park",
-						   0.010,
-						   Color(0.32, 0.22, 0.16, 1.0),
-						   Color(0.86, 0.82, 0.70, 1.0))
+						Vector3(0, 0, 0.08),
+						Vector3(0, 0, 1),
+						"The Oliver Tree\nMemorial Park",
+						0.010,
+						Color(0.32, 0.22, 0.16, 1.0),
+						Color(0.86, 0.82, 0.70, 1.0))
 
 
 func _attach_text_label(panel: MeshInstance3D, world_face_offset: Vector3,
-						 face_normal: Vector3, text: String,
-						 pixel_size: float = 0.010,
-						 text_color: Color = Color(0.94, 0.88, 0.72, 1.0),
-						 outline_color: Color = Color(0.12, 0.08, 0.04, 1.0)) -> void:
+						face_normal: Vector3, text: String,
+						pixel_size: float = 0.010,
+						text_color: Color = Color(0.94, 0.88, 0.72, 1.0),
+						outline_color: Color = Color(0.12, 0.08, 0.04, 1.0)) -> void:
 	"""Generic text-attached-to-panel helper. Same orientation logic
 	as _attach_sign_label but with configurable text + colours.
 	Used by the OT plaque + park sign + any other Label3D panel

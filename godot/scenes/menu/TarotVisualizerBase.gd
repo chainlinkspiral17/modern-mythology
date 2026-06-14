@@ -33,11 +33,11 @@ signal closed
 
 var _card_path: String = ""
 var _composition_path: String = ""   # opt-in: substrate composition id
-									  # under resources/substrates/compositions/.
-									  # When set, supersedes _card_path.
+									# under resources/substrates/compositions/.
+									# When set, supersedes _card_path.
 var _substrate_animate: bool = false  # opt-in: glitch+scanline+blink FX
 var _substrate_severity: float = 0.15 # base glitch severity (0..1).
-									  # Subclasses can raise per §11 (Tower=hot).
+									# Subclasses can raise per §11 (Tower=hot).
 var _face_rect_norm: Rect2 = Rect2(0.30, 0.10, 0.40, 0.35)  # normalized face
 															# region for blink
 var _hooks_path: String = ""
@@ -305,7 +305,7 @@ func _build_card_surface() -> void:
 
 	if _composition_path != "":
 		var comp_full := "res://resources/substrates/compositions/" \
-						  + _composition_path + ".json"
+						+ _composition_path + ".json"
 		if FileAccess.file_exists(comp_full):
 			var f := FileAccess.open(comp_full, FileAccess.READ)
 			var data: Variant = JSON.parse_string(f.get_as_text())
@@ -609,7 +609,7 @@ func _materialize_segment(seg: Dictionary) -> void:
 
 	var card_pos: Vector2 = card_rect.position if card_rect != null \
 		else Vector2((CANVAS_SIZE - 700) * 0.5,
-					 (CANVAS_SIZE - CARD_PIXEL_H) * 0.5)
+					(CANVAS_SIZE - CARD_PIXEL_H) * 0.5)
 	var card_sz: Vector2 = card_rect.size if card_rect != null \
 		else Vector2(700, CARD_PIXEL_H)
 	var gutter := 60.0
@@ -652,7 +652,7 @@ func _materialize_segment(seg: Dictionary) -> void:
 ## Convenience: legacy single-call API for static, always-shown
 ## tableaux. Subclasses can use _register_segment for richer setup.
 func _add_tableau(dir: int, ascii_art: String, tint: Color,
-				  font_size: int = 13) -> void:
+				font_size: int = 13) -> void:
 	_register_segment({
 		"dir": dir, "row": 0,
 		"ascii": ascii_art, "tint": tint,
@@ -724,11 +724,11 @@ static func _load_image_with_fallback(res_path: String) -> Texture2D:
 		var img := Image.load_from_file(abs_path)
 		if img != null:
 			print("[Visualizer] ✓ loaded via raw Image.load_from_file (",
-				  img.get_size(), ")")
+				img.get_size(), ")")
 			return ImageTexture.create_from_image(img)
 		else:
 			push_warning("Visualizer: Image.load_from_file returned null for "
-						  + abs_path)
+						+ abs_path)
 	else:
 		push_warning("Visualizer: file does NOT exist on disk: " + abs_path)
 	return null
@@ -1043,7 +1043,7 @@ class _Minimap extends Control:
 		var bg := Color(0, 0, 0, 0.7)
 		draw_rect(Rect2(0, 0, s.x, s.y), bg, true)
 		draw_rect(Rect2(0, 0, s.x, s.y),
-				   Color(0.85, 0.66, 0.29, 0.7), false, 1)
+				Color(0.85, 0.66, 0.29, 0.7), false, 1)
 		# World rect
 		var w_scale: float = (s.x - 8) / 3200.0
 		# Card position (center of 3200x3200)
@@ -1052,15 +1052,15 @@ class _Minimap extends Control:
 		var card_w := 700 * w_scale
 		var card_h := 900 * w_scale
 		draw_rect(Rect2(cx - card_w * 0.5, cy - card_h * 0.5,
-						 card_w, card_h),
-				   Color(1.0, 0.85, 0.40, 0.8), false, 1)
+						card_w, card_h),
+				Color(1.0, 0.85, 0.40, 0.8), false, 1)
 		# Viewport rect
 		var vx = 4 + pan.x * w_scale
 		var vy = 4 + pan.y * w_scale
 		var vw = view.x * w_scale
 		var vh = view.y * w_scale
 		draw_rect(Rect2(vx, vy, vw, vh),
-				   Color(1.0, 0.95, 0.60, 0.9), false, 1)
+				Color(1.0, 0.95, 0.60, 0.9), false, 1)
 		# Cardinal labels
 		var font := ThemeDB.fallback_font
 		draw_string(font, Vector2(s.x*0.5 - 5, 12), "N",

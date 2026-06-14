@@ -241,10 +241,10 @@ func _build_thematic_widget() -> void:
 		"font_size": 13, "requires": null,
 		"ascii":
 """
-	   ╔═══════════════════════════════════════════════════════╗
-	   ║   V · THE HIEROPHANT · SWEATY SUNDAY SERMONETTES     ║
-	   ║       [SYSTEM STATUS: CHURCH · BRUNCH · PHONE · PARK] ║
-	   ╚═══════════════════════════════════════════════════════╝
+	╔═══════════════════════════════════════════════════════╗
+	║   V · THE HIEROPHANT · SWEATY SUNDAY SERMONETTES     ║
+	║       [SYSTEM STATUS: CHURCH · BRUNCH · PHONE · PARK] ║
+	╚═══════════════════════════════════════════════════════╝
 		─── inherited authority · running on Sunday at idle ───
 """
 	})
@@ -253,15 +253,15 @@ func _build_thematic_widget() -> void:
 		"requires": null,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │      TRADITION   |   CONFORMITY  │
-			  │       ▓▓▓▓▓▓▓    |    ▓▓▓▓▓▓▓     │
-			  │       ▓▓▓▓▓▓▓    |    ▓▓▓▓▓▓▓     │
-			  │       ▓▓▓▓▓▓▓    |    ▓▓▓▓▓▓▓     │
-			  │  ─── two pillars · one chair ───  │
-			  │  ─── the chair holds the man ───  │
-			  │  ─── the man holds the chair ───  │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│      TRADITION   |   CONFORMITY  │
+			│       ▓▓▓▓▓▓▓    |    ▓▓▓▓▓▓▓     │
+			│       ▓▓▓▓▓▓▓    |    ▓▓▓▓▓▓▓     │
+			│       ▓▓▓▓▓▓▓    |    ▓▓▓▓▓▓▓     │
+			│  ─── two pillars · one chair ───  │
+			│  ─── the chair holds the man ───  │
+			│  ─── the man holds the chair ───  │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 2, "tint": c_blue,
@@ -269,14 +269,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return sermon_count >= 1,
 		"ascii":
 """
-			  ╔══════════════════════════════════════╗
-			  ║   CHURCH_VIBE.EXE                    ║
-			  ║   ─ palette: bleached-bone whites ─  ║
-			  ║   ─ secondary: courtroom blues ─     ║
-			  ║   ─ font: ringed neat ─              ║
-			  ║   ─ runtime: Sundays from 6:42 AM ─  ║
-			  ║   ─ exit code: still pending ─       ║
-			  ╚══════════════════════════════════════╝
+			╔══════════════════════════════════════╗
+			║   CHURCH_VIBE.EXE                    ║
+			║   ─ palette: bleached-bone whites ─  ║
+			║   ─ secondary: courtroom blues ─     ║
+			║   ─ font: ringed neat ─              ║
+			║   ─ runtime: Sundays from 6:42 AM ─  ║
+			║   ─ exit code: still pending ─       ║
+			╚══════════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 3, "tint": c_demon,
@@ -284,15 +284,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("demon", 0) >= 1 or commands_run.get("persistent_demon", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  [PERSISTENT_DEMON_UI]           │
-			  │  one demon sits in the rafters.  │
-			  │  it tracks who confesses what.   │
-			  │  it is not banished here.        │
-			  │  the cathedral RUNS on demon.    │
-			  │  Frasier banished his two.       │
-			  │  Quentin keeps his.              │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  [PERSISTENT_DEMON_UI]           │
+			│  one demon sits in the rafters.  │
+			│  it tracks who confesses what.   │
+			│  it is not banished here.        │
+			│  the cathedral RUNS on demon.    │
+			│  Frasier banished his two.       │
+			│  Quentin keeps his.              │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 4, "tint": c_bone_hot,
@@ -300,12 +300,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return rosh_invocations >= 4,
 		"ascii":
 """
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 			░░ THE BINDING HOLDS · ROSH @ 4/7  ░░
 			░░ the sigil dimmed once but held.  ░░
 			░░ the four kneelers do not stand.  ░░
 			░░ they would. they don't.          ░░
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 5, "tint": c_bone,
@@ -313,16 +313,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return witness_idx >= 3,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║   VN_DESIGN_NOTES — FOUR        ║
-			  ║   VIGNETTE STRUCTURE             ║
-			  ║   ─ vignette 1: reception        ║
-			  ║   ─ vignette 2: sensory          ║
-			  ║   ─ vignette 3: persistent_demon ║
-			  ║   ─ vignette 4: corner booth     ║
-			  ║   ─ all four observed ─ COMPASS  ║
-			  ║     V-node marked complete       ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║   VN_DESIGN_NOTES — FOUR        ║
+			║   VIGNETTE STRUCTURE             ║
+			║   ─ vignette 1: reception        ║
+			║   ─ vignette 2: sensory          ║
+			║   ─ vignette 3: persistent_demon ║
+			║   ─ vignette 4: corner booth     ║
+			║   ─ all four observed ─ COMPASS  ║
+			║     V-node marked complete       ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 6, "tint": c_bone_hot,
@@ -330,15 +330,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return hotspots_seen.size() >= 6,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ KEYSTONE · HIEROPHANT ░       │
-			  │  AVDI ET TACE has been inherited │
-			  │  whole, untranslated, by every   │
-			  │  card in this deck except one.   │
-			  │  the exception is THE FOOL.      │
-			  │  the Fool refuses translation    │
-			  │  by refusing the language.       │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ KEYSTONE · HIEROPHANT ░       │
+			│  AVDI ET TACE has been inherited │
+			│  whole, untranslated, by every   │
+			│  card in this deck except one.   │
+			│  the exception is THE FOOL.      │
+			│  the Fool refuses translation    │
+			│  by refusing the language.       │
+			└──────────────────────────────────┘
 """
 	})
 
@@ -349,7 +349,7 @@ func _build_thematic_widget() -> void:
 		"font_size": 12, "requires": null,
 		"ascii":
 """
-	   ════════════ THE FLOOR · St. Jude's ════════════════════
+	════════════ THE FLOOR · St. Jude's ════════════════════
 			░ red runner ░ four kneelers ░ Rosh sigil at        ░
 			░ centre ░ the wood smells of last week's wax ░     ░
 			░ AVDI ET TACE woven into the carpet edges ░        ░
@@ -360,14 +360,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return acolyte_idx >= 1,
 		"ascii":
 """
-			  ┌────────────────────────────────┐
-			  │  NORTH kneeler · MAYA · 7      │
-			  │  ░ the dress still bites       │
-			  │  ░ she does not look up        │
-			  │  ░ she has not moved           │
-			  │  ░ this is her chapter 5       │
-			  │    from a different angle      │
-			  └────────────────────────────────┘
+			┌────────────────────────────────┐
+			│  NORTH kneeler · MAYA · 7      │
+			│  ░ the dress still bites       │
+			│  ░ she does not look up        │
+			│  ░ she has not moved           │
+			│  ░ this is her chapter 5       │
+			│    from a different angle      │
+			└────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 2, "tint": c_bone,
@@ -375,14 +375,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return acolyte_idx >= 2,
 		"ascii":
 """
-			  ┌────────────────────────────────┐
-			  │  EAST kneeler · ANTONIO · 43   │
-			  │  ░ he is here because Quentin  │
-			  │    said to be                  │
-			  │  ░ his hands are folded wrong  │
-			  │  ░ he is rehearsing the wreck  │
-			  │    that is coming in vol7      │
-			  └────────────────────────────────┘
+			┌────────────────────────────────┐
+			│  EAST kneeler · ANTONIO · 43   │
+			│  ░ he is here because Quentin  │
+			│    said to be                  │
+			│  ░ his hands are folded wrong  │
+			│  ░ he is rehearsing the wreck  │
+			│    that is coming in vol7      │
+			└────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 3, "tint": c_red,
@@ -390,15 +390,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return acolyte_idx >= 3,
 		"ascii":
 """
-			  ┌────────────────────────────────┐
-			  │  SOUTH kneeler · JIMMY · ?     │
-			  │  ░ age-uncertain · came late   │
-			  │  ░ he is sweating              │
-			  │  ░ his hands are not folded    │
-			  │  ░ the saboteur kneels too     │
-			  │  ░ but reserves the right to   │
-			  │    sabotage the kneeling       │
-			  └────────────────────────────────┘
+			┌────────────────────────────────┐
+			│  SOUTH kneeler · JIMMY · ?     │
+			│  ░ age-uncertain · came late   │
+			│  ░ he is sweating              │
+			│  ░ his hands are not folded    │
+			│  ░ the saboteur kneels too     │
+			│  ░ but reserves the right to   │
+			│    sabotage the kneeling       │
+			└────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 4, "tint": c_bone_dim,
@@ -406,16 +406,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return acolyte_idx >= 4,
 		"ascii":
 """
-			  ┌────────────────────────────────┐
-			  │  WEST kneeler · JOHN · timeless│
-			  │  ░ the cook · the wiper        │
-			  │  ░ the dog at his side         │
-			  │  ░ the only one who could      │
-			  │    have refused. who chose     │
-			  │    not to. who chose to wipe   │
-			  │    the counter on this side    │
-			  │    of the door instead.        │
-			  └────────────────────────────────┘
+			┌────────────────────────────────┐
+			│  WEST kneeler · JOHN · timeless│
+			│  ░ the cook · the wiper        │
+			│  ░ the dog at his side         │
+			│  ░ the only one who could      │
+			│    have refused. who chose     │
+			│    not to. who chose to wipe   │
+			│    the counter on this side    │
+			│    of the door instead.        │
+			└────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 5, "tint": c_bone_hot,
@@ -423,16 +423,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return rosh_invocations >= 7,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ ROSH FULLY INVOKED ░          ║
-			  ║                                  ║
-			  ║  the sigil dims. the binding     ║
-			  ║  holds. the four do not stand.   ║
-			  ║                                  ║
-			  ║  the binding was never sealed    ║
-			  ║  by the ritual. the binding was  ║
-			  ║  the showing-up.                 ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ ROSH FULLY INVOKED ░          ║
+			║                                  ║
+			║  the sigil dims. the binding     ║
+			║  holds. the four do not stand.   ║
+			║                                  ║
+			║  the binding was never sealed    ║
+			║  by the ritual. the binding was  ║
+			║  the showing-up.                 ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 6, "tint": c_red,
@@ -440,18 +440,18 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return booth_read,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  D'AMBROSIO'S corner booth       │
-			  │  ░ BLACK COFFEE NEAT             │
-			  │  ░ ordered before he arrives     │
-			  │  ░ the waitress writes 'Quentin' │
-			  │    without asking the name       │
-			  │  ░ the booth is reserved by      │
-			  │    long-standing fact            │
-			  └──────────────────────────────────┘
-			  ░ "Just remember who your friends ░
-			  ░ are, Antonio. In these          ░
-			  ░ uncertain times."               ░
+			┌──────────────────────────────────┐
+			│  D'AMBROSIO'S corner booth       │
+			│  ░ BLACK COFFEE NEAT             │
+			│  ░ ordered before he arrives     │
+			│  ░ the waitress writes 'Quentin' │
+			│    without asking the name       │
+			│  ░ the booth is reserved by      │
+			│    long-standing fact            │
+			└──────────────────────────────────┘
+			░ "Just remember who your friends ░
+			░ are, Antonio. In these          ░
+			░ uncertain times."               ░
 """
 	})
 
@@ -463,13 +463,13 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── [MULTI-WITNESS POV] · OFFICIAL ──────┐
-		 │  press number                          │
-		 │  sermon parsed                         │
-		 │  Theorpter · trees · boxed             │
-		 │  selling smelock                       │
-		 │  ─ archive accepts ─                   │
-		 └────────────────────────────────────────┘
+		┌── [MULTI-WITNESS POV] · OFFICIAL ──────┐
+		│  press number                          │
+		│  sermon parsed                         │
+		│  Theorpter · trees · boxed             │
+		│  selling smelock                       │
+		│  ─ archive accepts ─                   │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 1, "tint": c_blue,
@@ -478,13 +478,13 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── [MULTI-WITNESS POV] · SENSORY ───────┐
-		 │  Heavy suit in Texas heat.             │
-		 │  Black engraved sweat. Saliva-soaked   │
-		 │  collar. Eye lid most. The cologne is  │
-		 │  cologne and nothing else.             │
-		 │  ─ body receives ─                     │
-		 └────────────────────────────────────────┘
+		┌── [MULTI-WITNESS POV] · SENSORY ───────┐
+		│  Heavy suit in Texas heat.             │
+		│  Black engraved sweat. Saliva-soaked   │
+		│  collar. Eye lid most. The cologne is  │
+		│  cologne and nothing else.             │
+		│  ─ body receives ─                     │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 2, "tint": c_demon,
@@ -493,14 +493,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── [MULTI-WITNESS POV] · DEMON ─────────┐
-		 │  one demon in the rafters tracks       │
-		 │  every confession by name.             │
-		 │  the cathedral RUNS on the demon.      │
-		 │  Frasier banished both his demons.     │
-		 │  Quentin keeps his. it knows the cost. │
-		 │  ─ ledger accumulates ─                │
-		 └────────────────────────────────────────┘
+		┌── [MULTI-WITNESS POV] · DEMON ─────────┐
+		│  one demon in the rafters tracks       │
+		│  every confession by name.             │
+		│  the cathedral RUNS on the demon.      │
+		│  Frasier banished both his demons.     │
+		│  Quentin keeps his. it knows the cost. │
+		│  ─ ledger accumulates ─                │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 3, "tint": c_red,
@@ -509,14 +509,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── [MULTI-WITNESS POV] · BOOTH ─────────┐
-		 │  BLACK COFFEE NEAT — ordered ahead.    │
-		 │  "Just remember who your friends are." │
-		 │  the line is for ANTONIO.              │
-		 │  the line is also for the player.      │
-		 │  Antonio kneels. the line lands.       │
-		 │  ─ binding sealed ─                    │
-		 └────────────────────────────────────────┘
+		┌── [MULTI-WITNESS POV] · BOOTH ─────────┐
+		│  BLACK COFFEE NEAT — ordered ahead.    │
+		│  "Just remember who your friends are." │
+		│  the line is for ANTONIO.              │
+		│  the line is also for the player.      │
+		│  Antonio kneels. the line lands.       │
+		│  ─ binding sealed ─                    │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 4, "tint": c_bone_hot,
@@ -525,15 +525,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · EMPEROR ░        │
-			  │  the Acadian vineyard is Dante's │
-			  │  on paper. Quentin's uncle runs  │
-			  │  it. Quentin says the 9am wine.  │
-			  │  Dante signs the lease.          │
-			  │  Quentin pours the lease.        │
-			  │  the wine is the same wine.      │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · EMPEROR ░        │
+			│  the Acadian vineyard is Dante's │
+			│  on paper. Quentin's uncle runs  │
+			│  it. Quentin says the 9am wine.  │
+			│  Dante signs the lease.          │
+			│  Quentin pours the lease.        │
+			│  the wine is the same wine.      │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 5, "tint": c_red,
@@ -542,16 +542,16 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · CHARIOT ░        │
-			  │  Antonio is Chariot's POV.       │
-			  │  the wreck is ahead of him.      │
-			  │  Quentin made the phone call     │
-			  │  that left him here this morning │
-			  │  instead of behind that wheel.   │
-			  │  the binding bought time.        │
-			  │  the binding costs.              │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · CHARIOT ░        │
+			│  Antonio is Chariot's POV.       │
+			│  the wreck is ahead of him.      │
+			│  Quentin made the phone call     │
+			│  that left him here this morning │
+			│  instead of behind that wheel.   │
+			│  the binding bought time.        │
+			│  the binding costs.              │
+			└──────────────────────────────────┘
 """
 	})
 
@@ -562,16 +562,16 @@ func _build_thematic_widget() -> void:
 		"font_size": 11, "requires": null,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ST. JUDE's ACADIAN CHURCH       │
-			  │  ─── parish est. 1898 ───        │
-			  │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
-			  │  ▓ Father Paul (pastor)          │
-			  │  ▓ Father Quentin (deacon)       │
-			  │  ▓ Acadian Vineyard donates wine │
-			  │  ▓ carpet replaced 1976          │
-			  │  ▓ next replacement: never       │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ST. JUDE's ACADIAN CHURCH       │
+			│  ─── parish est. 1898 ───        │
+			│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+			│  ▓ Father Paul (pastor)          │
+			│  ▓ Father Quentin (deacon)       │
+			│  ▓ Acadian Vineyard donates wine │
+			│  ▓ carpet replaced 1976          │
+			│  ▓ next replacement: never       │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 1, "tint": c_pillar,
@@ -579,15 +579,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return tradition_touched,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ PILLAR · TRADITION ░           │
-			  │  what came before is the chair.  │
-			  │  the chair does not change.      │
-			  │  the man on the chair changes.   │
-			  │  the chair forgets him within    │
-			  │  a generation. the chair         │
-			  │  remains.                        │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ PILLAR · TRADITION ░           │
+			│  what came before is the chair.  │
+			│  the chair does not change.      │
+			│  the man on the chair changes.   │
+			│  the chair forgets him within    │
+			│  a generation. the chair         │
+			│  remains.                        │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 2, "tint": c_pillar,
@@ -595,15 +595,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return conformity_touched,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ PILLAR · CONFORMITY ░          │
-			  │  the same shape every Sunday.    │
-			  │  the kneelers shaped by the      │
-			  │  shape they kneel into.          │
-			  │  the door open from one side.    │
-			  │  the door not noticed by those   │
-			  │  shaped to face the throne.      │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ PILLAR · CONFORMITY ░          │
+			│  the same shape every Sunday.    │
+			│  the kneelers shaped by the      │
+			│  shape they kneel into.          │
+			│  the door open from one side.    │
+			│  the door not noticed by those   │
+			│  shaped to face the throne.      │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 3, "tint": c_blue,
@@ -611,16 +611,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("voltaire", 0) >= 1 or commands_run.get("candide", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ VOLTAIRE · banned shelf ░     │
-			  │  CANDIDE is on the parish's      │
-			  │  banned-book closet list.        │
-			  │  three doors from where Maya     │
-			  │  kneels. Quentin signed the      │
-			  │  list. Father Paul did not.      │
-			  │  the list disagrees with         │
-			  │  itself, quietly.                │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ VOLTAIRE · banned shelf ░     │
+			│  CANDIDE is on the parish's      │
+			│  banned-book closet list.        │
+			│  three doors from where Maya     │
+			│  kneels. Quentin signed the      │
+			│  list. Father Paul did not.      │
+			│  the list disagrees with         │
+			│  itself, quietly.                │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 4, "tint": c_bone_dim,
@@ -628,14 +628,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("priestess", 0) >= 1 or commands_run.get("elicia", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · PRIESTESS ░       │
-			  │  Elicia has a tape of this       │
-			  │  sermon. Quentin did not consent │
-			  │  to be recorded. she did not     │
-			  │  ask. her ethic permits this.    │
-			  │  she would tell you so.          │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · PRIESTESS ░       │
+			│  Elicia has a tape of this       │
+			│  sermon. Quentin did not consent │
+			│  to be recorded. she did not     │
+			│  ask. her ethic permits this.    │
+			│  she would tell you so.          │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 5, "tint": c_blue,
@@ -643,15 +643,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("frasier", 0) >= 1 or commands_run.get("magician", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · MAGICIAN ░        │
-			  │  Frasier's warehouse is a temple │
-			  │  with rust for stained glass.    │
-			  │  this temple has stained glass   │
-			  │  with rust for rust.             │
-			  │  one chose to build his temple.  │
-			  │  the other inherited his to run. │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · MAGICIAN ░        │
+			│  Frasier's warehouse is a temple │
+			│  with rust for stained glass.    │
+			│  this temple has stained glass   │
+			│  with rust for rust.             │
+			│  one chose to build his temple.  │
+			│  the other inherited his to run. │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 6, "tint": c_red,
@@ -659,18 +659,18 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return booth_read and witness_idx >= 3,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ THE FRIENDS REMARK ░          ║
-			  ║                                  ║
-			  ║  Antonio hears it inside the     ║
-			  ║  sermon. it reads as benediction.║
-			  ║                                  ║
-			  ║  the player hears it outside.    ║
-			  ║  it reads as threat.             ║
-			  ║                                  ║
-			  ║  both readings are correct.      ║
-			  ║  the line is doing both jobs.    ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ THE FRIENDS REMARK ░          ║
+			║                                  ║
+			║  Antonio hears it inside the     ║
+			║  sermon. it reads as benediction.║
+			║                                  ║
+			║  the player hears it outside.    ║
+			║  it reads as threat.             ║
+			║                                  ║
+			║  both readings are correct.      ║
+			║  the line is doing both jobs.    ║
+			╚══════════════════════════════════╝
 """
 	})
 
@@ -964,7 +964,7 @@ func _cmd_memory() -> void:
 	for entry in memory:
 		if shown >= 20:
 			_log("[color=#586878]  ... (%d more)[/color]" %
-				 (memory.size() - shown))
+				(memory.size() - shown))
 			break
 		_log("  [color=#c8c4b0]· %s[/color]" % entry)
 		shown += 1
@@ -974,12 +974,12 @@ func _cmd_count() -> void:
 	_log("[color=#fffeec]── tallies ────────────────[/color]")
 	_log("  sermon:      [color=#fffeec]%d[/color]" % sermon_count)
 	_log("  pillars:     [color=#c8c4b0]%s · %s[/color]" % [
-		 "T✓" if tradition_touched else "T─",
-		 "C✓" if conformity_touched else "C─"])
+		"T✓" if tradition_touched else "T─",
+		"C✓" if conformity_touched else "C─"])
 	_log("  rosh:        [color=#a8b8d8]%d / 7 invocations[/color]" % rosh_invocations)
 	_log("  acolytes:    [color=#e8d0c0]%d / 4 named[/color]" % acolyte_idx)
 	_log("  booth:       [color=#e85060]%s[/color]" %
-		 ("read" if booth_read else "unread"))
+		("read" if booth_read else "unread"))
 	_log("  witnesses:   [color=#a8b8d8]%d / 4 vignettes[/color]" % witness_idx)
 	_log("  hotspots:    [color=#fffeec]%d[/color]" % hotspots_seen.size())
 	_log("  commands run:[color=#fffeec] %d[/color]" % commands_run.size())
@@ -1038,7 +1038,7 @@ func _process(delta: float) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("get_bgm_magnitude"):
 		amp = clamp(float(am.call("get_bgm_magnitude", 80.0, 3200.0)) * 10.0,
-					 0.0, 1.0)
+					0.0, 1.0)
 	var base_amp = 0.07 + amp * 0.28
 	var idx := 0
 	for seg in _segments:

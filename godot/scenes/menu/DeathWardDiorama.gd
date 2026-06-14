@@ -70,7 +70,7 @@ const _BEDS := [
 
 const ASCII_LAYOUT := """\
 
-					   WARD C  ·  NIGHT SHIFT  ·  06:00 SIGN-OFF
+					WARD C  ·  NIGHT SHIFT  ·  06:00 SIGN-OFF
 
    ╭─────────────────────────────────────────────────────────────────╮
    │                                                                 │
@@ -97,8 +97,8 @@ const ASCII_LAYOUT := """\
    │                                                                 │
    ╰─────────────────────────────────────────────────────────────────╯
 
-					   e.s.  //  r.n.  //  bed 4-9 night shift
-								   off until tuesday
+					e.s.  //  r.n.  //  bed 4-9 night shift
+								off until tuesday
 """
 
 # Ambient state — fluorescent hum + IV pings + faint daemon tick

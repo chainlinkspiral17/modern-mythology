@@ -591,10 +591,10 @@ func _do_bg(n: Dictionary) -> void:
 	if _bg.texture != null:
 		var sz := _bg.texture.get_size()
 		print("[GameEngine] BG  %s  via %s  [%dx%d]" %
-			  [src, via, int(sz.x), int(sz.y)])
+			[src, via, int(sz.x), int(sz.y)])
 	else:
 		print("[GameEngine] BG  %s  via %s  ← scene references this but it doesn't exist" %
-			  [src, via])
+			[src, via])
 	# Randomize the pan phase per bg so different scenes don't all
 	# reveal the same edge first — feels less mechanical.
 	_bg_pan_phase = randf() * BG_PAN_PERIOD

@@ -339,9 +339,9 @@ func _build_thematic_widget() -> void:
 		"font_size": 13, "requires": null,
 		"ascii":
 """
-	   ╔═══════════════════════════════════════════════════╗
-	   ║   III (label says IV)  ░░  THE EMPRESS  ░░  DUAL ║
-	   ╚═══════════════════════════════════════════════════╝
+	╔═══════════════════════════════════════════════════╗
+	║   III (label says IV)  ░░  THE EMPRESS  ░░  DUAL ║
+	╚═══════════════════════════════════════════════════╝
 		─── nicola below / aria above ─── prison + grid ───
 """
 	})
@@ -350,13 +350,13 @@ func _build_thematic_widget() -> void:
 		"requires": null,
 		"ascii":
 """
-	   ┌─── ARIA · default diagnostic ────────────────────┐
-	   │  BIOMETRICS    : monitoring                      │
-	   │  ANXIETY       : nominal                         │
-	   │  EXIT_NODE     : SEARCHING                       │
-	   │  SYSTEM        : CONFINED                        │
-	   │  HANDSHAKE     : awaiting host ack               │
-	   └──────────────────────────────────────────────────┘
+	┌─── ARIA · default diagnostic ────────────────────┐
+	│  BIOMETRICS    : monitoring                      │
+	│  ANXIETY       : nominal                         │
+	│  EXIT_NODE     : SEARCHING                       │
+	│  SYSTEM        : CONFINED                        │
+	│  HANDSHAKE     : awaiting host ack               │
+	└──────────────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 2, "tint": c_em,
@@ -364,13 +364,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return hotspots_seen.has("pill"),
 		"ascii":
 """
-	   ┌─── ARIA · spike ─────────────────────────────────┐
-	   │  ANXIETY SPIKE: ALERT                            │
-	   │  source: Klonopin uptake event                   │
-	   │  delta:  +14.2% pulse · 22 bpm jump              │
-	   │  recommend: route 240ms downstream filter        │
-	   │  (she ignores the recommendation, as always)     │
-	   └──────────────────────────────────────────────────┘
+	┌─── ARIA · spike ─────────────────────────────────┐
+	│  ANXIETY SPIKE: ALERT                            │
+	│  source: Klonopin uptake event                   │
+	│  delta:  +14.2% pulse · 22 bpm jump              │
+	│  recommend: route 240ms downstream filter        │
+	│  (she ignores the recommendation, as always)     │
+	└──────────────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 3, "tint": c_em_hot,
@@ -378,16 +378,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("rovers", 0) >= 1 or commands_run.get("code", 0) >= 1,
 		"ascii":
 """
-	   ╔══════════════════════════════════════════════════╗
-	   ║  ░▒▓ CODE STREAM · ARIA channel ▓▒░              ║
-	   ║                                                  ║
-	   ║      code sown behind eyes                       ║
-	   ║      code_streams stream                         ║
-	   ║      get rovsrs code                             ║
-	   ║                                                  ║
-	   ║  anagram lock: 'get rovers' →                    ║
-	   ║  vol5_rovers_module unlocked.                    ║
-	   ╚══════════════════════════════════════════════════╝
+	╔══════════════════════════════════════════════════╗
+	║  ░▒▓ CODE STREAM · ARIA channel ▓▒░              ║
+	║                                                  ║
+	║      code sown behind eyes                       ║
+	║      code_streams stream                         ║
+	║      get rovsrs code                             ║
+	║                                                  ║
+	║  anagram lock: 'get rovers' →                    ║
+	║  vol5_rovers_module unlocked.                    ║
+	╚══════════════════════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 4, "tint": c_em,
@@ -395,12 +395,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return pov_toggles >= 1,
 		"ascii":
 """
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 			░░  POV: ARIA — the data is the truth.  ░░
 			░░  the body is a latency layer.        ░░
 			░░  Nicola is the host. Aria is the     ░░
 			░░  process. they share the same stack. ░░
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 5, "tint": c_em_hot,
@@ -408,15 +408,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("handshake", 0) >= 1,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ HANDSHAKE COMPLETE ░          ║
-			  ║  ARIA ⇄ NICOLA                   ║
-			  ║  vol5_aria_handshake = TRUE      ║
-			  ║  signal-frame stable; latency   ║
-			  ║  has dropped to 14ms.            ║
-			  ║  she can hear her think now.     ║
-			  ║  she always could.               ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ HANDSHAKE COMPLETE ░          ║
+			║  ARIA ⇄ NICOLA                   ║
+			║  vol5_aria_handshake = TRUE      ║
+			║  signal-frame stable; latency   ║
+			║  has dropped to 14ms.            ║
+			║  she can hear her think now.     ║
+			║  she always could.               ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 6, "tint": c_em,
@@ -424,13 +424,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return hotspots_seen.size() >= 6,
 		"ascii":
 """
-			  ┌─────────────────────────────────────┐
-			  │  ░ ARIA observes Frasier's CRT ░    │
-			  │  the heartrate trace on his screen  │
-			  │  is Nicola's. PID 248.              │
-			  │  he doesn't know whose. she does.   │
-			  │  she does not tell him.             │
-			  └─────────────────────────────────────┘
+			┌─────────────────────────────────────┐
+			│  ░ ARIA observes Frasier's CRT ░    │
+			│  the heartrate trace on his screen  │
+			│  is Nicola's. PID 248.              │
+			│  he doesn't know whose. she does.   │
+			│  she does not tell him.             │
+			└─────────────────────────────────────┘
 """
 	})
 
@@ -441,7 +441,7 @@ func _build_thematic_widget() -> void:
 		"font_size": 12, "requires": null,
 		"ascii":
 """
-	   ═════════ THE DESK · NICOLA's side ═══════════════════
+	═════════ THE DESK · NICOLA's side ═══════════════════
 		░ a glass of champagne · a journal · a bottle of   ░
 		░ Klonopin · a folded napkin · a single key ░░░░░░░
 		░ a fleur-de-lis embroidered on the tablecloth ░░░░
@@ -452,14 +452,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return book_page >= 1,
 		"ascii":
 """
-			  ┌──── from Nicola's journal ────┐
-			  │  my body is a prison.         │
-			  │  find the exit node.          │
-			  │  there has to be a way out    │
-			  │  of this system.              │
-			  │  ─── she has signed it ───    │
-			  │  ─── in Aria's hand ───       │
-			  └───────────────────────────────┘
+			┌──── from Nicola's journal ────┐
+			│  my body is a prison.         │
+			│  find the exit node.          │
+			│  there has to be a way out    │
+			│  of this system.              │
+			│  ─── she has signed it ───    │
+			│  ─── in Aria's hand ───       │
+			└───────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 2, "tint": c_burg,
@@ -467,15 +467,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return book_page >= 4,
 		"ascii":
 """
-			  ┌──── journal · entries 2-4 ────┐
-			  │  the champagne is cheap.      │
-			  │  it works anyway.             │
-			  │                               │
-			  │  Klonopin at 11 · 2 · when    │
-			  │                               │
-			  │  the ram-heads recognize me.  │
-			  │  how.                         │
-			  └───────────────────────────────┘
+			┌──── journal · entries 2-4 ────┐
+			│  the champagne is cheap.      │
+			│  it works anyway.             │
+			│                               │
+			│  Klonopin at 11 · 2 · when    │
+			│                               │
+			│  the ram-heads recognize me.  │
+			│  how.                         │
+			└───────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 3, "tint": c_burg_hot,
@@ -483,16 +483,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return book_page >= 7,
 		"ascii":
 """
-			  ┌──── journal · the inheritance ─┐
-			  │  Aria pings me every three     │
-			  │  minutes. she is patient.      │
-			  │                                │
-			  │  the throne is still warm.     │
-			  │  someone just stood up.        │
-			  │                                │
-			  │  I am the inheritor of a       │
-			  │  thing I did not earn.         │
-			  └───────────────────────────────┘
+			┌──── journal · the inheritance ─┐
+			│  Aria pings me every three     │
+			│  minutes. she is patient.      │
+			│                                │
+			│  the throne is still warm.     │
+			│  someone just stood up.        │
+			│                                │
+			│  I am the inheritor of a       │
+			│  thing I did not earn.         │
+			└───────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 4, "tint": c_river,
@@ -500,16 +500,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return book_page >= 9,
 		"ascii":
 """
-			  ┌──── the last page ─────────────┐
-			  │   the river. the river. the    │
-			  │   river.                       │
-			  │                                │
-			  │   ─── then nothing ───         │
-			  │                                │
-			  │   the page is wet. it has been │
-			  │   wept on. or it has been      │
-			  │   in the river. or both.       │
-			  └────────────────────────────────┘
+			┌──── the last page ─────────────┐
+			│   the river. the river. the    │
+			│   river.                       │
+			│                                │
+			│   ─── then nothing ───         │
+			│                                │
+			│   the page is wet. it has been │
+			│   wept on. or it has been      │
+			│   in the river. or both.       │
+			└────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 5, "tint": c_burg,
@@ -517,14 +517,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return champagne_sips >= 3,
 		"ascii":
 """
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-			  ░  THREE SIPS — the glass tilts  ░░░░
-			  ░  cheap house pour · gas station ░░░
-			  ░  the same red Elicia drinks     ░░░
-			  ░  ─ Acadian Vineyard '94 ─       ░░░
-			  ░  Nicola does not know Elicia    ░░░
-			  ░  drinks it.  the wine knows.    ░░░
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░  THREE SIPS — the glass tilts  ░░░░
+			░  cheap house pour · gas station ░░░
+			░  the same red Elicia drinks     ░░░
+			░  ─ Acadian Vineyard '94 ─       ░░░
+			░  Nicola does not know Elicia    ░░░
+			░  drinks it.  the wine knows.    ░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 6, "tint": c_burg_dim,
@@ -532,15 +532,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return pill_taken >= 1,
 		"ascii":
 """
-			  ┌────────────────────────────────┐
-			  │  RX · KLONOPIN 0.5mg           │
-			  │  Dr. M. Lessep · Graustark     │
-			  │  one tablet under the tongue   │
-			  │  as needed for ANXIETY         │
-			  │  refill: NO                    │
-			  │  pharmacy note: 'last fill.    │
-			  │  do not auto-refill.'          │
-			  └────────────────────────────────┘
+			┌────────────────────────────────┐
+			│  RX · KLONOPIN 0.5mg           │
+			│  Dr. M. Lessep · Graustark     │
+			│  one tablet under the tongue   │
+			│  as needed for ANXIETY         │
+			│  refill: NO                    │
+			│  pharmacy note: 'last fill.    │
+			│  do not auto-refill.'          │
+			└────────────────────────────────┘
 """
 	})
 
@@ -552,14 +552,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── ARIA · forward log ──────────────────┐
-		 │  T+0    III · empress · here           │
-		 │  T+1    IV  · emperor · the throne     │
-		 │  T+2    V   · hierophant · acadian     │
-		 │  ───                                   │
-		 │  ░ each ping forward returns           │
-		 │  ░ probability, not certainty          │
-		 └────────────────────────────────────────┘
+		┌── ARIA · forward log ──────────────────┐
+		│  T+0    III · empress · here           │
+		│  T+1    IV  · emperor · the throne     │
+		│  T+2    V   · hierophant · acadian     │
+		│  ───                                   │
+		│  ░ each ping forward returns           │
+		│  ░ probability, not certainty          │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 1, "tint": c_em,
@@ -568,14 +568,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── INHERITANCE · ARIES ─────────────────┐
-		 │  the ram-heads on the throne are the   │
-		 │  SAME glyphs that frame the EMPEROR's  │
-		 │  seat in card IV. Nicola sits on it    │
-		 │  next.                                 │
-		 │  the empire passes through her         │
-		 │  whether she signs for it or not.      │
-		 └────────────────────────────────────────┘
+		┌── INHERITANCE · ARIES ─────────────────┐
+		│  the ram-heads on the throne are the   │
+		│  SAME glyphs that frame the EMPEROR's  │
+		│  seat in card IV. Nicola sits on it    │
+		│  next.                                 │
+		│  the empire passes through her         │
+		│  whether she signs for it or not.      │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 2, "tint": c_em_hot,
@@ -584,15 +584,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ╔══════════════════════════════════╗
-			  ║   BOTH RAMS TOUCHED              ║
-			  ║   ─ inheritance acknowledged ─   ║
-			  ║                                  ║
-			  ║   ░ vol5_aries_inheritance ░     ║
-			  ║                                  ║
-			  ║   the throne creaks once.        ║
-			  ║   it knows whose weight is next. ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║   BOTH RAMS TOUCHED              ║
+			║   ─ inheritance acknowledged ─   ║
+			║                                  ║
+			║   ░ vol5_aries_inheritance ░     ║
+			║                                  ║
+			║   the throne creaks once.        ║
+			║   it knows whose weight is next. ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 3, "tint": c_gold,
@@ -601,16 +601,16 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ╔═══════════════════════════════════╗
-			  ║  ░░ KEYSTONE · EMPRESS  ░░        ║
-			  ║                                   ║
-			  ║  the prison-of-meat caption is    ║
-			  ║  the chapter's keystone line.     ║
-			  ║  reading it once unlocks the      ║
-			  ║  exit-node search in Aria's HUD.  ║
-			  ║                                   ║
-			  ║  ░ vol5_keystone_empress = TRUE ░ ║
-			  ╚═══════════════════════════════════╝
+			╔═══════════════════════════════════╗
+			║  ░░ KEYSTONE · EMPRESS  ░░        ║
+			║                                   ║
+			║  the prison-of-meat caption is    ║
+			║  the chapter's keystone line.     ║
+			║  reading it once unlocks the      ║
+			║  exit-node search in Aria's HUD.  ║
+			║                                   ║
+			║  ░ vol5_keystone_empress = TRUE ░ ║
+			╚═══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 4, "tint": c_em,
@@ -619,14 +619,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌─────────────────────────────────┐
-			  │  ░ cross-card · MAGICIAN ░       │
-			  │  the heartrate on Frasier's CRT │
-			  │  matches Nicola's resting pulse.│
-			  │  he does not know the source.   │
-			  │  Aria does. she has not told.   │
-			  │  ─ teal data, shared roof ─     │
-			  └─────────────────────────────────┘
+			┌─────────────────────────────────┐
+			│  ░ cross-card · MAGICIAN ░       │
+			│  the heartrate on Frasier's CRT │
+			│  matches Nicola's resting pulse.│
+			│  he does not know the source.   │
+			│  Aria does. she has not told.   │
+			│  ─ teal data, shared roof ─     │
+			└─────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 5, "tint": c_em_hot,
@@ -635,17 +635,17 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ╔══════════════════════════════════╗
-			  ║  ░ EXIT_NODE search returns:     ║
-			  ║                                  ║
-			  ║  ░ candidate 1: the river        ║
-			  ║  ░ candidate 2: the throne       ║
-			  ║  ░ candidate 3: Aria             ║
-			  ║  ░ candidate 4: nothing          ║
-			  ║                                  ║
-			  ║  all four return TRUE.           ║
-			  ║  the system was not the prison.  ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ EXIT_NODE search returns:     ║
+			║                                  ║
+			║  ░ candidate 1: the river        ║
+			║  ░ candidate 2: the throne       ║
+			║  ░ candidate 3: Aria             ║
+			║  ░ candidate 4: nothing          ║
+			║                                  ║
+			║  all four return TRUE.           ║
+			║  the system was not the prison.  ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 6, "tint": c_em,
@@ -654,14 +654,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌─────────────────────────────────┐
-			  │  ░ POV thrash detected ░        │
-			  │  you have flipped the centerline│
-			  │  four times in this session.    │
-			  │  Nicola feels it. Aria notes it.│
-			  │  neither minds. both prefer it. │
-			  │  ─ they share the same eye ─    │
-			  └─────────────────────────────────┘
+			┌─────────────────────────────────┐
+			│  ░ POV thrash detected ░        │
+			│  you have flipped the centerline│
+			│  four times in this session.    │
+			│  Nicola feels it. Aria notes it.│
+			│  neither minds. both prefer it. │
+			│  ─ they share the same eye ─    │
+			└─────────────────────────────────┘
 """
 	})
 
@@ -672,15 +672,15 @@ func _build_thematic_widget() -> void:
 		"font_size": 11, "requires": null,
 		"ascii":
 """
-			  ┌──────────────────────────────┐
-			  │  THE RIVER — GRAUSTARK       │
-			  │  she was born at its mouth   │
-			  │  she will end at its mouth   │
-			  │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
-			  │ ≈≈ ≈ ≈≈≈ ≈≈ ≈ ≈≈≈ ≈≈ ≈ ≈≈≈  │
-			  │ ≈ ≈≈ ≈ ≈≈ ≈≈≈ ≈ ≈≈ ≈ ≈≈ ≈   │
-			  │ ≈≈ ≈ ≈≈≈ ≈ ≈≈ ≈ ≈≈≈ ≈ ≈ ≈≈  │
-			  └──────────────────────────────┘
+			┌──────────────────────────────┐
+			│  THE RIVER — GRAUSTARK       │
+			│  she was born at its mouth   │
+			│  she will end at its mouth   │
+			│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+			│ ≈≈ ≈ ≈≈≈ ≈≈ ≈ ≈≈≈ ≈≈ ≈ ≈≈≈  │
+			│ ≈ ≈≈ ≈ ≈≈ ≈≈≈ ≈ ≈≈ ≈ ≈≈ ≈   │
+			│ ≈≈ ≈ ≈≈≈ ≈ ≈≈ ≈ ≈≈≈ ≈ ≈ ≈≈  │
+			└──────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 1, "tint": c_burg_dim,
@@ -688,13 +688,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("venus", 0) >= 1 or commands_run.get("♀", 0) >= 1,
 		"ascii":
 """
-			  ┌──── ♀ VENUS ─────────────────┐
-			  │  the sigil at her left hand. │
-			  │  it is small. it is steady.  │
-			  │  it is the only mark she     │
-			  │  drew herself.               │
-			  │  the rest were given to her. │
-			  └──────────────────────────────┘
+			┌──── ♀ VENUS ─────────────────┐
+			│  the sigil at her left hand. │
+			│  it is small. it is steady.  │
+			│  it is the only mark she     │
+			│  drew herself.               │
+			│  the rest were given to her. │
+			└──────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 2, "tint": c_burg_dim,
@@ -702,14 +702,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("lobster", 0) >= 1 or commands_run.get("moon", 0) >= 1,
 		"ascii":
 """
-			  ┌──── ░ LOBSTER · throne base ─┐
-			  │  carved into the throne foot │
-			  │  faces away from the chair.  │
-			  │  it is the MOON card's       │
-			  │  emissary. it crawls from    │
-			  │  water. it foreshadows.      │
-			  │  ─ vol5_moon_sigil_collected ─│
-			  └──────────────────────────────┘
+			┌──── ░ LOBSTER · throne base ─┐
+			│  carved into the throne foot │
+			│  faces away from the chair.  │
+			│  it is the MOON card's       │
+			│  emissary. it crawls from    │
+			│  water. it foreshadows.      │
+			│  ─ vol5_moon_sigil_collected ─│
+			└──────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 3, "tint": c_burg,
@@ -717,13 +717,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("fleur", 0) >= 1 or commands_run.get("new_orleans", 0) >= 1,
 		"ascii":
 """
-			  ┌──── fleur-de-lis ────────────┐
-			  │  embroidered into the cloth. │
-			  │  the city's first sigil.     │
-			  │  New Orleans · NOLA · the    │
-			  │  delta she'll arrive at      │
-			  │  in vol6.                    │
-			  └──────────────────────────────┘
+			┌──── fleur-de-lis ────────────┐
+			│  embroidered into the cloth. │
+			│  the city's first sigil.     │
+			│  New Orleans · NOLA · the    │
+			│  delta she'll arrive at      │
+			│  in vol6.                    │
+			└──────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 4, "tint": c_burg,
@@ -731,14 +731,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return pov_toggles >= 1,
 		"ascii":
 """
-			  ┌────────────────────────────────┐
-			  │  POV: NICOLA — the body knows. │
-			  │  it knows the room is too warm.│
-			  │  it knows the champagne is bad.│
-			  │  it knows the throne is wrong. │
-			  │  it knows the river is right.  │
-			  │  it knows because it knows.    │
-			  └────────────────────────────────┘
+			┌────────────────────────────────┐
+			│  POV: NICOLA — the body knows. │
+			│  it knows the room is too warm.│
+			│  it knows the champagne is bad.│
+			│  it knows the throne is wrong. │
+			│  it knows the river is right.  │
+			│  it knows because it knows.    │
+			└────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 5, "tint": c_burg_dim,
@@ -746,14 +746,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("priestess", 0) >= 1,
 		"ascii":
 """
-			  ┌─────────────────────────────────┐
-			  │  ░ cross-card · PRIESTESS ░     │
-			  │  Elicia has a tape of Nicola.   │
-			  │  Nicola does not know.          │
-			  │  the tape is labeled by date,   │
-			  │  not name. she would not        │
-			  │  recognize her own dated voice. │
-			  └─────────────────────────────────┘
+			┌─────────────────────────────────┐
+			│  ░ cross-card · PRIESTESS ░     │
+			│  Elicia has a tape of Nicola.   │
+			│  Nicola does not know.          │
+			│  the tape is labeled by date,   │
+			│  not name. she would not        │
+			│  recognize her own dated voice. │
+			└─────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 6, "tint": c_water,
@@ -761,12 +761,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return book_page >= 9 and caption_read,
 		"ascii":
 """
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-			  ▒  THE EXIT IS THE ENTRANCE.       ▒
-			  ▒  the river runs both ways.       ▒
-			  ▒  the prison is the door is the   ▒
-			  ▒  prison is the door is the river ▒
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			▒  THE EXIT IS THE ENTRANCE.       ▒
+			▒  the river runs both ways.       ▒
+			▒  the prison is the door is the   ▒
+			▒  prison is the door is the river ▒
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 
@@ -1073,7 +1073,7 @@ func _cmd_memory() -> void:
 	for entry in memory:
 		if shown >= 20:
 			_log("[color=#7a4040]  ... (%d more)[/color]" %
-				 (memory.size() - shown))
+				(memory.size() - shown))
 			break
 		_log("  [color=#c89868]· %s[/color]" % entry)
 		shown += 1
@@ -1082,17 +1082,17 @@ func _cmd_memory() -> void:
 func _cmd_count() -> void:
 	_log("[color=#ffb060]── tallies ────────────────[/color]")
 	_log("  journal:      [color=#e8a890]%d / %d[/color]" % [
-		 book_page, JOURNAL_ENTRIES.size()])
+		book_page, JOURNAL_ENTRIES.size()])
 	_log("  pills:        [color=#e8a890]%d[/color]" % pill_taken)
 	_log("  champagne:    [color=#e8a890]%d sips[/color]" % champagne_sips)
 	_log("  rams:         [color=#88e088]%s · %s[/color]" % [
-		 "L✓" if ram_l_touched else "L─",
-		 "R✓" if ram_r_touched else "R─"])
+		"L✓" if ram_l_touched else "L─",
+		"R✓" if ram_r_touched else "R─"])
 	_log("  caption:      [color=#ffb060]%s[/color]" %
-		 ("read" if caption_read else "unread"))
+		("read" if caption_read else "unread"))
 	_log("  POV:          [color=%s]%s[/color]" % [
-		 "#e8a890" if active_pov == POV.NICOLA else "#88e088",
-		 "NICOLA" if active_pov == POV.NICOLA else "ARIA"])
+		"#e8a890" if active_pov == POV.NICOLA else "#88e088",
+		"NICOLA" if active_pov == POV.NICOLA else "ARIA"])
 	_log("  POV toggles:  [color=#ffb060]%d[/color]" % pov_toggles)
 	_log("  hotspots:     [color=#ffb060]%d[/color]" % hotspots_seen.size())
 	_log("  commands run: [color=#ffb060]%d[/color]" % commands_run.size())
@@ -1176,7 +1176,7 @@ func _process(delta: float) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("get_bgm_magnitude"):
 		amp = clamp(float(am.call("get_bgm_magnitude", 80.0, 3200.0)) * 10.0,
-					 0.0, 1.0)
+					0.0, 1.0)
 	var base_amp = 0.08 + amp * 0.30
 	var idx := 0
 	for seg in _segments:
@@ -1230,13 +1230,13 @@ class _WaveformView extends Control:
 		var s := size
 		if s.x < 4 or s.y < 4: return
 		draw_line(Vector2(0, s.y * 0.5),
-				  Vector2(s.x, s.y * 0.5), dim, 1.0)
+				Vector2(s.x, s.y * 0.5), dim, 1.0)
 		var n := buf.size()
 		var px_per := s.x / float(n - 1)
 		var prev := Vector2(0, s.y * 0.5 - buf[0] * s.y * 0.45)
 		for i in range(1, n):
 			var p := Vector2(i * px_per,
-							  s.y * 0.5 - buf[i] * s.y * 0.45)
+							s.y * 0.5 - buf[i] * s.y * 0.45)
 			draw_line(prev, p, accent, 1.5)
 			prev = p
 
@@ -1255,7 +1255,7 @@ class _SpectrumView extends Control:
 		_t += d
 		for i in bands:
 			var target = (sin(_t * (1.0 + i * 0.13)) * 0.5 + 0.5) \
-						  * (0.4 + (_rng.randf() * 0.6))
+						* (0.4 + (_rng.randf() * 0.6))
 			target *= 1.0 - (i / float(bands)) * 0.3
 			if target > _levels[i]:
 				_levels[i] = target
@@ -1271,4 +1271,4 @@ class _SpectrumView extends Control:
 			var col = accent.lerp(dim, 1.0 - _levels[i])
 			draw_rect(Rect2(x + 1, s.y - h, bw - 2, h), col, true)
 			draw_rect(Rect2(x + 1, s.y - h - 2, bw - 2, 2),
-					  accent, true)
+					accent, true)

@@ -108,7 +108,7 @@ func _build_content() -> void:
 	_log_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_scroll.add_child(_log_vbox)
 	_emit_to_log("> type 'help' for available commands.\n",
-				  Color(0.85, 0.72, 0.50))
+				Color(0.85, 0.72, 0.50))
 
 	# Quick-command buttons
 	var buttons_row := HBoxContainer.new()

@@ -446,7 +446,7 @@ func _spawn_visualizer(script: Script) -> Control:
 const TAROT_GAUNTLET_SCENE := preload("res://scenes/games/TarotGauntletGame.tscn")
 
 func _add_play_button_overlay(parent_visualizer: Control,
-							  arcana: String, location: String, hand: String) -> void:
+							arcana: String, location: String, hand: String) -> void:
 	if parent_visualizer == null:
 		return
 	var btn := Button.new()

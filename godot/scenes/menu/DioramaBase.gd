@@ -184,7 +184,7 @@ func _ensure_reveal_panel() -> void:
 ## is normalised (x, y, w, h); `tooltip` shows on hover. The press
 ## callback receives no args.
 func make_hotspot(parent: Control, rect: Array, tooltip: String,
-				   on_press: Callable) -> Button:
+				on_press: Callable) -> Button:
 	var btn := Button.new()
 	btn.flat = true
 	btn.tooltip_text = tooltip

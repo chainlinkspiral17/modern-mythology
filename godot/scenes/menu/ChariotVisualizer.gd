@@ -240,11 +240,11 @@ func _build_thematic_widget() -> void:
 		"font_size": 13, "requires": null,
 		"ascii":
 """
-	   ╔═══════════════════════════════════════════════════════╗
-	   ║   VII · THE CHARIOT · EMBER & ASH RESTAURANT         ║
-	   ║   ─── TWO HORSES · ONE WRECK ───                     ║
-	   ║   POV: ANTONIO D'AMBROSIO                            ║
-	   ╚═══════════════════════════════════════════════════════╝
+	╔═══════════════════════════════════════════════════════╗
+	║   VII · THE CHARIOT · EMBER & ASH RESTAURANT         ║
+	║   ─── TWO HORSES · ONE WRECK ───                     ║
+	║   POV: ANTONIO D'AMBROSIO                            ║
+	╚═══════════════════════════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 1, "tint": c_diag,
@@ -252,14 +252,14 @@ func _build_thematic_widget() -> void:
 		"requires": null,
 		"ascii":
 """
-			  ┌─── ember.ash.rest.bbs ──────────┐
-			  │  online                         │
-			  │  uptime: 14:22:08               │
-			  │  active threads: 47             │
-			  │  ─ scaffolding crew on shift ─  │
-			  │  ─ foreman: dispatched ─        │
-			  │  ─ ETA: too late ─              │
-			  └─────────────────────────────────┘
+			┌─── ember.ash.rest.bbs ──────────┐
+			│  online                         │
+			│  uptime: 14:22:08               │
+			│  active threads: 47             │
+			│  ─ scaffolding crew on shift ─  │
+			│  ─ foreman: dispatched ─        │
+			│  ─ ETA: too late ─              │
+			└─────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 2, "tint": c_red,
@@ -267,18 +267,18 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return wreck_clicks >= 1,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║   ░ TWO HORSES, ONE WRECK ░      ║
-			  ║                                  ║
-			  ║   the chariot is supposed to     ║
-			  ║   show CONTROL of duality.       ║
-			  ║                                  ║
-			  ║   here, the duality is the team ║
-			  ║   that never agreed on the route.║
-			  ║                                  ║
-			  ║   half the team is the player.   ║
-			  ║   half the team is the system.   ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║   ░ TWO HORSES, ONE WRECK ░      ║
+			║                                  ║
+			║   the chariot is supposed to     ║
+			║   show CONTROL of duality.       ║
+			║                                  ║
+			║   here, the duality is the team ║
+			║   that never agreed on the route.║
+			║                                  ║
+			║   half the team is the player.   ║
+			║   half the team is the system.   ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 3, "tint": c_amber,
@@ -286,14 +286,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return drink_idx >= 3,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ THE CHARIOT'S FLAME ░         │
-			  │  the one he had last.            │
-			  │  mezcal, chili, lime, flame.     │
-			  │  the flaming garnish was         │
-			  │  decorative. or warning.         │
-			  │  ─ both readings on the menu ─   │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ THE CHARIOT'S FLAME ░         │
+			│  the one he had last.            │
+			│  mezcal, chili, lime, flame.     │
+			│  the flaming garnish was         │
+			│  decorative. or warning.         │
+			│  ─ both readings on the menu ─   │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 4, "tint": c_diag,
@@ -301,17 +301,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return status_idx >= 5,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ ALL STATUS LINES READ ░       ║
-			  ║                                  ║
-			  ║  the chapter's diagnostic surface║
-			  ║  is complete. you have read what ║
-			  ║  Antonio cannot, because Antonio ║
-			  ║  is the SYSOP that the panel     ║
-			  ║  marks D.O.A.                    ║
-			  ║                                  ║
-			  ║  the BBS continues without him.  ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ ALL STATUS LINES READ ░       ║
+			║                                  ║
+			║  the chapter's diagnostic surface║
+			║  is complete. you have read what ║
+			║  Antonio cannot, because Antonio ║
+			║  is the SYSOP that the panel     ║
+			║  marks D.O.A.                    ║
+			║                                  ║
+			║  the BBS continues without him.  ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 5, "tint": c_rust_hot,
@@ -319,17 +319,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return hotspots_seen.size() >= 6,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ EVERY PANEL OBSERVED ░        │
-			  │  the wreck. the dog. the drinks. │
-			  │  the dishes. the layout. the     │
-			  │  status. the scaffold.           │
-			  │                                  │
-			  │  Antonio's chapter is a designer │
-			  │  mood-board because Antonio has  │
-			  │  stopped narrating. the          │
-			  │  designer takes over.            │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ EVERY PANEL OBSERVED ░        │
+			│  the wreck. the dog. the drinks. │
+			│  the dishes. the layout. the     │
+			│  status. the scaffold.           │
+			│                                  │
+			│  Antonio's chapter is a designer │
+			│  mood-board because Antonio has  │
+			│  stopped narrating. the          │
+			│  designer takes over.            │
+			└──────────────────────────────────┘
 """
 	})
 
@@ -340,7 +340,7 @@ func _build_thematic_widget() -> void:
 		"font_size": 12, "requires": null,
 		"ascii":
 """
-	   ══════════ KITCHEN · staff only ══════════════════════
+	══════════ KITCHEN · staff only ══════════════════════
 		░ slow-cook station ░ flat-top ░ char grill ░       ░
 		░ Jimmy is here ░ Jimmy has been here all afternoon ░
 		░ Jimmy's apron pocket has something heavy in it ░  ░
@@ -351,14 +351,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return order_idx >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ REDFISH PICCATA ░             │
-			  │  pan-seared · brown butter ·     │
-			  │  capers · lemon · parsley.       │
-			  │  the safest dish on the menu.    │
-			  │  Antonio ordered it.             │
-			  │  he did not finish it.           │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ REDFISH PICCATA ░             │
+			│  pan-seared · brown butter ·     │
+			│  capers · lemon · parsley.       │
+			│  the safest dish on the menu.    │
+			│  Antonio ordered it.             │
+			│  he did not finish it.           │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 2, "tint": c_red,
@@ -366,17 +366,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return order_idx >= 2,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ JIMMY'S SABOTAGE JAMBALAYA ░  ║
-			  ║                                  ║
-			  ║  saboteur's portion. slow-cooked.║
-			  ║  andouille · chicken · spice.    ║
-			  ║                                  ║
-			  ║  the dish is named for the cook. ║
-			  ║  the cook is named for the dish. ║
-			  ║  the cook is also a kneeler at   ║
-			  ║  St. Jude's. (Hierophant card.)  ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ JIMMY'S SABOTAGE JAMBALAYA ░  ║
+			║                                  ║
+			║  saboteur's portion. slow-cooked.║
+			║  andouille · chicken · spice.    ║
+			║                                  ║
+			║  the dish is named for the cook. ║
+			║  the cook is named for the dish. ║
+			║  the cook is also a kneeler at   ║
+			║  St. Jude's. (Hierophant card.)  ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 3, "tint": c_amber,
@@ -384,15 +384,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return order_idx >= 3,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ TIRAMISU 'SOUTHERN COMFORT' ░ │
-			  │  espresso · mascarpone ·         │
-			  │  ladyfingers · SoCo liqueur.     │
-			  │  the dolce. the mock comfort.    │
-			  │  ─ Acadian welcome that bites ─  │
-			  │  Antonio did not order this.     │
-			  │  the kitchen sent it anyway.     │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ TIRAMISU 'SOUTHERN COMFORT' ░ │
+			│  espresso · mascarpone ·         │
+			│  ladyfingers · SoCo liqueur.     │
+			│  the dolce. the mock comfort.    │
+			│  ─ Acadian welcome that bites ─  │
+			│  Antonio did not order this.     │
+			│  the kitchen sent it anyway.     │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 4, "tint": c_red,
@@ -400,17 +400,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return scaffold_taps >= 3,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ THE MISSING BOLT ░            ║
-			  ║                                  ║
-			  ║  Jimmy's apron pocket.           ║
-			  ║  Since 4:00 PM.                  ║
-			  ║  The second crossbar of          ║
-			  ║  scaffold ladder C.              ║
-			  ║                                  ║
-			  ║  Removed quietly. Not replaced.  ║
-			  ║  ─ the saboteur sabotages ─      ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ THE MISSING BOLT ░            ║
+			║                                  ║
+			║  Jimmy's apron pocket.           ║
+			║  Since 4:00 PM.                  ║
+			║  The second crossbar of          ║
+			║  scaffold ladder C.              ║
+			║                                  ║
+			║  Removed quietly. Not replaced.  ║
+			║  ─ the saboteur sabotages ─      ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 5, "tint": c_smoke,
@@ -418,15 +418,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("jimmy", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  JIMMY · last name unconfirmed   │
-			  │  ─ Hierophant south kneeler ─    │
-			  │  ─ Ember & Ash line cook ─       │
-			  │  ─ scaffolding crew (off shift) ─│
-			  │  ─ saboteur ─                    │
-			  │  three jobs · one schedule       │
-			  │  one of them is a cover.         │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  JIMMY · last name unconfirmed   │
+			│  ─ Hierophant south kneeler ─    │
+			│  ─ Ember & Ash line cook ─       │
+			│  ─ scaffolding crew (off shift) ─│
+			│  ─ saboteur ─                    │
+			│  three jobs · one schedule       │
+			│  one of them is a cover.         │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 6, "tint": c_diag,
@@ -434,16 +434,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return wreck_clicks >= 4,
 		"ascii":
 """
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-			  ░ WRECK · RECONSTRUCTION COMPLETE   ░
-			  ░ ─ scaffold ladder C failed        ░
-			  ░ ─ Antonio was on the upper tier   ░
-			  ░ ─ the chariot is the falling      ░
-			  ░   tier itself, not the SUV in     ░
-			  ░   the diagram                     ░
-			  ░ ─ the SUV in the diagram is the   ░
-			  ░   metaphor the designer chose     ░
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░ WRECK · RECONSTRUCTION COMPLETE   ░
+			░ ─ scaffold ladder C failed        ░
+			░ ─ Antonio was on the upper tier   ░
+			░ ─ the chariot is the falling      ░
+			░   tier itself, not the SUV in     ░
+			░   the diagram                     ░
+			░ ─ the SUV in the diagram is the   ░
+			░   metaphor the designer chose     ░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 
@@ -455,14 +455,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── LIQUID GOLD DISPENSARY ──────────────┐
-		 │  three signature cocktails             │
-		 │  + Bayou craft brew rotation           │
-		 │  ─ poured by the_charioteer himself ─  │
-		 │  ─ until 22:18 ─                       │
-		 │  ─ after that: the second bartender ─  │
-		 │  ─ name on the schedule: 'pending' ─   │
-		 └────────────────────────────────────────┘
+		┌── LIQUID GOLD DISPENSARY ──────────────┐
+		│  three signature cocktails             │
+		│  + Bayou craft brew rotation           │
+		│  ─ poured by the_charioteer himself ─  │
+		│  ─ until 22:18 ─                       │
+		│  ─ after that: the second bartender ─  │
+		│  ─ name on the schedule: 'pending' ─   │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 1, "tint": c_amber,
@@ -471,14 +471,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── THE CREOLE NEGRONI ──────────────────┐
-		 │  Local NOLA gin.                       │
-		 │  Campari.                              │
-		 │  Sweet vermouth.                       │
-		 │  Orange bitters.                       │
-		 │  ─ 1:1:1 plus a dash ─                 │
-		 │  ─ Antonio's grandfather's order ─     │
-		 └────────────────────────────────────────┘
+		┌── THE CREOLE NEGRONI ──────────────────┐
+		│  Local NOLA gin.                       │
+		│  Campari.                              │
+		│  Sweet vermouth.                       │
+		│  Orange bitters.                       │
+		│  ─ 1:1:1 plus a dash ─                 │
+		│  ─ Antonio's grandfather's order ─     │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 2, "tint": c_white,
@@ -487,15 +487,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── VENETIAN SAZERAC ────────────────────┐
-		 │  Rye whiskey.                          │
-		 │  Peychaud's bitters.                   │
-		 │  Absinthe rinse.                       │
-		 │  Italian amaro twist.                  │
-		 │  ─ family-line cocktail ─              │
-		 │  ─ Dante's variant of the original ─   │
-		 │  ─ poured at the Emperor's table too ─ │
-		 └────────────────────────────────────────┘
+		┌── VENETIAN SAZERAC ────────────────────┐
+		│  Rye whiskey.                          │
+		│  Peychaud's bitters.                   │
+		│  Absinthe rinse.                       │
+		│  Italian amaro twist.                  │
+		│  ─ family-line cocktail ─              │
+		│  ─ Dante's variant of the original ─   │
+		│  ─ poured at the Emperor's table too ─ │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 3, "tint": c_diag,
@@ -504,13 +504,13 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── STATUS LINE 2 ───────────────────────┐
-		 │  sysop: the_charioteer (D.O.A.)        │
-		 │  ─ the BBS still routes mail to him ─  │
-		 │  ─ the BBS does not know he's gone ─   │
-		 │  ─ the BBS has 47 active threads ─     │
-		 │  ─ none of them addressed to a sysop ─ │
-		 └────────────────────────────────────────┘
+		┌── STATUS LINE 2 ───────────────────────┐
+		│  sysop: the_charioteer (D.O.A.)        │
+		│  ─ the BBS still routes mail to him ─  │
+		│  ─ the BBS does not know he's gone ─   │
+		│  ─ the BBS has 47 active threads ─     │
+		│  ─ none of them addressed to a sysop ─ │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 4, "tint": c_diag,
@@ -519,15 +519,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── STATUS LINE 3 ───────────────────────┐
-		 │  quentin call complete · 06:18         │
-		 │  ─ source: Hierophant booth ─          │
-		 │  ─ subject: 'don't drive tonight' ─    │
-		 │  ─ Antonio agreed ─                    │
-		 │  ─ Antonio came in to work the         │
-		 │    scaffolding shift instead ─         │
-		 │  ─ the binding bought him here ─       │
-		 └────────────────────────────────────────┘
+		┌── STATUS LINE 3 ───────────────────────┐
+		│  quentin call complete · 06:18         │
+		│  ─ source: Hierophant booth ─          │
+		│  ─ subject: 'don't drive tonight' ─    │
+		│  ─ Antonio agreed ─                    │
+		│  ─ Antonio came in to work the         │
+		│    scaffolding shift instead ─         │
+		│  ─ the binding bought him here ─       │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 5, "tint": c_red,
@@ -536,14 +536,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── STATUS LINE 5 ───────────────────────┐
-		 │  scaffolding check in progress         │
-		 │  ─ foreman ETA: too late ─             │
-		 │  ─ ladder C, crossbar 2: bolt missing ─│
-		 │  ─ recorded by night-camera at 21:54 ─ │
-		 │  ─ camera footage timestamped wrong ─  │
-		 │  ─ correction pending ─                │
-		 └────────────────────────────────────────┘
+		┌── STATUS LINE 5 ───────────────────────┐
+		│  scaffolding check in progress         │
+		│  ─ foreman ETA: too late ─             │
+		│  ─ ladder C, crossbar 2: bolt missing ─│
+		│  ─ recorded by night-camera at 21:54 ─ │
+		│  ─ camera footage timestamped wrong ─  │
+		│  ─ correction pending ─                │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 6, "tint": c_rust_hot,
@@ -552,17 +552,17 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · HIEROPHANT ░     │
-			  │  the call at 06:18 was Quentin's.│
-			  │  "Just remember who your friends │
-			  │   are, Antonio." was last week.  │
-			  │  tonight: "don't drive."         │
-			  │  Antonio didn't drive.           │
-			  │  Antonio took the scaffolding    │
-			  │  shift instead.                  │
-			  │  the friends remark did its job. │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · HIEROPHANT ░     │
+			│  the call at 06:18 was Quentin's.│
+			│  "Just remember who your friends │
+			│   are, Antonio." was last week.  │
+			│  tonight: "don't drive."         │
+			│  Antonio didn't drive.           │
+			│  Antonio took the scaffolding    │
+			│  shift instead.                  │
+			│  the friends remark did its job. │
+			└──────────────────────────────────┘
 """
 	})
 
@@ -573,16 +573,16 @@ func _build_thematic_widget() -> void:
 		"font_size": 11, "requires": null,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  EMBER & ASH RESTAURANT          │
-			  │  ─── former: brick warehouse ─── │
-			  │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
-			  │  ▓ converted 2019                │
-			  │  ▓ scaffolding kept exposed      │
-			  │  ▓ industrial-finish aesthetic   │
-			  │  ▓ Owner: Antonio D'Ambrosio     │
-			  │  ▓ Silent partner: Dante         │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  EMBER & ASH RESTAURANT          │
+			│  ─── former: brick warehouse ─── │
+			│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+			│  ▓ converted 2019                │
+			│  ▓ scaffolding kept exposed      │
+			│  ▓ industrial-finish aesthetic   │
+			│  ▓ Owner: Antonio D'Ambrosio     │
+			│  ▓ Silent partner: Dante         │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 1, "tint": c_rust_dim,
@@ -590,15 +590,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return scaffold_taps >= 1,
 		"ascii":
 """
-			  ┌──── SCAFFOLD STAGE 1 ────────────┐
-			  │  the ladder is fine.             │
-			  │  it has always been fine.        │
-			  │  the inspectors say so.          │
-			  │  the inspectors said so          │
-			  │  last quarter and the quarter    │
-			  │  before. consistency is a kind   │
-			  │  of truth.                       │
-			  └──────────────────────────────────┘
+			┌──── SCAFFOLD STAGE 1 ────────────┐
+			│  the ladder is fine.             │
+			│  it has always been fine.        │
+			│  the inspectors say so.          │
+			│  the inspectors said so          │
+			│  last quarter and the quarter    │
+			│  before. consistency is a kind   │
+			│  of truth.                       │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 2, "tint": c_rust,
@@ -606,15 +606,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return scaffold_taps >= 2,
 		"ascii":
 """
-			  ┌──── SCAFFOLD STAGE 2 ────────────┐
-			  │  the second crossbar wobbles.    │
-			  │  it has always wobbled.          │
-			  │  the wobble is documented.       │
-			  │  the wobble is in the work       │
-			  │  order from March. the work      │
-			  │  order is closed without action  │
-			  │  by Antonio in May.              │
-			  └──────────────────────────────────┘
+			┌──── SCAFFOLD STAGE 2 ────────────┐
+			│  the second crossbar wobbles.    │
+			│  it has always wobbled.          │
+			│  the wobble is documented.       │
+			│  the wobble is in the work       │
+			│  order from March. the work      │
+			│  order is closed without action  │
+			│  by Antonio in May.              │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 3, "tint": c_red,
@@ -622,14 +622,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return scaffold_taps >= 3,
 		"ascii":
 """
-			  ┌──── SCAFFOLD STAGE 3 ────────────┐
-			  │  the BOLT at the second crossbar │
-			  │  is missing.                     │
-			  │  it was missing all night.       │
-			  │  it was missing all this week.   │
-			  │  Antonio walked under it twice   │
-			  │  on Tuesday.                     │
-			  └──────────────────────────────────┘
+			┌──── SCAFFOLD STAGE 3 ────────────┐
+			│  the BOLT at the second crossbar │
+			│  is missing.                     │
+			│  it was missing all night.       │
+			│  it was missing all this week.   │
+			│  Antonio walked under it twice   │
+			│  on Tuesday.                     │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 4, "tint": c_red,
@@ -637,16 +637,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("bricks", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ BRICKS! ░                     │
-			  │  the bottom-left annotation.     │
-			  │  designer mood-board call-out.   │
-			  │  the bricks are real.            │
-			  │  the bricks are also a callback  │
-			  │  to Frasier's warehouse — same   │
-			  │  industrial lineage, different   │
-			  │  conversion strategy.            │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ BRICKS! ░                     │
+			│  the bottom-left annotation.     │
+			│  designer mood-board call-out.   │
+			│  the bricks are real.            │
+			│  the bricks are also a callback  │
+			│  to Frasier's warehouse — same   │
+			│  industrial lineage, different   │
+			│  conversion strategy.            │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 5, "tint": c_diag,
@@ -654,17 +654,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("frasier", 0) >= 1 or commands_run.get("magician", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · MAGICIAN ░       │
-			  │  ember.ash.rest.bbs and          │
-			  │  rust_code.bbs are on the same   │
-			  │  long-distance trunk.            │
-			  │  Frasier could see the wreck     │
-			  │  on his CRT before the camera    │
-			  │  footage timestamped wrong.      │
-			  │  he did not look.                │
-			  │  he was busy soldering.          │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · MAGICIAN ░       │
+			│  ember.ash.rest.bbs and          │
+			│  rust_code.bbs are on the same   │
+			│  long-distance trunk.            │
+			│  Frasier could see the wreck     │
+			│  on his CRT before the camera    │
+			│  footage timestamped wrong.      │
+			│  he did not look.                │
+			│  he was busy soldering.          │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 6, "tint": c_smoke,
@@ -672,17 +672,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return dog_pets >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ the sphinx-laid dog ░         │
-			  │  not Antonio's.                  │
-			  │  she came in from the patio at   │
-			  │  19:30. nobody owns her.         │
-			  │  she sat down on the diagram     │
-			  │  exactly where the second sphinx │
-			  │  should have been.               │
-			  │  the card was always going to    │
-			  │  have her. nobody planned it.    │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ the sphinx-laid dog ░         │
+			│  not Antonio's.                  │
+			│  she came in from the patio at   │
+			│  19:30. nobody owns her.         │
+			│  she sat down on the diagram     │
+			│  exactly where the second sphinx │
+			│  should have been.               │
+			│  the card was always going to    │
+			│  have her. nobody planned it.    │
+			└──────────────────────────────────┘
 """
 	})
 
@@ -987,7 +987,7 @@ func _cmd_memory() -> void:
 	for entry in memory:
 		if shown >= 20:
 			_log("[color=#7a3030]  ... (%d more)[/color]" %
-				 (memory.size() - shown))
+				(memory.size() - shown))
 			break
 		_log("  [color=#c89060]· %s[/color]" % entry)
 		shown += 1
@@ -996,7 +996,7 @@ func _cmd_memory() -> void:
 func _cmd_count() -> void:
 	_log("[color=#ffd070]── tallies ────────────────[/color]")
 	_log("  wreck:     [color=#e85040]%s · %d clicks[/color]" % [
-		 "examined" if wreck_examined else "untouched", wreck_clicks])
+		"examined" if wreck_examined else "untouched", wreck_clicks])
 	_log("  dog pets:  [color=#c8c4b0]%d[/color]" % dog_pets)
 	_log("  drinks:    [color=#ffd070]%d / 4[/color]" % drink_idx)
 	_log("  orders:    [color=#c89060]%d / 3[/color]" % order_idx)
@@ -1060,7 +1060,7 @@ func _process(delta: float) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("get_bgm_magnitude"):
 		amp = clamp(float(am.call("get_bgm_magnitude", 80.0, 3200.0)) * 10.0,
-					 0.0, 1.0)
+					0.0, 1.0)
 	var base_amp = 0.08 + amp * 0.32
 	var idx := 0
 	for seg in _segments:

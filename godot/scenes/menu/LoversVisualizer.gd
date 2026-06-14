@@ -236,9 +236,9 @@ func _build_thematic_widget() -> void:
 		"font_size": 13, "requires": null,
 		"ascii":
 """
-	   ╔═══════════════════════════════════════════════════╗
-	   ║   VI · THE LOVERS · the card stays face-down     ║
-	   ╚═══════════════════════════════════════════════════╝
+	╔═══════════════════════════════════════════════════╗
+	║   VI · THE LOVERS · the card stays face-down     ║
+	╚═══════════════════════════════════════════════════╝
 		─── the angel would bless · would, would, would ───
 """
 	})
@@ -247,15 +247,15 @@ func _build_thematic_widget() -> void:
 		"requires": null,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  WHAT WOULD BE THERE             │
-			  │  if this card were dealt face-up:│
-			  │ ░ an angel above ░               │
-			  │ ░ two figures below ░            │
-			  │ ░ apples, snakes, a garden ░     │
-			  │ ░ a choice ░ a binding ░         │
-			  │  ─── instead: an ornate back ─── │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  WHAT WOULD BE THERE             │
+			│  if this card were dealt face-up:│
+			│ ░ an angel above ░               │
+			│ ░ two figures below ░            │
+			│ ░ apples, snakes, a garden ░     │
+			│ ░ a choice ░ a binding ░         │
+			│  ─── instead: an ornate back ─── │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 2, "tint": c_purple,
@@ -263,13 +263,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return flip_attempts >= 1,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  THE FIRST ATTEMPT               ║
-			  ║  the corner of the card lifts.   ║
-			  ║  not enough to see what's under. ║
-			  ║  the corner falls back.          ║
-			  ║  the ornate pattern reasserts.   ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  THE FIRST ATTEMPT               ║
+			║  the corner of the card lifts.   ║
+			║  not enough to see what's under. ║
+			║  the corner falls back.          ║
+			║  the ornate pattern reasserts.   ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 3, "tint": c_gold,
@@ -277,17 +277,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return bond_locked,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ THE CARD HAS BONDED ░         ║
-			  ║                                  ║
-			  ║  five attempts. the card is now  ║
-			  ║  part of the table. you will not ║
-			  ║  flip it. nobody will.           ║
-			  ║                                  ║
-			  ║  this is the keystone of the     ║
-			  ║  chapter. the refusal is the     ║
-			  ║  reading.                        ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ THE CARD HAS BONDED ░         ║
+			║                                  ║
+			║  five attempts. the card is now  ║
+			║  part of the table. you will not ║
+			║  flip it. nobody will.           ║
+			║                                  ║
+			║  this is the keystone of the     ║
+			║  chapter. the refusal is the     ║
+			║  reading.                        ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 4, "tint": c_purple,
@@ -295,19 +295,19 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("uncast", 0) >= 1 or commands_run.get("refuse", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ THE UNCAST REGISTER ░         │
-			  │  three majors stay face-down     │
-			  │  across the deck:                │
-			  │                                  │
-			  │  VI    THE LOVERS    — refused   │
-			  │  XI    JUSTICE        — refused  │
-			  │  XX    JUDGEMENT      — refused  │
-			  │                                  │
-			  │  the pattern: cards demanding    │
-			  │  RESOLUTION are the ones kept    │
-			  │  open.                           │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ THE UNCAST REGISTER ░         │
+			│  three majors stay face-down     │
+			│  across the deck:                │
+			│                                  │
+			│  VI    THE LOVERS    — refused   │
+			│  XI    JUSTICE        — refused  │
+			│  XX    JUDGEMENT      — refused  │
+			│                                  │
+			│  the pattern: cards demanding    │
+			│  RESOLUTION are the ones kept    │
+			│  open.                           │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 5, "tint": c_gold_dim,
@@ -315,13 +315,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return waits >= 3,
 		"ascii":
 """
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-			  ░  three waits in.                  ░
-			  ░  the card has not moved.          ░
-			  ░  the river continues to run.      ░
-			  ░  the chapter is asking nothing    ░
-			  ░  of you. you are doing it well.   ░
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░  three waits in.                  ░
+			░  the card has not moved.          ░
+			░  the river continues to run.      ░
+			░  the chapter is asking nothing    ░
+			░  of you. you are doing it well.   ░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 6, "tint": c_gold,
@@ -329,18 +329,18 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return waits >= 7,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ SEVEN WAITS ░                 ║
-			  ║                                  ║
-			  ║  this is the truest reading the  ║
-			  ║  card offers. you have waited    ║
-			  ║  longer than the chapter.        ║
-			  ║                                  ║
-			  ║  it cannot make you the kind of  ║
-			  ║  reader the deck wanted; you     ║
-			  ║  have already become a different ║
-			  ║  kind.                           ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ SEVEN WAITS ░                 ║
+			║                                  ║
+			║  this is the truest reading the  ║
+			║  card offers. you have waited    ║
+			║  longer than the chapter.        ║
+			║                                  ║
+			║  it cannot make you the kind of  ║
+			║  reader the deck wanted; you     ║
+			║  have already become a different ║
+			║  kind.                           ║
+			╚══════════════════════════════════╝
 """
 	})
 
@@ -351,7 +351,7 @@ func _build_thematic_widget() -> void:
 		"font_size": 12, "requires": null,
 		"ascii":
 """
-	   ════════════ THE GRAUSTARK RIVER ════════════════════
+	════════════ THE GRAUSTARK RIVER ════════════════════
 		░ ≈≈≈ ≈≈ ≈ ≈≈≈ ≈≈ ≈ ≈≈≈ ≈≈ ≈ ≈≈≈ ≈≈ ≈ ≈≈≈ ≈≈ ≈ ░
 		░     between two banks. nobody on this card        ░
 		░     crosses. that crossing is what would flip it. ░
@@ -362,18 +362,18 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return graustark_seen,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ THE RIVER · KEYSTONE ░        ║
-			  ║                                  ║
-			  ║  every other card is on one bank ║
-			  ║  or the other. the Lovers stand  ║
-			  ║  on opposite sides.              ║
-			  ║                                  ║
-			  ║  the river is the geography of   ║
-			  ║  every refusal in the deck.      ║
-			  ║                                  ║
-			  ║  ░ vol5_graustark_keystone ░     ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ THE RIVER · KEYSTONE ░        ║
+			║                                  ║
+			║  every other card is on one bank ║
+			║  or the other. the Lovers stand  ║
+			║  on opposite sides.              ║
+			║                                  ║
+			║  the river is the geography of   ║
+			║  every refusal in the deck.      ║
+			║                                  ║
+			║  ░ vol5_graustark_keystone ░     ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 2, "tint": c_river_deep,
@@ -381,15 +381,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return pair_idx >= 1,
 		"ascii":
 """
-			  ┌─── pair · FRASIER & ARIA ────────┐
-			  │  the cathedral signal · the data │
-			  │  overlay · the magician hears    │
-			  │  the empress · neither says her  │
-			  │  name aloud · the warehouse roof │
-			  │  is on his bank · her cypress    │
-			  │  window is on hers · the trunk   │
-			  │  carries packets both directions │
-			  └──────────────────────────────────┘
+			┌─── pair · FRASIER & ARIA ────────┐
+			│  the cathedral signal · the data │
+			│  overlay · the magician hears    │
+			│  the empress · neither says her  │
+			│  name aloud · the warehouse roof │
+			│  is on his bank · her cypress    │
+			│  window is on hers · the trunk   │
+			│  carries packets both directions │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 3, "tint": c_river_deep,
@@ -397,15 +397,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return pair_idx >= 2,
 		"ascii":
 """
-			  ┌─── pair · QUENTIN & ANTONIO ─────┐
-			  │  the friends remark · the bought │
-			  │  time · the binding holds · they │
-			  │  are not lovers in any reading   │
-			  │  · they are lovers in EVERY      │
-			  │  reading the chapter declines to │
-			  │  render · the booth and the      │
-			  │  phone are the same room         │
-			  └──────────────────────────────────┘
+			┌─── pair · QUENTIN & ANTONIO ─────┐
+			│  the friends remark · the bought │
+			│  time · the binding holds · they │
+			│  are not lovers in any reading   │
+			│  · they are lovers in EVERY      │
+			│  reading the chapter declines to │
+			│  render · the booth and the      │
+			│  phone are the same room         │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 4, "tint": c_river_deep,
@@ -413,15 +413,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return pair_idx >= 4,
 		"ascii":
 """
-			  ┌─── pair · ANYA & ELICIA ─────────┐
-			  │  across the tape · across the    │
-			  │  year · one records · one was    │
-			  │  recorded · tape four arrived    │
-			  │  by mail · the player who clicks │
-			  │  it has been told something the  │
-			  │  characters won't say to each    │
-			  │  other                           │
-			  └──────────────────────────────────┘
+			┌─── pair · ANYA & ELICIA ─────────┐
+			│  across the tape · across the    │
+			│  year · one records · one was    │
+			│  recorded · tape four arrived    │
+			│  by mail · the player who clicks │
+			│  it has been told something the  │
+			│  characters won't say to each    │
+			│  other                           │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 5, "tint": c_river_deep,
@@ -429,17 +429,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return pair_idx >= 6,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ ALL SIX PAIRS NAMED ░         ║
-			  ║                                  ║
-			  ║  the lattice is complete. every  ║
-			  ║  pair the chapter declines to    ║
-			  ║  consummate is now in the log.   ║
-			  ║                                  ║
-			  ║  the card is still face-down.    ║
-			  ║                                  ║
-			  ║  that is the answer.             ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ ALL SIX PAIRS NAMED ░         ║
+			║                                  ║
+			║  the lattice is complete. every  ║
+			║  pair the chapter declines to    ║
+			║  consummate is now in the log.   ║
+			║                                  ║
+			║  the card is still face-down.    ║
+			║                                  ║
+			║  that is the answer.             ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 6, "tint": c_river_deep,
@@ -447,18 +447,18 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return mirror_gazed,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ THE MIRROR ░                  │
-			  │  two figures, both looking at    │
-			  │  the mirror between them.        │
-			  │  the mirror is the river.        │
-			  │  nobody crosses.                 │
-			  │                                  │
-			  │  the mirror at the Emperor's     │
-			  │  feet showed the SUCCESSOR.      │
-			  │  the mirror on this card shows   │
-			  │  the SEPARATION.                 │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ THE MIRROR ░                  │
+			│  two figures, both looking at    │
+			│  the mirror between them.        │
+			│  the mirror is the river.        │
+			│  nobody crosses.                 │
+			│                                  │
+			│  the mirror at the Emperor's     │
+			│  feet showed the SUCCESSOR.      │
+			│  the mirror on this card shows   │
+			│  the SEPARATION.                 │
+			└──────────────────────────────────┘
 """
 	})
 
@@ -470,17 +470,17 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌── THE RENDEZVOUS NEVER KEPT ───────────┐
-		 │  every implicit pair has a meeting     │
-		 │  point the chapter declines to render: │
-		 │                                        │
-		 │    Frasier × Aria   the BBS handshake  │
-		 │    Quentin × Antonio the booth          │
-		 │    John × Faith     the counter         │
-		 │    Anya × Elicia    the cassette        │
-		 │    Nicola × Dante   the throne          │
-		 │    Maya × Y         the kneel           │
-		 └────────────────────────────────────────┘
+		┌── THE RENDEZVOUS NEVER KEPT ───────────┐
+		│  every implicit pair has a meeting     │
+		│  point the chapter declines to render: │
+		│                                        │
+		│    Frasier × Aria   the BBS handshake  │
+		│    Quentin × Antonio the booth          │
+		│    John × Faith     the counter         │
+		│    Anya × Elicia    the cassette        │
+		│    Nicola × Dante   the throne          │
+		│    Maya × Y         the kneel           │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 1, "tint": c_purple,
@@ -489,13 +489,13 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────────────┐
-			  │  ░ LISTENING · 1 ░               │
-			  │  from the WAREHOUSE              │
-			  │  a soldering iron, a sigil       │
-			  │  being traced. the magician card │
-			  │  audible through the river.      │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ LISTENING · 1 ░               │
+			│  from the WAREHOUSE              │
+			│  a soldering iron, a sigil       │
+			│  being traced. the magician card │
+			│  audible through the river.      │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 2, "tint": c_purple,
@@ -504,14 +504,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────────────┐
-			  │  ░ LISTENING · 4 ░               │
-			  │  EMBER & ASH                     │
-			  │  the scaffold creaks. a bolt     │
-			  │  drops. Antonio is on this card  │
-			  │  by VII; he is not on THIS card  │
-			  │  at all. only audible from it.   │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ LISTENING · 4 ░               │
+			│  EMBER & ASH                     │
+			│  the scaffold creaks. a bolt     │
+			│  drops. Antonio is on this card  │
+			│  by VII; he is not on THIS card  │
+			│  at all. only audible from it.   │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 3, "tint": c_purple,
@@ -520,15 +520,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ╔══════════════════════════════════╗
-			  ║  ░ ALL SEVEN VOICES HEARD ░      ║
-			  ║                                  ║
-			  ║  each other card audible through ║
-			  ║  the river. the Lovers card is   ║
-			  ║  the chamber of the deck: every  ║
-			  ║  sound reverberates here, none   ║
-			  ║  originate here.                 ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ ALL SEVEN VOICES HEARD ░      ║
+			║                                  ║
+			║  each other card audible through ║
+			║  the river. the Lovers card is   ║
+			║  the chamber of the deck: every  ║
+			║  sound reverberates here, none   ║
+			║  originate here.                 ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 4, "tint": c_gold_dim,
@@ -537,15 +537,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────────────┐
-			  │  ░ THE ORIGINAL LOVERS ░         │
-			  │  Psyche & Eros · the lamp · the  │
-			  │  oil drop · the recognition · the│
-			  │  separation · the river of the   │
-			  │  underworld · the long wait      │
-			  │  · this card is THAT story       │
-			  │  · told without telling          │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ THE ORIGINAL LOVERS ░         │
+			│  Psyche & Eros · the lamp · the  │
+			│  oil drop · the recognition · the│
+			│  separation · the river of the   │
+			│  underworld · the long wait      │
+			│  · this card is THAT story       │
+			│  · told without telling          │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 5, "tint": c_gold,
@@ -554,16 +554,16 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ╔══════════════════════════════════╗
-			  ║  ░ THE RIGHT WAY TO READ THIS ░  ║
-			  ║                                  ║
-			  ║  you stopped trying to flip it.  ║
-			  ║  you waited five times after.    ║
-			  ║                                  ║
-			  ║  the card knows you are reading  ║
-			  ║  it correctly. it remains where  ║
-			  ║  it remains.                     ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ THE RIGHT WAY TO READ THIS ░  ║
+			║                                  ║
+			║  you stopped trying to flip it.  ║
+			║  you waited five times after.    ║
+			║                                  ║
+			║  the card knows you are reading  ║
+			║  it correctly. it remains where  ║
+			║  it remains.                     ║
+			╚══════════════════════════════════╝
 """
 	})
 
@@ -574,17 +574,17 @@ func _build_thematic_widget() -> void:
 		"font_size": 11, "requires": null,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  CARDS THAT REFUSE               │
-			  │  ─── across this deck ───        │
-			  │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
-			  │  ▓ VI  THE LOVERS   — face-down │
-			  │  ▓ XI  JUSTICE       — face-down│
-			  │  ▓ XX  JUDGEMENT     — face-down│
-			  │  ─── three of twenty-two ───    │
-			  │  ─── the chapter's quietest    ─│
-			  │      argument                    │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  CARDS THAT REFUSE               │
+			│  ─── across this deck ───        │
+			│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+			│  ▓ VI  THE LOVERS   — face-down │
+			│  ▓ XI  JUSTICE       — face-down│
+			│  ▓ XX  JUDGEMENT     — face-down│
+			│  ─── three of twenty-two ───    │
+			│  ─── the chapter's quietest    ─│
+			│      argument                    │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 1, "tint": c_gold_dim,
@@ -592,14 +592,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("priestess", 0) >= 1 or commands_run.get("elicia", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · PRIESTESS ░       │
-			  │  Elicia's tarot journal, entry   │
-			  │  VI: "THE LOVERS — uncast.       │
-			  │   The card stays face-down."     │
-			  │  she annotated this BEFORE the   │
-			  │  chapter even ran. she knew.     │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · PRIESTESS ░       │
+			│  Elicia's tarot journal, entry   │
+			│  VI: "THE LOVERS — uncast.       │
+			│   The card stays face-down."     │
+			│  she annotated this BEFORE the   │
+			│  chapter even ran. she knew.     │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 2, "tint": c_gold,
@@ -607,16 +607,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("emperor", 0) >= 1 or commands_run.get("dante", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · EMPEROR ░        │
-			  │  the mirror at his feet showed   │
-			  │  the successor — Nicola — and    │
-			  │  STOPPED there. INHERITANCE, not │
-			  │  romance.                        │
-			  │  that mirror's last frame is     │
-			  │  this card's first frame. it     │
-			  │  declines to continue.           │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · EMPEROR ░        │
+			│  the mirror at his feet showed   │
+			│  the successor — Nicola — and    │
+			│  STOPPED there. INHERITANCE, not │
+			│  romance.                        │
+			│  that mirror's last frame is     │
+			│  this card's first frame. it     │
+			│  declines to continue.           │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 3, "tint": c_purple_dim,
@@ -624,15 +624,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("anya", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ ANYA ░                        │
-			  │  tape 4 arrived by mail. Elicia  │
-			  │  has not played it. the most     │
-			  │  honest reading of THIS chapter  │
-			  │  is to leave it unplayed.        │
-			  │  every Lovers card is a tape    │
-			  │  not played.                     │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ ANYA ░                        │
+			│  tape 4 arrived by mail. Elicia  │
+			│  has not played it. the most     │
+			│  honest reading of THIS chapter  │
+			│  is to leave it unplayed.        │
+			│  every Lovers card is a tape    │
+			│  not played.                     │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 4, "tint": c_purple,
@@ -640,16 +640,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("succession", 0) >= 1 or commands_run.get("friends", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ FORMS OF NOT-LOVE ░           │
-			  │  succession  — the throne passes │
-			  │  friends     — Quentin's remark  │
-			  │  binding     — the Rosh ritual   │
-			  │  inheritance — the rams          │
-			  │  ─ all four are the card's      ─│
-			  │  ─ ghost-readings. none of them ─│
-			  │  ─ are the card.                ─│
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ FORMS OF NOT-LOVE ░           │
+			│  succession  — the throne passes │
+			│  friends     — Quentin's remark  │
+			│  binding     — the Rosh ritual   │
+			│  inheritance — the rams          │
+			│  ─ all four are the card's      ─│
+			│  ─ ghost-readings. none of them ─│
+			│  ─ are the card.                ─│
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 5, "tint": c_gold,
@@ -657,16 +657,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return graustark_seen and listens >= 1 and pair_idx >= 1 and mirror_gazed,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ THE CHAPTER'S ARGUMENT ░       ║
-			  ║                                  ║
-			  ║  not every card needs to flip.   ║
-			  ║  not every story needs the kiss. ║
-			  ║  not every river needs a bridge. ║
-			  ║                                  ║
-			  ║  some readings hold by withheld. ║
-			  ║  this is one.                    ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ THE CHAPTER'S ARGUMENT ░       ║
+			║                                  ║
+			║  not every card needs to flip.   ║
+			║  not every story needs the kiss. ║
+			║  not every river needs a bridge. ║
+			║                                  ║
+			║  some readings hold by withheld. ║
+			║  this is one.                    ║
+			╚══════════════════════════════════╝
 """
 	})
 
@@ -922,7 +922,7 @@ func _cmd_memory() -> void:
 	for entry in memory:
 		if shown >= 20:
 			_log("[color=#7068a0]  ... (%d more)[/color]" %
-				 (memory.size() - shown))
+				(memory.size() - shown))
 			break
 		_log("  [color=#c8b8d0]· %s[/color]" % entry)
 		shown += 1
@@ -931,14 +931,14 @@ func _cmd_memory() -> void:
 func _cmd_count() -> void:
 	_log("[color=#ffd896]── tallies ────────────────[/color]")
 	_log("  flip attempts: [color=#a878d0]%d / 5  %s[/color]" % [
-		 flip_attempts, "(bonded)" if bond_locked else ""])
+		flip_attempts, "(bonded)" if bond_locked else ""])
 	_log("  pairs named:   [color=#a878d0]%d / 6[/color]" % pair_idx)
 	_log("  waits:         [color=#d8c878]%d[/color]" % waits)
 	_log("  listens:       [color=#a878d0]%d / 7[/color]" % listens)
 	_log("  mirror:        [color=#88a8c8]%s[/color]" %
-		 ("gazed" if mirror_gazed else "untouched"))
+		("gazed" if mirror_gazed else "untouched"))
 	_log("  graustark:     [color=#88a8c8]%s[/color]" %
-		 ("seen" if graustark_seen else "unseen"))
+		("seen" if graustark_seen else "unseen"))
 	_log("  hotspots:      [color=#ffd896]%d[/color]" % hotspots_seen.size())
 	_log("  commands run:  [color=#ffd896]%d[/color]" % commands_run.size())
 
@@ -984,7 +984,7 @@ func _process(delta: float) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("get_bgm_magnitude"):
 		amp = clamp(float(am.call("get_bgm_magnitude", 80.0, 3200.0)) * 10.0,
-					 0.0, 1.0)
+					0.0, 1.0)
 	var base_amp = 0.06 + amp * 0.22
 	var idx := 0
 	for seg in _segments:

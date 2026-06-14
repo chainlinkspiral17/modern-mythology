@@ -196,7 +196,7 @@ func _build_vol5_wheel() -> void:
 		var name     = entry[2]
 		var art      = entry[3]
 		var btn := _make_node_button(scene_id, "%s\n%s" % [roman, name],
-									  art != "")
+									art != "")
 		# store metadata
 		_nodes_by_scene[scene_id] = {
 			"btn": btn,

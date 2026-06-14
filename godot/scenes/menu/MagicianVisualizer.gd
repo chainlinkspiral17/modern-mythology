@@ -214,9 +214,9 @@ func _build_thematic_widget() -> void:
 		"font_size": 13, "requires": null,
 		"ascii":
 """
-	   ╔═════════════════════════════════════════════════╗
-	   ║   I  ░░  THE MAGICIAN  ░░  CATHEDRAL OF RUST   ║
-	   ╚═════════════════════════════════════════════════╝
+	╔═════════════════════════════════════════════════╗
+	║   I  ░░  THE MAGICIAN  ░░  CATHEDRAL OF RUST   ║
+	╚═════════════════════════════════════════════════╝
 		─── as above ─── so below ─── as code ─── so flesh ───
 """
 	})
@@ -225,9 +225,9 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return solder_count >= 1,
 		"ascii":
 """
-	   01000110 01010010 01000001 01010011 01001001 01000101 01010010
-	   ░ green data leaks from the warehouse girders ░
-	   ░ if you tilt your head, the rust spells words ░
+	01000110 01010010 01000001 01010011 01001001 01000101 01010010
+	░ green data leaks from the warehouse girders ░
+	░ if you tilt your head, the rust spells words ░
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 2, "tint": c_cyan,
@@ -235,12 +235,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return solder_count >= 4,
 		"ascii":
 """
-			  ╲                              ╱
-			   ╲      ░▒▓ ∞ ▓▒░             ╱
+			╲                              ╱
+			╲      ░▒▓ ∞ ▓▒░             ╱
 				╲     the sigil traced     ╱
-				 ╲    four times — closing╱
-				  ╲    on itself.        ╱
-				   ╲                   ╱
+				╲    four times — closing╱
+				╲    on itself.        ╱
+				╲                   ╱
 					─── as a loop ───
 """
 	})
@@ -249,13 +249,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return sigil_closed,
 		"ascii":
 """
-		   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-		 ░▒▒▓▓████  THE SIGIL HAS CLOSED  ████▓▓▒▒░
-		   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-				  ┌───────────────────┐
-				  │   ▓▓▒▒░ ∞ ░▒▒▓▓   │
-				  │   AS ABOVE / BELOW│
-				  └───────────────────┘
+		░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+		░▒▒▓▓████  THE SIGIL HAS CLOSED  ████▓▓▒▒░
+		░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+				┌───────────────────┐
+				│   ▓▓▒▒░ ∞ ░▒▒▓▓   │
+				│   AS ABOVE / BELOW│
+				└───────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 4, "tint": c_emerald,
@@ -278,13 +278,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return hotspots_seen.size() >= 5,
 		"ascii":
 """
-		  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+		░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 		░▒▒▓▓ THE FOUR ELEMENTS ON FRASIER'S BENCH ▓▓▒▒░
-		  ▒ ⚒ WAND  : the soldering iron        ▒
-		  ▒ ⚔ SWORD : the wire cutters          ▒
-		  ▒ ◯ COIN  : the steel washer          ▒
-		  ▒ ☼ CUP   : the rusted coffee mug     ▒
-		  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+		▒ ⚒ WAND  : the soldering iron        ▒
+		▒ ⚔ SWORD : the wire cutters          ▒
+		▒ ◯ COIN  : the steel washer          ▒
+		▒ ☼ CUP   : the rusted coffee mug     ▒
+		░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 6, "tint": c_cyan_hot,
@@ -292,14 +292,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return solder_count >= 16,
 		"ascii":
 """
-			  ╔═══════════════════════════════╗
-			  ║  ░▒▓█ ASCENDING NODE █▓▒░    ║
-			  ║  the sigil has been traced   ║
-			  ║  sixteen times. the air      ║
-			  ║  smells like ozone. the dog  ║
-			  ║  at D'AMBROSIO'S sits up.    ║
-			  ║  Nicola pauses mid-stride.   ║
-			  ╚═══════════════════════════════╝
+			╔═══════════════════════════════╗
+			║  ░▒▓█ ASCENDING NODE █▓▒░    ║
+			║  the sigil has been traced   ║
+			║  sixteen times. the air      ║
+			║  smells like ozone. the dog  ║
+			║  at D'AMBROSIO'S sits up.    ║
+			║  Nicola pauses mid-stride.   ║
+			╚═══════════════════════════════╝
 """
 	})
 
@@ -310,7 +310,7 @@ func _build_thematic_widget() -> void:
 		"font_size": 12, "requires": null,
 		"ascii":
 """
-	   ═════════ THE MODEL CITY ═════════════════════════
+	═════════ THE MODEL CITY ═════════════════════════
 		▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓
 		░ wires soldered to the floor of the diner ░
 		░ tiny LEDs where the streetlights will be ░
@@ -321,13 +321,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return model_count >= 1,
 		"ascii":
 """
-			  ┌────────────────────────────────────┐
-			  │  ░ GRAUSTARK ░  predictive layout  │
-			  │  ▓  ▓  ▓  ▓     before construction │
-			  │  ▓ THE COUNTER ▓                   │
-			  │  ▓  ▓  ▓  ▓                        │
-			  └────────────────────────────────────┘
-				  built tonight · risen in years
+			┌────────────────────────────────────┐
+			│  ░ GRAUSTARK ░  predictive layout  │
+			│  ▓  ▓  ▓  ▓     before construction │
+			│  ▓ THE COUNTER ▓                   │
+			│  ▓  ▓  ▓  ▓                        │
+			└────────────────────────────────────┘
+				built tonight · risen in years
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 2, "tint": c_demon_dim,
@@ -335,14 +335,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return model_count >= 3,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░  a tiny RED STEAMBOAT  ░      ║
-			  ║  ░  pinned to the model's edge   ║
-			  ║  ░  this is the boat from        ║
-			  ║  ░  the EMPEROR card. Frasier    ║
-			  ║  ░  has not met Dante yet.       ║
-			  ║  ░  the model knew first.        ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░  a tiny RED STEAMBOAT  ░      ║
+			║  ░  pinned to the model's edge   ║
+			║  ░  this is the boat from        ║
+			║  ░  the EMPEROR card. Frasier    ║
+			║  ░  has not met Dante yet.       ║
+			║  ░  the model knew first.        ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 3, "tint": c_rust,
@@ -350,13 +350,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return model_count >= 6,
 		"ascii":
 """
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-			  ░  the streets of GRAUSTARK arranged ░
-			  ░  in the same pattern as            ░
-			  ░  Frasier's circuit boards.         ░
-			  ░  topology is destiny.              ░
-			  ░  conductance is fate.              ░
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░  the streets of GRAUSTARK arranged ░
+			░  in the same pattern as            ░
+			░  Frasier's circuit boards.         ░
+			░  topology is destiny.              ░
+			░  conductance is fate.              ░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 4, "tint": c_emerald,
@@ -364,14 +364,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("compile", 0) >= 1,
 		"ascii":
 """
-	   $ gcc -O2 -DREALITY cathedral.c -lvoid
-	   cathedral.c: In function 'manifest':
-	   cathedral.c:47:2: warning: dimension cast may collide with timeline
-		  47 |   commit_to_reality(model, year=1997);
-			 |   ^~~~~~~~~~~~~~~~~
-	   cathedral.c:91:7: note: 'commit_to_reality' is irreversible
-	   /tmp/ccmagic.o:(.text+0x66): undefined reference to 'mercy'
-	   collect2: error: ld returned 1 exit status
+	$ gcc -O2 -DREALITY cathedral.c -lvoid
+	cathedral.c: In function 'manifest':
+	cathedral.c:47:2: warning: dimension cast may collide with timeline
+		47 |   commit_to_reality(model, year=1997);
+			|   ^~~~~~~~~~~~~~~~~
+	cathedral.c:91:7: note: 'commit_to_reality' is irreversible
+	/tmp/ccmagic.o:(.text+0x66): undefined reference to 'mercy'
+	collect2: error: ld returned 1 exit status
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 5, "tint": c_demon,
@@ -379,15 +379,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("crash", 0) >= 1,
 		"ascii":
 """
-			  ▒░▒░▒░ REALITY SUBROUTINE GLITCH ░▒░▒░▒
-			  ░ frame 0114: the model city flickers ░
-			  ░ frame 0115: a girl walks past the   ░
-			  ░             warehouse who isn't     ░
-			  ░             born yet                ░
-			  ░ frame 0116: rollback failed         ░
-			  ░ frame 0117: rollback failed         ░
-			  ░ frame 0118: rollback accepted       ░
-			  ░ frame 0119: she was always there    ░
+			▒░▒░▒░ REALITY SUBROUTINE GLITCH ░▒░▒░▒
+			░ frame 0114: the model city flickers ░
+			░ frame 0115: a girl walks past the   ░
+			░             warehouse who isn't     ░
+			░             born yet                ░
+			░ frame 0116: rollback failed         ░
+			░ frame 0117: rollback failed         ░
+			░ frame 0118: rollback accepted       ░
+			░ frame 0119: she was always there    ░
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 6, "tint": c_rust,
@@ -395,14 +395,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return tag_stage >= 3,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  COUNTY ROAD ░░░░░░░░░░░░░░░░    ║
-			  ║  full label:                     ║
-			  ║  ▓ COUNTY ROAD 17               ║
-			  ║  ▓ to ROCK ISLAND ░ to NAUVOO   ║
-			  ║  ▓ to the warehouse Nicola      ║
-			  ║  ▓ will pass on foot in ch.3    ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  COUNTY ROAD ░░░░░░░░░░░░░░░░    ║
+			║  full label:                     ║
+			║  ▓ COUNTY ROAD 17               ║
+			║  ▓ to ROCK ISLAND ░ to NAUVOO   ║
+			║  ▓ to the warehouse Nicola      ║
+			║  ▓ will pass on foot in ch.3    ║
+			╚══════════════════════════════════╝
 """
 	})
 
@@ -413,14 +413,14 @@ func _build_thematic_widget() -> void:
 		"font_size": 11, "requires": null,
 		"ascii":
 """
-				  ░░
+				░░
 				░░▒▒░░
-			  ░▒▒▓▓▓▓▒▒░   →   →   →
+			░▒▒▓▓▓▓▒▒░   →   →   →
 			░▒▓██▓██▓▒░    THE EMPIRE
-		  ░▒▓████████▒░    HE HASN'T
+		░▒▓████████▒░    HE HASN'T
 		░▒▓████████████▒░  MET YET
-	   ▒▓██████████████▓▒
-	   ▒▒░░░░░░░░░░░░░░▒▒
+	▒▓██████████████▓▒
+	▒▒░░░░░░░░░░░░░░▒▒
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 1, "tint": c_emerald,
@@ -429,13 +429,13 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌─── CRT readout ───────────────────────┐
-		 │  ♥  72 bpm  ░ steady              ░  │
-		 │  ░  whose? not Frasier's.            │
-		 │  ░  not anyone in the warehouse.     │
-		 │  ░  remote bio-monitor.              │
-		 │  ░  someone in Vol 3. someone wet.   │
-		 └────────────────────────────────────────┘
+		┌─── CRT readout ───────────────────────┐
+		│  ♥  72 bpm  ░ steady              ░  │
+		│  ░  whose? not Frasier's.            │
+		│  ░  not anyone in the warehouse.     │
+		│  ░  remote bio-monitor.              │
+		│  ░  someone in Vol 3. someone wet.   │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 2, "tint": c_cyan,
@@ -444,15 +444,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌─── CRT readout · mode 2 ──────────────┐
-		 │  process list:                        │
-		 │  PID 1   reality.subroutine    R     │
-		 │  PID 47  cathedral.daemon      S     │
-		 │  PID 66  demon.left            Z     │
-		 │  PID 67  demon.right           Z     │
-		 │  PID 248 nicola.precognition   ?     │
-		 │  PID ??? frasier.self          ?     │
-		 └────────────────────────────────────────┘
+		┌─── CRT readout · mode 2 ──────────────┐
+		│  process list:                        │
+		│  PID 1   reality.subroutine    R     │
+		│  PID 47  cathedral.daemon      S     │
+		│  PID 66  demon.left            Z     │
+		│  PID 67  demon.right           Z     │
+		│  PID 248 nicola.precognition   ?     │
+		│  PID ??? frasier.self          ?     │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 3, "tint": c_cyan_hot,
@@ -461,15 +461,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌─── CRT readout · forecast ────────────┐
-		 │  T+0:00:00  ch.1  HERE                │
-		 │  T+0:14:22  ch.2  Anya / silence      │
-		 │  T+0:38:09  ch.3  Nicola arrives      │
-		 │  T+1:02:55  ch.4  Dante. throne.      │
-		 │  T+1:47:00  ch.5  the cathedral       │
-		 │              collapses or holds —     │
-		 │              uncertain.               │
-		 └────────────────────────────────────────┘
+		┌─── CRT readout · forecast ────────────┐
+		│  T+0:00:00  ch.1  HERE                │
+		│  T+0:14:22  ch.2  Anya / silence      │
+		│  T+0:38:09  ch.3  Nicola arrives      │
+		│  T+1:02:55  ch.4  Dante. throne.      │
+		│  T+1:47:00  ch.5  the cathedral       │
+		│              collapses or holds —     │
+		│              uncertain.               │
+		└────────────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 4, "tint": c_demon,
@@ -478,12 +478,12 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ░▒░ one demon banished. ░▒░
-				  the warehouse smells
-				  one part less of brimstone.
-				  the other watches.
-				  the other waits.
-				  ─── 1 / 2 ───
+			░▒░ one demon banished. ░▒░
+				the warehouse smells
+				one part less of brimstone.
+				the other watches.
+				the other waits.
+				─── 1 / 2 ───
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 5, "tint": c_emerald,
@@ -492,18 +492,18 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ╔══════════════════════════════════╗
-			  ║   ░ BOTH DEMONS BANISHED ░       ║
-			  ║                                  ║
-			  ║   the cathedral is clean.        ║
-			  ║   the air goes flat.             ║
-			  ║                                  ║
-			  ║   Frasier puts the iron down.    ║
-			  ║   he looks at the empty corner.  ║
-			  ║   he says: "huh."                ║
-			  ║                                  ║
-			  ║   ░ vol5_demon_summon_count=0 ░  ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║   ░ BOTH DEMONS BANISHED ░       ║
+			║                                  ║
+			║   the cathedral is clean.        ║
+			║   the air goes flat.             ║
+			║                                  ║
+			║   Frasier puts the iron down.    ║
+			║   he looks at the empty corner.  ║
+			║   he says: "huh."                ║
+			║                                  ║
+			║   ░ vol5_demon_summon_count=0 ░  ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 6, "tint": c_cyan_hot,
@@ -512,15 +512,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────────────┐
-			  │  the steamboat in the model:     │
-			  │  it's the same boat.             │
-			  │  Dante hasn't seen it yet.       │
-			  │  Dante will never know           │
-			  │  Frasier wired it first.         │
-			  │  the magician sees forward.      │
-			  │  the emperor catches up.         │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  the steamboat in the model:     │
+			│  it's the same boat.             │
+			│  Dante hasn't seen it yet.       │
+			│  Dante will never know           │
+			│  Frasier wired it first.         │
+			│  the magician sees forward.      │
+			│  the emperor catches up.         │
+			└──────────────────────────────────┘
 """
 	})
 
@@ -531,16 +531,16 @@ func _build_thematic_widget() -> void:
 		"font_size": 11, "requires": null,
 		"ascii":
 """
-			  ┌──────────────────────────┐
-			  │  WAREHOUSE 47            │
-			  │  former tenants:         │
-			  │ ░░░░░░░░░░░░░░░░░░░░░░░░ │
-			  │ ▓ 1971 furniture importer│
-			  │ ▓ 1979 vending repair    │
-			  │ ▓ 1984 vacant            │
-			  │ ▓ 1991 vacant            │
-			  │ ▓ 1995 — FRASIER         │
-			  └──────────────────────────┘
+			┌──────────────────────────┐
+			│  WAREHOUSE 47            │
+			│  former tenants:         │
+			│ ░░░░░░░░░░░░░░░░░░░░░░░░ │
+			│ ▓ 1971 furniture importer│
+			│ ▓ 1979 vending repair    │
+			│ ▓ 1984 vacant            │
+			│ ▓ 1991 vacant            │
+			│ ▓ 1995 — FRASIER         │
+			└──────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 1, "tint": c_rust_dim,
@@ -549,12 +549,12 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 				░░░░░░░░░░░░░░░░░░░░░░░░░░░
-			  ░░  cassette tape on the desk ░░
-			  ░░  side A: VOLTAIRE — CANDIDE ░░
-			  ░░  side B: blank but humming  ░░
-			  ░░  Frasier hasn't pressed play ░░
-			  ░░  in nine months. it still    ░░
-			  ░░  hums.                       ░░
+			░░  cassette tape on the desk ░░
+			░░  side A: VOLTAIRE — CANDIDE ░░
+			░░  side B: blank but humming  ░░
+			░░  Frasier hasn't pressed play ░░
+			░░  in nine months. it still    ░░
+			░░  hums.                       ░░
 				░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
@@ -564,13 +564,13 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────┐
-			  │  paint can stencil:      │
-			  │  ░░ COUNTY ROAD ░░ ░░    │
-			  │  half scraped off        │
-			  │  the rest is below       │
-			  │  the rust line.          │
-			  └──────────────────────────┘
+			┌──────────────────────────┐
+			│  paint can stencil:      │
+			│  ░░ COUNTY ROAD ░░ ░░    │
+			│  half scraped off        │
+			│  the rest is below       │
+			│  the rust line.          │
+			└──────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 3, "tint": c_demon_dim,
@@ -578,17 +578,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("demon", 0) >= 1,
 		"ascii":
 """
-			  ╔══════════════════════════════════════╗
-			  ║   demon inventory                    ║
-			  ╠══════════════════════════════════════╣
-			  ║   LEFT:  scavenger of forgotten APIs ║
-			  ║          speaks in deprecated calls  ║
-			  ║          hungers for null pointers   ║
-			  ╠══════════════════════════════════════╣
-			  ║   RIGHT: aggregator of doomed builds ║
-			  ║          carries every crash report  ║
-			  ║          smells faintly of segfault  ║
-			  ╚══════════════════════════════════════╝
+			╔══════════════════════════════════════╗
+			║   demon inventory                    ║
+			╠══════════════════════════════════════╣
+			║   LEFT:  scavenger of forgotten APIs ║
+			║          speaks in deprecated calls  ║
+			║          hungers for null pointers   ║
+			╠══════════════════════════════════════╣
+			║   RIGHT: aggregator of doomed builds ║
+			║          carries every crash report  ║
+			║          smells faintly of segfault  ║
+			╚══════════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 4, "tint": c_temple,
@@ -597,14 +597,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────────────┐
-			  │  ▒░▒ THE PRIESTESS' SHELF ▒░▒    │
-			  │  among her books the infinity    │
-			  │  glyph appears bound in vellum   │
-			  │  ─ same glyph Frasier traces ─   │
-			  │  she READS it. he WRITES it.     │
-			  │  one card watches the other.     │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ▒░▒ THE PRIESTESS' SHELF ▒░▒    │
+			│  among her books the infinity    │
+			│  glyph appears bound in vellum   │
+			│  ─ same glyph Frasier traces ─   │
+			│  she READS it. he WRITES it.     │
+			│  one card watches the other.     │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 5, "tint": c_rust,
@@ -613,14 +613,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ╔══════════════════════════════════╗
-			  ║  the floor under the workbench   ║
-			  ║  is scorched in a ring.          ║
-			  ║  the ring is exactly the         ║
-			  ║  diameter of a man kneeling.     ║
-			  ║  Frasier doesn't kneel.          ║
-			  ║  but someone once did.           ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  the floor under the workbench   ║
+			║  is scorched in a ring.          ║
+			║  the ring is exactly the         ║
+			║  diameter of a man kneeling.     ║
+			║  Frasier doesn't kneel.          ║
+			║  but someone once did.           ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 6, "tint": c_cyan,
@@ -629,15 +629,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌─────────────────────────────────┐
-			  │  ▒░▒ EMPRESS · NICOLA ▒░▒       │
-			  │  her data is green. his is cyan.│
-			  │  the colors mix in the air      │
-			  │  over the warehouse roof        │
-			  │  ─ teal ─                       │
-			  │  the EMS biometric stream he's  │
-			  │  watching belongs to her ride.  │
-			  └─────────────────────────────────┘
+			┌─────────────────────────────────┐
+			│  ▒░▒ EMPRESS · NICOLA ▒░▒       │
+			│  her data is green. his is cyan.│
+			│  the colors mix in the air      │
+			│  over the warehouse roof        │
+			│  ─ teal ─                       │
+			│  the EMS biometric stream he's  │
+			│  watching belongs to her ride.  │
+			└─────────────────────────────────┘
 """
 	})
 
@@ -744,7 +744,7 @@ func _do_debug() -> void:
 		"atk":0.001,"dur":0.04,"rel":0.06})
 	_memorize("debug · mode %d" % debug_mode)
 	var modes := ["♥ heartrate (72 bpm)", "process list (47/66/67)",
-				  "forecast (T+1:47 cathedral)"]
+				"forecast (T+1:47 cathedral)"]
 	status_label.text = "CRT → " + modes[debug_mode]
 	_log("[color=#88e8f0]· CRT mode %d · %s[/color]" % [debug_mode, modes[debug_mode]])
 	SaveSystem.mark_unlocked("vol5_diagnostic_grid")
@@ -758,9 +758,9 @@ func _do_tag() -> void:
 		"atk":0.001,"dur":0.12,"rel":0.15})
 	_memorize("tag stage %d" % tag_stage)
 	var stages := ["paint can stencil: ░░ COUNTY ROAD ░░ ░░ (half scraped)",
-				   "more visible: COUNTY ROAD 17",
-				   "rust line scrubbed: ROCK ISLAND · NAUVOO",
-				   "full route: the road Nicola walks in ch.3."]
+				"more visible: COUNTY ROAD 17",
+				"rust line scrubbed: ROCK ISLAND · NAUVOO",
+				"full route: the road Nicola walks in ch.3."]
 	status_label.text = stages[tag_stage]
 	_log("[color=#c89868]· paint · %s[/color]" % stages[tag_stage])
 	if tag_stage >= 3:
@@ -908,7 +908,7 @@ func _cmd_memory() -> void:
 	for entry in memory:
 		if shown >= 20:
 			_log("[color=#3a7878]  ... (%d more)[/color]" %
-				 (memory.size() - shown))
+				(memory.size() - shown))
 			break
 		_log("  [color=#c8e8f0]· %s[/color]" % entry)
 		shown += 1
@@ -920,7 +920,7 @@ func _cmd_count() -> void:
 	_log("  model edits:  [color=#a8e8f0]%d[/color]" % model_count)
 	_log("  demons:       [color=#a8e8f0]%d / 2 banished[/color]" % banish_count)
 	_log("  CRT pulls:    [color=#a8e8f0]%d (mode %d)[/color]" %
-		 [debug_pulls, debug_mode])
+		[debug_pulls, debug_mode])
 	_log("  paint stage:  [color=#a8e8f0]%d / 3[/color]" % tag_stage)
 	_log("  hotspots:     [color=#a8e8f0]%d[/color]" % hotspots_seen.size())
 	_log("  commands run: [color=#a8e8f0]%d[/color]" % commands_run.size())
@@ -980,7 +980,7 @@ func _process(delta: float) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("get_bgm_magnitude"):
 		amp = clamp(float(am.call("get_bgm_magnitude", 80.0, 3200.0)) * 10.0,
-					 0.0, 1.0)
+					0.0, 1.0)
 	var base_amp = 0.10 + amp * 0.40 + sigil_pulse * 0.25
 	var idx := 0
 	for seg in _segments:

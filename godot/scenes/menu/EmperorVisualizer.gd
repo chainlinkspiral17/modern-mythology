@@ -206,10 +206,10 @@ func _build_thematic_widget() -> void:
 		"font_size": 13, "requires": null,
 		"ascii":
 """
-	   ╔═══════════════════════════════════════════════════╗
-	   ║   IV  ░░  THE EMPEROR  ░░  THRONE OF RUST AND    ║
-	   ║       ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  SMOKE       ║
-	   ╚═══════════════════════════════════════════════════╝
+	╔═══════════════════════════════════════════════════╗
+	║   IV  ░░  THE EMPEROR  ░░  THRONE OF RUST AND    ║
+	║       ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  SMOKE       ║
+	╚═══════════════════════════════════════════════════╝
 		─── as the throne ─── so the man ─── so the empire ───
 """
 	})
@@ -218,14 +218,14 @@ func _build_thematic_widget() -> void:
 		"requires": null,
 		"ascii":
 """
-			  ┌────────────────────────────┐
-			  │      A V T O R I T A S     │
-			  │      P O T E S T A S       │
-			  │      I M P E R I V M       │
-			  │  ── carved at his feet ──  │
-			  │  ── carved into his back ──│
-			  │  ── carved into the air ──│
-			  └────────────────────────────┘
+			┌────────────────────────────┐
+			│      A V T O R I T A S     │
+			│      P O T E S T A S       │
+			│      I M P E R I V M       │
+			│  ── carved at his feet ──  │
+			│  ── carved into his back ──│
+			│  ── carved into the air ──│
+			└────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 2, "tint": c_sepia_hot,
@@ -233,9 +233,9 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return motto_read,
 		"ascii":
 """
-	   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-	 ░▒▒▓▓████  KEYSTONE · EMPEROR  ████▓▓▒▒░
-	   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+	░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+	░▒▒▓▓████  KEYSTONE · EMPEROR  ████▓▓▒▒░
+	░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 		AVTORITAS — what is given to a man
 		POTESTAS  — what he takes for himself
 		IMPERIVM  — what survives him.
@@ -247,13 +247,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return ankh_touches >= 4,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║       ░  ☥ ANKH  ░               ║
-			  ║  the ankh is the only soft thing ║
-			  ║  he holds. life. living thing.   ║
-			  ║  he holds it like a man holds    ║
-			  ║  a fish he has not killed yet.   ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║       ░  ☥ ANKH  ░               ║
+			║  the ankh is the only soft thing ║
+			║  he holds. life. living thing.   ║
+			║  he holds it like a man holds    ║
+			║  a fish he has not killed yet.   ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 4, "tint": c_sepia_hot,
@@ -261,17 +261,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return ram_l_touched and ram_r_touched,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║   ░ BOTH RAMS BOUND ░            ║
-			  ║                                  ║
-			  ║   left horn:  inverted aries    ║
-			  ║                (the past empire)│
-			  ║   right horn: upright aries     ║
-			  ║                (the next empire)│
-			  ║                                  ║
-			  ║   the orientation flips between ║
-			  ║   his lifetime and her arrival. ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║   ░ BOTH RAMS BOUND ░            ║
+			║                                  ║
+			║   left horn:  inverted aries    ║
+			║                (the past empire)│
+			║   right horn: upright aries     ║
+			║                (the next empire)│
+			║                                  ║
+			║   the orientation flips between ║
+			║   his lifetime and her arrival. ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 5, "tint": c_sepia,
@@ -279,14 +279,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("empire", 0) >= 1,
 		"ascii":
 """
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 			░░  THE EMPIRE — D'AMBROSIO HOLDINGS  ░░
 			░░  ▓ the diner                       ░░
 			░░  ▓ the warehouse strip             ░░
 			░░  ▓ the riverboat                   ░░
 			░░  ▓ County Road 17 (rights-of-way)  ░░
 			░░  ▓ the vineyard (silent partner)   ░░
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 6, "tint": c_sepia_hot,
@@ -294,15 +294,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return hotspots_seen.size() >= 6,
 		"ascii":
 """
-			  ╔════════════════════════════════════╗
-			  ║  ░ EVERY HOTSPOT TOUCHED ░         ║
-			  ║  the throne records who sat in it. ║
-			  ║  the throne records who knelt.     ║
-			  ║  the throne records who stood up   ║
-			  ║  without permission.               ║
-			  ║                                    ║
-			  ║  it is also a chair. mostly.       ║
-			  ╚════════════════════════════════════╝
+			╔════════════════════════════════════╗
+			║  ░ EVERY HOTSPOT TOUCHED ░         ║
+			║  the throne records who sat in it. ║
+			║  the throne records who knelt.     ║
+			║  the throne records who stood up   ║
+			║  without permission.               ║
+			║                                    ║
+			║  it is also a chair. mostly.       ║
+			╚════════════════════════════════════╝
 """
 	})
 
@@ -313,11 +313,11 @@ func _build_thematic_widget() -> void:
 		"font_size": 12, "requires": null,
 		"ascii":
 """
-	   ════════ THE MIRROR FLOOR ═════════════════════════
+	════════ THE MIRROR FLOOR ═════════════════════════
 							▒▒
-						  ▒░░░░▒
-						 ▒░░░░░░▒    a face below.
-						  ▒░░░░▒       upside-down.
+						▒░░░░▒
+						▒░░░░░░▒    a face below.
+						▒░░░░▒       upside-down.
 							▒▒          waiting.
 		─── you are above ─── the face is below ───
 """
@@ -327,12 +327,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return mirror_gazes >= 1,
 		"ascii":
 """
-			  ┌─── mirror gaze · 1 ─────────────┐
-			  │  the reflection.                │
-			  │  it is yours.                   │
-			  │  it is not yours.               │
-			  │  the eyes do not match.         │
-			  └─────────────────────────────────┘
+			┌─── mirror gaze · 1 ─────────────┐
+			│  the reflection.                │
+			│  it is yours.                   │
+			│  it is not yours.               │
+			│  the eyes do not match.         │
+			└─────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 2, "tint": c_smoke,
@@ -340,13 +340,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return mirror_gazes >= 2,
 		"ascii":
 """
-			  ┌─── mirror gaze · 2 ─────────────┐
-			  │  the eyes are darker.           │
-			  │  the jaw is softer.             │
-			  │  the hair is longer.            │
-			  │  the angle is wrong for         │
-			  │  a reflection of you.           │
-			  └─────────────────────────────────┘
+			┌─── mirror gaze · 2 ─────────────┐
+			│  the eyes are darker.           │
+			│  the jaw is softer.             │
+			│  the hair is longer.            │
+			│  the angle is wrong for         │
+			│  a reflection of you.           │
+			└─────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 3, "tint": c_blood,
@@ -354,13 +354,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return mirror_gazes >= 3,
 		"ascii":
 """
-			  ┌─── mirror gaze · 3 ─────────────┐
-			  │  it is a woman.                 │
-			  │  her hand is on the arm of      │
-			  │  the throne — not yours.        │
-			  │  the bourbon glass on her side  │
-			  │  is empty. yours is half full.  │
-			  └─────────────────────────────────┘
+			┌─── mirror gaze · 3 ─────────────┐
+			│  it is a woman.                 │
+			│  her hand is on the arm of      │
+			│  the throne — not yours.        │
+			│  the bourbon glass on her side  │
+			│  is empty. yours is half full.  │
+			└─────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 4, "tint": c_blood,
@@ -368,16 +368,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return mirror_gazes >= 4,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║   ░ THE SUCCESSOR IS NAMED ░     ║
-			  ║                                  ║
-			  ║   it is Nicola.                  ║
-			  ║                                  ║
-			  ║   she has not arrived.           ║
-			  ║   she has already sat there.     ║
-			  ║                                  ║
-			  ║   ░ vol5_dual_pov_node = TRUE ░  ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║   ░ THE SUCCESSOR IS NAMED ░     ║
+			║                                  ║
+			║   it is Nicola.                  ║
+			║                                  ║
+			║   she has not arrived.           ║
+			║   she has already sat there.     ║
+			║                                  ║
+			║   ░ vol5_dual_pov_node = TRUE ░  ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 5, "tint": c_rust,
@@ -385,14 +385,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return glass_pours >= 1,
 		"ascii":
 """
-			  ┌──── BOURBON · 1971 ──────────────┐
-			  │  the bottle is older than him.   │
-			  │  the seal was broken in '71.     │
-			  │  the year the diner opened.      │
-			  │  the year his father died.       │
-			  │  the year he learned to sign     │
-			  │  AVTORITAS in a steady hand.     │
-			  └──────────────────────────────────┘
+			┌──── BOURBON · 1971 ──────────────┐
+			│  the bottle is older than him.   │
+			│  the seal was broken in '71.     │
+			│  the year the diner opened.      │
+			│  the year his father died.       │
+			│  the year he learned to sign     │
+			│  AVTORITAS in a steady hand.     │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 6, "tint": c_smoke,
@@ -400,14 +400,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("smoke", 0) >= 1,
 		"ascii":
 """
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-			  ░  smoke rises from the throne legs ░
-			  ░  the cushion is scorched in a ring ░
-			  ░  the same ring is in Frasier's     ░
-			  ░  warehouse, under the workbench.   ░
-			  ░  the same diameter. the same man.  ░
-			  ░  ─ a knelt man, once.              ░
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░  smoke rises from the throne legs ░
+			░  the cushion is scorched in a ring ░
+			░  the same ring is in Frasier's     ░
+			░  warehouse, under the workbench.   ░
+			░  the same diameter. the same man.  ░
+			░  ─ a knelt man, once.              ░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 
@@ -419,17 +419,17 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-		 ┌─── ASCII WALL · RIGHT ──────────────┐
-		 │  I·──────────────────────────·n     │
-		 │  M·─ first-character-per-row ─·d    │
-		 │  P·──── decode each row ─────·d     │
-		 │  E·─── against the LEFT wall ─·t    │
-		 │  R·──────────────────────────·a     │
-		 │  I·──── they mirror at the ──·k     │
-		 │  V·──── 13th character: an  ─·s     │
-		 │  M·──── invisible glyph ─────·t     │
-		 └─────────────────────────────────────┘
-		 (first letters reading down: IMPERIVM)
+		┌─── ASCII WALL · RIGHT ──────────────┐
+		│  I·──────────────────────────·n     │
+		│  M·─ first-character-per-row ─·d    │
+		│  P·──── decode each row ─────·d     │
+		│  E·─── against the LEFT wall ─·t    │
+		│  R·──────────────────────────·a     │
+		│  I·──── they mirror at the ──·k     │
+		│  V·──── 13th character: an  ─·s     │
+		│  M·──── invisible glyph ─────·t     │
+		└─────────────────────────────────────┘
+		(first letters reading down: IMPERIVM)
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 1, "tint": c_sepia_hot,
@@ -438,12 +438,12 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ╔══════════════════════════════════╗
-			  ║  ░ RIGHT WALL DECODED ░          ║
-			  ║  IMPERIVM — what survives him.   ║
-			  ║  the empire after the emperor.   ║
-			  ║  ─ vol5_keystone_emperor_part_3 ─║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ RIGHT WALL DECODED ░          ║
+			║  IMPERIVM — what survives him.   ║
+			║  the empire after the emperor.   ║
+			║  ─ vol5_keystone_emperor_part_3 ─║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 2, "tint": c_sepia,
@@ -452,15 +452,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · MAGICIAN ░       │
-			  │  the red steamboat in Frasier's  │
-			  │  model is this boat. mine.       │
-			  │  he wired it before I bought it. │
-			  │  the magician sees forward.      │
-			  │  the emperor catches up.         │
-			  │  ─ I caught up ─                 │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · MAGICIAN ░       │
+			│  the red steamboat in Frasier's  │
+			│  model is this boat. mine.       │
+			│  he wired it before I bought it. │
+			│  the magician sees forward.      │
+			│  the emperor catches up.         │
+			│  ─ I caught up ─                 │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 3, "tint": c_blood,
@@ -469,15 +469,15 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · EMPRESS ░        │
-			  │  the ram-throne in her card.     │
-			  │  it is the SAME throne.          │
-			  │  she touches the rams.           │
-			  │  I have not introduced her.      │
-			  │  she does not need me to.        │
-			  │  the throne signed for itself.   │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · EMPRESS ░        │
+			│  the ram-throne in her card.     │
+			│  it is the SAME throne.          │
+			│  she touches the rams.           │
+			│  I have not introduced her.      │
+			│  she does not need me to.        │
+			│  the throne signed for itself.   │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 4, "tint": c_sepia_hot,
@@ -486,14 +486,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · HIEROPHANT ░     │
-			  │  the vineyard is mine on paper.  │
-			  │  the Acadian runs it.            │
-			  │  he calls it his.                │
-			  │  he is correct.                  │
-			  │  ─ ownership is a notary fiction ─│
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · HIEROPHANT ░     │
+			│  the vineyard is mine on paper.  │
+			│  the Acadian runs it.            │
+			│  he calls it his.                │
+			│  he is correct.                  │
+			│  ─ ownership is a notary fiction ─│
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 5, "tint": c_smoke,
@@ -502,17 +502,17 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ╔═══════════════════════════════════╗
-			  ║   ░ SUCCESSION INSTRUMENT ░       ║
-			  ║                                   ║
-			  ║   the rams: inheritance signed.   ║
-			  ║   the mirror: inheritor named.    ║
-			  ║   the motto: inheritance lasting. ║
-			  ║                                   ║
-			  ║   the chair is hers when she      ║
-			  ║   sits in it. not before.         ║
-			  ║   she has, however, already sat.  ║
-			  ╚═══════════════════════════════════╝
+			╔═══════════════════════════════════╗
+			║   ░ SUCCESSION INSTRUMENT ░       ║
+			║                                   ║
+			║   the rams: inheritance signed.   ║
+			║   the mirror: inheritor named.    ║
+			║   the motto: inheritance lasting. ║
+			║                                   ║
+			║   the chair is hers when she      ║
+			║   sits in it. not before.         ║
+			║   she has, however, already sat.  ║
+			╚═══════════════════════════════════╝
 """
 	})
 
@@ -523,18 +523,18 @@ func _build_thematic_widget() -> void:
 		"font_size": 11, "requires": null,
 		"ascii":
 """
-		 ┌─── ASCII WALL · LEFT ───────────────┐
-		 │  A·─────── the bourbon ─────────·g  │
-		 │  V·──── the broken seal ───────·a   │
-		 │  T·──── the father's hand ─────·s   │
-		 │  O·──── the steady signature ──·k   │
-		 │  R·──── 1971 — the diner opens ·s   │
-		 │  I·──── the warehouse purchase ·v   │
-		 │  T·──── the steamboat acquired ·l   │
-		 │  A·──── the ram-throne carved ─·a   │
-		 │  S·──── the motto commissioned ·g   │
-		 └─────────────────────────────────────┘
-		 (first letters reading down: AVTORITAS)
+		┌─── ASCII WALL · LEFT ───────────────┐
+		│  A·─────── the bourbon ─────────·g  │
+		│  V·──── the broken seal ───────·a   │
+		│  T·──── the father's hand ─────·s   │
+		│  O·──── the steady signature ──·k   │
+		│  R·──── 1971 — the diner opens ·s   │
+		│  I·──── the warehouse purchase ·v   │
+		│  T·──── the steamboat acquired ·l   │
+		│  A·──── the ram-throne carved ─·a   │
+		│  S·──── the motto commissioned ·g   │
+		└─────────────────────────────────────┘
+		(first letters reading down: AVTORITAS)
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 1, "tint": c_sepia_hot,
@@ -542,12 +542,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return wall_l_decoded,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  ░ LEFT WALL DECODED ░           ║
-			  ║  AVTORITAS — what is given.      ║
-			  ║  the empire he was handed.       ║
-			  ║  ─ vol5_keystone_emperor_part_2 ─║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  ░ LEFT WALL DECODED ░           ║
+			║  AVTORITAS — what is given.      ║
+			║  the empire he was handed.       ║
+			║  ─ vol5_keystone_emperor_part_2 ─║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 2, "tint": c_rust,
@@ -555,16 +555,16 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("dante", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  DANTE D'AMBROSIO                │
-			  │  ─── born 1953 ─── still here ── │
-			  │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
-			  │  ▓ inherited the diner '71       │
-			  │  ▓ inherited the river '78       │
-			  │  ▓ inherited the warehouse '84   │
-			  │  ▓ inherited his father's smell  │
-			  │    of bourbon and bay rum '71    │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  DANTE D'AMBROSIO                │
+			│  ─── born 1953 ─── still here ── │
+			│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+			│  ▓ inherited the diner '71       │
+			│  ▓ inherited the river '78       │
+			│  ▓ inherited the warehouse '84   │
+			│  ▓ inherited his father's smell  │
+			│    of bourbon and bay rum '71    │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 3, "tint": c_blood,
@@ -572,17 +572,17 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("1971", 0) >= 1 or commands_run.get("bourbon", 0) >= 1,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║  1971 — the year                 ║
-			  ║                                  ║
-			  ║  · the diner opens               ║
-			  ║  · the father dies               ║
-			  ║  · the bourbon seal breaks       ║
-			  ║  · he signs his first AVTORITAS  ║
-			  ║  · in a hand that does not shake ║
-			  ║                                  ║
-			  ║  he was eighteen.                ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║  1971 — the year                 ║
+			║                                  ║
+			║  · the diner opens               ║
+			║  · the father dies               ║
+			║  · the bourbon seal breaks       ║
+			║  · he signs his first AVTORITAS  ║
+			║  · in a hand that does not shake ║
+			║                                  ║
+			║  he was eighteen.                ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 4, "tint": c_sepia,
@@ -590,15 +590,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("voltaire", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ VOLTAIRE — on his desk too ░  │
-			  │  CANDIDE — a different printing  │
-			  │  than Frasier's. an older one.   │
-			  │  marginalia in his father's hand.│
-			  │  the underlined sentence reads:  │
-			  │  \"il faut cultiver notre jardin\"│
-			  │   (he has not.)                  │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ VOLTAIRE — on his desk too ░  │
+			│  CANDIDE — a different printing  │
+			│  than Frasier's. an older one.   │
+			│  marginalia in his father's hand.│
+			│  the underlined sentence reads:  │
+			│  \"il faut cultiver notre jardin\"│
+			│   (he has not.)                  │
+			└──────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 5, "tint": c_parch,
@@ -606,15 +606,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("priestess", 0) >= 1 or commands_run.get("elicia", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · PRIESTESS ░       │
-			  │  Elicia has no tape of him.       │
-			  │  the throne reflects nothing      │
-			  │  back at her recorder.            │
-			  │  this is not refusal. this is     │
-			  │  the throne's nature: it does     │
-			  │  not let itself be recorded.      │
-			  └───────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · PRIESTESS ░       │
+			│  Elicia has no tape of him.       │
+			│  the throne reflects nothing      │
+			│  back at her recorder.            │
+			│  this is not refusal. this is     │
+			│  the throne's nature: it does     │
+			│  not let itself be recorded.      │
+			└───────────────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 6, "tint": c_sepia_dim,
@@ -622,15 +622,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("john", 0) >= 1 or commands_run.get("fool", 0) >= 1,
 		"ascii":
 """
-			  ┌──────────────────────────────────┐
-			  │  ░ cross-card · FOOL ░           │
-			  │  John wipes the counter he sold  │
-			  │  me. he does not know he sold    │
-			  │  it. the diner was already mine  │
-			  │  before he hired on.             │
-			  │  the fool builds the empire.     │
-			  │  the emperor signs for it.       │
-			  └──────────────────────────────────┘
+			┌──────────────────────────────────┐
+			│  ░ cross-card · FOOL ░           │
+			│  John wipes the counter he sold  │
+			│  me. he does not know he sold    │
+			│  it. the diner was already mine  │
+			│  before he hired on.             │
+			│  the fool builds the empire.     │
+			│  the emperor signs for it.       │
+			└──────────────────────────────────┘
 """
 	})
 
@@ -925,7 +925,7 @@ func _cmd_memory() -> void:
 	for entry in memory:
 		if shown >= 20:
 			_log("[color=#a87040]  ... (%d more)[/color]" %
-				 (memory.size() - shown))
+				(memory.size() - shown))
 			break
 		_log("  [color=#c89868]· %s[/color]" % entry)
 		shown += 1
@@ -935,16 +935,16 @@ func _cmd_count() -> void:
 	_log("[color=#ffd896]── tallies ────────────────[/color]")
 	_log("  ankh:        [color=#ffd896]%d[/color]" % ankh_touches)
 	_log("  rams:        [color=#c89060]%s · %s[/color]" % [
-		 "L✓" if ram_l_touched else "L─",
-		 "R✓" if ram_r_touched else "R─"])
+		"L✓" if ram_l_touched else "L─",
+		"R✓" if ram_r_touched else "R─"])
 	_log("  bourbon:     [color=#c8704a]%d pours[/color]" % glass_pours)
 	_log("  motto:       [color=#ffd896]%s[/color]" %
-		 ("read" if motto_read else "unread"))
+		("read" if motto_read else "unread"))
 	_log("  mirror:      [color=#c84030]%d / %d gazes[/color]" %
-		 [mirror_gazes, MIRROR_STAGES.size()])
+		[mirror_gazes, MIRROR_STAGES.size()])
 	_log("  walls:       [color=#a87040]%s · %s[/color]" % [
-		 "L✓" if wall_l_decoded else "L─",
-		 "R✓" if wall_r_decoded else "R─"])
+		"L✓" if wall_l_decoded else "L─",
+		"R✓" if wall_r_decoded else "R─"])
 	_log("  hotspots:    [color=#ffd896]%d[/color]" % hotspots_seen.size())
 	_log("  commands run:[color=#ffd896] %d[/color]" % commands_run.size())
 
@@ -1005,7 +1005,7 @@ func _process(delta: float) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("get_bgm_magnitude"):
 		amp = clamp(float(am.call("get_bgm_magnitude", 80.0, 3200.0)) * 10.0,
-					 0.0, 1.0)
+					0.0, 1.0)
 	# Slower, heavier pulse than the other cards — imperial pace
 	var base_amp = 0.08 + amp * 0.30
 	var idx := 0

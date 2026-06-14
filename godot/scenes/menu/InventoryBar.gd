@@ -88,7 +88,7 @@ func _on_item_added(id: String) -> void:
 		position.y = COLLAPSE_OFFSET
 		var tw := create_tween()
 		tw.tween_property(self, "position:y", 0.0, 0.35) \
-		  .set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 
 func _on_item_removed(id: String) -> void:
@@ -100,7 +100,7 @@ func _on_item_removed(id: String) -> void:
 	if _slots.is_empty():
 		var tw := create_tween()
 		tw.tween_property(self, "position:y", COLLAPSE_OFFSET, 0.25) \
-		  .set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 		tw.tween_callback(func() -> void: visible = false)
 
 

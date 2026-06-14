@@ -373,7 +373,7 @@ func _ready() -> void:
 		_log_line("[i]Check Godot's Output panel for the full diagnostic.[/i]")
 		_log_line("")
 	_log_line("[color=#c8a268][b]%s[/b][/color] — %s" %
-			  [_setup.get("title", "THE LEAP"), _setup.get("subtitle", "")])
+			[_setup.get("title", "THE LEAP"), _setup.get("subtitle", "")])
 	_log_line("[i]%s[/i]" % _setup.get("epigraph_upright", ""))
 	_log_line("")
 	# Scene-setting + opening narration straight into the log,

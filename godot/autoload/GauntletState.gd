@@ -63,7 +63,7 @@ func record_win(arcana: String, location: String, contents: String,
 
 
 func record_loss(arcana: String, location: String, finale: String,
-				 lore_tokens: Array) -> void:
+				lore_tokens: Array) -> void:
 	var key := "%s@%s" % [arcana, location]
 	state["losses_by_arcana_location"][key] = int(state["losses_by_arcana_location"].get(key, 0)) + 1
 	state["finale_history"].append(finale)

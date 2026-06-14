@@ -313,8 +313,8 @@ func _build() -> void:
 
 	_catalog = SceneDataDB.get_music_catalog()
 	print("[MusicPlayer] catalog size: ", _catalog.size(),
-		  " · UNLOCK_ALL_TRACKS=", UNLOCK_ALL_TRACKS,
-		  " · skin=", _skin["id"])
+		" · UNLOCK_ALL_TRACKS=", UNLOCK_ALL_TRACKS,
+		" · skin=", _skin["id"])
 	var cur_vol := -2
 	var _added := 0
 	for entry: Dictionary in _catalog:

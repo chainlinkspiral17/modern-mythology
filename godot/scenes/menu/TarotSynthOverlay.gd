@@ -439,7 +439,7 @@ func _build_ui() -> void:
 		if i < ARCANA.size():
 			var entry = ARCANA[i]
 			b.text = "%02d\n%s\n[%s]" % [entry[0], entry[1],
-										   OS.get_keycode_string(entry[3])]
+										OS.get_keycode_string(entry[3])]
 			b.add_theme_color_override("font_color", C_GOLD_HI)
 			b.add_theme_font_size_override("font_size", 10)
 			b.custom_minimum_size = Vector2(0, 80)

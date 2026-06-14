@@ -210,9 +210,9 @@ func _build_thematic_widget() -> void:
 		"font_size": 13, "requires": null,
 		"ascii":
 """
-				 .       .   .    ░░░░░░░░       .       .
+				.       .   .    ░░░░░░░░       .       .
 			░░░░░░  ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░  ▒▒░░░░░░
-	   ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░
+	░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░
    ─── D'AMBROSIO'S ─── 24 HOURS ─── BREAKFAST ALWAYS ───
 """
 	})
@@ -221,12 +221,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return wipe_count >= 1,
 		"ascii":
 """
-					   ░░░░
+					░░░░
 					░░▒▒▒▒░░             ┐ the sun
-				  ░▒▒▓▓▓▓▓▓▒▒░     outside the awnings:
-				 ░▒▓▓▓██▓██▓▒░         it sleeps.
-				  ░▒▒▓▓▓▓▓▓▓▒░             ┘
-					   ────
+				░▒▒▓▓▓▓▓▓▒▒░     outside the awnings:
+				░▒▓▓▓██▓██▓▒░         it sleeps.
+				░▒▒▓▓▓▓▓▓▓▒░             ┘
+					────
 """
 	})
 	_register_segment({"dir": Dir.NORTH, "row": 2, "tint": c_amber_dim,
@@ -236,7 +236,7 @@ func _build_thematic_widget() -> void:
 """
 	✦                    ·     ✦              ·              ✦
 			·    ─── HE'S JOURNEY HASN'T STARTED ───      ·
-					   it's always about to.
+					it's always about to.
 	·                                                          ✦
 """
 	})
@@ -246,7 +246,7 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 		░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-	  ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░
+	░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░
 	░░▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░
   ░▒▒▓▓████████ INFINITE  POTENTIAL ████████▓▓▒▒░
 	░░▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░
@@ -275,10 +275,10 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 			░▒░▒░ THE DREAM LAYER ░▒░▒░
-			  ▒░░  Frasier walks in     ░▒
+			▒░░  Frasier walks in     ░▒
 			░░░░░░  before he walks in. ░░░░░
-			  ▒░░░ the bell rings ░░░▒
-				  ░░ before. ░░
+			▒░░░ the bell rings ░░░▒
+				░░ before. ░░
 """
 	})
 	# NEW NORTH 6: graffiti tag
@@ -287,11 +287,11 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return wipe_count >= 32,
 		"ascii":
 """
-			  ╔═══════════════════════════╗
-			  ║  ░▒▓█  FRANKLY  █▓▒░       ║
-			  ║       ░▒▓█  FOOLISH  █▓▒░ ║
-			  ║   ─ author signature ─    ║
-			  ╚═══════════════════════════╝
+			╔═══════════════════════════╗
+			║  ░▒▓█  FRANKLY  █▓▒░       ║
+			║       ░▒▓█  FOOLISH  █▓▒░ ║
+			║   ─ author signature ─    ║
+			╚═══════════════════════════╝
 """
 	})
 	# NEW NORTH 7: all hotspots seen
@@ -301,10 +301,10 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-		  ░▒▒▓▓████ THE SUN FINALLY RISES ████▓▓▒▒░
+		░▒▒▓▓████ THE SUN FINALLY RISES ████▓▓▒▒░
 			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-			  the day that doesn't end
-			  because it never quite began
+			the day that doesn't end
+			because it never quite began
 """
 	})
 
@@ -317,9 +317,9 @@ func _build_thematic_widget() -> void:
 """
 
    ════════ THE PRECIPICE ═════════════════════════════════
-	   │ │ │   │  │     │   │ │   │   │   │ │  │  │  │   │
+	│ │ │   │  │     │   │ │   │   │   │ │  │  │  │   │
 	≈≈ ~ ≈≈≈≈ ~~ ≈≈≈≈≈≈ ~~~ ≈≈≈ ~~~ ≈≈≈ ~ ≈≈ ~~ ≈ ~~~ ≈≈
-	   ~ ≈≈≈ ~~~ ≈≈ ~~~~~~ ≈≈≈ ~ ≈≈≈ ~~~ ≈≈≈ ~~ ≈≈ ~ ≈≈≈≈
+	~ ≈≈≈ ~~~ ≈≈ ~~~~~~ ≈≈≈ ~ ≈≈≈ ~~~ ≈≈≈ ~~ ≈≈ ~ ≈≈≈≈
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 1, "tint": c_water_dim,
@@ -331,7 +331,7 @@ func _build_thematic_widget() -> void:
   ░▒▓▓████████████ THE WATER RISES ████████████████▓▒░
   ░▒▓██████████████████████████████████████████████▓▒░
 	░▒▓██████████████████████████████████████████▓▒░
-	   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+	░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 2, "tint": c_water_dim,
@@ -354,9 +354,9 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return wipe_count >= 64,
 		"ascii":
 """
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-			 ░░ ALT PROLOGUE · KEYSTONE ENGAGED ░░
-			  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+			░░ ALT PROLOGUE · KEYSTONE ENGAGED ░░
+			░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 				◆──────────────────────────◆
 					REVERSED · UPRIGHT
 				◆──────────────────────────◆
@@ -368,11 +368,11 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("sink", 0) >= 1,
 		"ascii":
 """
-		  ▒▓▓▓▓▓▓▓ UNDERWATER D'AMBROSIO'S ▓▓▓▓▓▓▓▒
+		▒▓▓▓▓▓▓▓ UNDERWATER D'AMBROSIO'S ▓▓▓▓▓▓▓▒
 		▓▓▓ the bell rings · no one sits ▓▓▓
-	  ▓▓▓▓ the coffee pot drowns · slowly ▓▓▓▓
+	▓▓▓▓ the coffee pot drowns · slowly ▓▓▓▓
 		▓▓▓ the dog's bowl floats up · empty ▓▓▓
-		  ▒▓▓▓▓ John wipes ░ wipes ░ wipes ▓▓▓▓▒
+		▒▓▓▓▓ John wipes ░ wipes ░ wipes ▓▓▓▓▒
 """
 	})
 	# NEW SOUTH 5: bindle click
@@ -381,13 +381,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return hotspots_seen.has("fool_bindle"),
 		"ascii":
 """
-					   ▒▒▓▒▒
-					  ▒░▒░░░▒
-					 ▒░ ▒░░░░▒        the bindle
-					 ▒░░░░░░░░▒       drifts out to sea
-					  ▒░▒░░░▒          containing:
-					   ▒▒░▒▒          nothing
-									   and everything
+					▒▒▓▒▒
+					▒░▒░░░▒
+					▒░ ▒░░░░▒        the bindle
+					▒░░░░░░░░▒       drifts out to sea
+					▒░▒░░░▒          containing:
+					▒▒░▒▒          nothing
+									and everything
 """
 	})
 	# NEW SOUTH 6: type 'fool' (self-aware moment)
@@ -396,15 +396,15 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return commands_run.get("fool", 0) >= 1,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║   "fool" — a command typed by   ║
-			  ║         someone who knew this    ║
-			  ║         was a card to be read   ║
-			  ║         not a place to live in  ║
-			  ║                                  ║
-			  ║       you stepped THROUGH        ║
-			  ║       (the fool's leap)          ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║   "fool" — a command typed by   ║
+			║         someone who knew this    ║
+			║         was a card to be read   ║
+			║         not a place to live in  ║
+			║                                  ║
+			║       you stepped THROUGH        ║
+			║       (the fool's leap)          ║
+			╚══════════════════════════════════╝
 """
 	})
 	# NEW SOUTH 7: 100 wipes — beyond
@@ -413,12 +413,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return wipe_count >= 100,
 		"ascii":
 """
-	   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-	 ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░
-	   100 WIPES — THE FOOL SURFACES IN ANOTHER LIFE
-	   another counter ░ another rag ░ another dog
-	 ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░
-	   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+	░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+	░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░
+	100 WIPES — THE FOOL SURFACES IN ANOTHER LIFE
+	another counter ░ another rag ░ another dog
+	░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░
+	░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 
@@ -429,11 +429,11 @@ func _build_thematic_widget() -> void:
 		"font_size": 11, "requires": null,
 		"ascii":
 """
-			  ▓▓
+			▓▓
 			▓▓▒▒
-		  ▓▒▒░░░
+		▓▒▒░░░
 		▒░░░░░    →  →  →
-	  ░░░░░     ╔═══════╗
+	░░░░░     ╔═══════╗
 	░░░░       ║   II  ║
    ░░░        ║       ║
    ░          ╚═══════╝
@@ -448,13 +448,13 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-	  ·   ·
+	·   ·
 		·       ·   ·         ·       ·
-	  ·   ·       ·   ·     ·   ·
+	·   ·       ·   ·     ·   ·
 						·       ·       ·
-							 ·   ·
-			  the dog walks
-			  east as well
+							·   ·
+			the dog walks
+			east as well
 """
 	})
 	# NEW EAST 2: wipe ≥ 8 — human footprints
@@ -464,11 +464,11 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-	  ▐█▌                                       ▐█▌
+	▐█▌                                       ▐█▌
 		▐█▌                                   ▐█▌
-		  ▐█▌   the apron is heavy           ▐█▌
+		▐█▌   the apron is heavy           ▐█▌
 			▐█▌  but the door is open      ▐█▌
-			  ▐█▌                        ▐█▌
+			▐█▌                        ▐█▌
 				─── eight steps so far ───
 """
 	})
@@ -478,13 +478,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return dog_clicks >= 5,
 		"ascii":
 """
-			  ┌─────────────────────────────┐
-			  │  the dog leads now.         │
-			  │  ▒▒▓▓ noses east ▓▓▒▒       │
-			  │  ▒▒▓▓ tail forward ▓▓▒▒    │
-			  │  ▒▒▓▓ knows the route ▓▓▒▒ │
-			  │  ▒▒▓▓ better than you ▓▓▒▒ │
-			  └─────────────────────────────┘
+			┌─────────────────────────────┐
+			│  the dog leads now.         │
+			│  ▒▒▓▓ noses east ▓▓▒▒       │
+			│  ▒▒▓▓ tail forward ▓▓▒▒    │
+			│  ▒▒▓▓ knows the route ▓▓▒▒ │
+			│  ▒▒▓▓ better than you ▓▓▒▒ │
+			└─────────────────────────────┘
 """
 	})
 	# NEW EAST 4: type 'step'
@@ -494,18 +494,18 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-	   ╔═══════════════════════════════════════╗
-	   ║                                       ║
-	   ║      ─→  THE DOOR  →   →   →  →       ║
-	   ║                                       ║
-	   ║       you typed STEP.                ║
-	   ║       the door swings.                ║
-	   ║                                       ║
-	   ╚═══════════════════════════════════════╝
+	╔═══════════════════════════════════════╗
+	║                                       ║
+	║      ─→  THE DOOR  →   →   →  →       ║
+	║                                       ║
+	║       you typed STEP.                ║
+	║       the door swings.                ║
+	║                                       ║
+	╚═══════════════════════════════════════╝
 				╲    OPENING    ╱
-				 ╲             ╱
-				  ╲   ▓▓▓▓▓   ╱
-				   ╲ ░▒▓█▓▒░ ╱
+				╲             ╱
+				╲   ▓▓▓▓▓   ╱
+				╲ ░▒▓█▓▒░ ╱
 					▓▓▓▓▓▓▓▓
 """
 	})
@@ -516,16 +516,16 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-							  ░░
+							░░
 							░░░░░░
-						  ▒▒▓▓▓▓▒▒
+						▒▒▓▓▓▓▒▒
 						▒▒▓████▓▒▒
-					   ▒▒▓██████▓▒▒
-					  ▒▒▒▒▒▒▒▒▒▒▒▒▒
-					  ─── another diner ───
-					   ─── due east ───
-					   ─── 24 hours ───
-					   ─── same menu ───
+					▒▒▓██████▓▒▒
+					▒▒▒▒▒▒▒▒▒▒▒▒▒
+					─── another diner ───
+					─── due east ───
+					─── 24 hours ───
+					─── same menu ───
 """
 	})
 	# NEW EAST 6: all hotspots — journey resumes
@@ -535,17 +535,17 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-			  ╔════════════════════════════════╗
-			  ║   ░ THE JOURNEY RESUMES ░       ║
-			  ║                                ║
-			  ║   ➜ bindle on stick             ║
-			  ║   ➜ dog at heel                 ║
-			  ║   ➜ rag in apron pocket         ║
-			  ║   ➜ counter still wet           ║
-			  ║                                ║
-			  ║   step where the path appears   ║
-			  ║   the path appears when you do  ║
-			  ╚════════════════════════════════╝
+			╔════════════════════════════════╗
+			║   ░ THE JOURNEY RESUMES ░       ║
+			║                                ║
+			║   ➜ bindle on stick             ║
+			║   ➜ dog at heel                 ║
+			║   ➜ rag in apron pocket         ║
+			║   ➜ counter still wet           ║
+			║                                ║
+			║   step where the path appears   ║
+			║   the path appears when you do  ║
+			╚════════════════════════════════╝
 """
 	})
 
@@ -556,16 +556,16 @@ func _build_thematic_widget() -> void:
 		"font_size": 11, "requires": null,
 		"ascii":
 """
-			  ┌───────────────────────────┐
-			  │        D'AMBROSIO'S       │
-			  │      open 24. always.     │
-			  │ ░░░░░░░░░░░░░░░░░░░░░░░░░ │
-			  │                           │
-			  │  ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ │
-			  │  the COUNTER stretches    │
-			  │  the COUNTER stretches    │
-			  │  the COUNTER stretches    │
-			  └───────────────────────────┘
+			┌───────────────────────────┐
+			│        D'AMBROSIO'S       │
+			│      open 24. always.     │
+			│ ░░░░░░░░░░░░░░░░░░░░░░░░░ │
+			│                           │
+			│  ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ │
+			│  the COUNTER stretches    │
+			│  the COUNTER stretches    │
+			│  the COUNTER stretches    │
+			└───────────────────────────┘
 """
 	})
 	_register_segment({"dir": Dir.WEST, "row": 1, "tint": c_ash,
@@ -573,13 +573,13 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return wipe_count >= 1,
 		"ascii":
 """
-				   ▒▒▒▒▒▒▒
-				 ▒▒░░░░░░░░░▒▒
+				▒▒▒▒▒▒▒
+				▒▒░░░░░░░░░▒▒
 				▒▒░░  RAG  ░░▒▒
-				 ▒▒░░░░░░░░░▒▒
-				   ▒▒▒▒▒▒▒
-			  wipe. wipe. wipe.
-			  the formica is the same.
+				▒▒░░░░░░░░░▒▒
+				▒▒▒▒▒▒▒
+			wipe. wipe. wipe.
+			the formica is the same.
 """
 	})
 	# NEW WEST 2: type 'customer'
@@ -590,12 +590,12 @@ func _build_thematic_widget() -> void:
 """
 
 				░░░░░░░░░░░░░░░░░░░░░░░░░░
-			  ░░ stool 4 is occupied        ░░
-			  ░░ by nobody you can see       ░░
-			  ░░ they always order:          ░░
-			  ░░   ▓ coffee, black           ░░
-			  ░░   ▓ no toast                ░░
-			  ░░   ▓ a quiet booth in 1971   ░░
+			░░ stool 4 is occupied        ░░
+			░░ by nobody you can see       ░░
+			░░ they always order:          ░░
+			░░   ▓ coffee, black           ░░
+			░░   ▓ no toast                ░░
+			░░   ▓ a quiet booth in 1971   ░░
 				░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
@@ -606,16 +606,16 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-	   ╔══════════════════════════════════════╗
-	   ║      LEDGER OF NAMES                ║
-	   ║      every customer he served:      ║
-	   ╠══════════════════════════════════════╣
-	   ║  ░ Frasier T. ░ Marie ░ Hal ░ Curtis ║
-	   ║  ░ Joan ░ Pete ░ a man in a coat ░  ║
-	   ║  ░ the girl who never ordered ░     ║
-	   ║  ░ 14 others he forgot the names of ║
-	   ║  ░ 1 he refuses to forget           ║
-	   ╚══════════════════════════════════════╝
+	╔══════════════════════════════════════╗
+	║      LEDGER OF NAMES                ║
+	║      every customer he served:      ║
+	╠══════════════════════════════════════╣
+	║  ░ Frasier T. ░ Marie ░ Hal ░ Curtis ║
+	║  ░ Joan ░ Pete ░ a man in a coat ░  ║
+	║  ░ the girl who never ordered ░     ║
+	║  ░ 14 others he forgot the names of ║
+	║  ░ 1 he refuses to forget           ║
+	╚══════════════════════════════════════╝
 """
 	})
 	# NEW WEST 4: 3 dog clicks — bowl
@@ -625,14 +625,14 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 
-				  ╭──────────╮
-				  │░░░░░░░░░░│
-				  │░  DOG   ░│
-				  │░░░░░░░░░░│
-				  ╰──────────╯
-			  empty.  it has been
-			  empty since closing time.
-			  closing time was eleven years ago.
+				╭──────────╮
+				│░░░░░░░░░░│
+				│░  DOG   ░│
+				│░░░░░░░░░░│
+				╰──────────╯
+			empty.  it has been
+			empty since closing time.
+			closing time was eleven years ago.
 """
 	})
 	# NEW WEST 5: graffiti hotspot
@@ -656,12 +656,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return wipe_count >= 64,
 		"ascii":
 """
-	   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-	   ▒  the counter ░ the rag ░ the formica ▒
-	   ▒  the same ░ the same ░ the same      ▒
-	   ▒  ░ even the customers are the same   ▒
-	   ▒  ░ even the customers are no one    ▒
-	   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+	░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+	▒  the counter ░ the rag ░ the formica ▒
+	▒  the same ░ the same ░ the same      ▒
+	▒  ░ even the customers are the same   ▒
+	▒  ░ even the customers are no one    ▒
+	░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 """
 	})
 
@@ -687,11 +687,11 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return pet_count >= 10,
 		"ascii":
 """
-			  ▒▒▒▒                       ▒▒▒▒
+			▒▒▒▒                       ▒▒▒▒
 			▒▒░░░░▒▒        ten          ▒▒░░░░▒▒
-		   ▒░░░░░░░░▒    ▒  pets later   ▒░░░░░░░░▒
+		▒░░░░░░░░▒    ▒  pets later   ▒░░░░░░░░▒
 			▒▒░░░░▒▒    ▒    he calls   ▒▒░░░░▒▒
-			  ▒▒▒▒      ▒    her FAITH.   ▒▒▒▒
+			▒▒▒▒      ▒    her FAITH.   ▒▒▒▒
 						▒
 """
 	})
@@ -705,12 +705,12 @@ func _build_thematic_widget() -> void:
 		"ascii":
 """
 						╱
-					   ╱
-					  ╱     one foot off
-					 ╱     the other still
+					╱
+					╱     one foot off
+					╱     the other still
 					╱      wiping. always
-				   ╱       still wiping.
-				  ╱
+				╱       still wiping.
+				╱
 """
 	})
 	_register_segment({"dir": Dir.SOUTH, "row": 9, "tint": c_red,
@@ -718,14 +718,14 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return fall_count >= 3,
 		"ascii":
 """
-			  ╔══════════════════════════════════╗
-			  ║   ░▒▓ THE LEAP ▓▒░               ║
-			  ║  the diner shrinks behind you    ║
-			  ║  the dog watches calmly          ║
-			  ║  she does not bark               ║
-			  ║  she knows you'll come back      ║
-			  ║  she knows you'll fall again     ║
-			  ╚══════════════════════════════════╝
+			╔══════════════════════════════════╗
+			║   ░▒▓ THE LEAP ▓▒░               ║
+			║  the diner shrinks behind you    ║
+			║  the dog watches calmly          ║
+			║  she does not bark               ║
+			║  she knows you'll come back      ║
+			║  she knows you'll fall again     ║
+			╚══════════════════════════════════╝
 """
 	})
 	_register_segment({"dir": Dir.EAST, "row": 7, "tint": c_amber_hot,
@@ -733,12 +733,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return fall_count >= 5,
 		"ascii":
 """
-			  the moon falls sideways.
-			  you fall the same way.
-				  ◐ ◑ ◐ ◑ ◐ ◑
-			  landing was always optional.
-			  ─── five leaps in ───
-			  ─── infinity to go ───
+			the moon falls sideways.
+			you fall the same way.
+				◐ ◑ ◐ ◑ ◐ ◑
+			landing was always optional.
+			─── five leaps in ───
+			─── infinity to go ───
 """
 	})
 
@@ -750,12 +750,12 @@ func _build_thematic_widget() -> void:
 		"requires": func(): return graffiti_seen,
 		"ascii":
 """
-			  ▒▓█  FRANKLY · FOOLISH  █▓▒
-			  the author admits
-			  to having signed
-			  the dream they wrote
-			  ─── the diner is a card ───
-			  ─── you are reading it ───
+			▒▓█  FRANKLY · FOOLISH  █▓▒
+			the author admits
+			to having signed
+			the dream they wrote
+			─── the diner is a card ───
+			─── you are reading it ───
 """
 	})
 
@@ -988,7 +988,7 @@ func _cmd_memory() -> void:
 	for entry in memory:
 		if shown >= 20:
 			_log("[color=#7a5828]  ... (%d more)[/color]" %
-				 (memory.size() - shown))
+				(memory.size() - shown))
 			break
 		_log("  [color=#c8a878]· %s[/color]" % entry)
 		shown += 1
@@ -999,17 +999,17 @@ func _cmd_count() -> void:
 	_log("  wipes:        [color=#ffd896]%d / 64[/color]" % wipe_count)
 	_log("  dog clicks:   [color=#ffd896]%d[/color]" % dog_clicks)
 	_log("  hotspots:     [color=#ffd896]%d[/color]" %
-		 hotspots_seen.size())
+		hotspots_seen.size())
 	_log("  oracle:       [color=#ffd896]%s[/color]" %
-		 ("read" if oracle_read else "unread"))
+		("read" if oracle_read else "unread"))
 	_log("  commands run: [color=#ffd896]%d[/color]" %
-		 commands_run.size())
+		commands_run.size())
 
 
 func _cmd_time() -> void:
 	_log("[color=#d8a060]· chapter time: 3:47 AM[/color]")
 	_log("[color=#c8a878]· dawn drift:   %d%%[/color]" %
-		 int(time_phase * 100))
+		int(time_phase * 100))
 	_log("[color=#7a5828]· the dawn never quite comes.[/color]")
 
 
@@ -1074,7 +1074,7 @@ func _process(delta: float) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("get_bgm_magnitude"):
 		amp = clamp(float(am.call("get_bgm_magnitude", 80.0, 3200.0)) * 10.0,
-					 0.0, 1.0)
+					0.0, 1.0)
 	# Baseline so it ripples even without audio
 	var base_amp = 0.10 + amp * 0.40
 	var idx := 0
