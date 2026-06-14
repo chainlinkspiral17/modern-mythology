@@ -1164,12 +1164,12 @@ def build_riverboat():
              (0.06, 0.14, boat_sign_h + 0.22), (0.32, 0.26, 0.20, 1.0))
     make_box("BoatSign_FrameAft", (fy, boat_sign_cy - boat_sign_w/2 - 0.10, boat_sign_cz),
              (0.06, 0.14, boat_sign_h + 0.22), (0.32, 0.26, 0.20, 1.0))
-    # BLOCK letters on the boat sign — cursive smears at this resolution
-    # when viewed from the parking lot 30m+ away. Block letters read
-    # clearly at distance. Pole sign keeps the cursive for close-up read.
-    make_block_dambrosios("Boat_Port",
-                           (boat_sign_cx - 0.08, boat_sign_cy, boat_sign_cz),
-                           face_axis='X', face_sign=-1, scale=1.6)
+    # Cursive D'Ambrosio's on the boat sign. User prefers cursive over
+    # block letters (block looked bad). Scale 2.0× the cursive baseline
+    # so it fills the panel and reads from across the lot.
+    make_neon_dambrosios("Boat_Port",
+                          (boat_sign_cx - 0.08, boat_sign_cy, boat_sign_cz),
+                          face_axis='X', face_sign=-1, scale=2.0)
 
     # Hawser bollards (mooring posts) on the boiler deck along the PORT rail
     for i, by_p in enumerate([-5.0, 5.0]):
@@ -1274,19 +1274,15 @@ def build_parking_lot():
         # the car silhouette reads less boxy from a distance.
         make_box(f"Car_{i}_body_low", (cx, cy, lot_z + 0.30), (4.0, 1.75, 0.30), col)
         make_box(f"Car_{i}_body_mid", (cx, cy, lot_z + 0.60), (4.1, 1.70, 0.30), col)
-        # Corner spheres at each body corner. Sized BIG enough (radius
-        # 0.55) to actually dominate the silhouette at viewing distance —
-        # the previous 0.30 radius barely registered and the cars still
-        # read as boxes. Plus a 5th sphere on top of the body slab to
-        # round the upper edges.
-        for ssi, (sox, soy) in enumerate([(-1.85, -0.75), (1.85, -0.75),
-                                            (-1.85, 0.75), (1.85, 0.75)]):
+        # Subtle corner rounding only — small spheres at body corners,
+        # NOT the giant 0.55-radius marshmallow blobs of the previous
+        # pass. Keep the car silhouette boxy but soften the hard 90°
+        # corners. User feedback: previous spheres made cars look
+        # alien / poofy.
+        for ssi, (sox, soy) in enumerate([(-1.95, -0.78), (1.95, -0.78),
+                                            (-1.95, 0.78), (1.95, 0.78)]):
             make_sphere(f"Car_{i}_corner_{ssi}", (cx + sox, cy + soy, lot_z + 0.45),
-                        0.55, col)
-        # Long lateral sphere at the body midpoint — really pushes the
-        # silhouette away from a rectangle by adding a rounded waist
-        make_sphere(f"Car_{i}_waist_S", (cx, cy - 0.78, lot_z + 0.45), 0.50, col)
-        make_sphere(f"Car_{i}_waist_N", (cx, cy + 0.78, lot_z + 0.45), 0.50, col)
+                        0.18, col)
         # Hood — PRISM sloping DOWN toward the front (not a flat slab).
         # pitch_axis='Y' would peak along Y; we want peak along X (toward
         # the cabin), bottom along -X (front of car). Use 'X' to put the
@@ -1317,10 +1313,7 @@ def build_parking_lot():
         # Cabin top corner spheres for round greenhouse profile
         for rci, (rox, roy) in enumerate([(-0.78, -0.75), (0.78, -0.75), (-0.78, 0.75), (0.78, 0.75)]):
             make_sphere(f"Car_{i}_cabinCorner_{rci}", (cx + rox, cy + roy, lot_z + 1.20),
-                        0.35, col)
-        # Big sphere capping the cabin top — visible "roof bubble" that
-        # rounds the upper silhouette into a proper greenhouse shape
-        make_sphere(f"Car_{i}_cabinTop", (cx, cy, lot_z + 1.30), 0.60, roof_col)
+                        0.12, col)
         # Windshield (front of cabin), rear window
         make_box(f"Car_{i}_windshield", (cx + front_off_x * 0.425, cy, lot_z + 1.05), (0.06, 1.45, 0.45), COL_CAR_GLASS)
         make_box(f"Car_{i}_rearwin",    (cx + back_off_x * 0.425,  cy, lot_z + 1.05), (0.06, 1.45, 0.42), COL_CAR_GLASS)
@@ -1911,6 +1904,130 @@ def build_road_network():
              (1.6, 2.4, 1.10), (0.18, 0.28, 0.30, 1.0))
     make_prism("Trash_DumpsterLid", (dx, dy, 1.10),
                (1.6, 2.4, 0.20), (0.14, 0.20, 0.22, 1.0), pitch_axis='Y')
+
+    # ════════════════════════════════════════════════════════════
+    # TRAFFIC SIGNS — stop signs at each driveway entrance, speed
+    # limit, yield signs, an "exit / D'Ambrosio's" arrow sign.
+    # Makes the road network read as FUNCTIONAL, not just decorative.
+    # ════════════════════════════════════════════════════════════
+    def _make_stop_sign(name, x, y, facing_west=False):
+        """Octagonal stop sign on a thin metal pole."""
+        make_cyl(f"{name}_Pole", (x, y, 1.2), 0.05, 2.4, pole_metal, segments=6)
+        # Sign disc (octagon approximated as 8-segment cylinder)
+        make_cyl(f"{name}_Disc", (x, y, 2.3), 0.36, 0.05,
+                 (0.85, 0.18, 0.16, 1.0), segments=8)
+        # The white "STOP" band — a horizontal stripe on the disc face
+        face_x_off = -0.03 if facing_west else 0.03
+        make_box(f"{name}_Text", (x + face_x_off, y, 2.3),
+                 (0.02, 0.50, 0.10), (0.92, 0.88, 0.78, 1.0))
+
+    def _make_yield_sign(name, x, y):
+        """Triangle yield sign (downward-pointing triangle)."""
+        make_cyl(f"{name}_Pole", (x, y, 1.0), 0.05, 2.0, pole_metal, segments=6)
+        # Yield triangle approximated as a prism
+        make_prism(f"{name}_Triangle", (x, y, 1.95), (0.50, 0.05, 0.50),
+                   (0.85, 0.18, 0.16, 1.0), pitch_axis='Y')
+
+    def _make_speed_limit(name, x, y, limit_text="35"):
+        """Speed limit sign — white rectangle on a pole."""
+        make_cyl(f"{name}_Pole", (x, y, 1.3), 0.05, 2.6, pole_metal, segments=6)
+        make_box(f"{name}_Panel", (x, y, 2.45),
+                 (0.45, 0.04, 0.60), (0.92, 0.88, 0.78, 1.0))
+        # Black border
+        make_box(f"{name}_Border_T", (x, y - 0.02, 2.72),
+                 (0.45, 0.02, 0.04), (0.10, 0.10, 0.10, 1.0))
+        make_box(f"{name}_Border_B", (x, y - 0.02, 2.18),
+                 (0.45, 0.02, 0.04), (0.10, 0.10, 0.10, 1.0))
+        # Speed number block — a thicker rectangle in the middle
+        make_box(f"{name}_Number", (x, y - 0.02, 2.42),
+                 (0.32, 0.02, 0.32), (0.10, 0.10, 0.10, 1.0))
+
+    # Stop signs at the parking-lot driveway entrances (both N and S)
+    for ssi, sy in enumerate([-16.5, 16.5]):
+        _make_stop_sign(f"StopSign_LotDrive_{ssi}",
+                         FRONTAGE_X + road_w/2 + side_w + 0.4, sy + 3.0)
+
+    # Stop sign at the gas-station exit
+    _make_stop_sign("StopSign_GasExit",
+                     FRONTAGE_X + road_w/2 + side_w + 0.4, -28.0)
+
+    # Stop sign at the strip-mall exit
+    _make_stop_sign("StopSign_MallExit",
+                     FRONTAGE_X + road_w/2 + side_w + 0.4, 22.0)
+
+    # Yield sign at the highway-ramp merge with the frontage road
+    _make_yield_sign("Yield_HwyMerge",
+                      FRONTAGE_X - road_w/2 - side_w - 0.4, 64.0)
+
+    # Speed limit signs (35 mph) at the north and south entries
+    _make_speed_limit("SpeedLimit_N",
+                       FRONTAGE_X - road_w/2 - side_w - 0.4, 95.0)
+    _make_speed_limit("SpeedLimit_S",
+                       FRONTAGE_X + road_w/2 + side_w + 0.4, -95.0)
+
+    # ── "D'AMBROSIO'S → " EXIT ARROW SIGN at the road
+    # Two-line sign on a tall post — points east toward the lot entry.
+    exit_x = FRONTAGE_X - road_w/2 - side_w - 0.6
+    exit_y = -8.0
+    make_cyl("ExitSign_Pole", (exit_x, exit_y, 2.0), 0.07, 4.0, pole_metal, segments=6)
+    # Brown "destination" sign (standard US tourist colour)
+    make_box("ExitSign_Panel", (exit_x, exit_y, 3.4),
+             (1.8, 0.05, 0.7), (0.42, 0.28, 0.16, 1.0))
+    # White text band suggestion
+    make_box("ExitSign_Text", (exit_x - 0.03, exit_y, 3.4),
+             (1.5, 0.02, 0.25), (0.92, 0.88, 0.78, 1.0))
+    # Arrow at the right edge (suggested as a small triangle prism)
+    make_prism("ExitSign_Arrow", (exit_x + 0.04, exit_y + 0.65, 3.4),
+               (0.20, 0.10, 0.30), (0.92, 0.88, 0.78, 1.0), pitch_axis='Y')
+
+    # ── HIGHWAY OFF-RAMP — proper sloped roadway descending from the
+    # overpass (at y=9.0 elevation) down to the frontage-road level at
+    # the merge point. Visible from the parking lot looking west.
+    hwy_x = -115.0   # matches build_near_shore's NEAR_HIGHWAY_X
+    ramp_top_x = hwy_x + 3.0
+    ramp_top_y = 60.0
+    ramp_top_z = 8.5   # just below the highway deck
+    ramp_bot_x = FRONTAGE_X - road_w/2 - side_w - 2.0
+    ramp_bot_y = 64.0
+    ramp_bot_z = road_surface_z + 0.05
+    make_ramp("HwyOffRamp",
+              (ramp_top_x, ramp_top_y, ramp_top_z),
+              (ramp_bot_x, ramp_bot_y, ramp_bot_z),
+              6.0, 0.50, asphalt, width_axis='Y')
+    # Painted edge lines on the ramp
+    make_ramp("HwyOffRamp_EdgeN",
+              (ramp_top_x, ramp_top_y + 2.8, ramp_top_z + 0.02),
+              (ramp_bot_x, ramp_bot_y + 2.8, ramp_bot_z + 0.02),
+              0.20, 0.01, white_line, width_axis='Y')
+    make_ramp("HwyOffRamp_EdgeS",
+              (ramp_top_x, ramp_top_y - 2.8, ramp_top_z + 0.02),
+              (ramp_bot_x, ramp_bot_y - 2.8, ramp_bot_z + 0.02),
+              0.20, 0.01, white_line, width_axis='Y')
+    # Concrete guardrail on each side of the ramp
+    for side, sy_g in (("S", -3.0), ("N", 3.0)):
+        make_ramp(f"HwyOffRamp_Rail_{side}",
+                  (ramp_top_x, ramp_top_y + sy_g, ramp_top_z + 0.60),
+                  (ramp_bot_x, ramp_bot_y + sy_g, ramp_bot_z + 0.60),
+                  0.20, 0.40, (0.55, 0.52, 0.46, 1.0), width_axis='Y')
+
+    # "EXIT 23 — RIVER ROAD" big green highway sign at the top of the ramp
+    es_x = ramp_top_x + 3.0
+    es_y = ramp_top_y
+    es_z = ramp_top_z + 4.0
+    # Gantry posts
+    make_cyl("ExitGantry_W", (es_x, es_y - 3.5, es_z * 0.5), 0.16, es_z,
+             pole_metal, segments=6)
+    make_cyl("ExitGantry_E", (es_x, es_y + 3.5, es_z * 0.5), 0.16, es_z,
+             pole_metal, segments=6)
+    # Cross beam at the top
+    make_box("ExitGantry_Top", (es_x, es_y, es_z + 0.1),
+             (0.30, 7.0, 0.20), pole_metal)
+    # Green highway sign panel
+    make_box("ExitSign_Highway", (es_x + 0.05, es_y, es_z - 0.6),
+             (0.06, 5.0, 1.2), (0.18, 0.36, 0.28, 1.0))
+    # White text band
+    make_box("ExitSign_HighwayText", (es_x + 0.09, es_y, es_z - 0.6),
+             (0.02, 4.4, 0.5), (0.92, 0.88, 0.78, 1.0))
 
     # ════════════════════════════════════════════════════════════
     # PUBLIC PARK — a small green space south of the gas station,
