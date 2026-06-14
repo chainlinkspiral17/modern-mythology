@@ -52,6 +52,9 @@ shader_parameter/edge_glow = 0.4
 shader_parameter/scene_blend = 0.0
 shader_parameter/bleed_lo = 0.78
 shader_parameter/bleed_hi = 0.96
+shader_parameter/sat_bleed = false
+shader_parameter/sat_lo = 0.40
+shader_parameter/sat_hi = 0.60
 
 [sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
 shader = ExtResource("9_dir")

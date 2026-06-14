@@ -121,8 +121,10 @@ const MOODS: Array = [
         "neon_edge": Color(0.96, 0.94, 0.88, 1),
         "neon_low":  Color(0.0, 0.0, 0.0, 1),
         "neon_high": Color(0.0, 0.0, 0.0, 1),
-        "neon_grad": 0.0, "neon_blend": 0.55, "neon_glow": 0.18,
-        "neon_bleed_lo": 0.92, "neon_bleed_hi": 0.99,
+        "neon_grad": 0.0, "neon_blend": 0.65, "neon_glow": 0.18,
+        "neon_bleed_lo": 0.65, "neon_bleed_hi": 0.90,
+        "neon_sat_bleed": true,
+        "neon_sat_lo": 0.40, "neon_sat_hi": 0.60,
         # ASCII density at REDUCED strength — adds halftone on top of
         # the linework foundation without burying it. red_threshold
         # raised to 0.32 so warm tungsten bulbs render as WHITE glyphs;
@@ -154,12 +156,14 @@ const MOODS: Array = [
         "neon_edge": Color(0.96, 0.94, 0.88, 1),
         "neon_low":  Color(0.0,  0.0,  0.0,  1),
         "neon_high": Color(0.0,  0.0,  0.0,  1),
-        # scene_blend lets bright pixels through, but bleed_lo/hi gate
-        # WHICH pixels qualify. (0.92, 0.99) is the lithograph-tight
-        # range — only near-saturated pixels (sign letters, bulb
-        # meshes) bleed; lit walls and dim surfaces stay pure black.
-        "neon_grad": 0.0, "neon_blend": 0.55, "neon_glow": 0.15,
-        "neon_bleed_lo": 0.92, "neon_bleed_hi": 0.99,
+        # Brightness gate × saturation gate = ONLY truly emissive
+        # accent colours bleed through the black fill. Walls lit to
+        # the same brightness as the sign letters still stay black
+        # because their saturation is ~0.20 vs the sign's ~0.82.
+        "neon_grad": 0.0, "neon_blend": 0.65, "neon_glow": 0.15,
+        "neon_bleed_lo": 0.65, "neon_bleed_hi": 0.90,
+        "neon_sat_bleed": true,
+        "neon_sat_lo": 0.40, "neon_sat_hi": 0.60,
     },
     {
         "name": "ice",
@@ -260,6 +264,9 @@ func _apply(preset: Dictionary) -> void:
         "edge_glow":      preset.get("neon_glow", 0.4),
         "bleed_lo":       preset.get("neon_bleed_lo", 0.78),
         "bleed_hi":       preset.get("neon_bleed_hi", 0.96),
+        "sat_bleed":      preset.get("neon_sat_bleed", false),
+        "sat_lo":         preset.get("neon_sat_lo", 0.40),
+        "sat_hi":         preset.get("neon_sat_hi", 0.60),
     })
     _set_params("DirAsciiQuad", {
         "strength":       preset.get("dir_ascii", 0.0),

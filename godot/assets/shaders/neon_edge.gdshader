@@ -44,12 +44,20 @@ uniform float scene_blend : hint_range(0.0, 1.0) = 0.0;
 
 uniform float bleed_lo : hint_range(0.0, 1.0) = 0.78;
 uniform float bleed_hi : hint_range(0.0, 1.0) = 0.96;
-// bleed_lo/hi = scene-brightness smoothstep range for "let the scene
-// colour show through the fill". Default (0.78, 0.96) lets bright
-// lamp glows through; for the lithograph look raise to (0.92, 0.99)
-// so ONLY the truly saturated pixels (sign letters, neon, lit bulb
-// meshes) bleed and the rest of the scene stays in the pure black
-// fill. Mid-tone walls have their color stripped to pure black.
+// bleed_lo/hi = scene-brightness smoothstep range for the bleed.
+// Default (0.78, 0.96) lets bright lamp glows through; raise to
+// (0.92, 0.99) to be stricter.
+
+uniform bool sat_bleed = false;
+uniform float sat_lo : hint_range(0.0, 1.0) = 0.40;
+uniform float sat_hi : hint_range(0.0, 1.0) = 0.60;
+// sat_bleed = true → AND a saturation gate on top of the brightness
+// gate. Discriminates "saturated accent" (red sign letters at sat
+// ≈ 0.82, warm bulbs ≈ 0.64) from "lit-but-grey/cream wall" (sat
+// ≈ 0.20). Cream-coloured walls stay pure black even when lit
+// past the brightness threshold; only true accent colours bleed.
+// This is the lithograph match — the reference shows ONLY the
+// sign and lit windows in colour, walls are black with white edges.
 
 float luma(vec3 c) {
     return dot(c, vec3(0.299, 0.587, 0.114));
@@ -85,9 +93,19 @@ void fragment() {
     // most of the screen stays in the dark gradient. This keeps the
     // pure-black-background look the concept art is going for.
     vec3 scene_now = texture(SCREEN_TEXTURE, uv).rgb;
-    float scene_warmth = max(scene_now.r, max(scene_now.g, scene_now.b));
-    float warmth_mask = smoothstep(bleed_lo, bleed_hi, scene_warmth);
-    fill = mix(fill, scene_now * 1.8, scene_blend * warmth_mask);
+    float scene_max = max(scene_now.r, max(scene_now.g, scene_now.b));
+    float brightness_mask = smoothstep(bleed_lo, bleed_hi, scene_max);
+    float bleed_mask = brightness_mask;
+    if (sat_bleed) {
+        // Saturation gate: only saturated accent colours pass.
+        // Cream walls (sat ≈ 0.20) get masked even when lit bright;
+        // sign red (sat ≈ 0.82) and warm bulbs (sat ≈ 0.64) clear.
+        float scene_min = min(scene_now.r, min(scene_now.g, scene_now.b));
+        float saturation = scene_max > 0.001 ? (scene_max - scene_min) / scene_max : 0.0;
+        float sat_mask = smoothstep(sat_lo, sat_hi, saturation);
+        bleed_mask *= sat_mask;
+    }
+    fill = mix(fill, scene_now * 1.8, scene_blend * bleed_mask);
 
     // Cheap bloom: sample a wider edge mask for the glow halo
     vec2 gpx = SCREEN_PIXEL_SIZE * (edge_thickness + 3.0);
