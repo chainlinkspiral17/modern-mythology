@@ -89,6 +89,13 @@ func _unhandled_input(event: InputEvent) -> void:
                 global_position = Vector3(0, 3, 0)
                 velocity = Vector3.ZERO
                 print("[FPC] teleport to (0, 3, 0) · current global_position now %s" % global_position)
+            KEY_F4:
+                # Toggle the debug HUD CanvasLayer. The riverfront scene's
+                # HUD lives at "../HUD" by convention (sibling of Player).
+                var hud := get_node_or_null(NodePath("../HUD"))
+                if hud is CanvasLayer:
+                    hud.visible = not hud.visible
+                    print("[FPC] HUD visible = %s" % hud.visible)
 
 
 func _physics_process(delta: float) -> void:

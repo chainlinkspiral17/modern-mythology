@@ -14,6 +14,55 @@ mistakes that took specific user feedback to discover.
 
 ## Core rules
 
+### Infrastructure placement — align to a working grid
+
+Every locale's signage, utility, and street furniture follows the
+SAME placement discipline a real town planner would use. Players read
+"this place is laid out by humans" or "this is a video-game blob"
+within the first second — and the difference is almost entirely
+this:
+
+**Public right-of-way (roads, sidewalks, intersections):**
+- Only the most essential public utilities — stop signs, traffic
+  signals, hydrants, manhole covers, mailboxes, public lampposts.
+- Streetlights and utility poles sit at the EDGE of the road on
+  the buffer strip, NEVER in the road surface itself.
+- Sidewalks belong to pedestrians; nothing planted in them except
+  saplings and the utility access listed above.
+
+**Private / commercial property:**
+- All advertising signs (pole signs, marquees, monument signs)
+  live on the owner's land — set back from the sidewalk by the
+  buffer strip, but clearly on commercial ground.
+- Parking-lot signs sit at the lot's road-facing corner, on
+  commercial property, panel facing the road.
+- Landscape grove / hedges / planters owned by the business sit
+  on the business's lot, often as a buffer between parking and
+  the public sidewalk.
+
+**Cross-check rule** when placing anything new in a build script:
+- Is `obj_x` between the road centerline and the sidewalk's outer
+  edge? → only public infrastructure goes here.
+- Is `obj_x` further out than the sidewalk's outer edge? → it's on
+  someone's property; pick the right owner and put it there.
+- Is `obj_x` in the middle of the road? → never, full stop.
+
+Riverfront-specific anchors (Blender frame; remap to Godot at
+runtime):
+
+| Element                       | X            | Y          |
+|-------------------------------|--------------|------------|
+| Road centerline (FRONTAGE_X)  | -55          | varies     |
+| Road surface edge (W/E)       | -55 ± 6      | varies     |
+| Sidewalk outer edge           | -55 ± 8      | varies     |
+| Commercial property starts    | -55 ± 9      | varies     |
+| D'Ambrosio's parking lot      | x ∈ [-41, -19], y ∈ [-18, +18] | |
+| D'Ambrosio's pole sign        | lot_cx - lot_x_w/2 + 1.0 | lot_cy - lot_y_l/2 + 2.0 |
+
+Don't relocate a sign onto the road shoulder just because it makes
+a composition look good — break the rule visibly enough and the
+locale stops feeling like a place.
+
 ### Coordinate frame — Blender Z-up vs Godot Y-up (MUST READ)
 
 **Same units (meters), different up-axis.** The build scripts use

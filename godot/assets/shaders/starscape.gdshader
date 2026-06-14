@@ -142,10 +142,11 @@ void fragment() {
         total_mask = max(total_mask, layer);
     }
 
-    // Composite over the dark sky scene, gated by sky_mask × strength.
-    // sky_active and sky_mask both fold in so non-sky pixels keep the
-    // scene unchanged.
+    // Composite as ADDITIVE on top of the dark sky so the stars POP
+    // bright against the near-black fill rather than blending toward
+    // it. sky_active and sky_mask gate it to dark pixels only; the
+    // 1.6 multiplier punches contrast so the layers read clearly.
     float final_mask = clamp(total_mask * sky_mask * sky_active * strength, 0.0, 1.0);
-    vec3 result = mix(scene_now, paint, final_mask);
+    vec3 result = scene_now + paint * final_mask * 1.6;
     COLOR = vec4(result, 1.0);
 }

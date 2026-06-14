@@ -134,9 +134,13 @@ const MOODS: Array = [
         "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
         # Animated ASCII starscape layer over the dark sky pixels —
         # slow spiral galaxy + twinkling stars + fungal-microchip drift.
-        "star": 1.0, "star_cell": 10.0, "star_time": 0.40,
-        "star_sky_thresh": 0.10,
-        "star_galaxy": 0.6, "star_stars": 0.85, "star_chip": 0.45,
+        # Starscape DIALED UP so it's actually visible on the dark
+        # sky pixels — galaxy spiral, twinkling stars, fungal chip
+        # all near their max. sky_thresh widened (0.10 → 0.18) so
+        # more "almost-dark" pixels qualify as sky and accept paint.
+        "star": 1.0, "star_cell": 9.0, "star_time": 0.40,
+        "star_sky_thresh": 0.18,
+        "star_galaxy": 0.95, "star_stars": 1.0, "star_chip": 0.70,
         # ASCII density at LIGHTER strength — adds halftone where the
         # picture is bright, doesn't flood pure-black surfaces.
         "dir_ascii": 0.40, "dir_cell": 9.0, "dir_thresh": 0.06,
@@ -180,9 +184,13 @@ const MOODS: Array = [
         "neon_sat_lo": 0.40, "neon_sat_hi": 0.65,
         # Animated ASCII starscape layer over the dark sky pixels —
         # slow spiral galaxy + twinkling stars + fungal-microchip drift.
-        "star": 1.0, "star_cell": 10.0, "star_time": 0.40,
-        "star_sky_thresh": 0.10,
-        "star_galaxy": 0.6, "star_stars": 0.85, "star_chip": 0.45,
+        # Starscape DIALED UP so it's actually visible on the dark
+        # sky pixels — galaxy spiral, twinkling stars, fungal chip
+        # all near their max. sky_thresh widened (0.10 → 0.18) so
+        # more "almost-dark" pixels qualify as sky and accept paint.
+        "star": 1.0, "star_cell": 9.0, "star_time": 0.40,
+        "star_sky_thresh": 0.18,
+        "star_galaxy": 0.95, "star_stars": 1.0, "star_chip": 0.70,
     },
     {
         "name": "ice",
