@@ -138,14 +138,19 @@ const MOODS: Array = [
         # The picture reads as an ink drawing of whatever the camera
         # actually sees.
         "name": "linework",
-        "palette": 6.0, "dither": 0.04, "scanline": 0.18, "aberration": 0.0004,
+        "palette": 6.0, "dither": 0.02, "scanline": 0.10, "aberration": 0.0002,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
-        "neon": 1.0, "neon_thresh": 0.025,
+        "neon": 1.0, "neon_thresh": 0.018,            # lower threshold = catches finer architectural creases
         "neon_edge": Color(0.96, 0.94, 0.88, 1),     # near-white ink
         "neon_low":  Color(0.0,  0.0,  0.0,  1),     # pure black fill
         "neon_high": Color(0.0,  0.0,  0.0,  1),
-        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.35,
+        # scene_blend > 0 with the shader's smoothstep(0.78, 0.96)
+        # brightness threshold lets ONLY the brightest pixels — sign
+        # letters in saturated red, lamp bulbs in near-white — show
+        # through the black fill as their actual scene color. Rest of
+        # the scene stays clean ink linework.
+        "neon_grad": 0.0, "neon_blend": 0.45, "neon_glow": 0.15,
     },
     {
         "name": "ice",
