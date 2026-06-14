@@ -168,19 +168,28 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 #### Topography per locale (vol5–7 canon)
 
-The `build_ground()` implementation MUST differ per locale because
-the canonical topography differs:
+CORRECTION on previous note: "flat" was wrong. The bayou locales are
+**RELATIVELY** flat — they have geology and topography. They are not
+perfectly-level planes. The `build_ground()` implementation MUST
+respect each locale's canon topography:
 
-- **D'Ambrosio's riverfront** (vol5) — **flat** bayou-bottomland.
-  Single Z-constant ground plane + dirt/grass overlay patches works.
-- **Harmony Creek Estates** (vol5/6) — **flat** suburban lawns.
-  Same approach as riverfront: a continuous lawn-tone ground plane.
-  Roads = curving cul-de-sac network.
-- **Graustark, TX/LA** (vol5) — **flat** small-town main-street grid.
-  Same approach: single ground plane + grid of intersecting roads.
-- **Smolvud, central OR coast** (vol5/6) — **NOT FLAT**. Cold rain
-  forest with dramatic cliffs and structures built on wildly varied
-  geology and topography. `build_ground()` for Smolvud needs:
+- **D'Ambrosio's riverfront** (vol5) — relatively flat bayou bottom-
+  land with raised road berms, drainage ditches at lower-than-grade,
+  ground that varies a few inches between developed lots / scrub /
+  river edge. Not perfectly level.
+- **Harmony Creek Estates** (vol5/6) — relatively flat suburban
+  lawns with some rolling terrain. Has a CREEK (per the name) which
+  means a lower drainage channel running through. Each lawn rises
+  slightly off the street to its house.
+- **Graustark, TX/LA** (vol5) — relatively flat small-town main
+  street, BUT canon: **half of the town sinks into a sinkhole**
+  during the story. The sinkhole geometry must be supported by
+  build_ground from the start — a tilted / collapsed crater section
+  through the town centre, dropping perhaps 8-15m below grade.
+  Adjacent buildings lean into the void. Plan terrain accordingly.
+- **Smolvud, central OR coast** (vol5/6) — emphatically NOT flat.
+  Cold rain forest with dramatic cliffs and structures built on
+  wildly varied geology. `build_ground()` for Smolvud needs:
     · Heightmap-style terrain (varied Z), NOT a flat plane.
     · Cliff faces as stacked angled prism walls.
     · Coastal rocky outcrops (sphere clusters + angled boxes).
@@ -208,6 +217,39 @@ the canonical topography differs:
 
 These don't exist yet — call them out when Smolvud begins, and
 add to the helper library at the top of the build script.
+
+#### Bayou-city features that are EXPECTED (vol5 Graustark + riverfront)
+
+The user explicitly called out these as required to read as a bayou
+city. Build them or it doesn't feel right:
+
+- **Raised roads on low berms** — the road sits a few inches above
+  grade so it stays drivable through rain/flood. Suggested visually
+  by drainage ditches sitting LOWER alongside, not necessarily by a
+  dramatic earthen mound.
+- **Drainage ditches** on both sides of every road, with a muddy
+  floor and patches of standing tannin water (the bayou water table
+  is high, the ditches stay damp).
+- **Sewer grates** at curb-line intervals (every 28-30m), steel
+  frames with parallel slats.
+- **Wear and tear on asphalt** — darker splotches, patches, cracks.
+  Real bayou roads are not pristine.
+- **Public parks and green spaces** — lawn, picnic tables, swing
+  sets, benches, shade trees with Spanish moss, winding concrete
+  paths, signage, trash cans.
+- **Houses with porches and yards** (for HCE and Graustark).
+- **Telephone poles** with crossbars + ceramic insulators + sagging
+  power cables strung between them, repeated every ~25m.
+- **Streetlights** along the road every ~22m, with arms and lenses
+  glowing warm.
+- **Mailboxes** on posts along the road shoulder.
+- **Fire hydrants** at intersections.
+- **Trees lining the road** (cypress / live oak / pine, alternating).
+- **Sidewalks** with seam-line concrete texture.
+
+These items move a scene from "scattered objects on a flat plane"
+to "actual block in a working town." Skip any of them and the
+scene reads as empty.
 
 ### 2026-06-14 · the mood-cycler shader system is reusable
 

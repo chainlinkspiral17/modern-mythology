@@ -1366,64 +1366,396 @@ def build_river():
 
 
 def build_road_network():
-    """Driveways and sidewalks connecting the developed patches so the
-    layout reads as a functional bayou-city block instead of floating
-    asphalt islands.
-
-    Connects:
-      · frontage road ↔ parking-lot entrance (south curb cut)
-      · frontage road ↔ gas-station forecourt
-      · frontage road ↔ strip-mall lot
-      · frontage road ↔ highway overpass (an access ramp to the west)
-      · parking lot ↔ dock (a strip of asphalt continuing east)
-    Plus concrete sidewalks along each major edge."""
-
-    asphalt = (0.18, 0.18, 0.18, 1.0)
+    """A functional road system tying the bayou-city block together.
+    Frontage road runs N-S with full lane markings (yellow centerline,
+    white edge stripes, dashed lane divider). Sidewalks border every
+    lot edge. Driveways with proper aprons connect each developed
+    patch to the frontage. Telephone poles and streetlights repeat
+    along the road. Trees line both sides.
+    """
+    asphalt = (0.16, 0.16, 0.16, 1.0)
     concrete = (0.62, 0.60, 0.55, 1.0)
-    line = (0.70, 0.62, 0.30, 1.0)
+    yellow_line = (0.78, 0.65, 0.20, 1.0)
+    white_line = (0.88, 0.86, 0.78, 1.0)
+    pole_wood = (0.40, 0.28, 0.18, 1.0)
+    pole_metal = (0.30, 0.28, 0.24, 1.0)
 
-    # ── Sidewalk along the parking lot's west side (between lot and frontage)
-    make_box("Sidewalk_LotW", (-43.0, 0.0, -0.02), (3.0, 36.0, 0.06), concrete)
-    # ── Sidewalk along the strip mall's east side (between mall lot and frontage)
-    make_box("Sidewalk_MallE", (-44.0, 30.0, -0.02), (1.4, 36.0, 0.06), concrete)
-    # ── Sidewalk along the gas station's east side
-    make_box("Sidewalk_GasE", (-44.0, -38.0, -0.02), (1.4, 20.0, 0.06), concrete)
+    # ── FRONTAGE ROAD — 12m wide, runs Y = -110 to +110. Bayou-city
+    # roads ride a few inches above grade for flooding; the "raised"
+    # effect is sold by the drainage ditches alongside sitting visibly
+    # LOWER than the road, not by raising the road to a dramatic berm.
+    FRONTAGE_X = -40.0
+    road_w = 12.0
+    road_l = 220.0
+    road_surface_z = 0.04   # ~6cm proud of base ground (which sits at -0.04 average)
+    # Low berm beneath the asphalt — barely-there roll under the surface
+    make_box("Frontage_Berm", (FRONTAGE_X, 0.0, road_surface_z / 2),
+             (road_w + 0.6, road_l, road_surface_z), (0.30, 0.26, 0.20, 1.0))
+    # Asphalt deck
+    make_box("Frontage_Asphalt", (FRONTAGE_X, 0.0, road_surface_z + 0.02),
+             (road_w, road_l, 0.04), asphalt)
+    # Wear & tear patches — darker splotches where the asphalt has
+    # cracked, been roughly patched, or stained
+    wear_col = (0.10, 0.10, 0.10, 1.0)
+    patch_col = (0.22, 0.22, 0.22, 1.0)
+    for wi, (wx_off, wy, ww_, wl_) in enumerate([
+        (-2.0, -68, 2.2, 3.5), (1.5, -32, 1.8, 2.8), (-3.5, 8, 3.0, 4.0),
+        (2.0,  46, 2.4, 3.2), (-1.0, 78, 2.0, 2.4),
+    ]):
+        make_box(f"Frontage_Wear_{wi}", (FRONTAGE_X + wx_off, wy, road_surface_z + 0.045),
+                 (ww_, wl_, 0.005), wear_col)
+    for pi, (px_off, py, pw_, pl_) in enumerate([
+        (3.0, -90, 1.6, 2.0), (-3.0, -54, 1.4, 1.8), (0.5, -16, 1.8, 2.4),
+        (2.5, 22, 1.4, 1.8), (-2.5, 62, 2.0, 2.6), (1.0, 94, 1.6, 2.2),
+    ]):
+        make_box(f"Frontage_Patch_{pi}", (FRONTAGE_X + px_off, py, road_surface_z + 0.045),
+                 (pw_, pl_, 0.005), patch_col)
+    # Lane markings sit just above the raised asphalt
+    road_paint_z = road_surface_z + 0.06
+    # White edge stripes on both sides
+    make_box("Frontage_EdgeW", (FRONTAGE_X - road_w/2 + 0.30, 0.0, road_paint_z),
+             (0.18, road_l, 0.005), white_line)
+    make_box("Frontage_EdgeE", (FRONTAGE_X + road_w/2 - 0.30, 0.0, road_paint_z),
+             (0.18, road_l, 0.005), white_line)
+    # Double-yellow center line
+    make_box("Frontage_CenterW", (FRONTAGE_X - 0.10, 0.0, road_paint_z),
+             (0.10, road_l - 4.0, 0.005), yellow_line)
+    make_box("Frontage_CenterE", (FRONTAGE_X + 0.10, 0.0, road_paint_z),
+             (0.10, road_l - 4.0, 0.005), yellow_line)
+    # Dashed white lane divider on each side of the centerline (one per direction)
+    for di in range(44):
+        dy = -100.0 + di * 4.5
+        make_box(f"Frontage_DashS_{di}", (FRONTAGE_X - 3.0, dy, road_paint_z),
+                 (0.14, 2.0, 0.005), white_line)
+        make_box(f"Frontage_DashN_{di}", (FRONTAGE_X + 3.0, dy, road_paint_z),
+                 (0.14, 2.0, 0.005), white_line)
 
-    # ── Driveway from frontage road → parking lot (south curb cut)
-    make_box("Drive_LotToFront_S", (-39.0, -16.5, -0.02), (8.0, 5.0, 0.04), asphalt)
-    # painted lines
-    make_box("Drive_LotToFront_S_line", (-39.0, -16.5, 0.005),
-             (0.08, 4.5, 0.005), line)
+    # ── DRAINAGE DITCHES on both sides of the raised road. Lower than
+    # grade so runoff collects. Tannin-stained shallow water in the
+    # bottom (the bayou table is high — the ditches stay damp).
+    ditch_col = (0.30, 0.26, 0.18, 1.0)        # muddy floor
+    ditch_water = (0.22, 0.26, 0.22, 1.0)      # standing tannin water
+    for side, ditch_x in (("W", FRONTAGE_X - road_w/2 - 0.9),
+                          ("E", FRONTAGE_X + road_w/2 + 0.9)):
+        # ditch floor
+        make_box(f"Ditch_{side}_Floor", (ditch_x, 0.0, -0.18),
+                 (1.4, road_l, 0.10), ditch_col)
+        # standing water (a few discontinuous segments — runs along)
+        for wi, (wy, wl_) in enumerate([(-80, 28), (-30, 22), (12, 18),
+                                          (52, 24), (90, 16)]):
+            make_box(f"Ditch_{side}_Water_{wi}", (ditch_x, wy, -0.14),
+                     (1.1, wl_, 0.02), ditch_water)
+        # outer berm of the ditch (the lip between ditch and sidewalk)
+        make_box(f"Ditch_{side}_OuterBerm",
+                 (ditch_x + (0.95 if side == "E" else -0.95), 0.0, 0.04),
+                 (0.20, road_l, 0.20), (0.32, 0.28, 0.20, 1.0))
 
-    # ── Driveway from frontage road → parking lot (north curb cut)
-    make_box("Drive_LotToFront_N", (-39.0, 16.5, -0.02), (8.0, 5.0, 0.04), asphalt)
-    make_box("Drive_LotToFront_N_line", (-39.0, 16.5, 0.005),
-             (0.08, 4.5, 0.005), line)
+    # ── SEWER GRATES along the road edges — the bayou-city detail that
+    # says "rainfall runoff drains here." Steel grates with parallel
+    # slats, set into the asphalt curb.
+    grate_col = (0.18, 0.16, 0.14, 1.0)
+    slat_col = (0.10, 0.10, 0.10, 1.0)
+    for gi, gy in enumerate([-92, -64, -36, -8, 20, 48, 76, 100]):
+        for side_label, gx in (("W", FRONTAGE_X - road_w/2 + 0.30),
+                                ("E", FRONTAGE_X + road_w/2 - 0.30)):
+            # the grate frame
+            make_box(f"SewerGrate_{side_label}_{gi}", (gx, gy, road_paint_z - 0.02),
+                     (1.2, 0.6, 0.03), grate_col)
+            # parallel slats
+            for sj in range(6):
+                sy_o = -0.22 + sj * 0.09
+                make_box(f"SewerGrate_{side_label}_{gi}_slat_{sj}",
+                         (gx, gy + sy_o, road_paint_z + 0.005),
+                         (1.0, 0.04, 0.005), slat_col)
 
-    # ── Gas-station forecourt apron + curb cut from frontage road
-    make_box("Drive_GasApron", (-46.0, -38.0, -0.02), (14.0, 18.0, 0.04), asphalt)
-    # entry/exit markings
-    make_box("Drive_Gas_line_W", (-50.0, -38.0, 0.005), (0.08, 14.0, 0.005), line)
-    make_box("Drive_Gas_line_E", (-42.0, -38.0, 0.005), (0.08, 14.0, 0.005), line)
+    # ── SIDEWALKS along both sides of the frontage road, full length
+    side_w = 2.2
+    make_box("Sidewalk_FrontageW", (FRONTAGE_X - road_w/2 - side_w/2, 0.0, -0.02),
+             (side_w, road_l, 0.08), concrete)
+    make_box("Sidewalk_FrontageE", (FRONTAGE_X + road_w/2 + side_w/2, 0.0, -0.02),
+             (side_w, road_l, 0.08), concrete)
+    # Sidewalk seam-lines every 3m for that real-concrete look
+    for si in range(int(road_l / 3.0)):
+        sy = -road_l/2 + 1.5 + si * 3.0
+        make_box(f"SidewalkSeam_W_{si}",
+                 (FRONTAGE_X - road_w/2 - side_w/2, sy, 0.022),
+                 (side_w - 0.1, 0.04, 0.005), (0.42, 0.40, 0.36, 1.0))
+        make_box(f"SidewalkSeam_E_{si}",
+                 (FRONTAGE_X + road_w/2 + side_w/2, sy, 0.022),
+                 (side_w - 0.1, 0.04, 0.005), (0.42, 0.40, 0.36, 1.0))
 
-    # ── Driveway from frontage to highway overpass (west, runs into the
-    # distance — implies the highway has an on-ramp out west)
-    make_box("Drive_HwyRamp", (-82.0, 60.0, -0.02), (60.0, 6.0, 0.04), asphalt)
-    make_box("Drive_HwyRamp_line", (-82.0, 60.0, 0.005), (50.0, 0.08, 0.005), line)
+    # ── CROSS STREET running E-W between the strip mall area and the
+    # parking lot, connecting frontage road to the dock-side asphalt
+    cross_y = 0.0
+    cross_w = 8.0
+    cross_l = 30.0
+    cross_cx = (FRONTAGE_X + road_w/2 + side_w + cross_l/2)
+    make_box("CrossStreet", (cross_cx, cross_y, -0.02),
+             (cross_l, cross_w, 0.04), asphalt)
+    make_box("CrossStreet_Center", (cross_cx, cross_y, 0.005),
+             (cross_l - 3.0, 0.10, 0.005), yellow_line)
+    make_box("CrossStreet_EdgeN", (cross_cx, cross_y + cross_w/2 - 0.30, 0.005),
+             (cross_l, 0.16, 0.005), white_line)
+    make_box("CrossStreet_EdgeS", (cross_cx, cross_y - cross_w/2 + 0.30, 0.005),
+             (cross_l, 0.16, 0.005), white_line)
 
-    # ── Asphalt continuation from parking lot east curb to the dock
-    # (so there's no gap between lot and dock — currently floats)
-    make_box("Drive_LotToDock", (-15.0, 0.0, -0.02), (10.0, 16.0, 0.04), asphalt)
-    make_box("Drive_LotToDock_line", (-15.0, 0.0, 0.005), (8.0, 0.08, 0.005), line)
+    # ── DRIVEWAY APRONS — actual curving curb-cuts to each developed patch
+    # Parking lot: two curb cuts (north + south)
+    for entry_y in (-16.0, 16.0):
+        make_box(f"Drive_Lot_apron_{int(entry_y)}",
+                 (FRONTAGE_X + road_w/2 + side_w + 2.0, entry_y, -0.02),
+                 (8.0, 5.0, 0.04), asphalt)
+    # Gas station forecourt connection
+    make_box("Drive_Gas_apron", (FRONTAGE_X + road_w/2 + side_w + 3.5, -36.0, -0.02),
+             (8.5, 12.0, 0.04), asphalt)
+    # Strip mall lot connection
+    make_box("Drive_Mall_apron", (FRONTAGE_X + road_w/2 + side_w + 2.5, 30.0, -0.02),
+             (6.0, 16.0, 0.04), asphalt)
 
-    # ── Crosswalk paint where the parking-lot driveways meet the frontage
-    crosswalk_col = (0.85, 0.82, 0.74, 1.0)
-    for ci in range(6):
-        cx_o = -42.0 + ci * 0.6
-        make_box(f"Crosswalk_S_{ci}", (cx_o, -16.5, 0.008),
-                 (0.30, 3.5, 0.005), crosswalk_col)
-        make_box(f"Crosswalk_N_{ci}", (cx_o, 16.5, 0.008),
-                 (0.30, 3.5, 0.005), crosswalk_col)
+    # ── CROSSWALKS at the cross-street intersection
+    crosswalk_col = (0.92, 0.88, 0.78, 1.0)
+    for ci in range(8):
+        cx_o = FRONTAGE_X - 5.0 + ci * 1.4
+        make_box(f"Crosswalk_NS_{ci}_a", (cx_o, cross_y - 4.5, 0.008),
+                 (0.50, 0.20, 0.005), crosswalk_col)
+        make_box(f"Crosswalk_NS_{ci}_b", (cx_o, cross_y + 4.5, 0.008),
+                 (0.50, 0.20, 0.005), crosswalk_col)
+
+    # ── STOP BAR + STOP SIGN at the intersection
+    make_box("StopBar_S", (FRONTAGE_X, cross_y - 5.5, 0.008),
+             (road_w - 0.6, 0.40, 0.005), white_line)
+    # Stop sign on a pole
+    ss_x = FRONTAGE_X + road_w/2 + side_w + 0.4
+    ss_y = cross_y - 5.6
+    make_cyl("StopSign_Pole", (ss_x, ss_y, 1.2), 0.05, 2.4, pole_metal, segments=6)
+    make_cyl("StopSign_Disc", (ss_x, ss_y, 2.3), 0.36, 0.05,
+             (0.85, 0.18, 0.16, 1.0), segments=8)
+    make_box("StopSign_Text", (ss_x + 0.04, ss_y, 2.3),
+             (0.02, 0.46, 0.10), white_line)   # the white "STOP" band
+
+    # ── STREETLIGHTS along the frontage road every 22m (5 per side)
+    for si, sy in enumerate([-88, -66, -44, -22, 0, 22, 44, 66, 88]):
+        for side, sx_off in (("W", -road_w/2 - side_w - 0.6),
+                              ("E",  road_w/2 + side_w + 0.6)):
+            sx = FRONTAGE_X + sx_off
+            make_cyl(f"Streetlight_{side}_{si}_Pole", (sx, sy, 4.0),
+                     0.10, 8.0, pole_metal, segments=6)
+            # arm + lamp head
+            arm_dir = 1 if side == "W" else -1
+            make_box(f"Streetlight_{side}_{si}_Arm",
+                     (sx + arm_dir * 0.7, sy, 7.95),
+                     (1.4, 0.06, 0.06), pole_metal)
+            make_prism(f"Streetlight_{side}_{si}_Head",
+                       (sx + arm_dir * 1.3, sy, 7.78),
+                       (0.7, 0.5, 0.20), (0.92, 0.86, 0.70, 1.0), pitch_axis='Y')
+            # glowing lens underneath
+            make_box(f"Streetlight_{side}_{si}_Lens",
+                     (sx + arm_dir * 1.3, sy, 7.72),
+                     (0.55, 0.42, 0.04), (1.0, 0.85, 0.45, 1.0))
+
+    # ── TELEPHONE POLES along the east side of the frontage every 24m,
+    # with cables strung between them
+    pole_x = FRONTAGE_X + road_w/2 + side_w + 2.4
+    pole_ys = list(range(-96, 97, 24))
+    for pi, py in enumerate(pole_ys):
+        make_cyl(f"TelPole_{pi}_Shaft", (pole_x, py, 5.0), 0.16, 10.0, pole_wood, segments=6)
+        # Crossbar
+        make_box(f"TelPole_{pi}_Crossbar", (pole_x, py, 8.8),
+                 (2.0, 0.08, 0.08), pole_wood)
+        # 4 ceramic insulators
+        for ii, ix_o in enumerate([-0.8, -0.3, 0.3, 0.8]):
+            make_cyl(f"TelPole_{pi}_Insulator_{ii}",
+                     (pole_x + ix_o, py, 8.96), 0.05, 0.16,
+                     (0.85, 0.80, 0.72, 1.0), segments=6)
+        # transformer can on every other pole
+        if pi % 2 == 1:
+            make_cyl(f"TelPole_{pi}_Transformer", (pole_x + 0.30, py, 7.6),
+                     0.20, 0.55, (0.40, 0.38, 0.34, 1.0), segments=8)
+    # Power cables strung between adjacent telephone poles (4 lines,
+    # one per insulator). Each cable sags slightly mid-span.
+    for ai in range(len(pole_ys) - 1):
+        ya = pole_ys[ai]
+        yb = pole_ys[ai + 1]
+        ymid = (ya + yb) / 2.0
+        length = abs(yb - ya)
+        for li, ix_o in enumerate([-0.8, -0.3, 0.3, 0.8]):
+            make_box(f"TelLine_{ai}_{li}", (pole_x + ix_o, ymid, 8.88),
+                     (0.04, length, 0.04), (0.18, 0.18, 0.18, 1.0))
+
+    # ── TREES lining the road — cypress and oak alternating, both sides
+    # Planted between the sidewalk and the developed lots so it reads
+    # like a real shaded boulevard
+    tree_ys = list(range(-100, 101, 8))
+    for ti, ty in enumerate(tree_ys):
+        # Skip positions where buildings sit (gas station / strip mall /
+        # parking-lot driveway zones)
+        if -50 < ty < -28 or 14 < ty < 48 or -20 < ty < 20:
+            continue
+        is_cypress = (ti % 2 == 0)
+        canopy_col = (0.22, 0.32, 0.18, 1.0) if is_cypress else (0.30, 0.36, 0.22, 1.0)
+        trunk_h = 4.5 + (ti % 3) * 0.5
+        # west-side tree
+        twx = FRONTAGE_X - road_w/2 - side_w - 2.6
+        make_cyl(f"RoadTree_W_{ti}_Trunk", (twx, ty, trunk_h / 2 + 0.05),
+                 0.18, trunk_h, COL_TREE_TRUNK, segments=6)
+        make_sphere(f"RoadTree_W_{ti}_Canopy", (twx, ty, trunk_h + 0.8),
+                    1.4, canopy_col)
+        if is_cypress:
+            # second canopy puff for cypress (taller, layered)
+            make_sphere(f"RoadTree_W_{ti}_CanopyTop", (twx - 0.2, ty, trunk_h + 2.0),
+                        0.95, canopy_col)
+        # east-side tree (less dense — closer to developed buildings)
+        if ti % 2 == 0:
+            tex = FRONTAGE_X + road_w/2 + side_w + 5.0
+            make_cyl(f"RoadTree_E_{ti}_Trunk", (tex, ty, trunk_h / 2 + 0.05),
+                     0.18, trunk_h, COL_TREE_TRUNK, segments=6)
+            make_sphere(f"RoadTree_E_{ti}_Canopy", (tex, ty, trunk_h + 0.8),
+                        1.3, canopy_col)
+
+    # ── MAILBOXES along the west side at intervals (where there's no
+    # tree directly) — that small-town bayou-city detail
+    for mi, my in enumerate([-92, -78, -58, -38, 8, 38, 58, 78, 92]):
+        mx = FRONTAGE_X - road_w/2 - side_w - 0.4
+        # post
+        make_cyl(f"Mailbox_{mi}_Post", (mx, my, 0.75), 0.04, 1.5, pole_wood, segments=4)
+        # box
+        make_box(f"Mailbox_{mi}_Body", (mx, my, 1.45), (0.18, 0.40, 0.20),
+                 (0.42, 0.38, 0.32, 1.0))
+        # red flag
+        make_box(f"Mailbox_{mi}_Flag", (mx - 0.10, my + 0.18, 1.55),
+                 (0.04, 0.04, 0.20), (0.85, 0.20, 0.18, 1.0))
+
+    # ── FIRE HYDRANT at one intersection corner
+    hy_x = FRONTAGE_X + road_w/2 + side_w + 0.3
+    hy_y = cross_y - 5.0
+    make_cyl("Hydrant_Base", (hy_x, hy_y, 0.30), 0.20, 0.60,
+             (0.85, 0.20, 0.18, 1.0), segments=8)
+    make_cyl("Hydrant_Cap", (hy_x, hy_y, 0.70), 0.18, 0.20,
+             (0.85, 0.20, 0.18, 1.0), segments=8)
+    make_box("Hydrant_NozzleW", (hy_x - 0.18, hy_y, 0.35), (0.12, 0.10, 0.10),
+             (0.70, 0.15, 0.14, 1.0))
+    make_box("Hydrant_NozzleE", (hy_x + 0.18, hy_y, 0.35), (0.12, 0.10, 0.10),
+             (0.70, 0.15, 0.14, 1.0))
+
+    # ── DUMPSTER + cluster of trash bins beside the strip mall
+    dx = FRONTAGE_X + road_w/2 + side_w + 8.0
+    dy = 48.0
+    make_box("Trash_Dumpster", (dx, dy, 0.55),
+             (1.6, 2.4, 1.10), (0.18, 0.28, 0.30, 1.0))
+    make_prism("Trash_DumpsterLid", (dx, dy, 1.10),
+               (1.6, 2.4, 0.20), (0.14, 0.20, 0.22, 1.0), pitch_axis='Y')
+
+    # ════════════════════════════════════════════════════════════
+    # PUBLIC PARK — a small green space south of the gas station,
+    # giving the block a park-with-shade-trees bayou-city character.
+    # Contains: lawn, two benches, a picnic table, a swing set, and a
+    # cluster of shade trees with Spanish moss.
+    # ════════════════════════════════════════════════════════════
+    PARK_X = FRONTAGE_X - road_w/2 - side_w - 14.0
+    PARK_Y = -70.0
+    park_w = 22.0
+    park_l = 28.0
+    lawn_col = (0.30, 0.40, 0.20, 1.0)
+    bench_col = (0.42, 0.30, 0.20, 1.0)
+    # Lawn — a darker green than the scrub grass patches
+    make_box("Park_Lawn", (PARK_X, PARK_Y, -0.02),
+             (park_w, park_l, 0.06), lawn_col)
+    # Park sign at the road-facing edge
+    make_cyl("Park_SignPost", (PARK_X + park_w/2 - 0.5, PARK_Y - park_l/2 + 0.5, 1.4),
+             0.08, 2.8, pole_wood, segments=6)
+    make_box("Park_SignPanel", (PARK_X + park_w/2 - 0.5, PARK_Y - park_l/2 + 0.5, 2.5),
+             (1.2, 0.08, 0.50), (0.36, 0.46, 0.28, 1.0))
+    make_box("Park_SignText", (PARK_X + park_w/2 - 0.5, PARK_Y - park_l/2 + 0.45, 2.5),
+             (1.0, 0.04, 0.18), (0.92, 0.88, 0.78, 1.0))
+    # Picnic table in the center
+    pt_z = 0.55
+    make_box("Park_PicTable_Top", (PARK_X, PARK_Y, pt_z + 0.20),
+             (1.4, 2.4, 0.06), bench_col)
+    for li in range(4):
+        lx_o = (-0.6 if li < 2 else 0.6)
+        ly_o = (-1.0 if (li % 2 == 0) else 1.0)
+        make_box(f"Park_PicTable_Leg_{li}", (PARK_X + lx_o, PARK_Y + ly_o, pt_z / 2),
+                 (0.08, 0.08, pt_z), bench_col)
+    # Attached bench seats on both sides
+    for sb in (-0.85, 0.85):
+        make_box(f"Park_PicTable_Seat_{int(sb*10)}", (PARK_X + sb, PARK_Y, 0.42),
+                 (0.35, 2.4, 0.05), bench_col)
+    # Standalone bench at the east edge facing the road
+    bench_x = PARK_X + park_w/2 - 3.0
+    bench_y = PARK_Y + 4.0
+    make_box("Park_Bench_Seat", (bench_x, bench_y, 0.45), (0.40, 2.0, 0.08), bench_col)
+    make_box("Park_Bench_Back", (bench_x + 0.16, bench_y, 0.85), (0.06, 2.0, 0.70), bench_col)
+    for li, ly_o in enumerate([-0.85, 0.85]):
+        make_box(f"Park_Bench_Leg_{li}", (bench_x, bench_y + ly_o, 0.22),
+                 (0.40, 0.08, 0.45), (0.18, 0.16, 0.14, 1.0))
+    # Swing set — A-frame uprights + crossbar + 3 hanging swings
+    ss_x = PARK_X - 6.0
+    ss_y = PARK_Y - 5.0
+    for ai, (ax_o, ay_o) in enumerate([(-2.0, -1.5), (-2.0, 1.5), (2.0, -1.5), (2.0, 1.5)]):
+        make_cyl(f"Park_Swing_Leg_{ai}", (ss_x + ax_o, ss_y + ay_o, 1.4),
+                 0.08, 2.8, pole_metal, segments=6)
+    # Top crossbar
+    make_box("Park_Swing_Bar", (ss_x, ss_y, 2.7), (4.0, 0.10, 0.10), pole_metal)
+    # 3 hanging swings
+    for swi, sw_y_o in enumerate([-1.2, 0.0, 1.2]):
+        # 2 chains per swing (left & right)
+        for ci_, cx_o in enumerate([-0.20, 0.20]):
+            make_cyl(f"Park_Swing_{swi}_Chain_{ci_}",
+                     (ss_x + cx_o, ss_y + sw_y_o, 1.6),
+                     0.015, 2.2, (0.18, 0.18, 0.18, 1.0), segments=4)
+        # Seat slab
+        make_box(f"Park_Swing_{swi}_Seat", (ss_x, ss_y + sw_y_o, 0.50),
+                 (0.50, 0.18, 0.06), (0.42, 0.30, 0.20, 1.0))
+    # Cluster of shade trees in the park — oak + cypress
+    park_tree_positions = [
+        (PARK_X + park_w/2 - 5.0, PARK_Y - park_l/2 + 4.0, "oak"),
+        (PARK_X - park_w/2 + 4.0, PARK_Y - park_l/2 + 6.0, "cypress"),
+        (PARK_X - park_w/2 + 5.0, PARK_Y + park_l/2 - 4.0, "oak"),
+        (PARK_X + 2.0,             PARK_Y + park_l/2 - 5.0, "cypress"),
+    ]
+    for ti, (tx, ty, kind) in enumerate(park_tree_positions):
+        trunk_h = 6.5 if kind == "oak" else 7.5
+        make_cyl(f"Park_Tree_{ti}_Trunk", (tx, ty, trunk_h / 2),
+                 0.32, trunk_h, COL_TREE_TRUNK, segments=6)
+        if kind == "oak":
+            # Spreading oak canopy — 4 overlapping spheres
+            make_sphere(f"Park_Tree_{ti}_Canopy_A", (tx, ty, trunk_h + 0.5),
+                        2.2, (0.30, 0.38, 0.22, 1.0))
+            make_sphere(f"Park_Tree_{ti}_Canopy_B", (tx - 1.2, ty + 0.8, trunk_h + 1.2),
+                        1.6, (0.32, 0.40, 0.24, 1.0))
+            make_sphere(f"Park_Tree_{ti}_Canopy_C", (tx + 1.4, ty - 0.6, trunk_h + 1.4),
+                        1.7, (0.28, 0.36, 0.20, 1.0))
+            make_sphere(f"Park_Tree_{ti}_Canopy_D", (tx + 0.4, ty + 1.4, trunk_h + 2.0),
+                        1.4, (0.30, 0.38, 0.22, 1.0))
+        else:
+            # Tall cypress with 3-sphere stacked canopy + moss
+            make_sphere(f"Park_Tree_{ti}_Canopy_A", (tx, ty, trunk_h + 0.5),
+                        1.5, (0.22, 0.32, 0.18, 1.0))
+            make_sphere(f"Park_Tree_{ti}_Canopy_B", (tx, ty, trunk_h + 1.8),
+                        1.2, (0.22, 0.32, 0.18, 1.0))
+            make_sphere(f"Park_Tree_{ti}_Canopy_C", (tx, ty, trunk_h + 2.8),
+                        0.85, (0.22, 0.32, 0.18, 1.0))
+            # Spanish moss strands
+            for mi in range(2):
+                mx = tx + (0.4 if mi == 0 else -0.4)
+                my = ty + (0.2 if mi == 0 else -0.3)
+                make_box(f"Park_Tree_{ti}_Moss_{mi}",
+                         (mx, my, trunk_h * 0.7),
+                         (0.14, 0.14, 1.4), COL_MOSS)
+    # Park path — a winding concrete walkway from the road edge to the
+    # picnic area (a couple of segments)
+    path_col = (0.62, 0.60, 0.55, 1.0)
+    make_box("Park_Path_A", (PARK_X + park_w/2 - 2.0, PARK_Y, 0.005),
+             (3.0, 1.4, 0.04), path_col)
+    make_box("Park_Path_B", (PARK_X + 1.0, PARK_Y, 0.005),
+             (8.0, 1.4, 0.04), path_col)
+    make_box("Park_Path_C", (PARK_X - 4.5, PARK_Y - 2.5, 0.005),
+             (1.4, 5.0, 0.04), path_col)
+    # Trash can near the bench
+    make_cyl("Park_Trash", (bench_x + 1.4, bench_y, 0.55), 0.30, 1.10,
+             (0.30, 0.28, 0.24, 1.0), segments=8)
+    make_cyl("Park_Trash_Lid", (bench_x + 1.4, bench_y, 1.12), 0.32, 0.05,
+             (0.42, 0.40, 0.36, 1.0), segments=8)
 
 
 # ════════════════════════════════════════════════════════════════
