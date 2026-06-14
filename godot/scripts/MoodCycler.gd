@@ -141,13 +141,17 @@ const MOODS: Array = [
         "star": 1.0, "star_cell": 9.0, "star_time": 0.40,
         "star_sky_thresh": 0.18,
         "star_galaxy": 0.95, "star_stars": 1.0, "star_chip": 0.70,
-        # ASCII density at LIGHTER strength — adds halftone where the
-        # picture is bright, doesn't flood pure-black surfaces.
-        "dir_ascii": 0.40, "dir_cell": 9.0, "dir_thresh": 0.06,
+        # ASCII halftone tuned for reference-restraint: input_scale
+        # 0.6 → 0.40 drops dim cells below the empty cutoff so most
+        # surface stays pure black. Density chars now only appear on
+        # genuinely lit highlights (lit windows, sign halo). Cells
+        # shrunk to 7 for finer-grain halftone that reads as ink
+        # stipple rather than blocky char fill.
+        "dir_ascii": 0.45, "dir_cell": 7.0, "dir_thresh": 0.06,
         "dir_line": Color(0.95, 0.92, 0.86, 1),
         "dir_fill": Color(0.0, 0.0, 0.0, 1),
         "dir_tint": false,
-        "dir_input_scale": 0.6,
+        "dir_input_scale": 0.40,
         "dir_mono_red": true,
         "dir_mono_white_col": Color(0.96, 0.94, 0.88, 1),
         "dir_mono_red_col":   Color(0.98, 0.16, 0.18, 1),

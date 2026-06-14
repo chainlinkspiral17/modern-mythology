@@ -93,20 +93,22 @@ void fragment() {
     float sky_active = step(0.001, sky_mask);
 
     // ── LAYER 1: slow galaxy spiral ──────────────────────────────
-    // Centre the galaxy in the upper-right of the canvas. Polar coord
-    // with arms cos(theta * arms + r * pitch - t). Slow rotation.
+    // Centred upper-middle of the canvas (was upper-right) so the
+    // galaxy is unmistakable when the player looks up. Bigger
+    // overall (r scaled 4.0 → 2.8) so the arms reach further. Arm
+    // pattern unchanged — cos(theta·2 + r·3 − t·0.25).
     {
         vec2 normalised = (cell_idx * cell_size) * vec2(1.0 / 1280.0, 1.0 / 720.0);
-        vec2 g_uv = normalised - vec2(0.75, 0.20);
+        vec2 g_uv = normalised - vec2(0.50, 0.25);
         g_uv.x *= 1.6;
-        float r = length(g_uv) * 4.0;
+        float r = length(g_uv) * 2.8;
         float theta = atan(g_uv.y, g_uv.x);
         float arm = cos(theta * 2.0 + r * 3.0 - t * 0.25);
-        float arm_mask = smoothstep(0.55, 0.85, arm);
-        float core_mask = 1.0 - smoothstep(0.0, 0.25, r);
-        float spiral_falloff = 1.0 - smoothstep(0.0, 1.0, r);
+        float arm_mask = smoothstep(0.40, 0.80, arm);
+        float core_mask = 1.0 - smoothstep(0.0, 0.30, r);
+        float spiral_falloff = 1.0 - smoothstep(0.0, 1.1, r);
         float galaxy_val = max(arm_mask * spiral_falloff, core_mask) * galaxy_strength;
-        float glyph = core_mask > 0.5 ? g_asterisk(local) : g_dot(local, 0.10);
+        float glyph = core_mask > 0.5 ? g_asterisk(local) : g_dot(local, 0.12);
         float layer = galaxy_val * glyph;
         paint = max(paint, galaxy_col.rgb * layer);
         total_mask = max(total_mask, layer);
@@ -127,16 +129,19 @@ void fragment() {
     }
 
     // ── LAYER 3: fungal microchip ────────────────────────────────
+    // Larger-scale (cell_idx * 0.18 → * 0.12) so the chip pattern
+    // reads as a distinct organic-circuit field instead of fine
+    // noise. Node threshold raised so denser nodes appear.
     {
         vec2 chip_offset = vec2(t * 0.30, t * 0.18);
-        vec2 chip_uv = cell_idx * 0.18 + chip_offset;
+        vec2 chip_uv = cell_idx * 0.12 + chip_offset;
         float node = hash21(floor(chip_uv));
-        float node_val = max(0.0, (node - 0.62) * 2.6) * chip_strength;
+        float node_val = max(0.0, (node - 0.55) * 2.2) * chip_strength;
         float branch = sin(chip_uv.x * 4.0 + t * 0.7) * sin(chip_uv.y * 3.0 - t * 0.5);
-        float branch_val = smoothstep(0.86, 0.96, branch) * chip_strength * 0.7;
+        float branch_val = smoothstep(0.80, 0.95, branch) * chip_strength * 0.85;
         float chip_val = max(node_val, branch_val);
         float glyph_pick = hash11(node * 17.3);
-        float glyph = glyph_pick > 0.5 ? g_dot(local, 0.08) : g_star4(local);
+        float glyph = glyph_pick > 0.5 ? g_dot(local, 0.10) : g_star4(local);
         float layer = chip_val * glyph;
         paint = max(paint, chip_col.rgb * layer);
         total_mask = max(total_mask, layer);
