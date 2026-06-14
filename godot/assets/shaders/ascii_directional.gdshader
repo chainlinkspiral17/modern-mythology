@@ -43,6 +43,18 @@ uniform float input_scale : hint_range(0.1, 2.0) = 1.0;
 // moods set this < 1 so a sunlit scene doesn't read as "everything
 // is bright" to the brightness fill ramp.
 
+// ── Mono-with-red mode ─────────────────────────────────────────────
+// When enabled, glyphs render in only TWO colours: mono_white for
+// normal edges and mono_red for cells where the scene colour is
+// red-dominant (the D'Ambrosio's sign text, the booth red, neon
+// hotspots). Background stays at fill_color (typically pure black).
+// This is the "lithograph ASCII" look — solid black with white edge
+// glyphs, halftone density for shadows, red only on tagged items.
+uniform bool mono_with_red = false;
+uniform vec4 mono_white : source_color = vec4(0.95, 0.92, 0.86, 1.0);
+uniform vec4 mono_red   : source_color = vec4(0.98, 0.16, 0.18, 1.0);
+uniform float red_threshold : hint_range(0.0, 1.0) = 0.20;
+
 float luma(vec3 c) {
     return dot(c, vec3(0.299, 0.587, 0.114));
 }
@@ -213,9 +225,20 @@ void fragment() {
         }
     }
 
-    vec3 line = tint_from_scene ?
-        (texture(SCREEN_TEXTURE, (cell_idx + 0.5) * cell_size * SCREEN_PIXEL_SIZE).rgb * 1.6) :
-        line_color.rgb;
+    vec3 cell_scene_col = texture(SCREEN_TEXTURE,
+        (cell_idx + 0.5) * cell_size * SCREEN_PIXEL_SIZE).rgb;
+    vec3 line;
+    if (mono_with_red) {
+        // red dominance = how much the red channel exceeds max(g,b).
+        // Items tagged with red (sign text, booths) clear the threshold;
+        // warm-yellow lights stay near 0 and pick the white glyph.
+        float red_dom = cell_scene_col.r - max(cell_scene_col.g, cell_scene_col.b);
+        line = (red_dom > red_threshold) ? mono_red.rgb : mono_white.rgb;
+    } else if (tint_from_scene) {
+        line = cell_scene_col * 1.6;
+    } else {
+        line = line_color.rgb;
+    }
     vec3 ascii_result = mix(fill_color.rgb, line, mask);
 
     vec3 scene = texture(SCREEN_TEXTURE, frag * SCREEN_PIXEL_SIZE).rgb;

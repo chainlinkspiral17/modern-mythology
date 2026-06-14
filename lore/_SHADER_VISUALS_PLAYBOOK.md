@@ -243,6 +243,81 @@ playbook for it." Captured here:
   scattered code comments
 - particles deferred until static geometry is shipped
 
+### 2026-06-14 · mono-with-red lithograph ASCII mode
+
+The "look" the user has been driving toward all session is now
+clearly defined: **solid black background · visible edges drawn as
+near-approximate ASCII characters in white · density characters in
+the brightness ramp creating a halftone-gray look for shadows · red
+glyphs ONLY for specifically tagged items (sign text, booth red,
+neon hotspots)**. Implemented as a new mode in `ascii_directional`:
+
+```glsl
+uniform bool mono_with_red = false;
+uniform vec4 mono_white, mono_red;
+uniform float red_threshold;
+
+if (mono_with_red) {
+    float red_dom = scene.r - max(scene.g, scene.b);
+    line = (red_dom > red_threshold) ? mono_red : mono_white;
+}
+```
+
+Driven by the `blueprint_red` mood preset (`dir_mono_red: true`,
+`dir_fill: Color(0,0,0,1)`). Density ramp characters (`· ░ ▒ ▓`)
+provide the halftone-gray gradient on non-edge cells, all in
+mono_white. Tagged items naturally render red because their scene
+color is red-dominant (sign Label3D modulate red, booth materials
+COL_RED).
+
+Lessons learned:
+
+- **For two-colour stylization, snap the color choice per cell**
+  rather than `tint_from_scene` (which produces a noisy multi-hue
+  result). `r - max(g,b) > threshold` is a robust "is this red?"
+  test that ignores warm-yellow lights.
+- **Set the starting mood to the one you're tuning** while iterating.
+  `current_index = 7` in MoodCycler so the user sees blueprint_red
+  on scene-load instead of cycling through 7 moods first.
+- **Dim the scene's directional and ambient light** before judging
+  any ASCII mood. A sunlit Standard material reads as 100% white
+  everywhere, killing the edge-detection contrast that drives the
+  ASCII glyph choices. Reduced Sun energy 1.6 → 0.45, ambient 1.1
+  → 0.35, background near-black for the lithograph look.
+
+### 2026-06-14 · Label3D rotation via explicit basis, not Euler
+
+Three iterations of Euler `Vector3` rotations for `Label3D` placement
+on sign panels all produced wrong orientations:
+
+- Pole sign N face (face +Y): `Vector3(-PI/2, 0, 0)` made the label
+  face +Y but with up = world -Z (upside down).
+- Pole sign S face (face -Y): worked accidentally.
+- Boat sign (face -X): `Vector3(0, -PI/2, 0)` made the label face
+  -X but with text running VERTICALLY along Z (90° rotated).
+
+Root cause: Euler-angle rotations don't preserve "up" — applying a
+single-axis rotation around X or Y rotates the up vector too, and
+since Godot's `Node3D.rotation` is YXZ order, multi-axis combinations
+introduce hard-to-predict twist.
+
+Rule: **for a panel-mounted label, build the basis explicitly from a
+forward direction + world-up**:
+
+```gdscript
+var fwd: Vector3 = face_normal.normalized()
+var world_up := Vector3(0, 0, 1)
+if abs(fwd.dot(world_up)) > 0.95:
+    world_up = Vector3(0, 1, 0)
+var right: Vector3 = world_up.cross(fwd).normalized()
+var up: Vector3 = fwd.cross(right).normalized()
+label.global_transform = Transform3D(Basis(right, up, fwd), pos)
+```
+
+This guarantees `+Z` faces the camera-facing normal, `+Y` is upright,
+and `+X` is horizontal text-reading direction — for any panel
+orientation. No Euler-order surprises.
+
 ### TEMPLATE for next session
 
 ```markdown

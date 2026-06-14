@@ -61,46 +61,60 @@ func _ready() -> void:
             boat_panels.append(mi)
     print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
     # Attach real Label3D text to the sign panels. Panel meshes in the
-    # GLB have their vertices at WORLD coordinates and the MeshInstance3D
-    # transform is identity, so we use the mesh AABB center to find the
-    # panel's actual world position, then offset the label in the
-    # panel's face-normal direction.
-    # Label3D's default forward is +Z. To face a panel correctly we
-    # rotate +Z → the panel's outward normal:
-    #   +Y face → rotate -90° around X
-    #   -Y face → rotate +90° around X
-    #   -X face → rotate -90° around Y
-    #   +X face → rotate +90° around Y
+    # GLB have vertices baked at WORLD coordinates with identity
+    # MeshInstance3D transform, so AABB.get_center() gives the panel's
+    # world position. We then offset the label out along the panel's
+    # face normal so it floats just in front of the panel.
+    #
+    # Orientation matters: we set the Label3D basis directly via
+    # face_normal (the unit vector the label's +Z front should point
+    # toward). Building the basis from a forward + world-up vector
+    # guarantees text is upright with horizontal reading direction —
+    # the previous Euler-rotation approach silently flipped the up
+    # vector for some panels (parking-lot N face came out upside-down,
+    # boat panel came out reading vertically — both looked like
+    # gibberish through the post-process).
+    # Pole-sign panel is 6.4m wide × 2m tall — use pixel_size 0.010.
+    # Boat-sign panel is 7.6m wide × 2.4m tall — bump to 0.013 so
+    # the text fills more of the panel (user feedback: "boat one,
+    # text too small for the size of the sign").
     for panel in sign_panels_n:
-        _attach_sign_label(panel, Vector3(0, 0.08, 0), Vector3(-PI/2, 0, 0))
+        _attach_sign_label(panel, Vector3(0, 0.10, 0), Vector3(0, 1, 0), 0.010)
     for panel in sign_panels_s:
-        _attach_sign_label(panel, Vector3(0, -0.08, 0), Vector3(PI/2, 0, 0))
+        _attach_sign_label(panel, Vector3(0, -0.10, 0), Vector3(0, -1, 0), 0.010)
     for panel in boat_panels:
-        _attach_sign_label(panel, Vector3(-0.08, 0, 0), Vector3(0, -PI/2, 0))
+        _attach_sign_label(panel, Vector3(-0.10, 0, 0), Vector3(-1, 0, 0), 0.013)
 
 
-func _attach_sign_label(panel: MeshInstance3D, world_face_offset: Vector3, rotation: Vector3) -> void:
+func _attach_sign_label(panel: MeshInstance3D, world_face_offset: Vector3, face_normal: Vector3, pixel_size: float = 0.010) -> void:
     """Create a Label3D child of the given panel showing 'D'Ambrosio's'
-    at the panel's WORLD center + face offset. The panel mesh has its
-    vertices baked in world coords (from the Blender build), so we
-    use the AABB center to find where the panel actually sits."""
+    at the panel's WORLD center + face offset, oriented so its front
+    (+Z) points in face_normal."""
     var label := Label3D.new()
     label.text = "D'Ambrosio's"
     label.font_size = 96
-    label.outline_size = 6
+    label.outline_size = 8
     label.modulate = Color(0.98, 0.18, 0.20, 1.0)
-    label.outline_modulate = Color(0.10, 0.0, 0.0, 1.0)
+    label.outline_modulate = Color(0.08, 0.0, 0.0, 1.0)
     label.no_depth_test = false
     label.shaded = false
     label.double_sided = true
     label.alpha_cut = Label3D.ALPHA_CUT_OPAQUE_PREPASS
-    label.pixel_size = 0.008
+    label.pixel_size = pixel_size
     panel.add_child(label)
-    # Place the label at the panel's world centre + face offset
     var panel_centre := panel.global_transform.origin + panel.get_aabb().get_center()
-    label.global_position = panel_centre + world_face_offset
-    label.rotation = rotation
-    print("[LocaleSetup] sign label attached to %s at %s" % [panel.name, str(label.global_position)])
+    var pos := panel_centre + world_face_offset
+    # Build basis: +Z (label front) → face_normal, +Y (label up) →
+    # world +Z (or world +Y if face_normal IS world +Z to avoid a
+    # degenerate cross-product).
+    var fwd: Vector3 = face_normal.normalized()
+    var world_up := Vector3(0, 0, 1)
+    if abs(fwd.dot(world_up)) > 0.95:
+        world_up = Vector3(0, 1, 0)
+    var right: Vector3 = world_up.cross(fwd).normalized()
+    var up: Vector3 = fwd.cross(right).normalized()
+    label.global_transform = Transform3D(Basis(right, up, fwd), pos)
+    print("[LocaleSetup] sign label %s @ %s facing %s" % [panel.name, str(pos), str(fwd)])
 
 
 func _make_material() -> Material:

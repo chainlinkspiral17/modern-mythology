@@ -114,11 +114,19 @@ const MOODS: Array = [
         "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
         "neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1),
         "neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
-        "dir_ascii": 1.0, "dir_cell": 10.0, "dir_thresh": 0.06,
-        "dir_line": Color(0.95, 0.16, 0.14, 1),
+        # Lithograph ASCII: solid black, white glyphs everywhere except
+        # red-tagged items (sign text, booths) which render in red.
+        # Density characters in the brightness ramp give a halftone gray
+        # look to shadows. mono_with_red is the key switch.
+        "dir_ascii": 1.0, "dir_cell": 9.0, "dir_thresh": 0.04,
+        "dir_line": Color(0.95, 0.92, 0.86, 1),
         "dir_fill": Color(0.0, 0.0, 0.0, 1),
         "dir_tint": false,
-        "dir_input_scale": 0.6,
+        "dir_input_scale": 0.7,
+        "dir_mono_red": true,
+        "dir_mono_white_col": Color(0.96, 0.94, 0.88, 1),
+        "dir_mono_red_col":   Color(0.98, 0.16, 0.18, 1),
+        "dir_red_thresh": 0.18,
     },
     {
         "name": "ice",
@@ -188,7 +196,7 @@ const MOODS: Array = [
     },
 ]
 
-var current_index: int = 0
+var current_index: int = 7   # start on blueprint_red — the lithograph ASCII look
 # Optional in-game label that displays the current mood name. If the
 # scene's HUD doesn't provide one we just skip updating it.
 @export var mood_label_path: NodePath = NodePath("../HUD/MoodLabel")
@@ -226,6 +234,10 @@ func _apply(preset: Dictionary) -> void:
         "fill_color":     preset.get("dir_fill", Color(0.02, 0.02, 0.03, 1)),
         "tint_from_scene": preset.get("dir_tint", false),
         "input_scale":    preset.get("dir_input_scale", 1.0),
+        "mono_with_red":  preset.get("dir_mono_red", false),
+        "mono_white":     preset.get("dir_mono_white_col", Color(0.95, 0.92, 0.86, 1)),
+        "mono_red":       preset.get("dir_mono_red_col",   Color(0.98, 0.16, 0.18, 1)),
+        "red_threshold":  preset.get("dir_red_thresh", 0.20),
     })
     _set_params("AsciiQuad", {
         "strength":        preset["ascii"],

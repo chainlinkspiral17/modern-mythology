@@ -431,6 +431,70 @@ right tool instead of bending the wrong one.
 - **Set up lesson-capture as a recurring practice.** The user
   explicitly requested this — see CLAUDE.md cadence note.
 
+### 2026-06-14 · angular hull via custom hex mesh + V-prow
+
+The riverboat hull had three rebuilds in one session:
+1. Three stacked boxes → "blocky, Atari-aesthetic" complaint.
+2. Add cylinder chines + corner spheres → "poofy, fluffy lil clouds"
+   complaint (the same critique that killed the round car-corner
+   experiment).
+3. Replaced with **ONE hexagonal-cross-section mesh** for the body +
+   **ONE V-prow** wedge tapering to a vertical knife edge + a shallow
+   `make_v_stern` rake at the back.
+
+The hex hull has 12 vertices (6 per station × 2 stations) and 8
+faces: deck top, port upper, port chamfer, keel, starboard chamfer,
+starboard upper, plus stern and bow hexagon end-caps. The V-prow is
+8 verts → 5 faces (rear hex + top triangle + bottom triangle + port
+pentagon + starboard pentagon).
+
+Key insight: **"angular" means flat facets meeting at sharp edges,
+NOT smooth curves.** When the user says "PS2 era, not shovelware,"
+the goal is faceted-but-purposeful geometry — think the Phantasy
+Star Online style or low-poly Twisted Metal. Spheres and high-segment
+cylinders are the WRONG tool for hull/car body forms.
+
+Reusable rule for organic-looking objects without textures:
+- **For a hull/body/fuselage shape** → custom mesh with hexagonal
+  cross-section + tapered ends. ~14-20 verts gets you "stylized
+  ship" silhouette at zero polycount cost.
+- **For a corner round-off** → a single chamfer face (one prism per
+  edge), NOT spheres or rounded cylinders.
+- **For a wedge/prow** → custom mesh with one face collapsed to a
+  line (V-prow pattern: 6 rear verts → 2 apex verts).
+
+### 2026-06-14 · 3D models will become physical miniatures
+
+The user clarified the long-term goal: **the 3D maps of Graustark,
+Harmony Creek Estate, and the surrounding areas are the SOURCE OF
+TRUTH for FT's physical miniatures**. Small Wood (a Smolvud
+sub-area) will be designed fresh in this same pipeline and carries
+forward to future Smolvud planning.
+
+Implications for how we build:
+- **Topology choices need to print well.** Thin overhangs, isolated
+  floating geometry, and one-vertex-wide protrusions all break in
+  a miniature workflow even if they look fine in Godot. When
+  modelling something the user might miniaturize, prefer closed
+  manifolds and minimum feature sizes ≥ 0.5mm at the print scale.
+- **Vertex-color materials translate to paint masks.** The current
+  vertex-color-as-albedo pipeline doubles as paint guides — each
+  distinct color → one paint pass on the miniature. Use clearly
+  distinguishable colors for masks (red booths, white columns,
+  brass railings) rather than gradients/blends.
+- **Locale-scale models are mini terrain, not heroic minis.** The
+  riverboat at hull-scale ≈ 200mm if printed at 1:120 scale (matches
+  N-scale gauge). Granularity choices (8-segment cyls, 14-vert
+  hulls) read fine at that scale.
+- **Maps need to tile or fit on standard footprints.** Graustark
+  laid out as a 340m × 340m world maps to ~280mm × 280mm at 1:1200
+  (board-game scale) or 700mm × 700mm at 1:500 (terrain-table
+  scale). Future locale builds should respect these snapping points.
+
+This is a long-term constraint — don't optimize for miniaturization
+prematurely (the game look comes first), but when faced with a
+between-equally-OK-options choice, pick the printable one.
+
 ### TEMPLATE for next session
 
 ```markdown

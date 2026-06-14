@@ -616,6 +616,107 @@ def make_block_dambrosios(label, panel_center, face_axis, face_sign, scale=1.0):
         pen_x += glyph["advance"] * H + 0.10 * H
 
 
+def make_hex_hull(name, y_stern, y_bow, hw_top, hw_mid, hw_bot,
+                  z_top, z_mid, z_bot, base_color):
+    """Hexagonal-cross-section hull body — flat deck on top, vertical
+    sides above the chamfer, angled chamfer corners, narrower flat
+    bottom. Section runs from y_stern (-Y) to y_bow (+Y). Each end
+    cap is a closed hexagonal face. This is the "angular not blocky"
+    riverboat hull look — sharp facets, no rounded edges.
+        cross-section (looking from +Y aft):
+            top-W ──────────────── top-E      Z=z_top
+               │                      │
+            mid-W                  mid-E     Z=z_mid (chamfer corner)
+               \\                    //
+                bot-W ──────── bot-E         Z=z_bot
+    """
+    verts = []
+    for y in (y_stern, y_bow):
+        verts.extend([
+            (-hw_top, y, z_top),   # 0 top-W
+            (+hw_top, y, z_top),   # 1 top-E
+            (+hw_mid, y, z_mid),   # 2 mid-E (chamfer)
+            (+hw_bot, y, z_bot),   # 3 bot-E
+            (-hw_bot, y, z_bot),   # 4 bot-W
+            (-hw_mid, y, z_mid),   # 5 mid-W (chamfer)
+        ])
+    # stern station = indices 0..5, bow station = 6..11
+    faces = [
+        # stern face (-Y outward) — wind CCW from -Y direction (looking aft)
+        [0, 5, 4, 3, 2, 1],
+        # bow face (+Y outward) — wind CCW from +Y direction
+        [6, 7, 8, 9, 10, 11],
+        # 6 side panels connecting the two hexagonal stations
+        [0, 1, 7, 6],    # top deck (+Z)
+        [1, 2, 8, 7],    # starboard upper side (+X)
+        [2, 3, 9, 8],    # starboard chamfer (+X, -Z slanted)
+        [3, 4, 10, 9],   # keel (-Z)
+        [4, 5, 11, 10],  # port chamfer (-X, -Z slanted)
+        [5, 0, 6, 11],   # port upper side (-X)
+    ]
+    return _finalize_mesh(name, verts, faces, base_color)
+
+
+def make_v_prow(name, y_rear, y_apex, hw_top, hw_mid, hw_bot,
+                z_top, z_mid, z_bot, base_color):
+    """Sharp angular bow taper. A hexagonal cross-section at y_rear
+    collapses to a vertical line at y_apex (just 2 verts: apex-top
+    and apex-bot). Mates to make_hex_hull at its bow face."""
+    verts = [
+        (-hw_top, y_rear, z_top),   # 0 top-W
+        (+hw_top, y_rear, z_top),   # 1 top-E
+        (+hw_mid, y_rear, z_mid),   # 2 mid-E
+        (+hw_bot, y_rear, z_bot),   # 3 bot-E
+        (-hw_bot, y_rear, z_bot),   # 4 bot-W
+        (-hw_mid, y_rear, z_mid),   # 5 mid-W
+        (0,       y_apex, z_top),   # 6 apex-top
+        (0,       y_apex, z_bot),   # 7 apex-bot
+    ]
+    faces = [
+        # rear face (-Y outward, mates to hex-hull bow face)
+        [0, 5, 4, 3, 2, 1],
+        # top of prow (+Z): rear-top edge to apex-top — triangle
+        [0, 1, 6],
+        # bottom of prow (-Z): rear-bot edge to apex-bot — triangle
+        [4, 7, 3],
+        # port wing: full half-hex on rear → apex line (pentagon)
+        [0, 6, 7, 4, 5],
+        # starboard wing: pentagon
+        [1, 2, 3, 7, 6],
+    ]
+    return _finalize_mesh(name, verts, faces, base_color)
+
+
+def make_v_stern(name, y_front, y_apex, hw_top, hw_mid, hw_bot,
+                 z_top, z_mid, z_bot, base_color):
+    """Mirror of make_v_prow for the stern. y_front is the front
+    edge (+Y, mates to the hex hull stern), y_apex extends past in
+    -Y. The taper is shallower than the bow — only a slight rake."""
+    verts = [
+        (-hw_top, y_front, z_top),  # 0
+        (+hw_top, y_front, z_top),  # 1
+        (+hw_mid, y_front, z_mid),  # 2
+        (+hw_bot, y_front, z_bot),  # 3
+        (-hw_bot, y_front, z_bot),  # 4
+        (-hw_mid, y_front, z_mid),  # 5
+        (0,       y_apex,  z_top),  # 6 apex-top
+        (0,       y_apex,  z_bot),  # 7 apex-bot
+    ]
+    faces = [
+        # front face (+Y outward, mates to hex-hull stern face)
+        [1, 2, 3, 4, 5, 0],
+        # top (+Z): front-top edge → apex-top
+        [1, 0, 6],
+        # bottom (-Z): front-bot edge → apex-bot
+        [3, 7, 4],
+        # port wing pentagon
+        [0, 5, 4, 7, 6],
+        # starboard wing pentagon
+        [1, 6, 7, 3, 2],
+    ]
+    return _finalize_mesh(name, verts, faces, base_color)
+
+
 def _finalize_mesh(name, verts, faces, base_color):
     """Build a mesh from verts/faces (already in world coords) with
     flat per-loop vertex colour = base_color."""
@@ -664,66 +765,58 @@ def build_riverboat():
     col_column     = (0.85, 0.82, 0.72, 1.0)    # white column shafts
 
     # ════════════════════════════════════════════════════════════
-    # HULL — beveled, three-tier, with prow taper
+    # HULL — angular faceted hexagonal-cross-section body + sharp V-prow
     # ════════════════════════════════════════════════════════════
-    h0_z = RIVER_LEVEL_Z + 0.35
-    make_box("Hull_Lower", (0, 0, h0_z), (BOAT_W + 0.40, BOAT_L + 0.30, 0.70), COL_HULL)
-    h1_z = RIVER_LEVEL_Z + 0.95
-    make_box("Hull_Mid",   (0, 0, h1_z), (BOAT_W,        BOAT_L,        0.50), COL_HULL)
-    h2_z = RIVER_LEVEL_Z + 1.45
-    make_box("Hull_Upper", (0, 0, h2_z), (BOAT_W - 0.40, BOAT_L - 0.30, 0.50), COL_HULL)
+    # User feedback: "the bottom half of the boat still needs a lot
+    # of work. blocky, when it needs to be angular." The previous hull
+    # was three stacked boxes + cylinder chines + corner spheres —
+    # which read either as cubic (the boxes) or "poofy" (the rounded
+    # cylinders/spheres). Replaced with ONE hexagonal-cross-section
+    # body mesh (flat deck + vertical sides + angled lower chamfers +
+    # narrow keel) and ONE sharp V-prow that tapers to a vertical
+    # knife edge at the bow. Same idiom as a real river-going hull,
+    # but at PS2 polycount — every face flat, every transition sharp.
+    z_hull_top  = RIVER_LEVEL_Z + 2.15   # top of hull just under boiler deck
+    z_hull_mid  = RIVER_LEVEL_Z + 0.85   # chamfer corner (mid-height)
+    z_hull_bot  = RIVER_LEVEL_Z + 0.05   # keel bottom (just above waterline)
+    hw_top = BOAT_W / 2 + 0.15           # 6.15 — deck-level overhang
+    hw_mid = BOAT_W / 2                  # 6.00 — straight sides at mid
+    hw_bot = BOAT_W / 2 - 0.90           # 5.10 — narrower keel (angled chamfer)
 
-    # ── HULL ROUNDING — long horizontal cylinders along each chine
-    # turn the stacked rectangular tiers into a hull that reads as
-    # curved-side. Cylinders sit at the tier transitions, port and
-    # starboard, running the full hull length minus the bow taper.
-    chine_radius = 0.25
-    chine_length = BOAT_L - 1.2
-    for tier, (cz, c_w_off) in enumerate([
-        (h0_z - 0.35, BOAT_W / 2 + 0.20),     # waterline chine
-        (h0_z + 0.35, BOAT_W / 2 + 0.20),     # top of lower hull
-        (h1_z + 0.25, BOAT_W / 2 + 0.00),     # top of mid hull
-        (h2_z + 0.25, BOAT_W / 2 - 0.20),     # top of upper hull
-    ]):
-        for side, c_x in (("P", -c_w_off), ("S", +c_w_off)):
-            make_cyl(f"Hull_Chine_{tier}_{side}",
-                     (c_x, 0, cz),
-                     chine_radius, chine_length,
-                     COL_HULL, segments=8, axis='Y')
-    # Corner spheres at the bow & stern of each tier to round the hard
-    # 90° corners into something that reads as a tapering hull
-    for tier_idx, (tz, t_w_off, t_l_off) in enumerate([
-        (h0_z, BOAT_W/2 + 0.20, BOAT_L/2 + 0.15),
-        (h1_z, BOAT_W/2,         BOAT_L/2),
-        (h2_z, BOAT_W/2 - 0.20,  BOAT_L/2 - 0.15),
-    ]):
-        for ci, (cx_o, cy_o) in enumerate([
-            (-t_w_off, -t_l_off), (+t_w_off, -t_l_off),
-            (-t_w_off, +t_l_off), (+t_w_off, +t_l_off),
-        ]):
-            make_sphere(f"Hull_Corner_{tier_idx}_{ci}",
-                        (cx_o, cy_o, tz), 0.35, COL_HULL)
+    # Stern raked aft by 0.6m, bow body extends from -BOAT_L/2 to
+    # +BOAT_L/2 - 0.3 where the V-prow starts. Apex 2.4m further out.
+    y_stern_body = -BOAT_L / 2
+    y_bow_body   = +BOAT_L / 2 - 0.3
+    y_bow_apex   = +BOAT_L / 2 + 2.4
+    y_stern_apex = -BOAT_L / 2 - 0.8
 
-    # Prow taper — three stepped narrower boxes extending past +Y end
-    bow_y = BOAT_L / 2
-    for i, (frac, off_y) in enumerate([(0.85, 0.6), (0.60, 1.3), (0.30, 1.9)]):
-        make_box(f"Hull_Bow_{i}", (0, bow_y + off_y, h1_z),
-                 (BOAT_W * frac, 0.7, 0.85), COL_HULL)
-    # Rounded bow cap — a sphere at the very prow gives a clipper-style
-    # rounded leading edge instead of a flat front face
-    make_sphere("Hull_BowCap", (0, bow_y + 2.4, h1_z), 0.55, COL_HULL)
-    # Sternpost (back end taper, less pronounced)
-    make_box("Hull_Stern", (0, -bow_y - 0.6, h1_z), (BOAT_W * 0.7, 0.7, 0.85), COL_HULL)
+    make_hex_hull("Hull_Body",
+                  y_stern_body, y_bow_body,
+                  hw_top, hw_mid, hw_bot,
+                  z_hull_top, z_hull_mid, z_hull_bot, COL_HULL)
+    make_v_prow("Hull_Prow",
+                y_bow_body, y_bow_apex,
+                hw_top, hw_mid, hw_bot,
+                z_hull_top, z_hull_mid, z_hull_bot, COL_HULL)
+    # Stern is a SHALLOW rake — same hex cross-section collapsing to
+    # an apex line just 0.8m aft. Gives the hull a "sternpost" feel
+    # without the prow's dramatic taper.
+    make_v_stern("Hull_SternPost",
+                 y_stern_body, y_stern_apex,
+                 hw_top, hw_mid, hw_bot * 0.6,   # narrower at the rake tip
+                 z_hull_top, z_hull_mid, z_hull_bot, COL_HULL)
 
-    # Red trim band wrapping the hull
-    band_z = RIVER_LEVEL_Z + 1.30
-    make_box("Trim_W", (-BOAT_W/2 - 0.03, 0, band_z), (0.08, BOAT_L * 0.98, 0.20), COL_HULL_BAND)
-    make_box("Trim_E", ( BOAT_W/2 + 0.03, 0, band_z), (0.08, BOAT_L * 0.98, 0.20), COL_HULL_BAND)
-    make_box("Trim_S", (0, -BOAT_L/2 - 0.03, band_z), (BOAT_W * 0.98, 0.08, 0.20), COL_HULL_BAND)
-    make_box("Trim_N", (0,  BOAT_L/2 + 0.03, band_z), (BOAT_W * 0.98, 0.08, 0.20), COL_HULL_BAND)
-    # Lower trim line nearer the waterline
-    make_box("Trim_LowW", (-BOAT_W/2 - 0.03, 0, RIVER_LEVEL_Z + 0.50), (0.06, BOAT_L * 0.95, 0.12), COL_HULL_BAND)
-    make_box("Trim_LowE", ( BOAT_W/2 + 0.03, 0, RIVER_LEVEL_Z + 0.50), (0.06, BOAT_L * 0.95, 0.12), COL_HULL_BAND)
+    # Red trim band wrapping the hull — three thin angled strips
+    # following the chamfer line so the trim sits ON the angular
+    # facet rather than floating in front of an invisible curve.
+    band_z_top = z_hull_mid + 0.15       # just above the chamfer corner
+    band_z_low = z_hull_mid - 0.10       # just below
+    make_box("Trim_W_Top", (-(hw_mid + 0.04), 0, band_z_top), (0.08, BOAT_L * 0.92, 0.14), COL_HULL_BAND)
+    make_box("Trim_E_Top", ( (hw_mid + 0.04), 0, band_z_top), (0.08, BOAT_L * 0.92, 0.14), COL_HULL_BAND)
+    # Lower band — a darker accent following the chamfer line. Sat
+    # below the chamfer corner so it reads at the angular transition.
+    make_box("Trim_W_Low", (-(hw_mid - 0.20), 0, band_z_low), (0.06, BOAT_L * 0.85, 0.10), COL_HULL_BAND)
+    make_box("Trim_E_Low", ( (hw_mid - 0.20), 0, band_z_low), (0.06, BOAT_L * 0.85, 0.10), COL_HULL_BAND)
 
     # ════════════════════════════════════════════════════════════
     # BOILER DECK (main / dining-room level) — Z ≈ 1.95
