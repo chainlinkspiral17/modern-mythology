@@ -644,6 +644,17 @@ const BLEND_MODE_NAMES: Array[String] = [
     "preset", "replace", "multiply", "overlay", "screen", "add",
 ]
 var blend_mode_override: int = -1
+
+# ── BLEND INTENSITY DIAL (F10) ────────────────────────────────────
+# Multiplies the neon_edge layer's strength so the raw scene
+# dominates and the stylization sits as a subtle overlay on top.
+# -1 = preset default (1.0). Otherwise we use BLEND_AMOUNTS[idx].
+# Most blend modes (multiply, screen, add) are commutative — there's
+# no useful "invert source/target", just less of the stylized layer
+# over more of the raw. This is that dial.
+const BLEND_AMOUNTS: Array[float] = [1.0, 0.6, 0.3, 0.15]
+const BLEND_AMOUNT_LABELS: Array[String] = ["preset", "full", "60%", "30%", "15%"]
+var blend_amount_override: int = -1
 # Optional in-game label that displays the current mood name. If the
 # scene's HUD doesn't provide one we just skip updating it.
 @export var mood_label_path: NodePath = NodePath("../HUD/MoodLabel")
@@ -792,6 +803,8 @@ func _unhandled_input(event: InputEvent) -> void:
             action_strobe_rift()
         elif event.keycode == KEY_F9:
             action_cycle_blend_mode()
+        elif event.keycode == KEY_F10:
+            action_cycle_blend_amount()
     elif event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_RIGHT:
             _right_mouse_held = event.pressed
@@ -994,7 +1007,7 @@ func _apply_warble(strata_warble: float, osc: float, pulse: float) -> void:
 
 func _apply(preset: Dictionary) -> void:
     _set_params("NeonQuad", {
-        "strength":       preset["neon"],
+        "strength":       _resolved_neon_strength(preset),
         "edge_threshold": preset["neon_thresh"],
         "edge_color":     preset["neon_edge"],
         "fill_low":       preset["neon_low"],
@@ -1084,7 +1097,9 @@ func _apply(preset: Dictionary) -> void:
     if label is Label:
         var suffix: String = ""
         if blend_mode_override >= 0:
-            suffix = "  · blend=%s (F9)" % BLEND_MODE_NAMES[blend_mode_override + 1]
+            suffix += "  · blend=%s (F9)" % BLEND_MODE_NAMES[blend_mode_override + 1]
+        if blend_amount_override >= 0:
+            suffix += "  · amt=%s (F10)" % BLEND_AMOUNT_LABELS[blend_amount_override + 1]
         (label as Label).text = "MOOD · %s   (F3)%s" % [preset["name"], suffix]
 
 
@@ -1095,6 +1110,15 @@ func _resolved_blend_mode(preset: Dictionary) -> int:
     return preset.get("neon_blend_mode", 0)
 
 
+func _resolved_neon_strength(preset: Dictionary) -> float:
+    # F10 override scales the neon layer's strength. -1 = preset
+    # default; otherwise multiply the preset value by BLEND_AMOUNTS.
+    var base: float = preset["neon"]
+    if blend_amount_override < 0:
+        return base
+    return base * BLEND_AMOUNTS[blend_amount_override]
+
+
 func action_cycle_blend_mode() -> void:
     # -1 (preset) → 0 REPLACE → 1 MULTIPLY → 2 OVERLAY → 3 SCREEN → 4 ADD → back to -1
     blend_mode_override = blend_mode_override + 1
@@ -1103,6 +1127,16 @@ func action_cycle_blend_mode() -> void:
     _apply(MOODS[current_index])
     var label_name: String = BLEND_MODE_NAMES[blend_mode_override + 1]
     print("[Mood] blend → %s" % label_name)
+
+
+func action_cycle_blend_amount() -> void:
+    # -1 (preset) → 0 full → 1 60% → 2 30% → 3 15% → back to -1
+    blend_amount_override = blend_amount_override + 1
+    if blend_amount_override >= BLEND_AMOUNTS.size():
+        blend_amount_override = -1
+    _apply(MOODS[current_index])
+    var label_name: String = BLEND_AMOUNT_LABELS[blend_amount_override + 1]
+    print("[Mood] blend amount → %s" % label_name)
 
 
 func _set_params(node_name: String, params: Dictionary) -> void:
