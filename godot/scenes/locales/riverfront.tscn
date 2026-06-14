@@ -75,6 +75,7 @@ shader_parameter/cloud_core_col = Color(0.88, 0.92, 0.98, 1)
 shader_parameter/cloud_strength = 0.0
 shader_parameter/cloud_scale = 0.012
 shader_parameter/cloud_floor = 0.55
+shader_parameter/force_full = false
 
 [sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
 shader = ExtResource("9_dir")

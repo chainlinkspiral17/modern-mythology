@@ -205,6 +205,27 @@ const MOODS: Array = [
         "star_cloud": 0.85, "star_cloud_scale": 0.011, "star_cloud_floor": 0.50,
     },
     {
+        # SKYBOX FILTER — pure preview of the starscape animation
+        # without any scene content. All other shader layers off,
+        # palette/dither/scanline minimal, demoscene aberration zero.
+        # force_full bypasses the sky_mask so the animation paints
+        # the whole frame. Use it to inspect the galaxy spiral,
+        # twinkling stars, fungal-microchip drift, and diffuse
+        # clouds in isolation.
+        "name": "skybox",
+        "palette": 32.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": false,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.0, 0.0, 0.0, 1),
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+        "star": 1.0, "star_cell": 9.0, "star_time": 0.55,
+        "star_sky_thresh": 1.0,
+        "star_galaxy": 1.0, "star_stars": 1.0, "star_chip": 0.85,
+        "star_cloud": 1.0, "star_cloud_scale": 0.011, "star_cloud_floor": 0.50,
+        "star_force_full": true,
+    },
+    {
         "name": "ice",
         "palette": 7.0, "dither": 0.22, "scanline": 0.40, "aberration": 0.0020,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
@@ -332,6 +353,7 @@ func _apply(preset: Dictionary) -> void:
         "cloud_strength":  preset.get("star_cloud", 0.0),
         "cloud_scale":     preset.get("star_cloud_scale", 0.012),
         "cloud_floor":     preset.get("star_cloud_floor", 0.55),
+        "force_full":      preset.get("star_force_full", false),
     })
     _set_params("AsciiQuad", {
         "strength":        preset["ascii"],

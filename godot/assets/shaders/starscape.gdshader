@@ -42,6 +42,10 @@ uniform float chip_strength   : hint_range(0.0, 1.0) = 0.45;
 uniform float cloud_strength  : hint_range(0.0, 1.0) = 0.0;
 uniform float cloud_scale     : hint_range(0.001, 0.05) = 0.012;
 uniform float cloud_floor     : hint_range(0.0, 1.0) = 0.55;
+uniform bool force_full = false;
+// force_full = true → bypass the sky_mask gate AND paint starscape
+// over the ENTIRE frame instead of only the dark sky pixels. Used
+// by the "skybox" mood to preview the sky animation in isolation.
 
 float hash11(float p) {
     p = fract(p * 0.1031);
@@ -130,6 +134,14 @@ void fragment() {
     vec3 scene_now = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
     float scene_max = max(scene_now.r, max(scene_now.g, scene_now.b));
     float sky_mask = 1.0 - smoothstep(sky_thresh * 0.5, sky_thresh, scene_max);
+    // force_full bypasses the sky gate entirely so the skybox mood
+    // can preview the starscape over the whole frame regardless of
+    // what's underneath. scene_now is replaced with pure black so
+    // the additive composite reads clean.
+    if (force_full) {
+        sky_mask = 1.0;
+        scene_now = vec3(0.0);
+    }
 
     float t = TIME * time_scale;
     vec3 paint = vec3(0.0);
