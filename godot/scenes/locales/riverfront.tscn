@@ -129,9 +129,25 @@ shader_parameter/mono_white = Color(0.95, 0.92, 0.86, 1)
 shader_parameter/mono_red = Color(0.98, 0.16, 0.18, 1)
 shader_parameter/red_threshold = 0.20
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Riverfront"]
+sky_top_color = Color(0.04, 0.05, 0.10, 1)
+sky_horizon_color = Color(0.10, 0.12, 0.18, 1)
+sky_curve = 0.15
+sky_energy_multiplier = 1.0
+ground_bottom_color = Color(0.02, 0.02, 0.03, 1)
+ground_horizon_color = Color(0.06, 0.08, 0.12, 1)
+ground_curve = 0.02
+ground_energy_multiplier = 0.4
+sun_angle_max = 90.0
+sun_curve = 0.15
+
+[sub_resource type="Sky" id="Sky_Riverfront"]
+sky_material = SubResource("SkyMat_Riverfront")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Riverfront"]
-background_mode = 1
-background_color = Color(0.03, 0.04, 0.06, 1)
+background_mode = 2
+sky = SubResource("Sky_Riverfront")
 ambient_light_source = 2
 ambient_light_color = Color(0.42, 0.48, 0.58, 1)
 ambient_light_energy = 0.50

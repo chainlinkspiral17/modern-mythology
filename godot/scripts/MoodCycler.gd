@@ -743,44 +743,64 @@ const LIGHTING_PRESETS: Array = [
     {"name": "scene_default", "dir_mult": 1.0, "practical_mult": 1.0,
      "dir_tint": Color.WHITE, "tint_mix": 0.0,
      "sun_pitch_deg": NAN, "sun_yaw_deg": NAN,
-     "ambient_color": Color.WHITE, "ambient_energy": -1.0},
+     "ambient_color": Color.WHITE, "ambient_energy": -1.0,
+     "sky_top": Color(0.04, 0.05, 0.10, 1), "sky_horizon": Color(0.10, 0.12, 0.18, 1),
+     "sky_energy": 1.0, "fog_color": Color(0.05, 0.06, 0.08, 1)},
     {"name": "midday",        "dir_mult": 14.0, "practical_mult": 0.0,
      "dir_tint": Color(1.0, 0.97, 0.92, 1), "tint_mix": 0.95,
      "sun_pitch_deg": -78.0, "sun_yaw_deg": 18.0,
-     "ambient_color": Color(0.62, 0.70, 0.82, 1), "ambient_energy": 1.8},
+     "ambient_color": Color(0.62, 0.70, 0.82, 1), "ambient_energy": 1.8,
+     "sky_top": Color(0.22, 0.42, 0.78, 1), "sky_horizon": Color(0.72, 0.84, 0.95, 1),
+     "sky_energy": 1.6, "fog_color": Color(0.72, 0.82, 0.92, 1)},
     {"name": "golden_hour",   "dir_mult": 8.0, "practical_mult": 0.25,
      "dir_tint": Color(1.0, 0.60, 0.28, 1), "tint_mix": 0.85,
      "sun_pitch_deg": -12.0, "sun_yaw_deg": -75.0,
-     "ambient_color": Color(0.95, 0.55, 0.35, 1), "ambient_energy": 1.2},
+     "ambient_color": Color(0.95, 0.55, 0.35, 1), "ambient_energy": 1.2,
+     "sky_top": Color(0.32, 0.28, 0.42, 1), "sky_horizon": Color(1.0, 0.55, 0.22, 1),
+     "sky_energy": 1.3, "fog_color": Color(0.95, 0.62, 0.40, 1)},
     {"name": "blue_hour",     "dir_mult": 3.0, "practical_mult": 0.75,
      "dir_tint": Color(0.45, 0.62, 1.0, 1), "tint_mix": 0.80,
      "sun_pitch_deg": -3.0, "sun_yaw_deg": -92.0,
-     "ambient_color": Color(0.32, 0.42, 0.68, 1), "ambient_energy": 0.85},
+     "ambient_color": Color(0.32, 0.42, 0.68, 1), "ambient_energy": 0.85,
+     "sky_top": Color(0.10, 0.14, 0.32, 1), "sky_horizon": Color(0.42, 0.38, 0.55, 1),
+     "sky_energy": 0.85, "fog_color": Color(0.28, 0.32, 0.42, 1)},
     {"name": "dawn",          "dir_mult": 5.0, "practical_mult": 0.45,
      "dir_tint": Color(1.0, 0.78, 0.62, 1), "tint_mix": 0.75,
      "sun_pitch_deg": -8.0, "sun_yaw_deg": 85.0,
-     "ambient_color": Color(0.78, 0.62, 0.55, 1), "ambient_energy": 1.0},
+     "ambient_color": Color(0.78, 0.62, 0.55, 1), "ambient_energy": 1.0,
+     "sky_top": Color(0.28, 0.32, 0.55, 1), "sky_horizon": Color(0.98, 0.70, 0.62, 1),
+     "sky_energy": 1.1, "fog_color": Color(0.82, 0.68, 0.62, 1)},
     {"name": "storm_front",   "dir_mult": 4.0, "practical_mult": 0.85,
      "dir_tint": Color(0.72, 0.78, 0.88, 1), "tint_mix": 0.65,
      "sun_pitch_deg": -55.0, "sun_yaw_deg": 0.0,
-     "ambient_color": Color(0.48, 0.52, 0.60, 1), "ambient_energy": 0.9},
+     "ambient_color": Color(0.48, 0.52, 0.60, 1), "ambient_energy": 0.9,
+     "sky_top": Color(0.18, 0.22, 0.28, 1), "sky_horizon": Color(0.42, 0.46, 0.52, 1),
+     "sky_energy": 0.8, "fog_color": Color(0.42, 0.46, 0.52, 1)},
     {"name": "overcast_day",  "dir_mult": 9.0, "practical_mult": 0.10,
      "dir_tint": Color(0.92, 0.95, 1.0, 1), "tint_mix": 0.70,
      "sun_pitch_deg": -65.0, "sun_yaw_deg": 0.0,
-     "ambient_color": Color(0.72, 0.76, 0.82, 1), "ambient_energy": 1.5},
+     "ambient_color": Color(0.72, 0.76, 0.82, 1), "ambient_energy": 1.5,
+     "sky_top": Color(0.65, 0.68, 0.72, 1), "sky_horizon": Color(0.80, 0.82, 0.85, 1),
+     "sky_energy": 1.2, "fog_color": Color(0.75, 0.78, 0.82, 1)},
     {"name": "midnight",      "dir_mult": 0.6, "practical_mult": 1.0,
      "dir_tint": Color(0.50, 0.60, 0.95, 1), "tint_mix": 0.65,
      "sun_pitch_deg": -28.0, "sun_yaw_deg": 12.0,
-     "ambient_color": Color(0.18, 0.22, 0.32, 1), "ambient_energy": 0.32},
+     "ambient_color": Color(0.18, 0.22, 0.32, 1), "ambient_energy": 0.32,
+     "sky_top": Color(0.02, 0.03, 0.08, 1), "sky_horizon": Color(0.06, 0.08, 0.14, 1),
+     "sky_energy": 0.6, "fog_color": Color(0.04, 0.05, 0.08, 1)},
     # HCE-flavoured lighting
     {"name": "texas_noon",    "dir_mult": 18.0, "practical_mult": 0.0,
      "dir_tint": Color(1.0, 0.92, 0.76, 1), "tint_mix": 0.85,
      "sun_pitch_deg": -82.0, "sun_yaw_deg": 10.0,
-     "ambient_color": Color(1.0, 0.88, 0.70, 1), "ambient_energy": 2.4},
+     "ambient_color": Color(1.0, 0.88, 0.70, 1), "ambient_energy": 2.4,
+     "sky_top": Color(0.42, 0.62, 0.88, 1), "sky_horizon": Color(0.95, 0.92, 0.82, 1),
+     "sky_energy": 1.9, "fog_color": Color(0.92, 0.88, 0.78, 1)},
     {"name": "liminal_night", "dir_mult": 0.3, "practical_mult": 1.4,
      "dir_tint": Color(0.62, 0.66, 0.85, 1), "tint_mix": 0.50,
      "sun_pitch_deg": -25.0, "sun_yaw_deg": 0.0,
-     "ambient_color": Color(0.32, 0.28, 0.25, 1), "ambient_energy": 0.40},
+     "ambient_color": Color(0.32, 0.28, 0.25, 1), "ambient_energy": 0.40,
+     "sky_top": Color(0.06, 0.05, 0.04, 1), "sky_horizon": Color(0.18, 0.12, 0.10, 1),
+     "sky_energy": 0.5, "fog_color": Color(0.16, 0.12, 0.10, 1)},
 ]
 var lighting_index: int = 0   # 0 = scene_default
 
@@ -824,6 +844,16 @@ var style_pack_index: int = -1   # -1 = none applied (manual mode)
 var _world_env: WorldEnvironment = null
 var _world_env_base_energy: float = 0.50
 var _world_env_base_color: Color = Color.WHITE
+var _sky_material: ProceduralSkyMaterial = null
+
+# ── LIGHTING TRANSITION STATE ─────────────────────────────────────
+# Natural day → night transitions: when the user cycles F11 or
+# F12, we lerp from the currently-applied preset to the new one
+# over LIGHT_LERP_DUR seconds. Same for the sky colour cross-fade.
+const LIGHT_LERP_DUR: float = 1.2
+var _light_lerp_t: float = 1.0
+var _light_lerp_source: Dictionary = {}   # the "from" preset snapshot
+var _light_lerp_target: Dictionary = {}   # the "to" preset
 # Two parallel arrays so we can scale directional vs practical
 # differently — sodium lamps off at midday, key sun pumped up.
 var _directional_lights: Array = []     # Array[DirectionalLight3D]
@@ -984,15 +1014,31 @@ func _collect_lights(node: Node) -> void:
         if _world_env.environment:
             _world_env_base_energy = _world_env.environment.ambient_light_energy
             _world_env_base_color = _world_env.environment.ambient_light_color
+            var sky: Sky = _world_env.environment.sky
+            if sky and sky.sky_material is ProceduralSkyMaterial:
+                _sky_material = sky.sky_material as ProceduralSkyMaterial
     for child in node.get_children():
         _collect_lights(child)
 
 
 func action_cycle_lighting() -> void:
     lighting_index = (lighting_index + 1) % LIGHTING_PRESETS.size()
-    _apply_lighting(LIGHTING_PRESETS[lighting_index])
+    _begin_lighting_transition(LIGHTING_PRESETS[lighting_index])
     _apply(MOODS[current_index])  # refresh HUD label with new lighting tag
-    print("[Mood] lighting → %s" % LIGHTING_PRESETS[lighting_index]["name"])
+    print("[Mood] lighting → %s (transitioning)" % LIGHTING_PRESETS[lighting_index]["name"])
+
+
+func _begin_lighting_transition(target: Dictionary) -> void:
+    # Source = whatever the lights currently look like. For the very
+    # first call we snapshot the original scene_default; afterwards we
+    # carry forward the previous target so chained transitions stay
+    # continuous.
+    if _light_lerp_target.is_empty():
+        _light_lerp_source = LIGHTING_PRESETS[0]
+    else:
+        _light_lerp_source = _light_lerp_target
+    _light_lerp_target = target
+    _light_lerp_t = 0.0
 
 
 func action_cycle_style_pack() -> void:
@@ -1017,7 +1063,7 @@ func _apply_style_pack(pack: Dictionary) -> void:
         current_index = mood_idx
     if light_idx >= 0:
         lighting_index = light_idx
-        _apply_lighting(LIGHTING_PRESETS[lighting_index])
+        _begin_lighting_transition(LIGHTING_PRESETS[lighting_index])
     blend_mode_override = pack.get("blend_mode", -1)
     blend_amount_override = pack.get("blend_amt", -1)
     _apply(MOODS[current_index])
@@ -1038,13 +1084,24 @@ func _lighting_index_by_name(name: String) -> int:
 
 
 func _apply_lighting(preset: Dictionary) -> void:
+    # Public single-shot apply — snaps to target with no transition.
+    # Used at startup so the scene boots in the default lighting and
+    # by callers that don't want the lerp.
+    _light_lerp_source = preset
+    _light_lerp_target = preset
+    _light_lerp_t = 1.0
+    _apply_lighting_blended(preset, preset, 1.0)
+
+
+func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void:
     # lightshow_extreme already owns the lights — don't fight it.
     if MOODS[current_index]["name"] == "lightshow_extreme":
         return
-    var dm: float = preset["dir_mult"]
-    var pm: float = preset["practical_mult"]
-    var tm: float = preset["tint_mix"]
-    var dir_tint: Color = preset["dir_tint"]
+    var ts: float = smoothstep(0.0, 1.0, t)   # ease in/out
+    var dm: float = lerp(float(src["dir_mult"]), float(dst["dir_mult"]), ts)
+    var pm: float = lerp(float(src["practical_mult"]), float(dst["practical_mult"]), ts)
+    var tm: float = lerp(float(src["tint_mix"]), float(dst["tint_mix"]), ts)
+    var dir_tint: Color = (src["dir_tint"] as Color).lerp(dst["dir_tint"], ts)
     # KEY directional gets the sun rotation; fill/back are left at base
     # rotation so they keep their three-light geometry. The user's
     # scene names the key "Moon_Key" — match by suffix "_Key" when
@@ -1057,21 +1114,29 @@ func _apply_lighting(preset: Dictionary) -> void:
             break
     if key_idx < 0 and _directional_lights.size() > 0:
         key_idx = 0
+    # Resolve sun rotation. NAN in either endpoint means "keep base."
+    # Otherwise we lerp the pitch/yaw smoothly so the sun arcs.
+    var sun_pitch_src: float = src["sun_pitch_deg"]
+    var sun_yaw_src: float = src["sun_yaw_deg"]
+    var sun_pitch_dst: float = dst["sun_pitch_deg"]
+    var sun_yaw_dst: float = dst["sun_yaw_deg"]
+    var sun_has_rotation: bool = not (is_nan(sun_pitch_src) or is_nan(sun_pitch_dst))
+    var sun_pitch: float = 0.0
+    var sun_yaw: float = 0.0
+    if sun_has_rotation:
+        sun_pitch = lerp(sun_pitch_src, sun_pitch_dst, ts)
+        sun_yaw = lerp(sun_yaw_src, sun_yaw_dst, ts)
     for i in range(_directional_lights.size()):
         var light: DirectionalLight3D = _directional_lights[i]
         if light == null:
             continue
         light.light_energy = _directional_base_energy[i] * dm
         light.light_color = _directional_base_color[i].lerp(dir_tint, tm)
-        if i == key_idx and not is_nan(preset["sun_pitch_deg"]):
+        if i == key_idx and sun_has_rotation:
             var r: Vector3 = _directional_base_rotation[i]
-            r.x = preset["sun_pitch_deg"]
-            r.y = preset["sun_yaw_deg"]
+            r.x = sun_pitch
+            r.y = sun_yaw
             light.rotation_degrees = r
-        elif not is_nan(preset["sun_pitch_deg"]):
-            # Reset non-key directionals to their original rotation
-            # so fill/back don't drift on repeat cycling.
-            light.rotation_degrees = _directional_base_rotation[i]
         else:
             light.rotation_degrees = _directional_base_rotation[i]
     for i in range(_practical_lights.size()):
@@ -1081,12 +1146,33 @@ func _apply_lighting(preset: Dictionary) -> void:
         p.light_energy = _practical_base_energy[i] * pm
         p.light_color = _practical_base_color[i]
     if _world_env and _world_env.environment:
-        if preset["ambient_energy"] >= 0.0:
-            _world_env.environment.ambient_light_energy = preset["ambient_energy"]
-            _world_env.environment.ambient_light_color = preset["ambient_color"]
-        else:
-            _world_env.environment.ambient_light_energy = _world_env_base_energy
-            _world_env.environment.ambient_light_color = _world_env_base_color
+        # Ambient blend. -1 sentinel on either endpoint means "keep
+        # the scene's cached base" — used by scene_default. We lerp
+        # the resolved values so the cross-fade still works.
+        var amb_e_src: float = src["ambient_energy"]
+        var amb_e_dst: float = dst["ambient_energy"]
+        if amb_e_src < 0.0:
+            amb_e_src = _world_env_base_energy
+        if amb_e_dst < 0.0:
+            amb_e_dst = _world_env_base_energy
+        var amb_c_src: Color = src["ambient_color"] if src["ambient_energy"] >= 0.0 else _world_env_base_color
+        var amb_c_dst: Color = dst["ambient_color"] if dst["ambient_energy"] >= 0.0 else _world_env_base_color
+        _world_env.environment.ambient_light_energy = lerp(amb_e_src, amb_e_dst, ts)
+        _world_env.environment.ambient_light_color = amb_c_src.lerp(amb_c_dst, ts)
+        # Fog tint follows the sky horizon so haze reads consistently.
+        if src.has("fog_color") and dst.has("fog_color"):
+            _world_env.environment.fog_light_color = (
+                (src["fog_color"] as Color).lerp(dst["fog_color"], ts)
+            )
+    # Sky cross-fade: ProceduralSkyMaterial colours + energy.
+    if _sky_material and src.has("sky_top") and dst.has("sky_top"):
+        _sky_material.sky_top_color = (src["sky_top"] as Color).lerp(dst["sky_top"], ts)
+        _sky_material.sky_horizon_color = (
+            (src["sky_horizon"] as Color).lerp(dst["sky_horizon"], ts)
+        )
+        _sky_material.sky_energy_multiplier = lerp(
+            float(src["sky_energy"]), float(dst["sky_energy"]), ts
+        )
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -1135,6 +1221,11 @@ func _strata_step(direction: int) -> void:
 
 
 func _process(delta: float) -> void:
+    # ── lighting transition: advance toward target, apply blended values
+    if _light_lerp_t < 1.0 and not _light_lerp_target.is_empty():
+        _light_lerp_t = min(1.0, _light_lerp_t + delta / LIGHT_LERP_DUR)
+        _apply_lighting_blended(_light_lerp_source, _light_lerp_target, _light_lerp_t)
+
     # ── audio-reactive sampling: exponential-smoothed master bus peak
     # (linear 0..1). Quiet game → ~0; loud music → ~0.8-1.0. Fed to
     # shaders as a uniform so any layer can react.
