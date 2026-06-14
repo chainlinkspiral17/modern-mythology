@@ -121,7 +121,8 @@ const MOODS: Array = [
         "neon_edge": Color(0.96, 0.94, 0.88, 1),
         "neon_low":  Color(0.0, 0.0, 0.0, 1),
         "neon_high": Color(0.0, 0.0, 0.0, 1),
-        "neon_grad": 0.0, "neon_blend": 0.50, "neon_glow": 0.18,
+        "neon_grad": 0.0, "neon_blend": 0.55, "neon_glow": 0.18,
+        "neon_bleed_lo": 0.92, "neon_bleed_hi": 0.99,
         # ASCII density at REDUCED strength — adds halftone on top of
         # the linework foundation without burying it. red_threshold
         # raised to 0.32 so warm tungsten bulbs render as WHITE glyphs;
@@ -149,16 +150,16 @@ const MOODS: Array = [
         "palette": 6.0, "dither": 0.02, "scanline": 0.10, "aberration": 0.0002,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
-        "neon": 1.0, "neon_thresh": 0.018,            # lower threshold = catches finer architectural creases
-        "neon_edge": Color(0.96, 0.94, 0.88, 1),     # near-white ink
-        "neon_low":  Color(0.0,  0.0,  0.0,  1),     # pure black fill
+        "neon": 1.0, "neon_thresh": 0.018,
+        "neon_edge": Color(0.96, 0.94, 0.88, 1),
+        "neon_low":  Color(0.0,  0.0,  0.0,  1),
         "neon_high": Color(0.0,  0.0,  0.0,  1),
-        # scene_blend > 0 with the shader's smoothstep(0.78, 0.96)
-        # brightness threshold lets ONLY the brightest pixels — sign
-        # letters in saturated red, lamp bulbs in near-white — show
-        # through the black fill as their actual scene color. Rest of
-        # the scene stays clean ink linework.
-        "neon_grad": 0.0, "neon_blend": 0.45, "neon_glow": 0.15,
+        # scene_blend lets bright pixels through, but bleed_lo/hi gate
+        # WHICH pixels qualify. (0.92, 0.99) is the lithograph-tight
+        # range — only near-saturated pixels (sign letters, bulb
+        # meshes) bleed; lit walls and dim surfaces stay pure black.
+        "neon_grad": 0.0, "neon_blend": 0.55, "neon_glow": 0.15,
+        "neon_bleed_lo": 0.92, "neon_bleed_hi": 0.99,
     },
     {
         "name": "ice",
@@ -257,6 +258,8 @@ func _apply(preset: Dictionary) -> void:
         "fill_gradient":  preset["neon_grad"],
         "scene_blend":    preset.get("neon_blend", 0.0),
         "edge_glow":      preset.get("neon_glow", 0.4),
+        "bleed_lo":       preset.get("neon_bleed_lo", 0.78),
+        "bleed_hi":       preset.get("neon_bleed_hi", 0.96),
     })
     _set_params("DirAsciiQuad", {
         "strength":       preset.get("dir_ascii", 0.0),

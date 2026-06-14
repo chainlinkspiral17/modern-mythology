@@ -49,6 +49,9 @@ shader_parameter/fill_low = Color(0.42, 0.12, 0.50, 1)
 shader_parameter/fill_high = Color(0.10, 0.05, 0.25, 1)
 shader_parameter/fill_gradient = 1.0
 shader_parameter/edge_glow = 0.4
+shader_parameter/scene_blend = 0.0
+shader_parameter/bleed_lo = 0.78
+shader_parameter/bleed_hi = 0.96
 
 [sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
 shader = ExtResource("9_dir")

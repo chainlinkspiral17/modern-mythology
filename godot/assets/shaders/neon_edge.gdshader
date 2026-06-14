@@ -42,6 +42,15 @@ uniform float scene_blend : hint_range(0.0, 1.0) = 0.0;
 // the gradient — important for the chillwave look to keep warm
 // yellows readable on a black background.
 
+uniform float bleed_lo : hint_range(0.0, 1.0) = 0.78;
+uniform float bleed_hi : hint_range(0.0, 1.0) = 0.96;
+// bleed_lo/hi = scene-brightness smoothstep range for "let the scene
+// colour show through the fill". Default (0.78, 0.96) lets bright
+// lamp glows through; for the lithograph look raise to (0.92, 0.99)
+// so ONLY the truly saturated pixels (sign letters, neon, lit bulb
+// meshes) bleed and the rest of the scene stays in the pure black
+// fill. Mid-tone walls have their color stripped to pure black.
+
 float luma(vec3 c) {
     return dot(c, vec3(0.299, 0.587, 0.114));
 }
@@ -77,7 +86,7 @@ void fragment() {
     // pure-black-background look the concept art is going for.
     vec3 scene_now = texture(SCREEN_TEXTURE, uv).rgb;
     float scene_warmth = max(scene_now.r, max(scene_now.g, scene_now.b));
-    float warmth_mask = smoothstep(0.78, 0.96, scene_warmth);
+    float warmth_mask = smoothstep(bleed_lo, bleed_hi, scene_warmth);
     fill = mix(fill, scene_now * 1.8, scene_blend * warmth_mask);
 
     // Cheap bloom: sample a wider edge mask for the glow halo
