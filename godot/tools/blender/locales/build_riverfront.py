@@ -83,6 +83,12 @@ OPPOSITE_X = 120.0    # far starboard shore (east, across the wide river)
 BAYOU_X = 55.0        # bayou pushed back so the river has a real lane
 BRIDGE_Y = -95.0      # distant bridge downriver to the south
 DOCK_Z = 0.35         # dock deck sits 35cm above the water surface
+FRONTAGE_X = -55.0    # River Road centerline — shared by build_road_network
+                      # AND build_near_shore so the road, sidewalks, drives,
+                      # and the commercial strip all line up. Pushed west of
+                      # the parking lot (lot west edge at X=-41) so the lot
+                      # and the road have an 8m gap (sidewalk + grass)
+                      # instead of the 7m overlap they had before.
 # River traffic lane: between boat (X≈±6) and bayou tree-line (X≈37),
 # there are ~30m of clear water — wide enough for two riverboats to
 # pass alongside D'Ambrosio's at the same time.
@@ -1478,7 +1484,8 @@ def build_road_network():
     # roads ride a few inches above grade for flooding; the "raised"
     # effect is sold by the drainage ditches alongside sitting visibly
     # LOWER than the road, not by raising the road to a dramatic berm.
-    FRONTAGE_X = -40.0
+    # FRONTAGE_X is now the MODULE-LEVEL constant so build_near_shore
+    # and build_road_network agree on where the road sits.
     road_w = 12.0
     road_l = 220.0
     road_surface_z = 0.04   # ~6cm proud of base ground (which sits at -0.04 average)
@@ -2880,7 +2887,10 @@ def build_westbrook_residential():
     - Y=-52 (between park and gas station)
     - Y=-95 (south, beyond the park)
     """
-    HOUSE_X = -60.0   # west of River Road
+    # Houses sit ~18m west of the road centerline so the lot east edge
+    # has 7m of breathing room from the road west edge (sidewalk +
+    # grass). Was -60 before, which OVERLAPPED the road by 5.5m.
+    HOUSE_X = FRONTAGE_X - 18.0
     house_specs = [
         ("01", HOUSE_X, +72.0, (0.78, 0.72, 0.62, 1.0), (0.40, 0.22, 0.18, 1.0)),
         ("02", HOUSE_X, +88.0, (0.62, 0.55, 0.45, 1.0), (0.36, 0.30, 0.22, 1.0)),
@@ -2906,21 +2916,23 @@ def build_near_shore():
       · A highway overpass crossing in the far distance (N-S) for
         depth — visible behind the strip-mall roofline."""
 
-    NEAR_FRONTAGE_X = -52.0    # commercial strip just west of the parking lot
+    # Commercial buildings sit ~13m WEST of the frontage road centerline
+    # so the building east faces line up with the frontage's west
+    # sidewalk. Previously NEAR_FRONTAGE_X used a different value than
+    # build_road_network's FRONTAGE_X, causing the road and the commercial
+    # strip to be 12m out of register — driveways from the road went
+    # NOWHERE, gas-station forecourt orphaned, strip-mall lot disconnected.
+    NEAR_FRONTAGE_X = FRONTAGE_X - 13.0
     NEAR_DEEP_X = -85.0        # second tier of distance
     NEAR_HIGHWAY_X = -115.0    # far-distance highway overpass
     shore_z = -0.05
     asphalt = (0.18, 0.18, 0.18, 1.0)
     curb = (0.55, 0.52, 0.48, 1.0)
 
-    # ── Frontage road running N-S parallel to the parking lot ──
-    make_box("NearShore_Road", (NEAR_FRONTAGE_X + 12.0, 0, shore_z),
-             (8.0, 220.0, 0.04), asphalt)
-    # painted yellow center line, dashed
-    for i in range(36):
-        ly = -108 + i * 6.0
-        make_box(f"NearShore_RoadLine_{i}", (NEAR_FRONTAGE_X + 12.0, ly, shore_z + 0.02),
-                 (0.10, 2.5, 0.005), (0.70, 0.62, 0.30, 1.0))
+    # The frontage road itself is built by build_road_network() (with
+    # proper lane markings, ditches, sidewalks, streetlights). build_near_shore
+    # used to ALSO build a redundant road here, which Z-fought with the
+    # real one. Removed.
 
     # ════════════════════════════════════════════════════════════
     # GAS STATION — south end of the frontage road
@@ -2967,43 +2979,54 @@ def build_near_shore():
              (8.0, 6.0, 4.2), (0.85, 0.82, 0.74, 1.0))
     make_box("GasStation_Store_Roof", (gs_x, store_y, 0.55 + 4.2 + 0.10),
              (8.4, 6.4, 0.20), (0.32, 0.30, 0.26, 1.0))
-    # Windows — RECESSED INTO the wall (not sticking out 5cm in front of
-    # it like the previous version). Glass pane is INSIDE the wall plane;
-    # a dark frame sits at the wall surface around the recessed pane.
-    # This is the actual fix for "windows hovering in air."
-    win_z = 0.55 + 2.0     # window centred ~2m above the foundation top
+    # Windows with PROPER DEPTH: protruding sill + lintel in front of
+    # the wall, glass recessed BEHIND the wall, and a dark "interior"
+    # box visible behind the glass. The 3D step from sill (out) →
+    # frame (at wall) → glass (in) → interior (deep in) sells the
+    # depth that a flat-panel approach can't.
+    win_z = 0.55 + 2.0
     for side, sx_off in (("W", -4.0), ("E", 4.0)):
-        # Glass — INSET 5cm behind the wall surface
         sign = -1 if side == "W" else 1
-        glass_x = gs_x + sx_off - sign * 0.05    # inset behind the wall plane
+        # Dark interior recess box BEHIND the glass — gives the
+        # appearance of "looking through a window into the building"
+        interior_x = gs_x + sx_off - sign * 0.30
+        make_box(f"GasStation_Store_Interior_{side}",
+                 (interior_x, store_y, win_z),
+                 (0.30, 3.80, 2.10), (0.04, 0.04, 0.06, 1.0))
+        # Glass pane — recessed 8cm INTO the wall, lit warm yellow
+        glass_x = gs_x + sx_off - sign * 0.08
         make_box(f"GasStation_Store_Glass_{side}",
                  (glass_x, store_y, win_z),
                  (0.04, 4.0, 1.8), (0.95, 0.78, 0.40, 1.0))
-        # Dark frame at the wall surface
+        # Frame at the wall surface
         frame_x = gs_x + sx_off + sign * 0.005
-        make_box(f"GasStation_Store_Frame_{side}_T",
-                 (frame_x, store_y, win_z + 0.95),
-                 (0.04, 4.20, 0.12), (0.30, 0.26, 0.20, 1.0))
-        make_box(f"GasStation_Store_Frame_{side}_B",
-                 (frame_x, store_y, win_z - 0.95),
-                 (0.04, 4.20, 0.12), (0.30, 0.26, 0.20, 1.0))
-        make_box(f"GasStation_Store_Frame_{side}_S",
-                 (frame_x, store_y - 2.06, win_z),
-                 (0.04, 0.12, 1.95), (0.30, 0.26, 0.20, 1.0))
-        make_box(f"GasStation_Store_Frame_{side}_N",
-                 (frame_x, store_y + 2.06, win_z),
-                 (0.04, 0.12, 1.95), (0.30, 0.26, 0.20, 1.0))
-        # Internal mullions (dividing the glass into panes)
+        for fp_name, fp_y_o, fp_z_o, fp_size in [
+            ("T", 0.0, +0.95, (0.04, 4.20, 0.12)),
+            ("B", 0.0, -0.95, (0.04, 4.20, 0.12)),
+            ("S", -2.06, 0.0, (0.04, 0.12, 1.95)),
+            ("N", +2.06, 0.0, (0.04, 0.12, 1.95)),
+        ]:
+            make_box(f"GasStation_Store_Frame_{side}_{fp_name}",
+                     (frame_x, store_y + fp_y_o, win_z + fp_z_o),
+                     fp_size, (0.30, 0.26, 0.20, 1.0))
+        # Internal mullions
         for mi in range(3):
             my_o = -1.2 + mi * 1.2
             make_box(f"GasStation_Store_Mullion_{side}_{mi}",
                      (frame_x, store_y + my_o, win_z),
                      (0.04, 0.05, 1.8), (0.30, 0.26, 0.20, 1.0))
-        # Sill below the window — extends slightly outboard like a real sill
-        sill_x = gs_x + sx_off + sign * 0.08
+        # Sill PROTRUDES 16cm out from the wall — visible 3D step below
+        # the window. This is the depth cue the eye reads.
+        sill_x = gs_x + sx_off + sign * 0.16
         make_box(f"GasStation_Store_Sill_{side}",
                  (sill_x, store_y, win_z - 1.05),
-                 (0.16, 4.20, 0.10), (0.55, 0.52, 0.46, 1.0))
+                 (0.32, 4.30, 0.12), (0.55, 0.52, 0.46, 1.0))
+        # Lintel ABOVE the window — protrudes 10cm, completing the
+        # "set into the wall" reading
+        lintel_x = gs_x + sx_off + sign * 0.10
+        make_box(f"GasStation_Store_Lintel_{side}",
+                 (lintel_x, store_y, win_z + 1.05),
+                 (0.20, 4.30, 0.14), (0.45, 0.42, 0.36, 1.0))
     # Tall illuminated price sign on a pole at the road
     sign_pole_x = gs_x + 6.5
     sign_pole_y = gs_y - 2.0
@@ -3042,34 +3065,41 @@ def build_near_shore():
                (1.0, sm_l - 1.0, 0.30),
                (0.78, 0.20, 0.18, 1.0),
                pitch_axis='Y')
-    # 6 storefront windows along the east face. Windows now RECESSED 5cm
-    # INTO the wall (was 2cm OUTSIDE the wall, which made them hover).
-    # Frames sit at the wall surface; sills overhang slightly.
+    # Storefront windows with PROPER DEPTH (see GasStation comment).
+    # 4-layer build: dark interior recess box (deep behind wall) →
+    # glass (recessed 8cm) → frame at wall surface → sill+lintel
+    # protruding outboard.
     east_wall_x = sm_x + sm_w / 2.0
     for si in range(6):
         fy = sm_y - sm_l/2 + 3.0 + si * (sm_l - 6.0) / 5.0
-        # Glass pane — RECESSED 5cm behind the wall plane
-        make_box(f"StripMall_Glass_{si}", (east_wall_x - 0.05, fy, 0.55 + 1.55),
+        # Interior dark recess BEHIND the glass
+        make_box(f"StripMall_Interior_{si}", (east_wall_x - 0.32, fy, 0.55 + 1.55),
+                 (0.30, 3.80, 2.40), (0.04, 0.04, 0.06, 1.0))
+        # Glass pane — recessed 8cm
+        make_box(f"StripMall_Glass_{si}", (east_wall_x - 0.08, fy, 0.55 + 1.55),
                  (0.04, 4.0, 2.5), (0.85, 0.72, 0.42, 1.0))
-        # Dark frame at the wall surface — surrounds the recessed glass
-        frame_x = east_wall_x + 0.01
-        # Top / bottom / left / right of frame
-        make_box(f"StripMall_Frame_{si}_T", (frame_x, fy, 0.55 + 2.85),
-                 (0.05, 4.20, 0.12), (0.28, 0.24, 0.20, 1.0))
-        make_box(f"StripMall_Frame_{si}_B", (frame_x, fy, 0.55 + 0.25),
-                 (0.05, 4.20, 0.12), (0.28, 0.24, 0.20, 1.0))
-        make_box(f"StripMall_Frame_{si}_S", (frame_x, fy - 2.06, 0.55 + 1.55),
-                 (0.05, 0.12, 2.65), (0.28, 0.24, 0.20, 1.0))
-        make_box(f"StripMall_Frame_{si}_N", (frame_x, fy + 2.06, 0.55 + 1.55),
-                 (0.05, 0.12, 2.65), (0.28, 0.24, 0.20, 1.0))
-        # Sill — protruding ledge below the window
-        make_box(f"StripMall_Sill_{si}", (east_wall_x + 0.10, fy, 0.55 + 0.18),
-                 (0.20, 4.20, 0.10), (0.55, 0.52, 0.46, 1.0))
-        # Internal vertical mullions dividing the window into 3 panes
+        # Frame at wall surface
+        frame_x = east_wall_x + 0.005
+        for fp_name, fp_y_o, fp_z_o, fp_size in [
+            ("T", 0.0, +1.30, (0.05, 4.20, 0.14)),
+            ("B", 0.0, -1.30, (0.05, 4.20, 0.14)),
+            ("S", -2.06, 0.0, (0.05, 0.12, 2.65)),
+            ("N", +2.06, 0.0, (0.05, 0.12, 2.65)),
+        ]:
+            make_box(f"StripMall_Frame_{si}_{fp_name}",
+                     (frame_x, fy + fp_y_o, 0.55 + 1.55 + fp_z_o),
+                     fp_size, (0.28, 0.24, 0.20, 1.0))
+        # Internal mullions
         for mi in range(2):
             mull_y = fy - 1.0 + mi * 2.0
-            make_box(f"StripMall_Mullion_{si}_{mi}", (frame_x - 0.01, mull_y, 0.55 + 1.55),
+            make_box(f"StripMall_Mullion_{si}_{mi}", (frame_x, mull_y, 0.55 + 1.55),
                      (0.05, 0.06, 2.5), (0.28, 0.24, 0.20, 1.0))
+        # Sill PROTRUDES 16cm — the visible 3D step that sells depth
+        make_box(f"StripMall_Sill_{si}", (east_wall_x + 0.16, fy, 0.55 + 0.18),
+                 (0.32, 4.30, 0.12), (0.55, 0.52, 0.46, 1.0))
+        # Lintel above protruding 10cm
+        make_box(f"StripMall_Lintel_{si}", (east_wall_x + 0.10, fy, 0.55 + 2.95),
+                 (0.20, 4.30, 0.14), (0.45, 0.42, 0.36, 1.0))
         # Vertical divider between adjacent shops — runs from sill to top
         if si < 5:
             div_y = sm_y - sm_l/2 + 3.0 + (si + 0.5) * (sm_l - 6.0) / 5.0

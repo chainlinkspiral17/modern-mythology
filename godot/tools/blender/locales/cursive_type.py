@@ -138,22 +138,24 @@ GLYPHS = {
     },
 
     # ── LOWERCASE s — cursive S shape ──────────────────────────
-    # A proper 's' is two opposing half-loops + a bridge:
-    #   top half opens DOWN  (an inverted U)
-    #   middle bridge diagonals from right of top to left of bottom
-    #   bottom half opens UP  (a U)
-    # The previous definition had the top loop opening UP, which read
-    # as a backwards / inverted S — user feedback caught this.
+    # A forward 's' has its middle diagonal running UPPER-LEFT to
+    # LOWER-RIGHT ("\\" direction). The previous version had the
+    # diagonal going upper-RIGHT to lower-LEFT, which read as a
+    # backwards/reversed S — user explicitly called this out twice.
+    # Now the top arch ENDS at the LEFT (upper portion), the diagonal
+    # descends to the RIGHT, and the bottom arch starts there.
     "s": {
         "advance": 0.32,
         "strokes": [
             [
-                # Top arch — over the top, ends descending on the right
+                # Top arch — over the top, anchored both ends at z=0.40,
+                # peak at z=0.62. Forms the top loop of the S.
                 ((0.04, 0.40), (0.04, 0.62), (0.24, 0.62), (0.24, 0.40)),
-                # Diagonal bridge from right-of-top to left-of-bottom
-                ((0.24, 0.40), (0.24, 0.30), (0.06, 0.30), (0.06, 0.20)),
-                # Bottom dip — under the bottom, ends rising on the right
-                ((0.06, 0.20), (0.06, 0.0), (0.28, 0.0), (0.28, 0.20)),
+                # Middle diagonal — UPPER-LEFT to LOWER-RIGHT (forward S)
+                ((0.04, 0.40), (0.08, 0.30), (0.20, 0.30), (0.24, 0.20)),
+                # Bottom arch — under the bottom, anchored both ends at z=0.20,
+                # dip at z=0.0. Forms the bottom loop of the S.
+                ((0.04, 0.20), (0.04, 0.0), (0.24, 0.0), (0.24, 0.20)),
             ],
         ],
     },

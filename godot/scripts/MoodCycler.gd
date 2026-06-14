@@ -62,16 +62,16 @@ const MOODS: Array = [
     # ── concept-art match: pure black + warm red + scene warmth ──
     {
         "name": "lithograph",
-        "palette": 4.0, "dither": 0.22, "scanline": 0.60, "aberration": 0.0012,
+        "palette": 3.0, "dither": 0.18, "scanline": 0.60, "aberration": 0.0010,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
-        "neon": 1.0, "neon_thresh": 0.04,
-        "neon_edge": Color(0.98, 0.18, 0.16, 1),   # saturated booth-red
-        "neon_low":  Color(0.0,  0.0,  0.0,  1),   # pure black
-        "neon_high": Color(0.0,  0.0,  0.0,  1),   # pure black
-        "neon_grad": 0.0,                          # no gradient — flat black
-        "neon_blend": 0.45,                        # warm spots punch through
-        "neon_glow": 0.9,                          # strong edge bloom
+        "neon": 1.0, "neon_thresh": 0.03,
+        "neon_edge": Color(0.95, 0.16, 0.14, 1),
+        "neon_low":  Color(0.0,  0.0,  0.0,  1),
+        "neon_high": Color(0.0,  0.0,  0.0,  1),
+        "neon_grad": 0.0,
+        "neon_blend": 0.25,                        # only the brightest spots tint
+        "neon_glow": 0.55,                         # tighter bloom — sharper lines
     },
     {
         "name": "noir",
