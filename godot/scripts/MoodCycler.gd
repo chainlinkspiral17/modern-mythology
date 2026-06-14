@@ -586,6 +586,33 @@ var _scene_light_phase: Array[float] = []
 var _scene_light_base_color: Array[Color] = []
 var _last_lightshow_active: bool = false
 
+# ── System-music audio capture (MusicIn bus + AudioStreamMicrophone)
+# The OS audio (whatever the device's music player is doing) gets
+# routed into the MusicIn bus when the user sets their system
+# monitor source as Godot's audio input device. _audio_level reads
+# from this bus instead of Master so Godot's own SFX don't drive
+# the visualizer — the music does.
+const MUSIC_BUS_NAME: String = "MusicIn"
+var _music_bus_idx: int = -1
+var _music_player: AudioStreamPlayer
+
+# ── Weather / cloud state · audio-reactive scroll + storm pressure
+# cloud_scroll_speed accelerates with audio peak; cloud_floor drops
+# as _storm_pressure builds (sustained loud → more clouds gather).
+# When pressure crosses STORM_BREAK_THRESHOLD, it dumps — fast scroll
+# pulse, then settles back down.
+var _storm_pressure: float = 0.0      # 0..1, accumulator
+var _storm_release: float = 0.0       # transient after a break
+const STORM_BREAK_THRESHOLD: float = 0.85
+
+# ── Day/night cycle
+# Slow 0..1 phase. 0 = midnight, 0.25 = sunrise, 0.5 = noon,
+# 0.75 = sunset. Drives WorldEnvironment ambient colour /
+# background colour / Moon_Key DirectionalLight energy / star
+# strength. Sampled fresh each frame; player can't pause it.
+const DAY_CYCLE_PERIOD: float = 720.0   # seconds per full day (12 min real-time)
+var _day_phase: float = 0.05            # start in deep night so the starscape sells
+
 
 func _get_material(node_name: String) -> Material:
     var node: Node = get_node_or_null(node_name)
@@ -669,6 +696,21 @@ func _ready() -> void:
         _collect_lights(root)
     for i in range(_scene_lights.size()):
         _scene_light_phase.append(float(i) * 1.273)   # ~irrational so they don't sync
+    # Resolve MusicIn bus + spawn the AudioStreamMicrophone player.
+    # If audio input isn't available (driver/enable_input off or the
+    # device has no input source) the player just stays silent and
+    # _audio_level falls back to whatever Godot itself is playing.
+    _music_bus_idx = AudioServer.get_bus_index(MUSIC_BUS_NAME)
+    if _music_bus_idx >= 0:
+        _music_player = AudioStreamPlayer.new()
+        _music_player.stream = AudioStreamMicrophone.new()
+        _music_player.bus = MUSIC_BUS_NAME
+        _music_player.autoplay = true
+        add_child(_music_player)
+        _music_player.play()
+        print("[Mood] MusicIn capture armed · bus %d · set system monitor as Godot audio input" % _music_bus_idx)
+    else:
+        print("[Mood] MusicIn bus missing — audio reactive falls back to Master")
 
 
 func _collect_lights(node: Node) -> void:
@@ -718,12 +760,74 @@ func _strata_step(direction: int) -> void:
 
 
 func _process(delta: float) -> void:
-    # ── audio-reactive sampling: exponential-smoothed master bus peak
-    # (linear 0..1). Quiet game → ~0; loud music → ~0.8-1.0. Fed to
-    # shaders as a uniform so any layer can react.
-    var bus_peak_db: float = AudioServer.get_bus_peak_volume_left_db(0, 0)
+    # ── audio-reactive sampling: prefer the MusicIn bus (system audio
+    # capture) so the visualizer breathes with whatever the device's
+    # music player is doing. Falls back to Master if MusicIn missing.
+    var read_bus: int = _music_bus_idx if _music_bus_idx >= 0 else 0
+    var bus_peak_db: float = AudioServer.get_bus_peak_volume_left_db(read_bus, 0)
     var bus_peak_lin: float = db_to_linear(bus_peak_db)
     _audio_level = _audio_level * AUDIO_DECAY + bus_peak_lin * (1.0 - AUDIO_DECAY)
+
+    # ── Weather state: storm pressure builds with sustained loud
+    # music, dumps in a fast "break" when it crosses the threshold.
+    if _audio_level > 0.25:
+        _storm_pressure += delta * (_audio_level - 0.20) * 0.18
+    else:
+        _storm_pressure -= delta * 0.05   # slowly dissipate when quiet
+    _storm_pressure = clamp(_storm_pressure, 0.0, 1.0)
+    if _storm_pressure >= STORM_BREAK_THRESHOLD and _storm_release <= 0.0:
+        _storm_release = 1.0
+        print("[Mood] storm break · scroll pulse")
+    _storm_release = max(0.0, _storm_release - delta * 0.30)
+
+    # ── Day/night cycle advances always — even in menus.
+    _day_phase = fposmod(_day_phase + delta / DAY_CYCLE_PERIOD, 1.0)
+
+    # ── Drive starscape cloud scroll & floor.
+    var star_mat: Material = _get_material("StarscapeQuad")
+    if star_mat is ShaderMaterial:
+        var sm: ShaderMaterial = star_mat as ShaderMaterial
+        # Scroll: base + audio acceleration + storm-break pulse.
+        # Direction stays diagonal (positive u, slight v) so weather
+        # appears to come from the west.
+        var sx: float = 0.025 + _audio_level * 0.18 + _storm_release * 0.45
+        var sy: float = 0.008 + _audio_level * 0.06 + _storm_release * 0.10
+        sm.set_shader_parameter("cloud_scroll", Vector2(sx, sy))
+        # Floor: more clouds gather as storm pressure builds; the
+        # break instant doesn't change floor (clouds break apart by
+        # scrolling fast, not by vanishing).
+        var floor_val: float = 0.55 - _storm_pressure * 0.20
+        sm.set_shader_parameter("cloud_floor", clamp(floor_val, 0.30, 0.70))
+
+    # ── Day/night cycle → ambient + key light energy + background.
+    # day_phase mapping: 0 midnight, 0.25 sunrise, 0.5 noon,
+    # 0.75 sunset. Use a smoothstep to bias the dawn/dusk windows.
+    var sun_factor: float = 0.5 - 0.5 * cos(_day_phase * TAU)   # 0 night, 1 noon
+    var moon_key: DirectionalLight3D = get_node_or_null(NodePath("../Moon_Key"))
+    if moon_key:
+        # Moon is dim at noon, bright at midnight.
+        moon_key.light_energy = lerp(0.42, 0.06, sun_factor)
+        # Warm-shift colour through the day (cool at night → warm dawn → daylight neutral → warm dusk → cool again)
+        var warm: float = sun_factor
+        moon_key.light_color = Color(
+            lerp(0.62, 0.98, warm),
+            lerp(0.72, 0.92, warm),
+            lerp(0.95, 0.80, warm),
+            1.0
+        )
+    var fill_bounce: DirectionalLight3D = get_node_or_null(NodePath("../Fill_Bounce"))
+    if fill_bounce:
+        fill_bounce.light_energy = lerp(0.05, 0.30, sun_factor)
+    var env: WorldEnvironment = get_node_or_null(NodePath("../WorldEnvironment"))
+    if env and env.environment:
+        var e: Environment = env.environment
+        e.ambient_light_energy = lerp(0.18, 0.85, sun_factor)
+        e.background_color = Color(
+            lerp(0.03, 0.42, sun_factor),
+            lerp(0.04, 0.58, sun_factor),
+            lerp(0.06, 0.78, sun_factor),
+            1.0
+        )
 
     # ── lightshow_extreme · drive every scene Light3D from the audio
     # and a per-light sine phase. The actual physical lights pulse

@@ -42,6 +42,11 @@ uniform float chip_strength   : hint_range(0.0, 1.0) = 0.45;
 uniform float cloud_strength  : hint_range(0.0, 1.0) = 0.0;
 uniform float cloud_scale     : hint_range(0.001, 0.05) = 0.012;
 uniform float cloud_floor     : hint_range(0.0, 1.0) = 0.55;
+uniform vec2  cloud_scroll    = vec2(0.025, 0.008);
+// cloud_scroll is the (u, v) speed of the cloud field in scene-uv
+// units per second. MoodCycler drives this from music level — quiet
+// music = slow drift, loud music = fast sweep, builds-and-breaks
+// storm rhythm.
 uniform bool force_full = false;
 // force_full = true → bypass the sky_mask gate AND paint starscape
 // over the ENTIRE frame instead of only the dark sky pixels. Used
@@ -198,7 +203,7 @@ void fragment() {
     // slowly horizontally — long, lazy weather.
     {
         vec2 cell_pix = cell_idx * cell_size;
-        vec2 cloud_uv = cell_pix * cloud_scale + vec2(t * 0.025, t * 0.008);
+        vec2 cloud_uv = cell_pix * cloud_scale + cloud_scroll * t;
         float n = fbm3(cloud_uv);
         float density = clamp((n - cloud_floor) * 2.4, 0.0, 1.0);
         float density_val = density * cloud_strength;
