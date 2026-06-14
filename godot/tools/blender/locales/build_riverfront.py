@@ -1607,10 +1607,11 @@ def build_river():
     # to the water at X = OPPOSITE_X - 14 or so.
     starboard_bank_top_x = OPPOSITE_X - 0.5
     starboard_bank_bot_x = OPPOSITE_X - 14.0
+    starboard_bank_col = (0.34, 0.28, 0.18, 1.0)
     make_ramp("River_Bank_Starboard",
               (starboard_bank_top_x, 0, port_bank_top_z),
               (starboard_bank_bot_x, 0, port_bank_bot_z),
-              river_extent_y, 0.40, bank_col, width_axis='Y')
+              river_extent_y, 0.40, starboard_bank_col, width_axis='Y')
     # ── PORT BANK FEATURES — riprap, reeds, cattails, lily pads, logs,
     # driftwood, a beached skiff. The port (boat-side) bank used to be
     # FEATURELESS, just a sloped dirt plane. This is the bayou-edge
