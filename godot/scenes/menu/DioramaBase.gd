@@ -44,67 +44,67 @@ var _t: float = 0.0
 
 
 func _ready() -> void:
-    set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-    mouse_filter = Control.MOUSE_FILTER_STOP
-    _build_chrome()
-    _build_content()
-    _init_ambient()
-    set_process(true)
-    set_process_input(true)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	mouse_filter = Control.MOUSE_FILTER_STOP
+	_build_chrome()
+	_build_content()
+	_init_ambient()
+	set_process(true)
+	set_process_input(true)
 
 
 # ── Chrome ────────────────────────────────────────────────────────
 
 func _build_chrome() -> void:
-    var bg := ColorRect.new()
-    bg.color = C_BG
-    bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-    bg.mouse_filter = Control.MOUSE_FILTER_STOP
-    add_child(bg)
+	var bg := ColorRect.new()
+	bg.color = C_BG
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	bg.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(bg)
 
-    # Edge wash — gives each diorama a distinct atmospheric tint
-    var wash := ColorRect.new()
-    wash.color = _edge_wash_color
-    wash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-    wash.mouse_filter = Control.MOUSE_FILTER_IGNORE
-    add_child(wash)
+	# Edge wash — gives each diorama a distinct atmospheric tint
+	var wash := ColorRect.new()
+	wash.color = _edge_wash_color
+	wash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	wash.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(wash)
 
-    var top := PanelContainer.new()
-    top.set_anchors_preset(Control.PRESET_TOP_WIDE)
-    top.offset_bottom = 40
-    var tps := StyleBoxFlat.new()
-    tps.bg_color = Color(0, 0, 0, 0.78)
-    tps.border_color = C_GOLD
-    tps.border_width_bottom = 1
-    top.add_theme_stylebox_override("panel", tps)
-    add_child(top)
-    var row := HBoxContainer.new()
-    row.add_theme_constant_override("separation", 12)
-    top.add_child(row)
-    var lpad := Control.new()
-    lpad.custom_minimum_size = Vector2(14, 0)
-    row.add_child(lpad)
-    var title := Label.new()
-    title.text = _diorama_title
-    title.add_theme_color_override("font_color", C_GOLD_HI)
-    title.add_theme_font_size_override("font_size", 13)
-    title.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-    row.add_child(title)
-    var sp := Control.new()
-    sp.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-    row.add_child(sp)
-    var hint := Label.new()
-    hint.text = _diorama_hint
-    hint.add_theme_color_override("font_color", C_TEXT_DIM)
-    hint.add_theme_font_size_override("font_size", 9)
-    hint.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-    row.add_child(hint)
-    var close := Button.new()
-    close.text = "[ × CLOSE ]"
-    close.flat = true
-    close.add_theme_color_override("font_color", C_GOLD_HI)
-    close.pressed.connect(func() -> void: closed.emit())
-    row.add_child(close)
+	var top := PanelContainer.new()
+	top.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	top.offset_bottom = 40
+	var tps := StyleBoxFlat.new()
+	tps.bg_color = Color(0, 0, 0, 0.78)
+	tps.border_color = C_GOLD
+	tps.border_width_bottom = 1
+	top.add_theme_stylebox_override("panel", tps)
+	add_child(top)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+	top.add_child(row)
+	var lpad := Control.new()
+	lpad.custom_minimum_size = Vector2(14, 0)
+	row.add_child(lpad)
+	var title := Label.new()
+	title.text = _diorama_title
+	title.add_theme_color_override("font_color", C_GOLD_HI)
+	title.add_theme_font_size_override("font_size", 13)
+	title.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	row.add_child(title)
+	var sp := Control.new()
+	sp.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(sp)
+	var hint := Label.new()
+	hint.text = _diorama_hint
+	hint.add_theme_color_override("font_color", C_TEXT_DIM)
+	hint.add_theme_font_size_override("font_size", 9)
+	hint.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	row.add_child(hint)
+	var close := Button.new()
+	close.text = "[ × CLOSE ]"
+	close.flat = true
+	close.add_theme_color_override("font_color", C_GOLD_HI)
+	close.pressed.connect(func() -> void: closed.emit())
+	row.add_child(close)
 
 
 ## Subclasses override this to build their interactive content.
@@ -112,7 +112,7 @@ func _build_chrome() -> void:
 ## strip — implementations should add their content as children
 ## of `self`.
 func _build_content() -> void:
-    pass
+	pass
 
 
 # ── Reveal panel — right-side text + unlock dispatch ──────────────
@@ -121,62 +121,62 @@ func _build_content() -> void:
 ## `unlock_key` is non-empty, mark it as unlocked (cross-card
 ## unlocks fire from here).
 func reveal(head_text: String, body_text: String, unlock_key: String = "") -> void:
-    _ensure_reveal_panel()
-    _reveal_head.text = "▷ " + head_text
-    _reveal_text.text = body_text
-    if unlock_key != "":
-        SaveSystem.mark_unlocked(unlock_key)
-    _reveal_panel.visible = true
-    _reveal_panel.modulate.a = 0.0
-    var tw := create_tween()
-    tw.tween_property(_reveal_panel, "modulate:a", 1.0, 0.22)
+	_ensure_reveal_panel()
+	_reveal_head.text = "▷ " + head_text
+	_reveal_text.text = body_text
+	if unlock_key != "":
+		SaveSystem.mark_unlocked(unlock_key)
+	_reveal_panel.visible = true
+	_reveal_panel.modulate.a = 0.0
+	var tw := create_tween()
+	tw.tween_property(_reveal_panel, "modulate:a", 1.0, 0.22)
 
 
 func _ensure_reveal_panel() -> void:
-    if _reveal_panel != null and is_instance_valid(_reveal_panel):
-        return
-    _reveal_panel = PanelContainer.new()
-    _reveal_panel.set_anchors_preset(Control.PRESET_RIGHT_WIDE)
-    _reveal_panel.offset_left = -380
-    _reveal_panel.offset_right = -18
-    _reveal_panel.offset_top = 56
-    _reveal_panel.offset_bottom = -18
-    _reveal_panel.mouse_filter = Control.MOUSE_FILTER_STOP
-    _reveal_panel.z_index = 12
-    var sb := StyleBoxFlat.new()
-    sb.bg_color = Color(0.03, 0.02, 0.04, 0.96)
-    sb.border_color = C_GOLD_HI
-    sb.set_border_width_all(1)
-    _reveal_panel.add_theme_stylebox_override("panel", sb)
-    add_child(_reveal_panel)
-    var m := MarginContainer.new()
-    m.add_theme_constant_override("margin_left", 12)
-    m.add_theme_constant_override("margin_right", 12)
-    m.add_theme_constant_override("margin_top", 10)
-    m.add_theme_constant_override("margin_bottom", 10)
-    _reveal_panel.add_child(m)
-    var vb := VBoxContainer.new()
-    vb.add_theme_constant_override("separation", 6)
-    m.add_child(vb)
-    _reveal_head = Label.new()
-    _reveal_head.add_theme_color_override("font_color", C_GOLD_HI)
-    _reveal_head.add_theme_font_size_override("font_size", 11)
-    vb.add_child(_reveal_head)
-    _reveal_text = RichTextLabel.new()
-    _reveal_text.fit_content = true
-    _reveal_text.bbcode_enabled = false
-    _reveal_text.add_theme_color_override("default_color", C_TEXT)
-    _reveal_text.add_theme_font_size_override("normal_font_size", 10)
-    _reveal_text.size_flags_vertical = Control.SIZE_EXPAND_FILL
-    vb.add_child(_reveal_text)
-    var dismiss := Button.new()
-    dismiss.text = "[ × dismiss ]"
-    dismiss.flat = true
-    dismiss.alignment = HORIZONTAL_ALIGNMENT_RIGHT
-    dismiss.add_theme_color_override("font_color", C_GOLD)
-    dismiss.pressed.connect(func() -> void: _reveal_panel.visible = false)
-    vb.add_child(dismiss)
-    _reveal_panel.visible = false
+	if _reveal_panel != null and is_instance_valid(_reveal_panel):
+		return
+	_reveal_panel = PanelContainer.new()
+	_reveal_panel.set_anchors_preset(Control.PRESET_RIGHT_WIDE)
+	_reveal_panel.offset_left = -380
+	_reveal_panel.offset_right = -18
+	_reveal_panel.offset_top = 56
+	_reveal_panel.offset_bottom = -18
+	_reveal_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	_reveal_panel.z_index = 12
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.03, 0.02, 0.04, 0.96)
+	sb.border_color = C_GOLD_HI
+	sb.set_border_width_all(1)
+	_reveal_panel.add_theme_stylebox_override("panel", sb)
+	add_child(_reveal_panel)
+	var m := MarginContainer.new()
+	m.add_theme_constant_override("margin_left", 12)
+	m.add_theme_constant_override("margin_right", 12)
+	m.add_theme_constant_override("margin_top", 10)
+	m.add_theme_constant_override("margin_bottom", 10)
+	_reveal_panel.add_child(m)
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 6)
+	m.add_child(vb)
+	_reveal_head = Label.new()
+	_reveal_head.add_theme_color_override("font_color", C_GOLD_HI)
+	_reveal_head.add_theme_font_size_override("font_size", 11)
+	vb.add_child(_reveal_head)
+	_reveal_text = RichTextLabel.new()
+	_reveal_text.fit_content = true
+	_reveal_text.bbcode_enabled = false
+	_reveal_text.add_theme_color_override("default_color", C_TEXT)
+	_reveal_text.add_theme_font_size_override("normal_font_size", 10)
+	_reveal_text.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	vb.add_child(_reveal_text)
+	var dismiss := Button.new()
+	dismiss.text = "[ × dismiss ]"
+	dismiss.flat = true
+	dismiss.alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	dismiss.add_theme_color_override("font_color", C_GOLD)
+	dismiss.pressed.connect(func() -> void: _reveal_panel.visible = false)
+	vb.add_child(dismiss)
+	_reveal_panel.visible = false
 
 
 ## Quick helper for subclasses building hotspot buttons over their
@@ -184,28 +184,28 @@ func _ensure_reveal_panel() -> void:
 ## is normalised (x, y, w, h); `tooltip` shows on hover. The press
 ## callback receives no args.
 func make_hotspot(parent: Control, rect: Array, tooltip: String,
-                   on_press: Callable) -> Button:
-    var btn := Button.new()
-    btn.flat = true
-    btn.tooltip_text = tooltip
-    btn.anchor_left = float(rect[0])
-    btn.anchor_top = float(rect[1])
-    btn.anchor_right = float(rect[0]) + float(rect[2])
-    btn.anchor_bottom = float(rect[1]) + float(rect[3])
-    btn.mouse_default_cursor_shape = Control.CURSOR_HELP
-    var sb := StyleBoxFlat.new()
-    sb.bg_color = Color(1, 0.85, 0.40, 0.0)
-    sb.border_color = Color(1, 0.85, 0.40, 0.0)
-    sb.set_border_width_all(1)
-    btn.add_theme_stylebox_override("normal", sb)
-    var sbh := sb.duplicate() as StyleBoxFlat
-    sbh.bg_color = Color(1, 0.85, 0.40, 0.30)
-    sbh.border_color = Color(1, 0.85, 0.40, 0.85)
-    btn.add_theme_stylebox_override("hover", sbh)
-    btn.add_theme_stylebox_override("focus", sbh)
-    btn.pressed.connect(on_press)
-    parent.add_child(btn)
-    return btn
+				   on_press: Callable) -> Button:
+	var btn := Button.new()
+	btn.flat = true
+	btn.tooltip_text = tooltip
+	btn.anchor_left = float(rect[0])
+	btn.anchor_top = float(rect[1])
+	btn.anchor_right = float(rect[0]) + float(rect[2])
+	btn.anchor_bottom = float(rect[1]) + float(rect[3])
+	btn.mouse_default_cursor_shape = Control.CURSOR_HELP
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(1, 0.85, 0.40, 0.0)
+	sb.border_color = Color(1, 0.85, 0.40, 0.0)
+	sb.set_border_width_all(1)
+	btn.add_theme_stylebox_override("normal", sb)
+	var sbh := sb.duplicate() as StyleBoxFlat
+	sbh.bg_color = Color(1, 0.85, 0.40, 0.30)
+	sbh.border_color = Color(1, 0.85, 0.40, 0.85)
+	btn.add_theme_stylebox_override("hover", sbh)
+	btn.add_theme_stylebox_override("focus", sbh)
+	btn.pressed.connect(on_press)
+	parent.add_child(btn)
+	return btn
 
 
 # ── Procedural ambient audio scaffold ─────────────────────────────
@@ -218,52 +218,52 @@ var _aud_step: float = 0.0
 
 
 func _init_ambient() -> void:
-    _amb_gen = AudioStreamGenerator.new()
-    _amb_gen.mix_rate = 44100
-    _amb_gen.buffer_length = 0.05
-    _amb_player = AudioStreamPlayer.new()
-    _amb_player.bus = "BGM"
-    _amb_player.stream = _amb_gen
-    _amb_player.volume_db = -16.0
-    add_child(_amb_player)
-    _amb_player.play()
-    _amb_playback = _amb_player.get_stream_playback()
+	_amb_gen = AudioStreamGenerator.new()
+	_amb_gen.mix_rate = 44100
+	_amb_gen.buffer_length = 0.05
+	_amb_player = AudioStreamPlayer.new()
+	_amb_player.bus = "BGM"
+	_amb_player.stream = _amb_gen
+	_amb_player.volume_db = -16.0
+	add_child(_amb_player)
+	_amb_player.play()
+	_amb_playback = _amb_player.get_stream_playback()
 
 
 func _process(delta: float) -> void:
-    _t += delta
-    _on_diorama_tick(delta)
-    if _amb_playback == null:
-        return
-    var frames := _amb_playback.get_frames_available()
-    if frames <= 0:
-        return
-    var step := 1.0 / 44100.0
-    for _i in frames:
-        _aud_step += step
-        var s: Vector2 = _ambient_sample(_aud_step, step)
-        s.x = clamp(s.x, -0.95, 0.95)
-        s.y = clamp(s.y, -0.95, 0.95)
-        _amb_playback.push_frame(s)
+	_t += delta
+	_on_diorama_tick(delta)
+	if _amb_playback == null:
+		return
+	var frames := _amb_playback.get_frames_available()
+	if frames <= 0:
+		return
+	var step := 1.0 / 44100.0
+	for _i in frames:
+		_aud_step += step
+		var s: Vector2 = _ambient_sample(_aud_step, step)
+		s.x = clamp(s.x, -0.95, 0.95)
+		s.y = clamp(s.y, -0.95, 0.95)
+		_amb_playback.push_frame(s)
 
 
 ## Subclasses override this for per-frame logic (animations,
 ## scheduled events, etc.). Base does nothing.
 func _on_diorama_tick(_delta: float) -> void:
-    pass
+	pass
 
 
 ## Subclasses override this to produce one stereo audio sample per
 ## frame. Default: silence. `phase` is the running audio time in
 ## seconds since the diorama opened; `step` is 1/44100.
 func _ambient_sample(_phase: float, _step: float) -> Vector2:
-    return Vector2.ZERO
+	return Vector2.ZERO
 
 
 # ── Input ─────────────────────────────────────────────────────────
 
 func _input(event: InputEvent) -> void:
-    if event is InputEventKey and event.pressed and not event.echo:
-        if event.keycode == KEY_ESCAPE:
-            closed.emit()
-            get_viewport().set_input_as_handled()
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_ESCAPE:
+			closed.emit()
+			get_viewport().set_input_as_handled()

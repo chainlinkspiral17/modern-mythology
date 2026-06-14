@@ -74,7 +74,7 @@ func load_substrate(short_path: String) -> void:
 			print("[AsciiSubstrate] PNG found but failed to load: ", png_path)
 	else:
 		print("[AsciiSubstrate] no PNG companion, falling back to BBCode for: ",
-		      short_path)
+			  short_path)
 	var full_path: String = SUBSTRATE_ROOT + short_path + ".json"
 	if not FileAccess.file_exists(full_path):
 		push_warning("AsciiSubstrate: not found: " + full_path)

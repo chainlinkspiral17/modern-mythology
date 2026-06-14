@@ -676,8 +676,8 @@ func _find_in_gallery_index(key: String) -> Dictionary:
 	var k := key.to_lower()
 	# Prefer canonical suffixes if any stem matches them exactly.
 	var preferred := [k + "_face", k + "_portrait", k + "_clean",
-	                  k, "portrait_" + k + "_face", "portrait_" + k + "_0",
-	                  "portrait_" + k, k + "_neutral"]
+					  k, "portrait_" + k + "_face", "portrait_" + k + "_0",
+					  "portrait_" + k, k + "_neutral"]
 	for stem: String in preferred:
 		if stem in _gallery_index:
 			var path: String = _gallery_index[stem]
@@ -825,9 +825,9 @@ class _AsciiBorder extends Control:
 		if cols < 4 or rows < 4: return
 		# Corners + edges
 		var c_bright := Color(accent.r * 1.0, accent.g * 1.0,
-		                     accent.b * 1.0, 0.85)
+							 accent.b * 1.0, 0.85)
 		var c_dim := Color(accent.r * 0.55, accent.g * 0.55,
-		                  accent.b * 0.55, 0.65)
+						  accent.b * 0.55, 0.65)
 		# Pulse — corners brighten in a wave
 		var pulse: float = (sin(t * 1.4) + 1.0) * 0.5
 		var c_pulse := c_bright.lerp(c_dim, pulse)
@@ -836,13 +836,13 @@ class _AsciiBorder extends Control:
 			Vector2((cols - 1) * cell_x, 0),     # top-right
 			Vector2(0, (rows - 1) * cell_y),     # bot-left
 			Vector2((cols - 1) * cell_x,
-			       (rows - 1) * cell_y),          # bot-right
+				   (rows - 1) * cell_y),          # bot-right
 		]
 		var corner_glyphs := ["╔", "╗", "╚", "╝"]
 		for i in 4:
 			draw_string(font, corners[i] + Vector2(0, cell_y - 2),
-			            corner_glyphs[i],
-			            HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_pulse)
+						corner_glyphs[i],
+						HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_pulse)
 		# Top + bottom edges
 		for c in range(1, cols - 1):
 			var x = c * cell_x
@@ -850,19 +850,19 @@ class _AsciiBorder extends Control:
 			if c == cols / 2:
 				glyph = "╦"   # subtle middle tee
 			draw_string(font, Vector2(x, cell_y - 2), glyph,
-			            HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
+						HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
 			var glyph2 := "═"
 			if c == cols / 2:
 				glyph2 = "╩"
 			draw_string(font, Vector2(x, (rows - 1) * cell_y + cell_y - 2),
-			            glyph2, HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
+						glyph2, HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
 		# Left + right edges
 		for r in range(1, rows - 1):
 			var y = r * cell_y
 			draw_string(font, Vector2(0, y + cell_y - 2), "║",
-			            HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
+						HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
 			draw_string(font, Vector2((cols - 1) * cell_x, y + cell_y - 2),
-			            "║", HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
+						"║", HORIZONTAL_ALIGNMENT_LEFT, -1, fpx, c_dim)
 		# Speaker name on the portrait used to duplicate the dialogue
 		# box's name label; removed so the portrait reads as a clean
 		# framed figure without text competing for attention.
@@ -889,13 +889,13 @@ func _make_border(wrapper: Control, char_name: String) -> Control:
 const _GHOST_ASCII := """    ▄▄▄▄▄
    ▐█████▌
    ▐██▀██▌
-    ▐████▌
+	▐████▌
    ▐██████▌
   ▐████████▌
    ▐██████▌
-    ██████
-    ██▌▐██
-    ██▌▐██
+	██████
+	██▌▐██
+	██▌▐██
 """
 
 var _ghosts: Array = []

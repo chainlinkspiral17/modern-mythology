@@ -119,7 +119,7 @@ func _make_tone_stream(freq: float, dur: float) -> AudioStreamWAV:
 		# Soft bell — sine + slight 3rd harmonic so it reads as a
 		# real instrument, not a beeper.
 		var s: float = (sin(t * freq * TAU) * 0.75
-		             + sin(t * freq * 3.0 * TAU) * 0.18) * env * 0.62
+					 + sin(t * freq * 3.0 * TAU) * 0.18) * env * 0.62
 		var v: int = int(clampf(s, -1.0, 1.0) * 32700.0)
 		data[i * 2]     = v & 0xff
 		data[i * 2 + 1] = (v >> 8) & 0xff
