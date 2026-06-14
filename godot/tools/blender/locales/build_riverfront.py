@@ -71,9 +71,10 @@ PARKING_X = -BOAT_W / 2 - 18.0    # parking lot 18m west of boat (port)
 PARKING_Y_CENTER = 0.0            # parking lot lined up with boat center
 RIVER_LEVEL_Z = -0.3
 
-OPPOSITE_X = 45.0     # far starboard shore (east, across the river)
-BAYOU_X = 26.0        # bayou between boat and opposite shore
-BRIDGE_Y = -75.0      # distant bridge downriver to the south
+OPPOSITE_X = 95.0     # far starboard shore (east, across the wide river)
+BAYOU_X = 30.0        # bayou starts well east of the boat
+BRIDGE_Y = -95.0      # distant bridge downriver to the south
+DOCK_Z = 0.35         # dock deck sits 35cm above the water surface
 
 # ── palette ──
 COL_HULL          = (0.82, 0.78, 0.66, 1.0)    # white clapboard, aged
@@ -247,6 +248,50 @@ def make_prism(name, center, size, base_color, pitch_axis='Y'):
             [0, 4, 5, 1],
             [3, 2, 5, 4],
         ]
+    return _finalize_mesh(name, verts, faces, base_color)
+
+
+def make_ramp(name, start_top, end_top, width, thickness, base_color, width_axis='Y'):
+    """A sloped plank running from start_top to end_top, with given
+    perpendicular width and bottom thickness. The 'top' surface goes
+    from start_top to end_top in 3D. width_axis selects which axis the
+    width spans ('X' or 'Y'); the other and Z carry the slope.
+
+    Used for gangways and ramps — anywhere a flat plank tilts between
+    two heights (real-world gangways slope ~15-25° from horizontal)."""
+    sx, sy, sz = start_top
+    ex, ey, ez = end_top
+    hw = width / 2.0
+    if width_axis == 'Y':
+        verts = [
+            (sx, sy - hw, sz - thickness),  # 0 — start bottom -Y
+            (ex, ey - hw, ez - thickness),  # 1 — end   bottom -Y
+            (ex, ey + hw, ez - thickness),  # 2 — end   bottom +Y
+            (sx, sy + hw, sz - thickness),  # 3 — start bottom +Y
+            (sx, sy - hw, sz),              # 4 — start top    -Y
+            (ex, ey - hw, ez),              # 5 — end   top    -Y
+            (ex, ey + hw, ez),              # 6 — end   top    +Y
+            (sx, sy + hw, sz),              # 7 — start top    +Y
+        ]
+    else:  # 'X'
+        verts = [
+            (sx - hw, sy, sz - thickness),
+            (ex - hw, ey, ez - thickness),
+            (ex + hw, ey, ez - thickness),
+            (sx + hw, sy, sz - thickness),
+            (sx - hw, sy, sz),
+            (ex - hw, ey, ez),
+            (ex + hw, ey, ez),
+            (sx + hw, sy, sz),
+        ]
+    faces = [
+        [0, 3, 2, 1],   # bottom
+        [4, 5, 6, 7],   # top
+        [0, 1, 5, 4],   # one side
+        [2, 3, 7, 6],   # other side
+        [1, 2, 6, 5],   # downhill end
+        [3, 0, 4, 7],   # uphill end
+    ]
     return _finalize_mesh(name, verts, faces, base_color)
 
 
@@ -672,25 +717,41 @@ def build_riverboat():
             make_box(f"Lifebuoy_{i}_seg_{j}", (rx, ry, rz), (0.10, 0.12, 0.12), col)
 
     # ════════════════════════════════════════════════════════════
-    # GANGWAY — extends from the boat's PORT (-X) side to the dock.
-    # Runs along X, perpendicular to the boat's long axis.
+    # GANGWAY — angled plank from the boat's port deck DOWN to the
+    # dock deck. Real gangways slope ~15-25°. From BD_Z+top of
+    # decking ~2.05 down to DOCK_Z+0.10 ~0.45, ~1.6m drop over ~3m
+    # run = ~28° slope.
     # ════════════════════════════════════════════════════════════
-    gw_x = -BD_W/2 - 1.5
-    gw_z = BD_Z - 0.05
-    make_box("Gangway_Deck", (gw_x, 0, gw_z), (3.4, 2.4, 0.14), COL_DECK_WOOD)
-    for i in range(5):
-        gpy = -0.95 + i * 0.475
-        make_box(f"Gangway_Plank_{i}", (gw_x, gpy, gw_z + 0.08),
-                 (3.4, 0.04, 0.01), (0.30, 0.20, 0.12, 1.0))
-    # Railings + posts (railings run along X, on the N and S sides of the gangway)
-    make_box("Gangway_Rail_N_top", (gw_x, 1.15, gw_z + 0.85), (3.4, 0.05, 0.05), COL_BRASS)
-    make_box("Gangway_Rail_S_top", (gw_x, -1.15, gw_z + 0.85), (3.4, 0.05, 0.05), COL_BRASS)
-    make_box("Gangway_Rail_N_mid", (gw_x, 1.15, gw_z + 0.45), (3.4, 0.04, 0.04), COL_BRASS)
-    make_box("Gangway_Rail_S_mid", (gw_x, -1.15, gw_z + 0.45), (3.4, 0.04, 0.04), COL_BRASS)
-    for i in range(4):
-        gpx = gw_x - 1.4 + i * 0.95
-        make_box(f"Gangway_Post_N_{i}", (gpx, 1.15, gw_z + 0.45), (0.05, 0.05, 0.85), COL_BRASS)
-        make_box(f"Gangway_Post_S_{i}", (gpx, -1.15, gw_z + 0.45), (0.05, 0.05, 0.85), COL_BRASS)
+    # Calculated to land on the dock east edge ≈ X=-6.7
+    gw_start_x = -BD_W / 2.0 + 0.20         # at the port edge of the boat deck
+    gw_start_z = BD_Z + 0.10                # boat boiler deck surface
+    gw_end_x   = gw_start_x - 3.20          # dock-ward
+    gw_end_z   = DOCK_Z + 0.10              # dock surface
+    make_ramp("Gangway_Slope",
+              (gw_start_x, 0.0, gw_start_z),
+              (gw_end_x,   0.0, gw_end_z),
+              2.4, 0.14, COL_DECK_WOOD, width_axis='Y')
+    # Plank lines across the gangway (4 cross-stripes for grip)
+    for i in range(8):
+        t = (i + 0.5) / 8.0
+        ppx = gw_start_x + t * (gw_end_x - gw_start_x)
+        ppz = gw_start_z + t * (gw_end_z - gw_start_z) + 0.005
+        make_box(f"Gangway_Tread_{i}", (ppx, 0.0, ppz),
+                 (0.10, 2.3, 0.02), (0.20, 0.14, 0.08, 1.0))
+    # Sloping railings (boxes from start corner to end corner, two heights)
+    for side, sy_r in (("N", 1.20), ("S", -1.20)):
+        # top rail — a slanted thin box approximated via make_ramp
+        make_ramp(f"Gangway_Rail_{side}_top",
+                  (gw_start_x, sy_r, gw_start_z + 0.95),
+                  (gw_end_x,   sy_r, gw_end_z + 0.95),
+                  0.06, 0.04, COL_BRASS, width_axis='Y')
+        # vertical posts at intervals
+        for i in range(5):
+            t = (i + 0.5) / 5.0
+            ppx = gw_start_x + t * (gw_end_x - gw_start_x)
+            ppz = gw_start_z + t * (gw_end_z - gw_start_z)
+            make_box(f"Gangway_Post_{side}_{i}", (ppx, sy_r, ppz + 0.48),
+                     (0.05, 0.05, 0.95), COL_BRASS)
 
     # Gangway entry arch on the boat's PORT wall of the dining cabin
     arch_x = -DR_W/2 - 0.5
@@ -887,20 +948,198 @@ def build_parking_lot():
     for li, ly_off in enumerate([-0.80, 0.80]):
         make_box(f"BusBench_Leg_{li}", (bb_x, bb_y + ly_off, 0.22), (0.40, 0.10, 0.45), (0.18, 0.18, 0.18, 1.0))
 
-    # ── "D'AMBROSIO'S" SIGN POLE at the lot's south-east entry corner ──
+    # ── "D'Ambrosio's" SIGN — pole + dark panel + cursive RED NEON ──
+    # Sign sits at the south-east entry corner of the lot, panel face
+    # parallel to the lot edge (faces +Y / -Y so road traffic sees it).
     sign_x = lot_cx + lot_x_w/2 + 0.5
     sign_y = lot_cy - lot_y_l/2 + 2.0
-    make_cyl("Sign_Pole", (sign_x, sign_y, 3.5), 0.12, 7.0, (0.30, 0.28, 0.24, 1.0), segments=8)
-    # double sign panels (the broad faces look north and south)
-    make_box("Sign_Panel_N", (sign_x, sign_y + 0.06, 5.5), (2.4, 0.04, 1.6), (0.55, 0.20, 0.16, 1.0))
-    make_box("Sign_Panel_S", (sign_x, sign_y - 0.06, 5.5), (2.4, 0.04, 1.6), (0.55, 0.20, 0.16, 1.0))
-    # gold lettering strip
-    make_box("Sign_Text_N", (sign_x, sign_y + 0.09, 5.5), (1.8, 0.02, 0.4), (0.95, 0.78, 0.42, 1.0))
-    make_box("Sign_Text_S", (sign_x, sign_y - 0.09, 5.5), (1.8, 0.02, 0.4), (0.95, 0.78, 0.42, 1.0))
+    make_cyl("Sign_Pole", (sign_x, sign_y, 3.6), 0.14, 7.2, (0.26, 0.24, 0.22, 1.0), segments=8)
+    # The dark mounting panel — wider/taller than before so the cursive
+    # script has room to read.
+    sign_w = 4.2
+    sign_h = 1.8
+    sign_z = 5.6
+    make_box("Sign_Panel_N", (sign_x, sign_y + 0.08, sign_z), (sign_w, 0.05, sign_h), (0.12, 0.10, 0.10, 1.0))
+    make_box("Sign_Panel_S", (sign_x, sign_y - 0.08, sign_z), (sign_w, 0.05, sign_h), (0.12, 0.10, 0.10, 1.0))
     # frame trims
-    for face_y, label in ((0.06, "N"), (-0.06, "S")):
-        make_box(f"Sign_Frame_{label}_top", (sign_x, sign_y + face_y, 6.32), (2.5, 0.05, 0.10), (0.30, 0.28, 0.24, 1.0))
-        make_box(f"Sign_Frame_{label}_low", (sign_x, sign_y + face_y, 4.68), (2.5, 0.05, 0.10), (0.30, 0.28, 0.24, 1.0))
+    for face_y, label in ((0.10, "N"), (-0.10, "S")):
+        make_box(f"Sign_Frame_{label}_top", (sign_x, sign_y + face_y, sign_z + sign_h/2 + 0.06),
+                 (sign_w + 0.20, 0.06, 0.12), (0.32, 0.26, 0.20, 1.0))
+        make_box(f"Sign_Frame_{label}_low", (sign_x, sign_y + face_y, sign_z - sign_h/2 - 0.06),
+                 (sign_w + 0.20, 0.06, 0.12), (0.32, 0.26, 0.20, 1.0))
+        make_box(f"Sign_Frame_{label}_L",   (sign_x - sign_w/2 - 0.06, sign_y + face_y, sign_z),
+                 (0.12, 0.06, sign_h + 0.20), (0.32, 0.26, 0.20, 1.0))
+        make_box(f"Sign_Frame_{label}_R",   (sign_x + sign_w/2 + 0.06, sign_y + face_y, sign_z),
+                 (0.12, 0.06, sign_h + 0.20), (0.32, 0.26, 0.20, 1.0))
+
+    # ── CURSIVE RED NEON: D'Ambrosio's — traced as a chain of short
+    # segments forming each letter. Bright red emissive-tone color so
+    # the screen post-process (ascii_render / demoscene quantize)
+    # reads it as a neon glow.
+    NEON_RED = (1.0, 0.18, 0.20, 1.0)
+    NEON_RED_DIM = (0.65, 0.12, 0.14, 1.0)  # for non-glowing tube ends
+    TUBE_R = 0.045
+    H = 0.45  # letter base height
+    # Place neon on BOTH faces (north and south of the panel).
+    # Each face gets its own copy of the tube geometry, mirrored.
+    for face_label, face_y_off in (("N", 0.13), ("S", -0.13)):
+        face_sign = 1 if face_label == "N" else -1
+
+        def add_seg(seg_name, x1, z1, x2, z2, color=NEON_RED):
+            """Add a single neon tube segment between two local points
+            on the sign panel face. (Local x is along the panel width,
+            z is height above sign_z baseline.)"""
+            dx = x2 - x1
+            dz = z2 - z1
+            length = math.sqrt(dx*dx + dz*dz)
+            if length < 0.005:
+                return
+            mid_x = (x1 + x2) / 2.0
+            mid_z = (z1 + z2) / 2.0
+            # Approximate the tube as an axis-aligned box. For purely
+            # horizontal or vertical it's exact; diagonals stair-step but
+            # this is acceptable at PS2 polycount.
+            if abs(dx) >= abs(dz):
+                size = (abs(dx) + TUBE_R * 1.8, 0.03, TUBE_R * 2.2)
+            else:
+                size = (TUBE_R * 2.2, 0.03, abs(dz) + TUBE_R * 1.8)
+            world_x = sign_x + mid_x
+            world_z = sign_z + mid_z
+            world_y = sign_y + face_y_off
+            make_box(f"Neon_{face_label}_{seg_name}", (world_x, world_y, world_z), size, color)
+
+        def add_line(name, p0, p1, steps=4):
+            for i in range(steps):
+                t0 = i / steps
+                t1 = (i + 1) / steps
+                ax = p0[0] + t0 * (p1[0] - p0[0])
+                az = p0[1] + t0 * (p1[1] - p0[1])
+                bx = p0[0] + t1 * (p1[0] - p0[0])
+                bz = p0[1] + t1 * (p1[1] - p0[1])
+                add_seg(f"{name}_{i}", ax, az, bx, bz)
+
+        def add_arc(name, cx, cz, r, t_start, t_end, steps=10):
+            for i in range(steps):
+                tt0 = t_start + (t_end - t_start) * (i / steps)
+                tt1 = t_start + (t_end - t_start) * ((i + 1) / steps)
+                ax = cx + math.cos(tt0) * r
+                az = cz + math.sin(tt0) * r
+                bx = cx + math.cos(tt1) * r
+                bz = cz + math.sin(tt1) * r
+                add_seg(f"{name}_{i}", ax, az, bx, bz)
+
+        # The letters advance left-to-right. Pen starts at far left.
+        # For face_label "N" (north face) we want the text readable from
+        # +Y — pen advances in +X. For "S" (south face), readable from -Y,
+        # mirror in X so it reads correctly from the other side.
+        def lx(local_x):
+            return local_x * face_sign
+
+        # ── 'D' (capital, slanted right) ──
+        # Slight right-lean for cursive feel
+        d0 = -1.85
+        slant = 0.05
+        add_line("D_spine", (lx(d0), 0.0), (lx(d0 + slant), H))
+        add_arc("D_loop", lx(d0 + slant + 0.15), H * 0.5, H * 0.55,
+                math.pi / 2.0, -math.pi / 2.0, steps=10)
+        # bottom of D meets the next letter via a short connector
+        add_line("D_tail", (lx(d0 + 0.05), 0.0), (lx(d0 + 0.30), -0.04))
+
+        # ── apostrophe ' ──
+        ap_x = d0 + 0.50
+        add_line("apos1_body", (lx(ap_x), H * 0.85), (lx(ap_x + 0.04), H * 1.10), steps=2)
+        add_line("apos1_curl", (lx(ap_x + 0.04), H * 1.10), (lx(ap_x + 0.10), H * 1.05), steps=2)
+
+        # ── 'A' (capital, cursive — like two strokes with a swoop) ──
+        a0 = d0 + 0.65
+        # left diagonal up
+        add_line("A_L", (lx(a0), 0.0), (lx(a0 + 0.18), H))
+        # right diagonal down
+        add_line("A_R", (lx(a0 + 0.18), H), (lx(a0 + 0.36), 0.0))
+        # crossbar
+        add_line("A_bar", (lx(a0 + 0.10), H * 0.45), (lx(a0 + 0.26), H * 0.45), steps=2)
+        # tail connecting to 'm'
+        add_line("A_tail", (lx(a0 + 0.36), 0.0), (lx(a0 + 0.46), 0.03), steps=2)
+
+        # ── 'm' (3 humps) ──
+        m0 = a0 + 0.46
+        h_top = H * 0.55
+        # first hump
+        add_arc("m_h1", lx(m0 + 0.07), h_top * 0.55, 0.10,
+                math.pi, 0.0, steps=8)
+        # connector + second hump
+        add_arc("m_h2", lx(m0 + 0.21), h_top * 0.55, 0.10,
+                math.pi, 0.0, steps=8)
+        # third hump
+        add_arc("m_h3", lx(m0 + 0.35), h_top * 0.55, 0.10,
+                math.pi, 0.0, steps=8)
+        # baseline strokes between humps
+        add_line("m_base1", (lx(m0), 0.0), (lx(m0), h_top * 0.55), steps=3)
+        add_line("m_base2", (lx(m0 + 0.14), 0.0), (lx(m0 + 0.14), h_top * 0.55), steps=3)
+        add_line("m_base3", (lx(m0 + 0.28), 0.0), (lx(m0 + 0.28), h_top * 0.55), steps=3)
+        add_line("m_base4", (lx(m0 + 0.42), 0.0), (lx(m0 + 0.42), h_top * 0.55), steps=3)
+
+        # ── 'b' (tall ascender + bottom loop) ──
+        b0 = m0 + 0.48
+        add_line("b_spine", (lx(b0), 0.0), (lx(b0 + 0.02), H * 1.0))
+        add_arc("b_loop", lx(b0 + 0.11), H * 0.18, 0.13,
+                math.pi, -math.pi, steps=10)
+
+        # ── 'r' (short stroke + tiny hook) ──
+        r0 = b0 + 0.34
+        add_line("r_spine", (lx(r0), 0.0), (lx(r0 + 0.02), h_top))
+        add_line("r_hook", (lx(r0 + 0.02), h_top), (lx(r0 + 0.08), h_top * 0.92), steps=2)
+
+        # ── 'o' (full loop) ──
+        o0 = r0 + 0.16
+        add_arc("o1_loop", lx(o0 + 0.10), h_top * 0.55, 0.11,
+                0.0, 2 * math.pi, steps=14)
+
+        # ── 's' (cursive zigzag) ──
+        s0 = o0 + 0.26
+        add_line("s1_top", (lx(s0), h_top), (lx(s0 + 0.10), h_top * 0.95), steps=2)
+        add_line("s1_mid", (lx(s0 + 0.10), h_top * 0.95), (lx(s0 + 0.02), h_top * 0.55), steps=2)
+        add_line("s1_low", (lx(s0 + 0.02), h_top * 0.55), (lx(s0 + 0.12), h_top * 0.40), steps=2)
+        add_line("s1_btm", (lx(s0 + 0.12), h_top * 0.40), (lx(s0 + 0.04), 0.0), steps=3)
+
+        # ── 'i' (short stroke + dot) ──
+        i0 = s0 + 0.22
+        add_line("i_spine", (lx(i0), 0.0), (lx(i0 + 0.02), h_top))
+        add_seg("i_dot", lx(i0 + 0.01), H * 0.85, lx(i0 + 0.05), H * 0.95)
+
+        # ── 'o' (second o) ──
+        o2 = i0 + 0.14
+        add_arc("o2_loop", lx(o2 + 0.10), h_top * 0.55, 0.11,
+                0.0, 2 * math.pi, steps=14)
+
+        # ── apostrophe ' ──
+        ap2_x = o2 + 0.26
+        add_line("apos2_body", (lx(ap2_x), H * 0.85), (lx(ap2_x + 0.04), H * 1.10), steps=2)
+        add_line("apos2_curl", (lx(ap2_x + 0.04), H * 1.10), (lx(ap2_x + 0.10), H * 1.05), steps=2)
+
+        # ── 's' (final s, like the first) ──
+        s2 = ap2_x + 0.18
+        add_line("s2_top", (lx(s2), h_top), (lx(s2 + 0.10), h_top * 0.95), steps=2)
+        add_line("s2_mid", (lx(s2 + 0.10), h_top * 0.95), (lx(s2 + 0.02), h_top * 0.55), steps=2)
+        add_line("s2_low", (lx(s2 + 0.02), h_top * 0.55), (lx(s2 + 0.12), h_top * 0.40), steps=2)
+        add_line("s2_btm", (lx(s2 + 0.12), h_top * 0.40), (lx(s2 + 0.04), 0.0), steps=3)
+
+        # Decorative underline swoosh — characteristic of diner neon signs
+        add_arc("underline", lx(-0.4), -0.20, 1.5,
+                math.pi * 0.92, math.pi * 0.08, steps=24)
+
+        # A few brighter "glow" duplicates that sit just behind the
+        # main tubes — fakes the soft halo neon gives off
+        # (placed slightly inset on the panel face so they show through)
+        halo_y_off = face_y_off + 0.005 * face_sign
+        # one larger glow per major stroke at lower opacity-ish color
+        glow_col = (1.0, 0.32, 0.34, 1.0)
+        for gx, gz in [(d0, H * 0.5), (a0 + 0.18, H * 0.5), (m0 + 0.21, h_top * 0.3),
+                        (b0 + 0.11, H * 0.18), (o0 + 0.10, h_top * 0.55),
+                        (o2 + 0.10, h_top * 0.55)]:
+            make_box(f"Neon_{face_label}_glow_{gx:.2f}",
+                     (sign_x + lx(gx), sign_y + halo_y_off, sign_z + gz),
+                     (0.30, 0.02, 0.30), glow_col)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -938,21 +1177,49 @@ def build_dock():
     dock_cx = (dock_x_start + dock_x_end) / 2.0
     dock_w  = dock_x_end - dock_x_start              # ≈ 11.9
     dock_cy = 0.0                                    # centered on boat
-    dock_z = -0.40
+    dock_z = DOCK_Z                                  # raised above water
     make_box("Dock_Deck", (dock_cx, dock_cy, dock_z), (dock_w, DK_L, 0.20), COL_DECK_WOOD)
+    # Stringers under the deck (visible joists running along the long axis)
+    for si, sy_str in enumerate([-DK_L/2 + 0.5, -DK_L/4, 0.0, DK_L/4, DK_L/2 - 0.5]):
+        make_box(f"Dock_Stringer_{si}", (dock_cx, sy_str, dock_z - 0.18), (dock_w - 0.3, 0.10, 0.16), (0.28, 0.18, 0.10, 1.0))
+    # Ramp from dock west edge down to the parking-lot curb
+    ramp_top_x = dock_x_start
+    ramp_btm_x = dock_x_start - 1.6
+    make_ramp("Dock_RampToLot",
+              (ramp_top_x, 0, dock_z + 0.10),
+              (ramp_btm_x, 0, 0.12),
+              2.4, 0.12, COL_DECK_WOOD, width_axis='Y')
+    # ramp railings
+    for side, sy_r in (("S", -1.20), ("N", 1.20)):
+        make_box(f"Dock_RampRail_{side}_top",
+                 ((ramp_top_x + ramp_btm_x) / 2, sy_r, (dock_z + 0.10 + 0.12) / 2 + 0.75),
+                 (abs(ramp_top_x - ramp_btm_x) + 0.1, 0.04, 0.04), COL_BRASS)
+        for ii in range(3):
+            t = (ii + 0.5) / 3.0
+            rx_p = ramp_btm_x + t * (ramp_top_x - ramp_btm_x)
+            rz_p = 0.12 + t * (dock_z + 0.10 - 0.12)
+            make_box(f"Dock_RampPost_{side}_{ii}", (rx_p, sy_r, rz_p + 0.40),
+                     (0.04, 0.04, 0.80), COL_BRASS)
     # plank lines along the long axis (Y) — visible deck stripes
     for i in range(int(DK_L / 0.30)):
         py_p = -DK_L/2 + 0.20 + i * 0.30
         make_box(f"Dock_Plank_{i}", (dock_cx, dock_cy + py_p, dock_z + 0.105),
                  (dock_w - 0.2, 0.04, 0.01), (0.30, 0.20, 0.12, 1.0))
 
-    # Pilings driven into the river under the dock
-    piling_zc = -1.8
-    piling_h = 3.0
+    # Pilings driven from the river bed up THROUGH the dock deck —
+    # they stand visibly proud of the deck (real docks always have
+    # this: the piling tops cap the structure)
+    piling_top_z = dock_z + 0.50          # 50cm proud of deck
+    piling_bot_z = RIVER_LEVEL_Z - 1.8    # deep into river bed
+    piling_h = piling_top_z - piling_bot_z
+    piling_cz = (piling_top_z + piling_bot_z) / 2.0
     for row_idx, px_p in enumerate([dock_x_start + 0.5, dock_cx - 2.0, dock_cx + 2.0, dock_x_end - 0.5]):
         for ci, cy_p in enumerate([-DK_L/2 + 0.4, -DK_L/4, DK_L/4, DK_L/2 - 0.4]):
-            make_cyl(f"Dock_Piling_{row_idx}_{ci}", (px_p, cy_p, piling_zc), 0.16, piling_h,
+            make_cyl(f"Dock_Piling_{row_idx}_{ci}", (px_p, cy_p, piling_cz), 0.18, piling_h,
                      COL_PIER_WOOD, segments=6)
+            # cap (a small darker disc on top of each piling)
+            make_cyl(f"Dock_PilingCap_{row_idx}_{ci}", (px_p, cy_p, piling_top_z - 0.02),
+                     0.22, 0.06, (0.22, 0.16, 0.10, 1.0), segments=6)
 
     # Mooring bollards on the BOAT side (east edge of dock) — these are
     # where the boat's lines tie off
@@ -1358,64 +1625,203 @@ def build_other_boats():
 # ════════════════════════════════════════════════════════════════
 
 def build_bayou():
-    """Bayou east of the boat. Dense cypress, fallen logs, reeds, lily
-    pads, a fishing camp shack on stilts, abandoned boat, paddleboat."""
+    """Navigable bayou east of the boat. References: Honey Island Swamp /
+    Atchafalaya Basin — cypress-tupelo swamp with a winding open
+    channel down the center wide enough for a flat-bottomed boat to
+    pass. Mixed species, randomized sizes, organic placement.
+
+    Tree species included:
+      · bald cypress  (tall, knees, draping moss)
+      · water tupelo  (shorter, swollen base, dense canopy)
+      · live oak      (spread crown, gnarly multi-trunk)
+      · palmetto      (short, fan canopy)
+      · dead snag     (just a leaning broken trunk)
+
+    A central CHANNEL (4m wide, running N-S) is kept clear of trees so
+    the bayou actually reads as navigable water rather than a forest."""
     bayou_w = 40.0
-    bayou_l = 80.0
+    bayou_l = 90.0
     bayou_z = RIVER_LEVEL_Z + 0.02
     bayou_x = BAYOU_X
+    CHANNEL_HALF = 2.5   # 5m-wide clear channel down the middle
     make_box("Bayou_Water",
              (bayou_x, 0, bayou_z - 0.005),
              (bayou_w, bayou_l, 0.01),
              COL_BAYOU_WATER,
              open_faces={'-Z'})
 
-    # ── 26 CYPRESS (was 12) — denser swamp ──
-    cypress_positions = [
-        (bayou_x - 14, -32), (bayou_x - 6,  -28), (bayou_x + 2,  -24),
-        (bayou_x + 10, -22), (bayou_x - 16, -20), (bayou_x - 8,  -16),
-        (bayou_x + 4,  -14), (bayou_x + 12, -10), (bayou_x - 12, -8),
-        (bayou_x - 2,  -4),  (bayou_x + 6,  -2),  (bayou_x - 10, 2),
-        (bayou_x - 18,  6),  (bayou_x + 0,  8),   (bayou_x + 10, 6),
-        (bayou_x + 16,  4),  (bayou_x - 14, 14),  (bayou_x - 4,  16),
-        (bayou_x + 6,  18),  (bayou_x + 14, 14),  (bayou_x - 8,  24),
-        (bayou_x + 4,  26),  (bayou_x + 12, 24),  (bayou_x - 16, 30),
-        (bayou_x - 6,  32),  (bayou_x + 8,  34),
-    ]
-    for i, (cx, cy) in enumerate(cypress_positions):
-        trunk_h = 7.0 + (i % 5) * 0.7
+    # ── tree species helpers ──────────────────────────────────────
+    def _hash(n):
+        return (math.sin(n * 12.9898) * 43758.5453) % 1.0
+
+    def _bald_cypress(tag, cx, cy, scale):
+        trunk_h = 7.5 * scale
         seg = trunk_h / 3.0
-        # flared base (cypress "knees" — wider at the water)
-        make_cyl(f"Cypress_{i}_base", (cx, cy, bayou_z + 0.25), 0.40, 0.50, COL_TREE_TRUNK, segments=6)
-        make_cyl(f"Cypress_{i}_trunk_low", (cx, cy, bayou_z + seg * 0.5 + 0.50),
-                 0.30, seg, COL_TREE_TRUNK, segments=6)
-        make_cyl(f"Cypress_{i}_trunk_mid", (cx, cy, bayou_z + seg * 1.5 + 0.50),
-                 0.22, seg, COL_TREE_TRUNK, segments=6)
-        make_cyl(f"Cypress_{i}_trunk_up",  (cx, cy, bayou_z + seg * 2.5 + 0.50),
-                 0.15, seg, COL_TREE_TRUNK, segments=6)
-        canopy_z = bayou_z + trunk_h + 0.50
-        make_box(f"Cypress_{i}_canopy_lower", (cx, cy, canopy_z + 0.5),
-                 (2.6, 2.6, 1.0), COL_TREE_CANOPY_B)
-        make_box(f"Cypress_{i}_canopy_mid",   (cx - 0.15, cy + 0.15, canopy_z + 1.3),
-                 (2.0, 2.0, 0.9), COL_TREE_CANOPY_B)
-        make_box(f"Cypress_{i}_canopy_upper", (cx + 0.10, cy - 0.10, canopy_z + 2.0),
-                 (1.4, 1.4, 0.8), COL_TREE_CANOPY_B)
-        # cypress knees around the base (little stumps sticking up)
-        for ki in range(3):
-            ang_k = (i * 37 + ki * 120) % 360
-            kx = cx + math.cos(math.radians(ang_k)) * 0.85
-            ky = cy + math.sin(math.radians(ang_k)) * 0.85
-            make_cyl(f"Cypress_{i}_knee_{ki}", (kx, ky, bayou_z + 0.15), 0.10, 0.35,
-                     COL_TREE_TRUNK, segments=4)
-        # Spanish moss (more of it, longer)
-        if i % 2 == 0:
-            moss_z = bayou_z + trunk_h * 0.70 + 0.50
-            make_box(f"Cypress_{i}_moss_a", (cx + 0.30, cy, moss_z),
-                     (0.18, 0.16, 1.10), COL_MOSS)
-            make_box(f"Cypress_{i}_moss_b", (cx - 0.25, cy + 0.10, moss_z + 0.15),
-                     (0.14, 0.14, 0.90), COL_MOSS)
-            make_box(f"Cypress_{i}_moss_c", (cx + 0.05, cy - 0.30, moss_z - 0.30),
-                     (0.12, 0.12, 1.20), COL_MOSS)
+        base_r = 0.45 * scale
+        # flared swollen base — wider at waterline
+        make_cyl(f"{tag}_base", (cx, cy, bayou_z + 0.30), base_r, 0.60, COL_TREE_TRUNK, segments=6)
+        make_cyl(f"{tag}_trunk_low", (cx, cy, bayou_z + seg * 0.5 + 0.60),
+                 0.32 * scale, seg, COL_TREE_TRUNK, segments=6)
+        make_cyl(f"{tag}_trunk_mid", (cx, cy, bayou_z + seg * 1.5 + 0.60),
+                 0.23 * scale, seg, COL_TREE_TRUNK, segments=6)
+        make_cyl(f"{tag}_trunk_up",  (cx, cy, bayou_z + seg * 2.5 + 0.60),
+                 0.15 * scale, seg, COL_TREE_TRUNK, segments=6)
+        canopy_z = bayou_z + trunk_h + 0.60
+        make_box(f"{tag}_canopy_a", (cx, cy, canopy_z + 0.5 * scale),
+                 (2.6 * scale, 2.6 * scale, 1.0 * scale), COL_TREE_CANOPY_B)
+        make_box(f"{tag}_canopy_b", (cx - 0.15 * scale, cy + 0.15 * scale, canopy_z + 1.3 * scale),
+                 (2.0 * scale, 2.0 * scale, 0.9 * scale), COL_TREE_CANOPY_B)
+        make_box(f"{tag}_canopy_c", (cx + 0.10 * scale, cy - 0.10 * scale, canopy_z + 2.0 * scale),
+                 (1.4 * scale, 1.4 * scale, 0.8 * scale), COL_TREE_CANOPY_B)
+        # knees around the base (irregular, varied heights)
+        n_knees = 3 + int(_hash(cx * 7 + cy) * 3)
+        for ki in range(n_knees):
+            ang = _hash(cx + cy + ki * 17) * 6.28
+            rad = base_r + 0.40 + _hash(cx + ki * 31) * 0.50
+            kh = 0.20 + _hash(cy * 13 + ki) * 0.35
+            kx = cx + math.cos(ang) * rad
+            ky = cy + math.sin(ang) * rad
+            make_cyl(f"{tag}_knee_{ki}", (kx, ky, bayou_z + kh / 2.0 + 0.05),
+                     0.08 + _hash(ki * 7 + cx) * 0.05, kh, COL_TREE_TRUNK, segments=4)
+        # moss strands (long, draping)
+        n_moss = 1 + int(_hash(cx * 5 + cy * 3) * 4)
+        for mi in range(n_moss):
+            mx = cx + (_hash(cx + mi * 11) - 0.5) * 0.6
+            my = cy + (_hash(cy + mi * 13) - 0.5) * 0.6
+            mz = bayou_z + trunk_h * (0.55 + _hash(mi * 17) * 0.25) + 0.60
+            mh = 0.7 + _hash(mi * 19 + cx) * 0.8
+            make_box(f"{tag}_moss_{mi}", (mx, my, mz), (0.14, 0.14, mh), COL_MOSS)
+
+    def _water_tupelo(tag, cx, cy, scale):
+        # Tupelo: distinct swollen base, shorter than cypress, broader canopy
+        trunk_h = 5.5 * scale
+        base_r = 0.70 * scale
+        make_cyl(f"{tag}_base", (cx, cy, bayou_z + 0.40), base_r, 0.80, COL_TREE_TRUNK, segments=8)
+        make_cyl(f"{tag}_trunk", (cx, cy, bayou_z + trunk_h / 2 + 0.80),
+                 0.28 * scale, trunk_h, COL_TREE_TRUNK, segments=6)
+        canopy_z = bayou_z + trunk_h + 0.80
+        # wider rounder canopy than cypress
+        canopy_col = (0.24, 0.34, 0.16, 1.0)
+        make_box(f"{tag}_canopy_a", (cx, cy, canopy_z + 0.6 * scale),
+                 (3.4 * scale, 3.4 * scale, 1.2 * scale), canopy_col)
+        make_box(f"{tag}_canopy_b", (cx - 0.4 * scale, cy + 0.3 * scale, canopy_z + 1.6 * scale),
+                 (2.4 * scale, 2.4 * scale, 1.0 * scale), canopy_col)
+        make_box(f"{tag}_canopy_c", (cx + 0.5 * scale, cy - 0.3 * scale, canopy_z + 1.4 * scale),
+                 (2.2 * scale, 2.2 * scale, 0.9 * scale), canopy_col)
+
+    def _live_oak(tag, cx, cy, scale):
+        # Spread-crown oak: thick gnarly trunk, low spreading branches, wide canopy
+        trunk_h = 3.5 * scale
+        trunk_col = (0.26, 0.20, 0.14, 1.0)
+        make_cyl(f"{tag}_trunk", (cx, cy, bayou_z + trunk_h / 2 + 0.10),
+                 0.50 * scale, trunk_h, trunk_col, segments=6)
+        # 3-4 main branches angling out from the top of the trunk
+        branch_z = bayou_z + trunk_h + 0.10
+        canopy_col = (0.30, 0.36, 0.22, 1.0)
+        for bi in range(4):
+            ang = bi * (3.14159 / 2.0) + _hash(cx + bi * 23) * 0.5
+            br_len = 2.5 * scale
+            bx = cx + math.cos(ang) * br_len * 0.5
+            by = cy + math.sin(ang) * br_len * 0.5
+            make_box(f"{tag}_branch_{bi}", (bx, by, branch_z + 0.5 * scale),
+                     (0.30 * scale, 0.30 * scale, 1.0 * scale), trunk_col)
+            # leaf cluster at the end of each branch
+            ex_ = cx + math.cos(ang) * br_len
+            ey_ = cy + math.sin(ang) * br_len
+            make_box(f"{tag}_cluster_{bi}", (ex_, ey_, branch_z + 1.2 * scale),
+                     (2.2 * scale, 2.2 * scale, 1.6 * scale), canopy_col)
+        # central canopy mass
+        make_box(f"{tag}_canopy_main", (cx, cy, branch_z + 1.8 * scale),
+                 (3.4 * scale, 3.4 * scale, 2.0 * scale), canopy_col)
+
+    def _palmetto(tag, cx, cy, scale):
+        # Short palmetto — squat trunk + radiating fronds
+        trunk_h = 1.2 * scale
+        make_cyl(f"{tag}_trunk", (cx, cy, bayou_z + trunk_h / 2 + 0.05),
+                 0.25 * scale, trunk_h, (0.32, 0.22, 0.14, 1.0), segments=6)
+        frond_z = bayou_z + trunk_h + 0.05
+        frond_col = (0.36, 0.44, 0.22, 1.0)
+        # 6 fan-blade fronds radiating outward
+        for fi in range(6):
+            ang = fi * (3.14159 / 3.0)
+            fx = cx + math.cos(ang) * 0.7 * scale
+            fy = cy + math.sin(ang) * 0.7 * scale
+            # the fan width spans along the angle direction
+            make_box(f"{tag}_frond_{fi}", (fx, fy, frond_z + 0.2 * scale),
+                     (1.0 * scale, 1.0 * scale, 0.10 * scale), frond_col)
+        # central crown
+        make_box(f"{tag}_crown", (cx, cy, frond_z + 0.15 * scale),
+                 (0.5 * scale, 0.5 * scale, 0.25 * scale), frond_col)
+
+    def _dead_snag(tag, cx, cy, scale):
+        # Just a leaning broken trunk with a couple of stub branches
+        h = 4.5 * scale
+        # the trunk is slightly tilted (we'll just offset top)
+        lean_x = (_hash(cx + 13) - 0.5) * 0.6
+        lean_y = (_hash(cy + 7) - 0.5) * 0.6
+        # use a long thin box for the trunk
+        make_box(f"{tag}_trunk", (cx + lean_x * 0.5, cy + lean_y * 0.5, bayou_z + h / 2 + 0.05),
+                 (0.30 * scale, 0.30 * scale, h), (0.22, 0.16, 0.12, 1.0))
+        # broken top
+        make_box(f"{tag}_broken_top", (cx + lean_x, cy + lean_y, bayou_z + h + 0.05),
+                 (0.50 * scale, 0.50 * scale, 0.20), (0.18, 0.14, 0.10, 1.0))
+        # 2 stub branches
+        for si in range(2):
+            ang = _hash(cx + si * 11) * 6.28
+            sx_ = cx + math.cos(ang) * 0.8 * scale
+            sy_ = cy + math.sin(ang) * 0.8 * scale
+            sz_ = bayou_z + h * (0.55 + si * 0.20) + 0.05
+            make_box(f"{tag}_stub_{si}", (sx_, sy_, sz_),
+                     (0.4 * scale, 0.10 * scale, 0.10 * scale), (0.18, 0.14, 0.10, 1.0))
+
+    # ── PLACE TREES — randomized organic positions, leaving the
+    # central channel clear ──
+    tree_count = 0
+    placed = []
+    rng_seed = 7
+    species_funcs = [_bald_cypress, _water_tupelo, _live_oak, _palmetto, _dead_snag]
+    species_weights = [0.40, 0.25, 0.10, 0.18, 0.07]
+    cum_weights = []
+    acc = 0.0
+    for w in species_weights:
+        acc += w
+        cum_weights.append(acc)
+
+    # Generate ~50 tree positions via Poisson-like sampling with min distance
+    MIN_DIST_SQ = 2.6 * 2.6
+    attempts = 0
+    while tree_count < 50 and attempts < 800:
+        attempts += 1
+        u = _hash(rng_seed * 7.123 + attempts)
+        v = _hash(rng_seed * 11.234 + attempts * 3)
+        local_x = (u - 0.5) * (bayou_w - 4)
+        local_y = (v - 0.5) * (bayou_l - 4)
+        # skip the central N-S channel
+        if abs(local_x) < CHANNEL_HALF + 0.3 * _hash(attempts * 19):
+            continue
+        cx = bayou_x + local_x
+        cy = local_y
+        # reject if too close to an existing tree
+        too_close = False
+        for (px, py) in placed:
+            if (cx - px) ** 2 + (cy - py) ** 2 < MIN_DIST_SQ:
+                too_close = True
+                break
+        if too_close:
+            continue
+        placed.append((cx, cy))
+        # pick species
+        sp = _hash(attempts * 23.7)
+        species_idx = 0
+        for si, cw in enumerate(cum_weights):
+            if sp < cw:
+                species_idx = si
+                break
+        # scale varies 0.7 to 1.4
+        scale = 0.7 + _hash(attempts * 29.31) * 0.7
+        tag = f"BayouTree_{tree_count:03d}"
+        species_funcs[species_idx](tag, cx, cy, scale)
+        tree_count += 1
 
     # ── REEDS & GRASS clumps at the bayou edges ──
     reed_col = (0.42, 0.46, 0.22, 1.0)

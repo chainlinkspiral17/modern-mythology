@@ -1,12 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://locale_riverfront_v1"]
+[gd_scene load_steps=13 format=3 uid="uid://locale_riverfront_v1"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/riverfront.glb" id="1_river_glb"]
 [ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
 [ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
 [ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
-[ext_resource type="Shader" path="res://assets/shaders/ascii_edges.gdshader" id="6_edges"]
-[ext_resource type="Shader" path="res://assets/shaders/glyph_field.gdshader" id="7_glyph"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="6_ascii"]
 [ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="8_setup"]
 
 [sub_resource type="CapsuleShape3D" id="Caps_Player"]
@@ -29,23 +28,14 @@ shader_parameter/ascii_strength = 0.0
 shader_parameter/ascii_color = Color(0.85, 0.78, 0.62, 1)
 shader_parameter/ascii_bg = Color(0.06, 0.04, 0.02, 1)
 
-[sub_resource type="ShaderMaterial" id="Mat_Edges"]
-shader = ExtResource("6_edges")
-shader_parameter/edge_strength = 0.0
-shader_parameter/edge_threshold = 0.18
-shader_parameter/edge_color = Color(0.92, 0.78, 0.45, 1)
-shader_parameter/edge_bg_color = Color(0.05, 0.04, 0.02, 1)
-shader_parameter/glyph_cell_size = 10.0
-shader_parameter/scroll_speed = 1.2
-
-[sub_resource type="ShaderMaterial" id="Mat_Glyph"]
-shader = ExtResource("7_glyph")
-shader_parameter/glyph_alpha = 0.0
-shader_parameter/glyph_cell = 12.0
-shader_parameter/glyph_color = Color(0.85, 0.78, 0.55, 1)
-shader_parameter/scroll_x = 0.4
-shader_parameter/scroll_y = -0.15
-shader_parameter/luma_bias = 0.0
+[sub_resource type="ShaderMaterial" id="Mat_Ascii"]
+shader = ExtResource("6_ascii")
+shader_parameter/cell_size = 10.0
+shader_parameter/strength = 0.0
+shader_parameter/fg_color = Color(0.92, 0.82, 0.55, 1)
+shader_parameter/bg_color = Color(0.04, 0.03, 0.02, 1)
+shader_parameter/tint_from_scene = true
+shader_parameter/gamma = 0.85
 
 [sub_resource type="Environment" id="Env_Riverfront"]
 background_mode = 1
@@ -132,8 +122,8 @@ far = 300.0
 layer = 50
 script = ExtResource("5_mood")
 
-[node name="EdgeQuad" type="ColorRect" parent="PostProcess"]
-material = SubResource("Mat_Edges")
+[node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Ascii")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -141,13 +131,6 @@ mouse_filter = 2
 
 [node name="Quad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Post")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-
-[node name="GlyphQuad" type="ColorRect" parent="PostProcess"]
-material = SubResource("Mat_Glyph")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

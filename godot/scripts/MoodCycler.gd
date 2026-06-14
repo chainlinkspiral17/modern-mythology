@@ -1,34 +1,65 @@
 # MoodCycler.gd
 # ════════════════════════════════════════════════════════════════
-# Attach to the PostProcess CanvasLayer. Cycles through the
-# demoscene post stack's mood presets when F3 is pressed.
+# Cycles the post-process moods. F3 advances to the next preset.
 #
-# Drives THREE shader layers in order:
-#   Quad       · demoscene_post (palette / dither / scanlines /
-#                 chromatic aberration / ascii blocks)
-#   EdgeQuad   · ascii_edges (depth-edge detection painted with
-#                 scrolling ASCII glyphs — "the chassis breathes")
-#   GlyphQuad  · glyph_field (drifting ASCII glyph overlay across
-#                 the whole frame, luma-biased — "substrate hum")
+# Drives the screen post-process stack:
+#   AsciiQuad · ascii_render — full-screen ASCII renderer. The whole
+#               scene gets sampled per-cell and each cell becomes a
+#               glyph chosen by luminance. strength=0 passes the
+#               scene through, strength=1 renders entirely as code.
+#   Quad      · demoscene_post — palette quantize, Bayer dither,
+#               scanlines, chromatic aberration. Stylization on top
+#               of whatever the ASCII pass produced.
 #
-# Each preset names a state of the substrate's audibility:
-#   lunch / dusk / night — substrate quiet, mostly invisible
-#   3:47 AM — substrate audible
-#   precipice — substrate loud
-#   substrate — full bleed-through
-#   raw — debug, no post-process
+# Each mood is a state of how loud the substrate is. Lunch is the
+# raw world. Substrate is the world rendered ENTIRELY as code.
 # ════════════════════════════════════════════════════════════════
 
 extends CanvasLayer
 
 const MOODS: Array = [
-    { "name": "lunch",     "palette": 16.0, "dither": 0.10, "scanline": 0.25, "aberration": 0.0012, "ascii": 0.00, "edge": 0.00, "glyph": 0.00 },
-    { "name": "dusk",      "palette": 12.0, "dither": 0.18, "scanline": 0.35, "aberration": 0.0018, "ascii": 0.00, "edge": 0.05, "glyph": 0.00 },
-    { "name": "night",     "palette": 10.0, "dither": 0.22, "scanline": 0.45, "aberration": 0.0020, "ascii": 0.05, "edge": 0.15, "glyph": 0.05 },
-    { "name": "3_47_am",   "palette":  9.0, "dither": 0.28, "scanline": 0.55, "aberration": 0.0024, "ascii": 0.30, "edge": 0.35, "glyph": 0.18 },
-    { "name": "precipice", "palette":  6.0, "dither": 0.45, "scanline": 0.70, "aberration": 0.0030, "ascii": 0.60, "edge": 0.60, "glyph": 0.35 },
-    { "name": "substrate", "palette":  4.0, "dither": 0.60, "scanline": 0.80, "aberration": 0.0035, "ascii": 1.00, "edge": 0.85, "glyph": 0.55 },
-    { "name": "raw",       "palette": 32.0, "dither": 0.00, "scanline": 0.00, "aberration": 0.0000, "ascii": 0.00, "edge": 0.00, "glyph": 0.00 },
+    {
+        "name": "lunch",
+        "palette": 16.0, "dither": 0.08, "scanline": 0.20,
+        "aberration": 0.0008, "ascii_post": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+    },
+    {
+        "name": "dusk",
+        "palette": 12.0, "dither": 0.16, "scanline": 0.32,
+        "aberration": 0.0014, "ascii_post": 0.0,
+        "ascii": 0.12, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+    },
+    {
+        "name": "night",
+        "palette": 10.0, "dither": 0.22, "scanline": 0.45,
+        "aberration": 0.0020, "ascii_post": 0.0,
+        "ascii": 0.25, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+    },
+    {
+        "name": "3_47_am",
+        "palette":  9.0, "dither": 0.28, "scanline": 0.55,
+        "aberration": 0.0024, "ascii_post": 0.0,
+        "ascii": 0.50, "ascii_cell": 9.0, "ascii_gamma": 0.85,
+    },
+    {
+        "name": "precipice",
+        "palette":  6.0, "dither": 0.42, "scanline": 0.68,
+        "aberration": 0.0030, "ascii_post": 0.0,
+        "ascii": 0.80, "ascii_cell": 8.0, "ascii_gamma": 0.80,
+    },
+    {
+        "name": "substrate",
+        "palette":  4.0, "dither": 0.55, "scanline": 0.80,
+        "aberration": 0.0035, "ascii_post": 0.0,
+        "ascii": 1.00, "ascii_cell": 8.0, "ascii_gamma": 0.75,
+    },
+    {
+        "name": "raw",
+        "palette": 32.0, "dither": 0.00, "scanline": 0.00,
+        "aberration": 0.0000, "ascii_post": 0.0,
+        "ascii": 0.00, "ascii_cell": 10.0, "ascii_gamma": 1.0,
+    },
 ]
 
 var current_index: int = 0
@@ -48,18 +79,17 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _apply(preset: Dictionary) -> void:
+    _set_params("AsciiQuad", {
+        "strength":  preset["ascii"],
+        "cell_size": preset["ascii_cell"],
+        "gamma":     preset["ascii_gamma"],
+    })
     _set_params("Quad", {
         "palette_size":         preset["palette"],
         "dither_strength":      preset["dither"],
         "scanline_strength":    preset["scanline"],
         "chromatic_aberration": preset["aberration"],
-        "ascii_strength":       preset["ascii"],
-    })
-    _set_params("EdgeQuad", {
-        "edge_strength": preset["edge"],
-    })
-    _set_params("GlyphQuad", {
-        "glyph_alpha": preset["glyph"],
+        "ascii_strength":       preset["ascii_post"],
     })
 
 
