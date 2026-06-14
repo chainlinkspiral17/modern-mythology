@@ -663,6 +663,35 @@ func _process(delta: float) -> void:
     var bus_peak_lin: float = db_to_linear(bus_peak_db)
     _audio_level = _audio_level * AUDIO_DECAY + bus_peak_lin * (1.0 - AUDIO_DECAY)
 
+    # ── psychedelic_substrate · continuous-play visualizer.
+    # Every parameter has its OWN slow-drift envelope so the picture
+    # never repeats exactly. The shader's TIME-driven motion handles
+    # the per-frame ripple/pulse/hue cycling; this loop drifts the
+    # MOTION RATES themselves so the rhythm of the picture evolves
+    # too. fg/bg colours rotate through complementary palettes via a
+    # phase-shifted HSV cycle. Audio level folds in as an extra
+    # intensity push on tick/pulse.
+    if MOODS[current_index]["name"] == "psychedelic_substrate":
+        var t: float = float(Time.get_ticks_msec()) / 1000.0
+        var ascii_mat: Material = _get_material("AsciiQuad")
+        if ascii_mat is ShaderMaterial:
+            var sm: ShaderMaterial = ascii_mat as ShaderMaterial
+            var tick: float = 1.4 + 0.6 * sin(t * 0.067) + _audio_level * 0.8
+            var pulse: float = 0.35 + 0.15 * sin(t * 0.041) + _audio_level * 0.3
+            var pulse_depth: float = 0.45 + 0.10 * sin(t * 0.029)
+            var hue: float = 0.55 + 0.25 * sin(t * 0.053)
+            sm.set_shader_parameter("tick_rate", tick)
+            sm.set_shader_parameter("pulse_rate", pulse)
+            sm.set_shader_parameter("pulse_depth", clamp(pulse_depth, 0.0, 1.0))
+            sm.set_shader_parameter("hue_shift_rate", hue)
+            # FG colour slow-cycles through HSV — phase-shifted from
+            # the shader's own hue rotation so the two don't lock.
+            var fg_h: float = fposmod(t * 0.04, 1.0)
+            sm.set_shader_parameter("fg_color", Color.from_hsv(fg_h, 0.55, 1.0, 1.0))
+            # BG slow-cycles complementary (opposite hue, near-black)
+            var bg_h: float = fposmod(fg_h + 0.5, 1.0)
+            sm.set_shader_parameter("bg_color", Color.from_hsv(bg_h, 0.85, 0.10, 1.0))
+
     # ── motion-reactive sampling: read the player's velocity from the
     # "player" group, project the forward 2D component, smooth, push
     # to the motion_ascii shader. motion_speed is 0..1, motion_dir is
