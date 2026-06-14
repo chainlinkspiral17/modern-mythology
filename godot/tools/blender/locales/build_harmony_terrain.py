@@ -636,12 +636,14 @@ def build_pond_water():
                        (0.78, 0.72, 0.52, 1.0))
 
 
-def _fence_along(name, p0, p1, fence_type, sub_len=10.0):
+def _fence_along(name, p0, p1, fence_type, sub_len=40.0):
     """Subdivide (p0, p1) into ~sub_len pieces and place a fence
     segment at each, sampling elevation at the midpoint of each
-    piece. Per the design manual's terrain-aware infrastructure
-    rule — long fences on a slope must follow the grade.
-    fence_type ∈ {'iron', 'brick'}."""
+    piece. sub_len bumped from 10 m to 40 m so a 300 m fence emits
+    8 segments instead of 30 — each segment internally still
+    contains rails + bars + end posts, but at 1/4 the segment
+    count we cut the total MeshInstance3D node count by 4x. Godot's
+    import was hanging on the dense version."""
     x0, y0 = p0; x1, y1 = p1
     length = math.hypot(x1 - x0, y1 - y0)
     if length < 0.001:

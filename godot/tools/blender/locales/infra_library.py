@@ -1032,41 +1032,34 @@ def brick_wall(name, p0, p1, height=1.8, thickness=0.30, z=0.0,
 
 
 def iron_lattice_fence(name, p0, p1, height=1.4, post_spacing=2.5,
-                       bar_spacing=0.13, z=0.0,
+                       bar_spacing=0.40, z=0.0,
                        color=COL_IRON_FENCE):
-    """Black wrought-iron bar fence — the HCE planned-community
-    look. Vertical bars between top and bottom rails, with thicker
-    posts at regular intervals. Used along pond-facing backyards
-    so the water stays visible from inside the community.
-
-    height: top of fence above z. 1.4 m = standard residential.
-    post_spacing: distance between thicker posts.
-    bar_spacing: distance between vertical bars."""
+    """Black wrought-iron bar fence. SPARSE version — bar spacing
+    bumped from 0.13 m to 0.40 m, no spear tips, no ball finials,
+    fewer posts. Trade detail for polycount so a 300 m fence run
+    doesn't emit 5000+ MeshInstance3D nodes that hang Godot's import.
+    For close-ups inside a sub-sector, write a denser local variant."""
     x0, y0 = p0; x1, y1 = p1
     dx = x1 - x0; dy = y1 - y0
     length = math.hypot(dx, dy)
     if length < 0.001:
         return None
     ang = math.atan2(dy, dx)
-    perp_x = -math.sin(ang); perp_y = math.cos(ang)
 
-    # Bottom rail (kicker rail just above ground)
-    rail_t = 0.04
-    rail_h_low = 0.20
-    rail_h_high = height - 0.10
-    # Top and bottom rails — thin horizontal boxes along the segment
-    for rh in (rail_h_low, rail_h_high):
+    # Top and bottom rails — single box per rail (already efficient)
+    rail_t = 0.05
+    for rh in (0.20, height - 0.10):
         mx = (x0 + x1) / 2; my = (y0 + y1) / 2
         if abs(dx) > abs(dy):
-            _box(f"{name}_Rail_z{rh:.2f}",
+            _box(f"{name}_Rail_{int(rh*100)}",
                  (mx, my, z + rh),
                  (length, rail_t, rail_t * 1.4), color)
         else:
-            _box(f"{name}_Rail_z{rh:.2f}",
+            _box(f"{name}_Rail_{int(rh*100)}",
                  (mx, my, z + rh),
                  (rail_t, length, rail_t * 1.4), color)
 
-    # Vertical bars
+    # Vertical bars — sparse so the polycount stays sane
     n_bars = max(2, int(length / bar_spacing))
     for i in range(n_bars + 1):
         t = i / n_bars
@@ -1076,29 +1069,14 @@ def iron_lattice_fence(name, p0, p1, height=1.4, post_spacing=2.5,
              (rail_t * 0.7, rail_t * 0.7, height),
              color)
 
-    # Decorative spear tips on each bar (suggested with a tiny taper
-    # we approximate by a smaller box above each bar)
-    for i in range(n_bars + 1):
-        t = i / n_bars
-        bx = x0 + dx * t; by = y0 + dy * t
-        _box(f"{name}_Spear_{i}",
-             (bx, by, z + height + 0.04),
-             (rail_t * 0.5, rail_t * 0.5, 0.08),
+    # Thicker posts only at the two ENDS (not at every interval).
+    # End posts make the fence read as fence-with-structure without
+    # blowing up the mesh count.
+    for end_idx, (bx, by) in enumerate([(x0, y0), (x1, y1)]):
+        _box(f"{name}_Post_{end_idx}",
+             (bx, by, z + (height + 0.20) / 2),
+             (0.12, 0.12, height + 0.20),
              color)
-
-    # Thicker posts at regular intervals
-    n_posts = max(2, int(length / post_spacing))
-    for i in range(n_posts + 1):
-        t = i / max(1, n_posts)
-        px = x0 + dx * t; py = y0 + dy * t
-        _box(f"{name}_Post_{i}",
-             (px, py, z + (height + 0.20) / 2),
-             (0.10, 0.10, height + 0.20),
-             color)
-        # Ball finial on each post
-        _disc(f"{name}_PostBall_{i}",
-              (px, py, z + height + 0.30), 0.06,
-              z + height + 0.30, color, segments=8)
 
 
 def double_yellow(name, p0, p1, z=0.0):
