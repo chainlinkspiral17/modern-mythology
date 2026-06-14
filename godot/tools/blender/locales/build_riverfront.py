@@ -558,10 +558,11 @@ def make_neon_dambrosios(label, panel_center, face_axis, face_sign, scale=1.0):
     arc("o1", o0 + 0.10, H_x * 0.50, 0.11, 0.0, 2 * math.pi, steps=14)
     o0_end = o0 + 0.20
 
-    # ── 's' ──
+    # ── 's' ── (cursive S: two opposing semicircles, top going one way,
+    # bottom going the other — like an integral / stylized S)
     s0 = o0_end + 0.22
-    arc("s1_top", s0 + 0.06, H_x * 0.75, 0.07, math.pi * 0.30, math.pi * 1.40, steps=8)
-    arc("s1_bot", s0 + 0.08, H_x * 0.25, 0.07, math.pi * 1.30, math.pi * 0.30 + math.pi, steps=8)
+    arc("s1_top", s0 + 0.07, H_x * 0.72, 0.07, 0.0, math.pi, steps=8)
+    arc("s1_bot", s0 + 0.07, H_x * 0.28, 0.07, math.pi, 2.0 * math.pi, steps=8)
     s0_end = s0 + 0.16
 
     # ── 'i' ──
@@ -582,8 +583,8 @@ def make_neon_dambrosios(label, panel_center, face_axis, face_sign, scale=1.0):
 
     # ── 's' (final) ──
     s2 = ap2_end + 0.25
-    arc("s2_top", s2 + 0.06, H_x * 0.75, 0.07, math.pi * 0.30, math.pi * 1.40, steps=8)
-    arc("s2_bot", s2 + 0.08, H_x * 0.25, 0.07, math.pi * 1.30, math.pi * 0.30 + math.pi, steps=8)
+    arc("s2_top", s2 + 0.07, H_x * 0.72, 0.07, 0.0, math.pi, steps=8)
+    arc("s2_bot", s2 + 0.07, H_x * 0.28, 0.07, math.pi, 2.0 * math.pi, steps=8)
 
     # ── Underline swoosh ──
     N_u = 30

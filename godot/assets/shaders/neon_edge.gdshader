@@ -70,11 +70,15 @@ void fragment() {
     float gy_t = mix(0.5, smoothstep(0.0, 1.0, uv.y), fill_gradient);
     vec3 fill = mix(fill_high.rgb, fill_low.rgb, gy_t);
 
-    // Optionally let warm scene tints bleed through the gradient so
-    // lamp glows / lit windows / neon stay readable on dark fills.
+    // Optionally let warm scene tints bleed through the gradient — but
+    // only for the BRIGHTEST pixels (lit windows, lamp glow, neon
+    // itself). Below the threshold, the fill stays pure dark. This
+    // keeps "pure black background with warm spots" look intact instead
+    // of letting the whole sun-lit scene tint the fill.
     vec3 scene_now = texture(SCREEN_TEXTURE, uv).rgb;
     float scene_warmth = max(scene_now.r, max(scene_now.g, scene_now.b));
-    fill = mix(fill, scene_now * 1.4, scene_blend * scene_warmth);
+    float warmth_mask = smoothstep(0.55, 0.85, scene_warmth);
+    fill = mix(fill, scene_now * 1.6, scene_blend * warmth_mask);
 
     // Cheap bloom: sample a wider edge mask for the glow halo
     vec2 gpx = SCREEN_PIXEL_SIZE * (edge_thickness + 3.0);

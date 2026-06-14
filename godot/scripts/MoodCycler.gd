@@ -122,6 +122,10 @@ const MOODS: Array = [
 ]
 
 var current_index: int = 0
+# Optional in-game label that displays the current mood name. The
+# scene's HUD provides a Label at NodePath("../HUD/MoodLabel"); if it
+# isn't present (older scenes, warehouse), we just skip updating it.
+@export var mood_label_path: NodePath = NodePath("../HUD/MoodLabel")
 
 
 func _ready() -> void:
@@ -147,6 +151,10 @@ func _apply(preset: Dictionary) -> void:
         "fill_gradient":  preset["neon_grad"],
         "scene_blend":    preset.get("neon_blend", 0.0),
     })
+    # Update the in-game mood label if the scene provides one
+    var label: Node = get_node_or_null(mood_label_path)
+    if label is Label:
+        (label as Label).text = "MOOD · %s   (F3)" % preset["name"]
     _set_params("AsciiQuad", {
         "strength":  preset["ascii"],
         "cell_size": preset["ascii_cell"],
