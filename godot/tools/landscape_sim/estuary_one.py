@@ -576,8 +576,51 @@ def render(params: LandscapeParams, out_path: str) -> None:
     print(f"[preview] wrote {summary_path}")
 
 
+# ── Zoom views — render any subset of an existing LandscapeParams
+# at higher resolution. The chapter-one quadrant is the canonical
+# example: Kwik Stop ↔ NexCorp Gas & Go intersection plus Cosmic
+# Comics and D'Ambrosio's directly south. ~130 m × 110 m.
+def zoom(params: LandscapeParams, bounds: tuple[float, float, float, float],
+         resolution: int = 1200, name_suffix: str = "") -> LandscapeParams:
+    """Return a new LandscapeParams reading the same elevation /
+    creek / roads / neighbourhoods / landmarks but cropped to a
+    tighter (min_x, max_x, min_y, max_y) and rendered higher-res.
+    Useful for picking out a specific quadrant to lock its layout
+    before transcribing to a build script."""
+    return LandscapeParams(
+        name=params.name + (" · " + name_suffix if name_suffix else ""),
+        bounds=bounds,
+        elevation=params.elevation,
+        creek=params.creek,
+        roads=params.roads,
+        neighbourhoods=params.neighbourhoods,
+        landmarks=params.landmarks,
+        resolution=resolution,
+        contour_step=max(0.2, params.contour_step * 0.5),  # finer contours when zoomed
+        seed=params.seed,
+    )
+
+# Chapter-one commercial cluster zoom: the NW corner of HCE.
+# Bounds capture Kwik Stop (-250,+145), Gas & Go (-210,+145),
+# Cosmic Comics (-250,+100), D'Ambrosio's holdover (-195,+90),
+# plus surrounding road frontage + a buffer on each side.
+HCE_CHAPTER_ONE = zoom(
+    HCE_PARAMS,
+    bounds=(-295, -150, 50, 180),
+    resolution=1400,
+    name_suffix="chapter one quadrant",
+)
+
+
 # ── Entry point ──────────────────────────────────────────────────
 if __name__ == "__main__":
+    # Usage:
+    #   python3 estuary_one.py [out.ppm] [view]
+    #     view ∈ {"full", "chapter_one"}, default "full"
     out = sys.argv[1] if len(sys.argv) > 1 else "hce_preview.ppm"
+    view = sys.argv[2] if len(sys.argv) > 2 else "full"
     print("[estuary one] slowstick landscape preview · vol 7 prototype")
-    render(HCE_PARAMS, out)
+    if view == "chapter_one":
+        render(HCE_CHAPTER_ONE, out)
+    else:
+        render(HCE_PARAMS, out)
