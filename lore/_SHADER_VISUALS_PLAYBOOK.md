@@ -357,6 +357,76 @@ Three rolled-up lessons from late-evening iteration on the look:
   Locked down in `_3D_MODELING_PLAYBOOK.md` "Coordinate frame"
   section as a top-of-playbook MUST-READ.
 
+### 2026-06-14 · the lithograph recipe (saturation-gated bleed)
+
+After ~10 iterations tuning the riverfront vs the vol5 Dante
+D'Ambrosio's concept-art reference, the working recipe for a
+"lithograph illustration on screen" look is locked:
+
+```
+neon_edge as the visible foundation:
+  strength = 1.0
+  edge_threshold ≈ 0.010   (low — catches every plank/spindle/seam)
+  edge_glow ≈ 0.10         (tight bloom, crisp lines)
+  fill_low = fill_high = pure black
+  fill_gradient = 0
+
+scene_blend > 0 ENABLED but THREE GATES filter what bleeds:
+  bleed_lo / bleed_hi    ≈ (0.82, 0.96)   brightness gate
+  sat_bleed = true
+  sat_lo / sat_hi        ≈ (0.50, 0.68)   saturation gate
+  scene_blend            ≈ 0.55           overall bleed strength
+```
+
+Why saturation matters: brightness alone can't tell
+"lit cream wall at 0.95 max channel" from "saturated sign red at
+0.98." Both clear the brightness gate; only the second has the
+high-saturation that the sat gate enforces. Saturation
+= (max - min) / max. Cream walls sit around 0.20 because their R,G,B
+stay roughly equal even when lit; sign red is 0.82; lit windows
+0.59; warm bulbs 0.64.
+
+For "lithograph + ASCII halftone" (blueprint_red), add the ASCII
+layer LIGHTLY on top:
+  dir_ascii ≈ 0.40   (subtle halftone where surfaces are bright)
+  dir_mono_red = true (white glyphs everywhere except saturated red)
+  dir_red_thresh ≈ 0.32 (warm bulbs render WHITE; only sign reaches red)
+
+Kill CRT artifacts in lithograph moods:
+  aberration = 0.0         (no R/B fringing — clean print look)
+  dither ≈ 0.01            (minimal — ink doesn't dither)
+  palette ≈ 16             (wide enough to avoid colour banding on
+                            bleed-through reds — the reference is
+                            a CLEAN print, not a tight palette)
+
+### 2026-06-14 · Lobster for D'Ambrosio's signage
+
+The default Godot sans-serif was the wrong material for the
+boat-life signage all along. Lobster (Pablo Impallari, OFL-licensed,
+Italian-designed thick brush script) is the canonical cursive for
+the D'Ambrosio's sign — both the parking-lot pole and the boat-top
+marquee.
+
+Lives at `godot/resources/fonts/Lobster-Regular.ttf`. Loaded by
+LocaleSetup as `const CURSIVE_FONT = preload(...)` and assigned to
+every D'Ambrosio's panel Label3D.
+
+When sourcing a font from Google Fonts for a similar use:
+
+- The OFL fonts mirror at `github.com/google/fonts/raw/main/ofl/<name>/<name>-Regular.ttf`
+  is fetchable directly via curl.
+- Pull the `OFL.txt` next to it so attribution stays clean.
+- Lobster's strokes run ~25% wider per char than Godot's default
+  sans — drop `pixel_size` (and bump `font_size`/`outline_size`) so
+  the cursive still fits the panel boundaries. For a panel ≈ 6.4m
+  wide × 2m tall, `font_size = 128`, `pixel_size = 0.008`,
+  `outline_size = 10` puts "D'Ambrosio's" tight inside the panel.
+
+Other appropriate alternatives if Lobster doesn't fit a future
+sign: Pinyon Script (1880s copperplate elegant — fits steamboat
+era), Parisienne (French brush, lighter), Allura (elegant
+copperplate), Sacramento (modern handwritten).
+
 ### TEMPLATE for next session
 
 ```markdown

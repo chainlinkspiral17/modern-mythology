@@ -108,7 +108,10 @@ const MOODS: Array = [
         # pure black — matching the lithograph palette. The ASCII
         # character set draws the geometry edges as line work.
         "name": "blueprint_red",
-        "palette": 4.0, "dither": 0.02, "scanline": 0.10, "aberration": 0.0002,
+        # Lithograph clean-up — same logic as linework. Aberration off
+        # so red/blue fringe doesn't paint yellow-green halos on edges.
+        # Palette widened to 16 so bleed-through reds aren't banded.
+        "palette": 16.0, "dither": 0.01, "scanline": 0.06, "aberration": 0.0,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
         # NEW: layer the linework neon_edge UNDERNEATH the ASCII so
@@ -117,7 +120,7 @@ const MOODS: Array = [
         # brightest pixels (red sign letters, white bulb meshes) bleed
         # through the black fill as their actual scene colour — same
         # trick as the linework mood, applied as the foundation here.
-        "neon": 1.0, "neon_thresh": 0.014,
+        "neon": 1.0, "neon_thresh": 0.010,
         "neon_edge": Color(0.96, 0.94, 0.88, 1),
         "neon_low":  Color(0.0, 0.0, 0.0, 1),
         "neon_high": Color(0.0, 0.0, 0.0, 1),
@@ -125,11 +128,9 @@ const MOODS: Array = [
         "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
         "neon_sat_bleed": true,
         "neon_sat_lo": 0.50, "neon_sat_hi": 0.68,
-        # ASCII density at REDUCED strength — adds halftone on top of
-        # the linework foundation without burying it. red_threshold
-        # raised to 0.32 so warm tungsten bulbs render as WHITE glyphs;
-        # only saturated sign-red clears the threshold for the red.
-        "dir_ascii": 0.55, "dir_cell": 9.0, "dir_thresh": 0.06,
+        # ASCII density at LIGHTER strength — adds halftone where the
+        # picture is bright, doesn't flood pure-black surfaces.
+        "dir_ascii": 0.40, "dir_cell": 9.0, "dir_thresh": 0.06,
         "dir_line": Color(0.95, 0.92, 0.86, 1),
         "dir_fill": Color(0.0, 0.0, 0.0, 1),
         "dir_tint": false,
@@ -149,16 +150,17 @@ const MOODS: Array = [
         # The picture reads as an ink drawing of whatever the camera
         # actually sees.
         "name": "linework",
-        "palette": 6.0, "dither": 0.02, "scanline": 0.10, "aberration": 0.0002,
+        # Lithograph look — kill CRT artifacts. Aberration 0 → no
+        # R/B fringing around white edges. Dither low → clean ink.
+        # Palette wide (16) → no banding artifacts in the bleed-
+        # through colours.
+        "palette": 16.0, "dither": 0.01, "scanline": 0.06, "aberration": 0.0,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
         "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
-        "neon": 1.0, "neon_thresh": 0.014,           # catches finer architectural creases
+        "neon": 1.0, "neon_thresh": 0.010,           # finer than before — catches railings, plank seams
         "neon_edge": Color(0.96, 0.94, 0.88, 1),
         "neon_low":  Color(0.0,  0.0,  0.0,  1),
         "neon_high": Color(0.0,  0.0,  0.0,  1),
-        # Brightness × saturation gates tightened so warm spill on
-        # interior walls (pilothouse, dining room) no longer bleeds —
-        # only the lit windows themselves and the sign letters clear.
         "neon_grad": 0.0, "neon_blend": 0.55, "neon_glow": 0.10,
         "neon_bleed_lo": 0.82, "neon_bleed_hi": 0.96,
         "neon_sat_bleed": true,
