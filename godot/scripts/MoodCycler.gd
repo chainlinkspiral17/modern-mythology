@@ -225,6 +225,65 @@ const MOODS: Array = [
         "star_cloud": 1.0, "star_cloud_scale": 0.011, "star_cloud_floor": 0.50,
         "star_force_full": true,
     },
+    # ────────────────────────────────────────────────────────────────
+    # CINEMATIC FILTER MOODS — exaggerated stylization presets, each
+    # leaning hard into a single visual idiom. Use for hero shots
+    # and stylistic variety; not the everyday gameplay mood.
+    # ────────────────────────────────────────────────────────────────
+    {
+        # HIGH-CONTRAST B&W INK — Sin City / chiaroscuro. Pure white
+        # ink lines over pure black fill. No bleed, no gradient, no
+        # ASCII. Heavy scanline gives film-grain feel; chromatic
+        # aberration zero so the lines stay crisp.
+        "name": "high_contrast_bw",
+        "palette": 24.0, "dither": 0.04, "scanline": 0.55, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": false,
+        "ascii_fg": Color(1, 1, 1, 1), "ascii_bg": Color(0, 0, 0, 1),
+        "neon": 1.0, "neon_thresh": 0.012,
+        "neon_edge": Color(1.0, 1.0, 1.0, 1),
+        "neon_low":  Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.20,
+        "neon_bleed_lo": 0.99, "neon_bleed_hi": 1.0,
+    },
+    {
+        # CEL-SHADED — Saturday-morning cartoon. Aggressive palette
+        # quantize gives flat colour bands; neon_edge at strength 1.0
+        # with a low threshold adds the bold black ink outline cels.
+        # NO bleed gates (the scene colour is the point). Minimal
+        # dither so the colour bands stay flat. Scanline + aberration
+        # off — we're going for animation cels, not CRT.
+        "name": "cel_shaded",
+        "palette": 4.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 1.0, "neon_thresh": 0.025,
+        "neon_edge": Color(0.04, 0.02, 0.02, 1),     # near-black ink outline
+        "neon_low":  Color(0.0, 0.0, 0.0, 1),        # gradient unused
+        "neon_high": Color(0.0, 0.0, 0.0, 1),
+        # scene_blend = 1.0 with very-wide bleed range = the fill is
+        # essentially the scene colour itself (after palette quantize).
+        # The neon_edge gives the cel outline ON TOP of the flat fill.
+        "neon_grad": 0.0, "neon_blend": 1.0, "neon_glow": 0.10,
+        "neon_bleed_lo": 0.05, "neon_bleed_hi": 0.20,
+    },
+    {
+        # DEMOSCENE ASCII — Amiga / Diskmag intro. Full ASCII coverage
+        # like substrate, but cyan/magenta vapor palette + heavy
+        # scanlines + chromatic aberration. Starscape on TOP at low
+        # strength gives the parallax-scroll feel demoscenes love.
+        "name": "demoscene_ascii",
+        "palette": 5.0, "dither": 0.50, "scanline": 0.80, "aberration": 0.0048,
+        "ascii": 1.0, "ascii_cell": 7.0, "ascii_gamma": 0.65, "ascii_tint": false,
+        "ascii_fg": Color(0.42, 0.92, 1.0, 1),       # demoscene cyan
+        "ascii_bg": Color(0.04, 0.0, 0.08, 1),       # deep purple-black
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+        "star": 0.6, "star_cell": 8.0, "star_time": 0.85,
+        "star_sky_thresh": 0.22,
+        "star_galaxy": 0.7, "star_stars": 0.9, "star_chip": 1.0,
+        "star_cloud": 0.4,
+    },
     {
         "name": "ice",
         "palette": 7.0, "dither": 0.22, "scanline": 0.40, "aberration": 0.0020,
