@@ -35,6 +35,12 @@ uniform float fill_gradient : hint_range(0.0, 1.0) = 1.0;
 uniform float edge_glow : hint_range(0.0, 1.0) = 0.4;
 // edge_glow controls how much edge brightness bleeds into adjacent
 // fill area (a cheap fake bloom).
+uniform float scene_blend : hint_range(0.0, 1.0) = 0.0;
+// scene_blend = 0 → fill is purely the gradient (full stylization)
+// scene_blend = 1 → fill uses the underlying scene colour
+// In between, warm lamp glows and other accent colours bleed through
+// the gradient — important for the chillwave look to keep warm
+// yellows readable on a black background.
 
 float luma(vec3 c) {
     return dot(c, vec3(0.299, 0.587, 0.114));
@@ -63,6 +69,12 @@ void fragment() {
     // Vertical gradient fill (uv.y is 0 at top, 1 at bottom for canvas)
     float gy_t = mix(0.5, smoothstep(0.0, 1.0, uv.y), fill_gradient);
     vec3 fill = mix(fill_high.rgb, fill_low.rgb, gy_t);
+
+    // Optionally let warm scene tints bleed through the gradient so
+    // lamp glows / lit windows / neon stay readable on dark fills.
+    vec3 scene_now = texture(SCREEN_TEXTURE, uv).rgb;
+    float scene_warmth = max(scene_now.r, max(scene_now.g, scene_now.b));
+    fill = mix(fill, scene_now * 1.4, scene_blend * scene_warmth);
 
     // Cheap bloom: sample a wider edge mask for the glow halo
     vec2 gpx = SCREEN_PIXEL_SIZE * (edge_thickness + 3.0);

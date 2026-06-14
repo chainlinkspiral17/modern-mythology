@@ -49,7 +49,22 @@ const MOODS: Array = [
         "neon": 1.0, "neon_thresh": 0.09, "neon_edge": Color(1.0, 0.80, 0.30, 1),    # gold edges
         "neon_low": Color(0.85, 0.32, 0.22, 1),     # warm orange
         "neon_high": Color(0.22, 0.08, 0.30, 1),    # twilight purple
-        "neon_grad": 1.0,
+        "neon_grad": 1.0, "neon_blend": 0.15,
+    },
+    {
+        # The exact reference look from the vol5 D'Ambrosio's exterior
+        # concept: pure-black backgrounds, saturated red edges (booth
+        # red / hull-trim red), warm yellow lit windows and lamps
+        # bleed through via scene_blend. Limited-palette illustrated
+        # / lithograph aesthetic.
+        "name": "lithograph",
+        "palette": 6.0, "dither": 0.20, "scanline": 0.50, "aberration": 0.0014,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85,
+        "neon": 1.0, "neon_thresh": 0.06,
+        "neon_edge": Color(0.92, 0.22, 0.20, 1),   # warm hull/booth red
+        "neon_low":  Color(0.04, 0.03, 0.03, 1),   # near-black
+        "neon_high": Color(0.0,  0.0,  0.0,  1),   # pure black
+        "neon_grad": 0.3, "neon_blend": 0.55,      # warmth bleeds through
     },
     {
         "name": "noir",
@@ -130,6 +145,7 @@ func _apply(preset: Dictionary) -> void:
         "fill_low":       preset["neon_low"],
         "fill_high":      preset["neon_high"],
         "fill_gradient":  preset["neon_grad"],
+        "scene_blend":    preset.get("neon_blend", 0.0),
     })
     _set_params("AsciiQuad", {
         "strength":  preset["ascii"],

@@ -449,6 +449,168 @@ def make_torus(name, center, major_r, minor_r, base_color,
     return _finalize_mesh(name, verts, faces, base_color)
 
 
+def make_neon_dambrosios(label, panel_center, face_axis, face_sign, scale=1.0):
+    """Draw the cursive 'D'Ambrosio's' red neon on a sign panel face.
+    panel_center: (x, y, z) world position of the centre of the panel
+                  face the neon sits on.
+    face_axis: 'Y' if the panel face normal points along ±Y (sign
+               faces north or south); 'X' if it points along ±X (sign
+               faces port or starboard of the boat).
+    face_sign: +1 or -1 — which direction along face_axis the panel
+               face points.
+    scale: overall size multiplier (1.0 = pole-sign size, 0.7 = a
+           smaller on-boat sign).
+
+    Reused for both the parking-lot pole sign (two faces, ±Y) and the
+    sign mounted on the boat's saloon-cabin port wall (single face, -X).
+    """
+    NEON_RED = (1.0, 0.18, 0.20, 1.0)
+    NEON_GLOW = (1.0, 0.35, 0.40, 1.0)
+    TUBE_R = 0.060 * scale
+    H = 0.65 * scale
+    H_x = H * 0.62
+    cx, cy, cz = panel_center
+
+    def lx(local_x):
+        # Mirror so the text reads correctly: negation + face_sign
+        return -local_x * face_sign
+
+    def _place(panel_x, panel_z, normal_off):
+        # Convert (panel_x, panel_z) on the local panel face plus the
+        # outward normal offset into a world position.
+        if face_axis == 'Y':
+            return (cx + lx(panel_x),
+                    cy + face_sign * normal_off,
+                    cz + panel_z)
+        else:  # 'X'
+            return (cx + face_sign * normal_off,
+                    cy + lx(panel_x),
+                    cz + panel_z)
+
+    def tube(seg_name, x1, z1, x2, z2, normal_off=0.0):
+        p1 = _place(x1, z1, normal_off)
+        p2 = _place(x2, z2, normal_off)
+        make_tube_segment(f"Neon_{label}_{seg_name}",
+                          p1, p2, TUBE_R, NEON_RED, segments=5)
+
+    def stroke(name, points):
+        for i in range(len(points) - 1):
+            tube(f"{name}_{i}", points[i][0], points[i][1],
+                 points[i + 1][0], points[i + 1][1])
+
+    def arc(name, ccx, ccz, r, t0, t1, steps=10):
+        for i in range(steps):
+            a0 = t0 + (t1 - t0) * (i / steps)
+            a1 = t0 + (t1 - t0) * ((i + 1) / steps)
+            tube(f"{name}_{i}",
+                 ccx + math.cos(a0) * r, ccz + math.sin(a0) * r,
+                 ccx + math.cos(a1) * r, ccz + math.sin(a1) * r)
+
+    def halo(name, panel_x, panel_z, radius=0.18):
+        # Halo sphere inset toward the panel — appears BEHIND tubes
+        pos = _place(panel_x, panel_z, -0.020)
+        make_sphere(f"Neon_{label}_halo_{name}", pos, radius, NEON_GLOW)
+
+    # ── 'D' ──
+    d0 = -2.80 * scale
+    stroke("D_spine", [(d0, 0.0), (d0 + 0.04, H * 0.5), (d0 + 0.06, H)])
+    arc("D_loop", d0 + 0.18, H * 0.5, H * 0.52, math.pi / 2.0, -math.pi / 2.0, steps=10)
+    d_end = d0 + 0.40
+
+    # ── apostrophe ──
+    ap1 = d_end + 0.25
+    stroke("apos1", [(ap1, H * 0.78), (ap1 + 0.05, H * 1.05), (ap1 + 0.10, H * 0.95)])
+    ap1_end = ap1 + 0.12
+
+    # ── 'A' ──
+    a0 = ap1_end + 0.30
+    stroke("A_left",  [(a0, 0.0), (a0 + 0.10, H * 0.5), (a0 + 0.20, H)])
+    stroke("A_right", [(a0 + 0.20, H), (a0 + 0.30, H * 0.5), (a0 + 0.40, 0.0)])
+    stroke("A_bar",   [(a0 + 0.10, H * 0.45), (a0 + 0.30, H * 0.45)])
+    a_end = a0 + 0.40
+
+    # ── 'm' ──
+    m0 = a_end + 0.20
+    stroke("m_stem1", [(m0, 0.0), (m0, H_x * 0.85)])
+    arc("m_arc1", m0 + 0.09, H_x * 0.85, 0.09, math.pi, 0.0, steps=6)
+    stroke("m_stem2", [(m0 + 0.18, 0.0), (m0 + 0.18, H_x * 0.85)])
+    arc("m_arc2", m0 + 0.27, H_x * 0.85, 0.09, math.pi, 0.0, steps=6)
+    stroke("m_stem3", [(m0 + 0.36, 0.0), (m0 + 0.36, H_x * 0.85)])
+    arc("m_arc3", m0 + 0.45, H_x * 0.85, 0.09, math.pi, 0.0, steps=6)
+    stroke("m_stem4", [(m0 + 0.54, 0.0), (m0 + 0.54, H_x * 0.85)])
+    m_end = m0 + 0.54
+
+    # ── 'b' ──
+    b0 = m_end + 0.25
+    stroke("b_stem", [(b0, 0.0), (b0, H)])
+    arc("b_loop", b0 + 0.12, H_x * 0.45, H_x * 0.45,
+        math.pi, math.pi - 2 * math.pi, steps=14)
+    b_end = b0 + 0.24
+
+    # ── 'r' ──
+    r0 = b_end + 0.22
+    stroke("r_stem", [(r0, 0.0), (r0, H_x)])
+    arc("r_hook", r0 + 0.06, H_x - 0.04, 0.06, math.pi, math.pi * 0.30, steps=5)
+    r_end = r0 + 0.12
+
+    # ── 'o' ──
+    o0 = r_end + 0.20
+    arc("o1", o0 + 0.10, H_x * 0.50, 0.11, 0.0, 2 * math.pi, steps=14)
+    o0_end = o0 + 0.20
+
+    # ── 's' ──
+    s0 = o0_end + 0.22
+    arc("s1_top", s0 + 0.06, H_x * 0.75, 0.07, math.pi * 0.30, math.pi * 1.40, steps=8)
+    arc("s1_bot", s0 + 0.08, H_x * 0.25, 0.07, math.pi * 1.30, math.pi * 0.30 + math.pi, steps=8)
+    s0_end = s0 + 0.16
+
+    # ── 'i' ──
+    i0 = s0_end + 0.22
+    stroke("i_stem", [(i0, 0.0), (i0, H_x)])
+    halo("i_dot", i0, H * 0.90, 0.05 * scale)
+    i_end = i0 + 0.04
+
+    # ── 'o' (second) ──
+    o2 = i_end + 0.22
+    arc("o2", o2 + 0.10, H_x * 0.50, 0.11, 0.0, 2 * math.pi, steps=14)
+    o2_end = o2 + 0.20
+
+    # ── apostrophe ──
+    ap2 = o2_end + 0.25
+    stroke("apos2", [(ap2, H * 0.78), (ap2 + 0.05, H * 1.05), (ap2 + 0.10, H * 0.95)])
+    ap2_end = ap2 + 0.12
+
+    # ── 's' (final) ──
+    s2 = ap2_end + 0.25
+    arc("s2_top", s2 + 0.06, H_x * 0.75, 0.07, math.pi * 0.30, math.pi * 1.40, steps=8)
+    arc("s2_bot", s2 + 0.08, H_x * 0.25, 0.07, math.pi * 1.30, math.pi * 0.30 + math.pi, steps=8)
+
+    # ── Underline swoosh ──
+    N_u = 30
+    u_left = d0 - 0.10
+    u_right = s2 + 0.25
+    u_dip = 0.25
+    for i in range(N_u):
+        t0 = i / N_u
+        t1 = (i + 1) / N_u
+        ux0 = u_left + t0 * (u_right - u_left)
+        ux1 = u_left + t1 * (u_right - u_left)
+        uz0 = -0.10 - math.sin(t0 * math.pi) * u_dip
+        uz1 = -0.10 - math.sin(t1 * math.pi) * u_dip
+        tube(f"underline_{i}", ux0, uz0, ux1, uz1)
+
+    # Halos behind major loops (between letter plane and panel face)
+    for gtag, gx, gz in [
+        ("D",     d0 + 0.12, H * 0.5),
+        ("A",     a0 + 0.20, H * 0.5),
+        ("m_mid", m0 + 0.27, H_x * 0.5),
+        ("b",     b0 + 0.12, H_x * 0.4),
+        ("o1",    o0 + 0.10, H_x * 0.5),
+        ("o2",    o2 + 0.10, H_x * 0.5),
+    ]:
+        halo(gtag, gx, gz, radius=0.18 * scale)
+
+
 def _finalize_mesh(name, verts, faces, base_color):
     """Build a mesh from verts/faces (already in world coords) with
     flat per-loop vertex colour = base_color."""
@@ -919,6 +1081,40 @@ def build_riverboat():
     make_box("Entry_Arch_A", (arch_x,  1.2, BD_Z + 1.3), (0.15, 0.15, 2.5), COL_HULL)
     make_prism("Entry_Arch_Top", (arch_x, 0, BD_Z + 2.55), (0.20, 2.6, 0.50), col_gingerbread, pitch_axis='Y')
 
+    # ════════════════════════════════════════════════════════════
+    # ON-BOAT D'AMBROSIO'S NEON SIGN — mounted on the saloon-cabin's
+    # PORT wall, facing -X (the parking lot / player approach).
+    # Per the vol5 exterior concept art: the diner's main signage sits
+    # ATOP the boat itself, not just on a roadside pole. This makes
+    # the boat unmistakably D'Ambrosio's from the parking lot.
+    # ════════════════════════════════════════════════════════════
+    boat_sign_cx = -SC_W / 2.0 - 0.10        # just outboard of the port wall
+    boat_sign_cy = SC_L * 0.05                # slightly forward of center
+    boat_sign_cz = SC_Z + SC_H * 0.10         # high on the wall
+    boat_sign_w  = 5.2                        # slightly smaller than pole sign
+    boat_sign_h  = 1.6
+    # Dark backing panel mounted on the cabin wall
+    make_box("BoatSign_Panel", (boat_sign_cx - 0.04, boat_sign_cy, boat_sign_cz),
+             (0.05, boat_sign_w, boat_sign_h), (0.10, 0.08, 0.08, 1.0))
+    # Frame trims
+    fy = boat_sign_cx - 0.07
+    make_box("BoatSign_FrameTop", (fy, boat_sign_cy, boat_sign_cz + boat_sign_h/2 + 0.08),
+             (0.06, boat_sign_w + 0.18, 0.10), (0.32, 0.26, 0.20, 1.0))
+    make_box("BoatSign_FrameLow", (fy, boat_sign_cy, boat_sign_cz - boat_sign_h/2 - 0.08),
+             (0.06, boat_sign_w + 0.18, 0.10), (0.32, 0.26, 0.20, 1.0))
+    make_box("BoatSign_FrameFwd", (fy, boat_sign_cy + boat_sign_w/2 + 0.08, boat_sign_cz),
+             (0.06, 0.10, boat_sign_h + 0.18), (0.32, 0.26, 0.20, 1.0))
+    make_box("BoatSign_FrameAft", (fy, boat_sign_cy - boat_sign_w/2 - 0.08, boat_sign_cz),
+             (0.06, 0.10, boat_sign_h + 0.18), (0.32, 0.26, 0.20, 1.0))
+    # Mounting bracket arms going back to the cabin wall
+    for bz_off in (-0.5, 0.5):
+        make_box(f"BoatSign_Bracket_{bz_off}", (boat_sign_cx + 0.10, boat_sign_cy, boat_sign_cz + bz_off),
+                 (0.20, 0.06, 0.06), (0.32, 0.26, 0.20, 1.0))
+    # Cursive neon mounted on the panel face, slightly smaller scale (0.8x)
+    make_neon_dambrosios("Boat_Port",
+                          (boat_sign_cx - 0.08, boat_sign_cy, boat_sign_cz),
+                          face_axis='X', face_sign=-1, scale=0.80)
+
     # Hawser bollards (mooring posts) on the boiler deck along the PORT rail
     for i, by_p in enumerate([-5.0, 5.0]):
         make_cyl(f"Bollard_{i}", (-BD_W/2 + 0.5, by_p, BD_Z + 0.40), 0.18, 0.70, (0.32, 0.30, 0.28, 1.0), segments=8)
@@ -1133,167 +1329,13 @@ def build_parking_lot():
         make_box(f"Sign_Frame_{label}_R",   (sign_x + sign_w/2 + 0.06, sign_y + face_y, sign_z),
                  (0.12, 0.06, sign_h + 0.20), (0.32, 0.26, 0.20, 1.0))
 
-    # ── CURSIVE RED NEON: D'Ambrosio's ─────────────────────────────
-    # Bigger letters (H = 0.65m) drawn with REAL angled cylinders via
-    # make_tube_segment so diagonals don't stair-step. Letters mirrored
-    # correctly on the south face (lx negates local_x for the mirrored
-    # side, so both viewers read the script the right way around).
-    # Halos are SPHERES placed BEHIND the letters (inset toward the
-    # panel), not in front. Underline is a proper downward swoosh.
-    NEON_RED = (1.0, 0.18, 0.20, 1.0)
-    NEON_GLOW = (1.0, 0.35, 0.40, 1.0)
-    TUBE_R = 0.060
-    H = 0.65   # letter cap height
-    H_x = H * 0.62   # x-height (lowercase body height)
-
-    for face_label, face_y_off in (("N", 0.10), ("S", -0.10)):
-        face_sign = 1 if face_label == "N" else -1
-
-        def lx(local_x):
-            # MIRROR for both sides so the text reads left-to-right
-            # from each viewer's perspective. Negation flips the sign
-            # axis; face_sign chooses which face gets the flipped copy.
-            return -local_x * face_sign
-
-        def tube(seg_name, x1, z1, x2, z2):
-            """A real angled cylinder tube on the panel face."""
-            make_tube_segment(
-                f"Neon_{face_label}_{seg_name}",
-                (sign_x + lx(x1), sign_y + face_y_off, sign_z + z1),
-                (sign_x + lx(x2), sign_y + face_y_off, sign_z + z2),
-                TUBE_R, NEON_RED, segments=5)
-
-        def stroke(name, points):
-            """Connect a polyline of (x, z) points with tube segments."""
-            for i in range(len(points) - 1):
-                tube(f"{name}_{i}", points[i][0], points[i][1],
-                                     points[i + 1][0], points[i + 1][1])
-
-        def arc(name, ccx, ccz, r, t0, t1, steps=10):
-            for i in range(steps):
-                a0 = t0 + (t1 - t0) * (i / steps)
-                a1 = t0 + (t1 - t0) * ((i + 1) / steps)
-                tube(f"{name}_{i}",
-                     ccx + math.cos(a0) * r, ccz + math.sin(a0) * r,
-                     ccx + math.cos(a1) * r, ccz + math.sin(a1) * r)
-
-        def halo(name, x, z, radius=0.18):
-            """Soft red glow sphere INSET toward the panel — sits BEHIND
-            the neon tubes when viewed from the front."""
-            inset = face_y_off - 0.020 * face_sign  # closer to panel face
-            make_sphere(f"Neon_{face_label}_halo_{name}",
-                        (sign_x + lx(x), sign_y + inset, sign_z + z),
-                        radius, NEON_GLOW)
-
-        # Each letter has an explicit START_X. Spacing between letters
-        # uses ≥ 0.20 m gaps so no two adjacent strokes share an edge.
-
-        # ── 'D' capital — vertical spine + right semicircle ─────────
-        d0 = -2.80
-        stroke("D_spine", [(d0, 0.0), (d0 + 0.04, H * 0.5), (d0 + 0.06, H)])
-        arc("D_loop", d0 + 0.18, H * 0.5, H * 0.52,
-            math.pi / 2.0, -math.pi / 2.0, steps=10)
-        d_end = d0 + 0.40   # right edge of D
-
-        # ── apostrophe ' (set 0.25m clear of D) ──
-        ap1 = d_end + 0.25
-        stroke("apos1", [(ap1, H * 0.78), (ap1 + 0.05, H * 1.05), (ap1 + 0.10, H * 0.95)])
-        ap1_end = ap1 + 0.12
-
-        # ── 'A' capital — two diagonals + crossbar (0.30m clear after apos) ──
-        a0 = ap1_end + 0.30
-        stroke("A_left",  [(a0, 0.0), (a0 + 0.10, H * 0.5), (a0 + 0.20, H)])
-        stroke("A_right", [(a0 + 0.20, H), (a0 + 0.30, H * 0.5), (a0 + 0.40, 0.0)])
-        stroke("A_bar",   [(a0 + 0.10, H * 0.45), (a0 + 0.30, H * 0.45)])
-        a_end = a0 + 0.40
-
-        # ── 'm' — three humps ──
-        m0 = a_end + 0.20
-        stroke("m_stem1", [(m0, 0.0), (m0, H_x * 0.85)])
-        arc("m_arc1", m0 + 0.09, H_x * 0.85, 0.09, math.pi, 0.0, steps=6)
-        stroke("m_stem2", [(m0 + 0.18, 0.0), (m0 + 0.18, H_x * 0.85)])
-        arc("m_arc2", m0 + 0.27, H_x * 0.85, 0.09, math.pi, 0.0, steps=6)
-        stroke("m_stem3", [(m0 + 0.36, 0.0), (m0 + 0.36, H_x * 0.85)])
-        arc("m_arc3", m0 + 0.45, H_x * 0.85, 0.09, math.pi, 0.0, steps=6)
-        stroke("m_stem4", [(m0 + 0.54, 0.0), (m0 + 0.54, H_x * 0.85)])
-        m_end = m0 + 0.54
-
-        # ── 'b' — tall ascender + round bottom loop ──
-        b0 = m_end + 0.25
-        stroke("b_stem", [(b0, 0.0), (b0, H)])
-        arc("b_loop", b0 + 0.12, H_x * 0.45, H_x * 0.45,
-            math.pi, math.pi - 2 * math.pi, steps=14)
-        b_end = b0 + 0.24
-
-        # ── 'r' — short stem + small hook on top ──
-        r0 = b_end + 0.22
-        stroke("r_stem", [(r0, 0.0), (r0, H_x)])
-        arc("r_hook", r0 + 0.06, H_x - 0.04, 0.06,
-            math.pi, math.pi * 0.30, steps=5)
-        r_end = r0 + 0.12
-
-        # ── 'o' — full circle ──
-        o0 = r_end + 0.20
-        arc("o1", o0 + 0.10, H_x * 0.50, 0.11, 0.0, 2 * math.pi, steps=14)
-        o0_end = o0 + 0.20
-
-        # ── 's' — cursive S curve ──
-        s0 = o0_end + 0.22
-        arc("s1_top", s0 + 0.06, H_x * 0.75, 0.07,
-            math.pi * 0.30, math.pi * 1.40, steps=8)
-        arc("s1_bot", s0 + 0.08, H_x * 0.25, 0.07,
-            math.pi * 1.30, math.pi * 0.30 + math.pi, steps=8)
-        s0_end = s0 + 0.16
-
-        # ── 'i' — short stem + dot ──
-        i0 = s0_end + 0.22
-        stroke("i_stem", [(i0, 0.0), (i0, H_x)])
-        halo("i_dot_glow", i0, H * 0.90, 0.05)
-        i_end = i0 + 0.04
-
-        # ── 'o' (second) ──
-        o2 = i_end + 0.22
-        arc("o2", o2 + 0.10, H_x * 0.50, 0.11, 0.0, 2 * math.pi, steps=14)
-        o2_end = o2 + 0.20
-
-        # ── apostrophe ──
-        ap2 = o2_end + 0.25
-        stroke("apos2", [(ap2, H * 0.78), (ap2 + 0.05, H * 1.05), (ap2 + 0.10, H * 0.95)])
-        ap2_end = ap2 + 0.12
-
-        # ── 's' (final) ──
-        s2 = ap2_end + 0.25
-        arc("s2_top", s2 + 0.06, H_x * 0.75, 0.07,
-            math.pi * 0.30, math.pi * 1.40, steps=8)
-        arc("s2_bot", s2 + 0.08, H_x * 0.25, 0.07,
-            math.pi * 1.30, math.pi * 0.30 + math.pi, steps=8)
-
-        # ── Underline swoosh — proper DOWNWARD arc below baseline ──
-        N_underline = 30
-        u_left = d0 - 0.10
-        u_right = s2 + 0.25
-        u_dip = 0.25
-        for i in range(N_underline):
-            t0 = i / N_underline
-            t1 = (i + 1) / N_underline
-            ux0 = u_left + t0 * (u_right - u_left)
-            ux1 = u_left + t1 * (u_right - u_left)
-            uz0 = -0.10 - math.sin(t0 * math.pi) * u_dip
-            uz1 = -0.10 - math.sin(t1 * math.pi) * u_dip
-            tube(f"underline_{i}", ux0, uz0, ux1, uz1)
-
-        # ── HALO glow spheres — placed BEHIND the major letter loops
-        # (between letter plane and panel face). These should appear
-        # as a soft red bloom around the loops, NOT in front of them.
-        for gtag, gx, gz in [
-            ("D",     d0 + 0.12, H * 0.5),
-            ("A",     a0 + 0.20, H * 0.5),
-            ("m_mid", m0 + 0.27, H_x * 0.5),
-            ("b",     b0 + 0.12, H_x * 0.4),
-            ("o1",    o0 + 0.10, H_x * 0.5),
-            ("o2",    o2 + 0.10, H_x * 0.5),
-        ]:
-            halo(gtag, gx, gz, radius=0.18)
+    # ── CURSIVE RED NEON: D'Ambrosio's — both faces of the pole sign,
+    # via the shared module-level helper so the same script can also
+    # be mounted on the boat. ─────────────────────────────────────
+    make_neon_dambrosios("Pole_N", (sign_x, sign_y + 0.10, sign_z),
+                          face_axis='Y', face_sign=+1, scale=1.0)
+    make_neon_dambrosios("Pole_S", (sign_x, sign_y - 0.10, sign_z),
+                          face_axis='Y', face_sign=-1, scale=1.0)
 
 
 # ════════════════════════════════════════════════════════════════
