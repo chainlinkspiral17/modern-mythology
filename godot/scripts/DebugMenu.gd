@@ -68,6 +68,8 @@ func _ready() -> void:
     _add_btn(vb, "F4 · Toggle HUD",         Callable(self, "_btn_hud"))
     _add_btn(vb, "F5 · Shimmer Strobe",     Callable(self, "_btn_shimmer"))
     _add_btn(vb, "F6 · Rift Strobe",        Callable(self, "_btn_rift"))
+    _add_btn(vb, "F7 · ← Prev Track",       Callable(self, "_btn_prev_track"))
+    _add_btn(vb, "F8 · Next Track →",       Callable(self, "_btn_next_track"))
     _add_btn(vb, "Capture Mouse (resume)",  Callable(self, "_btn_capture"))
 
 
@@ -119,3 +121,13 @@ func _btn_rift() -> void:
 func _btn_capture() -> void:
     if _fpc and _fpc.has_method("action_mouse_capture"):
         _fpc.action_mouse_capture()
+
+func _btn_prev_track() -> void:
+    var m: Node = get_node_or_null("/root/InGameMusic")
+    if m and m.has_method("prev_track"):
+        m.prev_track()
+
+func _btn_next_track() -> void:
+    var m: Node = get_node_or_null("/root/InGameMusic")
+    if m and m.has_method("next_track"):
+        m.next_track()
