@@ -117,6 +117,23 @@ class Neighbourhood:
     landuse: str   # e.g. "single_family", "park", "golf", "creek_corridor"
 
 @dataclass
+class Landmark:
+    """A named narrative hot spot — a specific building or address
+    that matters to the volume's story. Rendered as a coloured dot
+    over the neighbourhood map. category drives the dot colour:
+      'commercial' · convenience, gas station, retail (warm yellow)
+      'civic'      · HOA office, community pool, school (cyan)
+      'narrative'  · a specific story-load address (magenta)
+      'media'      · zine shop, recording studio (orange)
+      'transit'    · arterial intersections, bus stops (white)
+    """
+    name: str
+    x: float
+    y: float
+    category: str = "narrative"
+    note: str = ""
+
+@dataclass
 class LandscapeParams:
     name: str
     bounds: tuple[float, float, float, float]   # (min_x, max_x, min_y, max_y)
@@ -124,6 +141,7 @@ class LandscapeParams:
     creek: CreekPath
     roads: RoadGrid
     neighbourhoods: list[Neighbourhood] = field(default_factory=list)
+    landmarks: list[Landmark] = field(default_factory=list)
     resolution: int = 800           # px on the longer axis
     contour_step: float = 0.5       # metres between contour lines
     seed: int = 1337
@@ -253,6 +271,57 @@ HCE_NEIGHBOURHOODS = [
     ], landuse="creek_corridor"),
 ]
 
+# ── vol6 narrative hot spots ─────────────────────────────────────
+# Per _VOL6_WIKI.md "Locations" + "Adjacent infrastructure" sections.
+# The CHAPTER-ONE BASELINE QUADRANT: the intersection where Kwik Stop
+# and NexCorp Gas & Go sit across from each other (West Commercial
+# Strip × North Commercial Belt corner). Everything else is placed
+# narratively from there.
+HCE_LANDMARKS = [
+    # ── THE COMMERCIAL CHAPTER-ONE CLUSTER ──────────────────────
+    # Kwik Stop and NexCorp Gas & Go ACROSS THE INTERSECTION per
+    # _VOL6_WIKI.md. NW corner of the West Commercial Strip ×
+    # North Commercial Belt junction.
+    Landmark("Kwik Stop", -250, 145, "commercial",
+             "Sam's register · wire basket · back-cooler recursion"),
+    Landmark("NexCorp Gas & Go", -210, 145, "commercial",
+             "Skip's shift · locker #4"),
+    Landmark("Cosmic Comics", -250, 100, "media",
+             "Rick · the photocopier · DO NOT SORT YET pile"),
+
+    # ── OTHER COMMERCIAL HOT SPOTS ──────────────────────────────
+    Landmark("D'Ambrosio's (vol5 holdover)", -195, 90, "narrative",
+             "John's column corner · Maya's mail-drop to F.T."),
+    Landmark("Halsey Studios", 250, 100, "media",
+             "Gallatin Band · the unreleased fourth-record track"),
+    Landmark("Truck Stop Diner", 0, -185, "commercial",
+             "south arterial · long-haul corner"),
+
+    # ── CIVIC ──────────────────────────────────────────────────
+    Landmark("HOA Welcome / Office", -10, 60, "civic",
+             "Carl Reno's breakfasts · the welcome table"),
+    Landmark("Community Pool + Bandshell", 15, 40, "civic",
+             "the watch-tower lifeguard chair"),
+    Landmark("Country Club Clubhouse", -20, 190, "civic",
+             "high ground · sightlines into both subdivisions"),
+
+    # ── SPECIFIC NARRATIVE ADDRESSES ────────────────────────────
+    Landmark("Lot 7 · Connie Daigle", -170, -60, "narrative",
+             "Phase I · the most settled"),
+    Landmark("Lot 14 · Mrs. Pimentel", -150, -90, "narrative",
+             "Phase I · the wrong-address scheme"),
+    Landmark("Lot 47 · model home", 130, 50, "narrative",
+             "the fake basil pot · Carla Vega three doors down"),
+    Landmark("892 Ashberry Drive", 165, 75, "narrative",
+             "Maya's empty house · zine #19"),
+
+    # ── PHASE BOUNDARIES (rough indicators) ────────────────────
+    Landmark("Phase II construction office", 50, -130, "civic",
+             "new buyers from Graustark and Beaumont"),
+    Landmark("Phase III · Norman Lott's trailer", -160, -135, "narrative",
+             "dirt and surveying flags · NexCorp's substrate language"),
+]
+
 HCE_PARAMS = LandscapeParams(
     name="Harmony Creek Estates",
     bounds=(-300, 300, -210, 210),
@@ -260,6 +329,7 @@ HCE_PARAMS = LandscapeParams(
     creek=HCE_CREEK,
     roads=HCE_ROADS,
     neighbourhoods=HCE_NEIGHBOURHOODS,
+    landmarks=HCE_LANDMARKS,
     resolution=900,
     contour_step=0.8,
     seed=1337,
@@ -436,6 +506,42 @@ def render(params: LandscapeParams, out_path: str) -> None:
                     buf[idx + 1] = 200
                     buf[idx + 2] = 60
 
+    # Landmark dots — narrative hot spots get a chunkier coloured
+    # marker on top of the elevation map. Category drives the hue
+    # so you can read commercial / civic / narrative / media at a
+    # glance.
+    landmark_palette = {
+        "commercial": (255, 215, 50),    # warm yellow
+        "civic":      (80, 200, 230),    # cyan
+        "narrative":  (235, 90, 200),    # magenta
+        "media":      (255, 140, 40),    # orange
+        "transit":    (245, 245, 245),   # near-white
+    }
+    for lm in params.landmarks:
+        ci, cj = world_to_px(lm.x, lm.y)
+        col = landmark_palette.get(lm.category, (235, 90, 200))
+        # Outer halo (dark) for legibility on the lawn green
+        for ox in range(-6, 7):
+            for oy in range(-6, 7):
+                d2 = ox * ox + oy * oy
+                if 30 <= d2 <= 42:
+                    xi = ci + ox; yi = cj + oy
+                    if 0 <= xi < W and 0 <= yi < H:
+                        idx = (yi * W + xi) * 3
+                        buf[idx]     = 20
+                        buf[idx + 1] = 20
+                        buf[idx + 2] = 20
+        # Inner solid dot
+        for ox in range(-5, 6):
+            for oy in range(-5, 6):
+                if ox * ox + oy * oy <= 25:
+                    xi = ci + ox; yi = cj + oy
+                    if 0 <= xi < W and 0 <= yi < H:
+                        idx = (yi * W + xi) * 3
+                        buf[idx]     = col[0]
+                        buf[idx + 1] = col[1]
+                        buf[idx + 2] = col[2]
+
     # Write PPM (P6 — binary RGB, universally readable)
     with open(out_path, "wb") as f:
         f.write(f"P6\n{W} {H}\n255\n".encode("ascii"))
@@ -454,6 +560,19 @@ def render(params: LandscapeParams, out_path: str) -> None:
             f.write(f"    · {n.name:30s} ({n.landuse})\n")
         f.write(f"  road segments: {len(params.roads.segments)}\n")
         f.write(f"  creek control points: {len(params.creek.points)}\n")
+        if params.landmarks:
+            f.write(f"  narrative hot spots ({len(params.landmarks)}):\n")
+            by_cat: dict[str, list[Landmark]] = {}
+            for lm in params.landmarks:
+                by_cat.setdefault(lm.category, []).append(lm)
+            for cat in sorted(by_cat.keys()):
+                f.write(f"    ── {cat} ──\n")
+                for lm in by_cat[cat]:
+                    coord = f"({lm.x:+5.0f}, {lm.y:+5.0f})"
+                    f.write(f"    · {lm.name:36s} {coord}")
+                    if lm.note:
+                        f.write(f"  // {lm.note}")
+                    f.write("\n")
     print(f"[preview] wrote {summary_path}")
 
 
