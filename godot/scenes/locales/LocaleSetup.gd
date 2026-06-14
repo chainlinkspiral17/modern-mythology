@@ -60,28 +60,27 @@ func _ready() -> void:
         elif "BoatSign_Panel" in mi.name:
             boat_panels.append(mi)
     print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
-    # Attach real Label3D text to the sign panels. Panel meshes in the
-    # GLB have vertices baked at WORLD coordinates with identity
-    # MeshInstance3D transform, so AABB.get_center() gives the panel's
-    # world position. We then offset the label out along the panel's
-    # face normal so it floats just in front of the panel.
+    # Attach real Label3D text to the sign panels.
     #
-    # Orientation matters: we set the Label3D basis directly via
-    # face_normal (the unit vector the label's +Z front should point
-    # toward). Building the basis from a forward + world-up vector
-    # guarantees text is upright with horizontal reading direction —
-    # the previous Euler-rotation approach silently flipped the up
-    # vector for some panels (parking-lot N face came out upside-down,
-    # boat panel came out reading vertically — both looked like
-    # gibberish through the post-process).
-    # Pole-sign panel is 6.4m wide × 2m tall — use pixel_size 0.010.
-    # Boat-sign panel is 7.6m wide × 2.4m tall — bump to 0.013 so
-    # the text fills more of the panel (user feedback: "boat one,
-    # text too small for the size of the sign").
+    # COORDINATE FRAME GOTCHA (cost us two iterations):
+    # The Blender build script writes everything Z-up (X east, Y north,
+    # Z up). The default glTF export remaps Blender +Y → Godot -Z and
+    # Blender +Z → Godot +Y, so by the time the GLB lands in this
+    # runtime scene, Godot's world-up is +Y, not +Z.
+    #
+    # The face_normal and offset vectors below are GODOT WORLD COORDS:
+    #   · Sign_Panel_N — Blender +Y face becomes Godot -Z face
+    #   · Sign_Panel_S — Blender -Y face becomes Godot +Z face
+    #   · BoatSign_Panel — Blender -X face is preserved (-X in Godot)
+    #
+    # _attach_sign_label uses world_up = (0, 1, 0). When we passed
+    # (0, 0, 1) the labels came out rotated 90° around the panel's
+    # face axis (text reading vertically along the panel height
+    # instead of horizontally along the panel width).
     for panel in sign_panels_n:
-        _attach_sign_label(panel, Vector3(0, 0.10, 0), Vector3(0, 1, 0), 0.010)
+        _attach_sign_label(panel, Vector3(0, 0, -0.10), Vector3(0, 0, -1), 0.010)
     for panel in sign_panels_s:
-        _attach_sign_label(panel, Vector3(0, -0.10, 0), Vector3(0, -1, 0), 0.010)
+        _attach_sign_label(panel, Vector3(0, 0,  0.10), Vector3(0, 0,  1), 0.010)
     for panel in boat_panels:
         _attach_sign_label(panel, Vector3(-0.10, 0, 0), Vector3(-1, 0, 0), 0.013)
 
@@ -105,12 +104,13 @@ func _attach_sign_label(panel: MeshInstance3D, world_face_offset: Vector3, face_
     var panel_centre := panel.global_transform.origin + panel.get_aabb().get_center()
     var pos := panel_centre + world_face_offset
     # Build basis: +Z (label front) → face_normal, +Y (label up) →
-    # world +Z (or world +Y if face_normal IS world +Z to avoid a
-    # degenerate cross-product).
+    # Godot world +Y (the real up axis at runtime). The degenerate
+    # case (face_normal IS straight up/down) shouldn't happen for
+    # vertical sign panels but we fall back to +Z to stay safe.
     var fwd: Vector3 = face_normal.normalized()
-    var world_up := Vector3(0, 0, 1)
+    var world_up := Vector3(0, 1, 0)
     if abs(fwd.dot(world_up)) > 0.95:
-        world_up = Vector3(0, 1, 0)
+        world_up = Vector3(0, 0, 1)
     var right: Vector3 = world_up.cross(fwd).normalized()
     var up: Vector3 = fwd.cross(right).normalized()
     label.global_transform = Transform3D(Basis(right, up, fwd), pos)

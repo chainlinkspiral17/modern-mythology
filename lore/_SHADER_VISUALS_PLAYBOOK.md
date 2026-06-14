@@ -318,6 +318,45 @@ This guarantees `+Z` faces the camera-facing normal, `+Y` is upright,
 and `+X` is horizontal text-reading direction — for any panel
 orientation. No Euler-order surprises.
 
+### 2026-06-14 · multi-scale ASCII + linework mood + Y-up bug
+
+Three rolled-up lessons from late-evening iteration on the look:
+
+- **The "multi-pass" effect inside one shader.** User asked for
+  "multiple rendering passes with different shaders, capturing
+  geometry and edges lit by the camera as visible, and also the
+  deep black and far off details." Instead of stacking more
+  ColorRect layers (which double the bandwidth and complicate the
+  stack ordering), the existing `ascii_directional` now does the
+  multi-pass effect via three concentric sample rings INSIDE one
+  fragment shader:
+    Ring 1 (immediate N/S/E/W neighbors) → fine edges (`│ ─ ┌ ┐ └ ┘`)
+    Ring 1 diagonals (NE/NW/SE/SW)        → `╱` or `╲`
+    Ring 2 (2-cell distant)                → faint dot for distant silhouettes
+    Plus the cell's own brightness via a logarithmic density ramp
+    (`· ░ ▒ ▓`) starting at 0.02 so even deep shadows register.
+  13 texture taps per cell; still cheap.
+
+- **"Edges only" already had a tool — neon_edge.** User asked
+  "is there a way to render the scene so only visible edges of
+  geometry are pronounced and visible?" The answer was a new
+  MOOD using the existing `neon_edge.gdshader`:
+  `neon: 1.0, neon_thresh: 0.025, neon_low/high: pure black,
+  neon_edge: near-white, neon_grad: 0` → pure ink linework, no
+  fill, no halftone. Added as `linework` mood and set as the
+  default boot mood so the user sees it on scene load.
+
+- **Y-up vs Z-up bit us THREE times in one session.** The Blender
+  build script writes Z-up; Godot runtime is Y-up. Any face-normal
+  vector passed from Blender-frame code into Godot runtime code
+  (e.g. `_attach_sign_label(panel, face_normal=...)`) MUST be
+  remapped: `(x_b, y_b, z_b) → (x_b, z_b, -y_b)`. The Label3D
+  basis-from-forward-and-up helper also needs `world_up = (0,1,0)`
+  not `(0,0,1)`. Symptom of the bug: text rotated 90° around the
+  panel's face axis, reading vertically instead of horizontally.
+  Locked down in `_3D_MODELING_PLAYBOOK.md` "Coordinate frame"
+  section as a top-of-playbook MUST-READ.
+
 ### TEMPLATE for next session
 
 ```markdown

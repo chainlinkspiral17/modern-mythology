@@ -31,6 +31,19 @@ Builds:
 "Basic for now, fill out later" per the user. Geometry is rough
 primitives; vertex colors carry material identifiers.
 
+COORDINATE FRAME (must keep consistent between this script and the
+Godot runtime — see _3D_MODELING_PLAYBOOK.md "Coordinate frame"):
+
+    Blender (this script)  →  Godot world (runtime after glTF import)
+      +X east              →    +X east
+      +Y north / forward   →    -Z
+      +Z up                →    +Y up
+    1 unit = 1 meter in BOTH runtimes. No scale factor anywhere.
+
+Position (x, y, z) here lands at (x, z, -y) in Godot world. Any
+code on the Godot side that references a position from this script
+(e.g. LocaleSetup attaching Label3D to panel meshes) must remap.
+
 Run:
     blender --background --python build_riverfront.py
     (or ./run_cathedral.sh build_riverfront.py)

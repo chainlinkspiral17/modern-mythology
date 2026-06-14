@@ -160,68 +160,107 @@ void fragment() {
     vec2 cell_idx = floor(frag / cell_size);
     vec2 local = fract(frag / cell_size);
 
-    // Sample THIS cell + 4 neighbors (single texture lookup per cell)
+    // ── MULTI-SCALE FRAME SAMPLING ─────────────────────────────────
+    // Each cell looks at THREE concentric rings of neighbors:
+    //   Ring 1 (immediate): N/S/E/W + 4 diagonals → fine-grain edges
+    //                       and corner detection
+    //   Ring 2 (2 cells away): big silhouette detection — catches the
+    //                       outline of large objects that a 1-cell
+    //                       Sobel under-detects
+    //   Plus this cell's own brightness for the density fill.
+    // 13 texture taps per cell, all in screen-space. The "multi-pass"
+    // effect the user asked for (edges-then-density-then-far) is
+    // achieved by combining all three signals into one glyph choice.
     float l_here = sample_cell_luma(cell_idx);
-    float l_W    = sample_cell_luma(cell_idx + vec2(-1.0, 0.0));
-    float l_E    = sample_cell_luma(cell_idx + vec2(+1.0, 0.0));
-    float l_N    = sample_cell_luma(cell_idx + vec2(0.0, -1.0));  // up in screen = -Y
-    float l_S    = sample_cell_luma(cell_idx + vec2(0.0, +1.0));
+    float l_W    = sample_cell_luma(cell_idx + vec2(-1.0,  0.0));
+    float l_E    = sample_cell_luma(cell_idx + vec2(+1.0,  0.0));
+    float l_N    = sample_cell_luma(cell_idx + vec2( 0.0, -1.0));
+    float l_S    = sample_cell_luma(cell_idx + vec2( 0.0, +1.0));
+    float l_NW   = sample_cell_luma(cell_idx + vec2(-1.0, -1.0));
+    float l_NE   = sample_cell_luma(cell_idx + vec2(+1.0, -1.0));
+    float l_SW   = sample_cell_luma(cell_idx + vec2(-1.0, +1.0));
+    float l_SE   = sample_cell_luma(cell_idx + vec2(+1.0, +1.0));
+    // Far ring — 2 cells away. Used to detect long-baseline edges
+    // (the silhouette of a whole boat hull, the edge of a roofline)
+    // that small-baseline edge detection might miss because adjacent
+    // cells share a similar shaded value.
+    float l_W2 = sample_cell_luma(cell_idx + vec2(-2.0,  0.0));
+    float l_E2 = sample_cell_luma(cell_idx + vec2(+2.0,  0.0));
+    float l_N2 = sample_cell_luma(cell_idx + vec2( 0.0, -2.0));
+    float l_S2 = sample_cell_luma(cell_idx + vec2( 0.0, +2.0));
 
-    // Brightness differences in each direction
-    float dH = max(abs(l_here - l_W), abs(l_here - l_E));   // horizontal change
-    float dV = max(abs(l_here - l_N), abs(l_here - l_S));   // vertical change
+    // Brightness gradients at fine + coarse scales
+    float dH  = max(abs(l_here - l_W),  abs(l_here - l_E));
+    float dV  = max(abs(l_here - l_N),  abs(l_here - l_S));
+    // Diagonal gradients (for ╱ ╲)
+    float dNW_SE = abs(l_NW - l_SE);
+    float dNE_SW = abs(l_NE - l_SW);
+    // Coarse-scale gradient (2-cell baseline). Even when fine edge
+    // doesn't trip, the coarse edge catches large silhouettes.
+    float dH2 = max(abs(l_here - l_W2), abs(l_here - l_E2));
+    float dV2 = max(abs(l_here - l_N2), abs(l_here - l_S2));
 
-    // Is this cell on an edge?
-    float edge_signal = max(dH, dV);
-    bool is_edge = edge_signal > edge_threshold;
+    float fine_edge   = max(dH, dV);
+    float diag_edge   = max(dNW_SE, dNE_SW);
+    float coarse_edge = max(dH2, dV2);
+
+    bool is_fine_edge   = fine_edge   > edge_threshold;
+    bool is_diag_edge   = diag_edge   > edge_threshold * 1.4;
+    // Coarse threshold is tighter — long baselines accumulate more
+    // shading drift, so we need stronger contrast to call it an edge.
+    bool is_coarse_edge = coarse_edge > edge_threshold * 1.8 && !is_fine_edge;
 
     float mask = 0.0;
 
-    if (is_edge) {
-        // The edge runs PERPENDICULAR to the direction of brightness
-        // change. Horizontal brightness change (W/E differ) = vertical
-        // edge runs through here = draw │.
+    if (is_fine_edge) {
         bool strong_h = dH > edge_threshold;
         bool strong_v = dV > edge_threshold;
 
         if (strong_h && strong_v) {
-            // Corner / crossing — figure out which corner direction
-            // by comparing which neighbors are brighter than us.
-            // If E and S are brighter (and W and N darker): ┌
-            // If W and S are brighter: ┐
-            // If E and N are brighter: └
-            // If W and N are brighter: ┘
-            float h_dir = l_E - l_W;     // positive → bright to the east
-            float v_dir = l_S - l_N;     // positive → bright below
-            if (h_dir > 0.0 && v_dir > 0.0) {
-                mask = g_corner_tl(local);
-            } else if (h_dir < 0.0 && v_dir > 0.0) {
-                mask = g_corner_tr(local);
-            } else if (h_dir > 0.0 && v_dir < 0.0) {
-                mask = g_corner_bl(local);
-            } else {
-                mask = g_corner_br(local);
-            }
+            float h_dir = l_E - l_W;
+            float v_dir = l_S - l_N;
+            if (h_dir > 0.0 && v_dir > 0.0)      mask = g_corner_tl(local);
+            else if (h_dir < 0.0 && v_dir > 0.0) mask = g_corner_tr(local);
+            else if (h_dir > 0.0 && v_dir < 0.0) mask = g_corner_bl(local);
+            else                                  mask = g_corner_br(local);
         } else if (strong_h) {
-            // Vertical edge (brightness changes left-right)
             mask = g_vertical(local);
         } else {
-            // Horizontal edge (brightness changes top-bottom)
             mask = g_horizontal(local);
         }
-    } else {
-        // Not an edge — pick a density fill from this cell's brightness.
-        // 5 levels: empty / · / ░ / ▒ / ▓
-        if (l_here < 0.15) {
-            mask = 0.0;
-        } else if (l_here < 0.35) {
-            mask = g_dot(local);
-        } else if (l_here < 0.55) {
-            mask = g_light(local);
-        } else if (l_here < 0.75) {
-            mask = g_medium(local);
+    } else if (is_diag_edge) {
+        // Diagonal silhouette — pick ╱ or ╲ from which diagonal is steeper
+        if (dNW_SE > dNE_SW) {
+            mask = g_diag_se(local);
         } else {
+            mask = g_diag_ne(local);
+        }
+    } else if (is_coarse_edge) {
+        // Faint long-baseline silhouette — sparse dot rather than a
+        // bold stroke. This gives "outline of distant geometry" feel
+        // without overwhelming the picture with thick lines.
+        mask = g_dot(local);
+    } else {
+        // ── BRIGHTNESS DENSITY FILL ─────────────────────────────────
+        // No edge detected. Pick a glyph density from THIS cell's
+        // luminance via a logarithmic ramp so deep shadows still
+        // register as a faint dot (the user's "as much shadow detail
+        // as possible" goal). Pure black (l < 0.02) is still empty
+        // so the brightest stars/lights still pop against true black.
+        if (l_here < 0.02) {
+            mask = 0.0;
+        } else if (l_here < 0.10) {
+            // Sparse texture in deep shadow — single dot per cell
+            mask = g_dot(local);
+        } else if (l_here < 0.25) {
+            mask = g_light(local);
+        } else if (l_here < 0.45) {
+            mask = g_medium(local);
+        } else if (l_here < 0.70) {
             mask = g_dark(local);
+        } else {
+            // Near-saturation: combine medium + dark for solid feel
+            mask = max(g_medium(local), g_dark(local));
         }
     }
 

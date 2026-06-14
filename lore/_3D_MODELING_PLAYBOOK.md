@@ -14,6 +14,54 @@ mistakes that took specific user feedback to discover.
 
 ## Core rules
 
+### Coordinate frame — Blender Z-up vs Godot Y-up (MUST READ)
+
+**Same units (meters), different up-axis.** The build scripts use
+Blender's native Z-up convention; the Godot runtime uses Y-up. The
+default glTF exporter remaps on the way out:
+
+| Blender axis (build script) | Godot world axis (runtime) |
+|------------------------------|----------------------------|
+| `+X` (east)                  | `+X` (east)                |
+| `+Y` (north / forward)       | `-Z`                       |
+| `+Z` (up)                    | `+Y` (up)                  |
+
+A Blender position `(x_b, y_b, z_b)` lands in Godot world at
+`(x_b, z_b, -y_b)`. A Blender direction vector remaps the same way.
+
+**Scale is consistent — 1 unit = 1 meter in BOTH runtimes.** Do not
+introduce scale factors in either; if something looks the wrong
+size, find the bad number, don't compensate via transform.
+
+**Implications for cross-runtime code** (e.g. `LocaleSetup.gd`
+positioning Label3D nodes on panel meshes baked from the build
+script):
+
+- Mesh AABBs in the imported GLB are in Godot world coordinates.
+  `panel.global_transform.origin + panel.get_aabb().get_center()`
+  gives the correct world position with no manual remap.
+- But ANY hand-written direction or offset vector (face normals,
+  push-out offsets) in runtime code MUST be in Godot frame. A panel
+  the build script faces toward Blender +Y faces toward Godot -Z at
+  runtime — be explicit. (Bug we hit twice: passing Blender-frame
+  face normals into Label3D basis builders. Symptom: text rotated
+  90° around the panel's face axis. Fix: write face normals in Godot
+  frame and use `world_up = Vector3(0, 1, 0)`.)
+- For sanity-checks: a 1.7 m player capsule, a 12 m wide boat, a
+  2 m tall sign panel — these dimensions read identically in both
+  runtimes. If a measurement is off, the bug is in the build, not
+  in the conversion.
+
+**If you find yourself doing the remap by hand often**, add a
+helper to LocaleSetup like:
+
+```gdscript
+func blender_to_godot(v: Vector3) -> Vector3:
+    return Vector3(v.x, v.z, -v.y)
+```
+
+and document where it's used. **Do not** scale, only remap axes.
+
 ### Primitive selection — never reach for `make_box` first
 
 The project's lowpoly aesthetic looks like Atari 2600 if everything is

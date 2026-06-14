@@ -129,6 +129,25 @@ const MOODS: Array = [
         "dir_red_thresh": 0.18,
     },
     {
+        # Pure linework — answer to "render the scene so only visible
+        # edges of geometry are pronounced and visible." Uses
+        # neon_edge's Sobel silhouette outliner at strength 1 with a
+        # very low edge_threshold so even subtle geometry creases get
+        # caught. Fill is pure black so non-edge pixels render as
+        # solid nothing. No ASCII layer; no density fill; no halftone.
+        # The picture reads as an ink drawing of whatever the camera
+        # actually sees.
+        "name": "linework",
+        "palette": 6.0, "dither": 0.04, "scanline": 0.18, "aberration": 0.0004,
+        "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+        "ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
+        "neon": 1.0, "neon_thresh": 0.025,
+        "neon_edge": Color(0.96, 0.94, 0.88, 1),     # near-white ink
+        "neon_low":  Color(0.0,  0.0,  0.0,  1),     # pure black fill
+        "neon_high": Color(0.0,  0.0,  0.0,  1),
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.35,
+    },
+    {
         "name": "ice",
         "palette": 7.0, "dither": 0.22, "scanline": 0.40, "aberration": 0.0020,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
@@ -196,7 +215,7 @@ const MOODS: Array = [
     },
 ]
 
-var current_index: int = 7   # start on blueprint_red — the lithograph ASCII look
+var current_index: int = 8   # start on linework — pure visible-edges-only render
 # Optional in-game label that displays the current mood name. If the
 # scene's HUD doesn't provide one we just skip updating it.
 @export var mood_label_path: NodePath = NodePath("../HUD/MoodLabel")
