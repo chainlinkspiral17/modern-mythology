@@ -2009,6 +2009,131 @@ def build_road_network():
     make_box("Drive_Mall_apron", (FRONTAGE_X + road_w/2 + side_w + 2.5, 30.0, -0.02),
              (6.0, 16.0, 0.04), asphalt)
 
+    # ════════════════════════════════════════════════════════════
+    # RAISED D'AMBROSIO'S FRONTAGE — graduated curb sidewalks +
+    # planted utility island. Road stays level; the SIDEWALK section
+    # in front of D'Ambrosio's lifts to a proper curb height
+    # (~0.18m above grade), then a 5.8m planted strip / utility
+    # island sits between sidewalk and parking lot, all on
+    # commercial property. Curb ramps DOWN at the two driveway
+    # cuts (y = ±16) so vehicles cross at road level. Worn,
+    # easygoing — extra bushes and grass clumps scattered, slabs
+    # offset, palmettos by the curb-cut transitions.
+    # ════════════════════════════════════════════════════════════
+    raised_z = 0.18                     # curb-height surface
+    curb_color = (0.62, 0.58, 0.50, 1.0)
+    earth_color = (0.32, 0.26, 0.18, 1.0)
+    grass_a = (0.20, 0.32, 0.14, 1.0)
+    grass_b = (0.26, 0.36, 0.18, 1.0)
+    palmetto = (0.18, 0.30, 0.16, 1.0)
+
+    # The east sidewalk centerline (FRONTAGE_X + road_w/2 + side_w/2)
+    sidewalk_cx = FRONTAGE_X + road_w/2 + side_w/2
+    # Driveway cut spans (y ranges) — sidewalk omitted here so cars cross
+    cut_half = 2.6
+    # Three raised slab spans on the sidewalk: south, middle, north
+    raised_spans = [
+        (-22.0, -16.0 - cut_half),         # south of S driveway
+        (-16.0 + cut_half, 16.0 - cut_half),  # between the two driveways
+        (16.0 + cut_half, 22.0),           # north of N driveway
+    ]
+    for si, (y_lo, y_hi) in enumerate(raised_spans):
+        y_mid = (y_lo + y_hi) / 2
+        y_len = y_hi - y_lo
+        # Raised slab
+        make_box(f"Raised_Sidewalk_{si}",
+                 (sidewalk_cx, y_mid, raised_z / 2),
+                 (side_w, y_len, raised_z), curb_color)
+        # Slab seam-lines every 3m for the worn concrete look
+        n_seams = max(1, int(y_len / 3.0))
+        for sj in range(n_seams):
+            seam_y = y_lo + (sj + 1) * (y_len / (n_seams + 1))
+            make_box(f"Raised_Sidewalk_{si}_seam_{sj}",
+                     (sidewalk_cx, seam_y, raised_z + 0.005),
+                     (side_w - 0.10, 0.04, 0.005), (0.42, 0.40, 0.36, 1.0))
+
+    # Curb ramps DOWN at each driveway cut — a sloped prism connecting
+    # raised sidewalk to road level. Two ramps per cut (north + south
+    # sides) so vehicles cross a smooth grade.
+    for cut_y in (-16.0, 16.0):
+        for ramp_sign, ramp_label in ((-1.0, "S"), (+1.0, "N")):
+            ramp_y_far = cut_y + ramp_sign * cut_half
+            ramp_y_near = cut_y + ramp_sign * (cut_half - 1.5)   # 1.5m ramp run
+            # Prism with the high edge at the sidewalk end, low edge at road
+            # level (just above grade). Width matches the sidewalk.
+            ramp_cy = (ramp_y_far + ramp_y_near) / 2
+            ramp_cz = raised_z / 2
+            ramp_len = abs(ramp_y_far - ramp_y_near)
+            # Use a wedge prism along Y
+            make_prism(f"CurbRamp_{int(cut_y)}_{ramp_label}",
+                       (sidewalk_cx, ramp_cy, 0.04),
+                       (side_w, ramp_len, raised_z - 0.04),
+                       curb_color, pitch_axis='X')
+
+    # ── UTILITY ISLAND / planted buffer strip between the raised
+    # sidewalk and the parking lot's west edge. 5.8m wide.
+    strip_inner = lot_cx - lot_x_w/2                    # parking lot west edge
+    strip_outer = sidewalk_cx + side_w/2                # sidewalk inner edge
+    strip_cx = (strip_inner + strip_outer) / 2
+    strip_w = strip_inner - strip_outer
+    for si, (y_lo, y_hi) in enumerate(raised_spans):
+        y_mid = (y_lo + y_hi) / 2
+        y_len = y_hi - y_lo
+        # Raised earth/grass strip
+        make_box(f"PlantStrip_{si}",
+                 (strip_cx, y_mid, raised_z / 2),
+                 (strip_w, y_len, raised_z), earth_color)
+        # Top cap as grass colour band
+        make_box(f"PlantStrip_{si}_grass",
+                 (strip_cx, y_mid, raised_z + 0.01),
+                 (strip_w - 0.10, y_len, 0.02), grass_b)
+
+    # Dense plant life along the utility island — random-feeling
+    # clumps of bushes, grass tufts, and a couple of palmettos at
+    # the curb-ramp transitions. Heights vary; nothing pristine.
+    bush_positions = [
+        # (x_off_within_strip, y, scale, kind)
+        ( 0.0, -20.0,  0.9, "bush"),
+        (-0.5, -18.5,  0.6, "grass"),
+        ( 0.6, -14.2,  0.7, "bush"),
+        ( 0.0, -11.5,  1.0, "palmetto"),
+        (-0.4,  -9.0,  0.55, "grass"),
+        ( 0.5,  -6.5,  0.85, "bush"),
+        (-0.2,  -3.0,  0.7,  "bush"),
+        ( 0.4,   0.0,  1.0,  "palmetto"),
+        (-0.5,   3.5,  0.65, "grass"),
+        ( 0.0,   6.0,  0.9,  "bush"),
+        (-0.3,   9.5,  0.6,  "grass"),
+        ( 0.6,  12.5,  0.95, "bush"),
+        ( 0.0,  14.5,  0.85, "palmetto"),
+        (-0.4,  20.0,  0.7,  "bush"),
+    ]
+    for bi, (x_off, by, bs, kind) in enumerate(bush_positions):
+        bx = strip_cx + x_off
+        bz_base = raised_z + 0.03
+        if kind == "bush":
+            make_sphere(f"Bush_{bi}_main", (bx, by, bz_base + 0.40 * bs),
+                        0.45 * bs, grass_a)
+            make_sphere(f"Bush_{bi}_lobe", (bx - 0.15 * bs, by + 0.10 * bs, bz_base + 0.55 * bs),
+                        0.30 * bs, grass_b)
+        elif kind == "grass":
+            for gi in range(4):
+                gx = bx + (gi - 1.5) * 0.10
+                make_cyl(f"Grass_{bi}_{gi}", (gx, by, bz_base + 0.18 * bs),
+                         0.04, 0.36 * bs, grass_a, segments=4)
+        else:  # palmetto — bigger feature plant, 1.5m tall fan
+            # short trunk
+            make_cyl(f"Palmetto_{bi}_trunk", (bx, by, bz_base + 0.25 * bs),
+                     0.10, 0.50 * bs, (0.32, 0.24, 0.16, 1.0), segments=6)
+            # fan fronds — three flattened spheres
+            crown_z = bz_base + 0.55 * bs
+            make_sphere(f"Palmetto_{bi}_frond_a", (bx - 0.35 * bs, by, crown_z),
+                        0.45 * bs, palmetto)
+            make_sphere(f"Palmetto_{bi}_frond_b", (bx + 0.30 * bs, by + 0.20 * bs, crown_z + 0.10 * bs),
+                        0.40 * bs, palmetto)
+            make_sphere(f"Palmetto_{bi}_frond_c", (bx, by - 0.25 * bs, crown_z + 0.20 * bs),
+                        0.35 * bs, palmetto)
+
     # ── CROSSWALKS at the cross-street intersection
     crosswalk_col = (0.92, 0.88, 0.78, 1.0)
     for ci in range(8):

@@ -56,10 +56,13 @@ float g_dot(vec2 p, float r) {
     return step(distance(p, vec2(0.5)), r);
 }
 
-// 4-point star glyph: + shape (vertical + horizontal stroke)
+// 4-point star glyph: + shape (vertical + horizontal stroke).
+// Bumped thicker (0.08 → 0.12 stroke half-width) and longer
+// (0.35 → 0.42 stroke length) so stars read at typical render
+// distance — "starscape still vague" feedback.
 float g_star4(vec2 p) {
-    float vbar = (abs(p.x - 0.5) < 0.08 && abs(p.y - 0.5) < 0.35) ? 1.0 : 0.0;
-    float hbar = (abs(p.y - 0.5) < 0.08 && abs(p.x - 0.5) < 0.35) ? 1.0 : 0.0;
+    float vbar = (abs(p.x - 0.5) < 0.12 && abs(p.y - 0.5) < 0.42) ? 1.0 : 0.0;
+    float hbar = (abs(p.y - 0.5) < 0.12 && abs(p.x - 0.5) < 0.42) ? 1.0 : 0.0;
     return max(vbar, hbar);
 }
 
@@ -148,10 +151,11 @@ void fragment() {
     }
 
     // Composite as ADDITIVE on top of the dark sky so the stars POP
-    // bright against the near-black fill rather than blending toward
-    // it. sky_active and sky_mask gate it to dark pixels only; the
-    // 1.6 multiplier punches contrast so the layers read clearly.
+    // bright against the near-black fill. Brightness multiplier 1.6
+    // → 2.6 to push the layers HARD against the pure-black field —
+    // "starscape still vague" was the feedback; this should make
+    // the galaxy + chip patterns unmistakable.
     float final_mask = clamp(total_mask * sky_mask * sky_active * strength, 0.0, 1.0);
-    vec3 result = scene_now + paint * final_mask * 1.6;
+    vec3 result = scene_now + paint * final_mask * 2.6;
     COLOR = vec4(result, 1.0);
 }
