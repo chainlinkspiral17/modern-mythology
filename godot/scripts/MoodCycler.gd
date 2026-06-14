@@ -399,6 +399,32 @@ var current_index: int = 8   # start on linework — pure visible-edges-only ren
 # scene's HUD doesn't provide one we just skip updating it.
 @export var mood_label_path: NodePath = NodePath("../HUD/MoodLabel")
 
+# ── PER-AREA MOOD STRATA ──────────────────────────────────────────
+# Each scene defines its OWN curated subset of moods that fit the
+# area's vibe ("strata"). Hold the right mouse button + look
+# horizontally → smooth-cycle through the strata. F3 still steps
+# through ONLY the strata, not the global mood list. Empty strata
+# falls back to every mood.
+@export var mood_strata: Array[String] = []
+var _strata_indices: Array[int] = []
+
+# Right-mouse vibe wheel state
+var _right_mouse_held: bool = false
+var _yaw_accum: float = 0.0
+const STRATA_YAW_PER_STEP: float = 0.18    # radians of horizontal mouse motion per mood swap
+
+# ── ELASTIC TRANSITION · WARBLE · MUSIC INPUT ─────────────────────
+# Strata swaps don't snap — they fade through a ~0.35 s elastic
+# transition with a sin-warble on aberration / scanline / dither
+# that decays to zero. Gives the wheel a "this reality is bending"
+# feel rather than a hard cut. The warble also folds in a pulse
+# from the master audio bus peak, so playing music makes the visuals
+# react — louder = more warble, louder reality bends harder.
+const WARBLE_DURATION: float = 0.35       # seconds
+var _warble_t: float = 999.0              # seconds since last strata swap
+var _audio_level: float = 0.0             # 0..1, smoothed master bus peak
+const AUDIO_DECAY: float = 0.92           # exponential smoothing on the level
+
 # ── F5 STROBE FLICKER ─────────────────────────────────────────────
 # Press F5 to rapid-cycle through a curated sequence of dramatic
 # moods over ~1.5 s, then return to the mood that was active when
@@ -421,33 +447,93 @@ var _strobe_indices: Array[int] = []
 
 func _ready() -> void:
     _apply(MOODS[current_index])
-    print("[Mood] %s · F3 cycle · F5 strobe" % MOODS[current_index]["name"])
-    # Resolve STROBE_NAMES → MOODS indices once, by name lookup.
+    print("[Mood] %s · F3 cycle · F5 strobe · RMB+look strata wheel" % MOODS[current_index]["name"])
     var by_name: Dictionary = {}
     for i in range(MOODS.size()):
         by_name[MOODS[i]["name"]] = i
     for name in STROBE_NAMES:
         if by_name.has(name):
             _strobe_indices.append(by_name[name])
+    # Resolve the scene-configured mood_strata to indices. Empty
+    # strata falls back to the full mood list so F3 / RMB still work.
+    for name in mood_strata:
+        if by_name.has(name):
+            _strata_indices.append(by_name[name])
+    if _strata_indices.is_empty():
+        for i in range(MOODS.size()):
+            _strata_indices.append(i)
+    if current_index in _strata_indices:
+        pass
+    else:
+        # If the configured start mood isn't in the strata, jump to
+        # the first strata mood so RMB cycling makes sense.
+        current_index = _strata_indices[0]
+        _apply(MOODS[current_index])
 
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventKey and event.pressed and not event.echo:
         if event.keycode == KEY_F3:
-            current_index = (current_index + 1) % MOODS.size()
-            _apply(MOODS[current_index])
-            print("[Mood] → %s" % MOODS[current_index]["name"])
+            # F3 now steps WITHIN the strata so each area's cycle stays curated.
+            _strata_step(1)
         elif event.keycode == KEY_F5:
-            # Trigger strobe — capture current mood as the return state.
             strobe_active = true
             strobe_step = 0
             strobe_frame = 0
             strobe_return_index = current_index
             print("[Mood] STROBE · return to %s in %d steps" %
                   [MOODS[strobe_return_index]["name"], _strobe_indices.size()])
+    elif event is InputEventMouseButton:
+        if event.button_index == MOUSE_BUTTON_RIGHT:
+            _right_mouse_held = event.pressed
+            _yaw_accum = 0.0
+    elif event is InputEventMouseMotion and _right_mouse_held:
+        # Use the captured horizontal motion as a yaw accumulator.
+        # Sensitivity 0.0015 matches FPC's mouse sensitivity scale.
+        _yaw_accum += event.relative.x * 0.0015
+        while abs(_yaw_accum) >= STRATA_YAW_PER_STEP:
+            var step: int = 1 if _yaw_accum > 0.0 else -1
+            _yaw_accum -= float(step) * STRATA_YAW_PER_STEP
+            _strata_step(step)
 
 
-func _process(_delta: float) -> void:
+func _strata_step(direction: int) -> void:
+    """Cycle within the resolved strata. Triggers the warble transition."""
+    var n: int = _strata_indices.size()
+    if n == 0:
+        return
+    var pos: int = _strata_indices.find(current_index)
+    if pos < 0:
+        pos = 0
+    var next_pos: int = ((pos + direction) % n + n) % n
+    current_index = _strata_indices[next_pos]
+    _apply(MOODS[current_index])
+    _warble_t = 0.0
+    print("[Mood] strata → %s" % MOODS[current_index]["name"])
+
+
+func _process(delta: float) -> void:
+    # ── audio-reactive sampling: exponential-smoothed master bus peak
+    # (linear 0..1). Quiet game → ~0; loud music → ~0.8-1.0. Fed to
+    # shaders as a uniform so any layer can react.
+    var bus_peak_db: float = AudioServer.get_bus_peak_volume_left_db(0, 0)
+    var bus_peak_lin: float = db_to_linear(bus_peak_db)
+    _audio_level = _audio_level * AUDIO_DECAY + bus_peak_lin * (1.0 - AUDIO_DECAY)
+
+    # ── elastic warble after a strata swap: decays to 0 over WARBLE_DURATION
+    if _warble_t < WARBLE_DURATION:
+        _warble_t += delta
+        var w: float = 1.0 - clamp(_warble_t / WARBLE_DURATION, 0.0, 1.0)
+        # Sin oscillation gives the "bending" reality feel
+        var osc: float = sin(_warble_t * 60.0)
+        # Music-pulse adds on top so loud audio extends the warble
+        var pulse: float = _audio_level * 0.6
+        _apply_warble(w, osc, pulse)
+    elif _audio_level > 0.02:
+        # Quiet baseline warble driven by music only
+        _apply_warble(0.0, 0.0, _audio_level * 0.4)
+
+    # ── strobe handling (unchanged)
     if not strobe_active:
         return
     strobe_frame += 1
@@ -455,7 +541,6 @@ func _process(_delta: float) -> void:
         return
     strobe_frame = 0
     if strobe_step >= _strobe_indices.size():
-        # End strobe — snap back to the captured return mood.
         strobe_active = false
         current_index = strobe_return_index
         _apply(MOODS[current_index])
@@ -464,6 +549,30 @@ func _process(_delta: float) -> void:
     var idx: int = _strobe_indices[strobe_step]
     _apply(MOODS[idx])
     strobe_step += 1
+
+
+func db_to_linear(db: float) -> float:
+    if db <= -60.0:
+        return 0.0
+    return pow(10.0, db / 20.0)
+
+
+func _apply_warble(strata_warble: float, osc: float, pulse: float) -> void:
+    """Overlay a transient sin-warble onto the demoscene_post params
+    AND amplify chromatic aberration + dither during the transition.
+    This is destructive of the base preset's values for the duration —
+    the elastic feel comes from the picture briefly mis-aligning
+    before snapping back."""
+    var aberration_boost: float = strata_warble * 0.0020 + pulse * 0.0010
+    var dither_boost: float = strata_warble * 0.20 + pulse * 0.10
+    var scanline_boost: float = strata_warble * 0.15 * (0.5 + 0.5 * osc) + pulse * 0.05
+    var base: Dictionary = MOODS[current_index]
+    _set_params("Quad", {
+        "chromatic_aberration": base["aberration"] + aberration_boost,
+        "dither_strength":      clamp(base["dither"] + dither_boost, 0.0, 1.0),
+        "scanline_strength":    clamp(base["scanline"] + scanline_boost, 0.0, 1.0),
+        "palette_size":         base["palette"],
+    })
 
 
 func _apply(preset: Dictionary) -> void:

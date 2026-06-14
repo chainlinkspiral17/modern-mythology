@@ -68,6 +68,13 @@ func _deactivate_other_cameras(node: Node, keep: Camera3D) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+        # While the right mouse button is held the MoodCycler is
+        # consuming the horizontal motion to spin the strata wheel —
+        # freeze player look so the camera doesn't slew at the same
+        # time. Vertical pitch stays free so the cycler doesn't
+        # eat all motion.
+        if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+            return
         rotate_y(-event.relative.x * mouse_sensitivity)
         if camera:
             pitch -= event.relative.y * mouse_sensitivity
