@@ -36,6 +36,42 @@ uniform vec4 bg_color : source_color = vec4(0.04, 0.03, 0.02, 1.0);
 uniform bool tint_from_scene = true;
 uniform float gamma : hint_range(0.2, 3.0) = 0.85;
 
+// ── Psychedelic motion knobs (framerate-independent — driven by TIME)
+// tick_rate     · Hz of per-cell sine offset on glyph index — chars
+//                 ripple up and down the density ramp without the
+//                 underlying brightness map changing. 0 = static.
+// pulse_rate    · Hz of overall brightness pulse (the light/dark wash).
+// pulse_depth   · 0..1 amplitude of the pulse.
+// hue_shift_rate· radians/sec of hue rotation applied to the output.
+// All four default to zero so existing presets (substrate, 3:47am
+// etc.) are unaffected.
+uniform float tick_rate      : hint_range(0.0, 8.0) = 0.0;
+uniform float pulse_rate     : hint_range(0.0, 4.0) = 0.0;
+uniform float pulse_depth    : hint_range(0.0, 1.0) = 0.0;
+uniform float hue_shift_rate : hint_range(0.0, 4.0) = 0.0;
+
+vec3 hue_rotate(vec3 col, float angle) {
+    // Standard hue-rotation matrix — luma-preserving.
+    float c = cos(angle);
+    float s = sin(angle);
+    mat3 m = mat3(
+        vec3(0.299 + 0.701 * c + 0.168 * s,
+             0.587 - 0.587 * c + 0.330 * s,
+             0.114 - 0.114 * c - 0.497 * s),
+        vec3(0.299 - 0.299 * c - 0.328 * s,
+             0.587 + 0.413 * c + 0.035 * s,
+             0.114 - 0.114 * c + 0.292 * s),
+        vec3(0.299 - 0.300 * c + 1.250 * s,
+             0.587 - 0.588 * c - 1.050 * s,
+             0.114 + 0.886 * c - 0.203 * s)
+    );
+    return m * col;
+}
+
+float cell_hash(vec2 p) {
+    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
 // Returns 1.0 if pixel `p` (local cell coords in [0,1]^2) is part of
 // glyph index `idx`. The glyph ramp progresses from sparse to dense.
 //   0  · space (empty)
@@ -124,13 +160,32 @@ void fragment() {
     // density characters (more legible than mostly-space or mostly-
     // dense).
     float ramp = pow(clamp(luma, 0.0, 1.0), gamma);
-    int idx = int(clamp(ramp * 9.0 + 0.5, 0.0, 9.0));
+    // Per-cell sine TICK so each cell's glyph cycles up and down the
+    // density ramp at its own phase. Smooth — driven by TIME, not by
+    // frame counter, so the picture flows at any framerate.
+    float tick_off = 0.0;
+    if (tick_rate > 0.001) {
+        float seed = cell_hash(cell_idx);
+        tick_off = sin(TIME * tick_rate + seed * 6.2831) * 1.6;
+    }
+    int idx = int(clamp(ramp * 9.0 + tick_off + 0.5, 0.0, 9.0));
     float mask = glyph(idx, local);
 
     // Foreground: either the configured ink colour, or the scene's
     // own colour brightened so the character shape reads.
     vec3 fg = tint_from_scene ? scene * 1.6 + 0.05 : fg_color.rgb;
     vec3 ascii_pixel = mix(bg_color.rgb, fg, mask);
+
+    // Hue rotation — paints the picture through the spectrum.
+    if (hue_shift_rate > 0.001) {
+        ascii_pixel = hue_rotate(ascii_pixel, TIME * hue_shift_rate);
+    }
+    // Brightness pulse — the "wash of light AND darkness" — modulates
+    // the entire ASCII layer between dim and bright on a slow sine.
+    if (pulse_rate > 0.001 && pulse_depth > 0.001) {
+        float pulse = 1.0 + sin(TIME * pulse_rate * 6.2831) * pulse_depth;
+        ascii_pixel *= pulse;
+    }
 
     // Crossfade between the raw scene and the ASCII render
     vec3 result = mix(scene, ascii_pixel, strength);

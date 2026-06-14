@@ -408,6 +408,32 @@ const MOODS: Array = [
         "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
     },
     {
+        # PSYCHEDELIC SUBSTRATE — smooth-framerate ASCII visualizer
+        # ticking through the scene. The ascii_render shader's new
+        # TIME-driven uniforms drive every motion: per-cell glyph
+        # cycling (tick_rate), full-image hue rotation (hue_shift_rate),
+        # and a slow brightness pulse (pulse_rate × pulse_depth) for
+        # the light-and-darkness wash. Starscape kept on top at high
+        # strength so the sky is alive too. Bright, unsettled, alive.
+        "name": "psychedelic_substrate",
+        "palette": 8.0, "dither": 0.20, "scanline": 0.30, "aberration": 0.0028,
+        "ascii": 1.0, "ascii_cell": 6.0, "ascii_gamma": 0.55, "ascii_tint": false,
+        "ascii_fg": Color(0.55, 1.0, 0.65, 1),       # phosphor-green base
+        "ascii_bg": Color(0.02, 0.0, 0.04, 1),       # deep violet-black
+        # TIME-driven motion knobs:
+        "ascii_tick": 1.4,            # ~1.4 Hz glyph cycle per cell
+        "ascii_pulse": 0.35,          # 0.35 Hz brightness pulse (~2.9 s)
+        "ascii_pulse_depth": 0.45,    # ±45% wash
+        "ascii_hue_shift": 0.55,      # 0.55 rad/sec → 11 s full hue rotation
+        "neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 1, 1, 1),
+        "neon_low": Color.BLACK, "neon_high": Color.BLACK,
+        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.0,
+        "star": 1.0, "star_cell": 8.0, "star_time": 0.60,
+        "star_sky_thresh": 0.20,
+        "star_galaxy": 0.90, "star_stars": 1.0, "star_chip": 0.80,
+        "star_cloud": 0.6, "star_cloud_scale": 0.012, "star_cloud_floor": 0.55,
+    },
+    {
         "name": "ice",
         "palette": 7.0, "dither": 0.22, "scanline": 0.40, "aberration": 0.0020,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
@@ -791,6 +817,10 @@ func _apply(preset: Dictionary) -> void:
         "tint_from_scene": preset.get("ascii_tint", true),
         "fg_color":        preset.get("ascii_fg", Color(0.92, 0.82, 0.55, 1)),
         "bg_color":        preset.get("ascii_bg", Color(0.04, 0.03, 0.02, 1)),
+        "tick_rate":       preset.get("ascii_tick", 0.0),
+        "pulse_rate":      preset.get("ascii_pulse", 0.0),
+        "pulse_depth":     preset.get("ascii_pulse_depth", 0.0),
+        "hue_shift_rate":  preset.get("ascii_hue_shift", 0.0),
     })
     _set_params("Quad", {
         "palette_size":         preset["palette"],
