@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://locale_riverfront_v1"]
+[gd_scene load_steps=22 format=3 uid="uid://locale_riverfront_v1"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/riverfront.glb" id="1_river_glb"]
 [ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/starscape.gdshader" id="10_star"]
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="11_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="12_blur"]
+[ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="15_oldfilm"]
 [ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="8_setup"]
@@ -78,6 +79,18 @@ shader_parameter/strength = 0.0
 shader_parameter/blur_mode = 0
 shader_parameter/radius = 4.0
 shader_parameter/motion_dir = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="Mat_OldFilm"]
+shader = ExtResource("15_oldfilm")
+shader_parameter/strength = 0.0
+shader_parameter/sim_fps = 18.0
+shader_parameter/tint_color = Color(0.96, 0.90, 0.74, 1)
+shader_parameter/tint_amount = 0.55
+shader_parameter/grain_strength = 0.18
+shader_parameter/flicker_strength = 0.20
+shader_parameter/vignette_strength = 0.55
+shader_parameter/scratch_strength = 0.10
+shader_parameter/judder_strength = 0.0
 
 [sub_resource type="ShaderMaterial" id="Mat_Starscape"]
 shader = ExtResource("10_star")
@@ -292,7 +305,7 @@ far = 300.0
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String](["linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "day_bright", "psychedelic_substrate", "lightshow_extreme"])
+mood_strata = Array[String](["linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "day_bright", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12"])
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Neon")
@@ -338,6 +351,13 @@ mouse_filter = 2
 
 [node name="Quad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="OldFilmQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_OldFilm")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
