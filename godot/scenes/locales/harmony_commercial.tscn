@@ -1,0 +1,414 @@
+[gd_scene load_steps=22 format=3 uid="uid://locale_hce_commercial_v1"]
+
+; ════════════════════════════════════════════════════════════════
+; VOL 6 · CHAPTER ONE BASELINE · HCE Commercial Cluster
+; The Kwik Stop ↔ NexCorp Gas & Go intersection per _VOL6_WIKI.md.
+;
+; Scene origin (0, 0, 0) = the four-way intersection center. Player
+; spawns just south of it on the West Commercial Strip sidewalk so
+; the first thing visible is the Kwik Stop to the west and the Gas
+; & Go canopy to the east — Sam's register on the left, Skip's
+; pumps on the right.
+;
+; Lighting BASE is tuned for Texas noon (per _LIGHTING_PLAYBOOK.md's
+; "tune base lighting for the scene's primary hour" rule). F11
+; cycles other hours from there. Practicals (sodium streetlight
+; heads, canopy underlights, interior bulbs) sit at night-rated
+; values so the F11 → midnight transition pumps them up cleanly.
+; ════════════════════════════════════════════════════════════════
+
+[ext_resource type="PackedScene" path="res://assets/3d/locales/harmony_commercial.glb" id="1_glb"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
+[ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
+[ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
+[ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="6_ascii"]
+[ext_resource type="Shader" path="res://assets/shaders/neon_edge.gdshader" id="7_neon"]
+[ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="8_setup"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_directional.gdshader" id="9_dir"]
+[ext_resource type="Shader" path="res://assets/shaders/starscape.gdshader" id="10_star"]
+[ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="11_motion"]
+[ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="12_blur"]
+[ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="15_oldfilm"]
+[ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
+
+[sub_resource type="CapsuleShape3D" id="Caps_Player"]
+radius = 0.30
+height = 1.70
+
+[sub_resource type="BoxShape3D" id="Box_Ground"]
+size = Vector3(400, 0.5, 240)
+
+[sub_resource type="ShaderMaterial" id="Mat_Post"]
+shader = ExtResource("4_post")
+shader_parameter/palette_size = 28.0
+shader_parameter/dither_strength = 0.04
+shader_parameter/scanline_strength = 0.05
+shader_parameter/chromatic_aberration = 0.0008
+shader_parameter/ascii_strength = 0.0
+shader_parameter/ascii_color = Color(0.95, 0.86, 0.62, 1)
+shader_parameter/ascii_bg = Color(0.95, 0.86, 0.62, 1)
+
+[sub_resource type="ShaderMaterial" id="Mat_Ascii"]
+shader = ExtResource("6_ascii")
+shader_parameter/cell_size = 10.0
+shader_parameter/strength = 0.0
+shader_parameter/fg_color = Color(0.95, 0.86, 0.62, 1)
+shader_parameter/bg_color = Color(0.10, 0.08, 0.06, 1)
+shader_parameter/tint_from_scene = true
+shader_parameter/gamma = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Neon"]
+shader = ExtResource("7_neon")
+shader_parameter/strength = 0.0
+shader_parameter/edge_threshold = 0.20
+shader_parameter/edge_thickness = 1.8
+shader_parameter/edge_color = Color(0.98, 0.88, 0.72, 1)
+shader_parameter/fill_low = Color(0.96, 0.88, 0.74, 1)
+shader_parameter/fill_high = Color(1.0, 0.94, 0.80, 1)
+shader_parameter/fill_gradient = 0.4
+shader_parameter/edge_glow = 0.10
+shader_parameter/scene_blend = 0.85
+shader_parameter/bleed_lo = 0.20
+shader_parameter/bleed_hi = 0.55
+shader_parameter/sat_bleed = false
+shader_parameter/sat_lo = 0.40
+shader_parameter/sat_hi = 0.60
+shader_parameter/red_only = false
+shader_parameter/accent_r = 1.0
+shader_parameter/accent_g = 0.0
+shader_parameter/accent_b = 0.0
+shader_parameter/blend_mode = 0
+
+[sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
+shader = ExtResource("9_dir")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/line_color = Color(0.95, 0.86, 0.62, 1)
+shader_parameter/fill_color = Color(0.10, 0.08, 0.06, 1)
+shader_parameter/tint_from_scene = false
+shader_parameter/input_scale = 1.0
+shader_parameter/mono_with_red = false
+shader_parameter/mono_white = Color(0.95, 0.92, 0.86, 1)
+shader_parameter/mono_red = Color(0.98, 0.16, 0.18, 1)
+shader_parameter/red_threshold = 0.20
+
+[sub_resource type="ShaderMaterial" id="Mat_Starscape"]
+shader = ExtResource("10_star")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 9.0
+shader_parameter/time_scale = 0.55
+shader_parameter/sky_thresh = 0.18
+shader_parameter/galaxy_strength = 1.0
+shader_parameter/star_strength = 1.0
+shader_parameter/chip_strength = 0.85
+shader_parameter/cloud_strength = 1.0
+shader_parameter/cloud_scale = 0.011
+shader_parameter/cloud_floor = 0.50
+shader_parameter/force_full = false
+
+[sub_resource type="ShaderMaterial" id="Mat_Motion"]
+shader = ExtResource("11_motion")
+shader_parameter/strength = 0.0
+shader_parameter/motion_speed = 0.0
+shader_parameter/motion_dir = Vector2(1, 0)
+shader_parameter/cell_size = 9.0
+shader_parameter/line_color = Color(1.0, 0.98, 0.92, 1)
+shader_parameter/trail_strength = 0.6
+shader_parameter/line_density = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Blur"]
+shader = ExtResource("12_blur")
+shader_parameter/strength = 0.0
+shader_parameter/blur_mode = 0
+shader_parameter/radius = 4.0
+shader_parameter/motion_dir = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="Mat_OldFilm"]
+shader = ExtResource("15_oldfilm")
+shader_parameter/strength = 0.0
+shader_parameter/sim_fps = 24.0
+shader_parameter/tint_color = Color(0.94, 0.88, 0.72, 1)
+shader_parameter/tint_amount = 0.50
+shader_parameter/grain_strength = 0.22
+shader_parameter/flicker_strength = 0.16
+shader_parameter/vignette_strength = 0.55
+shader_parameter/scratch_strength = 0.14
+shader_parameter/judder_strength = 0.0035
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_HCE"]
+sky_top_color = Color(0.42, 0.62, 0.88, 1)
+sky_horizon_color = Color(0.95, 0.92, 0.82, 1)
+sky_curve = 0.10
+sky_energy_multiplier = 1.9
+ground_bottom_color = Color(0.62, 0.55, 0.42, 1)
+ground_horizon_color = Color(0.85, 0.80, 0.68, 1)
+ground_curve = 0.04
+ground_energy_multiplier = 0.6
+sun_angle_max = 90.0
+sun_curve = 0.20
+
+[sub_resource type="Sky" id="Sky_HCE"]
+sky_material = SubResource("SkyMat_HCE")
+radiance_size = 3
+
+[sub_resource type="Environment" id="Env_HCE"]
+background_mode = 2
+sky = SubResource("Sky_HCE")
+ambient_light_source = 2
+ambient_light_color = Color(1.0, 0.88, 0.70, 1)
+ambient_light_energy = 2.4
+fog_enabled = true
+fog_light_color = Color(0.92, 0.88, 0.78, 1)
+fog_density = 0.004
+glow_enabled = true
+glow_intensity = 0.85
+glow_bloom = 0.15
+glow_blend_mode = 1
+glow_hdr_threshold = 1.1
+glow_hdr_scale = 2.0
+
+[node name="HCE_Commercial" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_HCE")
+
+; ── KEY LIGHTS — three-light foundation, Texas noon base ─────────
+; Sun_Key matched to MoodCycler's "_Key" suffix → F11 sun rotation.
+; Energies sit at HCE-noon levels (4.5 / 0.9 / 1.6) so the F11
+; cycle has room to dim them for golden/blue/night without
+; bottoming out.
+[node name="Sun_Key" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.121869, 0.992548, 0, -0.992548, 0.121869, 0, 30, 0)
+light_color = Color(1.0, 0.97, 0.92, 1)
+light_energy = 4.5
+shadow_enabled = true
+
+[node name="Fill_Bounce" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, 0, 10, 0)
+light_color = Color(0.95, 0.86, 0.72, 1)
+light_energy = 0.9
+
+[node name="Back_Rim" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 0, 12, 0)
+light_color = Color(0.78, 0.84, 0.95, 1)
+light_energy = 1.6
+
+; ── PRACTICALS — sodium streetlights, canopy underlights ─────────
+; Base values are NIGHT-rated so the F11 → midnight transition
+; pumps them up cleanly. At midday F11 multiplies by 0 so they
+; effectively turn off (per _LIGHTING_PLAYBOOK.md split-light rule).
+
+[node name="Sodium_NE" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 7.2, -11.5)
+light_color = Color(1.0, 0.68, 0.34, 1)
+light_energy = 1.6
+omni_range = 18
+
+[node name="Sodium_NW" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 7.2, -11.5)
+light_color = Color(1.0, 0.68, 0.34, 1)
+light_energy = 1.6
+omni_range = 18
+
+[node name="Sodium_SE" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 7.2, 11.5)
+light_color = Color(1.0, 0.68, 0.34, 1)
+light_energy = 1.6
+omni_range = 18
+
+[node name="Sodium_SW" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 7.2, 11.5)
+light_color = Color(1.0, 0.68, 0.34, 1)
+light_energy = 1.6
+omni_range = 18
+
+; Gas & Go canopy underlights — cool white fluorescent
+[node name="GasCanopy_Light_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 4.3, -12)
+light_color = Color(0.92, 0.95, 1.0, 1)
+light_energy = 2.2
+omni_range = 10
+
+[node name="GasCanopy_Light_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 4.3, -12)
+light_color = Color(0.92, 0.95, 1.0, 1)
+light_energy = 2.2
+omni_range = 10
+
+; Kwik Stop interior glow (visible through storefront glass at night)
+[node name="KwikStop_Interior" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 2.0, -9)
+light_color = Color(1.0, 0.92, 0.78, 1)
+light_energy = 1.4
+omni_range = 14
+
+; Cosmic Comics interior (warm yellow — the photocopier light)
+[node name="CosmicComics_Interior" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1.6, 42)
+light_color = Color(1.0, 0.86, 0.62, 1)
+light_energy = 1.1
+omni_range = 11
+
+; D'Ambrosio's interior (warm wood interior)
+[node name="DAmbrosios_Interior" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1.8, 52)
+light_color = Color(1.0, 0.82, 0.58, 1)
+light_energy = 1.3
+omni_range = 15
+
+[node name="Geometry" parent="." instance=ExtResource("1_glb")]
+script = ExtResource("8_setup")
+use_palette_shader = false
+add_colliders = false
+albedo_brightness = 1.10
+
+[node name="GroundBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.30, 0)
+
+[node name="GroundShape" type="CollisionShape3D" parent="GroundBody"]
+shape = SubResource("Box_Ground")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 30)
+script = ExtResource("2_fpc")
+groups = ["player"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("Caps_Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 70.0
+near = 0.05
+far = 400.0
+
+; ── POST-PROCESS STACK ──────────────────────────────────────────
+; Same chain as riverfront. mood_strata curated for HCE — opens
+; on hce_texas_day (the chapter-one baseline look).
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 50
+script = ExtResource("5_mood")
+mood_strata = Array[String](["raw", "texas_bleach_day", "day_bright", "studio", "linework_overlay", "linework_multiply", "linework", "blueprint_red", "lithograph", "noir", "high_contrast_bw", "macro_haze", "dream_blur", "liminal_interior", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12"])
+
+[node name="NeonQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Neon")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_DirAsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="DirAsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_DirAscii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_AsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Ascii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_StarscapeQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="StarscapeQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Starscape")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_MotionQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="MotionQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Motion")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_BlurQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="BlurQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_Quad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_OldFilmQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="OldFilmQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_OldFilm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+; ── HUD ─────────────────────────────────────────────────────────
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 100
+groups = ["ui"]
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 200.0
+script = ExtResource("3_hud")
+target = NodePath("../../Player")
+
+[node name="ControlsLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 240.0
+offset_right = 1260.0
+offset_bottom = 360.0
+text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
+F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track"
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.78, 0.62, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+
+[node name="MoodLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 380.0
+offset_right = 900.0
+offset_bottom = 460.0
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.92, 0.84, 0.62, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+
+[node name="DebugMenu" type="VBoxContainer" parent="HUD"]
+offset_left = 720.0
+offset_top = 16.0
+offset_right = 940.0
+offset_bottom = 360.0
+script = ExtResource("14_dbgm")
