@@ -169,6 +169,10 @@ SETTLEMENTS = [
     # Dedicated platform around the Oliver Tree statue so the
     # walkways + benches + reflecting pool all sit flat
     ("OliverTreeMemPark", -300, -220, 60, 180, +2.0, 0.80),
+    # Secluded skatepark — sunken 2.5 m below the memorial park
+    # platform so it reads as tucked away. Higher flatness so it
+    # wins the overlap blend with the parent OT Park zone.
+    ("OTSkatePark",       -300, -260, 65, 100, -0.5, 0.90),
 ]
 SETTLEMENT_FALLOFF = 35.0   # m of smooth transition outside each rect
 
@@ -1692,6 +1696,479 @@ def _build_duck(name, x, y, z_water, facing='+X'):
                     (0.92, 0.55, 0.20, 1.0))
 
 
+def build_oliver_tree_skatepark():
+    """The secluded skatepark inside the Oliver Tree Memorial Park.
+    Per user direction (2026-06-14): "a secluded skatepark, more
+    elaborate than you might think, a place to find oneself.
+    Designed for gentle cruising, high speed navigation and cool
+    tricks to attempt."
+
+    Three modes baked in:
+      CRUISING   · big flat plaza + gentle banked turn
+      SPEED      · pump-track waves + snake-run channel
+      TRICKS     · quarter-pipe + mini half-pipe + bowl + grind
+                   rail + manual pad + hubba ledge + 3-stair set
+    Plus: graffiti art walls, three spectator benches, a small
+    concrete pyramid for sitting + memorial reflection, and a
+    ring of older-growth trees on the perimeter for seclusion.
+
+    Sits in the SW corner of the OT Park inside the OTSkatePark
+    settlement zone which sinks the platform to z = -0.5 (vs the
+    park's +2.0). Total drop of 2.5 m + the bowl carves another
+    2.5 m below that, so the deepest point sits ~5 m below the
+    statue's plinth-top reference."""
+    cx, cy = -280.0, 82.0
+    pz = hce_elevation(cx, cy)          # = ~-0.5 from settlement flat
+
+    # Materials
+    COL_SK_CONCRETE = (0.72, 0.70, 0.66, 1.0)
+    COL_SK_PAINT    = (0.62, 0.58, 0.54, 1.0)     # painted lines
+    COL_SK_DARK     = (0.40, 0.38, 0.36, 1.0)     # contrast concrete
+    COL_SK_RAIL     = (0.62, 0.62, 0.65, 1.0)     # steel
+    COL_GRAF_PINK   = (0.95, 0.42, 0.62, 1.0)     # OT pink callback
+    COL_GRAF_BLUE   = (0.32, 0.55, 0.78, 1.0)
+    COL_GRAF_YELLOW = (0.95, 0.85, 0.30, 1.0)
+    COL_GRAF_PURPLE = (0.62, 0.42, 0.78, 1.0)
+    COL_GRAF_GREEN  = (0.30, 0.55, 0.25, 1.0)
+
+    # ── MAIN PLAZA · CRUISING MODE ─────────────────────────────
+    # Big flat slab of skating concrete. The base of every line
+    # connects here.
+    plaza_w, plaza_d = 28.0, 24.0
+    _make_box_local("Skp_Plaza",
+                    (cx, cy, pz - 0.05),
+                    (plaza_w, plaza_d, 0.10),
+                    COL_SK_CONCRETE)
+    # Painted lines on the plaza — suggests "bowl entry" + "drop in"
+    for line_x in (-8.0, 0.0, 8.0):
+        _make_box_local(f"Skp_PlazaLine_{int(line_x)}",
+                        (cx + line_x, cy, pz + 0.005),
+                        (0.10, plaza_d - 1, 0.01), COL_SK_PAINT)
+
+    # ────────────────────────────────────────────────────────────
+    # SOLID CONCRETE CONSTRUCTION · pool ↔ half-pipe ↔ half-sphere
+    # All three features connected as a continuous flow line per
+    # user spec. Concrete colour stays uniform across all of them.
+    # Sunk into the terrain (settlement zone pulls platform to -0.5
+    # already; pool deepens another 3 m, half-sphere another 2.5 m).
+    # ────────────────────────────────────────────────────────────
+
+    # ── FULL POOL · 10 × 7 m kidney with 3 m depth ─────────────
+    # Carved as 3 stacked elliptical rings: top rim at pz, mid wall
+    # at -1.6 m, bottom floor at -3.0 m. Wall taper gives a real
+    # bowl/pool slope on the inside.
+    pool_cx, pool_cy = cx - 8, cy - 4
+    pool_a_top, pool_b_top = 6.0, 4.5         # outer rim ellipse
+    pool_a_mid, pool_b_mid = 4.8, 3.4         # mid-wall ellipse
+    pool_a_bot, pool_b_bot = 3.6, 2.4         # floor ellipse
+    pool_top_z = pz - 0.05
+    pool_mid_z = pz - 1.6
+    pool_bot_z = pz - 3.0
+    segs = 16
+    # Outer rim ring (the deck around the pool — keeps level at pz)
+    # is just the surrounding plaza, no separate mesh needed.
+    # Slope band 1: top rim → mid wall
+    v1 = []
+    for ring_idx, (ra, rb, rz) in enumerate([
+        (pool_a_top, pool_b_top, pool_top_z),
+        (pool_a_mid, pool_b_mid, pool_mid_z),
+    ]):
+        for i in range(segs):
+            ang = 2.0 * math.pi * i / segs
+            v1.append((pool_cx + math.cos(ang) * ra,
+                       pool_cy + math.sin(ang) * rb, rz))
+    f1 = []
+    for i in range(segs):
+        ni = (i + 1) % segs
+        f1.append([i, ni, ni + segs, i + segs])
+    _finalize_mesh("Skp_Pool_Wall_Upper", v1, f1, COL_SK_CONCRETE)
+    # Slope band 2: mid → floor
+    v2 = []
+    for ra, rb, rz in [(pool_a_mid, pool_b_mid, pool_mid_z),
+                        (pool_a_bot, pool_b_bot, pool_bot_z)]:
+        for i in range(segs):
+            ang = 2.0 * math.pi * i / segs
+            v2.append((pool_cx + math.cos(ang) * ra,
+                       pool_cy + math.sin(ang) * rb, rz))
+    f2 = []
+    for i in range(segs):
+        ni = (i + 1) % segs
+        f2.append([i, ni, ni + segs, i + segs])
+    _finalize_mesh("Skp_Pool_Wall_Lower", v2, f2, COL_SK_CONCRETE)
+    # Pool floor disc (ellipse fan)
+    vfp = [(pool_cx, pool_cy, pool_bot_z)]
+    for i in range(segs):
+        ang = 2.0 * math.pi * i / segs
+        vfp.append((pool_cx + math.cos(ang) * pool_a_bot,
+                    pool_cy + math.sin(ang) * pool_b_bot,
+                    pool_bot_z))
+    ffp = []
+    for i in range(segs):
+        ni = (i + 1) % segs
+        ffp.append([0, 1 + i, 1 + ni])
+    _finalize_mesh("Skp_Pool_Floor", vfp, ffp, COL_SK_CONCRETE)
+    # Coping rail around the pool rim — steel
+    vcope = []
+    for ra, rb, rz in [(pool_a_top + 0.05, pool_b_top + 0.05, pool_top_z + 0.02),
+                        (pool_a_top - 0.05, pool_b_top - 0.05, pool_top_z + 0.02),
+                        (pool_a_top + 0.05, pool_b_top + 0.05, pool_top_z + 0.10),
+                        (pool_a_top - 0.05, pool_b_top - 0.05, pool_top_z + 0.10)]:
+        for i in range(segs):
+            ang = 2.0 * math.pi * i / segs
+            vcope.append((pool_cx + math.cos(ang) * ra,
+                          pool_cy + math.sin(ang) * rb, rz))
+    # (skipping full coping mesh — just place a few suggestion segments)
+    for k in range(0, segs, 2):
+        ang = 2.0 * math.pi * k / segs
+        cope_x = pool_cx + math.cos(ang) * pool_a_top
+        cope_y = pool_cy + math.sin(ang) * pool_b_top
+        _make_box_local(f"Skp_Pool_Coping_{k}",
+                        (cope_x, cope_y, pool_top_z + 0.05),
+                        (0.30, 0.30, 0.06), COL_SK_RAIL)
+
+    # ── CONNECTING HALF-PIPE · runs from pool → loop ───────────
+    # Channel from the east edge of the pool to the west edge of
+    # the half-sphere loop. The flat trough sits at the same depth
+    # as the pool floor so a skater can flow continuously through.
+    hp_floor_z = pool_bot_z + 0.20    # slight rise from pool to ramp
+    hp_west_x = pool_cx + pool_a_top
+    hp_east_x = hp_west_x + 7.5
+    hp_cy_local = pool_cy
+    hp_d = 4.0
+    hp_h = 2.4
+    # Trough floor (concrete)
+    _make_box_local("Skp_HP_Trough",
+                    ((hp_west_x + hp_east_x) / 2, hp_cy_local, hp_floor_z),
+                    (hp_east_x - hp_west_x, hp_d, 0.20),
+                    COL_SK_CONCRETE)
+    # Two side ramps — left + right walls curve up to lip height
+    # Approximate as wedge-prism boxes with a sloped face.
+    for side, sign in (('S', -1), ('N', 1)):
+        wall_inner_y = hp_cy_local + sign * (hp_d / 2)
+        wall_outer_y = hp_cy_local + sign * (hp_d / 2 + 2.0)
+        wall_verts = [
+            (hp_west_x, wall_inner_y, hp_floor_z),
+            (hp_east_x, wall_inner_y, hp_floor_z),
+            (hp_east_x, wall_outer_y, hp_floor_z),
+            (hp_west_x, wall_outer_y, hp_floor_z),
+            (hp_east_x, wall_outer_y, hp_floor_z + hp_h),
+            (hp_west_x, wall_outer_y, hp_floor_z + hp_h),
+        ]
+        wall_faces = [
+            [0, 1, 2, 3],          # bottom
+            [4, 1, 0, 5],          # outer back (vertical wall)
+            [5, 0, 3],             # west cap (vertical triangle)
+            [4, 2, 1],             # east cap (vertical triangle)
+            [3, 2, 4, 5],          # inner — the sloped skating face
+        ]
+        _finalize_mesh(f"Skp_HP_Wall_{side}", wall_verts, wall_faces,
+                       COL_SK_CONCRETE)
+        # Coping along the top of each wall
+        _make_box_local(f"Skp_HP_Coping_{side}",
+                        ((hp_west_x + hp_east_x) / 2, wall_outer_y,
+                         hp_floor_z + hp_h + 0.02),
+                        (hp_east_x - hp_west_x, 0.10, 0.07),
+                        COL_SK_RAIL)
+
+    # ── HALF-SPHERE DEEP LOOP · the trick centrepiece ──────────
+    # Hemispherical bowl carved into the platform, ~5 m diameter,
+    # ~2.5 m deep. Skater drops in from the half-pipe, carves the
+    # vertical wall, loops back out. Built from stacked rings of
+    # decreasing radius forming the dome shape.
+    loop_cx, loop_cy = hp_east_x + 2.5, hp_cy_local
+    loop_top_r = 2.8
+    loop_top_z = pz - 0.05
+    loop_bot_z = loop_top_z - 2.6
+    loop_rings = 5
+    loop_segs = 16
+    # Build dome verts: each ring at a different (r, z) following
+    # a quarter-sphere profile (sin / cos parameterised)
+    dome_verts = []
+    for r_idx in range(loop_rings + 1):
+        t = r_idx / loop_rings        # 0 → 1
+        # Quarter-sphere: radius = top_r * cos(π/2 * t),
+        # z descends from top_z to bot_z following sin(π/2 * t)
+        ring_r = loop_top_r * math.cos(math.pi / 2 * t)
+        ring_z = loop_top_z + (loop_bot_z - loop_top_z) * math.sin(math.pi / 2 * t)
+        for s in range(loop_segs):
+            ang = 2.0 * math.pi * s / loop_segs
+            dome_verts.append((loop_cx + math.cos(ang) * ring_r,
+                                loop_cy + math.sin(ang) * ring_r,
+                                ring_z))
+    dome_faces = []
+    for r_idx in range(loop_rings):
+        for s in range(loop_segs):
+            ns = (s + 1) % loop_segs
+            a = r_idx * loop_segs + s
+            b = r_idx * loop_segs + ns
+            c = (r_idx + 1) * loop_segs + ns
+            d = (r_idx + 1) * loop_segs + s
+            dome_faces.append([a, b, c, d])
+    _finalize_mesh("Skp_HalfSphere_Loop", dome_verts, dome_faces,
+                   COL_SK_CONCRETE)
+    # Bottom cap (small disc at the deepest point)
+    cap_verts = [(loop_cx, loop_cy, loop_bot_z)]
+    cap_top_r = loop_top_r * math.cos(math.pi / 2 * 1.0)
+    # cap_top_r is essentially 0; emit a tiny floor anyway
+    for s in range(loop_segs):
+        ang = 2.0 * math.pi * s / loop_segs
+        cap_verts.append((loop_cx + math.cos(ang) * 0.1,
+                          loop_cy + math.sin(ang) * 0.1,
+                          loop_bot_z))
+    cap_faces = []
+    for s in range(loop_segs):
+        ns = (s + 1) % loop_segs
+        cap_faces.append([0, 1 + s, 1 + ns])
+    _finalize_mesh("Skp_HalfSphere_Floor", cap_verts, cap_faces,
+                   COL_SK_CONCRETE)
+    # Coping ring around the loop top
+    for k in range(0, loop_segs, 2):
+        ang = 2.0 * math.pi * k / loop_segs
+        cope_x = loop_cx + math.cos(ang) * loop_top_r
+        cope_y = loop_cy + math.sin(ang) * loop_top_r
+        _make_box_local(f"Skp_Loop_Coping_{k}",
+                        (cope_x, cope_y, loop_top_z + 0.04),
+                        (0.20, 0.20, 0.05), COL_SK_RAIL)
+
+    # ── PUMP TRACK · SPEED MODE ────────────────────────────────
+    # A winding undulating asphalt path along the south + east
+    # edges. Built from a sequence of low domes (each a squashed
+    # sphere) with flats between, so the rider can pump speed.
+    pump_path = [
+        (cx - 12, cy + 9), (cx - 7, cy + 11), (cx - 2, cy + 9),
+        (cx + 3, cy + 11), (cx + 8, cy + 9), (cx + 12, cy + 7),
+        (cx + 13, cy + 2), (cx + 11, cy - 3),
+    ]
+    for k, (px, py) in enumerate(pump_path):
+        if k % 2 == 0:
+            _make_sphere_low_local(f"Skp_Pump_Wave_{k}",
+                                    (px, py, pz - 0.20),
+                                    1.4, COL_SK_CONCRETE,
+                                    rings=3, segments=8)
+        else:
+            _make_box_local(f"Skp_Pump_Flat_{k}",
+                            (px, py, pz),
+                            (2.4, 1.4, 0.10), COL_SK_CONCRETE)
+
+    # ── GRIND RAIL · TRICKS MODE ───────────────────────────────
+    rail_cx, rail_cy = cx, cy + 6
+    rail_len = 5.0
+    rail_h = 0.5
+    # Two end posts
+    for sign in (-1, 1):
+        _make_box_local(f"Skp_RailPost_{sign:+d}",
+                        (rail_cx + sign * rail_len / 2, rail_cy,
+                         pz + rail_h / 2),
+                        (0.10, 0.10, rail_h), COL_SK_RAIL)
+    # Rail beam — a horizontal box (cylinder would be more accurate
+    # but box keeps polycount low)
+    _make_box_local("Skp_RailBeam",
+                    (rail_cx, rail_cy, pz + rail_h),
+                    (rail_len, 0.07, 0.07), COL_SK_RAIL)
+
+    # ── MANUAL PAD · TRICKS MODE ───────────────────────────────
+    _make_box_local("Skp_ManualPad",
+                    (cx, cy - 5, pz + 0.20),
+                    (4.0, 1.2, 0.40), COL_SK_CONCRETE)
+
+    # ── HUBBA LEDGE · TRICKS MODE ──────────────────────────────
+    # Stepped concrete ledge along a 3-stair set
+    hubba_cx, hubba_cy = cx - 14, cy + 4
+    for i, step_h in enumerate((0.20, 0.40, 0.60)):
+        _make_box_local(f"Skp_Hubba_Step_{i}",
+                        (hubba_cx + i * 0.8, hubba_cy, pz + step_h / 2),
+                        (0.80, 2.0, step_h), COL_SK_CONCRETE)
+    # The ledge itself — a long box on the side of the stairs
+    _make_box_local("Skp_HubbaLedge",
+                    (hubba_cx + 1.0, hubba_cy - 1.5, pz + 0.55),
+                    (2.6, 0.30, 0.40), COL_SK_DARK)
+
+    # ── BANKED TURN · SPEED + CRUISING ─────────────────────────
+    # A curved low ramp at the NE edge connecting plaza to pump
+    # track. Approximated by three stepped sloped boxes.
+    for k in range(4):
+        bank_x = cx + 12 + k * 0.8
+        bank_h = 0.10 + k * 0.18
+        _make_box_local(f"Skp_Bank_{k}",
+                        (bank_x, cy + 4, pz + bank_h / 2),
+                        (0.80, 6.0, bank_h), COL_SK_CONCRETE)
+
+    # ── SMALL CONCRETE PYRAMID · sitting + "find oneself" beat ─
+    # In the centre of the plaza. Skaters use the apex for tricks
+    # but the user spec called for a place to FIND ONESELF, so
+    # it's also the obvious meditation perch.
+    pyr_cx, pyr_cy = cx + 0, cy + 0
+    pyr_verts = [
+        (pyr_cx - 1.6, pyr_cy - 1.6, pz),
+        (pyr_cx + 1.6, pyr_cy - 1.6, pz),
+        (pyr_cx + 1.6, pyr_cy + 1.6, pz),
+        (pyr_cx - 1.6, pyr_cy + 1.6, pz),
+        (pyr_cx, pyr_cy, pz + 1.1),
+    ]
+    pyr_faces = [
+        [0, 1, 2, 3],
+        [0, 4, 1],
+        [1, 4, 2],
+        [2, 4, 3],
+        [3, 4, 0],
+    ]
+    _finalize_mesh("Skp_Pyramid", pyr_verts, pyr_faces, COL_SK_DARK)
+
+    # ── GRAFFITI ART WALLS · 3 panels on the south edge ────────
+    # Each wall: cream concrete back with coloured spray-paint
+    # accent blocks suggesting tag art. Pink (OT colour), blue,
+    # yellow, purple. Reads as a memorial / fan-art zone.
+    wall_y = cy - 12
+    wall_h = 2.4
+    graf_palettes = [
+        (cx - 8, [COL_GRAF_PINK, COL_GRAF_YELLOW, COL_GRAF_BLUE]),
+        (cx,     [COL_GRAF_BLUE, COL_GRAF_PINK, COL_GRAF_PURPLE]),
+        (cx + 8, [COL_GRAF_GREEN, COL_GRAF_YELLOW, COL_GRAF_PINK]),
+    ]
+    for wcx, colours in graf_palettes:
+        _make_box_local(f"Skp_Wall_{int(wcx)}",
+                        (wcx, wall_y, pz + wall_h / 2),
+                        (4.5, 0.30, wall_h), COL_SK_CONCRETE)
+        # Three coloured accent boxes per wall
+        for j, gc in enumerate(colours):
+            ox = -1.5 + j * 1.5
+            oz = 0.4 + (j * 0.3) % 1.5
+            _make_box_local(f"Skp_Wall_{int(wcx)}_Accent_{j}",
+                            (wcx + ox, wall_y - 0.16,
+                             pz + oz + 0.3),
+                            (1.0, 0.04, 0.6), gc)
+
+    # ── 3 SPECTATOR BENCHES around the edges ───────────────────
+    bench_specs = [
+        (cx - 13, cy + 7, '+X'),   # west side facing east into plaza
+        (cx + 13, cy - 5, '-X'),   # east side facing west
+        (cx + 2,  cy - 11, '+Y'),  # south side facing north
+    ]
+    for i, (bx, by, facing) in enumerate(bench_specs):
+        # Seat
+        if facing in ('+X', '-X'):
+            seat_sz = (0.42, 1.6, 0.06)
+            back_sz = (0.06, 1.6, 0.45)
+            bx_back = 0.18 * (1 if facing == '-X' else -1)
+            by_back = 0
+        else:
+            seat_sz = (1.6, 0.42, 0.06)
+            back_sz = (1.6, 0.06, 0.45)
+            bx_back = 0
+            by_back = 0.18 * (1 if facing == '-Y' else -1)
+        _make_box_local(f"Skp_Bench_{i}_Seat",
+                        (bx, by, pz + 0.43), seat_sz,
+                        (0.42, 0.30, 0.20, 1.0))
+        _make_box_local(f"Skp_Bench_{i}_Back",
+                        (bx + bx_back, by + by_back, pz + 0.85),
+                        back_sz, (0.42, 0.30, 0.20, 1.0))
+
+    # ── PERIMETER TREES · 10 old-growth oaks ringing the park ──
+    perimeter = [
+        (cx - 16, cy + 12), (cx - 8, cy + 13),
+        (cx + 8, cy + 14), (cx + 16, cy + 8),
+        (cx + 18, cy - 2), (cx + 14, cy - 13),
+        (cx + 2, cy - 16), (cx - 10, cy - 14),
+        (cx - 18, cy - 6), (cx - 19, cy + 6),
+    ]
+    for i, (tx, ty) in enumerate(perimeter):
+        # Slight variation
+        seed = (i * 31 + int(tx) * 11) % 100
+        trunk_h = 4.5 + (seed % 5) * 0.5
+        canopy_r = 3.5 + ((seed // 7) % 3) * 0.6
+        _make_cyl_local(f"Skp_Tree_{i}_Trunk",
+                        (tx, ty, pz + trunk_h / 2),
+                        0.35, trunk_h,
+                        (0.30, 0.22, 0.16, 1.0), segments=6)
+        col = (0.22, 0.42, 0.20, 1.0) if i % 2 == 0 else (0.30, 0.48, 0.22, 1.0)
+        _make_sphere_low_local(f"Skp_Tree_{i}_Canopy",
+                                (tx, ty,
+                                 pz + trunk_h + canopy_r * 0.5),
+                                canopy_r, col, rings=3, segments=8)
+
+    # ── MAIN ENTRY STAIRS + RAMP · drop-in from OT Park grade ─
+    # The skatepark sits ~2.5 m below the OT Park platform. The
+    # entry combo: a 4-step concrete staircase for walkers + a
+    # parallel sloped concrete ramp (DROP-IN for skaters) +
+    # GRIND RAIL handrail along the stairs.
+    entry_y = cy + 16   # north edge of skatepark
+    # 4 stair steps descending from pz+2.5 (OT Park level) to pz
+    n_stairs = 4
+    step_h = 2.5 / n_stairs
+    step_d = 0.6
+    step_w = 2.6
+    for k in range(n_stairs):
+        # Step k goes down — top at pz + (n_stairs - k - 0.5) * step_h
+        sz = pz + (n_stairs - k - 0.5) * step_h
+        sy_step = entry_y - k * step_d
+        _make_box_local(f"Skp_EntryStair_{k}",
+                        (cx - 2.0, sy_step, sz),
+                        (step_w, step_d, step_h),
+                        COL_SK_CONCRETE)
+    # Concrete drop-in ramp parallel to the stairs (skater's line)
+    ramp_w = 3.0
+    ramp_l = n_stairs * step_d
+    ramp_top_z = pz + 2.5
+    ramp_bot_z = pz
+    ramp_verts = [
+        (cx + 2.0, entry_y - ramp_l, ramp_bot_z),
+        (cx + 2.0 + ramp_w, entry_y - ramp_l, ramp_bot_z),
+        (cx + 2.0 + ramp_w, entry_y, ramp_top_z),
+        (cx + 2.0, entry_y, ramp_top_z),
+        (cx + 2.0, entry_y - ramp_l, ramp_bot_z - 0.30),
+        (cx + 2.0 + ramp_w, entry_y - ramp_l, ramp_bot_z - 0.30),
+    ]
+    ramp_faces = [
+        [0, 1, 2, 3],          # top sloped surface
+        [4, 5, 1, 0],          # bottom face
+        [0, 3, 4],             # west cap
+        [5, 2, 1],             # east cap
+    ]
+    _finalize_mesh("Skp_EntryRamp", ramp_verts, ramp_faces,
+                   COL_SK_CONCRETE)
+    # Handrail grind rail along the stairs — slopes down with steps
+    # Each rail segment connects adjacent step tops.
+    rail_h_above = 0.95
+    for k in range(n_stairs):
+        sz0 = pz + (n_stairs - k - 0.5) * step_h + rail_h_above
+        sy0 = entry_y - k * step_d - step_d / 2
+        sz1 = pz + (n_stairs - k - 1.5) * step_h + rail_h_above
+        sy1 = entry_y - (k + 1) * step_d - step_d / 2
+        # Suggest with a horizontal box at the midpoint
+        midz = (sz0 + sz1) / 2
+        midy = (sy0 + sy1) / 2
+        _make_box_local(f"Skp_EntryHandrail_{k}",
+                        (cx - 2.0 - step_w / 2 + 0.08, midy, midz),
+                        (0.07, step_d * 1.4, 0.07), COL_SK_RAIL)
+    # Rail posts at each step edge
+    for k in range(n_stairs + 1):
+        sz = pz + (n_stairs - k) * step_h + rail_h_above / 2
+        sy_post = entry_y - k * step_d
+        _make_box_local(f"Skp_EntryRailPost_{k}",
+                        (cx - 2.0 - step_w / 2 + 0.08, sy_post, sz),
+                        (0.07, 0.07, rail_h_above), COL_SK_RAIL)
+
+    # ── 2 ADDITIONAL BENCHES near the entry stairs ────────────
+    for i, (bx, by) in enumerate([(cx - 12, cy + 13), (cx + 12, cy + 13)]):
+        _make_box_local(f"Skp_EntryBench_{i}_Seat",
+                        (bx, by, pz + 0.43),
+                        (1.6, 0.42, 0.06), (0.42, 0.30, 0.20, 1.0))
+        _make_box_local(f"Skp_EntryBench_{i}_Back",
+                        (bx, by + 0.18, pz + 0.85),
+                        (1.6, 0.06, 0.45), (0.42, 0.30, 0.20, 1.0))
+
+    # ── ENTRY MARKER · small post with cyan beacon top so the
+    # skatepark can be found from the air ──
+    BEACON_H = 25.0
+    _make_cyl_local("Skp_BeaconPole",
+                    (cx + 18, cy, pz + BEACON_H / 2),
+                    0.18, BEACON_H, (0.10, 0.10, 0.10, 1.0),
+                    segments=4)
+    _make_box_local("Skp_BeaconTop",
+                    (cx + 18, cy, pz + BEACON_H + 1.0),
+                    (2.0, 2.0, 1.4), (0.32, 0.55, 0.78, 1.0))
+
+
 def _make_sphere_low_local(name, center, radius, color,
                            rings=3, segments=8):
     cx, cy, cz = center
@@ -1772,6 +2249,7 @@ def main():
     build_feature_beacons()
     build_oliver_tree_memorial()
     build_oliver_tree_memorial_park()
+    build_oliver_tree_skatepark()
     export_glb()
 
 
