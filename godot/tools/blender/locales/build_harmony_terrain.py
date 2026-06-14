@@ -27,9 +27,16 @@ Output:
 
 import os
 import math
+import sys
 import bpy
 
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, _SCRIPT_DIR)
+
+from infra_library import (
+    brick_wall, iron_lattice_fence,
+    COL_BRICK_WALL, COL_BRICK_CAP, COL_IRON_FENCE,
+)
 
 OUTPUT_DIR = "../../../assets/3d/locales"
 OUTPUT_NAME = "harmony_terrain.glb"
@@ -570,10 +577,72 @@ def _cyl(name, center, radius, height, color, segments=8):
     return _finalize_mesh(name, verts, faces, color)
 
 
+def _fence_along(name, p0, p1, fence_type, sub_len=10.0):
+    """Subdivide (p0, p1) into ~sub_len pieces and place a fence
+    segment at each, sampling elevation at the midpoint of each
+    piece. Per the design manual's terrain-aware infrastructure
+    rule — long fences on a slope must follow the grade.
+    fence_type ∈ {'iron', 'brick'}."""
+    x0, y0 = p0; x1, y1 = p1
+    length = math.hypot(x1 - x0, y1 - y0)
+    if length < 0.001:
+        return
+    n = max(1, int(length / sub_len))
+    for i in range(n):
+        t0 = i / n; t1 = (i + 1) / n
+        sp0 = (x0 + (x1 - x0) * t0, y0 + (y1 - y0) * t0)
+        sp1 = (x0 + (x1 - x0) * t1, y0 + (y1 - y0) * t1)
+        mx = (sp0[0] + sp1[0]) / 2
+        my = (sp0[1] + sp1[1]) / 2
+        z = hce_elevation(mx, my)
+        if fence_type == 'iron':
+            iron_lattice_fence(f"{name}_{i}", sp0, sp1, z=z, height=1.4)
+        elif fence_type == 'brick':
+            brick_wall(f"{name}_{i}", sp0, sp1, z=z, height=1.8)
+
+
+def build_district_fences():
+    """Place fences along settlement boundaries per the design
+    manual wall-vs-fence rule:
+      Backyard faces arterial / commercial  → BRICK WALL (privacy)
+      Backyard faces pond / golf / park     → IRON LATTICE (view)
+
+    Demonstrates the rule visually on the terrain — once each
+    sub-sector has its full geometry, these placements move into
+    that sub-sector's build script."""
+
+    # ── IRON LATTICE — preserving the amenity view ────────────────
+    # Country club golf perimeter (south face — overlooks N. Comm.)
+    _fence_along("CC_GolfPerim_S", (-440, 345), (420, 345), 'iron')
+    # North Ranch east edge — backyards facing Founders Grove pond
+    _fence_along("NorthRanch_PondFence", (-220, 80), (-220, 200), 'iron')
+    # East CDS west edge — backyards facing Harmony Park
+    _fence_along("EastCDS_ParkFence", (190, 40), (190, 220), 'iron')
+    # West Estates north edge — backyards facing the creek + Phase II
+    _fence_along("WestEstates_CreekFence", (-440, -60), (-140, -60), 'iron')
+    # Country club north perimeter (golf-course edge, decorative)
+    _fence_along("CC_GolfPerim_N", (-440, 415), (420, 415), 'iron')
+
+    # ── BRICK WALLS — view-blocking privacy along arterials ──────
+    # North Ranch north edge — backs onto North Commercial Belt
+    _fence_along("NorthRanch_NorthWall", (-440, 250), (-220, 250), 'brick')
+    # East CDS north edge — backs onto North Commercial Belt
+    _fence_along("EastCDS_NorthWall", (200, 250), (420, 250), 'brick')
+    # East CDS east edge — backs onto East Commercial
+    _fence_along("EastCDS_EastWall", (430, 40), (430, 250), 'brick')
+    # West Estates south edge — backs onto South Commercial
+    _fence_along("WestEstates_SouthWall", (-440, -320), (-140, -320), 'brick')
+    # West Estates west edge — backs onto West Commercial Strip (Hwy 9)
+    _fence_along("WestEstates_WestWall", (-450, -320), (-450, -60), 'brick')
+    # Phase II perimeter (under-construction privacy)
+    _fence_along("Phase2_NorthWall", (50, -110), (230, -110), 'brick')
+
+
 def main():
     clear_scene()
     build_ground()
     build_creek()
+    build_district_fences()
     build_feature_beacons()
     export_glb()
 
