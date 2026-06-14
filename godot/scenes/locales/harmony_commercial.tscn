@@ -1,0 +1,297 @@
+[gd_scene load_steps=24 format=3 uid="uid://locale_harmony_commercial_v1"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/locales/harmony_commercial.glb" id="1_hc_glb"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
+[ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
+[ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
+[ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="6_ascii"]
+[ext_resource type="Shader" path="res://assets/shaders/neon_edge.gdshader" id="7_neon"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_directional.gdshader" id="9_dir"]
+[ext_resource type="Shader" path="res://assets/shaders/starscape.gdshader" id="10_star"]
+[ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="11_motion"]
+[ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="12_blur"]
+[ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="15_oldfilm"]
+[ext_resource type="Shader" path="res://assets/shaders/lens_distort.gdshader" id="16_lens"]
+[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
+[ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="8_setup"]
+
+[sub_resource type="CapsuleShape3D" id="Caps_Player"]
+radius = 0.30
+height = 1.70
+
+[sub_resource type="BoxShape3D" id="Box_Ground"]
+size = Vector3(200, 0.5, 200)
+
+[sub_resource type="ShaderMaterial" id="Mat_Post"]
+shader = ExtResource("4_post")
+shader_parameter/palette_size = 14.0
+shader_parameter/dither_strength = 0.10
+shader_parameter/scanline_strength = 0.20
+shader_parameter/chromatic_aberration = 0.0010
+
+[sub_resource type="ShaderMaterial" id="Mat_Ascii"]
+shader = ExtResource("6_ascii")
+shader_parameter/cell_size = 10.0
+shader_parameter/strength = 0.0
+shader_parameter/fg_color = Color(0.92, 0.82, 0.55, 1)
+shader_parameter/bg_color = Color(0.04, 0.03, 0.02, 1)
+shader_parameter/tint_from_scene = true
+shader_parameter/gamma = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Neon"]
+shader = ExtResource("7_neon")
+shader_parameter/strength = 0.0
+shader_parameter/edge_threshold = 0.025
+shader_parameter/edge_thickness = 1.0
+shader_parameter/edge_color = Color(1, 0.22, 0.78, 1)
+shader_parameter/fill_low = Color(0.42, 0.12, 0.50, 1)
+shader_parameter/fill_high = Color(0.10, 0.05, 0.25, 1)
+shader_parameter/fill_gradient = 1.0
+shader_parameter/edge_glow = 0.4
+shader_parameter/scene_blend = 0.0
+shader_parameter/bleed_lo = 0.78
+shader_parameter/bleed_hi = 0.96
+shader_parameter/sat_bleed = false
+shader_parameter/red_only = false
+
+[sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
+shader = ExtResource("9_dir")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/line_color = Color(0.92, 0.20, 0.20, 1)
+shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
+shader_parameter/tint_from_scene = false
+
+[sub_resource type="ShaderMaterial" id="Mat_Starscape"]
+shader = ExtResource("10_star")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+
+[sub_resource type="ShaderMaterial" id="Mat_Motion"]
+shader = ExtResource("11_motion")
+shader_parameter/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="Mat_Blur"]
+shader = ExtResource("12_blur")
+shader_parameter/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="Mat_OldFilm"]
+shader = ExtResource("15_oldfilm")
+shader_parameter/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="Mat_Lens"]
+shader = ExtResource("16_lens")
+shader_parameter/strength = 0.0
+
+[sub_resource type="Environment" id="Env_HC"]
+background_mode = 1
+background_color = Color(0.32, 0.40, 0.55, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.62, 0.66, 0.74, 1)
+ambient_light_energy = 0.85
+fog_enabled = true
+fog_light_color = Color(0.65, 0.70, 0.78, 1)
+fog_density = 0.005
+
+[node name="HarmonyCommercial" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_HC")
+
+; ── KEY/FILL/BACK three-light: WARM SUMMER MIDDAY (HCE default) ──
+[node name="Sun_Key" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 20, 0)
+light_color = Color(1.0, 0.95, 0.82, 1)
+light_energy = 1.2
+shadow_enabled = false
+
+[node name="SkyFill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, -0.612, 0.612, 0, 5, 0)
+light_color = Color(0.78, 0.84, 0.95, 1)
+light_energy = 0.45
+shadow_enabled = false
+
+[node name="Back_Rim" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0, -0.5, 0.866, 0, 0.866, 0.5, -1, 0, 0, 0, 25, 0)
+light_color = Color(0.96, 0.85, 0.62, 1)
+light_energy = 0.35
+shadow_enabled = false
+
+; ── Practicals at the gas-station canopy underside ──
+[node name="Gas_Canopy_Glow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -262, 4.6, 0)
+light_color = Color(0.98, 0.96, 0.86, 1)
+light_energy = 1.4
+omni_range = 14.0
+shadow_enabled = false
+
+; ── Practicals at the convenience store interior ──
+[node name="Store_Interior" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -237, 2.5, 0)
+light_color = Color(0.95, 0.92, 0.78, 1)
+light_energy = 0.65
+omni_range = 8.0
+shadow_enabled = false
+
+; ── Drive-thru building practical ──
+[node name="DT_Interior" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 2.5, 90)
+light_color = Color(0.92, 0.88, 0.70, 1)
+light_energy = 0.55
+omni_range = 6.5
+shadow_enabled = false
+
+; ── Strip mall bay glows ──
+[node name="Mall_Bay_0" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -239, 2.4, -55)
+light_color = Color(0.95, 0.92, 0.78, 1)
+light_energy = 0.50
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="Mall_Bay_2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -239, 2.4, -25)
+light_color = Color(0.95, 0.92, 0.78, 1)
+light_energy = 0.50
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="Geometry" parent="." instance=ExtResource("1_hc_glb")]
+script = ExtResource("8_setup")
+use_palette_shader = false
+add_colliders = false
+albedo_brightness = 1.10
+
+[node name="GroundBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.30, 0)
+
+[node name="GroundShape" type="CollisionShape3D" parent="GroundBody"]
+shape = SubResource("Box_Ground")
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -260, 1.5, 30)
+script = ExtResource("2_fpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("Caps_Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 70.0
+near = 0.05
+far = 300.0
+
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 50
+script = ExtResource("5_mood")
+mood_strata = Array[String](["day_bright", "studio", "cel_shaded", "sunset", "anime_motion", "linework", "ink_blue", "ink_green", "blueprint_red", "psychedelic_substrate", "silent_film_24", "macro_haze"])
+
+[node name="NeonQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Neon")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="DirAsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_DirAscii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Ascii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="StarscapeQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Starscape")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="MotionQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Motion")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BlurQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="OldFilmQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_OldFilm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LensQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Lens")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
+layer = 100
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 200.0
+script = ExtResource("3_hud")
+target = NodePath("../../Player")
+
+[node name="ControlsLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 240.0
+offset_right = 1264.0
+offset_bottom = 320.0
+text = "HCE-1 · WASD move · QE turn · RF pitch · F3 mood · F4 hud · F5/F6 strobes · F7/F8 track · RMB+look · 1-8 Riffmaster"
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.85, 0.78, 0.62, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+
+[node name="DebugMenu" type="PanelContainer" parent="HUD"]
+offset_left = 940.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 420.0
+script = ExtResource("14_dbgm")
+
+[node name="MoodLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 340.0
+offset_right = 600.0
+offset_bottom = 380.0
+text = "MOOD · day_bright   (F3)"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+
+[node name="PDPRiffmaster" type="Node" parent="."]
+script = ExtResource("13_riff")
