@@ -2048,24 +2048,47 @@ def build_dock():
     # Stringers under the deck (visible joists running along the long axis)
     for si, sy_str in enumerate([-DK_L/2 + 0.5, -DK_L/4, 0.0, DK_L/4, DK_L/2 - 0.5]):
         make_box(f"Dock_Stringer_{si}", (dock_cx, sy_str, dock_z - 0.18), (dock_w - 0.3, 0.10, 0.16), (0.28, 0.18, 0.10, 1.0))
-    # Ramp from dock west edge down to the parking-lot curb
-    ramp_top_x = dock_x_start
-    ramp_btm_x = dock_x_start - 1.6
-    make_ramp("Dock_RampToLot",
-              (ramp_top_x, 0, dock_z + 0.10),
-              (ramp_btm_x, 0, 0.12),
-              2.4, 0.12, COL_DECK_WOOD, width_axis='Y')
-    # ramp railings
-    for side, sy_r in (("S", -1.20), ("N", 1.20)):
-        make_box(f"Dock_RampRail_{side}_top",
-                 ((ramp_top_x + ramp_btm_x) / 2, sy_r, (dock_z + 0.10 + 0.12) / 2 + 0.75),
-                 (abs(ramp_top_x - ramp_btm_x) + 0.1, 0.04, 0.04), COL_BRASS)
-        for ii in range(3):
-            t = (ii + 0.5) / 3.0
-            rx_p = ramp_btm_x + t * (ramp_top_x - ramp_btm_x)
-            rz_p = 0.12 + t * (dock_z + 0.10 - 0.12)
-            make_box(f"Dock_RampPost_{side}_{ii}", (rx_p, sy_r, rz_p + 0.40),
-                     (0.04, 0.04, 0.80), COL_BRASS)
+    # STAIRS from the parking-lot edge DOWN to the dock — the river is
+    # now ~2.5m below land, and the dock is at -1.20, so the drop from
+    # lot to dock is ~1.30m. A ramp of 1.6m length would be 37° (too
+    # steep). Stairs are the right solution: 6 steps of ~22cm rise
+    # each, 32cm tread, with a landing on the dock side.
+    stair_top_x = parking_east_x + 0.10   # at the parking-lot east curb
+    stair_bot_x = dock_x_start            # at the dock west edge
+    stair_top_z = LAND_Z + 0.06
+    stair_bot_z = dock_z + 0.10
+    n_steps = 6
+    stair_w = 2.4
+    step_run = abs(stair_top_x - stair_bot_x) / n_steps   # X distance per step
+    step_rise = (stair_top_z - stair_bot_z) / n_steps     # Z drop per step
+    for si in range(n_steps):
+        # Each step's TOP surface — the tread the player walks on
+        step_x = stair_top_x - (si + 0.5) * step_run
+        step_z = stair_top_z - (si + 0.5) * step_rise
+        make_box(f"Dock_Stair_{si}_tread",
+                 (step_x, 0.0, step_z),
+                 (step_run + 0.02, stair_w, 0.06), COL_DECK_WOOD)
+        # Riser (vertical face on the upstream side of each step)
+        riser_x = stair_top_x - si * step_run
+        riser_z = stair_top_z - (si + 0.5) * step_rise
+        make_box(f"Dock_Stair_{si}_riser",
+                 (riser_x, 0.0, riser_z),
+                 (0.04, stair_w, step_rise + 0.02),
+                 (0.32, 0.22, 0.14, 1.0))
+    # Stair railings on both sides
+    for side, sy_r in (("S", -stair_w/2 - 0.05), ("N", stair_w/2 + 0.05)):
+        # Top rail follows the slope from top to bottom
+        rail_mid_z = (stair_top_z + stair_bot_z) / 2.0 + 0.85
+        make_ramp(f"Dock_StairRail_{side}",
+                  (stair_top_x, sy_r, stair_top_z + 0.95),
+                  (stair_bot_x, sy_r, stair_bot_z + 0.95),
+                  0.04, 0.04, COL_BRASS, width_axis='Y')
+        for ii in range(n_steps):
+            t = (ii + 0.5) / n_steps
+            rx_p = stair_top_x - t * (stair_top_x - stair_bot_x)
+            rz_p = stair_top_z - t * (stair_top_z - stair_bot_z)
+            make_box(f"Dock_StairPost_{side}_{ii}", (rx_p, sy_r, rz_p + 0.48),
+                     (0.04, 0.04, 0.95), COL_BRASS)
     # plank lines along the long axis (Y) — visible deck stripes
     for i in range(int(DK_L / 0.30)):
         py_p = -DK_L/2 + 0.20 + i * 0.30
