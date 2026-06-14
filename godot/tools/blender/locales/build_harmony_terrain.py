@@ -515,17 +515,15 @@ def build_feature_beacons():
         ("Beacon_TruckStop",      0, -370, (0.40, 0.32, 0.26, 1.0)),
     ]
 
-    # Fence corner beacons — red so the user can see where each
-    # fence run starts/ends and walk to inspect them.
+    # Red fence-corner beacons — only for the four strategic fence
+    # runs we actually emit, so each red dot maps 1:1 to a real fence.
     fence_beacons = [
         ("Beacon_Fence_CC_S_W",      -440, 345, (0.85, 0.18, 0.16, 1.0)),
         ("Beacon_Fence_CC_S_E",       420, 345, (0.85, 0.18, 0.16, 1.0)),
         ("Beacon_Fence_NRanch_NW",   -440, 250, (0.85, 0.18, 0.16, 1.0)),
         ("Beacon_Fence_NRanch_PondS",-220,  80, (0.85, 0.18, 0.16, 1.0)),
-        ("Beacon_Fence_ECDS_Park",    190, 130, (0.85, 0.18, 0.16, 1.0)),
-        ("Beacon_Fence_ECDS_E",       430, 250, (0.85, 0.18, 0.16, 1.0)),
-        ("Beacon_Fence_WEst_N",      -290, -60, (0.85, 0.18, 0.16, 1.0)),
-        ("Beacon_Fence_Phase2_N",     140,-110, (0.85, 0.18, 0.16, 1.0)),
+        ("Beacon_Fence_Phase2_N_W",   50, -110, (0.85, 0.18, 0.16, 1.0)),
+        ("Beacon_Fence_Phase2_N_E",  230, -110, (0.85, 0.18, 0.16, 1.0)),
     ]
     settlement_beacons += fence_beacons
     for (name, x, y, col) in settlement_beacons:
@@ -663,39 +661,32 @@ def _fence_along(name, p0, p1, fence_type, sub_len=40.0):
 
 
 def build_district_fences():
-    """Place fences along settlement boundaries per the design
-    manual wall-vs-fence rule:
-      Backyard faces arterial / commercial  → BRICK WALL (privacy)
-      Backyard faces pond / golf / park     → IRON LATTICE (view)
+    """Place fences STRATEGICALLY per user direction (2026-06-14):
+    "use them strategically." Fences are punctuation, not
+    paragraphs — four signature runs that read the design intent
+    without blanketing every settlement edge.
 
-    Demonstrates the rule visually on the terrain — once each
-    sub-sector has its full geometry, these placements move into
-    that sub-sector's build script."""
+    The four picks:
+      1. Country club golf south perimeter — the iconic boundary
+         between wealth and the rest of the district.
+      2. North Ranch east edge facing Founders Grove pond — the
+         canonical iron-lattice "amenity view preserved" beat.
+      3. North Ranch north edge backing onto North Commercial Belt
+         — the most prominent residential / arterial brick wall.
+      4. Phase II construction north perimeter — under-construction
+         privacy wall; signals the in-progress phase.
 
-    # ── IRON LATTICE — preserving the amenity view ────────────────
-    # Country club golf perimeter (south face — overlooks N. Comm.)
+    All other fence placements (East CDS perimeters, West Estates
+    walls, etc.) deferred to each sub-sector's own build_*.py
+    script when that sub-sector lands. Keeps polycount low and
+    preserves the manual's wall-vs-fence rule as PUNCTUATION."""
+
+    # IRON LATTICE — preserving the amenity view
     _fence_along("CC_GolfPerim_S", (-440, 345), (420, 345), 'iron')
-    # North Ranch east edge — backyards facing Founders Grove pond
     _fence_along("NorthRanch_PondFence", (-220, 80), (-220, 200), 'iron')
-    # East CDS west edge — backyards facing Harmony Park
-    _fence_along("EastCDS_ParkFence", (190, 40), (190, 220), 'iron')
-    # West Estates north edge — backyards facing the creek + Phase II
-    _fence_along("WestEstates_CreekFence", (-440, -60), (-140, -60), 'iron')
-    # Country club north perimeter (golf-course edge, decorative)
-    _fence_along("CC_GolfPerim_N", (-440, 415), (420, 415), 'iron')
 
-    # ── BRICK WALLS — view-blocking privacy along arterials ──────
-    # North Ranch north edge — backs onto North Commercial Belt
+    # BRICK WALLS — privacy along arterials
     _fence_along("NorthRanch_NorthWall", (-440, 250), (-220, 250), 'brick')
-    # East CDS north edge — backs onto North Commercial Belt
-    _fence_along("EastCDS_NorthWall", (200, 250), (420, 250), 'brick')
-    # East CDS east edge — backs onto East Commercial
-    _fence_along("EastCDS_EastWall", (430, 40), (430, 250), 'brick')
-    # West Estates south edge — backs onto South Commercial
-    _fence_along("WestEstates_SouthWall", (-440, -320), (-140, -320), 'brick')
-    # West Estates west edge — backs onto West Commercial Strip (Hwy 9)
-    _fence_along("WestEstates_WestWall", (-450, -320), (-450, -60), 'brick')
-    # Phase II perimeter (under-construction privacy)
     _fence_along("Phase2_NorthWall", (50, -110), (230, -110), 'brick')
 
 

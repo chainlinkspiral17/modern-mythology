@@ -325,6 +325,39 @@ wrought-iron pattern.
   FENCE (so the amenity view remains)
 - Front yard → no fence; berms + landscaping do the job.
 
+**Fences are punctuation, not paragraphs.** Per user direction
+2026-06-14 ("use them strategically"): a district-scale build
+should pick THREE TO FIVE signature fence runs that tell the
+design story, not blanket every settlement edge. Mechanically
+placing a fence around every residential perimeter (a) blows up
+the polycount past Godot's gltf-import threshold (we hit ~55,000
+MeshInstance3D nodes on the first pass and the editor hung) and
+(b) reads as bureaucratic rather than designed.
+
+Canonical strategic picks for the HCE terrain build:
+
+| Fence type | Where | Why it's signature |
+|---|---|---|
+| iron lattice | Country club golf south perimeter | The class boundary — wealth on one side |
+| iron lattice | North Ranch east edge facing Founders Pond | The canonical "amenity view preserved" beat |
+| brick wall  | North Ranch north backing onto N. Commercial | The most visible residential / arterial border |
+| brick wall  | Phase II north perimeter (construction) | Signals the in-progress phase, narrative anchor |
+
+Every other potential fence (East CDS perimeters, West Estates
+walls, etc.) waits until that sub-sector's own build_*.py script
+lands and can place a denser dressed version inside its closer
+camera scale.
+
+**Polycount budget for the district-scale library:**
+- `iron_lattice_fence` default: bar_spacing 0.40 m, end-posts
+  only, no spear tips, no ball finials. Roughly 100 meshes per
+  40 m segment.
+- `brick_wall` default: 2 boxes (wall + cap) per segment.
+- `_fence_along` subdivides at 40 m intervals (was 10 m).
+
+Hero close-ups inside a sub-sector can override these for denser
+ornament — but the LIBRARY DEFAULTS are sparse district-scale.
+
 ## When to break the rule
 
 The rule "topography first" applies to OUTDOOR locales. Indoor
