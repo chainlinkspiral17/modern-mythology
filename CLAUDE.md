@@ -49,6 +49,25 @@ cd godot/tools/blender
 The runner auto-detects Blender (Steam / Flatpak / AppImage / PATH)
 and writes the GLB to `godot/assets/3d/locales/<name>.glb`.
 
+## Always give the user copy-paste commands
+
+When the user needs to run anything on their machine (pull, build,
+git, restart Godot, etc.), provide the **exact command in a fenced
+code block** they can paste in one go. Never describe the steps in
+prose and make them assemble the command themselves. Multi-step
+flows go in a single chained `&&` line when possible — the user runs
+on a Steam Deck terminal and every extra paste is friction.
+
+Example — wrong:
+> First, cd into the repo. Then pull the latest. Then go to the
+> blender tools folder and run the build script.
+
+Example — right:
+
+```bash
+cd /home/deck/Downloads/modern-mythology && git pull origin claude/3d-locales && cd godot/tools/blender && ./run_cathedral.sh build_riverfront.py
+```
+
 ## Honest constraints
 
 - **No texture assets.** All locale geometry uses vertex colors as
