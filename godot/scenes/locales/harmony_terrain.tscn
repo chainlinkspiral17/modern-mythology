@@ -187,27 +187,33 @@ transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 0, 32, 0
 light_color = Color(0.78, 0.84, 0.95, 1)
 light_energy = 1.6
 
+; add_colliders = true · LocaleSetup walks the GLB meshes and adds
+; trimesh colliders to any whose name matches a hint (now includes
+; "Terrain" / "Ground" / "Lawn"). The player actually walks on the
+; heightmap instead of falling through to a flat fallback box.
 [node name="Geometry" parent="." instance=ExtResource("1_glb")]
 script = ExtResource("8_setup")
 use_palette_shader = false
-add_colliders = false
+add_colliders = true
 albedo_brightness = 1.10
 
+; Fallback flat box pushed WAY down so it only catches the player
+; if they somehow fall through the trimesh. Without this, walking
+; off the edge of the district would drop the player forever.
 [node name="GroundBody" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200.0, 0)
 
 [node name="GroundShape" type="CollisionShape3D" parent="GroundBody"]
 shape = SubResource("Box_Ground")
 
-; Player spawns on the country-club hilltop. HCE world (0, +380)
-; sits at the cc_rise peak (~22 m + tilt + noise ≈ 27 m elevation).
-; gltf swap (x_b, y_b, z_b) → (x_b, z_b, -y_b) → Godot (0, 30, -380).
-; The 30 m camera height clears any noise wobble; player falls
-; onto the hilltop on first frame and sees the whole district
-; sloping down to the south. Far plane 1500 m so the SE basin
-; stays visible.
+; Player spawns in the SE basin (HCE world (+80, -280) → Godot
+; (+80, ?, +280)), elevation ~-11 m at the basin bottom. Spawn
+; them 3 m above that so they settle onto the trimesh terrain on
+; the first physics tick. Facing NORTH so the country-club
+; hilltop (Godot Z = -380, Y ≈ +24) is dramatically above-and-
+; ahead — finally something IS above the camera.
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, -380)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, -8, 280)
 script = ExtResource("2_fpc")
 groups = ["player"]
 

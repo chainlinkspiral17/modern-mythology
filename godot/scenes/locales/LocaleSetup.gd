@@ -40,6 +40,8 @@ const COLLIDER_NAME_HINTS: Array[String] = [
     "Floor", "Ceiling", "Wall", "Counter", "Booth", "Bar", "Kitchen",
     "Hall", "CardWall", "Door", "Porch", "Stool", "Pole", "Partition",
     "Crate", "Shelf", "Loom", "Tower",
+    # Outdoor locales — heightmap terrain meshes
+    "Terrain", "Ground", "Lawn",
 ]
 
 
