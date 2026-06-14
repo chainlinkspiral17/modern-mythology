@@ -274,9 +274,11 @@ const MOODS: Array = [
     },
     {
         # HIGH-CONTRAST B&W INK — Sin City / chiaroscuro. Pure white
-        # ink lines over pure black fill. No bleed, no gradient, no
-        # ASCII. Heavy scanline gives film-grain feel; chromatic
-        # aberration zero so the lines stay crisp.
+        # ink lines over pure black fill, with SPARSE RED bleed for
+        # truly emissive accents (sign letters, lit windows). The
+        # picture is MOSTLY black-and-white, NOT colour-with-some-
+        # B&W — accent_channel RED + tight gates so only sat-red
+        # emission passes; cream walls / warm cars stay silhouette.
         "name": "high_contrast_bw",
         "palette": 24.0, "dither": 0.04, "scanline": 0.55, "aberration": 0.0,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": false,
@@ -284,8 +286,11 @@ const MOODS: Array = [
         "neon": 1.0, "neon_thresh": 0.012,
         "neon_edge": Color(1.0, 1.0, 1.0, 1),
         "neon_low":  Color.BLACK, "neon_high": Color.BLACK,
-        "neon_grad": 0.0, "neon_blend": 0.0, "neon_glow": 0.20,
-        "neon_bleed_lo": 0.99, "neon_bleed_hi": 1.0,
+        "neon_grad": 0.0, "neon_blend": 0.45, "neon_glow": 0.18,
+        "neon_bleed_lo": 0.88, "neon_bleed_hi": 0.98,
+        "neon_red_only": true,
+        "neon_accent": Vector3(1.0, 0.0, 0.0),
+        "neon_sat_lo": 0.50, "neon_sat_hi": 0.75,
     },
     {
         # CEL-SHADED — Saturday-morning cartoon. Aggressive palette
@@ -434,6 +439,41 @@ const MOODS: Array = [
         "star_cloud": 0.6, "star_cloud_scale": 0.012, "star_cloud_floor": 0.55,
     },
     {
+        # ── LIGHTSHOW EXTREME · MAXIMUM PSYCHEDELIC ─────────────────
+        # Everything piled on at once. ASCII visualizer at hue-cycling
+        # max, motion-trails always on, neon edges in saturated
+        # rotating colour, directional blur for streaks, starscape
+        # full strength. Scene Light3Ds get strobed too — physical
+        # lights pulse with the audio, so the boat windows and dock
+        # lamps light-show along with the post-process. "Arty farty
+        # psychedelic visual splendor" requested literally.
+        "name": "lightshow_extreme",
+        "palette": 5.0, "dither": 0.45, "scanline": 0.30, "aberration": 0.0050,
+        "ascii": 1.0, "ascii_cell": 5.0, "ascii_gamma": 0.50, "ascii_tint": false,
+        "ascii_fg": Color(1.0, 0.20, 0.85, 1),   # hot pink (will hue-cycle)
+        "ascii_bg": Color(0.04, 0.0, 0.10, 1),   # deep violet
+        "ascii_tick": 3.2,          # aggressive ripple
+        "ascii_pulse": 0.85,        # fast wash
+        "ascii_pulse_depth": 0.70,  # near full-amplitude breathing
+        "ascii_hue_shift": 1.6,     # rapid spectrum rotation
+        "neon": 0.9, "neon_thresh": 0.010,
+        "neon_edge": Color(1.0, 0.95, 0.65, 1),  # warm gold edges
+        "neon_low":  Color(0.10, 0.0, 0.30, 1),
+        "neon_high": Color(0.30, 0.0, 0.45, 1),
+        "neon_grad": 1.0, "neon_blend": 0.75, "neon_glow": 0.45,
+        "neon_bleed_lo": 0.55, "neon_bleed_hi": 0.90,
+        "neon_sat_bleed": true,
+        "neon_sat_lo": 0.20, "neon_sat_hi": 0.50,
+        "motion": 1.0, "motion_cell": 8.0, "motion_density": 1.0,
+        "motion_color": Color(1.0, 0.95, 0.80, 1),
+        "motion_trail": 0.9,
+        "blur": 0.35, "blur_mode": 2, "blur_radius": 5.5,
+        "star": 1.0, "star_cell": 7.0, "star_time": 0.85,
+        "star_sky_thresh": 0.30,
+        "star_galaxy": 1.0, "star_stars": 1.0, "star_chip": 1.0,
+        "star_cloud": 0.7, "star_cloud_scale": 0.014, "star_cloud_floor": 0.45,
+    },
+    {
         "name": "ice",
         "palette": 7.0, "dither": 0.22, "scanline": 0.40, "aberration": 0.0020,
         "ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
@@ -537,6 +577,15 @@ var _motion_speed: float = 0.0
 var _motion_dir: Vector2 = Vector2(1.0, 0.0)
 var _motion_dir_target: Vector2 = Vector2(1.0, 0.0)
 
+# ── Scene Light3D pulse cache · the lightshow_extreme mood drives
+# the actual scene lights with audio_level + per-light sine phase
+# so the physical light show maps to the visualizer.
+var _scene_lights: Array = []         # Array[Light3D]
+var _scene_light_base_energy: Array[float] = []
+var _scene_light_phase: Array[float] = []
+var _scene_light_base_color: Array[Color] = []
+var _last_lightshow_active: bool = false
+
 
 func _get_material(node_name: String) -> Material:
     var node: Node = get_node_or_null(node_name)
@@ -613,6 +662,22 @@ func _ready() -> void:
         # the first strata mood so RMB cycling makes sense.
         current_index = _strata_indices[0]
         _apply(MOODS[current_index])
+    # Cache scene Light3Ds for the lightshow_extreme pulse system.
+    # Walks from this node's parent (scene root) downward.
+    var root := get_tree().current_scene
+    if root:
+        _collect_lights(root)
+    for i in range(_scene_lights.size()):
+        _scene_light_phase.append(float(i) * 1.273)   # ~irrational so they don't sync
+
+
+func _collect_lights(node: Node) -> void:
+    if node is Light3D:
+        _scene_lights.append(node)
+        _scene_light_base_energy.append((node as Light3D).light_energy)
+        _scene_light_base_color.append((node as Light3D).light_color)
+    for child in node.get_children():
+        _collect_lights(child)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -659,6 +724,37 @@ func _process(delta: float) -> void:
     var bus_peak_db: float = AudioServer.get_bus_peak_volume_left_db(0, 0)
     var bus_peak_lin: float = db_to_linear(bus_peak_db)
     _audio_level = _audio_level * AUDIO_DECAY + bus_peak_lin * (1.0 - AUDIO_DECAY)
+
+    # ── lightshow_extreme · drive every scene Light3D from the audio
+    # and a per-light sine phase. The actual physical lights pulse
+    # with the music, giving the post-process visualizer a real-light
+    # counterpart so the boat windows and dock lamps STROBE along.
+    var mood_name: String = MOODS[current_index]["name"]
+    if mood_name == "lightshow_extreme":
+        var t: float = float(Time.get_ticks_msec()) / 1000.0
+        for i in range(_scene_lights.size()):
+            var light: Light3D = _scene_lights[i]
+            if light == null:
+                continue
+            var phase: float = _scene_light_phase[i]
+            var beat: float = 0.5 + 0.5 * sin(t * 4.0 + phase)
+            var audio_pump: float = _audio_level * 2.4
+            var mult: float = 0.4 + beat * 1.6 + audio_pump
+            light.light_energy = _scene_light_base_energy[i] * mult
+            # Hue-shift the light colour through the spectrum too —
+            # phase-offset per light so they're not all the same hue
+            # at the same time.
+            var h: float = fposmod(t * 0.15 + phase * 0.08, 1.0)
+            light.light_color = Color.from_hsv(h, 0.65, 1.0, 1.0)
+    elif _last_lightshow_active:
+        # Just LEFT lightshow_extreme — restore every cached light to
+        # its base values so other moods don't inherit strobed state.
+        for i in range(_scene_lights.size()):
+            var light: Light3D = _scene_lights[i]
+            if light != null:
+                light.light_energy = _scene_light_base_energy[i]
+                light.light_color = _scene_light_base_color[i]
+    _last_lightshow_active = (mood_name == "lightshow_extreme")
 
     # ── psychedelic_substrate · continuous-play visualizer.
     # Every parameter has its OWN slow-drift envelope so the picture

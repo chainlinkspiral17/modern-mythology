@@ -291,7 +291,7 @@ far = 300.0
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String](["linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "day_bright", "psychedelic_substrate"])
+mood_strata = Array[String](["linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "day_bright", "psychedelic_substrate", "lightshow_extreme"])
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Neon")
