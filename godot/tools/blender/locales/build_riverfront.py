@@ -2501,13 +2501,29 @@ def build_dock():
             make_box(f"LobsterTrap_{ti}_slat_{si}", (tx_p + ox + 0.37, ty_p + (-0.3 + si * 0.20), dock_z + 0.10 + 0.20),
                      (0.04, 0.04, 0.40), (0.55, 0.45, 0.30, 1.0))
 
-    # Dock lanterns at the north and south corners
-    for li, (lx_l, ly_l) in enumerate([(dock_x_start + 0.3, -DK_L/2 - 0.4),
-                                         (dock_x_end - 0.3,   DK_L/2 + 0.4)]):
+    # ── DOCK LANTERNS — row of 6 spaced along the river-facing edge
+    # so the dock reads as a properly-lit set rather than two corner
+    # lamps in pitch dark. Two TALL pier lamps at the corners (3m
+    # poles, prominent) plus 4 SHORT bollard lanterns along the edge
+    # between them (0.8m). The runtime adds OmniLight3D nodes at
+    # every lantern position to match.
+    # NB: lantern world positions are written down to the playbook so
+    # the .tscn Light3D positions stay in sync with these meshes.
+    dock_lamp_x = dock_x_end - 0.5    # river-facing edge of the dock
+    # Tall corner pier-lamps (existing-style)
+    for li, ly_l in enumerate([-DK_L/2 - 0.4, DK_L/2 + 0.4]):
+        lx_l = dock_x_end - 0.3
         make_cyl(f"DockLamp_Pole_{li}", (lx_l, ly_l, dock_z + 1.5), 0.08, 3.0, (0.30, 0.22, 0.14, 1.0), segments=6)
         make_box(f"DockLamp_Housing_{li}", (lx_l, ly_l, dock_z + 3.1), (0.30, 0.30, 0.40), (0.20, 0.18, 0.14, 1.0))
         make_box(f"DockLamp_Glow_{li}",    (lx_l, ly_l, dock_z + 3.0), (0.22, 0.22, 0.26), (1.0, 0.78, 0.36, 1.0))
         make_prism(f"DockLamp_Cap_{li}", (lx_l, ly_l, dock_z + 3.32), (0.34, 0.34, 0.16), (0.20, 0.18, 0.14, 1.0), pitch_axis='Y')
+    # Short bollard lanterns along the river-facing edge — 4 of them
+    # at y = -4.5, -1.5, +1.5, +4.5 (evenly spaced, NOT at the corners
+    # because those are already covered by the tall pier-lamps).
+    for bi, ly_b in enumerate([-4.5, -1.5, 1.5, 4.5]):
+        make_cyl(f"DockBollard_Pole_{bi}", (dock_lamp_x, ly_b, dock_z + 0.40), 0.06, 0.80, (0.30, 0.22, 0.14, 1.0), segments=6)
+        make_box(f"DockBollard_Glow_{bi}", (dock_lamp_x, ly_b, dock_z + 0.90), (0.18, 0.18, 0.20), (1.0, 0.78, 0.36, 1.0))
+        make_prism(f"DockBollard_Cap_{bi}", (dock_lamp_x, ly_b, dock_z + 1.05), (0.22, 0.22, 0.10), (0.20, 0.18, 0.14, 1.0), pitch_axis='Y')
 
     # Dock railings on N/S edges (open on the boat side and parking side)
     for side, sy_e in (("S", -DK_L/2 - 0.05), ("N", DK_L/2 + 0.05)):

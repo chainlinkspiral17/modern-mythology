@@ -8,13 +8,18 @@ When picking up a session in this repo, **read these first** before
 touching code:
 
 1. `lore/_3D_MODELING_PLAYBOOK.md` — hard-won rules for the Blender
-   → glTF → Godot pipeline. Read the Core rules and the latest two
-   entries under "Recent lessons."
+   → glTF → Godot pipeline. Read the Core rules (especially the
+   "Coordinate frame" section) and the latest two entries under
+   "Recent lessons."
 2. `lore/_SHADER_VISUALS_PLAYBOOK.md` — screen-space shaders, mood
    presets, post-process stack order, Label3D vs procedural text,
    active shader + mood inventory. Read before touching any visuals.
-3. The latest commit message on the working branch — recent context.
-4. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
+3. `lore/_LIGHTING_PLAYBOOK.md` — cinematography rules: three-light
+   foundation, practicals tied to visible fixtures, color gels by
+   Kelvin, when Spot vs Omni. Read before touching any `Light3D`
+   nodes in a scene.
+4. The latest commit message on the working branch — recent context.
+5. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
 
 ## Lesson-capture cadence (durable rule)
 
@@ -30,6 +35,8 @@ Playbooks currently maintained:
 - `lore/_SHADER_VISUALS_PLAYBOOK.md` — screen-space shaders, mood
   system, post-process ordering, Label3D vs procedural text,
   particles checklist, active shader/mood inventory.
+- `lore/_LIGHTING_PLAYBOOK.md` — three-light foundation,
+  practicals, color gels by Kelvin, Spot vs Omni decisions.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it (e.g. `_GAUNTLET_DESIGN_PLAYBOOK.md`).
