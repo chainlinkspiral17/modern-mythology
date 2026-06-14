@@ -71,10 +71,13 @@ PARKING_X = -BOAT_W / 2 - 18.0    # parking lot 18m west of boat (port)
 PARKING_Y_CENTER = 0.0            # parking lot lined up with boat center
 RIVER_LEVEL_Z = -0.3
 
-OPPOSITE_X = 95.0     # far starboard shore (east, across the wide river)
-BAYOU_X = 30.0        # bayou starts well east of the boat
+OPPOSITE_X = 120.0    # far starboard shore (east, across the wide river)
+BAYOU_X = 55.0        # bayou pushed back so the river has a real lane
 BRIDGE_Y = -95.0      # distant bridge downriver to the south
 DOCK_Z = 0.35         # dock deck sits 35cm above the water surface
+# River traffic lane: between boat (X≈±6) and bayou tree-line (X≈37),
+# there are ~30m of clear water — wide enough for two riverboats to
+# pass alongside D'Ambrosio's at the same time.
 
 # ── palette ──
 COL_HULL          = (0.82, 0.78, 0.66, 1.0)    # white clapboard, aged
@@ -292,6 +295,157 @@ def make_ramp(name, start_top, end_top, width, thickness, base_color, width_axis
         [1, 2, 6, 5],   # downhill end
         [3, 0, 4, 7],   # uphill end
     ]
+    return _finalize_mesh(name, verts, faces, base_color)
+
+
+def make_sphere(name, center, radius, base_color, subdivisions=0):
+    """Lowpoly sphere via icosahedron (12 verts, 20 faces). subdivisions
+    > 0 subdivides each triangle into 4 — 1 = 42 verts/80 faces, 2 =
+    162 verts/320 faces. For PS2-era clouds/canopies subdivisions=0 is
+    plenty.
+
+    Returns an organic round mesh, the opposite of a box. Use for
+    clouds, foliage canopies, bulb shapes, anything that should NOT
+    read as cubic."""
+    cx, cy, cz = center
+    t = (1.0 + math.sqrt(5.0)) / 2.0
+    raw = [
+        (-1.0,    t,  0.0), ( 1.0,    t,  0.0),
+        (-1.0,   -t,  0.0), ( 1.0,   -t,  0.0),
+        ( 0.0, -1.0,    t), ( 0.0,  1.0,    t),
+        ( 0.0, -1.0,   -t), ( 0.0,  1.0,   -t),
+        (   t,  0.0, -1.0), (   t,  0.0,  1.0),
+        (  -t,  0.0, -1.0), (  -t,  0.0,  1.0),
+    ]
+    norm = radius / math.sqrt(1.0 + t * t)
+    verts = [(cx + v[0] * norm, cy + v[1] * norm, cz + v[2] * norm) for v in raw]
+    faces = [
+        [0, 11,  5], [0,  5,  1], [0,  1,  7], [0,  7, 10], [0, 10, 11],
+        [1,  5,  9], [5, 11,  4], [11, 10, 2], [10, 7,  6], [7,  1,  8],
+        [3,  9,  4], [3,  4,  2], [3,  2,  6], [3,  6,  8], [3,  8,  9],
+        [4,  9,  5], [2,  4, 11], [6,  2, 10], [8,  6,  7], [9,  8,  1],
+    ]
+    # Subdivide if requested — each triangle becomes 4 smaller triangles
+    for _ in range(subdivisions):
+        new_verts = list(verts)
+        edge_mid = {}
+        def mid(a, b):
+            key = (min(a, b), max(a, b))
+            if key in edge_mid:
+                return edge_mid[key]
+            va = verts[a]
+            vb = verts[b]
+            mx = (va[0] + vb[0]) / 2.0
+            my = (va[1] + vb[1]) / 2.0
+            mz = (va[2] + vb[2]) / 2.0
+            # project back onto sphere surface
+            dx = mx - cx
+            dy = my - cy
+            dz = mz - cz
+            r = math.sqrt(dx * dx + dy * dy + dz * dz)
+            scale = radius / r if r > 0 else 1.0
+            new_verts.append((cx + dx * scale, cy + dy * scale, cz + dz * scale))
+            idx = len(new_verts) - 1
+            edge_mid[key] = idx
+            return idx
+        new_faces = []
+        for (a, b, c) in faces:
+            ab = mid(a, b)
+            bc = mid(b, c)
+            ca = mid(c, a)
+            new_faces.append([a,  ab, ca])
+            new_faces.append([b,  bc, ab])
+            new_faces.append([c,  ca, bc])
+            new_faces.append([ab, bc, ca])
+        verts = new_verts
+        faces = new_faces
+    return _finalize_mesh(name, verts, faces, base_color)
+
+
+def make_tube_segment(name, p_start, p_end, radius, base_color, segments=6):
+    """A cylindrical tube between two arbitrary 3D points. The tube's
+    axis follows the line from p_start to p_end with proper orientation
+    (no axis-aligned stair-stepping). Used for neon strokes, ropes,
+    pipes, anything that needs to draw a diagonal line in 3D."""
+    sx, sy, sz = p_start
+    ex, ey, ez = p_end
+    dx = ex - sx; dy = ey - sy; dz = ez - sz
+    length = math.sqrt(dx * dx + dy * dy + dz * dz)
+    if length < 0.001:
+        return None
+    # unit axis along the segment
+    ux = dx / length; uy = dy / length; uz = dz / length
+    # build two orthogonal perpendicular unit vectors
+    if abs(uz) < 0.9:
+        # u × (0,0,1)
+        p1x = uy * 1.0 - uz * 0.0
+        p1y = uz * 0.0 - ux * 1.0
+        p1z = ux * 0.0 - uy * 0.0
+    else:
+        # u × (1,0,0)
+        p1x = uy * 0.0 - uz * 0.0
+        p1y = uz * 1.0 - ux * 0.0
+        p1z = ux * 0.0 - uy * 1.0
+    p1_len = math.sqrt(p1x * p1x + p1y * p1y + p1z * p1z)
+    if p1_len < 1e-6:
+        return None
+    p1x /= p1_len; p1y /= p1_len; p1z /= p1_len
+    # p2 = u × p1
+    p2x = uy * p1z - uz * p1y
+    p2y = uz * p1x - ux * p1z
+    p2z = ux * p1y - uy * p1x
+    verts = []
+    for end_idx in (0, 1):
+        ex_, ey_, ez_ = (sx, sy, sz) if end_idx == 0 else (ex, ey, ez)
+        for i in range(segments):
+            ang = 2.0 * math.pi * i / segments
+            ca = math.cos(ang); sa = math.sin(ang)
+            offx = (p1x * ca + p2x * sa) * radius
+            offy = (p1y * ca + p2y * sa) * radius
+            offz = (p1z * ca + p2z * sa) * radius
+            verts.append((ex_ + offx, ey_ + offy, ez_ + offz))
+    faces = []
+    for i in range(segments):
+        ni = (i + 1) % segments
+        faces.append([i, ni, ni + segments, i + segments])
+    faces.append(list(reversed(range(segments))))         # start cap
+    faces.append(list(range(segments, segments * 2)))     # end cap
+    return _finalize_mesh(name, verts, faces, base_color)
+
+
+def make_torus(name, center, major_r, minor_r, base_color,
+               major_seg=12, minor_seg=6, axis='Z'):
+    """A torus — major_r is the radius of the ring centre, minor_r is
+    the cross-section radius of the tube itself. axis='Z' means the
+    ring lies flat in the X-Y plane (ring through which a vertical
+    pole could pass). 'X' / 'Y' rotate that orientation."""
+    cx, cy, cz = center
+    verts = []
+    for i in range(major_seg):
+        u = 2.0 * math.pi * i / major_seg
+        cu = math.cos(u); su = math.sin(u)
+        for j in range(minor_seg):
+            v = 2.0 * math.pi * j / minor_seg
+            cv = math.cos(v); sv = math.sin(v)
+            r_off = major_r + minor_r * cv
+            tube_h = minor_r * sv
+            if axis == 'Z':
+                px = cx + r_off * cu; py = cy + r_off * su; pz = cz + tube_h
+            elif axis == 'Y':
+                px = cx + r_off * cu; py = cy + tube_h;     pz = cz + r_off * su
+            else:  # 'X'
+                px = cx + tube_h;     py = cy + r_off * cu; pz = cz + r_off * su
+            verts.append((px, py, pz))
+    faces = []
+    for i in range(major_seg):
+        ni = (i + 1) % major_seg
+        for j in range(minor_seg):
+            nj = (j + 1) % minor_seg
+            a = i  * minor_seg + j
+            b = ni * minor_seg + j
+            c = ni * minor_seg + nj
+            d = i  * minor_seg + nj
+            faces.append([a, b, c, d])
     return _finalize_mesh(name, verts, faces, base_color)
 
 
@@ -702,19 +856,29 @@ def build_riverboat():
     make_cyl("Bell_Lip",  (0, bell_y, bell_base_z + 0.92), 0.28, 0.10, COL_BRASS, segments=10)
 
     # ════════════════════════════════════════════════════════════
-    # LIFEBUOYS on rails (4 — two per side, boiler-deck level)
+    # LIFEBUOYS on rails — proper TORUS now, not a chain of boxes.
+    # A red base ring with 4 white "strap" toruses oriented
+    # perpendicular to the main ring (the canonical red+white pattern).
     # ════════════════════════════════════════════════════════════
-    for i, (lx, ly) in enumerate([(-BD_W/2 - 0.20, -7.0), (-BD_W/2 - 0.20, 5.0),
-                                   ( BD_W/2 + 0.20, -7.0), ( BD_W/2 + 0.20, 5.0)]):
-        ring_z = BD_Z + 0.85
-        ring_r = 0.40
-        for j in range(12):
-            ang = 2.0 * math.pi * j / 12.0
-            rx = lx + math.sin(ang) * 0.04
-            ry = ly + math.cos(ang) * ring_r
-            rz = ring_z + math.sin(ang) * ring_r
-            col = (0.85, 0.20, 0.18, 1.0) if (j % 2 == 0) else (0.92, 0.88, 0.78, 1.0)
-            make_box(f"Lifebuoy_{i}_seg_{j}", (rx, ry, rz), (0.10, 0.12, 0.12), col)
+    for i, (lx_l, ly_l) in enumerate([(-BD_W/2 - 0.20, -7.0), (-BD_W/2 - 0.20, 5.0),
+                                       ( BD_W/2 + 0.20, -7.0), ( BD_W/2 + 0.20, 5.0)]):
+        ring_cz = BD_Z + 0.85
+        # Main ring — axis along X so the ring hangs vertical, presenting
+        # its face outboard (so it reads from the player's POV on the dock)
+        make_torus(f"Lifebuoy_{i}_ring", (lx_l, ly_l, ring_cz),
+                   major_r=0.42, minor_r=0.08, base_color=(0.85, 0.20, 0.18, 1.0),
+                   major_seg=14, minor_seg=6, axis='X')
+        # 4 white "strap" rings around the ring at quarter angles —
+        # each is a small torus wrapped around the main ring's tube
+        for si, ang_deg in enumerate([0, 90, 180, 270]):
+            ang = math.radians(ang_deg)
+            sx_l = lx_l
+            sy_l = ly_l + math.cos(ang) * 0.42
+            sz_l = ring_cz + math.sin(ang) * 0.42
+            make_torus(f"Lifebuoy_{i}_strap_{si}", (sx_l, sy_l, sz_l),
+                       major_r=0.10, minor_r=0.05, base_color=(0.94, 0.90, 0.78, 1.0),
+                       major_seg=8, minor_seg=4,
+                       axis='Y' if (si % 2 == 0) else 'Z')
 
     # ════════════════════════════════════════════════════════════
     # GANGWAY — angled plank from the boat's port deck DOWN to the
@@ -972,174 +1136,153 @@ def build_parking_lot():
         make_box(f"Sign_Frame_{label}_R",   (sign_x + sign_w/2 + 0.06, sign_y + face_y, sign_z),
                  (0.12, 0.06, sign_h + 0.20), (0.32, 0.26, 0.20, 1.0))
 
-    # ── CURSIVE RED NEON: D'Ambrosio's — traced as a chain of short
-    # segments forming each letter. Bright red emissive-tone color so
-    # the screen post-process (ascii_render / demoscene quantize)
-    # reads it as a neon glow.
+    # ── CURSIVE RED NEON: D'Ambrosio's ─────────────────────────────
+    # Bigger letters (H = 0.65m) drawn with REAL angled cylinders via
+    # make_tube_segment so diagonals don't stair-step. Letters mirrored
+    # correctly on the south face (lx negates local_x for the mirrored
+    # side, so both viewers read the script the right way around).
+    # Halos are SPHERES placed BEHIND the letters (inset toward the
+    # panel), not in front. Underline is a proper downward swoosh.
     NEON_RED = (1.0, 0.18, 0.20, 1.0)
-    NEON_RED_DIM = (0.65, 0.12, 0.14, 1.0)  # for non-glowing tube ends
-    TUBE_R = 0.045
-    H = 0.45  # letter base height
-    # Place neon on BOTH faces (north and south of the panel).
-    # Each face gets its own copy of the tube geometry, mirrored.
-    for face_label, face_y_off in (("N", 0.13), ("S", -0.13)):
+    NEON_GLOW = (1.0, 0.35, 0.40, 1.0)
+    TUBE_R = 0.060
+    H = 0.65   # letter cap height
+    H_x = H * 0.62   # x-height (lowercase body height)
+
+    for face_label, face_y_off in (("N", 0.10), ("S", -0.10)):
         face_sign = 1 if face_label == "N" else -1
 
-        def add_seg(seg_name, x1, z1, x2, z2, color=NEON_RED):
-            """Add a single neon tube segment between two local points
-            on the sign panel face. (Local x is along the panel width,
-            z is height above sign_z baseline.)"""
-            dx = x2 - x1
-            dz = z2 - z1
-            length = math.sqrt(dx*dx + dz*dz)
-            if length < 0.005:
-                return
-            mid_x = (x1 + x2) / 2.0
-            mid_z = (z1 + z2) / 2.0
-            # Approximate the tube as an axis-aligned box. For purely
-            # horizontal or vertical it's exact; diagonals stair-step but
-            # this is acceptable at PS2 polycount.
-            if abs(dx) >= abs(dz):
-                size = (abs(dx) + TUBE_R * 1.8, 0.03, TUBE_R * 2.2)
-            else:
-                size = (TUBE_R * 2.2, 0.03, abs(dz) + TUBE_R * 1.8)
-            world_x = sign_x + mid_x
-            world_z = sign_z + mid_z
-            world_y = sign_y + face_y_off
-            make_box(f"Neon_{face_label}_{seg_name}", (world_x, world_y, world_z), size, color)
-
-        def add_line(name, p0, p1, steps=4):
-            for i in range(steps):
-                t0 = i / steps
-                t1 = (i + 1) / steps
-                ax = p0[0] + t0 * (p1[0] - p0[0])
-                az = p0[1] + t0 * (p1[1] - p0[1])
-                bx = p0[0] + t1 * (p1[0] - p0[0])
-                bz = p0[1] + t1 * (p1[1] - p0[1])
-                add_seg(f"{name}_{i}", ax, az, bx, bz)
-
-        def add_arc(name, cx, cz, r, t_start, t_end, steps=10):
-            for i in range(steps):
-                tt0 = t_start + (t_end - t_start) * (i / steps)
-                tt1 = t_start + (t_end - t_start) * ((i + 1) / steps)
-                ax = cx + math.cos(tt0) * r
-                az = cz + math.sin(tt0) * r
-                bx = cx + math.cos(tt1) * r
-                bz = cz + math.sin(tt1) * r
-                add_seg(f"{name}_{i}", ax, az, bx, bz)
-
-        # The letters advance left-to-right. Pen starts at far left.
-        # For face_label "N" (north face) we want the text readable from
-        # +Y — pen advances in +X. For "S" (south face), readable from -Y,
-        # mirror in X so it reads correctly from the other side.
         def lx(local_x):
-            return local_x * face_sign
+            # MIRROR for both sides so the text reads left-to-right
+            # from each viewer's perspective. Negation flips the sign
+            # axis; face_sign chooses which face gets the flipped copy.
+            return -local_x * face_sign
 
-        # ── 'D' (capital, slanted right) ──
-        # Slight right-lean for cursive feel
-        d0 = -1.85
-        slant = 0.05
-        add_line("D_spine", (lx(d0), 0.0), (lx(d0 + slant), H))
-        add_arc("D_loop", lx(d0 + slant + 0.15), H * 0.5, H * 0.55,
-                math.pi / 2.0, -math.pi / 2.0, steps=10)
-        # bottom of D meets the next letter via a short connector
-        add_line("D_tail", (lx(d0 + 0.05), 0.0), (lx(d0 + 0.30), -0.04))
+        def tube(seg_name, x1, z1, x2, z2):
+            """A real angled cylinder tube on the panel face."""
+            make_tube_segment(
+                f"Neon_{face_label}_{seg_name}",
+                (sign_x + lx(x1), sign_y + face_y_off, sign_z + z1),
+                (sign_x + lx(x2), sign_y + face_y_off, sign_z + z2),
+                TUBE_R, NEON_RED, segments=5)
+
+        def stroke(name, points):
+            """Connect a polyline of (x, z) points with tube segments."""
+            for i in range(len(points) - 1):
+                tube(f"{name}_{i}", points[i][0], points[i][1],
+                                     points[i + 1][0], points[i + 1][1])
+
+        def arc(name, ccx, ccz, r, t0, t1, steps=10):
+            for i in range(steps):
+                a0 = t0 + (t1 - t0) * (i / steps)
+                a1 = t0 + (t1 - t0) * ((i + 1) / steps)
+                tube(f"{name}_{i}",
+                     ccx + math.cos(a0) * r, ccz + math.sin(a0) * r,
+                     ccx + math.cos(a1) * r, ccz + math.sin(a1) * r)
+
+        def halo(name, x, z, radius=0.18):
+            """Soft red glow sphere INSET toward the panel — sits BEHIND
+            the neon tubes when viewed from the front."""
+            inset = face_y_off - 0.020 * face_sign  # closer to panel face
+            make_sphere(f"Neon_{face_label}_halo_{name}",
+                        (sign_x + lx(x), sign_y + inset, sign_z + z),
+                        radius, NEON_GLOW)
+
+        # ── 'D' capital — vertical spine + right semicircle ─────────
+        d0 = -1.90
+        stroke("D_spine", [(d0, 0.0), (d0 + 0.04, H * 0.5), (d0 + 0.06, H)])
+        arc("D_loop", d0 + 0.18, H * 0.5, H * 0.52,
+            math.pi / 2.0, -math.pi / 2.0, steps=10)
 
         # ── apostrophe ' ──
-        ap_x = d0 + 0.50
-        add_line("apos1_body", (lx(ap_x), H * 0.85), (lx(ap_x + 0.04), H * 1.10), steps=2)
-        add_line("apos1_curl", (lx(ap_x + 0.04), H * 1.10), (lx(ap_x + 0.10), H * 1.05), steps=2)
+        ap1 = d0 + 0.78
+        stroke("apos1", [(ap1, H * 0.78), (ap1 + 0.05, H * 1.05), (ap1 + 0.10, H * 0.95)])
 
-        # ── 'A' (capital, cursive — like two strokes with a swoop) ──
-        a0 = d0 + 0.65
-        # left diagonal up
-        add_line("A_L", (lx(a0), 0.0), (lx(a0 + 0.18), H))
-        # right diagonal down
-        add_line("A_R", (lx(a0 + 0.18), H), (lx(a0 + 0.36), 0.0))
-        # crossbar
-        add_line("A_bar", (lx(a0 + 0.10), H * 0.45), (lx(a0 + 0.26), H * 0.45), steps=2)
-        # tail connecting to 'm'
-        add_line("A_tail", (lx(a0 + 0.36), 0.0), (lx(a0 + 0.46), 0.03), steps=2)
+        # ── 'A' capital — two diagonals + crossbar ──
+        a0 = d0 + 0.98
+        stroke("A_left",  [(a0, 0.0), (a0 + 0.10, H * 0.5), (a0 + 0.20, H)])
+        stroke("A_right", [(a0 + 0.20, H), (a0 + 0.30, H * 0.5), (a0 + 0.40, 0.0)])
+        stroke("A_bar",   [(a0 + 0.10, H * 0.45), (a0 + 0.30, H * 0.45)])
 
-        # ── 'm' (3 humps) ──
-        m0 = a0 + 0.46
-        h_top = H * 0.55
-        # first hump
-        add_arc("m_h1", lx(m0 + 0.07), h_top * 0.55, 0.10,
-                math.pi, 0.0, steps=8)
-        # connector + second hump
-        add_arc("m_h2", lx(m0 + 0.21), h_top * 0.55, 0.10,
-                math.pi, 0.0, steps=8)
-        # third hump
-        add_arc("m_h3", lx(m0 + 0.35), h_top * 0.55, 0.10,
-                math.pi, 0.0, steps=8)
-        # baseline strokes between humps
-        add_line("m_base1", (lx(m0), 0.0), (lx(m0), h_top * 0.55), steps=3)
-        add_line("m_base2", (lx(m0 + 0.14), 0.0), (lx(m0 + 0.14), h_top * 0.55), steps=3)
-        add_line("m_base3", (lx(m0 + 0.28), 0.0), (lx(m0 + 0.28), h_top * 0.55), steps=3)
-        add_line("m_base4", (lx(m0 + 0.42), 0.0), (lx(m0 + 0.42), h_top * 0.55), steps=3)
+        # ── 'm' — three humps (use arcs for smooth tops) ──
+        m0 = a0 + 0.52
+        stroke("m_stem1", [(m0, 0.0), (m0, H_x * 0.85)])
+        arc("m_arc1", m0 + 0.09, H_x * 0.85, 0.09, math.pi, 0.0, steps=6)
+        stroke("m_stem2", [(m0 + 0.18, 0.0), (m0 + 0.18, H_x * 0.85)])
+        arc("m_arc2", m0 + 0.27, H_x * 0.85, 0.09, math.pi, 0.0, steps=6)
+        stroke("m_stem3", [(m0 + 0.36, 0.0), (m0 + 0.36, H_x * 0.85)])
+        arc("m_arc3", m0 + 0.45, H_x * 0.85, 0.09, math.pi, 0.0, steps=6)
+        stroke("m_stem4", [(m0 + 0.54, 0.0), (m0 + 0.54, H_x * 0.85)])
 
-        # ── 'b' (tall ascender + bottom loop) ──
-        b0 = m0 + 0.48
-        add_line("b_spine", (lx(b0), 0.0), (lx(b0 + 0.02), H * 1.0))
-        add_arc("b_loop", lx(b0 + 0.11), H * 0.18, 0.13,
-                math.pi, -math.pi, steps=10)
+        # ── 'b' — tall ascender + round bottom loop ──
+        b0 = m0 + 0.68
+        stroke("b_stem", [(b0, 0.0), (b0, H)])
+        arc("b_loop", b0 + 0.12, H_x * 0.45, H_x * 0.45,
+            math.pi, math.pi - 2 * math.pi, steps=14)
 
-        # ── 'r' (short stroke + tiny hook) ──
-        r0 = b0 + 0.34
-        add_line("r_spine", (lx(r0), 0.0), (lx(r0 + 0.02), h_top))
-        add_line("r_hook", (lx(r0 + 0.02), h_top), (lx(r0 + 0.08), h_top * 0.92), steps=2)
+        # ── 'r' — short stem + small hook on top ──
+        r0 = b0 + 0.32
+        stroke("r_stem", [(r0, 0.0), (r0, H_x)])
+        arc("r_hook", r0 + 0.06, H_x - 0.04, 0.06,
+            math.pi, math.pi * 0.30, steps=5)
 
-        # ── 'o' (full loop) ──
-        o0 = r0 + 0.16
-        add_arc("o1_loop", lx(o0 + 0.10), h_top * 0.55, 0.11,
-                0.0, 2 * math.pi, steps=14)
+        # ── 'o' — full circle ──
+        o0 = r0 + 0.22
+        arc("o1", o0 + 0.10, H_x * 0.50, 0.11, 0.0, 2 * math.pi, steps=14)
 
-        # ── 's' (cursive zigzag) ──
+        # ── 's' — cursive S curve ──
         s0 = o0 + 0.26
-        add_line("s1_top", (lx(s0), h_top), (lx(s0 + 0.10), h_top * 0.95), steps=2)
-        add_line("s1_mid", (lx(s0 + 0.10), h_top * 0.95), (lx(s0 + 0.02), h_top * 0.55), steps=2)
-        add_line("s1_low", (lx(s0 + 0.02), h_top * 0.55), (lx(s0 + 0.12), h_top * 0.40), steps=2)
-        add_line("s1_btm", (lx(s0 + 0.12), h_top * 0.40), (lx(s0 + 0.04), 0.0), steps=3)
+        arc("s1_top", s0 + 0.06, H_x * 0.75, 0.07,
+            math.pi * 0.30, math.pi * 1.40, steps=8)
+        arc("s1_bot", s0 + 0.08, H_x * 0.25, 0.07,
+            math.pi * 1.30, math.pi * 0.30 + math.pi, steps=8)
 
-        # ── 'i' (short stroke + dot) ──
-        i0 = s0 + 0.22
-        add_line("i_spine", (lx(i0), 0.0), (lx(i0 + 0.02), h_top))
-        add_seg("i_dot", lx(i0 + 0.01), H * 0.85, lx(i0 + 0.05), H * 0.95)
+        # ── 'i' — short stem + dot ──
+        i0 = s0 + 0.20
+        stroke("i_stem", [(i0, 0.0), (i0, H_x)])
+        halo("i_dot_glow", i0, H * 0.90, 0.05)
 
-        # ── 'o' (second o) ──
-        o2 = i0 + 0.14
-        add_arc("o2_loop", lx(o2 + 0.10), h_top * 0.55, 0.11,
-                0.0, 2 * math.pi, steps=14)
+        # ── 'o' (second) ──
+        o2 = i0 + 0.12
+        arc("o2", o2 + 0.10, H_x * 0.50, 0.11, 0.0, 2 * math.pi, steps=14)
 
-        # ── apostrophe ' ──
-        ap2_x = o2 + 0.26
-        add_line("apos2_body", (lx(ap2_x), H * 0.85), (lx(ap2_x + 0.04), H * 1.10), steps=2)
-        add_line("apos2_curl", (lx(ap2_x + 0.04), H * 1.10), (lx(ap2_x + 0.10), H * 1.05), steps=2)
+        # ── apostrophe ──
+        ap2 = o2 + 0.26
+        stroke("apos2", [(ap2, H * 0.78), (ap2 + 0.05, H * 1.05), (ap2 + 0.10, H * 0.95)])
 
-        # ── 's' (final s, like the first) ──
-        s2 = ap2_x + 0.18
-        add_line("s2_top", (lx(s2), h_top), (lx(s2 + 0.10), h_top * 0.95), steps=2)
-        add_line("s2_mid", (lx(s2 + 0.10), h_top * 0.95), (lx(s2 + 0.02), h_top * 0.55), steps=2)
-        add_line("s2_low", (lx(s2 + 0.02), h_top * 0.55), (lx(s2 + 0.12), h_top * 0.40), steps=2)
-        add_line("s2_btm", (lx(s2 + 0.12), h_top * 0.40), (lx(s2 + 0.04), 0.0), steps=3)
+        # ── 's' (final) ──
+        s2 = ap2 + 0.18
+        arc("s2_top", s2 + 0.06, H_x * 0.75, 0.07,
+            math.pi * 0.30, math.pi * 1.40, steps=8)
+        arc("s2_bot", s2 + 0.08, H_x * 0.25, 0.07,
+            math.pi * 1.30, math.pi * 0.30 + math.pi, steps=8)
 
-        # Decorative underline swoosh — characteristic of diner neon signs
-        add_arc("underline", lx(-0.4), -0.20, 1.5,
-                math.pi * 0.92, math.pi * 0.08, steps=24)
+        # ── Underline swoosh — proper DOWNWARD arc below baseline ──
+        N_underline = 24
+        u_left = -1.85
+        u_right = 1.85
+        u_dip = 0.22
+        for i in range(N_underline):
+            t0 = i / N_underline
+            t1 = (i + 1) / N_underline
+            ux0 = u_left + t0 * (u_right - u_left)
+            ux1 = u_left + t1 * (u_right - u_left)
+            uz0 = -0.10 - math.sin(t0 * math.pi) * u_dip
+            uz1 = -0.10 - math.sin(t1 * math.pi) * u_dip
+            tube(f"underline_{i}", ux0, uz0, ux1, uz1)
 
-        # A few brighter "glow" duplicates that sit just behind the
-        # main tubes — fakes the soft halo neon gives off
-        # (placed slightly inset on the panel face so they show through)
-        halo_y_off = face_y_off + 0.005 * face_sign
-        # one larger glow per major stroke at lower opacity-ish color
-        glow_col = (1.0, 0.32, 0.34, 1.0)
-        for gx, gz in [(d0, H * 0.5), (a0 + 0.18, H * 0.5), (m0 + 0.21, h_top * 0.3),
-                        (b0 + 0.11, H * 0.18), (o0 + 0.10, h_top * 0.55),
-                        (o2 + 0.10, h_top * 0.55)]:
-            make_box(f"Neon_{face_label}_glow_{gx:.2f}",
-                     (sign_x + lx(gx), sign_y + halo_y_off, sign_z + gz),
-                     (0.30, 0.02, 0.30), glow_col)
+        # ── HALO glow spheres — placed BEHIND the major letter loops
+        # (between letter plane and panel face). These should appear
+        # as a soft red bloom around the loops, NOT in front of them.
+        for gtag, gx, gz in [
+            ("D",     d0 + 0.12, H * 0.5),
+            ("A",     a0 + 0.20, H * 0.5),
+            ("m_mid", m0 + 0.27, H_x * 0.5),
+            ("b",     b0 + 0.12, H_x * 0.4),
+            ("o1",    o0 + 0.10, H_x * 0.5),
+            ("o2",    o2 + 0.10, H_x * 0.5),
+        ]:
+            halo(gtag, gx, gz, radius=0.18)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -1474,20 +1617,24 @@ def build_opposite_shore():
         canopy_size = 3.4 if kind == 0 else (2.4 if kind == 1 else 3.6)
         canopy_base_z = shore_z + trunk_h - 0.4
         if kind == 1:
-            # pine — conical stack
-            for ci, (sz_mul, dz) in enumerate([(1.0, 0.0), (0.75, 0.9), (0.50, 1.7), (0.30, 2.4)]):
-                cs = canopy_size * sz_mul
-                make_box(f"OppoTree_{i}_pine_{ci}", (tree_x, y, canopy_base_z + dz),
-                         (cs, cs, cs * 0.6), canopy_color)
+            # pine — conical: tapered cylinder stack (keeps the conifer shape)
+            for ci, (r_mul, dz) in enumerate([(1.0, 0.0), (0.75, 0.9), (0.50, 1.7), (0.30, 2.4)]):
+                cr = canopy_size * 0.5 * r_mul
+                make_cyl(f"OppoTree_{i}_pine_{ci}", (tree_x, y, canopy_base_z + dz + cr * 0.5),
+                         cr, cr * 1.2, canopy_color, segments=6)
         else:
-            # cypress / oak — multi-cluster
-            for ci, (ox, oy, sz_mul) in enumerate([(0.0, 0.0, 1.0), (-0.5, 0.3, 0.75),
-                                                    (0.5, -0.3, 0.80), (0.0, 0.5, 0.60)]):
-                cs = canopy_size * sz_mul
-                make_box(f"OppoTree_{i}_canopy_{ci}",
-                         (tree_x + ox, y + oy, canopy_base_z + cs * 0.4 + ((ci % 2) * 0.4)),
-                         (cs, cs, cs * 1.1),
-                         canopy_color)
+            # cypress / oak — sphere clusters (organic, not boxy)
+            for ci, (ox, oy, sz_mul, dz_off) in enumerate([
+                (0.0, 0.0, 1.0, 0.4),
+                (-0.6, 0.4, 0.70, 0.8),
+                (0.6, -0.4, 0.75, 0.7),
+                (0.0, 0.6, 0.55, 1.1),
+            ]):
+                cr = canopy_size * 0.55 * sz_mul
+                make_sphere(f"OppoTree_{i}_canopy_{ci}",
+                            (tree_x + ox, y + oy, canopy_base_z + dz_off + cr * 0.4),
+                            cr,
+                            canopy_color)
 
     # ── FOREGROUND scrub bushes at the river-facing shoreline ──
     bush_col = (0.30, 0.36, 0.22, 1.0)
@@ -1666,13 +1813,16 @@ def build_bayou():
                  0.23 * scale, seg, COL_TREE_TRUNK, segments=6)
         make_cyl(f"{tag}_trunk_up",  (cx, cy, bayou_z + seg * 2.5 + 0.60),
                  0.15 * scale, seg, COL_TREE_TRUNK, segments=6)
+        # Canopy — overlapping spheres (NOT boxes) for organic silhouette
         canopy_z = bayou_z + trunk_h + 0.60
-        make_box(f"{tag}_canopy_a", (cx, cy, canopy_z + 0.5 * scale),
-                 (2.6 * scale, 2.6 * scale, 1.0 * scale), COL_TREE_CANOPY_B)
-        make_box(f"{tag}_canopy_b", (cx - 0.15 * scale, cy + 0.15 * scale, canopy_z + 1.3 * scale),
-                 (2.0 * scale, 2.0 * scale, 0.9 * scale), COL_TREE_CANOPY_B)
-        make_box(f"{tag}_canopy_c", (cx + 0.10 * scale, cy - 0.10 * scale, canopy_z + 2.0 * scale),
-                 (1.4 * scale, 1.4 * scale, 0.8 * scale), COL_TREE_CANOPY_B)
+        make_sphere(f"{tag}_canopy_a", (cx, cy, canopy_z + 0.7 * scale),
+                    1.35 * scale, COL_TREE_CANOPY_B)
+        make_sphere(f"{tag}_canopy_b", (cx - 0.45 * scale, cy + 0.35 * scale, canopy_z + 1.5 * scale),
+                    1.10 * scale, COL_TREE_CANOPY_B)
+        make_sphere(f"{tag}_canopy_c", (cx + 0.40 * scale, cy - 0.30 * scale, canopy_z + 2.1 * scale),
+                    0.80 * scale, COL_TREE_CANOPY_B)
+        make_sphere(f"{tag}_canopy_d", (cx + 0.10 * scale, cy + 0.50 * scale, canopy_z + 1.8 * scale),
+                    0.65 * scale, COL_TREE_CANOPY_B)
         # knees around the base (irregular, varied heights)
         n_knees = 3 + int(_hash(cx * 7 + cy) * 3)
         for ki in range(n_knees):
@@ -1700,14 +1850,16 @@ def build_bayou():
         make_cyl(f"{tag}_trunk", (cx, cy, bayou_z + trunk_h / 2 + 0.80),
                  0.28 * scale, trunk_h, COL_TREE_TRUNK, segments=6)
         canopy_z = bayou_z + trunk_h + 0.80
-        # wider rounder canopy than cypress
+        # Tupelo canopy: wider, rounder than cypress — three big spheres
         canopy_col = (0.24, 0.34, 0.16, 1.0)
-        make_box(f"{tag}_canopy_a", (cx, cy, canopy_z + 0.6 * scale),
-                 (3.4 * scale, 3.4 * scale, 1.2 * scale), canopy_col)
-        make_box(f"{tag}_canopy_b", (cx - 0.4 * scale, cy + 0.3 * scale, canopy_z + 1.6 * scale),
-                 (2.4 * scale, 2.4 * scale, 1.0 * scale), canopy_col)
-        make_box(f"{tag}_canopy_c", (cx + 0.5 * scale, cy - 0.3 * scale, canopy_z + 1.4 * scale),
-                 (2.2 * scale, 2.2 * scale, 0.9 * scale), canopy_col)
+        make_sphere(f"{tag}_canopy_a", (cx, cy, canopy_z + 0.9 * scale),
+                    1.85 * scale, canopy_col)
+        make_sphere(f"{tag}_canopy_b", (cx - 0.6 * scale, cy + 0.4 * scale, canopy_z + 1.7 * scale),
+                    1.30 * scale, canopy_col)
+        make_sphere(f"{tag}_canopy_c", (cx + 0.7 * scale, cy - 0.4 * scale, canopy_z + 1.5 * scale),
+                    1.20 * scale, canopy_col)
+        make_sphere(f"{tag}_canopy_d", (cx + 0.2 * scale, cy + 0.7 * scale, canopy_z + 2.0 * scale),
+                    0.90 * scale, canopy_col)
 
     def _live_oak(tag, cx, cy, scale):
         # Spread-crown oak: thick gnarly trunk, low spreading branches, wide canopy
@@ -1721,18 +1873,20 @@ def build_bayou():
         for bi in range(4):
             ang = bi * (3.14159 / 2.0) + _hash(cx + bi * 23) * 0.5
             br_len = 2.5 * scale
-            bx = cx + math.cos(ang) * br_len * 0.5
-            by = cy + math.sin(ang) * br_len * 0.5
-            make_box(f"{tag}_branch_{bi}", (bx, by, branch_z + 0.5 * scale),
-                     (0.30 * scale, 0.30 * scale, 1.0 * scale), trunk_col)
-            # leaf cluster at the end of each branch
-            ex_ = cx + math.cos(ang) * br_len
-            ey_ = cy + math.sin(ang) * br_len
-            make_box(f"{tag}_cluster_{bi}", (ex_, ey_, branch_z + 1.2 * scale),
-                     (2.2 * scale, 2.2 * scale, 1.6 * scale), canopy_col)
-        # central canopy mass
-        make_box(f"{tag}_canopy_main", (cx, cy, branch_z + 1.8 * scale),
-                 (3.4 * scale, 3.4 * scale, 2.0 * scale), canopy_col)
+            # angled branch as a proper tube cylinder between trunk top and branch tip
+            bx_tip = cx + math.cos(ang) * br_len
+            by_tip = cy + math.sin(ang) * br_len
+            bz_tip = branch_z + 0.7 * scale
+            make_tube_segment(f"{tag}_branch_{bi}",
+                              (cx, cy, branch_z),
+                              (bx_tip, by_tip, bz_tip),
+                              0.16 * scale, trunk_col, segments=6)
+            # leaf cluster sphere at the end of each branch
+            make_sphere(f"{tag}_cluster_{bi}", (bx_tip, by_tip, bz_tip + 0.4 * scale),
+                        1.30 * scale, canopy_col)
+        # central canopy mass — a big sphere over the trunk
+        make_sphere(f"{tag}_canopy_main", (cx, cy, branch_z + 1.8 * scale),
+                    1.90 * scale, canopy_col)
 
     def _palmetto(tag, cx, cy, scale):
         # Short palmetto — squat trunk + radiating fronds
@@ -2022,23 +2176,32 @@ def build_distant_atmosphere():
         make_box(f"Bridge_Pier_{pi}_foot", (px_p, br_y, RIVER_LEVEL_Z + 0.20),
                  (2.0, 3.4, 0.40), (0.42, 0.40, 0.36, 1.0))
 
-    # ── A few low cloud shelves drifting overhead ──
-    for ci_c, (cx, cy, cz_c, cw, cl) in enumerate([
-        (-10, -40, 24, 14, 10),
-        ( 14, -10, 28, 18, 12),
-        (-22,  20, 22, 16, 12),
-        (  8,  50, 26, 20, 14),
-        ( 30, -28, 30, 14, 10),
-    ]):
-        # main cloud body
-        make_box(f"Cloud_{ci_c}_a", (cx, cy, cz_c), (cw, cl, 1.8), (0.72, 0.68, 0.62, 1.0))
-        # offset puffs for organic feel
-        make_box(f"Cloud_{ci_c}_b", (cx + cw * 0.20, cy + cl * 0.15, cz_c + 0.6),
-                 (cw * 0.55, cl * 0.55, 1.4), (0.78, 0.74, 0.68, 1.0))
-        make_box(f"Cloud_{ci_c}_c", (cx - cw * 0.15, cy + cl * 0.20, cz_c + 0.3),
-                 (cw * 0.65, cl * 0.45, 1.2), (0.70, 0.66, 0.60, 1.0))
-        make_box(f"Cloud_{ci_c}_d", (cx + cw * 0.10, cy - cl * 0.10, cz_c + 0.5),
-                 (cw * 0.50, cl * 0.50, 1.3), (0.74, 0.70, 0.64, 1.0))
+    # ── Cloud shelves — clusters of overlapping spheres (NOT boxes).
+    # Each cloud is 6-8 lowpoly spheres of varying radius offset around
+    # a center point, with the bottom ones flatter/wider to suggest the
+    # underside of a cumulus shelf.
+    cloud_centers = [
+        (-10, -40, 24), (14, -10, 28), (-22, 20, 22),
+        (  8,  50, 26), (30, -28, 30), (-35, -5, 25),
+        ( 50, 30, 27),
+    ]
+    cloud_colors = [
+        (0.78, 0.74, 0.68, 1.0),
+        (0.74, 0.70, 0.64, 1.0),
+        (0.70, 0.66, 0.60, 1.0),
+        (0.72, 0.69, 0.65, 1.0),
+    ]
+    for ci_c, (cx, cy, cz_c) in enumerate(cloud_centers):
+        # mass body — three biggest puffs forming the bulk
+        make_sphere(f"Cloud_{ci_c}_a", (cx, cy, cz_c),         3.8, cloud_colors[0])
+        make_sphere(f"Cloud_{ci_c}_b", (cx + 3.5, cy - 0.5, cz_c + 0.6), 3.2, cloud_colors[1])
+        make_sphere(f"Cloud_{ci_c}_c", (cx - 3.0, cy + 0.8, cz_c + 0.3), 3.0, cloud_colors[2])
+        # smaller offset puffs for organic silhouette
+        make_sphere(f"Cloud_{ci_c}_d", (cx + 6.0, cy + 1.5, cz_c + 0.4), 2.2, cloud_colors[1])
+        make_sphere(f"Cloud_{ci_c}_e", (cx - 5.5, cy - 1.0, cz_c - 0.2), 2.4, cloud_colors[3])
+        make_sphere(f"Cloud_{ci_c}_f", (cx + 1.5, cy + 3.0, cz_c + 1.5), 2.0, cloud_colors[0])
+        make_sphere(f"Cloud_{ci_c}_g", (cx - 1.5, cy - 3.5, cz_c + 1.2), 1.8, cloud_colors[2])
+        make_sphere(f"Cloud_{ci_c}_h", (cx + 4.5, cy + 3.5, cz_c + 1.6), 1.6, cloud_colors[1])
 
     # ── A sandy beach strip on the boat's stern (downriver of paddle wheel) ──
     sand_col = (0.62, 0.55, 0.40, 1.0)
