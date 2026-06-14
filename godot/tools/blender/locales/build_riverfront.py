@@ -2070,6 +2070,21 @@ def build_road_network():
                        (side_w, ramp_len, raised_z - 0.04),
                        curb_color, pitch_axis='X')
 
+    # End-of-raised-section transition wedges at y = ±22 — without
+    # these the raised slab ends as a sharp 0.18m vertical step where
+    # it meets the original flat sidewalk to the north/south. A 1.4m
+    # ramp run on each end smooths the terrain transition.
+    end_ramp_run = 1.4
+    for end_y, end_sign, end_label in ((-22.0, -1.0, "S"), (22.0, +1.0, "N")):
+        ramp_far = end_y + end_sign * end_ramp_run
+        ramp_near = end_y
+        ramp_cy = (ramp_far + ramp_near) / 2
+        ramp_len = abs(ramp_far - ramp_near)
+        make_prism(f"Raised_End_{end_label}",
+                   (sidewalk_cx, ramp_cy, 0.04),
+                   (side_w, ramp_len, raised_z - 0.04),
+                   curb_color, pitch_axis='X')
+
     # ── UTILITY ISLAND / planted buffer strip between the raised
     # sidewalk and the parking lot's west edge. 5.8m wide.
     strip_inner = lot_cx - lot_x_w/2                    # parking lot west edge
@@ -4212,16 +4227,20 @@ def build_distant_atmosphere():
     # Each cloud is 6-8 lowpoly spheres of varying radius offset around
     # a center point, with the bottom ones flatter/wider to suggest the
     # underside of a cumulus shelf.
+    # NOTE 2026-06-14: vertex colours pulled DEEP DARK so the cloud
+    # geometry reads as silhouette-only through the lithograph and
+    # DOES NOT trigger the starscape's sky_mask threshold. The
+    # animated ASCII cloud + star layers handle the sky instead.
     cloud_centers = [
         (-10, -40, 24), (14, -10, 28), (-22, 20, 22),
         (  8,  50, 26), (30, -28, 30), (-35, -5, 25),
         ( 50, 30, 27),
     ]
     cloud_colors = [
-        (0.78, 0.74, 0.68, 1.0),
-        (0.74, 0.70, 0.64, 1.0),
-        (0.70, 0.66, 0.60, 1.0),
-        (0.72, 0.69, 0.65, 1.0),
+        (0.08, 0.09, 0.11, 1.0),
+        (0.06, 0.07, 0.10, 1.0),
+        (0.05, 0.06, 0.09, 1.0),
+        (0.07, 0.08, 0.10, 1.0),
     ]
     for ci_c, (cx, cy, cz_c) in enumerate(cloud_centers):
         # mass body — three biggest puffs forming the bulk

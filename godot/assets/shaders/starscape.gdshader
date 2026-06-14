@@ -228,12 +228,10 @@ void fragment() {
         total_mask = max(total_mask, layer);
     }
 
-    // Composite as ADDITIVE on top of the dark sky so the stars POP
-    // bright against the near-black fill. Brightness multiplier 1.6
-    // → 2.6 to push the layers HARD against the pure-black field —
-    // "starscape still vague" was the feedback; this should make
-    // the galaxy + chip patterns unmistakable.
+    // Composite as ADDITIVE on top of the dark sky — multiplier 4.0
+    // (was 2.6) so the stars/galaxy/clouds finally read clearly.
+    // sky_active and sky_mask gate to dark pixels only.
     float final_mask = clamp(total_mask * sky_mask * sky_active * strength, 0.0, 1.0);
-    vec3 result = scene_now + paint * final_mask * 2.6;
+    vec3 result = scene_now + paint * final_mask * 4.0;
     COLOR = vec4(result, 1.0);
 }
