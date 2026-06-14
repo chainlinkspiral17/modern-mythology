@@ -82,15 +82,15 @@ void fragment() {
     float scene_max = max(scene_now.r, max(scene_now.g, scene_now.b));
     float sky_mask = 1.0 - smoothstep(sky_thresh * 0.5, sky_thresh, scene_max);
 
-    if (sky_mask <= 0.001) {
-        // Not sky — pass scene through unchanged
-        COLOR = vec4(scene_now, 1.0);
-        return;
-    }
-
     float t = TIME * time_scale;
     vec3 paint = vec3(0.0);
     float total_mask = 0.0;
+
+    // sky_active gates ALL layer computation — if we're not on a sky
+    // pixel, sky_active = 0 and paint stays zero. We can't early-return
+    // from a canvas_item fragment() (Godot rejects it), so we compute
+    // every layer unconditionally and multiply by sky_active at the end.
+    float sky_active = step(0.001, sky_mask);
 
     // ── LAYER 1: slow galaxy spiral ──────────────────────────────
     // Centre the galaxy in the upper-right of the canvas. Polar coord
@@ -106,58 +106,46 @@ void fragment() {
         float core_mask = 1.0 - smoothstep(0.0, 0.25, r);
         float spiral_falloff = 1.0 - smoothstep(0.0, 1.0, r);
         float galaxy_val = max(arm_mask * spiral_falloff, core_mask) * galaxy_strength;
-        if (galaxy_val > 0.10) {
-            float glyph = core_mask > 0.5 ? g_asterisk(local) : g_dot(local, 0.10);
-            paint = max(paint, galaxy_col.rgb * galaxy_val * glyph);
-            total_mask = max(total_mask, galaxy_val * glyph);
-        }
+        float glyph = core_mask > 0.5 ? g_asterisk(local) : g_dot(local, 0.10);
+        float layer = galaxy_val * glyph;
+        paint = max(paint, galaxy_col.rgb * layer);
+        total_mask = max(total_mask, layer);
     }
 
     // ── LAYER 2: random twinkling stars ──────────────────────────
-    // Hash by cell index → ~2 % of cells are stars. Each has a phase
-    // offset, twinkles over time. Skip cells already painted by galaxy.
     {
         float seed = hash21(cell_idx);
-        if (seed > 0.978) {
-            float phase = hash11(seed * 100.0) * 6.2831;
-            float twinkle = 0.5 + 0.5 * sin(t * 1.4 + phase);
-            float val = twinkle * star_strength;
-            // Pick glyph from a 2nd hash — dot vs 4-point star
-            float glyph_pick = hash11(seed * 31.7);
-            float glyph = (glyph_pick > 0.65) ? g_star4(local) : g_dot(local, 0.12);
-            paint = max(paint, star_white.rgb * val * glyph);
-            total_mask = max(total_mask, val * glyph);
-        }
+        float star_active = step(0.978, seed);
+        float phase = hash11(seed * 100.0) * 6.2831;
+        float twinkle = 0.5 + 0.5 * sin(t * 1.4 + phase);
+        float val = twinkle * star_strength * star_active;
+        float glyph_pick = hash11(seed * 31.7);
+        float glyph = (glyph_pick > 0.65) ? g_star4(local) : g_dot(local, 0.12);
+        float layer = val * glyph;
+        paint = max(paint, star_white.rgb * layer);
+        total_mask = max(total_mask, layer);
     }
 
     // ── LAYER 3: fungal microchip ────────────────────────────────
-    // Drifting hex-ish grid of cyan dots with organic branching
-    // connections. Grid is the "microchip"; branches grow between
-    // adjacent nodes — "fungal." Drifts slowly across the sky.
     {
         vec2 chip_offset = vec2(t * 0.30, t * 0.18);
         vec2 chip_uv = cell_idx * 0.18 + chip_offset;
         float node = hash21(floor(chip_uv));
-        float branch_a = hash11(node * 11.0);
-        // Sparse node grid
-        float node_val = 0.0;
-        if (node > 0.62) {
-            node_val = (node - 0.62) * 2.6 * chip_strength;
-        }
-        // Organic branches: a 2-d sine pattern at lower freq
+        float node_val = max(0.0, (node - 0.62) * 2.6) * chip_strength;
         float branch = sin(chip_uv.x * 4.0 + t * 0.7) * sin(chip_uv.y * 3.0 - t * 0.5);
         float branch_val = smoothstep(0.86, 0.96, branch) * chip_strength * 0.7;
         float chip_val = max(node_val, branch_val);
-        if (chip_val > 0.08) {
-            float glyph_pick = hash11(node * 17.3);
-            float glyph = glyph_pick > 0.5 ? g_dot(local, 0.08) : g_star4(local);
-            paint = max(paint, chip_col.rgb * chip_val * glyph);
-            total_mask = max(total_mask, chip_val * glyph);
-        }
+        float glyph_pick = hash11(node * 17.3);
+        float glyph = glyph_pick > 0.5 ? g_dot(local, 0.08) : g_star4(local);
+        float layer = chip_val * glyph;
+        paint = max(paint, chip_col.rgb * layer);
+        total_mask = max(total_mask, layer);
     }
 
-    // Composite over the dark sky scene, gated by sky_mask × strength
-    float final_mask = clamp(total_mask * sky_mask * strength, 0.0, 1.0);
+    // Composite over the dark sky scene, gated by sky_mask × strength.
+    // sky_active and sky_mask both fold in so non-sky pixels keep the
+    // scene unchanged.
+    float final_mask = clamp(total_mask * sky_mask * sky_active * strength, 0.0, 1.0);
     vec3 result = mix(scene_now, paint, final_mask);
     COLOR = vec4(result, 1.0);
 }
