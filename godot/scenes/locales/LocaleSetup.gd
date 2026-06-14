@@ -43,13 +43,55 @@ func _ready() -> void:
     var meshes := _collect_mesh_instances(self)
     var applied := 0
     var collided := 0
+    var sign_panels_n: Array = []
+    var sign_panels_s: Array = []
+    var boat_panels: Array = []
     for mi in meshes:
         mi.material_override = mat
         applied += 1
         if add_colliders and _should_have_collider(mi.name):
             _ensure_static_collider(mi)
             collided += 1
+        # Collect sign panel meshes so we can attach Label3D text to them
+        if "Sign_Panel_N" in mi.name:
+            sign_panels_n.append(mi)
+        elif "Sign_Panel_S" in mi.name:
+            sign_panels_s.append(mi)
+        elif "BoatSign_Panel" in mi.name:
+            boat_panels.append(mi)
     print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
+    # Attach real Label3D text to the sign panels. Procedural tube-letters
+    # can't be legible at the screen post-process resolution — Label3D
+    # renders proper font glyphs that stay sharp through the shader stack.
+    for panel in sign_panels_n:
+        _attach_sign_label(panel, Vector3(0, 0, 0.07), Vector3.ZERO)
+    for panel in sign_panels_s:
+        _attach_sign_label(panel, Vector3(0, 0, -0.07), Vector3(0, PI, 0))
+    for panel in boat_panels:
+        # Boat sign faces -X (toward parking lot). Offset is in local
+        # X (panel face direction). Rotate 90° around Y so the text
+        # faces -X.
+        _attach_sign_label(panel, Vector3(-0.07, 0, 0), Vector3(0, PI / 2.0, 0))
+
+
+func _attach_sign_label(panel: MeshInstance3D, local_offset: Vector3, rotation: Vector3) -> void:
+    """Create a Label3D child of the given panel showing 'D'Ambrosio's'
+    in big red text with emission. Renders at native font resolution so
+    it survives the screen post-process cleanly."""
+    var label := Label3D.new()
+    label.text = "D'Ambrosio's"
+    label.font_size = 96
+    label.outline_size = 6
+    label.modulate = Color(0.98, 0.18, 0.20, 1.0)
+    label.outline_modulate = Color(0.10, 0.0, 0.0, 1.0)
+    label.no_depth_test = false
+    label.shaded = false   # ignore scene lighting; the sign is "lit" neon
+    label.double_sided = true
+    label.alpha_cut = BaseMaterial3D.ALPHA_CUT_OPAQUE_PREPASS
+    label.pixel_size = 0.008   # 96px * 0.008 = ~0.77m tall letters
+    label.transform.origin = local_offset
+    label.rotation = rotation
+    panel.add_child(label)
 
 
 func _make_material() -> Material:

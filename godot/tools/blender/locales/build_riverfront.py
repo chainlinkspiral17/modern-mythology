@@ -1164,12 +1164,9 @@ def build_riverboat():
              (0.06, 0.14, boat_sign_h + 0.22), (0.32, 0.26, 0.20, 1.0))
     make_box("BoatSign_FrameAft", (fy, boat_sign_cy - boat_sign_w/2 - 0.10, boat_sign_cz),
              (0.06, 0.14, boat_sign_h + 0.22), (0.32, 0.26, 0.20, 1.0))
-    # Cursive D'Ambrosio's on the boat sign. User prefers cursive over
-    # block letters (block looked bad). Scale 2.0× the cursive baseline
-    # so it fills the panel and reads from across the lot.
-    make_neon_dambrosios("Boat_Port",
-                          (boat_sign_cx - 0.08, boat_sign_cy, boat_sign_cz),
-                          face_axis='X', face_sign=-1, scale=2.0)
+    # Boat-sign text — handled by Godot Label3D at scene load.
+    # See note in the pole-sign section above. The BoatSign_Panel
+    # mesh gets a Label3D child rendering the text in native font.
 
     # Hawser bollards (mooring posts) on the boiler deck along the PORT rail
     for i, by_p in enumerate([-5.0, 5.0]):
@@ -1478,13 +1475,12 @@ def build_parking_lot():
         make_box(f"Sign_Frame_{label}_R",   (sign_x + sign_w/2 + 0.06, sign_y + face_y, sign_z),
                  (0.12, 0.06, sign_h + 0.20), (0.32, 0.26, 0.20, 1.0))
 
-    # ── CURSIVE RED NEON: D'Ambrosio's — both faces of the pole sign,
-    # via the shared module-level helper. Scaled up to fill the panel
-    # (was 1.0 → too much black margin on the 6.4m wide sign).
-    make_neon_dambrosios("Pole_N", (sign_x, sign_y + 0.10, sign_z),
-                          face_axis='Y', face_sign=+1, scale=1.4)
-    make_neon_dambrosios("Pole_S", (sign_x, sign_y - 0.10, sign_z),
-                          face_axis='Y', face_sign=-1, scale=1.4)
+    # ── D'AMBROSIO'S text on the pole sign — handled by Godot's
+    # Label3D at scene load (LocaleSetup.gd finds Sign_Panel_N/S
+    # meshes and attaches real font-rendered text to them). The
+    # procedural tube-letter approach (cursive_type) never produced
+    # legible glyphs through the post-process at viewing distance —
+    # native font rendering does.
 
 
 # ════════════════════════════════════════════════════════════════
