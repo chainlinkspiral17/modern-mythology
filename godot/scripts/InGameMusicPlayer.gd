@@ -83,10 +83,20 @@ func _scan_directory(scan_dir: String) -> void:
     while file_name != "":
         if not dir.current_is_dir():
             var lower: String = file_name.to_lower()
-            var path: String = scan_dir + file_name
-            var stream: AudioStream = _load_audio_stream(path, lower)
-            if stream != null:
-                _tracks.append({"name": file_name, "stream": stream, "src": scan_dir})
+            # Filter to audio extensions only. DirAccess returns
+            # .import metadata files alongside real audio in res://
+            # scans — ResourceLoader fails on those. Skip everything
+            # that isn't a .ogg / .oga / .mp3.
+            var is_audio: bool = (
+                lower.ends_with(".ogg") or
+                lower.ends_with(".oga") or
+                lower.ends_with(".mp3")
+            )
+            if is_audio:
+                var path: String = scan_dir + file_name
+                var stream: AudioStream = _load_audio_stream(path, lower)
+                if stream != null:
+                    _tracks.append({"name": file_name, "stream": stream, "src": scan_dir})
         file_name = dir.get_next()
     dir.list_dir_end()
     var added: int = _tracks.size() - initial
