@@ -32,7 +32,7 @@ shader_parameter/ascii_bg = Color(0.06, 0.04, 0.02, 1)
 [sub_resource type="ShaderMaterial" id="Mat_Edges"]
 shader = ExtResource("6_edges")
 shader_parameter/edge_strength = 0.0
-shader_parameter/edge_threshold = 0.0015
+shader_parameter/edge_threshold = 0.18
 shader_parameter/edge_color = Color(0.92, 0.78, 0.45, 1)
 shader_parameter/edge_bg_color = Color(0.05, 0.04, 0.02, 1)
 shader_parameter/glyph_cell_size = 10.0
@@ -86,8 +86,8 @@ shadow_enabled = false
 script = ExtResource("8_setup")
 add_colliders = false
 albedo_brightness = 1.15
-ps2_grid = 320.0
-wobble_amount = 1.0
+ps2_grid = 640.0
+wobble_amount = 0.7
 
 [node name="GroundBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
@@ -119,15 +119,15 @@ far = 300.0
 layer = 50
 script = ExtResource("5_mood")
 
-[node name="Quad" type="ColorRect" parent="PostProcess"]
-material = SubResource("Mat_Post")
+[node name="EdgeQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Edges")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="EdgeQuad" type="ColorRect" parent="PostProcess"]
-material = SubResource("Mat_Edges")
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
