@@ -362,7 +362,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
 layer = 100
 
 [node name="PDPRiffmaster" type="Node" parent="."]

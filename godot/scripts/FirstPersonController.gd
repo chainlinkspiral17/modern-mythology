@@ -109,8 +109,24 @@ func action_teleport_origin() -> void:
 
 
 func action_toggle_hud() -> void:
-    # Toggle the debug HUD CanvasLayer. The riverfront scene's HUD
-    # lives at "../HUD" by convention (sibling of Player).
+    # Clean HUD = ALL floating UI canvases off. Walk the "ui" group
+    # for the scene HUD + InGameMusic track label + any other UI
+    # CanvasLayer / Control that joined the group. Snap them all to
+    # the same visibility state. Duck-typed .visible access because
+    # CanvasLayer (track label) doesn't extend CanvasItem in Godot 4
+    # — both have their own .visible property.
+    var ui_nodes: Array = get_tree().get_nodes_in_group("ui")
+    if not ui_nodes.is_empty():
+        var first: Node = ui_nodes[0] as Node
+        if first and "visible" in first:
+            var target: bool = not first.visible
+            for n in ui_nodes:
+                if "visible" in n:
+                    n.visible = target
+            print("[FPC] HUD visible = %s (%d ui nodes)" % [target, ui_nodes.size()])
+            return
+    # Fallback if no nodes are in "ui" group yet — toggle the scene's
+    # ../HUD CanvasLayer directly.
     var hud := get_node_or_null(NodePath("../HUD"))
     if hud is CanvasLayer:
         hud.visible = not hud.visible

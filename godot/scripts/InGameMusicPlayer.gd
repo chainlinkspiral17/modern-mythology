@@ -135,6 +135,7 @@ func _spawn_player() -> void:
 func _spawn_hud() -> void:
     _hud_layer = CanvasLayer.new()
     _hud_layer.layer = 110     # above scene HUD (which is at 100)
+    _hud_layer.add_to_group("ui")   # F4 clean-HUD toggles us too
     add_child(_hud_layer)
     _hud_label = Label.new()
     _hud_label.offset_left = 16.0
