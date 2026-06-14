@@ -22,6 +22,11 @@
 
 extends Node3D
 
+# Thick Italian/French brush-script for D'Ambrosio's signage — fits
+# the creole boat-life vibe the reference concept art is pushing.
+# Lobster is OFL-licensed; designer Pablo Impallari.
+const CURSIVE_FONT: Font = preload("res://resources/fonts/Lobster-Regular.ttf")
+
 @export var use_palette_shader: bool = false
 @export var palette_shader: Shader = null
 @export var add_colliders: bool = true
@@ -77,12 +82,16 @@ func _ready() -> void:
     # (0, 0, 1) the labels came out rotated 90° around the panel's
     # face axis (text reading vertically along the panel height
     # instead of horizontally along the panel width).
+    # pixel_size dialed down for the Lobster cursive — Lobster's
+    # strokes are wider per character than the default sans-serif,
+    # so the physical font is shrunk to keep text inside the panel
+    # boundaries. Pole 6.4 × 2m → 0.008. Boat 7.6 × 2.4m → 0.011.
     for panel in sign_panels_n:
-        _attach_sign_label(panel, Vector3(0, 0, -0.10), Vector3(0, 0, -1), 0.010)
+        _attach_sign_label(panel, Vector3(0, 0, -0.10), Vector3(0, 0, -1), 0.008)
     for panel in sign_panels_s:
-        _attach_sign_label(panel, Vector3(0, 0,  0.10), Vector3(0, 0,  1), 0.010)
+        _attach_sign_label(panel, Vector3(0, 0,  0.10), Vector3(0, 0,  1), 0.008)
     for panel in boat_panels:
-        _attach_sign_label(panel, Vector3(-0.10, 0, 0), Vector3(-1, 0, 0), 0.013)
+        _attach_sign_label(panel, Vector3(-0.10, 0, 0), Vector3(-1, 0, 0), 0.011)
 
 
 func _attach_sign_label(panel: MeshInstance3D, world_face_offset: Vector3, face_normal: Vector3, pixel_size: float = 0.010) -> void:
@@ -91,8 +100,13 @@ func _attach_sign_label(panel: MeshInstance3D, world_face_offset: Vector3, face_
     (+Z) points in face_normal."""
     var label := Label3D.new()
     label.text = "D'Ambrosio's"
-    label.font_size = 96
-    label.outline_size = 8
+    label.font = CURSIVE_FONT
+    # Lobster reads ~75% the width of a sans at the same point size,
+    # so the font_size bump from 96 → 128 keeps the text filling the
+    # panel. Outline thickened too so the cursive strokes survive
+    # the lithograph post-process at parking-lot distance.
+    label.font_size = 128
+    label.outline_size = 10
     label.modulate = Color(0.98, 0.18, 0.20, 1.0)
     label.outline_modulate = Color(0.08, 0.0, 0.0, 1.0)
     label.no_depth_test = false
