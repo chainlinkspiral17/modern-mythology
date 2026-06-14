@@ -633,14 +633,24 @@ def build_pond_water():
             faces2.append([0, 1 + i, 1 + ni])
         _finalize_mesh(f"PondDeep_{name}", verts2, faces2,
                        (0.18, 0.32, 0.42, 1.0))    # deep navy
-        # Sandy beach ring outside the water
+        # Sandy beach ring outside the water — IRREGULAR outer
+        # edge per vertex so the bank reads natural, not stamped.
+        # Inner edge stays clean against the water; outer wobbles.
         outer = radius * 0.95
         beach_z = water_z + 0.15
         bverts = []
         for ring in (0, 1):
-            r = wr if ring == 0 else outer
+            r_base = wr if ring == 0 else outer
             for i in range(segments):
                 ang = 2.0 * math.pi * i / segments
+                # Deterministic perturbation only on the outer ring
+                if ring == 1:
+                    # Per-vertex wobble seeded by pond name + i
+                    seed_h = hash((name, i)) & 0xFFFF
+                    wobble = (seed_h % 100 - 50) / 50.0   # -1..+1
+                    r = r_base + wobble * radius * 0.10   # ±10%
+                else:
+                    r = r_base
                 bverts.append((cx + math.cos(ang) * r,
                                cy + math.sin(ang) * r,
                                beach_z))
@@ -824,22 +834,47 @@ def build_oliver_tree_memorial():
     sx, sy = -260.0, 120.0
     ground_z = hce_elevation(sx, sy)
 
-    # ── Plinth ──────────────────────────────────────────────────
-    COL_PLINTH = (0.78, 0.74, 0.66, 1.0)
+    # ── Plinth · three tiers (base + tapered shaft + cap) ──────
+    COL_PLINTH_BASE = (0.68, 0.64, 0.56, 1.0)    # darker base stone
+    COL_PLINTH_SHAFT = (0.78, 0.74, 0.66, 1.0)   # cream main
+    COL_PLINTH_CAP = (0.85, 0.80, 0.70, 1.0)     # lighter cap
     COL_PLAQUE = (0.65, 0.48, 0.20, 1.0)
-    plinth_w = 2.6
-    plinth_d = 2.2
-    plinth_h = 1.5
-    plinth_z = ground_z + plinth_h / 2
+    # Wider stepped base
+    base_w, base_d, base_h = 3.4, 3.0, 0.5
+    base_z = ground_z + base_h / 2
+    _make_box_local("OT_Plinth_Base",
+                    (sx, sy, base_z),
+                    (base_w, base_d, base_h),
+                    COL_PLINTH_BASE)
+    # Tapered shaft — middle tier
+    shaft_w, shaft_d, shaft_h = 2.6, 2.2, 1.2
+    shaft_z = ground_z + base_h + shaft_h / 2
     _make_box_local("OT_Plinth",
-                    (sx, sy, plinth_z),
-                    (plinth_w, plinth_d, plinth_h),
-                    COL_PLINTH)
-    # Brass plaque on the front (south face)
+                    (sx, sy, shaft_z),
+                    (shaft_w, shaft_d, shaft_h),
+                    COL_PLINTH_SHAFT)
+    # Cap overhang — light stone moulding
+    cap_w, cap_d, cap_h = 2.9, 2.5, 0.20
+    cap_z = ground_z + base_h + shaft_h + cap_h / 2
+    _make_box_local("OT_Plinth_Cap",
+                    (sx, sy, cap_z),
+                    (cap_w, cap_d, cap_h),
+                    COL_PLINTH_CAP)
+    # Brass plaque on the shaft front (south face)
     _make_box_local("OT_Plaque",
-                    (sx, sy - plinth_d / 2 - 0.04, plinth_z + 0.10),
-                    (1.6, 0.08, 0.60),
+                    (sx, sy - shaft_d / 2 - 0.04, shaft_z),
+                    (1.8, 0.08, 0.80),
                     COL_PLAQUE)
+    # Plinth corner detail — small column stubs at each base corner
+    for (cx_off, cy_off) in [(-base_w / 2 + 0.25, -base_d / 2 + 0.25),
+                              (base_w / 2 - 0.25, -base_d / 2 + 0.25),
+                              (base_w / 2 - 0.25, base_d / 2 - 0.25),
+                              (-base_w / 2 + 0.25, base_d / 2 - 0.25)]:
+        _make_cyl_local(f"OT_Plinth_Corner_{cx_off:+.1f}_{cy_off:+.1f}",
+                        (sx + cx_off, sy + cy_off,
+                         ground_z + base_h + 0.10),
+                        0.10, 0.20, COL_PLINTH_CAP, segments=6)
+    plinth_h = base_h + shaft_h + cap_h    # total stack height
 
     # ── The figure itself, via the human_sculpt pipeline ────────
     base_z = ground_z + plinth_h   # feet sit on top of the plinth
@@ -866,6 +901,7 @@ def build_oliver_tree_memorial():
         mouth_color=(0.55, 0.22, 0.28, 1.0),
         jacket_puffy=True,                        # PUFFER silhouette
         pose='right_mic',                         # right arm raised
+        lean_x=0.25,                              # contrapposto hip shift
     )
 
     # ── PROP: microphone attached to the RIGHT HAND ───────────
@@ -882,10 +918,52 @@ def build_oliver_tree_memorial():
                            0.13, (0.18, 0.18, 0.18, 1.0),
                            rings=3, segments=8)
 
-    # ── PROP: green Razor scooter leaning against the plinth ───
-    _build_scooter("OT_Scooter", sx + 1.8, sy + 0.4, base_z,
+    # ── PROP: green Razor scooter at ground level beside plinth ─
+    _build_scooter("OT_Scooter", sx + 2.6, sy - 0.4, ground_z,
                    color_deck=(0.30, 0.55, 0.25, 1.0),
                    color_metal=(0.78, 0.78, 0.80, 1.0))
+
+    # ── MEMORIAL TRIBUTES at the south face of the plinth ─────
+    # The "fans left flowers and photos at the base" beat — small
+    # coloured boxes suggesting bouquets, photos in frames, lit
+    # candles, scattered scooter wheels (the fan-tribute classics).
+    tribute_y = sy - shaft_d / 2 - 0.5    # just outside the plaque
+    # Bouquets — pink + yellow + white + red
+    tribute_specs = [
+        (sx - 0.9, tribute_y + 0.05, (0.95, 0.42, 0.62, 1.0)),  # pink
+        (sx - 0.4, tribute_y + 0.0,  (0.95, 0.88, 0.30, 1.0)),  # yellow
+        (sx + 0.0, tribute_y - 0.05, (0.92, 0.90, 0.84, 1.0)),  # white
+        (sx + 0.5, tribute_y + 0.05, (0.85, 0.20, 0.20, 1.0)),  # red
+        (sx + 1.0, tribute_y + 0.0,  (0.68, 0.42, 0.85, 1.0)),  # purple
+    ]
+    for i, (tx, ty, tcol) in enumerate(tribute_specs):
+        # Wrapped-paper cone (stem block + flower cluster on top)
+        _make_box_local(f"OT_Tribute_Stem_{i}",
+                        (tx, ty, ground_z + 0.10),
+                        (0.18, 0.18, 0.20),
+                        (0.72, 0.62, 0.45, 1.0))    # craft paper
+        _make_sphere_low_local(f"OT_Tribute_Bouquet_{i}",
+                               (tx, ty, ground_z + 0.32),
+                               0.18, tcol, rings=3, segments=6)
+    # Two lit-candle tributes (yellow flame on a white candle stub)
+    for cdx in (-1.4, 1.4):
+        _make_cyl_local(f"OT_Tribute_Candle_{cdx:+.1f}",
+                        (sx + cdx, tribute_y, ground_z + 0.12),
+                        0.06, 0.22, (0.92, 0.90, 0.84, 1.0),
+                        segments=6)
+        _make_sphere_low_local(f"OT_Tribute_Flame_{cdx:+.1f}",
+                               (sx + cdx, tribute_y, ground_z + 0.30),
+                               0.06, (0.98, 0.78, 0.20, 1.0),
+                               rings=3, segments=6)
+    # Photo in a frame (small upright cream rectangle on a stand)
+    _make_box_local("OT_Tribute_Photo",
+                    (sx - 1.5, tribute_y - 0.10, ground_z + 0.30),
+                    (0.30, 0.04, 0.40),
+                    (0.95, 0.92, 0.84, 1.0))
+    # A single scooter wheel laid on the ground (the iconic prop)
+    _make_cyl_local("OT_Tribute_Wheel",
+                    (sx + 1.6, tribute_y - 0.20, ground_z + 0.08),
+                    0.10, 0.06, (0.12, 0.12, 0.12, 1.0), segments=8)
 
 
 def _build_oriented_handle(name, p0, p1, radius, color, segments=6):
@@ -1178,6 +1256,38 @@ def build_oliver_tree_memorial_park():
                         (sx_bed - 0.10, sy_bed - 0.10, 0.18),
                         COL_FLOWER_PINK)
 
+    # ── PARK ENTRY ARCHWAY · stone arch over the south entry ─
+    arch_y = sy - outer_r - 30      # ~30 m south of the ring
+    arch_w = 7.0     # gap width
+    arch_post_w = 1.0
+    arch_post_h = 4.5
+    arch_post_d = 1.2
+    # Two stone posts flanking the path
+    for sign in (-1, 1):
+        _make_box_local(f"OTPark_ArchPost_{sign:+d}",
+                        (sx + sign * (arch_w / 2 + arch_post_w / 2),
+                         arch_y, park_z + arch_post_h / 2),
+                        (arch_post_w, arch_post_d, arch_post_h),
+                        COL_PLINTH_BASE)
+        # Cap stone on top of each post
+        _make_box_local(f"OTPark_ArchPostCap_{sign:+d}",
+                        (sx + sign * (arch_w / 2 + arch_post_w / 2),
+                         arch_y, park_z + arch_post_h + 0.15),
+                        (arch_post_w + 0.30, arch_post_d + 0.30, 0.25),
+                        COL_PLINTH_CAP)
+    # Horizontal arch beam — heavy stone lintel
+    _make_box_local("OTPark_ArchBeam",
+                    (sx, arch_y, park_z + arch_post_h + 0.65),
+                    (arch_w + 2 * arch_post_w + 0.6, arch_post_d + 0.3, 0.55),
+                    COL_PLINTH_SHAFT)
+    # Decorative inscribed panel on the beam (will get Label3D
+    # via LocaleSetup recognising "OTPark_ArchInscription")
+    _make_box_local("OTPark_ArchInscription",
+                    (sx, arch_y - arch_post_d / 2 - 0.04,
+                     park_z + arch_post_h + 0.65),
+                    (arch_w + 1.5, 0.06, 0.40),
+                    (0.45, 0.40, 0.32, 1.0))
+
     # ── Park sign at the SOUTH entry ─────────────────────────
     sign_x = sx
     sign_y = sy - outer_r - 48     # near the end of the south path
@@ -1216,16 +1326,29 @@ def build_oliver_tree_memorial_park():
                               sx - 20, sy - 5, park_z)
 
     # ── Path-edging stones along the ring (decorative) ──────
-    # Small cream stones every 8 m around the outer ring perimeter
-    edge_count = 12
+    # 16 stones around the outer ring. Each gets a slight size +
+    # colour wobble so the line of stones reads as cut-and-placed
+    # natural pieces, not extruded duplicates.
+    edge_count = 16
+    stone_palette = [
+        (0.82, 0.78, 0.66, 1.0),
+        (0.74, 0.70, 0.60, 1.0),
+        (0.86, 0.80, 0.66, 1.0),
+        (0.68, 0.62, 0.52, 1.0),
+        (0.78, 0.72, 0.62, 1.0),
+    ]
     for i in range(edge_count):
         ang = 2.0 * math.pi * i / edge_count
         ex = sx + math.cos(ang) * (outer_r + 0.4)
         ey = sy + math.sin(ang) * (outer_r + 0.4)
+        # Deterministic variation
+        seed = (i * 23) % 100
+        sw = 0.40 + (seed % 4) * 0.06    # 0.40 – 0.58 m
+        sh = 0.22 + (seed % 3) * 0.05    # 0.22 – 0.32 m
+        col = stone_palette[seed % len(stone_palette)]
         _make_box_local(f"OTPark_EdgeStone_{i}",
-                        (ex, ey, park_z + 0.18),
-                        (0.50, 0.50, 0.30),
-                        (0.82, 0.78, 0.66, 1.0))
+                        (ex, ey, park_z + sh / 2 + 0.02),
+                        (sw, sw, sh), col)
 
     # ── BOULDERS · natural-feature accents scattered in the lawn ─
     # Six low boulders in deterministic positions outside the
@@ -1279,6 +1402,60 @@ def build_oliver_tree_memorial_park():
         _make_box_local(f"OTPark_ExtraFlowers_{int(fx)}_{int(fy)}",
                         (fx, fy, park_z + 0.36),
                         (1.30, 0.65, 0.14), fcol)
+
+    # ── NPCs · a few human figures populate the park so it reads
+    # as a lived-in place. All use human_sculpt.human_figure at
+    # real scale (1.0). Outfits are deliberately varied so the
+    # park doesn't feel like a uniformed group.
+    # Visitor walking along the south path (toward the statue)
+    human_figure(
+        name="OTPark_NPC_Walker",
+        base_x=sx + 1.5, base_y=sy - outer_r - 14, base_z=park_z,
+        scale=1.0, facing='+Y',
+        hair_style='short', hair_color=(0.42, 0.28, 0.20, 1.0),
+        jacket_color=(0.38, 0.55, 0.68, 1.0),         # blue windbreaker
+        pants_color=(0.32, 0.32, 0.36, 1.0),
+        shoe_color=(0.18, 0.18, 0.22, 1.0),
+        with_ears=True, pose='arms_out',
+    )
+    # Sitting-near-bench visitor (just standing next to a bench
+    # facing the statue — sitting pose isn't in the pipeline yet)
+    human_figure(
+        name="OTPark_NPC_Visitor1",
+        base_x=sx - 11, base_y=sy + 9, base_z=park_z,
+        scale=1.0, facing='+X',
+        hair_style='bowl', hair_color=(0.62, 0.42, 0.18, 1.0),
+        jacket_color=(0.78, 0.32, 0.42, 1.0),         # red coat
+        pants_color=(0.30, 0.28, 0.32, 1.0),
+        scarf_color=(0.86, 0.78, 0.55, 1.0),
+        with_ears=True,
+    )
+    # Photographer / fan on the terrace overlook
+    human_figure(
+        name="OTPark_NPC_OnTerrace",
+        base_x=sx - 2, base_y=sy + outer_r + 30 + 9,
+        base_z=park_z + 1.50,
+        scale=1.0, facing='-Y',
+        hair_style='short', hair_color=(0.18, 0.18, 0.22, 1.0),
+        jacket_color=(0.32, 0.42, 0.32, 1.0),         # green field jacket
+        pants_color=(0.50, 0.45, 0.32, 1.0),          # khaki
+        shoe_color=(0.42, 0.30, 0.22, 1.0),
+        has_sunglasses=True,
+        sunglasses_color=(0.12, 0.12, 0.12, 1.0),
+        with_ears=True,
+    )
+    # Kid by the reflecting pool
+    human_figure(
+        name="OTPark_NPC_Kid",
+        base_x=sx + 5, base_y=sy - 18, base_z=park_z,
+        scale=0.65,                                    # child-sized
+        facing='+X',
+        hair_style='short', hair_color=(0.72, 0.55, 0.22, 1.0),
+        jacket_color=(0.95, 0.68, 0.30, 1.0),         # yellow raincoat
+        pants_color=(0.32, 0.42, 0.62, 1.0),
+        shoe_color=(0.85, 0.20, 0.18, 1.0),            # red shoes
+        with_ears=True,
+    )
 
     # ── Beacon relocated to the park south entry ────────────
     beacon_x = sx

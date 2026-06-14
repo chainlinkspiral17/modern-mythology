@@ -531,7 +531,8 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
                  with_mouth=False,
                  mouth_color=(0.62, 0.30, 0.32, 1.0),
                  jacket_puffy=False,
-                 pose='standing'):
+                 pose='standing',
+                 lean_x=0.0):
     """Build a parametric standing human figure at (base_x, base_y,
     base_z) with feet on the ground at base_z. See module docstring
     for full parameter notes."""
@@ -542,8 +543,10 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
     pelvis_bottom_z = _build_legs(name, base_x, base_y,
                                   base_z + PROP["foot_h"] * s,
                                   s, pants_color, pants_flare)
-    # Torso from pelvis up to shoulders
-    shoulder_z = _build_torso(name, base_x, base_y,
+    # Torso — contrapposto lean offsets upper body by lean_x metres.
+    # Pelvis stays anchored on the leg centreline so the figure
+    # reads as a hip shift / shoulder counter-tilt classical pose.
+    shoulder_z = _build_torso(name, base_x + lean_x, base_y,
                               pelvis_bottom_z + PROP["pelvis_h"] * s,
                               s, jacket_color,
                               yoke_color=yoke_color,
@@ -551,18 +554,19 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
                               accent_color=accent_color,
                               facing=facing,
                               puffy=jacket_puffy)
-    # Arms — pose-aware. Returns the hand-tip positions so the
-    # caller can attach props (mic, scooter handle, etc.) to a
-    # specific hand.
-    hand_positions = _build_arms(name, base_x, base_y, shoulder_z, s,
+    # Arms — pose-aware, shifted by the same lean offset as torso
+    hand_positions = _build_arms(name, base_x + lean_x, base_y,
+                                  shoulder_z, s,
                                   jacket_color, skin_color,
                                   pose=pose, facing=facing)
-    # Scarf wraps the neck base
-    _build_scarf(name, base_x, base_y, shoulder_z, s, scarf_color)
+    # Scarf wraps the neck base — also leans with the torso
+    _build_scarf(name, base_x + lean_x, base_y, shoulder_z, s, scarf_color)
     # Neck on top of scarf area
-    head_base_z = _build_neck(name, base_x, base_y, shoulder_z, s, skin_color)
-    # Head with hair + optional sunglasses + ears + mouth
-    _build_head(name, base_x, base_y, head_base_z, s,
+    head_base_z = _build_neck(name, base_x + lean_x, base_y,
+                              shoulder_z, s, skin_color)
+    # Head — counter-tilt by half the lean for a subtle s-curve
+    head_x = base_x + lean_x * 0.5
+    _build_head(name, head_x, base_y, head_base_z, s,
                 skin_color, hair_color, hair_style, facing,
                 has_sunglasses=has_sunglasses,
                 sunglasses_color=sunglasses_color,

@@ -53,6 +53,8 @@ func _ready() -> void:
     var sign_panels_n: Array = []
     var sign_panels_s: Array = []
     var boat_panels: Array = []
+    var ot_plaque_panels: Array = []
+    var ot_park_sign_panels: Array = []
     for mi in meshes:
         mi.material_override = mat
         applied += 1
@@ -66,6 +68,12 @@ func _ready() -> void:
             sign_panels_s.append(mi)
         elif "BoatSign_Panel" in mi.name:
             boat_panels.append(mi)
+        elif "OT_Plaque" in mi.name:
+            ot_plaque_panels.append(mi)
+        elif "OTPark_SignLetters" in mi.name:
+            ot_park_sign_panels.append(mi)
+        elif "OTPark_ArchInscription" in mi.name:
+            ot_park_sign_panels.append(mi)
     print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
     # Attach real Label3D text to the sign panels.
     #
@@ -94,6 +102,58 @@ func _ready() -> void:
         _attach_sign_label(panel, Vector3(0, 0,  0.10), Vector3(0, 0,  1), 0.008)
     for panel in boat_panels:
         _attach_sign_label(panel, Vector3(-0.10, 0, 0), Vector3(-1, 0, 0), 0.011)
+    # OT statue brass plaque — faces SOUTH (Blender -Y → Godot +Z)
+    # Text: "OLIVER TREE · 1993-2026" in cream serif on brass.
+    for panel in ot_plaque_panels:
+        _attach_text_label(panel,
+                           Vector3(0, 0, 0.08),
+                           Vector3(0, 0, 1),
+                           "OLIVER TREE\n1993 – 2026",
+                           pixel_size=0.008,
+                           text_color=Color(0.94, 0.88, 0.72, 1.0),
+                           outline_color=Color(0.12, 0.08, 0.04, 1.0))
+    # Park entry sign — south-facing, brown panel with cream face
+    for panel in ot_park_sign_panels:
+        _attach_text_label(panel,
+                           Vector3(0, 0, 0.08),
+                           Vector3(0, 0, 1),
+                           "The Oliver Tree\nMemorial Park",
+                           pixel_size=0.010,
+                           text_color=Color(0.32, 0.22, 0.16, 1.0),
+                           outline_color=Color(0.86, 0.82, 0.70, 1.0))
+
+
+func _attach_text_label(panel: MeshInstance3D, world_face_offset: Vector3,
+                         face_normal: Vector3, text: String,
+                         pixel_size: float = 0.010,
+                         text_color: Color = Color(0.94, 0.88, 0.72, 1.0),
+                         outline_color: Color = Color(0.12, 0.08, 0.04, 1.0)) -> void:
+    """Generic text-attached-to-panel helper. Same orientation logic
+    as _attach_sign_label but with configurable text + colours.
+    Used by the OT plaque + park sign + any other Label3D panel
+    that doesn't want the cursive D'Ambrosio's defaults."""
+    var label := Label3D.new()
+    label.text = text
+    label.font_size = 64
+    label.outline_size = 6
+    label.modulate = text_color
+    label.outline_modulate = outline_color
+    label.no_depth_test = false
+    label.shaded = false
+    label.double_sided = true
+    label.alpha_cut = Label3D.ALPHA_CUT_OPAQUE_PREPASS
+    label.pixel_size = pixel_size
+    label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    panel.add_child(label)
+    var panel_centre := panel.global_transform.origin + panel.get_aabb().get_center()
+    var pos := panel_centre + world_face_offset
+    var fwd: Vector3 = face_normal.normalized()
+    var world_up := Vector3(0, 1, 0)
+    if abs(fwd.dot(world_up)) > 0.95:
+        world_up = Vector3(0, 0, 1)
+    var right: Vector3 = world_up.cross(fwd).normalized()
+    var up: Vector3 = fwd.cross(right).normalized()
+    label.global_transform = Transform3D(Basis(right, up, fwd), pos)
 
 
 func _attach_sign_label(panel: MeshInstance3D, world_face_offset: Vector3, face_normal: Vector3, pixel_size: float = 0.010) -> void:
