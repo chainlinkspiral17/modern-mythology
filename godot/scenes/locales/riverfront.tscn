@@ -316,12 +316,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
+[node name="BB_Before_DirAsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
 [node name="DirAsciiQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_DirAscii")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+
+[node name="BB_Before_AsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
 
 [node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Ascii")
@@ -330,12 +336,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
+[node name="BB_Before_StarscapeQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
 [node name="StarscapeQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Starscape")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+
+[node name="BB_Before_MotionQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
 
 [node name="MotionQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Motion")
@@ -344,6 +356,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
+[node name="BB_Before_BlurQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
 [node name="BlurQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Blur")
 anchors_preset = 15
@@ -351,12 +366,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
+[node name="BB_Before_Quad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
 [node name="Quad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Post")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+
+[node name="BB_Before_OldFilmQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
 
 [node name="OldFilmQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_OldFilm")
