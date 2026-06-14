@@ -760,13 +760,18 @@ func _strata_step(direction: int) -> void:
 
 
 func _process(delta: float) -> void:
-    # ── audio-reactive sampling: prefer the MusicIn bus (system audio
-    # capture) so the visualizer breathes with whatever the device's
-    # music player is doing. Falls back to Master if MusicIn missing.
-    var read_bus: int = _music_bus_idx if _music_bus_idx >= 0 else 0
-    var bus_peak_db: float = AudioServer.get_bus_peak_volume_left_db(read_bus, 0)
-    var bus_peak_lin: float = db_to_linear(bus_peak_db)
-    _audio_level = _audio_level * AUDIO_DECAY + bus_peak_lin * (1.0 - AUDIO_DECAY)
+    # ── audio-reactive sampling: read BOTH MusicIn (system audio
+    # capture) AND Master (Godot's own sounds — Riffmaster etc).
+    # Take whichever is louder so the visualizer always reacts:
+    #   · user sets monitor source as Godot audio input → MusicIn fires
+    #   · no system audio set up → Riffmaster keys still drive it
+    # No "silent visualizer" failure mode.
+    var master_lin: float = db_to_linear(AudioServer.get_bus_peak_volume_left_db(0, 0))
+    var music_lin: float = 0.0
+    if _music_bus_idx >= 0:
+        music_lin = db_to_linear(AudioServer.get_bus_peak_volume_left_db(_music_bus_idx, 0))
+    var combined: float = max(master_lin, music_lin)
+    _audio_level = _audio_level * AUDIO_DECAY + combined * (1.0 - AUDIO_DECAY)
 
     # ── Weather state: storm pressure builds with sustained loud
     # music, dumps in a fast "break" when it crosses the threshold.
