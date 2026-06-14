@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://locale_riverfront_v1"]
+[gd_scene load_steps=20 format=3 uid="uid://locale_riverfront_v1"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/riverfront.glb" id="1_river_glb"]
 [ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
@@ -12,6 +12,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="11_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="12_blur"]
 [ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="8_setup"]
 
 [sub_resource type="CapsuleShape3D" id="Caps_Player"]
@@ -365,6 +366,13 @@ theme_override_font_sizes/font_size = 18
 theme_override_colors/font_color = Color(0.85, 0.78, 0.62, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
+
+[node name="DebugMenu" type="VBoxContainer" parent="HUD"]
+offset_left = 720.0
+offset_top = 16.0
+offset_right = 940.0
+offset_bottom = 360.0
+script = ExtResource("14_dbgm")
 
 [node name="MoodLabel" type="Label" parent="HUD"]
 offset_left = 16.0

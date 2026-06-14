@@ -90,19 +90,41 @@ func _unhandled_input(event: InputEvent) -> void:
                     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
                     print("[FPC] mouse captured")
             KEY_F1:
-                noclip = not noclip
-                print("[FPC] noclip = %s" % noclip)
+                action_toggle_collide()
             KEY_F2:
-                global_position = Vector3(0, 3, 0)
-                velocity = Vector3.ZERO
-                print("[FPC] teleport to (0, 3, 0) · current global_position now %s" % global_position)
+                action_teleport_origin()
             KEY_F4:
-                # Toggle the debug HUD CanvasLayer. The riverfront scene's
-                # HUD lives at "../HUD" by convention (sibling of Player).
-                var hud := get_node_or_null(NodePath("../HUD"))
-                if hud is CanvasLayer:
-                    hud.visible = not hud.visible
-                    print("[FPC] HUD visible = %s" % hud.visible)
+                action_toggle_hud()
+
+
+func action_toggle_collide() -> void:
+    noclip = not noclip
+    print("[FPC] noclip = %s" % noclip)
+
+
+func action_teleport_origin() -> void:
+    global_position = Vector3(0, 3, 0)
+    velocity = Vector3.ZERO
+    print("[FPC] teleport to (0, 3, 0) · current global_position now %s" % global_position)
+
+
+func action_toggle_hud() -> void:
+    # Toggle the debug HUD CanvasLayer. The riverfront scene's HUD
+    # lives at "../HUD" by convention (sibling of Player).
+    var hud := get_node_or_null(NodePath("../HUD"))
+    if hud is CanvasLayer:
+        hud.visible = not hud.visible
+        print("[FPC] HUD visible = %s" % hud.visible)
+
+
+func action_mouse_release() -> void:
+    Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+    print("[FPC] mouse released (debug menu accessible)")
+
+
+func action_mouse_capture() -> void:
+    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    print("[FPC] mouse captured")
 
 
 func _physics_process(delta: float) -> void:

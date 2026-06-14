@@ -618,14 +618,11 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventKey and event.pressed and not event.echo:
         if event.keycode == KEY_F3:
-            # F3 now steps WITHIN the strata so each area's cycle stays curated.
-            _strata_step(1)
+            action_cycle_mood(1)
         elif event.keycode == KEY_F5:
-            # F5 = SHIMMER (eye-friendly, ~30 Hz, brightness-locked)
-            _start_strobe(_strobe_indices_shimmer, STROBE_FRAMES_SHIMMER, "shimmer")
+            action_strobe_shimmer()
         elif event.keycode == KEY_F6:
-            # F6 = RIFT (dramatic, ~12 Hz, heavy luminance contrast)
-            _start_strobe(_strobe_indices_rift, STROBE_FRAMES_RIFT, "rift")
+            action_strobe_rift()
     elif event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_RIGHT:
             _right_mouse_held = event.pressed
@@ -744,6 +741,18 @@ func _process(delta: float) -> void:
     var idx: int = _strobe_indices_active[strobe_step]
     _apply(MOODS[idx])
     strobe_step += 1
+
+
+func action_cycle_mood(direction: int) -> void:
+    _strata_step(direction)
+
+
+func action_strobe_shimmer() -> void:
+    _start_strobe(_strobe_indices_shimmer, STROBE_FRAMES_SHIMMER, "shimmer")
+
+
+func action_strobe_rift() -> void:
+    _start_strobe(_strobe_indices_rift, STROBE_FRAMES_RIFT, "rift")
 
 
 func _start_strobe(indices: Array[int], frames_per_step: int, label: String) -> void:
