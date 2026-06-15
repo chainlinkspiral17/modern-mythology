@@ -3854,14 +3854,16 @@ def build_commercial_cluster():
         (cc_x,  walk_strip_y),                # Cosmic Comics
     ]
     # Spawn-side spur drops from spawn approach south to the strip
-    # sidewalk, then continues south through the gap between
-    # NexCorp's and Kwik Stop's parking lots to reach the road
-    # crosswalk at the bottom of the strip. One continuous
-    # pedestrian path: spawn → sidewalk → road.
+    # sidewalk, then bends EAST through the natural gap between
+    # the Kwik Shop strip and the Diner (x = 0 to 25) to reach
+    # the road crosswalk. Avoids cutting through parking lots.
+    spur_jog_x = 12.0
     spur_pts = [
-        (0.0, -340.0),               # spawn-side start
-        (0.0, walk_strip_y),         # joins strip sidewalk
-        (0.0, ks_y - 32.0 + 4.0 + 0.5),  # at road north edge + 0.5
+        (0.0, -340.0),                          # spawn-side start
+        (0.0, walk_strip_y),                    # joins strip sidewalk
+        (spur_jog_x, walk_strip_y),             # bend east on sidewalk
+        (spur_jog_x, walk_strip_y - 3.0),       # drop south of sidewalk
+        (spur_jog_x, ks_y - 32.0 + 4.0 + 0.5),  # at road north edge
     ]
     hw = walk_w / 2
     for i in range(len(walk_pts) - 1):
@@ -4037,7 +4039,10 @@ def build_commercial_cluster():
     COL_POLE_BAR  = (0.32, 0.28, 0.20, 1.0)
     COL_POWER_LINE = (0.08, 0.08, 0.08, 1.0)
     UTIL_POLE_H = 9.0
-    pole_xs = [nc_x - 30, nc_x + 5, ks_x + 5, cc_x - 5, cc_x + 22]
+    # Utility poles distributed across the block frontage — one
+    # past each block end, plus two intermediate between buildings.
+    pole_xs = [nc_x - 22, (nc_x + ks_x) / 2, ks_x,
+               (ks_x + dn_x) / 2, dn_x, cc_x + 18]
     pole_y = road_y - hwr - 4.0     # south of the road
     pole_positions = []
     for k, ux in enumerate(pole_xs):
@@ -4087,10 +4092,16 @@ def build_commercial_cluster():
     # with benches, lampposts, phone booth, or the news rack.
     COL_OAK_TRUNK = (0.30, 0.22, 0.16, 1.0)
     COL_OAK_CANOPY = (0.30, 0.55, 0.25, 1.0)
+    # Trees BETWEEN buildings so they don't block storefronts.
+    # Block stores at x = -60, -15, 35, 70 with widths 14/28/18/9.
+    # Building east edges: NexCorp -53, Kwik Shop -1, Diner 44.
+    # Building west edges: Kwik Shop -29, Diner 26, Cosmic 65.5.
     street_tree_xs = [
-        nc_x - 18, nc_x + 22,         # flanking NexCorp
-        (ks_x + nc_x) / 2 + 22,       # between NexCorp + Kwik Stop
-        (ks_x + cc_x) / 2 + 18,       # between Kwik Stop + Cosmic
+        nc_x - 12,                      # west of NexCorp (open end)
+        (nc_x + ks_x) / 2,              # between NexCorp & Kwik Shop (-37.5)
+        (ks_x + dn_x) / 2,              # between Kwik Shop & Diner (10)
+        (dn_x + cc_x) / 2,              # between Diner & Cosmic (52.5)
+        cc_x + 8,                       # east of Cosmic (open end)
     ]
     for k, stx in enumerate(street_tree_xs):
         sty = walk_strip_y - 2.5      # south of the sidewalk, planted
@@ -4258,9 +4269,10 @@ def build_commercial_cluster():
         _build_parked_car(f"{tag}_Car_{k}", px, py, pz, col,
                            facing='+Y')
 
-    # Crosswalk where the spawn-side spur (x=0) meets the road —
-    # six white stripes perpendicular to the road, classic zebra.
-    cross_x = 0.0
+    # Crosswalk where the spawn-side spur meets the road. The
+    # spur jogs east to spur_jog_x to thread through the lot gap,
+    # so the crosswalk matches that x.
+    cross_x = spur_jog_x
     cross_w_total = 4.0
     cross_n_stripes = 6
     cross_stripe_w = (cross_w_total / (2 * cross_n_stripes - 1)) * 0.9
@@ -4277,7 +4289,7 @@ def build_commercial_cluster():
                        (0.92, 0.90, 0.84, 1.0))
 
     # Speed-limit sign on a 2 m pole just east of the crosswalk
-    sl_x = 8.0
+    sl_x = spur_jog_x + 8.0
     sl_y = road_y + hwr + 1.2
     sl_z = mesh_z(sl_x, sl_y)
     _make_cyl_local("CommRoad_SpeedLimit_Pole",
