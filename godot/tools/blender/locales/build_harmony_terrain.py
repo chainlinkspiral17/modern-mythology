@@ -4524,8 +4524,9 @@ def build_commercial_cluster():
         ("NPC_Diner_Cook",       dn_x,        dn_y + 3.4),
         ("NPC_Diner_Waiter",     dn_x + 4.0, dn_y + 2.5),
         # Cosmic Comics counter at south wall (cy-2.85 to cy-2.15);
-        # clerk stands NORTH of counter, deeper into the shop.
-        ("NPC_Comics_Clerk",     cc_x + 3.1, cc_y - 1.0),
+        # clerk stands NORTH of counter at cy-1.3 — centred
+        # between counter and the south shelf at cy-0.7.
+        ("NPC_Comics_Clerk",     cc_x + 3.1, cc_y - 1.3),
     ]
     for name, mx_, my_ in npc_markers:
         mz = mesh_z(mx_, my_)
@@ -4560,7 +4561,7 @@ def build_commercial_cluster():
         ("DinerWaiter", dn_x + 4.0, dn_y + 2.5, 1.0, "short",
             (0.85, 0.22, 0.20, 1.0),
             (0.92, 0.90, 0.84, 1.0)),
-        ("ComicsClerk", cc_x + 3.1, cc_y - 1.0, 1.0, "bowl",
+        ("ComicsClerk", cc_x + 3.1, cc_y - 1.3, 1.0, "bowl",
             (0.95, 0.85, 0.30, 1.0),
             (0.32, 0.18, 0.32, 1.0)),
     ]
