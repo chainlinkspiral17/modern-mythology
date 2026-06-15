@@ -56,10 +56,16 @@ DIST_MAX_X =  600.0
 DIST_MIN_Y = -420.0
 DIST_MAX_Y =  420.0
 
-# Cell size ~15 m so terrain features (the 14 m country-club rise,
-# the creek ravine, the secondary east ridge) read clean.
-GROUND_NX = 80
-GROUND_NY = 56
+# Cell size ~10 m. Bumped from 15 m (80×56) to 120×84 in the
+# 2026-06-15 infrastructure-alignment grind. Finer cells = smoother
+# road-shoulder cut/fill slopes (the visible "terracing" at
+# carve-shoulder boundaries was the 15 m grid aliasing the 36 m
+# arterial shoulder onto only ~2 cells across). At 10 m cells the
+# 36 m shoulder spans ~3.6 cells, giving a smoother batter.
+# Cost: ~2.25× more terrain vertices (10080 vs 4480). Still under
+# 5s build on the deck.
+GROUND_NX = 120
+GROUND_NY = 84
 
 # ── PALETTE (seasonal lawn + landuse zones) ──────────────────────
 COL_LAWN          = lerp_palette(SEASON, (0.22, 0.55, 0.18, 1.0),
@@ -427,13 +433,13 @@ ROAD_CORRIDORS = [
     # SouthComm platform (-9.0). Wider corridor because the lot
     # entries open onto it.
     ("Ch1Frontage", [
-        (-120, -390, -9.0),
-        ( -80, -390, -9.0),
-        ( -40, -390, -9.0),
+        (-120, -392, -9.0),
+        ( -80, -392, -9.0),
+        ( -40, -392, -9.0),
         (   0, -392, -9.0),
         (  40, -392, -9.0),
-        (  80, -390, -9.0),
-        ( 100, -390, -9.0),
+        (  80, -392, -9.0),
+        ( 100, -392, -9.0),
     ], 5.0, 14.0),
 ]
 
