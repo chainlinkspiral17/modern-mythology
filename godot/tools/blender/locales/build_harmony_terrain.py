@@ -7829,42 +7829,42 @@ def build_commercial_cluster():
     # action they're engaged with (arcade kid faces cabinet,
     # diner patron faces counter, etc.)
     customers = [
-        # (name, x, y, facing, scale, hair, jacket, pants)
-        # Arcade kid at the leftmost cabinet (cabinet at ks_x-12,
-        # cy + 2.0). Kid stands just south of cabinet facing it.
-        ("ArcadeKid",  ks_x - 12.0, ks_y + 1.0, '+Y', 0.78, "bowl",
-            (0.42, 0.65, 0.32, 1.0), (0.32, 0.18, 0.32, 1.0)),
-        # Diner patron standing next to a stool. Stools at
-        # cy + 0.57 (NORTH of cy, not south). Patron facing
-        # north toward the counter.
-        ("DinerPatron", dn_x - 2.0, dn_y + 0.6, '+Y', 1.0, "short",
-            (0.62, 0.42, 0.78, 1.0), (0.18, 0.22, 0.30, 1.0)),
-        # Cosmic Comics browser between the two shelves (cy + 0.5).
-        ("ComicsBrowser", cc_x - 1.5, cc_y + 0.5, '+Y', 0.92, "bowl",
-            (0.95, 0.55, 0.20, 1.0), (0.42, 0.30, 0.20, 1.0)),
-        # Sidewalk pedestrian heading east, between Kwik Shop and
-        # Diner. Faces +X (east).
-        ("Pedestrian", 12.0, walk_strip_y, '+X', 1.0, "short",
-            (0.32, 0.55, 0.78, 1.0), (0.42, 0.42, 0.45, 1.0)),
-        # Kwik Stop reference locale · 3 customer figures
-        # Customer #1 at the impulse-candy rack in front of the
-        # counter (Sam-side, looking at the candy). Counter
-        # customer-face at cy + 3.45 - counter_d/2 = cy + 3.10.
-        # Impulse rack at cy + 3.10 - 0.18 = cy + 2.92. Customer
-        # 0.5 m south of rack, facing north.
-        ("KwikStopCust1", ks_x + 2.8, ks_y + 2.4, '+Y', 1.0,
-            "short", (0.85, 0.22, 0.20, 1.0), (0.18, 0.18, 0.20, 1.0)),
-        # Customer #2 at the slushie machine (wall_x = ks_x-4.1,
-        # sl_y = ks_y - 1.5). Stand 0.5 m east of slushie facing
-        # west.
-        ("KwikStopCust2", ks_x - 3.5, ks_y - 1.5, '-X', 0.85,
-            "bowl", (0.42, 0.62, 0.32, 1.0), (0.55, 0.32, 0.22, 1.0)),
-        # Customer #3 browsing the south aisle (aisle at
-        # cy - 1.5). Stand on the south side of aisle facing N.
-        ("KwikStopCust3", ks_x + 1.5, ks_y - 2.4, '+Y', 1.0,
-            "short", (0.95, 0.85, 0.30, 1.0), (0.32, 0.18, 0.32, 1.0)),
+        # (name, x, y, facing, scale, hair, jacket, pants, pose)
+        # Arcade kid at the leftmost cabinet. Arcade bay now at
+        # cx + ARCADE_OX = ks_x - 11. Cabinets at arc_cx + k*2 - 2.
+        # Leftmost cab at arc_cx - 2.0 = ks_x - 13.
+        ("ArcadeKid",  ks_x - 13.0, ks_y + 3.0, '+Y', 0.78, "bowl",
+            (0.42, 0.65, 0.32, 1.0), (0.32, 0.18, 0.32, 1.0),
+            "standing"),
+        # Diner patron at a stool.
+        ("DinerPatron", dn_x - 2.0, dn_y + 0.6, '+Y', 1.0, "cap",
+            (0.62, 0.42, 0.78, 1.0), (0.18, 0.22, 0.30, 1.0),
+            "hands_on_counter"),
+        # Cosmic Comics browser between the two shelves.
+        ("ComicsBrowser", cc_x - 1.5, cc_y + 0.5, '+Y', 0.92, "short",
+            (0.95, 0.55, 0.20, 1.0), (0.42, 0.30, 0.20, 1.0),
+            "arms_crossed"),
+        # Sidewalk pedestrian heading east. Hands in pockets.
+        ("Pedestrian", 12.0, walk_strip_y, '+X', 1.0, "beanie",
+            (0.32, 0.55, 0.78, 1.0), (0.42, 0.42, 0.45, 1.0),
+            "hands_pockets"),
+        # Kwik Stop customer at counter paying. Counter is at
+        # SW corner now (counter center at kw_cx-5, counter_y).
+        # Customer south of counter facing north toward Sam.
+        ("KwikStopCust1", ks_x + 1.0, ks_y - 4.3, '+Y', 1.0,
+            "ponytail", (0.85, 0.22, 0.20, 1.0), (0.18, 0.18, 0.20, 1.0),
+            "hands_on_counter"),
+        # Kwik Stop customer browsing the snack aisle (south).
+        # South aisle at (kw_cx=ks_x+6, ks_y - 1.0).
+        ("KwikStopCust2", ks_x + 4.0, ks_y - 1.8, '+Y', 0.95,
+            "short", (0.42, 0.62, 0.32, 1.0), (0.55, 0.32, 0.22, 1.0),
+            "arms_crossed"),
+        # Kwik Stop customer at the back cooler (north end of bay)
+        ("KwikStopCust3", ks_x + 8.0, ks_y + 3.5, '+Y', 1.0,
+            "cap", (0.95, 0.85, 0.30, 1.0), (0.32, 0.18, 0.32, 1.0),
+            "standing"),
     ]
-    for tag, fx, fy, facing, sc, hair, jacket, pants in customers:
+    for tag, fx, fy, facing, sc, hair, jacket, pants, pose in customers:
         fz = mesh_z(fx, fy)
         human_figure(
             name=f"NPC_{tag}",
@@ -7881,6 +7881,7 @@ def build_commercial_cluster():
             with_ears=True,
             with_mouth=True,
             mouth_color=(0.55, 0.22, 0.28, 1.0),
+            pose=pose,
         )
 
     # ── KWIK SHOP LOT DIVIDER ISLAND · the strip is wide enough
