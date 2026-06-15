@@ -8816,6 +8816,81 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                         (fp_x, fp_y, fp_z + FENCE_H / 2),
                         (0.16, 0.16, FENCE_H + 0.10), col_fence_post)
 
+    # ── BACKYARD POOL · ~12% of houses get an above-ground pool
+    # tucked into the back corner of the yard. Small blue disc
+    # ringed by a low deck.
+    seed_pool = (int(cx * 31) + int(cy * 37)) % 100
+    if seed_pool < 12:
+        pool_side = -1 if (seed_pool % 2 == 0) else 1
+        pool_back_off = 7.0
+        pool_side_off = 5.0
+        pool_x = cx - fx * pool_back_off + perp_x * pool_side * pool_side_off
+        pool_y = cy - fy * pool_back_off + perp_y * pool_side * pool_side_off
+        pool_z_g = mesh_z(pool_x, pool_y)
+        pool_r_yard = 2.4
+        # Deck ring
+        _make_cyl_local(f"{name}_PoolDeck",
+                        (pool_x, pool_y, pool_z_g + 0.10),
+                        pool_r_yard + 0.30, 0.20,
+                        (0.86, 0.84, 0.78, 1.0), segments=10)
+        # Pool water (recessed below deck top)
+        _make_cyl_local(f"{name}_PoolWater",
+                        (pool_x, pool_y, pool_z_g + 0.12),
+                        pool_r_yard, 0.04,
+                        (0.32, 0.55, 0.78, 1.0), segments=10)
+        # Pool ladder (small grey hook on the deck edge)
+        _make_box_local(f"{name}_PoolLadder",
+                        (pool_x + perp_x * pool_side * (pool_r_yard + 0.10),
+                         pool_y + perp_y * pool_side * (pool_r_yard + 0.10),
+                         pool_z_g + 0.50),
+                        (0.12, 0.12, 0.80),
+                        (0.62, 0.62, 0.64, 1.0))
+
+    # ── GARDEN SHED · ~25% of houses get a small wood shed in the
+    # back yard corner opposite any pool. Gable roof, 2.4 × 2.0.
+    seed_shed = (int(cx * 37) + int(cy * 43)) % 100
+    if seed_shed < 25:
+        shed_side = 1 if (seed_shed % 2 == 0) else -1
+        # Avoid overlap with pool if both rolled — use opposite side
+        if seed_pool < 12:
+            shed_side = -1 if (seed_pool % 2 == 0) else 1
+            shed_side = -shed_side  # flip
+        shed_back_off = 9.0
+        shed_side_off = 6.5
+        shed_x = cx - fx * shed_back_off + perp_x * shed_side * shed_side_off
+        shed_y = cy - fy * shed_back_off + perp_y * shed_side * shed_side_off
+        shed_z = mesh_z(shed_x, shed_y)
+        col_shed_wall = (0.62, 0.45, 0.30, 1.0)
+        col_shed_roof = (0.32, 0.30, 0.28, 1.0)
+        # Walls (single box)
+        _make_box_local(f"{name}_Shed_Body",
+                        (shed_x, shed_y, shed_z + 1.20),
+                        (2.40, 2.00, 2.40), col_shed_wall)
+        # Pyramidal roof — a slightly larger box leaning on the
+        # box top is too crude. Use a 5-vert pyramid.
+        rh = 0.80
+        rv = [
+            (shed_x - 1.30, shed_y - 1.10, shed_z + 2.40),
+            (shed_x + 1.30, shed_y - 1.10, shed_z + 2.40),
+            (shed_x + 1.30, shed_y + 1.10, shed_z + 2.40),
+            (shed_x - 1.30, shed_y + 1.10, shed_z + 2.40),
+            (shed_x, shed_y, shed_z + 2.40 + rh),
+        ]
+        rf = [[0, 1, 4], [1, 2, 4], [2, 3, 4], [3, 0, 4]]
+        _finalize_mesh(f"{name}_Shed_Roof", rv, rf, col_shed_roof)
+        # Door — dark rectangle on the side facing the house
+        door_face_x = fx * 1.0
+        door_face_y = fy * 1.0
+        if abs(fx) > 0.5:
+            door_size = (0.06, 0.80, 1.80)
+        else:
+            door_size = (0.80, 0.06, 1.80)
+        _make_box_local(f"{name}_Shed_Door",
+                        (shed_x + door_face_x,
+                         shed_y + door_face_y,
+                         shed_z + 0.90),
+                        door_size, (0.42, 0.30, 0.20, 1.0))
+
     # ── XERISCAPE LANDSCAPE ROCKS · 1-3 accent boulders in the
     # front yard on ~30% of houses. Texas hill-country / drought-
     # tolerant front-yard staple. Boulders are squat spheres in
