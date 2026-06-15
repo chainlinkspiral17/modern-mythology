@@ -7036,6 +7036,48 @@ def build_self_storage():
                     (1.0, 0.06, 2.10), col_unit_door)
 
 
+def build_street_name_signs():
+    """Green street-name signs at major arterial intersections.
+    Each sign = a steel pole with two perpendicular green
+    rectangular plaques (one labelling each crossing road).
+    """
+    COL_POLE = (0.42, 0.42, 0.45, 1.0)
+    COL_SIGN_GREEN = (0.20, 0.45, 0.25, 1.0)
+    COL_SIGN_TRIM = (0.95, 0.94, 0.90, 1.0)
+
+    def _sign(name, x, y, ns_face, ew_face):
+        """ns_face = name of the N-S road for the
+        north-pointing plaque. ew_face = E-W road name."""
+        z = mesh_z(x, y)
+        _make_cyl_local(f"{name}_Pole",
+                        (x, y, z + 2.2),
+                        0.04, 4.4, COL_POLE, segments=4)
+        # N-S road label (faces east/west, thin axis Y)
+        _make_box_local(f"{name}_PlaqueNS",
+                        (x, y, z + 4.2),
+                        (1.6, 0.06, 0.40), COL_SIGN_GREEN)
+        # E-W road label (faces north/south, thin axis X)
+        _make_box_local(f"{name}_PlaqueEW",
+                        (x, y, z + 3.8),
+                        (0.06, 1.6, 0.40), COL_SIGN_GREEN)
+        # Tiny white border slabs (decorative)
+        _make_box_local(f"{name}_PlaqueNS_Trim",
+                        (x, y, z + 4.40),
+                        (1.6, 0.07, 0.04), COL_SIGN_TRIM)
+        _make_box_local(f"{name}_PlaqueEW_Trim",
+                        (x, y, z + 4.00),
+                        (0.07, 1.6, 0.04), COL_SIGN_TRIM)
+
+    # Major intersections to label
+    _sign("Sign_HarmHorz", 60, -20, "HARMONY BLVD", "HORIZON DR")
+    _sign("Sign_HarmCC",     0, 340, "HARMONY BLVD", "CC ENTRY")
+    _sign("Sign_HarmChap",  12, -392, "HARMONY BLVD", "CHAPTER 1")
+    _sign("Sign_HorzWE",  -460, -20, "HORIZON DR",   "WEST COMM")
+    _sign("Sign_HorzEC",   440,   0, "HORIZON DR",   "EAST COMM")
+    _sign("Sign_HzPlaza", -100,  -50, "HORIZON DR",   "PLAZA")
+    _sign("Sign_NRSpur",  -320,  100, "ASPEN-BIRCH",  "NR SPUR")
+
+
 def build_crosswalks_and_stops():
     """Painted white zebra crosswalks + red stop signs at the
     major intersections — Harmony Blvd × Horizon Dr (the big
@@ -10065,6 +10107,7 @@ def main():
     build_drive_in_theatre()
     build_arterial_sidewalks()
     build_crosswalks_and_stops()
+    build_street_name_signs()
     build_self_storage()
     build_auto_dealership()
     build_midway_minimart()
