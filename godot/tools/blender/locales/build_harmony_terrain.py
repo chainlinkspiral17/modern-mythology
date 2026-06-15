@@ -3749,10 +3749,16 @@ def build_commercial_cluster():
     # spawn script can read their world position. They keep
     # their distinct mesh names so the game can target them
     # individually.
+    # Convenience-store counters live at (store_x + 4, store_y +
+    # 4.05); Cosmic Comics counter lives at (store_x + 3.1,
+    # store_y - 2.5). Markers placed AT each counter centre, on
+    # the side a clerk would stand. Spawn scripts should offset
+    # slightly to the back-wall side when actually spawning a
+    # figure.
     npc_markers = [
-        ("NPC_Sam_Register", ks_x + 4.5, ks_y + 3.5),  # behind Kwik Stop counter
-        ("NPC_Skip_Locker", nc_x + 4.0, nc_y + 3.5),   # behind NexCorp counter
-        ("NPC_Comics_Clerk", cc_x + 2.5, cc_y + 1.5),  # behind Cosmic counter
+        ("NPC_Sam_Register", ks_x + 4.0, ks_y + 4.5),
+        ("NPC_Skip_Locker",  nc_x + 4.0, nc_y + 4.5),
+        ("NPC_Comics_Clerk", cc_x + 3.1, cc_y - 3.0),
     ]
     for name, mx_, my_ in npc_markers:
         mz = mesh_z(mx_, my_)
