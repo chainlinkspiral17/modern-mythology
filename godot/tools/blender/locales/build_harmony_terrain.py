@@ -3454,6 +3454,62 @@ def build_commercial_cluster():
             dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
         _finalize_mesh(f"CommRoad_Dash_{k}", dv, [[0, 1, 2, 3]],
                        COL_CENTERLINE)
+    # ── ICE MACHINE + PROPANE CAGE outside Kwik Stop (against the
+    # west wall on the sidewalk side). Standard chapter-1 strip
+    # mall details: white ICE box with red script panel, plus a
+    # caged box of propane tanks beside it.
+    ic_x = ks_x - 5.0
+    ic_y = ks_y - 5.5         # just south of the building south wall
+    ic_z = mesh_z(ic_x, ic_y)
+    COL_ICE_WHITE = (0.95, 0.95, 0.92, 1.0)
+    COL_ICE_RED   = (0.78, 0.18, 0.18, 1.0)
+    COL_CAGE      = (0.62, 0.62, 0.64, 1.0)
+    COL_PROPANE   = (0.86, 0.84, 0.72, 1.0)
+    # ICE machine body
+    _make_box_local("KwikStop_IceMachine_Body",
+                    (ic_x, ic_y, ic_z + 0.90),
+                    (1.20, 0.80, 1.80), COL_ICE_WHITE)
+    # Red logo panel near top
+    _make_box_local("KwikStop_IceMachine_Logo",
+                    (ic_x, ic_y - 0.41, ic_z + 1.40),
+                    (1.0, 0.04, 0.40), COL_ICE_RED)
+    # Door split visible on front (vertical seam)
+    _make_box_local("KwikStop_IceMachine_DoorSeam",
+                    (ic_x, ic_y - 0.41, ic_z + 0.60),
+                    (0.03, 0.03, 0.80),
+                    (0.62, 0.62, 0.64, 1.0))
+    # ── Propane tank cage just east of the ice machine
+    pc_x = ic_x + 1.35
+    pc_y = ic_y
+    pc_z = ic_z
+    # Cage frame — 4 corner posts + grid suggestion via thin top rails
+    cage_w, cage_d, cage_h = 1.10, 0.80, 1.20
+    for sgn_x in (-1, 1):
+        for sgn_y in (-1, 1):
+            _make_box_local(
+                f"KwikStop_Propane_Cage_Post_{sgn_x:+d}_{sgn_y:+d}",
+                (pc_x + sgn_x * (cage_w / 2 - 0.04),
+                 pc_y + sgn_y * (cage_d / 2 - 0.04),
+                 pc_z + cage_h / 2),
+                (0.06, 0.06, cage_h), COL_CAGE)
+    # Top frame
+    _make_box_local("KwikStop_Propane_Cage_Top",
+                    (pc_x, pc_y, pc_z + cage_h + 0.04),
+                    (cage_w, cage_d, 0.08), COL_CAGE)
+    # 4 propane tanks visible inside (2x2 grid)
+    for kx, ox in enumerate((-0.22, 0.22)):
+        for ky, oy in enumerate((-0.18, 0.18)):
+            _make_cyl_local(
+                f"KwikStop_Propane_Tank_{kx}_{ky}",
+                (pc_x + ox, pc_y + oy, pc_z + 0.50),
+                0.16, 0.90, COL_PROPANE, segments=6)
+            # Valve cap
+            _make_cyl_local(
+                f"KwikStop_Propane_Valve_{kx}_{ky}",
+                (pc_x + ox, pc_y + oy, pc_z + 1.00),
+                0.06, 0.10,
+                (0.42, 0.42, 0.45, 1.0), segments=4)
+
     # ── SHOPPING CART CORRAL in the Kwik Stop lot — a steel
     # rectangle of low rails with 3 nested carts inside. Sits at
     # the SE corner of the lot so cars approach it on their way
