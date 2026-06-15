@@ -178,7 +178,7 @@ SETTLEMENTS = [
     # East Commercial strip) for the field + bleachers. Expanded
     # to cover the track ring and end zones (total ~80 x 150 m,
     # rather than the field alone).
-    ("HighSchoolField", 200, 480, -130, 80, +3.0, 0.88),
+    ("HighSchoolField", 200, 480, -130, 110, +3.0, 0.88),
     # NexCorp HQ pad on the North Commercial belt — covers
     # plaza, reflecting pool, hedges, parking lot and flagpoles
     # (lot extends to y=264, pool to y=283).
@@ -6283,6 +6283,50 @@ def build_high_school_field():
         _make_box_local(f"HSBuilding_FlagBanner_{sgn:+d}",
                         (fp_x + 0.40, fp_y, fp_z + 5.9),
                         (0.80, 0.02, 0.60), banner_col)
+
+    # ── PARKING LOT north of the school building (student lot).
+    # Lot oriented so cars face south (toward the school) using
+    # the existing Y-axis _build_parked_car helper.
+    sl_cx = sch_cx
+    sl_cy = sch_cy + sch_d / 2 + 13.0      # 6 m gap to school + lot
+    sl_w = 28.0    # E-W (along the wider face of the school)
+    sl_d = 12.0    # N-S (lot depth)
+    hw_sl = sl_w / 2; hd_sl = sl_d / 2
+    sl_v = []
+    for (lx, ly) in [(sl_cx - hw_sl, sl_cy - hd_sl),
+                     (sl_cx + hw_sl, sl_cy - hd_sl),
+                     (sl_cx + hw_sl, sl_cy + hd_sl),
+                     (sl_cx - hw_sl, sl_cy + hd_sl)]:
+        sl_v.append((lx, ly, mesh_z(lx, ly) + 0.04))
+    _finalize_mesh("HSBuilding_Lot", sl_v, [[0, 1, 2, 3]],
+                    (0.22, 0.22, 0.24, 1.0))
+    # 6 painted stripes splitting the lot into 7 bays along x
+    for k in range(6):
+        sx_line = sl_cx - hw_sl + (k + 1) * sl_w / 7
+        sv = []
+        for (lx, ly) in [(sx_line - 0.05, sl_cy - hd_sl + 0.3),
+                          (sx_line + 0.05, sl_cy - hd_sl + 0.3),
+                          (sx_line + 0.05, sl_cy + hd_sl - 0.3),
+                          (sx_line - 0.05, sl_cy + hd_sl - 0.3)]:
+            sv.append((lx, ly, mesh_z(lx, ly) + 0.055))
+        _finalize_mesh(f"HSBuilding_LotStripe_{k}", sv,
+                        [[0, 1, 2, 3]], (0.92, 0.90, 0.84, 1.0))
+    # 7 student cars facing SOUTH (toward the school)
+    student_palette = [
+        (0.85, 0.20, 0.20, 1.0),     # red
+        (0.62, 0.62, 0.64, 1.0),     # silver
+        (0.18, 0.32, 0.55, 1.0),     # blue
+        (0.32, 0.55, 0.25, 1.0),     # green
+        (0.20, 0.20, 0.22, 1.0),     # black
+        (0.95, 0.85, 0.30, 1.0),     # yellow
+        (0.62, 0.42, 0.78, 1.0),     # purple
+    ]
+    for k, col in enumerate(student_palette):
+        cpx = sl_cx - hw_sl + (k + 0.5) * sl_w / 7
+        cpy = sl_cy + 1.0
+        cpz = mesh_z(cpx, cpy)
+        _build_parked_car(f"HSBuilding_Car_{k}", cpx, cpy, cpz,
+                           col, facing='-Y')
 
 
 def main():
