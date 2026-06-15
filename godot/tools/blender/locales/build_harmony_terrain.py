@@ -6560,6 +6560,93 @@ def build_auto_dealership():
                     (0.18, 0.32, 0.55, 1.0))
 
 
+def build_little_league_field():
+    """Little League baseball diamond west of the elementary
+    school. Backstop fence + dirt infield + grass outfield +
+    bleachers. Sits on the HarmonyPark / NorthComm boundary.
+    """
+    cx, cy = -150.0, 200.0
+    ground_z = mesh_z(cx, cy)
+    col_grass = (0.30, 0.55, 0.25, 1.0)
+    col_dirt = (0.72, 0.55, 0.40, 1.0)
+    col_line = (0.92, 0.90, 0.84, 1.0)
+    col_fence = (0.62, 0.62, 0.64, 1.0)
+    col_bench = (0.42, 0.30, 0.20, 1.0)
+
+    # Outfield grass (large rectangle as approximation for the
+    # actual fan-shaped outfield)
+    _make_box_local("LL_Outfield",
+                    (cx, cy + 30.0, ground_z + 0.04),
+                    (60.0, 50.0, 0.06), col_grass)
+    # Dirt infield (diamond-ish, here a square)
+    _make_box_local("LL_Infield",
+                    (cx, cy, ground_z + 0.05),
+                    (24.0, 24.0, 0.06), col_dirt)
+    # Pitcher's mound (small circle of dirt)
+    _make_cyl_local("LL_Mound",
+                    (cx, cy + 8.0, ground_z + 0.10),
+                    1.5, 0.20, col_dirt, segments=10)
+    # Base path lines (along diamond perimeter)
+    # First-base line (south-east)
+    _make_box_local("LL_BaseLine_1B",
+                    (cx + 6.0, cy + 6.0, ground_z + 0.08),
+                    (12.0, 0.18, 0.02), col_line)
+    # Third-base line (south-west)
+    _make_box_local("LL_BaseLine_3B",
+                    (cx - 6.0, cy + 6.0, ground_z + 0.08),
+                    (0.18, 12.0, 0.02), col_line)
+
+    # Backstop fence — 3 panels forming a U behind home plate
+    bs_y = cy - 2.0
+    for sgn_x, panel_w in ((-1, 4.0), (0, 6.0), (1, 4.0)):
+        if sgn_x == 0:
+            _make_box_local("LL_Backstop_Mid",
+                            (cx, bs_y - 4.0,
+                             ground_z + 2.2),
+                            (panel_w, 0.20, 4.4), col_fence)
+        else:
+            _make_box_local(f"LL_Backstop_{sgn_x:+d}",
+                            (cx + sgn_x * 4.5, bs_y - 2.0,
+                             ground_z + 2.2),
+                            (0.20, 4.0, 4.4), col_fence)
+    # Home plate
+    _make_box_local("LL_HomePlate",
+                    (cx, bs_y + 1.0, ground_z + 0.08),
+                    (0.50, 0.30, 0.02), col_line)
+    # Dugout (3-row bench under a small canopy roof) on the
+    # west side
+    dug_x = cx - 16.0
+    dug_y = cy
+    dz = mesh_z(dug_x, dug_y)
+    for k_row in range(2):
+        _make_box_local(f"LL_Dugout_Bench_{k_row}",
+                        (dug_x, dug_y, dz + 0.42 + k_row * 0.50),
+                        (10.0, 1.0, 0.10), col_bench)
+    # Dugout roof posts + roof
+    for sgn in (-1, 1):
+        _make_cyl_local(f"LL_Dugout_Post_{sgn:+d}",
+                        (dug_x + sgn * 5.0, dug_y, dz + 1.5),
+                        0.10, 3.0, col_fence, segments=4)
+    _make_box_local("LL_Dugout_Roof",
+                    (dug_x, dug_y, dz + 3.0),
+                    (10.5, 2.0, 0.20),
+                    (0.32, 0.30, 0.28, 1.0))
+    # Same on the east side (visitors)
+    dug_x2 = cx + 16.0
+    for k_row in range(2):
+        _make_box_local(f"LL_Dugout2_Bench_{k_row}",
+                        (dug_x2, dug_y, dz + 0.42 + k_row * 0.50),
+                        (10.0, 1.0, 0.10), col_bench)
+    for sgn in (-1, 1):
+        _make_cyl_local(f"LL_Dugout2_Post_{sgn:+d}",
+                        (dug_x2 + sgn * 5.0, dug_y, dz + 1.5),
+                        0.10, 3.0, col_fence, segments=4)
+    _make_box_local("LL_Dugout2_Roof",
+                    (dug_x2, dug_y, dz + 3.0),
+                    (10.5, 2.0, 0.20),
+                    (0.32, 0.30, 0.28, 1.0))
+
+
 def build_self_storage():
     """SafeKeep Self-Storage — long parallel rows of orange
     roll-up units. Sits in EastComm south of the big-box pad.
@@ -9506,6 +9593,7 @@ def main():
     build_crosswalks_and_stops()
     build_self_storage()
     build_auto_dealership()
+    build_little_league_field()
     build_phase3_crane()
     build_police_station()
     build_high_school_field()
