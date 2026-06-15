@@ -1092,21 +1092,25 @@ def build_oliver_tree_memorial():
         lean_x=0.25,                              # contrapposto hip shift
     )
 
-    # ── PROP: microphone attached to the RIGHT HAND ───────────
-    # Handle from hand → 20 cm forward + 25 cm up. Foam ball SITS
-    # ON the handle top (overlapping, not 10 cm above). One mic,
-    # not two pieces.
+    # ── PROP: microphone in the RIGHT HAND, foam ball at MOUTH.
+    # Math: hand at shoulder + 0.20 (chin plane for scale 2.5);
+    # mouth at shoulder + 0.29. Need foam ball at +0.29, so mic
+    # angles UP only 6 cm from the hand, mostly FORWARD toward
+    # the face. Previous 30 cm upward offset put the ball at
+    # shoulder + 0.53 — 24 cm above the mouth, near forehead.
     hx, hy, hz = figure_meta["hands"]["R"]
     mic_top_x = hx + 0.0
-    mic_top_y = hy - 0.20
-    mic_top_z = hz + 0.30
+    mic_top_y = hy - 0.22        # 22 cm forward of hand toward face
+    mic_top_z = hz + 0.06         # only 6 cm up · brings ball to mouth
     _build_oriented_handle(
         "OT_MicHandle", (hx, hy, hz),
         (mic_top_x, mic_top_y, mic_top_z),
         radius=0.05, color=(0.12, 0.12, 0.12, 1.0))
+    # Foam ball overlapping the handle top (4 cm beyond)
     _make_sphere_low_local("OT_MicHead",
-                           (mic_top_x, mic_top_y, mic_top_z + 0.03),
-                           0.10, (0.18, 0.18, 0.18, 1.0),
+                           (mic_top_x, mic_top_y - 0.04,
+                            mic_top_z + 0.02),
+                           0.09, (0.18, 0.18, 0.18, 1.0),
                            rings=3, segments=8)
 
     # ── PROP: scooter leaning against the SE corner of the plinth.
