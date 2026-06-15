@@ -10515,6 +10515,10 @@ def build_arterial_trees():
     # closer spacing (18m) to match a typical residential street
     # canopy. Smaller trees too (trunk_h 3.0, canopy 1.8).
     RES_TREE_OFFSET = 5.0
+    COL_OAK_CANOPY = (0.30, 0.55, 0.25, 1.0)
+    COL_MAPLE_CANOPY = (0.55, 0.38, 0.22, 1.0)   # autumn maple
+    COL_PINE_CANOPY = (0.20, 0.42, 0.22, 1.0)
+    COL_FLOWER_CANOPY = (0.85, 0.62, 0.78, 1.0)  # pink dogwood
     def _emit_res_trees(pts, prefix, spacing=18.0):
         accumulated = 0.0
         next_tree = 9.0
@@ -10535,16 +10539,50 @@ def build_arterial_trees():
                 tx = mx + side_sgn * perp_x * RES_TREE_OFFSET
                 ty = my + side_sgn * perp_y * RES_TREE_OFFSET
                 tz = mesh_z(tx, ty)
+                # Tree variety — cycle 4 species deterministically
+                # so each block has a mix instead of uniform oaks
+                kind = idx % 4
                 trunk_h = 3.0
-                canopy_r = 1.8
-                _make_cyl_local(f"{prefix}Tree_{idx}_Trunk",
-                                (tx, ty, tz + trunk_h / 2),
-                                0.16, trunk_h, COL_TRUNK, segments=6)
-                _make_sphere_low_local(
-                    f"{prefix}Tree_{idx}_Canopy",
-                    (tx, ty, tz + trunk_h + canopy_r * 0.55),
-                    canopy_r, COL_CANOPY,
-                    rings=3, segments=8)
+                if kind == 0:    # oak — round canopy
+                    _make_cyl_local(f"{prefix}Tree_{idx}_Trunk",
+                                    (tx, ty, tz + trunk_h / 2),
+                                    0.16, trunk_h, COL_TRUNK, segments=6)
+                    _make_sphere_low_local(
+                        f"{prefix}Tree_{idx}_Canopy",
+                        (tx, ty, tz + trunk_h + 1.0),
+                        1.8, COL_OAK_CANOPY,
+                        rings=3, segments=8)
+                elif kind == 1:    # maple — broader oval canopy
+                    _make_cyl_local(f"{prefix}Tree_{idx}_Trunk",
+                                    (tx, ty, tz + trunk_h / 2),
+                                    0.18, trunk_h, COL_TRUNK, segments=6)
+                    _make_sphere_low_local(
+                        f"{prefix}Tree_{idx}_Canopy",
+                        (tx, ty, tz + trunk_h + 1.2),
+                        2.1, COL_MAPLE_CANOPY,
+                        rings=3, segments=8, squash_z=0.85)
+                elif kind == 2:    # pine — taller conical
+                    _make_cyl_local(f"{prefix}Tree_{idx}_Trunk",
+                                    (tx, ty, tz + trunk_h / 2),
+                                    0.14, trunk_h * 1.1, COL_TRUNK, segments=6)
+                    # Cone canopy approximated as stacked spheres
+                    for cone_k in range(3):
+                        cone_z = tz + trunk_h * 0.7 + cone_k * 0.9
+                        cone_r = 1.6 - cone_k * 0.4
+                        _make_sphere_low_local(
+                            f"{prefix}Tree_{idx}_Cone_{cone_k}",
+                            (tx, ty, cone_z),
+                            cone_r, COL_PINE_CANOPY,
+                            rings=3, segments=8, squash_z=0.65)
+                else:    # dogwood/flowering — smaller pink canopy
+                    _make_cyl_local(f"{prefix}Tree_{idx}_Trunk",
+                                    (tx, ty, tz + trunk_h * 0.45),
+                                    0.12, trunk_h * 0.9, COL_TRUNK, segments=6)
+                    _make_sphere_low_local(
+                        f"{prefix}Tree_{idx}_Canopy",
+                        (tx, ty, tz + trunk_h * 0.85 + 0.8),
+                        1.4, COL_FLOWER_CANOPY,
+                        rings=3, segments=8, squash_z=0.95)
                 idx += 1
                 side_sgn = -side_sgn
                 next_tree += spacing
