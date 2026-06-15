@@ -6463,6 +6463,45 @@ def build_phase3_crane():
                     (0.42, 0.42, 0.45, 1.0))
 
 
+def build_dumpsters():
+    """Trash dumpsters in alley positions behind several
+    commercial buildings — chapter-1 back-alley atmosphere.
+    """
+    COL_DUMP_GREEN = (0.30, 0.45, 0.25, 1.0)
+    COL_DUMP_BROWN = (0.42, 0.30, 0.20, 1.0)
+    COL_DUMP_LID = (0.20, 0.20, 0.22, 1.0)
+
+    def _dumpster(name, x, y, color):
+        z = mesh_z(x, y)
+        # Body
+        _make_box_local(f"{name}_Body",
+                        (x, y, z + 0.65),
+                        (2.0, 1.4, 1.30), color)
+        # Slanted lid (approximated by a flat box tilted via z offset)
+        _make_box_local(f"{name}_Lid",
+                        (x, y + 0.10, z + 1.35),
+                        (2.0, 1.5, 0.08), COL_DUMP_LID)
+
+    # Behind the Kwik Shop strip
+    _dumpster("Dump_KS_Arcade", -15 - 9.0, -360 + 6.0, COL_DUMP_GREEN)
+    _dumpster("Dump_KS_Kwik",    -15,       -360 + 6.0, COL_DUMP_BROWN)
+    _dumpster("Dump_KS_Laundro", -15 + 9.0, -360 + 6.0, COL_DUMP_GREEN)
+    # Behind NexCorp Gas & Go
+    _dumpster("Dump_NC", -60, -360 + 6.0, COL_DUMP_GREEN)
+    # Behind the Diner
+    _dumpster("Dump_Diner", 35, -360 + 5.5, COL_DUMP_BROWN)
+    # Behind Cosmic Comics
+    _dumpster("Dump_Cosmic", 70, -360 + 5.0, COL_DUMP_GREEN)
+    # Behind D'Ambrosio's Holdover
+    _dumpster("Dump_DA", -150, -360 + 7.0, COL_DUMP_BROWN)
+    # Behind Halsey Studios
+    _dumpster("Dump_HS", 480, -100 + 8.0, COL_DUMP_BROWN)
+    # Behind the diner / library / dept store
+    _dumpster("Dump_Lib", 60, 80 + 8.0, COL_DUMP_GREEN)
+    _dumpster("Dump_DB", 480, 60 + 14.0, COL_DUMP_GREEN)
+    _dumpster("Dump_FF", 480, -90 + 6.0, COL_DUMP_BROWN)
+
+
 def build_horizon_plaza():
     """Small 3-bay neighborhood strip plaza on the north side
     of Horizon Drive between the elementary school and OT Park.
@@ -10030,6 +10069,7 @@ def main():
     build_auto_dealership()
     build_midway_minimart()
     build_horizon_plaza()
+    build_dumpsters()
     build_little_league_field()
     build_library_and_bike_racks()
     build_phase3_crane()
