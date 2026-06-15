@@ -1371,6 +1371,34 @@ landmarks a real person has and add a primitive for each. Pure
 sphere/box primitives at the right positions outperform
 boolean-carved meshes for low-poly stylization.
 
+### 2026-06-15 · neighborhood "lived-in" pass
+
+When a residential block looks like "Roblox baseplate with
+houses on it" instead of a real neighborhood, the missing
+ingredients are usually:
+
+1. **Curbside mailboxes** — one per house, alternating sides
+   along the street at ~22m spacing. Wooden post + grey rural
+   box + red flag. Without these the houses read as
+   uninhabited.
+2. **Continuous street tree canopy** — both sides of every
+   residential street at 18m spacing (closer than arterial 25m
+   so the canopy reads as continuous). FOUR SPECIES cycled
+   per-block (oak / maple / pine cone / pink dogwood) so each
+   block has visible variety instead of "identical green
+   spheres."
+3. **Residential streetlamps** — 4m pole single shoebox head
+   at 30m spacing alternating sides. Different scale from the
+   arterial 6m twin-head — uses the visible-from-distance
+   difference to signal road class.
+4. **Belt + buckle + ankle bumps on NPCs** — even at distance,
+   the small per-person details register as "humans" rather
+   than "props."
+
+Each of these is ~10 lines of corridor-walking code wrapping
+`_emit_X` in build_harmony_terrain.py. They add ~30 primitives
+per residential street but the perceptual lift is large.
+
 ### TEMPLATE for next session
 
 ```markdown
