@@ -3182,6 +3182,38 @@ def build_commercial_cluster():
             pv.append((px, py, mesh_z(px, py) + 0.05))
         _finalize_mesh(f"CommSidewalk_{i}", pv, [[0, 1, 2, 3]],
                        COL_SIDEWALK)
+    # ── STREETLIGHTS + BENCHES along the strip sidewalk
+    # Six 4 m lamp posts spaced ~30 m along the sidewalk, plus one
+    # bench in front of each store.
+    streetlight_xs = [nc_x - 10, nc_x + 14, ks_x - 10, ks_x + 14,
+                       cc_x - 6, cc_x + 10]
+    for k, slx in enumerate(streetlight_xs):
+        sly = ks_y + 6.5 - 1.5      # just south of the sidewalk
+        slz = mesh_z(slx, sly)
+        _build_lamppost(f"Comm_Lamp_{k}", slx, sly, slz, pole_h=4.0)
+    # One bench in front of each store, set back into the sidewalk
+    COL_BENCH_WOOD = (0.42, 0.30, 0.20, 1.0)
+    COL_BENCH_LEG  = (0.18, 0.18, 0.18, 1.0)
+    for tag, store_x, store_y in (("KwikStop", ks_x, ks_y),
+                                    ("NexCorpGG", nc_x, nc_y),
+                                    ("CosmicComics", cc_x, cc_y)):
+        bz = mesh_z(store_x, store_y + 5.5)
+        _make_box_local(f"{tag}_Bench_Seat",
+                        (store_x, store_y + 5.5, bz + 0.42),
+                        (1.8, 0.42, 0.06), COL_BENCH_WOOD)
+        _make_box_local(f"{tag}_Bench_Back",
+                        (store_x, store_y + 5.30, bz + 0.85),
+                        (1.8, 0.06, 0.45), COL_BENCH_WOOD)
+        for sgn in (-1, 1):
+            _make_box_local(f"{tag}_Bench_Leg_{sgn:+d}",
+                            (store_x + sgn * 0.75, store_y + 5.5,
+                             bz + 0.21),
+                            (0.06, 0.42, 0.42), COL_BENCH_LEG)
+        # Trash bin a step east of the bench
+        _make_cyl_local(f"{tag}_Bin",
+                        (store_x + 1.6, store_y + 5.5, bz + 0.55),
+                        0.28, 1.0, (0.32, 0.32, 0.32, 1.0),
+                        segments=8)
     # Spur from spawn approach to the strip sidewalk
     for i in range(len(spur_pts) - 1):
         x0, y0 = spur_pts[i]
