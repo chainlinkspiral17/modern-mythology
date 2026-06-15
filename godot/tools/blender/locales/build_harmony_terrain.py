@@ -7760,6 +7760,11 @@ def build_connector_roads():
     # commercial road frontage out to the truck stop
     _emit([(100, -392), (160, -390), (200, -385)],
            "TSLink_")
+    # Drive-In Theatre access · branches off Harmony Blvd south
+    # ext at (8, -380) heading east-south to the concession
+    # stand at (150, -280)
+    _emit([(8, -380), (60, -340), (110, -300), (150, -280)],
+           "DILink_")
     # Country Club south driveway → Harmony Blvd top
     _emit([(0, 360), (0, 340)], "CCLink_")
 
