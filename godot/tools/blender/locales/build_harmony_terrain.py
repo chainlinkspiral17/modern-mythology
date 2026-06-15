@@ -1321,13 +1321,41 @@ def build_oliver_tree_memorial_park():
                     (terr_cx, terr_cy + 2, terr1_top + 0.30),
                     (14, 8, 0.60), COL_TERRACE)
     terr2_top = terr1_top + 0.60
-    # Terrace railings — short walls along the front edge of step 2
-    _make_box_local("OTPark_Terrace_Rail_L",
-                    (terr_cx - 6.5, terr_cy - 1.8, terr2_top + 0.30),
-                    (1.5, 0.20, 0.60), COL_TERRACE)
-    _make_box_local("OTPark_Terrace_Rail_R",
-                    (terr_cx + 6.5, terr_cy - 1.8, terr2_top + 0.30),
-                    (1.5, 0.20, 0.60), COL_TERRACE)
+    # Terrace balustrade — proper full-width railing along the
+    # front edge of step 2 (was two wing-walls covering only 3 m
+    # of the 14 m front). 13 stone balusters spaced every 1 m
+    # connected by top + bottom rails. A 2 m centre opening lines
+    # up with the main descent path.
+    bal_y = terr_cy - 2 + 0.10
+    bal_h = 0.80
+    bal_top_z = terr2_top + bal_h
+    n_bal = 13
+    centre_gap_idx = 6     # the central baluster is omitted for gap
+    for k in range(n_bal):
+        bx = terr_cx - 6.0 + k * 1.0
+        if k == centre_gap_idx:
+            continue
+        _make_box_local(f"OTPark_Terrace_Bal_{k}",
+                        (bx, bal_y, terr2_top + bal_h / 2),
+                        (0.18, 0.18, bal_h), COL_TERRACE)
+    # Top + bottom rails on each side of the central opening
+    for side_tag, x_start, x_end in (
+        ("L", terr_cx - 6.5, terr_cx - 0.6),
+        ("R", terr_cx + 0.6, terr_cx + 6.5)):
+        rail_mid = (x_start + x_end) / 2
+        rail_w = x_end - x_start
+        _make_box_local(f"OTPark_Terrace_TopRail_{side_tag}",
+                        (rail_mid, bal_y, bal_top_z - 0.06),
+                        (rail_w, 0.22, 0.12), COL_TERRACE)
+        _make_box_local(f"OTPark_Terrace_BotRail_{side_tag}",
+                        (rail_mid, bal_y, terr2_top + 0.12),
+                        (rail_w, 0.22, 0.10), COL_TERRACE)
+    # Anchor end-posts at the two corners
+    for sgn in (-1, 1):
+        _make_box_local(f"OTPark_Terrace_EndPost_{sgn:+d}",
+                        (terr_cx + sgn * 6.6, bal_y,
+                         terr2_top + (bal_h + 0.15) / 2),
+                        (0.30, 0.30, bal_h + 0.15), COL_TERRACE)
     # Two stair stubs leading up to step 1
     for ox in (-5, 5):
         stair_x = sx + ox
