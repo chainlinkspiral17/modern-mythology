@@ -8816,6 +8816,60 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                         (fp_x, fp_y, fp_z + FENCE_H / 2),
                         (0.16, 0.16, FENCE_H + 0.10), col_fence_post)
 
+    # ── BACKYARD TREE · single mature shade tree in the back yard
+    # of every house. Bigger than the front yard specimen — backs
+    # of houses commonly have the lot's biggest tree.
+    seed_byt = (int(cx * 41) + int(cy * 43)) % 100
+    byt_side = -1 if (seed_byt % 2 == 0) else 1
+    byt_along = byt_side * (3.5 + (seed_byt % 4) * 0.8)
+    byt_out = 6.5 + ((seed_byt // 4) % 4) * 0.8
+    bytx = cx - fx * byt_out + perp_x * byt_along
+    byty = cy - fy * byt_out + perp_y * byt_along
+    byt_z = mesh_z(bytx, byty)
+    byt_trunk_h = 5.0 + (seed_byt % 4) * 0.5
+    byt_canopy_r = 2.4 + ((seed_byt // 7) % 4) * 0.3
+    byt_canopy_palette = [
+        (0.28, 0.50, 0.22, 1.0),
+        (0.32, 0.55, 0.25, 1.0),
+        (0.36, 0.58, 0.28, 1.0),
+        (0.62, 0.42, 0.20, 1.0),    # autumn (rare)
+    ]
+    byt_color = byt_canopy_palette[
+        seed_byt % 4 if seed_byt % 11 != 0 else 3]
+    _make_cyl_local(f"{name}_BackTree_Trunk",
+                    (bytx, byty, byt_z + byt_trunk_h / 2),
+                    0.26, byt_trunk_h,
+                    (0.30, 0.22, 0.16, 1.0), segments=6)
+    _make_sphere_low_local(f"{name}_BackTree_Canopy",
+                            (bytx, byty, byt_z + byt_trunk_h + byt_canopy_r * 0.5),
+                            byt_canopy_r, byt_color,
+                            rings=3, segments=8)
+
+    # ── FRONT-YARD HEDGE ROW · ~35% of houses get a low boxwood
+    # hedge along the front property line between yard and
+    # sidewalk. Continuous narrow box approximated by 5 small
+    # adjacent shrub spheres so it reads as a clipped hedge.
+    seed_hedge = (int(cx * 47) + int(cy * 53)) % 100
+    if seed_hedge < 35:
+        col_hedge = palette.get('hedge', (0.22, 0.46, 0.20, 1.0))
+        # Hedge sits ~7m out from the front wall (beyond shrubs +
+        # specimen tree, near the front of the yard)
+        h_out = 8.0
+        h_cx = front_mid_x - fx * h_out
+        h_cy = front_mid_y - fy * h_out
+        # Stagger 5 hedge blobs across 4m of frontage, one offset
+        # to leave a gap for the walk
+        for j in range(5):
+            offset_j = (-2.5, -1.2, 1.2, 2.5, -3.6)[j]
+            hx = h_cx + perp_x * offset_j
+            hy = h_cy + perp_y * offset_j
+            _make_sphere_low_local(
+                f"{name}_Hedge_{j}",
+                (hx, hy, ground_z + 0.45),
+                0.50,
+                col_hedge,
+                rings=2, segments=6)
+
     # ── BACKYARD POOL · ~12% of houses get an above-ground pool
     # tucked into the back corner of the yard. Small blue disc
     # ringed by a low deck.
