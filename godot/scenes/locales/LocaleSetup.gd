@@ -75,6 +75,7 @@ func _ready() -> void:
 	var hs_scoreboard_banners: Array = []
 	var hs_scoreboard_panels: Array = []
 	var nightclub_signs: Array = []
+	var nexcorp_hq_logos: Array = []
 	for mi in meshes:
 		mi.material_override = mat
 		applied += 1
@@ -122,6 +123,8 @@ func _ready() -> void:
 			hs_scoreboard_panels.append(mi)
 		elif "NightClub_SignPanel" in mi.name:
 			nightclub_signs.append(mi)
+		elif "NexCorpHQ_LogoPanel" in mi.name:
+			nexcorp_hq_logos.append(mi)
 	print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
 	# Attach real Label3D text to the sign panels.
 	#
@@ -242,6 +245,16 @@ func _ready() -> void:
 						0.0,
 						Color(0.95, 0.85, 0.30, 1.0),
 						Color(0.05, 0.06, 0.10, 1.0))
+	# NexCorp HQ corporate logo — faces south (toward player
+	# approaching from spawn). Blender -Y face → Godot +Z.
+	for panel in nexcorp_hq_logos:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.10),
+						Vector3(0, 0, 1),
+						"NEXCORP",
+						0.0,
+						Color(0.98, 0.98, 0.96, 1.0),
+						Color(0.10, 0.18, 0.32, 1.0))
 	# Night-club neon sign — faces SOUTH toward the parking lot
 	for panel in nightclub_signs:
 		_attach_text_label(panel,

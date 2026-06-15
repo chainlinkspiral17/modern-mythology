@@ -177,6 +177,11 @@ SETTLEMENTS = [
     # — large flat zone east of Phase 2 (between Phase 2 and the
     # East Commercial strip) for the field + bleachers.
     ("HighSchoolField", 240, 440, -100, 0, +3.0, 0.88),
+    # NexCorp HQ pad on the North Commercial belt — tighter +
+    # higher flatness so the office tower foundation is dead-flat.
+    ("NexCorpHQPad",    -30,  30, 270, 330, +14.0, 0.95),
+    # SCRATCH night-club pad on West Commercial Highway 9
+    ("NightClubPad",   -530, -490, -20, 20, -2.0, 0.95),
     # Chapter-one commercial block pads — nested inside the
     # broader SouthComm belt so each building footprint is locally
     # flat regardless of the parent zone's residual wild-zone
@@ -5452,6 +5457,240 @@ def build_phase2_neighborhood():
         # Skipped — terrain vertex colors handle the green already
 
 
+def build_nexcorp_hq():
+    """NexCorp Corporate HQ public-facing front. The PR-friendly
+    face of the megacorp that owns the chapter-one gas station.
+    Sits on the North Commercial belt at (0, 300) so the player
+    sees it from the spawn approach south through HCE.
+
+    Building: 3-story office-block silhouette with a glass curtain
+    wall on the south face, recessed entry, a reflecting pool out
+    front, and the corporate logo above the entry.
+    """
+    cx, cy = 0.0, 300.0
+    ground_z = mesh_z(cx, cy)
+    name_prefix = "NexCorpHQ"
+
+    # Dimensions — bigger than convenience store, smaller than a
+    # real skyscraper. 3 stories.
+    width = 32.0      # E-W
+    depth = 18.0      # N-S
+    story_h = 3.5
+    n_stories = 3
+    total_h = story_h * n_stories     # 10.5 m
+    wall_t = 0.20
+
+    # Materials — corporate
+    col_wall  = (0.92, 0.92, 0.90, 1.0)        # off-white tower skin
+    col_trim  = (0.42, 0.42, 0.45, 1.0)        # steel band
+    col_glass = (0.32, 0.55, 0.78, 0.6)        # tinted curtain wall
+    col_floor_slab = (0.78, 0.76, 0.72, 1.0)
+    col_roof  = (0.32, 0.32, 0.35, 1.0)
+    col_logo_bg = (0.18, 0.32, 0.55, 1.0)
+    col_logo_text = (0.95, 0.95, 0.94, 1.0)
+
+    # Footprint slab (asphalt-tone for the surrounding plaza)
+    _make_box_local(f"{name_prefix}_PlazaSlab",
+                    (cx, cy - 1.0, ground_z + 0.05),
+                    (width + 16.0, depth + 12.0, 0.10),
+                    (0.85, 0.82, 0.74, 1.0))     # cream plaza pavers
+
+    # Main building shell — solid walls on N/E/W, glass curtain
+    # on S (south = facing toward the player approaching from
+    # spawn area)
+    _make_box_local(f"{name_prefix}_WallN",
+                    (cx, cy + depth / 2 - wall_t / 2,
+                     ground_z + total_h / 2),
+                    (width, wall_t, total_h), col_wall)
+    _make_box_local(f"{name_prefix}_WallE",
+                    (cx + width / 2 - wall_t / 2, cy,
+                     ground_z + total_h / 2),
+                    (wall_t, depth, total_h), col_wall)
+    _make_box_local(f"{name_prefix}_WallW",
+                    (cx - width / 2 + wall_t / 2, cy,
+                     ground_z + total_h / 2),
+                    (wall_t, depth, total_h), col_wall)
+
+    # Glass curtain wall on south face — 3 vertical bays per
+    # story, in a grid of mullions surrounding tinted glass panels
+    glass_y = cy - depth / 2 + 0.05
+    n_vert_mullions = 7      # 6 bays across the width
+    for k in range(n_vert_mullions):
+        mx = cx - width / 2 + 0.3 + k * (width - 0.6) / (n_vert_mullions - 1)
+        _make_box_local(f"{name_prefix}_GlassMul_V_{k}",
+                        (mx, glass_y, ground_z + total_h / 2),
+                        (0.20, 0.10, total_h), col_trim)
+    # Horizontal mullions at each floor band (3 of them)
+    for k in range(n_stories + 1):
+        bz = ground_z + k * story_h
+        _make_box_local(f"{name_prefix}_GlassMul_H_{k}",
+                        (cx, glass_y, bz),
+                        (width - 0.3, 0.12, 0.30), col_trim)
+    # Glass panels per bay-per-story (visual fill — slightly
+    # smaller than the bay so the mullion grid reads)
+    bay_w = (width - 0.3) / 6
+    for k_x in range(6):
+        for k_y in range(n_stories):
+            px = cx - width / 2 + 0.3 + (k_x + 0.5) * bay_w
+            pz = ground_z + (k_y + 0.5) * story_h
+            _make_box_local(f"{name_prefix}_GlassPanel_{k_x}_{k_y}",
+                            (px, glass_y - 0.02, pz),
+                            (bay_w - 0.20, 0.04, story_h - 0.30),
+                            col_glass)
+
+    # Floor slabs at story boundaries (visible through the glass
+    # from outside)
+    for k in range(1, n_stories):
+        sz = ground_z + k * story_h
+        _make_box_local(f"{name_prefix}_FloorSlab_{k}",
+                        (cx, cy, sz),
+                        (width - 0.4, depth - 0.4, 0.30),
+                        col_floor_slab)
+
+    # Roof + parapet
+    _make_box_local(f"{name_prefix}_Roof",
+                    (cx, cy, ground_z + total_h + 0.10),
+                    (width + 0.4, depth + 0.4, 0.20), col_roof)
+    # Parapet wall — taller than convenience-store version
+    parapet_h = 0.80
+    pz_centre = ground_z + total_h + 0.20 + parapet_h / 2
+    for sgn_y, tag in ((-1, 'S'), (+1, 'N')):
+        _make_box_local(f"{name_prefix}_Parapet_{tag}",
+                        (cx, cy + sgn_y * (depth + 0.4) / 2,
+                         pz_centre),
+                        (width + 0.4, 0.20, parapet_h), col_trim)
+    for sgn_x, tag in ((-1, 'W'), (+1, 'E')):
+        _make_box_local(f"{name_prefix}_Parapet_{tag}",
+                        (cx + sgn_x * (width + 0.4) / 2, cy,
+                         pz_centre),
+                        (0.20, depth + 0.4, parapet_h), col_trim)
+
+    # ── ENTRY — recessed double doors at the centre of the south
+    # face. Door height 2.6 m, width 3.0 m, set 1.5 m into the
+    # building behind the curtain wall.
+    entry_y = cy - depth / 2 + 1.5
+    door_w = 3.0
+    door_h = 2.6
+    # Door frame
+    _make_box_local(f"{name_prefix}_DoorFrame_L",
+                    (cx - door_w / 2, entry_y, ground_z + door_h / 2),
+                    (0.20, 0.30, door_h), col_trim)
+    _make_box_local(f"{name_prefix}_DoorFrame_R",
+                    (cx + door_w / 2, entry_y, ground_z + door_h / 2),
+                    (0.20, 0.30, door_h), col_trim)
+    _make_box_local(f"{name_prefix}_DoorHeader",
+                    (cx, entry_y, ground_z + door_h + 0.20),
+                    (door_w + 0.6, 0.30, 0.40), col_trim)
+    # Two door leaves (dark tinted)
+    for sgn in (-1, 1):
+        _make_box_local(f"{name_prefix}_Door_{sgn:+d}",
+                        (cx + sgn * door_w / 4, entry_y,
+                         ground_z + door_h / 2),
+                        (door_w / 2 - 0.12, 0.06, door_h - 0.10),
+                        (0.10, 0.18, 0.32, 1.0))
+    # Welcome mat outside
+    _make_box_local(f"{name_prefix}_DoorMat",
+                    (cx, entry_y - 1.2, ground_z + 0.07),
+                    (door_w + 0.40, 1.20, 0.02),
+                    (0.18, 0.32, 0.55, 1.0))
+
+    # ── CORPORATE LOGO PANEL above the entry — large illuminated
+    # rectangle with "NEXCORP" text and a small NexCorp diamond
+    # graphic.
+    logo_y = cy - depth / 2 - 0.20
+    logo_z = ground_z + total_h - 1.2
+    _make_box_local(f"{name_prefix}_LogoPanel",
+                    (cx, logo_y, logo_z),
+                    (12.0, 0.14, 1.80), col_logo_bg)
+    _make_box_local(f"{name_prefix}_LogoPanelTrim",
+                    (cx, logo_y, logo_z + 1.0),
+                    (12.2, 0.16, 0.12), col_trim)
+    # Small NexCorp diamond ahead of the text (a flat diamond
+    # rotated 45° won't render rotated since we use AABBs, so
+    # build it as a square white "badge")
+    _make_box_local(f"{name_prefix}_LogoDiamond",
+                    (cx - 5.6, logo_y, logo_z),
+                    (0.80, 0.20, 0.80), col_logo_text)
+
+    # ── REFLECTING POOL out front — wide shallow rectangular
+    # pool with stone rim.
+    pool_cy = cy - depth / 2 - 6.0
+    pool_w = 14.0
+    pool_d = 4.0
+    _make_box_local(f"{name_prefix}_PoolRim",
+                    (cx, pool_cy, ground_z + 0.20),
+                    (pool_w + 0.6, pool_d + 0.6, 0.40),
+                    (0.78, 0.74, 0.66, 1.0))
+    # Water (recessed slightly inside rim)
+    _make_box_local(f"{name_prefix}_PoolWater",
+                    (cx, pool_cy, ground_z + 0.18),
+                    (pool_w, pool_d, 0.10),
+                    (0.32, 0.55, 0.78, 1.0))
+
+    # ── HEDGE BORDERS flanking the entry walkway
+    for sgn in (-1, 1):
+        # Hedge runs N-S from front of building toward the pool
+        hedge_x = cx + sgn * (door_w / 2 + 1.6)
+        _make_box_local(f"HedgeFront_{sgn:+d}",
+                        (hedge_x, cy - depth / 2 - 2.5,
+                         ground_z + 0.55),
+                        (0.60, 4.0, 1.10),
+                        (0.20, 0.42, 0.18, 1.0))
+
+    # ── PARKING LOT to the south of the plaza
+    lot_cy = pool_cy - 14.0
+    lot_w = 36.0
+    lot_d = 14.0
+    hw_lot = lot_w / 2; hd_lot = lot_d / 2
+    lv = []
+    for (lx, ly) in [(cx - hw_lot, lot_cy - hd_lot),
+                     (cx + hw_lot, lot_cy - hd_lot),
+                     (cx + hw_lot, lot_cy + hd_lot),
+                     (cx - hw_lot, lot_cy + hd_lot)]:
+        lv.append((lx, ly, mesh_z(lx, ly) + 0.04))
+    _finalize_mesh(f"{name_prefix}_Lot", lv, [[0, 1, 2, 3]],
+                    (0.22, 0.22, 0.24, 1.0))
+    # Stripes
+    for k in range(7):
+        sx_line = cx - hw_lot + (k + 1) * lot_w / 8
+        sv = []
+        for (lx, ly) in [(sx_line - 0.05, lot_cy - hd_lot + 0.3),
+                          (sx_line + 0.05, lot_cy - hd_lot + 0.3),
+                          (sx_line + 0.05, lot_cy + hd_lot - 0.3),
+                          (sx_line - 0.05, lot_cy + hd_lot - 0.3)]:
+            sv.append((lx, ly, mesh_z(lx, ly) + 0.055))
+        _finalize_mesh(f"{name_prefix}_LotStripe_{k}", sv,
+                        [[0, 1, 2, 3]], (0.92, 0.90, 0.84, 1.0))
+    # 4 cars — corporate fleet (greys + blue)
+    for k, (px_off, col) in enumerate(((
+            -12, (0.42, 0.42, 0.45, 1.0)),
+            (-4, (0.62, 0.62, 0.64, 1.0)),
+            (4,  (0.32, 0.42, 0.55, 1.0)),
+            (12, (0.20, 0.20, 0.22, 1.0)))):
+        cpx = cx + px_off
+        cpy = lot_cy + 1.0
+        cpz = mesh_z(cpx, cpy)
+        _build_parked_car(f"{name_prefix}_Car_{k}", cpx, cpy, cpz,
+                           col, facing='+Y')
+
+    # ── FLAGPOLES flanking the plaza — three poles with banners
+    # (typical corporate: US flag, state flag, corporate flag)
+    for k, (fp_x_off, banner_col) in enumerate((
+            (-8, (0.85, 0.20, 0.20, 1.0)),
+            (0,  (0.18, 0.32, 0.55, 1.0)),   # NexCorp blue
+            (8,  (0.95, 0.95, 0.94, 1.0)))):
+        fp_x = cx + fp_x_off
+        fp_y = cy - depth / 2 - 11.0
+        fp_z = mesh_z(fp_x, fp_y)
+        _make_cyl_local(f"{name_prefix}_FlagPole_{k}",
+                        (fp_x, fp_y, fp_z + 4.0),
+                        0.08, 8.0, col_trim, segments=6)
+        # Banner cloth hung from the pole
+        _make_box_local(f"{name_prefix}_FlagBanner_{k}",
+                        (fp_x + 0.50, fp_y, fp_z + 6.8),
+                        (1.0, 0.02, 0.70), banner_col)
+
+
 def build_strip_mall_nightclub():
     """Strip-mall night club on the West Commercial Highway 9
     frontage. Per user spec ("the strip mall night club"): a
@@ -5889,6 +6128,7 @@ def main():
     build_phase2_neighborhood()
     build_high_school_field()
     build_strip_mall_nightclub()
+    build_nexcorp_hq()
     export_glb()
 
 
