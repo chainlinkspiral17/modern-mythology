@@ -4500,10 +4500,10 @@ def build_commercial_cluster():
         # cy + 2.0). Kid stands just south of cabinet facing it.
         ("ArcadeKid",  ks_x - 12.0, ks_y + 1.0, '+Y', 0.78, "bowl",
             (0.42, 0.65, 0.32, 1.0), (0.32, 0.18, 0.32, 1.0)),
-        # Diner patron on a stool (mid-stool position cy - 0.45 +
-        # stool seat at z 0.65 → patron base at stool seat top).
-        # Face north toward the counter.
-        ("DinerPatron", dn_x - 2.0, dn_y - 0.55, '+Y', 1.0, "short",
+        # Diner patron standing next to a stool. Stools at
+        # cy + 0.57 (NORTH of cy, not south). Patron facing
+        # north toward the counter.
+        ("DinerPatron", dn_x - 2.0, dn_y + 0.6, '+Y', 1.0, "short",
             (0.62, 0.42, 0.78, 1.0), (0.18, 0.22, 0.30, 1.0)),
         # Cosmic Comics browser between the two shelves (cy + 0.5).
         ("ComicsBrowser", cc_x - 1.5, cc_y + 0.5, '+Y', 0.92, "bowl",
