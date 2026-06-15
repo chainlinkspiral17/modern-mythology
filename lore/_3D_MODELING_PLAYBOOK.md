@@ -902,6 +902,34 @@ between-equally-OK-options choice, pick the printable one.
   Rule: when you have a recessed entry, split the wall into
   LEFT, RIGHT and HEADER pieces around the opening.
 
+### 2026-06-15 · house cluster spacing + driveway geometry
+
+- **Houses on tight curves cluster at the corners.** I placed
+  houses on the OUTER side of each loop segment 18 m off-road.
+  Where the loop made a sharp corner (~90°), the outer-corner
+  houses ended up only 5-6 m apart in world space even though
+  they were on different road segments. Rule: when placing
+  houses by segment, check the WORLD distance between adjacent
+  outer-corner houses, not just road distance. For tight loops,
+  drop houses to one per long side, or use a bigger off-road
+  distance.
+
+- **Closed road loops must close their polyline.** I built a
+  loop neighborhood with 5 waypoints — that's 4 segments, an
+  open polyline. The road dead-ended in the middle of the
+  neighborhood. To close a loop, repeat the first waypoint at
+  the end so the last segment closes back to the start.
+
+- **Garage centre lives at `house_centre + perp * main_w/2`.**
+  Not `perp * (main_w/2 + gar_w/2)`. In a builder that shifts
+  `main_centre = house_centre - perp * gar_w/2` and then puts
+  the garage at `main_centre + perp * (main_w/2 + gar_w/2)`, the
+  +gar_w/2 and -gar_w/2 cancel. The garage centre is just
+  perp*main_w/2 from the house centre. Helpers that take a
+  house centre and need to compute the garage face / driveway
+  apron position should use this short form, not the long
+  one in the builder.
+
 ### TEMPLATE for next session
 
 ```markdown
