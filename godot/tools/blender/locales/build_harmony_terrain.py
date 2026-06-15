@@ -154,8 +154,15 @@ SETTLEMENTS = [
     ("CountryClub", -460, 440, 340, 420, +22.0, 0.85),
     # North Ranch Homes — second-highest tier
     ("NorthRanch",  -460, -200, 20, 260, +12.0, 0.80),
-    # East CDS Estates — sits on the east ridge
-    ("EastCDS",     180, 440, 20, 260, +8.0, 0.80),
+    # East CDS Estates — sits on the east ridge. South edge moved
+    # from y=20 to y=120 (2026-06-15) so it no longer OVERLAPS the
+    # HighSchoolField settlement (-130..110). The old overlap
+    # produced a hard 5m cliff at y=110 where the settlement-blend
+    # max-weight switched abruptly from HSField +3 to EastCDS +8 —
+    # user reported the hill "cuts into" the track and football
+    # field. Settlement falloff (35m) now handles the gentle 5m
+    # drop between the field and the residential ridge.
+    ("EastCDS",     180, 440, 120, 260, +8.0, 0.80),
     # Phase II construction (under occupancy) — middle tier
     ("Phase2",      40, 240, -260, -100, +1.0, 0.75),
     # West Estates (single-family) — modest lowland
@@ -184,7 +191,7 @@ SETTLEMENTS = [
     # East Commercial strip) for the field + bleachers. Expanded
     # to cover the track ring and end zones (total ~80 x 150 m,
     # rather than the field alone).
-    ("HighSchoolField", 200, 480, -130, 110, +3.0, 0.88),
+    ("HighSchoolField", 200, 480, -130, 110, +3.0, 0.95),
     # NexCorp HQ pad on the North Commercial belt — covers
     # plaza, reflecting pool, hedges, parking lot and flagpoles
     # (lot extends to y=264, pool to y=283).
@@ -204,7 +211,13 @@ SETTLEMENTS = [
     ("DinerPad",      22,   50,  -380, -345, -9.0, 0.95),
     ("CosmicCPad",    62,   80,  -380, -345, -9.0, 0.95),
 ]
-SETTLEMENT_FALLOFF = 35.0   # m of smooth transition outside each rect
+SETTLEMENT_FALLOFF = 20.0   # m of smooth transition outside each rect
+# Reduced from 35m to 20m (2026-06-15) so adjacent settlements
+# don't pull each other's interiors. With the new weighted-blend
+# averaging, a 35m falloff at a settlement boundary made the
+# football field's north edge ramp 2m up toward East CDS Estates'
+# +8 platform. 20m falloff keeps the field flat at +3 and confines
+# the cross-blend to the actual boundary strip.
 
 # ────────────────────────────────────────────────────────────────
 # ROAD CORRIDORS — civil-engineering road cuts. Humans don't drape
@@ -687,7 +700,13 @@ PONDS = [
     ("FoundersPond",   -380,   30,  32,  8.0),
     ("HarmonyPond",      30,   60,  32,  6.0),    # community pool placement
     ("WildLotPond",    -340, -240,  38,  8.0),    # gone-to-seed wild pond
-    ("SECreekPond",     360, -120,  40,  9.0),    # moved AWAY from the creek so it reads
+    # SECreekPond moved 2026-06-15 from (360, -120) to (360, -210).
+    # The old position was INSIDE the HighSchoolField settlement
+    # (y range -130..110), which carved an 8m bowl directly under
+    # the football field. User reported the field "dangling over
+    # the edge of a hill with a pond". Now sits in the wild zone
+    # south of HSField + east of MidValleyPond.
+    ("SECreekPond",     360, -210,  40,  9.0),
     ("NWHeadwatersPond",-440,  280,  30,  6.0),
     ("EastWoodsPond",   320,  310,  28,  5.0),
     ("MidValleyPond",     0, -180,  35,  7.0),    # NEW · in the SE-basin wild zone
@@ -752,7 +771,7 @@ POND_CARVES = [
     ("FoundersPond",     -380,   30, 24.0, 18.0, -4.5),
     ("HarmonyPond",        30,   60, 22.0, 16.0,  0.2),  # community pool
     ("WildLotPond",      -340, -240, 28.0, 20.0, -7.5),
-    ("SECreekPond",       360, -120, 30.0, 22.0, -5.0),
+    ("SECreekPond",       360, -210, 30.0, 22.0, -5.0),
     ("NWHeadwatersPond", -440,  280, 22.0, 16.0, +1.0),
     ("EastWoodsPond",     320,  310, 20.0, 16.0, +8.5),
     ("MidValleyPond",       0, -180, 26.0, 20.0, -4.5),
@@ -944,17 +963,31 @@ def hce_elevation(x, y):
 
     # ── Settlement flattening ────────────────────────────────────
     # Each rectangle pulls the elevation toward its platform z by
-    # `flatness`. Multiple overlapping zones blend by max-weight.
-    best_blend = 0.0
-    best_target = 0.0
+    # `flatness`. Multiple settlements blend via weighted average
+    # of their (blend × flatness) contributions, NOT max-weight.
+    # Per user 2026-06-15: max-weight was producing a hard cliff
+    # wherever two settlements at different platforms met (HSField
+    # +3 vs EastCDS +8 at y=110 was a 5m drop in one cell — visible
+    # as a "hill cutting into the football field"). Weighted blend
+    # gives a smoothstep between the two platform heights as the
+    # winner-switches gradually across the boundary band.
+    sum_w = 0.0
+    sum_target_w = 0.0
+    max_blend = 0.0   # tracks how much settlement influence is here
     for (_n, x_min, x_max, y_min, y_max, target_z, flatness) in SETTLEMENTS:
         b = settlement_blend(x, y, x_min, x_max, y_min, y_max) * flatness
-        if b > best_blend:
-            best_blend = b
-            best_target = target_z
+        if b > 0.001:
+            sum_w += b
+            sum_target_w += target_z * b
+            if b > max_blend:
+                max_blend = b
 
-    if best_blend > 0.001:
-        flattened = base * (1 - best_blend) + best_target * best_blend
+    if sum_w > 0.001:
+        avg_target = sum_target_w / sum_w
+        # The settlement region as a whole still uses max_blend as
+        # the strength of pull (so a point fully inside one
+        # settlement gets full flatness, not diluted).
+        flattened = base * (1 - max_blend) + avg_target * max_blend
     else:
         flattened = base
 
@@ -7398,7 +7431,14 @@ def build_drive_in_theatre():
     Phase 2. A big asphalt arc of stalls facing a giant screen,
     plus a tiny concession-stand building.
     """
-    cx, cy = 150.0, -300.0
+    # Moved 2026-06-15: user reported drive-in "too cramped and
+    # close to the road". Old cy=-300 put the screen at y=-380,
+    # only 12m north of the chapter-1 frontage road at y=-392,
+    # AND the screen sat 20m outside the DriveInPad's south edge
+    # (pad y range -340..-235). New cy=-270 keeps the entire
+    # drive-in installation (screen + 4 parking rows) inside the
+    # carved pad and 42m clear of the road.
+    cx, cy = 150.0, -270.0
     ground_z = mesh_z(cx, cy)
 
     # ── SCREEN — massive white panel facing south on a tall
