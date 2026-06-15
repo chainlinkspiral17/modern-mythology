@@ -5351,6 +5351,161 @@ def _face_axis(facing):
     return (0.0, -1.0)
 
 
+def build_west_estates_neighborhood():
+    """West Estates neighborhood — straight east-west arterial
+    'Magnolia Lane' with a branch loop. Sits in the WestEstates
+    settlement zone (-460..-120 x, -340..-40 y, target_z = -3.0,
+    flatness 0.78). 6 houses with driveways along the arterial
+    + 4 along the loop branch.
+    """
+    # Arterial waypoints — west to east through the middle of
+    # the zone, gentle dip in the centre
+    arterial_pts = [
+        (-440, -180),
+        (-380, -185),
+        (-320, -190),
+        (-260, -185),
+        (-200, -180),
+        (-140, -175),
+    ]
+    # Loop branch — small cul-de-sac north of the arterial
+    loop_pts = [
+        (-320, -190),   # branches off the arterial at its low point
+        (-300, -150),
+        (-340, -130),
+        (-380, -150),
+        (-360, -190),   # closes back to a stub point on the arterial
+    ]
+
+    road_w = 6.0
+    curb_w = 0.5
+    COL_ROAD = (0.20, 0.20, 0.22, 1.0)
+    COL_CURB = (0.78, 0.76, 0.70, 1.0)
+    COL_DASH = (0.95, 0.85, 0.30, 1.0)
+    hw = road_w / 2
+
+    def _emit_road_polyline(pts, prefix):
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]
+            x1, y1 = pts[i + 1]
+            dxs = x1 - x0; dys = y1 - y0
+            seg_len = math.hypot(dxs, dys) or 1.0
+            perp_x = -dys / seg_len
+            perp_y =  dxs / seg_len
+            rv = []
+            for (rx, ry) in [(x0 - perp_x * hw, y0 - perp_y * hw),
+                             (x1 - perp_x * hw, y1 - perp_y * hw),
+                             (x1 + perp_x * hw, y1 + perp_y * hw),
+                             (x0 + perp_x * hw, y0 + perp_y * hw)]:
+                rv.append((rx, ry, mesh_z(rx, ry) + 0.04))
+            _finalize_mesh(f"{prefix}Road_{i}", rv, [[0, 1, 2, 3]],
+                            COL_ROAD)
+            for sgn in (-1, 1):
+                cv = []
+                for (rx, ry) in [(x0 + sgn * perp_x * hw,
+                                  y0 + sgn * perp_y * hw),
+                                 (x1 + sgn * perp_x * hw,
+                                  y1 + sgn * perp_y * hw),
+                                 (x1 + sgn * perp_x * (hw + curb_w),
+                                  y1 + sgn * perp_y * (hw + curb_w)),
+                                 (x0 + sgn * perp_x * (hw + curb_w),
+                                  y0 + sgn * perp_y * (hw + curb_w))]:
+                    cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
+                _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
+                                [[0, 1, 2, 3]], COL_CURB)
+            mid_x = (x0 + x1) / 2
+            mid_y = (y0 + y1) / 2
+            dx_len = 2.0
+            ddx = dxs / seg_len * dx_len / 2
+            ddy = dys / seg_len * dx_len / 2
+            dv = []
+            for (rx, ry) in [(mid_x - ddx - perp_x * 0.08,
+                              mid_y - ddy - perp_y * 0.08),
+                             (mid_x + ddx - perp_x * 0.08,
+                              mid_y + ddy - perp_y * 0.08),
+                             (mid_x + ddx + perp_x * 0.08,
+                              mid_y + ddy + perp_y * 0.08),
+                             (mid_x - ddx + perp_x * 0.08,
+                              mid_y - ddy + perp_y * 0.08)]:
+                dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
+            _finalize_mesh(f"{prefix}Dash_{i}", dv, [[0, 1, 2, 3]],
+                            COL_DASH)
+
+    _emit_road_polyline(arterial_pts, "WEArtl_")
+    _emit_road_polyline(loop_pts, "WELoop_")
+
+    # ── HOUSES along the arterial · alternating sides
+    arterial_houses = [
+        ("WE_House_A1", 0, -1, '+Y',
+            {'wall': (0.78, 0.72, 0.58, 1.0),
+             'roof': (0.42, 0.30, 0.22, 1.0)}),
+        ("WE_House_A2", 1, +1, '-Y',
+            {'wall': (0.85, 0.78, 0.65, 1.0),
+             'roof': (0.32, 0.22, 0.18, 1.0)}),
+        ("WE_House_A3", 2, -1, '+Y',
+            {'wall': (0.72, 0.78, 0.65, 1.0),
+             'roof': (0.55, 0.30, 0.20, 1.0)}),
+        ("WE_House_A4", 3, +1, '-Y',
+            {'wall': (0.82, 0.75, 0.60, 1.0),
+             'roof': (0.32, 0.30, 0.26, 1.0)}),
+        ("WE_House_A5", 4, -1, '+Y',
+            {'wall': (0.78, 0.68, 0.55, 1.0),
+             'roof': (0.42, 0.32, 0.22, 1.0)}),
+    ]
+    for name, pidx, side_sgn, facing, palette in arterial_houses:
+        x0, y0 = arterial_pts[pidx]
+        x1, y1 = arterial_pts[pidx + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        mid_x = (x0 + x1) / 2
+        mid_y = (y0 + y1) / 2
+        hcx = mid_x + side_sgn * perp_x * 18.0
+        hcy = mid_y + side_sgn * perp_y * 18.0
+        hcz = mesh_z(hcx, hcy)
+        _build_suburban_house(name, hcx, hcy, hcz,
+                              facing=facing, palette=palette)
+        curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
+        curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)
+        _build_driveway(f"{name}_Drive", hcx, hcy, hcz, facing,
+                         curb_x, curb_y)
+
+    # ── HOUSES along the loop branch · all on outer side
+    loop_houses = [
+        ("WE_House_L1", 0, +1, '-X',
+            {'wall': (0.82, 0.78, 0.70, 1.0),
+             'roof': (0.42, 0.30, 0.22, 1.0)}),
+        ("WE_House_L2", 1, +1, '-X',
+            {'wall': (0.65, 0.68, 0.78, 1.0),
+             'roof': (0.32, 0.22, 0.18, 1.0)}),
+        ("WE_House_L3", 2, +1, '-Y',
+            {'wall': (0.78, 0.78, 0.65, 1.0),
+             'roof': (0.55, 0.30, 0.20, 1.0)}),
+        ("WE_House_L4", 3, +1, '+X',
+            {'wall': (0.72, 0.78, 0.68, 1.0),
+             'roof': (0.42, 0.30, 0.22, 1.0)}),
+    ]
+    for name, pidx, side_sgn, facing, palette in loop_houses:
+        x0, y0 = loop_pts[pidx]
+        x1, y1 = loop_pts[pidx + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        mid_x = (x0 + x1) / 2
+        mid_y = (y0 + y1) / 2
+        hcx = mid_x + side_sgn * perp_x * 18.0
+        hcy = mid_y + side_sgn * perp_y * 18.0
+        hcz = mesh_z(hcx, hcy)
+        _build_suburban_house(name, hcx, hcy, hcz,
+                              facing=facing, palette=palette)
+        curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
+        curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)
+        _build_driveway(f"{name}_Drive", hcx, hcy, hcz, facing,
+                         curb_x, curb_y)
+
+
 def build_phase2_neighborhood():
     """Phase II residential neighborhood — winding cul-de-sac
     road through the settlement zone (40..240 x, -260..-100 y,
@@ -6341,6 +6496,7 @@ def main():
     build_oliver_tree_skatepark()
     build_commercial_cluster()
     build_phase2_neighborhood()
+    build_west_estates_neighborhood()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
