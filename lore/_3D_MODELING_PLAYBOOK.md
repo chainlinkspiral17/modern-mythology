@@ -930,6 +930,31 @@ between-equally-OK-options choice, pick the printable one.
   apron position should use this short form, not the long
   one in the builder.
 
+### 2026-06-15 · water layering inside rims + above ground
+
+- **Water disc above ground OR inside a properly-modelled rim
+  trough, NEVER below ground.** Two existing builds (OT Park
+  reflecting pool, OT Park rill) and one new one (NexCorp HQ
+  pool) all had water positioned BELOW the terrain / inside a
+  solid rim box — invisible because the terrain mesh or rim
+  faces hide it. The rules:
+  - If the terrain at the pool location has NO carved
+    depression (flat settlement zone), water `z = ground + 0.04`
+    (ABOVE the surface).
+  - If you build a stone rim as a solid base box, water goes ON
+    TOP of the rim (e.g. `z = rim_top + 0.02`).
+  - The "water below the rim" sign convention only makes sense
+    when the terrain is carved (creek channel, pond depression)
+    so the rim ring sits at carved-channel-rim height.
+
+- **Apply collider hint coverage to NEW geometry.** When I
+  added the suburban-house builder, the COLLIDER_NAME_HINTS in
+  LocaleSetup.gd didn't include "Main" or "Garage" so houses
+  had no colliders. Every time you add a NEW build function,
+  audit the names against the hint list and either rename
+  geometry to match existing hints (preferred — keeps the
+  hint list short) or add new hints.
+
 ### TEMPLATE for next session
 
 ```markdown
