@@ -7982,6 +7982,9 @@ def build_district_arterials():
 
     # ── HARMONY BOULEVARD · N-S arterial. Threads east of the
     # Harmony Park community pool to avoid cutting it in half.
+    # Extended south past the truck route (-392) so the player
+    # can drive Harmony Blvd all the way from the country club
+    # to the chapter-1 commercial cluster road frontage.
     harmony_blvd = [
         (   0, 340),   # at country club south edge
         (  10, 260),
@@ -7992,6 +7995,8 @@ def build_district_arterials():
         (  20, -180),
         (  10, -260),
         (   0, -340),  # at chapter-1 commercial zone north edge
+        (   8, -380),  # heading toward chapter-1 road
+        (  12, -392),  # touches chapter-1 commercial road at the crosswalk
     ]
     _emit_arterial(harmony_blvd, "HarmonyBlvd_")
 
