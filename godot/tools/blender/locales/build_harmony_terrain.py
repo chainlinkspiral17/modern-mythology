@@ -5752,10 +5752,29 @@ def build_strip_mall_nightclub():
                     (cx, cy + depth / 2 - wall_t / 2,
                      ground_z + height / 2),
                     (width, wall_t, height), col_wall)
-    _make_box_local(f"{name_prefix}_WallS",
-                    (cx, cy - depth / 2 + wall_t / 2,
+    # South wall split LEFT + RIGHT + HEADER around the alcove
+    # opening (alcove walls sit at cx ± 1.10 so the opening is
+    # 2.20 m wide).
+    alc_half = 1.10
+    alc_open_top_z = 3.20      # opening height above ground
+    left_w = width / 2 - alc_half
+    _make_box_local(f"{name_prefix}_WallS_L",
+                    (cx - alc_half - left_w / 2,
+                     cy - depth / 2 + wall_t / 2,
                      ground_z + height / 2),
-                    (width, wall_t, height), col_wall)
+                    (left_w, wall_t, height), col_wall)
+    _make_box_local(f"{name_prefix}_WallS_R",
+                    (cx + alc_half + left_w / 2,
+                     cy - depth / 2 + wall_t / 2,
+                     ground_z + height / 2),
+                    (left_w, wall_t, height), col_wall)
+    # Header lintel over the opening
+    _make_box_local(f"{name_prefix}_WallS_Header",
+                    (cx, cy - depth / 2 + wall_t / 2,
+                     ground_z + alc_open_top_z +
+                     (height - alc_open_top_z) / 2),
+                    (alc_half * 2, wall_t,
+                     height - alc_open_top_z), col_wall)
     _make_box_local(f"{name_prefix}_WallE",
                     (cx + width / 2 - wall_t / 2, cy,
                      ground_z + height / 2),
