@@ -5513,6 +5513,167 @@ def _face_axis(facing):
     return (0.0, -1.0)
 
 
+def build_country_club():
+    """Harmony Creek Country Club — top-of-the-hill prosperous
+    zone. Symmetrical brick clubhouse with white columns, plus
+    a tennis-court pair and a golf-fairway suggestion. Settlement
+    zone (-460..440, 340..420, target_z = +22.0, flatness 0.85).
+    """
+    cx, cy = 0.0, 370.0
+    ground_z = mesh_z(cx, cy)
+
+    # ── CLUBHOUSE — 36 × 14 × 7 m brick + white-column portico
+    col_brick = (0.55, 0.32, 0.24, 1.0)
+    col_white = (0.95, 0.94, 0.90, 1.0)
+    col_roof = (0.22, 0.20, 0.22, 1.0)
+    col_door = (0.32, 0.18, 0.16, 1.0)
+    col_window = (0.32, 0.42, 0.55, 1.0)
+
+    cb_w = 36.0; cb_d = 14.0; cb_h = 7.0; cb_t = 0.20
+    # Slab
+    _make_box_local("CC_Slab", (cx, cy, ground_z + 0.05),
+                    (cb_w + 0.6, cb_d + 0.6, 0.10), col_white)
+    # Solid back + side walls
+    _make_box_local("CC_WallN",
+                    (cx, cy + cb_d / 2 - cb_t / 2, ground_z + cb_h / 2),
+                    (cb_w, cb_t, cb_h), col_brick)
+    _make_box_local("CC_WallE",
+                    (cx + cb_w / 2 - cb_t / 2, cy, ground_z + cb_h / 2),
+                    (cb_t, cb_d, cb_h), col_brick)
+    _make_box_local("CC_WallW",
+                    (cx - cb_w / 2 + cb_t / 2, cy, ground_z + cb_h / 2),
+                    (cb_t, cb_d, cb_h), col_brick)
+    # South wall — split for the entry opening
+    sd_w = 4.0       # door opening width
+    sd_h = 4.0       # door opening height
+    left_w = cb_w / 2 - sd_w / 2
+    _make_box_local("CC_WallS_L",
+                    (cx - sd_w / 2 - left_w / 2,
+                     cy - cb_d / 2 + cb_t / 2, ground_z + cb_h / 2),
+                    (left_w, cb_t, cb_h), col_brick)
+    _make_box_local("CC_WallS_R",
+                    (cx + sd_w / 2 + left_w / 2,
+                     cy - cb_d / 2 + cb_t / 2, ground_z + cb_h / 2),
+                    (left_w, cb_t, cb_h), col_brick)
+    _make_box_local("CC_WallS_Header",
+                    (cx, cy - cb_d / 2 + cb_t / 2,
+                     ground_z + sd_h + (cb_h - sd_h) / 2),
+                    (sd_w, cb_t, cb_h - sd_h), col_brick)
+    # Roof — flat with parapet trim
+    _make_box_local("CC_Roof",
+                    (cx, cy, ground_z + cb_h + 0.10),
+                    (cb_w + 0.4, cb_d + 0.4, 0.20), col_roof)
+    # White trim band along south facade at parapet
+    _make_box_local("CC_TrimBand",
+                    (cx, cy - cb_d / 2 - 0.05,
+                     ground_z + cb_h - 0.10),
+                    (cb_w + 0.4, 0.10, 0.30), col_white)
+    # PORTICO — 4 white columns in front of the entry, 1.2 m
+    # forward of south face, with a triangular pediment-suggestion
+    # box on top
+    for k, col_off in enumerate((-3.6, -1.2, 1.2, 3.6)):
+        _make_cyl_local(f"CC_PorticoCol_{k}",
+                        (cx + col_off, cy - cb_d / 2 - 1.6,
+                         ground_z + cb_h * 0.40),
+                        0.25, cb_h * 0.80, col_white, segments=8)
+    # Portico roof (thick white slab)
+    _make_box_local("CC_PorticoRoof",
+                    (cx, cy - cb_d / 2 - 1.6,
+                     ground_z + cb_h * 0.85),
+                    (9.0, 1.6, 0.30), col_white)
+    # Pediment triangle (placeholder: just a flat box above)
+    _make_box_local("CC_Pediment",
+                    (cx, cy - cb_d / 2 - 1.6,
+                     ground_z + cb_h * 0.85 + 0.45),
+                    (8.0, 1.4, 0.60), col_white)
+
+    # Front door (double red leaf)
+    glass_y = cy - cb_d / 2 + 0.05
+    for sgn in (-1, 1):
+        _make_box_local(f"CC_Door_{sgn:+d}",
+                        (cx + sgn * sd_w / 4, glass_y,
+                         ground_z + sd_h / 2),
+                        (sd_w / 2 - 0.12, 0.06, sd_h - 0.10),
+                        col_door)
+    # 8 windows along the south façade (4 each side of the door)
+    for sgn in (-1, 1):
+        for k in range(4):
+            wx = cx + sgn * (sd_w / 2 + (k + 1) * 3.0)
+            if abs(wx) < cb_w / 2 - 1.5:
+                _make_box_local(f"CC_Window_S_{sgn:+d}_{k}",
+                                (wx, glass_y, ground_z + 3.5),
+                                (1.4, 0.04, 1.8), col_window)
+    # Welcome mat
+    _make_box_local("CC_DoorMat",
+                    (cx, glass_y - 0.5, ground_z + 0.07),
+                    (sd_w + 0.4, 0.80, 0.02),
+                    (0.32, 0.18, 0.16, 1.0))
+
+    # ── TENNIS COURT PAIR — east of clubhouse
+    tc_cx = cx + cb_w / 2 + 22.0
+    tc_cy = cy
+    tc_w = 24.0       # standard tennis court 23.77 m × 10.97 m
+    tc_d = 11.0
+    COL_TC = (0.45, 0.35, 0.55, 1.0)     # purple-ish court
+    COL_TC_LINE = (0.95, 0.95, 0.92, 1.0)
+    for k_court in (0, 1):
+        ty = tc_cy + (k_court - 0.5) * (tc_d + 2.0)
+        _make_box_local(f"CC_TennisCourt_{k_court}",
+                        (tc_cx, ty, ground_z + 0.05),
+                        (tc_w, tc_d, 0.06), COL_TC)
+        # Net at midcourt
+        _make_box_local(f"CC_TennisNet_{k_court}",
+                        (tc_cx, ty, ground_z + 0.55),
+                        (0.10, tc_d - 0.6, 0.90),
+                        (0.18, 0.18, 0.18, 1.0))
+        # Centre line
+        _make_box_local(f"CC_TennisCenterline_{k_court}",
+                        (tc_cx, ty, ground_z + 0.09),
+                        (tc_w - 1.0, 0.10, 0.01), COL_TC_LINE)
+        # Service lines
+        for ln_off in (-tc_w / 4, tc_w / 4):
+            _make_box_local(
+                f"CC_TennisServLine_{k_court}_{int(ln_off)}",
+                (tc_cx + ln_off, ty, ground_z + 0.09),
+                (0.10, tc_d - 1.0, 0.01), COL_TC_LINE)
+    # Chain-link fence around the courts (4 corner posts + suggestion)
+    fence_x_min = tc_cx - tc_w / 2 - 1.0
+    fence_x_max = tc_cx + tc_w / 2 + 1.0
+    fence_y_min = tc_cy - (tc_d + 2.0) - 1.0
+    fence_y_max = tc_cy + (tc_d + 2.0) + 1.0
+    for fx in (fence_x_min, fence_x_max):
+        for fy in (fence_y_min, fence_y_max):
+            _make_cyl_local(f"CC_TennisFencePost_{int(fx)}_{int(fy)}",
+                            (fx, fy, ground_z + 1.5),
+                            0.05, 3.0,
+                            (0.62, 0.62, 0.64, 1.0), segments=4)
+
+    # ── GOLF FAIRWAY suggestion — long green stripe running west
+    # from the clubhouse, ending at a putting green
+    fw_x = cx - cb_w / 2 - 40.0
+    fw_w = 60.0
+    fw_d = 18.0
+    COL_FAIRWAY = (0.30, 0.55, 0.25, 1.0)
+    COL_GREEN = (0.20, 0.45, 0.20, 1.0)
+    _make_box_local("CC_Fairway",
+                    (fw_x, cy, ground_z + 0.03),
+                    (fw_w, fw_d, 0.04), COL_FAIRWAY)
+    # Putting green at far west end of fairway
+    pg_x = fw_x - fw_w / 2 - 8.0
+    _make_box_local("CC_PuttingGreen",
+                    (pg_x, cy, ground_z + 0.05),
+                    (12.0, 12.0, 0.06), COL_GREEN)
+    # Flag pin in the centre of the green
+    _make_cyl_local("CC_GolfPinPole",
+                    (pg_x, cy, ground_z + 1.0),
+                    0.02, 2.0, (0.95, 0.95, 0.92, 1.0), segments=4)
+    # Flag triangle
+    _make_box_local("CC_GolfFlag",
+                    (pg_x + 0.30, cy, ground_z + 1.70),
+                    (0.50, 0.02, 0.30),
+                    (0.85, 0.20, 0.18, 1.0))
+
+
 def build_phase3_neighborhood():
     """Phase III — Norman Lott's abandoned development. "Gone to
     seed" per the design manual: partial road, half-finished
@@ -6995,6 +7156,7 @@ def main():
     build_north_ranch_neighborhood()
     build_east_cds_neighborhood()
     build_phase3_neighborhood()
+    build_country_club()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
