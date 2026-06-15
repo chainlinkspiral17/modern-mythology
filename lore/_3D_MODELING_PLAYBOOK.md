@@ -812,6 +812,25 @@ between-equally-OK-options choice, pick the printable one.
   above it. If your sample is OUTSIDE the depression (rim
   ring), water is `-` below it.
 
+### 2026-06-15 · interior aisle accounting + clerk placement
+
+- **Every interior wall, partition and counter "eats" depth.**
+  When packing a diner — booths + customer counter + waiter
+  aisle + pass-through + cook aisle + prep counter + back wall —
+  you have to budget at least 0.5 m per human aisle and 0.6 m
+  per counter + add the wall thicknesses. My first diner had
+  the pass-through and prep counter both at the same y, eating
+  the entire kitchen aisle. Rule: list every layer along the
+  depth axis with its size and clearance BEFORE placing
+  geometry, and pad to ≥0.7 m where a human stands.
+- **Place clerks where their actual workstation lives.** The
+  laundromat doesn't have a counter — its "workstation" is the
+  change machine and the folding table. Sticking the clerk
+  behind the back wall like a convenience-store cashier put
+  them inside a washer. The rule is: identify the workstation
+  per building (counter, change machine, podium, fryer line),
+  then put the clerk's marker in front of THAT.
+
 ### TEMPLATE for next session
 
 ```markdown
