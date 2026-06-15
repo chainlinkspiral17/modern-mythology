@@ -3511,6 +3511,50 @@ def _build_diner(cx, cy, ground_z):
     _make_box_local(f"{name_prefix}_KitchenWall",
                     (cx, cy + depth * 0.40, ground_z + 1.30),
                     (12.0, 0.20, 0.60), col_trim)
+    # JUKEBOX in the SE corner — colourful arc-top body so it
+    # reads as a Wurlitzer-style 50s jukebox from the sidewalk.
+    juke_x = cx + width / 2 - 0.8
+    juke_y = cy + depth * 0.05
+    _make_box_local(f"{name_prefix}_Jukebox_Body",
+                    (juke_x, juke_y, ground_z + 0.70),
+                    (0.70, 0.55, 1.40),
+                    (0.62, 0.18, 0.62, 1.0))           # magenta body
+    _make_box_local(f"{name_prefix}_Jukebox_Dome",
+                    (juke_x, juke_y, ground_z + 1.55),
+                    (0.70, 0.55, 0.30),
+                    (0.95, 0.85, 0.30, 1.0))           # gold dome cap
+    _make_box_local(f"{name_prefix}_Jukebox_Window",
+                    (juke_x, juke_y - 0.28, ground_z + 1.10),
+                    (0.50, 0.04, 0.50),
+                    (0.18, 0.22, 0.30, 1.0))           # dark display
+    # COFFEE STATION on the back counter / staff aisle. Two
+    # carafes + a brewer body. Tells the player coffee's a thing
+    # here even from outside.
+    coffee_x = cx - width / 2 + 1.4
+    coffee_y = cy + depth * 0.25
+    _make_box_local(f"{name_prefix}_Coffee_Brewer",
+                    (coffee_x, coffee_y, ground_z + 1.40),
+                    (0.45, 0.40, 0.50),
+                    (0.42, 0.42, 0.45, 1.0))           # steel brewer
+    for k, (col_pot, ox) in enumerate((((0.20, 0.18, 0.16, 1.0), -0.20),
+                                         ((0.80, 0.32, 0.22, 1.0), 0.20))):
+        _make_cyl_local(f"{name_prefix}_Coffee_Pot_{k}",
+                        (coffee_x + ox, coffee_y,
+                         ground_z + 1.15),
+                        0.07, 0.20, col_pot, segments=8)
+    # CLOCK on the back wall — round wall clock
+    _make_cyl_local(f"{name_prefix}_Clock",
+                    (cx, cy + depth / 2 - 0.21, ground_z + 2.50),
+                    0.30, 0.05,
+                    (0.92, 0.90, 0.88, 1.0), segments=12)
+    _make_box_local(f"{name_prefix}_Clock_HandH",
+                    (cx, cy + depth / 2 - 0.18, ground_z + 2.55),
+                    (0.02, 0.02, 0.18),
+                    (0.10, 0.10, 0.10, 1.0))
+    _make_box_local(f"{name_prefix}_Clock_HandM",
+                    (cx + 0.10, cy + depth / 2 - 0.18, ground_z + 2.45),
+                    (0.22, 0.02, 0.02),
+                    (0.10, 0.10, 0.10, 1.0))
 
 
 def _build_cosmic_comics(cx, cy, ground_z):
