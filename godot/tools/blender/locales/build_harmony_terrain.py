@@ -8667,6 +8667,35 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                             canopy_r, canopy_col,
                             rings=3, segments=8)
 
+    # ── PARKED CAR in the driveway — ~55% of houses (deterministic
+    # by position). Skipped for X-facing houses since the car helper
+    # only emits Y-aligned vehicles; those just get an empty driveway.
+    seed_car = (int(cx * 17) + int(cy * 23)) % 100
+    if seed_car < 55 and abs(fx) < 0.5:
+        car_palette = [
+            (0.20, 0.20, 0.22, 1.0),   # black
+            (0.62, 0.62, 0.64, 1.0),   # silver
+            (0.85, 0.85, 0.82, 1.0),   # white
+            (0.18, 0.32, 0.55, 1.0),   # navy
+            (0.78, 0.18, 0.18, 1.0),   # red
+            (0.30, 0.55, 0.25, 1.0),   # green
+            (0.42, 0.30, 0.20, 1.0),   # tan
+            (0.85, 0.62, 0.22, 1.0),   # gold
+        ]
+        car_color = car_palette[seed_car % len(car_palette)]
+        # Place car on the driveway in front of the garage door
+        # (gar_cx, gar_cy ± gar_d/2 along facing). Pull 0.5m off the
+        # garage face + half car length out from there.
+        car_pull = 0.5 + 4.4 / 2
+        car_cx = gar_cx + fx * (gar_d / 2 + car_pull)
+        car_cy = gar_cy + fy * (gar_d / 2 + car_pull)
+        # Car facing: '+Y' if car nose points +Y, else '-Y'.
+        # We want nose pointing AWAY from garage (out of driveway).
+        car_face = '+Y' if fy > 0 else '-Y'
+        _build_parked_car(f"{name}_DwayCar",
+                          car_cx, car_cy, ground_z,
+                          car_color, facing=car_face)
+
 
 def _build_driveway(name, house_cx, house_cy, ground_z, facing,
                      curb_x, curb_y, color=(0.18, 0.18, 0.20, 1.0)):
