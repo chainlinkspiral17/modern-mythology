@@ -6663,6 +6663,103 @@ def build_auto_dealership():
                     (0.18, 0.32, 0.55, 1.0))
 
 
+def build_library_and_bike_racks():
+    """HCE Public Library — small civic building on Harmony
+    Blvd just south of the elementary school. Plus bike racks
+    at the elementary school + library + community pool.
+    """
+    # ── LIBRARY at (60, 80)
+    cx, cy = 60.0, 80.0
+    ground_z = mesh_z(cx, cy)
+    col_wall = (0.62, 0.42, 0.32, 1.0)         # warm brick
+    col_trim = (0.95, 0.92, 0.86, 1.0)
+    col_roof = (0.32, 0.30, 0.28, 1.0)
+    col_door = (0.32, 0.18, 0.16, 1.0)
+    col_glass = (0.32, 0.42, 0.55, 1.0)
+    w, d, h = 22.0, 14.0, 5.5
+    t = 0.20
+    _make_box_local("Lib_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (w + 0.4, d + 0.4, 0.10), col_trim)
+    _make_box_local("Lib_WallN",
+                    (cx, cy + d / 2 - t / 2, ground_z + h / 2),
+                    (w, t, h), col_wall)
+    _make_box_local("Lib_WallE",
+                    (cx + w / 2 - t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    _make_box_local("Lib_WallW",
+                    (cx - w / 2 + t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    dw, dh = 2.6, 2.8
+    left_w = w / 2 - dw / 2
+    _make_box_local("Lib_WallS_L",
+                    (cx - dw / 2 - left_w / 2,
+                     cy - d / 2 + t / 2, ground_z + h / 2),
+                    (left_w, t, h), col_wall)
+    _make_box_local("Lib_WallS_R",
+                    (cx + dw / 2 + left_w / 2,
+                     cy - d / 2 + t / 2, ground_z + h / 2),
+                    (left_w, t, h), col_wall)
+    _make_box_local("Lib_WallS_Header",
+                    (cx, cy - d / 2 + t / 2,
+                     ground_z + dh + (h - dh) / 2),
+                    (dw, t, h - dh), col_wall)
+    _make_box_local("Lib_Door",
+                    (cx, cy - d / 2 + 0.05, ground_z + dh / 2),
+                    (dw, 0.06, dh - 0.10), col_door)
+    # 4 tall windows on the south face
+    for sgn in (-1, 1):
+        for k in range(2):
+            wx = cx + sgn * (dw / 2 + (k + 1) * 3.5)
+            if abs(wx - cx) < w / 2 - 1.0:
+                _make_box_local(f"Lib_Window_{sgn:+d}_{k}",
+                                (wx, cy - d / 2 + 0.04,
+                                 ground_z + 2.7),
+                                (1.6, 0.04, 2.4), col_glass)
+    _make_box_local("Lib_Roof",
+                    (cx, cy, ground_z + h + 0.10),
+                    (w + 0.4, d + 0.4, 0.20), col_roof)
+    # White trim band south
+    _make_box_local("Lib_TrimBand",
+                    (cx, cy - d / 2 - 0.05,
+                     ground_z + h - 0.30),
+                    (w + 0.4, 0.10, 0.30), col_trim)
+    # Sign panel above the entry
+    _make_box_local("Lib_SignPanel",
+                    (cx, cy - d / 2 - 0.20,
+                     ground_z + h + 0.30),
+                    (8.0, 0.14, 0.80),
+                    (0.18, 0.32, 0.55, 1.0))
+
+    # ── BIKE RACKS · short U-shaped steel rails
+    def _emit_bike_rack(name_prefix, anchor_x, anchor_y, count=5):
+        anc_z = mesh_z(anchor_x, anchor_y)
+        for k in range(count):
+            rx = anchor_x + (k - count / 2.0 + 0.5) * 0.80
+            ry = anchor_y
+            # Two vertical posts + one curved top (approximated)
+            for sgn in (-1, 1):
+                _make_cyl_local(
+                    f"{name_prefix}_Post_{k}_{sgn:+d}",
+                    (rx + sgn * 0.20, ry, anc_z + 0.40),
+                    0.03, 0.80,
+                    (0.42, 0.42, 0.45, 1.0), segments=4)
+            # Top bar
+            _make_box_local(f"{name_prefix}_Bar_{k}",
+                            (rx, ry, anc_z + 0.80),
+                            (0.46, 0.04, 0.04),
+                            (0.42, 0.42, 0.45, 1.0))
+
+    # Bike rack outside the library entry
+    _emit_bike_rack("Lib_BikeRack", cx + 6, cy - d / 2 - 1.5, 4)
+    # Bike rack outside the elementary school entry
+    _emit_bike_rack("ES_BikeRack", -90.0 + 4.0, 160.0 - 7.0 - 1.5,
+                     6)
+    # Bike rack at the community pool change-room west door
+    _emit_bike_rack("HP_BikeRack", 30.0 + 32.0 * 1.10 + 12.0 - 5,
+                     60.0 - 5, 4)
+
+
 def build_little_league_field():
     """Little League baseball diamond west of the elementary
     school. Backstop fence + dirt infield + grass outfield +
@@ -9831,6 +9928,7 @@ def main():
     build_auto_dealership()
     build_midway_minimart()
     build_little_league_field()
+    build_library_and_bike_racks()
     build_phase3_crane()
     build_police_station()
     build_high_school_field()
