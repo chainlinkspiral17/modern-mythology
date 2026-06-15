@@ -556,19 +556,21 @@ def build_creek():
         dx = x1 - x0; dy = y1 - y0
         ang = math.atan2(dy, dx)
         perp_x = -math.sin(ang); perp_y = math.cos(ang)
-        # Per-corner z = mesh_z at that corner + 0.05 m so the
-        # water surface sits JUST ABOVE the carved channel floor
-        # (visible, no z-fighting) while staying well below the
-        # surrounding flood-plain bank tops (50 m away, well
-        # outside our 1.8 m-from-centerline corner sample).
+        # Water surface is FLAT within each segment (real water
+        # doesn't tilt). Sample mesh_z at all four corners then
+        # use the MAXIMUM as the segment's water plane z — that
+        # way the surface stays above the channel floor at every
+        # corner (no z-fighting) without dipping below the floor
+        # at the highest corner. Per-corner sampling would tilt
+        # the quad with the channel slope, which looks wrong.
         corners = [
             (x0 - perp_x * width / 2, y0 - perp_y * width / 2),
             (x1 - perp_x * width / 2, y1 - perp_y * width / 2),
             (x1 + perp_x * width / 2, y1 + perp_y * width / 2),
             (x0 + perp_x * width / 2, y0 + perp_y * width / 2),
         ]
-        verts = [(vx, vy, mesh_z(vx, vy) + 0.05)
-                  for (vx, vy) in corners]
+        seg_z = max(mesh_z(vx, vy) for (vx, vy) in corners) + 0.05
+        verts = [(vx, vy, seg_z) for (vx, vy) in corners]
         _finalize_mesh(f"Creek_Water_{i}", verts, [[0, 1, 2, 3]],
                        COL_CREEK_WATER)
 
