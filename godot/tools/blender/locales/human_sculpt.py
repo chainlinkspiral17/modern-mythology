@@ -570,6 +570,16 @@ def _build_arms(name, base_x, base_y, shoulder_z, s,
                        (hand_x, hand_y, hand_z),
                        arm_r_top * 0.92, arm_r_bot,
                        jacket_color, segments=8)
+        # WRIST · tiny skin-tone sphere where the jacket cuff
+        # opens to the hand. Reads as "sleeve ends, skin begins".
+        wrist_t = 0.92
+        wrist_x = elbow_x + (hand_x - elbow_x) * wrist_t
+        wrist_y = elbow_y + (hand_y - elbow_y) * wrist_t
+        wrist_z = elbow_z + (hand_z - elbow_z) * wrist_t
+        _sphere_low(f"{name}_Wrist_{side}",
+                    (wrist_x, wrist_y, wrist_z),
+                    arm_r_bot * 1.1, skin_color,
+                    rings=2, segments=6, squash_z=0.65)
         # Hand · spheroid fist + small thumb stub.
         _sphere_low(f"{name}_Hand_{side}",
                     (hand_x, hand_y, hand_z - hand_size * 0.35),
