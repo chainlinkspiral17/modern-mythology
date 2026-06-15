@@ -1919,6 +1919,53 @@ def build_oliver_tree_memorial_park():
                                     0.30, (0.32, 0.55, 0.22, 1.0),
                                     rings=3, segments=6)
 
+    # ── CONNECTOR WALKWAY · W radial end → Skatepark NE entry
+    # The skatepark sits in the SW corner of the park with no marked
+    # path leading to it. This adds a gravel walkway curving south
+    # from the end of the West radial path to the skatepark plaza
+    # edge, plus a small wooden direction signpost at the fork.
+    # Each segment is a per-vertex mesh_z quad so it follows terrain.
+    COL_GRAVEL = (0.62, 0.58, 0.50, 1.0)
+    conn_w = 1.8
+    conn_pts = [
+        (sx - outer_r - 25, sy,           ),   # A · end of W radial
+        (sx - outer_r - 30, sy - 15,      ),   # B · turn south
+        (sx - outer_r - 32, sy - 25,      ),   # C · approach
+        (sx - 20,           sy - 26,      ),   # D · NE skatepark entry (-280+...
+    ]
+    # NB: skatepark plaza is centred at (-280, 82); D above resolves
+    # to roughly (-280, 94) — the NE edge of the plaza.
+    hw = conn_w / 2
+    for i in range(len(conn_pts) - 1):
+        x0, y0 = conn_pts[i]
+        x1, y1 = conn_pts[i + 1]
+        # Perpendicular to segment direction in XY plane
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        pv = []
+        for (px, py) in [(x0 - perp_x * hw, y0 - perp_y * hw),
+                         (x1 - perp_x * hw, y1 - perp_y * hw),
+                         (x1 + perp_x * hw, y1 + perp_y * hw),
+                         (x0 + perp_x * hw, y0 + perp_y * hw)]:
+            pv.append((px, py, mesh_z(px, py) + 0.025))
+        _finalize_mesh(f"OTPark_Skp_Connector_{i}", pv, [[0, 1, 2, 3]],
+                       COL_GRAVEL)
+
+    # Wooden signpost at the fork (point A) — short post + arrow plank
+    sign_x, sign_y = conn_pts[0]
+    sign_ground = mesh_z(sign_x, sign_y)
+    COL_WOOD_POST = (0.42, 0.30, 0.20, 1.0)
+    COL_WOOD_PLANK = (0.58, 0.42, 0.28, 1.0)
+    _make_cyl_local("OTPark_Skp_SignPost",
+                    (sign_x, sign_y, sign_ground + 1.2),
+                    0.06, 2.4, COL_WOOD_POST, segments=6)
+    # Arrow plank pointing SW toward the skatepark
+    _make_box_local("OTPark_Skp_SignPlank",
+                    (sign_x - 0.35, sign_y - 0.20, sign_ground + 2.1),
+                    (1.0, 0.18, 0.04), COL_WOOD_PLANK)
+
     # ── Beacon at the park south entry · samples its own mesh_z
     beacon_x = sx
     beacon_y = sy - outer_r - 50
