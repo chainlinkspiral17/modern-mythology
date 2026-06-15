@@ -226,38 +226,63 @@ ROAD_CORRIDORS = [
     # ── HARMONY BOULEVARD · N-S arterial. Descends from the country
     # club hill (+22) down to the SouthComm truck route (-9). Each
     # waypoint's z matches the settlement platform it crosses.
+    # Subdivided to ≤40 m segments so the carved grade reads smooth
+    # across the 15 m mesh grid (longer segments showed visible
+    # kinks at each polyline vertex).
     ("HarmonyBlvd", [
         (   0,  380, +22.0),   # CC south driveway
+        (   0,  360, +21.0),
         (   0,  340, +20.0),   # CC south edge
+        (   3,  300, +17.0),
         (  10,  260, +14.0),   # NorthComm belt
+        (  18,  230,  +9.5),
         (  30,  200,  +5.0),   # NorthComm → HarmonyPark transition
+        (  44,  170,  +3.0),
+        (  56,  140,  +1.5),
         (  60,  130,  +1.0),   # HarmonyPark
+        (  60,   80,  +1.0),
+        (  60,   40,  +1.0),
         (  60,   10,  +1.0),   # HarmonyPark south
+        (  52,  -30,   0.0),
         (  40,  -80,  -1.0),   # HP/Phase2 transition
+        (  30, -130,  -2.5),
         (  20, -180,  -4.0),   # mid valley wild zone
+        (  16, -220,  -5.5),
         (  10, -260,  -7.0),   # approaching SouthComm
+        (   4, -300,  -8.0),
         (   0, -340,  -9.0),   # SouthComm north edge
         (   8, -380,  -9.0),   # chapter-1 frontage
         (  12, -392,  -9.0),
-    ], 7.0, 22.0),
+    ], 7.0, 36.0),
 
     # ── HORIZON DRIVE · E-W arterial. From WestComm (-2) east to
     # EastComm (+5), threading through Harmony Park (0) and crossing
     # Harmony Blvd at the central junction (0).
     ("HorizonDr", [
         (-560,  -20,  -2.0),
+        (-510,  -20,  -2.0),
         (-460,  -20,  -2.0),   # WestComm boundary
+        (-420,  -15,  -1.8),
         (-380,  -10,  -1.5),
+        (-330,  -10,  -1.3),
         (-280,  -10,  -1.0),   # south of OT Park
+        (-230,  -15,  -0.5),
         (-180,  -20,   0.0),   # HarmonyPark south edge
+        (-130,  -25,   0.0),
         ( -80,  -30,   0.0),
+        ( -40,  -30,   0.0),
+        (  10,  -25,   0.0),
         (  60,  -20,   0.0),   # junction with Harmony Blvd
+        ( 110,  -15,  +0.7),
         ( 160,  -10,  +1.5),   # approaching ECDS/HS field
+        ( 210,  -10,  +2.2),
         ( 260,  -10,  +3.0),
+        ( 320,   -5,  +4.0),
         ( 380,    0,  +5.0),
         ( 440,    0,  +5.0),   # EastComm
+        ( 510,    0,  +5.0),
         ( 560,    0,  +5.0),
-    ], 7.0, 22.0),
+    ], 7.0, 36.0),
 
     # ── CONNECTOR ROADS · short 5 m collectors. full-grade half-width
     # smaller because the road is narrower.
@@ -404,7 +429,13 @@ def road_carve(x, y):
             w = 1.0
         elif seg_best_d <= full_hw + shoulder:
             tt = (seg_best_d - full_hw) / shoulder
-            w = 1.0 - smoothstep(0.0, 1.0, tt)
+            # Linear falloff reads as a constant-slope BATTER (cut/
+            # fill slope) — civil engineering's standard 3:1 to 4:1
+            # slope. Smoothstep was producing visible "terraced"
+            # stepping where its mid-band 1.5× peak gradient hit the
+            # 15 m grid cells. Linear keeps every shoulder cell at
+            # the same slope.
+            w = 1.0 - tt
         else:
             w = 0.0
         if w > best_weight:
@@ -480,7 +511,8 @@ def lot_pad_carve(x, y):
             if d >= shoulder:
                 continue
             t = d / shoulder
-            w = 1.0 - smoothstep(0.0, 1.0, t)
+            # Linear falloff (see road_carve comment).
+            w = 1.0 - t
         if w > best_weight:
             best_weight = w
             best_target = target_z
@@ -545,6 +577,111 @@ def pond_depression(x, y, cx, cy, radius, depth):
     t = (d - radius * 0.5) / (radius * 0.5)
     s = 1.0 - t * t * (3 - 2 * t)
     return -depth * s
+
+
+# ────────────────────────────────────────────────────────────────
+# WATER CARVES — ponds + creek channel get an explicit floor_z and
+# a true carve operation that beats settlement flattening. Per user
+# (2026-06-15): "rivers and water also carves through terrain."
+# Without this, settlements near the creek (OliverTreeMemPark,
+# HarmonyPark, Phase2) flatten the creek dip back up, leaving the
+# water plane floating above ground.
+#
+# Pond format: (name, cx, cy, full_r, shoulder_r, floor_z)
+#   - Inside full_r: terrain locked to floor_z (the channel bed)
+#   - From full_r to full_r+shoulder_r: smooth ramp back to natural
+#   - Water plane sits at floor_z + 0.6 (computed in build_pond_water)
+# ────────────────────────────────────────────────────────────────
+POND_CARVES = [
+    # (name, cx, cy, full_r, shoulder_r, floor_z)
+    # floor_z values: targeted from local terrain at pond center
+    # minus a reasonable depth. The water surface in build_pond_water
+    # is computed as max(rim_z - 0.7, floor_z + 0.6), so leaving the
+    # rim a bit higher than floor_z+0.6 keeps the water disc inside
+    # the rim.
+    ("FoundersPond",     -380,   30, 24.0, 18.0, -4.5),
+    ("HarmonyPond",        30,   60, 22.0, 16.0,  0.2),  # community pool
+    ("WildLotPond",      -340, -240, 28.0, 20.0, -7.5),
+    ("SECreekPond",       360, -120, 30.0, 22.0, -5.0),
+    ("NWHeadwatersPond", -440,  280, 22.0, 16.0, +1.0),
+    ("EastWoodsPond",     320,  310, 20.0, 16.0, +8.5),
+    ("MidValleyPond",       0, -180, 26.0, 20.0, -4.5),
+]
+
+# Creek channel — polyline of (x, y, channel_floor_z) waypoints.
+# floor_z decreases monotonically toward the outlet (creek flows
+# south-east toward the river). Channel is narrow (3 m full-grade
+# half-width) with a wide flood-plain shoulder (25 m) so the
+# surrounding terrain grades down into the ravine without a
+# vertical step at the channel edge.
+CREEK_CHANNEL = [
+    (-560,  360, +2.5),   # NW headwaters
+    (-440,  290,  0.0),
+    (-300,  160, -1.5),
+    (-180,   80, -2.5),
+    ( -80,    0, -3.5),
+    (  40,  -70, -4.5),
+    ( 160, -140, -5.5),
+    ( 280, -190, -6.5),
+    ( 400, -240, -7.5),
+    ( 500, -310, -8.5),
+    ( 580, -360, -9.5),   # SE outlet
+]
+CREEK_CHANNEL_HW = 3.0       # half-width of the channel bed
+CREEK_SHOULDER = 22.0        # flood-plain falloff
+
+
+def _pond_carve(x, y):
+    """Best-weight pond-floor lock. Inside full_r: weight = 1
+    (terrain forced to floor_z). Through shoulder: smooth falloff."""
+    best_w = 0.0; best_z = 0.0
+    for (_n, cx, cy, full_r, sh, floor_z) in POND_CARVES:
+        d = math.hypot(x - cx, y - cy)
+        if d <= full_r:
+            w = 1.0
+        elif d <= full_r + sh:
+            t = (d - full_r) / sh
+            w = 1.0 - smoothstep(0.0, 1.0, t)
+        else:
+            continue
+        if w > best_w:
+            best_w = w; best_z = floor_z
+    return best_z, best_w
+
+
+def _creek_carve(x, y):
+    """Channel floor lock along the creek polyline. floor_z lerps
+    along segments between waypoints (so the creek slopes naturally
+    toward the outlet). Inside CREEK_CHANNEL_HW: weight = 1; through
+    CREEK_SHOULDER: smooth ramp."""
+    best_d = float("inf"); best_z = 0.0
+    for i in range(len(CREEK_CHANNEL) - 1):
+        x0, y0, z0 = CREEK_CHANNEL[i]
+        x1, y1, z1 = CREEK_CHANNEL[i + 1]
+        t, d = _seg_proj(x, y, x0, y0, x1, y1)
+        if d < best_d:
+            best_d = d
+            best_z = z0 + (z1 - z0) * t
+    if best_d <= CREEK_CHANNEL_HW:
+        w = 1.0
+    elif best_d <= CREEK_CHANNEL_HW + CREEK_SHOULDER:
+        tt = (best_d - CREEK_CHANNEL_HW) / CREEK_SHOULDER
+        # Linear ramp inside the shoulder reads as a real BATTER
+        # (cut slope) — smoothstep was producing the visible
+        # "terrace" stepping in the 15 m mesh cells.
+        w = 1.0 - tt
+    else:
+        w = 0.0
+    return best_z, w
+
+
+def water_carve(x, y):
+    """Combine pond + creek carves; return the strongest."""
+    pz, pw = _pond_carve(x, y)
+    cz, cw = _creek_carve(x, y)
+    if pw >= cw:
+        return pz, pw
+    return cz, cw
 
 
 def mesh_z(px, py):
@@ -657,16 +794,32 @@ def hce_elevation(x, y):
     if lot_w > 0.001:
         flattened = flattened * (1.0 - lot_w) + lot_target * lot_w
 
+    # ── WATER CARVE — ponds + creek channel lock terrain to their
+    # respective floor heights, with smooth flood-plain shoulders.
+    # Beats settlement flattening so pond rims + creek banks stay
+    # below water level even where a settlement overlaps the water.
+    water_target, water_w = water_carve(x, y)
+    if water_w > 0.001:
+        flattened = flattened * (1.0 - water_w) + water_target * water_w
+
     # ── ROAD CORRIDOR carve. Civil-engineering road cut: humans
     # excavate dirt to set a controlled gradient. Inside the
     # full-grade band terrain is locked to road-grade; through the
-    # shoulder it grades smoothly back to surrounding height. This
-    # is the LAST step so roads override berms, pond rims, and lot
-    # edges — the road wins through everything because that's how
-    # real civil works are built.
+    # shoulder it grades smoothly back to surrounding height.
+    #
+    # YIELD TO WATER: where water_w is at or near full, the road
+    # carve yields. The road would otherwise FILL IN the creek
+    # channel at every crossing. Where carve yields, we emit
+    # explicit BRIDGE DECK geometry instead (see build_bridges).
     road_target, road_w = road_carve(x, y)
     if road_w > 0.001:
-        flattened = flattened * (1.0 - road_w) + road_target * road_w
+        # Scale road weight down by (1 - water_w) so water survives
+        # the crossing. Where water_w = 1.0, road weight drops to 0
+        # and the channel stays carved. Where water_w = 0, road
+        # behaves normally.
+        effective_road_w = road_w * (1.0 - water_w)
+        if effective_road_w > 0.001:
+            flattened = flattened * (1.0 - effective_road_w) + road_target * effective_road_w
 
     return flattened
 
@@ -858,39 +1011,195 @@ def build_ground():
 
 
 def build_creek():
-    """Water surface quads sitting inside the flood-plain ravine.
-    Each segment samples mesh_z at its four corners and places the
-    water plane 0.6 m below the CHANNEL FLOOR at each point — so
-    the water follows the carved ravine instead of using a single
-    hardcoded z that floats above the channel in some places and
-    sinks below ground in others. Width also shrunk to 60% of the
-    flood-plain width so the water disc stays well inside the
-    carved walls (per the user's "water floating above the hole"
-    feedback)."""
-    width = 3.6           # was 6.0; shrunk so the disc stays inside
-    for i in range(len(CREEK_POINTS) - 1):
-        x0, y0 = CREEK_POINTS[i]
-        x1, y1 = CREEK_POINTS[i + 1]
+    """Water surface quads following the carved creek channel. Each
+    segment of CREEK_CHANNEL declares an explicit floor_z; water
+    sits 0.6 m above the bed and slopes down toward the outlet
+    along with the channel.
+
+    Per the 2026-06-15 water-carve pass: the channel itself is now
+    a true carve in hce_elevation (see CREEK_CHANNEL + _creek_carve),
+    so mesh_z within the channel returns floor_z. The water disc
+    no longer needs to probe mesh_z — it can use floor_z directly,
+    giving a stable surface that doesn't tilt with mesh aliasing."""
+    width = 3.6
+    for i in range(len(CREEK_CHANNEL) - 1):
+        x0, y0, z0 = CREEK_CHANNEL[i]
+        x1, y1, z1 = CREEK_CHANNEL[i + 1]
         dx = x1 - x0; dy = y1 - y0
         ang = math.atan2(dy, dx)
         perp_x = -math.sin(ang); perp_y = math.cos(ang)
-        # Water surface is FLAT within each segment (real water
-        # doesn't tilt). Sample mesh_z at all four corners then
-        # use the MAXIMUM as the segment's water plane z — that
-        # way the surface stays above the channel floor at every
-        # corner (no z-fighting) without dipping below the floor
-        # at the highest corner. Per-corner sampling would tilt
-        # the quad with the channel slope, which looks wrong.
-        corners = [
-            (x0 - perp_x * width / 2, y0 - perp_y * width / 2),
-            (x1 - perp_x * width / 2, y1 - perp_y * width / 2),
-            (x1 + perp_x * width / 2, y1 + perp_y * width / 2),
-            (x0 + perp_x * width / 2, y0 + perp_y * width / 2),
+        # Per-corner water z so the surface slopes with the channel
+        # gradient instead of stepping at every segment boundary.
+        # 0.6 m above the floor (typical small-creek depth).
+        wz0 = z0 + 0.6
+        wz1 = z1 + 0.6
+        verts = [
+            (x0 - perp_x * width / 2, y0 - perp_y * width / 2, wz0),
+            (x1 - perp_x * width / 2, y1 - perp_y * width / 2, wz1),
+            (x1 + perp_x * width / 2, y1 + perp_y * width / 2, wz1),
+            (x0 + perp_x * width / 2, y0 + perp_y * width / 2, wz0),
         ]
-        seg_z = max(mesh_z(vx, vy) for (vx, vy) in corners) + 0.05
-        verts = [(vx, vy, seg_z) for (vx, vy) in corners]
         _finalize_mesh(f"Creek_Water_{i}", verts, [[0, 1, 2, 3]],
                        COL_CREEK_WATER)
+
+
+def _seg_intersect(ax, ay, bx, by, cx, cy, dx, dy):
+    """Return the (x, y, ts, td) intersection of segments AB and CD,
+    or None if they don't cross. ts/td are the parameters along the
+    two segments at the crossing point."""
+    rx = bx - ax; ry = by - ay
+    sx = dx - cx; sy = dy - cy
+    denom = rx * sy - ry * sx
+    if abs(denom) < 1e-6:
+        return None
+    ts = ((cx - ax) * sy - (cy - ay) * sx) / denom
+    td = ((cx - ax) * ry - (cy - ay) * rx) / denom
+    if 0.0 <= ts <= 1.0 and 0.0 <= td <= 1.0:
+        return (ax + rx * ts, ay + ry * ts, ts, td)
+    return None
+
+
+def build_bridges():
+    """Where a road corridor crosses the creek channel, emit a
+    bridge deck at road grade (not at the dipped creek floor) so
+    the player can drive across. Without this the road quads sag
+    into the creek bed because road_carve YIELDS to water_carve at
+    the channel centerline.
+
+    For each ROAD_CORRIDOR × CREEK_CHANNEL pair of segments, compute
+    the analytic xy intersection point. At the crossing, emit:
+      · a deck quad 14 m × 8 m at road target_z (road follows the
+        corridor direction; deck spans the channel + flood plain)
+      · two stone-coloured side parapets (low railings)
+      · two stone piers down to the creek floor for read
+    """
+    COL_DECK = (0.32, 0.32, 0.35, 1.0)           # darker asphalt
+    COL_PARAPET = (0.78, 0.74, 0.68, 1.0)        # cast-concrete
+    COL_PIER = (0.62, 0.58, 0.52, 1.0)
+
+    for (rname, waypoints, full_hw, _sh) in ROAD_CORRIDORS:
+        for i in range(len(waypoints) - 1):
+            rx0, ry0, rz0 = waypoints[i]
+            rx1, ry1, rz1 = waypoints[i + 1]
+            for j in range(len(CREEK_CHANNEL) - 1):
+                cx0, cy0, cz0 = CREEK_CHANNEL[j]
+                cx1, cy1, cz1 = CREEK_CHANNEL[j + 1]
+                hit = _seg_intersect(rx0, ry0, rx1, ry1,
+                                     cx0, cy0, cx1, cy1)
+                if not hit:
+                    continue
+                hx, hy, ts, td = hit
+                deck_z = rz0 + (rz1 - rz0) * ts
+                creek_z = cz0 + (cz1 - cz0) * td
+                # Road direction unit vector
+                rdx = rx1 - rx0; rdy = ry1 - ry0
+                rlen = math.hypot(rdx, rdy) or 1.0
+                ux = rdx / rlen; uy = rdy / rlen
+                # Road perpendicular (across-road direction)
+                px = -uy; py = ux
+                # Deck dimensions
+                deck_along = 18.0
+                deck_across = 2.0 * full_hw + 2.0   # bridge slightly wider than road
+                # Deck quad — flat at deck_z
+                half_a = deck_along / 2
+                half_b = deck_across / 2
+                corners = [
+                    (hx - ux * half_a - px * half_b,
+                     hy - uy * half_a - py * half_b),
+                    (hx + ux * half_a - px * half_b,
+                     hy + uy * half_a - py * half_b),
+                    (hx + ux * half_a + px * half_b,
+                     hy + uy * half_a + py * half_b),
+                    (hx - ux * half_a + px * half_b,
+                     hy - uy * half_a + py * half_b),
+                ]
+                deck_thick = 0.5
+                # Bottom verts (deck underside) for thickness
+                verts = []
+                for (vx, vy) in corners:
+                    verts.append((vx, vy, deck_z + 0.05))
+                for (vx, vy) in corners:
+                    verts.append((vx, vy, deck_z + 0.05 - deck_thick))
+                # Top quad + bottom quad + 4 sides
+                faces = [
+                    [0, 1, 2, 3],            # top
+                    [7, 6, 5, 4],            # bottom (reversed)
+                    [0, 4, 5, 1],            # side
+                    [1, 5, 6, 2],
+                    [2, 6, 7, 3],
+                    [3, 7, 4, 0],
+                ]
+                _finalize_mesh(f"Bridge_{rname}_{i}_{j}_Deck",
+                               verts, faces, COL_DECK)
+                # Two side parapets (low concrete walls along the
+                # bridge edges)
+                rail_h = 0.7
+                rail_t = 0.20
+                for sgn in (-1, +1):
+                    cxR = hx + sgn * px * (half_b + rail_t / 2 - 0.05)
+                    cyR = hy + sgn * py * (half_b + rail_t / 2 - 0.05)
+                    # Build box via 8 corners aligned with road axis
+                    rverts = []
+                    for ka in (-half_a, half_a):
+                        for kb in (-rail_t / 2, rail_t / 2):
+                            rverts.append((
+                                cxR + ux * ka + px * kb,
+                                cyR + uy * ka + py * kb,
+                                deck_z + 0.10,
+                            ))
+                    for ka in (-half_a, half_a):
+                        for kb in (-rail_t / 2, rail_t / 2):
+                            rverts.append((
+                                cxR + ux * ka + px * kb,
+                                cyR + uy * ka + py * kb,
+                                deck_z + 0.10 + rail_h,
+                            ))
+                    rfaces = [
+                        [0, 1, 3, 2],         # bottom
+                        [6, 7, 5, 4],         # top
+                        [0, 4, 5, 1],
+                        [1, 5, 7, 3],
+                        [3, 7, 6, 2],
+                        [2, 6, 4, 0],
+                    ]
+                    _finalize_mesh(
+                        f"Bridge_{rname}_{i}_{j}_Parapet_{sgn:+d}",
+                        rverts, rfaces, COL_PARAPET)
+                # Two stone piers descending from deck to creek floor
+                pier_z_top = deck_z - deck_thick + 0.10
+                pier_z_bot = creek_z - 0.20
+                pier_h = pier_z_top - pier_z_bot
+                if pier_h > 0.5:
+                    for sgn in (-1, +1):
+                        # Place piers across the road axis at ±2 m
+                        pcx = hx + sgn * ux * 4.0
+                        pcy = hy + sgn * uy * 4.0
+                        pverts = []
+                        for ka in (-1.0, 1.0):
+                            for kb in (-0.8, 0.8):
+                                pverts.append((
+                                    pcx + ux * ka + px * kb,
+                                    pcy + uy * ka + py * kb,
+                                    pier_z_bot,
+                                ))
+                        for ka in (-1.0, 1.0):
+                            for kb in (-0.8, 0.8):
+                                pverts.append((
+                                    pcx + ux * ka + px * kb,
+                                    pcy + uy * ka + py * kb,
+                                    pier_z_top,
+                                ))
+                        pfaces = [
+                            [0, 1, 3, 2],
+                            [6, 7, 5, 4],
+                            [0, 4, 5, 1],
+                            [1, 5, 7, 3],
+                            [3, 7, 6, 2],
+                            [2, 6, 4, 0],
+                        ]
+                        _finalize_mesh(
+                            f"Bridge_{rname}_{i}_{j}_Pier_{sgn:+d}",
+                            pverts, pfaces, COL_PIER)
 
 
 # ────────────────────────────────────────────────────────────────
@@ -1032,17 +1341,30 @@ def build_pond_water():
     cattail/reed clumps at the perimeter, and lily-pad discs
     floating on the surface."""
     segments = 20
+    # Build a lookup of pond floor + carve radius from POND_CARVES.
+    floor_by_name = {n: (full_r, floor_z)
+                     for (n, _cx, _cy, full_r, _sh, floor_z) in POND_CARVES}
     for (name, cx, cy, radius, _depth) in PONDS:
-        bottom_z = mesh_z(cx, cy)
-        # Water sits ~0.7 m below the SURROUNDING RIM elevation.
-        rim_samples = []
-        for sample_i in range(8):
-            ang = 2.0 * math.pi * sample_i / 8
-            sx_pt = cx + math.cos(ang) * radius * 1.05
-            sy_pt = cy + math.sin(ang) * radius * 1.05
-            rim_samples.append(hce_elevation(sx_pt, sy_pt))
-        rim_z = sum(rim_samples) / len(rim_samples)
-        water_z = min(bottom_z + 1.5, rim_z - 0.7)
+        # Per the 2026-06-15 water-carve pass: each pond now declares
+        # an explicit floor_z in POND_CARVES. Use that directly for
+        # water_z so the surface always sits 0.6 m above the bowl bed
+        # regardless of how settlements/lots/roads carved nearby.
+        # Sample rim well beyond the carve shoulder so it reads
+        # natural terrain, not the carved bowl wall.
+        if name in floor_by_name:
+            full_r, floor_z = floor_by_name[name]
+            water_z = floor_z + 0.6
+            bottom_z = floor_z
+        else:
+            bottom_z = mesh_z(cx, cy)
+            rim_samples = []
+            for sample_i in range(8):
+                ang = 2.0 * math.pi * sample_i / 8
+                sx_pt = cx + math.cos(ang) * radius * 1.05
+                sy_pt = cy + math.sin(ang) * radius * 1.05
+                rim_samples.append(hce_elevation(sx_pt, sy_pt))
+            rim_z = sum(rim_samples) / len(rim_samples)
+            water_z = min(bottom_z + 1.5, rim_z - 0.7)
         # EMPIRICAL DISC RADIUS · the analytic depression is
         # WEAKENED by settlement flattening (settlement target
         # pulls all elevations toward target_z by `flatness`, so
@@ -12215,6 +12537,7 @@ def main():
     build_district_arterials()
     build_community_landmarks()
     build_connector_roads()
+    build_bridges()
     build_ot_park_access_road()
     build_hs_stadium_overflow_lot()
     build_elementary_school()
