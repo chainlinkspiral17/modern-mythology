@@ -3334,6 +3334,74 @@ def build_commercial_cluster():
             dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
         _finalize_mesh(f"CommRoad_Dash_{k}", dv, [[0, 1, 2, 3]],
                        COL_CENTERLINE)
+    # ── PHONE BOOTH on the sidewalk between Kwik Stop & NexCorp.
+    # Classic glass-paneled booth with a red top cap. The hooked
+    # handset is suggested by a thin dark box on the inside wall.
+    ph_x = (ks_x + nc_x) / 2.0
+    ph_y = ks_y + 5.5
+    ph_z = mesh_z(ph_x, ph_y)
+    COL_BOOTH_FRAME = (0.18, 0.18, 0.18, 1.0)
+    COL_BOOTH_GLASS = (0.42, 0.50, 0.58, 0.6)   # tinted glass-ish
+    COL_BOOTH_CAP   = (0.82, 0.18, 0.18, 1.0)
+    COL_HANDSET     = (0.22, 0.20, 0.20, 1.0)
+    BOOTH_W = 0.95; BOOTH_D = 0.95; BOOTH_H = 2.30
+    # Four corner posts
+    for sgn_x in (-1, 1):
+        for sgn_y in (-1, 1):
+            _make_box_local(
+                f"Comm_PhoneBooth_Post_{sgn_x:+d}_{sgn_y:+d}",
+                (ph_x + sgn_x * (BOOTH_W / 2 - 0.04),
+                 ph_y + sgn_y * (BOOTH_D / 2 - 0.04),
+                 ph_z + BOOTH_H / 2),
+                (0.08, 0.08, BOOTH_H), COL_BOOTH_FRAME)
+    # Side glass panels (back + two sides; front is open for entry)
+    _make_box_local("Comm_PhoneBooth_BackGlass",
+                    (ph_x, ph_y + BOOTH_D / 2 - 0.02,
+                     ph_z + BOOTH_H / 2 - 0.15),
+                    (BOOTH_W - 0.16, 0.04, BOOTH_H - 0.30),
+                    COL_BOOTH_GLASS)
+    for sgn_x in (-1, 1):
+        _make_box_local(
+            f"Comm_PhoneBooth_SideGlass_{sgn_x:+d}",
+            (ph_x + sgn_x * (BOOTH_W / 2 - 0.02), ph_y,
+             ph_z + BOOTH_H / 2 - 0.15),
+            (0.04, BOOTH_D - 0.16, BOOTH_H - 0.30),
+            COL_BOOTH_GLASS)
+    # Red cap on top
+    _make_box_local("Comm_PhoneBooth_Cap",
+                    (ph_x, ph_y, ph_z + BOOTH_H + 0.10),
+                    (BOOTH_W + 0.06, BOOTH_D + 0.06, 0.20),
+                    COL_BOOTH_CAP)
+    # Handset suggestion: thin dark box on back inside wall
+    _make_box_local("Comm_PhoneBooth_Handset",
+                    (ph_x, ph_y + BOOTH_D / 2 - 0.10,
+                     ph_z + 1.25),
+                    (0.08, 0.10, 0.32), COL_HANDSET)
+    # Phone body / coin box
+    _make_box_local("Comm_PhoneBooth_PhoneBody",
+                    (ph_x, ph_y + BOOTH_D / 2 - 0.08,
+                     ph_z + 1.00),
+                    (0.28, 0.10, 0.40),
+                    (0.32, 0.32, 0.32, 1.0))
+
+    # ── NPC SPAWN MARKERS · invisible-ish low-profile pucks
+    # marking the canonical chapter-one positions. These are
+    # small flat cylinders just barely above ground so an NPC
+    # spawn script can read their world position. They keep
+    # their distinct mesh names so the game can target them
+    # individually.
+    npc_markers = [
+        ("NPC_Sam_Register", ks_x + 4.5, ks_y + 3.5),  # behind Kwik Stop counter
+        ("NPC_Skip_Locker", nc_x + 4.0, nc_y + 3.5),   # behind NexCorp counter
+        ("NPC_Comics_Clerk", cc_x + 2.5, cc_y + 1.5),  # behind Cosmic counter
+    ]
+    for name, mx_, my_ in npc_markers:
+        mz = mesh_z(mx_, my_)
+        _make_cyl_local(name,
+                        (mx_, my_, mz + 0.01),
+                        0.30, 0.02,
+                        (0.95, 0.85, 0.30, 0.4), segments=8)
+
     # ── PARKED CARS · two per lot, nose-in toward the storefront.
     # Distinct paint colours so the strip reads as populated rather
     # than uniform.
