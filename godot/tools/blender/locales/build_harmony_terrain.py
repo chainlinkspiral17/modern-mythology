@@ -4013,6 +4013,65 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (0.40, 0.04, 0.20),
                     (0.18, 0.18, 0.20, 1.0))
 
+    # ── EMPLOYEES ONLY door on the back wall (between counter
+    # backboard and the east wall). Just a flat box with an
+    # "EMPLOYEES ONLY" plaque.
+    emp_x = kw_cx + bay_w / 2 - 0.6
+    emp_y = cy + depth / 2 - 0.15
+    _make_box_local("KwikShop_KwikStop_EmpDoor",
+                    (emp_x, emp_y, ground_z + 1.05),
+                    (0.90, 0.06, 2.10),
+                    (0.42, 0.32, 0.22, 1.0))
+    _make_box_local("KwikShop_KwikStop_EmpDoorSign",
+                    (emp_x, emp_y - 0.04, ground_z + 1.90),
+                    (0.60, 0.02, 0.20),
+                    (0.85, 0.20, 0.18, 1.0))
+
+    # ── INTERIOR POSTERS taped to the partition walls (above
+    # the products) — bright color blocks suggesting branded
+    # ad posters
+    poster_colors = [
+        (0.32, 0.55, 0.78, 1.0),     # blue (Pepsi-style)
+        (0.85, 0.22, 0.20, 1.0),     # red (Coke-style)
+        (0.95, 0.55, 0.20, 1.0),     # orange
+        (0.42, 0.62, 0.32, 1.0),     # green
+    ]
+    # 2 posters on the west partition interior face
+    for k, py in enumerate((cy - 3.0, cy + 3.2)):
+        _make_box_local(f"KwikShop_KwikStop_PosterW_{k}",
+                        (kw_cx - bay_w / 2 + 0.13, py,
+                         ground_z + 2.5),
+                        (0.04, 0.80, 0.80),
+                        poster_colors[k % 4])
+    # 2 posters on the east partition interior face
+    for k, py in enumerate((cy - 3.0, cy + 1.5)):
+        _make_box_local(f"KwikShop_KwikStop_PosterE_{k}",
+                        (kw_cx + bay_w / 2 - 0.13, py,
+                         ground_z + 2.5),
+                        (0.04, 0.80, 0.80),
+                        poster_colors[(k + 2) % 4])
+    # 1 poster on the back wall east of cooler (between cooler
+    # east edge and counter west edge)
+    _make_box_local("KwikShop_KwikStop_PosterB_1",
+                    (kw_cx + 1.3, cy + depth / 2 - 0.13,
+                     ground_z + 2.5),
+                    (0.80, 0.04, 0.80),
+                    poster_colors[0])
+
+    # ── DOOR ENTRY BELL on the storefront door interior
+    # (small chrome cylinder + clapper)
+    glass_y_inside = cy - depth / 2 + 0.12
+    door_centre_x = kw_cx
+    _make_cyl_local("KwikShop_KwikStop_DoorBell",
+                    (door_centre_x, glass_y_inside,
+                     ground_z + 2.40),
+                    0.04, 0.10, col_steel, segments=8)
+    _make_box_local("KwikShop_KwikStop_DoorBellBracket",
+                    (door_centre_x, glass_y_inside,
+                     ground_z + 2.50),
+                    (0.10, 0.04, 0.06),
+                    (0.32, 0.32, 0.34, 1.0))
+
     # LAUNDROMAT bay — row of washing machines + dryers + folding
     # table. Two rows: 5 washers on the south side, 5 dryers on
     # the north side. Folding table down the middle.
