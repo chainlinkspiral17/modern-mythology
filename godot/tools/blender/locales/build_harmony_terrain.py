@@ -2734,6 +2734,250 @@ def build_oliver_tree_skatepark():
                     (2.0, 2.0, 1.4), (0.32, 0.55, 0.78, 1.0))
 
 
+def _build_convenience_store(name_prefix, cx, cy, ground_z,
+                              brand="kwikstop"):
+    """Box-shaped convenience store with a plate-glass STOREFRONT
+    (the south wall is omitted so the interior is visible from
+    outside) plus a modeled interior at world scale: aisles,
+    counter, back cooler. Per _HCE_PROJECT_NOTES.md the convenience
+    stores need plate-glass front walls with the interior visible
+    from the public sidewalk.
+
+    brand:
+      "kwikstop" — red + cream palette, 'Kwik Stop' interior beats
+      "nexcorp"  — blue + grey palette, 'NexCorp Gas & Go' beats
+    """
+    width = 12.0     # E-W
+    depth = 10.0     # N-S (south face is plate glass)
+    height = 3.6
+    if brand == "nexcorp":
+        col_wall   = (0.32, 0.42, 0.55, 1.0)
+        col_trim   = (0.92, 0.92, 0.90, 1.0)
+        col_roof   = (0.20, 0.22, 0.28, 1.0)
+        col_sign   = (0.32, 0.55, 0.78, 1.0)
+        col_floor  = (0.78, 0.76, 0.72, 1.0)
+    else:
+        col_wall   = (0.82, 0.78, 0.72, 1.0)
+        col_trim   = (0.85, 0.22, 0.20, 1.0)
+        col_roof   = (0.32, 0.18, 0.16, 1.0)
+        col_sign   = (0.85, 0.22, 0.20, 1.0)
+        col_floor  = (0.74, 0.72, 0.68, 1.0)
+    col_glass_frame = (0.62, 0.62, 0.64, 1.0)
+    col_shelf      = (0.50, 0.50, 0.52, 1.0)
+    col_counter    = (0.42, 0.32, 0.22, 1.0)
+    col_register   = (0.20, 0.20, 0.22, 1.0)
+    col_cooler     = (0.78, 0.84, 0.88, 1.0)
+    col_basket     = (0.60, 0.20, 0.18, 1.0)
+
+    # Slab / floor — extends slightly past walls for a curb
+    _make_box_local(f"{name_prefix}_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (width + 0.6, depth + 0.6, 0.10), col_floor)
+
+    # Walls — north, east, west. NO south wall (plate glass).
+    wall_t = 0.20
+    # North (back wall, solid)
+    _make_box_local(f"{name_prefix}_WallN",
+                    (cx, cy + depth / 2 - wall_t / 2,
+                     ground_z + height / 2),
+                    (width, wall_t, height), col_wall)
+    # East
+    _make_box_local(f"{name_prefix}_WallE",
+                    (cx + width / 2 - wall_t / 2, cy,
+                     ground_z + height / 2),
+                    (wall_t, depth, height), col_wall)
+    # West
+    _make_box_local(f"{name_prefix}_WallW",
+                    (cx - width / 2 + wall_t / 2, cy,
+                     ground_z + height / 2),
+                    (wall_t, depth, height), col_wall)
+
+    # Plate-glass storefront frame (south side) — vertical mullions
+    # only; the panels themselves are open so the interior is
+    # visible from outside, per project notes.
+    glass_y = cy - depth / 2 + 0.05
+    n_mullions = 5
+    for k in range(n_mullions):
+        mx = cx - width / 2 + 0.3 + k * (width - 0.6) / (n_mullions - 1)
+        _make_box_local(f"{name_prefix}_GlassMullion_{k}",
+                        (mx, glass_y, ground_z + height / 2),
+                        (0.10, 0.06, height), col_glass_frame)
+    # Top + bottom rails of the storefront
+    _make_box_local(f"{name_prefix}_GlassTopRail",
+                    (cx, glass_y, ground_z + height - 0.08),
+                    (width - 0.2, 0.08, 0.16), col_glass_frame)
+    _make_box_local(f"{name_prefix}_GlassBotRail",
+                    (cx, glass_y, ground_z + 0.20),
+                    (width - 0.2, 0.08, 0.40), col_glass_frame)
+
+    # Roof
+    _make_box_local(f"{name_prefix}_Roof",
+                    (cx, cy, ground_z + height + 0.10),
+                    (width + 0.4, depth + 0.4, 0.20), col_roof)
+
+    # Roof-mounted illuminated sign panel (faces south)
+    sign_w = width * 0.7
+    sign_h = 0.9
+    _make_box_local(f"{name_prefix}_SignPanel",
+                    (cx, cy - depth / 2 - 0.20,
+                     ground_z + height + 0.60),
+                    (sign_w, 0.12, sign_h), col_sign)
+    _make_box_local(f"{name_prefix}_SignTrim",
+                    (cx, cy - depth / 2 - 0.20,
+                     ground_z + height + 1.10),
+                    (sign_w + 0.10, 0.14, 0.10), col_trim)
+
+    # ── INTERIOR ────────────────────────────────────────────────
+    # Three aisles of shelving running N-S, set toward the back.
+    aisle_h = 1.8
+    aisle_l = depth * 0.45        # half-depth aisles, leaves room up front
+    aisle_y_centre = cy + depth * 0.10
+    for k, ax_off in enumerate((-3.0, 0.0, 3.0)):
+        _make_box_local(f"{name_prefix}_Aisle_{k}",
+                        (cx + ax_off, aisle_y_centre,
+                         ground_z + aisle_h / 2),
+                        (0.40, aisle_l, aisle_h), col_shelf)
+        # Suggest products on top: thin coloured strip on each side
+        for sgn in (-1, 1):
+            _make_box_local(f"{name_prefix}_AisleGoods_{k}_{sgn:+d}",
+                            (cx + ax_off + sgn * 0.24,
+                             aisle_y_centre,
+                             ground_z + aisle_h - 0.20),
+                            (0.04, aisle_l - 0.4, 0.30),
+                            (0.42, 0.65, 0.38, 1.0))
+
+    # Counter at the BACK-LEFT (player walks in, counter on right)
+    counter_w = 3.0
+    counter_d = 0.9
+    counter_h = 1.1
+    counter_x = cx + width / 2 - counter_w / 2 - 0.5
+    counter_y = cy + depth / 2 - counter_d / 2 - 0.6
+    _make_box_local(f"{name_prefix}_Counter",
+                    (counter_x, counter_y,
+                     ground_z + counter_h / 2),
+                    (counter_w, counter_d, counter_h), col_counter)
+    # Cash register on counter
+    _make_box_local(f"{name_prefix}_Register",
+                    (counter_x - 0.7, counter_y,
+                     ground_z + counter_h + 0.18),
+                    (0.55, 0.40, 0.30), col_register)
+    # Cigarette/lotto rack behind the counter (vertical board)
+    _make_box_local(f"{name_prefix}_BackBoard",
+                    (counter_x, counter_y + counter_d / 2 + 0.05,
+                     ground_z + 1.6),
+                    (counter_w, 0.05, 1.4),
+                    (0.32, 0.30, 0.28, 1.0))
+
+    # Back cooler door (west wall, north end) — big glass-fronted cooler
+    cooler_w = 2.4
+    cooler_h = 2.4
+    _make_box_local(f"{name_prefix}_Cooler",
+                    (cx - width / 2 + cooler_w / 2 + 0.30,
+                     cy + depth / 2 - 0.18,
+                     ground_z + cooler_h / 2),
+                    (cooler_w, 0.20, cooler_h), col_cooler)
+    # Cooler shelf hint — a thin dark strip across the middle
+    _make_box_local(f"{name_prefix}_CoolerShelf",
+                    (cx - width / 2 + cooler_w / 2 + 0.30,
+                     cy + depth / 2 - 0.10,
+                     ground_z + cooler_h * 0.55),
+                    (cooler_w - 0.10, 0.04, 0.05),
+                    (0.32, 0.32, 0.32, 1.0))
+
+    # Wire basket sitting near the entry (south-east of the
+    # plate glass, just inside)
+    _make_box_local(f"{name_prefix}_WireBasket",
+                    (cx + 4.5, cy - depth / 2 + 1.2,
+                     ground_z + 0.30),
+                    (0.40, 0.30, 0.50), col_basket)
+
+
+def build_commercial_cluster():
+    """Chapter-one commercial cluster · Kwik Stop + NexCorp Gas & Go.
+    Per _HCE_PROJECT_NOTES.md (2026-06-14) these need plate-glass
+    storefronts with the interior visible from the public sidewalk.
+    Positioned in the South Commercial settlement belt (target z =
+    -9.0) within walking distance of the country-club spawn point
+    at (0, 30, -380).
+    """
+    # ── KWIK STOP at (50, -360) ────────────────────────────────
+    ks_x, ks_y = 50.0, -360.0
+    ks_z = mesh_z(ks_x, ks_y)
+    _build_convenience_store("KwikStop", ks_x, ks_y, ks_z,
+                              brand="kwikstop")
+
+    # ── NEXCORP GAS & GO at (-90, -360) ────────────────────────
+    nc_x, nc_y = -90.0, -360.0
+    nc_z = mesh_z(nc_x, nc_y)
+    _build_convenience_store("NexCorpGG", nc_x, nc_y, nc_z,
+                              brand="nexcorp")
+    # ── FUEL PUMP CANOPY out front (south of NexCorp building)
+    # The canopy is a big flat roof on four steel columns, with two
+    # fuel-pump islands underneath. The canopy faces the sidewalk
+    # so the player walks past pumps to reach the storefront.
+    can_cx, can_cy = nc_x, nc_y - 12.0
+    can_w, can_d = 12.0, 8.0
+    can_h = 4.4
+    COL_CAN_STEEL = (0.92, 0.92, 0.90, 1.0)
+    COL_CAN_ROOF  = (0.32, 0.42, 0.55, 1.0)
+    COL_PUMP_BODY = (0.85, 0.85, 0.82, 1.0)
+    COL_PUMP_HOSE = (0.18, 0.18, 0.20, 1.0)
+    for ox in (-can_w / 2 + 0.3, can_w / 2 - 0.3):
+        for oy in (-can_d / 2 + 0.3, can_d / 2 - 0.3):
+            _make_cyl_local(
+                f"NexCorpGG_CanopyCol_{ox:+.1f}_{oy:+.1f}",
+                (can_cx + ox, can_cy + oy, nc_z + can_h / 2),
+                0.18, can_h, COL_CAN_STEEL, segments=6)
+    # Canopy slab
+    _make_box_local("NexCorpGG_CanopyRoof",
+                    (can_cx, can_cy, nc_z + can_h + 0.15),
+                    (can_w + 0.6, can_d + 0.6, 0.30),
+                    COL_CAN_ROOF)
+    # Two pump islands (one each side of the canopy axis)
+    for k, ix in enumerate((-2.6, 2.6)):
+        # Island concrete pad
+        _make_box_local(f"NexCorpGG_PumpPad_{k}",
+                        (can_cx + ix, can_cy, nc_z + 0.10),
+                        (1.8, 4.0, 0.20),
+                        (0.72, 0.70, 0.66, 1.0))
+        # Pump body
+        _make_box_local(f"NexCorpGG_PumpBody_{k}",
+                        (can_cx + ix, can_cy, nc_z + 1.0),
+                        (0.80, 0.40, 1.80),
+                        COL_PUMP_BODY)
+        # Pump top display
+        _make_box_local(f"NexCorpGG_PumpDisplay_{k}",
+                        (can_cx + ix, can_cy, nc_z + 1.85),
+                        (0.70, 0.42, 0.30),
+                        (0.20, 0.22, 0.28, 1.0))
+        # Hose stubs on each end of the pump
+        for sgn in (-1, 1):
+            _make_cyl_local(f"NexCorpGG_PumpHose_{k}_{sgn:+d}",
+                            (can_cx + ix,
+                             can_cy + sgn * 0.22,
+                             nc_z + 1.20),
+                            0.04, 0.30, COL_PUMP_HOSE, segments=4)
+
+    # ── PYLON SIGN on a pole · NexCorp brand visible from highway
+    # 6m-tall pole + big square sign at the top with the NexCorp
+    # blue square + price reader below.
+    pyl_x = nc_x - 12.0
+    pyl_y = nc_y - 18.0
+    pyl_z = mesh_z(pyl_x, pyl_y)
+    PYLON_H = 6.5
+    _make_cyl_local("NexCorpGG_PylonPole",
+                    (pyl_x, pyl_y, pyl_z + PYLON_H / 2),
+                    0.20, PYLON_H, COL_CAN_STEEL, segments=6)
+    _make_box_local("NexCorpGG_PylonSign",
+                    (pyl_x, pyl_y, pyl_z + PYLON_H + 0.6),
+                    (2.2, 0.15, 1.2),
+                    (0.32, 0.55, 0.78, 1.0))
+    _make_box_local("NexCorpGG_PylonPriceBoard",
+                    (pyl_x, pyl_y, pyl_z + PYLON_H - 0.5),
+                    (1.6, 0.15, 0.6),
+                    (0.18, 0.18, 0.22, 1.0))
+
+
 def _make_sphere_low_local(name, center, radius, color,
                            rings=3, segments=8):
     cx, cy, cz = center
@@ -2828,6 +3072,7 @@ def main():
     build_oliver_tree_memorial()
     build_oliver_tree_memorial_park()
     build_oliver_tree_skatepark()
+    build_commercial_cluster()
     export_glb()
 
 
