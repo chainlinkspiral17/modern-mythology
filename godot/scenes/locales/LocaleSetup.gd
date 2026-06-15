@@ -71,6 +71,7 @@ func _ready() -> void:
 	var laundromat_signs: Array = []
 	var diner_signs: Array = []
 	var hce_welcome_signs: Array = []
+	var stop_signs: Array = []
 	for mi in meshes:
 		mi.material_override = mat
 		applied += 1
@@ -110,6 +111,8 @@ func _ready() -> void:
 			diner_signs.append(mi)
 		elif "HCE_Welcome_SignFace" in mi.name:
 			hce_welcome_signs.append(mi)
+		elif "CommRoad_StopFace" in mi.name:
+			stop_signs.append(mi)
 	print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
 	# Attach real Label3D text to the sign panels.
 	#
@@ -212,6 +215,16 @@ func _ready() -> void:
 						0.0,
 						Color(0.98, 0.98, 0.96, 1.0),    # cream
 						Color(0.42, 0.08, 0.06, 1.0))    # deep red
+	# Stop sign — facing east (toward eastbound drivers). The
+	# Blender +X face becomes Godot +X after the axis swap.
+	for panel in stop_signs:
+		_attach_text_label(panel,
+						Vector3(-0.03, 0, 0),
+						Vector3(-1, 0, 0),
+						"STOP",
+						0.0,
+						Color(0.98, 0.98, 0.96, 1.0),
+						Color(0.42, 0.08, 0.06, 1.0))
 	# HCE community welcome sign — faces SOUTH (toward the spawn-
 	# approaching player). Two-line "HARMONY CREEK / ESTATES"
 	# centred on a tall cream face.

@@ -4812,6 +4812,23 @@ def build_commercial_cluster():
                     (0.40, 0.04, 0.40),
                     (0.32, 0.42, 0.55, 1.0))
 
+    # STOP sign at the crosswalk's west side so eastbound traffic
+    # yields to pedestrians.
+    stop_x = spur_jog_x - 5.0
+    stop_y = road_y + hwr + 1.0
+    stop_z = mesh_z(stop_x, stop_y)
+    _make_cyl_local("CommRoad_StopPole",
+                    (stop_x, stop_y, stop_z + 1.1),
+                    0.04, 2.2,
+                    (0.62, 0.62, 0.64, 1.0), segments=4)
+    # Octagonal-ish stop face — thin axis along X so the sign
+    # faces WEST (toward eastbound drivers approaching the
+    # crosswalk).
+    _make_box_local("CommRoad_StopFace",
+                    (stop_x, stop_y, stop_z + 2.20),
+                    (0.04, 0.50, 0.50),
+                    (0.78, 0.18, 0.18, 1.0))
+
     # Speed-limit sign on a 2 m pole just east of the crosswalk
     sl_x = spur_jog_x + 8.0
     sl_y = road_y + hwr + 1.2
