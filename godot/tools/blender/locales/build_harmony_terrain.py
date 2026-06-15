@@ -7756,6 +7756,10 @@ def build_connector_roads():
     # WestComm link · short branch off Horizon Dr west end to
     # the SCRATCH nightclub at (-510, 0)
     _emit([(-460, -20), (-490, -10), (-510, 0)], "WCommLink_")
+    # Truck Stop access · east extension of the chapter-1
+    # commercial road frontage out to the truck stop
+    _emit([(100, -392), (160, -390), (200, -385)],
+           "TSLink_")
     # Country Club south driveway → Harmony Blvd top
     _emit([(0, 360), (0, 340)], "CCLink_")
 
