@@ -9802,7 +9802,9 @@ def build_connector_roads():
     curb_w = 0.4
     COL_ROAD = (0.22, 0.22, 0.24, 1.0)
     COL_CURB = (0.78, 0.76, 0.70, 1.0)
-    COL_DASH = (0.92, 0.90, 0.84, 1.0)
+    COL_DASH = (0.95, 0.85, 0.30, 1.0)   # yellow — US convention
+    # (yellow stripes separate OPPOSING traffic flows on undivided
+    # 2-way roads; white separates same-direction lanes only).
     hw = road_w / 2
 
     def _emit(pts, prefix):
@@ -9833,10 +9835,8 @@ def build_connector_roads():
                     cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
                 _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
                                 [[0, 1, 2, 3]], COL_CURB)
-            # 2 dashed white centerline marks per segment (residential
-            # collectors use white dash, not yellow — yellow is
-            # arterial-only per US convention for divided-from-
-            # undivided).
+            # 2 yellow dash marks per segment — US convention for
+            # an undivided 2-way road's centerline.
             if seg_len > 5.0:
                 for d_idx in range(2):
                     t = (d_idx + 0.5) / 2
