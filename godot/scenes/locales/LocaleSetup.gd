@@ -40,6 +40,12 @@ const COLLIDER_NAME_HINTS: Array[String] = [
 	"Floor", "Ceiling", "Wall", "Counter", "Booth", "Bar", "Kitchen",
 	"Hall", "CardWall", "Door", "Porch", "Stool", "Pole", "Partition",
 	"Crate", "Shelf", "Loom", "Tower",
+	# Commercial cluster — fuel pumps, canopy columns, plate-glass
+	# storefront frames, building posts/foundations, cooler doors,
+	# parking-lot curb stops.
+	"Post", "Pump", "Pylon", "Slab", "Mullion", "CanopyCol",
+	"Foundation", "Cooler", "Aisle", "Xerox", "CurbStop",
+	"Register", "FlagPole_Base", "PylonPole", "Plinth", "Plaza",
 	# Outdoor locales — heightmap terrain meshes
 	"Terrain", "Ground", "Lawn",
 ]
