@@ -10838,6 +10838,55 @@ def build_crosswalks_and_stops():
     for label, sx, sy, fdir in connector_stops:
         _stop_sign(f"X_Conn_{label}", sx, sy, fdir)
 
+    # ── SPEED BUMPS in school zones · low yellow-painted humps
+    # spanning the arterial. ES on Harmony Blvd ~y=205, HS on
+    # Horizon Dr ~x=305. Painted yellow per Texas school-zone
+    # standard.
+    COL_BUMP = (0.15, 0.15, 0.16, 1.0)
+    COL_BUMP_PAINT = (0.98, 0.85, 0.20, 1.0)
+
+    def _speed_bump(name, cx, cy, span_axis, length=17.0):
+        """Single low dome across the road, yellow-painted."""
+        z = mesh_z(cx, cy)
+        if span_axis == 'x':
+            # Bump spans Y direction (cars travel in X)
+            asphalt_size = (0.90, length, 0.18)
+            paint_size = (0.20, length - 0.40, 0.04)
+        else:
+            asphalt_size = (length, 0.90, 0.18)
+            paint_size = (length - 0.40, 0.20, 0.04)
+        _make_box_local(f"{name}_Body",
+                        (cx, cy, z + 0.09),
+                        asphalt_size, COL_BUMP)
+        # Two yellow paint stripes on the top of the bump
+        for sgn in (-1, 1):
+            if span_axis == 'x':
+                p_cx = cx + sgn * 0.18
+                p_cy = cy
+            else:
+                p_cx = cx
+                p_cy = cy + sgn * 0.18
+            _make_box_local(f"{name}_Paint_{sgn:+d}",
+                            (p_cx, p_cy, z + 0.20),
+                            paint_size, COL_BUMP_PAINT)
+
+    # Elementary school: Harmony Blvd is N-S here, so the bump
+    # spans Y direction? Actually Harmony at y=205 is at x≈30
+    # (centerline). The bump should span perpendicular to the
+    # road = perpendicular to Y = span_axis 'x'? Wait no — the
+    # bump physically lies ACROSS the road's lanes. Cars travel
+    # along Y (N-S Harmony Blvd), so bump runs along X. That's
+    # span_axis='y' in our convention (length along X).
+    # Wait — re-reading: span_axis='x' means stripes/bump along
+    # Y direction. For Harmony Blvd (N-S), we want the bump to
+    # span E-W (perpendicular to travel) — that's along X.
+    # So span_axis='y' makes the length parameter along X.
+    _speed_bump("X_ES_Bump_N", 26, 213, 'y', 17.0)
+    _speed_bump("X_ES_Bump_S", 32, 185, 'y', 17.0)
+    # High school: Horizon Dr E-W, cars travel X, bump spans Y
+    _speed_bump("X_HS_Bump_W", 305, -5, 'x', 17.0)
+    _speed_bump("X_HS_Bump_E", 335, 5, 'x', 17.0)
+
     # ── STORM DRAIN GRATES · steel grate at the curb gutter
     # line just before each major intersection corner. 4 per
     # junction (one at each corner). The arterial half-width is
