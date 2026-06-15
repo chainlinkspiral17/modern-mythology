@@ -6463,6 +6463,109 @@ def build_phase3_crane():
                     (0.42, 0.42, 0.45, 1.0))
 
 
+def build_midway_minimart():
+    """A small mini-mart + single gas pump on the south side of
+    Horizon Drive midway between the West Estates link and the
+    big central Harmony/Horizon junction. Gives long-distance
+    drivers a quick stop.
+    """
+    cx, cy = -260.0, -50.0
+    ground_z = mesh_z(cx, cy)
+    col_wall = (0.85, 0.82, 0.74, 1.0)
+    col_trim = (0.32, 0.55, 0.78, 1.0)
+    col_roof = (0.32, 0.30, 0.28, 1.0)
+    col_door = (0.32, 0.55, 0.78, 1.0)
+    col_glass = (0.42, 0.50, 0.58, 0.6)
+    col_pump = (0.95, 0.94, 0.90, 1.0)
+    w, d, h = 10.0, 8.0, 3.6
+    t = 0.20
+    _make_box_local("MM_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (w + 0.4, d + 0.4, 0.10),
+                    (0.78, 0.74, 0.66, 1.0))
+    _make_box_local("MM_WallN",
+                    (cx, cy + d / 2 - t / 2, ground_z + h / 2),
+                    (w, t, h), col_wall)
+    _make_box_local("MM_WallE",
+                    (cx + w / 2 - t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    _make_box_local("MM_WallW",
+                    (cx - w / 2 + t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    # South wall — plate glass storefront with central door
+    glass_y = cy - d / 2 + 0.05
+    n_mul = 4
+    for k in range(n_mul):
+        mx = cx - w / 2 + 0.3 + k * (w - 0.6) / (n_mul - 1)
+        _make_box_local(f"MM_GlassMul_{k}",
+                        (mx, glass_y, ground_z + h / 2),
+                        (0.10, 0.06, h), col_trim)
+    _make_box_local("MM_GlassTop",
+                    (cx, glass_y, ground_z + h - 0.08),
+                    (w - 0.2, 0.08, 0.16), col_trim)
+    _make_box_local("MM_GlassBot",
+                    (cx, glass_y, ground_z + 0.20),
+                    (w - 0.2, 0.08, 0.40), col_trim)
+    # Door
+    dw, dh = 1.0, 2.2
+    for sgn in (-1, 1):
+        _make_box_local(f"MM_DoorJamb_{sgn:+d}",
+                        (cx + sgn * dw / 2, glass_y,
+                         ground_z + dh / 2),
+                        (0.10, 0.08, dh), col_trim)
+    _make_box_local("MM_DoorHeader",
+                    (cx, glass_y, ground_z + dh + 0.08),
+                    (dw + 0.10, 0.08, 0.16), col_trim)
+    _make_box_local("MM_Door",
+                    (cx, glass_y, ground_z + dh / 2),
+                    (dw - 0.10, 0.06, dh - 0.10), col_door)
+    # Welcome mat
+    _make_box_local("MM_Mat",
+                    (cx, glass_y - 0.40, ground_z + 0.07),
+                    (dw + 0.20, 0.80, 0.02),
+                    (0.32, 0.22, 0.18, 1.0))
+    # Roof
+    _make_box_local("MM_Roof",
+                    (cx, cy, ground_z + h + 0.10),
+                    (w + 0.4, d + 0.4, 0.20), col_roof)
+    # Big sign panel on the roof south side
+    _make_box_local("MM_SignPanel",
+                    (cx, cy - d / 2 - 0.30,
+                     ground_z + h + 0.80),
+                    (w * 0.75, 0.14, 0.80), col_trim)
+
+    # ── Single fuel pump under a small canopy west of the
+    # building
+    pmp_x = cx - w / 2 - 7.0
+    pmp_y = cy
+    pmp_z = mesh_z(pmp_x, pmp_y)
+    # 4 small canopy columns
+    can_w, can_d, can_h = 6.0, 6.0, 4.0
+    for sgn_x in (-1, 1):
+        for sgn_y in (-1, 1):
+            _make_cyl_local(
+                f"MM_CanopyCol_{sgn_x:+d}_{sgn_y:+d}",
+                (pmp_x + sgn_x * (can_w / 2 - 0.3),
+                 pmp_y + sgn_y * (can_d / 2 - 0.3),
+                 pmp_z + can_h / 2),
+                0.15, can_h, col_trim, segments=6)
+    _make_box_local("MM_CanopyRoof",
+                    (pmp_x, pmp_y, pmp_z + can_h + 0.10),
+                    (can_w + 0.4, can_d + 0.4, 0.20), col_trim)
+    # The pump itself
+    _make_box_local("MM_PumpPad",
+                    (pmp_x, pmp_y, pmp_z + 0.10),
+                    (1.6, 1.6, 0.20),
+                    (0.72, 0.70, 0.66, 1.0))
+    _make_box_local("MM_PumpBody",
+                    (pmp_x, pmp_y, pmp_z + 1.20),
+                    (0.70, 0.40, 1.80), col_pump)
+    _make_box_local("MM_PumpDisplay",
+                    (pmp_x, pmp_y, pmp_z + 2.05),
+                    (0.60, 0.42, 0.30),
+                    (0.20, 0.22, 0.28, 1.0))
+
+
 def build_auto_dealership():
     """Big used-car dealership lot in EastComm south of the
     big-box pad. Long row of triangle flag bunting + showroom +
@@ -9593,6 +9696,7 @@ def main():
     build_crosswalks_and_stops()
     build_self_storage()
     build_auto_dealership()
+    build_midway_minimart()
     build_little_league_field()
     build_phase3_crane()
     build_police_station()
