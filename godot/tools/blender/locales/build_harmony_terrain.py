@@ -5343,6 +5343,66 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (counter_w + 0.2, 0.50, 0.02),
                     (0.30, 0.22, 0.18, 1.0))
 
+    # ── ENTRY FLOOR MAT inside the door · red Kwik Stop-branded
+    # mat with cream border. Player walks over this entering.
+    _make_box_local("KwikShop_KwikStop_FloorMat",
+                    (kw_cx + 0.2,
+                     cy - depth / 2 + 1.0,
+                     ground_z + 0.04),
+                    (1.40, 1.40, 0.02),
+                    (0.55, 0.18, 0.16, 1.0))
+    # Cream border around the mat (slightly larger square below)
+    _make_box_local("KwikShop_KwikStop_FloorMat_Border",
+                    (kw_cx + 0.2,
+                     cy - depth / 2 + 1.0,
+                     ground_z + 0.035),
+                    (1.50, 1.50, 0.02),
+                    (0.92, 0.88, 0.78, 1.0))
+
+    # ── MAGAZINE / TABLOID RACK · 3-tier wire rack on the customer
+    # side of the impulse area, between counter and entry door
+    mag_x = counter_x - counter_w / 2 - 0.8
+    mag_y = counter_y - counter_d / 2 - 0.50
+    mag_z = ground_z + 0.50
+    # Frame stand (chrome)
+    _make_box_local("KwikStop_Kwik_MagRack_Frame",
+                    (mag_x, mag_y, mag_z + 0.50),
+                    (0.55, 0.30, 1.00),
+                    (0.62, 0.62, 0.64, 1.0))
+    # 3 tier shelves with stacked magazines (different cover
+    # colors)
+    mag_palette = [
+        (0.85, 0.20, 0.18, 1.0),    # red tabloid
+        (0.18, 0.32, 0.55, 1.0),    # blue glossy
+        (0.95, 0.85, 0.30, 1.0),    # yellow tabloid
+    ]
+    for k, col_mag in enumerate(mag_palette):
+        _make_box_local(
+            f"KwikStop_Kwik_MagRack_Tier_{k}",
+            (mag_x, mag_y - 0.06, mag_z + 0.20 + k * 0.30),
+            (0.45, 0.20, 0.04), col_mag)
+
+    # ── OUTDOOR TRASH BIN by the entry door · dark plastic
+    # cylindrical liner inside a powder-coated frame
+    tb_x = kw_cx - 1.4
+    tb_y = sw_y - 0.30
+    tb_z = mesh_z(tb_x, tb_y)
+    # Outer frame
+    _make_cyl_local("KwikStop_TrashBin_Frame",
+                    (tb_x, tb_y, tb_z + 0.45),
+                    0.22, 0.90,
+                    (0.32, 0.32, 0.34, 1.0), segments=6)
+    # Inner liner (slightly smaller, darker)
+    _make_cyl_local("KwikStop_TrashBin_Liner",
+                    (tb_x, tb_y, tb_z + 0.45),
+                    0.18, 0.88,
+                    (0.10, 0.10, 0.12, 1.0), segments=6)
+    # Black liner bag hanging slightly over the rim
+    _make_cyl_local("KwikStop_TrashBin_LinerBag",
+                    (tb_x, tb_y, tb_z + 0.92),
+                    0.18, 0.06,
+                    (0.08, 0.08, 0.10, 1.0), segments=6)
+
     # ── CONVEX SECURITY MIRROR above the door · canon from
     # Sam Miller's POV ("Sam watches him in the convex security
     # mirror above the door"). Wall-mounted half-sphere giving the
