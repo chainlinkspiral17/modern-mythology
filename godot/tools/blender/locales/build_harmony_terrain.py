@@ -383,9 +383,15 @@ ROAD_CORRIDORS = [
         (180,  280, +14.0),  # at Hospital pad
     ], 5.0, 14.0),
 
-    # NexCorp HQ driveway off Harmony Blvd
+    # NexCorp HQ driveway off Harmony Blvd. Per civil-engineering
+    # standard the gradient should be at most ~10% so the approach
+    # ramp climbs the +6 (at HarmonyBlvd) to +14 (at NexCorpHQPad
+    # south edge) over ~80m, giving 10% slope.
     ("NXHQLink", [
-        (  20,  220, +6.0),   # off HarmonyBlvd
+        (  60,  170, +3.5),   # off HarmonyBlvd
+        (  40,  195, +5.5),
+        (  20,  220, +8.5),
+        (  10,  240, +11.0),
         (   0,  255, +14.0),  # at NexCorpHQPad south edge
     ], 5.0, 14.0),
 
@@ -8853,8 +8859,10 @@ def build_arterial_sidewalks():
                     pv.append((px, py, mesh_z(px, py) + 0.06))
                 _finalize_mesh(f"{prefix}Sidewalk_{i}_{sgn:+d}", pv,
                                 [[0, 1, 2, 3]], COL_SIDEWALK_LINK)
+    # Ch1Frontage has its own sidewalks emitted inside
+    # build_commercial_cluster (the storefront walk at y=-366.5).
+    # Don't double up.
     for cname, prefix in [
-        ("Ch1Frontage",     "Ch1Frontage_"),
         ("ECommN",          "ECommN_"),
         ("ECommS",          "ECommS_"),
         ("NRLink",          "NRLink_"),
