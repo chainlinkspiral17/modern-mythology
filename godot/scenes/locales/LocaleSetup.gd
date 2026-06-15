@@ -74,6 +74,7 @@ func _ready() -> void:
 	var stop_signs: Array = []
 	var hs_scoreboard_banners: Array = []
 	var hs_scoreboard_panels: Array = []
+	var nightclub_signs: Array = []
 	for mi in meshes:
 		mi.material_override = mat
 		applied += 1
@@ -119,6 +120,8 @@ func _ready() -> void:
 			hs_scoreboard_banners.append(mi)
 		elif "HSField_Scoreboard_Panel" in mi.name:
 			hs_scoreboard_panels.append(mi)
+		elif "NightClub_SignPanel" in mi.name:
+			nightclub_signs.append(mi)
 	print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
 	# Attach real Label3D text to the sign panels.
 	#
@@ -239,6 +242,15 @@ func _ready() -> void:
 						0.0,
 						Color(0.95, 0.85, 0.30, 1.0),
 						Color(0.05, 0.06, 0.10, 1.0))
+	# Night-club neon sign — faces SOUTH toward the parking lot
+	for panel in nightclub_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.12),
+						Vector3(0, 0, 1),
+						"SCRATCH",
+						0.0,
+						Color(0.95, 0.42, 0.62, 1.0),     # hot pink
+						Color(0.10, 0.04, 0.18, 1.0))     # deep purple
 	# Stop sign — facing east (toward eastbound drivers). The
 	# Blender +X face becomes Godot +X after the axis swap.
 	for panel in stop_signs:

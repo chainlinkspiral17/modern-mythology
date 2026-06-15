@@ -5452,6 +5452,224 @@ def build_phase2_neighborhood():
         # Skipped — terrain vertex colors handle the green already
 
 
+def build_strip_mall_nightclub():
+    """Strip-mall night club on the West Commercial Highway 9
+    frontage. Per user spec ("the strip mall night club"): a
+    standalone after-hours venue with a dark windowless facade,
+    a neon SCRATCH-style sign, a single recessed entry with a
+    velvet rope, two bouncer markers, and a small parking lot.
+
+    Settlement zone: WestComm (-560..-460 x, -340..260 y,
+    target_z = -2.0). Building centred at (-510, 0).
+    """
+    cx, cy = -510.0, 0.0
+    ground_z = mesh_z(cx, cy)
+    name_prefix = "NightClub"
+
+    # Building dimensions
+    width = 22.0      # E-W
+    depth = 14.0      # N-S
+    height = 5.0      # taller than convenience store — feels imposing
+    wall_t = 0.20
+
+    # Materials — moody / dark night-club palette
+    col_wall  = (0.18, 0.10, 0.22, 1.0)     # deep purple-black
+    col_trim  = (0.95, 0.42, 0.62, 1.0)     # hot pink accent
+    col_roof  = (0.10, 0.08, 0.12, 1.0)     # near-black
+    col_neon_sign = (0.32, 0.18, 0.42, 1.0)  # base panel
+    col_door = (0.10, 0.08, 0.12, 1.0)
+    col_velvet = (0.62, 0.10, 0.22, 1.0)
+    col_rope_stand = (0.85, 0.62, 0.20, 1.0)  # brass
+
+    # Slab
+    _make_box_local(f"{name_prefix}_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (width + 0.6, depth + 0.6, 0.10),
+                    (0.62, 0.58, 0.50, 1.0))     # asphalt apron
+
+    # Solid walls all four sides — no plate glass, this is a club
+    _make_box_local(f"{name_prefix}_WallN",
+                    (cx, cy + depth / 2 - wall_t / 2,
+                     ground_z + height / 2),
+                    (width, wall_t, height), col_wall)
+    _make_box_local(f"{name_prefix}_WallS",
+                    (cx, cy - depth / 2 + wall_t / 2,
+                     ground_z + height / 2),
+                    (width, wall_t, height), col_wall)
+    _make_box_local(f"{name_prefix}_WallE",
+                    (cx + width / 2 - wall_t / 2, cy,
+                     ground_z + height / 2),
+                    (wall_t, depth, height), col_wall)
+    _make_box_local(f"{name_prefix}_WallW",
+                    (cx - width / 2 + wall_t / 2, cy,
+                     ground_z + height / 2),
+                    (wall_t, depth, height), col_wall)
+
+    # Hot-pink accent stripe at mid-height around the building
+    for sgn_y, tag in ((-1, 'S'), (+1, 'N')):
+        _make_box_local(f"{name_prefix}_PinkStripe_{tag}",
+                        (cx, cy + sgn_y * (depth / 2 - 0.10),
+                         ground_z + height * 0.65),
+                        (width, 0.06, 0.22), col_trim)
+    for sgn_x, tag in ((-1, 'W'), (+1, 'E')):
+        _make_box_local(f"{name_prefix}_PinkStripe_{tag}",
+                        (cx + sgn_x * (width / 2 - 0.10), cy,
+                         ground_z + height * 0.65),
+                        (0.06, depth, 0.22), col_trim)
+
+    # Roof
+    _make_box_local(f"{name_prefix}_Roof",
+                    (cx, cy, ground_z + height + 0.10),
+                    (width + 0.4, depth + 0.4, 0.20), col_roof)
+    # Parapet on all four sides
+    parapet_h = 0.60
+    pz_centre = ground_z + height + 0.20 + parapet_h / 2
+    for sgn_y, tag in ((-1, 'S'), (+1, 'N')):
+        _make_box_local(f"{name_prefix}_Parapet_{tag}",
+                        (cx, cy + sgn_y * (depth + 0.4) / 2,
+                         pz_centre),
+                        (width + 0.4, 0.18, parapet_h), col_wall)
+    for sgn_x, tag in ((-1, 'W'), (+1, 'E')):
+        _make_box_local(f"{name_prefix}_Parapet_{tag}",
+                        (cx + sgn_x * (width + 0.4) / 2, cy,
+                         pz_centre),
+                        (0.18, depth + 0.4, parapet_h), col_wall)
+
+    # Recessed entry on the SOUTH face — alcove with door + velvet
+    # rope stanchions on each side.
+    entry_y = cy - depth / 2 + 0.05
+    door_w = 1.6
+    door_h = 2.6
+    # Entry alcove walls (two side walls forming an inset of 1.0 m)
+    alcove_d = 1.2
+    for sgn in (-1, 1):
+        _make_box_local(f"{name_prefix}_AlcoveWall_{sgn:+d}",
+                        (cx + sgn * (door_w / 2 + 0.15),
+                         entry_y + alcove_d / 2,
+                         ground_z + height * 0.55),
+                        (0.30, alcove_d, height * 0.95),
+                        col_wall)
+    # Door itself — solid black, slightly inset
+    _make_box_local(f"{name_prefix}_EntryDoor",
+                    (cx, entry_y + alcove_d, ground_z + door_h / 2),
+                    (door_w, 0.06, door_h), col_door)
+    # Door handle (small chrome bar)
+    _make_cyl_local(f"{name_prefix}_DoorHandle",
+                    (cx + door_w / 2 - 0.20,
+                     entry_y + alcove_d - 0.06,
+                     ground_z + 1.20),
+                    0.03, 0.40, col_rope_stand, segments=4)
+
+    # Velvet rope — 4 brass stanchions + red rope segments between
+    # them, forming a queue line outside the door.
+    rope_pts = [
+        (cx - door_w / 2 - 0.30, entry_y - 0.50),
+        (cx - door_w / 2 - 0.30, entry_y - 2.00),
+        (cx + door_w / 2 + 0.30, entry_y - 2.00),
+        (cx + door_w / 2 + 0.30, entry_y - 0.50),
+    ]
+    for k, (sx, sy) in enumerate(rope_pts):
+        # Brass stanchion
+        _make_cyl_local(f"{name_prefix}_Stanchion_{k}",
+                        (sx, sy, ground_z + 0.50),
+                        0.05, 1.00, col_rope_stand, segments=6)
+        # Brass ball cap on top
+        _make_sphere_low_local(f"{name_prefix}_StanchionCap_{k}",
+                                (sx, sy, ground_z + 1.05),
+                                0.08, col_rope_stand,
+                                rings=3, segments=6)
+    # Red rope segments between consecutive stanchions
+    for k in range(3):
+        p0 = rope_pts[k]
+        p1 = rope_pts[k + 1]
+        _build_oriented_handle(
+            f"{name_prefix}_VelvetRope_{k}",
+            (p0[0], p0[1], ground_z + 0.92),
+            (p1[0], p1[1], ground_z + 0.92),
+            radius=0.04, color=col_velvet)
+
+    # ── BOUNCER POSITIONS — two bouncers flanking the door
+    bouncer_specs = [
+        (cx - door_w / 2 - 1.0, entry_y - 0.30),
+        (cx + door_w / 2 + 1.0, entry_y - 0.30),
+    ]
+    for k, (bx_, by_) in enumerate(bouncer_specs):
+        bz_ = mesh_z(bx_, by_)
+        human_figure(
+            name=f"NightClub_Bouncer_{k}",
+            base_x=bx_, base_y=by_, base_z=bz_,
+            scale=1.05,
+            facing='-Y',
+            skin_color=(0.62, 0.45, 0.36, 1.0),
+            hair_style='short',
+            hair_color=(0.10, 0.08, 0.10, 1.0),
+            jacket_color=(0.10, 0.08, 0.12, 1.0),
+            pants_color=(0.10, 0.08, 0.12, 1.0),
+            shoe_color=(0.10, 0.08, 0.10, 1.0),
+            has_sunglasses=True,
+            sunglasses_color=(0.05, 0.05, 0.06, 1.0),
+            with_ears=True,
+            with_mouth=False,
+        )
+
+    # ── NEON SIGN on the south face above the entry — "SCRATCH"
+    # in hot pink on a darker purple panel mounted to the parapet.
+    sign_y = cy - depth / 2 - 0.18
+    sign_h_local = 1.2
+    _make_box_local(f"{name_prefix}_SignPanel",
+                    (cx, sign_y, ground_z + height + 0.10 + sign_h_local / 2),
+                    (10.0, 0.18, sign_h_local), col_neon_sign)
+    # Pink neon tube border around the sign
+    for sgn_x in (-1, 1):
+        _make_box_local(f"{name_prefix}_SignNeon_E_{sgn_x:+d}",
+                        (cx + sgn_x * 5.0, sign_y - 0.08,
+                         ground_z + height + 0.10 + sign_h_local / 2),
+                        (0.04, 0.04, sign_h_local - 0.10),
+                        col_trim)
+    for sgn_y_tube in (-1, 1):
+        _make_box_local(f"{name_prefix}_SignNeon_H_{sgn_y_tube:+d}",
+                        (cx, sign_y - 0.08,
+                         ground_z + height + 0.10 + sign_h_local / 2 +
+                         sgn_y_tube * (sign_h_local / 2 - 0.05)),
+                        (10.0, 0.04, 0.04), col_trim)
+
+    # ── PARKING LOT south of the building (entry road from
+    # Highway 9 west). Asphalt slab + stripes + 3 cars.
+    lot_cy = cy - 14.0
+    lot_w = 26.0
+    lot_d = 12.0
+    hw = lot_w / 2; hd = lot_d / 2
+    lv = []
+    for (lx, ly) in [(cx - hw, lot_cy - hd),
+                     (cx + hw, lot_cy - hd),
+                     (cx + hw, lot_cy + hd),
+                     (cx - hw, lot_cy + hd)]:
+        lv.append((lx, ly, mesh_z(lx, ly) + 0.04))
+    _finalize_mesh(f"{name_prefix}_Lot", lv, [[0, 1, 2, 3]],
+                    (0.22, 0.22, 0.24, 1.0))
+    # Stripes
+    for k in range(5):
+        sx_line = cx - hw + (k + 1) * lot_w / 6
+        sv = []
+        for (lx, ly) in [(sx_line - 0.05, lot_cy - hd + 0.3),
+                          (sx_line + 0.05, lot_cy - hd + 0.3),
+                          (sx_line + 0.05, lot_cy + hd - 0.3),
+                          (sx_line - 0.05, lot_cy + hd - 0.3)]:
+            sv.append((lx, ly, mesh_z(lx, ly) + 0.055))
+        _finalize_mesh(f"{name_prefix}_LotStripe_{k}", sv,
+                        [[0, 1, 2, 3]], (0.92, 0.90, 0.84, 1.0))
+    # 3 cars
+    for k, (px_off, col) in enumerate(((
+            -8, (0.18, 0.18, 0.20, 1.0)),
+            (0, (0.85, 0.20, 0.20, 1.0)),
+            (8, (0.18, 0.22, 0.42, 1.0)))):
+        cpx = cx + px_off
+        cpy = lot_cy + 1.0
+        cpz = mesh_z(cpx, cpy)
+        _build_parked_car(f"{name_prefix}_Car_{k}", cpx, cpy, cpz,
+                           col, facing='+Y')
+
+
 def build_high_school_field():
     """Harmony Creek High School football field + stadium. Carved
     out of the new HighSchoolField settlement zone (240..440 x,
@@ -5670,6 +5888,7 @@ def main():
     build_commercial_cluster()
     build_phase2_neighborhood()
     build_high_school_field()
+    build_strip_mall_nightclub()
     export_glb()
 
 
