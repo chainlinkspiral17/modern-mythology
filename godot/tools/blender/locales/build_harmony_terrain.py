@@ -5620,6 +5620,112 @@ def build_east_commercial_box():
                     (0.32, 0.32, 0.36, 1.0))
 
 
+def build_halsey_studios():
+    """Halsey Studios — music recording studio referenced in
+    lore/_HCE_PROJECT_NOTES.md ("recording booth window probably
+    visible"). 18 × 14 × 4.5 m brick + black box with a big
+    plate-glass recording-booth window on the south face.
+    Positioned in EastComm just south of the high school.
+    """
+    cx, cy = 480.0, -100.0
+    ground_z = mesh_z(cx, cy)
+    col_wall = (0.18, 0.18, 0.22, 1.0)        # near-black studio walls
+    col_trim = (0.62, 0.42, 0.28, 1.0)         # warm wood trim
+    col_window = (0.32, 0.42, 0.55, 1.0)       # tinted control glass
+    col_door = (0.85, 0.20, 0.18, 1.0)
+    col_roof = (0.12, 0.12, 0.14, 1.0)
+    w, d, h = 18.0, 14.0, 4.5
+    t = 0.20
+    _make_box_local("HS_Studio_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (w + 0.4, d + 0.4, 0.10), col_trim)
+    _make_box_local("HS_Studio_WallN",
+                    (cx, cy + d / 2 - t / 2, ground_z + h / 2),
+                    (w, t, h), col_wall)
+    _make_box_local("HS_Studio_WallE",
+                    (cx + w / 2 - t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    _make_box_local("HS_Studio_WallW",
+                    (cx - w / 2 + t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    # South wall — big recording-booth window on the right,
+    # entry door on the left.
+    win_w = 7.0; win_h = 2.4
+    dr_w = 1.4; dr_h = 2.4
+    # The south face has, left-to-right:
+    #   side wall L (3 m) | door | side wall mid (3 m) | window |
+    #   side wall R (2 m)
+    side_l = 3.0
+    mid_w = 3.0
+    side_r = w - (side_l + dr_w + mid_w + win_w)
+    if side_r < 0.5:
+        side_r = 0.5
+        mid_w = w - (side_l + dr_w + win_w + side_r)
+    _make_box_local("HS_Studio_WallS_L",
+                    (cx - w / 2 + side_l / 2,
+                     cy - d / 2 + t / 2, ground_z + h / 2),
+                    (side_l, t, h), col_wall)
+    # Door
+    _make_box_local("HS_Studio_Door",
+                    (cx - w / 2 + side_l + dr_w / 2,
+                     cy - d / 2 + 0.05, ground_z + dr_h / 2),
+                    (dr_w, 0.06, dr_h - 0.10), col_door)
+    # Door header
+    _make_box_local("HS_Studio_DoorHeader",
+                    (cx - w / 2 + side_l + dr_w / 2,
+                     cy - d / 2 + t / 2,
+                     ground_z + dr_h + (h - dr_h) / 2),
+                    (dr_w, t, h - dr_h), col_wall)
+    # Mid wall (between door and window)
+    _make_box_local("HS_Studio_WallS_Mid",
+                    (cx - w / 2 + side_l + dr_w + mid_w / 2,
+                     cy - d / 2 + t / 2, ground_z + h / 2),
+                    (mid_w, t, h), col_wall)
+    # The big window — wide pane of tinted glass + wood trim
+    win_cx = cx - w / 2 + side_l + dr_w + mid_w + win_w / 2
+    _make_box_local("HS_Studio_Window",
+                    (win_cx, cy - d / 2 + 0.04,
+                     ground_z + 1.6),
+                    (win_w, 0.04, win_h), col_window)
+    # Window header + sill
+    _make_box_local("HS_Studio_WindowHeader",
+                    (win_cx, cy - d / 2 + t / 2,
+                     ground_z + 1.6 + win_h / 2 +
+                     (h - 1.6 - win_h / 2) / 2),
+                    (win_w, t,
+                     h - 1.6 - win_h / 2), col_wall)
+    _make_box_local("HS_Studio_WindowSill",
+                    (win_cx, cy - d / 2 + t / 2,
+                     ground_z + (1.6 - win_h / 2) / 2),
+                    (win_w, t, 1.6 - win_h / 2), col_wall)
+    # Right side wall (east of window)
+    _make_box_local("HS_Studio_WallS_R",
+                    (cx + w / 2 - side_r / 2,
+                     cy - d / 2 + t / 2, ground_z + h / 2),
+                    (side_r, t, h), col_wall)
+    # Roof
+    _make_box_local("HS_Studio_Roof",
+                    (cx, cy, ground_z + h + 0.10),
+                    (w + 0.4, d + 0.4, 0.20), col_roof)
+    # SIGN above the entry — a sideways wooden plank
+    _make_box_local("HS_Studio_Sign",
+                    (cx - w / 2 + side_l + dr_w / 2,
+                     cy - d / 2 - 0.18,
+                     ground_z + h + 0.4),
+                    (4.0, 0.14, 0.80), col_trim)
+
+    # ── PARKING LOT in front
+    _build_parking_lot("HalseyStudios", cx, cy - 18.0,
+                        lot_w=22.0, lot_d=20.0,
+                        ground_z=mesh_z(cx, cy - 18.0),
+                        building_y_north=cy,
+                        car_palette=[(0.85, 0.20, 0.18, 1.0),
+                                      (0.20, 0.20, 0.22, 1.0),
+                                      (0.62, 0.62, 0.64, 1.0),
+                                      (0.32, 0.42, 0.55, 1.0)],
+                        n_handicap=1)
+
+
 def build_water_tower_and_lines():
     """High-visibility infrastructure landmarks:
       · WATER TOWER on the country-club hilltop just east of
@@ -8411,6 +8517,7 @@ def main():
     build_arterial_lighting()
     build_church_cemetery()
     build_water_tower_and_lines()
+    build_halsey_studios()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
