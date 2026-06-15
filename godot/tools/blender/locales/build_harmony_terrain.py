@@ -382,6 +382,59 @@ ROAD_CORRIDORS = [
         (   0,  255, +14.0),  # at NexCorpHQPad south edge
     ], 5.0, 14.0),
 
+    # ── NEIGHBORHOOD STREETS — residential collectors sitting on
+    # the settlement platforms. Narrow corridor + narrow shoulder
+    # so they don't fight with the parent settlement flattening,
+    # just smooth out the local 1-2 m fbm bumps still showing
+    # through the settlement's flatness blend.
+    # NorthRanch · 3 parallel east-west streets + the spur
+    ("NRAspen",  [(-440, 200, +12.0), (-320, 200, +12.0),
+                  (-240, 200, +12.0)], 4.0, 10.0),
+    ("NRBirch",  [(-440, 100, +12.0), (-320, 100, +12.0),
+                  (-240, 100, +12.0)], 4.0, 10.0),
+    ("NRCedar",  [(-440,  40, +12.0), (-320,  40, +12.0),
+                  (-240,  40, +12.0)], 4.0, 10.0),
+    ("NRSpur",   [(-320, 200, +12.0), (-320, 100, +12.0),
+                  (-320,  40, +12.0)], 4.0, 10.0),
+
+    # WestEstates · Magnolia Lane + loop branch
+    ("WEMag",    [(-440,  -80, -3.0), (-360,  -80, -3.0),
+                  (-280,  -80, -3.0), (-200,  -80, -3.0),
+                  (-120,  -80, -3.0)], 4.0, 10.0),
+    ("WELoop",   [(-280,  -80, -3.0), (-280, -160, -3.0),
+                  (-200, -160, -3.0), (-200,  -80, -3.0)],
+                  4.0, 10.0),
+
+    # Phase 2 · winding cul-de-sac arterial
+    ("P2Main",   [(240, -150, +1.0), (180, -160, +1.0),
+                  (120, -180, +1.0), ( 70, -210, +1.0)],
+                  4.0, 10.0),
+
+    # East CDS · Ridge Crest Dr + cul-de-sac
+    ("ECDSRidge",[(200, 140, +8.0), (260, 140, +8.0),
+                  (320, 140, +8.0), (380, 140, +8.0)],
+                  4.0, 10.0),
+    ("ECDSCul",  [(380, 140, +8.0), (380,  80, +8.0)],
+                  4.0, 10.0),
+
+    # Phase 3 abandoned dirt access road (still carves, helps the
+    # slab line up). Lower target keeps the abandoned look.
+    ("Ph3Access",[(-440, -260, -8.0), (-380, -260, -8.0),
+                  (-320, -260, -8.0)], 4.0, 12.0),
+
+    # ── CHAPTER-1 COMMERCIAL FRONTAGE · the E-W road that runs in
+    # front of NexCorp Gas & Go, Kwik Stop, Diner, Cosmic Comics.
+    # SouthComm platform (-9.0). Wider corridor because the lot
+    # entries open onto it.
+    ("Ch1Frontage", [
+        (-120, -390, -9.0),
+        ( -80, -390, -9.0),
+        ( -40, -390, -9.0),
+        (   0, -392, -9.0),
+        (  40, -392, -9.0),
+        (  80, -390, -9.0),
+        ( 100, -390, -9.0),
+    ], 5.0, 14.0),
 ]
 
 
@@ -9671,6 +9724,7 @@ def build_connector_roads():
         ("OTLink",      "OTLink_"),
         ("HospLink",    "HospLink_"),
         ("NXHQLink",    "NXHQLink_"),
+        ("Ch1Frontage", "Ch1Frontage_"),
     ]
     for (cname, prefix) in LINK_NAMES:
         if cname not in corridor_xys:
