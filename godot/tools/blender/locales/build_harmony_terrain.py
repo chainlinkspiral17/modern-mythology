@@ -8445,6 +8445,28 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                     (vent_x, vent_y, chim_base_z + 0.40),
                     0.06, 0.80, col_chim_cap, segments=6)
 
+    # Gable-end louvered vents — one on each gable triangle, sitting
+    # ~halfway up the gable just inside the eave. Dark slatted square
+    # against the wall colour, very distinctive American roof detail.
+    col_gable_vent = (0.18, 0.18, 0.20, 1.0)
+    gable_z = ground_z + main_h + ridge_h * 0.55
+    for g_sgn in (-1, 1):
+        gv_x = main_cx + perp_x * (g_sgn * main_w / 2)
+        gv_y = main_cy + perp_y * (g_sgn * main_w / 2)
+        # Sit it on the gable wall face — pull slightly inboard so
+        # the box doesn't z-fight the gable plane.
+        gv_x_in = gv_x - perp_x * g_sgn * 0.02
+        gv_y_in = gv_y - perp_y * g_sgn * 0.02
+        if abs(fx) > 0.5:
+            # Gable wall faces Y → thin axis Y, vent square in X-Z
+            gv_size = (0.50, 0.06, 0.50)
+        else:
+            # Gable wall faces X → thin axis X, vent square in Y-Z
+            gv_size = (0.06, 0.50, 0.50)
+        _make_box_local(f"{name}_GableVent_{g_sgn:+d}",
+                        (gv_x_in, gv_y_in, gable_z),
+                        gv_size, col_gable_vent)
+
     # Front door at the front face of the main house, offset
     # toward the garage corner. front_off is always main_d/2
     # because main_d is the depth-along-facing in BOTH axes
@@ -8463,6 +8485,19 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     # Two windows on the front face, both on the NON-garage side
     # of the door (perp negative direction). Spaced -1.6 and -3.4
     # from main_cx so they don't overlap each other or the door.
+    # Each window gets two shutters (decorative side panels) painted
+    # in a deterministic-seeded accent colour — classic American
+    # suburban detail that breaks up the wall colour.
+    seed_shut = (int(cx * 3) + int(cy * 5)) % 100
+    shutter_palette = [
+        (0.18, 0.32, 0.55, 1.0),    # navy
+        (0.42, 0.30, 0.22, 1.0),    # brown
+        (0.20, 0.45, 0.25, 1.0),    # forest green
+        (0.32, 0.18, 0.20, 1.0),    # deep maroon
+        (0.18, 0.18, 0.20, 1.0),    # charcoal
+    ]
+    col_shutter = palette.get('shutter',
+                               shutter_palette[seed_shut % len(shutter_palette)])
     for sgn, off in ((-1, -1.6), (-2, -3.4)):
         wx_pos = main_cx + fx * front_off + perp_x * off
         wy_pos = main_cy + fy * front_off + perp_y * off
@@ -8471,6 +8506,19 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                         (0.10 if abs(fx) > 0.5 else 1.2,
                          1.2 if abs(fx) > 0.5 else 0.10,
                          1.0), col_window)
+        # Shutters — flanking the window, slightly proud of the wall
+        for sh_sgn in (-1, 1):
+            if abs(fx) > 0.5:
+                sh_cx = wx_pos
+                sh_cy = wy_pos + sh_sgn * 0.78
+                sh_size = (0.06, 0.30, 1.10)
+            else:
+                sh_cx = wx_pos + sh_sgn * 0.78
+                sh_cy = wy_pos
+                sh_size = (0.30, 0.06, 1.10)
+            _make_box_local(f"{name}_Shutter_F_{sgn:+d}_{sh_sgn:+d}",
+                            (sh_cx, sh_cy, ground_z + 1.50),
+                            sh_size, col_shutter)
 
     # Porch — small slab + 2 roof posts in front of the door
     porch_d = 1.2
@@ -10468,6 +10516,49 @@ def build_crosswalks_and_stops():
     ]
     for label, sx, sy, fdir in connector_stops:
         _stop_sign(f"X_Conn_{label}", sx, sy, fdir)
+
+    # ── STORM DRAIN GRATES · steel grate at the curb gutter
+    # line just before each major intersection corner. 4 per
+    # junction (one at each corner). The arterial half-width is
+    # 8.5m so the gutter line is just outside that.
+    COL_GRATE = (0.32, 0.32, 0.34, 1.0)
+    COL_GRATE_FRAME = (0.42, 0.42, 0.45, 1.0)
+
+    def _storm_drain(name, x, y):
+        z = mesh_z(x, y)
+        # Concrete frame (slightly proud of asphalt)
+        _make_box_local(f"{name}_Frame",
+                        (x, y, z + 0.04),
+                        (1.20, 0.80, 0.05), COL_GRATE_FRAME)
+        # Steel grate (recessed below frame top)
+        _make_box_local(f"{name}_Grate",
+                        (x, y, z + 0.02),
+                        (1.00, 0.60, 0.03), COL_GRATE)
+        # 5 parallel slat lines (thin dark grooves) — built as
+        # short dark strips on top of the grate to read as slots.
+        for k in range(5):
+            slot_off = -0.20 + k * 0.10
+            _make_box_local(f"{name}_Slot_{k}",
+                            (x, y + slot_off, z + 0.045),
+                            (0.92, 0.02, 0.012),
+                            (0.05, 0.05, 0.06, 1.0))
+
+    # BigJct corners (60, -20) — gutter at ±8.5m + 0.4m curb width
+    for off_x, off_y in ((-9.5, -10), (9.5, -10), (-9.5, 10), (9.5, 10)):
+        _storm_drain(f"X_BigJct_SD_{int(off_x)}_{int(off_y)}",
+                      60 + off_x, -20 + off_y)
+    # Elementary school junction (30, 200)
+    for off_x, off_y in ((-9.5, -10), (9.5, -10), (-9.5, 10), (9.5, 10)):
+        _storm_drain(f"X_ES_SD_{int(off_x)}_{int(off_y)}",
+                      30 + off_x, 200 + off_y)
+    # High School junction (320, -5)
+    for off_x, off_y in ((-9.5, -10), (9.5, -10), (-9.5, 10), (9.5, 10)):
+        _storm_drain(f"X_HS_SD_{int(off_x)}_{int(off_y)}",
+                      320 + off_x, -5 + off_y)
+    # West Estates junction (-430, -20)
+    for off_x, off_y in ((-9.5, -10), (9.5, -10), (-9.5, 10), (9.5, 10)):
+        _storm_drain(f"X_WE_SD_{int(off_x)}_{int(off_y)}",
+                      -430 + off_x, -20 + off_y)
 
     # White painted stop bars (line just before each crosswalk).
     # Standard MUTCD is 12" thick, 8' long; we use 0.30m thick by
