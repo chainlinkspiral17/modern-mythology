@@ -8488,6 +8488,138 @@ def build_north_ranch_neighborhood():
                 house_idx += 1
 
 
+def build_west_estates_townhouses():
+    """Row of 6 connected townhouses in WestEstates — shared
+    walls, 3-color palette, individual front doors + garages.
+    Adds residential density to the lowland zone.
+    """
+    cx_start = -260.0
+    cy = -100.0
+    ground_z = mesh_z(cx_start, cy)
+    unit_w = 7.0
+    unit_d = 12.0
+    unit_h = 5.0
+    palettes = [
+        {'wall': (0.78, 0.68, 0.55, 1.0),
+         'roof': (0.42, 0.30, 0.22, 1.0),
+         'door': (0.42, 0.20, 0.16, 1.0)},
+        {'wall': (0.62, 0.68, 0.78, 1.0),
+         'roof': (0.32, 0.22, 0.18, 1.0),
+         'door': (0.32, 0.18, 0.16, 1.0)},
+        {'wall': (0.72, 0.78, 0.68, 1.0),
+         'roof': (0.55, 0.30, 0.22, 1.0),
+         'door': (0.20, 0.32, 0.18, 1.0)},
+    ]
+    # Shared slab
+    total_w = 6 * unit_w
+    _make_box_local("TH_Slab",
+                    (cx_start + total_w / 2 - unit_w / 2, cy,
+                     ground_z + 0.05),
+                    (total_w + 0.4, unit_d + 0.4, 0.10),
+                    (0.78, 0.74, 0.66, 1.0))
+    # Back wall — single continuous box (saves geometry)
+    _make_box_local("TH_BackWall",
+                    (cx_start + total_w / 2 - unit_w / 2,
+                     cy + unit_d / 2 - 0.10, ground_z + unit_h / 2),
+                    (total_w, 0.20, unit_h),
+                    (0.78, 0.68, 0.55, 1.0))
+    # End walls (left + right)
+    _make_box_local("TH_EndWall_L",
+                    (cx_start - unit_w / 2 + 0.10, cy,
+                     ground_z + unit_h / 2),
+                    (0.20, unit_d, unit_h),
+                    (0.78, 0.68, 0.55, 1.0))
+    _make_box_local("TH_EndWall_R",
+                    (cx_start + total_w - unit_w / 2 - 0.10, cy,
+                     ground_z + unit_h / 2),
+                    (0.20, unit_d, unit_h),
+                    (0.78, 0.68, 0.55, 1.0))
+    # Per-unit: front wall (south), garage, door, window, roof
+    for k in range(6):
+        ucx = cx_start + k * unit_w
+        pal = palettes[k % len(palettes)]
+        # Front wall (split for door + garage door)
+        garage_w = 2.6
+        ped_w = 1.0     # pedestrian front door
+        side_l = (unit_w - garage_w - ped_w) / 2 - 0.20
+        # Side L
+        _make_box_local(f"TH_{k}_FrontWall_L",
+                        (ucx - unit_w / 2 + side_l / 2,
+                         cy - unit_d / 2 + 0.10,
+                         ground_z + unit_h / 2),
+                        (side_l, 0.20, unit_h), pal['wall'])
+        # Pedestrian door
+        _make_box_local(f"TH_{k}_PedDoor",
+                        (ucx - unit_w / 2 + side_l + ped_w / 2,
+                         cy - unit_d / 2 + 0.05,
+                         ground_z + 1.05),
+                        (ped_w - 0.10, 0.06, 2.10), pal['door'])
+        _make_box_local(f"TH_{k}_PedDoorHeader",
+                        (ucx - unit_w / 2 + side_l + ped_w / 2,
+                         cy - unit_d / 2 + 0.10,
+                         ground_z + 2.10 + (unit_h - 2.10) / 2),
+                        (ped_w, 0.20, unit_h - 2.10), pal['wall'])
+        # Side mid (between ped door and garage)
+        side_mid_w = 0.6
+        _make_box_local(f"TH_{k}_FrontWall_Mid",
+                        (ucx - unit_w / 2 + side_l + ped_w +
+                         side_mid_w / 2,
+                         cy - unit_d / 2 + 0.10,
+                         ground_z + unit_h / 2),
+                        (side_mid_w, 0.20, unit_h), pal['wall'])
+        # Garage door
+        garage_h = 2.4
+        _make_box_local(f"TH_{k}_GarageDoor",
+                        (ucx - unit_w / 2 + side_l + ped_w +
+                         side_mid_w + garage_w / 2,
+                         cy - unit_d / 2 + 0.05,
+                         ground_z + garage_h / 2),
+                        (garage_w, 0.06, garage_h),
+                        (0.92, 0.92, 0.90, 1.0))
+        _make_box_local(f"TH_{k}_GarageHeader",
+                        (ucx - unit_w / 2 + side_l + ped_w +
+                         side_mid_w + garage_w / 2,
+                         cy - unit_d / 2 + 0.10,
+                         ground_z + garage_h + (unit_h - garage_h) / 2),
+                        (garage_w, 0.20, unit_h - garage_h),
+                        pal['wall'])
+        # Side R (east edge of unit before next unit's wall)
+        side_r = unit_w - side_l - ped_w - side_mid_w - garage_w
+        if side_r > 0.05:
+            _make_box_local(f"TH_{k}_FrontWall_R",
+                            (ucx + unit_w / 2 - side_r / 2 - 0.20,
+                             cy - unit_d / 2 + 0.10,
+                             ground_z + unit_h / 2),
+                            (side_r, 0.20, unit_h), pal['wall'])
+        # Window on the side L (above the door height)
+        _make_box_local(f"TH_{k}_Window",
+                        (ucx - unit_w / 2 + side_l / 2,
+                         cy - unit_d / 2 + 0.04,
+                         ground_z + 3.4),
+                        (side_l * 0.8, 0.04, 1.0),
+                        (0.32, 0.42, 0.55, 1.0))
+        # Per-unit roof panel
+        _make_box_local(f"TH_{k}_Roof",
+                        (ucx, cy, ground_z + unit_h + 0.10),
+                        (unit_w + 0.10, unit_d + 0.10, 0.20),
+                        pal['roof'])
+        # Driveway from garage to a curb 12 m south
+        drive_apron_x = (ucx - unit_w / 2 + side_l + ped_w +
+                          side_mid_w + garage_w / 2)
+        drive_apron_y = cy - unit_d / 2
+        curb_y = drive_apron_y - 10.0
+        verts = [(drive_apron_x - 1.8, drive_apron_y,
+                  mesh_z(drive_apron_x - 1.8, drive_apron_y) + 0.04),
+                  (drive_apron_x + 1.8, drive_apron_y,
+                   mesh_z(drive_apron_x + 1.8, drive_apron_y) + 0.04),
+                  (drive_apron_x + 1.8, curb_y,
+                   mesh_z(drive_apron_x + 1.8, curb_y) + 0.04),
+                  (drive_apron_x - 1.8, curb_y,
+                   mesh_z(drive_apron_x - 1.8, curb_y) + 0.04)]
+        _finalize_mesh(f"TH_{k}_Drive", verts, [[0, 1, 2, 3]],
+                        (0.18, 0.18, 0.20, 1.0))
+
+
 def build_west_estates_neighborhood():
     """West Estates neighborhood — straight east-west arterial
     'Magnolia Lane' with a branch loop. Sits in the WestEstates
@@ -9669,6 +9801,7 @@ def main():
     build_commercial_cluster()
     build_phase2_neighborhood()
     build_west_estates_neighborhood()
+    build_west_estates_townhouses()
     build_north_ranch_neighborhood()
     build_east_cds_neighborhood()
     build_phase3_neighborhood()
