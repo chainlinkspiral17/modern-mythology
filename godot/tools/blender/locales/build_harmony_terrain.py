@@ -4433,8 +4433,9 @@ def _build_parking_lot(name_prefix, lot_cx, lot_cy, lot_w, lot_d,
 def _build_parked_car(name, cx, cy, ground_z, body_color,
                        facing='+Y'):
     """Low-poly parked car · body + cabin + four wheels. Facing
-    parameter ('+Y' or '-Y') flips the cab forward end so cars
-    parked nose-in look right.
+    parameter ('+Y', '-Y', '+X', '-X') flips the cab forward end
+    AND rotates the car so its long axis aligns with the facing
+    direction. Y-facing cars are long along Y, X-facing along X.
     """
     car_l = 4.4
     car_w = 1.8
@@ -4443,53 +4444,74 @@ def _build_parked_car(name, cx, cy, ground_z, body_color,
     wheel_r = 0.32
     col_window = (0.18, 0.22, 0.30, 1.0)
     col_wheel  = (0.10, 0.10, 0.12, 1.0)
+    # Direction unit vector for long axis (where the nose points)
+    if facing == '+Y':   nx, ny = 0, 1
+    elif facing == '-Y': nx, ny = 0, -1
+    elif facing == '+X': nx, ny = 1, 0
+    elif facing == '-X': nx, ny = -1, 0
+    else:                nx, ny = 0, 1
+    # Perpendicular (left side of car when looking nose-forward)
+    px, py = -ny, nx
+    # Long axis swizzle for box dims — for axis-aligned facings
+    # the box helper expects (sx, sy, sz). When facing is Y, sx
+    # is the WIDTH and sy is the LENGTH; when facing is X, swap.
+    if abs(nx) > 0.5:
+        body_size = (car_l, car_w, body_h)
+        cab_size = (car_l * 0.55, car_w - 0.16, cab_h)
+        win_size = (car_l * 0.55 - 0.10, car_w - 0.10, cab_h * 0.45)
+    else:
+        body_size = (car_w, car_l, body_h)
+        cab_size = (car_w - 0.16, car_l * 0.55, cab_h)
+        win_size = (car_w - 0.10, car_l * 0.55 - 0.10, cab_h * 0.45)
     # Body (lower box)
     _make_box_local(f"{name}_Body",
                     (cx, cy, ground_z + wheel_r + body_h / 2),
-                    (car_w, car_l, body_h), body_color)
+                    body_size, body_color)
     # Cabin (smaller box on top, slightly toward "rear")
-    cab_off = -0.35 if facing == '+Y' else 0.35
+    cab_off = -0.35
     _make_box_local(f"{name}_Cabin",
-                    (cx, cy + cab_off,
+                    (cx + nx * cab_off, cy + ny * cab_off,
                      ground_z + wheel_r + body_h + cab_h / 2),
-                    (car_w - 0.16, car_l * 0.55, cab_h), body_color)
+                    cab_size, body_color)
     # Window strip around the cabin (slightly inset, dark)
     _make_box_local(f"{name}_Windows",
-                    (cx, cy + cab_off,
+                    (cx + nx * cab_off, cy + ny * cab_off,
                      ground_z + wheel_r + body_h + cab_h * 0.65),
-                    (car_w - 0.10, car_l * 0.55 - 0.10, cab_h * 0.45),
-                    col_window)
-    # Four wheels — boxes shaped like tires (thin along x, tall +
-    # long enough to read as a wheel from the side). The cylinder
-    # helper only does vertical-axis cylinders so a flat tire-
-    # silhouette box is the cleanest substitute.
+                    win_size, col_window)
+    # Four wheels — boxes shaped like tires
     tire_w = 0.22
-    tire_d = wheel_r * 1.9         # diameter-ish along car length
+    tire_d = wheel_r * 1.9         # along car length
     tire_h = wheel_r * 1.9
-    for wx_sgn in (-1, 1):
-        for wy_sgn, wy_off in ((-1, -car_l * 0.32), (1, car_l * 0.32)):
-            _make_box_local(f"{name}_Wheel_{wx_sgn:+d}_{wy_sgn:+d}",
-                            (cx + wx_sgn * (car_w / 2 - tire_w / 2 + 0.02),
-                             cy + wy_off,
-                             ground_z + tire_h / 2),
-                            (tire_w, tire_d, tire_h),
-                            col_wheel)
+    if abs(nx) > 0.5:
+        wheel_size = (tire_d, tire_w, tire_h)
+    else:
+        wheel_size = (tire_w, tire_d, tire_h)
+    for side_sgn in (-1, 1):
+        for end_sgn in (-1, 1):
+            wx = cx + px * side_sgn * (car_w / 2 - tire_w / 2 + 0.02) \
+                    + nx * end_sgn * car_l * 0.32
+            wy = cy + py * side_sgn * (car_w / 2 - tire_w / 2 + 0.02) \
+                    + ny * end_sgn * car_l * 0.32
+            _make_box_local(
+                f"{name}_Wheel_{side_sgn:+d}_{end_sgn:+d}",
+                (wx, wy, ground_z + tire_h / 2),
+                wheel_size, col_wheel)
     # Headlights / taillights — small coloured boxes at the ends
-    front_end = car_l / 2 if facing == '+Y' else -car_l / 2
-    rear_end  = -car_l / 2 if facing == '+Y' else car_l / 2
-    for sgn_x in (-1, 1):
-        _make_box_local(f"{name}_Headlight_{sgn_x:+d}",
-                        (cx + sgn_x * (car_w / 2 - 0.30),
-                         cy + front_end,
-                         ground_z + wheel_r + body_h * 0.6),
-                        (0.30, 0.06, 0.20),
-                        (0.98, 0.96, 0.86, 1.0))
-        _make_box_local(f"{name}_Taillight_{sgn_x:+d}",
-                        (cx + sgn_x * (car_w / 2 - 0.30),
-                         cy + rear_end,
-                         ground_z + wheel_r + body_h * 0.6),
-                        (0.30, 0.06, 0.20),
-                        (0.78, 0.18, 0.18, 1.0))
+    if abs(nx) > 0.5:
+        light_size = (0.06, 0.30, 0.20)
+    else:
+        light_size = (0.30, 0.06, 0.20)
+    for sgn in (-1, 1):
+        lx = cx + nx * car_l / 2 + px * sgn * (car_w / 2 - 0.30)
+        ly = cy + ny * car_l / 2 + py * sgn * (car_w / 2 - 0.30)
+        _make_box_local(f"{name}_Headlight_{sgn:+d}",
+                        (lx, ly, ground_z + wheel_r + body_h * 0.6),
+                        light_size, (0.98, 0.96, 0.86, 1.0))
+        rx = cx - nx * car_l / 2 + px * sgn * (car_w / 2 - 0.30)
+        ry = cy - ny * car_l / 2 + py * sgn * (car_w / 2 - 0.30)
+        _make_box_local(f"{name}_Taillight_{sgn:+d}",
+                        (rx, ry, ground_z + wheel_r + body_h * 0.6),
+                        light_size, (0.78, 0.18, 0.18, 1.0))
 
 
 def _build_kwik_shop_strip(cx, cy, ground_z):
@@ -8668,10 +8690,10 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                             rings=3, segments=8)
 
     # ── PARKED CAR in the driveway — ~55% of houses (deterministic
-    # by position). Skipped for X-facing houses since the car helper
-    # only emits Y-aligned vehicles; those just get an empty driveway.
+    # by position). Works for X- and Y-facing houses now that the
+    # car helper supports both orientations.
     seed_car = (int(cx * 17) + int(cy * 23)) % 100
-    if seed_car < 55 and abs(fx) < 0.5:
+    if seed_car < 55:
         car_palette = [
             (0.20, 0.20, 0.22, 1.0),   # black
             (0.62, 0.62, 0.64, 1.0),   # silver
@@ -8683,15 +8705,13 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
             (0.85, 0.62, 0.22, 1.0),   # gold
         ]
         car_color = car_palette[seed_car % len(car_palette)]
-        # Place car on the driveway in front of the garage door
-        # (gar_cx, gar_cy ± gar_d/2 along facing). Pull 0.5m off the
-        # garage face + half car length out from there.
         car_pull = 0.5 + 4.4 / 2
         car_cx = gar_cx + fx * (gar_d / 2 + car_pull)
         car_cy = gar_cy + fy * (gar_d / 2 + car_pull)
-        # Car facing: '+Y' if car nose points +Y, else '-Y'.
-        # We want nose pointing AWAY from garage (out of driveway).
-        car_face = '+Y' if fy > 0 else '-Y'
+        # Car facing maps from house facing (nose points OUT, away
+        # from the garage, which is the same direction the house
+        # faces — fx, fy).
+        car_face = facing      # '+X' / '-X' / '+Y' / '-Y'
         _build_parked_car(f"{name}_DwayCar",
                           car_cx, car_cy, ground_z,
                           car_color, facing=car_face)
