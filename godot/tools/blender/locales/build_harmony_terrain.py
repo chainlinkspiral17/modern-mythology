@@ -4676,6 +4676,74 @@ def build_commercial_cluster():
         _finalize_mesh(f"CommRoad_Crosswalk_{k}", cv, [[0, 1, 2, 3]],
                        (0.92, 0.90, 0.84, 1.0))
 
+    # ── BUS-STOP SHELTER on the road frontage between the Diner
+    # and Cosmic Comics lots. Four steel posts + slanted roof +
+    # back wall + side panel + bench inside. Players can stand
+    # under it; in chapter one the school bus runs this route.
+    bus_x = (dn_x + cc_x) / 2 + 8.0
+    bus_y = road_y + hwr + 4.0     # just north of the road
+    bus_z = mesh_z(bus_x, bus_y)
+    COL_BUS_STEEL = (0.62, 0.62, 0.64, 1.0)
+    COL_BUS_ROOF = (0.32, 0.42, 0.55, 1.0)
+    COL_BUS_BACK = (0.85, 0.82, 0.74, 1.0)
+    bus_w = 4.0; bus_d = 1.6; bus_h = 2.40
+    # Four corner posts
+    for sgn_x in (-1, 1):
+        for sgn_y in (-1, 1):
+            _make_box_local(
+                f"BusStop_Post_{sgn_x:+d}_{sgn_y:+d}",
+                (bus_x + sgn_x * (bus_w / 2 - 0.05),
+                 bus_y + sgn_y * (bus_d / 2 - 0.05),
+                 bus_z + bus_h / 2),
+                (0.10, 0.10, bus_h), COL_BUS_STEEL)
+    # Back wall (north side) — translucent-suggestion via cream
+    # panel
+    _make_box_local("BusStop_BackWall",
+                    (bus_x, bus_y + bus_d / 2 - 0.05,
+                     bus_z + bus_h * 0.55),
+                    (bus_w - 0.10, 0.08, bus_h * 0.85),
+                    COL_BUS_BACK)
+    # One side wall (east) — keeps wind off
+    _make_box_local("BusStop_SideWall_E",
+                    (bus_x + bus_w / 2 - 0.05, bus_y,
+                     bus_z + bus_h * 0.55),
+                    (0.08, bus_d - 0.10, bus_h * 0.85),
+                    COL_BUS_BACK)
+    # Slanted roof — slight tilt to south for water shedding
+    roof_verts = [
+        (bus_x - bus_w / 2 - 0.10, bus_y - bus_d / 2,
+         bus_z + bus_h - 0.10),
+        (bus_x + bus_w / 2 + 0.10, bus_y - bus_d / 2,
+         bus_z + bus_h - 0.10),
+        (bus_x + bus_w / 2 + 0.10, bus_y + bus_d / 2 + 0.10,
+         bus_z + bus_h + 0.10),
+        (bus_x - bus_w / 2 - 0.10, bus_y + bus_d / 2 + 0.10,
+         bus_z + bus_h + 0.10),
+    ]
+    _finalize_mesh("BusStop_Roof", roof_verts, [[0, 1, 2, 3]],
+                   COL_BUS_ROOF)
+    # Bench inside the shelter (against the back wall)
+    _make_box_local("BusStop_Bench",
+                    (bus_x, bus_y + bus_d / 4, bus_z + 0.42),
+                    (bus_w - 0.30, 0.40, 0.06),
+                    (0.42, 0.30, 0.20, 1.0))
+    # Bench legs
+    for lx in (-1.4, 1.4):
+        _make_box_local(f"BusStop_BenchLeg_{int(lx*10)}",
+                        (bus_x + lx, bus_y + bus_d / 4,
+                         bus_z + 0.21),
+                        (0.06, 0.40, 0.42),
+                        (0.18, 0.18, 0.18, 1.0))
+    # Bus stop POLE + flag sign out front
+    pole_x = bus_x - bus_w / 2 - 0.6
+    _make_cyl_local("BusStop_FlagPole",
+                    (pole_x, bus_y, bus_z + 1.6),
+                    0.05, 3.2, COL_BUS_STEEL, segments=6)
+    _make_box_local("BusStop_FlagSign",
+                    (pole_x, bus_y, bus_z + 3.0),
+                    (0.40, 0.04, 0.40),
+                    (0.32, 0.42, 0.55, 1.0))
+
     # Speed-limit sign on a 2 m pole just east of the crosswalk
     sl_x = spur_jog_x + 8.0
     sl_y = road_y + hwr + 1.2
