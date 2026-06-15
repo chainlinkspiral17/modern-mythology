@@ -4862,6 +4862,31 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (0.20, 0.06, 0.30),
                     cans_palette[(row + col_idx + k) % 4])
 
+    # ── BACK COOLER RECURSIVE-REFLECTION HOTSPOT · canonical
+    # detail from Maya Daigle's NEWS FROM HARMONY CREEK #11 ("the
+    # cooler's reflection contains the back of the cooler's own
+    # surface, an infinite recursion of itself"). Rendered as five
+    # nested rectangles on the MIDDLE door, each smaller and
+    # slightly darker, suggesting an infinite recess. Reads at
+    # close range as a "wrong" reflection in the glass.
+    mid_dx = cooler_cx   # middle door centerline x
+    rec_y = cy + depth / 2 - 0.49   # just in front of the door
+    rec_z = ground_z + 1.60
+    rec_palette = [
+        (0.42, 0.50, 0.55, 1.0),
+        (0.32, 0.40, 0.45, 1.0),
+        (0.22, 0.30, 0.35, 1.0),
+        (0.15, 0.22, 0.27, 1.0),
+        (0.08, 0.14, 0.18, 1.0),
+    ]
+    for k_rec, col_rec in enumerate(rec_palette):
+        rs = 0.50 - k_rec * 0.10  # shrinking rectangles
+        _make_box_local(
+            f"KwikShop_KwikStop_RecursionPanel_{k_rec}",
+            (mid_dx, rec_y - k_rec * 0.001,
+             rec_z),
+            (rs, 0.002, rs * 0.80), col_rec)
+
     # ── WEST-WALL FIXTURE COLUMN · slushie + coffee + roller
     # grill stacked S→N along the partition wall. Each fixture
     # is shallower in X (~0.55 m) so it sits flush against the
