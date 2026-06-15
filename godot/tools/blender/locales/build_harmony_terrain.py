@@ -4315,6 +4315,56 @@ def build_commercial_cluster():
                         0.32, 0.06,
                         (0.20, 0.20, 0.22, 1.0), segments=8)
 
+    # ── STRIPED CANVAS AWNINGS over each storefront door so the
+    # block reads as a real chapter-one strip mall instead of
+    # bare plate-glass. Each awning is a slanted slab in alternating
+    # colour stripes hanging out 1.2 m from the storefront wall.
+    awning_storefronts = [
+        # (door_cx, store_cy, store_depth, primary_col, stripe_col)
+        # NexCorp door is on the right side of its bay
+        (nc_x + 14/2 - 1.8, nc_y, 10.0,
+            (0.32, 0.42, 0.55, 1.0), (0.92, 0.92, 0.90, 1.0)),
+        # Kwik Shop has 3 doors — one per bay
+        (ks_x - 9.0, ks_y, 10.0,
+            (0.62, 0.22, 0.78, 1.0), (0.95, 0.85, 0.30, 1.0)),
+        (ks_x + 0.0, ks_y, 10.0,
+            (0.85, 0.22, 0.20, 1.0), (0.98, 0.95, 0.86, 1.0)),
+        (ks_x + 9.0, ks_y, 10.0,
+            (0.32, 0.55, 0.78, 1.0), (0.98, 0.98, 0.96, 1.0)),
+        # Diner door is centred
+        (dn_x, dn_y, 9.0,
+            (0.85, 0.22, 0.20, 1.0), (0.92, 0.90, 0.88, 1.0)),
+        # Cosmic Comics door is centred
+        (cc_x, cc_y, 8.0,
+            (0.32, 0.18, 0.32, 1.0), (0.95, 0.85, 0.30, 1.0)),
+    ]
+    for k, (a_cx, a_cy, a_depth, col_primary, col_stripe) in enumerate(awning_storefronts):
+        a_z = mesh_z(a_cx, a_cy - a_depth / 2 - 0.6) + 2.80
+        # Wall side (north corner) up at the storefront top
+        # Hang side (south corner) 0.4 m down + 1.2 m out
+        glass_y = a_cy - a_depth / 2 + 0.05
+        n_stripes = 5
+        stripe_w = 2.0 / n_stripes
+        for s in range(n_stripes):
+            col = col_primary if s % 2 == 0 else col_stripe
+            # 4-vert quad: stripe runs E-W with slight slope
+            sx_off = -1.0 + s * stripe_w
+            sw = stripe_w
+            verts = [
+                (a_cx + sx_off, glass_y, a_z),
+                (a_cx + sx_off + sw, glass_y, a_z),
+                (a_cx + sx_off + sw, glass_y - 1.2, a_z - 0.40),
+                (a_cx + sx_off, glass_y - 1.2, a_z - 0.40),
+            ]
+            _finalize_mesh(f"Awning_{k}_{s}", verts, [[0,1,2,3]], col)
+        # Awning support brackets (thin diagonal bars)
+        for sgn in (-1, 1):
+            bxx = a_cx + sgn * 1.0
+            _make_box_local(f"Awning_{k}_Bracket_{sgn:+d}",
+                            (bxx, glass_y - 0.6, a_z - 0.20),
+                            (0.04, 1.10, 0.04),
+                            (0.32, 0.32, 0.34, 1.0))
+
     # ── OUTDOOR PATIO TABLE in front of the diner — a small round
     # table with 2 chairs on the sidewalk, just east of the
     # diner's main entry door. Classic chapter-one diner-spillover.
