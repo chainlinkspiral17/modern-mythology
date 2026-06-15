@@ -8154,10 +8154,12 @@ def build_north_ranch_neighborhood():
     # Two parallel east-west streets ("Aspen" north + "Birch" south)
     aspen = [(-440, 200), (-380, 200), (-320, 200), (-240, 200)]
     birch = [(-440, 100), (-380, 100), (-320, 100), (-240, 100)]
-    # North-south spur connecting them at x=-320 (middle)
-    spur = [(-320, 200), (-320, 100)]
+    cedar = [(-440, 40),  (-380, 40),  (-320, 40),  (-240, 40)]
+    # North-south spur connecting Aspen + Birch + Cedar at x=-320
+    spur = [(-320, 200), (-320, 100), (-320, 40)]
     _emit_road_polyline(aspen, "NRAspen_")
     _emit_road_polyline(birch, "NRBirch_")
+    _emit_road_polyline(cedar, "NRCedar_")
     _emit_road_polyline(spur, "NRSpur_")
 
     # 12 houses · 3 per side of each east-west street, spaced
@@ -8170,7 +8172,9 @@ def build_north_ranch_neighborhood():
     ]
     setback = 18.0   # bigger than Phase 2's 12 m
     house_idx = 0
-    for street_name, street_pts in (("Aspen", aspen), ("Birch", birch)):
+    for street_name, street_pts in (("Aspen", aspen),
+                                      ("Birch", birch),
+                                      ("Cedar", cedar)):
         for k in range(3):
             x_mid = (street_pts[k][0] + street_pts[k + 1][0]) / 2
             y_mid = street_pts[k][1]
