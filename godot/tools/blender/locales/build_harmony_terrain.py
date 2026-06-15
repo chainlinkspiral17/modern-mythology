@@ -352,8 +352,9 @@ BERMS = [
     ("OTPark_NorthEmb",    [(-296, 175), (-224, 175)],   6.0, 2.4),
     # Viewing knoll in the NE corner
     ("OTPark_NEKnoll",     [(-238, 165), (-225, 168)],  14.0, 3.6),
-    # Secluded reading knoll SW
-    ("OTPark_SWKnoll",     [(-294, 78),  (-280, 80)],   14.0, 3.0),
+    # (SWKnoll removed — was sitting directly on top of the
+    #  OTSkatePark zone and burying it under +2.5 m of berm.
+    #  Skatepark needs the SW corner to stay sunken.)
     # CENTRAL STATUE MOUND · the statue sits on a gentle rise of
     # ~1 m at peak, dying off over a 14 m radius so the walkway ring
     # has a barely-perceptible slope and the plinth is the highest
@@ -1290,28 +1291,39 @@ def build_oliver_tree_memorial_park():
                              park_z + 0.02),
                             (path_w, length, 0.04), COL_PATH)
 
-    # ── Terraced rise at the NORTH end — two short steps up ──
-    # Step 1: 22 × 8 m at +0.6 m
+    # ── Terraced rise at the NORTH end — sample terrain at the
+    # terrace centre so the steps stack on the ACTUAL ground, not
+    # the analytic park_z. With the new park-interior berms the
+    # ground here sits ~40 cm higher than park_z.
+    terr_cx = sx
+    terr_cy = sy + outer_r + 30 + 6
+    terr_ground = mesh_z(terr_cx, terr_cy)
+    # Step 1: 22 × 12 m, lifts 0.60 m above the actual ground
     _make_box_local("OTPark_Terrace_1",
-                    (sx, sy + outer_r + 30 + 6, park_z + 0.30),
+                    (terr_cx, terr_cy, terr_ground + 0.30),
                     (22, 12, 0.60), COL_TERRACE)
-    # Step 2: 14 × 6 m at +1.2 m on top of step 1
+    terr1_top = terr_ground + 0.60
+    # Step 2: 14 × 8 m, sits on top of step 1
     _make_box_local("OTPark_Terrace_2",
-                    (sx, sy + outer_r + 30 + 8, park_z + 0.90),
+                    (terr_cx, terr_cy + 2, terr1_top + 0.30),
                     (14, 8, 0.60), COL_TERRACE)
+    terr2_top = terr1_top + 0.60
     # Terrace railings — short walls along the front edge of step 2
     _make_box_local("OTPark_Terrace_Rail_L",
-                    (sx - 6.5, sy + outer_r + 30 + 4.2, park_z + 1.50),
+                    (terr_cx - 6.5, terr_cy - 1.8, terr2_top + 0.30),
                     (1.5, 0.20, 0.60), COL_TERRACE)
     _make_box_local("OTPark_Terrace_Rail_R",
-                    (sx + 6.5, sy + outer_r + 30 + 4.2, park_z + 1.50),
+                    (terr_cx + 6.5, terr_cy - 1.8, terr2_top + 0.30),
                     (1.5, 0.20, 0.60), COL_TERRACE)
     # Two stair stubs leading up to step 1
     for ox in (-5, 5):
+        stair_x = sx + ox
+        stair_y = sy + outer_r + 30 - 1.5
+        stair_ground = mesh_z(stair_x, stair_y)
         _make_box_local(f"OTPark_Stairs_{ox:+d}",
-                        (sx + ox, sy + outer_r + 30 - 1.5,
-                         park_z + 0.15),
+                        (stair_x, stair_y, stair_ground + 0.15),
                         (2.0, 1.5, 0.30), COL_TERRACE)
+    terrace_top_z = terr2_top    # used by gazebo below
 
     # ── Reflecting pool 22 m SOUTH of statue ──────────────────
     pool_cx = sx
@@ -1487,11 +1499,13 @@ def build_oliver_tree_memorial_park():
                         (bx + back_off_x, by + back_off_y,
                          bz + 0.85),
                         back_sz, COL_BENCH)
-    # Gazebo on the top terrace step replaces the bare bench — the
-    # contemplation pavilion. Hexagonal wooden posts + peaked roof.
+    # Gazebo on the top terrace step · floor matches the REAL
+    # terrace_top_z (computed from mesh_z, not the analytic park_z)
+    # so the gazebo floor sits flush on top of step 2 instead of
+    # floating 30-40 cm above it.
     _build_gazebo("OTPark_Gazebo",
-                  sx, sy + outer_r + 30 + 6,
-                  park_z + 1.50,
+                  terr_cx, terr_cy + 2,
+                  terrace_top_z,
                   radius=3.6, height=3.2)
 
     # ── Pink flower planters at four diagonals · per-bed z ────
