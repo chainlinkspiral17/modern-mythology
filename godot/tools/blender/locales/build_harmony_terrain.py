@@ -85,11 +85,26 @@ COL_COMMERCIAL_DIRT = (0.42, 0.40, 0.36, 1.0)
 # HARMONY CREEK polyline (matches estuary_one HCE_CREEK)
 # ────────────────────────────────────────────────────────────────
 CREEK_POINTS = [
+    # Updated 2026-06-15 to match the new CREEK_CHANNEL re-route
+    # around NorthRanch (was slicing through Aspen Street). Used
+    # only by creek_distance() for the base-terrain Gaussian dip
+    # and the bank-color landuse classifier; the actual carve
+    # lives in CREEK_CHANNEL.
     (-560,  360),
-    (-300,  160),
+    (-500,  340),
+    (-440,  310),
+    (-340,  300),
+    (-260,  280),
+    (-180,  240),
+    (-160,  200),
+    (-160,  140),
+    (-120,   80),
     ( -80,    0),
+    (  40,  -70),
     ( 160, -140),
+    ( 280, -190),
     ( 400, -240),
+    ( 500, -310),
     ( 580, -360),
 ]
 CREEK_FLOOD_WIDTH = 50.0
@@ -150,8 +165,9 @@ def _hash2d(x, y, seed=1337):
 # ────────────────────────────────────────────────────────────────
 # Format: (name, x_min, x_max, y_min, y_max, target_z, flatness)
 SETTLEMENTS = [
-    # Country club + golf — peak prosperity, top of the hill
-    ("CountryClub", -460, 440, 340, 420, +22.0, 0.85),
+    # Country club + golf — peak prosperity, top of the hill.
+    # Flatness 0.85 -> 0.92 for uniform fairways/greens.
+    ("CountryClub", -460, 440, 340, 420, +22.0, 0.92),
     # North Ranch Homes — second-highest tier. Flatness raised
     # 0.80 -> 0.90 (2026-06-15) so houses between streets read at
     # the platform target (+12) instead of 2m below it (the old
@@ -819,10 +835,10 @@ CREEK_CHANNEL = [
     # Each floor_z is no more than ~4m below the local natural
     # platform so the channel stays a small creek, not a canyon.
     (-560,  360,  +2.5),   # NW district corner (wild)
-    (-500,  340,  +6.0),   # entering NorthComm (target +14)
-    (-440,  310, +10.0),   # NorthComm interior (modest 4m cut)
-    (-340,  300, +10.0),   # NorthComm interior
-    (-260,  280,  +9.5),   # at NR/NorthComm boundary
+    (-500,  340,  +8.0),   # entering NorthComm (target +14)
+    (-440,  310, +12.0),   # NorthComm interior (only 2m cut)
+    (-340,  300, +12.0),   # NorthComm interior
+    (-260,  280, +10.5),   # at NR/NorthComm boundary
     (-180,  240,  +1.0),   # wild gap east of NR — drops to natural
     (-160,  200,  -1.0),   # wild gap (between OT Park edge & HP)
     (-160,  140,  -1.5),
@@ -979,7 +995,13 @@ def hce_elevation(x, y):
     noise_low = (fbm(x * 0.003, y * 0.003, octaves=3) - 0.5) * 4.0
     noise_high = (fbm(x * 0.012, y * 0.012, octaves=2) - 0.5) * 1.5
     creek_d = creek_distance(x, y)
-    creek_dip = -7.0 * math.exp(-creek_d * creek_d / (CREEK_FLOOD_WIDTH ** 2))
+    # Base creek dip reduced -7 -> -3 (2026-06-15). The actual
+    # creek floor is set by CREEK_CHANNEL carve later; this base
+    # dip only needs to bias the area gently so the carve has a
+    # natural-looking flood plain. Old -7m was over-deep and
+    # leaked through low-flatness settlements (HarmonyPark at
+    # 0.55) producing visible creek-bed depressions inside parks.
+    creek_dip = -3.0 * math.exp(-creek_d * creek_d / (CREEK_FLOOD_WIDTH ** 2))
     base = (tilt + cc_rise + east_rise + nw_rise + south_dip
             + noise_low + noise_high + creek_dip)
 
