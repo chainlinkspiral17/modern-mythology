@@ -1399,6 +1399,89 @@ Each of these is ~10 lines of corridor-walking code wrapping
 `_emit_X` in build_harmony_terrain.py. They add ~30 primitives
 per residential street but the perceptual lift is large.
 
+### 2026-06-15 · arterial civil-engineering + every-house micro-detail
+
+Pass through HCE focused on roads + landscape design + adding
+small per-house details that vanish individually but compound
+into "designed neighborhood" perceptually.
+
+**Arterials got the proper civil-engineering treatment:**
+- Double-yellow centerline (no-passing arterial standard) +
+  dashed white lane lines between center and edge for full 4-lane
+  striping.
+- Fire hydrants at ~120m spacing on the sidewalk side, alternating
+  sides so no two hydrants sit on the same side in a row.
+- Wooden utility poles at 50m spacing with crossarms, ceramic
+  insulators, drum-shaped transformer cans every 4th pole, and
+  3 sagging phase wires + 1 neutral neutral wire connecting
+  consecutive poles. Custom `_wire()` oriented-box helper required
+  for the diagonal wire runs since `_make_cyl_local` doesn't yaw.
+- Red stop signs + white painted stop bars at every connector
+  intersection with an arterial (NRLink, CCLink, NXHQLink,
+  HospLink, OTLink, ECDSLnk, WCommL, TSLink, DILink). The
+  CONNECTOR side stops; the arterial has right-of-way.
+- Cul-de-sac center islands (East CDS + Phase 2): 3m circular
+  curbed planter with shade tree + 4 ornamental flower clumps.
+
+**HarmonyPark landscape pass** added a figure-eight walking loop
+(pool + north park lobes), spur paths to playground and community
+garden, an octagonal white-painted gazebo with hipped roof + low
+railing skipping the south entry, 3 picnic tables on the east
+lawn, 4 mulch flower beds with seasonal color, 5 ornamental
+cherry/maple specimens at path corners, 4 extra benches along
+the loop, and a stone-pier park entry sign.
+
+**Per-house micro-details on _build_suburban_house** (which means
+they propagate across every NorthRanch, Phase 2, East CDS, West
+Estates, Phase 3 house in one touch — single point of insertion,
+multiplier of effect):
+1. Foundation shrubs — 4 evergreen shrubs in mulch rings along
+   the front wall. Standard American yard staple.
+2. Front walk — 1.2m × 3m concrete path from porch front edge
+   out into the yard. Connects "porch" to "rest of yard."
+3. Yard specimen tree — single deciduous tree seeded
+   deterministically by house position (varies trunk height
+   4.2-5.8m, canopy radius 1.8-2.55m, side of walk L/R, distance
+   from front wall 5-6.5m, and seasonal color most green w/
+   occasional autumn orange ~1/13 houses).
+
+Lessons that came out of this pass:
+
+- **Single insertion points are force multipliers.** Adding to
+  `_build_suburban_house` instead of editing each neighborhood
+  separately turns 28 lines into 80+ houses with the new detail.
+  When considering any per-instance detail, ask first: "is there
+  a shared builder I can extend?" Editing per-neighborhood is
+  almost always wrong when the houses share a builder.
+
+- **Use deterministic seeding for variety.** `(int(cx*7) +
+  int(cy*13)) % 100` gives every house a per-position "DNA"
+  number. Same house = same tree every build, but next-door
+  houses get visibly different trees. Beats either pure random
+  (non-reproducible) or no variation (every house identical).
+  Reuse this pattern for foundation shrub variation, fence type
+  variation, mailbox color variation, etc.
+
+- **Civil-engineering road furniture is mostly corridor-walking
+  loops.** `_emit_hydrants`, `_emit_utility_line`, `_emit_lamps`,
+  `_emit_mailboxes` all share the same skeleton: walk a Catmull-Rom-
+  smoothed polyline, accumulate arc length, emit a thing every N
+  meters offset perpendicular by M meters. Could be a single
+  `_corridor_walk(pts, spacing, side_offset, alternating, emit_fn)`
+  helper. Worth refactoring once you have 5 of these.
+
+- **For oriented thin geometry (wires, crossarms, railings)
+  the helpers `_make_box_local` / `_make_cyl_local` are
+  axis-aligned only.** Use `_finalize_mesh` directly with custom
+  vertices for anything that needs to point along an arbitrary
+  XY direction. Pattern: compute unit direction + perpendicular,
+  emit 8-corner box verts using those basis vectors.
+
+- **A 0.30m thin curb is visible from gameplay distance** but
+  reads as detail rather than clutter. For pool decks, planter
+  rings, cul-de-sac islands, gazebo skirts, this scale is the
+  sweet spot.
+
 ### TEMPLATE for next session
 
 ```markdown
