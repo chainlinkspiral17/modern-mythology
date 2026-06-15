@@ -438,12 +438,20 @@ ROAD_CORRIDORS = [
         (200, -385, -9.0),
     ], 5.0, 14.0),
 
-    # Drive-in theatre access — gradual climb to drive-in pad (-5)
+    # Drive-in theatre access — gradual climb to drive-in pad (-5).
+    # Re-routed 2026-06-15: old path went through the Diner at
+    # (35, -360). New path runs EAST along the chapter-1 frontage
+    # at y=-385, then turns NORTH between Cosmic Comics and the
+    # Taqueria (the gap at x=110-130), then NE to the drive-in.
     ("DILink", [
-        (   8, -380, -9.0),
-        (  60, -340, -7.0),
-        ( 110, -300, -6.0),
-        ( 150, -280, -5.0),
+        (  12, -392, -9.0),    # at HarmonyBlvd south end
+        (  50, -388, -9.0),    # along frontage
+        (  90, -385, -9.0),
+        ( 110, -383, -8.5),    # gap east of Cosmic Comics
+        ( 115, -355, -7.0),    # turning north
+        ( 130, -320, -6.0),
+        ( 150, -290, -5.0),
+        ( 150, -280, -5.0),    # at drive-in pad
     ], 5.0, 14.0),
 
     # Country Club south driveway
