@@ -8467,6 +8467,54 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                     (vent_x, vent_y, chim_base_z + 0.40),
                     0.06, 0.80, col_chim_cap, segments=6)
 
+    # Dormer windows on ~25% of houses — adds front-roof variety.
+    # A dormer is a small protruding gable on the front-facing
+    # slope of the roof with a window.
+    seed_dormer = (int(cx * 53) + int(cy * 59)) % 100
+    if seed_dormer < 25:
+        # Dormer sits on the front-facing roof slope, centered along
+        # the ridge axis. Front slope direction = -fx/fy.
+        d_along = (seed_dormer % 5 - 2) * 0.6      # slight horizontal jitter
+        d_box_w = 1.40
+        d_box_d = 1.20
+        d_box_h = 1.30
+        if abs(fx) > 0.5:
+            # Front slope faces fx direction; dormer along Y
+            d_cx = main_cx - fx * (main_d / 4)
+            d_cy = main_cy + d_along
+            d_size = (d_box_d, d_box_w, d_box_h)
+        else:
+            d_cx = main_cx + d_along
+            d_cy = main_cy - fy * (main_d / 4)
+            d_size = (d_box_w, d_box_d, d_box_h)
+        d_cz = ground_z + main_h + 0.30
+        # Dormer wall (matches house wall color)
+        _make_box_local(f"{name}_Dormer_Body",
+                        (d_cx, d_cy, d_cz + d_box_h / 2),
+                        d_size, col_wall)
+        # Dormer window — on the front face of the dormer (the
+        # face pointing in the -facing direction, since the dormer
+        # is on the front roof slope)
+        win_face_x = d_cx - fx * d_box_d / 2
+        win_face_y = d_cy - fy * d_box_d / 2
+        if abs(fx) > 0.5:
+            win_size = (0.06, 0.70, 0.70)
+        else:
+            win_size = (0.70, 0.06, 0.70)
+        _make_box_local(f"{name}_Dormer_Window",
+                        (win_face_x - fx * 0.04,
+                         win_face_y - fy * 0.04,
+                         d_cz + d_box_h * 0.55),
+                        win_size, col_window)
+        # Small dormer roof
+        if abs(fx) > 0.5:
+            roof_size = (d_box_d + 0.10, d_box_w + 0.10, 0.12)
+        else:
+            roof_size = (d_box_w + 0.10, d_box_d + 0.10, 0.12)
+        _make_box_local(f"{name}_Dormer_Roof",
+                        (d_cx, d_cy, d_cz + d_box_h + 0.06),
+                        roof_size, col_roof)
+
     # Gable-end louvered vents — one on each gable triangle, sitting
     # ~halfway up the gable just inside the eave. Dark slatted square
     # against the wall colour, very distinctive American roof detail.
