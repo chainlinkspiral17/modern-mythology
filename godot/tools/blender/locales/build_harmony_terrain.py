@@ -5513,6 +5513,165 @@ def _face_axis(facing):
     return (0.0, -1.0)
 
 
+def build_east_commercial_box():
+    """Big-box-style shopping pad east of the high school in
+    EastComm settlement zone (440..540, -340..260). One large
+    department-store box with a flat roof, plus a smaller
+    drive-thru fast-food pad to the south.
+    """
+    # ── DEPT STORE — 60 × 24 × 7 m flat-roof box
+    cx, cy = 480.0, 60.0
+    ground_z = mesh_z(cx, cy)
+    col_db_wall = (0.62, 0.55, 0.50, 1.0)     # warm beige
+    col_db_trim = (0.85, 0.20, 0.18, 1.0)     # red accent
+    col_db_roof = (0.30, 0.28, 0.26, 1.0)
+    col_db_door = (0.18, 0.18, 0.20, 1.0)
+    col_db_window = (0.32, 0.42, 0.55, 1.0)
+    w, d, h = 60.0, 24.0, 7.0
+    t = 0.20
+    _make_box_local("EC_DB_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (w + 0.6, d + 0.6, 0.10),
+                    (0.78, 0.74, 0.66, 1.0))
+    # Walls (back + sides solid)
+    _make_box_local("EC_DB_WallN",
+                    (cx, cy + d / 2 - t / 2,
+                     ground_z + h / 2),
+                    (w, t, h), col_db_wall)
+    _make_box_local("EC_DB_WallE",
+                    (cx + w / 2 - t / 2, cy,
+                     ground_z + h / 2),
+                    (t, d, h), col_db_wall)
+    _make_box_local("EC_DB_WallW",
+                    (cx - w / 2 + t / 2, cy,
+                     ground_z + h / 2),
+                    (t, d, h), col_db_wall)
+    # South wall — central double-door entry + 4 storefront windows
+    dw, dh = 4.0, 3.4
+    left_w = w / 2 - dw / 2
+    _make_box_local("EC_DB_WallS_L",
+                    (cx - dw / 2 - left_w / 2,
+                     cy - d / 2 + t / 2,
+                     ground_z + h / 2),
+                    (left_w, t, h), col_db_wall)
+    _make_box_local("EC_DB_WallS_R",
+                    (cx + dw / 2 + left_w / 2,
+                     cy - d / 2 + t / 2,
+                     ground_z + h / 2),
+                    (left_w, t, h), col_db_wall)
+    _make_box_local("EC_DB_WallS_Header",
+                    (cx, cy - d / 2 + t / 2,
+                     ground_z + dh + (h - dh) / 2),
+                    (dw, t, h - dh), col_db_wall)
+    # Double entry doors
+    for sgn in (-1, 1):
+        _make_box_local(f"EC_DB_Door_{sgn:+d}",
+                        (cx + sgn * dw / 4, cy - d / 2 + 0.05,
+                         ground_z + dh / 2),
+                        (dw / 2 - 0.12, 0.06, dh - 0.10),
+                        col_db_door)
+    # 4 big front windows
+    for sgn in (-1, 1):
+        for k in range(2):
+            wx = cx + sgn * (dw / 2 + (k + 1) * 6.0)
+            if abs(wx) < cx + w / 2 - 3.0:
+                _make_box_local(f"EC_DB_Window_{sgn:+d}_{k}",
+                                (wx, cy - d / 2 + 0.04,
+                                 ground_z + 3.0),
+                                (4.0, 0.04, 2.4),
+                                col_db_window)
+    # Roof + red trim band
+    _make_box_local("EC_DB_Roof",
+                    (cx, cy, ground_z + h + 0.10),
+                    (w + 0.4, d + 0.4, 0.20), col_db_roof)
+    _make_box_local("EC_DB_TrimBand",
+                    (cx, cy - d / 2 - 0.05,
+                     ground_z + h - 0.30),
+                    (w + 0.4, 0.10, 0.40), col_db_trim)
+    # Big rooftop sign panel
+    _make_box_local("EC_DB_SignPanel",
+                    (cx, cy - d / 2 - 0.20,
+                     ground_z + h + 0.80),
+                    (16.0, 0.20, 1.6),
+                    (0.85, 0.20, 0.18, 1.0))
+
+    # ── DRIVE-THRU FAST FOOD pad — south of the dept store
+    ff_cx = cx
+    ff_cy = cy - d / 2 - 30.0
+    ff_z = mesh_z(ff_cx, ff_cy)
+    fw, fd, fh = 14.0, 10.0, 4.0
+    _make_box_local("EC_FF_Slab",
+                    (ff_cx, ff_cy, ff_z + 0.05),
+                    (fw + 0.4, fd + 0.4, 0.10),
+                    (0.78, 0.74, 0.66, 1.0))
+    _make_box_local("EC_FF_Walls",
+                    (ff_cx, ff_cy, ff_z + fh / 2),
+                    (fw, fd, fh),
+                    (0.95, 0.45, 0.20, 1.0))     # orange
+    _make_box_local("EC_FF_Roof",
+                    (ff_cx, ff_cy, ff_z + fh + 0.10),
+                    (fw + 0.4, fd + 0.4, 0.20),
+                    (0.32, 0.30, 0.28, 1.0))
+    # Drive-thru ordering kiosk
+    _make_box_local("EC_FF_Kiosk",
+                    (ff_cx + fw / 2 + 2.0, ff_cy - 2.0,
+                     ff_z + 1.40),
+                    (0.60, 1.20, 2.80),
+                    (0.32, 0.32, 0.36, 1.0))
+
+
+def build_bus_stops():
+    """Bus-stop shelters at key arterial intersections. Each:
+    4 corner steel posts + slanted roof + back wall + bench.
+    """
+    bus_specs = [
+        # (name, cx, cy)
+        ("HarmonyBlvd_HS",   65, 60),       # Harmony Blvd at HS entry
+        ("HarmonyBlvd_OT",   30, 130),      # near OT Park
+        ("HorizonDr_Mid",    65, -28),      # Harmony/Horizon junction
+        ("HorizonDr_WE",   -440, -28),     # West Estates link
+        ("HorizonDr_ECDS",   260, -28),     # East CDS link
+    ]
+    COL_BUS_STEEL = (0.62, 0.62, 0.64, 1.0)
+    COL_BUS_ROOF = (0.32, 0.42, 0.55, 1.0)
+    COL_BUS_BACK = (0.85, 0.82, 0.74, 1.0)
+    for tag, cx, cy in bus_specs:
+        gz = mesh_z(cx, cy)
+        bus_w, bus_d, bus_h = 4.0, 1.6, 2.40
+        for sgn_x in (-1, 1):
+            for sgn_y in (-1, 1):
+                _make_box_local(
+                    f"BusStop_{tag}_Post_{sgn_x:+d}_{sgn_y:+d}",
+                    (cx + sgn_x * (bus_w / 2 - 0.05),
+                     cy + sgn_y * (bus_d / 2 - 0.05),
+                     gz + bus_h / 2),
+                    (0.10, 0.10, bus_h), COL_BUS_STEEL)
+        # Back wall (north)
+        _make_box_local(f"BusStop_{tag}_BackWall",
+                        (cx, cy + bus_d / 2 - 0.05,
+                         gz + bus_h * 0.55),
+                        (bus_w - 0.10, 0.08, bus_h * 0.85),
+                        COL_BUS_BACK)
+        # Slanted roof
+        roof_verts = [
+            (cx - bus_w / 2 - 0.10, cy - bus_d / 2,
+             gz + bus_h - 0.10),
+            (cx + bus_w / 2 + 0.10, cy - bus_d / 2,
+             gz + bus_h - 0.10),
+            (cx + bus_w / 2 + 0.10, cy + bus_d / 2 + 0.10,
+             gz + bus_h + 0.10),
+            (cx - bus_w / 2 - 0.10, cy + bus_d / 2 + 0.10,
+             gz + bus_h + 0.10),
+        ]
+        _finalize_mesh(f"BusStop_{tag}_Roof", roof_verts,
+                       [[0, 1, 2, 3]], COL_BUS_ROOF)
+        # Bench inside
+        _make_box_local(f"BusStop_{tag}_Bench",
+                        (cx, cy + bus_d / 4, gz + 0.42),
+                        (bus_w - 0.30, 0.40, 0.06),
+                        (0.42, 0.30, 0.20, 1.0))
+
+
 def build_truck_stop():
     """Big-rig truck stop east of the chapter-one commercial
     cluster in the SouthComm settlement zone. Large fuelling
@@ -7973,6 +8132,8 @@ def main():
     build_connector_roads()
     build_elementary_school()
     build_truck_stop()
+    build_east_commercial_box()
+    build_bus_stops()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
