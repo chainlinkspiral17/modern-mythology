@@ -231,13 +231,15 @@ def pond_depression(x, y, cx, cy, radius, depth):
 
 
 def mesh_z(px, py):
-    """Bilinear-interpolated terrain z at world (px, py), matching
-    exactly what the ground MESH renders at that point. Use this
-    (not hce_elevation) when placing props — the mesh interpolates
-    between vertices, and hce_elevation returns the analytic value
-    which differs by up to half a metre on slopes. Per the golden
-    rule of alignment: props match the visible surface, not the
-    underlying function."""
+    """Returns the z that the ground mesh ACTUALLY renders at
+    (px, py). Matches Godot's triangle rasterisation, not analytic
+    bilinear interpolation. Quads are triangulated diagonal
+    bottom-left → top-right (see build_ground), so:
+      tx ≥ ty → lower triangle (a, b, c) = BL, BR, TR
+      tx < ty → upper triangle (a, c, d) = BL, TR, TL
+    The earlier bilinear version was off by up to 1 m on a sloped
+    quad — that was the visible "post hovering above the ground"
+    issue the user kept flagging."""
     cell_w = (DIST_MAX_X - DIST_MIN_X) / GROUND_NX
     cell_h = (DIST_MAX_Y - DIST_MIN_Y) / GROUND_NY
     fi = (px - DIST_MIN_X) / cell_w
@@ -252,13 +254,13 @@ def mesh_z(px, py):
     x1 = DIST_MIN_X + cell_w * (i + 1)
     y0 = DIST_MIN_Y + cell_h * j
     y1 = DIST_MIN_Y + cell_h * (j + 1)
-    z00 = hce_elevation(x0, y0)
-    z10 = hce_elevation(x1, y0)
-    z01 = hce_elevation(x0, y1)
-    z11 = hce_elevation(x1, y1)
-    z0 = z00 * (1 - tx) + z10 * tx
-    z1 = z01 * (1 - tx) + z11 * tx
-    return z0 * (1 - ty) + z1 * ty
+    z00 = hce_elevation(x0, y0)   # bottom-left = a
+    z10 = hce_elevation(x1, y0)   # bottom-right = b
+    z11 = hce_elevation(x1, y1)   # top-right = c
+    z01 = hce_elevation(x0, y1)   # top-left = d
+    if tx >= ty:
+        return z00 * (1.0 - tx) + z10 * (tx - ty) + z11 * ty
+    return z00 * (1.0 - ty) + z11 * tx + z01 * (ty - tx)
 
 
 def hce_elevation(x, y):
@@ -486,13 +488,17 @@ def build_ground():
             z = mesh_z(wx, wy)
             verts.append((wx, wy, z))
     faces = []
+    # Explicit triangulation matching mesh_z (diagonal BL→TR).
+    # Quads can be split either way and Godot's behaviour varies;
+    # by emitting triangles ourselves we guarantee alignment.
     for j in range(GROUND_NY):
         for i in range(GROUND_NX):
-            a = j * nx_plus_1 + i
-            b = a + 1
-            c = b + nx_plus_1
-            d = a + nx_plus_1
-            faces.append([a, b, c, d])
+            a = j * nx_plus_1 + i           # bottom-left
+            b = a + 1                       # bottom-right
+            c = b + nx_plus_1               # top-right
+            d = a + nx_plus_1               # top-left
+            faces.append([a, b, c])         # lower triangle
+            faces.append([a, c, d])         # upper triangle
     mesh = bpy.data.meshes.new("Terrain_mesh")
     mesh.from_pydata(verts, [], faces)
     mesh.update()
@@ -696,25 +702,13 @@ def build_pond_water():
         # Sample the actual terrain at candidate radii and find
         # the largest radius where mesh terrain is still BELOW
         # water level — that's the water's true extent.
-        max_wr = radius * 0.85
-        wr = radius * 0.20
-        for test_t in (0.30, 0.40, 0.50, 0.55, 0.60, 0.65, 0.70):
-            test_r = radius * test_t
-            # Sample 6 points around the circle at this radius
-            below_count = 0
-            for s_i in range(6):
-                s_ang = 2.0 * math.pi * s_i / 6
-                tx = cx + math.cos(s_ang) * test_r
-                ty = cy + math.sin(s_ang) * test_r
-                if mesh_z(tx, ty) < water_z - 0.05:
-                    below_count += 1
-            # If majority of perimeter points are below water,
-            # water can extend here
-            if below_count >= 4:
-                wr = test_r
-            else:
-                break
-        wr = min(wr, max_wr)
+        # Water disc · fixed at 70% of radius. The earlier empirical
+        # shrinking against mesh_z failed for ponds inside flatten
+        # zones (commercial belts, parks) where the settlement
+        # pulled the pond depression upward, leaving below_count = 0
+        # and water disc at the 0.20 fallback. With the steep
+        # smoothstep depression the bowl IS deep enough at 0.7×r.
+        wr = radius * 0.70
         # Outer water disc (lighter — shallow rim)
         verts = [(cx, cy, water_z)]
         for i in range(segments):
@@ -1395,9 +1389,11 @@ def build_oliver_tree_memorial_park():
                                 rings=3, segments=6)
 
     # ── FLAG POLE at half-mast · samples its OWN ground per the
-    # alignment golden rule.
-    fp_x = sx + outer_r + 14
-    fp_y = sy + 8
+    # alignment golden rule. Moved CLEAR of the NE oak cluster
+    # (was at (-245, 128) which intersected the oak at (-232, 132)
+    # canopy). Now sits south of the path approach at (-242, 100).
+    fp_x = sx + 18
+    fp_y = sy - 20
     fp_z = mesh_z(fp_x, fp_y)
     FLAGPOLE_H = 8.0
     _make_cyl_local("OTPark_FlagPole",
@@ -2005,20 +2001,34 @@ def _build_gazebo(name, cx, cy, z_floor, radius=4.0, height=3.5,
         _make_box_local(f"{name}_Post_{i}",
                         (px, py, z_floor + height / 2),
                         (0.20, 0.20, height), post_color)
-    # Roof — a low pyramid (hexagonal pyramid)
-    # Lower-pitched apex (1.0 m instead of 1.6 m) for a smoother
-    # silhouette across the 8 sides.
-    apex = (cx, cy, z_floor + height + 1.0)
-    rverts = [apex]
+    # Roof — TIERED dome (wide overhang ring tapering up to a
+    # tight upper cone). Single-pyramid version read as a polygonal
+    # cone hat; this two-tier shape reads as a real pavilion roof.
+    overhang = 0.3
+    lower_h = 0.5
+    upper_h = 0.7
+    mid_r = radius * 0.55
+    apex_z = z_floor + height + lower_h + upper_h
+    rverts = []
     for i in range(n_posts):
         ang = 2.0 * math.pi * i / n_posts
-        rverts.append((cx + math.cos(ang) * (radius + 0.3),
-                       cy + math.sin(ang) * (radius + 0.3),
+        rverts.append((cx + math.cos(ang) * (radius + overhang),
+                       cy + math.sin(ang) * (radius + overhang),
                        z_floor + height))
+    for i in range(n_posts):
+        ang = 2.0 * math.pi * i / n_posts
+        rverts.append((cx + math.cos(ang) * mid_r,
+                       cy + math.sin(ang) * mid_r,
+                       z_floor + height + lower_h))
+    rverts.append((cx, cy, apex_z))
+    apex_idx = len(rverts) - 1
     rfaces = []
     for i in range(n_posts):
         ni = (i + 1) % n_posts
-        rfaces.append([0, 1 + i, 1 + ni])
+        rfaces.append([i, ni, n_posts + ni, n_posts + i])
+    for i in range(n_posts):
+        ni = (i + 1) % n_posts
+        rfaces.append([n_posts + i, n_posts + ni, apex_idx])
     _finalize_mesh(f"{name}_Roof", rverts, rfaces, roof_color)
 
 
