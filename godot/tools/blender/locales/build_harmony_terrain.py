@@ -9138,6 +9138,51 @@ def build_arterial_sidewalks():
             _emit_link_sw(_catmull_rom_2d(corridor_xys[cname],
                                             samples_per_seg=4),
                           prefix)
+    # ── RESIDENTIAL STREET sidewalks · narrower 1.2m walks set
+    # back ~3.5m from the road CL (matches the residential street
+    # geometry: 4m wide road + 0.4m curb + 1.2m grass + 1.2m walk).
+    # Emitted on BOTH sides for every residential corridor so each
+    # house has frontage walking access.
+    sw_w_res = 1.2
+    sw_off_res = 2.0 + 0.5 + sw_w_res / 2   # CL-to-sidewalk-centerline
+    COL_SIDEWALK_RES = (0.82, 0.80, 0.74, 1.0)
+    def _emit_res_sw(pts, prefix):
+        for sgn in (-1, 1):
+            for i in range(len(pts) - 1):
+                x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+                dxs = x1 - x0; dys = y1 - y0
+                seg_len = math.hypot(dxs, dys) or 1.0
+                perp_x = -dys / seg_len
+                perp_y =  dxs / seg_len
+                pv = []
+                for (px, py) in [
+                    (x0 + sgn * perp_x * (sw_off_res - sw_w_res / 2),
+                     y0 + sgn * perp_y * (sw_off_res - sw_w_res / 2)),
+                    (x1 + sgn * perp_x * (sw_off_res - sw_w_res / 2),
+                     y1 + sgn * perp_y * (sw_off_res - sw_w_res / 2)),
+                    (x1 + sgn * perp_x * (sw_off_res + sw_w_res / 2),
+                     y1 + sgn * perp_y * (sw_off_res + sw_w_res / 2)),
+                    (x0 + sgn * perp_x * (sw_off_res + sw_w_res / 2),
+                     y0 + sgn * perp_y * (sw_off_res + sw_w_res / 2)),
+                ]:
+                    pv.append((px, py, mesh_z(px, py) + 0.06))
+                _finalize_mesh(f"{prefix}Sidewalk_{i}_{sgn:+d}", pv,
+                                [[0, 1, 2, 3]], COL_SIDEWALK_RES)
+    for cname, prefix in [
+        ("NRAspen",     "NRAspen_"),
+        ("NRBirch",     "NRBirch_"),
+        ("NRCedar",     "NRCedar_"),
+        ("NRSpur",      "NRSpur_"),
+        ("WEMag",       "WEMag_"),
+        ("WELoop",      "WELoop_"),
+        ("P2Main",      "P2Main_"),
+        ("ECDSRidge",   "ECDSRidge_"),
+        ("ECDSCul",     "ECDSCul_"),
+    ]:
+        if cname in corridor_xys:
+            _emit_res_sw(_catmull_rom_2d(corridor_xys[cname],
+                                          samples_per_seg=4),
+                          prefix)
 
 
 def build_arterial_trees():
