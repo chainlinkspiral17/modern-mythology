@@ -13817,6 +13817,104 @@ def build_harmony_park():
                     (4.8, 0.08, 0.50),
                     (0.92, 0.90, 0.84, 1.0))
 
+    # ── PARK FURNITURE · trash cans, drinking fountains, dog
+    # waste stations along the walking paths. These are the
+    # small "real park" details that nobody notices individually
+    # but everyone notices when missing.
+    COL_TRASH = (0.18, 0.45, 0.25, 1.0)        # park-green metal
+    COL_TRASH_LID = (0.10, 0.30, 0.18, 1.0)
+    COL_FOUNTAIN = (0.62, 0.58, 0.50, 1.0)     # limestone
+    COL_FOUNTAIN_METAL = (0.62, 0.62, 0.64, 1.0)
+    COL_DOG_STATION = (0.18, 0.18, 0.20, 1.0)  # black/dark grey
+    COL_DOG_BAG_BOX = (0.32, 0.55, 0.78, 1.0)  # blue dispenser
+
+    def _park_trash(name, x, y):
+        z = mesh_z(x, y)
+        _make_cyl_local(f"{name}_Body", (x, y, z + 0.50),
+                        0.32, 1.00, COL_TRASH, segments=8)
+        _make_cyl_local(f"{name}_Lid", (x, y, z + 1.05),
+                        0.36, 0.10, COL_TRASH_LID, segments=8)
+        # Trash slot (dark opening on top)
+        _make_box_local(f"{name}_Slot", (x, y, z + 1.06),
+                        (0.40, 0.18, 0.04),
+                        (0.05, 0.05, 0.06, 1.0))
+
+    def _drinking_fountain(name, x, y):
+        z = mesh_z(x, y)
+        # Limestone pedestal
+        _make_box_local(f"{name}_Base", (x, y, z + 0.45),
+                        (0.50, 0.40, 0.90), COL_FOUNTAIN)
+        # Bowl on top (limestone)
+        _make_box_local(f"{name}_Bowl", (x, y, z + 0.93),
+                        (0.62, 0.50, 0.10), COL_FOUNTAIN)
+        # Bubbler (small steel button)
+        _make_cyl_local(f"{name}_Bubbler", (x, y + 0.10, z + 1.00),
+                        0.05, 0.08, COL_FOUNTAIN_METAL, segments=4)
+        # Push button
+        _make_box_local(f"{name}_Button", (x, y - 0.15, z + 0.95),
+                        (0.10, 0.04, 0.08), COL_FOUNTAIN_METAL)
+
+    def _dog_waste_station(name, x, y):
+        z = mesh_z(x, y)
+        # Black post
+        _make_cyl_local(f"{name}_Post", (x, y, z + 0.65),
+                        0.04, 1.30, COL_DOG_STATION, segments=4)
+        # Blue bag dispenser box
+        _make_box_local(f"{name}_Dispenser",
+                        (x, y - 0.08, z + 1.20),
+                        (0.18, 0.10, 0.20), COL_DOG_BAG_BOX)
+        # Trash receptacle (small black bin)
+        _make_box_local(f"{name}_TrashBin",
+                        (x, y + 0.08, z + 0.35),
+                        (0.22, 0.18, 0.40), COL_DOG_STATION)
+
+    # Trash cans at 4 path corners
+    trash_pts = [
+        (-25, 60),      # SW pool corner
+        (85, 60),       # SE pool corner
+        (-60, 150),     # gazebo
+        (105, 140),     # picnic area
+        (-10, 95),      # NW pool/north loop tie
+        (30, 0),        # playground spur
+    ]
+    for k, (tx, ty) in enumerate(trash_pts):
+        _park_trash(f"HP_Trash_{k}", tx, ty)
+
+    # 2 drinking fountains
+    fountain_pts = [
+        (40, 95),       # north of pool, on path
+        (-40, 170),     # north loop
+    ]
+    for k, (fx_, fy_) in enumerate(fountain_pts):
+        _drinking_fountain(f"HP_Fountain_{k}", fx_, fy_)
+
+    # 2 dog waste stations (parks all have these now)
+    dog_pts = [
+        (95, 175),      # NE corner
+        (-50, 95),      # SW path
+    ]
+    for k, (dx_, dy_) in enumerate(dog_pts):
+        _dog_waste_station(f"HP_DogStation_{k}", dx_, dy_)
+
+    # ── PICNIC BBQ GRILL · standard cast-iron park grill on a
+    # short post near the picnic tables
+    grill_x, grill_y = 95, 138
+    grill_z = mesh_z(grill_x, grill_y)
+    _make_cyl_local("HP_Grill_Post",
+                    (grill_x, grill_y, grill_z + 0.45),
+                    0.05, 0.90,
+                    (0.18, 0.18, 0.20, 1.0), segments=4)
+    # Grill firebox (square cast-iron pan)
+    _make_box_local("HP_Grill_FireBox",
+                    (grill_x, grill_y, grill_z + 0.95),
+                    (0.55, 0.55, 0.20),
+                    (0.08, 0.08, 0.10, 1.0))
+    # Grill grate (slightly lighter grey square on top)
+    _make_box_local("HP_Grill_Grate",
+                    (grill_x, grill_y, grill_z + 1.07),
+                    (0.50, 0.50, 0.04),
+                    (0.42, 0.42, 0.45, 1.0))
+
 
 def build_country_club_lot():
     """Country Club valet lot east of the clubhouse + curving
