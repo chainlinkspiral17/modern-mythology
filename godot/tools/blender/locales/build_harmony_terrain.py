@@ -5513,6 +5513,265 @@ def _face_axis(facing):
     return (0.0, -1.0)
 
 
+def build_community_landmarks():
+    """Three civic landmarks scattered across HCE:
+      · CHURCH on Harmony Boulevard between HarmonyPark and OT
+        Park
+      · FIRE STATION on Horizon Drive
+      · POST OFFICE south of Horizon Drive near Harmony Boulevard
+    """
+    # ── CHURCH at (-30, 140) — west of Harmony Blvd
+    ch_cx, ch_cy = -30.0, 140.0
+    ch_z = mesh_z(ch_cx, ch_cy)
+    col_ch_wall = (0.92, 0.90, 0.86, 1.0)   # white clapboard
+    col_ch_roof = (0.42, 0.32, 0.22, 1.0)
+    col_ch_door = (0.42, 0.20, 0.16, 1.0)
+    col_ch_cross = (0.78, 0.62, 0.32, 1.0)  # brass
+    ch_w, ch_d, ch_h = 12.0, 18.0, 5.0
+    ch_t = 0.20
+    # Slab
+    _make_box_local("Ch_Slab", (ch_cx, ch_cy, ch_z + 0.05),
+                    (ch_w + 0.4, ch_d + 0.4, 0.10), col_ch_wall)
+    # Walls (all four solid)
+    _make_box_local("Ch_WallN",
+                    (ch_cx, ch_cy + ch_d / 2 - ch_t / 2,
+                     ch_z + ch_h / 2),
+                    (ch_w, ch_t, ch_h), col_ch_wall)
+    _make_box_local("Ch_WallE",
+                    (ch_cx + ch_w / 2 - ch_t / 2, ch_cy,
+                     ch_z + ch_h / 2),
+                    (ch_t, ch_d, ch_h), col_ch_wall)
+    _make_box_local("Ch_WallW",
+                    (ch_cx - ch_w / 2 + ch_t / 2, ch_cy,
+                     ch_z + ch_h / 2),
+                    (ch_t, ch_d, ch_h), col_ch_wall)
+    # South wall split for double door
+    d_w = 2.4; d_h = 3.4
+    left_w = ch_w / 2 - d_w / 2
+    _make_box_local("Ch_WallS_L",
+                    (ch_cx - d_w / 2 - left_w / 2,
+                     ch_cy - ch_d / 2 + ch_t / 2, ch_z + ch_h / 2),
+                    (left_w, ch_t, ch_h), col_ch_wall)
+    _make_box_local("Ch_WallS_R",
+                    (ch_cx + d_w / 2 + left_w / 2,
+                     ch_cy - ch_d / 2 + ch_t / 2, ch_z + ch_h / 2),
+                    (left_w, ch_t, ch_h), col_ch_wall)
+    _make_box_local("Ch_WallS_Header",
+                    (ch_cx, ch_cy - ch_d / 2 + ch_t / 2,
+                     ch_z + d_h + (ch_h - d_h) / 2),
+                    (d_w, ch_t, ch_h - d_h), col_ch_wall)
+    # Pitched gable roof — use the suburban-house roof pattern
+    # but bigger
+    ridge_h = 3.0
+    rverts = [
+        (ch_cx - ch_w/2 - 0.30, ch_cy - ch_d/2 - 0.30, ch_z + ch_h),
+        (ch_cx + ch_w/2 + 0.30, ch_cy - ch_d/2 - 0.30, ch_z + ch_h),
+        (ch_cx + ch_w/2 + 0.30, ch_cy + ch_d/2 + 0.30, ch_z + ch_h),
+        (ch_cx - ch_w/2 - 0.30, ch_cy + ch_d/2 + 0.30, ch_z + ch_h),
+        (ch_cx, ch_cy - ch_d/2 - 0.30, ch_z + ch_h + ridge_h),
+        (ch_cx, ch_cy + ch_d/2 + 0.30, ch_z + ch_h + ridge_h),
+    ]
+    rfaces = [[0, 1, 5, 4], [3, 4, 5, 2],
+              [0, 4, 3], [1, 2, 5]]
+    _finalize_mesh("Ch_Roof", rverts, rfaces, col_ch_roof)
+    # Door
+    for sgn in (-1, 1):
+        _make_box_local(f"Ch_Door_{sgn:+d}",
+                        (ch_cx + sgn * d_w / 4,
+                         ch_cy - ch_d / 2 + 0.05,
+                         ch_z + d_h / 2),
+                        (d_w / 2 - 0.10, 0.06, d_h - 0.10),
+                        col_ch_door)
+    # Round stained-glass window above the door
+    _make_cyl_local("Ch_RoseWindow",
+                    (ch_cx, ch_cy - ch_d / 2 + 0.04,
+                     ch_z + ch_h - 0.8),
+                    0.70, 0.06,
+                    (0.62, 0.18, 0.42, 1.0), segments=10)
+    # STEEPLE — square tower atop the south end with a spire
+    st_x = ch_cx
+    st_y = ch_cy - ch_d / 2 + 1.2
+    st_base_z = ch_z + ch_h + ridge_h
+    _make_box_local("Ch_SteepleBase",
+                    (st_x, st_y, st_base_z + 1.5),
+                    (2.4, 2.4, 3.0), col_ch_wall)
+    # Belfry openings (4 sides)
+    for sgn_x, sgn_y, tag in ((-1, 0, 'W'), (1, 0, 'E'),
+                               (0, -1, 'S'), (0, 1, 'N')):
+        _make_box_local(f"Ch_BelfryOpen_{tag}",
+                        (st_x + sgn_x * 1.0, st_y + sgn_y * 1.0,
+                         st_base_z + 2.0),
+                        (0.10 if sgn_x else 0.8,
+                         0.8 if sgn_x else 0.10, 1.4),
+                        (0.18, 0.14, 0.10, 1.0))
+    # Spire — narrow pyramid (approximate with a tapered box)
+    _make_box_local("Ch_Spire1",
+                    (st_x, st_y, st_base_z + 4.0),
+                    (1.6, 1.6, 1.0), col_ch_roof)
+    _make_box_local("Ch_Spire2",
+                    (st_x, st_y, st_base_z + 5.0),
+                    (1.0, 1.0, 1.0), col_ch_roof)
+    _make_box_local("Ch_Spire3",
+                    (st_x, st_y, st_base_z + 5.7),
+                    (0.4, 0.4, 0.4), col_ch_roof)
+    # Cross at the top
+    _make_box_local("Ch_CrossV",
+                    (st_x, st_y, st_base_z + 6.4),
+                    (0.06, 0.06, 0.80), col_ch_cross)
+    _make_box_local("Ch_CrossH",
+                    (st_x, st_y, st_base_z + 6.7),
+                    (0.40, 0.06, 0.06), col_ch_cross)
+
+    # ── FIRE STATION at (-200, -30) on Horizon Drive
+    fs_cx, fs_cy = -200.0, -30.0
+    fs_z = mesh_z(fs_cx, fs_cy)
+    col_fs_wall = (0.82, 0.32, 0.22, 1.0)   # fire-engine red
+    col_fs_door = (0.95, 0.94, 0.90, 1.0)   # white garage door
+    col_fs_trim = (0.62, 0.62, 0.64, 1.0)
+    fs_w, fs_d, fs_h = 22.0, 14.0, 5.5
+    _make_box_local("FS_Slab",
+                    (fs_cx, fs_cy, fs_z + 0.05),
+                    (fs_w + 0.4, fs_d + 0.4, 0.10), col_fs_trim)
+    # Solid walls (back + sides)
+    _make_box_local("FS_WallN",
+                    (fs_cx, fs_cy + fs_d / 2 - 0.10,
+                     fs_z + fs_h / 2),
+                    (fs_w, 0.20, fs_h), col_fs_wall)
+    _make_box_local("FS_WallE",
+                    (fs_cx + fs_w / 2 - 0.10, fs_cy,
+                     fs_z + fs_h / 2),
+                    (0.20, fs_d, fs_h), col_fs_wall)
+    _make_box_local("FS_WallW",
+                    (fs_cx - fs_w / 2 + 0.10, fs_cy,
+                     fs_z + fs_h / 2),
+                    (0.20, fs_d, fs_h), col_fs_wall)
+    # South wall — 3 BIG garage doors, each 4 m wide × 4 m tall
+    bay_w = 4.5
+    n_bays = 3
+    bay_span = n_bays * bay_w + (n_bays - 1) * 0.4
+    bay_door_h = 4.0
+    # Side wall pieces around the bay row
+    side_w = (fs_w - bay_span) / 2
+    _make_box_local("FS_WallS_L",
+                    (fs_cx - bay_span / 2 - side_w / 2,
+                     fs_cy - fs_d / 2 + 0.10,
+                     fs_z + fs_h / 2),
+                    (side_w, 0.20, fs_h), col_fs_wall)
+    _make_box_local("FS_WallS_R",
+                    (fs_cx + bay_span / 2 + side_w / 2,
+                     fs_cy - fs_d / 2 + 0.10,
+                     fs_z + fs_h / 2),
+                    (side_w, 0.20, fs_h), col_fs_wall)
+    # Lintel header over all bays
+    _make_box_local("FS_WallS_Header",
+                    (fs_cx, fs_cy - fs_d / 2 + 0.10,
+                     fs_z + bay_door_h + (fs_h - bay_door_h) / 2),
+                    (bay_span, 0.20, fs_h - bay_door_h), col_fs_wall)
+    # 3 white garage doors
+    for k in range(n_bays):
+        bx = fs_cx - bay_span / 2 + (k + 0.5) * (bay_w + 0.4)
+        _make_box_local(f"FS_BayDoor_{k}",
+                        (bx, fs_cy - fs_d / 2 + 0.05,
+                         fs_z + bay_door_h / 2),
+                        (bay_w, 0.06, bay_door_h), col_fs_door)
+    # Roof + parapet
+    _make_box_local("FS_Roof",
+                    (fs_cx, fs_cy, fs_z + fs_h + 0.10),
+                    (fs_w + 0.4, fs_d + 0.4, 0.20),
+                    (0.22, 0.20, 0.22, 1.0))
+    # White stripe at top of red walls
+    _make_box_local("FS_TopStripe",
+                    (fs_cx, fs_cy - fs_d / 2 - 0.05,
+                     fs_z + fs_h - 0.40),
+                    (fs_w + 0.4, 0.10, 0.40),
+                    (0.95, 0.94, 0.90, 1.0))
+    # Sign panel above the door header
+    _make_box_local("FS_SignPanel",
+                    (fs_cx, fs_cy - fs_d / 2 - 0.18,
+                     fs_z + fs_h + 0.80),
+                    (8.0, 0.14, 1.2),
+                    (0.18, 0.14, 0.10, 1.0))
+    # Fire hydrant out front
+    _make_cyl_local("FS_Hydrant",
+                    (fs_cx + fs_w / 2 + 2.0,
+                     fs_cy - fs_d / 2 - 2.0, fs_z + 0.40),
+                    0.18, 0.80,
+                    (0.85, 0.20, 0.18, 1.0), segments=6)
+
+    # ── POST OFFICE at (180, -30) just south of Horizon Drive
+    po_cx, po_cy = 180.0, -30.0
+    po_z = mesh_z(po_cx, po_cy)
+    col_po_wall = (0.42, 0.42, 0.45, 1.0)   # institutional grey
+    col_po_trim = (0.62, 0.62, 0.64, 1.0)
+    col_po_door = (0.18, 0.32, 0.55, 1.0)   # USPS blue
+    col_po_red = (0.85, 0.20, 0.18, 1.0)
+    po_w, po_d, po_h = 16.0, 12.0, 4.5
+    _make_box_local("PO_Slab",
+                    (po_cx, po_cy, po_z + 0.05),
+                    (po_w + 0.4, po_d + 0.4, 0.10), col_po_trim)
+    _make_box_local("PO_WallN",
+                    (po_cx, po_cy + po_d / 2 - 0.10,
+                     po_z + po_h / 2),
+                    (po_w, 0.20, po_h), col_po_wall)
+    _make_box_local("PO_WallE",
+                    (po_cx + po_w / 2 - 0.10, po_cy,
+                     po_z + po_h / 2),
+                    (0.20, po_d, po_h), col_po_wall)
+    _make_box_local("PO_WallW",
+                    (po_cx - po_w / 2 + 0.10, po_cy,
+                     po_z + po_h / 2),
+                    (0.20, po_d, po_h), col_po_wall)
+    # South wall split for entry door
+    po_dw = 2.0; po_dh = 2.6
+    po_left_w = po_w / 2 - po_dw / 2
+    _make_box_local("PO_WallS_L",
+                    (po_cx - po_dw / 2 - po_left_w / 2,
+                     po_cy - po_d / 2 + 0.10, po_z + po_h / 2),
+                    (po_left_w, 0.20, po_h), col_po_wall)
+    _make_box_local("PO_WallS_R",
+                    (po_cx + po_dw / 2 + po_left_w / 2,
+                     po_cy - po_d / 2 + 0.10, po_z + po_h / 2),
+                    (po_left_w, 0.20, po_h), col_po_wall)
+    _make_box_local("PO_WallS_Header",
+                    (po_cx, po_cy - po_d / 2 + 0.10,
+                     po_z + po_dh + (po_h - po_dh) / 2),
+                    (po_dw, 0.20, po_h - po_dh), col_po_wall)
+    _make_box_local("PO_Door",
+                    (po_cx, po_cy - po_d / 2 + 0.05,
+                     po_z + po_dh / 2),
+                    (po_dw, 0.06, po_dh - 0.10), col_po_door)
+    # 2 windows each side of door
+    for sgn in (-1, 1):
+        for k in range(2):
+            wx = po_cx + sgn * (po_dw / 2 + (k + 1) * 2.5)
+            if abs(wx) < (po_w / 2 - 0.5):
+                _make_box_local(f"PO_Window_{sgn:+d}_{k}",
+                                (wx, po_cy - po_d / 2 + 0.04,
+                                 po_z + 2.5),
+                                (1.4, 0.04, 1.4),
+                                (0.32, 0.42, 0.55, 1.0))
+    # Roof + flag pole on top
+    _make_box_local("PO_Roof",
+                    (po_cx, po_cy, po_z + po_h + 0.10),
+                    (po_w + 0.4, po_d + 0.4, 0.20),
+                    (0.22, 0.20, 0.22, 1.0))
+    # Two outdoor blue USPS drop boxes by the door
+    for sgn in (-1, 1):
+        _make_box_local(f"PO_DropBox_{sgn:+d}",
+                        (po_cx + sgn * 3.0,
+                         po_cy - po_d / 2 - 1.5, po_z + 0.55),
+                        (0.60, 0.50, 1.10), col_po_door)
+    # USPS sign panel above the entry — red+white+blue stripes
+    _make_box_local("PO_SignBlue",
+                    (po_cx, po_cy - po_d / 2 - 0.18,
+                     po_z + po_h + 0.60),
+                    (6.0, 0.14, 0.50), col_po_door)
+    _make_box_local("PO_SignRed",
+                    (po_cx, po_cy - po_d / 2 - 0.18,
+                     po_z + po_h + 1.20),
+                    (6.0, 0.14, 0.50), col_po_red)
+
+
 def build_district_arterials():
     """Two arterials threading through HCE: HARMONY BOULEVARD
     runs north-south from the country club down to the chapter-
@@ -7440,6 +7699,7 @@ def main():
     build_country_club()
     build_harmony_park()
     build_district_arterials()
+    build_community_landmarks()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
