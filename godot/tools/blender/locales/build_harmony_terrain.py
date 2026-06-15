@@ -765,17 +765,30 @@ POND_CARVES = [
 # surrounding terrain grades down into the ravine without a
 # vertical step at the channel edge.
 CREEK_CHANNEL = [
-    (-560,  360, +2.5),   # NW headwaters
-    (-440,  290,  0.0),
-    (-300,  160, -1.5),
-    (-180,   80, -2.5),
-    ( -80,    0, -3.5),
-    (  40,  -70, -4.5),
-    ( 160, -140, -5.5),
-    ( 280, -190, -6.5),
-    ( 400, -240, -7.5),
-    ( 500, -310, -8.5),
-    ( 580, -360, -9.5),   # SE outlet
+    # Re-routed 2026-06-15. Old route sliced diagonally through
+    # NorthRanch, punching a -1m water trench through Aspen Street.
+    # New route: through NorthComm at modest depth (only 3-4m below
+    # commercial-belt grade so it reads as a small creek, not a
+    # ravine), curves east to wild gap (between NR and HP), then
+    # flows SE through wild zones.
+    # Each floor_z is no more than ~4m below the local natural
+    # platform so the channel stays a small creek, not a canyon.
+    (-560,  360,  +2.5),   # NW district corner (wild)
+    (-500,  340,  +6.0),   # entering NorthComm (target +14)
+    (-440,  310, +10.0),   # NorthComm interior (modest 4m cut)
+    (-340,  300, +10.0),   # NorthComm interior
+    (-260,  280,  +9.5),   # at NR/NorthComm boundary
+    (-180,  240,  +1.0),   # wild gap east of NR — drops to natural
+    (-160,  200,  -1.0),   # wild gap (between OT Park edge & HP)
+    (-160,  140,  -1.5),
+    (-120,   80,  -1.5),   # HarmonyPark west edge approach
+    ( -80,    0,  -3.0),   # wild zone south of HarmonyPark
+    (  40,  -70,  -4.5),
+    ( 160, -140,  -5.5),
+    ( 280, -190,  -6.5),
+    ( 400, -240,  -7.5),
+    ( 500, -310,  -8.5),
+    ( 580, -360,  -9.5),   # SE outlet
 ]
 CREEK_CHANNEL_HW = 3.0       # half-width of the channel bed
 CREEK_SHOULDER = 22.0        # flood-plain falloff
