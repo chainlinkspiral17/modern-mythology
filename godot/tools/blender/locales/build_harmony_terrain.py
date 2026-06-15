@@ -5482,11 +5482,14 @@ def build_west_estates_neighborhood():
     # adjacent outer-corner houses too close (the inner diamond
     # is only ~44 m per side and 18 m off-road placement collides
     # adjacent houses around sharp corners).
+    # House facings here are toward the road (opposite the perp
+    # offset direction from road centre). L1's road is east → L1
+    # faces +X. L4's road is west → L4 faces -X.
     loop_houses = [
-        ("WE_House_L1", 0, +1, '-X',
+        ("WE_House_L1", 0, +1, '+X',
             {'wall': (0.82, 0.78, 0.70, 1.0),
              'roof': (0.42, 0.30, 0.22, 1.0)}),
-        ("WE_House_L4", 3, +1, '+X',
+        ("WE_House_L4", 3, +1, '-X',
             {'wall': (0.72, 0.78, 0.68, 1.0),
              'roof': (0.42, 0.30, 0.22, 1.0)}),
     ]
