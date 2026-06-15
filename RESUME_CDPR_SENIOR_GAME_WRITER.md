@@ -59,19 +59,117 @@ Volumes are linked by a stable cast (the **Demon Roster** — eight bound progra
 >
 > *— [lore/milk_and_honey/static_truths.md](lore/milk_and_honey/static_truths.md)*
 
-#### 4. Research-driven night-shift procedural — *The Pomegranate Hour · S01E13 "Ward C"* (XIII · DEATH)
+#### 4. Visual-novel dialogue — *Alberto / Marta phone call* (Vol 5, post-Sinkhole)
+
+Eight days after the wreck that killed Marta Romero's son in a D'Ambrosio-family work accident, Alberto D'Ambrosio (the elder son, indoors-in-sunglasses, in mourning) calls Marta from his father's hospital bedside. The diorama is the player's first long Alberto scene. It is two people doing the right thing without ever raising their voices. (Excerpted; the full diorama is 4 minutes of timestamped dialogue at [godot/scenes/menu/AlbertoMartaCallDiorama.gd](godot/scenes/menu/AlbertoMartaCallDiorama.gd).)
+
+> **MARTA:** Hello.
+>
+> **ALBERTO:** Hi. Mrs. Romero. This is — this is Alberto. Marroquín. D'Ambrosio.
+>
+> **MARTA:** *(small pause)* Yes. I know who you are.
+>
+> **ALBERTO:** I — yes. Okay. I'm sorry. I'm calling — I — okay.
+>
+> **MARTA:** Take your time, Alberto.
+>
+> **ALBERTO:** Thank you. I — okay. I'm calling because I want to tell you a few things. I don't expect you to — I'm not asking for anything. I just want to tell you them. Is that all right.
+>
+> **MARTA:** It's all right.
+>
+> **ALBERTO:** Okay. The first thing is I know about the deposition. The dates were correct when you gave them. The dates were moved after. I have the original timestamps. I will give them to your lawyer.
+>
+> **MARTA:** *(quiet)* That's a thing you can do.
+>
+> **ALBERTO:** Yes.
+>
+> **ALBERTO:** The second thing is that I know what my family did to you. I don't mean the deposition. I mean the whole — the whole arrangement. The hours. The way you were paid. The years you weren't paid what you should have been.
+>
+> **MARTA:** *(silence — 12 seconds)*
+>
+> **MARTA:** Yes.
+>
+> **ALBERTO:** I have run a calculation. I have a number. I am going to put the number in an account in your name. I am going to do this whether you want it or not, so that part isn't — that isn't a request. It will be there. I am telling you because if I didn't tell you you'd find out from a letter and that would be worse.
+>
+> **MARTA:** *(longer silence — 28 seconds)*
+>
+> **MARTA:** Alberto.
+>
+> **ALBERTO:** Yes.
+>
+> **MARTA:** How is your father.
+
+#### 5. Visual-novel dialogue — two nine-year-olds on a church-parking-lot walk (Vol 5, Sunday morning)
+
+The Maya/Y diorama is mic-adjacent ambient capture as two children walk from the car to the side door of St Jude's. The chapter pivots on what a child sees and chooses to mention. The dialogue is the entire scene; nothing happens in the action that the words don't already contain. ([godot/scenes/menu/MayaYParkingLotDiorama.gd](godot/scenes/menu/MayaYParkingLotDiorama.gd))
+
+> **MAYA:** I don't like it when the dress is new.
+>
+> **Y:** It's not new. You wore it at Easter.
+>
+> **MAYA:** Yes but my mom made it bigger. It bites.
+>
+> **Y:** My mom said tell her at lunch.
+>
+> **MAYA:** She knows. She made it. She made it bite.
+>
+> **Y:** Then tell her at lunch.
+>
+> **MAYA:** *(small breath)* Okay.
+>
+> *[footsteps. they walk slow. Y kicks a pebble.]*
+>
+> **Y:** Father Quent was on the phone in the booth again. Before. I saw him.
+>
+> **MAYA:** He always does that. He doesn't have a phone in the rectory that works.
+>
+> **Y:** It works. He doesn't want the housekeeper to hear.
+>
+> **MAYA:** *(small)* Oh.
+>
+> **Y:** She knows already. The housekeeper. She just doesn't say.
+>
+> **MAYA:** Why doesn't she say.
+
+#### 6. Visual-novel dialogue — *Frank / Elicia* (Vol 5, the silence diorama)
+
+The shortest dialogue in the volume. Frank calls Elicia from a payphone to thank her for placing the SUN-card bookmark where he would find it. The diorama is the player's first proof that Frank and Elicia have a real, unspoken thing between them. Every payload line in the scene is the WORD COUNT of the silence between them.
+
+> *[outbound call from f.payne / received by e.l. / 06:11 sat / fortress.bbs phone log]*
+>
+> **ELICIA:** *(answers, says nothing)*
+>
+> **FRANK:** Hi Elicia. It's Frank.
+>
+> **ELICIA:** *(breath in)*
+>
+> **FRANK:** I'm calling about the bookmark in the SUN entry. It was the part I needed.
+>
+> **ELICIA:** *(silence)*
+>
+> **FRANK:** Thank you for putting it where I would find it.
+>
+> **ELICIA:** *(silence)*
+>
+> **FRANK:** That's all. Goodbye.
+>
+> **ELICIA:** *(silence — hangs up two seconds after Frank does)*
+>
+> *[call ended 06:11:42. Frank closes his notebook. Elicia returns to the tape she was transcribing. The morning continues without either of them naming what happened.]*
+
+#### 7. Research-driven night-shift procedural — *The Pomegranate Hour · S01E13 "Ward C"* (XIII · DEATH)
 
 A 23-minute episode set in an overnight hospital ward, anchored on a Vietnamese-American charge nurse, Chị Huyền, and the **cô hồn** wandering-souls altar she has kept at the nurses' station for eleven years. The episode's production note negotiates filming consent on behalf of sedated and deceased patients. The card's classical iconography (Death the harvester, the rose, the river) appears only in working details: the peeled orange segments, the held basil sprig, the river stone weighting a folded note.
 
 > *— [lore/pomegranate_hour/13_death.md](lore/pomegranate_hour/13_death.md)*
 
-#### 5. Branching-narrative architecture — the *Compass* in-fiction artifact
+#### 8. Branching-narrative architecture — the *Compass* in-fiction artifact
 
 A 22-node tarot graph wired to the project's Godot save system. Every Major Arcana card is a node; cross-references between cards form the edges (Magician's iron-sigil wakes the bookshelf on Priestess's card; Fool's polaroid pins to the Priestess's archive; etc.). The compass has **two unlock tiers**: a menu tier triggered by hotspot encounter or by reading the RUST_CODE.BBS header three times across different cards, and an in-game tier strictly puzzle-gated with no test override.
 
 > *— [lore/_COMPASS.md](lore/_COMPASS.md)*
 
-#### 6. Genre register — operator-noir vs. suburban paranoia (single-line specimen)
+#### 9. Genre register — operator-noir vs. suburban paranoia (single-line specimen)
 
 From Vol 5 (operator-noir):
 
