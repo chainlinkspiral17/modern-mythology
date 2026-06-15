@@ -5583,10 +5583,11 @@ def build_nexcorp_hq():
                          pz_centre),
                         (0.20, depth + 0.4, parapet_h), col_trim)
 
-    # ── ENTRY — recessed double doors at the centre of the south
-    # face. Door height 2.6 m, width 3.0 m, set 1.5 m into the
-    # building behind the curtain wall.
-    entry_y = cy - depth / 2 + 1.5
+    # ── ENTRY — double doors at the centre of the south curtain
+    # wall, coplanar with the glass so they read as part of the
+    # facade (rather than 1.5 m inside, where the player can't
+    # reach them). Door spans 3 m wide × 2.6 m tall.
+    entry_y = glass_y
     door_w = 3.0
     door_h = 2.6
     # Door frame
@@ -5645,14 +5646,16 @@ def build_nexcorp_hq():
                     (pool_w, pool_d, 0.10),
                     (0.32, 0.55, 0.78, 1.0))
 
-    # ── HEDGE BORDERS flanking the entry walkway
+    # ── HEDGE BORDERS flanking the entry walkway. Hedge sits in
+    # the 4 m gap between the building south face (cy - 9) and
+    # the pool north edge (cy - 11): centred at cy - 10 with
+    # depth 2.0 m, height 1.1 m. Clear of both building and pool.
     for sgn in (-1, 1):
-        # Hedge runs N-S from front of building toward the pool
         hedge_x = cx + sgn * (door_w / 2 + 1.6)
-        _make_box_local(f"HedgeFront_{sgn:+d}",
-                        (hedge_x, cy - depth / 2 - 2.5,
+        _make_box_local(f"{name_prefix}_HedgeFront_{sgn:+d}",
+                        (hedge_x, cy - depth / 2 - 1.5,
                          ground_z + 0.55),
-                        (0.60, 4.0, 1.10),
+                        (0.60, 2.0, 1.10),
                         (0.20, 0.42, 0.18, 1.0))
 
     # ── PARKING LOT to the south of the plaza
