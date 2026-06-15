@@ -318,6 +318,27 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
          (base_x, base_y, pelvis_top_z + pelvis_h / 2),
          (PROP["pelvis_w"] * s, PROP["pelvis_w"] * s * 0.6, pelvis_h),
          jacket_color)
+    # BELT · thin darker band at the waist where jacket meets pants
+    _box(f"{name}_Belt",
+         (base_x, base_y, pelvis_top_z + pelvis_h / 2),
+         (PROP["pelvis_w"] * s * 1.02,
+          PROP["pelvis_w"] * s * 0.62,
+          pelvis_h * 0.50),
+         (0.18, 0.14, 0.10, 1.0))
+    # Belt buckle on the front
+    fwd_x_b, fwd_y_b = _face_axis(facing)
+    bx_buck = base_x + fwd_x_b * PROP["pelvis_w"] * s * 0.52
+    by_buck = base_y + fwd_y_b * PROP["pelvis_w"] * s * 0.52
+    if abs(fwd_y_b) > abs(fwd_x_b):
+        _box(f"{name}_BeltBuckle",
+             (bx_buck, by_buck, pelvis_top_z + pelvis_h * 0.55),
+             (0.05 * s, 0.02, 0.04 * s),
+             (0.85, 0.78, 0.42, 1.0))
+    else:
+        _box(f"{name}_BeltBuckle",
+             (bx_buck, by_buck, pelvis_top_z + pelvis_h * 0.55),
+             (0.02, 0.05 * s, 0.04 * s),
+             (0.85, 0.78, 0.42, 1.0))
     # Torso main body — puffer uses a wider squashed sphere
     if puffy:
         puff_r = torso_r_top * 1.55
