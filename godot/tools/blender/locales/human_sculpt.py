@@ -338,6 +338,36 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
                    (base_x, base_y, torso_cz),
                    torso_r_bot, torso_r_top, torso_h, jacket_color,
                    segments=10)
+        # CHEST CAP · slight forward bulge at the upper chest so
+        # the torso isn't a uniform cylinder. Squashed sphere
+        # blended into the upper torso silhouette.
+        fwd_x_t, fwd_y_t = _face_axis(facing)
+        chest_z = torso_cz + torso_h * 0.18
+        chest_cx = base_x + fwd_x_t * (torso_r_top * 0.10)
+        chest_cy = base_y + fwd_y_t * (torso_r_top * 0.10)
+        _sphere_low(f"{name}_Chest",
+                    (chest_cx, chest_cy, chest_z),
+                    torso_r_top * 1.05, jacket_color,
+                    rings=3, segments=10, squash_z=0.60)
+        # WAIST NARROWING · slight inward dimple at the natural
+        # waist height — built as a small DARKER ring band so the
+        # eye reads narrowing. (Pure-geometry narrowing would
+        # require remeshing the torso cylinder; this fakes it
+        # with a contrast ring at the right height.)
+        waist_z = torso_cz - torso_h * 0.20
+        # Only emit if there's a yoke (so the torso isn't a single
+        # uniform block) — otherwise this would conflict with the
+        # base jacket geometry.
+        if yoke_color is None:
+            _cyl_taper(f"{name}_WaistBand",
+                       (base_x, base_y, waist_z),
+                       torso_r_bot * 0.95, torso_r_bot * 0.95,
+                       torso_h * 0.10,
+                       (jacket_color[0] * 0.82,
+                        jacket_color[1] * 0.82,
+                        jacket_color[2] * 0.82,
+                        jacket_color[3]),
+                       segments=10)
     # Yoke — wider band at the shoulders
     if yoke_color is not None:
         yoke_h = torso_h * 0.42
@@ -495,11 +525,55 @@ def _build_head(name, base_x, base_y, head_base_z, s,
     head_squash = PROP["head_squash"]
     head_r = head_d / 2
     head_cz = head_base_z + head_r * head_squash
-    # Skull (skin sphere)
+    # Skull (skin sphere) — narrower on the facing axis (head depth)
+    # so the head is more egg-shaped than spherical from above
     _sphere_low(f"{name}_Head_Skull",
                 (base_x, base_y, head_cz),
                 head_r, skin_color,
-                rings=4, segments=8, squash_z=head_squash)
+                rings=4, segments=10, squash_z=head_squash)
+    # CHEEKBONES · two small subtly-protruding skin spheres on the
+    # sides of the head at eye height. Define the face's width
+    # without exaggeration.
+    fwd_x_h, fwd_y_h = _face_axis(facing)
+    side_x_h = -fwd_y_h; side_y_h = fwd_x_h
+    cheek_z = head_cz + head_r * 0.05
+    for ch_side, ch_sign in (('L', -1), ('R', +1)):
+        cx_pos = base_x + side_x_h * ch_sign * (head_r * 0.78) + fwd_x_h * (head_r * 0.55)
+        cy_pos = base_y + side_y_h * ch_sign * (head_r * 0.78) + fwd_y_h * (head_r * 0.55)
+        _sphere_low(f"{name}_Cheek_{ch_side}",
+                    (cx_pos, cy_pos, cheek_z),
+                    head_r * 0.22, skin_color,
+                    rings=2, segments=6, squash_z=0.70)
+    # JAW LINE · small angular box across the lower face giving
+    # the head a clear chin/jaw silhouette from the side
+    jaw_z = head_cz - head_r * 0.42
+    jx = base_x + fwd_x_h * (head_r * 0.55)
+    jy = base_y + fwd_y_h * (head_r * 0.55)
+    if abs(fwd_y_h) > abs(fwd_x_h):
+        _box(f"{name}_Jaw",
+             (jx, jy, jaw_z),
+             (head_d * 0.62, head_d * 0.50, head_d * 0.14),
+             skin_color)
+    else:
+        _box(f"{name}_Jaw",
+             (jx, jy, jaw_z),
+             (head_d * 0.50, head_d * 0.62, head_d * 0.14),
+             skin_color)
+    # BROW RIDGE · always present (used to be tied to with_mouth).
+    # Subtle skin-toned ridge above the eye line.
+    br_z = head_cz + head_r * 0.20
+    brx = base_x + fwd_x_h * (head_r * 0.92)
+    bry = base_y + fwd_y_h * (head_r * 0.92)
+    if abs(fwd_y_h) > abs(fwd_x_h):
+        _box(f"{name}_BrowRidge",
+             (brx, bry, br_z),
+             (head_d * 0.78, head_d * 0.10, head_d * 0.08),
+             skin_color)
+    else:
+        _box(f"{name}_BrowRidge",
+             (brx, bry, br_z),
+             (head_d * 0.10, head_d * 0.78, head_d * 0.08),
+             skin_color)
     # Ears — small skin boxes on the head's left + right sides,
     # perpendicular to the facing axis.
     if with_ears:
