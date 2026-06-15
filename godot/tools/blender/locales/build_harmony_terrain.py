@@ -1249,16 +1249,16 @@ def build_oliver_tree_memorial_park():
     COL_SIGN_BROWN  = (0.40, 0.30, 0.20, 1.0)
     COL_SIGN_FACE   = (0.86, 0.82, 0.70, 1.0)
 
-    # ── Central walkway ring (inner 12, outer 15) ─────────────
+    # ── Central walkway ring · per-vertex mesh_z ──────────────
     segs = 18
     inner_r = 12.0; outer_r = 15.0
     ring_verts = []
     for ring_idx, r in ((0, inner_r), (1, outer_r)):
         for i in range(segs):
             ang = 2.0 * math.pi * i / segs
-            ring_verts.append((sx + math.cos(ang) * r,
-                                sy + math.sin(ang) * r,
-                                park_z + 0.02))
+            vx = sx + math.cos(ang) * r
+            vy = sy + math.sin(ang) * r
+            ring_verts.append((vx, vy, mesh_z(vx, vy) + 0.02))
     ring_faces = []
     for i in range(segs):
         ni = (i + 1) % segs
@@ -1273,23 +1273,27 @@ def build_oliver_tree_memorial_park():
         ('E', 1,  0, 25),
         ('W', -1, 0, 25),
     ]
+    # Radial paths · build as 4-vert quads with per-vertex mesh_z
+    # so they follow the slope of the platform rather than hanging
+    # at the analytic park_z.
     for tag, dx, dy, length in radials:
         start_x = sx + dx * outer_r
         start_y = sy + dy * outer_r
         end_x = sx + dx * (outer_r + length)
         end_y = sy + dy * (outer_r + length)
+        # Perpendicular for path width
         if abs(dx) > abs(dy):
-            _make_box_local(f"OTPark_Path_{tag}",
-                            ((start_x + end_x) / 2,
-                             (start_y + end_y) / 2,
-                             park_z + 0.02),
-                            (length, path_w, 0.04), COL_PATH)
+            perp_x, perp_y = 0.0, 1.0
         else:
-            _make_box_local(f"OTPark_Path_{tag}",
-                            ((start_x + end_x) / 2,
-                             (start_y + end_y) / 2,
-                             park_z + 0.02),
-                            (path_w, length, 0.04), COL_PATH)
+            perp_x, perp_y = 1.0, 0.0
+        hw = path_w / 2
+        pv = []
+        for (px, py) in [(start_x - perp_x * hw, start_y - perp_y * hw),
+                         (end_x - perp_x * hw, end_y - perp_y * hw),
+                         (end_x + perp_x * hw, end_y + perp_y * hw),
+                         (start_x + perp_x * hw, start_y + perp_y * hw)]:
+            pv.append((px, py, mesh_z(px, py) + 0.025))
+        _finalize_mesh(f"OTPark_Path_{tag}", pv, [[0, 1, 2, 3]], COL_PATH)
 
     # ── Terraced rise at the NORTH end — sample terrain at the
     # terrace centre so the steps stack on the ACTUAL ground, not
@@ -1325,56 +1329,54 @@ def build_oliver_tree_memorial_park():
                         (2.0, 1.5, 0.30), COL_TERRACE)
     terrace_top_z = terr2_top    # used by gazebo below
 
-    # ── Reflecting pool 22 m SOUTH of statue ──────────────────
+    # ── Reflecting pool 22 m SOUTH of statue · pool z derived
+    # from mesh_z at the pool centre, NOT park_z. The statue
+    # mound makes ground at pool location slightly lower than
+    # park_z.
     pool_cx = sx
     pool_cy = sy - 22
     pool_r = 6.0
-    # Recessed water disc
+    pool_ground = mesh_z(pool_cx, pool_cy)
+    pool_water_z = pool_ground - 0.30
     pool_segs = 16
-    pverts = [(pool_cx, pool_cy, park_z - 0.30)]
+    pverts = [(pool_cx, pool_cy, pool_water_z)]
     for i in range(pool_segs):
         ang = 2.0 * math.pi * i / pool_segs
         pverts.append((pool_cx + math.cos(ang) * pool_r,
                        pool_cy + math.sin(ang) * pool_r,
-                       park_z - 0.30))
+                       pool_water_z))
     pfaces = []
     for i in range(pool_segs):
         ni = (i + 1) % pool_segs
         pfaces.append([0, 1 + i, 1 + ni])
     _finalize_mesh("OTPark_Pool", pverts, pfaces, COL_POOL_WATER)
-    # Concrete rim
+    # Concrete rim · sits at pool_ground + 0.05 m
     rverts = []
     for ring_idx, r in ((0, pool_r), (1, pool_r + 0.6)):
         for i in range(pool_segs):
             ang = 2.0 * math.pi * i / pool_segs
             rverts.append((pool_cx + math.cos(ang) * r,
                            pool_cy + math.sin(ang) * r,
-                           park_z + 0.05))
+                           pool_ground + 0.05))
     rfaces = []
     for i in range(pool_segs):
         ni = (i + 1) % pool_segs
         rfaces.append([i, ni, ni + pool_segs, i + pool_segs])
     _finalize_mesh("OTPark_Pool_Rim", rverts, rfaces, COL_POOL_RIM)
 
-    # ── FOUNTAIN JET in the reflecting pool · vertical water column
-    # plus a small spray ring. Reads as a real water feature, not
-    # just a still puddle.
+    # ── FOUNTAIN JET in the reflecting pool · anchored to pool z
     fountain_cx = pool_cx
     fountain_cy = pool_cy
-    # Stone plinth in the pool centre
     _make_cyl_local("OTPark_FountainBase",
-                    (fountain_cx, fountain_cy, park_z - 0.15),
+                    (fountain_cx, fountain_cy, pool_ground - 0.15),
                     0.45, 0.5, COL_POOL_RIM, segments=8)
-    # Vertical water column (a thin tall cylinder representing the jet)
     _make_cyl_local("OTPark_FountainJet",
-                    (fountain_cx, fountain_cy, park_z + 1.20),
+                    (fountain_cx, fountain_cy, pool_ground + 1.20),
                     0.10, 2.4, (0.55, 0.78, 0.85, 1.0), segments=6)
-    # Spray crown — small sphere at the top representing breaking water
     _make_sphere_low_local("OTPark_FountainCrown",
-                            (fountain_cx, fountain_cy, park_z + 2.50),
+                            (fountain_cx, fountain_cy, pool_ground + 2.50),
                             0.50, (0.78, 0.92, 0.95, 1.0),
                             rings=3, segments=8)
-    # Lower spray ring — 6 small spheres around the base
     for k in range(6):
         ang_k = 2.0 * math.pi * k / 6
         sx_off = math.cos(ang_k) * 0.5
@@ -1382,7 +1384,7 @@ def build_oliver_tree_memorial_park():
         _make_sphere_low_local(f"OTPark_FountainSpray_{k}",
                                 (fountain_cx + sx_off,
                                  fountain_cy + sy_off,
-                                 park_z + 0.35),
+                                 pool_ground + 0.35),
                                 0.18, (0.62, 0.82, 0.88, 1.0),
                                 rings=3, segments=6)
 
@@ -1528,53 +1530,52 @@ def build_oliver_tree_memorial_park():
                         COL_FLOWER_PINK)
 
     # ── PARK ENTRY ARCHWAY · stone arch over the south entry ─
-    arch_y = sy - outer_r - 30      # ~30 m south of the ring
-    arch_w = 7.0     # gap width
+    # Anchors to mesh_z at the arch position, NOT park_z (which is
+    # the statue centre). The south entry sits ~45 m from centre
+    # where the ground can differ by 0.5 m.
+    arch_y = sy - outer_r - 30
+    arch_w = 7.0
     arch_post_w = 1.0
     arch_post_h = 4.5
     arch_post_d = 1.2
-    # Two stone posts flanking the path
     for sign in (-1, 1):
+        post_x = sx + sign * (arch_w / 2 + arch_post_w / 2)
+        post_ground = mesh_z(post_x, arch_y)
         _make_box_local(f"OTPark_ArchPost_{sign:+d}",
-                        (sx + sign * (arch_w / 2 + arch_post_w / 2),
-                         arch_y, park_z + arch_post_h / 2),
+                        (post_x, arch_y, post_ground + arch_post_h / 2),
                         (arch_post_w, arch_post_d, arch_post_h),
                         COL_PLINTH_BASE)
-        # Cap stone on top of each post
         _make_box_local(f"OTPark_ArchPostCap_{sign:+d}",
-                        (sx + sign * (arch_w / 2 + arch_post_w / 2),
-                         arch_y, park_z + arch_post_h + 0.15),
+                        (post_x, arch_y, post_ground + arch_post_h + 0.15),
                         (arch_post_w + 0.30, arch_post_d + 0.30, 0.25),
                         COL_PLINTH_CAP)
-    # Horizontal arch beam — heavy stone lintel
+    # Beam + inscription anchored to the LOWER of the two posts so
+    # the lintel doesn't tilt
+    arch_ground = mesh_z(sx, arch_y)
     _make_box_local("OTPark_ArchBeam",
-                    (sx, arch_y, park_z + arch_post_h + 0.65),
+                    (sx, arch_y, arch_ground + arch_post_h + 0.65),
                     (arch_w + 2 * arch_post_w + 0.6, arch_post_d + 0.3, 0.55),
                     COL_PLINTH_SHAFT)
-    # Decorative inscribed panel on the beam (will get Label3D
-    # via LocaleSetup recognising "OTPark_ArchInscription")
     _make_box_local("OTPark_ArchInscription",
                     (sx, arch_y - arch_post_d / 2 - 0.04,
-                     park_z + arch_post_h + 0.65),
+                     arch_ground + arch_post_h + 0.65),
                     (arch_w + 1.5, 0.06, 0.40),
                     (0.45, 0.40, 0.32, 1.0))
 
-    # ── Park sign at the SOUTH entry ─────────────────────────
+    # ── Park sign at the SOUTH entry · mesh_z at sign position ─
     sign_x = sx
-    sign_y = sy - outer_r - 48     # near the end of the south path
-    # Two posts
+    sign_y = sy - outer_r - 48
+    sign_ground = mesh_z(sign_x, sign_y)
     for sign_post_x in (-1.4, 1.4):
         _make_cyl_local(f"OTPark_SignPost_{sign_post_x:+.1f}",
                         (sign_x + sign_post_x, sign_y,
-                         park_z + 1.4),
+                         sign_ground + 1.4),
                         0.08, 2.8, COL_SIGN_BROWN, segments=4)
-    # Brown panel
     _make_box_local("OTPark_SignPanel",
-                    (sign_x, sign_y, park_z + 2.2),
+                    (sign_x, sign_y, sign_ground + 2.2),
                     (3.4, 0.15, 1.20), COL_SIGN_BROWN)
-    # Cream lettering area inset (Label3D will overlay text later)
     _make_box_local("OTPark_SignLetters",
-                    (sign_x, sign_y - 0.08, park_z + 2.2),
+                    (sign_x, sign_y - 0.08, sign_ground + 2.2),
                     (3.0, 0.06, 0.90), COL_SIGN_FACE)
 
     # ── 6 LAMPPOSTS along the radial paths · per-position z ──
@@ -1703,12 +1704,12 @@ def build_oliver_tree_memorial_park():
         scarf_color=(0.86, 0.78, 0.55, 1.0),
         with_ears=True,
     )
-    # Photographer on the TERRACE TOP — stays at park_z + 1.50
-    # because the terrace is built geometry, not heightmap.
+    # Photographer on the TERRACE TOP — sits on terrace_top_z
+    # (the real terrace top from mesh_z + 2 steps × 0.60 m).
     human_figure(
         name="OTPark_NPC_OnTerrace",
         base_x=sx - 2, base_y=sy + outer_r + 30 + 9,
-        base_z=park_z + 1.50,
+        base_z=terrace_top_z,
         scale=1.0, facing='-Y',
         hair_style='short', hair_color=(0.18, 0.18, 0.22, 1.0),
         jacket_color=(0.32, 0.42, 0.32, 1.0),
@@ -1732,16 +1733,17 @@ def build_oliver_tree_memorial_park():
         with_ears=True,
     )
 
-    # ── Beacon relocated to the park south entry ────────────
+    # ── Beacon at the park south entry · samples its own mesh_z
     beacon_x = sx
     beacon_y = sy - outer_r - 50
+    beacon_ground = mesh_z(beacon_x, beacon_y)
     BEACON_H = 35.0
     _make_cyl_local("OT_Beacon_Pole",
-                    (beacon_x, beacon_y, park_z + BEACON_H / 2),
+                    (beacon_x, beacon_y, beacon_ground + BEACON_H / 2),
                     0.20, BEACON_H, (0.10, 0.10, 0.10, 1.0),
                     segments=4)
     _make_box_local("OT_Beacon_Top",
-                    (beacon_x, beacon_y, park_z + BEACON_H + 1.2),
+                    (beacon_x, beacon_y, beacon_ground + BEACON_H + 1.2),
                     (2.2, 2.2, 2.2), COL_FLOWER_PINK)
 
 
