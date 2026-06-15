@@ -5513,6 +5513,85 @@ def _face_axis(facing):
     return (0.0, -1.0)
 
 
+def build_elementary_school():
+    """Harmony Creek Elementary — single-story school building
+    on the north edge of HarmonyPark settlement zone. 24 × 12 m
+    brick + cream with a small flag-bearing entry plaza.
+    """
+    es_cx, es_cy = -90.0, 160.0
+    es_z = mesh_z(es_cx, es_cy)
+    col_es_wall = (0.55, 0.32, 0.22, 1.0)
+    col_es_trim = (0.95, 0.92, 0.86, 1.0)
+    col_es_roof = (0.32, 0.30, 0.28, 1.0)
+    col_es_door = (0.20, 0.45, 0.20, 1.0)   # forest green
+    es_w, es_d, es_h = 24.0, 12.0, 4.5
+    es_t = 0.20
+    _make_box_local("ES_Slab",
+                    (es_cx, es_cy, es_z + 0.05),
+                    (es_w + 0.4, es_d + 0.4, 0.10), col_es_trim)
+    _make_box_local("ES_WallN",
+                    (es_cx, es_cy + es_d / 2 - es_t / 2,
+                     es_z + es_h / 2),
+                    (es_w, es_t, es_h), col_es_wall)
+    _make_box_local("ES_WallE",
+                    (es_cx + es_w / 2 - es_t / 2, es_cy,
+                     es_z + es_h / 2),
+                    (es_t, es_d, es_h), col_es_wall)
+    _make_box_local("ES_WallW",
+                    (es_cx - es_w / 2 + es_t / 2, es_cy,
+                     es_z + es_h / 2),
+                    (es_t, es_d, es_h), col_es_wall)
+    # South wall split for entry door
+    es_dw, es_dh = 3.0, 3.0
+    es_left = es_w / 2 - es_dw / 2
+    _make_box_local("ES_WallS_L",
+                    (es_cx - es_dw / 2 - es_left / 2,
+                     es_cy - es_d / 2 + es_t / 2,
+                     es_z + es_h / 2),
+                    (es_left, es_t, es_h), col_es_wall)
+    _make_box_local("ES_WallS_R",
+                    (es_cx + es_dw / 2 + es_left / 2,
+                     es_cy - es_d / 2 + es_t / 2,
+                     es_z + es_h / 2),
+                    (es_left, es_t, es_h), col_es_wall)
+    _make_box_local("ES_WallS_Header",
+                    (es_cx, es_cy - es_d / 2 + es_t / 2,
+                     es_z + es_dh + (es_h - es_dh) / 2),
+                    (es_dw, es_t, es_h - es_dh), col_es_wall)
+    _make_box_local("ES_Roof",
+                    (es_cx, es_cy, es_z + es_h + 0.10),
+                    (es_w + 0.4, es_d + 0.4, 0.20), col_es_roof)
+    # Door
+    for sgn in (-1, 1):
+        _make_box_local(f"ES_Door_{sgn:+d}",
+                        (es_cx + sgn * es_dw / 4,
+                         es_cy - es_d / 2 + 0.05,
+                         es_z + es_dh / 2),
+                        (es_dw / 2 - 0.10, 0.06, es_dh - 0.10),
+                        col_es_door)
+    # 6 windows along south face (3 each side)
+    for sgn in (-1, 1):
+        for k in range(3):
+            wx = es_cx + sgn * (es_dw / 2 + (k + 1) * 2.5)
+            if abs(wx) < (es_w / 2 - 0.5):
+                _make_box_local(f"ES_Window_{sgn:+d}_{k}",
+                                (wx, es_cy - es_d / 2 + 0.04,
+                                 es_z + 2.5),
+                                (1.4, 0.04, 1.4),
+                                (0.32, 0.42, 0.55, 1.0))
+    # Flagpole flanking the entry
+    fp_x = es_cx
+    fp_y = es_cy - es_d / 2 - 4.0
+    fp_z = mesh_z(fp_x, fp_y)
+    _make_cyl_local("ES_FlagPole",
+                    (fp_x, fp_y, fp_z + 4.0),
+                    0.08, 8.0, (0.62, 0.62, 0.64, 1.0), segments=6)
+    _make_box_local("ES_Banner",
+                    (fp_x + 0.40, fp_y, fp_z + 6.8),
+                    (0.80, 0.02, 0.60),
+                    (0.85, 0.20, 0.18, 1.0))
+
+
 def build_connector_roads():
     """Short link roads connecting each neighborhood to the new
     district arterials (Harmony Blvd N-S, Horizon Dr E-W). Each
@@ -7755,6 +7834,7 @@ def main():
     build_district_arterials()
     build_community_landmarks()
     build_connector_roads()
+    build_elementary_school()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
