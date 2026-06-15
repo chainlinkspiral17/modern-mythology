@@ -5513,6 +5513,143 @@ def _face_axis(facing):
     return (0.0, -1.0)
 
 
+def build_truck_stop():
+    """Big-rig truck stop east of the chapter-one commercial
+    cluster in the SouthComm settlement zone. Large fuelling
+    canopy spanning multiple lanes, a repair-shop building, and
+    a big asphalt lot with truck-sized stalls (no cars — just
+    the asphalt + striping).
+    """
+    cx, cy = 200.0, -380.0
+    ground_z = mesh_z(cx, cy)
+
+    # ── BIG REPAIR GARAGE — 30 × 12 × 6.5 m
+    col_g_wall = (0.62, 0.55, 0.45, 1.0)
+    col_g_door = (0.85, 0.82, 0.74, 1.0)
+    col_g_roof = (0.32, 0.30, 0.28, 1.0)
+    col_g_trim = (0.18, 0.18, 0.20, 1.0)
+    g_w, g_d, g_h = 30.0, 12.0, 6.5
+    g_t = 0.20
+    _make_box_local("TS_Garage_Slab",
+                    (cx, cy + 14.0, ground_z + 0.05),
+                    (g_w + 0.4, g_d + 0.4, 0.10), col_g_trim)
+    _make_box_local("TS_Garage_WallN",
+                    (cx, cy + 14.0 + g_d / 2 - g_t / 2,
+                     ground_z + g_h / 2),
+                    (g_w, g_t, g_h), col_g_wall)
+    _make_box_local("TS_Garage_WallE",
+                    (cx + g_w / 2 - g_t / 2, cy + 14.0,
+                     ground_z + g_h / 2),
+                    (g_t, g_d, g_h), col_g_wall)
+    _make_box_local("TS_Garage_WallW",
+                    (cx - g_w / 2 + g_t / 2, cy + 14.0,
+                     ground_z + g_h / 2),
+                    (g_t, g_d, g_h), col_g_wall)
+    # South wall — three BIG roll-up doors
+    bay_w = 6.0; bay_h = 5.0
+    bay_span = 3 * bay_w + 2 * 0.5
+    side_w = (g_w - bay_span) / 2
+    _make_box_local("TS_Garage_WallS_L",
+                    (cx - bay_span / 2 - side_w / 2,
+                     cy + 14.0 - g_d / 2 + g_t / 2,
+                     ground_z + g_h / 2),
+                    (side_w, g_t, g_h), col_g_wall)
+    _make_box_local("TS_Garage_WallS_R",
+                    (cx + bay_span / 2 + side_w / 2,
+                     cy + 14.0 - g_d / 2 + g_t / 2,
+                     ground_z + g_h / 2),
+                    (side_w, g_t, g_h), col_g_wall)
+    _make_box_local("TS_Garage_WallS_Header",
+                    (cx, cy + 14.0 - g_d / 2 + g_t / 2,
+                     ground_z + bay_h + (g_h - bay_h) / 2),
+                    (bay_span, g_t, g_h - bay_h), col_g_wall)
+    # 3 garage doors
+    for k in range(3):
+        bx = cx - bay_span / 2 + (k + 0.5) * (bay_w + 0.5)
+        _make_box_local(f"TS_Garage_BayDoor_{k}",
+                        (bx, cy + 14.0 - g_d / 2 + 0.05,
+                         ground_z + bay_h / 2),
+                        (bay_w, 0.06, bay_h), col_g_door)
+    _make_box_local("TS_Garage_Roof",
+                    (cx, cy + 14.0, ground_z + g_h + 0.10),
+                    (g_w + 0.4, g_d + 0.4, 0.20), col_g_roof)
+
+    # ── FUELLING CANOPY · big steel structure with 6 lanes
+    can_cx = cx
+    can_cy = cy - 8.0
+    can_w = 36.0
+    can_d = 14.0
+    can_h = 6.5
+    COL_CAN_STEEL = (0.92, 0.92, 0.90, 1.0)
+    COL_CAN_ROOF = (0.32, 0.42, 0.55, 1.0)
+    # 8 columns (2 rows x 4 columns)
+    for ix in (-can_w/2 + 0.5, -can_w/4, can_w/4, can_w/2 - 0.5):
+        for iy in (-can_d/2 + 0.5, can_d/2 - 0.5):
+            _make_cyl_local(
+                f"TS_CanopyCol_{int(ix*10)}_{int(iy*10)}",
+                (can_cx + ix, can_cy + iy,
+                 ground_z + can_h / 2),
+                0.22, can_h, COL_CAN_STEEL, segments=6)
+    # Canopy slab
+    _make_box_local("TS_CanopyRoof",
+                    (can_cx, can_cy, ground_z + can_h + 0.20),
+                    (can_w + 0.6, can_d + 0.6, 0.40),
+                    COL_CAN_ROOF)
+    # 3 pump islands under the canopy
+    for k, ix in enumerate((-can_w/4, 0, can_w/4)):
+        _make_box_local(f"TS_PumpPad_{k}",
+                        (can_cx + ix, can_cy, ground_z + 0.10),
+                        (1.8, 8.0, 0.20),
+                        (0.72, 0.70, 0.66, 1.0))
+        # 2 pumps per island
+        for sgn_y, tag_y in ((-1, "S"), (1, "N")):
+            _make_box_local(f"TS_PumpBody_{k}_{tag_y}",
+                            (can_cx + ix, can_cy + sgn_y * 2.0,
+                             ground_z + 1.10),
+                            (0.80, 0.50, 1.80),
+                            (0.95, 0.94, 0.90, 1.0))
+            _make_box_local(f"TS_PumpDisplay_{k}_{tag_y}",
+                            (can_cx + ix, can_cy + sgn_y * 2.0,
+                             ground_z + 2.15),
+                            (0.70, 0.42, 0.30),
+                            (0.20, 0.22, 0.28, 1.0))
+
+    # ── BIG ASPHALT TRUCK LOT south of the canopy
+    lot_cy = cy - 28.0
+    lot_w = 50.0
+    lot_d = 14.0
+    sv = []
+    for (lx, ly) in [(cx - lot_w/2, lot_cy - lot_d/2),
+                     (cx + lot_w/2, lot_cy - lot_d/2),
+                     (cx + lot_w/2, lot_cy + lot_d/2),
+                     (cx - lot_w/2, lot_cy + lot_d/2)]:
+        sv.append((lx, ly, mesh_z(lx, ly) + 0.04))
+    _finalize_mesh("TS_TruckLot", sv, [[0, 1, 2, 3]],
+                    (0.22, 0.22, 0.24, 1.0))
+    # Truck-size striping (~ 4 m wide each, for 12 stalls)
+    for k in range(11):
+        sx = cx - lot_w/2 + (k + 1) * (lot_w / 12)
+        cv = []
+        for (lx, ly) in [(sx - 0.06, lot_cy - lot_d/2 + 0.3),
+                          (sx + 0.06, lot_cy - lot_d/2 + 0.3),
+                          (sx + 0.06, lot_cy + lot_d/2 - 0.3),
+                          (sx - 0.06, lot_cy + lot_d/2 - 0.3)]:
+            cv.append((lx, ly, mesh_z(lx, ly) + 0.055))
+        _finalize_mesh(f"TS_LotStripe_{k}", cv, [[0, 1, 2, 3]],
+                        (0.92, 0.90, 0.84, 1.0))
+
+    # ── PYLON SIGN visible from afar
+    pyl_x = cx - lot_w/2 - 6.0
+    pyl_y = cy - 8.0
+    pyl_z = mesh_z(pyl_x, pyl_y)
+    _make_cyl_local("TS_PylonPole",
+                    (pyl_x, pyl_y, pyl_z + 5.0),
+                    0.30, 10.0, COL_CAN_STEEL, segments=6)
+    _make_box_local("TS_PylonSign",
+                    (pyl_x, pyl_y, pyl_z + 9.5),
+                    (4.0, 0.18, 2.4), COL_CAN_ROOF)
+
+
 def build_elementary_school():
     """Harmony Creek Elementary — single-story school building
     on the north edge of HarmonyPark settlement zone. 24 × 12 m
@@ -7835,6 +7972,7 @@ def main():
     build_community_landmarks()
     build_connector_roads()
     build_elementary_school()
+    build_truck_stop()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
