@@ -556,17 +556,18 @@ def build_creek():
         dx = x1 - x0; dy = y1 - y0
         ang = math.atan2(dy, dx)
         perp_x = -math.sin(ang); perp_y = math.cos(ang)
-        # Per-corner z = mesh_z at that corner - 0.6 m. Caps the
-        # water surface at no more than (channel floor - 0.6) so
-        # it never floats above terrain even where the channel is
-        # shallow or runs through a settlement zone.
+        # Per-corner z = mesh_z at that corner + 0.05 m so the
+        # water surface sits JUST ABOVE the carved channel floor
+        # (visible, no z-fighting) while staying well below the
+        # surrounding flood-plain bank tops (50 m away, well
+        # outside our 1.8 m-from-centerline corner sample).
         corners = [
             (x0 - perp_x * width / 2, y0 - perp_y * width / 2),
             (x1 - perp_x * width / 2, y1 - perp_y * width / 2),
             (x1 + perp_x * width / 2, y1 + perp_y * width / 2),
             (x0 + perp_x * width / 2, y0 + perp_y * width / 2),
         ]
-        verts = [(vx, vy, mesh_z(vx, vy) - 0.60)
+        verts = [(vx, vy, mesh_z(vx, vy) + 0.05)
                   for (vx, vy) in corners]
         _finalize_mesh(f"Creek_Water_{i}", verts, [[0, 1, 2, 3]],
                        COL_CREEK_WATER)
