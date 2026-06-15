@@ -288,31 +288,40 @@ ROAD_CORRIDORS = [
     # ── HORIZON DRIVE · E-W arterial. From WestComm (-2) east to
     # EastComm (+5), threading through Harmony Park (0) and crossing
     # Harmony Blvd at the central junction (0).
+    # FLAT through each settlement; ramps only in transition strips.
     ("HorizonDr", [
+        # WestComm zone (x=-560..-460 -2): flat at -2
         (-560,  -20,  -2.0),
         (-510,  -20,  -2.0),
         (-460,  -20,  -2.0),   # WestComm boundary
-        (-420,  -17,  -2.0),
-        (-380,  -15,  -1.5),
-        (-330,  -12,  -1.0),
-        (-280,  -10,   0.0),   # south of OT Park
-        (-230,  -15,   0.5),
-        (-180,  -20,   1.0),   # HarmonyPark south edge
-        (-130,  -25,   1.0),   # in HarmonyPark
-        ( -80,  -30,   1.0),
-        ( -40,  -30,   1.0),
-        (  10,  -25,   1.0),
-        (  60,  -20,   1.0),   # junction with Harmony Blvd
-        ( 110,  -15,   1.5),
-        ( 160,  -10,   2.0),   # approaching ECDS/HS field
-        ( 210,  -10,   2.5),
-        ( 260,  -10,   3.0),   # HSField target +3
-        ( 320,   -5,   4.0),
-        ( 380,    0,   5.0),
-        ( 440,    0,   5.0),   # EastComm
-        ( 510,    0,   5.0),
-        ( 560,    0,   5.0),
-    ], 8.5, 24.0),
+        # WestComm -> HarmonyPark transition (x=-460..-180, -2 -> +1)
+        # 280m for a 3m change = 1.1% grade
+        (-420,  -20,  -1.6),
+        (-360,  -18,  -1.0),
+        (-300,  -15,  -0.3),
+        (-240,  -18,  +0.5),
+        # HarmonyPark zone (x=-120..180, y=-40..200 +1): flat at +1
+        (-180,  -20,  +1.0),   # HarmonyPark south edge
+        (-130,  -25,  +1.0),
+        ( -80,  -30,  +1.0),
+        ( -40,  -30,  +1.0),
+        (  10,  -25,  +1.0),
+        (  60,  -20,  +1.0),   # junction with Harmony Blvd
+        ( 110,  -15,  +1.5),
+        ( 160,  -10,  +2.0),   # HarmonyPark east edge transition
+        # HSField zone (x=200..480, y=-130..110 +3): flat at +3
+        ( 210,  -10,  +3.0),
+        ( 260,  -10,  +3.0),
+        ( 320,   -5,  +3.0),
+        ( 380,    0,  +3.0),
+        # HSField -> EastComm transition (x=380..480, +3 -> +5)
+        # 100m for 2m = 2% grade
+        ( 420,    0,  +4.0),
+        ( 460,    0,  +5.0),
+        # EastComm zone (x=440..540 +5): flat at +5
+        ( 510,    0,  +5.0),
+        ( 560,    0,  +5.0),
+    ], 8.5, 22.0),
 
     # ── CONNECTOR ROADS · short 5 m collectors. full-grade half-width
     # smaller because the road is narrower.
