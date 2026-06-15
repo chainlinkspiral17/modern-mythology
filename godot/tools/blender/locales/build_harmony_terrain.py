@@ -6047,6 +6047,89 @@ def build_water_tower_and_lines():
                 radius=0.05, color=(0.08, 0.08, 0.08, 1.0))
 
 
+def build_church_lot_and_school_playground():
+    """Church parking lot west of the church + a small fenced
+    playground area south of the elementary school.
+    """
+    # Church parking lot at (-50, 140) — west of the church
+    # (church at (-30, 140))
+    _build_parking_lot("Church", -55.0, 140.0,
+                        lot_w=20.0, lot_d=16.0,
+                        ground_z=mesh_z(-55.0, 140.0),
+                        building_y_north=140.0,
+                        car_palette=[
+                            (0.85, 0.20, 0.18, 1.0),
+                            (0.62, 0.62, 0.64, 1.0),
+                            (0.18, 0.32, 0.55, 1.0),
+                            (0.32, 0.55, 0.25, 1.0),
+                            (0.78, 0.74, 0.66, 1.0),
+                        ],
+                        n_handicap=1)
+
+    # ── ELEMENTARY SCHOOL PLAYGROUND south of the school at
+    # (-90, 145). School is at (-90, 160).
+    pg_cx, pg_cy = -90.0, 142.0
+    pg_z = mesh_z(pg_cx, pg_cy)
+    col_grass = (0.30, 0.55, 0.25, 1.0)
+    col_rubber = (0.42, 0.32, 0.22, 1.0)
+    col_red = (0.85, 0.20, 0.18, 1.0)
+    col_blue = (0.18, 0.32, 0.55, 1.0)
+    col_yellow = (0.95, 0.85, 0.30, 1.0)
+    col_steel = (0.62, 0.62, 0.64, 1.0)
+    # Rubber play surface
+    _make_box_local("ES_Playground_Surface",
+                    (pg_cx, pg_cy, pg_z + 0.04),
+                    (20.0, 10.0, 0.08), col_rubber)
+    # Chain-link fence corner posts
+    for sgn_x in (-1, 1):
+        for sgn_y in (-1, 1):
+            fx = pg_cx + sgn_x * 10.2
+            fy = pg_cy + sgn_y * 5.2
+            fz = mesh_z(fx, fy)
+            _make_cyl_local(
+                f"ES_PG_FencePost_{sgn_x:+d}_{sgn_y:+d}",
+                (fx, fy, fz + 1.0),
+                0.05, 2.0, col_steel, segments=4)
+    # Climbing structure (cube with poles)
+    cs_x = pg_cx - 5.0
+    cs_y = pg_cy
+    for sgn_x in (-1, 1):
+        for sgn_y in (-1, 1):
+            _make_cyl_local(
+                f"ES_PG_ClimberPost_{sgn_x:+d}_{sgn_y:+d}",
+                (cs_x + sgn_x * 1.5, cs_y + sgn_y * 1.5,
+                 pg_z + 1.2),
+                0.10, 2.4, col_red, segments=4)
+    # Top platform
+    _make_box_local("ES_PG_ClimberTop",
+                    (cs_x, cs_y, pg_z + 2.30),
+                    (3.2, 3.2, 0.10), col_yellow)
+    # Slide off the east side
+    _make_box_local("ES_PG_Slide",
+                    (cs_x + 2.5, cs_y, pg_z + 1.2),
+                    (2.5, 0.7, 0.06), col_blue)
+    # Monkey bars frame east of the climber
+    mb_x = pg_cx + 4.0
+    mb_y = pg_cy
+    for sgn in (-1, 1):
+        _make_cyl_local(f"ES_PG_MonkeyPost_{sgn:+d}",
+                        (mb_x + sgn * 2.0, mb_y, pg_z + 1.2),
+                        0.08, 2.4, col_steel, segments=4)
+    _make_box_local("ES_PG_MonkeyTop",
+                    (mb_x, mb_y, pg_z + 2.4),
+                    (4.0, 0.10, 0.10), col_steel)
+    # 3 swinging bars hanging under
+    for k, x_off in enumerate((-1.2, 0, 1.2)):
+        _make_cyl_local(f"ES_PG_MonkeyRung_{k}",
+                        (mb_x + x_off, mb_y, pg_z + 2.3),
+                        0.04, 0.30, col_steel, segments=4)
+    # Sand pit south of climber
+    _make_box_local("ES_PG_SandPit",
+                    (pg_cx, pg_cy - 3.0, pg_z + 0.06),
+                    (6.0, 3.0, 0.10),
+                    (0.90, 0.82, 0.62, 1.0))
+
+
 def build_church_cemetery():
     """Small graveyard beside the church on Harmony Boulevard.
     24 headstones in a regular grid, a wrought-iron fence
@@ -9212,6 +9295,7 @@ def main():
     build_arterial_lighting()
     build_arterial_trees()
     build_church_cemetery()
+    build_church_lot_and_school_playground()
     build_water_tower_and_lines()
     build_halsey_studios()
     build_hospital()
