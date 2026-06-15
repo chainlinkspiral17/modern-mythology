@@ -175,13 +175,16 @@ SETTLEMENTS = [
     ("OTSkatePark",       -300, -260, 65, 100, -0.5, 0.90),
     # Harmony Creek High School football field + stadium platform
     # — large flat zone east of Phase 2 (between Phase 2 and the
-    # East Commercial strip) for the field + bleachers.
-    ("HighSchoolField", 240, 440, -100, 0, +3.0, 0.88),
-    # NexCorp HQ pad on the North Commercial belt — tighter +
-    # higher flatness so the office tower foundation is dead-flat.
-    ("NexCorpHQPad",    -30,  30, 270, 330, +14.0, 0.95),
+    # East Commercial strip) for the field + bleachers. Expanded
+    # to cover the track ring and end zones (total ~80 x 150 m,
+    # rather than the field alone).
+    ("HighSchoolField", 200, 480, -130, 30, +3.0, 0.88),
+    # NexCorp HQ pad on the North Commercial belt — covers
+    # plaza, reflecting pool, hedges, parking lot and flagpoles
+    # (lot extends to y=264, pool to y=283).
+    ("NexCorpHQPad",    -35,  35, 255, 335, +14.0, 0.95),
     # SCRATCH night-club pad on West Commercial Highway 9
-    ("NightClubPad",   -530, -490, -20, 20, -2.0, 0.95),
+    ("NightClubPad",   -530, -490, -22, 20, -2.0, 0.95),
     # Chapter-one commercial block pads — nested inside the
     # broader SouthComm belt so each building footprint is locally
     # flat regardless of the parent zone's residual wild-zone
@@ -5384,13 +5387,16 @@ def build_phase2_neighborhood():
                          (x0 + perp_x * hw, y0 + perp_y * hw)]:
             rv.append((rx, ry, mesh_z(rx, ry) + 0.04))
         _finalize_mesh(f"P2Road_{i}", rv, [[0, 1, 2, 3]], COL_ROAD)
-        # Curb strips on each side
+        # Curb strips on each side · inner edge flush with road
+        # edge at hw, outer edge at hw + curb_w. Previous code
+        # used (hw + curb_w/2) for the inner edge, leaving a
+        # 0.25 m visible gap between road and curb.
         for sgn in (-1, 1):
             cv = []
-            for (rx, ry) in [(x0 + sgn * perp_x * (hw + curb_w / 2),
-                              y0 + sgn * perp_y * (hw + curb_w / 2)),
-                             (x1 + sgn * perp_x * (hw + curb_w / 2),
-                              y1 + sgn * perp_y * (hw + curb_w / 2)),
+            for (rx, ry) in [(x0 + sgn * perp_x * hw,
+                              y0 + sgn * perp_y * hw),
+                             (x1 + sgn * perp_x * hw,
+                              y1 + sgn * perp_y * hw),
                              (x1 + sgn * perp_x * (hw + curb_w),
                               y1 + sgn * perp_y * (hw + curb_w)),
                              (x0 + sgn * perp_x * (hw + curb_w),
