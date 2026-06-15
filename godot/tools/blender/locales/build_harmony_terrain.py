@@ -10125,6 +10125,7 @@ def build_district_arterials():
     hw = road_w / 2
 
     COL_CURB = (0.78, 0.74, 0.66, 1.0)
+    COL_EDGE = (0.95, 0.92, 0.84, 1.0)         # white edge line
     curb_w = 0.5
 
     def _emit_arterial(pts, prefix, with_centerline=True):
@@ -10159,6 +10160,24 @@ def build_district_arterials():
                     cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
                 _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
                                 [[0, 1, 2, 3]], COL_CURB)
+                # Solid white edge line · 0.10 m wide, just inside
+                # the curb. Helps drivers see lane edges at night.
+                ev = []
+                edge_off = hw - 0.15
+                edge_w = 0.10
+                for (rx, ry) in [
+                    (x0 + sgn * perp_x * (edge_off - edge_w/2),
+                     y0 + sgn * perp_y * (edge_off - edge_w/2)),
+                    (x1 + sgn * perp_x * (edge_off - edge_w/2),
+                     y1 + sgn * perp_y * (edge_off - edge_w/2)),
+                    (x1 + sgn * perp_x * (edge_off + edge_w/2),
+                     y1 + sgn * perp_y * (edge_off + edge_w/2)),
+                    (x0 + sgn * perp_x * (edge_off + edge_w/2),
+                     y0 + sgn * perp_y * (edge_off + edge_w/2)),
+                ]:
+                    ev.append((rx, ry, mesh_z(rx, ry) + 0.045))
+                _finalize_mesh(f"{prefix}EdgeLine_{i}_{sgn:+d}", ev,
+                                [[0, 1, 2, 3]], COL_EDGE)
             if with_centerline:
                 # 3 dashes per segment evenly spaced
                 for d in range(3):
