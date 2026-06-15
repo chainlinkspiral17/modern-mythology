@@ -3023,15 +3023,21 @@ def _build_parked_car(name, cx, cy, ground_z, body_color,
                      ground_z + wheel_r + body_h + cab_h * 0.65),
                     (car_w - 0.10, car_l * 0.55 - 0.10, cab_h * 0.45),
                     col_window)
-    # Four wheels
+    # Four wheels — boxes shaped like tires (thin along x, tall +
+    # long enough to read as a wheel from the side). The cylinder
+    # helper only does vertical-axis cylinders so a flat tire-
+    # silhouette box is the cleanest substitute.
+    tire_w = 0.22
+    tire_d = wheel_r * 1.9         # diameter-ish along car length
+    tire_h = wheel_r * 1.9
     for wx_sgn in (-1, 1):
         for wy_sgn, wy_off in ((-1, -car_l * 0.32), (1, car_l * 0.32)):
-            _make_cyl_local(f"{name}_Wheel_{wx_sgn:+d}_{wy_sgn:+d}",
-                            (cx + wx_sgn * (car_w / 2 - 0.08),
+            _make_box_local(f"{name}_Wheel_{wx_sgn:+d}_{wy_sgn:+d}",
+                            (cx + wx_sgn * (car_w / 2 - tire_w / 2 + 0.02),
                              cy + wy_off,
-                             ground_z + wheel_r),
-                            wheel_r, 0.20,
-                            col_wheel, segments=6)
+                             ground_z + tire_h / 2),
+                            (tire_w, tire_d, tire_h),
+                            col_wheel)
     # Headlights / taillights — small coloured boxes at the ends
     front_end = car_l / 2 if facing == '+Y' else -car_l / 2
     rear_end  = -car_l / 2 if facing == '+Y' else car_l / 2
