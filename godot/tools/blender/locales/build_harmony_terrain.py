@@ -3454,6 +3454,57 @@ def build_commercial_cluster():
             dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
         _finalize_mesh(f"CommRoad_Dash_{k}", dv, [[0, 1, 2, 3]],
                        COL_CENTERLINE)
+    # ── SHOPPING CART CORRAL in the Kwik Stop lot — a steel
+    # rectangle of low rails with 3 nested carts inside. Sits at
+    # the SE corner of the lot so cars approach it on their way
+    # to the road.
+    co_x = ks_x + 9.0
+    co_y = ks_y - 17.0 + 5.0   # north end of the lot at lot_y + lot_d/2
+    co_z = mesh_z(co_x, co_y)
+    COL_CORRAL = (0.62, 0.62, 0.64, 1.0)
+    COL_CART_FRAME = (0.62, 0.62, 0.64, 1.0)
+    COL_CART_BASKET = (0.85, 0.85, 0.82, 1.0)
+    # Four corner posts + two side rails (E and W)
+    for sgn_x in (-1, 1):
+        _make_box_local(f"KwikStop_Corral_Post_F_{sgn_x:+d}",
+                        (co_x + sgn_x * 0.55, co_y - 1.4,
+                         co_z + 0.50),
+                        (0.06, 0.06, 1.00), COL_CORRAL)
+        _make_box_local(f"KwikStop_Corral_Post_B_{sgn_x:+d}",
+                        (co_x + sgn_x * 0.55, co_y + 1.4,
+                         co_z + 0.50),
+                        (0.06, 0.06, 1.00), COL_CORRAL)
+        _make_box_local(f"KwikStop_Corral_Rail_{sgn_x:+d}",
+                        (co_x + sgn_x * 0.55, co_y,
+                         co_z + 0.85),
+                        (0.06, 2.8, 0.06), COL_CORRAL)
+    # 3 carts inside, nested front-to-back
+    for k in range(3):
+        cx_c = co_x
+        cy_c = co_y - 0.9 + k * 0.4
+        # Basket — open box on top
+        _make_box_local(f"KwikStop_Cart_{k}_Basket",
+                        (cx_c, cy_c, co_z + 0.55),
+                        (0.50, 0.70, 0.30), COL_CART_BASKET)
+        # Handle bar at the back
+        _make_box_local(f"KwikStop_Cart_{k}_Handle",
+                        (cx_c, cy_c + 0.40, co_z + 0.90),
+                        (0.50, 0.04, 0.06), COL_CART_FRAME)
+        # Front wheel pair (small dark boxes)
+        for sgn_w in (-1, 1):
+            _make_box_local(
+                f"KwikStop_Cart_{k}_Wheel_F_{sgn_w:+d}",
+                (cx_c + sgn_w * 0.20, cy_c - 0.30,
+                 co_z + 0.08),
+                (0.08, 0.10, 0.16),
+                (0.10, 0.10, 0.12, 1.0))
+            _make_box_local(
+                f"KwikStop_Cart_{k}_Wheel_B_{sgn_w:+d}",
+                (cx_c + sgn_w * 0.20, cy_c + 0.30,
+                 co_z + 0.08),
+                (0.08, 0.10, 0.16),
+                (0.10, 0.10, 0.12, 1.0))
+
     # ── UTILITY POLES with horizontal crossbar + dropped power
     # lines spanning between them. Five poles along the south edge
     # of the road (across from the storefronts), with thin black
