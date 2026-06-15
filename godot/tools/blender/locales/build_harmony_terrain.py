@@ -3429,6 +3429,59 @@ def build_commercial_cluster():
             dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
         _finalize_mesh(f"CommRoad_Dash_{k}", dv, [[0, 1, 2, 3]],
                        COL_CENTERLINE)
+    # ── UTILITY POLES with horizontal crossbar + dropped power
+    # lines spanning between them. Five poles along the south edge
+    # of the road (across from the storefronts), with thin black
+    # lines between adjacent pole crossbars.
+    COL_POLE_WOOD = (0.42, 0.32, 0.22, 1.0)
+    COL_POLE_BAR  = (0.32, 0.28, 0.20, 1.0)
+    COL_POWER_LINE = (0.08, 0.08, 0.08, 1.0)
+    UTIL_POLE_H = 9.0
+    pole_xs = [nc_x - 30, nc_x + 5, ks_x + 5, cc_x - 5, cc_x + 22]
+    pole_y = road_y - hwr - 4.0     # south of the road
+    pole_positions = []
+    for k, ux in enumerate(pole_xs):
+        uz = mesh_z(ux, pole_y)
+        _make_cyl_local(f"CommUtilPole_{k}",
+                        (ux, pole_y, uz + UTIL_POLE_H / 2),
+                        0.18, UTIL_POLE_H,
+                        COL_POLE_WOOD, segments=6)
+        # Horizontal crossbar
+        _make_box_local(f"CommUtilPoleBar_{k}",
+                        (ux, pole_y, uz + UTIL_POLE_H - 0.30),
+                        (2.2, 0.16, 0.16), COL_POLE_BAR)
+        # Three insulator stubs on top of the bar
+        for sgn_off in (-0.9, 0.0, 0.9):
+            _make_cyl_local(f"CommUtilIns_{k}_{int(sgn_off*10):+d}",
+                            (ux + sgn_off, pole_y,
+                             uz + UTIL_POLE_H - 0.10),
+                            0.05, 0.20,
+                            (0.88, 0.84, 0.72, 1.0), segments=4)
+        pole_positions.append((ux, pole_y, uz + UTIL_POLE_H - 0.05))
+    # Power lines between adjacent poles — one line per insulator
+    # stub offset (-0.9, 0.0, 0.9). Each line approximated by a
+    # very thin long box drooping slightly at the midpoint.
+    for k in range(len(pole_positions) - 1):
+        x0, y0, z0 = pole_positions[k]
+        x1, y1, z1 = pole_positions[k + 1]
+        for off in (-0.9, 0.0, 0.9):
+            span = math.hypot(x1 - x0, y1 - y0)
+            mid_x = (x0 + x1) / 2
+            mid_y = (y0 + y1) / 2 + off / 1.0    # tiny stagger? skip
+            mid_z = (z0 + z1) / 2 - 0.50         # sag
+            # Use _build_oriented_handle to make a line from (x0,
+            # y0+off, z0) sagging to mid and on to (x1, y1+off, z1)
+            _build_oriented_handle(
+                f"CommPowerLine_{k}_{int(off*10):+d}_A",
+                (x0 + off, y0, z0),
+                (mid_x + off, mid_y, mid_z),
+                radius=0.025, color=COL_POWER_LINE)
+            _build_oriented_handle(
+                f"CommPowerLine_{k}_{int(off*10):+d}_B",
+                (mid_x + off, mid_y, mid_z),
+                (x1 + off, y1, z1),
+                radius=0.025, color=COL_POWER_LINE)
+
     # ── STREET TREES planted in sidewalk cutouts between the
     # stores. Five mid-sized oaks at locations that don't collide
     # with benches, lampposts, phone booth, or the news rack.
