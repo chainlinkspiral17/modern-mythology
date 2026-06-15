@@ -8735,6 +8735,33 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                                 0.07, 0.10,
                                 col_lid_dark, segments=4)
 
+    # ── XERISCAPE LANDSCAPE ROCKS · 1-3 accent boulders in the
+    # front yard on ~30% of houses. Texas hill-country / drought-
+    # tolerant front-yard staple. Boulders are squat spheres in
+    # warm-grey limestone tones.
+    seed_rock = (int(cx * 23) + int(cy * 17)) % 100
+    if seed_rock < 30:
+        boulder_palette = [
+            (0.62, 0.58, 0.50, 1.0),    # warm limestone
+            (0.55, 0.50, 0.45, 1.0),    # darker limestone
+            (0.72, 0.68, 0.58, 1.0),    # cream limestone
+        ]
+        n_rocks = 1 + (seed_rock % 3)   # 1-3 rocks
+        for r in range(n_rocks):
+            rseed = (seed_rock + r * 11) % 100
+            # Place rocks scattered in the yard but not on the walk
+            r_along = -2.0 + (rseed % 5) * 1.4
+            r_out = 2.5 + ((rseed // 5) % 4) * 0.9
+            rx = front_mid_x - fx * r_out + perp_x * r_along
+            ry = front_mid_y - fy * r_out + perp_y * r_along
+            r_size = 0.40 + (rseed % 5) * 0.10
+            r_col = boulder_palette[rseed % len(boulder_palette)]
+            _make_sphere_low_local(
+                f"{name}_Boulder_{r}",
+                (rx, ry, ground_z + r_size * 0.50),
+                r_size, r_col,
+                rings=2, segments=6)
+
 
 def _build_driveway(name, house_cx, house_cy, ground_z, facing,
                      curb_x, curb_y, color=(0.18, 0.18, 0.20, 1.0)):
