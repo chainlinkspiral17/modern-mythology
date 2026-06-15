@@ -1604,13 +1604,16 @@ What still feels primitive (next pass targets):
 - House wall color variation within a neighborhood. Currently
   cycles through 4-5 palettes; could be expanded to 10-15
   with seasonal accent variation.
-- Commercial roof HVAC units (rectangular A/C condensers on
-  flat commercial roofs). Visible from above.
 - Driveway curb cuts (flared concrete apron where driveway
   meets road). Currently driveways T-bone the curb.
 - Sidewalk seam joints on residential walks.
 - More variety in commercial signage (lit channel letters,
   banner signs on smaller storefronts).
+- Commercial loading docks / dumpsters more thoroughly placed.
+
+Commercial rooftop HVAC + vents + ducts: DONE this session
+(see build_commercial_rooftop_mech). Most visible-from-above
+"this is a real commercial building" tell.
 
 ### TEMPLATE for next session
 
