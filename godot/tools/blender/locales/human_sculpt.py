@@ -677,70 +677,124 @@ def _build_head(name, base_x, base_y, head_base_z, s,
                  (gx + 0.001, gy, gz + head_d * 0.05),
                  (0.04, head_d * 0.10, head_d * 0.04),
                  sunglasses_color)
-    # Mouth — small horizontal mouth line below the glasses
-    if with_mouth:
-        fwd_x, fwd_y = _face_axis(facing)
-        mx = base_x + fwd_x * (head_r * 0.95 + 0.005)
-        my = base_y + fwd_y * (head_r * 0.95 + 0.005)
-        mz = head_cz - head_r * 0.30
+    # FACIAL FEATURES · always present now (no more with_mouth gate).
+    # Every face gets: eyes (visible even behind sunglasses), nose,
+    # mouth/lips, eyebrows. Real PS2-era characters always had a
+    # face — the absence was leaving figures looking blank.
+    fwd_x, fwd_y = _face_axis(facing)
+
+    # EYES (always) — two small dark dots on the face. Visible even
+    # without sunglasses; sunglasses lens covers them but the
+    # bottom edge peeks.
+    if not has_sunglasses:
+        eye_offset = head_d * 0.22
+        side_x_e = -fwd_y; side_y_e = fwd_x
+        eye_z = head_cz + head_r * 0.10
+        for eye_side, eye_sign in (('L', -1), ('R', +1)):
+            ex = base_x + side_x_e * eye_offset * eye_sign \
+                 + fwd_x * (head_r * 0.95)
+            ey = base_y + side_y_e * eye_offset * eye_sign \
+                 + fwd_y * (head_r * 0.95)
+            # White sclera
+            _sphere_low(f"{name}_Eye_{eye_side}",
+                        (ex, ey, eye_z), head_d * 0.07,
+                        (0.96, 0.94, 0.90, 1.0),
+                        rings=3, segments=6)
+            # Dark pupil
+            _sphere_low(f"{name}_Pupil_{eye_side}",
+                        (ex + fwd_x * 0.01, ey + fwd_y * 0.01, eye_z),
+                        head_d * 0.035,
+                        (0.10, 0.08, 0.06, 1.0),
+                        rings=2, segments=6)
+
+    # NOSE · pyramidal nub centered between eyes and mouth
+    nz = head_cz - head_r * 0.08
+    nx = base_x + fwd_x * (head_r * 0.98 + 0.008)
+    ny = base_y + fwd_y * (head_r * 0.98 + 0.008)
+    if abs(fwd_y) > abs(fwd_x):
+        _box(f"{name}_Nose",
+             (nx, ny, nz),
+             (head_d * 0.14, 0.05, head_d * 0.18),
+             skin_color)
+        # Nostril shadow (thin dark strip under the nose)
+        _box(f"{name}_NoseShadow",
+             (nx, ny, nz - head_d * 0.09),
+             (head_d * 0.10, 0.04, head_d * 0.025),
+             (skin_color[0] * 0.55, skin_color[1] * 0.55,
+              skin_color[2] * 0.55, 1.0))
+    else:
+        _box(f"{name}_Nose",
+             (nx, ny, nz),
+             (0.05, head_d * 0.14, head_d * 0.18),
+             skin_color)
+        _box(f"{name}_NoseShadow",
+             (nx, ny, nz - head_d * 0.09),
+             (0.04, head_d * 0.10, head_d * 0.025),
+             (skin_color[0] * 0.55, skin_color[1] * 0.55,
+              skin_color[2] * 0.55, 1.0))
+
+    # MOUTH / LIPS · two-tone (darker lower lip + lighter upper)
+    mz_mouth = head_cz - head_r * 0.30
+    mx = base_x + fwd_x * (head_r * 0.95 + 0.005)
+    my = base_y + fwd_y * (head_r * 0.95 + 0.005)
+    upper_lip_col = mouth_color
+    lower_lip_col = (mouth_color[0] * 0.78, mouth_color[1] * 0.78,
+                     mouth_color[2] * 0.78, mouth_color[3])
+    if abs(fwd_y) > abs(fwd_x):
+        # Upper lip
+        _box(f"{name}_UpperLip",
+             (mx, my, mz_mouth + head_d * 0.025),
+             (head_d * 0.34, 0.02, head_d * 0.05),
+             upper_lip_col)
+        # Lower lip (darker, slightly wider)
+        _box(f"{name}_LowerLip",
+             (mx, my, mz_mouth - head_d * 0.025),
+             (head_d * 0.36, 0.02, head_d * 0.055),
+             lower_lip_col)
+    else:
+        _box(f"{name}_UpperLip",
+             (mx, my, mz_mouth + head_d * 0.025),
+             (0.02, head_d * 0.34, head_d * 0.05),
+             upper_lip_col)
+        _box(f"{name}_LowerLip",
+             (mx, my, mz_mouth - head_d * 0.025),
+             (0.02, head_d * 0.36, head_d * 0.055),
+             lower_lip_col)
+
+    # EYEBROWS · always present
+    eb_z = head_cz + head_r * 0.28
+    ebx = base_x + fwd_x * (head_r * 0.95 + 0.005)
+    eby = base_y + fwd_y * (head_r * 0.95 + 0.005)
+    for side, sign in (('L', -1), ('R', +1)):
+        perp_x = -fwd_y; perp_y = fwd_x
+        ox = perp_x * head_d * 0.20 * sign
+        oy = perp_y * head_d * 0.20 * sign
         if abs(fwd_y) > abs(fwd_x):
-            _box(f"{name}_Mouth",
-                 (mx, my, mz),
-                 (head_d * 0.35, 0.02, head_d * 0.10),
-                 mouth_color)
+            _box(f"{name}_Eyebrow_{side}",
+                 (ebx + ox, eby + oy, eb_z),
+                 (head_d * 0.22, 0.025, head_d * 0.05),
+                 hair_color)
         else:
-            _box(f"{name}_Mouth",
-                 (mx, my, mz),
-                 (0.02, head_d * 0.35, head_d * 0.10),
-                 mouth_color)
-        # NOSE · small skin nub between glasses and mouth
-        nz = head_cz - head_r * 0.08
-        nx = base_x + fwd_x * (head_r * 0.98 + 0.008)
-        ny = base_y + fwd_y * (head_r * 0.98 + 0.008)
-        if abs(fwd_y) > abs(fwd_x):
-            _box(f"{name}_Nose",
-                 (nx, ny, nz),
-                 (head_d * 0.14, 0.05, head_d * 0.18),
-                 skin_color)
-        else:
-            _box(f"{name}_Nose",
-                 (nx, ny, nz),
-                 (0.05, head_d * 0.14, head_d * 0.18),
-                 skin_color)
-        # EYEBROWS · two short dark accents just above the glasses
-        fwd_x_, fwd_y_ = fwd_x, fwd_y
-        eb_z = head_cz + head_r * 0.28
-        ebx = base_x + fwd_x_ * (head_r * 0.95 + 0.005)
-        eby = base_y + fwd_y_ * (head_r * 0.95 + 0.005)
-        for side, sign in (('L', -1), ('R', +1)):
-            # Perpendicular axis (in horizontal plane)
-            perp_x = -fwd_y_; perp_y = fwd_x_
-            ox = perp_x * head_d * 0.20 * sign
-            oy = perp_y * head_d * 0.20 * sign
-            if abs(fwd_y_) > abs(fwd_x_):
-                _box(f"{name}_Eyebrow_{side}",
-                     (ebx + ox, eby + oy, eb_z),
-                     (head_d * 0.22, 0.025, head_d * 0.05),
-                     hair_color)
-            else:
-                _box(f"{name}_Eyebrow_{side}",
-                     (ebx + ox, eby + oy, eb_z),
-                     (0.025, head_d * 0.22, head_d * 0.05),
-                     hair_color)
-        # CHIN · small skin extension below the mouth
-        cz = head_cz - head_r * 0.55
-        cx = base_x + fwd_x * (head_r * 0.92 + 0.005)
-        cy = base_y + fwd_y * (head_r * 0.92 + 0.005)
-        if abs(fwd_y) > abs(fwd_x):
-            _box(f"{name}_Chin",
-                 (cx, cy, cz),
-                 (head_d * 0.42, 0.06, head_d * 0.15),
-                 skin_color)
-        else:
-            _box(f"{name}_Chin",
-                 (cx, cy, cz),
-                 (0.06, head_d * 0.42, head_d * 0.15),
-                 skin_color)
+            _box(f"{name}_Eyebrow_{side}",
+                 (ebx + ox, eby + oy, eb_z),
+                 (0.025, head_d * 0.22, head_d * 0.05),
+                 hair_color)
+    # CHIN · skin extension below the mouth — replaces the old jaw
+    # box at this position with a tighter chin protrusion (the
+    # broader jaw_box above the mouth handled jaw width).
+    cz = head_cz - head_r * 0.50
+    cx = base_x + fwd_x * (head_r * 0.85)
+    cy = base_y + fwd_y * (head_r * 0.85)
+    if abs(fwd_y) > abs(fwd_x):
+        _box(f"{name}_Chin",
+             (cx, cy, cz),
+             (head_d * 0.30, head_d * 0.20, head_d * 0.12),
+             skin_color)
+    else:
+        _box(f"{name}_Chin",
+             (cx, cy, cz),
+             (head_d * 0.20, head_d * 0.30, head_d * 0.12),
+             skin_color)
 
 
 def _build_scarf(name, base_x, base_y, shoulder_z, s, scarf_color):
