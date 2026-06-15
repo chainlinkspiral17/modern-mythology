@@ -8453,6 +8453,73 @@ def build_harmony_park():
                             (0.18, 0.18, 0.18, 1.0))
 
 
+def build_country_club_lot():
+    """Country Club valet lot east of the clubhouse + curving
+    cobblestone driveway from Harmony Boulevard's north end.
+    """
+    # ── VALET LOT east of the clubhouse
+    cc_lot_cx = 30.0   # clubhouse spans cx-18..+18, lot east of that
+    cc_lot_cy = 370.0
+    _build_parking_lot("CCValet", cc_lot_cx + 30.0, cc_lot_cy - 4.0,
+                        lot_w=22.0, lot_d=18.0,
+                        ground_z=mesh_z(cc_lot_cx + 30.0,
+                                         cc_lot_cy - 4.0),
+                        building_y_north=cc_lot_cy,
+                        car_palette=[
+                            (0.20, 0.20, 0.22, 1.0),  # black
+                            (0.62, 0.62, 0.64, 1.0),  # silver
+                            (0.85, 0.20, 0.18, 1.0),  # red (member roadster)
+                            (0.18, 0.32, 0.55, 1.0),  # navy
+                            (0.92, 0.92, 0.90, 1.0),  # white
+                        ],
+                        n_handicap=1)
+
+    # ── COBBLESTONE DRIVEWAY from Harmony Blvd (0, 340) to the
+    # clubhouse portico front (0, 358 — south of clubhouse)
+    COL_COBBLE = (0.62, 0.55, 0.45, 1.0)
+    pts = [(0, 340), (0, 350), (5, 358)]
+    hw = 4.0
+    for i in range(len(pts) - 1):
+        x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        rv = []
+        for (rx, ry) in [(x0 - perp_x * hw, y0 - perp_y * hw),
+                         (x1 - perp_x * hw, y1 - perp_y * hw),
+                         (x1 + perp_x * hw, y1 + perp_y * hw),
+                         (x0 + perp_x * hw, y0 + perp_y * hw)]:
+            rv.append((rx, ry, mesh_z(rx, ry) + 0.05))
+        _finalize_mesh(f"CC_Driveway_{i}", rv, [[0, 1, 2, 3]],
+                        COL_COBBLE)
+    # Turnaround circle in front of the portico
+    tc_x, tc_y = 0.0, 358.0
+    tc_r = 8.0
+    segs = 12
+    tc_verts = [(tc_x, tc_y, mesh_z(tc_x, tc_y) + 0.05)]
+    for i in range(segs):
+        ang = 2.0 * math.pi * i / segs
+        vx = tc_x + math.cos(ang) * tc_r
+        vy = tc_y + math.sin(ang) * tc_r
+        tc_verts.append((vx, vy, mesh_z(vx, vy) + 0.05))
+    tc_faces = []
+    for i in range(segs):
+        ni = (i + 1) % segs
+        tc_faces.append([0, 1 + i, 1 + ni])
+    _finalize_mesh("CC_Turnaround", tc_verts, tc_faces, COL_COBBLE)
+    # Centre planter (small circular flower bed at the centre of
+    # the turnaround)
+    _make_cyl_local("CC_TurnPlanter",
+                    (tc_x, tc_y, mesh_z(tc_x, tc_y) + 0.15),
+                    1.6, 0.30,
+                    (0.62, 0.42, 0.28, 1.0), segments=10)
+    _make_sphere_low_local("CC_TurnFlowers",
+                            (tc_x, tc_y, mesh_z(tc_x, tc_y) + 0.55),
+                            1.3, (0.95, 0.42, 0.62, 1.0),
+                            rings=3, segments=8)
+
+
 def build_country_club():
     """Harmony Creek Country Club — top-of-the-hill prosperous
     zone. Symmetrical brick clubhouse with white columns, plus
@@ -10234,6 +10301,7 @@ def main():
     build_east_cds_neighborhood()
     build_phase3_neighborhood()
     build_country_club()
+    build_country_club_lot()
     build_harmony_park()
     build_community_garden()
     build_wild_zone_trees()
