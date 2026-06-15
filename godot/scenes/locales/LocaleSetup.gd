@@ -46,6 +46,10 @@ const COLLIDER_NAME_HINTS: Array[String] = [
 	"Post", "Pump", "Pylon", "Slab", "Mullion", "CanopyCol",
 	"Foundation", "Cooler", "Aisle", "Xerox", "CurbStop",
 	"Register", "FlagPole_Base", "PylonPole", "Plinth", "Plaza",
+	# Neighborhood houses + school + clubs + corporate
+	"Main", "Garage", "Bleacher", "Backboard", "Booth", "AlcoveWall",
+	"PinkStripe", "PrizeShelf", "AttBooth", "Cabinet",
+	"PrepCounter", "Hood", "Bench", "Header",
 	# Outdoor locales — heightmap terrain meshes
 	"Terrain", "Ground", "Lawn",
 ]
