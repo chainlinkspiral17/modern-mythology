@@ -6796,6 +6796,59 @@ def build_elementary_school():
                     (0.85, 0.20, 0.18, 1.0))
 
 
+def build_ot_park_access_road():
+    """Short access road from Horizon Drive (at ~ (-260, -15))
+    north to the Oliver Tree Memorial Park south entry (around
+    (-260, 55) where the beacon stands). Connects the park to
+    the main district road network.
+    """
+    road_w = 6.0
+    curb_w = 0.5
+    COL_ROAD = (0.22, 0.22, 0.24, 1.0)
+    COL_CURB = (0.78, 0.76, 0.70, 1.0)
+    hw = road_w / 2
+    pts = [(-260, -15), (-260, 20), (-260, 55)]
+    for i in range(len(pts) - 1):
+        x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        rv = []
+        for (rx, ry) in [(x0 - perp_x * hw, y0 - perp_y * hw),
+                         (x1 - perp_x * hw, y1 - perp_y * hw),
+                         (x1 + perp_x * hw, y1 + perp_y * hw),
+                         (x0 + perp_x * hw, y0 + perp_y * hw)]:
+            rv.append((rx, ry, mesh_z(rx, ry) + 0.04))
+        _finalize_mesh(f"OTLink_Road_{i}", rv, [[0, 1, 2, 3]],
+                        COL_ROAD)
+        for sgn in (-1, 1):
+            cv = []
+            for (rx, ry) in [(x0 + sgn * perp_x * hw,
+                              y0 + sgn * perp_y * hw),
+                             (x1 + sgn * perp_x * hw,
+                              y1 + sgn * perp_y * hw),
+                             (x1 + sgn * perp_x * (hw + curb_w),
+                              y1 + sgn * perp_y * (hw + curb_w)),
+                             (x0 + sgn * perp_x * (hw + curb_w),
+                              y0 + sgn * perp_y * (hw + curb_w))]:
+                cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
+            _finalize_mesh(f"OTLink_Curb_{i}_{sgn:+d}", cv,
+                            [[0, 1, 2, 3]], COL_CURB)
+    # OT Park visitor parking lot at the road's north end, just
+    # south of the beacon
+    _build_parking_lot("OTParkVisitor", -260, 45,
+                        lot_w=22.0, lot_d=16.0,
+                        ground_z=mesh_z(-260, 45),
+                        building_y_north=70,
+                        car_palette=[(0.85, 0.20, 0.18, 1.0),
+                                      (0.62, 0.62, 0.64, 1.0),
+                                      (0.18, 0.32, 0.55, 1.0),
+                                      (0.95, 0.85, 0.30, 1.0),
+                                      (0.32, 0.55, 0.25, 1.0)],
+                        n_handicap=2)
+
+
 def build_connector_roads():
     """Short link roads connecting each neighborhood to the new
     district arterials (Harmony Blvd N-S, Horizon Dr E-W). Each
@@ -9038,6 +9091,7 @@ def main():
     build_district_arterials()
     build_community_landmarks()
     build_connector_roads()
+    build_ot_park_access_road()
     build_elementary_school()
     build_truck_stop()
     build_east_commercial_box()
