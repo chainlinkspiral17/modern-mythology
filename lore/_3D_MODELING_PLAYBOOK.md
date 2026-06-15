@@ -982,6 +982,42 @@ Summary (currently DEFERRED — rough layout first):
   then the monolithic build keeps iteration fast and the
   build-test-edit loop short.
 
+### 2026-06-15 · long uninterrupted rough-layout session
+
+50+ commits in one session. Key lessons:
+
+- **Build first, optimise later.** The user explicitly asked to
+  keep models PRIMITIVE during rough-layout. A 10k-line build
+  script with one giant GLB is fine for iterating layout, even
+  if it's not the right shape long-term. The performance plan
+  in `lore/_HCE_PERFORMANCE_PLAN.md` is the WHEN-THEN.
+
+- **Per-zone build functions scale better than one big function.**
+  Each settlement gets its own `build_<name>()` invoked from
+  `main()`. Adding a neighborhood is one function and one line
+  in `main()`. Refactoring later (chunking, MultiMesh) becomes
+  per-function, not per-line.
+
+- **Standardise the road-emit helper across neighborhoods.**
+  Phase 2 / West Estates / North Ranch / East CDS / OT Park /
+  truck stop / drive-in all share the same road-polyline +
+  curb + dash pattern. Defined inline 6 different ways across
+  build functions — should hoist to a single module-level
+  `_emit_road_polyline(pts, prefix, hw, with_dash)` so changes
+  to road style only land once.
+
+- **House-facing convention for road-bound builders.**
+  Houses on the OUTSIDE of a road need to face TOWARD the road.
+  Compute the direction from house to road centre (= `-side_sgn
+  * perp`), then map to the closest cardinal facing. Three
+  builders (Phase 2 / West Estates / North Ranch) got this
+  wrong on first pass.
+
+- **Settlement-zone pads pull pond depressions UP.** A 6 m-deep
+  pond inside a flatness=0.55 zone yields only a 2.7 m carved
+  bowl. Empirical disc sizing (probe outward, stop when terrain
+  meets water_z) handles this correctly for any flatness.
+
 ### TEMPLATE for next session
 
 ```markdown
