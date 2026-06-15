@@ -201,6 +201,293 @@ SETTLEMENTS = [
 SETTLEMENT_FALLOFF = 35.0   # m of smooth transition outside each rect
 
 # ────────────────────────────────────────────────────────────────
+# ROAD CORRIDORS — civil-engineering road cuts. Humans don't drape
+# asphalt over rolling hills; they EXCAVATE the terrain to follow a
+# designed grade, with controlled cross-slope and shoulder gradient.
+# Per the user (2026-06-15): "you can carve the terrain to accommodate
+# roads, humans do. they level things and have gradual slopes on roads
+# where it makes sense. use civil engineering to design this suburb."
+#
+# Each corridor: polyline of (x, y, target_z) waypoints + full-grade
+# half-width + shoulder transition width. Inside the full-grade band
+# the terrain is FORCED to road grade (target_z interpolated along
+# the polyline between waypoints). Outside the band, over the shoulder
+# distance, terrain smoothly grades back to the natural+settlement
+# height. Beyond shoulder, terrain unchanged.
+#
+# target_z values match the adjoining settlement platform heights so
+# arterials thread smoothly between zones (e.g. Harmony Blvd descends
+# from +20 at the country club entry down to -9 at the south truck
+# route, hitting each settlement's deck height on the way).
+#
+# Format: (name, [(x, y, z), ...], full_half_w, shoulder_w)
+# ────────────────────────────────────────────────────────────────
+ROAD_CORRIDORS = [
+    # ── HARMONY BOULEVARD · N-S arterial. Descends from the country
+    # club hill (+22) down to the SouthComm truck route (-9). Each
+    # waypoint's z matches the settlement platform it crosses.
+    ("HarmonyBlvd", [
+        (   0,  380, +22.0),   # CC south driveway
+        (   0,  340, +20.0),   # CC south edge
+        (  10,  260, +14.0),   # NorthComm belt
+        (  30,  200,  +5.0),   # NorthComm → HarmonyPark transition
+        (  60,  130,  +1.0),   # HarmonyPark
+        (  60,   10,  +1.0),   # HarmonyPark south
+        (  40,  -80,  -1.0),   # HP/Phase2 transition
+        (  20, -180,  -4.0),   # mid valley wild zone
+        (  10, -260,  -7.0),   # approaching SouthComm
+        (   0, -340,  -9.0),   # SouthComm north edge
+        (   8, -380,  -9.0),   # chapter-1 frontage
+        (  12, -392,  -9.0),
+    ], 7.0, 22.0),
+
+    # ── HORIZON DRIVE · E-W arterial. From WestComm (-2) east to
+    # EastComm (+5), threading through Harmony Park (0) and crossing
+    # Harmony Blvd at the central junction (0).
+    ("HorizonDr", [
+        (-560,  -20,  -2.0),
+        (-460,  -20,  -2.0),   # WestComm boundary
+        (-380,  -10,  -1.5),
+        (-280,  -10,  -1.0),   # south of OT Park
+        (-180,  -20,   0.0),   # HarmonyPark south edge
+        ( -80,  -30,   0.0),
+        (  60,  -20,   0.0),   # junction with Harmony Blvd
+        ( 160,  -10,  +1.5),   # approaching ECDS/HS field
+        ( 260,  -10,  +3.0),
+        ( 380,    0,  +5.0),
+        ( 440,    0,  +5.0),   # EastComm
+        ( 560,    0,  +5.0),
+    ], 7.0, 22.0),
+
+    # ── CONNECTOR ROADS · short 5 m collectors. full-grade half-width
+    # smaller because the road is narrower.
+    # Phase 2 → Horizon Dr east
+    ("P2Link", [
+        (240, -150, +1.0),   # Phase2 platform
+        (260,  -80,  0.0),
+        (260,  -10,  +2.5),  # Horizon Dr east approach
+    ], 5.0, 16.0),
+
+    # West Estates → Horizon Dr west
+    ("WELink", [
+        (-440, -180, -3.0),  # WestEstates
+        (-440, -100, -2.5),
+        (-440,  -25, -2.0),  # at Horizon Dr WestComm
+    ], 5.0, 16.0),
+
+    # North Ranch → Harmony Blvd
+    ("NRLink", [
+        (-320, 100, +12.0),  # NorthRanch
+        (-200, 100, +10.0),
+        (-100, 100, +5.0),
+        (  10, 130, +1.0),   # joins Harmony Blvd at HarmonyPark
+    ], 5.0, 16.0),
+
+    # East CDS → Horizon Dr east
+    ("ECDSLink", [
+        (200, 140, +8.0),   # EastCDS
+        (200,  80, +6.0),
+        (220,  20, +4.0),
+        (260, -10, +3.0),   # Horizon Dr
+    ], 5.0, 16.0),
+
+    # East Commercial north branch
+    ("ECommN", [
+        (440,   0, +5.0),
+        (480,   0, +5.0),
+        (480,  60, +5.0),
+        (480, 100, +5.0),
+    ], 5.0, 16.0),
+
+    # East Commercial south branch
+    ("ECommS", [
+        (480,    0, +5.0),
+        (480, -100, +5.0),
+        (480, -180, +5.0),
+        (480, -260, +5.0),
+    ], 5.0, 16.0),
+
+    # SCRATCH link (WestComm)
+    ("WCommLink", [
+        (-460, -20, -2.0),
+        (-490, -10, -2.0),
+        (-510,   0, -2.0),
+    ], 5.0, 14.0),
+
+    # Truck stop access
+    ("TSLink", [
+        (100, -392, -9.0),
+        (160, -390, -9.0),
+        (200, -385, -9.0),
+    ], 5.0, 14.0),
+
+    # Drive-in theatre access — gradual climb to drive-in pad (-5)
+    ("DILink", [
+        (   8, -380, -9.0),
+        (  60, -340, -7.0),
+        ( 110, -300, -6.0),
+        ( 150, -280, -5.0),
+    ], 5.0, 14.0),
+
+    # Country Club south driveway
+    ("CCLink", [
+        (   0, 360, +21.0),
+        (   0, 340, +20.0),
+    ], 5.0, 12.0),
+
+    # OT Park access — from Horizon Dr north to OT Park south entry
+    ("OTLink", [
+        (-260, -10, -1.0),   # Horizon Dr
+        (-260,  20,  0.0),
+        (-260,  55,  +1.5),  # park entry beacon
+    ], 4.0, 12.0),
+
+    # Hospital access — Horizon → Hospital lot
+    ("HospLink", [
+        (180,  -10, +1.5),   # Horizon
+        (180,   60, +4.0),
+        (180,  140, +8.0),
+        (180,  220, +12.0),
+        (180,  280, +14.0),  # at Hospital pad
+    ], 5.0, 14.0),
+
+    # NexCorp HQ driveway off Harmony Blvd
+    ("NXHQLink", [
+        (  20,  220, +6.0),   # off HarmonyBlvd
+        (   0,  255, +14.0),  # at NexCorpHQPad south edge
+    ], 5.0, 14.0),
+
+]
+
+
+def _seg_proj(px, py, x0, y0, x1, y1):
+    """Project (px, py) onto segment (x0,y0)→(x1,y1). Returns (t, d)
+    where t in [0,1] is the clamped projection parameter and d is
+    perpendicular distance."""
+    dx = x1 - x0; dy = y1 - y0
+    l2 = dx * dx + dy * dy
+    if l2 < 1e-6:
+        return 0.0, math.hypot(px - x0, py - y0)
+    t = ((px - x0) * dx + (py - y0) * dy) / l2
+    t_c = max(0.0, min(1.0, t))
+    qx = x0 + dx * t_c
+    qy = y0 + dy * t_c
+    return t_c, math.hypot(px - qx, py - qy)
+
+
+def road_carve(x, y):
+    """Returns (target_z, weight) for the nearest road corridor.
+    Inside the full-grade band: weight = 1.0 (terrain locked to road
+    grade). Through the shoulder: smoothstep falloff. Beyond shoulder:
+    weight = 0.0. target_z is linearly interpolated along the polyline
+    between the two waypoints bracketing the closest projection.
+
+    When multiple corridors overlap (e.g. at an intersection), the
+    one with the strongest weight wins; if equal, the one whose
+    target_z is closer to the current terrain wins (prevents step
+    jumps at junctions because both arterials carry the same target
+    at the junction waypoint).
+    """
+    best_weight = 0.0
+    best_target = 0.0
+    for (_name, waypoints, full_hw, shoulder) in ROAD_CORRIDORS:
+        seg_best_d = float("inf")
+        seg_best_target = 0.0
+        for i in range(len(waypoints) - 1):
+            x0, y0, z0 = waypoints[i]
+            x1, y1, z1 = waypoints[i + 1]
+            t, d = _seg_proj(x, y, x0, y0, x1, y1)
+            if d < seg_best_d:
+                seg_best_d = d
+                seg_best_target = z0 + (z1 - z0) * t
+        if seg_best_d <= full_hw:
+            w = 1.0
+        elif seg_best_d <= full_hw + shoulder:
+            tt = (seg_best_d - full_hw) / shoulder
+            w = 1.0 - smoothstep(0.0, 1.0, tt)
+        else:
+            w = 0.0
+        if w > best_weight:
+            best_weight = w
+            best_target = seg_best_target
+    return best_target, best_weight
+
+
+# ────────────────────────────────────────────────────────────────
+# LOT PADS — flat platforms for parking lots and building pads not
+# already covered by a SETTLEMENT rectangle. Each pad pulls the
+# terrain to its target_z within the rect, with a smooth shoulder
+# falloff so the lot edge grades back to natural terrain.
+# Format: (name, x_min, x_max, y_min, y_max, target_z, shoulder_w)
+# ────────────────────────────────────────────────────────────────
+LOT_PADS = [
+    # NexCorp HQ visitor lot south of the HQ building (NexCorpHQPad
+    # only covers the building footprint; the southern visitor lot
+    # extends to y=235 and was floating above terrain).
+    ("NexCorpHQLot",  -32, 32, 230, 256, +14.0, 18.0),
+    # Hospital lot
+    ("HospitalLot",  165, 195, 260, 300, +14.0, 16.0),
+    # Church + cemetery pad
+    ("ChurchPad",    -50,  10, 120, 165,  +1.0, 18.0),
+    # Fire station pad
+    ("FirePad",     -215, -185, -45, -15,  0.0, 16.0),
+    # Police station pad
+    ("PolicePad",   -185, -155, -75, -45,  0.0, 16.0),
+    # Post office pad
+    ("PostPad",      170, 192,  -38, -22, +1.5, 14.0),
+    # Library pad
+    ("LibraryPad",    45,  75,  65, 100,  +1.0, 14.0),
+    # Drive-in theatre pad
+    ("DriveInPad",    80, 220, -340, -240, -5.0, 22.0),
+    # Halsey Studios pad
+    ("HalseyPad",    460, 500, -120, -80, +5.0, 16.0),
+    # Auto dealership pad
+    ("AutoPad",      460, 510, -290, -230, +5.0, 16.0),
+    # Self-storage pad
+    ("StoragePad",   460, 510, -200, -160, +5.0, 14.0),
+    # East big-box pad
+    ("BigBoxPad",    460, 510,   40,  90, +5.0, 16.0),
+    # Truck stop pad
+    ("TruckStopPad", 170, 240, -400, -360, -9.0, 16.0),
+    # Mini-mart pad
+    ("MiniMartPad", -275, -245, -65, -35, -1.0, 14.0),
+    # Horizon Plaza pad
+    ("HorizonPzPad", -115, -85,  20,  42, +1.0, 14.0),
+    # Diner pad (chapter-1, already in SETTLEMENTS but adding the
+    # forecourt + lot extension)
+    # Elementary school pad
+    ("ESPad",       -110, -70, 140, 180, +1.5, 16.0),
+    # Cemetery (between church and Harmony Park)
+    # Little League diamond
+    ("LLDiamondPad", -170, -130, 180, 220, +1.0, 14.0),
+    # Country Club main building pad
+    ("CCMainPad",    -20,  20, 360, 385, +22.0, 18.0),
+]
+
+
+def lot_pad_carve(x, y):
+    """Returns (target_z, weight) for the nearest LOT_PADS rect.
+    Same semantics as road_carve: full inside, smooth shoulder out."""
+    best_weight = 0.0
+    best_target = 0.0
+    for (_n, x_min, x_max, y_min, y_max, target_z, shoulder) in LOT_PADS:
+        if x_min <= x <= x_max and y_min <= y <= y_max:
+            w = 1.0
+        else:
+            dx = max(x_min - x, 0.0, x - x_max)
+            dy = max(y_min - y, 0.0, y - y_max)
+            d = math.hypot(dx, dy)
+            if d >= shoulder:
+                continue
+            t = d / shoulder
+            w = 1.0 - smoothstep(0.0, 1.0, t)
+        if w > best_weight:
+            best_weight = w
+            best_target = target_z
+    return best_target, best_weight
+
+
+# ────────────────────────────────────────────────────────────────
 # PONDS, POOLS, MINI-VALLEYS — features in the WILD zones between
 # settlements. Add character to the in-between spaces.
 # ────────────────────────────────────────────────────────────────
@@ -362,6 +649,25 @@ def hce_elevation(x, y):
     # edge gets a view-blocking rise.
     for (_n, polyline, width, height) in BERMS:
         flattened += berm_ridge(x, y, polyline, width, height)
+
+    # ── LOT PADS — flatten parking lots / institutional pads not
+    # covered by SETTLEMENTS. Applied AFTER berms so a pad cuts
+    # through any incidental berm bump.
+    lot_target, lot_w = lot_pad_carve(x, y)
+    if lot_w > 0.001:
+        flattened = flattened * (1.0 - lot_w) + lot_target * lot_w
+
+    # ── ROAD CORRIDOR carve. Civil-engineering road cut: humans
+    # excavate dirt to set a controlled gradient. Inside the
+    # full-grade band terrain is locked to road-grade; through the
+    # shoulder it grades smoothly back to surrounding height. This
+    # is the LAST step so roads override berms, pond rims, and lot
+    # edges — the road wins through everything because that's how
+    # real civil works are built.
+    road_target, road_w = road_carve(x, y)
+    if road_w > 0.001:
+        flattened = flattened * (1.0 - road_w) + road_target * road_w
+
     return flattened
 
 

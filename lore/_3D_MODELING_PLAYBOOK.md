@@ -1077,6 +1077,82 @@ Rules for any other reference locale built going forward:
   natural (impulse rack, fixture station, aisle browser). More
   NPCs cross the "set" threshold without adding life.
 
+### 2026-06-15 · register placement rule
+
+Per user design-guide direction:
+
+- **Registers go near the main entry/exit, off to the FRONT-
+  LEFT** (or behind partition glass). The clerk needs sight on
+  everyone entering and leaving — that's the security
+  rationale. Real US convenience-store convention.
+- For Y-facing storefronts (south wall = entry), "front-left"
+  is the SW quadrant of the interior. Counter LONG AXIS runs
+  along the south wall, just behind the glass, west of the
+  door.
+- The CIGARETTE / LOTTERY backboard goes on the wall
+  IMMEDIATELY ADJACENT to and BEHIND the clerk — typically
+  the west wall when the counter sits in the SW corner. It
+  must be within the clerk's reach.
+- The IMPULSE-CANDY rack goes on the CUSTOMER side of the
+  counter (the customer-facing edge), at hip-to-shoulder
+  height.
+- The clerk's standing position is in the strip BETWEEN the
+  counter's back edge and the wall behind them — budget 0.7-
+  1.0 m of clerk aisle.
+- This is the OPPOSITE of where my chapter-1 build originally
+  placed Kwik Stop's register (NE corner / back wall) — that
+  put the clerk's back to the door, blind to comings + goings.
+  Fix all the dependent fixtures (cigarette backboard, impulse
+  rack, ID-check sign, clerk NPC, customer NPCs) when you move
+  the counter; they all anchor off counter_(x, y).
+
+### 2026-06-15 · carve terrain for roads (civil engineering)
+
+After many sessions of "roads sample mesh_z per corner so they
+follow the terrain", I still had floating-road / sunken-road
+problems wherever an arterial crossed a hill or pond rim — because
+the road quad followed terrain but the terrain itself had no idea
+the road was there. Humans don't drape asphalt on hills; they
+EXCAVATE.
+
+Fix: a `ROAD_CORRIDORS` list of polylines with per-waypoint
+`target_z` + a `road_carve(x, y)` function that returns the road
+grade + a 0..1 weight. Applied as the LAST step of `hce_elevation`,
+after settlements + berms, so roads override everything within
+their corridor.
+
+Each corridor has:
+- **Full-grade half-width** (7m for arterials, 5m for collectors)
+  — inside this band the terrain is locked to road grade.
+- **Shoulder width** (~20m for arterials, ~16m collectors) — over
+  this band terrain smoothstep-blends back to the natural height.
+- **Per-waypoint target_z** matching the settlement platforms the
+  road threads through (e.g. Harmony Blvd descends from +20 at the
+  CC entry to -9 at the SouthComm truck route, hitting +14 at
+  NorthComm, +1 at HarmonyPark on the way).
+
+Rule of thumb for grades: residential collector ≤ 8%, arterial ≤
+6%. Steepest segment in HCE is the CC entry ramp (~7.5% over 80m)
+which is fine for a winding suburban arterial.
+
+`LOT_PADS` is the same idea for parking lots / institutional pads
+not covered by a SETTLEMENT rectangle — NexCorp HQ visitor lot,
+hospital lot, drive-in pad, etc. Each rect pulls terrain to its
+target_z inside, smooth shoulder out.
+
+Order of operations inside `hce_elevation`:
+1. base terrain (tilt + rises + dips + noise + creek)
+2. ponds
+3. settlements (max-weight blend)
+4. berms (additive)
+5. lot pads (override toward target_z by weight)
+6. **road corridors** (override toward road grade by weight)
+
+This is the civil-engineering pipeline: shape the land, then cut
+roads through it. Buildings positioned via `mesh_z(cx, cy)` ride
+whatever the terrain becomes, so they automatically sit flat on
+the carved pads.
+
 ### TEMPLATE for next session
 
 ```markdown
