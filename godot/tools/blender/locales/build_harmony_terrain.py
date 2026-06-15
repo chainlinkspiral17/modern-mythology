@@ -5471,17 +5471,15 @@ def build_west_estates_neighborhood():
         _build_driveway(f"{name}_Drive", hcx, hcy, hcz, facing,
                          curb_x, curb_y)
 
-    # ── HOUSES along the loop branch · all on outer side
+    # ── HOUSES along the loop branch · only one per LONG side
+    # of the diamond — placing houses on every segment puts
+    # adjacent outer-corner houses too close (the inner diamond
+    # is only ~44 m per side and 18 m off-road placement collides
+    # adjacent houses around sharp corners).
     loop_houses = [
         ("WE_House_L1", 0, +1, '-X',
             {'wall': (0.82, 0.78, 0.70, 1.0),
              'roof': (0.42, 0.30, 0.22, 1.0)}),
-        ("WE_House_L2", 1, +1, '-X',
-            {'wall': (0.65, 0.68, 0.78, 1.0),
-             'roof': (0.32, 0.22, 0.18, 1.0)}),
-        ("WE_House_L3", 2, +1, '-Y',
-            {'wall': (0.78, 0.78, 0.65, 1.0),
-             'roof': (0.55, 0.30, 0.20, 1.0)}),
         ("WE_House_L4", 3, +1, '+X',
             {'wall': (0.72, 0.78, 0.68, 1.0),
              'roof': (0.42, 0.30, 0.22, 1.0)}),
