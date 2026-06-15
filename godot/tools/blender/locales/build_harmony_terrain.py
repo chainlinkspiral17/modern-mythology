@@ -3255,6 +3255,26 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (arc_cx - 4.1, cy + 0.5, ground_z + 0.80),
                     (0.30, 0.40, 1.20),
                     (0.42, 0.42, 0.45, 1.0))
+    # ── Arcade attendant booth at the back wall — a small
+    # counter + token display so the attendant has a workstation
+    # instead of just standing alone in the middle of the bay.
+    booth_x = arc_cx
+    booth_y = cy + depth / 2 - 1.4    # in back aisle, south of wall
+    _make_box_local("KwikShop_Arc_AttBooth_Counter",
+                    (booth_x, booth_y, ground_z + 0.55),
+                    (1.8, 0.7, 1.10), (0.42, 0.30, 0.20, 1.0))
+    # Token / prize display behind the booth (tall narrow shelf)
+    _make_box_local("KwikShop_Arc_AttBooth_PrizeShelf",
+                    (booth_x, cy + depth / 2 - 0.30,
+                     ground_z + 1.30),
+                    (2.4, 0.30, 1.40), (0.42, 0.42, 0.45, 1.0))
+    # A row of small token boxes on top of the counter
+    for k in range(3):
+        tx = booth_x - 0.6 + k * 0.6
+        _make_box_local(f"KwikShop_Arc_AttBooth_TokenBox_{k}",
+                        (tx, booth_y, ground_z + 1.18),
+                        (0.30, 0.30, 0.12),
+                        (0.95, 0.85, 0.30, 1.0))   # gold tokens
 
     # KWIK STOP bay — aisles + counter + cooler + basket (matches
     # the previous convenience-store interior)
