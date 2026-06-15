@@ -187,9 +187,10 @@ SETTLEMENTS = [
     # of its design +2.
     ("OliverTreeMemPark", -300, -220, 60, 180, +2.0, 0.95),
     # Secluded skatepark — sunken 2.5 m below the memorial park
-    # platform so it reads as tucked away. Higher flatness so it
-    # wins the overlap blend with the parent OT Park zone.
-    ("OTSkatePark",       -300, -260, 65, 100, -0.5, 0.90),
+    # platform so it reads as tucked away. Flatness raised
+    # 0.90 -> 0.97 (2026-06-15) so it wins softmax over OT Park
+    # (0.95) and NR (0.80) — the doubly-nested settlement.
+    ("OTSkatePark",       -300, -260, 65, 100, -0.5, 0.97),
     # Harmony Creek High School football field + stadium platform
     # — large flat zone east of Phase 2 (between Phase 2 and the
     # East Commercial strip) for the field + bleachers. Expanded
