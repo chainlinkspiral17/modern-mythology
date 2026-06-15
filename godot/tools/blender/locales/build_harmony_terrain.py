@@ -6463,6 +6463,93 @@ def build_phase3_crane():
                     (0.42, 0.42, 0.45, 1.0))
 
 
+def build_horizon_plaza():
+    """Small 3-bay neighborhood strip plaza on the north side
+    of Horizon Drive between the elementary school and OT Park.
+    Each bay has its own storefront + sign + lot stall.
+    """
+    cx, cy = -100.0, 30.0
+    ground_z = mesh_z(cx, cy)
+    total_w = 36.0   # 3 bays × 12 m
+    d, h = 10.0, 4.0
+    t = 0.20
+    col_wall = (0.85, 0.82, 0.74, 1.0)
+    col_roof = (0.32, 0.30, 0.28, 1.0)
+    col_glass_frame = (0.62, 0.62, 0.64, 1.0)
+    col_trim = (0.62, 0.42, 0.28, 1.0)
+    bay_palettes = [
+        # (bay tag, sign colour, door colour)
+        ("PizzaPlace",  (0.85, 0.20, 0.18, 1.0), (0.32, 0.18, 0.16, 1.0)),
+        ("DryClean",    (0.18, 0.32, 0.55, 1.0), (0.18, 0.32, 0.55, 1.0)),
+        ("Salon",       (0.95, 0.45, 0.62, 1.0), (0.55, 0.30, 0.42, 1.0)),
+    ]
+    # Slab + back wall + side walls + roof (one continuous shell)
+    _make_box_local("HzPlaza_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (total_w + 0.4, d + 0.4, 0.10), col_trim)
+    _make_box_local("HzPlaza_WallN",
+                    (cx, cy + d / 2 - t / 2, ground_z + h / 2),
+                    (total_w, t, h), col_wall)
+    _make_box_local("HzPlaza_WallE",
+                    (cx + total_w / 2 - t / 2, cy,
+                     ground_z + h / 2),
+                    (t, d, h), col_wall)
+    _make_box_local("HzPlaza_WallW",
+                    (cx - total_w / 2 + t / 2, cy,
+                     ground_z + h / 2),
+                    (t, d, h), col_wall)
+    _make_box_local("HzPlaza_Roof",
+                    (cx, cy, ground_z + h + 0.10),
+                    (total_w + 0.4, d + 0.4, 0.20), col_roof)
+    # Per-bay storefront on the south face
+    bay_w = total_w / 3
+    for k, (bay_tag, col_sign, col_door) in enumerate(bay_palettes):
+        bcx = cx - total_w / 2 + (k + 0.5) * bay_w
+        glass_y = cy - d / 2 + 0.05
+        # Plate glass mullions
+        for m in range(4):
+            mx = bcx - bay_w / 2 + 0.3 + m * (bay_w - 0.6) / 3
+            _make_box_local(f"HzPlaza_{bay_tag}_Mul_{m}",
+                            (mx, glass_y, ground_z + h / 2),
+                            (0.10, 0.06, h), col_glass_frame)
+        _make_box_local(f"HzPlaza_{bay_tag}_TopRail",
+                        (bcx, glass_y, ground_z + h - 0.08),
+                        (bay_w - 0.2, 0.08, 0.16), col_glass_frame)
+        _make_box_local(f"HzPlaza_{bay_tag}_BotRail",
+                        (bcx, glass_y, ground_z + 0.20),
+                        (bay_w - 0.2, 0.08, 0.40), col_glass_frame)
+        # Door (centred in bay)
+        dw, dh = 1.2, 2.4
+        _make_box_local(f"HzPlaza_{bay_tag}_Door",
+                        (bcx, glass_y, ground_z + dh / 2),
+                        (dw, 0.06, dh - 0.10), col_door)
+        # Sign panel above the bay
+        _make_box_local(f"HzPlaza_{bay_tag}_SignPanel",
+                        (bcx, cy - d / 2 - 0.30,
+                         ground_z + h + 0.30),
+                        (bay_w * 0.75, 0.14, 0.80), col_sign)
+        # Welcome mat
+        _make_box_local(f"HzPlaza_{bay_tag}_Mat",
+                        (bcx, glass_y - 0.40, ground_z + 0.07),
+                        (dw + 0.20, 0.80, 0.02),
+                        (0.32, 0.22, 0.18, 1.0))
+
+    # Parking lot south of the plaza
+    _build_parking_lot("HzPlaza", cx, cy - 18.0,
+                        lot_w=32.0, lot_d=18.0,
+                        ground_z=mesh_z(cx, cy - 18.0),
+                        building_y_north=cy,
+                        car_palette=[
+                            (0.85, 0.20, 0.18, 1.0),
+                            (0.62, 0.62, 0.64, 1.0),
+                            (0.18, 0.32, 0.55, 1.0),
+                            (0.32, 0.55, 0.25, 1.0),
+                            (0.20, 0.20, 0.22, 1.0),
+                            (0.95, 0.85, 0.30, 1.0),
+                        ],
+                        n_handicap=1)
+
+
 def build_midway_minimart():
     """A small mini-mart + single gas pump on the south side of
     Horizon Drive midway between the West Estates link and the
@@ -9927,6 +10014,7 @@ def main():
     build_self_storage()
     build_auto_dealership()
     build_midway_minimart()
+    build_horizon_plaza()
     build_little_league_field()
     build_library_and_bike_racks()
     build_phase3_crane()
