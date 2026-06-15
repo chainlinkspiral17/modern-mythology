@@ -5513,6 +5513,90 @@ def _face_axis(facing):
     return (0.0, -1.0)
 
 
+def build_district_arterials():
+    """Two arterials threading through HCE: HARMONY BOULEVARD
+    runs north-south from the country club down to the chapter-
+    one commercial cluster; HORIZON DRIVE runs east-west across
+    the middle of the district connecting West Estates with the
+    East CDS / high-school zone. Both are 4-lane (8 m) asphalt
+    with painted yellow centerlines.
+    """
+    road_w = 8.0
+    COL_ROAD = (0.20, 0.20, 0.22, 1.0)
+    COL_CL = (0.95, 0.85, 0.30, 1.0)         # yellow centerline
+    hw = road_w / 2
+
+    def _emit_arterial(pts, prefix, with_centerline=True):
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+            dxs = x1 - x0; dys = y1 - y0
+            seg_len = math.hypot(dxs, dys) or 1.0
+            perp_x = -dys / seg_len
+            perp_y =  dxs / seg_len
+            rv = []
+            for (rx, ry) in [(x0 - perp_x * hw, y0 - perp_y * hw),
+                             (x1 - perp_x * hw, y1 - perp_y * hw),
+                             (x1 + perp_x * hw, y1 + perp_y * hw),
+                             (x0 + perp_x * hw, y0 + perp_y * hw)]:
+                rv.append((rx, ry, mesh_z(rx, ry) + 0.04))
+            _finalize_mesh(f"{prefix}Road_{i}", rv, [[0, 1, 2, 3]],
+                            COL_ROAD)
+            if with_centerline:
+                # 3 dashes per segment evenly spaced
+                for d in range(3):
+                    t = (d + 0.5) / 3
+                    mid_x = x0 + dxs * t
+                    mid_y = y0 + dys * t
+                    dx_len = 2.5
+                    ddx = dxs / seg_len * dx_len / 2
+                    ddy = dys / seg_len * dx_len / 2
+                    dv = []
+                    for (rx, ry) in [
+                        (mid_x - ddx - perp_x * 0.08,
+                         mid_y - ddy - perp_y * 0.08),
+                        (mid_x + ddx - perp_x * 0.08,
+                         mid_y + ddy - perp_y * 0.08),
+                        (mid_x + ddx + perp_x * 0.08,
+                         mid_y + ddy + perp_y * 0.08),
+                        (mid_x - ddx + perp_x * 0.08,
+                         mid_y - ddy + perp_y * 0.08),
+                    ]:
+                        dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
+                    _finalize_mesh(f"{prefix}Dash_{i}_{d}", dv,
+                                    [[0, 1, 2, 3]], COL_CL)
+
+    # ── HARMONY BOULEVARD · N-S arterial. Threads east of the
+    # Harmony Park community pool to avoid cutting it in half.
+    harmony_blvd = [
+        (   0, 340),   # at country club south edge
+        (  10, 260),
+        (  30, 200),   # entering HarmonyPark zone east of pool
+        (  60, 130),   # east of community pool
+        (  60,  10),
+        (  40, -80),
+        (  20, -180),
+        (  10, -260),
+        (   0, -340),  # at chapter-1 commercial zone north edge
+    ]
+    _emit_arterial(harmony_blvd, "HarmonyBlvd_")
+
+    # ── HORIZON DRIVE · E-W arterial across the middle of HCE.
+    # Connects West Estates / WestComm with East CDS / East Comm.
+    horizon_dr = [
+        (-460,  -20),       # at West Comm boundary
+        (-380,  -10),
+        (-280,  -10),       # passes south of OT Park
+        (-180,  -20),       # crosses Harmony Park south edge
+        ( -80,  -30),
+        (  60,   -20),      # crosses Harmony Boulevard
+        ( 160,   -10),      # entering Phase 2 north edge
+        ( 260,   -10),
+        ( 380,    0),       # at East CDS
+        ( 440,    0),       # at East Comm
+    ]
+    _emit_arterial(horizon_dr, "HorizonDr_")
+
+
 def build_harmony_park():
     """HarmonyPark — central manicured community park. Sits in
     HarmonyPark settlement zone (-120..180, -40..200, target_z =
@@ -7355,6 +7439,7 @@ def main():
     build_phase3_neighborhood()
     build_country_club()
     build_harmony_park()
+    build_district_arterials()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
