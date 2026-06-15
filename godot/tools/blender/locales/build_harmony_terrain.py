@@ -11755,8 +11755,25 @@ def build_residential_mailboxes():
     house has a clear curb-mount. The cul-de-sac roads get
     mailboxes only on the outer curve.
     """
-    COL_BOX = (0.32, 0.32, 0.34, 1.0)   # dark grey rural mailbox
-    COL_POST = (0.42, 0.30, 0.20, 1.0)  # wood post
+    # Mailbox color palette — each house gets a deterministically-
+    # seeded color based on its position. Most are dark grey rural
+    # standard; some are painted accent colors.
+    BOX_PALETTE = [
+        (0.32, 0.32, 0.34, 1.0),    # dark grey (most common)
+        (0.32, 0.32, 0.34, 1.0),    # repeat for higher weight
+        (0.18, 0.18, 0.20, 1.0),    # black
+        (0.18, 0.32, 0.55, 1.0),    # navy
+        (0.20, 0.45, 0.25, 1.0),    # forest green
+        (0.55, 0.20, 0.18, 1.0),    # cranberry
+        (0.92, 0.90, 0.84, 1.0),    # white
+    ]
+    POST_PALETTE = [
+        (0.42, 0.30, 0.20, 1.0),    # wood
+        (0.42, 0.30, 0.20, 1.0),
+        (0.32, 0.22, 0.16, 1.0),    # dark wood
+        (0.62, 0.62, 0.64, 1.0),    # painted grey
+        (0.92, 0.90, 0.84, 1.0),    # painted white
+    ]
     COL_FLAG = (0.85, 0.20, 0.18, 1.0)  # red flag
     mb_offset = 4.5    # m from road CL to mailbox
     mb_spacing = 22.0
@@ -11782,6 +11799,11 @@ def build_residential_mailboxes():
                 bx = mx + side_sgn * perp_x * mb_offset
                 by = my + side_sgn * perp_y * mb_offset
                 bz = mesh_z(bx, by)
+                # Deterministic per-position color
+                mb_seed = (int(bx * 11) + int(by * 13)) % 100
+                COL_BOX = BOX_PALETTE[mb_seed % len(BOX_PALETTE)]
+                COL_POST = POST_PALETTE[
+                    (mb_seed // 3) % len(POST_PALETTE)]
                 # Wooden post
                 _make_box_local(f"{prefix}MB_{idx}_Post",
                                 (bx, by, bz + 0.55),
