@@ -6464,6 +6464,63 @@ def build_arterial_sidewalks():
     _emit_sidewalk(horizon_dr, "HorizonDr_")
 
 
+def build_arterial_trees():
+    """Street trees along Harmony Blvd and Horizon Drive at 25 m
+    intervals, alternating with the streetlamps so the result is
+    a continuous canopy + lamp parade along the arterials.
+    """
+    COL_TRUNK = (0.30, 0.22, 0.16, 1.0)
+    COL_CANOPY = (0.30, 0.55, 0.25, 1.0)
+    TREE_OFFSET = 7.8     # 1.4 m outside the sidewalk's outer edge
+
+    def _emit_trees(pts, prefix, spacing=25.0):
+        accumulated = 0.0
+        next_tree = 12.5     # half a spacing offset from start
+        side_sgn = -1        # opposite-side seed from lamps
+        idx = 0
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]
+            x1, y1 = pts[i + 1]
+            seg_len = math.hypot(x1 - x0, y1 - y0) or 1.0
+            seg_end = accumulated + seg_len
+            while next_tree < seg_end:
+                t = (next_tree - accumulated) / seg_len
+                mx = x0 + (x1 - x0) * t
+                my = y0 + (y1 - y0) * t
+                dxs = x1 - x0; dys = y1 - y0
+                perp_x = -dys / seg_len
+                perp_y =  dxs / seg_len
+                tx = mx + side_sgn * perp_x * TREE_OFFSET
+                ty = my + side_sgn * perp_y * TREE_OFFSET
+                tz = mesh_z(tx, ty)
+                trunk_h = 3.6
+                canopy_r = 2.4
+                _make_cyl_local(f"{prefix}Tree_{idx}_Trunk",
+                                (tx, ty, tz + trunk_h / 2),
+                                0.20, trunk_h, COL_TRUNK, segments=6)
+                _make_sphere_low_local(
+                    f"{prefix}Tree_{idx}_Canopy",
+                    (tx, ty, tz + trunk_h + canopy_r * 0.55),
+                    canopy_r, COL_CANOPY,
+                    rings=3, segments=8)
+                idx += 1
+                side_sgn = -side_sgn
+                next_tree += spacing
+            accumulated = seg_end
+
+    harmony_blvd = [
+        (0, 340), (10, 260), (30, 200), (60, 130),
+        (60, 10), (40, -80), (20, -180), (10, -260), (0, -340),
+    ]
+    horizon_dr = [
+        (-460, -20), (-380, -10), (-280, -10), (-180, -20),
+        (-80, -30), (60, -20), (160, -10), (260, -10),
+        (380, 0), (440, 0),
+    ]
+    _emit_trees(harmony_blvd, "HarmonyBlvd_")
+    _emit_trees(horizon_dr, "HorizonDr_")
+
+
 def build_arterial_lighting():
     """Streetlamps along Harmony Blvd and Horizon Drive at ~40 m
     spacing, alternating sides. Tall (6 m) suburban-arterial
@@ -9153,6 +9210,7 @@ def main():
     build_east_commercial_box()
     build_bus_stops()
     build_arterial_lighting()
+    build_arterial_trees()
     build_church_cemetery()
     build_water_tower_and_lines()
     build_halsey_studios()
