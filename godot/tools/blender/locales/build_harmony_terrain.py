@@ -9209,13 +9209,22 @@ def build_bus_stops():
     """Bus-stop shelters at key arterial intersections. Each:
     4 corner steel posts + slanted roof + back wall + bench.
     """
+    # Positions moved to sit clearly ON THE SIDEWALK after the
+    # 2026-06-15 arterial geometry update. Each (x, y) is at the
+    # arterial sidewalk centerline (offset 6.4m perpendicular
+    # from road CL on the east/south side).
     bus_specs = [
         # (name, cx, cy)
-        ("HarmonyBlvd_HS",   65, 60),       # Harmony Blvd at HS entry
-        ("HarmonyBlvd_OT",   30, 130),      # near OT Park
-        ("HorizonDr_Mid",    65, -28),      # Harmony/Horizon junction
-        ("HorizonDr_WE",   -440, -28),     # West Estates link
-        ("HorizonDr_ECDS",   260, -28),     # East CDS link
+        # Harmony Blvd CL at y=60 is x=60 -> east sidewalk x=66.4
+        ("HarmonyBlvd_HS",     67, 60),
+        # Harmony Blvd CL at y=130 is x=60 -> east sidewalk x=66.4
+        ("HarmonyBlvd_OT",     67, 130),
+        # Horizon Dr CL at x=65 is y=-20 -> south sidewalk y=-26.4
+        ("HorizonDr_Mid",      65, -27),
+        # Horizon Dr CL at x=-440 is y=-17.5 -> south sidewalk y=-24
+        ("HorizonDr_WE",     -440, -24),
+        # Horizon Dr CL at x=260 is y=-10 -> south sidewalk y=-16.4
+        ("HorizonDr_ECDS",    260, -17),
     ]
     COL_BUS_STEEL = (0.62, 0.62, 0.64, 1.0)
     COL_BUS_ROOF = (0.32, 0.42, 0.55, 1.0)
