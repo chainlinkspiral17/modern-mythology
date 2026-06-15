@@ -3041,6 +3041,156 @@ def _build_convenience_store(name_prefix, cx, cy, ground_z,
                     (0.40, 0.30, 0.50), col_basket)
 
 
+def _build_parking_lot(name_prefix, lot_cx, lot_cy, lot_w, lot_d,
+                        ground_z, building_y_north, car_palette,
+                        n_handicap=1):
+    """Strip-mall-style parking lot with 2 rows of head-in stalls,
+    a drive aisle between them, proper stall stripes (3 sides per
+    stall), handicap stalls closest to the building, and cars
+    positioned inside stalls (not loose on the asphalt).
+
+    Layout (north → south):
+      · access aisle (4 m) flush with the building sidewalk
+      · north stall row (5.5 m deep, cars facing north toward
+        the building, closest to storefront)
+      · centre drive aisle (6 m wide for 2-way navigation)
+      · south stall row (5.5 m deep, cars facing south toward
+        the road approach)
+      · south access aisle (4 m)
+
+    car_palette: list of (r, g, b, a) tuples; one car per element,
+    placed in the first N stalls of (north row, then south row),
+    SKIPPING the handicap stalls so they read as empty.
+
+    n_handicap: number of HC stalls reserved at the NORTH row's
+    most-buildingward end (typically 1-2 per strip-mall lot).
+    """
+    COL_ASPHALT = (0.22, 0.22, 0.24, 1.0)
+    COL_STRIPE = (0.92, 0.90, 0.84, 1.0)
+    COL_HC_BLUE = (0.18, 0.38, 0.72, 1.0)
+    COL_HC_WHITE = (0.95, 0.95, 0.92, 1.0)
+    COL_CURB = (0.78, 0.74, 0.66, 1.0)
+
+    hw = lot_w / 2
+    hd = lot_d / 2
+
+    # Asphalt slab — per-corner mesh_z so the lot tracks terrain
+    sv = []
+    for (lx, ly) in [(lot_cx - hw, lot_cy - hd),
+                     (lot_cx + hw, lot_cy - hd),
+                     (lot_cx + hw, lot_cy + hd),
+                     (lot_cx - hw, lot_cy + hd)]:
+        sv.append((lx, ly, mesh_z(lx, ly) + 0.04))
+    _finalize_mesh(f"{name_prefix}_Lot", sv, [[0, 1, 2, 3]],
+                    COL_ASPHALT)
+
+    # Stall + aisle parameters
+    stall_w = 2.7
+    stall_d = 5.5
+    drive_aisle_w = 6.0
+    n_stalls_per_row = int((lot_w - 1.0) / stall_w)  # 1 m margin
+    actual_row_w = n_stalls_per_row * stall_w
+
+    # Y positions of stall rows
+    # North row: at lot_cy + drive_aisle_w/2 + stall_d/2
+    # South row: at lot_cy - drive_aisle_w/2 - stall_d/2
+    n_row_cy = lot_cy + drive_aisle_w / 2 + stall_d / 2
+    s_row_cy = lot_cy - drive_aisle_w / 2 - stall_d / 2
+
+    # Centre stripe of the drive aisle (yellow dashed line could
+    # come later; just a thin white line for now)
+    aisle_centre_stripe_l = actual_row_w
+    _make_box_local(f"{name_prefix}_AisleDivider",
+                    (lot_cx, lot_cy, mesh_z(lot_cx, lot_cy) + 0.055),
+                    (aisle_centre_stripe_l, 0.10, 0.01),
+                    COL_STRIPE)
+
+    # Iterate stalls in each row
+    car_idx = 0
+    rows = [
+        ('N', n_row_cy, +1, True),    # north row, cars face +Y (toward building)
+        ('S', s_row_cy, -1, False),
+    ]
+    for row_tag, row_cy, face_dir_sgn, is_north_row in rows:
+        # Stall end line (one long stripe at the building/road
+        # end of the row, parallel to the drive aisle)
+        end_line_cy = row_cy + face_dir_sgn * stall_d / 2
+        _make_box_local(
+            f"{name_prefix}_StallEndLine_{row_tag}",
+            (lot_cx, end_line_cy,
+             mesh_z(lot_cx, end_line_cy) + 0.055),
+            (actual_row_w, 0.12, 0.01), COL_STRIPE)
+        # Stall divider stripes (between adjacent stalls)
+        for k in range(n_stalls_per_row + 1):
+            sx_div = lot_cx - actual_row_w / 2 + k * stall_w
+            sv2 = []
+            for (lx, ly) in [
+                (sx_div - 0.06, row_cy - stall_d / 2),
+                (sx_div + 0.06, row_cy - stall_d / 2),
+                (sx_div + 0.06, row_cy + stall_d / 2),
+                (sx_div - 0.06, row_cy + stall_d / 2),
+            ]:
+                sv2.append((lx, ly, mesh_z(lx, ly) + 0.055))
+            _finalize_mesh(
+                f"{name_prefix}_StallDiv_{row_tag}_{k}",
+                sv2, [[0, 1, 2, 3]], COL_STRIPE)
+
+        # Handicap stalls (only in the NORTH row, closest to
+        # building). Paint the stall floor blue + draw a thin
+        # white border. Use the LEFTMOST n_handicap stalls.
+        if is_north_row:
+            for hck in range(n_handicap):
+                hc_cx = lot_cx - actual_row_w / 2 + \
+                        (hck + 0.5) * stall_w
+                hc_cy = row_cy
+                # Blue floor pad
+                _make_box_local(
+                    f"{name_prefix}_HCStall_{hck}",
+                    (hc_cx, hc_cy,
+                     mesh_z(hc_cx, hc_cy) + 0.045),
+                    (stall_w - 0.20, stall_d - 0.20, 0.02),
+                    COL_HC_BLUE)
+                # White handicap "diamond" placeholder (small
+                # white square at stall centre)
+                _make_box_local(
+                    f"{name_prefix}_HCSymbol_{hck}",
+                    (hc_cx, hc_cy,
+                     mesh_z(hc_cx, hc_cy) + 0.060),
+                    (0.80, 0.80, 0.01),
+                    COL_HC_WHITE)
+        # Curb stops at the BACK of each stall (against the
+        # building side for north row, against the road buffer
+        # for south row)
+        for k in range(n_stalls_per_row):
+            cs_x = lot_cx - actual_row_w / 2 + (k + 0.5) * stall_w
+            cs_y = row_cy + face_dir_sgn * (stall_d / 2 - 0.30)
+            cs_z = mesh_z(cs_x, cs_y)
+            _make_box_local(
+                f"{name_prefix}_CurbStop_{row_tag}_{k}",
+                (cs_x, cs_y, cs_z + 0.10),
+                (1.5, 0.25, 0.20), COL_CURB)
+
+        # Place cars INSIDE stalls
+        first_car_idx_for_row = n_handicap if is_north_row else 0
+        for k in range(n_stalls_per_row):
+            if is_north_row and k < n_handicap:
+                continue       # skip handicap stalls
+            if car_idx >= len(car_palette):
+                break
+            car_x = lot_cx - actual_row_w / 2 + (k + 0.5) * stall_w
+            # Car centre is offset back from the stall end by half
+            # the car length so the bumper is 0.5 m from the curb
+            car_y = row_cy + face_dir_sgn * \
+                    (stall_d / 2 - 4.4 / 2 - 0.5)
+            car_z = mesh_z(car_x, car_y)
+            car_face = '+Y' if face_dir_sgn > 0 else '-Y'
+            _build_parked_car(
+                f"{name_prefix}_Car_{car_idx}",
+                car_x, car_y, car_z,
+                car_palette[car_idx], facing=car_face)
+            car_idx += 1
+
+
 def _build_parked_car(name, cx, cy, ground_z, body_color,
                        facing='+Y'):
     """Low-poly parked car · body + cabin + four wheels. Facing
@@ -3973,69 +4123,58 @@ def build_commercial_cluster():
                     (1.6, 0.15, 0.6),
                     (0.18, 0.18, 0.22, 1.0))
 
-    # ── PARKING LOTS in front of each store · asphalt slab with
-    # painted parking-space stripes. Each slab is sized to fit
-    # 6 spaces and follows mesh_z corners so it doesn't float
-    # over the South Commercial slope.
-    COL_ASPHALT = (0.22, 0.22, 0.24, 1.0)
-    COL_STRIPE  = (0.92, 0.90, 0.84, 1.0)
-    for tag, store_x, store_y in (
-        ("KwikShop", ks_x, ks_y),
-        ("NexCorpGG", nc_x, nc_y),
-        ("Diner", dn_x, dn_y),
-        ("CosmicComics", cc_x, cc_y),
-    ):
-        lot_cx = store_x
-        lot_w = 22.0
-        lot_d = 14.0
-        if tag == "NexCorpGG":
-            # NexCorp's lot wraps AROUND the pump canopy, so push
-            # the lot further south of the canopy footprint.
-            lot_cy = store_y - 24.0
-            lot_d = 10.0
-        elif tag == "CosmicComics":
-            # Cosmic Comics is a smaller shop — smaller lot too.
-            lot_cy = store_y - 15.0
-            lot_w = 14.0
-            lot_d = 12.0
-        elif tag == "Diner":
-            lot_cy = store_y - 16.0
-            lot_w = 20.0
-            lot_d = 12.0
-        else:
-            # Kwik Shop — wider lot to match the 28 m strip.
-            lot_cy = store_y - 17.0
-            lot_w = 30.0
-        # Four-vert slab so corners track terrain
-        hw = lot_w / 2; hd = lot_d / 2
-        lv = []
-        for (lx, ly) in [(lot_cx - hw, lot_cy - hd),
-                          (lot_cx + hw, lot_cy - hd),
-                          (lot_cx + hw, lot_cy + hd),
-                          (lot_cx - hw, lot_cy + hd)]:
-            lv.append((lx, ly, mesh_z(lx, ly) + 0.04))
-        _finalize_mesh(f"{tag}_Lot", lv, [[0, 1, 2, 3]], COL_ASPHALT)
-        # 6 parking stripes (5 lines defining 6 bays) running N-S
-        n_lines = 5
-        for k in range(n_lines):
-            sx_line = lot_cx - lot_w / 2 + (k + 1) * (lot_w / 6)
-            sv = []
-            for (lx, ly) in [(sx_line - 0.05, lot_cy - hd + 0.3),
-                              (sx_line + 0.05, lot_cy - hd + 0.3),
-                              (sx_line + 0.05, lot_cy + hd - 0.3),
-                              (sx_line - 0.05, lot_cy + hd - 0.3)]:
-                sv.append((lx, ly, mesh_z(lx, ly) + 0.055))
-            _finalize_mesh(f"{tag}_LotStripe_{k}", sv, [[0, 1, 2, 3]],
-                           COL_STRIPE)
-        # Curb stop blocks at the north edge (between lot + sidewalk)
-        for k in range(6):
-            cs_x = lot_cx - lot_w / 2 + (k + 0.5) * (lot_w / 6)
-            cs_y = lot_cy + hd - 0.5
-            cs_z = mesh_z(cs_x, cs_y)
-            _make_box_local(f"{tag}_CurbStop_{k}",
-                            (cs_x, cs_y, cs_z + 0.10),
-                            (1.5, 0.25, 0.20),
-                            (0.78, 0.74, 0.66, 1.0))
+    # ── PARKING LOTS in front of each store. Per user feedback
+    # (2026-06-15): cars parked INSIDE stalls (not loose on the
+    # asphalt); handicap stalls closest to the building (min 1-2
+    # per lot); shopping centres have plenty of OPEN concrete for
+    # driving + fast-travel lanes — use 2 rows + central 6 m
+    # drive aisle for navigation.
+    #
+    # Each call to _build_parking_lot creates the slab, two rows
+    # of head-in stalls, stall stripes (3 sides per stall), curb
+    # stops at the back of each stall, handicap stalls + symbol,
+    # and CARS positioned INSIDE the stalls in the order of the
+    # palette.
+    common_palette = [
+        (0.82, 0.32, 0.22, 1.0),    # red
+        (0.78, 0.74, 0.68, 1.0),    # beige
+        (0.32, 0.55, 0.78, 1.0),    # blue
+        (0.20, 0.20, 0.22, 1.0),    # black
+        (0.42, 0.62, 0.32, 1.0),    # green
+        (0.92, 0.85, 0.30, 1.0),    # yellow
+        (0.62, 0.42, 0.78, 1.0),    # purple
+        (0.92, 0.55, 0.20, 1.0),    # orange
+        (0.62, 0.62, 0.64, 1.0),    # silver
+        (0.18, 0.32, 0.55, 1.0),    # navy
+    ]
+    # Kwik Shop — large strip lot directly in front of the strip
+    _build_parking_lot("KwikShop", ks_x, ks_y - 18.0,
+                        lot_w=30.0, lot_d=22.0,
+                        ground_z=mesh_z(ks_x, ks_y - 18.0),
+                        building_y_north=ks_y,
+                        car_palette=common_palette,
+                        n_handicap=2)
+    # NexCorp Gas & Go — smaller lot south of the pump canopy
+    _build_parking_lot("NexCorpGG", nc_x, nc_y - 25.0,
+                        lot_w=18.0, lot_d=20.0,
+                        ground_z=mesh_z(nc_x, nc_y - 25.0),
+                        building_y_north=nc_y,
+                        car_palette=common_palette[:4],
+                        n_handicap=1)
+    # Diner
+    _build_parking_lot("Diner", dn_x, dn_y - 18.0,
+                        lot_w=22.0, lot_d=20.0,
+                        ground_z=mesh_z(dn_x, dn_y - 18.0),
+                        building_y_north=dn_y,
+                        car_palette=common_palette[:6],
+                        n_handicap=1)
+    # Cosmic Comics — smallest lot
+    _build_parking_lot("CosmicComics", cc_x, cc_y - 17.0,
+                        lot_w=16.0, lot_d=20.0,
+                        ground_z=mesh_z(cc_x, cc_y - 17.0),
+                        building_y_north=cc_y,
+                        car_palette=common_palette[:4],
+                        n_handicap=1)
 
     # ── SIDEWALK in FRONT of the storefronts (south side).
     # Player spawns at (0, 30, -380) facing south; the spawn-side
@@ -4699,27 +4838,7 @@ def build_commercial_cluster():
                            (div_x, div_y, div_z + 2.80),
                            1.10, COL_DIV_GRASS, rings=3, segments=8)
 
-    # ── PARKED CARS · two per lot, nose-in toward the storefront.
-    # Distinct paint colours so the strip reads as populated rather
-    # than uniform.
-    parked_specs = [
-        ("KwikShop", ks_x - 11, ks_y - 14, (0.82, 0.32, 0.22, 1.0)),  # red
-        ("KwikShop", ks_x,      ks_y - 14, (0.78, 0.74, 0.68, 1.0)),  # beige
-        ("KwikShop", ks_x + 11, ks_y - 14, (0.32, 0.55, 0.78, 1.0)),  # blue (laundromat)
-        # Pumped inward 1 m so the cars clear the canopy columns
-        # (columns at can_cx ± 5.7 m; cars 1.8 m wide so they
-        # overlapped the columns at ±5 m).
-        ("NexCorpGG", nc_x - 4, nc_y - 22, (0.20, 0.20, 0.22, 1.0)),  # black
-        ("NexCorpGG", nc_x + 4, nc_y - 22, (0.42, 0.42, 0.45, 1.0)),  # grey
-        ("Diner",     dn_x - 6, dn_y - 13, (0.95, 0.85, 0.30, 1.0)),  # yellow
-        ("Diner",     dn_x + 6, dn_y - 13, (0.42, 0.62, 0.32, 1.0)),  # green
-        ("CosmicComics", cc_x - 3, cc_y - 12, (0.62, 0.42, 0.78, 1.0)), # purple
-        ("CosmicComics", cc_x + 3, cc_y - 12, (0.92, 0.55, 0.20, 1.0)), # orange
-    ]
-    for k, (tag, px, py, col) in enumerate(parked_specs):
-        pz = mesh_z(px, py)
-        _build_parked_car(f"{tag}_Car_{k}", px, py, pz, col,
-                           facing='+Y')
+    # (Parked cars now placed INSIDE stalls by _build_parking_lot)
 
     # Crosswalk where the spawn-side spur meets the road. The
     # spur jogs east to spur_jog_x to thread through the lot gap,
