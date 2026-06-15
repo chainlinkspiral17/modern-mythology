@@ -1406,11 +1406,15 @@ def build_oliver_tree_memorial_park():
     # from mesh_z at the pool centre, NOT park_z. The statue
     # mound makes ground at pool location slightly lower than
     # park_z.
+    # Water sits ABOVE the ground (was at pool_ground - 0.30
+    # which buried the disc beneath the terrain mesh — the
+    # settlement zone is flat at +2.0 with no carved depression
+    # at this pool location, so the water was invisible).
     pool_cx = sx
     pool_cy = sy - 22
     pool_r = 6.0
     pool_ground = mesh_z(pool_cx, pool_cy)
-    pool_water_z = pool_ground - 0.30
+    pool_water_z = pool_ground + 0.04
     pool_segs = 16
     pverts = [(pool_cx, pool_cy, pool_water_z)]
     for i in range(pool_segs):
