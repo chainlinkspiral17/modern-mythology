@@ -1214,6 +1214,62 @@ next to where the asphalt actually draws. Several neighborhood
 streets (Ridge Crest Dr, Phase 2 cul-de-sac, Magnolia Lane)
 had to be re-aligned to the existing emit polylines.
 
+### 2026-06-15 · hero-asset polish (the Kwik Stop pass)
+
+When the user says "hero asset quality work" they want every
+detail that signals "this is a real working _____" to be on the
+model. Approach that works:
+
+1. **Find the prose canon.** Pull every detail mentioned in the
+   source files for that locale. For the Kwik Stop:
+   - Vol 6 Ch 1 opening prose: AC at 68°, decals on the window
+     (lottery / 2019 cigarette brand / TASTE HOME hamburger with
+     missing eye), the convex security mirror, the back cooler
+     with recursive reflection (Maya zine #11), Sam's phone face-
+     up on the counter, the Hot Pocket, the microwave clock 9
+     minutes fast, the roller-grill smell.
+   - Sam Miller's character file: Diego leaning against the
+     ice freezer, ROY the regular at 5:48 PM Friday, the zine
+     stockpile under cleaning supplies.
+   - The pylon reference photo: Texas star + 3 promo strips +
+     gas-station cross-promo arrow.
+
+2. **Add the "every real X has one of these" list.** For a Texas
+   convenience store: ice freezer, propane cage, newspaper boxes,
+   pay phone, coin-op air/water pump, sandwich board, cigarette-
+   butt urn, bike rack, WE CARD sticker, credit-card logos,
+   Help Wanted sign in the window, dedicated lot light pole at
+   the SW corner, wet-floor sign, slushie machine, coffee station
+   with two pots, roller grill with visible hot dogs, fluorescent
+   ceiling fixtures, Coke door cling.
+
+3. **Each detail names itself**, in the mesh name. `KwikStop_
+   IceFreezer_GlassTop`, `KwikStop_TasteHome_BurgerBun`. Future
+   passes can find and modify any specific element by grep.
+
+4. **Tie at least one detail to canon** so the polish READS as
+   "this writer paid attention" rather than "the engine emits
+   stuff." The recursive-reflection nested rectangles on the
+   middle cooler door are Maya zine #11's "infinite recursion"
+   detail rendered as five shrinking nested panels.
+
+5. **The visible cluster matters more than absolute count.** A
+   real store has clutter ARRANGED in zones: door zone (sandwich
+   board, butt urn, mat), corner zone (ice + propane + news
+   boxes + air pump), the pylon zone (sign + lottery + plinth),
+   the lot edge (lamp pole). Building one zone at a time keeps
+   each meaningful instead of confetti.
+
+6. **A canon-named NPC in the right spot** is worth ten anonymous
+   props. Diego at the ice freezer makes the freezer mean
+   something the next time the player sees it.
+
+7. **The cluster makes the locale a REFERENCE for the rest of
+   the chapter.** Once Kwik Stop is dressed to this level, the
+   Diner / NexCorp Gas & Go / Cosmic Comics will read as less
+   polished by comparison — that's the cue to apply the same
+   pass to them.
+
 ### TEMPLATE for next session
 
 ```markdown
