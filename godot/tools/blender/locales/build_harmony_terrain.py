@@ -4315,6 +4315,27 @@ def build_commercial_cluster():
                         0.32, 0.06,
                         (0.20, 0.20, 0.22, 1.0), segments=8)
 
+    # ── SCOOTERS parked outside the arcade and diner — chapter-
+    # one kids-on-scooters atmosphere. The scooters lean against
+    # imaginary walls on the sidewalk; here they just sit upright
+    # since the build script doesn't tilt props.
+    arcade_door_x = ks_x - 9.0
+    for k, (sc_x_off, deck_col, metal_col) in enumerate((
+        (-1.0, (0.30, 0.55, 0.25, 1.0), (0.78, 0.78, 0.80, 1.0)),
+        (0.5,  (0.85, 0.22, 0.20, 1.0), (0.62, 0.62, 0.64, 1.0)),
+    )):
+        sx_pos = arcade_door_x + sc_x_off
+        sy_pos = walk_strip_y + 0.6   # just north of sidewalk centre
+        sz_pos = mesh_z(sx_pos, sy_pos)
+        _build_scooter(f"ArcadeScooter_{k}", sx_pos, sy_pos, sz_pos,
+                       color_deck=deck_col, color_metal=metal_col)
+    # One more scooter outside the diner
+    _build_scooter("DinerScooter",
+                   dn_x - 4.0, walk_strip_y + 0.5,
+                   mesh_z(dn_x - 4.0, walk_strip_y + 0.5),
+                   color_deck=(0.32, 0.55, 0.78, 1.0),
+                   color_metal=(0.78, 0.78, 0.80, 1.0))
+
     # ── STRIPED CANVAS AWNINGS over each storefront door so the
     # block reads as a real chapter-one strip mall instead of
     # bare plate-glass. Each awning is a slanted slab in alternating
