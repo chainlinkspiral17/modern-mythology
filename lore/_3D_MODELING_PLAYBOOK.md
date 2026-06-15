@@ -735,6 +735,45 @@ between-equally-OK-options choice, pick the printable one.
     rough heuristic: `pixel_size ≈ panel_width / (chars × 38)`
     keeps the word centered with a margin.
 
+### 2026-06-15 · chapter-one block + sight lines
+
+- **Storefronts in the same "block" sit on the same Y line.**
+  Per user spec: "the qwik shop, gas and go, and comic shop and
+  diner should all be in the same block ... characters can see
+  each other at their jobs." Chapter-one storefronts now share
+  `y = -360` and are spaced 30-50 m apart along x, well inside
+  the plate-glass sight-line range. Whatever the player can see
+  from the sidewalk in front of one store, the NPCs at the
+  adjacent storefront counters can see back through their own
+  glass. Don't break the line by rotating one building or
+  burying one behind a fence — the line is the story.
+
+- **Multi-bay strip building = one shell, partitioned bays.**
+  Kwik Shop became `ARCADE | KWIK STOP | LAUNDROMAT` in one 28 m
+  shell with single roof + parapet + back wall, two internal
+  partition walls splitting the bays, each bay carrying its own
+  plate-glass front + entry door + sign panel + interior. The
+  rule: model the SHELL as one volume, then build per-bay
+  interiors offset from the bay centre. Don't model three
+  separate buildings butted together — you get duplicate
+  partition geometry and the roof seams will fight.
+
+- **Reposition props relative to BAY centre, not building
+  centre.** When the Kwik Stop went from a 12 m standalone
+  building to one bay of a 28 m strip, the ice machine /
+  propane cage / cart corral that anchored to `ks_x ± offset`
+  (where `ks_x` is now the STRIP centre) drifted to the middle
+  of the strip. Fix is to anchor to the bay centre
+  (`bay_cx = strip_x + bay_off`) and keep the offset modest. Any
+  building that might grow into a strip should use the bay
+  centre from day one.
+
+- **Wide lots need a planted divider.** A 30 m wide single-row
+  lot reads as a sea of asphalt. A small ~4 m island with curb
+  + grass + an ornamental tree breaks the lot into recognisable
+  approaches per bay — and gives the artist a place to anchor
+  bag-of-leaves litter, an oil stain, etc.
+
 ### TEMPLATE for next session
 
 ```markdown

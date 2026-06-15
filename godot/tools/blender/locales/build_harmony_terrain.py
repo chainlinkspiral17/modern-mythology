@@ -4250,6 +4250,36 @@ def build_commercial_cluster():
                         0.30, 0.02,
                         (0.95, 0.85, 0.30, 0.4), segments=8)
 
+    # ── KWIK SHOP LOT DIVIDER ISLAND · the strip is wide enough
+    # (30 m lot) that a single uninterrupted parking row reads as
+    # a sea of asphalt. One planted island in the middle of the
+    # lot breaks it up: brown curb perimeter + low grass + small
+    # tree. Splits the lot visually into ARCADE-side and
+    # LAUNDROMAT-side approaches.
+    div_x = ks_x
+    div_y = ks_y - 17.0 + 1.0
+    div_z = mesh_z(div_x, div_y)
+    COL_DIV_CURB = (0.62, 0.58, 0.50, 1.0)
+    COL_DIV_GRASS = (0.30, 0.55, 0.25, 1.0)
+    # Curb perimeter (thin box ring)
+    div_w = 4.0; div_d = 2.4
+    _make_box_local("KwikShop_LotDivider_Curb",
+                    (div_x, div_y, div_z + 0.08),
+                    (div_w, div_d, 0.16), COL_DIV_CURB)
+    # Grass infill (slightly smaller)
+    _make_box_local("KwikShop_LotDivider_Grass",
+                    (div_x, div_y, div_z + 0.13),
+                    (div_w - 0.30, div_d - 0.30, 0.06),
+                    COL_DIV_GRASS)
+    # Small ornamental tree in the middle
+    _make_cyl_local("KwikShop_LotDivider_TreeTrunk",
+                    (div_x, div_y, div_z + 1.20),
+                    0.16, 2.4,
+                    (0.30, 0.22, 0.16, 1.0), segments=6)
+    _make_sphere_low_local("KwikShop_LotDivider_TreeCanopy",
+                           (div_x, div_y, div_z + 2.80),
+                           1.10, COL_DIV_GRASS, rings=3, segments=8)
+
     # ── PARKED CARS · two per lot, nose-in toward the storefront.
     # Distinct paint colours so the strip reads as populated rather
     # than uniform.
