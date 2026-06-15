@@ -81,6 +81,14 @@ func _ready() -> void:
 	var nightclub_signs: Array = []
 	var nexcorp_hq_logos: Array = []
 	var hs_name_plaques: Array = []
+	# Kwik Stop reference-locale signage
+	var ks_open_signs: Array = []
+	var ks_hours_signs: Array = []
+	var ks_promo_signs: Array = []
+	var ks_atm_signs: Array = []
+	var ks_wet_signs: Array = []
+	var ks_id_signs: Array = []
+	var ks_decal_signs: Array = []  # element 0..3 = LOTTERY/ATM/ICE/EBT
 	for mi in meshes:
 		mi.material_override = mat
 		applied += 1
@@ -132,6 +140,20 @@ func _ready() -> void:
 			nexcorp_hq_logos.append(mi)
 		elif "HSBuilding_NamePlaque" in mi.name:
 			hs_name_plaques.append(mi)
+		elif "KwikShop_KwikStop_OpenSign" in mi.name:
+			ks_open_signs.append(mi)
+		elif "KwikShop_KwikStop_HoursPlaque" in mi.name:
+			ks_hours_signs.append(mi)
+		elif "KwikShop_KwikStop_PromoBanner" in mi.name:
+			ks_promo_signs.append(mi)
+		elif "KwikShop_KwikStop_ATM_Sign" in mi.name:
+			ks_atm_signs.append(mi)
+		elif "KwikShop_KwikStop_WetSign_Text" in mi.name:
+			ks_wet_signs.append(mi)
+		elif "KwikShop_KwikStop_IDSign" in mi.name:
+			ks_id_signs.append(mi)
+		elif "KwikShop_KwikStop_Decal_" in mi.name:
+			ks_decal_signs.append(mi)
 	print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
 	# Attach real Label3D text to the sign panels.
 	#
@@ -252,6 +274,73 @@ func _ready() -> void:
 						0.0,
 						Color(0.95, 0.85, 0.30, 1.0),
 						Color(0.05, 0.06, 0.10, 1.0))
+	# Kwik Stop interior + exterior signage. All panels here are
+	# thin along Blender -Y so their face_normal in Godot is +Z
+	# (Blender -Y → Godot +Z after the glTF axis swap).
+	for panel in ks_open_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.03),
+						Vector3(0, 0, 1),
+						"OPEN",
+						0.0,
+						Color(0.98, 0.62, 0.78, 1.0),
+						Color(0.40, 0.05, 0.05, 1.0))
+	for panel in ks_hours_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.03),
+						Vector3(0, 0, 1),
+						"OPEN\n24 HRS",
+						0.0,
+						Color(0.95, 0.95, 0.92, 1.0),
+						Color(0.10, 0.10, 0.10, 1.0))
+	for panel in ks_promo_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.04),
+						Vector3(0, 0, 1),
+						"BUDWEISER $11.99 CASE",
+						0.0,
+						Color(0.95, 0.95, 0.92, 1.0),
+						Color(0.42, 0.05, 0.04, 1.0))
+	for panel in ks_atm_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.03),
+						Vector3(0, 0, 1),
+						"ATM",
+						0.0,
+						Color(0.98, 0.98, 0.96, 1.0),
+						Color(0.10, 0.20, 0.42, 1.0))
+	for panel in ks_wet_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.03),
+						Vector3(0, 0, 1),
+						"WET FLOOR",
+						0.0,
+						Color(0.18, 0.18, 0.20, 1.0),
+						Color(0.95, 0.85, 0.30, 1.0))
+	for panel in ks_id_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.03),
+						Vector3(0, 0, 1),
+						"ID REQUIRED\n21+ TOBACCO + BEER",
+						0.0,
+						Color(0.95, 0.95, 0.92, 1.0),
+						Color(0.42, 0.05, 0.04, 1.0))
+	# Window decals — 4 in fixed order: LOTTERY / ATM / ICE / EBT
+	var decal_specs := [
+		["LOTTERY", Color(0.10, 0.08, 0.04, 1.0), Color(0.95, 0.85, 0.30, 1.0)],
+		["ATM",     Color(0.98, 0.98, 0.96, 1.0), Color(0.18, 0.32, 0.55, 1.0)],
+		["ICE",     Color(0.18, 0.32, 0.42, 1.0), Color(0.95, 0.95, 0.92, 1.0)],
+		["EBT",     Color(0.98, 0.98, 0.96, 1.0), Color(0.42, 0.05, 0.04, 1.0)],
+	]
+	for i in range(ks_decal_signs.size()):
+		var spec = decal_specs[i % decal_specs.size()]
+		_attach_text_label(ks_decal_signs[i],
+						Vector3(0, 0, 0.03),
+						Vector3(0, 0, 1),
+						spec[0],
+						0.0,
+						spec[1],
+						spec[2])
 	# High school name plaque — faces south (toward the football
 	# field and stadium).
 	for panel in hs_name_plaques:
