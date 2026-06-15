@@ -12043,28 +12043,60 @@ def build_district_arterials():
                 _finalize_mesh(f"{prefix}EdgeLine_{i}_{sgn:+d}", ev,
                                 [[0, 1, 2, 3]], COL_EDGE)
             if with_centerline:
-                # 3 dashes per segment evenly spaced
-                for d in range(3):
-                    t = (d + 0.5) / 3
-                    mid_x = x0 + dxs * t
-                    mid_y = y0 + dys * t
-                    dx_len = 2.5
-                    ddx = dxs / seg_len * dx_len / 2
-                    ddy = dys / seg_len * dx_len / 2
-                    dv = []
+                # DOUBLE-YELLOW continuous centerline (proper US
+                # arterial / no-passing — replaces the old dashed
+                # version which read as a residential collector).
+                # Two thin yellow strips offset 0.10m apart at the
+                # road centerline running the full segment length.
+                line_w = 0.10        # each yellow strip width
+                line_gap = 0.10      # gap between the two strips
+                for line_sgn in (-1, 1):
+                    offset = line_sgn * (line_gap / 2 + line_w / 2)
+                    yv = []
                     for (rx, ry) in [
-                        (mid_x - ddx - perp_x * 0.08,
-                         mid_y - ddy - perp_y * 0.08),
-                        (mid_x + ddx - perp_x * 0.08,
-                         mid_y + ddy - perp_y * 0.08),
-                        (mid_x + ddx + perp_x * 0.08,
-                         mid_y + ddy + perp_y * 0.08),
-                        (mid_x - ddx + perp_x * 0.08,
-                         mid_y - ddy + perp_y * 0.08),
+                        (x0 + perp_x * offset - perp_x * line_w / 2,
+                         y0 + perp_y * offset - perp_y * line_w / 2),
+                        (x1 + perp_x * offset - perp_x * line_w / 2,
+                         y1 + perp_y * offset - perp_y * line_w / 2),
+                        (x1 + perp_x * offset + perp_x * line_w / 2,
+                         y1 + perp_y * offset + perp_y * line_w / 2),
+                        (x0 + perp_x * offset + perp_x * line_w / 2,
+                         y0 + perp_y * offset + perp_y * line_w / 2),
                     ]:
-                        dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
-                    _finalize_mesh(f"{prefix}Dash_{i}_{d}", dv,
-                                    [[0, 1, 2, 3]], COL_CL)
+                        yv.append((rx, ry, mesh_z(rx, ry) + 0.055))
+                    _finalize_mesh(f"{prefix}DoubleYellow_{i}_{line_sgn:+d}",
+                                    yv, [[0, 1, 2, 3]], COL_CL)
+                # DASHED LANE LINES (white) inside each direction
+                # of travel — 1 between the centerline and each
+                # edge line — for the 8m 4-lane arterial we get a
+                # proper 2-lane-each-way striping.
+                COL_LANE_DASH = (0.95, 0.92, 0.84, 1.0)
+                lane_off_dist = hw / 2     # halfway between centerline and edge
+                for dir_sgn in (-1, 1):
+                    # 2 dashes per segment evenly spaced
+                    for d_idx in range(2):
+                        t = (d_idx + 0.5) / 2
+                        mid_x = x0 + dxs * t
+                        mid_y = y0 + dys * t
+                        dash_l = 2.0
+                        ddx = dxs / seg_len * dash_l / 2
+                        ddy = dys / seg_len * dash_l / 2
+                        off = dir_sgn * lane_off_dist
+                        dv = []
+                        for (rx, ry) in [
+                            (mid_x - ddx + perp_x * (off - 0.05),
+                             mid_y - ddy + perp_y * (off - 0.05)),
+                            (mid_x + ddx + perp_x * (off - 0.05),
+                             mid_y + ddy + perp_y * (off - 0.05)),
+                            (mid_x + ddx + perp_x * (off + 0.05),
+                             mid_y + ddy + perp_y * (off + 0.05)),
+                            (mid_x - ddx + perp_x * (off + 0.05),
+                             mid_y - ddy + perp_y * (off + 0.05)),
+                        ]:
+                            dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
+                        _finalize_mesh(
+                            f"{prefix}LaneDash_{i}_{dir_sgn:+d}_{d_idx}",
+                            dv, [[0, 1, 2, 3]], COL_LANE_DASH)
 
     # Pull polylines straight from ROAD_CORRIDORS so the road
     # geometry matches the terrain carve waypoints exactly. Then
