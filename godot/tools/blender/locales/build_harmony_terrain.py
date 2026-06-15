@@ -3481,33 +3481,89 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                         (0.30, 0.30, 0.12),
                         (0.95, 0.85, 0.30, 1.0))   # gold tokens
 
-    # KWIK STOP bay — aisles + counter + cooler + basket (matches
-    # the previous convenience-store interior)
+    # ── KWIK STOP bay · REFERENCE INTERIOR for the chapter-one
+    # cluster. Per user direction (2026-06-15): "do quality,
+    # polish sculpting and retail passes at the qwik stop. this
+    # will become a reference locale for this zone."
+    #
+    # Bay layout (south door entry working north):
+    #   · ENTRY ZONE  cy-4.95 to cy-3.0: welcome mat + wire-
+    #     basket stack + magazine rack + newspaper stand
+    #   · AISLE ZONE  cy-3.0 to cy+2.0: two long shelves running
+    #     E-W (south = snacks, north = drinks + sundries)
+    #   · COOLER WALL cy+3.0 to cy+4.4: 3-door refrigerated
+    #     drinks cooler against the back wall
+    #   · COUNTER NE  ks_x+2.8, cy+3.45: cash register + scanner
+    #     + lottery scratch ticket display + tip jar + ID-check
+    #     sign + back-wall cigarette + lotto racks
+    #   · WEST FIXTURES cy-2..cy+2 against west partition:
+    #     coffee station + roller grill (hot dogs) + slushie
+    #     machine
     kw_cx = cx
     col_shelf      = (0.50, 0.50, 0.52, 1.0)
+    col_shelf_dark = (0.32, 0.32, 0.34, 1.0)
     col_counter    = (0.42, 0.32, 0.22, 1.0)
     col_register   = (0.20, 0.20, 0.22, 1.0)
     col_cooler     = (0.78, 0.84, 0.88, 1.0)
+    col_cooler_frame = (0.42, 0.42, 0.45, 1.0)
     col_basket     = (0.60, 0.20, 0.18, 1.0)
-    # Aisle length shortened so the north end clears the counter
-    # (counter sits at cy + 3.45 ± 0.35 = cy + 3.1 to cy + 3.8;
-    # aisles now end at cy + 2.75 with 0.35 m of breathing room).
+    col_floor_mat  = (0.30, 0.22, 0.18, 1.0)
+    col_chips_orange = (0.95, 0.55, 0.20, 1.0)
+    col_chips_red    = (0.85, 0.22, 0.20, 1.0)
+    col_chips_blue   = (0.32, 0.55, 0.78, 1.0)
+    col_chips_green  = (0.32, 0.55, 0.25, 1.0)
+    col_chips_yellow = (0.95, 0.85, 0.30, 1.0)
+    col_chips_purple = (0.62, 0.42, 0.78, 1.0)
+    col_slushie_a  = (0.62, 0.22, 0.62, 1.0)
+    col_slushie_b  = (0.95, 0.62, 0.20, 1.0)
+    col_steel      = (0.62, 0.62, 0.64, 1.0)
+    col_coffee_pot = (0.20, 0.18, 0.16, 1.0)
+    col_grill_dark = (0.32, 0.30, 0.28, 1.0)
+    col_grill_hot  = (0.62, 0.18, 0.16, 1.0)
+
+    # ── 2 LONG E-W aisles (snack + drinks) running across most
+    # of the bay width
+    aisle_w = 6.4        # X span (centered on bay)
+    aisle_d = 0.40       # shelf thickness (Y axis)
     aisle_h = 1.8
-    aisle_l = 3.5
-    aisle_y_centre = cy + 0.5
-    for k, ax_off in enumerate((-2.0, 0.0, 2.0)):
+    for k, aisle_y in enumerate((cy - 1.5, cy + 1.0)):
+        # Main shelf body
         _make_box_local(f"KwikShop_KwikStop_Aisle_{k}",
-                        (kw_cx + ax_off, aisle_y_centre,
-                         ground_z + aisle_h / 2),
-                        (0.40, aisle_l, aisle_h), col_shelf)
+                        (kw_cx, aisle_y, ground_z + aisle_h / 2),
+                        (aisle_w, aisle_d, aisle_h), col_shelf)
+        # Top horizontal "shelf" panel
+        _make_box_local(f"KwikShop_KwikStop_AisleTop_{k}",
+                        (kw_cx, aisle_y, ground_z + aisle_h),
+                        (aisle_w, aisle_d + 0.08, 0.04),
+                        col_shelf_dark)
+        # Per-side stacked product boxes — alternating colours
+        # to read as bags of chips / snack bags.
+        product_palettes = [col_chips_orange, col_chips_red,
+                             col_chips_blue, col_chips_green,
+                             col_chips_yellow, col_chips_purple,
+                             col_chips_red, col_chips_orange]
         for sgn in (-1, 1):
-            _make_box_local(
-                f"KwikShop_KwikStop_AisleGoods_{k}_{sgn:+d}",
-                (kw_cx + ax_off + sgn * 0.24,
-                 aisle_y_centre,
-                 ground_z + aisle_h - 0.20),
-                (0.04, aisle_l - 0.4, 0.30),
-                (0.42, 0.65, 0.38, 1.0))
+            # 8 product bags per side at top
+            for j in range(8):
+                px = kw_cx - aisle_w / 2 + 0.4 + j * (aisle_w - 0.8) / 7
+                _make_box_local(
+                    f"KwikShop_KwikStop_Goods_{k}_{sgn:+d}_{j}",
+                    (px,
+                     aisle_y + sgn * (aisle_d / 2 + 0.04),
+                     ground_z + aisle_h - 0.18),
+                    (0.50, 0.10, 0.36),
+                    product_palettes[(j + k * 3) % len(product_palettes)])
+            # Mid-shelf row of products (smaller boxes)
+            for j in range(5):
+                px = kw_cx - aisle_w / 2 + 0.6 + j * (aisle_w - 1.2) / 4
+                _make_box_local(
+                    f"KwikShop_KwikStop_GoodsMid_{k}_{sgn:+d}_{j}",
+                    (px,
+                     aisle_y + sgn * (aisle_d / 2 + 0.03),
+                     ground_z + aisle_h - 0.70),
+                    (0.40, 0.08, 0.30),
+                    product_palettes[(j + k * 2 + 3) % len(product_palettes)])
+
     # Counter sized + positioned so there's a real walkable
     # aisle (~1.0 m) between its NORTH edge and the back wall —
     # the clerk needs to stand somewhere.
@@ -3518,32 +3574,233 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (counter_x, counter_y,
                      ground_z + counter_h / 2),
                     (counter_w, counter_d, counter_h), col_counter)
+    # Counter top surface (slightly darker brown wood)
+    _make_box_local("KwikShop_KwikStop_CounterTop",
+                    (counter_x, counter_y, ground_z + counter_h + 0.01),
+                    (counter_w + 0.04, counter_d + 0.04, 0.02),
+                    (0.32, 0.22, 0.16, 1.0))
     _make_box_local("KwikShop_KwikStop_Register",
                     (counter_x - 0.6, counter_y,
                      ground_z + counter_h + 0.15),
                     (0.55, 0.40, 0.30), col_register)
+    # Scanner / display next to register
+    _make_box_local("KwikShop_KwikStop_Scanner",
+                    (counter_x - 0.6, counter_y - 0.05,
+                     ground_z + counter_h + 0.45),
+                    (0.18, 0.10, 0.20),
+                    (0.42, 0.42, 0.45, 1.0))
+    # Lottery scratch-ticket display (vertical box on counter)
+    _make_box_local("KwikShop_KwikStop_LottoCase",
+                    (counter_x + 0.5, counter_y,
+                     ground_z + counter_h + 0.20),
+                    (0.40, 0.30, 0.36),
+                    (0.95, 0.85, 0.30, 1.0))
+    # Tip jar (small cyl)
+    _make_cyl_local("KwikShop_KwikStop_TipJar",
+                    (counter_x + 0.1, counter_y - 0.20,
+                     ground_z + counter_h + 0.10),
+                    0.06, 0.20,
+                    (0.42, 0.50, 0.58, 1.0), segments=8)
+    # ID-check sign on the counter front
+    _make_box_local("KwikShop_KwikStop_IDSign",
+                    (counter_x, counter_y - counter_d / 2 - 0.04,
+                     ground_z + counter_h * 0.55),
+                    (0.50, 0.04, 0.30),
+                    (0.85, 0.20, 0.18, 1.0))
+    # Cigarette + lottery rack BACKBOARD against back wall
     _make_box_local("KwikShop_KwikStop_BackBoard",
-                    (counter_x, counter_y + counter_d / 2 + 0.05,
+                    (counter_x, counter_y + counter_d / 2 + 0.10,
                      ground_z + 1.6),
-                    (counter_w, 0.05, 1.4),
-                    (0.32, 0.30, 0.28, 1.0))
-    # Cooler against the partition wall to the west (next to arcade)
-    cooler_w = 2.0; cooler_h = 2.4
+                    (counter_w + 0.4, 0.10, 1.6),
+                    col_shelf_dark)
+    # Horizontal shelves on the backboard (cigarette cartons)
+    for shelf_z in (ground_z + 1.30, ground_z + 1.80, ground_z + 2.30):
+        _make_box_local(
+            f"KwikShop_KwikStop_BackShelf_{int(shelf_z*10)}",
+            (counter_x, counter_y + counter_d / 2 + 0.16,
+             shelf_z),
+            (counter_w + 0.3, 0.12, 0.04),
+            (0.55, 0.42, 0.30, 1.0))
+    # 8 cigarette cartons in a row on the middle shelf
+    for k in range(8):
+        cx_c = counter_x - counter_w / 2 + 0.15 + k * (counter_w - 0.3) / 7
+        _make_box_local(f"KwikShop_KwikStop_Cigs_{k}",
+                        (cx_c,
+                         counter_y + counter_d / 2 + 0.15,
+                         ground_z + 1.95),
+                        (0.18, 0.08, 0.12),
+                        (0.85, 0.85, 0.85, 1.0) if k % 3 != 0
+                        else (0.20, 0.45, 0.20, 1.0))
+
+    # ── BIG REFRIGERATED COOLER along the back wall · 3 glass
+    # doors with stacked products visible inside. Replaces the
+    # old narrow cooler.
+    cooler_total_w = 5.0
+    cooler_h = 2.4
+    cooler_d = 0.40
+    cooler_cx = kw_cx - bay_w / 2 + cooler_total_w / 2 + 0.30
+    # Body (the metal back/sides of the cooler unit)
     _make_box_local("KwikShop_KwikStop_Cooler",
-                    (kw_cx - bay_w / 2 + cooler_w / 2 + 0.30,
-                     cy + depth / 2 - 0.18,
+                    (cooler_cx,
+                     cy + depth / 2 - 0.30,
                      ground_z + cooler_h / 2),
-                    (cooler_w, 0.20, cooler_h), col_cooler)
-    _make_box_local("KwikShop_KwikStop_CoolerShelf",
-                    (kw_cx - bay_w / 2 + cooler_w / 2 + 0.30,
-                     cy + depth / 2 - 0.10,
-                     ground_z + cooler_h * 0.55),
-                    (cooler_w - 0.10, 0.04, 0.05),
-                    (0.32, 0.32, 0.32, 1.0))
-    _make_box_local("KwikShop_KwikStop_WireBasket",
-                    (kw_cx + 3.0, cy - depth / 2 + 1.2,
-                     ground_z + 0.30),
-                    (0.40, 0.30, 0.50), col_basket)
+                    (cooler_total_w, cooler_d, cooler_h),
+                    col_cooler_frame)
+    # 3 glass doors with chrome frames
+    for k in range(3):
+        dx = cooler_cx - cooler_total_w / 2 + (k + 0.5) * (cooler_total_w / 3)
+        _make_box_local(
+            f"KwikShop_KwikStop_CoolerDoor_{k}",
+            (dx, cy + depth / 2 - 0.50,
+             ground_z + cooler_h / 2),
+            (cooler_total_w / 3 - 0.08, 0.04, cooler_h - 0.20),
+            col_cooler)
+        # Handle on each door
+        _make_box_local(
+            f"KwikShop_KwikStop_CoolerHandle_{k}",
+            (dx + 0.5, cy + depth / 2 - 0.52,
+             ground_z + 1.20),
+            (0.04, 0.04, 0.80),
+            (0.42, 0.42, 0.45, 1.0))
+        # Stacked product silhouettes visible through the glass
+        # (each door shows 4 rows of cans/bottles)
+        for row in range(4):
+            for col_idx in range(4):
+                pdx = dx - 0.45 + col_idx * 0.30
+                pdz = ground_z + 0.50 + row * 0.40
+                # Alternate colors per row/col
+                cans_palette = [
+                    (0.85, 0.22, 0.20, 1.0),     # red cola
+                    (0.32, 0.55, 0.78, 1.0),     # blue energy
+                    (0.32, 0.55, 0.25, 1.0),     # green soda
+                    (0.95, 0.85, 0.30, 1.0),     # yellow citrus
+                ]
+                _make_box_local(
+                    f"KwikShop_KwikStop_CoolerCan_{k}_{row}_{col_idx}",
+                    (pdx,
+                     cy + depth / 2 - 0.40,
+                     pdz),
+                    (0.20, 0.06, 0.30),
+                    cans_palette[(row + col_idx + k) % 4])
+
+    # ── SLUSHIE MACHINE next to the cooler · 2 colored tanks
+    sl_x = cooler_cx + cooler_total_w / 2 + 0.7
+    sl_y = cy + depth / 2 - 0.60
+    sl_z = ground_z
+    _make_box_local("KwikShop_KwikStop_Slushie_Base",
+                    (sl_x, sl_y, sl_z + 1.10),
+                    (0.85, 0.55, 2.20), col_steel)
+    # 2 transparent-suggestion tanks on top — colored boxes
+    for k, col in enumerate((col_slushie_a, col_slushie_b)):
+        _make_box_local(f"KwikShop_KwikStop_Slushie_Tank_{k}",
+                        (sl_x - 0.25 + k * 0.50, sl_y,
+                         sl_z + 1.85),
+                        (0.40, 0.50, 0.50), col)
+    # Dispenser nozzles
+    for k in range(2):
+        _make_cyl_local(f"KwikShop_KwikStop_Slushie_Nozzle_{k}",
+                        (sl_x - 0.25 + k * 0.50,
+                         sl_y - 0.30, sl_z + 1.55),
+                        0.05, 0.20, col_steel, segments=4)
+
+    # ── COFFEE STATION · brewer + 2 carafes + cream/sugar caddy
+    cof_x = sl_x + 0.95
+    cof_y = cy + depth / 2 - 0.60
+    cof_z = ground_z
+    # Counter under the coffee station
+    _make_box_local("KwikShop_KwikStop_CoffeeCounter",
+                    (cof_x, cof_y, cof_z + 0.40),
+                    (1.20, 0.55, 0.80),
+                    (0.62, 0.55, 0.45, 1.0))
+    # Brewer body
+    _make_box_local("KwikShop_KwikStop_CoffeeBrewer",
+                    (cof_x, cof_y, cof_z + 1.10),
+                    (0.55, 0.50, 0.60), col_steel)
+    # 2 carafes on a warmer
+    for k, ox in enumerate((-0.25, 0.25)):
+        _make_cyl_local(f"KwikShop_KwikStop_CoffeePot_{k}",
+                        (cof_x + ox, cof_y, cof_z + 0.95),
+                        0.08, 0.22, col_coffee_pot, segments=8)
+    # Cream / sugar caddy
+    _make_box_local("KwikShop_KwikStop_CoffeeCaddy",
+                    (cof_x + 0.45, cof_y, cof_z + 0.90),
+                    (0.30, 0.30, 0.20),
+                    (0.42, 0.42, 0.45, 1.0))
+    # Paper cup stack (a tall thin cylinder)
+    _make_cyl_local("KwikShop_KwikStop_CupStack",
+                    (cof_x - 0.45, cof_y, cof_z + 0.85),
+                    0.05, 0.40,
+                    (0.95, 0.95, 0.92, 1.0), segments=8)
+
+    # ── ROLLER GRILL · hot-dog rollers
+    rg_x = cof_x + 0.95
+    rg_y = cy + depth / 2 - 0.60
+    rg_z = ground_z
+    _make_box_local("KwikShop_KwikStop_RollerGrillCounter",
+                    (rg_x, rg_y, rg_z + 0.40),
+                    (0.80, 0.55, 0.80),
+                    (0.62, 0.55, 0.45, 1.0))
+    # Glass case body (housing for the rollers)
+    _make_box_local("KwikShop_KwikStop_RollerGrillCase",
+                    (rg_x, rg_y, rg_z + 1.00),
+                    (0.80, 0.55, 0.60), col_grill_dark)
+    # 4 visible roller bars + 4 hot dog cylinders on them
+    for k in range(4):
+        rrx = rg_x - 0.30 + k * 0.20
+        # Roller bar (horizontal silver cylinder approximated as box)
+        _make_box_local(f"KwikShop_KwikStop_Roller_{k}",
+                        (rrx, rg_y, rg_z + 0.95),
+                        (0.04, 0.40, 0.04), col_steel)
+        # Hot dog on top
+        _make_box_local(f"KwikShop_KwikStop_HotDog_{k}",
+                        (rrx, rg_y, rg_z + 1.05),
+                        (0.06, 0.40, 0.06),
+                        (0.78, 0.55, 0.30, 1.0))
+    # Warm red glow base hint
+    _make_box_local("KwikShop_KwikStop_RollerGrillHeat",
+                    (rg_x, rg_y, rg_z + 0.92),
+                    (0.70, 0.50, 0.02), col_grill_hot)
+
+    # ── ENTRY ZONE props (welcome mat already exists outside;
+    # add interior entrance fixtures)
+    # Wire basket STACK (3 nested) at the entry
+    for k in range(3):
+        _make_box_local(f"KwikShop_KwikStop_WireBasket_{k}",
+                        (kw_cx + 3.0,
+                         cy - depth / 2 + 1.0 + k * 0.04,
+                         ground_z + 0.10 + k * 0.10),
+                        (0.40, 0.30, 0.20), col_basket)
+    # Magazine rack (vertical narrow shelf on the west side of
+    # the entry zone)
+    _make_box_local("KwikShop_KwikStop_MagRack",
+                    (kw_cx - 3.0, cy - depth / 2 + 1.0,
+                     ground_z + 1.0),
+                    (0.40, 0.40, 1.6),
+                    col_shelf_dark)
+    # 6 magazines visible on the rack (small colored boxes)
+    mag_colours = [(0.85, 0.22, 0.20, 1.0), (0.95, 0.85, 0.30, 1.0),
+                    (0.32, 0.55, 0.78, 1.0), (0.62, 0.42, 0.78, 1.0),
+                    (0.95, 0.55, 0.20, 1.0), (0.42, 0.62, 0.32, 1.0)]
+    for k in range(6):
+        _make_box_local(f"KwikShop_KwikStop_Mag_{k}",
+                        (kw_cx - 3.0, cy - depth / 2 + 0.78,
+                         ground_z + 0.30 + k * 0.25),
+                        (0.30, 0.04, 0.22),
+                        mag_colours[k % len(mag_colours)])
+    # Floor entry mat (interior side)
+    _make_box_local("KwikShop_KwikStop_FloorMat",
+                    (kw_cx, cy - depth / 2 + 0.6,
+                     ground_z + 0.06),
+                    (2.4, 1.2, 0.02), col_floor_mat)
+    # ── CEILING FLUORESCENT FIXTURES — 4 long boxes hanging
+    # below the roof (visual only, no Light3D — those go in the
+    # scene file)
+    for k in range(4):
+        fx_l = kw_cx - 3.0 + k * 2.0
+        _make_box_local(f"KwikShop_KwikStop_Fluo_{k}",
+                        (fx_l, cy, ground_z + 3.4),
+                        (1.6, 0.20, 0.10),
+                        (0.95, 0.94, 0.90, 1.0))
 
     # LAUNDROMAT bay — row of washing machines + dryers + folding
     # table. Two rows: 5 washers on the south side, 5 dryers on
