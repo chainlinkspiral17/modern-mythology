@@ -366,11 +366,12 @@ ROAD_CORRIDORS = [
         (   0, 340, +20.0),
     ], 5.0, 12.0),
 
-    # OT Park access — from Horizon Dr north to OT Park south entry
+    # OT Park access — from Horizon Dr north to OT Park south entry.
+    # Aligned with build_ot_park_access_road actual polyline.
     ("OTLink", [
-        (-260, -10, -1.0),   # Horizon Dr
+        (-260, -15, -1.0),   # Horizon Dr (existing emit y)
         (-260,  20,  0.0),
-        (-260,  55,  +1.5),  # park entry beacon
+        (-260,  55, +1.5),   # park entry beacon
     ], 4.0, 12.0),
 
     # Hospital access — Horizon → Hospital lot
@@ -439,8 +440,9 @@ ROAD_CORRIDORS = [
 
     # ── CHAPTER-1 COMMERCIAL FRONTAGE · the E-W road that runs in
     # front of NexCorp Gas & Go, Kwik Stop, Diner, Cosmic Comics.
-    # SouthComm platform (-9.0). Wider corridor because the lot
-    # entries open onto it.
+    # SouthComm platform (-9.0). Wider corridor (8m road + 1m
+    # buffer = 5m half-width) to match the existing emit in
+    # build_commercial_cluster.
     ("Ch1Frontage", [
         (-120, -392, -9.0),
         ( -80, -392, -9.0),
@@ -448,8 +450,8 @@ ROAD_CORRIDORS = [
         (   0, -392, -9.0),
         (  40, -392, -9.0),
         (  80, -392, -9.0),
-        ( 100, -392, -9.0),
-    ], 5.0, 14.0),
+        ( 110, -392, -9.0),
+    ], 6.0, 16.0),
 ]
 
 
@@ -9809,7 +9811,8 @@ def build_connector_roads():
         ("TSLink",      "TSLink_"),
         ("DILink",      "DILink_"),
         ("CCLink",      "CCLink_"),
-        ("OTLink",      "OTLink_"),
+        # OTLink road quads are emitted by build_ot_park_access_road
+        # (existing). The OTLink corridor still carves terrain.
         ("HospLink",    "HospLink_"),
         ("NXHQLink",    "NXHQLink_"),
         # Ch1Frontage road quads are emitted by build_commercial_
