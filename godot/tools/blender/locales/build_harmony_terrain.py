@@ -1960,13 +1960,16 @@ def build_oliver_tree_memorial_park():
     else:
         rill_sx, rill_sy = rill_concrete_w, rill_len_y + 1.0
         water_sx, water_sy = rill_w, rill_len_y + 0.2
+    # Concrete pad sits on the ground (top at +0.10) and water
+    # sits on TOP of the concrete (was at rill_ground - 0.18,
+    # buried under the terrain mesh like the OT pool was).
     _make_box_local("OTPark_Rill_Concrete",
-                    (rill_mid_x, rill_mid_y, rill_ground - 0.10),
-                    (rill_sx, rill_sy, 0.30),
+                    (rill_mid_x, rill_mid_y, rill_ground + 0.05),
+                    (rill_sx, rill_sy, 0.10),
                     COL_POOL_RIM)
     _make_box_local("OTPark_Rill_Water",
-                    (rill_mid_x, rill_mid_y, rill_ground - 0.18),
-                    (water_sx, water_sy, 0.10),
+                    (rill_mid_x, rill_mid_y, rill_ground + 0.12),
+                    (water_sx, water_sy, 0.04),
                     (0.30, 0.52, 0.62, 1.0))
 
     # ── PERGOLA · over the north radial path approaching the
