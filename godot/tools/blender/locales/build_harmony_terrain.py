@@ -8495,6 +8495,34 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                     (gdoor_cx, gdoor_cy, ground_z + 2.50),
                     gw_size, col_window)
 
+    # ── FOUNDATION PLANTINGS · evergreen shrubs along the front
+    # wall (between the porch posts on either side of the door).
+    # Standard American suburban yard detail — every house has 'em.
+    col_shrub = palette.get('shrub', (0.28, 0.50, 0.22, 1.0))
+    col_mulch = palette.get('mulch', (0.42, 0.30, 0.20, 1.0))
+    # Front wall midline location
+    front_mid_x = main_cx - fx * main_d / 2
+    front_mid_y = main_cy - fy * main_d / 2
+    # Shrubs offset 0.9m out from the front wall
+    shrub_out_x = -fx * 0.9
+    shrub_out_y = -fy * 0.9
+    # Along-the-front placements (use perp axis for spread)
+    # Place 4 shrubs: 2 either side of the porch (skip the porch
+    # spot in the middle if porch exists; simpler — just offset all
+    # 4 to either side at -2.2, -1.4, +1.4, +2.2 along the wall)
+    for k, along in enumerate((-2.4, -1.5, 1.5, 2.4)):
+        sx = front_mid_x + shrub_out_x + perp_x * along
+        sy = front_mid_y + shrub_out_y + perp_y * along
+        # Mulch ring (small low cylinder)
+        _make_cyl_local(f"{name}_Found_Mulch_{k}",
+                        (sx, sy, ground_z + 0.08),
+                        0.45, 0.10, col_mulch, segments=6)
+        # Shrub (squashed sphere)
+        _make_sphere_low_local(f"{name}_Found_Shrub_{k}",
+                                (sx, sy, ground_z + 0.45),
+                                0.40, col_shrub,
+                                rings=2, segments=6)
+
 
 def _build_driveway(name, house_cx, house_cy, ground_z, facing,
                      curb_x, curb_y, color=(0.18, 0.18, 0.20, 1.0)):
