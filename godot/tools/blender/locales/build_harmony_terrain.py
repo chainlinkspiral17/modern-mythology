@@ -6463,6 +6463,103 @@ def build_phase3_crane():
                     (0.42, 0.42, 0.45, 1.0))
 
 
+def build_auto_dealership():
+    """Big used-car dealership lot in EastComm south of the
+    big-box pad. Long row of triangle flag bunting + showroom +
+    a fleet of 16 inventory cars in 2 rows.
+    """
+    cx, cy = 480.0, -260.0
+    ground_z = mesh_z(cx, cy)
+    # Asphalt slab
+    lot_w = 60.0
+    lot_d = 28.0
+    sv = []
+    for (lx, ly) in [(cx - lot_w / 2, cy - lot_d / 2),
+                     (cx + lot_w / 2, cy - lot_d / 2),
+                     (cx + lot_w / 2, cy + lot_d / 2),
+                     (cx - lot_w / 2, cy + lot_d / 2)]:
+        sv.append((lx, ly, mesh_z(lx, ly) + 0.04))
+    _finalize_mesh("Auto_Lot", sv, [[0, 1, 2, 3]],
+                    (0.22, 0.22, 0.24, 1.0))
+
+    # 16 inventory cars · 2 rows of 8
+    car_palette = [
+        (0.85, 0.20, 0.18, 1.0), (0.62, 0.62, 0.64, 1.0),
+        (0.18, 0.32, 0.55, 1.0), (0.32, 0.55, 0.25, 1.0),
+        (0.20, 0.20, 0.22, 1.0), (0.95, 0.85, 0.30, 1.0),
+        (0.78, 0.74, 0.66, 1.0), (0.92, 0.55, 0.20, 1.0),
+        (0.62, 0.42, 0.78, 1.0), (0.42, 0.62, 0.32, 1.0),
+        (0.18, 0.18, 0.22, 1.0), (0.95, 0.94, 0.90, 1.0),
+        (0.55, 0.32, 0.22, 1.0), (0.32, 0.42, 0.55, 1.0),
+        (0.65, 0.68, 0.78, 1.0), (0.85, 0.78, 0.62, 1.0),
+    ]
+    car_idx = 0
+    for row in (-1, 1):
+        row_cy = cy + row * 6.0
+        for k in range(8):
+            cpx = cx - lot_w / 2 + 5.0 + k * 7.0
+            cpy = row_cy
+            cpz = mesh_z(cpx, cpy)
+            face = '+Y' if row < 0 else '-Y'
+            _build_parked_car(f"Auto_Car_{car_idx}",
+                              cpx, cpy, cpz,
+                              car_palette[car_idx], facing=face)
+            car_idx += 1
+
+    # Showroom building at the east end
+    sh_x = cx + lot_w / 2 + 10.0
+    sh_y = cy
+    sh_z = mesh_z(sh_x, sh_y)
+    sh_w, sh_d, sh_h = 14.0, 22.0, 5.5
+    col_sh_wall = (0.32, 0.42, 0.55, 1.0)
+    col_sh_glass = (0.48, 0.58, 0.72, 1.0)
+    col_sh_roof = (0.32, 0.30, 0.28, 1.0)
+    _make_box_local("Auto_Show_Slab",
+                    (sh_x, sh_y, sh_z + 0.05),
+                    (sh_w + 0.4, sh_d + 0.4, 0.10),
+                    (0.78, 0.74, 0.66, 1.0))
+    # 3 solid walls
+    _make_box_local("Auto_Show_WallN",
+                    (sh_x, sh_y + sh_d / 2 - 0.10,
+                     sh_z + sh_h / 2),
+                    (sh_w, 0.20, sh_h), col_sh_wall)
+    _make_box_local("Auto_Show_WallS",
+                    (sh_x, sh_y - sh_d / 2 + 0.10,
+                     sh_z + sh_h / 2),
+                    (sh_w, 0.20, sh_h), col_sh_wall)
+    _make_box_local("Auto_Show_WallE",
+                    (sh_x + sh_w / 2 - 0.10, sh_y,
+                     sh_z + sh_h / 2),
+                    (0.20, sh_d, sh_h), col_sh_wall)
+    # West face is BIG plate glass (showroom window)
+    _make_box_local("Auto_Show_GlassW",
+                    (sh_x - sh_w / 2 + 0.05, sh_y,
+                     sh_z + sh_h / 2),
+                    (0.10, sh_d - 0.4, sh_h * 0.95), col_sh_glass)
+    _make_box_local("Auto_Show_Roof",
+                    (sh_x, sh_y, sh_z + sh_h + 0.10),
+                    (sh_w + 0.4, sh_d + 0.4, 0.20), col_sh_roof)
+    # Showroom interior: ONE shiny featured car
+    feat_x = sh_x + 0.5
+    feat_y = sh_y
+    feat_z = mesh_z(feat_x, feat_y)
+    _build_parked_car("Auto_FeaturedCar",
+                       feat_x, feat_y, feat_z,
+                       (0.85, 0.20, 0.18, 1.0), facing='-X')
+    # Big SIGN pylon at the SW corner
+    py_x = cx - lot_w / 2 - 4.0
+    py_y = cy
+    py_z = mesh_z(py_x, py_y)
+    _make_cyl_local("Auto_PylonPole",
+                    (py_x, py_y, py_z + 5.0),
+                    0.30, 10.0,
+                    (0.62, 0.62, 0.64, 1.0), segments=6)
+    _make_box_local("Auto_PylonSign",
+                    (py_x, py_y, py_z + 9.5),
+                    (4.0, 0.20, 2.4),
+                    (0.18, 0.32, 0.55, 1.0))
+
+
 def build_self_storage():
     """SafeKeep Self-Storage — long parallel rows of orange
     roll-up units. Sits in EastComm south of the big-box pad.
@@ -9408,6 +9505,7 @@ def main():
     build_arterial_sidewalks()
     build_crosswalks_and_stops()
     build_self_storage()
+    build_auto_dealership()
     build_phase3_crane()
     build_police_station()
     build_high_school_field()
