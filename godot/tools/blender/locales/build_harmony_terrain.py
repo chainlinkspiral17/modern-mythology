@@ -5620,6 +5620,123 @@ def build_east_commercial_box():
                     (0.32, 0.32, 0.36, 1.0))
 
 
+def build_water_tower_and_lines():
+    """High-visibility infrastructure landmarks:
+      · WATER TOWER on the country-club hilltop just east of
+        spawn, visible across the district
+      · 3 HIGH-VOLTAGE TRANSMISSION TOWERS running west-east
+        through the south side of HCE (parallel to but well
+        south of Horizon Drive)
+    """
+    # ── WATER TOWER at (220, 380) — east of spawn on CC hilltop
+    wt_x, wt_y = 220.0, 380.0
+    wt_z = mesh_z(wt_x, wt_y)
+    col_steel = (0.62, 0.62, 0.64, 1.0)
+    col_tank = (0.85, 0.85, 0.82, 1.0)
+    # Three support legs splayed outward, 22 m tall
+    leg_h = 22.0
+    leg_r = 5.0
+    for k, ang_deg in enumerate((0, 120, 240)):
+        ang = math.radians(ang_deg)
+        lx = wt_x + math.cos(ang) * leg_r
+        ly = wt_y + math.sin(ang) * leg_r
+        # Tilt-approximated as a vertical pole at the splayed
+        # foot (true tilt would need oriented cyl)
+        _make_cyl_local(f"WT_Leg_{k}",
+                        (lx, ly, wt_z + leg_h / 2),
+                        0.18, leg_h, col_steel, segments=4)
+    # Central vertical pole going up to the tank
+    _make_cyl_local("WT_CenterPole",
+                    (wt_x, wt_y, wt_z + leg_h / 2),
+                    0.22, leg_h, col_steel, segments=6)
+    # Cross-bracing — 3 horizontal rings at heights 6 m, 12 m,
+    # 18 m. Approximated as flat ring boxes around the centre.
+    for ring_z in (6.0, 12.0, 18.0):
+        _make_box_local(f"WT_BraceRing_{int(ring_z)}",
+                        (wt_x, wt_y, wt_z + ring_z),
+                        (leg_r * 2 + 0.4, 0.10, 0.10), col_steel)
+        _make_box_local(f"WT_BraceRing_{int(ring_z)}_Y",
+                        (wt_x, wt_y, wt_z + ring_z),
+                        (0.10, leg_r * 2 + 0.4, 0.10), col_steel)
+    # The tank itself — squat cylinder atop the central pole
+    tank_h = 8.0
+    tank_r = 5.5
+    _make_cyl_local("WT_Tank",
+                    (wt_x, wt_y, wt_z + leg_h + tank_h / 2),
+                    tank_r, tank_h, col_tank, segments=12)
+    # Conical top approximated as a smaller cylinder
+    _make_cyl_local("WT_TankTop",
+                    (wt_x, wt_y, wt_z + leg_h + tank_h + 0.5),
+                    tank_r * 0.8, 1.0, col_tank, segments=12)
+    # Red beacon on top
+    _make_box_local("WT_Beacon",
+                    (wt_x, wt_y, wt_z + leg_h + tank_h + 1.3),
+                    (0.40, 0.40, 0.40),
+                    (0.85, 0.20, 0.18, 1.0))
+
+    # ── 3 TRANSMISSION TOWERS — power lines crossing south HCE
+    tt_specs = [
+        ("PL_TwrW", -350, -290),
+        ("PL_TwrM",    0, -300),
+        ("PL_TwrE",  350, -290),
+    ]
+    col_pylon = (0.42, 0.42, 0.45, 1.0)
+    pylon_h = 28.0
+    pylon_base_w = 7.0
+    pylon_top_w = 2.0
+    pylon_pts = []
+    for tag, tx, ty in tt_specs:
+        tz = mesh_z(tx, ty)
+        # 4 corner legs going from splayed base to narrow top
+        # Approximate the lattice as a single vertical box and
+        # decorative crossbars.
+        _make_box_local(f"{tag}_Body",
+                        (tx, ty, tz + pylon_h / 2),
+                        (pylon_top_w, pylon_top_w, pylon_h),
+                        col_pylon)
+        # Splay legs at base
+        for sgn_x in (-1, 1):
+            for sgn_y in (-1, 1):
+                _make_box_local(
+                    f"{tag}_Leg_{sgn_x:+d}_{sgn_y:+d}",
+                    (tx + sgn_x * pylon_base_w / 2,
+                     ty + sgn_y * pylon_base_w / 2,
+                     tz + pylon_h * 0.30 / 2),
+                    (0.30, 0.30, pylon_h * 0.30),
+                    col_pylon)
+        # Crossarm at the TOP carrying 3 wire mounts
+        _make_box_local(f"{tag}_Crossarm",
+                        (tx, ty, tz + pylon_h - 1.0),
+                        (10.0, 0.30, 0.30), col_pylon)
+        # 3 insulator stubs hanging from the crossarm
+        for k_ins, dx in enumerate((-4.0, 0.0, 4.0)):
+            _make_cyl_local(f"{tag}_Insulator_{k_ins}",
+                            (tx + dx, ty, tz + pylon_h - 1.6),
+                            0.10, 1.0,
+                            (0.88, 0.84, 0.72, 1.0), segments=4)
+        pylon_pts.append((tx, ty, tz + pylon_h - 2.6))
+
+    # Wires between consecutive towers (3 wires per span, one
+    # per insulator position)
+    for k in range(len(pylon_pts) - 1):
+        x0, y0, z0 = pylon_pts[k]
+        x1, y1, z1 = pylon_pts[k + 1]
+        for offx in (-4.0, 0.0, 4.0):
+            mid_x = (x0 + x1) / 2 + offx
+            mid_y = (y0 + y1) / 2
+            mid_z = (z0 + z1) / 2 - 2.0     # sag
+            _build_oriented_handle(
+                f"PL_Wire_{k}_{int(offx)}_A",
+                (x0 + offx, y0, z0),
+                (mid_x, mid_y, mid_z),
+                radius=0.05, color=(0.08, 0.08, 0.08, 1.0))
+            _build_oriented_handle(
+                f"PL_Wire_{k}_{int(offx)}_B",
+                (mid_x, mid_y, mid_z),
+                (x1 + offx, y1, z1),
+                radius=0.05, color=(0.08, 0.08, 0.08, 1.0))
+
+
 def build_church_cemetery():
     """Small graveyard beside the church on Harmony Boulevard.
     24 headstones in a regular grid, a wrought-iron fence
@@ -8293,6 +8410,7 @@ def main():
     build_bus_stops()
     build_arterial_lighting()
     build_church_cemetery()
+    build_water_tower_and_lines()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
