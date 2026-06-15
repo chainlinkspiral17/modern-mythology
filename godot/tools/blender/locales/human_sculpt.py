@@ -394,11 +394,13 @@ def _build_arms(name, base_x, base_y, shoulder_z, s,
         hand_y = shoulder_y
         hand_z = shoulder_pz - arm_h
         if pose == 'right_mic' and side == 'R':
-            # Right arm bent at elbow · hand at MOUTH HEIGHT (not
-            # above the head). Hand at shoulder + 0.20*s = chin plane.
-            hand_x = shoulder_x + 0.04 * s
-            hand_y = shoulder_y + fwd_y * (arm_h * 0.55)
-            hand_z = shoulder_pz + 0.20 * s
+            # Hand at CHIN level, lower than before (was shoulder
+            # + 0.20*s which put the mic above the head). Now at
+            # shoulder + 0.10*s so the mic + ball above the hand
+            # reach UP to the mouth, not OVER the head.
+            hand_x = shoulder_x + 0.05 * s
+            hand_y = shoulder_y + fwd_y * (arm_h * 0.50)
+            hand_z = shoulder_pz + 0.10 * s
         elif pose == 'arms_out':
             # Both arms angled outward ~20°
             hand_x = shoulder_x + sign * (arm_h * 0.35)

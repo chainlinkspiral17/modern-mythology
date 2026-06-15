@@ -1025,31 +1025,33 @@ def build_oliver_tree_memorial():
     COL_PLINTH_SHAFT = (0.78, 0.74, 0.66, 1.0)   # cream main
     COL_PLINTH_CAP = (0.85, 0.80, 0.70, 1.0)     # lighter cap
     COL_PLAQUE = (0.65, 0.48, 0.20, 1.0)
-    # Wider stepped base
-    base_w, base_d, base_h = 3.4, 3.0, 0.5
+    # Wider + TALLER plinth so the 4.5 m figure doesn't dwarf its
+    # base. Total height 2.8 m, base footprint 4.4 × 3.8 m.
+    base_w, base_d, base_h = 4.4, 3.8, 0.7
     base_z = ground_z + base_h / 2
     _make_box_local("OT_Plinth_Base",
                     (sx, sy, base_z),
                     (base_w, base_d, base_h),
                     COL_PLINTH_BASE)
-    # Tapered shaft — middle tier
-    shaft_w, shaft_d, shaft_h = 2.6, 2.2, 1.2
+    # Tapered shaft — middle tier (taller, slightly wider)
+    shaft_w, shaft_d, shaft_h = 3.4, 2.9, 1.8
     shaft_z = ground_z + base_h + shaft_h / 2
     _make_box_local("OT_Plinth",
                     (sx, sy, shaft_z),
                     (shaft_w, shaft_d, shaft_h),
                     COL_PLINTH_SHAFT)
     # Cap overhang — light stone moulding
-    cap_w, cap_d, cap_h = 2.9, 2.5, 0.20
+    cap_w, cap_d, cap_h = 3.8, 3.3, 0.30
     cap_z = ground_z + base_h + shaft_h + cap_h / 2
     _make_box_local("OT_Plinth_Cap",
                     (sx, sy, cap_z),
                     (cap_w, cap_d, cap_h),
                     COL_PLINTH_CAP)
-    # Brass plaque on the shaft front (south face)
+    # Brass plaque on the shaft front (south face) · scales with
+    # the larger shaft.
     _make_box_local("OT_Plaque",
                     (sx, sy - shaft_d / 2 - 0.04, shaft_z),
-                    (1.8, 0.08, 0.80),
+                    (2.4, 0.08, 1.10),
                     COL_PLAQUE)
     # Plinth corner detail — small column stubs at each base corner
     for (cx_off, cy_off) in [(-base_w / 2 + 0.25, -base_d / 2 + 0.25),
