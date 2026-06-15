@@ -8406,6 +8406,45 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
         rfaces.append([1, 2, 5])
     _finalize_mesh(f"{name}_Roof", rverts, rfaces, col_roof)
 
+    # ── ROOF DETAILS · chimney + vent pipe. Deterministic seed by
+    # house centre so each house gets a consistent (but varied)
+    # chimney position + height + vent.
+    seed_roof = (int(cx * 11) + int(cy * 7)) % 100
+    col_brick = palette.get('chimney', (0.62, 0.42, 0.30, 1.0))
+    col_chim_cap = (0.32, 0.32, 0.34, 1.0)
+    # Chimney placement: 25% in from one end of the ridge line.
+    # The ridge runs along the perpendicular-to-facing axis (so
+    # the ridge line is at main_cy/main_cx depending on facing).
+    chim_side = -1 if (seed_roof % 2 == 0) else 1
+    chim_along = chim_side * (main_w / 2 - 1.5)
+    chim_h = 1.4 + (seed_roof % 4) * 0.15
+    if abs(fx) > 0.5:
+        # Facing E/W: ridge runs along Y, perp along Y
+        chim_x = main_cx
+        chim_y = main_cy + chim_along
+    else:
+        chim_x = main_cx + chim_along
+        chim_y = main_cy
+    chim_base_z = ground_z + main_h + ridge_h * 0.55
+    _make_box_local(f"{name}_Chimney",
+                    (chim_x, chim_y, chim_base_z + chim_h / 2),
+                    (0.55, 0.55, chim_h), col_brick)
+    # Chimney cap (slightly wider grey topper)
+    _make_box_local(f"{name}_ChimneyCap",
+                    (chim_x, chim_y, chim_base_z + chim_h + 0.06),
+                    (0.70, 0.70, 0.12), col_chim_cap)
+    # Roof vent pipe — opposite end of ridge from chimney
+    vent_along = -chim_side * (main_w / 2 - 2.5)
+    if abs(fx) > 0.5:
+        vent_x = main_cx
+        vent_y = main_cy + vent_along
+    else:
+        vent_x = main_cx + vent_along
+        vent_y = main_cy
+    _make_cyl_local(f"{name}_RoofVent",
+                    (vent_x, vent_y, chim_base_z + 0.40),
+                    0.06, 0.80, col_chim_cap, segments=6)
+
     # Front door at the front face of the main house, offset
     # toward the garage corner. front_off is always main_d/2
     # because main_d is the depth-along-facing in BOTH axes
