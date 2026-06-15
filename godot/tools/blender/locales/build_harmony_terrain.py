@@ -10755,6 +10755,80 @@ def build_arterial_lighting():
                             prefix)
 
 
+def build_culdesac_islands():
+    """Landscape island in the centre of each cul-de-sac bulb.
+    Standard suburban detail: a 2-3m circular curb with a small
+    tree, mulch and ornamental shrub. The asphalt loop circles
+    around it (we don't carve the asphalt — the bulb mesh
+    underneath stays, the island sits on TOP of the asphalt at
+    the bulb centre).
+    """
+    COL_CURB = (0.78, 0.76, 0.72, 1.0)   # concrete curb
+    COL_MULCH = (0.42, 0.30, 0.20, 1.0)
+    COL_GRASS = (0.32, 0.55, 0.25, 1.0)
+    COL_TRUNK = (0.30, 0.22, 0.16, 1.0)
+    COL_CANOPY = (0.30, 0.55, 0.25, 1.0)
+    COL_FLOWER = (0.95, 0.42, 0.62, 1.0)
+
+    cul_specs = [
+        # (label, cx, cy, island_r)
+        ("ECDS",  320,  220, 3.0),
+        ("P2",     70, -210, 3.0),
+    ]
+    for label, cx, cy, isl_r in cul_specs:
+        z = mesh_z(cx, cy)
+        # Concrete curb ring (low ring slightly larger than island)
+        seg = 12
+        curb_verts = []
+        for i in range(seg):
+            ang = 2.0 * math.pi * i / seg
+            curb_verts.append((cx + math.cos(ang) * isl_r,
+                                cy + math.sin(ang) * isl_r,
+                                z + 0.06))
+            curb_verts.append((cx + math.cos(ang) * (isl_r + 0.20),
+                                cy + math.sin(ang) * (isl_r + 0.20),
+                                z + 0.18))
+            curb_verts.append((cx + math.cos(ang) * (isl_r + 0.20),
+                                cy + math.sin(ang) * (isl_r + 0.20),
+                                z + 0.06))
+            curb_verts.append((cx + math.cos(ang) * isl_r,
+                                cy + math.sin(ang) * isl_r,
+                                z + 0.18))
+        # Build curb as a ring of quad faces
+        curb_faces = []
+        for i in range(seg):
+            ni = (i + 1) % seg
+            a = i * 4; b = ni * 4
+            # outer wall
+            curb_faces.append([a + 1, b + 1, b + 3, a + 3])
+            # top
+            curb_faces.append([a + 3, b + 3, b + 0, a + 0])
+        _finalize_mesh(f"CulIs_{label}_Curb", curb_verts, curb_faces,
+                        COL_CURB)
+        # Mulch disc inside
+        _make_cyl_local(f"CulIs_{label}_Mulch",
+                        (cx, cy, z + 0.16),
+                        isl_r - 0.05, 0.06, COL_MULCH, segments=12)
+        # Centerpiece tree
+        _make_cyl_local(f"CulIs_{label}_Trunk",
+                        (cx, cy, z + 1.6),
+                        0.18, 3.2, COL_TRUNK, segments=6)
+        _make_sphere_low_local(f"CulIs_{label}_Canopy",
+                                (cx, cy, z + 3.8),
+                                1.5, COL_CANOPY, rings=3, segments=8)
+        # 4 flower clumps around the trunk
+        for j in range(4):
+            ang = math.pi / 2 * j + math.pi / 4
+            fx = cx + math.cos(ang) * (isl_r * 0.55)
+            fy = cy + math.sin(ang) * (isl_r * 0.55)
+            _make_sphere_low_local(
+                f"CulIs_{label}_Flower_{j}",
+                (fx, fy, z + 0.40),
+                0.30,
+                COL_FLOWER if j % 2 == 0 else (0.95, 0.85, 0.42, 1.0),
+                rings=2, segments=6)
+
+
 def build_utility_poles():
     """Wooden telephone/power poles along arterials with overhead
     wires strung between them. Defining feature of American
@@ -15282,6 +15356,7 @@ def main():
     build_arterial_lighting()
     build_fire_hydrants()
     build_utility_poles()
+    build_culdesac_islands()
     build_arterial_trees()
     build_church_cemetery()
     build_church_lot_and_school_playground()
