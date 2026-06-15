@@ -3471,6 +3471,42 @@ def _build_diner(cx, cy, ground_z):
                     (cx, cy + depth * 0.18,
                      ground_z + counter_h / 2),
                     (counter_w, counter_d, counter_h), col_counter)
+    # Countertop dressings — alternating plates, ketchup bottle,
+    # salt + pepper shakers, coffee mug, napkin holder. Spaced
+    # along the counter so each stool gets some clutter in front
+    # of it.
+    counter_top_z = ground_z + counter_h + 0.04
+    counter_top_y = cy + depth * 0.18 - 0.20      # toward customer side
+    for k in range(5):
+        px = cx - counter_w * 0.4 + k * counter_w * 0.2
+        if k % 2 == 0:
+            # Plate + ketchup bottle pair
+            _make_cyl_local(f"{name_prefix}_Top_Plate_{k}",
+                            (px, counter_top_y, counter_top_z),
+                            0.13, 0.02,
+                            (0.95, 0.95, 0.92, 1.0), segments=8)
+            _make_cyl_local(f"{name_prefix}_Top_Ketchup_{k}",
+                            (px + 0.18, counter_top_y, counter_top_z + 0.10),
+                            0.04, 0.20,
+                            (0.78, 0.18, 0.18, 1.0), segments=8)
+        else:
+            # Coffee mug + salt + pepper pair
+            _make_cyl_local(f"{name_prefix}_Top_Mug_{k}",
+                            (px, counter_top_y, counter_top_z + 0.04),
+                            0.05, 0.08,
+                            (0.92, 0.90, 0.84, 1.0), segments=8)
+            for sgn, col in ((-1, (0.95, 0.95, 0.92, 1.0)),
+                              (1, (0.30, 0.28, 0.26, 1.0))):
+                _make_cyl_local(
+                    f"{name_prefix}_Top_Shaker_{k}_{sgn:+d}",
+                    (px + 0.20 + sgn * 0.05, counter_top_y, counter_top_z + 0.05),
+                    0.025, 0.10, col, segments=6)
+    # Napkin holder at the centre (between stools)
+    _make_box_local(f"{name_prefix}_Top_NapkinHolder",
+                    (cx, counter_top_y - 0.10, counter_top_z + 0.06),
+                    (0.10, 0.12, 0.12),
+                    (0.62, 0.62, 0.64, 1.0))
+
     # 5 stools in front of the counter
     for k in range(5):
         sx = cx - counter_w * 0.4 + k * counter_w * 0.2
