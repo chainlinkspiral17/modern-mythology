@@ -5784,15 +5784,17 @@ def build_strip_mall_nightclub():
                      ground_z + height / 2),
                     (wall_t, depth, height), col_wall)
 
-    # Hot-pink accent stripe at mid-height around the building
+    # Hot-pink accent stripe at mid-height — painted on the
+    # EXTERIOR face of each wall (was at depth/2 - 0.10 which
+    # placed it inside the wall thickness).
     for sgn_y, tag in ((-1, 'S'), (+1, 'N')):
         _make_box_local(f"{name_prefix}_PinkStripe_{tag}",
-                        (cx, cy + sgn_y * (depth / 2 - 0.10),
+                        (cx, cy + sgn_y * (depth / 2 + 0.05),
                          ground_z + height * 0.65),
                         (width, 0.06, 0.22), col_trim)
     for sgn_x, tag in ((-1, 'W'), (+1, 'E')):
         _make_box_local(f"{name_prefix}_PinkStripe_{tag}",
-                        (cx + sgn_x * (width / 2 - 0.10), cy,
+                        (cx + sgn_x * (width / 2 + 0.05), cy,
                          ground_z + height * 0.65),
                         (0.06, depth, 0.22), col_trim)
 
