@@ -8755,6 +8755,67 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                                 0.07, 0.10,
                                 col_lid_dark, segments=4)
 
+    # ── BACKYARD PRIVACY FENCE · wooden planks along back + sides
+    # of the lot. Standard 1.8m tall wood-stain fence, U-shape with
+    # gaps for the house. Reads from any angle as "this property
+    # has a defined backyard."
+    col_fence = palette.get('fence', (0.55, 0.40, 0.26, 1.0))
+    col_fence_post = palette.get('fence_post', (0.42, 0.30, 0.20, 1.0))
+    FENCE_H = 1.80
+    fence_plank_t = 0.06
+    # Back-yard centre: behind the house along -facing
+    by_back_off = 11.0        # m behind house centre
+    by_side_off = 9.0         # m to either side of house centre
+    by_back_x = cx - fx * by_back_off
+    by_back_y = cy - fy * by_back_off
+    # BACK fence segment — perpendicular to facing, spanning
+    # 2 * by_side_off wide
+    back_z = mesh_z(by_back_x, by_back_y)
+    if abs(fx) > 0.5:
+        # Facing E/W: back fence is along Y
+        _make_box_local(f"{name}_FenceBack",
+                        (by_back_x, by_back_y, back_z + FENCE_H / 2),
+                        (fence_plank_t, by_side_off * 2, FENCE_H),
+                        col_fence)
+    else:
+        _make_box_local(f"{name}_FenceBack",
+                        (by_back_x, by_back_y, back_z + FENCE_H / 2),
+                        (by_side_off * 2, fence_plank_t, FENCE_H),
+                        col_fence)
+    # SIDE fence segments — parallel to facing, going from back
+    # fence toward the front of the house (stop ~main_d/2 + 2 from
+    # house centre so they don't run into the front yard)
+    side_len = by_back_off - main_d / 2 - 1.0
+    side_mid_along = -fx * (by_back_off - side_len / 2)
+    side_mid_perp = by_side_off
+    for s_sgn in (-1, 1):
+        side_cx = cx + side_mid_along + perp_x * s_sgn * side_mid_perp
+        side_cy = cy - fy * (by_back_off - side_len / 2) \
+                  + perp_y * s_sgn * side_mid_perp
+        side_z = mesh_z(side_cx, side_cy)
+        if abs(fx) > 0.5:
+            side_size = (side_len, fence_plank_t, FENCE_H)
+        else:
+            side_size = (fence_plank_t, side_len, FENCE_H)
+        _make_box_local(f"{name}_FenceSide_{s_sgn:+d}",
+                        (side_cx, side_cy, side_z + FENCE_H / 2),
+                        side_size, col_fence)
+    # Corner posts at the 4 turning points of the fence U
+    for c_sgn in (-1, 1):
+        cp_x = by_back_x + perp_x * c_sgn * by_side_off
+        cp_y = by_back_y + perp_y * c_sgn * by_side_off
+        cp_z = mesh_z(cp_x, cp_y)
+        _make_box_local(f"{name}_FencePost_Back_{c_sgn:+d}",
+                        (cp_x, cp_y, cp_z + FENCE_H / 2),
+                        (0.16, 0.16, FENCE_H + 0.10), col_fence_post)
+        # Front-end corner posts (where side fences stop)
+        fp_x = cx - fx * (main_d / 2 + 1.0) + perp_x * c_sgn * by_side_off
+        fp_y = cy - fy * (main_d / 2 + 1.0) + perp_y * c_sgn * by_side_off
+        fp_z = mesh_z(fp_x, fp_y)
+        _make_box_local(f"{name}_FencePost_Front_{c_sgn:+d}",
+                        (fp_x, fp_y, fp_z + FENCE_H / 2),
+                        (0.16, 0.16, FENCE_H + 0.10), col_fence_post)
+
     # ── XERISCAPE LANDSCAPE ROCKS · 1-3 accent boulders in the
     # front yard on ~30% of houses. Texas hill-country / drought-
     # tolerant front-yard staple. Boulders are squat spheres in
@@ -8781,6 +8842,76 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                 (rx, ry, ground_z + r_size * 0.50),
                 r_size, r_col,
                 rings=2, segments=6)
+
+    # ── BASKETBALL HOOP at the curb-end of the driveway · ~25%
+    # of houses. Pole + backboard + rim. American suburb staple.
+    seed_bball = (int(cx * 19) + int(cy * 29)) % 100
+    if seed_bball < 25:
+        col_pole_b = (0.32, 0.32, 0.34, 1.0)
+        col_backbd = (0.92, 0.90, 0.84, 1.0)
+        col_rim = (0.85, 0.42, 0.18, 1.0)        # safety orange
+        # Place hoop at the curb end of the driveway, off to one side
+        bb_pull = 7.0    # m out from garage face
+        bb_side = -1 if (seed_bball % 2 == 0) else 1
+        bb_x = gar_cx + fx * bb_pull + perp_x * bb_side * 2.4
+        bb_y = gar_cy + fy * bb_pull + perp_y * bb_side * 2.4
+        bb_z = mesh_z(bb_x, bb_y)
+        # Pole
+        _make_cyl_local(f"{name}_Bball_Pole",
+                        (bb_x, bb_y, bb_z + 1.6),
+                        0.08, 3.2, col_pole_b, segments=6)
+        # Backboard — facing the driveway (toward the house)
+        bbd_x = bb_x - fx * 0.30
+        bbd_y = bb_y - fy * 0.30
+        if abs(fx) > 0.5:
+            bbd_size = (0.06, 1.40, 0.90)
+        else:
+            bbd_size = (1.40, 0.06, 0.90)
+        _make_box_local(f"{name}_Bball_Backboard",
+                        (bbd_x, bbd_y, bb_z + 3.05),
+                        bbd_size, col_backbd)
+        # Rim (small orange ring approximated as 6-segment cylinder)
+        rim_x = bb_x - fx * 0.55
+        rim_y = bb_y - fy * 0.55
+        _make_cyl_local(f"{name}_Bball_Rim",
+                        (rim_x, rim_y, bb_z + 2.85),
+                        0.23, 0.04, col_rim, segments=6)
+
+    # ── YARD SIGN · for-sale / political / school-pride etc.
+    # ~12% of houses. Small white rectangle on a thin wire frame
+    # planted in the lawn.
+    seed_sign = (int(cx * 29) + int(cy * 31)) % 100
+    if seed_sign < 12:
+        sign_palette = [
+            (0.92, 0.90, 0.84, 1.0),    # white (for sale / open house)
+            (0.18, 0.32, 0.55, 1.0),    # navy political
+            (0.78, 0.18, 0.18, 1.0),    # red political
+            (0.95, 0.85, 0.42, 1.0),    # school pride yellow
+        ]
+        col_sign = sign_palette[seed_sign % len(sign_palette)]
+        # Place sign in the front yard, opposite side from the walk
+        sign_side = -1 if (seed_sign % 3 == 0) else 1
+        sign_along = sign_side * 3.0
+        sign_out = 4.0 + (seed_sign % 3) * 0.5
+        s_x = front_mid_x - fx * sign_out + perp_x * sign_along
+        s_y = front_mid_y - fy * sign_out + perp_y * sign_along
+        s_z = mesh_z(s_x, s_y)
+        # Two thin wire stakes
+        for sk_sgn in (-1, 1):
+            _make_cyl_local(f"{name}_YardSign_Stake_{sk_sgn:+d}",
+                            (s_x + perp_x * sk_sgn * 0.18,
+                             s_y + perp_y * sk_sgn * 0.18,
+                             s_z + 0.35),
+                            0.02, 0.70,
+                            (0.18, 0.18, 0.20, 1.0), segments=4)
+        # Sign plate
+        if abs(fx) > 0.5:
+            sg_size = (0.06, 0.50, 0.35)
+        else:
+            sg_size = (0.50, 0.06, 0.35)
+        _make_box_local(f"{name}_YardSign_Plate",
+                        (s_x, s_y, s_z + 0.65),
+                        sg_size, col_sign)
 
 
 def _build_driveway(name, house_cx, house_cy, ground_z, facing,
