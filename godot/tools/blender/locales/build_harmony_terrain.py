@@ -173,6 +173,15 @@ SETTLEMENTS = [
     # platform so it reads as tucked away. Higher flatness so it
     # wins the overlap blend with the parent OT Park zone.
     ("OTSkatePark",       -300, -260, 65, 100, -0.5, 0.90),
+    # Chapter-one commercial cluster pads — nested inside the
+    # broader SouthComm belt so each building footprint is locally
+    # flat regardless of the parent zone's residual wild-zone bumps.
+    # Each pad is large enough to cover building + sidewalk +
+    # parking-lot apron, at the same target_z (-9.0) as SouthComm
+    # but with higher flatness (0.95) so they win the blend.
+    ("KwikStopPad",   30,   70,  -385, -345, -9.0, 0.95),
+    ("NexCorpGGPad", -110, -70,  -395, -345, -9.0, 0.95),
+    ("CosmicCPad",   135,  175, -380, -345, -9.0, 0.95),
 ]
 SETTLEMENT_FALLOFF = 35.0   # m of smooth transition outside each rect
 
