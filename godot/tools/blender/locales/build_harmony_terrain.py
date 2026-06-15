@@ -2951,9 +2951,11 @@ def _build_convenience_store(name_prefix, cx, cy, ground_z,
 
     # ── INTERIOR ────────────────────────────────────────────────
     # Three aisles of shelving running N-S, set toward the back.
+    # Length + position chosen so north end clears the new counter
+    # at cy + 3.45 with 0.35 m of breathing room.
     aisle_h = 1.8
-    aisle_l = depth * 0.45        # half-depth aisles, leaves room up front
-    aisle_y_centre = cy + depth * 0.10
+    aisle_l = 3.5
+    aisle_y_centre = cy + 0.5
     for k, ax_off in enumerate((-3.0, 0.0, 3.0)):
         _make_box_local(f"{name_prefix}_Aisle_{k}",
                         (cx + ax_off, aisle_y_centre,
@@ -3259,9 +3261,12 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     col_register   = (0.20, 0.20, 0.22, 1.0)
     col_cooler     = (0.78, 0.84, 0.88, 1.0)
     col_basket     = (0.60, 0.20, 0.18, 1.0)
+    # Aisle length shortened so the north end clears the counter
+    # (counter sits at cy + 3.45 ± 0.35 = cy + 3.1 to cy + 3.8;
+    # aisles now end at cy + 2.75 with 0.35 m of breathing room).
     aisle_h = 1.8
-    aisle_l = depth * 0.45
-    aisle_y_centre = cy + depth * 0.10
+    aisle_l = 3.5
+    aisle_y_centre = cy + 0.5
     for k, ax_off in enumerate((-2.0, 0.0, 2.0)):
         _make_box_local(f"KwikShop_KwikStop_Aisle_{k}",
                         (kw_cx + ax_off, aisle_y_centre,
