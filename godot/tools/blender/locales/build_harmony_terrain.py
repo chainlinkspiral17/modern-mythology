@@ -5985,41 +5985,43 @@ def build_high_school_field():
     COL_BLEACHER_BENCH = (0.62, 0.62, 0.64, 1.0)
     COL_GOALPOST = (0.95, 0.95, 0.94, 1.0)
 
-    # ── FIELD slab (green) — 120 × 53 m
+    # ── FIELD slab (green) — 120 × 53 m. Top at ground_z + 0.08
+    # so all the painted stripes can sit ABOVE it without being
+    # buried inside the slab.
     field_w = 53.0
     field_l = 120.0
+    grass_top_z = ground_z + 0.08
     _make_box_local("HSField_Grass",
                     (cx, cy, ground_z + 0.04),
                     (field_w, field_l, 0.08), COL_GRASS_FIELD)
-    # Alternating mowing stripes (12 stripes, 10 yd each → 10m)
+    # Alternating mowing stripes (sit a hair above the grass top)
     n_stripes = 12
     stripe_w = field_l / n_stripes
     for k in range(n_stripes):
         if k % 2 == 0:
             sx_y = cy - field_l / 2 + (k + 0.5) * stripe_w
             _make_box_local(f"HSField_MowStripe_{k}",
-                            (cx, sx_y, ground_z + 0.045),
+                            (cx, sx_y, grass_top_z + 0.01),
                             (field_w - 0.4, stripe_w * 0.95, 0.02),
                             COL_GRASS_STRIPE)
-    # 11 lateral 5-yard lines (every ~10.9 m, with a goal-line at
-    # each end and a 50-yard line at the centre)
+    # 11 lateral 5-yard lines (above mowing stripes)
     n_lines = 11
     for k in range(n_lines):
         ly_pos = cy - field_l / 2 + (k + 1) * field_l / (n_lines + 1)
         _make_box_local(f"HSField_YardLine_{k}",
-                        (cx, ly_pos, ground_z + 0.06),
+                        (cx, ly_pos, grass_top_z + 0.03),
                         (field_w - 0.4, 0.20, 0.02), COL_LINE)
     # Sidelines (E + W)
     for sgn in (-1, 1):
         _make_box_local(f"HSField_Sideline_{sgn:+d}",
                         (cx + sgn * (field_w / 2 - 0.15),
-                         cy, ground_z + 0.06),
+                         cy, grass_top_z + 0.03),
                         (0.30, field_l - 0.4, 0.02), COL_LINE)
     # End lines (N + S)
     for sgn in (-1, 1):
         _make_box_local(f"HSField_Endline_{sgn:+d}",
                         (cx, cy + sgn * (field_l / 2 - 0.15),
-                         ground_z + 0.06),
+                         grass_top_z + 0.03),
                         (field_w - 0.4, 0.30, 0.02), COL_LINE)
 
     # ── END ZONES — 9 m extensions in school colours
@@ -6065,8 +6067,8 @@ def build_high_school_field():
     # Build the ring as quads between inner_pts[i] and outer_pts[i]
     track_verts = []
     for (ix, iy), (ox, oy) in zip(inner_pts, outer_pts):
-        track_verts.append((ix, iy, ground_z + 0.05))
-        track_verts.append((ox, oy, ground_z + 0.05))
+        track_verts.append((ix, iy, grass_top_z))
+        track_verts.append((ox, oy, grass_top_z))
     track_faces = []
     npairs = len(inner_pts)
     for i in range(npairs - 1):
