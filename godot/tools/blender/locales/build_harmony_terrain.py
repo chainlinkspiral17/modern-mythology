@@ -10711,6 +10711,166 @@ def build_arterial_lighting():
                             prefix)
 
 
+def build_utility_poles():
+    """Wooden telephone/power poles along arterials with overhead
+    wires strung between them. Defining feature of American
+    suburbs — bare wires across the sky is half the silhouette of
+    every small-town main street.
+
+    Spacing 50m, one side only (real utilities run a single line
+    of poles per street and use cross-spans for service drops).
+    Pole has tapered wooden barrel, two crossarms (high-voltage
+    triplet up top + service crossarm 1m below), white ceramic
+    insulators on crossarms, and 3 phase wires + 1 neutral
+    connecting adjacent poles.
+    """
+    COL_WOOD = (0.46, 0.32, 0.20, 1.0)         # creosote-treated brown
+    COL_CROSSARM = (0.40, 0.28, 0.18, 1.0)     # darker stained crossarm
+    COL_INSULATOR = (0.88, 0.86, 0.78, 1.0)    # off-white ceramic
+    COL_WIRE = (0.18, 0.18, 0.20, 1.0)         # dark grey wire
+    COL_TRANS = (0.32, 0.30, 0.28, 1.0)        # grey transformer can
+    POLE_H = 9.5
+    SPACING = 50.0
+    SIDE_OFF = 7.6     # outside the sidewalk
+
+    def _wire(name, ax, ay, az, bx, by, bz, sag, thickness, color):
+        """Emit a thin sagging wire between (ax,ay,az) and (bx,by,bz)
+        as a custom oriented box. sag = meters the midpoint drops.
+        """
+        span_dx = bx - ax; span_dy = by - ay
+        span_len = math.hypot(span_dx, span_dy) or 1.0
+        # Wire direction unit vector (XY plane)
+        dxn = span_dx / span_len; dyn = span_dy / span_len
+        # Perp (horizontal width of the thin box)
+        pxn = -dyn; pyn = dxn
+        t2 = thickness / 2
+        mid_x = (ax + bx) / 2; mid_y = (ay + by) / 2
+        mid_z = (az + bz) / 2 - sag
+        # Build a 2-segment ribbon: A -> mid -> B for the sag curve
+        verts = []
+        for (sx, sy, sz) in ((ax, ay, az), (mid_x, mid_y, mid_z), (bx, by, bz)):
+            # Square cross-section perpendicular to wire
+            verts.append((sx - pxn * t2, sy - pyn * t2, sz - t2))
+            verts.append((sx + pxn * t2, sy + pyn * t2, sz - t2))
+            verts.append((sx + pxn * t2, sy + pyn * t2, sz + t2))
+            verts.append((sx - pxn * t2, sy - pyn * t2, sz + t2))
+        faces = []
+        # Two ribbon segments (A->mid, mid->B), each 4 side quads
+        for seg in (0, 1):
+            o = seg * 4
+            faces.append([o + 0, o + 1, o + 5, o + 4])
+            faces.append([o + 1, o + 2, o + 6, o + 5])
+            faces.append([o + 2, o + 3, o + 7, o + 6])
+            faces.append([o + 3, o + 0, o + 4, o + 7])
+        # Endcaps
+        faces.append([0, 3, 2, 1])
+        faces.append([8, 9, 10, 11])
+        _finalize_mesh(name, verts, faces, color)
+
+    def _emit_utility_line(pts, prefix, transformer_every=4):
+        # First pass: collect pole anchor points (centerline + perp)
+        accumulated = 0.0
+        next_pole = SPACING / 2
+        poles = []   # list of (x, y, perp_x, perp_y, seg_dir_x, seg_dir_y)
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+            seg_len = math.hypot(x1 - x0, y1 - y0) or 1.0
+            seg_end = accumulated + seg_len
+            dxs = (x1 - x0) / seg_len; dys = (y1 - y0) / seg_len
+            perp_x = -dys; perp_y = dxs
+            while next_pole < seg_end:
+                t = (next_pole - accumulated) / seg_len
+                mx = x0 + (x1 - x0) * t
+                my = y0 + (y1 - y0) * t
+                px = mx + perp_x * SIDE_OFF
+                py = my + perp_y * SIDE_OFF
+                poles.append((px, py, perp_x, perp_y, dxs, dys))
+                next_pole += SPACING
+            accumulated = seg_end
+
+        # Second pass: emit poles
+        for idx, (px, py, perp_x, perp_y, dx, dy) in enumerate(poles):
+            pz = mesh_z(px, py)
+            # Tapered wooden barrel — base 0.18m, top 0.12m (4 cyls
+            # stacked is overkill; one cyl with 8 segments reads
+            # fine at gameplay distance)
+            _make_cyl_local(f"{prefix}Pole_{idx}",
+                            (px, py, pz + POLE_H / 2),
+                            0.16, POLE_H, COL_WOOD, segments=8)
+            # Upper crossarm (high-voltage triplet), oriented perp
+            # to road. 2.4 m long, perpendicular to (dx, dy).
+            arm_z_hi = pz + POLE_H - 0.30
+            arm_hi_a = (px + dy * 1.2, py - dx * 1.2, arm_z_hi)
+            arm_hi_b = (px - dy * 1.2, py + dx * 1.2, arm_z_hi)
+            _wire(f"{prefix}Arm_Hi_{idx}",
+                  arm_hi_a[0], arm_hi_a[1], arm_hi_a[2],
+                  arm_hi_b[0], arm_hi_b[1], arm_hi_b[2],
+                  0.0, 0.12, COL_CROSSARM)
+            # Lower crossarm (service / neutral), 1.8 m long
+            arm_z_lo = pz + POLE_H - 1.30
+            arm_lo_a = (px + dy * 0.9, py - dx * 0.9, arm_z_lo)
+            arm_lo_b = (px - dy * 0.9, py + dx * 0.9, arm_z_lo)
+            _wire(f"{prefix}Arm_Lo_{idx}",
+                  arm_lo_a[0], arm_lo_a[1], arm_lo_a[2],
+                  arm_lo_b[0], arm_lo_b[1], arm_lo_b[2],
+                  0.0, 0.10, COL_CROSSARM)
+            # Insulators on upper crossarm — 3 phases
+            for k, off in enumerate((-1.0, 0.0, 1.0)):
+                ix = px + dy * off       # along the crossarm
+                iy = py - dx * off
+                _make_cyl_local(f"{prefix}Ins_Hi_{idx}_{k}",
+                                (ix, iy, arm_z_hi + 0.18),
+                                0.06, 0.16, COL_INSULATOR, segments=6)
+            # Insulator on lower crossarm — neutral mid-pole
+            _make_cyl_local(f"{prefix}Ins_Lo_{idx}",
+                            (px, py, arm_z_lo + 0.16),
+                            0.05, 0.14, COL_INSULATOR, segments=6)
+            # Transformer can on every Nth pole (drum-shaped)
+            if idx % transformer_every == 1:
+                tx = px - perp_x * 0.30
+                ty = py - perp_y * 0.30
+                _make_cyl_local(f"{prefix}Trans_{idx}",
+                                (tx, ty, pz + POLE_H - 2.20),
+                                0.32, 0.80, COL_TRANS, segments=8)
+
+        # Third pass: sagging wires between consecutive poles.
+        # Real catenary sag = ~2% of span; for 50m spans that's ~1m
+        # at the midpoint, which reads well from gameplay distance.
+        for j in range(len(poles) - 1):
+            ax, ay, aperp_x, aperp_y, adx, ady = poles[j]
+            bx, by, bperp_x, bperp_y, bdx, bdy = poles[j + 1]
+            az_g = mesh_z(ax, ay); bz_g = mesh_z(bx, by)
+
+            arm_a_hi = az_g + POLE_H - 0.30
+            arm_b_hi = bz_g + POLE_H - 0.30
+            # 3 phase wires on upper crossarm
+            for off in (-1.0, 0.0, 1.0):
+                ox_a = ax + ady * off; oy_a = ay - adx * off
+                ox_b = bx + bdy * off; oy_b = by - bdx * off
+                _wire(f"{prefix}WireHi_{j}_{int(off)}",
+                      ox_a, oy_a, arm_a_hi + 0.15,
+                      ox_b, oy_b, arm_b_hi + 0.15,
+                      1.0, 0.05, COL_WIRE)
+            # Neutral wire on lower crossarm (single)
+            arm_a_lo = az_g + POLE_H - 1.30
+            arm_b_lo = bz_g + POLE_H - 1.30
+            _wire(f"{prefix}WireLo_{j}",
+                  ax, ay, arm_a_lo + 0.13,
+                  bx, by, arm_b_lo + 0.13,
+                  0.8, 0.045, COL_WIRE)
+
+    corridor_xys = {name: [(x, y) for (x, y, _z) in wps]
+                    for (name, wps, _hw, _sh) in ROAD_CORRIDORS}
+    for cname, prefix in [
+        ("HarmonyBlvd", "HarmonyBlvd_UP_"),
+        ("HorizonDr",   "HorizonDr_UP_"),
+    ]:
+        if cname in corridor_xys:
+            _emit_utility_line(_catmull_rom_2d(corridor_xys[cname],
+                                                 samples_per_seg=4),
+                               prefix)
+
+
 def build_fire_hydrants():
     """Fire hydrants along arterial sidewalks. Civil-engineering
     standard: ~120m spacing (close enough that any building lot
@@ -14778,6 +14938,7 @@ def main():
     build_residential_mailboxes()
     build_arterial_lighting()
     build_fire_hydrants()
+    build_utility_poles()
     build_arterial_trees()
     build_church_cemetery()
     build_church_lot_and_school_playground()
