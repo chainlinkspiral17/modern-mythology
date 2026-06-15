@@ -5513,6 +5513,125 @@ def _face_axis(facing):
     return (0.0, -1.0)
 
 
+def build_east_cds_neighborhood():
+    """East CDS Estates — east-ridge mid-tier neighborhood,
+    curving collector road with a cul-de-sac branch heading
+    north. Sits in EastCDS settlement zone (180..440, 20..260,
+    target_z = +8.0, flatness 0.80).
+    """
+    road_w = 6.0
+    curb_w = 0.5
+    COL_ROAD = (0.20, 0.20, 0.22, 1.0)
+    COL_CURB = (0.78, 0.76, 0.70, 1.0)
+    hw = road_w / 2
+
+    def _emit_road(pts, prefix):
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+            dxs = x1 - x0; dys = y1 - y0
+            seg_len = math.hypot(dxs, dys) or 1.0
+            perp_x = -dys / seg_len
+            perp_y =  dxs / seg_len
+            rv = []
+            for (rx, ry) in [(x0 - perp_x * hw, y0 - perp_y * hw),
+                             (x1 - perp_x * hw, y1 - perp_y * hw),
+                             (x1 + perp_x * hw, y1 + perp_y * hw),
+                             (x0 + perp_x * hw, y0 + perp_y * hw)]:
+                rv.append((rx, ry, mesh_z(rx, ry) + 0.04))
+            _finalize_mesh(f"{prefix}Road_{i}", rv, [[0, 1, 2, 3]],
+                            COL_ROAD)
+            for sgn in (-1, 1):
+                cv = []
+                for (rx, ry) in [(x0 + sgn * perp_x * hw,
+                                  y0 + sgn * perp_y * hw),
+                                 (x1 + sgn * perp_x * hw,
+                                  y1 + sgn * perp_y * hw),
+                                 (x1 + sgn * perp_x * (hw + curb_w),
+                                  y1 + sgn * perp_y * (hw + curb_w)),
+                                 (x0 + sgn * perp_x * (hw + curb_w),
+                                  y0 + sgn * perp_y * (hw + curb_w))]:
+                    cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
+                _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
+                                [[0, 1, 2, 3]], COL_CURB)
+
+    # Curving collector — Ridge Crest Dr
+    collector = [(200, 140), (240, 130), (300, 130), (360, 140),
+                  (420, 150)]
+    _emit_road(collector, "ECDS_Coll_")
+    # Cul-de-sac spur north
+    spur = [(300, 130), (300, 180), (320, 220)]
+    _emit_road(spur, "ECDS_Spur_")
+    # Cul-de-sac bulb at (320, 220)
+    cul_x, cul_y = 320, 220
+    cul_r = 9.0
+    segs = 12
+    cul_verts = [(cul_x, cul_y, mesh_z(cul_x, cul_y) + 0.04)]
+    for i in range(segs):
+        ang = 2.0 * math.pi * i / segs
+        vx = cul_x + math.cos(ang) * cul_r
+        vy = cul_y + math.sin(ang) * cul_r
+        cul_verts.append((vx, vy, mesh_z(vx, vy) + 0.04))
+    cul_faces = []
+    for i in range(segs):
+        ni = (i + 1) % segs
+        cul_faces.append([0, 1 + i, 1 + ni])
+    _finalize_mesh("ECDS_CulDeSac", cul_verts, cul_faces, COL_ROAD)
+
+    # Houses · cookie-cutter palette, varied roof colours
+    cds_palette = [
+        {'wall': (0.85, 0.82, 0.74, 1.0), 'roof': (0.32, 0.22, 0.18, 1.0)},
+        {'wall': (0.80, 0.78, 0.70, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)},
+        {'wall': (0.78, 0.74, 0.66, 1.0), 'roof': (0.45, 0.30, 0.22, 1.0)},
+        {'wall': (0.82, 0.78, 0.68, 1.0), 'roof': (0.55, 0.30, 0.22, 1.0)},
+    ]
+    setback = 14.0
+    house_idx = 0
+    # Houses along the collector — alternating sides per segment
+    for pidx in range(len(collector) - 1):
+        x0, y0 = collector[pidx]; x1, y1 = collector[pidx + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        mid_x = (x0 + x1) / 2
+        mid_y = (y0 + y1) / 2
+        for side_sgn in (-1, +1):
+            hcx = mid_x + side_sgn * perp_x * setback
+            hcy = mid_y + side_sgn * perp_y * setback
+            hcz = mesh_z(hcx, hcy)
+            facing = '+Y' if side_sgn == -1 else '-Y'
+            palette = cds_palette[house_idx % len(cds_palette)]
+            _build_suburban_house(
+                f"ECDS_Coll_House_{pidx}_{side_sgn:+d}",
+                hcx, hcy, hcz, facing=facing, palette=palette)
+            curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
+            curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)
+            _build_driveway(
+                f"ECDS_Coll_House_{pidx}_{side_sgn:+d}_Drive",
+                hcx, hcy, hcz, facing, curb_x, curb_y)
+            house_idx += 1
+    # 4 houses around the cul-de-sac bulb at 0°, 90°, 180°, 270° (skip 270° = inlet)
+    for k, ang_deg in enumerate((30, 90, 150, 270)):
+        ang_r = math.radians(ang_deg)
+        hcx = cul_x + math.cos(ang_r) * (cul_r + 12.0)
+        hcy = cul_y + math.sin(ang_r) * (cul_r + 12.0)
+        hcz = mesh_z(hcx, hcy)
+        # Face cardinal-closest direction toward the bulb
+        dx = -math.cos(ang_r); dy = -math.sin(ang_r)
+        if abs(dx) > abs(dy):
+            facing = '+X' if dx > 0 else '-X'
+        else:
+            facing = '+Y' if dy > 0 else '-Y'
+        palette = cds_palette[(house_idx + k) % len(cds_palette)]
+        _build_suburban_house(
+            f"ECDS_Cul_House_{k}", hcx, hcy, hcz,
+            facing=facing, palette=palette)
+        curb_x = cul_x + math.cos(ang_r) * (cul_r + 0.5)
+        curb_y = cul_y + math.sin(ang_r) * (cul_r + 0.5)
+        _build_driveway(f"ECDS_Cul_House_{k}_Drive", hcx, hcy, hcz,
+                         facing, curb_x, curb_y)
+
+
 def build_north_ranch_neighborhood():
     """NorthRanch — second-tier residential, ranch-style. Bigger
     lots, longer setbacks, single-story houses (rough placeholders
@@ -6788,6 +6907,7 @@ def main():
     build_phase2_neighborhood()
     build_west_estates_neighborhood()
     build_north_ranch_neighborhood()
+    build_east_cds_neighborhood()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
