@@ -6140,6 +6140,60 @@ def build_church_cemetery():
                     (2.5, 0.20, 0.30), col_dark)
 
 
+def build_phase3_crane():
+    """Abandoned construction crane left standing at the
+    failed Phase III development. A tall lattice tower with a
+    horizontal jib + counter-jib, rusted brown.
+    """
+    cx, cy = -420.0, -250.0
+    ground_z = mesh_z(cx, cy)
+    col_rust = (0.55, 0.32, 0.18, 1.0)
+    col_cab = (0.85, 0.78, 0.22, 1.0)
+
+    # Tower lattice — 30 m tall single box (approximation)
+    tower_h = 30.0
+    _make_box_local("P3_Crane_Tower",
+                    (cx, cy, ground_z + tower_h / 2),
+                    (1.4, 1.4, tower_h), col_rust)
+    # Tower base flare (broader at the bottom)
+    _make_box_local("P3_Crane_Base",
+                    (cx, cy, ground_z + 1.0),
+                    (3.0, 3.0, 2.0), col_rust)
+    # Operator cab at the top
+    _make_box_local("P3_Crane_Cab",
+                    (cx, cy, ground_z + tower_h + 0.5),
+                    (2.2, 2.2, 1.6), col_cab)
+    # Horizontal jib (the long arm)
+    jib_l = 24.0
+    _make_box_local("P3_Crane_Jib",
+                    (cx + jib_l / 2 - 1.0,
+                     cy, ground_z + tower_h + 1.6),
+                    (jib_l, 0.80, 0.80), col_rust)
+    # Counter-jib (shorter arm on the opposite side)
+    cjib_l = 8.0
+    _make_box_local("P3_Crane_CounterJib",
+                    (cx - cjib_l / 2 - 0.5,
+                     cy, ground_z + tower_h + 1.6),
+                    (cjib_l, 0.80, 0.80), col_rust)
+    # Counterweight block at the back end
+    _make_box_local("P3_Crane_Counterweight",
+                    (cx - cjib_l - 0.5,
+                     cy, ground_z + tower_h + 1.0),
+                    (1.2, 1.6, 1.6),
+                    (0.32, 0.30, 0.28, 1.0))
+    # Hook hanging from the jib at half-length
+    hook_x = cx + jib_l / 2 - 1.0
+    hook_y = cy
+    _build_oriented_handle("P3_Crane_HookCable",
+                            (hook_x, hook_y, ground_z + tower_h + 1.6),
+                            (hook_x, hook_y, ground_z + 12.0),
+                            radius=0.04, color=(0.08, 0.08, 0.08, 1.0))
+    _make_box_local("P3_Crane_Hook",
+                    (hook_x, hook_y, ground_z + 11.5),
+                    (0.50, 0.30, 0.80),
+                    (0.42, 0.42, 0.45, 1.0))
+
+
 def build_self_storage():
     """SafeKeep Self-Storage — long parallel rows of orange
     roll-up units. Sits in EastComm south of the big-box pad.
@@ -8911,6 +8965,7 @@ def main():
     build_arterial_sidewalks()
     build_crosswalks_and_stops()
     build_self_storage()
+    build_phase3_crane()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
