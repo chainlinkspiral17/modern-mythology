@@ -180,8 +180,12 @@ SETTLEMENTS = [
     # Harmony Park (manicured — flatter than wild, less than housing)
     ("HarmonyPark", -120, 180, -40, 200, +1.0, 0.55),
     # Dedicated platform around the Oliver Tree statue so the
-    # walkways + benches + reflecting pool all sit flat
-    ("OliverTreeMemPark", -300, -220, 60, 180, +2.0, 0.80),
+    # walkways + benches + reflecting pool all sit flat. Flatness
+    # raised 0.80 -> 0.95 (2026-06-15) so OT Park's nested
+    # platform wins over its containing NorthRanch (+12) in the
+    # softmax blend — without this the park reads at +5 instead
+    # of its design +2.
+    ("OliverTreeMemPark", -300, -220, 60, 180, +2.0, 0.95),
     # Secluded skatepark — sunken 2.5 m below the memorial park
     # platform so it reads as tucked away. Higher flatness so it
     # wins the overlap blend with the parent OT Park zone.
@@ -354,15 +358,21 @@ ROAD_CORRIDORS = [
         (-440,  -17, -2.0),  # at Horizon Dr WestComm CL
     ], 5.0, 16.0),
 
-    # North Ranch → Harmony Blvd. The old endpoint (10, 130) was
-    # 50m WEST of HarmonyBlvd's centerline at that y (x=60), so
-    # the link never actually reached the arterial. Extended.
+    # North Ranch → Harmony Blvd. STARTS at the east edge of NR
+    # (x=-200) so it doesn't overlap NRBirch (which runs y=100 from
+    # x=-440 to x=-240). The old NRLink started at (-320, 100) and
+    # carried target_z +12 -> +10 along the same y=100 line, so
+    # both corridors carved the same strip but at different
+    # gradients — Birch tilted east where NRLink crossed it.
+    # New path exits NR at x=-200, ramps down to HBlvd at +1 over
+    # ~270m (3.3% grade) through the wild zone south of NR.
     ("NRLink", [
-        (-320, 100, +12.0),  # NorthRanch
-        (-200, 100, +10.0),
-        (-100, 100,  +5.0),
-        (  20, 120,  +1.5),
-        (  60, 130,  +1.0),   # at HarmonyBlvd centerline
+        (-200, 100, +10.0),  # east edge of NR on Birch line
+        (-140, 110,  +7.0),  # wild zone descent
+        ( -80, 120,  +4.0),
+        (   0, 125,  +2.5),
+        (  40, 128,  +1.5),
+        (  60, 130,  +1.0),  # at HarmonyBlvd centerline
     ], 5.0, 16.0),
 
     # East CDS → Horizon Dr east
@@ -691,25 +701,27 @@ PONDS = [
     # Wider + deeper than the v1 ponds. Format: (name, cx, cy, radius, depth)
     # WATER_SURFACE_Z is how far below GROUND_Z the water plane sits;
     # depth is the terrain depression amount.
-    # FoundersPond moved south of the OT Park settlement zone — was
-    # at (-300, 140) with radius 45, but the OT Park rect (-300 to
-    # -220, 60 to 180) flattened the western half of the pond so
-    # the water disc hung out across the hillside next to the
-    # gazebo. Now at (-380, 30) with radius 32, fully in the wild
-    # zone south of the park where the depression carves naturally.
-    ("FoundersPond",   -380,   30,  32,  8.0),
-    ("HarmonyPond",      30,   60,  32,  6.0),    # community pool placement
-    ("WildLotPond",    -340, -240,  38,  8.0),    # gone-to-seed wild pond
-    # SECreekPond moved 2026-06-15 from (360, -120) to (360, -210).
-    # The old position was INSIDE the HighSchoolField settlement
-    # (y range -130..110), which carved an 8m bowl directly under
-    # the football field. User reported the field "dangling over
-    # the edge of a hill with a pond". Now sits in the wild zone
-    # south of HSField + east of MidValleyPond.
-    ("SECreekPond",     360, -210,  40,  9.0),
-    ("NWHeadwatersPond",-440,  280,  30,  6.0),
-    ("EastWoodsPond",   320,  310,  28,  5.0),
-    ("MidValleyPond",     0, -180,  35,  7.0),    # NEW · in the SE-basin wild zone
+    # FoundersPond moved 2026-06-15 from (-380, 30) to (-380, -10).
+    # Old position was INSIDE NorthRanch (-460..-200, 20..260) and
+    # was punching a -4.5m crater across Cedar Street (y=40). New
+    # position sits in the wild zone south of NR + west of
+    # HarmonyPark / OliverTree Park, where it actually belongs.
+    ("FoundersPond",   -380,   -10,  32,  8.0),
+    ("HarmonyPond",      30,    60,  32,  6.0),    # community pool placement
+    ("WildLotPond",    -340,  -240,  38,  8.0),    # gone-to-seed wild pond
+    # SECreekPond moved from (360, -120) to (360, -210). Old
+    # position was INSIDE HighSchoolField (-130..110), carving a
+    # bowl under the football field.
+    ("SECreekPond",     360,  -210,  40,  9.0),
+    # NWHeadwatersPond moved (-440, 280) -> (-540, 340). Old was
+    # INSIDE NorthComm (260..340 +14), carving a 13m crater. New
+    # sits in the NW district corner wild zone near the creek
+    # headwaters where the name 'headwaters' actually makes sense.
+    ("NWHeadwatersPond",-540,   340,  30,  6.0),
+    # EastWoodsPond moved (320, 310) -> (510, 310). Old was INSIDE
+    # NorthComm. New sits in the wild zone NE of EastComm.
+    ("EastWoodsPond",   510,   310,  28,  5.0),
+    ("MidValleyPond",     0,  -180,  35,  7.0),
 ]
 
 
@@ -768,12 +780,12 @@ POND_CARVES = [
     # is computed as max(rim_z - 0.7, floor_z + 0.6), so leaving the
     # rim a bit higher than floor_z+0.6 keeps the water disc inside
     # the rim.
-    ("FoundersPond",     -380,   30, 24.0, 18.0, -4.5),
+    ("FoundersPond",     -380,  -10, 24.0, 18.0, -3.0),
     ("HarmonyPond",        30,   60, 22.0, 16.0,  0.2),  # community pool
     ("WildLotPond",      -340, -240, 28.0, 20.0, -7.5),
-    ("SECreekPond",       360, -210, 30.0, 22.0, -5.0),
-    ("NWHeadwatersPond", -440,  280, 22.0, 16.0, +1.0),
-    ("EastWoodsPond",     320,  310, 20.0, 16.0, +8.5),
+    ("SECreekPond",       360, -210, 30.0, 22.0, -7.0),
+    ("NWHeadwatersPond", -540,  340, 22.0, 16.0, +3.0),
+    ("EastWoodsPond",     510,  310, 20.0, 16.0, +2.0),
     ("MidValleyPond",       0, -180, 26.0, 20.0, -4.5),
 ]
 
@@ -962,32 +974,28 @@ def hce_elevation(x, y):
         base += pond_depression(x, y, cx, cy, r, d)
 
     # ── Settlement flattening ────────────────────────────────────
-    # Each rectangle pulls the elevation toward its platform z by
-    # `flatness`. Multiple settlements blend via weighted average
-    # of their (blend × flatness) contributions, NOT max-weight.
-    # Per user 2026-06-15: max-weight was producing a hard cliff
-    # wherever two settlements at different platforms met (HSField
-    # +3 vs EastCDS +8 at y=110 was a 5m drop in one cell — visible
-    # as a "hill cutting into the football field"). Weighted blend
-    # gives a smoothstep between the two platform heights as the
-    # winner-switches gradually across the boundary band.
-    sum_w = 0.0
-    sum_target_w = 0.0
-    max_blend = 0.0   # tracks how much settlement influence is here
+    # Per-settlement (blend × flatness) contributions combine via
+    # SOFTMAX over targets. With T=0.10 the result behaves like
+    # max-weight inside each settlement (so nested ones like OT
+    # Park inside NR still read their own target +2) but smooth-
+    # transitions at boundaries (so HSField +3 -> EastCDS +8
+    # doesn't cliff in one cell).
+    softmax_T = 0.10
+    blends = []
     for (_n, x_min, x_max, y_min, y_max, target_z, flatness) in SETTLEMENTS:
         b = settlement_blend(x, y, x_min, x_max, y_min, y_max) * flatness
         if b > 0.001:
-            sum_w += b
-            sum_target_w += target_z * b
-            if b > max_blend:
-                max_blend = b
+            blends.append((b, target_z))
 
-    if sum_w > 0.001:
-        avg_target = sum_target_w / sum_w
-        # The settlement region as a whole still uses max_blend as
-        # the strength of pull (so a point fully inside one
+    if blends:
+        # Softmax over the weights / T
+        max_b = max(b for b, _ in blends)
+        exps = [(math.exp((b - max_b) / softmax_T), tz) for b, tz in blends]
+        sum_e = sum(e for e, _ in exps)
+        avg_target = sum(e * tz for e, tz in exps) / sum_e
+        # Pull strength = max blend (so a point fully inside one
         # settlement gets full flatness, not diluted).
-        flattened = base * (1 - max_blend) + avg_target * max_blend
+        flattened = base * (1 - max_b) + avg_target * max_b
     else:
         flattened = base
 
