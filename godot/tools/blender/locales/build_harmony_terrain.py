@@ -6071,10 +6071,13 @@ def build_high_school_field():
         track_verts.append((ox, oy, grass_top_z))
     track_faces = []
     npairs = len(inner_pts)
-    for i in range(npairs - 1):
+    for i in range(npairs):
         # 4 verts per quad: inner_i, outer_i, outer_i+1, inner_i+1
+        # The modulo closes the loop so the east straight side is
+        # included (was missing — only 25 of 26 quads rendered).
+        j = (i + 1) % npairs
         track_faces.append([i * 2, i * 2 + 1,
-                            (i + 1) * 2 + 1, (i + 1) * 2])
+                            j * 2 + 1, j * 2])
     _finalize_mesh("HSField_Track", track_verts, track_faces,
                     COL_TRACK)
 
