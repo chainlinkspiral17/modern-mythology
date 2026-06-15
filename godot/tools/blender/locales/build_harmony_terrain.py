@@ -3683,83 +3683,75 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (0.20, 0.06, 0.30),
                     cans_palette[(row + col_idx + k) % 4])
 
-    # ── SLUSHIE MACHINE next to the cooler · 2 colored tanks
-    sl_x = cooler_cx + cooler_total_w / 2 + 0.7
-    sl_y = cy + depth / 2 - 0.60
-    sl_z = ground_z
-    _make_box_local("KwikShop_KwikStop_Slushie_Base",
-                    (sl_x, sl_y, sl_z + 1.10),
-                    (0.85, 0.55, 2.20), col_steel)
-    # 2 transparent-suggestion tanks on top — colored boxes
-    for k, col in enumerate((col_slushie_a, col_slushie_b)):
-        _make_box_local(f"KwikShop_KwikStop_Slushie_Tank_{k}",
-                        (sl_x - 0.25 + k * 0.50, sl_y,
-                         sl_z + 1.85),
-                        (0.40, 0.50, 0.50), col)
-    # Dispenser nozzles
-    for k in range(2):
-        _make_cyl_local(f"KwikShop_KwikStop_Slushie_Nozzle_{k}",
-                        (sl_x - 0.25 + k * 0.50,
-                         sl_y - 0.30, sl_z + 1.55),
-                        0.05, 0.20, col_steel, segments=4)
+    # ── WEST-WALL FIXTURE COLUMN · slushie + coffee + roller
+    # grill stacked S→N along the partition wall. Each fixture
+    # is shallower in X (~0.55 m) so it sits flush against the
+    # west wall, with its FACE (long dimension along Y) toward
+    # the bay interior. Previous layout had these against the
+    # BACK wall, overlapping the counter at the NE corner.
+    wall_x = kw_cx - bay_w / 2 + 0.40   # 0.40 m east of partition
 
-    # ── COFFEE STATION · brewer + 2 carafes + cream/sugar caddy
-    cof_x = sl_x + 0.95
-    cof_y = cy + depth / 2 - 0.60
-    cof_z = ground_z
-    # Counter under the coffee station
-    _make_box_local("KwikShop_KwikStop_CoffeeCounter",
-                    (cof_x, cof_y, cof_z + 0.40),
-                    (1.20, 0.55, 0.80),
+    # ROLLER GRILL — northernmost (closest to counter/staff)
+    rg_y = cy + 2.5
+    _make_box_local("KwikShop_KwikStop_RollerGrillCounter",
+                    (wall_x, rg_y, ground_z + 0.40),
+                    (0.55, 0.80, 0.80),
                     (0.62, 0.55, 0.45, 1.0))
-    # Brewer body
+    _make_box_local("KwikShop_KwikStop_RollerGrillCase",
+                    (wall_x, rg_y, ground_z + 1.00),
+                    (0.55, 0.80, 0.60), col_grill_dark)
+    # 4 roller bars + hot dogs on top (bars run Y direction since
+    # the case is along Y now)
+    for k in range(4):
+        rry = rg_y - 0.30 + k * 0.20
+        _make_box_local(f"KwikShop_KwikStop_Roller_{k}",
+                        (wall_x, rry, ground_z + 0.95),
+                        (0.40, 0.04, 0.04), col_steel)
+        _make_box_local(f"KwikShop_KwikStop_HotDog_{k}",
+                        (wall_x, rry, ground_z + 1.05),
+                        (0.40, 0.06, 0.06),
+                        (0.78, 0.55, 0.30, 1.0))
+    _make_box_local("KwikShop_KwikStop_RollerGrillHeat",
+                    (wall_x, rg_y, ground_z + 0.92),
+                    (0.50, 0.70, 0.02), col_grill_hot)
+
+    # COFFEE STATION — middle
+    cof_y = cy + 0.8
+    _make_box_local("KwikShop_KwikStop_CoffeeCounter",
+                    (wall_x, cof_y, ground_z + 0.40),
+                    (0.55, 1.20, 0.80),
+                    (0.62, 0.55, 0.45, 1.0))
     _make_box_local("KwikShop_KwikStop_CoffeeBrewer",
-                    (cof_x, cof_y, cof_z + 1.10),
-                    (0.55, 0.50, 0.60), col_steel)
-    # 2 carafes on a warmer
-    for k, ox in enumerate((-0.25, 0.25)):
+                    (wall_x, cof_y, ground_z + 1.10),
+                    (0.50, 0.55, 0.60), col_steel)
+    for k, oy in enumerate((-0.25, 0.25)):
         _make_cyl_local(f"KwikShop_KwikStop_CoffeePot_{k}",
-                        (cof_x + ox, cof_y, cof_z + 0.95),
+                        (wall_x, cof_y + oy, ground_z + 0.95),
                         0.08, 0.22, col_coffee_pot, segments=8)
-    # Cream / sugar caddy
     _make_box_local("KwikShop_KwikStop_CoffeeCaddy",
-                    (cof_x + 0.45, cof_y, cof_z + 0.90),
+                    (wall_x, cof_y + 0.45, ground_z + 0.90),
                     (0.30, 0.30, 0.20),
                     (0.42, 0.42, 0.45, 1.0))
-    # Paper cup stack (a tall thin cylinder)
     _make_cyl_local("KwikShop_KwikStop_CupStack",
-                    (cof_x - 0.45, cof_y, cof_z + 0.85),
+                    (wall_x, cof_y - 0.45, ground_z + 0.85),
                     0.05, 0.40,
                     (0.95, 0.95, 0.92, 1.0), segments=8)
 
-    # ── ROLLER GRILL · hot-dog rollers
-    rg_x = cof_x + 0.95
-    rg_y = cy + depth / 2 - 0.60
-    rg_z = ground_z
-    _make_box_local("KwikShop_KwikStop_RollerGrillCounter",
-                    (rg_x, rg_y, rg_z + 0.40),
-                    (0.80, 0.55, 0.80),
-                    (0.62, 0.55, 0.45, 1.0))
-    # Glass case body (housing for the rollers)
-    _make_box_local("KwikShop_KwikStop_RollerGrillCase",
-                    (rg_x, rg_y, rg_z + 1.00),
-                    (0.80, 0.55, 0.60), col_grill_dark)
-    # 4 visible roller bars + 4 hot dog cylinders on them
-    for k in range(4):
-        rrx = rg_x - 0.30 + k * 0.20
-        # Roller bar (horizontal silver cylinder approximated as box)
-        _make_box_local(f"KwikShop_KwikStop_Roller_{k}",
-                        (rrx, rg_y, rg_z + 0.95),
-                        (0.04, 0.40, 0.04), col_steel)
-        # Hot dog on top
-        _make_box_local(f"KwikShop_KwikStop_HotDog_{k}",
-                        (rrx, rg_y, rg_z + 1.05),
-                        (0.06, 0.40, 0.06),
-                        (0.78, 0.55, 0.30, 1.0))
-    # Warm red glow base hint
-    _make_box_local("KwikShop_KwikStop_RollerGrillHeat",
-                    (rg_x, rg_y, rg_z + 0.92),
-                    (0.70, 0.50, 0.02), col_grill_hot)
+    # SLUSHIE MACHINE — southernmost (closest to entry zone)
+    sl_y = cy - 1.5
+    _make_box_local("KwikShop_KwikStop_Slushie_Base",
+                    (wall_x, sl_y, ground_z + 1.10),
+                    (0.55, 0.85, 2.20), col_steel)
+    for k, col in enumerate((col_slushie_a, col_slushie_b)):
+        _make_box_local(f"KwikShop_KwikStop_Slushie_Tank_{k}",
+                        (wall_x, sl_y - 0.25 + k * 0.50,
+                         ground_z + 1.85),
+                        (0.50, 0.40, 0.50), col)
+    for k in range(2):
+        _make_cyl_local(f"KwikShop_KwikStop_Slushie_Nozzle_{k}",
+                        (wall_x + 0.30,
+                         sl_y - 0.25 + k * 0.50, ground_z + 1.55),
+                        0.05, 0.20, col_steel, segments=4)
 
     # ── ENTRY ZONE props (welcome mat already exists outside;
     # add interior entrance fixtures)
