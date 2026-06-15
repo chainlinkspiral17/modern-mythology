@@ -11340,6 +11340,59 @@ def build_arterial_lighting():
                             prefix)
 
 
+def build_commercial_pole_signs():
+    """Tall pole-mounted commercial signs at each EastComm business
+    parcel. Standard suburban-strip detail: 6-8m steel pole with a
+    large illuminated sign face at the top, planted at the road
+    frontage corner of the lot.
+
+    Per the playbook convention: pole signs belong on the OWNER's
+    private property (not the right-of-way), so each sits ~5m
+    inside the parcel from the road edge (x≈440 frontage).
+    """
+    COL_POLE = (0.42, 0.42, 0.45, 1.0)
+    COL_BASE = (0.55, 0.55, 0.58, 1.0)
+
+    # Per-business sign face color (each business has its brand)
+    sign_specs = [
+        # (name, x, y, panel_w, panel_h, top_z, face_color, accent_color)
+        ("Halsey",       452, -110, 4.6, 1.8, 6.5,
+         (0.18, 0.18, 0.20, 1.0), (0.95, 0.85, 0.20, 1.0)),
+        ("SelfStorage",  452, -180, 3.8, 1.6, 5.5,
+         (0.95, 0.42, 0.18, 1.0), (0.92, 0.90, 0.84, 1.0)),
+        ("AutoShowroom", 452, -260, 4.4, 2.0, 7.0,
+         (0.18, 0.32, 0.55, 1.0), (0.92, 0.90, 0.84, 1.0)),
+        ("BigBox",       452,   60, 5.6, 2.4, 8.0,
+         (0.78, 0.18, 0.18, 1.0), (0.95, 0.92, 0.84, 1.0)),
+    ]
+    for tag, sx, sy, pw, ph, top_z, face_col, accent in sign_specs:
+        z = mesh_z(sx, sy)
+        # Concrete base pedestal
+        _make_box_local(f"CPS_{tag}_Base",
+                        (sx, sy, z + 0.30),
+                        (1.0, 1.0, 0.60), COL_BASE)
+        # Steel pole
+        _make_cyl_local(f"CPS_{tag}_Pole",
+                        (sx, sy, z + top_z / 2 + 0.60),
+                        0.14, top_z, COL_POLE, segments=6)
+        # Sign face (panel facing west toward the road = facing -X)
+        # Thin axis = X, panel spans Y and Z
+        _make_box_local(f"CPS_{tag}_Face",
+                        (sx - 0.30, sy, z + top_z + 0.20),
+                        (0.20, pw, ph), face_col)
+        # Top accent stripe (the "brand bar" across the top of the
+        # panel)
+        _make_box_local(f"CPS_{tag}_Accent",
+                        (sx - 0.32, sy, z + top_z + ph * 0.42),
+                        (0.22, pw + 0.10, ph * 0.22), accent)
+        # Frame trim around the panel (4 thin strips)
+        for frame_sgn_y in (-1, 1):
+            _make_box_local(f"CPS_{tag}_Frame_Side_{frame_sgn_y:+d}",
+                            (sx - 0.32, sy + frame_sgn_y * pw / 2,
+                             z + top_z + 0.20),
+                            (0.22, 0.08, ph + 0.08), accent)
+
+
 def build_culdesac_islands():
     """Landscape island in the centre of each cul-de-sac bulb.
     Standard suburban detail: a 2-3m circular curb with a small
@@ -15942,6 +15995,7 @@ def main():
     build_fire_hydrants()
     build_utility_poles()
     build_culdesac_islands()
+    build_commercial_pole_signs()
     build_arterial_trees()
     build_church_cemetery()
     build_church_lot_and_school_playground()
