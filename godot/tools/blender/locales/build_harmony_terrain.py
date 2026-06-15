@@ -1192,6 +1192,192 @@ def _seg_intersect(ax, ay, bx, by, cx, cy, dx, dy):
     return None
 
 
+def _emit_raised_sidewalk(pts, prefix, sw_w=2.5, sw_h=0.15,
+                           color=(0.82, 0.80, 0.76, 1.0),
+                           curb_color=(0.55, 0.52, 0.48, 1.0)):
+    """Raised concrete sidewalk along polyline `pts`. Per user
+    2026-06-15: "raised cement" — emit a 3D box with visible top
+    (cement top) + 4 side faces (curb edge), not just a flat quad.
+
+    For each segment between consecutive waypoints:
+      · Box w/ top face at mesh_z + sw_h (sampled per-corner), and
+        bottom face at mesh_z (the slab embeds into the ground).
+      · Slab follows perpendicular to the segment direction, half-
+        width sw_w/2 on each side of the centerline.
+
+    Returns nothing; emits two meshes per segment (a top quad +
+    side panels). The visible top is cement-colored; the curb
+    sides are slightly darker so the slab reads as RAISED.
+    """
+    hw = sw_w / 2
+    for i in range(len(pts) - 1):
+        x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        # Four corner xys
+        corners = [
+            (x0 - perp_x * hw, y0 - perp_y * hw),     # bottom-left
+            (x1 - perp_x * hw, y1 - perp_y * hw),     # bottom-right
+            (x1 + perp_x * hw, y1 + perp_y * hw),     # top-right
+            (x0 + perp_x * hw, y0 + perp_y * hw),     # top-left
+        ]
+        # Sample mesh_z at each corner for the bottom; top is +sw_h
+        ground_zs = [mesh_z(cx, cy) for (cx, cy) in corners]
+        top_zs = [gz + sw_h for gz in ground_zs]
+        # Slab as a 3D box: 8 verts (4 bottom, 4 top), 6 faces
+        verts = []
+        for (cx, cy), gz in zip(corners, ground_zs):
+            verts.append((cx, cy, gz + 0.01))    # bottom (just above ground)
+        for (cx, cy), tz in zip(corners, top_zs):
+            verts.append((cx, cy, tz))            # top
+        faces = [
+            [4, 5, 6, 7],          # top (cement)
+            [0, 3, 2, 1],          # bottom (hidden, in ground)
+            [0, 4, 5, 1],          # side (south face of perp segment)
+            [1, 5, 6, 2],          # side
+            [2, 6, 7, 3],          # side (north face)
+            [3, 7, 4, 0],          # side
+        ]
+        # Single mesh with top-cement coloring; the sides inherit
+        # the same vertex colors so they read as the slab's edge.
+        _finalize_mesh(f"{prefix}_RaisedSW_{i}", verts, faces, color)
+
+
+def build_chapter1_pedestrian_network():
+    """RAISED CONCRETE SIDEWALK network connecting the chapter-1
+    commercial cluster. Per user direction 2026-06-15: "sidewalks
+    are still a missing part of infrastructure. start at the
+    kwikstop complex and design navigatable paths for pedestrians,
+    raised cement."
+
+    Existing geometry (build_commercial_cluster) emits a thin
+    storefront walk in front of NexCorpGG / Kwik Stop / Diner /
+    Cosmic Comics at y = -366.5 (flat quad, no curb). This network
+    adds:
+      · West extension to D'Ambrosio's Holdover (-150, -360)
+      · East extension to Taqueria El Rancho (290, -370)
+      · Spur south to Truck Stop (200, -380)
+      · Connection up to HarmonyBlvd's south sidewalk via the
+        existing crosswalk at (12, -388 .. -396)
+      · South side of frontage road (between road and the dirt
+        beyond) for two-sided walking
+
+    All sidewalks emit as 2.5 m wide × 0.15 m TALL raised
+    concrete boxes so the slab visibly stands above the asphalt
+    and grass.
+    """
+    # Anchor positions (ground z is read from mesh_z at runtime)
+    # Storefront walk line is at y = -366.5 (existing)
+    storefront_y = -366.5
+    # South side of frontage road sits at y = -397 (road CL at
+    # -392, road half-width 4, then ~1m grass buffer)
+    south_walk_y = -397.0
+
+    # ── A. NORTH SIDE storefront extension WEST to D'Ambrosio's
+    # NexCorpGG at x=-60, west edge x=-75ish. D'Ambrosio at x=-150,
+    # east face x=-143. Walk runs at y=-366.5 from -75 to -143.
+    west_walk = [
+        (-143.0, storefront_y),    # D'Ambrosio east face
+        (-100.0, storefront_y),
+        ( -75.0, storefront_y),    # NexCorpGG west edge
+    ]
+    _emit_raised_sidewalk(west_walk, "Ch1Walk_W")
+
+    # ── B. NORTH SIDE storefront extension EAST to Taqueria
+    # Cosmic Comics at x=70, east edge x=80. Taqueria at x=290,
+    # west face x=283. Walk runs y=-366.5 from 80 to 283.
+    east_walk = [
+        (  80.0, storefront_y),    # Cosmic east edge
+        ( 130.0, storefront_y),
+        ( 180.0, storefront_y),
+        ( 235.0, storefront_y),
+        ( 283.0, storefront_y),    # Taqueria west face
+    ]
+    _emit_raised_sidewalk(east_walk, "Ch1Walk_E")
+
+    # ── C. SPUR south from east walk down to Truck Stop
+    # Truck Stop at (200, -380), north entry around y=-368.
+    truckstop_spur = [
+        ( 200.0, storefront_y),    # off the east walk
+        ( 200.0, -373.0),          # truck stop north face
+    ]
+    _emit_raised_sidewalk(truckstop_spur, "Ch1Walk_TS")
+
+    # ── D. SOUTH SIDE of the frontage road — runs full length so
+    # pedestrians can walk on EITHER side
+    south_walk = [
+        (-150.0, south_walk_y),    # D'Ambrosio south
+        ( -75.0, south_walk_y),    # opposite NexCorpGG
+        (  -8.0, south_walk_y),    # opposite the HarmonyBlvd crosswalk
+        (  35.0, south_walk_y),    # opposite Diner
+        (  90.0, south_walk_y),    # opposite Cosmic
+        ( 180.0, south_walk_y),
+        ( 283.0, south_walk_y),    # opposite Taqueria
+    ]
+    _emit_raised_sidewalk(south_walk, "Ch1Walk_South")
+
+    # ── E. NORTH-side connector from HarmonyBlvd south sidewalk
+    # down to the chapter-1 storefront walk. HarmonyBlvd south
+    # sidewalk ends at y=-340. Storefront walk at y=-366.5. Walk
+    # bridges this 26m gap on the EAST side of HarmonyBlvd, just
+    # east of the road edge.
+    # HarmonyBlvd at y=-340 is at x≈0 (waypoint (0, -340, -9)).
+    # Sidewalk offset on east side: x = 0 + 6.4 = 6.4.
+    blvd_connector = [
+        (   6.4, -340.0),          # at HarmonyBlvd south sidewalk
+        (   8.0, -350.0),
+        (   9.0, -360.0),
+        (  12.0, storefront_y),    # joins storefront walk
+    ]
+    _emit_raised_sidewalk(blvd_connector, "Ch1Walk_BlvdN")
+
+    # ── F. SOUTH-side connector: same idea on the south of road,
+    # from HarmonyBlvd's south end down past the road to the
+    # south-side frontage walk.
+    blvd_connector_s = [
+        (   6.4, -388.0),          # at HarmonyBlvd just north of frontage
+        (   6.4, south_walk_y),    # at south side walk
+    ]
+    _emit_raised_sidewalk(blvd_connector_s, "Ch1Walk_BlvdS")
+
+    # ── G. CROSSWALK ZEBRAS across the frontage road, connecting
+    # the north and south walks at major crossing points.
+    # Already covered by build_intersections at HarmonyBlvd ×
+    # Ch1Frontage. Add a mid-block zebra opposite Kwik Stop for
+    # easy walking between sides.
+    COL_CROSS = (0.92, 0.90, 0.84, 1.0)
+    cross_y_mid = (storefront_y + south_walk_y) / 2  # y = -381.75
+    for x_center in (-100.0, -15.0, 35.0, 200.0, 260.0):
+        cw_n = storefront_y - 2.5
+        cw_s = south_walk_y + 2.5
+        for k in range(5):
+            sx = x_center - 1.2 + k * 0.6
+            z_top = mesh_z(sx, (cw_n + cw_s) / 2) + 0.055
+            verts = [
+                (sx - 0.20, cw_n, z_top),
+                (sx + 0.20, cw_n, z_top),
+                (sx + 0.20, cw_s, z_top),
+                (sx - 0.20, cw_s, z_top),
+            ]
+            _finalize_mesh(f"Ch1Walk_Zebra_{int(x_center)}_{k}",
+                            verts, [[0, 1, 2, 3]], COL_CROSS)
+
+    # ── H. SIDEWALK at chapter-1 to the spawn pad north.
+    # Existing spur in build_commercial_cluster covers (0, -340)
+    # down to the storefront walk. We can ADD a raised-cement
+    # version that runs alongside, for visual consistency with
+    # the rest of the chapter-1 network. Use slightly east x so
+    # it doesn't z-fight with the existing spur.
+    north_spur = [
+        (  15.0, -340.0),          # at spawn approach
+        (  15.0, -355.0),
+        (  15.0, storefront_y),    # joins storefront walk
+    ]
+    _emit_raised_sidewalk(north_spur, "Ch1Walk_SpawnSpur")
+
+
 def build_intersections():
     """At every road-road xy crossing, emit an asphalt slab covering
     the intersection footprint so the four-quadrant grass triangles
@@ -12881,6 +13067,7 @@ def main():
     build_district_arterials()
     build_community_landmarks()
     build_connector_roads()
+    build_chapter1_pedestrian_network()
     build_intersections()
     build_bridges()
     build_ot_park_access_road()
