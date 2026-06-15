@@ -19,6 +19,15 @@
 # ════════════════════════════════════════════════════════════════
 extends Node
 
+# Preload the FPC script so we can read its static hud_visible
+# state without depending on Godot's class_name registration order.
+# Using the literal class_name FirstPersonController here triggered
+# a "not declared in current scope" parse error in some build
+# configurations (Godot 4.6 deck build, 2026-06-15) — preload
+# gives an explicit script-load dependency and a constant the
+# parser is guaranteed to see.
+const FPC_SCRIPT = preload("res://scripts/FirstPersonController.gd")
+
 const USER_MUSIC_DIR: String = "user://music/"
 const PROJECT_MUSIC_DIRS: Array[String] = [
 	"res://assets/audio/bgm/",
@@ -140,7 +149,7 @@ func _spawn_hud() -> void:
 	# label coming back as VISIBLE after the player already toggled
 	# F4 to hide everything (the label was joining the group AFTER
 	# F4's last sweep had run).
-	_hud_layer.visible = FirstPersonController.hud_visible
+	_hud_layer.visible = FPC_SCRIPT.hud_visible
 	add_child(_hud_layer)
 	_hud_label = Label.new()
 	_hud_label.offset_left = 16.0
