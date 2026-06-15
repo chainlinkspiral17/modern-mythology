@@ -5620,6 +5620,99 @@ def build_east_commercial_box():
                     (0.32, 0.32, 0.36, 1.0))
 
 
+def build_church_cemetery():
+    """Small graveyard beside the church on Harmony Boulevard.
+    24 headstones in a regular grid, a wrought-iron fence
+    around the perimeter, and one larger family monument."""
+    # Cemetery east of the church at (-30, 140)
+    cm_cx = -30.0 + 15.0   # east of church
+    cm_cy = 140.0
+    cm_z = mesh_z(cm_cx, cm_cy)
+    cm_w = 22.0
+    cm_d = 28.0
+    col_ground = (0.30, 0.42, 0.20, 1.0)
+    col_path = (0.78, 0.74, 0.66, 1.0)
+    col_stone = (0.62, 0.58, 0.52, 1.0)
+    col_dark = (0.42, 0.40, 0.38, 1.0)
+    # Ground patch (slightly darker grass)
+    _make_box_local("Cm_Ground",
+                    (cm_cx, cm_cy, cm_z + 0.02),
+                    (cm_w, cm_d, 0.04), col_ground)
+    # Central path along x = cm_cx
+    _make_box_local("Cm_Path",
+                    (cm_cx, cm_cy, cm_z + 0.03),
+                    (1.4, cm_d - 1.0, 0.02), col_path)
+    # 24 headstones in 4 rows × 6 columns, skipping the central
+    # path column
+    for row in range(4):
+        for col in range(6):
+            # Path is between cols 2 and 3 — skip
+            if col == 2:
+                continue
+            hx = cm_cx - cm_w / 2 + 2.0 + col * 3.5
+            hy = cm_cy - cm_d / 2 + 3.0 + row * 6.0
+            hz = mesh_z(hx, hy)
+            stone_w = 0.50
+            stone_d = 0.18
+            stone_h = 0.80
+            # Some headstones are SLABS, some are CROSSES — alternate
+            if (row + col) % 3 == 0:
+                # Cross stone (vertical bar + horizontal bar)
+                _make_box_local(f"Cm_Cross_V_{row}_{col}",
+                                (hx, hy, hz + stone_h / 2),
+                                (0.08, stone_d, stone_h), col_stone)
+                _make_box_local(f"Cm_Cross_H_{row}_{col}",
+                                (hx, hy, hz + stone_h - 0.20),
+                                (0.40, stone_d, 0.08), col_stone)
+            else:
+                _make_box_local(f"Cm_Stone_{row}_{col}",
+                                (hx, hy, hz + stone_h / 2),
+                                (stone_w, stone_d, stone_h),
+                                col_stone)
+                # Engraved name plaque (darker thin box on front)
+                _make_box_local(f"Cm_StonePlaque_{row}_{col}",
+                                (hx, hy - stone_d / 2 - 0.005,
+                                 hz + stone_h * 0.55),
+                                (stone_w * 0.7, 0.01, stone_h * 0.4),
+                                col_dark)
+    # Larger family monument at the back centre
+    mm_x = cm_cx
+    mm_y = cm_cy + cm_d / 2 - 3.0
+    mm_z = mesh_z(mm_x, mm_y)
+    _make_box_local("Cm_Monument_Base",
+                    (mm_x, mm_y, mm_z + 0.30),
+                    (1.6, 1.0, 0.60), col_stone)
+    _make_box_local("Cm_Monument_Column",
+                    (mm_x, mm_y, mm_z + 1.40),
+                    (0.80, 0.80, 1.60), col_stone)
+    _make_box_local("Cm_Monument_Cap",
+                    (mm_x, mm_y, mm_z + 2.30),
+                    (1.0, 1.0, 0.20), col_stone)
+    # Iron fence corner posts (4)
+    for sgn_x in (-1, 1):
+        for sgn_y in (-1, 1):
+            fx = cm_cx + sgn_x * (cm_w / 2 + 0.2)
+            fy = cm_cy + sgn_y * (cm_d / 2 + 0.2)
+            fz = mesh_z(fx, fy)
+            _make_box_local(
+                f"Cm_FencePost_{sgn_x:+d}_{sgn_y:+d}",
+                (fx, fy, fz + 1.0),
+                (0.20, 0.20, 2.0), col_dark)
+    # Front gate at the south side (cm_cy - cm_d/2)
+    for sgn in (-1, 1):
+        _make_box_local(f"Cm_GatePost_{sgn:+d}",
+                        (cm_cx + sgn * 1.0,
+                         cm_cy - cm_d / 2 - 0.20,
+                         mesh_z(cm_cx + sgn * 1.0,
+                                cm_cy - cm_d / 2 - 0.20) + 1.4),
+                        (0.30, 0.30, 2.8), col_dark)
+    # Arched top connecting the gate posts (just a flat box)
+    _make_box_local("Cm_GateArch",
+                    (cm_cx, cm_cy - cm_d / 2 - 0.20,
+                     mesh_z(cm_cx, cm_cy - cm_d / 2 - 0.20) + 2.7),
+                    (2.5, 0.20, 0.30), col_dark)
+
+
 def build_arterial_lighting():
     """Streetlamps along Harmony Blvd and Horizon Drive at ~40 m
     spacing, alternating sides. Tall (6 m) suburban-arterial
@@ -8199,6 +8292,7 @@ def main():
     build_east_commercial_box()
     build_bus_stops()
     build_arterial_lighting()
+    build_church_cemetery()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
