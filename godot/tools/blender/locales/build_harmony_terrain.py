@@ -8108,6 +8108,86 @@ def build_district_arterials():
     _emit_arterial(horizon_dr, "HorizonDr_")
 
 
+def build_wild_zone_trees():
+    """Scatter ~40 trees deterministically across the wild zones
+    BETWEEN settlements so the district doesn't read as empty
+    grass between built areas.
+    """
+    COL_OAK_TRUNK = (0.30, 0.22, 0.16, 1.0)
+    COL_OAK_CANOPY = (0.30, 0.55, 0.25, 1.0)
+    COL_PINE_TRUNK = (0.32, 0.22, 0.14, 1.0)
+    COL_PINE_CANOPY = (0.18, 0.42, 0.20, 1.0)
+
+    # Deterministic positions scattered in wild zones
+    tree_specs = [
+        # (x, y, kind)
+        # NW wild between NorthRanch and Country Club
+        (-380, 320, 'oak'), (-280, 320, 'pine'), (-180, 320, 'oak'),
+        (-100, 320, 'pine'),
+        # N wild around CC north
+        (-360, 420, 'oak'), (-200, 430, 'pine'),
+        (150, 430, 'pine'), (300, 420, 'oak'),
+        # NE wild between EastCDS and CC
+        (380, 290, 'pine'), (380, 320, 'oak'),
+        # E wild east of EastCDS
+        (480, 200, 'oak'), (480, 140, 'pine'),
+        # SE wild between Phase 2 and EastComm
+        (300, -80, 'oak'), (380, -80, 'pine'),
+        (300, -200, 'oak'), (380, -200, 'oak'),
+        # S wild between Phase 2 and SouthComm
+        (100, -300, 'pine'), (180, -300, 'oak'),
+        (-50, -320, 'pine'), (-180, -310, 'oak'),
+        # SW wild west of Phase 3
+        (-440, -340, 'pine'), (-360, -340, 'oak'),
+        (-260, -340, 'pine'),
+        # W wild between WestEstates and WestComm
+        (-500, -120, 'oak'), (-500, -240, 'pine'),
+        (-490, 0, 'oak'),
+        # NW wild between NorthRanch and OliverTree
+        (-180, 280, 'pine'), (-100, 240, 'oak'),
+        # Between OTPark and HarmonyPark
+        (-160, 160, 'pine'), (-200, 100, 'oak'),
+        # Between PHs and chapter-1
+        (-350, -90, 'oak'), (-250, -90, 'pine'),
+        # E between EastCDS and HSField
+        (260, 60, 'oak'), (320, 0, 'pine'),
+        # Around drive-in
+        (60, -250, 'pine'), (240, -260, 'oak'),
+        # Random distributed
+        (-410, 320, 'oak'), (-90, 110, 'pine'),
+        (160, 140, 'oak'), (380, 120, 'pine'),
+    ]
+    for k, (tx, ty, kind) in enumerate(tree_specs):
+        tz = mesh_z(tx, ty)
+        seed = (int(tx) * 17 + int(ty) * 31) % 100
+        trunk_h = 4.5 + (seed % 4) * 0.6
+        canopy_r = 2.4 + ((seed // 5) % 3) * 0.4
+        if kind == 'oak':
+            _make_cyl_local(f"WildTree_{k}_Trunk",
+                            (tx, ty, tz + trunk_h / 2),
+                            0.30, trunk_h, COL_OAK_TRUNK, segments=6)
+            _make_sphere_low_local(
+                f"WildTree_{k}_Canopy",
+                (tx, ty, tz + trunk_h + canopy_r * 0.55),
+                canopy_r, COL_OAK_CANOPY,
+                rings=3, segments=8)
+        else:
+            # PINE — taller, narrower, more conical
+            _make_cyl_local(f"WildTree_{k}_Trunk",
+                            (tx, ty, tz + trunk_h / 2),
+                            0.24, trunk_h, COL_PINE_TRUNK, segments=6)
+            # Conical canopy (approximated as 3 stacked tapered cylinders)
+            _make_cyl_local(f"WildTree_{k}_Canopy1",
+                            (tx, ty, tz + trunk_h + 0.5),
+                            canopy_r, 1.6, COL_PINE_CANOPY, segments=6)
+            _make_cyl_local(f"WildTree_{k}_Canopy2",
+                            (tx, ty, tz + trunk_h + 2.0),
+                            canopy_r * 0.7, 1.4, COL_PINE_CANOPY, segments=6)
+            _make_cyl_local(f"WildTree_{k}_Canopy3",
+                            (tx, ty, tz + trunk_h + 3.2),
+                            canopy_r * 0.4, 1.0, COL_PINE_CANOPY, segments=6)
+
+
 def build_community_garden():
     """Community garden in HarmonyPark west of the playground.
     8 raised wood-edge beds in a 4×2 grid plus a small tool
@@ -10156,6 +10236,7 @@ def main():
     build_country_club()
     build_harmony_park()
     build_community_garden()
+    build_wild_zone_trees()
     build_district_arterials()
     build_community_landmarks()
     build_connector_roads()
