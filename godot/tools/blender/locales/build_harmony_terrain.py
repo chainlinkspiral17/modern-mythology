@@ -2810,6 +2810,34 @@ def _build_convenience_store(name_prefix, cx, cy, ground_z,
                     (cx, glass_y, ground_z + 0.20),
                     (width - 0.2, 0.08, 0.40), col_glass_frame)
 
+    # Entry door — frame outline on the right-most bay of the
+    # storefront. Just the frame; the door itself is the gap in
+    # the bottom rail. Gives the player a clear "I walk in here."
+    door_w = 1.4
+    door_h = 2.4
+    door_cx = cx + width / 2 - 1.8
+    # Vertical door jambs (slightly thicker than the mullions)
+    for sgn in (-1, 1):
+        _make_box_local(f"{name_prefix}_DoorJamb_{sgn:+d}",
+                        (door_cx + sgn * door_w / 2, glass_y,
+                         ground_z + door_h / 2),
+                        (0.12, 0.10, door_h), col_trim)
+    # Door header (above the door)
+    _make_box_local(f"{name_prefix}_DoorHeader",
+                    (door_cx, glass_y, ground_z + door_h + 0.08),
+                    (door_w + 0.12, 0.10, 0.16), col_trim)
+    # Push handle (vertical bar on the right jamb side)
+    _make_cyl_local(f"{name_prefix}_DoorHandle",
+                    (door_cx + 0.20, glass_y - 0.06,
+                     ground_z + 1.10),
+                    0.025, 0.40, col_glass_frame, segments=4)
+    # Welcome mat just outside the door
+    _make_box_local(f"{name_prefix}_DoorMat",
+                    (door_cx, glass_y - 0.40,
+                     ground_z + 0.07),
+                    (door_w + 0.20, 0.80, 0.02),
+                    (0.32, 0.22, 0.18, 1.0))
+
     # Roof
     _make_box_local(f"{name_prefix}_Roof",
                     (cx, cy, ground_z + height + 0.10),
@@ -3007,6 +3035,27 @@ def _build_cosmic_comics(cx, cy, ground_z):
     _make_box_local(f"{name_prefix}_GlassBotRail",
                     (cx, glass_y, ground_z + 0.20),
                     (width - 0.2, 0.08, 0.40), col_glass_frame)
+    # Entry door (centred)
+    door_w = 1.2
+    door_h = 2.2
+    door_cx = cx
+    for sgn in (-1, 1):
+        _make_box_local(f"{name_prefix}_DoorJamb_{sgn:+d}",
+                        (door_cx + sgn * door_w / 2, glass_y,
+                         ground_z + door_h / 2),
+                        (0.12, 0.10, door_h), col_trim)
+    _make_box_local(f"{name_prefix}_DoorHeader",
+                    (door_cx, glass_y, ground_z + door_h + 0.08),
+                    (door_w + 0.12, 0.10, 0.16), col_trim)
+    _make_cyl_local(f"{name_prefix}_DoorHandle",
+                    (door_cx + 0.18, glass_y - 0.06,
+                     ground_z + 1.10),
+                    0.025, 0.40, col_glass_frame, segments=4)
+    _make_box_local(f"{name_prefix}_DoorMat",
+                    (door_cx, glass_y - 0.40,
+                     ground_z + 0.07),
+                    (door_w + 0.20, 0.80, 0.02),
+                    (0.32, 0.22, 0.18, 1.0))
     # Roof
     _make_box_local(f"{name_prefix}_Roof",
                     (cx, cy, ground_z + height + 0.10),
