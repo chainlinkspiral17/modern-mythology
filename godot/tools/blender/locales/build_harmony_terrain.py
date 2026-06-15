@@ -3335,12 +3335,15 @@ def build_commercial_cluster():
             lot_cy = store_y - 24.0
             lot_d = 10.0
         elif tag == "CosmicComics":
-            # Cosmic Comics is a smaller shop — smaller lot too
-            lot_cy = store_y - 11.0
+            # Cosmic Comics is a smaller shop — smaller lot too.
+            # Shifted south to make room for a south-side sidewalk.
+            lot_cy = store_y - 15.0
             lot_w = 16.0
             lot_d = 12.0
         else:
-            lot_cy = store_y - 13.0
+            # Kwik Stop — shifted south to make room for a south-
+            # side sidewalk between building and lot.
+            lot_cy = store_y - 17.0
         # Four-vert slab so corners track terrain
         hw = lot_w / 2; hd = lot_d / 2
         lv = []
@@ -3372,23 +3375,24 @@ def build_commercial_cluster():
                             (1.5, 0.25, 0.20),
                             (0.78, 0.74, 0.66, 1.0))
 
-    # ── SIDEWALK from spawn area down to the commercial strip
-    # Player spawns at (0, 30, -380) facing south; the cluster sits
-    # at y ≈ -360. Draw a continuous concrete sidewalk along the
-    # north edge of both stores so the player has a clear approach.
+    # ── SIDEWALK in FRONT of the storefronts (south side).
+    # Player spawns at (0, 30, -380) facing south; the spawn-side
+    # spur drops south to meet the strip sidewalk in front of all
+    # three stores so the player walks past actual storefronts on
+    # approach, not behind buildings.
     COL_SIDEWALK = (0.78, 0.76, 0.72, 1.0)
     walk_w = 2.5
+    walk_strip_y = ks_y - 6.5     # all three stores share ks_y = nc_y = cc_y
     walk_pts = [
-        (nc_x,  nc_y + 6.5),                  # NexCorp (west-most)
-        ((ks_x + nc_x) / 2, ks_y + 6.5),      # between NexCorp & Kwik Stop
-        (ks_x,  ks_y + 6.5),                  # Kwik Stop
-        (0.0,   -350.0),                       # joins spawn-side spur
-        ((ks_x + cc_x) / 2, ks_y + 6.5),      # between Kwik Stop & Cosmic
-        (cc_x,  cc_y + 6.0),                  # Cosmic Comics
+        (nc_x,  walk_strip_y),                # NexCorp (west-most)
+        ((ks_x + nc_x) / 2, walk_strip_y),    # between NexCorp & Kwik Stop
+        (ks_x,  walk_strip_y),                # Kwik Stop
+        ((ks_x + cc_x) / 2, walk_strip_y),    # between Kwik Stop & Cosmic
+        (cc_x,  walk_strip_y),                # Cosmic Comics
     ]
-    # Spawn-side spur — a separate short segment connecting the
-    # main strip sidewalk to the country club / spawn approach.
-    spur_pts = [(0.0, -340.0), (0.0, -350.0)]
+    # Spawn-side spur drops from spawn approach to the strip
+    # sidewalk through the gap between NexCorp and Kwik Stop.
+    spur_pts = [(0.0, -340.0), (0.0, walk_strip_y)]
     hw = walk_w / 2
     for i in range(len(walk_pts) - 1):
         x0, y0 = walk_pts[i]
@@ -3507,7 +3511,8 @@ def build_commercial_cluster():
         (ks_x + cc_x) / 2 + 18,       # between Kwik Stop + Cosmic
     ]
     for k, stx in enumerate(street_tree_xs):
-        sty = ks_y + 6.5 + 1.0        # north of the sidewalk
+        sty = walk_strip_y - 2.5      # south of the sidewalk, planted
+                                      # between sidewalk and parking lot
         stz = mesh_z(stx, sty)
         trunk_h = 3.6
         canopy_r = 2.6
@@ -3532,7 +3537,7 @@ def build_commercial_cluster():
     for k, col in enumerate([(0.78, 0.18, 0.18, 1.0),   # red box
                               (0.18, 0.42, 0.62, 1.0)]):  # blue box
         nrx = cc_x - 3.0 + k * 0.65
-        nry = cc_y + 6.5 - 1.0
+        nry = walk_strip_y + 0.2       # on the sidewalk
         nrz = mesh_z(nrx, nry)
         # Body
         _make_box_local(f"CommNewsRack_{k}_Body",
@@ -3555,7 +3560,7 @@ def build_commercial_cluster():
     # green compost + the existing trash bin pattern, on a thin
     # concrete pad.
     rp_x = cc_x + 12.0
-    rp_y = cc_y - 6.5
+    rp_y = walk_strip_y       # on the sidewalk east of Cosmic
     rp_z = mesh_z(rp_x, rp_y)
     _make_box_local("CommRecycPad",
                     (rp_x, rp_y, rp_z + 0.04),
@@ -3578,7 +3583,7 @@ def build_commercial_cluster():
     # Classic glass-paneled booth with a red top cap. The hooked
     # handset is suggested by a thin dark box on the inside wall.
     ph_x = (ks_x + nc_x) / 2.0
-    ph_y = ks_y + 5.5
+    ph_y = walk_strip_y + 0.2     # on the sidewalk, slightly north
     ph_z = mesh_z(ph_x, ph_y)
     COL_BOOTH_FRAME = (0.18, 0.18, 0.18, 1.0)
     COL_BOOTH_GLASS = (0.42, 0.50, 0.58, 0.6)   # tinted glass-ish
@@ -3706,35 +3711,40 @@ def build_commercial_cluster():
         _finalize_mesh(f"{tag}_Apron", av, [[0, 1, 2, 3]], COL_ROAD)
 
     # ── STREETLIGHTS + BENCHES along the strip sidewalk
-    # Six 4 m lamp posts spaced ~30 m along the sidewalk, plus one
-    # bench in front of each store.
+    # Six 4 m lamp posts on the south curb of the sidewalk (i.e.
+    # 1 m further south of the sidewalk centerline).
     streetlight_xs = [nc_x - 10, nc_x + 14, ks_x - 10, ks_x + 14,
                        cc_x - 6, cc_x + 10]
     for k, slx in enumerate(streetlight_xs):
-        sly = ks_y + 6.5 - 1.5      # just south of the sidewalk
+        sly = walk_strip_y - 1.5       # south of the sidewalk
         slz = mesh_z(slx, sly)
         _build_lamppost(f"Comm_Lamp_{k}", slx, sly, slz, pole_h=4.0)
-    # One bench in front of each store, set back into the sidewalk
+    # One bench in front of each store. Bench Y is at the sidewalk
+    # centerline; backrest faces NORTH (toward the storefront) so
+    # someone sitting on the bench is looking into the shop window.
     COL_BENCH_WOOD = (0.42, 0.30, 0.20, 1.0)
     COL_BENCH_LEG  = (0.18, 0.18, 0.18, 1.0)
     for tag, store_x, store_y in (("KwikStop", ks_x, ks_y),
                                     ("NexCorpGG", nc_x, nc_y),
                                     ("CosmicComics", cc_x, cc_y)):
-        bz = mesh_z(store_x, store_y + 5.5)
+        bench_y = walk_strip_y - 0.20      # very slightly south of centerline
+        bz = mesh_z(store_x, bench_y)
         _make_box_local(f"{tag}_Bench_Seat",
-                        (store_x, store_y + 5.5, bz + 0.42),
+                        (store_x, bench_y, bz + 0.42),
                         (1.8, 0.42, 0.06), COL_BENCH_WOOD)
+        # Backrest at REAR edge of seat (south side of seat) so
+        # someone sitting on it faces NORTH toward the store.
         _make_box_local(f"{tag}_Bench_Back",
-                        (store_x, store_y + 5.30, bz + 0.85),
-                        (1.8, 0.06, 0.45), COL_BENCH_WOOD)
+                        (store_x, bench_y - 0.18, bz + 0.65),
+                        (1.8, 0.06, 0.40), COL_BENCH_WOOD)
         for sgn in (-1, 1):
             _make_box_local(f"{tag}_Bench_Leg_{sgn:+d}",
-                            (store_x + sgn * 0.75, store_y + 5.5,
+                            (store_x + sgn * 0.75, bench_y,
                              bz + 0.21),
                             (0.06, 0.42, 0.42), COL_BENCH_LEG)
-        # Trash bin a step east of the bench
+        # Trash bin a step east of the bench (also on sidewalk)
         _make_cyl_local(f"{tag}_Bin",
-                        (store_x + 1.6, store_y + 5.5, bz + 0.55),
+                        (store_x + 1.6, bench_y, bz + 0.55),
                         0.28, 1.0, (0.32, 0.32, 0.32, 1.0),
                         segments=8)
     # Spur from spawn approach to the strip sidewalk
