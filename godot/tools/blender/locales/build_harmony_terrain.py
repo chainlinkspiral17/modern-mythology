@@ -10673,6 +10673,85 @@ def build_arterial_lighting():
                             prefix)
 
 
+def build_residential_mailboxes():
+    """Curbside mailboxes along every residential street. One
+    mailbox per house spacing (~22m), alternating sides so each
+    house has a clear curb-mount. The cul-de-sac roads get
+    mailboxes only on the outer curve.
+    """
+    COL_BOX = (0.32, 0.32, 0.34, 1.0)   # dark grey rural mailbox
+    COL_POST = (0.42, 0.30, 0.20, 1.0)  # wood post
+    COL_FLAG = (0.85, 0.20, 0.18, 1.0)  # red flag
+    mb_offset = 4.5    # m from road CL to mailbox
+    mb_spacing = 22.0
+    corridor_xys = {name: [(x, y) for (x, y, _z) in wps]
+                    for (name, wps, _hw, _sh) in ROAD_CORRIDORS}
+
+    def _emit_mailboxes(pts, prefix):
+        accumulated = 0.0
+        next_mb = 11.0      # first one at half a spacing in
+        side_sgn = 1
+        idx = 0
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+            seg_len = math.hypot(x1 - x0, y1 - y0) or 1.0
+            seg_end = accumulated + seg_len
+            while next_mb < seg_end:
+                t = (next_mb - accumulated) / seg_len
+                mx = x0 + (x1 - x0) * t
+                my = y0 + (y1 - y0) * t
+                dxs = x1 - x0; dys = y1 - y0
+                perp_x = -dys / seg_len
+                perp_y =  dxs / seg_len
+                bx = mx + side_sgn * perp_x * mb_offset
+                by = my + side_sgn * perp_y * mb_offset
+                bz = mesh_z(bx, by)
+                # Wooden post
+                _make_box_local(f"{prefix}MB_{idx}_Post",
+                                (bx, by, bz + 0.55),
+                                (0.10, 0.10, 1.10), COL_POST)
+                # Mailbox body (small horizontal cylinder/box)
+                # Box orientation aligned with road (perpendicular
+                # to perp): the LONG axis of the mailbox runs
+                # parallel to the road direction.
+                dx_norm = dxs / seg_len; dy_norm = dys / seg_len
+                if abs(dx_norm) > abs(dy_norm):
+                    box_sx, box_sy = 0.20, 0.32
+                else:
+                    box_sx, box_sy = 0.32, 0.20
+                _make_box_local(f"{prefix}MB_{idx}_Body",
+                                (bx, by, bz + 1.20),
+                                (box_sx, box_sy, 0.22), COL_BOX)
+                # Red flag on the road-facing side
+                flag_x = bx - side_sgn * perp_x * 0.15
+                flag_y = by - side_sgn * perp_y * 0.15
+                if abs(dx_norm) > abs(dy_norm):
+                    flag_sx, flag_sy = 0.04, 0.12
+                else:
+                    flag_sx, flag_sy = 0.12, 0.04
+                _make_box_local(f"{prefix}MB_{idx}_Flag",
+                                (flag_x, flag_y, bz + 1.32),
+                                (flag_sx, flag_sy, 0.10), COL_FLAG)
+                idx += 1
+                side_sgn = -side_sgn
+                next_mb += mb_spacing
+            accumulated = seg_end
+
+    for cname, prefix in [
+        ("NRAspen",   "NRAspen_MB_"),
+        ("NRBirch",   "NRBirch_MB_"),
+        ("NRCedar",   "NRCedar_MB_"),
+        ("WEMag",     "WEMag_MB_"),
+        ("WELoop",    "WELoop_MB_"),
+        ("P2Main",    "P2Main_MB_"),
+        ("ECDSRidge", "ECDSRidge_MB_"),
+    ]:
+        if cname in corridor_xys:
+            _emit_mailboxes(_catmull_rom_2d(corridor_xys[cname],
+                                              samples_per_seg=4),
+                            prefix)
+
+
 def build_bus_stops():
     """Bus-stop shelters at key arterial intersections. Each:
     4 corner steel posts + slanted roof + back wall + bench.
@@ -14558,6 +14637,7 @@ def main():
     build_taqueria_el_rancho()
     build_east_commercial_box()
     build_bus_stops()
+    build_residential_mailboxes()
     build_arterial_lighting()
     build_arterial_trees()
     build_church_cemetery()
