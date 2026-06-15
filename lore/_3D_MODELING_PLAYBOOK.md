@@ -847,6 +847,20 @@ between-equally-OK-options choice, pick the printable one.
   preserved through the gltf axis swap). For north/south facing
   panels, the THIN axis in Blender is Y (which becomes Godot Z).
 
+### 2026-06-15 · marginal-value heuristic during grind sessions
+
+- **Big alignment fix > 5 atmospheric additions.** During a 60-
+  pass grind I noticed the highest-impact passes were the
+  alignment / clip / position fixes (creek water, FoundersPond,
+  NPC counter clearance, cars vs canopy columns). Atmospheric
+  additions (extra props, light fixtures, lampposts, trees) read
+  flat compared to a hovering pond or a clerk embedded in a
+  washing machine. Rule of thumb when grinding:
+  - If you find an alignment bug, fix it FIRST.
+  - Add atmosphere only AFTER the alignment ledger is clean.
+  - Capture a playbook lesson for every non-trivial alignment
+    bug — they recur.
+
 ### TEMPLATE for next session
 
 ```markdown
