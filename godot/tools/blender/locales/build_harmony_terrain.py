@@ -3390,9 +3390,16 @@ def build_commercial_cluster():
         ((ks_x + cc_x) / 2, walk_strip_y),    # between Kwik Stop & Cosmic
         (cc_x,  walk_strip_y),                # Cosmic Comics
     ]
-    # Spawn-side spur drops from spawn approach to the strip
-    # sidewalk through the gap between NexCorp and Kwik Stop.
-    spur_pts = [(0.0, -340.0), (0.0, walk_strip_y)]
+    # Spawn-side spur drops from spawn approach south to the strip
+    # sidewalk, then continues south through the gap between
+    # NexCorp's and Kwik Stop's parking lots to reach the road
+    # crosswalk at the bottom of the strip. One continuous
+    # pedestrian path: spawn → sidewalk → road.
+    spur_pts = [
+        (0.0, -340.0),               # spawn-side start
+        (0.0, walk_strip_y),         # joins strip sidewalk
+        (0.0, ks_y - 32.0 + 4.0 + 0.5),  # at road north edge + 0.5
+    ]
     hw = walk_w / 2
     for i in range(len(walk_pts) - 1):
         x0, y0 = walk_pts[i]
