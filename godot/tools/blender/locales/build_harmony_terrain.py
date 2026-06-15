@@ -5127,17 +5127,20 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     perp_x = -fy
     perp_y = fx
 
-    # Slab — overlaps the full footprint (main + garage)
+    # Slab — covers main + garage footprint, centred at (cx, cy).
+    # For Y-facing buildings the WIDTH axis (main_w + gar_w) is X
+    # and the DEPTH axis is Y; for X-facing the axes swap.
     slab_w = main_w + gar_w + 0.4
     slab_d = max(main_d, gar_d) + 0.4
+    if abs(fx) > 0.5:
+        # Facing E/W → width axis is Y, depth axis is X
+        slab_size = (slab_d, slab_w, 0.10)
+    else:
+        # Facing N/S → width axis is X, depth axis is Y
+        slab_size = (slab_w, slab_d, 0.10)
     _make_box_local(f"{name}_Slab",
-                    (cx + perp_x * gar_w / 2,
-                     cy + perp_y * gar_w / 2,
-                     ground_z + 0.05),
-                    (slab_w if abs(perp_x) < 0.5 else slab_d,
-                     slab_d if abs(perp_x) < 0.5 else slab_w,
-                     0.10),
-                    col_trim)
+                    (cx, cy, ground_z + 0.05),
+                    slab_size, col_trim)
 
     # Main house walls — built as a single box with the front
     # face oriented along facing direction.
@@ -5205,30 +5208,37 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
         rfaces.append([1, 2, 5])
     _finalize_mesh(f"{name}_Roof", rverts, rfaces, col_roof)
 
-    # Front door at the front face of the main house, slightly
-    # right of center (closer to the garage)
-    front_off = main_d / 2 if abs(fy) > 0.5 else main_w / 2
-    door_cx = main_cx + fx * front_off + perp_x * 1.2
-    door_cy = main_cy + fy * front_off + perp_y * 1.2
+    # Front door at the front face of the main house, offset
+    # toward the garage corner. front_off is always main_d/2
+    # because main_d is the depth-along-facing in BOTH axes
+    # (the main_size ternary already places main_d on the facing
+    # axis). Two front windows on the OPPOSITE side of the door
+    # from the garage (so the "living-room" half gets the glass).
+    front_off = main_d / 2
+    door_perp_off = 1.8         # door pushed toward the garage corner
+    door_cx = main_cx + fx * front_off + perp_x * door_perp_off
+    door_cy = main_cy + fy * front_off + perp_y * door_perp_off
     _make_box_local(f"{name}_FrontDoor",
                     (door_cx, door_cy, ground_z + 1.05),
                     (0.08 if abs(fx) > 0.5 else 0.90,
                      0.90 if abs(fx) > 0.5 else 0.08,
                      2.10), col_door)
-    # Two windows on the front face (one each side of the door)
-    for sgn, off in ((-1, -1.8), (1, 1.0)):
+    # Two windows on the front face, both on the NON-garage side
+    # of the door (perp negative direction). Spaced -1.6 and -3.4
+    # from main_cx so they don't overlap each other or the door.
+    for sgn, off in ((-1, -1.6), (-2, -3.4)):
         wx_pos = main_cx + fx * front_off + perp_x * off
         wy_pos = main_cy + fy * front_off + perp_y * off
         _make_box_local(f"{name}_Window_F_{sgn:+d}",
                         (wx_pos, wy_pos, ground_z + 1.50),
-                        (0.10 if abs(fx) > 0.5 else 1.0,
-                         1.0 if abs(fx) > 0.5 else 0.10,
+                        (0.10 if abs(fx) > 0.5 else 1.2,
+                         1.2 if abs(fx) > 0.5 else 0.10,
                          1.0), col_window)
 
     # Porch — small slab + 2 roof posts in front of the door
     porch_d = 1.2
-    porch_cx = main_cx + fx * (front_off + porch_d / 2) + perp_x * 1.2
-    porch_cy = main_cy + fy * (front_off + porch_d / 2) + perp_y * 1.2
+    porch_cx = door_cx + fx * porch_d / 2
+    porch_cy = door_cy + fy * porch_d / 2
     _make_box_local(f"{name}_PorchSlab",
                     (porch_cx, porch_cy, ground_z + 0.10),
                     (2.4 if abs(fx) < 0.5 else porch_d,
@@ -5266,9 +5276,11 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                     (gar_cx, gar_cy, ground_z + gar_h + 0.10),
                     (gar_size[0] + 0.20, gar_size[1] + 0.20, 0.20),
                     col_roof)
-    # Garage door (front face of garage)
-    gdoor_cx = gar_cx + fx * (gar_d / 2 if abs(fx) > 0.5 else gar_w / 2)
-    gdoor_cy = gar_cy + fy * (gar_d / 2 if abs(fx) > 0.5 else gar_w / 2)
+    # Garage door (front face of garage). gar_d/2 is the depth-
+    # along-facing in BOTH X- and Y-facing cases (gar_size puts
+    # gar_d on the facing axis).
+    gdoor_cx = gar_cx + fx * gar_d / 2
+    gdoor_cy = gar_cy + fy * gar_d / 2
     if abs(fx) > 0.5:
         gdoor_size = (0.06, 3.8, 2.2)
     else:
