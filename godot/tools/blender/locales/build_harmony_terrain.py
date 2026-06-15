@@ -508,44 +508,76 @@ LOT_PADS = [
     # NexCorp HQ visitor lot south of the HQ building (NexCorpHQPad
     # only covers the building footprint; the southern visitor lot
     # extends to y=235 and was floating above terrain).
-    ("NexCorpHQLot",  -32, 32, 230, 256, +14.0, 18.0),
-    # Hospital lot
-    ("HospitalLot",  165, 195, 260, 300, +14.0, 16.0),
-    # Church + cemetery pad
-    ("ChurchPad",    -50,  10, 120, 165,  +1.0, 18.0),
-    # Fire station pad
-    ("FirePad",     -215, -185, -45, -15,  0.0, 16.0),
-    # Police station pad
-    ("PolicePad",   -185, -155, -75, -45,  0.0, 16.0),
-    # Post office pad
-    ("PostPad",      170, 192,  -38, -22, +1.5, 14.0),
-    # Library pad
-    ("LibraryPad",    45,  75,  65, 100,  +1.0, 14.0),
-    # Drive-in theatre pad
-    ("DriveInPad",    80, 220, -340, -240, -5.0, 22.0),
-    # Halsey Studios pad
-    ("HalseyPad",    460, 500, -120, -80, +5.0, 16.0),
-    # Auto dealership pad
-    ("AutoPad",      460, 510, -290, -230, +5.0, 16.0),
-    # Self-storage pad
-    ("StoragePad",   460, 510, -200, -160, +5.0, 14.0),
-    # East big-box pad
-    ("BigBoxPad",    460, 510,   40,  90, +5.0, 16.0),
-    # Truck stop pad
-    ("TruckStopPad", 170, 240, -400, -360, -9.0, 16.0),
-    # Mini-mart pad
-    ("MiniMartPad", -275, -245, -65, -35, -1.0, 14.0),
-    # Horizon Plaza pad
-    ("HorizonPzPad", -115, -85,  20,  42, +1.0, 14.0),
-    # Diner pad (chapter-1, already in SETTLEMENTS but adding the
-    # forecourt + lot extension)
-    # Elementary school pad
-    ("ESPad",       -110, -70, 140, 180, +1.5, 16.0),
-    # Cemetery (between church and Harmony Park)
-    # Little League diamond
-    ("LLDiamondPad", -170, -130, 180, 220, +1.0, 14.0),
-    # Country Club main building pad
-    ("CCMainPad",    -20,  20, 360, 385, +22.0, 18.0),
+    ("NexCorpHQLot",  -40,  40, 220, 256, +14.0, 22.0),
+
+    # Hospital — building + visitor lot
+    ("HospitalLot",  160, 200, 255, 305, +14.0, 22.0),
+
+    # Church + cemetery + lot
+    ("ChurchPad",    -60,  20, 115, 168,  +1.0, 20.0),
+
+    # Fire station + apron
+    ("FirePad",     -222, -178, -48, -12,  0.0, 18.0),
+
+    # Police station + cruiser lot
+    ("PolicePad",   -192, -148, -78, -42,  0.0, 18.0),
+
+    # Post office + drop-box plaza
+    ("PostPad",      164, 196,  -42, -18, +1.5, 16.0),
+
+    # Library + bike racks
+    ("LibraryPad",    40,  80,  62, 102,  +1.0, 16.0),
+
+    # Drive-in theatre — concession + parking arcs
+    ("DriveInPad",    70, 230, -340, -235, -5.0, 25.0),
+
+    # Halsey Studios — building 36m + 50m lot. Widened both axes.
+    ("HalseyPad",    448, 512, -125, -75, +5.0, 22.0),
+
+    # Auto dealership — 60×28 lot at (480, -260). Widened x.
+    ("AutoPad",      440, 520, -290, -230, +5.0, 22.0),
+
+    # Self-storage — 3 rows of orange roll-ups, 50×30 area.
+    ("StoragePad",   448, 512, -210, -150, +5.0, 18.0),
+
+    # East big-box — dept store + drive-thru, big lot.
+    ("BigBoxPad",    442, 520,   35,  95, +5.0, 22.0),
+
+    # Truck stop — wider east-extent so the rig stalls fit
+    ("TruckStopPad", 162, 250, -400, -355, -9.0, 18.0),
+
+    # Mini-mart at (-260, -50) — building + single-pump apron
+    ("MiniMartPad", -278, -242, -68, -32, -1.0, 16.0),
+
+    # Horizon Plaza — strip mall + lot (lot south)
+    ("HorizonPzPad", -118, -82,  15,  45, +1.0, 16.0),
+
+    # Elementary School — building + adjacent playground + lot
+    ("ESPad",       -118, -62, 135, 185, +1.5, 20.0),
+
+    # Little League diamond + dugouts
+    ("LLDiamondPad", -178, -122, 175, 225, +1.0, 16.0),
+
+    # Country Club main building pad — the clubhouse + portico
+    ("CCMainPad",    -28,  28, 358, 388, +22.0, 18.0),
+
+    # Country Club tennis + putting green + valet lot
+    ("CCAuxPad",     -90,  90, 340, 392, +22.0, 22.0),
+
+    # NexCorp Sales Trailer + 3-car visitor lot
+    ("SalesPad",    -312, -288, 200, 232, +12.0, 14.0),
+
+    # NexCorp Model Home + driveway pull-up
+    ("ModelHomePad",-352, -328, 205, 232, +12.0, 14.0),
+
+    # Taqueria El Rancho — building + drive-thru loop + parking
+    ("TaqueriaPad",  275, 308, -385, -355, -9.0, 18.0),
+
+    # D'Ambrosio's bar + patio
+    ("DambrosioPad",-165, -135, -375, -345, -9.0, 16.0),
+
+    # NexCorp HQ reflecting pool + plaza north of building
+    ("NXHQPlaza",    -30,  30, 295, 335, +14.0, 18.0),
 ]
 
 
@@ -8768,12 +8800,53 @@ def build_arterial_sidewalks():
 
     corridor_xys = {name: [(x, y) for (x, y, _z) in wps]
                     for (name, wps, _hw, _sh) in ROAD_CORRIDORS}
+    # Arterials at standard 2.4m sidewalk, 6.4m offset
     _emit_sidewalk(_catmull_rom_2d(corridor_xys["HarmonyBlvd"],
                                     samples_per_seg=4),
                    "HarmonyBlvd_")
     _emit_sidewalk(_catmull_rom_2d(corridor_xys["HorizonDr"],
                                     samples_per_seg=4),
                    "HorizonDr_")
+    # ── COMMERCIAL FRONTAGE sidewalks · chapter-1 + east comm
+    # collectors. Narrower 1.6m sidewalk + tighter offset since
+    # connectors are narrower. _emit_sidewalk uses module-scoped
+    # constants, so we redo the math inline with narrower values.
+    sw_w_link = 1.6
+    sw_off_link = 2.5 + 0.6 + sw_w_link / 2
+    COL_SIDEWALK_LINK = (0.78, 0.76, 0.72, 1.0)
+    def _emit_link_sw(pts, prefix):
+        for sgn in (-1, 1):
+            for i in range(len(pts) - 1):
+                x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+                dxs = x1 - x0; dys = y1 - y0
+                seg_len = math.hypot(dxs, dys) or 1.0
+                perp_x = -dys / seg_len
+                perp_y =  dxs / seg_len
+                pv = []
+                for (px, py) in [
+                    (x0 + sgn * perp_x * (sw_off_link - sw_w_link / 2),
+                     y0 + sgn * perp_y * (sw_off_link - sw_w_link / 2)),
+                    (x1 + sgn * perp_x * (sw_off_link - sw_w_link / 2),
+                     y1 + sgn * perp_y * (sw_off_link - sw_w_link / 2)),
+                    (x1 + sgn * perp_x * (sw_off_link + sw_w_link / 2),
+                     y1 + sgn * perp_y * (sw_off_link + sw_w_link / 2)),
+                    (x0 + sgn * perp_x * (sw_off_link + sw_w_link / 2),
+                     y0 + sgn * perp_y * (sw_off_link + sw_w_link / 2)),
+                ]:
+                    pv.append((px, py, mesh_z(px, py) + 0.06))
+                _finalize_mesh(f"{prefix}Sidewalk_{i}_{sgn:+d}", pv,
+                                [[0, 1, 2, 3]], COL_SIDEWALK_LINK)
+    for cname, prefix in [
+        ("Ch1Frontage",     "Ch1Frontage_"),
+        ("ECommN",          "ECommN_"),
+        ("ECommS",          "ECommS_"),
+        ("NRLink",          "NRLink_"),
+        ("ECDSLink",        "ECDSLink_"),
+    ]:
+        if cname in corridor_xys:
+            _emit_link_sw(_catmull_rom_2d(corridor_xys[cname],
+                                            samples_per_seg=4),
+                          prefix)
 
 
 def build_arterial_trees():
@@ -10045,6 +10118,9 @@ def build_district_arterials():
     COL_CL = (0.95, 0.85, 0.30, 1.0)         # yellow centerline
     hw = road_w / 2
 
+    COL_CURB = (0.78, 0.74, 0.66, 1.0)
+    curb_w = 0.5
+
     def _emit_arterial(pts, prefix, with_centerline=True):
         for i in range(len(pts) - 1):
             x0, y0 = pts[i]; x1, y1 = pts[i + 1]
@@ -10060,6 +10136,23 @@ def build_district_arterials():
                 rv.append((rx, ry, mesh_z(rx, ry) + 0.04))
             _finalize_mesh(f"{prefix}Road_{i}", rv, [[0, 1, 2, 3]],
                             COL_ROAD)
+            # Curb-and-gutter on both sides of the arterial. The curb
+            # ribbon stretches just outside the road edge by curb_w,
+            # rising 10 cm above the asphalt. Civil-engineering
+            # standard suburban arterial detail.
+            for sgn in (-1, 1):
+                cv = []
+                for (rx, ry) in [(x0 + sgn * perp_x * hw,
+                                  y0 + sgn * perp_y * hw),
+                                 (x1 + sgn * perp_x * hw,
+                                  y1 + sgn * perp_y * hw),
+                                 (x1 + sgn * perp_x * (hw + curb_w),
+                                  y1 + sgn * perp_y * (hw + curb_w)),
+                                 (x0 + sgn * perp_x * (hw + curb_w),
+                                  y0 + sgn * perp_y * (hw + curb_w))]:
+                    cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
+                _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
+                                [[0, 1, 2, 3]], COL_CURB)
             if with_centerline:
                 # 3 dashes per segment evenly spaced
                 for d in range(3):
