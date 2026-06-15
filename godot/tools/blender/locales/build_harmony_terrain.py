@@ -6047,6 +6047,106 @@ def build_water_tower_and_lines():
                 radius=0.05, color=(0.08, 0.08, 0.08, 1.0))
 
 
+def build_dambrosios_holdover():
+    """D'Ambrosio's Holdover — chapter-1 era smaller version of
+    the canonical riverfront bar. Per lore/_HCE_PROJECT_NOTES.md
+    referenced as a chapter-1 location needing an interior on
+    the exterior map. Single-story dark wood building with a
+    pitched roof and a cursive sign in the D'Ambrosio's red.
+
+    Sits west of the chapter-1 commercial cluster at (-150,
+    -360) within the South Commercial belt.
+    """
+    cx, cy = -150.0, -360.0
+    ground_z = mesh_z(cx, cy)
+    col_wall = (0.42, 0.30, 0.20, 1.0)         # dark wood
+    col_trim = (0.62, 0.42, 0.28, 1.0)          # lighter wood
+    col_roof = (0.32, 0.22, 0.18, 1.0)
+    col_door = (0.62, 0.18, 0.16, 1.0)
+    col_window = (0.95, 0.85, 0.45, 1.0)        # warm-lit window glow
+    col_sign = (0.85, 0.20, 0.18, 1.0)
+    w, d, h = 14.0, 12.0, 4.2
+    t = 0.20
+    _make_box_local("DA_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (w + 0.4, d + 0.4, 0.10), col_trim)
+    # Walls (solid all four sides, just window cutouts via
+    # decorative window panels)
+    _make_box_local("DA_WallN",
+                    (cx, cy + d / 2 - t / 2, ground_z + h / 2),
+                    (w, t, h), col_wall)
+    _make_box_local("DA_WallE",
+                    (cx + w / 2 - t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    _make_box_local("DA_WallW",
+                    (cx - w / 2 + t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    # South wall with central door + flanking windows
+    dw, dh = 1.6, 2.6
+    left_w = w / 2 - dw / 2
+    _make_box_local("DA_WallS_L",
+                    (cx - dw / 2 - left_w / 2,
+                     cy - d / 2 + t / 2, ground_z + h / 2),
+                    (left_w, t, h), col_wall)
+    _make_box_local("DA_WallS_R",
+                    (cx + dw / 2 + left_w / 2,
+                     cy - d / 2 + t / 2, ground_z + h / 2),
+                    (left_w, t, h), col_wall)
+    _make_box_local("DA_WallS_Header",
+                    (cx, cy - d / 2 + t / 2,
+                     ground_z + dh + (h - dh) / 2),
+                    (dw, t, h - dh), col_wall)
+    _make_box_local("DA_Door",
+                    (cx, cy - d / 2 + 0.05, ground_z + dh / 2),
+                    (dw, 0.06, dh - 0.10), col_door)
+    # Two warm-lit windows on the south face flanking the door
+    for sgn in (-1, 1):
+        _make_box_local(f"DA_Window_{sgn:+d}",
+                        (cx + sgn * 3.5, cy - d / 2 + 0.04,
+                         ground_z + 2.0),
+                        (1.8, 0.04, 1.4), col_window)
+    # Pitched gable roof
+    ridge_h = 2.0
+    rverts = [
+        (cx - w / 2 - 0.30, cy - d / 2 - 0.30, ground_z + h),
+        (cx + w / 2 + 0.30, cy - d / 2 - 0.30, ground_z + h),
+        (cx + w / 2 + 0.30, cy + d / 2 + 0.30, ground_z + h),
+        (cx - w / 2 - 0.30, cy + d / 2 + 0.30, ground_z + h),
+        (cx, cy - d / 2 - 0.30, ground_z + h + ridge_h),
+        (cx, cy + d / 2 + 0.30, ground_z + h + ridge_h),
+    ]
+    rfaces = [[0, 1, 5, 4], [3, 4, 5, 2],
+              [0, 4, 3], [1, 2, 5]]
+    _finalize_mesh("DA_Roof", rverts, rfaces, col_roof)
+    # Hanging sign on a wrought-iron bracket south of the door
+    _make_box_local("DA_SignBracket",
+                    (cx, cy - d / 2 - 0.7,
+                     ground_z + h - 0.6),
+                    (0.06, 1.0, 0.08),
+                    (0.18, 0.18, 0.18, 1.0))
+    _make_box_local("DA_SignPanel",
+                    (cx, cy - d / 2 - 1.0,
+                     ground_z + h - 1.4),
+                    (2.4, 0.10, 1.2), col_sign)
+    # Small front patio (cobblestone-style)
+    _make_box_local("DA_Patio",
+                    (cx, cy - d / 2 - 1.5,
+                     ground_z + 0.05),
+                    (8.0, 2.0, 0.10),
+                    (0.55, 0.50, 0.45, 1.0))
+    # 2 outdoor café tables
+    for sgn in (-1, 1):
+        tx = cx + sgn * 3.0
+        ty = cy - d / 2 - 1.5
+        tz = mesh_z(tx, ty)
+        _make_cyl_local(f"DA_PatioTable_{sgn:+d}",
+                        (tx, ty, tz + 0.75),
+                        0.40, 0.06, col_trim, segments=8)
+        _make_cyl_local(f"DA_PatioTableStem_{sgn:+d}",
+                        (tx, ty, tz + 0.40),
+                        0.06, 0.70, col_trim, segments=6)
+
+
 def build_church_lot_and_school_playground():
     """Church parking lot west of the church + a small fenced
     playground area south of the elementary school.
@@ -9296,6 +9396,7 @@ def main():
     build_arterial_trees()
     build_church_cemetery()
     build_church_lot_and_school_playground()
+    build_dambrosios_holdover()
     build_water_tower_and_lines()
     build_halsey_studios()
     build_hospital()
