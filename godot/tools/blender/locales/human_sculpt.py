@@ -197,10 +197,10 @@ def _sphere_low(name, center, radius, color, rings=4, segments=8,
 # total).
 PROP = {
     "total_h":        1.80,
-    "head_d":         0.18,    # head diameter (overall sphere)
-    "head_squash":    0.92,    # slightly egg-shaped
-    "neck_h":         0.06,
-    "neck_r":         0.055,
+    "head_d":         0.20,    # head diameter (overall sphere)
+    "head_squash":    0.95,    # slightly egg-shaped
+    "neck_h":         0.10,    # neck VISIBLE between head and shoulders
+    "neck_r":         0.058,
     "shoulder_w":     0.46,    # full shoulder span
     "torso_h":        0.62,    # neck base → pelvis top
     "torso_r_top":    0.20,    # half-shoulder roughly
