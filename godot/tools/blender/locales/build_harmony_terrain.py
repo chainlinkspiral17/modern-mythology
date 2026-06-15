@@ -7324,6 +7324,14 @@ def build_commercial_cluster():
         ("Diego",    ks_x - 3.7, ks_y - 5.0, 1.0, "bowl",
             (0.42, 0.22, 0.18, 1.0),    # dark band-tee
             (0.20, 0.20, 0.24, 1.0)),
+        # Roy — canon from Sam's zine: "a regular customer she
+        # likes named ROY who buys a single Lone Star tallboy
+        # every Friday at 5:48 PM". Mid-50s, blue collared shirt,
+        # khaki pants. Positioned at the back cooler about to
+        # grab his Friday tallboy.
+        ("Roy",      ks_x - 5.0, ks_y + 3.0, 1.05, "short",
+            (0.32, 0.55, 0.78, 1.0),    # blue collared shirt
+            (0.78, 0.74, 0.66, 1.0)),   # khaki pants
         ("LaundryAtt", ks_x + 9.0 - 3.0, ks_y + 0.5, 1.0, "bowl",
             (0.32, 0.55, 0.78, 1.0),
             (0.92, 0.92, 0.90, 1.0)),
