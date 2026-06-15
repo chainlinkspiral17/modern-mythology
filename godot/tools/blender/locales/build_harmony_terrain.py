@@ -5827,14 +5827,19 @@ def build_strip_mall_nightclub():
     entry_y = cy - depth / 2 + 0.05
     door_w = 1.6
     door_h = 2.6
-    # Entry alcove walls (two side walls forming an inset of 1.0 m)
+    # Entry alcove walls (two side walls forming an inset of
+    # 1.0 m). Centered at half-height so the wall bottom is on
+    # the ground; previous code (centre at 0.55 * height,
+    # size 0.95 * height) had the bottom floating at 0.375 m
+    # and the top poking above the building roofline.
     alcove_d = 1.2
+    alc_wall_h = height * 0.95
     for sgn in (-1, 1):
         _make_box_local(f"{name_prefix}_AlcoveWall_{sgn:+d}",
                         (cx + sgn * (door_w / 2 + 0.15),
                          entry_y + alcove_d / 2,
-                         ground_z + height * 0.55),
-                        (0.30, alcove_d, height * 0.95),
+                         ground_z + alc_wall_h / 2),
+                        (0.30, alcove_d, alc_wall_h),
                         col_wall)
     # Door itself — solid black, slightly inset
     _make_box_local(f"{name_prefix}_EntryDoor",
