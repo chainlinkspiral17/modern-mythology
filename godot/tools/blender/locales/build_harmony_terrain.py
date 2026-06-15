@@ -5620,6 +5620,129 @@ def build_east_commercial_box():
                     (0.32, 0.32, 0.36, 1.0))
 
 
+def build_hospital():
+    """Harmony Creek Hospital — civic hospital in NorthComm east
+    of NexCorp HQ. 36 × 16 × 11 m three-story building with a
+    large red CROSS sign on the south facade and an ambulance
+    bay on the east end.
+    """
+    cx, cy = 180.0, 300.0
+    ground_z = mesh_z(cx, cy)
+    col_wall = (0.92, 0.92, 0.90, 1.0)
+    col_trim = (0.62, 0.62, 0.64, 1.0)
+    col_roof = (0.32, 0.32, 0.35, 1.0)
+    col_cross = (0.85, 0.20, 0.18, 1.0)
+    col_glass = (0.32, 0.42, 0.55, 1.0)
+    col_door = (0.18, 0.32, 0.55, 1.0)
+    w, d, h = 36.0, 16.0, 11.0
+    t = 0.20
+    _make_box_local("Hos_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (w + 0.4, d + 0.4, 0.10), col_trim)
+    _make_box_local("Hos_WallN",
+                    (cx, cy + d / 2 - t / 2, ground_z + h / 2),
+                    (w, t, h), col_wall)
+    _make_box_local("Hos_WallE",
+                    (cx + w / 2 - t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    _make_box_local("Hos_WallW",
+                    (cx - w / 2 + t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    # South face split for main entry
+    dw, dh = 3.5, 3.4
+    left_w = w / 2 - dw / 2
+    _make_box_local("Hos_WallS_L",
+                    (cx - dw / 2 - left_w / 2,
+                     cy - d / 2 + t / 2, ground_z + h / 2),
+                    (left_w, t, h), col_wall)
+    _make_box_local("Hos_WallS_R",
+                    (cx + dw / 2 + left_w / 2,
+                     cy - d / 2 + t / 2, ground_z + h / 2),
+                    (left_w, t, h), col_wall)
+    _make_box_local("Hos_WallS_Header",
+                    (cx, cy - d / 2 + t / 2,
+                     ground_z + dh + (h - dh) / 2),
+                    (dw, t, h - dh), col_wall)
+    # Main entrance double-door
+    for sgn in (-1, 1):
+        _make_box_local(f"Hos_Door_{sgn:+d}",
+                        (cx + sgn * dw / 4,
+                         cy - d / 2 + 0.05, ground_z + dh / 2),
+                        (dw / 2 - 0.12, 0.06, dh - 0.10), col_door)
+    # 3 rows of 6 windows on the south face (story heights at
+    # 3.7 m apart)
+    for story in range(3):
+        z_win = ground_z + 1.8 + story * 3.7
+        for sgn in (-1, 1):
+            for k in range(3):
+                wx = cx + sgn * (dw / 2 + (k + 1) * 4.0)
+                if abs(wx - cx) < w / 2 - 1.5:
+                    _make_box_local(
+                        f"Hos_Window_{story}_{sgn:+d}_{k}",
+                        (wx, cy - d / 2 + 0.04, z_win),
+                        (2.4, 0.04, 1.6), col_glass)
+    # Roof + parapet
+    _make_box_local("Hos_Roof",
+                    (cx, cy, ground_z + h + 0.10),
+                    (w + 0.4, d + 0.4, 0.20), col_roof)
+    parapet_h = 0.80
+    for sgn_y, tag in ((-1, 'S'), (1, 'N')):
+        _make_box_local(f"Hos_Parapet_{tag}",
+                        (cx, cy + sgn_y * (d + 0.4) / 2,
+                         ground_z + h + 0.20 + parapet_h / 2),
+                        (w + 0.4, 0.20, parapet_h), col_trim)
+    # Big RED CROSS sign on the south facade (above the entry)
+    _make_box_local("Hos_CrossBg",
+                    (cx, cy - d / 2 - 0.18,
+                     ground_z + h - 1.6),
+                    (2.6, 0.14, 2.6), (0.95, 0.94, 0.90, 1.0))
+    _make_box_local("Hos_Cross_V",
+                    (cx, cy - d / 2 - 0.25,
+                     ground_z + h - 1.6),
+                    (0.50, 0.08, 2.2), col_cross)
+    _make_box_local("Hos_Cross_H",
+                    (cx, cy - d / 2 - 0.25,
+                     ground_z + h - 1.6),
+                    (2.2, 0.08, 0.50), col_cross)
+
+    # ── AMBULANCE BAY · covered drive-through on the east end
+    bay_cx = cx + w / 2 + 8.0
+    bay_cy = cy
+    bay_z = mesh_z(bay_cx, bay_cy)
+    bay_w = 12.0; bay_d = 8.0; bay_h = 4.5
+    for sgn_x in (-1, 1):
+        for sgn_y in (-1, 1):
+            _make_cyl_local(
+                f"Hos_BayCol_{sgn_x:+d}_{sgn_y:+d}",
+                (bay_cx + sgn_x * (bay_w / 2 - 0.30),
+                 bay_cy + sgn_y * (bay_d / 2 - 0.30),
+                 bay_z + bay_h / 2),
+                0.20, bay_h, col_trim, segments=6)
+    _make_box_local("Hos_BayRoof",
+                    (bay_cx, bay_cy, bay_z + bay_h + 0.15),
+                    (bay_w + 0.6, bay_d + 0.6, 0.30),
+                    col_door)      # blue ambulance-bay roof
+    # AMBULANCE — a small box truck parked under the bay
+    ambo_x = bay_cx
+    ambo_y = bay_cy
+    ambo_z = mesh_z(ambo_x, ambo_y)
+    _make_box_local("Hos_Ambulance_Cab",
+                    (ambo_x - 2.0, ambo_y, ambo_z + 1.2),
+                    (2.4, 2.0, 1.8), (0.95, 0.94, 0.90, 1.0))
+    _make_box_local("Hos_Ambulance_Box",
+                    (ambo_x + 1.5, ambo_y, ambo_z + 1.4),
+                    (4.0, 2.2, 2.4), (0.95, 0.94, 0.90, 1.0))
+    # Red cross on the ambulance side
+    _make_box_local("Hos_Ambulance_RedCross_V",
+                    (ambo_x + 1.5, ambo_y - 1.12,
+                     ambo_z + 1.4),
+                    (0.20, 0.04, 1.0), col_cross)
+    _make_box_local("Hos_Ambulance_RedCross_H",
+                    (ambo_x + 1.5, ambo_y - 1.12,
+                     ambo_z + 1.4),
+                    (1.0, 0.04, 0.20), col_cross)
+
+
 def build_halsey_studios():
     """Halsey Studios — music recording studio referenced in
     lore/_HCE_PROJECT_NOTES.md ("recording booth window probably
@@ -8518,6 +8641,7 @@ def main():
     build_church_cemetery()
     build_water_tower_and_lines()
     build_halsey_studios()
+    build_hospital()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
