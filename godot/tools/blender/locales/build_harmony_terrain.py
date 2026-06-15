@@ -213,9 +213,52 @@ def settlement_blend(x, y, x_min, x_max, y_min, y_max, falloff=SETTLEMENT_FALLOF
 
 
 def pond_depression(x, y, cx, cy, radius, depth):
-    """Negative bump at (cx, cy) with smooth circular falloff."""
+    """Steep-walled circular bowl with a flat-ish bottom and a
+    clear caldera lip at the rim. Per user feedback: "there is no
+    lip from the caldera it sits in." Replaced the gentle Gaussian
+    with a smoothstep ramp that's full-depth for d < 0.5×radius
+    and ramps up to 0 over the remaining 0.5×radius. Reads as a
+    real sunken pond, not a vague dip."""
     d = math.hypot(x - cx, y - cy)
-    return -depth * math.exp(-d * d / (radius * radius))
+    if d >= radius:
+        return 0.0
+    if d <= radius * 0.5:
+        return -depth
+    # Smoothstep ramp from depth at r=0.5R to 0 at r=R
+    t = (d - radius * 0.5) / (radius * 0.5)
+    s = 1.0 - t * t * (3 - 2 * t)
+    return -depth * s
+
+
+def mesh_z(px, py):
+    """Bilinear-interpolated terrain z at world (px, py), matching
+    exactly what the ground MESH renders at that point. Use this
+    (not hce_elevation) when placing props — the mesh interpolates
+    between vertices, and hce_elevation returns the analytic value
+    which differs by up to half a metre on slopes. Per the golden
+    rule of alignment: props match the visible surface, not the
+    underlying function."""
+    cell_w = (DIST_MAX_X - DIST_MIN_X) / GROUND_NX
+    cell_h = (DIST_MAX_Y - DIST_MIN_Y) / GROUND_NY
+    fi = (px - DIST_MIN_X) / cell_w
+    fj = (py - DIST_MIN_Y) / cell_h
+    i = int(math.floor(fi))
+    j = int(math.floor(fj))
+    tx = fi - i
+    ty = fj - j
+    i = max(0, min(GROUND_NX - 1, i))
+    j = max(0, min(GROUND_NY - 1, j))
+    x0 = DIST_MIN_X + cell_w * i
+    x1 = DIST_MIN_X + cell_w * (i + 1)
+    y0 = DIST_MIN_Y + cell_h * j
+    y1 = DIST_MIN_Y + cell_h * (j + 1)
+    z00 = hce_elevation(x0, y0)
+    z10 = hce_elevation(x1, y0)
+    z01 = hce_elevation(x0, y1)
+    z11 = hce_elevation(x1, y1)
+    z0 = z00 * (1 - tx) + z10 * tx
+    z1 = z01 * (1 - tx) + z11 * tx
+    return z0 * (1 - ty) + z1 * ty
 
 
 def hce_elevation(x, y):
@@ -297,23 +340,30 @@ def hce_elevation(x, y):
 # ────────────────────────────────────────────────────────────────
 BERMS = [
     # ── OT MEMORIAL PARK · interior terrain features ──
-    # Per user direction (2026-06-14): "Texas suburb parks are
-    # almost never flat and boring. There are terraced embankments
-    # and hills." These narrow ridges sit at the park's edges so
-    # they add visual variation WITHOUT intruding on the central
-    # walkway ring (which would break alignment of paths, benches,
-    # the reflecting pool, etc).
-    # West-edge embankment ridge — width 5 → bump dies off ~15 m
-    # away from the centerline; walkway ring at x=-275 is clear.
-    ("OTPark_WestEmb",     [(-298, 75),  (-298, 165)],   5.0, 1.6),
-    ("OTPark_EastEmb",     [(-222, 75),  (-222, 165)],   5.0, 1.6),
-    # North-edge embankment ridge (behind the terrace overlook)
-    ("OTPark_NorthEmb",    [(-296, 175), (-224, 175)],   4.0, 1.2),
-    # Viewing knoll in the NE corner — taller bump with a wider
-    # falloff so it reads as a small hill
-    ("OTPark_NEKnoll",     [(-232, 168), (-220, 168)],  10.0, 2.2),
-    # Viewing knoll in the SW corner — secluded reading spot
-    ("OTPark_SWKnoll",     [(-294, 76),  (-282, 76)],   10.0, 1.8),
+    # Taller + wider than the first pass so the park reads ACTUALLY
+    # HILLY instead of "subtle ridges way at the edges." Walkway
+    # alignment now handled by per-vertex mesh_z sampling, so we
+    # can let the central walkway curve up over a gentle statue
+    # mound instead of insisting on a perfectly flat plaza.
+    # West perimeter embankment — taller hill flanking the park
+    ("OTPark_WestEmb",     [(-296, 70),  (-296, 168)],   8.0, 3.2),
+    ("OTPark_EastEmb",     [(-224, 70),  (-224, 168)],   8.0, 3.2),
+    # North perimeter ridge behind the terrace overlook
+    ("OTPark_NorthEmb",    [(-296, 175), (-224, 175)],   6.0, 2.4),
+    # Viewing knoll in the NE corner
+    ("OTPark_NEKnoll",     [(-238, 165), (-225, 168)],  14.0, 3.6),
+    # Secluded reading knoll SW
+    ("OTPark_SWKnoll",     [(-294, 78),  (-280, 80)],   14.0, 3.0),
+    # CENTRAL STATUE MOUND · the statue sits on a gentle rise of
+    # ~1 m at peak, dying off over a 14 m radius so the walkway ring
+    # has a barely-perceptible slope and the plinth is the highest
+    # point of the plaza. Memorial parks almost always elevate the
+    # honoured subject like this.
+    ("OTPark_StatueMound", [(-260, 120), (-260, 120)],  14.0, 1.0),
+    # Sloped berm between the south path and the reflecting pool —
+    # the path approach gains a slight rise before descending
+    # toward the pool.
+    ("OTPark_SouthRise",   [(-265, 98),  (-255, 98)],   6.0, 0.8),
     # Country club perimeter berm — separates golf from commercial
     ("CC_Buffer",        [(-460, 340), (440, 340)],          14.0, 2.5),
     # North Ranch street-facing berm (blocks views from arterials)
@@ -432,7 +482,7 @@ def build_ground():
         wy = DIST_MIN_Y + (DIST_MAX_Y - DIST_MIN_Y) * j / GROUND_NY
         for i in range(nx_plus_1):
             wx = DIST_MIN_X + (DIST_MAX_X - DIST_MIN_X) * i / GROUND_NX
-            z = hce_elevation(wx, wy)
+            z = mesh_z(wx, wy)
             verts.append((wx, wy, z))
     faces = []
     for j in range(GROUND_NY):
@@ -553,7 +603,7 @@ def build_feature_beacons():
     ]
     settlement_beacons += fence_beacons
     for (name, x, y, col) in settlement_beacons:
-        z = hce_elevation(x, y)
+        z = mesh_z(x, y)
         _cyl(name + "_Pole", (x, y, z + BEACON_H / 2),
              BEACON_R, BEACON_H, (0.10, 0.10, 0.10, 1.0),
              segments=6)
@@ -577,7 +627,7 @@ def build_feature_beacons():
     # Pond beacons — cyan
     cyan = (0.18, 0.78, 0.92, 1.0)
     for (name, cx, cy, _r, _d) in PONDS:
-        z = hce_elevation(cx, cy)
+        z = mesh_z(cx, cy)
         _cyl(f"PondBeacon_{name}_Pole",
              (cx, cy, z + BEACON_H / 2),
              BEACON_R, BEACON_H, (0.10, 0.10, 0.10, 1.0),
@@ -626,11 +676,8 @@ def build_pond_water():
     floating on the surface."""
     segments = 20
     for (name, cx, cy, radius, _depth) in PONDS:
-        bottom_z = hce_elevation(cx, cy)
-        # Water sits ~0.7 m below the SURROUNDING RIM elevation per
-        # the golden rule ("ponds are seldom overflowing"). Sample
-        # the terrain at the outer edge of the depression and place
-        # water just below that.
+        bottom_z = mesh_z(cx, cy)
+        # Water sits ~0.7 m below the SURROUNDING RIM elevation.
         rim_samples = []
         for sample_i in range(8):
             ang = 2.0 * math.pi * sample_i / 8
@@ -639,7 +686,34 @@ def build_pond_water():
             rim_samples.append(hce_elevation(sx_pt, sy_pt))
         rim_z = sum(rim_samples) / len(rim_samples)
         water_z = min(bottom_z + 1.5, rim_z - 0.7)
-        wr = radius * 0.80
+        # CRITICAL: shrink the water disc so it stays INSIDE the
+        # bowl. The user's complaint: "pond reads as polygon of
+        # water floating above the ground." Root cause: water disc
+        # extended to 0.80 × radius but the analytic depression is
+        # only deeper than water_z within ~0.4 × radius. Beyond
+        # that, the flat disc sat above the rising bowl wall.
+        # Sample the actual terrain at candidate radii and find
+        # the largest radius where mesh terrain is still BELOW
+        # water level — that's the water's true extent.
+        max_wr = radius * 0.85
+        wr = radius * 0.20
+        for test_t in (0.30, 0.40, 0.50, 0.55, 0.60, 0.65, 0.70):
+            test_r = radius * test_t
+            # Sample 6 points around the circle at this radius
+            below_count = 0
+            for s_i in range(6):
+                s_ang = 2.0 * math.pi * s_i / 6
+                tx = cx + math.cos(s_ang) * test_r
+                ty = cy + math.sin(s_ang) * test_r
+                if mesh_z(tx, ty) < water_z - 0.05:
+                    below_count += 1
+            # If majority of perimeter points are below water,
+            # water can extend here
+            if below_count >= 4:
+                wr = test_r
+            else:
+                break
+        wr = min(wr, max_wr)
         # Outer water disc (lighter — shallow rim)
         verts = [(cx, cy, water_z)]
         for i in range(segments):
@@ -693,7 +767,7 @@ def build_pond_water():
                     # Outer ring follows the actual terrain elevation
                     # at that vertex's world position. The bank rises
                     # with the slope of the depression.
-                    vz = max(hce_elevation(vx, vy), inner_z + 0.05)
+                    vz = max(mesh_z(vx, vy), inner_z + 0.05)
                 bverts.append((vx, vy, vz))
         bfaces = []
         for i in range(segments):
@@ -725,7 +799,7 @@ def build_pond_water():
             ang = 6.2831 * k / n_clumps + 0.13
             rx = cx + math.cos(ang) * outer * 1.04
             ry = cy + math.sin(ang) * outer * 1.04
-            rz = max(hce_elevation(rx, ry), water_z + 0.05)
+            rz = max(mesh_z(rx, ry), water_z + 0.05)
             _reed_clump(f"PondReeds_{name}_{k}", rx, ry,
                         ground_z=rz, count=5)
 
@@ -766,12 +840,77 @@ def build_pond_water():
             ang = 6.2831 * k / n_bushes + 0.55
             bx = cx + math.cos(ang) * outer * 1.12
             by = cy + math.sin(ang) * outer * 1.12
-            bz = hce_elevation(bx, by)
+            bz = mesh_z(bx, by)
             _make_sphere_low_local(f"PondBush_{name}_{k}",
                                    (bx, by, bz + 0.45),
                                    0.6 + 0.15 * (k % 2),
                                    (0.32, 0.55, 0.28, 1.0),
                                    rings=3, segments=6)
+
+        # ── PER-POND INFRASTRUCTURE per user feedback ──
+        # "there is no infrastructure around it." Each pond now
+        # gets a circular GRAVEL WALKING PATH on the rim + 2
+        # FACING BENCHES + a brown PARK SIGN.
+        path_r = radius * 1.18    # walk at the outer rim
+        path_w = 2.0
+        n_path = 24
+        path_verts = []
+        for ring_idx, ring_r in ((0, path_r - path_w / 2),
+                                 (1, path_r + path_w / 2)):
+            for i in range(n_path):
+                a = 2.0 * math.pi * i / n_path
+                vx = cx + math.cos(a) * ring_r
+                vy = cy + math.sin(a) * ring_r
+                vz = mesh_z(vx, vy) + 0.025
+                path_verts.append((vx, vy, vz))
+        path_faces = []
+        for i in range(n_path):
+            ni = (i + 1) % n_path
+            path_faces.append([i, ni, ni + n_path, i + n_path])
+        _finalize_mesh(f"PondPath_{name}", path_verts, path_faces,
+                       (0.62, 0.55, 0.42, 1.0))   # gravel tan
+
+        # 2 benches facing the pond, ~120° apart on the path
+        for bi, bang in enumerate((0.85, 4.0)):
+            bx = cx + math.cos(bang) * path_r * 1.04
+            by = cy + math.sin(bang) * path_r * 1.04
+            bz = mesh_z(bx, by)
+            # Seat orientation by which axis is longer in the
+            # radial direction (so seat parallels the pond rim)
+            radial_x = math.cos(bang); radial_y = math.sin(bang)
+            if abs(radial_y) > abs(radial_x):
+                seat_sz = (1.4, 0.38, 0.06)
+                back_off = (0, 0.18 * (1 if radial_y > 0 else -1), 0)
+                back_sz = (1.4, 0.06, 0.42)
+            else:
+                seat_sz = (0.38, 1.4, 0.06)
+                back_off = (0.18 * (1 if radial_x > 0 else -1), 0, 0)
+                back_sz = (0.06, 1.4, 0.42)
+            _make_box_local(f"PondBench_{name}_{bi}_Seat",
+                            (bx, by, bz + 0.43), seat_sz,
+                            (0.42, 0.30, 0.20, 1.0))
+            _make_box_local(f"PondBench_{name}_{bi}_Back",
+                            (bx + back_off[0], by + back_off[1],
+                             bz + 0.82),
+                            back_sz, (0.42, 0.30, 0.20, 1.0))
+
+        # Brown park sign on the south-side of the path
+        sgn_x = cx
+        sgn_y = cy - path_r * 1.12
+        sgn_z = mesh_z(sgn_x, sgn_y)
+        for sgn_post_x in (-0.6, 0.6):
+            _make_cyl_local(f"PondSign_{name}_Post_{sgn_post_x:+.1f}",
+                            (sgn_x + sgn_post_x, sgn_y, sgn_z + 1.1),
+                            0.06, 2.2, (0.40, 0.30, 0.20, 1.0),
+                            segments=4)
+        _make_box_local(f"PondSign_{name}_Panel",
+                        (sgn_x, sgn_y, sgn_z + 1.9),
+                        (1.8, 0.10, 0.70),
+                        (0.40, 0.30, 0.20, 1.0))
+        _make_box_local(f"PondSign_{name}_Face",
+                        (sgn_x, sgn_y - 0.07, sgn_z + 1.9),
+                        (1.6, 0.04, 0.55),
+                        (0.86, 0.82, 0.70, 1.0))
 
 
 def _disc_low(name, center, radius, color, segments=8):
@@ -828,7 +967,7 @@ def _fence_along(name, p0, p1, fence_type, sub_len=40.0):
         sp1 = (x0 + (x1 - x0) * t1, y0 + (y1 - y0) * t1)
         mx = (sp0[0] + sp1[0]) / 2
         my = (sp0[1] + sp1[1]) / 2
-        z = hce_elevation(mx, my)
+        z = mesh_z(mx, my)
         if fence_type == 'iron':
             iron_lattice_fence(f"{name}_{i}", sp0, sp1, z=z, height=1.4)
         elif fence_type == 'brick':
@@ -878,7 +1017,7 @@ def build_oliver_tree_memorial():
       · yellow scarf at the collar
       · pink-red sunglasses band across the eye line"""
     sx, sy = -260.0, 120.0
-    ground_z = hce_elevation(sx, sy)
+    ground_z = mesh_z(sx, sy)
 
     # ── Plinth · three tiers (base + tapered shaft + cap) ──────
     COL_PLINTH_BASE = (0.68, 0.64, 0.56, 1.0)    # darker base stone
@@ -951,25 +1090,28 @@ def build_oliver_tree_memorial():
     )
 
     # ── PROP: microphone attached to the RIGHT HAND ───────────
-    # human_figure returns the actual hand-tip world position for
-    # whichever pose it built, so the mic anchors to the wrist.
+    # Handle from hand → 20 cm forward + 25 cm up. Foam ball SITS
+    # ON the handle top (overlapping, not 10 cm above). One mic,
+    # not two pieces.
     hx, hy, hz = figure_meta["hands"]["R"]
-    # Handle from hand → mouth height
+    mic_top_x = hx + 0.0
+    mic_top_y = hy - 0.20
+    mic_top_z = hz + 0.30
     _build_oriented_handle(
-        "OT_MicHandle", (hx, hy, hz), (hx + 0.0, hy - 0.18, hz + 0.55),
+        "OT_MicHandle", (hx, hy, hz),
+        (mic_top_x, mic_top_y, mic_top_z),
         radius=0.05, color=(0.12, 0.12, 0.12, 1.0))
-    # Foam-ball head at the top of the handle
     _make_sphere_low_local("OT_MicHead",
-                           (hx + 0.0, hy - 0.20, hz + 0.65),
-                           0.13, (0.18, 0.18, 0.18, 1.0),
+                           (mic_top_x, mic_top_y, mic_top_z + 0.03),
+                           0.10, (0.18, 0.18, 0.18, 1.0),
                            rings=3, segments=8)
 
-    # ── PROP: green Razor scooter at ground level beside plinth ─
-    # Per the alignment golden rule: sample terrain AT THE PROP'S
-    # OWN position, not at the statue center. The new park berms
-    # mean the ground varies across the plaza.
-    sc_x, sc_y = sx + 2.6, sy - 0.4
-    sc_ground = hce_elevation(sc_x, sc_y)
+    # ── PROP: scooter leaning against the SE corner of the plinth.
+    # User feedback: "weird placed scooter" — was too far from
+    # plinth (2.6 m east). Now sits flush against the east face,
+    # 1.5 m from the plinth centerline.
+    sc_x, sc_y = sx + 1.5, sy - 0.4
+    sc_ground = mesh_z(sc_x, sc_y)
     _build_scooter("OT_Scooter", sc_x, sc_y, sc_ground,
                    color_deck=(0.30, 0.55, 0.25, 1.0),
                    color_metal=(0.78, 0.78, 0.80, 1.0))
@@ -986,7 +1128,7 @@ def build_oliver_tree_memorial():
         (sx + 1.0, tribute_y + 0.0,  (0.68, 0.42, 0.85, 1.0)),  # purple
     ]
     for i, (tx, ty, tcol) in enumerate(tribute_specs):
-        tz = hce_elevation(tx, ty)
+        tz = mesh_z(tx, ty)
         _make_box_local(f"OT_Tribute_Stem_{i}",
                         (tx, ty, tz + 0.10),
                         (0.18, 0.18, 0.20),
@@ -997,7 +1139,7 @@ def build_oliver_tree_memorial():
     # Two lit-candle tributes
     for cdx in (-1.4, 1.4):
         cd_x, cd_y = sx + cdx, tribute_y
-        cd_z = hce_elevation(cd_x, cd_y)
+        cd_z = mesh_z(cd_x, cd_y)
         _make_cyl_local(f"OT_Tribute_Candle_{cdx:+.1f}",
                         (cd_x, cd_y, cd_z + 0.12),
                         0.06, 0.22, (0.92, 0.90, 0.84, 1.0),
@@ -1008,14 +1150,14 @@ def build_oliver_tree_memorial():
                                rings=3, segments=6)
     # Photo in a frame
     ph_x, ph_y = sx - 1.5, tribute_y - 0.10
-    ph_z = hce_elevation(ph_x, ph_y)
+    ph_z = mesh_z(ph_x, ph_y)
     _make_box_local("OT_Tribute_Photo",
                     (ph_x, ph_y, ph_z + 0.30),
                     (0.30, 0.04, 0.40),
                     (0.95, 0.92, 0.84, 1.0))
     # Scooter wheel
     wh_x, wh_y = sx + 1.6, tribute_y - 0.20
-    wh_z = hce_elevation(wh_x, wh_y)
+    wh_z = mesh_z(wh_x, wh_y)
     _make_cyl_local("OT_Tribute_Wheel",
                     (wh_x, wh_y, wh_z + 0.08),
                     0.10, 0.06, (0.12, 0.12, 0.12, 1.0), segments=8)
@@ -1090,7 +1232,7 @@ def build_oliver_tree_memorial_park():
         over the statue
     """
     sx, sy = -260.0, 120.0      # statue centre (sub-platform)
-    park_z = hce_elevation(sx, sy)   # platform z after settlement flatten
+    park_z = mesh_z(sx, sy)   # platform z after settlement flatten
 
     COL_PATH        = (0.78, 0.74, 0.66, 1.0)
     COL_TERRACE     = (0.82, 0.78, 0.68, 1.0)
@@ -1236,7 +1378,7 @@ def build_oliver_tree_memorial_park():
     # alignment golden rule.
     fp_x = sx + outer_r + 14
     fp_y = sy + 8
-    fp_z = hce_elevation(fp_x, fp_y)
+    fp_z = mesh_z(fp_x, fp_y)
     FLAGPOLE_H = 8.0
     _make_cyl_local("OTPark_FlagPole",
                     (fp_x, fp_y, fp_z + FLAGPOLE_H / 2),
@@ -1287,7 +1429,7 @@ def build_oliver_tree_memorial_park():
         lean_y = (((seed * 53) % 7) - 3) * 0.12
         trunk_col = COL_OAK_TRUNK if (seed % 3) else (0.36, 0.26, 0.18, 1.0)
         # Per-tree elevation · golden rule
-        oz = hce_elevation(ox, oy)
+        oz = mesh_z(ox, oy)
         _make_cyl_local(f"OTPark_Oak_{i}_Trunk",
                         (ox, oy, oz + trunk_h / 2),
                         0.40 + (seed % 3) * 0.10, trunk_h,
@@ -1311,7 +1453,7 @@ def build_oliver_tree_memorial_park():
         (sx - 24, sy - 18),     # SW shade
     ]
     for i, (px, py) in enumerate(picnic_spots):
-        pz_local = hce_elevation(px, py)
+        pz_local = mesh_z(px, py)
         _make_box_local(f"OTPark_Picnic_{i}_Top",
                         (px, py, pz_local + 0.75),
                         (2.0, 0.90, 0.06), COL_PICNIC)
@@ -1331,7 +1473,7 @@ def build_oliver_tree_memorial_park():
         ang = math.radians(ang_deg)
         bx = sx + math.cos(ang) * 13.2
         by = sy + math.sin(ang) * 13.2
-        bz = hce_elevation(bx, by)
+        bz = mesh_z(bx, by)
         _make_box_local(f"OTPark_Bench_{i}_Seat",
                         (bx, by, bz + 0.43),
                         (1.6, 0.42, 0.06), COL_BENCH)
@@ -1358,7 +1500,7 @@ def build_oliver_tree_memorial_park():
         ang = math.radians(ang_deg)
         fx = sx + math.cos(ang) * 10.0
         fy = sy + math.sin(ang) * 10.0
-        fz = hce_elevation(fx, fy)
+        fz = mesh_z(fx, fy)
         if abs(math.cos(ang)) > abs(math.sin(ang)):
             sx_bed, sy_bed = 1.0, 2.0
         else:
@@ -1427,16 +1569,16 @@ def build_oliver_tree_memorial_park():
             lx = sx + dx * (outer_r + length * t)
             ly = sy + dy * (outer_r + length * t)
             _build_lamppost(f"OTPark_Lamp_{tag}_{int(t*100)}",
-                            lx, ly, hce_elevation(lx, ly))
+                            lx, ly, mesh_z(lx, ly))
 
     # ── 2 TRASHCANS + 1 DRINKING FOUNTAIN · per-position z ──
     for tx, ty, tag in [(sx - 2.5, sy - outer_r - 40, 'W'),
                           (sx + 2.5, sy - outer_r - 40, 'E')]:
         _build_trashcan(f"OTPark_Trash_{tag}",
-                         tx, ty, hce_elevation(tx, ty))
+                         tx, ty, mesh_z(tx, ty))
     fnt_x, fnt_y = sx - 20, sy - 5
     _build_drinking_fountain("OTPark_Fountain",
-                              fnt_x, fnt_y, hce_elevation(fnt_x, fnt_y))
+                              fnt_x, fnt_y, mesh_z(fnt_x, fnt_y))
 
     # ── Path-edging stones along the ring (decorative) ──────
     # 16 stones around the outer ring. Each gets a slight size +
@@ -1459,7 +1601,7 @@ def build_oliver_tree_memorial_park():
         sh = 0.22 + (seed % 3) * 0.05
         col = stone_palette[seed % len(stone_palette)]
         # Per-stone elevation sample · golden rule
-        ez = hce_elevation(ex, ey)
+        ez = mesh_z(ex, ey)
         _make_box_local(f"OTPark_EdgeStone_{i}",
                         (ex, ey, ez + sh / 2 + 0.02),
                         (sw, sw, sh), col)
@@ -1477,7 +1619,7 @@ def build_oliver_tree_memorial_park():
         (sx + 14,  sy - 36, 1.3, (0.50, 0.46, 0.42, 1.0)),
     ]
     for i, (bx, by, br, bcol) in enumerate(boulder_positions):
-        bz = hce_elevation(bx, by)
+        bz = mesh_z(bx, by)
         _make_sphere_low_local(f"OTPark_Boulder_{i}",
                                (bx, by, bz + br * 0.45),
                                br, bcol, rings=3, segments=6)
@@ -1496,7 +1638,7 @@ def build_oliver_tree_memorial_park():
         if d_to_ring < 2.5:
             continue
         # Small green tuft · per-tuft elevation
-        tz = hce_elevation(tx, ty)
+        tz = mesh_z(tx, ty)
         _make_box_local(f"OTPark_Tuft_{k}",
                         (tx, ty, tz + 0.18),
                         (0.30, 0.30, 0.35),
@@ -1512,7 +1654,7 @@ def build_oliver_tree_memorial_park():
         (sx + 36, sy - 8,  (0.95, 0.45, 0.25, 1.0)),  # orange
     ]
     for fx, fy, fcol in extra_flower_specs:
-        fz = hce_elevation(fx, fy)
+        fz = mesh_z(fx, fy)
         _make_box_local(f"OTPark_ExtraBed_{int(fx)}_{int(fy)}",
                         (fx, fy, fz + 0.16),
                         (1.4, 0.7, 0.22), COL_FLOWER_BED)
@@ -1527,7 +1669,7 @@ def build_oliver_tree_memorial_park():
     human_figure(
         name="OTPark_NPC_Walker",
         base_x=npc_walker[0], base_y=npc_walker[1],
-        base_z=hce_elevation(*npc_walker),
+        base_z=mesh_z(*npc_walker),
         scale=1.0, facing='+Y',
         hair_style='short', hair_color=(0.42, 0.28, 0.20, 1.0),
         jacket_color=(0.38, 0.55, 0.68, 1.0),
@@ -1539,7 +1681,7 @@ def build_oliver_tree_memorial_park():
     human_figure(
         name="OTPark_NPC_Visitor1",
         base_x=npc_visitor1[0], base_y=npc_visitor1[1],
-        base_z=hce_elevation(*npc_visitor1),
+        base_z=mesh_z(*npc_visitor1),
         scale=1.0, facing='+X',
         hair_style='bowl', hair_color=(0.62, 0.42, 0.18, 1.0),
         jacket_color=(0.78, 0.32, 0.42, 1.0),
@@ -1566,7 +1708,7 @@ def build_oliver_tree_memorial_park():
     human_figure(
         name="OTPark_NPC_Kid",
         base_x=npc_kid[0], base_y=npc_kid[1],
-        base_z=hce_elevation(*npc_kid),
+        base_z=mesh_z(*npc_kid),
         scale=0.65,
         facing='+X',
         hair_style='short', hair_color=(0.72, 0.55, 0.22, 1.0),
@@ -1641,9 +1783,11 @@ def _build_gazebo(name, cx, cy, z_floor, radius=4.0, height=3.5,
                   post_color=(0.42, 0.30, 0.20, 1.0),
                   roof_color=(0.62, 0.18, 0.16, 1.0),
                   floor_color=(0.55, 0.40, 0.26, 1.0)):
-    """Hexagonal gazebo — 6 wooden posts holding up a peaked roof.
-    Used on the terrace top of the memorial park."""
-    n_posts = 6
+    """Octagonal gazebo — 8 wooden posts holding up a peaked roof.
+    Bumped from 6 to 8 sides per user feedback: "gazebo weirdness,
+    looks like polygons." 8 sides + a lower-pitched pyramid reads
+    smoother."""
+    n_posts = 8
     # Floor (hexagonal disc)
     verts = [(cx, cy, z_floor + 0.05)]
     for i in range(n_posts):
@@ -1665,7 +1809,9 @@ def _build_gazebo(name, cx, cy, z_floor, radius=4.0, height=3.5,
                         (px, py, z_floor + height / 2),
                         (0.20, 0.20, height), post_color)
     # Roof — a low pyramid (hexagonal pyramid)
-    apex = (cx, cy, z_floor + height + 1.6)
+    # Lower-pitched apex (1.0 m instead of 1.6 m) for a smoother
+    # silhouette across the 8 sides.
+    apex = (cx, cy, z_floor + height + 1.0)
     rverts = [apex]
     for i in range(n_posts):
         ang = 2.0 * math.pi * i / n_posts
@@ -1764,7 +1910,7 @@ def build_oliver_tree_skatepark():
     2.5 m below that, so the deepest point sits ~5 m below the
     statue's plinth-top reference."""
     cx, cy = -280.0, 82.0
-    pz = hce_elevation(cx, cy)          # = ~-0.5 from settlement flat
+    pz = mesh_z(cx, cy)          # = ~-0.5 from settlement flat
 
     # Materials
     COL_SK_CONCRETE = (0.72, 0.70, 0.66, 1.0)

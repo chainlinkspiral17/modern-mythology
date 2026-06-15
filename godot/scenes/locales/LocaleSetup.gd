@@ -104,25 +104,25 @@ func _ready() -> void:
 		_attach_sign_label(panel, Vector3(-0.10, 0, 0), Vector3(-1, 0, 0), 0.011)
 	# OT statue brass plaque — faces SOUTH (Blender -Y → Godot +Z)
 	# Text: "OLIVER TREE · 1993-2026" in cream serif on brass.
-	# Plaque text must FIT and SIT FLUSH per the alignment golden rule:
-	# pixel_size 0.004 keeps "OLIVER TREE / 1993 – 2026" inside the
-	# 1.8 × 0.8 m plaque face. Offset 0.025 sits the text just barely
-	# in front of the plaque surface (almost flush).
+	# Plaque text: pixel_size 0.004 → 0.006 (text was too small to
+	# render at the previous size — Label3D dropped below the
+	# pixel-per-glyph threshold). Offset 0.025 → 0.05 so the text
+	# sits clearly in front of the plaque face, not z-fighting.
 	for panel in ot_plaque_panels:
 		_attach_text_label(panel,
-						Vector3(0, 0, 0.025),
+						Vector3(0, 0, 0.05),
 						Vector3(0, 0, 1),
 						"OLIVER TREE\n1993 – 2026",
-						0.004,
+						0.006,
 						Color(0.94, 0.88, 0.72, 1.0),
 						Color(0.12, 0.08, 0.04, 1.0))
-	# Park entry sign — south-facing, brown panel with cream face
+	# Park entry sign — same treatment.
 	for panel in ot_park_sign_panels:
 		_attach_text_label(panel,
-						Vector3(0, 0, 0.025),
+						Vector3(0, 0, 0.05),
 						Vector3(0, 0, 1),
 						"The Oliver Tree\nMemorial Park",
-						0.005,
+						0.007,
 						Color(0.32, 0.22, 0.16, 1.0),
 						Color(0.86, 0.82, 0.70, 1.0))
 
