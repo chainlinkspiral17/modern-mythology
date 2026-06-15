@@ -59,6 +59,7 @@ func _ready() -> void:
 	var nexcorp_signs: Array = []
 	var nexcorp_pylon_signs: Array = []
 	var flag_plaque_panels: Array = []
+	var cosmic_comics_signs: Array = []
 	for mi in meshes:
 		mi.material_override = mat
 		applied += 1
@@ -86,6 +87,8 @@ func _ready() -> void:
 			nexcorp_pylon_signs.append(mi)
 		elif "OTPark_FlagPlaque" in mi.name:
 			flag_plaque_panels.append(mi)
+		elif "CosmicComics_SignPanel" in mi.name:
+			cosmic_comics_signs.append(mi)
 	print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
 	# Attach real Label3D text to the sign panels.
 	#
@@ -156,6 +159,14 @@ func _ready() -> void:
 						0.013,
 						Color(0.98, 0.98, 0.96, 1.0),
 						Color(0.08, 0.12, 0.22, 1.0))
+	for panel in cosmic_comics_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.10),
+						Vector3(0, 0, 1),
+						"COSMIC\nCOMICS",
+						0.015,
+						Color(0.95, 0.85, 0.30, 1.0),
+						Color(0.10, 0.02, 0.10, 1.0))
 	for panel in nexcorp_pylon_signs:
 		_attach_text_label(panel,
 						Vector3(0, 0, 0.12),

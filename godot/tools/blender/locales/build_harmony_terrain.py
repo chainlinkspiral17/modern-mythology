@@ -2892,13 +2892,121 @@ def _build_convenience_store(name_prefix, cx, cy, ground_z,
                     (0.40, 0.30, 0.50), col_basket)
 
 
+def _build_cosmic_comics(cx, cy, ground_z):
+    """Cosmic Comics — chapter-one comic shop with a plate-glass
+    front and a CANONICALLY visible photocopier inside (per
+    _HCE_PROJECT_NOTES.md). Smaller than the convenience stores
+    (9 × 8 m); tighter, more shop-like."""
+    name_prefix = "CosmicComics"
+    width = 9.0
+    depth = 8.0
+    height = 3.2
+    col_wall  = (0.32, 0.18, 0.32, 1.0)        # plum/purple
+    col_roof  = (0.18, 0.10, 0.18, 1.0)
+    col_trim  = (0.95, 0.85, 0.30, 1.0)        # gold
+    col_sign  = (0.32, 0.18, 0.32, 1.0)
+    col_floor = (0.55, 0.32, 0.22, 1.0)        # warm wood floor
+    col_glass_frame = (0.62, 0.62, 0.64, 1.0)
+    col_shelf = (0.42, 0.30, 0.20, 1.0)
+    col_counter = (0.42, 0.30, 0.20, 1.0)
+    col_xerox_body = (0.86, 0.86, 0.88, 1.0)   # iconic copier beige
+    col_xerox_top  = (0.32, 0.32, 0.32, 1.0)
+    col_xerox_panel = (0.18, 0.18, 0.22, 1.0)
+    col_books = (0.95, 0.62, 0.20, 1.0)
+
+    # Slab
+    _make_box_local(f"{name_prefix}_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (width + 0.6, depth + 0.6, 0.10), col_floor)
+    wall_t = 0.20
+    _make_box_local(f"{name_prefix}_WallN",
+                    (cx, cy + depth / 2 - wall_t / 2,
+                     ground_z + height / 2),
+                    (width, wall_t, height), col_wall)
+    _make_box_local(f"{name_prefix}_WallE",
+                    (cx + width / 2 - wall_t / 2, cy,
+                     ground_z + height / 2),
+                    (wall_t, depth, height), col_wall)
+    _make_box_local(f"{name_prefix}_WallW",
+                    (cx - width / 2 + wall_t / 2, cy,
+                     ground_z + height / 2),
+                    (wall_t, depth, height), col_wall)
+    # Plate-glass front (south)
+    glass_y = cy - depth / 2 + 0.05
+    n_mullions = 4
+    for k in range(n_mullions):
+        mx = cx - width / 2 + 0.3 + k * (width - 0.6) / (n_mullions - 1)
+        _make_box_local(f"{name_prefix}_GlassMullion_{k}",
+                        (mx, glass_y, ground_z + height / 2),
+                        (0.10, 0.06, height), col_glass_frame)
+    _make_box_local(f"{name_prefix}_GlassTopRail",
+                    (cx, glass_y, ground_z + height - 0.08),
+                    (width - 0.2, 0.08, 0.16), col_glass_frame)
+    _make_box_local(f"{name_prefix}_GlassBotRail",
+                    (cx, glass_y, ground_z + 0.20),
+                    (width - 0.2, 0.08, 0.40), col_glass_frame)
+    # Roof
+    _make_box_local(f"{name_prefix}_Roof",
+                    (cx, cy, ground_z + height + 0.10),
+                    (width + 0.4, depth + 0.4, 0.20), col_roof)
+    # Gold roof trim (signature look)
+    _make_box_local(f"{name_prefix}_RoofTrim",
+                    (cx, cy - depth / 2 - 0.08, ground_z + height - 0.05),
+                    (width + 0.4, 0.10, 0.18), col_trim)
+    # Signage panel
+    _make_box_local(f"{name_prefix}_SignPanel",
+                    (cx, cy - depth / 2 - 0.20,
+                     ground_z + height + 0.55),
+                    (width * 0.7, 0.12, 0.8), col_sign)
+    _make_box_local(f"{name_prefix}_SignTrim",
+                    (cx, cy - depth / 2 - 0.20,
+                     ground_z + height + 0.99),
+                    (width * 0.7 + 0.10, 0.14, 0.10), col_trim)
+
+    # ── INTERIOR · two big comic-rack shelves running E-W and the
+    # iconic photocopier in the north-east corner near the counter
+    for k, shelf_y in enumerate((cy - 0.5, cy + 1.5)):
+        _make_box_local(f"{name_prefix}_Shelf_{k}",
+                        (cx, shelf_y, ground_z + 1.0),
+                        (width - 1.5, 0.40, 2.0), col_shelf)
+        # Colourful comics on top
+        for j in range(5):
+            jx = cx - (width - 2) / 2 + j * (width - 2) / 4
+            _make_box_local(f"{name_prefix}_Shelf_{k}_Books_{j}",
+                            (jx, shelf_y, ground_z + 1.85),
+                            (0.50, 0.30, 0.30), col_books)
+    # Counter at south-east (player's right on entry)
+    _make_box_local(f"{name_prefix}_Counter",
+                    (cx + width / 2 - 1.4, cy - depth / 2 + 1.5,
+                     ground_z + 0.55),
+                    (1.8, 0.7, 1.1), col_counter)
+    # Photocopier in NE corner — beige body + dark top + side panel
+    px = cx + width / 2 - 1.1
+    py = cy + depth / 2 - 1.1
+    _make_box_local(f"{name_prefix}_Xerox_Body",
+                    (px, py, ground_z + 0.55),
+                    (0.85, 0.70, 1.10), col_xerox_body)
+    _make_box_local(f"{name_prefix}_Xerox_TopLid",
+                    (px, py, ground_z + 1.16),
+                    (0.85, 0.70, 0.08), col_xerox_top)
+    _make_box_local(f"{name_prefix}_Xerox_Panel",
+                    (px - 0.30, py + 0.10, ground_z + 1.05),
+                    (0.18, 0.20, 0.06), col_xerox_panel)
+    # Output tray sticking out the west side
+    _make_box_local(f"{name_prefix}_Xerox_Tray",
+                    (px - 0.55, py, ground_z + 0.75),
+                    (0.30, 0.50, 0.04), col_xerox_body)
+
+
 def build_commercial_cluster():
-    """Chapter-one commercial cluster · Kwik Stop + NexCorp Gas & Go.
-    Per _HCE_PROJECT_NOTES.md (2026-06-14) these need plate-glass
-    storefronts with the interior visible from the public sidewalk.
-    Positioned in the South Commercial settlement belt (target z =
-    -9.0) within walking distance of the country-club spawn point
-    at (0, 30, -380).
+    """Chapter-one commercial cluster · Kwik Stop + NexCorp Gas & Go
+    + Cosmic Comics. Per _HCE_PROJECT_NOTES.md (2026-06-14) the
+    convenience stores need plate-glass storefronts with the
+    interior visible from the public sidewalk; Cosmic Comics
+    canonically has a photocopier visible inside. Positioned in the
+    South Commercial settlement belt (target z = -9.0) within
+    walking distance of the country-club spawn point at
+    (0, 30, -380).
     """
     # ── KWIK STOP at (50, -360) ────────────────────────────────
     ks_x, ks_y = 50.0, -360.0
@@ -2911,6 +3019,11 @@ def build_commercial_cluster():
     nc_z = mesh_z(nc_x, nc_y)
     _build_convenience_store("NexCorpGG", nc_x, nc_y, nc_z,
                               brand="nexcorp")
+
+    # ── COSMIC COMICS at (155, -360) ───────────────────────────
+    cc_x, cc_y = 155.0, -360.0
+    cc_z = mesh_z(cc_x, cc_y)
+    _build_cosmic_comics(cc_x, cc_y, cc_z)
     # ── FUEL PUMP CANOPY out front (south of NexCorp building)
     # The canopy is a big flat roof on four steel columns, with two
     # fuel-pump islands underneath. The canopy faces the sidewalk
@@ -2986,6 +3099,7 @@ def build_commercial_cluster():
     for tag, store_x, store_y in (
         ("KwikStop", ks_x, ks_y),
         ("NexCorpGG", nc_x, nc_y),
+        ("CosmicComics", cc_x, cc_y),
     ):
         lot_cx = store_x
         # Lot starts ~7m south of store front (depth/2 = 5) +
@@ -2997,6 +3111,11 @@ def build_commercial_cluster():
             # the lot further south of the canopy footprint.
             lot_cy = store_y - 24.0
             lot_d = 10.0
+        elif tag == "CosmicComics":
+            # Cosmic Comics is a smaller shop — smaller lot too
+            lot_cy = store_y - 11.0
+            lot_w = 16.0
+            lot_d = 12.0
         else:
             lot_cy = store_y - 13.0
         # Four-vert slab so corners track terrain
@@ -3037,12 +3156,16 @@ def build_commercial_cluster():
     COL_SIDEWALK = (0.78, 0.76, 0.72, 1.0)
     walk_w = 2.5
     walk_pts = [
-        (0.0,   -340.0),     # spawn-side
-        (0.0,   -350.0),     # entering commercial strip
-        (ks_x,  ks_y + 6.5), # in front of Kwik Stop
-        ((ks_x + nc_x) / 2, ks_y + 6.5),  # between stores
-        (nc_x,  nc_y + 6.5), # in front of NexCorp
+        (nc_x,  nc_y + 6.5),                  # NexCorp (west-most)
+        ((ks_x + nc_x) / 2, ks_y + 6.5),      # between NexCorp & Kwik Stop
+        (ks_x,  ks_y + 6.5),                  # Kwik Stop
+        (0.0,   -350.0),                       # joins spawn-side spur
+        ((ks_x + cc_x) / 2, ks_y + 6.5),      # between Kwik Stop & Cosmic
+        (cc_x,  cc_y + 6.0),                  # Cosmic Comics
     ]
+    # Spawn-side spur — a separate short segment connecting the
+    # main strip sidewalk to the country club / spawn approach.
+    spur_pts = [(0.0, -340.0), (0.0, -350.0)]
     hw = walk_w / 2
     for i in range(len(walk_pts) - 1):
         x0, y0 = walk_pts[i]
@@ -3058,6 +3181,22 @@ def build_commercial_cluster():
                          (x0 + perp_x * hw, y0 + perp_y * hw)]:
             pv.append((px, py, mesh_z(px, py) + 0.05))
         _finalize_mesh(f"CommSidewalk_{i}", pv, [[0, 1, 2, 3]],
+                       COL_SIDEWALK)
+    # Spur from spawn approach to the strip sidewalk
+    for i in range(len(spur_pts) - 1):
+        x0, y0 = spur_pts[i]
+        x1, y1 = spur_pts[i + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        pv = []
+        for (px, py) in [(x0 - perp_x * hw, y0 - perp_y * hw),
+                         (x1 - perp_x * hw, y1 - perp_y * hw),
+                         (x1 + perp_x * hw, y1 + perp_y * hw),
+                         (x0 + perp_x * hw, y0 + perp_y * hw)]:
+            pv.append((px, py, mesh_z(px, py) + 0.05))
+        _finalize_mesh(f"CommSidewalk_Spur_{i}", pv, [[0, 1, 2, 3]],
                        COL_SIDEWALK)
 
 
