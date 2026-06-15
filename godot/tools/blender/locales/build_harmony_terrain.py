@@ -792,6 +792,24 @@ def water_carve(x, y):
     return cz, cw
 
 
+_HCE_ELEV_CACHE = {}
+
+def _cached_hce_elevation(x, y):
+    """hce_elevation with a dict cache keyed by exact (x, y) so
+    repeated calls at the same point return instantly. mesh_z calls
+    hce_elevation at 4 cell corners; building emit functions call
+    mesh_z dozens of times per object; many of those calls hit the
+    same corner. With the new 25-corridor carve pipeline each
+    hce_elevation costs ~300 ops, so caching saves significant
+    build time. Cleared at the start of build_ground so reproducible."""
+    key = (x, y)
+    z = _HCE_ELEV_CACHE.get(key)
+    if z is None:
+        z = hce_elevation(x, y)
+        _HCE_ELEV_CACHE[key] = z
+    return z
+
+
 def mesh_z(px, py):
     """Returns the z that the ground mesh ACTUALLY renders at
     (px, py). Matches Godot's triangle rasterisation, not analytic
@@ -816,10 +834,10 @@ def mesh_z(px, py):
     x1 = DIST_MIN_X + cell_w * (i + 1)
     y0 = DIST_MIN_Y + cell_h * j
     y1 = DIST_MIN_Y + cell_h * (j + 1)
-    z00 = hce_elevation(x0, y0)   # bottom-left = a
-    z10 = hce_elevation(x1, y0)   # bottom-right = b
-    z11 = hce_elevation(x1, y1)   # top-right = c
-    z01 = hce_elevation(x0, y1)   # top-left = d
+    z00 = _cached_hce_elevation(x0, y0)   # bottom-left = a
+    z10 = _cached_hce_elevation(x1, y0)   # bottom-right = b
+    z11 = _cached_hce_elevation(x1, y1)   # top-right = c
+    z01 = _cached_hce_elevation(x0, y1)   # top-left = d
     if tx >= ty:
         return z00 * (1.0 - tx) + z10 * (tx - ty) + z11 * ty
     return z00 * (1.0 - ty) + z11 * tx + z01 * (ty - tx)
@@ -1076,6 +1094,7 @@ def clear_scene():
 def build_ground():
     """Subdivided heightmap. Per-vertex elevation; per-polygon
     colour from landuse_at() sampled at the polygon centre."""
+    _HCE_ELEV_CACHE.clear()
     verts = []
     nx_plus_1 = GROUND_NX + 1
     for j in range(GROUND_NY + 1):
