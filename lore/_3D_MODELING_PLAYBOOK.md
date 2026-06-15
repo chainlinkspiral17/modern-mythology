@@ -663,6 +663,45 @@ between-equally-OK-options choice, pick the printable one.
   terrain (`base_z = hce_elevation(...)` or the plinth top). The
   figure doesn't sample terrain itself — that's the caller's job.
 
+### 2026-06-15 · gazebo foundation + commercial cluster + alignment
+
+- **Floors with daylight under them are foundation bugs.** The
+  gazebo used to ship a zero-thickness octagonal disc 5 cm above
+  the terrace top, and the user kept calling out "the foundation
+  of gazebo is, wait for it, not aligned." Fix is to extrude the
+  floor down into a solid prism that touches the surface below.
+  The wooden plank layer becomes a 2 cm decorative skin ON TOP
+  of the stone foundation prism. Any "flat platform sitting on
+  another flat platform" should be modelled as a real volume,
+  not as a paper-thin disc with z-offset.
+- **Pillars must connect to the roof they support.** The gazebo's
+  posts ended at z = z_floor + height; the roof's outer eave ring
+  was at the same z but at a wider radius. There was a 12.5 cm
+  vertical gap of daylight between every post-top and the
+  underside of the roof at the post's radius. Fix is two pieces:
+  (a) a header beam ring connecting post-tops in a horizontal
+  octagonal ring, and (b) a soffit annulus sealing the underside
+  of the eave from the post ring out to the overhang. Same rule
+  applies to any timber-framed building: never let the roof
+  hover over the supporting columns with visible sky behind.
+- **Tree-clip is a positioning bug, not a styling choice.** Flag
+  pole was 6 m from an oak with canopy radius 5.8 m and the user
+  called it out as "placement under/through a tree." Always check
+  distance to every nearby canopy before placing a vertical prop
+  taller than human scale.
+- **Plate-glass storefronts → no opaque south wall.** Per the HCE
+  project notes, convenience-store interiors are visible from the
+  sidewalk. Don't model the front wall as a coloured panel; model
+  only the structural mullions + top/bottom rails of the glass
+  frame. The interior props (counter, aisles, cooler) become the
+  visual content seen through the "glass."
+- **Strip-mall props need a road, not just lots.** Parking lots
+  floating in dirt with no road read as broken. Always pair a
+  parking lot with a road segment (even a single quad) and
+  driveway aprons connecting them. The road defines the
+  orientation of the strip — buildings face the road, lots back
+  onto the road, sidewalks parallel the road.
+
 ### TEMPLATE for next session
 
 ```markdown
