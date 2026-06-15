@@ -403,30 +403,39 @@ ROAD_CORRIDORS = [
     ("NRSpur",   [(-320, 200, +12.0), (-320, 100, +12.0),
                   (-320,  40, +12.0)], 4.0, 10.0),
 
-    # WestEstates · Magnolia Lane + loop branch
-    ("WEMag",    [(-440,  -80, -3.0), (-360,  -80, -3.0),
-                  (-280,  -80, -3.0), (-200,  -80, -3.0),
-                  (-120,  -80, -3.0)], 4.0, 10.0),
-    ("WELoop",   [(-280,  -80, -3.0), (-280, -160, -3.0),
-                  (-200, -160, -3.0), (-200,  -80, -3.0)],
+    # WestEstates · Magnolia Lane (gentle north-south curve) +
+    # loop branch. Aligned with what build_west_estates_
+    # neighborhood actually emits.
+    ("WEMag",    [(-440, -180, -3.0), (-380, -185, -3.0),
+                  (-320, -190, -3.0), (-260, -185, -3.0),
+                  (-200, -180, -3.0), (-140, -175, -3.0)],
+                  4.0, 10.0),
+    ("WELoop",   [(-320, -190, -3.0), (-300, -150, -3.0),
+                  (-340, -130, -3.0), (-380, -150, -3.0),
+                  (-360, -190, -3.0), (-320, -190, -3.0)],
                   4.0, 10.0),
 
-    # Phase 2 · winding cul-de-sac arterial
-    ("P2Main",   [(240, -150, +1.0), (180, -160, +1.0),
-                  (120, -180, +1.0), ( 70, -210, +1.0)],
-                  4.0, 10.0),
+    # Phase 2 · winding cul-de-sac arterial (aligned with the
+    # polyline that build_phase2_neighborhood actually emits).
+    ("P2Main",   [(240, -150, +1.0), (210, -160, +1.0),
+                  (180, -150, +1.0), (150, -160, +1.0),
+                  (120, -180, +1.0), ( 90, -200, +1.0),
+                  ( 70, -210, +1.0)], 4.0, 10.0),
 
-    # East CDS · Ridge Crest Dr + cul-de-sac
-    ("ECDSRidge",[(200, 140, +8.0), (260, 140, +8.0),
-                  (320, 140, +8.0), (380, 140, +8.0)],
-                  4.0, 10.0),
-    ("ECDSCul",  [(380, 140, +8.0), (380,  80, +8.0)],
-                  4.0, 10.0),
+    # East CDS · Ridge Crest Dr (gentle S-curve) + cul-de-sac spur
+    # north. Aligned to the polyline that build_east_cds_
+    # neighborhood actually emits.
+    ("ECDSRidge",[(200, 140, +8.0), (240, 130, +8.0),
+                  (300, 130, +8.0), (360, 140, +8.0),
+                  (420, 150, +8.0)], 4.0, 10.0),
+    ("ECDSCul",  [(300, 130, +8.0), (300, 180, +8.0),
+                  (320, 220, +8.0)], 4.0, 10.0),
 
-    # Phase 3 abandoned dirt access road (still carves, helps the
-    # slab line up). Lower target keeps the abandoned look.
-    ("Ph3Access",[(-440, -260, -8.0), (-380, -260, -8.0),
-                  (-320, -260, -8.0)], 4.0, 12.0),
+    # Phase 3 abandoned partial road (one-block paved). Aligned
+    # with build_phase3_neighborhood's actual polyline so the
+    # carve sits exactly under the gravel.
+    ("Ph3Access",[(-440, -220, -8.0), (-380, -220, -8.0),
+                  (-360, -230, -8.0)], 4.0, 12.0),
 
     # ── CHAPTER-1 COMMERCIAL FRONTAGE · the E-W road that runs in
     # front of NexCorp Gas & Go, Kwik Stop, Diner, Cosmic Comics.
