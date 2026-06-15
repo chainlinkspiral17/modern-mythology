@@ -5216,6 +5216,54 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                         (2.4, 0.20, 0.04),
                         (0.42, 0.42, 0.45, 1.0))
 
+    # ── LOTTERY MARQUEE · LED scrolling numbers display below the
+    # main pylon. Dark CRT panel with amber dots suggesting current
+    # Powerball + Lotto Texas numbers. Highly visible from the
+    # road approach.
+    lot_z = pyl_z + PYLON_H - 1.40
+    _make_box_local("KwikShop_KwikStop_PylonLotto_Bg",
+                    (pyl_x, pyl_y, lot_z),
+                    (2.4, 0.20, 0.32),
+                    (0.18, 0.18, 0.20, 1.0))
+    # "TX LOTTO" header label (orange)
+    _make_box_local("KwikShop_KwikStop_PylonLotto_Header",
+                    (pyl_x - 0.85, pyl_y - 0.11,
+                     lot_z + 0.08),
+                    (0.55, 0.04, 0.10),
+                    (0.92, 0.55, 0.20, 1.0))
+    # 6 LED-style number bubbles (amber on dark)
+    for k in range(6):
+        bx = pyl_x - 0.80 + k * 0.32
+        _make_box_local(f"KwikShop_KwikStop_PylonLotto_Num_{k}",
+                        (bx, pyl_y - 0.11, lot_z - 0.06),
+                        (0.22, 0.04, 0.16),
+                        (0.95, 0.78, 0.20, 1.0))
+
+    # ── GAS NEXT DOOR cross-promotion · small green arrow strip
+    # at the very bottom of the pylon
+    _make_box_local("KwikShop_KwikStop_PylonGasArrow",
+                    (pyl_x, pyl_y, pyl_z + PYLON_H - 2.20),
+                    (2.4, 0.20, 0.30),
+                    (0.32, 0.55, 0.32, 1.0))
+    # Arrow shape (suggested by a thin pointing strip)
+    _make_box_local("KwikShop_KwikStop_PylonGasArrowHead",
+                    (pyl_x - 0.95, pyl_y - 0.11,
+                     pyl_z + PYLON_H - 2.20),
+                    (0.32, 0.04, 0.16),
+                    (0.95, 0.94, 0.90, 1.0))
+
+    # ── PYLON BASE PLINTH · brick-veneer base hiding the pole's
+    # ground anchor + utility-meter cabinet
+    _make_box_local("KwikShop_KwikStop_PylonPlinth",
+                    (pyl_x, pyl_y, pyl_z + 0.40),
+                    (1.10, 0.70, 0.80),
+                    (0.55, 0.32, 0.22, 1.0))
+    # Utility cabinet on the back of the plinth
+    _make_box_local("KwikShop_KwikStop_PylonUtilityCab",
+                    (pyl_x, pyl_y + 0.40, pyl_z + 0.55),
+                    (0.40, 0.10, 0.50),
+                    (0.42, 0.42, 0.45, 1.0))
+
     # ── COUNTER DETAIL · pinpad + receipt printer + cash drawer
     # Pinpad / card reader to the right of the register, facing
     # the customer
