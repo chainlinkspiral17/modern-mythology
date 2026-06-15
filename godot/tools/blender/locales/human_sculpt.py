@@ -234,7 +234,8 @@ def _face_axis(facing):
 
 # ── BODY PARTS ─────────────────────────────────────────────────────
 
-def _build_legs(name, base_x, base_y, base_z, s, pants_color, pants_flare):
+def _build_legs(name, base_x, base_y, base_z, s, pants_color, pants_flare,
+                skin_color=None):
     """Two legs as tapered cylinders from base_z up to pelvis_z.
     pants_flare > 1.0 widens the BOTTOM radius for the JNCO look."""
     leg_h = PROP["leg_h"] * s
@@ -247,6 +248,16 @@ def _build_legs(name, base_x, base_y, base_z, s, pants_color, pants_flare):
                    (base_x + sign * sep, base_y, leg_cz),
                    leg_r_bot, leg_r_top, leg_h, pants_color,
                    segments=8)
+        # KNEE BUMP · small slightly-larger sphere just above the
+        # leg's vertical mid-point, suggesting the knee joint
+        # under the pants. Visible as a subtle silhouette break
+        # rather than a straight cylinder.
+        knee_z = base_z + leg_h * 0.52
+        knee_r = leg_r_top * 1.10
+        _sphere_low(f"{name}_Knee_{side}",
+                    (base_x + sign * sep, base_y, knee_z),
+                    knee_r, pants_color,
+                    rings=3, segments=8, squash_z=0.55)
     return base_z + leg_h    # returns pelvis-bottom z
 
 
@@ -389,30 +400,60 @@ def _build_arms(name, base_x, base_y, shoulder_z, s,
         shoulder_x = base_x + sign * (shoulder_w / 2 - arm_r_top)
         shoulder_y = base_y
         shoulder_pz = shoulder_z - 0.02 * s
-        # Default — hanging straight down
-        hand_x = shoulder_x
+
+        # SHOULDER CAP · spheroid cap at the top of each arm so
+        # the silhouette has a clear shoulder-deltoid bump rather
+        # than the arm starting from a flat torso edge. Roughly
+        # 1.7x the top arm radius, slightly squashed.
+        _sphere_low(f"{name}_Shoulder_{side}",
+                    (shoulder_x, shoulder_y, shoulder_pz - arm_r_top * 0.5),
+                    arm_r_top * 1.6, jacket_color,
+                    rings=3, segments=8, squash_z=0.75)
+
+        # Default arm pose — hanging at a slight 6° outward angle
+        # (natural standing — arms don't usually run dead-vertical
+        # along the torso).
+        relax_off = arm_h * 0.10
+        hand_x = shoulder_x + sign * relax_off
         hand_y = shoulder_y
-        hand_z = shoulder_pz - arm_h
+        hand_z = shoulder_pz - arm_h * 0.995    # 0.5% bend at elbow
         if pose == 'right_mic' and side == 'R':
-            # Hand at CHIN level, lower than before (was shoulder
-            # + 0.20*s which put the mic above the head). Now at
-            # shoulder + 0.10*s so the mic + ball above the hand
-            # reach UP to the mouth, not OVER the head.
             hand_x = shoulder_x + 0.05 * s
             hand_y = shoulder_y + fwd_y * (arm_h * 0.50)
             hand_z = shoulder_pz + 0.10 * s
         elif pose == 'arms_out':
-            # Both arms angled outward ~20°
             hand_x = shoulder_x + sign * (arm_h * 0.35)
             hand_y = shoulder_y
             hand_z = shoulder_pz - arm_h * 0.92
 
-        _oriented_cyl(f"{name}_Arm_{side}",
+        # ELBOW · break the arm into UPPER ARM + FOREARM with a
+        # bump at the joint. Elbow at 55% along the arm path,
+        # slightly bent (lateral 4% offset).
+        elbow_t = 0.55
+        elbow_x = shoulder_x + (hand_x - shoulder_x) * elbow_t
+        elbow_y = shoulder_y + (hand_y - shoulder_y) * elbow_t
+        elbow_z = shoulder_pz + (hand_z - shoulder_pz) * elbow_t
+        # Slight outward kink at elbow (relaxed bend)
+        if pose == 'standing':
+            elbow_x += sign * 0.015 * s
+        # Upper arm
+        _oriented_cyl(f"{name}_UpperArm_{side}",
                        (shoulder_x, shoulder_y, shoulder_pz),
+                       (elbow_x, elbow_y, elbow_z),
+                       arm_r_top, arm_r_top * 0.95,
+                       jacket_color, segments=8)
+        # Elbow bump
+        _sphere_low(f"{name}_Elbow_{side}",
+                    (elbow_x, elbow_y, elbow_z),
+                    arm_r_top * 1.05, jacket_color,
+                    rings=3, segments=6, squash_z=0.80)
+        # Forearm (slightly thinner toward wrist)
+        _oriented_cyl(f"{name}_Forearm_{side}",
+                       (elbow_x, elbow_y, elbow_z),
                        (hand_x, hand_y, hand_z),
-                       arm_r_top, arm_r_bot, jacket_color, segments=8)
-        # Hand · spheroid fist + small thumb stub. Reads as a hand,
-        # not a Roblox-style block.
+                       arm_r_top * 0.92, arm_r_bot,
+                       jacket_color, segments=8)
+        # Hand · spheroid fist + small thumb stub.
         _sphere_low(f"{name}_Hand_{side}",
                     (hand_x, hand_y, hand_z - hand_size * 0.35),
                     hand_size * 0.55, skin_color,
@@ -423,6 +464,15 @@ def _build_arms(name, base_x, base_y, shoulder_z, s,
              (hand_x + thumb_off_x, hand_y, hand_z - hand_size * 0.30),
              (hand_size * 0.30, hand_size * 0.30, hand_size * 0.45),
              skin_color)
+        # 3 KNUCKLE BUMPS on top of the hand (back-of-hand)
+        for k_knuck in range(3):
+            kx_off = (k_knuck - 1) * hand_size * 0.18
+            _box(f"{name}_Knuckle_{side}_{k_knuck}",
+                 (hand_x + sign * kx_off,
+                  hand_y - fwd_y * hand_size * 0.20,
+                  hand_z - hand_size * 0.55),
+                 (hand_size * 0.14, hand_size * 0.14, hand_size * 0.16),
+                 skin_color)
         hand_positions[side] = (hand_x, hand_y, hand_z)
     return hand_positions
 
