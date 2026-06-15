@@ -2879,6 +2879,37 @@ def _build_convenience_store(name_prefix, cx, cy, ground_z,
     _make_box_local(f"{name_prefix}_Roof",
                     (cx, cy, ground_z + height + 0.10),
                     (width + 0.4, depth + 0.4, 0.20), col_roof)
+    # Parapet wall around the back & sides (front carries the sign)
+    parapet_h = 0.45
+    parapet_t = 0.18
+    pz_top = ground_z + height + 0.20      # top of roof slab
+    pz_centre = pz_top + parapet_h / 2
+    # Back wall
+    _make_box_local(f"{name_prefix}_ParapetN",
+                    (cx, cy + (depth + 0.4) / 2 - parapet_t / 2,
+                     pz_centre),
+                    (width + 0.4, parapet_t, parapet_h),
+                    col_wall)
+    # Side walls
+    for sgn in (-1, 1):
+        _make_box_local(f"{name_prefix}_ParapetE_{sgn:+d}",
+                        (cx + sgn * ((width + 0.4) / 2 - parapet_t / 2),
+                         cy, pz_centre),
+                        (parapet_t, depth + 0.4, parapet_h),
+                        col_wall)
+    # Two HVAC condenser units on the roof (offset toward the back)
+    for k, ox in enumerate((-2.5, 2.5)):
+        _make_box_local(f"{name_prefix}_HVAC_{k}",
+                        (cx + ox, cy + depth * 0.20,
+                         pz_top + 0.40),
+                        (1.4, 1.2, 0.80),
+                        (0.62, 0.62, 0.64, 1.0))
+        # Fan grille on top (darker)
+        _make_box_local(f"{name_prefix}_HVAC_{k}_Grille",
+                        (cx + ox, cy + depth * 0.20,
+                         pz_top + 0.83),
+                        (1.0, 0.9, 0.06),
+                        (0.28, 0.28, 0.30, 1.0))
 
     # Roof-mounted illuminated sign panel (faces south).
     # Pushed 30 cm south of the roof's south edge so the sign
@@ -3097,6 +3128,33 @@ def _build_cosmic_comics(cx, cy, ground_z):
     _make_box_local(f"{name_prefix}_Roof",
                     (cx, cy, ground_z + height + 0.10),
                     (width + 0.4, depth + 0.4, 0.20), col_roof)
+    # Parapet on back + sides
+    parapet_h = 0.45
+    parapet_t = 0.18
+    pz_top = ground_z + height + 0.20
+    pz_centre = pz_top + parapet_h / 2
+    _make_box_local(f"{name_prefix}_ParapetN",
+                    (cx, cy + (depth + 0.4) / 2 - parapet_t / 2,
+                     pz_centre),
+                    (width + 0.4, parapet_t, parapet_h),
+                    col_wall)
+    for sgn in (-1, 1):
+        _make_box_local(f"{name_prefix}_ParapetE_{sgn:+d}",
+                        (cx + sgn * ((width + 0.4) / 2 - parapet_t / 2),
+                         cy, pz_centre),
+                        (parapet_t, depth + 0.4, parapet_h),
+                        col_wall)
+    # Single HVAC condenser on the roof
+    _make_box_local(f"{name_prefix}_HVAC",
+                    (cx + 1.5, cy + depth * 0.25,
+                     pz_top + 0.40),
+                    (1.4, 1.2, 0.80),
+                    (0.62, 0.62, 0.64, 1.0))
+    _make_box_local(f"{name_prefix}_HVAC_Grille",
+                    (cx + 1.5, cy + depth * 0.25,
+                     pz_top + 0.83),
+                    (1.0, 0.9, 0.06),
+                    (0.28, 0.28, 0.30, 1.0))
     # Gold roof trim (signature look)
     _make_box_local(f"{name_prefix}_RoofTrim",
                     (cx, cy - depth / 2 - 0.08, ground_z + height - 0.05),
