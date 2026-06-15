@@ -281,20 +281,24 @@ ROAD_CORRIDORS = [
     # (y -40 .. 200, +1) the road stays at +1; the climb to
     # NorthComm happens y=200..260 (60m, +13m -> 22% peak).
     # FLAT through each settlement; only ramps in the transition
-    # strips BETWEEN zones. Eliminates the visible "road sits above
-    # the park" cliff that the user flagged 2026-06-15.
+    # strips BETWEEN zones. Updated 2026-06-15 to AVOID bisecting
+    # Country Club building (y=363..377, x=-18..18) and NexCorp HQ
+    # building (y=288..312, x=-15..15) — both used to overlap the
+    # road quad. Road now swings EAST around HQ + terminates south
+    # of CC building.
     ("HarmonyBlvd", [
-        (   0,  380, +22.0),   # CC zone (340..420 +22)
-        (   0,  360, +22.0),
-        (   0,  345, +22.0),
-        # CC -> NorthComm ramp (y=345..330, +22 -> +14, 15m, ~53% peak)
-        (   3,  335, +20.0),
-        (   7,  325, +16.5),
-        (  10,  315, +14.0),
-        # NorthComm zone (y=260..340 +14): flat through
-        (  10,  300, +14.0),
-        (  10,  280, +14.0),
-        (  10,  260, +14.0),
+        (   0,  350, +22.0),   # well south of CC south face (y=363) — road quad north edge at 358.5 stays clear
+        # CC -> NorthComm ramp (y=350..330, +22 -> +14)
+        (   5,  343, +20.5),
+        (  12,  335, +18.0),
+        (  20,  325, +16.0),
+        (  27,  315, +14.0),
+        # NorthComm zone: swing EAST around NexCorp HQ (x=-15..15)
+        # at x=27 the road WEST edge is 18.5 — clear of HQ x=15.
+        (  27,  300, +14.0),
+        (  27,  280, +14.0),
+        (  22,  265, +14.0),
+        (  14,  260, +14.0),
         # NorthComm -> HarmonyPark ramp (y=260..200, +14 -> +1, 60m, 22% peak)
         (  15,  245, +12.0),
         (  22,  225,  +8.0),
@@ -309,19 +313,23 @@ ROAD_CORRIDORS = [
         (  56,  -20,  +1.0),
         (  44,  -38,  +1.0),
         # HarmonyPark -> wild zone -> SouthComm gradual descent
-        # (y=-40..-340 +1 -> -9, 300m, 3.3% avg)
+        # (y=-40..-340 +1 -> -9, 300m, 3.3% avg). South end swings
+        # EAST to x=14 so HBlvd's road quad (8.5m hw) doesn't reach
+        # into the Kwik Shop strip's east edge at x=-1.
         (  36,  -70,  -0.5),
         (  28, -110,  -2.0),
         (  22, -150,  -3.5),
         (  18, -190,  -4.5),
-        (  14, -230,  -5.5),
-        (  10, -270,  -6.5),
-        (   6, -310,  -8.0),
-        # SouthComm zone (y=-400..-340 -9): flat through
-        (   2, -340,  -9.0),
-        (   6, -370,  -9.0),
-        (  10, -385,  -9.0),
-        (  12, -392,  -9.0),
+        (  16, -230,  -5.5),
+        (  14, -270,  -6.5),
+        (  13, -310,  -8.0),
+        # SouthComm zone (y=-400..-340 -9): flat through, x=14
+        # keeps the road quad clear of Kwik Shop strip (x<=-1)
+        # and Diner (x>=25).
+        (  13, -340,  -9.0),
+        (  14, -370,  -9.0),
+        (  14, -385,  -9.0),
+        (  14, -392,  -9.0),
     ], 8.5, 22.0),
 
     # ── HORIZON DRIVE · E-W arterial. From WestComm (-2) east to
@@ -424,11 +432,14 @@ ROAD_CORRIDORS = [
         (440, -260, +5.0),
     ], 5.0, 16.0),
 
-    # SCRATCH link (WestComm)
+    # SCRATCH link (WestComm). Endpoint trimmed to (-490, 0) so
+    # the 5m hw road quad sits CLEAR of the SCRATCH building east
+    # face (x=-495) by 0m at the face — the road ends AT the
+    # building entrance, doesn't push inside.
     ("WCommLink", [
         (-460, -20, -2.0),
-        (-490, -10, -2.0),
-        (-510,   0, -2.0),
+        (-475, -10, -2.0),
+        (-490,   0, -2.0),
     ], 5.0, 14.0),
 
     # Truck stop access
@@ -454,10 +465,13 @@ ROAD_CORRIDORS = [
         ( 150, -280, -5.0),    # at drive-in pad
     ], 5.0, 14.0),
 
-    # Country Club south driveway
+    # Country Club south driveway. Endpoint trimmed from y=360
+    # (which put CCLink's 5m road quad 2m inside CC building at
+    # y=363) to y=358 — quad north edge at 363, just touching
+    # building south face.
     ("CCLink", [
-        (   0, 360, +21.0),
-        (   0, 340, +20.0),
+        (   0, 358, +22.0),
+        (   0, 348, +21.5),
     ], 5.0, 12.0),
 
     # OT Park access — from Horizon Dr north to OT Park south entry.
@@ -639,8 +653,9 @@ LOT_PADS = [
     # Church + cemetery + lot
     ("ChurchPad",    -60,  20, 115, 168,  +1.0, 20.0),
 
-    # Fire station + apron
-    ("FirePad",     -222, -178, -48, -12,  0.0, 18.0),
+    # Fire station + apron. Building moved south to y=-42 to
+    # clear HorizonDr at y=-18.8; pad follows.
+    ("FirePad",     -222, -178, -60, -24,  0.0, 18.0),
 
     # Police station + cruiser lot
     ("PolicePad",   -192, -148, -78, -42,  0.0, 18.0),
@@ -648,8 +663,9 @@ LOT_PADS = [
     # Post office + drop-box plaza
     ("PostPad",      164, 196,  -42, -18, +1.5, 16.0),
 
-    # Library + bike racks
-    ("LibraryPad",    40,  80,  62, 102,  +1.0, 16.0),
+    # Library + bike racks. Library moved (60,80) -> (40,80)
+    # 2026-06-15 to clear HarmonyBlvd at x=60; pad follows.
+    ("LibraryPad",    20,  60,  62, 102,  +1.0, 16.0),
 
     # Drive-in theatre — concession + parking arcs + screen.
     # Tightened to (100, 230, -348, -235) with 15m shoulder so the
@@ -9824,8 +9840,12 @@ def build_library_and_bike_racks():
     Blvd just south of the elementary school. Plus bike racks
     at the elementary school + library + community pool.
     """
-    # ── LIBRARY at (60, 80)
-    cx, cy = 60.0, 80.0
+    # ── LIBRARY at (40, 80) — moved west of HarmonyBlvd (x=60)
+    # so the road quad doesn't overlap the library. Building is
+    # 16m wide so footprint x=32..48; road CL at x=60 leaves a
+    # 12m gap which fits the sidewalk + bike racks + a strip of
+    # lawn between road and library entrance.
+    cx, cy = 40.0, 80.0
     ground_z = mesh_z(cx, cy)
     col_wall = (0.62, 0.42, 0.32, 1.0)         # warm brick
     col_trim = (0.95, 0.92, 0.86, 1.0)
@@ -11549,7 +11569,11 @@ def build_community_landmarks():
                     (0.40, 0.06, 0.06), col_ch_cross)
 
     # ── FIRE STATION at (-200, -30) on Horizon Drive
-    fs_cx, fs_cy = -200.0, -30.0
+    # Fire station moved (-200, -30) -> (-200, -42) so HorizonDr's
+    # road quad (8.5m hw at y=-18.8 in this x range) doesn't reach
+    # the building's north face. Old position had ~3.5m of road
+    # quad inside the FireStn footprint.
+    fs_cx, fs_cy = -200.0, -42.0
     fs_z = mesh_z(fs_cx, fs_cy)
     col_fs_wall = (0.82, 0.32, 0.22, 1.0)   # fire-engine red
     col_fs_door = (0.95, 0.94, 0.90, 1.0)   # white garage door
