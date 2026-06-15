@@ -3954,11 +3954,14 @@ def build_commercial_cluster():
     # the Kwik Shop strip and the Diner (x = 0 to 25) to reach
     # the road crosswalk. Avoids cutting through parking lots.
     spur_jog_x = 12.0
+    # Spur curves gently east as it drops south so it doesn't sit
+    # on the Kwik Shop lot's east edge (x = 0). By y = -348 the
+    # spur has migrated to x = 4, clearing the lot fully.
     spur_pts = [
         (0.0, -340.0),                          # spawn-side start
-        (0.0, walk_strip_y),                    # joins strip sidewalk
-        (spur_jog_x, walk_strip_y),             # bend east on sidewalk
-        (spur_jog_x, walk_strip_y - 3.0),       # drop south of sidewalk
+        (4.0, -348.0),                          # gentle east curve
+        (spur_jog_x, walk_strip_y),             # arrive at sidewalk
+        (spur_jog_x, walk_strip_y - 3.0),       # drop south
         (spur_jog_x, ks_y - 32.0 + 4.0 + 0.5),  # at road north edge
     ]
     hw = walk_w / 2
