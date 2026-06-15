@@ -7036,6 +7036,65 @@ def build_self_storage():
                     (1.0, 0.06, 2.10), col_unit_door)
 
 
+def build_school_zone_signs():
+    """Yellow pentagon SCHOOL CROSSING signs on the approaches
+    to the elementary school and high school. Plus speed-limit
+    signs reading "SCHOOL ZONE 25".
+    """
+    COL_POLE = (0.62, 0.62, 0.64, 1.0)
+    COL_YELLOW = (0.98, 0.85, 0.20, 1.0)
+    COL_WHITE = (0.98, 0.98, 0.96, 1.0)
+    COL_BLACK = (0.08, 0.08, 0.10, 1.0)
+
+    def _xing_sign(name, x, y, face_axis):
+        z = mesh_z(x, y)
+        _make_cyl_local(f"{name}_Pole",
+                        (x, y, z + 1.4),
+                        0.04, 2.8, COL_POLE, segments=4)
+        if face_axis == 'X':
+            sign_size = (0.06, 0.60, 0.60)
+        else:
+            sign_size = (0.60, 0.06, 0.60)
+        _make_box_local(f"{name}_Face",
+                        (x, y, z + 2.7),
+                        sign_size, COL_YELLOW)
+
+    def _speed_sign(name, x, y, face_axis):
+        z = mesh_z(x, y)
+        _make_cyl_local(f"{name}_Pole",
+                        (x, y, z + 1.0),
+                        0.04, 2.0, COL_POLE, segments=4)
+        if face_axis == 'X':
+            sign_size = (0.04, 0.40, 0.55)
+        else:
+            sign_size = (0.40, 0.04, 0.55)
+        _make_box_local(f"{name}_Face",
+                        (x, y, z + 2.0),
+                        sign_size, COL_WHITE)
+        # Black "25" approximated as black box on face
+        if face_axis == 'X':
+            num_size = (0.05, 0.30, 0.30)
+        else:
+            num_size = (0.30, 0.05, 0.30)
+        _make_box_local(f"{name}_Number",
+                        (x, y, z + 1.85),
+                        num_size, COL_BLACK)
+
+    # Elementary school (-90, 160) — yellow crossing east + west
+    # of school + speed-limit signs on Harmony Blvd approaches
+    _xing_sign("ES_Xing_E", -65, 165, 'Y')
+    _xing_sign("ES_Xing_W", -115, 165, 'Y')
+    _speed_sign("ES_Speed_N", 8, 215, 'X')
+    _speed_sign("ES_Speed_S", 12, 175, 'X')
+
+    # High school (340, 50) — yellow crossings + speed signs on
+    # Horizon Dr east approaches
+    _xing_sign("HS_Xing_E", 380, 5, 'X')
+    _xing_sign("HS_Xing_W", 300, -5, 'X')
+    _speed_sign("HS_Speed_E", 360, 5, 'X')
+    _speed_sign("HS_Speed_W", 280, -10, 'X')
+
+
 def build_street_name_signs():
     """Green street-name signs at major arterial intersections.
     Each sign = a steel pole with two perpendicular green
@@ -10335,6 +10394,7 @@ def main():
     build_arterial_sidewalks()
     build_crosswalks_and_stops()
     build_street_name_signs()
+    build_school_zone_signs()
     build_self_storage()
     build_auto_dealership()
     build_midway_minimart()
