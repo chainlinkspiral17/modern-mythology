@@ -8549,6 +8549,37 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     ]
     _finalize_mesh(f"{name}_FrontWalk", pwv, [[0, 1, 2, 3]], col_walk)
 
+    # ── FRONT YARD TREE · single deciduous specimen, placed off
+    # to one side of the front walk so it doesn't block the
+    # facade. Seed by house position so neighboring houses get
+    # different sizes/positions instead of identical clones.
+    seed = (int(cx * 7) + int(cy * 13)) % 100
+    tree_side = -1 if (seed % 2 == 0) else 1
+    # Offset along the front yard: perp by 4-5m from walk, out by
+    # 4-6m from the front wall.
+    along_off = (4.0 + (seed % 3) * 0.5) * tree_side
+    out_off = 5.0 + ((seed // 3) % 4) * 0.5
+    yx = front_mid_x - fx * out_off + perp_x * along_off
+    yy = front_mid_y - fy * out_off + perp_y * along_off
+    trunk_h = 4.2 + (seed % 5) * 0.4
+    canopy_r = 1.8 + ((seed // 5) % 4) * 0.25
+    # Vary canopy color seasonally — most green, a few autumnal
+    canopy_palette = [
+        (0.30, 0.55, 0.25, 1.0),    # standard green
+        (0.36, 0.58, 0.28, 1.0),    # lighter green
+        (0.28, 0.50, 0.22, 1.0),    # deeper green
+        (0.62, 0.42, 0.20, 1.0),    # autumn orange (rare)
+    ]
+    canopy_col = canopy_palette[seed % 4 if seed % 13 != 0 else 3]
+    _make_cyl_local(f"{name}_YardTree_Trunk",
+                    (yx, yy, ground_z + trunk_h / 2),
+                    0.20, trunk_h,
+                    (0.30, 0.22, 0.16, 1.0), segments=6)
+    _make_sphere_low_local(f"{name}_YardTree_Canopy",
+                            (yx, yy, ground_z + trunk_h + canopy_r * 0.5),
+                            canopy_r, canopy_col,
+                            rings=3, segments=8)
+
 
 def _build_driveway(name, house_cx, house_cy, ground_z, facing,
                      curb_x, curb_y, color=(0.18, 0.18, 0.20, 1.0)):
