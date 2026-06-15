@@ -1539,6 +1539,79 @@ doesn't. Either pass the orientation through, or build the long
 axis from a unit-vector argument computed from `_face_axis()`.
 Next refactor target.
 
+### 2026-06-15 (deep grind) · stacking and coordinating per-house features
+
+After the seed-pattern was established, kept pushing more
+optional per-house features. The list as of this session:
+
+ALWAYS present (every house): foundation shrubs · front walk ·
+yard tree · chimney + roof vent · gable vents · window shutters ·
+backyard fence · backyard tree.
+
+OPTIONAL (per-house seed gate): dormer 25% · parked car 55% ·
+trash bins 40% · landscape boulders 30% · basketball hoop 25% ·
+yard sign 12% · backyard pool 12% · garden shed 25% · front
+hedge row 35% · rear patio + BBQ 30%.
+
+Coordination patterns that worked:
+
+1. **Anti-overlap coordination via shared seeds.** When two
+   optional features want the same yard region (pool + shed),
+   one reads the other's seed and flips its side. Stops the
+   "pool inside the shed" rendering bug without needing global
+   geometry checks. Cheap, deterministic, and the artist
+   doesn't have to think about it.
+
+2. **Side preference rolled into the seed.** Each feature
+   picks a side (`sgn = -1 if seed % 2 == 0 else 1`) before
+   choosing position. Different features use different parity
+   so two features that often clash (yard sign + walk; trash
+   bins + parked car) sit on opposite sides reliably.
+
+3. **Decoration density felt good around 1 detail per ~30 m²
+   of lot area.** Too sparse and the yard reads as empty;
+   too dense (every feature present on every house) reads as
+   game-spawned clutter rather than lived-in. The gating
+   percentages above were tuned by gut, but match real
+   neighborhood walking-tour aerial photos.
+
+4. **Park furniture as the "small real park" cluster.** Trash
+   cans, drinking fountains, dog waste stations, BBQ grills,
+   benches — none of these matter individually, but the
+   absence of ALL of them is what makes a park read as
+   "video-game lawn." Hand-place them at path corners, not
+   evenly distributed: real parks have furniture concentrated
+   at the destinations (gazebo, picnic area, playground), not
+   the connector paths.
+
+5. **Adapter helpers > duplicated geometry.** When the
+   `_build_parked_car` Y-only limitation caused half the
+   driveways to be empty, the fix was a 20-line rewrite to
+   compute body/cabin/wheels from a unit-direction vector
+   instead of hard-coded Y geometry. Now all 4 cardinal
+   orientations work. Pattern: when a helper is hard-axis,
+   parameterize via a unit-vector + perp basis instead of
+   if-branches. Less code, more flexible.
+
+Arterial-level passes added this session: stop signs at every
+connector approach, painted stop bars, cul-de-sac center
+islands, school-zone speed bumps, storm drain grates,
+commercial pole signs at EastComm businesses, landscape berms
+in undeveloped arterial frontage, HarmonyPark furniture
+cluster.
+
+What still feels primitive (next pass targets):
+- House wall color variation within a neighborhood. Currently
+  cycles through 4-5 palettes; could be expanded to 10-15
+  with seasonal accent variation.
+- Commercial roof HVAC units (rectangular A/C condensers on
+  flat commercial roofs). Visible from above.
+- Driveway curb cuts (flared concrete apron where driveway
+  meets road). Currently driveways T-bone the curb.
+- Sidewalk seam joints on residential walks.
+- More variety in commercial signage (lit channel letters,
+  banner signs on smaller storefronts).
+
 ### TEMPLATE for next session
 
 ```markdown
