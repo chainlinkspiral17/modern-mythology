@@ -5832,6 +5832,46 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     0.16, 0.02,
                     (0.85, 0.78, 0.62, 1.0), segments=6)
 
+    # ── ROOF FIXTURES on the parapet/roof line · satellite dish
+    # for the security DVR + antenna + small alarm bell box.
+    roof_z = ground_z + height + 0.30
+    # Satellite dish (small white disc)
+    _make_cyl_local("KwikStop_RoofSat_Mount",
+                    (kw_cx + bay_w / 2 - 1.2,
+                     cy + depth * 0.20,
+                     roof_z + 0.30),
+                    0.04, 0.60,
+                    (0.42, 0.42, 0.45, 1.0), segments=4)
+    _make_cyl_local("KwikStop_RoofSat_Dish",
+                    (kw_cx + bay_w / 2 - 1.2,
+                     cy + depth * 0.20 + 0.15,
+                     roof_z + 0.55),
+                    0.18, 0.05,
+                    (0.95, 0.94, 0.90, 1.0), segments=10)
+    # Antenna mast on the west end of the parapet
+    _make_cyl_local("KwikStop_RoofAntenna_Mast",
+                    (kw_cx - bay_w / 2 + 0.4,
+                     cy + depth * 0.30,
+                     roof_z + 1.50),
+                    0.03, 3.00,
+                    (0.18, 0.18, 0.20, 1.0), segments=4)
+    # 3 antenna crossbars (decreasing in size, top to bottom)
+    for k, cb_w in enumerate((0.50, 0.70, 0.90)):
+        _make_box_local(
+            f"KwikStop_RoofAntenna_Crossbar_{k}",
+            (kw_cx - bay_w / 2 + 0.4,
+             cy + depth * 0.30,
+             roof_z + 2.5 - k * 0.40),
+            (cb_w, 0.03, 0.03),
+            (0.18, 0.18, 0.20, 1.0))
+    # Alarm bell box on south parapet edge
+    _make_box_local("KwikStop_RoofAlarmBell",
+                    (kw_cx + bay_w / 2 - 0.5,
+                     cy - depth / 2 - 0.05,
+                     roof_z + 0.10),
+                    (0.30, 0.10, 0.30),
+                    (0.85, 0.20, 0.18, 1.0))
+
     # ── WINDOW STICKERS · the dense cluster of cling decals every
     # real US convenience store accumulates: WE CARD age check,
     # credit-card logos, hours decal, Coke Coca-Cola corporate
