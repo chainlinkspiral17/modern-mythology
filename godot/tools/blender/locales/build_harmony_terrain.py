@@ -1059,6 +1059,94 @@ def _seg_intersect(ax, ay, bx, by, cx, cy, dx, dy):
     return None
 
 
+def build_intersections():
+    """At every road-road xy crossing, emit an asphalt slab covering
+    the intersection footprint so the four-quadrant grass triangles
+    between the two crossing road quads are filled. The slab z
+    matches whichever corridor target_z is higher at the crossing
+    (avoids sagging into the lower road's grade).
+
+    Also emits crosswalks on the major arterial intersections."""
+    COL_INTER = (0.18, 0.18, 0.20, 1.0)
+    COL_STRIPE = (0.92, 0.90, 0.84, 1.0)
+
+    seen = set()
+    for a_idx, (rname_a, wps_a, hw_a, _sh_a) in enumerate(ROAD_CORRIDORS):
+        for b_idx, (rname_b, wps_b, hw_b, _sh_b) in enumerate(ROAD_CORRIDORS):
+            if b_idx <= a_idx:
+                continue
+            for i in range(len(wps_a) - 1):
+                ax0, ay0, az0 = wps_a[i]
+                ax1, ay1, az1 = wps_a[i + 1]
+                for j in range(len(wps_b) - 1):
+                    bx0, by0, bz0 = wps_b[j]
+                    bx1, by1, bz1 = wps_b[j + 1]
+                    hit = _seg_intersect(ax0, ay0, ax1, ay1,
+                                          bx0, by0, bx1, by1)
+                    if not hit:
+                        continue
+                    hx, hy, ts, td = hit
+                    # De-dupe near-duplicates (same intersection at
+                    # consecutive corridor entries)
+                    key = (round(hx / 4) * 4, round(hy / 4) * 4)
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    # Slab z = the higher of the two corridor zs at
+                    # the crossing (so the slab doesn't sag below
+                    # either road).
+                    za = az0 + (az1 - az0) * ts
+                    zb = bz0 + (bz1 - bz0) * td
+                    inter_z = max(za, zb)
+                    # Slab span = max(hw_a, hw_b) + 0.5 on each side
+                    half = max(hw_a, hw_b) + 0.5
+                    verts = [
+                        (hx - half, hy - half, inter_z + 0.04),
+                        (hx + half, hy - half, inter_z + 0.04),
+                        (hx + half, hy + half, inter_z + 0.04),
+                        (hx - half, hy + half, inter_z + 0.04),
+                    ]
+                    _finalize_mesh(
+                        f"Inter_{rname_a}_{rname_b}_{i}_{j}",
+                        verts, [[0, 1, 2, 3]], COL_INTER)
+                    # 4 crosswalk zebras on arterial intersections
+                    is_arterial = (hw_a >= 7.0 and hw_b >= 7.0)
+                    if is_arterial:
+                        for side in (-1, +1):
+                            for axis in ('x', 'y'):
+                                cw_z = inter_z + 0.055
+                                if axis == 'x':
+                                    # Crosswalk across X (zebra
+                                    # stripes running along Y axis)
+                                    cwx = hx
+                                    cwy = hy + side * (half - 0.7)
+                                    for k in range(5):
+                                        sx = cwx - half * 0.7 + k * (half * 1.4 / 4)
+                                        _finalize_mesh(
+                                            f"Inter_{rname_a}_{rname_b}_{i}_{j}_CW_{axis}_{side:+d}_{k}",
+                                            [
+                                                (sx - 0.3, cwy - 1.0, cw_z),
+                                                (sx + 0.3, cwy - 1.0, cw_z),
+                                                (sx + 0.3, cwy + 1.0, cw_z),
+                                                (sx - 0.3, cwy + 1.0, cw_z),
+                                            ],
+                                            [[0, 1, 2, 3]], COL_STRIPE)
+                                else:
+                                    cwx = hx + side * (half - 0.7)
+                                    cwy = hy
+                                    for k in range(5):
+                                        sy = cwy - half * 0.7 + k * (half * 1.4 / 4)
+                                        _finalize_mesh(
+                                            f"Inter_{rname_a}_{rname_b}_{i}_{j}_CW_{axis}_{side:+d}_{k}",
+                                            [
+                                                (cwx - 1.0, sy - 0.3, cw_z),
+                                                (cwx - 1.0, sy + 0.3, cw_z),
+                                                (cwx + 1.0, sy + 0.3, cw_z),
+                                                (cwx + 1.0, sy - 0.3, cw_z),
+                                            ],
+                                            [[0, 1, 2, 3]], COL_STRIPE)
+
+
 def build_bridges():
     """Where a road corridor crosses the creek channel, emit a
     bridge deck at road grade (not at the dipped creek floor) so
@@ -8625,17 +8713,14 @@ def build_arterial_sidewalks():
                 _finalize_mesh(f"{prefix}Sidewalk_{i}_{sgn:+d}", pv,
                                 [[0, 1, 2, 3]], COL_SIDEWALK)
 
-    harmony_blvd = [
-        (0, 340), (10, 260), (30, 200), (60, 130),
-        (60, 10), (40, -80), (20, -180), (10, -260), (0, -340),
-    ]
-    horizon_dr = [
-        (-460, -20), (-380, -10), (-280, -10), (-180, -20),
-        (-80, -30), (60, -20), (160, -10), (260, -10),
-        (380, 0), (440, 0),
-    ]
-    _emit_sidewalk(harmony_blvd, "HarmonyBlvd_")
-    _emit_sidewalk(horizon_dr, "HorizonDr_")
+    corridor_xys = {name: [(x, y) for (x, y, _z) in wps]
+                    for (name, wps, _hw, _sh) in ROAD_CORRIDORS}
+    _emit_sidewalk(_catmull_rom_2d(corridor_xys["HarmonyBlvd"],
+                                    samples_per_seg=4),
+                   "HarmonyBlvd_")
+    _emit_sidewalk(_catmull_rom_2d(corridor_xys["HorizonDr"],
+                                    samples_per_seg=4),
+                   "HorizonDr_")
 
 
 def build_arterial_trees():
@@ -8682,17 +8767,14 @@ def build_arterial_trees():
                 next_tree += spacing
             accumulated = seg_end
 
-    harmony_blvd = [
-        (0, 340), (10, 260), (30, 200), (60, 130),
-        (60, 10), (40, -80), (20, -180), (10, -260), (0, -340),
-    ]
-    horizon_dr = [
-        (-460, -20), (-380, -10), (-280, -10), (-180, -20),
-        (-80, -30), (60, -20), (160, -10), (260, -10),
-        (380, 0), (440, 0),
-    ]
-    _emit_trees(harmony_blvd, "HarmonyBlvd_")
-    _emit_trees(horizon_dr, "HorizonDr_")
+    corridor_xys = {name: [(x, y) for (x, y, _z) in wps]
+                    for (name, wps, _hw, _sh) in ROAD_CORRIDORS}
+    _emit_trees(_catmull_rom_2d(corridor_xys["HarmonyBlvd"],
+                                  samples_per_seg=4),
+                 "HarmonyBlvd_")
+    _emit_trees(_catmull_rom_2d(corridor_xys["HorizonDr"],
+                                  samples_per_seg=4),
+                 "HorizonDr_")
 
 
 def build_arterial_lighting():
@@ -8745,18 +8827,14 @@ def build_arterial_lighting():
                 next_lamp += spacing
             accumulated = seg_end
 
-    # Use the same arterial polylines (re-listed here for clarity)
-    harmony_blvd = [
-        (0, 340), (10, 260), (30, 200), (60, 130),
-        (60, 10), (40, -80), (20, -180), (10, -260), (0, -340),
-    ]
-    horizon_dr = [
-        (-460, -20), (-380, -10), (-280, -10), (-180, -20),
-        (-80, -30), (60, -20), (160, -10), (260, -10),
-        (380, 0), (440, 0),
-    ]
-    _emit_lamps(harmony_blvd, "HarmonyBlvd_")
-    _emit_lamps(horizon_dr, "HorizonDr_")
+    corridor_xys = {name: [(x, y) for (x, y, _z) in wps]
+                    for (name, wps, _hw, _sh) in ROAD_CORRIDORS}
+    _emit_lamps(_catmull_rom_2d(corridor_xys["HarmonyBlvd"],
+                                  samples_per_seg=4),
+                 "HarmonyBlvd_")
+    _emit_lamps(_catmull_rom_2d(corridor_xys["HorizonDr"],
+                                  samples_per_seg=4),
+                 "HorizonDr_")
 
 
 def build_bus_stops():
@@ -9573,37 +9651,33 @@ def build_connector_roads():
                 _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
                                 [[0, 1, 2, 3]], COL_CURB)
 
-    # Phase 2 → Horizon Dr (east end)
-    _emit([(240, -150), (260, -80), (260, -10)], "P2Link_")
-    # West Estates → Horizon Dr (west end)
-    _emit([(-440, -180), (-440, -100), (-440, -25)], "WELink_")
-    # North Ranch → Harmony Blvd (south side of NR)
-    _emit([(-320, 100), (-200, 100), (-100, 100), (10, 130)],
-           "NRLink_")
-    # East CDS → Horizon Dr east end
-    _emit([(200, 140), (200, 80), (220, 20), (260, -10)],
-           "ECDSLink_")
-    # East Comm collector road — north-south through EastComm,
-    # touching the dept store + Halsey + auto-dealership +
-    # self-storage. Branches off the east end of Horizon Dr.
-    _emit([(440, 0), (480, 0), (480, 60), (480, 100)],
-           "ECommN_")
-    _emit([(480, 0), (480, -100), (480, -180), (480, -260)],
-           "ECommS_")
-    # WestComm link · short branch off Horizon Dr west end to
-    # the SCRATCH nightclub at (-510, 0)
-    _emit([(-460, -20), (-490, -10), (-510, 0)], "WCommLink_")
-    # Truck Stop access · east extension of the chapter-1
-    # commercial road frontage out to the truck stop
-    _emit([(100, -392), (160, -390), (200, -385)],
-           "TSLink_")
-    # Drive-In Theatre access · branches off Harmony Blvd south
-    # ext at (8, -380) heading east-south to the concession
-    # stand at (150, -280)
-    _emit([(8, -380), (60, -340), (110, -300), (150, -280)],
-           "DILink_")
-    # Country Club south driveway → Harmony Blvd top
-    _emit([(0, 360), (0, 340)], "CCLink_")
+    # Pull polylines from ROAD_CORRIDORS and smooth with Catmull-Rom
+    # so connector turns read as curves, not 90° kinks. Each link
+    # also extends its endpoints slightly so curbs meet flush with
+    # arterial curbs.
+    corridor_xys = {name: [(x, y) for (x, y, _z) in wps]
+                    for (name, wps, _hw, _sh) in ROAD_CORRIDORS}
+    LINK_NAMES = [
+        ("P2Link",      "P2Link_"),
+        ("WELink",      "WELink_"),
+        ("NRLink",      "NRLink_"),
+        ("ECDSLink",    "ECDSLink_"),
+        ("ECommN",      "ECommN_"),
+        ("ECommS",      "ECommS_"),
+        ("WCommLink",   "WCommLink_"),
+        ("TSLink",      "TSLink_"),
+        ("DILink",      "DILink_"),
+        ("CCLink",      "CCLink_"),
+        ("OTLink",      "OTLink_"),
+        ("HospLink",    "HospLink_"),
+        ("NXHQLink",    "NXHQLink_"),
+    ]
+    for (cname, prefix) in LINK_NAMES:
+        if cname not in corridor_xys:
+            continue
+        pts = corridor_xys[cname]
+        smoothed = _catmull_rom_2d(pts, samples_per_seg=4)
+        _emit(smoothed, prefix)
 
 
 def build_community_landmarks():
@@ -9865,13 +9939,52 @@ def build_community_landmarks():
                     (6.0, 0.14, 0.50), col_po_red)
 
 
+def _catmull_rom_2d(pts, samples_per_seg=8):
+    """Catmull-Rom spline through a list of (x, y) waypoints. Returns
+    a denser polyline whose centerline curves smoothly through each
+    waypoint instead of kinking at every vertex. Used to make road
+    quad emission follow the road-corridor carve as a smooth curve
+    rather than a faceted polyline.
+
+    Mirror the endpoints to anchor the spline at the first and last
+    waypoint (so the result starts/ends at the same xy as input)."""
+    if len(pts) < 2:
+        return list(pts)
+    ext = [pts[0]] + list(pts) + [pts[-1]]
+    out = []
+    for i in range(len(pts) - 1):
+        p0 = ext[i]; p1 = ext[i + 1]; p2 = ext[i + 2]; p3 = ext[i + 3]
+        for s in range(samples_per_seg):
+            t = s / samples_per_seg
+            t2 = t * t; t3 = t2 * t
+            # Standard Catmull-Rom basis
+            qx = 0.5 * (
+                (2 * p1[0]) +
+                (-p0[0] + p2[0]) * t +
+                (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * t2 +
+                (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * t3
+            )
+            qy = 0.5 * (
+                (2 * p1[1]) +
+                (-p0[1] + p2[1]) * t +
+                (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * t2 +
+                (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * t3
+            )
+            out.append((qx, qy))
+    out.append(pts[-1])
+    return out
+
+
 def build_district_arterials():
     """Two arterials threading through HCE: HARMONY BOULEVARD
     runs north-south from the country club down to the chapter-
     one commercial cluster; HORIZON DRIVE runs east-west across
     the middle of the district connecting West Estates with the
     East CDS / high-school zone. Both are 4-lane (8 m) asphalt
-    with painted yellow centerlines.
+    with painted yellow centerlines. Polylines come from
+    ROAD_CORRIDORS so the road quad geometry stays in sync with
+    the terrain carve, then are smoothed through a Catmull-Rom
+    spline so curves read as curves instead of polyline kinks.
     """
     road_w = 8.0
     COL_ROAD = (0.20, 0.20, 0.22, 1.0)
@@ -9917,40 +10030,19 @@ def build_district_arterials():
                     _finalize_mesh(f"{prefix}Dash_{i}_{d}", dv,
                                     [[0, 1, 2, 3]], COL_CL)
 
-    # ── HARMONY BOULEVARD · N-S arterial. Threads east of the
-    # Harmony Park community pool to avoid cutting it in half.
-    # Extended south past the truck route (-392) so the player
-    # can drive Harmony Blvd all the way from the country club
-    # to the chapter-1 commercial cluster road frontage.
-    harmony_blvd = [
-        (   0, 340),   # at country club south edge
-        (  10, 260),
-        (  30, 200),   # entering HarmonyPark zone east of pool
-        (  60, 130),   # east of community pool
-        (  60,  10),
-        (  40, -80),
-        (  20, -180),
-        (  10, -260),
-        (   0, -340),  # at chapter-1 commercial zone north edge
-        (   8, -380),  # heading toward chapter-1 road
-        (  12, -392),  # touches chapter-1 commercial road at the crosswalk
-    ]
+    # Pull polylines straight from ROAD_CORRIDORS so the road
+    # geometry matches the terrain carve waypoints exactly. Then
+    # Catmull-Rom smooth so the road curves through each waypoint
+    # instead of cornering. Smoothed samples are dense enough
+    # (8 per input segment, plus the input is already <=40m
+    # segments) that the road reads as continuously curving.
+    corridor_xys = {name: [(x, y) for (x, y, _z) in wps]
+                    for (name, wps, _hw, _sh) in ROAD_CORRIDORS}
+    harmony_blvd = _catmull_rom_2d(corridor_xys["HarmonyBlvd"],
+                                    samples_per_seg=4)
+    horizon_dr = _catmull_rom_2d(corridor_xys["HorizonDr"],
+                                  samples_per_seg=4)
     _emit_arterial(harmony_blvd, "HarmonyBlvd_")
-
-    # ── HORIZON DRIVE · E-W arterial across the middle of HCE.
-    # Connects West Estates / WestComm with East CDS / East Comm.
-    horizon_dr = [
-        (-460,  -20),       # at West Comm boundary
-        (-380,  -10),
-        (-280,  -10),       # passes south of OT Park
-        (-180,  -20),       # crosses Harmony Park south edge
-        ( -80,  -30),
-        (  60,   -20),      # crosses Harmony Boulevard
-        ( 160,   -10),      # entering Phase 2 north edge
-        ( 260,   -10),
-        ( 380,    0),       # at East CDS
-        ( 440,    0),       # at East Comm
-    ]
     _emit_arterial(horizon_dr, "HorizonDr_")
 
 
@@ -12537,6 +12629,7 @@ def main():
     build_district_arterials()
     build_community_landmarks()
     build_connector_roads()
+    build_intersections()
     build_bridges()
     build_ot_park_access_road()
     build_hs_stadium_overflow_lot()
