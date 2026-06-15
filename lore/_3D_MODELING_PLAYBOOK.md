@@ -1270,6 +1270,107 @@ model. Approach that works:
    polished by comparison — that's the cue to apply the same
    pass to them.
 
+### 2026-06-15 · automated building-road overlap audit
+
+User complaint: "buildings bisecting roads, etc. Pass through
+the whole map with a fine tooth comb, getting things looking
+NORMAL." Manual checks were missing the marginal cases (road
+quad reaches 2-5m into a building from a tangent angle).
+
+Wrote a Python audit: load build module with stubbed bpy, walk
+every `ROAD_CORRIDORS` segment, sample at 3m intervals along
+each centerline, compute distance from each sample to every
+known building rect; flag any case where `dist < road_hw`
+(road quad overlaps building).
+
+8 overlaps detected in one run, all fixable in 30 minutes:
+- 2 false positives (multi-component "buildings" — TruckStop is
+  a garage + fuel canopy + asphalt lot, audit needs the actual
+  garage rect not the whole footprint)
+- 6 real cases — fixed by either trimming the road corridor
+  endpoint OR shifting the building footprint a few meters
+
+Rule: every time the road corridor list changes or a building
+position changes, RE-RUN THE AUDIT. The audit catches what eyes
+miss after the third zoomed-out flythrough.
+
+The audit script lives inline in the agent transcripts; should
+be promoted to a real `tools/audit_overlaps.py` if this comes up
+in a third pass.
+
+### 2026-06-15 · human-figure anti-derpy pass
+
+User complaint: "people look derpy, have you played with
+sculpting by subtraction... see a picture in your head in three
+dimensions and just whittle away?"
+
+Can't do real boolean carving on the Blender-Python primitive
+output without bloating the mesh, but I CAN approximate the
+carved-sculpture silhouette by **stacking small primitives at the
+anatomical landmarks every PS2-era character model uses.**
+Working list captured in `human_sculpt.py`:
+
+HEAD (formerly: 1 sphere + maybe hair):
+- skull (squashed sphere, 10 segments for smoother hairline)
+- cheekbones (2 small spheres at eye height, sides of head)
+- jaw line (angular box across lower face)
+- brow ridge (skin ridge above eye line)
+- eyes (white sclera + dark pupil, always)
+- nose (pyramidal skin nub) + nose shadow (darker strip)
+- upper + lower lips (two-tone, lower slightly wider)
+- eyebrows (hair-color accents above eye line)
+- chin (skin extension below mouth)
+- ears (when with_ears=True)
+
+TORSO (formerly: 1 tapered cylinder):
+- pelvis box
+- BELT band + buckle on the front
+- main torso cylinder
+- chest cap (squashed sphere bulging forward at upper chest)
+- waist band (darker contrast ring at natural waist height)
+- collar (V-shape darker at top of torso, jacket-color * 0.65)
+- shoulder caps (1.6x arm radius squashed sphere)
+- yoke band + accent (existing, kept)
+
+ARM split (formerly: 1 cylinder):
+- shoulder cap
+- upper arm
+- elbow bump (1.05x arm radius)
+- forearm (slightly thinner toward wrist)
+- hand (squashed sphere fist)
+- thumb stub
+- 3 knuckle bumps on back of hand
+
+LEG split (formerly: 1 cylinder):
+- main leg taper
+- knee bump (1.10x leg radius at 52% height)
+
+POSE OPTIONS:
+- standing (default; 10% lateral offset for relaxed natural)
+- right_mic (existing)
+- arms_out (existing)
+- hands_on_counter (NEW — clerks at workstation)
+- arms_crossed (NEW — observers / relaxed)
+- hands_pockets (NEW — casual idle)
+- one_arm_lean (NEW — leaning against something)
+
+HAIR STYLES added:
+- ponytail (crown + trailing cylinder + tie band)
+- cap (baseball cap crown + bill)
+- beanie (tall rounded knit + darker rolled brim)
+- mohawk (center fin box)
+
+After these 6+ passes the chapter-1 NPC cast reads as 8 visibly
+distinct people in 4 different work poses, not 8 instances of
+the same stiff figure. Distance from "block silhouette" to
+"recognizable PS2-era human" is exactly the 20-ish anatomical
+landmark primitives added.
+
+Rule: when a figure reads "derpy," ENUMERATE the 8-12 silhouette
+landmarks a real person has and add a primitive for each. Pure
+sphere/box primitives at the right positions outperform
+boolean-carved meshes for low-poly stylization.
+
 ### TEMPLATE for next session
 
 ```markdown
