@@ -5370,13 +5370,17 @@ def build_west_estates_neighborhood():
         (-200, -180),
         (-140, -175),
     ]
-    # Loop branch — small cul-de-sac north of the arterial
+    # Loop branch — small closed loop north of the arterial.
+    # Last waypoint closes back to the first so the loop is a
+    # real ring (was open-ended, leaving the road dead-ending in
+    # the middle of the neighborhood).
     loop_pts = [
-        (-320, -190),   # branches off the arterial at its low point
+        (-320, -190),
         (-300, -150),
         (-340, -130),
         (-380, -150),
-        (-360, -190),   # closes back to a stub point on the arterial
+        (-360, -190),
+        (-320, -190),   # close back to start
     ]
 
     road_w = 6.0
