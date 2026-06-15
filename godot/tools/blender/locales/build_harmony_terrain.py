@@ -5079,6 +5079,375 @@ def _make_cyl_local(name, center, radius, height, color, segments=6):
     return _finalize_mesh(name, verts, faces, color)
 
 
+def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
+                           palette=None):
+    """Mid-sized single-family suburban house — rectangular
+    footprint with pitched gable roof, attached garage, front
+    door + porch, two front windows and one over the garage.
+
+    facing: which direction the FRONT (porch + front door) points.
+            '-Y' = south, '+Y' = north, '-X' = west, '+X' = east.
+
+    palette: dict with keys 'wall', 'trim', 'roof', 'door',
+             'garage_door', 'porch_post'. Defaults to a beige/cream
+             palette if not supplied.
+    """
+    if palette is None:
+        palette = {}
+    col_wall   = palette.get('wall',   (0.82, 0.78, 0.70, 1.0))
+    col_trim   = palette.get('trim',   (0.95, 0.92, 0.86, 1.0))
+    col_roof   = palette.get('roof',   (0.42, 0.30, 0.22, 1.0))
+    col_door   = palette.get('door',   (0.62, 0.32, 0.22, 1.0))
+    col_garage = palette.get('garage_door', (0.95, 0.92, 0.86, 1.0))
+    col_post   = palette.get('porch_post', (0.95, 0.92, 0.86, 1.0))
+    col_window = palette.get('window', (0.32, 0.42, 0.55, 1.0))
+
+    # Footprint: main house 9 m wide x 7 m deep x 4 m tall + garage
+    # 5 m wide x 6 m deep x 3.5 m tall attached to one side
+    main_w = 9.0
+    main_d = 7.0
+    main_h = 4.0
+    gar_w  = 5.0
+    gar_d  = 6.0
+    gar_h  = 3.0
+
+    # The "front" of the house is at -fy from center (facing axis).
+    fx, fy = _face_axis(facing)
+    # Perpendicular vector (right-hand) so we can place the garage
+    # on the house's RIGHT side.
+    perp_x = -fy
+    perp_y = fx
+
+    # Slab — overlaps the full footprint (main + garage)
+    slab_w = main_w + gar_w + 0.4
+    slab_d = max(main_d, gar_d) + 0.4
+    _make_box_local(f"{name}_Slab",
+                    (cx + perp_x * gar_w / 2,
+                     cy + perp_y * gar_w / 2,
+                     ground_z + 0.05),
+                    (slab_w if abs(perp_x) < 0.5 else slab_d,
+                     slab_d if abs(perp_x) < 0.5 else slab_w,
+                     0.10),
+                    col_trim)
+
+    # Main house walls — built as a single box with the front
+    # face oriented along facing direction.
+    main_cx = cx - perp_x * gar_w / 2
+    main_cy = cy - perp_y * gar_w / 2
+    if abs(fx) > 0.5:
+        # Facing E/W: house long axis is Y, house depth is X
+        main_size = (main_d, main_w, main_h)
+    else:
+        # Facing N/S: house long axis is X, house depth is Y
+        main_size = (main_w, main_d, main_h)
+    _make_box_local(f"{name}_Main",
+                    (main_cx, main_cy, ground_z + main_h / 2),
+                    main_size, col_wall)
+
+    # Pitched gable roof — two slanted quads meeting at a ridge
+    # along the long axis of the house.
+    ridge_h = 1.6
+    if abs(fx) > 0.5:
+        # Ridge runs Y direction (along long axis of house facing E/W)
+        # 4 verts of the eave + 2 verts of the ridge
+        rverts = [
+            (main_cx - main_d / 2 - 0.20, main_cy - main_w / 2 - 0.20,
+             ground_z + main_h),
+            (main_cx + main_d / 2 + 0.20, main_cy - main_w / 2 - 0.20,
+             ground_z + main_h),
+            (main_cx + main_d / 2 + 0.20, main_cy + main_w / 2 + 0.20,
+             ground_z + main_h),
+            (main_cx - main_d / 2 - 0.20, main_cy + main_w / 2 + 0.20,
+             ground_z + main_h),
+            (main_cx, main_cy - main_w / 2 - 0.20,
+             ground_z + main_h + ridge_h),
+            (main_cx, main_cy + main_w / 2 + 0.20,
+             ground_z + main_h + ridge_h),
+        ]
+        rfaces = [
+            [0, 1, 5, 4],     # west slope (south end gable underneath)
+            [4, 5, 2, 3],     # east slope (north end gable underneath)
+            [0, 4, 5, 1],     # gable triangle south? quad — keep planar
+        ]
+        # Cleanup: real gable roof has two slopes + two triangular
+        # gable end walls. Simpler 4-quad approximation: two
+        # slopes + a placeholder gable.
+        rfaces = [[0, 1, 5, 4], [3, 4, 5, 2]]
+        # Two triangular gable ends
+        rfaces.append([0, 4, 3])
+        rfaces.append([1, 2, 5])
+    else:
+        rverts = [
+            (main_cx - main_w / 2 - 0.20, main_cy - main_d / 2 - 0.20,
+             ground_z + main_h),
+            (main_cx + main_w / 2 + 0.20, main_cy - main_d / 2 - 0.20,
+             ground_z + main_h),
+            (main_cx + main_w / 2 + 0.20, main_cy + main_d / 2 + 0.20,
+             ground_z + main_h),
+            (main_cx - main_w / 2 - 0.20, main_cy + main_d / 2 + 0.20,
+             ground_z + main_h),
+            (main_cx - main_w / 2 - 0.20, main_cy,
+             ground_z + main_h + ridge_h),
+            (main_cx + main_w / 2 + 0.20, main_cy,
+             ground_z + main_h + ridge_h),
+        ]
+        rfaces = [[0, 1, 5, 4], [3, 4, 5, 2]]
+        rfaces.append([0, 4, 3])
+        rfaces.append([1, 2, 5])
+    _finalize_mesh(f"{name}_Roof", rverts, rfaces, col_roof)
+
+    # Front door at the front face of the main house, slightly
+    # right of center (closer to the garage)
+    front_off = main_d / 2 if abs(fy) > 0.5 else main_w / 2
+    door_cx = main_cx + fx * front_off + perp_x * 1.2
+    door_cy = main_cy + fy * front_off + perp_y * 1.2
+    _make_box_local(f"{name}_FrontDoor",
+                    (door_cx, door_cy, ground_z + 1.05),
+                    (0.08 if abs(fx) > 0.5 else 0.90,
+                     0.90 if abs(fx) > 0.5 else 0.08,
+                     2.10), col_door)
+    # Two windows on the front face (one each side of the door)
+    for sgn, off in ((-1, -1.8), (1, 1.0)):
+        wx_pos = main_cx + fx * front_off + perp_x * off
+        wy_pos = main_cy + fy * front_off + perp_y * off
+        _make_box_local(f"{name}_Window_F_{sgn:+d}",
+                        (wx_pos, wy_pos, ground_z + 1.50),
+                        (0.10 if abs(fx) > 0.5 else 1.0,
+                         1.0 if abs(fx) > 0.5 else 0.10,
+                         1.0), col_window)
+
+    # Porch — small slab + 2 roof posts in front of the door
+    porch_d = 1.2
+    porch_cx = main_cx + fx * (front_off + porch_d / 2) + perp_x * 1.2
+    porch_cy = main_cy + fy * (front_off + porch_d / 2) + perp_y * 1.2
+    _make_box_local(f"{name}_PorchSlab",
+                    (porch_cx, porch_cy, ground_z + 0.10),
+                    (2.4 if abs(fx) < 0.5 else porch_d,
+                     porch_d if abs(fx) < 0.5 else 2.4,
+                     0.20),
+                    col_trim)
+    # Porch posts
+    for sgn in (-1, 1):
+        post_x = porch_cx + perp_x * sgn * 1.0 + fx * porch_d / 2
+        post_y = porch_cy + perp_y * sgn * 1.0 + fy * porch_d / 2
+        _make_box_local(f"{name}_PorchPost_{sgn:+d}",
+                        (post_x, post_y, ground_z + 1.40),
+                        (0.14, 0.14, 2.60), col_post)
+    # Porch roof (flat overhang)
+    _make_box_local(f"{name}_PorchRoof",
+                    (porch_cx, porch_cy, ground_z + 2.70),
+                    (2.6 if abs(fx) < 0.5 else porch_d + 0.20,
+                     porch_d + 0.20 if abs(fx) < 0.5 else 2.6,
+                     0.12),
+                    col_roof)
+
+    # Garage — attached on the +perp side of the main house
+    gar_cx = cx + perp_x * (main_w / 2 + gar_w / 2 - gar_w / 2) - perp_x * gar_w / 2
+    gar_cx = main_cx + perp_x * (main_w / 2 + gar_w / 2)
+    gar_cy = main_cy + perp_y * (main_w / 2 + gar_w / 2)
+    if abs(fx) > 0.5:
+        gar_size = (gar_d, gar_w, gar_h)
+    else:
+        gar_size = (gar_w, gar_d, gar_h)
+    _make_box_local(f"{name}_Garage",
+                    (gar_cx, gar_cy, ground_z + gar_h / 2),
+                    gar_size, col_wall)
+    # Garage roof (flat)
+    _make_box_local(f"{name}_GarageRoof",
+                    (gar_cx, gar_cy, ground_z + gar_h + 0.10),
+                    (gar_size[0] + 0.20, gar_size[1] + 0.20, 0.20),
+                    col_roof)
+    # Garage door (front face of garage)
+    gdoor_cx = gar_cx + fx * (gar_d / 2 if abs(fx) > 0.5 else gar_w / 2)
+    gdoor_cy = gar_cy + fy * (gar_d / 2 if abs(fx) > 0.5 else gar_w / 2)
+    if abs(fx) > 0.5:
+        gdoor_size = (0.06, 3.8, 2.2)
+    else:
+        gdoor_size = (3.8, 0.06, 2.2)
+    _make_box_local(f"{name}_GarageDoor",
+                    (gdoor_cx, gdoor_cy, ground_z + 1.20),
+                    gdoor_size, col_garage)
+    # Garage-window strip above the door
+    if abs(fx) > 0.5:
+        gw_size = (0.04, 3.5, 0.30)
+    else:
+        gw_size = (3.5, 0.04, 0.30)
+    _make_box_local(f"{name}_GarageWindow",
+                    (gdoor_cx, gdoor_cy, ground_z + 2.50),
+                    gw_size, col_window)
+
+
+def _build_driveway(name, house_cx, house_cy, ground_z, facing,
+                     curb_x, curb_y, color=(0.18, 0.18, 0.20, 1.0)):
+    """Asphalt driveway from the front of a house (garage front)
+    to a point on the curb. Computed as a quad from the garage
+    apron to the curb point, sampling mesh_z at each corner."""
+    fx, fy = _face_axis(facing)
+    perp_x = -fy
+    perp_y = fx
+    # Driveway starts at the garage apron — in front of garage door
+    main_w = 9.0
+    gar_w = 5.0
+    apron_cx = house_cx + perp_x * (main_w / 2 + gar_w / 2) + \
+                fx * (3.0 if abs(fx) > 0.5 else 3.5)
+    apron_cy = house_cy + perp_y * (main_w / 2 + gar_w / 2) + \
+                fy * (3.5 if abs(fy) > 0.5 else 3.0)
+    # Driveway is a 3.5 m wide quad from apron to curb
+    dw_w = 3.5
+    perp_hw = dw_w / 2
+    # Compute apron→curb direction
+    direction_x = curb_x - apron_cx
+    direction_y = curb_y - apron_cy
+    dist = math.hypot(direction_x, direction_y) or 1.0
+    perp_dx = -direction_y / dist
+    perp_dy = direction_x / dist
+    corners = [
+        (apron_cx - perp_dx * perp_hw, apron_cy - perp_dy * perp_hw),
+        (curb_x   - perp_dx * perp_hw, curb_y   - perp_dy * perp_hw),
+        (curb_x   + perp_dx * perp_hw, curb_y   + perp_dy * perp_hw),
+        (apron_cx + perp_dx * perp_hw, apron_cy + perp_dy * perp_hw),
+    ]
+    verts = [(vx, vy, mesh_z(vx, vy) + 0.04) for (vx, vy) in corners]
+    _finalize_mesh(f"{name}_Driveway", verts, [[0, 1, 2, 3]], color)
+
+
+def _face_axis(facing):
+    """Returns (forward_x, forward_y) unit vector for the given
+    facing tag — same convention as human_sculpt._face_axis."""
+    if facing == '+X':  return (1.0, 0.0)
+    if facing == '-X':  return (-1.0, 0.0)
+    if facing == '+Y':  return (0.0, 1.0)
+    if facing == '-Y':  return (0.0, -1.0)
+    return (0.0, -1.0)
+
+
+def build_phase2_neighborhood():
+    """Phase II residential neighborhood — winding cul-de-sac
+    road through the settlement zone (40..240 x, -260..-100 y,
+    target_z = +1.0). 6 houses nestled along a curving asphalt
+    road, each with its own driveway connecting to the curb.
+
+    Road layout: enters from the east edge of Phase 2 at
+    (240, -150), winds northwest then southwest in a gentle S
+    curve, ending in a cul-de-sac at (70, -210). Houses
+    alternate sides of the road for varied composition.
+    """
+    # ── ROAD WAYPOINTS forming a winding cul-de-sac ─────────────
+    road_pts = [
+        (240, -150),   # east entry from the Phase 2 boundary
+        (210, -160),
+        (180, -150),
+        (150, -160),
+        (120, -180),
+        (90,  -200),
+        (70,  -210),   # cul-de-sac centre
+    ]
+    road_w = 6.0
+    curb_w = 0.5
+    COL_ROAD = (0.20, 0.20, 0.22, 1.0)
+    COL_CURB = (0.78, 0.76, 0.70, 1.0)
+    COL_DASH = (0.95, 0.85, 0.30, 1.0)
+    hw = road_w / 2
+    for i in range(len(road_pts) - 1):
+        x0, y0 = road_pts[i]
+        x1, y1 = road_pts[i + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        # Road segment
+        rv = []
+        for (rx, ry) in [(x0 - perp_x * hw, y0 - perp_y * hw),
+                         (x1 - perp_x * hw, y1 - perp_y * hw),
+                         (x1 + perp_x * hw, y1 + perp_y * hw),
+                         (x0 + perp_x * hw, y0 + perp_y * hw)]:
+            rv.append((rx, ry, mesh_z(rx, ry) + 0.04))
+        _finalize_mesh(f"P2Road_{i}", rv, [[0, 1, 2, 3]], COL_ROAD)
+        # Curb strips on each side
+        for sgn in (-1, 1):
+            cv = []
+            for (rx, ry) in [(x0 + sgn * perp_x * (hw + curb_w / 2),
+                              y0 + sgn * perp_y * (hw + curb_w / 2)),
+                             (x1 + sgn * perp_x * (hw + curb_w / 2),
+                              y1 + sgn * perp_y * (hw + curb_w / 2)),
+                             (x1 + sgn * perp_x * (hw + curb_w),
+                              y1 + sgn * perp_y * (hw + curb_w)),
+                             (x0 + sgn * perp_x * (hw + curb_w),
+                              y0 + sgn * perp_y * (hw + curb_w))]:
+                cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
+            _finalize_mesh(f"P2Curb_{i}_{sgn:+d}", cv, [[0,1,2,3]], COL_CURB)
+        # Centerline dash (one per segment, in the middle)
+        mid_x = (x0 + x1) / 2
+        mid_y = (y0 + y1) / 2
+        dx_len = 2.0
+        ddx = dxs / seg_len * dx_len / 2
+        ddy = dys / seg_len * dx_len / 2
+        dv = []
+        for (rx, ry) in [(mid_x - ddx - perp_x * 0.08, mid_y - ddy - perp_y * 0.08),
+                         (mid_x + ddx - perp_x * 0.08, mid_y + ddy - perp_y * 0.08),
+                         (mid_x + ddx + perp_x * 0.08, mid_y + ddy + perp_y * 0.08),
+                         (mid_x - ddx + perp_x * 0.08, mid_y - ddy + perp_y * 0.08)]:
+            dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
+        _finalize_mesh(f"P2RoadDash_{i}", dv, [[0,1,2,3]], COL_DASH)
+
+    # Cul-de-sac circular asphalt at the road end
+    cul_x, cul_y = road_pts[-1]
+    cul_r = 9.0
+    segs = 12
+    cul_verts = [(cul_x, cul_y, mesh_z(cul_x, cul_y) + 0.04)]
+    for i in range(segs):
+        ang = 2.0 * math.pi * i / segs
+        vx = cul_x + math.cos(ang) * cul_r
+        vy = cul_y + math.sin(ang) * cul_r
+        cul_verts.append((vx, vy, mesh_z(vx, vy) + 0.04))
+    cul_faces = []
+    for i in range(segs):
+        ni = (i + 1) % segs
+        cul_faces.append([0, 1 + i, 1 + ni])
+    _finalize_mesh("P2Road_CulDeSac", cul_verts, cul_faces, COL_ROAD)
+
+    # ── HOUSES placed along the road · alternating sides
+    # Each tuple: (name, road_pt_idx (0-5), side_sgn (-1=left,+1=right),
+    # facing direction, palette key)
+    house_specs = [
+        ("P2_House_A", 0, -1, '-Y',
+            {'wall': (0.82, 0.78, 0.70, 1.0), 'roof': (0.45, 0.30, 0.22, 1.0)}),
+        ("P2_House_B", 1, +1, '+Y',
+            {'wall': (0.78, 0.68, 0.55, 1.0), 'roof': (0.32, 0.22, 0.18, 1.0)}),
+        ("P2_House_C", 2, -1, '-Y',
+            {'wall': (0.85, 0.82, 0.72, 1.0), 'roof': (0.55, 0.20, 0.16, 1.0)}),
+        ("P2_House_D", 3, +1, '+Y',
+            {'wall': (0.72, 0.78, 0.68, 1.0), 'roof': (0.42, 0.32, 0.22, 1.0)}),
+        ("P2_House_E", 4, -1, '-Y',
+            {'wall': (0.82, 0.75, 0.60, 1.0), 'roof': (0.32, 0.30, 0.26, 1.0)}),
+        ("P2_House_F", 5, +1, '+Y',
+            {'wall': (0.65, 0.68, 0.78, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)}),
+    ]
+    for name, pidx, side_sgn, facing, palette in house_specs:
+        # Compute road tangent + normal at this segment
+        x0, y0 = road_pts[pidx]
+        x1, y1 = road_pts[pidx + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        # House centre 18 m off the road on the chosen side
+        mid_x = (x0 + x1) / 2
+        mid_y = (y0 + y1) / 2
+        hcx = mid_x + side_sgn * perp_x * 18.0
+        hcy = mid_y + side_sgn * perp_y * 18.0
+        hcz = mesh_z(hcx, hcy)
+        _build_suburban_house(name, hcx, hcy, hcz,
+                              facing=facing, palette=palette)
+        # Driveway from house's garage to a curb point on the road
+        curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
+        curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)
+        _build_driveway(f"{name}_Drive", hcx, hcy, hcz, facing,
+                         curb_x, curb_y)
+        # Small grass lawn box between road and house (visual fill)
+        # Skipped — terrain vertex colors handle the green already
+
+
 def main():
     clear_scene()
     build_ground()
@@ -5090,6 +5459,7 @@ def main():
     build_oliver_tree_memorial_park()
     build_oliver_tree_skatepark()
     build_commercial_cluster()
+    build_phase2_neighborhood()
     export_glb()
 
 
