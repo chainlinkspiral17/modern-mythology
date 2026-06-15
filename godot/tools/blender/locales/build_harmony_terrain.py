@@ -7654,6 +7654,14 @@ def build_commercial_cluster():
         ("ComicsClerk", cc_x + 3.1, cc_y - 1.3, 1.0, "bowl",
             (0.95, 0.85, 0.30, 1.0),
             (0.32, 0.18, 0.32, 1.0)),
+        # Maya — canon "She works at Cosmic Comics for Rick, on
+        # weekends and after school". Sunday afternoon she's at
+        # the photocopier in the NE corner working her zine. 16
+        # years old, smaller scale; short curly hair dyed purple
+        # at the tips, dark t-shirt + jeans.
+        ("Maya",     cc_x + 3.0, cc_y + 2.5, 0.92, "bowl",
+            (0.32, 0.18, 0.32, 1.0),    # purple-tipped dark hair
+            (0.20, 0.20, 0.24, 1.0)),   # dark jeans
     ]
     for tag, fx, fy, sc, hair, jacket, pants in chapter_one_cast:
         fz = mesh_z(fx, fy)
