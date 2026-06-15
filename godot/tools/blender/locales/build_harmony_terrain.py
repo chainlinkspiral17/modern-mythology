@@ -5620,6 +5620,70 @@ def build_east_commercial_box():
                     (0.32, 0.32, 0.36, 1.0))
 
 
+def build_arterial_lighting():
+    """Streetlamps along Harmony Blvd and Horizon Drive at ~40 m
+    spacing, alternating sides. Tall (6 m) suburban-arterial
+    style with a steel pole and a small overhanging luminaire.
+    """
+    COL_LAMP_POLE = (0.32, 0.32, 0.34, 1.0)
+    COL_LAMP_HEAD = (0.95, 0.92, 0.78, 1.0)
+    LAMP_H = 6.0
+
+    def _emit_lamps(pts, prefix, spacing=40.0):
+        # Walk along the polyline at spacing intervals
+        accumulated = 0.0
+        next_lamp = spacing / 2     # first lamp at half-spacing in
+        side_sgn = 1
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]
+            x1, y1 = pts[i + 1]
+            seg_len = math.hypot(x1 - x0, y1 - y0) or 1.0
+            seg_end = accumulated + seg_len
+            while next_lamp < seg_end:
+                t = (next_lamp - accumulated) / seg_len
+                # Position along the centerline
+                mx = x0 + (x1 - x0) * t
+                my = y0 + (y1 - y0) * t
+                # Move out perpendicular for the lamp pole
+                dxs = x1 - x0; dys = y1 - y0
+                perp_x = -dys / seg_len
+                perp_y =  dxs / seg_len
+                lamp_x = mx + side_sgn * perp_x * 5.0
+                lamp_y = my + side_sgn * perp_y * 5.0
+                lz = mesh_z(lamp_x, lamp_y)
+                # Pole
+                _make_cyl_local(f"{prefix}Lamp_Pole_{int(next_lamp)}",
+                                (lamp_x, lamp_y, lz + LAMP_H / 2),
+                                0.08, LAMP_H, COL_LAMP_POLE, segments=6)
+                # Curved head (just a horizontal bar + light box)
+                _make_box_local(f"{prefix}Lamp_Arm_{int(next_lamp)}",
+                                (lamp_x - side_sgn * perp_x * 0.5,
+                                 lamp_y - side_sgn * perp_y * 0.5,
+                                 lz + LAMP_H + 0.05),
+                                (1.2, 0.06, 0.06), COL_LAMP_POLE)
+                _make_box_local(f"{prefix}Lamp_Head_{int(next_lamp)}",
+                                (lamp_x - side_sgn * perp_x * 1.0,
+                                 lamp_y - side_sgn * perp_y * 1.0,
+                                 lz + LAMP_H - 0.10),
+                                (0.40, 0.18, 0.18), COL_LAMP_HEAD)
+                side_sgn = -side_sgn
+                next_lamp += spacing
+            accumulated = seg_end
+
+    # Use the same arterial polylines (re-listed here for clarity)
+    harmony_blvd = [
+        (0, 340), (10, 260), (30, 200), (60, 130),
+        (60, 10), (40, -80), (20, -180), (10, -260), (0, -340),
+    ]
+    horizon_dr = [
+        (-460, -20), (-380, -10), (-280, -10), (-180, -20),
+        (-80, -30), (60, -20), (160, -10), (260, -10),
+        (380, 0), (440, 0),
+    ]
+    _emit_lamps(harmony_blvd, "HarmonyBlvd_")
+    _emit_lamps(horizon_dr, "HorizonDr_")
+
+
 def build_bus_stops():
     """Bus-stop shelters at key arterial intersections. Each:
     4 corner steel posts + slanted roof + back wall + bench.
@@ -8134,6 +8198,7 @@ def main():
     build_truck_stop()
     build_east_commercial_box()
     build_bus_stops()
+    build_arterial_lighting()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
