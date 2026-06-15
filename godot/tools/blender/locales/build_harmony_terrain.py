@@ -9803,7 +9803,9 @@ def build_connector_roads():
         ("OTLink",      "OTLink_"),
         ("HospLink",    "HospLink_"),
         ("NXHQLink",    "NXHQLink_"),
-        ("Ch1Frontage", "Ch1Frontage_"),
+        # Ch1Frontage road quads are emitted by build_commercial_
+        # cluster (existing). The Ch1Frontage corridor still carves
+        # terrain so the existing road sits on a flat platform.
     ]
     for (cname, prefix) in LINK_NAMES:
         if cname not in corridor_xys:
