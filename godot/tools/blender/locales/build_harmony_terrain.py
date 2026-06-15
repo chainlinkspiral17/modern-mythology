@@ -3544,11 +3544,12 @@ def _build_diner(cx, cy, ground_z):
                         (bx, by, ground_z + 0.27),
                         (0.10, 0.10, 0.54),
                         (0.62, 0.62, 0.64, 1.0))
-    # Kitchen pass-through / half-wall on the back side. Below
-    # the pass is a real kitchen line: prep counter, flat-top
-    # grill, and an extractor hood overhead.
+    # Kitchen pass-through / half-wall — pushed south to cy + 3.0
+    # so the kitchen aisle between this wall and the prep counter
+    # (at cy + 3.70 south edge) is a real 0.7 m wide aisle, room
+    # for the cook to stand.
     _make_box_local(f"{name_prefix}_KitchenWall",
-                    (cx, cy + depth * 0.40, ground_z + 1.30),
+                    (cx, cy + 3.0, ground_z + 1.30),
                     (12.0, 0.20, 0.60), col_trim)
     # Prep counter running along the back, behind (north of) the
     # pass-through half-wall. Counter centre at cy + 4.0 so its
@@ -4381,11 +4382,14 @@ def build_commercial_cluster():
         ("NPC_Arcade_Attendant", ks_x - 9.0, ks_y + 4.3),
         ("NPC_Sam_Register",     ks_x + 2.8, ks_y + 4.3),
         ("NPC_Laundromat_Clerk", ks_x + 9.0, ks_y + 4.3),
-        # Diner counter spans cy+1.17 to cy+1.87 with the new
-        # narrower counter_d; kitchen wall at cy+3.6. Cook + waiter
-        # have ~1.7 m of staff aisle to stand in.
-        ("NPC_Diner_Cook",       dn_x,        dn_y + 3.0),
-        ("NPC_Diner_Waiter",     dn_x + 4.0, dn_y + 2.6),
+        # Diner customer counter spans cy+1.17 to cy+2.07. Pass-
+        # wall at cy+3.0. Prep counter spans cy+3.70 to cy+4.30
+        # against the back wall. Waiter stands in the customer-
+        # side staff aisle (between counter and pass-wall); cook
+        # stands in the kitchen-side aisle (between pass-wall and
+        # prep counter).
+        ("NPC_Diner_Cook",       dn_x,        dn_y + 3.4),
+        ("NPC_Diner_Waiter",     dn_x + 4.0, dn_y + 2.5),
         # Cosmic Comics counter at south wall (cy-2.85 to cy-2.15);
         # clerk stands NORTH of counter, deeper into the shop.
         ("NPC_Comics_Clerk",     cc_x + 3.1, cc_y - 1.0),
@@ -4417,10 +4421,10 @@ def build_commercial_cluster():
         ("LaundryAtt", ks_x + 9.0, ks_y + 4.3, 1.0, "bowl",
             (0.32, 0.55, 0.78, 1.0),
             (0.92, 0.92, 0.90, 1.0)),
-        ("DinerCook", dn_x,        dn_y + 3.0, 1.0, "short",
+        ("DinerCook", dn_x,        dn_y + 3.4, 1.0, "short",
             (0.98, 0.98, 0.96, 1.0),
             (0.18, 0.18, 0.22, 1.0)),
-        ("DinerWaiter", dn_x + 4.0, dn_y + 2.6, 1.0, "short",
+        ("DinerWaiter", dn_x + 4.0, dn_y + 2.5, 1.0, "short",
             (0.85, 0.22, 0.20, 1.0),
             (0.92, 0.90, 0.84, 1.0)),
         ("ComicsClerk", cc_x + 3.1, cc_y - 1.0, 1.0, "bowl",
