@@ -5873,6 +5873,73 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (0.40, 0.02, 0.18),
                     (0.85, 0.20, 0.18, 1.0))
 
+    # ── TASTE HOME HAMBURGER WINDOW DECAL · canonical Vol 6 Ch 1
+    # opening detail ("a cheerful cartoon hamburger holding a sign
+    # that reads TASTE HOME. The hamburger has lost one of its
+    # eyes. The eye is somewhere in the decal's adhesive layer,
+    # drifting"). Brown burger circle + cream sign + ONE eye on
+    # the right (the other is missing).
+    th_x = kw_cx - 1.6
+    th_y = glass_y
+    th_z = ground_z + 1.15
+    # Burger body (brown circle)
+    _make_cyl_local("KwikStop_TasteHome_Burger",
+                    (th_x, th_y, th_z),
+                    0.18, 0.02,
+                    (0.55, 0.32, 0.22, 1.0), segments=10)
+    # Burger top bun lighter shade (smaller circle on top)
+    _make_cyl_local("KwikStop_TasteHome_BurgerBun",
+                    (th_x, th_y - 0.005, th_z + 0.06),
+                    0.14, 0.005,
+                    (0.78, 0.55, 0.32, 1.0), segments=8)
+    # Single remaining eye (right side only)
+    _make_box_local("KwikStop_TasteHome_Eye",
+                    (th_x + 0.05, th_y - 0.01, th_z + 0.05),
+                    (0.03, 0.005, 0.03),
+                    (0.18, 0.18, 0.20, 1.0))
+    # "TASTE HOME" sign rectangle
+    _make_box_local("KwikStop_TasteHome_Sign",
+                    (th_x + 0.18, th_y, th_z - 0.05),
+                    (0.30, 0.02, 0.12),
+                    (0.95, 0.94, 0.86, 1.0))
+    _make_box_local("KwikStop_TasteHome_SignText",
+                    (th_x + 0.18, th_y - 0.005, th_z - 0.05),
+                    (0.24, 0.01, 0.06),
+                    (0.55, 0.22, 0.18, 1.0))
+
+    # ── ROLLER GRILL · the classic stainless-steel hot-dog roller
+    # at the back of the counter. 4 parallel chrome rollers under
+    # a heat lamp.
+    rg_x = counter_x - counter_w / 2 + 0.30
+    rg_y = counter_y + counter_d / 2 + 0.50
+    rg_z = ground_z + counter_h + 0.10
+    # Base box
+    _make_box_local("KwikStop_RollerGrill_Base",
+                    (rg_x, rg_y, rg_z + 0.10),
+                    (0.65, 0.45, 0.20),
+                    (0.62, 0.62, 0.64, 1.0))
+    # 4 chrome rollers across
+    for k in range(4):
+        rgrx = rg_x - 0.22 + k * 0.15
+        _make_cyl_local(
+            f"KwikStop_RollerGrill_Roller_{k}",
+            (rgrx, rg_y, rg_z + 0.22),
+            0.045, 0.40,
+            (0.85, 0.85, 0.85, 1.0), segments=6)
+    # Heat-lamp hood above
+    _make_box_local("KwikStop_RollerGrill_Hood",
+                    (rg_x, rg_y, rg_z + 0.40),
+                    (0.65, 0.45, 0.06),
+                    (0.92, 0.55, 0.20, 1.0))
+    # Two visible hot dogs on the rollers
+    for k in range(2):
+        hdx = rg_x - 0.10 + k * 0.20
+        _make_cyl_local(
+            f"KwikStop_RollerGrill_HotDog_{k}",
+            (hdx, rg_y, rg_z + 0.25),
+            0.025, 0.18,
+            (0.78, 0.42, 0.28, 1.0), segments=6)
+
     # ── HELP WANTED sign in the west bay window · paper-yellow
     # rectangle with hand-lettered red text suggested
     _make_box_local("KwikStop_HelpWanted",
