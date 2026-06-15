@@ -5761,9 +5761,34 @@ def build_phase2_neighborhood():
         cul_faces.append([0, 1 + i, 1 + ni])
     _finalize_mesh("P2Road_CulDeSac", cul_verts, cul_faces, COL_ROAD)
 
-    # ── HOUSES placed along the road · alternating sides
-    # Each tuple: (name, road_pt_idx (0-5), side_sgn (-1=left,+1=right),
-    # facing direction, palette key)
+    # ── 5 HOUSES around the cul-de-sac BULB · radiating from
+    # the bulb centre, each facing toward the bulb. Skip the
+    # inlet angle (270°/west, where the access road arrives).
+    cul_house_specs = [
+        (30,  '-X', {'wall': (0.80, 0.76, 0.68, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)}),
+        (90,  '-Y', {'wall': (0.70, 0.74, 0.62, 1.0), 'roof': (0.55, 0.20, 0.16, 1.0)}),
+        (150, '+X', {'wall': (0.82, 0.75, 0.60, 1.0), 'roof': (0.32, 0.30, 0.26, 1.0)}),
+        (210, '+X', {'wall': (0.65, 0.68, 0.78, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)}),
+        (330, '-X', {'wall': (0.85, 0.82, 0.72, 1.0), 'roof': (0.32, 0.22, 0.18, 1.0)}),
+    ]
+    cul_setback = 21.0    # bulb r 9 + setback 12 m
+    for k, (ang_deg, facing, palette) in enumerate(cul_house_specs):
+        ang_r = math.radians(ang_deg)
+        hcx = cul_x + math.cos(ang_r) * cul_setback
+        hcy = cul_y + math.sin(ang_r) * cul_setback
+        hcz = mesh_z(hcx, hcy)
+        _build_suburban_house(f"P2_Cul_House_{k}", hcx, hcy, hcz,
+                              facing=facing, palette=palette)
+        # Driveway to the cul-de-sac edge
+        curb_x = cul_x + math.cos(ang_r) * (cul_r + 0.5)
+        curb_y = cul_y + math.sin(ang_r) * (cul_r + 0.5)
+        _build_driveway(f"P2_Cul_House_{k}_Drive", hcx, hcy, hcz,
+                         facing, curb_x, curb_y)
+
+    # ── HOUSES placed along the arterial · alternating sides,
+    # closer to road (12 m off-road, was 18 m) so the
+    # neighborhood reads as TIGHT-PACKED suburban per the
+    # aerial reference photos.
     house_specs = [
         ("P2_House_A", 0, -1, '-Y',
             {'wall': (0.82, 0.78, 0.70, 1.0), 'roof': (0.45, 0.30, 0.22, 1.0)}),
@@ -5778,6 +5803,7 @@ def build_phase2_neighborhood():
         ("P2_House_F", 5, +1, '+Y',
             {'wall': (0.65, 0.68, 0.78, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)}),
     ]
+    arterial_setback = 12.0
     for name, pidx, side_sgn, facing, palette in house_specs:
         # Compute road tangent + normal at this segment
         x0, y0 = road_pts[pidx]
@@ -5786,11 +5812,10 @@ def build_phase2_neighborhood():
         seg_len = math.hypot(dxs, dys) or 1.0
         perp_x = -dys / seg_len
         perp_y =  dxs / seg_len
-        # House centre 18 m off the road on the chosen side
         mid_x = (x0 + x1) / 2
         mid_y = (y0 + y1) / 2
-        hcx = mid_x + side_sgn * perp_x * 18.0
-        hcy = mid_y + side_sgn * perp_y * 18.0
+        hcx = mid_x + side_sgn * perp_x * arterial_setback
+        hcy = mid_y + side_sgn * perp_y * arterial_setback
         hcz = mesh_z(hcx, hcy)
         _build_suburban_house(name, hcx, hcy, hcz,
                               facing=facing, palette=palette)
