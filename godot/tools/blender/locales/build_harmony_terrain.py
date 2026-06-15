@@ -4590,8 +4590,10 @@ def build_commercial_cluster():
     # at the north end of the spawn spur. The first thing the
     # player sees as they walk south from the country-club
     # spawn point.
+    # North of the spur start so the spur doesn't pass through
+    # the plinth's 5.6 m footprint.
     hce_x = 0.0
-    hce_y = -342.0       # north of the spur start (spawn-side)
+    hce_y = -335.0
     hce_z = mesh_z(hce_x, hce_y)
     COL_HCE_STONE = (0.78, 0.74, 0.66, 1.0)
     COL_HCE_TRIM = (0.42, 0.30, 0.20, 1.0)
