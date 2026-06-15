@@ -1153,6 +1153,67 @@ roads through it. Buildings positioned via `mesh_z(cx, cy)` ride
 whatever the terrain becomes, so they automatically sit flat on
 the carved pads.
 
+### 2026-06-15 · water carves too + cut-slope rules
+
+Followup to "carve terrain for roads": water (creek + ponds)
+also needs to carve, not just roads. Settlements + berms + lot
+pads were fighting the analytic pond-depression and creek-dip
+inside their rects, so ponds inside HarmonyPark and the creek
+crossing OliverTreeMemPark surfaced ABOVE the carved water
+plane. The fix:
+
+- `POND_CARVES` mirrors `LOT_PADS` but with a circular geometry:
+  `(name, cx, cy, full_r, shoulder, floor_z)`. Inside `full_r`
+  terrain is locked to `floor_z`; through `shoulder` it grades
+  back. `build_pond_water` reads `floor_z` directly and parks
+  the water plane at `floor_z + 0.6`. No more probing mesh_z.
+- `CREEK_CHANNEL` mirrors `ROAD_CORRIDORS` for the creek bed:
+  polyline of `(x, y, floor_z)` waypoints. Channel half-width
+  3 m; flood-plain shoulder 22 m. Water surface sits at
+  `floor_z + 0.6` along the channel (per-corner z so the
+  surface slopes naturally toward the outlet).
+- Order in `hce_elevation`: settlements → berms → lot pads →
+  WATER carve → ROAD carve. Road comes last but **yields** to
+  water via `effective_road_w = road_w × (1 − water_w)` so the
+  creek stays carved at crossings and an explicit BRIDGE DECK
+  emits at the crossing point.
+
+Civil-engineering cut-slope rules:
+
+- **Linear** falloff in the carve shoulder, not smoothstep.
+  Smoothstep concentrates the steepest gradient in the mid-
+  shoulder, and on a coarse mesh (15 m cells) that produces
+  visible terraced cells. Linear keeps every shoulder cell at
+  the same batter slope.
+- **Wider shoulders**: arterials at 36 m gives ~4:1 cut/fill
+  slope across a 9 m elevation change (CountryClub +22 →
+  NorthComm +14). Connectors 14–18 m, lot pads 14–22 m.
+- **Subdivide road waypoints to ≤40 m segments** so target_z
+  lerps smoothly. Catmull-Rom smoothing of the xy polyline
+  then renders the road as a curve instead of a kinked
+  polyline.
+- **Ramp grade ≤ 10–12 %** for civil-engineering credibility.
+  My first-pass NXHQLink (35 m corridor, 8 m elevation) was
+  23 %; extended to 80 m gives ~10 %.
+- **Bump ground mesh density** when the 15 m grid aliases the
+  carve shoulder. Doubled to 10 m cells (120×84) for this
+  district; the cost is ~2× more terrain vertices but the
+  shoulder spans 3.6 cells instead of 2.4, smooth.
+- **Bridge deck where roads cross water**: deck at road grade,
+  parapets, piers descending to creek floor. Road carve
+  yields to water carve at the channel so the deck spans a
+  real dip instead of a flat strip.
+- **Intersection slabs** at every road–road xy crossing,
+  z = max(corridor_a, corridor_b). Plus crosswalk zebras on
+  arterial × arterial junctions.
+
+Discipline rule that emerged: every road I add as a corridor
+also needs to match the polyline that the EMITTING build
+function uses. If they diverge, the carved-flat band sits
+next to where the asphalt actually draws. Several neighborhood
+streets (Ridge Crest Dr, Phase 2 cul-de-sac, Magnolia Lane)
+had to be re-aligned to the existing emit polylines.
+
 ### TEMPLATE for next session
 
 ```markdown
