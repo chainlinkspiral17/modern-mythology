@@ -10104,6 +10104,387 @@ def build_east_cds_neighborhood():
                          facing, curb_x, curb_y)
 
 
+def build_nexcorp_model_home():
+    """NexCorp Residential Solutions MODEL HOME — the Sunday-
+    open showpiece NexCorp uses to sell HCE lots. Per
+    lore/_COMMUNITY_PLANNED_LORE.md:
+      · "their first home at Lot 47"
+      · "the basil pot at the model home is fake"
+      · "model-home open Sunday"
+      · "the model-home scheme — the wrong-address mail
+        apparatus that funnels HCE deeds toward NexCorp shells"
+
+    Placed at Lot 47 in NorthRanch (the NW prosperous tier) on
+    Aspen Street's north side. Larger than the other NR houses,
+    in a brick + multi-gable style matching the suburb reference
+    photos. Tagged with a MODEL HOME yard sign + NEXCORP banner
+    + open front door + visible "fake basil pot" on the porch.
+    """
+    cx, cy = -340.0, 218.0     # Lot 47 — NR Aspen north side
+    ground_z = mesh_z(cx, cy)
+
+    # Two-story silhouette with bigger footprint than the
+    # standard suburban house. Brick + front-loaded garage.
+    col_brick = (0.55, 0.32, 0.22, 1.0)        # red brick
+    col_brick_alt = (0.62, 0.42, 0.28, 1.0)    # lighter brick accent
+    col_trim_cream = (0.92, 0.90, 0.84, 1.0)
+    col_roof_dark = (0.32, 0.30, 0.28, 1.0)
+    col_door_navy = (0.18, 0.32, 0.55, 1.0)
+    col_garage_white = (0.92, 0.90, 0.84, 1.0)
+    col_window_warm = (0.42, 0.50, 0.62, 1.0)
+
+    main_w = 11.0
+    main_d = 9.0
+    main_h = 6.0      # 2-story
+    gar_w = 6.0
+    gar_d = 7.0
+    gar_h = 3.5
+
+    # ── SLAB (covers both main house + front-loaded garage)
+    slab_w = main_w + 0.4
+    slab_d = main_d + gar_d + 0.4
+    _make_box_local("ModelHome_Slab",
+                    (cx + 0.3, cy + (main_d - gar_d) / 2,
+                     ground_z + 0.05),
+                    (slab_w + 4.0, slab_d, 0.10), col_trim_cream)
+
+    # ── MAIN HOUSE (north, 2-story) — brick body
+    main_cx = cx
+    main_cy = cy + 2.0    # main pushed north; garage in front
+    _make_box_local("ModelHome_Main",
+                    (main_cx, main_cy, ground_z + main_h / 2),
+                    (main_w, main_d, main_h), col_brick)
+    # Brick-trim band at first-floor / second-floor break
+    _make_box_local("ModelHome_BrickBand",
+                    (main_cx, main_cy - main_d / 2 - 0.02,
+                     ground_z + 3.0),
+                    (main_w + 0.10, 0.06, 0.18), col_brick_alt)
+
+    # ── MULTI-GABLE ROOF — front gable peak (over the garage
+    # side) + larger main hip-style roof behind. Approximate
+    # with two stacked pitched roofs.
+    main_ridge_h = 2.6
+    main_rverts = [
+        (main_cx - main_w / 2 - 0.30,
+         main_cy - main_d / 2 - 0.30, ground_z + main_h),
+        (main_cx + main_w / 2 + 0.30,
+         main_cy - main_d / 2 - 0.30, ground_z + main_h),
+        (main_cx + main_w / 2 + 0.30,
+         main_cy + main_d / 2 + 0.30, ground_z + main_h),
+        (main_cx - main_w / 2 - 0.30,
+         main_cy + main_d / 2 + 0.30, ground_z + main_h),
+        (main_cx - main_w / 2 - 0.30, main_cy,
+         ground_z + main_h + main_ridge_h),
+        (main_cx + main_w / 2 + 0.30, main_cy,
+         ground_z + main_h + main_ridge_h),
+    ]
+    main_rfaces = [[0, 1, 5, 4], [3, 4, 5, 2],
+                   [0, 4, 3], [1, 2, 5]]
+    _finalize_mesh("ModelHome_MainRoof", main_rverts, main_rfaces,
+                    col_roof_dark)
+    # FRONT GABLE — smaller pitched peak above the garage
+    fg_w = 5.5
+    fg_d = 3.0
+    fg_base_z = ground_z + main_h + 0.5
+    fg_ridge_h = 1.8
+    fg_cx = main_cx + 2.5    # offset east
+    fg_cy = main_cy - main_d / 2 - 0.5
+    fg_rverts = [
+        (fg_cx - fg_w / 2, fg_cy - fg_d / 2, fg_base_z),
+        (fg_cx + fg_w / 2, fg_cy - fg_d / 2, fg_base_z),
+        (fg_cx + fg_w / 2, fg_cy + fg_d / 2, fg_base_z),
+        (fg_cx - fg_w / 2, fg_cy + fg_d / 2, fg_base_z),
+        (fg_cx, fg_cy - fg_d / 2, fg_base_z + fg_ridge_h),
+        (fg_cx, fg_cy + fg_d / 2, fg_base_z + fg_ridge_h),
+    ]
+    fg_rfaces = [[0, 1, 5, 4], [3, 4, 5, 2],
+                 [0, 4, 3], [1, 2, 5]]
+    _finalize_mesh("ModelHome_FrontGable", fg_rverts, fg_rfaces,
+                    col_roof_dark)
+
+    # ── FRONT DOOR (centred on south face of main)
+    door_w = 1.2; door_h = 2.4
+    door_cx = main_cx - 2.5     # west of front gable
+    door_y = main_cy - main_d / 2 + 0.02
+    # Door (slightly ajar — open-house impression by NOT closing)
+    _make_box_local("ModelHome_Door",
+                    (door_cx, door_y - 0.05,
+                     ground_z + door_h / 2),
+                    (door_w, 0.06, door_h - 0.10),
+                    col_door_navy)
+    # Door header
+    _make_box_local("ModelHome_DoorHeader",
+                    (door_cx, door_y, ground_z + door_h + 0.20),
+                    (door_w + 0.40, 0.12, 0.40),
+                    col_trim_cream)
+    # Door frame / surround
+    for sgn in (-1, 1):
+        _make_box_local(f"ModelHome_DoorFrame_{sgn:+d}",
+                        (door_cx + sgn * (door_w / 2 + 0.10),
+                         door_y, ground_z + door_h / 2),
+                        (0.12, 0.10, door_h + 0.20),
+                        col_trim_cream)
+
+    # ── FRONT WINDOWS · 4 windows (2 on first floor, 2 on
+    # second floor, west side of front gable)
+    for floor in (0, 1):
+        z_win = ground_z + 1.6 + floor * 3.0
+        for k in range(2):
+            wx = main_cx - main_w / 2 + 1.5 + k * 2.5
+            if wx > door_cx + 1.0:
+                continue   # skip if would be on door area
+            _make_box_local(f"ModelHome_Window_{floor}_{k}",
+                            (wx, main_cy - main_d / 2 + 0.02,
+                             z_win),
+                            (1.4, 0.04, 1.4), col_window_warm)
+            # Window shutters (decorative)
+            for sgn in (-1, 1):
+                _make_box_local(
+                    f"ModelHome_Shutter_{floor}_{k}_{sgn:+d}",
+                    (wx + sgn * 0.85,
+                     main_cy - main_d / 2 + 0.04,
+                     z_win),
+                    (0.16, 0.04, 1.4),
+                    col_door_navy)
+    # Window on the east side of front gable (above garage)
+    _make_box_local("ModelHome_Window_E_upper",
+                    (main_cx + 3.0, main_cy - main_d / 2 + 0.02,
+                     ground_z + 4.6),
+                    (1.2, 0.04, 1.2), col_window_warm)
+
+    # ── PORCH COVER over the front door
+    _make_box_local("ModelHome_PorchRoof",
+                    (door_cx, main_cy - main_d / 2 - 1.0,
+                     ground_z + door_h + 0.55),
+                    (door_w + 1.6, 2.0, 0.12), col_trim_cream)
+    # Porch posts (2 white columns)
+    for sgn in (-1, 1):
+        _make_cyl_local(f"ModelHome_PorchPost_{sgn:+d}",
+                        (door_cx + sgn * (door_w / 2 + 0.6),
+                         main_cy - main_d / 2 - 1.8,
+                         ground_z + door_h / 2 + 0.20),
+                        0.10, door_h + 0.40,
+                        col_trim_cream, segments=6)
+    # PORCH SLAB
+    _make_box_local("ModelHome_PorchSlab",
+                    (door_cx, main_cy - main_d / 2 - 1.0,
+                     ground_z + 0.12),
+                    (door_w + 1.6, 2.0, 0.10),
+                    (0.78, 0.74, 0.66, 1.0))
+    # Welcome mat
+    _make_box_local("ModelHome_WelcomeMat",
+                    (door_cx, main_cy - main_d / 2 - 0.30,
+                     ground_z + 0.18),
+                    (door_w + 0.40, 0.60, 0.02),
+                    (0.32, 0.22, 0.18, 1.0))
+    # FAKE BASIL POT (canonical detail) — small terracotta pot
+    # with cubic green sprouts on the porch
+    _make_cyl_local("ModelHome_BasilPot",
+                    (door_cx + 1.0,
+                     main_cy - main_d / 2 - 0.50,
+                     ground_z + 0.30),
+                    0.18, 0.30,
+                    (0.78, 0.45, 0.25, 1.0), segments=8)
+    _make_sphere_low_local("ModelHome_BasilSprouts",
+                            (door_cx + 1.0,
+                             main_cy - main_d / 2 - 0.50,
+                             ground_z + 0.50),
+                            0.22, (0.32, 0.55, 0.25, 1.0),
+                            rings=3, segments=6)
+
+    # ── FRONT-LOADED GARAGE (south of main, attached) — single
+    # big roll-up door visible to the street
+    gar_cx = main_cx + 2.5
+    gar_cy = main_cy - main_d / 2 - gar_d / 2 - 0.20
+    _make_box_local("ModelHome_Garage",
+                    (gar_cx, gar_cy, ground_z + gar_h / 2),
+                    (gar_w, gar_d, gar_h), col_brick)
+    # Garage flat roof
+    _make_box_local("ModelHome_GarageRoof",
+                    (gar_cx, gar_cy, ground_z + gar_h + 0.10),
+                    (gar_w + 0.30, gar_d + 0.30, 0.20),
+                    col_roof_dark)
+    # Garage door (south face)
+    _make_box_local("ModelHome_GarageDoor",
+                    (gar_cx, gar_cy - gar_d / 2 + 0.05,
+                     ground_z + (gar_h - 0.4) / 2 + 0.10),
+                    (gar_w - 0.6, 0.06, gar_h - 0.5),
+                    col_garage_white)
+    # Garage window strip above door
+    _make_box_local("ModelHome_GarageWindow",
+                    (gar_cx, gar_cy - gar_d / 2 + 0.04,
+                     ground_z + gar_h - 0.20),
+                    (gar_w - 0.8, 0.04, 0.20),
+                    col_window_warm)
+
+    # ── DRIVEWAY from garage to the curb (Aspen Street at y=200)
+    drive_apron_x = gar_cx
+    drive_apron_y = gar_cy - gar_d / 2
+    drive_curb_y = 200 + 3.5     # curb edge of Aspen
+    drive_w = 5.0
+    drive_hw = drive_w / 2
+    drive_verts = [
+        (drive_apron_x - drive_hw, drive_apron_y,
+         mesh_z(drive_apron_x - drive_hw, drive_apron_y) + 0.04),
+        (drive_apron_x + drive_hw, drive_apron_y,
+         mesh_z(drive_apron_x + drive_hw, drive_apron_y) + 0.04),
+        (drive_apron_x + drive_hw, drive_curb_y,
+         mesh_z(drive_apron_x + drive_hw, drive_curb_y) + 0.04),
+        (drive_apron_x - drive_hw, drive_curb_y,
+         mesh_z(drive_apron_x - drive_hw, drive_curb_y) + 0.04),
+    ]
+    _finalize_mesh("ModelHome_Driveway", drive_verts,
+                    [[0, 1, 2, 3]], (0.78, 0.76, 0.72, 1.0))
+
+    # ── "MODEL HOME · TOUR SUNDAY" YARD SIGN at the curb
+    sign_x = drive_apron_x - drive_hw - 3.0
+    sign_y = drive_curb_y - 0.5
+    sign_z = mesh_z(sign_x, sign_y)
+    # 2 small posts in the ground
+    for sgn in (-1, 1):
+        _make_box_local(f"ModelHome_YardSignPost_{sgn:+d}",
+                        (sign_x + sgn * 0.55, sign_y,
+                         sign_z + 0.85),
+                        (0.06, 0.06, 1.70),
+                        (0.42, 0.30, 0.20, 1.0))
+    # Big sign panel (TOUR SUNDAY)
+    _make_box_local("ModelHome_YardSign_Panel",
+                    (sign_x, sign_y, sign_z + 1.40),
+                    (1.40, 0.05, 0.90),
+                    (0.18, 0.32, 0.55, 1.0))
+    # Panel border trim
+    _make_box_local("ModelHome_YardSign_Trim",
+                    (sign_x, sign_y, sign_z + 1.40),
+                    (1.46, 0.06, 0.96),
+                    (0.95, 0.92, 0.86, 1.0))
+    # NexCorp company-logo strip at the bottom of the sign
+    _make_box_local("ModelHome_YardSign_NexCorp",
+                    (sign_x, sign_y - 0.02, sign_z + 0.95),
+                    (1.30, 0.06, 0.30),
+                    (0.85, 0.20, 0.18, 1.0))
+
+    # ── NEXCORP BANNER mounted on the front porch railing
+    _make_box_local("ModelHome_NexCorpBanner",
+                    (door_cx, main_cy - main_d / 2 - 0.10,
+                     ground_z + door_h + 1.0),
+                    (3.0, 0.06, 0.40),
+                    (0.18, 0.32, 0.55, 1.0))
+
+    # ── HEDGE BORDER along the south of the front yard
+    _make_box_local("ModelHome_Hedge_S",
+                    (cx + 0.3,
+                     (main_cy - main_d / 2 + drive_curb_y) / 2 - 5.0,
+                     ground_z + 0.40),
+                    (slab_w + 4.0, 0.50, 0.80),
+                    (0.20, 0.42, 0.18, 1.0))
+
+
+def build_nexcorp_sales_trailer():
+    """NexCorp Residential Solutions sales TRAILER — temporary
+    on-site sales office near the model home. Single-wide
+    rectangular trailer with NEXCORP branding, accessibility
+    ramp, and a small visitor lot. Per the lore: NexCorp is
+    aggressively selling HCE lots from this trailer ("NexCorp
+    Residential Solutions has been mailing brochures to ...").
+    """
+    cx, cy = -300.0, 218.0    # west of the model home on Aspen
+    ground_z = mesh_z(cx, cy)
+    # Trailer body (a single-wide rectangular building on
+    # cinder-block stilts)
+    trailer_w = 12.0
+    trailer_d = 4.0
+    trailer_h = 3.0
+    floor_z = 0.50    # stilts raise the floor
+    col_trailer = (0.85, 0.85, 0.82, 1.0)
+    col_trim = (0.18, 0.32, 0.55, 1.0)
+    col_roof = (0.42, 0.42, 0.45, 1.0)
+    col_door = (0.85, 0.20, 0.18, 1.0)
+    # Stilts (cinder-block piers)
+    for sgn_x in (-1, 1):
+        for sgn_y in (-1, 1):
+            _make_box_local(
+                f"Sales_Stilt_{sgn_x:+d}_{sgn_y:+d}",
+                (cx + sgn_x * (trailer_w / 2 - 0.4),
+                 cy + sgn_y * (trailer_d / 2 - 0.4),
+                 ground_z + floor_z / 2),
+                (0.40, 0.40, floor_z),
+                (0.62, 0.62, 0.64, 1.0))
+    # Trailer body
+    _make_box_local("Sales_Trailer_Body",
+                    (cx, cy, ground_z + floor_z + trailer_h / 2),
+                    (trailer_w, trailer_d, trailer_h), col_trailer)
+    # Blue trim band along south face
+    _make_box_local("Sales_Trailer_TrimBand",
+                    (cx, cy - trailer_d / 2 - 0.02,
+                     ground_z + floor_z + trailer_h - 0.40),
+                    (trailer_w, 0.06, 0.30), col_trim)
+    # Flat roof (slightly sloped tar paper)
+    _make_box_local("Sales_Trailer_Roof",
+                    (cx, cy, ground_z + floor_z + trailer_h + 0.05),
+                    (trailer_w + 0.20, trailer_d + 0.20, 0.10),
+                    col_roof)
+    # Front door (south face, west-of-centre)
+    dw, dh = 1.0, 2.0
+    door_cx = cx - 3.0
+    _make_box_local("Sales_Trailer_Door",
+                    (door_cx, cy - trailer_d / 2 + 0.04,
+                     ground_z + floor_z + dh / 2),
+                    (dw, 0.06, dh), col_door)
+    # 2 windows east of the door
+    for k in range(2):
+        wx = cx + 0.5 + k * 2.2
+        _make_box_local(f"Sales_Trailer_Window_{k}",
+                        (wx, cy - trailer_d / 2 + 0.04,
+                         ground_z + floor_z + 1.5),
+                        (1.4, 0.04, 1.0),
+                        (0.42, 0.50, 0.62, 1.0))
+    # ACCESSIBILITY RAMP from ground to floor (south of door)
+    ramp_x = door_cx
+    ramp_y0 = cy - trailer_d / 2
+    ramp_y1 = ramp_y0 - 2.5
+    ramp_verts = [
+        (ramp_x - 1.0, ramp_y0,
+         mesh_z(ramp_x - 1.0, ramp_y0) + 0.04 + floor_z),
+        (ramp_x + 1.0, ramp_y0,
+         mesh_z(ramp_x + 1.0, ramp_y0) + 0.04 + floor_z),
+        (ramp_x + 1.0, ramp_y1,
+         mesh_z(ramp_x + 1.0, ramp_y1) + 0.04),
+        (ramp_x - 1.0, ramp_y1,
+         mesh_z(ramp_x - 1.0, ramp_y1) + 0.04),
+    ]
+    _finalize_mesh("Sales_Trailer_Ramp", ramp_verts,
+                    [[0, 1, 2, 3]],
+                    (0.62, 0.55, 0.45, 1.0))
+    # RAMP HANDRAIL on both sides
+    for sgn in (-1, 1):
+        for k in range(2):
+            rail_y = ramp_y1 + k * 2.5
+            _make_cyl_local(
+                f"Sales_Trailer_RailPost_{sgn:+d}_{k}",
+                (ramp_x + sgn * 1.0, rail_y,
+                 ground_z + floor_z * (k + 0.0) + 0.5),
+                0.04, 1.0,
+                (0.62, 0.62, 0.64, 1.0), segments=4)
+
+    # ── BIG NEXCORP SIGN on the trailer's roof
+    _make_box_local("Sales_Trailer_RooftopSign",
+                    (cx, cy - trailer_d / 2 - 0.20,
+                     ground_z + floor_z + trailer_h + 1.4),
+                    (8.0, 0.14, 1.4), col_trim)
+
+    # ── 4-car visitor lot south of the trailer
+    _build_parking_lot("Sales_Trailer", cx, cy - 10.0,
+                        lot_w=14.0, lot_d=14.0,
+                        ground_z=mesh_z(cx, cy - 10.0),
+                        building_y_north=cy,
+                        car_palette=[
+                            (0.62, 0.62, 0.64, 1.0),
+                            (0.85, 0.20, 0.18, 1.0),
+                            (0.18, 0.32, 0.55, 1.0),
+                        ],
+                        n_handicap=1)
+
+
 def build_north_ranch_neighborhood():
     """NorthRanch — second-tier residential, ranch-style. Bigger
     lots, longer setbacks, single-story houses (rough placeholders
@@ -11516,6 +11897,8 @@ def main():
     build_west_estates_neighborhood()
     build_west_estates_townhouses()
     build_north_ranch_neighborhood()
+    build_nexcorp_model_home()
+    build_nexcorp_sales_trailer()
     build_east_cds_neighborhood()
     build_phase3_neighborhood()
     build_country_club()

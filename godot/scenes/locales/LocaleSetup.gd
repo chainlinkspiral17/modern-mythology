@@ -92,6 +92,11 @@ func _ready() -> void:
 	var ks_hce_banners: Array = []
 	var ks_pylon_top_signs: Array = []
 	var ks_pylon_strip_signs: Array = []
+	# NexCorp model home + sales trailer signage
+	var mh_yard_sign_panels: Array = []
+	var mh_yard_sign_nexcorp: Array = []
+	var mh_porch_banners: Array = []
+	var sales_rooftop_signs: Array = []
 	for mi in meshes:
 		mi.material_override = mat
 		applied += 1
@@ -163,6 +168,14 @@ func _ready() -> void:
 			ks_pylon_top_signs.append(mi)
 		elif "KwikShop_KwikStop_PylonStrip_" in mi.name:
 			ks_pylon_strip_signs.append(mi)
+		elif "ModelHome_YardSign_Panel" in mi.name:
+			mh_yard_sign_panels.append(mi)
+		elif "ModelHome_YardSign_NexCorp" in mi.name:
+			mh_yard_sign_nexcorp.append(mi)
+		elif "ModelHome_NexCorpBanner" in mi.name:
+			mh_porch_banners.append(mi)
+		elif "Sales_Trailer_RooftopSign" in mi.name:
+			sales_rooftop_signs.append(mi)
 	print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
 	# Attach real Label3D text to the sign panels.
 	#
@@ -384,6 +397,42 @@ func _ready() -> void:
 						0.0,
 						Color(0.10, 0.10, 0.10, 1.0),
 						Color(0.95, 0.94, 0.90, 1.0))
+	# NexCorp MODEL HOME yard sign · main "MODEL HOME / TOUR
+	# SUNDAY" panel + smaller NEXCORP strip below
+	for panel in mh_yard_sign_panels:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.04),
+						Vector3(0, 0, 1),
+						"MODEL HOME\nTOUR SUNDAY 1-4",
+						0.0,
+						Color(0.95, 0.92, 0.86, 1.0),
+						Color(0.10, 0.20, 0.42, 1.0))
+	for panel in mh_yard_sign_nexcorp:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.04),
+						Vector3(0, 0, 1),
+						"NEXCORP RESIDENTIAL SOLUTIONS",
+						0.0,
+						Color(0.95, 0.92, 0.86, 1.0),
+						Color(0.42, 0.08, 0.06, 1.0))
+	# Porch banner
+	for panel in mh_porch_banners:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.04),
+						Vector3(0, 0, 1),
+						"OPEN HOUSE",
+						0.0,
+						Color(0.95, 0.92, 0.86, 1.0),
+						Color(0.10, 0.20, 0.42, 1.0))
+	# NexCorp sales trailer rooftop sign
+	for panel in sales_rooftop_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.10),
+						Vector3(0, 0, 1),
+						"NEXCORP HOMES • SALES OFFICE",
+						0.0,
+						Color(0.95, 0.92, 0.86, 1.0),
+						Color(0.10, 0.20, 0.42, 1.0))
 	# High school name plaque — faces south (toward the football
 	# field and stadium).
 	for panel in hs_name_plaques:
