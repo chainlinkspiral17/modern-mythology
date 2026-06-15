@@ -217,7 +217,7 @@ SETTLEMENTS = [
     # East Commercial strip) for the field + bleachers. Expanded
     # to cover the track ring and end zones (total ~80 x 150 m,
     # rather than the field alone).
-    ("HighSchoolField", 200, 480, -130, 110, +3.0, 0.95),
+    ("HighSchoolField", 200, 480, -130, 110, +3.0, 0.98),
     # NexCorp HQ pad on the North Commercial belt — covers
     # plaza, reflecting pool, hedges, parking lot and flagpoles
     # (lot extends to y=264, pool to y=283).
