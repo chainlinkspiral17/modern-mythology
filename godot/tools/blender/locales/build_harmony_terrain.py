@@ -4256,7 +4256,9 @@ def build_commercial_cluster():
     # lot breaks it up: brown curb perimeter + low grass + small
     # tree. Splits the lot visually into ARCADE-side and
     # LAUNDROMAT-side approaches.
-    div_x = ks_x
+    # Divider sits BETWEEN the middle car (at ks_x) and the east
+    # car (at ks_x + 11) so it doesn't collide with either.
+    div_x = ks_x + 5.5
     div_y = ks_y - 17.0 + 1.0
     div_z = mesh_z(div_x, div_y)
     COL_DIV_CURB = (0.62, 0.58, 0.50, 1.0)
