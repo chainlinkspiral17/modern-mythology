@@ -861,6 +861,47 @@ between-equally-OK-options choice, pick the printable one.
   - Capture a playbook lesson for every non-trivial alignment
     bug — they recur.
 
+### 2026-06-15 · facing-axis bugs in parameterised builders
+
+- **Always derive "depth-along-facing" from the depth variable,
+  not the width variable.** When a builder is parameterised on
+  `facing` and the box dimensions swap between X- and Y-facing
+  orientations, the temptation is to write
+  `front_off = main_d/2 if abs(fy) > 0.5 else main_w/2`. That's
+  WRONG: `main_d` is always the depth along the facing axis
+  regardless of orientation; `main_w` is always the width.
+  Just write `front_off = main_d / 2` — no ternary. The same
+  rule cost me 4 separate bugs in the suburban-house builder
+  (slab dims, front door y, garage door y, driveway apron y).
+
+- **Lines / stripes / decals lift ABOVE the slab they decorate.**
+  My HS field had 11 yard lines, sidelines, endlines and mowing
+  stripes all positioned at z = 0.06 with the grass slab at z =
+  0.04 + 0.08 — every painted line was BURIED inside the grass
+  slab and invisible. Rule: compute `slab_top_z = base + size_z`
+  then put every line at `slab_top_z + small_offset` so they sit
+  on top.
+
+- **Painted accents go on the OUTSIDE wall face.** Nightclub's
+  pink stripe was at `cy ± (depth/2 - 0.10)` — INSIDE the wall
+  thickness so the pink was hidden between interior and
+  exterior. Painted exterior decoration uses `cy ± (depth/2 +
+  offset)` (outside) — never minus.
+
+- **Plate-glass curtain wall + door must be coplanar.** I had
+  the NexCorp HQ door 1.5 m INSIDE the south curtain wall — the
+  player would walk into the glass and the door was unreachable.
+  Rule: doors that should be enterable from the exterior sit AT
+  the wall plane, not behind it. If you want a recessed
+  vestibule, model the recess (cut a hole in the wall, build
+  alcove walls).
+
+- **Solid walls need EXPLICIT cutouts where doors go.** The
+  nightclub south wall was a single 22 m box — the alcove + door
+  + bouncers + velvet rope were all sitting BEHIND a solid wall.
+  Rule: when you have a recessed entry, split the wall into
+  LEFT, RIGHT and HEADER pieces around the opening.
+
 ### TEMPLATE for next session
 
 ```markdown
