@@ -3906,6 +3906,121 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (4.0, 0.04, 0.50),
                     (0.85, 0.20, 0.18, 1.0))
 
+    # ── COUNTER DETAIL · pinpad + receipt printer + cash drawer
+    # Pinpad / card reader to the right of the register, facing
+    # the customer
+    _make_box_local("KwikShop_KwikStop_Pinpad",
+                    (counter_x + 0.10,
+                     counter_y - 0.15,
+                     ground_z + counter_h + 0.10),
+                    (0.16, 0.20, 0.12),
+                    (0.32, 0.32, 0.34, 1.0))
+    # Receipt printer (small box behind register)
+    _make_box_local("KwikShop_KwikStop_ReceiptPrinter",
+                    (counter_x - 0.6,
+                     counter_y + 0.20,
+                     ground_z + counter_h + 0.08),
+                    (0.22, 0.18, 0.10),
+                    (0.62, 0.62, 0.64, 1.0))
+    # Receipt paper strip hanging
+    _make_box_local("KwikShop_KwikStop_ReceiptPaper",
+                    (counter_x - 0.6,
+                     counter_y + 0.10,
+                     ground_z + counter_h - 0.10),
+                    (0.06, 0.02, 0.30),
+                    (0.95, 0.95, 0.92, 1.0))
+    # Gum/candy impulse display on the customer side of the
+    # counter (a low shelf rack)
+    _make_box_local("KwikShop_KwikStop_ImpulseRack",
+                    (counter_x,
+                     counter_y - counter_d / 2 - 0.18,
+                     ground_z + 0.5),
+                    (counter_w - 0.2, 0.20, 0.90),
+                    (0.42, 0.32, 0.22, 1.0))
+    # 6 colorful candy boxes on the impulse rack
+    candy_palette = [(0.85, 0.22, 0.20, 1.0),
+                      (0.32, 0.55, 0.78, 1.0),
+                      (0.95, 0.85, 0.30, 1.0),
+                      (0.62, 0.42, 0.78, 1.0),
+                      (0.42, 0.62, 0.32, 1.0),
+                      (0.95, 0.55, 0.20, 1.0)]
+    for k in range(6):
+        cdx = counter_x - counter_w / 2 + 0.20 + k * (counter_w - 0.40) / 5
+        _make_box_local(f"KwikShop_KwikStop_Candy_{k}",
+                        (cdx,
+                         counter_y - counter_d / 2 - 0.20,
+                         ground_z + 0.85),
+                        (0.18, 0.12, 0.15),
+                        candy_palette[k])
+    # Floor mat behind counter (clerk side)
+    _make_box_local("KwikShop_KwikStop_ClerkMat",
+                    (counter_x,
+                     counter_y + counter_d / 2 + 0.35,
+                     ground_z + 0.06),
+                    (counter_w + 0.2, 0.50, 0.02),
+                    (0.30, 0.22, 0.18, 1.0))
+
+    # ── AISLE ENDCAPS · feature displays at the east + west
+    # ends of each aisle (special promotions / impulse stacks)
+    endcap_colours = [
+        (0.95, 0.55, 0.20, 1.0),   # orange (chips)
+        (0.32, 0.55, 0.25, 1.0),   # green (granola)
+        (0.18, 0.32, 0.55, 1.0),   # blue (cereal)
+        (0.85, 0.22, 0.20, 1.0),   # red (soup)
+    ]
+    aisle_y_positions = (cy - 1.5, cy + 1.0)
+    for ka, ay in enumerate(aisle_y_positions):
+        for kx, sgn in enumerate((-1, 1)):
+            ec_x = kw_cx + sgn * (aisle_w / 2 + 0.4)
+            # Endcap stack (3 layers of varying products)
+            for layer in range(3):
+                _make_box_local(
+                    f"KwikShop_KwikStop_Endcap_{ka}_{sgn:+d}_{layer}",
+                    (ec_x, ay, ground_z + 0.20 + layer * 0.45),
+                    (0.45, 0.50, 0.40),
+                    endcap_colours[(ka * 2 + kx) % 4])
+
+    # ── RESTOCKING BOXES · stack of cardboard delivery boxes
+    # near the NW corner of the bay (between the cooler and
+    # the west partition)
+    rs_x = kw_cx - bay_w / 2 + 0.6
+    rs_y = cy + 1.5
+    rs_z = ground_z
+    # 4 cardboard boxes stacked
+    box_specs = [(0, 0, 0, 0.60, 0.45, 0.40),
+                  (0.08, 0.04, 0.40, 0.50, 0.40, 0.35),
+                  (-0.04, -0.05, 0.75, 0.55, 0.45, 0.32),
+                  (0.10, 0.08, 1.07, 0.40, 0.35, 0.30)]
+    for k, (dx, dy, dz, sw, sd, sh) in enumerate(box_specs):
+        _make_box_local(f"KwikShop_KwikStop_StockBox_{k}",
+                        (rs_x + dx, rs_y + dy, rs_z + dz + sh / 2),
+                        (sw, sd, sh),
+                        (0.62, 0.50, 0.36, 1.0))
+    # Tape strip on top box (small dark strip)
+    _make_box_local("KwikShop_KwikStop_StockBoxTape",
+                    (rs_x + 0.10, rs_y + 0.08,
+                     rs_z + 1.07 + 0.30 + 0.005),
+                    (0.20, 0.05, 0.01),
+                    (0.32, 0.30, 0.28, 1.0))
+
+    # ── "CAUTION WET FLOOR" yellow A-frame sign in the centre
+    cau_x = kw_cx
+    cau_y = cy - 0.5
+    cau_z = mesh_z(cau_x, cau_y)
+    # A-frame body (one face) — flat triangle approximated as a
+    # tall thin tilted box
+    _make_box_local("KwikShop_KwikStop_WetSign_A",
+                    (cau_x, cau_y - 0.05,
+                     ground_z + 0.40),
+                    (0.50, 0.20, 0.80),
+                    (0.95, 0.85, 0.30, 1.0))
+    # Black text band suggestion
+    _make_box_local("KwikShop_KwikStop_WetSign_Text",
+                    (cau_x, cau_y - 0.16,
+                     ground_z + 0.50),
+                    (0.40, 0.04, 0.20),
+                    (0.18, 0.18, 0.20, 1.0))
+
     # LAUNDROMAT bay — row of washing machines + dryers + folding
     # table. Two rows: 5 washers on the south side, 5 dryers on
     # the north side. Folding table down the middle.
