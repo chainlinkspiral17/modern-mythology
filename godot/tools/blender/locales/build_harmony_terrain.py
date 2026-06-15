@@ -11502,6 +11502,135 @@ def build_arterial_lighting():
                             prefix)
 
 
+def build_commercial_rooftop_mech():
+    """HVAC condenser units + roof vents on the flat roofs of every
+    major commercial building. Texas suburban commercial roofs are
+    BUSY — multiple A/C units (it's Texas), vent stacks, satellite
+    dishes, conduit runs. From any aerial / bird's-eye angle this
+    is the single biggest 'real commercial' tell.
+    """
+    COL_HVAC = (0.62, 0.62, 0.64, 1.0)        # painted steel grey
+    COL_HVAC_DARK = (0.42, 0.42, 0.45, 1.0)   # darker accent
+    COL_VENT = (0.18, 0.18, 0.20, 1.0)        # black vent stack
+    COL_DUCT = (0.78, 0.76, 0.72, 1.0)        # galvanized duct
+
+    def _hvac_unit(name, x, y, z, w=1.6, d=1.2):
+        """Standard rooftop A/C condenser — boxy housing + fan
+        recess on top."""
+        _make_box_local(f"{name}_Body",
+                        (x, y, z + 0.40),
+                        (w, d, 0.80), COL_HVAC)
+        # Fan recess (slightly inset darker square on top)
+        _make_box_local(f"{name}_Fan",
+                        (x, y, z + 0.81),
+                        (w * 0.7, d * 0.7, 0.04), COL_HVAC_DARK)
+        # Service panel (small darker rectangle on one side)
+        _make_box_local(f"{name}_Panel",
+                        (x, y - d / 2 + 0.04, z + 0.40),
+                        (w * 0.6, 0.05, 0.50), COL_HVAC_DARK)
+
+    def _vent_stack(name, x, y, z, h=1.2):
+        """Tall black vent pipe with rain cap."""
+        _make_cyl_local(f"{name}_Pipe",
+                        (x, y, z + h / 2),
+                        0.10, h, COL_VENT, segments=6)
+        # Rain cap (small disc above)
+        _make_cyl_local(f"{name}_Cap",
+                        (x, y, z + h + 0.10),
+                        0.18, 0.08, COL_VENT, segments=6)
+
+    def _duct_run(name, x0, y0, x1, y1, z, height=0.40):
+        """Galvanized duct between two roof points."""
+        mid_x = (x0 + x1) / 2; mid_y = (y0 + y1) / 2
+        if abs(x1 - x0) > abs(y1 - y0):
+            sz = (abs(x1 - x0), 0.30, height)
+        else:
+            sz = (0.30, abs(y1 - y0), height)
+        _make_box_local(name, (mid_x, mid_y, z + height / 2), sz, COL_DUCT)
+
+    # Per-building rooftop spec: list of (building_label, roof_cx,
+    # roof_cy, roof_z, building_w, building_d, [unit_count]).
+    rooftops = [
+        # ── EastComm (the big commercial parcel)
+        # Halsey film studios — 6 HVAC units (it's a big building)
+        ("Halsey",       480, -100, 13.0, 18, 14, 6),
+        # Self Storage — 4 (long building)
+        ("SelfStorage",  480, -180,  6.5, 12, 60, 5),
+        # Auto Showroom — 4
+        ("AutoShowroom", 480, -260,  7.5, 30, 14, 4),
+        # Big Box — 8 (huge box)
+        ("BigBox",       480,   60,  9.5, 60, 24, 8),
+        # ── Chapter 1 frontage
+        # Kwik Stop strip (arcade + laundromat + kwik shop, 28m total)
+        ("KwikShopStrip", -15, -360,  4.5, 28, 10, 4),
+        # NexCorp Gas station building
+        ("NexCorpGG",   -60, -360,  4.5, 12, 10, 2),
+        # Cosmic Comics
+        ("Cosmic",        70, -360,  4.5,  9,  8, 1),
+        # Dambrosio holdover
+        ("Dambrosio",   -150, -360,  4.5, 14, 12, 2),
+        # ── Public buildings
+        # Hospital
+        ("Hospital",     180,  300, 17.0, 36, 16, 8),
+        # Elementary school
+        ("ES",           -90,  160,  7.5, 30, 20, 4),
+        # High school field bleacher building? skip
+        # Post office
+        ("PostOffice",   180,  -30,  4.5, 16, 12, 2),
+        # Fire station
+        ("FireStn",     -200,  -42,  4.5, 22, 14, 3),
+        # Police station
+        ("PoliceStn",   -170,  -60,  4.5, 18, 12, 2),
+        # Library
+        ("Library",       40,   80,  4.5, 16, 14, 2),
+        # NexCorp HQ
+        ("NexCorpHQ",      0,  300, 17.0, 30, 24, 6),
+        # Horizon Plaza
+        ("HorizonPlaza",-100,   30,  4.5, 24, 12, 3),
+        # Minimart
+        ("Minimart",    -260,  -50,  4.5, 15, 12, 2),
+    ]
+    for tag, cx, cy, roof_z, bw, bd, n_units in rooftops:
+        # Place HVAC units in a row centered on the roof, offset
+        # to one half so vents have space on the other side.
+        # Spacing: bw / (n_units + 1) — fits along the long axis.
+        # Determine long axis automatically.
+        long_axis_x = bw > bd
+        roof_top_z = roof_z + 0.05    # slightly above the roof slab
+        if long_axis_x:
+            for k in range(n_units):
+                hx = cx - bw / 2 + (k + 0.5) * (bw / n_units)
+                hy = cy + bd / 4   # to one half of the roof
+                _hvac_unit(f"Roof_{tag}_HVAC_{k}", hx, hy, roof_top_z)
+            # Vent stacks on the OTHER half
+            for v in range(max(1, n_units // 3)):
+                vx = cx - bw / 4 + v * (bw / 4)
+                vy = cy - bd / 4
+                _vent_stack(f"Roof_{tag}_Vent_{v}", vx, vy, roof_top_z)
+            # One duct run connecting first two HVAC units
+            if n_units >= 2:
+                d_x0 = cx - bw / 2 + 0.5 * (bw / n_units)
+                d_x1 = cx - bw / 2 + 1.5 * (bw / n_units)
+                _duct_run(f"Roof_{tag}_Duct",
+                          d_x0, cy + bd / 4 - 0.6,
+                          d_x1, cy + bd / 4 - 0.6, roof_top_z)
+        else:
+            for k in range(n_units):
+                hx = cx + bw / 4
+                hy = cy - bd / 2 + (k + 0.5) * (bd / n_units)
+                _hvac_unit(f"Roof_{tag}_HVAC_{k}", hx, hy, roof_top_z)
+            for v in range(max(1, n_units // 3)):
+                vx = cx - bw / 4
+                vy = cy - bd / 4 + v * (bd / 4)
+                _vent_stack(f"Roof_{tag}_Vent_{v}", vx, vy, roof_top_z)
+            if n_units >= 2:
+                d_y0 = cy - bd / 2 + 0.5 * (bd / n_units)
+                d_y1 = cy - bd / 2 + 1.5 * (bd / n_units)
+                _duct_run(f"Roof_{tag}_Duct",
+                          cx + bw / 4 - 0.6, d_y0,
+                          cx + bw / 4 - 0.6, d_y1, roof_top_z)
+
+
 def build_arterial_berms():
     """Decorative landscape berms in undeveloped arterial frontage.
     Real suburban arterials have these in the dead stretches
@@ -16368,6 +16497,7 @@ def main():
     build_culdesac_islands()
     build_commercial_pole_signs()
     build_arterial_berms()
+    build_commercial_rooftop_mech()
     build_arterial_trees()
     build_church_cemetery()
     build_church_lot_and_school_playground()
