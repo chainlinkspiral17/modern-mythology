@@ -5315,13 +5315,15 @@ def _build_driveway(name, house_cx, house_cy, ground_z, facing,
     # is gar_d/2 along the facing direction from the garage
     # centre. main_d/2 (3.5) was incorrectly used here for the
     # Y axis, putting the apron 0.5 m past the garage face.
+    # Garage centre lives at house_centre + perp * main_w/2 (the
+    # builder shifts main_centre by -perp*gar_w/2 and the garage
+    # sits +(main_w/2 + gar_w/2) further along perp, so net
+    # garage offset is main_w/2). Apron front face is gar_d/2
+    # along the facing direction past the garage centre.
     main_w = 9.0
-    gar_w = 5.0
     gar_d = 6.0
-    apron_cx = house_cx + perp_x * (main_w / 2 + gar_w / 2) + \
-                fx * gar_d / 2
-    apron_cy = house_cy + perp_y * (main_w / 2 + gar_w / 2) + \
-                fy * gar_d / 2
+    apron_cx = house_cx + perp_x * main_w / 2 + fx * gar_d / 2
+    apron_cy = house_cy + perp_y * main_w / 2 + fy * gar_d / 2
     # Driveway is a 3.5 m wide quad from apron to curb
     dw_w = 3.5
     perp_hw = dw_w / 2
