@@ -1482,6 +1482,63 @@ Lessons that came out of this pass:
   rings, cul-de-sac islands, gazebo skirts, this scale is the
   sweet spot.
 
+### 2026-06-15 (cont.) · the position-seeded variety pattern
+
+Continuing the per-house micro-detail grind, a clear authoring
+pattern emerged that's worth codifying:
+
+```python
+seed_feature = (int(cx * PRIMEA) + int(cy * PRIMEB)) % 100
+```
+
+Where `(cx, cy)` is the entity's world position and `(PRIMEA,
+PRIMEB)` is a per-feature prime pair (use a DIFFERENT pair for
+each feature so that seeds decorrelate — same house should not
+always get both a car AND a chimney on the same side).
+
+Then the seed drives:
+
+- **Presence gates**: `if seed < N` selects N% of instances
+  (trash bins on 40%, parked cars on 55%, boulders on 30%).
+- **Discrete variant choice**: `palette[seed % len(palette)]`
+  picks a color / type from a fixed palette.
+- **Count variants**: `n = 1 + (seed % 3)` picks 1-3 rocks etc.
+- **Continuous size variants**: `(seed % 5) * 0.10` adds
+  per-instance jitter to dimensions.
+- **Sub-feature seeds**: `(seed + r * 11) % 100` derives a
+  per-sub-instance seed for varying multiple things on the same
+  parent (e.g., 3 rocks per yard each with different size/color).
+
+Why this beats both alternatives:
+- vs. pure random: every build of the same script produces the
+  SAME map, but neighbors look different. Reproducible art.
+- vs. no variation: solves the "identical houses" toybox feel.
+
+The pattern stacks. Within `_build_suburban_house` we now have:
+- yard tree (seed_yt = cx*7 + cy*13)
+- foundation shrubs (no seed — present always)
+- chimney + vent (seed_roof = cx*11 + cy*7)
+- shutter color (seed_shut = cx*3 + cy*5)
+- driveway car (seed_car = cx*17 + cy*23)
+- curbside trash bins (seed_trash = cx*13 + cy*19)
+- xeriscape rocks (seed_rock = cx*23 + cy*17)
+
+All keyed off `(cx, cy)`, but each feature uses different primes
+so two adjacent houses (~30m apart) have visibly uncorrelated
+feature sets. Co-prime selection prevents the "every-other-house
+clone" pattern that emerges if you share too many prime factors.
+
+Architectural detail rule that came out of this:
+
+**For any helper used by multiple call sites, supporting both
+X- AND Y- alignment is mandatory.** The `_build_parked_car`
+helper bakes in Y-axis orientation (4.4m long along Y), and as
+a result the driveway-car pass had to skip X-facing houses.
+That's a wart — half of one neighborhood gets cars and half
+doesn't. Either pass the orientation through, or build the long
+axis from a unit-vector argument computed from `_face_axis()`.
+Next refactor target.
+
 ### TEMPLATE for next session
 
 ```markdown
