@@ -3802,6 +3802,110 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                         (1.6, 0.20, 0.10),
                         (0.95, 0.94, 0.90, 1.0))
 
+    # ── EXTERIOR POLISH for the Kwik Stop bay — window decals,
+    # OPEN sign, security camera, ATM, bordering planter
+    glass_y_bay = cy - depth / 2 + 0.05
+    # OPEN neon sign hung in the right-bay window
+    _make_box_local("KwikShop_KwikStop_OpenSign",
+                    (kw_cx + 2.5, glass_y_bay - 0.04,
+                     ground_z + 2.4),
+                    (0.60, 0.04, 0.20),
+                    (0.85, 0.20, 0.18, 1.0))
+    # Window decals (small color panels suggesting lottery, ATM,
+    # ice, etc.) along the bottom of the south face
+    decals = [
+        (-3.0, (0.95, 0.85, 0.30, 1.0)),   # gold "LOTTERY"
+        (-2.0, (0.32, 0.55, 0.78, 1.0)),   # blue "ATM"
+        (-1.0, (0.95, 0.94, 0.90, 1.0)),   # cream "ICE"
+        ( 3.0, (0.85, 0.22, 0.20, 1.0)),   # red "EBT"
+    ]
+    for k, (x_off, col_d) in enumerate(decals):
+        _make_box_local(f"KwikShop_KwikStop_Decal_{k}",
+                        (kw_cx + x_off, glass_y_bay - 0.04,
+                         ground_z + 0.85),
+                        (0.50, 0.04, 0.35), col_d)
+    # Security camera mounted at the SE corner of the storefront
+    cam_x = kw_cx + bay_w / 2 - 0.4
+    cam_y = glass_y_bay - 0.10
+    cam_z = ground_z + height - 0.30
+    # Mount bracket
+    _make_box_local("KwikShop_KwikStop_CamMount",
+                    (cam_x, cam_y - 0.05, cam_z),
+                    (0.08, 0.16, 0.08),
+                    (0.32, 0.32, 0.34, 1.0))
+    # Camera body (cylinder facing down + south)
+    _make_cyl_local("KwikShop_KwikStop_CamBody",
+                    (cam_x, cam_y - 0.18, cam_z - 0.10),
+                    0.08, 0.20,
+                    (0.18, 0.18, 0.20, 1.0), segments=8)
+    # Tiny red LED on the camera
+    _make_box_local("KwikShop_KwikStop_CamLED",
+                    (cam_x, cam_y - 0.28, cam_z - 0.08),
+                    (0.03, 0.02, 0.03),
+                    (0.85, 0.10, 0.10, 1.0))
+
+    # ── ATM kiosk on the sidewalk outside the storefront, just
+    # east of the door
+    atm_x = kw_cx + 3.5
+    atm_y = glass_y_bay - 0.70
+    atm_z = mesh_z(atm_x, atm_y)
+    # ATM body
+    _make_box_local("KwikShop_KwikStop_ATM_Body",
+                    (atm_x, atm_y, atm_z + 0.85),
+                    (0.70, 0.50, 1.70),
+                    (0.42, 0.42, 0.45, 1.0))
+    # Screen
+    _make_box_local("KwikShop_KwikStop_ATM_Screen",
+                    (atm_x, atm_y - 0.26, atm_z + 1.30),
+                    (0.50, 0.04, 0.30),
+                    (0.18, 0.32, 0.42, 1.0))
+    # Card slot strip
+    _make_box_local("KwikShop_KwikStop_ATM_Card",
+                    (atm_x, atm_y - 0.26, atm_z + 0.90),
+                    (0.30, 0.04, 0.04),
+                    (0.85, 0.85, 0.85, 1.0))
+    # ATM sign on top
+    _make_box_local("KwikShop_KwikStop_ATM_Sign",
+                    (atm_x, atm_y, atm_z + 1.95),
+                    (0.70, 0.50, 0.30),
+                    (0.32, 0.55, 0.78, 1.0))
+
+    # ── GUMBALL / STICKER MACHINES outside, west of the door
+    gum_y = glass_y_bay - 0.50
+    for k, col in enumerate(((0.85, 0.20, 0.18, 1.0),     # red
+                              (0.32, 0.55, 0.78, 1.0),     # blue
+                              (0.95, 0.85, 0.30, 1.0))):    # yellow
+        gx = kw_cx - 3.5 + k * 0.5
+        gz = mesh_z(gx, gum_y)
+        # Pedestal
+        _make_cyl_local(f"KwikShop_KwikStop_Gum_Stand_{k}",
+                        (gx, gum_y, gz + 0.40),
+                        0.10, 0.80,
+                        (0.32, 0.32, 0.34, 1.0), segments=6)
+        # Globe / dispenser top
+        _make_sphere_low_local(f"KwikShop_KwikStop_Gum_Globe_{k}",
+                                (gx, gum_y, gz + 1.10),
+                                0.22, col, rings=3, segments=8)
+        # Coin mechanism base
+        _make_box_local(f"KwikShop_KwikStop_Gum_Base_{k}",
+                        (gx, gum_y, gz + 0.85),
+                        (0.22, 0.22, 0.16), col_steel)
+
+    # ── HOURS placard on the door jamb · small dark plaque
+    _make_box_local("KwikShop_KwikStop_HoursPlaque",
+                    (kw_cx + 1.0, glass_y_bay - 0.06,
+                     ground_z + 1.95),
+                    (0.30, 0.04, 0.40),
+                    (0.18, 0.18, 0.20, 1.0))
+
+    # ── PROMO BANNER hung from the awning · long red strip with
+    # white text suggested
+    _make_box_local("KwikShop_KwikStop_PromoBanner",
+                    (kw_cx, glass_y_bay - 1.30,
+                     ground_z + 2.55),
+                    (4.0, 0.04, 0.50),
+                    (0.85, 0.20, 0.18, 1.0))
+
     # LAUNDROMAT bay — row of washing machines + dryers + folding
     # table. Two rows: 5 washers on the south side, 5 dryers on
     # the north side. Folding table down the middle.
