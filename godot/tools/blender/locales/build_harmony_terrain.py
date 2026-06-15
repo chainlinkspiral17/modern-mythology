@@ -7749,7 +7749,10 @@ def build_commercial_cluster():
     # at a glance.
     chapter_one_cast = [
         # (name, x, y, scale, hair, jacket, pants)
-        ("Skip",     nc_x + 4.0, nc_y + 4.3, 1.0, "short",
+        # Skip — divorced 39, vapes, NexCorp polo. Cap = baseball
+        # cap as he's described in canon as "always wearing the
+        # NexCorp ballcap from corporate training".
+        ("Skip",     nc_x + 4.0, nc_y + 4.3, 1.0, "cap",
             (0.32, 0.55, 0.78, 1.0),   # blue NexCorp uniform
             (0.42, 0.42, 0.45, 1.0)),
         # ArcadeAtt at the arcade attendant booth (arc_cx, back of
@@ -7757,27 +7760,20 @@ def build_commercial_cluster():
         ("ArcadeAtt", ks_x - 11.0, ks_y + 4.3, 1.0, "bowl",
             (0.62, 0.22, 0.78, 1.0),
             (0.20, 0.20, 0.22, 1.0)),
-        # Sam — IN THE CLERK AISLE between counter and cigarette
-        # backboard. Counter at (kw_cx - 5, cy - 3.125), counter
-        # north face at cy - 2.65, backboard at cy - 1.85 (with
-        # the new 0.8m clerk aisle). Sam stands mid-aisle at
-        # cy - 2.25 facing south toward customer + storefront
-        # glass. ks_y relative = -2.25.
-        ("Sam",      ks_x + 1.0, ks_y - 2.25, 1.0, "short",
-            (0.85, 0.22, 0.20, 1.0),
-            (0.55, 0.50, 0.42, 1.0)),
-        # Diego — canon detail from Sam's zine: "the figure is
-        # Diego, leaning against the ice freezer outside." Ice
-        # freezer at kw_cx - 4.4 = ks_x + 6 - 4.4 = ks_x + 1.6.
-        ("Diego",    ks_x + 1.8, ks_y - 5.0, 1.0, "bowl",
-            (0.42, 0.22, 0.18, 1.0),    # dark band-tee
-            (0.20, 0.20, 0.24, 1.0)),
-        # Roy — back cooler customer. Back cooler at kw_cx west
-        # end (cooler_cx in the build = kw_cx - bay_w/2 + 2.5 =
-        # ks_x + 6 - 8 + 2.5 = ks_x + 0.5).
-        ("Roy",      ks_x + 0.5, ks_y + 3.0, 1.05, "short",
-            (0.32, 0.55, 0.78, 1.0),    # blue collared shirt
-            (0.78, 0.74, 0.66, 1.0)),   # khaki pants
+        # Sam — IN THE CLERK AISLE (counter front-left of bay).
+        # 18yo, brown shoulder-length hair → ponytail.
+        ("Sam",      ks_x + 1.0, ks_y - 2.25, 1.0, "ponytail",
+            (0.42, 0.30, 0.22, 1.0),   # brown ponytail hair
+            (0.55, 0.50, 0.42, 1.0)),  # kwik stop polo (tan)
+        # Diego — canon "leaning against the ice freezer outside".
+        # 19yo drummer, dark hair, band tee.
+        ("Diego",    ks_x + 1.8, ks_y - 5.0, 1.0, "beanie",
+            (0.18, 0.14, 0.12, 1.0),   # dark beanie
+            (0.20, 0.20, 0.24, 1.0)),  # dark jeans
+        # Roy — back cooler regular, mid-50s. Cap.
+        ("Roy",      ks_x + 0.5, ks_y + 3.0, 1.05, "cap",
+            (0.42, 0.42, 0.45, 1.0),   # grey baseball cap
+            (0.78, 0.74, 0.66, 1.0)),  # khaki pants
         # Laundry attendant at the laundromat folding table.
         # Laundromat now at cx + LAUNDROMAT_OX = ks_x - 5.
         ("LaundryAtt", ks_x - 5.0, ks_y + 0.5, 1.0, "bowl",
@@ -7792,13 +7788,11 @@ def build_commercial_cluster():
         ("ComicsClerk", cc_x + 3.1, cc_y - 1.3, 1.0, "bowl",
             (0.95, 0.85, 0.30, 1.0),
             (0.32, 0.18, 0.32, 1.0)),
-        # Maya — canon "She works at Cosmic Comics for Rick, on
-        # weekends and after school". Sunday afternoon she's at
-        # the photocopier in the NE corner working her zine. 16
-        # years old, smaller scale; short curly hair dyed purple
-        # at the tips, dark t-shirt + jeans.
+        # Maya — 16, curly short hair dyed dark purple at tips.
+        # The 'bowl' style with purple accent reads as her canon
+        # description (short + asymmetric + the purple tips).
         ("Maya",     cc_x + 3.0, cc_y + 2.5, 0.92, "bowl",
-            (0.32, 0.18, 0.32, 1.0),    # purple-tipped dark hair
+            (0.40, 0.18, 0.42, 1.0),    # purple-tipped dark hair
             (0.20, 0.20, 0.24, 1.0)),   # dark jeans
     ]
     for tag, fx, fy, sc, hair, jacket, pants in chapter_one_cast:
