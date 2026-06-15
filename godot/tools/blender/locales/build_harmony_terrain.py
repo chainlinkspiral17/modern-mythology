@@ -5497,7 +5497,11 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     # against the ice freezer outside" — that freezer is below).
     # ════════════════════════════════════════════════════════════════
 
-    sw_y = cy - depth / 2 - 6.5    # storefront sidewalk y (matches build_commercial_cluster walk_strip_y)
+    # Storefront walk y matches build_commercial_cluster
+    # walk_strip_y = ks_y - 6.5 (offset from BUILDING CENTER, not
+    # from south wall). For depth=10 building, south wall is at
+    # cy - 5; sidewalk at cy - 6.5 sits 1.5m south of the wall.
+    sw_y = cy - 6.5
     sw_z_base = mesh_z(kw_cx, sw_y)
 
     # ── ICE FREEZER · west of the entry door · per Sam Miller's
@@ -6900,6 +6904,12 @@ def build_commercial_cluster():
         ("Sam",      ks_x + 2.8, ks_y + 4.3, 1.0, "short",
             (0.85, 0.22, 0.20, 1.0),
             (0.55, 0.50, 0.42, 1.0)),
+        # Diego — canon detail from Sam's zine: "the figure is
+        # Diego, leaning against the ice freezer outside." Ice
+        # freezer at kw_cx - 4.4 = ks_x - 4.4; freezer y = ks_y - 6.5 + 0.85.
+        ("Diego",    ks_x - 3.7, ks_y - 5.0, 1.0, "bowl",
+            (0.42, 0.22, 0.18, 1.0),    # dark band-tee
+            (0.20, 0.20, 0.24, 1.0)),
         ("LaundryAtt", ks_x + 9.0 - 3.0, ks_y + 0.5, 1.0, "bowl",
             (0.32, 0.55, 0.78, 1.0),
             (0.92, 0.92, 0.90, 1.0)),
