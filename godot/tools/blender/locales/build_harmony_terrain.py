@@ -4812,27 +4812,57 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     product_palettes[(j + k * 2 + 3) % len(product_palettes)])
 
     # ── COUNTER · FRONT-LEFT position per the design-guide rule
-    # captured in _3D_MODELING_PLAYBOOK.md. Counter long axis runs
-    # E-W along the south wall, west of the door. Customers enter
-    # at the east end of the bay and the counter is immediately
-    # on their LEFT, with the clerk standing behind it facing
-    # SOUTH (toward the entry door + storefront glass).
+    # in _3D_MODELING_PLAYBOOK.md. Counter long axis runs E-W
+    # along the south wall, west of the door. Visually-distinct
+    # build: dark wood body + lighter overhanging laminate top +
+    # brown front kickplate so it READS as a counter rather than
+    # blending into the cigarette wall behind.
     counter_w = 4.0      # long axis along south wall
-    counter_d = 0.95     # deeper so register + scanner + pinpad fit
+    counter_d = 1.00     # deeper so register + scanner + pinpad fit
     counter_h = 1.05
-    # Position counter at SW quadrant of bay (front-left from
-    # customer POV walking in the east door)
     counter_x = kw_cx - kw_bay_w / 2 + counter_w / 2 + 1.0
     counter_y = cy - depth / 2 + counter_d / 2 + 1.4
+    # Main counter body (dark wood)
     _make_box_local("KwikShop_KwikStop_Counter",
                     (counter_x, counter_y,
                      ground_z + counter_h / 2),
-                    (counter_w, counter_d, counter_h), col_counter)
-    # Counter top surface (slightly darker brown wood)
+                    (counter_w, counter_d, counter_h),
+                    (0.38, 0.26, 0.18, 1.0))    # darker than back wall
+    # Counter top — LIGHTER laminate with a 5cm OVERHANG so the
+    # counter has a clear visual top edge from the storefront view
     _make_box_local("KwikShop_KwikStop_CounterTop",
-                    (counter_x, counter_y, ground_z + counter_h + 0.01),
-                    (counter_w + 0.04, counter_d + 0.04, 0.02),
-                    (0.32, 0.22, 0.16, 1.0))
+                    (counter_x, counter_y - 0.06,
+                     ground_z + counter_h + 0.025),
+                    (counter_w + 0.10, counter_d + 0.10, 0.05),
+                    (0.85, 0.78, 0.62, 1.0))    # cream laminate
+    # Toe-kick at the bottom (darker recess) — adds visual depth
+    _make_box_local("KwikShop_KwikStop_CounterToeKick",
+                    (counter_x, counter_y - counter_d / 2 + 0.03,
+                     ground_z + 0.08),
+                    (counter_w, 0.06, 0.16),
+                    (0.18, 0.12, 0.08, 1.0))
+    # Display-case glass front (knee to counter-top) on the
+    # customer-facing south side — shows scratch tickets + candy
+    # bars + phone cards inside. Reads as a working retail bar.
+    _make_box_local("KwikShop_KwikStop_CounterCase",
+                    (counter_x, counter_y - counter_d / 2 - 0.005,
+                     ground_z + counter_h * 0.65),
+                    (counter_w - 0.10, 0.04, counter_h * 0.55),
+                    (0.62, 0.78, 0.85, 1.0))    # tinted glass
+    # Inside the case: 4 product rectangles visible through glass
+    for k_disp in range(4):
+        dx = counter_x - counter_w / 2 + 0.6 + k_disp * (counter_w - 1.2) / 3
+        disp_col = [
+            (0.95, 0.85, 0.30, 1.0),   # gold scratch tickets
+            (0.85, 0.20, 0.18, 1.0),   # red phone cards
+            (0.32, 0.55, 0.78, 1.0),   # blue prepaid
+            (0.95, 0.94, 0.86, 1.0),   # cream specialty
+        ][k_disp]
+        _make_box_local(
+            f"KwikShop_KwikStop_CounterDisplay_{k_disp}",
+            (dx, counter_y - counter_d / 2 + 0.10,
+             ground_z + counter_h * 0.50),
+            (0.45, 0.30, 0.30), disp_col)
     _make_box_local("KwikShop_KwikStop_Register",
                     (counter_x - 0.6, counter_y,
                      ground_z + counter_h + 0.15),
@@ -4861,9 +4891,16 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                      ground_z + counter_h * 0.55),
                     (0.50, 0.04, 0.30),
                     (0.85, 0.20, 0.18, 1.0))
-    # Cigarette + lottery rack BACKBOARD against back wall
+    # Cigarette + lottery rack BACKBOARD against back wall.
+    # Backboard moved 0.8m NORTH of counter (was 0.10m) so the
+    # clerk has a real 0.8m aisle to stand in between counter and
+    # backboard. The old 0.10m gap had Sam crushed against the
+    # cigarette wall and reading as "in front of the counter" from
+    # the storefront-glass view.
+    BACKBOARD_OFFSET = 0.80    # clerk aisle width
     _make_box_local("KwikShop_KwikStop_BackBoard",
-                    (counter_x, counter_y + counter_d / 2 + 0.10,
+                    (counter_x,
+                     counter_y + counter_d / 2 + BACKBOARD_OFFSET,
                      ground_z + 1.6),
                     (counter_w + 0.4, 0.10, 1.6),
                     col_shelf_dark)
@@ -4871,7 +4908,8 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     for shelf_z in (ground_z + 1.30, ground_z + 1.80, ground_z + 2.30):
         _make_box_local(
             f"KwikShop_KwikStop_BackShelf_{int(shelf_z*10)}",
-            (counter_x, counter_y + counter_d / 2 + 0.16,
+            (counter_x,
+             counter_y + counter_d / 2 + BACKBOARD_OFFSET + 0.06,
              shelf_z),
             (counter_w + 0.3, 0.12, 0.04),
             (0.55, 0.42, 0.30, 1.0))
@@ -4880,7 +4918,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
         cx_c = counter_x - counter_w / 2 + 0.15 + k * (counter_w - 0.3) / 7
         _make_box_local(f"KwikShop_KwikStop_Cigs_{k}",
                         (cx_c,
-                         counter_y + counter_d / 2 + 0.15,
+                         counter_y + counter_d / 2 + BACKBOARD_OFFSET + 0.05,
                          ground_z + 1.95),
                         (0.18, 0.08, 0.12),
                         (0.85, 0.85, 0.85, 1.0) if k % 3 != 0
@@ -7703,12 +7741,13 @@ def build_commercial_cluster():
         ("ArcadeAtt", ks_x - 11.0, ks_y + 4.3, 1.0, "bowl",
             (0.62, 0.22, 0.78, 1.0),
             (0.20, 0.20, 0.22, 1.0)),
-        # Sam — behind the new SW counter in the Kwik Stop. Kwik
-        # Stop bay center moved to ks_x + 6 (post 2026-06-15 bay
-        # restructure). Counter at (kw_cx - 5, cy - 3.1). Sam
-        # stands just NORTH of counter facing south (toward the
-        # storefront glass and any incoming customer).
-        ("Sam",      ks_x + 1.0, ks_y - 2.5, 1.0, "short",
+        # Sam — IN THE CLERK AISLE between counter and cigarette
+        # backboard. Counter at (kw_cx - 5, cy - 3.125), counter
+        # north face at cy - 2.65, backboard at cy - 1.85 (with
+        # the new 0.8m clerk aisle). Sam stands mid-aisle at
+        # cy - 2.25 facing south toward customer + storefront
+        # glass. ks_y relative = -2.25.
+        ("Sam",      ks_x + 1.0, ks_y - 2.25, 1.0, "short",
             (0.85, 0.22, 0.20, 1.0),
             (0.55, 0.50, 0.42, 1.0)),
         # Diego — canon detail from Sam's zine: "the figure is
