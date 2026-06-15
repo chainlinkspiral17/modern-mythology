@@ -10325,6 +10325,50 @@ def build_crosswalks_and_stops():
     _stop_sign("X_WE_StopE", -424, -24, 'X')
     _stop_sign("X_WE_StopW", -436, -16, 'X')
 
+    # ── CONNECTOR APPROACH STOPS · stop signs at every connector
+    # road approach to an arterial. The connector ALWAYS stops at
+    # the arterial (the arterial has right-of-way), so only the
+    # connector side gets the sign.
+    connector_stops = [
+        # (label, x, y, face_dir for the sign plate)
+        ("NRLink",    62, 125, 'X'),    # NRLink approaching Harmony Blvd
+        ("CCLink",     6, 352, 'X'),    # CCLink approaching Harmony Blvd
+        ("NXHQLink",  42, 175, 'X'),    # NXHQLink approaching Harmony Blvd
+        ("HospLink", 184,  -5, 'Y'),    # HospLink approaching Horizon Dr
+        ("OTLink",  -255, -10, 'Y'),    # OTLink approaching Horizon Dr
+        ("ECDSLnk", 254,  -6, 'Y'),     # ECDSLink approaching Horizon Dr
+        ("WCommL", -455, -16, 'Y'),     # WCommLink approaching Horizon Dr
+        ("TSLink", 102, -388, 'X'),     # TSLink approaching Ch1Frontage
+        ("DILink",   8, -388, 'X'),     # DILink approaching Ch1Frontage
+        ("Ch1FrW", -116, -388, 'X'),    # Ch1Frontage west exit (T to HB)
+    ]
+    for label, sx, sy, fdir in connector_stops:
+        _stop_sign(f"X_Conn_{label}", sx, sy, fdir)
+
+    # White painted stop bars (line just before each crosswalk).
+    # Standard MUTCD is 12" thick, 8' long; we use 0.30m thick by
+    # the road's half-width-doubled-back. Reuse zebra geometry but
+    # without the stripes — a single solid bar.
+    def _stop_bar(name, cx, cy, span_axis, length):
+        if span_axis == 'x':
+            _make_box_local(name,
+                            (cx, cy, mesh_z(cx, cy) + 0.06),
+                            (0.30, length, 0.01), COL_WHITE)
+        else:
+            _make_box_local(name,
+                            (cx, cy, mesh_z(cx, cy) + 0.06),
+                            (length, 0.30, 0.01), COL_WHITE)
+    # Stop bars at the big junction approaches (perpendicular to
+    # approach direction, just inside the crosswalk)
+    _stop_bar("X_BigJct_BarN",  60, -32.5, 'y', 8.0)
+    _stop_bar("X_BigJct_BarS",  60,  -7.5, 'y', 8.0)
+    _stop_bar("X_BigJct_BarE",  72.5, -20, 'x', 8.0)
+    _stop_bar("X_BigJct_BarW",  47.5, -20, 'x', 8.0)
+    _stop_bar("X_ESC_BarE",     30,  192.5, 'y', 8.0)
+    _stop_bar("X_ESC_BarW",     30,  197.5, 'y', 8.0)
+    _stop_bar("X_HS_BarN",     322.5, -5,  'x', 8.0)
+    _stop_bar("X_HS_BarS",     317.5, -5,  'x', 8.0)
+
 
 def build_arterial_sidewalks():
     """Concrete sidewalks on both sides of Harmony Blvd and
@@ -12756,7 +12800,7 @@ def build_harmony_park():
         _path_strip(f"HP_Path_NorthLoop_{i}", x0, y0, x1, y1, 2.0)
 
     # South spur — to the playground from the pool loop
-    south_spur = [(30, 20), (30, 0), (30, -20), (30, pg_cy + 6.0)]
+    south_spur = [(30, 20), (30, 10), (30, pg_cy + 6.0)]
     for i in range(len(south_spur) - 1):
         x0, y0 = south_spur[i]; x1, y1 = south_spur[i + 1]
         _path_strip(f"HP_Path_PgSpur_{i}", x0, y0, x1, y1, 1.8)
