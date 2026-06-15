@@ -622,8 +622,11 @@ LOT_PADS = [
     # Library + bike racks
     ("LibraryPad",    40,  80,  62, 102,  +1.0, 16.0),
 
-    # Drive-in theatre — concession + parking arcs
-    ("DriveInPad",    70, 230, -340, -235, -5.0, 25.0),
+    # Drive-in theatre — concession + parking arcs + screen
+    # (screen sits at the south edge, y=-350, after the cy=-270
+    # update; pad extended south to keep the screen on the flat
+    # platform too).
+    ("DriveInPad",    70, 230, -355, -235, -5.0, 25.0),
 
     # Halsey Studios — building 36m + 50m lot. Widened both axes.
     ("HalseyPad",    448, 512, -125, -75, +5.0, 22.0),
