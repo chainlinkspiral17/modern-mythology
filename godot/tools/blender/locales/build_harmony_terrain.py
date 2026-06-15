@@ -7748,54 +7748,63 @@ def build_commercial_cluster():
     # palette varies per character so the cast is distinguishable
     # at a glance.
     chapter_one_cast = [
-        # (name, x, y, scale, hair, jacket, pants)
-        # Skip — divorced 39, vapes, NexCorp polo. Cap = baseball
-        # cap as he's described in canon as "always wearing the
-        # NexCorp ballcap from corporate training".
+        # (name, x, y, scale, hair, jacket, pants, pose)
+        # Skip — divorced 39, vapes, NexCorp polo + ballcap. Hands
+        # on the gas-station counter looking at his phone.
         ("Skip",     nc_x + 4.0, nc_y + 4.3, 1.0, "cap",
-            (0.32, 0.55, 0.78, 1.0),   # blue NexCorp uniform
-            (0.42, 0.42, 0.45, 1.0)),
-        # ArcadeAtt at the arcade attendant booth (arc_cx, back of
-        # arcade bay). Arcade now at cx + ARCADE_OX = -15 - 11 = -26.
+            (0.32, 0.55, 0.78, 1.0),
+            (0.42, 0.42, 0.45, 1.0),
+            "hands_on_counter"),
+        # Arcade attendant — bowl cut, arms crossed watching kids.
         ("ArcadeAtt", ks_x - 11.0, ks_y + 4.3, 1.0, "bowl",
             (0.62, 0.22, 0.78, 1.0),
-            (0.20, 0.20, 0.22, 1.0)),
-        # Sam — IN THE CLERK AISLE (counter front-left of bay).
-        # 18yo, brown shoulder-length hair → ponytail.
+            (0.20, 0.20, 0.22, 1.0),
+            "arms_crossed"),
+        # Sam — clerk behind the counter, hands resting on top
+        # while she watches the parking lot through the glass.
         ("Sam",      ks_x + 1.0, ks_y - 2.25, 1.0, "ponytail",
-            (0.42, 0.30, 0.22, 1.0),   # brown ponytail hair
-            (0.55, 0.50, 0.42, 1.0)),  # kwik stop polo (tan)
-        # Diego — canon "leaning against the ice freezer outside".
-        # 19yo drummer, dark hair, band tee.
+            (0.42, 0.30, 0.22, 1.0),
+            (0.55, 0.50, 0.42, 1.0),
+            "hands_on_counter"),
+        # Diego — leaning against the ice freezer outside (right
+        # arm extended out as the leaning arm).
         ("Diego",    ks_x + 1.8, ks_y - 5.0, 1.0, "beanie",
-            (0.18, 0.14, 0.12, 1.0),   # dark beanie
-            (0.20, 0.20, 0.24, 1.0)),  # dark jeans
-        # Roy — back cooler regular, mid-50s. Cap.
+            (0.18, 0.14, 0.12, 1.0),
+            (0.20, 0.20, 0.24, 1.0),
+            "one_arm_lean"),
+        # Roy — at the back cooler about to grab his Friday
+        # tallboy. Hands in pockets while he decides.
         ("Roy",      ks_x + 0.5, ks_y + 3.0, 1.05, "cap",
-            (0.42, 0.42, 0.45, 1.0),   # grey baseball cap
-            (0.78, 0.74, 0.66, 1.0)),  # khaki pants
-        # Laundry attendant at the laundromat folding table.
-        # Laundromat now at cx + LAUNDROMAT_OX = ks_x - 5.
+            (0.42, 0.42, 0.45, 1.0),
+            (0.78, 0.74, 0.66, 1.0),
+            "hands_pockets"),
+        # Laundry attendant at folding table — hands on counter.
         ("LaundryAtt", ks_x - 5.0, ks_y + 0.5, 1.0, "bowl",
             (0.32, 0.55, 0.78, 1.0),
-            (0.92, 0.92, 0.90, 1.0)),
+            (0.92, 0.92, 0.90, 1.0),
+            "hands_on_counter"),
+        # Diner cook at the line — both hands on counter.
         ("DinerCook", dn_x,        dn_y + 3.4, 1.0, "short",
             (0.98, 0.98, 0.96, 1.0),
-            (0.18, 0.18, 0.22, 1.0)),
+            (0.18, 0.18, 0.22, 1.0),
+            "hands_on_counter"),
+        # Diner waiter — arms_out (carrying menus/orders).
         ("DinerWaiter", dn_x + 4.0, dn_y + 2.5, 1.0, "short",
             (0.85, 0.22, 0.20, 1.0),
-            (0.92, 0.90, 0.84, 1.0)),
+            (0.92, 0.90, 0.84, 1.0),
+            "arms_out"),
+        # Comics shopkeeper Rick — sitting / leaning. arms_crossed.
         ("ComicsClerk", cc_x + 3.1, cc_y - 1.3, 1.0, "bowl",
             (0.95, 0.85, 0.30, 1.0),
-            (0.32, 0.18, 0.32, 1.0)),
-        # Maya — 16, curly short hair dyed dark purple at tips.
-        # The 'bowl' style with purple accent reads as her canon
-        # description (short + asymmetric + the purple tips).
+            (0.32, 0.18, 0.32, 1.0),
+            "arms_crossed"),
+        # Maya — at the photocopier. hands_on_counter.
         ("Maya",     cc_x + 3.0, cc_y + 2.5, 0.92, "bowl",
-            (0.40, 0.18, 0.42, 1.0),    # purple-tipped dark hair
-            (0.20, 0.20, 0.24, 1.0)),   # dark jeans
+            (0.40, 0.18, 0.42, 1.0),
+            (0.20, 0.20, 0.24, 1.0),
+            "hands_on_counter"),
     ]
-    for tag, fx, fy, sc, hair, jacket, pants in chapter_one_cast:
+    for tag, fx, fy, sc, hair, jacket, pants, pose in chapter_one_cast:
         fz = mesh_z(fx, fy)
         human_figure(
             name=f"NPC_{tag}",
@@ -7812,6 +7821,7 @@ def build_commercial_cluster():
             with_ears=True,
             with_mouth=True,
             mouth_color=(0.55, 0.22, 0.28, 1.0),
+            pose=pose,
         )
 
     # ── CUSTOMERS · a few patrons scattered around the block so

@@ -476,6 +476,32 @@ def _build_arms(name, base_x, base_y, shoulder_z, s,
             hand_x = shoulder_x + sign * (arm_h * 0.35)
             hand_y = shoulder_y
             hand_z = shoulder_pz - arm_h * 0.92
+        elif pose == 'hands_on_counter':
+            # Both arms forward and down, hands resting on a flat
+            # surface (counter top) in front of the figure. Used
+            # for clerks, bartenders, librarians at their station.
+            hand_x = shoulder_x + sign * arm_r_top * 0.5
+            hand_y = shoulder_y + fwd_y * (arm_h * 0.45)
+            hand_z = shoulder_pz - arm_h * 0.55
+        elif pose == 'arms_crossed':
+            # Both arms folded across chest — for a relaxed/
+            # observing pose. Each hand near the opposite shoulder.
+            hand_x = shoulder_x - sign * (arm_h * 0.15)
+            hand_y = shoulder_y + fwd_y * (arm_h * 0.18)
+            hand_z = shoulder_pz - arm_h * 0.32
+        elif pose == 'hands_pockets':
+            # Hands in pants pockets — casual/idle pose. Hands
+            # tucked just below the belt level, slightly forward.
+            hand_x = shoulder_x + sign * arm_r_top * 0.8
+            hand_y = shoulder_y + fwd_y * arm_r_top * 1.5
+            hand_z = shoulder_pz - arm_h * 0.78
+        elif pose == 'one_arm_lean':
+            # Right arm extended out for leaning on something
+            # (counter, ice freezer, doorframe). Left arm hangs.
+            if side == 'R':
+                hand_x = shoulder_x + sign * (arm_h * 0.30)
+                hand_y = shoulder_y + fwd_y * (arm_h * 0.20)
+                hand_z = shoulder_pz - arm_h * 0.40
 
         # ELBOW · break the arm into UPPER ARM + FOREARM with a
         # bump at the joint. Elbow at 55% along the arm path,
