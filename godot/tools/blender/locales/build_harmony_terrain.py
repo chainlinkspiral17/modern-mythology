@@ -5343,6 +5343,49 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (counter_w + 0.2, 0.50, 0.02),
                     (0.30, 0.22, 0.18, 1.0))
 
+    # ── CONVEX SECURITY MIRROR above the door · canon from
+    # Sam Miller's POV ("Sam watches him in the convex security
+    # mirror above the door"). Wall-mounted half-sphere giving the
+    # clerk eyes on the back of the store.
+    mirror_x = kw_cx
+    mirror_y = cy - depth / 2 + 0.10    # just inside the south wall
+    _make_sphere_low_local("KwikShop_KwikStop_SecurityMirror",
+                            (mirror_x, mirror_y, ground_z + 2.95),
+                            0.22,
+                            (0.78, 0.88, 0.92, 1.0),
+                            rings=3, segments=8)
+    # Bracket mount
+    _make_box_local("KwikShop_KwikStop_SecurityMirror_Bracket",
+                    (mirror_x, mirror_y - 0.05, ground_z + 3.10),
+                    (0.10, 0.10, 0.06),
+                    (0.32, 0.32, 0.34, 1.0))
+
+    # ── HOT POCKET on the counter · the foil-wrapped Hot Pocket
+    # Sam eats while watching the back-cooler customer (canon from
+    # Maya zine #11 panel 3). Small silver-foil rectangle.
+    _make_box_local("KwikShop_KwikStop_HotPocket",
+                    (counter_x - counter_w / 2 + 0.30,
+                     counter_y - counter_d / 2 + 0.22,
+                     ground_z + counter_h + 0.04),
+                    (0.14, 0.10, 0.04),
+                    (0.78, 0.78, 0.82, 1.0))   # foil
+
+    # ── FLUORESCENT CEILING FIXTURES · 4 long horizontal panels
+    # below the ceiling at uniform spacing — typical convenience-
+    # store overhead lighting visible through the south plate-glass.
+    for k in range(4):
+        fix_x = kw_cx - bay_w / 2 + 1.0 + k * (bay_w - 2.0) / 3
+        # Fixture housing
+        _make_box_local(f"KwikShop_KwikStop_FloLight_{k}_Housing",
+                        (fix_x, cy, ground_z + height - 0.15),
+                        (0.30, 1.20, 0.10),
+                        (0.92, 0.92, 0.90, 1.0))
+        # Bright glow tube (offset slightly below the housing)
+        _make_box_local(f"KwikStop_KwikStop_FloLight_{k}_Tube",
+                        (fix_x, cy, ground_z + height - 0.22),
+                        (0.24, 1.10, 0.04),
+                        (0.95, 0.94, 0.78, 1.0))
+
     # ── SAM'S PHONE face-up on the counter · canon detail from
     # Sam Miller's _COMMUNITY_PLANNED_LORE.md ("her phone is on the
     # counter face-up"). Small black rectangle with a bright cyan
