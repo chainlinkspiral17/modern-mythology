@@ -4315,6 +4315,40 @@ def build_commercial_cluster():
                         0.32, 0.06,
                         (0.20, 0.20, 0.22, 1.0), segments=8)
 
+    # ── OUTDOOR PATIO TABLE in front of the diner — a small round
+    # table with 2 chairs on the sidewalk, just east of the
+    # diner's main entry door. Classic chapter-one diner-spillover.
+    pat_x = dn_x + 5.5
+    pat_y = walk_strip_y + 0.2
+    pat_z = mesh_z(pat_x, pat_y)
+    COL_PAT_TOP = (0.92, 0.90, 0.88, 1.0)
+    COL_PAT_LEG = (0.62, 0.62, 0.64, 1.0)
+    # Round-ish table top (octagonal cylinder)
+    _make_cyl_local("Diner_PatioTable_Top",
+                    (pat_x, pat_y, pat_z + 0.72),
+                    0.45, 0.05, COL_PAT_TOP, segments=8)
+    _make_cyl_local("Diner_PatioTable_Stem",
+                    (pat_x, pat_y, pat_z + 0.35),
+                    0.06, 0.70, COL_PAT_LEG, segments=6)
+    # 2 chairs flanking the table
+    for sgn, dy in ((-1, -0.65), (1, 0.65)):
+        chair_y = pat_y + dy
+        # Seat
+        _make_box_local(f"Diner_PatioChair_{sgn:+d}_Seat",
+                        (pat_x, chair_y, pat_z + 0.46),
+                        (0.40, 0.40, 0.06), COL_PAT_TOP)
+        # Back
+        _make_box_local(f"Diner_PatioChair_{sgn:+d}_Back",
+                        (pat_x, chair_y + sgn * 0.18, pat_z + 0.75),
+                        (0.40, 0.04, 0.50), COL_PAT_TOP)
+        # 4 legs
+        for lx, ly in ((-0.16, -0.16), (-0.16, 0.16),
+                        (0.16, -0.16), (0.16, 0.16)):
+            _make_box_local(
+                f"Diner_PatioChair_{sgn:+d}_Leg_{int(lx*10)}_{int(ly*10)}",
+                (pat_x + lx, chair_y + ly, pat_z + 0.23),
+                (0.04, 0.04, 0.46), COL_PAT_LEG)
+
     # ── PHONE BOOTH on the sidewalk between Kwik Stop & NexCorp.
     # Classic glass-paneled booth with a red top cap. The hooked
     # handset is suggested by a thin dark box on the inside wall.
