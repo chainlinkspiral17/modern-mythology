@@ -259,7 +259,7 @@ ROAD_CORRIDORS = [
         (   0, -340,  -9.0),   # SouthComm north edge
         (   8, -380,  -9.0),   # chapter-1 frontage
         (  12, -392,  -9.0),
-    ], 7.0, 36.0),
+    ], 8.5, 36.0),
 
     # ── HORIZON DRIVE · E-W arterial. From WestComm (-2) east to
     # EastComm (+5), threading through Harmony Park (0) and crossing
@@ -288,7 +288,7 @@ ROAD_CORRIDORS = [
         ( 440,    0,  +5.0),   # EastComm
         ( 510,    0,  +5.0),
         ( 560,    0,  +5.0),
-    ], 7.0, 36.0),
+    ], 8.5, 36.0),
 
     # ── CONNECTOR ROADS · short 5 m collectors. full-grade half-width
     # smaller because the road is narrower.
