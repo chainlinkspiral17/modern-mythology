@@ -5789,6 +5789,102 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     0.16, 0.02,
                     (0.85, 0.78, 0.62, 1.0), segments=6)
 
+    # ── WINDOW STICKERS · the dense cluster of cling decals every
+    # real US convenience store accumulates: WE CARD age check,
+    # credit-card logos, hours decal, Coke Coca-Cola corporate
+    # cling. All inside the south-facing storefront glass.
+    glass_y = cy - depth / 2 + 0.06
+    # "WE CARD" red square at adult eye height, west of the door
+    _make_box_local("KwikStop_WeCardDecal",
+                    (kw_cx - 3.0, glass_y, ground_z + 1.85),
+                    (0.30, 0.02, 0.30),
+                    (0.85, 0.20, 0.18, 1.0))
+    _make_box_local("KwikStop_WeCardDecal_Text",
+                    (kw_cx - 3.0, glass_y - 0.005, ground_z + 1.85),
+                    (0.24, 0.01, 0.18),
+                    (0.95, 0.94, 0.90, 1.0))
+    # Credit-card logos row (4 small rectangles)
+    cc_colors = [
+        (0.18, 0.32, 0.55, 1.0),  # Visa blue
+        (0.85, 0.20, 0.18, 1.0),  # MasterCard red
+        (0.32, 0.55, 0.78, 1.0),  # AmEx blue
+        (0.95, 0.85, 0.30, 1.0),  # Discover orange
+    ]
+    for k, col_cc in enumerate(cc_colors):
+        _make_box_local(f"KwikStop_CCLogo_{k}",
+                        (kw_cx + 1.6 + k * 0.18, glass_y,
+                         ground_z + 1.78),
+                        (0.14, 0.02, 0.10), col_cc)
+    # Hours decal on the door (24/7 small white sticker)
+    _make_box_local("KwikStop_HoursDecal",
+                    (kw_cx + 0.2, glass_y, ground_z + 2.10),
+                    (0.16, 0.02, 0.16),
+                    (0.95, 0.95, 0.92, 1.0))
+    _make_box_local("KwikStop_HoursDecal_Number",
+                    (kw_cx + 0.2, glass_y - 0.005, ground_z + 2.10),
+                    (0.12, 0.01, 0.10),
+                    (0.85, 0.20, 0.18, 1.0))
+    # COCA-COLA corporate door cling (red oval-shaped strip)
+    _make_box_local("KwikStop_CokeCling",
+                    (kw_cx - 0.6, glass_y, ground_z + 1.40),
+                    (0.40, 0.02, 0.18),
+                    (0.85, 0.20, 0.18, 1.0))
+
+    # ── HELP WANTED sign in the west bay window · paper-yellow
+    # rectangle with hand-lettered red text suggested
+    _make_box_local("KwikStop_HelpWanted",
+                    (kw_cx + 2.2, glass_y, ground_z + 1.45),
+                    (0.30, 0.02, 0.40),
+                    (0.95, 0.85, 0.50, 1.0))
+    # Black border to suggest hand-frame
+    _make_box_local("KwikStop_HelpWanted_Border",
+                    (kw_cx + 2.2, glass_y - 0.005, ground_z + 1.45),
+                    (0.32, 0.01, 0.42),
+                    (0.32, 0.22, 0.18, 1.0))
+
+    # ── DEDICATED KWIK STOP LIGHT POLE · 7m sodium-vapor lot
+    # light at the SW corner of the parking lot (illuminates the
+    # forecourt at night). Skinny black pole + double-shoebox head.
+    lp_x = kw_cx - bay_w / 2 - 4.0
+    lp_y = cy - depth / 2 - 22.0     # south end of lot
+    lp_z = mesh_z(lp_x, lp_y)
+    _make_cyl_local("KwikStop_LotLamp_Pole",
+                    (lp_x, lp_y, lp_z + 3.5),
+                    0.08, 7.0,
+                    (0.18, 0.18, 0.20, 1.0), segments=6)
+    # Crossarm
+    _make_box_local("KwikStop_LotLamp_Arm",
+                    (lp_x + 0.6, lp_y, lp_z + 6.9),
+                    (1.20, 0.06, 0.06),
+                    (0.18, 0.18, 0.20, 1.0))
+    # Twin shoebox heads (one on each side)
+    for sgn in (-1, 1):
+        _make_box_local(f"KwikStop_LotLamp_Head_{sgn:+d}",
+                        (lp_x + sgn * 0.50, lp_y, lp_z + 6.85),
+                        (0.45, 0.30, 0.18),
+                        (0.42, 0.42, 0.45, 1.0))
+        # Glow plate underneath
+        _make_box_local(f"KwikStop_LotLamp_Glow_{sgn:+d}",
+                        (lp_x + sgn * 0.50, lp_y, lp_z + 6.72),
+                        (0.40, 0.26, 0.02),
+                        (0.95, 0.92, 0.62, 1.0))
+
+    # ── WET FLOOR SIGN inside the store (yellow A-frame caution
+    # sign), placed mid-aisle near the entry
+    wf_x = kw_cx - 0.5
+    wf_y = cy - depth / 2 + 1.5     # 1.5m inside the door
+    # Two yellow panels in A-frame configuration
+    for sgn in (-1, 1):
+        _make_box_local(f"KwikStop_WetFloor_Panel_{sgn:+d}",
+                        (wf_x, wf_y + sgn * 0.10, ground_z + 0.40),
+                        (0.30, 0.04, 0.55),
+                        (0.95, 0.85, 0.30, 1.0))
+    # Black hinge at top
+    _make_box_local("KwikStop_WetFloor_Hinge",
+                    (wf_x, wf_y, ground_z + 0.70),
+                    (0.06, 0.06, 0.04),
+                    (0.18, 0.18, 0.20, 1.0))
+
     # ── BIKE RACK · 2-loop chrome rack at the west edge of the
     # sidewalk with a single bike chained to it
     br_x = kw_cx - 4.8
