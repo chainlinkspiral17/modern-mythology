@@ -4477,20 +4477,38 @@ def _build_parked_car(name, cx, cy, ground_z, body_color,
 
 
 def _build_kwik_shop_strip(cx, cy, ground_z):
-    """KWIK SHOP — 3-bay strip building combining the convenience
-    store with an ARCADE and a LAUNDROMAT. Per user spec: "the qwik
-    shop has an arcade and laundromat area, in addition to the
-    convenience store."
+    """KWIK SHOP — 3-bay strip building. Per user direction
+    (2026-06-15): the Kwik Stop is the HERO bay; the arcade +
+    laundromat are smaller adjacent bays that connect to each
+    other. Bay widths reflect that — Kwik Stop 16m, arcade 6m,
+    laundromat 6m. Total 28m across.
 
-    Layout: ARCADE (left, x-9) · KWIK STOP (centre) · LAUNDROMAT
-    (right, x+9). 28 × 10 m total, single continuous roof, each
-    bay has its own plate-glass front + entry door + interior.
+    Layout west → east:
+        [ ARCADE 6m | LAUNDROMAT 6m ][ KWIK STOP 16m ]
+
+    The arcade-laundromat side is the "annex" zone that the
+    Kwik Stop's main entry sits across from.
     """
     name_prefix = "KwikShop"
-    bay_w = 9.0
-    total_w = 28.0
+    # Per-bay widths (sum to total_w)
+    BAY_W_ARCADE     = 6.0
+    BAY_W_LAUNDROMAT = 6.0
+    BAY_W_KWIKSTOP   = 16.0
+    total_w = BAY_W_ARCADE + BAY_W_LAUNDROMAT + BAY_W_KWIKSTOP
     depth = 10.0
     height = 3.6
+
+    # Bay center xs (relative to strip center cx):
+    #   strip west edge at cx - total_w/2 = cx - 14
+    #   arcade center:     -14 + 3   = -11  -> cx - 11
+    #   laundromat center: -11 + 3 + 3 = -5 -> cx - 5
+    #   kwikstop center:   -2  + 8   = +6   -> cx + 6
+    ARCADE_OX     = -total_w / 2 + BAY_W_ARCADE / 2                          # -11
+    LAUNDROMAT_OX =  ARCADE_OX + BAY_W_ARCADE / 2 + BAY_W_LAUNDROMAT / 2     # -5
+    KWIKSTOP_OX   =  LAUNDROMAT_OX + BAY_W_LAUNDROMAT / 2 + BAY_W_KWIKSTOP / 2  # +6
+    # Inter-bay partition x positions
+    PART_ARC_LAUN = ARCADE_OX + BAY_W_ARCADE / 2                              # -8
+    PART_LAUN_KWIK = LAUNDROMAT_OX + BAY_W_LAUNDROMAT / 2                     # -2
 
     # Shared shell colours (red/cream Kwik palette throughout)
     col_wall  = (0.82, 0.78, 0.72, 1.0)
@@ -4522,12 +4540,22 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (cx - total_w / 2 + wall_t / 2, cy,
                      ground_z + height / 2),
                     (wall_t, depth, height), col_wall)
-    # Two interior partition walls between the three bays
-    for sgn, tag_int in ((-1, "Arc_Kwik"), (1, "Kwik_Laun")):
-        _make_box_local(f"{name_prefix}_PartWall_{tag_int}",
-                        (cx + sgn * bay_w / 2, cy,
-                         ground_z + height / 2),
-                        (wall_t, depth, height), col_wall)
+    # Two interior partition walls between the three bays. The
+    # arcade↔laundromat partition runs only 60% of the depth so
+    # the two bays read as CONNECTED (per user direction
+    # 2026-06-15) — customers can walk between the arcade floor
+    # and the laundry floor without leaving the building.
+    # The laundromat↔kwikstop partition is FULL height (the kwik
+    # stop is a separate retail space).
+    _make_box_local(f"{name_prefix}_PartWall_Arc_Laun",
+                    (cx + PART_ARC_LAUN,
+                     cy + depth * 0.20,            # back 60%
+                     ground_z + height / 2),
+                    (wall_t, depth * 0.60, height), col_wall)
+    _make_box_local(f"{name_prefix}_PartWall_Laun_Kwik",
+                    (cx + PART_LAUN_KWIK, cy,
+                     ground_z + height / 2),
+                    (wall_t, depth, height), col_wall)
     # Single continuous roof + parapets
     _make_box_local(f"{name_prefix}_Roof",
                     (cx, cy, ground_z + height + 0.10),
@@ -4545,8 +4573,8 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                         (cx + sgn * ((total_w + 0.4) / 2 - parapet_t / 2),
                          cy, pz_centre),
                         (parapet_t, depth + 0.4, parapet_h), col_wall)
-    # HVAC units — one per bay
-    for k_off, ox in enumerate((-9.0, 0.0, 9.0)):
+    # HVAC units — one per bay (now at proper per-bay positions)
+    for k_off, ox in enumerate((ARCADE_OX, LAUNDROMAT_OX, KWIKSTOP_OX)):
         _make_box_local(f"{name_prefix}_HVAC_{k_off}",
                         (cx + ox, cy + depth * 0.20,
                          pz_top + 0.40),
@@ -4559,49 +4587,64 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                         (0.28, 0.28, 0.30, 1.0))
 
     # ── PER-BAY STOREFRONT + INTERIOR ──────────────────────────
+    # Each tuple now carries its OWN bay_w so per-bay storefront
+    # geometry (glass, mullions, door, sign) scales with the
+    # actual bay size rather than the old constant.
     bay_specs = [
-        ("Arcade",      -9.0, col_arcade_sign,
+        ("Arcade",     ARCADE_OX,     BAY_W_ARCADE,     col_arcade_sign,
             "ARCADE",       (0.95, 0.85, 0.30, 1.0)),
-        ("KwikStop",     0.0, col_kwikstop_sign,
-            "KWIK STOP",    (0.98, 0.95, 0.86, 1.0)),
-        ("Laundromat",   9.0, col_laundromat_sign,
+        ("Laundromat", LAUNDROMAT_OX, BAY_W_LAUNDROMAT, col_laundromat_sign,
             "LAUNDROMAT",   (0.98, 0.98, 0.96, 1.0)),
+        ("KwikStop",   KWIKSTOP_OX,   BAY_W_KWIKSTOP,   col_kwikstop_sign,
+            "KWIK STOP",    (0.98, 0.95, 0.86, 1.0)),
     ]
     glass_y = cy - depth / 2 + 0.05
-    for bay_tag, bay_ox, col_sign, sign_text, _txt_col in bay_specs:
+    for bay_tag, bay_ox, bay_w_local, col_sign, sign_text, _txt_col in bay_specs:
         bcx = cx + bay_ox
-        # Plate-glass storefront (mullions + rails) per bay
-        n_mullions = 4
+        # Plate-glass storefront (mullions + rails) per bay.
+        # More mullions for wider bays (1 per ~2.5m) so glass
+        # reads dense.
+        n_mullions = max(3, int(bay_w_local / 2.5))
         for k in range(n_mullions):
-            mx = bcx - bay_w / 2 + 0.3 + \
-                 k * (bay_w - 0.6) / (n_mullions - 1)
+            mx = bcx - bay_w_local / 2 + 0.3 + \
+                 k * (bay_w_local - 0.6) / (n_mullions - 1)
             _make_box_local(f"{name_prefix}_{bay_tag}_GlassMul_{k}",
                             (mx, glass_y, ground_z + height / 2),
                             (0.10, 0.06, height), col_glass_frame)
         _make_box_local(f"{name_prefix}_{bay_tag}_GlassTopRail",
                         (bcx, glass_y, ground_z + height - 0.08),
-                        (bay_w - 0.2, 0.08, 0.16), col_glass_frame)
+                        (bay_w_local - 0.2, 0.08, 0.16), col_glass_frame)
         _make_box_local(f"{name_prefix}_{bay_tag}_GlassBotRail",
                         (bcx, glass_y, ground_z + 0.20),
-                        (bay_w - 0.2, 0.08, 0.40), col_glass_frame)
-        # Entry door (centred in each bay)
-        door_w = 1.2; door_h = 2.4
+                        (bay_w_local - 0.2, 0.08, 0.40), col_glass_frame)
+        # Entry door — Kwik Stop puts it OFF-CENTER (east) so the
+        # SW counter has unobstructed glass frontage and the door
+        # leads customers past the counter to the aisles.
+        # Arcade + laundromat keep centered doors (small bays).
+        if bay_tag == "KwikStop":
+            door_off_x = +bay_w_local / 2 - 2.0
+            door_w = 1.4
+        else:
+            door_off_x = 0.0
+            door_w = 1.2
+        door_x = bcx + door_off_x
+        door_h = 2.4
         for sgn in (-1, 1):
             _make_box_local(
                 f"{name_prefix}_{bay_tag}_DoorJamb_{sgn:+d}",
-                (bcx + sgn * door_w / 2, glass_y,
+                (door_x + sgn * door_w / 2, glass_y,
                  ground_z + door_h / 2),
                 (0.12, 0.10, door_h), col_trim)
         _make_box_local(f"{name_prefix}_{bay_tag}_DoorHeader",
-                        (bcx, glass_y,
+                        (door_x, glass_y,
                          ground_z + door_h + 0.08),
                         (door_w + 0.12, 0.10, 0.16), col_trim)
         _make_cyl_local(f"{name_prefix}_{bay_tag}_DoorHandle",
-                        (bcx + 0.20, glass_y - 0.06,
+                        (door_x + 0.20, glass_y - 0.06,
                          ground_z + 1.10),
                         0.025, 0.40, col_glass_frame, segments=4)
         _make_box_local(f"{name_prefix}_{bay_tag}_DoorMat",
-                        (bcx, glass_y - 0.40,
+                        (door_x, glass_y - 0.40,
                          ground_z + 0.07),
                         (door_w + 0.20, 0.80, 0.02),
                         (0.32, 0.22, 0.18, 1.0))
@@ -4611,20 +4654,21 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
         _make_box_local(f"{name_prefix}_{bay_tag}_SignPanel",
                         (bcx, sign_y,
                          ground_z + height + 0.20 + sign_h_local / 2),
-                        (bay_w * 0.85, 0.12, sign_h_local), col_sign)
+                        (bay_w_local * 0.85, 0.12, sign_h_local), col_sign)
         _make_box_local(f"{name_prefix}_{bay_tag}_SignTrim",
                         (bcx, sign_y,
                          ground_z + height + 0.20 + sign_h_local + 0.05),
-                        (bay_w * 0.85 + 0.10, 0.14, 0.10), col_trim)
+                        (bay_w_local * 0.85 + 0.10, 0.14, 0.10), col_trim)
 
     # ── BAY-SPECIFIC INTERIORS ─────────────────────────────────
-    # ARCADE bay — 4 standing arcade cabinets in a row near back
-    arc_cx = cx - 9.0
+    # ARCADE bay — narrower bay (6m wide) so we drop to 3 arcade
+    # cabinets in a row near the back wall.
+    arc_cx = cx + ARCADE_OX
     COL_CAB_BODY = (0.18, 0.18, 0.22, 1.0)
     COL_CAB_SCREEN = (0.32, 0.55, 0.78, 1.0)
     COL_CAB_MARQUEE = (0.95, 0.42, 0.30, 1.0)
-    for k in range(4):
-        kx = arc_cx - 3.0 + k * 2.0
+    for k in range(3):
+        kx = arc_cx - 2.0 + k * 2.0
         ky = cy + depth * 0.20
         # Cabinet body
         _make_box_local(f"KwikShop_Arc_Cab_{k}",
@@ -4644,7 +4688,8 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                         (0.55, 0.18, 0.06), COL_CAB_BODY)
     # Change machine on west wall
     _make_box_local("KwikShop_Arc_ChangeMachine",
-                    (arc_cx - 4.1, cy + 0.5, ground_z + 0.80),
+                    (arc_cx - BAY_W_ARCADE / 2 + 0.4,
+                     cy + 0.5, ground_z + 0.80),
                     (0.30, 0.40, 1.20),
                     (0.42, 0.42, 0.45, 1.0))
     # ── Arcade attendant booth at the back wall — a small
@@ -4657,11 +4702,13 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (1.8, 0.7, 1.10), (0.42, 0.30, 0.20, 1.0))
     # Token / prize display behind the booth (thin tall shelf
     # mounted to the back wall). Depth shrunk to 0.15 so the
-    # attendant has clearance between counter and shelf.
+    # attendant has clearance between counter and shelf. Width
+    # fits within the narrower 6m arcade bay.
     _make_box_local("KwikShop_Arc_AttBooth_PrizeShelf",
                     (booth_x, cy + depth / 2 - 0.15,
                      ground_z + 1.30),
-                    (2.4, 0.15, 1.40), (0.42, 0.42, 0.45, 1.0))
+                    (BAY_W_ARCADE - 1.0, 0.15, 1.40),
+                    (0.42, 0.42, 0.45, 1.0))
     # A row of small token boxes on top of the counter
     for k in range(3):
         tx = booth_x - 0.6 + k * 0.6
@@ -4688,7 +4735,17 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     #   · WEST FIXTURES cy-2..cy+2 against west partition:
     #     coffee station + roller grill (hot dogs) + slushie
     #     machine
-    kw_cx = cx
+    # Kwik Stop bay center (was cx; now offset to the EAST end of
+    # the strip since arcade+laundromat occupy the WEST half).
+    kw_cx = cx + KWIKSTOP_OX
+    kw_bay_w = BAY_W_KWIKSTOP
+    # All the legacy Kwik Stop interior code references `bay_w` as
+    # a bare local — alias it to the Kwik Stop width so the
+    # canopy, columns, pendant lights, ATM, security camera,
+    # pylon, ice freezer, propane cage, news boxes, pay phone,
+    # air pump, sandwich board, bike rack, lot lamp, etc.
+    # automatically scale to the new 16m bay.
+    bay_w = kw_bay_w
     col_shelf      = (0.50, 0.50, 0.52, 1.0)
     col_shelf_dark = (0.32, 0.32, 0.34, 1.0)
     col_counter    = (0.42, 0.32, 0.22, 1.0)
@@ -4711,11 +4768,11 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     col_grill_hot  = (0.62, 0.18, 0.16, 1.0)
 
     # ── 2 LONG E-W aisles (snack + drinks) running across most
-    # of the bay width
-    aisle_w = 6.4        # X span (centered on bay)
+    # of the bay width. Wider now (12m) to fill the new 16m bay.
+    aisle_w = 12.0       # X span (centered on bay)
     aisle_d = 0.40       # shelf thickness (Y axis)
     aisle_h = 1.8
-    for k, aisle_y in enumerate((cy - 1.5, cy + 1.0)):
+    for k, aisle_y in enumerate((cy - 1.0, cy + 1.5)):
         # Main shelf body
         _make_box_local(f"KwikShop_KwikStop_Aisle_{k}",
                         (kw_cx, aisle_y, ground_z + aisle_h / 2),
@@ -4732,9 +4789,10 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                              col_chips_yellow, col_chips_purple,
                              col_chips_red, col_chips_orange]
         for sgn in (-1, 1):
-            # 8 product bags per side at top
-            for j in range(8):
-                px = kw_cx - aisle_w / 2 + 0.4 + j * (aisle_w - 0.8) / 7
+            # 14 product bags per side at top (more bags for the
+            # wider aisle)
+            for j in range(14):
+                px = kw_cx - aisle_w / 2 + 0.4 + j * (aisle_w - 0.8) / 13
                 _make_box_local(
                     f"KwikShop_KwikStop_Goods_{k}_{sgn:+d}_{j}",
                     (px,
@@ -4743,8 +4801,8 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (0.50, 0.10, 0.36),
                     product_palettes[(j + k * 3) % len(product_palettes)])
             # Mid-shelf row of products (smaller boxes)
-            for j in range(5):
-                px = kw_cx - aisle_w / 2 + 0.6 + j * (aisle_w - 1.2) / 4
+            for j in range(9):
+                px = kw_cx - aisle_w / 2 + 0.6 + j * (aisle_w - 1.2) / 8
                 _make_box_local(
                     f"KwikShop_KwikStop_GoodsMid_{k}_{sgn:+d}_{j}",
                     (px,
@@ -4753,12 +4811,19 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (0.40, 0.08, 0.30),
                     product_palettes[(j + k * 2 + 3) % len(product_palettes)])
 
-    # Counter sized + positioned so there's a real walkable
-    # aisle (~1.0 m) between its NORTH edge and the back wall —
-    # the clerk needs to stand somewhere.
-    counter_w = 1.8; counter_d = 0.7; counter_h = 1.1
-    counter_x = kw_cx + bay_w / 2 - counter_w / 2 - 0.5
-    counter_y = cy + depth / 2 - counter_d / 2 - 1.2
+    # ── COUNTER · FRONT-LEFT position per the design-guide rule
+    # captured in _3D_MODELING_PLAYBOOK.md. Counter long axis runs
+    # E-W along the south wall, west of the door. Customers enter
+    # at the east end of the bay and the counter is immediately
+    # on their LEFT, with the clerk standing behind it facing
+    # SOUTH (toward the entry door + storefront glass).
+    counter_w = 4.0      # long axis along south wall
+    counter_d = 0.95     # deeper so register + scanner + pinpad fit
+    counter_h = 1.05
+    # Position counter at SW quadrant of bay (front-left from
+    # customer POV walking in the east door)
+    counter_x = kw_cx - kw_bay_w / 2 + counter_w / 2 + 1.0
+    counter_y = cy - depth / 2 + counter_d / 2 + 1.4
     _make_box_local("KwikShop_KwikStop_Counter",
                     (counter_x, counter_y,
                      ground_z + counter_h / 2),
@@ -5597,34 +5662,35 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
 
     # LAUNDROMAT bay — row of washing machines + dryers + folding
     # table. Two rows: 5 washers on the south side, 5 dryers on
-    # the north side. Folding table down the middle.
-    ldr_cx = cx + 9.0
+    # the north side. Folding table down the middle. Bay moved
+    # (2026-06-15) from +9 to LAUNDROMAT_OX (-5) so it sits in
+    # the smaller 6m bay between Arcade and Kwik Stop.
+    ldr_cx = cx + LAUNDROMAT_OX
     COL_WASHER_BODY = (0.92, 0.92, 0.90, 1.0)
     COL_WASHER_PORT = (0.32, 0.32, 0.36, 1.0)
     COL_WASHER_TRIM = (0.62, 0.62, 0.64, 1.0)
     COL_FOLDING = (0.62, 0.55, 0.45, 1.0)
-    # 5 front-loaders along the back (north) wall — wy chosen so
-    # the washer's NORTH face (wy + 0.35) clears the back wall
-    # interior at cy + 4.8 by 0.15 m.
-    for k in range(5):
-        wx = ldr_cx - 3.2 + k * 1.6
-        wy = cy + depth / 2 - 0.7      # was -0.5, washer clipped wall
+    # 4 front-loaders along the back (north) wall — 1.4m spacing
+    # so the row fits within the new 6m laundromat bay.
+    for k in range(4):
+        wx = ldr_cx - 2.1 + k * 1.4
+        wy = cy + depth / 2 - 0.7      # washer back face clears wall
         _make_box_local(f"KwikShop_Ldr_Washer_{k}_Body",
                         (wx, wy, ground_z + 0.55),
-                        (1.20, 0.70, 1.10), COL_WASHER_BODY)
+                        (1.10, 0.70, 1.10), COL_WASHER_BODY)
         # Round porthole — approximated as a dark square
         _make_box_local(f"KwikShop_Ldr_Washer_{k}_Port",
                         (wx, wy - 0.36, ground_z + 0.65),
-                        (0.45, 0.04, 0.45), COL_WASHER_PORT)
+                        (0.42, 0.04, 0.42), COL_WASHER_PORT)
         # Trim panel above
         _make_box_local(f"KwikShop_Ldr_Washer_{k}_Trim",
                         (wx, wy - 0.36, ground_z + 1.02),
-                        (1.0, 0.04, 0.18), COL_WASHER_TRIM)
-    # 4 stacked dryers against the EAST partition (back-to-back)
-    for k in range(4):
-        dy_pos = cy - 0.5 + k * 0.5     # not used, replaced below
-        wx = ldr_cx + bay_w / 2 - 0.55
-        wy = cy + depth * 0.15 - k * 0.9 + 1.5
+                        (0.95, 0.04, 0.18), COL_WASHER_TRIM)
+    # 2 stacked dryers against the EAST partition (laundry has
+    # less floor space in the new 6m bay)
+    for k in range(2):
+        wx = ldr_cx + BAY_W_LAUNDROMAT / 2 - 0.55
+        wy = cy + depth * 0.15 - k * 0.9 + 0.4
         for stack in (0, 1):
             _make_box_local(f"KwikShop_Ldr_Dryer_{k}_{stack}_Body",
                             (wx, wy,
@@ -5633,26 +5699,26 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
             _make_box_local(f"KwikShop_Ldr_Dryer_{k}_{stack}_Port",
                             (wx - 0.36, wy,
                              ground_z + 0.65 + stack * 1.10),
-                            (0.04, 0.45, 0.45), COL_WASHER_PORT)
+                            (0.04, 0.42, 0.42), COL_WASHER_PORT)
     # Folding table in the middle of the bay
     _make_box_local("KwikShop_Ldr_FoldingTable",
-                    (ldr_cx - 1.0, cy - 0.5, ground_z + 0.85),
-                    (3.0, 0.80, 0.06), COL_FOLDING)
-    for tx in (ldr_cx - 2.3, ldr_cx + 0.3):
-        for ty in (cy - 0.9, cy - 0.1):
+                    (ldr_cx, cy - 1.0, ground_z + 0.85),
+                    (2.4, 0.75, 0.06), COL_FOLDING)
+    for tx in (ldr_cx - 1.05, ldr_cx + 1.05):
+        for ty in (cy - 1.35, cy - 0.65):
             _make_box_local(
-                f"KwikShop_Ldr_FoldTableLeg_{int(tx)}_{int(ty)}",
+                f"KwikShop_Ldr_FoldTableLeg_{int(tx*10)}_{int(ty*10)}",
                 (tx, ty, ground_z + 0.42),
                 (0.06, 0.06, 0.84), COL_WASHER_TRIM)
     # Coin/change machine on west partition
     _make_box_local("KwikShop_Ldr_ChangeMachine",
-                    (ldr_cx - bay_w / 2 + 0.40, cy + 0.5,
+                    (ldr_cx - BAY_W_LAUNDROMAT / 2 + 0.40, cy + 0.5,
                      ground_z + 0.80),
                     (0.30, 0.40, 1.20),
                     (0.42, 0.42, 0.45, 1.0))
     # Community bulletin board on the east partition — paper
     # flyers in coloured rectangles.
-    bb_x = ldr_cx + bay_w / 2 - 0.06
+    bb_x = ldr_cx + BAY_W_LAUNDROMAT / 2 - 0.06
     _make_box_local("KwikShop_Ldr_BulletinBoard",
                     (bb_x, cy + 0.5, ground_z + 1.50),
                     (0.08, 1.40, 1.20),
@@ -7632,27 +7698,34 @@ def build_commercial_cluster():
         ("Skip",     nc_x + 4.0, nc_y + 4.3, 1.0, "short",
             (0.32, 0.55, 0.78, 1.0),   # blue NexCorp uniform
             (0.42, 0.42, 0.45, 1.0)),
-        ("ArcadeAtt", ks_x - 9.0, ks_y + 4.3, 1.0, "bowl",
+        # ArcadeAtt at the arcade attendant booth (arc_cx, back of
+        # arcade bay). Arcade now at cx + ARCADE_OX = -15 - 11 = -26.
+        ("ArcadeAtt", ks_x - 11.0, ks_y + 4.3, 1.0, "bowl",
             (0.62, 0.22, 0.78, 1.0),
             (0.20, 0.20, 0.22, 1.0)),
-        ("Sam",      ks_x + 2.8, ks_y + 4.3, 1.0, "short",
+        # Sam — behind the new SW counter in the Kwik Stop. Kwik
+        # Stop bay center moved to ks_x + 6 (post 2026-06-15 bay
+        # restructure). Counter at (kw_cx - 5, cy - 3.1). Sam
+        # stands just NORTH of counter facing south (toward the
+        # storefront glass and any incoming customer).
+        ("Sam",      ks_x + 1.0, ks_y - 2.5, 1.0, "short",
             (0.85, 0.22, 0.20, 1.0),
             (0.55, 0.50, 0.42, 1.0)),
         # Diego — canon detail from Sam's zine: "the figure is
         # Diego, leaning against the ice freezer outside." Ice
-        # freezer at kw_cx - 4.4 = ks_x - 4.4; freezer y = ks_y - 6.5 + 0.85.
-        ("Diego",    ks_x - 3.7, ks_y - 5.0, 1.0, "bowl",
+        # freezer at kw_cx - 4.4 = ks_x + 6 - 4.4 = ks_x + 1.6.
+        ("Diego",    ks_x + 1.8, ks_y - 5.0, 1.0, "bowl",
             (0.42, 0.22, 0.18, 1.0),    # dark band-tee
             (0.20, 0.20, 0.24, 1.0)),
-        # Roy — canon from Sam's zine: "a regular customer she
-        # likes named ROY who buys a single Lone Star tallboy
-        # every Friday at 5:48 PM". Mid-50s, blue collared shirt,
-        # khaki pants. Positioned at the back cooler about to
-        # grab his Friday tallboy.
-        ("Roy",      ks_x - 5.0, ks_y + 3.0, 1.05, "short",
+        # Roy — back cooler customer. Back cooler at kw_cx west
+        # end (cooler_cx in the build = kw_cx - bay_w/2 + 2.5 =
+        # ks_x + 6 - 8 + 2.5 = ks_x + 0.5).
+        ("Roy",      ks_x + 0.5, ks_y + 3.0, 1.05, "short",
             (0.32, 0.55, 0.78, 1.0),    # blue collared shirt
             (0.78, 0.74, 0.66, 1.0)),   # khaki pants
-        ("LaundryAtt", ks_x + 9.0 - 3.0, ks_y + 0.5, 1.0, "bowl",
+        # Laundry attendant at the laundromat folding table.
+        # Laundromat now at cx + LAUNDROMAT_OX = ks_x - 5.
+        ("LaundryAtt", ks_x - 5.0, ks_y + 0.5, 1.0, "bowl",
             (0.32, 0.55, 0.78, 1.0),
             (0.92, 0.92, 0.90, 1.0)),
         ("DinerCook", dn_x,        dn_y + 3.4, 1.0, "short",
