@@ -4743,6 +4743,22 @@ def build_commercial_cluster():
             (truck_x - 3.78, truck_y + sgn_y * 0.7, truck_z + 1.1),
             (0.06, 0.30, 0.20),
             (0.98, 0.96, 0.86, 1.0))
+    # Delivery crates stacked behind the truck's open roller door
+    # (the driver is unloading). 3 crates in a small pile on the
+    # asphalt, just north of the truck cargo end.
+    crate_x0 = truck_x + 4.5
+    crate_y0 = truck_y + 1.4
+    crate_z0 = truck_z
+    COL_CRATE = (0.62, 0.45, 0.30, 1.0)
+    crate_specs = [
+        (crate_x0, crate_y0, 0,    0.80, 0.60, 0.55),  # base, big
+        (crate_x0 + 0.6, crate_y0 + 0.2, 0, 0.55, 0.50, 0.45),
+        (crate_x0, crate_y0, 0.55, 0.60, 0.50, 0.45),  # stacked on first
+    ]
+    for k, (kx, ky, kz_off, sw, sd, sh) in enumerate(crate_specs):
+        _make_box_local(f"Comm_DeliveryCrate_{k}",
+                        (kx, ky, crate_z0 + kz_off + sh / 2),
+                        (sw, sd, sh), COL_CRATE)
 
     # ── BUS-STOP SHELTER on the road frontage between the Diner
     # and Cosmic Comics lots. Four steel posts + slanted roof +
