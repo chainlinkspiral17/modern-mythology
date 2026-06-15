@@ -469,8 +469,13 @@ ROAD_CORRIDORS = [
     # NorthRanch · 3 parallel east-west streets + the spur
     ("NRAspen",  [(-440, 200, +12.0), (-320, 200, +12.0),
                   (-240, 200, +12.0)], 4.0, 10.0),
+    # NRBirch ramps DOWN as it enters OliverTreeMemPark (-300..-220
+     #x, target +2) so the road follows the park grade instead of
+     #carving a +12 plateau through the park's middle.
     ("NRBirch",  [(-440, 100, +12.0), (-320, 100, +12.0),
-                  (-240, 100, +12.0)], 4.0, 10.0),
+                  (-305, 100, +10.0),
+                  (-285, 100,  +3.0),
+                  (-240, 100,  +2.0)], 4.0, 10.0),
     ("NRCedar",  [(-440,  40, +12.0), (-320,  40, +12.0),
                   (-240,  40, +12.0)], 4.0, 10.0),
     ("NRSpur",   [(-320, 200, +12.0), (-320, 100, +12.0),
@@ -989,13 +994,21 @@ def hce_elevation(x, y):
             blends.append((b, target_z))
 
     if blends:
-        # Softmax over the weights / T
+        # Softmax over the weights / T, BUT only include settlements
+        # whose blend is within 1% of the leader. That way a doubly-
+        # nested settlement (e.g. OTSkatePark at b=0.97 inside
+        # OliverTreeMemPark at b=0.95 inside NorthRanch at b=0.80)
+        # cleanly dominates inside its own rect — the outer parents
+        # don't pull the skatepark interior up toward their targets.
+        # The 1% threshold still admits competitors at proper
+        # SETTLEMENT BOUNDARIES (where two settlements have nearly-
+        # equal blend from opposite sides of the boundary), giving
+        # the smooth 5-25m transition softmax was added for.
         max_b = max(b for b, _ in blends)
-        exps = [(math.exp((b - max_b) / softmax_T), tz) for b, tz in blends]
+        contenders = [(b, tz) for b, tz in blends if b >= max_b * 0.99]
+        exps = [(math.exp((b - max_b) / softmax_T), tz) for b, tz in contenders]
         sum_e = sum(e for e, _ in exps)
         avg_target = sum(e * tz for e, tz in exps) / sum_e
-        # Pull strength = max blend (so a point fully inside one
-        # settlement gets full flatness, not diluted).
         flattened = base * (1 - max_b) + avg_target * max_b
     else:
         flattened = base
@@ -1086,7 +1099,11 @@ BERMS = [
     ("NorthRanch_South", [(-460, 25), (-200, 25)],           10.0, 1.5),
     # East CDS Estates frontage berm
     ("EastCDS_Front",    [(180, 270), (440, 270)],           10.0, 1.8),
-    ("EastCDS_South",    [(180, 25), (440, 25)],             10.0, 1.5),
+    # EastCDS_South berm moved y=25 -> y=115 (2026-06-15) so it
+    # sits just south of the new EastCDS rect (which was shrunk
+    # to y=120..260). Old position was 95m south of the settlement
+    # — geometrically meaningless after the rect change.
+    ("EastCDS_South",    [(180, 115), (440, 115)],            10.0, 1.5),
     # West Estates road berm
     ("WestEstates_E",    [(-120, -340), (-120, -40)],        9.0, 1.4),
     ("WestEstates_N",    [(-460, -30), (-120, -30)],         9.0, 1.4),
