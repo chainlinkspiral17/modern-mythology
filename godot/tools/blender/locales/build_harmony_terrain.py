@@ -11394,6 +11394,95 @@ def build_arterial_lighting():
                             prefix)
 
 
+def build_arterial_berms():
+    """Decorative landscape berms in undeveloped arterial frontage.
+    Real suburban arterials have these in the dead stretches
+    between developed parcels — low mounds of grass with
+    ornamental shrubs / specimen trees on top, framed by mulch.
+    Adds depth + breaks up the long blank curb stretches.
+    """
+    COL_BERM = (0.32, 0.55, 0.25, 1.0)        # darker green grass
+    COL_BERM_MULCH = (0.42, 0.30, 0.20, 1.0)
+    COL_BERM_SHRUB = (0.28, 0.50, 0.22, 1.0)
+    COL_BERM_FLOWER = (0.95, 0.62, 0.78, 1.0)
+    COL_TRUNK = (0.30, 0.22, 0.16, 1.0)
+    COL_CANOPY = (0.30, 0.55, 0.25, 1.0)
+
+    # Hand-picked berm locations along arterial stretches that
+    # are NOT occupied by buildings or driveways. Each has (cx,
+    # cy, length_along_road, road_axis, side) where road_axis
+    # is 'x' or 'y' (the arterial direction) and side is +/-1
+    # for which curb side.
+    berm_specs = [
+        # ── Horizon Drive (E-W) — between HSField and EastComm
+        # at x≈350 (south side), and west of West Estates approach
+        ("HZ_E_S",   350,  -27, 30.0, 'x', -1),
+        ("HZ_W_S",  -380,  -27, 28.0, 'x', -1),
+        # ── Harmony Blvd (mostly N-S) — south of HCE Welcome,
+        # between Phase 2 settlement and SouthComm (x≈30..15,
+        # y≈-90..-160 with road CL drifting west)
+        ("HB_S_E",    32, -120, 28.0, 'y',  1),  # east side
+        ("HB_S_W",    -2, -180, 24.0, 'y', -1),  # west side
+        # ── Horizon Dr west approach (between WestComm + OT Park)
+        ("HZ_W_N",  -300,  -10, 24.0, 'x',  1),  # north side
+    ]
+    for tag, cx, cy, length, axis, side in berm_specs:
+        z = mesh_z(cx, cy)
+        if axis == 'x':
+            berm_size = (length, 6.0, 0.50)
+        else:
+            berm_size = (6.0, length, 0.50)
+        # Grass berm (low elongated mound — approximated as a
+        # shallow flat box)
+        _make_box_local(f"Berm_{tag}_Grass",
+                        (cx, cy, z + 0.25),
+                        berm_size, COL_BERM)
+        # Mulch trough at the centerline of the berm
+        if axis == 'x':
+            mulch_size = (length - 1.0, 1.6, 0.10)
+        else:
+            mulch_size = (1.6, length - 1.0, 0.10)
+        _make_box_local(f"Berm_{tag}_Mulch",
+                        (cx, cy, z + 0.55),
+                        mulch_size, COL_BERM_MULCH)
+        # 3 ornamental shrubs evenly along the berm
+        for s in range(3):
+            t = (s + 0.5) / 3
+            if axis == 'x':
+                sx = cx - length / 2 + t * length
+                sy = cy
+            else:
+                sx = cx
+                sy = cy - length / 2 + t * length
+            sz = z + 0.55
+            _make_sphere_low_local(
+                f"Berm_{tag}_Shrub_{s}",
+                (sx, sy, sz + 0.50),
+                0.55, COL_BERM_SHRUB,
+                rings=2, segments=6)
+        # 1 specimen tree at the berm midpoint
+        _make_cyl_local(f"Berm_{tag}_TreeTrunk",
+                        (cx, cy, z + 0.55 + 1.8),
+                        0.18, 3.6, COL_TRUNK, segments=6)
+        _make_sphere_low_local(f"Berm_{tag}_TreeCanopy",
+                                (cx, cy, z + 0.55 + 3.8),
+                                1.8, COL_CANOPY,
+                                rings=3, segments=8)
+        # Flower clusters at the berm ends
+        for end_sgn in (-1, 1):
+            if axis == 'x':
+                fx_ = cx + end_sgn * (length / 2 - 1.0)
+                fy_ = cy
+            else:
+                fx_ = cx
+                fy_ = cy + end_sgn * (length / 2 - 1.0)
+            _make_sphere_low_local(
+                f"Berm_{tag}_Flower_{end_sgn:+d}",
+                (fx_, fy_, z + 0.85),
+                0.32, COL_BERM_FLOWER,
+                rings=2, segments=6)
+
+
 def build_commercial_pole_signs():
     """Tall pole-mounted commercial signs at each EastComm business
     parcel. Standard suburban-strip detail: 6-8m steel pole with a
@@ -16170,6 +16259,7 @@ def main():
     build_utility_poles()
     build_culdesac_islands()
     build_commercial_pole_signs()
+    build_arterial_berms()
     build_arterial_trees()
     build_church_cemetery()
     build_church_lot_and_school_playground()
