@@ -3551,8 +3551,10 @@ def _build_diner(cx, cy, ground_z):
                     (cx, cy + depth * 0.40, ground_z + 1.30),
                     (12.0, 0.20, 0.60), col_trim)
     # Prep counter running along the back, behind (north of) the
-    # pass-through half-wall
-    kitchen_y = cy + depth * 0.42
+    # pass-through half-wall. Counter centre at cy + 4.0 so its
+    # 0.60 m depth spans cy + 3.70 to cy + 4.30 — north edge
+    # touches the back wall interior at cy + 4.30 (no clip).
+    kitchen_y = cy + 3.6     # pass-through wall sits a bit south
     _make_box_local(f"{name_prefix}_Kitchen_PrepCounter",
                     (cx - 3.0, kitchen_y + 0.40,
                      ground_z + 0.50),
@@ -3571,11 +3573,12 @@ def _build_diner(cx, cy, ground_z):
                         (gx, kitchen_y + 0.40, ground_z + 1.13),
                         (0.40, 0.10, 0.02),
                         (0.62, 0.18, 0.16, 1.0))      # warm red glow
-    # Extractor hood overhead
+    # Extractor hood overhead — depth matched to the prep counter
+    # so it doesn't clip through the back wall.
     _make_box_local(f"{name_prefix}_Kitchen_Hood",
                     (cx - 3.0, kitchen_y + 0.40,
                      ground_z + 2.50),
-                    (4.2, 0.80, 0.50),
+                    (4.2, 0.60, 0.50),
                     (0.32, 0.32, 0.34, 1.0))
     # Drink/fridge unit on the east side of the kitchen
     _make_box_local(f"{name_prefix}_Kitchen_Fridge",
