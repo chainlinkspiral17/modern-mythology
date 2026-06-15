@@ -5513,6 +5513,203 @@ def _face_axis(facing):
     return (0.0, -1.0)
 
 
+def build_harmony_park():
+    """HarmonyPark — central manicured community park. Sits in
+    HarmonyPark settlement zone (-120..180, -40..200, target_z =
+    +1.0, flatness 0.55). HarmonyPond at (30, 60) acts as the
+    COMMUNITY POOL — wrap park infrastructure around it.
+    """
+    # The community pool sits at HarmonyPond. Add a concrete pool
+    # deck ring just outside the pond's water disc.
+    pool_cx, pool_cy = 30.0, 60.0
+    pool_r = 32.0      # matches PONDS entry
+    pool_z = mesh_z(pool_cx, pool_cy)
+    deck_outer = pool_r * 1.10
+    deck_inner = pool_r * 0.95
+    segments = 18
+    deck_verts = []
+    for i in range(segments):
+        ang = 2.0 * math.pi * i / segments
+        deck_verts.append((pool_cx + math.cos(ang) * deck_inner,
+                            pool_cy + math.sin(ang) * deck_inner,
+                            pool_z + 0.08))
+        deck_verts.append((pool_cx + math.cos(ang) * deck_outer,
+                            pool_cy + math.sin(ang) * deck_outer,
+                            pool_z + 0.08))
+    deck_faces = []
+    for i in range(segments):
+        j = (i + 1) % segments
+        deck_faces.append([i * 2, i * 2 + 1, j * 2 + 1, j * 2])
+    _finalize_mesh("HP_PoolDeck", deck_verts, deck_faces,
+                    (0.78, 0.74, 0.66, 1.0))
+
+    # CHANGING ROOM building — east of the pool
+    cr_cx = pool_cx + deck_outer + 12.0
+    cr_cy = pool_cy
+    cr_z = mesh_z(cr_cx, cr_cy)
+    cr_w, cr_d, cr_h = 18.0, 10.0, 3.6
+    cr_t = 0.20
+    col_cr_wall = (0.78, 0.74, 0.66, 1.0)
+    col_cr_roof = (0.42, 0.30, 0.22, 1.0)
+    col_cr_door = (0.32, 0.55, 0.78, 1.0)   # pool blue
+    _make_box_local("HP_ChangeRoom_Slab",
+                    (cr_cx, cr_cy, cr_z + 0.05),
+                    (cr_w + 0.6, cr_d + 0.6, 0.10), col_cr_wall)
+    _make_box_local("HP_ChangeRoom_WallN",
+                    (cr_cx, cr_cy + cr_d / 2 - cr_t / 2,
+                     cr_z + cr_h / 2),
+                    (cr_w, cr_t, cr_h), col_cr_wall)
+    _make_box_local("HP_ChangeRoom_WallE",
+                    (cr_cx + cr_w / 2 - cr_t / 2, cr_cy,
+                     cr_z + cr_h / 2),
+                    (cr_t, cr_d, cr_h), col_cr_wall)
+    _make_box_local("HP_ChangeRoom_WallS",
+                    (cr_cx, cr_cy - cr_d / 2 + cr_t / 2,
+                     cr_z + cr_h / 2),
+                    (cr_w, cr_t, cr_h), col_cr_wall)
+    # West wall split — two doors (men + women) facing the pool
+    door_h = 2.4
+    door_w = 1.2
+    # Door positions: at cr_cy ± 2.0 (north door = women, south = men)
+    for sgn, label in ((-1, "M"), (+1, "W")):
+        # Left side wall piece
+        wall_h_above = cr_h - door_h
+        d_centre_y = cr_cy + sgn * 2.0
+        # West wall is segmented around two door openings; for
+        # simplicity, just make the door visually with a colored
+        # box covering the wall position (no actual cutout — this
+        # is a primitive placeholder per the user's "models still
+        # super primitive" note)
+        _make_box_local(f"HP_ChangeRoom_Door_{label}",
+                        (cr_cx - cr_w / 2 + 0.10, d_centre_y,
+                         cr_z + door_h / 2),
+                        (0.20, door_w, door_h), col_cr_door)
+    # Full west wall behind the doors (so the doors APPEAR set
+    # into a wall — primitive)
+    _make_box_local("HP_ChangeRoom_WallW",
+                    (cr_cx - cr_w / 2 + cr_t / 2 + 0.20, cr_cy,
+                     cr_z + cr_h / 2),
+                    (cr_t, cr_d, cr_h), col_cr_wall)
+    _make_box_local("HP_ChangeRoom_Roof",
+                    (cr_cx, cr_cy, cr_z + cr_h + 0.10),
+                    (cr_w + 0.4, cr_d + 0.4, 0.20), col_cr_roof)
+
+    # 4 lounge chairs along the pool deck north-side
+    for k in range(4):
+        ang = math.radians(60 + k * 30)   # NE-ish spread
+        lcx = pool_cx + math.cos(ang) * (deck_outer + 1.5)
+        lcy = pool_cy + math.sin(ang) * (deck_outer + 1.5)
+        lcz = mesh_z(lcx, lcy)
+        _make_box_local(f"HP_Lounge_{k}",
+                        (lcx, lcy, lcz + 0.15),
+                        (1.8, 0.6, 0.15),
+                        (0.95, 0.95, 0.92, 1.0))
+        # Lounge back angled up (just a tilted box approximated as a vertical box at end)
+        _make_box_local(f"HP_LoungeBack_{k}",
+                        (lcx, lcy - 0.20, lcz + 0.50),
+                        (1.8, 0.10, 0.70),
+                        (0.95, 0.95, 0.92, 1.0))
+
+    # Lifeguard chair on the north side of the pool
+    lg_x = pool_cx
+    lg_y = pool_cy + deck_outer + 2.0
+    lg_z = mesh_z(lg_x, lg_y)
+    _make_cyl_local("HP_Lifeguard_PoleL",
+                    (lg_x - 1.0, lg_y, lg_z + 1.5),
+                    0.06, 3.0, (0.78, 0.62, 0.32, 1.0), segments=4)
+    _make_cyl_local("HP_Lifeguard_PoleR",
+                    (lg_x + 1.0, lg_y, lg_z + 1.5),
+                    0.06, 3.0, (0.78, 0.62, 0.32, 1.0), segments=4)
+    _make_box_local("HP_Lifeguard_Seat",
+                    (lg_x, lg_y, lg_z + 2.5),
+                    (2.0, 0.8, 0.10),
+                    (0.78, 0.18, 0.18, 1.0))
+    _make_box_local("HP_Lifeguard_Back",
+                    (lg_x, lg_y + 0.35, lg_z + 3.0),
+                    (2.0, 0.08, 0.80),
+                    (0.78, 0.18, 0.18, 1.0))
+
+    # ── PLAYGROUND south of the pool · swings + slide + sandbox
+    pg_cx = pool_cx
+    pg_cy = pool_cy - deck_outer - 25.0
+    pg_z = mesh_z(pg_cx, pg_cy)
+    # Sandbox
+    _make_box_local("HP_Sandbox",
+                    (pg_cx, pg_cy, pg_z + 0.05),
+                    (10.0, 10.0, 0.10),
+                    (0.90, 0.82, 0.62, 1.0))
+    # Sandbox edge planks
+    for sgn_x, sgn_y in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+        if sgn_x != 0:
+            _make_box_local(
+                f"HP_SandboxEdge_{sgn_x:+d}_{sgn_y:+d}",
+                (pg_cx + sgn_x * 5.0, pg_cy, pg_z + 0.18),
+                (0.20, 10.4, 0.20),
+                (0.42, 0.30, 0.22, 1.0))
+        else:
+            _make_box_local(
+                f"HP_SandboxEdge_{sgn_x:+d}_{sgn_y:+d}",
+                (pg_cx, pg_cy + sgn_y * 5.0, pg_z + 0.18),
+                (10.4, 0.20, 0.20),
+                (0.42, 0.30, 0.22, 1.0))
+    # SWING SET — 2 swings on a frame east of sandbox
+    sw_x = pg_cx + 10.0
+    sw_y = pg_cy
+    # Frame uprights
+    for sgn in (-1, 1):
+        _make_cyl_local(f"HP_SwingPost_{sgn:+d}",
+                        (sw_x, sw_y + sgn * 1.6, pg_z + 1.5),
+                        0.05, 3.0,
+                        (0.62, 0.62, 0.64, 1.0), segments=4)
+    _make_box_local("HP_SwingTop",
+                    (sw_x, sw_y, pg_z + 3.0),
+                    (0.10, 3.6, 0.10), (0.62, 0.62, 0.64, 1.0))
+    # 2 swings hanging
+    for sgn in (-1, 1):
+        _make_box_local(f"HP_SwingSeat_{sgn:+d}",
+                        (sw_x, sw_y + sgn * 0.8, pg_z + 0.8),
+                        (0.50, 0.30, 0.04),
+                        (0.85, 0.20, 0.18, 1.0))
+        for cx_off in (-0.20, 0.20):
+            _make_box_local(
+                f"HP_SwingChain_{sgn:+d}_{int(cx_off*10)}",
+                (sw_x + cx_off, sw_y + sgn * 0.8, pg_z + 1.9),
+                (0.02, 0.02, 2.2),
+                (0.32, 0.32, 0.34, 1.0))
+    # SLIDE — west of sandbox
+    sl_x = pg_cx - 10.0
+    sl_y = pg_cy
+    _make_box_local("HP_SlideTower",
+                    (sl_x, sl_y, pg_z + 1.5),
+                    (1.5, 1.5, 3.0),
+                    (0.55, 0.42, 0.30, 1.0))
+    # Slide chute — slanted (using a long box as placeholder)
+    _make_box_local("HP_SlideChute",
+                    (sl_x + 2.0, sl_y, pg_z + 1.2),
+                    (3.5, 0.80, 0.10),
+                    (0.78, 0.18, 0.18, 1.0))
+
+    # ── PARK BENCHES around the pool deck (4 cardinal points)
+    for k, ang_deg in enumerate((0, 90, 180, 270)):
+        ang = math.radians(ang_deg)
+        bx = pool_cx + math.cos(ang) * (deck_outer + 3.0)
+        by = pool_cy + math.sin(ang) * (deck_outer + 3.0)
+        bz = mesh_z(bx, by)
+        _make_box_local(f"HP_Bench_{k}",
+                        (bx, by, bz + 0.42),
+                        (1.8, 0.42, 0.06),
+                        (0.42, 0.30, 0.20, 1.0))
+        _make_box_local(f"HP_BenchBack_{k}",
+                        (bx, by + 0.18, bz + 0.65),
+                        (1.8, 0.06, 0.40),
+                        (0.42, 0.30, 0.20, 1.0))
+        for sgn in (-1, 1):
+            _make_box_local(f"HP_BenchLeg_{k}_{sgn:+d}",
+                            (bx + sgn * 0.75, by, bz + 0.21),
+                            (0.06, 0.42, 0.42),
+                            (0.18, 0.18, 0.18, 1.0))
+
+
 def build_country_club():
     """Harmony Creek Country Club — top-of-the-hill prosperous
     zone. Symmetrical brick clubhouse with white columns, plus
@@ -7157,6 +7354,7 @@ def main():
     build_east_cds_neighborhood()
     build_phase3_neighborhood()
     build_country_club()
+    build_harmony_park()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
