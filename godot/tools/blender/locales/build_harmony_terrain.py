@@ -3794,6 +3794,107 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                         (1.6, 0.20, 0.10),
                         (0.95, 0.94, 0.90, 1.0))
 
+    # ── SLOPED CANOPY OVER THE STOREFRONT (matches the
+    # user-provided Kwik Stop reference photo). A wide canopy
+    # extending out from the storefront's parapet, supported by
+    # 4 columns at the south sidewalk edge. The canopy reads as
+    # a covered walkway — the awnings above each door remain
+    # underneath it as smaller signage canopies.
+    can_north_y = cy - depth / 2 - 0.10     # at storefront wall
+    can_south_y = cy - depth / 2 - 3.0      # 3 m forward of glass
+    can_top_z = ground_z + height + 0.05    # base of canopy
+    can_drop = 0.30                          # south edge drop
+    col_canopy_tan = (0.68, 0.55, 0.45, 1.0)
+    col_canopy_trim = (0.42, 0.30, 0.20, 1.0)
+    # Canopy slab — a quad sloping slightly down toward the
+    # south edge (front)
+    can_verts = [
+        (kw_cx - bay_w / 2, can_north_y, can_top_z + 0.20),
+        (kw_cx + bay_w / 2, can_north_y, can_top_z + 0.20),
+        (kw_cx + bay_w / 2, can_south_y, can_top_z + 0.20 - can_drop),
+        (kw_cx - bay_w / 2, can_south_y, can_top_z + 0.20 - can_drop),
+        # Underside (5 cm thick)
+        (kw_cx - bay_w / 2, can_north_y, can_top_z + 0.15),
+        (kw_cx + bay_w / 2, can_north_y, can_top_z + 0.15),
+        (kw_cx + bay_w / 2, can_south_y, can_top_z + 0.15 - can_drop),
+        (kw_cx - bay_w / 2, can_south_y, can_top_z + 0.15 - can_drop),
+    ]
+    can_faces = [
+        [0, 1, 2, 3],          # top
+        [4, 7, 6, 5],          # bottom
+        [0, 4, 5, 1],          # north (back)
+        [1, 5, 6, 2],          # east side
+        [2, 6, 7, 3],          # south (front lip)
+        [3, 7, 4, 0],          # west side
+    ]
+    _finalize_mesh("KwikShop_KwikStop_Canopy", can_verts, can_faces,
+                    col_canopy_tan)
+    # Horizontal trim band on the south face of the canopy
+    _make_box_local("KwikShop_KwikStop_CanopyTrim",
+                    (kw_cx, can_south_y,
+                     can_top_z + 0.18 - can_drop - 0.05),
+                    (bay_w, 0.10, 0.20), col_canopy_trim)
+    # 4 white-painted steel columns supporting the canopy at
+    # the south edge
+    for k in range(4):
+        col_x = kw_cx - bay_w / 2 + 1.0 + k * (bay_w - 2.0) / 3
+        col_z_bottom = ground_z
+        col_z_top = can_top_z + 0.15 - can_drop
+        _make_cyl_local(f"KwikShop_KwikStop_CanopyCol_{k}",
+                        (col_x, can_south_y,
+                         (col_z_bottom + col_z_top) / 2),
+                        0.12, col_z_top - col_z_bottom,
+                        (0.95, 0.92, 0.86, 1.0), segments=6)
+    # Ceiling pendant lights mounted to canopy underside (4)
+    for k in range(4):
+        lt_x = kw_cx - bay_w / 2 + 1.5 + k * (bay_w - 3.0) / 3
+        lt_y = (can_north_y + can_south_y) / 2
+        _make_box_local(f"KwikShop_KwikStop_CanopyLight_{k}",
+                        (lt_x, lt_y,
+                         can_top_z + 0.10 - can_drop / 2),
+                        (0.30, 0.30, 0.06),
+                        (0.95, 0.88, 0.62, 1.0))
+
+    # ── INTERIOR "Harmony Creek Estates" banner above the back
+    # wall (district-branding sign visible from the customer
+    # area, per the Kwik Stop reference photo). Big blue plaque
+    # with cream text, hung above the counter.
+    hce_banner_x = kw_cx
+    hce_banner_y = cy + depth / 2 - 0.30
+    hce_banner_z = ground_z + 2.80
+    _make_box_local("KwikShop_KwikStop_HCEBanner",
+                    (hce_banner_x, hce_banner_y, hce_banner_z),
+                    (5.0, 0.10, 0.60),
+                    (0.18, 0.32, 0.55, 1.0))
+    _make_box_local("KwikShop_KwikStop_HCEBannerTrim_Top",
+                    (hce_banner_x, hce_banner_y, hce_banner_z + 0.34),
+                    (5.2, 0.12, 0.08),
+                    (0.32, 0.32, 0.34, 1.0))
+    _make_box_local("KwikShop_KwikStop_HCEBannerTrim_Bot",
+                    (hce_banner_x, hce_banner_y, hce_banner_z - 0.34),
+                    (5.2, 0.12, 0.08),
+                    (0.32, 0.32, 0.34, 1.0))
+
+    # ── WINDOW THERMOMETER DECAL · small red-and-white
+    # thermometer in one of the storefront window bays
+    _make_box_local("KwikShop_KwikStop_ThermometerBg",
+                    (kw_cx - 3.6, cy - depth / 2 + 0.05 - 0.04,
+                     ground_z + 2.6),
+                    (0.30, 0.04, 0.80),
+                    (0.95, 0.95, 0.92, 1.0))
+    # Red mercury column
+    _make_box_local("KwikShop_KwikStop_ThermometerCol",
+                    (kw_cx - 3.6, cy - depth / 2 + 0.05 - 0.05,
+                     ground_z + 2.4),
+                    (0.08, 0.02, 0.40),
+                    (0.85, 0.20, 0.18, 1.0))
+    # Bulb
+    _make_cyl_local("KwikShop_KwikStop_ThermometerBulb",
+                    (kw_cx - 3.6, cy - depth / 2 + 0.05 - 0.05,
+                     ground_z + 2.20),
+                    0.06, 0.04,
+                    (0.85, 0.20, 0.18, 1.0), segments=8)
+
     # ── EXTERIOR POLISH for the Kwik Stop bay — window decals,
     # OPEN sign, security camera, ATM, bordering planter
     glass_y_bay = cy - depth / 2 + 0.05
@@ -3897,6 +3998,44 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                      ground_z + 2.55),
                     (4.0, 0.04, 0.50),
                     (0.85, 0.20, 0.18, 1.0))
+
+    # ── PYLON SIGN at the south edge of the parking lot (the
+    # tall street-visible Kwik Stop sign from the reference photo)
+    pyl_x = kw_cx + bay_w / 2 + 8.0
+    pyl_y = cy - depth / 2 - 28.0       # south end of lot
+    pyl_z = mesh_z(pyl_x, pyl_y)
+    PYLON_H = 8.0
+    col_pyl_pole = (0.62, 0.62, 0.64, 1.0)
+    col_pyl_blue = (0.18, 0.32, 0.55, 1.0)
+    col_pyl_white = (0.95, 0.94, 0.90, 1.0)
+    col_pyl_red = (0.85, 0.20, 0.18, 1.0)
+    # Pole
+    _make_cyl_local("KwikShop_KwikStop_Pylon_Pole",
+                    (pyl_x, pyl_y, pyl_z + PYLON_H / 2),
+                    0.18, PYLON_H, col_pyl_pole, segments=6)
+    # Main top sign (blue background, "KWIK STOP")
+    _make_box_local("KwikShop_KwikStop_PylonSign_Top",
+                    (pyl_x, pyl_y, pyl_z + PYLON_H + 0.6),
+                    (2.4, 0.18, 1.0), col_pyl_blue)
+    # Texas star on top corner of the top sign
+    _make_box_local("KwikShop_KwikStop_PylonStar",
+                    (pyl_x - 0.90, pyl_y - 0.10,
+                     pyl_z + PYLON_H + 0.95),
+                    (0.40, 0.04, 0.40), col_pyl_red)
+    # White price-strip bands below (3 strips for prices /
+    # promos / Kwik branding info)
+    for k in range(3):
+        _make_box_local(f"KwikShop_KwikStop_PylonStrip_{k}",
+                        (pyl_x, pyl_y,
+                         pyl_z + PYLON_H + 0.0 - k * 0.45),
+                        (2.2, 0.18, 0.40), col_pyl_white)
+    # Strip border trims
+    for k in range(4):
+        _make_box_local(f"KwikShop_KwikStop_PylonStripTrim_{k}",
+                        (pyl_x, pyl_y,
+                         pyl_z + PYLON_H + 0.10 - k * 0.45),
+                        (2.4, 0.20, 0.04),
+                        (0.42, 0.42, 0.45, 1.0))
 
     # ── COUNTER DETAIL · pinpad + receipt printer + cash drawer
     # Pinpad / card reader to the right of the register, facing

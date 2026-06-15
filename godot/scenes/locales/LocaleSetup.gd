@@ -89,6 +89,9 @@ func _ready() -> void:
 	var ks_wet_signs: Array = []
 	var ks_id_signs: Array = []
 	var ks_decal_signs: Array = []  # element 0..3 = LOTTERY/ATM/ICE/EBT
+	var ks_hce_banners: Array = []
+	var ks_pylon_top_signs: Array = []
+	var ks_pylon_strip_signs: Array = []
 	for mi in meshes:
 		mi.material_override = mat
 		applied += 1
@@ -154,6 +157,12 @@ func _ready() -> void:
 			ks_id_signs.append(mi)
 		elif "KwikShop_KwikStop_Decal_" in mi.name:
 			ks_decal_signs.append(mi)
+		elif "KwikShop_KwikStop_HCEBanner" == mi.name:
+			ks_hce_banners.append(mi)
+		elif "KwikShop_KwikStop_PylonSign_Top" in mi.name:
+			ks_pylon_top_signs.append(mi)
+		elif "KwikShop_KwikStop_PylonStrip_" in mi.name:
+			ks_pylon_strip_signs.append(mi)
 	print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
 	# Attach real Label3D text to the sign panels.
 	#
@@ -341,6 +350,40 @@ func _ready() -> void:
 						0.0,
 						spec[1],
 						spec[2])
+	# Interior "Harmony Creek Estates" banner over the counter —
+	# faces SOUTH (toward customers walking in)
+	for panel in ks_hce_banners:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.06),
+						Vector3(0, 0, 1),
+						"Harmony Creek Estates",
+						0.0,
+						Color(0.95, 0.92, 0.86, 1.0),
+						Color(0.10, 0.20, 0.42, 1.0))
+	# Pylon TOP sign — "KWIK STOP" cream on blue
+	for panel in ks_pylon_top_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.12),
+						Vector3(0, 0, 1),
+						"KWIK STOP",
+						0.0,
+						Color(0.95, 0.92, 0.86, 1.0),
+						Color(0.10, 0.20, 0.42, 1.0))
+	# Pylon white price-strip bands — 3 strips of promo text
+	var strip_texts := [
+		"HCE PREMIUM 24/7",
+		"SLUSH 99¢",
+		"BEER + LOTTERY",
+	]
+	for i in range(ks_pylon_strip_signs.size()):
+		var stext = strip_texts[i % strip_texts.size()]
+		_attach_text_label(ks_pylon_strip_signs[i],
+						Vector3(0, 0, 0.12),
+						Vector3(0, 0, 1),
+						stext,
+						0.0,
+						Color(0.10, 0.10, 0.10, 1.0),
+						Color(0.95, 0.94, 0.90, 1.0))
 	# High school name plaque — faces south (toward the football
 	# field and stadium).
 	for panel in hs_name_plaques:
