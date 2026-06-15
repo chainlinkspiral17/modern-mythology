@@ -3229,6 +3229,35 @@ def build_commercial_cluster():
             dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
         _finalize_mesh(f"CommRoad_Dash_{k}", dv, [[0, 1, 2, 3]],
                        COL_CENTERLINE)
+    # Crosswalk where the spawn-side spur (x=0) meets the road —
+    # six white stripes perpendicular to the road, classic zebra.
+    cross_x = 0.0
+    cross_w_total = 4.0
+    cross_n_stripes = 6
+    cross_stripe_w = (cross_w_total / (2 * cross_n_stripes - 1)) * 0.9
+    for k in range(cross_n_stripes):
+        sx_stripe = cross_x - cross_w_total / 2 + \
+                    k * (cross_w_total / (cross_n_stripes - 1))
+        cv = []
+        for (px, py) in [(sx_stripe - cross_stripe_w / 2, road_y - hwr + 0.4),
+                         (sx_stripe + cross_stripe_w / 2, road_y - hwr + 0.4),
+                         (sx_stripe + cross_stripe_w / 2, road_y + hwr - 0.4),
+                         (sx_stripe - cross_stripe_w / 2, road_y + hwr - 0.4)]:
+            cv.append((px, py, mesh_z(px, py) + 0.055))
+        _finalize_mesh(f"CommRoad_Crosswalk_{k}", cv, [[0, 1, 2, 3]],
+                       (0.92, 0.90, 0.84, 1.0))
+
+    # Speed-limit sign on a 2 m pole just east of the crosswalk
+    sl_x = 8.0
+    sl_y = road_y + hwr + 1.2
+    sl_z = mesh_z(sl_x, sl_y)
+    _make_cyl_local("CommRoad_SpeedLimit_Pole",
+                    (sl_x, sl_y, sl_z + 1.0),
+                    0.04, 2.0, (0.62, 0.62, 0.64, 1.0), segments=4)
+    _make_box_local("CommRoad_SpeedLimit_Sign",
+                    (sl_x, sl_y, sl_z + 2.1),
+                    (0.45, 0.04, 0.55), (0.98, 0.98, 0.96, 1.0))
+
     # Driveway aprons connecting each parking lot down to the road
     for tag, lot_x, lot_y, lot_w_drv in (
         ("KwikStop", ks_x, ks_y - 13, 8.0),
