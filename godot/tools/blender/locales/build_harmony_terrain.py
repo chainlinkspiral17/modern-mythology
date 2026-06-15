@@ -6117,22 +6117,23 @@ def build_high_school_field():
                              gp_base_z + 8.0),
                             0.06, 4.0, COL_GOALPOST, segments=6)
 
-    # ── SCOREBOARD on the north (away) end behind the end zone
+    # ── SCOREBOARD on the north (away) end behind the end zone.
+    # Two poles tall enough that the name banner above the score
+    # panel is fully supported.
     sb_y = cy + field_l / 2 + ez_d + 8.0
     sb_z = ground_z
-    _make_cyl_local("HSField_Scoreboard_Pole",
-                    (cx - 4.0, sb_y, sb_z + 4.0),
-                    0.20, 8.0, COL_BLEACHER_FRAME, segments=6)
-    _make_cyl_local("HSField_Scoreboard_Pole2",
-                    (cx + 4.0, sb_y, sb_z + 4.0),
-                    0.20, 8.0, COL_BLEACHER_FRAME, segments=6)
+    pole_h = 9.5
+    for sgn_x in (-1, 1):
+        _make_cyl_local(f"HSField_Scoreboard_Pole_{sgn_x:+d}",
+                        (cx + sgn_x * 4.0, sb_y, sb_z + pole_h / 2),
+                        0.20, pole_h, COL_BLEACHER_FRAME, segments=6)
     _make_box_local("HSField_Scoreboard_Panel",
                     (cx, sb_y, sb_z + 6.0),
                     (10.0, 0.20, 3.0),
                     (0.20, 0.22, 0.28, 1.0))
     # School name banner above the scoreboard panel
     _make_box_local("HSField_Scoreboard_NameBanner",
-                    (cx, sb_y, sb_z + 8.0),
+                    (cx, sb_y, sb_z + 8.4),
                     (10.0, 0.10, 0.80),
                     (0.20, 0.22, 0.55, 1.0))
 
