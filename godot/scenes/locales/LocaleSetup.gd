@@ -70,6 +70,7 @@ func _ready() -> void:
 	var arcade_signs: Array = []
 	var laundromat_signs: Array = []
 	var diner_signs: Array = []
+	var hce_welcome_signs: Array = []
 	for mi in meshes:
 		mi.material_override = mat
 		applied += 1
@@ -107,6 +108,8 @@ func _ready() -> void:
 			laundromat_signs.append(mi)
 		elif "Diner_SignPanel" in mi.name:
 			diner_signs.append(mi)
+		elif "HCE_Welcome_SignFace" in mi.name:
+			hce_welcome_signs.append(mi)
 	print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
 	# Attach real Label3D text to the sign panels.
 	#
@@ -209,6 +212,17 @@ func _ready() -> void:
 						0.0,
 						Color(0.98, 0.98, 0.96, 1.0),    # cream
 						Color(0.42, 0.08, 0.06, 1.0))    # deep red
+	# HCE community welcome sign — faces SOUTH (toward the spawn-
+	# approaching player). Two-line "HARMONY CREEK / ESTATES"
+	# centred on a tall cream face.
+	for panel in hce_welcome_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.10),
+						Vector3(0, 0, 1),
+						"HARMONY CREEK\nESTATES",
+						0.0,
+						Color(0.18, 0.14, 0.10, 1.0),
+						Color(0.86, 0.82, 0.70, 1.0))
 	# Speed-limit sign — south face (Blender -Y → Godot +Z).
 	for panel in speed_limit_signs:
 		_attach_text_label(panel,

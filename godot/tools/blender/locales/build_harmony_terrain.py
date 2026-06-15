@@ -4586,6 +4586,44 @@ def build_commercial_cluster():
                         (store_x + 1.6, bench_y, bz + 0.55),
                         0.28, 1.0, (0.32, 0.32, 0.32, 1.0),
                         segments=8)
+    # ── HARMONY CREEK ESTATES community sign on a stone plinth
+    # at the north end of the spawn spur. The first thing the
+    # player sees as they walk south from the country-club
+    # spawn point.
+    hce_x = 0.0
+    hce_y = -342.0       # north of the spur start (spawn-side)
+    hce_z = mesh_z(hce_x, hce_y)
+    COL_HCE_STONE = (0.78, 0.74, 0.66, 1.0)
+    COL_HCE_TRIM = (0.42, 0.30, 0.20, 1.0)
+    COL_HCE_FACE = (0.86, 0.82, 0.70, 1.0)
+    # Stone plinth base
+    _make_box_local("HCE_Welcome_Plinth",
+                    (hce_x, hce_y, hce_z + 0.50),
+                    (5.6, 1.20, 1.00), COL_HCE_STONE)
+    # Cap layer on the plinth
+    _make_box_local("HCE_Welcome_PlinthCap",
+                    (hce_x, hce_y, hce_z + 1.10),
+                    (5.8, 1.30, 0.20), COL_HCE_TRIM)
+    # Sign face on top (the Label3D target)
+    _make_box_local("HCE_Welcome_SignFace",
+                    (hce_x, hce_y, hce_z + 2.00),
+                    (5.0, 0.15, 1.40), COL_HCE_FACE)
+    # Sign top moulding
+    _make_box_local("HCE_Welcome_SignTopMould",
+                    (hce_x, hce_y, hce_z + 2.78),
+                    (5.4, 0.20, 0.16), COL_HCE_TRIM)
+    # Two flanking lanterns
+    for sgn in (-1, 1):
+        _make_cyl_local(f"HCE_Welcome_Lantern_{sgn:+d}_Pole",
+                        (hce_x + sgn * 2.4, hce_y,
+                         hce_z + 1.80),
+                        0.06, 1.40, COL_HCE_TRIM, segments=6)
+        _make_box_local(f"HCE_Welcome_Lantern_{sgn:+d}_Box",
+                        (hce_x + sgn * 2.4, hce_y,
+                         hce_z + 2.65),
+                        (0.30, 0.30, 0.40),
+                        (0.95, 0.85, 0.30, 1.0))     # warm glass
+
     # Spur from spawn approach to the strip sidewalk
     for i in range(len(spur_pts) - 1):
         x0, y0 = spur_pts[i]
