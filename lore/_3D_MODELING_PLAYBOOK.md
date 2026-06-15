@@ -955,6 +955,33 @@ between-equally-OK-options choice, pick the printable one.
   geometry to match existing hints (preferred — keeps the
   hint list short) or add new hints.
 
+### 2026-06-15 · engine / asset-management notes
+
+When the time comes to optimise (currently DEFERRED — rough
+layout first):
+
+- **Per-locale GLB splits.** Break the single
+  `harmony_terrain.glb` into ~6 sub-GLBs (north / central /
+  south-res / south-comm / east / west) and chunk-load via a
+  `chunk_manager.gd` based on player position.
+- **MultiMeshInstance3D for repeats.** Houses, street trees,
+  lamps, parked cars, fence segments — all currently
+  emit a fresh MeshInstance3D per instance. ~10× node-count
+  reduction by collapsing each palette family into one
+  `MultiMeshInstance3D` with per-instance transforms.
+- **`visibility_range_begin/end` on small props.** Cars, NPCs,
+  signs, mailboxes hidden past ~150 m via Godot 4.2+'s built-in
+  visibility ranges.
+- **Box colliders instead of trimesh for buildings.** The
+  current `LocaleSetup.gd` builds a per-vertex trimesh collider
+  for every wall the hint list matches. Way cheaper to use an
+  axis-aligned `BoxShape3D` derived from the mesh AABB. Trimesh
+  only needed for terrain.
+- **Threshold to start.** ~60 fps drop on Steam Deck during
+  fly-through, or initial load > 5 s, or GLB > 100 MB. Until
+  then the monolithic build keeps iteration fast and the
+  build-test-edit loop short.
+
 ### TEMPLATE for next session
 
 ```markdown
