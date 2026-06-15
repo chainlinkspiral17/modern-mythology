@@ -10711,6 +10711,74 @@ def build_arterial_lighting():
                             prefix)
 
 
+def build_fire_hydrants():
+    """Fire hydrants along arterial sidewalks. Civil-engineering
+    standard: ~120m spacing (close enough that any building lot
+    is within 60m of a hydrant). Place on the sidewalk side,
+    alternating sides so the same side doesn't get two in a row.
+    """
+    COL_HYDRANT_BODY = (0.85, 0.20, 0.18, 1.0)   # safety red
+    COL_HYDRANT_CAP = (0.95, 0.85, 0.30, 1.0)    # yellow caps
+    spacing = 120.0
+    sidewalk_off = 6.4    # arterial sidewalk centerline offset
+    corridor_xys = {name: [(x, y) for (x, y, _z) in wps]
+                    for (name, wps, _hw, _sh) in ROAD_CORRIDORS}
+
+    def _emit_hydrants(pts, prefix):
+        accumulated = 0.0
+        next_h = 60.0      # first hydrant at half spacing
+        side_sgn = 1
+        idx = 0
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+            seg_len = math.hypot(x1 - x0, y1 - y0) or 1.0
+            seg_end = accumulated + seg_len
+            while next_h < seg_end:
+                t = (next_h - accumulated) / seg_len
+                mx = x0 + (x1 - x0) * t
+                my = y0 + (y1 - y0) * t
+                dxs = x1 - x0; dys = y1 - y0
+                perp_x = -dys / seg_len
+                perp_y =  dxs / seg_len
+                hx = mx + side_sgn * perp_x * (sidewalk_off + 1.3)
+                hy = my + side_sgn * perp_y * (sidewalk_off + 1.3)
+                hz = mesh_z(hx, hy)
+                # Barrel — short red cylinder
+                _make_cyl_local(f"{prefix}Hydrant_{idx}_Barrel",
+                                (hx, hy, hz + 0.30),
+                                0.12, 0.60, COL_HYDRANT_BODY, segments=8)
+                # Yellow top cap
+                _make_cyl_local(f"{prefix}Hydrant_{idx}_TopCap",
+                                (hx, hy, hz + 0.70),
+                                0.13, 0.12, COL_HYDRANT_CAP, segments=8)
+                # 2 side nozzle caps (yellow)
+                for cap_sgn in (-1, 1):
+                    cap_off_x = side_sgn * perp_y * 0.13 * cap_sgn   # 90° from facing
+                    cap_off_y = side_sgn * -perp_x * 0.13 * cap_sgn
+                    _make_cyl_local(
+                        f"{prefix}Hydrant_{idx}_Nozzle_{cap_sgn:+d}",
+                        (hx + cap_off_x, hy + cap_off_y, hz + 0.40),
+                        0.05, 0.08,
+                        COL_HYDRANT_CAP, segments=6)
+                # Bonnet pentagon nut (small grey topper)
+                _make_cyl_local(f"{prefix}Hydrant_{idx}_Bonnet",
+                                (hx, hy, hz + 0.78),
+                                0.05, 0.05,
+                                (0.42, 0.42, 0.45, 1.0), segments=5)
+                idx += 1
+                side_sgn = -side_sgn
+                next_h += spacing
+            accumulated = seg_end
+    for cname, prefix in [
+        ("HarmonyBlvd", "HarmonyBlvd_FH_"),
+        ("HorizonDr",   "HorizonDr_FH_"),
+    ]:
+        if cname in corridor_xys:
+            _emit_hydrants(_catmull_rom_2d(corridor_xys[cname],
+                                            samples_per_seg=4),
+                           prefix)
+
+
 def build_residential_mailboxes():
     """Curbside mailboxes along every residential street. One
     mailbox per house spacing (~22m), alternating sides so each
@@ -14709,6 +14777,7 @@ def main():
     build_bus_stops()
     build_residential_mailboxes()
     build_arterial_lighting()
+    build_fire_hydrants()
     build_arterial_trees()
     build_church_cemetery()
     build_church_lot_and_school_playground()
