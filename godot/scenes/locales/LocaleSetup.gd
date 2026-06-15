@@ -137,7 +137,7 @@ func _ready() -> void:
 						Vector3(0, 0, 0.05),
 						Vector3(0, 0, 1),
 						"OLIVER TREE\n1993 – 2026",
-						0.006,
+						0.0,
 						Color(0.94, 0.88, 0.72, 1.0),
 						Color(0.12, 0.08, 0.04, 1.0))
 	# Park entry sign — same treatment.
@@ -146,18 +146,18 @@ func _ready() -> void:
 						Vector3(0, 0, 0.05),
 						Vector3(0, 0, 1),
 						"The Oliver Tree\nMemorial Park",
-						0.007,
+						0.0,
 						Color(0.32, 0.22, 0.16, 1.0),
 						Color(0.86, 0.82, 0.70, 1.0))
 	# Convenience-store roof signs — face SOUTH (Blender -Y →
-	# Godot +Z). Kwik Stop in cream on red, NexCorp Gas & Go in
-	# white on blue.
+	# Godot +Z). pixel_size = 0.0 → autosize from panel aabb so
+	# the text always fits inside the frame.
 	for panel in kwik_stop_signs:
 		_attach_text_label(panel,
 						Vector3(0, 0, 0.10),
 						Vector3(0, 0, 1),
 						"KWIK STOP",
-						0.018,
+						0.0,
 						Color(0.98, 0.95, 0.86, 1.0),
 						Color(0.40, 0.05, 0.05, 1.0))
 	for panel in nexcorp_signs:
@@ -165,7 +165,7 @@ func _ready() -> void:
 						Vector3(0, 0, 0.10),
 						Vector3(0, 0, 1),
 						"NexCorp\nGas & Go",
-						0.013,
+						0.0,
 						Color(0.98, 0.98, 0.96, 1.0),
 						Color(0.08, 0.12, 0.22, 1.0))
 	for panel in cosmic_comics_signs:
@@ -173,7 +173,7 @@ func _ready() -> void:
 						Vector3(0, 0, 0.10),
 						Vector3(0, 0, 1),
 						"COSMIC\nCOMICS",
-						0.015,
+						0.0,
 						Color(0.95, 0.85, 0.30, 1.0),
 						Color(0.10, 0.02, 0.10, 1.0))
 	# Speed-limit sign — south face (Blender -Y → Godot +Z).
@@ -182,7 +182,7 @@ func _ready() -> void:
 						Vector3(0, 0, 0.03),
 						Vector3(0, 0, 1),
 						"SPEED\nLIMIT\n35",
-						0.0035,
+						0.0,
 						Color(0.08, 0.08, 0.10, 1.0),
 						Color(0.98, 0.98, 0.96, 1.0))
 	for panel in nexcorp_pylon_signs:
@@ -190,7 +190,7 @@ func _ready() -> void:
 						Vector3(0, 0, 0.12),
 						Vector3(0, 0, 1),
 						"NEXCORP",
-						0.014,
+						0.0,
 						Color(0.98, 0.98, 0.96, 1.0),
 						Color(0.08, 0.12, 0.22, 1.0))
 	# Flag pole base plaque — explains the half-mast position in
@@ -201,20 +201,28 @@ func _ready() -> void:
 						Vector3(0, 0, 0.03),
 						Vector3(0, 0, 1),
 						"AT HALF-MAST\nIN MEMORY OF\nOLIVER TREE",
-						0.002,
+						0.0,
 						Color(0.95, 0.88, 0.72, 1.0),
 						Color(0.10, 0.06, 0.02, 1.0))
 
 
 func _attach_text_label(panel: MeshInstance3D, world_face_offset: Vector3,
 						face_normal: Vector3, text: String,
-						pixel_size: float = 0.010,
+						pixel_size: float = 0.0,
 						text_color: Color = Color(0.94, 0.88, 0.72, 1.0),
 						outline_color: Color = Color(0.12, 0.08, 0.04, 1.0)) -> void:
-	"""Generic text-attached-to-panel helper. Same orientation logic
-	as _attach_sign_label but with configurable text + colours.
-	Used by the OT plaque + park sign + any other Label3D panel
-	that doesn't want the cursive D'Ambrosio's defaults."""
+	"""Text-attached-to-panel helper.
+
+	If pixel_size <= 0 (the default), auto-sizes the text so it
+	fits inside the panel's aabb with 10% margin on width and 15%
+	on height. Per the lore/_3D_MODELING_PLAYBOOK.md "Signage: text
+	fits INSIDE the frame" rule — never let giant letters overflow
+	the sign frame.
+
+	The panel's aabb's *face* dimensions are computed from
+	face_normal: whichever two of the aabb's three axes are
+	perpendicular to face_normal define the sign's width + height.
+	"""
 	var label := Label3D.new()
 	label.text = text
 	label.font_size = 64
@@ -225,10 +233,40 @@ func _attach_text_label(panel: MeshInstance3D, world_face_offset: Vector3,
 	label.shaded = false
 	label.double_sided = true
 	label.alpha_cut = Label3D.ALPHA_CUT_OPAQUE_PREPASS
-	label.pixel_size = pixel_size
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	# Auto-size: pick the panel's two non-face axes as width/height
+	# and choose pixel_size so the text fits inside them.
+	var aabb: AABB = panel.get_aabb()
+	var fwd_abs := face_normal.normalized().abs()
+	var w_axis: float
+	var h_axis: float
+	if fwd_abs.z > 0.7:
+		w_axis = aabb.size.x
+		h_axis = aabb.size.y
+	elif fwd_abs.x > 0.7:
+		w_axis = aabb.size.z
+		h_axis = aabb.size.y
+	else:
+		w_axis = aabb.size.x
+		h_axis = aabb.size.z
+	if pixel_size <= 0.0:
+		var lines: PackedStringArray = text.split("\n")
+		var n_lines: int = lines.size()
+		var max_chars := 1
+		for line in lines:
+			if line.length() > max_chars:
+				max_chars = line.length()
+		# Label3D default font: each char ≈ font_size * 0.55 px wide,
+		# each line ≈ font_size * 1.18 px tall.
+		var text_w_px: float = max_chars * label.font_size * 0.55
+		var text_h_px: float = n_lines * label.font_size * 1.18
+		var ps_w: float = (w_axis * 0.90) / max(text_w_px, 1.0)
+		var ps_h: float = (h_axis * 0.85) / max(text_h_px, 1.0)
+		label.pixel_size = min(ps_w, ps_h)
+	else:
+		label.pixel_size = pixel_size
 	panel.add_child(label)
-	var panel_centre := panel.global_transform.origin + panel.get_aabb().get_center()
+	var panel_centre := panel.global_transform.origin + aabb.get_center()
 	var pos := panel_centre + world_face_offset
 	var fwd: Vector3 = face_normal.normalized()
 	var world_up := Vector3(0, 1, 0)

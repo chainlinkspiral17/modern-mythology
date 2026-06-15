@@ -194,7 +194,13 @@ PONDS = [
     # Wider + deeper than the v1 ponds. Format: (name, cx, cy, radius, depth)
     # WATER_SURFACE_Z is how far below GROUND_Z the water plane sits;
     # depth is the terrain depression amount.
-    ("FoundersPond",   -300,  140,  45, 10.0),    # big anchor pond in Founders Grove
+    # FoundersPond moved south of the OT Park settlement zone — was
+    # at (-300, 140) with radius 45, but the OT Park rect (-300 to
+    # -220, 60 to 180) flattened the western half of the pond so
+    # the water disc hung out across the hillside next to the
+    # gazebo. Now at (-380, 30) with radius 32, fully in the wild
+    # zone south of the park where the depression carves naturally.
+    ("FoundersPond",   -380,   30,  32,  8.0),
     ("HarmonyPond",      30,   60,  32,  6.0),    # community pool placement
     ("WildLotPond",    -340, -240,  38,  8.0),    # gone-to-seed wild pond
     ("SECreekPond",     360, -120,  40,  9.0),    # moved AWAY from the creek so it reads
@@ -532,22 +538,33 @@ def build_ground():
 
 def build_creek():
     """Water surface quads sitting inside the flood-plain ravine.
-    Bank tops at ~0 m; water surface at ~−2.2 m (just below mean
-    bank elevation so a real ravine reads on either side)."""
-    water_z = -2.2
-    width = 6.0
+    Each segment samples mesh_z at its four corners and places the
+    water plane 0.6 m below the CHANNEL FLOOR at each point — so
+    the water follows the carved ravine instead of using a single
+    hardcoded z that floats above the channel in some places and
+    sinks below ground in others. Width also shrunk to 60% of the
+    flood-plain width so the water disc stays well inside the
+    carved walls (per the user's "water floating above the hole"
+    feedback)."""
+    width = 3.6           # was 6.0; shrunk so the disc stays inside
     for i in range(len(CREEK_POINTS) - 1):
         x0, y0 = CREEK_POINTS[i]
         x1, y1 = CREEK_POINTS[i + 1]
         dx = x1 - x0; dy = y1 - y0
         ang = math.atan2(dy, dx)
         perp_x = -math.sin(ang); perp_y = math.cos(ang)
-        verts = [
-            (x0 - perp_x * width / 2, y0 - perp_y * width / 2, water_z),
-            (x1 - perp_x * width / 2, y1 - perp_y * width / 2, water_z),
-            (x1 + perp_x * width / 2, y1 + perp_y * width / 2, water_z),
-            (x0 + perp_x * width / 2, y0 + perp_y * width / 2, water_z),
+        # Per-corner z = mesh_z at that corner - 0.6 m. Caps the
+        # water surface at no more than (channel floor - 0.6) so
+        # it never floats above terrain even where the channel is
+        # shallow or runs through a settlement zone.
+        corners = [
+            (x0 - perp_x * width / 2, y0 - perp_y * width / 2),
+            (x1 - perp_x * width / 2, y1 - perp_y * width / 2),
+            (x1 + perp_x * width / 2, y1 + perp_y * width / 2),
+            (x0 + perp_x * width / 2, y0 + perp_y * width / 2),
         ]
+        verts = [(vx, vy, mesh_z(vx, vy) - 0.60)
+                  for (vx, vy) in corners]
         _finalize_mesh(f"Creek_Water_{i}", verts, [[0, 1, 2, 3]],
                        COL_CREEK_WATER)
 
@@ -711,13 +728,14 @@ def build_pond_water():
         # Sample the actual terrain at candidate radii and find
         # the largest radius where mesh terrain is still BELOW
         # water level — that's the water's true extent.
-        # Water disc · fixed at 70% of radius. The earlier empirical
-        # shrinking against mesh_z failed for ponds inside flatten
-        # zones (commercial belts, parks) where the settlement
-        # pulled the pond depression upward, leaving below_count = 0
-        # and water disc at the 0.20 fallback. With the steep
-        # smoothstep depression the bowl IS deep enough at 0.7×r.
-        wr = radius * 0.70
+        # Water disc · shrunk to 0.48 × radius so the entire disc
+        # sits inside the depression's flat-bottom plateau (which
+        # extends to d = 0.50 × radius before the rim ramp begins).
+        # Earlier 0.70 × radius extended into the rising rim and
+        # the user could see water "hanging out" past the carved
+        # hole. Now the disc terminates 2% inside the plateau and
+        # the carved channel walls visibly rise on all sides.
+        wr = radius * 0.48
         # Outer water disc (lighter — shallow rim)
         verts = [(cx, cy, water_z)]
         for i in range(segments):

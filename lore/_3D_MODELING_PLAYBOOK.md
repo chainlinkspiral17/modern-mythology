@@ -702,6 +702,39 @@ between-equally-OK-options choice, pick the printable one.
   orientation of the strip — buildings face the road, lots back
   onto the road, sidewalks parallel the road.
 
+### 2026-06-15 · creek + pond + signage alignment
+
+- **Water always sits inside the carved hole.** Both creek
+  segments and pond water discs had been floating above their
+  carved channels in places — creeks because the water surface
+  was a single hardcoded `z`, ponds because the disc extended
+  past the depression's flat-bottom plateau into the rising rim.
+  Rules:
+  - Creek segments sample `mesh_z` at each of the four corner
+    quads and place the water plane at `mesh_z - 0.60`, so the
+    surface tracks the carved channel everywhere.
+  - Pond water discs cap at `0.48 × radius`, well inside the
+    `pond_depression`'s `0.50 × radius` full-depth plateau.
+  - Pond center MUST be deeper than `2 × radius` inside any
+    settlement-flatten rect. If the pond crosses the rect edge
+    the flatten cancels the carved depression on one side and
+    the disc floats over the un-flattened hill.
+- **Signage: text fits INSIDE the frame.** Stop attaching
+  Label3D nodes with default `font_size = 64` and a `pixel_size`
+  guessed from the panel's longest dimension — that overflows the
+  short panels and reads as giant text hovering outside the sign.
+  The rule:
+  - Compute the panel's aabb (`mesh.get_aabb()`).
+  - Pick `pixel_size` so `text_pixel_width × pixel_size ≤
+    panel_width × 0.90` (10% margin) AND `text_pixel_height ×
+    pixel_size ≤ panel_height × 0.85`.
+  - If a multi-line string blows the height budget, drop a line
+    or shrink `font_size` rather than letting the text escape
+    the panel.
+  - For one-word brands ("KWIK STOP", "NEXCORP", "COSMIC"), a
+    rough heuristic: `pixel_size ≈ panel_width / (chars × 38)`
+    keeps the word centered with a margin.
+
 ### TEMPLATE for next session
 
 ```markdown
