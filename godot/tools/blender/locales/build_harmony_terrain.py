@@ -6140,6 +6140,53 @@ def build_church_cemetery():
                     (2.5, 0.20, 0.30), col_dark)
 
 
+def build_arterial_sidewalks():
+    """Concrete sidewalks on both sides of Harmony Blvd and
+    Horizon Drive. Each sidewalk is a 2.4 m wide concrete band
+    1.5 m outside the road edge (between road and the
+    streetlamp line at 5 m).
+    """
+    COL_SIDEWALK = (0.78, 0.76, 0.72, 1.0)
+    sw_w = 2.4
+    sw_outer_off = 4.0 + 1.2 + sw_w / 2   # ~ 6.4 m from centerline
+
+    def _emit_sidewalk(pts, prefix):
+        for sgn in (-1, 1):
+            for i in range(len(pts) - 1):
+                x0, y0 = pts[i]
+                x1, y1 = pts[i + 1]
+                dxs = x1 - x0; dys = y1 - y0
+                seg_len = math.hypot(dxs, dys) or 1.0
+                perp_x = -dys / seg_len
+                perp_y =  dxs / seg_len
+                pv = []
+                for (px, py) in [
+                    (x0 + sgn * perp_x * (sw_outer_off - sw_w / 2),
+                     y0 + sgn * perp_y * (sw_outer_off - sw_w / 2)),
+                    (x1 + sgn * perp_x * (sw_outer_off - sw_w / 2),
+                     y1 + sgn * perp_y * (sw_outer_off - sw_w / 2)),
+                    (x1 + sgn * perp_x * (sw_outer_off + sw_w / 2),
+                     y1 + sgn * perp_y * (sw_outer_off + sw_w / 2)),
+                    (x0 + sgn * perp_x * (sw_outer_off + sw_w / 2),
+                     y0 + sgn * perp_y * (sw_outer_off + sw_w / 2)),
+                ]:
+                    pv.append((px, py, mesh_z(px, py) + 0.06))
+                _finalize_mesh(f"{prefix}Sidewalk_{i}_{sgn:+d}", pv,
+                                [[0, 1, 2, 3]], COL_SIDEWALK)
+
+    harmony_blvd = [
+        (0, 340), (10, 260), (30, 200), (60, 130),
+        (60, 10), (40, -80), (20, -180), (10, -260), (0, -340),
+    ]
+    horizon_dr = [
+        (-460, -20), (-380, -10), (-280, -10), (-180, -20),
+        (-80, -30), (60, -20), (160, -10), (260, -10),
+        (380, 0), (440, 0),
+    ]
+    _emit_sidewalk(harmony_blvd, "HarmonyBlvd_")
+    _emit_sidewalk(horizon_dr, "HorizonDr_")
+
+
 def build_arterial_lighting():
     """Streetlamps along Harmony Blvd and Horizon Drive at ~40 m
     spacing, alternating sides. Tall (6 m) suburban-arterial
@@ -8724,6 +8771,7 @@ def main():
     build_halsey_studios()
     build_hospital()
     build_drive_in_theatre()
+    build_arterial_sidewalks()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
