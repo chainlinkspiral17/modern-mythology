@@ -21,6 +21,34 @@ touching code:
 4. The latest commit message on the working branch — recent context.
 5. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
 
+## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
+
+**Every new HUD overlay MUST honor F4.** The player wants clean
+pictures of gameplay; debug text appearing in screenshots is a
+recurring complaint. The rules:
+
+1. F4 toggles `FirstPersonController.hud_visible` (a static var)
+   and walks the scene tree hiding every `CanvasLayer` plus every
+   `"ui"`-group member.
+2. Any NEW HUD layer (CanvasLayer, top-level Control) you add
+   MUST:
+   - Set `visible = FirstPersonController.hud_visible` on spawn
+     so it inherits the current toggle state.
+   - Either join the `"ui"` group OR live inside a CanvasLayer
+     (which F4 already catches).
+3. NEVER add a Label or other UI element directly under the
+   scene root (it bypasses the F4 sweep). Put it inside a
+   CanvasLayer.
+4. World-rendering CanvasLayers (PostProcess shaders) should NOT
+   be hidden by F4 — those aren't HUD. F4 only sweeps the scene
+   tree from root, but the PostProcess CanvasLayer is hidden by
+   the same call. If a PostProcess CanvasLayer ever needs to
+   survive F4, add it to a `"world_render"` group and skip in
+   the F4 sweep. For now: HUD only.
+5. Test by pressing F4 at SCENE START before any dynamic HUD
+   members (music player, mood label) have had time to spawn,
+   then waiting for them to spawn — they must NOT pop up.
+
 ## Lesson-capture cadence (durable rule)
 
 After every significant work session — meaning anything that

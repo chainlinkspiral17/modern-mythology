@@ -235,31 +235,55 @@ ROAD_CORRIDORS = [
     # Subdivided to ≤40 m segments so the carved grade reads smooth
     # across the 15 m mesh grid (longer segments showed visible
     # kinks at each polyline vertex).
+    # Targets ALIGNED TO SETTLEMENT PLATFORMS so the road doesn't
+    # ride visibly above flat zones. The road only changes
+    # elevation in the TRANSITION strips between settlements
+    # (which IS where humans place ramps). Inside HarmonyPark
+    # (y -40 .. 200, +1) the road stays at +1; the climb to
+    # NorthComm happens y=200..260 (60m, +13m -> 22% peak).
+    # FLAT through each settlement; only ramps in the transition
+    # strips BETWEEN zones. Eliminates the visible "road sits above
+    # the park" cliff that the user flagged 2026-06-15.
     ("HarmonyBlvd", [
-        (   0,  380, +22.0),   # CC south driveway
-        (   0,  360, +21.0),
-        (   0,  340, +20.0),   # CC south edge
-        (   3,  300, +17.0),
-        (  10,  260, +14.0),   # NorthComm belt
-        (  18,  230,  +9.5),
-        (  30,  200,  +5.0),   # NorthComm → HarmonyPark transition
-        (  44,  170,  +3.0),
-        (  56,  140,  +1.5),
-        (  60,  130,  +1.0),   # HarmonyPark
-        (  60,   80,  +1.0),
-        (  60,   40,  +1.0),
-        (  60,   10,  +1.0),   # HarmonyPark south
-        (  52,  -30,   0.0),
-        (  40,  -80,  -1.0),   # HP/Phase2 transition
-        (  30, -130,  -2.5),
-        (  20, -180,  -4.0),   # mid valley wild zone
-        (  16, -220,  -5.5),
-        (  10, -260,  -7.0),   # approaching SouthComm
-        (   4, -300,  -8.0),
-        (   0, -340,  -9.0),   # SouthComm north edge
-        (   8, -380,  -9.0),   # chapter-1 frontage
+        (   0,  380, +22.0),   # CC zone (340..420 +22)
+        (   0,  360, +22.0),
+        (   0,  345, +22.0),
+        # CC -> NorthComm ramp (y=345..330, +22 -> +14, 15m, ~53% peak)
+        (   3,  335, +20.0),
+        (   7,  325, +16.5),
+        (  10,  315, +14.0),
+        # NorthComm zone (y=260..340 +14): flat through
+        (  10,  300, +14.0),
+        (  10,  280, +14.0),
+        (  10,  260, +14.0),
+        # NorthComm -> HarmonyPark ramp (y=260..200, +14 -> +1, 60m, 22% peak)
+        (  15,  245, +12.0),
+        (  22,  225,  +8.0),
+        (  30,  205,  +2.5),
+        # HarmonyPark zone (y=-40..200 +1): flat through
+        (  44,  190,  +1.0),
+        (  56,  170,  +1.0),
+        (  60,  140,  +1.0),
+        (  60,  100,  +1.0),
+        (  60,   60,  +1.0),
+        (  60,   20,  +1.0),
+        (  56,  -20,  +1.0),
+        (  44,  -38,  +1.0),
+        # HarmonyPark -> wild zone -> SouthComm gradual descent
+        # (y=-40..-340 +1 -> -9, 300m, 3.3% avg)
+        (  36,  -70,  -0.5),
+        (  28, -110,  -2.0),
+        (  22, -150,  -3.5),
+        (  18, -190,  -4.5),
+        (  14, -230,  -5.5),
+        (  10, -270,  -6.5),
+        (   6, -310,  -8.0),
+        # SouthComm zone (y=-400..-340 -9): flat through
+        (   2, -340,  -9.0),
+        (   6, -370,  -9.0),
+        (  10, -385,  -9.0),
         (  12, -392,  -9.0),
-    ], 8.5, 36.0),
+    ], 8.5, 22.0),
 
     # ── HORIZON DRIVE · E-W arterial. From WestComm (-2) east to
     # EastComm (+5), threading through Harmony Park (0) and crossing
@@ -268,27 +292,27 @@ ROAD_CORRIDORS = [
         (-560,  -20,  -2.0),
         (-510,  -20,  -2.0),
         (-460,  -20,  -2.0),   # WestComm boundary
-        (-420,  -15,  -1.8),
-        (-380,  -10,  -1.5),
-        (-330,  -10,  -1.3),
-        (-280,  -10,  -1.0),   # south of OT Park
-        (-230,  -15,  -0.5),
-        (-180,  -20,   0.0),   # HarmonyPark south edge
-        (-130,  -25,   0.0),
-        ( -80,  -30,   0.0),
-        ( -40,  -30,   0.0),
-        (  10,  -25,   0.0),
-        (  60,  -20,   0.0),   # junction with Harmony Blvd
-        ( 110,  -15,  +0.7),
-        ( 160,  -10,  +1.5),   # approaching ECDS/HS field
-        ( 210,  -10,  +2.2),
-        ( 260,  -10,  +3.0),
-        ( 320,   -5,  +4.0),
-        ( 380,    0,  +5.0),
-        ( 440,    0,  +5.0),   # EastComm
-        ( 510,    0,  +5.0),
-        ( 560,    0,  +5.0),
-    ], 8.5, 36.0),
+        (-420,  -17,  -2.0),
+        (-380,  -15,  -1.5),
+        (-330,  -12,  -1.0),
+        (-280,  -10,   0.0),   # south of OT Park
+        (-230,  -15,   0.5),
+        (-180,  -20,   1.0),   # HarmonyPark south edge
+        (-130,  -25,   1.0),   # in HarmonyPark
+        ( -80,  -30,   1.0),
+        ( -40,  -30,   1.0),
+        (  10,  -25,   1.0),
+        (  60,  -20,   1.0),   # junction with Harmony Blvd
+        ( 110,  -15,   1.5),
+        ( 160,  -10,   2.0),   # approaching ECDS/HS field
+        ( 210,  -10,   2.5),
+        ( 260,  -10,   3.0),   # HSField target +3
+        ( 320,   -5,   4.0),
+        ( 380,    0,   5.0),
+        ( 440,    0,   5.0),   # EastComm
+        ( 510,    0,   5.0),
+        ( 560,    0,   5.0),
+    ], 8.5, 24.0),
 
     # ── CONNECTOR ROADS · short 5 m collectors. full-grade half-width
     # smaller because the road is narrower.

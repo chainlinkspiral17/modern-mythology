@@ -14,6 +14,7 @@
 #   F2             · TELEPORT to (0, 3, 0) — debug recovery if stuck
 # ════════════════════════════════════════════════════════════════
 
+class_name FirstPersonController
 extends CharacterBody3D
 
 @export var walk_speed: float = 2.2
@@ -110,29 +111,51 @@ func action_teleport_origin() -> void:
 	print("[FPC] teleport to (0, 3, 0) · current global_position now %s" % global_position)
 
 
+# Persistent across HUD members. New CanvasLayers added at runtime
+# (e.g. InGameMusicPlayer's track label) check this on ready and
+# sync. F4 is the SINGLE SOURCE OF TRUTH for "HUD is visible".
+# Static so any node can read/write without a singleton.
+static var hud_visible: bool = true
+
+
 func action_toggle_hud() -> void:
-	# Clean HUD = ALL floating UI canvases off. Walk the "ui" group
-	# for the scene HUD + InGameMusic track label + any other UI
-	# CanvasLayer / Control that joined the group. Snap them all to
-	# the same visibility state. Duck-typed .visible access because
-	# CanvasLayer (track label) doesn't extend CanvasItem in Godot 4
-	# — both have their own .visible property.
-	var ui_nodes: Array = get_tree().get_nodes_in_group("ui")
-	if not ui_nodes.is_empty():
-		var first: Node = ui_nodes[0] as Node
-		if first and "visible" in first:
-			var target: bool = not first.visible
-			for n in ui_nodes:
-				if "visible" in n:
-					n.visible = target
-			print("[FPC] HUD visible = %s (%d ui nodes)" % [target, ui_nodes.size()])
-			return
-	# Fallback if no nodes are in "ui" group yet — toggle the scene's
-	# ../HUD CanvasLayer directly.
-	var hud := get_node_or_null(NodePath("../HUD"))
-	if hud is CanvasLayer:
-		hud.visible = not hud.visible
-		print("[FPC] HUD visible = %s" % hud.visible)
+	# Clean HUD = ALL floating UI canvases off. Per user direction
+	# 2026-06-15 "F4 should turn EVERYTHING on and off — I want to
+	# be able to take clean pictures". We walk the entire scene tree
+	# looking for any CanvasLayer or top-level Control and hide it.
+	# The previous "first node in group" approach broke whenever a
+	# new HUD member joined after F4 had already toggled (e.g. the
+	# music-track label spawned later than the scene HUD).
+	hud_visible = not hud_visible
+	_apply_hud_visibility(get_tree().root, hud_visible)
+	# Also walk the "ui" group for explicit members (some Control
+	# nodes opt in without being CanvasLayers).
+	for n in get_tree().get_nodes_in_group("ui"):
+		if "visible" in n:
+			n.visible = hud_visible
+	print("[FPC] HUD visible = %s" % hud_visible)
+
+
+func _apply_hud_visibility(node: Node, vis: bool) -> void:
+	# Recursively hide every HUD-flavored CanvasLayer in the scene
+	# tree. A layer counts as HUD if its name contains "HUD" / "UI"
+	# / "Debug" / "Hud" / "Ui" (case-sensitive) OR if it is in the
+	# "ui" group. Post-process CanvasLayers (screen-space shaders
+	# like ASCII / demoscene) are intentionally NOT toggled by F4
+	# so the player keeps their visual style when taking pictures.
+	if node is CanvasLayer:
+		var nm: String = node.name
+		var is_hud: bool = (
+			"HUD" in nm or "Hud" in nm or
+			"UI" in nm or "Ui" in nm or
+			"Debug" in nm or "Menu" in nm or
+			node.is_in_group("ui")
+		)
+		if is_hud:
+			(node as CanvasLayer).visible = vis
+		return  # CanvasLayer children render through their own layer
+	for child in node.get_children():
+		_apply_hud_visibility(child, vis)
 
 
 func action_mouse_release() -> void:

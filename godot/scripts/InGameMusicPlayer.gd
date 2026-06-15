@@ -136,6 +136,11 @@ func _spawn_hud() -> void:
 	_hud_layer = CanvasLayer.new()
 	_hud_layer.layer = 110     # above scene HUD (which is at 100)
 	_hud_layer.add_to_group("ui")   # F4 clean-HUD toggles us too
+	# Sync to the global HUD visibility state. Prevents the music
+	# label coming back as VISIBLE after the player already toggled
+	# F4 to hide everything (the label was joining the group AFTER
+	# F4's last sweep had run).
+	_hud_layer.visible = FirstPersonController.hud_visible
 	add_child(_hud_layer)
 	_hud_label = Label.new()
 	_hud_label.offset_left = 16.0
