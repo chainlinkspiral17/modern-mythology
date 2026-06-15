@@ -5513,6 +5513,60 @@ def _face_axis(facing):
     return (0.0, -1.0)
 
 
+def build_connector_roads():
+    """Short link roads connecting each neighborhood to the new
+    district arterials (Harmony Blvd N-S, Horizon Dr E-W). Each
+    is a thin 5 m collector road sampling mesh_z per corner.
+    """
+    road_w = 5.0
+    curb_w = 0.4
+    COL_ROAD = (0.22, 0.22, 0.24, 1.0)
+    COL_CURB = (0.78, 0.76, 0.70, 1.0)
+    hw = road_w / 2
+
+    def _emit(pts, prefix):
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+            dxs = x1 - x0; dys = y1 - y0
+            seg_len = math.hypot(dxs, dys) or 1.0
+            perp_x = -dys / seg_len
+            perp_y =  dxs / seg_len
+            rv = []
+            for (rx, ry) in [(x0 - perp_x * hw, y0 - perp_y * hw),
+                             (x1 - perp_x * hw, y1 - perp_y * hw),
+                             (x1 + perp_x * hw, y1 + perp_y * hw),
+                             (x0 + perp_x * hw, y0 + perp_y * hw)]:
+                rv.append((rx, ry, mesh_z(rx, ry) + 0.04))
+            _finalize_mesh(f"{prefix}Road_{i}", rv, [[0, 1, 2, 3]],
+                            COL_ROAD)
+            for sgn in (-1, 1):
+                cv = []
+                for (rx, ry) in [(x0 + sgn * perp_x * hw,
+                                  y0 + sgn * perp_y * hw),
+                                 (x1 + sgn * perp_x * hw,
+                                  y1 + sgn * perp_y * hw),
+                                 (x1 + sgn * perp_x * (hw + curb_w),
+                                  y1 + sgn * perp_y * (hw + curb_w)),
+                                 (x0 + sgn * perp_x * (hw + curb_w),
+                                  y0 + sgn * perp_y * (hw + curb_w))]:
+                    cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
+                _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
+                                [[0, 1, 2, 3]], COL_CURB)
+
+    # Phase 2 → Horizon Dr (east end)
+    _emit([(240, -150), (260, -80), (260, -10)], "P2Link_")
+    # West Estates → Horizon Dr (west end)
+    _emit([(-440, -180), (-440, -100), (-440, -25)], "WELink_")
+    # North Ranch → Harmony Blvd (south side of NR)
+    _emit([(-320, 100), (-200, 100), (-100, 100), (10, 130)],
+           "NRLink_")
+    # East CDS → Horizon Dr east end
+    _emit([(200, 140), (200, 80), (220, 20), (260, -10)],
+           "ECDSLink_")
+    # Country Club south driveway → Harmony Blvd top
+    _emit([(0, 360), (0, 340)], "CCLink_")
+
+
 def build_community_landmarks():
     """Three civic landmarks scattered across HCE:
       · CHURCH on Harmony Boulevard between HarmonyPark and OT
@@ -7700,6 +7754,7 @@ def main():
     build_harmony_park()
     build_district_arterials()
     build_community_landmarks()
+    build_connector_roads()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
