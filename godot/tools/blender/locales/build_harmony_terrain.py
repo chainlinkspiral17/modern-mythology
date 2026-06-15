@@ -8864,6 +8864,66 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                         (fp_x, fp_y, fp_z + FENCE_H / 2),
                         (0.16, 0.16, FENCE_H + 0.10), col_fence_post)
 
+    # ── REAR PATIO · concrete slab + cafe table + BBQ on ~30% of
+    # houses. Sits just off the back of the main house wall.
+    seed_patio = (int(cx * 59) + int(cy * 61)) % 100
+    if seed_patio < 30:
+        col_patio = (0.82, 0.80, 0.74, 1.0)
+        col_bbq_body = (0.18, 0.18, 0.20, 1.0)
+        col_bbq_lid = (0.32, 0.32, 0.34, 1.0)
+        col_table = (0.42, 0.30, 0.20, 1.0)
+        col_chair = (0.95, 0.92, 0.84, 1.0)
+        # Patio center: 4m behind the house back wall
+        p_back_off = main_d / 2 + 2.5
+        p_cx = cx - fx * p_back_off
+        p_cy = cy - fy * p_back_off
+        p_z = mesh_z(p_cx, p_cy)
+        # Slab — 5m wide x 3.5m deep
+        if abs(fx) > 0.5:
+            patio_size = (3.5, 5.0, 0.10)
+        else:
+            patio_size = (5.0, 3.5, 0.10)
+        _make_box_local(f"{name}_Patio_Slab",
+                        (p_cx, p_cy, p_z + 0.05),
+                        patio_size, col_patio)
+        # BBQ grill — kettle on a post at one corner of the patio
+        bbq_cx = p_cx + perp_x * 1.6
+        bbq_cy = p_cy + perp_y * 1.6
+        _make_cyl_local(f"{name}_Patio_BBQ_Pedestal",
+                        (bbq_cx, bbq_cy, p_z + 0.45),
+                        0.05, 0.85, col_bbq_body, segments=4)
+        _make_sphere_low_local(f"{name}_Patio_BBQ_Kettle",
+                                (bbq_cx, bbq_cy, p_z + 1.00),
+                                0.32, col_bbq_body,
+                                rings=2, segments=8)
+        _make_sphere_low_local(f"{name}_Patio_BBQ_Lid",
+                                (bbq_cx, bbq_cy, p_z + 1.18),
+                                0.30, col_bbq_lid,
+                                rings=2, segments=8)
+        # Cafe table at the other corner
+        t_cx = p_cx - perp_x * 1.4
+        t_cy = p_cy - perp_y * 1.4
+        _make_cyl_local(f"{name}_Patio_Table_Post",
+                        (t_cx, t_cy, p_z + 0.36),
+                        0.05, 0.72, col_table, segments=4)
+        _make_cyl_local(f"{name}_Patio_Table_Top",
+                        (t_cx, t_cy, p_z + 0.74),
+                        0.50, 0.05, col_table, segments=8)
+        # Two chairs flanking the table
+        for ch_sgn in (-1, 1):
+            ch_x = t_cx + perp_x * ch_sgn * 0.85
+            ch_y = t_cy + perp_y * ch_sgn * 0.85
+            _make_box_local(f"{name}_Patio_Chair_{ch_sgn:+d}_Seat",
+                            (ch_x, ch_y, p_z + 0.45),
+                            (0.45, 0.45, 0.06), col_chair)
+            _make_box_local(f"{name}_Patio_Chair_{ch_sgn:+d}_Back",
+                            (ch_x + perp_x * ch_sgn * 0.20,
+                             ch_y + perp_y * ch_sgn * 0.20,
+                             p_z + 0.75),
+                            (0.06 if abs(perp_x) > 0.5 else 0.45,
+                             0.45 if abs(perp_x) > 0.5 else 0.06,
+                             0.50), col_chair)
+
     # ── BACKYARD TREE · single mature shade tree in the back yard
     # of every house. Bigger than the front yard specimen — backs
     # of houses commonly have the lot's biggest tree.
