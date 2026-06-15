@@ -626,6 +626,73 @@ def _build_head(name, base_x, base_y, head_base_z, s,
                     (base_x, base_y, head_cz + head_r * 0.10),
                     head_r * 1.03, hair_color,
                     rings=3, segments=8, squash_z=0.55)
+    elif hair_style == 'ponytail':
+        # Crown cap
+        _sphere_low(f"{name}_Hair_Crown",
+                    (base_x, base_y, head_cz + head_r * 0.08),
+                    head_r * 1.05, hair_color,
+                    rings=3, segments=8, squash_z=0.60)
+        # Ponytail trailing back from the crown
+        fwd_x_p, fwd_y_p = _face_axis(facing)
+        back_x = base_x - fwd_x_p * head_r * 0.85
+        back_y = base_y - fwd_y_p * head_r * 0.85
+        _cyl_taper(f"{name}_Hair_Ponytail",
+                   (back_x, back_y, head_cz - head_r * 0.25),
+                   head_r * 0.18, head_r * 0.08, head_d * 1.20,
+                   hair_color, segments=6)
+        # Hair tie band
+        _cyl_taper(f"{name}_Hair_Tie",
+                   (back_x, back_y, head_cz + head_r * 0.10),
+                   head_r * 0.22, head_r * 0.22, 0.025,
+                   (0.85, 0.20, 0.18, 1.0), segments=6)
+    elif hair_style == 'cap':
+        # Baseball cap — curved-front body + bill sticking forward
+        _sphere_low(f"{name}_Hat_Crown",
+                    (base_x, base_y, head_cz + head_r * 0.32),
+                    head_r * 1.10, hair_color,
+                    rings=3, segments=10, squash_z=0.55)
+        fwd_x_c, fwd_y_c = _face_axis(facing)
+        # Bill (visor)
+        bx = base_x + fwd_x_c * head_r * 0.95
+        by = base_y + fwd_y_c * head_r * 0.95
+        if abs(fwd_y_c) > abs(fwd_x_c):
+            _box(f"{name}_Hat_Bill",
+                 (bx, by, head_cz + head_r * 0.28),
+                 (head_d * 1.10, head_d * 0.55, 0.04),
+                 hair_color)
+        else:
+            _box(f"{name}_Hat_Bill",
+                 (bx, by, head_cz + head_r * 0.28),
+                 (head_d * 0.55, head_d * 1.10, 0.04),
+                 hair_color)
+    elif hair_style == 'beanie':
+        # Knit beanie — tall rounded cap sitting low on forehead
+        _sphere_low(f"{name}_Hat_Beanie",
+                    (base_x, base_y, head_cz + head_r * 0.42),
+                    head_r * 1.18, hair_color,
+                    rings=3, segments=10, squash_z=0.80)
+        # Rolled brim
+        _cyl_taper(f"{name}_Hat_BeanieBrim",
+                   (base_x, base_y, head_cz + head_r * 0.10),
+                   head_r * 1.08, head_r * 1.08, head_r * 0.18,
+                   (hair_color[0] * 0.78, hair_color[1] * 0.78,
+                    hair_color[2] * 0.78, hair_color[3]),
+                   segments=10)
+    elif hair_style == 'mohawk':
+        # Center strip from forehead to back of head
+        fwd_x_m, fwd_y_m = _face_axis(facing)
+        if abs(fwd_y_m) > abs(fwd_x_m):
+            _box(f"{name}_Hair_Mohawk",
+                 (base_x, base_y, head_cz + head_r * 0.65),
+                 (0.04, head_d * 1.0, head_d * 0.85),
+                 hair_color)
+        else:
+            _box(f"{name}_Hair_Mohawk",
+                 (base_x, base_y, head_cz + head_r * 0.65),
+                 (head_d * 1.0, 0.04, head_d * 0.85),
+                 hair_color)
+        # Buzzed sides — short skin (no hair) — handled by no
+        # additional geometry on the sides; skull sphere visible.
     elif hair_style == 'bald':
         pass    # skull already in skin colour
     # Sunglasses — horizontal band across the eye line, with EYES
