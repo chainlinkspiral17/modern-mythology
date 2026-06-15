@@ -3326,10 +3326,12 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     COL_WASHER_PORT = (0.32, 0.32, 0.36, 1.0)
     COL_WASHER_TRIM = (0.62, 0.62, 0.64, 1.0)
     COL_FOLDING = (0.62, 0.55, 0.45, 1.0)
-    # 5 front-loaders along the back (north) wall
+    # 5 front-loaders along the back (north) wall — wy chosen so
+    # the washer's NORTH face (wy + 0.35) clears the back wall
+    # interior at cy + 4.8 by 0.15 m.
     for k in range(5):
         wx = ldr_cx - 3.2 + k * 1.6
-        wy = cy + depth / 2 - 0.5
+        wy = cy + depth / 2 - 0.7      # was -0.5, washer clipped wall
         _make_box_local(f"KwikShop_Ldr_Washer_{k}_Body",
                         (wx, wy, ground_z + 0.55),
                         (1.20, 0.70, 1.10), COL_WASHER_BODY)
@@ -4381,7 +4383,9 @@ def build_commercial_cluster():
         ("NPC_Skip_Locker",      nc_x + 4.0, nc_y + 4.3),
         ("NPC_Arcade_Attendant", ks_x - 9.0, ks_y + 4.3),
         ("NPC_Sam_Register",     ks_x + 2.8, ks_y + 4.3),
-        ("NPC_Laundromat_Clerk", ks_x + 9.0, ks_y + 4.3),
+        # Laundromat has no counter; clerk stands near the change
+        # machine at the bay's west partition.
+        ("NPC_Laundromat_Clerk", ks_x + 9.0 - 3.0, ks_y + 0.5),
         # Diner customer counter spans cy+1.17 to cy+2.07. Pass-
         # wall at cy+3.0. Prep counter spans cy+3.70 to cy+4.30
         # against the back wall. Waiter stands in the customer-
@@ -4418,7 +4422,7 @@ def build_commercial_cluster():
         ("Sam",      ks_x + 2.8, ks_y + 4.3, 1.0, "short",
             (0.85, 0.22, 0.20, 1.0),
             (0.55, 0.50, 0.42, 1.0)),
-        ("LaundryAtt", ks_x + 9.0, ks_y + 4.3, 1.0, "bowl",
+        ("LaundryAtt", ks_x + 9.0 - 3.0, ks_y + 0.5, 1.0, "bowl",
             (0.32, 0.55, 0.78, 1.0),
             (0.92, 0.92, 0.90, 1.0)),
         ("DinerCook", dn_x,        dn_y + 3.4, 1.0, "short",
