@@ -6140,6 +6140,69 @@ def build_church_cemetery():
                     (2.5, 0.20, 0.30), col_dark)
 
 
+def build_self_storage():
+    """SafeKeep Self-Storage — long parallel rows of orange
+    roll-up units. Sits in EastComm south of the big-box pad.
+    """
+    cx, cy = 480.0, -180.0
+    ground_z = mesh_z(cx, cy)
+    col_unit_body = (0.62, 0.58, 0.50, 1.0)
+    col_unit_door = (0.85, 0.45, 0.20, 1.0)
+    col_roof = (0.32, 0.32, 0.30, 1.0)
+    col_office = (0.85, 0.82, 0.74, 1.0)
+
+    # 3 parallel rows of units, each 60 m long × 4 m deep
+    row_w = 60.0
+    row_d = 4.0
+    row_h = 2.8
+    door_w = 2.4
+    n_doors = int(row_w / (door_w + 0.2))
+    for row_idx, row_cy_off in enumerate((-12.0, -4.0, 4.0)):
+        rcx = cx
+        rcy = cy + row_cy_off
+        # Body wall
+        _make_box_local(f"SS_Row_{row_idx}_Body",
+                        (rcx, rcy, ground_z + row_h / 2),
+                        (row_w, row_d, row_h), col_unit_body)
+        # Roof
+        _make_box_local(f"SS_Row_{row_idx}_Roof",
+                        (rcx, rcy, ground_z + row_h + 0.10),
+                        (row_w + 0.20, row_d + 0.20, 0.20),
+                        col_roof)
+        # Orange roll-up doors along the SOUTH face
+        for k in range(n_doors):
+            dx = rcx - row_w / 2 + (k + 0.5) * (door_w + 0.2)
+            _make_box_local(f"SS_Row_{row_idx}_Door_{k}",
+                            (dx, rcy - row_d / 2 + 0.05,
+                             ground_z + 1.05),
+                            (door_w, 0.06, 2.10), col_unit_door)
+    # Front gate office at the west end
+    of_x = cx - row_w / 2 - 8.0
+    of_y = cy
+    of_z = mesh_z(of_x, of_y)
+    of_w, of_d, of_h = 10.0, 8.0, 3.6
+    _make_box_local("SS_Office_Slab",
+                    (of_x, of_y, of_z + 0.05),
+                    (of_w + 0.4, of_d + 0.4, 0.10), col_office)
+    _make_box_local("SS_Office_Walls",
+                    (of_x, of_y, of_z + of_h / 2),
+                    (of_w, of_d, of_h), col_office)
+    _make_box_local("SS_Office_Roof",
+                    (of_x, of_y, of_z + of_h + 0.10),
+                    (of_w + 0.4, of_d + 0.4, 0.20), col_roof)
+    # Front window on south face
+    _make_box_local("SS_Office_Window",
+                    (of_x, of_y - of_d / 2 + 0.04,
+                     of_z + 1.6),
+                    (5.0, 0.04, 1.4),
+                    (0.32, 0.42, 0.55, 1.0))
+    # Front door
+    _make_box_local("SS_Office_Door",
+                    (of_x + 3.0, of_y - of_d / 2 + 0.05,
+                     of_z + 1.05),
+                    (1.0, 0.06, 2.10), col_unit_door)
+
+
 def build_crosswalks_and_stops():
     """Painted white zebra crosswalks + red stop signs at the
     major intersections — Harmony Blvd × Horizon Dr (the big
@@ -8847,6 +8910,7 @@ def main():
     build_drive_in_theatre()
     build_arterial_sidewalks()
     build_crosswalks_and_stops()
+    build_self_storage()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
