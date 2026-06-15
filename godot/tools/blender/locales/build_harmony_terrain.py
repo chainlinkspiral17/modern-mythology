@@ -6057,11 +6057,13 @@ def build_high_school_field():
         """rise_dir_perp_sgn = +1 means the bleachers RISE toward
         +X (east-facing bleacher block, so home side west of
         field). -1 means rises toward -X."""
-        # Frame backing wall
+        # Frame backing wall — top sits ~1 m above the top bench
+        # (so the wall reads as a real backstop, not a tower).
+        back_top_z = n_rows * row_h + 1.0
         _make_box_local(f"{name}_BackWall",
                         (bcx + rise_dir_perp_sgn * (n_rows * row_d + 0.5),
-                         bcy, ground_z + n_rows * row_h + 1.0),
-                        (0.20, length, n_rows * row_h * 2 + 0.5),
+                         bcy, ground_z + back_top_z / 2),
+                        (0.20, length, back_top_z),
                         COL_BLEACHER_FRAME)
         # 6 stepped rows
         for k in range(n_rows):
