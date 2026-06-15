@@ -3263,11 +3263,13 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     _make_box_local("KwikShop_Arc_AttBooth_Counter",
                     (booth_x, booth_y, ground_z + 0.55),
                     (1.8, 0.7, 1.10), (0.42, 0.30, 0.20, 1.0))
-    # Token / prize display behind the booth (tall narrow shelf)
+    # Token / prize display behind the booth (thin tall shelf
+    # mounted to the back wall). Depth shrunk to 0.15 so the
+    # attendant has clearance between counter and shelf.
     _make_box_local("KwikShop_Arc_AttBooth_PrizeShelf",
-                    (booth_x, cy + depth / 2 - 0.30,
+                    (booth_x, cy + depth / 2 - 0.15,
                      ground_z + 1.30),
-                    (2.4, 0.30, 1.40), (0.42, 0.42, 0.45, 1.0))
+                    (2.4, 0.15, 1.40), (0.42, 0.42, 0.45, 1.0))
     # A row of small token boxes on top of the counter
     for k in range(3):
         tx = booth_x - 0.6 + k * 0.6
