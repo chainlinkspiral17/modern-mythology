@@ -262,15 +262,17 @@ def _build_legs(name, base_x, base_y, base_z, s, pants_color, pants_flare,
 
 
 def _build_feet(name, base_x, base_y, base_z, s, facing, shoe_color):
-    """Shoes are now TWO PARTS each — main upper + tapered toe cap +
-    visible white sole at the bottom. Reads as actual footwear, not
-    rectangular blocks."""
+    """Shoes are now FOUR PARTS each — heel block + main upper +
+    tapered toe cap + visible white sole. Reads as a proper
+    sneaker silhouette: distinct heel + arch + forefoot + sole."""
     fwd_x, fwd_y = _face_axis(facing)
     foot_w = PROP["foot_w"] * s
     foot_l = PROP["foot_l"] * s
     foot_h = PROP["foot_h"] * s
     sep = PROP["leg_separation"] * s
     sole_color = (0.92, 0.90, 0.84, 1.0)
+    heel_color = (shoe_color[0] * 0.85, shoe_color[1] * 0.85,
+                  shoe_color[2] * 0.85, shoe_color[3])
     for side, sign in (('L', -1), ('R', +1)):
         cx = base_x + sign * sep + fwd_x * foot_l * 0.18
         cy = base_y + fwd_y * foot_l * 0.18
@@ -278,6 +280,15 @@ def _build_feet(name, base_x, base_y, base_z, s, facing, shoe_color):
             sx_size, sy_size = foot_l, foot_w
         else:
             sx_size, sy_size = foot_w, foot_l
+        # HEEL · taller darker box at the BACK of the foot
+        heel_cx = cx - fwd_x * foot_l * 0.32
+        heel_cy = cy - fwd_y * foot_l * 0.32
+        heel_sx = sx_size * 0.45 if abs(fwd_x) > abs(fwd_y) else sx_size * 0.85
+        heel_sy = sy_size * 0.85 if abs(fwd_x) > abs(fwd_y) else sy_size * 0.45
+        _box(f"{name}_Shoe_{side}_Heel",
+             (heel_cx, heel_cy, base_z + foot_h / 2 + foot_h * 0.35),
+             (heel_sx, heel_sy, foot_h * 0.75),
+             heel_color)
         # Upper (main shoe body — coloured)
         _box(f"{name}_Shoe_{side}_Upper",
              (cx, cy, base_z + foot_h / 2 + foot_h * 0.25),
@@ -298,6 +309,15 @@ def _build_feet(name, base_x, base_y, base_z, s, facing, shoe_color):
               base_z + foot_h * 0.15),
              (sx_size * 1.05, sy_size * 1.05, foot_h * 0.30),
              sole_color)
+        # ANKLE BUMP · slightly thicker skin-tone (or pants color)
+        # joint above the shoe upper. Shows where the leg meets
+        # the foot rather than the leg cylinder ending at a flat
+        # shoe top.
+        ankle_z = base_z + foot_h + 0.02
+        _sphere_low(f"{name}_Ankle_{side}",
+                    (cx, cy, ankle_z),
+                    PROP["leg_r_bot"] * s * 1.15, shoe_color,
+                    rings=2, segments=6, squash_z=0.65)
 
 
 def _build_torso(name, base_x, base_y, pelvis_top_z, s,
