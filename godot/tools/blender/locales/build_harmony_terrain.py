@@ -5799,19 +5799,24 @@ def build_nexcorp_hq():
                     (cx - 5.6, logo_y, logo_z),
                     (0.80, 0.20, 0.80), col_logo_text)
 
-    # ── REFLECTING POOL out front — wide shallow rectangular
-    # pool with stone rim.
+    # ── REFLECTING POOL out front — stone rim (solid base box)
+    # with water disc on TOP of the rim, inset slightly so the
+    # rim reads as a border. Previously water was inside the rim
+    # box (z 0.13-0.23 with rim z 0..0.40) so the water was
+    # invisible.
     pool_cy = cy - depth / 2 - 6.0
     pool_w = 14.0
     pool_d = 4.0
+    pool_rim_h = 0.40
     _make_box_local(f"{name_prefix}_PoolRim",
-                    (cx, pool_cy, ground_z + 0.20),
-                    (pool_w + 0.6, pool_d + 0.6, 0.40),
+                    (cx, pool_cy, ground_z + pool_rim_h / 2),
+                    (pool_w + 0.6, pool_d + 0.6, pool_rim_h),
                     (0.78, 0.74, 0.66, 1.0))
-    # Water (recessed slightly inside rim)
+    # Water sits ON TOP of the rim, inset 0.3 m so the rim shows
+    # around the perimeter.
     _make_box_local(f"{name_prefix}_PoolWater",
-                    (cx, pool_cy, ground_z + 0.18),
-                    (pool_w, pool_d, 0.10),
+                    (cx, pool_cy, ground_z + pool_rim_h + 0.02),
+                    (pool_w - 0.3, pool_d - 0.3, 0.04),
                     (0.32, 0.55, 0.78, 1.0))
 
     # ── HEDGE BORDERS flanking the entry walkway. Hedge sits in
