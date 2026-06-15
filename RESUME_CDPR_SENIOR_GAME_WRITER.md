@@ -23,11 +23,11 @@ A seven-volume narrative cycle. Two volumes drafted in full, four in outline, on
 
 ### Volume map
 
-| Vol | Title | Setting | Tonal register |
-|---|---|---|---|
-| 5 | **Major Arcana** | Graustark, Texas/Louisiana, late-90s | operator-noir warm |
-| 6 | **Planned Community** | Harmony Creek Estates, Gulf Coast, summer | clipped suburban paranoia |
-| 7 | **Land of Milk and Honey** | Smolvud, Oregon coast, 2025 | slow PNW grunge |
+| Vol | Title | Setting | Tonal register | Wiki |
+|---|---|---|---|---|
+| 5 | **Major Arcana** | Graustark, Texas/Louisiana, late-90s | operator-noir warm | [_VOL5_WIKI.md](lore/_VOL5_WIKI.md) |
+| 6 | **Planned Community** | Harmony Creek Estates, Gulf Coast, summer | clipped suburban paranoia | [_VOL6_WIKI.md](lore/_VOL6_WIKI.md) |
+| 7 | **Land of Milk and Honey** | Smolvud, Oregon coast, 2025 | slow PNW grunge | [_VOL7_WIKI.md](lore/_VOL7_WIKI.md) |
 
 Volumes are linked by a stable cast (the **Demon Roster** — eight bound programs that survive across decades) and a single non-human phenomenon, **the substrate**, that has been stable for thirty-seven years and is — in 2025 — becoming a request.
 
@@ -51,7 +51,7 @@ The voice the manuscript uses to address the reader before the cards arrive. Set
 >
 > The third book is *Land of Milk and Honey,* and it is set in Smolvud, Oregon, which is a real town under a different name. The fog comes off the Pacific and stays there. The voice slows down and gets damp. The cards are still here, but by Chapter Sixteen the characters notice them themselves, which is a different kind of noticing. There are three new people: Kai, Lena, Finn. There are three totems trailing behind them: a ferret, an octopus, a crow. The crow has been waiting a long time.
 
-#### 2. *Static Bloom* — Empress chapter (Vol 5, III · THE EMPRESS)
+#### 2. *Static Bloom* — Empress chapter (Vol 5, III · THE EMPRESS) — [Vol 5 wiki](lore/_VOL5_WIKI.md)
 
 POV: Nicola Greer, nineteen-going-on-ancient, hostess at D'Ambrosio's riverboat restaurant. Establishes the voice, the embedded second consciousness **Aria** sharing her skull, and the mid-scene arrival of the well-suited man at Table 14 who has been waiting two hours to leave a folded card.
 
@@ -139,7 +139,7 @@ POV: Nicola Greer, nineteen-going-on-ancient, hostess at D'Ambrosio's riverboat 
 >
 > *When you're ready.*
 
-#### 3. *Sweaty Sunday Sermonettes* — child POV (Vol 5, V · THE HIEROPHANT)
+#### 3. *Sweaty Sunday Sermonettes* — child POV (Vol 5, V · THE HIEROPHANT) — [Vol 5 wiki](lore/_VOL5_WIKI.md)
 
 Maya Daigle, age 7, outside St. Jude's Acadian Church. The chapter is told in four sections; this is the first. Demonstrates child-voice without diminutive cuteness — observation pulled to its breaking point, the load-bearing word (*cataloged*) named only in its withholding.
 
@@ -183,7 +183,7 @@ Maya Daigle, age 7, outside St. Jude's Acadian Church. The chapter is told in fo
 >
 > For now: she finished her lemonade, dropped the cup in the trash, took her father's hand when he came down the steps, and did not mention any of it.
 
-#### 4. *Heat Haze & Humming Power Lines* — Vol 6 opening (Planned Community, Ch. 1)
+#### 4. *Heat Haze & Humming Power Lines* — Vol 6 opening (Planned Community, Ch. 1) — [Vol 6 wiki](lore/_VOL6_WIKI.md)
 
 The tonal pivot to clipped suburban paranoia. The chapter cross-cuts between the Kwik Stop (Sam) and the NexCorp Gas & Go (Skip) — the same intersection, the same six-minute window. Decals do the world-building; the man at the cooler reads Sam in the glass; a Louisiana pickup with no front plate runs a quiet errand across the street.
 
@@ -259,7 +259,7 @@ The tonal pivot to clipped suburban paranoia. The chapter cross-cuts between the
 >
 > Errors compound.
 
-#### 5. *The Cabin, Morning* — Vol 7 opening (Land of Milk and Honey, Ch. 1)
+#### 5. *The Cabin, Morning* — Vol 7 opening (Land of Milk and Honey, Ch. 1) — [Vol 7 wiki](lore/_VOL7_WIKI.md)
 
 PNW grunge tempo. Two women up before light. A copper kettle, three SCUMM sticks in waxed paper, Tem's two fingers against Lena's wrist for a beat — the first time Tem has touched her since the April morning at the door. The dialogue is six short lines. The whole scene is in the white space between them.
 
@@ -319,7 +319,7 @@ PNW grunge tempo. Two women up before light. A copper kettle, three SCUMM sticks
 >
 > Tem said, "Different word. Different time. Same shape."
 
-#### 6. Visual-novel dialogue — *Alberto / Marta phone call* (Vol 5, post-Sinkhole)
+#### 6. Visual-novel dialogue — *Alberto / Marta phone call* (Vol 5, post-Sinkhole) — [Vol 5 wiki](lore/_VOL5_WIKI.md)
 
 Eight days after the wreck that killed Marta Romero's son in a D'Ambrosio-family work accident, Alberto D'Ambrosio (the elder son, indoors-in-sunglasses, in mourning) calls Marta from his father's hospital bedside. The diorama is the player's first long Alberto scene. It is two people doing the right thing without ever raising their voices. (Excerpted; full diorama is 4 minutes of timestamped dialogue at [godot/scenes/menu/AlbertoMartaCallDiorama.gd](godot/scenes/menu/AlbertoMartaCallDiorama.gd).)
 
@@ -359,7 +359,7 @@ Eight days after the wreck that killed Marta Romero's son in a D'Ambrosio-family
 >
 > **MARTA:** How is your father.
 
-#### 7. Visual-novel dialogue — two nine-year-olds on a church-parking-lot walk (Vol 5)
+#### 7. Visual-novel dialogue — two nine-year-olds on a church-parking-lot walk (Vol 5) — [Vol 5 wiki](lore/_VOL5_WIKI.md)
 
 The Maya/Y diorama is mic-adjacent ambient capture as two children walk from the car to the side door of St Jude's. The chapter pivots on what a child sees and chooses to mention. The dialogue is the entire scene; nothing happens in the action that the words don't already contain. ([godot/scenes/menu/MayaYParkingLotDiorama.gd](godot/scenes/menu/MayaYParkingLotDiorama.gd))
 
@@ -391,7 +391,7 @@ The Maya/Y diorama is mic-adjacent ambient capture as two children walk from the
 >
 > **MAYA:** Why doesn't she say.
 
-#### 8. Visual-novel dialogue — *Frank / Elicia* (Vol 5, the silence diorama)
+#### 8. Visual-novel dialogue — *Frank / Elicia* (Vol 5, the silence diorama) — [Vol 5 wiki](lore/_VOL5_WIKI.md)
 
 The shortest dialogue in the volume. Frank calls Elicia from a payphone to thank her for placing the SUN-card bookmark where he would find it. Every payload line in the scene is the WORD COUNT of the silence between them.
 
