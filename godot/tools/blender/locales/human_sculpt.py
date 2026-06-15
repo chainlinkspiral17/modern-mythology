@@ -389,6 +389,26 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
                         jacket_color[2] * 0.82,
                         jacket_color[3]),
                        segments=10)
+    # COLLAR · subtle V-shape or crew-neck shape at the top of the
+    # torso where the jacket meets the neck. Emitted as a small
+    # darker triangle on the facing axis.
+    if yoke_color is None:
+        fwd_x_c, fwd_y_c = _face_axis(facing)
+        collar_z = torso_cz + torso_h / 2 - 0.04
+        cx_col = base_x + fwd_x_c * torso_r_top * 0.85
+        cy_col = base_y + fwd_y_c * torso_r_top * 0.85
+        collar_dark = (jacket_color[0] * 0.65, jacket_color[1] * 0.65,
+                       jacket_color[2] * 0.65, jacket_color[3])
+        if abs(fwd_y_c) > abs(fwd_x_c):
+            _box(f"{name}_Collar",
+                 (cx_col, cy_col, collar_z),
+                 (torso_r_top * 1.4, 0.04, 0.08),
+                 collar_dark)
+        else:
+            _box(f"{name}_Collar",
+                 (cx_col, cy_col, collar_z),
+                 (0.04, torso_r_top * 1.4, 0.08),
+                 collar_dark)
     # Yoke — wider band at the shoulders
     if yoke_color is not None:
         yoke_h = torso_h * 0.42
