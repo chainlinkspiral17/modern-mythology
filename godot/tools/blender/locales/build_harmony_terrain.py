@@ -3182,6 +3182,62 @@ def build_commercial_cluster():
             pv.append((px, py, mesh_z(px, py) + 0.05))
         _finalize_mesh(f"CommSidewalk_{i}", pv, [[0, 1, 2, 3]],
                        COL_SIDEWALK)
+    # ── ROAD running E-W in front of the strip · two-lane asphalt
+    # with a centerline. Skirts the south edge of the parking lots
+    # so the cluster reads as a real frontage.
+    COL_ROAD = (0.18, 0.18, 0.20, 1.0)
+    COL_CENTERLINE = (0.95, 0.85, 0.30, 1.0)   # yellow
+    road_y = ks_y - 32.0
+    road_w = 8.0
+    road_x_min = cc_x + 30.0          # east end (past Cosmic Comics)
+    road_x_max = nc_x - 35.0          # west end (past NexCorp pylon)
+    # Sort so x_min < x_max
+    if road_x_min > road_x_max:
+        road_x_min, road_x_max = road_x_max, road_x_min
+    n_segments = 6
+    seg_dx = (road_x_max - road_x_min) / n_segments
+    hwr = road_w / 2
+    for k in range(n_segments):
+        x0 = road_x_min + k * seg_dx
+        x1 = road_x_min + (k + 1) * seg_dx
+        rv = []
+        for (rx, ry) in [(x0, road_y - hwr),
+                         (x1, road_y - hwr),
+                         (x1, road_y + hwr),
+                         (x0, road_y + hwr)]:
+            rv.append((rx, ry, mesh_z(rx, ry) + 0.04))
+        _finalize_mesh(f"CommRoad_{k}", rv, [[0, 1, 2, 3]], COL_ROAD)
+    # Dashed yellow centerline (one dash per segment)
+    dash_l = 4.0
+    dash_w = 0.18
+    for k in range(n_segments):
+        cx_dash = road_x_min + (k + 0.5) * seg_dx
+        dv = []
+        for (rx, ry) in [(cx_dash - dash_l / 2, road_y - dash_w / 2),
+                         (cx_dash + dash_l / 2, road_y - dash_w / 2),
+                         (cx_dash + dash_l / 2, road_y + dash_w / 2),
+                         (cx_dash - dash_l / 2, road_y + dash_w / 2)]:
+            dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
+        _finalize_mesh(f"CommRoad_Dash_{k}", dv, [[0, 1, 2, 3]],
+                       COL_CENTERLINE)
+    # Driveway aprons connecting each parking lot down to the road
+    for tag, lot_x, lot_y, lot_w_drv in (
+        ("KwikStop", ks_x, ks_y - 13, 8.0),
+        ("NexCorpGG", nc_x, nc_y - 24, 8.0),
+        ("CosmicComics", cc_x, cc_y - 11, 6.0),
+    ):
+        # Apron from south edge of lot down to north edge of road
+        apron_y0 = lot_y - 7.0       # bottom of lot
+        apron_y1 = road_y + hwr      # north edge of road
+        apron_hw = lot_w_drv / 2
+        av = []
+        for (ax, ay) in [(lot_x - apron_hw, apron_y0),
+                          (lot_x + apron_hw, apron_y0),
+                          (lot_x + apron_hw, apron_y1),
+                          (lot_x - apron_hw, apron_y1)]:
+            av.append((ax, ay, mesh_z(ax, ay) + 0.045))
+        _finalize_mesh(f"{tag}_Apron", av, [[0, 1, 2, 3]], COL_ROAD)
+
     # ── STREETLIGHTS + BENCHES along the strip sidewalk
     # Six 4 m lamp posts spaced ~30 m along the sidewalk, plus one
     # bench in front of each store.
