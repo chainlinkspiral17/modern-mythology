@@ -1389,11 +1389,15 @@ def build_oliver_tree_memorial_park():
                                 rings=3, segments=6)
 
     # ── FLAG POLE at half-mast · samples its OWN ground per the
-    # alignment golden rule. Moved CLEAR of the NE oak cluster
-    # (was at (-245, 128) which intersected the oak at (-232, 132)
-    # canopy). Now sits south of the path approach at (-242, 100).
-    fp_x = sx + 18
-    fp_y = sy - 20
+    # alignment golden rule. Previous position (sx+18, sy-20) =
+    # (-242, 100) was clipping through the SE oak canopy at
+    # (-242, 94) (canopy r up to 5.8 m, pole only 6 m away).
+    # Moved south + east to (sx+8, sy-45) = (-252, 75) on the
+    # south path approach. Clear of every oak by ≥ 21 m and gives
+    # the player a sight line back to the statue. Stays at
+    # half-mast per US flag code: flag centre at 50% of pole height.
+    fp_x = sx + 8
+    fp_y = sy - 45
     fp_z = mesh_z(fp_x, fp_y)
     FLAGPOLE_H = 8.0
     _make_cyl_local("OTPark_FlagPole",
@@ -1429,6 +1433,12 @@ def build_oliver_tree_memorial_park():
                             (fp_x, fp_y, fp_z + FLAGPOLE_H + 0.10),
                             0.10, (0.78, 0.62, 0.28, 1.0),
                             rings=3, segments=6)
+    # Small brass plaque at the foot of the pole giving in-world
+    # explanation for the half-mast position (the user found the
+    # half-mast "curious" with no context — this answers why).
+    _make_box_local("OTPark_FlagPlaque",
+                    (fp_x, fp_y - 0.55, fp_z + 0.65),
+                    (0.50, 0.04, 0.30), (0.55, 0.42, 0.20, 1.0))
 
     # ── 8 mature OAKS — natural height variation per pass-5 ───
     # Each oak picks a height + canopy + tilt offset deterministically
