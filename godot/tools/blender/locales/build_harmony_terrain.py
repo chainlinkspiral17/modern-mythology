@@ -10520,6 +10520,60 @@ def build_arterial_trees():
                                   samples_per_seg=4),
                  "HorizonDr_")
 
+    # RESIDENTIAL STREET TREES · narrower offset (5m from CL),
+    # closer spacing (18m) to match a typical residential street
+    # canopy. Smaller trees too (trunk_h 3.0, canopy 1.8).
+    RES_TREE_OFFSET = 5.0
+    def _emit_res_trees(pts, prefix, spacing=18.0):
+        accumulated = 0.0
+        next_tree = 9.0
+        side_sgn = -1
+        idx = 0
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]
+            x1, y1 = pts[i + 1]
+            seg_len = math.hypot(x1 - x0, y1 - y0) or 1.0
+            seg_end = accumulated + seg_len
+            while next_tree < seg_end:
+                t = (next_tree - accumulated) / seg_len
+                mx = x0 + (x1 - x0) * t
+                my = y0 + (y1 - y0) * t
+                dxs = x1 - x0; dys = y1 - y0
+                perp_x = -dys / seg_len
+                perp_y =  dxs / seg_len
+                tx = mx + side_sgn * perp_x * RES_TREE_OFFSET
+                ty = my + side_sgn * perp_y * RES_TREE_OFFSET
+                tz = mesh_z(tx, ty)
+                trunk_h = 3.0
+                canopy_r = 1.8
+                _make_cyl_local(f"{prefix}Tree_{idx}_Trunk",
+                                (tx, ty, tz + trunk_h / 2),
+                                0.16, trunk_h, COL_TRUNK, segments=6)
+                _make_sphere_low_local(
+                    f"{prefix}Tree_{idx}_Canopy",
+                    (tx, ty, tz + trunk_h + canopy_r * 0.55),
+                    canopy_r, COL_CANOPY,
+                    rings=3, segments=8)
+                idx += 1
+                side_sgn = -side_sgn
+                next_tree += spacing
+            accumulated = seg_end
+    for cname, prefix in [
+        ("NRAspen",   "NRAspen_RT_"),
+        ("NRBirch",   "NRBirch_RT_"),
+        ("NRCedar",   "NRCedar_RT_"),
+        ("NRSpur",    "NRSpur_RT_"),
+        ("WEMag",     "WEMag_RT_"),
+        ("WELoop",    "WELoop_RT_"),
+        ("P2Main",    "P2Main_RT_"),
+        ("ECDSRidge", "ECDSRidge_RT_"),
+        ("ECDSCul",   "ECDSCul_RT_"),
+    ]:
+        if cname in corridor_xys:
+            _emit_res_trees(_catmull_rom_2d(corridor_xys[cname],
+                                              samples_per_seg=4),
+                            prefix)
+
 
 def build_arterial_lighting():
     """Streetlamps along Harmony Blvd and Horizon Drive at ~40 m
