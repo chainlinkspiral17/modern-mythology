@@ -12686,6 +12686,305 @@ def build_harmony_park():
                             (0.06, 0.42, 0.42),
                             (0.18, 0.18, 0.18, 1.0))
 
+    # ── LANDSCAPE PASS · paths, gazebo, picnic area, flower beds
+    COL_PATH = (0.72, 0.66, 0.55, 1.0)    # crushed-stone path
+    COL_GAZEBO_POST = (0.92, 0.90, 0.84, 1.0)   # white painted posts
+    COL_GAZEBO_ROOF = (0.42, 0.30, 0.22, 1.0)   # dark shingle
+    COL_GAZEBO_FLOOR = (0.62, 0.45, 0.30, 1.0)  # stained wood deck
+    COL_FLOWER_BED = (0.42, 0.30, 0.20, 1.0)    # mulch brown
+    COL_FLOWER_PINK = (0.95, 0.62, 0.78, 1.0)
+    COL_FLOWER_YELLOW = (0.98, 0.85, 0.42, 1.0)
+    COL_FLOWER_PURPLE = (0.72, 0.45, 0.85, 1.0)
+    COL_PICNIC_WOOD = (0.55, 0.38, 0.22, 1.0)
+    COL_ORN_TRUNK = (0.32, 0.22, 0.16, 1.0)
+    COL_ORN_CANOPY_PINK = (0.92, 0.70, 0.78, 1.0)   # ornamental cherry blossom
+    COL_ORN_CANOPY_RED = (0.78, 0.32, 0.22, 1.0)    # ornamental japanese maple
+
+    def _path_strip(name, x0, y0, x1, y1, width):
+        """Emit a single rectangular path segment between two points."""
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len * (width / 2)
+        perp_y =  dxs / seg_len * (width / 2)
+        pv = []
+        for (vx, vy) in [
+            (x0 - perp_x, y0 - perp_y),
+            (x1 - perp_x, y1 - perp_y),
+            (x1 + perp_x, y1 + perp_y),
+            (x0 + perp_x, y0 + perp_y),
+        ]:
+            pv.append((vx, vy, mesh_z(vx, vy) + 0.05))
+        _finalize_mesh(name, pv, [[0, 1, 2, 3]], COL_PATH)
+
+    # Main figure-eight walking loop. Two lobes — one around the
+    # pool deck, one looping NW through the gazebo + picnic lawn.
+    # Catmull-Rom smoothed between control points so the paths
+    # CURVE (parks never have rectilinear walkways).
+    pool_loop_ctrl = [
+        ( -10,   95),    # NW of pool
+        (  30,  100),    # N of pool
+        (  70,   95),    # NE of pool
+        (  85,   60),    # E of pool
+        (  70,   25),    # SE of pool
+        (  30,   20),    # S of pool
+        ( -10,   25),    # SW of pool
+        ( -25,   60),    # W of pool
+        ( -10,   95),    # close loop
+    ]
+    pool_loop = _catmull_rom_2d(pool_loop_ctrl, samples_per_seg=4)
+    for i in range(len(pool_loop) - 1):
+        x0, y0 = pool_loop[i]; x1, y1 = pool_loop[i + 1]
+        _path_strip(f"HP_Path_PoolLoop_{i}", x0, y0, x1, y1, 2.0)
+
+    # North loop — meanders through the north-park gazebo + picnic
+    north_loop_ctrl = [
+        ( -10,   95),    # tie-in to pool loop
+        ( -40,  120),
+        ( -60,  150),    # gazebo
+        ( -50,  175),
+        ( -10,  185),
+        (  40,  180),
+        (  90,  170),
+        ( 110,  140),    # picnic area
+        (  90,  110),
+        (  50,  100),
+        ( -10,   95),    # close
+    ]
+    north_loop = _catmull_rom_2d(north_loop_ctrl, samples_per_seg=4)
+    for i in range(len(north_loop) - 1):
+        x0, y0 = north_loop[i]; x1, y1 = north_loop[i + 1]
+        _path_strip(f"HP_Path_NorthLoop_{i}", x0, y0, x1, y1, 2.0)
+
+    # South spur — to the playground from the pool loop
+    south_spur = [(30, 20), (30, 0), (30, -20), (30, pg_cy + 6.0)]
+    for i in range(len(south_spur) - 1):
+        x0, y0 = south_spur[i]; x1, y1 = south_spur[i + 1]
+        _path_strip(f"HP_Path_PgSpur_{i}", x0, y0, x1, y1, 1.8)
+
+    # West spur — to the community garden at (-60, 30)
+    west_spur = [(-25, 60), (-40, 50), (-55, 38), (-58, 32)]
+    for i in range(len(west_spur) - 1):
+        x0, y0 = west_spur[i]; x1, y1 = west_spur[i + 1]
+        _path_strip(f"HP_Path_CGSpur_{i}", x0, y0, x1, y1, 1.6)
+
+    # ── GAZEBO · hexagonal white-painted pavilion at (-60, 150)
+    gz_cx, gz_cy = -60.0, 150.0
+    gz_z = mesh_z(gz_cx, gz_cy)
+    gz_r = 4.0           # hexagon radius
+    gz_post_h = 3.2
+    gz_floor_h = 0.30
+    # Octagonal floor deck
+    deck_segs = 8
+    floor_verts = [(gz_cx, gz_cy, gz_z + gz_floor_h)]
+    for i in range(deck_segs):
+        ang = 2.0 * math.pi * i / deck_segs + math.pi / deck_segs
+        floor_verts.append((gz_cx + math.cos(ang) * gz_r,
+                             gz_cy + math.sin(ang) * gz_r,
+                             gz_z + gz_floor_h))
+    floor_faces = []
+    for i in range(deck_segs):
+        ni = (i + 1) % deck_segs
+        floor_faces.append([0, 1 + i, 1 + ni])
+    _finalize_mesh("HP_Gazebo_Floor", floor_verts, floor_faces,
+                    COL_GAZEBO_FLOOR)
+    # 8 corner posts
+    for i in range(deck_segs):
+        ang = 2.0 * math.pi * i / deck_segs + math.pi / deck_segs
+        px_p = gz_cx + math.cos(ang) * (gz_r - 0.10)
+        py_p = gz_cy + math.sin(ang) * (gz_r - 0.10)
+        _make_cyl_local(f"HP_Gazebo_Post_{i}",
+                        (px_p, py_p, gz_z + gz_floor_h + gz_post_h / 2),
+                        0.10, gz_post_h, COL_GAZEBO_POST, segments=6)
+    # Hipped octagonal roof — apex + 8 outer ring verts
+    roof_apex_h = 1.6
+    roof_verts = [(gz_cx, gz_cy,
+                   gz_z + gz_floor_h + gz_post_h + roof_apex_h)]
+    for i in range(deck_segs):
+        ang = 2.0 * math.pi * i / deck_segs + math.pi / deck_segs
+        roof_verts.append((gz_cx + math.cos(ang) * (gz_r + 0.30),
+                            gz_cy + math.sin(ang) * (gz_r + 0.30),
+                            gz_z + gz_floor_h + gz_post_h))
+    roof_faces = []
+    for i in range(deck_segs):
+        ni = (i + 1) % deck_segs
+        roof_faces.append([0, 1 + ni, 1 + i])
+    _finalize_mesh("HP_Gazebo_Roof", roof_verts, roof_faces,
+                    COL_GAZEBO_ROOF)
+    # Roof ball-finial at apex
+    _make_sphere_low_local(
+        "HP_Gazebo_Finial",
+        (gz_cx, gz_cy,
+         gz_z + gz_floor_h + gz_post_h + roof_apex_h + 0.20),
+        0.18, COL_GAZEBO_POST, rings=2, segments=6)
+    # Railing between posts (low cross-bar between adjacent posts,
+    # skipping the south-facing gap as the entry)
+    entry_segment = 6   # skip the south-side railing
+    for i in range(deck_segs):
+        if i == entry_segment:
+            continue
+        ang_a = 2.0 * math.pi * i / deck_segs + math.pi / deck_segs
+        ang_b = 2.0 * math.pi * ((i + 1) % deck_segs) / deck_segs \
+            + math.pi / deck_segs
+        ax = gz_cx + math.cos(ang_a) * (gz_r - 0.10)
+        ay = gz_cy + math.sin(ang_a) * (gz_r - 0.10)
+        bx = gz_cx + math.cos(ang_b) * (gz_r - 0.10)
+        by = gz_cy + math.sin(ang_b) * (gz_r - 0.10)
+        # Top rail
+        mx = (ax + bx) / 2; my = (ay + by) / 2
+        rail_len = math.hypot(bx - ax, by - ay)
+        rail_yaw = math.atan2(by - ay, bx - ax)
+        # Use oriented box via _wire helper — but _wire is local to
+        # build_utility_poles. Inline a small oriented rail emit.
+        for rail_z_off, rail_thick in ((1.0, 0.06), (0.40, 0.04)):
+            dxn = (bx - ax) / (rail_len or 1.0)
+            dyn = (by - ay) / (rail_len or 1.0)
+            pxn = -dyn; pyn = dxn
+            t2 = rail_thick / 2
+            rz = gz_z + gz_floor_h + rail_z_off
+            rv = [
+                (ax - pxn * t2, ay - pyn * t2, rz - t2),
+                (bx - pxn * t2, by - pyn * t2, rz - t2),
+                (bx + pxn * t2, by + pyn * t2, rz - t2),
+                (ax + pxn * t2, ay + pyn * t2, rz - t2),
+                (ax - pxn * t2, ay - pyn * t2, rz + t2),
+                (bx - pxn * t2, by - pyn * t2, rz + t2),
+                (bx + pxn * t2, by + pyn * t2, rz + t2),
+                (ax + pxn * t2, ay + pyn * t2, rz + t2),
+            ]
+            rf = [
+                [0, 3, 2, 1], [4, 5, 6, 7],
+                [0, 1, 5, 4], [2, 3, 7, 6],
+                [3, 0, 4, 7], [1, 2, 6, 5],
+            ]
+            _finalize_mesh(
+                f"HP_Gazebo_Rail_{i}_{int(rail_z_off*10)}",
+                rv, rf, COL_GAZEBO_POST)
+
+    # ── PICNIC AREA · 3 tables at the east lawn
+    picnic_pts = [(100, 130), (115, 145), (90, 150)]
+    for k, (tx, ty) in enumerate(picnic_pts):
+        tz = mesh_z(tx, ty)
+        # Table top
+        _make_box_local(f"HP_Picnic_Top_{k}",
+                        (tx, ty, tz + 0.78),
+                        (2.4, 0.90, 0.06), COL_PICNIC_WOOD)
+        # Two attached benches
+        for sgn in (-1, 1):
+            _make_box_local(f"HP_Picnic_Bench_{k}_{sgn:+d}",
+                            (tx, ty + sgn * 0.65, tz + 0.45),
+                            (2.4, 0.30, 0.05), COL_PICNIC_WOOD)
+        # 4 legs (X-frame approximated by 4 vertical cylinders)
+        for sgn_x, sgn_y in ((-1, -1), (1, -1), (-1, 1), (1, 1)):
+            _make_cyl_local(f"HP_Picnic_Leg_{k}_{sgn_x:+d}{sgn_y:+d}",
+                            (tx + sgn_x * 1.05, ty + sgn_y * 0.50,
+                             tz + 0.39),
+                            0.04, 0.78, COL_PICNIC_WOOD, segments=4)
+
+    # ── FLOWER BEDS · 3 strategic spots
+    flower_specs = [
+        (gz_cx, gz_cy - gz_r - 3.0, 2.4, COL_FLOWER_PINK),   # gazebo entry
+        ( -30,   175,              2.0, COL_FLOWER_YELLOW),  # north arc
+        (  60,    95,              1.8, COL_FLOWER_PURPLE),  # NE pool corner
+        (  -5,    25,              1.6, COL_FLOWER_PINK),    # SW pool
+    ]
+    for k, (fx, fy, fr, fcol) in enumerate(flower_specs):
+        fz = mesh_z(fx, fy)
+        # Mulch ring (low cylinder)
+        _make_cyl_local(f"HP_Flower_Bed_{k}",
+                        (fx, fy, fz + 0.10),
+                        fr, 0.20, COL_FLOWER_BED, segments=10)
+        # Flower cluster (3 small spheres at staggered positions)
+        for j in range(3):
+            ang = 2.0 * math.pi * j / 3 + k
+            fsx = fx + math.cos(ang) * fr * 0.5
+            fsy = fy + math.sin(ang) * fr * 0.5
+            _make_sphere_low_local(
+                f"HP_Flower_Cluster_{k}_{j}",
+                (fsx, fsy, fz + 0.35),
+                fr * 0.30, fcol,
+                rings=2, segments=6)
+
+    # ── ORNAMENTAL TREES · 5 small specimens at path corners
+    orn_specs = [
+        ( -55,  120, COL_ORN_CANOPY_PINK),    # gazebo SW corner
+        ( -25,  165, COL_ORN_CANOPY_PINK),    # north loop
+        (  60,  170, COL_ORN_CANOPY_RED),     # east of north loop
+        (  80,  130, COL_ORN_CANOPY_RED),     # picnic area
+        (  -5,   95, COL_ORN_CANOPY_PINK),    # pool loop NW
+    ]
+    for k, (tx, ty, ccol) in enumerate(orn_specs):
+        tz = mesh_z(tx, ty)
+        _make_cyl_local(f"HP_OrnTree_{k}_Trunk",
+                        (tx, ty, tz + 1.1),
+                        0.14, 2.2, COL_ORN_TRUNK, segments=6)
+        _make_sphere_low_local(f"HP_OrnTree_{k}_Canopy",
+                                (tx, ty, tz + 2.8),
+                                1.6, ccol,
+                                rings=3, segments=8)
+
+    # ── EXTRA BENCHES along the north loop · 4 more
+    extra_bench_pts = [
+        ( -40,  180,  0.0),     # north of gazebo
+        (  50,  185,  math.pi), # north arc
+        ( 100,  155,  math.pi/2),  # east edge
+        (  10,  100, -math.pi/2),  # south of north loop
+    ]
+    for k, (bx, by, yaw) in enumerate(extra_bench_pts):
+        bz = mesh_z(bx, by)
+        cos_y = math.cos(yaw); sin_y = math.sin(yaw)
+        # Bench long axis along (cos_y, sin_y); back behind seat
+        # Slats — we draw 2 oriented boxes inline (avoid yaw helper
+        # since none exists in this scope; build verts directly).
+        seat_l = 1.8; seat_w = 0.42; seat_t = 0.06
+        sxv = (-seat_l/2, -seat_w/2,  0)
+        # Just place axis-aligned seat aligned to nearest 90°
+        # for simplicity — yaws above already are cardinal.
+        if abs(cos_y) > 0.5:
+            _make_box_local(f"HP_ExtBench_Seat_{k}",
+                            (bx, by, bz + 0.42),
+                            (seat_l, seat_w, seat_t),
+                            (0.42, 0.30, 0.20, 1.0))
+            _make_box_local(f"HP_ExtBench_Back_{k}",
+                            (bx, by + (0.18 if cos_y > 0 else -0.18),
+                             bz + 0.65),
+                            (seat_l, 0.06, 0.40),
+                            (0.42, 0.30, 0.20, 1.0))
+        else:
+            _make_box_local(f"HP_ExtBench_Seat_{k}",
+                            (bx, by, bz + 0.42),
+                            (seat_w, seat_l, seat_t),
+                            (0.42, 0.30, 0.20, 1.0))
+            _make_box_local(f"HP_ExtBench_Back_{k}",
+                            (bx + (0.18 if sin_y > 0 else -0.18),
+                             by, bz + 0.65),
+                            (0.06, seat_l, 0.40),
+                            (0.42, 0.30, 0.20, 1.0))
+
+    # ── PARK SIGN · welcome marker at the southwest entry off
+    # Horizon Dr (the south arterial side)
+    sign_x, sign_y = -50.0, -10.0
+    sign_z = mesh_z(sign_x, sign_y)
+    # Two stone-pier columns
+    for sgn in (-1, 1):
+        _make_box_local(f"HP_SignPier_{sgn:+d}",
+                        (sign_x + sgn * 2.5, sign_y, sign_z + 0.9),
+                        (0.60, 0.60, 1.80),
+                        (0.72, 0.66, 0.55, 1.0))
+        _make_box_local(f"HP_SignPierCap_{sgn:+d}",
+                        (sign_x + sgn * 2.5, sign_y, sign_z + 1.90),
+                        (0.80, 0.80, 0.12),
+                        (0.62, 0.55, 0.45, 1.0))
+    # Sign plank between piers
+    _make_box_local("HP_SignPlank",
+                    (sign_x, sign_y, sign_z + 1.5),
+                    (5.5, 0.20, 0.80),
+                    (0.55, 0.38, 0.22, 1.0))
+    # White hand-painted "HARMONY PARK" text plate
+    _make_box_local("HP_SignPlate",
+                    (sign_x, sign_y - 0.05, sign_z + 1.5),
+                    (4.8, 0.08, 0.50),
+                    (0.92, 0.90, 0.84, 1.0))
+
 
 def build_country_club_lot():
     """Country Club valet lot east of the clubhouse + curving
