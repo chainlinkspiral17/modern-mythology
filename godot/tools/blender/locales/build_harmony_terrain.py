@@ -5907,6 +5907,101 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (0.24, 0.01, 0.06),
                     (0.55, 0.22, 0.18, 1.0))
 
+    # ── SLUSHIE MACHINE · 3-flavor frosty barrel beside the
+    # roller grill. Each barrel a translucent dome with brightly
+    # coloured slush visible inside.
+    sl_x = counter_x + counter_w / 2 - 0.40
+    sl_y = counter_y + counter_d / 2 + 0.50
+    sl_z = ground_z + counter_h + 0.10
+    # Base unit (white box with chrome trim)
+    _make_box_local("KwikStop_Slushie_Base",
+                    (sl_x, sl_y, sl_z + 0.15),
+                    (0.85, 0.55, 0.30),
+                    (0.95, 0.94, 0.90, 1.0))
+    # Chrome top band
+    _make_box_local("KwikStop_Slushie_TopBand",
+                    (sl_x, sl_y, sl_z + 0.32),
+                    (0.85, 0.55, 0.04),
+                    (0.62, 0.62, 0.64, 1.0))
+    # 3 slush barrels (translucent cylinders with coloured slush)
+    barrel_palette = [
+        (0.85, 0.20, 0.18, 1.0),    # cherry red
+        (0.32, 0.55, 0.78, 1.0),    # blue raspberry
+        (0.95, 0.85, 0.30, 1.0),    # citrus yellow
+    ]
+    for k, col_bar in enumerate(barrel_palette):
+        slx = sl_x - 0.28 + k * 0.28
+        # Translucent barrel (low-poly cylinder)
+        _make_cyl_local(
+            f"KwikStop_Slushie_Barrel_{k}",
+            (slx, sl_y, sl_z + 0.60),
+            0.13, 0.50,
+            col_bar, segments=8)
+        # Top spinner cap (white)
+        _make_cyl_local(
+            f"KwikStop_Slushie_Cap_{k}",
+            (slx, sl_y, sl_z + 0.88),
+            0.13, 0.05,
+            (0.95, 0.94, 0.90, 1.0), segments=8)
+        # Dispenser handle / spout below (chrome)
+        _make_box_local(
+            f"KwikStop_Slushie_Spout_{k}",
+            (slx, sl_y - 0.20, sl_z + 0.40),
+            (0.08, 0.10, 0.16),
+            (0.62, 0.62, 0.64, 1.0))
+
+    # ── COFFEE STATION · 2-burner drip coffee maker on the back
+    # counter, with two glass pots (one regular, one decaf)
+    cof_x = counter_x - counter_w / 2 + 0.80
+    cof_y = counter_y + counter_d / 2 + 0.50
+    cof_z = ground_z + counter_h + 0.10
+    # Base unit (black coffee maker housing)
+    _make_box_local("KwikStop_CoffeeMaker_Body",
+                    (cof_x, cof_y, cof_z + 0.20),
+                    (0.55, 0.40, 0.40),
+                    (0.20, 0.20, 0.22, 1.0))
+    # Warming-plate / control panel
+    _make_box_local("KwikStop_CoffeeMaker_Plate",
+                    (cof_x, cof_y, cof_z + 0.42),
+                    (0.55, 0.40, 0.04),
+                    (0.42, 0.42, 0.45, 1.0))
+    # Two glass pots (slightly amber from coffee)
+    for k, col_pot in enumerate([
+        (0.42, 0.22, 0.16, 1.0),   # regular (full)
+        (0.85, 0.65, 0.42, 1.0),   # decaf (lighter)
+    ]):
+        cpx = cof_x - 0.14 + k * 0.28
+        # Pot body (glass-amber cylinder)
+        _make_cyl_local(
+            f"KwikStop_CoffeePot_{k}",
+            (cpx, cof_y, cof_z + 0.30),
+            0.075, 0.18,
+            col_pot, segments=6)
+        # Handle (chrome)
+        _make_box_local(
+            f"KwikStop_CoffeePot_Handle_{k}",
+            (cpx + 0.10, cof_y, cof_z + 0.30),
+            (0.04, 0.04, 0.16),
+            (0.42, 0.42, 0.45, 1.0))
+        # Pot lid
+        _make_cyl_local(
+            f"KwikStop_CoffeePot_Lid_{k}",
+            (cpx, cof_y, cof_z + 0.42),
+            0.075, 0.02,
+            (0.20, 0.20, 0.22, 1.0), segments=6)
+    # Coffee cup stack beside the maker (cream paper cups)
+    for k in range(3):
+        _make_cyl_local(
+            f"KwikStop_CoffeeCupStack_{k}",
+            (cof_x - 0.40, cof_y, cof_z + 0.20 + k * 0.04),
+            0.045, 0.10,
+            (0.95, 0.92, 0.86, 1.0), segments=6)
+    # Sugar / creamer caddy
+    _make_box_local("KwikStop_CoffeeStation_Caddy",
+                    (cof_x + 0.35, cof_y, cof_z + 0.16),
+                    (0.16, 0.20, 0.18),
+                    (0.62, 0.62, 0.64, 1.0))
+
     # ── ROLLER GRILL · the classic stainless-steel hot-dog roller
     # at the back of the counter. 4 parallel chrome rollers under
     # a heat lamp.
