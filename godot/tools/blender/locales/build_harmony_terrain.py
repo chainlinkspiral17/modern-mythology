@@ -1403,6 +1403,8 @@ def build_oliver_tree_memorial_park():
     _make_box_local("OTPark_FlagPole_Base",
                     (fp_x, fp_y, fp_z + 0.15),
                     (0.80, 0.80, 0.30), COL_POOL_RIM)
+    _base_skirt("OTPark_FlagPole_Skirt", fp_x, fp_y, fp_z,
+                 color=(0.30, 0.46, 0.20, 1.0), radius=1.10)
     flag_z = fp_z + FLAGPOLE_H * 0.50
     flag_w = 1.6
     flag_h = 0.95
@@ -1553,6 +1555,10 @@ def build_oliver_tree_memorial_park():
                         (post_x, arch_y, post_ground + arch_post_h + 0.15),
                         (arch_post_w + 0.30, arch_post_d + 0.30, 0.25),
                         COL_PLINTH_CAP)
+        # Grass skirt at the foot of each post
+        _base_skirt(f"OTPark_ArchPost_{sign:+d}_Skirt",
+                     post_x, arch_y, post_ground,
+                     color=(0.30, 0.46, 0.20, 1.0), radius=0.85)
     # Beam + inscription anchored to the LOWER of the two posts so
     # the lintel doesn't tilt
     arch_ground = mesh_z(sx, arch_y)
@@ -1571,10 +1577,13 @@ def build_oliver_tree_memorial_park():
     sign_y = sy - outer_r - 48
     sign_ground = mesh_z(sign_x, sign_y)
     for sign_post_x in (-1.4, 1.4):
+        sp_x = sign_x + sign_post_x
         _make_cyl_local(f"OTPark_SignPost_{sign_post_x:+.1f}",
-                        (sign_x + sign_post_x, sign_y,
-                         sign_ground + 1.4),
+                        (sp_x, sign_y, sign_ground + 1.4),
                         0.08, 2.8, COL_SIGN_BROWN, segments=4)
+        _base_skirt(f"OTPark_SignPost_{sign_post_x:+.1f}_Skirt",
+                     sp_x, sign_y, sign_ground,
+                     color=(0.30, 0.46, 0.20, 1.0), radius=0.35)
     _make_box_local("OTPark_SignPanel",
                     (sign_x, sign_y, sign_ground + 2.2),
                     (3.4, 0.15, 1.20), COL_SIGN_BROWN)
@@ -2597,6 +2606,19 @@ def _make_sphere_low_local(name, center, radius, color,
     for s in range(segments):
         faces.append([last, base + (s + 1) % segments, base + s])
     return _finalize_mesh(name, verts, faces, color)
+
+def _base_skirt(name, x, y, ground_z, color=(0.30, 0.42, 0.20, 1.0),
+                radius=0.45):
+    """Small irregular grass/dirt mound at the base of a vertical
+    prop. Masks any small alignment mismatch where the prop foot
+    meets the ground triangle. Per user direction (2026-06-15):
+    "fill in the gaps naturally with ways to fill in the space
+    with appropriate props." """
+    _make_sphere_low_local(f"{name}_Skirt",
+                            (x, y, ground_z + 0.10),
+                            radius, color, rings=3, segments=6)
+
+
 
 
 def _make_box_local(name, center, size, color):
