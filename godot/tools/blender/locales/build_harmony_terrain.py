@@ -5513,6 +5513,92 @@ def _face_axis(facing):
     return (0.0, -1.0)
 
 
+def build_phase3_neighborhood():
+    """Phase III — Norman Lott's abandoned development. "Gone to
+    seed" per the design manual: partial road, half-finished
+    houses, construction debris. Settlement zone (-460..-340,
+    -260..-180, target_z = -8.0, flatness 0.70).
+    """
+    road_w = 5.0      # narrower than completed neighborhoods
+    curb_w = 0.3
+    COL_GRAVEL = (0.55, 0.50, 0.40, 1.0)     # unfinished gravel road
+    COL_DIRT = (0.42, 0.32, 0.22, 1.0)
+    hw = road_w / 2
+
+    # Short partial road — only one block was paved before the
+    # developer went bust
+    road_pts = [(-440, -220), (-380, -220), (-360, -230)]
+    for i in range(len(road_pts) - 1):
+        x0, y0 = road_pts[i]; x1, y1 = road_pts[i + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        rv = []
+        for (rx, ry) in [(x0 - perp_x * hw, y0 - perp_y * hw),
+                         (x1 - perp_x * hw, y1 - perp_y * hw),
+                         (x1 + perp_x * hw, y1 + perp_y * hw),
+                         (x0 + perp_x * hw, y0 + perp_y * hw)]:
+            rv.append((rx, ry, mesh_z(rx, ry) + 0.03))
+        _finalize_mesh(f"P3Gravel_{i}", rv, [[0, 1, 2, 3]], COL_GRAVEL)
+
+    # ── 4 partial houses · 2 framed (slab + 4 wall studs, no
+    # roof), 2 finished but dilapidated.
+    dilap_palette = [
+        {'wall': (0.55, 0.50, 0.42, 1.0), 'roof': (0.32, 0.28, 0.22, 1.0)},
+        {'wall': (0.58, 0.52, 0.42, 1.0), 'roof': (0.30, 0.25, 0.20, 1.0)},
+    ]
+    # 2 finished but dilapidated houses on the partial road
+    for k, (hcx_off, hcy_off, facing) in enumerate((
+            (-30, -10, '+Y'),     # north of road
+            (10, +10, '-Y'),      # south of road
+    )):
+        hcx = -440 + 50 + hcx_off
+        hcy = -220 + hcy_off
+        hcz = mesh_z(hcx, hcy)
+        _build_suburban_house(f"P3_Dilap_House_{k}", hcx, hcy, hcz,
+                              facing=facing,
+                              palette=dilap_palette[k % len(dilap_palette)])
+
+    # 2 framed-only houses · just a slab + 4 corner studs + a
+    # stack of lumber on top of the slab
+    for k, (fcx, fcy) in enumerate(((-410, -240), (-400, -195))):
+        fz = mesh_z(fcx, fcy)
+        # Slab
+        _make_box_local(f"P3_Framed_Slab_{k}",
+                        (fcx, fcy, fz + 0.10),
+                        (10.0, 8.0, 0.20),
+                        (0.62, 0.58, 0.52, 1.0))
+        # 4 corner studs
+        for sx_off in (-4.5, 4.5):
+            for sy_off in (-3.5, 3.5):
+                _make_box_local(
+                    f"P3_Framed_Stud_{k}_{int(sx_off)}_{int(sy_off)}",
+                    (fcx + sx_off, fcy + sy_off, fz + 1.5),
+                    (0.10, 0.10, 3.0),
+                    (0.55, 0.42, 0.30, 1.0))
+        # Lumber pile on the slab
+        _make_box_local(f"P3_Framed_Lumber_{k}",
+                        (fcx, fcy, fz + 0.45),
+                        (2.0, 0.40, 0.40),
+                        (0.55, 0.42, 0.30, 1.0))
+
+    # Debris pile at the road's dead-end
+    dx, dy = road_pts[-1]
+    dz = mesh_z(dx, dy)
+    _make_box_local("P3_DebrisPile",
+                    (dx + 5, dy - 5, dz + 0.50),
+                    (4.0, 4.0, 1.0), COL_DIRT)
+    # "STOP CONSTRUCTION" sign on a leaning post
+    _make_cyl_local("P3_SignPost",
+                    (dx, dy + 6, dz + 1.0),
+                    0.06, 2.0, (0.55, 0.42, 0.30, 1.0), segments=4)
+    _make_box_local("P3_SignFace",
+                    (dx, dy + 6, dz + 2.0),
+                    (0.80, 0.04, 0.60),
+                    (0.78, 0.62, 0.22, 1.0))
+
+
 def build_east_cds_neighborhood():
     """East CDS Estates — east-ridge mid-tier neighborhood,
     curving collector road with a cul-de-sac branch heading
@@ -6908,6 +6994,7 @@ def main():
     build_west_estates_neighborhood()
     build_north_ranch_neighborhood()
     build_east_cds_neighborhood()
+    build_phase3_neighborhood()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
