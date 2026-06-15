@@ -3429,6 +3429,36 @@ def build_commercial_cluster():
             dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
         _finalize_mesh(f"CommRoad_Dash_{k}", dv, [[0, 1, 2, 3]],
                        COL_CENTERLINE)
+    # ── STREET TREES planted in sidewalk cutouts between the
+    # stores. Five mid-sized oaks at locations that don't collide
+    # with benches, lampposts, phone booth, or the news rack.
+    COL_OAK_TRUNK = (0.30, 0.22, 0.16, 1.0)
+    COL_OAK_CANOPY = (0.30, 0.55, 0.25, 1.0)
+    street_tree_xs = [
+        nc_x - 18, nc_x + 22,         # flanking NexCorp
+        (ks_x + nc_x) / 2 + 22,       # between NexCorp + Kwik Stop
+        (ks_x + cc_x) / 2 + 18,       # between Kwik Stop + Cosmic
+    ]
+    for k, stx in enumerate(street_tree_xs):
+        sty = ks_y + 6.5 + 1.0        # north of the sidewalk
+        stz = mesh_z(stx, sty)
+        trunk_h = 3.6
+        canopy_r = 2.6
+        _make_cyl_local(f"CommStreetTree_{k}_Trunk",
+                        (stx, sty, stz + trunk_h / 2),
+                        0.28, trunk_h, COL_OAK_TRUNK, segments=6)
+        _make_sphere_low_local(f"CommStreetTree_{k}_Canopy",
+                               (stx, sty,
+                                stz + trunk_h + canopy_r * 0.55),
+                               canopy_r, COL_OAK_CANOPY,
+                               rings=3, segments=8)
+        # Sidewalk cutout — a small brown square at the base of
+        # the tree marking the planting bed
+        _make_box_local(f"CommStreetTree_{k}_Bed",
+                        (stx, sty, stz + 0.04),
+                        (1.2, 1.2, 0.08),
+                        (0.32, 0.22, 0.16, 1.0))
+
     # ── NEWSPAPER RACK outside Cosmic Comics. Two coin-op boxes
     # side by side on the sidewalk. Classic chapter-one street
     # furniture.
