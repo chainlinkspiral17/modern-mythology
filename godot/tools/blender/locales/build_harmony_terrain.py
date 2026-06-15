@@ -5270,6 +5270,25 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (counter_w + 0.2, 0.50, 0.02),
                     (0.30, 0.22, 0.18, 1.0))
 
+    # ── SAM'S PHONE face-up on the counter · canon detail from
+    # Sam Miller's _COMMUNITY_PLANNED_LORE.md ("her phone is on the
+    # counter face-up"). Small black rectangle with a bright cyan
+    # screen, set on the customer-facing edge so it reads as hers
+    # rather than the clerk's.
+    _make_box_local("KwikShop_KwikStop_SamPhone_Body",
+                    (counter_x + counter_w / 2 - 0.45,
+                     counter_y - counter_d / 2 + 0.18,
+                     ground_z + counter_h + 0.01),
+                    (0.08, 0.16, 0.012),
+                    (0.10, 0.10, 0.12, 1.0))
+    # Screen lit cyan-ish (active call / message screen)
+    _make_box_local("KwikShop_KwikStop_SamPhone_Screen",
+                    (counter_x + counter_w / 2 - 0.45,
+                     counter_y - counter_d / 2 + 0.18,
+                     ground_z + counter_h + 0.018),
+                    (0.06, 0.14, 0.002),
+                    (0.42, 0.68, 0.78, 1.0))
+
     # ── AISLE ENDCAPS · feature displays at the east + west
     # ends of each aisle (special promotions / impulse stacks)
     endcap_colours = [
@@ -5467,6 +5486,276 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
             _make_box_local(f"KwikShop_Ldr_Flyer_{kx}_{ky}",
                             (bb_x - 0.05, fy, fz),
                             (0.02, 0.30, 0.30), col)
+
+    # ════════════════════════════════════════════════════════════════
+    # KWIK STOP HERO-ASSET POLISH (2026-06-15 / hero pass)
+    # The chapter-1 reference locale. Real Texas convenience stores
+    # have a specific cluster of EXTERIOR fittings that signals
+    # "store" before the player reads the sign. Each item below is
+    # one of those fittings, sourced from real Gulf-Coast Kwik
+    # references + the canon (Sam Miller's zine names Diego "leaning
+    # against the ice freezer outside" — that freezer is below).
+    # ════════════════════════════════════════════════════════════════
+
+    sw_y = cy - depth / 2 - 6.5    # storefront sidewalk y (matches build_commercial_cluster walk_strip_y)
+    sw_z_base = mesh_z(kw_cx, sw_y)
+
+    # ── ICE FREEZER · west of the entry door · per Sam Miller's
+    # zine, this is where Diego stands. Steel chest cooler with
+    # sliding-glass top and "ICE" in red on the white upper band.
+    ice_x = kw_cx - 4.4
+    ice_y = sw_y + 0.85
+    ice_z = mesh_z(ice_x, ice_y)
+    COL_ICE_BODY = (0.62, 0.62, 0.64, 1.0)      # steel grey
+    COL_ICE_TOP  = (0.95, 0.94, 0.90, 1.0)
+    COL_ICE_GLASS = (0.65, 0.78, 0.88, 1.0)     # light blue-glass
+    COL_ICE_RED  = (0.85, 0.18, 0.16, 1.0)
+    # Lower body — chest height
+    _make_box_local("KwikStop_IceFreezer_Body",
+                    (ice_x, ice_y, ice_z + 0.45),
+                    (1.20, 0.65, 0.90), COL_ICE_BODY)
+    # Upper white band with "ICE" decal
+    _make_box_local("KwikStop_IceFreezer_TopBand",
+                    (ice_x, ice_y, ice_z + 1.00),
+                    (1.20, 0.66, 0.18), COL_ICE_TOP)
+    # Red ICE letter strip
+    _make_box_local("KwikStop_IceFreezer_IceText",
+                    (ice_x, ice_y - 0.33, ice_z + 1.00),
+                    (0.42, 0.04, 0.12), COL_ICE_RED)
+    # Sliding glass top
+    _make_box_local("KwikStop_IceFreezer_GlassTop",
+                    (ice_x, ice_y, ice_z + 1.13),
+                    (1.16, 0.62, 0.04), COL_ICE_GLASS)
+    # Side vent grille (east face)
+    _make_box_local("KwikStop_IceFreezer_Vent",
+                    (ice_x + 0.61, ice_y, ice_z + 0.40),
+                    (0.04, 0.40, 0.30),
+                    (0.28, 0.28, 0.30, 1.0))
+    # Coin slot (west face)
+    _make_box_local("KwikStop_IceFreezer_CoinSlot",
+                    (ice_x - 0.61, ice_y + 0.10, ice_z + 0.95),
+                    (0.04, 0.16, 0.16),
+                    (0.18, 0.18, 0.20, 1.0))
+    # Price sticker on the front
+    _make_box_local("KwikStop_IceFreezer_Price",
+                    (ice_x + 0.30, ice_y - 0.33, ice_z + 0.50),
+                    (0.20, 0.04, 0.15),
+                    (0.95, 0.85, 0.30, 1.0))   # yellow $2.49 sticker
+
+    # ── PROPANE TANK CAGE · east of the ice freezer, between
+    # storefront and parking. 6-tank cage with mesh sides.
+    pro_x = kw_cx - 3.0
+    pro_y = sw_y + 0.95
+    pro_z = mesh_z(pro_x, pro_y)
+    COL_PROPANE_CAGE = (0.32, 0.32, 0.34, 1.0)
+    COL_PROPANE_TANK = (0.78, 0.74, 0.66, 1.0)
+    # Cage frame (4 vertical posts + bottom + top rails)
+    for sx, sy in ((-0.50, -0.30), (0.50, -0.30),
+                   (-0.50,  0.30), (0.50,  0.30)):
+        _make_box_local(
+            f"KwikStop_Propane_Post_{int(sx*10):+d}_{int(sy*10):+d}",
+            (pro_x + sx, pro_y + sy, pro_z + 0.60),
+            (0.04, 0.04, 1.20), COL_PROPANE_CAGE)
+    # Bottom & top rails
+    for rz in (pro_z + 0.05, pro_z + 1.15):
+        _make_box_local(f"KwikStop_Propane_Rail_{int(rz*100)}",
+                        (pro_x, pro_y, rz),
+                        (1.08, 0.68, 0.04), COL_PROPANE_CAGE)
+    # Mesh suggestion (cross-bars)
+    for kk in range(3):
+        rz = pro_z + 0.30 + kk * 0.30
+        _make_box_local(f"KwikStop_Propane_Mesh_{kk}",
+                        (pro_x, pro_y + 0.32, rz),
+                        (1.04, 0.02, 0.02), COL_PROPANE_CAGE)
+    # 6 propane tanks in a 3x2 grid
+    for tx in range(3):
+        for ty in range(2):
+            tk_x = pro_x - 0.36 + tx * 0.36
+            tk_y = pro_y - 0.15 + ty * 0.30
+            _make_cyl_local(
+                f"KwikStop_Propane_Tank_{tx}_{ty}",
+                (tk_x, tk_y, pro_z + 0.40),
+                0.14, 0.65, COL_PROPANE_TANK, segments=6)
+    # "PROPANE EXCHANGE" sign on top
+    _make_box_local("KwikStop_Propane_Sign",
+                    (pro_x, pro_y - 0.33, pro_z + 1.40),
+                    (1.10, 0.04, 0.30),
+                    (0.85, 0.18, 0.16, 1.0))
+
+    # ── NEWSPAPER BOXES · three coin-op boxes side by side, east
+    # of the entry door. Local paper, USA Today, Penny Saver.
+    news_y = sw_y + 0.65
+    news_z_base = mesh_z(kw_cx, news_y)
+    for k, (col_body, tag) in enumerate([
+        ((0.18, 0.32, 0.55, 1.0), "Beaumont"),    # Beaumont Enterprise blue
+        ((0.85, 0.20, 0.18, 1.0), "USAToday"),
+        ((0.42, 0.42, 0.45, 1.0), "PennySaver"),
+    ]):
+        nx = kw_cx + 2.0 + k * 0.50
+        nz = mesh_z(nx, news_y)
+        # Stand legs
+        for sgn in (-1, 1):
+            _make_box_local(
+                f"KwikStop_NewsBox_{tag}_Leg_{sgn:+d}",
+                (nx + sgn * 0.18, news_y, nz + 0.35),
+                (0.04, 0.04, 0.70),
+                (0.42, 0.42, 0.45, 1.0))
+        # Body
+        _make_box_local(f"KwikStop_NewsBox_{tag}_Body",
+                        (nx, news_y, nz + 0.95),
+                        (0.42, 0.36, 0.50), col_body)
+        # Glass window (front)
+        _make_box_local(f"KwikStop_NewsBox_{tag}_Window",
+                        (nx, news_y - 0.19, nz + 1.00),
+                        (0.30, 0.04, 0.30),
+                        (0.78, 0.85, 0.92, 1.0))
+        # Coin slot
+        _make_box_local(f"KwikStop_NewsBox_{tag}_Slot",
+                        (nx + 0.15, news_y - 0.19, nz + 0.80),
+                        (0.06, 0.04, 0.06),
+                        (0.18, 0.18, 0.20, 1.0))
+        # Top header strip
+        _make_box_local(f"KwikStop_NewsBox_{tag}_Header",
+                        (nx, news_y, nz + 1.22),
+                        (0.42, 0.36, 0.06),
+                        (0.95, 0.92, 0.86, 1.0))
+
+    # ── PAY PHONE · pole-mounted on the sidewalk west of the door
+    pp_x = kw_cx - 2.0
+    pp_y = sw_y - 0.10    # just south of sidewalk centerline
+    pp_z = mesh_z(pp_x, pp_y)
+    COL_PHONE_BODY = (0.18, 0.32, 0.55, 1.0)   # bell-system blue
+    COL_PHONE_STEEL = (0.62, 0.62, 0.64, 1.0)
+    # Pole
+    _make_cyl_local("KwikStop_PayPhone_Pole",
+                    (pp_x, pp_y, pp_z + 1.10),
+                    0.05, 2.20, COL_PHONE_STEEL, segments=6)
+    # Phone enclosure (3-sided hood)
+    _make_box_local("KwikStop_PayPhone_Hood",
+                    (pp_x, pp_y + 0.12, pp_z + 1.85),
+                    (0.50, 0.32, 0.50), COL_PHONE_BODY)
+    # Coin slot panel
+    _make_box_local("KwikStop_PayPhone_Coinpanel",
+                    (pp_x, pp_y - 0.05, pp_z + 1.65),
+                    (0.36, 0.04, 0.50),
+                    (0.42, 0.42, 0.45, 1.0))
+    # Handset cradle
+    _make_box_local("KwikStop_PayPhone_Cradle",
+                    (pp_x - 0.20, pp_y - 0.07, pp_z + 1.40),
+                    (0.06, 0.06, 0.20),
+                    (0.18, 0.18, 0.20, 1.0))
+
+    # ── COIN-OP AIR/WATER PUMP · east end of the building, on
+    # the corner of the lot. Yellow-and-black "AIR/WATER 75¢" box.
+    aw_x = kw_cx + bay_w / 2 + 1.5
+    aw_y = sw_y - 1.0
+    aw_z = mesh_z(aw_x, aw_y)
+    # Pedestal box
+    _make_box_local("KwikStop_AirWater_Body",
+                    (aw_x, aw_y, aw_z + 0.55),
+                    (0.45, 0.45, 1.10),
+                    (0.95, 0.85, 0.30, 1.0))   # safety yellow
+    # Black header band
+    _make_box_local("KwikStop_AirWater_Header",
+                    (aw_x, aw_y, aw_z + 1.05),
+                    (0.45, 0.45, 0.18),
+                    (0.18, 0.18, 0.20, 1.0))
+    # Air hose coiled
+    _make_cyl_local("KwikStop_AirWater_HoseCoil",
+                    (aw_x + 0.25, aw_y, aw_z + 0.85),
+                    0.10, 0.08,
+                    (0.20, 0.20, 0.22, 1.0), segments=8)
+    # Brass valve / pressure gauge cluster
+    _make_box_local("KwikStop_AirWater_Valve",
+                    (aw_x, aw_y - 0.22, aw_z + 0.75),
+                    (0.10, 0.06, 0.18),
+                    (0.78, 0.62, 0.32, 1.0))
+
+    # ── SANDWICH BOARD A-FRAME SIGN on the sidewalk in front of
+    # the door · "OPEN 24 HRS · LOTTO · ICE"
+    sb_x = kw_cx + 0.6
+    sb_y = sw_y - 0.85
+    sb_z = mesh_z(sb_x, sb_y)
+    COL_SB_WOOD = (0.62, 0.42, 0.28, 1.0)
+    COL_SB_FACE = (0.95, 0.85, 0.30, 1.0)
+    # Two A-frame panels (slight V angle suggested by parallel boxes
+    # offset slightly)
+    for sgn in (-1, 1):
+        _make_box_local(f"KwikStop_SandwichBoard_Panel_{sgn:+d}",
+                        (sb_x, sb_y + sgn * 0.08, sb_z + 0.40),
+                        (0.60, 0.04, 0.78), COL_SB_FACE)
+        # Wood frame around the panel
+        _make_box_local(f"KwikStop_SandwichBoard_FrameT_{sgn:+d}",
+                        (sb_x, sb_y + sgn * 0.08, sb_z + 0.80),
+                        (0.66, 0.05, 0.04), COL_SB_WOOD)
+        _make_box_local(f"KwikStop_SandwichBoard_FrameB_{sgn:+d}",
+                        (sb_x, sb_y + sgn * 0.08, sb_z + 0.02),
+                        (0.66, 0.05, 0.04), COL_SB_WOOD)
+    # Hinge at top
+    _make_box_local("KwikStop_SandwichBoard_Hinge",
+                    (sb_x, sb_y, sb_z + 0.82),
+                    (0.06, 0.06, 0.04),
+                    (0.62, 0.62, 0.64, 1.0))
+
+    # ── CIGARETTE BUTT URN by the door (small dark cylinder with
+    # sand top — every real Kwik Stop has one)
+    urn_x = kw_cx + 1.2
+    urn_y = sw_y - 0.50
+    urn_z = mesh_z(urn_x, urn_y)
+    _make_cyl_local("KwikStop_CigUrn_Body",
+                    (urn_x, urn_y, urn_z + 0.45),
+                    0.16, 0.90,
+                    (0.32, 0.28, 0.26, 1.0), segments=6)
+    # Sand top
+    _make_cyl_local("KwikStop_CigUrn_Sand",
+                    (urn_x, urn_y, urn_z + 0.91),
+                    0.16, 0.02,
+                    (0.85, 0.78, 0.62, 1.0), segments=6)
+
+    # ── BIKE RACK · 2-loop chrome rack at the west edge of the
+    # sidewalk with a single bike chained to it
+    br_x = kw_cx - 4.8
+    br_y = sw_y - 0.70
+    br_z = mesh_z(br_x, br_y)
+    COL_BIKE_RACK = (0.62, 0.62, 0.64, 1.0)
+    # 2 inverted-U loops + connecting bar
+    for sgn in (-1, 1):
+        # Upright
+        _make_cyl_local(
+            f"KwikStop_BikeRack_Up_{sgn:+d}",
+            (br_x + sgn * 0.30, br_y, br_z + 0.40),
+            0.025, 0.80, COL_BIKE_RACK, segments=6)
+    # Top bar
+    _make_box_local("KwikStop_BikeRack_Bar",
+                    (br_x, br_y, br_z + 0.78),
+                    (0.65, 0.04, 0.04), COL_BIKE_RACK)
+    # The single bike — sketched: 2 wheel circles + frame triangle
+    bike_x = br_x + 0.10
+    COL_BIKE_FRAME = (0.85, 0.20, 0.18, 1.0)   # red bike frame
+    COL_BIKE_TIRE = (0.18, 0.18, 0.20, 1.0)
+    # Two wheels (low-poly cylinders)
+    for sgn in (-1, 1):
+        _make_cyl_local(
+            f"KwikStop_BikeWheel_{sgn:+d}",
+            (bike_x + sgn * 0.36, br_y - 0.18, br_z + 0.30),
+            0.30, 0.04, COL_BIKE_TIRE, segments=10)
+    # Frame top tube
+    _make_box_local("KwikStop_BikeFrame_Top",
+                    (bike_x, br_y - 0.18, br_z + 0.55),
+                    (0.65, 0.04, 0.04), COL_BIKE_FRAME)
+    # Seat tube
+    _make_box_local("KwikStop_BikeFrame_Seat",
+                    (bike_x + 0.10, br_y - 0.18, br_z + 0.45),
+                    (0.03, 0.04, 0.30), COL_BIKE_FRAME)
+    # Handlebars
+    _make_box_local("KwikStop_BikeHandlebars",
+                    (bike_x - 0.38, br_y - 0.18, br_z + 0.70),
+                    (0.04, 0.30, 0.04), COL_BIKE_FRAME)
+    # Seat
+    _make_box_local("KwikStop_BikeSeat",
+                    (bike_x + 0.12, br_y - 0.18, br_z + 0.65),
+                    (0.18, 0.06, 0.04),
+                    (0.20, 0.20, 0.22, 1.0))
 
 
 def _build_diner(cx, cy, ground_z):
