@@ -2969,11 +2969,13 @@ def _build_convenience_store(name_prefix, cx, cy, ground_z,
                             (0.42, 0.65, 0.38, 1.0))
 
     # Counter at the BACK-LEFT (player walks in, counter on right)
-    counter_w = 3.0
-    counter_d = 0.9
+    # Sized so there's a real walkable aisle (~1.2 m) between the
+    # counter's NORTH edge and the back wall — clerk needs room.
+    counter_w = 2.4
+    counter_d = 0.7
     counter_h = 1.1
     counter_x = cx + width / 2 - counter_w / 2 - 0.5
-    counter_y = cy + depth / 2 - counter_d / 2 - 0.6
+    counter_y = cy + depth / 2 - counter_d / 2 - 1.2
     _make_box_local(f"{name_prefix}_Counter",
                     (counter_x, counter_y,
                      ground_z + counter_h / 2),
@@ -3273,9 +3275,12 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                  ground_z + aisle_h - 0.20),
                 (0.04, aisle_l - 0.4, 0.30),
                 (0.42, 0.65, 0.38, 1.0))
-    counter_w = 2.4; counter_d = 0.9; counter_h = 1.1
+    # Counter sized + positioned so there's a real walkable
+    # aisle (~1.0 m) between its NORTH edge and the back wall —
+    # the clerk needs to stand somewhere.
+    counter_w = 1.8; counter_d = 0.7; counter_h = 1.1
     counter_x = kw_cx + bay_w / 2 - counter_w / 2 - 0.5
-    counter_y = cy + depth / 2 - counter_d / 2 - 0.6
+    counter_y = cy + depth / 2 - counter_d / 2 - 1.2
     _make_box_local("KwikShop_KwikStop_Counter",
                     (counter_x, counter_y,
                      ground_z + counter_h / 2),
@@ -4234,14 +4239,23 @@ def build_commercial_cluster():
     # Per user spec: "characters can see each other at their
     # jobs." All markers are within sight-line range across the
     # block's plate-glass storefronts.
+    # Each NPC stands in a CLEAR aisle behind their counter, not
+    # embedded inside it. Convenience-store back wall sits at
+    # cy + 4.8; counter NORTH edge at cy + 4.15 with new sizing;
+    # NPC stands halfway between (cy + 4.5).
     npc_markers = [
-        ("NPC_Skip_Locker",     nc_x + 4.0, nc_y + 4.5),    # NexCorp
-        ("NPC_Arcade_Attendant", ks_x - 9.0, ks_y + 4.0),   # Kwik Shop arcade bay
-        ("NPC_Sam_Register",    ks_x + 2.8, ks_y + 4.0),    # Kwik Stop counter
-        ("NPC_Laundromat_Clerk",ks_x + 9.0, ks_y + 4.0),    # Kwik Shop laundromat bay
-        ("NPC_Diner_Cook",      dn_x,       dn_y + 4.0),    # Diner kitchen pass
-        ("NPC_Diner_Waiter",    dn_x + 4.0, dn_y + 2.0),    # Diner counter
-        ("NPC_Comics_Clerk",    cc_x + 3.1, cc_y - 3.0),    # Cosmic Comics
+        ("NPC_Skip_Locker",      nc_x + 4.0, nc_y + 4.5),
+        ("NPC_Arcade_Attendant", ks_x - 9.0, ks_y + 4.5),
+        ("NPC_Sam_Register",     ks_x + 2.8, ks_y + 4.5),
+        ("NPC_Laundromat_Clerk", ks_x + 9.0, ks_y + 4.5),
+        # Diner counter spans cy+1.17 to cy+1.87 with the new
+        # narrower counter_d; kitchen wall at cy+3.6. Cook + waiter
+        # have ~1.7 m of staff aisle to stand in.
+        ("NPC_Diner_Cook",       dn_x,        dn_y + 3.0),
+        ("NPC_Diner_Waiter",     dn_x + 4.0, dn_y + 2.4),
+        # Cosmic Comics counter at south wall (cy-2.85 to cy-2.15);
+        # clerk stands NORTH of counter, deeper into the shop.
+        ("NPC_Comics_Clerk",     cc_x + 3.1, cc_y - 1.0),
     ]
     for name, mx_, my_ in npc_markers:
         mz = mesh_z(mx_, my_)
@@ -4258,27 +4272,27 @@ def build_commercial_cluster():
     # at a glance.
     chapter_one_cast = [
         # (name, x, y, scale, hair, jacket, pants)
-        ("Skip",     nc_x + 4.0,  nc_y + 4.5, 1.0, "short",
+        ("Skip",     nc_x + 4.0, nc_y + 4.5, 1.0, "short",
             (0.32, 0.55, 0.78, 1.0),   # blue NexCorp uniform
-            (0.42, 0.42, 0.45, 1.0)),  # grey pants
-        ("ArcadeAtt", ks_x - 9.0, ks_y + 4.0, 1.0, "bowl",
-            (0.62, 0.22, 0.78, 1.0),   # purple
-            (0.20, 0.20, 0.22, 1.0)),  # black
-        ("Sam",      ks_x + 2.8, ks_y + 4.0, 1.0, "short",
-            (0.85, 0.22, 0.20, 1.0),   # red Kwik Stop apron
-            (0.55, 0.50, 0.42, 1.0)),  # khaki
-        ("LaundryAtt", ks_x + 9.0, ks_y + 4.0, 1.0, "bowl",
-            (0.32, 0.55, 0.78, 1.0),   # navy
-            (0.92, 0.92, 0.90, 1.0)),  # white
-        ("DinerCook", dn_x,       dn_y + 3.5, 1.0, "short",
-            (0.98, 0.98, 0.96, 1.0),   # white chef coat
-            (0.18, 0.18, 0.22, 1.0)),  # dark chef pants
-        ("DinerWaiter", dn_x + 4.0, dn_y + 2.0, 1.0, "short",
-            (0.85, 0.22, 0.20, 1.0),   # red diner uniform
-            (0.92, 0.90, 0.84, 1.0)),  # cream apron
-        ("ComicsClerk", cc_x + 3.1, cc_y - 3.0, 1.0, "bowl",
-            (0.95, 0.85, 0.30, 1.0),   # gold (Cosmic Comics palette)
-            (0.32, 0.18, 0.32, 1.0)),  # plum
+            (0.42, 0.42, 0.45, 1.0)),
+        ("ArcadeAtt", ks_x - 9.0, ks_y + 4.5, 1.0, "bowl",
+            (0.62, 0.22, 0.78, 1.0),
+            (0.20, 0.20, 0.22, 1.0)),
+        ("Sam",      ks_x + 2.8, ks_y + 4.5, 1.0, "short",
+            (0.85, 0.22, 0.20, 1.0),
+            (0.55, 0.50, 0.42, 1.0)),
+        ("LaundryAtt", ks_x + 9.0, ks_y + 4.5, 1.0, "bowl",
+            (0.32, 0.55, 0.78, 1.0),
+            (0.92, 0.92, 0.90, 1.0)),
+        ("DinerCook", dn_x,        dn_y + 3.0, 1.0, "short",
+            (0.98, 0.98, 0.96, 1.0),
+            (0.18, 0.18, 0.22, 1.0)),
+        ("DinerWaiter", dn_x + 4.0, dn_y + 2.4, 1.0, "short",
+            (0.85, 0.22, 0.20, 1.0),
+            (0.92, 0.90, 0.84, 1.0)),
+        ("ComicsClerk", cc_x + 3.1, cc_y - 1.0, 1.0, "bowl",
+            (0.95, 0.85, 0.30, 1.0),
+            (0.32, 0.18, 0.32, 1.0)),
     ]
     for tag, fx, fy, sc, hair, jacket, pants in chapter_one_cast:
         fz = mesh_z(fx, fy)
