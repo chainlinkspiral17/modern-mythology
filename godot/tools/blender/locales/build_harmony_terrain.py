@@ -5288,6 +5288,23 @@ def build_commercial_cluster():
         # Diner. Faces +X (east).
         ("Pedestrian", 12.0, walk_strip_y, '+X', 1.0, "short",
             (0.32, 0.55, 0.78, 1.0), (0.42, 0.42, 0.45, 1.0)),
+        # Kwik Stop reference locale · 3 customer figures
+        # Customer #1 at the impulse-candy rack in front of the
+        # counter (Sam-side, looking at the candy). Counter
+        # customer-face at cy + 3.45 - counter_d/2 = cy + 3.10.
+        # Impulse rack at cy + 3.10 - 0.18 = cy + 2.92. Customer
+        # 0.5 m south of rack, facing north.
+        ("KwikStopCust1", ks_x + 2.8, ks_y + 2.4, '+Y', 1.0,
+            "short", (0.85, 0.22, 0.20, 1.0), (0.18, 0.18, 0.20, 1.0)),
+        # Customer #2 at the slushie machine (wall_x = ks_x-4.1,
+        # sl_y = ks_y - 1.5). Stand 0.5 m east of slushie facing
+        # west.
+        ("KwikStopCust2", ks_x - 3.5, ks_y - 1.5, '-X', 0.85,
+            "bowl", (0.42, 0.62, 0.32, 1.0), (0.55, 0.32, 0.22, 1.0)),
+        # Customer #3 browsing the south aisle (aisle at
+        # cy - 1.5). Stand on the south side of aisle facing N.
+        ("KwikStopCust3", ks_x + 1.5, ks_y - 2.4, '+Y', 1.0,
+            "short", (0.95, 0.85, 0.30, 1.0), (0.32, 0.18, 0.32, 1.0)),
     ]
     for tag, fx, fy, facing, sc, hair, jacket, pants in customers:
         fz = mesh_z(fx, fy)
