@@ -737,23 +737,33 @@ def build_pond_water():
             rim_samples.append(hce_elevation(sx_pt, sy_pt))
         rim_z = sum(rim_samples) / len(rim_samples)
         water_z = min(bottom_z + 1.5, rim_z - 0.7)
-        # CRITICAL: shrink the water disc so it stays INSIDE the
-        # bowl. The user's complaint: "pond reads as polygon of
-        # water floating above the ground." Root cause: water disc
-        # extended to 0.80 × radius but the analytic depression is
-        # only deeper than water_z within ~0.4 × radius. Beyond
-        # that, the flat disc sat above the rising bowl wall.
-        # Sample the actual terrain at candidate radii and find
-        # the largest radius where mesh terrain is still BELOW
-        # water level — that's the water's true extent.
-        # Water disc · shrunk to 0.48 × radius so the entire disc
-        # sits inside the depression's flat-bottom plateau (which
-        # extends to d = 0.50 × radius before the rim ramp begins).
-        # Earlier 0.70 × radius extended into the rising rim and
-        # the user could see water "hanging out" past the carved
-        # hole. Now the disc terminates 2% inside the plateau and
-        # the carved channel walls visibly rise on all sides.
-        wr = radius * 0.48
+        # EMPIRICAL DISC RADIUS · the analytic depression is
+        # WEAKENED by settlement flattening (settlement target
+        # pulls all elevations toward target_z by `flatness`, so
+        # a 6 m-deep pond inside a flatness=0.55 zone yields only
+        # a 2.7 m carved depression). A fixed 0.48×radius disc
+        # therefore floats above terrain for ponds in flattened
+        # zones. Probe outward sampling mesh_z and stop just
+        # before terrain rises above water_z so the disc edge
+        # sits where the bowl wall meets the water surface.
+        wr = radius * 0.20
+        for probe_k in range(1, 20):
+            test_r = radius * (0.20 + probe_k * 0.04)
+            # Sample 4 cardinal points at this radius
+            terrain_above = False
+            for sample_i in range(4):
+                ang = 2.0 * math.pi * sample_i / 4
+                tx = cx + math.cos(ang) * test_r
+                ty = cy + math.sin(ang) * test_r
+                if mesh_z(tx, ty) > water_z - 0.05:
+                    terrain_above = True
+                    break
+            if terrain_above:
+                break
+            wr = test_r
+        # Cap at 0.90 × radius so we never grow beyond the
+        # depression's analytic extent.
+        wr = min(wr, radius * 0.90)
         # Outer water disc (lighter — shallow rim)
         verts = [(cx, cy, water_z)]
         for i in range(segments):
@@ -988,14 +998,25 @@ def _reed_clump(name, cx, cy, ground_z, count=5):
                         (0.45, 0.30, 0.18, 1.0))
 
 
-def _fence_along(name, p0, p1, fence_type, sub_len=40.0):
+def _fence_along(name, p0, p1, fence_type, sub_len=15.0):
     """Subdivide (p0, p1) into ~sub_len pieces and place a fence
     segment at each, sampling elevation at the midpoint of each
-    piece. sub_len bumped from 10 m to 40 m so a 300 m fence emits
-    8 segments instead of 30 — each segment internally still
-    contains rails + bars + end posts, but at 1/4 the segment
-    count we cut the total MeshInstance3D node count by 4x. Godot's
-    import was hanging on the dense version."""
+    piece. Per user feedback (2026-06-15): "fences running through
+    terrain, no aligned to terrain." With 40 m sub-segments a
+    typical district slope of ±1 m per 30 m gave each segment a
+    ±0.7 m end-to-end elevation delta — fence floated on the
+    high end and was buried on the low end. Dropped sub_len to
+    15 m (delta now ±0.25 m, well within the fence's vertical
+    extent so segments visibly track terrain).
+
+    Each segment z is sampled at MIDPOINT and the segment is
+    built as a straight box at that z. With short segments the
+    joints step naturally to follow terrain.
+
+    Also drops a small grass-coloured skirt sphere at each
+    segment midpoint to mask any residual gap where the fence
+    base meets the terrain mesh.
+    """
     x0, y0 = p0; x1, y1 = p1
     length = math.hypot(x1 - x0, y1 - y0)
     if length < 0.001:
@@ -1005,13 +1026,26 @@ def _fence_along(name, p0, p1, fence_type, sub_len=40.0):
         t0 = i / n; t1 = (i + 1) / n
         sp0 = (x0 + (x1 - x0) * t0, y0 + (y1 - y0) * t0)
         sp1 = (x0 + (x1 - x0) * t1, y0 + (y1 - y0) * t1)
+        # Sample z at BOTH endpoints + midpoint; use the LOWER of
+        # the endpoint samples as the segment base so the fence
+        # always at least touches the lower terrain side (no
+        # floating); the higher side gets buried slightly but
+        # the skirt sphere masks it.
         mx = (sp0[0] + sp1[0]) / 2
         my = (sp0[1] + sp1[1]) / 2
-        z = mesh_z(mx, my)
+        z_mid = mesh_z(mx, my)
+        z_p0 = mesh_z(sp0[0], sp0[1])
+        z_p1 = mesh_z(sp1[0], sp1[1])
+        z = min(z_p0, z_p1, z_mid)
         if fence_type == 'iron':
             iron_lattice_fence(f"{name}_{i}", sp0, sp1, z=z, height=1.4)
+            # Skirt to mask the join gap on the high side
+            _base_skirt(f"{name}_{i}_Skirt", mx, my, z,
+                         color=(0.30, 0.42, 0.20, 1.0), radius=0.40)
         elif fence_type == 'brick':
             brick_wall(f"{name}_{i}", sp0, sp1, z=z, height=1.8)
+            _base_skirt(f"{name}_{i}_Skirt", mx, my, z,
+                         color=(0.30, 0.42, 0.20, 1.0), radius=0.50)
 
 
 def build_district_fences():
