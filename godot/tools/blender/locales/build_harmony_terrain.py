@@ -170,14 +170,18 @@ SETTLEMENTS = [
     ("WestEstates", -460, -120, -340, -40, -3.0, 0.90),
     # Phase III construction (Norman Lott) — gone-to-seed low
     ("Phase3",      -460, -260, -340, -180, -8.0, 0.70),
-    # North Commercial Belt — between CC and Ranch, sloped
-    ("NorthComm",   -460, 440, 260, 340, +14.0, 0.75),
-    # East Commercial
-    ("EastComm",    440, 540, -340, 260, +5.0, 0.80),
+    # North Commercial Belt — between CC and Ranch, sloped.
+    # Flatness raised 0.75 -> 0.88 (2026-06-15) so the belt reads
+    # uniformly at +14 instead of varying +10..+18 from base terrain
+    # leaking through (CC's Gaussian decay was bleeding into the
+    # belt's north edge).
+    ("NorthComm",   -460, 440, 260, 340, +14.0, 0.88),
+    # East Commercial — flatness 0.80 -> 0.90
+    ("EastComm",    440, 540, -340, 260, +5.0, 0.90),
     # West Commercial Strip (Highway 9 lowland)
-    ("WestComm",    -560, -460, -340, 260, -2.0, 0.85),
+    ("WestComm",    -560, -460, -340, 260, -2.0, 0.90),
     # South Commercial / Truck Stop (low — truck route)
-    ("SouthComm",   -460, 440, -400, -340, -9.0, 0.85),
+    ("SouthComm",   -460, 440, -400, -340, -9.0, 0.90),
     # Harmony Park (manicured — flatter than wild, less than housing)
     ("HarmonyPark", -120, 180, -40, 200, +1.0, 0.55),
     # Dedicated platform around the Oliver Tree statue so the
