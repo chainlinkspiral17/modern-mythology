@@ -1530,9 +1530,11 @@ def build_oliver_tree_memorial_park():
                         COL_FLOWER_PINK)
 
     # ── PARK ENTRY ARCHWAY · stone arch over the south entry ─
-    # Anchors to mesh_z at the arch position, NOT park_z (which is
-    # the statue centre). The south entry sits ~45 m from centre
-    # where the ground can differ by 0.5 m.
+    # Local plinth colour constants (the statue build's constants
+    # aren't visible from this function).
+    COL_PLINTH_BASE = (0.68, 0.64, 0.56, 1.0)
+    COL_PLINTH_SHAFT = (0.78, 0.74, 0.66, 1.0)
+    COL_PLINTH_CAP = (0.85, 0.80, 0.70, 1.0)
     arch_y = sy - outer_r - 30
     arch_w = 7.0
     arch_post_w = 1.0
@@ -1732,6 +1734,179 @@ def build_oliver_tree_memorial_park():
         shoe_color=(0.85, 0.20, 0.18, 1.0),
         with_ears=True,
     )
+
+    # ════════════════════════════════════════════════════════
+    # PARK BROCHURE PASS · refuge from the Texas heat.
+    # Per user direction (2026-06-15): "make it comfortable and
+    # lovely and human friendly, like it could go on the cover of
+    # a promotional booklet for the planned community."
+    # ════════════════════════════════════════════════════════
+
+    # ── ROSE GARDEN · formal arrangement in the SE corner of
+    # the park. Brick edging frames a grid of coloured bedding.
+    rose_cx, rose_cy = sx + 18, sy - 14
+    rose_ground = mesh_z(rose_cx, rose_cy)
+    rose_w, rose_d = 12.0, 8.0
+    # Brick edging — four narrow walls around the bed
+    edge_brick = (0.55, 0.32, 0.26, 1.0)
+    edge_t = 0.40
+    edge_h = 0.40
+    for (cx_off, cy_off, sx_e, sy_e) in [
+        (0,             -rose_d / 2,  rose_w + edge_t, edge_t),  # south
+        (0,              rose_d / 2,  rose_w + edge_t, edge_t),  # north
+        (-rose_w / 2,    0,           edge_t,          rose_d),  # west
+        ( rose_w / 2,    0,           edge_t,          rose_d),  # east
+    ]:
+        _make_box_local(f"OTPark_Rose_Edge_{cx_off:+.1f}_{cy_off:+.1f}",
+                        (rose_cx + cx_off, rose_cy + cy_off,
+                         rose_ground + edge_h / 2),
+                        (sx_e, sy_e, edge_h), edge_brick)
+    # Soil layer inside the edging — slightly darker brown
+    _make_box_local("OTPark_Rose_Soil",
+                    (rose_cx, rose_cy, rose_ground + 0.10),
+                    (rose_w - 0.10, rose_d - 0.10, 0.20),
+                    (0.32, 0.22, 0.16, 1.0))
+    # Grid of rose bushes — 3 rows × 4 cols of small coloured spheres
+    rose_colors = [
+        (0.92, 0.20, 0.32, 1.0),    # crimson
+        (0.95, 0.42, 0.62, 1.0),    # pink
+        (0.92, 0.85, 0.30, 1.0),    # yellow
+        (0.95, 0.70, 0.30, 1.0),    # apricot
+        (0.94, 0.92, 0.86, 1.0),    # white
+        (0.78, 0.50, 0.78, 1.0),    # lavender
+    ]
+    for row in range(3):
+        for col in range(4):
+            bx = rose_cx - rose_w / 2 + (rose_w / 5) * (col + 1)
+            by = rose_cy - rose_d / 2 + (rose_d / 4) * (row + 1)
+            cidx = (row * 4 + col) % len(rose_colors)
+            # Stem
+            _make_box_local(f"OTPark_Rose_Stem_{row}_{col}",
+                            (bx, by, rose_ground + 0.40),
+                            (0.05, 0.05, 0.40),
+                            (0.32, 0.45, 0.22, 1.0))
+            # Bloom
+            _make_sphere_low_local(f"OTPark_Rose_Bloom_{row}_{col}",
+                                    (bx, by, rose_ground + 0.70),
+                                    0.18, rose_colors[cidx],
+                                    rings=3, segments=6)
+    # Brown wooden trellis sign at the rose garden's south entry
+    _make_box_local("OTPark_Rose_Sign",
+                    (rose_cx, rose_cy - rose_d / 2 - 1.2,
+                     rose_ground + 1.0),
+                    (1.4, 0.08, 0.60),
+                    (0.40, 0.30, 0.20, 1.0))
+
+    # ── TRELLIS ARCH over the south radial path · 3 arches at
+    # 10 / 20 / 30 m along the path, vines suggested by green
+    # bumps on the crossbar.
+    for i, dist in enumerate((10.0, 20.0, 30.0)):
+        trellis_y = sy - (outer_r + dist)
+        trellis_ground = mesh_z(sx, trellis_y)
+        post_h = 3.2
+        # Two vertical posts flanking the 2.4 m wide path
+        for tps in (-1.6, 1.6):
+            _make_cyl_local(f"OTPark_Trellis_{i}_Post_{tps:+.1f}",
+                            (sx + tps, trellis_y,
+                             trellis_ground + post_h / 2),
+                            0.06, post_h,
+                            (0.42, 0.30, 0.20, 1.0), segments=4)
+        # Horizontal beam
+        _make_box_local(f"OTPark_Trellis_{i}_Beam",
+                        (sx, trellis_y, trellis_ground + post_h + 0.06),
+                        (3.6, 0.12, 0.12),
+                        (0.42, 0.30, 0.20, 1.0))
+        # Cross slats above
+        for slat_off in (-0.4, 0, 0.4):
+            _make_box_local(f"OTPark_Trellis_{i}_Slat_{slat_off:+.1f}",
+                            (sx, trellis_y + slat_off,
+                             trellis_ground + post_h + 0.18),
+                            (3.6, 0.06, 0.06),
+                            (0.42, 0.30, 0.20, 1.0))
+        # Vine bumps · 5 small green spheres along the beam
+        for v in range(5):
+            vox = -1.4 + v * 0.7
+            _make_sphere_low_local(f"OTPark_Trellis_{i}_Vine_{v}",
+                                    (sx + vox, trellis_y - 0.05,
+                                     trellis_ground + post_h + 0.10),
+                                    0.18 + (v % 2) * 0.05,
+                                    (0.32, 0.55, 0.22, 1.0),
+                                    rings=3, segments=6)
+        # A pink flower clump per arch
+        _make_sphere_low_local(f"OTPark_Trellis_{i}_Flower",
+                                (sx + 0.3, trellis_y - 0.05,
+                                 trellis_ground + post_h + 0.10),
+                                0.14, (0.95, 0.42, 0.62, 1.0),
+                                rings=3, segments=6)
+
+    # ── WATER RILL · linear water channel running from the
+    # reflecting pool south-east to the rose garden. The
+    # rectangular channel is concrete with a thin blue water
+    # strip in the middle. Acoustic refuge feature — moving
+    # water + cool surface.
+    rill_start_x = pool_cx + pool_r + 0.5
+    rill_start_y = pool_cy + 0.5
+    rill_end_x = rose_cx - rose_w / 2 - 1.0
+    rill_end_y = rose_cy + rose_d / 4
+    rill_w = 0.8
+    rill_concrete_w = 1.4
+    # Concrete bed
+    rill_mid_x = (rill_start_x + rill_end_x) / 2
+    rill_mid_y = (rill_start_y + rill_end_y) / 2
+    rill_ground = mesh_z(rill_mid_x, rill_mid_y)
+    rill_len_x = abs(rill_end_x - rill_start_x)
+    rill_len_y = abs(rill_end_y - rill_start_y)
+    if rill_len_x > rill_len_y:
+        rill_sx, rill_sy = rill_len_x + 1.0, rill_concrete_w
+        water_sx, water_sy = rill_len_x + 0.2, rill_w
+    else:
+        rill_sx, rill_sy = rill_concrete_w, rill_len_y + 1.0
+        water_sx, water_sy = rill_w, rill_len_y + 0.2
+    _make_box_local("OTPark_Rill_Concrete",
+                    (rill_mid_x, rill_mid_y, rill_ground - 0.10),
+                    (rill_sx, rill_sy, 0.30),
+                    COL_POOL_RIM)
+    _make_box_local("OTPark_Rill_Water",
+                    (rill_mid_x, rill_mid_y, rill_ground - 0.18),
+                    (water_sx, water_sy, 0.10),
+                    (0.30, 0.52, 0.62, 1.0))
+
+    # ── PERGOLA · over the north radial path approaching the
+    # terrace. Four wooden posts + cross beams + climbing-vine
+    # accents. The "shaded approach to the contemplation gazebo."
+    pergola_y = sy + outer_r + 10
+    pergola_ground = mesh_z(sx, pergola_y)
+    perg_post_h = 3.0
+    for px_off in (-2.0, 2.0):
+        for py_off in (-2.0, 2.0):
+            _make_cyl_local(f"OTPark_Perg_Post_{px_off:+.1f}_{py_off:+.1f}",
+                            (sx + px_off, pergola_y + py_off,
+                             pergola_ground + perg_post_h / 2),
+                            0.10, perg_post_h,
+                            (0.42, 0.30, 0.20, 1.0), segments=6)
+    # Top frame beams (2 long beams along E-W)
+    for py_off in (-2.0, 2.0):
+        _make_box_local(f"OTPark_Perg_Beam_{py_off:+.1f}",
+                        (sx, pergola_y + py_off,
+                         pergola_ground + perg_post_h + 0.08),
+                        (4.4, 0.18, 0.16),
+                        (0.42, 0.30, 0.20, 1.0))
+    # Cross slats above — 7 thin runners
+    for k in range(7):
+        slat_x = sx - 1.6 + k * 0.53
+        _make_box_local(f"OTPark_Perg_Slat_{k}",
+                        (slat_x, pergola_y,
+                         pergola_ground + perg_post_h + 0.22),
+                        (0.08, 4.4, 0.08),
+                        (0.42, 0.30, 0.20, 1.0))
+    # Climbing vine clumps on the beam corners
+    for vx in (-2.0, 2.0):
+        for vy in (-2.0, 2.0):
+            _make_sphere_low_local(f"OTPark_Perg_Vine_{vx:+.1f}_{vy:+.1f}",
+                                    (sx + vx, pergola_y + vy,
+                                     pergola_ground + perg_post_h + 0.15),
+                                    0.30, (0.32, 0.55, 0.22, 1.0),
+                                    rings=3, segments=6)
 
     # ── Beacon at the park south entry · samples its own mesh_z
     beacon_x = sx

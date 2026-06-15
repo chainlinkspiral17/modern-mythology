@@ -251,22 +251,42 @@ def _build_legs(name, base_x, base_y, base_z, s, pants_color, pants_flare):
 
 
 def _build_feet(name, base_x, base_y, base_z, s, facing, shoe_color):
+    """Shoes are now TWO PARTS each — main upper + tapered toe cap +
+    visible white sole at the bottom. Reads as actual footwear, not
+    rectangular blocks."""
     fwd_x, fwd_y = _face_axis(facing)
     foot_w = PROP["foot_w"] * s
     foot_l = PROP["foot_l"] * s
     foot_h = PROP["foot_h"] * s
     sep = PROP["leg_separation"] * s
-    foot_cz = base_z + foot_h / 2
+    sole_color = (0.92, 0.90, 0.84, 1.0)
     for side, sign in (('L', -1), ('R', +1)):
-        # Foot extends forward of the leg centre
         cx = base_x + sign * sep + fwd_x * foot_l * 0.18
         cy = base_y + fwd_y * foot_l * 0.18
         if abs(fwd_x) > abs(fwd_y):
-            sx, sy = foot_l, foot_w
+            sx_size, sy_size = foot_l, foot_w
         else:
-            sx, sy = foot_w, foot_l
-        _box(f"{name}_Shoe_{side}", (cx, cy, foot_cz),
-             (sx, sy, foot_h), shoe_color)
+            sx_size, sy_size = foot_w, foot_l
+        # Upper (main shoe body — coloured)
+        _box(f"{name}_Shoe_{side}_Upper",
+             (cx, cy, base_z + foot_h / 2 + foot_h * 0.25),
+             (sx_size * 0.92, sy_size * 0.92, foot_h * 0.55),
+             shoe_color)
+        # Toe cap (extends forward, tapered narrower)
+        toe_cx = cx + fwd_x * foot_l * 0.20
+        toe_cy = cy + fwd_y * foot_l * 0.20
+        toe_sx = sx_size * 0.55 if abs(fwd_x) > abs(fwd_y) else sx_size * 0.78
+        toe_sy = sy_size * 0.78 if abs(fwd_x) > abs(fwd_y) else sy_size * 0.55
+        _box(f"{name}_Shoe_{side}_Toe",
+             (toe_cx, toe_cy, base_z + foot_h * 0.45),
+             (toe_sx, toe_sy, foot_h * 0.65),
+             shoe_color)
+        # White sole — full footprint, thin
+        _box(f"{name}_Shoe_{side}_Sole",
+             (cx + fwd_x * foot_l * 0.10, cy + fwd_y * foot_l * 0.10,
+              base_z + foot_h * 0.15),
+             (sx_size * 1.05, sy_size * 1.05, foot_h * 0.30),
+             sole_color)
 
 
 def _build_torso(name, base_x, base_y, pelvis_top_z, s,
@@ -389,9 +409,18 @@ def _build_arms(name, base_x, base_y, shoulder_z, s,
                        (shoulder_x, shoulder_y, shoulder_pz),
                        (hand_x, hand_y, hand_z),
                        arm_r_top, arm_r_bot, jacket_color, segments=8)
-        _box(f"{name}_Hand_{side}",
-             (hand_x, hand_y, hand_z - hand_size / 2),
-             (hand_size, hand_size, hand_size), skin_color)
+        # Hand · spheroid fist + small thumb stub. Reads as a hand,
+        # not a Roblox-style block.
+        _sphere_low(f"{name}_Hand_{side}",
+                    (hand_x, hand_y, hand_z - hand_size * 0.35),
+                    hand_size * 0.55, skin_color,
+                    rings=3, segments=6, squash_z=0.85)
+        # Thumb stub on the side facing forward
+        thumb_off_x = sign * hand_size * 0.30
+        _box(f"{name}_Thumb_{side}",
+             (hand_x + thumb_off_x, hand_y, hand_z - hand_size * 0.30),
+             (hand_size * 0.30, hand_size * 0.30, hand_size * 0.45),
+             skin_color)
         hand_positions[side] = (hand_x, hand_y, hand_z)
     return hand_positions
 
@@ -473,21 +502,54 @@ def _build_head(name, base_x, base_y, head_base_z, s,
                     rings=3, segments=8, squash_z=0.55)
     elif hair_style == 'bald':
         pass    # skull already in skin colour
-    # Sunglasses — horizontal band across the eye line
+    # Sunglasses — horizontal band across the eye line, with EYES
+    # peeking out underneath (small white circles + dark pupils
+    # behind the lens for character). Even with shades, you can
+    # see the suggestion of eyes through tinted plastic.
     if has_sunglasses and sunglasses_color is not None:
         fwd_x, fwd_y = _face_axis(facing)
         gx = base_x + fwd_x * (head_r * 0.95 + 0.005)
         gy = base_y + fwd_y * (head_r * 0.95 + 0.005)
         gz = head_cz + head_r * 0.10
+        # Eyes BEHIND the glasses (placed first, then lens covers
+        # most of them — but the bottom edge peeks).
+        eye_offset = head_d * 0.22
+        side_x = -fwd_y; side_y = fwd_x
+        for eye_side, eye_sign in (('L', -1), ('R', +1)):
+            ex = gx + side_x * eye_offset * eye_sign - fwd_x * 0.015
+            ey = gy + side_y * eye_offset * eye_sign - fwd_y * 0.015
+            ez = gz - 0.005
+            # White sclera
+            _sphere_low(f"{name}_Eye_{eye_side}",
+                        (ex, ey, ez), head_d * 0.07,
+                        (0.96, 0.94, 0.90, 1.0),
+                        rings=3, segments=6)
+            # Dark pupil offset slightly forward
+            _sphere_low(f"{name}_Pupil_{eye_side}",
+                        (ex + fwd_x * 0.01, ey + fwd_y * 0.01, ez),
+                        head_d * 0.035,
+                        (0.10, 0.08, 0.06, 1.0),
+                        rings=2, segments=6)
+        # Lens band — covers most of the eyes, with the bottom
+        # edge slightly above the eye bottom so a sliver peeks.
         if abs(fwd_y) > abs(fwd_x):
             _box(f"{name}_Glasses",
-                 (gx, gy, gz),
-                 (head_d * 0.85, 0.03, head_d * 0.22),
+                 (gx, gy, gz + head_d * 0.04),
+                 (head_d * 0.95, 0.035, head_d * 0.18),
+                 sunglasses_color)
+            # Bridge — thin connector across the nose
+            _box(f"{name}_GlassesBridge",
+                 (gx, gy + 0.001, gz + head_d * 0.05),
+                 (head_d * 0.10, 0.04, head_d * 0.04),
                  sunglasses_color)
         else:
             _box(f"{name}_Glasses",
-                 (gx, gy, gz),
-                 (0.03, head_d * 0.85, head_d * 0.22),
+                 (gx, gy, gz + head_d * 0.04),
+                 (0.035, head_d * 0.95, head_d * 0.18),
+                 sunglasses_color)
+            _box(f"{name}_GlassesBridge",
+                 (gx + 0.001, gy, gz + head_d * 0.05),
+                 (0.04, head_d * 0.10, head_d * 0.04),
                  sunglasses_color)
     # Mouth — small horizontal mouth line below the glasses
     if with_mouth:
