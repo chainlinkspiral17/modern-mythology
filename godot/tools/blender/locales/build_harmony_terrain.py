@@ -4290,19 +4290,19 @@ def build_commercial_cluster():
     # jobs." All markers are within sight-line range across the
     # block's plate-glass storefronts.
     # Each NPC stands in a CLEAR aisle behind their counter, not
-    # embedded inside it. Convenience-store back wall sits at
-    # cy + 4.8; counter NORTH edge at cy + 4.15 with new sizing;
-    # NPC stands halfway between (cy + 4.5).
+    # embedded inside it. Convenience-store back wall interior at
+    # cy + 4.8; counter NORTH edge at cy + 3.8; NPC at cy + 4.3
+    # gives ~0.25 m clearance on both sides of a 0.5 m body.
     npc_markers = [
-        ("NPC_Skip_Locker",      nc_x + 4.0, nc_y + 4.5),
-        ("NPC_Arcade_Attendant", ks_x - 9.0, ks_y + 4.5),
-        ("NPC_Sam_Register",     ks_x + 2.8, ks_y + 4.5),
-        ("NPC_Laundromat_Clerk", ks_x + 9.0, ks_y + 4.5),
+        ("NPC_Skip_Locker",      nc_x + 4.0, nc_y + 4.3),
+        ("NPC_Arcade_Attendant", ks_x - 9.0, ks_y + 4.3),
+        ("NPC_Sam_Register",     ks_x + 2.8, ks_y + 4.3),
+        ("NPC_Laundromat_Clerk", ks_x + 9.0, ks_y + 4.3),
         # Diner counter spans cy+1.17 to cy+1.87 with the new
         # narrower counter_d; kitchen wall at cy+3.6. Cook + waiter
         # have ~1.7 m of staff aisle to stand in.
         ("NPC_Diner_Cook",       dn_x,        dn_y + 3.0),
-        ("NPC_Diner_Waiter",     dn_x + 4.0, dn_y + 2.4),
+        ("NPC_Diner_Waiter",     dn_x + 4.0, dn_y + 2.6),
         # Cosmic Comics counter at south wall (cy-2.85 to cy-2.15);
         # clerk stands NORTH of counter, deeper into the shop.
         ("NPC_Comics_Clerk",     cc_x + 3.1, cc_y - 1.0),
@@ -4322,22 +4322,22 @@ def build_commercial_cluster():
     # at a glance.
     chapter_one_cast = [
         # (name, x, y, scale, hair, jacket, pants)
-        ("Skip",     nc_x + 4.0, nc_y + 4.5, 1.0, "short",
+        ("Skip",     nc_x + 4.0, nc_y + 4.3, 1.0, "short",
             (0.32, 0.55, 0.78, 1.0),   # blue NexCorp uniform
             (0.42, 0.42, 0.45, 1.0)),
-        ("ArcadeAtt", ks_x - 9.0, ks_y + 4.5, 1.0, "bowl",
+        ("ArcadeAtt", ks_x - 9.0, ks_y + 4.3, 1.0, "bowl",
             (0.62, 0.22, 0.78, 1.0),
             (0.20, 0.20, 0.22, 1.0)),
-        ("Sam",      ks_x + 2.8, ks_y + 4.5, 1.0, "short",
+        ("Sam",      ks_x + 2.8, ks_y + 4.3, 1.0, "short",
             (0.85, 0.22, 0.20, 1.0),
             (0.55, 0.50, 0.42, 1.0)),
-        ("LaundryAtt", ks_x + 9.0, ks_y + 4.5, 1.0, "bowl",
+        ("LaundryAtt", ks_x + 9.0, ks_y + 4.3, 1.0, "bowl",
             (0.32, 0.55, 0.78, 1.0),
             (0.92, 0.92, 0.90, 1.0)),
         ("DinerCook", dn_x,        dn_y + 3.0, 1.0, "short",
             (0.98, 0.98, 0.96, 1.0),
             (0.18, 0.18, 0.22, 1.0)),
-        ("DinerWaiter", dn_x + 4.0, dn_y + 2.4, 1.0, "short",
+        ("DinerWaiter", dn_x + 4.0, dn_y + 2.6, 1.0, "short",
             (0.85, 0.22, 0.20, 1.0),
             (0.92, 0.90, 0.84, 1.0)),
         ("ComicsClerk", cc_x + 3.1, cc_y - 1.0, 1.0, "bowl",
