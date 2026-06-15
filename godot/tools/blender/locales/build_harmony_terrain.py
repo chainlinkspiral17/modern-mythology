@@ -4402,8 +4402,11 @@ def build_commercial_cluster():
         ("KwikShop", ks_x - 11, ks_y - 14, (0.82, 0.32, 0.22, 1.0)),  # red
         ("KwikShop", ks_x,      ks_y - 14, (0.78, 0.74, 0.68, 1.0)),  # beige
         ("KwikShop", ks_x + 11, ks_y - 14, (0.32, 0.55, 0.78, 1.0)),  # blue (laundromat)
-        ("NexCorpGG", nc_x - 5, nc_y - 22, (0.20, 0.20, 0.22, 1.0)),  # black
-        ("NexCorpGG", nc_x + 5, nc_y - 22, (0.42, 0.42, 0.45, 1.0)),  # grey
+        # Pumped inward 1 m so the cars clear the canopy columns
+        # (columns at can_cx ± 5.7 m; cars 1.8 m wide so they
+        # overlapped the columns at ±5 m).
+        ("NexCorpGG", nc_x - 4, nc_y - 22, (0.20, 0.20, 0.22, 1.0)),  # black
+        ("NexCorpGG", nc_x + 4, nc_y - 22, (0.42, 0.42, 0.45, 1.0)),  # grey
         ("Diner",     dn_x - 6, dn_y - 13, (0.95, 0.85, 0.30, 1.0)),  # yellow
         ("Diner",     dn_x + 6, dn_y - 13, (0.42, 0.62, 0.32, 1.0)),  # green
         ("CosmicComics", cc_x - 3, cc_y - 12, (0.62, 0.42, 0.78, 1.0)), # purple
