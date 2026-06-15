@@ -774,6 +774,27 @@ between-equally-OK-options choice, pick the printable one.
   approaches per bay — and gives the artist a place to anchor
   bag-of-leaves litter, an oil stain, etc.
 
+### 2026-06-15 · NPC figures + interior aisle clearance
+
+- **Place the human, then size the furniture around them.** When
+  dropping `human_figure(...)` calls at counter positions, the
+  figure has body thickness ~0.5 m at scale 1.0. The back-of-
+  counter aisle has to be at LEAST 1.0 m (counter depth 0.7 m +
+  clerk body 0.5 m + wall clearance 0.3 m), and ideally 1.5 m.
+  My first chapter-one pass left only 0.6 m of clearance and
+  every NPC was embedded inside the counter. Resize the counter
+  (narrower depth, push further away from the wall) BEFORE
+  placing the figure, not after.
+
+- **Aisles end before they hit the counter.** When a counter
+  moves, recompute every shelf / display / fixture that lives in
+  the same room. The convenience-store aisles ran `depth * 0.45`
+  long, set toward the back — when I pushed the counter south to
+  make room for a clerk, the aisles' north end was now poking
+  into the counter footprint. Rule: derive `aisle_y_end` from
+  `counter_y - counter_d/2 - clearance` rather than using a
+  fixed `depth * 0.45` formula.
+
 ### TEMPLATE for next session
 
 ```markdown
