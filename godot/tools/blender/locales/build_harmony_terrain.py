@@ -3343,6 +3343,54 @@ def build_commercial_cluster():
             dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
         _finalize_mesh(f"CommRoad_Dash_{k}", dv, [[0, 1, 2, 3]],
                        COL_CENTERLINE)
+    # ── NEWSPAPER RACK outside Cosmic Comics. Two coin-op boxes
+    # side by side on the sidewalk. Classic chapter-one street
+    # furniture.
+    for k, col in enumerate([(0.78, 0.18, 0.18, 1.0),   # red box
+                              (0.18, 0.42, 0.62, 1.0)]):  # blue box
+        nrx = cc_x - 3.0 + k * 0.65
+        nry = cc_y + 6.5 - 1.0
+        nrz = mesh_z(nrx, nry)
+        # Body
+        _make_box_local(f"CommNewsRack_{k}_Body",
+                        (nrx, nry, nrz + 0.50),
+                        (0.55, 0.35, 1.00), col)
+        # Sloped top window (just a thin tilted box approximated as
+        # a darker rectangle inset on top)
+        _make_box_local(f"CommNewsRack_{k}_Window",
+                        (nrx, nry - 0.02, nrz + 1.05),
+                        (0.50, 0.28, 0.10),
+                        (0.20, 0.22, 0.28, 1.0))
+        # Coin slot
+        _make_box_local(f"CommNewsRack_{k}_CoinSlot",
+                        (nrx, nry - 0.18, nrz + 0.80),
+                        (0.18, 0.04, 0.04),
+                        (0.18, 0.18, 0.18, 1.0))
+
+    # ── RECYCLING + TRASH PAIR at the east end of the strip
+    # (between the Cosmic Comics lot and the road). Blue recycling +
+    # green compost + the existing trash bin pattern, on a thin
+    # concrete pad.
+    rp_x = cc_x + 12.0
+    rp_y = cc_y - 6.5
+    rp_z = mesh_z(rp_x, rp_y)
+    _make_box_local("CommRecycPad",
+                    (rp_x, rp_y, rp_z + 0.04),
+                    (2.4, 1.0, 0.08), (0.78, 0.76, 0.72, 1.0))
+    for k, (col, tag) in enumerate(((
+            (0.32, 0.42, 0.78, 1.0), "Recycling"),
+            ((0.30, 0.55, 0.25, 1.0), "Compost"),
+            ((0.32, 0.32, 0.32, 1.0), "Trash"))):
+        bx = rp_x - 0.8 + k * 0.8
+        _make_cyl_local(f"CommRecycBin_{tag}",
+                        (bx, rp_y, rp_z + 0.55),
+                        0.30, 1.0, col, segments=8)
+        # Lid
+        _make_cyl_local(f"CommRecycBinLid_{tag}",
+                        (bx, rp_y, rp_z + 1.07),
+                        0.32, 0.06,
+                        (0.20, 0.20, 0.22, 1.0), segments=8)
+
     # ── PHONE BOOTH on the sidewalk between Kwik Stop & NexCorp.
     # Classic glass-paneled booth with a red top cap. The hooked
     # handset is suggested by a thin dark box on the inside wall.
