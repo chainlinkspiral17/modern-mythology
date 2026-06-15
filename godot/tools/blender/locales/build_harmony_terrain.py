@@ -8044,6 +8044,404 @@ def build_bus_stops():
                         (0.42, 0.30, 0.20, 1.0))
 
 
+def build_taqueria_el_rancho():
+    """Taqueria El Rancho — Mexican restaurant in the SouthComm
+    belt east of the truck stop. Per user reference photo:
+    strip-mall-style single-story building with a red
+    'TAQUERIA EL RANCHO' sign across the south facade, plate-
+    glass front, chest-style outdoor cooler. Per spec: a
+    DRIVE-THROUGH window on the east face with a menu board +
+    ordering speaker + pickup window and a curving drive-thru
+    lane wrapping around the east side.
+    """
+    cx, cy = 290.0, -370.0
+    ground_z = mesh_z(cx, cy)
+    name_prefix = "Taqueria"
+
+    # Palette — cream walls, red sign, brown trim
+    col_wall = (0.85, 0.82, 0.74, 1.0)
+    col_trim = (0.42, 0.32, 0.22, 1.0)
+    col_roof = (0.32, 0.30, 0.28, 1.0)
+    col_red_sign = (0.78, 0.18, 0.16, 1.0)
+    col_door = (0.62, 0.42, 0.28, 1.0)
+    col_glass_frame = (0.62, 0.62, 0.64, 1.0)
+    col_window_warm = (0.95, 0.78, 0.45, 1.0)    # warm interior glow
+    col_steel = (0.62, 0.62, 0.64, 1.0)
+    col_chest_white = (0.92, 0.90, 0.86, 1.0)
+    col_chest_dark = (0.32, 0.32, 0.34, 1.0)
+
+    w, d, h = 14.0, 10.0, 4.5
+    t = 0.20
+
+    # ── SLAB
+    _make_box_local(f"{name_prefix}_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (w + 0.6, d + 0.6, 0.10), col_trim)
+
+    # ── WALLS: N (solid back), W (solid), E (with drive-thru
+    # window), S (plate-glass storefront + door)
+    _make_box_local(f"{name_prefix}_WallN",
+                    (cx, cy + d / 2 - t / 2,
+                     ground_z + h / 2),
+                    (w, t, h), col_wall)
+    _make_box_local(f"{name_prefix}_WallW",
+                    (cx - w / 2 + t / 2, cy,
+                     ground_z + h / 2),
+                    (t, d, h), col_wall)
+    # EAST wall · split for drive-through window opening
+    dt_w = 1.6       # window width (along Y)
+    dt_h = 1.4       # window height
+    dt_centre_z = ground_z + 1.30
+    dt_centre_y = cy - 1.0   # window biased toward the front
+    # East wall above window
+    _make_box_local(f"{name_prefix}_WallE_Above",
+                    (cx + w / 2 - t / 2, dt_centre_y,
+                     ground_z + dt_centre_z - ground_z + dt_h / 2 +
+                     (h - (dt_centre_z - ground_z + dt_h / 2)) / 2),
+                    (t, dt_w,
+                     h - (dt_centre_z - ground_z + dt_h / 2)),
+                    col_wall)
+    # East wall below window
+    _make_box_local(f"{name_prefix}_WallE_Below",
+                    (cx + w / 2 - t / 2, dt_centre_y,
+                     ground_z + (dt_centre_z - ground_z - dt_h / 2) / 2),
+                    (t, dt_w,
+                     dt_centre_z - ground_z - dt_h / 2),
+                    col_wall)
+    # East wall north of window
+    east_n_l = (d / 2 - 1.0) - dt_w / 2     # length north of window
+    if east_n_l > 0.1:
+        _make_box_local(f"{name_prefix}_WallE_N",
+                        (cx + w / 2 - t / 2,
+                         dt_centre_y + dt_w / 2 + east_n_l / 2,
+                         ground_z + h / 2),
+                        (t, east_n_l, h), col_wall)
+    # East wall south of window
+    east_s_l = (d / 2 + 1.0) - dt_w / 2     # length south of window
+    if east_s_l > 0.1:
+        _make_box_local(f"{name_prefix}_WallE_S",
+                        (cx + w / 2 - t / 2,
+                         dt_centre_y - dt_w / 2 - east_s_l / 2,
+                         ground_z + h / 2),
+                        (t, east_s_l, h), col_wall)
+    # Drive-through window pane (chrome frame + warm glow inside)
+    _make_box_local(f"{name_prefix}_DT_WindowFrame",
+                    (cx + w / 2 - 0.05, dt_centre_y,
+                     dt_centre_z),
+                    (0.06, dt_w + 0.10, dt_h + 0.10),
+                    col_steel)
+    _make_box_local(f"{name_prefix}_DT_WindowPane",
+                    (cx + w / 2 - 0.10, dt_centre_y,
+                     dt_centre_z),
+                    (0.04, dt_w, dt_h),
+                    col_window_warm)
+    # Sliding-window divider line (vertical chrome strip)
+    _make_box_local(f"{name_prefix}_DT_WindowDivider",
+                    (cx + w / 2 - 0.07, dt_centre_y,
+                     dt_centre_z),
+                    (0.04, 0.06, dt_h),
+                    col_steel)
+
+    # ── PLATE-GLASS STOREFRONT on south face (Sam's-style)
+    glass_y = cy - d / 2 + 0.05
+    n_mullions = 5
+    for k in range(n_mullions):
+        mx = cx - w / 2 + 0.3 + k * (w - 0.6) / (n_mullions - 1)
+        _make_box_local(f"{name_prefix}_GlassMul_{k}",
+                        (mx, glass_y, ground_z + h / 2),
+                        (0.10, 0.06, h), col_glass_frame)
+    _make_box_local(f"{name_prefix}_GlassTopRail",
+                    (cx, glass_y, ground_z + h - 0.08),
+                    (w - 0.2, 0.08, 0.16), col_glass_frame)
+    _make_box_local(f"{name_prefix}_GlassBotRail",
+                    (cx, glass_y, ground_z + 0.30),
+                    (w - 0.2, 0.08, 0.60), col_glass_frame)
+    # Entry door — leftmost bay
+    door_w = 1.4; door_h = 2.4
+    door_cx = cx - w / 2 + 2.5
+    for sgn in (-1, 1):
+        _make_box_local(f"{name_prefix}_DoorJamb_{sgn:+d}",
+                        (door_cx + sgn * door_w / 2, glass_y,
+                         ground_z + door_h / 2),
+                        (0.12, 0.10, door_h), col_trim)
+    _make_box_local(f"{name_prefix}_DoorHeader",
+                    (door_cx, glass_y, ground_z + door_h + 0.08),
+                    (door_w + 0.12, 0.10, 0.16), col_trim)
+    _make_box_local(f"{name_prefix}_Door",
+                    (door_cx, glass_y, ground_z + door_h / 2),
+                    (door_w - 0.10, 0.06, door_h - 0.10),
+                    col_door)
+    _make_box_local(f"{name_prefix}_DoorMat",
+                    (door_cx, glass_y - 0.40, ground_z + 0.07),
+                    (door_w + 0.20, 0.80, 0.02),
+                    (0.32, 0.22, 0.18, 1.0))
+    # Warm-glow window panels behind the mullion grid (suggests
+    # interior visible — like in the reference photo)
+    for k in range(n_mullions - 1):
+        bay_w_ms = (w - 0.6) / (n_mullions - 1)
+        gx = cx - w / 2 + 0.3 + (k + 0.5) * bay_w_ms
+        # Skip the bay containing the door
+        if abs(gx - door_cx) < bay_w_ms / 2:
+            continue
+        _make_box_local(f"{name_prefix}_GlassGlow_{k}",
+                        (gx, glass_y - 0.02,
+                         ground_z + h / 2),
+                        (bay_w_ms - 0.20, 0.02,
+                         h - 1.0), col_window_warm)
+
+    # ── ROOF + parapet
+    _make_box_local(f"{name_prefix}_Roof",
+                    (cx, cy, ground_z + h + 0.10),
+                    (w + 0.4, d + 0.4, 0.20), col_roof)
+    parapet_h = 0.40
+    _make_box_local(f"{name_prefix}_ParapetN",
+                    (cx, cy + (d + 0.4) / 2,
+                     ground_z + h + 0.20 + parapet_h / 2),
+                    (w + 0.4, 0.18, parapet_h), col_wall)
+    for sgn_x, tag in ((-1, 'W'), (1, 'E')):
+        _make_box_local(f"{name_prefix}_Parapet_{tag}",
+                        (cx + sgn_x * (w + 0.4) / 2, cy,
+                         ground_z + h + 0.20 + parapet_h / 2),
+                        (0.18, d + 0.4, parapet_h), col_wall)
+    # HVAC rooftop unit
+    _make_box_local(f"{name_prefix}_HVAC",
+                    (cx + 3.0, cy + d * 0.3,
+                     ground_z + h + 0.20 + 0.40),
+                    (1.4, 1.2, 0.80), col_steel)
+
+    # ── BIG RED SIGN PANEL across the south facade (the
+    # TAQUERIA EL RANCHO sign from the reference photo)
+    sign_y = cy - d / 2 - 0.20
+    sign_h_local = 1.4
+    _make_box_local(f"{name_prefix}_SignPanel",
+                    (cx, sign_y,
+                     ground_z + h + 0.30 + sign_h_local / 2),
+                    (w * 0.85, 0.14, sign_h_local), col_red_sign)
+    _make_box_local(f"{name_prefix}_SignTrim",
+                    (cx, sign_y,
+                     ground_z + h + 0.30 + sign_h_local + 0.05),
+                    (w * 0.85 + 0.20, 0.16, 0.10), col_trim)
+    # Small overhead-light strip below the sign illuminating it
+    _make_box_local(f"{name_prefix}_SignLightBar",
+                    (cx, sign_y,
+                     ground_z + h + 0.10),
+                    (w * 0.85, 0.10, 0.10), col_steel)
+
+    # ── ADDRESS NUMBER plaque (from the photo · "300")
+    _make_box_local(f"{name_prefix}_AddressPlaque",
+                    (cx - w / 2 + 1.0, glass_y - 0.04,
+                     ground_z + h - 0.5),
+                    (0.40, 0.04, 0.30),
+                    (0.18, 0.18, 0.20, 1.0))
+
+    # ── OUTDOOR CHEST COOLER (the white-and-grey ice chest in
+    # the reference photo)
+    ch_x = cx - w / 2 + 4.5
+    ch_y = cy - d / 2 - 1.4
+    ch_z = mesh_z(ch_x, ch_y)
+    # Lower body (dark grey)
+    _make_box_local(f"{name_prefix}_Chest_LowerBody",
+                    (ch_x, ch_y, ch_z + 0.35),
+                    (1.6, 1.0, 0.70), col_chest_dark)
+    # Upper body (white refrigeration unit)
+    _make_box_local(f"{name_prefix}_Chest_UpperBody",
+                    (ch_x, ch_y, ch_z + 0.95),
+                    (1.6, 1.0, 0.50), col_chest_white)
+    # Sliding glass top
+    _make_box_local(f"{name_prefix}_Chest_Top",
+                    (ch_x, ch_y, ch_z + 1.22),
+                    (1.6, 1.0, 0.06),
+                    (0.62, 0.70, 0.78, 1.0))
+    # Side vent
+    _make_box_local(f"{name_prefix}_Chest_Vent",
+                    (ch_x + 0.78, ch_y, ch_z + 0.30),
+                    (0.04, 0.40, 0.20),
+                    (0.42, 0.42, 0.45, 1.0))
+
+    # ── DRIVE-THRU LANE: curving asphalt strip wrapping around
+    # the east side of the building from the south-east corner
+    # to the north of the building.
+    COL_DTLANE = (0.20, 0.20, 0.22, 1.0)
+    COL_DTSTRIPE = (0.95, 0.85, 0.30, 1.0)
+    lane_w = 3.6
+    lane_hw = lane_w / 2
+    # 5-point curve approaching from the south, wrapping around
+    # east, going north past the window
+    dt_pts = [
+        (cx + w / 2 + 8.0, cy - d / 2 - 6.0),   # entry from south-east
+        (cx + w / 2 + 8.0, cy - d / 2 + 2.0),
+        (cx + w / 2 + 5.5, cy - d / 2 + 5.0),
+        (cx + w / 2 + 3.5, cy - 1.0),            # at the window
+        (cx + w / 2 + 3.5, cy + d / 2 + 2.0),    # exit north
+        (cx + w / 2 + 6.0, cy + d / 2 + 6.0),
+    ]
+    for i in range(len(dt_pts) - 1):
+        x0, y0 = dt_pts[i]; x1, y1 = dt_pts[i + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        rv = []
+        for (rx, ry) in [(x0 - perp_x * lane_hw, y0 - perp_y * lane_hw),
+                         (x1 - perp_x * lane_hw, y1 - perp_y * lane_hw),
+                         (x1 + perp_x * lane_hw, y1 + perp_y * lane_hw),
+                         (x0 + perp_x * lane_hw, y0 + perp_y * lane_hw)]:
+            rv.append((rx, ry, mesh_z(rx, ry) + 0.04))
+        _finalize_mesh(f"{name_prefix}_DTLane_{i}", rv,
+                        [[0, 1, 2, 3]], COL_DTLANE)
+
+    # ── MENU BOARD on a pole on the SE approach to the drive-thru
+    mb_x = cx + w / 2 + 5.0
+    mb_y = cy - d / 2 - 2.0
+    mb_z = mesh_z(mb_x, mb_y)
+    # Pole
+    _make_cyl_local(f"{name_prefix}_MenuBoard_Pole",
+                    (mb_x, mb_y, mb_z + 1.4),
+                    0.10, 2.8, col_steel, segments=6)
+    # Board face (dark background w/ menu text suggested)
+    _make_box_local(f"{name_prefix}_MenuBoard_Face",
+                    (mb_x, mb_y, mb_z + 2.5),
+                    (1.6, 0.12, 1.4),
+                    (0.10, 0.10, 0.12, 1.0))
+    # Bright stripe at top with TAQUERIA red banner
+    _make_box_local(f"{name_prefix}_MenuBoard_Banner",
+                    (mb_x, mb_y, mb_z + 3.10),
+                    (1.6, 0.13, 0.30), col_red_sign)
+    # ORDER HERE speaker box just below the menu board
+    _make_box_local(f"{name_prefix}_MenuBoard_Speaker",
+                    (mb_x, mb_y, mb_z + 1.4),
+                    (0.40, 0.20, 0.50),
+                    (0.42, 0.42, 0.45, 1.0))
+    # Speaker grille (dark mesh)
+    _make_box_local(f"{name_prefix}_MenuBoard_Grille",
+                    (mb_x, mb_y - 0.13, mb_z + 1.4),
+                    (0.30, 0.04, 0.30),
+                    (0.18, 0.18, 0.20, 1.0))
+
+    # ── ARROW + DRIVE THRU lane markings (white painted strips
+    # at the entry of the lane)
+    for k in range(3):
+        ay = mb_y - 3.0 - k * 2.5
+        _make_box_local(f"{name_prefix}_DTArrow_{k}",
+                        (cx + w / 2 + 8.0, ay,
+                         mesh_z(cx + w / 2 + 8.0, ay) + 0.055),
+                        (0.60, 0.12, 0.01), COL_DTSTRIPE)
+
+    # ── CUSTOMER PARKING LOT on the south side of the building
+    _build_parking_lot(name_prefix, cx - 3.0, cy - 16.0,
+                        lot_w=18.0, lot_d=18.0,
+                        ground_z=mesh_z(cx - 3.0, cy - 16.0),
+                        building_y_north=cy,
+                        car_palette=[
+                            (0.85, 0.20, 0.18, 1.0),
+                            (0.62, 0.62, 0.64, 1.0),
+                            (0.32, 0.55, 0.78, 1.0),
+                            (0.32, 0.55, 0.25, 1.0),
+                            (0.95, 0.85, 0.30, 1.0),
+                        ],
+                        n_handicap=1)
+
+    # ── INTERIOR (visible through the south plate glass)
+    # Order counter at the rear
+    ct_x = cx
+    ct_y = cy + d / 2 - 1.8
+    ct_w = 6.0; ct_d = 0.9; ct_h = 1.1
+    _make_box_local(f"{name_prefix}_Counter",
+                    (ct_x, ct_y, ground_z + ct_h / 2),
+                    (ct_w, ct_d, ct_h),
+                    (0.55, 0.42, 0.30, 1.0))
+    # Counter top
+    _make_box_local(f"{name_prefix}_CounterTop",
+                    (ct_x, ct_y, ground_z + ct_h + 0.02),
+                    (ct_w + 0.10, ct_d + 0.10, 0.04),
+                    (0.42, 0.32, 0.22, 1.0))
+    # Register on the counter
+    _make_box_local(f"{name_prefix}_Register",
+                    (ct_x - 1.5, ct_y, ground_z + ct_h + 0.20),
+                    (0.55, 0.40, 0.30),
+                    (0.20, 0.20, 0.22, 1.0))
+    # MENU BOARD over the counter (hanging from ceiling, red)
+    _make_box_local(f"{name_prefix}_InteriorMenu",
+                    (ct_x, ct_y + ct_d / 2 + 0.05,
+                     ground_z + h - 0.7),
+                    (ct_w, 0.05, 1.0),
+                    (0.78, 0.18, 0.16, 1.0))
+    # 3 tortilla / chip warmers on the counter
+    for k, ox in enumerate((-2.4, -1.5, -0.6)):
+        _make_cyl_local(f"{name_prefix}_Warmer_{k}",
+                        (ct_x + ox, ct_y, ground_z + ct_h + 0.30),
+                        0.20, 0.40, col_steel, segments=8)
+        # Glass dome on top
+        _make_sphere_low_local(f"{name_prefix}_WarmerDome_{k}",
+                                (ct_x + ox, ct_y,
+                                 ground_z + ct_h + 0.55),
+                                0.22,
+                                (0.62, 0.70, 0.78, 1.0),
+                                rings=3, segments=6)
+    # 4 cafe tables in the dining area + 4 chairs each
+    for tk, (tx_off, ty_off) in enumerate(((-3.5, 0.8), (-1.2, 0.8),
+                                            (-3.5, -1.6), (-1.2, -1.6))):
+        tx = cx + tx_off
+        ty = cy + ty_off
+        tz = ground_z
+        # Round table top
+        _make_cyl_local(f"{name_prefix}_TableTop_{tk}",
+                        (tx, ty, tz + 0.75),
+                        0.50, 0.06,
+                        (0.78, 0.74, 0.66, 1.0), segments=8)
+        _make_cyl_local(f"{name_prefix}_TableStem_{tk}",
+                        (tx, ty, tz + 0.40),
+                        0.06, 0.70,
+                        (0.62, 0.62, 0.64, 1.0), segments=6)
+        # 2 chairs flanking the table
+        for sgn_y, side in ((-1, 'S'), (1, 'N')):
+            _make_box_local(
+                f"{name_prefix}_Chair_{tk}_{side}_Seat",
+                (tx, ty + sgn_y * 0.75, tz + 0.45),
+                (0.40, 0.40, 0.06),
+                (0.42, 0.32, 0.22, 1.0))
+            _make_box_local(
+                f"{name_prefix}_Chair_{tk}_{side}_Back",
+                (tx, ty + sgn_y * 0.95,
+                 tz + 0.75),
+                (0.40, 0.06, 0.50),
+                (0.42, 0.32, 0.22, 1.0))
+    # Cook NPC marker (behind the counter)
+    cook_x = ct_x + 0.8
+    cook_y = ct_y + ct_d / 2 + 0.4
+    cook_z = mesh_z(cook_x, cook_y)
+    human_figure(
+        name=f"NPC_{name_prefix}_Cook",
+        base_x=cook_x, base_y=cook_y, base_z=cook_z,
+        scale=1.0, facing='-Y',
+        skin_color=(0.85, 0.65, 0.48, 1.0),
+        hair_style='short',
+        hair_color=(0.15, 0.10, 0.06, 1.0),
+        jacket_color=(0.95, 0.94, 0.90, 1.0),
+        pants_color=(0.18, 0.18, 0.22, 1.0),
+        shoe_color=(0.20, 0.16, 0.14, 1.0),
+        has_sunglasses=False, with_ears=True,
+        with_mouth=True,
+        mouth_color=(0.55, 0.22, 0.28, 1.0))
+    # Drive-thru order taker NPC (just inside the window)
+    dt_npc_x = cx + w / 2 - 0.6
+    dt_npc_y = dt_centre_y
+    dt_npc_z = mesh_z(dt_npc_x, dt_npc_y)
+    human_figure(
+        name=f"NPC_{name_prefix}_DTOrder",
+        base_x=dt_npc_x, base_y=dt_npc_y, base_z=dt_npc_z,
+        scale=1.0, facing='+X',
+        skin_color=(0.92, 0.75, 0.62, 1.0),
+        hair_style='short',
+        hair_color=(0.20, 0.14, 0.10, 1.0),
+        jacket_color=(0.78, 0.18, 0.16, 1.0),
+        pants_color=(0.32, 0.32, 0.36, 1.0),
+        shoe_color=(0.20, 0.16, 0.14, 1.0),
+        has_sunglasses=False, with_ears=True,
+        with_mouth=True,
+        mouth_color=(0.55, 0.22, 0.28, 1.0))
+
+
 def build_truck_stop():
     """Big-rig truck stop east of the chapter-one commercial
     cluster in the SouthComm settlement zone. Large fuelling
@@ -10993,6 +11391,7 @@ def main():
     build_hs_stadium_overflow_lot()
     build_elementary_school()
     build_truck_stop()
+    build_taqueria_el_rancho()
     build_east_commercial_box()
     build_bus_stops()
     build_arterial_lighting()
