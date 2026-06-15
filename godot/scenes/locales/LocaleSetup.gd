@@ -76,6 +76,7 @@ func _ready() -> void:
 	var hs_scoreboard_panels: Array = []
 	var nightclub_signs: Array = []
 	var nexcorp_hq_logos: Array = []
+	var hs_name_plaques: Array = []
 	for mi in meshes:
 		mi.material_override = mat
 		applied += 1
@@ -125,6 +126,8 @@ func _ready() -> void:
 			nightclub_signs.append(mi)
 		elif "NexCorpHQ_LogoPanel" in mi.name:
 			nexcorp_hq_logos.append(mi)
+		elif "HSBuilding_NamePlaque" in mi.name:
+			hs_name_plaques.append(mi)
 	print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
 	# Attach real Label3D text to the sign panels.
 	#
@@ -245,6 +248,16 @@ func _ready() -> void:
 						0.0,
 						Color(0.95, 0.85, 0.30, 1.0),
 						Color(0.05, 0.06, 0.10, 1.0))
+	# High school name plaque — faces south (toward the football
+	# field and stadium).
+	for panel in hs_name_plaques:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.08),
+						Vector3(0, 0, 1),
+						"HARMONY CREEK HIGH SCHOOL",
+						0.0,
+						Color(0.98, 0.98, 0.96, 1.0),
+						Color(0.10, 0.12, 0.32, 1.0))
 	# NexCorp HQ corporate logo — faces south (toward player
 	# approaching from spawn). Blender -Y face → Godot +Z.
 	for panel in nexcorp_hq_logos:

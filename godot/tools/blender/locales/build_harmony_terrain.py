@@ -178,7 +178,7 @@ SETTLEMENTS = [
     # East Commercial strip) for the field + bleachers. Expanded
     # to cover the track ring and end zones (total ~80 x 150 m,
     # rather than the field alone).
-    ("HighSchoolField", 200, 480, -130, 30, +3.0, 0.88),
+    ("HighSchoolField", 200, 480, -130, 80, +3.0, 0.88),
     # NexCorp HQ pad on the North Commercial belt — covers
     # plaza, reflecting pool, hedges, parking lot and flagpoles
     # (lot extends to y=264, pool to y=283).
@@ -6173,6 +6173,116 @@ def build_high_school_field():
                     (cx, sb_y, sb_z + 8.4),
                     (10.0, 0.10, 0.80),
                     (0.20, 0.22, 0.55, 1.0))
+
+    # ── HARMONY CREEK HIGH SCHOOL BUILDING — long brick-fronted
+    # building NORTH of the field. The football field is on the
+    # school's south lawn; the school sits between the field and
+    # the EastCDS neighborhood to the north.
+    sch_cx, sch_cy = cx, 50.0
+    sch_w = 40.0     # E-W
+    sch_d = 14.0     # N-S
+    sch_h = 6.0
+    sch_t = 0.20
+    col_brick   = (0.55, 0.32, 0.22, 1.0)
+    col_sch_trim = (0.85, 0.82, 0.74, 1.0)
+    col_sch_roof = (0.32, 0.30, 0.28, 1.0)
+    col_door_red = (0.78, 0.18, 0.18, 1.0)
+    col_glass   = (0.32, 0.42, 0.55, 1.0)
+    sch_z = mesh_z(sch_cx, sch_cy)
+    # Walls (all four solid)
+    _make_box_local("HSBuilding_Slab",
+                    (sch_cx, sch_cy, sch_z + 0.05),
+                    (sch_w + 0.6, sch_d + 0.6, 0.10), col_sch_trim)
+    _make_box_local("HSBuilding_WallN",
+                    (sch_cx, sch_cy + sch_d / 2 - sch_t / 2,
+                     sch_z + sch_h / 2),
+                    (sch_w, sch_t, sch_h), col_brick)
+    _make_box_local("HSBuilding_WallE",
+                    (sch_cx + sch_w / 2 - sch_t / 2, sch_cy,
+                     sch_z + sch_h / 2),
+                    (sch_t, sch_d, sch_h), col_brick)
+    _make_box_local("HSBuilding_WallW",
+                    (sch_cx - sch_w / 2 + sch_t / 2, sch_cy,
+                     sch_z + sch_h / 2),
+                    (sch_t, sch_d, sch_h), col_brick)
+    # South wall — split with central entry opening
+    sch_door_w = 4.0
+    sch_door_h = 3.0
+    sch_left_w = sch_w / 2 - sch_door_w / 2
+    _make_box_local("HSBuilding_WallS_L",
+                    (sch_cx - sch_door_w / 2 - sch_left_w / 2,
+                     sch_cy - sch_d / 2 + sch_t / 2,
+                     sch_z + sch_h / 2),
+                    (sch_left_w, sch_t, sch_h), col_brick)
+    _make_box_local("HSBuilding_WallS_R",
+                    (sch_cx + sch_door_w / 2 + sch_left_w / 2,
+                     sch_cy - sch_d / 2 + sch_t / 2,
+                     sch_z + sch_h / 2),
+                    (sch_left_w, sch_t, sch_h), col_brick)
+    _make_box_local("HSBuilding_WallS_Header",
+                    (sch_cx, sch_cy - sch_d / 2 + sch_t / 2,
+                     sch_z + sch_door_h + (sch_h - sch_door_h) / 2),
+                    (sch_door_w, sch_t, sch_h - sch_door_h),
+                    col_brick)
+    # Roof + parapet
+    _make_box_local("HSBuilding_Roof",
+                    (sch_cx, sch_cy, sch_z + sch_h + 0.10),
+                    (sch_w + 0.4, sch_d + 0.4, 0.20), col_sch_roof)
+    # Front door (red double leaves)
+    sch_glass_y = sch_cy - sch_d / 2 + 0.05
+    for sgn in (-1, 1):
+        _make_box_local(f"HSBuilding_Door_{sgn:+d}",
+                        (sch_cx + sgn * sch_door_w / 4,
+                         sch_glass_y,
+                         sch_z + sch_door_h / 2),
+                        (sch_door_w / 2 - 0.12, 0.06,
+                         sch_door_h - 0.10),
+                        col_door_red)
+    # Welcome mat
+    _make_box_local("HSBuilding_DoorMat",
+                    (sch_cx, sch_glass_y - 0.5, sch_z + 0.07),
+                    (sch_door_w + 0.40, 0.80, 0.02),
+                    (0.32, 0.22, 0.18, 1.0))
+    # Front windows — rows of classroom windows along the south
+    # wall (8 windows on each side of the central door)
+    win_z = sch_z + 3.5
+    for k in range(8):
+        # West-side windows
+        wx_pos = sch_cx - sch_door_w / 2 - (k + 1) * 2.0
+        if wx_pos > sch_cx - sch_w / 2 + 1.0:
+            _make_box_local(f"HSBuilding_WinW_{k}",
+                            (wx_pos, sch_glass_y, win_z),
+                            (1.2, 0.04, 1.4), col_glass)
+        # East-side windows
+        wx_pos_e = sch_cx + sch_door_w / 2 + (k + 1) * 2.0
+        if wx_pos_e < sch_cx + sch_w / 2 - 1.0:
+            _make_box_local(f"HSBuilding_WinE_{k}",
+                            (wx_pos_e, sch_glass_y, win_z),
+                            (1.2, 0.04, 1.4), col_glass)
+    # Brick band trim at the parapet
+    _make_box_local("HSBuilding_TrimBand_S",
+                    (sch_cx, sch_cy - sch_d / 2 - 0.05,
+                     sch_z + sch_h - 0.30),
+                    (sch_w + 0.4, 0.10, 0.30),
+                    col_sch_trim)
+    # School name plaque centered above the entry
+    _make_box_local("HSBuilding_NamePlaque",
+                    (sch_cx, sch_cy - sch_d / 2 - 0.15,
+                     sch_z + sch_h + 0.30),
+                    (sch_w * 0.5, 0.14, 1.0),
+                    (0.20, 0.22, 0.55, 1.0))
+    # Two flagpoles flanking the entry (US + state)
+    for sgn, banner_col in ((-1, (0.85, 0.20, 0.20, 1.0)),
+                             (+1, (0.20, 0.22, 0.55, 1.0))):
+        fp_x = sch_cx + sgn * (sch_door_w / 2 + 3.0)
+        fp_y = sch_cy - sch_d / 2 - 4.0
+        fp_z = mesh_z(fp_x, fp_y)
+        _make_cyl_local(f"HSBuilding_FlagPole_{sgn:+d}",
+                        (fp_x, fp_y, fp_z + 3.5),
+                        0.08, 7.0, col_sch_trim, segments=6)
+        _make_box_local(f"HSBuilding_FlagBanner_{sgn:+d}",
+                        (fp_x + 0.40, fp_y, fp_z + 5.9),
+                        (0.80, 0.02, 0.60), banner_col)
 
 
 def main():
