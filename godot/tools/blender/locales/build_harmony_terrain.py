@@ -152,21 +152,22 @@ def _hash2d(x, y, seed=1337):
 SETTLEMENTS = [
     # Country club + golf — peak prosperity, top of the hill
     ("CountryClub", -460, 440, 340, 420, +22.0, 0.85),
-    # North Ranch Homes — second-highest tier
-    ("NorthRanch",  -460, -200, 20, 260, +12.0, 0.80),
+    # North Ranch Homes — second-highest tier. Flatness raised
+    # 0.80 -> 0.90 (2026-06-15) so houses between streets read at
+    # the platform target (+12) instead of 2m below it (the old
+    # 0.80 let 20% of base terrain leak through, so the inter-
+    # street strips read +9.9 while the streets themselves were
+    # carved cleanly to +12).
+    ("NorthRanch",  -460, -200, 20, 260, +12.0, 0.90),
     # East CDS Estates — sits on the east ridge. South edge moved
     # from y=20 to y=120 (2026-06-15) so it no longer OVERLAPS the
-    # HighSchoolField settlement (-130..110). The old overlap
-    # produced a hard 5m cliff at y=110 where the settlement-blend
-    # max-weight switched abruptly from HSField +3 to EastCDS +8 —
-    # user reported the hill "cuts into" the track and football
-    # field. Settlement falloff (35m) now handles the gentle 5m
-    # drop between the field and the residential ridge.
-    ("EastCDS",     180, 440, 120, 260, +8.0, 0.80),
-    # Phase II construction (under occupancy) — middle tier
-    ("Phase2",      40, 240, -260, -100, +1.0, 0.75),
-    # West Estates (single-family) — modest lowland
-    ("WestEstates", -460, -120, -340, -40, -3.0, 0.78),
+    # HighSchoolField settlement (-130..110). Flatness 0.80 -> 0.90.
+    ("EastCDS",     180, 440, 120, 260, +8.0, 0.90),
+    # Phase II construction (under occupancy) — middle tier.
+    # Flatness 0.75 -> 0.90.
+    ("Phase2",      40, 240, -260, -100, +1.0, 0.90),
+    # West Estates (single-family) — modest lowland. 0.78 -> 0.90.
+    ("WestEstates", -460, -120, -340, -40, -3.0, 0.90),
     # Phase III construction (Norman Lott) — gone-to-seed low
     ("Phase3",      -460, -260, -340, -180, -8.0, 0.70),
     # North Commercial Belt — between CC and Ranch, sloped
