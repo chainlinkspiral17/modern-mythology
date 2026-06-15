@@ -8523,6 +8523,32 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                                 0.40, col_shrub,
                                 rings=2, segments=6)
 
+    # ── FRONT WALK · concrete path from the porch front edge
+    # straight out 3 m. Connects to sidewalk or driveway depending
+    # on yard orientation; this stub gives every house a clear
+    # pedestrian approach to the door instead of porch-on-grass.
+    col_walk = palette.get('walk', (0.86, 0.84, 0.78, 1.0))
+    walk_start_x = porch_cx + fx * porch_d / 2     # porch front edge
+    walk_start_y = porch_cy + fy * porch_d / 2
+    walk_end_x = walk_start_x + fx * 3.0
+    walk_end_y = walk_start_y + fy * 3.0
+    walk_w = 1.2
+    pwv = [
+        (walk_start_x + perp_x * walk_w / 2,
+         walk_start_y + perp_y * walk_w / 2,
+         ground_z + 0.06),
+        (walk_end_x + perp_x * walk_w / 2,
+         walk_end_y + perp_y * walk_w / 2,
+         ground_z + 0.06),
+        (walk_end_x - perp_x * walk_w / 2,
+         walk_end_y - perp_y * walk_w / 2,
+         ground_z + 0.06),
+        (walk_start_x - perp_x * walk_w / 2,
+         walk_start_y - perp_y * walk_w / 2,
+         ground_z + 0.06),
+    ]
+    _finalize_mesh(f"{name}_FrontWalk", pwv, [[0, 1, 2, 3]], col_walk)
+
 
 def _build_driveway(name, house_cx, house_cy, ground_z, facing,
                      curb_x, curb_y, color=(0.18, 0.18, 0.20, 1.0)):
