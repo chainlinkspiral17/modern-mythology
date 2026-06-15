@@ -3261,29 +3261,37 @@ def build_commercial_cluster():
                     (can_cx, can_cy, nc_z + can_h + 0.15),
                     (can_w + 0.6, can_d + 0.6, 0.30),
                     COL_CAN_ROOF)
-    # Two pump islands (one each side of the canopy axis)
+    # Two pump islands — pump body rests ON TOP of the island pad
+    # (was embedded 10 cm into the pad). All offsets now keyed to
+    # pad_top so the stack reads as: pad → pump body → display.
+    PAD_H = 0.20
+    PUMP_H = 1.80
+    DISPLAY_H = 0.30
     for k, ix in enumerate((-2.6, 2.6)):
+        pad_top = nc_z + PAD_H
         # Island concrete pad
         _make_box_local(f"NexCorpGG_PumpPad_{k}",
-                        (can_cx + ix, can_cy, nc_z + 0.10),
-                        (1.8, 4.0, 0.20),
+                        (can_cx + ix, can_cy, nc_z + PAD_H / 2),
+                        (1.8, 4.0, PAD_H),
                         (0.72, 0.70, 0.66, 1.0))
-        # Pump body
+        # Pump body (bottom flush with pad top)
         _make_box_local(f"NexCorpGG_PumpBody_{k}",
-                        (can_cx + ix, can_cy, nc_z + 1.0),
-                        (0.80, 0.40, 1.80),
+                        (can_cx + ix, can_cy,
+                         pad_top + PUMP_H / 2),
+                        (0.80, 0.40, PUMP_H),
                         COL_PUMP_BODY)
-        # Pump top display
+        # Pump top display (bottom flush with pump body top)
         _make_box_local(f"NexCorpGG_PumpDisplay_{k}",
-                        (can_cx + ix, can_cy, nc_z + 1.85),
-                        (0.70, 0.42, 0.30),
+                        (can_cx + ix, can_cy,
+                         pad_top + PUMP_H + DISPLAY_H / 2),
+                        (0.70, 0.42, DISPLAY_H),
                         (0.20, 0.22, 0.28, 1.0))
-        # Hose stubs on each end of the pump
+        # Hose stubs on each end of the pump (mid-body height)
         for sgn in (-1, 1):
             _make_cyl_local(f"NexCorpGG_PumpHose_{k}_{sgn:+d}",
                             (can_cx + ix,
                              can_cy + sgn * 0.22,
-                             nc_z + 1.20),
+                             pad_top + PUMP_H * 0.55),
                             0.04, 0.30, COL_PUMP_HOSE, segments=4)
 
     # ── PYLON SIGN on a pole · NexCorp brand visible from highway
