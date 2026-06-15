@@ -173,15 +173,18 @@ SETTLEMENTS = [
     # platform so it reads as tucked away. Higher flatness so it
     # wins the overlap blend with the parent OT Park zone.
     ("OTSkatePark",       -300, -260, 65, 100, -0.5, 0.90),
-    # Chapter-one commercial cluster pads — nested inside the
+    # Chapter-one commercial block pads — nested inside the
     # broader SouthComm belt so each building footprint is locally
-    # flat regardless of the parent zone's residual wild-zone bumps.
-    # Each pad is large enough to cover building + sidewalk +
-    # parking-lot apron, at the same target_z (-9.0) as SouthComm
-    # but with higher flatness (0.95) so they win the blend.
-    ("KwikStopPad",   30,   70,  -385, -345, -9.0, 0.95),
-    ("NexCorpGGPad", -110, -70,  -395, -345, -9.0, 0.95),
-    ("CosmicCPad",   135,  175, -380, -345, -9.0, 0.95),
+    # flat regardless of the parent zone's residual wild-zone
+    # bumps. Each pad covers building + sidewalk + parking-lot
+    # apron, at the same target_z (-9.0) as SouthComm with higher
+    # flatness (0.95) so they win the blend. Repositioned to the
+    # closed-block layout: NexCorp -60, Kwik Shop -15 (28 m wide),
+    # Diner 35, Cosmic Comics 70.
+    ("KwikShopPad",  -30,    1,  -385, -345, -9.0, 0.95),
+    ("NexCorpGGPad", -80,  -42,  -395, -345, -9.0, 0.95),
+    ("DinerPad",      22,   50,  -380, -345, -9.0, 0.95),
+    ("CosmicCPad",    62,   80,  -380, -345, -9.0, 0.95),
 ]
 SETTLEMENT_FALLOFF = 35.0   # m of smooth transition outside each rect
 
@@ -3074,6 +3077,432 @@ def _build_parked_car(name, cx, cy, ground_z, body_color,
                         (0.78, 0.18, 0.18, 1.0))
 
 
+def _build_kwik_shop_strip(cx, cy, ground_z):
+    """KWIK SHOP — 3-bay strip building combining the convenience
+    store with an ARCADE and a LAUNDROMAT. Per user spec: "the qwik
+    shop has an arcade and laundromat area, in addition to the
+    convenience store."
+
+    Layout: ARCADE (left, x-9) · KWIK STOP (centre) · LAUNDROMAT
+    (right, x+9). 28 × 10 m total, single continuous roof, each
+    bay has its own plate-glass front + entry door + interior.
+    """
+    name_prefix = "KwikShop"
+    bay_w = 9.0
+    total_w = 28.0
+    depth = 10.0
+    height = 3.6
+
+    # Shared shell colours (red/cream Kwik palette throughout)
+    col_wall  = (0.82, 0.78, 0.72, 1.0)
+    col_trim  = (0.85, 0.22, 0.20, 1.0)
+    col_roof  = (0.32, 0.18, 0.16, 1.0)
+    col_floor = (0.74, 0.72, 0.68, 1.0)
+    col_glass_frame = (0.62, 0.62, 0.64, 1.0)
+    col_arcade_sign     = (0.62, 0.22, 0.78, 1.0)   # purple
+    col_kwikstop_sign   = (0.85, 0.22, 0.20, 1.0)   # red
+    col_laundromat_sign = (0.32, 0.55, 0.78, 1.0)   # blue
+
+    # ── SHARED SHELL ────────────────────────────────────────────
+    # Slab spanning full strip
+    _make_box_local(f"{name_prefix}_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (total_w + 0.6, depth + 0.6, 0.10), col_floor)
+    wall_t = 0.20
+    # North (back) wall — solid across whole strip
+    _make_box_local(f"{name_prefix}_WallN",
+                    (cx, cy + depth / 2 - wall_t / 2,
+                     ground_z + height / 2),
+                    (total_w, wall_t, height), col_wall)
+    # East + west exterior walls
+    _make_box_local(f"{name_prefix}_WallE",
+                    (cx + total_w / 2 - wall_t / 2, cy,
+                     ground_z + height / 2),
+                    (wall_t, depth, height), col_wall)
+    _make_box_local(f"{name_prefix}_WallW",
+                    (cx - total_w / 2 + wall_t / 2, cy,
+                     ground_z + height / 2),
+                    (wall_t, depth, height), col_wall)
+    # Two interior partition walls between the three bays
+    for sgn, tag_int in ((-1, "Arc_Kwik"), (1, "Kwik_Laun")):
+        _make_box_local(f"{name_prefix}_PartWall_{tag_int}",
+                        (cx + sgn * bay_w / 2, cy,
+                         ground_z + height / 2),
+                        (wall_t, depth, height), col_wall)
+    # Single continuous roof + parapets
+    _make_box_local(f"{name_prefix}_Roof",
+                    (cx, cy, ground_z + height + 0.10),
+                    (total_w + 0.4, depth + 0.4, 0.20), col_roof)
+    parapet_h = 0.45
+    parapet_t = 0.18
+    pz_top = ground_z + height + 0.20
+    pz_centre = pz_top + parapet_h / 2
+    _make_box_local(f"{name_prefix}_ParapetN",
+                    (cx, cy + (depth + 0.4) / 2 - parapet_t / 2,
+                     pz_centre),
+                    (total_w + 0.4, parapet_t, parapet_h), col_wall)
+    for sgn in (-1, 1):
+        _make_box_local(f"{name_prefix}_ParapetE_{sgn:+d}",
+                        (cx + sgn * ((total_w + 0.4) / 2 - parapet_t / 2),
+                         cy, pz_centre),
+                        (parapet_t, depth + 0.4, parapet_h), col_wall)
+    # HVAC units — one per bay
+    for k_off, ox in enumerate((-9.0, 0.0, 9.0)):
+        _make_box_local(f"{name_prefix}_HVAC_{k_off}",
+                        (cx + ox, cy + depth * 0.20,
+                         pz_top + 0.40),
+                        (1.4, 1.2, 0.80),
+                        (0.62, 0.62, 0.64, 1.0))
+        _make_box_local(f"{name_prefix}_HVAC_{k_off}_Grille",
+                        (cx + ox, cy + depth * 0.20,
+                         pz_top + 0.83),
+                        (1.0, 0.9, 0.06),
+                        (0.28, 0.28, 0.30, 1.0))
+
+    # ── PER-BAY STOREFRONT + INTERIOR ──────────────────────────
+    bay_specs = [
+        ("Arcade",      -9.0, col_arcade_sign,
+            "ARCADE",       (0.95, 0.85, 0.30, 1.0)),
+        ("KwikStop",     0.0, col_kwikstop_sign,
+            "KWIK STOP",    (0.98, 0.95, 0.86, 1.0)),
+        ("Laundromat",   9.0, col_laundromat_sign,
+            "LAUNDROMAT",   (0.98, 0.98, 0.96, 1.0)),
+    ]
+    glass_y = cy - depth / 2 + 0.05
+    for bay_tag, bay_ox, col_sign, sign_text, _txt_col in bay_specs:
+        bcx = cx + bay_ox
+        # Plate-glass storefront (mullions + rails) per bay
+        n_mullions = 4
+        for k in range(n_mullions):
+            mx = bcx - bay_w / 2 + 0.3 + \
+                 k * (bay_w - 0.6) / (n_mullions - 1)
+            _make_box_local(f"{name_prefix}_{bay_tag}_GlassMul_{k}",
+                            (mx, glass_y, ground_z + height / 2),
+                            (0.10, 0.06, height), col_glass_frame)
+        _make_box_local(f"{name_prefix}_{bay_tag}_GlassTopRail",
+                        (bcx, glass_y, ground_z + height - 0.08),
+                        (bay_w - 0.2, 0.08, 0.16), col_glass_frame)
+        _make_box_local(f"{name_prefix}_{bay_tag}_GlassBotRail",
+                        (bcx, glass_y, ground_z + 0.20),
+                        (bay_w - 0.2, 0.08, 0.40), col_glass_frame)
+        # Entry door (centred in each bay)
+        door_w = 1.2; door_h = 2.4
+        for sgn in (-1, 1):
+            _make_box_local(
+                f"{name_prefix}_{bay_tag}_DoorJamb_{sgn:+d}",
+                (bcx + sgn * door_w / 2, glass_y,
+                 ground_z + door_h / 2),
+                (0.12, 0.10, door_h), col_trim)
+        _make_box_local(f"{name_prefix}_{bay_tag}_DoorHeader",
+                        (bcx, glass_y,
+                         ground_z + door_h + 0.08),
+                        (door_w + 0.12, 0.10, 0.16), col_trim)
+        _make_cyl_local(f"{name_prefix}_{bay_tag}_DoorHandle",
+                        (bcx + 0.20, glass_y - 0.06,
+                         ground_z + 1.10),
+                        0.025, 0.40, col_glass_frame, segments=4)
+        _make_box_local(f"{name_prefix}_{bay_tag}_DoorMat",
+                        (bcx, glass_y - 0.40,
+                         ground_z + 0.07),
+                        (door_w + 0.20, 0.80, 0.02),
+                        (0.32, 0.22, 0.18, 1.0))
+        # Per-bay roof sign
+        sign_h_local = 0.8
+        sign_y = cy - depth / 2 - 0.36
+        _make_box_local(f"{name_prefix}_{bay_tag}_SignPanel",
+                        (bcx, sign_y,
+                         ground_z + height + 0.20 + sign_h_local / 2),
+                        (bay_w * 0.85, 0.12, sign_h_local), col_sign)
+        _make_box_local(f"{name_prefix}_{bay_tag}_SignTrim",
+                        (bcx, sign_y,
+                         ground_z + height + 0.20 + sign_h_local + 0.05),
+                        (bay_w * 0.85 + 0.10, 0.14, 0.10), col_trim)
+
+    # ── BAY-SPECIFIC INTERIORS ─────────────────────────────────
+    # ARCADE bay — 4 standing arcade cabinets in a row near back
+    arc_cx = cx - 9.0
+    COL_CAB_BODY = (0.18, 0.18, 0.22, 1.0)
+    COL_CAB_SCREEN = (0.32, 0.55, 0.78, 1.0)
+    COL_CAB_MARQUEE = (0.95, 0.42, 0.30, 1.0)
+    for k in range(4):
+        kx = arc_cx - 3.0 + k * 2.0
+        ky = cy + depth * 0.20
+        # Cabinet body
+        _make_box_local(f"KwikShop_Arc_Cab_{k}",
+                        (kx, ky, ground_z + 0.85),
+                        (0.80, 0.70, 1.70), COL_CAB_BODY)
+        # Screen
+        _make_box_local(f"KwikShop_Arc_Screen_{k}",
+                        (kx, ky - 0.36, ground_z + 1.30),
+                        (0.55, 0.04, 0.40), COL_CAB_SCREEN)
+        # Marquee
+        _make_box_local(f"KwikShop_Arc_Marquee_{k}",
+                        (kx, ky - 0.36, ground_z + 1.85),
+                        (0.70, 0.04, 0.20), COL_CAB_MARQUEE)
+        # Control panel slab
+        _make_box_local(f"KwikShop_Arc_Panel_{k}",
+                        (kx, ky - 0.42, ground_z + 0.95),
+                        (0.55, 0.18, 0.06), COL_CAB_BODY)
+    # Change machine on west wall
+    _make_box_local("KwikShop_Arc_ChangeMachine",
+                    (arc_cx - 4.1, cy + 0.5, ground_z + 0.80),
+                    (0.30, 0.40, 1.20),
+                    (0.42, 0.42, 0.45, 1.0))
+
+    # KWIK STOP bay — aisles + counter + cooler + basket (matches
+    # the previous convenience-store interior)
+    kw_cx = cx
+    col_shelf      = (0.50, 0.50, 0.52, 1.0)
+    col_counter    = (0.42, 0.32, 0.22, 1.0)
+    col_register   = (0.20, 0.20, 0.22, 1.0)
+    col_cooler     = (0.78, 0.84, 0.88, 1.0)
+    col_basket     = (0.60, 0.20, 0.18, 1.0)
+    aisle_h = 1.8
+    aisle_l = depth * 0.45
+    aisle_y_centre = cy + depth * 0.10
+    for k, ax_off in enumerate((-2.0, 0.0, 2.0)):
+        _make_box_local(f"KwikShop_KwikStop_Aisle_{k}",
+                        (kw_cx + ax_off, aisle_y_centre,
+                         ground_z + aisle_h / 2),
+                        (0.40, aisle_l, aisle_h), col_shelf)
+        for sgn in (-1, 1):
+            _make_box_local(
+                f"KwikShop_KwikStop_AisleGoods_{k}_{sgn:+d}",
+                (kw_cx + ax_off + sgn * 0.24,
+                 aisle_y_centre,
+                 ground_z + aisle_h - 0.20),
+                (0.04, aisle_l - 0.4, 0.30),
+                (0.42, 0.65, 0.38, 1.0))
+    counter_w = 2.4; counter_d = 0.9; counter_h = 1.1
+    counter_x = kw_cx + bay_w / 2 - counter_w / 2 - 0.5
+    counter_y = cy + depth / 2 - counter_d / 2 - 0.6
+    _make_box_local("KwikShop_KwikStop_Counter",
+                    (counter_x, counter_y,
+                     ground_z + counter_h / 2),
+                    (counter_w, counter_d, counter_h), col_counter)
+    _make_box_local("KwikShop_KwikStop_Register",
+                    (counter_x - 0.6, counter_y,
+                     ground_z + counter_h + 0.15),
+                    (0.55, 0.40, 0.30), col_register)
+    _make_box_local("KwikShop_KwikStop_BackBoard",
+                    (counter_x, counter_y + counter_d / 2 + 0.05,
+                     ground_z + 1.6),
+                    (counter_w, 0.05, 1.4),
+                    (0.32, 0.30, 0.28, 1.0))
+    # Cooler against the partition wall to the west (next to arcade)
+    cooler_w = 2.0; cooler_h = 2.4
+    _make_box_local("KwikShop_KwikStop_Cooler",
+                    (kw_cx - bay_w / 2 + cooler_w / 2 + 0.30,
+                     cy + depth / 2 - 0.18,
+                     ground_z + cooler_h / 2),
+                    (cooler_w, 0.20, cooler_h), col_cooler)
+    _make_box_local("KwikShop_KwikStop_CoolerShelf",
+                    (kw_cx - bay_w / 2 + cooler_w / 2 + 0.30,
+                     cy + depth / 2 - 0.10,
+                     ground_z + cooler_h * 0.55),
+                    (cooler_w - 0.10, 0.04, 0.05),
+                    (0.32, 0.32, 0.32, 1.0))
+    _make_box_local("KwikShop_KwikStop_WireBasket",
+                    (kw_cx + 3.0, cy - depth / 2 + 1.2,
+                     ground_z + 0.30),
+                    (0.40, 0.30, 0.50), col_basket)
+
+    # LAUNDROMAT bay — row of washing machines + dryers + folding
+    # table. Two rows: 5 washers on the south side, 5 dryers on
+    # the north side. Folding table down the middle.
+    ldr_cx = cx + 9.0
+    COL_WASHER_BODY = (0.92, 0.92, 0.90, 1.0)
+    COL_WASHER_PORT = (0.32, 0.32, 0.36, 1.0)
+    COL_WASHER_TRIM = (0.62, 0.62, 0.64, 1.0)
+    COL_FOLDING = (0.62, 0.55, 0.45, 1.0)
+    # 5 front-loaders along the back (north) wall
+    for k in range(5):
+        wx = ldr_cx - 3.2 + k * 1.6
+        wy = cy + depth / 2 - 0.5
+        _make_box_local(f"KwikShop_Ldr_Washer_{k}_Body",
+                        (wx, wy, ground_z + 0.55),
+                        (1.20, 0.70, 1.10), COL_WASHER_BODY)
+        # Round porthole — approximated as a dark square
+        _make_box_local(f"KwikShop_Ldr_Washer_{k}_Port",
+                        (wx, wy - 0.36, ground_z + 0.65),
+                        (0.45, 0.04, 0.45), COL_WASHER_PORT)
+        # Trim panel above
+        _make_box_local(f"KwikShop_Ldr_Washer_{k}_Trim",
+                        (wx, wy - 0.36, ground_z + 1.02),
+                        (1.0, 0.04, 0.18), COL_WASHER_TRIM)
+    # 4 stacked dryers against the EAST partition (back-to-back)
+    for k in range(4):
+        dy_pos = cy - 0.5 + k * 0.5     # not used, replaced below
+        wx = ldr_cx + bay_w / 2 - 0.55
+        wy = cy + depth * 0.15 - k * 0.9 + 1.5
+        for stack in (0, 1):
+            _make_box_local(f"KwikShop_Ldr_Dryer_{k}_{stack}_Body",
+                            (wx, wy,
+                             ground_z + 0.55 + stack * 1.10),
+                            (0.90, 0.70, 1.10), COL_WASHER_BODY)
+            _make_box_local(f"KwikShop_Ldr_Dryer_{k}_{stack}_Port",
+                            (wx - 0.36, wy,
+                             ground_z + 0.65 + stack * 1.10),
+                            (0.04, 0.45, 0.45), COL_WASHER_PORT)
+    # Folding table in the middle of the bay
+    _make_box_local("KwikShop_Ldr_FoldingTable",
+                    (ldr_cx - 1.0, cy - 0.5, ground_z + 0.85),
+                    (3.0, 0.80, 0.06), COL_FOLDING)
+    for tx in (ldr_cx - 2.3, ldr_cx + 0.3):
+        for ty in (cy - 0.9, cy - 0.1):
+            _make_box_local(
+                f"KwikShop_Ldr_FoldTableLeg_{int(tx)}_{int(ty)}",
+                (tx, ty, ground_z + 0.42),
+                (0.06, 0.06, 0.84), COL_WASHER_TRIM)
+    # Coin/change machine on west partition
+    _make_box_local("KwikShop_Ldr_ChangeMachine",
+                    (ldr_cx - bay_w / 2 + 0.40, cy + 0.5,
+                     ground_z + 0.80),
+                    (0.30, 0.40, 1.20),
+                    (0.42, 0.42, 0.45, 1.0))
+
+
+def _build_diner(cx, cy, ground_z):
+    """Chapter-one DINER — classic chrome+red roadside diner. Long
+    thin building with a curved-corner silhouette suggested by a
+    central rectangle plus side caps. Plate-glass front facing
+    south, neon-style sign panel above.
+    """
+    name_prefix = "Diner"
+    width = 18.0
+    depth = 9.0
+    height = 3.4
+    col_wall   = (0.92, 0.90, 0.88, 1.0)         # cream / cream-aluminium
+    col_red_band = (0.85, 0.22, 0.20, 1.0)
+    col_roof   = (0.22, 0.20, 0.22, 1.0)
+    col_trim   = (0.62, 0.62, 0.64, 1.0)         # chrome
+    col_floor  = (0.55, 0.50, 0.46, 1.0)         # checker-ish
+    col_glass_frame = (0.62, 0.62, 0.64, 1.0)
+    col_sign   = (0.95, 0.42, 0.30, 1.0)
+    col_counter = (0.62, 0.55, 0.45, 1.0)
+    col_stool  = (0.85, 0.22, 0.20, 1.0)
+    col_booth  = (0.85, 0.22, 0.20, 1.0)
+    col_table  = (0.78, 0.74, 0.66, 1.0)
+
+    # Slab
+    _make_box_local(f"{name_prefix}_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (width + 0.6, depth + 0.6, 0.10), col_floor)
+    wall_t = 0.20
+    # Back wall
+    _make_box_local(f"{name_prefix}_WallN",
+                    (cx, cy + depth / 2 - wall_t / 2,
+                     ground_z + height / 2),
+                    (width, wall_t, height), col_wall)
+    # Side walls
+    _make_box_local(f"{name_prefix}_WallE",
+                    (cx + width / 2 - wall_t / 2, cy,
+                     ground_z + height / 2),
+                    (wall_t, depth, height), col_wall)
+    _make_box_local(f"{name_prefix}_WallW",
+                    (cx - width / 2 + wall_t / 2, cy,
+                     ground_z + height / 2),
+                    (wall_t, depth, height), col_wall)
+    # Plate-glass front spanning full width
+    glass_y = cy - depth / 2 + 0.05
+    n_mullions = 7
+    for k in range(n_mullions):
+        mx = cx - width / 2 + 0.4 + k * (width - 0.8) / (n_mullions - 1)
+        _make_box_local(f"{name_prefix}_GlassMul_{k}",
+                        (mx, glass_y, ground_z + height / 2),
+                        (0.10, 0.06, height), col_glass_frame)
+    _make_box_local(f"{name_prefix}_GlassTopRail",
+                    (cx, glass_y, ground_z + height - 0.08),
+                    (width - 0.2, 0.08, 0.16), col_glass_frame)
+    _make_box_local(f"{name_prefix}_GlassBotRail",
+                    (cx, glass_y, ground_z + 0.20),
+                    (width - 0.2, 0.08, 0.40), col_glass_frame)
+    # Red horizontal band at mid-wall height — diner signature
+    _make_box_local(f"{name_prefix}_RedBand_N",
+                    (cx, cy + depth / 2 - wall_t / 2 - 0.05,
+                     ground_z + height * 0.55),
+                    (width, 0.10, 0.30), col_red_band)
+    # Entry door (centred)
+    door_w = 1.4; door_h = 2.4
+    for sgn in (-1, 1):
+        _make_box_local(f"{name_prefix}_DoorJamb_{sgn:+d}",
+                        (cx + sgn * door_w / 2, glass_y,
+                         ground_z + door_h / 2),
+                        (0.12, 0.10, door_h), col_trim)
+    _make_box_local(f"{name_prefix}_DoorHeader",
+                    (cx, glass_y, ground_z + door_h + 0.08),
+                    (door_w + 0.12, 0.10, 0.16), col_trim)
+    _make_box_local(f"{name_prefix}_DoorMat",
+                    (cx, glass_y - 0.40, ground_z + 0.07),
+                    (door_w + 0.20, 0.80, 0.02),
+                    (0.32, 0.22, 0.18, 1.0))
+    # Roof — slightly curved suggestion with a thicker band on top
+    _make_box_local(f"{name_prefix}_Roof",
+                    (cx, cy, ground_z + height + 0.12),
+                    (width + 0.4, depth + 0.4, 0.24), col_roof)
+    # Sign panel ON the front parapet — diner signs are typically
+    # neon mounted ABOVE the door.
+    sign_h_local = 1.0
+    sign_y = cy - depth / 2 - 0.36
+    _make_box_local(f"{name_prefix}_SignPanel",
+                    (cx, sign_y,
+                     ground_z + height + 0.24 + sign_h_local / 2),
+                    (width * 0.6, 0.14, sign_h_local), col_sign)
+    _make_box_local(f"{name_prefix}_SignTrim",
+                    (cx, sign_y,
+                     ground_z + height + 0.24 + sign_h_local + 0.05),
+                    (width * 0.6 + 0.20, 0.16, 0.10), col_trim)
+
+    # ── INTERIOR · counter with stools + 4 booths along the
+    # storefront + kitchen at the back
+    counter_w = 10.0; counter_d = 0.9; counter_h = 1.05
+    _make_box_local(f"{name_prefix}_Counter",
+                    (cx, cy + depth * 0.18,
+                     ground_z + counter_h / 2),
+                    (counter_w, counter_d, counter_h), col_counter)
+    # 5 stools in front of the counter
+    for k in range(5):
+        sx = cx - counter_w * 0.4 + k * counter_w * 0.2
+        sy = cy + depth * 0.18 - counter_d / 2 - 0.6
+        _make_cyl_local(f"{name_prefix}_Stool_{k}_Seat",
+                        (sx, sy, ground_z + 0.65),
+                        0.20, 0.08, col_stool, segments=8)
+        _make_cyl_local(f"{name_prefix}_Stool_{k}_Stem",
+                        (sx, sy, ground_z + 0.30),
+                        0.04, 0.55,
+                        (0.62, 0.62, 0.64, 1.0), segments=4)
+    # 4 booths along the south (window) wall
+    for k in range(4):
+        bx = cx - width * 0.32 + k * width * 0.22
+        by = cy - depth / 2 + 1.4
+        # Bench seat
+        _make_box_local(f"{name_prefix}_BoothSeat_{k}_L",
+                        (bx, by - 0.6, ground_z + 0.40),
+                        (1.0, 0.40, 0.10), col_booth)
+        _make_box_local(f"{name_prefix}_BoothSeat_{k}_R",
+                        (bx, by + 0.6, ground_z + 0.40),
+                        (1.0, 0.40, 0.10), col_booth)
+        # Bench backs
+        _make_box_local(f"{name_prefix}_BoothBack_{k}_L",
+                        (bx, by - 0.78, ground_z + 0.80),
+                        (1.0, 0.06, 0.70), col_booth)
+        _make_box_local(f"{name_prefix}_BoothBack_{k}_R",
+                        (bx, by + 0.78, ground_z + 0.80),
+                        (1.0, 0.06, 0.70), col_booth)
+        # Table
+        _make_box_local(f"{name_prefix}_BoothTable_{k}",
+                        (bx, by, ground_z + 0.55),
+                        (0.80, 0.80, 0.06), col_table)
+        _make_box_local(f"{name_prefix}_BoothTable_{k}_Leg",
+                        (bx, by, ground_z + 0.27),
+                        (0.10, 0.10, 0.54),
+                        (0.62, 0.62, 0.64, 1.0))
+    # Kitchen pass-through / wall on the back side
+    _make_box_local(f"{name_prefix}_KitchenWall",
+                    (cx, cy + depth * 0.40, ground_z + 1.30),
+                    (12.0, 0.20, 0.60), col_trim)
+
+
 def _build_cosmic_comics(cx, cy, ground_z):
     """Cosmic Comics — chapter-one comic shop with a plate-glass
     front and a CANONICALLY visible photocopier inside (per
@@ -3241,20 +3670,30 @@ def build_commercial_cluster():
     walking distance of the country-club spawn point at
     (0, 30, -380).
     """
-    # ── KWIK STOP at (50, -360) ────────────────────────────────
-    ks_x, ks_y = 50.0, -360.0
+    # ── Chapter-one block layout · 4 storefronts in sight-line
+    # range of each other, all sharing the same y = -360 line so
+    # characters at their respective counters can see across the
+    # block via plate-glass fronts.
+    #
+    #   west │ NexCorp   Kwik Shop strip      Diner    Cosmic │ east
+    #        │   -60      -15 (28 m wide)       35       70   │
+    #
+    # Each gap between adjacent storefronts is sized so the
+    # sidewalk + utility props fit between them.
+    ks_x, ks_y = -15.0, -360.0
     ks_z = mesh_z(ks_x, ks_y)
-    _build_convenience_store("KwikStop", ks_x, ks_y, ks_z,
-                              brand="kwikstop")
+    _build_kwik_shop_strip(ks_x, ks_y, ks_z)
 
-    # ── NEXCORP GAS & GO at (-90, -360) ────────────────────────
-    nc_x, nc_y = -90.0, -360.0
+    nc_x, nc_y = -60.0, -360.0
     nc_z = mesh_z(nc_x, nc_y)
     _build_convenience_store("NexCorpGG", nc_x, nc_y, nc_z,
                               brand="nexcorp")
 
-    # ── COSMIC COMICS at (155, -360) ───────────────────────────
-    cc_x, cc_y = 155.0, -360.0
+    dn_x, dn_y = 35.0, -360.0
+    dn_z = mesh_z(dn_x, dn_y)
+    _build_diner(dn_x, dn_y, dn_z)
+
+    cc_x, cc_y = 70.0, -360.0
     cc_z = mesh_z(cc_x, cc_y)
     _build_cosmic_comics(cc_x, cc_y, cc_z)
     # ── FUEL PUMP CANOPY out front (south of NexCorp building)
@@ -3338,13 +3777,12 @@ def build_commercial_cluster():
     COL_ASPHALT = (0.22, 0.22, 0.24, 1.0)
     COL_STRIPE  = (0.92, 0.90, 0.84, 1.0)
     for tag, store_x, store_y in (
-        ("KwikStop", ks_x, ks_y),
+        ("KwikShop", ks_x, ks_y),
         ("NexCorpGG", nc_x, nc_y),
+        ("Diner", dn_x, dn_y),
         ("CosmicComics", cc_x, cc_y),
     ):
         lot_cx = store_x
-        # Lot starts ~7m south of store front (depth/2 = 5) +
-        # leaves 2m sidewalk between glass and asphalt.
         lot_w = 22.0
         lot_d = 14.0
         if tag == "NexCorpGG":
@@ -3354,14 +3792,17 @@ def build_commercial_cluster():
             lot_d = 10.0
         elif tag == "CosmicComics":
             # Cosmic Comics is a smaller shop — smaller lot too.
-            # Shifted south to make room for a south-side sidewalk.
             lot_cy = store_y - 15.0
-            lot_w = 16.0
+            lot_w = 14.0
+            lot_d = 12.0
+        elif tag == "Diner":
+            lot_cy = store_y - 16.0
+            lot_w = 20.0
             lot_d = 12.0
         else:
-            # Kwik Stop — shifted south to make room for a south-
-            # side sidewalk between building and lot.
+            # Kwik Shop — wider lot to match the 28 m strip.
             lot_cy = store_y - 17.0
+            lot_w = 30.0
         # Four-vert slab so corners track terrain
         hw = lot_w / 2; hd = lot_d / 2
         lv = []
@@ -3403,9 +3844,13 @@ def build_commercial_cluster():
     walk_strip_y = ks_y - 6.5     # all three stores share ks_y = nc_y = cc_y
     walk_pts = [
         (nc_x,  walk_strip_y),                # NexCorp (west-most)
-        ((ks_x + nc_x) / 2, walk_strip_y),    # between NexCorp & Kwik Stop
-        (ks_x,  walk_strip_y),                # Kwik Stop
-        ((ks_x + cc_x) / 2, walk_strip_y),    # between Kwik Stop & Cosmic
+        ((ks_x + nc_x) / 2, walk_strip_y),    # between NexCorp & Kwik Shop
+        (ks_x - 14, walk_strip_y),            # Kwik Shop arcade bay front
+        (ks_x,      walk_strip_y),            # Kwik Shop centre (Kwik Stop)
+        (ks_x + 14, walk_strip_y),            # Kwik Shop laundromat bay
+        ((ks_x + dn_x) / 2, walk_strip_y),    # between Kwik Shop & Diner
+        (dn_x,  walk_strip_y),                # Diner
+        ((dn_x + cc_x) / 2, walk_strip_y),    # between Diner & Cosmic
         (cc_x,  walk_strip_y),                # Cosmic Comics
     ]
     # Spawn-side spur drops from spawn approach south to the strip
@@ -3476,7 +3921,10 @@ def build_commercial_cluster():
     # west wall on the sidewalk side). Standard chapter-1 strip
     # mall details: white ICE box with red script panel, plus a
     # caged box of propane tanks beside it.
-    ic_x = ks_x - 5.0
+    # Anchored to the Kwik Stop centre bay (kw_cx = ks_x). The
+    # ice machine sits just south of the bay's south wall on the
+    # sidewalk's north edge, west of the entry door.
+    ic_x = ks_x - 2.8
     ic_y = ks_y - 5.5         # just south of the building south wall
     ic_z = mesh_z(ic_x, ic_y)
     COL_ICE_WHITE = (0.95, 0.95, 0.92, 1.0)
@@ -3532,7 +3980,9 @@ def build_commercial_cluster():
     # rectangle of low rails with 3 nested carts inside. Sits at
     # the SE corner of the lot so cars approach it on their way
     # to the road.
-    co_x = ks_x + 9.0
+    # Cart corral near the EAST end of the Kwik Stop centre bay's
+    # parking allocation. Inside the Kwik Shop strip's wider lot.
+    co_x = ks_x + 12.0
     co_y = ks_y - 17.0 + 5.0   # north end of the lot at lot_y + lot_d/2
     co_z = mesh_z(co_x, co_y)
     COL_CORRAL = (0.62, 0.62, 0.64, 1.0)
@@ -3767,16 +4217,20 @@ def build_commercial_cluster():
     # spawn script can read their world position. They keep
     # their distinct mesh names so the game can target them
     # individually.
-    # Convenience-store counters live at (store_x + 4, store_y +
-    # 4.05); Cosmic Comics counter lives at (store_x + 3.1,
-    # store_y - 2.5). Markers placed AT each counter centre, on
-    # the side a clerk would stand. Spawn scripts should offset
-    # slightly to the back-wall side when actually spawning a
-    # figure.
+    # Markers sit at each counter on the back-wall side a clerk
+    # would stand. Spawn scripts should nudge slightly toward the
+    # back wall when actually instantiating a figure.
+    # Per user spec: "characters can see each other at their
+    # jobs." All markers are within sight-line range across the
+    # block's plate-glass storefronts.
     npc_markers = [
-        ("NPC_Sam_Register", ks_x + 4.0, ks_y + 4.5),
-        ("NPC_Skip_Locker",  nc_x + 4.0, nc_y + 4.5),
-        ("NPC_Comics_Clerk", cc_x + 3.1, cc_y - 3.0),
+        ("NPC_Skip_Locker",     nc_x + 4.0, nc_y + 4.5),    # NexCorp
+        ("NPC_Arcade_Attendant", ks_x - 9.0, ks_y + 4.0),   # Kwik Shop arcade bay
+        ("NPC_Sam_Register",    ks_x + 2.8, ks_y + 4.0),    # Kwik Stop counter
+        ("NPC_Laundromat_Clerk",ks_x + 9.0, ks_y + 4.0),    # Kwik Shop laundromat bay
+        ("NPC_Diner_Cook",      dn_x,       dn_y + 4.0),    # Diner kitchen pass
+        ("NPC_Diner_Waiter",    dn_x + 4.0, dn_y + 2.0),    # Diner counter
+        ("NPC_Comics_Clerk",    cc_x + 3.1, cc_y - 3.0),    # Cosmic Comics
     ]
     for name, mx_, my_ in npc_markers:
         mz = mesh_z(mx_, my_)
@@ -3789,12 +4243,15 @@ def build_commercial_cluster():
     # Distinct paint colours so the strip reads as populated rather
     # than uniform.
     parked_specs = [
-        ("KwikStop", ks_x - 5, ks_y - 11, (0.82, 0.32, 0.22, 1.0)),  # red
-        ("KwikStop", ks_x + 5, ks_y - 11, (0.78, 0.74, 0.68, 1.0)),  # beige
-        ("NexCorpGG", nc_x - 6, nc_y - 22, (0.32, 0.42, 0.55, 1.0)), # blue
-        ("NexCorpGG", nc_x + 6, nc_y - 22, (0.20, 0.20, 0.22, 1.0)), # black
-        ("CosmicComics", cc_x - 4, cc_y - 9, (0.42, 0.62, 0.32, 1.0)), # green
-        ("CosmicComics", cc_x + 4, cc_y - 9, (0.92, 0.85, 0.30, 1.0)), # yellow
+        ("KwikShop", ks_x - 11, ks_y - 14, (0.82, 0.32, 0.22, 1.0)),  # red
+        ("KwikShop", ks_x,      ks_y - 14, (0.78, 0.74, 0.68, 1.0)),  # beige
+        ("KwikShop", ks_x + 11, ks_y - 14, (0.32, 0.55, 0.78, 1.0)),  # blue (laundromat)
+        ("NexCorpGG", nc_x - 5, nc_y - 22, (0.20, 0.20, 0.22, 1.0)),  # black
+        ("NexCorpGG", nc_x + 5, nc_y - 22, (0.42, 0.42, 0.45, 1.0)),  # grey
+        ("Diner",     dn_x - 6, dn_y - 13, (0.95, 0.85, 0.30, 1.0)),  # yellow
+        ("Diner",     dn_x + 6, dn_y - 13, (0.42, 0.62, 0.32, 1.0)),  # green
+        ("CosmicComics", cc_x - 3, cc_y - 12, (0.62, 0.42, 0.78, 1.0)), # purple
+        ("CosmicComics", cc_x + 3, cc_y - 12, (0.92, 0.55, 0.20, 1.0)), # orange
     ]
     for k, (tag, px, py, col) in enumerate(parked_specs):
         pz = mesh_z(px, py)
@@ -3832,9 +4289,10 @@ def build_commercial_cluster():
 
     # Driveway aprons connecting each parking lot down to the road
     for tag, lot_x, lot_y, lot_w_drv in (
-        ("KwikStop", ks_x, ks_y - 13, 8.0),
+        ("KwikShop", ks_x, ks_y - 17, 8.0),
         ("NexCorpGG", nc_x, nc_y - 24, 8.0),
-        ("CosmicComics", cc_x, cc_y - 11, 6.0),
+        ("Diner",     dn_x, dn_y - 16, 6.0),
+        ("CosmicComics", cc_x, cc_y - 15, 6.0),
     ):
         # Apron from south edge of lot down to north edge of road
         apron_y0 = lot_y - 7.0       # bottom of lot
@@ -3851,8 +4309,10 @@ def build_commercial_cluster():
     # ── STREETLIGHTS + BENCHES along the strip sidewalk
     # Six 4 m lamp posts on the south curb of the sidewalk (i.e.
     # 1 m further south of the sidewalk centerline).
-    streetlight_xs = [nc_x - 10, nc_x + 14, ks_x - 10, ks_x + 14,
-                       cc_x - 6, cc_x + 10]
+    streetlight_xs = [nc_x - 8, nc_x + 8,
+                       ks_x - 14, ks_x + 14,
+                       dn_x - 8, dn_x + 8,
+                       cc_x + 6]
     for k, slx in enumerate(streetlight_xs):
         sly = walk_strip_y - 1.5       # south of the sidewalk
         slz = mesh_z(slx, sly)
@@ -3862,8 +4322,9 @@ def build_commercial_cluster():
     # someone sitting on the bench is looking into the shop window.
     COL_BENCH_WOOD = (0.42, 0.30, 0.20, 1.0)
     COL_BENCH_LEG  = (0.18, 0.18, 0.18, 1.0)
-    for tag, store_x, store_y in (("KwikStop", ks_x, ks_y),
+    for tag, store_x, store_y in (("KwikShop", ks_x, ks_y),
                                     ("NexCorpGG", nc_x, nc_y),
+                                    ("Diner", dn_x, dn_y),
                                     ("CosmicComics", cc_x, cc_y)):
         bench_y = walk_strip_y - 0.20      # very slightly south of centerline
         bz = mesh_z(store_x, bench_y)
