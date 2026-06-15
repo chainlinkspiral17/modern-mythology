@@ -360,20 +360,23 @@ ROAD_CORRIDORS = [
         (260, -10, +3.0),   # Horizon Dr
     ], 5.0, 16.0),
 
-    # East Commercial north branch
+    # East Commercial collector — at x=440 (the EastComm west edge)
+    # so the buildings centered at x=480 (Halsey, Self-Storage,
+    # Auto dealership, Big-Box) sit fully east of the road with
+    # ~40 m of parking-lot frontage between road and building. The
+    # original collector at x=480 had every EastComm building
+    # sitting INSIDE the road quad.
     ("ECommN", [
-        (440,   0, +5.0),
-        (480,   0, +5.0),
-        (480,  60, +5.0),
-        (480, 100, +5.0),
+        (438,   0, +5.0),
+        (440,  20, +5.0),
+        (440,  60, +5.0),
+        (440, 100, +5.0),
     ], 5.0, 16.0),
-
-    # East Commercial south branch
     ("ECommS", [
-        (480,    0, +5.0),
-        (480, -100, +5.0),
-        (480, -180, +5.0),
-        (480, -260, +5.0),
+        (440,    0, +5.0),
+        (440, -100, +5.0),
+        (440, -180, +5.0),
+        (440, -260, +5.0),
     ], 5.0, 16.0),
 
     # SCRATCH link (WestComm)
