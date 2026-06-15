@@ -299,19 +299,24 @@ ROAD_CORRIDORS = [
         (260,  -10,  +2.5),  # Horizon Dr east approach
     ], 5.0, 16.0),
 
-    # West Estates → Horizon Dr west
+    # West Estates → Horizon Dr west. Endpoint at HorizonDr CL
+    # y=-17.5 (lerp between (-460,-20) and (-420,-15) at x=-440).
     ("WELink", [
         (-440, -180, -3.0),  # WestEstates
         (-440, -100, -2.5),
-        (-440,  -25, -2.0),  # at Horizon Dr WestComm
+        (-440,  -60, -2.2),
+        (-440,  -17, -2.0),  # at Horizon Dr WestComm CL
     ], 5.0, 16.0),
 
-    # North Ranch → Harmony Blvd
+    # North Ranch → Harmony Blvd. The old endpoint (10, 130) was
+    # 50m WEST of HarmonyBlvd's centerline at that y (x=60), so
+    # the link never actually reached the arterial. Extended.
     ("NRLink", [
         (-320, 100, +12.0),  # NorthRanch
         (-200, 100, +10.0),
-        (-100, 100, +5.0),
-        (  10, 130, +1.0),   # joins Harmony Blvd at HarmonyPark
+        (-100, 100,  +5.0),
+        (  20, 120,  +1.5),
+        (  60, 130,  +1.0),   # at HarmonyBlvd centerline
     ], 5.0, 16.0),
 
     # East CDS → Horizon Dr east
@@ -385,14 +390,15 @@ ROAD_CORRIDORS = [
 
     # NexCorp HQ driveway off Harmony Blvd. Per civil-engineering
     # standard the gradient should be at most ~10% so the approach
-    # ramp climbs the +6 (at HarmonyBlvd) to +14 (at NexCorpHQPad
-    # south edge) over ~80m, giving 10% slope.
+    # ramp climbs the +3 (at HarmonyBlvd CL y=170) to +14 (at
+    # NexCorpHQPad south edge) over ~85m, giving ~13% slope.
+    # Start point on HarmonyBlvd centerline at y=170.
     ("NXHQLink", [
-        (  60,  170, +3.5),   # off HarmonyBlvd
-        (  40,  195, +5.5),
-        (  20,  220, +8.5),
-        (  10,  240, +11.0),
-        (   0,  255, +14.0),  # at NexCorpHQPad south edge
+        (  44, 170, +3.0),   # on HarmonyBlvd centerline
+        (  35, 195, +5.5),
+        (  22, 220, +8.5),
+        (  12, 240, +11.0),
+        (   0, 255, +14.0),  # at NexCorpHQPad south edge
     ], 5.0, 14.0),
 
     # ── NEIGHBORHOOD STREETS — residential collectors sitting on
