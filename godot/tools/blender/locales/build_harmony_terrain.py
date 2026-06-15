@@ -2977,6 +2977,89 @@ def build_commercial_cluster():
                     (1.6, 0.15, 0.6),
                     (0.18, 0.18, 0.22, 1.0))
 
+    # ── PARKING LOTS in front of each store · asphalt slab with
+    # painted parking-space stripes. Each slab is sized to fit
+    # 6 spaces and follows mesh_z corners so it doesn't float
+    # over the South Commercial slope.
+    COL_ASPHALT = (0.22, 0.22, 0.24, 1.0)
+    COL_STRIPE  = (0.92, 0.90, 0.84, 1.0)
+    for tag, store_x, store_y in (
+        ("KwikStop", ks_x, ks_y),
+        ("NexCorpGG", nc_x, nc_y),
+    ):
+        lot_cx = store_x
+        # Lot starts ~7m south of store front (depth/2 = 5) +
+        # leaves 2m sidewalk between glass and asphalt.
+        lot_w = 22.0
+        lot_d = 14.0
+        if tag == "NexCorpGG":
+            # NexCorp's lot wraps AROUND the pump canopy, so push
+            # the lot further south of the canopy footprint.
+            lot_cy = store_y - 24.0
+            lot_d = 10.0
+        else:
+            lot_cy = store_y - 13.0
+        # Four-vert slab so corners track terrain
+        hw = lot_w / 2; hd = lot_d / 2
+        lv = []
+        for (lx, ly) in [(lot_cx - hw, lot_cy - hd),
+                          (lot_cx + hw, lot_cy - hd),
+                          (lot_cx + hw, lot_cy + hd),
+                          (lot_cx - hw, lot_cy + hd)]:
+            lv.append((lx, ly, mesh_z(lx, ly) + 0.04))
+        _finalize_mesh(f"{tag}_Lot", lv, [[0, 1, 2, 3]], COL_ASPHALT)
+        # 6 parking stripes (5 lines defining 6 bays) running N-S
+        n_lines = 5
+        for k in range(n_lines):
+            sx_line = lot_cx - lot_w / 2 + (k + 1) * (lot_w / 6)
+            sv = []
+            for (lx, ly) in [(sx_line - 0.05, lot_cy - hd + 0.3),
+                              (sx_line + 0.05, lot_cy - hd + 0.3),
+                              (sx_line + 0.05, lot_cy + hd - 0.3),
+                              (sx_line - 0.05, lot_cy + hd - 0.3)]:
+                sv.append((lx, ly, mesh_z(lx, ly) + 0.055))
+            _finalize_mesh(f"{tag}_LotStripe_{k}", sv, [[0, 1, 2, 3]],
+                           COL_STRIPE)
+        # Curb stop blocks at the north edge (between lot + sidewalk)
+        for k in range(6):
+            cs_x = lot_cx - lot_w / 2 + (k + 0.5) * (lot_w / 6)
+            cs_y = lot_cy + hd - 0.5
+            cs_z = mesh_z(cs_x, cs_y)
+            _make_box_local(f"{tag}_CurbStop_{k}",
+                            (cs_x, cs_y, cs_z + 0.10),
+                            (1.5, 0.25, 0.20),
+                            (0.78, 0.74, 0.66, 1.0))
+
+    # ── SIDEWALK from spawn area down to the commercial strip
+    # Player spawns at (0, 30, -380) facing south; the cluster sits
+    # at y ≈ -360. Draw a continuous concrete sidewalk along the
+    # north edge of both stores so the player has a clear approach.
+    COL_SIDEWALK = (0.78, 0.76, 0.72, 1.0)
+    walk_w = 2.5
+    walk_pts = [
+        (0.0,   -340.0),     # spawn-side
+        (0.0,   -350.0),     # entering commercial strip
+        (ks_x,  ks_y + 6.5), # in front of Kwik Stop
+        ((ks_x + nc_x) / 2, ks_y + 6.5),  # between stores
+        (nc_x,  nc_y + 6.5), # in front of NexCorp
+    ]
+    hw = walk_w / 2
+    for i in range(len(walk_pts) - 1):
+        x0, y0 = walk_pts[i]
+        x1, y1 = walk_pts[i + 1]
+        dxs = x1 - x0; dys = y1 - y0
+        seg_len = math.hypot(dxs, dys) or 1.0
+        perp_x = -dys / seg_len
+        perp_y =  dxs / seg_len
+        pv = []
+        for (px, py) in [(x0 - perp_x * hw, y0 - perp_y * hw),
+                         (x1 - perp_x * hw, y1 - perp_y * hw),
+                         (x1 + perp_x * hw, y1 + perp_y * hw),
+                         (x0 + perp_x * hw, y0 + perp_y * hw)]:
+            pv.append((px, py, mesh_z(px, py) + 0.05))
+        _finalize_mesh(f"CommSidewalk_{i}", pv, [[0, 1, 2, 3]],
+                       COL_SIDEWALK)
+
 
 def _make_sphere_low_local(name, center, radius, color,
                            rings=3, segments=8):
