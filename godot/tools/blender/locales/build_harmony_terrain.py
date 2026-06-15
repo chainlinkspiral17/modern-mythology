@@ -8696,6 +8696,45 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                           car_cx, car_cy, ground_z,
                           car_color, facing=car_face)
 
+    # ── CURBSIDE TRASH BINS · ~40% of houses are on trash day.
+    # Black trash + blue recycling, side by side at the end of
+    # the driveway. Tiny detail with huge "lived-in" payoff —
+    # nothing says "real neighborhood" like garbage day.
+    seed_trash = (int(cx * 13) + int(cy * 19)) % 100
+    if seed_trash < 40:
+        col_trash_black = (0.15, 0.15, 0.16, 1.0)
+        col_trash_blue = (0.18, 0.32, 0.62, 1.0)
+        col_lid_dark = (0.10, 0.10, 0.12, 1.0)
+        # Place bins at the road end of the driveway. The driveway
+        # extends fx*(some_distance) from the garage to a curb_x.
+        # Without knowing curb_x here, anchor bins at the corner
+        # of the house's NON-garage side (so they're out of the way
+        # of the parked car and visible from the road).
+        bin_anchor_x = gar_cx + fx * (gar_d / 2 + 2.5)
+        bin_anchor_y = gar_cy + fy * (gar_d / 2 + 2.5)
+        # Offset to the side so 2 bins fit
+        for sgn, col, tag in ((-0.55, col_trash_black, "Trash"),
+                               (0.55, col_trash_blue, "Recycle")):
+            bin_x = bin_anchor_x + perp_x * sgn
+            bin_y = bin_anchor_y + perp_y * sgn
+            # Bin body (tall rectangular box, slight taper faked
+            # as a single uniform box at primitive scale)
+            _make_box_local(f"{name}_{tag}_Body",
+                            (bin_x, bin_y, ground_z + 0.55),
+                            (0.50, 0.62, 1.10), col)
+            # Lid (slightly wider)
+            _make_box_local(f"{name}_{tag}_Lid",
+                            (bin_x, bin_y, ground_z + 1.15),
+                            (0.54, 0.66, 0.08), col_lid_dark)
+            # Wheels at the back base
+            for sgn_w in (-1, 1):
+                _make_cyl_local(f"{name}_{tag}_Wheel_{sgn_w:+d}",
+                                (bin_x + sgn_w * 0.20,
+                                 bin_y - perp_y * 0.20 + fy * 0.0,
+                                 ground_z + 0.08),
+                                0.07, 0.10,
+                                col_lid_dark, segments=4)
+
 
 def _build_driveway(name, house_cx, house_cy, ground_z, facing,
                      curb_x, curb_y, color=(0.18, 0.18, 0.20, 1.0)):
