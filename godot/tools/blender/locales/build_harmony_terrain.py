@@ -2815,16 +2815,21 @@ def _build_convenience_store(name_prefix, cx, cy, ground_z,
                     (cx, cy, ground_z + height + 0.10),
                     (width + 0.4, depth + 0.4, 0.20), col_roof)
 
-    # Roof-mounted illuminated sign panel (faces south)
+    # Roof-mounted illuminated sign panel (faces south).
+    # Pushed 30 cm south of the roof's south edge so the sign
+    # sits clear of the roof slab (was straddling it, half buried
+    # in the roof). Bottom of the sign rests level with the roof
+    # top so the sign reads as "mounted on the roof's south edge."
     sign_w = width * 0.7
     sign_h = 0.9
+    sign_y = cy - depth / 2 - 0.36
     _make_box_local(f"{name_prefix}_SignPanel",
-                    (cx, cy - depth / 2 - 0.20,
-                     ground_z + height + 0.60),
+                    (cx, sign_y,
+                     ground_z + height + 0.20 + sign_h / 2),
                     (sign_w, 0.12, sign_h), col_sign)
     _make_box_local(f"{name_prefix}_SignTrim",
-                    (cx, cy - depth / 2 - 0.20,
-                     ground_z + height + 1.10),
+                    (cx, sign_y,
+                     ground_z + height + 0.20 + sign_h + 0.05),
                     (sign_w + 0.10, 0.14, 0.10), col_trim)
 
     # ── INTERIOR ────────────────────────────────────────────────
@@ -2856,10 +2861,11 @@ def _build_convenience_store(name_prefix, cx, cy, ground_z,
                     (counter_x, counter_y,
                      ground_z + counter_h / 2),
                     (counter_w, counter_d, counter_h), col_counter)
-    # Cash register on counter
+    # Cash register on counter — bottom flush with counter top.
+    # Center z = counter_top + half register height.
     _make_box_local(f"{name_prefix}_Register",
                     (counter_x - 0.7, counter_y,
-                     ground_z + counter_h + 0.18),
+                     ground_z + counter_h + 0.15),
                     (0.55, 0.40, 0.30), col_register)
     # Cigarette/lotto rack behind the counter (vertical board)
     _make_box_local(f"{name_prefix}_BackBoard",
@@ -2953,14 +2959,17 @@ def _build_cosmic_comics(cx, cy, ground_z):
     _make_box_local(f"{name_prefix}_RoofTrim",
                     (cx, cy - depth / 2 - 0.08, ground_z + height - 0.05),
                     (width + 0.4, 0.10, 0.18), col_trim)
-    # Signage panel
+    # Signage panel — pushed clear of the roof south edge so it
+    # doesn't straddle the roof slab.
+    sign_h_local = 0.8
+    sign_y = cy - depth / 2 - 0.36
     _make_box_local(f"{name_prefix}_SignPanel",
-                    (cx, cy - depth / 2 - 0.20,
-                     ground_z + height + 0.55),
-                    (width * 0.7, 0.12, 0.8), col_sign)
+                    (cx, sign_y,
+                     ground_z + height + 0.20 + sign_h_local / 2),
+                    (width * 0.7, 0.12, sign_h_local), col_sign)
     _make_box_local(f"{name_prefix}_SignTrim",
-                    (cx, cy - depth / 2 - 0.20,
-                     ground_z + height + 0.99),
+                    (cx, sign_y,
+                     ground_z + height + 0.20 + sign_h_local + 0.05),
                     (width * 0.7 + 0.10, 0.14, 0.10), col_trim)
 
     # ── INTERIOR · two big comic-rack shelves running E-W and the
