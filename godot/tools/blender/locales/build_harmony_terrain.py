@@ -6907,6 +6907,118 @@ def build_commercial_cluster():
                     (1.6, 0.15, 0.6),
                     (0.18, 0.18, 0.22, 1.0))
 
+    # ── CAR WASH BUILDING at the rear of NexCorp Gas & Go ──────
+    # Canon: "It also, notably, has a car wash in the rear — the
+    # kind of car wash with the full automated tunnel" (Vol 6 Ch 1,
+    # the 15:11 transaction scene). Long tunnel building running
+    # E-W behind the store + entry sign at the north entrance.
+    cw_cx = nc_x + 8.0          # east of the store
+    cw_cy = nc_y + 10.0         # north of the store
+    cw_w, cw_d, cw_h = 16.0, 6.5, 4.0
+    cw_z = nc_z
+    COL_CW_WALL = (0.82, 0.80, 0.76, 1.0)
+    COL_CW_ROOF = (0.32, 0.42, 0.55, 1.0)   # blue NexCorp roof
+    COL_CW_TRIM = (0.32, 0.55, 0.78, 1.0)   # NexCorp blue
+    COL_CW_DOOR = (0.42, 0.42, 0.45, 1.0)
+    # Walls (N, S solid; tunnel openings on E and W)
+    _make_box_local("NexCorpGG_CarWash_WallN",
+                    (cw_cx, cw_cy + cw_d / 2 - 0.10, cw_z + cw_h / 2),
+                    (cw_w, 0.20, cw_h), COL_CW_WALL)
+    _make_box_local("NexCorpGG_CarWash_WallS",
+                    (cw_cx, cw_cy - cw_d / 2 + 0.10, cw_z + cw_h / 2),
+                    (cw_w, 0.20, cw_h), COL_CW_WALL)
+    # End walls partial (tunnel openings 3.6m wide x 3.0m tall)
+    open_w = 3.6
+    open_h = 3.0
+    side_w_remain = (cw_d - open_w) / 2
+    for sgn_x, tag in ((-1, "W"), (1, "E")):
+        wx = cw_cx + sgn_x * (cw_w / 2 - 0.10)
+        # Bottom corners (split around tunnel opening)
+        for sgn_y in (-1, 1):
+            _make_box_local(
+                f"NexCorpGG_CarWash_Wall{tag}_Side_{sgn_y:+d}",
+                (wx, cw_cy + sgn_y * (cw_d / 2 - side_w_remain / 2),
+                 cw_z + cw_h / 2),
+                (0.20, side_w_remain, cw_h), COL_CW_WALL)
+        # Top lintel above the opening
+        _make_box_local(
+            f"NexCorpGG_CarWash_Wall{tag}_Lintel",
+            (wx, cw_cy, cw_z + open_h + (cw_h - open_h) / 2),
+            (0.20, open_w, cw_h - open_h), COL_CW_WALL)
+    # Roof
+    _make_box_local("NexCorpGG_CarWash_Roof",
+                    (cw_cx, cw_cy, cw_z + cw_h + 0.10),
+                    (cw_w + 0.4, cw_d + 0.4, 0.20), COL_CW_ROOF)
+    # NexCorp blue trim band at top of walls
+    for sgn_y, tag_y in ((-1, "S"), (1, "N")):
+        _make_box_local(
+            f"NexCorpGG_CarWash_TrimBand_{tag_y}",
+            (cw_cx, cw_cy + sgn_y * (cw_d / 2 - 0.05),
+             cw_z + cw_h - 0.30),
+            (cw_w + 0.4, 0.10, 0.45), COL_CW_TRIM)
+    # Entry sign at the WEST opening · "AUTOMATIC CAR WASH $5"
+    _make_box_local("NexCorpGG_CarWash_EntrySign",
+                    (cw_cx - cw_w / 2 - 0.30, cw_cy, cw_z + cw_h + 0.65),
+                    (0.20, 2.40, 0.80), COL_CW_TRIM)
+    # Sign text strip (white)
+    _make_box_local("NexCorpGG_CarWash_EntrySignText",
+                    (cw_cx - cw_w / 2 - 0.32, cw_cy, cw_z + cw_h + 0.65),
+                    (0.06, 2.20, 0.40),
+                    (0.95, 0.94, 0.90, 1.0))
+    # Arrow into the wash on the west wall (yellow arrow)
+    _make_box_local("NexCorpGG_CarWash_EntryArrow",
+                    (cw_cx - cw_w / 2 + 0.5, cw_cy, cw_z + 1.5),
+                    (0.50, 0.04, 0.30),
+                    (0.95, 0.85, 0.30, 1.0))
+    # Visible interior · rotating brush silhouette suggested by
+    # 2 vertical cylinders in the tunnel
+    for k, ix in enumerate((-3.5, 3.5)):
+        _make_cyl_local(f"NexCorpGG_CarWash_Brush_{k}",
+                        (cw_cx + ix, cw_cy, cw_z + cw_h / 2),
+                        0.42, cw_h - 0.5,
+                        (0.55, 0.32, 0.78, 1.0), segments=8)
+    # Concrete drainage pad in front of the WEST entry (curb to
+    # catch runoff)
+    _make_box_local("NexCorpGG_CarWash_DrainPad",
+                    (cw_cx - cw_w / 2 - 2.0, cw_cy, cw_z + 0.04),
+                    (3.6, cw_d + 0.6, 0.08),
+                    (0.72, 0.70, 0.66, 1.0))
+    # Yellow line painted on drain pad (DO NOT ENTER FROM EAST)
+    _make_box_local("NexCorpGG_CarWash_DrainLineYellow",
+                    (cw_cx - cw_w / 2 - 0.8, cw_cy, cw_z + 0.06),
+                    (0.10, cw_d, 0.01),
+                    (0.95, 0.85, 0.30, 1.0))
+
+    # ── ADDITIONAL FUEL ISLANDS · canon says NexCorp Gas & Go has
+    # 8 PUMPS (4 islands x 2 sides). Original had 2 islands.
+    # Adding 2 more islands further south of the canopy.
+    for k_extra, ix_extra in enumerate((-2.6, 2.6)):
+        ec_x = can_cx + ix_extra
+        ec_y = can_cy - can_d - 1.5    # 1.5m south of existing canopy
+        # Island pad
+        _make_box_local(f"NexCorpGG_PumpPadExtra_{k_extra}",
+                        (ec_x, ec_y, nc_z + PAD_H / 2),
+                        (1.8, 4.0, PAD_H),
+                        (0.72, 0.70, 0.66, 1.0))
+        # Pump body
+        _make_box_local(f"NexCorpGG_PumpBodyExtra_{k_extra}",
+                        (ec_x, ec_y,
+                         nc_z + PAD_H + PUMP_H / 2),
+                        (0.80, 0.40, PUMP_H),
+                        COL_PUMP_BODY)
+        # Pump display
+        _make_box_local(f"NexCorpGG_PumpDisplayExtra_{k_extra}",
+                        (ec_x, ec_y,
+                         nc_z + PAD_H + PUMP_H + DISPLAY_H / 2),
+                        (0.70, 0.42, DISPLAY_H),
+                        (0.20, 0.22, 0.28, 1.0))
+        for sgn in (-1, 1):
+            _make_cyl_local(
+                f"NexCorpGG_PumpHoseExtra_{k_extra}_{sgn:+d}",
+                (ec_x, ec_y + sgn * 0.22,
+                 nc_z + PAD_H + PUMP_H * 0.55),
+                0.04, 0.30, COL_PUMP_HOSE, segments=4)
+
     # ── PARKING LOTS in front of each store. Per user feedback
     # (2026-06-15): cars parked INSIDE stalls (not loose on the
     # asphalt); handicap stalls closest to the building (min 1-2
