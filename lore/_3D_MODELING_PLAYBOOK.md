@@ -1018,6 +1018,65 @@ Summary (currently DEFERRED — rough layout first):
   bowl. Empirical disc sizing (probe outward, stop when terrain
   meets water_z) handles this correctly for any flatness.
 
+### 2026-06-15 · reference-locale polish pattern (Kwik Stop)
+
+User asked for "quality, polish sculpting and retail passes at
+the qwik stop. this will become a reference locale for this
+zone." The build that resulted from ~8 passes:
+
+- **2 long E-W aisles** running across the bay with stacked
+  product boxes in varied chip-bag palettes (top + middle
+  shelves both sides)
+- **West-wall fixture column** (south→north): slushie machine,
+  coffee station (brewer + 2 carafes + cream/sugar caddy + cup
+  stack), roller grill (4 rollers + 4 hot dogs + warm-red glow)
+- **Back-wall cooler**: 3 glass doors with chrome handles +
+  4×4 grid of visible cans through each door
+- **Counter (NE corner)** with: cash register, scanner, lottery
+  scratch-ticket case, tip jar, ID-check sign, receipt printer
+  + paper, pinpad, counter-top
+- **Backboard** with cigarette cartons in alternating colours +
+  3 horizontal shelves
+- **Impulse candy rack** on the customer side of the counter +
+  6 candy boxes
+- **2 aisle endcaps** at each aisle end (4 total) for promo
+  stacks
+- **Restocking cardboard-box stack** in NW corner
+- **CAUTION WET FLOOR** yellow A-frame
+- **Entry zone**: floor mat, wire-basket stack, magazine rack
+  + 6 magazines, ceiling fluorescents (4)
+- **EMPLOYEES ONLY** back-wall door + plaque
+- **5 partition-wall posters** in 4 brand-poster colours
+- **Door entry bell** on the storefront door interior
+- **Exterior**: OPEN neon sign hung in the window, 4 window
+  decals (LOTTERY / ATM / ICE / EBT), SE security camera w/
+  red LED, outdoor ATM kiosk w/ screen + card slot + sign,
+  3 gumball/sticker machines, hours plaque on door jamb,
+  promo banner under the awning
+- **3 customer NPCs**: impulse-rack shopper, slushie machine
+  customer, south-aisle browser (plus Sam at register)
+
+Rules for any other reference locale built going forward:
+
+- **Build the SHELL first** (walls + roof + slab + sign frame +
+  door + welcome mat). Then layer atmosphere.
+- **Establish FIXTURE LANES** along walls so they don't clash
+  with the counter + aisles. Wall fixtures along the west
+  partition (slushie/coffee/grill) face EAST into the bay.
+  Back-wall fixtures face SOUTH. Counter sits in the NE corner
+  along the back wall.
+- **Aisles run E-W** for an N-S-axis bay (perpendicular to the
+  entry direction) so the player walking in sees product
+  fronts, not aisle ends.
+- **Sign panels are THIN along the face direction.** For a
+  south-facing sign, build the panel thin along Blender -Y;
+  LocaleSetup wires `Vector3(0, 0, 1)` face_normal (Blender
+  -Y → Godot +Z) and the autosizer fits the text inside the
+  aabb on the X-Z face.
+- **NPC density**: 1 clerk at counter + 2-3 customers reading
+  natural (impulse rack, fixture station, aisle browser). More
+  NPCs cross the "set" threshold without adding life.
+
 ### TEMPLATE for next session
 
 ```markdown
