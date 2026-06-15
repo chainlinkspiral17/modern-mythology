@@ -9802,6 +9802,7 @@ def build_connector_roads():
     curb_w = 0.4
     COL_ROAD = (0.22, 0.22, 0.24, 1.0)
     COL_CURB = (0.78, 0.76, 0.70, 1.0)
+    COL_DASH = (0.92, 0.90, 0.84, 1.0)
     hw = road_w / 2
 
     def _emit(pts, prefix):
@@ -9832,6 +9833,32 @@ def build_connector_roads():
                     cv.append((rx, ry, mesh_z(rx, ry) + 0.10))
                 _finalize_mesh(f"{prefix}Curb_{i}_{sgn:+d}", cv,
                                 [[0, 1, 2, 3]], COL_CURB)
+            # 2 dashed white centerline marks per segment (residential
+            # collectors use white dash, not yellow — yellow is
+            # arterial-only per US convention for divided-from-
+            # undivided).
+            if seg_len > 5.0:
+                for d_idx in range(2):
+                    t = (d_idx + 0.5) / 2
+                    mid_x = x0 + dxs * t
+                    mid_y = y0 + dys * t
+                    dash_l = 2.0
+                    ddx = dxs / seg_len * dash_l / 2
+                    ddy = dys / seg_len * dash_l / 2
+                    dv = []
+                    for (rx, ry) in [
+                        (mid_x - ddx - perp_x * 0.07,
+                         mid_y - ddy - perp_y * 0.07),
+                        (mid_x + ddx - perp_x * 0.07,
+                         mid_y + ddy - perp_y * 0.07),
+                        (mid_x + ddx + perp_x * 0.07,
+                         mid_y + ddy + perp_y * 0.07),
+                        (mid_x - ddx + perp_x * 0.07,
+                         mid_y - ddy + perp_y * 0.07),
+                    ]:
+                        dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
+                    _finalize_mesh(f"{prefix}Dash_{i}_{d_idx}", dv,
+                                    [[0, 1, 2, 3]], COL_DASH)
 
     # Pull polylines from ROAD_CORRIDORS and smooth with Catmull-Rom
     # so connector turns read as curves, not 90° kinks. Each link
