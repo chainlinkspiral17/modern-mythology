@@ -1318,9 +1318,15 @@ def build_bridges():
                 ux = rdx / rlen; uy = rdy / rlen
                 # Road perpendicular (across-road direction)
                 px = -uy; py = ux
-                # Deck dimensions
+                # Deck dimensions. The deck should be slightly wider
+                # than the actual road quad (the road in
+                # build_district_arterials uses road_w=8, so the road
+                # quad is 8m wide). With curbs + parapets the deck
+                # should span ~11m. Less than 2*full_hw because the
+                # full_hw includes shoulder margin not occupied by
+                # asphalt.
                 deck_along = 18.0
-                deck_across = 2.0 * full_hw + 2.0   # bridge slightly wider than road
+                deck_across = min(2.0 * full_hw + 2.0, 12.0)
                 # Deck quad — flat at deck_z
                 half_a = deck_along / 2
                 half_b = deck_across / 2
