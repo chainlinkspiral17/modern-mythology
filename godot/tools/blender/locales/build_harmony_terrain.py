@@ -7665,6 +7665,13 @@ def build_connector_roads():
     # East CDS → Horizon Dr east end
     _emit([(200, 140), (200, 80), (220, 20), (260, -10)],
            "ECDSLink_")
+    # East Comm collector road — north-south through EastComm,
+    # touching the dept store + Halsey + auto-dealership +
+    # self-storage. Branches off the east end of Horizon Dr.
+    _emit([(440, 0), (480, 0), (480, 60), (480, 100)],
+           "ECommN_")
+    _emit([(480, 0), (480, -100), (480, -180), (480, -260)],
+           "ECommS_")
     # Country Club south driveway → Harmony Blvd top
     _emit([(0, 360), (0, 340)], "CCLink_")
 
