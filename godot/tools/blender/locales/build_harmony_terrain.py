@@ -6796,6 +6796,61 @@ def build_elementary_school():
                     (0.85, 0.20, 0.18, 1.0))
 
 
+def build_hs_stadium_overflow_lot():
+    """Game-day overflow lot south of the HS football field. A
+    big rectangular asphalt slab + parallel painted stripes —
+    intentionally NO cars (it's the overflow lot, empty until
+    a Friday-night game). Two ticket-booth shacks at the
+    pedestrian entry from the field's south end zone.
+    """
+    cx, cy = 340.0, -130.0
+    ground_z = mesh_z(cx, cy)
+    lot_w = 80.0
+    lot_d = 20.0
+    hw_lot = lot_w / 2; hd_lot = lot_d / 2
+    sv = []
+    for (lx, ly) in [(cx - hw_lot, cy - hd_lot),
+                     (cx + hw_lot, cy - hd_lot),
+                     (cx + hw_lot, cy + hd_lot),
+                     (cx - hw_lot, cy + hd_lot)]:
+        sv.append((lx, ly, mesh_z(lx, ly) + 0.04))
+    _finalize_mesh("HS_OverflowLot", sv, [[0, 1, 2, 3]],
+                    (0.22, 0.22, 0.24, 1.0))
+    # Paint 26 stalls (perpendicular to building) in 2 rows
+    n_stalls_total = 26
+    for k in range(n_stalls_total - 1):
+        sx = cx - hw_lot + (k + 1) * (lot_w / n_stalls_total)
+        cv = []
+        for (lx, ly) in [(sx - 0.05, cy - hd_lot + 0.3),
+                          (sx + 0.05, cy - hd_lot + 0.3),
+                          (sx + 0.05, cy + hd_lot - 0.3),
+                          (sx - 0.05, cy + hd_lot - 0.3)]:
+            cv.append((lx, ly, mesh_z(lx, ly) + 0.055))
+        _finalize_mesh(f"HS_OverflowStripe_{k}", cv,
+                        [[0, 1, 2, 3]], (0.92, 0.90, 0.84, 1.0))
+    # Ticket booths flanking the pedestrian entry (north side
+    # of the lot, where the field is just north)
+    for sgn, tag in ((-1, 'L'), (1, 'R')):
+        tx = cx + sgn * 5.0
+        ty = cy + hd_lot + 2.0
+        tz = mesh_z(tx, ty)
+        # Body
+        _make_box_local(f"HS_TicketBooth_{tag}_Body",
+                        (tx, ty, tz + 1.4),
+                        (2.4, 2.0, 2.8),
+                        (0.85, 0.20, 0.18, 1.0))   # red
+        # Roof (slightly overhanging)
+        _make_box_local(f"HS_TicketBooth_{tag}_Roof",
+                        (tx, ty, tz + 2.95),
+                        (2.8, 2.4, 0.20),
+                        (0.32, 0.30, 0.28, 1.0))
+        # Service window on the south face
+        _make_box_local(f"HS_TicketBooth_{tag}_Window",
+                        (tx, ty - 1.02, tz + 1.5),
+                        (1.4, 0.04, 0.80),
+                        (0.32, 0.42, 0.55, 1.0))
+
+
 def build_ot_park_access_road():
     """Short access road from Horizon Drive (at ~ (-260, -15))
     north to the Oliver Tree Memorial Park south entry (around
@@ -9092,6 +9147,7 @@ def main():
     build_community_landmarks()
     build_connector_roads()
     build_ot_park_access_road()
+    build_hs_stadium_overflow_lot()
     build_elementary_school()
     build_truck_stop()
     build_east_commercial_box()
