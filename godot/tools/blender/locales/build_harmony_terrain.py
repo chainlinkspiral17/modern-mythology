@@ -6140,6 +6140,80 @@ def build_church_cemetery():
                     (2.5, 0.20, 0.30), col_dark)
 
 
+def build_crosswalks_and_stops():
+    """Painted white zebra crosswalks + red stop signs at the
+    major intersections — Harmony Blvd × Horizon Dr (the big
+    central junction), the elementary-school approach, and the
+    high-school field entry on Horizon Dr.
+    """
+    COL_WHITE = (0.92, 0.90, 0.84, 1.0)
+    COL_RED = (0.85, 0.20, 0.18, 1.0)
+    COL_POLE = (0.62, 0.62, 0.64, 1.0)
+
+    def _zebra(cx, cy, span_axis, length, prefix):
+        """4-stripe zebra centered at (cx, cy). span_axis = 'x'
+        means stripes run along Y direction (perpendicular to
+        an east-west road, where the pedestrian crosses Y)."""
+        n_stripes = 5
+        stripe_w = 0.45
+        gap = 0.45
+        total = n_stripes * stripe_w + (n_stripes - 1) * gap
+        for k in range(n_stripes):
+            off = -total / 2 + stripe_w / 2 + k * (stripe_w + gap)
+            if span_axis == 'x':
+                # Stripe centered at cy, off-set in x, runs Y direction
+                _make_box_local(f"{prefix}_Stripe_{k}",
+                                (cx + off, cy,
+                                 mesh_z(cx + off, cy) + 0.055),
+                                (stripe_w, length, 0.01), COL_WHITE)
+            else:
+                _make_box_local(f"{prefix}_Stripe_{k}",
+                                (cx, cy + off,
+                                 mesh_z(cx, cy + off) + 0.055),
+                                (length, stripe_w, 0.01), COL_WHITE)
+
+    def _stop_sign(name, x, y, face_dir):
+        z = mesh_z(x, y)
+        _make_cyl_local(f"{name}_Pole",
+                        (x, y, z + 1.1),
+                        0.04, 2.2, COL_POLE, segments=4)
+        # face_dir 'X' → thin axis X, faces ±X; 'Y' → thin Y
+        if face_dir == 'X':
+            sign_size = (0.04, 0.50, 0.50)
+        else:
+            sign_size = (0.50, 0.04, 0.50)
+        _make_box_local(f"{name}_Face",
+                        (x, y, z + 2.2),
+                        sign_size, COL_RED)
+
+    # Big junction: Harmony Blvd × Horizon Dr around (60, -20)
+    # Harmony runs N-S here (vertical road), Horizon E-W
+    # Need 2 crosswalks: one across Harmony (pedestrians going E-W)
+    # and one across Horizon (pedestrians going N-S)
+    _zebra(60, -28, 'y', 8.0, "X_BigJct_AcrossH")    # across Horizon
+    _zebra(50, -20, 'x', 8.0, "X_BigJct_AcrossB")    # across Harmony
+    # Stop signs at the 4 approaches
+    _stop_sign("X_BigJct_S_StopN", 64, -32, 'Y')
+    _stop_sign("X_BigJct_S_StopS", 56, -8,  'Y')
+    _stop_sign("X_BigJct_S_StopE", 70, -16, 'X')
+    _stop_sign("X_BigJct_S_StopW", 50, -24, 'X')
+
+    # Elementary school approach on Harmony Blvd around (30, 200)
+    _zebra(30, 195, 'x', 8.0, "X_ESC")
+    _stop_sign("X_ESC_StopE", 36, 192, 'X')
+    _stop_sign("X_ESC_StopW", 24, 198, 'X')
+
+    # High-school entrance on Horizon Drive near (320, -5)
+    _zebra(320, -5, 'y', 8.0, "X_HS")
+    _stop_sign("X_HS_StopN", 326, -10, 'Y')
+    _stop_sign("X_HS_StopS", 314, 0,   'Y')
+
+    # West Estates approach on Horizon Drive around (-440, -20)
+    _zebra(-430, -20, 'x', 8.0, "X_WE")
+    _stop_sign("X_WE_StopE", -424, -24, 'X')
+    _stop_sign("X_WE_StopW", -436, -16, 'X')
+
+
 def build_arterial_sidewalks():
     """Concrete sidewalks on both sides of Harmony Blvd and
     Horizon Drive. Each sidewalk is a 2.4 m wide concrete band
@@ -8772,6 +8846,7 @@ def main():
     build_hospital()
     build_drive_in_theatre()
     build_arterial_sidewalks()
+    build_crosswalks_and_stops()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
