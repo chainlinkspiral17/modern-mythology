@@ -7747,71 +7747,61 @@ def build_commercial_cluster():
     # the silhouette reads cleanly from the sidewalk. Outfit /
     # palette varies per character so the cast is distinguishable
     # at a glance.
+    # Skin-tone palette for character diversity
+    SKIN_LIGHT  = (0.92, 0.78, 0.62, 1.0)   # light/peach
+    SKIN_MED    = (0.78, 0.58, 0.42, 1.0)   # medium/tan
+    SKIN_DARK   = (0.55, 0.38, 0.28, 1.0)   # dark brown
+    SKIN_OLIVE  = (0.82, 0.68, 0.48, 1.0)   # olive
+
     chapter_one_cast = [
-        # (name, x, y, scale, hair, jacket, pants, pose)
-        # Skip — divorced 39, vapes, NexCorp polo + ballcap. Hands
-        # on the gas-station counter looking at his phone.
+        # (name, x, y, scale, hair, jacket, pants, pose, skin, beard)
         ("Skip",     nc_x + 4.0, nc_y + 4.3, 1.0, "cap",
-            (0.32, 0.55, 0.78, 1.0),
-            (0.42, 0.42, 0.45, 1.0),
-            "hands_on_counter"),
-        # Arcade attendant — bowl cut, arms crossed watching kids.
+            (0.32, 0.55, 0.78, 1.0), (0.42, 0.42, 0.45, 1.0),
+            "hands_on_counter", SKIN_LIGHT, "stubble"),
         ("ArcadeAtt", ks_x - 11.0, ks_y + 4.3, 1.0, "bowl",
-            (0.62, 0.22, 0.78, 1.0),
-            (0.20, 0.20, 0.22, 1.0),
-            "arms_crossed"),
-        # Sam — clerk behind the counter, hands resting on top
-        # while she watches the parking lot through the glass.
+            (0.62, 0.22, 0.78, 1.0), (0.20, 0.20, 0.22, 1.0),
+            "arms_crossed", SKIN_OLIVE, "none"),
+        # Sam — Diego is Hispanic-American per canon (Ramos
+        # family), Sam paired with him. Olive tone reads close.
         ("Sam",      ks_x + 1.0, ks_y - 2.25, 1.0, "ponytail",
-            (0.42, 0.30, 0.22, 1.0),
-            (0.55, 0.50, 0.42, 1.0),
-            "hands_on_counter"),
-        # Diego — leaning against the ice freezer outside (right
-        # arm extended out as the leaning arm).
+            (0.42, 0.30, 0.22, 1.0), (0.55, 0.50, 0.42, 1.0),
+            "hands_on_counter", SKIN_LIGHT, "none"),
+        # Diego Ramos — canon Hispanic-American 19yo drummer
         ("Diego",    ks_x + 1.8, ks_y - 5.0, 1.0, "beanie",
-            (0.18, 0.14, 0.12, 1.0),
-            (0.20, 0.20, 0.24, 1.0),
-            "one_arm_lean"),
-        # Roy — at the back cooler about to grab his Friday
-        # tallboy. Hands in pockets while he decides.
+            (0.18, 0.14, 0.12, 1.0), (0.20, 0.20, 0.24, 1.0),
+            "one_arm_lean", SKIN_MED, "stubble"),
+        # Roy — mid-50s white regular
         ("Roy",      ks_x + 0.5, ks_y + 3.0, 1.05, "cap",
-            (0.42, 0.42, 0.45, 1.0),
-            (0.78, 0.74, 0.66, 1.0),
-            "hands_pockets"),
-        # Laundry attendant at folding table — hands on counter.
+            (0.42, 0.42, 0.45, 1.0), (0.78, 0.74, 0.66, 1.0),
+            "hands_pockets", SKIN_LIGHT, "goatee"),
         ("LaundryAtt", ks_x - 5.0, ks_y + 0.5, 1.0, "bowl",
-            (0.32, 0.55, 0.78, 1.0),
-            (0.92, 0.92, 0.90, 1.0),
-            "hands_on_counter"),
-        # Diner cook at the line — both hands on counter.
+            (0.32, 0.55, 0.78, 1.0), (0.92, 0.92, 0.90, 1.0),
+            "hands_on_counter", SKIN_MED, "none"),
+        # Diner cook — classic Greek-American short-order, full
+        # mustache.
         ("DinerCook", dn_x,        dn_y + 3.4, 1.0, "short",
-            (0.98, 0.98, 0.96, 1.0),
-            (0.18, 0.18, 0.22, 1.0),
-            "hands_on_counter"),
-        # Diner waiter — arms_out (carrying menus/orders).
+            (0.98, 0.98, 0.96, 1.0), (0.18, 0.18, 0.22, 1.0),
+            "hands_on_counter", SKIN_OLIVE, "full"),
         ("DinerWaiter", dn_x + 4.0, dn_y + 2.5, 1.0, "short",
-            (0.85, 0.22, 0.20, 1.0),
-            (0.92, 0.90, 0.84, 1.0),
-            "arms_out"),
-        # Comics shopkeeper Rick — sitting / leaning. arms_crossed.
+            (0.85, 0.22, 0.20, 1.0), (0.92, 0.90, 0.84, 1.0),
+            "arms_out", SKIN_LIGHT, "none"),
+        # Comics shopkeeper Rick · 62yo collector with a full beard
         ("ComicsClerk", cc_x + 3.1, cc_y - 1.3, 1.0, "bowl",
-            (0.95, 0.85, 0.30, 1.0),
-            (0.32, 0.18, 0.32, 1.0),
-            "arms_crossed"),
-        # Maya — at the photocopier. hands_on_counter.
+            (0.92, 0.92, 0.86, 1.0), (0.32, 0.18, 0.32, 1.0),
+            "arms_crossed", SKIN_LIGHT, "full"),
+        # Maya Daigle — 16yo, canon "purple-tipped dark hair"
         ("Maya",     cc_x + 3.0, cc_y + 2.5, 0.92, "bowl",
-            (0.40, 0.18, 0.42, 1.0),
-            (0.20, 0.20, 0.24, 1.0),
-            "hands_on_counter"),
+            (0.40, 0.18, 0.42, 1.0), (0.20, 0.20, 0.24, 1.0),
+            "hands_on_counter", SKIN_LIGHT, "none"),
     ]
-    for tag, fx, fy, sc, hair, jacket, pants, pose in chapter_one_cast:
+    for tag, fx, fy, sc, hair, jacket, pants, pose, skin, beard in chapter_one_cast:
         fz = mesh_z(fx, fy)
         human_figure(
             name=f"NPC_{tag}",
             base_x=fx, base_y=fy, base_z=fz,
             scale=sc,
             facing='-Y',                  # face SOUTH (toward player)
-            skin_color=(0.92, 0.75, 0.62, 1.0),
+            skin_color=skin,
             hair_style=hair,
             hair_color=(0.20, 0.14, 0.10, 1.0),
             jacket_color=jacket,
@@ -7821,6 +7811,7 @@ def build_commercial_cluster():
             with_ears=True,
             with_mouth=True,
             mouth_color=(0.55, 0.22, 0.28, 1.0),
+            beard=beard,
             pose=pose,
         )
 
