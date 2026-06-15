@@ -3508,10 +3508,51 @@ def _build_diner(cx, cy, ground_z):
                         (bx, by, ground_z + 0.27),
                         (0.10, 0.10, 0.54),
                         (0.62, 0.62, 0.64, 1.0))
-    # Kitchen pass-through / wall on the back side
+    # Kitchen pass-through / half-wall on the back side. Below
+    # the pass is a real kitchen line: prep counter, flat-top
+    # grill, and an extractor hood overhead.
     _make_box_local(f"{name_prefix}_KitchenWall",
                     (cx, cy + depth * 0.40, ground_z + 1.30),
                     (12.0, 0.20, 0.60), col_trim)
+    # Prep counter running along the back, behind (north of) the
+    # pass-through half-wall
+    kitchen_y = cy + depth * 0.42
+    _make_box_local(f"{name_prefix}_Kitchen_PrepCounter",
+                    (cx - 3.0, kitchen_y + 0.40,
+                     ground_z + 0.50),
+                    (4.0, 0.60, 1.00),
+                    (0.78, 0.78, 0.80, 1.0))           # steel
+    # Flat-top grill (raised dark surface, sits on the prep counter)
+    _make_box_local(f"{name_prefix}_Kitchen_Grill",
+                    (cx - 3.0, kitchen_y + 0.40,
+                     ground_z + 1.06),
+                    (3.6, 0.50, 0.12),
+                    (0.18, 0.18, 0.20, 1.0))
+    # Burner ticks on the grill (small darker rectangles)
+    for k in range(3):
+        gx = cx - 3.0 - 1.0 + k * 1.0
+        _make_box_local(f"{name_prefix}_Kitchen_Burner_{k}",
+                        (gx, kitchen_y + 0.40, ground_z + 1.13),
+                        (0.40, 0.10, 0.02),
+                        (0.62, 0.18, 0.16, 1.0))      # warm red glow
+    # Extractor hood overhead
+    _make_box_local(f"{name_prefix}_Kitchen_Hood",
+                    (cx - 3.0, kitchen_y + 0.40,
+                     ground_z + 2.50),
+                    (4.2, 0.80, 0.50),
+                    (0.32, 0.32, 0.34, 1.0))
+    # Drink/fridge unit on the east side of the kitchen
+    _make_box_local(f"{name_prefix}_Kitchen_Fridge",
+                    (cx + 3.0, kitchen_y + 0.20,
+                     ground_z + 0.95),
+                    (1.20, 0.70, 1.90),
+                    (0.85, 0.85, 0.82, 1.0))
+    # Hanging shelf / utensil bar above the prep counter
+    _make_box_local(f"{name_prefix}_Kitchen_Utensil_Bar",
+                    (cx - 3.0, kitchen_y - 0.05,
+                     ground_z + 2.10),
+                    (3.0, 0.04, 0.06),
+                    (0.62, 0.62, 0.64, 1.0))
     # JUKEBOX in the SE corner — colourful arc-top body so it
     # reads as a Wurlitzer-style 50s jukebox from the sidewalk.
     juke_x = cx + width / 2 - 0.8
