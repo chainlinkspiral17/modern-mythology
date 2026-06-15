@@ -10634,6 +10634,53 @@ def build_arterial_lighting():
                                   samples_per_seg=4),
                  "HorizonDr_")
 
+    # RESIDENTIAL STREET LAMPS · shorter (4m vs 6m arterial),
+    # offset 3.5m from CL, spaced 30m. Single-head fixture instead
+    # of the arterial's twin-head shoebox.
+    def _emit_res_lamps(pts, prefix, spacing=30.0):
+        accumulated = 0.0
+        next_lamp = 15.0
+        side_sgn = 1
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]
+            x1, y1 = pts[i + 1]
+            seg_len = math.hypot(x1 - x0, y1 - y0) or 1.0
+            seg_end = accumulated + seg_len
+            while next_lamp < seg_end:
+                t = (next_lamp - accumulated) / seg_len
+                mx = x0 + (x1 - x0) * t
+                my = y0 + (y1 - y0) * t
+                dxs = x1 - x0; dys = y1 - y0
+                perp_x = -dys / seg_len
+                perp_y =  dxs / seg_len
+                lamp_x = mx + side_sgn * perp_x * 3.5
+                lamp_y = my + side_sgn * perp_y * 3.5
+                lz = mesh_z(lamp_x, lamp_y)
+                lamp_h_res = 4.0
+                _make_cyl_local(f"{prefix}Lamp_{int(next_lamp)}",
+                                (lamp_x, lamp_y, lz + lamp_h_res / 2),
+                                0.06, lamp_h_res,
+                                COL_LAMP_POLE, segments=6)
+                # Single shoebox head
+                _make_box_local(f"{prefix}Lamp_Head_{int(next_lamp)}",
+                                (lamp_x, lamp_y, lz + lamp_h_res - 0.05),
+                                (0.30, 0.18, 0.14), COL_LAMP_HEAD)
+                side_sgn = -side_sgn
+                next_lamp += spacing
+            accumulated = seg_end
+    for cname, prefix in [
+        ("NRAspen",   "NRAspen_LP_"),
+        ("NRBirch",   "NRBirch_LP_"),
+        ("NRCedar",   "NRCedar_LP_"),
+        ("WEMag",     "WEMag_LP_"),
+        ("P2Main",    "P2Main_LP_"),
+        ("ECDSRidge", "ECDSRidge_LP_"),
+    ]:
+        if cname in corridor_xys:
+            _emit_res_lamps(_catmull_rom_2d(corridor_xys[cname],
+                                              samples_per_seg=4),
+                            prefix)
+
 
 def build_bus_stops():
     """Bus-stop shelters at key arterial intersections. Each:
