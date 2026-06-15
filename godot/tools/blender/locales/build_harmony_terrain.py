@@ -4490,6 +4490,48 @@ def build_commercial_cluster():
             mouth_color=(0.55, 0.22, 0.28, 1.0),
         )
 
+    # ── CUSTOMERS · a few patrons scattered around the block so
+    # it reads as ALIVE, not staffed-but-empty. Each faces the
+    # action they're engaged with (arcade kid faces cabinet,
+    # diner patron faces counter, etc.)
+    customers = [
+        # (name, x, y, facing, scale, hair, jacket, pants)
+        # Arcade kid at the leftmost cabinet (cabinet at ks_x-12,
+        # cy + 2.0). Kid stands just south of cabinet facing it.
+        ("ArcadeKid",  ks_x - 12.0, ks_y + 1.0, '+Y', 0.78, "bowl",
+            (0.42, 0.65, 0.32, 1.0), (0.32, 0.18, 0.32, 1.0)),
+        # Diner patron on a stool (mid-stool position cy - 0.45 +
+        # stool seat at z 0.65 → patron base at stool seat top).
+        # Face north toward the counter.
+        ("DinerPatron", dn_x - 2.0, dn_y - 0.55, '+Y', 1.0, "short",
+            (0.62, 0.42, 0.78, 1.0), (0.18, 0.22, 0.30, 1.0)),
+        # Cosmic Comics browser between the two shelves (cy + 0.5).
+        ("ComicsBrowser", cc_x - 1.5, cc_y + 0.5, '+Y', 0.92, "bowl",
+            (0.95, 0.55, 0.20, 1.0), (0.42, 0.30, 0.20, 1.0)),
+        # Sidewalk pedestrian heading east, between Kwik Shop and
+        # Diner. Faces +X (east).
+        ("Pedestrian", 12.0, walk_strip_y, '+X', 1.0, "short",
+            (0.32, 0.55, 0.78, 1.0), (0.42, 0.42, 0.45, 1.0)),
+    ]
+    for tag, fx, fy, facing, sc, hair, jacket, pants in customers:
+        fz = mesh_z(fx, fy)
+        human_figure(
+            name=f"NPC_{tag}",
+            base_x=fx, base_y=fy, base_z=fz,
+            scale=sc,
+            facing=facing,
+            skin_color=(0.92, 0.75, 0.62, 1.0),
+            hair_style=hair,
+            hair_color=(0.20, 0.14, 0.10, 1.0),
+            jacket_color=jacket,
+            pants_color=pants,
+            shoe_color=(0.20, 0.16, 0.14, 1.0),
+            has_sunglasses=False,
+            with_ears=True,
+            with_mouth=True,
+            mouth_color=(0.55, 0.22, 0.28, 1.0),
+        )
+
     # ── KWIK SHOP LOT DIVIDER ISLAND · the strip is wide enough
     # (30 m lot) that a single uninterrupted parking row reads as
     # a sea of asphalt. One planted island in the middle of the
