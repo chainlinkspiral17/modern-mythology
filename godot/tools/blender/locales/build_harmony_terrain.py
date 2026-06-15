@@ -2898,6 +2898,62 @@ def _build_convenience_store(name_prefix, cx, cy, ground_z,
                     (0.40, 0.30, 0.50), col_basket)
 
 
+def _build_parked_car(name, cx, cy, ground_z, body_color,
+                       facing='+Y'):
+    """Low-poly parked car · body + cabin + four wheels. Facing
+    parameter ('+Y' or '-Y') flips the cab forward end so cars
+    parked nose-in look right.
+    """
+    car_l = 4.4
+    car_w = 1.8
+    body_h = 0.55
+    cab_h = 0.70
+    wheel_r = 0.32
+    col_window = (0.18, 0.22, 0.30, 1.0)
+    col_wheel  = (0.10, 0.10, 0.12, 1.0)
+    # Body (lower box)
+    _make_box_local(f"{name}_Body",
+                    (cx, cy, ground_z + wheel_r + body_h / 2),
+                    (car_w, car_l, body_h), body_color)
+    # Cabin (smaller box on top, slightly toward "rear")
+    cab_off = -0.35 if facing == '+Y' else 0.35
+    _make_box_local(f"{name}_Cabin",
+                    (cx, cy + cab_off,
+                     ground_z + wheel_r + body_h + cab_h / 2),
+                    (car_w - 0.16, car_l * 0.55, cab_h), body_color)
+    # Window strip around the cabin (slightly inset, dark)
+    _make_box_local(f"{name}_Windows",
+                    (cx, cy + cab_off,
+                     ground_z + wheel_r + body_h + cab_h * 0.65),
+                    (car_w - 0.10, car_l * 0.55 - 0.10, cab_h * 0.45),
+                    col_window)
+    # Four wheels
+    for wx_sgn in (-1, 1):
+        for wy_sgn, wy_off in ((-1, -car_l * 0.32), (1, car_l * 0.32)):
+            _make_cyl_local(f"{name}_Wheel_{wx_sgn:+d}_{wy_sgn:+d}",
+                            (cx + wx_sgn * (car_w / 2 - 0.08),
+                             cy + wy_off,
+                             ground_z + wheel_r),
+                            wheel_r, 0.20,
+                            col_wheel, segments=6)
+    # Headlights / taillights — small coloured boxes at the ends
+    front_end = car_l / 2 if facing == '+Y' else -car_l / 2
+    rear_end  = -car_l / 2 if facing == '+Y' else car_l / 2
+    for sgn_x in (-1, 1):
+        _make_box_local(f"{name}_Headlight_{sgn_x:+d}",
+                        (cx + sgn_x * (car_w / 2 - 0.30),
+                         cy + front_end,
+                         ground_z + wheel_r + body_h * 0.6),
+                        (0.30, 0.06, 0.20),
+                        (0.98, 0.96, 0.86, 1.0))
+        _make_box_local(f"{name}_Taillight_{sgn_x:+d}",
+                        (cx + sgn_x * (car_w / 2 - 0.30),
+                         cy + rear_end,
+                         ground_z + wheel_r + body_h * 0.6),
+                        (0.30, 0.06, 0.20),
+                        (0.78, 0.18, 0.18, 1.0))
+
+
 def _build_cosmic_comics(cx, cy, ground_z):
     """Cosmic Comics — chapter-one comic shop with a plate-glass
     front and a CANONICALLY visible photocopier inside (per
@@ -3229,6 +3285,22 @@ def build_commercial_cluster():
             dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
         _finalize_mesh(f"CommRoad_Dash_{k}", dv, [[0, 1, 2, 3]],
                        COL_CENTERLINE)
+    # ── PARKED CARS · two per lot, nose-in toward the storefront.
+    # Distinct paint colours so the strip reads as populated rather
+    # than uniform.
+    parked_specs = [
+        ("KwikStop", ks_x - 5, ks_y - 11, (0.82, 0.32, 0.22, 1.0)),  # red
+        ("KwikStop", ks_x + 5, ks_y - 11, (0.78, 0.74, 0.68, 1.0)),  # beige
+        ("NexCorpGG", nc_x - 6, nc_y - 22, (0.32, 0.42, 0.55, 1.0)), # blue
+        ("NexCorpGG", nc_x + 6, nc_y - 22, (0.20, 0.20, 0.22, 1.0)), # black
+        ("CosmicComics", cc_x - 4, cc_y - 9, (0.42, 0.62, 0.32, 1.0)), # green
+        ("CosmicComics", cc_x + 4, cc_y - 9, (0.92, 0.85, 0.30, 1.0)), # yellow
+    ]
+    for k, (tag, px, py, col) in enumerate(parked_specs):
+        pz = mesh_z(px, py)
+        _build_parked_car(f"{tag}_Car_{k}", px, py, pz, col,
+                           facing='+Y')
+
     # Crosswalk where the spawn-side spur (x=0) meets the road —
     # six white stripes perpendicular to the road, classic zebra.
     cross_x = 0.0
