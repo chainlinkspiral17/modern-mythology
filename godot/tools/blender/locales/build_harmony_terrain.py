@@ -6140,6 +6140,92 @@ def build_church_cemetery():
                     (2.5, 0.20, 0.30), col_dark)
 
 
+def build_police_station():
+    """Harmony Creek PD — civic block east of the fire station
+    on Horizon Drive. Two-story navy-blue brick building with
+    flag pole + small parking lot.
+    """
+    cx, cy = -170.0, -60.0
+    ground_z = mesh_z(cx, cy)
+    col_wall = (0.18, 0.22, 0.42, 1.0)        # police navy
+    col_trim = (0.85, 0.82, 0.74, 1.0)
+    col_roof = (0.32, 0.30, 0.28, 1.0)
+    col_door = (0.32, 0.32, 0.34, 1.0)
+    col_badge_gold = (0.78, 0.62, 0.32, 1.0)
+    w, d, h = 22.0, 14.0, 7.0
+    t = 0.20
+    _make_box_local("PD_Slab",
+                    (cx, cy, ground_z + 0.05),
+                    (w + 0.4, d + 0.4, 0.10), col_trim)
+    _make_box_local("PD_WallN",
+                    (cx, cy + d / 2 - t / 2, ground_z + h / 2),
+                    (w, t, h), col_wall)
+    _make_box_local("PD_WallE",
+                    (cx + w / 2 - t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    _make_box_local("PD_WallW",
+                    (cx - w / 2 + t / 2, cy, ground_z + h / 2),
+                    (t, d, h), col_wall)
+    # South wall split for entry
+    dw, dh = 2.5, 3.0
+    left_w = w / 2 - dw / 2
+    _make_box_local("PD_WallS_L",
+                    (cx - dw / 2 - left_w / 2,
+                     cy - d / 2 + t / 2, ground_z + h / 2),
+                    (left_w, t, h), col_wall)
+    _make_box_local("PD_WallS_R",
+                    (cx + dw / 2 + left_w / 2,
+                     cy - d / 2 + t / 2, ground_z + h / 2),
+                    (left_w, t, h), col_wall)
+    _make_box_local("PD_WallS_Header",
+                    (cx, cy - d / 2 + t / 2,
+                     ground_z + dh + (h - dh) / 2),
+                    (dw, t, h - dh), col_wall)
+    _make_box_local("PD_Door",
+                    (cx, cy - d / 2 + 0.05, ground_z + dh / 2),
+                    (dw, 0.06, dh - 0.10), col_door)
+    # 2 stories of windows on south face
+    for story in range(2):
+        z_win = ground_z + 2.0 + story * 3.0
+        for sgn in (-1, 1):
+            for k in range(2):
+                wx = cx + sgn * (dw / 2 + (k + 1) * 3.5)
+                if abs(wx - cx) < w / 2 - 1.0:
+                    _make_box_local(f"PD_Window_{story}_{sgn:+d}_{k}",
+                                    (wx, cy - d / 2 + 0.04, z_win),
+                                    (1.6, 0.04, 1.4),
+                                    (0.32, 0.42, 0.55, 1.0))
+    _make_box_local("PD_Roof",
+                    (cx, cy, ground_z + h + 0.10),
+                    (w + 0.4, d + 0.4, 0.20), col_roof)
+    # Gold POLICE BADGE on the south facade above the door
+    _make_box_local("PD_Badge",
+                    (cx, cy - d / 2 - 0.20,
+                     ground_z + h - 0.8),
+                    (1.4, 0.14, 1.4), col_badge_gold)
+    # Flag pole flanking the entry
+    fp_x = cx + 7.0
+    fp_y = cy - d / 2 - 4.0
+    fp_z = mesh_z(fp_x, fp_y)
+    _make_cyl_local("PD_FlagPole",
+                    (fp_x, fp_y, fp_z + 4.0),
+                    0.08, 8.0, col_trim, segments=6)
+    _make_box_local("PD_FlagBanner",
+                    (fp_x + 0.40, fp_y, fp_z + 6.8),
+                    (0.80, 0.02, 0.60),
+                    (0.85, 0.20, 0.18, 1.0))
+    # Small parking lot south with 2 police cruisers (black + white)
+    _build_parking_lot("PoliceStation", cx, cy - 18.0,
+                        lot_w=18.0, lot_d=20.0,
+                        ground_z=mesh_z(cx, cy - 18.0),
+                        building_y_north=cy,
+                        car_palette=[(0.20, 0.20, 0.22, 1.0),
+                                      (0.92, 0.92, 0.90, 1.0),
+                                      (0.20, 0.20, 0.22, 1.0),
+                                      (0.92, 0.92, 0.90, 1.0)],
+                        n_handicap=1)
+
+
 def build_phase3_crane():
     """Abandoned construction crane left standing at the
     failed Phase III development. A tall lattice tower with a
@@ -8966,6 +9052,7 @@ def main():
     build_crosswalks_and_stops()
     build_self_storage()
     build_phase3_crane()
+    build_police_station()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
