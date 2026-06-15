@@ -831,6 +831,22 @@ between-equally-OK-options choice, pick the printable one.
   per building (counter, change machine, podium, fryer line),
   then put the clerk's marker in front of THAT.
 
+### 2026-06-15 · sign orientation axes (Blender ↔ Godot)
+
+- **Pick the THIN box axis to match the face direction.** A
+  vertical sign that should face EAST/WEST needs its thin axis
+  along X (`size = (0.04, h, w)`), not Y. I built a stop sign
+  with thin Y (`size = (0.50, 0.04, 0.50)`), thinking I could
+  just rotate the face_normal, and the sign faced N/S instead of
+  E/W. Rule: the sign's THIN dimension and its world face
+  direction MUST be the same axis in Blender BEFORE the glTF
+  swap — picking it later via LocaleSetup orientation just
+  rotates the label, not the panel.
+- **`Vector3(-1, 0, 0)` for west-facing in Godot maps to a panel
+  built thin-along-X in Blender** (Blender X = Godot X, both
+  preserved through the gltf axis swap). For north/south facing
+  panels, the THIN axis in Blender is Y (which becomes Godot Z).
+
 ### TEMPLATE for next session
 
 ```markdown
