@@ -8108,6 +8108,74 @@ def build_district_arterials():
     _emit_arterial(horizon_dr, "HorizonDr_")
 
 
+def build_community_garden():
+    """Community garden in HarmonyPark west of the playground.
+    8 raised wood-edge beds in a 4×2 grid plus a small tool
+    shed and a watering-can stand.
+    """
+    cx, cy = -60.0, 30.0
+    ground_z = mesh_z(cx, cy)
+    col_wood = (0.42, 0.30, 0.20, 1.0)
+    col_soil = (0.32, 0.22, 0.16, 1.0)
+    col_green = (0.30, 0.55, 0.25, 1.0)
+    col_red = (0.85, 0.25, 0.22, 1.0)   # tomato red, etc.
+    col_path = (0.62, 0.55, 0.45, 1.0)
+    bed_w, bed_d = 3.0, 1.6
+    # Layout 4 wide x 2 deep with 1 m path between
+    for r in range(2):
+        for c in range(4):
+            bcx = cx - 7.5 + c * (bed_w + 1.0)
+            bcy = cy - 2.0 + r * (bed_d + 1.0)
+            bcz = mesh_z(bcx, bcy)
+            # Bed wood edge (a low box ring)
+            _make_box_local(f"CG_BedEdge_{r}_{c}",
+                            (bcx, bcy, bcz + 0.20),
+                            (bed_w, bed_d, 0.40), col_wood)
+            # Soil interior
+            _make_box_local(f"CG_BedSoil_{r}_{c}",
+                            (bcx, bcy, bcz + 0.35),
+                            (bed_w - 0.2, bed_d - 0.2, 0.10),
+                            col_soil)
+            # Plants — green sprouts (3 rows of small green boxes)
+            for pr in range(3):
+                for pc in range(5):
+                    px = bcx - bed_w / 2 + 0.3 + pc * (bed_w - 0.6) / 4
+                    py = bcy - bed_d / 2 + 0.3 + pr * (bed_d - 0.6) / 2
+                    # Alternate plant colors
+                    pcol = col_red if (pr + pc) % 4 == 0 else col_green
+                    _make_box_local(
+                        f"CG_Plant_{r}_{c}_{pr}_{pc}",
+                        (px, py, bcz + 0.55),
+                        (0.20, 0.20, 0.30), pcol)
+    # Gravel path between rows
+    _make_box_local("CG_PathHoriz",
+                    (cx, cy + bed_d / 2 + 0.5, ground_z + 0.05),
+                    (4 * bed_w + 3 * 1.0, 1.0, 0.10), col_path)
+    # Tool shed at the west end
+    sh_x = cx - 16.0
+    sh_y = cy
+    sh_z = mesh_z(sh_x, sh_y)
+    _make_box_local("CG_ToolShed_Walls",
+                    (sh_x, sh_y, sh_z + 1.4),
+                    (3.6, 3.0, 2.8), col_wood)
+    _make_box_local("CG_ToolShed_Roof",
+                    (sh_x, sh_y, sh_z + 2.95),
+                    (4.0, 3.4, 0.20), (0.32, 0.30, 0.28, 1.0))
+    _make_box_local("CG_ToolShed_Door",
+                    (sh_x, sh_y - 3.0 / 2 + 0.05, sh_z + 1.1),
+                    (0.80, 0.06, 2.0), (0.42, 0.20, 0.16, 1.0))
+    # Water spigot post in the middle of the garden
+    _make_cyl_local("CG_Spigot_Post",
+                    (cx, cy - bed_d / 2 - 0.4, ground_z + 0.6),
+                    0.06, 1.2,
+                    (0.62, 0.62, 0.64, 1.0), segments=4)
+    # Watering can on a small bench
+    _make_box_local("CG_Bench",
+                    (cx - bed_w * 1.0, cy + bed_d + 1.5,
+                     ground_z + 0.42),
+                    (1.6, 0.42, 0.06), col_wood)
+
+
 def build_harmony_park():
     """HarmonyPark — central manicured community park. Sits in
     HarmonyPark settlement zone (-120..180, -40..200, target_z =
@@ -10087,6 +10155,7 @@ def main():
     build_phase3_neighborhood()
     build_country_club()
     build_harmony_park()
+    build_community_garden()
     build_district_arterials()
     build_community_landmarks()
     build_connector_roads()
