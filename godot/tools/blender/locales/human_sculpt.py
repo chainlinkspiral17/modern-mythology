@@ -617,7 +617,8 @@ def _build_head(name, base_x, base_y, head_base_z, s,
                 skin_color, hair_color, hair_style, facing='-Y',
                 has_sunglasses=False, sunglasses_color=None,
                 with_ears=False, with_mouth=False,
-                mouth_color=(0.62, 0.30, 0.32, 1.0)):
+                mouth_color=(0.62, 0.30, 0.32, 1.0),
+                beard='none'):
     head_d = PROP["head_d"] * s
     head_squash = PROP["head_squash"]
     head_r = head_d / 2
@@ -960,6 +961,58 @@ def _build_head(name, base_x, base_y, head_base_z, s,
              (head_d * 0.20, head_d * 0.30, head_d * 0.12),
              skin_color)
 
+    # BEARD · optional hair-colored shapes on the lower face.
+    # Variants: 'none', 'goatee' (chin only), 'stubble' (thin
+    # 5 o'clock shadow across jaw line), 'full' (chin + jawline).
+    if beard != 'none':
+        beard_color = (hair_color[0] * 0.70, hair_color[1] * 0.70,
+                       hair_color[2] * 0.70, hair_color[3])
+        if beard in ('goatee', 'full'):
+            # Goatee: skin patch under the mouth, narrower than chin
+            gz = head_cz - head_r * 0.42
+            gx = base_x + fwd_x * (head_r * 0.95)
+            gy = base_y + fwd_y * (head_r * 0.95)
+            if abs(fwd_y) > abs(fwd_x):
+                _box(f"{name}_Goatee",
+                     (gx, gy, gz),
+                     (head_d * 0.20, 0.03, head_d * 0.18),
+                     beard_color)
+            else:
+                _box(f"{name}_Goatee",
+                     (gx, gy, gz),
+                     (0.03, head_d * 0.20, head_d * 0.18),
+                     beard_color)
+        if beard in ('stubble', 'full'):
+            # Stubble across jaw line — thin darker band
+            sz = head_cz - head_r * 0.36
+            sx_pos = base_x + fwd_x * (head_r * 0.78)
+            sy_pos = base_y + fwd_y * (head_r * 0.78)
+            if abs(fwd_y) > abs(fwd_x):
+                _box(f"{name}_Stubble",
+                     (sx_pos, sy_pos, sz),
+                     (head_d * 0.78, head_d * 0.25, head_d * 0.10),
+                     beard_color)
+            else:
+                _box(f"{name}_Stubble",
+                     (sx_pos, sy_pos, sz),
+                     (head_d * 0.25, head_d * 0.78, head_d * 0.10),
+                     beard_color)
+        if beard == 'mustache':
+            # Just a mustache strip above the upper lip
+            mz_mu = head_cz - head_r * 0.22
+            mux = base_x + fwd_x * (head_r * 0.95)
+            muy = base_y + fwd_y * (head_r * 0.95)
+            if abs(fwd_y) > abs(fwd_x):
+                _box(f"{name}_Mustache",
+                     (mux, muy, mz_mu),
+                     (head_d * 0.32, 0.03, head_d * 0.06),
+                     beard_color)
+            else:
+                _box(f"{name}_Mustache",
+                     (mux, muy, mz_mu),
+                     (0.03, head_d * 0.32, head_d * 0.06),
+                     beard_color)
+
 
 def _build_scarf(name, base_x, base_y, shoulder_z, s, scarf_color):
     """Scarf / cravat — a thick collar wrap sitting just above the
@@ -999,6 +1052,7 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
                  with_ears=False,
                  with_mouth=False,
                  mouth_color=(0.62, 0.30, 0.32, 1.0),
+                 beard='none',
                  jacket_puffy=False,
                  pose='standing',
                  lean_x=0.0):
@@ -1041,7 +1095,8 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
                 sunglasses_color=sunglasses_color,
                 with_ears=with_ears,
                 with_mouth=with_mouth,
-                mouth_color=mouth_color)
+                mouth_color=mouth_color,
+                beard=beard)
     return {"hands": hand_positions,
             "head_base_z": head_base_z,
             "shoulder_z": shoulder_z}
