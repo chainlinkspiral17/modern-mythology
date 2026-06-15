@@ -3397,6 +3397,28 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                      ground_z + 0.80),
                     (0.30, 0.40, 1.20),
                     (0.42, 0.42, 0.45, 1.0))
+    # Community bulletin board on the east partition — paper
+    # flyers in coloured rectangles.
+    bb_x = ldr_cx + bay_w / 2 - 0.06
+    _make_box_local("KwikShop_Ldr_BulletinBoard",
+                    (bb_x, cy + 0.5, ground_z + 1.50),
+                    (0.08, 1.40, 1.20),
+                    (0.42, 0.30, 0.20, 1.0))           # cork brown
+    # 6 flyers pinned to the board (3x2 grid)
+    for kx in range(3):
+        for ky in range(2):
+            cols = [(0.95, 0.85, 0.30, 1.0),
+                    (0.32, 0.55, 0.78, 1.0),
+                    (0.85, 0.22, 0.20, 1.0),
+                    (0.62, 0.22, 0.78, 1.0),
+                    (0.42, 0.62, 0.32, 1.0),
+                    (0.98, 0.95, 0.86, 1.0)]
+            col = cols[kx * 2 + ky]
+            fy = cy + 0.5 - 0.50 + kx * 0.45
+            fz = ground_z + 1.50 - 0.30 + ky * 0.50
+            _make_box_local(f"KwikShop_Ldr_Flyer_{kx}_{ky}",
+                            (bb_x - 0.05, fy, fz),
+                            (0.02, 0.30, 0.30), col)
 
 
 def _build_diner(cx, cy, ground_z):
