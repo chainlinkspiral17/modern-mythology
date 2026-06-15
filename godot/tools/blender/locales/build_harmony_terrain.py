@@ -6658,6 +6658,144 @@ def _build_cosmic_comics(cx, cy, ground_z):
                     (px - 0.55, py, ground_z + 0.75),
                     (0.30, 0.50, 0.04), col_xerox_body)
 
+    # ════════════════════════════════════════════════════════════════
+    # MAYA DAIGLE CANON DETAILS (2026-06-15 hero pass)
+    # Cosmic Comics is Maya's domain on weekends + after school.
+    # The following are the canon objects from her character file:
+    # ════════════════════════════════════════════════════════════════
+
+    # ── "DO NOT SORT YET" PILE · stack of unsorted comics on the
+    # floor between the two shelves. Maya's literal job ("sorting
+    # the DO NOT SORT YET pile with the patient indifference of a
+    # sixteen-year-old who has been given the kind of task adults
+    # use to keep teenagers busy"). 4 stacked piles, each a
+    # multi-color column.
+    pile_x = cx - 1.0
+    pile_y = cy + 0.5
+    pile_palette = [
+        (0.85, 0.20, 0.18, 1.0),   # red Marvel
+        (0.18, 0.32, 0.55, 1.0),   # blue DC
+        (0.95, 0.85, 0.30, 1.0),   # yellow indie
+        (0.32, 0.55, 0.25, 1.0),   # green sci-fi
+        (0.62, 0.22, 0.78, 1.0),   # purple horror
+        (0.95, 0.55, 0.20, 1.0),   # orange humor
+    ]
+    for k_pile, col_p in enumerate(pile_palette):
+        # Stack of 8 comics per pile
+        for j in range(8):
+            _make_box_local(
+                f"{name_prefix}_DoNotSortYet_{k_pile}_{j}",
+                (pile_x + (k_pile % 2) * 0.30,
+                 pile_y + (k_pile // 2) * 0.30,
+                 ground_z + 0.08 + j * 0.012),
+                (0.25, 0.34, 0.012), col_p)
+
+    # ── "THE FUND" JAR · small glass jar on the back counter
+    # labeled with hand-lettered "THE FUND" sign (no explanation,
+    # per canon: "Maya labels THE FUND without ever explaining what
+    # the fund is for"). Contains visible dollar bills.
+    jar_x = cx + width / 2 - 1.4 + 0.50   # on east counter
+    jar_y = cy - depth / 2 + 1.5
+    jar_z_top = ground_z + 1.10           # on counter top
+    # Jar body (translucent cylinder)
+    _make_cyl_local(f"{name_prefix}_FundJar_Body",
+                    (jar_x, jar_y, jar_z_top + 0.10),
+                    0.06, 0.20,
+                    (0.85, 0.90, 0.92, 1.0), segments=8)
+    # Cash visible inside (cream rectangles stacked)
+    for k_cash in range(3):
+        _make_box_local(f"{name_prefix}_FundJar_Cash_{k_cash}",
+                        (jar_x, jar_y, jar_z_top + 0.08 + k_cash * 0.012),
+                        (0.08, 0.04, 0.008),
+                        (0.55, 0.62, 0.42, 1.0))
+    # Hand-lettered label
+    _make_box_local(f"{name_prefix}_FundJar_Label",
+                    (jar_x, jar_y - 0.06, jar_z_top + 0.10),
+                    (0.10, 0.005, 0.08),
+                    (0.95, 0.92, 0.86, 1.0))
+
+    # ── MINI-ZINE DISPLAY RACK · cardboard countertop rack with
+    # 4 slots, each holding a small zine. Canon: "Each issue is a
+    # single observational piece — sold for one dollar each at
+    # the back counter."
+    zr_x = cx + width / 2 - 1.4 - 0.40
+    zr_y = cy - depth / 2 + 1.5
+    zr_z_top = ground_z + 1.10
+    # Cardboard base
+    _make_box_local(f"{name_prefix}_ZineRack_Base",
+                    (zr_x, zr_y, zr_z_top + 0.04),
+                    (0.40, 0.32, 0.04),
+                    (0.78, 0.62, 0.42, 1.0))
+    # 4 zine covers stacked at slight forward angle
+    zine_palette = [
+        (0.95, 0.94, 0.86, 1.0),   # cream cover #6 "WIDOW AT LOT 14"
+        (0.32, 0.55, 0.78, 1.0),   # blue cover #11 "BACK COOLER"
+        (0.85, 0.65, 0.42, 1.0),   # tan cover #15 "GRANDMOTHER"
+        (0.42, 0.30, 0.20, 1.0),   # dark cover #19 "PHANTOM"
+    ]
+    for k_z, col_z in enumerate(zine_palette):
+        zx_off = -0.12 + k_z * 0.08
+        _make_box_local(f"{name_prefix}_ZineRack_Issue_{k_z}",
+                        (zr_x + zx_off, zr_y - 0.10, zr_z_top + 0.10),
+                        (0.07, 0.005, 0.10), col_z)
+    # "$1 · NEWS FROM HARMONY CREEK" hand-lettered card
+    _make_box_local(f"{name_prefix}_ZineRack_PriceCard",
+                    (zr_x, zr_y - 0.13, zr_z_top + 0.04),
+                    (0.40, 0.005, 0.06),
+                    (0.95, 0.92, 0.86, 1.0))
+
+    # ── F.T. LETTER on the counter · a partially-visible envelope
+    # addressed to "Maya" (small detail from canon: "F.T. has been
+    # writing to her for nine months. She has not told anyone").
+    # Cream envelope + a stripe of red wax suggested
+    letter_x = cx + width / 2 - 1.4 + 0.20
+    letter_y = cy - depth / 2 + 1.5 - 0.18
+    _make_box_local(f"{name_prefix}_FTLetter_Body",
+                    (letter_x, letter_y, ground_z + 1.11),
+                    (0.18, 0.13, 0.005),
+                    (0.95, 0.92, 0.86, 1.0))
+    # Red wax seal dot (right edge of envelope)
+    _make_box_local(f"{name_prefix}_FTLetter_WaxSeal",
+                    (letter_x + 0.08, letter_y, ground_z + 1.114),
+                    (0.022, 0.022, 0.003),
+                    (0.55, 0.18, 0.16, 1.0))
+    # Postmark stripe (top-right corner)
+    _make_box_local(f"{name_prefix}_FTLetter_Stamp",
+                    (letter_x + 0.07, letter_y + 0.05, ground_z + 1.113),
+                    (0.035, 0.04, 0.002),
+                    (0.62, 0.22, 0.20, 1.0))
+
+    # ── BULLETIN BOARD on the west wall · zine community flyers,
+    # show announcements, missing-pet posters
+    bb_x = cx - width / 2 + 0.12
+    bb_y = cy - 1.0
+    bb_z = ground_z + 1.80
+    _make_box_local(f"{name_prefix}_Bulletin_Frame",
+                    (bb_x, bb_y, bb_z),
+                    (0.05, 1.60, 1.20),
+                    (0.42, 0.30, 0.20, 1.0))
+    # Cork backing
+    _make_box_local(f"{name_prefix}_Bulletin_Cork",
+                    (bb_x + 0.03, bb_y, bb_z),
+                    (0.02, 1.50, 1.10),
+                    (0.78, 0.55, 0.32, 1.0))
+    # 6 flyers (cycling palette so the board reads as a real
+    # community noticeboard)
+    flyer_palette = [
+        (0.95, 0.85, 0.30, 1.0),   # yellow show flyer
+        (0.85, 0.20, 0.18, 1.0),   # red zine call-for-submissions
+        (0.32, 0.55, 0.78, 1.0),   # blue band poster
+        (0.62, 0.22, 0.78, 1.0),   # purple "missing cat"
+        (0.95, 0.94, 0.90, 1.0),   # cream
+        (0.42, 0.62, 0.32, 1.0),   # green community garden
+    ]
+    for k_f, col_f in enumerate(flyer_palette):
+        fy = bb_y - 0.50 + (k_f % 3) * 0.50
+        fz = bb_z + 0.35 - (k_f // 3) * 0.50
+        _make_box_local(f"{name_prefix}_Bulletin_Flyer_{k_f}",
+                        (bb_x + 0.04, fy, fz),
+                        (0.005, 0.32, 0.32), col_f)
+
 
 def build_commercial_cluster():
     """Chapter-one commercial cluster · Kwik Stop + NexCorp Gas & Go
