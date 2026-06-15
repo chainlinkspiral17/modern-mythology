@@ -4699,6 +4699,51 @@ def build_commercial_cluster():
         _finalize_mesh(f"CommRoad_Crosswalk_{k}", cv, [[0, 1, 2, 3]],
                        (0.92, 0.90, 0.84, 1.0))
 
+    # ── DELIVERY TRUCK parked on the road frontage in front of
+    # Kwik Shop — chapter-one truck driver dropping off supplies.
+    # Box truck silhouette: cab + cargo box on top of a 6 wheels.
+    truck_x = ks_x - 6.0
+    truck_y = road_y + 0.5         # in the eastbound lane (north of centre)
+    truck_z = mesh_z(truck_x, truck_y)
+    COL_TRUCK_BODY = (0.92, 0.92, 0.90, 1.0)
+    COL_TRUCK_CAB  = (0.62, 0.62, 0.64, 1.0)
+    COL_TRUCK_DARK = (0.18, 0.18, 0.20, 1.0)
+    # Cab (front of truck, facing -X = west)
+    _make_box_local("Comm_DeliveryTruck_Cab",
+                    (truck_x - 2.5, truck_y, truck_z + 0.40 + 1.20 / 2 + 0.4),
+                    (2.6, 2.0, 1.80), COL_TRUCK_CAB)
+    # Cab windshield
+    _make_box_local("Comm_DeliveryTruck_Windshield",
+                    (truck_x - 3.55, truck_y, truck_z + 1.70),
+                    (0.40, 1.80, 0.60),
+                    (0.18, 0.22, 0.30, 1.0))
+    # Cargo box (taller, behind cab)
+    _make_box_local("Comm_DeliveryTruck_Cargo",
+                    (truck_x + 1.5, truck_y, truck_z + 0.40 + 1.20 / 2 + 1.0),
+                    (5.0, 2.4, 2.40), COL_TRUCK_BODY)
+    # Roller door on the back (east end of cargo)
+    _make_box_local("Comm_DeliveryTruck_RollerDoor",
+                    (truck_x + 4.05, truck_y, truck_z + 1.6),
+                    (0.06, 2.20, 2.00), COL_TRUCK_DARK)
+    # Wheels (6 — front pair on cab, 4 on cargo)
+    truck_wheel_h = 0.50
+    for wx_off in (-3.4, -1.8, 0.4, 1.4, 2.6, 3.6):
+        for wy_sgn in (-1, 1):
+            _make_box_local(
+                f"Comm_DeliveryTruck_Wheel_{int(wx_off*10):+d}_{wy_sgn:+d}",
+                (truck_x + wx_off,
+                 truck_y + wy_sgn * 1.0,
+                 truck_z + truck_wheel_h / 2),
+                (0.50, 0.30, truck_wheel_h),
+                COL_TRUCK_DARK)
+    # Headlights on the cab front
+    for sgn_y in (-1, 1):
+        _make_box_local(
+            f"Comm_DeliveryTruck_Headlight_{sgn_y:+d}",
+            (truck_x - 3.78, truck_y + sgn_y * 0.7, truck_z + 1.1),
+            (0.06, 0.30, 0.20),
+            (0.98, 0.96, 0.86, 1.0))
+
     # ── BUS-STOP SHELTER on the road frontage between the Diner
     # and Cosmic Comics lots. Four steel posts + slanted roof +
     # back wall + side panel + bench inside. Players can stand
