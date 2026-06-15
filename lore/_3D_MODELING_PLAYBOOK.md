@@ -957,8 +957,8 @@ between-equally-OK-options choice, pick the printable one.
 
 ### 2026-06-15 · engine / asset-management notes
 
-When the time comes to optimise (currently DEFERRED — rough
-layout first):
+See `lore/_HCE_PERFORMANCE_PLAN.md` for the full dedicated doc.
+Summary (currently DEFERRED — rough layout first):
 
 - **Per-locale GLB splits.** Break the single
   `harmony_terrain.glb` into ~6 sub-GLBs (north / central /
