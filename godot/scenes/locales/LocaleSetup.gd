@@ -55,6 +55,10 @@ func _ready() -> void:
 	var boat_panels: Array = []
 	var ot_plaque_panels: Array = []
 	var ot_park_sign_panels: Array = []
+	var kwik_stop_signs: Array = []
+	var nexcorp_signs: Array = []
+	var nexcorp_pylon_signs: Array = []
+	var flag_plaque_panels: Array = []
 	for mi in meshes:
 		mi.material_override = mat
 		applied += 1
@@ -74,6 +78,14 @@ func _ready() -> void:
 			ot_park_sign_panels.append(mi)
 		elif "OTPark_ArchInscription" in mi.name:
 			ot_park_sign_panels.append(mi)
+		elif "KwikStop_SignPanel" in mi.name:
+			kwik_stop_signs.append(mi)
+		elif "NexCorpGG_SignPanel" in mi.name:
+			nexcorp_signs.append(mi)
+		elif "NexCorpGG_PylonSign" in mi.name:
+			nexcorp_pylon_signs.append(mi)
+		elif "OTPark_FlagPlaque" in mi.name:
+			flag_plaque_panels.append(mi)
 	print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
 	# Attach real Label3D text to the sign panels.
 	#
@@ -125,6 +137,44 @@ func _ready() -> void:
 						0.007,
 						Color(0.32, 0.22, 0.16, 1.0),
 						Color(0.86, 0.82, 0.70, 1.0))
+	# Convenience-store roof signs — face SOUTH (Blender -Y →
+	# Godot +Z). Kwik Stop in cream on red, NexCorp Gas & Go in
+	# white on blue.
+	for panel in kwik_stop_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.10),
+						Vector3(0, 0, 1),
+						"KWIK STOP",
+						0.018,
+						Color(0.98, 0.95, 0.86, 1.0),
+						Color(0.40, 0.05, 0.05, 1.0))
+	for panel in nexcorp_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.10),
+						Vector3(0, 0, 1),
+						"NexCorp\nGas & Go",
+						0.013,
+						Color(0.98, 0.98, 0.96, 1.0),
+						Color(0.08, 0.12, 0.22, 1.0))
+	for panel in nexcorp_pylon_signs:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.12),
+						Vector3(0, 0, 1),
+						"NEXCORP",
+						0.014,
+						Color(0.98, 0.98, 0.96, 1.0),
+						Color(0.08, 0.12, 0.22, 1.0))
+	# Flag pole base plaque — explains the half-mast position in
+	# memory of Oliver Tree. Plaque is south-facing: Blender -Y
+	# face → Godot +Z face after glTF axis swap.
+	for panel in flag_plaque_panels:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.03),
+						Vector3(0, 0, 1),
+						"AT HALF-MAST\nIN MEMORY OF\nOLIVER TREE",
+						0.002,
+						Color(0.95, 0.88, 0.72, 1.0),
+						Color(0.10, 0.06, 0.02, 1.0))
 
 
 func _attach_text_label(panel: MeshInstance3D, world_face_offset: Vector3,
