@@ -5620,6 +5620,87 @@ def build_east_commercial_box():
                     (0.32, 0.32, 0.36, 1.0))
 
 
+def build_drive_in_theatre():
+    """Drive-in movie theatre in the open SE wild zone south of
+    Phase 2. A big asphalt arc of stalls facing a giant screen,
+    plus a tiny concession-stand building.
+    """
+    cx, cy = 150.0, -300.0
+    ground_z = mesh_z(cx, cy)
+
+    # ── SCREEN — massive white panel facing south on a tall
+    # support frame. Players parked south of the screen look up
+    # at it.
+    scr_x, scr_y = cx, cy - 80.0   # 80 m south of stalls' centre
+    scr_z = mesh_z(scr_x, scr_y)
+    col_screen = (0.95, 0.95, 0.92, 1.0)
+    col_screen_frame = (0.18, 0.18, 0.20, 1.0)
+    scr_w = 32.0; scr_h = 12.0
+    # Frame uprights (left + right of the screen)
+    for sgn in (-1, 1):
+        _make_cyl_local(f"DI_ScreenLeg_{sgn:+d}",
+                        (scr_x + sgn * scr_w / 2, scr_y,
+                         scr_z + scr_h / 2),
+                        0.25, scr_h, col_screen_frame, segments=4)
+    # Cross-brace top
+    _make_box_local("DI_ScreenTopBar",
+                    (scr_x, scr_y, scr_z + scr_h - 0.10),
+                    (scr_w + 0.5, 0.20, 0.20), col_screen_frame)
+    # Screen face — thin tall panel
+    _make_box_local("DI_ScreenFace",
+                    (scr_x, scr_y, scr_z + scr_h / 2 + 1.0),
+                    (scr_w, 0.20, scr_h - 1.0), col_screen)
+
+    # ── PARKING ARC — 4 concentric rows of stalls facing the
+    # screen. Each row holds 12 cars (small for low-poly).
+    n_rows = 4
+    row_d = 6.0    # depth between rows
+    inner_r = 30.0  # closest row to screen
+    n_cars_per_row = 12
+    car_palette = [
+        (0.85, 0.20, 0.18, 1.0), (0.62, 0.62, 0.64, 1.0),
+        (0.18, 0.32, 0.55, 1.0), (0.32, 0.55, 0.25, 1.0),
+        (0.20, 0.20, 0.22, 1.0), (0.95, 0.85, 0.30, 1.0),
+        (0.78, 0.74, 0.66, 1.0), (0.42, 0.62, 0.32, 1.0),
+    ]
+    car_idx = 0
+    for row in range(n_rows):
+        r = inner_r + row * row_d
+        for k in range(n_cars_per_row):
+            # Spread cars in an arc from -60° to +60° relative
+            # to the screen
+            ang_deg = -60 + k * (120 / (n_cars_per_row - 1))
+            ang = math.radians(ang_deg)
+            cpx = scr_x + math.sin(ang) * r
+            cpy = scr_y + math.cos(ang) * r
+            cpz = mesh_z(cpx, cpy)
+            # Cars face TOWARD the screen (south)
+            col = car_palette[car_idx % len(car_palette)]
+            _build_parked_car(f"DI_Car_{row}_{k}",
+                              cpx, cpy, cpz, col, facing='-Y')
+            car_idx += 1
+
+    # ── CONCESSION STAND — small building at the back (north of
+    # stalls)
+    cs_x = cx
+    cs_y = cy + 20.0
+    cs_z = mesh_z(cs_x, cs_y)
+    col_cs_wall = (0.85, 0.82, 0.72, 1.0)
+    col_cs_roof = (0.85, 0.20, 0.18, 1.0)
+    cs_w, cs_d, cs_h = 12.0, 6.0, 3.5
+    _make_box_local("DI_Concession_Walls",
+                    (cs_x, cs_y, cs_z + cs_h / 2),
+                    (cs_w, cs_d, cs_h), col_cs_wall)
+    _make_box_local("DI_Concession_Roof",
+                    (cs_x, cs_y, cs_z + cs_h + 0.10),
+                    (cs_w + 0.4, cs_d + 0.4, 0.20), col_cs_roof)
+    # Walk-up window on the south face
+    _make_box_local("DI_Concession_Window",
+                    (cs_x, cs_y - cs_d / 2 + 0.04,
+                     cs_z + 1.6),
+                    (4.0, 0.04, 1.4), (0.32, 0.42, 0.55, 1.0))
+
+
 def build_hospital():
     """Harmony Creek Hospital — civic hospital in NorthComm east
     of NexCorp HQ. 36 × 16 × 11 m three-story building with a
@@ -8642,6 +8723,7 @@ def main():
     build_water_tower_and_lines()
     build_halsey_studios()
     build_hospital()
+    build_drive_in_theatre()
     build_high_school_field()
     build_strip_mall_nightclub()
     build_nexcorp_hq()
