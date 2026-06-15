@@ -2037,45 +2037,124 @@ def _build_gazebo(name, cx, cy, z_floor, radius=4.0, height=3.5,
     looks like polygons." 8 sides + a lower-pitched pyramid reads
     smoother."""
     n_posts = 8
-    # Floor (hexagonal disc)
-    verts = [(cx, cy, z_floor + 0.05)]
+    # Floor — SOLID OCTAGONAL PRISM (foundation slab) so the gazebo
+    # plinths visibly sit on the terrace instead of being a paper-
+    # thin disc with daylight under it. Top at z_floor + 0.10, bottom
+    # at z_floor - 0.20 → 30 cm thick stone foundation.
+    foundation_color = (0.70, 0.66, 0.60, 1.0)   # stone, slightly darker than terrace
+    foundation_top_z = z_floor + 0.10
+    foundation_bot_z = z_floor - 0.20
+    fverts = []
+    # Top ring (indices 0..7)
     for i in range(n_posts):
         ang = 2.0 * math.pi * i / n_posts
-        verts.append((cx + math.cos(ang) * radius,
-                      cy + math.sin(ang) * radius,
-                      z_floor + 0.05))
+        fverts.append((cx + math.cos(ang) * radius,
+                       cy + math.sin(ang) * radius,
+                       foundation_top_z))
+    # Bottom ring (indices 8..15)
+    for i in range(n_posts):
+        ang = 2.0 * math.pi * i / n_posts
+        fverts.append((cx + math.cos(ang) * radius,
+                       cy + math.sin(ang) * radius,
+                       foundation_bot_z))
+    # Top centre (index 16) and bottom centre (index 17)
+    fverts.append((cx, cy, foundation_top_z))
+    fverts.append((cx, cy, foundation_bot_z))
+    ffaces = []
+    top_c = 16
+    bot_c = 17
+    for i in range(n_posts):
+        ni = (i + 1) % n_posts
+        # Top fan
+        ffaces.append([top_c, i, ni])
+        # Side quad
+        ffaces.append([i, n_posts + i, n_posts + ni, ni])
+        # Bottom fan (reversed winding)
+        ffaces.append([bot_c, n_posts + ni, n_posts + i])
+    _finalize_mesh(f"{name}_Foundation", fverts, ffaces, foundation_color)
+
+    # Wooden floor surface on top of the foundation (decorative
+    # plank layer just visible above the stone).
+    verts = [(cx, cy, foundation_top_z + 0.02)]
+    for i in range(n_posts):
+        ang = 2.0 * math.pi * i / n_posts
+        verts.append((cx + math.cos(ang) * (radius - 0.10),
+                      cy + math.sin(ang) * (radius - 0.10),
+                      foundation_top_z + 0.02))
     faces = []
     for i in range(n_posts):
         ni = (i + 1) % n_posts
         faces.append([0, 1 + i, 1 + ni])
     _finalize_mesh(f"{name}_Floor", verts, faces, floor_color)
-    # Posts
+
+    # Posts — bottom flush with the wooden floor surface (sit on
+    # top of foundation), not floating.
+    post_base_z = foundation_top_z + 0.02
     for i in range(n_posts):
         ang = 2.0 * math.pi * i / n_posts
-        px = cx + math.cos(ang) * radius * 0.95
-        py = cy + math.sin(ang) * radius * 0.95
+        px = cx + math.cos(ang) * radius * 0.85
+        py = cy + math.sin(ang) * radius * 0.85
         _make_box_local(f"{name}_Post_{i}",
-                        (px, py, z_floor + height / 2),
+                        (px, py, post_base_z + height / 2),
                         (0.20, 0.20, height), post_color)
-    # Roof — TIERED dome (wide overhang ring tapering up to a
-    # tight upper cone). Single-pyramid version read as a polygonal
-    # cone hat; this two-tier shape reads as a real pavilion roof.
+    # Header beam ring connecting post tops — closes the visible
+    # gap between the posts and the underside of the eave. Eight
+    # horizontal beams, one between each pair of consecutive posts.
+    beam_r = radius * 0.85
+    beam_z = post_base_z + height - 0.10
+    for i in range(n_posts):
+        ang_a = 2.0 * math.pi * i / n_posts
+        ang_b = 2.0 * math.pi * ((i + 1) % n_posts) / n_posts
+        ax = cx + math.cos(ang_a) * beam_r
+        ay = cy + math.sin(ang_a) * beam_r
+        bx = cx + math.cos(ang_b) * beam_r
+        by = cy + math.sin(ang_b) * beam_r
+        mx = (ax + bx) / 2
+        my = (ay + by) / 2
+        beam_len = math.hypot(bx - ax, by - ay)
+        beam_angle = math.atan2(by - ay, bx - ax)
+        # Box rotated isn't trivial with _make_box_local; instead
+        # build as a four-vert thin prism aligned with the segment.
+        bw = 0.16   # beam thickness (perpendicular to span)
+        bh = 0.25   # beam height
+        perp_x = -math.sin(beam_angle) * bw / 2
+        perp_y =  math.cos(beam_angle) * bw / 2
+        bverts = []
+        for sgn_top in (-1, 1):
+            for (px, py) in [(ax - perp_x, ay - perp_y),
+                              (bx - perp_x, by - perp_y),
+                              (bx + perp_x, by + perp_y),
+                              (ax + perp_x, ay + perp_y)]:
+                bverts.append((px, py, beam_z + sgn_top * bh / 2))
+        bfaces = [
+            [0, 1, 2, 3],          # bottom
+            [4, 7, 6, 5],          # top
+            [0, 4, 5, 1],          # side
+            [1, 5, 6, 2],          # side
+            [2, 6, 7, 3],          # side
+            [3, 7, 4, 0],          # side
+        ]
+        _finalize_mesh(f"{name}_HeaderBeam_{i}", bverts, bfaces, post_color)
+    # Roof — TIERED dome anchored at the TOP of the header beams
+    # (post_base_z + height) so the roof rests cleanly on the
+    # structure instead of floating above it.
+    roof_base_z = post_base_z + height
     overhang = 0.3
     lower_h = 0.5
     upper_h = 0.7
     mid_r = radius * 0.55
-    apex_z = z_floor + height + lower_h + upper_h
+    apex_z = roof_base_z + lower_h + upper_h
     rverts = []
     for i in range(n_posts):
         ang = 2.0 * math.pi * i / n_posts
         rverts.append((cx + math.cos(ang) * (radius + overhang),
                        cy + math.sin(ang) * (radius + overhang),
-                       z_floor + height))
+                       roof_base_z))
     for i in range(n_posts):
         ang = 2.0 * math.pi * i / n_posts
         rverts.append((cx + math.cos(ang) * mid_r,
                        cy + math.sin(ang) * mid_r,
-                       z_floor + height + lower_h))
+                       roof_base_z + lower_h))
     rverts.append((cx, cy, apex_z))
     apex_idx = len(rverts) - 1
     rfaces = []
@@ -2086,6 +2165,27 @@ def _build_gazebo(name, cx, cy, z_floor, radius=4.0, height=3.5,
         ni = (i + 1) % n_posts
         rfaces.append([n_posts + i, n_posts + ni, apex_idx])
     _finalize_mesh(f"{name}_Roof", rverts, rfaces, roof_color)
+
+    # SOFFIT · seals the gap between the post/header ring (radius)
+    # and the roof's outer eave ring (radius + overhang) at
+    # z = roof_base_z. Without this you can see daylight between
+    # the post tops and the underside of the roof from outside.
+    sverts = []
+    for i in range(n_posts):
+        ang = 2.0 * math.pi * i / n_posts
+        sverts.append((cx + math.cos(ang) * radius,
+                       cy + math.sin(ang) * radius,
+                       roof_base_z - 0.01))
+    for i in range(n_posts):
+        ang = 2.0 * math.pi * i / n_posts
+        sverts.append((cx + math.cos(ang) * (radius + overhang),
+                       cy + math.sin(ang) * (radius + overhang),
+                       roof_base_z - 0.01))
+    sfaces = []
+    for i in range(n_posts):
+        ni = (i + 1) % n_posts
+        sfaces.append([i, ni, n_posts + ni, n_posts + i])
+    _finalize_mesh(f"{name}_Soffit", sverts, sfaces, post_color)
 
 
 def _build_drinking_fountain(name, x, y, z_ground):
