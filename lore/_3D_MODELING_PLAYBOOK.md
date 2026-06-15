@@ -795,6 +795,23 @@ between-equally-OK-options choice, pick the printable one.
   `counter_y - counter_d/2 - clearance` rather than using a
   fixed `depth * 0.45` formula.
 
+### 2026-06-15 · water-vs-mesh sign convention
+
+- **`mesh_z` returns the visible surface. Water lives just ABOVE
+  it.** I burned a commit putting creek water at
+  `mesh_z - 0.60` and the surface ended up buried under the
+  terrain. The corners of a creek-water quad are sampled INSIDE
+  the carved channel, so `mesh_z` there already gives the
+  channel floor — water should be `mesh_z + 0.05` (just above
+  the floor) for visibility, NOT below it. The "below" intuition
+  comes from rim sampling (water below the RIM), but for in-
+  channel corner samples the sign flips. Confusing because for
+  POND water disc, `water_z` is below the rim sample (which is
+  measured OUTSIDE the depression at `radius * 1.05`). The rule:
+  if your sample is INSIDE the carved depression, water is `+`
+  above it. If your sample is OUTSIDE the depression (rim
+  ring), water is `-` below it.
+
 ### TEMPLATE for next session
 
 ```markdown
