@@ -72,6 +72,8 @@ func _ready() -> void:
 	var diner_signs: Array = []
 	var hce_welcome_signs: Array = []
 	var stop_signs: Array = []
+	var hs_scoreboard_banners: Array = []
+	var hs_scoreboard_panels: Array = []
 	for mi in meshes:
 		mi.material_override = mat
 		applied += 1
@@ -113,6 +115,10 @@ func _ready() -> void:
 			hce_welcome_signs.append(mi)
 		elif "CommRoad_StopFace" in mi.name:
 			stop_signs.append(mi)
+		elif "HSField_Scoreboard_NameBanner" in mi.name:
+			hs_scoreboard_banners.append(mi)
+		elif "HSField_Scoreboard_Panel" in mi.name:
+			hs_scoreboard_panels.append(mi)
 	print("[LocaleSetup · %s] applied material to %d meshes · added %d colliders" % [get_parent().name, applied, collided])
 	# Attach real Label3D text to the sign panels.
 	#
@@ -215,6 +221,24 @@ func _ready() -> void:
 						0.0,
 						Color(0.98, 0.98, 0.96, 1.0),    # cream
 						Color(0.42, 0.08, 0.06, 1.0))    # deep red
+	# High-school scoreboard — both panel + name banner face the
+	# bleachers (south side, Blender -Y → Godot +Z).
+	for panel in hs_scoreboard_banners:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.06),
+						Vector3(0, 0, 1),
+						"HARMONY CREEK HIGH",
+						0.0,
+						Color(0.98, 0.98, 0.96, 1.0),
+						Color(0.10, 0.12, 0.32, 1.0))
+	for panel in hs_scoreboard_panels:
+		_attach_text_label(panel,
+						Vector3(0, 0, 0.12),
+						Vector3(0, 0, 1),
+						"HOME 0  GUEST 0\n1ST  10:00",
+						0.0,
+						Color(0.95, 0.85, 0.30, 1.0),
+						Color(0.05, 0.06, 0.10, 1.0))
 	# Stop sign — facing east (toward eastbound drivers). The
 	# Blender +X face becomes Godot +X after the axis swap.
 	for panel in stop_signs:

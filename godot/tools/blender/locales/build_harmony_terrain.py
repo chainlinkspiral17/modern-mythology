@@ -173,6 +173,10 @@ SETTLEMENTS = [
     # platform so it reads as tucked away. Higher flatness so it
     # wins the overlap blend with the parent OT Park zone.
     ("OTSkatePark",       -300, -260, 65, 100, -0.5, 0.90),
+    # Harmony Creek High School football field + stadium platform
+    # — large flat zone east of Phase 2 (between Phase 2 and the
+    # East Commercial strip) for the field + bleachers.
+    ("HighSchoolField", 240, 440, -100, 0, +3.0, 0.88),
     # Chapter-one commercial block pads — nested inside the
     # broader SouthComm belt so each building footprint is locally
     # flat regardless of the parent zone's residual wild-zone
@@ -5448,6 +5452,211 @@ def build_phase2_neighborhood():
         # Skipped — terrain vertex colors handle the green already
 
 
+def build_high_school_field():
+    """Harmony Creek High School football field + stadium. Carved
+    out of the new HighSchoolField settlement zone (240..440 x,
+    -100..0 y, target +3.0 m, flatness 0.88).
+
+    Layout (centred at (340, -50)):
+      · 120 × 53 m green field with 5-yd lateral white stripes
+      · 9 m end zones (one north, one south) in school colours
+      · 1 m white sideline + end-line stripes
+      · Running track ring around field (red oval)
+      · Bleachers on EAST side (home) + smaller WEST side (visit)
+      · 2 goalposts at each end zone
+      · "HARMONY CREEK HIGH" pylon sign at the entrance
+    """
+    cx, cy = 340.0, -50.0
+    ground_z = mesh_z(cx, cy)
+
+    # Materials
+    COL_GRASS_FIELD = (0.24, 0.55, 0.22, 1.0)
+    COL_GRASS_STRIPE = (0.30, 0.62, 0.26, 1.0)   # alternating mowing
+    COL_LINE = (0.95, 0.95, 0.94, 1.0)
+    COL_ENDZONE_HOME = (0.20, 0.22, 0.55, 1.0)    # school navy
+    COL_ENDZONE_AWAY = (0.85, 0.20, 0.20, 1.0)    # accent red
+    COL_TRACK = (0.62, 0.22, 0.20, 1.0)           # rubberized red
+    COL_BLEACHER_FRAME = (0.42, 0.42, 0.45, 1.0)
+    COL_BLEACHER_BENCH = (0.62, 0.62, 0.64, 1.0)
+    COL_GOALPOST = (0.95, 0.95, 0.94, 1.0)
+
+    # ── FIELD slab (green) — 120 × 53 m
+    field_w = 53.0
+    field_l = 120.0
+    _make_box_local("HSField_Grass",
+                    (cx, cy, ground_z + 0.04),
+                    (field_w, field_l, 0.08), COL_GRASS_FIELD)
+    # Alternating mowing stripes (12 stripes, 10 yd each → 10m)
+    n_stripes = 12
+    stripe_w = field_l / n_stripes
+    for k in range(n_stripes):
+        if k % 2 == 0:
+            sx_y = cy - field_l / 2 + (k + 0.5) * stripe_w
+            _make_box_local(f"HSField_MowStripe_{k}",
+                            (cx, sx_y, ground_z + 0.045),
+                            (field_w - 0.4, stripe_w * 0.95, 0.02),
+                            COL_GRASS_STRIPE)
+    # 11 lateral 5-yard lines (every ~10.9 m, with a goal-line at
+    # each end and a 50-yard line at the centre)
+    n_lines = 11
+    for k in range(n_lines):
+        ly_pos = cy - field_l / 2 + (k + 1) * field_l / (n_lines + 1)
+        _make_box_local(f"HSField_YardLine_{k}",
+                        (cx, ly_pos, ground_z + 0.06),
+                        (field_w - 0.4, 0.20, 0.02), COL_LINE)
+    # Sidelines (E + W)
+    for sgn in (-1, 1):
+        _make_box_local(f"HSField_Sideline_{sgn:+d}",
+                        (cx + sgn * (field_w / 2 - 0.15),
+                         cy, ground_z + 0.06),
+                        (0.30, field_l - 0.4, 0.02), COL_LINE)
+    # End lines (N + S)
+    for sgn in (-1, 1):
+        _make_box_local(f"HSField_Endline_{sgn:+d}",
+                        (cx, cy + sgn * (field_l / 2 - 0.15),
+                         ground_z + 0.06),
+                        (field_w - 0.4, 0.30, 0.02), COL_LINE)
+
+    # ── END ZONES — 9 m extensions in school colours
+    ez_d = 9.0
+    for sgn, col, ez_tag in ((-1, COL_ENDZONE_HOME, "Home"),
+                              (+1, COL_ENDZONE_AWAY, "Away")):
+        _make_box_local(f"HSField_EndZone_{ez_tag}",
+                        (cx, cy + sgn * (field_l / 2 + ez_d / 2),
+                         ground_z + 0.04),
+                        (field_w, ez_d, 0.08), col)
+
+    # ── TRACK — red rubberized ring around the field. Built as a
+    # ring of 36 quad segments forming an oval following the
+    # rounded-rectangle shape (track typical: ~6m wide).
+    track_w = 6.0
+    field_half_l = field_l / 2 + ez_d   # outer end of end zones
+    field_half_w = field_w / 2
+    # Outer rectangle of track footprint:
+    # straight sides + semi-circular ends
+    segs_curve = 12
+    inner_pts = []
+    outer_pts = []
+    # Top semi-circle (north end)
+    for i in range(segs_curve + 1):
+        t = i / segs_curve
+        ang = math.pi * t              # 0..pi
+        ix = math.cos(ang) * field_half_w
+        iy = field_half_l + math.sin(ang) * field_half_w
+        ox = math.cos(ang) * (field_half_w + track_w)
+        oy = field_half_l + math.sin(ang) * (field_half_w + track_w)
+        inner_pts.append((cx + ix, cy + iy))
+        outer_pts.append((cx + ox, cy + oy))
+    # Bottom semi-circle (south end) — angles pi..2pi
+    for i in range(segs_curve + 1):
+        t = i / segs_curve
+        ang = math.pi + math.pi * t
+        ix = math.cos(ang) * field_half_w
+        iy = -field_half_l + math.sin(ang) * field_half_w
+        ox = math.cos(ang) * (field_half_w + track_w)
+        oy = -field_half_l + math.sin(ang) * (field_half_w + track_w)
+        inner_pts.append((cx + ix, cy + iy))
+        outer_pts.append((cx + ox, cy + oy))
+    # Build the ring as quads between inner_pts[i] and outer_pts[i]
+    track_verts = []
+    for (ix, iy), (ox, oy) in zip(inner_pts, outer_pts):
+        track_verts.append((ix, iy, ground_z + 0.05))
+        track_verts.append((ox, oy, ground_z + 0.05))
+    track_faces = []
+    npairs = len(inner_pts)
+    for i in range(npairs - 1):
+        # 4 verts per quad: inner_i, outer_i, outer_i+1, inner_i+1
+        track_faces.append([i * 2, i * 2 + 1,
+                            (i + 1) * 2 + 1, (i + 1) * 2])
+    _finalize_mesh("HSField_Track", track_verts, track_faces,
+                    COL_TRACK)
+
+    # ── BLEACHERS — east side (home, larger) + west side (visit).
+    # Each bleacher = stepped seating from front rail back to top.
+    def _build_bleacher_block(name, bcx, bcy, n_rows=6, row_d=0.8,
+                               row_h=0.40, length=60.0,
+                               rise_dir_perp_sgn=1):
+        """rise_dir_perp_sgn = +1 means the bleachers RISE toward
+        +X (east-facing bleacher block, so home side west of
+        field). -1 means rises toward -X."""
+        # Frame backing wall
+        _make_box_local(f"{name}_BackWall",
+                        (bcx + rise_dir_perp_sgn * (n_rows * row_d + 0.5),
+                         bcy, ground_z + n_rows * row_h + 1.0),
+                        (0.20, length, n_rows * row_h * 2 + 0.5),
+                        COL_BLEACHER_FRAME)
+        # 6 stepped rows
+        for k in range(n_rows):
+            row_x_off = rise_dir_perp_sgn * (k * row_d + row_d / 2)
+            row_z = k * row_h
+            _make_box_local(f"{name}_Step_{k}",
+                            (bcx + row_x_off, bcy,
+                             ground_z + row_z + row_h / 2),
+                            (row_d, length, row_h),
+                            COL_BLEACHER_FRAME)
+            # Bench on top of the step
+            _make_box_local(f"{name}_Bench_{k}",
+                            (bcx + row_x_off, bcy,
+                             ground_z + row_z + row_h + 0.04),
+                            (row_d * 0.85, length - 0.4, 0.08),
+                            COL_BLEACHER_BENCH)
+        # Front rail (low metal pipe at first step)
+        _make_box_local(f"{name}_FrontRail",
+                        (bcx - rise_dir_perp_sgn * 0.10,
+                         bcy, ground_z + 0.85),
+                        (0.06, length, 0.10),
+                        COL_BLEACHER_FRAME)
+
+    # HOME bleachers on the EAST side (rises east-facing toward +X)
+    home_bx = cx + field_w / 2 + track_w + 2.0
+    _build_bleacher_block("HSField_Home", home_bx, cy,
+                          n_rows=8, length=80.0,
+                          rise_dir_perp_sgn=+1)
+    # VISIT bleachers on the WEST side (smaller)
+    visit_bx = cx - field_w / 2 - track_w - 2.0
+    _build_bleacher_block("HSField_Visit", visit_bx, cy,
+                          n_rows=5, length=50.0,
+                          rise_dir_perp_sgn=-1)
+
+    # ── GOAL POSTS at each end zone
+    for sgn, ez_tag in ((-1, "Home"), (+1, "Away")):
+        gp_y = cy + sgn * (field_l / 2 + ez_d)
+        gp_base_z = ground_z + 0.04
+        # Vertical pole (single, behind end line)
+        _make_cyl_local(f"HSField_GP_{ez_tag}_Base",
+                        (cx, gp_y, gp_base_z + 3.0),
+                        0.08, 6.0, COL_GOALPOST, segments=6)
+        # Crossbar at top of vertical pole, perpendicular
+        _make_box_local(f"HSField_GP_{ez_tag}_Crossbar",
+                        (cx, gp_y, gp_base_z + 6.0),
+                        (5.6, 0.10, 0.10), COL_GOALPOST)
+        # Two upright posts on the crossbar
+        for sx_off in (-2.6, 2.6):
+            _make_cyl_local(f"HSField_GP_{ez_tag}_Upright_{int(sx_off*10):+d}",
+                            (cx + sx_off, gp_y,
+                             gp_base_z + 8.0),
+                            0.06, 4.0, COL_GOALPOST, segments=6)
+
+    # ── SCOREBOARD on the north (away) end behind the end zone
+    sb_y = cy + field_l / 2 + ez_d + 8.0
+    sb_z = ground_z
+    _make_cyl_local("HSField_Scoreboard_Pole",
+                    (cx - 4.0, sb_y, sb_z + 4.0),
+                    0.20, 8.0, COL_BLEACHER_FRAME, segments=6)
+    _make_cyl_local("HSField_Scoreboard_Pole2",
+                    (cx + 4.0, sb_y, sb_z + 4.0),
+                    0.20, 8.0, COL_BLEACHER_FRAME, segments=6)
+    _make_box_local("HSField_Scoreboard_Panel",
+                    (cx, sb_y, sb_z + 6.0),
+                    (10.0, 0.20, 3.0),
+                    (0.20, 0.22, 0.28, 1.0))
+    # School name banner above the scoreboard panel
+    _make_box_local("HSField_Scoreboard_NameBanner",
+                    (cx, sb_y, sb_z + 8.0),
+                    (10.0, 0.10, 0.80),
+                    (0.20, 0.22, 0.55, 1.0))
+
+
 def main():
     clear_scene()
     build_ground()
@@ -5460,6 +5669,7 @@ def main():
     build_oliver_tree_skatepark()
     build_commercial_cluster()
     build_phase2_neighborhood()
+    build_high_school_field()
     export_glb()
 
 
