@@ -95,10 +95,16 @@ def main():
                 (name, cx, cy, length))
         long_streaks = []
         for axis_val, plist in bins.items():
-            # Dedupe by owner — a single fence split by a gate
-            # produces multiple panel boxes, but visually it's
-            # one fence and should count as one entry.
-            unique_owners = {p[0].split('_FenceSide')[0] for p in plist}
+            # Dedupe by owner — a single fence broken into
+            # sub-panels (gate split for sides, terrain steps
+            # for backs) produces multiple panel boxes that are
+            # visually one fence and should count as one entry.
+            def owner_of(panel_name):
+                for tag in ('_FenceSide', '_FenceBack'):
+                    if tag in panel_name:
+                        return panel_name.split(tag)[0]
+                return panel_name
+            unique_owners = {owner_of(p[0]) for p in plist}
             if len(unique_owners) < 3:
                 continue
             if span_idx == 0:

@@ -9169,17 +9169,26 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     by_back_x = cx - fx * by_back_off
     by_back_y = cy - fy * by_back_off
     if has_back:
-        back_z = mesh_z(by_back_x, by_back_y)
-        if abs(fx) > 0.5:
-            _make_box_local(f"{name}_FenceBack",
-                            (by_back_x, by_back_y, back_z + FENCE_H / 2),
-                            (fence_plank_t, by_side_off * 2, FENCE_H),
-                            col_fence)
-        else:
-            _make_box_local(f"{name}_FenceBack",
-                            (by_back_x, by_back_y, back_z + FENCE_H / 2),
-                            (by_side_off * 2, fence_plank_t, FENCE_H),
-                            col_fence)
+        # Split back fence into 4 stepped sub-segments so it
+        # follows lot grading on sloped properties instead of
+        # a single 18m box tilting through the terrain.
+        back_full_len = by_side_off * 2
+        N_BACK = 4
+        sub_len = back_full_len / N_BACK
+        for i in range(N_BACK):
+            # Offset of this sub-segment along the perp axis
+            # (back fence runs perpendicular to facing)
+            sub_offset = -back_full_len / 2 + sub_len * (i + 0.5)
+            sx_ = by_back_x + perp_x * sub_offset
+            sy_ = by_back_y + perp_y * sub_offset
+            sz_ = mesh_z(sx_, sy_)
+            if abs(fx) > 0.5:
+                size = (fence_plank_t, sub_len, FENCE_H)
+            else:
+                size = (sub_len, fence_plank_t, FENCE_H)
+            _make_box_local(f"{name}_FenceBack_{i}",
+                            (sx_, sy_, sz_ + FENCE_H / 2),
+                            size, col_fence)
     # SIDE fence segments — parallel to facing, going from back
     # fence toward the front of the house (stop ~main_d/2 + 2 from
     # house centre so they don't run into the front yard).
