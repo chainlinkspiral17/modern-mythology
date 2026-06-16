@@ -1502,7 +1502,8 @@ def _build_hierophant_armory():
 
 def _build_devil_roadhouse():
     """Daigle's Roadhouse — Gumbo Limbo cycle gravitas. Cinderblock
-    one-storey bar with peeling sign + two ratty pickups out front."""
+    one-storey bar with peeling sign, broken neon, dumpster, two
+    ratty pickups out front, beer cans scattered in the dirt."""
     print("[graustark]   Devil — Daigle's Roadhouse")
     cx, cy = ARCANA_LOCALES['Devil_Roadhouse'][0]
     gz = graustark_elevation(cx, cy)
@@ -1510,29 +1511,103 @@ def _build_devil_roadhouse():
     ht._make_box_local("Devil_Daigle_Body",
                        (cx, cy, gz + H / 2),
                        (W, D, H), (0.62, 0.58, 0.52, 1.0))
+    # Weathering streaks on the wall (3 darker vertical stripes)
+    for i in range(3):
+        t = -1 + 2 * (i + 1) / 4
+        ht._make_box_local(
+            f"Devil_Daigle_Streak_{i}",
+            (cx + t * (W / 2 - 1.0), cy - D / 2 - 0.04, gz + H / 2),
+            (0.40, 0.05, H * 0.9), (0.42, 0.40, 0.36, 1.0))
     # Flat tar roof
     ht._make_box_local("Devil_Daigle_Roof",
                        (cx, cy, gz + H + 0.15),
                        (W + 0.4, D + 0.4, 0.30),
                        (0.14, 0.12, 0.12, 1.0))
-    # Faded peeling "DAIGLE'S" sign over the door
+    # AC unit on the roof (rusted box)
+    ht._make_box_local("Devil_Daigle_AC",
+                       (cx + W / 4, cy, gz + H + 0.80),
+                       (1.4, 1.2, 1.0),
+                       (0.46, 0.40, 0.32, 1.0))
+    # Faded peeling "DAIGLE'S" sign over the door (with darker
+    # patches showing the peeling)
     ht._make_box_local("Devil_Daigle_Sign",
                        (cx, cy - D / 2 - 0.05, gz + 3.0),
                        (5.0, 0.15, 0.9), (0.78, 0.20, 0.18, 1.0))
+    # Peeling chunks (3 darker patches on the sign)
+    for i, t in enumerate([-0.5, +0.1, +0.7]):
+        ht._make_box_local(
+            f"Devil_Daigle_SignPeel_{i}",
+            (cx + t * 2.0, cy - D / 2 - 0.08,
+             gz + 3.0 + (i % 2) * 0.2),
+            (0.6, 0.05, 0.30), (0.32, 0.16, 0.12, 1.0))
     # Schlitz neon — small horizontal box hanging off the side
     ht._make_box_local("Devil_Daigle_Neon",
                        (cx + W / 2 + 0.1, cy, gz + 2.6),
                        (0.10, 1.6, 0.45), (0.85, 0.35, 0.20, 1.0))
+    # Half-broken neon "OPEN" (one half lit, one dark)
+    ht._make_box_local("Devil_Daigle_NeonOpen_Lit",
+                       (cx - W / 2 - 0.1, cy + 1.0, gz + 2.6),
+                       (0.10, 0.7, 0.35), COL_NEON_PINK)
+    ht._make_box_local("Devil_Daigle_NeonOpen_Dead",
+                       (cx - W / 2 - 0.1, cy + 0.1, gz + 2.6),
+                       (0.10, 0.7, 0.35),
+                       (0.36, 0.18, 0.18, 1.0))
     # Single front door
     ht._make_box_local("Devil_Daigle_Door",
                        (cx, cy - D / 2 - 0.05, gz + 1.0),
                        (1.0, 0.10, 2.0), COL_DOOR_DARK)
-    # Two front windows
-    for s in (-1, +1):
+    # Two front windows (one with a board over half — broken)
+    ht._make_box_local("Devil_Daigle_Window_Left",
+                       (cx - 3.5, cy - D / 2 - 0.05, gz + 1.8),
+                       (1.4, 0.05, 1.0), COL_GLASS_DARK)
+    # Right window has a board across the bottom half
+    ht._make_box_local("Devil_Daigle_Window_Right",
+                       (cx + 3.5, cy - D / 2 - 0.05, gz + 2.1),
+                       (1.4, 0.05, 0.50), COL_GLASS_DARK)
+    ht._make_box_local("Devil_Daigle_Window_RightBoard",
+                       (cx + 3.5, cy - D / 2 - 0.08, gz + 1.6),
+                       (1.4, 0.05, 0.55),
+                       (0.46, 0.30, 0.20, 1.0))
+    # Two ratty pickups parked out front
+    for i, ox in enumerate([-4.5, +4.5]):
+        tx = cx + ox
+        ty = cy - D / 2 - 3.5
+        col = (0.42, 0.30, 0.22, 1.0) if i == 0 else (0.36, 0.32, 0.26, 1.0)
+        ht._make_box_local(f"Devil_Daigle_Truck_{i}_Body",
+                           (tx, ty, gz + 0.85), (2.0, 5.0, 1.2), col)
+        ht._make_box_local(f"Devil_Daigle_Truck_{i}_Cab",
+                           (tx, ty - 0.8, gz + 1.9),
+                           (1.9, 2.2, 0.7), col)
+        for wx, wy_ in [(-0.8, -1.6), (+0.8, -1.6),
+                        (-0.8, +1.6), (+0.8, +1.6)]:
+            ht._make_box_local(
+                f"Devil_Daigle_Truck_{i}_Wheel_{wx:+.1f}_{wy_:+.1f}",
+                (tx + wx, ty + wy_, gz + 0.30),
+                (0.32, 0.64, 0.64), COL_BLACK_IRON)
+    # Dumpster around the back (NW corner)
+    dxd = cx - W / 2 - 2.0
+    dyd = cy + D / 2 + 1.5
+    ht._make_box_local("Devil_Daigle_Dumpster",
+                       (dxd, dyd, gz + 0.8),
+                       (2.2, 1.6, 1.6),
+                       (0.16, 0.32, 0.20, 1.0))
+    ht._make_box_local("Devil_Daigle_DumpsterLid",
+                       (dxd, dyd, gz + 1.65),
+                       (2.3, 1.7, 0.10),
+                       (0.10, 0.20, 0.14, 1.0))
+    # Scattered beer cans / debris (small low boxes) around the lot
+    for i, (ox, oy) in enumerate([(-2.0, -8.0), (+1.5, -9.0),
+                                    (-6.0, -7.0), (+5.0, -8.5),
+                                    (+3.0, -10.0), (-4.5, -9.5)]):
         ht._make_box_local(
-            f"Devil_Daigle_Window_{s:+d}",
-            (cx + s * 3.5, cy - D / 2 - 0.05, gz + 1.8),
-            (1.4, 0.05, 1.0), COL_GLASS_DARK)
+            f"Devil_Daigle_Can_{i}",
+            (cx + ox, cy + oy, gz + 0.08),
+            (0.10, 0.10, 0.18), (0.52, 0.42, 0.32, 1.0))
+    # Gravel parking lot
+    ht._make_box_local("Devil_Daigle_Lot",
+                       (cx, cy - D - 2.0, gz + 0.03),
+                       (W + 8.0, 8.0, 0.05),
+                       (0.50, 0.46, 0.40, 1.0))
     # Two ratty pickups parked out front
     for i, ox in enumerate([-4.5, +4.5]):
         tx = cx + ox
