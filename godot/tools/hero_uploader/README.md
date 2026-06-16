@@ -61,14 +61,34 @@ download mode.
 5. Click **Install**.
 6. Copy the displayed git command, paste it in a terminal, push.
 
-## Adding a new hero slot
+## Canonical roster
 
-If you're adding a brand-new hero that doesn't exist in
-`HERO_GLB_PATHS` yet, add the entry to BOTH:
+The hero list mirrors the **22 major arcana characters** named in
+`lore/_GAUNTLET_BUILD_WIKI.md` ("Canonical cast" section), plus a
+short ensemble list (currently Alberto and Maya Daigle — important
+but not card-carriers).
 
-- `godot/tools/blender/locales/build_graustark.py` (the
-  `HERO_GLB_PATHS` dict)
-- `godot/tools/hero_uploader/index.html` (the `HEROES` array near
-  the top of the inline script)
+Some characters carry multiple arcana — same person at different
+points in time (e.g. John Frank is 0 The Fool, XIV Temperance, and
+XIX The Sun). One model per character; the future-self variants
+can be expressed via pose / shader / scene context, not separate
+GLBs.
 
-Keep them in sync.
+The Lovers (VI) and The World (XXI) are PAIRS — two entries each
+(Mackenzie + Philip Roberts; The Frog + Mr. Dickens Dean).
+
+## Adding a new character
+
+Edit `index.html` and add a row to the `HEROES` array. Use the
+existing schema:
+
+```js
+{arcana: 'V', name: 'The Hierophant', character: 'Quentin Paul',
+ file: 'quentin_paul.glb', tag: 'Graustark · Table 17 brunch'},
+```
+
+If the character is also referenced from a scene SPAWN in
+`godot/tools/blender/locales/build_graustark.py`, also add an
+entry to `HERO_GLB_PATHS` there — that dict maps scene-spawn
+labels (e.g. `'Cath_Frasier'`) to filenames, which is a different
+concern from the canonical character roster the uploader manages.

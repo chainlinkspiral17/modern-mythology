@@ -317,28 +317,37 @@
 
 <script>
 // ════════════════════════════════════════════════════════════════
-// Canonical hero registry — mirrors HERO_GLB_PATHS in
-// godot/tools/blender/locales/build_graustark.py
+// Canonical cast — the 22 major arcana characters per
+// lore/_GAUNTLET_BUILD_WIKI.md (canonical cast section).
+// A few characters carry MULTIPLE arcana (future-self variants);
+// they get one entry tagged with the others. Plus Alberto, who
+// is ensemble (not a card-carrier) but is on staff.
 // ════════════════════════════════════════════════════════════════
 const HEROES = [
-  {label: 'Diner_John',         file: 'john_frank.glb',           role: 'D\'Ambrosio\'s diner'},
-  {label: 'FQ_Elicia',          file: 'elicia_temple.glb',        role: 'French Quarter'},
-  {label: 'RF_Nicola',          file: 'nicola.glb',               role: 'Riverfront'},
-  {label: 'RF_Dante',           file: 'dante_dambrosio.glb',      role: 'Riverfront'},
-  {label: 'Cath_Frasier',       file: 'frasier_temple.glb',       role: 'Cathedral'},
-  {label: 'Garage_Antonio',     file: 'antonio.glb',              role: 'Garage'},
-  {label: 'Cemetery_Alberto',   file: 'alberto.glb',              role: 'Cemetery'},
-  {label: 'Cath_apprentice',    file: 'maya_apprentice.glb',      role: 'Cathedral · apprentice'},
-  {label: 'Church_priest',      file: 'father_amato.glb',         role: 'Church'},
-  {label: 'Hermit_keeper',      file: 'hermit_keeper.glb',        role: 'Hermit\'s hut'},
-  {label: 'Frog_owner',         file: 'frog_shop_owner.glb',      role: 'Frog shop'},
-  {label: 'Sun_Garden_old',     file: 'frank_sun.glb',            role: 'Sun Garden'},
-  {label: 'Carnival_caretaker', file: 'carnival_caretaker.glb',   role: 'Carnival'},
-  {label: 'Cane_field_1',       file: 'cane_worker.glb',          role: 'Cane field'},
-  {label: 'Cemetery_mourner1',  file: 'cemetery_mourner_1.glb',   role: 'Cemetery mourner'},
-  {label: 'Cemetery_mourner2',  file: 'cemetery_mourner_2.glb',   role: 'Cemetery mourner'},
-  {label: 'FQ_restaurant_door', file: 'fq_restaurant_patron.glb', role: 'FQ restaurant'},
-  {label: 'Casino_doorman',     file: 'casino_doorman.glb',       role: 'Casino'},
+  // ── 22 major arcana ──
+  {arcana: '0',     name: 'The Fool',           character: 'John Frank',          file: 'john_frank.glb',          tag: "D'Ambrosio's diner busser · also XIV / XIX"},
+  {arcana: 'I',     name: 'The Magician',       character: 'Frasier Temple',      file: 'frasier_temple.glb',      tag: "Cathedral of Rust & Code · warehouse-sysop"},
+  {arcana: 'II',    name: 'The High Priestess', character: 'Elicia Temple',       file: 'elicia_temple.glb',       tag: "Filmmaker · also XVI The Tower"},
+  {arcana: 'III',   name: 'The Empress',        character: 'Nicola Greer',        file: 'nicola.glb',              tag: "Riverboat hostess · hosts Aria"},
+  {arcana: 'IV',    name: 'The Emperor',        character: "Dante D'Ambrosio",    file: 'dante_dambrosio.glb',     tag: "Riverboat proprietor"},
+  {arcana: 'V',     name: 'The Hierophant',     character: 'Quentin Paul',        file: 'quentin_paul.glb',        tag: "Graustark power-figure · Table 17 brunch"},
+  {arcana: 'VI',    name: 'The Lovers',         character: 'Mackenzie Roberts',   file: 'mackenzie_roberts.glb',   tag: "Paired with Philip · cursed (sinkhole-edge) ground"},
+  {arcana: 'VI',    name: 'The Lovers',         character: 'Philip Roberts',      file: 'philip_roberts.glb',      tag: "Paired with Mackenzie"},
+  {arcana: 'VII',   name: 'The Chariot',        character: "Antonio D'Ambrosio",  file: 'antonio.glb',             tag: "Ember & Ash, New Orleans · two speeds"},
+  {arcana: 'VIII',  name: 'Strength',           character: 'Douglas Forte',       file: 'douglas_forte.glb',       tag: "Ouroboros tattoo · Joanna's lost lover"},
+  {arcana: 'IX',    name: 'The Hermit',         character: 'Joanna LeMoine',      file: 'joanna_lemoine.glb',      tag: "Graustark ruins · also XVII The Star"},
+  {arcana: 'X',     name: 'Wheel of Fortune',   character: 'Erica Campbell',      file: 'erica_campbell.glb',      tag: "Houston corp lawyer · also XI Justice"},
+  {arcana: 'XI',    name: 'Justice',            character: 'Anna Logue',          file: 'anna_logue.glb',          tag: "Ember & Ash designer · Corporate Idols"},
+  {arcana: 'XII',   name: 'The Hanged Man',     character: 'Natalie David',       file: 'natalie_david.glb',       tag: "Simons, LA diviner · also XVIII The Moon"},
+  {arcana: 'XIII',  name: 'Death',              character: 'Alice Newsom',        file: 'alice_newsom.glb',        tag: "PetroTex plaintiff · hospice Room 217"},
+  {arcana: 'XV',    name: 'The Devil',          character: 'Jimmy Daigle',        file: 'jimmy_daigle.glb',        tag: "Antonio's operator/operated · father of Maya"},
+  {arcana: 'XX',    name: 'Judgement',          character: 'Aria / Third',        file: 'aria_third.glb',          tag: "Digital consciousness · Nicola's pregnancy"},
+  {arcana: 'XXI',   name: 'The World',          character: 'The Frog',            file: 'the_frog.glb',            tag: "Cork hat by the river · long-game observer"},
+  {arcana: 'XXI',   name: 'The World',          character: 'Mr. Dickens Dean',    file: 'dickens_dean.glb',        tag: "Frog's colleague · charcoal suit"},
+
+  // ── Ensemble (not arcana-carriers but important) ──
+  {arcana: '—',     name: 'Ensemble',           character: 'Alberto',             file: 'alberto.glb',             tag: "D'Ambrosio's · vol6 redemption arc"},
+  {arcana: '—',     name: 'Ensemble',           character: 'Maya Daigle',         file: 'maya_daigle.glb',         tag: "Jimmy's daughter · 7 in vol5 ch5, 16 in ch15"},
 ];
 
 // ════════════════════════════════════════════════════════════════
@@ -394,19 +403,34 @@ function init() {
 
 function renderHeroList() {
   $list.innerHTML = '';
+  // Group by arcana (major arcana first, then ensemble)
+  let lastGroup = null;
   for (const h of HEROES) {
+    const isArcana = h.arcana !== '—';
+    const group = isArcana ? 'arcana' : 'ensemble';
+    if (group !== lastGroup) {
+      const hdr = document.createElement('div');
+      hdr.style.cssText = 'color:var(--fg-dim); font-size:11px; padding:8px 4px 2px; letter-spacing:0.08em; text-transform:uppercase;';
+      hdr.textContent = isArcana ? '— Major Arcana —' : '— Ensemble —';
+      $list.appendChild(hdr);
+      lastGroup = group;
+    }
     const card = document.createElement('div');
     card.className = 'hero-card';
-    card.dataset.label = h.label;
-    if (state.pickedHero && state.pickedHero.label === h.label) {
+    card.dataset.file = h.file;
+    if (state.pickedHero && state.pickedHero.file === h.file
+        && state.pickedHero.character === h.character) {
       card.classList.add('selected');
     }
     const installed = !!h._installed;
+    const arcanaBadge = isArcana
+      ? `<span style="color:var(--brass);font-family:Georgia,serif;font-weight:bold;margin-right:6px">${escapeHTML(h.arcana)}</span>`
+      : '';
     card.innerHTML = `
       <div class="status ${installed ? 'ok' : 'bad'}">${installed ? '✓' : '○'}</div>
       <div>
-        <div class="name">${escapeHTML(h.label)} <span style="color:var(--fg-dim);font-size:11px">· ${escapeHTML(h.role)}</span></div>
-        <div class="filename">${escapeHTML(h.file)}</div>
+        <div class="name">${arcanaBadge}${escapeHTML(h.character)}<span style="color:var(--fg-dim);font-size:11px"> · ${escapeHTML(h.name)}</span></div>
+        <div class="filename">${escapeHTML(h.file)} · <span style="color:var(--fg-dim)">${escapeHTML(h.tag)}</span></div>
       </div>
       <div class="size">${h._installedSize || ''}</div>
     `;
@@ -422,7 +446,8 @@ function escapeHTML(s) {
 function selectHero(h) {
   state.pickedHero = h;
   renderHeroList();
-  $selName.textContent = `Install: ${h.label} → ${h.file}`;
+  const label = h.arcana === '—' ? h.character : `${h.arcana} ${h.name} · ${h.character}`;
+  $selName.textContent = `Install: ${label} → ${h.file}`;
   updateInstallButton();
   refreshFileInfo();
 }
@@ -599,7 +624,10 @@ $btnClear.addEventListener('click', () => {
 });
 
 function showGitCmd(destName) {
-  const cmd = `cd /home/deck/Downloads/modern-mythology && git add ${HEROES_DIR_REL}/${destName} && git commit -m "${state.pickedHero.label.toLowerCase()}: updated character model" && git push -u origin claude/3d-locales-clean`;
+  const slug = state.pickedHero.character.toLowerCase()
+                  .replace(/[^a-z0-9]+/g, '_')
+                  .replace(/^_|_$/g, '');
+  const cmd = `cd /home/deck/Downloads/modern-mythology && git add ${HEROES_DIR_REL}/${destName} && git commit -m "${slug}: updated character model" && git push -u origin claude/3d-locales-clean`;
   $gitCmd.textContent = cmd;
   $gitCmd.style.display = '';
 }
