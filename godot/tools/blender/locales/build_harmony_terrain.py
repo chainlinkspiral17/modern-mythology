@@ -64,8 +64,15 @@ DIST_MAX_Y =  420.0
 # 36 m shoulder spans ~3.6 cells, giving a smoother batter.
 # Cost: ~2.25× more terrain vertices (10080 vs 4480). Still under
 # 5s build on the deck.
-GROUND_NX = 120
-GROUND_NY = 84
+# Mesh resolution. 1200m × 840m world / N = cell size.
+# At 120×84 (10m cells), the creek and connector roads — both
+# narrow features < 1 cell wide — alias badly: triangulated
+# terrain rises between samples, making rivers look like they
+# float and roads look stepped. 200×140 = 6m cells brings these
+# features inside a single cell footprint reliably without
+# tripling vertex count.
+GROUND_NX = 200
+GROUND_NY = 140
 
 # ── PALETTE (seasonal lawn + landuse zones) ──────────────────────
 COL_LAWN          = lerp_palette(SEASON, (0.22, 0.55, 0.18, 1.0),
@@ -877,7 +884,14 @@ CREEK_CHANNEL = [
     ( 500, -310,  -8.5),
     ( 580, -360,  -9.5),   # SE outlet
 ]
-CREEK_CHANNEL_HW = 3.0       # half-width of the channel bed
+# Half-width of the FULL-CARVE channel band. Must be ≥ the mesh
+# cell half-diagonal so EVERY mesh vertex along the channel
+# centerline falls inside the band — otherwise the triangulated
+# terrain "tents up" between grid samples and the water surface
+# appears to float above the bed. With a 6m grid cell, vertex
+# distance to a channel passing between columns is up to ~4.2m
+# (cell diagonal / 2). 5m carve band catches them with margin.
+CREEK_CHANNEL_HW = 5.0
 CREEK_SHOULDER = 22.0        # flood-plain falloff
 
 
@@ -8372,9 +8386,34 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     if abs(fx) > 0.5:
         # Facing E/W → width axis is Y, depth axis is X
         slab_size = (slab_d, slab_w, 0.10)
+        foot_w_x = slab_d; foot_w_y = slab_w
     else:
         # Facing N/S → width axis is X, depth axis is Y
         slab_size = (slab_w, slab_d, 0.10)
+        foot_w_x = slab_w; foot_w_y = slab_d
+    # FOUNDATION SKIRT — concrete block extending DOWN from slab to
+    # the lowest terrain Z under the footprint, plus 0.5 m margin.
+    # Without it, slabs floating on hills look like half the house
+    # is hovering in the air. With it, the visible foundation always
+    # meets the ground regardless of how the terrain slopes across
+    # the lot. Sample mesh_z at 4 corners + 4 edge midpoints.
+    sample_ox = (-foot_w_x / 2, 0, foot_w_x / 2)
+    sample_oy = (-foot_w_y / 2, 0, foot_w_y / 2)
+    z_min = ground_z
+    for ox in sample_ox:
+        for oy in sample_oy:
+            z_min = min(z_min, mesh_z(cx + ox, cy + oy))
+    found_top_z = ground_z + 0.05      # slab bottom is here
+    found_bot_z = z_min - 0.50         # 0.5m bury so the skirt never
+                                       # disappears even with mesh
+                                       # interpolation between samples
+    found_h = found_top_z - found_bot_z
+    found_cz = (found_top_z + found_bot_z) / 2
+    col_foundation = palette.get('foundation', (0.58, 0.55, 0.50, 1.0))
+    _make_box_local(f"{name}_Foundation",
+                    (cx, cy, found_cz),
+                    (foot_w_x - 0.10, foot_w_y - 0.10, found_h),
+                    col_foundation)
     _make_box_local(f"{name}_Slab",
                     (cx, cy, ground_z + 0.05),
                     slab_size, col_trim)
