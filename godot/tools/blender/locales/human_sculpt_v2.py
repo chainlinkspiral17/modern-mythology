@@ -38,23 +38,21 @@ import bpy
 # head h = total / 8 = 0.225 m. Everything else flows from that.
 PROP = {
     "total_h":        1.80,
-    "head_h":         0.225,   # vertical extent of the head
-    # _ring() uses HALF-WIDTHS. Real head full width ≈ 16cm, depth
-    # ≈ 20cm, chin full width ≈ 8cm. Doubling these for half values
-    # would give a 32cm-wide saucer head — the bug in the first
-    # v2 render.
-    "head_w_max":     0.068,   # half-width at cheekbones (13.6cm full)
-                                # narrower than before — real heads are
-                                # ~14-15cm wide; the previous 16cm w/
-                                # exaggerated cheekbone ring read as
-                                # football-shaped
-    "head_w_chin":    0.038,   # half-width at chin (7.6cm full)
-    "head_d_max":     0.090,   # half-depth ear-to-nose (18cm full)
-    "head_d_chin":    0.048,
+    "head_h":         0.250,   # vertical extent of the head (taller
+                                # than the v1 0.225 — was reading as
+                                # "small head on a pin")
+    # _ring() uses HALF-WIDTHS. head_w_max half = 0.078 → 15.6cm full,
+    # at the upper end of real head width (~14-15cm). Slight upsize
+    # over the previous 13.6 cm since the head looked overly small
+    # against the broad shoulders.
+    "head_w_max":     0.078,   # half-width at cheekbones (15.6cm full)
+    "head_w_chin":    0.044,
+    "head_d_max":     0.098,   # half-depth ear-to-nose (19.6cm full)
+    "head_d_chin":    0.052,
 
-    "neck_h":         0.090,   # neck visible but not stretched
-    "neck_r_top":     0.045,   # 9cm full diameter at head base
-    "neck_r_bot":     0.055,   # 11cm at shoulder blend
+    "neck_h":         0.060,   # SHORT neck — was 0.09 reading as long
+    "neck_r_top":     0.062,   # THICKER (12.4cm full at head base)
+    "neck_r_bot":     0.075,   # 15cm at shoulder blend (was 11cm)
 
     "shoulder_w":     0.500,   # full shoulder span (4× head_h /3)
     "torso_h":        0.610,   # neck base → top of pelvis
@@ -616,55 +614,130 @@ def _build_head(name, base_x, base_y, head_base_z, p, fwd, prp,
 
 def _build_torso(name, base_x, base_y, hip_top_z, p, fwd, prp,
                  jacket_color):
-    """4-ring trapezoidal-elliptical torso oriented to facing.
-    Returns shoulder_top_z (for neck attachment)."""
+    """SCULPTED torso · cylinder base with vertex-level
+    deformation matching real anatomy:
+       1. Base cylinder (12 rings × 12 segments)
+       2. Pinch waist (narrow ring at z ~0.4)
+       3. Flare hips below the waist
+       4. Broaden shoulders at top
+       5. Push pec swell forward at upper chest
+       6. Push buttocks backward at lower hip
+       7. Round shoulder corners (pull top corners in toward
+          neck so shoulders aren't a square corner)
+    Returns shoulder_top_z."""
     torso_h = p["torso_h"]
+    chest_d_half = p["torso_chest_d"] / 2
+    waist_w_half = p["torso_waist_w"] / 2
+    waist_d_half = p["torso_waist_d"] / 2
+    hip_w_half = p["torso_hip_w"] / 2
+    hip_d_half = p["torso_hip_d"] / 2
+    shoulder_w_half = p["shoulder_w"] / 2
+    fwd_x, fwd_y = fwd
+    prp_x, prp_y = prp
+
+    n_rings = 12
+    segs = 12
+
+    def smoothstep01(x):
+        x = max(0.0, min(1.0, x))
+        return x * x * (3.0 - 2.0 * x)
+
+    # Build vertices in local frame: x=facing (depth), y=perp (width),
+    # z=vertical (0 at hip, torso_h at shoulder). Then rotate to
+    # world via fwd/prp.
+    verts = []
+    z_shoulder = hip_top_z + torso_h
+    for r in range(n_rings):
+        t = r / (n_rings - 1)   # 0 at hip, 1 at shoulder
+        z_local = t * torso_h
+
+        # Base width/depth profile by interpolating among the
+        # 4 anatomical landmarks: hip / waist / chest / shoulder.
+        # Smooth between them with a piecewise cubic.
+        if t < 0.30:
+            u = t / 0.30
+            base_w = hip_w_half + (waist_w_half - hip_w_half) * smoothstep01(u)
+            base_d = hip_d_half + (waist_d_half - hip_d_half) * smoothstep01(u)
+        elif t < 0.75:
+            u = (t - 0.30) / 0.45
+            base_w = waist_w_half + (chest_d_half * 1.0 - waist_w_half) * smoothstep01(u)
+            # Chest WIDTH ramps up from waist toward shoulder
+            base_w = waist_w_half + (shoulder_w_half * 0.78 - waist_w_half) * smoothstep01(u)
+            base_d = waist_d_half + (chest_d_half - waist_d_half) * smoothstep01(u)
+        else:
+            u = (t - 0.75) / 0.25
+            base_w = shoulder_w_half * 0.78 + (shoulder_w_half - shoulder_w_half * 0.78) * smoothstep01(u)
+            base_d = chest_d_half + (chest_d_half * 0.96 - chest_d_half) * smoothstep01(u)
+
+        for s in range(segs):
+            theta = 2.0 * math.pi * s / segs
+            cs = math.cos(theta)
+            sn = math.sin(theta)
+            # cs = ±1 maps to side (perp axis), sn = ±1 to facing
+            local_x = sn * base_d        # depth direction
+            local_y = cs * base_w        # width direction
+
+            # SCULPT: chest swell — push forward at upper chest
+            if 0.55 < t < 0.90 and sn > 0.2:
+                pec_mask = smoothstep01((t - 0.55) / 0.35) \
+                           * smoothstep01((0.90 - t) / 0.35) \
+                           * smoothstep01((sn - 0.2) / 0.8) \
+                           * smoothstep01((0.6 - abs(cs)) / 0.6)
+                local_x += pec_mask * chest_d_half * 0.22
+
+            # SCULPT: butt curve — push back at lower hip
+            if t < 0.25 and sn < -0.2:
+                butt_mask = smoothstep01((0.25 - t) / 0.25) \
+                            * smoothstep01((-sn - 0.2) / 0.8) \
+                            * smoothstep01((0.55 - abs(cs)) / 0.55)
+                local_x -= butt_mask * hip_d_half * 0.30
+
+            # SCULPT: shoulder corner round — at top ring,
+            # widest extreme points pulled slightly inward+upward
+            # to soften the square shoulder corner.
+            if t > 0.88 and abs(cs) > 0.85:
+                round_mask = smoothstep01((t - 0.88) / 0.12) \
+                             * smoothstep01((abs(cs) - 0.85) / 0.15)
+                # Push the extreme side IN
+                local_y *= 1.0 - round_mask * 0.18
+                # Pull DOWN slightly so the shoulder slopes
+                z_local -= round_mask * torso_h * 0.02
+
+            wx = base_x + local_x * fwd_x + local_y * prp_x
+            wy = base_y + local_x * fwd_y + local_y * prp_y
+            wz = hip_top_z + z_local
+            verts.append((wx, wy, wz))
+
+    # Faces between adjacent rings
+    faces = []
+    for r in range(n_rings - 1):
+        a = r * segs
+        b = (r + 1) * segs
+        for s in range(segs):
+            ns = (s + 1) % segs
+            faces.append([a + s, a + ns, b + ns, b + s])
+    # Top cap — fan from shoulder center
+    verts.append((base_x, base_y, z_shoulder))
+    top_i = len(verts) - 1
+    top_base = (n_rings - 1) * segs
+    for s in range(segs):
+        ns = (s + 1) % segs
+        faces.append([top_i, top_base + s, top_base + ns])
+    # Bottom cap — fan from hip center
+    verts.append((base_x, base_y, hip_top_z))
+    bot_i = len(verts) - 1
+    for s in range(segs):
+        ns = (s + 1) % segs
+        faces.append([bot_i, ns, s])
+    _finalize_mesh(f"{name}_Torso", verts, faces, jacket_color)
+    # Z markers + scalars for downstream lapels/belt code
+    z_chest = hip_top_z + torso_h * 0.78
+    z_waist = hip_top_z + torso_h * 0.30
+    shoulder_w = p["shoulder_w"]
     chest_d = p["torso_chest_d"]
     waist_w = p["torso_waist_w"]
     waist_d = p["torso_waist_d"]
-    hip_w = p["torso_hip_w"]
-    hip_d = p["torso_hip_d"]
-    shoulder_w = p["shoulder_w"]
-    # Z markers (from hip_top_z = bottom of pelvis interface)
-    z_hip = hip_top_z
-    z_waist = hip_top_z + torso_h * 0.30
-    z_chest = hip_top_z + torso_h * 0.78
-    z_shoulder = hip_top_z + torso_h
     segments = 8
-    verts = []
-    # Hip ring (widest at bottom-ish, flared)
-    verts.extend(_ring(base_x, base_y, z_hip,
-                       hip_w / 2, hip_d / 2, segments, fwd, prp))
-    # Waist ring (narrowest)
-    verts.extend(_ring(base_x, base_y, z_waist,
-                       waist_w / 2, waist_d / 2, segments, fwd, prp))
-    # Chest ring (full chest depth, near shoulder span width)
-    verts.extend(_ring(base_x, base_y, z_chest,
-                       shoulder_w * 0.42, chest_d / 2, segments,
-                       fwd, prp))
-    # Shoulder ring (broadest)
-    verts.extend(_ring(base_x, base_y, z_shoulder,
-                       shoulder_w / 2, chest_d / 2 * 0.96, segments,
-                       fwd, prp))
-    faces = []
-    for r in range(3):
-        a = r * segments; b = (r + 1) * segments
-        for k in range(segments):
-            nk = (k + 1) % segments
-            faces.append([a + k, a + nk, b + nk, b + k])
-    # Top cap (shoulder)
-    verts.append((base_x, base_y, z_shoulder))
-    top_i = len(verts) - 1
-    for k in range(segments):
-        nk = (k + 1) % segments
-        faces.append([top_i, 24 + k, 24 + nk])
-    # Bottom cap (hip)
-    verts.append((base_x, base_y, z_hip))
-    bot_i = len(verts) - 1
-    for k in range(segments):
-        nk = (k + 1) % segments
-        faces.append([bot_i, nk, k])
-    _finalize_mesh(f"{name}_Torso", verts, faces, jacket_color)
 
     # ── LAPELS · darker V down the front of the torso ──────────
     fwd_x, fwd_y = fwd
