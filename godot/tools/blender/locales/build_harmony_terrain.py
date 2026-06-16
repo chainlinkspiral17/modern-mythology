@@ -1104,7 +1104,18 @@ def hce_elevation(x, y):
     # respective floor heights, with smooth flood-plain shoulders.
     # Beats settlement flattening so pond rims + creek banks stay
     # below water level even where a settlement overlaps the water.
+    #
+    # YIELD TO LOT PADS at FULL STRENGTH: water shoulder cannot drag
+    # a building pad below grade. Without this, the AutoPad at
+    # (480, -260) was pulled to -2 by the creek shoulder (creek
+    # passes within 15 m of the lot SW corner). Bug surfaced when
+    # diagnostic showed Auto's slab spanning +5 to -2 across its
+    # footprint. Scale water_w by (1 - lot_w) so lot pads at full
+    # carve override water at shoulder strength but water at full
+    # strength (inside the channel band) still wins over an
+    # accidentally-overlapping lot.
     water_target, water_w = water_carve(x, y)
+    water_w = water_w * (1.0 - lot_w)
     if water_w > 0.001:
         flattened = flattened * (1.0 - water_w) + water_target * water_w
 
@@ -8814,16 +8825,19 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     # straight out 3 m. Connects to sidewalk or driveway depending
     # on yard orientation; this stub gives every house a clear
     # pedestrian approach to the door instead of porch-on-grass.
-    # Walk runs the full setback distance from porch front to the
-    # road sidewalk strip (~9 m total for the standard 14 m
-    # setback minus house depth and porch). Bigger pedestrian
-    # spine = the house reads as integrated with the street rather
-    # than as an island sitting on a lawn.
+    # Walk runs from porch front toward the road sidewalk.
+    # Standard 14 m setback minus 3.5 m half-house-depth minus
+    # 1.2 m porch = ~9.3 m from porch front to road CL. Residential
+    # sidewalk sits at ~3.5 m perp from road CL, so walk needs to
+    # cover ~5.8 m. We use 7 m to make sure it visually CONNECTS
+    # to the sidewalk on lots with the standard setback; lots set
+    # back further (cul-de-sacs) will have a short grass gap, which
+    # is fine — better than crossing INTO the road quad.
     col_walk = palette.get('walk', (0.86, 0.84, 0.78, 1.0))
     walk_start_x = porch_cx + fx * porch_d / 2     # porch front edge
     walk_start_y = porch_cy + fy * porch_d / 2
-    walk_end_x = walk_start_x + fx * 9.0
-    walk_end_y = walk_start_y + fy * 9.0
+    walk_end_x = walk_start_x + fx * 7.0
+    walk_end_y = walk_start_y + fy * 7.0
     walk_w = 1.2
     pwv = [
         (walk_start_x + perp_x * walk_w / 2,
