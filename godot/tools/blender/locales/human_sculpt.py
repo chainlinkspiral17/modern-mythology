@@ -598,6 +598,35 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
             nk = (k + 1) % segments
             faces.append([bot_cap_center, nk, k])
         _finalize_mesh(f"{name}_Torso", verts, faces, jacket_color)
+
+        # ── CHEST CURVE · two soft bumps on the front of the upper
+        # torso (pec area) so the chest reads as a chest rather
+        # than a flat panel.
+        pec_z = top_z - torso_h * 0.18
+        pec_offset = chest_d_half * 0.95
+        for pec_sgn in (-1, +1):
+            pec_x = base_x + fwd_x * pec_offset \
+                    + prp_x * shoulder_half * 0.40 * pec_sgn
+            pec_y = base_y + fwd_y * pec_offset \
+                    + prp_y * shoulder_half * 0.40 * pec_sgn
+            _sphere_low(f"{name}_Pec_{pec_sgn:+d}",
+                        (pec_x, pec_y, pec_z),
+                        chest_d_half * 0.55, jacket_color,
+                        rings=2, segments=8, squash_z=0.55)
+
+        # ── BUTTOCKS · soft bump on the BACK of the hip ring. From
+        # behind, the silhouette of the lower back should curve
+        # outward and back inward. Without it the torso back is
+        # flat and reads as a "wall." (Anatomical landmark per the
+        # user's reference silhouettes.)
+        butt_z = bottom_z + torso_h * 0.05
+        butt_back = hip_d_half * 1.10
+        butt_x = base_x - fwd_x * butt_back
+        butt_y = base_y - fwd_y * butt_back
+        _sphere_low(f"{name}_Butt",
+                    (butt_x, butt_y, butt_z),
+                    hip_half * 0.78, jacket_color,
+                    rings=2, segments=10, squash_z=0.50)
         # CHEST CAP · slight forward bulge at the upper chest so
         # the torso isn't a uniform cylinder. Squashed sphere
         # blended into the upper torso silhouette.
