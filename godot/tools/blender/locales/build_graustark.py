@@ -517,25 +517,25 @@ ARCANA_LOCALES = {
     'Emperor_HelmCabin': ((    0.0,    9.0), 'preserved'),
     'HighPriestess_Curio': ((-320.0, +66.0), 'placed'),    # FQ row N end
     'HangedMan_Apartment': ((-320.0, +98.0), 'placed'),    # FQ row S end
-    'Temperance_Lounge':  ((-310.0, +130.0), 'todo'),
+    'Temperance_Lounge':  ((-310.0, +130.0), 'placed'),
     'Magician_Cathedral': ((+300.0, +380.0), 'placed'),
     'Hierophant_Church':  ((-200.0, +200.0), 'placed'),
     'Hierophant_Bandstand': ((-150.0, +120.0), 'placed'),
     'Hierophant_Armory':  ((+200.0, -340.0), 'placed'),
     'Lovers_Chapel':      ((-560.0, -120.0), 'placed'),
-    'Chariot_Garage':     ((-180.0, -160.0), 'todo'),
+    'Chariot_Garage':     ((-180.0, -160.0), 'placed'),
     'Strength_Carnival':  ((-460.0, +400.0), 'placed'),
     'Hermit_Lighthouse':  (( +50.0, -380.0), 'placed'),
-    'Wheel_Casino':       ((-200.0, +300.0), 'todo'),
+    'Wheel_Casino':       ((-200.0, +300.0), 'placed'),
     'Justice_Courthouse': ((-130.0, +250.0), 'placed'),
     'Death_Hospital':     ((-460.0, -340.0), 'placed'),
     'Devil_Roadhouse':    ((+260.0, -380.0), 'placed'),
     'Tower_Broadcast':    ((+400.0, +380.0), 'placed'),
     'Star_IceCo':         ((+180.0, -300.0), 'placed'),
     'Moon_DriveIn':       ((-500.0, +200.0), 'placed'),
-    'Sun_Garden':         ((-120.0, +120.0), 'todo'),
+    'Sun_Garden':         ((-120.0, +120.0), 'placed'),
     'Judgement_Cemetery': ((-360.0, -200.0), 'placed'),
-    'World_FrogShop':     ((+150.0, +300.0), 'todo'),
+    'World_FrogShop':     ((+150.0, +300.0), 'placed'),
 }
 
 
@@ -2004,6 +2004,260 @@ def _build_strength_carnival():
             (0.16, 0.7, 0.7), COL_BLACK_IRON)
 
 
+def _build_chariot_garage():
+    """Old Lacombe Service Garage — 2-bay yellow-brick gas station
+    + repair garage + vintage pump island + parked tow truck."""
+    print("[graustark]   Chariot — Lacombe Service Garage")
+    cx, cy = ARCANA_LOCALES['Chariot_Garage'][0]
+    gz = graustark_elevation(cx, cy)
+    # Main garage body
+    W, D, H = 14.0, 9.0, 4.5
+    ht._make_box_local("Chariot_Garage_Body",
+                       (cx, cy, gz + H / 2),
+                       (W, D, H), (0.94, 0.86, 0.42, 1.0))
+    # Flat roof + overhang
+    ht._make_box_local("Chariot_Garage_Roof",
+                       (cx, cy, gz + H + 0.15),
+                       (W + 1.2, D + 0.4, 0.30),
+                       (0.32, 0.28, 0.24, 1.0))
+    # Two roll-up garage doors on the front
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"Chariot_Garage_Door_{s:+d}",
+            (cx + s * 3.5, cy - D / 2 - 0.05, gz + 3.5 / 2 + 0.10),
+            (3.0, 0.05, 3.5), (0.32, 0.30, 0.28, 1.0))
+    # Pump island canopy out front
+    pcy = cy - D / 2 - 6.0
+    # Canopy
+    ht._make_box_local("Chariot_Pump_Canopy",
+                       (cx, pcy, gz + 4.5),
+                       (8.0, 4.0, 0.50), (0.94, 0.92, 0.86, 1.0))
+    # 4 canopy posts
+    for i, (ox, oy) in enumerate(
+            [(-3.5, -1.6), (+3.5, -1.6),
+             (-3.5, +1.6), (+3.5, +1.6)]):
+        ht._make_box_local(
+            f"Chariot_Pump_CanopyPost_{i}",
+            (cx + ox, pcy + oy, gz + 4.5 / 2),
+            (0.30, 0.30, 4.5), (0.42, 0.38, 0.32, 1.0))
+    # Two vintage pumps under the canopy
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"Chariot_Pump_{s:+d}",
+            (cx + s * 1.6, pcy, gz + 1.0),
+            (0.7, 0.5, 2.0), (0.78, 0.20, 0.18, 1.0))
+        # Hose
+        ht._make_box_local(
+            f"Chariot_Pump_{s:+d}_Top",
+            (cx + s * 1.6, pcy, gz + 2.3),
+            (0.5, 0.4, 0.6), (0.96, 0.94, 0.86, 1.0))
+    # Parked tow truck on the east side of the lot
+    tx, ty = cx + W / 2 + 5.0, cy - 2.0
+    ht._make_box_local("Chariot_TowTruck_Body",
+                       (tx, ty, gz + 1.4),
+                       (2.4, 6.0, 1.8),
+                       (0.20, 0.30, 0.42, 1.0))
+    ht._make_box_local("Chariot_TowTruck_Cab",
+                       (tx, ty + 1.8, gz + 2.6),
+                       (2.3, 2.2, 1.2),
+                       (0.20, 0.30, 0.42, 1.0))
+    ht._make_box_local("Chariot_TowTruck_Boom",
+                       (tx, ty - 2.0, gz + 3.0),
+                       (0.20, 4.0, 0.20), COL_BLACK_IRON)
+    # Wheels
+    for ox, oy in [(-1.0, -2.0), (+1.0, -2.0),
+                   (-1.0, +2.0), (+1.0, +2.0)]:
+        ht._make_box_local(
+            f"Chariot_TowTruck_Wheel_{ox:+.0f}_{oy:+.0f}",
+            (tx + ox, ty + oy, gz + 0.45),
+            (0.34, 0.80, 0.80), COL_BLACK_IRON)
+
+
+def _build_wheel_casino():
+    """Le Roulant — ex-bank with limestone columns + ornate cornice,
+    glassed-in neon wheel on the parapet."""
+    print("[graustark]   Wheel — Le Roulant casino")
+    cx, cy = ARCANA_LOCALES['Wheel_Casino'][0]
+    gz = graustark_elevation(cx, cy)
+    W, D, H = 16.0, 14.0, 9.0
+    ht._make_box_local("Wheel_Casino_Body",
+                       (cx, cy, gz + H / 2),
+                       (W, D, H), COL_LIMESTONE)
+    # Ornate cornice (multiple stacked plates)
+    for i, h in enumerate([0.20, 0.30, 0.18]):
+        ht._make_box_local(
+            f"Wheel_Casino_Cornice_{i}",
+            (cx, cy, gz + H + sum([0.20,0.30,0.18][:i]) + h/2),
+            (W + 0.4 - i * 0.1, D + 0.4 - i * 0.1, h),
+            (0.86, 0.82, 0.74, 1.0))
+    # Neon wheel on the parapet (red disc)
+    ht._make_box_local("Wheel_Casino_NeonDisc",
+                       (cx, cy - D / 2 - 0.05, gz + H + 2.2),
+                       (3.0, 0.20, 3.0), COL_NEON_RED)
+    ht._make_sphere_low_local("Wheel_Casino_NeonHub",
+                              (cx, cy - D / 2 - 0.10, gz + H + 2.2),
+                              0.40, COL_NEON_PINK, rings=2, segments=6)
+    # 4 limestone columns at the front (former bank facade)
+    for i in range(4):
+        t = -1 + 2 * i / 3
+        cx_c = cx + t * (W / 2 - 1.5)
+        ht._make_cyl_local(
+            f"Wheel_Casino_Column_{i}",
+            (cx_c, cy - D / 2 - 0.6, gz + H / 2),
+            0.50, H, COL_LIMESTONE, segments=8)
+    # Glass entry doors between the middle columns
+    ht._make_box_local("Wheel_Casino_Doors",
+                       (cx, cy - D / 2 - 0.05, gz + 3.0 / 2 + 0.30),
+                       (3.5, 0.05, 3.0), COL_GLASS_DARK)
+    # Wide front steps
+    for s in range(3):
+        ht._make_box_local(
+            f"Wheel_Casino_Step_{s}",
+            (cx, cy - D / 2 - 1.2 - s * 0.4, gz + 0.15 + s * 0.20),
+            (W + 1.0 + s * 0.8, 0.4, 0.20), COL_LIMESTONE)
+
+
+def _build_temperance_lounge():
+    """The Mixing Glass — windowless 2-storey cocktail lounge with
+    hidden side-alley entrance + single neon sign."""
+    print("[graustark]   Temperance — The Mixing Glass")
+    cx, cy = ARCANA_LOCALES['Temperance_Lounge'][0]
+    gz = graustark_elevation(cx, cy)
+    W, D, H = 7.0, 14.0, 7.0
+    # Body: no street-facing windows
+    ht._make_box_local("Temperance_Lounge_Body",
+                       (cx, cy, gz + H / 2),
+                       (W, D, H), (0.34, 0.30, 0.28, 1.0))
+    # Flat roof
+    ht._make_box_local("Temperance_Lounge_Roof",
+                       (cx, cy, gz + H + 0.15),
+                       (W + 0.3, D + 0.3, 0.30),
+                       (0.16, 0.14, 0.14, 1.0))
+    # Single neon "THE MIXING GLASS" sign on the front (vertical)
+    ht._make_box_local("Temperance_Lounge_Sign",
+                       (cx - W / 2 - 0.05, cy + D / 4, gz + 4.0),
+                       (0.20, 0.6, 4.0), COL_NEON_PINK)
+    # Hidden side-alley entrance — small door on the S short side
+    ht._make_box_local("Temperance_Lounge_Door",
+                       (cx, cy - D / 2 - 0.05, gz + 1.1),
+                       (1.0, 0.10, 2.2), COL_DOOR_DARK)
+    # Single small "look-through" glass slot beside the door
+    ht._make_box_local("Temperance_Lounge_Peephole",
+                       (cx - 0.8, cy - D / 2 - 0.05, gz + 1.7),
+                       (0.30, 0.05, 0.30), (0.96, 0.84, 0.42, 1.0))
+
+
+def _build_sun_garden():
+    """Solenade Memorial Garden — walled, with an oak in the
+    center, brick paths, a bronze sundial, a low limestone bench."""
+    print("[graustark]   Sun — Solenade Memorial Garden")
+    cx, cy = ARCANA_LOCALES['Sun_Garden'][0]
+    gz = graustark_elevation(cx, cy)
+    # Wall — 4 limestone segments around a 16×16 square
+    wall_h = 1.2
+    for s, w_size, ox, oy in [
+            (1, (16.0, 0.40, wall_h),  0.0, -8.0),
+            (2, (16.0, 0.40, wall_h),  0.0, +8.0),
+            (3, (0.40, 16.0, wall_h), -8.0,  0.0),
+            (4, (0.40, 16.0, wall_h), +8.0,  0.0),
+    ]:
+        ht._make_box_local(
+            f"Sun_Garden_Wall_{s}",
+            (cx + ox, cy + oy, gz + wall_h / 2),
+            w_size, COL_LIMESTONE)
+    # Central oak — chunky trunk + broad canopy
+    ht._make_cyl_local("Sun_Garden_OakTrunk",
+                       (cx, cy, gz + 3.0),
+                       0.50, 6.0, (0.38, 0.28, 0.20, 1.0), segments=6)
+    ht._make_sphere_low_local("Sun_Garden_OakCanopy",
+                              (cx, cy, gz + 6.5),
+                              3.5, (0.40, 0.50, 0.32, 1.0),
+                              rings=3, segments=8)
+    # Brick path — narrow strip from S entrance to oak
+    ht._make_box_local("Sun_Garden_Path_N",
+                       (cx, cy - 4.0, gz + 0.04),
+                       (1.2, 8.0, 0.08), COL_BRICK_RED)
+    # Low bench at N end
+    ht._make_box_local("Sun_Garden_Bench",
+                       (cx, cy + 5.5, gz + 0.5 / 2 + 0.10),
+                       (3.6, 0.6, 0.50), COL_LIMESTONE)
+    # Bronze sundial — tilted box on a small column
+    ht._make_box_local("Sun_Garden_Sundial_Base",
+                       (cx + 4.0, cy, gz + 0.5),
+                       (0.6, 0.6, 1.0), COL_LIMESTONE)
+    ht._make_box_local("Sun_Garden_Sundial_Disc",
+                       (cx + 4.0, cy, gz + 1.06),
+                       (0.7, 0.7, 0.04),
+                       (0.62, 0.46, 0.20, 1.0))
+    ht._make_box_local("Sun_Garden_Sundial_Gnomon",
+                       (cx + 4.0, cy, gz + 1.25),
+                       (0.05, 0.4, 0.40),
+                       (0.62, 0.46, 0.20, 1.0))
+    # Iron gate at the S entrance
+    ht._make_box_local("Sun_Garden_Gate",
+                       (cx, cy - 8.0, gz + 1.0),
+                       (1.8, 0.10, 2.0), COL_BLACK_IRON)
+
+
+def _build_world_frogshop():
+    """Frog Knows Best — wooden roadside aquarium / bait shop with
+    a painted frog above the door, tin roof, screened porch."""
+    print("[graustark]   World — Frog Knows Best")
+    cx, cy = ARCANA_LOCALES['World_FrogShop'][0]
+    gz = graustark_elevation(cx, cy)
+    # Tiny shotgun-style shop on stilts (delta cottage style)
+    W, D, H = 5.0, 9.0, 3.6
+    crawl = 0.8
+    # 4 pilings
+    for ox, oy in [(-W/2+0.4, -D/2+0.4), (+W/2-0.4, -D/2+0.4),
+                   (-W/2+0.4, +D/2-0.4), (+W/2-0.4, +D/2-0.4)]:
+        ht._make_box_local(
+            f"World_FrogShop_Pile_{ox:+.1f}_{oy:+.1f}",
+            (cx + ox, cy + oy, gz + crawl / 2),
+            (0.24, 0.24, crawl), COL_PILING)
+    body_z = gz + crawl
+    ht._make_box_local("World_FrogShop_Body",
+                       (cx, cy, body_z + H / 2),
+                       (W, D, H), (0.42, 0.58, 0.36, 1.0))
+    # Tin roof — pitched
+    ht._make_box_local("World_FrogShop_Roof",
+                       (cx, cy, body_z + H + 0.30),
+                       (W + 0.4, D + 0.4, 0.60), COL_TIN_RUSTED)
+    ht._make_box_local("World_FrogShop_Ridge",
+                       (cx, cy, body_z + H + 0.90),
+                       (W * 0.20, D * 0.80, 0.40), COL_TIN_RUSTED)
+    # Screened porch on the front
+    porch_d = 1.6
+    pcy = cy - D / 2 - porch_d / 2
+    ht._make_box_local("World_FrogShop_Porch_Deck",
+                       (cx, pcy, body_z + 0.05),
+                       (W, porch_d, 0.10), COL_PORCH_FLOOR)
+    # Two porch posts
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"World_FrogShop_PorchPost_{s:+d}",
+            (cx + s * (W / 2 - 0.3), pcy, body_z + 1.5),
+            (0.14, 0.14, 3.0), (0.42, 0.58, 0.36, 1.0))
+    # Painted frog above the door (small green box with eyes)
+    ht._make_box_local("World_FrogShop_FrogSign",
+                       (cx, cy - D / 2 - 0.05, body_z + 2.8),
+                       (1.8, 0.10, 0.9), (0.30, 0.62, 0.30, 1.0))
+    # Two frog eyes (small white blocks)
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"World_FrogShop_FrogEye_{s:+d}",
+            (cx + s * 0.4, cy - D / 2 - 0.10, body_z + 3.1),
+            (0.20, 0.05, 0.20), (0.96, 0.94, 0.86, 1.0))
+    # Front door
+    ht._make_box_local("World_FrogShop_Door",
+                       (cx, cy - D / 2 - 0.05, body_z + 1.1),
+                       (1.0, 0.10, 2.2), COL_DOOR_DARK)
+    # Side window with aquarium-blue glow
+    ht._make_box_local("World_FrogShop_AquariumWin",
+                       (cx + W / 2 + 0.05, cy + 1.0, body_z + 1.6),
+                       (0.05, 2.4, 1.6), (0.30, 0.68, 0.78, 1.0))
+
+
 def build_district_buildings():
     """PHASE 4 — buildings outside the riverfront's SE quadrant."""
     _hook_hce_mesh_z()
@@ -2026,6 +2280,11 @@ def build_district_buildings():
     _build_lovers_chapel()
     _build_hermit_lighthouse()
     _build_strength_carnival()
+    _build_chariot_garage()
+    _build_wheel_casino()
+    _build_temperance_lounge()
+    _build_sun_garden()
+    _build_world_frogshop()
 
 
 def build_district_characters_and_props():
