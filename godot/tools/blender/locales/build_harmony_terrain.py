@@ -16168,12 +16168,13 @@ def build_phase2_neighborhood():
     # old 30° house at cul_setback=21 had its main box literally
     # straddling the road's last waypoint. Skip the NE arc (10°..50°)
     # entirely and redistribute the 4 remaining houses.
+    # 4 houses around the cul bulb (was 5, but 315° at distance 21
+    # placed it 9m from arterial P2_House_F's backyard).
     cul_house_specs = [
         ( 75, '-Y', {'wall': (0.80, 0.76, 0.68, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)}),
         (135, '+X', {'wall': (0.70, 0.74, 0.62, 1.0), 'roof': (0.55, 0.20, 0.16, 1.0)}),
         (195, '+X', {'wall': (0.82, 0.75, 0.60, 1.0), 'roof': (0.32, 0.30, 0.26, 1.0)}),
         (255, '+Y', {'wall': (0.65, 0.68, 0.78, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)}),
-        (315, '-X', {'wall': (0.85, 0.82, 0.72, 1.0), 'roof': (0.32, 0.22, 0.18, 1.0)}),
     ]
     cul_setback = 21.0    # bulb r 9 + setback 12 m
     for k, (ang_deg, facing, palette) in enumerate(cul_house_specs):
