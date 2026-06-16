@@ -522,17 +522,17 @@ ARCANA_LOCALES = {
     'Hierophant_Church':  ((-200.0, +200.0), 'placed'),
     'Hierophant_Bandstand': ((-150.0, +120.0), 'placed'),
     'Hierophant_Armory':  ((+200.0, -340.0), 'placed'),
-    'Lovers_Chapel':      ((-560.0, -120.0), 'todo'),
+    'Lovers_Chapel':      ((-560.0, -120.0), 'placed'),
     'Chariot_Garage':     ((-180.0, -160.0), 'todo'),
-    'Strength_Carnival':  ((-460.0, +400.0), 'todo'),
-    'Hermit_Lighthouse':  (( +50.0, -380.0), 'todo'),
+    'Strength_Carnival':  ((-460.0, +400.0), 'placed'),
+    'Hermit_Lighthouse':  (( +50.0, -380.0), 'placed'),
     'Wheel_Casino':       ((-200.0, +300.0), 'todo'),
     'Justice_Courthouse': ((-130.0, +250.0), 'placed'),
     'Death_Hospital':     ((-460.0, -340.0), 'placed'),
     'Devil_Roadhouse':    ((+260.0, -380.0), 'placed'),
-    'Tower_Broadcast':    ((+400.0, +380.0), 'todo'),
-    'Star_IceCo':         ((+180.0, -300.0), 'todo'),
-    'Moon_DriveIn':       ((-500.0, +200.0), 'todo'),
+    'Tower_Broadcast':    ((+400.0, +380.0), 'placed'),
+    'Star_IceCo':         ((+180.0, -300.0), 'placed'),
+    'Moon_DriveIn':       ((-500.0, +200.0), 'placed'),
     'Sun_Garden':         ((-120.0, +120.0), 'todo'),
     'Judgement_Cemetery': ((-360.0, -200.0), 'placed'),
     'World_FrogShop':     ((+150.0, +300.0), 'todo'),
@@ -1673,6 +1673,337 @@ def _build_judgement_cemetery():
     print(f"[graustark]     {tomb_count} tombs + 1 mausoleum")
 
 
+def _build_tower_broadcast():
+    """WGUR — 90m guyed red-and-white radio tower on a small
+    concrete pad, single-storey transmitter shack alongside."""
+    print("[graustark]   Tower — WGUR Broadcast")
+    cx, cy = ARCANA_LOCALES['Tower_Broadcast'][0]
+    gz = graustark_elevation(cx, cy)
+    # Concrete pad
+    ht._make_box_local("Tower_Pad",
+                       (cx, cy, gz + 0.10),
+                       (8.0, 8.0, 0.20), COL_CONCRETE)
+    # Tower — 12 stacked alternating red/white boxes
+    BAND_H = 7.5
+    for i in range(12):
+        col = (0.86, 0.30, 0.22, 1.0) if i % 2 == 0 \
+              else (0.96, 0.94, 0.92, 1.0)
+        ht._make_box_local(
+            f"Tower_Band_{i}",
+            (cx, cy, gz + 0.30 + BAND_H * i + BAND_H / 2),
+            (1.2 - i * 0.05, 1.2 - i * 0.05, BAND_H), col)
+    # Antenna spike at top
+    ht._make_box_local("Tower_Spike",
+                       (cx, cy, gz + 0.30 + 12 * BAND_H + 1.5),
+                       (0.10, 0.10, 3.0), COL_BLACK_IRON)
+    # Three guy-wire anchor blocks
+    for i in range(3):
+        ang = 2 * 3.14159 * i / 3
+        ax = cx + 18.0 * math.cos(ang)
+        ay = cy + 18.0 * math.sin(ang)
+        ht._make_box_local(
+            f"Tower_GuyAnchor_{i}",
+            (ax, ay, gz + 0.5), (0.8, 0.8, 1.0), COL_CONCRETE)
+    # Transmitter shack
+    sx_ = cx + 12.0
+    sy_ = cy
+    ht._make_box_local("Tower_Shack",
+                       (sx_, sy_, gz + 2.4 / 2),
+                       (6.0, 5.0, 2.4), COL_BRICK_RED)
+    ht._make_box_local("Tower_Shack_Roof",
+                       (sx_, sy_, gz + 2.4 + 0.10),
+                       (6.3, 5.3, 0.20),
+                       (0.20, 0.18, 0.18, 1.0))
+
+
+def _build_moon_drivein():
+    """The Static Drive-In — single screen + parking lot + neon
+    marquee + snack bar."""
+    print("[graustark]   Moon — Static Drive-In")
+    cx, cy = ARCANA_LOCALES['Moon_DriveIn'][0]
+    gz = graustark_elevation(cx, cy)
+    # Massive blank white screen facing south (toward parking)
+    SCR_W, SCR_H = 24.0, 14.0
+    ht._make_box_local("Moon_DriveIn_Screen",
+                       (cx, cy + 12.0, gz + SCR_H / 2 + 2.0),
+                       (SCR_W, 0.40, SCR_H),
+                       (0.94, 0.92, 0.86, 1.0))
+    # Screen support structure (two flanking towers)
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"Moon_DriveIn_Tower_{s:+d}",
+            (cx + s * (SCR_W / 2 - 0.3), cy + 12.0,
+             gz + (SCR_H + 2.0) / 2),
+            (0.8, 0.6, SCR_H + 2.0),
+            (0.42, 0.40, 0.38, 1.0))
+    # Parking lot (dark asphalt, 30m × 24m, south of screen)
+    ht._make_box_local("Moon_DriveIn_Lot",
+                       (cx, cy - 8.0, gz + 0.03),
+                       (32.0, 26.0, 0.06), (0.16, 0.16, 0.16, 1.0))
+    # Speaker posts in the lot (2 rows × 6)
+    for r in range(2):
+        for c in range(6):
+            spx = cx + (-1 + 2 * c / 5) * 12.0
+            spy = cy - 4.0 - r * 8.0
+            ht._make_box_local(
+                f"Moon_DriveIn_Speaker_{r}_{c}",
+                (spx, spy, gz + 0.8), (0.10, 0.10, 1.6),
+                (0.36, 0.32, 0.28, 1.0))
+    # Snack bar (small box) at the south edge
+    ht._make_box_local("Moon_DriveIn_Snack",
+                       (cx, cy - 22.0, gz + 3.0 / 2),
+                       (8.0, 5.0, 3.0), (0.72, 0.62, 0.48, 1.0))
+    ht._make_box_local("Moon_DriveIn_Snack_Roof",
+                       (cx, cy - 22.0, gz + 3.0 + 0.10),
+                       (8.4, 5.4, 0.20),
+                       (0.34, 0.28, 0.24, 1.0))
+    # Neon-red marquee at entrance
+    ht._make_box_local("Moon_DriveIn_Marquee",
+                       (cx, cy - 27.0, gz + 3.5),
+                       (4.0, 0.30, 2.0), COL_NEON_RED)
+    ht._make_box_local("Moon_DriveIn_MarqueePost",
+                       (cx, cy - 27.0, gz + 1.5),
+                       (0.30, 0.30, 3.0), COL_BLACK_IRON)
+
+
+def _build_star_iceco():
+    """Christian Ice Co — 1950s ice plant, concrete brick + ICE
+    parapet letters + glass storefront + truck dock."""
+    print("[graustark]   Star — Christian Ice Co.")
+    cx, cy = ARCANA_LOCALES['Star_IceCo'][0]
+    gz = graustark_elevation(cx, cy)
+    W, D, H = 18.0, 12.0, 5.5
+    ht._make_box_local("Star_IceCo_Body",
+                       (cx, cy, gz + H / 2),
+                       (W, D, H), COL_CONCRETE)
+    # Tall ICE parapet
+    ht._make_box_local("Star_IceCo_Parapet",
+                       (cx, cy - D / 2 + 0.05, gz + H + 1.4),
+                       (W * 0.9, 0.4, 2.8), COL_CONCRETE)
+    # Big "ICE" letters — 3 dark blocks on the parapet
+    for i, t in enumerate([-1, 0, 1]):
+        ht._make_box_local(
+            f"Star_IceCo_Letter_{i}",
+            (cx + t * 3.5, cy - D / 2 + 0.10, gz + H + 1.4),
+            (2.5, 0.20, 2.0), (0.20, 0.40, 0.62, 1.0))
+    # Glass retail storefront on the front
+    ht._make_box_local("Star_IceCo_Storefront",
+                       (cx - W / 4, cy - D / 2 - 0.05, gz + 1.6),
+                       (5.0, 0.05, 3.0), COL_GLASS_DARK)
+    # Truck dock — raised concrete platform
+    ht._make_box_local("Star_IceCo_Dock",
+                       (cx + W / 4, cy - D / 2 - 2.0, gz + 0.6),
+                       (6.0, 3.0, 1.2), COL_CONCRETE)
+    # Two roll-up doors on the dock side
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"Star_IceCo_RollUp_{s:+d}",
+            (cx + W / 4 + s * 1.6, cy - D / 2 - 0.05, gz + 2.0),
+            (1.8, 0.05, 3.6), (0.32, 0.30, 0.28, 1.0))
+
+
+def _build_lovers_chapel():
+    """Roadside chapel on Cursed Ground — tiny limestone chapel,
+    single bell tower, walled garden — out in the cane fields."""
+    print("[graustark]   Lovers — roadside chapel")
+    cx, cy = ARCANA_LOCALES['Lovers_Chapel'][0]
+    gz = graustark_elevation(cx, cy)
+    # Small chapel body
+    ht._make_box_local("Lovers_Chapel_Body",
+                       (cx, cy, gz + 4.0 / 2),
+                       (6.0, 8.0, 4.0), COL_LIMESTONE)
+    # Pitched roof
+    ht._make_box_local("Lovers_Chapel_Roof",
+                       (cx, cy, gz + 4.0 + 0.30),
+                       (6.4, 8.4, 0.60), (0.32, 0.28, 0.22, 1.0))
+    ht._make_box_local("Lovers_Chapel_Ridge",
+                       (cx, cy, gz + 4.0 + 0.95),
+                       (0.6, 7.0, 0.40), (0.32, 0.28, 0.22, 1.0))
+    # Bell tower on the front
+    bcy = cy - 8.0 / 2 - 1.2
+    ht._make_box_local("Lovers_Bell_Base",
+                       (cx, bcy, gz + 5.0 / 2),
+                       (2.4, 2.4, 5.0), COL_LIMESTONE)
+    ht._make_box_local("Lovers_Bell_Belfry",
+                       (cx, bcy, gz + 5.0 + 1.0),
+                       (2.0, 2.0, 1.8), COL_LIMESTONE)
+    # Bell (sphere)
+    ht._make_sphere_low_local("Lovers_Bell",
+                              (cx, bcy, gz + 5.0 + 1.4),
+                              0.55, COL_BLACK_IRON,
+                              rings=2, segments=6)
+    # Cap
+    ht._make_box_local("Lovers_Bell_Cap",
+                       (cx, bcy, gz + 5.0 + 2.4),
+                       (1.4, 1.4, 0.6), (0.32, 0.28, 0.22, 1.0))
+    # Cross
+    ht._make_box_local("Lovers_Cross_V",
+                       (cx, bcy, gz + 5.0 + 3.5),
+                       (0.10, 0.10, 1.0), COL_BLACK_IRON)
+    ht._make_box_local("Lovers_Cross_H",
+                       (cx, bcy, gz + 5.0 + 3.4),
+                       (0.50, 0.10, 0.10), COL_BLACK_IRON)
+    # Front door (sealed)
+    ht._make_box_local("Lovers_Chapel_Door",
+                       (cx, cy - 8.0 / 2 - 0.05, gz + 1.4),
+                       (1.2, 0.10, 2.4), COL_DOOR_DARK)
+    # Walled garden — 4 wall segments around a 14×14 square
+    wall_h = 1.4
+    for s, w_size, ox, oy in [
+            (-1, (14.0, 0.40, wall_h),  0.0, -8.0),
+            (+1, (14.0, 0.40, wall_h),  0.0, +8.0),
+            (-1, (0.40, 14.0, wall_h), -8.0,  0.0),
+            (+1, (0.40, 14.0, wall_h), +8.0,  0.0),
+    ]:
+        ht._make_box_local(
+            f"Lovers_Garden_Wall_{ox:+.0f}_{oy:+.0f}",
+            (cx + ox, cy + oy + 8.0, gz + wall_h / 2),
+            w_size, COL_LIMESTONE)
+
+
+def _build_hermit_lighthouse():
+    """18m whitewashed lighthouse on a cypress-pile platform at
+    the south end of the bayou. A keeper's dwelling at the base."""
+    print("[graustark]   Hermit — Bayou Lighthouse")
+    cx, cy = ARCANA_LOCALES['Hermit_Lighthouse'][0]
+    gz = graustark_elevation(cx, cy)
+    # Platform (concrete pad on cypress piles)
+    base_z = max(gz, 0.0) + 0.5     # at least at sea level
+    # 8 cypress piles
+    for i in range(8):
+        ang = 2 * math.pi * i / 8
+        px = cx + 4.0 * math.cos(ang)
+        py = cy + 4.0 * math.sin(ang)
+        ht._make_box_local(
+            f"Hermit_Pile_{i}", (px, py, base_z - 1.5),
+            (0.40, 0.40, 3.0), COL_PILING)
+    # Platform deck
+    ht._make_box_local("Hermit_Deck",
+                       (cx, cy, base_z),
+                       (9.0, 9.0, 0.40), COL_CONCRETE)
+    # Keeper's cottage at base
+    kx = cx + 1.5
+    ky = cy + 1.5
+    ht._make_box_local("Hermit_Cottage",
+                       (kx, ky, base_z + 2.6 / 2 + 0.2),
+                       (4.0, 4.0, 2.6), COL_STUCCO_WHITE)
+    ht._make_box_local("Hermit_Cottage_Roof",
+                       (kx, ky, base_z + 2.6 + 0.30),
+                       (4.4, 4.4, 0.40), COL_TIN_FRESH)
+    # Lighthouse tower — 3 tapering banded boxes
+    LH_H = 18.0
+    for i in range(6):
+        seg_h = LH_H / 6
+        seg_z = base_z + 0.4 + i * seg_h + seg_h / 2
+        col = COL_STUCCO_WHITE if i % 2 == 0 \
+              else (0.86, 0.30, 0.22, 1.0)
+        r = 1.8 - i * 0.10
+        ht._make_box_local(
+            f"Hermit_Lighthouse_{i}",
+            (cx - 2.0, cy - 2.0, seg_z),
+            (r * 2, r * 2, seg_h), col)
+    # Lantern room at top
+    ht._make_box_local("Hermit_Lantern",
+                       (cx - 2.0, cy - 2.0, base_z + 0.4 + LH_H + 0.8),
+                       (2.4, 2.4, 1.6),
+                       (0.96, 0.92, 0.78, 1.0))
+    # Cap
+    ht._make_box_local("Hermit_LanternCap",
+                       (cx - 2.0, cy - 2.0, base_z + 0.4 + LH_H + 2.0),
+                       (2.6, 2.6, 0.6), (0.20, 0.18, 0.18, 1.0))
+    # Lantern light (bright sphere)
+    ht._make_sphere_low_local(
+        "Hermit_Lantern_Light",
+        (cx - 2.0, cy - 2.0, base_z + 0.4 + LH_H + 1.2),
+        0.5, (1.0, 0.94, 0.74, 1.0), rings=2, segments=6)
+
+
+def _build_strength_carnival():
+    """Abandoned Carnival Lot — sun-bleached merry-go-round + big
+    top tent + striped ticket booth + empty lion-cage wagon."""
+    print("[graustark]   Strength — Abandoned Carnival")
+    cx, cy = ARCANA_LOCALES['Strength_Carnival'][0]
+    gz = graustark_elevation(cx, cy)
+    # Big top tent — central pole + flat conical fabric (approximated)
+    ht._make_box_local("Strength_BigTop_Body",
+                       (cx, cy, gz + 4.0 / 2),
+                       (16.0, 16.0, 4.0),
+                       (0.86, 0.78, 0.66, 1.0))   # bleached canvas
+    ht._make_box_local("Strength_BigTop_Roof",
+                       (cx, cy, gz + 4.0 + 2.0),
+                       (12.0, 12.0, 4.0),
+                       (0.78, 0.42, 0.36, 1.0))   # faded red stripe
+    ht._make_box_local("Strength_BigTop_Cap",
+                       (cx, cy, gz + 8.0 + 1.0),
+                       (4.0, 4.0, 2.0),
+                       (0.86, 0.78, 0.66, 1.0))
+    ht._make_box_local("Strength_BigTop_Flag",
+                       (cx, cy, gz + 11.0),
+                       (0.10, 0.10, 2.0), COL_BLACK_IRON)
+    # Merry-go-round — circular platform + 8 vertical poles
+    mx = cx + 22.0
+    my = cy + 4.0
+    ht._make_box_local("Strength_Carousel_Deck",
+                       (mx, my, gz + 0.40 / 2),
+                       (8.0, 8.0, 0.40), (0.62, 0.52, 0.42, 1.0))
+    for i in range(8):
+        ang = 2 * math.pi * i / 8
+        hx = mx + 3.0 * math.cos(ang)
+        hy = my + 3.0 * math.sin(ang)
+        ht._make_box_local(
+            f"Strength_Carousel_Pole_{i}",
+            (hx, hy, gz + 2.0), (0.10, 0.10, 3.5),
+            (0.86, 0.74, 0.58, 1.0))
+    ht._make_box_local("Strength_Carousel_Roof",
+                       (mx, my, gz + 4.0),
+                       (8.6, 8.6, 0.4),
+                       (0.78, 0.42, 0.36, 1.0))
+    # Ticket booth — striped vertical box
+    bx = cx - 14.0
+    by = cy
+    ht._make_box_local("Strength_TicketBooth_Body",
+                       (bx, by, gz + 2.4 / 2),
+                       (1.8, 1.8, 2.4), (0.96, 0.92, 0.86, 1.0))
+    # Stripes (4 horizontal red bands)
+    for i in range(4):
+        ht._make_box_local(
+            f"Strength_TicketBooth_Stripe_{i}",
+            (bx, by, gz + 0.4 + i * 0.5),
+            (1.85, 1.85, 0.20), (0.78, 0.42, 0.36, 1.0))
+    ht._make_box_local("Strength_TicketBooth_Roof",
+                       (bx, by, gz + 2.4 + 0.3),
+                       (2.4, 2.4, 0.4),
+                       (0.32, 0.28, 0.24, 1.0))
+    # Empty lion cage wagon
+    lx = cx + 4.0
+    ly = cy - 12.0
+    ht._make_box_local("Strength_LionWagon_Bed",
+                       (lx, ly, gz + 0.6),
+                       (5.0, 2.8, 0.4), (0.62, 0.42, 0.30, 1.0))
+    # Cage bars — 8 vertical posts
+    for i in range(8):
+        t = -1 + 2 * i / 7
+        ht._make_box_local(
+            f"Strength_LionWagon_Bar_{i}",
+            (lx + t * 2.2, ly + 1.2, gz + 1.8),
+            (0.08, 0.08, 2.0), COL_BLACK_IRON)
+        ht._make_box_local(
+            f"Strength_LionWagon_Bar_back_{i}",
+            (lx + t * 2.2, ly - 1.2, gz + 1.8),
+            (0.08, 0.08, 2.0), COL_BLACK_IRON)
+    ht._make_box_local("Strength_LionWagon_Top",
+                       (lx, ly, gz + 2.9),
+                       (5.0, 2.8, 0.3),
+                       (0.32, 0.28, 0.24, 1.0))
+    # Wagon wheels (4)
+    for ox, oy in [(-2.0, -1.6), (+2.0, -1.6),
+                   (-2.0, +1.6), (+2.0, +1.6)]:
+        ht._make_box_local(
+            f"Strength_LionWagon_Wheel_{ox:+.0f}_{oy:+.0f}",
+            (lx + ox, ly + oy, gz + 0.35),
+            (0.16, 0.7, 0.7), COL_BLACK_IRON)
+
+
 def build_district_buildings():
     """PHASE 4 — buildings outside the riverfront's SE quadrant."""
     _hook_hce_mesh_z()
@@ -1689,6 +2020,12 @@ def build_district_buildings():
     _build_justice_courthouse()
     _build_death_hospital()
     _build_judgement_cemetery()
+    _build_tower_broadcast()
+    _build_moon_drivein()
+    _build_star_iceco()
+    _build_lovers_chapel()
+    _build_hermit_lighthouse()
+    _build_strength_carnival()
 
 
 def build_district_characters_and_props():
