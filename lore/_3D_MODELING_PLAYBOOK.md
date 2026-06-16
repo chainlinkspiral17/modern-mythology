@@ -12,6 +12,91 @@ Before starting any new 3D modeling work, read the Core rules and the
 last two "Recent lessons" entries. They will save you from re-making
 mistakes that took specific user feedback to discover.
 
+## STOP RULE — "I'm not seeing improvements" means the pipeline is broken, not the work
+
+**The single most important rule in this file.** If the user says any
+form of "I don't see changes," "no improvements visible," "looks the
+same," "this isn't working" — and you have committed work that
+should be visible — **stop adding features immediately**. The default
+hypothesis is NOT "user needs more features." The default hypothesis
+IS "the user's GLB is stale because the build silently failed."
+
+Verify in this order, before writing another line of build code:
+
+1. Run a stubbed-bpy smoke test of the full `main()` to surface any
+   `UnboundLocalError`, `TypeError`, missing-kwarg, or
+   forward-reference bugs. `ast.parse()` does NOT catch these —
+   Python only resolves them at runtime. The test below catches them:
+
+   ```python
+   class _Anything:
+       def __getattr__(self, k): return _Anything()
+       def __setattr__(self, k, v): pass
+       def __getitem__(self, k): return _Anything()
+       def __setitem__(self, k, v): pass
+       def __call__(self, *a, **k): return _Anything()
+       def __iter__(self): return iter([])
+       def __contains__(self, k): return True
+       def __bool__(self): return True
+       def __float__(self): return 0.0
+       def __int__(self): return 0
+       def __len__(self): return 0
+   class _Bpy:
+       def __getattr__(self, k): return _Anything()
+   sys.modules['bpy'] = _Bpy()
+   # ... load module and call main()
+   ```
+
+2. Ask the user to paste the BLENDER OUTPUT of their build, not
+   just to rebuild. Blender's `--background --python` prints any
+   Python traceback right before "Blender quit" and the wrapper
+   script does NOT exit non-zero on this (Blender's exit code is
+   0 even with a script error). If the GLB timestamp doesn't
+   advance, the build crashed; the traceback is in stdout.
+
+3. Only AFTER 1 and 2 come back clean do you add more features.
+
+This rule exists because I just spent ~30 commits adding per-house
+detail / civil-engineering / park furniture / commercial-rooftop
+mech that NEVER GOT BUILT — every rebuild crashed in
+`_build_kwik_shop_strip` on an `UnboundLocalError` for `sw_y`
+(forward reference: the trash bin block referenced a variable
+defined 290 lines later in the same function). The user said
+"I am not seeing improvements" multiple times in different words
+before I finally ran the diagnostic and saw the traceback. That's
+the EXACT failure mode the existing river-sink rule warned about,
+and I made it anyway.
+
+**Take "I don't see changes" as a hard signal to verify the
+pipeline, not as encouragement to keep grinding.**
+
+### Visual evidence is a HARD STOP
+
+When the user provides a screenshot or video, weight that even
+higher than verbal feedback. Screenshots are ground truth: they
+prove exactly what the build produced at a specific moment.
+
+If the user uploads a screenshot AND says "I'm not seeing
+improvements" — that combination is not a request to add more,
+it is a bug report against the build pipeline. Do NOT respond
+by listing what should be visible or by adding more features.
+Respond by:
+
+1. Examining the screenshot carefully — what IS rendered? Is it
+   consistent with the OLD GLB (pre-your-changes) or the NEW one?
+2. Running the stubbed-bpy smoke test against `main()`.
+3. Asking the user for the Blender build output so you can read
+   the traceback.
+
+The user is not your QA dept. When they hand you visual proof
+of a problem, you owe them a diagnosis, not a longer feature
+list.
+
+Smoke-test cadence: run the stubbed-bpy main() at least once per
+session, ideally after every commit that touches a `build_*` or
+helper that's reached from main(). It's a 2-second check that
+catches what `ast.parse()` can't.
+
 ## Core rules
 
 ### Infrastructure placement — align to a working grid
