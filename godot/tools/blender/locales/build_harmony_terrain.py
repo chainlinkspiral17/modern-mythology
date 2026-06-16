@@ -8814,11 +8814,16 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     # straight out 3 m. Connects to sidewalk or driveway depending
     # on yard orientation; this stub gives every house a clear
     # pedestrian approach to the door instead of porch-on-grass.
+    # Walk runs the full setback distance from porch front to the
+    # road sidewalk strip (~9 m total for the standard 14 m
+    # setback minus house depth and porch). Bigger pedestrian
+    # spine = the house reads as integrated with the street rather
+    # than as an island sitting on a lawn.
     col_walk = palette.get('walk', (0.86, 0.84, 0.78, 1.0))
     walk_start_x = porch_cx + fx * porch_d / 2     # porch front edge
     walk_start_y = porch_cy + fy * porch_d / 2
-    walk_end_x = walk_start_x + fx * 3.0
-    walk_end_y = walk_start_y + fy * 3.0
+    walk_end_x = walk_start_x + fx * 9.0
+    walk_end_y = walk_start_y + fy * 9.0
     walk_w = 1.2
     pwv = [
         (walk_start_x + perp_x * walk_w / 2,
@@ -9313,14 +9318,44 @@ def _build_driveway(name, house_cx, house_cy, ground_z, facing,
     dist = math.hypot(direction_x, direction_y) or 1.0
     perp_dx = -direction_y / dist
     perp_dy = direction_x / dist
-    corners = [
+    # Driveway main strip — narrow at the garage, FLARING wider
+    # for the last 2.5 m before the curb so the curb cut reads as
+    # a real driveway apron (not just a strip butting up against
+    # the curb edge).
+    flare_w = 5.0
+    flare_hw = flare_w / 2
+    flare_dist = 2.5
+    # Where the flare starts along the driveway
+    flare_start_x = curb_x - (direction_x / dist) * flare_dist
+    flare_start_y = curb_y - (direction_y / dist) * flare_dist
+    # Main strip: apron → flare_start
+    main_corners = [
         (apron_cx - perp_dx * perp_hw, apron_cy - perp_dy * perp_hw),
-        (curb_x   - perp_dx * perp_hw, curb_y   - perp_dy * perp_hw),
-        (curb_x   + perp_dx * perp_hw, curb_y   + perp_dy * perp_hw),
+        (flare_start_x - perp_dx * perp_hw,
+         flare_start_y - perp_dy * perp_hw),
+        (flare_start_x + perp_dx * perp_hw,
+         flare_start_y + perp_dy * perp_hw),
         (apron_cx + perp_dx * perp_hw, apron_cy + perp_dy * perp_hw),
     ]
-    verts = [(vx, vy, mesh_z(vx, vy) + 0.04) for (vx, vy) in corners]
-    _finalize_mesh(f"{name}_Driveway", verts, [[0, 1, 2, 3]], color)
+    main_verts = [(vx, vy, mesh_z(vx, vy) + 0.04)
+                   for (vx, vy) in main_corners]
+    _finalize_mesh(f"{name}_Driveway", main_verts, [[0, 1, 2, 3]],
+                    color)
+    # Flare trapezoid: flare_start (narrow) → curb (wide)
+    flare_corners = [
+        (flare_start_x - perp_dx * perp_hw,
+         flare_start_y - perp_dy * perp_hw),
+        (curb_x - perp_dx * flare_hw,
+         curb_y - perp_dy * flare_hw),
+        (curb_x + perp_dx * flare_hw,
+         curb_y + perp_dy * flare_hw),
+        (flare_start_x + perp_dx * perp_hw,
+         flare_start_y + perp_dy * perp_hw),
+    ]
+    flare_verts = [(vx, vy, mesh_z(vx, vy) + 0.04)
+                    for (vx, vy) in flare_corners]
+    _finalize_mesh(f"{name}_DrivewayApron", flare_verts,
+                    [[0, 1, 2, 3]], color)
 
 
 def _face_axis(facing):
