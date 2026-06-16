@@ -538,10 +538,18 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
         bottom_z = pelvis_top_z
         mid_z = bottom_z + torso_h * 0.40
         top_z = bottom_z + torso_h
+        # Hip half-width comes from pelvis_w so body_type's pelvis
+        # multiplier (e.g. female_avg has 1.05× wider hips) actually
+        # affects the torso silhouette. Hip flare 1.05× pelvis_w
+        # gives the body a clear waist→hip curve below the narrowest
+        # waist ring.
+        pelvis_half = PROP["pelvis_w"] * s / 2
+        hip_half = pelvis_half * 1.05
+        hip_d_half = pelvis_half * 0.65       # hip front-to-back depth
         rings = [
-            (bottom_z,                # hip ring
-             waist_half * 1.10,       # at hip-bone width
-             waist_d_half * 1.10),
+            (bottom_z,                # hip ring (flared back out)
+             hip_half,
+             hip_d_half),
             (mid_z,                   # natural waist (narrowest)
              waist_half,
              waist_d_half),
