@@ -252,35 +252,57 @@ def _build_body_rings(profile, base_x, base_y, base_z):
     add('crotch',    CROTCH_Z,        hw * 0.86, hw * 0.86, hw * 0.86,
         hw * 0.86, hw * 0.86 + butt_z * 0.55)
 
-    # ── LEGS (single column — left/right split happens via
-    # bone weighting, not separate meshes; for low-poly this
-    # is a viable cheat — the mesh appears connected). ──
-    THIGH_X = hw * 0.55
-    add('upper_thigh', CROTCH_Z - 0.060, THIGH_X * 1.10, THIGH_X * 1.12, THIGH_X * 1.10,
-        THIGH_X * 1.10, THIGH_X * 1.10)
-    add('thigh',       THIGH_Z,          THIGH_X,        THIGH_X,        THIGH_X,
-        THIGH_X * 1.00, THIGH_X * 1.00)
-    add('lower_thigh', THIGH_Z - HEAD_H * 0.30, THIGH_X * 0.80, THIGH_X * 0.82, THIGH_X * 0.80,
-        THIGH_X * 0.85, THIGH_X * 0.80)
-    # Half-step into the knee so the leg doesn't pinch sharply.
-    add('above_knee',  THIGH_Z - HEAD_H * 0.50, THIGH_X * 0.70, THIGH_X * 0.71, THIGH_X * 0.70,
-        THIGH_X * 0.81, THIGH_X * 0.74)
-    add('knee',        KNEE_Z,          THIGH_X * 0.62, THIGH_X * 0.60, THIGH_X * 0.62,
-        THIGH_X * 0.78, THIGH_X * 0.68)
-    # Below-knee half-step so the calf bulge comes in gradually.
-    add('below_knee',  KNEE_Z - HEAD_H * 0.15, THIGH_X * 0.64, THIGH_X * 0.65, THIGH_X * 0.64,
-        THIGH_X * 0.78, THIGH_X * 0.76)
-    add('calf',        KNEE_Z - HEAD_H * 0.35, THIGH_X * 0.66, THIGH_X * 0.70, THIGH_X * 0.66,
-        THIGH_X * 0.78, THIGH_X * 0.85)
-    add('shin',        SHIN_Z,          THIGH_X * 0.52, THIGH_X * 0.52, THIGH_X * 0.52,
-        THIGH_X * 0.62, THIGH_X * 0.55)
-    add('ankle',       ANKLE_Z,         THIGH_X * 0.42, THIGH_X * 0.42, THIGH_X * 0.42,
-        THIGH_X * 0.50, THIGH_X * 0.45)
-    add('foot',        0.030,           THIGH_X * 0.45, THIGH_X * 0.50, THIGH_X * 0.40,
-        THIGH_X * 0.92, THIGH_X * 0.62)
-    add('sole',        0.000,           THIGH_X * 0.42, THIGH_X * 0.46, THIGH_X * 0.36,
-        THIGH_X * 0.78, THIGH_X * 0.52)
+    # Body trunk ends at crotch — legs are SEPARATE ring stacks
+    # built by _build_legs(), bridged to the crotch via add_legs.
+    return rings
 
+
+def _build_leg_rings(profile, side_sgn):
+    """Build a single leg's ring stack, offset to one side of the
+    centerline so the left and right legs read as distinct columns.
+    Returns list of (label, ring_verts)."""
+    hw = profile['hip_w']
+    THIGH_X = hw * 0.55
+    LEG_OFFSET = hw * 0.45              # distance from centerline
+    cx = side_sgn * LEG_OFFSET
+    rings = []
+
+    def leg_add(label, y_offset, rx_f, rx_s, rx_b, rz_f, rz_b):
+        out = []
+        for i in range(RING_N):
+            ang = 2 * math.pi * i / RING_N
+            cz_dir = math.cos(ang)
+            sx_dir = math.sin(ang)
+            rx = rx_s + (rx_f - rx_s) * max(0, cz_dir) \
+                      + (rx_b - rx_s) * max(0, -cz_dir)
+            rz = rz_f if cz_dir >= 0 else rz_b
+            x = cx + rx * sx_dir
+            z = y_offset + rz * cz_dir
+            out.append((x, 0.0, z))
+        rings.append((f"{label}_{'L' if side_sgn > 0 else 'R'}", out))
+
+    leg_add('upper_thigh', CROTCH_Z - 0.040, THIGH_X * 1.10, THIGH_X * 1.12, THIGH_X * 1.10,
+            THIGH_X * 1.10, THIGH_X * 1.10)
+    leg_add('thigh',       THIGH_Z,          THIGH_X,        THIGH_X,        THIGH_X,
+            THIGH_X * 1.00, THIGH_X * 1.00)
+    leg_add('lower_thigh', THIGH_Z - HEAD_H * 0.30, THIGH_X * 0.80, THIGH_X * 0.82, THIGH_X * 0.80,
+            THIGH_X * 0.85, THIGH_X * 0.80)
+    leg_add('above_knee',  THIGH_Z - HEAD_H * 0.50, THIGH_X * 0.70, THIGH_X * 0.71, THIGH_X * 0.70,
+            THIGH_X * 0.81, THIGH_X * 0.74)
+    leg_add('knee',        KNEE_Z,          THIGH_X * 0.62, THIGH_X * 0.60, THIGH_X * 0.62,
+            THIGH_X * 0.78, THIGH_X * 0.68)
+    leg_add('below_knee',  KNEE_Z - HEAD_H * 0.15, THIGH_X * 0.64, THIGH_X * 0.65, THIGH_X * 0.64,
+            THIGH_X * 0.78, THIGH_X * 0.76)
+    leg_add('calf',        KNEE_Z - HEAD_H * 0.35, THIGH_X * 0.66, THIGH_X * 0.70, THIGH_X * 0.66,
+            THIGH_X * 0.78, THIGH_X * 0.85)
+    leg_add('shin',        SHIN_Z,          THIGH_X * 0.52, THIGH_X * 0.52, THIGH_X * 0.52,
+            THIGH_X * 0.62, THIGH_X * 0.55)
+    leg_add('ankle',       ANKLE_Z,         THIGH_X * 0.42, THIGH_X * 0.42, THIGH_X * 0.42,
+            THIGH_X * 0.50, THIGH_X * 0.45)
+    leg_add('foot',        0.030,           THIGH_X * 0.45, THIGH_X * 0.50, THIGH_X * 0.40,
+            THIGH_X * 0.92, THIGH_X * 0.62)
+    leg_add('sole',        0.000,           THIGH_X * 0.42, THIGH_X * 0.46, THIGH_X * 0.36,
+            THIGH_X * 0.78, THIGH_X * 0.52)
     return rings
 
 
@@ -292,10 +314,12 @@ def _build_arm(profile, base_x, base_y, base_z, side_sgn):
     which body ring the arm bridges to (the 'clav' ring)."""
     sw = profile['shoulder_w']
     hw = profile['hip_w']
-    upper_w = HEAD_H * 0.16
+    # Arms slightly thicker + sit further out so they read as
+    # distinct from the torso silhouette in front view.
+    upper_w = HEAD_H * 0.18
     fore_w = upper_w * 0.84
-    shoulder_x = base_x + side_sgn * (sw * 0.85)
-    hand_x = base_x + side_sgn * (hw * 0.95)
+    shoulder_x = base_x + side_sgn * (sw * 1.05)
+    hand_x = base_x + side_sgn * (hw * 1.10)
     shoulder_z = CLAV_Z - 0.020
     hand_z = THIGH_Z - HEAD_H * 0.05
     n_rings = 8
@@ -348,22 +372,35 @@ def midtier_figure(name, base_x, base_y, base_z,
         body_type = 'male_avg'
     profile = BODY_TYPES[body_type]
     body_rings = _build_body_rings(profile, 0.0, 0.0, 0.0)
+    leg_L_rings = _build_leg_rings(profile, +1)
+    leg_R_rings = _build_leg_rings(profile, -1)
     arm_L_rings, arn = _build_arm(profile, 0.0, 0.0, 0.0, +1)
     arm_R_rings, _ = _build_arm(profile, 0.0, 0.0, 0.0, -1)
 
-    # Assemble verts + faces
     all_verts = []
     body_idx = []
     for label, ring in body_rings:
         base = len(all_verts)
         all_verts.extend(ring)
         body_idx.append((label, list(range(base, base + RING_N))))
-    # Cap top (skull)
     apex_top_i = len(all_verts)
     all_verts.append((0.0, 0.0, CROWN_Z + 0.010))
-    # Cap bottom (sole — flat)
-    apex_bot_i = len(all_verts)
-    all_verts.append((0.0, 0.0, -0.005))
+
+    # Each leg's stack — and per-leg bottom apex for the sole
+    leg_L_idx = []
+    for label, ring in leg_L_rings:
+        base = len(all_verts)
+        all_verts.extend(ring)
+        leg_L_idx.append(list(range(base, base + RING_N)))
+    leg_L_bot_i = len(all_verts)
+    all_verts.append((+profile['hip_w'] * 0.45, 0.0, -0.005))
+    leg_R_idx = []
+    for label, ring in leg_R_rings:
+        base = len(all_verts)
+        all_verts.extend(ring)
+        leg_R_idx.append(list(range(base, base + RING_N)))
+    leg_R_bot_i = len(all_verts)
+    all_verts.append((-profile['hip_w'] * 0.45, 0.0, -0.005))
 
     arm_L_idx = []
     for ring in arm_L_rings:
@@ -389,11 +426,53 @@ def midtier_figure(name, base_x, base_y, base_z,
     for i in range(RING_N):
         j = (i + 1) % RING_N
         faces.append([apex_top_i, top_ring[j], top_ring[i]])
-    # Bottom cap fan (sole)
-    bot_ring = body_idx[-1][1]
-    for i in range(RING_N):
-        j = (i + 1) % RING_N
-        faces.append([apex_bot_i, bot_ring[i], bot_ring[j]])
+
+    # Crotch ring → left/right leg-top bridge. We split the crotch
+    # ring's 24 verts into "right half" (indices 6..18 — verts on
+    # -X side) and "left half" (0..6 + 18..24 — verts on +X side).
+    # Wait: vert 0 is +Z (front), vert 6 is +X (right side looking
+    # from above? actually sin(2π·6/24) = sin(π/2) = +1 → +X →
+    # LEFT side of figure facing camera). Conventionally we render
+    # in CCW around +Z up so +X is left-as-camera-views.
+    # The convention chosen: side_sgn=+1 = +X = "L" leg. Match.
+    crotch_ring = body_idx[-1][1]
+    # Left-leg half: verts whose X > 0  → indices 1..11 (sin > 0)
+    # Right-leg half: verts whose X < 0 → indices 13..23
+    # For a SMOOTH bridge: connect contiguous halves of the crotch
+    # ring to each leg's TOP ring (12 verts each → 12 quads).
+    for side_sgn, leg_idx in [(+1, leg_L_idx), (-1, leg_R_idx)]:
+        leg_top = leg_idx[0]
+        # Pick 12 contiguous verts from the crotch ring whose
+        # X-side matches side_sgn. Vert i has sin = sin(2πi/24);
+        # +1 verts have indices 1..11 (sin > 0), -1 verts 13..23.
+        if side_sgn > 0:
+            crotch_half = [crotch_ring[i] for i in range(0, 13)]
+        else:
+            crotch_half = [crotch_ring[i] for i in
+                            list(range(12, 24)) + [0]]
+        # Bridge: 13 crotch verts → 12 leg-top verts (RING_N=24 split).
+        # Use 12 quads + 1 triangle at the seam.
+        # Build a 12-quad bridge by mapping leg_top index k to
+        # crotch_half indices k and k+1
+        for k in range(12):
+            faces.append([
+                crotch_half[k], crotch_half[k + 1],
+                leg_top[(k + 1) % RING_N], leg_top[k % RING_N]
+            ])
+    # Now each leg's own ring-to-ring quads
+    for leg_idx, leg_bot_i in [(leg_L_idx, leg_L_bot_i),
+                                (leg_R_idx, leg_R_bot_i)]:
+        for r in range(len(leg_idx) - 1):
+            r0 = leg_idx[r]; r1 = leg_idx[r + 1]
+            for i in range(RING_N):
+                j = (i + 1) % RING_N
+                faces.append([r0[i], r0[j], r1[j], r1[i]])
+        # Sole cap fan
+        sole_ring = leg_idx[-1]
+        for i in range(RING_N):
+            j = (i + 1) % RING_N
+            faces.append([leg_bot_i, sole_ring[i], sole_ring[j]])
+
     # Arms quads
     for arm_idx in (arm_L_idx, arm_R_idx):
         for r in range(len(arm_idx) - 1):
@@ -402,7 +481,6 @@ def midtier_figure(name, base_x, base_y, base_z,
             for i in range(arn):
                 j = (i + 1) % arn
                 faces.append([r0[i], r0[j], r1[j], r1[i]])
-        # Cap arm tip (hand) — collapse to centroid
         last = arm_idx[-1]
         cx = sum(all_verts[i][0] for i in last) / arn
         cy = sum(all_verts[i][1] for i in last) / arn
