@@ -1161,25 +1161,42 @@ def _build_head(name, base_x, base_y, head_base_z, s,
 
     # EYES (always) — two small dark dots on the face. Visible even
     # without sunglasses; sunglasses lens covers them but the
-    # bottom edge peeks.
+    # bottom edge peeks. Made bigger this pass so they read from
+    # a few meters away — previous size (head_d * 0.07 = 1.5cm
+    # sphere) was barely visible.
     if not has_sunglasses:
-        eye_offset = head_d * 0.22
+        eye_offset = head_d * 0.26              # wider spacing
         side_x_e = -fwd_y; side_y_e = fwd_x
-        eye_z = head_cz + head_r * 0.10
+        eye_z = head_cz + head_r * 0.05
+        # SOCKET · darker recessed band across both eyes
+        socket_cx = base_x + fwd_x * (head_r * 0.85)
+        socket_cy = base_y + fwd_y * (head_r * 0.85)
+        socket_col = (skin_color[0] * 0.65, skin_color[1] * 0.65,
+                       skin_color[2] * 0.65, 1.0)
+        if abs(fwd_y) > abs(fwd_x):
+            _box(f"{name}_EyeSocket",
+                 (socket_cx, socket_cy, eye_z),
+                 (head_d * 0.72, 0.03, head_d * 0.18),
+                 socket_col)
+        else:
+            _box(f"{name}_EyeSocket",
+                 (socket_cx, socket_cy, eye_z),
+                 (0.03, head_d * 0.72, head_d * 0.18),
+                 socket_col)
         for eye_side, eye_sign in (('L', -1), ('R', +1)):
             ex = base_x + side_x_e * eye_offset * eye_sign \
-                 + fwd_x * (head_r * 0.95)
+                 + fwd_x * (head_r * 0.94)
             ey = base_y + side_y_e * eye_offset * eye_sign \
-                 + fwd_y * (head_r * 0.95)
-            # White sclera
+                 + fwd_y * (head_r * 0.94)
+            # White sclera — bumped to 0.10 from 0.07
             _sphere_low(f"{name}_Eye_{eye_side}",
-                        (ex, ey, eye_z), head_d * 0.07,
+                        (ex, ey, eye_z), head_d * 0.10,
                         (0.96, 0.94, 0.90, 1.0),
-                        rings=3, segments=6)
-            # Dark pupil
+                        rings=3, segments=6, squash_z=0.75)
+            # Dark pupil — also bigger (0.055 vs 0.035)
             _sphere_low(f"{name}_Pupil_{eye_side}",
-                        (ex + fwd_x * 0.01, ey + fwd_y * 0.01, eye_z),
-                        head_d * 0.035,
+                        (ex + fwd_x * 0.012, ey + fwd_y * 0.012, eye_z),
+                        head_d * 0.055,
                         (0.10, 0.08, 0.06, 1.0),
                         rings=2, segments=6)
 
