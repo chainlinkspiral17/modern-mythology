@@ -7878,53 +7878,53 @@ def build_commercial_cluster():
     SKIN_OLIVE  = (0.82, 0.68, 0.48, 1.0)   # olive
 
     chapter_one_cast = [
-        # (name, x, y, scale, hair, jacket, pants, pose, skin, beard)
+        # (name, x, y, scale, hair, jacket, pants, pose, skin, beard, body_type)
         ("Skip",     nc_x + 4.0, nc_y + 4.3, 1.0, "cap",
             (0.32, 0.55, 0.78, 1.0), (0.42, 0.42, 0.45, 1.0),
-            "hands_on_counter", SKIN_LIGHT, "stubble"),
+            "hands_on_counter", SKIN_LIGHT, "stubble", 'male_avg'),
         ("ArcadeAtt", ks_x - 11.0, ks_y + 4.3, 1.0, "bowl",
             (0.62, 0.22, 0.78, 1.0), (0.20, 0.20, 0.22, 1.0),
-            "arms_crossed", SKIN_OLIVE, "none"),
-        # Sam — Diego is Hispanic-American per canon (Ramos
-        # family), Sam paired with him. Olive tone reads close.
+            "arms_crossed", SKIN_OLIVE, "none", 'male_tall'),
+        # Sam — 17yo high-schooler. Use teen body type.
         ("Sam",      ks_x + 1.0, ks_y - 2.25, 1.0, "ponytail",
             (0.42, 0.30, 0.22, 1.0), (0.55, 0.50, 0.42, 1.0),
-            "hands_on_counter", SKIN_LIGHT, "none"),
+            "hands_on_counter", SKIN_LIGHT, "none", 'teen'),
         # Diego Ramos — canon Hispanic-American 19yo drummer
         ("Diego",    ks_x + 1.8, ks_y - 5.0, 1.0, "beanie",
             (0.18, 0.14, 0.12, 1.0), (0.20, 0.20, 0.24, 1.0),
-            "one_arm_lean", SKIN_MED, "stubble"),
-        # Roy — mid-50s white regular
+            "one_arm_lean", SKIN_MED, "stubble", 'teen'),
+        # Roy — mid-50s heavy-set regular
         ("Roy",      ks_x + 0.5, ks_y + 3.0, 1.05, "cap",
             (0.42, 0.42, 0.45, 1.0), (0.78, 0.74, 0.66, 1.0),
-            "hands_pockets", SKIN_LIGHT, "goatee"),
+            "hands_pockets", SKIN_LIGHT, "goatee", 'male_heavy'),
         ("LaundryAtt", ks_x - 5.0, ks_y + 0.5, 1.0, "bowl",
             (0.32, 0.55, 0.78, 1.0), (0.92, 0.92, 0.90, 1.0),
-            "hands_on_counter", SKIN_MED, "none"),
-        # Diner cook — classic Greek-American short-order, full
-        # mustache.
+            "hands_on_counter", SKIN_MED, "none", 'female_avg'),
+        # Diner cook — Greek-American short-order, full mustache,
+        # broad shouldered.
         ("DinerCook", dn_x,        dn_y + 3.4, 1.0, "short",
             (0.98, 0.98, 0.96, 1.0), (0.18, 0.18, 0.22, 1.0),
-            "hands_on_counter", SKIN_OLIVE, "full"),
+            "hands_on_counter", SKIN_OLIVE, "full", 'male_heavy'),
         ("DinerWaiter", dn_x + 4.0, dn_y + 2.5, 1.0, "short",
             (0.85, 0.22, 0.20, 1.0), (0.92, 0.90, 0.84, 1.0),
-            "arms_out", SKIN_LIGHT, "none"),
-        # Comics shopkeeper Rick · 62yo collector with a full beard
+            "arms_out", SKIN_LIGHT, "none", 'female_slim'),
+        # Rick — 62yo comics shopkeeper, full beard, slight tummy
         ("ComicsClerk", cc_x + 3.1, cc_y - 1.3, 1.0, "bowl",
             (0.92, 0.92, 0.86, 1.0), (0.32, 0.18, 0.32, 1.0),
-            "arms_crossed", SKIN_LIGHT, "full"),
-        # Maya Daigle — 16yo, canon "purple-tipped dark hair"
+            "arms_crossed", SKIN_LIGHT, "full", 'elderly'),
+        # Maya Daigle — 16yo
         ("Maya",     cc_x + 3.0, cc_y + 2.5, 0.92, "bowl",
             (0.40, 0.18, 0.42, 1.0), (0.20, 0.20, 0.24, 1.0),
-            "hands_on_counter", SKIN_LIGHT, "none"),
+            "hands_on_counter", SKIN_LIGHT, "none", 'teen'),
     ]
-    for tag, fx, fy, sc, hair, jacket, pants, pose, skin, beard in chapter_one_cast:
+    for tag, fx, fy, sc, hair, jacket, pants, pose, skin, beard, body in chapter_one_cast:
         fz = mesh_z(fx, fy)
         human_figure(
             name=f"NPC_{tag}",
             base_x=fx, base_y=fy, base_z=fz,
             scale=sc,
             facing='-Y',                  # face SOUTH (toward player)
+            body_type=body,
             skin_color=skin,
             hair_style=hair,
             hair_color=(0.20, 0.14, 0.10, 1.0),
