@@ -777,20 +777,32 @@ def _build_torso(name, base_x, base_y, hip_top_z, p, fwd, prp,
         # Base width/depth profile by interpolating among the
         # 4 anatomical landmarks: hip / waist / chest / shoulder.
         # Smooth between them with a piecewise cubic.
-        if t < 0.30:
-            u = t / 0.30
-            base_w = hip_w_half + (waist_w_half - hip_w_half) * smoothstep01(u)
-            base_d = hip_d_half + (waist_d_half - hip_d_half) * smoothstep01(u)
-        elif t < 0.75:
-            u = (t - 0.30) / 0.45
-            base_w = waist_w_half + (chest_d_half * 1.0 - waist_w_half) * smoothstep01(u)
-            # Chest WIDTH ramps up from waist toward shoulder
-            base_w = waist_w_half + (shoulder_w_half * 0.78 - waist_w_half) * smoothstep01(u)
+        # 5-band profile: hip → waist → ribcage → chest → shoulder.
+        # Wider band coverage so the shoulder widening is GRADUAL
+        # over the upper half of the torso instead of a sudden
+        # step in the last 25%.
+        if t < 0.18:
+            # Hip block
+            u = t / 0.18
+            base_w = hip_w_half + (hip_w_half * 0.95 - hip_w_half) * u
+            base_d = hip_d_half + (hip_d_half * 0.96 - hip_d_half) * u
+        elif t < 0.42:
+            # Hip → waist (narrowest at u=1)
+            u = (t - 0.18) / 0.24
+            base_w = hip_w_half * 0.95 + (waist_w_half - hip_w_half * 0.95) * smoothstep01(u)
+            base_d = hip_d_half * 0.96 + (waist_d_half - hip_d_half * 0.96) * smoothstep01(u)
+        elif t < 0.90:
+            # Waist → shoulder: widen GRADUALLY over half the
+            # torso height (was 25% of torso → looked like
+            # football pads). 48% of torso for the V-taper.
+            u = (t - 0.42) / 0.48
+            base_w = waist_w_half + (shoulder_w_half - waist_w_half) * smoothstep01(u)
             base_d = waist_d_half + (chest_d_half - waist_d_half) * smoothstep01(u)
         else:
-            u = (t - 0.75) / 0.25
-            base_w = shoulder_w_half * 0.78 + (shoulder_w_half - shoulder_w_half * 0.78) * smoothstep01(u)
-            base_d = chest_d_half + (chest_d_half * 0.96 - chest_d_half) * smoothstep01(u)
+            # Shoulder cap (last 10%) — top barely changes
+            u = (t - 0.90) / 0.10
+            base_w = shoulder_w_half * (1.0 - 0.05 * u)   # taper IN at very top
+            base_d = chest_d_half * (1.0 - 0.04 * u)
 
         for s in range(segs):
             theta = 2.0 * math.pi * s / segs
