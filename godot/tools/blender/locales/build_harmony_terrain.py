@@ -13843,6 +13843,51 @@ def build_wild_zone_trees():
         # Random distributed
         (-410, 320, 'oak'), (-90, 110, 'pine'),
         (160, 140, 'oak'), (380, 120, 'pine'),
+        # ── Additional fill clusters in the wild zones to halve
+        # the average inter-tree distance. Each cluster of 3-5
+        # trees breaks up the empty-grass gaps between settlements.
+        # NW wild cluster (between NR and CC)
+        (-350, 310, 'pine'), (-340, 295, 'oak'), (-360, 300, 'oak'),
+        (-260, 305, 'oak'), (-270, 290, 'pine'),
+        # N wild cluster (CC north)
+        (-100, 400, 'oak'), (-120, 410, 'pine'), (-80, 415, 'oak'),
+        (200, 405, 'oak'), (220, 395, 'pine'), (180, 410, 'oak'),
+        # NE wild cluster (CC east, between CC + EastCDS)
+        (320, 280, 'pine'), (340, 295, 'oak'), (310, 290, 'oak'),
+        (390, 270, 'pine'), (400, 285, 'oak'),
+        # E wild — east of EastCDS, more distributed
+        (500, 230, 'pine'), (520, 180, 'oak'), (530, 110, 'oak'),
+        (510, 50, 'pine'), (530, -20, 'oak'), (520, -80, 'oak'),
+        # SE wild (between P2 and EastComm) — extra cluster
+        (260, -120, 'oak'), (350, -160, 'pine'),
+        (290, -240, 'oak'), (330, -260, 'pine'),
+        # S wild (between P2 + SouthComm) — denser
+        (40, -290, 'oak'), (80, -310, 'pine'),
+        (-10, -290, 'oak'), (-60, -300, 'pine'),
+        (-220, -300, 'pine'), (-240, -290, 'oak'),
+        # SW wild west of Phase 3
+        (-490, -310, 'oak'), (-490, -260, 'pine'),
+        (-500, -380, 'oak'),
+        # W wild — denser cluster between WE and WestComm
+        (-540, -160, 'pine'), (-530, -100, 'oak'),
+        (-540, 100, 'pine'), (-540, 200, 'oak'),
+        (-520, 60, 'oak'), (-510, -60, 'pine'),
+        # Between NR and OliverTree (more dense)
+        (-150, 270, 'oak'), (-140, 250, 'pine'), (-130, 290, 'oak'),
+        # Between OTPark and HarmonyPark (wild gap)
+        (-150, 150, 'oak'), (-140, 110, 'pine'), (-130, 170, 'oak'),
+        (-150, 80, 'pine'),
+        # Between Phase3 and chapter-1 (more)
+        (-400, -90, 'oak'), (-300, -90, 'oak'), (-200, -90, 'pine'),
+        # E between EastCDS and HSField — denser
+        (290, 30, 'oak'), (350, 50, 'pine'), (380, 0, 'oak'),
+        # Around drive-in — more trees
+        (90, -260, 'oak'), (180, -270, 'pine'), (210, -240, 'oak'),
+        # Distributed fill in unclaimed zones
+        (-400, 380, 'oak'), (50, 410, 'pine'),
+        (430, 350, 'oak'), (-540, 320, 'pine'),
+        (240, -380, 'oak'), (-150, -380, 'pine'),
+        (450, -310, 'oak'), (-450, -350, 'pine'),
     ]
     for k, (tx, ty, kind) in enumerate(tree_specs):
         tz = mesh_z(tx, ty)
