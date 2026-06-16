@@ -1,13 +1,32 @@
 # Character Modeling Notes — Reference
 
-## Milestone — 2026-06-16
+## Procedural human attempts — WITHDRAWN (2026-06-16)
 
-**First procedural human the user signed off on.**
+After iterating procedural figures (cross-section lofts with
+asymmetric Z, intermediate rings, split legs, outboard arms)
+the user concluded: **"go back to using the reference. you
+fundamentally do not understand."**
 
-Verbatim user reaction to `human_midtier` v1.1:
+Decision: **the planar reference IS the figure.** No more
+procedural attempts. `human_midtier.py` stays in tree as a
+documented dead end (the v1.1 version got brief moderate
+approval before later iterations regressed). All character
+work going forward instances the reference mesh via the
+`_import_planar_sources` / `_instance_planar_npc` pipeline
+in `build_graustark.py`.
+
+Failure trajectory recorded for the record:
 
 > "that looks like the first human sculpt you've done I'm
 >  moderately happy with. congrats and record for posterity."
+> — v1.1 (commit 0e4a521)
+
+> "your models are broken. this is what I was expecting"
+> — v1.1 vs reference comparison
+
+> "go back to using the reference. you fundamentally do not
+>  understand."
+> — final call (commit pending)
 
 File: `godot/tools/blender/locales/human_midtier.py`
 
