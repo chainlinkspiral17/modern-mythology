@@ -13193,6 +13193,86 @@ def build_elementary_school():
                     (0.80, 0.02, 0.60),
                     (0.85, 0.20, 0.18, 1.0))
 
+    # ── SCHOOL BUS · parked at the drop-off lane south of the
+    # school. Long yellow box + smaller cabin + 6 wheels +
+    # stop-arm + emergency lights on roof.
+    bus_x = es_cx + 14.0
+    bus_y = es_cy - es_d / 2 - 5.0
+    bus_z = mesh_z(bus_x, bus_y)
+    col_bus_body = (0.95, 0.80, 0.20, 1.0)        # school-bus yellow
+    col_bus_black = (0.18, 0.18, 0.20, 1.0)
+    col_bus_window = (0.18, 0.22, 0.30, 1.0)
+    col_bus_white = (0.95, 0.94, 0.90, 1.0)
+    col_bus_red = (0.85, 0.20, 0.18, 1.0)
+    bus_l = 9.0; bus_w = 2.4; bus_body_h = 2.6
+    # Main body (long yellow box)
+    _make_box_local("ES_Bus_Body",
+                    (bus_x, bus_y,
+                     bus_z + 0.50 + bus_body_h / 2),
+                    (bus_w, bus_l, bus_body_h), col_bus_body)
+    # Cabin/hood (shorter, front 1.5m, slightly narrower)
+    _make_box_local("ES_Bus_Hood",
+                    (bus_x, bus_y - bus_l / 2 - 0.55,
+                     bus_z + 0.50 + 0.6),
+                    (bus_w * 0.85, 1.10, 1.20), col_bus_body)
+    # Long window strip running the length of the bus
+    for sgn in (-1, 1):
+        _make_box_local(f"ES_Bus_Windows_{sgn:+d}",
+                        (bus_x + sgn * (bus_w / 2 - 0.04),
+                         bus_y, bus_z + 0.50 + 1.80),
+                        (0.05, bus_l - 0.6, 0.75),
+                        col_bus_window)
+    # Black bumper stripe
+    _make_box_local("ES_Bus_BumperStripe",
+                    (bus_x, bus_y,
+                     bus_z + 0.50 + 0.30),
+                    (bus_w + 0.05, bus_l + 0.05, 0.18),
+                    col_bus_black)
+    # 6 wheels — front pair + rear quad (4 wheels on the back)
+    wheel_r = 0.40
+    wheel_pos_y = (-bus_l * 0.40, bus_l * 0.20, bus_l * 0.35)
+    for side_sgn in (-1, 1):
+        for y_off in wheel_pos_y:
+            _make_cyl_local(
+                f"ES_Bus_Wheel_{side_sgn:+d}_{int(y_off*10):+d}",
+                (bus_x + side_sgn * (bus_w / 2 - 0.05),
+                 bus_y + y_off, bus_z + wheel_r),
+                wheel_r, 0.30, col_bus_black, segments=6)
+    # Stop arm (red octagon on the LEFT side of the bus)
+    _make_box_local("ES_Bus_StopArm_Boom",
+                    (bus_x - bus_w / 2 - 0.30,
+                     bus_y - bus_l * 0.10,
+                     bus_z + 0.50 + 1.60),
+                    (0.60, 0.10, 0.10), col_bus_red)
+    _make_box_local("ES_Bus_StopArm_Sign",
+                    (bus_x - bus_w / 2 - 0.55,
+                     bus_y - bus_l * 0.10,
+                     bus_z + 0.50 + 1.60),
+                    (0.04, 0.50, 0.50), col_bus_red)
+    # Emergency lights on roof (2 red dome lights at front + back)
+    for y_off in (-bus_l * 0.30, bus_l * 0.30):
+        _make_cyl_local(
+            f"ES_Bus_RoofLight_{int(y_off*10)}",
+            (bus_x, bus_y + y_off,
+             bus_z + 0.50 + bus_body_h + 0.10),
+            0.10, 0.20, col_bus_red, segments=6)
+    # Headlights (front face, 2 white)
+    for sgn in (-1, 1):
+        _make_box_local(f"ES_Bus_Headlight_{sgn:+d}",
+                        (bus_x + sgn * 0.60,
+                         bus_y - bus_l / 2 - 1.05,
+                         bus_z + 0.50 + 0.60),
+                        (0.30, 0.04, 0.20),
+                        (0.98, 0.96, 0.86, 1.0))
+    # BLACK "SCHOOL BUS" text patch on the side
+    for sgn in (-1, 1):
+        _make_box_local(f"ES_Bus_TextPanel_{sgn:+d}",
+                        (bus_x + sgn * (bus_w / 2 + 0.005),
+                         bus_y - 0.5,
+                         bus_z + 0.50 + bus_body_h - 0.45),
+                        (0.04, 2.50, 0.30),
+                        col_bus_black)
+
 
 def build_hs_stadium_overflow_lot():
     """Game-day overflow lot south of the HS football field. A
