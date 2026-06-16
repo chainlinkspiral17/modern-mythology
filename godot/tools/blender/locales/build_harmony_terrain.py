@@ -8826,18 +8826,19 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     # on yard orientation; this stub gives every house a clear
     # pedestrian approach to the door instead of porch-on-grass.
     # Walk runs from porch front toward the road sidewalk.
-    # Standard 14 m setback minus 3.5 m half-house-depth minus
-    # 1.2 m porch = ~9.3 m from porch front to road CL. Residential
-    # sidewalk sits at ~3.5 m perp from road CL, so walk needs to
-    # cover ~5.8 m. We use 7 m to make sure it visually CONNECTS
-    # to the sidewalk on lots with the standard setback; lots set
-    # back further (cul-de-sacs) will have a short grass gap, which
-    # is fine — better than crossing INTO the road quad.
+    # Geometry check for the standard 14 m setback:
+    #   house center  →  porch front     = 4.7 m (along -facing)
+    #   road CL       →  residential sw  = 3.1 m perpendicular
+    #   front yard depth (porch front to sidewalk) = 14 − 4.7 − 3.1
+    #                                              = 6.2 m
+    # Walk length 6 m lands ~0.2 m short of the sidewalk centerline,
+    # close enough to read as connecting visually without crossing
+    # into the road quad (residential hw=4, would happen at >9.3 m).
     col_walk = palette.get('walk', (0.86, 0.84, 0.78, 1.0))
     walk_start_x = porch_cx + fx * porch_d / 2     # porch front edge
     walk_start_y = porch_cy + fy * porch_d / 2
-    walk_end_x = walk_start_x + fx * 7.0
-    walk_end_y = walk_start_y + fy * 7.0
+    walk_end_x = walk_start_x + fx * 6.0
+    walk_end_y = walk_start_y + fy * 6.0
     walk_w = 1.2
     pwv = [
         (walk_start_x + perp_x * walk_w / 2,
