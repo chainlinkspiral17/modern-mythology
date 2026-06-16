@@ -442,51 +442,218 @@ def _build_booth_table(prefix, cx, cy, axis_along):
              (0.07, 0.07, 0.005), COL_BRASS)
 
 
-def build_wall_booths():
-    """Booths arrayed against the EAST and WEST walls — backrests tight
-    against the window strips with a 5cm gap. Each booth is one bench
-    pressed to the wall + one bench out in the room + table between."""
+def build_alcove_booths():
+    """Classic American-diner alcove layout: a single row of booths
+    along the river-window wall. Each booth is a tight alcove jutting
+    OUT from the wall, with a tall divider between it and the next
+    booth — so the dividers, not the benches, form the long shared
+    line you see along the wall.
 
-    # ── EAST WALL booths (parking-lot windows) ──
-    # Wall at x = D_W/2 = +9. Wall booth bench long-axis = Y.
-    # Cocktail bar occupies y < -2.5 on the east side. Hostess stand at south.
-    # Available Y for east booths: roughly -2.0 to +5.0.
-    east_back_x   = D_W / 2 - 0.05 - BACK_THICK / 2            # backrest center x (~+8.92)
-    east_bench_x  = east_back_x - BACK_THICK / 2 - SEAT_DEPTH / 2  # wall-bench center
-    east_far_bench_x   = east_bench_x - SEAT_DEPTH / 2 - LEG_GAP - SEAT_DEPTH / 2
-    east_far_back_x    = east_far_bench_x - SEAT_DEPTH / 2 - BACK_THICK / 2
-    east_table_x  = (east_bench_x + east_far_bench_x) / 2.0
-    # Door opening on east wall sits roughly Y=-1.45 to +1.0; skip that range.
-    for i, by in enumerate([+1.80, +3.40, +4.80], start=1):
-        prefix = f"BoothE_{i}"
-        # Wall-side bench (backrest faces +X / 'E')
-        _build_booth_bench(prefix, "wall_E", east_bench_x, by, axis_along='Y',
-                           with_backrest=True)
-        # Far bench (backrest faces -X / 'W')
-        _build_booth_bench(prefix, "far_W", east_far_bench_x, by, axis_along='Y',
-                           with_backrest=True)
-        # Table
-        _build_booth_table(prefix, east_table_x, by, axis_along='Y')
-        BOOTH_POSITIONS.append((prefix, east_table_x, by, 'Y'))
+    Reference: classic diner reference photo provided by user
+    (image 4d0884e1-5186.jpg). Photo features:
+      · 4 booths in a row along a window wall
+      · Each booth ≈ 1.2m wide × 1.7m deep
+      · Square tables (~0.7m × 0.7m)
+      · Tall divider walls between booths (~1.1m above floor)
+      · Pendant lamp directly above each table
+      · Bench backrest height ≈ chest-of-seated-customer
+    """
+    # Per-booth dimensions
+    bench_w   = 1.20    # bench long-axis (along the wall)
+    bench_d   = 0.48    # bench depth (perpendicular to wall)
+    seat_top  = 0.45
+    back_h    = 0.70    # top at z=1.15
+    div_thick = 0.06
+    table_sz  = 0.70    # square
+    leg_gap   = 0.80    # bench-front to bench-front (just enough for legs + small table)
 
-    # ── WEST WALL booths (river window) ──
-    # Wall at x = -D_W/2 = -9. Kitchen alcove blocks y < -4.4. Counter is at y=-3.5.
-    # Available Y: roughly -3.0 (north of counter-clear) to +5.0.
-    west_back_x   = -D_W / 2 + 0.05 + BACK_THICK / 2           # backrest center x (~-8.92)
-    west_bench_x  = west_back_x + BACK_THICK / 2 + SEAT_DEPTH / 2
-    west_far_bench_x  = west_bench_x + SEAT_DEPTH / 2 + LEG_GAP + SEAT_DEPTH / 2
-    west_far_back_x   = west_far_bench_x + SEAT_DEPTH / 2 + BACK_THICK / 2
-    west_table_x  = (west_bench_x + west_far_bench_x) / 2.0
-    for i, by in enumerate([-2.50, -0.90, +0.70, +2.30, +3.90], start=1):
-        prefix = f"BoothW_{i}"
-        # Wall-side bench (backrest faces -X / 'W')
-        _build_booth_bench(prefix, "wall_W", west_bench_x, by, axis_along='Y',
-                           with_backrest=True)
-        # Far bench (backrest faces +X / 'E')
-        _build_booth_bench(prefix, "far_E", west_far_bench_x, by, axis_along='Y',
-                           with_backrest=True)
-        _build_booth_table(prefix, west_table_x, by, axis_along='Y')
-        BOOTH_POSITIONS.append((prefix, west_table_x, by, 'Y'))
+    # Per-booth total Y extent (booth + its right-side divider) is bench_w + div_thick = 1.26
+    # 4 booths + 5 dividers = 4×1.20 + 5×0.06 = 5.10m. Center the row at Y=+0.50.
+    n_booths = 4
+    booth_unit_y = bench_w + div_thick
+    total_y = n_booths * bench_w + (n_booths + 1) * div_thick
+    row_center_y = +0.50
+    row_y_start = row_center_y - total_y / 2.0
+
+    # X positions (window at -9, depth grows toward +X)
+    wall_x         = -D_W / 2                  # -9.0
+    wall_back_x    = wall_x + 0.05 + div_thick / 2.0   # -8.92 (wall-side backrest center)
+    wall_bench_x   = wall_back_x + div_thick / 2.0 + bench_d / 2.0  # -8.65
+    table_x        = wall_bench_x + bench_d / 2.0 + leg_gap / 2.0   # -8.01
+    aisle_bench_x  = table_x + leg_gap / 2.0 + bench_d / 2.0        # -7.37
+    aisle_back_x   = aisle_bench_x + bench_d / 2.0 + div_thick / 2.0 # -7.10
+    booth_depth_total = (aisle_back_x + div_thick / 2.0) - (wall_back_x - div_thick / 2.0)  # 1.88
+
+    # ── End-dividers (the tall walls between adjacent booths) ──
+    div_center_x = (wall_back_x + aisle_back_x) / 2.0
+    div_top_z = seat_top + back_h           # 1.15
+    for d in range(n_booths + 1):
+        dy = row_y_start + d * (bench_w + div_thick) + div_thick / 2.0
+        make_box(f"Alcove_Divider_{d}",
+                 (div_center_x, dy, div_top_z / 2.0),
+                 (booth_depth_total + 0.04, div_thick, div_top_z),
+                 COL_VINYL_RED_DK)
+        # Crown molding cap (a slightly darker wood band on top)
+        make_box(f"Alcove_Divider_{d}_Crown",
+                 (div_center_x, dy, div_top_z + 0.025),
+                 (booth_depth_total + 0.06, div_thick + 0.04, 0.05),
+                 COL_WOOD_TRIM)
+        # Wood baseboard at the floor
+        make_box(f"Alcove_Divider_{d}_Baseboard",
+                 (div_center_x, dy, 0.05),
+                 (booth_depth_total + 0.06, div_thick + 0.04, 0.10),
+                 COL_WOOD_TRIM)
+
+    # ── Per-booth benches + table + pendant ──
+    for i in range(n_booths):
+        # Booth's Y center
+        by = row_y_start + (i + 0.5) * (bench_w + div_thick) + div_thick / 2.0
+        prefix = f"Booth_{i + 1}"
+
+        # ── Window-side bench (back to wall) ──
+        # Seat slab
+        make_box(f"{prefix}_seat_W",
+                 (wall_bench_x, by, seat_top / 2.0),
+                 (bench_d, bench_w, seat_top), COL_VINYL_RED)
+        # Front seam piping on the aisle-facing edge
+        make_box(f"{prefix}_seat_W_seam",
+                 (wall_bench_x + bench_d / 2.0 - 0.04, by, seat_top - 0.012),
+                 (0.04, bench_w - 0.08, 0.020), COL_VINYL_RED_DK)
+        # Tufted button-dimples (3 across)
+        for t in range(3):
+            tx = wall_bench_x
+            ty = by + (-1 + t) * 0.32
+            make_box(f"{prefix}_seat_W_tuft_{t}",
+                     (tx, ty, seat_top - 0.008),
+                     (0.05, 0.05, 0.012), COL_VINYL_RED_DK)
+        # Backrest pressed to the wall
+        back_z = seat_top + back_h / 2.0
+        make_box(f"{prefix}_back_W",
+                 (wall_back_x, by, back_z),
+                 (div_thick, bench_w, back_h), COL_VINYL_RED_DK)
+        # Vertical stripes on backrest (tufted column hint)
+        for c in range(3):
+            sy = by + (-1 + c) * 0.36
+            make_box(f"{prefix}_back_W_stripe_{c}",
+                     (wall_back_x + div_thick / 2.0 + 0.005, sy, back_z),
+                     (0.012, 0.025, back_h - 0.10), COL_VINYL_RED)
+
+        # ── Aisle-side bench (back to aisle) ──
+        make_box(f"{prefix}_seat_A",
+                 (aisle_bench_x, by, seat_top / 2.0),
+                 (bench_d, bench_w, seat_top), COL_VINYL_RED)
+        make_box(f"{prefix}_seat_A_seam",
+                 (aisle_bench_x - bench_d / 2.0 + 0.04, by, seat_top - 0.012),
+                 (0.04, bench_w - 0.08, 0.020), COL_VINYL_RED_DK)
+        for t in range(3):
+            tx = aisle_bench_x
+            ty = by + (-1 + t) * 0.32
+            make_box(f"{prefix}_seat_A_tuft_{t}",
+                     (tx, ty, seat_top - 0.008),
+                     (0.05, 0.05, 0.012), COL_VINYL_RED_DK)
+        make_box(f"{prefix}_back_A",
+                 (aisle_back_x, by, back_z),
+                 (div_thick, bench_w, back_h), COL_VINYL_RED_DK)
+        for c in range(3):
+            sy = by + (-1 + c) * 0.36
+            make_box(f"{prefix}_back_A_stripe_{c}",
+                     (aisle_back_x - div_thick / 2.0 - 0.005, sy, back_z),
+                     (0.012, 0.025, back_h - 0.10), COL_VINYL_RED)
+
+        # ── Square formica table ──
+        table_top_z = 0.74
+        make_box(f"{prefix}_table_top",
+                 (table_x, by, table_top_z),
+                 (table_sz, table_sz, 0.04), COL_FORMICA)
+        # Chrome band rim
+        make_box(f"{prefix}_table_band",
+                 (table_x, by, table_top_z - 0.03),
+                 (table_sz + 0.02, table_sz + 0.02, 0.02), COL_BRASS)
+        # Chrome center post
+        make_cyl(f"{prefix}_table_post",
+                 (table_x, by, table_top_z / 2.0),
+                 0.045, table_top_z - 0.04, COL_BRASS, segments=8, axis='Z')
+        # Cast-iron floor disc
+        make_cyl(f"{prefix}_table_foot",
+                 (table_x, by, 0.03),
+                 0.22, 0.04, (0.16, 0.14, 0.12, 1.0), segments=10, axis='Z')
+
+        # ── Pendant lamp directly above the table ──
+        wire_top_z = D_H - 0.05
+        lamp_z = table_top_z + 0.70
+        make_cyl(f"{prefix}_lamp_canopy",
+                 (table_x, by, wire_top_z - 0.02),
+                 0.07, 0.04, COL_BRASS, segments=8, axis='Z')
+        make_cyl(f"{prefix}_lamp_stem",
+                 (table_x, by, (lamp_z + wire_top_z) / 2.0),
+                 0.012, wire_top_z - lamp_z,
+                 COL_PAYPHONE_DARK, segments=4, axis='Z')
+        # Conical shade (low sphere stand-in — flattened)
+        make_sphere_low(f"{prefix}_lamp_shade",
+                        (table_x, by, lamp_z), 0.20,
+                        (0.86, 0.62, 0.32, 1.0), rings=2, segments=10)
+        # Visible warm bulb
+        make_sphere_low(f"{prefix}_lamp_bulb",
+                        (table_x, by, lamp_z - 0.18), 0.05,
+                        (0.98, 0.92, 0.74, 1.0), rings=2, segments=6)
+
+        # Tiny table-number plaque
+        make_box(f"{prefix}_table_number",
+                 (table_x + table_sz / 2.0 - 0.08,
+                  by - table_sz / 2.0 + 0.08, table_top_z + 0.022),
+                 (0.07, 0.07, 0.005), COL_BRASS)
+
+        # Register for table dressings
+        BOOTH_POSITIONS.append((prefix, table_x, by, 'Y'))
+
+
+def build_freestanding_tables():
+    """Two small 2-top tables on the open center floor, between the
+    booth row and the east wall. Adds variety without crowding."""
+    # Position the tables in clear floor space
+    table_specs = [
+        ("Bistro_1", +2.0, +1.0),
+        ("Bistro_2", +5.0, +2.5),
+        ("Bistro_3", +2.0, +4.0),
+    ]
+    table_top_z = 0.74
+    for prefix, tx, ty in table_specs:
+        # Round table top (low cylinder)
+        make_cyl(f"{prefix}_top", (tx, ty, table_top_z),
+                 0.42, 0.04, COL_FORMICA, segments=14, axis='Z')
+        # Chrome edge band
+        make_cyl(f"{prefix}_band", (tx, ty, table_top_z - 0.03),
+                 0.43, 0.02, COL_BRASS, segments=14, axis='Z')
+        # Center post
+        make_cyl(f"{prefix}_post", (tx, ty, table_top_z / 2.0),
+                 0.045, table_top_z - 0.04, COL_BRASS, segments=8, axis='Z')
+        # Cast-iron base
+        make_cyl(f"{prefix}_foot", (tx, ty, 0.03),
+                 0.24, 0.04, (0.16, 0.14, 0.12, 1.0), segments=10, axis='Z')
+        # Two bentwood chairs flanking the table (just suggestive)
+        for ang_deg, label in [(180, 'S'), (0, 'N')]:
+            ang = math.radians(ang_deg)
+            cx = tx + 0.60 * math.cos(ang)
+            cy = ty + 0.60 * math.sin(ang)
+            # Seat
+            make_cyl(f"{prefix}_chair_{label}_seat", (cx, cy, 0.46),
+                     0.18, 0.04, COL_WOOD_TRIM, segments=10, axis='Z')
+            # 4 legs
+            for lx in (-1, +1):
+                for ly in (-1, +1):
+                    make_box(f"{prefix}_chair_{label}_leg_{lx:+d}_{ly:+d}",
+                             (cx + lx * 0.12, cy + ly * 0.12, 0.23),
+                             (0.025, 0.025, 0.46), COL_WOOD_TRIM)
+            # Backrest (a curved hint via 3 short verticals + a top arc box)
+            back_dy = 0.13 if ang_deg == 0 else -0.13
+            for bx_off in (-0.10, 0.0, +0.10):
+                make_box(f"{prefix}_chair_{label}_back_{bx_off:+.2f}",
+                         (cx + bx_off, cy + back_dy, 0.78),
+                         (0.025, 0.04, 0.60), COL_WOOD_TRIM)
+            make_box(f"{prefix}_chair_{label}_back_top",
+                     (cx, cy + back_dy, 1.06),
+                     (0.30, 0.05, 0.04), COL_WOOD_TRIM)
+        BOOTH_POSITIONS.append((prefix, tx, ty, 'Y'))
 
 
 # ────────────────────────────────────────────────────────────────
@@ -605,80 +772,11 @@ def make_sphere_low(name, center, radius, color, rings=3, segments=8):
     return obj
 
 
-def build_center_back_to_back_booths():
-    """Back-to-back booth pairs running down the center of the room.
-
-    Each PAIR shares a center spine — two backrest panels glued back to
-    back form the spine, with one booth opening east and one opening
-    west. Maximises floor use the way real diners do.
-
-    Pair cross-section (perpendicular to spine, here oriented N-S):
-        outer_back_W | bench_W_outer | leg_gap | bench_W_inner | SPINE |
-        bench_E_inner | leg_gap | bench_E_outer | outer_back_E
-    Total perpendicular footprint: 2 × BOOTH_TOTAL - BACK_THICK ≈ 3.40m
-    """
-    # Spine runs N-S at X = 0. Each pair is 1.50m wide along Y.
-    # Need >0.5m clearance from counter at y=-3.5 (counter back edge y=-3.10) and >0.5m
-    # from north wall at y=+6.
-    # Place pairs at Y centers spaced 1.60m apart:
-    spine_x = 0.0
-    # bench center offsets from spine (perpendicular, X axis)
-    bench_inner_offset = BACK_THICK / 2 + SEAT_DEPTH / 2          # ~0.27m
-    bench_outer_offset = bench_inner_offset + SEAT_DEPTH + LEG_GAP  # ~1.40m
-    table_offset       = (bench_inner_offset + bench_outer_offset) / 2.0  # ~0.835m
-    outer_back_offset  = bench_outer_offset + SEAT_DEPTH / 2 + BACK_THICK / 2
-
-    # Three pairs (six booths total) — fits between counter (y=-3.1) and hallway opening (y=+6).
-    pair_ys = [-1.0, +0.8, +2.6, +4.4]
-    for i, py in enumerate(pair_ys, start=1):
-        prefix = f"BoothC_{i}"
-        # ── Spine: two backrests laminated back-to-back ──
-        spine_z = SEAT_TOP_Z + BACK_H / 2.0
-        # West-facing back (this is the WEST booth's backrest)
-        make_box(f"{prefix}_spine_back_W",
-                 (spine_x - BACK_THICK / 2, py, spine_z),
-                 (BACK_THICK, SEAT_WIDTH, BACK_H), COL_VINYL_RED_DK)
-        # East-facing back
-        make_box(f"{prefix}_spine_back_E",
-                 (spine_x + BACK_THICK / 2, py, spine_z),
-                 (BACK_THICK, SEAT_WIDTH, BACK_H), COL_VINYL_RED_DK)
-        # Wooden crown molding capping the spine (single piece across both)
-        make_box(f"{prefix}_spine_crown",
-                 (spine_x, py, SEAT_TOP_Z + BACK_H + 0.025),
-                 (BACK_THICK * 2 + 0.04, SEAT_WIDTH + 0.04, 0.05),
-                 COL_WOOD_TRIM)
-        # Backrest stripes on each face — three vertical seams suggesting tufting
-        for c in range(3):
-            frac = -1 + c
-            for face_sign, side in [(-1, 'W'), (+1, 'E')]:
-                make_box(f"{prefix}_spine_stripe_{side}_{c}",
-                         (spine_x + face_sign * (BACK_THICK + 0.005),
-                          py + frac * 0.45,
-                          spine_z),
-                         (0.012, 0.025, BACK_H - 0.10), COL_VINYL_RED)
-
-        # ── WEST booth (opens to -X) ──
-        # Inner bench (against spine) — no separate backrest (the spine is its back)
-        _build_booth_bench(prefix + "_W", "inner",
-                           spine_x - bench_inner_offset, py,
-                           axis_along='Y', with_backrest=False)
-        # Outer bench (has its own backrest facing east)
-        _build_booth_bench(prefix + "_W", "outer_E",
-                           spine_x - bench_outer_offset, py,
-                           axis_along='Y', with_backrest=True)
-        _build_booth_table(prefix + "_W", spine_x - table_offset, py, axis_along='Y')
-        BOOTH_POSITIONS.append((prefix + "_W", spine_x - table_offset, py, 'Y'))
-
-        # ── EAST booth (opens to +X) ──
-        _build_booth_bench(prefix + "_E", "inner",
-                           spine_x + bench_inner_offset, py,
-                           axis_along='Y', with_backrest=False)
-        _build_booth_bench(prefix + "_E", "outer_W",
-                           spine_x + bench_outer_offset, py,
-                           axis_along='Y', with_backrest=True)
-        _build_booth_table(prefix + "_E", spine_x + table_offset, py, axis_along='Y')
-        BOOTH_POSITIONS.append((prefix + "_E", spine_x + table_offset, py, 'Y'))
-
+# build_center_back_to_back_booths removed — user feedback was that the
+# packed center booth pairs were "cramped and nightmarish" and trapped
+# the hero figure inside the cluster. Layout is now a single row of
+# alcove booths along the river window (build_alcove_booths) + a few
+# free-standing bistro tables (build_freestanding_tables) on open floor.
 
 def build_kitchen_alcove():
     """The kitchen alcove on the west (river) side. Stainless prep surfaces + grill + order window."""
@@ -1309,8 +1407,8 @@ def main():
     build_floor_checkerboard()
     build_counter()
     build_counter_accessories()
-    build_wall_booths()
-    build_center_back_to_back_booths()
+    build_alcove_booths()
+    build_freestanding_tables()
     build_table_dressings()
     build_kitchen_alcove()
     build_cocktail_bar()
