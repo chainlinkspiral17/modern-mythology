@@ -244,7 +244,12 @@ SETTLEMENTS = [
     ("DinerPad",      22,   50,  -380, -345, -9.0, 0.95),
     ("CosmicCPad",    62,   80,  -380, -345, -9.0, 0.95),
 ]
-SETTLEMENT_FALLOFF = 20.0   # m of smooth transition outside each rect
+SETTLEMENT_FALLOFF = 28.0   # m of smooth transition outside each rect
+                              # (bumped from 20 → 28 to spread the
+                              # ~10m drop at SouthComm boundary over
+                              # more horizontal distance, reducing
+                              # cliff gradient from ~5m/cell to ~3m
+                              # per cell on the 6m mesh grid)
 # Reduced from 35m to 20m (2026-06-15) so adjacent settlements
 # don't pull each other's interiors. With the new weighted-blend
 # averaging, a 35m falloff at a settlement boundary made the
