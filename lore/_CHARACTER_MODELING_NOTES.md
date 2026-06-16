@@ -255,6 +255,183 @@ attribution somewhere in the game (credits scene, README).
      a sculpting reference for our own from-scratch mesh
      (no attribution needed if no part of the original is
      shipped).
+
+---
+
+## Deep read of the mesh (2026-06-16, from .gltf+.bin)
+
+Parsed 5,250 verts × 3,592 tris of the male mesh directly
+from `scene.bin`. Findings beyond the metadata:
+
+### What the silhouette actually looks like
+
+Front-view ASCII silhouette (32 columns × 40 rows, derived
+from rasterising the actual mesh vertices). The `·` markers
+are the 8-head ideal Y-lines.
+
+```
+              #######             ← head crown
+              #######
+             #########            ← skull mid
+             #########
+  ·           #######            ·  1H = chin
+           #############          ← neck/shoulder transition
+        #### ######### ####       ← clavicle peak
+       #####################      ← arms hanging
+      #######################
+  ·   #######################    ·  2H = nipple line
+       #####################      ← chest
+      #####  ### # ###  #####     ← arms-to-torso gap visible
+     ##### ############# #####
+    #####  ##### # #####  #####
+  ·#####    ## # # # ##    ##### ·  3H = navel / waist
+   ###### ##   # # #   ## ######
+   ###    ###### # ######    ###  ← hand at hip (widest pt)
+   ##     ####  ###  ####     ##
+  ###     # #### # #### #     ###·  4H = crotch (midpoint)
+  ####    ## ######### ##    #####
+  #####   ### ####### ###   #####
+  ##      ### ####### ###      ##
+   ##     ##  #######  ##     ##
+  ·        ## ####### ##         ·  5H = mid-thigh
+           #############
+            ###########
+            ###########
+           ###### ######
+  ·        ####     ####         ·  6H = knee
+           #### ### ####
+            ##### #####
+            #         #
+            ##### #####
+  ·            #   #             ·  7H = mid-shin
+             ## # # ##
+             #########
+             #### ####
+           ###### ######
+             #       #            ← ankle / foot
+```
+
+### Real-data measurements
+
+- **Total height**: 3.609 units. Head height (1/8): 0.451.
+- **Width at hip level** (widest point): 1.33 units —
+  this is fingertip-to-fingertip with arms hanging,
+  NOT shoulder width. Easy to confuse.
+- **Shoulder width** (peak at y≈2.93, before arms hang
+  below): 0.81 units = **1.8 head-widths**. That's
+  narrower than the male athletic ideal (2.5-3 head-widths),
+  suggesting this base mesh is gender-neutral and meant to
+  be sculpt-pushed for masculine shoulders per character.
+- **Female silhouette** (mesh 2): same height 3.61, width
+  1.25 (slightly narrower). Visible wasp-waist at 3H, hip
+  flare at 4H. Same topology, displaced.
+- **Body depth** (Z): 0.58 units. Depth/height ratio 0.16,
+  matches real human ~0.18.
+
+### Edge loops at joints (3-loop rule)
+
+Knee region (Y 0.82-1.05, ~23cm vertical band): 14 distinct
+Y-levels of vertices.
+
+Elbow region (Y 2.16-2.35): 13 distinct Y-levels.
+
+Both far exceed the 3-loop minimum. The mesh is
+deformation-ready out of the box.
+
+### Side view (planar nose / hanging arms)
+
+```
+         #  #   #   #         ← skull
+       ##  # ## # ### ##
+        # #  ###### ######   ← face plane + nose protrudes (+Z)
+        ###################
+          ###############
+         #### # ###           ← neck slope
+      ####  ########          ← shoulder
+     ### #  #  ### ###
+    #### #  # # #########     ← arm hanging in front-and-side
+     #####  # #### #######
+      ## #  ## ###  ## ###    ← elbow
+      ## #  # ##  #      #
+       ####### ##    #  ##    ← waist
+       ###### ###    #  ##
+        #### ####    #  #
+         ### ## ##      #
+        ## ### ###  ### #     ← hip / gluteus
+       #  #   ##### ## #
+      ##      ###   ## #      ← thigh
+      #    #   ## #####
+      ### #  #########        ← knee
+       ####   #########
+      ###    ##########       ← shin
+       #    #  #  #####
+       # ##  #  ####          ← ankle
+       #### ### ####
+       ## # ## ###
+       ### ## ###
+     ####### ####             ← foot
+   #  #  #   # #
+    #   # ### #
+   ## #  # ###
+       #
+    ####### #
+           #
+     ### ##                   ← toes pointing FORWARD (+Z)
+       #  ##
+    #######   #  #
+   ## ## ## # ############
+```
+
+The nose pushes forward into +Z — that's the planar face
+front plane catching the light. The foot extends forward
+(toes at +Z) — note this is the "Z-up axes ARE LIES"
+problem in reverse: in Blender Y is up here, foot points +Z.
+
+### Concrete takeaways for OUR pipeline
+
+1. **Width-at-hip is NOT shoulder width**. If we ever
+   auto-place humans against props (chairs, doorways),
+   measure the bone-derived shoulder width, not the bbox.
+   The bbox includes arms hanging.
+
+2. **One mesh, two figures**. Mesh 0/1 (male) and mesh 2
+   (female) share IDENTICAL topology and edge loops —
+   the same 3,592-tri base shape sculpt-displaced into a
+   gendered silhouette. This is the procedural pattern we
+   should adopt: one base mesh, multiple shape-key /
+   displacement variants for body type.
+
+3. **No textures, planar normals do the work**. The
+   "sculpture" material is flat-shaded. The READ of the
+   character comes from the silhouette + edge-discontinuity
+   normals + lighting. This is exactly the locale
+   constraint, transferred to characters.
+
+4. **3-loop rule is over-satisfied here.** A modest
+   character does NOT need a 24-spine articulation. The
+   3-bone spine + 2-bone neck + IK-foot chain of this rig
+   is enough for any open-world traversal animation.
+
+5. **Hand = ONE box.** Stop modelling fingers. The pro
+   reference confirms it.
+
+6. **Twist bones matter MORE than fingers** for visual
+   quality. The candy-wrapper deformation on rolled
+   forearms is a silhouette-killer; fingers usually go
+   unnoticed on 7-inch displays.
+
+### Open question for next session
+
+The base mesh has narrow shoulders (1.8 head-widths). Real
+adult male is 2.5-3. The reference is a gender-NEUTRAL
+foundation. If we use this as a starting point, every male
+character needs explicit shoulder-broadening sculpt.
+
+Alternatively: re-target. Two base meshes —
+`male_athletic_base` (3 head-widths shoulders) and
+`female_base` (1.5 head-widths shoulders) — both built off
+the same edge-loop layout but with the planar shifts
+pre-sculpted.
 2. Match the joint hierarchy exactly. Build the skeleton
    first, then sculpt to it.
 3. Match the tri-count: target ~3,600 tris per figure for
