@@ -328,9 +328,22 @@ def _build_arm(profile, base_x, base_y, base_z, side_sgn):
 
 def midtier_figure(name, base_x, base_y, base_z,
                    facing='-Y', body_type='male_avg',
-                   skin_color=(0.86, 0.72, 0.58, 1.0)):
+                   skin_color=(0.86, 0.72, 0.58, 1.0),
+                   hair_color=(0.30, 0.22, 0.16, 1.0),
+                   jacket_color=(0.42, 0.42, 0.46, 1.0),
+                   pants_color=(0.22, 0.22, 0.28, 1.0),
+                   shoe_color=(0.14, 0.12, 0.12, 1.0)):
     """Build a mid-tier human figure as a single welded mesh.
-    Tri-budget ~1,400."""
+    Tri-budget ~2,350.
+
+    Region colours:
+      hair    — verts at Z >= HAIRLINE_Z
+      skin    — face + neck (HAIRLINE_Z down to NECK_BOT_Z) + arms
+                below wrist
+      jacket  — torso CLAV_Z down to NAVEL_Z + upper arms
+      pants   — NAVEL_Z down to ANKLE_Z (hips, thighs, shins)
+      shoe    — below ANKLE_Z (foot, sole)
+    """
     if body_type not in BODY_TYPES:
         body_type = 'male_avg'
     profile = BODY_TYPES[body_type]
@@ -423,17 +436,75 @@ def midtier_figure(name, base_x, base_y, base_z,
     mesh = bpy.data.meshes.new(f"{name}_mesh")
     mesh.from_pydata(placed_verts, [], faces)
     mesh.update(calc_edges=True)
-    # Flat-shaded for planar Asaro feel
     for poly in mesh.polygons:
         poly.use_smooth = False
-    # Vertex colour
+    # Per-region vertex colour based on world Z of poly centroid
     if mesh.vertex_colors:
         vc = mesh.vertex_colors[0]
     else:
         vc = mesh.vertex_colors.new(name="Col")
     for poly in mesh.polygons:
+        zc = sum(placed_verts[v][2] for v in poly.vertices) / len(poly.vertices)
+        rel_z = zc - base_z
+        if rel_z >= HAIRLINE_Z * 0.99:
+            col = hair_color
+        elif rel_z >= NECK_BOT_Z:
+            col = skin_color           # face + neck
+        elif rel_z >= NAVEL_Z:
+            col = jacket_color         # chest, shoulders, upper arms
+        elif rel_z >= ANKLE_Z:
+            col = pants_color          # pelvis + legs to ankle
+        else:
+            col = shoe_color           # foot + sole
         for li in poly.loop_indices:
-            vc.data[li].color = skin_color
+            vc.data[li].color = col
     obj = bpy.data.objects.new(name, mesh)
     bpy.context.collection.objects.link(obj)
     return obj
+
+
+# ── HERO CHARACTERS  (canon-anchored sculpts) ────────────────────
+# Filed for build_graustark and any future Graustark sculpt pass.
+# Each tuple: (key, body_type, skin, hair, jacket, pants, shoe)
+HERO_CHARACTERS = {
+    'JohnFrank': {
+        'body_type': 'male_avg',
+        'skin_color':   (0.92, 0.78, 0.62, 1.0),   # warm fair
+        'hair_color':   (0.36, 0.24, 0.16, 1.0),   # mid brown
+        'jacket_color': (0.94, 0.92, 0.86, 1.0),   # white t-shirt (diner)
+        'pants_color':  (0.26, 0.34, 0.52, 1.0),   # blue jeans
+        'shoe_color':   (0.32, 0.24, 0.18, 1.0),   # brown work boots
+    },
+    'FrasierTemple': {
+        'body_type': 'male_tall',
+        'skin_color':   (0.88, 0.78, 0.66, 1.0),   # paler (indoors)
+        'hair_color':   (0.46, 0.46, 0.46, 1.0),   # greying, unkempt
+        'jacket_color': (0.20, 0.22, 0.24, 1.0),   # dark grey sweater
+        'pants_color':  (0.18, 0.18, 0.22, 1.0),   # dark slacks
+        'shoe_color':   (0.12, 0.10, 0.10, 1.0),   # black leather
+    },
+    'EliciaTemple': {
+        'body_type': 'female_avg',
+        'skin_color':   (0.86, 0.70, 0.56, 1.0),   # warm tan
+        'hair_color':   (0.24, 0.16, 0.12, 1.0),   # dark auburn
+        'jacket_color': (0.40, 0.30, 0.34, 1.0),   # burgundy cardigan
+        'pants_color':  (0.32, 0.36, 0.30, 1.0),   # sage skirt/pants
+        'shoe_color':   (0.18, 0.14, 0.12, 1.0),   # dark leather
+    },
+}
+
+
+def hero_figure(name, hero_key, base_x, base_y, base_z, facing='-Y'):
+    """Convenience wrapper — build a canonical hero by name."""
+    if hero_key not in HERO_CHARACTERS:
+        raise ValueError(f"unknown hero: {hero_key}")
+    spec = HERO_CHARACTERS[hero_key]
+    return midtier_figure(name=name,
+                           base_x=base_x, base_y=base_y, base_z=base_z,
+                           facing=facing,
+                           body_type=spec['body_type'],
+                           skin_color=spec['skin_color'],
+                           hair_color=spec['hair_color'],
+                           jacket_color=spec['jacket_color'],
+                           pants_color=spec['pants_color'],
+                           shoe_color=spec['shoe_color'])
