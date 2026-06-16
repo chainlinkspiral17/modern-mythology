@@ -2611,6 +2611,160 @@ def _build_world_frogshop():
                        (0.05, 2.4, 1.6), (0.30, 0.68, 0.78, 1.0))
 
 
+# ── TRAIN TRACKS  (south of HWY 90) ─────────────────────────────
+COL_RAIL_STEEL = (0.38, 0.30, 0.22, 1.0)
+COL_TIE_WOOD   = (0.32, 0.20, 0.14, 1.0)
+COL_BALLAST    = (0.50, 0.46, 0.40, 1.0)
+
+
+def _build_train_tracks():
+    """A pair of rails running W-E across the south end of the
+    district at Y=-400, with wooden ties and ballast. Crosses the
+    bayou via a small trestle just south of the truss bridge."""
+    print("[graustark]   train tracks (south edge)")
+    track_cy = -400.0
+    track_x0 = -600.0
+    track_x1 = +600.0
+    # Ballast strip
+    ht._make_box_local("Graustark_Track_Ballast",
+                       ((track_x0 + track_x1) / 2, track_cy,
+                        graustark_elevation(0, track_cy) + 0.18),
+                       (track_x1 - track_x0, 4.0, 0.20),
+                       COL_BALLAST)
+    # Two parallel rails (steel I-beams, 1.5m apart)
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"Graustark_Track_Rail_{s:+d}",
+            ((track_x0 + track_x1) / 2, track_cy + s * 0.75,
+             graustark_elevation(0, track_cy) + 0.36),
+            (track_x1 - track_x0, 0.16, 0.14), COL_RAIL_STEEL)
+    # Wooden ties (every 3m, but downsample for tri budget — 1 per 8m)
+    n_ties = int((track_x1 - track_x0) / 8) + 1
+    for i in range(n_ties):
+        tx = track_x0 + i * 8.0
+        ty = track_cy
+        ht._make_box_local(
+            f"Graustark_Track_Tie_{i}",
+            (tx, ty, graustark_elevation(tx, ty) + 0.25),
+            (0.40, 2.6, 0.18), COL_TIE_WOOD)
+    # Single railroad-crossing sign at the SR12 intersection
+    cx_sign = -180.0
+    cy_sign = track_cy + 10.0
+    gz_sign = graustark_elevation(cx_sign, cy_sign)
+    ht._make_box_local("Graustark_RR_Crossing_Pole",
+                       (cx_sign, cy_sign, gz_sign + 2.0),
+                       (0.12, 0.12, 4.0), COL_POWER_POLE)
+    # X-shape from two crossed boxes (white "RAILROAD CROSSING")
+    for ang in (45, -45):
+        ar = math.radians(ang)
+        ht._make_box_local(
+            f"Graustark_RR_Crossing_Sign_{ang:+d}",
+            (cx_sign, cy_sign + 0.15, gz_sign + 3.4),
+            (1.5 * math.cos(ar) * 2, 0.06, 0.30),
+            COL_LANE_WHITE)
+
+
+# ── CEMETERY WALKING PATHS  (between tomb rows) ─────────────────
+
+def _build_cemetery_paths():
+    """Concrete walking paths between the cemetery's tomb grid
+    and around the central mausoleum. Makes the cemetery read as
+    a place pedestrians actually visit."""
+    print("[graustark]   cemetery paths")
+    cx, cy = ARCANA_LOCALES['Judgement_Cemetery'][0]
+    gz = graustark_elevation(cx, cy)
+    # Main N-S path through the center (skip the central
+    # mausoleum)
+    for seg in [(-22, -8), (+8, +22)]:
+        y0, y1 = seg
+        ht._make_box_local(
+            f"Graustark_CemPath_NS_{y0}_{y1}",
+            (cx, cy + (y0 + y1) / 2, gz + 0.06),
+            (1.4, y1 - y0, 0.04), COL_CONCRETE)
+    # 3 E-W cross paths
+    for y_off in (-12, +6, +14):
+        ht._make_box_local(
+            f"Graustark_CemPath_EW_{y_off:+d}",
+            (cx, cy + y_off, gz + 0.06),
+            (40.0, 1.0, 0.04), COL_CONCRETE)
+    # Entry walk from the perimeter fence on the S side
+    ht._make_box_local(
+        "Graustark_CemPath_Entry",
+        (cx, cy - 22.0, gz + 0.06),
+        (1.6, 4.0, 0.04), COL_CONCRETE)
+
+
+# ── TOWN SQUARE STATUE  (founder monument) ─────────────────────
+
+def _build_town_square_statue():
+    """Bronze figure on a granite plinth at the front of the
+    courthouse. The town's symbolic anchor."""
+    print("[graustark]   town square statue")
+    cx, cy = ARCANA_LOCALES['Justice_Courthouse'][0]
+    # Place between the courthouse front steps and the bandstand
+    sx, sy = cx, cy - 22.0
+    gz = graustark_elevation(sx, sy)
+    # Granite plinth (3-tier)
+    for i, (h, w) in enumerate([(1.0, 2.4), (0.30, 2.0), (0.20, 1.8)]):
+        ht._make_box_local(
+            f"Graustark_Statue_Plinth_{i}",
+            (sx, sy, gz + sum([1.0,0.30,0.20][:i]) + h / 2),
+            (w, w, h), (0.42, 0.40, 0.38, 1.0))
+    # Bronze figure (single primitive body + head)
+    fig_z = gz + 1.5
+    ht._make_box_local("Graustark_Statue_Legs",
+                       (sx, sy, fig_z + 0.5),
+                       (0.36, 0.30, 1.0),
+                       (0.42, 0.30, 0.18, 1.0))
+    ht._make_box_local("Graustark_Statue_Torso",
+                       (sx, sy, fig_z + 1.4),
+                       (0.55, 0.36, 0.8),
+                       (0.42, 0.30, 0.18, 1.0))
+    ht._make_box_local("Graustark_Statue_Head",
+                       (sx, sy, fig_z + 2.0),
+                       (0.22, 0.22, 0.28),
+                       (0.42, 0.30, 0.18, 1.0))
+    # Outstretched arm (pointing forward)
+    ht._make_box_local("Graustark_Statue_Arm",
+                       (sx, sy - 0.40, fig_z + 1.6),
+                       (0.16, 0.80, 0.18),
+                       (0.42, 0.30, 0.18, 1.0))
+    # Inscription plate on the plinth
+    ht._make_box_local("Graustark_Statue_Plaque",
+                       (sx, sy - 1.10, gz + 0.6),
+                       (1.2, 0.05, 0.40),
+                       (0.36, 0.26, 0.16, 1.0))
+
+
+# ── SUBURBAN FRONT-YARD HEDGES  (landscaping) ──────────────────
+
+def _build_suburban_hedges():
+    """Small hedge boxes flanking each suburban driveway. The
+    landscape detail that distinguishes a maintained yard from
+    just a lot."""
+    print("[graustark]   suburban hedges")
+    LOT_GRID_X = [-540, -480, -420, -360, -300]
+    LOT_GRID_Y = [+360, +290, +220, +150, +80, +10]
+    count = 0
+    for ri, gy in enumerate(LOT_GRID_Y):
+        for ci, gx in enumerate(LOT_GRID_X):
+            if (ri == 2 and ci == 2) or (ri == 4 and ci == 4):
+                continue
+            # Two hedges flanking the driveway (centered between
+            # picket fence segments), positioned ~3m back from
+            # the street curb
+            hedge_y = gy + 18.0
+            gz_h = graustark_elevation(gx, hedge_y)
+            for s in (-1, +1):
+                ht._make_box_local(
+                    f"Graustark_Hedge_R{ri}C{ci}_{s:+d}",
+                    (gx + s * 3.0, hedge_y, gz_h + 0.50),
+                    (1.8, 0.80, 1.00),
+                    (0.30, 0.46, 0.26, 1.0))
+                count += 1
+    print(f"[graustark]     placed {count} hedge boxes")
+
+
 # ── STRIP MALL  (the canonical Lafayette outskirts vernacular) ─
 
 def _build_sr12_strip_mall():
@@ -3691,6 +3845,10 @@ def build_district_buildings():
     _build_sr12_strip_mall()
     _build_sidewalks()
     _build_bus_stop()
+    _build_train_tracks()
+    _build_cemetery_paths()
+    _build_town_square_statue()
+    _build_suburban_hedges()
 
 
 # ── PHASE 5  CHARACTERS  ────────────────────────────────────────
