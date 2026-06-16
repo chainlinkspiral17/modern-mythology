@@ -73,8 +73,15 @@ DIO_BASES = [
 
 # colors (rgba 0-1) — match the project palette
 COL_FLOOR    = (0.16, 0.13, 0.08, 1.0)   # warm concrete
+COL_FLOOR_DARK = (0.10, 0.08, 0.05, 1.0) # darker stain stripes
+COL_FLOOR_SEAM = (0.06, 0.05, 0.03, 1.0) # joint between slabs
 COL_WALL     = (0.20, 0.16, 0.10, 1.0)   # warm brick interior
+COL_WALL_DARK = (0.14, 0.10, 0.07, 1.0)  # darker brick courses
+COL_PILASTER = (0.22, 0.18, 0.12, 1.0)   # raised brick column accent
 COL_CEILING  = (0.10, 0.07, 0.04, 1.0)   # dark corrugated tin
+COL_TRUSS    = (0.30, 0.27, 0.22, 1.0)   # steel roof truss
+COL_RAFTER   = (0.18, 0.14, 0.10, 1.0)   # dark wood / steel cross-tie
+COL_BEAM_LIT = (0.42, 0.36, 0.28, 1.0)   # catches the sun
 COL_WB_TOP   = (0.45, 0.30, 0.16, 1.0)   # warm wood
 COL_WB_LEG   = (0.18, 0.12, 0.06, 1.0)   # dark wood
 COL_BBS_DESK = (0.30, 0.20, 0.10, 1.0)
