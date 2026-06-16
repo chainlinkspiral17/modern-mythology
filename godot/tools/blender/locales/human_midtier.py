@@ -622,6 +622,30 @@ def add_hair(name, base_x, base_y, base_z, style, color, facing='-Y'):
         _make_box(f"{name}_Hair_Afro_Top",
                   (base_x, base_y, hair_center_z + afro_r * 0.9),
                   (afro_r * 2.0, afro_r * 1.8, afro_r * 0.8), color)
+    elif style == 'locs':
+        # Dreadlocks — many short vertical strands rising up + back
+        # from the scalp. Each strand is a thin tall box.
+        # Mass at the scalp (a small darker base layer):
+        _make_box(f"{name}_Locs_Base",
+                  (base_x, base_y, hair_center_z + 0.020),
+                  (0.22, 0.22, 0.10), color)
+        # 9 individual locs in a rough crown ring
+        positions = [
+            ( 0.00, -0.05, +0.18),
+            (-0.06, -0.04, +0.20),
+            (+0.06, -0.04, +0.20),
+            (-0.09,  0.00, +0.16),
+            (+0.09,  0.00, +0.16),
+            (-0.05, +0.05, +0.14),
+            (+0.05, +0.05, +0.14),
+            (-0.02,  0.00, +0.22),
+            (+0.02,  0.00, +0.22),
+        ]
+        for i, (ox, oy, oh) in enumerate(positions):
+            _make_box(f"{name}_Loc_{i}",
+                      (base_x + ox, base_y + oy,
+                       hair_center_z + oh),
+                      (0.04, 0.04, 0.18 + (i % 3) * 0.04), color)
     elif style == 'mohawk':
         _make_box(f"{name}_Hair_Hawk",
                   (base_x, base_y, hair_center_z + 0.04),
@@ -697,22 +721,68 @@ def add_collar(name, base_x, base_y, base_z, color, facing='-Y'):
 
 
 def add_bomber_jacket_detail(name, base_x, base_y, base_z, color):
-    """Bomber jacket signature: ribbed waist band + cuff bands.
-    Wraps a thin darker band around the existing torso mesh at
-    the waist + at the wrists."""
-    # Waist band — thin ring at navel level
+    """Bomber jacket signature: ribbed waist band + cuff bands."""
     waist_z = base_z + NAVEL_Z - 0.020
     _make_box(f"{name}_Bomber_Waist",
               (base_x, base_y, waist_z),
               (0.42, 0.30, 0.08), color)
-    # Two cuff bands at the wrists. Wrists sit at the bottom of
-    # the arm tube, roughly THIGH_Z - 0.08 = 0.595 of base_z.
     for s, side in [(+1, 'L'), (-1, 'R')]:
         wrist_x = base_x + s * 0.36
         wrist_z = base_z + THIGH_Z - 0.10
         _make_box(f"{name}_Bomber_Cuff_{side}",
                   (wrist_x, base_y, wrist_z),
                   (0.10, 0.10, 0.06), color)
+
+
+def add_open_jacket(name, base_x, base_y, base_z,
+                     jacket_color, shirt_color, logo_color=None,
+                     facing='-Y'):
+    """Bomber jacket worn OPEN over a t-shirt — two side panels
+    (chest-to-waist) plus the inner shirt visible in the gap.
+    Optional logo box on the shirt centerline."""
+    fy = -1 if facing == '-Y' else (+1 if facing == '+Y' else 0)
+    fx = -1 if facing == '-X' else (+1 if facing == '+X' else 0)
+    chest_top = NIPPLE_Z + 0.05
+    chest_bot = NAVEL_Z
+    chest_cz = base_z + (chest_top + chest_bot) / 2
+    chest_h = chest_top - chest_bot
+    front_offset = 0.115
+    fxp = base_x + fx * front_offset
+    fyp = base_y + fy * front_offset
+    # T-shirt panel (full-width inner)
+    if abs(fy) > 0.5:
+        shirt_size = (0.36, 0.02, chest_h)
+    else:
+        shirt_size = (0.02, 0.36, chest_h)
+    _make_box(f"{name}_Shirt_Inner", (fxp, fyp, chest_cz),
+              shirt_size, shirt_color)
+    # Logo on the shirt centerline (small box, slightly forward)
+    if logo_color is not None:
+        if abs(fy) > 0.5:
+            logo_size = (0.12, 0.02, 0.12)
+        else:
+            logo_size = (0.02, 0.12, 0.12)
+        logo_x = base_x + fx * (front_offset + 0.005)
+        logo_y = base_y + fy * (front_offset + 0.005)
+        _make_box(f"{name}_Shirt_Logo",
+                  (logo_x, logo_y, chest_cz + 0.020),
+                  logo_size, logo_color)
+    # Left + right jacket panels (open in the middle, ~0.10m gap)
+    panel_w = 0.18
+    panel_offset = 0.13      # from centerline
+    for s, side in [(+1, 'L'), (-1, 'R')]:
+        # Panel sits slightly forward of the shirt
+        panel_x = base_x + s * panel_offset
+        if abs(fy) > 0.5:
+            psize = (panel_w, 0.04, chest_h)
+            px = panel_x
+            py = base_y + fy * (front_offset + 0.02)
+        else:
+            psize = (0.04, panel_w, chest_h)
+            py = base_y + s * panel_offset
+            px = base_x + fx * (front_offset + 0.02)
+        _make_box(f"{name}_Jacket_Panel_{side}",
+                  (px, py, chest_cz), psize, jacket_color)
 
 
 # ── HERO CHARACTERS  (canon-anchored sculpts with scene props) ──
@@ -733,15 +803,22 @@ HERO_CHARACTERS = {
         'pose': 'standing_behind_counter',           # placed at diner
     },
     'FrasierTemple': {
-        'body_type': 'male_tall',
-        'skin_color':   (0.88, 0.72, 0.56, 1.0),
-        'hair_style':   'unkempt_afro',
-        'hair_color':   (0.20, 0.16, 0.14, 1.0),     # dark, unkempt
-        'jacket_color': (0.32, 0.36, 0.22, 1.0),     # olive bomber jacket
-        'pants_color':  (0.26, 0.30, 0.42, 1.0),     # jeans
-        'shoe_color':   (0.34, 0.24, 0.18, 1.0),     # brown work boots
+        # Per user concept (2026-06-16): young Black man with locs,
+        # olive bomber worn OPEN over a dark "GEARING CORP" tee.
+        'body_type': 'male_avg',
+        'skin_color':   (0.42, 0.28, 0.20, 1.0),     # warm brown
+        'hair_style':   'locs',
+        'hair_color':   (0.18, 0.14, 0.12, 1.0),     # near-black locs
+        'jacket_color': (0.42, 0.46, 0.30, 1.0),     # olive
+        'pants_color':  (0.22, 0.24, 0.28, 1.0),     # dark jeans
+        'shoe_color':   (0.18, 0.16, 0.14, 1.0),
         'extras': [
-            ('bomber', (0.22, 0.26, 0.16, 1.0)),     # darker bands
+            ('open_jacket', {
+                'jacket': (0.42, 0.46, 0.30, 1.0),   # olive
+                'shirt':  (0.18, 0.18, 0.20, 1.0),   # dark tee
+                'logo':   (0.92, 0.88, 0.78, 1.0),   # cream GEARING CORP gear
+            }),
+            ('bomber', (0.30, 0.34, 0.20, 1.0)),     # darker olive bands
         ],
         'pose': 'leaning_at_workbench',
     },
@@ -789,3 +866,9 @@ def hero_figure(name, hero_key, base_x, base_y, base_z, facing='-Y'):
             add_collar(name, base_x, base_y, base_z, color, facing)
         elif extra == 'bomber':
             add_bomber_jacket_detail(name, base_x, base_y, base_z, color)
+        elif extra == 'open_jacket':
+            add_open_jacket(name, base_x, base_y, base_z,
+                             jacket_color=color['jacket'],
+                             shirt_color=color['shirt'],
+                             logo_color=color.get('logo'),
+                             facing=facing)

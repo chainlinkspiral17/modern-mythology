@@ -1,5 +1,32 @@
 # Character Modeling Notes — Reference
 
+## Frasier — canonical concept (2026-06-16)
+
+The user provided two reference images that overturned my notes:
+
+- **Young Black man** (late 20s/early 30s, not "middle-aged
+  creaky" — that quote from `_VOL6_WIKI.md` is about vol6-era
+  Frasier; vol5 Frasier is young)
+- **Locs / dreadlocks** — twisted strands going up + back. NOT
+  an afro. (My earlier hair_style='unkempt_afro' was wrong.)
+- **Athletic build** — male_avg proportions, not male_tall lean
+- **Olive bomber jacket worn OPEN** — two side panels visible,
+  dark t-shirt visible in the chest gap
+- **"GEARING CORP" tee** — dark t-shirt with a cream/grey gear
+  logo on the chest centerline (the printed band-tee / dev-shop
+  vibe)
+- **Dark jeans** + dark shoes
+
+Pose canon: at his workbench in the Cathedral, holding a
+soldering iron in one hand, working on a circuit board with
+the other. Lean-forward posture, focused face.
+
+Code spec updated (commit pending). 'locs' hair style added,
+'open_jacket' clothing helper added with shirt + logo + side
+panels.
+
+---
+
 ## Procedural human attempts — WITHDRAWN (2026-06-16)
 
 After iterating procedural figures (cross-section lofts with
