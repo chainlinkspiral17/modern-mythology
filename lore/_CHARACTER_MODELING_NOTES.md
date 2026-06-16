@@ -1,5 +1,56 @@
 # Character Modeling Notes — Reference
 
+## Milestone — 2026-06-16
+
+**First procedural human the user signed off on.**
+
+Verbatim user reaction to `human_midtier` v1.1:
+
+> "that looks like the first human sculpt you've done I'm
+>  moderately happy with. congrats and record for posterity."
+
+File: `godot/tools/blender/locales/human_midtier.py`
+
+Specs that worked:
+- ~2,350 tris per figure (65% of the planar reference's ~3,600;
+  12× the primitive HCE `human_figure`'s ~200)
+- 24 verts per body ring
+- Asymmetric cross-sections — separate radii for front/side/back
+  in X AND for front/back in Z. Chest bulges forward, spine pulls
+  back, butt back, belly forward. This single change is what
+  pushed past the previous "stacked barrels" failure.
+- 8H proportions exact (1.80 m total, head 0.225 m)
+- Intermediate rings at every angular transition:
+  - skull_apex between crown and hairline (replaces a bad ring
+    that used absolute widths instead of HEAD_X multipliers —
+    that ring was the "head spike" failure mode)
+  - nose_upper, lower_lip, jaw_under in the face
+  - trap_a_mid + trap_b_mid in the shoulder slope
+  - above_knee + below_knee in the leg taper
+
+Failure modes ruled out by user feedback during this session:
+- v0 procedural blockout: "stacks of barrels" — symmetric ellipse
+  cross-sections, no Z asymmetry
+- v2 reactionary widening: "worse by every metric" — bumping all
+  dimensions 20% to fix "emaciated" overshot. Reverted.
+- Intermediate v1: "emaciated and spiky" — dimensions were OK,
+  but the head's bad skull_top ring, sharp trap-slope steps, and
+  pinched knee read as angular
+- v1.1: just fix the angular transitions with intermediate rings;
+  leave dimensions alone. WORKED.
+
+Lesson for future iteration: when user says "emaciated AND spiky,"
+the two complaints are independent. Spiky = angular transitions =
+add intermediate rings. Emaciated = dimensions = bump radii.
+Address them separately, not together.
+
+The body-type variants (male_avg / male_tall / male_heavy /
+female_avg / female_slim / teen / child / elderly) all share the
+same edge-loop topology and intermediate-ring layout; only the
+shoulder/hip/waist/depth radii vary by profile.
+
+---
+
 ## Direction (decided 2026-06-16, end of session)
 
 After visual A/B comparison between the procedural blockout
