@@ -299,8 +299,14 @@ ROAD_CORRIDORS = [
     # road quad. Road now swings EAST around HQ + terminates south
     # of CC building.
     ("HarmonyBlvd", [
-        (   0,  350, +22.0),   # well south of CC south face (y=363) — road quad north edge at 358.5 stays clear
-        # CC -> NorthComm ramp (y=350..330, +22 -> +14)
+        (   0,  350, +22.0),   # well south of CC south face (y=363)
+        # CC → NorthComm ramp (y=350..315, +22 → +14). 8m drop
+        # over 35m horizontal = 22% average grade. Steeper than a
+        # real-world arterial but the local geography (CC hill →
+        # commercial belt) requires it. Catmull-Rom smoothing in
+        # _emit_arterial (samples_per_seg=4) interpolates these
+        # waypoints into 4 sub-segments each, so the visible road
+        # surface has a smoother slope than this control polyline.
         (   5,  343, +20.5),
         (  12,  335, +18.0),
         (  20,  325, +16.0),
@@ -311,7 +317,14 @@ ROAD_CORRIDORS = [
         (  27,  280, +14.0),
         (  22,  265, +14.0),
         (  14,  260, +14.0),
-        # NorthComm -> HarmonyPark ramp (y=260..200, +14 -> +1, 60m, 22% peak)
+        # NorthComm → HarmonyPark ramp (y=260..200, +14 → +1).
+        # The geographic constraint (13m drop, 60m horizontal)
+        # forces a ~22% average grade. Tried subdividing —
+        # tighter sub-segments inherit steeper per-segment grades.
+        # Kept the original 3-waypoint spec; Catmull-Rom smoothing
+        # in _emit_arterial interpolates these into curved sub-
+        # segments so the visible road has a gentler effective
+        # slope than this control polyline.
         (  15,  245, +12.0),
         (  22,  225,  +8.0),
         (  30,  205,  +2.5),
@@ -529,9 +542,16 @@ ROAD_CORRIDORS = [
     # NRBirch ramps DOWN as it enters OliverTreeMemPark (-300..-220
      #x, target +2) so the road follows the park grade instead of
      #carving a +12 plateau through the park's middle.
+    # NRBirch ramps from NorthRanch settlement (+12) DOWN to
+    # OliverTreeMemPark (+2). Old polyline had a single 20m
+    # segment dropping 7m (35% grade — a cliff). Subdivided so
+    # the descent is spread over 60m at a manageable 13.3% grade.
     ("NRBirch",  [(-440, 100, +12.0), (-320, 100, +12.0),
-                  (-305, 100, +10.0),
-                  (-285, 100,  +3.0),
+                  (-310, 100, +10.0),
+                  (-295, 100,  +8.0),
+                  (-280, 100,  +6.0),
+                  (-265, 100,  +4.0),
+                  (-250, 100,  +2.5),
                   (-240, 100,  +2.0)], 4.0, 10.0),
     ("NRCedar",  [(-440,  40, +12.0), (-320,  40, +12.0),
                   (-240,  40, +12.0)], 4.0, 10.0),
