@@ -12311,6 +12311,54 @@ def build_fire_hydrants():
                            prefix)
 
 
+def build_residential_stop_signs():
+    """4-way stop signs at residential road×road intersections.
+    The build_intersections() pass emits the asphalt plate but
+    no signage; real suburban corners almost always have stop
+    signs on every approach.
+    """
+    COL_POLE = (0.62, 0.62, 0.64, 1.0)
+    COL_RED = (0.85, 0.20, 0.18, 1.0)
+
+    def _stop(name, x, y, face_axis):
+        z = mesh_z(x, y)
+        _make_cyl_local(f"{name}_Pole",
+                        (x, y, z + 1.1),
+                        0.04, 2.2, COL_POLE, segments=4)
+        if face_axis == 'X':
+            sign_size = (0.04, 0.45, 0.45)
+        else:
+            sign_size = (0.45, 0.04, 0.45)
+        _make_box_local(f"{name}_Face",
+                        (x, y, z + 2.1),
+                        sign_size, COL_RED)
+
+    # Residential road intersections (4-way stops).
+    # For each junction, place 4 signs at the corners — N/S signs
+    # face X (their faces look E/W toward east-west approaches),
+    # E/W signs face Y.
+    junctions = [
+        # NorthRanch Spur × Aspen at (-320, 200)
+        ("NR_AspenSpur", -320, 200),
+        # NorthRanch Spur × Birch at (-320, 100)
+        ("NR_BirchSpur", -320, 100),
+        # NorthRanch Spur × Cedar at (-320, 40)
+        ("NR_CedarSpur", -320, 40),
+        # East CDS Ridge × Cul at (300, 130)
+        ("ECDS_RidgeCul", 300, 130),
+        # WestEstates Mag × Loop at (-320, -190) approximately
+        ("WE_MagLoop", -320, -190),
+    ]
+    OFF = 4.5      # m back from intersection center toward the
+                   # corner so the sign sits on the curb-side of
+                   # the approach lane
+    for tag, jx, jy in junctions:
+        _stop(f"X_Stop_{tag}_N", jx + OFF, jy + OFF, 'X')
+        _stop(f"X_Stop_{tag}_S", jx - OFF, jy - OFF, 'X')
+        _stop(f"X_Stop_{tag}_E", jx + OFF, jy - OFF, 'Y')
+        _stop(f"X_Stop_{tag}_W", jx - OFF, jy + OFF, 'Y')
+
+
 def build_residential_road_markings():
     """Yellow dashed center stripes on every residential street.
     The neighborhood builders emit bare asphalt + curbs but no
@@ -16845,6 +16893,7 @@ def main():
     build_bus_stops()
     build_residential_mailboxes()
     build_residential_road_markings()
+    build_residential_stop_signs()
     build_arterial_lighting()
     build_fire_hydrants()
     build_utility_poles()
