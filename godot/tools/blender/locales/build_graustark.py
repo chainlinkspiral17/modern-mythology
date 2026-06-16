@@ -626,13 +626,218 @@ def _build_bayou_cypress_groves():
     print(f"[graustark]   cypress trees along bayou: {count} placed")
 
 
+# ── RAISED COTTAGE  (Lafayette signature on cypress stilts) ─────
+# Distinctive delta-town building type. Single-story shotgun
+# proportions, ~6m wide × 12m deep, sitting on 6-8 visible cypress
+# pilings with 1.8-2.5m crawl space, full-width front porch,
+# low-pitch hipped or gabled roof in standing-seam tin.
+
+# Pastel weathered wall colours — the Lafayette look.
+_COTTAGE_PALETTES = [
+    {'wall': (0.96, 0.92, 0.74, 1.0), 'trim': (0.94, 0.94, 0.92, 1.0),
+     'roof': (0.62, 0.64, 0.66, 1.0)},  # pale yellow + tin
+    {'wall': (0.92, 0.74, 0.76, 1.0), 'trim': (0.96, 0.94, 0.92, 1.0),
+     'roof': (0.58, 0.60, 0.60, 1.0)},  # soft pink + tin
+    {'wall': (0.68, 0.78, 0.84, 1.0), 'trim': (0.96, 0.94, 0.92, 1.0),
+     'roof': (0.56, 0.58, 0.58, 1.0)},  # pale blue-grey + tin
+    {'wall': (0.78, 0.88, 0.78, 1.0), 'trim': (0.94, 0.92, 0.88, 1.0),
+     'roof': (0.60, 0.62, 0.62, 1.0)},  # mint + tin
+    {'wall': (0.90, 0.86, 0.78, 1.0), 'trim': (0.92, 0.74, 0.42, 1.0),
+     'roof': (0.46, 0.42, 0.38, 1.0)},  # cream + ochre trim + dark tin
+]
+COL_PILING = (0.30, 0.22, 0.16, 1.0)        # cypress wood
+COL_PORCH_FLOOR = (0.55, 0.42, 0.30, 1.0)
+
+
+def _build_raised_cottage(name, cx, cy, ground_z, facing='-Y',
+                           palette_idx=0):
+    """Shotgun-style Lafayette cottage on stilts. The body floats
+    1.8-2.5m above grade on visible cypress pilings."""
+    pal = _COTTAGE_PALETTES[palette_idx % len(_COTTAGE_PALETTES)]
+    col_wall = pal['wall']
+    col_trim = pal['trim']
+    col_roof = pal['roof']
+
+    # Facing axis
+    fx, fy = 0, 0
+    if   facing == '-Y': fy = -1
+    elif facing == '+Y': fy = +1
+    elif facing == '-X': fx = -1
+    elif facing == '+X': fx = +1
+    px, py = -fy, fx     # perpendicular (right hand)
+
+    # Footprint
+    body_w = 6.0           # narrow (perpendicular to facing)
+    body_d = 12.0          # deep (along facing axis, shotgun length)
+    body_h = 2.8
+    crawl_h = 2.1          # piling height (visible crawl)
+    porch_d = 1.6
+    roof_h = 1.4
+    eave_overhang = 0.50
+
+    # Body orientation: if facing is along Y, body_d runs along Y;
+    # if facing is along X, body_d runs along X.
+    if abs(fx) > 0.5:
+        size_xy = (body_d, body_w)
+    else:
+        size_xy = (body_w, body_d)
+    body_cx, body_cy = cx, cy
+    body_z = ground_z + crawl_h + body_h / 2
+
+    # ── Pilings (6 cypress posts, 3 each side along facing axis) ──
+    n_piles = 3
+    for i in range(n_piles):
+        # Distribute along facing axis from -body_d/2+0.6 to +body_d/2-0.6
+        t = -1 + 2 * i / (n_piles - 1) if n_piles > 1 else 0
+        along = t * (body_d / 2 - 0.6)
+        for side in (-1, +1):
+            perp = side * (body_w / 2 - 0.3)
+            if abs(fx) > 0.5:
+                pcx = cx + along
+                pcy = cy + perp
+            else:
+                pcx = cx + perp
+                pcy = cy + along
+            ht._make_box_local(
+                f"{name}_Piling_{i}_{side:+d}",
+                (pcx, pcy, ground_z + crawl_h / 2),
+                (0.28, 0.28, crawl_h), COL_PILING)
+
+    # ── Body ───────────────────────────────────────────────────
+    ht._make_box_local(
+        f"{name}_Body",
+        (body_cx, body_cy, body_z),
+        (size_xy[0], size_xy[1], body_h), col_wall)
+
+    # Floor underside (visible from below, planks)
+    floor_z = ground_z + crawl_h
+    ht._make_box_local(
+        f"{name}_Floor",
+        (body_cx, body_cy, floor_z - 0.04),
+        (size_xy[0] + 0.08, size_xy[1] + 0.08, 0.08), col_trim)
+
+    # ── Porch ──────────────────────────────────────────────────
+    # Front face is at -fx, -fy direction from center
+    porch_along = -(body_d / 2 + porch_d / 2)
+    if abs(fx) > 0.5:
+        porch_cx = cx + porch_along * fx
+        porch_cy = cy
+        porch_size = (porch_d, body_w, 0.10)
+    else:
+        porch_cx = cx
+        porch_cy = cy + porch_along * fy
+        porch_size = (body_w, porch_d, 0.10)
+    ht._make_box_local(
+        f"{name}_Porch_Deck",
+        (porch_cx, porch_cy, floor_z + 0.05),
+        porch_size, COL_PORCH_FLOOR)
+
+    # Porch railing posts — 4 along the front edge
+    front_edge_along = -(body_d / 2 + porch_d)
+    for j in range(4):
+        t = -1 + 2 * j / 3
+        side = t * (body_w / 2 - 0.2)
+        if abs(fx) > 0.5:
+            rx = cx + front_edge_along * fx
+            ry = cy + side
+        else:
+            rx = cx + side
+            ry = cy + front_edge_along * fy
+        ht._make_box_local(
+            f"{name}_Porch_Post_{j}",
+            (rx, ry, floor_z + 0.10 + 1.10 / 2),
+            (0.14, 0.14, 1.10), col_trim)
+
+    # ── Roof — low-pitch hipped (4-sided wedge) ────────────────
+    # Built as two prism halves so it reads as hipped from any
+    # angle. For simplicity, use a stretched pyramid: top box at
+    # half-size, sloping faces baked in.
+    eave_z = body_z + body_h / 2
+    roof_apex_z = eave_z + roof_h
+    # Top ridge box (small, oriented along body_d)
+    if abs(fx) > 0.5:
+        ridge_size = (body_d * 0.50, 0.4, 0.20)
+    else:
+        ridge_size = (0.4, body_d * 0.50, 0.20)
+    ht._make_box_local(
+        f"{name}_Roof_Ridge",
+        (cx, cy, roof_apex_z),
+        ridge_size, col_roof)
+    # Eaves on the four sides — flat skirt
+    ht._make_box_local(
+        f"{name}_Roof_Eaves",
+        (cx, cy, eave_z + roof_h * 0.35),
+        (size_xy[0] + eave_overhang * 2,
+         size_xy[1] + eave_overhang * 2, roof_h * 0.30),
+        col_roof)
+
+    # Front door
+    door_z = floor_z + 1.0
+    door_along = -(body_d / 2 - 0.05)
+    if abs(fx) > 0.5:
+        dcx = cx + door_along * fx
+        dcy = cy
+        dsize = (0.10, 0.95, 2.10)
+    else:
+        dcx = cx
+        dcy = cy + door_along * fy
+        dsize = (0.95, 0.10, 2.10)
+    ht._make_box_local(
+        f"{name}_Door",
+        (dcx, dcy, door_z),
+        dsize, (0.46, 0.30, 0.22, 1.0))
+
+
+def _build_levee_cottages():
+    """Cottages on stilts along the WEST levee crest lane. The
+    high ground gives them dry feet; the bayou view defines the
+    front porch direction."""
+    print("[graustark]   levee-crest raised cottages")
+    # Place along the LeveeCrest_W road's smoothed polyline,
+    # alternating sides (porch facing the bayou ≈ east).
+    levee_road = next(r for r in GRAUSTARK_ROADS if r[0] == 'LeveeCrest_W')
+    sm = _smooth_polyline([(w[0], w[1]) for w in levee_road[1]],
+                          samples_per_seg=8)
+    count = 0
+    for i in range(0, len(sm), 3):       # roughly every 3rd sample
+        sx, sy = sm[i]
+        # Skip if too close to riverfront zone
+        if (RF_ZONE_X[0] - 30 <= sx <= RF_ZONE_X[1] + 30
+                and RF_ZONE_Y[0] - 30 <= sy <= RF_ZONE_Y[1] + 30):
+            continue
+        # Place 18m east of the road (toward the bayou)
+        # Find perpendicular at this sample
+        if i + 1 < len(sm):
+            x1, y1 = sm[i + 1]
+        else:
+            x1, y1 = sm[i - 1]
+        dx, dy = x1 - sx, y1 - sy
+        seg = math.hypot(dx, dy) or 1
+        nx, ny = -dy / seg, dx / seg
+        # East side
+        cx = sx + nx * 22
+        cy = sy + ny * 22
+        gz = graustark_elevation(cx, cy)
+        # Skip if we'd land in wet/below-sea-level ground
+        if gz < +1.0:
+            continue
+        seed = (abs(int(cx * 19) + int(cy * 23))) % 100
+        _build_raised_cottage(
+            f"Graustark_LeveeCottage_{i}",
+            cx, cy, gz, facing='+X',     # porch toward bayou
+            palette_idx=seed % len(_COTTAGE_PALETTES))
+        count += 1
+    print(f"[graustark]     placed {count} levee-crest cottages")
+
+
 def build_district_buildings():
-    """PHASE 4 — first pass. Western suburban residential grid
-    (reusing HCE's house builder) + cypress trees scattered along
-    the bayou's tidal flats."""
+    """PHASE 4 — buildings outside the riverfront's SE quadrant.
+    Pass 4a: western suburban residential + cypress groves.
+    Pass 4b: raised cottages on cypress stilts along the levee crest."""
     _hook_hce_mesh_z()
     _build_western_residential()
     _build_bayou_cypress_groves()
+    _build_levee_cottages()
 
 
 def build_district_characters_and_props():
