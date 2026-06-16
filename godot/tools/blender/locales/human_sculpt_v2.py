@@ -378,57 +378,84 @@ def _build_head(name, base_x, base_y, head_base_z, p, fwd, prp,
         sy = ly * head_w_max
         sz = lz * head_h_half
 
-        # 2) GRAB chin: bottom-front-center gets pulled DOWN + FWD.
-        # Region: lz < -0.4, lx > 0.2.
+        # 2) GRAB chin: bottom-front-center pulled DOWN + FORWARD
+        # MORE. Real chins taper to a clear point at the tip.
         chin_mask = smoothstep01((-0.4 - lz) / 0.55) \
                     * smoothstep01((lx - 0.0) / 0.7)
         if chin_mask > 0:
-            sx += chin_mask * head_d_max * 0.08
-            sz -= chin_mask * head_h_half * 0.18
+            sx += chin_mask * head_d_max * 0.15      # 8% → 15% forward
+            sz -= chin_mask * head_h_half * 0.25     # 18% → 25% down
 
-        # 3) JAWLINE TAPER: bottom band gets squeezed in width.
+        # 3) JAWLINE TAPER: bottom band SHARPLY squeezes width so
+        # the chin reads as a point. 45% → 60% taper.
         if lz < -0.2:
             taper = smoothstep01((-0.2 - lz) / 0.8)
-            sy *= 1.0 - taper * 0.45    # narrow toward chin
-            sx *= 1.0 - taper * 0.18    # slight depth reduction
+            sy *= 1.0 - taper * 0.60
+            sx *= 1.0 - taper * 0.22
 
-        # 4) CROWN ROUNDING: top gets gently squeezed inward.
+        # 4) CROWN ROUNDING
         if lz > 0.5:
             t = smoothstep01((lz - 0.5) / 0.5)
             sy *= 1.0 - t * 0.30
             sx *= 1.0 - t * 0.20
 
-        # 5) TEMPLE FLATTEN: middle of head (lz between -0.3 and
-        # +0.4) on the SIDES gets flattened — real heads have
-        # flatter temples than a sphere's perfectly round side.
+        # 5) TEMPLE FLATTEN
         if -0.3 < lz < 0.4 and abs(ly) > 0.6 and abs(lx) < 0.3:
             sy *= 0.94
 
-        # 6) EYE SOCKET CARVE: at eye level (lz ~ +0.15), on the
-        # FRONT (lx > 0.5), to the SIDES of center (|ly| ~ 0.3..0.6),
-        # push the surface INWARD (reduce lx component).
-        if lx > 0.45 and 0.0 < lz < 0.30 and 0.18 < abs(ly) < 0.55:
+        # 6) EYE SOCKETS · ALMOND-SHAPED (wider horizontally than
+        # tall) carve INWARD on the front sides at eye level.
+        # Inner corner of socket is LOWER than outer (anatomical).
+        # eye level: lz ~ 0.10..0.30, sides: |ly| ~ 0.25..0.65,
+        # front: lx > 0.5.
+        if lx > 0.45 and 0.05 < lz < 0.35 and 0.18 < abs(ly) < 0.65:
+            # Almond shape: tighter Z band, looser Y band
             socket_mask = smoothstep01((lx - 0.45) / 0.45) \
-                          * smoothstep01((0.18 - abs(lz - 0.15)) / 0.18) \
-                          * smoothstep01((abs(ly) - 0.18) / 0.20) \
-                          * smoothstep01((0.55 - abs(ly)) / 0.10)
-            sx -= socket_mask * head_d_max * 0.12
+                          * smoothstep01((0.12 - abs(lz - 0.18)) / 0.12) \
+                          * smoothstep01((abs(ly) - 0.18) / 0.18) \
+                          * smoothstep01((0.65 - abs(ly)) / 0.10)
+            sx -= socket_mask * head_d_max * 0.18    # 12% → 18% carve
 
-        # 7) NOSE BRIDGE + TIP: front-center band (|ly| < 0.20,
-        # 0.0 < lz < 0.30) pulled OUTWARD on the depth axis.
-        if lx > 0.4 and abs(ly) < 0.22 and -0.05 < lz < 0.30:
+        # 7) BROW RIDGE · push OUTWARD just ABOVE the eye sockets
+        # so there's a clear bone ridge separating eye from
+        # forehead (the strongest "this is a human face" feature
+        # in profile silhouette).
+        if lx > 0.55 and 0.30 < lz < 0.50 and abs(ly) < 0.55:
+            brow_mask = smoothstep01((lx - 0.55) / 0.45) \
+                        * smoothstep01((0.10 - abs(lz - 0.40)) / 0.10) \
+                        * smoothstep01((0.55 - abs(ly)) / 0.40)
+            sx += brow_mask * head_d_max * 0.06
+
+        # 8) NOSE BRIDGE + TIP · pulled forward in a longer band
+        # so the nose has a clear bridge + tip, not just a bump.
+        # Extends from brow level down through nose tip.
+        if lx > 0.4 and abs(ly) < 0.18 and -0.10 < lz < 0.35:
             nose_mask = smoothstep01((lx - 0.4) / 0.5) \
-                        * smoothstep01((0.22 - abs(ly)) / 0.22) \
-                        * smoothstep01((0.30 - abs(lz - 0.12)) / 0.18)
-            sx += nose_mask * head_d_max * 0.15
+                        * smoothstep01((0.18 - abs(ly)) / 0.18) \
+                        * smoothstep01((0.35 - abs(lz - 0.10)) / 0.20)
+            sx += nose_mask * head_d_max * 0.20      # 15% → 20%
 
-        # 8) MOUTH CREASE: thin band below the nose, very slight
-        # crease (inward press on lx of a few mm).
-        if lx > 0.5 and abs(ly) < 0.30 and -0.20 < lz < -0.05:
-            crease = smoothstep01((lx - 0.5) / 0.4) \
-                     * smoothstep01((0.30 - abs(ly)) / 0.30) \
-                     * smoothstep01((0.15 - abs(lz + 0.12)) / 0.10)
-            sx -= crease * head_d_max * 0.03
+        # 9) UPPER LIP VOLUME · push OUT just above the mouth
+        # crease so the upper lip has visible silhouette mass.
+        if lx > 0.55 and abs(ly) < 0.22 and -0.18 < lz < -0.08:
+            uplip = smoothstep01((lx - 0.55) / 0.45) \
+                    * smoothstep01((0.22 - abs(ly)) / 0.22) \
+                    * smoothstep01((0.05 - abs(lz + 0.13)) / 0.05)
+            sx += uplip * head_d_max * 0.06
+
+        # 10) LOWER LIP VOLUME · push OUT just below the mouth
+        if lx > 0.55 and abs(ly) < 0.22 and -0.30 < lz < -0.18:
+            lolip = smoothstep01((lx - 0.55) / 0.45) \
+                    * smoothstep01((0.22 - abs(ly)) / 0.22) \
+                    * smoothstep01((0.06 - abs(lz + 0.24)) / 0.06)
+            sx += lolip * head_d_max * 0.05
+
+        # 11) MOUTH CREASE (between upper + lower lip)
+        if lx > 0.55 and abs(ly) < 0.22 and -0.22 < lz < -0.16:
+            crease = smoothstep01((lx - 0.55) / 0.4) \
+                     * smoothstep01((0.22 - abs(ly)) / 0.22) \
+                     * smoothstep01((0.03 - abs(lz + 0.19)) / 0.03)
+            sx -= crease * head_d_max * 0.04
 
         sculpted.append((sx, sy, sz))
 
@@ -464,61 +491,62 @@ def _build_head(name, base_x, base_y, head_base_z, p, fwd, prp,
 
     # ── Facial features ────────────────────────────────────────
     fwd_x, fwd_y = fwd
-    # NOSE — protruding wedge at brow_z, between cheekbones
-    nose_z = head_base_z + head_h * 0.60
-    nose_out = head_d_max * 0.55
+    # NOSE — at the SURFACE of the head (head_d_max * 1.05, just
+    # past the skull). Was at 0.55 which was buried halfway in.
+    nose_z = head_base_z + head_h * 0.62
+    nose_out = head_d_max * 1.05
     nose_x = base_x + fwd_x * nose_out
     nose_y = base_y + fwd_y * nose_out
     if abs(fwd_y) > abs(fwd_x):
-        nose_size = (head_w_max * 0.30, 0.040, head_h * 0.22)
+        nose_size = (head_w_max * 0.36, 0.060, head_h * 0.26)
     else:
-        nose_size = (0.040, head_w_max * 0.30, head_h * 0.22)
+        nose_size = (0.060, head_w_max * 0.36, head_h * 0.26)
     _box(f"{name}_Nose", (nose_x, nose_y, nose_z),
          nose_size, skin_color)
-    # EYE SOCKETS — recessed darker band across both eyes
-    eye_z = head_base_z + head_h * 0.66
-    socket_x = base_x + fwd_x * (head_d_max * 0.45)
-    socket_y = base_y + fwd_y * (head_d_max * 0.45)
-    socket_col = (skin_color[0] * 0.60,
-                  skin_color[1] * 0.60,
-                  skin_color[2] * 0.60, 1.0)
+    # EYE SOCKETS · darker band on the head surface at eye height
+    eye_z = head_base_z + head_h * 0.68
+    socket_x = base_x + fwd_x * (head_d_max * 1.00)
+    socket_y = base_y + fwd_y * (head_d_max * 1.00)
+    socket_col = (skin_color[0] * 0.55,
+                  skin_color[1] * 0.55,
+                  skin_color[2] * 0.55, 1.0)
     if abs(fwd_y) > abs(fwd_x):
         _box(f"{name}_EyeSocket", (socket_x, socket_y, eye_z),
-             (head_w_max * 1.60, 0.025, head_h * 0.12), socket_col)
+             (head_w_max * 1.70, 0.030, head_h * 0.14), socket_col)
     else:
         _box(f"{name}_EyeSocket", (socket_x, socket_y, eye_z),
-             (0.025, head_w_max * 1.60, head_h * 0.12), socket_col)
-    # EYES — sclera + pupil per side
-    eye_offset = head_w_max * 0.55
+             (0.030, head_w_max * 1.70, head_h * 0.14), socket_col)
+    # EYES — sclera + pupil per side, placed ON the surface
+    eye_offset = head_w_max * 0.60
     px_e, py_e = prp
     for eye_side, sgn in (('L', -1), ('R', +1)):
         ex = base_x + px_e * eye_offset * sgn \
-             + fwd_x * (head_d_max * 0.50)
+             + fwd_x * (head_d_max * 1.02)
         ey = base_y + py_e * eye_offset * sgn \
-             + fwd_y * (head_d_max * 0.50)
+             + fwd_y * (head_d_max * 1.02)
+        # Bigger eyes that actually read at this scale
         _box(f"{name}_EyeWhite_{eye_side}",
              (ex, ey, eye_z),
-             (0.035, 0.035, 0.030)
+             (0.060, 0.060, 0.045)
                  if abs(fwd_y) <= abs(fwd_x)
-                 else (0.035, 0.025, 0.030),
+                 else (0.060, 0.040, 0.045),
              (0.94, 0.92, 0.88, 1.0))
-        # Pupil
         _box(f"{name}_Pupil_{eye_side}",
-             (ex + fwd_x * 0.010, ey + fwd_y * 0.010, eye_z),
-             (0.020, 0.020, 0.020),
+             (ex + fwd_x * 0.015, ey + fwd_y * 0.015, eye_z),
+             (0.030, 0.030, 0.030),
              (0.10, 0.08, 0.06, 1.0))
-    # MOUTH — thin band
-    mouth_z = head_base_z + head_h * 0.30
-    mouth_x = base_x + fwd_x * (head_d_max * 0.46)
-    mouth_y = base_y + fwd_y * (head_d_max * 0.46)
+    # MOUTH — thin band on the surface
+    mouth_z = head_base_z + head_h * 0.32
+    mouth_x = base_x + fwd_x * (head_d_max * 1.02)
+    mouth_y = base_y + fwd_y * (head_d_max * 1.02)
     mouth_col = (0.62, 0.32, 0.32, 1.0)
     if abs(fwd_y) > abs(fwd_x):
         _box(f"{name}_Mouth", (mouth_x, mouth_y, mouth_z),
-             (head_w_max * 0.55, 0.020, head_h * 0.04),
+             (head_w_max * 0.55, 0.030, head_h * 0.05),
              mouth_col)
     else:
         _box(f"{name}_Mouth", (mouth_x, mouth_y, mouth_z),
-             (0.020, head_w_max * 0.55, head_h * 0.04),
+             (0.030, head_w_max * 0.55, head_h * 0.05),
              mouth_col)
     # EARS — small wedges flush with the side of the head
     for ear_side, sgn in (('L', -1), ('R', +1)):

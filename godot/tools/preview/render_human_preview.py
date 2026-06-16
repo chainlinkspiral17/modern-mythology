@@ -28,7 +28,7 @@ sys.modules['bpy'] = _Bpy()
 
 sys.path.insert(0, '/home/user/modern-mythology/godot/tools/blender/locales')
 import importlib
-import human_sculpt as hs
+import human_sculpt_v2 as hs
 importlib.reload(hs)
 
 # Intercept _finalize_mesh
@@ -41,10 +41,13 @@ def _cap(name, verts, faces, color):
 hs._finalize_mesh = _cap
 
 # Camera projections
-def project_front(v):     # XZ plane (Y toward camera)
-    return v[0], v[2], v[1]
-def project_side(v):      # YZ plane (X toward camera)
-    return v[1], v[2], -v[0]
+def project_front(v):
+    # Figure faces -Y, so camera at -infinity Y looking +Y shows
+    # the face. Depth = -Y so closer-to-camera (more negative Y)
+    # renders LAST (higher depth value = later in painter's sort).
+    return v[0], v[2], -v[1]
+def project_side(v):      # YZ plane (X toward camera, from +X side)
+    return v[1], v[2], v[0]
 def project_iso(v):
     # Simple iso: rotate 30° + 30° elevation
     cos_a = math.cos(math.radians(30))
@@ -165,3 +168,35 @@ for idx, (bt, kw) in enumerate(BODY_TYPES):
 out_path = '/tmp/human_previews.png'
 panel.save(out_path, 'PNG')
 print(f"Wrote {out_path}  ({panel.size[0]}x{panel.size[1]})")
+
+# ── HEAD CLOSE-UPS · zoomed crop of just the head region for
+# all 8 body_types · single column · front + side
+HEAD_CELL_W = 360
+HEAD_CELL_H = 360
+HEAD_COLS = 4    # 2 views × 4 body_types per row
+head_rows = 2    # 8 body_types / 4 = 2 rows
+head_panel_w = HEAD_CELL_W * HEAD_COLS
+head_panel_h = (HEAD_CELL_H + LABEL_H) * head_rows
+head_panel = Image.new('RGB', (head_panel_w, head_panel_h), (15, 16, 18))
+head_draw = ImageDraw.Draw(head_panel)
+for idx, (bt, kw) in enumerate(BODY_TYPES):
+    row = idx // 2
+    col_grp = idx % 2
+    x0 = col_grp * 2 * HEAD_CELL_W
+    y0 = row * (HEAD_CELL_H + LABEL_H)
+    meshes = measure_body(bt, **kw)
+    front = render_view(meshes, project_front,
+                        HEAD_CELL_W, HEAD_CELL_H,
+                        world_min_x=-0.15, world_max_x=0.15,
+                        world_min_y=1.55,  world_max_y=1.95)
+    side  = render_view(meshes, project_side,
+                        HEAD_CELL_W, HEAD_CELL_H,
+                        world_min_x=-0.15, world_max_x=0.15,
+                        world_min_y=1.55,  world_max_y=1.95)
+    head_panel.paste(front, (x0, y0 + LABEL_H))
+    head_panel.paste(side,  (x0 + HEAD_CELL_W, y0 + LABEL_H))
+    head_draw.text((x0 + 8, y0 + 4),
+                   f"{bt}  ·  HEAD close-up",
+                   fill=(220, 220, 230), font=font)
+head_panel.save('/tmp/human_heads.png', 'PNG')
+print(f"Wrote /tmp/human_heads.png  ({head_panel.size[0]}x{head_panel.size[1]})")
