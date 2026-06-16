@@ -1595,17 +1595,32 @@ def build_intersections():
                     za = az0 + (az1 - az0) * ts
                     zb = bz0 + (bz1 - bz0) * td
                     inter_z = max(za, zb)
-                    # Slab span = max(hw_a, hw_b) + 0.5 on each side
-                    half = max(hw_a, hw_b) + 0.5
-                    verts = [
-                        (hx - half, hy - half, inter_z + 0.04),
-                        (hx + half, hy - half, inter_z + 0.04),
-                        (hx + half, hy + half, inter_z + 0.04),
-                        (hx - half, hy + half, inter_z + 0.04),
-                    ]
+                    # Intersection plate: a 16-sided regular polygon
+                    # (reads as a rounded asphalt junction). Diameter
+                    # = max(hw) * 2 + 1 so corners of both roads tuck
+                    # under the plate edge. The square slab the old
+                    # code emitted made every junction look "cut and
+                    # pasted" — corners showed up as sharp 90° steps.
+                    radius = max(hw_a, hw_b) + 0.8
+                    n_sides = 16
+                    center_idx = 0
+                    plate_verts = [(hx, hy, inter_z + 0.04)]
+                    for s in range(n_sides):
+                        ang = 2.0 * math.pi * s / n_sides
+                        plate_verts.append((
+                            hx + math.cos(ang) * radius,
+                            hy + math.sin(ang) * radius,
+                            inter_z + 0.04,
+                        ))
+                    plate_faces = []
+                    for s in range(n_sides):
+                        ns = (s + 1) % n_sides
+                        plate_faces.append(
+                            [center_idx, 1 + s, 1 + ns])
                     _finalize_mesh(
                         f"Inter_{rname_a}_{rname_b}_{i}_{j}",
-                        verts, [[0, 1, 2, 3]], COL_INTER)
+                        plate_verts, plate_faces, COL_INTER)
+                    half = radius  # for crosswalk math below
                     # 4 crosswalk zebras on arterial intersections
                     is_arterial = (hw_a >= 7.0 and hw_b >= 7.0)
                     if is_arterial:
@@ -1642,6 +1657,65 @@ def build_intersections():
                                                 (cwx + 1.0, sy - 0.3, cw_z),
                                             ],
                                             [[0, 1, 2, 3]], COL_STRIPE)
+
+
+def build_road_corner_fillets():
+    """At every polyline BEND inside a single road corridor, emit a
+    small circular asphalt plate covering the angular gap where two
+    consecutive road quads meet.
+
+    Catmull-Rom smoothing already handles GENTLE bends (the polyline
+    gets subdivided into 4 sub-segments along a smooth curve), but
+    sharp bends (>25°) still leave a visible 'cut-and-paste' angular
+    seam between adjacent quads. The fillet plate sits BENEATH the
+    seam and fills the angular wedge.
+
+    For each waypoint that has neighbours on both sides:
+      v_in  = (wp[i-1] -> wp[i]) direction
+      v_out = (wp[i]   -> wp[i+1]) direction
+      turn_angle = angle between -v_in and v_out
+    If turn_angle > 25°, emit a 12-sided plate centered on the
+    waypoint with radius = road hw + 1m so it tucks under both
+    incoming and outgoing road quads.
+    """
+    COL_INTER = (0.18, 0.18, 0.20, 1.0)
+    TURN_THRESHOLD_DEG = 25.0
+    for (rname, wps, hw, _sh) in ROAD_CORRIDORS:
+        for i in range(1, len(wps) - 1):
+            x0, y0, z0 = wps[i - 1]
+            x1, y1, z1 = wps[i]
+            x2, y2, z2 = wps[i + 1]
+            # Direction vectors
+            ix = x1 - x0; iy = y1 - y0
+            ox = x2 - x1; oy = y2 - y1
+            il = math.hypot(ix, iy) or 1.0
+            ol = math.hypot(ox, oy) or 1.0
+            ixn = ix / il; iyn = iy / il
+            oxn = ox / ol; oyn = oy / ol
+            # Turn angle: angle between continuing-straight direction
+            # (ixn, iyn) and outgoing (oxn, oyn). 0° = straight on.
+            dot = max(-1.0, min(1.0, ixn * oxn + iyn * oyn))
+            turn_rad = math.acos(dot)
+            if math.degrees(turn_rad) < TURN_THRESHOLD_DEG:
+                continue
+            # Emit a 12-sided plate at the bend
+            n_sides = 12
+            radius = hw + 1.0
+            plate_verts = [(x1, y1, z1 + 0.04)]
+            for s in range(n_sides):
+                ang = 2.0 * math.pi * s / n_sides
+                plate_verts.append((
+                    x1 + math.cos(ang) * radius,
+                    y1 + math.sin(ang) * radius,
+                    z1 + 0.04,
+                ))
+            plate_faces = []
+            for s in range(n_sides):
+                ns = (s + 1) % n_sides
+                plate_faces.append([0, 1 + s, 1 + ns])
+            _finalize_mesh(
+                f"CornerFillet_{rname}_{i}",
+                plate_verts, plate_faces, COL_INTER)
 
 
 def build_bridges():
@@ -16550,6 +16624,7 @@ def main():
     build_connector_roads()
     build_chapter1_pedestrian_network()
     build_intersections()
+    build_road_corner_fillets()
     build_bridges()
     build_ot_park_access_road()
     build_hs_stadium_overflow_lot()
