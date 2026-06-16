@@ -1,18 +1,18 @@
 """
 audit_fence_stretches.py
 ══════════════════════════════════════════════════════════════════
-Detect long stretches of fence panels lined up on the same axis.
-Two conditions to surface:
+Detect "broken column" fence patterns — multiple fence panels
+aligned on the same X (or Y) line within ±1 m, with adjacent
+panels far enough apart that the line reads as fragmented
+neighbor fencing rather than one intended property-line.
 
-  A. STREAK · multiple fence panels share the same X (or Y) line
-     within ±1 m and span a long total length. Real suburban
-     property-line columns DO have this look, but the audit
-     reports it so you can verify whether a column reads as one
-     intended row or as accidentally-clustered noise.
+A clean result here means each lot's fence looks like its own,
+not part of an accidental 100-metre row of mismatched fragments.
 
-  B. GAP · adjacent panels in a streak are > 30 m apart. That's
-     a property-line that reads as "broken" — neighbors fenced
-     in fragments instead of a continuous line.
+Threshold: streak of ≥ 3 panels in the same bin AND max
+edge-gap < 30 m. Pure isolated panels (max gap > 30 m) are NOT
+flagged — those read as discrete fences even if they happen to
+share an axis.
 
 Run:
     cd godot/tools/audit && python3 audit_fence_stretches.py
@@ -95,31 +95,31 @@ def main():
                 (name, cx, cy, length))
         long_streaks = []
         for axis_val, plist in bins.items():
-            if len(plist) >= 3:
-                # Sort by the span axis (X for x-aligned, Y for y-)
-                if span_idx == 0:
-                    plist.sort(key=lambda p: p[1])
-                else:
-                    plist.sort(key=lambda p: p[2])
-                # Find total span + max gap
-                span_vals = [p[1] if span_idx == 0 else p[2]
-                              for p in plist]
-                total_span = max(span_vals) - min(span_vals)
-                # Max gap between adjacent panel CENTERS
-                # accounting for panel length
-                gaps = []
-                for i in range(len(plist) - 1):
-                    p1 = plist[i]
-                    p2 = plist[i + 1]
-                    c1 = p1[1] if span_idx == 0 else p1[2]
-                    c2 = p2[1] if span_idx == 0 else p2[2]
-                    # Edge-to-edge gap = center distance minus
-                    # half lengths
-                    edge_gap = (c2 - c1) - (p1[3] / 2 + p2[3] / 2)
-                    gaps.append(edge_gap)
-                max_gap = max(gaps) if gaps else 0
-                long_streaks.append(
-                    (axis_name, axis_val, plist, total_span, max_gap))
+            if len(plist) < 3:
+                continue
+            if span_idx == 0:
+                plist.sort(key=lambda p: p[1])
+            else:
+                plist.sort(key=lambda p: p[2])
+            span_vals = [p[1] if span_idx == 0 else p[2]
+                          for p in plist]
+            total_span = max(span_vals) - min(span_vals)
+            gaps = []
+            for i in range(len(plist) - 1):
+                p1 = plist[i]
+                p2 = plist[i + 1]
+                c1 = p1[1] if span_idx == 0 else p1[2]
+                c2 = p2[1] if span_idx == 0 else p2[2]
+                edge_gap = (c2 - c1) - (p1[3] / 2 + p2[3] / 2)
+                gaps.append(edge_gap)
+            max_gap = max(gaps) if gaps else 0
+            # Only flag "broken column" patterns. Panels with
+            # max edge-gap > 30m read as isolated fences and are
+            # not a visual problem even when they share an axis.
+            if max_gap >= 30:
+                continue
+            long_streaks.append(
+                (axis_name, axis_val, plist, total_span, max_gap))
         return long_streaks
 
     x_streaks = find_streaks(x_aligned, 1, 0, 'Y')

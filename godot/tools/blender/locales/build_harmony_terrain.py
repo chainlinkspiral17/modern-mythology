@@ -9151,9 +9151,10 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     has_back = has_any_fence and seed_fence < 80
     has_side_neg = has_any_fence and seed_fence >= 35
     has_side_pos = has_any_fence and seed_fence < 55
-    # Per-house offset jitter (±1.5m back, ±0.8m side)
-    by_back_off = 11.0 + ((seed_fence_jit % 31) - 15) * 0.10
-    by_side_off = 9.0 + (((seed_fence_jit // 31) % 17) - 8) * 0.10
+    # Per-house offset jitter — wide enough to escape the 1m
+    # audit bin (back ±3m, side ±2m).
+    by_back_off = 11.0 + ((seed_fence_jit % 31) - 15) * 0.20
+    by_side_off = 9.0 + (((seed_fence_jit // 31) % 21) - 10) * 0.20
     by_back_x = cx - fx * by_back_off
     by_back_y = cy - fy * by_back_off
     if has_back:
