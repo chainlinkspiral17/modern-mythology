@@ -4106,6 +4106,7 @@ _NPC_PALETTES = [
 # for the 12 narrative-anchored characters while keeping the
 # 35 background extras cheap.
 TIER_1_LABELS = {
+    'Diner_John',             # Fool — John Frank at D'Ambrosio's
     'Cath_Frasier',           # Magician — Frasier Temple
     'Cath_apprentice',        # Maya (Frasier's apprentice)
     'Church_priest',          # Hierophant — Father Amato
@@ -4141,6 +4142,8 @@ NPC_SPAWNS = [
     ("RF_lot_1",         -38.0,  +18.0,  '+X', 'male_avg'),
     ("RF_lot_2",         -42.0,  +14.0,  '+X', 'female_avg'),
     ("RF_lot_3",         -40.0,  +30.0,  '-Y', 'elderly'),
+    # ── John at the diner gangway (FOOL anchor) ──
+    ("Diner_John",       -10.0,  -5.0,   '+X', 'male_avg'),
     # ── Levee cottage porches ──
     ("Levee_porch_N",    -38.0,  +418.0, '+X', 'male_heavy'),
     ("Levee_porch_S",    -86.0,  -424.0, '+X', 'female_avg'),
@@ -4431,6 +4434,7 @@ def _instance_planar_npc(label, x, y, z, facing, body_type):
 # the workflow + filename convention. Missing files fall back to
 # the planar reference — never breaks the build.
 HERO_GLB_PATHS = {
+    'Diner_John':         'john_frank.glb',
     'Cath_Frasier':       'frasier_temple.glb',
     'Cath_apprentice':    'maya_apprentice.glb',
     'Church_priest':      'father_amato.glb',
@@ -4450,36 +4454,79 @@ _HERO_GLB_DIR = os.path.normpath(os.path.join(
 
 
 def _instance_hero_glb(label, x, y, z, facing):
-    """Import a hero-specific GLB and place it at the spawn. Returns
-    True if a file was found and instanced, False to signal the
-    caller should fall back to the planar reference."""
+    """Import a hero-specific GLB and place it at the spawn. Auto-
+    handles scale + orientation:
+      - measure bbox of newly-imported objects
+      - if the largest extent isn't on Z, rotate so it is
+        (Meshy exports default to Z-up but tag the glTF as Y-up,
+        so Blender's importer ends up laying the character on its
+        side; we rotate +90° about X to recover)
+      - scale uniformly so the largest extent = 1.80 m
+      - translate so the feet (lowest Z after rotation/scale) sit
+        exactly at ground z
+    Returns True if a file was found and instanced, False to
+    signal the caller should fall back to the planar reference."""
     fname = HERO_GLB_PATHS.get(label)
     if not fname:
         return False
     path = os.path.join(_HERO_GLB_DIR, fname)
     if not os.path.exists(path):
         return False
-    # Track objects that exist before import so we can identify
-    # what came in.
     before = set(o.name for o in bpy.data.objects)
     bpy.ops.import_scene.gltf(filepath=path)
     after = set(o.name for o in bpy.data.objects)
     new_objs = [bpy.data.objects[n] for n in (after - before)]
     if not new_objs:
         return False
-    # Find the top-level root of the imported hierarchy (the
-    # armature or the first mesh-bearing object with no parent
-    # that's in our new set).
     root = next((o for o in new_objs
                  if o.parent is None or o.parent.name not in after),
                 new_objs[0])
-    root.location = (x, y, z)
+
+    # ── Measure bbox of meshes in the new hierarchy ───────────
+    mesh_objs = [o for o in new_objs if o.type == 'MESH'
+                 and o.data and len(o.data.vertices) > 0]
+    if not mesh_objs:
+        return False
+    min_xyz = [+1e9, +1e9, +1e9]
+    max_xyz = [-1e9, -1e9, -1e9]
+    for mo in mesh_objs:
+        for v in mo.data.vertices:
+            w = mo.matrix_world @ v.co
+            for i in range(3):
+                min_xyz[i] = min(min_xyz[i], w[i])
+                max_xyz[i] = max(max_xyz[i], w[i])
+    extents = [max_xyz[i] - min_xyz[i] for i in range(3)]
+    up_axis = extents.index(max(extents))
+
+    # ── Auto-orient: if largest extent isn't Z, rotate ─────────
+    rot_x = rot_y = 0.0
+    if up_axis == 0:        # X is up — rotate -90° about Y
+        rot_y = -math.pi / 2
+    elif up_axis == 1:      # Y is up — rotate +90° about X
+        rot_x = +math.pi / 2
+
+    # ── Auto-scale so largest extent = 1.80 m ──────────────────
+    scale = 1.80 / max(extents) if max(extents) > 1e-6 else 1.0
+
+    # ── Apply transforms to root ──────────────────────────────
     rot_z = {
         '-Y': 0.0, '+Y': math.pi,
         '+X': -math.pi / 2, '-X': +math.pi / 2,
     }.get(facing, 0.0)
-    root.rotation_euler = (0.0, 0.0, rot_z)
-    # Rename so we can find them later
+    root.scale = (scale, scale, scale)
+    root.rotation_euler = (rot_x, rot_y, rot_z)
+    # After rotation+scale, the lowest world-Z vertex should sit
+    # at the spawn ground. Recompute new min after applying
+    # transforms (Blender doesn't apply matrix_world lazy enough
+    # for vertex re-read, so we estimate analytically).
+    if rot_x != 0 or rot_y != 0:
+        # Original min was at min_xyz[up_axis] in world before
+        # rotation; after rotation, that axis lands on Z. The new
+        # feet-Z = scale * min_xyz[up_axis].
+        feet_world_z_after_local_xform = min_xyz[up_axis] * scale
+    else:
+        feet_world_z_after_local_xform = min_xyz[2] * scale
+    root.location = (x, y, z - feet_world_z_after_local_xform)
     for o in new_objs:
         o.name = f"Graustark_NPC_{label}_{o.type.lower()}"
     return True
