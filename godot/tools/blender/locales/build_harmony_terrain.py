@@ -7955,49 +7955,45 @@ def build_commercial_cluster():
     # action they're engaged with (arcade kid faces cabinet,
     # diner patron faces counter, etc.)
     customers = [
-        # (name, x, y, facing, scale, hair, jacket, pants, pose)
-        # Arcade kid at the leftmost cabinet. Arcade bay now at
-        # cx + ARCADE_OX = ks_x - 11. Cabinets at arc_cx + k*2 - 2.
-        # Leftmost cab at arc_cx - 2.0 = ks_x - 13.
-        ("ArcadeKid",  ks_x - 13.0, ks_y + 3.0, '+Y', 0.78, "bowl",
+        # (name, x, y, facing, scale, hair, jacket, pants, pose, body, skin)
+        # Arcade kid at the leftmost cabinet.
+        ("ArcadeKid",  ks_x - 13.0, ks_y + 3.0, '+Y', 1.0, "bowl",
             (0.42, 0.65, 0.32, 1.0), (0.32, 0.18, 0.32, 1.0),
-            "standing"),
-        # Diner patron at a stool.
+            "standing", 'child', SKIN_LIGHT),
+        # Diner patron — older guy at the counter.
         ("DinerPatron", dn_x - 2.0, dn_y + 0.6, '+Y', 1.0, "cap",
             (0.62, 0.42, 0.78, 1.0), (0.18, 0.22, 0.30, 1.0),
-            "hands_on_counter"),
-        # Cosmic Comics browser between the two shelves.
+            "hands_on_counter", 'male_heavy', SKIN_LIGHT),
+        # Cosmic Comics browser — older woman.
         ("ComicsBrowser", cc_x - 1.5, cc_y + 0.5, '+Y', 0.92, "short",
             (0.95, 0.55, 0.20, 1.0), (0.42, 0.30, 0.20, 1.0),
-            "arms_crossed"),
-        # Sidewalk pedestrian heading east. Hands in pockets.
+            "arms_crossed", 'female_avg', SKIN_MED),
+        # Sidewalk pedestrian — young guy.
         ("Pedestrian", 12.0, walk_strip_y, '+X', 1.0, "beanie",
             (0.32, 0.55, 0.78, 1.0), (0.42, 0.42, 0.45, 1.0),
-            "hands_pockets"),
-        # Kwik Stop customer at counter paying. Counter is at
-        # SW corner now (counter center at kw_cx-5, counter_y).
-        # Customer south of counter facing north toward Sam.
+            "hands_pockets", 'male_tall', SKIN_DARK),
+        # Kwik Stop customer paying — high-school-age woman.
         ("KwikStopCust1", ks_x + 1.0, ks_y - 4.3, '+Y', 1.0,
             "ponytail", (0.85, 0.22, 0.20, 1.0), (0.18, 0.18, 0.20, 1.0),
-            "hands_on_counter"),
-        # Kwik Stop customer browsing the snack aisle (south).
-        # South aisle at (kw_cx=ks_x+6, ks_y - 1.0).
+            "hands_on_counter", 'teen', SKIN_LIGHT),
+        # Kwik Stop customer browsing snacks — mid-30s slim man.
         ("KwikStopCust2", ks_x + 4.0, ks_y - 1.8, '+Y', 0.95,
             "short", (0.42, 0.62, 0.32, 1.0), (0.55, 0.32, 0.22, 1.0),
-            "arms_crossed"),
-        # Kwik Stop customer at the back cooler (north end of bay)
+            "arms_crossed", 'male_avg', SKIN_OLIVE),
+        # Kwik Stop back-cooler customer — heavy-set guy.
         ("KwikStopCust3", ks_x + 8.0, ks_y + 3.5, '+Y', 1.0,
             "cap", (0.95, 0.85, 0.30, 1.0), (0.32, 0.18, 0.32, 1.0),
-            "standing"),
+            "standing", 'male_heavy', SKIN_LIGHT),
     ]
-    for tag, fx, fy, facing, sc, hair, jacket, pants, pose in customers:
+    for tag, fx, fy, facing, sc, hair, jacket, pants, pose, body, skin in customers:
         fz = mesh_z(fx, fy)
         human_figure(
             name=f"NPC_{tag}",
             base_x=fx, base_y=fy, base_z=fz,
             scale=sc,
             facing=facing,
-            skin_color=(0.92, 0.75, 0.62, 1.0),
+            body_type=body,
+            skin_color=skin,
             hair_style=hair,
             hair_color=(0.20, 0.14, 0.10, 1.0),
             jacket_color=jacket,
