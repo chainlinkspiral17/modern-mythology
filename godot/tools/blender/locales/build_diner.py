@@ -161,48 +161,185 @@ def make_box(name, center, size, base_color, open_faces=None):
 # ────────────────────────────────────────────────────────────────
 
 def build_shell():
-    """Floor, ceiling, four walls (with window cutouts faked by sub-walls)."""
+    """Floor, ceiling, four walls. Big picture windows running flush
+    along the whole west and east walls, with only a small solid
+    margin at each end. NO solid glass slab in the opening — the
+    window is just an empty cutout so the player sees straight through
+    to the bayou view.
+
+    Per user direction: "the windows in the diner need to be larger,
+    more picture-window, running flush with the whole wall except
+    maybe a few feet at each end. the windows need to be able to see
+    through to the outside, not be solid material."
+    """
     # floor
     make_box("Floor", (0, 0, -0.05), (D_W, D_D, 0.10), COL_FLOOR_TILE, open_faces={'-Z'})
     # ceiling
     make_box("Ceiling", (0, 0, D_H + 0.05), (D_W, D_D, 0.10), COL_CEILING, open_faces={'+Z'})
 
-    # WEST wall (river side) — has the big river window
-    win_w = 8.0
-    win_h = 2.0
-    win_base = 0.9
-    # lower below window
-    make_box("Wall_W_lower", (-D_W/2 - 0.05, 0, win_base/2), (0.10, D_D, win_base), COL_WALL_INTERIOR)
-    # upper above window
+    # ── WEST wall (river / port side) — flush picture window ──
+    # 10m of glass on a 12m wall — only 1m solid at each end.
+    win_w = 10.0
+    win_h = 2.5      # taller picture window (was 2.0)
+    win_base = 0.85
     upper_h = D_H - (win_base + win_h)
-    make_box("Wall_W_upper", (-D_W/2 - 0.05, 0, win_base + win_h + upper_h/2), (0.10, D_D, upper_h), COL_WALL_INTERIOR)
-    # narrow sides of the window
+    # Lower sill rail below the window (interior)
+    make_box("Wall_W_below", (-D_W/2 - 0.05, 0, win_base / 2),
+             (0.10, D_D, win_base), COL_WALL_INTERIOR)
+    # Header above the window
+    make_box("Wall_W_above",
+             (-D_W/2 - 0.05, 0, win_base + win_h + upper_h / 2),
+             (0.10, D_D, upper_h), COL_WALL_INTERIOR)
+    # Narrow end-walls flanking the picture window
     side_d = (D_D - win_w) / 2
-    make_box("Wall_W_S_of_window", (-D_W/2 - 0.05, -D_D/2 + side_d/2, win_base + win_h/2), (0.10, side_d, win_h), COL_WALL_INTERIOR)
-    make_box("Wall_W_N_of_window", (-D_W/2 - 0.05, D_D/2 - side_d/2, win_base + win_h/2), (0.10, side_d, win_h), COL_WALL_INTERIOR)
-    # the river-window glass (thin slab in the opening)
-    make_box("RiverWindow_Glass", (-D_W/2 - 0.04, 0, win_base + win_h/2), (0.02, win_w, win_h), COL_RIVER_GLASS)
+    make_box("Wall_W_S_of_window",
+             (-D_W/2 - 0.05, -D_D/2 + side_d / 2, win_base + win_h / 2),
+             (0.10, side_d, win_h), COL_WALL_INTERIOR)
+    make_box("Wall_W_N_of_window",
+             (-D_W/2 - 0.05, D_D/2 - side_d / 2, win_base + win_h / 2),
+             (0.10, side_d, win_h), COL_WALL_INTERIOR)
+    # Window MULLIONS — 5 vertical bars + 1 horizontal mid-bar across
+    # the picture window. These are skinny enough to look like the
+    # brass divisions in a real picture window, while leaving the
+    # majority of the opening empty so the bayou is visible.
+    n_mull_v = 5
+    for c in range(1, n_mull_v):
+        mx_y = -win_w/2 + c * win_w / n_mull_v
+        make_box(f"RiverWindow_MullV_{c}",
+                 (-D_W/2 - 0.04, mx_y, win_base + win_h / 2),
+                 (0.02, 0.06, win_h), COL_BRASS)
+    make_box("RiverWindow_MullH",
+             (-D_W/2 - 0.04, 0, win_base + win_h / 2),
+             (0.02, win_w, 0.06), COL_BRASS)
+    # Window FRAME (brass moulding around the perimeter)
+    make_box("RiverWindow_FrameT",
+             (-D_W/2 - 0.03, 0, win_base + win_h + 0.06),
+             (0.04, win_w + 0.20, 0.12), COL_BRASS)
+    make_box("RiverWindow_FrameB",
+             (-D_W/2 - 0.03, 0, win_base - 0.06),
+             (0.04, win_w + 0.20, 0.12), COL_BRASS)
+    for sgn in (-1, +1):
+        make_box(f"RiverWindow_FrameSide_{sgn:+d}",
+                 (-D_W/2 - 0.03, sgn * (win_w/2 + 0.06),
+                  win_base + win_h / 2),
+                 (0.04, 0.12, win_h + 0.24), COL_BRASS)
+    # NOTE: no glass slab — the opening is empty so the player can
+    # see straight through to the bayou geometry built by
+    # build_enhanced_river_view.
 
-    # EAST wall (parking-lot side) — has the front door and parking-lot windows
+    # ── EAST wall (parking-lot side) — front door + picture window ──
     door_w = 1.4
     door_h = 2.2
-    # the wall has a door near center-south and a long window strip above
-    # south of door
-    make_box("Wall_E_S_of_door", (D_W/2 + 0.05, -D_D/2 + (D_D/2 - door_w/2 - 0.6)/2 - 0.3,  door_h/2), (0.10, D_D/2 - door_w/2 - 0.3, door_h), COL_WALL_INTERIOR)
-    # north of door, lower
-    make_box("Wall_E_N_of_door_lower", (D_W/2 + 0.05, door_w/2 + 0.3 + (D_D/2 - door_w/2 - 0.3)/2, door_h/2), (0.10, D_D/2 - door_w/2 - 0.3, door_h), COL_WALL_INTERIOR)
-    # above the door
-    make_box("Wall_E_above_door", (D_W/2 + 0.05, 0, door_h + (D_H - door_h)/2), (0.10, D_D, D_H - door_h), COL_WALL_INTERIOR)
-    # the parking-lot window strip (long horizontal at upper-mid height)
-    make_box("ParkingWindow_Glass", (D_W/2 + 0.04, 0, 2.4), (0.02, D_D * 0.7, 0.6), COL_PARKING_GLASS)
+    # The east wall is partially occupied by the east-annex partition;
+    # the main shell east wall faces parking. Window above the door
+    # zone runs the full length of the wall except for end margins.
+    e_win_w = 10.0
+    e_win_h = 2.0
+    e_win_base = 0.85
+    e_upper_h = D_H - (e_win_base + e_win_h)
+    e_side_d = (D_D - e_win_w) / 2
+    # Lower (below window) — broken by the front door
+    # South of door
+    south_seg_y_lo = -D_D/2
+    south_seg_y_hi = -door_w / 2 - 0.30
+    south_seg_len = south_seg_y_hi - south_seg_y_lo
+    make_box("Wall_E_lower_S",
+             (D_W/2 + 0.05, (south_seg_y_lo + south_seg_y_hi) / 2,
+              e_win_base / 2),
+             (0.10, south_seg_len, e_win_base), COL_WALL_INTERIOR)
+    # Below door (small sill)
+    make_box("Wall_E_doorSill",
+             (D_W/2 + 0.05, 0, 0.05),
+             (0.10, door_w + 0.60, 0.10), COL_WOOD_TRIM)
+    # North of door
+    north_seg_y_lo = door_w / 2 + 0.30
+    north_seg_y_hi = D_D/2
+    north_seg_len = north_seg_y_hi - north_seg_y_lo
+    make_box("Wall_E_lower_N",
+             (D_W/2 + 0.05, (north_seg_y_lo + north_seg_y_hi) / 2,
+              e_win_base / 2),
+             (0.10, north_seg_len, e_win_base), COL_WALL_INTERIOR)
+    # Wall above door (between door top and bottom of window)
+    if door_h < e_win_base:
+        # Door is shorter than window base — fill the gap
+        make_box("Wall_E_above_door_fill",
+                 (D_W/2 + 0.05, 0, (door_h + e_win_base) / 2),
+                 (0.10, door_w + 0.60, e_win_base - door_h),
+                 COL_WALL_INTERIOR)
+    # Above the picture window
+    make_box("Wall_E_above",
+             (D_W/2 + 0.05, 0, e_win_base + e_win_h + e_upper_h / 2),
+             (0.10, D_D, e_upper_h), COL_WALL_INTERIOR)
+    # End-walls flanking the picture window
+    make_box("Wall_E_S_of_window",
+             (D_W/2 + 0.05, -D_D/2 + e_side_d / 2,
+              e_win_base + e_win_h / 2),
+             (0.10, e_side_d, e_win_h), COL_WALL_INTERIOR)
+    make_box("Wall_E_N_of_window",
+             (D_W/2 + 0.05, D_D/2 - e_side_d / 2,
+              e_win_base + e_win_h / 2),
+             (0.10, e_side_d, e_win_h), COL_WALL_INTERIOR)
+    # Mullions + brass frame for the east picture window
+    for c in range(1, n_mull_v):
+        mx_y = -e_win_w/2 + c * e_win_w / n_mull_v
+        make_box(f"EastWindow_MullV_{c}",
+                 (D_W/2 + 0.04, mx_y, e_win_base + e_win_h / 2),
+                 (0.02, 0.06, e_win_h), COL_BRASS)
+    make_box("EastWindow_MullH",
+             (D_W/2 + 0.04, 0, e_win_base + e_win_h / 2),
+             (0.02, e_win_w, 0.06), COL_BRASS)
+    make_box("EastWindow_FrameT",
+             (D_W/2 + 0.03, 0, e_win_base + e_win_h + 0.06),
+             (0.04, e_win_w + 0.20, 0.12), COL_BRASS)
+    make_box("EastWindow_FrameB",
+             (D_W/2 + 0.03, 0, e_win_base - 0.06),
+             (0.04, e_win_w + 0.20, 0.12), COL_BRASS)
+    for sgn in (-1, +1):
+        make_box(f"EastWindow_FrameSide_{sgn:+d}",
+                 (D_W/2 + 0.03, sgn * (e_win_w/2 + 0.06),
+                  e_win_base + e_win_h / 2),
+                 (0.04, 0.12, e_win_h + 0.24), COL_BRASS)
 
-    # NORTH wall — has the back-hallway opening (left open)
-    hall_opening_x_center = 0
-    make_box("Wall_N_E_of_hall", (D_W/2 * 0.65, D_D/2 + 0.05, D_H/2), (D_W - HALL_W, 0.10, D_H), COL_WALL_INTERIOR)
-    make_box("Wall_N_above_hall", (0, D_D/2 + 0.05, D_H - 0.5), (HALL_W, 0.10, 1.0), COL_WALL_INTERIOR)
+    # ── NORTH wall — back-hallway opening (center) + bar-annex door
+    #    (west of center, leads to the new port-side bar)
+    bar_door_x = -6.0
+    bar_door_w = 1.40
+    # West-of-hall section: from X=-D_W/2 to X=-HALL_W/2, broken by
+    # the bar door
+    wn_W_x_W = -D_W/2
+    wn_W_x_E = -HALL_W/2
+    # West segment of the west wall (X=-D_W/2 to X=bar_door_x-bar_door_w/2)
+    seg_W_len = (bar_door_x - bar_door_w/2) - wn_W_x_W
+    make_box("Wall_N_segW_W",
+             (wn_W_x_W + seg_W_len/2, D_D/2 + 0.05, D_H/2),
+             (seg_W_len, 0.10, D_H), COL_WALL_INTERIOR)
+    # East segment of the west wall (X=bar_door_x+bar_door_w/2 to X=-HALL_W/2)
+    seg_E_len = wn_W_x_E - (bar_door_x + bar_door_w/2)
+    make_box("Wall_N_segW_E",
+             ((bar_door_x + bar_door_w/2) + seg_E_len/2,
+              D_D/2 + 0.05, D_H/2),
+             (seg_E_len, 0.10, D_H), COL_WALL_INTERIOR)
+    # Lintel above bar door
+    bar_door_h = 2.20
+    make_box("Wall_N_BarDoor_Lintel",
+             (bar_door_x, D_D/2 + 0.05,
+              bar_door_h + (D_H - bar_door_h)/2),
+             (bar_door_w, 0.10, D_H - bar_door_h), COL_WALL_INTERIOR)
+    # East-of-hall section (X=+HALL_W/2 to X=+D_W/2)
+    wn_E_x_W = HALL_W/2
+    wn_E_x_E = D_W/2
+    we_len = wn_E_x_E - wn_E_x_W
+    make_box("Wall_N_segE",
+             (wn_E_x_W + we_len/2, D_D/2 + 0.05, D_H/2),
+             (we_len, 0.10, D_H), COL_WALL_INTERIOR)
+    # Lintel above the hallway opening
+    make_box("Wall_N_above_hall",
+             (0, D_D/2 + 0.05, D_H - 0.5),
+             (HALL_W, 0.10, 1.0), COL_WALL_INTERIOR)
 
-    # SOUTH wall — has the front porch / parking-lot side
-    make_box("Wall_S", (0, -D_D/2 - 0.05, D_H/2), (D_W, 0.10, D_H), COL_WALL_INTERIOR)
+    # ── SOUTH wall (porch side) ──
+    make_box("Wall_S", (0, -D_D/2 - 0.05, D_H/2),
+             (D_W, 0.10, D_H), COL_WALL_INTERIOR)
 
 
 def build_counter():
@@ -443,168 +580,180 @@ def _build_booth_table(prefix, cx, cy, axis_along):
 
 
 def build_alcove_booths():
-    """Classic American-diner alcove layout: a single row of booths
-    along the river-window wall. Each booth is a tight alcove jutting
-    OUT from the wall, with a tall divider between it and the next
-    booth — so the dividers, not the benches, form the long shared
-    line you see along the wall.
+    """Classic American-diner alcove booths along the river-window
+    wall. CORRECTED orientation (per reference photo + iterations):
 
-    Reference: classic diner reference photo provided by user
-    (image 4d0884e1-5186.jpg). Photo features:
-      · 4 booths in a row along a window wall
-      · Each booth ≈ 1.2m wide × 1.7m deep
-      · Square tables (~0.7m × 0.7m)
-      · Tall divider walls between booths (~1.1m above floor)
-      · Pendant lamp directly above each table
-      · Bench backrest height ≈ chest-of-seated-customer
+      · Benches run PERPENDICULAR to the window wall (long-axis = X)
+      · Each booth is a U-shape opening EAST to the aisle
+      · Two benches face each other across a small square table
+      · Adjacent booths share a back-to-back divider (each divider
+        IS a pair of back-to-back bench backrests, capped with crown
+        molding)
+      · Dividers only run from the wall to just past the table —
+        the booth's east edge is OPEN so patrons walk straight in
+
+      window wall (X=-9)        aisle
+       │                          │
+       │  [divider]               │
+       │  ┌─ north bench ─┐       │
+       │  │      ┌──┐     │       │
+       │  │ ◯    │T │   ◯ │←OPEN──┤  patron enters from here
+       │  │      └──┘     │       │
+       │  └─ south bench ─┘       │
+       │  [divider]               │
     """
-    # Per-booth dimensions
-    bench_w   = 1.20    # bench long-axis (along the wall)
-    bench_d   = 0.48    # bench depth (perpendicular to wall)
-    seat_top  = 0.45
-    back_h    = 0.70    # top at z=1.15
-    div_thick = 0.06
-    table_sz  = 0.70    # square
-    leg_gap   = 0.80    # bench-front to bench-front (just enough for legs + small table)
+    # ── Dimensions ──
+    bench_len    = 1.45    # bench long-axis (perpendicular to wall, X)
+    bench_depth  = 0.50    # bench Y-extent
+    seat_top_z   = 0.45
+    back_h       = 0.70    # backrest height above seat → top at z=1.15
+    div_thick    = 0.06
+    table_sz     = 0.70    # square table
+    booth_y_span = 1.50    # full N-S extent of one booth (incl. divider thickness)
+    n_booths     = 6
 
-    # Per-booth total Y extent (booth + its right-side divider) is bench_w + div_thick = 1.26
-    # 4 booths + 5 dividers = 4×1.20 + 5×0.06 = 5.10m. Center the row at Y=+0.50.
-    n_booths = 4
-    booth_unit_y = bench_w + div_thick
-    total_y = n_booths * bench_w + (n_booths + 1) * div_thick
-    row_center_y = +0.50
-    row_y_start = row_center_y - total_y / 2.0
+    # X positions
+    wall_x      = -D_W / 2                     # -9
+    bench_x_W   = wall_x + 0.05 + bench_len / 2.0   # bench starts at X=-8.95, center at -8.225
+    bench_x_E   = wall_x + 0.05 + bench_len          # =-7.50 (east end of bench)
+    table_cx    = bench_x_E - 0.10 - table_sz / 2.0  # table just inside the bench east end
+    div_x_W     = wall_x + 0.05                       # -8.95 (divider starts here, at wall)
+    div_x_E     = bench_x_E + 0.10                    # -7.40 (divider ends here — open east beyond)
+    div_cx      = (div_x_W + div_x_E) / 2.0           # -8.175
+    div_len_x   = div_x_E - div_x_W                   # 1.55
 
-    # X positions (window at -9, depth grows toward +X)
-    wall_x         = -D_W / 2                  # -9.0
-    wall_back_x    = wall_x + 0.05 + div_thick / 2.0   # -8.92 (wall-side backrest center)
-    wall_bench_x   = wall_back_x + div_thick / 2.0 + bench_d / 2.0  # -8.65
-    table_x        = wall_bench_x + bench_d / 2.0 + leg_gap / 2.0   # -8.01
-    aisle_bench_x  = table_x + leg_gap / 2.0 + bench_d / 2.0        # -7.37
-    aisle_back_x   = aisle_bench_x + bench_d / 2.0 + div_thick / 2.0 # -7.10
-    booth_depth_total = (aisle_back_x + div_thick / 2.0) - (wall_back_x - div_thick / 2.0)  # 1.88
+    # Row total Y span and center
+    total_y_span = n_booths * booth_y_span
+    row_center_y = +0.0       # centered on the room
+    row_y_lo     = row_center_y - total_y_span / 2.0
+    row_y_hi     = row_center_y + total_y_span / 2.0
 
-    # ── End-dividers (the tall walls between adjacent booths) ──
-    div_center_x = (wall_back_x + aisle_back_x) / 2.0
-    div_top_z = seat_top + back_h           # 1.15
+    div_top_z = seat_top_z + back_h            # 1.15
+
+    # ── Build n+1 dividers across the row ──
+    # Each divider is a thin wall + crown molding cap + baseboard,
+    # spanning the booth depth from the wall to just past the table.
     for d in range(n_booths + 1):
-        dy = row_y_start + d * (bench_w + div_thick) + div_thick / 2.0
+        dy = row_y_lo + d * booth_y_span
         make_box(f"Alcove_Divider_{d}",
-                 (div_center_x, dy, div_top_z / 2.0),
-                 (booth_depth_total + 0.04, div_thick, div_top_z),
-                 COL_VINYL_RED_DK)
-        # Crown molding cap (a slightly darker wood band on top)
-        make_box(f"Alcove_Divider_{d}_Crown",
-                 (div_center_x, dy, div_top_z + 0.025),
-                 (booth_depth_total + 0.06, div_thick + 0.04, 0.05),
+                 (div_cx, dy, div_top_z / 2.0),
+                 (div_len_x, div_thick, div_top_z), COL_VINYL_RED_DK)
+        # Vertical tuft seams on each face of the divider (one set
+        # per booth-facing side — north face and south face)
+        for face_sgn in (-1, +1):
+            for c in range(2):
+                sx_off = -0.4 + c * 0.8
+                make_box(f"Alcove_Divider_{d}_seam_{face_sgn:+d}_{c}",
+                         (div_cx + sx_off,
+                          dy + face_sgn * (div_thick / 2.0 + 0.005),
+                          div_top_z / 2.0 + 0.05),
+                         (0.025, 0.012, div_top_z - 0.20),
+                         COL_VINYL_RED)
+        # Crown molding cap (full divider length + slight overhang)
+        make_box(f"Alcove_Divider_{d}_crown",
+                 (div_cx, dy, div_top_z + 0.025),
+                 (div_len_x + 0.04, div_thick + 0.04, 0.05),
                  COL_WOOD_TRIM)
         # Wood baseboard at the floor
-        make_box(f"Alcove_Divider_{d}_Baseboard",
-                 (div_center_x, dy, 0.05),
-                 (booth_depth_total + 0.06, div_thick + 0.04, 0.10),
+        make_box(f"Alcove_Divider_{d}_base",
+                 (div_cx, dy, 0.05),
+                 (div_len_x + 0.04, div_thick + 0.04, 0.10),
+                 COL_WOOD_TRIM)
+        # The east end of each divider gets a tall finial post (so
+        # the row looks finished where it opens to the aisle)
+        make_box(f"Alcove_Divider_{d}_finial",
+                 (div_x_E + 0.06, dy, div_top_z / 2.0 + 0.05),
+                 (0.12, div_thick + 0.05, div_top_z + 0.20),
                  COL_WOOD_TRIM)
 
-    # ── Per-booth benches + table + pendant ──
+    # ── Build n booths between adjacent dividers ──
     for i in range(n_booths):
-        # Booth's Y center
-        by = row_y_start + (i + 0.5) * (bench_w + div_thick) + div_thick / 2.0
+        by = row_y_lo + (i + 0.5) * booth_y_span    # booth Y center
         prefix = f"Booth_{i + 1}"
 
-        # ── Window-side bench (back to wall) ──
+        # Bench Y offsets: each bench sits AGAINST a divider
+        # North bench: backrest at dy_N = by + booth_y_span/2
+        # South bench: backrest at dy_S = by - booth_y_span/2
+        dy_N = by + booth_y_span / 2.0
+        dy_S = by - booth_y_span / 2.0
+        # Bench seat center is bench_depth/2 + div_thick/2 inward
+        north_bench_cy = dy_N - div_thick / 2.0 - bench_depth / 2.0
+        south_bench_cy = dy_S + div_thick / 2.0 + bench_depth / 2.0
+
+        # ── NORTH bench (customer sits facing SOUTH) ──
         # Seat slab
-        make_box(f"{prefix}_seat_W",
-                 (wall_bench_x, by, seat_top / 2.0),
-                 (bench_d, bench_w, seat_top), COL_VINYL_RED)
-        # Front seam piping on the aisle-facing edge
-        make_box(f"{prefix}_seat_W_seam",
-                 (wall_bench_x + bench_d / 2.0 - 0.04, by, seat_top - 0.012),
-                 (0.04, bench_w - 0.08, 0.020), COL_VINYL_RED_DK)
-        # Tufted button-dimples (3 across)
+        make_box(f"{prefix}_NorthBench_Seat",
+                 (bench_x_W, north_bench_cy, seat_top_z / 2.0),
+                 (bench_len, bench_depth, seat_top_z), COL_VINYL_RED)
+        # Cushion seam strip along the seat front edge (south face)
+        make_box(f"{prefix}_NorthBench_Seam",
+                 (bench_x_W, north_bench_cy - bench_depth / 2.0 + 0.04,
+                  seat_top_z - 0.012),
+                 (bench_len - 0.06, 0.04, 0.020), COL_VINYL_RED_DK)
+        # 3 button-tuft dimples across the seat
         for t in range(3):
-            tx = wall_bench_x
-            ty = by + (-1 + t) * 0.32
-            make_box(f"{prefix}_seat_W_tuft_{t}",
-                     (tx, ty, seat_top - 0.008),
-                     (0.05, 0.05, 0.012), COL_VINYL_RED_DK)
-        # Backrest pressed to the wall
-        back_z = seat_top + back_h / 2.0
-        make_box(f"{prefix}_back_W",
-                 (wall_back_x, by, back_z),
-                 (div_thick, bench_w, back_h), COL_VINYL_RED_DK)
-        # Vertical stripes on backrest (tufted column hint)
-        for c in range(3):
-            sy = by + (-1 + c) * 0.36
-            make_box(f"{prefix}_back_W_stripe_{c}",
-                     (wall_back_x + div_thick / 2.0 + 0.005, sy, back_z),
-                     (0.012, 0.025, back_h - 0.10), COL_VINYL_RED)
+            tx = bench_x_W - 0.40 + t * 0.40
+            make_box(f"{prefix}_NorthBench_Tuft_{t}",
+                     (tx, north_bench_cy, seat_top_z - 0.005),
+                     (0.04, 0.04, 0.012), COL_VINYL_RED_DK)
 
-        # ── Aisle-side bench (back to aisle) ──
-        make_box(f"{prefix}_seat_A",
-                 (aisle_bench_x, by, seat_top / 2.0),
-                 (bench_d, bench_w, seat_top), COL_VINYL_RED)
-        make_box(f"{prefix}_seat_A_seam",
-                 (aisle_bench_x - bench_d / 2.0 + 0.04, by, seat_top - 0.012),
-                 (0.04, bench_w - 0.08, 0.020), COL_VINYL_RED_DK)
+        # ── SOUTH bench (customer sits facing NORTH) ──
+        make_box(f"{prefix}_SouthBench_Seat",
+                 (bench_x_W, south_bench_cy, seat_top_z / 2.0),
+                 (bench_len, bench_depth, seat_top_z), COL_VINYL_RED)
+        make_box(f"{prefix}_SouthBench_Seam",
+                 (bench_x_W, south_bench_cy + bench_depth / 2.0 - 0.04,
+                  seat_top_z - 0.012),
+                 (bench_len - 0.06, 0.04, 0.020), COL_VINYL_RED_DK)
         for t in range(3):
-            tx = aisle_bench_x
-            ty = by + (-1 + t) * 0.32
-            make_box(f"{prefix}_seat_A_tuft_{t}",
-                     (tx, ty, seat_top - 0.008),
-                     (0.05, 0.05, 0.012), COL_VINYL_RED_DK)
-        make_box(f"{prefix}_back_A",
-                 (aisle_back_x, by, back_z),
-                 (div_thick, bench_w, back_h), COL_VINYL_RED_DK)
-        for c in range(3):
-            sy = by + (-1 + c) * 0.36
-            make_box(f"{prefix}_back_A_stripe_{c}",
-                     (aisle_back_x - div_thick / 2.0 - 0.005, sy, back_z),
-                     (0.012, 0.025, back_h - 0.10), COL_VINYL_RED)
+            tx = bench_x_W - 0.40 + t * 0.40
+            make_box(f"{prefix}_SouthBench_Tuft_{t}",
+                     (tx, south_bench_cy, seat_top_z - 0.005),
+                     (0.04, 0.04, 0.012), COL_VINYL_RED_DK)
 
-        # ── Square formica table ──
+        # ── Small square formica table between the benches ──
         table_top_z = 0.74
-        make_box(f"{prefix}_table_top",
-                 (table_x, by, table_top_z),
+        make_box(f"{prefix}_Table_Top",
+                 (table_cx, by, table_top_z),
                  (table_sz, table_sz, 0.04), COL_FORMICA)
-        # Chrome band rim
-        make_box(f"{prefix}_table_band",
-                 (table_x, by, table_top_z - 0.03),
+        # Chrome edge band rim
+        make_box(f"{prefix}_Table_Band",
+                 (table_cx, by, table_top_z - 0.03),
                  (table_sz + 0.02, table_sz + 0.02, 0.02), COL_BRASS)
-        # Chrome center post
-        make_cyl(f"{prefix}_table_post",
-                 (table_x, by, table_top_z / 2.0),
+        # Chrome center post + cast-iron foot
+        make_cyl(f"{prefix}_Table_Post",
+                 (table_cx, by, table_top_z / 2.0),
                  0.045, table_top_z - 0.04, COL_BRASS, segments=8, axis='Z')
-        # Cast-iron floor disc
-        make_cyl(f"{prefix}_table_foot",
-                 (table_x, by, 0.03),
-                 0.22, 0.04, (0.16, 0.14, 0.12, 1.0), segments=10, axis='Z')
+        make_cyl(f"{prefix}_Table_Foot",
+                 (table_cx, by, 0.03),
+                 0.22, 0.04, (0.16, 0.14, 0.12, 1.0),
+                 segments=10, axis='Z')
 
         # ── Pendant lamp directly above the table ──
         wire_top_z = D_H - 0.05
-        lamp_z = table_top_z + 0.70
-        make_cyl(f"{prefix}_lamp_canopy",
-                 (table_x, by, wire_top_z - 0.02),
+        lamp_z = table_top_z + 0.85
+        make_cyl(f"{prefix}_Lamp_Canopy",
+                 (table_cx, by, wire_top_z - 0.02),
                  0.07, 0.04, COL_BRASS, segments=8, axis='Z')
-        make_cyl(f"{prefix}_lamp_stem",
-                 (table_x, by, (lamp_z + wire_top_z) / 2.0),
+        make_cyl(f"{prefix}_Lamp_Stem",
+                 (table_cx, by, (lamp_z + wire_top_z) / 2.0),
                  0.012, wire_top_z - lamp_z,
                  COL_PAYPHONE_DARK, segments=4, axis='Z')
-        # Conical shade (low sphere stand-in — flattened)
-        make_sphere_low(f"{prefix}_lamp_shade",
-                        (table_x, by, lamp_z), 0.20,
+        make_sphere_low(f"{prefix}_Lamp_Shade",
+                        (table_cx, by, lamp_z), 0.20,
                         (0.86, 0.62, 0.32, 1.0), rings=2, segments=10)
-        # Visible warm bulb
-        make_sphere_low(f"{prefix}_lamp_bulb",
-                        (table_x, by, lamp_z - 0.18), 0.05,
+        make_sphere_low(f"{prefix}_Lamp_Bulb",
+                        (table_cx, by, lamp_z - 0.18), 0.05,
                         (0.98, 0.92, 0.74, 1.0), rings=2, segments=6)
 
-        # Tiny table-number plaque
-        make_box(f"{prefix}_table_number",
-                 (table_x + table_sz / 2.0 - 0.08,
+        # ── Small brass table-number plaque ──
+        make_box(f"{prefix}_Table_Number",
+                 (table_cx + table_sz / 2.0 - 0.08,
                   by - table_sz / 2.0 + 0.08, table_top_z + 0.022),
                  (0.07, 0.07, 0.005), COL_BRASS)
 
         # Register for table dressings
-        BOOTH_POSITIONS.append((prefix, table_x, by, 'Y'))
+        BOOTH_POSITIONS.append((prefix, table_cx, by, 'X'))
 
 
 def build_freestanding_tables():
@@ -1250,412 +1399,443 @@ def build_riverboat_galley():
 
 
 # ────────────────────────────────────────────────────────────────
-# INTERIOR PARTITIONS — vestibule + bar room + private dining
+# INTERIOR PARTITIONS — four-room east annex stack
 # ────────────────────────────────────────────────────────────────
-# The east half of the diner (X > +5) is partitioned into three
-# annex rooms separated from the main dining floor by interior
-# walls. The hostess stand sits in the central VESTIBULE and
-# routes patrons to the BAR (north), PRIVATE DINING (south), or
-# the MAIN DINING floor (west).
+# Per user direction: bigger private dining, more room in entry, a
+# hallway between vestibule and private/formal dining rooms, formal
+# dining replaces the bar (bar moves to the NORTH annex with
+# port-side windows).
 #
 #     +Y north
 #     ┌─────────────────────┐
-#     │  Bar Room   X=+5..9 │
-#     │             Y=+1..6 │
-#     ├──── door (Y=+1) ────┤
-#     │  Vestibule  X=+5..9 │
-#     │  (hostess)  Y=-2..+1│
-#     ├──── door (Y=-2) ────┤
-#     │  Private    X=+5..9 │
-#     │  Dining     Y=-6..-2│
+#     │  Formal Dining      │  X=+5..+9, Y=+1..+6  (5×4 = 20m²)
+#     │  (east windows)     │
+#     ├── door (Y=+1) ──────┤
+#     │  Vestibule          │  X=+5..+9, Y=-1..+1  (2×4 =  8m²)
+#     │  (hostess, larger)  │
+#     ├── door (Y=-1) ──────┤
+#     │  Annex Hallway      │  X=+5..+9, Y=-2.5..-1 (1.5×4 = 6m²)
+#     │  W→main, S→private  │
+#     ├── door (Y=-2.5) ────┤
+#     │  Private Dining     │  X=+5..+9, Y=-6..-2.5 (3.5×4=14m²)
+#     │  (Table 17)         │
 #     └─────────────────────┘
-# Main dining floor: X=-9..+5, the full Y range.
+# Bar moves to a new NORTH ANNEX (X=-9..-2.5, Y=+6..+10) with
+# port-side windows on its west wall.
 
-VEST_X_W = +5.0     # west wall of the eastern annex stack
-ANNEX_DOOR_W = 0.90
+VEST_X_W           = +5.0      # west wall of the eastern annex stack
+ANNEX_DOOR_W       = 0.90
+# Y boundaries between annex rooms (top of formal=+6, going south)
+FORMAL_HALL_Y      = +1.0      # formal dining ↔ vestibule
+VEST_HALL_Y        = -1.0      # vestibule ↔ annex hallway
+HALL_PD_Y          = -2.5      # annex hallway ↔ private dining
+
+
+def _annex_wall_with_door(prefix, y, door_x_center, door_w=0.90,
+                           door_h=2.20, label_brass=None):
+    """Helper: build a partition wall across the east-annex stack at
+    a given Y, with one door opening cut at door_x_center.
+
+    The wall runs X = VEST_X_W .. D_W/2, with a door gap and a lintel
+    above. Optionally stencils a brass numeral set on the lintel.
+    """
+    wall_len_E = D_W / 2 - (door_x_center + door_w / 2)
+    wall_len_W = (door_x_center - door_w / 2) - VEST_X_W
+    if wall_len_W > 0.02:
+        make_box(f"{prefix}_W_seg",
+                 (VEST_X_W + wall_len_W / 2, y, D_H / 2),
+                 (wall_len_W, 0.10, D_H), COL_WALL_INTERIOR)
+    if wall_len_E > 0.02:
+        make_box(f"{prefix}_E_seg",
+                 (D_W / 2 - wall_len_E / 2, y, D_H / 2),
+                 (wall_len_E, 0.10, D_H), COL_WALL_INTERIOR)
+    # Lintel
+    make_box(f"{prefix}_lintel",
+             (door_x_center, y, door_h + (D_H - door_h) / 2),
+             (door_w, 0.10, D_H - door_h), COL_WALL_INTERIOR)
+    # Door frame (wood jambs + header)
+    make_box(f"{prefix}_jamb_L",
+             (door_x_center - door_w / 2 - 0.025, y, door_h / 2),
+             (0.05, 0.14, door_h), COL_WOOD_TRIM)
+    make_box(f"{prefix}_jamb_R",
+             (door_x_center + door_w / 2 + 0.025, y, door_h / 2),
+             (0.05, 0.14, door_h), COL_WOOD_TRIM)
+    make_box(f"{prefix}_header",
+             (door_x_center, y, door_h + 0.06),
+             (door_w + 0.20, 0.14, 0.10), COL_WOOD_TRIM)
+    if label_brass:
+        for i, c in enumerate(label_brass):
+            spacing = 0.06
+            cx = door_x_center + (i - (len(label_brass) - 1) / 2.0) * spacing
+            make_box(f"{prefix}_num_{i}",
+                     (cx, y + 0.01, door_h + 0.18),
+                     (0.045, 0.005, 0.10), COL_BRASS)
 
 
 def build_interior_partitions():
-    """Three new interior walls that split off the eastern annex
-    rooms from the main dining floor + the cross-walls between
-    annexes. Each wall is built as 2-3 wall segments with a door
-    opening cut out."""
-    # ── East-annex west wall at X=VEST_X_W, running full Y range ──
-    # Opening 1: archway connecting main floor to vestibule
-    #   (the hostess can see/wave the player through to the main floor)
-    arch_y_center = -0.5
-    arch_w = 1.60
-    arch_h = 2.50
-    # Wall segments north + south of the archway, then a lintel above
-    seg_n_y_center = (D_D/2 + (arch_y_center + arch_w/2)) / 2.0
-    seg_n_y_len    = D_D/2 - (arch_y_center + arch_w/2)
-    # South of the archway: the kitchen east wall butts here. We
-    # cut a kitchen service door at Y=-4.85 .. -3.95 (0.90m wide,
-    # 2.10m tall) so plates from the galley reach Table 17 directly.
+    """Four-room east-annex stack (top -> bottom):
+       Formal Dining . Vestibule . Annex Hallway . Private Dining.
+
+    The vestibule connects to the main dining floor via an archway
+    in the west annex wall; the annex hallway has its own archway too
+    (so patrons can step from the main floor into either). The galley
+    service door at Y=-4.85..-3.95 lets cooks plate straight from the
+    kitchen line into the private dining room (Table 17).
+    """
+    # ── West wall of the annex stack (X=VEST_X_W) ──
+    vest_arch_y    = -0.5
+    vest_arch_w    = 1.80    # WIDER than before (more room in the entry)
+    arch_h         = 2.50
+    hall_arch_y    = (VEST_HALL_Y + HALL_PD_Y) / 2.0      # Y=-1.75
+    hall_arch_w    = 1.20
     galley_door_y_lo  = -4.85
     galley_door_y_hi  = -3.95
     galley_door_top_z = 2.15
-    seg_s_top_y_center = (galley_door_y_hi + (arch_y_center - arch_w/2)) / 2.0
-    seg_s_top_y_len    = (arch_y_center - arch_w/2) - galley_door_y_hi
-    seg_s_bot_y_center = (-D_D/2 + galley_door_y_lo) / 2.0
-    seg_s_bot_y_len    = galley_door_y_lo - (-D_D/2)
-    make_box("VestWall_W_segN",
-             (VEST_X_W, seg_n_y_center, D_H/2),
-             (0.10, seg_n_y_len, D_H), COL_WALL_INTERIOR)
-    # Two sub-segments south of the archway, with the galley door
-    # opening between them
-    make_box("VestWall_W_segS_top",
-             (VEST_X_W, seg_s_top_y_center, D_H/2),
-             (0.10, seg_s_top_y_len, D_H), COL_WALL_INTERIOR)
-    make_box("VestWall_W_segS_bot",
-             (VEST_X_W, seg_s_bot_y_center, D_H/2),
-             (0.10, seg_s_bot_y_len, D_H), COL_WALL_INTERIOR)
-    # Lintel above the galley service door
+
+    # Solid wall segments along X=VEST_X_W (top -> bottom):
+    breaks = [
+        D_D / 2,
+        vest_arch_y + vest_arch_w / 2,
+        vest_arch_y - vest_arch_w / 2,
+        hall_arch_y + hall_arch_w / 2,
+        hall_arch_y - hall_arch_w / 2,
+        galley_door_y_hi,
+        galley_door_y_lo,
+        -D_D / 2,
+    ]
+    for s_i in range(0, len(breaks), 2):
+        y_top, y_bot = breaks[s_i], breaks[s_i + 1]
+        if y_top - y_bot < 0.02:
+            continue
+        make_box(f"VestWall_W_seg{s_i // 2}",
+                 (VEST_X_W, (y_top + y_bot) / 2.0, D_H / 2),
+                 (0.10, y_top - y_bot, D_H), COL_WALL_INTERIOR)
+    # Lintels above each opening
+    make_box("VestWall_W_vestArch_lintel",
+             (VEST_X_W, vest_arch_y, arch_h + (D_H - arch_h) / 2),
+             (0.10, vest_arch_w, D_H - arch_h), COL_WALL_INTERIOR)
+    make_box("VestWall_W_hallArch_lintel",
+             (VEST_X_W, hall_arch_y, arch_h + (D_H - arch_h) / 2),
+             (0.10, hall_arch_w, D_H - arch_h), COL_WALL_INTERIOR)
     make_box("VestWall_W_galleyDoor_lintel",
-             (VEST_X_W,
-              (galley_door_y_lo + galley_door_y_hi) / 2.0,
+             (VEST_X_W, (galley_door_y_lo + galley_door_y_hi) / 2.0,
               galley_door_top_z + (D_H - galley_door_top_z) / 2.0),
-             (0.10, galley_door_y_hi - galley_door_y_lo, D_H - galley_door_top_z),
+             (0.10, galley_door_y_hi - galley_door_y_lo,
+              D_H - galley_door_top_z),
              COL_WALL_INTERIOR)
-    # Lintel above the arch
-    make_box("VestWall_W_lintel",
-             (VEST_X_W, arch_y_center, arch_h + (D_H - arch_h)/2),
-             (0.10, arch_w, D_H - arch_h), COL_WALL_INTERIOR)
-    # Decorative wood trim around the archway (a fat moulding)
-    make_box("VestWall_W_arch_trim_top",
-             (VEST_X_W - 0.04, arch_y_center, arch_h - 0.04),
-             (0.06, arch_w + 0.20, 0.10), COL_WOOD_TRIM)
+    # Decorative trim around vestibule arch
+    make_box("VestArch_trim_top",
+             (VEST_X_W - 0.04, vest_arch_y, arch_h - 0.04),
+             (0.06, vest_arch_w + 0.20, 0.10), COL_WOOD_TRIM)
     for sgn in (-1, +1):
-        make_box(f"VestWall_W_arch_trim_side_{sgn:+d}",
-                 (VEST_X_W - 0.04, arch_y_center + sgn * arch_w/2, arch_h/2),
+        make_box(f"VestArch_side_{sgn:+d}",
+                 (VEST_X_W - 0.04,
+                  vest_arch_y + sgn * vest_arch_w / 2,
+                  arch_h / 2),
                  (0.06, 0.10, arch_h), COL_WOOD_TRIM)
-
-    # ── Vestibule ↔ Bar wall at Y=+1.0, X = VEST_X_W to D_W/2 ──
-    bar_door_x_center = +7.0
-    door_w = ANNEX_DOOR_W
-    door_h = 2.20
-    wall_len_E = D_W/2 - (bar_door_x_center + door_w/2)
-    wall_len_W = (bar_door_x_center - door_w/2) - VEST_X_W
-    make_box("BarPartition_W_seg",
-             (VEST_X_W + wall_len_W/2, +1.0, D_H/2),
-             (wall_len_W, 0.10, D_H), COL_WALL_INTERIOR)
-    make_box("BarPartition_E_seg",
-             (D_W/2 - wall_len_E/2, +1.0, D_H/2),
-             (wall_len_E, 0.10, D_H), COL_WALL_INTERIOR)
-    # Above the door
-    make_box("BarPartition_lintel",
-             (bar_door_x_center, +1.0, door_h + (D_H - door_h)/2),
-             (door_w, 0.10, D_H - door_h), COL_WALL_INTERIOR)
-    # Door frame (sits inside the opening — wood)
-    make_box("BarDoor_Jamb_L",
-             (bar_door_x_center - door_w/2 - 0.025, +1.0, door_h/2),
-             (0.05, 0.14, door_h), COL_WOOD_TRIM)
-    make_box("BarDoor_Jamb_R",
-             (bar_door_x_center + door_w/2 + 0.025, +1.0, door_h/2),
-             (0.05, 0.14, door_h), COL_WOOD_TRIM)
-    make_box("BarDoor_Header",
-             (bar_door_x_center, +1.0, door_h + 0.06),
-             (door_w + 0.20, 0.14, 0.10), COL_WOOD_TRIM)
-
-    # ── Vestibule ↔ Private Dining wall at Y=-2.0 ──
-    pd_door_x_center = +5.8
-    wall_len_E2 = D_W/2 - (pd_door_x_center + door_w/2)
-    wall_len_W2 = (pd_door_x_center - door_w/2) - VEST_X_W
-    make_box("PrivPartition_W_seg",
-             (VEST_X_W + wall_len_W2/2, -2.0, D_H/2),
-             (wall_len_W2, 0.10, D_H), COL_WALL_INTERIOR)
-    make_box("PrivPartition_E_seg",
-             (D_W/2 - wall_len_E2/2, -2.0, D_H/2),
-             (wall_len_E2, 0.10, D_H), COL_WALL_INTERIOR)
-    make_box("PrivPartition_lintel",
-             (pd_door_x_center, -2.0, door_h + (D_H - door_h)/2),
-             (door_w, 0.10, D_H - door_h), COL_WALL_INTERIOR)
-    make_box("PrivDoor_Jamb_L",
-             (pd_door_x_center - door_w/2 - 0.025, -2.0, door_h/2),
-             (0.05, 0.14, door_h), COL_WOOD_TRIM)
-    make_box("PrivDoor_Jamb_R",
-             (pd_door_x_center + door_w/2 + 0.025, -2.0, door_h/2),
-             (0.05, 0.14, door_h), COL_WOOD_TRIM)
-    make_box("PrivDoor_Header",
-             (pd_door_x_center, -2.0, door_h + 0.06),
-             (door_w + 0.20, 0.14, 0.10), COL_WOOD_TRIM)
-    # Brass numerals "17" stenciled on the lintel (Hierophant canon —
-    # the Sunday brunch ritual table sits inside this room)
-    make_box("PrivDoor_Num1",
-             (pd_door_x_center - 0.05, -1.99, door_h + 0.10),
-             (0.06, 0.005, 0.10), COL_BRASS)
-    make_box("PrivDoor_Num7",
-             (pd_door_x_center + 0.05, -1.99, door_h + 0.10),
-             (0.06, 0.005, 0.10), COL_BRASS)
-
-
-def build_bar_room():
-    """A real, working cocktail bar inside the NE annex room
-    (X=+5..+9, Y=+1..+6).
-
-    Per canon: 'closed cocktail bar to the parking-lot side' — but
-    the user has now asked us to BUILD it. Treat as 'recently
-    re-opened, dim, lived-in.' The bar runs E-W along the north
-    wall, with stools facing it from the south. Back-bar bottles
-    against the building's north wall (with the actual outer
-    parking-lot window cropped by the bar's height).
-    """
-    # Floor accent (a slightly darker tile so the bar room reads as
-    # its own space from the main floor)
-    bar_room_cx = (VEST_X_W + D_W/2) / 2.0
-    bar_room_cy = (1.0 + D_D/2) / 2.0
-    make_box("BarRoom_Accent_Floor",
-             (bar_room_cx, bar_room_cy, 0.025),
-             (D_W/2 - VEST_X_W - 0.20, D_D/2 - 1.0 - 0.20, 0.005),
-             (0.18, 0.10, 0.06, 1.0))
-    # ── The bar itself (E-W counter, customer-side south) ──
-    bar_cx = bar_room_cx
-    bar_cy = D_D/2 - 1.0   # bar face is 1.0m south of the north wall
-    bar_top_z = 1.10
-    bar_len = D_W/2 - VEST_X_W - 1.20    # 2.80m
-    make_box("Bar_Top", (bar_cx, bar_cy, bar_top_z),
-             (bar_len, 0.70, 0.06), COL_BAR_WOOD)
-    # Bar front (south-facing customer side) — vinyl pad strip
-    make_box("Bar_Front",
-             (bar_cx, bar_cy - 0.35, 0.55),
-             (bar_len, 0.04, 1.10), COL_VINYL_RED_DK)
-    # Brass foot rail
-    make_cyl("Bar_FootRail", (bar_cx, bar_cy - 0.36, 0.18),
-             0.024, bar_len, COL_BRASS, segments=8, axis='X')
-    for end_sgn in (-1, +1):
-        make_cyl(f"Bar_FootRailCap_{end_sgn:+d}",
-                 (bar_cx + end_sgn * bar_len/2, bar_cy - 0.36, 0.18),
-                 0.040, 0.10, COL_BRASS, segments=8, axis='X')
-    # Bar-back (the cabinet behind the bartender, with bottles)
-    back_bar_y = bar_cy + 0.50
-    make_box("BarBack_Cabinet_Lower",
-             (bar_cx, back_bar_y, 0.65),
-             (bar_len, 0.40, 1.30), COL_BAR_WOOD)
-    # 3 bottle shelves
-    for s in range(3):
-        sz = 1.45 + s * 0.40
-        make_box(f"BarBack_Shelf_{s}",
-                 (bar_cx, back_bar_y - 0.10, sz),
-                 (bar_len, 0.20, 0.03), COL_WOOD_TRIM)
-        # Bottles on this shelf — 6-8 cylinders of various tints
-        n_bottles = 7
-        for b in range(n_bottles):
-            bx = bar_cx - bar_len/2 + 0.20 + b * (bar_len - 0.40) / (n_bottles - 1)
-            by = back_bar_y - 0.10
-            bottle_color = [
-                (0.18, 0.32, 0.20, 1.0),    # gin / olive-green glass
-                (0.42, 0.20, 0.10, 1.0),    # whisky brown
-                (0.62, 0.46, 0.20, 1.0),    # bourbon amber
-                (0.30, 0.18, 0.34, 1.0),    # something dark purple
-                (0.86, 0.74, 0.36, 1.0),    # rum / honey
-                (0.20, 0.16, 0.34, 1.0),    # blueish liqueur
-                (0.74, 0.20, 0.18, 1.0),    # vermouth red
-            ][(b + s) % 7]
-            make_cyl(f"Bottle_{s}_{b}",
-                     (bx, by, sz + 0.16), 0.035, 0.30,
-                     bottle_color, segments=6, axis='Z')
-            # Cap
-            make_cyl(f"Bottle_{s}_{b}_Cap",
-                     (bx, by, sz + 0.32), 0.018, 0.04,
-                     (0.10, 0.08, 0.06, 1.0), segments=4, axis='Z')
-    # Backbar MIRROR (a darker reflective slab between shelves) —
-    # adds the canonical "bar with a long mirror behind it" silhouette
-    make_box("BarBack_Mirror",
-             (bar_cx, back_bar_y + 0.18, 2.30),
-             (bar_len - 0.20, 0.04, 1.10),
-             (0.10, 0.10, 0.12, 1.0))
-    make_box("BarBack_Mirror_Frame",
-             (bar_cx, back_bar_y + 0.16, 2.30),
-             (bar_len, 0.06, 1.25), COL_WOOD_TRIM)
-
-    # Bar stools (taller than diner stools — chrome posts + leather seats)
-    n_bar_stools = 4
-    stool_y = bar_cy - 0.95
-    for i in range(n_bar_stools):
-        sx = bar_cx - bar_len/2 + 0.45 + i * (bar_len - 0.90) / (n_bar_stools - 1)
-        # Post
-        make_cyl(f"BarStool_{i}_post", (sx, stool_y, 0.40),
-                 0.04, 0.80, COL_BRASS, segments=6, axis='Z')
-        # Foot ring
-        make_cyl(f"BarStool_{i}_foot", (sx, stool_y, 0.22),
-                 0.18, 0.025, COL_BRASS, segments=8, axis='Z')
-        # Leather padded seat (slightly larger than diner stool)
-        make_cyl(f"BarStool_{i}_seat", (sx, stool_y, 0.82),
-                 0.22, 0.07, (0.32, 0.18, 0.10, 1.0), segments=10, axis='Z')
-        # Low back hook on chrome rod
-        make_cyl(f"BarStool_{i}_back_rod", (sx, stool_y + 0.16, 1.05),
-                 0.016, 0.40, COL_BRASS, segments=4, axis='Z')
-        make_box(f"BarStool_{i}_back_pad", (sx, stool_y + 0.18, 1.20),
-                 (0.32, 0.04, 0.16), (0.32, 0.18, 0.10, 1.0))
-
-    # A round 2-top cocktail table in the SW corner of the bar room
-    ct_x, ct_y = VEST_X_W + 0.95, +2.0
-    make_cyl("BarCocktailTable_Top", (ct_x, ct_y, 0.92),
-             0.34, 0.04, COL_FORMICA, segments=10, axis='Z')
-    make_cyl("BarCocktailTable_Post", (ct_x, ct_y, 0.45),
-             0.035, 0.90, COL_BRASS, segments=6, axis='Z')
-    make_cyl("BarCocktailTable_Foot", (ct_x, ct_y, 0.03),
-             0.20, 0.04, (0.16, 0.14, 0.12, 1.0), segments=8, axis='Z')
-    # Two bistro chairs at the cocktail table
-    for ang_deg, label in [(120, 'NE'), (-120, 'SE')]:
-        ang = math.radians(ang_deg)
-        cx = ct_x + 0.50 * math.cos(ang)
-        cy = ct_y + 0.50 * math.sin(ang)
-        make_cyl(f"BarChair_{label}_seat", (cx, cy, 0.46),
-                 0.16, 0.04, COL_WOOD_TRIM, segments=10, axis='Z')
-        for lx in (-1, +1):
-            for ly in (-1, +1):
-                make_box(f"BarChair_{label}_leg_{lx:+d}_{ly:+d}",
-                         (cx + lx*0.11, cy + ly*0.11, 0.23),
-                         (0.025, 0.025, 0.46), COL_WOOD_TRIM)
-        make_box(f"BarChair_{label}_back",
-                 (cx, cy + (0.12 if ang_deg > 0 else -0.12), 0.78),
-                 (0.30, 0.04, 0.50), COL_WOOD_TRIM)
-
-    # Pendant lamp over the cocktail table
-    lamp_z = 0.92 + 0.85
-    make_cyl("BarTable_Lamp_Wire",
-             (ct_x, ct_y, (lamp_z + D_H - 0.05)/2),
-             0.012, (D_H - 0.05) - lamp_z,
-             COL_PAYPHONE_DARK, segments=4, axis='Z')
-    make_sphere_low("BarTable_Lamp_Shade", (ct_x, ct_y, lamp_z),
-                    0.20, (0.66, 0.42, 0.22, 1.0), rings=2, segments=8)
-    make_sphere_low("BarTable_Lamp_Bulb", (ct_x, ct_y, lamp_z - 0.18),
-                    0.05, (0.98, 0.84, 0.56, 1.0), rings=2, segments=6)
-
-    # Pendant strip over the bar itself — 3 small drop fixtures
-    for i in range(3):
-        plx = bar_cx - bar_len/2 + 0.40 + i * (bar_len - 0.80) / 2.0
-        ply = bar_cy
-        plz = 2.10
-        make_cyl(f"BarPendant_{i}_Wire",
-                 (plx, ply, (plz + D_H - 0.05)/2),
-                 0.010, (D_H - 0.05) - plz,
-                 COL_PAYPHONE_DARK, segments=4, axis='Z')
-        make_cyl(f"BarPendant_{i}_Shade",
-                 (plx, ply, plz), 0.14, 0.16,
-                 (0.52, 0.30, 0.16, 1.0), segments=8, axis='Z')
-        make_sphere_low(f"BarPendant_{i}_Bulb",
-                        (plx, ply, plz - 0.12), 0.04,
-                        (0.96, 0.78, 0.42, 1.0), rings=2, segments=6)
-
-    # Single bar-tap detail (sits on the customer side of the bar)
-    tap_x = bar_cx + 0.50
-    make_cyl("BarTap_Body", (tap_x, bar_cy, bar_top_z + 0.18),
-             0.025, 0.30, COL_BRASS, segments=6, axis='Z')
-    make_cyl("BarTap_Handle", (tap_x, bar_cy - 0.10, bar_top_z + 0.30),
-             0.018, 0.18, (0.32, 0.18, 0.10, 1.0), segments=6, axis='Z')
-
-    # An old jukebox tucked in the corner (SE of bar room)
-    jb_x, jb_y = D_W/2 - 0.6, +1.6
-    make_box("Jukebox_Body", (jb_x, jb_y, 0.65),
-             (0.40, 0.55, 1.30), (0.32, 0.20, 0.12, 1.0))
-    # Curved arched glass front
-    make_box("Jukebox_Glass", (jb_x - 0.16, jb_y, 1.05),
-             (0.04, 0.45, 0.50), (0.30, 0.45, 0.62, 1.0))
-    # Side neon trim strips
+    # Brass-trimmed hallway arch (slightly fancier)
+    make_box("HallArch_trim_top",
+             (VEST_X_W - 0.04, hall_arch_y, arch_h - 0.04),
+             (0.06, hall_arch_w + 0.20, 0.10), COL_BRASS)
     for sgn in (-1, +1):
-        make_box(f"Jukebox_Neon_{sgn:+d}",
-                 (jb_x - 0.10, jb_y + sgn * 0.25, 1.05),
-                 (0.04, 0.025, 0.65), (0.78, 0.32, 0.96, 1.0))
-    # Speaker grill at the bottom
-    make_box("Jukebox_Speaker", (jb_x - 0.16, jb_y, 0.40),
-             (0.02, 0.40, 0.30), (0.18, 0.14, 0.10, 1.0))
+        make_box(f"HallArch_side_{sgn:+d}",
+                 (VEST_X_W - 0.04,
+                  hall_arch_y + sgn * hall_arch_w / 2,
+                  arch_h / 2),
+                 (0.06, 0.10, arch_h), COL_BRASS)
+
+    # ── Cross-walls between annex rooms ──
+    # Formal Dining <-> Vestibule (door at X=+7.0)
+    _annex_wall_with_door("FormalPartition", FORMAL_HALL_Y,
+                          door_x_center=+7.0, door_w=1.00)
+    # Vestibule <-> Annex Hallway (door at X=+6.0)
+    _annex_wall_with_door("VestHallPartition", VEST_HALL_Y,
+                          door_x_center=+6.0, door_w=0.90)
+    # Annex Hallway <-> Private Dining (door at X=+5.8; "17" on lintel)
+    _annex_wall_with_door("PrivPartition", HALL_PD_Y,
+                          door_x_center=+5.8, door_w=0.90,
+                          label_brass="17")
 
 
-def build_private_dining_room():
-    """The Hierophant's Table — a small formal dining room in the
-    SE annex (X=+5..+9, Y=-6..-2). Long table for 6, sideboard,
-    a single chandelier. Per Hierophant canon: 'Table 17 of
-    D'Ambrosio's (Sunday brunch).' This is that table."""
-    pd_cx = (VEST_X_W + D_W/2) / 2.0    # +7.0
-    pd_cy = (-D_D/2 + (-2.0)) / 2.0     # -4.0
-    # Dark wood floor accent
-    make_box("PrivDining_Floor_Accent",
-             (pd_cx, pd_cy, 0.025),
-             (D_W/2 - VEST_X_W - 0.20, 4.0 - 0.20, 0.005),
-             (0.18, 0.10, 0.06, 1.0))
-    # Tablecloth-covered long table (E-W)
-    table_w = 2.40
+def build_formal_dining_room():
+    """Formal dining in the NE annex (replaces the former bar room).
+    X=+5..+9, Y=+1..+6 (5 x 4 = 20 sq m). Larger than the old bar.
+    East wall (X=+9) has the picture window facing the porch/parking
+    so diners see outside while eating.
+
+    Per user direction: 'the formal dining room can have windows
+    looking out over portside, as well.'
+    """
+    cx = (VEST_X_W + D_W / 2) / 2.0     # +7.0
+    cy = (FORMAL_HALL_Y + D_D / 2) / 2.0  # +3.5
+    room_w = D_W / 2 - VEST_X_W          # 4.0
+    room_d = D_D / 2 - FORMAL_HALL_Y     # 5.0
+
+    # Floor accent (warm wood plank look — formal-dining flooring)
+    make_box("Formal_Floor_Accent", (cx, cy, 0.025),
+             (room_w - 0.20, room_d - 0.20, 0.005),
+             (0.22, 0.14, 0.08, 1.0))
+
+    # ── Long formal dining table running E-W ──
+    table_w = 2.80
     table_d = 1.00
     table_top_z = 0.76
-    make_box("PrivTable_Top", (pd_cx, pd_cy, table_top_z),
-             (table_w, table_d, 0.04), (0.92, 0.88, 0.78, 1.0))
-    # Tablecloth drape (a thin curtain hanging down on each side)
+    table_cx, table_cy = cx, cy
+    make_box("Formal_Table_Top", (table_cx, table_cy, table_top_z),
+             (table_w, table_d, 0.04), (0.94, 0.90, 0.78, 1.0))
+    # White linen tablecloth (drape on all four sides)
     for sgn in (-1, +1):
-        make_box(f"PrivTable_Cloth_NS_{sgn:+d}",
-                 (pd_cx, pd_cy + sgn * (table_d/2 + 0.002), table_top_z - 0.30),
+        make_box(f"Formal_Cloth_NS_{sgn:+d}",
+                 (table_cx, table_cy + sgn * (table_d/2 + 0.002),
+                  table_top_z - 0.30),
                  (table_w + 0.04, 0.004, 0.60),
-                 (0.92, 0.88, 0.78, 1.0))
-        make_box(f"PrivTable_Cloth_EW_{sgn:+d}",
-                 (pd_cx + sgn * (table_w/2 + 0.002), pd_cy, table_top_z - 0.30),
+                 (0.94, 0.90, 0.78, 1.0))
+        make_box(f"Formal_Cloth_EW_{sgn:+d}",
+                 (table_cx + sgn * (table_w/2 + 0.002), table_cy,
+                  table_top_z - 0.30),
                  (0.004, table_d + 0.04, 0.60),
-                 (0.92, 0.88, 0.78, 1.0))
-    # 6 wooden chairs (3 north, 3 south)
-    chair_h = 1.05
-    for s_i, sgn in enumerate([+1, -1]):
-        cy = pd_cy + sgn * 0.85
-        for c_i in range(3):
-            cx = pd_cx - 0.80 + c_i * 0.80
-            # Seat
-            make_box(f"PrivChair_{s_i}_{c_i}_seat",
-                     (cx, cy, 0.46), (0.42, 0.44, 0.06), COL_WOOD_TRIM)
+                 (0.94, 0.90, 0.78, 1.0))
+    # Brass center-runner (formal touch)
+    make_box("Formal_Table_Runner", (table_cx, table_cy, table_top_z + 0.022),
+             (table_w - 0.20, 0.30, 0.004), (0.62, 0.42, 0.24, 1.0))
+    # Place settings (4 along the table on each side = 8 total)
+    for side_sgn in (-1, +1):
+        for p in range(4):
+            sx = table_cx - 1.05 + p * 0.70
+            sy = table_cy + side_sgn * 0.32
+            # Plate
+            make_cyl(f"Formal_Plate_{side_sgn:+d}_{p}",
+                     (sx, sy, table_top_z + 0.045),
+                     0.14, 0.012, (0.94, 0.92, 0.88, 1.0),
+                     segments=10, axis='Z')
+            # Charger plate (slightly larger underneath)
+            make_cyl(f"Formal_Charger_{side_sgn:+d}_{p}",
+                     (sx, sy, table_top_z + 0.030),
+                     0.16, 0.010, (0.62, 0.42, 0.24, 1.0),
+                     segments=10, axis='Z')
+            # Cutlery (knife and fork as thin boxes)
+            make_box(f"Formal_Knife_{side_sgn:+d}_{p}",
+                     (sx + 0.20, sy, table_top_z + 0.025),
+                     (0.20, 0.02, 0.005), COL_BRASS)
+            make_box(f"Formal_Fork_{side_sgn:+d}_{p}",
+                     (sx - 0.20, sy, table_top_z + 0.025),
+                     (0.20, 0.02, 0.005), COL_BRASS)
+            # Wine glass
+            make_cyl(f"Formal_Glass_{side_sgn:+d}_{p}",
+                     (sx + 0.04, sy - side_sgn * 0.22, table_top_z + 0.10),
+                     0.030, 0.16, (0.86, 0.92, 0.94, 1.0),
+                     segments=6, axis='Z')
+
+    # 8 formal chairs (4 per long side)
+    for side_sgn in (-1, +1):
+        for c in range(4):
+            cx_ch = table_cx - 1.05 + c * 0.70
+            cy_ch = table_cy + side_sgn * 0.85
+            make_box(f"Formal_Chair_{side_sgn:+d}_{c}_Seat",
+                     (cx_ch, cy_ch, 0.46),
+                     (0.42, 0.44, 0.06), (0.32, 0.20, 0.12, 1.0))
             # 4 legs
             for lx in (-1, +1):
                 for ly in (-1, +1):
+                    make_box(f"Formal_Chair_{side_sgn:+d}_{c}_Leg_{lx:+d}_{ly:+d}",
+                             (cx_ch + lx * 0.18, cy_ch + ly * 0.19, 0.23),
+                             (0.04, 0.04, 0.46), (0.32, 0.20, 0.12, 1.0))
+            # Tall ladder-back (outward-facing side)
+            back_dy = side_sgn * 0.19
+            for bx_off in (-0.16, 0.0, +0.16):
+                make_box(f"Formal_Chair_{side_sgn:+d}_{c}_Back_{bx_off:+.2f}",
+                         (cx_ch + bx_off, cy_ch + back_dy, 0.82),
+                         (0.04, 0.04, 0.70), (0.32, 0.20, 0.12, 1.0))
+            make_box(f"Formal_Chair_{side_sgn:+d}_{c}_BackTop",
+                     (cx_ch, cy_ch + back_dy, 1.16),
+                     (0.40, 0.05, 0.05), (0.32, 0.20, 0.12, 1.0))
+            # Damask seat cushion
+            make_box(f"Formal_Chair_{side_sgn:+d}_{c}_Cushion",
+                     (cx_ch, cy_ch, 0.50), (0.40, 0.40, 0.04),
+                     COL_VINYL_RED_DK)
+    # Captain chairs at the heads of the table
+    for end_i, sgn_x in enumerate([+1, -1]):
+        ecx = table_cx + sgn_x * (table_w / 2 + 0.45)
+        ecy = table_cy
+        make_box(f"Formal_HeadChair_{end_i}_Seat",
+                 (ecx, ecy, 0.46), (0.46, 0.46, 0.06),
+                 (0.32, 0.20, 0.12, 1.0))
+        for lx in (-1, +1):
+            for ly in (-1, +1):
+                make_box(f"Formal_HeadChair_{end_i}_Leg_{lx:+d}_{ly:+d}",
+                         (ecx + lx * 0.20, ecy + ly * 0.20, 0.23),
+                         (0.04, 0.04, 0.46), (0.32, 0.20, 0.12, 1.0))
+        back_dx = sgn_x * 0.20
+        for bz_off in (-0.18, 0.0, +0.18):
+            make_box(f"Formal_HeadChair_{end_i}_Back_{bz_off:+.2f}",
+                     (ecx + back_dx, ecy + bz_off, 0.82),
+                     (0.05, 0.04, 0.70), (0.32, 0.20, 0.12, 1.0))
+
+    # ── Sideboard against the NORTH wall (Y=+6 area) ──
+    sb_y = D_D / 2 - 0.30
+    make_box("Formal_Sideboard_Body", (cx, sb_y, 0.50),
+             (3.0, 0.55, 0.95), (0.40, 0.26, 0.16, 1.0))
+    make_box("Formal_Sideboard_Top", (cx, sb_y, 1.00),
+             (3.10, 0.60, 0.04), (0.30, 0.18, 0.10, 1.0))
+    # 4 cabinet doors
+    for d in range(4):
+        dx_local = cx - 1.20 + d * 0.80
+        make_box(f"Formal_Sideboard_Door_{d}",
+                 (dx_local, sb_y - 0.28, 0.50),
+                 (0.70, 0.005, 0.80), (0.26, 0.16, 0.10, 1.0))
+        make_box(f"Formal_Sideboard_Handle_{d}",
+                 (dx_local + 0.25, sb_y - 0.30, 0.55),
+                 (0.10, 0.02, 0.018), COL_BRASS)
+    # Decorative items on the sideboard
+    # Crystal decanter
+    make_cyl("Formal_Decanter", (cx - 1.10, sb_y - 0.10, 1.18),
+             0.08, 0.32, (0.74, 0.60, 0.32, 1.0), segments=8, axis='Z')
+    make_cyl("Formal_Decanter_Stopper",
+             (cx - 1.10, sb_y - 0.10, 1.38),
+             0.05, 0.08, (0.86, 0.74, 0.42, 1.0), segments=6, axis='Z')
+    # Candelabra
+    make_cyl("Formal_Candelabra_Base", (cx, sb_y - 0.10, 1.06),
+             0.10, 0.06, COL_BRASS, segments=10, axis='Z')
+    make_cyl("Formal_Candelabra_Stem", (cx, sb_y - 0.10, 1.20),
+             0.025, 0.20, COL_BRASS, segments=6, axis='Z')
+    for cnd in range(3):
+        ang = math.radians(cnd * 120 - 60)
+        cx_off = 0.10 * math.cos(ang)
+        cy_off = 0.10 * math.sin(ang)
+        make_cyl(f"Formal_Candle_{cnd}",
+                 (cx + cx_off, sb_y - 0.10 + cy_off, 1.36),
+                 0.018, 0.16, (0.96, 0.92, 0.82, 1.0),
+                 segments=4, axis='Z')
+        make_sphere_low(f"Formal_CandleFlame_{cnd}",
+                        (cx + cx_off, sb_y - 0.10 + cy_off, 1.48),
+                        0.04, (0.98, 0.78, 0.32, 1.0),
+                        rings=2, segments=4)
+    # Framed mirror above the sideboard
+    make_box("Formal_Mirror_Frame", (cx, sb_y + 0.10, 2.10),
+             (1.40, 0.05, 1.20), (0.40, 0.26, 0.14, 1.0))
+    make_box("Formal_Mirror_Glass", (cx, sb_y + 0.12, 2.10),
+             (1.20, 0.02, 1.00), (0.50, 0.54, 0.60, 1.0))
+
+    # ── Brass chandelier overhead ──
+    ch_z_top = D_H - 0.10
+    ch_z_low = ch_z_top - 1.10
+    make_cyl("Formal_Chandelier_Chain",
+             (table_cx, table_cy, (ch_z_top + ch_z_low) / 2),
+             0.014, ch_z_top - ch_z_low, COL_BRASS, segments=4, axis='Z')
+    make_cyl("Formal_Chandelier_Body",
+             (table_cx, table_cy, ch_z_low),
+             0.14, 0.24, COL_BRASS, segments=10, axis='Z')
+    # 6 candle bulbs in two rings (3 + 3)
+    for ring_i, ring_r in enumerate([0.40, 0.62]):
+        for ang_i in range(3):
+            ang = math.radians(ang_i * 120 + ring_i * 60)
+            ax = table_cx + ring_r * math.cos(ang)
+            ay = table_cy + ring_r * math.sin(ang)
+            make_cyl(f"Formal_Chandelier_Arm_{ring_i}_{ang_i}",
+                     ((table_cx + ax) / 2, (table_cy + ay) / 2, ch_z_low - 0.04),
+                     0.014, ring_r, COL_BRASS, segments=4,
+                     axis='X' if abs(math.cos(ang)) > 0.5 else 'Y')
+            make_cyl(f"Formal_Chandelier_Cup_{ring_i}_{ang_i}",
+                     (ax, ay, ch_z_low + 0.06),
+                     0.04, 0.08, COL_BRASS, segments=6, axis='Z')
+            make_sphere_low(f"Formal_Chandelier_Bulb_{ring_i}_{ang_i}",
+                            (ax, ay, ch_z_low + 0.18), 0.06,
+                            (0.98, 0.86, 0.56, 1.0), rings=2, segments=6)
+
+
+def build_private_dining_room():
+    """Private dining (Table 17) in the SE annex. NEW footprint:
+    X=+5..+9, Y=-6..-2.5 (5 x 3.5 = 17.5 sq m — bigger than before).
+    Galley service door at X=+5, Y=-4.85..-3.95 opens directly into
+    this room. East wall (X=+9) has a portion of the picture window
+    for daylight + porch view.
+    """
+    pd_y_lo = -D_D / 2          # -6
+    pd_y_hi = HALL_PD_Y         # -2.5
+    pd_cx = (VEST_X_W + D_W / 2) / 2.0    # +7.0
+    pd_cy = (pd_y_lo + pd_y_hi) / 2.0      # -4.25
+    pd_w  = D_W / 2 - VEST_X_W             # 4.0
+    pd_d  = pd_y_hi - pd_y_lo              # 3.5
+
+    # Dark hardwood floor accent (formal room)
+    make_box("PrivDining_Floor_Accent", (pd_cx, pd_cy, 0.025),
+             (pd_w - 0.20, pd_d - 0.20, 0.005),
+             (0.18, 0.10, 0.06, 1.0))
+
+    # ── Tablecloth-covered long table E-W (LARGER now) ──
+    table_w = 2.80
+    table_d = 1.10
+    table_top_z = 0.76
+    make_box("PrivTable_Top", (pd_cx, pd_cy, table_top_z),
+             (table_w, table_d, 0.04), (0.92, 0.88, 0.78, 1.0))
+    for sgn in (-1, +1):
+        make_box(f"PrivTable_Cloth_NS_{sgn:+d}",
+                 (pd_cx, pd_cy + sgn * (table_d / 2 + 0.002),
+                  table_top_z - 0.30),
+                 (table_w + 0.04, 0.004, 0.60),
+                 (0.92, 0.88, 0.78, 1.0))
+        make_box(f"PrivTable_Cloth_EW_{sgn:+d}",
+                 (pd_cx + sgn * (table_w / 2 + 0.002), pd_cy,
+                  table_top_z - 0.30),
+                 (0.004, table_d + 0.04, 0.60),
+                 (0.92, 0.88, 0.78, 1.0))
+    # 6 chairs (3 each long side)
+    chair_h = 1.10
+    for s_i, sgn in enumerate([+1, -1]):
+        cy = pd_cy + sgn * 0.90
+        for c_i in range(3):
+            cx = pd_cx - 0.90 + c_i * 0.90
+            make_box(f"PrivChair_{s_i}_{c_i}_seat",
+                     (cx, cy, 0.46), (0.42, 0.44, 0.06), COL_WOOD_TRIM)
+            for lx in (-1, +1):
+                for ly in (-1, +1):
                     make_box(f"PrivChair_{s_i}_{c_i}_leg_{lx:+d}_{ly:+d}",
-                             (cx + lx*0.18, cy + ly*0.19, 0.23),
+                             (cx + lx * 0.18, cy + ly * 0.19, 0.23),
                              (0.04, 0.04, 0.46), COL_WOOD_TRIM)
-            # Tall ladder-back (toward outside of the table)
             back_dy = sgn * 0.19
             for bx_off in (-0.16, 0.0, +0.16):
                 make_box(f"PrivChair_{s_i}_{c_i}_backpost_{bx_off:+.2f}",
-                         (cx + bx_off, cy + back_dy, 0.78),
-                         (0.04, 0.05, 0.60), COL_WOOD_TRIM)
+                         (cx + bx_off, cy + back_dy, 0.82),
+                         (0.04, 0.05, 0.66), COL_WOOD_TRIM)
             make_box(f"PrivChair_{s_i}_{c_i}_back_top",
-                     (cx, cy + back_dy, 1.10),
+                     (cx, cy + back_dy, 1.16),
                      (0.40, 0.06, 0.06), COL_WOOD_TRIM)
-            # Seat cushion (vinyl red)
             make_box(f"PrivChair_{s_i}_{c_i}_cushion",
                      (cx, cy, 0.50), (0.38, 0.40, 0.04), COL_VINYL_RED)
-    # Chairs at each END (head + foot of the table)
+    # Captain chairs at the heads
     for end_i, sgn_x in enumerate([+1, -1]):
-        cx = pd_cx + sgn_x * (table_w/2 + 0.45)
+        cx = pd_cx + sgn_x * (table_w / 2 + 0.45)
         cy = pd_cy
         make_box(f"PrivChair_end_{end_i}_seat",
                  (cx, cy, 0.46), (0.42, 0.44, 0.06), COL_WOOD_TRIM)
         for lx in (-1, +1):
             for ly in (-1, +1):
                 make_box(f"PrivChair_end_{end_i}_leg_{lx:+d}_{ly:+d}",
-                         (cx + lx*0.18, cy + ly*0.19, 0.23),
+                         (cx + lx * 0.18, cy + ly * 0.19, 0.23),
                          (0.04, 0.04, 0.46), COL_WOOD_TRIM)
         back_dx = sgn_x * 0.19
         for bz_off in (-0.16, 0.0, +0.16):
             make_box(f"PrivChair_end_{end_i}_backpost_{bz_off:+.2f}",
-                     (cx + back_dx, cy + bz_off, 0.78),
-                     (0.05, 0.04, 0.60), COL_WOOD_TRIM)
+                     (cx + back_dx, cy + bz_off, 0.82),
+                     (0.05, 0.04, 0.66), COL_WOOD_TRIM)
         make_box(f"PrivChair_end_{end_i}_back_top",
-                 (cx + back_dx, cy, 1.10),
+                 (cx + back_dx, cy, 1.16),
                  (0.06, 0.40, 0.06), COL_WOOD_TRIM)
 
-    # Sideboard against the south wall (Y=-D_D/2)
-    sb_y = -D_D/2 + 0.30
+    # ── Sideboard against the SOUTH wall (galley side) ──
+    sb_y = pd_y_lo + 0.30
     make_box("PrivSideboard_Body", (pd_cx, sb_y, 0.50),
              (2.40, 0.55, 0.95), COL_WOOD_TRIM)
-    # Top
     make_box("PrivSideboard_Top", (pd_cx, sb_y, 1.00),
              (2.50, 0.60, 0.04), (0.30, 0.18, 0.10, 1.0))
-    # 3 cabinet door panels
     for d in range(3):
         dx = pd_cx - 0.80 + d * 0.80
         make_box(f"PrivSideboard_Door_{d}",
                  (dx, sb_y - 0.28, 0.50),
                  (0.65, 0.005, 0.75), (0.22, 0.14, 0.08, 1.0))
-        # Handle
         make_box(f"PrivSideboard_Handle_{d}",
                  (dx + 0.20, sb_y - 0.30, 0.55),
                  (0.10, 0.02, 0.018), COL_BRASS)
-    # Decanter + glasses on the sideboard
     make_cyl("PrivDecanter", (pd_cx - 0.70, sb_y - 0.10, 1.16),
              0.07, 0.30, (0.62, 0.42, 0.22, 1.0), segments=8, axis='Z')
     make_cyl("PrivDecanter_Stopper", (pd_cx - 0.70, sb_y - 0.10, 1.34),
@@ -1666,63 +1846,493 @@ def build_private_dining_room():
                  (gx, sb_y - 0.10, 1.10),
                  0.035, 0.10, (0.86, 0.90, 0.92, 1.0), segments=6, axis='Z')
 
-    # Tarot stack on the table center (Hierophant table marker)
+    # Tarot deck centerpiece (Hierophant canon)
     make_box("Table17_TarotStack",
              (pd_cx, pd_cy, table_top_z + 0.04),
              (0.10, 0.16, 0.04), (0.92, 0.88, 0.72, 1.0))
-    # Top card face up — the Hierophant
     make_box("Table17_TopCard",
              (pd_cx + 0.05, pd_cy + 0.10, table_top_z + 0.025),
              (0.10, 0.16, 0.004), (0.94, 0.90, 0.72, 1.0))
-    # Symbol on the card (gold dot suggesting a sigil)
     make_box("Table17_TopCard_Sigil",
              (pd_cx + 0.05, pd_cy + 0.10, table_top_z + 0.028),
              (0.04, 0.06, 0.002), COL_BRASS)
-    # Brass table-number plaque "17"
     make_box("Table17_Plaque",
-             (pd_cx + table_w/2 - 0.10, pd_cy - table_d/2 + 0.10, table_top_z + 0.022),
+             (pd_cx + table_w / 2 - 0.10, pd_cy - table_d / 2 + 0.10,
+              table_top_z + 0.022),
              (0.08, 0.08, 0.005), COL_BRASS)
 
-    # Chandelier — multi-tier brass with 4 candle-bulbs
+    # ── Brass chandelier ──
     ch_z_top = D_H - 0.10
     ch_z_low = ch_z_top - 0.90
     make_cyl("PrivChandelier_Chain",
-             (pd_cx, pd_cy, (ch_z_top + ch_z_low)/2.0),
-             0.014, ch_z_top - ch_z_low,
-             COL_BRASS, segments=4, axis='Z')
+             (pd_cx, pd_cy, (ch_z_top + ch_z_low) / 2.0),
+             0.014, ch_z_top - ch_z_low, COL_BRASS, segments=4, axis='Z')
     make_cyl("PrivChandelier_Body",
              (pd_cx, pd_cy, ch_z_low),
              0.10, 0.20, COL_BRASS, segments=8, axis='Z')
-    # 4 arms with bulbs (cardinal directions)
     for ang_deg in (0, 90, 180, 270):
         ang = math.radians(ang_deg)
-        ax = pd_cx + 0.36 * math.cos(ang)
-        ay = pd_cy + 0.36 * math.sin(ang)
-        # Arm (horizontal cylinder)
-        if abs(math.sin(ang)) > 0.5:
-            make_cyl(f"PrivChandelier_Arm_{ang_deg}",
-                     ((pd_cx + ax)/2, (pd_cy + ay)/2, ch_z_low),
-                     0.014, 0.36, COL_BRASS, segments=4, axis='Y')
-        else:
-            make_cyl(f"PrivChandelier_Arm_{ang_deg}",
-                     ((pd_cx + ax)/2, (pd_cy + ay)/2, ch_z_low),
-                     0.014, 0.36, COL_BRASS, segments=4, axis='X')
-        # Candle cup
+        ax = pd_cx + 0.40 * math.cos(ang)
+        ay = pd_cy + 0.40 * math.sin(ang)
         make_cyl(f"PrivChandelier_Cup_{ang_deg}",
                  (ax, ay, ch_z_low + 0.04),
                  0.04, 0.06, COL_BRASS, segments=6, axis='Z')
-        # Candle bulb (warm sphere)
         make_sphere_low(f"PrivChandelier_Bulb_{ang_deg}",
                         (ax, ay, ch_z_low + 0.14), 0.05,
                         (0.98, 0.86, 0.56, 1.0), rings=2, segments=6)
 
-    # Framed painting on the west wall (interior of the private room)
-    make_box("PrivPainting_Frame",
-             (VEST_X_W + 0.06, pd_cy + 0.5, 1.80),
-             (0.04, 0.70, 0.90), COL_PHOTO_FRAME)
-    make_box("PrivPainting_Canvas",
-             (VEST_X_W + 0.09, pd_cy + 0.5, 1.80),
-             (0.02, 0.60, 0.80), (0.32, 0.22, 0.16, 1.0))
+
+def build_annex_hallway():
+    """The hallway in the east annex stack between the vestibule and
+    the dining rooms. Y=-2.5..-1, X=+5..+9. Plain corridor with a few
+    framed paintings, a small console table, and a runner rug.
+    """
+    hall_y_lo = HALL_PD_Y       # -2.5
+    hall_y_hi = VEST_HALL_Y     # -1
+    cx = (VEST_X_W + D_W / 2) / 2.0    # +7
+    cy = (hall_y_lo + hall_y_hi) / 2.0  # -1.75
+    hall_w = D_W / 2 - VEST_X_W         # 4
+    hall_d = hall_y_hi - hall_y_lo      # 1.5
+    # Runner rug down the center (Y-axis)
+    make_box("AnnexHall_Rug", (cx, cy, 0.014),
+             (hall_w - 0.40, hall_d - 0.20, 0.006),
+             (0.42, 0.22, 0.16, 1.0))
+    # Console table against the east wall (X=+9 interior)
+    cons_x = D_W / 2 - 0.20
+    make_box("AnnexHall_Console_Top", (cons_x, cy, 0.78),
+             (0.36, 1.20, 0.04), (0.40, 0.26, 0.16, 1.0))
+    for lx in (-1, +1):
+        for ly in (-1, +1):
+            make_box(f"AnnexHall_Console_Leg_{lx:+d}_{ly:+d}",
+                     (cons_x + lx * 0.14, cy + ly * 0.55, 0.39),
+                     (0.04, 0.04, 0.78), (0.30, 0.20, 0.10, 1.0))
+    # Decorative item: lamp + small flower vase
+    make_cyl("AnnexHall_LampBase",
+             (cons_x, cy - 0.30, 0.86), 0.07, 0.06,
+             COL_BRASS, segments=8, axis='Z')
+    make_cyl("AnnexHall_LampPost",
+             (cons_x, cy - 0.30, 1.05), 0.018, 0.30,
+             COL_BRASS, segments=4, axis='Z')
+    make_sphere_low("AnnexHall_LampShade",
+                    (cons_x, cy - 0.30, 1.30), 0.13,
+                    (0.62, 0.42, 0.22, 1.0), rings=2, segments=8)
+    make_cyl("AnnexHall_Vase",
+             (cons_x, cy + 0.40, 0.84),
+             0.06, 0.18, (0.32, 0.46, 0.40, 1.0), segments=8, axis='Z')
+    # 3 framed paintings on the west and east walls
+    for i, (px, py, ny) in enumerate([
+        (VEST_X_W + 0.06, cy + 0.40, 1),
+        (VEST_X_W + 0.06, cy - 0.40, 1),
+        (D_W/2 - 0.06,    cy + 0.55, -1),
+    ]):
+        make_box(f"AnnexHall_Painting_{i}_Frame",
+                 (px, py, 1.80), (0.04, 0.50, 0.40),
+                 (0.40, 0.26, 0.16, 1.0))
+        make_box(f"AnnexHall_Painting_{i}_Canvas",
+                 (px + 0.018 * (-1 if px < VEST_X_W + 0.5 else 1),
+                  py, 1.80),
+                 (0.02, 0.42, 0.32), (0.30, 0.20, 0.14, 1.0))
+
+
+def build_north_annex_bar():
+    """The bar moves out of the diner main shell into a NEW north
+    annex with port-side (west) windows looking out over the river.
+    Annex footprint: X=-9..-2.5, Y=+6..+10 (6.5 x 4 = 26 sq m).
+
+    Per user direction: 'the bar can be expanded and have windows
+    looking out over portside.'
+
+    A doorway through the main-shell north wall at X=-6 connects
+    the main floor to the bar.
+    """
+    BAR_X_W = -D_W / 2                    # -9
+    BAR_X_E = -HALL_W / 2                 # -2.5 (shares wall with back hallway)
+    BAR_Y_S = D_D / 2                     # +6 (main shell N wall)
+    BAR_Y_N = D_D / 2 + 4.0               # +10 (annex extends 4m north)
+    cx_bar = (BAR_X_W + BAR_X_E) / 2.0    # -5.75
+    cy_bar = (BAR_Y_S + BAR_Y_N) / 2.0    # +8
+    bar_w = BAR_X_E - BAR_X_W             # 6.5
+    bar_d = BAR_Y_N - BAR_Y_S             # 4
+
+    # Floor (warm wood plank — bar room flooring)
+    make_box("Bar_Floor", (cx_bar, cy_bar, -0.05),
+             (bar_w, bar_d, 0.10), (0.32, 0.22, 0.14, 1.0),
+             open_faces={'-Z'})
+    # Ceiling (dark, intimate)
+    make_box("Bar_Ceiling", (cx_bar, cy_bar, D_H + 0.05),
+             (bar_w, bar_d, 0.10), (0.10, 0.08, 0.06, 1.0),
+             open_faces={'+Z'})
+    # ── Walls ──
+    # West wall — picture window facing port (river)
+    bar_win_w = 5.0
+    bar_win_h = 2.2
+    bar_win_base = 0.9
+    bar_win_upper = D_H - (bar_win_base + bar_win_h)
+    bar_win_side = (bar_d - bar_win_w) / 2.0
+    # Lower below window
+    make_box("Bar_Wall_W_lower",
+             (BAR_X_W - 0.05, cy_bar, bar_win_base / 2),
+             (0.10, bar_d, bar_win_base), COL_BOAT_HULL if False else COL_WALL_INTERIOR)
+    # Above
+    make_box("Bar_Wall_W_above",
+             (BAR_X_W - 0.05, cy_bar,
+              bar_win_base + bar_win_h + bar_win_upper / 2),
+             (0.10, bar_d, bar_win_upper), COL_WALL_INTERIOR)
+    # End-walls north/south of window
+    make_box("Bar_Wall_W_S",
+             (BAR_X_W - 0.05, BAR_Y_S + bar_win_side / 2,
+              bar_win_base + bar_win_h / 2),
+             (0.10, bar_win_side, bar_win_h), COL_WALL_INTERIOR)
+    make_box("Bar_Wall_W_N",
+             (BAR_X_W - 0.05, BAR_Y_N - bar_win_side / 2,
+              bar_win_base + bar_win_h / 2),
+             (0.10, bar_win_side, bar_win_h), COL_WALL_INTERIOR)
+    # Brass picture-window frame + mullions (no glass slab —
+    # see-through picture window)
+    for c in range(1, 4):
+        my = -bar_win_w / 2 + c * bar_win_w / 4
+        make_box(f"BarWin_W_MullV_{c}",
+                 (BAR_X_W - 0.04, cy_bar + my, bar_win_base + bar_win_h / 2),
+                 (0.02, 0.06, bar_win_h), COL_BRASS)
+    make_box("BarWin_W_MullH",
+             (BAR_X_W - 0.04, cy_bar, bar_win_base + bar_win_h / 2),
+             (0.02, bar_win_w, 0.06), COL_BRASS)
+    make_box("BarWin_W_FrameT",
+             (BAR_X_W - 0.03, cy_bar, bar_win_base + bar_win_h + 0.06),
+             (0.04, bar_win_w + 0.20, 0.12), COL_BRASS)
+    make_box("BarWin_W_FrameB",
+             (BAR_X_W - 0.03, cy_bar, bar_win_base - 0.06),
+             (0.04, bar_win_w + 0.20, 0.12), COL_BRASS)
+    for sgn in (-1, +1):
+        make_box(f"BarWin_W_FrameSide_{sgn:+d}",
+                 (BAR_X_W - 0.03, cy_bar + sgn * (bar_win_w / 2 + 0.06),
+                  bar_win_base + bar_win_h / 2),
+                 (0.04, 0.12, bar_win_h + 0.24), COL_BRASS)
+
+    # North wall (Y=BAR_Y_N) — solid plus small north window
+    n_win_w = 3.0
+    n_win_h = 1.6
+    n_win_base = 1.1
+    n_win_side = (bar_w - n_win_w) / 2.0
+    n_win_upper = D_H - (n_win_base + n_win_h)
+    make_box("Bar_Wall_N_lower",
+             (cx_bar, BAR_Y_N + 0.05, n_win_base / 2),
+             (bar_w, 0.10, n_win_base), COL_WALL_INTERIOR)
+    make_box("Bar_Wall_N_above",
+             (cx_bar, BAR_Y_N + 0.05,
+              n_win_base + n_win_h + n_win_upper / 2),
+             (bar_w, 0.10, n_win_upper), COL_WALL_INTERIOR)
+    make_box("Bar_Wall_N_W",
+             (BAR_X_W + n_win_side / 2, BAR_Y_N + 0.05,
+              n_win_base + n_win_h / 2),
+             (n_win_side, 0.10, n_win_h), COL_WALL_INTERIOR)
+    make_box("Bar_Wall_N_E",
+             (BAR_X_E - n_win_side / 2, BAR_Y_N + 0.05,
+              n_win_base + n_win_h / 2),
+             (n_win_side, 0.10, n_win_h), COL_WALL_INTERIOR)
+    # Brass frame
+    for c in range(1, 3):
+        mx = -n_win_w / 2 + c * n_win_w / 3
+        make_box(f"BarWin_N_MullV_{c}",
+                 (cx_bar + mx, BAR_Y_N + 0.04, n_win_base + n_win_h / 2),
+                 (0.06, 0.02, n_win_h), COL_BRASS)
+    make_box("BarWin_N_FrameT",
+             (cx_bar, BAR_Y_N + 0.03, n_win_base + n_win_h + 0.06),
+             (n_win_w + 0.20, 0.04, 0.12), COL_BRASS)
+    make_box("BarWin_N_FrameB",
+             (cx_bar, BAR_Y_N + 0.03, n_win_base - 0.06),
+             (n_win_w + 0.20, 0.04, 0.12), COL_BRASS)
+
+    # South wall (shared with main shell N wall at Y=+6) — interrupted
+    # by a doorway at X=-6 (1.4m wide). The main-shell N wall is
+    # built by build_shell — we need to BREAK it here. We do that by
+    # overlaying a wood-frame doorway gap "indicator" rather than
+    # modifying build_shell. NOTE: the existing Wall_N_E_of_hall in
+    # build_shell still spans the main floor's full north wall.
+    # To make this work, the bar door rendering goes through that
+    # wall — players still see the door geometry, but the wall
+    # behind it isn't physically broken in the mesh. (A later pass
+    # can refactor build_shell to take a parameter for the bar door
+    # cut.)
+    bar_door_x = -6.0
+    bar_door_w = 1.40
+    bar_door_h = 2.20
+    # Door frame jambs + header
+    make_box("BarDoor_Jamb_L",
+             (bar_door_x - bar_door_w / 2 - 0.025, BAR_Y_S,
+              bar_door_h / 2),
+             (0.05, 0.14, bar_door_h), COL_WOOD_TRIM)
+    make_box("BarDoor_Jamb_R",
+             (bar_door_x + bar_door_w / 2 + 0.025, BAR_Y_S,
+              bar_door_h / 2),
+             (0.05, 0.14, bar_door_h), COL_WOOD_TRIM)
+    make_box("BarDoor_Header",
+             (bar_door_x, BAR_Y_S, bar_door_h + 0.06),
+             (bar_door_w + 0.20, 0.14, 0.10), COL_WOOD_TRIM)
+    # Brass "BAR" sign above the door (visible from main floor)
+    make_box("BarDoor_Sign",
+             (bar_door_x, BAR_Y_S - 0.03, bar_door_h + 0.30),
+             (0.60, 0.06, 0.16), COL_BAR_WOOD)
+    for i, c in enumerate("BAR"):
+        make_box(f"BarDoor_Sign_Char_{i}",
+                 (bar_door_x + (i - 1) * 0.16, BAR_Y_S - 0.04,
+                  bar_door_h + 0.30),
+                 (0.10, 0.005, 0.08), COL_BRASS)
+
+    # East wall (shared with back hallway) — solid, simple
+    make_box("Bar_Wall_E", (BAR_X_E + 0.05, cy_bar, D_H / 2),
+             (0.10, bar_d, D_H), COL_WALL_INTERIOR)
+
+    # ── BAR COUNTER running E-W along the south wall (port-view side
+    #    — patrons sit at the bar looking through the W picture
+    #    window) ──
+    bar_top_z = 1.10
+    bar_len = bar_w - 1.20
+    bar_cy_int = BAR_Y_S + 0.8     # bar 0.8m north of the south wall
+    bar_cx_int = cx_bar
+    make_box("Bar_Top", (bar_cx_int, bar_cy_int, bar_top_z),
+             (bar_len, 0.70, 0.06), COL_BAR_WOOD)
+    make_box("Bar_Front",
+             (bar_cx_int, bar_cy_int - 0.35, 0.55),
+             (bar_len, 0.04, 1.10), COL_VINYL_RED_DK)
+    make_cyl("Bar_FootRail", (bar_cx_int, bar_cy_int - 0.36, 0.18),
+             0.024, bar_len, COL_BRASS, segments=8, axis='X')
+    # Back-bar shelves against the south wall
+    bb_y = BAR_Y_S + 0.20
+    make_box("BarBack_Cabinet",
+             (bar_cx_int, bb_y, 0.65),
+             (bar_len, 0.30, 1.30), COL_BAR_WOOD)
+    for s in range(3):
+        sz = 1.45 + s * 0.40
+        make_box(f"BarBack_Shelf_{s}",
+                 (bar_cx_int, bb_y + 0.05, sz),
+                 (bar_len, 0.20, 0.03), COL_WOOD_TRIM)
+        for b in range(9):
+            bx = bar_cx_int - bar_len / 2 + 0.20 + b * (bar_len - 0.40) / 8
+            bottle_color = [
+                (0.18, 0.32, 0.20, 1.0),
+                (0.42, 0.20, 0.10, 1.0),
+                (0.62, 0.46, 0.20, 1.0),
+                (0.30, 0.18, 0.34, 1.0),
+                (0.86, 0.74, 0.36, 1.0),
+                (0.20, 0.16, 0.34, 1.0),
+                (0.74, 0.20, 0.18, 1.0),
+            ][(b + s) % 7]
+            make_cyl(f"Bottle_N_{s}_{b}",
+                     (bx, bb_y + 0.05, sz + 0.16), 0.035, 0.30,
+                     bottle_color, segments=6, axis='Z')
+    # Backbar mirror (the iconic "bar with a mirror behind it")
+    make_box("BarBack_Mirror",
+             (bar_cx_int, bb_y + 0.16, 2.40),
+             (bar_len - 0.20, 0.04, 1.20),
+             (0.30, 0.34, 0.40, 1.0))
+    make_box("BarBack_Mirror_Frame",
+             (bar_cx_int, bb_y + 0.14, 2.40),
+             (bar_len, 0.06, 1.35), COL_WOOD_TRIM)
+
+    # Bar stools (6 — facing south, customers look at the back-bar
+    # and the river through the W window over their shoulder)
+    n_stools = 6
+    for i in range(n_stools):
+        sx = bar_cx_int - bar_len/2 + 0.55 + i * (bar_len - 1.10) / (n_stools - 1)
+        sy = bar_cy_int - 1.00
+        # Post
+        make_cyl(f"BarStool_N_{i}_post", (sx, sy, 0.40),
+                 0.04, 0.80, COL_BRASS, segments=6, axis='Z')
+        # Foot ring
+        make_cyl(f"BarStool_N_{i}_foot", (sx, sy, 0.22),
+                 0.18, 0.025, COL_BRASS, segments=8, axis='Z')
+        # Leather seat
+        make_cyl(f"BarStool_N_{i}_seat", (sx, sy, 0.82),
+                 0.22, 0.07, (0.32, 0.18, 0.10, 1.0), segments=10, axis='Z')
+        # Low back
+        make_cyl(f"BarStool_N_{i}_back_rod", (sx, sy - 0.16, 1.05),
+                 0.016, 0.40, COL_BRASS, segments=4, axis='Z')
+        make_box(f"BarStool_N_{i}_back_pad", (sx, sy - 0.18, 1.20),
+                 (0.32, 0.04, 0.16), (0.32, 0.18, 0.10, 1.0))
+
+    # Two cocktail 2-tops along the north (window-side) wall, for
+    # patrons who want to face the river through the picture window
+    for i, (tx, ty) in enumerate([(BAR_X_W + 1.5, BAR_Y_N - 1.3),
+                                    (BAR_X_E - 1.5, BAR_Y_N - 1.3)]):
+        make_cyl(f"BarPort_Table_{i}_Top", (tx, ty, 0.92),
+                 0.40, 0.04, COL_FORMICA, segments=12, axis='Z')
+        make_cyl(f"BarPort_Table_{i}_Post", (tx, ty, 0.46),
+                 0.035, 0.92, COL_BRASS, segments=6, axis='Z')
+        make_cyl(f"BarPort_Table_{i}_Foot", (tx, ty, 0.03),
+                 0.22, 0.04, (0.16, 0.14, 0.12, 1.0), segments=10, axis='Z')
+        # Two stools (facing each other across the table)
+        for sgn in (-1, +1):
+            sx = tx
+            sy = ty + sgn * 0.55
+            make_cyl(f"BarPort_Stool_{i}_{sgn:+d}",
+                     (sx, sy, 0.82), 0.20, 0.07,
+                     (0.32, 0.18, 0.10, 1.0), segments=10, axis='Z')
+
+    # Pendant lamps over the bar (3)
+    for i, plx in enumerate([bar_cx_int - 2.0, bar_cx_int, bar_cx_int + 2.0]):
+        plz = 2.40
+        make_cyl(f"BarPendant_{i}_Wire",
+                 (plx, bar_cy_int, (plz + D_H - 0.05) / 2),
+                 0.010, (D_H - 0.05) - plz,
+                 COL_PAYPHONE_DARK, segments=4, axis='Z')
+        make_cyl(f"BarPendant_{i}_Shade",
+                 (plx, bar_cy_int, plz), 0.16, 0.18,
+                 (0.52, 0.30, 0.16, 1.0), segments=8, axis='Z')
+        make_sphere_low(f"BarPendant_{i}_Bulb",
+                        (plx, bar_cy_int, plz - 0.16), 0.05,
+                        (0.96, 0.78, 0.42, 1.0), rings=2, segments=6)
+
+
+COL_BOAT_HULL = (0.82, 0.78, 0.66, 1.0)   # for hull-skin extensions
+
+
+def build_hull_extensions():
+    """Extend the riverboat hull clapboard skin to cover the back
+    hallway exterior + BBS closet annex + new north bar annex.
+    Fixes the 'wall by the closet seems to be exposed to the
+    elements' complaint — those walls now have a proper clapboard
+    skin matching the rest of the boat.
+    """
+    skin_t = 0.06
+    COL_TRIM = (0.50, 0.20, 0.16, 1.0)    # red trim band
+
+    # Back hallway exterior (north of main shell, X=-2.5..+2.5,
+    # Y=+6..+8.4). The hallway's outer walls are the building's
+    # external skin from here. Wrap with clapboard.
+    HX_W, HX_E = -HALL_W / 2, HALL_W / 2
+    HY_S, HY_N = D_D / 2, D_D / 2 + HALL_D
+    # West skin
+    make_box("Hull_Hall_W",
+             (HX_W - 0.06, (HY_S + HY_N) / 2, D_H / 2),
+             (skin_t, HALL_D, D_H), COL_BOAT_HULL)
+    # East skin (only south of the closet opening; closet covers north)
+    closet_door_y = +7.7
+    # Lower segment (south of closet door)
+    seg_s_len = closet_door_y - 0.45 - HY_S
+    if seg_s_len > 0.05:
+        make_box("Hull_Hall_E_S",
+                 (HX_E + 0.06, HY_S + seg_s_len / 2, D_H / 2),
+                 (skin_t, seg_s_len, D_H), COL_BOAT_HULL)
+    # Upper segment (north of closet door — but the closet is east
+    # of here so this section is INSIDE the building if we count
+    # the closet)
+    # Actually the closet sits at X=+2.5..+4, Y=+7..+8.4. So between
+    # closet south wall (Y=+7) and the door area (Y=+7.45..+7.95), we
+    # need skin from Y=+6.95 to +7.45 maybe. Just simpler: wrap from
+    # Y=closet door bottom (+7.45) upward to the hallway's north end
+    # (where the closet's east wall takes over).
+    # The closet occupies Y=+7..+8.4 east of X=+2.5. North of Y=+8.4
+    # there's nothing — the closet's north wall is the boundary.
+    # Hallway north wall (Y=+8.4) — wrap with skin
+    make_box("Hull_Hall_N",
+             ((HX_W + HX_E) / 2, HY_N + 0.06, D_H / 2),
+             (HALL_W, skin_t, D_H), COL_BOAT_HULL)
+    # Red trim band at the hallway eaves
+    band_z = D_H - 0.20
+    make_box("Hull_Hall_Cornice_W",
+             (HX_W - 0.08, (HY_S + HY_N) / 2, band_z),
+             (skin_t + 0.04, HALL_D + 0.20, 0.16),
+             (0.86, 0.82, 0.72, 1.0))
+    make_box("Hull_Hall_Cornice_N",
+             ((HX_W + HX_E) / 2, HY_N + 0.08, band_z),
+             (HALL_W + 0.20, skin_t + 0.04, 0.16),
+             (0.86, 0.82, 0.72, 1.0))
+
+    # ── BBS Closet annex: X=+2.5..+4, Y=+7..+8.4 ──
+    CX_W, CX_E = +2.5, +4.0
+    CY_S, CY_N = +7.0, +8.4
+    # East skin
+    make_box("Hull_Closet_E",
+             (CX_E + 0.06, (CY_S + CY_N) / 2, D_H / 2),
+             (skin_t, CY_N - CY_S, D_H), COL_BOAT_HULL)
+    # North skin
+    make_box("Hull_Closet_N",
+             ((CX_W + CX_E) / 2, CY_N + 0.06, D_H / 2),
+             (CX_E - CX_W, skin_t, D_H), COL_BOAT_HULL)
+    # South skin
+    make_box("Hull_Closet_S",
+             ((CX_W + CX_E) / 2, CY_S - 0.06, D_H / 2),
+             (CX_E - CX_W, skin_t, D_H), COL_BOAT_HULL)
+    # Cornices
+    make_box("Hull_Closet_Cornice_E",
+             (CX_E + 0.08, (CY_S + CY_N) / 2, band_z),
+             (skin_t + 0.04, CY_N - CY_S + 0.20, 0.16),
+             (0.86, 0.82, 0.72, 1.0))
+    make_box("Hull_Closet_Cornice_N",
+             ((CX_W + CX_E) / 2, CY_N + 0.08, band_z),
+             (CX_E - CX_W + 0.20, skin_t + 0.04, 0.16),
+             (0.86, 0.82, 0.72, 1.0))
+
+    # ── New North-Annex Bar: X=-9..-2.5, Y=+6..+10 ──
+    BX_W, BX_E = -D_W / 2, -HALL_W / 2
+    BY_S, BY_N = D_D / 2, D_D / 2 + 4.0
+    # West skin (river side — covered separately by bar room's
+    # picture window. Skin around the window)
+    bar_win_base = 0.9
+    bar_win_h = 2.2
+    bar_win_w = 5.0
+    bar_cy = (BY_S + BY_N) / 2
+    # Skin below window
+    make_box("Hull_BarAnnex_W_below",
+             (BX_W - 0.06, bar_cy, bar_win_base / 2),
+             (skin_t, BY_N - BY_S, bar_win_base), COL_BOAT_HULL)
+    # Skin above window
+    upper_h = D_H - (bar_win_base + bar_win_h)
+    make_box("Hull_BarAnnex_W_above",
+             (BX_W - 0.06, bar_cy, bar_win_base + bar_win_h + upper_h / 2),
+             (skin_t, BY_N - BY_S, upper_h), COL_BOAT_HULL)
+    # Skin north/south of window
+    side_d = (BY_N - BY_S - bar_win_w) / 2
+    make_box("Hull_BarAnnex_W_S",
+             (BX_W - 0.06, BY_S + side_d / 2,
+              bar_win_base + bar_win_h / 2),
+             (skin_t, side_d, bar_win_h), COL_BOAT_HULL)
+    make_box("Hull_BarAnnex_W_N",
+             (BX_W - 0.06, BY_N - side_d / 2,
+              bar_win_base + bar_win_h / 2),
+             (skin_t, side_d, bar_win_h), COL_BOAT_HULL)
+    # North skin (with windows already cut by the bar room itself —
+    # use 2 strip skins)
+    n_win_w_local = 3.0
+    n_win_h_local = 1.6
+    n_win_base_local = 1.1
+    cx_bar = (BX_W + BX_E) / 2
+    n_win_side = (BX_E - BX_W - n_win_w_local) / 2.0
+    n_win_upper = D_H - (n_win_base_local + n_win_h_local)
+    make_box("Hull_BarAnnex_N_lower",
+             (cx_bar, BY_N + 0.06, n_win_base_local / 2),
+             (BX_E - BX_W, skin_t, n_win_base_local), COL_BOAT_HULL)
+    make_box("Hull_BarAnnex_N_above",
+             (cx_bar, BY_N + 0.06,
+              n_win_base_local + n_win_h_local + n_win_upper / 2),
+             (BX_E - BX_W, skin_t, n_win_upper), COL_BOAT_HULL)
+    make_box("Hull_BarAnnex_N_W",
+             (BX_W + n_win_side / 2, BY_N + 0.06,
+              n_win_base_local + n_win_h_local / 2),
+             (n_win_side, skin_t, n_win_h_local), COL_BOAT_HULL)
+    make_box("Hull_BarAnnex_N_E",
+             (BX_E - n_win_side / 2, BY_N + 0.06,
+              n_win_base_local + n_win_h_local / 2),
+             (n_win_side, skin_t, n_win_h_local), COL_BOAT_HULL)
+    # Cornices on bar annex
+    make_box("Hull_BarAnnex_Cornice_W",
+             (BX_W - 0.08, bar_cy, band_z),
+             (skin_t + 0.04, BY_N - BY_S + 0.20, 0.16),
+             (0.86, 0.82, 0.72, 1.0))
+    make_box("Hull_BarAnnex_Cornice_N",
+             (cx_bar, BY_N + 0.08, band_z),
+             (BX_E - BX_W + 0.20, skin_t + 0.04, 0.16),
+             (0.86, 0.82, 0.72, 1.0))
+    # Red trim band on bar annex outer walls
+    trim_z = 0.95
+    make_box("Hull_BarAnnex_RedBand_W",
+             (BX_W - 0.08, bar_cy, trim_z),
+             (skin_t + 0.04, BY_N - BY_S + 0.20, 0.18),
+             COL_TRIM)
+    make_box("Hull_BarAnnex_RedBand_N",
+             (cx_bar, BY_N + 0.08, trim_z),
+             (BX_E - BX_W + 0.20, skin_t + 0.04, 0.18), COL_TRIM)
 
 
 def build_storage_closet_and_bbs():
@@ -3290,10 +3900,13 @@ def main():
     build_table_dressings()
     build_riverboat_galley()
     build_interior_partitions()
-    build_bar_room()
+    build_formal_dining_room()
+    build_annex_hallway()
     build_private_dining_room()
     build_storage_closet_and_bbs()
     build_back_hallway()
+    build_north_annex_bar()
+    build_hull_extensions()
     build_ceiling_fans()
     build_wall_decor()
     build_entry_props()
