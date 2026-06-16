@@ -2611,6 +2611,70 @@ def _build_world_frogshop():
                        (0.05, 2.4, 1.6), (0.30, 0.68, 0.78, 1.0))
 
 
+# ── STREETCAR RAIL  (NOLA touch in downtown) ───────────────────
+
+def _build_streetcar_rail():
+    """A short embedded steel-rail strip in the SR12 pavement
+    through downtown — the NOLA streetcar suggestion the plan
+    called for. Plus one parked car at a 'station' stop."""
+    print("[graustark]   streetcar rail (downtown SR12)")
+    # Rails run along SR12 in the downtown band (-120 to +260 in Y)
+    rail_y_start = -120.0
+    rail_y_end = +260.0
+    rail_z = graustark_elevation(-180, 0) + 2.5 + 0.05  # SR12 deck
+    # Two parallel rails, embedded down the centerline
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"Graustark_Streetcar_Rail_{s:+d}",
+            (-180.0 + s * 0.6, (rail_y_start + rail_y_end) / 2,
+             rail_z),
+            (0.08, rail_y_end - rail_y_start, 0.04),
+            COL_RAIL_STEEL)
+    # Streetcar "stop" sign + bench at one point (call it the
+    # "Front St" stop, mid-downtown)
+    sx = -190.0
+    sy = +60.0
+    gz = graustark_elevation(sx, sy)
+    # Iron pole + green disc sign
+    ht._make_box_local("Graustark_Streetcar_StopPole",
+                       (sx, sy, gz + 1.4),
+                       (0.10, 0.10, 2.8), COL_BLACK_IRON)
+    ht._make_box_local("Graustark_Streetcar_StopSign",
+                       (sx, sy + 0.10, gz + 2.8),
+                       (0.50, 0.05, 0.50),
+                       (0.30, 0.46, 0.36, 1.0))
+
+
+# ── MARDI GRAS BEADS  (on FQ balcony railings) ─────────────────
+
+def _build_mardi_gras_beads():
+    """Scatter strands of beads draped on the wrought-iron
+    railings of the Bourbon Quarter row buildings. Three colours
+    per balcony: gold + purple + green. Small but distinctive."""
+    print("[graustark]   Mardi Gras beads on FQ balconies")
+    block_cx = -320.0
+    block_cy = +90.0
+    spacing_y = 8.0
+    # Each FQ row building has its balcony at band_z + 0.20 + 0.55
+    # = ~4.55m above ground (NIPPLE_Z + 0.05 + railing height).
+    bead_z_offset = 4.40
+    bead_colors = [
+        (0.85, 0.62, 0.20, 1.0),    # gold
+        (0.52, 0.22, 0.46, 1.0),    # purple
+        (0.30, 0.62, 0.32, 1.0),    # green
+    ]
+    for i in range(5):
+        by = block_cy + (i - 2) * spacing_y
+        gz_b = graustark_elevation(block_cx, by) + bead_z_offset
+        # Three strands, each a thin horizontal box draped along
+        # the balcony, slight Y offset
+        for c, color in enumerate(bead_colors):
+            ht._make_box_local(
+                f"Graustark_FQ_Beads_{i}_{c}",
+                (block_cx - 4.0, by, gz_b - c * 0.05),
+                (0.05, 6.0, 0.05), color)
+
+
 # ── TELEPHONE BOOTH  (period 80s/90s detail) ───────────────────
 
 def _build_telephone_booth():
@@ -4001,6 +4065,8 @@ def build_district_buildings():
     _build_crab_trap_piles()
     _build_ambulance()
     _build_cemetery_flowers()
+    _build_streetcar_rail()
+    _build_mardi_gras_beads()
 
 
 # ── PHASE 5  CHARACTERS  ────────────────────────────────────────
