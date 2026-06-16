@@ -541,48 +541,251 @@ def midtier_figure(name, base_x, base_y, base_z,
     return obj
 
 
-# ── HERO CHARACTERS  (canon-anchored sculpts) ────────────────────
-# Filed for build_graustark and any future Graustark sculpt pass.
-# Each tuple: (key, body_type, skin, hair, jacket, pants, shoe)
+# ── HAIR / CLOTHING ACCESSORIES  ────────────────────────────────
+# Small additional geometry layered ON TOP of the midtier base.
+# Each helper appends to the same active collection so the result
+# ships in one GLB pass.
+
+def _make_box(name, center, size, color):
+    """Simple box helper using bpy.data.meshes (no HCE dependency)."""
+    cx, cy, cz = center
+    sx, sy, sz = size
+    verts = [
+        (cx - sx/2, cy - sy/2, cz - sz/2),
+        (cx + sx/2, cy - sy/2, cz - sz/2),
+        (cx + sx/2, cy + sy/2, cz - sz/2),
+        (cx - sx/2, cy + sy/2, cz - sz/2),
+        (cx - sx/2, cy - sy/2, cz + sz/2),
+        (cx + sx/2, cy - sy/2, cz + sz/2),
+        (cx + sx/2, cy + sy/2, cz + sz/2),
+        (cx - sx/2, cy + sy/2, cz + sz/2),
+    ]
+    faces = [(0,3,2,1), (4,5,6,7), (0,1,5,4),
+             (1,2,6,5), (2,3,7,6), (3,0,4,7)]
+    mesh = bpy.data.meshes.new(f"{name}_mesh")
+    mesh.from_pydata(verts, [], faces)
+    mesh.update()
+    if mesh.vertex_colors:
+        vc = mesh.vertex_colors[0]
+    else:
+        vc = mesh.vertex_colors.new(name="Col")
+    for poly in mesh.polygons:
+        for li in poly.loop_indices:
+            vc.data[li].color = color
+    obj = bpy.data.objects.new(name, mesh)
+    bpy.context.collection.objects.link(obj)
+    return obj
+
+
+def _make_sphere_box(name, center, radius, color, w_mult=1.0,
+                     d_mult=1.0, h_mult=1.0):
+    """Approximate sphere as a single box (silhouette only).
+    Cheap stand-in for an afro / head hair mass."""
+    return _make_box(
+        name, center,
+        (radius * 2 * w_mult, radius * 2 * d_mult, radius * 2 * h_mult),
+        color)
+
+
+def add_hair(name, base_x, base_y, base_z, style, color, facing='-Y'):
+    """Add hair geometry on top of the midtier head.
+    Styles: 'short', 'long', 'unkempt_afro', 'bald', 'short_curly'.
+    Hair sits at HAIRLINE_Z + offset, scaled per style."""
+    head_top_z = base_z + CROWN_Z
+    hair_center_z = base_z + (CROWN_Z + HAIRLINE_Z) / 2 + 0.020
+    if style == 'bald':
+        return
+    if style == 'short':
+        _make_box(f"{name}_Hair", (base_x, base_y, hair_center_z),
+                  (0.18, 0.20, 0.10), color)
+    elif style == 'short_curly':
+        # Slightly fluffier short
+        _make_box(f"{name}_Hair", (base_x, base_y, hair_center_z + 0.010),
+                  (0.20, 0.22, 0.14), color)
+    elif style == 'long':
+        # Long hair drops to shoulders
+        _make_box(f"{name}_Hair_Top",
+                  (base_x, base_y, hair_center_z),
+                  (0.20, 0.22, 0.12), color)
+        # Drape down to clavicle level
+        drape_z = base_z + (HAIRLINE_Z + CLAV_Z) / 2
+        _make_box(f"{name}_Hair_Drape",
+                  (base_x, base_y - 0.02, drape_z),
+                  (0.22, 0.05, 0.24), color)
+    elif style == 'unkempt_afro':
+        # Big fluffy sphere — significantly wider than the head
+        afro_r = 0.14
+        _make_box(f"{name}_Hair_Afro",
+                  (base_x, base_y, hair_center_z + 0.030),
+                  (afro_r * 2.4, afro_r * 2.3, afro_r * 2.0), color)
+        # Slightly squashed top
+        _make_box(f"{name}_Hair_Afro_Top",
+                  (base_x, base_y, hair_center_z + afro_r * 0.9),
+                  (afro_r * 2.0, afro_r * 1.8, afro_r * 0.8), color)
+    elif style == 'mohawk':
+        _make_box(f"{name}_Hair_Hawk",
+                  (base_x, base_y, hair_center_z + 0.04),
+                  (0.06, 0.20, 0.14), color)
+
+
+def add_apron(name, base_x, base_y, base_z, color, facing='-Y'):
+    """White waiter's apron — full rectangular panel from upper
+    chest down to mid-thigh. Sits flush against the front of the
+    torso."""
+    # Front face is -Y when facing -Y (default).
+    fy = -1 if facing == '-Y' else (+1 if facing == '+Y' else 0)
+    fx = -1 if facing == '-X' else (+1 if facing == '+X' else 0)
+    # Apron sits 0.10m in front of figure
+    apron_h = NIPPLE_Z + 0.05 - THIGH_Z       # roughly chest-to-thigh
+    apron_cz = base_z + (NIPPLE_Z + 0.05 + THIGH_Z) / 2
+    apron_w = 0.28
+    apron_thick = 0.02
+    front_offset = 0.13
+    fx_offset = base_x + (-fy * 0) + fx * front_offset    # along front
+    fy_offset = base_y + fy * front_offset
+    if abs(fy) > 0.5:
+        size = (apron_w, apron_thick, apron_h)
+    else:
+        size = (apron_thick, apron_w, apron_h)
+    _make_box(f"{name}_Apron",
+              (fx_offset, fy_offset, apron_cz), size, color)
+    # Neck strap (thin vertical strip at top)
+    strap_h = 0.18
+    strap_z = base_z + NIPPLE_Z + 0.10
+    _make_box(f"{name}_Apron_Strap",
+              (fx_offset, fy_offset, strap_z),
+              (0.04 if abs(fy) > 0.5 else apron_thick,
+               apron_thick if abs(fy) > 0.5 else 0.04,
+               strap_h), color)
+
+
+def add_tie(name, base_x, base_y, base_z, color, facing='-Y'):
+    """Thin vertical tie down the center chest."""
+    fy = -1 if facing == '-Y' else (+1 if facing == '+Y' else 0)
+    fx = -1 if facing == '-X' else (+1 if facing == '+X' else 0)
+    front_offset = 0.12
+    tie_top_z = base_z + NECK_BOT_Z - 0.020
+    tie_bot_z = base_z + NIPPLE_Z - 0.150
+    tie_cz = (tie_top_z + tie_bot_z) / 2
+    tie_h = tie_top_z - tie_bot_z
+    tx = base_x + fx * front_offset
+    ty = base_y + fy * front_offset
+    if abs(fy) > 0.5:
+        size = (0.06, 0.03, tie_h)
+    else:
+        size = (0.03, 0.06, tie_h)
+    _make_box(f"{name}_Tie", (tx, ty, tie_cz), size, color)
+    # Knot (slightly wider square at top)
+    _make_box(f"{name}_TieKnot", (tx, ty, tie_top_z),
+              (0.08, 0.04, 0.06) if abs(fy) > 0.5 else (0.04, 0.08, 0.06),
+              color)
+
+
+def add_collar(name, base_x, base_y, base_z, color, facing='-Y'):
+    """Shirt collar — a V-shape at the neck base."""
+    fy = -1 if facing == '-Y' else (+1 if facing == '+Y' else 0)
+    fx = -1 if facing == '-X' else (+1 if facing == '+X' else 0)
+    collar_z = base_z + NECK_BOT_Z + 0.020
+    front_offset = 0.10
+    cx = base_x + fx * front_offset
+    cy = base_y + fy * front_offset
+    if abs(fy) > 0.5:
+        size = (0.16, 0.03, 0.08)
+    else:
+        size = (0.03, 0.16, 0.08)
+    _make_box(f"{name}_Collar", (cx, cy, collar_z), size, color)
+
+
+def add_bomber_jacket_detail(name, base_x, base_y, base_z, color):
+    """Bomber jacket signature: ribbed waist band + cuff bands.
+    Wraps a thin darker band around the existing torso mesh at
+    the waist + at the wrists."""
+    # Waist band — thin ring at navel level
+    waist_z = base_z + NAVEL_Z - 0.020
+    _make_box(f"{name}_Bomber_Waist",
+              (base_x, base_y, waist_z),
+              (0.42, 0.30, 0.08), color)
+    # Two cuff bands at the wrists. Wrists sit at the bottom of
+    # the arm tube, roughly THIGH_Z - 0.08 = 0.595 of base_z.
+    for s, side in [(+1, 'L'), (-1, 'R')]:
+        wrist_x = base_x + s * 0.36
+        wrist_z = base_z + THIGH_Z - 0.10
+        _make_box(f"{name}_Bomber_Cuff_{side}",
+                  (wrist_x, base_y, wrist_z),
+                  (0.10, 0.10, 0.06), color)
+
+
+# ── HERO CHARACTERS  (canon-anchored sculpts with scene props) ──
 HERO_CHARACTERS = {
     'JohnFrank': {
         'body_type': 'male_avg',
-        'skin_color':   (0.92, 0.78, 0.62, 1.0),   # warm fair
-        'hair_color':   (0.36, 0.24, 0.16, 1.0),   # mid brown
-        'jacket_color': (0.94, 0.92, 0.86, 1.0),   # white t-shirt (diner)
-        'pants_color':  (0.26, 0.34, 0.52, 1.0),   # blue jeans
-        'shoe_color':   (0.32, 0.24, 0.18, 1.0),   # brown work boots
+        'skin_color':   (0.92, 0.78, 0.62, 1.0),
+        'hair_style':   'short',
+        'hair_color':   (0.36, 0.24, 0.16, 1.0),     # mid brown
+        'jacket_color': (0.94, 0.92, 0.86, 1.0),     # white button-up shirt
+        'pants_color':  (0.22, 0.22, 0.24, 1.0),     # dark slacks
+        'shoe_color':   (0.18, 0.14, 0.12, 1.0),
+        'extras': [
+            ('collar', (0.94, 0.92, 0.86, 1.0)),     # white shirt collar
+            ('tie',    (0.20, 0.24, 0.40, 1.0)),     # navy tie
+            ('apron',  (0.96, 0.94, 0.88, 1.0)),     # white waiter apron
+        ],
+        'pose': 'standing_behind_counter',           # placed at diner
     },
     'FrasierTemple': {
         'body_type': 'male_tall',
-        'skin_color':   (0.88, 0.78, 0.66, 1.0),   # paler (indoors)
-        'hair_color':   (0.46, 0.46, 0.46, 1.0),   # greying, unkempt
-        'jacket_color': (0.20, 0.22, 0.24, 1.0),   # dark grey sweater
-        'pants_color':  (0.18, 0.18, 0.22, 1.0),   # dark slacks
-        'shoe_color':   (0.12, 0.10, 0.10, 1.0),   # black leather
+        'skin_color':   (0.88, 0.72, 0.56, 1.0),
+        'hair_style':   'unkempt_afro',
+        'hair_color':   (0.20, 0.16, 0.14, 1.0),     # dark, unkempt
+        'jacket_color': (0.32, 0.36, 0.22, 1.0),     # olive bomber jacket
+        'pants_color':  (0.26, 0.30, 0.42, 1.0),     # jeans
+        'shoe_color':   (0.34, 0.24, 0.18, 1.0),     # brown work boots
+        'extras': [
+            ('bomber', (0.22, 0.26, 0.16, 1.0)),     # darker bands
+        ],
+        'pose': 'leaning_at_workbench',
     },
     'EliciaTemple': {
         'body_type': 'female_avg',
-        'skin_color':   (0.86, 0.70, 0.56, 1.0),   # warm tan
-        'hair_color':   (0.24, 0.16, 0.12, 1.0),   # dark auburn
-        'jacket_color': (0.40, 0.30, 0.34, 1.0),   # burgundy cardigan
-        'pants_color':  (0.32, 0.36, 0.30, 1.0),   # sage skirt/pants
-        'shoe_color':   (0.18, 0.14, 0.12, 1.0),   # dark leather
+        'skin_color':   (0.86, 0.70, 0.56, 1.0),
+        'hair_style':   'long',
+        'hair_color':   (0.24, 0.16, 0.12, 1.0),     # dark auburn
+        'jacket_color': (0.40, 0.30, 0.34, 1.0),     # burgundy cardigan
+        'pants_color':  (0.32, 0.36, 0.30, 1.0),     # sage skirt
+        'shoe_color':   (0.18, 0.14, 0.12, 1.0),
+        'extras': [
+            ('collar', (0.94, 0.92, 0.88, 1.0)),     # cream shirt under
+        ],
+        'pose': 'turning_at_archive',
     },
 }
 
 
 def hero_figure(name, hero_key, base_x, base_y, base_z, facing='-Y'):
-    """Convenience wrapper — build a canonical hero by name."""
+    """Convenience wrapper — build a canonical hero by name with
+    all hair + clothing + scene-pose extras."""
     if hero_key not in HERO_CHARACTERS:
         raise ValueError(f"unknown hero: {hero_key}")
     spec = HERO_CHARACTERS[hero_key]
-    return midtier_figure(name=name,
-                           base_x=base_x, base_y=base_y, base_z=base_z,
-                           facing=facing,
-                           body_type=spec['body_type'],
-                           skin_color=spec['skin_color'],
-                           hair_color=spec['hair_color'],
-                           jacket_color=spec['jacket_color'],
-                           pants_color=spec['pants_color'],
-                           shoe_color=spec['shoe_color'])
+    midtier_figure(name=name,
+                   base_x=base_x, base_y=base_y, base_z=base_z,
+                   facing=facing,
+                   body_type=spec['body_type'],
+                   skin_color=spec['skin_color'],
+                   hair_color=spec['hair_color'],
+                   jacket_color=spec['jacket_color'],
+                   pants_color=spec['pants_color'],
+                   shoe_color=spec['shoe_color'])
+    # Hair (geometry, not just colour)
+    add_hair(name, base_x, base_y, base_z,
+             spec['hair_style'], spec['hair_color'], facing)
+    # Clothing extras
+    for extra, color in spec['extras']:
+        if extra == 'apron':
+            add_apron(name, base_x, base_y, base_z, color, facing)
+        elif extra == 'tie':
+            add_tie(name, base_x, base_y, base_z, color, facing)
+        elif extra == 'collar':
+            add_collar(name, base_x, base_y, base_z, color, facing)
+        elif extra == 'bomber':
+            add_bomber_jacket_detail(name, base_x, base_y, base_z, color)
