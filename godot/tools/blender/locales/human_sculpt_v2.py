@@ -39,14 +39,22 @@ import bpy
 PROP = {
     "total_h":        1.80,
     "head_h":         0.225,   # vertical extent of the head
-    "head_w_max":     0.165,   # widest (cheekbones)
-    "head_w_chin":    0.085,   # chin width
-    "head_d_max":     0.205,   # head depth front-to-back at brow
-    "head_d_chin":    0.115,
+    # _ring() uses HALF-WIDTHS. Real head full width ≈ 16cm, depth
+    # ≈ 20cm, chin full width ≈ 8cm. Doubling these for half values
+    # would give a 32cm-wide saucer head — the bug in the first
+    # v2 render.
+    "head_w_max":     0.068,   # half-width at cheekbones (13.6cm full)
+                                # narrower than before — real heads are
+                                # ~14-15cm wide; the previous 16cm w/
+                                # exaggerated cheekbone ring read as
+                                # football-shaped
+    "head_w_chin":    0.038,   # half-width at chin (7.6cm full)
+    "head_d_max":     0.090,   # half-depth ear-to-nose (18cm full)
+    "head_d_chin":    0.048,
 
-    "neck_h":         0.110,
-    "neck_r_top":     0.055,
-    "neck_r_bot":     0.075,   # wider at shoulder blend
+    "neck_h":         0.090,   # neck visible but not stretched
+    "neck_r_top":     0.045,   # 9cm full diameter at head base
+    "neck_r_bot":     0.055,   # 11cm at shoulder blend
 
     "shoulder_w":     0.500,   # full shoulder span (4× head_h /3)
     "torso_h":        0.610,   # neck base → top of pelvis
@@ -316,54 +324,141 @@ def _face_axis(facing):
 
 def _build_head(name, base_x, base_y, head_base_z, p, fwd, prp,
                 skin_color, hair_color, hair_style):
-    """6-ring faceted skull, oriented along facing. Reads as a
-    head silhouette with brow / cheek / jaw / chin from any angle.
+    """UV-sphere base mesh sculpted via per-vertex deformation:
+       1. Generate a UV sphere (12 rings × 14 segments).
+       2. Scale to head dimensions (width × depth × height).
+       3. GRAB chin downward + forward (pull bottom-front out).
+       4. FLATTEN sides at temple/cheek band (squeeze x toward 0).
+       5. CARVE eye sockets (push inward at eye level on the front).
+       6. PULL nose bridge + tip forward.
+       7. CREASE mouth band.
+    This mirrors the Blender sculpt workflow the user described.
     """
     head_h = p["head_h"]
     head_w_max = p["head_w_max"]
-    head_w_chin = p["head_w_chin"]
     head_d_max = p["head_d_max"]
-    head_d_chin = p["head_d_chin"]
-    # Rings positions: (z_offset_from_head_base_z, half_w, half_d)
-    # head_base_z is at the JAW LINE (where the chin tapers from
-    # the wide cheeks). The head extends UP to crown.
-    # Z = 0 at jaw, +head_h at crown.
-    rings_spec = [
-        (head_h * 0.00,  head_w_chin * 0.55, head_d_chin * 0.60),  # chin tip
-        (head_h * 0.18,  head_w_chin,        head_d_chin * 1.10),  # chin/jaw
-        (head_h * 0.42,  head_w_max * 0.80,  head_d_max * 0.92),   # cheek
-        (head_h * 0.62,  head_w_max,         head_d_max),          # cheekbones (widest)
-        (head_h * 0.82,  head_w_max * 0.92,  head_d_max * 0.94),   # brow / temple
-        (head_h * 1.00,  head_w_max * 0.55,  head_d_max * 0.50),   # crown
-    ]
-    segments = 8
-    verts = []
-    for (zof, hw, hd) in rings_spec:
-        verts.extend(_ring(base_x, base_y, head_base_z + zof,
-                           hw, hd, segments, fwd, prp))
+    head_h_half = head_h / 2
+    head_cz = head_base_z + head_h_half
+    fwd_x, fwd_y = fwd
+    prp_x, prp_y = prp
+
+    rings = 12         # vertical rings between poles
+    segs = 14          # segments around the equator
+    # Generate UV sphere in local frame where:
+    #   +Z = up (crown)
+    #   +X_local = "front" (toward facing)
+    #   +Y_local = "side" (perpendicular)
+    # Then deform, then rotate into world frame via fwd/prp.
+    local = []         # list of (lx, ly, lz) in normalized units
+    # Top pole
+    local.append((0.0, 0.0, 1.0))
+    for r in range(1, rings):
+        phi = math.pi * r / rings        # 0 = top pole, pi = bottom
+        z = math.cos(phi)
+        sin_phi = math.sin(phi)
+        for s in range(segs):
+            theta = 2.0 * math.pi * s / segs
+            x = sin_phi * math.cos(theta)
+            y = sin_phi * math.sin(theta)
+            local.append((x, y, z))
+    # Bottom pole
+    local.append((0.0, 0.0, -1.0))
+
+    def smoothstep01(x):
+        x = max(0.0, min(1.0, x))
+        return x * x * (3.0 - 2.0 * x)
+
+    sculpted = []
+    for (lx, ly, lz) in local:
+        # 1) base scale: x ↔ depth axis, y ↔ width axis, z ↔ height.
+        # Map to physical sizes.
+        sx = lx * head_d_max
+        sy = ly * head_w_max
+        sz = lz * head_h_half
+
+        # 2) GRAB chin: bottom-front-center gets pulled DOWN + FWD.
+        # Region: lz < -0.4, lx > 0.2.
+        chin_mask = smoothstep01((-0.4 - lz) / 0.55) \
+                    * smoothstep01((lx - 0.0) / 0.7)
+        if chin_mask > 0:
+            sx += chin_mask * head_d_max * 0.08
+            sz -= chin_mask * head_h_half * 0.18
+
+        # 3) JAWLINE TAPER: bottom band gets squeezed in width.
+        if lz < -0.2:
+            taper = smoothstep01((-0.2 - lz) / 0.8)
+            sy *= 1.0 - taper * 0.45    # narrow toward chin
+            sx *= 1.0 - taper * 0.18    # slight depth reduction
+
+        # 4) CROWN ROUNDING: top gets gently squeezed inward.
+        if lz > 0.5:
+            t = smoothstep01((lz - 0.5) / 0.5)
+            sy *= 1.0 - t * 0.30
+            sx *= 1.0 - t * 0.20
+
+        # 5) TEMPLE FLATTEN: middle of head (lz between -0.3 and
+        # +0.4) on the SIDES gets flattened — real heads have
+        # flatter temples than a sphere's perfectly round side.
+        if -0.3 < lz < 0.4 and abs(ly) > 0.6 and abs(lx) < 0.3:
+            sy *= 0.94
+
+        # 6) EYE SOCKET CARVE: at eye level (lz ~ +0.15), on the
+        # FRONT (lx > 0.5), to the SIDES of center (|ly| ~ 0.3..0.6),
+        # push the surface INWARD (reduce lx component).
+        if lx > 0.45 and 0.0 < lz < 0.30 and 0.18 < abs(ly) < 0.55:
+            socket_mask = smoothstep01((lx - 0.45) / 0.45) \
+                          * smoothstep01((0.18 - abs(lz - 0.15)) / 0.18) \
+                          * smoothstep01((abs(ly) - 0.18) / 0.20) \
+                          * smoothstep01((0.55 - abs(ly)) / 0.10)
+            sx -= socket_mask * head_d_max * 0.12
+
+        # 7) NOSE BRIDGE + TIP: front-center band (|ly| < 0.20,
+        # 0.0 < lz < 0.30) pulled OUTWARD on the depth axis.
+        if lx > 0.4 and abs(ly) < 0.22 and -0.05 < lz < 0.30:
+            nose_mask = smoothstep01((lx - 0.4) / 0.5) \
+                        * smoothstep01((0.22 - abs(ly)) / 0.22) \
+                        * smoothstep01((0.30 - abs(lz - 0.12)) / 0.18)
+            sx += nose_mask * head_d_max * 0.15
+
+        # 8) MOUTH CREASE: thin band below the nose, very slight
+        # crease (inward press on lx of a few mm).
+        if lx > 0.5 and abs(ly) < 0.30 and -0.20 < lz < -0.05:
+            crease = smoothstep01((lx - 0.5) / 0.4) \
+                     * smoothstep01((0.30 - abs(ly)) / 0.30) \
+                     * smoothstep01((0.15 - abs(lz + 0.12)) / 0.10)
+            sx -= crease * head_d_max * 0.03
+
+        sculpted.append((sx, sy, sz))
+
+    # Rotate from local (X=fwd, Y=perp, Z=up) to world frame using
+    # fwd/prp and translate to head center
+    world_verts = []
+    for (sx, sy, sz) in sculpted:
+        wx = base_x + sx * fwd_x + sy * prp_x
+        wy = base_y + sx * fwd_y + sy * prp_y
+        wz = head_cz + sz
+        world_verts.append((wx, wy, wz))
+
+    # Build faces — UV sphere connectivity
     faces = []
-    n_rings = len(rings_spec)
-    for r in range(n_rings - 1):
-        a = r * segments
-        b = (r + 1) * segments
-        for k in range(segments):
-            nk = (k + 1) % segments
-            faces.append([a + k, a + nk, b + nk, b + k])
-    # Crown apex
-    verts.append((base_x, base_y, head_base_z + head_h + head_d_max * 0.10))
-    apex = len(verts) - 1
-    for k in range(segments):
-        nk = (k + 1) % segments
-        faces.append([apex,
-                      (n_rings - 1) * segments + k,
-                      (n_rings - 1) * segments + nk])
-    # Chin bottom — close with the chin tip ring (already small)
-    verts.append((base_x, base_y, head_base_z - 0.01))
-    chin_i = len(verts) - 1
-    for k in range(segments):
-        nk = (k + 1) % segments
-        faces.append([chin_i, nk, k])
-    _finalize_mesh(f"{name}_Head", verts, faces, skin_color)
+    # Top fan
+    for s in range(segs):
+        ns = (s + 1) % segs
+        faces.append([0, 1 + s, 1 + ns])
+    # Middle bands
+    for r in range(rings - 2):
+        a = 1 + r * segs
+        b = 1 + (r + 1) * segs
+        for s in range(segs):
+            ns = (s + 1) % segs
+            faces.append([a + s, a + ns, b + ns, b + s])
+    # Bottom fan
+    bot = 1 + (rings - 1) * segs
+    last = 1 + (rings - 2) * segs
+    for s in range(segs):
+        ns = (s + 1) % segs
+        faces.append([bot, last + ns, last + s])
+    _finalize_mesh(f"{name}_Head", world_verts, faces, skin_color)
 
     # ── Facial features ────────────────────────────────────────
     fwd_x, fwd_y = fwd
@@ -662,16 +757,19 @@ def _build_arms(name, base_x, base_y, shoulder_z, p, fwd, prp,
         wr_x = el_x + fwd_x * arm_lower_h * math.sin(bend)
         wr_y = el_y + fwd_y * arm_lower_h * math.sin(bend)
         wr_z = el_z - arm_lower_h * math.cos(bend)
-        # ── Upper arm ──
+        # ── Upper arm with shoulder TOP extension so the arm
+        # cylinder fades INTO the torso shoulder ring at the top.
+        # Was a flat shoulder cap BOX sticking out above the
+        # shoulder line — looked like a football shoulder pad.
+        # Replaced with a wider shoulder-top vertex blended into a
+        # narrower elbow vertex.
+        sh_top_x = sh_x - prp_x * sgn * r_sh * 0.2     # tucked inward
+        sh_top_y = sh_y - prp_y * sgn * r_sh * 0.2
+        sh_top_z = shoulder_z + r_sh * 0.15            # above torso ring
         _oriented_cyl(f"{name}_UArm_{side}",
-                      (sh_x, sh_y, sh_z),
+                      (sh_top_x, sh_top_y, sh_top_z),
                       (el_x, el_y, el_z),
-                      r_sh, r_el, jacket_color, segments=8)
-        # ── Shoulder cap (deltoid pad) ──
-        _box(f"{name}_Shoulder_{side}",
-             (sh_x, sh_y, sh_z + r_sh * 0.2),
-             (r_sh * 2.4, r_sh * 2.4, r_sh * 1.5),
-             jacket_color)
+                      r_sh * 1.35, r_el, jacket_color, segments=8)
         # ── Elbow joint ──
         _box(f"{name}_Elbow_{side}",
              (el_x, el_y, el_z),
