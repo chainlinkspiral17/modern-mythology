@@ -639,7 +639,7 @@ def _build_torso(name, base_x, base_y, hip_top_z, p, fwd, prp,
     fwd_x, fwd_y = fwd
     prp_x, prp_y = prp
 
-    n_rings = 12
+    n_rings = 6        # fewer rings = less horizontal banding
     segs = 12
 
     def smoothstep01(x):
@@ -811,48 +811,40 @@ def _build_arms(name, base_x, base_y, shoulder_z, p, fwd, prp,
     prp_x, prp_y = prp
     hand_positions = {}
     for side, sgn in (('L', -1), ('R', +1)):
-        # Shoulder anchor — just inside the torso shoulder ring
-        sh_x = base_x + prp_x * sgn * (shoulder_w / 2 - r_sh * 0.5)
-        sh_y = base_y + prp_y * sgn * (shoulder_w / 2 - r_sh * 0.5)
-        sh_z = shoulder_z - r_sh * 0.6
+        # Shoulder anchor — at the OUTER edge of the torso
+        # shoulder ring (no overlap, no extension up). The arm
+        # cylinder STARTS where the torso ends.
+        sh_x = base_x + prp_x * sgn * (shoulder_w / 2)
+        sh_y = base_y + prp_y * sgn * (shoulder_w / 2)
+        sh_z = shoulder_z - r_sh * 0.4
         # Elbow — drops down arm_upper_h, with 6° outward + slight
         # forward bias for walking pose
         out_angle = math.radians(6)
-        forward_swing = 0.0
+        forward_swing_y = 0.0
         if pose == 'walking':
-            # Right arm swings forward, left arm backs back
-            forward_swing = fwd_x * 0.08 if sgn > 0 else -fwd_x * 0.08
-            forward_swing_y = fwd_y * 0.08 if sgn > 0 else -fwd_y * 0.08
+            forward_swing = fwd_x * 0.06 if sgn > 0 else -fwd_x * 0.06
+            forward_swing_y = fwd_y * 0.06 if sgn > 0 else -fwd_y * 0.06
         else:
             forward_swing = 0.0
-            forward_swing_y = 0.0
         el_x = sh_x + prp_x * sgn * (arm_upper_h * math.sin(out_angle)) \
                     + (forward_swing if pose == 'walking' else 0)
-        el_y = sh_y + prp_y * sgn * (arm_upper_h * math.sin(out_angle))
-        if pose == 'walking':
-            el_y += forward_swing_y
+        el_y = sh_y + prp_y * sgn * (arm_upper_h * math.sin(out_angle)) \
+                    + forward_swing_y
         el_z = sh_z - arm_upper_h * math.cos(out_angle)
-        # Wrist — forearm bent 14° forward at the elbow
-        bend = math.radians(14)
+        # Wrist — forearm bent slightly forward at the elbow
+        bend = math.radians(10)
         if pose == 'walking':
-            # Forward arm bends more
-            bend = math.radians(22) if sgn > 0 else math.radians(10)
+            bend = math.radians(18) if sgn > 0 else math.radians(6)
         wr_x = el_x + fwd_x * arm_lower_h * math.sin(bend)
         wr_y = el_y + fwd_y * arm_lower_h * math.sin(bend)
         wr_z = el_z - arm_lower_h * math.cos(bend)
-        # ── Upper arm with shoulder TOP extension so the arm
-        # cylinder fades INTO the torso shoulder ring at the top.
-        # Was a flat shoulder cap BOX sticking out above the
-        # shoulder line — looked like a football shoulder pad.
-        # Replaced with a wider shoulder-top vertex blended into a
-        # narrower elbow vertex.
-        sh_top_x = sh_x - prp_x * sgn * r_sh * 0.2     # tucked inward
-        sh_top_y = sh_y - prp_y * sgn * r_sh * 0.2
-        sh_top_z = shoulder_z + r_sh * 0.15            # above torso ring
+        # ── Upper arm · cylinder from torso edge down to elbow.
+        # Radius matches torso shoulder at top (so it blends), then
+        # tapers to elbow radius. NO extension up into the torso.
         _oriented_cyl(f"{name}_UArm_{side}",
-                      (sh_top_x, sh_top_y, sh_top_z),
+                      (sh_x, sh_y, sh_z),
                       (el_x, el_y, el_z),
-                      r_sh * 1.35, r_el, jacket_color, segments=8)
+                      r_sh, r_el, jacket_color, segments=8)
         # ── Elbow joint ──
         _box(f"{name}_Elbow_{side}",
              (el_x, el_y, el_z),
