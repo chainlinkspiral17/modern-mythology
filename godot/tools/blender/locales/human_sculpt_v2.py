@@ -38,53 +38,58 @@ import bpy
 # head h = total / 8 = 0.225 m. Everything else flows from that.
 PROP = {
     "total_h":        1.80,
-    "head_h":         0.250,   # vertical extent of the head (taller
-                                # than the v1 0.225 — was reading as
-                                # "small head on a pin")
-    # _ring() uses HALF-WIDTHS. head_w_max half = 0.078 → 15.6cm full,
-    # at the upper end of real head width (~14-15cm). Slight upsize
-    # over the previous 13.6 cm since the head looked overly small
-    # against the broad shoulders.
-    "head_w_max":     0.078,   # half-width at cheekbones (15.6cm full)
-    "head_w_chin":    0.044,
-    "head_d_max":     0.098,   # half-depth ear-to-nose (19.6cm full)
-    "head_d_chin":    0.052,
+    # CANONICAL 8-HEAD: head_h = total_h / 8 = 0.225m. Earlier
+    # v2 bumped this to 0.250 to fix "head on a pin" — but with
+    # the now-wider shoulders (2.5 heads) the head no longer
+    # disappears, and 1/8 is the correct anatomical proportion.
+    "head_h":         0.225,
+    "head_w_max":     0.075,   # half-width at cheekbones (15cm full)
+    "head_w_chin":    0.042,
+    "head_d_max":     0.094,
+    "head_d_chin":    0.050,
 
-    "neck_h":         0.060,   # SHORT neck — was 0.09 reading as long
-    "neck_r_top":     0.062,   # THICKER (12.4cm full at head base)
-    "neck_r_bot":     0.075,   # 15cm at shoulder blend (was 11cm)
+    "neck_h":         0.060,
+    "neck_r_top":     0.060,
+    "neck_r_bot":     0.072,
 
-    "shoulder_w":     0.460,   # full shoulder span — was 0.50 producing
-                                # exaggerated football-shoulders. Real
-                                # men's shoulder width is ~44-46 cm.
+    # SHOULDER WIDTH = 2.5 heads (canonical adult male). With
+    # head_h = 0.225, shoulder_w = 0.5625m. Earlier 0.46 was
+    # narrow-shouldered; 0.56 is anatomically correct and reads
+    # at Steam Deck screen scale.
+    "shoulder_w":     0.560,
     "torso_h":        0.610,
-    "torso_chest_d":  0.230,
-    "torso_waist_w":  0.380,   # was 0.30 — too pinched (60% of shoulder
-                                # read as cinched feminine torso). Now
-                                # 83% of shoulder = subtle natural taper.
-    "torso_waist_d":  0.215,
-    "torso_hip_w":    0.400,   # subtly wider than waist, not flared
-    "torso_hip_d":    0.220,
+    "torso_chest_d":  0.250,   # slightly deeper to match wider shoulders
+    "torso_waist_w":  0.420,   # 75% of shoulder = subtle natural V
+    "torso_waist_d":  0.230,
+    "torso_hip_w":    0.440,
+    "torso_hip_d":    0.240,
     "torso_bottom_drop": 0.020,
 
-    "arm_upper_h":    0.330,
-    "arm_lower_h":    0.330,
-    "arm_r_shoulder": 0.060,
-    "arm_r_elbow":    0.052,
-    "arm_r_wrist":    0.044,
-    "hand_l":         0.090,
-    "hand_w":         0.075,
+    # ARMS lengthened so fingertips reach mid-thigh when hanging.
+    # Total arm 0.66 → 0.82 (upper 0.40 + lower 0.42).
+    "arm_upper_h":    0.400,
+    "arm_lower_h":    0.420,
+    "arm_r_shoulder": 0.065,
+    "arm_r_elbow":    0.055,
+    "arm_r_wrist":    0.048,
+    # HANDS thickened 10% for Deck screen readability — small
+    # extremities sub-pixel away at distance.
+    "hand_l":         0.100,
+    "hand_w":         0.082,
 
-    "leg_h":          0.860,   # hip → ground
-    "leg_thigh_frac": 0.50,    # thigh = 50% of leg
-    "leg_r_hip":      0.090,
-    "leg_r_knee":     0.075,
-    "leg_r_ankle":    0.068,
-    "leg_separation": 0.090,   # half-distance between leg centres
+    # LEG length so the hip-joint sits exactly at 0.90m (midpoint
+    # of the 1.80m body) per the canonical 8-head measurement.
+    "leg_h":          0.900,
+    "leg_thigh_frac": 0.50,
+    "leg_r_hip":      0.095,
+    "leg_r_knee":     0.080,
+    "leg_r_ankle":    0.072,
+    "leg_separation": 0.090,
 
-    "foot_l":         0.270,
-    "foot_w":         0.105,
-    "foot_h":         0.075,
+    # FEET thickened 10% for Deck screen readability.
+    "foot_l":         0.290,
+    "foot_w":         0.115,
+    "foot_h":         0.080,
 }
 
 
@@ -524,16 +529,17 @@ def _build_head(name, base_x, base_y, head_base_z, p, fwd, prp,
              + fwd_x * (head_d_max * 1.02)
         ey = base_y + py_e * eye_offset * sgn \
              + fwd_y * (head_d_max * 1.02)
-        # Bigger eyes that actually read at this scale
+        # Eye sclera — sized to read at distance without looking
+        # like sunglasses. Almond shape (wider than tall).
         _box(f"{name}_EyeWhite_{eye_side}",
              (ex, ey, eye_z),
-             (0.060, 0.060, 0.045)
+             (0.040, 0.040, 0.028)
                  if abs(fwd_y) <= abs(fwd_x)
-                 else (0.060, 0.040, 0.045),
+                 else (0.040, 0.028, 0.028),
              (0.94, 0.92, 0.88, 1.0))
         _box(f"{name}_Pupil_{eye_side}",
-             (ex + fwd_x * 0.015, ey + fwd_y * 0.015, eye_z),
-             (0.030, 0.030, 0.030),
+             (ex + fwd_x * 0.012, ey + fwd_y * 0.012, eye_z),
+             (0.022, 0.022, 0.022),
              (0.10, 0.08, 0.06, 1.0))
     # MOUTH — thin band on the surface
     mouth_z = head_base_z + head_h * 0.32
