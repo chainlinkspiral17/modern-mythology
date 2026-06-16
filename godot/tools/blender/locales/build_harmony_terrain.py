@@ -10911,60 +10911,105 @@ def build_ambient_npcs():
     landmarks so the district feels populated. Each samples
     mesh_z at its position so it stands on actual ground.
     """
+    # Skin palette — varied suburban demographic
+    SKIN_FAIR    = (0.95, 0.82, 0.72, 1.0)
+    SKIN_TAN     = (0.85, 0.68, 0.55, 1.0)
+    SKIN_OLIVE   = (0.78, 0.62, 0.50, 1.0)
+    SKIN_BROWN   = (0.55, 0.38, 0.28, 1.0)
+    SKIN_DEEP    = (0.42, 0.30, 0.22, 1.0)
+    HAIR_BLACK   = (0.10, 0.08, 0.10, 1.0)
+    HAIR_BROWN   = (0.32, 0.22, 0.16, 1.0)
+    HAIR_BLOND   = (0.85, 0.70, 0.40, 1.0)
+    HAIR_GREY    = (0.62, 0.60, 0.58, 1.0)
+    HAIR_RED     = (0.68, 0.32, 0.20, 1.0)
+
     ambient = [
-        # (name, x, y, facing, hair, jacket, pants)
+        # (name, x, y, facing, hair_style, jacket, pants, body, skin, hair_col, scale)
         # Elementary school front
         ("ES_Teacher", -90, 148, '-Y', 'short',
-            (0.42, 0.62, 0.32, 1.0), (0.18, 0.22, 0.30, 1.0)),
+            (0.42, 0.62, 0.32, 1.0), (0.18, 0.22, 0.30, 1.0),
+            'female_avg', SKIN_FAIR, HAIR_BROWN, 1.0),
         ("ES_Parent",  -85, 145, '-Y', 'bowl',
-            (0.62, 0.42, 0.78, 1.0), (0.20, 0.20, 0.22, 1.0)),
+            (0.62, 0.42, 0.78, 1.0), (0.20, 0.20, 0.22, 1.0),
+            'female_slim', SKIN_TAN, HAIR_BLOND, 1.0),
         ("ES_Kid",     -95, 142, '+Y', 'bowl',
-            (0.95, 0.42, 0.30, 1.0), (0.55, 0.32, 0.22, 1.0)),
+            (0.95, 0.42, 0.30, 1.0), (0.55, 0.32, 0.22, 1.0),
+            'child', SKIN_FAIR, HAIR_BROWN, 1.0),
+        ("ES_Kid2",    -100, 144, '-Y', 'bowl',
+            (0.32, 0.55, 0.78, 1.0), (0.20, 0.20, 0.42, 1.0),
+            'child', SKIN_BROWN, HAIR_BLACK, 1.0),
         # Library
         ("Lib_Librarian", 60, 75, '-Y', 'short',
-            (0.32, 0.18, 0.32, 1.0), (0.42, 0.32, 0.22, 1.0)),
+            (0.32, 0.18, 0.32, 1.0), (0.42, 0.32, 0.22, 1.0),
+            'female_avg', SKIN_OLIVE, HAIR_GREY, 1.0),
         ("Lib_Patron",    55, 71, '-Y', 'bowl',
-            (0.95, 0.85, 0.30, 1.0), (0.32, 0.42, 0.55, 1.0)),
+            (0.95, 0.85, 0.30, 1.0), (0.32, 0.42, 0.55, 1.0),
+            'elderly', SKIN_FAIR, HAIR_GREY, 0.98),
+        ("Lib_Teen",      63, 73, '+X', 'ponytail',
+            (0.78, 0.32, 0.55, 1.0), (0.20, 0.20, 0.22, 1.0),
+            'teen', SKIN_FAIR, HAIR_RED, 1.0),
         # Church
         ("Ch_Pastor", -30, 130, '-Y', 'short',
-            (0.18, 0.18, 0.22, 1.0), (0.18, 0.18, 0.22, 1.0)),
+            (0.18, 0.18, 0.22, 1.0), (0.18, 0.18, 0.22, 1.0),
+            'male_avg', SKIN_BROWN, HAIR_BLACK, 1.0),
         # Hospital ambulance bay
         ("Hos_EMT_L", 175, 305, '-Y', 'short',
-            (0.85, 0.94, 0.92, 1.0), (0.18, 0.18, 0.22, 1.0)),
+            (0.85, 0.94, 0.92, 1.0), (0.18, 0.18, 0.22, 1.0),
+            'male_avg', SKIN_TAN, HAIR_BROWN, 1.0),
         ("Hos_EMT_R", 185, 305, '-Y', 'short',
-            (0.85, 0.94, 0.92, 1.0), (0.18, 0.18, 0.22, 1.0)),
-        # Truck stop attendant
-        ("TS_Att", 200, -370, '-Y', 'bowl',
-            (0.55, 0.42, 0.30, 1.0), (0.32, 0.32, 0.36, 1.0)),
+            (0.85, 0.94, 0.92, 1.0), (0.18, 0.18, 0.22, 1.0),
+            'female_avg', SKIN_DEEP, HAIR_BLACK, 1.0),
+        # Truck stop attendant — heavy-set guy
+        ("TS_Att", 200, -370, '-Y', 'cap',
+            (0.55, 0.42, 0.30, 1.0), (0.32, 0.32, 0.36, 1.0),
+            'male_heavy', SKIN_FAIR, HAIR_BROWN, 1.0),
         # Country club host
         ("CC_Host", -3, 360, '-Y', 'short',
-            (0.18, 0.18, 0.22, 1.0), (0.18, 0.18, 0.22, 1.0)),
+            (0.18, 0.18, 0.22, 1.0), (0.18, 0.18, 0.22, 1.0),
+            'male_tall', SKIN_FAIR, HAIR_GREY, 1.0),
         # Police officer outside PD
         ("PD_Officer", -170, -75, '-Y', 'short',
-            (0.18, 0.22, 0.42, 1.0), (0.18, 0.22, 0.42, 1.0)),
+            (0.18, 0.22, 0.42, 1.0), (0.18, 0.22, 0.42, 1.0),
+            'male_avg', SKIN_OLIVE, HAIR_BLACK, 1.0),
         # Mini-mart clerk
         ("MM_Clerk", -260, -47, '-Y', 'short',
-            (0.32, 0.55, 0.78, 1.0), (0.20, 0.20, 0.22, 1.0)),
-        # Plaza pedestrian
+            (0.32, 0.55, 0.78, 1.0), (0.20, 0.20, 0.22, 1.0),
+            'male_tall', SKIN_DEEP, HAIR_BLACK, 1.0),
+        # Plaza pedestrian — woman with stroller-aged kid nearby
         ("Plaza_Walker", -90, 23, '-X', 'bowl',
-            (0.95, 0.42, 0.62, 1.0), (0.18, 0.32, 0.55, 1.0)),
+            (0.95, 0.42, 0.62, 1.0), (0.18, 0.32, 0.55, 1.0),
+            'female_avg', SKIN_FAIR, HAIR_BLOND, 1.0),
+        ("Plaza_Toddler", -88, 22, '-X', 'bowl',
+            (0.78, 0.85, 0.95, 1.0), (0.55, 0.32, 0.22, 1.0),
+            'child', SKIN_FAIR, HAIR_BLOND, 0.80),
         # Bus-stop waiter at Harmony/Horizon junction
         ("Bus_Waiter", 65, 61, '-Y', 'short',
-            (0.42, 0.30, 0.20, 1.0), (0.32, 0.32, 0.34, 1.0)),
+            (0.42, 0.30, 0.20, 1.0), (0.32, 0.32, 0.34, 1.0),
+            'elderly', SKIN_TAN, HAIR_GREY, 0.97),
         # Cemetery visitor
         ("Cm_Mourner", -15, 130, '-Y', 'short',
-            (0.18, 0.18, 0.20, 1.0), (0.18, 0.18, 0.20, 1.0)),
+            (0.18, 0.18, 0.20, 1.0), (0.18, 0.18, 0.20, 1.0),
+            'female_slim', SKIN_OLIVE, HAIR_BLACK, 1.0),
+        # Country club tennis player
+        ("CC_Tennis", -40, 380, '-Y', 'ponytail',
+            (0.95, 0.94, 0.90, 1.0), (0.95, 0.94, 0.90, 1.0),
+            'female_avg', SKIN_TAN, HAIR_BLOND, 1.0),
+        # Dad-jogger on Horizon Dr
+        ("Jogger", -50, -25, '+X', 'short',
+            (0.95, 0.42, 0.30, 1.0), (0.20, 0.20, 0.22, 1.0),
+            'male_avg', SKIN_FAIR, HAIR_BROWN, 1.0),
     ]
-    for tag, fx, fy, facing, hair, jacket, pants in ambient:
+    for tag, fx, fy, facing, hair, jacket, pants, body, skin, haircol, scale_factor in ambient:
         fz = mesh_z(fx, fy)
         human_figure(
             name=f"AmbientNPC_{tag}",
             base_x=fx, base_y=fy, base_z=fz,
-            scale=1.0,
+            scale=scale_factor,
             facing=facing,
-            skin_color=(0.92, 0.75, 0.62, 1.0),
+            body_type=body,
+            skin_color=skin,
             hair_style=hair,
-            hair_color=(0.20, 0.14, 0.10, 1.0),
+            hair_color=haircol,
             jacket_color=jacket,
             pants_color=pants,
             shoe_color=(0.20, 0.16, 0.14, 1.0),

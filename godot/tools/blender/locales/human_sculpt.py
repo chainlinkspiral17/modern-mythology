@@ -197,16 +197,19 @@ def _sphere_low(name, center, radius, color, rings=4, segments=8,
 # total).
 PROP = {
     "total_h":        1.80,
-    "head_d":         0.20,    # head diameter (overall sphere)
-    "head_squash":    0.95,    # slightly egg-shaped
+    "head_d":         0.21,    # head diameter (overall sphere)
+    "head_squash":    0.92,    # slightly egg-shaped (taller than wide)
     "neck_h":         0.10,    # neck VISIBLE between head and shoulders
     "neck_r":         0.058,
-    "shoulder_w":     0.46,    # full shoulder span
+    # SILHOUETTE PASS 2026-06-15 · broader shoulders narrower waist
+    # so the torso reads as a clear V-taper instead of a cylinder.
+    # Real-human ratio: shoulder span ≈ 4× head diameter.
+    "shoulder_w":     0.50,    # full shoulder span (was 0.46)
     "torso_h":        0.62,    # neck base → pelvis top
-    "torso_r_top":    0.20,    # half-shoulder roughly
-    "torso_r_bot":    0.18,    # waist
+    "torso_r_top":    0.23,    # broader chest (was 0.20)
+    "torso_r_bot":    0.15,    # narrower waist (was 0.18) — V-taper
     "pelvis_h":       0.08,    # the hip block
-    "pelvis_w":       0.36,
+    "pelvis_w":       0.34,
     "arm_h":          0.65,    # full arm
     "arm_r_top":      0.052,
     "arm_r_bot":      0.045,
@@ -219,6 +222,109 @@ PROP = {
     "foot_l":         0.22,
     "foot_h":         0.07,
 }
+
+
+# ── BODY-TYPE PROFILES ─────────────────────────────────────────────
+# Per-body-type proportion MULTIPLIERS applied to the baseline PROP.
+# Set body_type on human_figure() to pick a silhouette: 'male_avg',
+# 'male_tall', 'male_heavy', 'female_avg', 'female_slim', 'child',
+# 'elderly'. Plus 'teen' which is in-between child and adult.
+# The multipliers stack with the human_figure(scale=...) param —
+# scale uniformly resizes the whole figure; body_type changes its
+# proportions.
+BODY_PROFILES = {
+    'male_avg': {},           # baseline
+    'male_tall': {
+        'leg_h': 1.10, 'torso_h': 1.04,
+        'shoulder_w': 0.97,
+        'torso_r_top': 0.94, 'torso_r_bot': 0.90,
+        'arm_h': 1.05, 'arm_r_top': 0.92, 'arm_r_bot': 0.90,
+        'leg_r_top': 0.92, 'leg_r_bot': 0.90,
+        'pelvis_w': 0.95, 'head_d': 0.98,
+    },
+    'male_heavy': {
+        'leg_h': 0.95, 'torso_h': 0.94,
+        'shoulder_w': 1.08,
+        'torso_r_top': 1.22, 'torso_r_bot': 1.55,
+        'pelvis_w': 1.30, 'pelvis_h': 1.20,
+        'arm_r_top': 1.18, 'arm_r_bot': 1.15,
+        'leg_r_top': 1.20, 'leg_r_bot': 1.15,
+        'head_d': 1.06,
+    },
+    'female_avg': {
+        'leg_h': 0.96, 'torso_h': 0.94,
+        'shoulder_w': 0.85,
+        'torso_r_top': 0.85, 'torso_r_bot': 0.80,
+        'pelvis_w': 1.05,
+        'arm_r_top': 0.88, 'arm_r_bot': 0.85,
+        'leg_r_top': 0.95, 'leg_r_bot': 0.92,
+        'head_d': 0.94,
+    },
+    'female_slim': {
+        'leg_h': 0.98, 'torso_h': 0.92,
+        'shoulder_w': 0.82,
+        'torso_r_top': 0.78, 'torso_r_bot': 0.72,
+        'pelvis_w': 0.95,
+        'arm_r_top': 0.80, 'arm_r_bot': 0.78,
+        'leg_r_top': 0.85, 'leg_r_bot': 0.82,
+        'head_d': 0.92,
+    },
+    'teen': {
+        # In-between proportions: leaner than adult, longer-limbed,
+        # head slightly bigger than adult ratio.
+        'leg_h': 0.92, 'torso_h': 0.88,
+        'shoulder_w': 0.88,
+        'torso_r_top': 0.85, 'torso_r_bot': 0.78,
+        'pelvis_w': 0.88,
+        'arm_h': 0.95, 'arm_r_top': 0.85, 'arm_r_bot': 0.82,
+        'leg_r_top': 0.88, 'leg_r_bot': 0.85,
+        'head_d': 1.02,
+    },
+    'child': {
+        # ~1.1 m tall at scale 1.0; bigger head:body ratio is key
+        # to reading as a kid not just a small adult.
+        'leg_h': 0.65, 'torso_h': 0.80,
+        'shoulder_w': 0.68,
+        'torso_r_top': 0.75, 'torso_r_bot': 0.85,
+        'pelvis_w': 0.78, 'pelvis_h': 0.95,
+        'arm_h': 0.72, 'arm_r_top': 0.72, 'arm_r_bot': 0.70,
+        'leg_r_top': 0.78, 'leg_r_bot': 0.76,
+        'head_d': 1.18,          # bigger relative to body
+        'foot_l': 0.72, 'foot_w': 0.78,
+        'hand_size': 0.78,
+        'neck_h': 0.7, 'neck_r': 0.88,
+        'leg_separation': 0.75,
+    },
+    'elderly': {
+        'leg_h': 0.96, 'torso_h': 0.96,
+        'shoulder_w': 0.94,
+        'torso_r_top': 0.92, 'torso_r_bot': 1.0,    # tummy
+        'pelvis_w': 1.05,
+        'arm_r_top': 0.88, 'arm_r_bot': 0.85,
+        'leg_r_top': 0.92, 'leg_r_bot': 0.88,
+    },
+}
+
+
+def _apply_body_profile(body_type):
+    """Mutate the module-level PROP dict in place to match body_type.
+    Returns a dict of the previous values so caller can restore.
+    Used by human_figure() as a try/finally guard around the build
+    pipeline; the helper functions all read PROP directly so this
+    is the least invasive way to introduce per-call variants
+    without rewriting every helper signature."""
+    profile = BODY_PROFILES.get(body_type, {})
+    saved = {}
+    for key, mult in profile.items():
+        if key in PROP:
+            saved[key] = PROP[key]
+            PROP[key] = PROP[key] * mult
+    return saved
+
+
+def _restore_body_profile(saved):
+    for key, original in saved.items():
+        PROP[key] = original
 
 
 # ── FACE-DIRECTION HELPERS ─────────────────────────────────────────
@@ -1032,6 +1138,7 @@ def _build_scarf(name, base_x, base_y, shoulder_z, s, scarf_color):
 
 def human_figure(name, base_x, base_y, base_z, scale=1.0,
                  facing='-Y',
+                 body_type='male_avg',
                  # Skin / hair
                  skin_color=(0.92, 0.75, 0.62, 1.0),
                  hair_style='short',
@@ -1057,9 +1164,42 @@ def human_figure(name, base_x, base_y, base_z, scale=1.0,
                  pose='standing',
                  lean_x=0.0):
     """Build a parametric standing human figure at (base_x, base_y,
-    base_z) with feet on the ground at base_z. See module docstring
-    for full parameter notes."""
+    base_z) with feet on the ground at base_z.
+
+    body_type: pick a silhouette profile. Options:
+      'male_avg'    — baseline ~1.80m tall
+      'male_tall'   — taller + leaner
+      'male_heavy'  — shorter + broader torso + wider hips
+      'female_avg'  — narrower shoulders + wider hips + slightly shorter
+      'female_slim' — narrower shoulders + slimmer limbs
+      'teen'        — longer-limbed + leaner adult proportions
+      'child'       — ~1.1m + bigger head:body ratio
+      'elderly'     — slight tummy + thinner limbs
+
+    See module docstring for full parameter notes.
+    """
     s = scale
+    _saved_profile = _apply_body_profile(body_type)
+    try:
+        return _human_figure_inner(
+            name, base_x, base_y, base_z, s, facing,
+            skin_color, hair_style, hair_color,
+            jacket_color, yoke_color, accent, accent_color, scarf_color,
+            pants_color, pants_flare, shoe_color,
+            has_sunglasses, sunglasses_color,
+            with_ears, with_mouth, mouth_color, beard,
+            jacket_puffy, pose, lean_x)
+    finally:
+        _restore_body_profile(_saved_profile)
+
+
+def _human_figure_inner(name, base_x, base_y, base_z, s, facing,
+                         skin_color, hair_style, hair_color,
+                         jacket_color, yoke_color, accent, accent_color, scarf_color,
+                         pants_color, pants_flare, shoe_color,
+                         has_sunglasses, sunglasses_color,
+                         with_ears, with_mouth, mouth_color, beard,
+                         jacket_puffy, pose, lean_x):
     # Feet first (they sit at base_z)
     _build_feet(name, base_x, base_y, base_z, s, facing, shoe_color)
     # Legs from base_z + foot_h up to pelvis
