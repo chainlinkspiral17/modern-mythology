@@ -2611,6 +2611,212 @@ def _build_world_frogshop():
                        (0.05, 2.4, 1.6), (0.30, 0.68, 0.78, 1.0))
 
 
+# ── CANE FIELDS  (Lafayette horizon feel) ───────────────────────
+# Sugarcane plots at the W + E edges of the district. Each plot
+# is a low rectangular ground patch with a vegetation block on
+# top (tall green-yellow rows reading as cane). Visible from
+# anywhere in town as a horizon-line texture.
+
+COL_CANE_FIELD_GROUND = (0.44, 0.36, 0.22, 1.0)   # exposed soil
+COL_CANE_GREEN        = (0.46, 0.56, 0.28, 1.0)   # cane stalks
+COL_CANE_YELLOW       = (0.66, 0.62, 0.32, 1.0)   # ripening edge
+COL_CANE_CANAL        = (0.20, 0.24, 0.20, 1.0)   # drainage ditch
+
+
+def _build_cane_field(name, cx, cy, plot_w, plot_d):
+    """One cane-field plot + drainage perimeter."""
+    gz = graustark_elevation(cx, cy)
+    # Soil base (slightly recessed for the dug-out look)
+    ht._make_box_local(f"{name}_Soil",
+                       (cx, cy, gz + 0.02),
+                       (plot_w, plot_d, 0.04),
+                       COL_CANE_FIELD_GROUND)
+    # Cane vegetation — a single tall block per plot reads from
+    # distance. Mix green main + yellow ripe edge stripe for
+    # variation.
+    ht._make_box_local(f"{name}_Cane",
+                       (cx, cy, gz + 1.8 / 2 + 0.05),
+                       (plot_w * 0.92, plot_d * 0.92, 1.8),
+                       COL_CANE_GREEN)
+    ht._make_box_local(f"{name}_Cane_Ripe",
+                       (cx, cy + plot_d * 0.42, gz + 1.8 / 2 + 0.05),
+                       (plot_w * 0.85, plot_d * 0.10, 1.7),
+                       COL_CANE_YELLOW)
+    # Drainage ditches on the 4 sides
+    for side, ox, oy, sw, sd in [
+            ('N',   0,  plot_d / 2 + 0.6, plot_w + 1.2, 0.6),
+            ('S',   0, -plot_d / 2 - 0.6, plot_w + 1.2, 0.6),
+            ('E',  plot_w / 2 + 0.6, 0, 0.6, plot_d + 1.2),
+            ('W', -plot_w / 2 - 0.6, 0, 0.6, plot_d + 1.2),
+    ]:
+        ht._make_box_local(f"{name}_Ditch_{side}",
+                           (cx + ox, cy + oy, gz - 0.10),
+                           (sw, sd, 0.30), COL_CANE_CANAL)
+
+
+def _build_cane_fields():
+    """Place a few plot squares at the district edges."""
+    print("[graustark]   cane fields (W + E edges)")
+    PLOT_W, PLOT_D = 50.0, 80.0
+    # West side (X ≈ -570)
+    west = [(-570, +280), (-570, +120), (-570, -100), (-570, -260)]
+    # East side (across HWY 90)
+    east = [(+575, +280), (+575, +120), (+575, -120), (+575, -260)]
+    count = 0
+    for i, (cx, cy) in enumerate(west + east):
+        _build_cane_field(f"Graustark_CaneField_{i}", cx, cy,
+                           PLOT_W, PLOT_D)
+        count += 1
+    print(f"[graustark]     placed {count} cane plots")
+
+
+# ── TRUSS BRIDGE  (HWY 90 over the bayou) ───────────────────────
+# Where HWY 90 crosses the bayou at Y=-360, build a steel truss
+# structure flanking + spanning the road. The truss is the
+# canonical horizon-anchor in the riverfront's "look downriver"
+# axis (see build_riverfront BRIDGE_Y constant).
+
+COL_TRUSS_STEEL = (0.42, 0.42, 0.46, 1.0)
+COL_BRIDGE_DECK = (0.20, 0.18, 0.18, 1.0)
+
+
+def _build_truss_bridge():
+    """The HWY 90 truss-bridge crown spanning the bayou."""
+    print("[graustark]   truss bridge (HWY 90 over bayou)")
+    bridge_cy = -360.0
+    bridge_cx = +30.0       # bayou centerline at this Y
+    span = 80.0             # E-W span
+    deck_z = +5.0           # matches HWY 90 declared Z at bridge crown
+    # Deck box (the road plate)
+    ht._make_box_local("Graustark_TrussBridge_Deck",
+                       (bridge_cx, bridge_cy, deck_z),
+                       (span, 18.0, 0.40), COL_BRIDGE_DECK)
+    # Side rails (low concrete kerbs)
+    for side_sgn in (-1, +1):
+        ht._make_box_local(
+            f"Graustark_TrussBridge_Kerb_{side_sgn:+d}",
+            (bridge_cx, bridge_cy + side_sgn * 8.5, deck_z + 0.40),
+            (span, 0.40, 0.80), COL_CONCRETE)
+    # Two truss frames — one each side of the deck
+    TRUSS_H = 6.0
+    for side_sgn in (-1, +1):
+        truss_y = bridge_cy + side_sgn * 9.0
+        # Top chord
+        ht._make_box_local(
+            f"Graustark_TrussBridge_TopChord_{side_sgn:+d}",
+            (bridge_cx, truss_y, deck_z + TRUSS_H),
+            (span, 0.40, 0.40), COL_TRUSS_STEEL)
+        # Bottom chord
+        ht._make_box_local(
+            f"Graustark_TrussBridge_BotChord_{side_sgn:+d}",
+            (bridge_cx, truss_y, deck_z + 0.20),
+            (span, 0.40, 0.40), COL_TRUSS_STEEL)
+        # Vertical members — 9 along the span
+        for v in range(9):
+            t = -1 + 2 * v / 8
+            vx = bridge_cx + t * (span / 2 - 0.5)
+            ht._make_box_local(
+                f"Graustark_TrussBridge_Vert_{side_sgn:+d}_{v}",
+                (vx, truss_y, deck_z + TRUSS_H / 2),
+                (0.30, 0.30, TRUSS_H), COL_TRUSS_STEEL)
+        # Diagonal members — V pattern (8 panels)
+        for v in range(8):
+            t = -1 + (2 * v + 1) / 8
+            vx = bridge_cx + t * (span / 2)
+            # Single tilted diagonal per panel (box approximation)
+            ht._make_box_local(
+                f"Graustark_TrussBridge_Diag_{side_sgn:+d}_{v}",
+                (vx, truss_y, deck_z + TRUSS_H / 2),
+                (span / 8 * 1.05, 0.20, 0.30), COL_TRUSS_STEEL)
+    # Bridge pylons — concrete supports at each end where the
+    # road comes off the berm down to the bayou
+    for end_sgn in (-1, +1):
+        ht._make_box_local(
+            f"Graustark_TrussBridge_Pylon_{end_sgn:+d}",
+            (bridge_cx + end_sgn * (span / 2 + 1.0),
+             bridge_cy, deck_z / 2),
+            (2.0, 18.0, deck_z), COL_CONCRETE)
+
+
+# ── STREET TREES  (oaks in suburbs, palms downtown) ─────────────
+COL_OAK_TRUNK   = (0.42, 0.32, 0.22, 1.0)
+COL_OAK_CANOPY  = (0.36, 0.46, 0.26, 1.0)
+COL_PALM_TRUNK  = (0.62, 0.52, 0.38, 1.0)
+COL_PALM_FROND  = (0.42, 0.56, 0.28, 1.0)
+
+
+def _emit_oak(name, cx, cy, cz):
+    """Suburban oak — chunky trunk + wide rounded canopy."""
+    trunk_h = 4.5
+    ht._make_cyl_local(f"{name}_Trunk",
+                       (cx, cy, cz + trunk_h / 2),
+                       0.30, trunk_h, COL_OAK_TRUNK, segments=6)
+    ht._make_sphere_low_local(
+        f"{name}_Canopy",
+        (cx, cy, cz + trunk_h + 1.6),
+        2.6, COL_OAK_CANOPY, rings=3, segments=8)
+
+
+def _emit_palm(name, cx, cy, cz):
+    """Downtown palm — tall slim trunk + a few wide flat fronds."""
+    trunk_h = 6.0
+    ht._make_cyl_local(f"{name}_Trunk",
+                       (cx, cy, cz + trunk_h / 2),
+                       0.18, trunk_h, COL_PALM_TRUNK, segments=6)
+    # 4 frond slabs angled out from the crown
+    crown_z = cz + trunk_h + 0.20
+    for i in range(4):
+        ang = i * math.pi / 2 + math.pi / 4
+        fx = math.cos(ang) * 0.6
+        fy = math.sin(ang) * 0.6
+        ht._make_box_local(
+            f"{name}_Frond_{i}",
+            (cx + fx, cy + fy, crown_z),
+            (2.4 if i % 2 == 0 else 0.30,
+             0.30 if i % 2 == 0 else 2.4,
+             0.10), COL_PALM_FROND)
+
+
+def _build_street_trees():
+    """Trees along the residential + downtown corridors."""
+    print("[graustark]   street trees")
+    count = 0
+    # Suburban oaks — between each lot and the street (one per lot)
+    LOT_GRID_X = [-540, -480, -420, -360, -300]
+    LOT_GRID_Y = [+360, +290, +220, +150, +80, +10]
+    for ri, gy in enumerate(LOT_GRID_Y):
+        for ci, gx in enumerate(LOT_GRID_X):
+            if (ri == 2 and ci == 2) or (ri == 4 and ci == 4):
+                continue
+            # Tree at +Y edge of lot (street side)
+            tx = gx + 8.0       # offset east
+            ty = gy + 28.0      # at the street curb
+            tz = graustark_elevation(tx, ty)
+            _emit_oak(f"Graustark_OakSuburb_R{ri}C{ci}",
+                      tx, ty, tz)
+            count += 1
+    # Downtown palms along the FQ + Wharf street
+    palm_positions = [
+        (-330, +60), (-330, +84), (-330, +108), (-330, +132),
+        (-180, +20), (-180, +80), (-180, +140),
+        (-130, +210), (-130, +240),
+    ]
+    for i, (px, py) in enumerate(palm_positions):
+        pz = graustark_elevation(px, py)
+        _emit_palm(f"Graustark_PalmDowntown_{i}", px, py, pz)
+        count += 1
+    # Oaks ringing the town square (around the courthouse)
+    cs_cx, cs_cy = ARCANA_LOCALES['Justice_Courthouse'][0]
+    for i in range(8):
+        ang = 2 * math.pi * i / 8 + math.pi / 16
+        ox = cs_cx + math.cos(ang) * 28
+        oy = cs_cy + math.sin(ang) * 28
+        oz = graustark_elevation(ox, oy)
+        _emit_oak(f"Graustark_OakSquare_{i}", ox, oy, oz)
+        count += 1
+    print(f"[graustark]     placed {count} street trees")
+
+
 def build_district_buildings():
     """PHASE 4 — buildings outside the riverfront's SE quadrant."""
     _hook_hce_mesh_z()
@@ -2638,6 +2844,9 @@ def build_district_buildings():
     _build_temperance_lounge()
     _build_sun_garden()
     _build_world_frogshop()
+    _build_cane_fields()
+    _build_truss_bridge()
+    _build_street_trees()
 
 
 # ── PHASE 5  CHARACTERS  ────────────────────────────────────────
