@@ -266,16 +266,110 @@ def build_district_elevation_field():
     return obj
 
 
-def build_district_water_layer():
-    """PHASE 2 — bayou main channel beyond the riverfront's local
-    river patch + man-made drainage canals + tidal flats.
+# Bayou water surface Z — matches the riverfront's RIVER_LEVEL_Z
+# so the two systems are flush. At this surface height the channel
+# bed (-4) and shallow band (-2) are submerged, while tidal mud
+# flats (-1) are EXPOSED (low-tide reading, alga-stained mud).
+BAYOU_WATER_Z = -2.5
 
-    TODO:
-      - Catmull-Rom-smoothed bayou polyline N→S threading the map
-      - Drainage canals at 45° to the bayou meander
-      - Tidal mud flats at Z = -1, broken by cypress hummocks
-    """
-    print("[graustark] PHASE 2 water layer — STUB")
+# Color for bayou water — tannic dark brown, partly transparent
+# in real watercolour but vertex-colour means we render the
+# surface flat. Slightly bluish for navigability reading.
+COL_BAYOU_WATER = (0.12, 0.18, 0.22, 1.0)
+
+
+def _catmull_rom(p0, p1, p2, p3, t):
+    """Standard centripetal Catmull-Rom at parameter t ∈ [0,1]."""
+    t2 = t * t
+    t3 = t2 * t
+    return (
+        0.5 * ((2 * p1[0]) +
+               (-p0[0] + p2[0]) * t +
+               (2*p0[0] - 5*p1[0] + 4*p2[0] - p3[0]) * t2 +
+               (-p0[0] + 3*p1[0] - 3*p2[0] + p3[0]) * t3),
+        0.5 * ((2 * p1[1]) +
+               (-p0[1] + p2[1]) * t +
+               (2*p0[1] - 5*p1[1] + 4*p2[1] - p3[1]) * t2 +
+               (-p0[1] + 3*p1[1] - 3*p2[1] + p3[1]) * t3),
+    )
+
+
+def _smooth_polyline(pts, samples_per_seg=6):
+    """Catmull-Rom smoothing through the waypoints. Mirror the
+    first/last point as virtual endpoints so the curve passes
+    through the endpoints cleanly."""
+    if len(pts) < 2:
+        return list(pts)
+    ext = [(2*pts[0][0] - pts[1][0], 2*pts[0][1] - pts[1][1])] \
+          + list(pts) \
+          + [(2*pts[-1][0] - pts[-2][0], 2*pts[-1][1] - pts[-2][1])]
+    out = []
+    for i in range(1, len(ext) - 2):
+        p0, p1, p2, p3 = ext[i-1], ext[i], ext[i+1], ext[i+2]
+        for s in range(samples_per_seg):
+            t = s / samples_per_seg
+            out.append(_catmull_rom(p0, p1, p2, p3, t))
+    out.append(pts[-1])
+    return out
+
+
+def build_district_water_layer():
+    """PHASE 2 — bayou main channel water surface.
+    Catmull-Rom-smoothed strip following BAYOU_CENTERLINE at
+    Z=BAYOU_WATER_Z. Skipped inside the riverfront preservation
+    zone (the riverfront's own water mesh handles that band)."""
+    smooth = _smooth_polyline(BAYOU_CENTERLINE, samples_per_seg=6)
+    print(f"[graustark] PHASE 2 water — smoothed centerline: "
+          f"{len(smooth)} samples")
+
+    # For each pair of consecutive samples, emit a quad
+    # ±BAYOU_HALF_W along the perpendicular at the midpoint.
+    BAYOU_HALF_W = 22.0   # 44 m wide water surface
+    verts, faces = [], []
+    skipped_in_rf = 0
+    for i in range(len(smooth) - 1):
+        x0, y0 = smooth[i]
+        x1, y1 = smooth[i + 1]
+        mx, my = (x0 + x1) / 2, (y0 + y1) / 2
+        # Skip segments whose midpoint sits inside the RF zone —
+        # riverfront's own water handles that band.
+        if (RF_ZONE_X[0] <= mx <= RF_ZONE_X[1]
+                and RF_ZONE_Y[0] <= my <= RF_ZONE_Y[1]):
+            skipped_in_rf += 1
+            continue
+        dx, dy = x1 - x0, y1 - y0
+        seg = math.hypot(dx, dy) or 1.0
+        # Perpendicular (left-hand)
+        nx, ny = -dy / seg, dx / seg
+        # Four corners of the quad
+        ax, ay = x0 + nx * BAYOU_HALF_W, y0 + ny * BAYOU_HALF_W
+        bx, by = x0 - nx * BAYOU_HALF_W, y0 - ny * BAYOU_HALF_W
+        cx, cy = x1 - nx * BAYOU_HALF_W, y1 - ny * BAYOU_HALF_W
+        dx_, dy_ = x1 + nx * BAYOU_HALF_W, y1 + ny * BAYOU_HALF_W
+        base = len(verts)
+        for vx, vy in [(ax, ay), (bx, by), (cx, cy), (dx_, dy_)]:
+            verts.append((vx, vy, BAYOU_WATER_Z))
+        faces.append([base + 0, base + 1, base + 2])
+        faces.append([base + 0, base + 2, base + 3])
+
+    print(f"[graustark]   {skipped_in_rf} segments skipped (in RF zone)")
+    if not faces:
+        print("[graustark]   no bayou water emitted")
+        return None
+    mesh = bpy.data.meshes.new("Graustark_BayouWater_mesh")
+    mesh.from_pydata(verts, [], faces)
+    mesh.update()
+    if not mesh.vertex_colors:
+        mesh.vertex_colors.new(name="Col")
+    layer = mesh.vertex_colors["Col"]
+    for poly in mesh.polygons:
+        for li in poly.loop_indices:
+            layer.data[li].color = COL_BAYOU_WATER
+    obj = bpy.data.objects.new("Graustark_BayouWater", mesh)
+    bpy.context.collection.objects.link(obj)
+    print(f"[graustark]   bayou water mesh: {len(verts)} verts, "
+          f"{len(faces)} tris")
+    return obj
 
 
 def build_district_roads():
