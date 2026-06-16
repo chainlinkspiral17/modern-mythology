@@ -70,6 +70,7 @@ CHANNEL_BED   = -4.0    # navigable channel floor
 # we're calling the same functions in the same order they
 # already use.
 import build_riverfront as rf
+import build_harmony_terrain as ht
 
 # Override the riverfront's export path so its main() doesn't
 # stomp our graustark.glb if someone calls it accidentally.
@@ -517,10 +518,10 @@ ARCANA_LOCALES = {
     'HighPriestess_Curio': ((-320.0, +66.0), 'placed'),    # FQ row N end
     'HangedMan_Apartment': ((-320.0, +98.0), 'placed'),    # FQ row S end
     'Temperance_Lounge':  ((-310.0, +130.0), 'todo'),
-    'Magician_Cathedral': ((+300.0, +380.0), 'todo'),
-    'Hierophant_Church':  ((-200.0, +200.0), 'todo'),
-    'Hierophant_Bandstand': ((-150.0, +120.0), 'todo'),
-    'Hierophant_Armory':  ((+200.0, -340.0), 'todo'),
+    'Magician_Cathedral': ((+300.0, +380.0), 'placed'),
+    'Hierophant_Church':  ((-200.0, +200.0), 'placed'),
+    'Hierophant_Bandstand': ((-150.0, +120.0), 'placed'),
+    'Hierophant_Armory':  ((+200.0, -340.0), 'placed'),
     'Lovers_Chapel':      ((-560.0, -120.0), 'todo'),
     'Chariot_Garage':     ((-180.0, -160.0), 'todo'),
     'Strength_Carnival':  ((-460.0, +400.0), 'todo'),
@@ -1152,19 +1153,265 @@ def _build_montreal_block():
     print(f"[graustark]     placed 4 Montreal row buildings")
 
 
+# ── ARCANA EXTERIORS (priority-1 build order) ───────────────────
+# Each builder lays one canonical narrative-locale building at
+# its ARCANA_LOCALES coordinates. All use ht._make_*_local
+# primitives so the geometry ships in the same vertex-colour
+# pipeline as everything else.
+
+COL_BRICK_RED       = (0.50, 0.32, 0.26, 1.0)
+COL_BRICK_DARK      = (0.36, 0.24, 0.20, 1.0)
+COL_TIN_RUSTED      = (0.42, 0.36, 0.28, 1.0)
+COL_TIN_FRESH       = (0.60, 0.62, 0.64, 1.0)
+COL_SHEET_METAL     = (0.46, 0.46, 0.44, 1.0)
+COL_LIMESTONE       = (0.78, 0.74, 0.66, 1.0)
+COL_STUCCO_WHITE    = (0.88, 0.84, 0.78, 1.0)
+COL_STUCCO_CREAM    = (0.92, 0.86, 0.74, 1.0)
+COL_CONCRETE        = (0.68, 0.66, 0.62, 1.0)
+COL_GLASS_DARK      = (0.18, 0.22, 0.30, 1.0)
+COL_NEON_RED        = (0.92, 0.20, 0.18, 1.0)
+COL_NEON_PINK       = (0.95, 0.42, 0.62, 1.0)
+COL_DOOR_DARK       = (0.32, 0.22, 0.18, 1.0)
+COL_BLACK_IRON      = (0.10, 0.08, 0.08, 1.0)
+
+
+def _build_magician_cathedral():
+    """The Cathedral of Rust and Code — Frasier's converted 1920s
+    warehouse. Brick body + pitched corrugated tin roof, boarded
+    arched windows on the long sides, antenna farm + satellite
+    dish on the roof. Must read from anywhere in town as a
+    silhouette anchor for the NE corner."""
+    print("[graustark]   Magician — Cathedral of Rust and Code")
+    cx, cy = ARCANA_LOCALES['Magician_Cathedral'][0]
+    gz = graustark_elevation(cx, cy)
+    W, D, H = 22.0, 42.0, 11.0
+    # Main warehouse body (long axis = X, oriented E-W)
+    ht._make_box_local("Magician_Cath_Body",
+                       (cx, cy, gz + H / 2),
+                       (W, D, H), COL_BRICK_RED)
+    # Pitched roof — flat ridge box + sloped overhanging eaves
+    ridge_z = gz + H + 2.5
+    ht._make_box_local("Magician_Cath_Roof_Ridge",
+                       (cx, cy, ridge_z),
+                       (W * 0.30, D * 0.96, 0.40), COL_TIN_RUSTED)
+    ht._make_box_local("Magician_Cath_Roof_Plate",
+                       (cx, cy, gz + H + 0.6),
+                       (W + 1.2, D + 0.4, 1.2), COL_TIN_RUSTED)
+    # Arched windows boarded with sheet metal — 6 on each long side
+    for side_sgn in (-1, +1):
+        side_y = cy + side_sgn * (D / 2 + 0.05)
+        for w in range(6):
+            t = -1 + 2 * w / 5
+            wx = cx + t * (W / 2 - 1.8)
+            ht._make_box_local(
+                f"Magician_Cath_Window_{side_sgn:+d}_{w}",
+                (wx, side_y, gz + 5.5),
+                (3.2, 0.10, 5.0), COL_SHEET_METAL)
+    # Tall arched window front + back (gable end)
+    for end_sgn in (-1, +1):
+        ht._make_box_local(
+            f"Magician_Cath_GableWindow_{end_sgn:+d}",
+            (cx + end_sgn * (W / 2 + 0.05), cy, gz + 7.0),
+            (0.10, 5.0, 7.0), COL_SHEET_METAL)
+    # Office addition on the front (W gable)
+    off_W, off_D, off_H = 8.0, 6.0, 3.5
+    off_cx = cx - W / 2 - off_W / 2
+    off_cy = cy + 6.0
+    ht._make_box_local("Magician_Cath_Office",
+                       (off_cx, off_cy, gz + off_H / 2),
+                       (off_W, off_D, off_H), COL_BRICK_DARK)
+    ht._make_box_local("Magician_Cath_Office_Roof",
+                       (off_cx, off_cy, gz + off_H + 0.10),
+                       (off_W + 0.3, off_D + 0.3, 0.20),
+                       COL_TIN_RUSTED)
+    # Antenna farm on the main roof — 4 tall poles
+    for i in range(4):
+        ax = cx + (-1.5 + i) * 3.5
+        ay = cy + (D / 2 - 4.0)
+        ht._make_cyl_local(
+            f"Magician_Cath_Antenna_{i}",
+            (ax, ay, ridge_z + 4.0), 0.06, 8.0,
+            COL_BLACK_IRON, segments=4)
+    # Satellite dish — large disc tilted skyward
+    ht._make_sphere_low_local(
+        "Magician_Cath_SatDish_Bowl",
+        (cx + 5.0, cy - D / 2 + 4.0, ridge_z + 1.8),
+        1.6, COL_SHEET_METAL, rings=2, segments=8)
+    ht._make_cyl_local(
+        "Magician_Cath_SatDish_Mast",
+        (cx + 5.0, cy - D / 2 + 4.0, ridge_z + 0.9),
+        0.08, 1.8, COL_BLACK_IRON, segments=4)
+    # Chimney — masonry stack
+    ht._make_box_local("Magician_Cath_Chimney",
+                       (cx - W / 2 + 2.0, cy + D / 2 - 3.0,
+                        ridge_z + 1.5),
+                       (1.2, 1.2, 5.0), COL_BRICK_DARK)
+
+
+def _build_hierophant_church():
+    """St Jude's Catholic Church — Lafayette parish church, stucco
+    + single steeple + hipped tin roof + rectory beside."""
+    print("[graustark]   Hierophant — St Jude's")
+    cx, cy = ARCANA_LOCALES['Hierophant_Church'][0]
+    gz = graustark_elevation(cx, cy)
+    # Nave
+    W, D, H = 16.0, 28.0, 8.5
+    ht._make_box_local("Hier_Church_Nave",
+                       (cx, cy, gz + H / 2),
+                       (W, D, H), COL_STUCCO_WHITE)
+    # Hipped roof — flat plate + small ridge
+    ht._make_box_local("Hier_Church_Roof",
+                       (cx, cy, gz + H + 0.30),
+                       (W + 0.6, D + 0.6, 0.60), COL_TIN_FRESH)
+    ht._make_box_local("Hier_Church_Ridge",
+                       (cx, cy, gz + H + 0.90),
+                       (W * 0.20, D - 1.5, 0.40), COL_TIN_FRESH)
+    # Front gable + steeple on the south end (facing the riverfront)
+    steeple_cy = cy - D / 2 - 2.0
+    # Steeple base
+    ht._make_box_local("Hier_Church_SteepleBase",
+                       (cx, steeple_cy, gz + 6.0 / 2),
+                       (5.0, 5.0, 6.0), COL_STUCCO_WHITE)
+    # Steeple tower (3 stacked tapering boxes)
+    ht._make_box_local("Hier_Church_Steeple_Mid",
+                       (cx, steeple_cy, gz + 9.0),
+                       (4.0, 4.0, 6.0), COL_STUCCO_WHITE)
+    ht._make_box_local("Hier_Church_Steeple_Belfry",
+                       (cx, steeple_cy, gz + 13.0),
+                       (3.4, 3.4, 2.0), COL_STUCCO_CREAM)
+    # Pointed spire (small pyramid box stack)
+    for i, h in enumerate([1.5, 1.2, 0.8]):
+        ht._make_box_local(
+            f"Hier_Church_Spire_{i}",
+            (cx, steeple_cy, gz + 14.5 + sum([1.5,1.2,0.8][:i]) + h/2),
+            (2.4 - i*0.6, 2.4 - i*0.6, h), COL_TIN_FRESH)
+    # Cross on top
+    ht._make_box_local("Hier_Church_Cross_V",
+                       (cx, steeple_cy, gz + 19.0),
+                       (0.12, 0.12, 1.4), COL_BLACK_IRON)
+    ht._make_box_local("Hier_Church_Cross_H",
+                       (cx, steeple_cy, gz + 18.6),
+                       (0.80, 0.12, 0.12), COL_BLACK_IRON)
+    # Stained-glass arched window panels — 4 each long side
+    for side_sgn in (-1, +1):
+        side_x = cx + side_sgn * (W / 2 + 0.05)
+        for w in range(4):
+            t = -1 + 2 * w / 3
+            wy = cy + t * (D / 2 - 2.5)
+            ht._make_box_local(
+                f"Hier_Church_Window_{side_sgn:+d}_{w}",
+                (side_x, wy, gz + 5.5),
+                (0.10, 1.4, 3.6),
+                (0.20, 0.34, 0.52, 1.0))   # blue stained glass
+    # Front door
+    ht._make_box_local("Hier_Church_Door",
+                       (cx, cy - D / 2 - 0.05, gz + 1.5),
+                       (1.6, 0.10, 3.0), COL_DOOR_DARK)
+    # Rectory — small adjacent residence
+    rcx, rcy = cx + W / 2 + 5.0, cy - 4.0
+    ht._make_box_local("Hier_Rectory_Body",
+                       (rcx, rcy, gz + 3.5 / 2),
+                       (8.0, 8.0, 3.5), COL_STUCCO_CREAM)
+    ht._make_box_local("Hier_Rectory_Roof",
+                       (rcx, rcy, gz + 3.5 + 0.30),
+                       (8.6, 8.6, 0.60), COL_TIN_FRESH)
+
+
+def _build_hierophant_bandstand():
+    """Park bandstand — octagonal gazebo, cypress posts, hexagonal
+    copper-green roof."""
+    print("[graustark]   Hierophant — park bandstand")
+    cx, cy = ARCANA_LOCALES['Hierophant_Bandstand'][0]
+    gz = graustark_elevation(cx, cy)
+    R = 4.5     # gazebo radius
+    deck_z = gz + 0.4
+    # Deck (octagonal — approximate with a square + 4 corner clips
+    # would be 8 polys; cheaper to ship as a box ±sin/cos verts.)
+    ht._make_box_local("Hier_Bandstand_Deck",
+                       (cx, cy, deck_z),
+                       (R * 2 + 0.4, R * 2 + 0.4, 0.20),
+                       (0.55, 0.42, 0.30, 1.0))
+    # 8 cypress posts at octagonal corners
+    POST_H = 3.6
+    for i in range(8):
+        ang = 2 * 3.14159 * i / 8
+        px = cx + R * math.cos(ang)
+        py = cy + R * math.sin(ang)
+        ht._make_box_local(
+            f"Hier_Bandstand_Post_{i}",
+            (px, py, deck_z + POST_H / 2),
+            (0.18, 0.18, POST_H), COL_PILING)
+    # Roof — large flat octagonal cap + a small finial spike
+    ht._make_box_local("Hier_Bandstand_Roof",
+                       (cx, cy, deck_z + POST_H + 0.30),
+                       (R * 2 + 0.8, R * 2 + 0.8, 0.55),
+                       (0.30, 0.46, 0.36, 1.0))   # copper-green
+    ht._make_box_local("Hier_Bandstand_Roof_Cap",
+                       (cx, cy, deck_z + POST_H + 0.95),
+                       (R * 1.4, R * 1.4, 0.40),
+                       (0.30, 0.46, 0.36, 1.0))
+    ht._make_box_local("Hier_Bandstand_Finial",
+                       (cx, cy, deck_z + POST_H + 1.7),
+                       (0.15, 0.15, 0.9), COL_BLACK_IRON)
+
+
+def _build_hierophant_armory():
+    """The Old Armory — brick + arched windows + crenellated tin
+    roof, southern Lafayette National Guard style."""
+    print("[graustark]   Hierophant — Old Armory")
+    cx, cy = ARCANA_LOCALES['Hierophant_Armory'][0]
+    gz = graustark_elevation(cx, cy)
+    W, D, H = 24.0, 32.0, 9.5
+    ht._make_box_local("Hier_Armory_Body",
+                       (cx, cy, gz + H / 2),
+                       (W, D, H), COL_BRICK_RED)
+    # Crenellated parapet — 8 small notches per long side
+    PARAPET_H = 0.9
+    par_z = gz + H + PARAPET_H / 2
+    ht._make_box_local("Hier_Armory_Parapet_Front",
+                       (cx, cy - D / 2 + 0.3, par_z),
+                       (W + 0.6, 0.4, PARAPET_H), COL_BRICK_DARK)
+    ht._make_box_local("Hier_Armory_Parapet_Back",
+                       (cx, cy + D / 2 - 0.3, par_z),
+                       (W + 0.6, 0.4, PARAPET_H), COL_BRICK_DARK)
+    # Crenellation teeth on the long sides
+    for side_sgn in (-1, +1):
+        for c in range(7):
+            t = -1 + 2 * c / 6
+            tx = cx + t * (W / 2 - 1.0)
+            ht._make_box_local(
+                f"Hier_Armory_Crenel_{side_sgn:+d}_{c}",
+                (tx, cy + side_sgn * D / 2,
+                 par_z + PARAPET_H * 0.4),
+                (1.4, 0.5, 0.6), COL_BRICK_DARK)
+    # Tall arched windows — 5 each long side
+    for side_sgn in (-1, +1):
+        sx_ = cx + side_sgn * (W / 2 + 0.05)
+        for w in range(5):
+            t = -1 + 2 * w / 4
+            wy = cy + t * (D / 2 - 2.5)
+            ht._make_box_local(
+                f"Hier_Armory_Win_{side_sgn:+d}_{w}",
+                (sx_, wy, gz + 5.0),
+                (0.10, 1.6, 5.0), COL_GLASS_DARK)
+    # Massive double-door entrance on the front
+    ht._make_box_local("Hier_Armory_Door",
+                       (cx, cy - D / 2 - 0.05, gz + 2.5),
+                       (3.5, 0.10, 5.0), COL_DOOR_DARK)
+
+
 def build_district_buildings():
-    """PHASE 4 — buildings outside the riverfront's SE quadrant.
-    Pass 4a: western suburban + cypress groves.
-    Pass 4b: raised cottages on cypress stilts (levee crest).
-    Pass 4c: French Quarter block (with restaurant) + Montreal
-             block in NE corner. Both done film-set style —
-             fronts detailed, backs cheated."""
+    """PHASE 4 — buildings outside the riverfront's SE quadrant."""
     _hook_hce_mesh_z()
     _build_western_residential()
     _build_bayou_cypress_groves()
     _build_levee_cottages()
     _build_french_quarter_block()
     _build_montreal_block()
+    _build_magician_cathedral()
+    _build_hierophant_church()
+    _build_hierophant_bandstand()
+    _build_hierophant_armory()
 
 
 def build_district_characters_and_props():
