@@ -178,24 +178,37 @@ def _build_body_rings(profile, base_x, base_y, base_z):
     HEAD_FRONT = HEAD_H * 0.40      # how far the face front extends
     HEAD_BACK = HEAD_H * 0.45       # back of skull (a bit larger)
 
-    add('crown',     CROWN_Z,                  0.04, 0.04, 0.05, 0.05, 0.06)
-    add('skull_top', CROWN_Z - 0.030,          0.16, 0.18, 0.20, 0.18, 0.22)
-    add('hairline',  HAIRLINE_Z,               HEAD_X * 0.95, HEAD_X, HEAD_X, HEAD_FRONT * 0.92, HEAD_BACK)
-    add('forehead',  HAIRLINE_Z - 0.020,       HEAD_X * 0.95, HEAD_X, HEAD_X, HEAD_FRONT * 0.95, HEAD_BACK)
+    # All head rings use HEAD_X-relative radii so they curve
+    # smoothly from crown apex to chin without the absolute-value
+    # blowout the previous skull_top ring had. Each ring is also
+    # MONOTONICALLY decreasing in Z so the loft never twists.
+    add('crown',       CROWN_Z,                  HEAD_X*0.20, HEAD_X*0.22, HEAD_X*0.24, HEAD_X*0.22, HEAD_X*0.26)
+    add('skull_apex',  CROWN_Z - 0.012,          HEAD_X*0.60, HEAD_X*0.66, HEAD_X*0.70, HEAD_X*0.66, HEAD_X*0.78)
+    add('hairline',    HAIRLINE_Z,               HEAD_X*0.95, HEAD_X,      HEAD_X,      HEAD_FRONT*0.92, HEAD_BACK)
+    add('forehead',    HAIRLINE_Z - 0.020,       HEAD_X*0.95, HEAD_X,      HEAD_X,      HEAD_FRONT*0.95, HEAD_BACK)
     # Brow ridge — push front-center forward slightly
-    add('brow',      BROW_Z,                   HEAD_X * 1.00, HEAD_X, HEAD_X, HEAD_FRONT * 1.00, HEAD_BACK)
+    add('brow',        BROW_Z,                   HEAD_X*1.00, HEAD_X,      HEAD_X,      HEAD_FRONT*1.00, HEAD_BACK)
     # Eye line — slightly INSET front-center (eye recess)
-    add('eye',       EYE_Z,                    HEAD_X * 0.96, HEAD_X * 0.98, HEAD_X * 0.94, HEAD_FRONT * 0.94, HEAD_BACK)
+    add('eye',         EYE_Z,                    HEAD_X*0.96, HEAD_X*0.98, HEAD_X*0.94, HEAD_FRONT*0.94, HEAD_BACK)
     # Cheekbone — bumped out laterally
-    add('cheek',     EYE_Z - 0.020,            HEAD_X * 0.92, HEAD_X * 1.02, HEAD_X * 0.90, HEAD_FRONT * 0.94, HEAD_BACK * 0.95)
+    add('cheek',       EYE_Z - 0.020,            HEAD_X*0.92, HEAD_X*1.02, HEAD_X*0.90, HEAD_FRONT*0.94, HEAD_BACK*0.95)
+    # Nose-cheek intermediate so the front profile curves
+    add('nose_upper',  (EYE_Z - 0.020 + NOSE_Z) / 2,
+                                                 HEAD_X*0.78, HEAD_X*0.90, HEAD_X*0.88, HEAD_FRONT*1.02, HEAD_BACK*0.93)
     # Nose tip — push the very front vert forward
-    add('nose',      NOSE_Z,                   HEAD_X * 0.62, HEAD_X * 0.78, HEAD_X * 0.84, HEAD_FRONT * 1.08, HEAD_BACK * 0.92)
+    add('nose',        NOSE_Z,                   HEAD_X*0.62, HEAD_X*0.78, HEAD_X*0.84, HEAD_FRONT*1.08, HEAD_BACK*0.92)
     # Upper lip — narrower
-    add('upper_lip', MOUTH_Z + 0.010,          HEAD_X * 0.55, HEAD_X * 0.72, HEAD_X * 0.80, HEAD_FRONT * 0.95, HEAD_BACK * 0.90)
-    add('mouth',     MOUTH_Z,                  HEAD_X * 0.50, HEAD_X * 0.68, HEAD_X * 0.78, HEAD_FRONT * 0.92, HEAD_BACK * 0.88)
+    add('upper_lip',   MOUTH_Z + 0.010,          HEAD_X*0.55, HEAD_X*0.72, HEAD_X*0.80, HEAD_FRONT*0.95, HEAD_BACK*0.90)
+    add('mouth',       MOUTH_Z,                  HEAD_X*0.50, HEAD_X*0.68, HEAD_X*0.78, HEAD_FRONT*0.92, HEAD_BACK*0.88)
+    # Lower-lip intermediate so chin doesn't pinch sharply
+    add('lower_lip',   MOUTH_Z - 0.008,          HEAD_X*0.48, HEAD_X*0.64, HEAD_X*0.74, HEAD_FRONT*0.86, HEAD_BACK*0.82)
     # Chin — front rounded but smaller than mid-face
-    add('chin',      CHIN_Z + 0.010,           HEAD_X * 0.40, HEAD_X * 0.50, HEAD_X * 0.55, HEAD_FRONT * 0.78, HEAD_BACK * 0.62)
-    add('jaw_bot',   CHIN_Z,                   HEAD_X * 0.28, HEAD_X * 0.32, HEAD_X * 0.36, HEAD_FRONT * 0.50, HEAD_BACK * 0.42)
+    add('chin',        CHIN_Z + 0.010,           HEAD_X*0.42, HEAD_X*0.54, HEAD_X*0.60, HEAD_FRONT*0.78, HEAD_BACK*0.66)
+    add('jaw_bot',     CHIN_Z,                   HEAD_X*0.36, HEAD_X*0.42, HEAD_X*0.46, HEAD_FRONT*0.60, HEAD_BACK*0.52)
+    # Smooth jaw → neck transition (was a hard pinch from
+    # 0.42*HEAD_X jaw down to 0.60*NECK_X with no in-between)
+    add('jaw_under',   CHIN_Z - 0.012,           HEAD_X*0.46*0.78, HEAD_X*0.50*0.78, HEAD_X*0.54*0.78,
+                                                 HEAD_FRONT*0.50, HEAD_BACK*0.44)
 
     # ── NECK ───────────────────────────────────────────────────
     NECK_X = HEAD_X * 0.60
@@ -203,10 +216,21 @@ def _build_body_rings(profile, base_x, base_y, base_z):
     add('neck_top', NECK_TOP_Z, NECK_X * 0.95, NECK_X, NECK_X * 0.95, NECK_Z * 0.95, NECK_Z * 0.95)
     add('neck_bot', NECK_BOT_Z, NECK_X * 1.05, NECK_X * 1.10, NECK_X * 1.05, NECK_Z * 1.05, NECK_Z * 1.10)
 
-    # ── TRAP slope → clavicle peak ────────────────────────────
-    add('trap_a', NECK_BOT_Z - 0.012, sw * 0.50, sw * 0.55, sw * 0.50, NECK_Z * 1.15, NECK_Z * 1.18)
-    add('trap_b', NECK_BOT_Z - 0.024, sw * 0.78, sw * 0.85, sw * 0.78, sw * 0.50, sw * 0.55)
-    add('clav',   CLAV_Z,             sw,        sw,        sw * 0.96, sw * 0.62, sw * 0.65)
+    # ── TRAP slope → clavicle peak. The named landmarks
+    # (trap_a, trap_b, clav) keep their dimensions; two extra
+    # half-step rings smooth the angular slope so the shoulder
+    # doesn't read as a spike. ──
+    add('trap_a',     NECK_BOT_Z - 0.012, sw * 0.50, sw * 0.55, sw * 0.50,
+        NECK_Z * 1.15, NECK_Z * 1.18)
+    add('trap_a_mid', NECK_BOT_Z - 0.018, sw * 0.64, sw * 0.70, sw * 0.64,
+        (NECK_Z * 1.15 + sw * 0.50) / 2, (NECK_Z * 1.18 + sw * 0.55) / 2)
+    add('trap_b',     NECK_BOT_Z - 0.024, sw * 0.78, sw * 0.85, sw * 0.78,
+        sw * 0.50, sw * 0.55)
+    add('trap_b_mid', (NECK_BOT_Z - 0.024 + CLAV_Z) / 2,
+                                          sw * 0.89, sw * 0.92, sw * 0.87,
+        sw * 0.56, sw * 0.60)
+    add('clav',       CLAV_Z,             sw,        sw,        sw * 0.96,
+        sw * 0.62, sw * 0.65)
 
     # ── TORSO: chest forward, spine back ───────────────────────
     add('upper_chest', NIPPLE_Z + 0.040, sw * 0.95, sw * 0.92, sw * 0.88,
@@ -238,8 +262,14 @@ def _build_body_rings(profile, base_x, base_y, base_z):
         THIGH_X * 1.00, THIGH_X * 1.00)
     add('lower_thigh', THIGH_Z - HEAD_H * 0.30, THIGH_X * 0.80, THIGH_X * 0.82, THIGH_X * 0.80,
         THIGH_X * 0.85, THIGH_X * 0.80)
+    # Half-step into the knee so the leg doesn't pinch sharply.
+    add('above_knee',  THIGH_Z - HEAD_H * 0.50, THIGH_X * 0.70, THIGH_X * 0.71, THIGH_X * 0.70,
+        THIGH_X * 0.81, THIGH_X * 0.74)
     add('knee',        KNEE_Z,          THIGH_X * 0.62, THIGH_X * 0.60, THIGH_X * 0.62,
         THIGH_X * 0.78, THIGH_X * 0.68)
+    # Below-knee half-step so the calf bulge comes in gradually.
+    add('below_knee',  KNEE_Z - HEAD_H * 0.15, THIGH_X * 0.64, THIGH_X * 0.65, THIGH_X * 0.64,
+        THIGH_X * 0.78, THIGH_X * 0.76)
     add('calf',        KNEE_Z - HEAD_H * 0.35, THIGH_X * 0.66, THIGH_X * 0.70, THIGH_X * 0.66,
         THIGH_X * 0.78, THIGH_X * 0.85)
     add('shin',        SHIN_Z,          THIGH_X * 0.52, THIGH_X * 0.52, THIGH_X * 0.52,
