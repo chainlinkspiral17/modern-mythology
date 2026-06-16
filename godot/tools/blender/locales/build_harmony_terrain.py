@@ -509,7 +509,9 @@ ROAD_CORRIDORS = [
     # NexCorpHQPad south edge) over ~85m, giving ~13% slope.
     # Start point on HarmonyBlvd centerline at y=170.
     ("NXHQLink", [
-        (  44, 170, +3.0),   # on HarmonyBlvd centerline
+        (  44, 170, +1.0),   # on HarmonyBlvd centerline (HB at this
+                              # y is +1, not +3 — was creating a 2m
+                              # step at the junction)
         (  35, 195, +5.5),
         (  22, 220, +8.5),
         (  12, 240, +11.0),
