@@ -2611,6 +2611,190 @@ def _build_world_frogshop():
                        (0.05, 2.4, 1.6), (0.30, 0.68, 0.78, 1.0))
 
 
+# ── BOARDWALKS  (raised plank paths over tidal flats) ──────────
+COL_PLANK = (0.55, 0.42, 0.30, 1.0)
+
+
+def _build_boardwalks():
+    """Wooden plank paths connecting levee cottages to bayou-edge
+    decks. Visible from any street view in town, signature
+    delta-cottage detail."""
+    print("[graustark]   bayou boardwalks")
+    # Pick the same levee road we used for cottage placement
+    levee_road = next(r for r in GRAUSTARK_ROADS if r[0] == 'LeveeCrest_W')
+    sm = _smooth_polyline([(w[0], w[1]) for w in levee_road[1]],
+                          samples_per_seg=8)
+    count = 0
+    for i in range(0, len(sm), 3):
+        sx, sy = sm[i]
+        if (RF_ZONE_X[0] - 30 <= sx <= RF_ZONE_X[1] + 30
+                and RF_ZONE_Y[0] - 30 <= sy <= RF_ZONE_Y[1] + 30):
+            continue
+        # Cottage end (start of boardwalk)
+        if i + 1 < len(sm):
+            x1, y1 = sm[i + 1]
+        else:
+            x1, y1 = sm[i - 1]
+        dx, dy = x1 - sx, y1 - sy
+        seg = math.hypot(dx, dy) or 1
+        nx, ny = -dy / seg, dx / seg
+        cottage_x = sx + nx * 22
+        cottage_y = sy + ny * 22
+        if graustark_elevation(cottage_x, cottage_y) < 1.0:
+            continue
+        # Boardwalk goes east toward the bayou (negative levee
+        # crest side = east). Boardwalk endpoint ~10m east into
+        # the tidal band.
+        end_x = cottage_x + nx * 12
+        end_y = cottage_y + ny * 12
+        seg_len = math.hypot(end_x - cottage_x, end_y - cottage_y)
+        seg_dir_x = (end_x - cottage_x) / seg_len
+        seg_dir_y = (end_y - cottage_y) / seg_len
+        perp_x = -seg_dir_y
+        perp_y = seg_dir_x
+        # Plank deck (slightly raised at sea level)
+        mid_x = (cottage_x + end_x) / 2
+        mid_y = (cottage_y + end_y) / 2
+        if abs(seg_dir_x) > abs(seg_dir_y):
+            plank_size = (seg_len, 1.2, 0.10)
+        else:
+            plank_size = (1.2, seg_len, 0.10)
+        ht._make_box_local(
+            f"Graustark_Boardwalk_{count}_Deck",
+            (mid_x, mid_y, 0.40),
+            plank_size, COL_PLANK)
+        # 4 pilings under the deck
+        for p in range(4):
+            t = -0.4 + 0.8 * p / 3
+            px = cottage_x + (end_x - cottage_x) * (0.5 + t)
+            py = cottage_y + (end_y - cottage_y) * (0.5 + t)
+            ht._make_box_local(
+                f"Graustark_Boardwalk_{count}_Pile_{p}",
+                (px, py, -0.50),
+                (0.20, 0.20, 2.0), COL_PILING)
+        # Small floating deck at the bayou end
+        ht._make_box_local(
+            f"Graustark_Boardwalk_{count}_EndDeck",
+            (end_x, end_y, BAYOU_WATER_Z + 0.30),
+            (2.4, 2.4, 0.12), COL_PLANK)
+        count += 1
+    print(f"[graustark]     placed {count} boardwalks")
+
+
+# ── FQ AWNINGS  (Bourbon Quarter ground-floor shop awnings) ────
+COL_AWNING_RED   = (0.66, 0.20, 0.18, 1.0)
+COL_AWNING_GREEN = (0.20, 0.36, 0.28, 1.0)
+COL_AWNING_BLUE  = (0.20, 0.30, 0.48, 1.0)
+COL_AWNING_GOLD  = (0.78, 0.62, 0.22, 1.0)
+COL_AWNING_PURP  = (0.42, 0.22, 0.46, 1.0)
+
+
+def _build_fq_awnings():
+    """Awnings extending out over the storefront of each FQ row
+    building. Five different colors, period New Orleans look."""
+    print("[graustark]   FQ awnings")
+    block_cx = -320.0
+    block_cy = +90.0
+    spacing_y = 8.0
+    colors = [COL_AWNING_RED, COL_AWNING_GREEN, COL_AWNING_GOLD,
+              COL_AWNING_BLUE, COL_AWNING_PURP]
+    for i in range(5):
+        by = block_cy + (i - 2) * spacing_y
+        # Awning hangs off the front (street side, west = -X)
+        # at ground-floor height
+        ax = block_cx - 5.5      # 1m forward of building front
+        ay = by
+        gz = graustark_elevation(ax, ay)
+        ht._make_box_local(
+            f"Graustark_FQ_Awning_{i}",
+            (ax, ay, gz + 3.20),
+            (2.0, 6.0, 0.06), colors[i])
+        # 2 small support brackets (iron rods to the building)
+        for s in (-1, +1):
+            ht._make_box_local(
+                f"Graustark_FQ_Awning_{i}_Bracket_{s:+d}",
+                (block_cx - 4.0, by + s * 2.5, gz + 3.0),
+                (3.0, 0.06, 0.06), COL_BLACK_IRON)
+    print(f"[graustark]     placed 5 FQ awnings")
+
+
+# ── LEVEE COTTAGE MAILBOXES ─────────────────────────────────────
+
+def _build_cottage_mailboxes():
+    """Mailbox at the curb of each levee-crest cottage."""
+    print("[graustark]   levee cottage mailboxes")
+    levee_road = next(r for r in GRAUSTARK_ROADS if r[0] == 'LeveeCrest_W')
+    sm = _smooth_polyline([(w[0], w[1]) for w in levee_road[1]],
+                          samples_per_seg=8)
+    count = 0
+    for i in range(0, len(sm), 3):
+        sx, sy = sm[i]
+        if (RF_ZONE_X[0] - 30 <= sx <= RF_ZONE_X[1] + 30
+                and RF_ZONE_Y[0] - 30 <= sy <= RF_ZONE_Y[1] + 30):
+            continue
+        if i + 1 < len(sm):
+            x1, y1 = sm[i + 1]
+        else:
+            x1, y1 = sm[i - 1]
+        dx, dy = x1 - sx, y1 - sy
+        seg = math.hypot(dx, dy) or 1
+        nx, ny = -dy / seg, dx / seg
+        # Mailbox at the cottage-WEST side (toward levee road)
+        mx = sx + nx * 4 * (-1)
+        my = sy + ny * 4 * (-1)
+        # Skip if the cottage was skipped earlier
+        cottage_x = sx + nx * 22
+        cottage_y = sy + ny * 22
+        if graustark_elevation(cottage_x, cottage_y) < 1.0:
+            continue
+        gz = graustark_elevation(mx, my)
+        ht._make_box_local(
+            f"Graustark_LeveeMailbox_Post_{count}",
+            (mx, my, gz + 0.6),
+            (0.10, 0.10, 1.2), COL_DOOR_DARK)
+        ht._make_box_local(
+            f"Graustark_LeveeMailbox_Box_{count}",
+            (mx, my, gz + 1.30),
+            (0.45, 0.30, 0.25),
+            (0.62, 0.36, 0.20, 1.0))
+        count += 1
+    print(f"[graustark]     placed {count} cottage mailboxes")
+
+
+# ── LIGHTHOUSE DOCK  (Hermit Bayou Lighthouse pier) ─────────────
+
+def _build_lighthouse_dock():
+    """Wooden pier from the lighthouse platform out to deeper
+    water + small mooring posts."""
+    print("[graustark]   lighthouse dock")
+    lx, ly = ARCANA_LOCALES['Hermit_Lighthouse'][0]
+    # Pier extends 12m to the north (toward the bayou main channel)
+    pier_dir_x, pier_dir_y = 0.0, 1.0
+    pier_len = 12.0
+    pier_w = 1.6
+    for s in range(6):
+        seg_y = ly + 5.0 + s * 2.0
+        deck_z = 0.50
+        ht._make_box_local(
+            f"Graustark_LighthousePier_Deck_{s}",
+            (lx, seg_y, deck_z),
+            (pier_w, 2.0, 0.10), COL_PLANK)
+        # Pilings under each segment
+        for sx_sgn in (-1, +1):
+            ht._make_box_local(
+                f"Graustark_LighthousePier_Pile_{s}_{sx_sgn:+d}",
+                (lx + sx_sgn * (pier_w / 2 - 0.10), seg_y, -0.60),
+                (0.18, 0.18, 2.2), COL_PILING)
+    # End mooring posts
+    for ang_i in (0, 1):
+        mx = lx + (-1 if ang_i == 0 else +1) * 1.0
+        my = ly + 5.0 + 12.0 - 0.5
+        ht._make_box_local(
+            f"Graustark_LighthousePier_Bollard_{ang_i}",
+            (mx, my, 0.95),
+            (0.18, 0.18, 0.9), COL_BLACK_IRON)
+
+
 # ── ROAD MARKINGS  (lane stripes + crosswalks) ──────────────────
 COL_LANE_YELLOW = (0.92, 0.78, 0.20, 1.0)
 COL_LANE_WHITE  = (0.94, 0.94, 0.90, 1.0)
@@ -3347,6 +3531,10 @@ def build_district_buildings():
     _build_road_markings()
     _build_stop_signs()
     _build_fire_hydrants()
+    _build_boardwalks()
+    _build_fq_awnings()
+    _build_cottage_mailboxes()
+    _build_lighthouse_dock()
 
 
 # ── PHASE 5  CHARACTERS  ────────────────────────────────────────
