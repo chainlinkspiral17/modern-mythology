@@ -14113,15 +14113,15 @@ def build_wild_zone_trees():
         (-260, -340, 'pine'),
         # W wild between WestEstates and WestComm
         (-500, -120, 'oak'), (-500, -240, 'pine'),
-        (-490, 0, 'oak'),
+        (-490, 8, 'oak'),    # moved off WCommLink (was at y=0)
         # NW wild between NorthRanch and OliverTree
         (-180, 280, 'pine'), (-100, 240, 'oak'),
         # Between OTPark and HarmonyPark
-        (-160, 160, 'pine'), (-200, 100, 'oak'),
+        (-160, 160, 'pine'), (-210, 90, 'oak'),    # was (-200, 100) ON NRLink endpoint
         # Between PHs and chapter-1
         (-350, -90, 'oak'), (-250, -90, 'pine'),
         # E between EastCDS and HSField
-        (260, 60, 'oak'), (320, 0, 'pine'),
+        (260, 60, 'oak'), (330, 10, 'pine'),    # was (320, 0) on Horizon Dr
         # Around drive-in
         (60, -250, 'pine'), (240, -260, 'oak'),
         # Random distributed
@@ -14159,12 +14159,12 @@ def build_wild_zone_trees():
         # Between NR and OliverTree (more dense)
         (-150, 270, 'oak'), (-140, 250, 'pine'), (-130, 290, 'oak'),
         # Between OTPark and HarmonyPark (wild gap)
-        (-150, 150, 'oak'), (-140, 110, 'pine'), (-130, 170, 'oak'),
+        (-150, 150, 'oak'), (-130, 125, 'pine'), (-130, 170, 'oak'),    # was (-140, 110) ON NRLink
         (-150, 80, 'pine'),
         # Between Phase3 and chapter-1 (more)
         (-400, -90, 'oak'), (-300, -90, 'oak'), (-200, -90, 'pine'),
         # E between EastCDS and HSField — denser
-        (290, 30, 'oak'), (350, 50, 'pine'), (380, 0, 'oak'),
+        (290, 30, 'oak'), (350, 50, 'pine'), (385, 12, 'oak'),    # was (380, 0) ~0.5m off Horizon Dr
         # Around drive-in — more trees
         (90, -260, 'oak'), (180, -270, 'pine'), (210, -240, 'oak'),
         # Distributed fill in unclaimed zones
