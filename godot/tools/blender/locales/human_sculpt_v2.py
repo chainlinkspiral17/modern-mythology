@@ -408,58 +408,51 @@ def _build_head(name, base_x, base_y, head_base_z, p, fwd, prp,
         if -0.3 < lz < 0.4 and abs(ly) > 0.6 and abs(lx) < 0.3:
             sy *= 0.94
 
-        # 6) EYE SOCKETS · ALMOND-SHAPED (wider horizontally than
-        # tall) carve INWARD on the front sides at eye level.
-        # Inner corner of socket is LOWER than outer (anatomical).
-        # eye level: lz ~ 0.10..0.30, sides: |ly| ~ 0.25..0.65,
-        # front: lx > 0.5.
-        if lx > 0.45 and 0.05 < lz < 0.35 and 0.18 < abs(ly) < 0.65:
-            # Almond shape: tighter Z band, looser Y band
+        # 6) EYE SOCKETS — at the head MIDLINE (lz = 0), almond
+        # shape carved into the front. Was at lz=0.18 (brow
+        # level — too high).
+        if lx > 0.45 and -0.20 < lz < 0.20 and 0.18 < abs(ly) < 0.65:
             socket_mask = smoothstep01((lx - 0.45) / 0.45) \
-                          * smoothstep01((0.12 - abs(lz - 0.18)) / 0.12) \
+                          * smoothstep01((0.18 - abs(lz)) / 0.18) \
                           * smoothstep01((abs(ly) - 0.18) / 0.18) \
                           * smoothstep01((0.65 - abs(ly)) / 0.10)
-            sx -= socket_mask * head_d_max * 0.18    # 12% → 18% carve
+            sx -= socket_mask * head_d_max * 0.18
 
-        # 7) BROW RIDGE · push OUTWARD just ABOVE the eye sockets
-        # so there's a clear bone ridge separating eye from
-        # forehead (the strongest "this is a human face" feature
-        # in profile silhouette).
-        if lx > 0.55 and 0.30 < lz < 0.50 and abs(ly) < 0.55:
+        # 7) BROW RIDGE — just ABOVE the eye line (~10-25% up).
+        if lx > 0.55 and 0.10 < lz < 0.30 and abs(ly) < 0.55:
             brow_mask = smoothstep01((lx - 0.55) / 0.45) \
-                        * smoothstep01((0.10 - abs(lz - 0.40)) / 0.10) \
+                        * smoothstep01((0.10 - abs(lz - 0.20)) / 0.10) \
                         * smoothstep01((0.55 - abs(ly)) / 0.40)
             sx += brow_mask * head_d_max * 0.06
 
-        # 8) NOSE BRIDGE + TIP · pulled forward in a longer band
-        # so the nose has a clear bridge + tip, not just a bump.
-        # Extends from brow level down through nose tip.
-        if lx > 0.4 and abs(ly) < 0.18 and -0.10 < lz < 0.35:
+        # 8) NOSE BRIDGE + TIP — band from brow (lz=+0.15) down
+        # through nose tip (lz=-0.40). Was -0.10 to +0.35 (way
+        # above the actual nose position).
+        if lx > 0.4 and abs(ly) < 0.18 and -0.45 < lz < 0.20:
             nose_mask = smoothstep01((lx - 0.4) / 0.5) \
                         * smoothstep01((0.18 - abs(ly)) / 0.18) \
-                        * smoothstep01((0.35 - abs(lz - 0.10)) / 0.20)
-            sx += nose_mask * head_d_max * 0.20      # 15% → 20%
+                        * smoothstep01((0.35 - abs(lz + 0.12)) / 0.20)
+            sx += nose_mask * head_d_max * 0.20
 
-        # 9) UPPER LIP VOLUME · push OUT just above the mouth
-        # crease so the upper lip has visible silhouette mass.
-        if lx > 0.55 and abs(ly) < 0.22 and -0.18 < lz < -0.08:
+        # 9) UPPER LIP VOLUME at lz ~ -0.62 (just above mouth line)
+        if lx > 0.55 and abs(ly) < 0.22 and -0.72 < lz < -0.55:
             uplip = smoothstep01((lx - 0.55) / 0.45) \
                     * smoothstep01((0.22 - abs(ly)) / 0.22) \
-                    * smoothstep01((0.05 - abs(lz + 0.13)) / 0.05)
+                    * smoothstep01((0.09 - abs(lz + 0.63)) / 0.09)
             sx += uplip * head_d_max * 0.06
 
-        # 10) LOWER LIP VOLUME · push OUT just below the mouth
-        if lx > 0.55 and abs(ly) < 0.22 and -0.30 < lz < -0.18:
+        # 10) LOWER LIP VOLUME at lz ~ -0.78
+        if lx > 0.55 and abs(ly) < 0.22 and -0.85 < lz < -0.72:
             lolip = smoothstep01((lx - 0.55) / 0.45) \
                     * smoothstep01((0.22 - abs(ly)) / 0.22) \
-                    * smoothstep01((0.06 - abs(lz + 0.24)) / 0.06)
+                    * smoothstep01((0.07 - abs(lz + 0.78)) / 0.07)
             sx += lolip * head_d_max * 0.05
 
-        # 11) MOUTH CREASE (between upper + lower lip)
-        if lx > 0.55 and abs(ly) < 0.22 and -0.22 < lz < -0.16:
+        # 11) MOUTH CREASE between lips (lz ~ -0.70)
+        if lx > 0.55 and abs(ly) < 0.22 and -0.74 < lz < -0.66:
             crease = smoothstep01((lx - 0.55) / 0.4) \
                      * smoothstep01((0.22 - abs(ly)) / 0.22) \
-                     * smoothstep01((0.03 - abs(lz + 0.19)) / 0.03)
+                     * smoothstep01((0.04 - abs(lz + 0.70)) / 0.04)
             sx -= crease * head_d_max * 0.04
 
         sculpted.append((sx, sy, sz))
@@ -496,20 +489,24 @@ def _build_head(name, base_x, base_y, head_base_z, p, fwd, prp,
 
     # ── Facial features ────────────────────────────────────────
     fwd_x, fwd_y = fwd
-    # NOSE — at the SURFACE of the head (head_d_max * 1.05, just
-    # past the skull). Was at 0.55 which was buried halfway in.
-    nose_z = head_base_z + head_h * 0.62
-    nose_out = head_d_max * 1.05
+    # ANATOMICAL FACIAL LANDMARKS · per the planar-face guide:
+    #   EYE LINE  = 50% of head height (halfway between chin and crown)
+    #   NOSE TIP  = ~35% (between eye line and mouth)
+    #   MOUTH     = ~15% (between nose tip and chin)
+    # head_base_z is at the CHIN line, so we measure UP from there.
+    # NOSE — protrudes from the surface at 35% up from chin
+    nose_z = head_base_z + head_h * 0.35
+    nose_out = head_d_max * 1.10
     nose_x = base_x + fwd_x * nose_out
     nose_y = base_y + fwd_y * nose_out
     if abs(fwd_y) > abs(fwd_x):
-        nose_size = (head_w_max * 0.36, 0.060, head_h * 0.26)
+        nose_size = (head_w_max * 0.40, 0.060, head_h * 0.20)
     else:
-        nose_size = (0.060, head_w_max * 0.36, head_h * 0.26)
+        nose_size = (0.060, head_w_max * 0.40, head_h * 0.20)
     _box(f"{name}_Nose", (nose_x, nose_y, nose_z),
          nose_size, skin_color)
-    # EYE SOCKETS · darker band on the head surface at eye height
-    eye_z = head_base_z + head_h * 0.68
+    # EYE LINE at exact head midline (50% up from chin)
+    eye_z = head_base_z + head_h * 0.50
     socket_x = base_x + fwd_x * (head_d_max * 1.00)
     socket_y = base_y + fwd_y * (head_d_max * 1.00)
     socket_col = (skin_color[0] * 0.55,
@@ -541,8 +538,8 @@ def _build_head(name, base_x, base_y, head_base_z, p, fwd, prp,
              (ex + fwd_x * 0.012, ey + fwd_y * 0.012, eye_z),
              (0.022, 0.022, 0.022),
              (0.10, 0.08, 0.06, 1.0))
-    # MOUTH — thin band on the surface
-    mouth_z = head_base_z + head_h * 0.32
+    # MOUTH at 15% up from chin per anatomical canon
+    mouth_z = head_base_z + head_h * 0.18
     mouth_x = base_x + fwd_x * (head_d_max * 1.02)
     mouth_y = base_y + fwd_y * (head_d_max * 1.02)
     mouth_col = (0.62, 0.32, 0.32, 1.0)
