@@ -9133,39 +9133,51 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                                 col_lid_dark, segments=4)
 
     # ── BACKYARD PRIVACY FENCE · wooden planks along back + sides
-    # of the lot. Standard 1.8m tall wood-stain fence, U-shape with
-    # gaps for the house. Reads from any angle as "this property
-    # has a defined backyard."
+    # of the lot. Standard 1.8m tall wood-stain fence with per-house
+    # variety: not every house has all 3 segments, and back/side
+    # offsets jitter ±1.5m so neighbors don't form rifle-straight
+    # property-line columns spanning hundreds of metres.
     col_fence = palette.get('fence', (0.55, 0.40, 0.26, 1.0))
     col_fence_post = palette.get('fence_post', (0.42, 0.30, 0.20, 1.0))
     FENCE_H = 1.80
     fence_plank_t = 0.06
-    # Back-yard centre: behind the house along -facing
-    by_back_off = 11.0        # m behind house centre
-    by_side_off = 9.0         # m to either side of house centre
+    # Position-seeded variety: many houses skip a segment.
+    seed_fence = (int(cx * 71) + int(cy * 73)) % 100
+    seed_fence_jit = (int(cx * 79) + int(cy * 83)) % 100
+    # 18% of houses have NO fence (open lots)
+    has_any_fence = seed_fence >= 18
+    # of fenced houses: 35% have back-only, 20% have one side only,
+    # 45% have full U (back + both sides)
+    has_back = has_any_fence and seed_fence < 80
+    has_side_neg = has_any_fence and seed_fence >= 35
+    has_side_pos = has_any_fence and seed_fence < 55
+    # Per-house offset jitter (±1.5m back, ±0.8m side)
+    by_back_off = 11.0 + ((seed_fence_jit % 31) - 15) * 0.10
+    by_side_off = 9.0 + (((seed_fence_jit // 31) % 17) - 8) * 0.10
     by_back_x = cx - fx * by_back_off
     by_back_y = cy - fy * by_back_off
-    # BACK fence segment — perpendicular to facing, spanning
-    # 2 * by_side_off wide
-    back_z = mesh_z(by_back_x, by_back_y)
-    if abs(fx) > 0.5:
-        # Facing E/W: back fence is along Y
-        _make_box_local(f"{name}_FenceBack",
-                        (by_back_x, by_back_y, back_z + FENCE_H / 2),
-                        (fence_plank_t, by_side_off * 2, FENCE_H),
-                        col_fence)
-    else:
-        _make_box_local(f"{name}_FenceBack",
-                        (by_back_x, by_back_y, back_z + FENCE_H / 2),
-                        (by_side_off * 2, fence_plank_t, FENCE_H),
-                        col_fence)
+    if has_back:
+        back_z = mesh_z(by_back_x, by_back_y)
+        if abs(fx) > 0.5:
+            _make_box_local(f"{name}_FenceBack",
+                            (by_back_x, by_back_y, back_z + FENCE_H / 2),
+                            (fence_plank_t, by_side_off * 2, FENCE_H),
+                            col_fence)
+        else:
+            _make_box_local(f"{name}_FenceBack",
+                            (by_back_x, by_back_y, back_z + FENCE_H / 2),
+                            (by_side_off * 2, fence_plank_t, FENCE_H),
+                            col_fence)
     # SIDE fence segments — parallel to facing, going from back
     # fence toward the front of the house (stop ~main_d/2 + 2 from
     # house centre so they don't run into the front yard)
     side_len = by_back_off - main_d / 2 - 1.0
     side_mid_along = -fx * (by_back_off - side_len / 2)
     side_mid_perp = by_side_off
+    side_flags = {-1: has_side_neg, +1: has_side_pos}
     for s_sgn in (-1, 1):
+        if not side_flags[s_sgn]:
+            continue
         side_cx = cx + side_mid_along + perp_x * s_sgn * side_mid_perp
         side_cy = cy - fy * (by_back_off - side_len / 2) \
                   + perp_y * s_sgn * side_mid_perp
@@ -9177,21 +9189,23 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
         _make_box_local(f"{name}_FenceSide_{s_sgn:+d}",
                         (side_cx, side_cy, side_z + FENCE_H / 2),
                         side_size, col_fence)
-    # Corner posts at the 4 turning points of the fence U
+    # Corner posts — only at corners where two segments meet
     for c_sgn in (-1, 1):
-        cp_x = by_back_x + perp_x * c_sgn * by_side_off
-        cp_y = by_back_y + perp_y * c_sgn * by_side_off
-        cp_z = mesh_z(cp_x, cp_y)
-        _make_box_local(f"{name}_FencePost_Back_{c_sgn:+d}",
-                        (cp_x, cp_y, cp_z + FENCE_H / 2),
-                        (0.16, 0.16, FENCE_H + 0.10), col_fence_post)
-        # Front-end corner posts (where side fences stop)
-        fp_x = cx - fx * (main_d / 2 + 1.0) + perp_x * c_sgn * by_side_off
-        fp_y = cy - fy * (main_d / 2 + 1.0) + perp_y * c_sgn * by_side_off
-        fp_z = mesh_z(fp_x, fp_y)
-        _make_box_local(f"{name}_FencePost_Front_{c_sgn:+d}",
-                        (fp_x, fp_y, fp_z + FENCE_H / 2),
-                        (0.16, 0.16, FENCE_H + 0.10), col_fence_post)
+        side_present = side_flags[c_sgn]
+        if has_back and side_present:
+            cp_x = by_back_x + perp_x * c_sgn * by_side_off
+            cp_y = by_back_y + perp_y * c_sgn * by_side_off
+            cp_z = mesh_z(cp_x, cp_y)
+            _make_box_local(f"{name}_FencePost_Back_{c_sgn:+d}",
+                            (cp_x, cp_y, cp_z + FENCE_H / 2),
+                            (0.16, 0.16, FENCE_H + 0.10), col_fence_post)
+        if side_present:
+            fp_x = cx - fx * (main_d / 2 + 1.0) + perp_x * c_sgn * by_side_off
+            fp_y = cy - fy * (main_d / 2 + 1.0) + perp_y * c_sgn * by_side_off
+            fp_z = mesh_z(fp_x, fp_y)
+            _make_box_local(f"{name}_FencePost_Front_{c_sgn:+d}",
+                            (fp_x, fp_y, fp_z + FENCE_H / 2),
+                            (0.16, 0.16, FENCE_H + 0.10), col_fence_post)
 
     # ── REAR PATIO · concrete slab + cafe table + BBQ on ~30% of
     # houses. Sits just off the back of the main house wall.
