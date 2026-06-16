@@ -420,6 +420,67 @@ problem in reverse: in Blender Y is up here, foot points +Z.
    forearms is a silhouette-killer; fingers usually go
    unnoticed on 7-inch displays.
 
+### Neck read (corrected — got compressed in the first pass)
+
+The first 40-row silhouette was too coarse; the neck got
+crushed into one row. Re-rasterised the upper body at
+2.9 cm/row and pulled width-at-Y in 2 cm bins:
+
+```
+Y=3.30  w=0.295  ████████              ← head bone (jaw pivot)
+Y=3.22  w=0.231  ██████                  jaw-to-neck transition
+Y=3.20  w=0.233  ██████
+Y=3.18  w=0.201  ██████                ← neck NARROWEST
+Y=3.16  w=0.218  ██████                  1H mark (chin)
+Y=3.14  w=0.247  ███████
+Y=3.12  w=0.311  █████████
+Y=3.10  w=0.280  ████████
+Y=3.08  w=0.399  ███████████
+Y=3.06  w=0.516  ███████████████
+Y=3.04  w=0.529  ███████████████       ← neck1 bone (base of neck)
+Y=3.02  w=0.632  ██████████████████
+Y=3.00  w=0.737  ██████████████████████
+Y=2.96  w=0.619  ██████████████████      clavicle build-up
+Y=2.94  w=0.845  █████████████████████████ ← shoulder peak
+```
+
+Key dimensions:
+
+- **Neck minimum width**: ~0.20 (at Y=3.18, just under the
+  jaw line).
+- **Neck height**: ~10-14 cm — from Y=3.20 (jaw base) down
+  to Y=3.06 (collar peak).
+- **Neck/head-width ratio**: 0.20 / 0.34 ≈ **0.59**. Neck
+  is roughly 60% the width of the head. Real-anatomy
+  reference is ~50-65%, so this matches.
+- **Neck-to-shoulder rise**: width goes from 0.20 → 0.85
+  in just 24 cm of Y, with the steepest climb between
+  Y=3.10 and Y=2.94 (0.28 → 0.85 over 16 cm). That's the
+  **trapezius slope** — the sharp diagonal from skull-base
+  down to deltoid that distinguishes a real human neck
+  from a tube.
+
+Bone layout in this 14 cm band: `head` at Y=3.30 (jaw
+pivot), `neck2` between, `neck1` at Y=3.04 (skull base).
+**Two neck bones** — one for the head-tilt at the
+skull-base, one for the upper-spine sway. This is what
+enables looking-around animations without the chin
+penetrating the chest.
+
+Lesson for our sculpts: the neck silhouette is THREE Y-bands,
+not one tube:
+
+1. **Neck proper** (narrow column): ~10 cm tall, ~60% of
+   head width.
+2. **Trapezius slope** (rapid widening): ~6-8 cm, diagonal
+   from neck base to clavicle peak.
+3. **Clavicle / shoulder peak**: ~3-5 cm before arms hang.
+
+Skipping the middle band — going straight from "narrow
+neck" to "wide shoulders" — is the single most common
+beginner read of the neck, and it's wrong. The traps
+carry the visual weight.
+
 ### Open question for next session
 
 The base mesh has narrow shoulders (1.8 head-widths). Real
