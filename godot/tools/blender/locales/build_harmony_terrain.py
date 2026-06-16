@@ -13591,6 +13591,80 @@ def build_community_landmarks():
                     0.18, 0.80,
                     (0.85, 0.20, 0.18, 1.0), segments=6)
 
+    # ── FIRE TRUCK · parked in front of the middle bay
+    ft_x = fs_cx
+    ft_y = fs_cy - fs_d / 2 - 5.5
+    ft_z = mesh_z(ft_x, ft_y)
+    col_ft_body = (0.85, 0.18, 0.16, 1.0)         # fire-engine red
+    col_ft_window = (0.18, 0.22, 0.30, 1.0)
+    col_ft_chrome = (0.78, 0.78, 0.80, 1.0)
+    col_ft_black = (0.10, 0.10, 0.12, 1.0)
+    # Truck body (LONG box) — 7.5m long, 2.4m wide, 2.6m tall
+    truck_l = 7.5; truck_w = 2.4; truck_body_h = 2.0
+    _make_box_local("FT_Body",
+                    (ft_x, ft_y, ft_z + 0.45 + truck_body_h / 2),
+                    (truck_w, truck_l, truck_body_h), col_ft_body)
+    # Cabin (front 1/3, shorter + offset toward the south end)
+    _make_box_local("FT_Cabin",
+                    (ft_x, ft_y - truck_l * 0.30,
+                     ft_z + 0.45 + truck_body_h + 0.50),
+                    (truck_w - 0.10, truck_l * 0.35, 1.00),
+                    col_ft_body)
+    # Cabin window strip (wraparound)
+    _make_box_local("FT_Cabin_WinF",
+                    (ft_x, ft_y - truck_l * 0.45,
+                     ft_z + 0.45 + truck_body_h + 0.70),
+                    (truck_w - 0.20, 0.05, 0.50),
+                    col_ft_window)
+    for sgn in (-1, 1):
+        _make_box_local(f"FT_Cabin_WinS_{sgn:+d}",
+                        (ft_x + sgn * (truck_w / 2 - 0.05),
+                         ft_y - truck_l * 0.30,
+                         ft_z + 0.45 + truck_body_h + 0.70),
+                        (0.05, truck_l * 0.30, 0.50),
+                        col_ft_window)
+    # 6 wheels (3 per side: front + rear pair)
+    wheel_r = 0.40
+    for side_sgn in (-1, 1):
+        for y_off in (-truck_l * 0.35, truck_l * 0.10, truck_l * 0.30):
+            _make_cyl_local(
+                f"FT_Wheel_{side_sgn:+d}_{int(y_off*10):+d}",
+                (ft_x + side_sgn * (truck_w / 2 - 0.05),
+                 ft_y + y_off, ft_z + wheel_r),
+                wheel_r, 0.30, col_ft_black, segments=6)
+    # Ladder on top (long aluminum ladder pointing south)
+    ladder_z = ft_z + 0.45 + truck_body_h + 0.10
+    _make_box_local("FT_Ladder_Body",
+                    (ft_x, ft_y + 0.6, ladder_z),
+                    (0.60, truck_l - 1.0, 0.18), col_ft_chrome)
+    # Ladder rails (2 long thin rectangles for visible side rails)
+    for sgn in (-1, 1):
+        _make_box_local(f"FT_Ladder_Rail_{sgn:+d}",
+                        (ft_x + sgn * 0.22, ft_y + 0.6,
+                         ladder_z + 0.10),
+                        (0.05, truck_l - 1.0, 0.08), col_ft_chrome)
+    # Light bar on top of cabin
+    _make_box_local("FT_LightBar",
+                    (ft_x, ft_y - truck_l * 0.30,
+                     ft_z + 0.45 + truck_body_h + 1.10),
+                    (truck_w * 0.8, 0.30, 0.18),
+                    (0.85, 0.18, 0.16, 1.0))
+    # White stripe along the body side
+    for sgn in (-1, 1):
+        _make_box_local(f"FT_WhiteStripe_{sgn:+d}",
+                        (ft_x + sgn * (truck_w / 2 + 0.005),
+                         ft_y, ft_z + 0.45 + truck_body_h * 0.6),
+                        (0.04, truck_l - 0.4, 0.18),
+                        (0.95, 0.94, 0.90, 1.0))
+    # Headlights (2 white squares on the front cabin face)
+    for sgn in (-1, 1):
+        _make_box_local(f"FT_Headlight_{sgn:+d}",
+                        (ft_x + sgn * 0.55,
+                         ft_y - truck_l * 0.48,
+                         ft_z + 0.45 + truck_body_h * 0.6),
+                        (0.30, 0.04, 0.20),
+                        (0.98, 0.96, 0.86, 1.0))
+
     # ── POST OFFICE at (180, -30) just south of Horizon Drive
     po_cx, po_cy = 180.0, -30.0
     po_z = mesh_z(po_cx, po_cy)
