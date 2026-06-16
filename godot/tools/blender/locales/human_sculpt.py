@@ -914,11 +914,14 @@ def _build_head(name, base_x, base_y, head_base_z, s,
     # (wider perpendicular to facing) with hand-tuned half-widths
     # so the silhouette has a defined chin and brow.
     # Ring (z_offset_from_center, half_width_side, half_depth_facing)
-    # all in head_r units.
+    # all in head_r units. 7 rings for a smoother crown profile.
+    # The crown is ROUND (not conical) — the top ring is wide
+    # enough that the apex fan doesn't read as a pointy hat.
     skull_rings = [
-        (+0.95,  0.18, 0.18),   # crown (rounded top)
-        (+0.55,  0.62, 0.55),   # forehead / brow
-        (+0.10,  0.78, 0.66),   # cheekbones (widest)
+        (+1.00,  0.30, 0.30),   # crown apex ring (rounded top)
+        (+0.85,  0.48, 0.45),   # high crown
+        (+0.55,  0.72, 0.62),   # forehead / brow line
+        (+0.10,  0.82, 0.68),   # cheekbones (widest)
         (-0.30,  0.62, 0.55),   # jaw line
         (-0.65,  0.38, 0.38),   # chin
         (-0.85,  0.16, 0.16),   # neck taper
