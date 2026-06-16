@@ -87,7 +87,7 @@ shadow_enabled = false
 [node name="Atmosphere" parent="." instance=ExtResource("5_atmosphere_glb")]
 
 [node name="HeroFrasier" parent="." instance=ExtResource("8_frasier")]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.95, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="FloorBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)

@@ -288,59 +288,205 @@ def build_counter():
              (0.10, 0.10, 0.08), COL_BRASS)
 
 
-def build_booths():
-    """Vinyl booths along the windows. Six booths total: four against the +X wall, two against the -X wall.
+BOOTH_POSITIONS = []   # (prefix, table_center_x, table_center_y) — filled by builders, used by build_table_dressings
 
-    Realistic diner proportions:
-        seat        · 0.55m deep · 0.42m tall (seat top at 0.42m above floor)
-        backrest    · 0.10m deep · 0.55m tall (top at 0.97m — about chest height seated)
-        table top   · 0.04m thick at z=0.74m (slightly below standing belt height)
-        2 booth     · 1.4m wide (room for two diners shoulder-to-shoulder)
+
+# ── booth dimensions (a real diner-comfortable design) ──
+# Bench: 1.50m wide × 0.48m deep × 0.45m tall.
+# Backrest: 0.06m thick × 1.50m wide × 0.70m tall, top at z=1.15.
+# Table: 0.85m × 0.65m × 0.04m, top at z=0.74.
+# Leg gap (bench-front to bench-front): 0.65m.
+# Total perpendicular footprint backrest-to-backrest: 1.73m.
+SEAT_DEPTH    = 0.48
+SEAT_WIDTH    = 1.50
+SEAT_TOP_Z    = 0.45
+BACK_H        = 0.70
+BACK_THICK    = 0.06
+TABLE_LEN     = 0.85    # along bench-axis
+TABLE_DEPTH   = 0.65    # along leg-gap-axis (must fit inside leg gap)
+TABLE_TOP_Z   = 0.74
+LEG_GAP       = 0.65    # bench-front to bench-front
+BOOTH_TOTAL   = BACK_THICK + SEAT_DEPTH + LEG_GAP + SEAT_DEPTH + BACK_THICK  # 1.73
+
+
+def _build_booth_bench(prefix, side_label, center_x, center_y, axis_along, with_backrest):
+    """One bench unit: seat + (optional) backrest + cushion seams + headrest crown.
+
+    `axis_along`     : 'X' or 'Y' — direction the bench is LONG (matches its 1.50m dimension).
+    `center_x/y`     : bench center on the floor plan.
+    `with_backrest`  : True for booth's outer benches, False if this side faces a shared spine
+                       (the spine has its own backrest pair).
     """
-    def _booth(prefix: str, bx: float, by: float) -> None:
-        # ── seats (two parallel benches facing each other) ──
-        seat_top_z = 0.42
-        seat_z = seat_top_z / 2.0   # center of the seat slab
-        # south-side seat (facing north — diner sits facing the wall)
-        make_box(f"{prefix}_seat_S", (bx, by - 0.50, seat_z), (1.4, 0.55, 0.42), COL_VINYL_RED)
-        # north-side seat (facing south — diner sits facing the counter / aisle)
-        make_box(f"{prefix}_seat_N", (bx, by + 0.50, seat_z), (1.4, 0.55, 0.42), COL_VINYL_RED)
+    seat_z = SEAT_TOP_Z / 2.0
+    if axis_along == 'X':
+        seat_size = (SEAT_WIDTH, SEAT_DEPTH, SEAT_TOP_Z)
+    else:
+        seat_size = (SEAT_DEPTH, SEAT_WIDTH, SEAT_TOP_Z)
+    # Seat slab
+    make_box(f"{prefix}_{side_label}_seat",
+             (center_x, center_y, seat_z),
+             seat_size, COL_VINYL_RED)
+    # Cushion seam strip running along the seat front edge — suggests upholstered seam
+    if axis_along == 'X':
+        seam_off = (0.0, -SEAT_DEPTH / 2 + 0.06, 0.0)
+        seam_size = (SEAT_WIDTH - 0.08, 0.04, 0.018)
+    else:
+        seam_off = (-SEAT_DEPTH / 2 + 0.06, 0.0, 0.0)
+        seam_size = (0.04, SEAT_WIDTH - 0.08, 0.018)
+    make_box(f"{prefix}_{side_label}_seat_seam",
+             (center_x + seam_off[0], center_y + seam_off[1], SEAT_TOP_Z - 0.01),
+             seam_size, COL_VINYL_RED_DK)
+    # Tufted button rows — three small dimples along the seat
+    for t in range(3):
+        frac = -1 + t  # -1, 0, +1
+        if axis_along == 'X':
+            bx = center_x + frac * 0.40
+            by = center_y
+        else:
+            bx = center_x
+            by = center_y + frac * 0.40
+        make_box(f"{prefix}_{side_label}_tuft_{t}",
+                 (bx, by, SEAT_TOP_Z - 0.005),
+                 (0.04, 0.04, 0.010), COL_VINYL_RED_DK)
+    if not with_backrest:
+        return
+    # Backrest — taller for comfort
+    back_offset = SEAT_DEPTH / 2 + BACK_THICK / 2
+    if axis_along == 'X':
+        back_pos_y_offset = back_offset
+        back_size = (SEAT_WIDTH, BACK_THICK, BACK_H)
+    else:
+        back_pos_y_offset = 0.0
+        back_size = (BACK_THICK, SEAT_WIDTH, BACK_H)
+    # which side of the bench does the backrest sit on? side_label encodes that
+    # Convention: side_label ends with the cardinal direction the bench's BACK FACE points.
+    # 'S' → backrest is on the south side of bench (further -Y), bench faces +Y
+    sign_map = {'N': +1, 'S': -1, 'E': +1, 'W': -1}
+    back_side = side_label[-1]
+    back_sign = sign_map[back_side]
+    if axis_along == 'X':
+        bx_off, by_off = 0.0, back_sign * back_offset
+    else:
+        bx_off, by_off = back_sign * back_offset, 0.0
+    back_z = SEAT_TOP_Z + BACK_H / 2.0
+    make_box(f"{prefix}_{side_label}_back",
+             (center_x + bx_off, center_y + by_off, back_z),
+             back_size, COL_VINYL_RED_DK)
+    # Headrest crown — a slightly darker top piece, sticks 2cm proud
+    if axis_along == 'X':
+        crown_size = (SEAT_WIDTH + 0.04, BACK_THICK + 0.03, 0.05)
+    else:
+        crown_size = (BACK_THICK + 0.03, SEAT_WIDTH + 0.04, 0.05)
+    make_box(f"{prefix}_{side_label}_crown",
+             (center_x + bx_off, center_y + by_off, SEAT_TOP_Z + BACK_H + 0.025),
+             crown_size, COL_WOOD_TRIM)
+    # Vertical seam strips on the backrest (button-tuft column suggestion)
+    for c in range(3):
+        frac = -1 + c
+        if axis_along == 'X':
+            cx_off, cy_off = frac * 0.45, by_off - back_sign * (BACK_THICK / 2 + 0.005)
+            stripe_size = (0.025, 0.012, BACK_H - 0.10)
+        else:
+            cx_off, cy_off = bx_off - back_sign * (BACK_THICK / 2 + 0.005), frac * 0.45
+            stripe_size = (0.012, 0.025, BACK_H - 0.10)
+        make_box(f"{prefix}_{side_label}_back_stripe_{c}",
+                 (center_x + cx_off, center_y + cy_off, back_z),
+                 stripe_size, COL_VINYL_RED)
 
-        # ── backrests (thin tall slabs behind each seat) ──
-        back_h = 0.55
-        back_center_z = seat_top_z + back_h / 2.0   # backrest stacks on top of seat
-        make_box(f"{prefix}_back_S", (bx, by - 0.77, back_center_z), (1.4, 0.06, back_h), COL_VINYL_RED_DK)
-        make_box(f"{prefix}_back_N", (bx, by + 0.77, back_center_z), (1.4, 0.06, back_h), COL_VINYL_RED_DK)
 
-        # ── table ──
-        table_top_z = 0.74
-        make_box(f"{prefix}_table", (bx, by, table_top_z), (1.10, 0.70, 0.04), COL_FORMICA)
-        # narrow center post supporting the table
-        make_box(f"{prefix}_post", (bx, by, table_top_z / 2.0), (0.06, 0.06, table_top_z), COL_BRASS)
+def _build_booth_table(prefix, cx, cy, axis_along):
+    """Center-post table with chrome edge band and table-number plaque.
+    `axis_along` matches the bench long axis (so the table's long side
+    is parallel to the benches)."""
+    if axis_along == 'X':
+        top_size = (TABLE_LEN, TABLE_DEPTH, 0.04)
+    else:
+        top_size = (TABLE_DEPTH, TABLE_LEN, 0.04)
+    make_box(f"{prefix}_table_top", (cx, cy, TABLE_TOP_Z), top_size, COL_FORMICA)
+    # Chrome edge band — slightly larger, slightly thinner, lower so it shows as the table's "rim"
+    if axis_along == 'X':
+        band_size = (TABLE_LEN + 0.02, TABLE_DEPTH + 0.02, 0.02)
+    else:
+        band_size = (TABLE_DEPTH + 0.02, TABLE_LEN + 0.02, 0.02)
+    make_box(f"{prefix}_table_band",
+             (cx, cy, TABLE_TOP_Z - 0.03), band_size, COL_BRASS)
+    # Pedestal: chrome cylinder + cast-iron foot disc
+    make_cyl(f"{prefix}_table_post",
+             (cx, cy, TABLE_TOP_Z / 2),
+             0.045, TABLE_TOP_Z - 0.04, COL_BRASS, segments=8, axis='Z')
+    make_cyl(f"{prefix}_table_foot",
+             (cx, cy, 0.03),
+             0.22, 0.04, (0.16, 0.14, 0.12, 1.0), segments=10, axis='Z')
+    # Pendant lamp above the table — chrome stem, enameled cone shade, warm bulb
+    lamp_z = TABLE_TOP_Z + 0.70
+    wire_top_z = D_H - 0.05
+    make_cyl(f"{prefix}_lamp_stem",
+             (cx, cy, (lamp_z + wire_top_z) / 2),
+             0.012, wire_top_z - lamp_z, COL_PAYPHONE_DARK, segments=4, axis='Z')
+    make_cyl(f"{prefix}_lamp_canopy",
+             (cx, cy, wire_top_z - 0.02), 0.07, 0.04,
+             COL_BRASS, segments=8, axis='Z')
+    make_sphere_low(f"{prefix}_lamp_shade",
+                    (cx, cy, lamp_z), 0.18,
+                    (0.86, 0.62, 0.32, 1.0), rings=2, segments=8)
+    make_sphere_low(f"{prefix}_lamp_bulb",
+                    (cx, cy, lamp_z - 0.16), 0.05,
+                    (0.96, 0.92, 0.74, 1.0), rings=2, segments=6)
+    # Table-number plaque on the table surface (corner, away from the diners)
+    if axis_along == 'X':
+        plaque_off = (TABLE_LEN / 2 - 0.10, -TABLE_DEPTH / 2 + 0.10, 0.0)
+    else:
+        plaque_off = (-TABLE_DEPTH / 2 + 0.10, TABLE_LEN / 2 - 0.10, 0.0)
+    make_box(f"{prefix}_table_number",
+             (cx + plaque_off[0], cy + plaque_off[1], TABLE_TOP_Z + 0.022),
+             (0.07, 0.07, 0.005), COL_BRASS)
 
-        # ── hanging lamp above the table ──
-        # lamp shade hangs ~50cm above the table top
-        lamp_z = table_top_z + 0.50
-        make_box(f"{prefix}_lamp", (bx, by, lamp_z), (0.18, 0.18, 0.10), (0.90, 0.75, 0.50, 1.0))
-        # wire goes up from the lamp toward the ceiling
-        wire_top_z = D_H - 0.05
-        wire_center_z = (lamp_z + wire_top_z) / 2.0
-        wire_len = wire_top_z - lamp_z
-        make_box(f"{prefix}_lamp_wire", (bx, by, wire_center_z), (0.010, 0.010, wire_len), COL_PAYPHONE_DARK)
 
-    # Booths along the EAST WALL (parking-lot side) — these are
-    # the canonical window-side booths. Booths 1, 2, 3.
-    booth_east_y = [-2.0, +1.0, +4.0]
-    for i, by in enumerate(booth_east_y, start=1):
-        bx = D_W/2 - 1.4
-        _booth(f"Booth_{i}", bx, by)
+def build_wall_booths():
+    """Booths arrayed against the EAST and WEST walls — backrests tight
+    against the window strips with a 5cm gap. Each booth is one bench
+    pressed to the wall + one bench out in the room + table between."""
 
-    # Booth 6 (the canon "Table 17"-adjacent) at the river window.
-    # Renumbering: the only river-side booth is booth_6 (single).
-    booth_west_y = [+3.0]
-    for i, by in enumerate(booth_west_y, start=6):
-        bx = -D_W/2 + 1.4
-        _booth(f"Booth_{i}", bx, by)
+    # ── EAST WALL booths (parking-lot windows) ──
+    # Wall at x = D_W/2 = +9. Wall booth bench long-axis = Y.
+    # Cocktail bar occupies y < -2.5 on the east side. Hostess stand at south.
+    # Available Y for east booths: roughly -2.0 to +5.0.
+    east_back_x   = D_W / 2 - 0.05 - BACK_THICK / 2            # backrest center x (~+8.92)
+    east_bench_x  = east_back_x - BACK_THICK / 2 - SEAT_DEPTH / 2  # wall-bench center
+    east_far_bench_x   = east_bench_x - SEAT_DEPTH / 2 - LEG_GAP - SEAT_DEPTH / 2
+    east_far_back_x    = east_far_bench_x - SEAT_DEPTH / 2 - BACK_THICK / 2
+    east_table_x  = (east_bench_x + east_far_bench_x) / 2.0
+    # Door opening on east wall sits roughly Y=-1.45 to +1.0; skip that range.
+    for i, by in enumerate([+1.80, +3.40, +4.80], start=1):
+        prefix = f"BoothE_{i}"
+        # Wall-side bench (backrest faces +X / 'E')
+        _build_booth_bench(prefix, "wall_E", east_bench_x, by, axis_along='Y',
+                           with_backrest=True)
+        # Far bench (backrest faces -X / 'W')
+        _build_booth_bench(prefix, "far_W", east_far_bench_x, by, axis_along='Y',
+                           with_backrest=True)
+        # Table
+        _build_booth_table(prefix, east_table_x, by, axis_along='Y')
+        BOOTH_POSITIONS.append((prefix, east_table_x, by, 'Y'))
+
+    # ── WEST WALL booths (river window) ──
+    # Wall at x = -D_W/2 = -9. Kitchen alcove blocks y < -4.4. Counter is at y=-3.5.
+    # Available Y: roughly -3.0 (north of counter-clear) to +5.0.
+    west_back_x   = -D_W / 2 + 0.05 + BACK_THICK / 2           # backrest center x (~-8.92)
+    west_bench_x  = west_back_x + BACK_THICK / 2 + SEAT_DEPTH / 2
+    west_far_bench_x  = west_bench_x + SEAT_DEPTH / 2 + LEG_GAP + SEAT_DEPTH / 2
+    west_far_back_x   = west_far_bench_x + SEAT_DEPTH / 2 + BACK_THICK / 2
+    west_table_x  = (west_bench_x + west_far_bench_x) / 2.0
+    for i, by in enumerate([-2.50, -0.90, +0.70, +2.30, +3.90], start=1):
+        prefix = f"BoothW_{i}"
+        # Wall-side bench (backrest faces -X / 'W')
+        _build_booth_bench(prefix, "wall_W", west_bench_x, by, axis_along='Y',
+                           with_backrest=True)
+        # Far bench (backrest faces +X / 'E')
+        _build_booth_bench(prefix, "far_E", west_far_bench_x, by, axis_along='Y',
+                           with_backrest=True)
+        _build_booth_table(prefix, west_table_x, by, axis_along='Y')
+        BOOTH_POSITIONS.append((prefix, west_table_x, by, 'Y'))
 
 
 # ────────────────────────────────────────────────────────────────
@@ -459,67 +605,79 @@ def make_sphere_low(name, center, radius, color, rings=3, segments=8):
     return obj
 
 
-def build_center_booth_islands():
-    """Free-standing booth islands in the open center of the diner.
-    Four islands, each a 2-bench booth around a square formica
-    table. These are the 'main floor' tables the diner expects —
-    the wall booths are window-side overflow."""
-    # Islands placed in the center band, NORTH of the counter (Y=-3.5)
-    # Player walks through aisles between them.
-    island_specs = [
-        ("ISLE_A", +0.5, -1.0),
-        ("ISLE_B", +4.0, -1.0),
-        ("ISLE_C", +0.5, +2.0),
-        ("ISLE_D", +4.0, +2.0),
-    ]
-    for prefix, bx, by in island_specs:
-        seat_top_z = 0.42
-        seat_z = seat_top_z / 2.0
-        # South-side seat
-        make_box(f"{prefix}_seat_S", (bx, by - 0.50, seat_z),
-                 (1.2, 0.55, 0.42), COL_VINYL_RED)
-        # North-side seat
-        make_box(f"{prefix}_seat_N", (bx, by + 0.50, seat_z),
-                 (1.2, 0.55, 0.42), COL_VINYL_RED)
-        # Backrests
-        back_h = 0.55
-        back_cz = seat_top_z + back_h / 2.0
-        make_box(f"{prefix}_back_S", (bx, by - 0.77, back_cz),
-                 (1.2, 0.06, back_h), COL_VINYL_RED_DK)
-        make_box(f"{prefix}_back_N", (bx, by + 0.77, back_cz),
-                 (1.2, 0.06, back_h), COL_VINYL_RED_DK)
-        # Cushion seam strip across the seat (suggestion of upholstery)
-        for s in (-1, +1):
-            make_box(f"{prefix}_seat_seam_{s:+d}",
-                     (bx, by + s * 0.50, seat_top_z - 0.01),
-                     (1.20, 0.06, 0.01), COL_VINYL_RED_DK)
-        # Square table on a brass center post (cylinder)
-        table_top_z = 0.74
-        make_box(f"{prefix}_table_top", (bx, by, table_top_z),
-                 (1.00, 0.85, 0.04), COL_FORMICA)
-        make_cyl(f"{prefix}_table_post",
-                 (bx, by, table_top_z / 2),
-                 0.045, table_top_z, COL_BRASS, segments=6)
-        make_box(f"{prefix}_table_foot",
-                 (bx, by, 0.04), (0.30, 0.30, 0.06), COL_BRASS)
-        # Hanging lamp (hemisphere shade + cone + bulb)
-        lamp_z = table_top_z + 0.65
-        wire_top_z = D_H - 0.05
-        # Wire (thin tall cylinder)
-        make_cyl(f"{prefix}_lamp_wire",
-                 (bx, by, (lamp_z + wire_top_z) / 2),
-                 0.012, wire_top_z - lamp_z,
-                 COL_PAYPHONE_DARK, segments=4)
-        # Shade — flattened sphere
-        make_sphere_low(f"{prefix}_lamp_shade",
-                        (bx, by, lamp_z), 0.18,
-                        (0.86, 0.62, 0.32, 1.0),
-                        rings=2, segments=8)
-        # Bulb (small bright sphere visible below shade)
-        make_sphere_low(f"{prefix}_lamp_bulb",
-                        (bx, by, lamp_z - 0.16), 0.06,
-                        (0.96, 0.92, 0.74, 1.0),
-                        rings=2, segments=6)
+def build_center_back_to_back_booths():
+    """Back-to-back booth pairs running down the center of the room.
+
+    Each PAIR shares a center spine — two backrest panels glued back to
+    back form the spine, with one booth opening east and one opening
+    west. Maximises floor use the way real diners do.
+
+    Pair cross-section (perpendicular to spine, here oriented N-S):
+        outer_back_W | bench_W_outer | leg_gap | bench_W_inner | SPINE |
+        bench_E_inner | leg_gap | bench_E_outer | outer_back_E
+    Total perpendicular footprint: 2 × BOOTH_TOTAL - BACK_THICK ≈ 3.40m
+    """
+    # Spine runs N-S at X = 0. Each pair is 1.50m wide along Y.
+    # Need >0.5m clearance from counter at y=-3.5 (counter back edge y=-3.10) and >0.5m
+    # from north wall at y=+6.
+    # Place pairs at Y centers spaced 1.60m apart:
+    spine_x = 0.0
+    # bench center offsets from spine (perpendicular, X axis)
+    bench_inner_offset = BACK_THICK / 2 + SEAT_DEPTH / 2          # ~0.27m
+    bench_outer_offset = bench_inner_offset + SEAT_DEPTH + LEG_GAP  # ~1.40m
+    table_offset       = (bench_inner_offset + bench_outer_offset) / 2.0  # ~0.835m
+    outer_back_offset  = bench_outer_offset + SEAT_DEPTH / 2 + BACK_THICK / 2
+
+    # Three pairs (six booths total) — fits between counter (y=-3.1) and hallway opening (y=+6).
+    pair_ys = [-1.0, +0.8, +2.6, +4.4]
+    for i, py in enumerate(pair_ys, start=1):
+        prefix = f"BoothC_{i}"
+        # ── Spine: two backrests laminated back-to-back ──
+        spine_z = SEAT_TOP_Z + BACK_H / 2.0
+        # West-facing back (this is the WEST booth's backrest)
+        make_box(f"{prefix}_spine_back_W",
+                 (spine_x - BACK_THICK / 2, py, spine_z),
+                 (BACK_THICK, SEAT_WIDTH, BACK_H), COL_VINYL_RED_DK)
+        # East-facing back
+        make_box(f"{prefix}_spine_back_E",
+                 (spine_x + BACK_THICK / 2, py, spine_z),
+                 (BACK_THICK, SEAT_WIDTH, BACK_H), COL_VINYL_RED_DK)
+        # Wooden crown molding capping the spine (single piece across both)
+        make_box(f"{prefix}_spine_crown",
+                 (spine_x, py, SEAT_TOP_Z + BACK_H + 0.025),
+                 (BACK_THICK * 2 + 0.04, SEAT_WIDTH + 0.04, 0.05),
+                 COL_WOOD_TRIM)
+        # Backrest stripes on each face — three vertical seams suggesting tufting
+        for c in range(3):
+            frac = -1 + c
+            for face_sign, side in [(-1, 'W'), (+1, 'E')]:
+                make_box(f"{prefix}_spine_stripe_{side}_{c}",
+                         (spine_x + face_sign * (BACK_THICK + 0.005),
+                          py + frac * 0.45,
+                          spine_z),
+                         (0.012, 0.025, BACK_H - 0.10), COL_VINYL_RED)
+
+        # ── WEST booth (opens to -X) ──
+        # Inner bench (against spine) — no separate backrest (the spine is its back)
+        _build_booth_bench(prefix + "_W", "inner",
+                           spine_x - bench_inner_offset, py,
+                           axis_along='Y', with_backrest=False)
+        # Outer bench (has its own backrest facing east)
+        _build_booth_bench(prefix + "_W", "outer_E",
+                           spine_x - bench_outer_offset, py,
+                           axis_along='Y', with_backrest=True)
+        _build_booth_table(prefix + "_W", spine_x - table_offset, py, axis_along='Y')
+        BOOTH_POSITIONS.append((prefix + "_W", spine_x - table_offset, py, 'Y'))
+
+        # ── EAST booth (opens to +X) ──
+        _build_booth_bench(prefix + "_E", "inner",
+                           spine_x + bench_inner_offset, py,
+                           axis_along='Y', with_backrest=False)
+        _build_booth_bench(prefix + "_E", "outer_W",
+                           spine_x + bench_outer_offset, py,
+                           axis_along='Y', with_backrest=True)
+        _build_booth_table(prefix + "_E", spine_x + table_offset, py, axis_along='Y')
+        BOOTH_POSITIONS.append((prefix + "_E", spine_x + table_offset, py, 'Y'))
 
 
 def build_kitchen_alcove():
@@ -747,40 +905,83 @@ def build_counter_accessories():
 
 
 def build_table_dressings():
-    """Salt + pepper + napkin dispenser on each booth table.
-    Booths are along the +X (east) wall and -X (west) wall."""
-    # The booths in build_booths are positioned at:
-    # East wall (+X): 4 booths
-    # West wall (-X): 2 booths
-    # Each booth table is at the booth center between two benches.
-    # We don't have direct access to the booth coords from the builder
-    # so we re-derive (this matches the placement in build_booths).
-    east_xs = [3.0, 5.0, 7.0, 9.0]    # 4 east booths
-    west_xs = [-3.0, -5.0]            # 2 west booths
-    booths = [(x, +4.5) for x in east_xs] + [(x, -4.5) for x in west_xs]
-    for i, (bx, by) in enumerate(booths):
-        # Salt shaker (cream/white)
-        make_box(f"Salt_{i}",
-                 (bx + 0.18, by, 1.10),
-                 (0.08, 0.08, 0.14), COL_SALT)
-        make_box(f"Salt_Cap_{i}",
-                 (bx + 0.18, by, 1.18),
-                 (0.06, 0.06, 0.03), COL_BRASS)
-        # Pepper shaker (dark)
-        make_box(f"Pepper_{i}",
-                 (bx - 0.18, by, 1.10),
-                 (0.08, 0.08, 0.14), COL_PEPPER)
-        make_box(f"Pepper_Cap_{i}",
-                 (bx - 0.18, by, 1.18),
-                 (0.06, 0.06, 0.03), COL_BRASS)
-        # Napkin dispenser (chunky horizontal box)
+    """Salt + pepper + napkin dispenser + sugar caddy + ketchup bottle
+    on every booth table. Reads from the BOOTH_POSITIONS list populated
+    by the booth builders so this stays in sync."""
+    table_z = TABLE_TOP_Z
+    for i, (prefix, tx, ty, axis_along) in enumerate(BOOTH_POSITIONS):
+        # Use the table's two principal axes:
+        #   axis_long = bench axis (table's long dimension)
+        #   axis_short = the leg-gap axis (table's short dimension)
+        # We arrange condiments AT THE FAR END of the table (away from
+        # players sitting across), grouped tight.
+        if axis_along == 'Y':
+            long_axis_off = lambda d: (0.0, d, 0.0)
+            short_axis_off = lambda d: (d, 0.0, 0.0)
+        else:
+            long_axis_off = lambda d: (d, 0.0, 0.0)
+            short_axis_off = lambda d: (0.0, d, 0.0)
+        # Anchor at one end of the long axis (~0.30m from table center)
+        anchor_long = +0.28
+        anchor = (tx + long_axis_off(anchor_long)[0],
+                  ty + long_axis_off(anchor_long)[1])
+        # Salt shaker
+        sx_off = short_axis_off(+0.08)
+        make_box(f"Salt_{i}", (anchor[0] + sx_off[0], anchor[1] + sx_off[1], table_z + 0.07),
+                 (0.06, 0.06, 0.12), COL_SALT)
+        make_box(f"Salt_Cap_{i}", (anchor[0] + sx_off[0], anchor[1] + sx_off[1], table_z + 0.14),
+                 (0.05, 0.05, 0.025), COL_BRASS)
+        # Pepper shaker (paired next to salt)
+        px_off = short_axis_off(-0.08)
+        make_box(f"Pepper_{i}", (anchor[0] + px_off[0], anchor[1] + px_off[1], table_z + 0.07),
+                 (0.06, 0.06, 0.12), COL_PEPPER)
+        make_box(f"Pepper_Cap_{i}", (anchor[0] + px_off[0], anchor[1] + px_off[1], table_z + 0.14),
+                 (0.05, 0.05, 0.025), COL_BRASS)
+        # Napkin dispenser (further toward end of table)
+        nd_long = long_axis_off(+0.10)
         make_box(f"NapkinDispenser_{i}",
-                 (bx, by - 0.18, 1.10),
-                 (0.20, 0.10, 0.16), COL_KITCHEN_STEEL)
-        # Napkins peeking out (cream slab)
+                 (anchor[0] + nd_long[0], anchor[1] + nd_long[1], table_z + 0.09),
+                 (0.10 if axis_along == 'Y' else 0.18, 0.18 if axis_along == 'Y' else 0.10, 0.17),
+                 COL_KITCHEN_STEEL)
         make_box(f"Napkins_{i}",
-                 (bx, by - 0.18, 1.12),
-                 (0.18, 0.04, 0.12), COL_NAPKIN)
+                 (anchor[0] + nd_long[0], anchor[1] + nd_long[1], table_z + 0.105),
+                 (0.08 if axis_along == 'Y' else 0.14, 0.14 if axis_along == 'Y' else 0.08, 0.13),
+                 COL_NAPKIN)
+        # Ketchup bottle — squat red cylinder with darker cap
+        kt_off = long_axis_off(-0.08)
+        make_cyl(f"Ketchup_Body_{i}",
+                 (anchor[0] + kt_off[0], anchor[1] + kt_off[1], table_z + 0.06),
+                 0.030, 0.12, (0.72, 0.18, 0.14, 1.0), segments=8, axis='Z')
+        make_cyl(f"Ketchup_Neck_{i}",
+                 (anchor[0] + kt_off[0], anchor[1] + kt_off[1], table_z + 0.14),
+                 0.018, 0.04, (0.72, 0.18, 0.14, 1.0), segments=6, axis='Z')
+        make_cyl(f"Ketchup_Cap_{i}",
+                 (anchor[0] + kt_off[0], anchor[1] + kt_off[1], table_z + 0.17),
+                 0.020, 0.025, (0.96, 0.94, 0.88, 1.0), segments=6, axis='Z')
+        # Sugar caddy (glass jar with metal lid)
+        sg_off = (long_axis_off(-0.08)[0] + short_axis_off(-0.10)[0],
+                  long_axis_off(-0.08)[1] + short_axis_off(-0.10)[1])
+        make_box(f"Sugar_Jar_{i}",
+                 (anchor[0] + sg_off[0], anchor[1] + sg_off[1], table_z + 0.06),
+                 (0.07, 0.07, 0.12), (0.92, 0.86, 0.68, 1.0))
+        make_box(f"Sugar_Lid_{i}",
+                 (anchor[0] + sg_off[0], anchor[1] + sg_off[1], table_z + 0.13),
+                 (0.075, 0.075, 0.020), COL_BRASS)
+        # Coffee cup on a saucer on the OTHER end of the table (suggests a seated diner)
+        cup_long = long_axis_off(-0.22)
+        cup_short = short_axis_off(+0.10)
+        cup_x = anchor[0] - long_axis_off(anchor_long)[0] + cup_long[0] + cup_short[0]
+        cup_y = anchor[1] - long_axis_off(anchor_long)[1] + cup_long[1] + cup_short[1]
+        make_cyl(f"Saucer_{i}",
+                 (cup_x, cup_y, table_z + 0.01),
+                 0.07, 0.010, (0.96, 0.92, 0.84, 1.0), segments=10, axis='Z')
+        make_cyl(f"CoffeeCup_{i}",
+                 (cup_x, cup_y, table_z + 0.05),
+                 0.040, 0.07, (0.96, 0.92, 0.84, 1.0), segments=8, axis='Z')
+        # Coffee liquid (dark disc at cup top)
+        make_cyl(f"CoffeeLiquid_{i}",
+                 (cup_x, cup_y, table_z + 0.085),
+                 0.034, 0.004, (0.18, 0.10, 0.06, 1.0), segments=8, axis='Z')
 
 
 def build_wall_decor():
@@ -836,35 +1037,58 @@ def build_wall_decor():
              (0, clock_cy - 0.08, clock_cz),
              0.04, 0.02, COL_BRASS,
              segments=8, axis='Y')
-    # 4 framed photos along the east wall (booth side)
-    for i in range(4):
-        fy = -3.5 + i * 2.3
+    # Framed photos along the SOUTH wall, above the booth/seating zone
+    # (high enough that booths and people don't occlude them)
+    for i in range(5):
+        fx = -6.0 + i * 3.0
         # Frame
         make_box(f"WallPhoto_Frame_{i}",
-                 (D_W/2 - 0.08, fy, 2.20),
-                 (0.05, 0.50, 0.60), COL_PHOTO_FRAME)
-        # Photo (cream rectangle inside)
+                 (fx, -D_D/2 + 0.08, 2.80),
+                 (0.55, 0.04, 0.42), COL_PHOTO_FRAME)
         make_box(f"WallPhoto_Image_{i}",
-                 (D_W/2 - 0.12, fy, 2.20),
-                 (0.02, 0.40, 0.50), COL_NAPKIN)
+                 (fx, -D_D/2 + 0.05, 2.80),
+                 (0.45, 0.02, 0.34), COL_NAPKIN)
     # Neon "OPEN" sign in the front window (south, parking-lot side)
     make_box("NeonOpenSign",
-             (-2.2, D_D/2 - 0.10, 2.20),
-             (1.20, 0.06, 0.50), (0.95, 0.32, 0.62, 1.0))
+             (+5.0, D_D/2 - 0.10, 2.30),
+             (1.20, 0.06, 0.45), (0.95, 0.32, 0.62, 1.0))
+    # Chalkboard daily-specials sign on the south wall, next to the entry
+    make_box("Chalkboard_Frame",
+             (D_W/2 - 4.5, -D_D/2 + 0.08, 1.70),
+             (1.40, 0.05, 0.90), COL_WOOD_TRIM)
+    make_box("Chalkboard_Slate",
+             (D_W/2 - 4.5, -D_D/2 + 0.05, 1.70),
+             (1.28, 0.02, 0.78), (0.10, 0.12, 0.10, 1.0))
+    # A few chalk-line streaks (suggestion of writing)
+    for i in range(4):
+        line_z = 1.95 - i * 0.16
+        line_w = 0.85 - i * 0.10
+        make_box(f"Chalkboard_Line_{i}",
+                 (D_W/2 - 4.7, -D_D/2 + 0.03, line_z),
+                 (line_w, 0.005, 0.025),
+                 (0.86, 0.86, 0.80, 1.0))
 
 
 def build_entry_props():
-    """Coat rack + hostess stand near the parking-lot entry."""
-    # Hostess podium at the south-east corner near the door
-    px, py = D_W/2 - 2.0, D_D/2 - 1.5
+    """Coat rack + hostess stand near the parking-lot entry (east door,
+    Y≈0). Both pushed JUST inside the door, on the south side, so they
+    don't conflict with the wall booths."""
+    # Hostess podium just inside the front door, on the south side
+    px, py = D_W/2 - 1.5, -1.8
     make_box("HostessStand_Base", (px, py, 0.60),
-             (0.60, 0.40, 1.20), COL_WOOD_TRIM)
+             (0.50, 0.45, 1.20), COL_WOOD_TRIM)
     make_box("HostessStand_Top", (px, py, 1.24),
-             (0.65, 0.45, 0.08), (0.50, 0.36, 0.22, 1.0))
+             (0.55, 0.50, 0.08), (0.50, 0.36, 0.22, 1.0))
     make_box("Menus_Stack", (px + 0.10, py - 0.10, 1.30),
              (0.20, 0.12, 0.10), COL_VINYL_RED)
-    # Coat rack to the right of the entrance
-    cr_x, cr_y = D_W/2 - 0.6, D_D/2 - 0.6
+    # Reservation book on the podium
+    make_box("Reservation_Book", (px - 0.10, py + 0.05, 1.30),
+             (0.20, 0.14, 0.04), (0.32, 0.18, 0.10, 1.0))
+    # Pen cup on the podium
+    make_cyl("Pen_Cup", (px + 0.18, py + 0.16, 1.32),
+             0.025, 0.06, COL_BRASS, segments=6, axis='Z')
+    # Coat rack south of the hostess stand, against the south wall
+    cr_x, cr_y = D_W/2 - 1.5, -D_D/2 + 0.5
     make_box("CoatRack_Pole", (cr_x, cr_y, 0.95),
              (0.06, 0.06, 1.90), COL_WOOD_TRIM)
     make_box("CoatRack_Base", (cr_x, cr_y, 0.03),
@@ -1085,8 +1309,8 @@ def main():
     build_floor_checkerboard()
     build_counter()
     build_counter_accessories()
-    build_booths()
-    build_center_booth_islands()
+    build_wall_booths()
+    build_center_back_to_back_booths()
     build_table_dressings()
     build_kitchen_alcove()
     build_cocktail_bar()
