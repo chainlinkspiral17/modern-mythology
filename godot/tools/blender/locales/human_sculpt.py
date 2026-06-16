@@ -871,25 +871,27 @@ def _build_arms(name, base_x, base_y, shoulder_z, s,
     return hand_positions
 
 
-def _build_neck(name, base_x, base_y, shoulder_z, s, skin_color):
-    """Tapered neck — wider at the shoulder base (where it
-    blends into the trapezius muscle line) narrowing slightly to
-    the head base. Real human necks aren't uniform cylinders."""
+def _build_neck(name, base_x, base_y, shoulder_z, s, skin_color,
+                facing='-Y'):
+    """Tapered neck — wider at the shoulder base, narrower at
+    the head. Real human necks aren't uniform cylinders.
+    Includes a small Adam's-apple bump on the front (facing axis)
+    so the neck silhouette reads from the side."""
     neck_h = PROP["neck_h"] * s
     neck_r = PROP["neck_r"] * s
     _cyl_taper(f"{name}_Neck",
                (base_x, base_y, shoulder_z + neck_h / 2),
-               neck_r * 1.25,    # wider at the shoulder side
-               neck_r * 0.90,    # narrower at the head side
+               neck_r * 1.25, neck_r * 0.90,
                neck_h, skin_color, segments=8)
-    # ADAM'S APPLE / collar-bone hint · a small skin bump at the
-    # front of the neck. Reads as a real neck silhouette from the
-    # side.
-    fwd_x, fwd_y = (0, 0)
-    # Pick facing from a heuristic on the most common -Y default
-    # — passed-in facing isn't available here. The Adam's-apple
-    # bump on the front (which depends on facing) is added in
-    # the head builder where facing is known.
+    # Adam's apple — small skin bump on the front of the neck
+    fwd_x, fwd_y = _face_axis(facing)
+    aa_x = base_x + fwd_x * neck_r * 0.85
+    aa_y = base_y + fwd_y * neck_r * 0.85
+    aa_z = shoulder_z + neck_h * 0.45
+    _sphere_low(f"{name}_AdamsApple",
+                (aa_x, aa_y, aa_z),
+                neck_r * 0.45, skin_color,
+                rings=2, segments=6, squash_z=0.85)
     return shoulder_z + neck_h
 
 
@@ -1435,7 +1437,8 @@ def _human_figure_inner(name, base_x, base_y, base_z, s, facing,
     _build_scarf(name, base_x + lean_x, base_y, shoulder_z, s, scarf_color)
     # Neck on top of scarf area
     head_base_z = _build_neck(name, base_x + lean_x, base_y,
-                              shoulder_z, s, skin_color)
+                              shoulder_z, s, skin_color,
+                              facing=facing)
     # Head — counter-tilt by half the lean for a subtle s-curve
     head_x = base_x + lean_x * 0.5
     _build_head(name, head_x, base_y, head_base_z, s,
