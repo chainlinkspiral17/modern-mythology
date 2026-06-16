@@ -527,14 +527,14 @@ ARCANA_LOCALES = {
     'Strength_Carnival':  ((-460.0, +400.0), 'todo'),
     'Hermit_Lighthouse':  (( +50.0, -380.0), 'todo'),
     'Wheel_Casino':       ((-200.0, +300.0), 'todo'),
-    'Justice_Courthouse': ((-130.0, +250.0), 'todo'),
-    'Death_Hospital':     ((-460.0, -340.0), 'todo'),
-    'Devil_Roadhouse':    ((+260.0, -380.0), 'todo'),
+    'Justice_Courthouse': ((-130.0, +250.0), 'placed'),
+    'Death_Hospital':     ((-460.0, -340.0), 'placed'),
+    'Devil_Roadhouse':    ((+260.0, -380.0), 'placed'),
     'Tower_Broadcast':    ((+400.0, +380.0), 'todo'),
     'Star_IceCo':         ((+180.0, -300.0), 'todo'),
     'Moon_DriveIn':       ((-500.0, +200.0), 'todo'),
     'Sun_Garden':         ((-120.0, +120.0), 'todo'),
-    'Judgement_Cemetery': ((-360.0, -200.0), 'todo'),
+    'Judgement_Cemetery': ((-360.0, -200.0), 'placed'),
     'World_FrogShop':     ((+150.0, +300.0), 'todo'),
 }
 
@@ -1400,6 +1400,279 @@ def _build_hierophant_armory():
                        (3.5, 0.10, 5.0), COL_DOOR_DARK)
 
 
+def _build_devil_roadhouse():
+    """Daigle's Roadhouse — Gumbo Limbo cycle gravitas. Cinderblock
+    one-storey bar with peeling sign + two ratty pickups out front."""
+    print("[graustark]   Devil — Daigle's Roadhouse")
+    cx, cy = ARCANA_LOCALES['Devil_Roadhouse'][0]
+    gz = graustark_elevation(cx, cy)
+    W, D, H = 14.0, 9.0, 3.6
+    ht._make_box_local("Devil_Daigle_Body",
+                       (cx, cy, gz + H / 2),
+                       (W, D, H), (0.62, 0.58, 0.52, 1.0))
+    # Flat tar roof
+    ht._make_box_local("Devil_Daigle_Roof",
+                       (cx, cy, gz + H + 0.15),
+                       (W + 0.4, D + 0.4, 0.30),
+                       (0.14, 0.12, 0.12, 1.0))
+    # Faded peeling "DAIGLE'S" sign over the door
+    ht._make_box_local("Devil_Daigle_Sign",
+                       (cx, cy - D / 2 - 0.05, gz + 3.0),
+                       (5.0, 0.15, 0.9), (0.78, 0.20, 0.18, 1.0))
+    # Schlitz neon — small horizontal box hanging off the side
+    ht._make_box_local("Devil_Daigle_Neon",
+                       (cx + W / 2 + 0.1, cy, gz + 2.6),
+                       (0.10, 1.6, 0.45), (0.85, 0.35, 0.20, 1.0))
+    # Single front door
+    ht._make_box_local("Devil_Daigle_Door",
+                       (cx, cy - D / 2 - 0.05, gz + 1.0),
+                       (1.0, 0.10, 2.0), COL_DOOR_DARK)
+    # Two front windows
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"Devil_Daigle_Window_{s:+d}",
+            (cx + s * 3.5, cy - D / 2 - 0.05, gz + 1.8),
+            (1.4, 0.05, 1.0), COL_GLASS_DARK)
+    # Two ratty pickups parked out front
+    for i, ox in enumerate([-4.5, +4.5]):
+        tx = cx + ox
+        ty = cy - D / 2 - 3.5
+        col = (0.42, 0.30, 0.22, 1.0) if i == 0 else (0.36, 0.32, 0.26, 1.0)
+        # Truck body
+        ht._make_box_local(f"Devil_Daigle_Truck_{i}_Body",
+                           (tx, ty, gz + 0.85), (2.0, 5.0, 1.2), col)
+        # Cab roof
+        ht._make_box_local(f"Devil_Daigle_Truck_{i}_Cab",
+                           (tx, ty - 0.8, gz + 1.9),
+                           (1.9, 2.2, 0.7), col)
+        # Wheels (4)
+        for wx, wy_ in [(-0.8, -1.6), (+0.8, -1.6),
+                        (-0.8, +1.6), (+0.8, +1.6)]:
+            ht._make_box_local(
+                f"Devil_Daigle_Truck_{i}_Wheel_{wx:+.1f}_{wy_:+.1f}",
+                (tx + wx, ty + wy_, gz + 0.30),
+                (0.32, 0.64, 0.64), COL_BLACK_IRON)
+
+
+def _build_justice_courthouse():
+    """Graustark Parish Courthouse — Italianate brick block + clock
+    tower + four-column portico facing the town square."""
+    print("[graustark]   Justice — Parish Courthouse")
+    cx, cy = ARCANA_LOCALES['Justice_Courthouse'][0]
+    gz = graustark_elevation(cx, cy)
+    W, D, H = 18.0, 22.0, 10.5
+    ht._make_box_local("Justice_Court_Body",
+                       (cx, cy, gz + H / 2),
+                       (W, D, H), COL_BRICK_RED)
+    # Cornice plate
+    ht._make_box_local("Justice_Court_Cornice",
+                       (cx, cy, gz + H + 0.15),
+                       (W + 0.6, D + 0.6, 0.30), COL_LIMESTONE)
+    # Hipped roof
+    ht._make_box_local("Justice_Court_Roof",
+                       (cx, cy, gz + H + 0.8),
+                       (W, D, 0.8), (0.28, 0.24, 0.24, 1.0))
+    # Clock tower at the NE corner — 18m tall
+    tcx = cx + W / 2 - 3.0
+    tcy = cy + D / 2 - 3.0
+    TOW_H = 18.0
+    ht._make_box_local("Justice_Court_Tower",
+                       (tcx, tcy, gz + TOW_H / 2),
+                       (4.5, 4.5, TOW_H), COL_BRICK_RED)
+    # Clock faces (4 sides — flat boxes)
+    for ang_i, (dx, dy) in enumerate(
+            [(+1, 0), (-1, 0), (0, +1), (0, -1)]):
+        ht._make_box_local(
+            f"Justice_Court_Clock_{ang_i}",
+            (tcx + dx * 2.3, tcy + dy * 2.3, gz + 14.0),
+            (0.10 if abs(dx) > 0 else 1.4,
+             1.4 if abs(dx) > 0 else 0.10, 1.4),
+            COL_STUCCO_CREAM)
+    # Tower roof — small pyramid stack
+    for i, h in enumerate([1.4, 1.0, 0.6]):
+        ht._make_box_local(
+            f"Justice_Court_TowerRoof_{i}",
+            (tcx, tcy, gz + TOW_H + sum([1.4,1.0,0.6][:i]) + h/2),
+            (3.6 - i * 0.8, 3.6 - i * 0.8, h),
+            (0.28, 0.24, 0.24, 1.0))
+    # Four-column portico on the front (S facing)
+    pcy = cy - D / 2 - 1.5
+    # Portico roof
+    ht._make_box_local("Justice_Court_Portico_Roof",
+                       (cx, pcy, gz + 5.5),
+                       (10.0, 3.0, 0.6), COL_LIMESTONE)
+    # 4 columns
+    for i, t in enumerate([-1, -0.33, 0.33, 1]):
+        col_cx = cx + t * 4.0
+        ht._make_cyl_local(
+            f"Justice_Court_Column_{i}",
+            (col_cx, pcy, gz + 5.5 / 2),
+            0.42, 5.2, COL_LIMESTONE, segments=8)
+    # Front steps
+    for s in range(4):
+        ht._make_box_local(
+            f"Justice_Court_Step_{s}",
+            (cx, pcy - 1.5 - s * 0.5, gz + 0.18 + s * 0.20),
+            (8.0 + s * 1.2, 0.5, 0.20), COL_LIMESTONE)
+
+
+def _build_death_hospital():
+    """Graustark Parish Hospital + Asylum (Ward C wing) —
+    institutional brick block with the older Ward C in faded
+    green tile + broken-paned cupola."""
+    print("[graustark]   Death — Parish Hospital + Ward C")
+    cx, cy = ARCANA_LOCALES['Death_Hospital'][0]
+    gz = graustark_elevation(cx, cy)
+    # Main hospital block
+    W, D, H = 30.0, 14.0, 12.0
+    ht._make_box_local("Death_Hosp_Body",
+                       (cx, cy, gz + H / 2),
+                       (W, D, H), COL_BRICK_RED)
+    # Flat roof + parapet
+    ht._make_box_local("Death_Hosp_Roof",
+                       (cx, cy, gz + H + 0.20),
+                       (W + 0.4, D + 0.4, 0.40),
+                       (0.36, 0.30, 0.26, 1.0))
+    # Window grid — 4 rows × 8 cols per long side
+    for side_sgn in (-1, +1):
+        sx_ = cx + side_sgn * (W / 2 + 0.05)
+        for r in range(3):
+            for c in range(7):
+                t = -1 + 2 * c / 6
+                wy = cy + (-1 if abs(side_sgn) else 0) * 0  # placeholder
+                pass  # we use side faces below
+        # Easier: place windows along the long face
+        for r in range(3):
+            for c in range(7):
+                tt = -1 + 2 * c / 6
+                wy = cy
+                wy_offset = tt * (W / 2 - 2.0)
+                ht._make_box_local(
+                    f"Death_Hosp_Win_{side_sgn:+d}_R{r}C{c}",
+                    (cx + wy_offset, side_sgn * (D / 2 + 0.05) + cy,
+                     gz + 2.0 + r * 3.0),
+                    (1.0, 0.05, 1.6), COL_GLASS_DARK)
+    # Front entrance — recessed portico
+    ent_cy = cy - D / 2 - 1.2
+    ht._make_box_local("Death_Hosp_Entrance_Awning",
+                       (cx, ent_cy, gz + 4.0),
+                       (6.0, 2.4, 0.4), COL_CONCRETE)
+    ht._make_box_local("Death_Hosp_Doors",
+                       (cx, cy - D / 2 - 0.05, gz + 1.5),
+                       (3.5, 0.10, 3.0), COL_GLASS_DARK)
+    # Ward C — older wing attached to the EAST, faded green tile
+    wcx, wcy = cx + W / 2 + 7.0, cy - 2.0
+    WC_W, WC_D, WC_H = 12.0, 10.0, 7.5
+    ht._make_box_local("Death_WardC_Body",
+                       (wcx, wcy, gz + WC_H / 2),
+                       (WC_W, WC_D, WC_H), (0.46, 0.58, 0.48, 1.0))
+    ht._make_box_local("Death_WardC_Roof",
+                       (wcx, wcy, gz + WC_H + 0.15),
+                       (WC_W + 0.3, WC_D + 0.3, 0.30),
+                       (0.32, 0.28, 0.26, 1.0))
+    # Cupola — broken-paned, sits on the Ward C roof
+    ht._make_box_local("Death_WardC_Cupola",
+                       (wcx, wcy, gz + WC_H + 1.5),
+                       (2.8, 2.8, 2.4), (0.46, 0.58, 0.48, 1.0))
+    # Pointed cap
+    ht._make_box_local("Death_WardC_CupolaCap",
+                       (wcx, wcy, gz + WC_H + 3.4),
+                       (2.0, 2.0, 0.8), (0.30, 0.26, 0.24, 1.0))
+    # Smaller windows on Ward C — sparser, some boarded
+    for side_sgn in (-1, +1):
+        for w in range(3):
+            t = -1 + 2 * w / 2
+            wx_ = wcx + t * (WC_W / 2 - 1.5)
+            col = COL_GLASS_DARK if (w + abs(side_sgn)) % 2 == 0 \
+                  else COL_SHEET_METAL
+            ht._make_box_local(
+                f"Death_WardC_Win_{side_sgn:+d}_{w}",
+                (wx_, wcy + side_sgn * (WC_D / 2 + 0.05),
+                 gz + 4.0),
+                (1.0, 0.05, 1.4), col)
+
+
+def _build_judgement_cemetery():
+    """Above-ground tomb city — 40-60 raised cement vaults +
+    central mausoleum, all bleached white. The signature
+    Louisiana delta cemetery."""
+    print("[graustark]   Judgement — above-ground cemetery")
+    cx, cy = ARCANA_LOCALES['Judgement_Cemetery'][0]
+    gz = graustark_elevation(cx, cy)
+    # Cemetery footprint: ~40m × 40m grid of tombs
+    tomb_count = 0
+    grid_x_range = list(range(-18, 19, 4))
+    grid_y_range = list(range(-18, 19, 5))
+    for gxi, ox in enumerate(grid_x_range):
+        for gyi, oy in enumerate(grid_y_range):
+            # Skip the central 5×3 area (reserved for mausoleum)
+            if abs(ox) < 6 and abs(oy) < 4:
+                continue
+            tx = cx + ox
+            ty = cy + oy
+            tz = graustark_elevation(tx, ty)
+            # Per-tomb variety: height + width slight jitter
+            seed = (abs(gxi * 13 + gyi * 17)) % 100
+            t_h = 1.6 + (seed % 7) * 0.10
+            t_w = 1.2 + ((seed // 7) % 5) * 0.08
+            t_d = 1.6
+            ht._make_box_local(
+                f"Judgement_Tomb_{gxi}_{gyi}",
+                (tx, ty, tz + t_h / 2),
+                (t_w, t_d, t_h),
+                (0.94, 0.92, 0.86, 1.0))
+            # Capstone
+            ht._make_box_local(
+                f"Judgement_TombCap_{gxi}_{gyi}",
+                (tx, ty, tz + t_h + 0.08),
+                (t_w + 0.10, t_d + 0.10, 0.15),
+                (0.86, 0.84, 0.78, 1.0))
+            # Small cross on ~30% of tombs
+            if seed % 100 < 30:
+                ht._make_box_local(
+                    f"Judgement_TombCross_V_{gxi}_{gyi}",
+                    (tx, ty, tz + t_h + 0.50),
+                    (0.08, 0.08, 0.60), (0.46, 0.42, 0.36, 1.0))
+                ht._make_box_local(
+                    f"Judgement_TombCross_H_{gxi}_{gyi}",
+                    (tx, ty, tz + t_h + 0.65),
+                    (0.36, 0.08, 0.08), (0.46, 0.42, 0.36, 1.0))
+            tomb_count += 1
+    # Central mausoleum — larger boxy structure
+    mauz = gz + 3.5 / 2
+    ht._make_box_local("Judgement_Mausoleum_Body",
+                       (cx, cy, mauz),
+                       (8.0, 6.0, 3.5),
+                       (0.94, 0.92, 0.86, 1.0))
+    ht._make_box_local("Judgement_Mausoleum_Roof",
+                       (cx, cy, gz + 3.5 + 0.4),
+                       (8.6, 6.6, 0.4),
+                       (0.78, 0.76, 0.70, 1.0))
+    # Mausoleum door (sealed)
+    ht._make_box_local("Judgement_Mausoleum_Door",
+                       (cx, cy - 6.0 / 2 - 0.05, gz + 1.5),
+                       (1.6, 0.10, 2.6), COL_BLACK_IRON)
+    # Iron fence — perimeter posts
+    for i in range(11):
+        t = -1 + 2 * i / 10
+        for side_sgn in (-1, +1):
+            # N + S sides
+            fx = cx + t * 22.0
+            fy = cy + side_sgn * 22.0
+            ht._make_box_local(
+                f"Judgement_FencePost_NS_{i}_{side_sgn:+d}",
+                (fx, fy, gz + 0.8), (0.14, 0.14, 1.6),
+                COL_BLACK_IRON)
+            # E + W sides
+            fx2 = cx + side_sgn * 22.0
+            fy2 = cy + t * 22.0
+            ht._make_box_local(
+                f"Judgement_FencePost_EW_{i}_{side_sgn:+d}",
+                (fx2, fy2, gz + 0.8), (0.14, 0.14, 1.6),
+                COL_BLACK_IRON)
+    print(f"[graustark]     {tomb_count} tombs + 1 mausoleum")
+
+
 def build_district_buildings():
     """PHASE 4 — buildings outside the riverfront's SE quadrant."""
     _hook_hce_mesh_z()
@@ -1412,6 +1685,10 @@ def build_district_buildings():
     _build_hierophant_church()
     _build_hierophant_bandstand()
     _build_hierophant_armory()
+    _build_devil_roadhouse()
+    _build_justice_courthouse()
+    _build_death_hospital()
+    _build_judgement_cemetery()
 
 
 def build_district_characters_and_props():
