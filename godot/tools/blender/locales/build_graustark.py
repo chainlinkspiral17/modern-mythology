@@ -830,14 +830,300 @@ def _build_levee_cottages():
     print(f"[graustark]     placed {count} levee-crest cottages")
 
 
+# ── FACADE BLOCKS  (film-set theory — fronts detailed, backs cheated) ──
+# Each "block" is a short row of facade-detailed buildings. The
+# back walls and roofs are simplified because the player only
+# ever walks the front. Two blocks: French Quarter (NOLA flavour)
+# anchoring the restaurant, and a Montreal block tucked into the
+# NE corner.
+
+_FQ_PALETTES = [
+    {'wall': (0.94, 0.78, 0.66, 1.0), 'trim': (0.96, 0.94, 0.86, 1.0),
+     'iron': (0.10, 0.08, 0.08, 1.0)},  # peach + cream
+    {'wall': (0.96, 0.88, 0.62, 1.0), 'trim': (0.92, 0.90, 0.84, 1.0),
+     'iron': (0.10, 0.08, 0.08, 1.0)},  # yellow ochre
+    {'wall': (0.86, 0.66, 0.62, 1.0), 'trim': (0.96, 0.92, 0.86, 1.0),
+     'iron': (0.10, 0.08, 0.08, 1.0)},  # faded rose
+    {'wall': (0.76, 0.78, 0.66, 1.0), 'trim': (0.94, 0.92, 0.84, 1.0),
+     'iron': (0.10, 0.08, 0.08, 1.0)},  # sage
+    {'wall': (0.94, 0.86, 0.74, 1.0), 'trim': (0.86, 0.70, 0.42, 1.0),
+     'iron': (0.10, 0.08, 0.08, 1.0)},  # cream + ochre trim
+]
+_MONTREAL_PALETTES = [
+    {'wall': (0.62, 0.36, 0.28, 1.0), 'trim': (0.94, 0.92, 0.86, 1.0),
+     'roof': (0.22, 0.20, 0.20, 1.0)},  # red brick + cream + slate
+    {'wall': (0.74, 0.70, 0.62, 1.0), 'trim': (0.96, 0.94, 0.88, 1.0),
+     'roof': (0.18, 0.18, 0.20, 1.0)},  # limestone grey
+    {'wall': (0.52, 0.40, 0.32, 1.0), 'trim': (0.94, 0.92, 0.84, 1.0),
+     'roof': (0.20, 0.18, 0.22, 1.0)},  # darker brick
+    {'wall': (0.66, 0.62, 0.54, 1.0), 'trim': (0.96, 0.92, 0.84, 1.0),
+     'roof': (0.18, 0.16, 0.16, 1.0)},  # warm limestone
+]
+
+COL_FQ_BALCONY_FLOOR = (0.18, 0.14, 0.10, 1.0)
+COL_FQ_WINDOW = (0.18, 0.22, 0.30, 1.0)
+COL_RESTAURANT_SIGN = (0.82, 0.32, 0.28, 1.0)
+COL_RESTAURANT_TEXT = (0.96, 0.92, 0.74, 1.0)
+
+
+def _build_fq_rowhouse(name, cx, cy, ground_z, facing, palette,
+                       has_restaurant=False, idx=0):
+    """One French Quarter row house. 2-storey, pastel stucco, full-
+    width wrought-iron balcony, tall arched window pattern. Faces
+    the street; back wall is flat to save tris (film-set cheat)."""
+    fx, fy = 0, 0
+    if facing == '-Y': fy = -1
+    elif facing == '+Y': fy = +1
+    elif facing == '-X': fx = -1
+    elif facing == '+X': fx = +1
+    px, py = -fy, fx
+    W, D, H = 7.0, 10.0, 7.8
+
+    if abs(fx) > 0.5:
+        size = (D, W, H)
+    else:
+        size = (W, D, H)
+    body_z = ground_z + H / 2
+    # Body block
+    ht._make_box_local(f"{name}_Body",
+                       (cx, cy, body_z),
+                       size, palette['wall'])
+    # Lower trim band (between ground floor and balcony)
+    band_z = ground_z + 3.8
+    if abs(fx) > 0.5:
+        band_size = (D + 0.05, W + 0.30, 0.20)
+    else:
+        band_size = (W + 0.30, D + 0.05, 0.20)
+    ht._make_box_local(f"{name}_Band",
+                       (cx, cy, band_z), band_size, palette['trim'])
+    # Roofline cornice
+    cornice_z = ground_z + H - 0.10
+    ht._make_box_local(f"{name}_Cornice",
+                       (cx, cy, cornice_z),
+                       (size[0] + 0.30, size[1] + 0.30, 0.20),
+                       palette['trim'])
+
+    # ── BALCONY  (wrought iron, full street-facing width) ─────
+    front_along = -(D / 2 + 0.5)
+    if abs(fx) > 0.5:
+        bcx = cx + front_along * fx
+        bcy = cy
+        bsize_floor = (1.0, W, 0.12)
+    else:
+        bcx = cx
+        bcy = cy + front_along * fy
+        bsize_floor = (W, 1.0, 0.12)
+    ht._make_box_local(f"{name}_BalconyFloor",
+                       (bcx, bcy, band_z + 0.20),
+                       bsize_floor, COL_FQ_BALCONY_FLOOR)
+    # Iron railing — thin top rail + posts
+    rail_z = band_z + 0.20 + 0.55
+    ht._make_box_local(f"{name}_BalconyRail",
+                       (bcx, bcy, rail_z),
+                       (bsize_floor[0] * 0.98,
+                        bsize_floor[1] * 0.98, 0.05),
+                       palette['iron'])
+    # Iron support brackets dropping from underside (pure decor)
+    for s in range(3):
+        t = -1 + 2 * s / 2
+        if abs(fx) > 0.5:
+            bx = bcx; by_ = bcy + t * (W / 2 - 0.5)
+        else:
+            bx = bcx + t * (W / 2 - 0.5); by_ = bcy
+        ht._make_box_local(f"{name}_BalconyBracket_{s}",
+                           (bx, by_, band_z + 0.08),
+                           (0.10, 0.10, 0.30), palette['iron'])
+
+    # ── WINDOWS  (tall narrow on the upper floor) ─────────────
+    win_h = 1.80
+    win_w = 0.55
+    win_z = band_z + 0.20 + win_h / 2 + 0.30
+    # Three windows on the upper floor street face
+    front_face_along = -(D / 2 + 0.02)
+    for w in range(3):
+        t = -1 + 2 * w / 2
+        if abs(fx) > 0.5:
+            wx = cx + front_face_along * fx
+            wy = cy + t * (W / 2 - 0.7)
+            wsize = (0.05, win_w, win_h)
+        else:
+            wx = cx + t * (W / 2 - 0.7)
+            wy = cy + front_face_along * fy
+            wsize = (win_w, 0.05, win_h)
+        ht._make_box_local(f"{name}_Window_Up_{w}",
+                           (wx, wy, win_z), wsize, COL_FQ_WINDOW)
+
+    # Ground-floor storefront / door
+    if abs(fx) > 0.5:
+        dwx = cx + front_face_along * fx
+        dwy = cy
+        dwsize = (0.05, W * 0.65, 2.40)
+    else:
+        dwx = cx
+        dwy = cy + front_face_along * fy
+        dwsize = (W * 0.65, 0.05, 2.40)
+    ht._make_box_local(f"{name}_Storefront",
+                       (dwx, dwy, ground_z + 1.20),
+                       dwsize, COL_FQ_WINDOW)
+
+    # ── RESTAURANT SIGN  (only on the marked building) ────────
+    if has_restaurant:
+        sign_z = ground_z + 3.20
+        sign_h = 0.6
+        sign_w = W * 0.55
+        if abs(fx) > 0.5:
+            scx = cx + front_face_along * 1.05 * fx
+            scy = cy
+            ss = (0.20, sign_w, sign_h)
+        else:
+            scx = cx
+            scy = cy + front_face_along * 1.05 * fy
+            ss = (sign_w, 0.20, sign_h)
+        ht._make_box_local(f"{name}_RestaurantSign",
+                           (scx, scy, sign_z), ss,
+                           COL_RESTAURANT_SIGN)
+
+
+def _build_french_quarter_block():
+    """Compact 5-building French Quarter row on a side street off
+    of Wharf St. The restaurant occupies the middle building."""
+    print("[graustark]   french quarter block")
+    block_cx = -320.0
+    block_cy = +90.0      # north of Wharf St
+    # 5 buildings in a row along Y, all facing -X (street to the west)
+    spacing_y = 8.0       # adjacent buildings touch
+    for i in range(5):
+        bx = block_cx + 0.0
+        by = block_cy + (i - 2) * spacing_y
+        gz = graustark_elevation(bx, by)
+        pal = _FQ_PALETTES[i % len(_FQ_PALETTES)]
+        _build_fq_rowhouse(
+            f"Graustark_FQ_Row_{i}", bx, by, gz,
+            facing='-X',                # street is to the west
+            palette=pal,
+            has_restaurant=(i == 2),    # middle = restaurant
+            idx=i)
+    # Street strip in front (cobblestone hint)
+    street_cx = block_cx - 10.0
+    street_cy = block_cy
+    ht._make_box_local("Graustark_FQ_Street",
+                       (street_cx, street_cy,
+                        graustark_elevation(street_cx, street_cy) + 0.02),
+                       (8.0, 5 * spacing_y + 4.0, 0.04),
+                       (0.32, 0.30, 0.30, 1.0))
+    print(f"[graustark]     placed 5 FQ row buildings "
+          f"(restaurant at i=2)")
+
+
+def _build_montreal_rowhouse(name, cx, cy, ground_z, facing, palette):
+    """Montreal-style row house: limestone/brick body + mansard
+    roof + dormer windows + outdoor staircase."""
+    fx, fy = 0, 0
+    if facing == '-Y': fy = -1
+    elif facing == '+Y': fy = +1
+    elif facing == '-X': fx = -1
+    elif facing == '+X': fx = +1
+    W, D, body_H = 8.0, 11.0, 6.5
+    mansard_H = 2.5
+
+    if abs(fx) > 0.5:
+        body_size = (D, W, body_H)
+    else:
+        body_size = (W, D, body_H)
+    body_z = ground_z + body_H / 2
+    ht._make_box_local(f"{name}_Body",
+                       (cx, cy, body_z), body_size, palette['wall'])
+    # Mansard roof — taller wedge on top, slightly inset on sides
+    mansard_z = ground_z + body_H + mansard_H / 2
+    if abs(fx) > 0.5:
+        mansard_size = (D * 0.98, W * 0.85, mansard_H)
+    else:
+        mansard_size = (W * 0.85, D * 0.98, mansard_H)
+    ht._make_box_local(f"{name}_Mansard",
+                       (cx, cy, mansard_z), mansard_size,
+                       palette['roof'])
+    # Dormer — small box on the mansard front
+    front_along = -(D / 2 + 0.01)
+    dormer_z = ground_z + body_H + 1.4
+    if abs(fx) > 0.5:
+        dox = cx + front_along * fx
+        doy = cy
+        dosize = (0.40, 1.20, 1.40)
+    else:
+        dox = cx
+        doy = cy + front_along * fy
+        dosize = (1.20, 0.40, 1.40)
+    ht._make_box_local(f"{name}_Dormer",
+                       (dox, doy, dormer_z),
+                       dosize, palette['roof'])
+    # Tall narrow windows — 4 on upper floor
+    win_z = ground_z + body_H * 0.75
+    for w in range(4):
+        t = -1 + 2 * w / 3
+        if abs(fx) > 0.5:
+            wx = cx + front_along * fx
+            wy = cy + t * (W / 2 - 0.6)
+            ws = (0.05, 0.50, 1.30)
+        else:
+            wx = cx + t * (W / 2 - 0.6)
+            wy = cy + front_along * fy
+            ws = (0.50, 0.05, 1.30)
+        ht._make_box_local(f"{name}_Win_Up_{w}",
+                           (wx, wy, win_z), ws, COL_FQ_WINDOW)
+    # External staircase up to second-floor entrance (Montreal trademark)
+    stair_along = -(D / 2 + 0.8)
+    for s in range(4):
+        st_z = ground_z + 0.5 + s * 0.5
+        if abs(fx) > 0.5:
+            sx = cx + stair_along * fx
+            sy = cy + (W / 2 - 1.0)
+            ss = (1.2 - s * 0.2, 0.8, 0.30)
+        else:
+            sx = cx + (W / 2 - 1.0)
+            sy = cy + stair_along * fy
+            ss = (0.8, 1.2 - s * 0.2, 0.30)
+        ht._make_box_local(f"{name}_Stair_{s}",
+                           (sx, sy, st_z), ss, palette['trim'])
+
+
+def _build_montreal_block():
+    """Montreal block tucked into the NE corner — limestone +
+    brick row houses with mansard roofs + outdoor staircases."""
+    print("[graustark]   montreal block (NE corner)")
+    block_cx = +480.0
+    block_cy = +330.0
+    spacing_x = 9.5
+    for i in range(4):
+        bx = block_cx + (i - 1.5) * spacing_x
+        by = block_cy
+        gz = graustark_elevation(bx, by)
+        pal = _MONTREAL_PALETTES[i % len(_MONTREAL_PALETTES)]
+        _build_montreal_rowhouse(
+            f"Graustark_Montreal_Row_{i}", bx, by, gz,
+            facing='-Y', palette=pal)
+    # Cobblestone street strip in front
+    street_cy = block_cy - 11.0
+    ht._make_box_local("Graustark_Montreal_Street",
+                       (block_cx, street_cy,
+                        graustark_elevation(block_cx, street_cy) + 0.02),
+                       (4 * spacing_x + 2.0, 5.0, 0.04),
+                       (0.34, 0.32, 0.30, 1.0))
+    print(f"[graustark]     placed 4 Montreal row buildings")
+
+
 def build_district_buildings():
     """PHASE 4 — buildings outside the riverfront's SE quadrant.
-    Pass 4a: western suburban residential + cypress groves.
-    Pass 4b: raised cottages on cypress stilts along the levee crest."""
+    Pass 4a: western suburban + cypress groves.
+    Pass 4b: raised cottages on cypress stilts (levee crest).
+    Pass 4c: French Quarter block (with restaurant) + Montreal
+             block in NE corner. Both done film-set style —
+             fronts detailed, backs cheated."""
     _hook_hce_mesh_z()
     _build_western_residential()
     _build_bayou_cypress_groves()
     _build_levee_cottages()
+    _build_french_quarter_block()
+    _build_montreal_block()
 
 
 def build_district_characters_and_props():
