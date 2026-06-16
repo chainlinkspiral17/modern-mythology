@@ -884,17 +884,125 @@ def build_entry_props():
 
 
 def build_exterior_hints():
-    """Small exterior cues — the wraparound porch over the water, sodium pole hint."""
-    # porch deck on the west (river) side, extending out
-    porch_y_center = 0
-    make_box("Porch_Deck", (-D_W/2 - 1.0, porch_y_center, 0.0), (2.0, D_D, 0.08), (0.40, 0.30, 0.18, 1.0))
-    # porch railing brass
-    make_box("Porch_Rail", (-D_W/2 - 2.0, porch_y_center, 0.85), (0.05, D_D, 0.05), COL_BRASS)
+    """Steamboat exterior visible through the river-side window
+    (-X) + parking-lot exterior visible through the east windows
+    (+X). The player looking out of either window should see a
+    real-feeling outside.
 
-    # sodium streetlight pole on the east (parking lot) side, suggested
-    make_box("Sodium_Pole", (D_W/2 + 2.5, -D_D/2 - 1.0, 3.0), (0.10, 0.10, 6.0), (0.20, 0.18, 0.14, 1.0))
-    # sodium fixture at top
-    make_box("Sodium_Fixture", (D_W/2 + 2.5, -D_D/2 - 1.0, 5.8), (0.45, 0.30, 0.20), (0.85, 0.65, 0.30, 1.0))
+    Per _VOL5_WIKI canon: 'weathered diner complex moored on the
+    river bank — white clapboard exterior, brass rails, a
+    wraparound porch over the water.'"""
+
+    # ── WRAPAROUND STEAMBOAT PORCH (west / river side) ──
+    porch_d = 2.4               # extends 2.4m out from the building
+    porch_z = 0.0
+    porch_y_center = 0.0
+    # Main deck running the full N-S length, west of the building
+    make_box("Porch_Deck_W",
+             (-D_W/2 - porch_d/2, porch_y_center, porch_z),
+             (porch_d, D_D, 0.08),
+             (0.40, 0.30, 0.18, 1.0))
+    # Deck plank seams (5 longitudinal stripes)
+    for i in range(5):
+        plank_y = -D_D/2 + (i + 0.5) * (D_D / 5)
+        make_box(f"Porch_Plank_Seam_{i}",
+                 (-D_W/2 - porch_d/2, plank_y, porch_z + 0.045),
+                 (porch_d - 0.1, 0.025, 0.01),
+                 (0.20, 0.14, 0.08, 1.0))
+    # Wrap-around: short porch segments at N and S ends extending
+    # past the building corners
+    for side, sy in [("N", +D_D/2 + 0.5), ("S", -D_D/2 - 0.5)]:
+        make_box(f"Porch_Deck_{side}",
+                 (-D_W/2 - 0.5, sy, porch_z),
+                 (porch_d + 1.0, 1.0, 0.08),
+                 (0.40, 0.30, 0.18, 1.0))
+    # ── BRASS RAILING along the porch outer edge ──
+    rail_x = -D_W/2 - porch_d + 0.05
+    # Top rail (long horizontal cylinder)
+    make_cyl("Porch_Rail_Top",
+             (rail_x, 0, 0.95),
+             0.035, D_D + 1.5, COL_BRASS,
+             segments=8, axis='Y')
+    # Mid rail
+    make_cyl("Porch_Rail_Mid",
+             (rail_x, 0, 0.55),
+             0.025, D_D + 1.5, COL_BRASS,
+             segments=8, axis='Y')
+    # Posts every 1.5m
+    n_posts = int((D_D + 1.5) / 1.5)
+    for i in range(n_posts + 1):
+        py = -(D_D + 1.5)/2 + i * (D_D + 1.5) / n_posts
+        make_cyl(f"Porch_Rail_Post_{i}",
+                 (rail_x, py, 0.50),
+                 0.04, 1.05, COL_BRASS,
+                 segments=6, axis='Z')
+    # ── RIVER WATER SURFACE (visible through the river window) ──
+    river_top_z = -2.5
+    make_box("River_Water_Surface",
+             (-D_W/2 - 30.0, 0, river_top_z),
+             (60.0, 60.0, 0.10),
+             (0.18, 0.30, 0.42, 1.0))
+    # Wave seam stripes (just darker boxes faintly on the water)
+    for w in range(4):
+        wy = -25 + w * 15
+        make_box(f"River_Wave_{w}",
+                 (-D_W/2 - 20, wy, river_top_z + 0.06),
+                 (40.0, 0.4, 0.02),
+                 (0.12, 0.24, 0.34, 1.0))
+    # ── FAR SHORE strip (visible past the river) ──
+    far_shore_x = -D_W/2 - 50.0
+    make_box("River_FarShore",
+             (far_shore_x, 0, -1.5),
+             (8.0, 50.0, 2.5),
+             (0.32, 0.34, 0.22, 1.0))
+    # Far-shore tree silhouettes (low boxes on the shore)
+    for t in range(5):
+        ty = -20 + t * 10
+        make_box(f"River_FarTree_{t}",
+                 (far_shore_x + 1.0, ty, 1.5),
+                 (1.5, 1.5, 4.0),
+                 (0.18, 0.26, 0.16, 1.0))
+    # ── MOORED SKIFF off the porch (one boat hint) ──
+    boat_cx, boat_cy = -D_W/2 - 3.5, -1.5
+    make_box("Moored_Skiff_Hull",
+             (boat_cx, boat_cy, river_top_z + 0.30),
+             (1.6, 4.0, 0.50),
+             (0.36, 0.24, 0.16, 1.0))
+    make_box("Moored_Skiff_Bench",
+             (boat_cx, boat_cy + 0.5, river_top_z + 0.65),
+             (1.2, 0.20, 0.12),
+             (0.46, 0.32, 0.22, 1.0))
+    # ── DOCK CLEAT (mooring point on the porch edge) ──
+    make_cyl("Porch_Cleat",
+             (rail_x + 0.10, -2.0, porch_z + 0.10),
+             0.06, 0.30, COL_BRASS,
+             segments=6, axis='X')
+    # ── PARKING LOT (east side) — kept minimal, sodium light pole ──
+    make_cyl("Sodium_Pole",
+             (D_W/2 + 4.0, -D_D/2 - 1.0, 3.0),
+             0.06, 6.0, (0.20, 0.18, 0.14, 1.0),
+             segments=6, axis='Z')
+    # Sodium fixture (curved horizontal head)
+    make_box("Sodium_Fixture_Arm",
+             (D_W/2 + 3.0, -D_D/2 - 1.0, 5.7),
+             (2.0, 0.10, 0.10),
+             (0.20, 0.18, 0.14, 1.0))
+    make_box("Sodium_Fixture_Head",
+             (D_W/2 + 2.0, -D_D/2 - 1.0, 5.5),
+             (0.6, 0.4, 0.40),
+             (0.92, 0.72, 0.34, 1.0))
+    # Parking lot asphalt patch (visible through the south windows)
+    make_box("Parking_Asphalt",
+             (D_W/2 + 6.0, 0.0, 0.02),
+             (10.0, D_D + 6.0, 0.04),
+             (0.18, 0.18, 0.18, 1.0))
+    # White parking stripes
+    for p in range(6):
+        sx = D_W/2 + 2.0 + p * 1.8
+        make_box(f"Parking_Stripe_{p}",
+                 (sx, 1.5, 0.05),
+                 (0.10, 4.5, 0.02),
+                 (0.86, 0.84, 0.78, 1.0))
 
 
 # ────────────────────────────────────────────────────────────────

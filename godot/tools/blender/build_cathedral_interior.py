@@ -496,6 +496,163 @@ def build_hanging_fixtures():
         )
 
 
+def build_bay_dock():
+    """The open bay door on the east wall (+X) has a wooden dock
+    extending out into the bayou. Per user direction: 'cathedral
+    has an open bay door that has a dock that leads into the
+    bayou.' Visible through the bay door from inside.
+
+    Geometry-only (no lights). The Light3D nodes in cathedral.tscn
+    handle illumination."""
+    COL_PLANK_BOARD = (0.42, 0.32, 0.22, 1.0)
+    COL_PILING_WET = (0.30, 0.22, 0.16, 1.0)
+    COL_BAYOU_WATER = (0.16, 0.22, 0.20, 1.0)
+    COL_FAR_SHORE = (0.32, 0.34, 0.22, 1.0)
+    COL_CYPRESS_TRUNK = (0.30, 0.22, 0.16, 1.0)
+    COL_CYPRESS_FOLIAGE = (0.30, 0.42, 0.28, 1.0)
+    # The bay door opening is at +X wall, centered on the south
+    # half (per build_warehouse_shell: bay positioned at -WH_D/2
+    # + BAY_W/2 i.e. southern part). BAY_W=4, BAY_H=4.
+    bay_x = WH_W/2
+    bay_y = -WH_D/2 + BAY_W/2
+    dock_length = 14.0
+    dock_w = 4.5
+    deck_z = 0.10                # 10cm above interior floor
+    # ── DOCK DECK ──
+    deck_cx = bay_x + 0.5 + dock_length / 2
+    make_box(
+        "BayDock_Deck",
+        center=(deck_cx, bay_y, deck_z),
+        size=(dock_length, dock_w, 0.10),
+        base_color=COL_PLANK_BOARD,
+    )
+    # 6 plank seam stripes (perpendicular to dock length)
+    for i in range(6):
+        sx = (bay_x + 1.0) + (i + 0.5) * (dock_length / 6.0)
+        make_box(
+            f"BayDock_PlankSeam_{i}",
+            center=(sx, bay_y, deck_z + 0.06),
+            size=(0.04, dock_w - 0.3, 0.02),
+            base_color=(0.22, 0.16, 0.12, 1.0),
+        )
+    # ── DOCK PILINGS (visible under + flanking the deck) ──
+    piling_h = 2.5     # extending below the dock into the water
+    piling_z = deck_z - piling_h / 2
+    for ring in range(4):
+        px = bay_x + 1.5 + ring * (dock_length / 3.5)
+        for side in (-1, +1):
+            py = bay_y + side * (dock_w / 2 - 0.20)
+            make_box(
+                f"BayDock_Piling_{ring}_{side:+d}",
+                center=(px, py, piling_z),
+                size=(0.30, 0.30, piling_h),
+                base_color=COL_PILING_WET,
+            )
+    # ── DOCK CLEATS (mooring brackets) ──
+    for cleat_i, cx in enumerate([bay_x + 4.0, bay_x + 9.0,
+                                    bay_x + 13.0]):
+        for side in (-1, +1):
+            cy = bay_y + side * (dock_w / 2 - 0.10)
+            make_box(
+                f"BayDock_Cleat_{cleat_i}_{side:+d}",
+                center=(cx, cy, deck_z + 0.18),
+                size=(0.20, 0.10, 0.16),
+                base_color=(0.20, 0.18, 0.16, 1.0),
+            )
+    # ── DOCK RAILING (along both long edges; gap at the end) ──
+    rail_top_z = deck_z + 1.00
+    rail_t = 0.08
+    for side in (-1, +1):
+        ry = bay_y + side * (dock_w / 2 + 0.05)
+        # Top rail
+        make_box(
+            f"BayDock_Rail_Top_{side:+d}",
+            center=(deck_cx, ry, rail_top_z),
+            size=(dock_length - 1.0, rail_t, rail_t),
+            base_color=COL_PILING_WET,
+        )
+        # Posts every 2m
+        n_posts = int(dock_length / 2)
+        for p in range(n_posts):
+            px_post = bay_x + 1.5 + p * (dock_length / n_posts)
+            make_box(
+                f"BayDock_Rail_Post_{side:+d}_{p}",
+                center=(px_post, ry, deck_z + 0.55),
+                size=(0.10, 0.10, 1.00),
+                base_color=COL_PILING_WET,
+            )
+    # ── BAYOU WATER (around the dock, extending outward) ──
+    water_z = deck_z - 1.20
+    make_box(
+        "Bayou_Water",
+        center=(bay_x + dock_length / 2 + 6.0, 0.0, water_z),
+        size=(dock_length + 20.0, WH_D + 24.0, 0.10),
+        base_color=COL_BAYOU_WATER,
+    )
+    # Water wave-line stripes (subtle)
+    for w in range(5):
+        wy = -WH_D/2 - 4 + w * (WH_D / 4)
+        make_box(
+            f"Bayou_Wave_{w}",
+            center=(bay_x + dock_length + 4, wy, water_z + 0.06),
+            size=(18.0, 0.30, 0.02),
+            base_color=(0.10, 0.16, 0.14, 1.0),
+        )
+    # ── FAR-SHORE strip across the bayou (visible past dock end) ──
+    far_x = bay_x + dock_length + 22.0
+    make_box(
+        "Bayou_FarShore",
+        center=(far_x, 0.0, water_z + 1.0),
+        size=(6.0, WH_D + 20.0, 2.0),
+        base_color=COL_FAR_SHORE,
+    )
+    # ── CYPRESS TREES on the far shore ──
+    for t in range(6):
+        ty = -WH_D/2 - 6 + t * ((WH_D + 12) / 5)
+        # Trunk
+        make_box(
+            f"Bayou_Cypress_Trunk_{t}",
+            center=(far_x - 0.5, ty, water_z + 3.0),
+            size=(0.50, 0.50, 5.5),
+            base_color=COL_CYPRESS_TRUNK,
+        )
+        # Canopy (two stacked boxes for a layered cypress feel)
+        make_box(
+            f"Bayou_Cypress_Canopy_Lo_{t}",
+            center=(far_x - 0.5, ty, water_z + 6.5),
+            size=(3.0, 3.0, 2.5),
+            base_color=COL_CYPRESS_FOLIAGE,
+        )
+        make_box(
+            f"Bayou_Cypress_Canopy_Hi_{t}",
+            center=(far_x - 0.5, ty, water_z + 8.4),
+            size=(2.2, 2.2, 1.6),
+            base_color=COL_CYPRESS_FOLIAGE,
+        )
+    # ── MOORED FLAT-BOTTOM SKIFF at the dock end ──
+    boat_cx = bay_x + dock_length - 2.0
+    boat_cy = bay_y + dock_w/2 + 1.2
+    make_box(
+        "BayDock_Skiff_Hull",
+        center=(boat_cx, boat_cy, water_z + 0.30),
+        size=(2.0, 5.0, 0.50),
+        base_color=(0.40, 0.28, 0.18, 1.0),
+    )
+    make_box(
+        "BayDock_Skiff_Bench",
+        center=(boat_cx, boat_cy + 0.5, water_z + 0.65),
+        size=(1.6, 0.20, 0.12),
+        base_color=(0.46, 0.32, 0.22, 1.0),
+    )
+    # Outboard motor (small box at the stern)
+    make_box(
+        "BayDock_Skiff_Motor",
+        center=(boat_cx, boat_cy - 2.6, water_z + 0.80),
+        size=(0.4, 0.4, 0.6),
+        base_color=(0.10, 0.08, 0.06, 1.0),
+    )
+
+
 def build_river_window_frame():
     """Iron-strut frame on the outside of the river window. Thin black slats."""
     strut_w = 0.08
@@ -707,6 +864,7 @@ def main():
     build_roof_trusses()
     build_hanging_fixtures()
     build_river_window_frame()
+    build_bay_dock()
     build_workbench()
     build_bbs_terminal()
     build_diorama_bases()
