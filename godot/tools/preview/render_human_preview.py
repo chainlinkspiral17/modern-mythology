@@ -185,14 +185,16 @@ for idx, (bt, kw) in enumerate(BODY_TYPES):
     x0 = col_grp * 2 * HEAD_CELL_W
     y0 = row * (HEAD_CELL_H + LABEL_H)
     meshes = measure_body(bt, **kw)
+    # Tighter crop on the head + chin so face features are
+    # readable in the close-up panel.
     front = render_view(meshes, project_front,
                         HEAD_CELL_W, HEAD_CELL_H,
-                        world_min_x=-0.15, world_max_x=0.15,
-                        world_min_y=1.55,  world_max_y=1.95)
+                        world_min_x=-0.12, world_max_x=0.12,
+                        world_min_y=1.55,  world_max_y=1.85)
     side  = render_view(meshes, project_side,
                         HEAD_CELL_W, HEAD_CELL_H,
-                        world_min_x=-0.15, world_max_x=0.15,
-                        world_min_y=1.55,  world_max_y=1.95)
+                        world_min_x=-0.13, world_max_x=0.13,
+                        world_min_y=1.55,  world_max_y=1.85)
     head_panel.paste(front, (x0, y0 + LABEL_H))
     head_panel.paste(side,  (x0 + HEAD_CELL_W, y0 + LABEL_H))
     head_draw.text((x0 + 8, y0 + 4),

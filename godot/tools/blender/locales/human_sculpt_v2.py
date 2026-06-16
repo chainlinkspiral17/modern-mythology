@@ -319,6 +319,37 @@ def _box(name, center, size, color):
     _finalize_mesh(name, verts, faces, color)
 
 
+def _sphere(name, center, radius, color, rings=3, segments=8,
+            squash_z=1.0):
+    """Low-poly sphere with optional squash on Z axis."""
+    cx, cy, cz = center
+    verts = [(cx, cy, cz + radius * squash_z)]
+    for r in range(1, rings):
+        phi = math.pi * r / rings
+        rr = radius * math.sin(phi)
+        zh = radius * math.cos(phi) * squash_z
+        for s in range(segments):
+            ang = 2.0 * math.pi * s / segments
+            verts.append((cx + math.cos(ang) * rr,
+                          cy + math.sin(ang) * rr,
+                          cz + zh))
+    verts.append((cx, cy, cz - radius * squash_z))
+    faces = []
+    for s in range(segments):
+        faces.append([0, 1 + s, 1 + (s + 1) % segments])
+    for r in range(rings - 2):
+        base = 1 + r * segments
+        nxt = 1 + (r + 1) * segments
+        for s in range(segments):
+            ns = (s + 1) % segments
+            faces.append([base + s, nxt + s, nxt + ns, base + ns])
+    last = len(verts) - 1
+    for s in range(segments):
+        faces.append([last, last - segments + (s + 1) % segments,
+                      last - segments + s])
+    _finalize_mesh(name, verts, faces, color)
+
+
 def _face_axis(facing):
     if facing == '+X': return (1.0, 0.0)
     if facing == '-X': return (-1.0, 0.0)
@@ -494,17 +525,42 @@ def _build_head(name, base_x, base_y, head_base_z, p, fwd, prp,
     #   NOSE TIP  = ~35% (between eye line and mouth)
     #   MOUTH     = ~15% (between nose tip and chin)
     # head_base_z is at the CHIN line, so we measure UP from there.
-    # NOSE — protrudes from the surface at 35% up from chin
-    nose_z = head_base_z + head_h * 0.35
-    nose_out = head_d_max * 1.10
-    nose_x = base_x + fwd_x * nose_out
-    nose_y = base_y + fwd_y * nose_out
+    # NOSE — TWO-PART: a narrow vertical BRIDGE from brow to tip,
+    # then a wider TIP ball below. Single-block noses read as
+    # square stickers; two-part reads as a real nose silhouette.
+    # Bridge runs from eye line (lz=0) down to lz=-0.30 (35% up
+    # from chin).
+    nose_bridge_z = head_base_z + head_h * 0.43       # top of bridge
+    nose_tip_z = head_base_z + head_h * 0.32          # tip
+    nose_out = head_d_max * 1.08
+    bridge_x = base_x + fwd_x * (nose_out * 0.92)
+    bridge_y = base_y + fwd_y * (nose_out * 0.92)
+    tip_x = base_x + fwd_x * nose_out
+    tip_y = base_y + fwd_y * nose_out
     if abs(fwd_y) > abs(fwd_x):
-        nose_size = (head_w_max * 0.40, 0.060, head_h * 0.20)
+        bridge_size = (head_w_max * 0.16, 0.045, head_h * 0.16)
+        tip_size    = (head_w_max * 0.26, 0.060, head_h * 0.08)
     else:
-        nose_size = (0.060, head_w_max * 0.40, head_h * 0.20)
-    _box(f"{name}_Nose", (nose_x, nose_y, nose_z),
-         nose_size, skin_color)
+        bridge_size = (0.045, head_w_max * 0.16, head_h * 0.16)
+        tip_size    = (0.060, head_w_max * 0.26, head_h * 0.08)
+    _box(f"{name}_NoseBridge",
+         (bridge_x, bridge_y, nose_bridge_z),
+         bridge_size, skin_color)
+    _box(f"{name}_NoseTip",
+         (tip_x, tip_y, nose_tip_z),
+         tip_size, skin_color)
+    # NOSTRIL SHADOW — small darker patch under the nose tip
+    nostril_col = (skin_color[0] * 0.45,
+                   skin_color[1] * 0.45,
+                   skin_color[2] * 0.45, 1.0)
+    nostril_z = nose_tip_z - head_h * 0.04
+    if abs(fwd_y) > abs(fwd_x):
+        nostril_size = (head_w_max * 0.20, 0.035, head_h * 0.020)
+    else:
+        nostril_size = (0.035, head_w_max * 0.20, head_h * 0.020)
+    _box(f"{name}_Nostrils",
+         (tip_x - fwd_x * 0.01, tip_y - fwd_y * 0.01, nostril_z),
+         nostril_size, nostril_col)
     # EYE LINE at exact head midline (50% up from chin)
     eye_z = head_base_z + head_h * 0.50
     socket_x = base_x + fwd_x * (head_d_max * 1.00)
@@ -518,39 +574,67 @@ def _build_head(name, base_x, base_y, head_base_z, p, fwd, prp,
     else:
         _box(f"{name}_EyeSocket", (socket_x, socket_y, eye_z),
              (0.030, head_w_max * 1.70, head_h * 0.14), socket_col)
-    # EYES — sclera + pupil per side, placed ON the surface
-    eye_offset = head_w_max * 0.60
+    # EYES · small almond sclera + DARK iris dot. Reduced from
+    # 4cm to 2.5cm full width — earlier sizes read as sunglasses
+    # at any distance.
+    eye_offset = head_w_max * 0.50
     px_e, py_e = prp
     for eye_side, sgn in (('L', -1), ('R', +1)):
+        # Push further forward so eyes sit visibly on the head
+        # surface, not buried inside the sculpted brow
         ex = base_x + px_e * eye_offset * sgn \
-             + fwd_x * (head_d_max * 1.02)
+             + fwd_x * (head_d_max * 1.08)
         ey = base_y + py_e * eye_offset * sgn \
-             + fwd_y * (head_d_max * 1.02)
-        # Eye sclera — sized to read at distance without looking
-        # like sunglasses. Almond shape (wider than tall).
-        _box(f"{name}_EyeWhite_{eye_side}",
-             (ex, ey, eye_z),
-             (0.040, 0.040, 0.028)
-                 if abs(fwd_y) <= abs(fwd_x)
-                 else (0.040, 0.028, 0.028),
-             (0.94, 0.92, 0.88, 1.0))
-        _box(f"{name}_Pupil_{eye_side}",
-             (ex + fwd_x * 0.012, ey + fwd_y * 0.012, eye_z),
-             (0.022, 0.022, 0.022),
-             (0.10, 0.08, 0.06, 1.0))
-    # MOUTH at 15% up from chin per anatomical canon
+             + fwd_y * (head_d_max * 1.08)
+        # Sclera — bigger sphere so eyes register at low-res
+        _sphere(f"{name}_EyeWhite_{eye_side}",
+                (ex, ey, eye_z), 0.018,
+                (0.95, 0.93, 0.88, 1.0),
+                rings=3, segments=8, squash_z=0.72)
+        # Iris/pupil — sized and offset to read clearly
+        _sphere(f"{name}_Pupil_{eye_side}",
+                (ex + fwd_x * 0.012, ey + fwd_y * 0.012, eye_z),
+                0.012,
+                (0.10, 0.08, 0.06, 1.0),
+                rings=2, segments=6)
+        # EYEBROW — short discrete strip ABOVE each individual eye
+        # (not stretching all the way across). Smaller so it
+        # doesn't merge into a visor band.
+        brow_col = (hair_color[0] * 0.80, hair_color[1] * 0.80,
+                    hair_color[2] * 0.80, 1.0)
+        if abs(fwd_y) > abs(fwd_x):
+            brow_size = (0.020, 0.012, 0.006)
+        else:
+            brow_size = (0.012, 0.020, 0.006)
+        _box(f"{name}_Eyebrow_{eye_side}",
+             (ex + fwd_x * 0.008,
+              ey + fwd_y * 0.008, eye_z + 0.025),
+             brow_size, brow_col)
+    # MOUTH · upper lip + lower lip (darker) + thin crease line
     mouth_z = head_base_z + head_h * 0.18
     mouth_x = base_x + fwd_x * (head_d_max * 1.02)
     mouth_y = base_y + fwd_y * (head_d_max * 1.02)
-    mouth_col = (0.62, 0.32, 0.32, 1.0)
+    upper_col = (0.55, 0.28, 0.30, 1.0)
+    lower_col = (0.45, 0.22, 0.24, 1.0)
+    crease_col = (0.22, 0.10, 0.10, 1.0)
+    mouth_w = head_w_max * 0.65
     if abs(fwd_y) > abs(fwd_x):
-        _box(f"{name}_Mouth", (mouth_x, mouth_y, mouth_z),
-             (head_w_max * 0.55, 0.030, head_h * 0.05),
-             mouth_col)
+        upper_size  = (mouth_w, 0.025, head_h * 0.030)
+        lower_size  = (mouth_w * 0.92, 0.030, head_h * 0.038)
+        crease_size = (mouth_w * 0.96, 0.028, head_h * 0.010)
     else:
-        _box(f"{name}_Mouth", (mouth_x, mouth_y, mouth_z),
-             (0.030, head_w_max * 0.55, head_h * 0.05),
-             mouth_col)
+        upper_size  = (0.025, mouth_w, head_h * 0.030)
+        lower_size  = (0.030, mouth_w * 0.92, head_h * 0.038)
+        crease_size = (0.028, mouth_w * 0.96, head_h * 0.010)
+    _box(f"{name}_UpperLip",
+         (mouth_x, mouth_y, mouth_z + head_h * 0.022),
+         upper_size, upper_col)
+    _box(f"{name}_LowerLip",
+         (mouth_x, mouth_y, mouth_z - head_h * 0.022),
+         lower_size, lower_col)
+    _box(f"{name}_MouthLine",
+         (mouth_x, mouth_y, mouth_z),
+         crease_size, crease_col)
     # EARS — small wedges flush with the side of the head
     for ear_side, sgn in (('L', -1), ('R', +1)):
         ear_x = base_x + px_e * sgn * (head_w_max * 0.95)
@@ -606,30 +690,34 @@ def _build_head(name, base_x, base_y, head_base_z, p, fwd, prp,
                      (brim_x, brim_y, hat_z + hat_h * 0.35),
                      brim_size, hat_color)
         else:
-            # Hair cap sits on the crown, slightly larger than skull
+            # Hair cap covers crown + sides + back of skull. Starts
+            # at the brow line (lower than before) and wraps over
+            # the top with a wider profile so the head doesn't look
+            # bald-on-top.
             hair_verts = []
             hair_rings = [
-                (head_h * 0.78,  head_w_max * 0.95, head_d_max * 0.96),
-                (head_h * 0.92,  head_w_max * 0.90, head_d_max * 0.90),
-                (head_h * 1.05,  head_w_max * 0.55, head_d_max * 0.50),
+                (head_h * 0.62,  head_w_max * 1.05, head_d_max * 1.02),
+                (head_h * 0.75,  head_w_max * 1.10, head_d_max * 1.06),
+                (head_h * 0.90,  head_w_max * 1.02, head_d_max * 1.00),
+                (head_h * 1.02,  head_w_max * 0.60, head_d_max * 0.55),
             ]
             for (zof, hw, hd) in hair_rings:
                 hair_verts.extend(_ring(base_x, base_y,
                                         head_base_z + zof,
                                         hw, hd, 8, fwd, prp))
             hair_faces = []
-            for r in range(2):
+            for r in range(3):
                 a = r * 8; b = (r + 1) * 8
                 for k in range(8):
                     nk = (k + 1) % 8
                     hair_faces.append([a+k, a+nk, b+nk, b+k])
-            # Apex
+            # Apex above the top ring
             hair_verts.append((base_x, base_y,
-                               head_base_z + head_h * 1.05))
+                               head_base_z + head_h * 1.10))
             apex = len(hair_verts) - 1
             for k in range(8):
                 nk = (k + 1) % 8
-                hair_faces.append([apex, 16 + k, 16 + nk])
+                hair_faces.append([apex, 24 + k, 24 + nk])
             _finalize_mesh(f"{name}_Hair", hair_verts, hair_faces,
                            hair_color)
             if hair_style == 'ponytail':
