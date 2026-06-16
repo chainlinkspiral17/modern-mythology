@@ -4110,6 +4110,8 @@ TIER_1_LABELS = {
     'FQ_Elicia',              # Priestess — Elicia at her curio shop
     'RF_Nicola',              # Empress — Nicola at the boat
     'RF_Dante',               # Emperor — Dante at the boat helm approach
+    'Garage_Antonio',         # Chariot — Antonio at Lacombe garage
+    'Cemetery_Alberto',       # mourner — Alberto, Dante's elder son
     'Cath_Frasier',           # Magician — Frasier Temple
     'Cath_apprentice',        # Maya (Frasier's apprentice)
     'Church_priest',          # Hierophant — Father Amato
@@ -4153,6 +4155,10 @@ NPC_SPAWNS = [
     ("RF_Dante",         +6.0,   +5.0,   '-Y', 'male_tall'),
     # ── Elicia at her curio shop entrance (PRIESTESS) ──
     ("FQ_Elicia",        -311.0, +66.0,  '-X', 'female_avg'),
+    # ── Antonio at Lacombe Service Garage (CHARIOT) ──
+    ("Garage_Antonio",   -178.0, -156.0, '-Y', 'male_avg'),
+    # ── Alberto at the cemetery, mourning Dante (Dante's elder son) ──
+    ("Cemetery_Alberto", -362.0, -182.0, '-Y', 'male_tall'),
     # ── Levee cottage porches ──
     ("Levee_porch_N",    -38.0,  +418.0, '+X', 'male_heavy'),
     ("Levee_porch_S",    -86.0,  -424.0, '+X', 'female_avg'),
@@ -4448,6 +4454,8 @@ HERO_GLB_PATHS = {
     'RF_Nicola':          'nicola.glb',
     'RF_Dante':           'dante_dambrosio.glb',
     'Cath_Frasier':       'frasier_temple.glb',
+    'Garage_Antonio':     'antonio.glb',
+    'Cemetery_Alberto':   'alberto.glb',
     'Cath_apprentice':    'maya_apprentice.glb',
     'Church_priest':      'father_amato.glb',
     'Hermit_keeper':      'hermit_keeper.glb',
