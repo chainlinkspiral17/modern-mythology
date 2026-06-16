@@ -503,20 +503,136 @@ def build_district_roads():
               f"{len(waypoints)} waypoints, half_w={half_w}m")
 
 
-def build_district_buildings():
-    """PHASE 4 — buildings outside the riverfront's SE quadrant.
+# HCE builders we borrow. The module-level mesh_z lookup is
+# redirected so HCE's _build_suburban_house samples OUR elevation
+# field instead of HCE's.
+import build_harmony_terrain as ht
 
-    TODO:
-      - Lafayette-style raised cottages on cypress stilts
-      - Levee-crown bungalows on the high ground
-      - Compact French Quarter block (4-6 buildings, wrought iron)
-      - Cathedral / town square anchor on a horizon ridge
-      - Above-ground cemetery as outlying narrative locale
-      - Boatyard quonsets at south-end industrial pad
-      - Strip-mall arteries with faded chain signs
-      - Cane-field edge plots
-    """
-    print("[graustark] PHASE 4 buildings — STUB")
+
+def _hook_hce_mesh_z():
+    """Redirect HCE's mesh_z to graustark_elevation so reused HCE
+    builders read our terrain rather than HCE's."""
+    ht.mesh_z = lambda x, y: graustark_elevation(x, y)
+
+
+# ── WESTERN SUBURBAN GRID  (Lafayette-style residential) ────────
+# Houses arranged west of SR12, north of the truss-bridge HWY 90.
+# Six rows × five lots = 30 lots, 40m grid spacing. Position-seeded
+# palette so the neighbourhood reads as mixed era.
+
+_LAF_PALETTES = [
+    {'wall': (0.92, 0.84, 0.62, 1.0), 'roof': (0.32, 0.18, 0.14, 1.0)},  # yellow + brown
+    {'wall': (0.86, 0.78, 0.74, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)},  # cream + chocolate
+    {'wall': (0.72, 0.84, 0.74, 1.0), 'roof': (0.32, 0.30, 0.26, 1.0)},  # sage + slate
+    {'wall': (0.96, 0.92, 0.84, 1.0), 'roof': (0.18, 0.18, 0.22, 1.0)},  # white + black tin
+    {'wall': (0.80, 0.66, 0.52, 1.0), 'roof': (0.46, 0.32, 0.20, 1.0)},  # tan + dark brown
+    {'wall': (0.66, 0.72, 0.84, 1.0), 'roof': (0.38, 0.28, 0.22, 1.0)},  # pale blue + brown
+]
+
+
+def _build_western_residential():
+    """30-lot Lafayette suburban grid west of SR12, on the dry
+    side of the west levee ridge. Uses HCE's _build_suburban_house
+    with Louisiana palettes."""
+    print("[graustark]   western residential — 30 lots")
+    LOT_GRID_X = [-540, -480, -420, -360, -300]   # 5 cols, 60m
+    LOT_GRID_Y = [+360, +290, +220, +150, +80, +10]  # 6 rows, 70m apart
+    count = 0
+    for ri, gy in enumerate(LOT_GRID_Y):
+        for ci, gx in enumerate(LOT_GRID_X):
+            # Skip a few lots for parks / empty space
+            if (ri == 2 and ci == 2) or (ri == 4 and ci == 4):
+                continue
+            seed = (abs(int(gx * 7) + int(gy * 11))) % 100
+            pal_i = seed % len(_LAF_PALETTES)
+            facing = '-Y' if ri % 2 == 0 else '+Y'
+            gz = graustark_elevation(gx, gy)
+            ht._build_suburban_house(
+                f"Graustark_West_House_R{ri}_C{ci}",
+                gx, gy, gz, facing=facing,
+                palette=_LAF_PALETTES[pal_i])
+            count += 1
+    print(f"[graustark]     placed {count} western houses")
+
+
+# ── CYPRESS TREES along the bayou ──────────────────────────────
+COL_CYPRESS_TRUNK = (0.30, 0.22, 0.16, 1.0)
+COL_CYPRESS_CANOPY = (0.30, 0.42, 0.28, 1.0)
+COL_SPANISH_MOSS  = (0.52, 0.56, 0.46, 1.0)
+
+
+def _emit_cypress(name, cx, cy, cz):
+    """Single cypress: stubby trunk, broad layered canopy, hint
+    of Spanish moss draped underneath. Reuses HCE's low-poly
+    primitives so the tri-count stays comparable to HCE trees."""
+    trunk_h = 5.5
+    canopy_r = 3.2
+    ht._make_cyl_local(f"{name}_Trunk",
+                       (cx, cy, cz + trunk_h / 2),
+                       0.35, trunk_h, COL_CYPRESS_TRUNK, segments=6)
+    # Two stacked canopy spheres for the wider cypress profile
+    ht._make_sphere_low_local(
+        f"{name}_Canopy_Lo",
+        (cx, cy, cz + trunk_h + canopy_r * 0.4),
+        canopy_r, COL_CYPRESS_CANOPY, rings=3, segments=8)
+    ht._make_sphere_low_local(
+        f"{name}_Canopy_Hi",
+        (cx, cy, cz + trunk_h + canopy_r * 1.1),
+        canopy_r * 0.78, COL_CYPRESS_CANOPY, rings=3, segments=8)
+    # Spanish moss — small dangling sphere under the canopy
+    ht._make_sphere_low_local(
+        f"{name}_Moss",
+        (cx + 0.6, cy, cz + trunk_h + canopy_r * 0.2),
+        0.5, COL_SPANISH_MOSS, rings=2, segments=6)
+
+
+def _build_bayou_cypress_groves():
+    """Cypress trees scattered along the bayou centerline, planted
+    in the tidal mud-flat band (d=10..30m from bayou) where they
+    grow in real delta wetlands. Skipped inside the RF zone."""
+    sm = _smooth_polyline(BAYOU_CENTERLINE, samples_per_seg=4)
+    count = 0
+    for i, (sx, sy) in enumerate(sm):
+        # Plant ON the tidal flat — d ≈ 18m perpendicular to centerline.
+        # Compute perpendicular at this sample.
+        if i + 1 < len(sm):
+            x1, y1 = sm[i + 1]
+        else:
+            x1, y1 = sm[i - 1]
+        dx, dy = x1 - sx, y1 - sy
+        seg = math.hypot(dx, dy) or 1
+        nx, ny = -dy / seg, dx / seg
+        for side_sgn in (-1, +1):
+            tx = sx + nx * 18 * side_sgn
+            ty = sy + ny * 18 * side_sgn
+            # Skip if inside RF zone (riverfront has its own cypress
+            # already in build_bayou)
+            if (RF_ZONE_X[0] <= tx <= RF_ZONE_X[1]
+                    and RF_ZONE_Y[0] <= ty <= RF_ZONE_Y[1]):
+                continue
+            # Plant on the tidal flat — Z is local terrain
+            tz = graustark_elevation(tx, ty)
+            # Skip if we landed in deep water
+            if tz < -1.5:
+                continue
+            # Position-seeded skip so the groves aren't perfectly
+            # regular (only place a tree at ~70% of candidate spots)
+            seed = (abs(int(tx * 13) + int(ty * 17))) % 100
+            if seed > 70:
+                continue
+            _emit_cypress(f"Graustark_Cypress_{i}_{side_sgn:+d}",
+                          tx, ty, tz)
+            count += 1
+    print(f"[graustark]   cypress trees along bayou: {count} placed")
+
+
+def build_district_buildings():
+    """PHASE 4 — first pass. Western suburban residential grid
+    (reusing HCE's house builder) + cypress trees scattered along
+    the bayou's tidal flats."""
+    _hook_hce_mesh_z()
+    _build_western_residential()
+    _build_bayou_cypress_groves()
 
 
 def build_district_characters_and_props():
