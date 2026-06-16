@@ -10766,8 +10766,12 @@ def build_self_storage():
                             (dx, rcy - row_d / 2 + 0.05,
                              ground_z + 1.05),
                             (door_w, 0.06, 2.10), col_unit_door)
-    # Front gate office at the west end
-    of_x = cx - row_w / 2 - 8.0
+    # Front gate office at the west end of the storage facility,
+    # but EAST of the ECommS collector road (CL at x=440, hw=5
+    # → road east edge at x=445). Office sits 10m east of road
+    # edge so it's safely clear and leaves room for a driveway
+    # approach + gate between road and office.
+    of_x = cx - row_w / 2 + 5.0       # 480 - 30 + 5 = 455
     of_y = cy
     of_z = mesh_z(of_x, of_y)
     of_w, of_d, of_h = 10.0, 8.0, 3.6
@@ -14709,8 +14713,12 @@ def build_east_cds_neighborhood():
                 f"ECDS_Coll_House_{pidx}_{side_sgn:+d}_Drive",
                 hcx, hcy, hcz, facing, curb_x, curb_y)
             house_idx += 1
-    # 4 houses around the cul-de-sac bulb at 0°, 90°, 180°, 270° (skip 270° = inlet)
-    for k, ang_deg in enumerate((30, 90, 150, 270)):
+    # 4 houses around the cul-de-sac bulb. The inlet road comes
+    # from the south (ending at the bulb at (320, 220) after
+    # turning east from (300, 180)) — inlet direction from bulb
+    # center is ~245°. The old 270° spec straddled it. Cluster
+    # the houses on the NORTH + EAST + WEST arcs (skip 180..270).
+    for k, ang_deg in enumerate((30, 90, 150, 330)):
         ang_r = math.radians(ang_deg)
         hcx = cul_x + math.cos(ang_r) * (cul_r + 12.0)
         hcy = cul_y + math.sin(ang_r) * (cul_r + 12.0)
@@ -15592,12 +15600,16 @@ def build_phase2_neighborhood():
     # ── 5 HOUSES around the cul-de-sac BULB · radiating from
     # the bulb centre, each facing toward the bulb. Skip the
     # inlet angle (270°/west, where the access road arrives).
+    # Inlet road approaches from ~27° (NE corner of the bulb); the
+    # old 30° house at cul_setback=21 had its main box literally
+    # straddling the road's last waypoint. Skip the NE arc (10°..50°)
+    # entirely and redistribute the 4 remaining houses.
     cul_house_specs = [
-        (30,  '-X', {'wall': (0.80, 0.76, 0.68, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)}),
-        (90,  '-Y', {'wall': (0.70, 0.74, 0.62, 1.0), 'roof': (0.55, 0.20, 0.16, 1.0)}),
-        (150, '+X', {'wall': (0.82, 0.75, 0.60, 1.0), 'roof': (0.32, 0.30, 0.26, 1.0)}),
-        (210, '+X', {'wall': (0.65, 0.68, 0.78, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)}),
-        (330, '-X', {'wall': (0.85, 0.82, 0.72, 1.0), 'roof': (0.32, 0.22, 0.18, 1.0)}),
+        ( 75, '-Y', {'wall': (0.80, 0.76, 0.68, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)}),
+        (135, '+X', {'wall': (0.70, 0.74, 0.62, 1.0), 'roof': (0.55, 0.20, 0.16, 1.0)}),
+        (195, '+X', {'wall': (0.82, 0.75, 0.60, 1.0), 'roof': (0.32, 0.30, 0.26, 1.0)}),
+        (255, '+Y', {'wall': (0.65, 0.68, 0.78, 1.0), 'roof': (0.42, 0.30, 0.22, 1.0)}),
+        (315, '-X', {'wall': (0.85, 0.82, 0.72, 1.0), 'roof': (0.32, 0.22, 0.18, 1.0)}),
     ]
     cul_setback = 21.0    # bulb r 9 + setback 12 m
     for k, (ang_deg, facing, palette) in enumerate(cul_house_specs):
