@@ -1,5 +1,49 @@
 # Character Modeling Notes — Reference
 
+## Hero pipeline — Mixamo / Ready Player Me (decided 2026-06-16)
+
+After acknowledging that procedural primitive sculpts cannot
+reach reference quality, the user picked the external-generator
+pipeline:
+
+> "let's go mixamo"
+
+**Workflow** (per hero):
+
+1. Build appearance externally:
+   - **Mixamo** (free, Adobe login) — best for animation rigs
+     and existing character templates
+   - **Ready Player Me** — better for race/hair/clothing
+     customization (locs, jackets, etc. that Mixamo lacks)
+2. Export as FBX (Mixamo) or GLB (RPM).
+3. On the Deck, scale to 1.80 m total height in Blender, export
+   as glTF Binary → `godot/assets/3d/characters/heroes/<name>.glb`.
+4. The filename matches `HERO_GLB_PATHS` in
+   `build_graustark.py`. The graustark build picks it up
+   automatically — no code changes needed.
+
+**Spawn-label → filename map:**
+See `godot/assets/3d/characters/heroes/README.md` for the
+current table.
+
+**Fallback ladder** (handled by Phase 5):
+
+```
+1. hero GLB present in heroes/         → use it
+2. tier-1 spawn, no hero GLB           → use planar reference
+3. tier-2 spawn (background extra)     → use primitive figure
+```
+
+Missing hero GLBs never block the build — they fall through to
+the planar reference for tier-1 or the primitive for tier-2.
+
+The procedural midtier + costume system stays in tree
+(`human_midtier.py`) but is NOT in the build path. Keep it as
+a documented attempt; don't rip it out in case we need a
+placeholder again.
+
+---
+
 ## Frasier — canonical concept (2026-06-16)
 
 The user provided two reference images that overturned my notes:

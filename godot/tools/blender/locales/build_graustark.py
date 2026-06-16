@@ -2995,28 +2995,98 @@ def _instance_planar_npc(label, x, y, z, facing, body_type):
     return True
 
 
+# ── HERO GLB OVERRIDES  (Mixamo / Ready Player Me imports) ─────
+# Spawn labels in NPC_SPAWNS that have a dedicated hero GLB on
+# disk get instanced from that GLB instead of the generic planar
+# reference. See godot/assets/3d/characters/heroes/README.md for
+# the workflow + filename convention. Missing files fall back to
+# the planar reference — never breaks the build.
+HERO_GLB_PATHS = {
+    'Cath_Frasier':       'frasier_temple.glb',
+    'Cath_apprentice':    'maya_apprentice.glb',
+    'Church_priest':      'father_amato.glb',
+    'Hermit_keeper':      'hermit_keeper.glb',
+    'Frog_owner':         'frog_shop_owner.glb',
+    'Sun_Garden_old':     'frank_sun.glb',
+    'Carnival_caretaker': 'carnival_caretaker.glb',
+    'Cane_field_1':       'cane_worker.glb',
+    'Cemetery_mourner1':  'cemetery_mourner_1.glb',
+    'Cemetery_mourner2':  'cemetery_mourner_2.glb',
+    'FQ_restaurant_door': 'fq_restaurant_patron.glb',
+    'Casino_doorman':     'casino_doorman.glb',
+}
+
+_HERO_GLB_DIR = os.path.normpath(os.path.join(
+    _SCRIPT_DIR, "..", "..", "..", "assets", "3d", "characters", "heroes"))
+
+
+def _instance_hero_glb(label, x, y, z, facing):
+    """Import a hero-specific GLB and place it at the spawn. Returns
+    True if a file was found and instanced, False to signal the
+    caller should fall back to the planar reference."""
+    fname = HERO_GLB_PATHS.get(label)
+    if not fname:
+        return False
+    path = os.path.join(_HERO_GLB_DIR, fname)
+    if not os.path.exists(path):
+        return False
+    # Track objects that exist before import so we can identify
+    # what came in.
+    before = set(o.name for o in bpy.data.objects)
+    bpy.ops.import_scene.gltf(filepath=path)
+    after = set(o.name for o in bpy.data.objects)
+    new_objs = [bpy.data.objects[n] for n in (after - before)]
+    if not new_objs:
+        return False
+    # Find the top-level root of the imported hierarchy (the
+    # armature or the first mesh-bearing object with no parent
+    # that's in our new set).
+    root = next((o for o in new_objs
+                 if o.parent is None or o.parent.name not in after),
+                new_objs[0])
+    root.location = (x, y, z)
+    rot_z = {
+        '-Y': 0.0, '+Y': math.pi,
+        '+X': -math.pi / 2, '-X': +math.pi / 2,
+    }.get(facing, 0.0)
+    root.rotation_euler = (0.0, 0.0, rot_z)
+    # Rename so we can find them later
+    for o in new_objs:
+        o.name = f"Graustark_NPC_{label}_{o.type.lower()}"
+    return True
+
+
 def build_district_characters_and_props():
-    """PHASE 5 — drop humans through the town in a two-tier mix.
-    Tier-1 (12 named characters): instances of the planar reference
-    mesh (dacancino, CC-BY-4.0). Tier-2 (35 background extras):
-    HCE's primitive human_figure. Procedural midtier sculpt was
-    explored and discarded — the reference is the canonical figure.
+    """PHASE 5 — drop humans through the town in a tiered mix.
+
+    Priority per spawn:
+      1. Hero GLB (if file exists in
+         godot/assets/3d/characters/heroes/) — used for the 12
+         named tier-1 spawns when their hero file is on disk
+      2. Planar reference instance (dacancino, CC-BY-4.0) — used
+         for tier-1 spawns whose hero GLB is missing
+      3. Primitive human_figure — used for the 35 background extras
     """
-    print(f"[graustark] PHASE 5 characters — {len(NPC_SPAWNS)} figures "
-          f"({len(TIER_1_LABELS)} planar reference + "
-          f"{len(NPC_SPAWNS) - len(TIER_1_LABELS)} primitive)")
+    print(f"[graustark] PHASE 5 characters — {len(NPC_SPAWNS)} figures")
     planar_ready = _import_planar_sources()
     from human_sculpt import human_figure
-    placed_planar = placed_prim = failed = 0
+    placed_hero = placed_planar = placed_prim = failed = 0
     for label, x, y, facing, body_type in NPC_SPAWNS:
         z = graustark_elevation(x, y)
         try:
+            # 1. Hero GLB
+            if label in HERO_GLB_PATHS:
+                if _instance_hero_glb(label, x, y, z, facing):
+                    placed_hero += 1
+                    continue
+            # 2. Planar reference for tier-1 spawns missing a hero
             if planar_ready and label in TIER_1_LABELS:
-                ok = _instance_planar_npc(label, x, y, z, facing,
-                                            body_type)
-                if ok:
+                if _instance_planar_npc(label, x, y, z, facing,
+                                         body_type):
                     placed_planar += 1
                     continue
+            # 3. Primitive figure for background extras (and any
+            # tier-1 fallback)
             seed = (abs(int(x * 7) + int(y * 11))) \
                    % len(_NPC_PALETTES)
             pal = _NPC_PALETTES[seed]
@@ -3032,8 +3102,9 @@ def build_district_characters_and_props():
         except Exception as e:
             failed += 1
             print(f"[graustark]   ✗ failed {label}: {e}")
-    print(f"[graustark]   placed {placed_planar} planar + "
-          f"{placed_prim} primitive  (failed {failed})")
+    print(f"[graustark]   placed: {placed_hero} hero GLB "
+          f"+ {placed_planar} planar + {placed_prim} primitive  "
+          f"(failed {failed})")
     _build_street_furniture()
 
 
