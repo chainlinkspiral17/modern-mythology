@@ -613,6 +613,41 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
                    (base_x, base_y, torso_cz + torso_h / 2 - yoke_h / 2),
                    torso_r_top * 1.02, torso_r_top * 1.06,
                    yoke_h, yoke_color, segments=10)
+
+    # ── JACKET LAPELS · two thin darker triangle-ish strips down
+    # the front of the torso from collar to belt. The V-cut where
+    # a real suit jacket opens. Only emitted when there's no
+    # accent (accent already occupies the chest center) and not
+    # puffy. This is what makes a torso read as a "dressed person"
+    # vs "naked cylinder painted a color."
+    if accent == 'none' and not puffy:
+        fwd_x_l, fwd_y_l = _face_axis(facing)
+        prp_x_l, prp_y_l = -fwd_y_l, fwd_x_l
+        lapel_dark = (jacket_color[0] * 0.62,
+                      jacket_color[1] * 0.62,
+                      jacket_color[2] * 0.62,
+                      jacket_color[3])
+        lapel_h = torso_h * 0.50    # collar down to mid-torso
+        lapel_w = PROP["shoulder_w"] * s * 0.18
+        lapel_cz = torso_cz + torso_h * 0.10   # upper half of torso
+        lapel_out = torso_r_top * 0.92         # just proud of body
+        # Two lapels — left + right of centerline
+        for lap_sgn in (-1, +1):
+            l_off_perp = lap_sgn * lapel_w * 0.55  # gap between lapels
+            l_cx = base_x + fwd_x_l * lapel_out \
+                          + prp_x_l * l_off_perp
+            l_cy = base_y + fwd_y_l * lapel_out \
+                          + prp_y_l * l_off_perp
+            # Lapel as a thin box; the long axis is along Z, the
+            # narrow axis is the perpendicular of facing (so it sits
+            # flat against the chest)
+            if abs(fwd_y_l) > abs(fwd_x_l):
+                lapel_size = (lapel_w, 0.025, lapel_h)
+            else:
+                lapel_size = (0.025, lapel_w, lapel_h)
+            _box(f"{name}_Lapel_{lap_sgn:+d}",
+                 (l_cx, l_cy, lapel_cz),
+                 lapel_size, lapel_dark)
     # Front accent (star, stripe, name plate)
     if accent != 'none' and accent_color is not None:
         fwd_x, fwd_y = _face_axis(facing)
