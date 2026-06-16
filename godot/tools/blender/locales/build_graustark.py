@@ -4107,6 +4107,9 @@ _NPC_PALETTES = [
 # 35 background extras cheap.
 TIER_1_LABELS = {
     'Diner_John',             # Fool — John Frank at D'Ambrosio's
+    'FQ_Elicia',              # Priestess — Elicia at her curio shop
+    'RF_Nicola',              # Empress — Nicola at the boat
+    'RF_Dante',               # Emperor — Dante at the boat helm approach
     'Cath_Frasier',           # Magician — Frasier Temple
     'Cath_apprentice',        # Maya (Frasier's apprentice)
     'Church_priest',          # Hierophant — Father Amato
@@ -4144,6 +4147,12 @@ NPC_SPAWNS = [
     ("RF_lot_3",         -40.0,  +30.0,  '-Y', 'elderly'),
     # ── John at the diner gangway (FOOL anchor) ──
     ("Diner_John",       -10.0,  -5.0,   '+X', 'male_avg'),
+    # ── Nicola at the boat dining-room entrance (EMPRESS) ──
+    ("RF_Nicola",        -3.0,   -8.0,   '+X', 'female_avg'),
+    # ── Dante at the boat upper-deck/helm approach (EMPEROR) ──
+    ("RF_Dante",         +6.0,   +5.0,   '-Y', 'male_tall'),
+    # ── Elicia at her curio shop entrance (PRIESTESS) ──
+    ("FQ_Elicia",        -311.0, +66.0,  '-X', 'female_avg'),
     # ── Levee cottage porches ──
     ("Levee_porch_N",    -38.0,  +418.0, '+X', 'male_heavy'),
     ("Levee_porch_S",    -86.0,  -424.0, '+X', 'female_avg'),
@@ -4435,6 +4444,9 @@ def _instance_planar_npc(label, x, y, z, facing, body_type):
 # the planar reference — never breaks the build.
 HERO_GLB_PATHS = {
     'Diner_John':         'john_frank.glb',
+    'FQ_Elicia':          'elicia_temple.glb',
+    'RF_Nicola':          'nicola.glb',
+    'RF_Dante':           'dante_dambrosio.glb',
     'Cath_Frasier':       'frasier_temple.glb',
     'Cath_apprentice':    'maya_apprentice.glb',
     'Church_priest':      'father_amato.glb',
@@ -4496,7 +4508,20 @@ def _instance_hero_glb(label, x, y, z, facing):
                 min_xyz[i] = min(min_xyz[i], w[i])
                 max_xyz[i] = max(max_xyz[i], w[i])
     extents = [max_xyz[i] - min_xyz[i] for i in range(3)]
-    up_axis = extents.index(max(extents))
+    # ── Detect up-axis (handles the "wide base" case where two
+    # axes are nearly equal-large and the third is much smaller —
+    # that's a character on a platform, the SMALL axis is height.
+    # Dante's Meshy GLB had X=Y=1.92, Z=1.08 which without this
+    # heuristic looked like Y was up). ──
+    sorted_ext = sorted(enumerate(extents), key=lambda p: -p[1])
+    (a0, e0), (a1, e1), (a2, e2) = sorted_ext
+    if e0 > 0 and e1 / e0 > 0.85 and e2 / e0 < 0.70:
+        # Two large equal axes + small third → small one is up
+        up_axis = a2
+        height_extent = e2
+    else:
+        up_axis = a0
+        height_extent = e0
 
     # ── Auto-orient: if largest extent isn't Z, rotate ─────────
     rot_x = rot_y = 0.0
@@ -4505,8 +4530,8 @@ def _instance_hero_glb(label, x, y, z, facing):
     elif up_axis == 1:      # Y is up — rotate +90° about X
         rot_x = +math.pi / 2
 
-    # ── Auto-scale so largest extent = 1.80 m ──────────────────
-    scale = 1.80 / max(extents) if max(extents) > 1e-6 else 1.0
+    # ── Auto-scale so character height = 1.80 m ────────────────
+    scale = 1.80 / height_extent if height_extent > 1e-6 else 1.0
 
     # ── Apply transforms to root ──────────────────────────────
     rot_z = {
